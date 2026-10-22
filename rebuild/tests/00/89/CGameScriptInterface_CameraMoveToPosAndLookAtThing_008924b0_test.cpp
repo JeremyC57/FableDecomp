@@ -13,7 +13,7 @@ public:
 class CScriptModuleGoToLookAt : public CScriptModuleBase {
 public:
     unsigned char _pad04[0x6c - 4];
-    CScriptModuleGoToLookAt(const C3DVector& pos, const CThing& target);   // 0x00852D10
+    CScriptModuleGoToLookAt(const C3DVector& camPos, const CThing& target);   // 0x00852D10
 };
 }
 template <class T> class CCountedPointer {
@@ -59,17 +59,17 @@ public:
 };
 class CGameScriptInterface {
 public:
-    virtual void CameraMoveToPosAndLookAtThing(const C3DVector& pos, const CScriptThing& thing, float time) const;
+    virtual void CameraMoveToPosAndLookAtThing(const C3DVector& camPos, const CScriptThing& targetThing, float time) const;
     CWorld* World;                                       // +0x04
 };
-void CGameScriptInterface::CameraMoveToPosAndLookAtThing(const C3DVector& pos, const CScriptThing& thing, float time) const
+void CGameScriptInterface::CameraMoveToPosAndLookAtThing(const C3DVector& camPos, const CScriptThing& targetThing, float time) const
 {
-    if (thing.IsValid() && (thing.GetThing()->ThingTypeFlags & 4))
+    if (targetThing.IsValid() && (targetThing.GetThing()->ThingTypeFlags & 4))
     {
-        CThing* t = thing.GetThing();
+        CThing* t = targetThing.GetThing();
         CGameCameraManager* manager;
         World->PCurrentGameCamera->GetCameraManager(&manager);
-        manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(pos, *t)));
+        manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(camPos, *t)));
     }
 }
 
@@ -152,7 +152,7 @@ bool CScriptThing::IsValid() const { return false; }
 class CTestScriptThing : public CScriptThing { public: CThing* T; bool Valid; mutable int Gets; CThing* GetThing() const { ++Gets; return T; } bool IsValid() const { return Valid; } };
 static int g_ctors, g_sets, g_cpdtor; static const C3DVector* g_pos; static const CThing* g_target; static void* g_obj; static CGameCameraManager* g_mgrThis;
 NCameraModes::CScriptModuleBase::~CScriptModuleBase() {}
-NCameraModes::CScriptModuleGoToLookAt::CScriptModuleGoToLookAt(const C3DVector& pos, const CThing& target) { ++g_ctors; g_pos = &pos; g_target = &target; g_obj = this; }
+NCameraModes::CScriptModuleGoToLookAt::CScriptModuleGoToLookAt(const C3DVector& camPos, const CThing& target) { ++g_ctors; g_pos = &camPos; g_target = &target; g_obj = this; }
 template <class T> CCountedPointer<T>::CCountedPointer(T* o) { Object = o; Count = 0; }
 template <class T> CCountedPointer<T>::CCountedPointer(const CCountedPointer& o) { Object = o.Object; Count = o.Count; }
 template <class T> CCountedPointer<T>::~CCountedPointer() { ++g_cpdtor; delete Object; }
@@ -168,11 +168,11 @@ int main()
     CAIGameCameraBase cam; static unsigned char raw[sizeof(CWorld)]; CWorld& w = *(CWorld*)raw; w.PCurrentGameCamera = &cam;
     CGameScriptInterface gsi; gsi.World = &w;
     CTestScriptThing s; s.T = &t; s.Valid = false; s.Gets = 0;
-    const C3DVector& pos = *(const C3DVector*)raw;
-    t.ThingTypeFlags = 4; gsi.CameraMoveToPosAndLookAtThing(pos, s, 1.0f); bool ok = g_ctors == 0 && s.Gets == 0;
-    s.Valid = true; t.ThingTypeFlags = ~4UL; gsi.CameraMoveToPosAndLookAtThing(pos, s, 1.0f); ok = ok && g_ctors == 0 && s.Gets == 1;
-    t.ThingTypeFlags = 4; gsi.CameraMoveToPosAndLookAtThing(pos, s, 1.0f);
-    ok = ok && g_ctors == 1 && s.Gets == 3 && g_pos == &pos && g_target == &t && g_sets == 1 && g_mgrThis == &g_mgr && g_cpdtor == 1;
+    const C3DVector& camPos = *(const C3DVector*)raw;
+    t.ThingTypeFlags = 4; gsi.CameraMoveToPosAndLookAtThing(camPos, s, 1.0f); bool ok = g_ctors == 0 && s.Gets == 0;
+    s.Valid = true; t.ThingTypeFlags = ~4UL; gsi.CameraMoveToPosAndLookAtThing(camPos, s, 1.0f); ok = ok && g_ctors == 0 && s.Gets == 1;
+    t.ThingTypeFlags = 4; gsi.CameraMoveToPosAndLookAtThing(camPos, s, 1.0f);
+    ok = ok && g_ctors == 1 && s.Gets == 3 && g_pos == &camPos && g_target == &t && g_sets == 1 && g_mgrThis == &g_mgr && g_cpdtor == 1;
     std::printf(ok ? "008924b0_TEST PASS\n" : "008924b0_TEST FAIL\n");
     return ok ? 0 : 1;
 }

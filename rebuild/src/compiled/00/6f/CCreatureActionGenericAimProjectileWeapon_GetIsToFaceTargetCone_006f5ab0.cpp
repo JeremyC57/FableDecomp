@@ -1,4 +1,4 @@
-// ?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ @ 0x00b23360
+// CCreatureAction_GenericAimProjectileWeapon::GetIsToFaceTargetCone @ 0x006F5AB0
 // Retail: d9 05 d8 de 22 01 c3
 //   fld DWORD PTR ds:0x122ded8
 //   ret
@@ -13,10 +13,10 @@
 // not resolve to that exact address; declaring it extern lets the linker
 // place it while the compiler still emits the fld/ret shape.
 
-extern float g_PrimitiveDrawDistanceFactor;
+extern float g_FloatOne;
 
-float __fastcall CIEngine__GetPrimitiveDrawDistanceFactor(void *this_ptr)
+float __fastcall CCreatureAction_GenericAimProjectileWeapon__GetIsToFaceTargetCone(void *this_ptr)
 {
     (void)this_ptr;
-    return g_PrimitiveDrawDistanceFactor;
+    return g_FloatOne;
 }

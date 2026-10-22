@@ -12,7 +12,7 @@ public:
 class CThingFilter_HasScriptName {
 public:
     CCharString Name;
-    CThingFilter_HasScriptName(const CCharString& name) : Name(name) {}
+    CThingFilter_HasScriptName(const CCharString& creatureName) : Name(creatureName) {}
 };
 class CThingSearchTools {
 public:
@@ -26,13 +26,13 @@ public:
 };
 class CGameScriptInterface {
 public:
-    virtual void RemoveDeadCreature(const CCharString& name) const;
+    virtual void RemoveDeadCreature(const CCharString& creatureName) const;
     CWorld* World;                                 // +0x04
 };
-void CGameScriptInterface::RemoveDeadCreature(const CCharString& name) const
+void CGameScriptInterface::RemoveDeadCreature(const CCharString& creatureName) const
 {
     CThing* thing = 0;
-    if (World->GetThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(name + "_DEAD_CREATURE"), &thing))
+    if (World->GetThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(creatureName + "_DEAD_CREATURE"), &thing))
         thing->Kill(false);
 }
 
@@ -63,10 +63,10 @@ int main()
     static CThing victim; CThingSearchTools tools; CWorld w; w.PThingSearchTools = &tools;
     CGameScriptInterface gsi; gsi.World = &w;
     struct Raw { void* p; } raw; raw.p = (void*)"HERO";
-    const CCharString& name = *(CCharString*)&raw;
-    g_found = 0; gsi.RemoveDeadCreature(name);
+    const CCharString& creatureName = *(CCharString*)&raw;
+    g_found = 0; gsi.RemoveDeadCreature(creatureName);
     bool ok = g_searches == 1 && g_match && g_kills == 0 && g_dtors == 2 && g_copies == 2;   // one copy is the mock operator+ return, one the filter member
-    g_found = &victim; gsi.RemoveDeadCreature(name);
+    g_found = &victim; gsi.RemoveDeadCreature(creatureName);
     ok = ok && g_searches == 2 && g_kills == 1 && g_killed == &victim && !g_killArg && g_dtors == 4 && g_copies == 4;
     std::printf(ok ? "00894490_TEST PASS\n" : "00894490_TEST FAIL\n");
     return ok ? 0 : 1;

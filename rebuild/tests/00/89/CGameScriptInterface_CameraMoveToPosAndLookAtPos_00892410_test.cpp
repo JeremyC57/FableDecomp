@@ -8,7 +8,7 @@ public:
 class CScriptModuleGoToLookAt : public CScriptModuleBase {
 public:
     unsigned char _pad04[0x6c - 4];
-    CScriptModuleGoToLookAt(const C3DVector& pos, const C3DVector& lookAt);   // 0x007187C0
+    CScriptModuleGoToLookAt(const C3DVector& camPos, const C3DVector& lookAt);   // 0x007187C0
 };
 }
 struct CCPPointerInfo {
@@ -49,20 +49,20 @@ public:
 };
 class CGameScriptInterface {
 public:
-    virtual void CameraMoveToPosAndLookAtPos(const C3DVector& pos, const C3DVector& lookAt, float time) const;
+    virtual void CameraMoveToPosAndLookAtPos(const C3DVector& camPos, const C3DVector& lookAt, float time) const;
     CWorld* World;                                       // +0x04
 };
-void CGameScriptInterface::CameraMoveToPosAndLookAtPos(const C3DVector& pos, const C3DVector& lookAt, float time) const
+void CGameScriptInterface::CameraMoveToPosAndLookAtPos(const C3DVector& camPos, const C3DVector& lookAt, float time) const
 {
     CGameCameraManager* manager;
     World->PCurrentGameCamera->GetCameraManager(&manager);
-    manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(pos, lookAt)));
+    manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(camPos, lookAt)));
 }
 
 static int g_ctors, g_dtors, g_sets; static const C3DVector* g_pos; static const C3DVector* g_look; static void* g_obj;
 static CGameCameraManager* g_mgrThis; static long g_seenRef; static void* g_seenFunc;
 NCameraModes::CScriptModuleBase::~CScriptModuleBase() { ++g_dtors; }
-NCameraModes::CScriptModuleGoToLookAt::CScriptModuleGoToLookAt(const C3DVector& pos, const C3DVector& lookAt) { ++g_ctors; g_pos = &pos; g_look = &lookAt; g_obj = this; }
+NCameraModes::CScriptModuleGoToLookAt::CScriptModuleGoToLookAt(const C3DVector& camPos, const C3DVector& lookAt) { ++g_ctors; g_pos = &camPos; g_look = &lookAt; g_obj = this; }
 template <class T> void __fastcall CCountedPointer<T>::DeleteObject(void* data) { delete (T*)data; }
 template <class T> CCountedPointer<T>::CCountedPointer(const CCountedPointer& o) { Object = o.Object; Info = o.Info; if (Info) ++Info->RefCount; }
 template <class T> CCountedPointer<T>::~CCountedPointer()
@@ -85,9 +85,9 @@ int main()
 {
     CAIGameCameraBase cam; static unsigned char raw[sizeof(CWorld)]; CWorld& w = *(CWorld*)raw; w.PCurrentGameCamera = &cam;
     CGameScriptInterface gsi; gsi.World = &w;
-    const C3DVector& pos = *(const C3DVector*)(raw + 1); const C3DVector& look = *(const C3DVector*)(raw + 2);
-    gsi.CameraMoveToPosAndLookAtPos(pos, look, 1.0f);
-    bool ok = g_ctors == 1 && g_pos == &pos && g_look == &look && g_sets == 1 && g_mgrThis == &g_mgr && g_seenRef == 1
+    const C3DVector& camPos = *(const C3DVector*)(raw + 1); const C3DVector& look = *(const C3DVector*)(raw + 2);
+    gsi.CameraMoveToPosAndLookAtPos(camPos, look, 1.0f);
+    bool ok = g_ctors == 1 && g_pos == &camPos && g_look == &look && g_sets == 1 && g_mgrThis == &g_mgr && g_seenRef == 1
            && g_seenFunc == (void*)&CCountedPointer<NCameraModes::CScriptModuleBase>::DeleteObject && g_dtors == 1;
     std::printf(ok ? "00892410_TEST PASS\n" : "00892410_TEST FAIL\n");
     return ok ? 0 : 1;

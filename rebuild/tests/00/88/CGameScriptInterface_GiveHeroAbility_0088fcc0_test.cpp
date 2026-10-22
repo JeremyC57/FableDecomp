@@ -23,13 +23,13 @@ static HeroObj* g_resolve = 0;
 int __fastcall GetHeroManager(void* self) { return self ? 7 : 0; }
 HeroObj* __fastcall ResolveHero(int mgr) { (void)mgr; return g_resolve; }
 
-void __fastcall CGameScriptInterface_GiveHeroAbility(CGameScriptInterface* self, void* edx, int p1, int p2)
+void __fastcall CGameScriptInterface_GiveHeroAbility(CGameScriptInterface* self, void* edx, int abilityId, int give)
 {
     (void)edx;
     int mgr = GetHeroManager(*(void**)((char*)self + 0x14));
     HeroObj* h = ResolveHero(mgr);
     if (h != 0 && (h->flags & 1) == 0) {
-        h->GiveAbility(p1, p2, -1, 1);
+        h->GiveAbility(abilityId, give, -1, 1);
     }
 }
 

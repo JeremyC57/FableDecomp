@@ -5,10 +5,10 @@ struct Inner { int tag; };
 static Inner* g_self=0;
 struct CWorld { char pad[0x18]; Inner* PEnvironment; };
 void __fastcall Inner_Do(Inner* self, int e, int a, int b, int c){ (void)e; g_self=self; g_a=a; g_b=b; g_c=c; }
-void __fastcall CGameScriptInterface_ResetToDefaultThemeExternals(CGameScriptInterface* self, int edx, int arg)
+void __fastcall CGameScriptInterface_ResetToDefaultThemeExternals(CGameScriptInterface* self, int edx, int duration)
 {
     Inner* obj = self->World->PEnvironment;
-    Inner_Do(obj, edx, 0, 1, arg);
+    Inner_Do(obj, edx, 0, 1, duration);
 }
 int main(){
     static Inner theinner; theinner.tag=77;

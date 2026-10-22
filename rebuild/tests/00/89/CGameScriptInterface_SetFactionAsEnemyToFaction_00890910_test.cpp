@@ -23,12 +23,12 @@ void Faction::AddEnemy(Faction* other)
     enemies[nEnemies++] = other->id;
 }
 
-void __fastcall CGameScriptInterface_SetFactionAsEnemyToFaction(CGameScriptInterface* self, int dummy, int a, int b)
+void __fastcall CGameScriptInterface_SetFactionAsEnemyToFaction(CGameScriptInterface* self, int dummy, int faction1, int faction2)
 {
     FactionMgr* m = self->World->mgr;
-    Faction* fa = m->Lookup(a);
+    Faction* fa = m->Lookup(faction1);
     FactionMgr* m2 = self->World->mgr;
-    Faction* fb = m2->Lookup(b);
+    Faction* fb = m2->Lookup(faction2);
     if (fa && fb) {
         fa->AddEnemy(fb);
         fb->AddEnemy(fa);

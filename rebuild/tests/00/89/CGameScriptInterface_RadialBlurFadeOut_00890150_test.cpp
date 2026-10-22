@@ -4,16 +4,16 @@
 static void* g_this = 0;
 static int g_a = 0, g_b = 0;
 
-struct Tgt { void method(int a, int b); };
-void Tgt::method(int a, int b){ g_this = this; g_a = a; g_b = b; }
+struct Tgt { void method(int duration, int b); };
+void Tgt::method(int duration, int b){ g_this = this; g_a = duration; g_b = b; }
 
 struct CWorld { char pad[0x18]; char* PEnvironment; };
 
-void __fastcall CGameScriptInterface_RadialBlurFadeOut(CGameScriptInterface* self, int edx, int a, int b)
+void __fastcall CGameScriptInterface_RadialBlurFadeOut(CGameScriptInterface* self, int edx, int duration, int b)
 {
     char* mid = self->World->PEnvironment;
     Tgt* t = *(Tgt**)(mid + 0x1964);
-    t->method(a, b);
+    t->method(duration, b);
 }
 
 int main(){

@@ -1,4 +1,4 @@
-// Byte-exact reconstruction of CGameScriptInterface::AddGossip @ 0x008aa0d0
+// Byte-exact reconstruction of CGameScriptInterface::AddGossipFactions @ 0x008AA590
 //
 // Retail is a __fastcall member (this=ecx) taking a CCharString by value. It copies
 // the argument into a temporary and forwards it BY VALUE to an inner routine
@@ -17,7 +17,7 @@ struct CGameScriptInterface { char pad[4]; };
 // Inner gossip routine @ 0x8ae660: takes the string BY VALUE (owns/destroys the copy).
 void __fastcall Inner(CCharString byval);
 
-void __fastcall AddGossip(CGameScriptInterface* self, void* edx, CCharString name)
+void __fastcall AddGossipFactions(CGameScriptInterface* self, void* edx, CCharString category)
 {
-    Inner(name);
+    Inner(category);
 }

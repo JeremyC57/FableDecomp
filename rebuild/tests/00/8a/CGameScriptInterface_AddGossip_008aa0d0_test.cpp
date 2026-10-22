@@ -19,8 +19,8 @@ static void Inner(CCharString byval) {
     strcpy(g_innerLast, byval.buf);
 }
 
-static void AddGossip(CCharString name) {
-    Inner(name);
+static void AddGossip(CCharString category) {
+    Inner(category);
 }
 
 int main() {

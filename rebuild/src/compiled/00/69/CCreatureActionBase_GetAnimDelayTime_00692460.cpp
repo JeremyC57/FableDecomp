@@ -1,4 +1,4 @@
-// ?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ @ 0x00692460
+// CCreatureActionBase::GetAnimDelayTime @ 0x00692460
 // Retail: 33 c0 c3  ->  xor eax,eax ; ret
 // Virtual const this-only accessor returning long 0.
 // Modeled as __fastcall with 'this' in ecx (byte-identical to __fastcall for a this-only accessor).

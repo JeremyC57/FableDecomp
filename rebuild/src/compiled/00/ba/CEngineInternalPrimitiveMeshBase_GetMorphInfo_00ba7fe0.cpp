@@ -1,4 +1,4 @@
-// ?GetMorphInfo@CEngineInternalPrimitiveMeshBase@@UAEPAVCEngineInternalPrimitiveMorphInfo@@XZ
+// CEngineInternalPrimitiveMeshBase::GetMorphInfo @ 0x00BA7FE0
 // retail 0x00ba7fe0 : 33 c0 c3  ->  xor eax,eax ; ret
 //
 // Virtual accessor. The base-class implementation returns a null

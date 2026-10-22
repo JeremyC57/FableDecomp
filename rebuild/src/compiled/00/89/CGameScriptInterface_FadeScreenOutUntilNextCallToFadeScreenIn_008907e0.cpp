@@ -12,7 +12,7 @@ class CTCCreditsUI;
 class CGameScriptInterface
 {
 public:
-    void __fastcall FadeScreenOutUntilNextCallToFadeScreenIn(float param_1, float param_2);
+    void __fastcall FadeScreenOutUntilNextCallToFadeScreenIn(float fadeTime, float holdTime);
 };
 
 struct CTCCreditsUIOverlay
@@ -29,11 +29,11 @@ struct CGameScriptInterfaceOverlay
 
 typedef char(__fastcall* FadeScreenOutRawThunk)(CGameScriptInterface*, float, float, CRGBColour);
 
-void __fastcall CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn(float param_1, float param_2)
+void __fastcall CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn(float fadeTime, float holdTime)
 {
     CGameScriptInterfaceOverlay* overlay = reinterpret_cast<CGameScriptInterfaceOverlay*>(this);
 
-    if ((*reinterpret_cast<FadeScreenOutRawThunk**>(this))[0x5D4 / sizeof(void*)](this, param_1, param_2, CRGBColour(0xFF000000u)) != 0) {
+    if ((*reinterpret_cast<FadeScreenOutRawThunk**>(this))[0x5D4 / sizeof(void*)](this, fadeTime, holdTime, CRGBColour(0xFF000000u)) != 0) {
         CTCCreditsUIOverlay* creditsUI = reinterpret_cast<CTCCreditsUIOverlay*>(overlay->creditsUI_0c);
         creditsUI->fadeScreenOutFlag_d8 = 1;
     }

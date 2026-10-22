@@ -6,17 +6,17 @@ static float g_lastProgress = 0.0f;
 static int g_lastNotifyA0 = 0;
 
 struct CQuestMgr {
-    void Notify(int a0, char a1, int a2, int a3);
-    void Reload(int a0);
+    void Notify(int questName, char showScreen, int updateLogbook, int showQuestCompleteScreen);
+    void Reload(int questName);
 };
 
-void CQuestMgr::Notify(int a0, char a1, int a2, int a3) {
-    (void)a1; (void)a2; (void)a3;
+void CQuestMgr::Notify(int questName, char showScreen, int updateLogbook, int showQuestCompleteScreen) {
+    (void)showScreen; (void)updateLogbook; (void)showQuestCompleteScreen;
     g_notifyCount++;
-    g_lastNotifyA0 = a0;
+    g_lastNotifyA0 = questName;
 }
-void CQuestMgr::Reload(int a0) {
-    (void)a0;
+void CQuestMgr::Reload(int questName) {
+    (void)questName;
     g_reloadCount++;
 }
 
@@ -31,11 +31,11 @@ void CGameScriptInterface::SetQuestProgress(float v) {
     g_lastProgress = v;
 }
 
-void __fastcall CGameScriptInterface_SetQuestAsCompleted(CGameScriptInterface* self, int edx_ignore, int a0, char a1, int a2, int a3)
+void __fastcall CGameScriptInterface_SetQuestAsCompleted(CGameScriptInterface* self, int edx_ignore, int questName, char showScreen, int updateLogbook, int showQuestCompleteScreen)
 {
-    g_questMgr->Notify(a0, a1, a2, a3);
-    if (!a1 && g_someFlag) {
-        g_questMgr->Reload(a0);
+    g_questMgr->Notify(questName, showScreen, updateLogbook, showQuestCompleteScreen);
+    if (!showScreen && g_someFlag) {
+        g_questMgr->Reload(questName);
     }
     self->SetQuestProgress(1.0f);
 }

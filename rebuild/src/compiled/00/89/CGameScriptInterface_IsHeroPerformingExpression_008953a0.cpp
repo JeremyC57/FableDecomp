@@ -35,7 +35,7 @@ public:
 struct CDefString {                                 // a def name: its offset into the def string table
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }   // user copy ctor: returned through the hidden pointer
-    bool operator==(const CCharString& name) const; // 0x006AEB10 (a second copy at 0x004B7980)
+    bool operator==(const CCharString& expressionName) const; // 0x006AEB10 (a second copy at 0x004B7980)
 };
 struct CExpression_Retail {
     virtual void x000(); virtual void x001(); virtual void x002(); virtual void x003(); virtual void x004(); virtual void x005(); virtual void x006(); virtual void x007();
@@ -107,7 +107,7 @@ struct CThing_Retail {
     unsigned char         m_marryableToHero : 1;    //        bit 4
     unsigned char         m_1c9_5 : 3;
     CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)
-    CTCBase_Retail* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
+    CTCBase_Retail* AddTC(const CCharString& expressionName, long a, long b);   // 0x004C9D60
     void RemoveTC(long interfaceType);              // 0x004C9840 (the label "CBaseObject::OnPropertyChanged" is propagated)
     void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
     void SheatheAllWeapons();                       // 0x006647F0 (CThingCreatureBase)
@@ -145,17 +145,17 @@ struct CGameScriptInterface {
     void*                      DisplayEngine;       // +0x0c
     CDefinitionManager_Retail* DefinitionManager;   // +0x10
     CPlayerManager_Retail*     PlayerManager;       // +0x14
-    bool IsHeroPerformingExpression(const CCharString& name) const;
+    bool IsHeroPerformingExpression(const CCharString& expressionName) const;
 };
 
-bool CGameScriptInterface::IsHeroPerformingExpression(const CCharString& name) const
+bool CGameScriptInterface::IsHeroPerformingExpression(const CCharString& expressionName) const
 {
     CThing_Retail* hero = PlayerManager->GetPlayer()->GetHeroThing();
     if (hero && !hero->m_dead) {
         CTCHeroExpression_Retail* expression;
         if (hero->GetInterface(&expression, 0x8f)) {
             CExpression_Retail* current = expression->m_pCurrentExpression;
-            if (name.IsEmpty() || current->GetDefName() == name)
+            if (expressionName.IsEmpty() || current->GetDefName() == expressionName)
                 return true;
         }
     }

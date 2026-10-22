@@ -2,9 +2,9 @@
 #include <cstdio>
 struct CWorld { unsigned char _pad[0xe1]; unsigned char flagE1; };
 
-void __fastcall CGameScriptInterface_SetSummonerDeathExplosionAffectsHero(CGameScriptInterface* self, int /*edx*/, char v)
+void __fastcall CGameScriptInterface_SetSummonerDeathExplosionAffectsHero(CGameScriptInterface* self, int /*edx*/, char doesAffect)
 {
-    self->World->flagE1 = v;
+    self->World->flagE1 = doesAffect;
 }
 
 int main()

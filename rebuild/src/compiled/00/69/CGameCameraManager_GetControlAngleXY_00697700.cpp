@@ -1,4 +1,4 @@
-// ?GetControlAngleXY@CGameCameraManager@@UBEMXZ @ 0x00697700
+// CGameCameraManager::GetControlAngleXY @ 0x00697700
 // Retail: d9 81 b8 00 00 00 c3  =>  fld DWORD PTR [ecx+0xb8] ; ret
 //
 // Virtual const float accessor. Under VC7.1 (MSVC 2003) a this-only

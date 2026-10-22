@@ -1,4 +1,4 @@
-// ?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+// CDefClassBase::GetPSubDefInfoMap @ 0x0042DAA0
 // Retail 0x0042daa0 (3 bytes): 33 c0 c3  ->  xor eax,eax ; ret
 //
 // Virtual accessor CDefClassBase::GetPSubDefInfoMap() that returns a null map

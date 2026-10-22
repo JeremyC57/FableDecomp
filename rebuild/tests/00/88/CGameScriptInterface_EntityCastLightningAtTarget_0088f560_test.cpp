@@ -2,9 +2,9 @@
 
 struct CGameScriptInterface { void* vt; };
 
-void __fastcall CGameScriptInterface_EntityCastLightningAtTarget(CGameScriptInterface* self, int edx_ignored, int a, int b)
+void __fastcall CGameScriptInterface_EntityCastLightningAtTarget(CGameScriptInterface* self, int edx_ignored, int caster, int target)
 {
-    (void)self; (void)a; (void)b;
+    (void)self; (void)caster; (void)target;
 }
 
 int main()

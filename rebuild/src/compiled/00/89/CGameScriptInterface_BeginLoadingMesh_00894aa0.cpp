@@ -20,8 +20,8 @@ __forceinline void ReleaseDef(CDefPointeeNative* p){if(--p->References==0)(p->*r
 template<class T>struct CDefPointer {T* Object;CDefPointer():Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)++Object->References;}~CDefPointer(){if(Object)ReleaseDef(Object);}void Reset(T* p){if(Object!=p){if(Object){ReleaseDef(Object);Object=0;}Object=p;if(p)++p->References;}}};
 struct CDefinitionManagerMethods:CDefinitionManager {static CDefinitionManagerMethods& Get();CDefPointer<CDefPointeeNative> GetPDefByName(const CCharString&);bool GetObjectDef(const CCharString&,CDefPointer<CThingObjectDefNative>&);bool GetCreatureDef(const CCharString&,CDefPointer<CThingCreatureDefNative>&);};
 #pragma auto_inline(off)
-bool CDefinitionManagerMethods::GetObjectDef(const CCharString& name,CDefPointer<CThingObjectDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(name);if(p.Object){out.Reset(static_cast<CThingObjectDefNative*>(p.Object));return true;}return false;}
-bool CDefinitionManagerMethods::GetCreatureDef(const CCharString& name,CDefPointer<CThingCreatureDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(name);if(p.Object){out.Reset(static_cast<CThingCreatureDefNative*>(p.Object));return true;}return false;}
+bool CDefinitionManagerMethods::GetObjectDef(const CCharString& meshName,CDefPointer<CThingObjectDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(meshName);if(p.Object){out.Reset(static_cast<CThingObjectDefNative*>(p.Object));return true;}return false;}
+bool CDefinitionManagerMethods::GetCreatureDef(const CCharString& meshName,CDefPointer<CThingCreatureDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(meshName);if(p.Object){out.Reset(static_cast<CThingCreatureDefNative*>(p.Object));return true;}return false;}
 #pragma auto_inline(on)
 struct C3DMeshInfoMethods:C3DMeshInfo {bool IsLoaded()const;void BeginLoading(unsigned long,bool,bool);};
 struct CMeshDataBankMethods:CMeshDataBank {C3DMeshInfoMethods* GetMesh(unsigned long);};
@@ -29,11 +29,11 @@ struct CGameScriptInterfaceMethods:CGameScriptInterface {void BeginLoadingMesh(c
 FABLE_STATIC_ASSERT(sizeof(DefReleaseSlot)==4);
 FABLE_STATIC_ASSERT(offsetof(CThingObjectDefNative,Graphic)==0x70);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureDefNative,Graphic)==0x100);
-void CGameScriptInterfaceMethods::BeginLoadingMesh(const CCharString& name)const{
+void CGameScriptInterfaceMethods::BeginLoadingMesh(const CCharString& meshName)const{
  CDefPointer<CThingObjectDefNative> object;CDefPointer<CThingCreatureDefNative> creature;
  CEngineGraphic* graphic;
- if(CDefinitionManagerMethods::Get().GetObjectDef(name,object))graphic=&object.Object->Graphic;
- else if(CDefinitionManagerMethods::Get().GetCreatureDef(name,creature))graphic=&creature.Object->Graphic;
+ if(CDefinitionManagerMethods::Get().GetObjectDef(meshName,object))graphic=&object.Object->Graphic;
+ else if(CDefinitionManagerMethods::Get().GetCreatureDef(meshName,creature))graphic=&creature.Object->Graphic;
  else return;
  if(graphic&&(graphic->Type==4||graphic->Type==5)){
  CMeshDataBankMethods* bank=static_cast<CMeshDataBankMethods*>(World->PMainMeshBank_Data);

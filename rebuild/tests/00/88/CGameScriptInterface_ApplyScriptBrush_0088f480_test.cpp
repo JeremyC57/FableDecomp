@@ -50,7 +50,7 @@ struct CWorld { virtual CThingManager_Retail* GetThingManager() { std::strcat(g_
 static CWorld g_world;
 struct CDisplayEngine_Retail; struct CPlayerManager_Retail;
 struct CGameScriptInterface { virtual void v000() { } CWorld* World; long Component; CDisplayEngine_Retail* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
-    void ApplyScriptBrush(const CCharString& name) const {World->GetWorldMapForEdit()->ApplyScriptBrush(name, 1);}
+    void ApplyScriptBrush(const CCharString& brushName) const {World->GetWorldMapForEdit()->ApplyScriptBrush(brushName, 1);}
 };
 
 int main() {

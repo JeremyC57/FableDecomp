@@ -1,4 +1,4 @@
-// CGroundNavigatorExternalInterface_Methods::GetTerrainDesirabilityAt @ 0x004df3cb
+// CGroundNavigatorExternalInterface::GetTerrainDesirabilityAt @ 0x006CD9B0
 // Retail:
 //   fld dword ptr ds:[0x122ded8]   ; return global float
 //   ret 4                          ; __fastcall: this in ecx, one 4-byte stack arg

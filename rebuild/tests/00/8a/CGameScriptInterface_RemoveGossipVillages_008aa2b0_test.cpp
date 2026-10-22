@@ -17,9 +17,9 @@ struct GObj {
 // Placeholder object so the constant-address call is valid at runtime.
 static GObj real_obj;
 
-void __fastcall CGameScriptInterface_RemoveGossipVillages(void* self, Str param)
+void __fastcall CGameScriptInterface_RemoveGossipVillages(void* self, Str category)
 {
-    Str tmp(param);
+    Str tmp(category);
     real_obj.RemoveGV(&tmp);   // behavior mirror (constant-addr call in src version)
 }
 

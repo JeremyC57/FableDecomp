@@ -26,12 +26,12 @@ struct CWorld {
 static Thing g_theme;
 extern "C" Thing* __stdcall GetTheme(int name) { (void)name; return &g_theme; }
 
-void __fastcall CGameScriptInterface_TransitionToThemeExternals(CGameScriptInterface* self, int edx_unused, int name, int arg2)
+void __fastcall CGameScriptInterface_TransitionToThemeExternals(CGameScriptInterface* self, int edx_unused, int name, int duration)
 {
     Thing* t = GetTheme(name);
     int n = t->count();
     if (n > 0) {
-        self->World->PEnvironment->method(0, 1, n, arg2);
+        self->World->PEnvironment->method(0, 1, n, duration);
     }
 }
 

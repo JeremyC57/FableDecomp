@@ -25,7 +25,7 @@ public:
 class CScriptModuleGoToLookAt : public CScriptModuleBase {
 public:
     unsigned char _pad04[0x6c - 4];
-    CScriptModuleGoToLookAt(const C3DVector& pos, const CThing& target);   // 0x00852D10
+    CScriptModuleGoToLookAt(const C3DVector& camPos, const CThing& target);   // 0x00852D10
 };
 }
 template <class T> class CCountedPointer {
@@ -71,16 +71,16 @@ public:
 };
 class CGameScriptInterface {
 public:
-    virtual void CameraMoveToPosAndLookAtThing(const C3DVector& pos, const CScriptThing& thing, float time) const;
+    virtual void CameraMoveToPosAndLookAtThing(const C3DVector& camPos, const CScriptThing& targetThing, float time) const;
     CWorld* World;                                       // +0x04
 };
-void CGameScriptInterface::CameraMoveToPosAndLookAtThing(const C3DVector& pos, const CScriptThing& thing, float time) const
+void CGameScriptInterface::CameraMoveToPosAndLookAtThing(const C3DVector& camPos, const CScriptThing& targetThing, float time) const
 {
-    if (thing.IsValid() && (thing.GetThing()->ThingTypeFlags & 4))
+    if (targetThing.IsValid() && (targetThing.GetThing()->ThingTypeFlags & 4))
     {
-        CThing* t = thing.GetThing();
+        CThing* t = targetThing.GetThing();
         CGameCameraManager* manager;
         World->PCurrentGameCamera->GetCameraManager(&manager);
-        manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(pos, *t)));
+        manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(camPos, *t)));
     }
 }

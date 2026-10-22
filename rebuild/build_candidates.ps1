@@ -608,15 +608,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0042da70'
         Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_IsParentDefCDefClassBaseUBENXZ_0042da70.cpp'
-        TestSource = '00/42/CDefClassBase_IsParentDefCDefClassBaseUBENXZ_0042da70_test.cpp'
+        Source = '00/42/CDefClassBase_IsParentDef_0042da70.cpp'
+        TestSource = '00/42/CDefClassBase_IsParentDef_0042da70_test.cpp'
         PassPattern = 'CDEFCLASSBASE_0042da70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042daa0'
         Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_GetPSubDefInfoMapCDefClassBaseUAEPAV_0042daa0.cpp'
-        TestSource = '00/42/CDefClassBase_GetPSubDefInfoMapCDefClassBaseUAEPAV_0042daa0_test.cpp'
+        Source = '00/42/CDefClassBase_GetPSubDefInfoMap_0042daa0.cpp'
+        TestSource = '00/42/CDefClassBase_GetPSubDefInfoMap_0042daa0_test.cpp'
         PassPattern = 'CDEFCLASSBASE_0042daa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -629,15 +629,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00ba7fe0'
         Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/ba/CEngineInternalPrimitiveMeshBase_GetMorphInfoCEngineInternalPrimitive_00ba7fe0.cpp'
-        TestSource = '00/ba/CEngineInternalPrimitiveMeshBase_GetMorphInfoCEngineInternalPrimitive_00ba7fe0_test.cpp'
+        Source = '00/ba/CEngineInternalPrimitiveMeshBase_GetMorphInfo_00ba7fe0.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitiveMeshBase_GetMorphInfo_00ba7fe0_test.cpp'
         PassPattern = 'CENGINEINTERNALPRIMITIVEMESHBASE_00ba7fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00692460'
         Module = 'CCreatureActionBase'
-        Source = '00/69/CCreatureActionBase_GetAnimDelayTimeCCreatureActionBaseU_00692460.cpp'
-        TestSource = '00/69/CCreatureActionBase_GetAnimDelayTimeCCreatureActionBaseU_00692460_test.cpp'
+        Source = '00/69/CCreatureActionBase_GetAnimDelayTime_00692460.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetAnimDelayTime_00692460_test.cpp'
         PassPattern = 'CCREATUREACTIONBASE_00692460_TEST PASS'
     }
     [pscustomobject]@{
@@ -657,8 +657,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00697700'
         Module = 'CGameCameraManager'
-        Source = '00/69/CGameCameraManager_GetControlAngleXYCGameCameraManagerU_00697700.cpp'
-        TestSource = '00/69/CGameCameraManager_GetControlAngleXYCGameCameraManagerU_00697700_test.cpp'
+        Source = '00/69/CGameCameraManager_GetControlAngleXY_00697700.cpp'
+        TestSource = '00/69/CGameCameraManager_GetControlAngleXY_00697700_test.cpp'
         PassPattern = 'CGAMECAMERAMANAGER_00697700_TEST PASS'
     }
     [pscustomobject]@{
@@ -699,8 +699,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008cff10'
         Module = 'CGameScriptThing'
-        Source = '00/8c/CGameScriptThing_GetAngleXYCGameScriptThingUBEMXZ_008cff10.cpp'
-        TestSource = '00/8c/CGameScriptThing_GetAngleXYCGameScriptThingUBEMXZ_008cff10_test.cpp'
+        Source = '00/8c/CGameScriptThing_GetAngleXY_008cff10.cpp'
+        TestSource = '00/8c/CGameScriptThing_GetAngleXY_008cff10_test.cpp'
         PassPattern = 'CGAMESCRIPTTHING_008cff10_TEST PASS'
     }
     [pscustomobject]@{
@@ -720,15 +720,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b23360'
         Module = 'CIEngine'
-        Source = '00/b2/CIEngine_GetPrimitiveDrawDistanceFactorCIEngi_00b23360.cpp'
-        TestSource = '00/b2/CIEngine_GetPrimitiveDrawDistanceFactorCIEngi_00b23360_test.cpp'
+        Source = '00/b2/CIEngine_GetPrimitiveDrawDistanceFactor_00b23360.cpp'
+        TestSource = '00/b2/CIEngine_GetPrimitiveDrawDistanceFactor_00b23360_test.cpp'
         PassPattern = 'CIENGINE_00b23360_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b23470'
         Module = 'CIEngine'
-        Source = '00/b2/CIEngine_GetStaticMapUpdatePassCountCIEngineU_00b23470.cpp'
-        TestSource = '00/b2/CIEngine_GetStaticMapUpdatePassCountCIEngineU_00b23470_test.cpp'
+        Source = '00/b2/CIEngine_GetStaticMapUpdatePassCount_00b23470.cpp'
+        TestSource = '00/b2/CIEngine_GetStaticMapUpdatePassCount_00b23470_test.cpp'
         PassPattern = 'CIENGINE_00b23470_TEST PASS'
     }
     [pscustomobject]@{
@@ -755,85 +755,85 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b8fde0'
         Module = 'CEngineInternalPrimitiveBase'
-        Source = '00/b8/CEngineInternalPrimitiveBase_ClearAllChildPrimitivesCEngineIntern_00b8fde0.cpp'
-        TestSource = '00/b8/CEngineInternalPrimitiveBase_ClearAllChildPrimitivesCEngineIntern_00b8fde0_test.cpp'
+        Source = '00/b8/CEngineInternalPrimitiveBase_ClearAllChildPrimitives_00b8fde0.cpp'
+        TestSource = '00/b8/CEngineInternalPrimitiveBase_ClearAllChildPrimitives_00b8fde0_test.cpp'
         PassPattern = 'CEngineInternalPrimitiveBase_00b8fde0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b3aa80'
         Module = 'CEngineInternalPrimitiveBase'
-        Source = '00/b3/CEngineInternalPrimitiveBase_GetAsOcclusionPrimitiveCEngineIntern_00b3aa80.cpp'
-        TestSource = '00/b3/CEngineInternalPrimitiveBase_GetAsOcclusionPrimitiveCEngineIntern_00b3aa80_test.cpp'
+        Source = '00/b3/CEngineInternalPrimitiveBase_GetAsOcclusionPrimitive_00b3aa80.cpp'
+        TestSource = '00/b3/CEngineInternalPrimitiveBase_GetAsOcclusionPrimitive_00b3aa80_test.cpp'
         PassPattern = 'CEngineInternalPrimitiveBase_00b3aa80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006924d0'
         Module = 'CCreatureActionBase'
-        Source = '00/69/CCreatureActionBase_GetAnimExtraFlagsCCreatureActionBase_006924d0.cpp'
-        TestSource = '00/69/CCreatureActionBase_GetAnimExtraFlagsCCreatureActionBase_006924d0_test.cpp'
+        Source = '00/69/CCreatureActionBase_GetAnimExtraFlags_006924d0.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetAnimExtraFlags_006924d0_test.cpp'
         PassPattern = 'CCreatureActionBase_006924d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006924f0'
         Module = 'CCreatureActionBase'
-        Source = '00/69/CCreatureActionBase_IsStrikeEventActiveCCreatureActionBa_006924f0.cpp'
-        TestSource = '00/69/CCreatureActionBase_IsStrikeEventActiveCCreatureActionBa_006924f0_test.cpp'
+        Source = '00/69/CCreatureActionBase_IsStrikeEventActive_006924f0.cpp'
+        TestSource = '00/69/CCreatureActionBase_IsStrikeEventActive_006924f0_test.cpp'
         PassPattern = 'CCreatureActionBase_006924f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00692500'
         Module = 'CCreatureActionBase'
-        Source = '00/69/CCreatureActionBase_IsStrikeActionCCreatureActionBaseUBE_00692500.cpp'
-        TestSource = '00/69/CCreatureActionBase_IsStrikeActionCCreatureActionBaseUBE_00692500_test.cpp'
+        Source = '00/69/CCreatureActionBase_IsStrikeAction_00692500.cpp'
+        TestSource = '00/69/CCreatureActionBase_IsStrikeAction_00692500_test.cpp'
         PassPattern = 'CCreatureActionBase_00692500_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0062ea00'
         Module = 'CCombatActionBase'
-        Source = '00/62/CCombatActionBase_GetAnimDelayTimeCCombatActionBaseUBE_0062ea00.cpp'
-        TestSource = '00/62/CCombatActionBase_GetAnimDelayTimeCCombatActionBaseUBE_0062ea00_test.cpp'
+        Source = '00/62/CCombatActionBase_GetAnimDelayTime_0062ea00.cpp'
+        TestSource = '00/62/CCombatActionBase_GetAnimDelayTime_0062ea00_test.cpp'
         PassPattern = 'CCombatActionBase_0062ea00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b235d0'
         Module = 'CIEngine'
-        Source = '00/b2/CIEngine_IsPreloadedCIEngineUBENXZ_00b235d0.cpp'
-        TestSource = '00/b2/CIEngine_IsPreloadedCIEngineUBENXZ_00b235d0_test.cpp'
+        Source = '00/b2/CIEngine_IsPreloaded_00b235d0.cpp'
+        TestSource = '00/b2/CIEngine_IsPreloaded_00b235d0_test.cpp'
         PassPattern = 'CIEngine_00b235d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b23690'
         Module = 'CIEngine'
-        Source = '00/b2/CIEngine_GetLoadingMemoryPoolCIEngineUAEPAVCM_00b23690.cpp'
-        TestSource = '00/b2/CIEngine_GetLoadingMemoryPoolCIEngineUAEPAVCM_00b23690_test.cpp'
+        Source = '00/b2/CIEngine_GetLoadingMemoryPool_00b23690.cpp'
+        TestSource = '00/b2/CIEngine_GetLoadingMemoryPool_00b23690_test.cpp'
         PassPattern = 'CIEngine_00b23690_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b236a0'
         Module = 'CIEngine'
-        Source = '00/b2/CIEngine_GetAnimationMemoryPoolCIEngineUAEPAV_00b236a0.cpp'
-        TestSource = '00/b2/CIEngine_GetAnimationMemoryPoolCIEngineUAEPAV_00b236a0_test.cpp'
+        Source = '00/b2/CIEngine_GetAnimationMemoryPool_00b236a0.cpp'
+        TestSource = '00/b2/CIEngine_GetAnimationMemoryPool_00b236a0_test.cpp'
         PassPattern = 'CIEngine_00b236a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00be8dc0'
         Module = 'CLandscapeBackgroundPatch'
-        Source = '00/be/CLandscapeBackgroundPatch_IsPatchCLandscapeBackgroundPatchEAEN_00be8dc0.cpp'
-        TestSource = '00/be/CLandscapeBackgroundPatch_IsPatchCLandscapeBackgroundPatchEAEN_00be8dc0_test.cpp'
+        Source = '00/be/CLandscapeBackgroundPatch_IsPatch_00be8dc0.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_IsPatch_00be8dc0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00be8dc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008cff30'
         Module = 'CGameScriptThing'
-        Source = '00/8c/CGameScriptThing_IsUnconsciousCGameScriptThingUBENXZ_008cff30.cpp'
-        TestSource = '00/8c/CGameScriptThing_IsUnconsciousCGameScriptThingUBENXZ_008cff30_test.cpp'
+        Source = '00/8c/CGameScriptThing_IsUnconscious_008cff30.cpp'
+        TestSource = '00/8c/CGameScriptThing_IsUnconscious_008cff30_test.cpp'
         PassPattern = 'CGameScriptThing_008cff30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fcfe0'
         Module = 'CAIStateGroupBase'
-        Source = '00/8f/CAIStateGroupBase_GetDebugTextCAIStateGroupBaseUBEPBVC_008fcfe0.cpp'
-        TestSource = '00/8f/CAIStateGroupBase_GetDebugTextCAIStateGroupBaseUBEPBVC_008fcfe0_test.cpp'
+        Source = '00/8f/CAIStateGroupBase_GetDebugText_008fcfe0.cpp'
+        TestSource = '00/8f/CAIStateGroupBase_GetDebugText_008fcfe0_test.cpp'
         PassPattern = 'CAIStateGroupBase_008fcfe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -853,29 +853,29 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b23550'
         Module = 'CIEngine'
-        Source = '00/b2/CIEngine_IsActiveCIEngineUBENXZ_00b23550.cpp'
-        TestSource = '00/b2/CIEngine_IsActiveCIEngineUBENXZ_00b23550_test.cpp'
+        Source = '00/b2/CIEngine_IsActive_00b23550.cpp'
+        TestSource = '00/b2/CIEngine_IsActive_00b23550_test.cpp'
         PassPattern = 'CIEngine_00b23550_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b3a980'
         Module = 'CEngineInternalPrimitiveBase'
-        Source = '00/b3/CEngineInternalPrimitiveBase_GetChildPrimitiveCEngineInternalPrim_00b3a980.cpp'
-        TestSource = '00/b3/CEngineInternalPrimitiveBase_GetChildPrimitiveCEngineInternalPrim_00b3a980_test.cpp'
+        Source = '00/b3/CEngineInternalPrimitiveBase_GetChildPrimitive_00b3a980.cpp'
+        TestSource = '00/b3/CEngineInternalPrimitiveBase_GetChildPrimitive_00b3a980_test.cpp'
         PassPattern = 'CEngineInternalPrimitiveBase_00b3a980_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b3a9c0'
         Module = 'CEngineInternalPrimitiveBase'
-        Source = '00/b3/CEngineInternalPrimitiveBase_GetWorldPositionCEngineInternalPrimi_00b3a9c0.cpp'
-        TestSource = '00/b3/CEngineInternalPrimitiveBase_GetWorldPositionCEngineInternalPrimi_00b3a9c0_test.cpp'
+        Source = '00/b3/CEngineInternalPrimitiveBase_GetWorldPosition_00b3a9c0.cpp'
+        TestSource = '00/b3/CEngineInternalPrimitiveBase_GetWorldPosition_00b3a9c0_test.cpp'
         PassPattern = 'CEngineInternalPrimitiveBase_00b3a9c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0062ea20'
         Module = 'CCombatActionBase'
-        Source = '00/62/CCombatActionBase_GetAnimExtraFlagsCCombatActionBaseUB_0062ea20.cpp'
-        TestSource = '00/62/CCombatActionBase_GetAnimExtraFlagsCCombatActionBaseUB_0062ea20_test.cpp'
+        Source = '00/62/CCombatActionBase_GetAnimExtraFlags_0062ea20.cpp'
+        TestSource = '00/62/CCombatActionBase_GetAnimExtraFlags_0062ea20_test.cpp'
         PassPattern = 'CCombatActionBase_0062ea20_TEST PASS'
     }
     [pscustomobject]@{
@@ -895,8 +895,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00697750'
         Module = 'CGameCameraManager'
-        Source = '00/69/CGameCameraManager_SetChangeInControlDirectionCGameCame_00697750.cpp'
-        TestSource = '00/69/CGameCameraManager_SetChangeInControlDirectionCGameCame_00697750_test.cpp'
+        Source = '00/69/CGameCameraManager_SetChangeInControlDirection_00697750.cpp'
+        TestSource = '00/69/CGameCameraManager_SetChangeInControlDirection_00697750_test.cpp'
         PassPattern = 'CGameCameraManager_00697750_TEST PASS'
     }
     [pscustomobject]@{
@@ -972,8 +972,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b23f60'
         Module = 'CEngine'
-        Source = '00/b2/CEngine_GetScratchBufferTextureManagerCEngin_00b23f60.cpp'
-        TestSource = '00/b2/CEngine_GetScratchBufferTextureManagerCEngin_00b23f60_test.cpp'
+        Source = '00/b2/CEngine_GetScratchBufferTextureManager_00b23f60.cpp'
+        TestSource = '00/b2/CEngine_GetScratchBufferTextureManager_00b23f60_test.cpp'
         PassPattern = 'CEngine_00b23f60_TEST PASS'
     }
     [pscustomobject]@{
@@ -1084,8 +1084,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0062ea30'
         Module = 'CCombatActionBase'
-        Source = '00/62/CCombatActionBase_IsStrikeActionCCombatActionBaseUBENX_0062ea30.cpp'
-        TestSource = '00/62/CCombatActionBase_IsStrikeActionCCombatActionBaseUBENX_0062ea30_test.cpp'
+        Source = '00/62/CCombatActionBase_IsStrikeAction_0062ea30.cpp'
+        TestSource = '00/62/CCombatActionBase_IsStrikeAction_0062ea30_test.cpp'
         PassPattern = 'CCombatActionBase_0062ea30_TEST PASS'
     }
     [pscustomobject]@{
@@ -1420,8 +1420,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008d0440'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_GetPThingCGameScriptThingUBEPAVCThin_008d0440.cpp'
-        TestSource = '00/8d/CGameScriptThing_GetPThingCGameScriptThingUBEPAVCThin_008d0440_test.cpp'
+        Source = '00/8d/CGameScriptThing_GetPThing_008d0440.cpp'
+        TestSource = '00/8d/CGameScriptThing_GetPThing_008d0440_test.cpp'
         PassPattern = 'CGameScriptThing_008d0440_TEST PASS'
     }
     [pscustomobject]@{
@@ -1533,8 +1533,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008d0110'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_IsNullCGameScriptThingUBENXZ_008d0110.cpp'
-        TestSource = '00/8d/CGameScriptThing_IsNullCGameScriptThingUBENXZ_008d0110_test.cpp'
+        Source = '00/8d/CGameScriptThing_IsNull_008d0110.cpp'
+        TestSource = '00/8d/CGameScriptThing_IsNull_008d0110_test.cpp'
         PassPattern = 'CGameScriptThing_008d0110_TEST PASS'
     }
     [pscustomobject]@{
@@ -1912,8 +1912,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00891510'
         Module = 'CGameScriptInterface'
-        Source = '00/89/CGameScriptInterface_RemoveAllAvailableQuestCardsFromGuil_00891510.cpp'
-        TestSource = '00/89/CGameScriptInterface_RemoveAllAvailableQuestCardsFromGuil_00891510_test.cpp'
+        Source = '00/89/CGameScriptInterface_RemoveAllAvailableQuestCardsFromGuild_00891510.cpp'
+        TestSource = '00/89/CGameScriptInterface_RemoveAllAvailableQuestCardsFromGuild_00891510_test.cpp'
         PassPattern = 'CGameScriptInterface_00891510_TEST PASS'
     }
     [pscustomobject]@{
@@ -1982,8 +1982,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008901e0'
         Module = 'CGameScriptInterface'
-        Source = '00/89/CGameScriptInterface_DisplacementMonochromeEffectColourFa_008901e0.cpp'
-        TestSource = '00/89/CGameScriptInterface_DisplacementMonochromeEffectColourFa_008901e0_test.cpp'
+        Source = '00/89/CGameScriptInterface_DisplacementMonochromeEffectColourFadeOut_008901e0.cpp'
+        TestSource = '00/89/CGameScriptInterface_DisplacementMonochromeEffectColourFadeOut_008901e0_test.cpp'
         PassPattern = 'CGameScriptInterface_008901e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -2003,15 +2003,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004aace0'
         Module = 'CScriptThing'
-        Source = '00/4a/CScriptThing_MsgPerformedAnyAggressiveSpecialAbil_004aace0.cpp'
-        TestSource = '00/4a/CScriptThing_MsgPerformedAnyAggressiveSpecialAbil_004aace0_test.cpp'
+        Source = '00/4a/CScriptThing_MsgPerformedAnyAggressiveSpecialAbility_004aace0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgPerformedAnyAggressiveSpecialAbility_004aace0_test.cpp'
         PassPattern = 'CScriptThing_004aace0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004aad00'
         Module = 'CScriptThing'
-        Source = '00/4a/CScriptThing_MsgPerformedAnyNonAggressiveSpecialA_004aad00.cpp'
-        TestSource = '00/4a/CScriptThing_MsgPerformedAnyNonAggressiveSpecialA_004aad00_test.cpp'
+        Source = '00/4a/CScriptThing_MsgPerformedAnyNonAggressiveSpecialAbility_004aad00.cpp'
+        TestSource = '00/4a/CScriptThing_MsgPerformedAnyNonAggressiveSpecialAbility_004aad00_test.cpp'
         PassPattern = 'CScriptThing_004aad00_TEST PASS'
     }
     [pscustomobject]@{
@@ -2227,15 +2227,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00896fd0'
         Module = 'CGameScriptInterface'
-        Source = '00/89/CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefaul_00896fd0.cpp'
-        TestSource = '00/89/CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefaul_00896fd0_test.cpp'
+        Source = '00/89/CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault_00896fd0.cpp'
+        TestSource = '00/89/CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault_00896fd0_test.cpp'
         PassPattern = 'CGameScriptInterface_00896fd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008970f0'
         Module = 'CGameScriptInterface'
-        Source = '00/89/CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefa_008970f0.cpp'
-        TestSource = '00/89/CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefa_008970f0_test.cpp'
+        Source = '00/89/CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault_008970f0.cpp'
+        TestSource = '00/89/CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault_008970f0_test.cpp'
         PassPattern = 'CGameScriptInterface_008970f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -6793,8 +6793,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0089cd50'
         Module = 'CGameScriptInterface'
-        Source = '00/89/CGameScriptInterface_CanThingBe_Smelled_ByOtherThing_0089cd50.cpp'
-        TestSource = '00/89/CGameScriptInterface_CanThingBe_Smelled_ByOtherThing_0089cd50_test.cpp'
+        Source = '00/89/CGameScriptInterface_CanThingBeSmelledByOtherThing_0089cd50.cpp'
+        TestSource = '00/89/CGameScriptInterface_CanThingBeSmelledByOtherThing_0089cd50_test.cpp'
         PassPattern = 'FSE2_0089cd50_TEST PASS'
     }
     [pscustomobject]@{
@@ -7080,9 +7080,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0046ce28'
-        Module = ''
-        Source = '00/46/global_Copy_0046ce28.cpp'
-        TestSource = '00/46/global_Copy_0046ce28_test.cpp'
+        Module = 'CPlayerGuiDef'
+        Source = '00/46/CPlayerGuiDef_Copy_0046ce28.cpp'
+        TestSource = '00/46/CPlayerGuiDef_Copy_0046ce28_test.cpp'
         PassPattern = 'OK_0046ce28'
     }
     [pscustomobject]@{
@@ -7094,9 +7094,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0046f4eb'
-        Module = ''
-        Source = '00/46/global_Copy_0046f4eb.cpp'
-        TestSource = '00/46/global_Copy_0046f4eb_test.cpp'
+        Module = 'CSkyDef'
+        Source = '00/46/CSkyDef_Copy_0046f4eb.cpp'
+        TestSource = '00/46/CSkyDef_Copy_0046f4eb_test.cpp'
         PassPattern = 'PASS_0046f4eb'
     }
     [pscustomobject]@{
@@ -7108,16 +7108,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004717c2'
-        Module = ''
-        Source = '00/47/global_Copy_004717c2.cpp'
-        TestSource = '00/47/global_Copy_004717c2_test.cpp'
+        Module = 'CAppearanceDef'
+        Source = '00/47/CAppearanceDef_Copy_004717c2.cpp'
+        TestSource = '00/47/CAppearanceDef_Copy_004717c2_test.cpp'
         PassPattern = 'OK_004717c2'
     }
     [pscustomobject]@{
         Address = '00471a72'
-        Module = ''
-        Source = '00/47/global_Copy_00471a72.cpp'
-        TestSource = '00/47/global_Copy_00471a72_test.cpp'
+        Module = 'COpinionDeedEffectsDef'
+        Source = '00/47/COpinionDeedEffectsDef_Copy_00471a72.cpp'
+        TestSource = '00/47/COpinionDeedEffectsDef_Copy_00471a72_test.cpp'
         PassPattern = 'OK_471a72'
     }
     [pscustomobject]@{
@@ -7199,9 +7199,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045f84f'
-        Module = ''
-        Source = '00/45/global_Copy_0045f84f.cpp'
-        TestSource = '00/45/global_Copy_0045f84f_test.cpp'
+        Module = 'CSpecialAbilitiesBerserkDef'
+        Source = '00/45/CSpecialAbilitiesBerserkDef_Copy_0045f84f.cpp'
+        TestSource = '00/45/CSpecialAbilitiesBerserkDef_Copy_0045f84f_test.cpp'
         PassPattern = 'OK_0045f84f'
     }
     [pscustomobject]@{
@@ -7213,16 +7213,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045fd4e'
-        Module = ''
-        Source = '00/45/global_Copy_0045fd4e.cpp'
-        TestSource = '00/45/global_Copy_0045fd4e_test.cpp'
+        Module = 'CSpecialAbilitiesForcePushDef'
+        Source = '00/45/CSpecialAbilitiesForcePushDef_Copy_0045fd4e.cpp'
+        TestSource = '00/45/CSpecialAbilitiesForcePushDef_Copy_0045fd4e_test.cpp'
         PassPattern = 'OK_45FD4E'
     }
     [pscustomobject]@{
         Address = '0045fe26'
-        Module = ''
-        Source = '00/45/global_Copy_0045fe26.cpp'
-        TestSource = '00/45/global_Copy_0045fe26_test.cpp'
+        Module = 'CSpecialAbilitiesEnflameDef'
+        Source = '00/45/CSpecialAbilitiesEnflameDef_Copy_0045fe26.cpp'
+        TestSource = '00/45/CSpecialAbilitiesEnflameDef_Copy_0045fe26_test.cpp'
         PassPattern = 'OK_45FE26'
     }
     [pscustomobject]@{
@@ -7234,191 +7234,191 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004600c6'
-        Module = ''
-        Source = '00/46/global_Copy_004600c6.cpp'
-        TestSource = '00/46/global_Copy_004600c6_test.cpp'
+        Module = 'CSpecialAbilitiesDrainLifeDef'
+        Source = '00/46/CSpecialAbilitiesDrainLifeDef_Copy_004600c6.cpp'
+        TestSource = '00/46/CSpecialAbilitiesDrainLifeDef_Copy_004600c6_test.cpp'
         PassPattern = 'PASS_004600c6'
     }
     [pscustomobject]@{
         Address = '0046012c'
-        Module = ''
-        Source = '00/46/global_Copy_0046012c.cpp'
-        TestSource = '00/46/global_Copy_0046012c_test.cpp'
+        Module = 'CSpecialAbilitiesHealLifeDef'
+        Source = '00/46/CSpecialAbilitiesHealLifeDef_Copy_0046012c.cpp'
+        TestSource = '00/46/CSpecialAbilitiesHealLifeDef_Copy_0046012c_test.cpp'
         PassPattern = 'OK_THUNK_0046012c'
     }
     [pscustomobject]@{
         Address = '00460180'
-        Module = ''
-        Source = '00/46/global_Copy_00460180.cpp'
-        TestSource = '00/46/global_Copy_00460180_test.cpp'
+        Module = 'CSpecialAbilitiesGhostSwordDef'
+        Source = '00/46/CSpecialAbilitiesGhostSwordDef_Copy_00460180.cpp'
+        TestSource = '00/46/CSpecialAbilitiesGhostSwordDef_Copy_00460180_test.cpp'
         PassPattern = 'OK_460180'
     }
     [pscustomobject]@{
         Address = '004601e5'
-        Module = ''
-        Source = '00/46/global_Copy_004601e5.cpp'
-        TestSource = '00/46/global_Copy_004601e5_test.cpp'
+        Module = 'CSpecialAbilitiesTurncoatSpellDef'
+        Source = '00/46/CSpecialAbilitiesTurncoatSpellDef_Copy_004601e5.cpp'
+        TestSource = '00/46/CSpecialAbilitiesTurncoatSpellDef_Copy_004601e5_test.cpp'
         PassPattern = 'OK_004601e5'
     }
     [pscustomobject]@{
         Address = '00460251'
-        Module = ''
-        Source = '00/46/global_Copy_00460251.cpp'
-        TestSource = '00/46/global_Copy_00460251_test.cpp'
+        Module = 'CSpecialAbilitiesFireballSpellDef'
+        Source = '00/46/CSpecialAbilitiesFireballSpellDef_Copy_00460251.cpp'
+        TestSource = '00/46/CSpecialAbilitiesFireballSpellDef_Copy_00460251_test.cpp'
         PassPattern = 'OK_460251_THUNK'
     }
     [pscustomobject]@{
         Address = '00460452'
-        Module = ''
-        Source = '00/46/global_Copy_00460452.cpp'
-        TestSource = '00/46/global_Copy_00460452_test.cpp'
+        Module = 'CSpecialAbilitiesSummonSpellDef'
+        Source = '00/46/CSpecialAbilitiesSummonSpellDef_Copy_00460452.cpp'
+        TestSource = '00/46/CSpecialAbilitiesSummonSpellDef_Copy_00460452_test.cpp'
         PassPattern = 'PASS_460452_OK'
     }
     [pscustomobject]@{
         Address = '004604ca'
-        Module = ''
-        Source = '00/46/global_Copy_004604ca.cpp'
-        TestSource = '00/46/global_Copy_004604ca_test.cpp'
+        Module = 'CSpecialAbilitiesBurntEffectDef'
+        Source = '00/46/CSpecialAbilitiesBurntEffectDef_Copy_004604ca.cpp'
+        TestSource = '00/46/CSpecialAbilitiesBurntEffectDef_Copy_004604ca_test.cpp'
         PassPattern = 'OK_004604ca'
     }
     [pscustomobject]@{
         Address = '00460518'
-        Module = ''
-        Source = '00/46/global_Copy_00460518.cpp'
-        TestSource = '00/46/global_Copy_00460518_test.cpp'
+        Module = 'CSpecialAbilitiesElectrocutedEffectDef'
+        Source = '00/46/CSpecialAbilitiesElectrocutedEffectDef_Copy_00460518.cpp'
+        TestSource = '00/46/CSpecialAbilitiesElectrocutedEffectDef_Copy_00460518_test.cpp'
         PassPattern = 'PASS_460518'
     }
     [pscustomobject]@{
         Address = '00460584'
-        Module = ''
-        Source = '00/46/global_Copy_00460584.cpp'
-        TestSource = '00/46/global_Copy_00460584_test.cpp'
+        Module = 'CSpecialAbilitiesDrunkennessDef'
+        Source = '00/46/CSpecialAbilitiesDrunkennessDef_Copy_00460584.cpp'
+        TestSource = '00/46/CSpecialAbilitiesDrunkennessDef_Copy_00460584_test.cpp'
         PassPattern = 'OK_460584'
     }
     [pscustomobject]@{
         Address = '004605e0'
-        Module = ''
-        Source = '00/46/global_Copy_004605e0.cpp'
-        TestSource = '00/46/global_Copy_004605e0_test.cpp'
+        Module = 'CSpecialAbilitiesThunderLightningStormDef'
+        Source = '00/46/CSpecialAbilitiesThunderLightningStormDef_Copy_004605e0.cpp'
+        TestSource = '00/46/CSpecialAbilitiesThunderLightningStormDef_Copy_004605e0_test.cpp'
         PassPattern = 'OK_THUNK_004605e0'
     }
     [pscustomobject]@{
         Address = '004608c1'
-        Module = ''
-        Source = '00/46/global_Copy_004608c1.cpp'
-        TestSource = '00/46/global_Copy_004608c1_test.cpp'
+        Module = 'CSpecialAbilitiesUnholyPowerDef'
+        Source = '00/46/CSpecialAbilitiesUnholyPowerDef_Copy_004608c1.cpp'
+        TestSource = '00/46/CSpecialAbilitiesUnholyPowerDef_Copy_004608c1_test.cpp'
         PassPattern = 'OK_004608c1'
     }
     [pscustomobject]@{
         Address = '00460a14'
-        Module = ''
-        Source = '00/46/global_Copy_00460a14.cpp'
-        TestSource = '00/46/global_Copy_00460a14_test.cpp'
+        Module = 'CSpecialAbilitiesCreatureTintDef'
+        Source = '00/46/CSpecialAbilitiesCreatureTintDef_Copy_00460a14.cpp'
+        TestSource = '00/46/CSpecialAbilitiesCreatureTintDef_Copy_00460a14_test.cpp'
         PassPattern = 'PASS_460a14_OK'
     }
     [pscustomobject]@{
         Address = '00460a5c'
-        Module = ''
-        Source = '00/46/global_Copy_00460a5c.cpp'
-        TestSource = '00/46/global_Copy_00460a5c_test.cpp'
+        Module = 'CSoundDef'
+        Source = '00/46/CSoundDef_Copy_00460a5c.cpp'
+        TestSource = '00/46/CSoundDef_Copy_00460a5c_test.cpp'
         PassPattern = 'OK_460a5c'
     }
     [pscustomobject]@{
         Address = '0046133f'
-        Module = ''
-        Source = '00/46/global_Copy_0046133f.cpp'
-        TestSource = '00/46/global_Copy_0046133f_test.cpp'
+        Module = 'CArmourDef'
+        Source = '00/46/CArmourDef_Copy_0046133f.cpp'
+        TestSource = '00/46/CArmourDef_Copy_0046133f_test.cpp'
         PassPattern = 'PASS_0046133f_OK'
     }
     [pscustomobject]@{
         Address = '00461d4b'
-        Module = ''
-        Source = '00/46/global_Copy_00461d4b.cpp'
-        TestSource = '00/46/global_Copy_00461d4b_test.cpp'
+        Module = 'CCombatSequenceDef'
+        Source = '00/46/CCombatSequenceDef_Copy_00461d4b.cpp'
+        TestSource = '00/46/CCombatSequenceDef_Copy_00461d4b_test.cpp'
         PassPattern = 'OK_461d4b'
     }
     [pscustomobject]@{
         Address = '00461ed3'
-        Module = ''
-        Source = '00/46/global_Copy_00461ed3.cpp'
-        TestSource = '00/46/global_Copy_00461ed3_test.cpp'
+        Module = 'CLightningDef'
+        Source = '00/46/CLightningDef_Copy_00461ed3.cpp'
+        TestSource = '00/46/CLightningDef_Copy_00461ed3_test.cpp'
         PassPattern = 'PASS_00461ed3'
     }
     [pscustomobject]@{
         Address = '00461f77'
-        Module = ''
-        Source = '00/46/global_Copy_00461f77.cpp'
-        TestSource = '00/46/global_Copy_00461f77_test.cpp'
+        Module = 'CHeroCombatDef'
+        Source = '00/46/CHeroCombatDef_Copy_00461f77.cpp'
+        TestSource = '00/46/CHeroCombatDef_Copy_00461f77_test.cpp'
         PassPattern = 'OK_461f77'
     }
     [pscustomobject]@{
         Address = '0046244c'
-        Module = ''
-        Source = '00/46/global_Copy_0046244c.cpp'
-        TestSource = '00/46/global_Copy_0046244c_test.cpp'
+        Module = 'CMeleeCombatAbilityDef'
+        Source = '00/46/CMeleeCombatAbilityDef_Copy_0046244c.cpp'
+        TestSource = '00/46/CMeleeCombatAbilityDef_Copy_0046244c_test.cpp'
         PassPattern = 'PASS_0046244c'
     }
     [pscustomobject]@{
         Address = '004625f8'
-        Module = ''
-        Source = '00/46/global_Copy_004625f8.cpp'
-        TestSource = '00/46/global_Copy_004625f8_test.cpp'
+        Module = 'CMeleeCombatKnockdownEffects'
+        Source = '00/46/CMeleeCombatKnockdownEffects_Copy_004625f8.cpp'
+        TestSource = '00/46/CMeleeCombatKnockdownEffects_Copy_004625f8_test.cpp'
         PassPattern = 'PASS_004625f8'
     }
     [pscustomobject]@{
         Address = '004628cb'
-        Module = ''
-        Source = '00/46/global_Copy_004628cb.cpp'
-        TestSource = '00/46/global_Copy_004628cb_test.cpp'
+        Module = 'CPlayerMovementDef'
+        Source = '00/46/CPlayerMovementDef_Copy_004628cb.cpp'
+        TestSource = '00/46/CPlayerMovementDef_Copy_004628cb_test.cpp'
         PassPattern = 'OK_THUNK_004628cb'
     }
     [pscustomobject]@{
         Address = '004629f6'
-        Module = ''
-        Source = '00/46/global_Copy_004629f6.cpp'
-        TestSource = '00/46/global_Copy_004629f6_test.cpp'
+        Module = 'CEngineThemeDef'
+        Source = '00/46/CEngineThemeDef_Copy_004629f6.cpp'
+        TestSource = '00/46/CEngineThemeDef_Copy_004629f6_test.cpp'
         PassPattern = 'OK_004629f6'
     }
     [pscustomobject]@{
         Address = '00462b10'
-        Module = ''
-        Source = '00/46/global_Copy_00462b10.cpp'
-        TestSource = '00/46/global_Copy_00462b10_test.cpp'
+        Module = 'CBrainDef'
+        Source = '00/46/CBrainDef_Copy_00462b10.cpp'
+        TestSource = '00/46/CBrainDef_Copy_00462b10_test.cpp'
         PassPattern = 'OK_462b10_THUNK'
     }
     [pscustomobject]@{
         Address = '00462e28'
-        Module = ''
-        Source = '00/46/global_Copy_00462e28.cpp'
-        TestSource = '00/46/global_Copy_00462e28_test.cpp'
+        Module = 'CPlayerInventoryDef'
+        Source = '00/46/CPlayerInventoryDef_Copy_00462e28.cpp'
+        TestSource = '00/46/CPlayerInventoryDef_Copy_00462e28_test.cpp'
         PassPattern = 'OK_462e28'
     }
     [pscustomobject]@{
         Address = '00463b9d'
-        Module = ''
-        Source = '00/46/global_Copy_00463b9d.cpp'
-        TestSource = '00/46/global_Copy_00463b9d_test.cpp'
+        Module = 'CEntitySoundDef'
+        Source = '00/46/CEntitySoundDef_Copy_00463b9d.cpp'
+        TestSource = '00/46/CEntitySoundDef_Copy_00463b9d_test.cpp'
         PassPattern = 'OK_463b9d'
     }
     [pscustomobject]@{
         Address = '004642f5'
-        Module = ''
-        Source = '00/46/global_Copy_004642f5.cpp'
-        TestSource = '00/46/global_Copy_004642f5_test.cpp'
+        Module = 'CThingObjectDef'
+        Source = '00/46/CThingObjectDef_Copy_004642f5.cpp'
+        TestSource = '00/46/CThingObjectDef_Copy_004642f5_test.cpp'
         PassPattern = 'OK_004642f5_THUNK'
     }
     [pscustomobject]@{
         Address = '00464531'
-        Module = ''
-        Source = '00/46/global_Copy_00464531.cpp'
-        TestSource = '00/46/global_Copy_00464531_test.cpp'
+        Module = 'CThingPhysicalSwitchDef'
+        Source = '00/46/CThingPhysicalSwitchDef_Copy_00464531.cpp'
+        TestSource = '00/46/CThingPhysicalSwitchDef_Copy_00464531_test.cpp'
         PassPattern = 'OK_464531'
     }
     [pscustomobject]@{
         Address = '00465eae'
-        Module = ''
-        Source = '00/46/global_Copy_00465eae.cpp'
-        TestSource = '00/46/global_Copy_00465eae_test.cpp'
+        Module = 'CGlobalDef'
+        Source = '00/46/CGlobalDef_Copy_00465eae.cpp'
+        TestSource = '00/46/CGlobalDef_Copy_00465eae_test.cpp'
         PassPattern = 'OK_465eae'
     }
     [pscustomobject]@{
@@ -7542,16 +7542,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045f630'
-        Module = ''
-        Source = '00/45/global_Copy_0045f630.cpp'
-        TestSource = '00/45/global_Copy_0045f630_test.cpp'
+        Module = 'CSpecialAbilitiesBattleChargeDef'
+        Source = '00/45/CSpecialAbilitiesBattleChargeDef_Copy_0045f630.cpp'
+        TestSource = '00/45/CSpecialAbilitiesBattleChargeDef_Copy_0045f630_test.cpp'
         PassPattern = 'OK_045f630'
     }
     [pscustomobject]@{
         Address = '0045e65b'
-        Module = ''
-        Source = '00/45/global_Copy_0045e65b.cpp'
-        TestSource = '00/45/global_Copy_0045e65b_test.cpp'
+        Module = 'COpinionPersonalityDef'
+        Source = '00/45/COpinionPersonalityDef_Copy_0045e65b.cpp'
+        TestSource = '00/45/COpinionPersonalityDef_Copy_0045e65b_test.cpp'
         PassPattern = 'OK_045e65b'
     }
     [pscustomobject]@{
@@ -7577,9 +7577,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045dd00'
-        Module = ''
-        Source = '00/45/global_Copy_0045dd00.cpp'
-        TestSource = '00/45/global_Copy_0045dd00_test.cpp'
+        Module = 'COpinionReactionMaskDef'
+        Source = '00/45/COpinionReactionMaskDef_Copy_0045dd00.cpp'
+        TestSource = '00/45/COpinionReactionMaskDef_Copy_0045dd00_test.cpp'
         PassPattern = 'PASS_0045dd00'
     }
     [pscustomobject]@{
@@ -7661,9 +7661,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045c549'
-        Module = ''
-        Source = '00/45/global_Copy_0045c549.cpp'
-        TestSource = '00/45/global_Copy_0045c549_test.cpp'
+        Module = 'CSoundThemeDef'
+        Source = '00/45/CSoundThemeDef_Copy_0045c549.cpp'
+        TestSource = '00/45/CSoundThemeDef_Copy_0045c549_test.cpp'
         PassPattern = 'OK_0045c549_THUNK'
     }
     [pscustomobject]@{
@@ -7675,9 +7675,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045d2f7'
-        Module = ''
-        Source = '00/45/global_Copy_0045d2f7.cpp'
-        TestSource = '00/45/global_Copy_0045d2f7_test.cpp'
+        Module = 'CFactionDef'
+        Source = '00/45/CFactionDef_Copy_0045d2f7.cpp'
+        TestSource = '00/45/CFactionDef_Copy_0045d2f7_test.cpp'
         PassPattern = 'OK_0045d2f7'
     }
     [pscustomobject]@{
@@ -7703,9 +7703,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045e555'
-        Module = ''
-        Source = '00/45/global_Copy_0045e555.cpp'
-        TestSource = '00/45/global_Copy_0045e555_test.cpp'
+        Module = 'CCombatDialogueDef'
+        Source = '00/45/CCombatDialogueDef_Copy_0045e555.cpp'
+        TestSource = '00/45/CCombatDialogueDef_Copy_0045e555_test.cpp'
         PassPattern = 'PASS_0045e555_THUNK'
     }
     [pscustomobject]@{
@@ -7724,16 +7724,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045d500'
-        Module = ''
-        Source = '00/45/global_Copy_0045d500.cpp'
-        TestSource = '00/45/global_Copy_0045d500_test.cpp'
+        Module = 'CCameraManagerDef'
+        Source = '00/45/CCameraManagerDef_Copy_0045d500.cpp'
+        TestSource = '00/45/CCameraManagerDef_Copy_0045d500_test.cpp'
         PassPattern = 'OK_0045d500'
     }
     [pscustomobject]@{
         Address = '0045e182'
-        Module = ''
-        Source = '00/45/global_Copy_0045e182.cpp'
-        TestSource = '00/45/global_Copy_0045e182_test.cpp'
+        Module = 'COpinionDeedMaskDef'
+        Source = '00/45/COpinionDeedMaskDef_Copy_0045e182.cpp'
+        TestSource = '00/45/COpinionDeedMaskDef_Copy_0045e182_test.cpp'
         PassPattern = 'OK_45e182_THUNK'
     }
     [pscustomobject]@{
@@ -31895,72 +31895,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0088f960'
-        Module = '_global'
-        Source = '00/88/global_SetSaveGameMarkerPos_0088f960.cpp'
-        TestSource = '00/88/global_SetSaveGameMarkerPos_0088f960_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetSaveGameMarkerPos_0088f960.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetSaveGameMarkerPos_0088f960_test.cpp'
         PassPattern = 'TEST_PASS_MARKER_OK'
     }
     [pscustomobject]@{
         Address = '0088fe30'
-        Module = '_global'
-        Source = '00/88/global_GetTimeOfDay_0088fe30.cpp'
-        TestSource = '00/88/global_GetTimeOfDay_0088fe30_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_GetTimeOfDay_0088fe30.cpp'
+        TestSource = '00/88/CGameScriptInterface_GetTimeOfDay_0088fe30_test.cpp'
         PassPattern = 'TEST_PASS_GETTIMEOFDAY_0088FE30'
     }
     [pscustomobject]@{
         Address = '0088fe40'
-        Module = '_global'
-        Source = '00/88/global_IsTimeOfDayBetween_0088fe40.cpp'
-        TestSource = '00/88/global_IsTimeOfDayBetween_0088fe40_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_IsTimeOfDayBetween_0088fe40.cpp'
+        TestSource = '00/88/CGameScriptInterface_IsTimeOfDayBetween_0088fe40_test.cpp'
         PassPattern = 'MARKER_OK_IsTimeOfDayBetween'
     }
     [pscustomobject]@{
         Address = '0088fe80'
-        Module = '_global'
-        Source = '00/88/global_SetTimeAsStopped_0088fe80.cpp'
-        TestSource = '00/88/global_SetTimeAsStopped_0088fe80_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetTimeAsStopped_0088fe80.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetTimeAsStopped_0088fe80_test.cpp'
         PassPattern = 'SET_TIME_AS_STOPPED_OK'
     }
     [pscustomobject]@{
         Address = '008907c0'
-        Module = '_global'
-        Source = '00/89/global_RemoveConversation_008907c0.cpp'
-        TestSource = '00/89/global_RemoveConversation_008907c0_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_RemoveConversation_008907c0.cpp'
+        TestSource = '00/89/CGameScriptInterface_RemoveConversation_008907c0_test.cpp'
         PassPattern = 'RemoveConversation_PASS_FIELD7C'
     }
     [pscustomobject]@{
         Address = '00892d70'
-        Module = '_global'
-        Source = '00/89/global_SetCreatureGeneratorsEnabledDuringScript_00892d70.cpp'
-        TestSource = '00/89/global_SetCreatureGeneratorsEnabledDuringScript_00892d70_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_SetCreatureGeneratorsEnabledDuringScript_00892d70.cpp'
+        TestSource = '00/89/CGameScriptInterface_SetCreatureGeneratorsEnabledDuringScript_00892d70_test.cpp'
         PassPattern = 'SETCREATUREGEN_OK'
     }
     [pscustomobject]@{
         Address = '008901a0'
-        Module = '_global'
-        Source = '00/89/global_RadialBlurSetCenterWorldPos_008901a0.cpp'
-        TestSource = '00/89/global_RadialBlurSetCenterWorldPos_008901a0_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_RadialBlurSetCenterWorldPos_008901a0.cpp'
+        TestSource = '00/89/CGameScriptInterface_RadialBlurSetCenterWorldPos_008901a0_test.cpp'
         PassPattern = 'RADIALBLUR_CENTER_CHASE_OK'
     }
     [pscustomobject]@{
         Address = '008a9dd0'
-        Module = '_global'
-        Source = '00/8a/global_AddNewRumourToCategory_008a9dd0.cpp'
-        TestSource = '00/8a/global_AddNewRumourToCategory_008a9dd0_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_AddNewRumourToCategory_008a9dd0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_AddNewRumourToCategory_008a9dd0_test.cpp'
         PassPattern = 'PASS_ADDRUMOUR_9DD0'
     }
     [pscustomobject]@{
         Address = '008a9e30'
-        Module = '_global'
-        Source = '00/8a/global_AddGossipVillage_008a9e30.cpp'
-        TestSource = '00/8a/global_AddGossipVillage_008a9e30_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_AddGossipVillage_008a9e30.cpp'
+        TestSource = '00/8a/CGameScriptInterface_AddGossipVillage_008a9e30_test.cpp'
         PassPattern = 'CGameScriptInterface_008A9E30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008915b0'
-        Module = '_global'
-        Source = '00/89/global_SetBoastAsFailed_008915b0.cpp'
-        TestSource = '00/89/global_SetBoastAsFailed_008915b0_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_SetBoastAsFailed_008915b0.cpp'
+        TestSource = '00/89/CGameScriptInterface_SetBoastAsFailed_008915b0_test.cpp'
         PassPattern = 'TEST_PASS_SETBOASTASFAILED'
     }
     [pscustomobject]@{
@@ -31972,9 +31972,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0088fc60'
-        Module = '_global'
-        Source = '00/88/global_GiveHeroExpression_0088fc60.cpp'
-        TestSource = '00/88/global_GiveHeroExpression_0088fc60_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_GiveHeroExpression_0088fc60.cpp'
+        TestSource = '00/88/CGameScriptInterface_GiveHeroExpression_0088fc60_test.cpp'
         PassPattern = 'GIVEHEROEXPRESSION_TEST_OK'
     }
     [pscustomobject]@{
@@ -32374,8 +32374,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004df3eb'
         Module = 'CObstacleNavigatorExternalInterface'
-        Source = '00/4d/CObstacleNavigatorExternalInterface_CObstacleNavigatorExternalInterfacePeekNavigator_004df3eb.cpp'
-        TestSource = '00/4d/CObstacleNavigatorExternalInterface_CObstacleNavigatorExternalInterfacePeekNavigator_004df3eb_test.cpp'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_PeekNavigatorRadius_004df3eb.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_PeekNavigatorRadius_004df3eb_test.cpp'
         PassPattern = 'PEEK_RADIUS_OK 12.500000'
     }
     [pscustomobject]@{
@@ -32416,8 +32416,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0068d830'
         Module = 'CInputProcessControlCreatureRightStick'
-        Source = '00/68/CInputProcessControlCreatureRightStick_CInputProcessControlCreatureRightStickInit_0068d830.cpp'
-        TestSource = '00/68/CInputProcessControlCreatureRightStick_CInputProcessControlCreatureRightStickInit_0068d830_test.cpp'
+        Source = '00/68/CInputProcessControlCreatureRightStick_Init_0068d830.cpp'
+        TestSource = '00/68/CInputProcessControlCreatureRightStick_Init_0068d830_test.cpp'
         PassPattern = 'CAND_INIT_ZERO_OK'
     }
     [pscustomobject]@{
@@ -32430,8 +32430,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0068eaf0'
         Module = 'CInputProcessWatchForWillChargeUpThirdPersonModeTermination'
-        Source = '00/68/CInputProcessWatchForWillChargeUpThirdPersonModeTermination_WillChargeUpTerminationAddToInterface_0068eaf0.cpp'
-        TestSource = '00/68/CInputProcessWatchForWillChargeUpThirdPersonModeTermination_WillChargeUpTerminationAddToInterface_0068eaf0_test.cpp'
+        Source = '00/68/CInputProcessWatchForWillChargeUpThirdPersonModeTermination_AddToInterface_0068eaf0.cpp'
+        TestSource = '00/68/CInputProcessWatchForWillChargeUpThirdPersonModeTermination_AddToInterface_0068eaf0_test.cpp'
         PassPattern = 'PASS_0068eaf0'
     }
     [pscustomobject]@{
@@ -32479,22 +32479,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006f06e0'
         Module = 'CCombatSequenceBase'
-        Source = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsInterruptable_006f06e0.cpp'
-        TestSource = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsInterruptable_006f06e0_test.cpp'
+        Source = '00/6f/CCombatSequenceBase_IsInterruptable_006f06e0.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_IsInterruptable_006f06e0_test.cpp'
         PassPattern = 'PASS_006f06e0_marker'
     }
     [pscustomobject]@{
         Address = '006f0700'
         Module = 'CCombatSequenceBase'
-        Source = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsMeleeSequence_006f0700.cpp'
-        TestSource = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsMeleeSequence_006f0700_test.cpp'
+        Source = '00/6f/CCombatSequenceBase_IsMeleeSequence_006f0700.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_IsMeleeSequence_006f0700_test.cpp'
         PassPattern = 'MELEE_SEQ_TEST_OK'
     }
     [pscustomobject]@{
         Address = '006f0740'
         Module = 'CCombatSequenceBase'
-        Source = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsAllowedOnOuterRing_006f0740.cpp'
-        TestSource = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsAllowedOnOuterRing_006f0740_test.cpp'
+        Source = '00/6f/CCombatSequenceBase_IsAllowedOnOuterRing_006f0740.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_IsAllowedOnOuterRing_006f0740_test.cpp'
         PassPattern = 'CCombatSequenceBase_IsAllowedOnOuterRing_TEST_PASS'
     }
     [pscustomobject]@{
@@ -32556,22 +32556,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008552e0'
         Module = 'CCreatureAction_StartBlocking'
-        Source = '00/85/CCreatureActionStartBlocking_CCreatureActionStartBlockingFrameUpdate_008552e0.cpp'
-        TestSource = '00/85/CCreatureActionStartBlocking_CCreatureActionStartBlockingFrameUpdate_008552e0_test.cpp'
+        Source = '00/85/CCreatureActionStartBlocking_FrameUpdate_008552e0.cpp'
+        TestSource = '00/85/CCreatureActionStartBlocking_FrameUpdate_008552e0_test.cpp'
         PassPattern = 'TESTPASSMARKER_008552e0'
     }
     [pscustomobject]@{
         Address = '008565c0'
         Module = 'CCombatActionBase'
-        Source = '00/85/CCombatActionBase_CCombatActionBaseIsMeleeFlourish_008565c0.cpp'
-        TestSource = '00/85/CCombatActionBase_CCombatActionBaseIsMeleeFlourish_008565c0_test.cpp'
+        Source = '00/85/CCombatActionBase_IsMeleeFlourish_008565c0.cpp'
+        TestSource = '00/85/CCombatActionBase_IsMeleeFlourish_008565c0_test.cpp'
         PassPattern = 'MELEE_FLOURISH_TEST_OK'
     }
     [pscustomobject]@{
         Address = '008565d0'
         Module = 'CCombatActionBase'
-        Source = '00/85/CCombatActionBase_CCombatActionBaseIsKnockdownStrike_008565d0.cpp'
-        TestSource = '00/85/CCombatActionBase_CCombatActionBaseIsKnockdownStrike_008565d0_test.cpp'
+        Source = '00/85/CCombatActionBase_IsKnockdownStrike_008565d0.cpp'
+        TestSource = '00/85/CCombatActionBase_IsKnockdownStrike_008565d0_test.cpp'
         PassPattern = 'KNOCKDOWN_STRIKE_OK'
     }
     [pscustomobject]@{
@@ -32584,8 +32584,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00902134'
         Module = 'CAIStateGroup_MinionSitOnSeat'
-        Source = '00/90/CAIStateGroupMinionSitOnSeat_MinionSitOnSeatGetPOwnerObject_00902134.cpp'
-        TestSource = '00/90/CAIStateGroupMinionSitOnSeat_MinionSitOnSeatGetPOwnerObject_00902134_test.cpp'
+        Source = '00/90/CAIStateGroupMinionSitOnSeat_GetPOwnerObject_00902134.cpp'
+        TestSource = '00/90/CAIStateGroupMinionSitOnSeat_GetPOwnerObject_00902134_test.cpp'
         PassPattern = 'MINIONSIT_GETPOWNER_PASS'
     }
     [pscustomobject]@{
@@ -32598,8 +32598,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00956a60'
         Module = 'CAIStateGroup_BriarRose'
-        Source = '00/95/CAIStateGroupBriarRose_BriarRoseInitialise_00956a60.cpp'
-        TestSource = '00/95/CAIStateGroupBriarRose_BriarRoseInitialise_00956a60_test.cpp'
+        Source = '00/95/CAIStateGroupBriarRose_Initialise_00956a60.cpp'
+        TestSource = '00/95/CAIStateGroupBriarRose_Initialise_00956a60_test.cpp'
         PassPattern = 'PASS_MARK_BRIARROSE'
     }
     [pscustomobject]@{
@@ -32612,22 +32612,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009612e0'
         Module = 'CAIStateGroup_BanditKingLunge'
-        Source = '00/96/CAIStateGroupBanditKingLunge_BanditKingLungeInitialise_009612e0.cpp'
-        TestSource = '00/96/CAIStateGroupBanditKingLunge_BanditKingLungeInitialise_009612e0_test.cpp'
+        Source = '00/96/CAIStateGroupBanditKingLunge_Initialise_009612e0.cpp'
+        TestSource = '00/96/CAIStateGroupBanditKingLunge_Initialise_009612e0_test.cpp'
         PassPattern = 'BANDITKINGLUNGE_INIT_OK'
     }
     [pscustomobject]@{
         Address = '0096f010'
         Module = 'CAIStateGroup_MinionBehaviourSad'
-        Source = '00/96/CAIStateGroupMinionBehaviourSad_MinionBehaviourSadInitLeaf_0096f010.cpp'
-        TestSource = '00/96/CAIStateGroupMinionBehaviourSad_MinionBehaviourSadInitLeaf_0096f010_test.cpp'
+        Source = '00/96/CAIStateGroupMinionBehaviourSad_InitLeaf_0096f010.cpp'
+        TestSource = '00/96/CAIStateGroupMinionBehaviourSad_InitLeaf_0096f010_test.cpp'
         PassPattern = 'PASS_INITLEAF_9A3F'
     }
     [pscustomobject]@{
         Address = '00970600'
         Module = 'CAIStateGroup_CreatureUseCoverBase'
-        Source = '00/97/CAIStateGroupCreatureUseCoverBase_CreatureUseCoverBaseInit_00970600.cpp'
-        TestSource = '00/97/CAIStateGroupCreatureUseCoverBase_CreatureUseCoverBaseInit_00970600_test.cpp'
+        Source = '00/97/CAIStateGroupCreatureUseCoverBase_Init_00970600.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureUseCoverBase_Init_00970600_test.cpp'
         PassPattern = 'INIT_OK_PASS'
     }
     [pscustomobject]@{
@@ -32661,8 +32661,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a62ec0'
         Module = 'CMovableResourceMemoryPool'
-        Source = '00/a6/CMovableResourceMemoryPool_CMovableResourceMemoryPoolValidateResource_00a62ec0.cpp'
-        TestSource = '00/a6/CMovableResourceMemoryPool_CMovableResourceMemoryPoolValidateResource_00a62ec0_test.cpp'
+        Source = '00/a6/CMovableResourceMemoryPool_ValidateResource_00a62ec0.cpp'
+        TestSource = '00/a6/CMovableResourceMemoryPool_ValidateResource_00a62ec0_test.cpp'
         PassPattern = 'PASS_VALIDATE_RESOURCE_FORWARD'
     }
     [pscustomobject]@{
@@ -32682,8 +32682,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b24000'
         Module = 'CEngine'
-        Source = '00/b2/CEngine_CEngineIs2DSceneRenderingEnabled_00b24000.cpp'
-        TestSource = '00/b2/CEngine_CEngineIs2DSceneRenderingEnabled_00b24000_test.cpp'
+        Source = '00/b2/CEngine_Is2DSceneRenderingEnabled_00b24000.cpp'
+        TestSource = '00/b2/CEngine_Is2DSceneRenderingEnabled_00b24000_test.cpp'
         PassPattern = 'PASS_IS2DSCENE_TEST'
     }
     [pscustomobject]@{
@@ -33046,9 +33046,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00842c40'
-        Module = 'CCreatureAction_PerformExpression'
-        Source = '00/84/CCreatureActionPerformExpression_IsToReplaceItemIfRemovedExt_00842c40.cpp'
-        TestSource = '00/84/CCreatureActionPerformExpression_IsToReplaceItemIfRemovedExt_00842c40_test.cpp'
+        Module = 'CCreatureAction_PerformExpressionExtended'
+        Source = '00/84/CCreatureActionPerformExpressionExtended_IsToReplaceItemIfRemoved_00842c40.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpressionExtended_IsToReplaceItemIfRemoved_00842c40_test.cpp'
         PassPattern = '00842c40_TEST PASS'
     }
     [pscustomobject]@{
@@ -33816,23 +33816,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065ed8e'
-        Module = 'CVillageTask'
-        Source = '00/65/CVillageTask_f_0065ed8e.cpp'
-        TestSource = '00/65/CVillageTask_f_0065ed8e_test.cpp'
+        Module = 'CVillageTaskTorch'
+        Source = '00/65/CVillageTaskTorch_IsAnyCreatureAssignedToTask_0065ed8e.cpp'
+        TestSource = '00/65/CVillageTaskTorch_IsAnyCreatureAssignedToTask_0065ed8e_test.cpp'
         PassPattern = '0065ed8e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065ed9d'
-        Module = 'CVillageTask'
-        Source = '00/65/CVillageTask_f_0065ed9d.cpp'
-        TestSource = '00/65/CVillageTask_f_0065ed9d_test.cpp'
+        Module = 'CVillageTaskTorch'
+        Source = '00/65/CVillageTaskTorch_IsValid_0065ed9d.cpp'
+        TestSource = '00/65/CVillageTaskTorch_IsValid_0065ed9d_test.cpp'
         PassPattern = '0065ed9d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065ee41'
-        Module = 'CVillageTask'
-        Source = '00/65/CVillageTask_f_0065ee41.cpp'
-        TestSource = '00/65/CVillageTask_f_0065ee41_test.cpp'
+        Module = 'CVillageTaskHorn'
+        Source = '00/65/CVillageTaskHorn_IsValid_0065ee41.cpp'
+        TestSource = '00/65/CVillageTaskHorn_IsValid_0065ee41_test.cpp'
         PassPattern = '0065ee41_TEST PASS'
     }
     [pscustomobject]@{
@@ -35132,23 +35132,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aa4af0'
-        Module = 'C3DMeshFileXTextureIndex'
-        Source = '00/aa/C3DMeshFileXTextureIndex_WriteToFile_00aa4af0.cpp'
-        TestSource = '00/aa/C3DMeshFileXTextureIndex_WriteToFile_00aa4af0_test.cpp'
+        Module = 'C3DMeshFileXTextureIndexChunk'
+        Source = '00/aa/C3DMeshFileXTextureIndexChunk_WriteToFile_00aa4af0.cpp'
+        TestSource = '00/aa/C3DMeshFileXTextureIndexChunk_WriteToFile_00aa4af0_test.cpp'
         PassPattern = '00aa4af0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ac2920'
-        Module = 'C3DMeshFilePartitionChun'
-        Source = '00/ac/C3DMeshFilePartitionChun_WriteToFile_00ac2920.cpp'
-        TestSource = '00/ac/C3DMeshFilePartitionChun_WriteToFile_00ac2920_test.cpp'
+        Module = 'C3DMeshFilePartitionChunk'
+        Source = '00/ac/C3DMeshFilePartitionChunk_WriteToFile_00ac2920.cpp'
+        TestSource = '00/ac/C3DMeshFilePartitionChunk_WriteToFile_00ac2920_test.cpp'
         PassPattern = '00ac2920_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b2aee0'
-        Module = 'CEngineSurfaceCompositio'
-        Source = '00/b2/CEngineSurfaceCompositio_LoadNewScene_00b2aee0.cpp'
-        TestSource = '00/b2/CEngineSurfaceCompositio_LoadNewScene_00b2aee0_test.cpp'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_LoadNewScene_00b2aee0.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_LoadNewScene_00b2aee0_test.cpp'
         PassPattern = '00b2aee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -36028,9 +36028,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006f5700'
-        Module = 'CCombatAction_GenericStr'
-        Source = '00/6f/CCombatActionGenericStr_IsUsingAnimationMovement_006f5700.cpp'
-        TestSource = '00/6f/CCombatActionGenericStr_IsUsingAnimationMovement_006f5700_test.cpp'
+        Module = 'CCombatAction_GenericStrikeResponseBase'
+        Source = '00/6f/CCombatActionGenericStrikeResponseBase_IsUsingAnimationMovement_006f5700.cpp'
+        TestSource = '00/6f/CCombatActionGenericStrikeResponseBase_IsUsingAnimationMovement_006f5700_test.cpp'
         PassPattern = '006f5700_TEST PASS'
     }
     [pscustomobject]@{
@@ -36098,9 +36098,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00920710'
-        Module = 'CAIStateGroup_CreatureGo'
-        Source = '00/92/CAIStateGroupCreatureGo_IsRunnable_00920710.cpp'
-        TestSource = '00/92/CAIStateGroupCreatureGo_IsRunnable_00920710_test.cpp'
+        Module = 'CAIStateGroup_CreatureGoUnderground'
+        Source = '00/92/CAIStateGroupCreatureGoUnderground_IsRunnable_00920710.cpp'
+        TestSource = '00/92/CAIStateGroupCreatureGoUnderground_IsRunnable_00920710_test.cpp'
         PassPattern = '00920710_TEST PASS'
     }
     [pscustomobject]@{
@@ -40313,22 +40313,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004aad40'
         Module = 'CScriptThing'
-        Source = '00/4a/CScriptThing_MsgIsHitByAnySpecialAbility_004aad40.cpp'
-        TestSource = '00/4a/CScriptThing_MsgIsHitByAnySpecialAbility_004aad40_test.cpp'
+        Source = '00/4a/CScriptThing_MsgIsHitByAnySpecialAbilityFrom_004aad40.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByAnySpecialAbilityFrom_004aad40_test.cpp'
         PassPattern = 'MSG_4aad40_OK'
     }
     [pscustomobject]@{
         Address = '004aad60'
         Module = 'CScriptThing'
-        Source = '00/4a/CScriptThing_MsgIsHitByAnyAggressiveSpecial_004aad60.cpp'
-        TestSource = '00/4a/CScriptThing_MsgIsHitByAnyAggressiveSpecial_004aad60_test.cpp'
+        Source = '00/4a/CScriptThing_MsgIsHitByAnyAggressiveSpecialAbilityFrom_004aad60.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByAnyAggressiveSpecialAbilityFrom_004aad60_test.cpp'
         PassPattern = 'MSG_4aad60_OK'
     }
     [pscustomobject]@{
         Address = '004aad80'
         Module = 'CScriptThing'
-        Source = '00/4a/CScriptThing_MsgIsHitByAnyNonAggressive_004aad80.cpp'
-        TestSource = '00/4a/CScriptThing_MsgIsHitByAnyNonAggressive_004aad80_test.cpp'
+        Source = '00/4a/CScriptThing_MsgIsHitByAnyNonAggressiveSpecialAbilityFrom_004aad80.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByAnyNonAggressiveSpecialAbilityFrom_004aad80_test.cpp'
         PassPattern = 'MSG_4aad80_OK'
     }
     [pscustomobject]@{
@@ -40411,8 +40411,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00860410'
         Module = 'CVillageTaskSecuritySweep'
-        Source = '00/86/CVillageTaskSecuritySweep_IsThingInvolved_00860410.cpp'
-        TestSource = '00/86/CVillageTaskSecuritySweep_IsThingInvolved_00860410_test.cpp'
+        Source = '00/86/CVillageTaskSecuritySweep_IsThingInvolvedWithTask_00860410.cpp'
+        TestSource = '00/86/CVillageTaskSecuritySweep_IsThingInvolvedWithTask_00860410_test.cpp'
         PassPattern = 'EQ_860410_OK'
     }
     [pscustomobject]@{
@@ -40460,15 +40460,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00842c00'
         Module = 'CCreatureAction_PerformExpression'
-        Source = '00/84/CCreatureActionPerformExpression_PreventExpression_00842c00.cpp'
-        TestSource = '00/84/CCreatureActionPerformExpression_PreventExpression_00842c00_test.cpp'
+        Source = '00/84/CCreatureActionPerformExpression_PreventSneaking_00842c00.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpression_PreventSneaking_00842c00_test.cpp'
         PassPattern = 'EXPR842C00_OK'
     }
     [pscustomobject]@{
         Address = '00842c50'
         Module = 'CCreatureAction_PerformExpressionExtended'
-        Source = '00/84/CCreatureActionPerformExpressionExtended_PreventExpression_00842c50.cpp'
-        TestSource = '00/84/CCreatureActionPerformExpressionExtended_PreventExpression_00842c50_test.cpp'
+        Source = '00/84/CCreatureActionPerformExpressionExtended_PreventSneaking_00842c50.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpressionExtended_PreventSneaking_00842c50_test.cpp'
         PassPattern = 'EXPR842C50_OK'
     }
     [pscustomobject]@{
@@ -40621,8 +40621,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00890670'
         Module = 'CGameScriptInterface'
-        Source = '00/89/CGameScriptInterface_IsHeroInProjectile_00890670.cpp'
-        TestSource = '00/89/CGameScriptInterface_IsHeroInProjectile_00890670_test.cpp'
+        Source = '00/89/CGameScriptInterface_IsHeroInProjectileWeaponMode_00890670.cpp'
+        TestSource = '00/89/CGameScriptInterface_IsHeroInProjectileWeaponMode_00890670_test.cpp'
         PassPattern = 'HEROPROJ_OK'
     }
     [pscustomobject]@{
@@ -65689,9 +65689,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bb16e0'
-        Module = 'CEngineInternalPrimitive2DStaticMesh'
-        Source = '00/bb/CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00bb16e0.cpp'
-        TestSource = '00/bb/CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00bb16e0_test.cpp'
+        Module = 'CEngineInternalPrimitiveSprite'
+        Source = '00/bb/CEngineInternalPrimitiveSprite_GetWorldPosition_00bb16e0.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveSprite_GetWorldPosition_00bb16e0_test.cpp'
         PassPattern = 'OK_00bb16e0'
     }
     [pscustomobject]@{
@@ -65976,9 +65976,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004fb280'
-        Module = 'DrawGetFrame'
-        Source = '00/4f/DrawGetFrame_DrawGetFrameCWorldMapUBEJXZ_004fb280.cpp'
-        TestSource = '00/4f/DrawGetFrame_DrawGetFrameCWorldMapUBEJXZ_004fb280_test.cpp'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_DrawGetFrame_004fb280.cpp'
+        TestSource = '00/4f/CWorldMap_DrawGetFrame_004fb280_test.cpp'
         PassPattern = 'OK_004fb280'
     }
     [pscustomobject]@{
@@ -76107,8 +76107,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0088e070'
         Module = 'CGameScriptInterface'
-        Source = '00/88/CGameScriptInterface_GetWorldFrameCGameScriptInterfaceUBEJXZ_0088e070.cpp'
-        TestSource = '00/88/CGameScriptInterface_GetWorldFrameCGameScriptInterfaceUBEJXZ_0088e070_test.cpp'
+        Source = '00/88/CGameScriptInterface_GetWorldFrame_0088e070.cpp'
+        TestSource = '00/88/CGameScriptInterface_GetWorldFrame_0088e070_test.cpp'
         PassPattern = 'PASS_0088e070'
     }
     [pscustomobject]@{
@@ -94875,9 +94875,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00690ac0'
-        Module = '_global'
-        Source = '00/69/global_ProcessWhilePaused_00690ac0.cpp'
-        TestSource = '00/69/global_ProcessWhilePaused_00690ac0_test.cpp'
+        Module = 'CInputProcessCutScene'
+        Source = '00/69/CInputProcessCutScene_ProcessWhilePaused_00690ac0.cpp'
+        TestSource = '00/69/CInputProcessCutScene_ProcessWhilePaused_00690ac0_test.cpp'
         PassPattern = 'PASS_00690ac0'
     }
     [pscustomobject]@{
@@ -236614,8 +236614,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00434120'
         Module = 'CEngineVideoOptionsDef'
-        Source = '00/43/CEngineVideoOptionsDef_TransferCEngineVideoOptionsDefUAEXAAVCPersistCon_00434120.cpp'
-        TestSource = '00/43/CEngineVideoOptionsDef_TransferCEngineVideoOptionsDefUAEXAAVCPersistCon_00434120_test.cpp'
+        Source = '00/43/CEngineVideoOptionsDef_Transfer_00434120.cpp'
+        TestSource = '00/43/CEngineVideoOptionsDef_Transfer_00434120_test.cpp'
         PassPattern = '00434120_TEST PASS'
     }
     [pscustomobject]@{
@@ -236649,15 +236649,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004569a7'
         Module = 'CExpressionDef'
-        Source = '00/45/CExpressionDef_TransferCExpressionDefUAEXAAVCPersistContextZ_004569a7.cpp'
-        TestSource = '00/45/CExpressionDef_TransferCExpressionDefUAEXAAVCPersistContextZ_004569a7_test.cpp'
+        Source = '00/45/CExpressionDef_Transfer_004569a7.cpp'
+        TestSource = '00/45/CExpressionDef_Transfer_004569a7_test.cpp'
         PassPattern = '004569a7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00456dfb'
         Module = 'CCombatDialogueDef'
-        Source = '00/45/CCombatDialogueDef_TransferCCombatDialogueDefUAEXAAVCPersistContext_00456dfb.cpp'
-        TestSource = '00/45/CCombatDialogueDef_TransferCCombatDialogueDefUAEXAAVCPersistContext_00456dfb_test.cpp'
+        Source = '00/45/CCombatDialogueDef_Transfer_00456dfb.cpp'
+        TestSource = '00/45/CCombatDialogueDef_Transfer_00456dfb_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /O1'
         PassPattern = '00456dfb_TEST PASS'
     }
@@ -236727,8 +236727,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0046f7c8'
         Module = 'CCombatTypeDef'
-        Source = '00/46/CCombatTypeDef_TransferCCombatTypeDefUAEXAAVCPersistContextZ_0046f7c8.cpp'
-        TestSource = '00/46/CCombatTypeDef_TransferCCombatTypeDefUAEXAAVCPersistContextZ_0046f7c8_test.cpp'
+        Source = '00/46/CCombatTypeDef_Transfer_0046f7c8.cpp'
+        TestSource = '00/46/CCombatTypeDef_Transfer_0046f7c8_test.cpp'
         PassPattern = '0046f7c8_TEST PASS'
     }
     [pscustomobject]@{
@@ -237063,8 +237063,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00689130'
         Module = 'CInputProcessTargetLockRightStickTargetSelect'
-        Source = '00/68/CInputProcessTargetLockRightStickTargetSelect_ProcessInputCInputProcessTargetLockRightStickTar_00689130.cpp'
-        TestSource = '00/68/CInputProcessTargetLockRightStickTargetSelect_ProcessInputCInputProcessTargetLockRightStickTar_00689130_test.cpp'
+        Source = '00/68/CInputProcessTargetLockRightStickTargetSelect_ProcessInput_00689130.cpp'
+        TestSource = '00/68/CInputProcessTargetLockRightStickTargetSelect_ProcessInput_00689130_test.cpp'
         PassPattern = '00689130_TEST PASS'
     }
     [pscustomobject]@{
@@ -237098,8 +237098,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00692c80'
         Module = 'CCreatureActionBase'
-        Source = '00/69/CCreatureActionBase_InitialiseActionMovementCCreatureActionBaseMAEXX_00692c80.cpp'
-        TestSource = '00/69/CCreatureActionBase_InitialiseActionMovementCCreatureActionBaseMAEXX_00692c80_test.cpp'
+        Source = '00/69/CCreatureActionBase_InitialiseActionMovement_00692c80.cpp'
+        TestSource = '00/69/CCreatureActionBase_InitialiseActionMovement_00692c80_test.cpp'
         PassPattern = '00692c80_TEST PASS'
     }
     [pscustomobject]@{
@@ -237420,15 +237420,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00847ac0'
         Module = 'CCreatureAction_Drink'
-        Source = '00/84/CCreatureActionDrink_InitialiseCCreatureActionDrinkUAEXXZ_00847ac0.cpp'
-        TestSource = '00/84/CCreatureActionDrink_InitialiseCCreatureActionDrinkUAEXXZ_00847ac0_test.cpp'
+        Source = '00/84/CCreatureActionDrink_Initialise_00847ac0.cpp'
+        TestSource = '00/84/CCreatureActionDrink_Initialise_00847ac0_test.cpp'
         PassPattern = '00847ac0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0084a5f0'
         Module = 'CCreatureAction_PickupGameObject'
-        Source = '00/84/CCreatureActionPickupGameObject_PerformActionCCreatureActionPickupGameObjectUAEX_0084a5f0.cpp'
-        TestSource = '00/84/CCreatureActionPickupGameObject_PerformActionCCreatureActionPickupGameObjectUAEX_0084a5f0_test.cpp'
+        Source = '00/84/CCreatureActionPickupGameObject_PerformAction_0084a5f0.cpp'
+        TestSource = '00/84/CCreatureActionPickupGameObject_PerformAction_0084a5f0_test.cpp'
         PassPattern = '0084a5f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -237455,22 +237455,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00859d80'
         Module = 'CCombatActionBase'
-        Source = '00/85/CCombatActionBase_FrameUpdateCCombatActionBaseUAEXXZ_00859d80.cpp'
-        TestSource = '00/85/CCombatActionBase_FrameUpdateCCombatActionBaseUAEXXZ_00859d80_test.cpp'
+        Source = '00/85/CCombatActionBase_FrameUpdate_00859d80.cpp'
+        TestSource = '00/85/CCombatActionBase_FrameUpdate_00859d80_test.cpp'
         PassPattern = '00859d80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00861d00'
         Module = 'CModeStandBase'
-        Source = '00/86/CModeStandBase_OnDeactivateCModeStandBaseUAEXXZ_00861d00.cpp'
-        TestSource = '00/86/CModeStandBase_OnDeactivateCModeStandBaseUAEXXZ_00861d00_test.cpp'
+        Source = '00/86/CModeStandBase_OnDeactivate_00861d00.cpp'
+        TestSource = '00/86/CModeStandBase_OnDeactivate_00861d00_test.cpp'
         PassPattern = '00861d00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008663d0'
         Module = 'CCombatAction_GenericStrikeResponseBase'
-        Source = '00/86/CCombatActionGenericStrikeResponseBase_FinishActionCCombatActionGenericStrikeResponseBa_008663d0.cpp'
-        TestSource = '00/86/CCombatActionGenericStrikeResponseBase_FinishActionCCombatActionGenericStrikeResponseBa_008663d0_test.cpp'
+        Source = '00/86/CCombatActionGenericStrikeResponseBase_FinishAction_008663d0.cpp'
+        TestSource = '00/86/CCombatActionGenericStrikeResponseBase_FinishAction_008663d0_test.cpp'
         PassPattern = '008663d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -237490,8 +237490,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0087ed70'
         Module = 'CCombatAction_StabThing'
-        Source = '00/87/CCombatActionStabThing_GetNextPosCCombatActionStabThingUBEAVC3DVectorXZ_0087ed70.cpp'
-        TestSource = '00/87/CCombatActionStabThing_GetNextPosCCombatActionStabThingUBEAVC3DVectorXZ_0087ed70_test.cpp'
+        Source = '00/87/CCombatActionStabThing_GetNextPos_0087ed70.cpp'
+        TestSource = '00/87/CCombatActionStabThing_GetNextPos_0087ed70_test.cpp'
         PassPattern = '0087ed70_TEST PASS'
     }
     [pscustomobject]@{
@@ -237538,17 +237538,17 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00890c80'
-        Module = 'CGameScriptInterfaceMethods'
-        Source = '00/89/CGameScriptInterfaceMethods_EntityUnsheatheMeleeWeaponCGameScriptInterfaceUB_00890c80.cpp'
-        TestSource = '00/89/CGameScriptInterfaceMethods_EntityUnsheatheMeleeWeaponCGameScriptInterfaceUB_00890c80_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_EntityUnsheatheMeleeWeapon_00890c80.cpp'
+        TestSource = '00/89/CGameScriptInterface_EntityUnsheatheMeleeWeapon_00890c80_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00890c80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00890d80'
-        Module = 'CGameScriptInterfaceMethods'
-        Source = '00/89/CGameScriptInterfaceMethods_EntityUnsheatheRangedWeaponCGameScriptInterfaceU_00890d80.cpp'
-        TestSource = '00/89/CGameScriptInterfaceMethods_EntityUnsheatheRangedWeaponCGameScriptInterfaceU_00890d80_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_EntityUnsheatheRangedWeapon_00890d80.cpp'
+        TestSource = '00/89/CGameScriptInterface_EntityUnsheatheRangedWeapon_00890d80_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00890d80_TEST PASS'
     }
@@ -237561,9 +237561,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008957c0'
-        Module = 'CGameScriptInterfaceMethods'
-        Source = '00/89/CGameScriptInterfaceMethods_SendEntityEventCGameScriptInterfaceUBEXW4EEventT_008957c0.cpp'
-        TestSource = '00/89/CGameScriptInterfaceMethods_SendEntityEventCGameScriptInterfaceUBEXW4EEventT_008957c0_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_SendEntityEvent_008957c0.cpp'
+        TestSource = '00/89/CGameScriptInterface_SendEntityEvent_008957c0_test.cpp'
         PassPattern = '008957c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -237596,9 +237596,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008976f0'
-        Module = 'CGameScriptInterfaceMethods'
-        Source = '00/89/CGameScriptInterfaceMethods_EntityGetThingInPrimarySlotCGameScriptInterfaceU_008976f0.cpp'
-        TestSource = '00/89/CGameScriptInterfaceMethods_EntityGetThingInPrimarySlotCGameScriptInterfaceU_008976f0_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_EntityGetThingInPrimarySlot_008976f0.cpp'
+        TestSource = '00/89/CGameScriptInterface_EntityGetThingInPrimarySlot_008976f0_test.cpp'
         PassPattern = '008976f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -237737,43 +237737,43 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008a2590'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_ResetWanderCentrePointCGameScriptInterfaceUAEXVC_008a2590.cpp'
-        TestSource = '00/8a/CGameScriptInterface_ResetWanderCentrePointCGameScriptInterfaceUAEXVC_008a2590_test.cpp'
+        Source = '00/8a/CGameScriptInterface_ResetWanderCentrePoint_008a2590.cpp'
+        TestSource = '00/8a/CGameScriptInterface_ResetWanderCentrePoint_008a2590_test.cpp'
         PassPattern = '008a2590_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008a2770'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_GetWanderMinDistanceCGameScriptInterfaceUAEMVCSc_008a2770.cpp'
-        TestSource = '00/8a/CGameScriptInterface_GetWanderMinDistanceCGameScriptInterfaceUAEMVCSc_008a2770_test.cpp'
+        Source = '00/8a/CGameScriptInterface_GetWanderMinDistance_008a2770.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetWanderMinDistance_008a2770_test.cpp'
         PassPattern = '008a2770_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008a2a30'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_GetWanderMaxDistanceCGameScriptInterfaceUAEMVCSc_008a2a30.cpp'
-        TestSource = '00/8a/CGameScriptInterface_GetWanderMaxDistanceCGameScriptInterfaceUAEMVCSc_008a2a30_test.cpp'
+        Source = '00/8a/CGameScriptInterface_GetWanderMaxDistance_008a2a30.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetWanderMaxDistance_008a2a30_test.cpp'
         PassPattern = '008a2a30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008a3a60'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_GetMaxHeroReactionDistanceCGameScriptInterfaceUA_008a3a60.cpp'
-        TestSource = '00/8a/CGameScriptInterface_GetMaxHeroReactionDistanceCGameScriptInterfaceUA_008a3a60_test.cpp'
+        Source = '00/8a/CGameScriptInterface_GetMaxHeroReactionDistance_008a3a60.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetMaxHeroReactionDistance_008a3a60_test.cpp'
         PassPattern = '008a3a60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008a3fd0'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_GetActionFrequencyVariationCGameScriptInterfaceU_008a3fd0.cpp'
-        TestSource = '00/8a/CGameScriptInterface_GetActionFrequencyVariationCGameScriptInterfaceU_008a3fd0_test.cpp'
+        Source = '00/8a/CGameScriptInterface_GetActionFrequencyVariation_008a3fd0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetActionFrequencyVariation_008a3fd0_test.cpp'
         PassPattern = '008a3fd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008a41b0'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_SetActionCGameScriptInterfaceUAEXVCScriptThingVC_008a41b0.cpp'
-        TestSource = '00/8a/CGameScriptInterface_SetActionCGameScriptInterfaceUAEXVCScriptThingVC_008a41b0_test.cpp'
+        Source = '00/8a/CGameScriptInterface_SetAction_008a41b0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_SetAction_008a41b0_test.cpp'
         PassPattern = '008a41b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -237786,8 +237786,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008a4730'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_SetTargetNameCGameScriptInterfaceUAEXVCScriptThi_008a4730.cpp'
-        TestSource = '00/8a/CGameScriptInterface_SetTargetNameCGameScriptInterfaceUAEXVCScriptThi_008a4730_test.cpp'
+        Source = '00/8a/CGameScriptInterface_SetTargetName_008a4730.cpp'
+        TestSource = '00/8a/CGameScriptInterface_SetTargetName_008a4730_test.cpp'
         PassPattern = '008a4730_TEST PASS'
     }
     [pscustomobject]@{
@@ -237800,29 +237800,29 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008a4ae0'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_GetFollowDistanceCGameScriptInterfaceUAEMVCScrip_008a4ae0.cpp'
-        TestSource = '00/8a/CGameScriptInterface_GetFollowDistanceCGameScriptInterfaceUAEMVCScrip_008a4ae0_test.cpp'
+        Source = '00/8a/CGameScriptInterface_GetFollowDistance_008a4ae0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetFollowDistance_008a4ae0_test.cpp'
         PassPattern = '008a4ae0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008a5300'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_GetCombatNearbyEnemyFleeingBreakOffRangeCGameScr_008a5300.cpp'
-        TestSource = '00/8a/CGameScriptInterface_GetCombatNearbyEnemyFleeingBreakOffRangeCGameScr_008a5300_test.cpp'
+        Source = '00/8a/CGameScriptInterface_GetCombatNearbyEnemyFleeingBreakOffRange_008a5300.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetCombatNearbyEnemyFleeingBreakOffRange_008a5300_test.cpp'
         PassPattern = '008a5300_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008a55c0'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_GetCombatNearbyBreakOffRangeCGameScriptInterface_008a55c0.cpp'
-        TestSource = '00/8a/CGameScriptInterface_GetCombatNearbyBreakOffRangeCGameScriptInterface_008a55c0_test.cpp'
+        Source = '00/8a/CGameScriptInterface_GetCombatNearbyBreakOffRange_008a55c0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetCombatNearbyBreakOffRange_008a55c0_test.cpp'
         PassPattern = '008a55c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008a6570'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_SetTableNameCGameScriptInterfaceUAEXVCScriptThin_008a6570.cpp'
-        TestSource = '00/8a/CGameScriptInterface_SetTableNameCGameScriptInterfaceUAEXVCScriptThin_008a6570_test.cpp'
+        Source = '00/8a/CGameScriptInterface_SetTableName_008a6570.cpp'
+        TestSource = '00/8a/CGameScriptInterface_SetTableName_008a6570_test.cpp'
         PassPattern = '008a6570_TEST PASS'
     }
     [pscustomobject]@{
@@ -237835,8 +237835,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008a6840'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_SetSeatNameCGameScriptInterfaceUAEXVCScriptThing_008a6840.cpp'
-        TestSource = '00/8a/CGameScriptInterface_SetSeatNameCGameScriptInterfaceUAEXVCScriptThing_008a6840_test.cpp'
+        Source = '00/8a/CGameScriptInterface_SetSeatName_008a6840.cpp'
+        TestSource = '00/8a/CGameScriptInterface_SetSeatName_008a6840_test.cpp'
         PassPattern = '008a6840_TEST PASS'
     }
     [pscustomobject]@{
@@ -237849,8 +237849,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008a76f0'
         Module = 'CGameScriptInterface'
-        Source = '00/8a/CGameScriptInterface_GetTargetingDistanceOffsetCGameScriptInterfaceUA_008a76f0.cpp'
-        TestSource = '00/8a/CGameScriptInterface_GetTargetingDistanceOffsetCGameScriptInterfaceUA_008a76f0_test.cpp'
+        Source = '00/8a/CGameScriptInterface_GetTargetingDistanceOffset_008a76f0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetTargetingDistanceOffset_008a76f0_test.cpp'
         PassPattern = '008a76f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -237883,9 +237883,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008a8440'
-        Module = 'CGameScriptInterfaceMethods'
-        Source = '00/8a/CGameScriptInterfaceMethods_GetPerceivingHeroEntityListCGameScriptInterfaceU_008a8440.cpp'
-        TestSource = '00/8a/CGameScriptInterfaceMethods_GetPerceivingHeroEntityListCGameScriptInterfaceU_008a8440_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetPerceivingHeroEntityList_008a8440.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetPerceivingHeroEntityList_008a8440_test.cpp'
         PassPattern = '008a8440_TEST PASS'
     }
     [pscustomobject]@{
@@ -237912,29 +237912,29 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008b94a0'
         Module = 'CCreatureAction_CastWillForceSpell'
-        Source = '00/8b/CCreatureActionCastWillForceSpell_InitialiseCCreatureActionCastWillForceSpellUAEXX_008b94a0.cpp'
-        TestSource = '00/8b/CCreatureActionCastWillForceSpell_InitialiseCCreatureActionCastWillForceSpellUAEXX_008b94a0_test.cpp'
+        Source = '00/8b/CCreatureActionCastWillForceSpell_Initialise_008b94a0.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillForceSpell_Initialise_008b94a0_test.cpp'
         PassPattern = '008b94a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008b95a0'
         Module = 'CCreatureAction_CastWillTurncoatSpell'
-        Source = '00/8b/CCreatureActionCastWillTurncoatSpell_PerformActionCCreatureActionCastWillTurncoatSpel_008b95a0.cpp'
-        TestSource = '00/8b/CCreatureActionCastWillTurncoatSpell_PerformActionCCreatureActionCastWillTurncoatSpel_008b95a0_test.cpp'
+        Source = '00/8b/CCreatureActionCastWillTurncoatSpell_PerformAction_008b95a0.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillTurncoatSpell_PerformAction_008b95a0_test.cpp'
         PassPattern = '008b95a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008b9c90'
         Module = 'CCreatureAction_CastWillLightningSpell'
-        Source = '00/8b/CCreatureActionCastWillLightningSpell_InitialiseCCreatureActionCastWillLightningSpellU_008b9c90.cpp'
-        TestSource = '00/8b/CCreatureActionCastWillLightningSpell_InitialiseCCreatureActionCastWillLightningSpellU_008b9c90_test.cpp'
+        Source = '00/8b/CCreatureActionCastWillLightningSpell_Initialise_008b9c90.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillLightningSpell_Initialise_008b9c90_test.cpp'
         PassPattern = '008b9c90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008c4680'
         Module = 'CCreatureAction_ScorpionCharge'
-        Source = '00/8c/CCreatureActionScorpionCharge_InitialiseCCreatureActionScorpionChargeUAEXXZ_008c4680.cpp'
-        TestSource = '00/8c/CCreatureActionScorpionCharge_InitialiseCCreatureActionScorpionChargeUAEXXZ_008c4680_test.cpp'
+        Source = '00/8c/CCreatureActionScorpionCharge_Initialise_008c4680.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionCharge_Initialise_008c4680_test.cpp'
         PassPattern = '008c4680_TEST PASS'
     }
     [pscustomobject]@{
@@ -237954,15 +237954,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008cbb90'
         Module = 'CCreatureAction_SummonerFlameSlice'
-        Source = '00/8c/CCreatureActionSummonerFlameSlice_InitialiseCCreatureActionSummonerFlameSliceUAEXX_008cbb90.cpp'
-        TestSource = '00/8c/CCreatureActionSummonerFlameSlice_InitialiseCCreatureActionSummonerFlameSliceUAEXX_008cbb90_test.cpp'
+        Source = '00/8c/CCreatureActionSummonerFlameSlice_Initialise_008cbb90.cpp'
+        TestSource = '00/8c/CCreatureActionSummonerFlameSlice_Initialise_008cbb90_test.cpp'
         PassPattern = '008cbb90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008cd470'
         Module = 'CCreatureAction_CastAssassinRush'
-        Source = '00/8c/CCreatureActionCastAssassinRush_InitialiseCCreatureActionCastAssassinRushUAEXXZ_008cd470.cpp'
-        TestSource = '00/8c/CCreatureActionCastAssassinRush_InitialiseCCreatureActionCastAssassinRushUAEXXZ_008cd470_test.cpp'
+        Source = '00/8c/CCreatureActionCastAssassinRush_Initialise_008cd470.cpp'
+        TestSource = '00/8c/CCreatureActionCastAssassinRush_Initialise_008cd470_test.cpp'
         PassPattern = '008cd470_TEST PASS'
     }
     [pscustomobject]@{
@@ -237982,15 +237982,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008d1330'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgIsHitByWithFlourishCGameScriptThingUBENABVCCh_008d1330.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgIsHitByWithFlourishCGameScriptThingUBENABVCCh_008d1330_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgIsHitByWithFlourish_008d1330.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsHitByWithFlourish_008d1330_test.cpp'
         PassPattern = '008d1330_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d15b0'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgIsHitByWithProjectileWeaponCGameScriptThingUB_008d15b0.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgIsHitByWithProjectileWeaponCGameScriptThingUB_008d15b0_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgIsHitByWithProjectileWeapon_008d15b0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsHitByWithProjectileWeapon_008d15b0_test.cpp'
         PassPattern = '008d15b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -238017,22 +238017,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008d1b80'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgWhoTalkedToMeCGameScriptThingUBEAVCScriptThin_008d1b80.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgWhoTalkedToMeCGameScriptThingUBEAVCScriptThin_008d1b80_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgWhoTalkedToMe_008d1b80.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgWhoTalkedToMe_008d1b80_test.cpp'
         PassPattern = '008d1b80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d1ca0'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgExpressionPerformedToCGameScriptThingUBENAAVC_008d1ca0.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgExpressionPerformedToCGameScriptThingUBENAAVC_008d1ca0_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgExpressionPerformedTo_008d1ca0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgExpressionPerformedTo_008d1ca0_test.cpp'
         PassPattern = '008d1ca0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d1dd0'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgWhoExpressedToMeCGameScriptThingUBEAVCScriptT_008d1dd0.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgWhoExpressedToMeCGameScriptThingUBEAVCScriptT_008d1dd0_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgWhoExpressedToMe_008d1dd0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgWhoExpressedToMe_008d1dd0_test.cpp'
         PassPattern = '008d1dd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -238045,8 +238045,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008d21b0'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgWhoKnockedMeOutCGameScriptThingUBEAVCScriptTh_008d21b0.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgWhoKnockedMeOutCGameScriptThingUBEAVCScriptTh_008d21b0_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgWhoKnockedMeOut_008d21b0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgWhoKnockedMeOut_008d21b0_test.cpp'
         PassPattern = '008d21b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -238087,43 +238087,43 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008d3250'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgHitEnemyWithMeleeWeaponCGameScriptThingUBENXZ_008d3250.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgHitEnemyWithMeleeWeaponCGameScriptThingUBENXZ_008d3250_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgHitEnemyWithMeleeWeapon_008d3250.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgHitEnemyWithMeleeWeapon_008d3250_test.cpp'
         PassPattern = '008d3250_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d3350'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgHitFriendWithMeleeWeaponCGameScriptThingUBENX_008d3350.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgHitFriendWithMeleeWeaponCGameScriptThingUBENX_008d3350_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgHitFriendWithMeleeWeapon_008d3350.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgHitFriendWithMeleeWeapon_008d3350_test.cpp'
         PassPattern = '008d3350_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d3450'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgHitEnemyWithRangedWeaponCGameScriptThingUBENX_008d3450.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgHitEnemyWithRangedWeaponCGameScriptThingUBENX_008d3450_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgHitEnemyWithRangedWeapon_008d3450.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgHitEnemyWithRangedWeapon_008d3450_test.cpp'
         PassPattern = '008d3450_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d3550'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgHitFriendWithRangedWeaponCGameScriptThingUBEN_008d3550.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgHitFriendWithRangedWeaponCGameScriptThingUBEN_008d3550_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgHitFriendWithRangedWeapon_008d3550.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgHitFriendWithRangedWeapon_008d3550_test.cpp'
         PassPattern = '008d3550_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d3650'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgHitEnemyWithBareHandsCGameScriptThingUBENXZ_008d3650.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgHitEnemyWithBareHandsCGameScriptThingUBENXZ_008d3650_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgHitEnemyWithBareHands_008d3650.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgHitEnemyWithBareHands_008d3650_test.cpp'
         PassPattern = '008d3650_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d3750'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgHitFriendWithBareHandsCGameScriptThingUBENXZ_008d3750.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgHitFriendWithBareHandsCGameScriptThingUBENXZ_008d3750_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgHitFriendWithBareHands_008d3750.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgHitFriendWithBareHands_008d3750_test.cpp'
         PassPattern = '008d3750_TEST PASS'
     }
     [pscustomobject]@{
@@ -238136,8 +238136,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008d3bf0'
         Module = 'CGameScriptThing'
-        Source = '00/8d/CGameScriptThing_MsgOnCutSceneAnimEventCGameScriptThingUBENAAVCCh_008d3bf0.cpp'
-        TestSource = '00/8d/CGameScriptThing_MsgOnCutSceneAnimEventCGameScriptThingUBENAAVCCh_008d3bf0_test.cpp'
+        Source = '00/8d/CGameScriptThing_MsgOnCutSceneAnimEvent_008d3bf0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgOnCutSceneAnimEvent_008d3bf0_test.cpp'
         PassPattern = '008d3bf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -238192,8 +238192,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008e6940'
         Module = 'CCreatureAction_ReleaseStrengthBerserk'
-        Source = '00/8e/CCreatureActionReleaseStrengthBerserk_FinishActionCCreatureActionReleaseStrengthBerser_008e6940.cpp'
-        TestSource = '00/8e/CCreatureActionReleaseStrengthBerserk_FinishActionCCreatureActionReleaseStrengthBerser_008e6940_test.cpp'
+        Source = '00/8e/CCreatureActionReleaseStrengthBerserk_FinishAction_008e6940.cpp'
+        TestSource = '00/8e/CCreatureActionReleaseStrengthBerserk_FinishAction_008e6940_test.cpp'
         PassPattern = '008e6940_TEST PASS'
     }
     [pscustomobject]@{
@@ -238227,8 +238227,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008f3ad0'
         Module = 'CCreatureAction_DragonLand'
-        Source = '00/8f/CCreatureActionDragonLand_InitialiseCCreatureActionDragonLandUAEXXZ_008f3ad0.cpp'
-        TestSource = '00/8f/CCreatureActionDragonLand_InitialiseCCreatureActionDragonLandUAEXXZ_008f3ad0_test.cpp'
+        Source = '00/8f/CCreatureActionDragonLand_Initialise_008f3ad0.cpp'
+        TestSource = '00/8f/CCreatureActionDragonLand_Initialise_008f3ad0_test.cpp'
         PassPattern = '008f3ad0_TEST PASS'
     }
     [pscustomobject]@{
@@ -238262,36 +238262,36 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00906380'
         Module = 'CCombatSequence_BanditUnblockableAttack'
-        Source = '00/90/CCombatSequenceBanditUnblockableAttack_OnCreateCCombatSequenceBanditUnblockableAttackUA_00906380.cpp'
-        TestSource = '00/90/CCombatSequenceBanditUnblockableAttack_OnCreateCCombatSequenceBanditUnblockableAttackUA_00906380_test.cpp'
+        Source = '00/90/CCombatSequenceBanditUnblockableAttack_OnCreate_00906380.cpp'
+        TestSource = '00/90/CCombatSequenceBanditUnblockableAttack_OnCreate_00906380_test.cpp'
         PassPattern = '00906380_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00908a20'
         Module = 'CCombatSequence_VillagerCombo'
-        Source = '00/90/CCombatSequenceVillagerCombo_OnCreateCCombatSequenceVillagerComboUAEXXZ_00908a20.cpp'
-        TestSource = '00/90/CCombatSequenceVillagerCombo_OnCreateCCombatSequenceVillagerComboUAEXXZ_00908a20_test.cpp'
+        Source = '00/90/CCombatSequenceVillagerCombo_OnCreate_00908a20.cpp'
+        TestSource = '00/90/CCombatSequenceVillagerCombo_OnCreate_00908a20_test.cpp'
         PassPattern = '00908a20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00908b50'
         Module = 'CCombatSequence_VillagerComboUnblockable'
-        Source = '00/90/CCombatSequenceVillagerComboUnblockable_OnCreateCCombatSequenceVillagerComboUnblockableU_00908b50.cpp'
-        TestSource = '00/90/CCombatSequenceVillagerComboUnblockable_OnCreateCCombatSequenceVillagerComboUnblockableU_00908b50_test.cpp'
+        Source = '00/90/CCombatSequenceVillagerComboUnblockable_OnCreate_00908b50.cpp'
+        TestSource = '00/90/CCombatSequenceVillagerComboUnblockable_OnCreate_00908b50_test.cpp'
         PassPattern = '00908b50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009092c0'
         Module = 'CCombatSequence_WillPhysicalShield'
-        Source = '00/90/CCombatSequenceWillPhysicalShield_OnCreateCCombatSequenceWillPhysicalShieldUAEXXZ_009092c0.cpp'
-        TestSource = '00/90/CCombatSequenceWillPhysicalShield_OnCreateCCombatSequenceWillPhysicalShieldUAEXXZ_009092c0_test.cpp'
+        Source = '00/90/CCombatSequenceWillPhysicalShield_OnCreate_009092c0.cpp'
+        TestSource = '00/90/CCombatSequenceWillPhysicalShield_OnCreate_009092c0_test.cpp'
         PassPattern = '009092c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009093f0'
         Module = 'CCombatSequence_WillPhysicalShieldNonMelee'
-        Source = '00/90/CCombatSequenceWillPhysicalShieldNonMelee_OnCreateCCombatSequenceWillPhysicalShieldNonMele_009093f0.cpp'
-        TestSource = '00/90/CCombatSequenceWillPhysicalShieldNonMelee_OnCreateCCombatSequenceWillPhysicalShieldNonMele_009093f0_test.cpp'
+        Source = '00/90/CCombatSequenceWillPhysicalShieldNonMelee_OnCreate_009093f0.cpp'
+        TestSource = '00/90/CCombatSequenceWillPhysicalShieldNonMelee_OnCreate_009093f0_test.cpp'
         PassPattern = '009093f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -238612,9 +238612,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0099aa90'
-        Module = 'CDiskFileWriter'
-        Source = '00/99/CDiskFileWriter_WriteCDiskFileWin32UAEXPBXJPAVCASuspendableProce_0099aa90.cpp'
-        TestSource = '00/99/CDiskFileWriter_WriteCDiskFileWin32UAEXPBXJPAVCASuspendableProce_0099aa90_test.cpp'
+        Module = 'CDiskFileWin32'
+        Source = '00/99/CDiskFileWin32_Write_0099aa90.cpp'
+        TestSource = '00/99/CDiskFileWin32_Write_0099aa90_test.cpp'
         PassPattern = '0099aa90_TEST PASS'
     }
     [pscustomobject]@{
@@ -238847,8 +238847,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009ff590'
         Module = 'CGraphicDataBank'
-        Source = '00/9f/CGraphicDataBank_NotifyEntryAddedCGraphicDataBankMAEXKKABVCArrayD_009ff590.cpp'
-        TestSource = '00/9f/CGraphicDataBank_NotifyEntryAddedCGraphicDataBankMAEXKKABVCArrayD_009ff590_test.cpp'
+        Source = '00/9f/CGraphicDataBank_NotifyEntryAdded_009ff590.cpp'
+        TestSource = '00/9f/CGraphicDataBank_NotifyEntryAdded_009ff590_test.cpp'
         PassPattern = 'PASS'
     }
     [pscustomobject]@{
@@ -239142,8 +239142,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b2ab80'
         Module = 'CEngineLayerRenderer'
-        Source = '00/b2/CEngineLayerRenderer_RenderCEngineLayerRendererUAEXABVCEngineComponen_00b2ab80.cpp'
-        TestSource = '00/b2/CEngineLayerRenderer_RenderCEngineLayerRendererUAEXABVCEngineComponen_00b2ab80_test.cpp'
+        Source = '00/b2/CEngineLayerRenderer_Render_00b2ab80.cpp'
+        TestSource = '00/b2/CEngineLayerRenderer_Render_00b2ab80_test.cpp'
         PassPattern = '00b2ab80_TEST PASS'
     }
     [pscustomobject]@{
@@ -239281,9 +239281,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b684f0'
-        Module = 'CEngineLandscapeRendererCallView'
-        Source = '00/b6/CEngineLandscapeRendererCallView_LoadNewSceneCEngineLandscapeRendererUAENABVCEngi_00b684f0.cpp'
-        TestSource = '00/b6/CEngineLandscapeRendererCallView_LoadNewSceneCEngineLandscapeRendererUAENABVCEngi_00b684f0_test.cpp'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_LoadNewScene_00b684f0.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_LoadNewScene_00b684f0_test.cpp'
         PassPattern = '00b684f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -239499,8 +239499,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00bc5ff0'
         Module = 'CEngineInternalPrimitiveGroup'
-        Source = '00/bc/CEngineInternalPrimitiveGroup_GetBoundingBoxWorldSpaceCEngineInternalPrimitive_00bc5ff0.cpp'
-        TestSource = '00/bc/CEngineInternalPrimitiveGroup_GetBoundingBoxWorldSpaceCEngineInternalPrimitive_00bc5ff0_test.cpp'
+        Source = '00/bc/CEngineInternalPrimitiveGroup_GetBoundingBoxWorldSpace_00bc5ff0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveGroup_GetBoundingBoxWorldSpace_00bc5ff0_test.cpp'
         PassPattern = '00bc5ff0_TEST PASS'
     }
     [pscustomobject]@{
@@ -239547,16 +239547,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bcfcb0'
-        Module = 'CEngineInternalPrimitiveAnimatedMesh_Methods'
-        Source = '00/bc/CEngineInternalPrimitiveAnimatedMeshMethods_InitialiseSimulationCEngineInternalPrimitiveAnim_00bcfcb0.cpp'
-        TestSource = '00/bc/CEngineInternalPrimitiveAnimatedMeshMethods_InitialiseSimulationCEngineInternalPrimitiveAnim_00bcfcb0_test.cpp'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitiveAnimatedMesh_InitialiseSimulation_00bcfcb0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveAnimatedMesh_InitialiseSimulation_00bcfcb0_test.cpp'
         PassPattern = '00bcfcb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bcfde0'
-        Module = 'CEngineInternalPrimitive2DAnimatedMesh_Methods'
-        Source = '00/bc/CEngineInternalPrimitive2DAnimatedMeshMethods_InitialiseSimulationCEngineInternalPrimitive2DAn_00bcfde0.cpp'
-        TestSource = '00/bc/CEngineInternalPrimitive2DAnimatedMeshMethods_InitialiseSimulationCEngineInternalPrimitive2DAn_00bcfde0_test.cpp'
+        Module = 'CEngineInternalPrimitive2DAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_InitialiseSimulation_00bcfde0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_InitialiseSimulation_00bcfde0_test.cpp'
         PassPattern = '00bcfde0_TEST PASS'
     }
     [pscustomobject]@{

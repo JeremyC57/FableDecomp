@@ -28,7 +28,7 @@ public:
 class CThingFilter_HasScriptName {
 public:
     CCharString Name;
-    CThingFilter_HasScriptName(const CCharString& name) : Name(name) {}
+    CThingFilter_HasScriptName(const CCharString& creatureName) : Name(creatureName) {}
 };
 class CThingSearchTools {
 public:
@@ -42,12 +42,12 @@ public:
 };
 class CGameScriptInterface {
 public:
-    virtual void RemoveDeadCreature(const CCharString& name) const;
+    virtual void RemoveDeadCreature(const CCharString& creatureName) const;
     CWorld* World;                                 // +0x04
 };
-void CGameScriptInterface::RemoveDeadCreature(const CCharString& name) const
+void CGameScriptInterface::RemoveDeadCreature(const CCharString& creatureName) const
 {
     CThing* thing = 0;
-    if (World->GetThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(name + "_DEAD_CREATURE"), &thing))
+    if (World->GetThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(creatureName + "_DEAD_CREATURE"), &thing))
         thing->Kill(false);
 }

@@ -1,4 +1,4 @@
-// CStreamingFontDataBankEntry_Methods::CanUnload  @ retail 0x00a63560
+// CStreamingFontDataBankEntry::CanUnload @ 0x00A5F230
 // __fastcall bool CanUnload(CStreamingFontDataBankEntry* this)
 
 #include "engine/CStreamingFontDataBankEntry.h"  // retyped onto the PDB layout; byte parity re-verified

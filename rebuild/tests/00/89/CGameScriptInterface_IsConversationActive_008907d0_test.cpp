@@ -3,7 +3,7 @@
 class CDisplayManager
 {
 public:
-    bool CopyBackBufferToTexture(long a);
+    bool CopyBackBufferToTexture(long conversationID);
 };
 
 class CGameSubSystem
@@ -17,23 +17,23 @@ class CGameScriptInterface
 {
 public:
     CGameSubSystem* m_Sub;
-    virtual bool IsConversationActive(long a) const;
+    virtual bool IsConversationActive(long conversationID) const;
 };
 
 static bool g_called = false;
 static CDisplayManager* g_expected = 0;
 static long g_arg = 0;
 
-bool CDisplayManager::CopyBackBufferToTexture(long a)
+bool CDisplayManager::CopyBackBufferToTexture(long conversationID)
 {
     g_called = (this == g_expected);
-    g_arg = a;
+    g_arg = conversationID;
     return true;
 }
 
-bool CGameScriptInterface::IsConversationActive(long a) const
+bool CGameScriptInterface::IsConversationActive(long conversationID) const
 {
-    return m_Sub->m_DisplayManager->CopyBackBufferToTexture(a);
+    return m_Sub->m_DisplayManager->CopyBackBufferToTexture(conversationID);
 }
 
 int main()

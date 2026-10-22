@@ -1,4 +1,4 @@
-// ?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ @ 0x00b23360
+// CIEngine::GetPrimitiveDrawDistanceFactor @ 0x00b23360
 // Retail: d9 05 d8 de 22 01 c3
 //   fld DWORD PTR ds:0x122ded8
 //   ret
@@ -13,10 +13,10 @@
 // not resolve to that exact address; declaring it extern lets the linker
 // place it while the compiler still emits the fld/ret shape.
 
-extern float g_PrimitiveDrawDistanceFactor;
+extern float g_FloatOne;
 
 float __fastcall CIEngine__GetPrimitiveDrawDistanceFactor(void *engine)
 {
     (void)engine;
-    return g_PrimitiveDrawDistanceFactor;
+    return g_FloatOne;
 }

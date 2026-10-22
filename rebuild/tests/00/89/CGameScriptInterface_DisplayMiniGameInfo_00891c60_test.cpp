@@ -3,21 +3,21 @@ static int g_called = 0;
 static int g_a1 = 0, g_a2 = 0, g_zero = -1;
 static void* g_self = 0;
 struct Target {
-    void Show(int arg1, int arg2, int zero);
+    void Show(int display, int gameType, int zero);
 };
 struct Mgr {
     unsigned char _pad[0x1c8];
     Target* target; // +0x1c8
 };
-void Target::Show(int arg1, int arg2, int zero)
+void Target::Show(int display, int gameType, int zero)
 {
-    g_called = 1; g_self = this; g_a1 = arg1; g_a2 = arg2; g_zero = zero;
+    g_called = 1; g_self = this; g_a1 = display; g_a2 = gameType; g_zero = zero;
 }
 Mgr* g_mgr;
 
-void __stdcall CGameScriptInterface_DisplayMiniGameInfo(int arg1, int arg2)
+void __stdcall CGameScriptInterface_DisplayMiniGameInfo(int display, int gameType)
 {
-    g_mgr->target->Show(arg1, arg2, 0);
+    g_mgr->target->Show(display, gameType, 0);
 }
 
 int main()

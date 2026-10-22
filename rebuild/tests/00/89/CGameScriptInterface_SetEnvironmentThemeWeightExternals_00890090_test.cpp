@@ -16,12 +16,12 @@ static int g_resolveArg = -1;
 extern "C" void* __stdcall Resolve(int a) { g_resolveArg = a; return (void*)0x1234; }
 extern "C" int __fastcall CountOf(void* self) { return g_countReturn; }
 
-void __fastcall CGameScriptInterface_SetEnvironmentThemeWeightExternals(CGameScriptInterface* self, int edx, int name, int arg2)
+void __fastcall CGameScriptInterface_SetEnvironmentThemeWeightExternals(CGameScriptInterface* self, int edx, int name, int weight)
 {
     void* r = Resolve(name);
     int count = CountOf(r);
     if (count > 0) {
-        self->mid->PEnvironment->Do(0, 1, count, arg2);
+        self->mid->PEnvironment->Do(0, 1, count, weight);
     }
 }
 

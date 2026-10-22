@@ -82,15 +82,15 @@ public:
 };
 class CGameScriptInterface {
 public:
-    virtual void EntityForceToLookAtCamera(const CScriptThing& thing, bool look) const;
+    virtual void EntityForceToLookAtCamera(const CScriptThing& looker, bool look) const;
     void* World;                                         // +0x04
 };
-void CGameScriptInterface::EntityForceToLookAtCamera(const CScriptThing& thing, bool look) const
+void CGameScriptInterface::EntityForceToLookAtCamera(const CScriptThing& looker, bool look) const
 {
-    if (thing.IsValid())
+    if (looker.IsValid())
     {
         CTCTargetingBase* tc;
-        if (thing.GetThing()->GetTC(&tc))
+        if (looker.GetThing()->GetTC(&tc))
             tc->LookAtCamera = look;
     }
 }

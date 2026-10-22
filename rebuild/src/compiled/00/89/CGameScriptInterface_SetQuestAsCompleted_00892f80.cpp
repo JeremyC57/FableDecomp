@@ -1,13 +1,13 @@
 #include "engine/CGameScriptInterface.h"
 
-struct CQuestMgr { void Notify(int a0, char a1, int a2, int a3); void Reload(int a0); };
+struct CQuestMgr { void Notify(int questName, char showScreen, int updateLogbook, int showQuestCompleteScreen); void Reload(int questName); };
 extern CQuestMgr* g_questMgr;
 extern char g_someFlag;
 struct CGameScriptInterface_Methods : CGameScriptInterface { void SetQuestProgress(float v); };
 
-void __fastcall CGameScriptInterface_SetQuestAsCompleted(CGameScriptInterface* self, int, int a0, char a1, int a2, int a3)
+void __fastcall CGameScriptInterface_SetQuestAsCompleted(CGameScriptInterface* self, int, int questName, char showScreen, int updateLogbook, int showQuestCompleteScreen)
 {
-    g_questMgr->Notify(a0, a1, a2, a3);
-    if (!a1 && g_someFlag) g_questMgr->Reload(a0);
+    g_questMgr->Notify(questName, showScreen, updateLogbook, showQuestCompleteScreen);
+    if (!showScreen && g_someFlag) g_questMgr->Reload(questName);
     ((CGameScriptInterface_Methods*)self)->SetQuestProgress(1.0f);
 }

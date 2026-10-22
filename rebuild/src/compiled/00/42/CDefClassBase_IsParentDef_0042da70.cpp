@@ -1,4 +1,4 @@
-// ?IsParentDef@CDefClassBase@@UBE_NXZ @ 0x0042da70
+// CDefClassBase::IsParentDef @ 0x0042da70
 // Retail: 32 c0 c3  ->  xor al,al ; ret
 //
 // Virtual const accessor returning bool. Base-class default implementation

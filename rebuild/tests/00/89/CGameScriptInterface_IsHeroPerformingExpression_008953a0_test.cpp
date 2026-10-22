@@ -25,7 +25,7 @@ struct CDefString {
     long m_index;
     CDefString(long i) : m_index(i) { }
     CDefString(const CDefString& o) : m_index(o.m_index) { }
-    bool operator==(const CCharString& name) const { return std::strcmp(g_strings[m_index], name.s) == 0; }
+    bool operator==(const CCharString& expressionName) const { return std::strcmp(g_strings[m_index], expressionName.s) == 0; }
 };
 struct CTCBase_Retail { int x; };
 struct CInterfaceMap_Retail {
@@ -51,7 +51,7 @@ struct CThing_Retail {
     bool m_isPlayer;
     CInterfaceMap_Retail::SEntry m_entries[6]; long m_entryCount;
     bool IsPlayer() { rec("P"); return m_isPlayer; }
-    CTCBase_Retail* AddTC(const CCharString& name, long a, long b) { rec("A"); g_arg[0] = (long)name.s; g_arg[1] = a; g_arg[2] = b; return 0; }
+    CTCBase_Retail* AddTC(const CCharString& expressionName, long a, long b) { rec("A"); g_arg[0] = (long)expressionName.s; g_arg[1] = a; g_arg[2] = b; return 0; }
     void RemoveTC(long type) { rec("R"); g_arg[0] = type; }
     void FinishCurrentAction() { rec("F"); }
     void SheatheAllWeapons() { rec("S"); }
@@ -107,7 +107,7 @@ struct CTCOracleMinigame_Retail { void* m_pGame; };
 struct CTCChest_Retail { long GetNumberOfKeysToUnlock(CCharString& keyName) { rec("K"); keyName = "KEY"; return 3; } };
 struct CGameDefinitionManager_Retail {
     static CGameDefinitionManager_Retail& Get();
-    long GetDefGlobalIndexFromName(const CCharString& name) { rec("I"); return std::strcmp(name.s, "FISH") == 0 ? 77 : 0; }
+    long GetDefGlobalIndexFromName(const CCharString& expressionName) { rec("I"); return std::strcmp(expressionName.s, "FISH") == 0 ? 77 : 0; }
 };
 static CGameDefinitionManager_Retail g_gameDefs;
 CGameDefinitionManager_Retail& CGameDefinitionManager_Retail::Get() { return g_gameDefs; }
@@ -150,7 +150,7 @@ struct CWorldMap_Retail {
     long GetCurrentRegionNumber() { return m_current; }
     CRegion_Retail& GetRegion(long region) { return m_regions[region]; }
     CRegion_Retail& GetRegionEntry(long region) { return m_regions[region]; }
-    long GetRegionNumberFromName(const CCharString& name) { return std::strcmp(name.s, "TWO") == 0 ? 2 : (std::strcmp(name.s, "ZERO") == 0 ? 0 : -1); }
+    long GetRegionNumberFromName(const CCharString& expressionName) { return std::strcmp(expressionName.s, "TWO") == 0 ? 2 : (std::strcmp(expressionName.s, "ZERO") == 0 ? 0 : -1); }
 };
 struct CCombatManager_Retail { void CreatureUnsheathWeapon(CThing_Retail* creature, long mode) { rec("C"); g_arg[0] = (long)creature; g_arg[1] = mode; } };
 struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
@@ -192,7 +192,7 @@ struct CGameScriptInterface {
         if (creature && !creature->m_dead)
             PlayerManager->UnfreezePlayerControls(CurrentPlayer);
     }
-    bool IsHeroPerformingExpression(const CCharString& name) const;
+    bool IsHeroPerformingExpression(const CCharString& expressionName) const;
 };
 static CWorld g_world;
 static CDisplayEngine_Retail g_display;
@@ -213,14 +213,14 @@ static void setup()
 #define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", ADDR, __LINE__); return 1; } } while (0)
 #define SEQ(x) (std::strcmp(g_seq, x) == 0)
 
-bool CGameScriptInterface::IsHeroPerformingExpression(const CCharString& name) const
+bool CGameScriptInterface::IsHeroPerformingExpression(const CCharString& expressionName) const
 {
     CThing_Retail* hero = PlayerManager->GetPlayer()->GetHeroThing();
     if (hero && !hero->m_dead) {
         CTCHeroExpression_Retail* expression;
         if (hero->GetInterface(&expression, 0x8f)) {
             CExpression_Retail* current = expression->m_pCurrentExpression;
-            if (name.IsEmpty() || current->GetDefName() == name)
+            if (expressionName.IsEmpty() || current->GetDefName() == expressionName)
                 return true;
         }
     }

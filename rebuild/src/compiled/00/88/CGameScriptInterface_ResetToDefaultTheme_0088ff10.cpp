@@ -7,7 +7,7 @@ struct CWorld {
     CInner* PEnvironment;
 };
 
-void __fastcall CGameScriptInterface_ResetToDefaultTheme(CGameScriptInterface* self, int edx, int arg)
+void __fastcall CGameScriptInterface_ResetToDefaultTheme(CGameScriptInterface* self, int edx, int duration)
 {
-    self->World->PEnvironment->Method(1, arg);
+    self->World->PEnvironment->Method(1, duration);
 }

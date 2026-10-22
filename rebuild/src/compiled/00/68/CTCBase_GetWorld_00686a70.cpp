@@ -1,4 +1,4 @@
-// GetDisplayEngine @ 0x004c7aa0 (CViewBase)
+// CTCBase::GetWorld @ 0x00686A70
 // Retail:
 //   mov eax, ds:[0x013b8a1c]  ; load global singleton pointer
 //   mov eax, [eax+0x24]       ; return field at +0x24
@@ -15,7 +15,7 @@ struct CViewBase {
 // Global singleton pointer (reloc-masked extern -> ds:[imm32]).
 extern CViewBase* g_pViewBase;
 
-CDisplayEngine* GetDisplayEngine()
+CDisplayEngine* GetWorld()
 {
     return g_pViewBase->m_pDisplayEngine;
 }

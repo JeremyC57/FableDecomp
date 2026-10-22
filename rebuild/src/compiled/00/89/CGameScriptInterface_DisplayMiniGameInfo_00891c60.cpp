@@ -1,5 +1,5 @@
 struct Target {
-    void Show(int arg1, int arg2, int zero);
+    void Show(int display, int gameType, int zero);
 };
 struct Mgr {
     unsigned char _pad[0x1c8];
@@ -7,7 +7,7 @@ struct Mgr {
 };
 extern Mgr* g_mgr;
 
-void __stdcall CGameScriptInterface_DisplayMiniGameInfo(int arg1, int arg2)
+void __stdcall CGameScriptInterface_DisplayMiniGameInfo(int display, int gameType)
 {
-    g_mgr->target->Show(arg1, arg2, 0);
+    g_mgr->target->Show(display, gameType, 0);
 }

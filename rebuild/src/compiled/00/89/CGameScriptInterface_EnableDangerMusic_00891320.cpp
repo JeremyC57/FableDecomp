@@ -3,7 +3,7 @@ enum EMusicSetType { EMS_A };
 
 struct CMusicTarget
 {
-    void CacheMusicSet(EMusicSetType t);
+    void CacheMusicSet(EMusicSetType isEnabled);
 };
 
 struct CWorld
@@ -13,10 +13,10 @@ struct CWorld
 };
 
 struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void CacheMusicSet(EMusicSetType t) const;
+    void CacheMusicSet(EMusicSetType isEnabled) const;
 };
 
-void CGameScriptInterface_Methods::CacheMusicSet(EMusicSetType t) const
+void CGameScriptInterface_Methods::CacheMusicSet(EMusicSetType isEnabled) const
 {
-    World->target_006C->CacheMusicSet(t);
+    World->target_006C->CacheMusicSet(isEnabled);
 }

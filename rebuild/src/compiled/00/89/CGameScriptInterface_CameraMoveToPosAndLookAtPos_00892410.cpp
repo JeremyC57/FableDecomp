@@ -19,7 +19,7 @@ public:
 class CScriptModuleGoToLookAt : public CScriptModuleBase {
 public:
     unsigned char _pad04[0x6c - 4];
-    CScriptModuleGoToLookAt(const C3DVector& pos, const C3DVector& lookAt);   // 0x007187C0
+    CScriptModuleGoToLookAt(const C3DVector& camPos, const C3DVector& lookAt);   // 0x007187C0
 };
 }
 struct CCPPointerInfo {
@@ -60,12 +60,12 @@ public:
 };
 class CGameScriptInterface {
 public:
-    virtual void CameraMoveToPosAndLookAtPos(const C3DVector& pos, const C3DVector& lookAt, float time) const;
+    virtual void CameraMoveToPosAndLookAtPos(const C3DVector& camPos, const C3DVector& lookAt, float time) const;
     CWorld* World;                                       // +0x04
 };
-void CGameScriptInterface::CameraMoveToPosAndLookAtPos(const C3DVector& pos, const C3DVector& lookAt, float time) const
+void CGameScriptInterface::CameraMoveToPosAndLookAtPos(const C3DVector& camPos, const C3DVector& lookAt, float time) const
 {
     CGameCameraManager* manager;
     World->PCurrentGameCamera->GetCameraManager(&manager);
-    manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(pos, lookAt)));
+    manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(camPos, lookAt)));
 }

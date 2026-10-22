@@ -5,11 +5,11 @@ struct CWorld { char pad[0x18]; Inner* PEnvironment; };
 extern void* __stdcall Resolve(int a);          // 0xffbbc620
 extern int __fastcall CountOf(void* self);      // 0x11d380
 
-void __fastcall CGameScriptInterface_SetEnvironmentThemeWeightExternals(CGameScriptInterface* self, int edx, int name, int arg2)
+void __fastcall CGameScriptInterface_SetEnvironmentThemeWeightExternals(CGameScriptInterface* self, int edx, int name, int weight)
 {
     void* r = Resolve(name);
     int count = CountOf(r);
     if (count > 0) {
-        self->World->PEnvironment->Do(0, 1, count, arg2);
+        self->World->PEnvironment->Do(0, 1, count, weight);
     }
 }

@@ -1,13 +1,13 @@
-// CFrontendGameComponent::ChangeTextureColourDepth @ 0x00495610.
+// CIEngine::Initialise @ 0x00B232D0.
 
 class CFrontendGameComponent_00495610
 {
 public:
     bool InitGraphics();
-    void ChangeTextureColourDepth(long);
+    void Initialise(long);
 };
 
-void CFrontendGameComponent_00495610::ChangeTextureColourDepth(long)
+void CFrontendGameComponent_00495610::Initialise(long)
 {
     InitGraphics();
 }

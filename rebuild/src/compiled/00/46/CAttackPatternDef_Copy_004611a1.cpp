@@ -1,4 +1,4 @@
-// CObjectFamilyDef::Copy @ 0x004611d6
+// CAttackPatternDef::Copy @ 0x004611A1
 struct CDefClassBase;
 
 struct SubDef {
