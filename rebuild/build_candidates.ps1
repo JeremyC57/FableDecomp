@@ -269735,6 +269735,13 @@ $catalog = @(
         TestSource = '00/d1/CBHHostage2_Init_00d16bb0_test.cpp'
         PassPattern = '00d16bb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e38f80'
+        Module = 'CAttackingAssassin'
+        Source = '00/e3/CAttackingAssassin_Init_00e38f80.cpp'
+        TestSource = '00/e3/CAttackingAssassin_Init_00e38f80_test.cpp'
+        PassPattern = '00e38f80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
