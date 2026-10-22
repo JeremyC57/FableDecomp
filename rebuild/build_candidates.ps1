@@ -269973,6 +269973,20 @@ $catalog = @(
         TestSource = '00/43/CPlayerGui_AddScreenMessage_00438aa0_test.cpp'
         PassPattern = '00438aa0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0070cad0'
+        Module = 'CAnimSet'
+        Source = '00/70/CAnimSet_GetLastMeshAnim_0070cad0.cpp'
+        TestSource = '00/70/CAnimSet_GetLastMeshAnim_0070cad0_test.cpp'
+        PassPattern = '0070cad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070cc70'
+        Module = 'CAnimSet'
+        Source = '00/70/CAnimSet_GetStartMeshAnim_0070cc70.cpp'
+        TestSource = '00/70/CAnimSet_GetStartMeshAnim_0070cc70_test.cpp'
+        PassPattern = '0070cc70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

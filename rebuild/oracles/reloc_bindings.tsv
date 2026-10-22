@@ -25117,3 +25117,4 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?FormatStringForArea@CPlayerGui@@SIXABUC2DBoxF@@ABUCFontBank@@ABUCWideString@@AAU4@@Z	00437d10	00438aa0
 ?GetFont@CFontBankManager@@QAE?AU?$CCountedPointer@UCFontBank@@@@ABUCCharString@@@Z	009e2c80	00438aa0
 ?GetVVisibleTelevisionScreenArea@CDisplayManager@@QBE?AUC2DBoxF@@XZ	009bece0	00438aa0
+??0C3DAnimationTransitionState@@QAE@ABUCIVCountedPointer@@0M@Z	00a3be70	0070cad0
