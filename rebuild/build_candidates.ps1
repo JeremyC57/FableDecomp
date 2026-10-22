@@ -269000,6 +269000,195 @@ $catalog = @(
         TestSource = '00/69/CInputProcessQuestCompletionUI_ProcessInput_00691130_test.cpp'
         PassPattern = '00691130_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00416953'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_PostInit_00416953.cpp'
+        TestSource = '00/41/CMainGameComponent_PostInit_00416953_test.cpp'
+        PassPattern = '00416953_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00417001'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_Render_00417001.cpp'
+        TestSource = '00/41/CMainGameComponent_Render_00417001_test.cpp'
+        PassPattern = '00417001_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041dc9d'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_AddActionsListenIgnoreOnList_0041dc9d.cpp'
+        TestSource = '00/41/NUISystemCManager_AddActionsListenIgnoreOnList_0041dc9d_test.cpp'
+        PassPattern = '0041dc9d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00427f31'
+        Module = 'NUISystem::CManager'
+        Source = '00/42/NUISystemCManager_CreateStaticSlider_00427f31.cpp'
+        TestSource = '00/42/NUISystemCManager_CreateStaticSlider_00427f31_test.cpp'
+        PassPattern = '00427f31_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042819a'
+        Module = 'NUISystem::CManager'
+        Source = '00/42/NUISystemCManager_CreateStaticSliderBidirectional_0042819a.cpp'
+        TestSource = '00/42/NUISystemCManager_CreateStaticSliderBidirectional_0042819a_test.cpp'
+        PassPattern = '0042819a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a34e'
+        Module = '_Rb_global<bool>'
+        Source = '00/42/Rbglobalbool_Rebalanceforerase_0042a34e.cpp'
+        TestSource = '00/42/Rbglobalbool_Rebalanceforerase_0042a34e_test.cpp'
+        PassPattern = '0042a34e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fb4f0'
+        Module = 'CMapInfo'
+        Source = '00/4f/CMapInfo_LoadBinary_004fb4f0.cpp'
+        TestSource = '00/4f/CMapInfo_LoadBinary_004fb4f0_test.cpp'
+        PassPattern = '004fb4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053ad07'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_AddScrollingChildAndSetOffsets_0053ad07.cpp'
+        TestSource = '00/53/NUISystemCList_AddScrollingChildAndSetOffsets_0053ad07_test.cpp'
+        PassPattern = '0053ad07_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053b0bf'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ComputeScrollBarPosition_0053b0bf.cpp'
+        TestSource = '00/53/NUISystemCList_ComputeScrollBarPosition_0053b0bf_test.cpp'
+        PassPattern = '0053b0bf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053b321'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_RemoveChild_0053b321.cpp'
+        TestSource = '00/53/NUISystemCList_RemoveChild_0053b321_test.cpp'
+        PassPattern = '0053b321_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d720'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_GoForward_0053d720.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_GoForward_0053d720_test.cpp'
+        PassPattern = '0053d720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053da30'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_InitializeRumbleActions_0053da30.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_InitializeRumbleActions_0053da30_test.cpp'
+        PassPattern = '0053da30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e4e0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_CMenuEntry_0053e4e0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_CMenuEntry_0053e4e0_test.cpp'
+        PassPattern = '0053e4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081f6c0'
+        Module = 'CMap'
+        Source = '00/81/CMap_GetGroundFaceNormalAt_0081f6c0.cpp'
+        TestSource = '00/81/CMap_GetGroundFaceNormalAt_0081f6c0_test.cpp'
+        PassPattern = '0081f6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995b10'
+        Module = 'CMemoryDataInputStream'
+        Source = '00/99/CMemoryDataInputStream_ReadCompressed_00995b10.cpp'
+        TestSource = '00/99/CMemoryDataInputStream_ReadCompressed_00995b10_test.cpp'
+        PassPattern = '00995b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be27b0'
+        Module = 'CLocalDetailObjectCollectionType'
+        Source = '00/be/CLocalDetailObjectCollectionType_Load_00be27b0.cpp'
+        TestSource = '00/be/CLocalDetailObjectCollectionType_Load_00be27b0_test.cpp'
+        PassPattern = '00be27b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfb210'
+        Module = 'CLocalDetailPrimitiveMeshZSpriteBatch'
+        Source = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_Load_00bfb210.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_Load_00bfb210_test.cpp'
+        PassPattern = '00bfb210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0600'
+        Module = 'CMagicBarrierGraveyard'
+        Source = '00/ce/CMagicBarrierGraveyard_Main_00ce0600.cpp'
+        TestSource = '00/ce/CMagicBarrierGraveyard_Main_00ce0600_test.cpp'
+        PassPattern = '00ce0600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d29db0'
+        Module = 'CMK_GHC_HERO3'
+        Source = '00/d2/CMKGHCHERO3_Main_00d29db0.cpp'
+        TestSource = '00/d2/CMKGHCHERO3_Main_00d29db0_test.cpp'
+        PassPattern = '00d29db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d58080'
+        Module = 'CMeleeThunder'
+        Source = '00/d5/CMeleeThunder_Main_00d58080.cpp'
+        TestSource = '00/d5/CMeleeThunder_Main_00d58080_test.cpp'
+        PassPattern = '00d58080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9ee20'
+        Module = 'NScript::CQ_MinionCampScript::CMC_SpawnPoint'
+        Source = '00/d9/NScriptCQMinionCampScriptCMCSpawnPoint_Main_00d9ee20.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCMCSpawnPoint_Main_00d9ee20_test.cpp'
+        PassPattern = '00d9ee20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9f270'
+        Module = 'NScript::CQ_MinionCampScript::CMC_Minion'
+        Source = '00/d9/NScriptCQMinionCampScriptCMCMinion_Main_00d9f270.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCMCMinion_Main_00d9f270_test.cpp'
+        PassPattern = '00d9f270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da5490'
+        Module = 'CMagicBarrierGraveyard'
+        Source = '00/da/CMagicBarrierGraveyard_Main_00da5490.cpp'
+        TestSource = '00/da/CMagicBarrierGraveyard_Main_00da5490_test.cpp'
+        PassPattern = '00da5490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1e960'
+        Module = 'CM_BanditTrigger'
+        Source = '00/e1/CMBanditTrigger_Main_00e1e960.cpp'
+        TestSource = '00/e1/CMBanditTrigger_Main_00e1e960_test.cpp'
+        PassPattern = '00e1e960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e292c0'
+        Module = 'CMeetSisterMessenger'
+        Source = '00/e2/CMeetSisterMessenger_Main_00e292c0.cpp'
+        TestSource = '00/e2/CMeetSisterMessenger_Main_00e292c0_test.cpp'
+        PassPattern = '00e292c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e386e0'
+        Module = 'CMeleeThunder'
+        Source = '00/e3/CMeleeThunder_Main_00e386e0.cpp'
+        TestSource = '00/e3/CMeleeThunder_Main_00e386e0_test.cpp'
+        PassPattern = '00e386e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef5cb0'
+        Module = 'NScript::CPersonalScript_EmptyScript::CLookAtMe1'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_Main_00ef5cb0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_Main_00ef5cb0_test.cpp'
+        PassPattern = '00ef5cb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

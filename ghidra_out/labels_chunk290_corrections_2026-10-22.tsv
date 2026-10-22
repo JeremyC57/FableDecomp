@@ -1,0 +1,13 @@
+address	name	evidence
+0042a34e	_Rb_global<bool>::_Rebalance_for_erase	was CMemoryAllocatorVariableSize::Erase; STLport rb-tree body (chunk 290)
+00bfb210	CLocalDetailPrimitiveMeshZSpriteBatch::Load	was vfunc_8 (chunk 290)
+00a22f80	CRightHandedSet::Rotate	was CMatrix3x3::MultiplyByQuaternionRotation (chunk 290)
+006f9be0	NAnimationEvents::CManager::Save	save-context body (chunk 290)
+0053cd05	std::vector<CStateMapEntry>::erase	was CArray_BodyPartMesh::RemoveAt (chunk 290)
+00533bc0	CChangingStateComponent::RemoveChild	callee of CList rows (chunk 290)
+008274b0	std::__introsort_loop	was Navigation/CVectorMap label; STLport sort (chunk 290)
+008270e0	std::__insertion_sort	STLport sort (chunk 290)
+00825b40	std::__unguarded_insertion_sort	STLport sort (chunk 290)
+0042bed4	CAction::CAction	ctor (chunk 290)
+0099a3b0	CBaseObject::operator=	(chunk 290)
+00cbe87f	AddLogbookStoryEntry	(chunk 290)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0053ad07	RELOCATION_MATCH	952v952	PASS	CList::AddScrollingChildAndSetOffsets; advisor A3 form: child.Data local lets the key store sink
+0053b0bf	RELOCATION_MATCH	610v610	PASS	CList::ComputeScrollBarPosition; /Os y-off TU, forceinline ~CDefPointer
+0053b321	RELOCATION_MATCH	797v797	PASS	CList::RemoveChild; cached end local in the scrolling find, fresh end() in the other; named def pointer; if/else for 0/6
+00be27b0	RELOCATION_MATCH	706v706	PASS	CLocalDetailObjectCollectionType::Load
+00bfb210	RELOCATION_MATCH	885v885	PASS	CLocalDetailPrimitiveMeshZSpriteBatch load (vfunc_8)
+00ef5cb0	RELOCATION_MATCH	817v817	PASS	CLookAtMe1::Main
+00ea4de0	DIFFER	528v692	-	ROW LENGTH: the 528-byte body + 5-entry jump table (0x00EA4DE0..0x00EA4FEF) is byte-identical to retail modulo relocations
+00d9f270	RELOCATION_MATCH	823v823	PASS	CMC_Minion::Main
+00d9ee20	RELOCATION_MATCH	582v582	PASS	CMC_SpawnPoint::Main
+00d29db0	RELOCATION_MATCH	963v963	PASS	CMK_GHC_HERO3::Main
+00e1e960	RELOCATION_MATCH	1004v1004	PASS	CM_BanditTrigger::Main; HobbeLeader GameCalls/CTimer model; GetPos inlined via devirtualised local
+00dc21f0	DIFFER	761v750	-	vector<CScriptThing> zero-init: retail initialises it before the loop and runs its dtor 0x008AC970 per iteration and at late exits only
+00ce0600	RELOCATION_MATCH	795v795	PASS	CMagicBarrierGraveyard::Main
+00da5490	RELOCATION_MATCH	779v779	PASS	CMagicBarrierGraveyard::Main (second)
+00416953	RELOCATION_MATCH	738v738	PASS	CMainGameComponent::PostInit
+00417001	RELOCATION_MATCH	620v620	PASS	CMainGameComponent::Render; fsub written before the integer stores
+00417747	SKIP	-v596	-	inline asm fnstcw/fldcw rounding (known lane gap)
+00418289	SKIP	-v564	-	inline asm fnstcw/fldcw rounding + /GS (known lane gap)
+0041dc9d	RELOCATION_MATCH	565v565	PASS	CManager::AddActionsListenIgnoreOnList
+00427f31	RELOCATION_MATCH	617v617	PASS	CManager::CreateStaticSlider
+0042819a	RELOCATION_MATCH	762v762	PASS	CManager::CreateStaticSliderBidirectional
+006f9be0	DIFFER	768v759	-	frame layout: retail 0xa4-byte frame keeps the save context below the CSymbolMap temporary
+0081f6c0	RELOCATION_MATCH	550v550	PASS	CMap::GetGroundFaceNormalAt
+008203a0	DIFFER	906v997	-	register allocation / LICM: retail loads the area as BRX, TLX, BRY, TLY, spills startX and {BRX,BRY} (0x48 frame) and re-tests the inner guard each ro
+00821850	DIFFER	555v551	-	allocator temporary: retail passes one empty local (esp+0x13) to every _Destroy and the finder
+004fb4f0	RELOCATION_MATCH	906v906	PASS	CMapInfo::LoadBinary
+00a22f80	DIFFER	523v523	-	one commuted x87 product in the Up X row (fmul operand order)
+00a56270	DIFFER	706v693	-	x87 scheduling: retail copies the Y/Z words of both input rows into the frame with integer moves and keeps X on the stack
+00a5cb90	SKIP	-v847	-	SSE inline asm with and-esp stack realign (lane gap)
+00e292c0	RELOCATION_MATCH	791v791	PASS	CMeetSisterMessenger::Main; plain inline map dtor: inline at first exit, out of line after
+008e7040	DIFFER	584v588	-	entry esi/edi pushes are shrink-wrapped in ours and the iterator-tag temporary gets its own slot (retail overlays it on the dead argument slot)
+00d58080	RELOCATION_MATCH	633v633	PASS	CMeleeThunder::Main
+00e386e0	RELOCATION_MATCH	523v523	PASS	CMeleeThunder::Main (second)
+009f20b0	DIFFER	596v598	-	register allocation only: retail keeps a zero register in ebx through the first loop (cmp/push ebx, bl store) and reads heap from its argument slot ea
+0042a34e	RELOCATION_MATCH	572v572	PASS	really _Rb_global<bool>::_Rebalance_for_erase
+00a64910	DIFFER	756v757	-	register allocation only: retail keeps this in ebp, info in edx and the near nephew in edi (4 callee-saved pushes)
+00995b10	RELOCATION_MATCH	540v540	PASS	CMemoryDataInputStream::ReadCompressed
+0053d720	RELOCATION_MATCH	585v585	PASS	CMenuEntry::GoForward
+0053da30	RELOCATION_MATCH	658v658	PASS	CMenuEntry::InitializeRumbleActions
+0053e4e0	RELOCATION_MATCH	606v606	PASS	CMenuEntry::~CMenuEntry

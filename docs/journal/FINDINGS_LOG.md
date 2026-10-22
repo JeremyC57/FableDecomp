@@ -388,3 +388,7 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
   are the rows above. Every DIFFER row was re-graded under 4035: only the two QFE rows change. Conclusion: cl 13.10.3077
   is the retail compiler for the whole landed catalog and the lane default; 4035 is needed for exactly the Rich-header
   QFE objects.
+- 2026-10-22 00542780 CIconText::AddIcon parked after ~67 grades (agent289, RST2, C1, A3): our VC7.1 lane treats the x87 store into the address-taken icon as aliasing the `[eax+8]` height load, where retail hoisted that load above it; ushort holders give retail's structure but as 16-bit mov (685). Notes: agent289/probe/advisor/542780/NOTES.md.
+- 2026-10-22 00a22f80 CRightHandedSet::Rotate parked after ~31 grades (C1 x2, RST2): retail's Up X row is M-first and Forward's X row is tx-first; no single source form gives both. Best model: k1 with CMatrix3x4.
+- 2026-10-22 007a1380 CLightningBeam::Activate: now 870v870 (RST2, 3 rounds, 42 grades) via a same-TU read-only _M_insert_overflow stand-in plus C3DVector user ctors. What remains is the CIntelligentPointer temp ctor/operator= ecx-vs-push order. All ~60 landed IP-assignment rows use push-first; only 006C0F00/0093CAB0/007DF770 in the oracles use lea-ecx-first. Test bed: 006C0F00 (109v109). Best: retry_shared/advisor/007a1380/best.cpp.
+- 2026-10-22 0068e510 QuickAccessItems::ProcessInput parked (A3, 23 grades): VC7.1 promotes -1 into ebp from `long button = -1`; retail did not count the init store as a use (a -3 init diagnostic gives 902v902). No legal spelling found.

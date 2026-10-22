@@ -2336,3 +2336,13 @@ address	module	name	length	chunk	reason
 0068e510	CInputProcessQuickAccessItems	?ProcessInput@CInputProcessQuickAccessItems@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	902	hand289	DIFFER(875v902) -- constant -1 CSE in ebp from entry; retail pushes ebx/ebp lazily and spills the special flag to the dead event slot
 00869020	CHitParameters	SetAsModifiedByArmour	955	hand289	DIFFER(971v955) -- make_pair temporaries: retail keeps the pair key in esi through the insert and releases; x87 reload before the augmentation loop
 00542780	CIconText	AddIcon	688	hand289	DIFFER(682v682) -- FrameWidth/FrameHeight movzx load order before the int-to-float conversions (2 instructions)
+00ea4de0	CLostTraderTrader	MakeRandomComment	704	hand290	DIFFER(528v692) -- ROW LENGTH: the 528-byte body + 5-entry jump table (0x00EA4DE0..0x00EA4FEF) is byte-identical to retail modulo relocations
+00dc21f0	CM_RestartMarker	Main	752	hand290	DIFFER(761v750) -- vector<CScriptThing> zero-init: retail initialises it before the loop and runs its dtor 0x008AC970 per iteration and at late exits only
+006f9be0	CManager	Save	768	hand290	DIFFER(768v759) -- frame layout: retail 0xa4-byte frame keeps the save context below the CSymbolMap temporary
+008203a0	CMap	ApplyScriptedMapBrushUpdate	1008	hand290	DIFFER(906v997) -- register allocation / LICM: retail loads the area as BRX, TLX, BRY, TLY, spills startX and {BRX,BRY} (0x48 frame) and re-tests the inner guard each ro
+00821850	CMap	InitCachedVolumes	560	hand290	DIFFER(555v551) -- allocator temporary: retail passes one empty local (esp+0x13) to every _Destroy and the finder
+00a22f80	CMatrix3x3	CMatrix3x3::MultiplyByQuaternionRotation	528	hand290	DIFFER(523v523) -- one commuted x87 product in the Up X row (fmul operand order)
+00a56270	CMatrix3x4	Orthonormalise	704	hand290	DIFFER(706v693) -- x87 scheduling: retail copies the Y/Z words of both input rows into the frame with integer moves and keeps X on the stack
+008e7040	CMeleeCombatAbilityDef	IsAbilityValid	592	hand290	DIFFER(584v588) -- entry esi/edi pushes are shrink-wrapped in ours and the iterator-tag temporary gets its own slot (retail overlays it on the dead argument slot)
+009f20b0	CMemoryAllocator	CMemoryAllocator	608	hand290	DIFFER(596v598) -- register allocation only: retail keeps a zero register in ebx through the first loop (cmp/push ebx, bl store) and reads heap from its argument slot ea
+00a64910	CMemoryAllocatorVariableSize	RemoveFromTreeFixup	768	hand290	DIFFER(756v757) -- register allocation only: retail keeps this in ebp, info in edx and the near nephew in edi (4 callee-saved pushes)
