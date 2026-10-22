@@ -23976,3 +23976,11 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?IsDone@CAT_ConvoyMember@@QAE_NXZ	00f35b30	00f08c30
 ?GetSchoolTimes@CVillage@@QAE_NPAM0@Z	00658acb	0090fdb0
 ?GetUpFromSeat@CAIStateGroup_UsesSeat@@QAEXXZ	00938a10	0090fdb0
+??0CIntelligentPointerThing@@QAE@ABUCBaseIntelligentPointer@@@Z	00930d20	0093a080
+??1CCreatureAction_DeclarePlayerACriminal@@QAE@XZ	00910b20	0093a080
+?AIAction_MoveToThingProximity@CAIStateGroupBase@@QAEJJUCIntelligentPointerThing@@MPA_NJ_N222M@Z	0097e380	0093a080
+?AddMessage@CMessageEventManager@@QAEXJKPBUC3DVector@@PAUCThing@@1MMJ@Z	00687540	0093a080
+?CheckForOtherGuardsNewWarning@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ	00939d70	0093a080
+?IsAnotherGuardAdmonishingPlayer@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ	00939d00	0093a080
+?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ	00939e70	0093a080
+?RemoveMyWarningMessage@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ	00939dd0	0093a080
