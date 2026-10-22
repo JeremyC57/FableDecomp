@@ -598,3 +598,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - **Catalog over-capture after a jump table** (retry 11a, 0095c1f0): code plus jump table match the first 0x23C bytes; the row needs a catalog split, like chunk 280's 00c72200. The landed 009143e0 binds GetPWorld to 008fcfa0, which chunk 279 identified as GetPThingWorld (GetPWorld is 008fcfc0); review at the next relabel pass.
 - **Inlined parameter copies follow parameter order** (C1, 00b47630 SetupDefaultFogStates): two swapped movs in a __forceinline setter were fixed by making it `static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderStateManager* mgr)`, with the manager AFTER the value. VC7.1 emits the inlined live-range copies in parameter order.
 - **Double sum narrowed by a float ctor parameter fixes x87 load order** (B4, 00540980 CEditBox::UpdateDisplayText): `C2DVector((double)home.X + offset, home.Y)`. VC7.1 loads the frame float first for any float sum. An explicit (float) cast also fixes the order but hoists the X store above the temp's lea.
+- **B4 second-queue levers** (chunk 279's 009101c0 and 0091c6a0):
+  - `if (SitDown()) {...} else { Terminate(); return; }` lets VC cross-jump the duplicate tail past `mov ecx,esi`.
+  - A same-TU noinline GetPBestThing stand-in that READS the filter and comparator and writes *best makes the name temp share the marker's slot.
+  - A second test written as a nested `if` after a conditional temporary's destruction keeps retail's order.
+  - Declaring a counter in the else block, not at function scope, keeps ebp free.
+  - Tool: $S/w22/retry_shared/advisor/tools/md.py masks all esp offsets and relocations, so only structural differences show.
