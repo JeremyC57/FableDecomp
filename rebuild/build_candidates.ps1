@@ -202812,9 +202812,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a64130'
-        Module = 'CGenericVar_00a64130'
-        Source = '00/a6/CGenericVar00a64130_ReadFromParserAsSLONG_00a64130.cpp'
-        TestSource = '00/a6/CGenericVar00a64130_ReadFromParserAsSLONG_00a64130_test.cpp'
+        Module = 'CGenericVar'
+        Source = '00/a6/CGenericVar_ReadFromParserAsULONG_00a64130.cpp'
+        TestSource = '00/a6/CGenericVar_ReadFromParserAsULONG_00a64130_test.cpp'
         PassPattern = '00a64130_TEST PASS'
     }
     [pscustomobject]@{
@@ -265625,6 +265625,230 @@ $catalog = @(
         Source = '00/70/CAnimateThing_UpdateCombinationAnimList_0070d390.cpp'
         TestSource = '00/70/CAnimateThing_UpdateCombinationAnimList_0070d390_test.cpp'
         PassPattern = '0070d390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00410be0'
+        Module = 'CPersistContext'
+        Source = '00/41/CPersistContext_Transferlong_00410be0.cpp'
+        TestSource = '00/41/CPersistContext_Transferlong_00410be0_test.cpp'
+        PassPattern = '00410be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042e3ee'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_Input_0042e3ee.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_Input_0042e3ee_test.cpp'
+        PassPattern = '0042e3ee_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab710'
+        Module = 'CPersistContext'
+        Source = '00/4a/CPersistContext_Transferdouble_004ab710.cpp'
+        TestSource = '00/4a/CPersistContext_Transferdouble_004ab710_test.cpp'
+        PassPattern = '004ab710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab7f0'
+        Module = 'CPersistContext'
+        Source = '00/4a/CPersistContext_TransferESaveType_004ab7f0.cpp'
+        TestSource = '00/4a/CPersistContext_TransferESaveType_004ab7f0_test.cpp'
+        PassPattern = '004ab7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cc3f0'
+        Module = 'CPersistContext'
+        Source = '00/4c/CPersistContext_Transfershort_004cc3f0.cpp'
+        TestSource = '00/4c/CPersistContext_Transfershort_004cc3f0_test.cpp'
+        PassPattern = '004cc3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cc4d0'
+        Module = 'CPersistContext'
+        Source = '00/4c/CPersistContext_TransferBinarysignedchar_004cc4d0.cpp'
+        TestSource = '00/4c/CPersistContext_TransferBinarysignedchar_004cc4d0_test.cpp'
+        PassPattern = '004cc4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00619890'
+        Module = 'CPersistContext'
+        Source = '00/61/CPersistContext_TransferVectorECategory_00619890.cpp'
+        TestSource = '00/61/CPersistContext_TransferVectorECategory_00619890_test.cpp'
+        PassPattern = '00619890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006420f0'
+        Module = 'CPersistContext'
+        Source = '00/64/CPersistContext_TransferCRGBColour_006420f0.cpp'
+        TestSource = '00/64/CPersistContext_TransferCRGBColour_006420f0_test.cpp'
+        PassPattern = '006420f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685f80'
+        Module = 'CPersistContext'
+        Source = '00/68/CPersistContext_TransferCOpinionTransientOffset_00685f80.cpp'
+        TestSource = '00/68/CPersistContext_TransferCOpinionTransientOffset_00685f80_test.cpp'
+        PassPattern = '00685f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006babd0'
+        Module = 'CPersistContext'
+        Source = '00/6b/CPersistContext_TransferCFaction_006babd0.cpp'
+        TestSource = '00/6b/CPersistContext_TransferCFaction_006babd0_test.cpp'
+        PassPattern = '006babd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ca680'
+        Module = 'CIVCountedPointer'
+        Source = '00/6c/CIVCountedPointer_operator_006ca680.cpp'
+        TestSource = '00/6c/CIVCountedPointer_operator_006ca680_test.cpp'
+        PassPattern = '006ca680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d4c00'
+        Module = 'CPersistContext'
+        Source = '00/6d/CPersistContext_TransferVectorCNamedLong_006d4c00.cpp'
+        TestSource = '00/6d/CPersistContext_TransferVectorCNamedLong_006d4c00_test.cpp'
+        PassPattern = '006d4c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ad6d0'
+        Module = 'CPersistContext'
+        Source = '00/7a/CPersistContext_TransferEScriptingStateGroups_007ad6d0.cpp'
+        TestSource = '00/7a/CPersistContext_TransferEScriptingStateGroups_007ad6d0_test.cpp'
+        PassPattern = '007ad6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b5470'
+        Module = 'CPersistContext'
+        Source = '00/7b/CPersistContext_TransferVectorCCrimeWaitingForBribe_007b5470.cpp'
+        TestSource = '00/7b/CPersistContext_TransferVectorCCrimeWaitingForBribe_007b5470_test.cpp'
+        PassPattern = '007b5470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00800b90'
+        Module = 'CPersistContext'
+        Source = '00/80/CPersistContext_TransferC2DVector_00800b90.cpp'
+        TestSource = '00/80/CPersistContext_TransferC2DVector_00800b90_test.cpp'
+        PassPattern = '00800b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ce60'
+        Module = 'CIVCountedPointer'
+        Source = '00/83/CIVCountedPointer_CIVCountedPointer_0083ce60.cpp'
+        TestSource = '00/83/CIVCountedPointer_CIVCountedPointer_0083ce60_test.cpp'
+        PassPattern = '0083ce60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092b110'
+        Module = 'CAIStateGroup_ApprenticeHero'
+        Source = '00/92/CAIStateGroupApprenticeHero_Update_0092b110.cpp'
+        TestSource = '00/92/CAIStateGroupApprenticeHero_Update_0092b110_test.cpp'
+        PassPattern = '0092b110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009be2d0'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_CalculateD3DPresentationInterval_009be2d0.cpp'
+        TestSource = '00/9b/CDisplayManager_CalculateD3DPresentationInterval_009be2d0_test.cpp'
+        PassPattern = '009be2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009be340'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_GetRefreshRate_009be340.cpp'
+        TestSource = '00/9b/CDisplayManager_GetRefreshRate_009be340_test.cpp'
+        PassPattern = '009be340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd2b0'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_GetTextureType_009fd2b0.cpp'
+        TestSource = '00/9f/CGraphicDataBank_GetTextureType_009fd2b0_test.cpp'
+        PassPattern = '009fd2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64360'
+        Module = 'CGenericVar'
+        Source = '00/a6/CGenericVar_ReadFromParser_00a64360.cpp'
+        TestSource = '00/a6/CGenericVar_ReadFromParser_00a64360_test.cpp'
+        PassPattern = '00a64360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a643b0'
+        Module = 'CMemoryAllocatorBase'
+        Source = '00/a6/CMemoryAllocatorBase_PublishAlignment_00a643b0.cpp'
+        TestSource = '00/a6/CMemoryAllocatorBase_PublishAlignment_00a643b0_test.cpp'
+        PassPattern = '00a643b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64420'
+        Module = 'CMemoryAreaChunk'
+        Source = '00/a6/CMemoryAreaChunk_SetPermanent_00a64420.cpp'
+        TestSource = '00/a6/CMemoryAreaChunk_SetPermanent_00a64420_test.cpp'
+        PassPattern = '00a64420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64440'
+        Module = 'CMemoryAreaChunk'
+        Source = '00/a6/CMemoryAreaChunk_SetDemandPaged_00a64440.cpp'
+        TestSource = '00/a6/CMemoryAreaChunk_SetDemandPaged_00a64440_test.cpp'
+        PassPattern = '00a64440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64460'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_SetPTreeRoot_00a64460.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_SetPTreeRoot_00a64460_test.cpp'
+        PassPattern = '00a64460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64470'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetPTreeRoot_00a64470.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetPTreeRoot_00a64470_test.cpp'
+        PassPattern = '00a64470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be5ca0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_InvalidateEdge_00be5ca0.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_InvalidateEdge_00be5ca0_test.cpp'
+        PassPattern = '00be5ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be5d40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_GetWorldMapX_00be5d40.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_GetWorldMapX_00be5d40_test.cpp'
+        PassPattern = '00be5d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be5d60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_GetWorldMapY_00be5d60.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_GetWorldMapY_00be5d60_test.cpp'
+        PassPattern = '00be5d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f27ea0'
+        Module = 'CPersistContext'
+        Source = '00/f2/CPersistContext_TransferCWaveRecord3C_00f27ea0.cpp'
+        TestSource = '00/f2/CPersistContext_TransferCWaveRecord3C_00f27ea0_test.cpp'
+        PassPattern = '00f27ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f28610'
+        Module = 'CPersistContext'
+        Source = '00/f2/CPersistContext_TransferCWaveRecord38_00f28610.cpp'
+        TestSource = '00/f2/CPersistContext_TransferCWaveRecord38_00f28610_test.cpp'
+        PassPattern = '00f28610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f333b0'
+        Module = 'CPersistContext'
+        Source = '00/f3/CPersistContext_TransferVectorlong_00f333b0.cpp'
+        TestSource = '00/f3/CPersistContext_TransferVectorlong_00f333b0_test.cpp'
+        PassPattern = '00f333b0_TEST PASS'
     }
 )
 

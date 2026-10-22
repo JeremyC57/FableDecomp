@@ -1,7 +1,7 @@
 address	row_len	batch	label	kind	status	pieces	note
 00410be0	416	2026-10-21_linux_hand266	CPersistContext::Transfer<signed_char>	multi	open	00410be0:27,00410bfb:20,00410c0f:23,00410c26:26,00410c40:37,00410c65:52,00410c9c:50,00410cd0:3,00410ce0:3,00410cf0:3,00410d00:3,00410d10:35,00410d40:30,00410d60:26	catalog row spans a jump table and neighbouring bodies, not one function
 00412e80	224	2026-10-19_linux_hand200	CPersistContext::Transfer<signed_char>	multi	open	00412e80:27,00412e9b:17,00412eac:20,00412ec0:20,00412ed4:37,00412ef9:37,00412f1e:23,00412f40:9,00412f50:9	two functions in the row (two 9-byte zero-store stubs follow); Transfer body itself graded identical (180 bytes)
-0042e3ee	101	2026-10-15_linux_hand149	CNewFrontendGameComponent::Input	prefix	open	0042e3ee:1441	prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function
+0042e3ee	101	2026-10-15_linux_hand149	CNewFrontendGameComponent::Input	prefix	done	0042e3ee:1441	prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function
 0043e430	160	2026-10-15_linux_hand174	CThingFilter_IsValid::operator()	multi	open	0043e430:5,0043e440:7,0043e450:7,0043e460:7,0043e470:91	CThingFilter_IsValid::operator(): row holds several functions (jmp [eax+4] thunk, int3 padding, then four more bodies)
 00449b60	208	2026-10-20_linux_hand201	CPlayerManager::GetMultiplayerColour	multi	open	00449b60:123,00449bdc:17,00449bf0:19,00449c10:19	jump-table switch followed by two more bodies in the row
 00455fa0	42	2026-10-15_linux_hand66	CPersistContext_TransferableSubComponent::CPersistContext_TransferableSubComponent::vfunc_0	multi	done	00455fa0:8,00455fa8:12,00455fb4:22	three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter)

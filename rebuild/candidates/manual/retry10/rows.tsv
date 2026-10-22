@@ -2100,3 +2100,4 @@ address	module	name	length	chunk	reason
 00a8a9d0	C3DMesh2	CalculateBoneKeyframes	880	hand276	DIFFER(876v874) -- first draft: this/offset registers swapped (retail this in ebx, the bone byte offset in ebp with Bones in ecx), x87 operand order of some cofactor pro
 00ac53f0	C3DMeshFileEngineMaterialChunk	C3DMeshFileEngineMaterialChunk	768	hand276	DIFFER(703v755) -- retail builds an `and esp,-8` frame with ebp as frame pointer (material in edi, no zero register, immediate zero stores); ours uses ebp for `material`
 00a24520	C3DMeshLODInfo	BuildMesh	848	hand276	DIFFER(849v847) -- register allocation: retail spills the primitive index to the dead flag slot and reuses esi for Materials; ours spills ok there and keeps i in edi (ba
+0064dd9a	CDrawMiniMap	UpdateRegionExitNames	580	hand911	DIFFER(521v580) -- empty CAllocatorTag/filter temporaries homed at [ebp-1]/[ebp-2] v retail [ebp+0Bh] in the live region arg slot (GOTCHAS lane gap) + frame 0x44 v 0x4c

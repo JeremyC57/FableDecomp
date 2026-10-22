@@ -1,0 +1,34 @@
+address	status	bytes	test	note
+0092b110	RELOCATION_MATCH	276v276	PASS	CAIStateGroup_ApprenticeHero::Update; word-form HasTC guard + byte-form TestTC accessor reproduce the double test; gall.sh/shared q.py shows DIFFER(276v440) against the stale chunk257 oracle
+006ca680	MATCH	54v54	PASS	CIVCountedPointer::operator= (not CCountedPointer); polymorphic pointee, release through an `old` local
+0083ce60	MATCH	20v20	PASS	CIVCountedPointer copy ctor (not CCountedPointer)
+009be2d0	RELOCATION_MATCH	84v84	PASS	jump table; VSync 0/1->ONE, 2->TWO, 3->THREE, 4->FOUR, else IMMEDIATE
+009be340	RELOCATION_MATCH	54v54	PASS	IDirect3D9 slot 8 GetAdapterDisplayMode; throws CCreateDeviceFailed (no /EHsc needed)
+0064dd9a	DIFFER	521v580	-	empty CAllocatorTag/filter temporaries homed at [ebp-1]/[ebp-2] v retail [ebp+0Bh] in the live region arg slot (GOTCHAS lane gap) + frame 0x44 v 0x4c
+00a64360	RELOCATION_MATCH	80v80	PASS	jump table; string arm inlines ReadNextItemAsQuotedString
+009fd2b0	RELOCATION_MATCH	212v212	PASS	jump table; long transparency, `bool uncompressed = !IsCompressed()`, type0 assigned first in each row
+00be5ca0	RELOCATION_MATCH	68v68	PASS	direct 4-case switch over Strip(i)->Tesselated
+00be5d40	MATCH	26v26	PASS	real name GetWorldMapX (catalog FUN_); retail-view tree-node/landscape-map models
+00be5d60	MATCH	26v26	PASS	real name GetWorldMapY (catalog FUN_)
+00a643b0	RELOCATION_MATCH	24v24	PASS	real name PublishAlignment (catalog FUN_): globals 0x13D28D4/0x13D28D8
+00a64460	MATCH	13v13	PASS	engine/CMemoryAllocatorBase.h base
+00a64470	MATCH	7v7	PASS	engine/CMemoryAllocatorBase.h base
+00a64420	MATCH	5v5	PASS	local CMemoryAreaChunk (PDB 0x34 layout)
+00a64440	MATCH	10v10	PASS	local CMemoryAreaChunk (PDB 0x34 layout)
+0042e3ee	RELOCATION_MATCH	1441v1441	PASS	size TU with frame pointer (optimize s on, y off); direction tests as `a || b`; KeyPressed(unsigned short)
+00410be0	RELOCATION_MATCH	208v208	PASS	speed-TU persist switch; traits named in the case-2 block
+004ab710	RELOCATION_MATCH	212v212	PASS	WriteLong((long)value) via __ftol2
+004ab7f0	RELOCATION_MATCH	32v32	PASS	2-arg Transfer<ESaveType> forwarding T() default to 0x4AB640
+004cc3f0	RELOCATION_MATCH	212v212	PASS	speed-TU persist switch
+004cc4d0	RELOCATION_MATCH	66v66	PASS	TransferBinary<signed char>: cases 3,2 only; traits block local
+00619890	RELOCATION_MATCH	180v180	PASS	out-of-line vector clear 0x618170
+006420f0	RELOCATION_MATCH	208v208	PASS	inline WriteColour/ReadColour (hidden-pointer CRGBColour)
+00685f80	RELOCATION_MATCH	264v264	PASS	virtual Write slot +0x10, member TransferBinaryIn
+006babd0	RELOCATION_MATCH	272v272	PASS	function-scope CFaction traits, last arm `return`; gall.sh/shared q.py shows DIFFER(272v326) against the stale chunk248 oracle
+006d4c00	RELOCATION_MATCH	188v188	PASS	inline clear = erase 0x6D44F0
+007ad6d0	RELOCATION_MATCH	216v216	PASS	function-scope zeroed traits
+007b5470	RELOCATION_MATCH	180v180	PASS	out-of-line vector clear 0x7B4BB0; gall.sh/shared q.py shows DIFFER(180v371) against a stale mis-cut oracle
+00800b90	RELOCATION_MATCH	204v204	PASS	inline traits specialisation ReadC2DVector (tail-merged)
+00f27ea0	RELOCATION_MATCH	364v364	PASS	Transfer<CWaveRecord3C> "Waves" sub-component vector, landed 0xF274D0 template
+00f28610	RELOCATION_MATCH	364v364	PASS	Transfer<CWaveRecord38> "Waves" sub-component vector
+00f333b0	RELOCATION_MATCH	188v188	PASS	TransferVector<long>; inline clear = erase 0x46591D
