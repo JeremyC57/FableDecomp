@@ -266943,6 +266943,13 @@ $catalog = @(
         TestSource = '00/f3/CTriangleStripifier2_StripUnusedVerts_00f3b970_test.cpp'
         PassPattern = '00f3b970_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a91180'
+        Module = 'C3DPrimitive2'
+        Source = '00/a9/C3DPrimitive2_ConvertToVBFormatAnimated_00a91180.cpp'
+        TestSource = '00/a9/C3DPrimitive2_ConvertToVBFormatAnimated_00a91180_test.cpp'
+        PassPattern = '00a91180_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
