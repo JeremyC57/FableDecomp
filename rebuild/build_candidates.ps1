@@ -265977,6 +265977,41 @@ $catalog = @(
         TestSource = '00/c4/CDrawAutoPickups_OnVisibilityChange_00c43fd0_test.cpp'
         PassPattern = '00c43fd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004fea30'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetAdjacentMaps_004fea30.cpp'
+        TestSource = '00/4f/CWorldMap_GetAdjacentMaps_004fea30_test.cpp'
+        PassPattern = '004fea30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b9a0'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_operator_0099b9a0.cpp'
+        TestSource = '00/99/CWideString_operator_0099b9a0_test.cpp'
+        PassPattern = '0099b9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d0fc0'
+        Module = 'CBankFile'
+        Source = '00/9d/CBankFile_GetAllocatedBlockSize_009d0fc0.cpp'
+        TestSource = '00/9d/CBankFile_GetAllocatedBlockSize_009d0fc0_test.cpp'
+        PassPattern = '009d0fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abcaf0'
+        Module = 'C3DMeshFileUniqueVerticesChunk'
+        Source = '00/ab/C3DMeshFileUniqueVerticesChunk_ReadFromFile_00abcaf0.cpp'
+        TestSource = '00/ab/C3DMeshFileUniqueVerticesChunk_ReadFromFile_00abcaf0_test.cpp'
+        PassPattern = '00abcaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af59a0'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_Update_00af59a0.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_Update_00af59a0_test.cpp'
+        PassPattern = '00af59a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

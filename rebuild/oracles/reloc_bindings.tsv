@@ -23779,3 +23779,7 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ??0CCombatAction_StabThing@@QAE@PAUCThingCreatureBase@@PAUCThing@@@Z	0094e5f0	009624d0
 ?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@QAE_NXZ	00961c50	009624d0
 ?SelectAndDrawPrimitive@CDrawAutoPickups@@QAEJXZ	00c43de0	00c43fd0
+??$sort@U?$pair@KUC3DVector@NParticleEngine@@@NParticleEngine@@U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@2@@NParticleEngine@@YIXPAU?$pair@KUC3DVector@NParticleEngine@@@0@0U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@0@@Z	0076c000	00af59a0
+??$sort@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@NParticleEngine@@U?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@2@@NParticleEngine@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0U?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@0@@Z	0076c1a0	00af59a0
+??4?$vector@U?$pair@KUC3DVector@NParticleEngine@@@NParticleEngine@@@NParticleEngine@@QAEAAU01@ABU01@@Z	006e2000	00af59a0
+??4?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@NParticleEngine@@@NParticleEngine@@QAEAAU01@ABU01@@Z	006e22f0	00af59a0
