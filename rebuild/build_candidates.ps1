@@ -269931,6 +269931,27 @@ $catalog = @(
         TestSource = '00/f2/CQArenaScript_GivePrizeFund_00f21300_test.cpp'
         PassPattern = '00f21300_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00487180'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_GetFreeCamera_00487180.cpp'
+        TestSource = '00/48/CPlayer_GetFreeCamera_00487180_test.cpp'
+        PassPattern = '00487180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00798770'
+        Module = 'CTCForcePushed'
+        Source = '00/79/CTCForcePushed_FinishBeingForcePushed_00798770.cpp'
+        TestSource = '00/79/CTCForcePushed_FinishBeingForcePushed_00798770_test.cpp'
+        PassPattern = '00798770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bd699'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_UpdateInventoryAnim_005bd699.cpp'
+        TestSource = '00/5b/CTCInventoryBase_UpdateInventoryAnim_005bd699_test.cpp'
+        PassPattern = '005bd699_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

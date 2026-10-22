@@ -25105,3 +25105,8 @@ _LZSS_Decompress	00c069d0	00995fb0
 ??_7?$CSpawnedFunc@UCQ_AmbushTradersScript@NScript@@@@6B@	012c6cc0	00f0f680
 ?RefreshSpyAllegiences@CQ_AmbushTradersScript@NScript@@QAEXXZ	00f05a10	00f0f680
 ?WatchForArcherSpawnConditions@CQ_AmbushTradersScript@NScript@@QAEXXZ	00f0f910	00f0f680
+?UpdateInventoryAnimXAxis@CTCInventoryBase@@QAEXXZ	005bcea4	005bd699
+?UpdateInventoryAnimZAxis@CTCInventoryBase@@QAEXXZ	005bcef8	005bd699
+?g_XAxis@@3UC3DVector@@B	0137cdfc	005bd699
+?g_YAxis@@3UC3DVector@@B	0137cdf0	005bd699
+?g_ZAxis@@3UC3DVector@@B	0137ce08	005bd699

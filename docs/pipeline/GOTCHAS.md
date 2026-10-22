@@ -675,3 +675,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - **Hoisting:** VC hoists a terminate test that appears in both if-arms.
   - **Flags:** 00459bb6 (CPlayerGuiDef ctor) needs `#pragma optimize("s",on)`.
   - **Purity scan:** PDB member names such as `ArenaNakedBoastReward` trip a case-insensitive purity scan.
+- **Advisor b41 (2026-10-22; E1 00487180 CPlayer::GetFreeCamera, D1 00798770 CTCForcePushed::FinishBeingForcePushed and 005bd699 CTCInventoryBase::UpdateInventoryAnim):**
+  - **Scheduling window (00487180):** VC7.1 schedules within a fixed-size window counted in x87 IR instructions, not bytes. When a hoisted push or constant load lands N slots late, add N folded IR instructions with left-operand forms: `0.5f * (r * (3.0f - ls * (r * r)))`, `X*X + (Y*Y + Z*Z)`. Copies, renames and reorderings add no IR and change nothing.
+  - **By-value parameter (00798770):** a by-value C3DVector parameter to a `__forceinline` hit helper groups the GetPosition() loads before the pushes. This needs no user copy ctor and the direction built through the three-float ctor.
+  - **Release placement (005bd699):** releasing a def temporary through an inline ReleaseReference() on the pointee keeps the `dec` between the fmul and the fdivr.
