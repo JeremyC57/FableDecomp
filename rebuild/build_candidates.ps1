@@ -270232,6 +270232,13 @@ $catalog = @(
         TestSource = '00/f0/CQCinemaTestScript_ArenaIntroduction_00f02210_test.cpp'
         PassPattern = '00f02210_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b91140'
+        Module = 'CEnginePrimitiveManagerOcclusionBase'
+        Source = '00/b9/CEnginePrimitiveManagerOcclusionBase_RenderBoundingBox_00b91140.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerOcclusionBase_RenderBoundingBox_00b91140_test.cpp'
+        PassPattern = '00b91140_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

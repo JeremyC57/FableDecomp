@@ -699,3 +699,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - **resize:** the one-argument inline `resize` wrapper loads the count before the temporary.
   - **CRGBColour by value:** needs `__forceinline` ctor and copy ctor.
   - **Lane gap:** 00d38d20, 00d6c830 and 00d8a240 merge shared tails into the last predecessor in retail and the first in the lane.
+- **Advisor b46 (2026-10-22, RST2, 00b91140 RenderBoundingBox, empty-tag rule):** a template `_M_insert_overflow` with an unnamed tag, plus `handle` passed as a named local straight to push_back, plus the PDB signature `DrawDebugVisibilityTestBox(const CMatrix3x4&, unsigned long)` with one if/else colour variable.
