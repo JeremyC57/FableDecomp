@@ -266887,6 +266887,13 @@ $catalog = @(
         TestSource = '00/50/CWorldMap_GetLevelDimensions_00506e30_test.cpp'
         PassPattern = '00506e30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006bfb90'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6b/CTCBuyableHouse_NeedsMainSignPost_006bfb90.cpp'
+        TestSource = '00/6b/CTCBuyableHouse_NeedsMainSignPost_006bfb90_test.cpp'
+        PassPattern = '006bfb90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
