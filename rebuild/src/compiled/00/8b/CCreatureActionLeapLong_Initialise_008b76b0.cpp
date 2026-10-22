@@ -1,0 +1,113 @@
+// CCreatureAction_LeapLong::Initialise() -- leap 3 units back along the facing when that point is in navigable line of
+// sight (MOVEMENT_LONG_BACK), else 3 units forward (MOVEMENT_LONG_FORWARD, made non-solid to the combat target), else
+// SPECIAL_IDLE with the leap flag set; then the base Initialise
+// Leaf: ?Initialise@CCreatureAction_LeapLong
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008B76B0, length 624 bytes, plain `ret` (virtual).
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound (const copy) 0x004365B0, interface 2's
+//   GetFacing (slot 70, +0x118, C3DVector by hidden pointer), CThing::GetPosition 0x004C73D0,
+//   CTCCreatureNavigation::IsPosNavLineOfSightTo 0x006CBA20 (interface 7), CCharString 0x0099EBF0 / ~ 0x0099EAE0,
+//   CCombatActionBase::SetAnimationName 0x008574D0 / Initialise 0x00857520, CThing::AddTC 0x004C9D60,
+//   CTCSolidToThing::AddThingNotSolidTo 0x00770FA0.
+// Layout: retail CCombatActionBase is 0x114 bytes (landed WhisperSommersaultForward::Initialise 0x008C0820); the flag
+//   at +0x114 is this class's first member; PTarget +0xa8; CThing interface bitset +0x20, map +0x44.
+struct CThing;
+struct CTCBase;
+struct CTCParamsBase;
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector() {}
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
+    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    C3DVector operator+(const C3DVector& o) const { C3DVector r; r.X = X + o.X; r.Y = Y + o.Y; r.Z = Z + o.Z; return r; }
+};
+struct CCharString {
+    void* PStringData;
+    CCharString(const char* text, long length = -1);  // 0x0099EBF0
+    ~CCharString();                                   // 0x0099EAE0
+};
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);                   // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;       // 0x004365B0
+};
+struct CTCFacing {                                    // interface 2
+#define VF(n) virtual void v##n();
+#define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
+    VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
+    virtual C3DVector GetFacing() const;              // slot 70 (+0x118)
+};
+struct CTCCreatureNavigation {                        // interface 7
+    bool IsPosNavLineOfSightTo(const C3DVector& pos); // 0x006CBA20
+};
+struct CTCSolidToThing {
+    void AddThingNotSolidTo(CThing* thing);           // 0x00770FA0
+};
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];                   // +0x20
+    CInterfaceMap m_interfaces;                       // +0x44
+    const C3DVector& GetPosition() const;             // 0x004C73D0
+    CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            return true;
+        }
+        return false;
+    }
+};
+struct CBaseIntelligentPointer {
+    virtual void v00();
+    CThing* m_pItem;                                  // +4
+    CThing* GetPItem() const;                         // 0x00A01B50
+};
+struct CCombatActionBase {                            // retail sizeof 0x114
+    virtual void v00();
+    virtual void Initialise();                        // 0x00857520
+    unsigned char _pad04[4];
+    CBaseIntelligentPointer PCreature;                // +0x08
+    unsigned char _pad10[0xa8 - 0x10];
+    CBaseIntelligentPointer PTarget;                  // +0xa8
+    unsigned char _padb0[0x114 - 0xb0];
+    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    CThing* GetCreature() const { return PCreature.GetPItem(); }
+};
+struct CCreatureAction_LeapLong : CCombatActionBase {
+    bool NoRoom;                                      // +0x114
+    virtual void Initialise();
+};
+
+void CCreatureAction_LeapLong::Initialise()
+{
+    CTCFacing* facingTC;
+    GetCreature()->GetInterface(&facingTC, 2);
+    C3DVector facing = facingTC->GetFacing();
+    C3DVector target = GetCreature()->GetPosition() - facing * 3.0f;
+    CTCCreatureNavigation* nav;
+    GetCreature()->GetInterface(&nav, 7);
+    if (nav->IsPosNavLineOfSightTo(target)) {
+        SetAnimationName("MOVEMENT_LONG_BACK");
+        NoRoom = false;
+        CCombatActionBase::Initialise();
+        return;
+    }
+    target = facing * 3.0f + GetCreature()->GetPosition();
+    if (nav->IsPosNavLineOfSightTo(target)) {
+        SetAnimationName("MOVEMENT_LONG_FORWARD");
+        NoRoom = false;
+        CTCSolidToThing* solid = GetCreature()->AddTC("CTCSolidToThing", false, 0);
+        solid->AddThingNotSolidTo(PTarget.GetPItem());
+        CCombatActionBase::Initialise();
+        return;
+    }
+    SetAnimationName("SPECIAL_IDLE");
+    NoRoom = true;
+    CCombatActionBase::Initialise();
+}

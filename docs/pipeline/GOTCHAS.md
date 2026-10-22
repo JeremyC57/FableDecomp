@@ -615,3 +615,11 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - A class-scope `static void* __fastcall operator new(unsigned int)` for the 0x00BEB540 pool allocator is accepted by the lander; only the global operator new must not be redeclared.
   - The CalcSWLighting family (00b45720/00b45a40/00b45cf0) is parked on the Normalise reciprocal spill (24 forms); a probable lane gap.
 - **A same-TU stand-in must READ what it writes** (A3, 00657d90 DrawExpressionList): a `__declspec(noinline)` GetExpressionSlotOffsets whose body reads Start/Finish/End before writing them (grow-and-append) stops the vector escaping, removes the spill word and keeps _M_start in ebp. A write-only stand-in makes VC delete the ctor's zero stores.
+- **A trailing `eb 90` is stripped from the oracle** (chunk 283, 00846100): a function that ends in `jmp rel8` with displacement 0x90 grades one byte short, because q.py and finish.py strip trailing 0x90/0xCC as padding. Land it against the full row bytes from PROMPT.md.
+- **Retail calling the MSVCR71 malloc thunk 0x00BFEA0E is RELOC_IDENTITY for operator new** (chunk 283, 00846410): write `malloc(sizeof(T))`, as free() replaces operator delete.
+- **Chunk 283 lessons:**
+  - `CCharString==(const char*)` and the counted-pointer `operator=` need __forceinline when used more than once.
+  - Write script accessors with the null arm first in the ternary.
+  - A `ret 8` factory ctor is `T(src->V2(), *src->V1())`, because arguments are evaluated right to left.
+  - When retail inlines the first push_back and calls the second out of line, write the first as a __forceinline STLport body.
+  - Keep VC-lane tests to plain arrays; STL use can give TCC_FAIL.

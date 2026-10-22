@@ -1,0 +1,13 @@
+address	name	evidence
+00e0a510	HandleTrader	entity-script method, labelled CCreatureAction_TrollWhackGroundBase (chunk 283)
+00e83230	HandleVillageSelection	entity-script method, labelled CCreatureAction_TrollWhackGroundBase (chunk 283)
+00d3a1a0	CDF_Fireheart::Main	matched with that leaf (chunk 283)
+009c9070	NGameText::CDataBank::GetPTextEntry	text entry getter (chunk 283)
+009c8890	NGameText::CDataBank::GetPGroupEntry	group entry getter (chunk 283)
+006a1440	GetThingInPrimarySlot	primary slot getter (chunk 283)
+009ba900	PeekNextItemType	peeks the next item type (chunk 283)
+00692940	GetPWorld	returns the world pointer (chunk 283)
+00692950	GetWorld	returns the world (chunk 283)
+009cd850	CBankFile::InternalClose	matched with that leaf (chunk 283)
+00ed9cf0	CV_TalentlessBardScript::Method_00ed9cf0	talentless bard script method (chunk 283)
+00eda0c0	CV_TalentlessBardScript::Method_00eda0c0	talentless bard script method (chunk 283)

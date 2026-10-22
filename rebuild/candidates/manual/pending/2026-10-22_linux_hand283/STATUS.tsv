@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008bf280	DIFFER	638v638	-	register swap esi/edi for weapon + frame slot order
+008bf800	DIFFER	570v570	-	loop-entry eax/ecx swap + SaySpeech arm tail-merge order
+00845040	DIFFER	554v547	-	register allocation: receiver ptr ebp vs ebx, const 4 cached
+00995770	RELOCATION_MATCH	629v629	PASS	inline ReadValue<T> over the landed Read(buffer,size)
+00995fb0	RELOCATION_MATCH	629v629	PASS	landed ReadZlibCompressed models + ReadShort
+009cd850	RELOCATION_MATCH	538v538	PASS	label: CBankFile::InternalClose (Close jmp target); __forceinline DeallocateMemory/CopyRange
+009ad6e0	RELOCATION_MATCH	524v524	PASS	inline Touch, Release() member, named className local
+008b6c30	DIFFER	546v546	-	x87 scale spill form + register choice in copies/vcall
+00ed9cf0	RELOCATION_MATCH	971v971	PASS	label: CV_TalentlessBardScript::IsHeroDressedInArmour (not CDF_ThreeSuits::DressedAsEvilMage); && chain bools
+00eda0c0	RELOCATION_MATCH	971v971	PASS	label: CV_TalentlessBardScript::IsHeroDressedInWillRobe; evil, plain, good order
+00846bc0	DIFFER	527v527	-	register allocation: retail keeps the input interface in ebx and spills the inventory to the frame slot; ours keeps the inventory in ebx and spills the interface
+008f5220	RELOCATION_MATCH	528v528	PASS	advisor A2: user C3DVector copy ctor + named offset local (mouth += offset)
+0087cb10	DIFFER	561v561	-	frame only: retail packs the temp-destruction flag, every lookup key and the out variables into one frame word (sub esp,8); ours gives the keys/out variables a third word (sub esp,0xc), all code otherwise identical
+00854b90	DIFFER	568v566	-	the LIGHTNING_END key: retail keeps it in esi and forwards it into the second push_back's in-place copy (loads hoisted above the stores); ours stores it straight into the pair and copies the 16 bytes member by member from memory (pair copy ctor, C3DVector copy ctor, std::pair template, by-value key and unnamed-key forms all tried)
+009ae150	RELOCATION_MATCH	568v568	PASS	two counted-pointer flavours (escaping temp RT+null; named Release/AddRef); const char* "" temp
+00846410	RELOCATION_MATCH	580v580	PASS	same-TU GetDef/GetSubDef stand-ins; list ctor zero-init + local sentinel; X/Y-only C3DVector offset; name in own block
+008c2240	RELOCATION_MATCH	587v587	PASS	named filter before position; marker+target in own block (key/dummy name reuse marker slot)
+008cb250	DIFFER	587v588	-	bool/flag register swap around the && def temp; Create/GetDummy argument evaluation order
+008cb940	RELOCATION_MATCH	580v580	PASS	const char* animation name; same-TU GetSubDef/GetEffectFromString stand-ins; counted def temps in && chains
+0069f9e0	RELOCATION_MATCH	596v596	PASS	GetCreature/GetItem accessors + same-TU GetSubDef stand-in; def ptr declared before item local
+008430b0	RELOCATION_MATCH	607v607	PASS	CDefString->CCharString inline conversion operator: GetString temp built before the pushes (explicit GetString call builds it late)
+008b76b0	RELOCATION_MATCH	624v624	PASS	const LowerBound overload (0x4365B0) in ternary GetInterface; ctor-form operator-, member-assign operator+ (X,Y,Z order into a temp then copied)
+008b7040	DIFFER	770v770	-	ebx/ebp swap of target vs &PCreature only (Normalise spill fixed with const-ref operator*= FastInvSqrt lever)
+00845350	RELOCATION_MATCH	617v617	PASS	&& chain with by-value def copy + name temp; same-TU stand-ins; operator= with named item local (this+0xb5 loaded after GetPItem)
+008455c0	RELOCATION_MATCH	641v641	PASS	ShowTrophy Initialise shape inside the live-trophy guard; emitter Kill(true) guard
+00849700	DIFFER	719v719	-	CreateThingObject arg evaluation order (creatures before def index, GetPosition late); SetText font loaded before pushes in retail
+009c8990	DIFFER	604v604	-	frame one dword larger: insert#1 pair temp not overlapped with the group-loop speaker/value word (Add by-value wrapper needed for the 2nd insert copy)
+009ade90	RELOCATION_MATCH	699v699	PASS	inline CStringParser ctor calling Init; per-iteration named strings; "lit" + CCharString error message
+009acee0	DIFFER	1030v1017	-	retail caches separator.PStringData in edi across the out-of-line operator== call (lane gap: register caching across calls); name/separator frame words swapped
+009c9280	DIFFER	923v861	-	first pass (3 grades): frame 0x18 v 0x20 and register roles; retail early returns skip the vector free and keep the speaker-table base/index in edi/ebp across both compares
+008c64f0	RELOCATION_MATCH	682v682	PASS	same-TU stand-ins for both GetSubDefs, the physical GetDef AND the weapon-hand out-param query (the last one fixed the frame word sharing, 0x1c->0x18); named creature/def locals put GetPItem before the pushed &def; if/else slot lookups tail-merge
+00846100	RELOCATION_MATCH	687v687	PASS	same-TU list::remove(const long&) stand-in (with the GetDef/GetSubDef ones) fixed the whole register allocation; NOTE q.py strips the trailing 0x90 of the final `jmp` (eb 90) so it prints DIFFER(687v686): parity_of against the full 687-byte row is RELOCATION_MATCH
+006a03a0	DIFFER	827v825	-	first pass (6 grades): frame one word smaller, zero register edi v ebp, creature C2DCoordI converts X before Y (retail Y first through a temp); ctor forms (body, const&, copy ctor) do not move it
+00d3a1a0	RELOCATION_MATCH	753v753	PASS	label: CDF_Fireheart::Main (catalog name "in" truncated); CScriptThing GetPosition/GetAngleXY inline with the null arm first (`PThing == 0 ? zero : ...`); 16-byte holder (own vptr) around the Me copy for the entity setup call; const char* args to const CCharString& params
+00e0a510	RELOCATION_MATCH	778v778	PASS	label WRONG: not CCreatureAction_TrollWhackGroundBase, an entity script state hook (Game +4, Me +8, IsInterrupted 0xF35B30) for an infected-village trader; __forceinline CCharString==(const char*) with sete null arm + Compare 0x411570 (else only the first compare inlines); CRGBColour Set order R,G,B,A
+00e83230	DIFFER	818v820	branch-1 Game/vtable register caching; inline PImp assign fixed by info-first locals (vs6); 11 variants
+008c4fd0	DIFFER	722v722	frame-slot assignment (index/def/boss), CDefPointer release shape, init ctor eax reuse; GetValidPositions arg order fixed by named world/tools locals, C3DVector copy ctor fixed load order; 8 variants
+00854dd0	DIFFER	702v720	x87 schedule of direction/normalise and edi/ebp role swap; 7 variants (operator- forms, copy ctor, length order, explicit members)
+008548b0	DIFFER	748v723	first-pass shape (4 variants): register roles (this esi v edi), def-pointer release and parameter stores scheduling
+00c1efc0	RELOCATION_MATCH	853v853	PASS; /EHsc; packed-type factory (12 cases, EH states in source order); label is a forge autoname

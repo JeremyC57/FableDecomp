@@ -267583,6 +267583,147 @@ $catalog = @(
         TestSource = '00/bd/CEnginePrimitiveManagerAnimatedMeshesBase_CreateInternalPrimitive_00bd6df0_test.cpp'
         PassPattern = '00bd6df0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0069f9e0'
+        Module = 'CCreatureAction_UnsheatheItemFromInventory'
+        Source = '00/69/CCreatureActionUnsheatheItemFromInventory_PerformAction_0069f9e0.cpp'
+        TestSource = '00/69/CCreatureActionUnsheatheItemFromInventory_PerformAction_0069f9e0_test.cpp'
+        PassPattern = '0069f9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008430b0'
+        Module = 'CCreatureAction_PerformExpression'
+        Source = '00/84/CCreatureActionPerformExpression_CCreatureActionPerformExpression_008430b0.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpression_CCreatureActionPerformExpression_008430b0_test.cpp'
+        PassPattern = '008430b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00845350'
+        Module = 'CCreatureAction_ShowTrophy'
+        Source = '00/84/CCreatureActionShowTrophy_Initialise_00845350.cpp'
+        TestSource = '00/84/CCreatureActionShowTrophy_Initialise_00845350_test.cpp'
+        PassPattern = '00845350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008455c0'
+        Module = 'CCreatureAction_ShowTrophy'
+        Source = '00/84/CCreatureActionShowTrophy_PerformAction_008455c0.cpp'
+        TestSource = '00/84/CCreatureActionShowTrophy_PerformAction_008455c0_test.cpp'
+        PassPattern = '008455c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b76b0'
+        Module = 'CCreatureAction_LeapLong'
+        Source = '00/8b/CCreatureActionLeapLong_Initialise_008b76b0.cpp'
+        TestSource = '00/8b/CCreatureActionLeapLong_Initialise_008b76b0_test.cpp'
+        PassPattern = '008b76b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c2240'
+        Module = 'CCreatureAction_JackScream'
+        Source = '00/8c/CCreatureActionJackScream_PerformAction_008c2240.cpp'
+        TestSource = '00/8c/CCreatureActionJackScream_PerformAction_008c2240_test.cpp'
+        PassPattern = '008c2240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c64f0'
+        Module = 'CCreatureAction_TrollThrowProjectile'
+        Source = '00/8c/CCreatureActionTrollThrowProjectile_Initialise_008c64f0.cpp'
+        TestSource = '00/8c/CCreatureActionTrollThrowProjectile_Initialise_008c64f0_test.cpp'
+        PassPattern = '008c64f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cb940'
+        Module = 'CCreatureAction_SummonerDead'
+        Source = '00/8c/CCreatureActionSummonerDead_Initialise_008cb940.cpp'
+        TestSource = '00/8c/CCreatureActionSummonerDead_Initialise_008cb940_test.cpp'
+        PassPattern = '008cb940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f5220'
+        Module = 'CCreatureAction_SnapDragonFast'
+        Source = '00/8f/CCreatureActionSnapDragonFast_PerformAction_008f5220.cpp'
+        TestSource = '00/8f/CCreatureActionSnapDragonFast_PerformAction_008f5220_test.cpp'
+        PassPattern = '008f5220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995770'
+        Module = 'CDataInputStream'
+        Source = '00/99/CDataInputStream_ReadDateAndTime_00995770.cpp'
+        TestSource = '00/99/CDataInputStream_ReadDateAndTime_00995770_test.cpp'
+        PassPattern = '00995770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995fb0'
+        Module = 'CDataInputStream'
+        Source = '00/99/CDataInputStream_ReadCompressed_00995fb0.cpp'
+        TestSource = '00/99/CDataInputStream_ReadCompressed_00995fb0_test.cpp'
+        PassPattern = '00995fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ad6e0'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_LoadDef_009ad6e0.cpp'
+        TestSource = '00/9a/CDefinitionManager_LoadDef_009ad6e0_test.cpp'
+        PassPattern = '009ad6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ade90'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_ParseStringForSymbols_009ade90.cpp'
+        TestSource = '00/9a/CDefinitionManager_ParseStringForSymbols_009ade90_test.cpp'
+        PassPattern = '009ade90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ae150'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_CompileSubDefinition_009ae150.cpp'
+        TestSource = '00/9a/CDefinitionManager_CompileSubDefinition_009ae150_test.cpp'
+        PassPattern = '009ae150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cd850'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_InternalClose_009cd850.cpp'
+        TestSource = '00/9c/CBankFile_InternalClose_009cd850_test.cpp'
+        PassPattern = '009cd850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1efc0'
+        Module = 'CFactory'
+        Source = '00/c1/CFactory_Create_00c1efc0.cpp'
+        TestSource = '00/c1/CFactory_Create_00c1efc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1efc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3a1a0'
+        Module = 'CDF_Fireheart'
+        Source = '00/d3/CDFFireheart_Main_00d3a1a0.cpp'
+        TestSource = '00/d3/CDFFireheart_Main_00d3a1a0_test.cpp'
+        PassPattern = '00d3a1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0a510'
+        Module = 'CTraderScript'
+        Source = '00/e0/CTraderScript_HandleTrader_00e0a510.cpp'
+        TestSource = '00/e0/CTraderScript_HandleTrader_00e0a510_test.cpp'
+        PassPattern = '00e0a510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed9cf0'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_IsHeroDressedInArmour_00ed9cf0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_IsHeroDressedInArmour_00ed9cf0_test.cpp'
+        PassPattern = '00ed9cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eda0c0'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_IsHeroDressedInWillRobe_00eda0c0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_IsHeroDressedInWillRobe_00eda0c0_test.cpp'
+        PassPattern = '00eda0c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
