@@ -1,0 +1,5 @@
+address	name	evidence
+00cefcc0	Tutorial_CombatMultiplier	was Tutorial_LowHealth (chunk 288)
+0041c260	CGraphicInfoFrame::GetFrame	leaf ?GetFrame@CGraphicInfoFrame@@ checked in the object (chunk 288)
+009ff8d0	CGraphicInfo::GetFrame	wrapper around 0x0041C260; leaf ?GetFrame@CGraphicInfo@@ (chunk 288)
+006cb6e0	CTCCreatureNavigation::GetNearbyWanderPosition	was CEditControlCentre::DeactivateThemeDensityDisplay in one labels file (chunk 288)

@@ -2318,3 +2318,11 @@ address	module	name	length	chunk	reason
 008c12d0	CCombatAction_StrikeResponseJackOfBladesIntoRush	?Initialise@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ	816	hand282	DIFFER(809v808) -- parked: register allocation (&PCreature edi v retail ebp, frame 0x38 v 0x3c); lane gap
 006e99b0	CCombatManager	GetDefenderZone	864	hand282	DIFFER(852v852) -- parked: one immediate zero-store slot (toPredicted.Z = 0); lane gap
 008f3310	CCreatureAction_DragonFireBlastBase	?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ	800	hand282	DIFFER(796v796) -- parked: one x87 scheduling slot (mov ecx,edi before fsub); lane gap
+0089ce70	CGameScriptInterface	?IsThingAwareOfOtherThingInAnyWay@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z	624	hand288	DIFFER(610v616) -- x87 square order/CSE in the inline fast Normalise, min lea order, merged return-true epilogues
+0089feb0	CGameScriptInterface	CGameScriptInterface::AddCrimeCommitted	560	hand288	DIFFER(567v559) -- regalloc: victim in ebx, criminal spilled; retail keeps criminal in ebx, deed in dead arg slot
+008a7a70	CGameScriptInterface	?TeleportAllFollowersToHeroPosition@CGameScriptInterface@@UBEXXZ	752	hand288	DIFFER(721v738) -- regalloc: hero in ebx + edi zero register; retail hero in ebp, spilled for final loop
+00704860	CGameScriptThingManager	CreateScriptThing	544	hand288	DIFFER(538v531) -- extra unused 8-byte frame slot + esi zero register in the not-found path
+00d6aea0	CHTE_AssaultGuard	Main	736	hand288	DIFFER(721v721) -- one lea hoisted above the inner wait loop's terminate jne
+00d701c0	CHTG_FreedomFighter	Main	864	hand288	DIFFER(850v850) -- two frame slots swapped (exit point vs copied position)
+006d8f10	CHeroExperienceDef	CHeroExperienceDef::Transfer	692	hand288	DIFFER(693v692) -- shrink-wrapped ebp save (retail pushes ebp late); lane gap
+006dd1c0	CHeroExperienceDef	CHeroExperienceDef::ReadFromStream	520	hand288	DIFFER(520v520) -- frame packing of count/key-traits/insert-result slots
