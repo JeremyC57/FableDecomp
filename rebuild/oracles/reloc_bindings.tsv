@@ -23576,3 +23576,4 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?SetAsLookAtThing@CBrainOutput@@QAEXPBUCThing@@J@Z	0093e760	0097ec00
 ?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBUCThing@@@Z	0097e270	0097ec00
 ?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z	0097e2d0	0097ec00
+?CreateObject@@YIPAUCThingObject@@JPBUC3DVector@@JPAMKABUCCharString@@@Z	00703210	00848500

@@ -264919,6 +264919,13 @@ $catalog = @(
         TestSource = '00/97/CAIStateGroupBase_AIActionMoveToPosProximity_0097e890_test.cpp'
         PassPattern = '0097e890_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00848500'
+        Module = 'CCreatureAction_GetPlateFromCupboard'
+        Source = '00/84/CCreatureActionGetPlateFromCupboard_PerformAction_00848500.cpp'
+        TestSource = '00/84/CCreatureActionGetPlateFromCupboard_PerformAction_00848500_test.cpp'
+        PassPattern = '00848500_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
