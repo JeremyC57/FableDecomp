@@ -269378,6 +269378,111 @@ $catalog = @(
         TestSource = '00/b1/NParticleEngineCPSCAttractor_ReadBinary_00b18390_test.cpp'
         PassPattern = '00b18390_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00459e46'
+        Module = 'CPlayerGuiDef'
+        Source = '00/45/CPlayerGuiDef_CPlayerGuiDef_00459e46.cpp'
+        TestSource = '00/45/CPlayerGuiDef_CPlayerGuiDef_00459e46_test.cpp'
+        PassPattern = '00459e46_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045be2b'
+        Module = 'CEnvironmentDef'
+        Source = '00/45/CEnvironmentDef_operator_0045be2b.cpp'
+        TestSource = '00/45/CEnvironmentDef_operator_0045be2b_test.cpp'
+        PassPattern = '0045be2b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045f854'
+        Module = 'CSpecialAbilitiesBerserkDef'
+        Source = '00/45/CSpecialAbilitiesBerserkDef_operator_0045f854.cpp'
+        TestSource = '00/45/CSpecialAbilitiesBerserkDef_operator_0045f854_test.cpp'
+        PassPattern = '0045f854_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00461f7c'
+        Module = 'CHeroCombatDef'
+        Source = '00/46/CHeroCombatDef_operator_00461f7c.cpp'
+        TestSource = '00/46/CHeroCombatDef_operator_00461f7c_test.cpp'
+        PassPattern = '00461f7c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00465eb3'
+        Module = 'CGlobalDef'
+        Source = '00/46/CGlobalDef_operator_00465eb3.cpp'
+        TestSource = '00/46/CGlobalDef_operator_00465eb3_test.cpp'
+        PassPattern = '00465eb3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adfdc0'
+        Module = 'CParticleProgram'
+        Source = '00/ad/CParticleProgram_OptimiseConstraints_00adfdc0.cpp'
+        TestSource = '00/ad/CParticleProgram_OptimiseConstraints_00adfdc0_test.cpp'
+        PassPattern = '00adfdc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae2230'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_WriteToFile_00ae2230.cpp'
+        TestSource = '00/ae/CParticleProgram_WriteToFile_00ae2230_test.cpp'
+        PassPattern = '00ae2230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeac90'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_DumpInfo_00aeac90.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_DumpInfo_00aeac90_test.cpp'
+        PassPattern = '00aeac90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeefe0'
+        Module = 'CParticleEmitter'
+        Source = '00/ae/CParticleEmitter_DatabaseCopy_00aeefe0.cpp'
+        TestSource = '00/ae/CParticleEmitter_DatabaseCopy_00aeefe0_test.cpp'
+        PassPattern = '00aeefe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af0380'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/af/NParticleEngineCParticleEmitter_CParticleEmitter_00af0380.cpp'
+        TestSource = '00/af/NParticleEngineCParticleEmitter_CParticleEmitter_00af0380_test.cpp'
+        PassPattern = '00af0380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af4660'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_ReadBinary_00af4660.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_ReadBinary_00af4660_test.cpp'
+        PassPattern = '00af4660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0b370'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_DatabaseCopy_00b0b370.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_DatabaseCopy_00b0b370_test.cpp'
+        PassPattern = '00b0b370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b22310'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b2/NParticleEngineCPSCSplineBase_InterpolateTo_00b22310.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBase_InterpolateTo_00b22310_test.cpp'
+        PassPattern = '00b22310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef5200'
+        Module = 'NScript::CPersonalScript_EmptyScript'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200_test.cpp'
+        PassPattern = '00ef5200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc500'
+        Module = 'NScript::CPersonalScript_AardvarkScript'
+        Source = '00/ef/NScriptCPersonalScriptAardvarkScript_Main_00efc500.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptAardvarkScript_Main_00efc500_test.cpp'
+        PassPattern = '00efc500_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
