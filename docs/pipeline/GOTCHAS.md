@@ -614,3 +614,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - An STLport tag argument with no zero store in retail means the tag struct has an empty user ctor.
   - A class-scope `static void* __fastcall operator new(unsigned int)` for the 0x00BEB540 pool allocator is accepted by the lander; only the global operator new must not be redeclared.
   - The CalcSWLighting family (00b45720/00b45a40/00b45cf0) is parked on the Normalise reciprocal spill (24 forms); a probable lane gap.
+- **A same-TU stand-in must READ what it writes** (A3, 00657d90 DrawExpressionList): a `__declspec(noinline)` GetExpressionSlotOffsets whose body reads Start/Finish/End before writing them (grow-and-append) stops the vector escaping, removes the spill word and keeps _M_start in ebp. A write-only stand-in makes VC delete the ctor's zero stores.
