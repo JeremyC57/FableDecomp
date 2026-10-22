@@ -267885,6 +267885,97 @@ $catalog = @(
         TestSource = '00/9a/CDefinitionManager_DoCompilePathList_009af480_test.cpp'
         PassPattern = '009af480_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00f09260'
+        Module = 'CQ_AmbushTradersScript'
+        Source = '00/f0/CQAmbushTradersScript_WatchForHeroAttackOnSentry_00f09260.cpp'
+        TestSource = '00/f0/CQAmbushTradersScript_WatchForHeroAttackOnSentry_00f09260_test.cpp'
+        PassPattern = '00f09260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f09950'
+        Module = 'CQ_AmbushTradersScript'
+        Source = '00/f0/CQAmbushTradersScript_WatchForHeroAttackOnContact_00f09950.cpp'
+        TestSource = '00/f0/CQAmbushTradersScript_WatchForHeroAttackOnContact_00f09950_test.cpp'
+        PassPattern = '00f09950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1fcf0'
+        Module = 'CQR_EscortTraderScript'
+        Source = '00/e1/CQREscortTraderScript_WatchForExpressionFollow_00e1fcf0.cpp'
+        TestSource = '00/e1/CQREscortTraderScript_WatchForExpressionFollow_00e1fcf0_test.cpp'
+        PassPattern = '00e1fcf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1fef0'
+        Module = 'CQR_EscortTraderScript'
+        Source = '00/e1/CQREscortTraderScript_WatchForExpressionWait_00e1fef0.cpp'
+        TestSource = '00/e1/CQREscortTraderScript_WatchForExpressionWait_00e1fef0_test.cpp'
+        PassPattern = '00e1fef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6b750'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_WatchForRegionEntry_00e6b750.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_WatchForRegionEntry_00e6b750_test.cpp'
+        PassPattern = '00e6b750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d97170'
+        Module = 'CQ_HobbeCaveScript'
+        Source = '00/d9/CQHobbeCaveScript_CheckJamesKilled_00d97170.cpp'
+        TestSource = '00/d9/CQHobbeCaveScript_CheckJamesKilled_00d97170_test.cpp'
+        PassPattern = '00d97170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00715110'
+        Module = 'NTCScriptedControl::CActionFireProjectileWeapon'
+        Source = '00/71/NTCScriptedControlCActionFireProjectileWeapon_OnAdd_00715110.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionFireProjectileWeapon_OnAdd_00715110_test.cpp'
+        PassPattern = '00715110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcdc50'
+        Module = 'CArtefact'
+        Source = '00/dc/CArtefact_Main_00dcdc50.cpp'
+        TestSource = '00/dc/CArtefact_Main_00dcdc50_test.cpp'
+        PassPattern = '00dcdc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef84d0'
+        Module = 'CCham'
+        Source = '00/ef/CCham_Main_00ef84d0.cpp'
+        TestSource = '00/ef/CCham_Main_00ef84d0_test.cpp'
+        PassPattern = '00ef84d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e53d90'
+        Module = 'CV_BeardyBaldyScript'
+        Source = '00/e5/CVBeardyBaldyScript_WatchForAttack_00e53d90.cpp'
+        TestSource = '00/e5/CVBeardyBaldyScript_WatchForAttack_00e53d90_test.cpp'
+        PassPattern = '00e53d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e36390'
+        Module = 'CV_ArcheryCompetitionScript'
+        Source = '00/e3/CVArcheryCompetitionScript_WatchForAttack_00e36390.cpp'
+        TestSource = '00/e3/CVArcheryCompetitionScript_WatchForAttack_00e36390_test.cpp'
+        PassPattern = '00e36390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed9790'
+        Module = 'CV_TalentlessBardScript'
+        Source = '00/ed/CVTalentlessBardScript_WatchForAttack_00ed9790.cpp'
+        TestSource = '00/ed/CVTalentlessBardScript_WatchForAttack_00ed9790_test.cpp'
+        PassPattern = '00ed9790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee6a40'
+        Module = 'CV_TourGuideScript'
+        Source = '00/ee/CVTourGuideScript_WatchForNoFollowers_00ee6a40.cpp'
+        TestSource = '00/ee/CVTourGuideScript_WatchForNoFollowers_00ee6a40_test.cpp'
+        PassPattern = '00ee6a40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
