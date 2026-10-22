@@ -24715,3 +24715,5 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?IsActiveThreadTerminating@CLeader@@QAE_NXZ	00f35b30	00ef3f00
 ?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@QAEXABUCScriptThing@@MJ_N111@Z	007e7300	00ef3f00
 ?SetPredicate@CLeader@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00ef3f00
+?Update@CComponent@NUISystem@@UAEXM@Z	0052c7e0	005367f3
+?g_ComponentList@NUISystem@@3V?$list@PAUCComponent@NUISystem@@@std@@A	013b8a98	005367f3

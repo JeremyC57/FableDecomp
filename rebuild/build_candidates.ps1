@@ -268986,6 +268986,13 @@ $catalog = @(
         TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Main_00ef3f00_test.cpp'
         PassPattern = '00ef3f00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005367f3'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_Update_005367f3.cpp'
+        TestSource = '00/53/NUISystemCList_Update_005367f3_test.cpp'
+        PassPattern = '005367f3_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
