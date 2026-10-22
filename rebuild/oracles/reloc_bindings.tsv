@@ -23844,3 +23844,5 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?CalculateScoreForHit@CV_ArcheryCompetitionScript@@QAEXJM@Z	00e36ca0	00e369b0
 ?IsActiveThreadTerminating@CAC_DummyStatic@@QBE_NXZ	00f35b30	00e369b0
 ??0CEngineTexturePalette@@QAE@PAUCGraphicDataBank@@_NK@Z	00bf90a0	00bdd2f0
+?GetMessageFromTextIndex@@YI?AUCSubtitledMessage@@KPBD@Z	004cea60	00717c50
+?M_insert_overflow@CSubtitledMessageArray@@QAEXPAUCSubtitledMessage@@ABU2@ABU__false_type@@K_N@Z	004d2760	00717c50

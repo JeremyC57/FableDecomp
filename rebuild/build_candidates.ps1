@@ -266376,6 +266376,13 @@ $catalog = @(
         TestSource = '00/bd/CEngineLandscapeMap_CEngineLandscapeMap_00bdd2f0_test.cpp'
         PassPattern = '00bdd2f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00717c50'
+        Module = 'NTCScriptedControl::CActionTalkToThing'
+        Source = '00/71/NTCScriptedControlCActionTalkToThing_CActionTalkToThing_00717c50.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkToThing_CActionTalkToThing_00717c50_test.cpp'
+        PassPattern = '00717c50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
