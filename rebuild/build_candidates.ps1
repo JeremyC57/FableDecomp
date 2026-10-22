@@ -266012,6 +266012,223 @@ $catalog = @(
         TestSource = '00/af/NParticleEngineCParticleSystem_Update_00af59a0_test.cpp'
         PassPattern = '00af59a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0043e470'
+        Module = 'CRGBFloatColour'
+        Source = '00/43/CRGBFloatColour_CRGBFloatColour_0043e470.cpp'
+        TestSource = '00/43/CRGBFloatColour_CRGBFloatColour_0043e470_test.cpp'
+        PassPattern = '0043e470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9380'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_OnCreate_005d9380.cpp'
+        TestSource = '00/5d/CTCInventoryItem_OnCreate_005d9380_test.cpp'
+        PassPattern = '005d9380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e3ea0'
+        Module = 'CTCQuestCompletionUI'
+        Source = '00/5e/CTCQuestCompletionUI_IsHeroControlledByPlayer_005e3ea0.cpp'
+        TestSource = '00/5e/CTCQuestCompletionUI_IsHeroControlledByPlayer_005e3ea0_test.cpp'
+        PassPattern = '005e3ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005eb080'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_SetStateAfterOK_005eb080.cpp'
+        TestSource = '00/5e/CTCTavernGame_SetStateAfterOK_005eb080_test.cpp'
+        PassPattern = '005eb080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ca5a0'
+        Module = 'CTCHero'
+        Source = '00/6c/CTCHero_OnCreate_006ca5a0.cpp'
+        TestSource = '00/6c/CTCHero_OnCreate_006ca5a0_test.cpp'
+        PassPattern = '006ca5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c9770'
+        Module = 'CTCCreatureGeneratorCreator'
+        Source = '00/7c/CTCCreatureGeneratorCreator_OnSerialise_007c9770.cpp'
+        TestSource = '00/7c/CTCCreatureGeneratorCreator_OnSerialise_007c9770_test.cpp'
+        PassPattern = '007c9770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007da360'
+        Module = 'CTCTavernGameCardBlackjack'
+        Source = '00/7d/CTCTavernGameCardBlackjack_FrameUpdate_007da360.cpp'
+        TestSource = '00/7d/CTCTavernGameCardBlackjack_FrameUpdate_007da360_test.cpp'
+        PassPattern = '007da360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eeb20'
+        Module = 'CTCSmashableBarrier'
+        Source = '00/7e/CTCSmashableBarrier_Smash_007eeb20.cpp'
+        TestSource = '00/7e/CTCSmashableBarrier_Smash_007eeb20_test.cpp'
+        PassPattern = '007eeb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eec50'
+        Module = 'CTCSmashableBase'
+        Source = '00/7e/CTCSmashableBase_OnDie_007eec50.cpp'
+        TestSource = '00/7e/CTCSmashableBase_OnDie_007eec50_test.cpp'
+        PassPattern = '007eec50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eec90'
+        Module = 'CTCSmashableBase'
+        Source = '00/7e/CTCSmashableBase_OnCreate_007eec90.cpp'
+        TestSource = '00/7e/CTCSmashableBase_OnCreate_007eec90_test.cpp'
+        PassPattern = '007eec90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f4e10'
+        Module = 'CTCSmashableWindow'
+        Source = '00/7f/CTCSmashableWindow_Smash_007f4e10.cpp'
+        TestSource = '00/7f/CTCSmashableWindow_Smash_007f4e10_test.cpp'
+        PassPattern = '007f4e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f4e80'
+        Module = 'CTCStockItem'
+        Source = '00/7f/CTCStockItem_OnCreate_007f4e80.cpp'
+        TestSource = '00/7f/CTCStockItem_OnCreate_007f4e80_test.cpp'
+        PassPattern = '007f4e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f4ed0'
+        Module = 'CTCStockItem'
+        Source = '00/7f/CTCStockItem_OnSerialise_007f4ed0.cpp'
+        TestSource = '00/7f/CTCStockItem_OnSerialise_007f4ed0_test.cpp'
+        PassPattern = '007f4ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f7870'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/7f/CTCActivationReceptorBase_FrameUpdate_007f7870.cpp'
+        TestSource = '00/7f/CTCActivationReceptorBase_FrameUpdate_007f7870_test.cpp'
+        PassPattern = '007f7870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fc820'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_SetPhase_007fc820.cpp'
+        TestSource = '00/7f/CTCKraken_SetPhase_007fc820_test.cpp'
+        PassPattern = '007fc820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fc8e0'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_OnInitialActivate_007fc8e0.cpp'
+        TestSource = '00/7f/CTCKraken_OnInitialActivate_007fc8e0_test.cpp'
+        PassPattern = '007fc8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3e330'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_vfunc53_00a3e330.cpp'
+        TestSource = '00/a3/CSoundManagerLH_vfunc53_00a3e330_test.cpp'
+        PassPattern = '00a3e330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3e350'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_vfunc7_00a3e350.cpp'
+        TestSource = '00/a3/CSoundManagerLH_vfunc7_00a3e350_test.cpp'
+        PassPattern = '00a3e350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3e380'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_vfunc8_00a3e380.cpp'
+        TestSource = '00/a3/CSoundManagerLH_vfunc8_00a3e380_test.cpp'
+        PassPattern = '00a3e380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3e3c0'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_vfunc50_00a3e3c0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_vfunc50_00a3e3c0_test.cpp'
+        PassPattern = '00a3e3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aab9c0'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc16_00aab9c0.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc16_00aab9c0_test.cpp'
+        PassPattern = '00aab9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaba00'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc1_00aaba00.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc1_00aaba00_test.cpp'
+        PassPattern = '00aaba00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaba10'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc2_00aaba10.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc2_00aaba10_test.cpp'
+        PassPattern = '00aaba10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaba20'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc6_00aaba20.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc6_00aaba20_test.cpp'
+        PassPattern = '00aaba20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaba40'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc7_00aaba40.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc7_00aaba40_test.cpp'
+        PassPattern = '00aaba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaba60'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc17_00aaba60.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc17_00aaba60_test.cpp'
+        PassPattern = '00aaba60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaba80'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc11_00aaba80.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc11_00aaba80_test.cpp'
+        PassPattern = '00aaba80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aabac0'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc22_00aabac0.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc22_00aabac0_test.cpp'
+        PassPattern = '00aabac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aabb00'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc21_00aabb00.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc21_00aabb00_test.cpp'
+        PassPattern = '00aabb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aabb60'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_vfunc13_00aabb60.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_vfunc13_00aabb60_test.cpp'
+        PassPattern = '00aabb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9fe40'
+        Module = 'CFadeinSummoner'
+        Source = '00/d9/CFadeinSummoner_GetAlphaChange_00d9fe40.cpp'
+        TestSource = '00/d9/CFadeinSummoner_GetAlphaChange_00d9fe40_test.cpp'
+        PassPattern = '00d9fe40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

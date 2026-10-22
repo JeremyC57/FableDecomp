@@ -1,0 +1,8 @@
+address	name	evidence
+007f4e10	CTCSmashableWindow::Smash	matched with leaf ?Smash@CTCSmashableWindow@@; manifest said Barrier (chunk 913)
+005d9380	CTCInventoryItem::OnCreate	vfunc_4 is OnCreate (chunk 913)
+00567d60	std::basic_string::append	STLport append(first, last, forward_iterator_tag), not CTCElectrocutedEffect::ReplaceString (chunk 913)
+005ea950	CTCTavernGame::PlaySound	not CTCBetting PlaySoundW (callee, chunk 913)
+0059d9ad	CTCInventoryTrade::ResetTradeList	resets the trade list, not CMemoryAllocator::ClearPerformanceStats (callee, chunk 913)
+005d9aa0	GetTattooCardDef	manifest said GetHairCardDef, which is 005d9a10 (callee, chunk 913)
+00593139	std::vector<std::pair<long,long> >::erase	not MedianCut::GetNewTreeNode (callee, chunk 913)

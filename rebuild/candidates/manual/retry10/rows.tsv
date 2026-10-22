@@ -2130,3 +2130,6 @@ address	module	name	length	chunk	reason
 009552c0	CAIStateGroup_MazeShieldedChase	CAIStateGroup_MazeShieldedChase::Update	864	hand278	DIFFER(862v861) -- hand-released def pointer frame word reused for the proximity float; move-result jump into the shared check (4 tries)
 00954f40	CAIStateGroup_MazeTeleport	CAIStateGroup_MazeTeleport::Update	608	hand278	DIFFER(604v604) -- /GS; code identical, frame slot order of position/found/filter/name only (VC7.1 packs by type class; 12 own + 16 advisor tries)
 00955c90	CAIStateGroup_MazeTutorialBattle	CAIStateGroup_MazeTutorialBattle::Update	976	hand278	DIFFER(916v970) -- counted-def release inlining, by-value intelligent pointer built in the argument slot, defender-zone switch shape (3 tries)
+00567d60	CTCElectrocutedEffect	ReplaceString	280	hand913	DIFFER(281v280) -- all bytes match; trailing int3 after noreturn call (verifier gap)
+005aceda	CTCInventoryTrade	OpenInventory	1067	hand913	DIFFER(1113v1067) -- this homing / shrink-wrapped pushes, latch lea hoist, tail cross-jump
+005e3f00	CTCQuestCompletionUI	DrawPreparePrimitivesForRendering	295	hand913	DIFFER(295v295) -- PBlack load scheduled after the LastRenderTime store

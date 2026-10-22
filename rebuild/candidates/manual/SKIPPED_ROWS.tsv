@@ -41,7 +41,7 @@ address	row_len	batch	label	kind	status	pieces	note
 007c977c	292	2026-10-20_linux_hand230	CTCCreatureGeneratorCreator::OnSerialise	single	open	007c977c:288	row starts mid-function: the body begins at 0x007C9770 (mov al,[esp+8]; sub esp,10h; push ebx; xor ebx,ebx; cmp al,bl)
 007da360	160	2026-10-15_linux_hand170	CTCTavernGameCardBlackjack::FrameUpdate	multi	open	007da360:50,007da3a0:92	two functions in the row (FrameUpdate tail jumps, second body at +0x40)
 007eeb20	144	2026-10-15_linux_hand169	CTCSmashableBarrier::Smash	multi	open	007eeb20:86,007eeb80:6,007eeb90:10,007eeba0:4	row holds Smash plus three more functions after int3 padding (0x007EEB80, 0x007EEB90, 0x007EEBA0)
-007eec50	160	2026-10-15_linux_hand170	CTCSmashableBase::OnDie	multi	open	007eec50:53,007eec90:93	two functions in the row (OnDie ret at +0x34, second body at +0x40)
+007eec50	160	2026-10-15_linux_hand170	CTCSmashableBase::OnDie	multi	done	007eec50:53,007eec90:93	two functions in the row (OnDie ret at +0x34, second body at +0x40)
 007f4e10	368	2026-10-21_linux_hand253	CTCSmashableBarrier::Smash	multi	open	007f4e10:86,007f4e70:3,007f4e80:68,007f4ed0:100,007f4f40:52	catalog row holds Smash plus three more small functions; not one TU
 007f7870	256	2026-10-20_linux_hand229	CTCActivationReceptorBase::FrameUpdate	multi	open	007f7870:174,007f791e:194	row holds FrameUpdate (with its jump table) plus a second function at 0x007F7940 (STLport remove_copy-like)
 007fa26c	36	2026-10-15_linux_hand79	CTCActionUseBuyHouse::OnCreate	cold	open	007fa160:0	not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that function lands (parent 007fa160)
