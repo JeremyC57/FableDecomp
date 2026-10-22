@@ -24054,3 +24054,8 @@ __TI1?AUCChunkedFileException@@	01369548	00aa79c0
 ?GetString@CDefStringTable@@QBE?AUCCharString@@J@Z	009d49b0	0090f830
 ?g_SitAnimName@@3UCCharString@@A	013bb66c	0090f830
 ?TransferIn@?$CPersistTraits@_N@@QAEXPAUCPersistContext@@PAUCStringParser@@PA_N@Z	00403ff0	00403fc0
+??0CWideString@@QAE@ABVCWideStringText@@@Z	0099b720	007132c0
+?ClearText@CSubtitleRenderer@@QAEX_N@Z	00492bab	007132c0
+?PeekComponent@CThing@@QAEPAUCMainGameComponentFontView@@XZ	004c7a70	007132c0
+?SetText@CSubtitleRenderer@@QAEXPAUCFontBank@@ABVCWideString@@111KM_N2@Z	00492f69	007132c0
+?SetText@CSubtitleRenderer@@QAEXPAUCFontBank@@ABVCWideString@@KM_N2@Z	00492e4b	007132c0

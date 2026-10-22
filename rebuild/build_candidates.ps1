@@ -267414,6 +267414,13 @@ $catalog = @(
         TestSource = '00/40/CPersistContextTransferableComponent_TransferIn_00403fc0_test.cpp'
         PassPattern = '00403fc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007132c0'
+        Module = 'NTCScriptedControl::CActionTalkToThing'
+        Source = '00/71/NTCScriptedControlCActionTalkToThing_DisplayText_007132c0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkToThing_DisplayText_007132c0_test.cpp'
+        PassPattern = '007132c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
