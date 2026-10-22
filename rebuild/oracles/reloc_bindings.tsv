@@ -24066,3 +24066,8 @@ __imp__waveOutOpen@24	014404b8	00c5d7f0
 __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?CanBeTargeted@CTCLightningTarget@@QAE_NPAUSMatch@1@ABQAUCThing@@@Z	00970190	0096f770
 ?IsLineOfSightFiltered@CTools@@QAE_NPBUC3DVector@@0PAU2@1PAMPAPAUCThing@@J_N@Z	00877c40	0096f770
+??0CCreatureAction_SummonerChargeOutOf@@QAE@PAUCThingCreatureBase@@@Z	00970370	0096ff10
+??0CCreatureAction_SummonerChargeOutOf@@QAE@PAUCThingCreatureBase@@PAUCThing@@@Z	00970420	0096ff10
+??_7CCreatureAction_SummonerChargeInto@@6B@	012971ec	0096ff10
+?GetActionCode@CCurrentAction@@QAEJXZ	00692620	0096ff10
+?StopCurrentAction@CThingCreatureBase@@QAEXXZ	00662650	0096ff10
