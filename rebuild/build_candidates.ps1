@@ -265409,6 +265409,76 @@ $catalog = @(
         TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_Transfer_00f353d0_test.cpp'
         PassPattern = '00f353d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0048f230'
+        Module = 'CSubtitleRenderer'
+        Source = '00/48/CSubtitleRenderer_DrawTextEmbeddedGraphics_0048f230.cpp'
+        TestSource = '00/48/CSubtitleRenderer_DrawTextEmbeddedGraphics_0048f230_test.cpp'
+        PassPattern = '0048f230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00646dbd'
+        Module = 'NPlayerGui::CAutoPickupBar'
+        Source = '00/64/NPlayerGuiCAutoPickupBar_DrawStatBarOnLeft_00646dbd.cpp'
+        TestSource = '00/64/NPlayerGuiCAutoPickupBar_DrawStatBarOnLeft_00646dbd_test.cpp'
+        PassPattern = '00646dbd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078809b'
+        Module = 'CTCMeleeTrap'
+        Source = '00/78/CTCMeleeTrap_InitialiseAnimation_0078809b.cpp'
+        TestSource = '00/78/CTCMeleeTrap_InitialiseAnimation_0078809b_test.cpp'
+        PassPattern = '0078809b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dd270'
+        Module = 'CTCCreatureFlyInCircles'
+        Source = '00/7d/CTCCreatureFlyInCircles_UpdateFlight_007dd270.cpp'
+        TestSource = '00/7d/CTCCreatureFlyInCircles_UpdateFlight_007dd270_test.cpp'
+        PassPattern = '007dd270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e5ff0'
+        Module = 'CTCOracleMinigame'
+        Source = '00/7e/CTCOracleMinigame_GetTextWithNarrator_007e5ff0.cpp'
+        TestSource = '00/7e/CTCOracleMinigame_GetTextWithNarrator_007e5ff0_test.cpp'
+        PassPattern = '007e5ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007624e0'
+        Module = 'NShape::CShapeManager'
+        Source = '00/76/NShapeCShapeManager_CreateShape_007624e0.cpp'
+        TestSource = '00/76/NShapeCShapeManager_CreateShape_007624e0_test.cpp'
+        PassPattern = '007624e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081f910'
+        Module = 'CMap'
+        Source = '00/81/CMap_GetDominantEngineThemeAt_0081f910.cpp'
+        TestSource = '00/81/CMap_GetDominantEngineThemeAt_0081f910_test.cpp'
+        PassPattern = '0081f910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fc5f0'
+        Module = 'CResourceBank'
+        Source = '00/9f/CResourceBank_CResourceBank_009fc5f0.cpp'
+        TestSource = '00/9f/CResourceBank_CResourceBank_009fc5f0_test.cpp'
+        PassPattern = '009fc5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0c2b0'
+        Module = 'CCamera'
+        Source = '00/a0/CCamera_PointAt_00a0c2b0.cpp'
+        TestSource = '00/a0/CCamera_PointAt_00a0c2b0_test.cpp'
+        PassPattern = '00a0c2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62c90'
+        Module = 'CPackedUIntArray'
+        Source = '00/a6/CPackedUIntArray_PackArray_00a62c90.cpp'
+        TestSource = '00/a6/CPackedUIntArray_PackArray_00a62c90_test.cpp'
+        PassPattern = '00a62c90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
