@@ -265885,6 +265885,13 @@ $catalog = @(
         TestSource = '00/7c/CTCMultiStrike_FrameUpdate_007cce20_test.cpp'
         PassPattern = '007cce20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c0240'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4c/NGraphicAppearanceCTCGraphicAppearance_SetPMeshEffect_004c0240.cpp'
+        TestSource = '00/4c/NGraphicAppearanceCTCGraphicAppearance_SetPMeshEffect_004c0240_test.cpp'
+        PassPattern = '004c0240_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

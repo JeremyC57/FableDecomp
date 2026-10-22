@@ -23750,3 +23750,4 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ??0CHitParameters@@QAE@XZ	007a3bc0	007cce20
 ?AddEvent@CTCEntityEvents@@QAEXPAVCEventBase@@@Z	008113c0	007cce20
 ?GetMeleeHitParameters@CThingGameObject@@QBEXPAVCHitLocation@NHitLocations@@AAVCThing@@PAV4@ABVC3DVector@@3AAVCHitParameters@@@Z	00838bc0	007cce20
+??ACMeshEffectMap@CTCGraphicAppearance@NGraphicAppearance@@QAEAAUCMeshEffectPriorityEntry@12@ABQAX@Z	004c5b90	004c0240
