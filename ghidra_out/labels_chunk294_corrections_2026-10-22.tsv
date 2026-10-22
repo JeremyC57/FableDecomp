@@ -1,0 +1,13 @@
+address	name	evidence
+00f0f910	NScript::CQ_AmbushTradersScript::WatchForArcherSpawnConditions	(chunk 294)
+00e1f0c0	NScript::CQR_EscortTraderScript::DoMission	(chunk 294)
+00e1e470	NScript::CQR_EscortTraderScript::WatchForRegionLoads	(chunk 294)
+00437570	CPlayerGui::ReleaseGraphics	CPlayerGui graphics release; was _Cons_val (chunk 294)
+00cd23b9	IsScripting	(chunk 294)
+00cd2770	Release	(chunk 294)
+00a0beb0	CCamera::GetHorizontalFOV	was CMap::DrawGetSeaLevel (chunk 294)
+004da68a	std::pair<long,CCharString>::`scalar deleting destructor'	(chunk 294)
+004d9c5d	std::_Vector_base::~_Vector_base	(chunk 294)
+00449700	GetMainPlayerID	(chunk 294)
+006e7b60	CMovieHandle::CMovieHandle	movie-handle ctor; was CCarriedReadableDef (chunk 294)
+007e72a0	CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase	scripted-thing ctor; was CCarriedReadableDef (chunk 294)

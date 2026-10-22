@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a6d0e0	DIFFER	930v984	-	CPhysicsMesh::GetHelperDataFromFileData: preamble: retail holds the root chunk in esi and calls HasHelpers and GetHelpersChunk on it with this in edi (frame 0xfc); ours keeps this in ebx with a 0xf4 fr
+00a6d670	DIFFER	898v969	-	CPhysicsMesh::GetContainmentDataFromFileData: ours gets an aligned ebp frame (push ebp; mov ebp,esp; and esp,-8; sub esp,0x5c; this in edi) where retail has a plain sub esp,0x54 frame with this in ebp; the 
+00a120d0	DIFFER	987v886	-	CPhysicsMeshObject::GetSphereIntersectionFromTo: same residue as the sibling GetPointIntersectionFromTo 0x00A12450 (same inline inverse transform): x87 cofactor operand order and a larger spill frame, 101 byte
+00a12450	DIFFER	971v870	-	CPhysicsMeshObject::GetPointIntersectionFromTo: x87 operand order of the inline inverse-transform cofactors (retail `fld [esi+0x24]; fmul [esi+0x10]`, ours the mirror `fld [esi+0x10]; fmul [esi+0x24]`; every 
+00a42470	DIFFER	750v750	-	CPlane::GetIntersectionWithTriangle: one x87 pair: retail's third plane distance (vertex c) multiplies c.Z*Normal.Z first with c loaded first, ours puts the X product first and loads Normal.Z first
+00487180	DIFFER	612v612	-	CPlayer::GetFreeCamera: scheduling only: retail stores the forward vector's Y after the hoisted push 0 (ours before the Z multiply), and the second Normalise's table-load shl is schedu
+00489d40	DIFFER	815v815	-	CPlayer::CreateCharacter: register pair and frame slots only: retail keeps the holy site in esi and the player number in edi (ours swaps them), and lays the frame out holySite/name +0, u
+00634190	RELOCATION_MATCH	628v628	PASS	CPlayer::RemoveMode(EPlayerMode mode)
+006345c0	RELOCATION_MATCH	681v681	PASS	CPlayer::AddMode(EPlayerMode mode, bool clearOthers)
+006355d0	RELOCATION_MATCH	611v611	PASS	CPlayer::InitModeZTarget(EPlayerMode mode, CProcessedInput* input)
+00636480	RELOCATION_MATCH	548v548	PASS	CPlayer::InitModeLightning(EPlayerMode mode, CProcessedInput* input)
+00438aa0	RELOCATION_MATCH	525v525	PASS	CPlayerGui::AddScreenMessage(const CWideString& text)
+00438cb0	RELOCATION_MATCH	824v824	PASS	CPlayerGui::DrawInventory(CDrawWorld* world)
+00439bb0	DIFFER	583v592	-	CPlayerGui::UpdateMoney: the bar's current value is rounded by an inline fistp helper (float copied to a frame word, fld, fistp; asm_bake family, lane gap); the rest is frame-slot assig
+0043a080	RELOCATION_MATCH	542v542	PASS	CPlayerGui::Update(bool paused)
+00459bb6	RELOCATION_MATCH	622v622	PASS	CPlayerGuiDef::CPlayerGuiDef()
+00d51fc0	RELOCATION_MATCH	592v592	PASS	CPreMeleeDummy::Main()
+00ddd030	RELOCATION_MATCH	1019v1019	PASS	CPrisonRaceWarden::Main()
+00ddc070	DIFFER	611v597	-	CPrisonRaceWinningPostGuard::Main: one block-placement residue: retail enters the final idle loop (`while (!IsActiveThreadTerminating()) NewScriptFrame();`) through a `jmp` to its bottom test, ou
+00499d90	RELOCATION_MATCH	530v530	PASS	CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen)
+00d38f70	RELOCATION_MATCH	955v955	PASS	CProphetCage::Main()
+00d38000	RELOCATION_MATCH	770v770	PASS	CPuzzleBlockMoon::TurnIntoASunSign(bool createEffect)
+00d387a0	RELOCATION_MATCH	767v767	PASS	CPuzzleBlockSun::TurnIntoAMoonSign(bool createEffect)
+00e1e110	RELOCATION_MATCH	853v853	PASS	NScript::CQR_EscortTraderScript::Main()
+00e20210	DIFFER	979v956	-	CQR_EscortTraderScript::WatchForTraderHit: loop/exit layout: retail keeps ebp pushed at entry and merges the bottom-of-loop terminate return into the entry return block (je reload; jmp A); ours shrink-wr
+00f07b80	DIFFER	845v842	-	CQ_AmbushTradersScript::WatchForBanditSpeechMarkers: block placement only: retail merges the three inline ~CScriptThing exit copies into the LAST one (post-wait-loop return, eax) with the loop exit and wait-loop r
+00f07ed0	RELOCATION_MATCH	784v784	PASS	NScript::CQ_AmbushTradersScript::AskBanditHireQuestion(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&)
+00f0f680	RELOCATION_MATCH	644v644	PASS	NScript::CQ_AmbushTradersScript::ProcessInitialSpyExtraction(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&)
+00cfa700	RELOCATION_MATCH	845v845	PASS	CQ_ArenaScript::Init()
+00f1ec70	RELOCATION_MATCH	604v604	PASS	CQ_ArenaScript::AnimateCrowd()
+00f21300	RELOCATION_MATCH	644v644	PASS	CQ_ArenaScript::GivePrizeFund()
+00d03610	RELOCATION_MATCH	514v514	PASS	CQ_BanditCampBossBattleScript::Init()
+00d006d0	RELOCATION_MATCH	768v768	PASS	CQ_BanditCampScript::Init()
+00d00fd0	RELOCATION_MATCH	702v702	PASS	CQ_BanditCampScript::WatchForCostume()
+00d032f0	RELOCATION_MATCH	645v645	PASS	CQ_BanditCampScript::CheckAnyBanditsKilled()
+00d12d00	RELOCATION_MATCH	876v876	PASS	CQ_BountyHuntScript::Init()
+00d151d0	RELOCATION_MATCH	531v531	PASS	CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor()
+00d16570	RELOCATION_MATCH	517v517	PASS	CQ_BountyHuntScript::WatchForDeputy1Killed(CScriptThing deputy)
+00d17a80	DIFFER	705v785	-	CQ_BountyHuntScript::WatchForBoasts: the body matches through the post-loop terminate test; retail destroys the boast vector differently on each exit (loop-top return: out-of-line pair scalar-delet
+00d1cc40	RELOCATION_MATCH	696v696	PASS	CQ_BreakSiegeScript::Init()
