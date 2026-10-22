@@ -269371,6 +269371,13 @@ $catalog = @(
         TestSource = '00/ef/COpinionMan_Main_00ef7800_test.cpp'
         PassPattern = '00ef7800_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b18390'
+        Module = 'NParticleEngine::CPSCAttractor'
+        Source = '00/b1/NParticleEngineCPSCAttractor_ReadBinary_00b18390.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCAttractor_ReadBinary_00b18390_test.cpp'
+        PassPattern = '00b18390_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
