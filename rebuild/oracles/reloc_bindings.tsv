@@ -24200,3 +24200,12 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?SetupThing@CDF_Fireheart@@QAEXABUCScriptThingHolder@@@Z	00f35b10	00d3a1a0
 ?IsInterrupted@CTraderScript@@QAE_NXZ	00f35b30	00e0a510
 ?g_pThingManager_0143e8f8@@3PAUCTimerService@@A	0143e8f8	00e0a510
+?ApplyAcceleration@CTCPhysicsBase@@QAEXPAUC3DVector@@@Z	006b0210	00846100
+?GetConflictingModifiers@CTCHeroAttachableAppearanceModifiers@@QAE?AUCLongList@@JJ@Z	00706b50	00846100
+?GetHeadPos@CThing@@QAE?AUC3DVector@@_N@Z	00661b40	00846100
+?GetPWorld@CCreatureActionBase@@QBEPAUCRandomSource@@XZ	00692940	00846100
+?GetPlayer@CCreatureActionBase@@QBEPAUCPlayer@@XZ	00692930	00846100
+?GetRandomSeed@CRandomSource@@QAEPAKXZ	0049d810	00846100
+?remove@CLongList@@QAEXABJ@Z	0084ace0	00846100
+?GetModifiers@CTCHeroAttachableAppearanceModifiers@@QAEXAAUCLongList@@J@Z	00706800	00846410
+?SetVelocity@CThingObject@@QAEXABUC3DVector@@@Z	006a4dc0	00846410

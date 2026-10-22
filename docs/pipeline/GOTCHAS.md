@@ -623,3 +623,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - A `ret 8` factory ctor is `T(src->V2(), *src->V1())`, because arguments are evaluated right to left.
   - When retail inlines the first push_back and calls the second out of line, write the first as a __forceinline STLport body.
   - Keep VC-lane tests to plain arrays; STL use can give TCC_FAIL.
+- A row ending in `eb 90` (jmp rel8, disp 0x90) loses its last byte to the trailing-pad trim in q.py/finish.py/land_retry.py, so it grades DIFFER(n v n-1); land it with verify_and_land directly and the full-length oracle row, not through a wrapper that re-trims (00846100).
+- An STLport list sentinel allocated through the CRT thunk 0x00BFEA0E must be written `malloc(sizeof(Node))`, not `::operator new`, or the lander refuses it with RELOC_IDENTITY (00846410).

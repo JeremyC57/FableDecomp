@@ -267724,6 +267724,20 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVTalentlessBardScript_IsHeroDressedInWillRobe_00eda0c0_test.cpp'
         PassPattern = '00eda0c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00846100'
+        Module = 'CCreatureAction_WearGameObject'
+        Source = '00/84/CCreatureActionWearGameObject_PerformAction_00846100.cpp'
+        TestSource = '00/84/CCreatureActionWearGameObject_PerformAction_00846100_test.cpp'
+        PassPattern = '00846100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00846410'
+        Module = 'CCreatureAction_Undress'
+        Source = '00/84/CCreatureActionUndress_PerformAction_00846410.cpp'
+        TestSource = '00/84/CCreatureActionUndress_PerformAction_00846410_test.cpp'
+        PassPattern = '00846410_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
