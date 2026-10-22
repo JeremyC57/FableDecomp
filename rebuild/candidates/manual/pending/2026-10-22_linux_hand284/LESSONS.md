@@ -1,0 +1,33 @@
+# Chunk 284 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+- **CWideString vectors that escape.** Model a local STLport `vector<CWideString>` as a non-template class whose inline dtor runs the destroy loop and then `if (_M_start) free(_M_start)`. Give it an inline placement-new push_back, and give `_M_insert_overflow` (0x412330) a same-TU `#pragma auto_inline(off)` body that reads Start/Finish before writing. With a declared-only overflow the vector escapes and _M_start/_M_finish leave edi/esi (0x009AEF60, 0x009AF480).
+- **Direct calls to a virtual.** Call a virtual on a complete local object qualified (`file.CDiskFileWin32::Read(...)`) to get retail's direct `call 0x99A960` instead of a vtable call (0x009AEF60).
+- **Chained string conversions.** `s.ConvertToCharString().ToLower().ToWideString()` as one push_back argument reproduces retail's pre-pushed hidden-return slots. Named intermediates reorder the frame (0x009AEF60).
+- **Vector-map Add.** `Add(k, v) { push_back(Pair(k, v)); NeedsSort = true; }` and its push_back must both be `__forceinline`. Plain inline leaves Add out of line in a 700-byte body (0x009B05F0).
+- **Inline CRC.** The table CRC is `crc = (crc >> 8) ^ table[bytes[i] ^ (crc & 0xff)]` over a local copy of each value (`&checksum, 4`), stored back to the member each iteration (0x009B05F0).
+- **Aligned frames.** An `and esp,-8` frame in a function with no double locals comes from an `__int64` member in a local object (the checksum file, 0x009B05F0).
+- **STLport erase on byte vectors.** `return (unsigned char*)memmove(result, first, n) + n;` (using the memmove return value) matches retail's inlined erase/copy (0x009AF7A0 erase section).
+- **By-value CRGBColour arguments.** A `__forceinline` user copy ctor builds the argument in place (`push ecx; mov eax,esp; byte stores`) instead of in a frame temp. This shortened 0x0064A639 to the retail length.
+- **Inline bool helpers.** A small inline bool helper (HasGuildSeal) is not inlined in a large /O2 body unless it is `__forceinline`. A 741-byte result against retail's 911 was the tell (0x0064A639).
+- **Flag building.** `(g ? 2 : 0) | 1` gives retail's neg/sbb/and/or (0x00435190).
+- **Fail block placement.** A nested `if (p) { ... if (Init(x) == true) { ...; return true; } } return false;` puts the fail block last (0x00435190).
+- **Def-pointer release.** In the def-pointer dtor, `if (!--Data->RefCount) Data->DeleteThis();` avoids the extra esi push that a `Release()` member form produced (0x00435190, 0x00658020).
+- **Double-sum X order.** `C2DVector((double)a.X + offset, a.Y)` (a double sum narrowed by the float ctor parameter) loads a.X first and keeps the X store after the temporary lea (advisor B4, 0x00540980).
+- **Script Main bodies.** By-value CScriptThing results need the CScriptThing destructor declared on the class. When retail inlines one copy and calls 0x004ABE90 for another, declare only the out-of-line copy (0x00D7F460, 0x00D9BF60).
+- **Retail CEditBox.** Retail CEditBox members sit 0x40 below Ego_r.pdb (Text +0x164 for the PDB's +0x1a4) (0x0053FE50).
+
+Review at landing:
+- 009aef60 / 009af480: the `_M_insert_overflow` 0x412330 stand-in body uses malloc. Retail releases with the CRT free 0x00BFEA14 (written as free()), but the allocation helper is not graded; check it against the landed growth helper (GrowArrayStorage) if one is shared.
+- Rows that needed more than 4 grades:
+  - 0064a639 (gs1-gs19)
+  - 00435190 (ie1-ie12)
+  - 00540980 (advisor)
+  - 00657d90 (advisor A3)
+  - 009aef60 (cs1-cs3)
+  - 009b05f0 (cdp1-cdp2)
+- Local base models stand next to existing engine headers:
+  - rebuild/include/engine/CDefinitionManager.h: retail offsets are the PDB minus 0x10 from the 12-byte vectors (CurrentFilename +0xb4, CompiledFileName +0xb8, DependencyCheckCRC +0xbc).
+  - CEngineCamera, CEngine, CEngineInternalPrimitive2D*.
+- 00b5a1d0 is catalogued as CEngineBillboardGenerator::ctor but is the CEngineScreenEffectColourFilter ctor (RTTI vtable 0x012A25CC); land it under the right class.
+- 0055a5d0 is a multi-function catalog row (6 bodies to 0x55a890).
+- Several string labels are propagated wrongly (ToWideString, the CWideString ctor/dtor/copy, ~CCharString; see NOTES "Label corrections"). Any landed source that binds by those names should be checked.
+- Extern const floats are bound to pool addresses in the camera rows (00b314e0); check that the lander's constant-pool binding keeps them.

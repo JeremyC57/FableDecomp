@@ -2255,3 +2255,21 @@ address	module	name	length	chunk	reason
 008c4fd0	CCreatureAction_ScorpionSummon	CreateBabies	736	hand283	DIFFER(722v722) -- 
 00854dd0	CCreatureAction_SpiritAttack	?PerformAction@CCreatureAction_SpiritAttack@@UAEXXZ	720	hand283	DIFFER(702v720) -- 
 008548b0	CCreatureAction_SpiritAttack	CreateAttackEffect	736	hand283	DIFFER(748v723) -- 
+00badb40	CEngineInternalPrimitive2DClockSprite	?Update@CEngineInternalPrimitive2DClockSprite@@UAEXABVCEnginePrimitive@@K@Z	768	hand284	DIFFER(764v764) -- eax/edx phase swap on two copies
+00b25d80	CEngine	?Uninitialise@CEngine@@UAEXXZ	656	hand284	DIFFER(653v653) -- delete-loop register allocation
+00b393d0	CEngineInternalAttachedPrimitive	GetChildInverseTransformStaticMesh	528	hand284	DIFFER(529v521) -- x87 inverse operand order + spill
+00bcf040	CEngineInternalPrimitiveAnimatedMesh	?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z	672	hand284	DIFFER(658v658) -- row-1 fld st(3)/fmul mem operand choice in inline transform (advisor asked)
+00b39080	CEngineInternalAttachedPrimitive	GetParentTransformAnimatedMesh	848	hand284	DIFFER(846v846) -- one lea ecx scheduling slot before the out-of-line stats release
+00b80ce0	CEngineClothSimulationMeshBase	CEngineClothSimulationMeshBase::GetDeltaTransform	688	hand284	DIFFER(687v682) -- inline 3x3 inverse cofactor operand canonicalisation + c0 frame spill
+00b31160	CEngineCamera	ProcessDebugScript	896	hand284	DIFFER(891v886) -- in-loop index recompute register roles + int-copy register rotation + lea scheduling
+00540320	CEditBox	KeyPressed	768	hand284	DIFFER(755v755) -- vtable-load register choice (eax/edx) + sub 5 vs add -5
+00b30610	CEngineCamera	ClipBox	720	hand284	DIFFER(710v710) -- VC7.1 corner-sum reassociation (CSE pairing of Y components) + one dot operand order
+0064ae80	CDrawAbilityButtons	DrawAbilityButton	812	hand284	DIFFER(812v812) -- pos.Y x87 reassociation + &abilities[index] lea before the AddRef copy
+006495a8	CDrawScreenFade	Draw	938	hand284	DIFFER(937v938) -- frame: retail keeps two sprite objects and separate black/fade boxes, VC shares one of each across sibling blocks
+0064e978	CDrawReceivedItems	Draw	910	hand284	DIFFER(910v910) -- frame layout (0x13c v 0x158) and by-value colour built in a frame temp; calls and x87 match
+00646f67	CDrawExperience	Draw	843	hand284	DIFFER(824v843) -- CRGBColour copy built via byte temp in retail; frame 0x14c v 0x154
+0064a639	CDrawGuildSeal	Draw	911	hand284	DIFFER(911v911) -- frame slot sharing (hero/map/name, key/seal) and hoisted loop UV stores; code sequence matches
+00435190	CDisplayEngine	?InitEngine@CDisplayEngine@@MAE_NXZ	784	hand284	DIFFER(783v774) -- ENGINE def block: name/def slot order and the def release reloads the pointer after dec
+009bf7e0	CDisplayManager	CreateDevice	848	hand284	DIFFER(824v846) -- retail builds temporaries in the dead params argument slot (known lane gap); 0x18 v 0x28 frame
+009bfb30	CDisplayManager	ResetDevice	832	hand284	DIFFER(828v830) -- retail builds temporaries in the dead params argument slot (known lane gap); 0x18 v 0x28 frame
+009af7a0	CDefinitionManager	SaveBinaryDefinitions	1008	hand284	DIFFER(1007v1007) -- register allocation (this/stream ebx-ebp swap, edi=0 cache) in an otherwise same-shape body

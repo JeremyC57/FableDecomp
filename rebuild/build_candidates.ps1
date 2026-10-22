@@ -267738,6 +267738,153 @@ $catalog = @(
         TestSource = '00/84/CCreatureActionUndress_PerformAction_00846410_test.cpp'
         PassPattern = '00846410_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0053fe50'
+        Module = 'CEditBox'
+        Source = '00/53/CEditBox_AddCharacter_0053fe50.cpp'
+        TestSource = '00/53/CEditBox_AddCharacter_0053fe50_test.cpp'
+        PassPattern = '0053fe50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540980'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_UpdateDisplayText_00540980.cpp'
+        TestSource = '00/54/NUISystemCEditBox_UpdateDisplayText_00540980_test.cpp'
+        PassPattern = '00540980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064499c'
+        Module = 'NPlayerGui::CDrawPerceivers'
+        Source = '00/64/NPlayerGuiCDrawPerceivers_Draw_0064499c.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawPerceivers_Draw_0064499c_test.cpp'
+        PassPattern = '0064499c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064560d'
+        Module = 'NPlayerGui::CDrawScriptScreenText'
+        Source = '00/64/NPlayerGuiCDrawScriptScreenText_Draw_0064560d.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawScriptScreenText_Draw_0064560d_test.cpp'
+        PassPattern = '0064560d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064db2b'
+        Module = 'NPlayerGui::CDrawAbilityButtons'
+        Source = '00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityList_0064db2b.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityList_0064db2b_test.cpp'
+        PassPattern = '0064db2b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00657d90'
+        Module = 'NPlayerGui::CDrawAbilityButtonsPC'
+        Source = '00/65/NPlayerGuiCDrawAbilityButtonsPC_DrawExpressionList_00657d90.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawAbilityButtonsPC_DrawExpressionList_00657d90_test.cpp'
+        PassPattern = '00657d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00658020'
+        Module = 'NPlayerGui::CDrawAbilityButtonsPC'
+        Source = '00/65/NPlayerGuiCDrawAbilityButtonsPC_DrawExpressionButton_00658020.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawAbilityButtonsPC_DrawExpressionButton_00658020_test.cpp'
+        PassPattern = '00658020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b05f0'
+        Module = 'CDefinitionManager'
+        Source = '00/9b/CDefinitionManager_CheckDependencies_009b05f0.cpp'
+        TestSource = '00/9b/CDefinitionManager_CheckDependencies_009b05f0_test.cpp'
+        PassPattern = '009b05f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b308e0'
+        Module = 'CEngineCamera'
+        Source = '00/b3/CEngineCamera_ClipWorldSpaceBoundingBox_00b308e0.cpp'
+        TestSource = '00/b3/CEngineCamera_ClipWorldSpaceBoundingBox_00b308e0_test.cpp'
+        PassPattern = '00b308e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b314e0'
+        Module = 'CEngineCamera'
+        Source = '00/b3/CEngineCamera_Process_00b314e0.cpp'
+        TestSource = '00/b3/CEngineCamera_Process_00b314e0_test.cpp'
+        PassPattern = '00b314e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5a1d0'
+        Module = 'CEngineScreenEffectColourFilter'
+        Source = '00/b5/CEngineScreenEffectColourFilter_CEngineScreenEffectColourFilter_00b5a1d0.cpp'
+        TestSource = '00/b5/CEngineScreenEffectColourFilter_CEngineScreenEffectColourFilter_00b5a1d0_test.cpp'
+        PassPattern = '00b5a1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b82100'
+        Module = 'CEngineClothSimulationAnimatedMesh'
+        Source = '00/b8/CEngineClothSimulationAnimatedMesh_RunSimulation_00b82100.cpp'
+        TestSource = '00/b8/CEngineClothSimulationAnimatedMesh_RunSimulation_00b82100_test.cpp'
+        PassPattern = '00b82100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bad8a0'
+        Module = 'CEngineInternalPrimitive2DSprite'
+        Source = '00/ba/CEngineInternalPrimitive2DSprite_Update_00bad8a0.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitive2DSprite_Update_00bad8a0_test.cpp'
+        PassPattern = '00bad8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcebe0'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitiveAnimatedMesh_GetBoundingBoxTransform_00bcebe0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveAnimatedMesh_GetBoundingBoxTransform_00bcebe0_test.cpp'
+        PassPattern = '00bcebe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be1e70'
+        Module = 'CEngineInternalPrimitive2DViewport'
+        Source = '00/be/CEngineInternalPrimitive2DViewport_Render_00be1e70.cpp'
+        TestSource = '00/be/CEngineInternalPrimitive2DViewport_Render_00be1e70_test.cpp'
+        PassPattern = '00be1e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d25a00'
+        Module = 'CDragon'
+        Source = '00/d2/CDragon_Main_00d25a00.cpp'
+        TestSource = '00/d2/CDragon_Main_00d25a00_test.cpp'
+        PassPattern = '00d25a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7f460'
+        Module = 'CDyingVillager'
+        Source = '00/d7/CDyingVillager_Main_00d7f460.cpp'
+        TestSource = '00/d7/CDyingVillager_Main_00d7f460_test.cpp'
+        PassPattern = '00d7f460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9bf60'
+        Module = 'CDrinkingHobbe'
+        Source = '00/d9/CDrinkingHobbe_Main_00d9bf60.cpp'
+        TestSource = '00/d9/CDrinkingHobbe_Main_00d9bf60_test.cpp'
+        PassPattern = '00d9bf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e76920'
+        Module = 'CEM_FlashLightPoint'
+        Source = '00/e7/CEMFlashLightPoint_Main_00e76920.cpp'
+        TestSource = '00/e7/CEMFlashLightPoint_Main_00e76920_test.cpp'
+        PassPattern = '00e76920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aef60'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_CreateSymbolsFromPathList_009aef60.cpp'
+        TestSource = '00/9a/CDefinitionManager_CreateSymbolsFromPathList_009aef60_test.cpp'
+        PassPattern = '009aef60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009af480'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_DoCompilePathList_009af480.cpp'
+        TestSource = '00/9a/CDefinitionManager_DoCompilePathList_009af480_test.cpp'
+        PassPattern = '009af480_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

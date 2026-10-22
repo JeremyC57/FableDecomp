@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bad8a0	RELOCATION_MATCH	671v671	PASS	sprite descriptor copy
+00d25a00	RELOCATION_MATCH	540v540	PASS	dragon boss script Main
+00d7f460	RELOCATION_MATCH	836v836	PASS	dying villager script Main
+00d9bf60	RELOCATION_MATCH	613v613	PASS	drinking hobbe script Main
+00e76920	RELOCATION_MATCH	851v851	PASS	flash light point script Main
+00badb40	DIFFER	764v764	-	eax/edx phase swap on two copies
+00b25d80	DIFFER	653v653	-	delete-loop register allocation
+00b393d0	DIFFER	529v521	-	x87 inverse operand order + spill
+00b5a1d0	RELOCATION_MATCH	542v542	PASS	CEngineScreenEffectColourFilter ctor (label fix)
+00b314e0	RELOCATION_MATCH	535v535	PASS	camera desc build
+00b308e0	RELOCATION_MATCH	616v616	PASS	frustrum/far box clip
+00bcf040	DIFFER	658v658	-	row-1 fld st(3)/fmul mem operand choice in inline transform (advisor asked)
+00bcebe0	RELOCATION_MATCH	573v573	PASS	animated-mesh bounding box transform
+00b39080	DIFFER	846v846	-	one lea ecx scheduling slot before the out-of-line stats release
+00b80ce0	DIFFER	687v682	-	inline 3x3 inverse cofactor operand canonicalisation + c0 frame spill
+00b31160	DIFFER	891v886	-	in-loop index recompute register roles + int-copy register rotation + lea scheduling
+0053fe50	RELOCATION_MATCH	719v719	PASS	edit box character input
+00540320	DIFFER	755v755	-	vtable-load register choice (eax/edx) + sub 5 vs add -5
+0055a5d0	SKIP	82v697	-	multi-function row (6 int3-separated bodies to 0x55a890); first piece OnLeftClicked 82 bytes matched in probe/dg3.cpp
+00b30610	DIFFER	710v710	-	VC7.1 corner-sum reassociation (CSE pairing of Y components) + one dot operand order
+00b82100	RELOCATION_MATCH	558v558	PASS	cloth particle simulation run
+00540980	RELOCATION_MATCH	873v873	PASS	edit box display text (advisor B4: double-sum X order)
+00be1e70	RELOCATION_MATCH	674v674	PASS	2D viewport render
+0064560d	RELOCATION_MATCH	532v532	PASS	CDrawScriptScreenText::Draw (/Os TU; iterator object + line ref + delta vector)
+00658020	RELOCATION_MATCH	536v536	PASS	CDrawAbilityButtonsPC::DrawExpressionButton (nested ifs, forceinline def pointer, Release dtor)
+00657d90	RELOCATION_MATCH	653v653	PASS	CDrawAbilityButtonsPC::DrawExpressionList (advisor A3: same-TU fill stand-in)
+0064db2b	RELOCATION_MATCH	546v546	PASS	CDrawAbilityButtons::DrawAbilityList (/Os TU; drawn = firstRow - 1)
+0064ae80	DIFFER	812v812	-	pos.Y x87 reassociation + &abilities[index] lea before the AddRef copy
+0064499c	RELOCATION_MATCH	838v838	PASS	CDrawPerceivers::Draw (s-only biased frame; inline GetFont accessor; min by ref)
+006495a8	DIFFER	937v938	-	frame: retail keeps two sprite objects and separate black/fade boxes, VC shares one of each across sibling blocks
+0064e978	DIFFER	910v910	-	frame layout (0x13c v 0x158) and by-value colour built in a frame temp; calls and x87 match
+00646f67	DIFFER	824v843	-	CRGBColour copy built via byte temp in retail; frame 0x14c v 0x154
+0064a639	DIFFER	911v911	-	frame slot sharing (hero/map/name, key/seal) and hoisted loop UV stores; code sequence matches
+00435190	DIFFER	783v774	-	ENGINE def block: name/def slot order and the def release reloads the pointer after dec
+009bf7e0	DIFFER	824v846	-	retail builds temporaries in the dead params argument slot (known lane gap); 0x18 v 0x28 frame
+009bfb30	DIFFER	828v830	-	retail builds temporaries in the dead params argument slot (known lane gap); 0x18 v 0x28 frame
+009af7a0	DIFFER	1007v1007	-	register allocation (this/stream ebx-ebp swap, edi=0 cache) in an otherwise same-shape body
+009aef60	RELOCATION_MATCH	625v625	PASS	definition pass 1: scan, sort, read, strip comments, parse symbols
+009af480	RELOCATION_MATCH	605v605	PASS	definition pass 2: scan, sort, read, strip comments, compile
+009b05f0	RELOCATION_MATCH	705v705	PASS	definition dependency CRC over sorted .cks checksums
