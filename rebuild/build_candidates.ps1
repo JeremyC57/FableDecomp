@@ -264652,6 +264652,34 @@ $catalog = @(
         TestSource = '00/a7/CContainmentVolume_Initialise_00a755c0_test.cpp'
         PassPattern = '00a755c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00816150'
+        Module = 'NHitLocations::CPhysicalPrimitiveCylinder'
+        Source = '00/81/NHitLocationsCPhysicalPrimitiveCylinder_Init_00816150.cpp'
+        TestSource = '00/81/NHitLocationsCPhysicalPrimitiveCylinder_Init_00816150_test.cpp'
+        PassPattern = '00816150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008faa80'
+        Module = 'NCameraModes::CPhysicsForceModelBase'
+        Source = '00/8f/NCameraModesCPhysicsForceModelBase_DoCreatureEvasion_008faa80.cpp'
+        TestSource = '00/8f/NCameraModesCPhysicsForceModelBase_DoCreatureEvasion_008faa80_test.cpp'
+        PassPattern = '008faa80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fadb0'
+        Module = 'NCameraModes::CPhysicsForceModelBase'
+        Source = '00/8f/NCameraModesCPhysicsForceModelBase_DoGroundEvasion_008fadb0.cpp'
+        TestSource = '00/8f/NCameraModesCPhysicsForceModelBase_DoGroundEvasion_008fadb0_test.cpp'
+        PassPattern = '008fadb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008faf70'
+        Module = 'NCameraModes::CPhysicsForceModelBase'
+        Source = '00/8f/NCameraModesCPhysicsForceModelBase_DoThingEvasion_008faf70.cpp'
+        TestSource = '00/8f/NCameraModesCPhysicsForceModelBase_DoThingEvasion_008faf70_test.cpp'
+        PassPattern = '008faf70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

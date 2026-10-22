@@ -23462,3 +23462,15 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?IsPosInMap@CWorldMap@@QAE_NPBUC3DVector@@@Z	004fc600	008dc900
 ??0CPlane@@QAE@XZ	0063ec80	00a755c0
 ?CopyPlanes@@YIPAUCPlane@@PBU1@0PAU1@@Z	00a759e0	00a755c0
+?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z	009b9e00	00816150
+?TransferIn@?$CPersistTraits@UCDefString@@@@QAEXAAUCPersistContext@@AAUCStringParser@@PAUCDefString@@@Z	007e3820	00816150
+??1CVectorList@@QAE@XZ	0048ca60	008faa80
+?GetThing@CBase@NCameraModes@@QBEPAUCThing@@XZ	0084f1b0	008faa80
+?g_EvasionSampleOffsets@@3QBUC3DVector@@B	013893ac	008faa80
+?Finalise@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ	008fa9f0	008fadb0
+?UpdateScan@CPhysicsForceModelBase@NCameraModes@@QAEXAAUCPhysicsCollisionPointsObject@2@ABUCWorldMap@@ABUC3DVector@@JM@Z	008fc430	008fadb0
+?GetStandardThings@CTools@@QAEXAAUCThingList@@ABUC3DVector@@M@Z	00877720	008faf70
+?UpdateScan@CPhysicsForceModelBase@NCameraModes@@QAEXAAUCPhysicsCollisionPointsObject@2@AAUCMeshList@@ABUC3DVector@@JM@Z	008fc050	008faf70
+?clear@CMeshList@@QAEXXZ	008fbab0	008faf70
+?remove_if@CThingList@@QAEXU?$unary_negate@UCGetThingsWithCollisionMesh@NCameraModes@@@@@Z	008fbdd0	008faf70
+?transform@@YI?AUSMeshBackInserter@@USThingListIterator@@0U1@UCGetMeshObject@NCameraModes@@@Z	008fca40	008faf70
