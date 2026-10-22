@@ -23645,3 +23645,15 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?_M_insert_overflow@?$CDefPointerVector@UCMeleeCombatAbilityDef@@@@QAEXPAU?$CDefPointer@UCMeleeCombatAbilityDef@@@@ABU2@ABU__false_type@@I_N@Z	00739bc0	007363a0
 ?AddPersistedDeadEntity@CEntityRuntimePersistence@@QAEX_K_NK@Z	00520330	00520c80
 ?IsLevelPersistent@CThing@@QBE_NXZ	004c82a0	00520c80
+?AddNewCoin@CTCTavernGameCoinBase@@QAEXABUC3DVector@@@Z	008efa00	007d2ef0
+?ClearBoard@CTCTavernGameCoinBase@@QAEXXZ	008ef950	007d2ef0
+?FindObstacles@CTCTavernGameCoinBase@@QAEXXZ	008efb00	007d2ef0
+?SetInternalAlpha@CAnimSet@@QAEXJM_N@Z	0070c280	008d70a0
+??0CAnimationData@C3DAnimationInfo@@QAE@PBU1@@Z	00a2d5f0	00a26730
+?g_AnimationReadPriority@@3W4EThreadedFilePriority@@A	01397244	00a26730
+??0CPoolSizeArray@@QAE@I@Z	00a6b620	00a6aaa0
+?CalculateTextureSize@@YIKKK_NPBUCPixelFormat@@@Z	00a698f0	00a6aaa0
+?Initialise@CPreallocTexturePool@@QAEXKKK@Z	00a6a540	00a6aaa0
+?SortPoolSizes@@YIXPAUSPoolSize@@0@Z	00a6c080	00a6aaa0
+??0CEmitterPointer@@QAE@PAUCParticleEmitter@NParticleEngine@@@Z	00ae9450	00aeb6d0
+?Insert@CParticleEmitterList@@QAE_NAAUCEmitterPointer@@@Z	00aeb060	00aeb6d0

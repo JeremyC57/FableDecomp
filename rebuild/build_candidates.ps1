@@ -265143,6 +265143,41 @@ $catalog = @(
         TestSource = '00/99/CCharString_RemoveWhiteSpaceEnd_0099f4d0_test.cpp'
         PassPattern = '0099f4d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007d2ef0'
+        Module = 'CTCTavernGameCoinGolf'
+        Source = '00/7d/CTCTavernGameCoinGolf_SetupForNewRound_007d2ef0.cpp'
+        TestSource = '00/7d/CTCTavernGameCoinGolf_SetupForNewRound_007d2ef0_test.cpp'
+        PassPattern = '007d2ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d70a0'
+        Module = 'CModeDragonFlyingBase'
+        Source = '00/8d/CModeDragonFlyingBase_AnimUpdate_008d70a0.cpp'
+        TestSource = '00/8d/CModeDragonFlyingBase_AnimUpdate_008d70a0_test.cpp'
+        PassPattern = '008d70a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26730'
+        Module = 'C3DAnimationInfo'
+        Source = '00/a2/C3DAnimationInfo_BeginLoading_00a26730.cpp'
+        TestSource = '00/a2/C3DAnimationInfo_BeginLoading_00a26730_test.cpp'
+        PassPattern = '00a26730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6aaa0'
+        Module = 'CTextureManager'
+        Source = '00/a6/CTextureManager_Initialise_00a6aaa0.cpp'
+        TestSource = '00/a6/CTextureManager_Initialise_00a6aaa0_test.cpp'
+        PassPattern = '00a6aaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb6d0'
+        Module = 'CParticleEmitterManager'
+        Source = '00/ae/CParticleEmitterManager_CreateEmitter_00aeb6d0.cpp'
+        TestSource = '00/ae/CParticleEmitterManager_CreateEmitter_00aeb6d0_test.cpp'
+        PassPattern = '00aeb6d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
