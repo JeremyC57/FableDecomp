@@ -1,0 +1,12 @@
+address	name	evidence
+0049d870	CWorld::GetWorldFrame	returns the world frame, labelled GFGetPreMainMemoryUsed (callee, chunk 277)
+008fcfd0	GetPWorldSeed	returns the world seed pointer, labelled FinishAction@WaspQueenDeath (callee, chunk 277)
+00792240	std::list::~list	list destructor, labelled SortTreeRecursively (callee, chunk 277)
+00920ff0	std::vector<C3DVector>::reserve	previously FUN_ (callee, chunk 277)
+0066e630	std::vector<C3DVector>::push_back	previously FUN_ (callee, chunk 277)
+007448f0	CTCSpecialAbilities::GetExtendedSightRadius	labelled ~CTCSpecialAbilities (callee, chunk 277)
+00485f3a	std::vector<unsigned char>::insert	byte-vector insert, labelled deque::insert (callee, chunk 277)
+00913d60	std::deque<CBezierCurve>::_M_push_back_aux_v	forge autoname replaced (callee, chunk 277)
+009137f0	std::deque<CBezierCurve>::_M_initialize_map	forge autoname replaced (callee, chunk 277)
+00ab37b0	CVertexShaderInput::GetVertexSize	labelled PrepareForLoad (callee, chunk 277)
+00ab3b10	CVertexShaderInput::CVertexShaderInput	labelled HoverHornetQueen (callee, chunk 277)

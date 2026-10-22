@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a364e0	DIFFER	703v700	-	rotated-axes FPU scheduling and frame 0x48 v 0x6c
+00a36a80	DIFFER	745v747	-	one draft: same FPU/frame gap as 00a364e0 (frame 0x4c v 0x78)
+00a8f770	DIFFER	617v616	-	strength-reduced output pointer bias 0x38 v 0x2c
+00a8f9e0	DIFFER	789v773	-	fill-loop register assignment (indices ebx, block esi, this spilled, bool slot reused)
+00a8fd40	RELOCATION_MATCH	525v525	PASS	Lock() result named so the lock call precedes the size load
+00a91180	DIFFER	519v519	-	empty DestroyRange tag frame slot ([esp+0x20] v flags arg slot) and imul register
+00a44f40	DIFFER	516v525	-	esi/edi swap; CRC zero store eliminated; insert-arm scheduling
+00e369b0	RELOCATION_MATCH	748v748	PASS	implicit const char* -> const CCharString& conversions (built before all other args)
+0088bcb0	RELOCATION_MATCH	626v626	PASS	forceinline period helper naming the 64-bit offset first; group name CCharString in its own {} block
+0088bf30	DIFFER	536v545	-	disabled-name compare bool via ebx (retail al->bl); table-loop pad; Dirty store
+007ad300	RELOCATION_MATCH	976v976	PASS	explicit CCharString("") temps; int literal to const long& temp stored before the pushes
+0097dcb0	RELOCATION_MATCH	674v674	PASS	plain inline CBrainOutput ctor (first use out of line, per-tick inlined)
+0097e890	advisor-landed	876v876	-	advisor-landed (batch a3); kept in differ/: only the inlined lower_bound eax copy (lane gap)
+0097ec00	advisor-landed	854v854	-	advisor-landed (batch a3); kept in differ/: only the inlined lower_bound eax copy (lane gap)
+0097ef60	RELOCATION_MATCH	540v540	PASS	sibling of 0097f3a0
+0097f3a0	RELOCATION_MATCH	518v518	PASS	inline GetInterface + same-TU GetSubDef stand-in; &Temp(...) action; hand release
+0097fbe0	RELOCATION_MATCH	691v691	PASS	found flag through a bool& that doubles as the MoveToPos moving out; named radiusSquared
+009804a0	RELOCATION_MATCH	719v719	PASS	PerformAction result discarded; do-while continue after MoveToPos; creature named before EPSILON
+009810b0	DIFFER	567v521	-	by-value CDefPointer param release re-read; compare copy and guard=0 store order
+0094f180	DIFFER	737v754	-	callee-saved push placement / shared false exit; frame 0x3c v 0x38
+0091bd10	RELOCATION_MATCH	638v638	PASS	memberwise operator-; !(d<100) first; GetInterfaceR inline lower_bound; GetCreature() twice
+009285d0	RELOCATION_MATCH	983v983	PASS	named CTCDiceGame* game after the player for both CurrentPlayer assignments
+0093afc0	DIFFER	522v522	-	GFROR13 seed store scheduled before the range-global load
+0093b1d0	SKIP	-v1011	-	not attempted within budget: 1011-byte Update with ~16 unidentified callees, inline CModeSit-derived construction with conditional-destroy flags, CRC
+0095e900	RELOCATION_MATCH	752v752	PASS	structured for(;;) with first/moving flags; bool* GetInterface; named brain; literal 0.0027777f
+00966030	DIFFER	597v597	-	ebx/ebp swap (this v &PCrate) and temp registers
+00920a00	DIFFER	953v947	-	frame packing 0x40 v 0x34; bl=1 constant; OldPosition add v folded displacement
+00979f70	DIFFER	571v571	-	shared Terminate block placement (lane gap)
+009711d0	DIFFER	516v516	-	esi/edi swap only
+00960760	RELOCATION_MATCH	592v592	PASS	forceinline HasTC; bit-field SpeechReaction; named CWorldObject* world before the pushes
+0096cb40	DIFFER	527v553	-	def pointer eax v ecx; separate pre-push early exit; tail merge
+0096cd70	DIFFER	578v578	-	frame packing 0xbc v 0xc0; def in eax v ecx; bit-24 byte load v shr
+0091d930	RELOCATION_MATCH	539v539	PASS	user copy ctor C3DVector; targetPos by value; empty test wraps the body
+00911f80	RELOCATION_MATCH	594v594	PASS	C3DVector difference temps; night branch first; GetCreature() twice in the toggle
+00912840	DIFFER	860v860	-	only the inlined deque push_back curve copy (retail pipelined ld/st interleave)
+009130d0	DIFFER	976v954	-	register allocation (retail this in edi, path start.cur promoted to ebp)
+0094cb40	DIFFER	808v792	-	retail caches the local list header node in esi across calls
+00918640	DIFFER	581v570	-	early-exit vector free not folded; this register; zero-count test folded
+00918b90	DIFFER	806v802	-	frame 0x38 v 0x34; retail caches g_FramesPerSecond in ebp
+0092c8a0	RELOCATION_MATCH	654v654	PASS	named list head; filter decl placement; HasTC-guarded GetTC into an uninitialised pointer
