@@ -267407,6 +267407,13 @@ $catalog = @(
         TestSource = '00/d1/CBanditFirstWave_Main_00d1fa00_test.cpp'
         PassPattern = '00d1fa00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00403fc0'
+        Module = 'CPersistContext_TransferableComponent'
+        Source = '00/40/CPersistContextTransferableComponent_TransferIn_00403fc0.cpp'
+        TestSource = '00/40/CPersistContextTransferableComponent_TransferIn_00403fc0_test.cpp'
+        PassPattern = '00403fc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

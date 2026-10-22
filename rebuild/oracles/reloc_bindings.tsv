@@ -24053,3 +24053,4 @@ __TI1?AUCChunkedFileException@@	01369548	00aa79c0
 ?GetRandomAnimFromNameWithFilter@CThing@@QAEPAUCAnimationEntry@@ABUCCharString@@ABUCAnimFilterBase@@@Z	00662ef0	0090f830
 ?GetString@CDefStringTable@@QBE?AUCCharString@@J@Z	009d49b0	0090f830
 ?g_SitAnimName@@3UCCharString@@A	013bb66c	0090f830
+?TransferIn@?$CPersistTraits@_N@@QAEXPAUCPersistContext@@PAUCStringParser@@PA_N@Z	00403ff0	00403fc0
