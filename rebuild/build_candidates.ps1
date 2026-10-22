@@ -264905,6 +264905,20 @@ $catalog = @(
         TestSource = '00/73/CTCClock_FrameUpdate_00732950_test.cpp'
         PassPattern = '00732950_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0097ec00'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_AIActionMoveToPos_0097ec00.cpp'
+        TestSource = '00/97/CAIStateGroupBase_AIActionMoveToPos_0097ec00_test.cpp'
+        PassPattern = '0097ec00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097e890'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_AIActionMoveToPosProximity_0097e890.cpp'
+        TestSource = '00/97/CAIStateGroupBase_AIActionMoveToPosProximity_0097e890_test.cpp'
+        PassPattern = '0097e890_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
