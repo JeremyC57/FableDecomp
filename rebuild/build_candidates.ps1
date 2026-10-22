@@ -267188,6 +267188,13 @@ $catalog = @(
         TestSource = '00/90/CAIStateGroupMinionSitAtSchool_Update_0090fdb0_test.cpp'
         PassPattern = '0090fdb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006808c0'
+        Module = 'CSimVoice'
+        Source = '00/68/CSimVoice_TransferBinaryOut_006808c0.cpp'
+        TestSource = '00/68/CSimVoice_TransferBinaryOut_006808c0_test.cpp'
+        PassPattern = '006808c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
