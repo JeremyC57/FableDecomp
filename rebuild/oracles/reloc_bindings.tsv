@@ -24804,3 +24804,7 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?_M_insert@CArmourMap@@QAE?AUCArmourIterator@@PAUCRbNode@@0ABUCArmourPair@@0@Z	00869ca0	00869020
 ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ	006e7b80	00dc21f0
 ?PopulateLevel@CQ_BanditRaidScript@@QAE_NXZ	00dc0300	00dc21f0
+?FindFirstSymbolWithVal@CSymbolMap@@QBEPBUCSymbolInfo@@ABUCCharString@@J@Z	009e50c0	006f9be0
+?FindFirstSymbolWithVal@CSymbolMap@@QBEPBUCSymbolInfo@@J@Z	009e5090	006f9be0
+?GetDataDirectory@@YI?AUCWideString@@XZ	009a76a0	006f9be0
+?LoadFromHeaderFile@CSymbolMap@@QAEXABUCWideString@@@Z	009e5c90	006f9be0

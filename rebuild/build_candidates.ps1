@@ -269203,6 +269203,13 @@ $catalog = @(
         TestSource = '00/dc/CMRestartMarker_Main_00dc21f0_test.cpp'
         PassPattern = '00dc21f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006f9be0'
+        Module = 'NAnimationEvents::CManager'
+        Source = '00/6f/NAnimationEventsCManager_Save_006f9be0.cpp'
+        TestSource = '00/6f/NAnimationEventsCManager_Save_006f9be0_test.cpp'
+        PassPattern = '006f9be0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
