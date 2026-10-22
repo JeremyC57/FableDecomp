@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00537302	RELOCATION_MATCH	-	PASS	-
+0053753c	RELOCATION_MATCH	-	PASS	-
+0053706f	RELOCATION_MATCH	-	PASS	-
+00536dd9	RELOCATION_MATCH	-	PASS	-
+005363ea	RELOCATION_MATCH	-	PASS	-
+005367f3	DIFFER	573v573	-	SIB operand order [edi+eax] vs [eax+edi] on 4 RemoveState loads
+0055bf10	RELOCATION_MATCH	-	PASS	-
+0068c880	RELOCATION_MATCH	-	PASS	/GS
+0068ef50	DIFFER	547v550	-	constant 1 in ebx instead of the event; keys miss the dead event slot
+00691870	RELOCATION_MATCH	-	PASS	/GS
+00691d70	SKIP	-	-	row holds ProcessInput + jump table + the next function (0x00691F80 GetInterface helper, ret 4) + a ret 8 stub
+00691130	DIFFER	715v755	-	mouse-position copy kept in edi/esi, retail spills to an 8-byte frame across GetInstance
+00690480	RELOCATION_MATCH	-	PASS	/GS
+00d8f6d0	RELOCATION_MATCH	-	PASS	-
+00d8fa30	RELOCATION_MATCH	-	PASS	-
+00df9710	RELOCATION_MATCH	-	PASS	-
+00ea7b40	RELOCATION_MATCH	-	PASS	-
+00e02950	RELOCATION_MATCH	-	PASS	-
+00e02470	RELOCATION_MATCH	-	PASS	catalog length 1024 includes 2 padding bytes
+00ea0b10	RELOCATION_MATCH	-	PASS	-
+00be79d0	DIFFER	528v528	-	matrix-build register allocation + first-path tail scheduling
+00ef3f00	RELOCATION_MATCH	-	PASS	-
+00ab6240	RELOCATION_MATCH	-	PASS	-
+00be61b0	RELOCATION_MATCH	-	PASS	-
+00bf84c0	RELOCATION_MATCH	-	PASS	load-task scalar deleting destructor modelled as a named stand-in (inline-once band)
+00bf8030	RELOCATION_MATCH	-	PASS	load-task delete via the named scalar-deleting-destructor stand-in
+0079fe90	RELOCATION_MATCH	-	PASS	-
+007a1380	DIFFER	864v870	-	emitter spill slot + key registers (frame 0x54 v 0x50)
+00a48f10	DIFFER	845v811	-	inline-asm fistp floor helper (lane gap)
+00a48ba0	DIFFER	873v875	-	inline-asm fistp weight byte (lane gap) + STLport map model
+005bedcb	RELOCATION_MATCH	-	PASS	/Os frame-pointer TU; all lookups via the inline out-param GetInterface
+00d907b0	RELOCATION_MATCH	-	PASS	-
+00d90b30	RELOCATION_MATCH	-	PASS	-
+00e1bc70	RELOCATION_MATCH	-	PASS	-
+0068eca0	RELOCATION_MATCH	-	PASS	/GS
+0068d890	RELOCATION_MATCH	-	PASS	-
+0068e510	DIFFER	875v902	-	constant -1 CSE in ebp from entry; retail pushes ebx/ebp lazily and spills the special flag to the dead event slot
+00690030	RELOCATION_MATCH	-	PASS	/GS; SetHandled in both scroll-loop arms (advisor)
+00869020	DIFFER	971v955	-	make_pair temporaries: retail keeps the pair key in esi through the insert and releases; x87 reload before the augmentation loop
+00542780	DIFFER	682v682	-	FrameWidth/FrameHeight movzx load order before the int-to-float conversions (2 instructions)

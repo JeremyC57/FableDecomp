@@ -1,0 +1,13 @@
+address	name	evidence
+0053753c	NUISystem::CList::ScrollUpProcess	was ScrollDownProcess; body scrolls up (chunk 289)
+00687b30	IsEventButtonReleased	body tests the released-button event (chunk 289)
+00b8d0b0	GetQueryResult	was AddChildPrimitive; returns the occlusion query result (chunk 289)
+009a4fb0	HasInputFocus	was GetCanItemBeQuickAssigned (chunk 289)
+0066bd00	CTCSoundPlayer::PlayAttachedCriteria	called from CTCSoundPlayer play path (chunk 289)
+0066bdf0	CTCSoundPlayer::PlayUnattachedCriteria	was CParticleMorphs_LoadAndProcessMorphs (chunk 289)
+00993b10	CMemoryDataInputStream::~CMemoryDataInputStream	dtor body (chunk 289)
+00766920	CHitParameters::GetAugmentations	was CParticleMorphs_InitFromDef; fills the augmentation vector (chunk 289)
+00733290	CTCCombat::IsBreakBlockValid	was CThingFilter_IsUnconscious::operator(); RELOC_NAME from landed 0068eca0 (chunk 289)
+005eed4c	TriggerSpecialAbility	call target in special-abilities input (chunk 289)
+00869ca0	std::multimap::_M_insert	was CMemoryAllocatorVariableSize::InsertNode; SetAsModifiedByArmour multimap (chunk 289)
+00869bb0	std::multimap::_M_erase	same multimap (chunk 289)

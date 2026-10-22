@@ -268778,6 +268778,214 @@ $catalog = @(
         TestSource = '00/ef/CGift_Main_00efd740_test.cpp'
         PassPattern = '00efd740_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005363ea'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollToFirstChild_005363ea.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollToFirstChild_005363ea_test.cpp'
+        PassPattern = '005363ea_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00536dd9'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollUntilChild_00536dd9.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollUntilChild_00536dd9_test.cpp'
+        PassPattern = '00536dd9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053706f'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollUntilChildContaining_0053706f.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollUntilChildContaining_0053706f_test.cpp'
+        PassPattern = '0053706f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00537302'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollDownProcess_00537302.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollDownProcess_00537302_test.cpp'
+        PassPattern = '00537302_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053753c'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollUpProcess_0053753c.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollUpProcess_0053753c_test.cpp'
+        PassPattern = '0053753c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055bf10'
+        Module = 'NUISystem::CHoverable'
+        Source = '00/55/NUISystemCHoverable_UpdateHovering_0055bf10.cpp'
+        TestSource = '00/55/NUISystemCHoverable_UpdateHovering_0055bf10_test.cpp'
+        PassPattern = '0055bf10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bedcb'
+        Module = 'NInventory::CItem'
+        Source = '00/5b/NInventoryCItem_UpdateItemStats_005bedcb.cpp'
+        TestSource = '00/5b/NInventoryCItem_UpdateItemStats_005bedcb_test.cpp'
+        PassPattern = '005bedcb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068c880'
+        Module = 'CInputProcessYesNoQuestion'
+        Source = '00/68/CInputProcessYesNoQuestion_ProcessInput_0068c880.cpp'
+        TestSource = '00/68/CInputProcessYesNoQuestion_ProcessInput_0068c880_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068c880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068d890'
+        Module = 'CInputProcessControlCreatureRightStick'
+        Source = '00/68/CInputProcessControlCreatureRightStick_ProcessInput_0068d890.cpp'
+        TestSource = '00/68/CInputProcessControlCreatureRightStick_ProcessInput_0068d890_test.cpp'
+        PassPattern = '0068d890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068eca0'
+        Module = 'CInputProcessCombat'
+        Source = '00/68/CInputProcessCombat_ProcessArmedMeleeInput_0068eca0.cpp'
+        TestSource = '00/68/CInputProcessCombat_ProcessArmedMeleeInput_0068eca0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068eca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00690030'
+        Module = 'CInputProcessSpecialAbilities'
+        Source = '00/69/CInputProcessSpecialAbilities_ProcessInput_00690030.cpp'
+        TestSource = '00/69/CInputProcessSpecialAbilities_ProcessInput_00690030_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00690030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00690480'
+        Module = 'CInputProcessInGameMenu'
+        Source = '00/69/CInputProcessInGameMenu_ProcessInput_00690480.cpp'
+        TestSource = '00/69/CInputProcessInGameMenu_ProcessInput_00690480_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00690480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00691870'
+        Module = 'CInputProcessFireheartMinigame'
+        Source = '00/69/CInputProcessFireheartMinigame_ProcessInput_00691870.cpp'
+        TestSource = '00/69/CInputProcessFireheartMinigame_ProcessInput_00691870_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00691870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079fe90'
+        Module = 'CTCWillLightning::CLightningBeam'
+        Source = '00/79/CTCWillLightningCLightningBeam_Deactivate_0079fe90.cpp'
+        TestSource = '00/79/CTCWillLightningCLightningBeam_Deactivate_0079fe90_test.cpp'
+        PassPattern = '0079fe90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab6240'
+        Module = 'CKeyboardDX'
+        Source = '00/ab/CKeyboardDX_UpdateKeyEvents_00ab6240.cpp'
+        TestSource = '00/ab/CKeyboardDX_UpdateKeyEvents_00ab6240_test.cpp'
+        PassPattern = '00ab6240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be61b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_UpdateTesselation_00be61b0.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_UpdateTesselation_00be61b0_test.cpp'
+        PassPattern = '00be61b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf8030'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_ProcessBackgroundLoading_00bf8030.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_ProcessBackgroundLoading_00bf8030_test.cpp'
+        PassPattern = '00bf8030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf84c0'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_ProcessLoadTask_00bf84c0.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_ProcessLoadTask_00bf84c0_test.cpp'
+        PassPattern = '00bf84c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8f6d0'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeLarder'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_Main_00d8f6d0.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_Main_00d8f6d0_test.cpp'
+        PassPattern = '00d8f6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8fa30'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeLeader'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Main_00d8fa30.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Main_00d8fa30_test.cpp'
+        PassPattern = '00d8fa30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d907b0'
+        Module = 'NScript::CQ_HobbeCaveScript::CJamesCommentMarker'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_Main_00d907b0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_Main_00d907b0_test.cpp'
+        PassPattern = '00d907b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d90b30'
+        Module = 'NScript::CQ_HobbeCaveScript::CJamesCommentMarkerAdv'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_Main_00d90b30.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_Main_00d90b30_test.cpp'
+        PassPattern = '00d90b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df9710'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CIsAGuard'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_Main_00df9710.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_Main_00df9710_test.cpp'
+        PassPattern = '00df9710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e02470'
+        Module = 'NScript::CQ_TraderEscortScript::CInfectedBalverine'
+        Source = '00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02470.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02470_test.cpp'
+        PassPattern = '00e02470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e02950'
+        Module = 'NScript::CQ_TraderEscortScript::CInfectedBalverine'
+        Source = '00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02950.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02950_test.cpp'
+        PassPattern = '00e02950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1bc70'
+        Module = 'NScript::CQ_WizardBattleScript::CInitialScreamerPoint'
+        Source = '00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Main_00e1bc70.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Main_00e1bc70_test.cpp'
+        PassPattern = '00e1bc70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea0b10'
+        Module = 'NScript::CV_KnotholeGladeGatesScript::CKGG_SurpriseBalverine'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Main_00ea0b10.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Main_00ea0b10_test.cpp'
+        PassPattern = '00ea0b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7b40'
+        Module = 'NScript::CV_MazeResearchScript::CHistoryBookcase'
+        Source = '00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_Main_00ea7b40.cpp'
+        TestSource = '00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_Main_00ea7b40_test.cpp'
+        PassPattern = '00ea7b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3f00'
+        Module = 'NScript::CPersonalScript_EmptyScript::CLeader'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Main_00ef3f00.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Main_00ef3f00_test.cpp'
+        PassPattern = '00ef3f00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

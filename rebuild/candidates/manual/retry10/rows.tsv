@@ -2326,3 +2326,13 @@ address	module	name	length	chunk	reason
 00d701c0	CHTG_FreedomFighter	Main	864	hand288	DIFFER(850v850) -- two frame slots swapped (exit point vs copied position)
 006d8f10	CHeroExperienceDef	CHeroExperienceDef::Transfer	692	hand288	DIFFER(693v692) -- shrink-wrapped ebp save (retail pushes ebp late); lane gap
 006dd1c0	CHeroExperienceDef	CHeroExperienceDef::ReadFromStream	520	hand288	DIFFER(520v520) -- frame packing of count/key-traits/insert-result slots
+005367f3	CList	Update	573	hand289	DIFFER(573v573) -- SIB operand order [edi+eax] vs [eax+edi] on 4 RemoveState loads
+0068ef50	CInputProcessUseRangedWeapon	ProcessRangedAttackInput	560	hand289	DIFFER(547v550) -- constant 1 in ebx instead of the event; keys miss the dead event slot
+00691130	CInputProcessQuestCompletionUI	?ProcessInput@CInputProcessQuestCompletionUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	755	hand289	DIFFER(715v755) -- mouse-position copy kept in edi/esi, retail spills to an 8-byte frame across GetInstance
+00be79d0	CLandscapeBackgroundPatch	RenderWithOcclusion	528	hand289	DIFFER(528v528) -- matrix-build register allocation + first-path tail scheduling
+007a1380	CLightningBeam	Activate	880	hand289	DIFFER(864v870) -- emitter spill slot + key registers (frame 0x54 v 0x50)
+00a48f10	CLipSyncSampleData	GetFrameInterpolate	816	hand289	DIFFER(845v811) -- inline-asm fistp floor helper (lane gap)
+00a48ba0	CLipSyncSampleData	WriteToFile	880	hand289	DIFFER(873v875) -- inline-asm fistp weight byte (lane gap) + STLport map model
+0068e510	CInputProcessQuickAccessItems	?ProcessInput@CInputProcessQuickAccessItems@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	902	hand289	DIFFER(875v902) -- constant -1 CSE in ebp from entry; retail pushes ebx/ebp lazily and spills the special flag to the dead event slot
+00869020	CHitParameters	SetAsModifiedByArmour	955	hand289	DIFFER(971v955) -- make_pair temporaries: retail keeps the pair key in esi through the insert and releases; x87 reload before the augmentation loop
+00542780	CIconText	AddIcon	688	hand289	DIFFER(682v682) -- FrameWidth/FrameHeight movzx load order before the int-to-float conversions (2 instructions)
