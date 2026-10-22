@@ -269700,6 +269700,13 @@ $catalog = @(
         TestSource = '00/b6/CEngineSkyRenderer_BuildBaseBandMesh_00b61cd0_test.cpp'
         PassPattern = '00b61cd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007fede0'
+        Module = 'CTCUserActionPointBase'
+        Source = '00/7f/CTCUserActionPointBase_GetFreeActionPoint_007fede0.cpp'
+        TestSource = '00/7f/CTCUserActionPointBase_GetFreeActionPoint_007fede0_test.cpp'
+        PassPattern = '007fede0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

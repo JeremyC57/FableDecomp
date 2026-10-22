@@ -25027,3 +25027,6 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?InsertUnique@CStatMapTree@@QAE?AUSPairIB@@ABUSStatPair@@@Z	006dce90	006dd1c0
 ?TransferBinaryIn@CPersistTraitsAttr@@QAEXPAUCMemoryDataInputStream@@PAJ@Z	00459083	006dd1c0
 ?TransferBinaryIn@CPersistTraitsStat@@QAEXPAUCMemoryDataInputStream@@PAUCHeroStatIncreaseData@@@Z	006dc070	006dd1c0
+??$Find@PAJJ@@YIPAJPAJ0ABJABUCIteratorTag@@@Z	0050e540	007fede0
+?PeekWorld@CTCUserActionPointBase@@QBEABVCWorld@@XZ	00686a80	007fede0
+?UpdateBlockedActionPoints@CTCUserActionPointBase@@QAEXXZ	007fecb0	007fede0
