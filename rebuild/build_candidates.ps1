@@ -269693,6 +269693,13 @@ $catalog = @(
         TestSource = '00/6d/CHeroExperienceDef_ReadFromStream_006dd1c0_test.cpp'
         PassPattern = '006dd1c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b61cd0'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_BuildBaseBandMesh_00b61cd0.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_BuildBaseBandMesh_00b61cd0_test.cpp'
+        PassPattern = '00b61cd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
