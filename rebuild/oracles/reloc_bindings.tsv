@@ -23858,3 +23858,12 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?GetSubDefHairCard@CDefClassBase@@QAE_NAAUCDefPointer@@@Z	005da180	005d9430
 ??0CRetailVector12@@QAE@ABU0@@Z	0047bb90	00619950
 ?GetGameDef@CTCTavernGameCardBlackjack@@QAE_NAAUCDefPointer@@@Z	005ea000	007da3a0
+?__copy@@YI?AUback_insert_iterator_deque@@PBUSPair8@@0U1@ABUrandom_access_iterator_tag@@PAJ@Z	007b5400	007b5530
+?__copy@@YIPAUSElement9@@PAU1@00ABUrandom_access_iterator_tag@@PAJ@Z	008001f0	00800c60
+??0CThingCompare_BestForTargeting2@@QAE@ABU0@@Z	007f9730	0080aa60
+??RCThingCompare_BestForTargeting2@@QBE_NABUCTargetPoint@NPlayerTargeting@@0@Z	008098b0	0080aa60
+?__copy_backward@@YIPAUCTargetPoint@NPlayerTargeting@@PAU12@00ABUrandom_access_iterator_tag@@PAJ@Z	008076d0	0080aa60
+?__unguarded_linear_insert@@YIXPAUCTargetPoint@NPlayerTargeting@@U12@UCThingCompare_BestForTargeting2@@@Z	0080a340	0080aa60
+?GFCheckBlackHeight@@YIJPAUCMemoryArea@CMemoryAllocatorVariableSize@@J@Z	00a644a0	00a644a0
+?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAUCLandscapeBackgroundPatch@@@Z	00b67e30	00be5d20
+?CombineAreas@CHandleBasedMemoryPool@@QAEXPAUCHeader@@0@Z	00a01e40	00a02b30

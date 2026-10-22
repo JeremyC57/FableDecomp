@@ -1,0 +1,34 @@
+address	status	bytes	test	note
+006d4cc0	MATCH	9v9	PASS	one-bit uchar bitfield getter +0x1C9
+006d4cd0	MATCH	14v14	PASS	STLport list empty()
+006d4ce0	MATCH	21v21	PASS	IS_THING_DEAD<CThing*> __fastcall template, flag +0x91 bit 0
+006d4d00	RELOCATION_MATCH	5v5	PASS	CIntelligentPointer<CThing> accessor: tail jmp GetPItem
+007b5530	RELOCATION_MATCH	33v33	PASS	STLport __copy_aux (fastcall, hidden ret in ecx); tag with user ctor homed in dead result slot
+007b5560	RELOCATION_MATCH	33v33	PASS	STLport copy (fastcall) with __forceinline __copy_aux; Leaf ?copy@@
+007b5590	RELOCATION_MATCH	19v19	PASS	in-place CCharString("CActivateQuestDef",-1) ctor
+007b55b0	MATCH	13v13	PASS	byte setter +0x241
+007b55c0	MATCH	11v11	PASS	null-tag ctor: *this=0, ret 4
+007eeb80	MATCH	6v6	PASS	return 0x4E
+007eeb90	MATCH	10v10	PASS	dword setter +0xC
+007f4f40	RELOCATION_MATCH	52v52	PASS	CTCStockItem::GetSellersBanter (PDB name; CStockItemDef+0x30), landed OnCreate idiom
+007f7930	MATCH	5v5	PASS	return *this, ret 4
+007f7940	MATCH	39v39	PASS	STLport remove_copy (fastcall) over pointers
+00800c60	RELOCATION_MATCH	38v38	PASS	vector::erase(first,last) -> fastcall __copy 0x8001F0, tag in dead first slot
+00800c90	RELOCATION_MATCH	14v14	PASS	if (p) free(p)
+0080aa60	RELOCATION_MATCH	219v219	PASS	STLport __linear_insert<CTargetPoint,CThingCompare_BestForTargeting2> (fastcall); same-TU __copy_backward body + forceinline copy/assign + C3DVector user copy ctor
+0083ce50	MATCH	11v11	PASS	null-tag ctor: *this=0, ret 4 (twin of 007b55c0)
+0092b230	MATCH	11v11	PASS	list iterator ctor
+0092b240	MATCH	9v9	PASS	list iterator operator++
+0092b250	MATCH	13v13	PASS	list begin() (hidden result)
+0092b260	MATCH	11v11	PASS	list end() (hidden result)
+0092b270	MATCH	26v26	PASS	__distance over list iterators (by const&)
+0092b290	MATCH	26v26	PASS	__distance twin (distinct element instantiation)
+0092b2b0	MATCH	24v24	PASS	list size()
+009be380	MATCH	11v11	PASS	(float)b / a, this ignored
+00a0d260	MATCH	5v5	PASS	byte flag +0x26 = 0
+00a0d280	MATCH	13v13	PASS	3-dword zero ctor (vector empty ctor)
+00a64480	MATCH	27v27	PASS	CMemoryAllocatorVariableSize::IsNodeBlack (PDB name), int result
+00a644a0	RELOCATION_MATCH	22v22	PASS	GFCheckBlackHeight (PDB name, fastcall); self tail jmp needs recursion inside an inline helper
+00be5d10	RELOCATION_MATCH	15v15	PASS	fastcall (float)v * 1/255
+00be5d20	RELOCATION_MATCH	20v20	PASS	CLandscapeBackgroundPatch::RegisterForZSorting (PDB name) -> RegisterSubPatchForZSorting 0xB67E30
+00ca53f0	MATCH	16v16	PASS	CBasePin::AddRef DECLARE_IUNKNOWN delegation (stdcall, [this-8]); manifest operator== label wrong

@@ -1,0 +1,15 @@
+address	name	evidence
+007f4f40	CTCStockItem::GetSellersBanter	reads CStockItemDef::SellersBanter at +0x30 (Ego_r PDB) (chunk 915)
+00a64480	CMemoryAllocatorVariableSize::IsNodeBlack	returns int (mov eax,1) though the PDB says bool (chunk 915)
+00a644a0	GFCheckBlackHeight	__fastcall, self tail recursion as jmp (chunk 915)
+00be5d20	CLandscapeBackgroundPatch::RegisterForZSorting	calls CEngineLandscapeRenderer::RegisterSubPatchForZSorting (chunk 915)
+00b67e30	CEngineLandscapeRenderer::RegisterSubPatchForZSorting	labelled sub_00b67e30 (callee, chunk 915)
+00ca53f0	CBasePin::AddRef	DirectShow DECLARE_IUNKNOWN GetOwner()->AddRef() forwarder, not CScriptThing::operator== (chunk 915)
+00ca53c0	CBasePin::QueryInterface	DirectShow forwarder, vtable neighbour of AddRef (chunk 915)
+00ca5510	CBasePin::Release	DirectShow forwarder, vtable neighbour of AddRef (chunk 915)
+0080aa60	std::__linear_insert	STLport __linear_insert<CTargetPoint*,CTargetPoint,CThingCompare_BestForTargeting2>, not std_insert_WithComparison (chunk 915)
+008076d0	std::__copy_backward	labelled _Move_backward (callee, chunk 915)
+0080a340	std::__unguarded_linear_insert	labelled NPlayerTargeting_InsertTargetPoint (callee, chunk 915)
+007b5400	std::__copy	__fastcall copy into a back_insert_iterator<deque<8-byte T>>, labelled Vector_InsertRange_8byte_StdVector (callee, chunk 915)
+006d4ce0	IS_THING_DEAD<CThing*>	matched in chunk 915
+00567d60	CNetString_Retail::Append	propagated CTCElectrocutedEffect::ReplaceString label (int3 rows)
