@@ -269966,6 +269966,13 @@ $catalog = @(
         TestSource = '00/de/CVictimsFather_Init_00de19f0_test.cpp'
         PassPattern = '00de19f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00438aa0'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_AddScreenMessage_00438aa0.cpp'
+        TestSource = '00/43/CPlayerGui_AddScreenMessage_00438aa0_test.cpp'
+        PassPattern = '00438aa0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

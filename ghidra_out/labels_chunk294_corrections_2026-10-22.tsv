@@ -11,3 +11,5 @@ address	name	evidence
 00449700	GetMainPlayerID	(chunk 294)
 006e7b60	CMovieHandle::CMovieHandle	movie-handle ctor; was CCarriedReadableDef (chunk 294)
 007e72a0	CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase	scripted-thing ctor; was CCarriedReadableDef (chunk 294)
+009e1da0	GFVXToAX	K*x/width, inverse of GFAXToVX 0x009E1E10; Ego_r.pdb pairs GFVXToAX/GFVYToAY with GFAXToVX (chunk 294)
+0099b510	CWideString::~CWideString	was ~CCharString; the real ~CCharString is 0x0099EAE0 (chunk 294)
