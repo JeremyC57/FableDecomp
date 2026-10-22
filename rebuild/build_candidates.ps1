@@ -266369,6 +266369,13 @@ $catalog = @(
         TestSource = '00/e3/CACDummyStatic_Main_00e369b0_test.cpp'
         PassPattern = '00e369b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bdd2f0'
+        Module = 'CEngineLandscapeMap'
+        Source = '00/bd/CEngineLandscapeMap_CEngineLandscapeMap_00bdd2f0.cpp'
+        TestSource = '00/bd/CEngineLandscapeMap_CEngineLandscapeMap_00bdd2f0_test.cpp'
+        PassPattern = '00bdd2f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
