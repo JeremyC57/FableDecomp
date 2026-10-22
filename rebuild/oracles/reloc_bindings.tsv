@@ -23867,3 +23867,4 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?GFCheckBlackHeight@@YIJPAUCMemoryArea@CMemoryAllocatorVariableSize@@J@Z	00a644a0	00a644a0
 ?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAUCLandscapeBackgroundPatch@@@Z	00b67e30	00be5d20
 ?CombineAreas@CHandleBasedMemoryPool@@QAEXPAUCHeader@@0@Z	00a01e40	00a02b30
+?GotoCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJJJ@Z	0095a6c0	0095ad20

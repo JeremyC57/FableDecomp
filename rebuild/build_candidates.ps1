@@ -266873,6 +266873,13 @@ $catalog = @(
         TestSource = '00/a0/CHandleBasedMemoryPool_Free_00a02b30_test.cpp'
         PassPattern = '00a02b30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0095ad20'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/95/CAIStateGroupHoverHornetQueen_GotoSafestCirclePoint_0095ad20.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueen_GotoSafestCirclePoint_0095ad20_test.cpp'
+        PassPattern = '0095ad20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
