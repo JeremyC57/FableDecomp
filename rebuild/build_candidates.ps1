@@ -266971,6 +266971,34 @@ $catalog = @(
         TestSource = '00/a4/CLipSyncDataBank_NotifyEntryAdded_00a42df0_test.cpp'
         PassPattern = '00a42df0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004fce20'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_AllocateMapUID_004fce20.cpp'
+        TestSource = '00/4f/CWorldMap_AllocateMapUID_004fce20_test.cpp'
+        PassPattern = '004fce20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00945e70'
+        Module = 'CIsSeatWithSpaceOwnedBy'
+        Source = '00/94/CIsSeatWithSpaceOwnedBy_operator_00945e70.cpp'
+        TestSource = '00/94/CIsSeatWithSpaceOwnedBy_operator_00945e70_test.cpp'
+        PassPattern = '00945e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad89b0'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_CalcMinimumBlocks_00ad89b0.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_CalcMinimumBlocks_00ad89b0_test.cpp'
+        PassPattern = '00ad89b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2b050'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_IsNearlyIdentical_00b2b050.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_IsNearlyIdentical_00b2b050_test.cpp'
+        PassPattern = '00b2b050_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
