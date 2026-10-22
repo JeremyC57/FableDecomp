@@ -266908,6 +266908,41 @@ $catalog = @(
         TestSource = '00/95/CAIStateGroupHoverHornetQueen_IsRouteToPosBlockedByTarget_0095a490_test.cpp'
         PassPattern = '0095a490_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004e6f74'
+        Module = 'CTextureMorphEntryVector'
+        Source = '00/4e/CTextureMorphEntryVector_operator_004e6f74.cpp'
+        TestSource = '00/4e/CTextureMorphEntryVector_operator_004e6f74_test.cpp'
+        PassPattern = '004e6f74_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e72c8'
+        Module = 'CSkeletalMorphEntryVector'
+        Source = '00/4e/CSkeletalMorphEntryVector_operator_004e72c8.cpp'
+        TestSource = '00/4e/CSkeletalMorphEntryVector_operator_004e72c8_test.cpp'
+        PassPattern = '004e72c8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009acd00'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_ValidateDefs_009acd00.cpp'
+        TestSource = '00/9a/CDefinitionManager_ValidateDefs_009acd00_test.cpp'
+        PassPattern = '009acd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bebb0'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_GetClosestDepthBufferFormat_009bebb0.cpp'
+        TestSource = '00/9b/CDisplayManager_GetClosestDepthBufferFormat_009bebb0_test.cpp'
+        PassPattern = '009bebb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3b970'
+        Module = 'CTriangleStripifier2'
+        Source = '00/f3/CTriangleStripifier2_StripUnusedVerts_00f3b970.cpp'
+        TestSource = '00/f3/CTriangleStripifier2_StripUnusedVerts_00f3b970_test.cpp'
+        PassPattern = '00f3b970_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

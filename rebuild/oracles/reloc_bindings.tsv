@@ -23872,3 +23872,9 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?GetLevelDimensions@CWorldMap@@QAE?AUC2DBoxI@@PAVCAFile@@@Z	00506bb0	00506e30
 ?Reset@?$CCountedPointer@VCAFile@@@@QAEXPAVCAFile@@@Z	0050f550	00506e30
 ?EndSpecialMoveMode@CPlayer@@QAEXXZ	00487150	007aa370
+?_M_allocate_and_copy@CTextureMorphEntryVector@@QAEPAUCTextureMorphEntry@@IPBU2@0@Z	004e70cf	004e6f74
+?_M_clear@CTextureMorphEntryVector@@QAEXXZ	004e70c1	004e6f74
+?_M_allocate_and_copy@CSkeletalMorphEntryVector@@QAEPAUCSkeletalMorphEntry@@IPBU2@0@Z	004e741d	004e72c8
+?_M_clear@CSkeletalMorphEntryVector@@QAEXXZ	004e740f	004e72c8
+??0CPixelFormat@@QAE@J@Z	009e3830	009bebb0
+??4?$CArray@G@@QAEAAU0@ABU0@@Z	00f3b640	00f3b970

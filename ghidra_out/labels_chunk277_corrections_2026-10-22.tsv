@@ -11,3 +11,4 @@ address	name	evidence
 00ab37b0	CVertexShaderInput::GetVertexSize	labelled PrepareForLoad (callee, chunk 277)
 00ab3b10	CVertexShaderInput::CVertexShaderInput	labelled HoverHornetQueen (callee, chunk 277)
 004d2760	std::vector<CSubtitledMessage>::_M_insert_overflow	insert-overflow helper, labelled vector_insert_range_CSubtitledMessage (callee, retry 10w)
+009bebb0	CDisplayManager::GetClosestDepthBufferFormat	labelled CPixelFormat::FindBestMatch (retry 10x)
