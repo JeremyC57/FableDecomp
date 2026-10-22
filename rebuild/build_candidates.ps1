@@ -270281,6 +270281,13 @@ $catalog = @(
         TestSource = '00/bf/CPatchTesselationEdgeStrip_Load_00bfc600_test.cpp'
         PassPattern = '00bfc600_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cbd5d0'
+        Module = 'CEntryScriptVectorMap'
+        Source = '00/cb/CEntryScriptVectorMap_InsertEntry_00cbd5d0.cpp'
+        TestSource = '00/cb/CEntryScriptVectorMap_InsertEntry_00cbd5d0_test.cpp'
+        PassPattern = '00cbd5d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

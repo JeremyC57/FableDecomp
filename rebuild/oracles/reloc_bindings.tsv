@@ -25205,3 +25205,4 @@ __Rb_tree_increment	004292c0	0057770a
 ??$LoadVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAU?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@PAUCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfc880	00bfc600
 ??$LoadVerts@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAU?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAUCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfcd60	00bfc600
 ??$LoadVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAU?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@PAUCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfcbc0	00bfc600
+??$_M_insert_overflow@U__false_type@@@CEntryPairVector@@QAEXPAUCEntryPair@@ABU1@ABU__false_type@@K_N@Z	00cbc850	00cbd5d0
