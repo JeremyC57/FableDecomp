@@ -24808,3 +24808,7 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBUCSymbolInfo@@J@Z	009e5090	006f9be0
 ?GetDataDirectory@@YI?AUCWideString@@XZ	009a76a0	006f9be0
 ?LoadFromHeaderFile@CSymbolMap@@QAEXABUCWideString@@@Z	009e5c90	006f9be0
+?GetGameHeight@CScriptedMapBrush@@QBEMJJ@Z	0082e290	008203a0
+?GetTheme@CScriptedMapBrush@@QBEKJJK@Z	0082e330	008203a0
+?GetThemeBlend@CScriptedMapBrush@@QBEEJJK@Z	0082e3d0	008203a0
+?GetWorldBox@CMapRegionTable@@QAE?AUC2DBoxI@@JABU2@@Z	004fc560	008203a0

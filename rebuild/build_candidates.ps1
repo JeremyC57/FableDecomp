@@ -269210,6 +269210,13 @@ $catalog = @(
         TestSource = '00/6f/NAnimationEventsCManager_Save_006f9be0_test.cpp'
         PassPattern = '006f9be0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008203a0'
+        Module = 'CMap'
+        Source = '00/82/CMap_ApplyScriptedMapBrushUpdate_008203a0.cpp'
+        TestSource = '00/82/CMap_ApplyScriptedMapBrushUpdate_008203a0_test.cpp'
+        PassPattern = '008203a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
