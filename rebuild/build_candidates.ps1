@@ -268993,6 +268993,13 @@ $catalog = @(
         TestSource = '00/53/NUISystemCList_Update_005367f3_test.cpp'
         PassPattern = '005367f3_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00691130'
+        Module = 'CInputProcessQuestCompletionUI'
+        Source = '00/69/CInputProcessQuestCompletionUI_ProcessInput_00691130.cpp'
+        TestSource = '00/69/CInputProcessQuestCompletionUI_ProcessInput_00691130_test.cpp'
+        PassPattern = '00691130_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

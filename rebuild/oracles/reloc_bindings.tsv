@@ -24717,3 +24717,11 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?SetPredicate@CLeader@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00ef3f00
 ?Update@CComponent@NUISystem@@UAEXM@Z	0052c7e0	005367f3
 ?g_ComponentList@NUISystem@@3V?$list@PAUCComponent@NUISystem@@@std@@A	013b8a98	005367f3
+?Deactivate@CTCQuestCompletionUI@@QAEXXZ	005e3df0	00691130
+?GetWheelDelta@CInputEvent@@QBEMXZ	00a03bb0	00691130
+?IsEventButtonHeld@CInputProcessQuestCompletionUI@@QAE_NABVCInputEvent@@@Z	00687bd0	00691130
+?IsEventButtonPressed@CInputProcessQuestCompletionUI@@QAE_NABVCInputEvent@@@Z	00687a90	00691130
+?IsEventButtonReleased@CInputProcessQuestCompletionUI@@QAE_NABVCInputEvent@@@Z	00687b30	00691130
+?IsEventGameAction@CInputProcessQuestCompletionUI@@QAE_NJABVCInputEvent@@@Z	00687cf0	00691130
+?ScrollMenu@CFrontEndManager@NUISystem@@QAEXJ@Z	0041da2d	00691130
+?ceil@@YAMM@Z	00689370	00691130
