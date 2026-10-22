@@ -266236,6 +266236,27 @@ $catalog = @(
         TestSource = '00/c5/CAudioContext_SetEAXGlobalProperty_00c564f0_test.cpp'
         PassPattern = '00c564f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004887c0'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_SetupInitialPlayerMode_004887c0.cpp'
+        TestSource = '00/48/CPlayer_SetupInitialPlayerMode_004887c0_test.cpp'
+        PassPattern = '004887c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eda8c0'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_ProcessSongsAge_00eda8c0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_ProcessSongsAge_00eda8c0_test.cpp'
+        PassPattern = '00eda8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edd060'
+        Module = 'CV_TempleOfLightScript'
+        Source = '00/ed/CVTempleOfLightScript_WatchForAcolyteExit_00edd060.cpp'
+        TestSource = '00/ed/CVTempleOfLightScript_WatchForAcolyteExit_00edd060_test.cpp'
+        PassPattern = '00edd060_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

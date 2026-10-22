@@ -23794,3 +23794,8 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?GetSubDef@CDefClassBase@@QAE_NPAU?$CDefPointer@UCKrakenDef@@@@@Z	007fcd50	007fc8e0
 ?SetPhase@CTCKraken@@QAEXJ@Z	007fc820	007fc8e0
 ?clear@CThingPointerList@@QAEXXZ	004b8050	007fc8e0
+?GetAllThings@CThingSearchTools@@QAEXABJAAU?$vector@PAUCThing@@@@@Z	0048d400	004887c0
+?GetCurrentMode@CPlayer_Methods@@QAEJXZ	00633be0	004887c0
+?GetMainPlayer@CPlayerManager_Retail@@QAEPAUCPlayer@@XZ	00449970	004887c0
+?SetMaster@CTCCoopSpirit@@QAEXPAUCPlayer@@@Z	0066fa50	004887c0
+?Destroy@?$vector@UCScriptThing@@@@QAEXXZ	008ac970	00edd060
