@@ -265970,6 +265970,13 @@ $catalog = @(
         TestSource = '00/96/CAIStateGroupIceTrollPoundGroundAttack_Update_009624d0_test.cpp'
         PassPattern = '009624d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c43fd0'
+        Module = 'CDrawAutoPickups'
+        Source = '00/c4/CDrawAutoPickups_OnVisibilityChange_00c43fd0.cpp'
+        TestSource = '00/c4/CDrawAutoPickups_OnVisibilityChange_00c43fd0_test.cpp'
+        PassPattern = '00c43fd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

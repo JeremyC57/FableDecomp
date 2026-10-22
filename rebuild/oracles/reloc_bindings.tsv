@@ -23778,3 +23778,4 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?g_NavigatorTypeHover@@3JA	0129cb44	0095b020
 ??0CCombatAction_StabThing@@QAE@PAUCThingCreatureBase@@PAUCThing@@@Z	0094e5f0	009624d0
 ?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@QAE_NXZ	00961c50	009624d0
+?SelectAndDrawPrimitive@CDrawAutoPickups@@QAEJXZ	00c43de0	00c43fd0
