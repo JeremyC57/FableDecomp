@@ -2154,3 +2154,7 @@ address	module	name	length	chunk	reason
 0094cb40	CAIStateGroup_GameMaster	?GetSeat@CAIStateGroup_GameMaster@@MAE_NXZ	800	hand277	DIFFER(808v792) -- retail caches the local list header node in esi across calls
 00918640	CAIStateGroup_Gaze	FindFreeParticularGazePos	576	hand277	DIFFER(581v570) -- early-exit vector free not folded; this register; zero-count test folded
 00918b90	CAIStateGroup_Gaze	?Update@CAIStateGroup_Gaze@@MAEXXZ	816	hand277	DIFFER(806v802) -- frame 0x38 v 0x34; retail caches g_FramesPerSecond in ebp
+00a0d1a0	CWStringParser	ReadAsString	95	hand914	DIFFER(96v95) -- INT3-ONLY: RELOCATION_MATCH against the 96-byte retail (int3 after noreturn throw trimmed by the oracle)
+00a0d200	CWStringParser	ReadAsSymbol	95	hand914	DIFFER(96v95) -- INT3-ONLY: RELOCATION_MATCH against the 96-byte retail (int3 after noreturn throw trimmed by the oracle)
+004a1840	CWorld	Load	1129	hand914	DIFFER(1129v1129) -- same length + same frame-slot order; 3 lea/push register picks (ecx vs eax/edx); catch(CBBBFileException&) found from FuncInfo; with advisor AdvB3
+00567e80	_global	FUN_00567e80	13	hand914	DIFFER(23v13) -- STLport _M_append_dispatch: retail tail-jumps to append 0x567400, VC7.1 refuses (address-taken tag temporary)

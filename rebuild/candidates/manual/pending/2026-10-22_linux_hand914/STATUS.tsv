@@ -1,0 +1,34 @@
+address	status	bytes	test	note
+007da3a0	RELOCATION_MATCH	92v92	PASS	CDefPointer def; GetGameDef(def); return CCharString("",-1).ToWideString(); long ReleaseTemporary release
+00ca5400	MATCH	262v262	PASS	is CBaseVideoRenderer::RecordFrameLateness (strmbase renbase.cpp, FRAMES_TO_IGNORE 1); plain void* vptr member keeps __int64 offsets
+004ca010	RELOCATION_MATCH	437v437	PASS	local CThing model at retail offsets; named scoped CCharString locals for GetString/AddTC; clamp 5|<0|>=4 -> 4
+004cd1e0	MATCH	5v5	PASS	return DrawIsDrawable(); (slot 27 forwarder)
+004cd220	MATCH	5v5	PASS	return false;
+004cd230	MATCH	5v5	PASS	return false;
+0043e430	MATCH	5v5	PASS	no CThing* arg: generic slot-1 forwarder return Slot01();
+0083cd70	RELOCATION_MATCH	220v220	PASS	is CThingSwitch::WorldUpdate; 5-entry jump table; def temporary in the switch condition keeps its null store
+00a0d1a0	DIFFER	96v95	-	INT3-ONLY: RELOCATION_MATCH against the 96-byte retail (int3 after noreturn throw trimmed by the oracle)
+00a0d200	DIFFER	96v95	-	INT3-ONLY: RELOCATION_MATCH against the 96-byte retail (int3 after noreturn throw trimmed by the oracle)
+0099b1d0	RELOCATION_MATCH	71v71	PASS	CWideString::operator!=(wchar_t) = !(*this == c) over inline wcscmp operator==
+004a1840	DIFFER	1129v1129	-	same length + same frame-slot order; 3 lea/push register picks (ecx vs eax/edx); catch(CBBBFileException&) found from FuncInfo; with advisor AdvB3
+00410cb0	RELOCATION_MATCH	30v30	PASS	CopyTrivialTagged __fastcall (STLport __copy_trivial, __true_type tag)
+00410d10	RELOCATION_MATCH	35v35	PASS	DestroyRangeWideString __fastcall loop of ~CWideString
+00410d40	RELOCATION_MATCH	30v30	PASS	CopyTrivial __fastcall memmove
+00410d60	RELOCATION_MATCH	26v26	PASS	CopyTrivialBackward __fastcall memmove
+0043e440	MATCH	7v7	PASS	getter +0x2EC
+0043e450	MATCH	7v7	PASS	getter +0x2FC
+0043e460	MATCH	7v7	PASS	getter +0x1C8
+00449bf0	RELOCATION_MATCH	19v19	PASS	CPlayerManager::GetMainPlayerHeroCreature(long unused)
+00449c10	RELOCATION_MATCH	19v19	PASS	CPlayerManager byte-identical twin (B)
+004cd2a0	MATCH	16v16	PASS	CPairVectorWithFlag ctor: vector zeroed, m_flag(false) at +0xD
+004cd2b0	RELOCATION_MATCH	27v27	PASS	CPairVectorWithFlag copy ctor (vector copy 0x4CC290 + flag)
+004cd2d0	RELOCATION_MATCH	25v25	PASS	list push_back = insert(end(), x); iterator user copy ctor
+004cd2f0	RELOCATION_MATCH	58v58	PASS	vector<pair8>::push_back; __true_type with user ctor
+00567e80	DIFFER	23v13	-	STLport _M_append_dispatch: retail tail-jumps to append 0x567400, VC7.1 refuses (address-taken tag temporary)
+00567e90	RELOCATION_MATCH	14v14	PASS	CRetailString::_M_deallocate_block: if (_M_start) free(_M_start)
+005d93b0	RELOCATION_MATCH	128v128	PASS	CTCInventoryItem::GetTattooDef; same-TU noinline GetSubDef stand-in
+005d9430	RELOCATION_MATCH	128v128	PASS	CTCInventoryItem::GetHairCardDef; same-TU noinline GetSubDef stand-in
+00619950	RELOCATION_MATCH	67v67	PASS	map<long,vector> _M_clone_node (malloc + placement copy)
+006199a0	RELOCATION_MATCH	46v46	PASS	map<long,CRegion> _M_create_node
+00686090	MATCH	41v41	PASS	CPointerVector::ClearElements
+006ca650	MATCH	11v11	PASS	CPointerHolder(void*) ctor

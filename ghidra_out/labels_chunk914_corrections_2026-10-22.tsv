@@ -1,0 +1,9 @@
+address	name	evidence
+00ca5400	CBaseVideoRenderer::RecordFrameLateness	DirectShow base renderer method, not CTextureRenderer::vfunc_45 (chunk 914)
+0083cd70	CThingSwitch::WorldUpdate	switch-thing world update with a 5-entry jump table (chunk 914)
+00567400	std::basic_string::append	STLport string append, not CTCElectrocutedEffect::InsertStringRange (callee, chunk 914)
+004c7ab0	CThing::GetWorld	previously unlabelled (callee, chunk 914)
+0049d870	GFGetCurrentFrame	returns the current frame (callee, chunk 914; chunk 277 called it CWorld::GetWorldFrame)
+00a37300	ReregisterAllocatedClass	previously unlabelled (callee, chunk 914)
+005d93b0	CTCInventoryItem::GetTattooDef	matched in chunk 914
+005d9430	CTCInventoryItem::GetHairCardDef	matched in chunk 914

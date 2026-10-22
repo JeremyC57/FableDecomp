@@ -23846,3 +23846,15 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ??0CEngineTexturePalette@@QAE@PAUCGraphicDataBank@@_NK@Z	00bf90a0	00bdd2f0
 ?GetMessageFromTextIndex@@YI?AUCSubtitledMessage@@KPBD@Z	004cea60	00717c50
 ?M_insert_overflow@CSubtitledMessageArray@@QAEXPAUCSubtitledMessage@@ABU2@ABU__false_type@@K_N@Z	004d2760	00717c50
+?CreateUID@CThing@@QAEXXZ	004c7ff0	004ca010
+?GetDef@CGameDefinitionManager@@QAE_NJPAUCThingBaseDefPointer@@@Z	0042af3c	004ca010
+?GetThingTypeFlags@CThingManager@@QAEKJ@Z	0051e580	004ca010
+?ReregisterAllocatedClass@CThingManager@@QAEXPAVCThing@@K_N@Z	00a37300	004ca010
+?g_DefaultSerialisationSectionName@@3UCCharString@@A	013bab0c	004ca010
+??0CPairVector@@QAE@ABU0@@Z	004cc290	004cd2b0
+?insert@CPointerRecordList@@QAE?AUSListIterator@@U2@ABUSPointerRecord@@@Z	004ccc80	004cd2d0
+?_M_insert_overflow@CPairVector@@QAEXPAUSPair8@@ABU2@ABU__true_type@@K_N@Z	004ccce0	004cd2f0
+?GetSubDefTattoo@CDefClassBase@@QAE_NAAUCDefPointer@@@Z	005b1efc	005d93b0
+?GetSubDefHairCard@CDefClassBase@@QAE_NAAUCDefPointer@@@Z	005da180	005d9430
+??0CRetailVector12@@QAE@ABU0@@Z	0047bb90	00619950
+?GetGameDef@CTCTavernGameCardBlackjack@@QAE_NAAUCDefPointer@@@Z	005ea000	007da3a0
