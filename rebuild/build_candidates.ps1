@@ -266950,6 +266950,13 @@ $catalog = @(
         TestSource = '00/a9/C3DPrimitive2_ConvertToVBFormatAnimated_00a91180_test.cpp'
         PassPattern = '00a91180_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004b4f30'
+        Module = 'NQuestManager::CRuntimeQuestPersistence'
+        Source = '00/4b/NQuestManagerCRuntimeQuestPersistence_SetQuestMasterDataPersistScript_004b4f30.cpp'
+        TestSource = '00/4b/NQuestManagerCRuntimeQuestPersistence_SetQuestMasterDataPersistScript_004b4f30_test.cpp'
+        PassPattern = '004b4f30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
