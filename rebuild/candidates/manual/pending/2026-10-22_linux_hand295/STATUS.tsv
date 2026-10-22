@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00d20790	RELOCATION_MATCH	678v678	PASS	top-tested for(;;) + inline_depth pragmas inside the body
+00f02210	RELOCATION_MATCH	586v586	PASS	PlayCutsceneScript cast-map model
+00d347b0	RELOCATION_MATCH	779v779	PASS	one-arg inline resize(n) wrapper
+00d35ed0	RELOCATION_MATCH	519v519	PASS	`!= false` loop test (test/setne)
+00d38d20	DIFFER	529v526	-	block layout of the loop-exit vs terminating-return tails + one lea
+00d3c8f0	RELOCATION_MATCH	728v728	PASS	CScriptThing model of CV_ChapelOfEvilScript
+00d44cb0	RELOCATION_MATCH	944v944	PASS	cast-map / handle / movie inline model
+00d496f0	RELOCATION_MATCH	815v815	PASS	really RunSaveXPCutscene (CS_GUILD_SAVEXP); CBaseObject needs its vptr
+00d49a20	RELOCATION_MATCH	815v815	PASS	RunSaveXPCutscene2 (CS_GUILD_SAVEXP2)
+00df4be0	RELOCATION_MATCH	531v531	PASS	really CTheKraken::Main; while(!(x<=0)) for the NaN-true test
+00e631f0	RELOCATION_MATCH	701v701	PASS	really CV_ChickenKickingScript::LookAfterOrganiser
+00f0f910	DIFFER	599v599	-	really CQ_AmbushTradersScript::WatchForArcherSpawnConditions; archer/faceMe frame slots swapped
+00c3fd20	RELOCATION_MATCH	581v581	PASS	not a quest script: owner-0x1D8 system Init; two intrinsic memsets per sub-system wipe; device field in a non-polymorphic base
+00d63dc0	RELOCATION_MATCH	569v569	PASS	spawn model, mission-over wait
+00d66620	RELOCATION_MATCH	591v591	PASS	CinemaTest Main binding/spawn model
+00d68ff0	RELOCATION_MATCH	920v920	PASS	literals straight to const CCharString& params
+00d6b720	RELOCATION_MATCH	922v922	PASS	CScriptThing model of HTG::ReassignLeader
+00d6bfa0	RELOCATION_MATCH	1023v1023	PASS	spawn model; Introduction/Conclusion identified by PDB method order
+00d6c4a0	RELOCATION_MATCH	909v909	PASS	spawn model, flag word guarding name temporaries
+00d6c830	DIFFER	607v607	-	tail-merge lane gap (same instructions, other branch targets)
+00d6cdc0	RELOCATION_MATCH	692v692	PASS	really CQ_HangingTreeEvilScript::MonitorRegionPresence; back() via *(end()-1)
+00d6f020	RELOCATION_MATCH	917v917	PASS	twin of HTE::Init
+00d732f0	RELOCATION_MATCH	789v789	PASS	CRGBColour __forceinline copy ctor; read-first CCountedPointer operator=
+00d736b0	RELOCATION_MATCH	696v696	PASS	inline ~CTimer body + front()
+00d76490	RELOCATION_MATCH	555v555	PASS	__forceinline ~vector model
+00d773e0	DIFFER	686v686	-	firstTime byte slot vs __false_type temporary slot
+00d84630	RELOCATION_MATCH	662v662	PASS	CScriptThing model, discarded CreateCreature result
+00d8a240	DIFFER	610v610	-	tail-merge lane gap (advisor b2 top-tested form)
+00d66880	RELOCATION_MATCH	789v789	PASS	really CQ_GuildTrainingWoodsMeleeScript::WatchForTermination
+00de14a0	RELOCATION_MATCH	711v711	PASS	really CQ_RansomVictimScript::WatchForTermination
+00d99e80	RELOCATION_MATCH	530v530	PASS	Init twin model
+00d9b420	RELOCATION_MATCH	913v913	PASS	CTimer inline model + inline_depth(0) at the final return
+00d9b8f0	RELOCATION_MATCH	608v608	PASS	CScriptThing model
+00d9bb50	RELOCATION_MATCH	621v621	PASS	early return instead of guarded block
+00d9e2e0	RELOCATION_MATCH	571v571	PASS	Init twin model
+00d9e5e0	RELOCATION_MATCH	701v701	PASS	CinemaTest Main binding model
+00da0230	RELOCATION_MATCH	925v925	PASS	constant-false SpawnFunction reproduces the dead flag store
+00da05d0	RELOCATION_MATCH	585v585	PASS	both SpawnFunction pieces __forceinline
+00da0820	RELOCATION_MATCH	776v776	PASS	inline_depth(0) around the in-branch returns
+00da3100	RELOCATION_MATCH	660v660	PASS	Init twin model

@@ -688,3 +688,14 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - **Named end pointer:** keep it short-lived (empty test plus `count = last - begin()` only). It then shares the single finish load without taking a frame word (005f64dd).
   - **Open (no lever found):** in ours, the loop-carried web (node, loop index) takes the later-freed callee-saved register and the invariant web takes the earlier-freed one. Retail does the reverse (00774730, 0057dc22).
   - **Open (no lever found):** the lane never packs a destructible temporary into the home word of an uninitialised scalar that is read back on the miss path (007c25a0, 0072c790).
+- **Chunk 295 (2026-10-22, 35/40 landed):**
+  - **Global wipes:** `xor ecx,ecx` / `xor edx,edx` with dword stores, while plain int zeros use ebx, means intrinsic `memset` calls. Each memset gets its own zero register and the two are interleaved (00c3fd20).
+  - **Field stored before the vfptr:** the field belongs to a non-polymorphic base, laid out with the vfptr at +0 and that base at +4.
+  - **Loop tests:** `!= false` gives `test`/`setne`. `while (!(x <= c))` gives the NaN-true wait.
+  - **Spawn helpers:** both SpawnFunction pieces need `__forceinline`. An `if (false)` SpawnFunction reproduces a dead flag store.
+  - **Early return:** an early `return` instead of a guarded block fixes scheduling (00d9bb50, 00d9b8f0).
+  - **back():** `*(end() - 1)` gives `add eax,-4`.
+  - **CTimer:** a local CTimer needs the inline ~CTimer body.
+  - **resize:** the one-argument inline `resize` wrapper loads the count before the temporary.
+  - **CRGBColour by value:** needs `__forceinline` ctor and copy ctor.
+  - **Lane gap:** 00d38d20, 00d6c830 and 00d8a240 merge shared tails into the last predecessor in retail and the first in the lane.

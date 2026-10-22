@@ -2415,3 +2415,8 @@ address	module	name	length	chunk	reason
 00e20210	CQR_EscortTraderScript	WatchForTraderHit	960	hand294	DIFFER(979v956) -- CQR_EscortTraderScript::WatchForTraderHit: loop/exit layout: retail keeps ebp pushed at entry and merges the bottom-of-loop terminate return into the entry return block (je reload; jmp A); ours shrink-wr
 00f07b80	CQ_AmbushTradersScript	WatchForBanditSpeechMarkers	848	hand294	DIFFER(845v842) -- CQ_AmbushTradersScript::WatchForBanditSpeechMarkers: block placement only: retail merges the three inline ~CScriptThing exit copies into the LAST one (post-wait-loop return, eax) with the loop exit and wait-loop r
 00d17a80	CQ_BountyHuntScript	WatchForBoasts	800	hand294	DIFFER(705v785) -- CQ_BountyHuntScript::WatchForBoasts: the body matches through the post-loop terminate test; retail destroys the boast vector differently on each exit (loop-top return: out-of-line pair scalar-delet
+00d38d20	CQ_FireHeartScript	RunVillagerComments	528	hand295	DIFFER(529v526) -- block layout of the loop-exit vs terminating-return tails + one lea
+00f0f910	CQ_GuildTrainingScript	WatchForSparrowKilled	608	hand295	DIFFER(599v599) -- really CQ_AmbushTradersScript::WatchForArcherSpawnConditions; archer/faceMe frame slots swapped
+00d6c830	CQ_HangingTreeEvilScript	CheckBanditFollowStatus	608	hand295	DIFFER(607v607) -- tail-merge lane gap (same instructions, other branch targets)
+00d773e0	CQ_HangingTreeGoodScript	MonitorRegionPresence	688	hand295	DIFFER(686v686) -- firstTime byte slot vs __false_type temporary slot
+00d8a240	CQ_HerosOldHouseScript	WatchForBooty	624	hand295	DIFFER(610v610) -- tail-merge lane gap (advisor b2 top-tested form)

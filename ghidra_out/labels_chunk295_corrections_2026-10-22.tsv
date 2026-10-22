@@ -1,0 +1,9 @@
+address	name	evidence
+00c3fd20	CUnknownSystem1D8::Init	non-quest system Init(void* owner, const params*), ret 8, 0x1D8-byte object (ctor 0xC3E520, caller 0xC4D3B5); was CQ_GuildTrainingSkillScript::InitializeRenderer (chunk 295)
+00d496f0	RunSaveXPCutscene	was RunSaveXPCutscene2 (chunk 295)
+00df4be0	NScript::CTheKraken::Main	(chunk 295)
+00e631f0	NScript::CV_ChickenKickingScript::LookAfterOrganiser	(chunk 295)
+00d6cdc0	NScript::CQ_HangingTreeEvilScript::MonitorRegionPresence	the Good-script twin is 00d773e0 (chunk 295)
+00d773e0	NScript::CQ_HangingTreeGoodScript::MonitorRegionPresence	(chunk 295)
+00d66880	NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForTermination	(chunk 295)
+00de14a0	NScript::CQ_RansomVictimScript::WatchForTermination	(chunk 295)
