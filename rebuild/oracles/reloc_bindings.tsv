@@ -23974,3 +23974,5 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?WatchForAcolyteHit@CQ_AcolyteParentScript@@QAEXUCScriptThingRuntime@@@Z	00e6af20	00e6aac0
 ??9CCharStringCmp@@QBE_NPBD@Z	0099e960	00f08c30
 ?IsDone@CAT_ConvoyMember@@QAE_NXZ	00f35b30	00f08c30
+?GetSchoolTimes@CVillage@@QAE_NPAM0@Z	00658acb	0090fdb0
+?GetUpFromSeat@CAIStateGroup_UsesSeat@@QAEXXZ	00938a10	0090fdb0

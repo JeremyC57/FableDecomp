@@ -267181,6 +267181,13 @@ $catalog = @(
         TestSource = '00/f0/CATConvoyMember_Init_00f08c30_test.cpp'
         PassPattern = '00f08c30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0090fdb0'
+        Module = 'CAIStateGroup_MinionSitAtSchool'
+        Source = '00/90/CAIStateGroupMinionSitAtSchool_Update_0090fdb0.cpp'
+        TestSource = '00/90/CAIStateGroupMinionSitAtSchool_Update_0090fdb0_test.cpp'
+        PassPattern = '0090fdb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
