@@ -264891,6 +264891,13 @@ $catalog = @(
         TestSource = '00/70/CThingObject_DrawPreparePrimitivesForRendering_00703590_test.cpp'
         PassPattern = '00703590_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008c4a80'
+        Module = 'CCreatureAction_ScorpionSummon'
+        Source = '00/8c/CCreatureActionScorpionSummon_Initialise_008c4a80.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionSummon_Initialise_008c4a80_test.cpp'
+        PassPattern = '008c4a80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
