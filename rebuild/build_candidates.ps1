@@ -267364,6 +267364,35 @@ $catalog = @(
         TestSource = '00/f1/CCham_Main_00f14770_test.cpp'
         PassPattern = '00f14770_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0059c983'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_IsSpecialCase_0059c983.cpp'
+        TestSource = '00/59/CTCInventoryTrade_IsSpecialCase_0059c983_test.cpp'
+        PassPattern = '0059c983_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bcd2d'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_ResetInventoryAnim_005bcd2d.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_ResetInventoryAnim_005bcd2d_test.cpp'
+        PassPattern = '005bcd2d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00629c40'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EAControlledCreatureUseAbility_00629c40.cpp'
+        TestSource = '00/62/CWorld_EAControlledCreatureUseAbility_00629c40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00629c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090f830'
+        Module = 'CAIStateGroup_MinionListenToStory'
+        Source = '00/90/CAIStateGroupMinionListenToStory_SitDown_0090f830.cpp'
+        TestSource = '00/90/CAIStateGroupMinionListenToStory_SitDown_0090f830_test.cpp'
+        PassPattern = '0090f830_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

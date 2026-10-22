@@ -582,3 +582,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - `GetPosition() + GetCentre()` runs GetCentre first.
   - `!(x > y)` gives `je`.
 - **A shadow copy class binding the same retail ctor/dtor is RELOC_IDENTITY** (chunk 281, 00d1f610 and 00d1fa00): a local `ScriptThingCopy` whose ctor/dtor resolve to CScriptThing's 004abe90 and 004aa840 is refused by the lander even though the bytes match. Use the real class's ctor and dtor.
+- **Call result straight into a __forceinline const-T& member** (retry 10z, 005bcd2d ResetInventoryAnim): this removes the /Os ebp frame. In 0090f830 MinionListenToStory::SitDown, the temporary comes from CDefString's inline `operator CCharString()`, which sets the flag after GetString.

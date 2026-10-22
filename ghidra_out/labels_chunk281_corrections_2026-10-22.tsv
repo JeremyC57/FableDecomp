@@ -16,3 +16,5 @@ address	name	evidence
 0084d0e0	CAxisPointList::Compute	labelled CThingCreatureBase_ComputeMeleeMetrics (chunk 281)
 0084e390	CAxisPointList::Add	labelled StdVector_PushBack (chunk 281)
 00cbfb7d	RunCutsceneMacro	__fastcall cutscene macro runner (chunk 281)
+008aa810	CCountedPointer::Deleter	counted-pointer deleter (retry 10z)
+009f17a0	CGameEvent::GetData	returns the event data (retry 10z)
