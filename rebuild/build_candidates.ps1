@@ -266880,6 +266880,13 @@ $catalog = @(
         TestSource = '00/95/CAIStateGroupHoverHornetQueen_GotoSafestCirclePoint_0095ad20_test.cpp'
         PassPattern = '0095ad20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00506e30'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_GetLevelDimensions_00506e30.cpp'
+        TestSource = '00/50/CWorldMap_GetLevelDimensions_00506e30_test.cpp'
+        PassPattern = '00506e30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -23868,3 +23868,6 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAUCLandscapeBackgroundPatch@@@Z	00b67e30	00be5d20
 ?CombineAreas@CHandleBasedMemoryPool@@QAEXPAUCHeader@@0@Z	00a01e40	00a02b30
 ?GotoCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJJJ@Z	0095a6c0	0095ad20
+??0CWADFile@@QAE@PAUCWADBank@@ABUCWideString@@W4FileAccessType@@K@Z	00a39d80	00506e30
+?GetLevelDimensions@CWorldMap@@QAE?AUC2DBoxI@@PAVCAFile@@@Z	00506bb0	00506e30
+?Reset@?$CCountedPointer@VCAFile@@@@QAEXPAVCAFile@@@Z	0050f550	00506e30
