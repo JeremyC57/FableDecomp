@@ -24064,3 +24064,5 @@ __TI1?AUCChunkedFileException@@	01369548	00aa79c0
 ?WaveOutProc@@YGXPAXIKKK@Z	00c5d720	00c5d7f0
 __imp__waveOutOpen@24	014404b8	00c5d7f0
 __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
+?CanBeTargeted@CTCLightningTarget@@QAE_NPAUSMatch@1@ABQAUCThing@@@Z	00970190	0096f770
+?IsLineOfSightFiltered@CTools@@QAE_NPBUC3DVector@@0PAU2@1PAMPAPAUCThing@@J_N@Z	00877c40	0096f770

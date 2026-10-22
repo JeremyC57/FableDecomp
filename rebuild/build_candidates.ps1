@@ -267429,6 +267429,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00c5d7f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0096f770'
+        Module = 'CAIStateGroup_SummonerLightningAttack'
+        Source = '00/96/CAIStateGroupSummonerLightningAttack_IsRunnable_0096f770.cpp'
+        TestSource = '00/96/CAIStateGroupSummonerLightningAttack_IsRunnable_0096f770_test.cpp'
+        PassPattern = '0096f770_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
