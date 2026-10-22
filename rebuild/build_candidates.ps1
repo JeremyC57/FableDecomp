@@ -267471,6 +267471,13 @@ $catalog = @(
         TestSource = '00/92/CAIStateGroupMinionGuardBribed_Update_00929b10_test.cpp'
         PassPattern = '00929b10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00add920'
+        Module = 'C3DBoundingSphere'
+        Source = '00/ad/C3DBoundingSphere_AccurateBuildFromPoints_00add920.cpp'
+        TestSource = '00/ad/C3DBoundingSphere_AccurateBuildFromPoints_00add920_test.cpp'
+        PassPattern = '00add920_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

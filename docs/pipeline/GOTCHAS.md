@@ -604,3 +604,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - A second test written as a nested `if` after a conditional temporary's destruction keeps retail's order.
   - Declaring a counter in the else block, not at function scope, keeps ebp free.
   - Tool: $S/w22/retry_shared/advisor/tools/md.py masks all esp offsets and relocations, so only structural differences show.
+- **VC7.1 checks same-TU callees for register preservation** (A3, 00add920 C3DBoundingSphere::AccurateBuildFromPoints): a `__declspec(noinline)` same-TU stand-in for FastBuildFromPoints, whose body reads this only through ecx, makes the caller keep `this` in ecx across the call as retail does. With only a prototype, the lane copies this to esi. Same family: a same-TU noinline `find` body stops VC keeping a key slot alive (C1, 006ea770 GetPreferredPos, frame 0x60 to 0x5c).

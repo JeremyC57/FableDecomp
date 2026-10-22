@@ -24091,3 +24091,4 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?g_BribedWhistleFirstMin@@3JA	0138cb98	00929b10
 ?g_BribedWhistleRepeatMax@@3JA	0138cba4	00929b10
 ?g_BribedWhistleRepeatMin@@3JA	0138cba0	00929b10
+?FastBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@J@Z	00add690	00add920
