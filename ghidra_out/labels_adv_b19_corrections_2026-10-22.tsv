@@ -1,0 +1,3 @@
+address	name	evidence
+00de81b0	CQ_RansomVictimScript::CheckVictimHit	flag RansomVictimVictimNoDamage at +0x12a; catalog copied twin 00da2860's name (advisor b19)
+00d1cac0	CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled	flag +0x60; catalog's CV_AmbushScamScript::WatchForAllAmbushersDead is the twin at 0x00D1C9E0 (advisor b19)

@@ -24327,3 +24327,5 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?GetSeat@CTCTavernTable@@QAE_NAAUCThing@@AAUC3DVector@@AAUCRightHandedSet@@AAJ3PBUCCharString@@@Z	007b8840	0094cb40
 ?GetTankard@CTCTavernTable@@QAEPAUCThingObject@@J@Z	007b8590	0094cb40
 ?SetGameMaster@CTCTavernGameCoinGolf@@QAEXPAUCThing@@@Z	0094d430	0094cb40
+?AreAllThingsInVectorDead@@YI_NABV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	00cbed00	00d91740
+?IsDone@CMK_HS2_SOUL@@QAE_NXZ	00f35b30	00ce0920

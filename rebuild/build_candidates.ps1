@@ -267990,6 +267990,69 @@ $catalog = @(
         TestSource = '00/94/CAIStateGroupGameMaster_GetSeat_0094cb40_test.cpp'
         PassPattern = '0094cb40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00f061e0'
+        Module = 'CQ_AmbushTradersScript'
+        Source = '00/f0/CQAmbushTradersScript_WatchForHeroAttackOnBandit_00f061e0.cpp'
+        TestSource = '00/f0/CQAmbushTradersScript_WatchForHeroAttackOnBandit_00f061e0_test.cpp'
+        PassPattern = '00f061e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da2860'
+        Module = 'CQ_MinionCampScript'
+        Source = '00/da/CQMinionCampScript_CheckBriarHit_00da2860.cpp'
+        TestSource = '00/da/CQMinionCampScript_CheckBriarHit_00da2860_test.cpp'
+        PassPattern = '00da2860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de81b0'
+        Module = 'CQ_RansomVictimScript'
+        Source = '00/de/CQRansomVictimScript_CheckVictimHit_00de81b0.cpp'
+        TestSource = '00/de/CQRansomVictimScript_CheckVictimHit_00de81b0_test.cpp'
+        PassPattern = '00de81b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e32080'
+        Module = 'CV_AmbushScamScript'
+        Source = '00/e3/CVAmbushScamScript_WatchForExpressions_00e32080.cpp'
+        TestSource = '00/e3/CVAmbushScamScript_WatchForExpressions_00e32080_test.cpp'
+        PassPattern = '00e32080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e504c0'
+        Module = 'CV_BeardyBaldyScript'
+        Source = '00/e5/CVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0.cpp'
+        TestSource = '00/e5/CVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0_test.cpp'
+        PassPattern = '00e504c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1cac0'
+        Module = 'CQ_BountyHuntScript'
+        Source = '00/d1/CQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0.cpp'
+        TestSource = '00/d1/CQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0_test.cpp'
+        PassPattern = '00d1cac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d91740'
+        Module = 'CQ_HobbeCaveScript'
+        Source = '00/d9/CQHobbeCaveScript_RescuedBandit_00d91740.cpp'
+        TestSource = '00/d9/CQHobbeCaveScript_RescuedBandit_00d91740_test.cpp'
+        PassPattern = '00d91740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0920'
+        Module = 'CMK_HS2_SOUL'
+        Source = '00/ce/CMKHS2SOUL_Main_00ce0920.cpp'
+        TestSource = '00/ce/CMKHS2SOUL_Main_00ce0920_test.cpp'
+        PassPattern = '00ce0920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d19a0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsTalkedToBy_008d19a0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsTalkedToBy_008d19a0_test.cpp'
+        PassPattern = '008d19a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
