@@ -269518,6 +269518,174 @@ $catalog = @(
         TestSource = '00/47/CPersistContext_TransferMap_0047550f_test.cpp'
         PassPattern = '0047550f_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00547f60'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_Draw_00547f60.cpp'
+        TestSource = '00/54/NUISystemCMovie_Draw_00547f60_test.cpp'
+        PassPattern = '00547f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006be080'
+        Module = 'CMusicManager'
+        Source = '00/6b/CMusicManager_RegisterMusic_006be080.cpp'
+        TestSource = '00/6b/CMusicManager_RegisterMusic_006be080_test.cpp'
+        PassPattern = '006be080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00829d90'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_InitialiseMiniMapFileLoadingRegion_00829d90.cpp'
+        TestSource = '00/82/CMiniMapDisplay_InitialiseMiniMapFileLoadingRegion_00829d90_test.cpp'
+        PassPattern = '00829d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082a9b0'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_InitialiseInformationMarkers_0082a9b0.cpp'
+        TestSource = '00/82/CMiniMapDisplay_InitialiseInformationMarkers_0082a9b0_test.cpp'
+        PassPattern = '0082a9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00862780'
+        Module = 'CModeStandBase'
+        Source = '00/86/CModeStandBase_UpdateIdleAnim_00862780.cpp'
+        TestSource = '00/86/CModeStandBase_UpdateIdleAnim_00862780_test.cpp'
+        PassPattern = '00862780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d9e30'
+        Module = 'NCreatureMode::CModeScorpionKingTailPlunge'
+        Source = '00/8d/NCreatureModeCModeScorpionKingTailPlunge_OnActivate_008d9e30.cpp'
+        TestSource = '00/8d/NCreatureModeCModeScorpionKingTailPlunge_OnActivate_008d9e30_test.cpp'
+        PassPattern = '008d9e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008dae10'
+        Module = 'NCreatureMode::CModeSummonerLightningOrb'
+        Source = '00/8d/NCreatureModeCModeSummonerLightningOrb_OnActivate_008dae10.cpp'
+        TestSource = '00/8d/NCreatureModeCModeSummonerLightningOrb_OnActivate_008dae10_test.cpp'
+        PassPattern = '008dae10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008db240'
+        Module = 'NCreatureMode::CModeDragonLanded'
+        Source = '00/8d/NCreatureModeCModeDragonLanded_FrameUpdate_008db240.cpp'
+        TestSource = '00/8d/NCreatureModeCModeDragonLanded_FrameUpdate_008db240_test.cpp'
+        PassPattern = '008db240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ddad0'
+        Module = 'NCreatureMode::CModeThunderLightningStorm'
+        Source = '00/8d/NCreatureModeCModeThunderLightningStorm_CreateLightningBeams_008ddad0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeThunderLightningStorm_CreateLightningBeams_008ddad0_test.cpp'
+        PassPattern = '008ddad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ddd70'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpHeal'
+        Source = '00/8d/NCreatureModeCModeGuildmasterPowerUpHeal_OnActivate_008ddd70.cpp'
+        TestSource = '00/8d/NCreatureModeCModeGuildmasterPowerUpHeal_OnActivate_008ddd70_test.cpp'
+        PassPattern = '008ddd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e0060'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpShield'
+        Source = '00/8e/NCreatureModeCModeGuildmasterPowerUpShield_OnActivate_008e0060.cpp'
+        TestSource = '00/8e/NCreatureModeCModeGuildmasterPowerUpShield_OnActivate_008e0060_test.cpp'
+        PassPattern = '008e0060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e0d20'
+        Module = 'NCreatureMode::CModeScorpionKingTailPlunge'
+        Source = '00/8e/NCreatureModeCModeScorpionKingTailPlunge_FrameUpdate_008e0d20.cpp'
+        TestSource = '00/8e/NCreatureModeCModeScorpionKingTailPlunge_FrameUpdate_008e0d20_test.cpp'
+        PassPattern = '008e0d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e1150'
+        Module = 'NCreatureMode::CModeDragonFlying'
+        Source = '00/8e/NCreatureModeCModeDragonFlying_CModeDragonFlying_008e1150.cpp'
+        TestSource = '00/8e/NCreatureModeCModeDragonFlying_CModeDragonFlying_008e1150_test.cpp'
+        PassPattern = '008e1150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e9190'
+        Module = 'NCreatureMode::CModeStrafe'
+        Source = '00/8e/NCreatureModeCModeStrafe_SetUpCombinationAnims_008e9190.cpp'
+        TestSource = '00/8e/NCreatureModeCModeStrafe_SetUpCombinationAnims_008e9190_test.cpp'
+        PassPattern = '008e9190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e9460'
+        Module = 'NCreatureMode::CModeStrafe'
+        Source = '00/8e/NCreatureModeCModeStrafe_GetBestFrameInAimingAnim_008e9460.cpp'
+        TestSource = '00/8e/NCreatureModeCModeStrafe_GetBestFrameInAimingAnim_008e9460_test.cpp'
+        PassPattern = '008e9460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ea500'
+        Module = 'NCreatureMode::CModeHoverBase'
+        Source = '00/8e/NCreatureModeCModeHoverBase_InitialiseMovementSpeeds_008ea500.cpp'
+        TestSource = '00/8e/NCreatureModeCModeHoverBase_InitialiseMovementSpeeds_008ea500_test.cpp'
+        PassPattern = '008ea500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ea9f0'
+        Module = 'NCreatureMode::CModeHoverBase'
+        Source = '00/8e/NCreatureModeCModeHoverBase_UpdateHoverAnim_008ea9f0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeHoverBase_UpdateHoverAnim_008ea9f0_test.cpp'
+        PassPattern = '008ea9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26d40'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_NotifyEntryAdded_00a26d40.cpp'
+        TestSource = '00/a2/CMeshDataBank_NotifyEntryAdded_00a26d40_test.cpp'
+        PassPattern = '00a26d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a27030'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_CMeshDataBank_00a27030.cpp'
+        TestSource = '00/a2/CMeshDataBank_CMeshDataBank_00a27030_test.cpp'
+        PassPattern = '00a27030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66c20'
+        Module = 'CMouse'
+        Source = '00/a6/CMouse_UpdateMaintainedEvents_00a66c20.cpp'
+        TestSource = '00/a6/CMouse_UpdateMaintainedEvents_00a66c20_test.cpp'
+        PassPattern = '00a66c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab4910'
+        Module = 'CMouseDX'
+        Source = '00/ab/CMouseDX_GetExclusiveModeDeviceMouseEvent_00ab4910.cpp'
+        TestSource = '00/ab/CMouseDX_GetExclusiveModeDeviceMouseEvent_00ab4910_test.cpp'
+        PassPattern = '00ab4910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86150'
+        Module = 'CMuteGuardOutsideWoods'
+        Source = '00/d8/CMuteGuardOutsideWoods_Main_00d86150.cpp'
+        TestSource = '00/d8/CMuteGuardOutsideWoods_Main_00d86150_test.cpp'
+        PassPattern = '00d86150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eaef30'
+        Module = 'CMurderTwistSheriff'
+        Source = '00/ea/CMurderTwistSheriff_Main_00eaef30.cpp'
+        TestSource = '00/ea/CMurderTwistSheriff_Main_00eaef30_test.cpp'
+        PassPattern = '00eaef30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb15c0'
+        Module = 'CMurderTwistSheriff'
+        Source = '00/eb/CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0.cpp'
+        TestSource = '00/eb/CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0_test.cpp'
+        PassPattern = '00eb15c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
