@@ -1,0 +1,3 @@
+address	name	evidence
+007f0b10	CTCKrakenTentacle::DoDieFX	catalog had CTCKraken::CreateHeadEffect (retry B)
+006eda80	CCombatManager::RegisterAttackingCombatant	catalog had RegisterCombatant (retry B)

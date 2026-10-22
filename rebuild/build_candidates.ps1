@@ -264842,6 +264842,41 @@ $catalog = @(
         TestSource = '00/91/CAIStateGroupMinionListenToStory_IsRunnable_00910100_test.cpp'
         PassPattern = '00910100_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006ad580'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_OnCollision_006ad580.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_OnCollision_006ad580_test.cpp'
+        PassPattern = '006ad580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006eda80'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_RegisterAttackingCombatant_006eda80.cpp'
+        TestSource = '00/6e/CCombatManager_RegisterAttackingCombatant_006eda80_test.cpp'
+        PassPattern = '006eda80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f0b10'
+        Module = 'CTCKrakenTentacle'
+        Source = '00/7f/CTCKrakenTentacle_DoDieFX_007f0b10.cpp'
+        TestSource = '00/7f/CTCKrakenTentacle_DoDieFX_007f0b10_test.cpp'
+        PassPattern = '007f0b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c8380'
+        Module = 'CCreatureAction_BanditKingStuck'
+        Source = '00/8c/CCreatureActionBanditKingStuck_Initialise_008c8380.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingStuck_Initialise_008c8380_test.cpp'
+        PassPattern = '008c8380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00913f30'
+        Module = 'CAIStateGroup_BirdFlyToFood'
+        Source = '00/91/CAIStateGroupBirdFlyToFood_IsRunnable_00913f30.cpp'
+        TestSource = '00/91/CAIStateGroupBirdFlyToFood_IsRunnable_00913f30_test.cpp'
+        PassPattern = '00913f30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
