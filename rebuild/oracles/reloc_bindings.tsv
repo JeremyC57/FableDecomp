@@ -23643,3 +23643,5 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AU?$CDefPointer@UCHeroCombatDef@@@@XZ	00663340	007363a0
 ?SetCombatType@CTCCombat@@QAEXABU?$CDefPointer@UCCombatTypeDef@@@@@Z	007355f0	007363a0
 ?_M_insert_overflow@?$CDefPointerVector@UCMeleeCombatAbilityDef@@@@QAEXPAU?$CDefPointer@UCMeleeCombatAbilityDef@@@@ABU2@ABU__false_type@@I_N@Z	00739bc0	007363a0
+?AddPersistedDeadEntity@CEntityRuntimePersistence@@QAEX_K_NK@Z	00520330	00520c80
+?IsLevelPersistent@CThing@@QBE_NXZ	004c82a0	00520c80

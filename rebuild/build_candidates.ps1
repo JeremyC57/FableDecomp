@@ -265115,6 +265115,34 @@ $catalog = @(
         TestSource = '00/73/CTCCombat_OnCreate_007363a0_test.cpp'
         PassPattern = '007363a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00520c80'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_OnThingKill_00520c80.cpp'
+        TestSource = '00/52/CThingManager_OnThingKill_00520c80_test.cpp'
+        PassPattern = '00520c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00802590'
+        Module = 'CTCTargetingPlayer'
+        Source = '00/80/CTCTargetingPlayer_SetAsTargetNextThing_00802590.cpp'
+        TestSource = '00/80/CTCTargetingPlayer_SetAsTargetNextThing_00802590_test.cpp'
+        PassPattern = '00802590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00904380'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_WaitWhilePerformingTasks_00904380.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_WaitWhilePerformingTasks_00904380_test.cpp'
+        PassPattern = '00904380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f4d0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_RemoveWhiteSpaceEnd_0099f4d0.cpp'
+        TestSource = '00/99/CCharString_RemoveWhiteSpaceEnd_0099f4d0_test.cpp'
+        PassPattern = '0099f4d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
