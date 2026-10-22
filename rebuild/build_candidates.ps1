@@ -269490,6 +269490,13 @@ $catalog = @(
         TestSource = '00/b2/NParticleEngineCPSCSplineBase_ReadBinary_00b22b40_test.cpp'
         PassPattern = '00b22b40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aed2f0'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_IsVisible_00aed2f0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_IsVisible_00aed2f0_test.cpp'
+        PassPattern = '00aed2f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

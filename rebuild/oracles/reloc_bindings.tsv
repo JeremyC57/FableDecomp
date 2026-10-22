@@ -24901,3 +24901,6 @@ _LZSS_Decompress	00c069d0	00995fb0
 ??0?$CArray@UC3DVector@@@@QAE@K@Z	007c2ab0	00b22b40
 ?ReadBinary@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXPAUCDataInputStream@@@Z	00b21c90	00b22b40
 ?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXPAUCDataInputStream@@@Z	00b22100	00b22b40
+?CalcFadeAlpha@CParticleEmitter@NParticleEngine@@QBEMM@Z	00aecd70	00aed2f0
+?GetBoundingSphereWorldSpace@CParticleSystem@NParticleEngine@@QAE_NPAUC3DBoundingSphere@@MPAUCParticleUpdateParameters@2@@Z	00af3fb0	00aed2f0
+?GetPosition@CParticleEmitter@NParticleEngine@@QBE?AUC3DVector@@XZ	006e1b10	00aed2f0
