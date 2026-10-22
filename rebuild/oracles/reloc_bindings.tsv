@@ -24320,3 +24320,10 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?SetPredicate@CEntityScriptBase@@QAEXAAUCFilterBase@@@Z	00f35b10	00ef84d0
 ??1CScriptThingVector@@QAE@XZ	008ac970	00ee6a40
 ?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z	00cbed00	00ee6a40
+?AddPrimitive@CEngineSceneMap@@QAEXPAVCEngineInternalPrimitiveBase@@ABVC2DVector@@M@Z	00b93b30	00b94d30
+?AddToList@CEngineInternalPrimitiveBase@@QAEXPAPAV1@@Z	00b8fdf0	00b94d30
+?GetMapAt@CEngineScene@@QAEPAUCEngineSceneMap@@ABVC2DVector@@@Z	00b94bf0	00b94d30
+??1?$CStlList@PAUCThing@@@@QAE@XZ	00792240	0094cb40
+?GetSeat@CTCTavernTable@@QAE_NAAUCThing@@AAUC3DVector@@AAUCRightHandedSet@@AAJ3PBUCCharString@@@Z	007b8840	0094cb40
+?GetTankard@CTCTavernTable@@QAEPAUCThingObject@@J@Z	007b8590	0094cb40
+?SetGameMaster@CTCTavernGameCoinGolf@@QAEXPAUCThing@@@Z	0094d430	0094cb40

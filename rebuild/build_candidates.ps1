@@ -267976,6 +267976,20 @@ $catalog = @(
         TestSource = '00/ee/CVTourGuideScript_WatchForNoFollowers_00ee6a40_test.cpp'
         PassPattern = '00ee6a40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b94d30'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_AddPrimitive_00b94d30.cpp'
+        TestSource = '00/b9/CEngineScene_AddPrimitive_00b94d30_test.cpp'
+        PassPattern = '00b94d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094cb40'
+        Module = 'CAIStateGroup_GameMaster'
+        Source = '00/94/CAIStateGroupGameMaster_GetSeat_0094cb40.cpp'
+        TestSource = '00/94/CAIStateGroupGameMaster_GetSeat_0094cb40_test.cpp'
+        PassPattern = '0094cb40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

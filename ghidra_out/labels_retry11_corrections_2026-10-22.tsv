@@ -1,0 +1,4 @@
+address	name	evidence
+007b8590	CTCTavernTable::GetTankard	called from 0094cb40, returns the tankard (retry 11b)
+0094d430	CTCTavernGameCoinGolf::SetGameMaster	called from 0094cb40; was _unattributed::AssignTarget (retry 11b)
+0099c1e0	CWideString::Replace	body operates on CWideString; was CCharString::ReplaceSubstring (retry 11)
