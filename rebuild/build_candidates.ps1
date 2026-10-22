@@ -267443,6 +267443,34 @@ $catalog = @(
         TestSource = '00/96/CAIStateGroupSummonerCharge_Update_0096ff10_test.cpp'
         PassPattern = '0096ff10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a56c80'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_IntersectsWith_00a56c80.cpp'
+        TestSource = '00/a5/C2DLineF_IntersectsWith_00a56c80_test.cpp'
+        PassPattern = '00a56c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00726340'
+        Module = 'CApplyAdditionalPlayerImpulseIfTooClose'
+        Source = '00/72/CApplyAdditionalPlayerImpulseIfTooClose_operator_00726340.cpp'
+        TestSource = '00/72/CApplyAdditionalPlayerImpulseIfTooClose_operator_00726340_test.cpp'
+        PassPattern = '00726340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092b3e0'
+        Module = 'CAIStateGroup_SkillPractice'
+        Source = '00/92/CAIStateGroupSkillPractice_PracticeSkills_0092b3e0.cpp'
+        TestSource = '00/92/CAIStateGroupSkillPractice_PracticeSkills_0092b3e0_test.cpp'
+        PassPattern = '0092b3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00929b10'
+        Module = 'CAIStateGroup_MinionGuardBribed'
+        Source = '00/92/CAIStateGroupMinionGuardBribed_Update_00929b10.cpp'
+        TestSource = '00/92/CAIStateGroupMinionGuardBribed_Update_00929b10_test.cpp'
+        PassPattern = '00929b10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

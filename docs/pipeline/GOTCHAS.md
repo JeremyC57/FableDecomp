@@ -595,3 +595,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - `GetInterface(T** out, const long& key)` with a const-ref key puts all lookup keys and out variables in one frame word, as retail does.
   - In an `operator*=`, a named copy `float t = s;` fixes the Z scaling order.
   - Parallel grading helper: $S/w22/retry_shared/advisor/tools/par.py (a QTAG per file, the LEAF env var for the leaf name).
+- **Catalog over-capture after a jump table** (retry 11a, 0095c1f0): code plus jump table match the first 0x23C bytes; the row needs a catalog split, like chunk 280's 00c72200. The landed 009143e0 binds GetPWorld to 008fcfa0, which chunk 279 identified as GetPThingWorld (GetPWorld is 008fcfc0); review at the next relabel pass.

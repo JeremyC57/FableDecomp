@@ -1,0 +1,8 @@
+address	name	evidence
+00770de0	CTCCollisionFilter::CanCollideWith	collision filter test, labelled ContainerFindElement (retry 11a)
+0049d870	CWorld::GetWorldFrame	returns the world frame, labelled GFGetPreMainMemoryUsed (retry 11a)
+00a14040	C3DVector::RotateAboutZ	rotation about Z, labelled RotateInPlace_a14040 (retry 11a)
+00718710	CCreatureAction_AimMissileWeapon::CCreatureAction_AimMissileWeapon	aim action ctor, labelled the ReloadMissileWeapon ctor (retry 11a)
+00449960	CPlayerManager::GetMainPlayer	returns the main player, labelled Catch@0040d959 (retry 11a)
+0066bd00	CTCSoundPlayer::PlaySound	sound component PlaySound(name,a,b,c,d), as chunk 279 (retry 11a)
+0066add0	CTCSoundPlayer::StopSample	sound component StopSample, as chunk 279 (retry 11a)
