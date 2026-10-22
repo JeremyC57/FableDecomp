@@ -269707,6 +269707,13 @@ $catalog = @(
         TestSource = '00/7f/CTCUserActionPointBase_GetFreeActionPoint_007fede0_test.cpp'
         PassPattern = '007fede0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0052b6a0'
+        Module = 'vector<CCharString>'
+        Source = '00/52/vectorCCharString_Mrangeinsert_0052b6a0.cpp'
+        TestSource = '00/52/vectorCCharString_Mrangeinsert_0052b6a0_test.cpp'
+        PassPattern = '0052b6a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

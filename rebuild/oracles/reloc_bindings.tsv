@@ -25030,3 +25030,10 @@ _LZSS_Decompress	00c069d0	00995fb0
 ??$Find@PAJJ@@YIPAJPAJ0ABJABUCIteratorTag@@@Z	0050e540	007fede0
 ?PeekWorld@CTCUserActionPointBase@@QBEABVCWorld@@XZ	00686a80	007fede0
 ?UpdateBlockedActionPoints@CTCUserActionPointBase@@QAEXXZ	007fecb0	007fede0
+??$__advance@UCTreeIterator@@Uforward_iterator_tag@@@@YAXAAUCTreeIterator@@JABUforward_iterator_tag@@@Z	00528090	0052b6a0
+??$__copy@Uforward_iterator_tag@@@@YIPAUCCharString@@UCTreeIterator@@0PAU0@ABUforward_iterator_tag@@PAJ@Z	00528140	0052b6a0
+??$__copy_backward_ptrs@U__false_type@@@@YIPAUCCharString@@PAU0@00ABU__false_type@@@Z	0049b180	0052b6a0
+??$__distance@UCTreeIterator@@Uforward_iterator_tag@@@@YAJABUCTreeIterator@@0ABUforward_iterator_tag@@@Z	00528040	0052b6a0
+??$__uninitialized_copy@U__false_type@@@@YIPAUCCharString@@PAU0@00ABU__false_type@@@Z	0044b120	0052b6a0
+??$__uninitialized_copy@U__false_type@@@@YIPAUCCharString@@UCTreeIterator@@0PAU0@ABU__false_type@@@Z	00527fc0	0052b6a0
+?_M_clear@CStringVector@@QAEXXZ	00433040	0052b6a0
