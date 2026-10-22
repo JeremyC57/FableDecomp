@@ -1,18 +1,12 @@
-// Byte-exact reconstruction of ?SetPos@CMouseDX@@UAEXPBVC2DVector@@@Z
-// retail 0x00ab4700, module _global. VC7.1 /O2 /Oy /W3.
-//
-// Retail shape notes (see residue bundle 00ab4700.md):
-//   * position->X (dword) -> [esi+0x3414] (PositionX) AND [esi+0x3434] (CachedPositionX)
-//   * position->Y (dword) -> [esi+0x3418] (PositionY) AND [esi+0x3438] (CachedPositionY)
-//   * if [esi+0x343c] (DisableCursorWarp) != 0 -> return.
-//   * else: window = ResolveMouseWindowOwner()->[0x94]  (retail: relative `call`,
-//     then `mov edi,[eax+0x94]`; a FREE helper, NOT an inlined method chain).
-//   * ClientToScreen(window,&pt); GetClientRect(window,&rect);
-//     OffsetRect(&rect,pt.x,pt.y);
-//   * SetCursorPos(_ftol((float)rect.Left + PositionX),
-//                  _ftol((float)rect.Top  + PositionY));
-//     The float->int conversions are the VC7.1 `_ftol` helper (retail: `call 0x14a370`).
-//
+// CMouseDX::SetPos(const C2DVector* position) -- store the position and its cached copy, then (unless cursor warping is disabled) move the OS cursor to the window's client origin plus the position
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB4700, 174 bytes, `ret 4`.
+// Callees: ResolveMouseWindowOwner @ 0x009A4EC0 (free helper; its +0x94 is the window handle), ClientToScreen (iat 0x01440304),
+//          GetClientRect (iat 0x01440338), OffsetRect (iat 0x014403A4), SetCursorPos (iat 0x014403A0), _ftol @ 0x00BFEA70.
+// Layout: CMouseDX PositionX +0x3414, PositionY +0x3418, CachedPositionX +0x3434, CachedPositionY +0x3438, DisableCursorWarp +0x343c.
+// Shape: the cached copies are read back from the just-stored members (store-to-load forwarding gives retail's `mov eax,ecx`
+//        register copies with ONE load of each component; re-reading `position->X` reloads it, a float local goes x87);
+//        the two cursor coordinates are `const int&` locals so the X conversion is evaluated first and kept in edi
+//        (plain int locals are sunk to the pushes, Y first).
 // Self-contained: engine structs inlined, engine helpers/globals extern-declared.
 
 typedef unsigned char u8;
@@ -53,9 +47,9 @@ struct CMouseDX
 void __fastcall CMouseDX_SetPos(CMouseDX* self, void* /*edx*/, const C2DVector* position)
 {
     self->PositionX = position->X;
-    self->CachedPositionX = position->X;
     self->PositionY = position->Y;
-    self->CachedPositionY = position->Y;
+    self->CachedPositionX = self->PositionX;
+    self->CachedPositionY = self->PositionY;
 
     if (self->DisableCursorWarp != 0)
         return;
@@ -71,7 +65,7 @@ void __fastcall CMouseDX_SetPos(CMouseDX* self, void* /*edx*/, const C2DVector* 
     FableGetClientRect(window, &rect);
     FableOffsetRect(&rect, pt.x, pt.y);
 
-    int x = (int)((float)rect.left + self->PositionX);
-    int y = (int)((float)rect.top + self->PositionY);
+    const int& x = (int)((float)rect.left + self->PositionX);
+    const int& y = (int)((float)rect.top + self->PositionY);
     FableSetCursorPos(x, y);
 }

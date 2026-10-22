@@ -1,40 +1,67 @@
-// Behaviour test for RES_00ab4700 (CMouseDX::SetPos reconstruction).
-// Standalone: redeclares the externs the reconstruction needs, defines
-// recording stubs for the engine helpers/globals, drives the function with
-// crafted inputs and checks observable behaviour. Prints exactly:
-//   RES_00ab4700_TEST PASS
-// on success and returns 0; returns nonzero on any failed check.
-//
-// Must NOT redefine CMouseDX_SetPos itself (that lives in the reconstruction
-// TU; here we forward-declare it and link against it).
-
+// Behaviour test for CMouseDX::SetPos (0x00AB4700): self-contained -- the reconstruction body verbatim, recording stubs
+// for the engine helper and the four OS imports, both the warp and the no-warp paths. Prints RES_00ab4700_TEST PASS.
 #include <cstdio>
 
 typedef unsigned char u8;
 
 struct C2DVector { float X; float Y; };
+
 struct CMousePoint { long x; long y; };
 struct CMouseRect { long left; long top; long right; long bottom; };
 
 struct CMouseWindowOwner
 {
     u8   pad00[0x94];
-    void* Window;
+    void* Window;   // +0x94
 };
+
+// Free helper: retail emits a relocation-masked relative `call` returning the
+// owner whose +0x94 field is the OS window handle used for coordinate mapping.
+extern "C" CMouseWindowOwner* __cdecl ResolveMouseWindowOwner(void);   // stubbed below
+
+// Engine import-table globals (retail: `call DWORD PTR ds:0x14403xx`).
+extern int (__stdcall *FableClientToScreen)(void*, CMousePoint*); // ds:0x1440304
+extern int (__stdcall *FableGetClientRect)(void*, CMouseRect*);   // ds:0x1440338
+extern int (__stdcall *FableOffsetRect)(CMouseRect*, int, int);   // ds:0x14403a4
+extern int (__stdcall *FableSetCursorPos)(int, int);              // ds:0x14403a0
 
 struct CMouseDX
 {
     u8    pad000[0x3414];
-    float PositionX;
-    float PositionY;
+    float PositionX;        // +0x3414
+    float PositionY;        // +0x3418
     u8    pad341C[0x18];
-    float CachedPositionX;
-    float CachedPositionY;
-    u8    DisableCursorWarp;
+    float CachedPositionX;  // +0x3434
+    float CachedPositionY;  // +0x3438
+    u8    DisableCursorWarp; // +0x343c
 };
 
-// The reconstruction under test.
-void __fastcall CMouseDX_SetPos(CMouseDX* self, void* edx, const C2DVector* position);
+// __fastcall(thisptr in ecx, unused edx, position) models the __thiscall member.
+void __fastcall CMouseDX_SetPos(CMouseDX* self, void* /*edx*/, const C2DVector* position)
+{
+    self->PositionX = position->X;
+    self->PositionY = position->Y;
+    self->CachedPositionX = self->PositionX;
+    self->CachedPositionY = self->PositionY;
+
+    if (self->DisableCursorWarp != 0)
+        return;
+
+    void* window = ResolveMouseWindowOwner()->Window;
+
+    CMousePoint pt;
+    pt.x = 0;
+    pt.y = 0;
+    FableClientToScreen(window, &pt);
+
+    CMouseRect rect;
+    FableGetClientRect(window, &rect);
+    FableOffsetRect(&rect, pt.x, pt.y);
+
+    const int& x = (int)((float)rect.left + self->PositionX);
+    const int& y = (int)((float)rect.top + self->PositionY);
+    FableSetCursorPos(x, y);
+}
 
 // ---- recording stubs for engine helpers/globals -------------------------
 
