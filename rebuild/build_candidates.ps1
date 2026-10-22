@@ -266901,6 +266901,13 @@ $catalog = @(
         TestSource = '00/7a/CTCAssassinRush_CleanUpEffects_007aa370_test.cpp'
         PassPattern = '007aa370_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0095a490'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/95/CAIStateGroupHoverHornetQueen_IsRouteToPosBlockedByTarget_0095a490.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueen_IsRouteToPosBlockedByTarget_0095a490_test.cpp'
+        PassPattern = '0095a490_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
