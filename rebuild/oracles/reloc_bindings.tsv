@@ -24802,3 +24802,5 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?IsRanged@CTCWeapon@@QBE_NXZ	007bed60	00869020
 ?_M_erase@CArmourMap@@QAEXPAUCRbNode@@@Z	00869bb0	00869020
 ?_M_insert@CArmourMap@@QAE?AUCArmourIterator@@PAUCRbNode@@0ABUCArmourPair@@0@Z	00869ca0	00869020
+?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ	006e7b80	00dc21f0
+?PopulateLevel@CQ_BanditRaidScript@@QAE_NXZ	00dc0300	00dc21f0

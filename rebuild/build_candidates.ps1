@@ -269196,6 +269196,13 @@ $catalog = @(
         TestSource = '00/86/CHitParameters_SetAsModifiedByArmour_00869020_test.cpp'
         PassPattern = '00869020_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00dc21f0'
+        Module = 'CM_RestartMarker'
+        Source = '00/dc/CMRestartMarker_Main_00dc21f0.cpp'
+        TestSource = '00/dc/CMRestartMarker_Main_00dc21f0_test.cpp'
+        PassPattern = '00dc21f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
