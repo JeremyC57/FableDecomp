@@ -270267,6 +270267,13 @@ $catalog = @(
         TestSource = '00/eb/CVParanoidWhispersScript_CheckForNecklaceAndQuit_00ebf1e0_test.cpp'
         PassPattern = '00ebf1e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00567e80'
+        Module = 'CRetailString'
+        Source = '00/56/CRetailString_Mappenddispatch_00567e80.cpp'
+        TestSource = '00/56/CRetailString_Mappenddispatch_00567e80_test.cpp'
+        PassPattern = '00567e80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
