@@ -269714,6 +269714,13 @@ $catalog = @(
         TestSource = '00/52/vectorCCharString_Mrangeinsert_0052b6a0_test.cpp'
         PassPattern = '0052b6a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b25d80'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_Uninitialise_00b25d80.cpp'
+        TestSource = '00/b2/CEngine_Uninitialise_00b25d80_test.cpp'
+        PassPattern = '00b25d80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

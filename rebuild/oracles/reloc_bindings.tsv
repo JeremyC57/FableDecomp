@@ -25037,3 +25037,8 @@ _LZSS_Decompress	00c069d0	00995fb0
 ??$__uninitialized_copy@U__false_type@@@@YIPAUCCharString@@PAU0@00ABU__false_type@@@Z	0044b120	0052b6a0
 ??$__uninitialized_copy@U__false_type@@@@YIPAUCCharString@@UCTreeIterator@@0PAU0@ABU__false_type@@@Z	00527fc0	0052b6a0
 ?_M_clear@CStringVector@@QAEXXZ	00433040	0052b6a0
+?RemoveDeviceResetCallback@CRenderManager@@QAEXPAUCDeviceResetCallback@@@Z	009bf5a0	00b25d80
+?Uninitialise@CInitBaseClass@@UAEXXZ	0099a360	00b25d80
+?g_pEngineComponentGlobal@@3PAXA	01436e78	00b25d80
+?g_pEngineGlobal_01436eb0@@3PAXA	01436eb0	00b25d80
+?g_pRenderManager@@3PAVCRenderManager@@A	01436e1c	00b25d80
