@@ -11,20 +11,20 @@ struct CUserProfileManager {
 
 static int g_helper_called = 0;
 
-void __fastcall CUserProfileManager_Helper(CUserProfileManager* self)
+void __fastcall CUserProfileManager_Helper(CUserProfileManager* manager)
 {
   g_helper_called = 1;
-  (void)self;
+  (void)manager;
 }
 
-void __fastcall CUserProfileManager_SetDefaultValuesGameplay(CUserProfileManager* self)
+void __fastcall CUserProfileManager_SetDefaultValuesGameplay(CUserProfileManager* manager)
 {
-  self->SoundVolume = 0.8f;
-  self->MusicVolume = 0.6f;
-  self->DialogueVolume = 0.9f;
-  self->SoundsMuted = 0;
-  self->UsingHeadPhones = 0;
-  CUserProfileManager_Helper(self);
+  manager->SoundVolume = 0.8f;
+  manager->MusicVolume = 0.6f;
+  manager->DialogueVolume = 0.9f;
+  manager->SoundsMuted = 0;
+  manager->UsingHeadPhones = 0;
+  CUserProfileManager_Helper(manager);
 }
 
 int main()

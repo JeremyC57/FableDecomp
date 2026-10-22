@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CProjectileWeapon {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CProjectileWeapon_dtor(CProjectileWeapon* weapon);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CProjectileWeapon_scalar_deleting_destructor(CProjectileWeapon* weapon, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CProjectileWeapon_dtor(weapon);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(weapon);
+    return weapon;
 }

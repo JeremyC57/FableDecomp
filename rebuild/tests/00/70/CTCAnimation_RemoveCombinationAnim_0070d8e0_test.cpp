@@ -10,29 +10,29 @@ static void* g_recv[4];
 static void* g_subself[4];
 
 struct CSubList {
-    void AddChild(CCountedPointer* p) {
+    void RemoveCombinationAnim(CCountedPointer* p) {
         g_subself[g_calls] = this;
         g_recv[g_calls] = p;
         g_calls++;
     }
 };
 
-struct CSpellContainerList {
+struct CTCAnimation {
     char pad[0x58];
     CSubList a;
     char pad2[0x64 - 0x58 - sizeof(CSubList)];
     CSubList b;
-    void AddChild(CCountedPointer* ptr) {
-        this->a.AddChild(ptr);
-        this->b.AddChild(ptr);
+    void RemoveCombinationAnim(CCountedPointer* ptr) {
+        this->a.RemoveCombinationAnim(ptr);
+        this->b.RemoveCombinationAnim(ptr);
     }
 };
 
 int main() {
-    CSpellContainerList list;
+    CTCAnimation list;
     CCountedPointer cp; cp.p = (void*)0xDEADBEEF;
 
-    list.AddChild(&cp);
+    list.RemoveCombinationAnim(&cp);
 
     bool ok = true;
     if (g_calls != 2) ok = false;

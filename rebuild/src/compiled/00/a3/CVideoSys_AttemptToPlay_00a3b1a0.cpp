@@ -22,11 +22,11 @@ struct CVideoSys {
     int  State;         // +0x28
 };
 
-bool __fastcall AttemptToPlay(CVideoSys* self)
+bool __fastcall AttemptToPlay(CVideoSys* sys)
 {
-    IPlayer* p = self->MControl;
+    IPlayer* p = sys->MControl;
     if (p->vtbl->slot7(p) == 0) {
-        self->State = 1;
+        sys->State = 1;
         return true;
     }
     return false;

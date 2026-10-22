@@ -32,15 +32,15 @@ struct CTCGraphicAppearance {
     int counter;
 };
 
-void __fastcall CTCGraphicAppearance_ClearAllPrimitives(CTCGraphicAppearance* self)
+void __fastcall CTCGraphicAppearance_ClearAllPrimitives(CTCGraphicAppearance* appearance)
 {
-    ListNode* node = self->head->next;
-    while (node != self->head) {
+    ListNode* node = appearance->head->next;
+    while (node != appearance->head) {
         node->obj->slot1();
         node = node->next;
     }
-    self->m38.Clear();
-    self->counter = GetSomeCounter() + 1;
+    appearance->m38.Clear();
+    appearance->counter = GetSomeCounter() + 1;
 }
 
 int main() {

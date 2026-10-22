@@ -1,4 +1,4 @@
-// Byte-exact reconstruction of CCategory::GetCategoryIdentifier @ 0x005da7f0
+// Byte-exact reconstruction of CTCWeapon::GetWeaponClass @ 0x005da7f0
 // __fastcall (modeled as __fastcall self-in-ecx)
 
 typedef int EInventoryCategoryIdentifier;
@@ -33,7 +33,7 @@ struct CCategory {
     CCounted* counted;    // +0x0c
 };
 
-EInventoryCategoryIdentifier __fastcall GetCategoryIdentifier(CCategory* self)
+EInventoryCategoryIdentifier __fastcall GetWeaponClass(CCategory* self)
 {
     CCountedPtr tmp(self->counted);
     return tmp->GetIdentifier();

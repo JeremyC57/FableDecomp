@@ -11,7 +11,7 @@
 struct CTCBase_Retail {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
-    virtual void DrawSaveScreen(long arg);                  // slot 11 (+0x2c)
+    virtual void DrawSaveScreen(long prepareInfo);                  // slot 11 (+0x2c)
 };
 struct STCEntry_Retail {                                    // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long            m_kind;
@@ -56,16 +56,16 @@ struct CPlayerGui {
     CWorld_Retail*   World;                                 // +0x004
     unsigned char    _pad008[0x2a8 - 0x008];
     unsigned __int64 HeroCentreUID;                         // +0x2a8
-    void DrawSaveScreen(long arg);
+    void DrawSaveScreen(long prepareInfo);
 };
 
-void CPlayerGui::DrawSaveScreen(long arg)
+void CPlayerGui::DrawSaveScreen(long prepareInfo)
 {
     if (HeroCentreUID > 0) {
         CThing_Retail* thing = World->GetThingManager()->GetThingWithUID(HeroCentreUID);
         if (thing) {
             if (CTCBase_Retail* tc = GetTCIfPresent(thing, 0x6a))
-                tc->DrawSaveScreen(arg);
+                tc->DrawSaveScreen(prepareInfo);
         }
     }
 }

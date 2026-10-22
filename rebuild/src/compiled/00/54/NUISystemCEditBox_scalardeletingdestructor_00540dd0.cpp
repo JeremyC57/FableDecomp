@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEditBox {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEditBox_dtor(CEditBox* box);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEditBox_scalar_deleting_destructor(CEditBox* box, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEditBox_dtor(box);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(box);
+    return box;
 }

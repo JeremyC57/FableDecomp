@@ -5,13 +5,13 @@ struct CTCHeroStats {
 };
 static int g_max = 50;
 static int g_val = 30;
-extern "C" int __fastcall CTCHeroStats_GetMax(CTCHeroStats* self){ (void)self; return g_max; }
-extern "C" int __fastcall CTCHeroStats_GetVal(CTCHeroStats* self){ (void)self; return g_val; }
+extern "C" int __fastcall CTCHeroStats_GetMax(CTCHeroStats* stats){ (void)stats; return g_max; }
+extern "C" int __fastcall CTCHeroStats_GetVal(CTCHeroStats* stats){ (void)stats; return g_val; }
 
-float __fastcall CTCHeroStats_GetMoralityPercentage(CTCHeroStats* self)
+float __fastcall CTCHeroStats_GetMoralityPercentage(CTCHeroStats* stats)
 {
-  int denom = CTCHeroStats_GetMax(self) * 2;
-  int num = CTCHeroStats_GetVal(self) + self->m28;
+  int denom = CTCHeroStats_GetMax(stats) * 2;
+  int num = CTCHeroStats_GetVal(stats) + stats->m28;
   return (float)num / (float)denom;
 }
 

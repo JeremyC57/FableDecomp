@@ -6,8 +6,8 @@ struct CTCBuyableHouse_Methods : CTCBuyableHouse {
 
 extern int GetNewThing();
 
-void __fastcall CTCBuyableHouse_IncrementDressLevel(CTCBuyableHouse* self)
+void __fastcall CTCBuyableHouse_IncrementDressLevel(CTCBuyableHouse* house)
 {
-    ((CTCBuyableHouse_Methods*)self)->SetDressLevel(self->CurrentDressLevel + 1);
-    self->FrameToNextCheckIfWeNeedToCreateAnything = GetNewThing();
+    ((CTCBuyableHouse_Methods*)house)->SetDressLevel(house->CurrentDressLevel + 1);
+    house->FrameToNextCheckIfWeNeedToCreateAnything = GetNewThing();
 }

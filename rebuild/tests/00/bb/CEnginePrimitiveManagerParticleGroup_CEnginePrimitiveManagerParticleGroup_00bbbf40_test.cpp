@@ -6,9 +6,9 @@ struct CEnginePrimitiveManager {
     virtual ~CEnginePrimitiveManager() { }
 };
 struct CEnginePrimitiveManagerParticleGroup : CEnginePrimitiveManager {
-    bool m_flag20, m_enabled, m_flag22, m_flag23, m_flag24;
+    bool ClipEffectToWeatherMask, m_enabled, WriteZBuffer, DisplayBoundingBox, DisplayBoundingSphere;
     CEnginePrimitiveManagerParticleGroup(CEngine* engine)
-        : CEnginePrimitiveManager(engine), m_flag20(false), m_flag22(false), m_flag23(false), m_flag24(false)
+        : CEnginePrimitiveManager(engine), ClipEffectToWeatherMask(false), WriteZBuffer(false), DisplayBoundingBox(false), DisplayBoundingSphere(false)
     {
         m_enabled = true;
     }
@@ -17,7 +17,7 @@ int main()
 {
     CEngine e;
     CEnginePrimitiveManagerParticleGroup g(&e);
-    if (g.m_pEngine != &e || g.m_flag20 || !g.m_enabled || g.m_flag22 || g.m_flag23 || g.m_flag24) { std::printf("00bbbf40_TEST FAIL\n"); return 1; }
+    if (g.m_pEngine != &e || g.ClipEffectToWeatherMask || !g.m_enabled || g.WriteZBuffer || g.DisplayBoundingBox || g.DisplayBoundingSphere) { std::printf("00bbbf40_TEST FAIL\n"); return 1; }
     std::printf("00bbbf40_TEST PASS\n");
     return 0;
 }

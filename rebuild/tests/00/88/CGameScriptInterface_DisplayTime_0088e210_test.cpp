@@ -1,10 +1,10 @@
 #include <cstdio>
 
-void __fastcall CGameScriptInterface_DisplayTime(void* self, int edx_unused, int arg)
+void __fastcall CGameScriptInterface_DisplayTime(void* self, int edx_unused, int display)
 {
     (void)self;
     (void)edx_unused;
-    (void)arg;
+    (void)display;
 }
 
 int main()

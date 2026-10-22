@@ -8,8 +8,8 @@
 
 
 #include "engine/CDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
-extern "C" bool __fastcall CDefClassBase_IsParentDef(CDefClassBase* self)
+extern "C" bool __fastcall CDefClassBase_IsParentDef(CDefClassBase* other)
 {
-    (void)self;      // 'this' arrives in ecx, unused by the accessor
+    (void)other;      // 'this' arrives in ecx, unused by the accessor
     return false;    // -> xor al,al ; ret
 }

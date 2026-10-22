@@ -1,4 +1,4 @@
-// CActiveFile::AllocateAndInitializeCategoryNodes(CCategory*, const CCategory&, const __false_type&, unsigned long,
+// std::vector<CCategory>::_M_insert_overflow(CCategory*, const CCategory&, const __false_type&, unsigned long,
 // bool) -- the catalog's name for the STLport vector<CCategory>::_M_insert_overflow(pos, x, tag, fillLength, atEnd):
 // grow to old + max(old, fillLength) elements, copy the head, construct the inserted copies, copy the tail unless
 // appending, free the old block and adopt the new one.

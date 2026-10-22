@@ -1,4 +1,4 @@
-// CPhysicalPrimitiveCylinder::GetFirstIntersectionWithTriangle(CThing* thing, const void* triangle, C3DVector* point, C3DVector* normal, long unused) -- build the world cylinder (the transformed dummy-object axis, radius or the thing's physics radius when unset) and intersect the triangle with it
+// NHitLocations::CPhysicalPrimitiveCylinder::GetFirstIntersectionWithTriangle(CThing* thing, const void* triangle, C3DVector* point, C3DVector* normal, long unused) -- build the world cylinder (the transformed dummy-object axis, radius or the thing's physics radius when unset) and intersect the triangle with it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00815C40, length 153 bytes (+ int3 padding).
 // Leaf: GetFirstIntersectionWithTriangle
 // Callees: CPhysicalPrimitiveCylinder::GetDummyObjectOriginTransformed(CThing*, C3DVector&, C3DVector&) @ 0x008158D0,

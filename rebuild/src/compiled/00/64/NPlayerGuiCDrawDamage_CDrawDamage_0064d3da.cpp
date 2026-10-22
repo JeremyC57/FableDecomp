@@ -1,6 +1,6 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// CVtable_0125a5a4::CVtable_0125a5a4(CPlayerGui*, std::vector<CDrawBase*>*) -- CDrawBase(gui, draws), this vtable, then the member list at +0x28
+// NPlayerGui::CDrawDamage::CDrawDamage(CPlayerGui*, std::vector<CDrawBase*>*) -- CDrawBase(gui, draws), this vtable, then the member list at +0x28
 // constructed (sentinel node of 0x14 bytes).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064D3DA, length 42 bytes; frame-pointer size TU (`push ebp ; mov ebp,esp`,
 // pass-through `push dword ptr [ebp+0Ch]` / `[ebp+8]`): `optimize("y",off)` + `("s",on)`.

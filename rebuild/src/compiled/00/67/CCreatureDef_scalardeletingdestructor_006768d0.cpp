@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCreatureDef {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCreatureDef_dtor(CCreatureDef* def);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCreatureDef_scalar_deleting_destructor(CCreatureDef* def, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCreatureDef_dtor(def);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(def);
+    return def;
 }

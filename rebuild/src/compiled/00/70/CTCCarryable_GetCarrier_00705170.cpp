@@ -1,7 +1,7 @@
 struct Entry { char pad[4]; unsigned long data; };
 struct S { char pad[0x10]; Entry* cur; };
-unsigned long __fastcall GetCurrentSelectedEntryData(S* self)
+unsigned long __fastcall GetCurrentSelectedEntryData(S* carryable)
 {
-    Entry* e = self->cur;
+    Entry* e = carryable->cur;
     return e ? e->data : 0;
 }

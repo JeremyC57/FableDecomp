@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CInputProcessTargetLockRightStickTargetSelect_Update(int arg0) {}
+void __stdcall CInputProcessTargetLockRightStickTargetSelect_Update(int input) {}
 int main()
 {
     CInputProcessTargetLockRightStickTargetSelect_Update(1);

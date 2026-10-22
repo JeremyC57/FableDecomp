@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_SetRenderTargetTexture(int arg0) {}
+void __stdcall CIEngine_SetRenderTargetTexture(int texture) {}
 int main()
 {
     CIEngine_SetRenderTargetTexture(1);

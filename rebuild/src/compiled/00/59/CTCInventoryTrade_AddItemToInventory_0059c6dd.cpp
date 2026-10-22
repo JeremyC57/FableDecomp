@@ -1,4 +1,4 @@
-// CTCInventoryTrade::vfunc_80(CThing*, bool, long, long, long) -- slot 80: adds a thing to the category of the current trade type with the given silent flag and price; true on success
+// CTCInventoryTrade::AddItemToInventory(CThing*, bool, long, long, long) -- slot 80: adds a thing to the category of the current trade type with the given silent flag and price; true on success
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059C6DD, 51 bytes. rtti-vtables: CTCInventoryTrade 0x01253034 slot 80 (`ret 14h`).
 // Callees: CTCInventoryTrade::GetCategoryIndexForTradeType @ 0x0059B6F4, CTCInventoryBase::GetCategoryWithIndex(long)
 // @ 0x005BCE3C, NInventory::CCategory::AddItem(CThing*, bool, long) @ 0x005BF5A4. Arguments 3 and 5 are not used by this

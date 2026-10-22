@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CDisplayManager {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CDisplayManager_dtor(CDisplayManager* manager);
 extern void free_engine(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CDisplayManager_scalar_deleting_destructor(CDisplayManager* manager, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CDisplayManager_dtor(manager);
     if (flags & 1)
-        free_engine(self);
-    return self;
+        free_engine(manager);
+    return manager;
 }

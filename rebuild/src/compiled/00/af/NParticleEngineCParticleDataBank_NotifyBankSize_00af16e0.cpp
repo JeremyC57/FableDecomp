@@ -1,4 +1,4 @@
-// CParticleDataBank::NotifyBankSize(unsigned long count, void* typeCounts) -- resizes the ParticleEmitters array to `count` default (null) entries, then stamps every entry with its owning bank and its index
+// NParticleEngine::CParticleDataBank::NotifyBankSize(unsigned long count, void* typeCounts) -- resizes the ParticleEmitters array to `count` default (null) entries, then stamps every entry with its owning bank and its index
 // Leaf: NotifyBankSize
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF16E0, length 91 bytes (`ret 8`; the second
 //         argument, the bank's CArray<CBankFileDataTypeCount>*, is not read).

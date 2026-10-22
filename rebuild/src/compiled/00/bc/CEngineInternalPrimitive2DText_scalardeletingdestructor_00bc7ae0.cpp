@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineInternalPrimitive2DText {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineInternalPrimitive2DText_dtor(CEngineInternalPrimitive2DText* text);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineInternalPrimitive2DText_scalar_deleting_destructor(CEngineInternalPrimitive2DText* text, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineInternalPrimitive2DText_dtor(text);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(text);
+    return text;
 }

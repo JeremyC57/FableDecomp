@@ -3,7 +3,7 @@ struct CUserProfileManager {
     int mField;
 };
 
-void __fastcall CUserProfileManager_OnPreDeviceReset(CUserProfileManager* self)
+void __fastcall CUserProfileManager_OnPreDeviceReset(CUserProfileManager* manager)
 {
-    self->mField = 0;
+    manager->mField = 0;
 }

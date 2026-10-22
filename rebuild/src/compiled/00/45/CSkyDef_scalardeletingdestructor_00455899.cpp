@@ -1,14 +1,14 @@
 #pragma optimize("s",on)
-struct CEngineSubPrimitiveText;
+struct CSkyDef;
 extern void __fastcall Sub_Dtor(void* p);
-extern void __fastcall CEngineSubPrimitiveText_Dtor(CEngineSubPrimitiveText* self);
+extern void __fastcall CSkyDef_Dtor(CSkyDef* def);
 extern void __cdecl operator_delete(void* p);
 
-void* __fastcall CEngineSubPrimitiveText_scalar_deleting_destructor(CEngineSubPrimitiveText* self, int edx, unsigned int flags)
+void* __fastcall CSkyDef_scalar_deleting_destructor(CSkyDef* def, int edx, unsigned int flags)
 {
-    Sub_Dtor((char*)self + 0x74);
-    CEngineSubPrimitiveText_Dtor(self);
+    Sub_Dtor((char*)def + 0x74);
+    CSkyDef_Dtor(def);
     if (flags & 1)
-        operator_delete(self);
-    return self;
+        operator_delete(def);
+    return def;
 }

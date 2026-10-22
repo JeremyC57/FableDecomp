@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CAIGameCameraBase_PreparePrimitivesForRendering(int arg0) {}
+void __stdcall CAIGameCameraBase_PreparePrimitivesForRendering(int prepareInfo) {}
 int main()
 {
     CAIGameCameraBase_PreparePrimitivesForRendering(1);

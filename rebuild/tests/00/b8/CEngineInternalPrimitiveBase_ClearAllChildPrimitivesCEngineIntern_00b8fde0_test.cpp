@@ -2,9 +2,9 @@
 
 struct CEngineInternalPrimitiveBase { void* vtbl; };
 
-void __fastcall CEngineInternalPrimitiveBase_ClearAllChildPrimitives(CEngineInternalPrimitiveBase* self)
+void __fastcall CEngineInternalPrimitiveBase_ClearAllChildPrimitives(CEngineInternalPrimitiveBase* primitive)
 {
-    (void)self;
+    (void)primitive;
 }
 
 int main()

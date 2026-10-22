@@ -1,1 +1,1 @@
-void __stdcall CGameScriptInterface_TraceMessage(int arg0) {}
+void __stdcall CGameScriptInterface_TraceMessage(int name) {}

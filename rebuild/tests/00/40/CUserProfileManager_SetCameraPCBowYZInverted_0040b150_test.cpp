@@ -2,45 +2,45 @@
 
 struct CUserProfileManager {
   char pad0[0xC];
-  char m_flagC;
+  char UseNewProfileValues;
   char pad0d[0x14-0x0D];
-  char m_state14;
+  char CameraPCBowYZInverted;
   char pad15[0xD4-0x15];
-  char m_stateD4;
+  char CameraPCBowYZInvertedNewProfile;
 };
 
 static int g_sub1 = 0;
 static int g_sub2 = 0;
 
-void __fastcall CUserProfileManager_Sub1(CUserProfileManager* self) { (void)self; g_sub1++; }
-void __fastcall CUserProfileManager_Sub2(CUserProfileManager* self) { (void)self; g_sub2++; }
+void __fastcall CUserProfileManager_Sub1(CUserProfileManager* manager) { (void)manager; g_sub1++; }
+void __fastcall CUserProfileManager_Sub2(CUserProfileManager* manager) { (void)manager; g_sub2++; }
 
-void __fastcall CUserProfileManager_SetCameraResetting(CUserProfileManager* self, int unused, char a, char b)
+void __fastcall CUserProfileManager_SetCameraPCBowYZInverted(CUserProfileManager* manager, int unused, char a, char b)
 {
   (void)unused;
-  if (self->m_flagC)
-    self->m_stateD4 = a;
-  self->m_state14 = a;
-  CUserProfileManager_Sub1(self);
+  if (manager->UseNewProfileValues)
+    manager->CameraPCBowYZInvertedNewProfile = a;
+  manager->CameraPCBowYZInverted = a;
+  CUserProfileManager_Sub1(manager);
   if (b)
-    CUserProfileManager_Sub2(self);
+    CUserProfileManager_Sub2(manager);
 }
 
 int main() {
   CUserProfileManager o;
-  o.m_flagC = 1; o.m_state14 = 0; o.m_stateD4 = 0;
+  o.UseNewProfileValues = 1; o.CameraPCBowYZInverted = 0; o.CameraPCBowYZInvertedNewProfile = 0;
   g_sub1 = g_sub2 = 0;
-  CUserProfileManager_SetCameraResetting(&o, 0, 7, 1);
-  if (o.m_stateD4 != 7) { std::printf("FAIL d4\n"); return 1; }
-  if (o.m_state14 != 7) { std::printf("FAIL 14\n"); return 1; }
+  CUserProfileManager_SetCameraPCBowYZInverted(&o, 0, 7, 1);
+  if (o.CameraPCBowYZInvertedNewProfile != 7) { std::printf("FAIL d4\n"); return 1; }
+  if (o.CameraPCBowYZInverted != 7) { std::printf("FAIL 14\n"); return 1; }
   if (g_sub1 != 1) { std::printf("FAIL sub1\n"); return 1; }
   if (g_sub2 != 1) { std::printf("FAIL sub2\n"); return 1; }
 
-  o.m_flagC = 0; o.m_state14 = 0; o.m_stateD4 = 99;
+  o.UseNewProfileValues = 0; o.CameraPCBowYZInverted = 0; o.CameraPCBowYZInvertedNewProfile = 99;
   g_sub1 = g_sub2 = 0;
-  CUserProfileManager_SetCameraResetting(&o, 0, 3, 0);
-  if (o.m_stateD4 != 99) { std::printf("FAIL d4-skip\n"); return 1; }
-  if (o.m_state14 != 3) { std::printf("FAIL 14-2\n"); return 1; }
+  CUserProfileManager_SetCameraPCBowYZInverted(&o, 0, 3, 0);
+  if (o.CameraPCBowYZInvertedNewProfile != 99) { std::printf("FAIL d4-skip\n"); return 1; }
+  if (o.CameraPCBowYZInverted != 3) { std::printf("FAIL 14-2\n"); return 1; }
   if (g_sub1 != 1) { std::printf("FAIL sub1-2\n"); return 1; }
   if (g_sub2 != 0) { std::printf("FAIL sub2-skip\n"); return 1; }
 

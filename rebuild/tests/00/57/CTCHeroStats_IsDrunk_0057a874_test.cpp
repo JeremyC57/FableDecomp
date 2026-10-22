@@ -5,10 +5,10 @@ struct GHolder { char pad[0xdc]; GBlob* blob; };
 static GBlob g_blob;
 static GHolder g_holder;
 extern "C" GHolder* GetGlobal(void){ g_holder.blob = &g_blob; return &g_holder; }
-bool __fastcall CTCHeroStats_IsDrunk(const CTCHeroStats* self)
+bool __fastcall CTCHeroStats_IsDrunk(const CTCHeroStats* stats)
 {
     GHolder* h = GetGlobal();
-    return self->BestScoreCoinGolfOakVale >= h->blob->thresh;
+    return stats->BestScoreCoinGolfOakVale >= h->blob->thresh;
 }
 int main(){
     CTCHeroStats s; s.BestScoreCoinGolfOakVale = 5.0f;

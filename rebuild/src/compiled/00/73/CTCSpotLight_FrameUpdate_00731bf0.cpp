@@ -25,18 +25,18 @@ struct CTCBase {                                        // the engine header fla
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);  // 0x004978A0
 
-void __fastcall FrameUpdate(CTCSpotLight* self)
+void __fastcall FrameUpdate(CTCSpotLight* light)
 {
-    self->OldAccumilativeFlickerFactor = self->AccumilativeFlickerFactor;
-    CSpotLightDef* def = (CSpotLightDef*)self->PLightDef_Object;
-    float flicker = (self->Overridden ? self->PLightInfo_Data->Flicker : def->Flicker) * 0.1;
+    light->OldAccumilativeFlickerFactor = light->AccumilativeFlickerFactor;
+    CSpotLightDef* def = (CSpotLightDef*)light->PLightDef_Object;
+    float flicker = (light->Overridden ? light->PLightInfo_Data->Flicker : def->Flicker) * 0.1;
     if (flicker > 0.00390625f) {
-        float speed = ((CSpotLightDef*)self->PLightDef_Object)->FlickerSpeed;
-        self->AccumilativeFlickerFactor += (GFFloatRandom(1.0f, ((CTCBase*)self)->GetPLocalSeed()) - 0.5f) * speed * flicker;
+        float speed = ((CSpotLightDef*)light->PLightDef_Object)->FlickerSpeed;
+        light->AccumilativeFlickerFactor += (GFFloatRandom(1.0f, ((CTCBase*)light)->GetPLocalSeed()) - 0.5f) * speed * flicker;
         float low = 1.0f - flicker;
-        if (self->AccumilativeFlickerFactor < low)
-            self->AccumilativeFlickerFactor = low;
-        else if (self->AccumilativeFlickerFactor > 1.0f)
-            self->AccumilativeFlickerFactor = 1.0f;
+        if (light->AccumilativeFlickerFactor < low)
+            light->AccumilativeFlickerFactor = low;
+        else if (light->AccumilativeFlickerFactor > 1.0f)
+            light->AccumilativeFlickerFactor = 1.0f;
     }
 }

@@ -15,9 +15,9 @@ struct CEditTransactionBase {
     void*   m8;
 };
 
-void ActionSetEngineTheme(CEditTransactionBase* self, C2DCoordI* coord, unsigned long a, unsigned long b)
+void ActionSetEngineTheme(CEditTransactionBase* transaction, C2DCoordI* coord, unsigned long a, unsigned long b)
 {
-    self->m4->Apply(self->m8, coord, a, b);
+    transaction->m4->Apply(transaction->m8, coord, a, b);
 }
 
 int main() {

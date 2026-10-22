@@ -12,9 +12,9 @@ static CTCMapwho* g_lastSelf = 0;
 static C3DVector* g_lastVec = 0;
 
 struct Slot {
-    void Place(CTCMapwho* self, C3DVector* v) {
+    void Place(CTCMapwho* mapwho, C3DVector* v) {
         g_placed++;
-        g_lastSelf = self;
+        g_lastSelf = mapwho;
         g_lastVec = v;
     }
 };
@@ -29,11 +29,11 @@ static Helper g_helper;
 
 Helper* GetMapwhoHelper(void) { g_helper.slot = &g_slot; return &g_helper; }
 
-void PlaceInMapwho(CTCMapwho* self, C3DVector* v)
+void PlaceInMapwho(CTCMapwho* mapwho, C3DVector* v)
 {
-    if (!(self->flags & 1)) {
+    if (!(mapwho->flags & 1)) {
         Helper* h = GetMapwhoHelper();
-        h->slot->Place(self, v);
+        h->slot->Place(mapwho, v);
     }
 }
 

@@ -10,7 +10,7 @@ struct CThingPhysical {
     float f9c;       // +0x9c
 };
 
-void __fastcall CThingPhysical_SetScale(CThingPhysical* self, int edx, float scale);
+void __fastcall CThingPhysical_SetScale(CThingPhysical* physical, int edx, float scale);
 
 static int g_called = 0;
 static Sub64* g_arg = 0;

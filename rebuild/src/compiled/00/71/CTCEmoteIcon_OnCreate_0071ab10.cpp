@@ -1,4 +1,4 @@
-// CTCEmoteIcon::vfunc_4() -- stores 0 at +0xc and 2 at +0x1c
+// CTCEmoteIcon::OnCreate() -- stores 0 at +0xc and 2 at +0x1c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071AB10, oracle length 15 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

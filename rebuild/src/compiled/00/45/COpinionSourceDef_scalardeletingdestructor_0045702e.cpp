@@ -1,11 +1,11 @@
 #pragma optimize("s",on)
 extern "C" void operator_delete_stub(void*);
-struct CLandscapeBackgroundPatch {
+struct COpinionSourceDef {
     void dtor();
-    void* vector_deleting_destructor(unsigned int flags);
+    void* scalar_deleting_destructor(unsigned int flags);
 };
 
-void* CLandscapeBackgroundPatch::vector_deleting_destructor(unsigned int flags)
+void* COpinionSourceDef::scalar_deleting_destructor(unsigned int flags)
 {
     this->dtor();
     if (flags & 1)

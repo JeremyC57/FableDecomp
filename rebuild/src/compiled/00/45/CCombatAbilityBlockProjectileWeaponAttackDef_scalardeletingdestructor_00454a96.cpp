@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
 #include <new>
-struct CLandscapeBackgroundPatch { int f0; };
-extern void __fastcall CLandscapeBackgroundPatch_scalar_dtor(CLandscapeBackgroundPatch* self);
+struct CCombatAbilityBlockProjectileWeaponAttackDef { int f0; };
+extern void __fastcall CCombatAbilityBlockProjectileWeaponAttackDef_scalar_dtor(CCombatAbilityBlockProjectileWeaponAttackDef* def);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCombatAbilityBlockProjectileWeaponAttackDef_scalar_deleting_destructor(CCombatAbilityBlockProjectileWeaponAttackDef* def, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_scalar_dtor(self);
+    CCombatAbilityBlockProjectileWeaponAttackDef_scalar_dtor(def);
     if (flags & 1)
-        ::operator delete(self);
-    return self;
+        ::operator delete(def);
+    return def;
 }

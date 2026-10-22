@@ -9,7 +9,7 @@ struct CCombatSequenceBase
     virtual unsigned int GetPeriod() { return period; }
 };
 
-unsigned int __fastcall CCombatSequenceBase_IsBoastSequence(CCombatSequenceBase* self, unsigned int value);
+unsigned int __fastcall CCombatSequenceBase_IsBoastSequence(CCombatSequenceBase* sequence, unsigned int value);
 
 int main()
 {

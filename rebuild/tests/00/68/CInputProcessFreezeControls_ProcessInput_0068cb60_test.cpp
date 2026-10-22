@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CInputProcessFreezeControls_ProcessInput(int arg0, int arg1) {}
+void __stdcall CInputProcessFreezeControls_ProcessInput(int event, int input) {}
 int main()
 {
     CInputProcessFreezeControls_ProcessInput(1, 2);

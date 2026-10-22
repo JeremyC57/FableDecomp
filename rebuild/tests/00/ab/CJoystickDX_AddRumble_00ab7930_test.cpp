@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CJoystickDX_AddRumble(int arg0, int arg1, int arg2) {}
+void __stdcall CJoystickDX_AddRumble(int arg0, int rumble, int arg2) {}
 int main()
 {
     CJoystickDX_AddRumble(1, 2, 3);

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CScriptModuleDolly {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CScriptModuleDolly_dtor(CScriptModuleDolly* dolly);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CScriptModuleDolly_scalar_deleting_destructor(CScriptModuleDolly* dolly, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CScriptModuleDolly_dtor(dolly);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(dolly);
+    return dolly;
 }

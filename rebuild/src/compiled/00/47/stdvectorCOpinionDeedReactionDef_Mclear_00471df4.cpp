@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
-// CActiveFile::OnReadFinished @ 0x00471df4
+// std::vector<COpinionDeedReactionDef>::_M_clear @ 0x00471df4
 //
 // thisptr (esi):
 //   +0x00  Reader*    m_reader   (object with a __fastcall member taking edx + &byte)

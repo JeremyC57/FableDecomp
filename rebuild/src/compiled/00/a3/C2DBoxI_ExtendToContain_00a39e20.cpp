@@ -14,13 +14,13 @@ struct C2DBoxI {
     long TLY;   // +0x04
     long BRX;   // +0x08
     long BRY;   // +0x0c
-    void ExtendToContain(const C2DCoordI& p);
+    void ExtendToContain(const C2DCoordI& coordI);
 };
 
-void C2DBoxI::ExtendToContain(const C2DCoordI& p)
+void C2DBoxI::ExtendToContain(const C2DCoordI& coordI)
 {
-    if (TLX > p.X) TLX = p.X;
-    if (BRX < p.X) BRX = p.X;
-    if (TLY > p.Y) TLY = p.Y;
-    if (BRY < p.Y) BRY = p.Y;
+    if (TLX > coordI.X) TLX = coordI.X;
+    if (BRX < coordI.X) BRX = coordI.X;
+    if (TLY > coordI.Y) TLY = coordI.Y;
+    if (BRY < coordI.Y) BRY = coordI.Y;
 }

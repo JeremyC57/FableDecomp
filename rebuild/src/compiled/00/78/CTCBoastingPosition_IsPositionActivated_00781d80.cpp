@@ -1,9 +1,9 @@
 #include "engine/CTCBoastingPosition.h"
 
-char __fastcall IsPositionActivated(CTCBoastingPosition* self, int /*edx*/, long* out)
+char __fastcall IsPositionActivated(CTCBoastingPosition* position, int /*edx*/, long* out)
 {
-    if (self->PositionActivated) {
-        *out = self->BoastIndex;
+    if (position->PositionActivated) {
+        *out = position->BoastIndex;
     }
-    return self->PositionActivated;
+    return position->PositionActivated;
 }

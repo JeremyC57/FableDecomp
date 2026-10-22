@@ -1,9 +1,9 @@
 #include <stdio.h>
 struct Inner { char pad[0x5c]; unsigned char flag; };
 struct CLandscapeBackgroundTreeNode { char pad[0xa4]; struct Inner* inner; };
-static int model(struct CLandscapeBackgroundTreeNode* self, long a) {
+static int model(struct CLandscapeBackgroundTreeNode* node, long a) {
     (void)a;
-    return self->inner->flag == 0;
+    return node->inner->flag == 0;
 }
 int main(void) {
     struct Inner i0; struct Inner i1;

@@ -1,4 +1,4 @@
-// CPSCSpline::WriteBinary(CDataOutputStream*) -- writes the bounce and speed-scaling flags and the animation speed, then the CPSCSplineBase data
+// NParticleEngine::CPSCSpline::WriteBinary(CDataOutputStream*) -- writes the bounce and speed-scaling flags and the animation speed, then the CPSCSplineBase data
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1AFF0, length 58 bytes.
 // Callees: CDataOutputStream::WriteBool @ 0x00993E30 (x2), CDataOutputStream::WriteFloat @ 0x00993EE0,
 // NParticleEngine::CPSCSplineBase::WriteBinary @ 0x00B21630.

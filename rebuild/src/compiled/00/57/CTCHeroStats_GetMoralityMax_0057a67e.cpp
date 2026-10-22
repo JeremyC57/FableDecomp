@@ -19,12 +19,12 @@ struct CTCHeroStats;
 
 // The this-only helper the accessor calls (e.g. returns some owned sub-object pointer).
 // __fastcall with the object in ecx == thiscall for a this-only member.
-extern void * __fastcall CTCHeroStats_GetHelper(CTCHeroStats *self);
+extern void * __fastcall CTCHeroStats_GetHelper(CTCHeroStats *stats);
 
-long __fastcall CTCHeroStats__GetMoralityMax(CTCHeroStats *self)
+long __fastcall CTCHeroStats__GetMoralityMax(CTCHeroStats *stats)
 {
     // call helper (this passed in ecx) -> pointer in eax
-    char *p = (char *)CTCHeroStats_GetHelper(self);   // call 0x10c352
+    char *p = (char *)CTCHeroStats_GetHelper(stats);   // call 0x10c352
     char *q = *(char **)(p + 0xDC);                    // mov eax,[eax+0xdc]
     return *(long *)(q + 0xD0);                         // mov eax,[eax+0xd0]; ret
 }

@@ -1,4 +1,4 @@
-// CFilteredEventContainer_007441a0::`scalar deleting destructor'(unsigned int flags) -- the CAnimFilterBase member at +0x40 destroyed inline (its vtable 0x0122FFCC stored), then the event-container base destructor (0x00743D40) and free for flag bit 0
+// NCreatureMode::CModeWalkInAllDirections::`scalar deleting destructor'(unsigned int flags) -- the CAnimFilterBase member at +0x40 destroyed inline (its vtable 0x0122FFCC stored), then the event-container base destructor (0x00743D40) and free for flag bit 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007441A0, length 48 bytes.
 // Leaf: ??_GCFilteredEventContainer_007441a0@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: the member's vtable store, the out-of-line base destructor, `ret 4`.

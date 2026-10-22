@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_SetStaticMapFileForUse(int arg0) {}
+void __stdcall CIEngine_SetStaticMapFileForUse(int text) {}
 int main()
 {
     CIEngine_SetStaticMapFileForUse(1);

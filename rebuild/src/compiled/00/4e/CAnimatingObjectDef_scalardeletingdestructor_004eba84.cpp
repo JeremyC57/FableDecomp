@@ -1,11 +1,11 @@
 #pragma optimize("s",on)
 struct CMember { };
-extern void __fastcall CMember_dtor(CMember* self);
-extern void __fastcall Base_dtor(void* self);
+extern void __fastcall CMember_dtor(CMember* def);
+extern void __fastcall Base_dtor(void* def);
 extern void __cdecl op_delete(void* p);
 extern const int g_vtbl;
 
-struct CLandscapeBackgroundPatch {
+struct CAnimatingObjectDef {
     int f0;
     int Parent;
     void* f8;
@@ -13,12 +13,12 @@ struct CLandscapeBackgroundPatch {
     CMember m28;
 };
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned char flags)
+void* __fastcall CAnimatingObjectDef_scalar_deleting_destructor(CAnimatingObjectDef* def, int edx, unsigned char flags)
 {
-    CMember_dtor(&self->m28);
-    *(const int**)self = &g_vtbl;
-    Base_dtor(self);
+    CMember_dtor(&def->m28);
+    *(const int**)def = &g_vtbl;
+    Base_dtor(def);
     if (flags & 1)
-        op_delete(self);
-    return self;
+        op_delete(def);
+    return def;
 }

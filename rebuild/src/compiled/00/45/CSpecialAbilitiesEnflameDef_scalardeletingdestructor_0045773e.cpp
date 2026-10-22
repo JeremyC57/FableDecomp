@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch {
+struct CSpecialAbilitiesEnflameDef {
     void* vftable;
     void Dtor();
-    void* vector_deleting_destructor(unsigned int flags);
+    void* scalar_deleting_destructor(unsigned int flags);
 };
 extern void __cdecl op_delete(void* p);
 
-void* CLandscapeBackgroundPatch::vector_deleting_destructor(unsigned int flags)
+void* CSpecialAbilitiesEnflameDef::scalar_deleting_destructor(unsigned int flags)
 {
     this->Dtor();
     if (flags & 1)

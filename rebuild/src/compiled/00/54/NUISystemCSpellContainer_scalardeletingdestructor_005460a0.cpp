@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CSpellContainer {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CSpellContainer_dtor(CSpellContainer* container);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CSpellContainer_scalar_deleting_destructor(CSpellContainer* container, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CSpellContainer_dtor(container);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(container);
+    return container;
 }

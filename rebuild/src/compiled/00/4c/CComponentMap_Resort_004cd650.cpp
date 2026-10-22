@@ -1,4 +1,4 @@
-// CGuiVarTransferBool::TransferToGui @ 004cd650
+// CComponentMap::Resort @ 004cd650
 struct CGuiVarTransferBool {
     void*         f0;   // +0x00  -> helper this (ecx)
     int           f4;   // +0x04  -> helper edx arg
@@ -10,7 +10,7 @@ struct CGuiVarTransferBool {
 // helper @ 0x4cd5d0 : __fastcall-style, ecx=f0, edx=f4, one stack bool arg
 extern void __fastcall CGuiVarTransferBool_Helper(void* self, int edx, bool value);
 
-void __fastcall CGuiVarTransferBool_TransferToGui(CGuiVarTransferBool* self)
+void __fastcall CComponentMap_Resort(CGuiVarTransferBool* self)
 {
     CGuiVarTransferBool_Helper(self->f0, self->f4, self->fC);
     self->fD = false;

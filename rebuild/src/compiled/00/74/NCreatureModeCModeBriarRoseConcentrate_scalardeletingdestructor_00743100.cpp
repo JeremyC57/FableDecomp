@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CModeBriarRoseConcentrate {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CModeBriarRoseConcentrate_dtor(CModeBriarRoseConcentrate* mode);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CModeBriarRoseConcentrate_scalar_deleting_destructor(CModeBriarRoseConcentrate* mode, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CModeBriarRoseConcentrate_dtor(mode);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(mode);
+    return mode;
 }

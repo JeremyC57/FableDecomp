@@ -7,7 +7,7 @@ struct StrPtr {
 typedef int (__stdcall *CmpFn)(char*, char*);
 extern CmpFn g_cmp;
 
-int __fastcall StrPtr_operator_ne(StrPtr* self, int edx, char* rhs);
+int __fastcall StrPtr_operator_ne(StrPtr* ptr, int edx, char* rhs);
 
 static char* g_seenA;
 static char* g_seenB;

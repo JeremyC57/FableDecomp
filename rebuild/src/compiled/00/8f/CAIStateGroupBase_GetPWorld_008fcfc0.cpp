@@ -1,4 +1,4 @@
-// CPlayer::GetCurrentMode() -- the dword at +0x24 of the object at +0x1c of the object at +0x4
+// CAIStateGroupBase::GetPWorld() -- the dword at +0x24 of the object at +0x1c of the object at +0x4
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FCFC0, oracle length 10 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.
@@ -17,13 +17,13 @@ struct CFirst {
     CSecond* m_pSecond;                    // +0x1c
 };
 
-struct CPlayer {
+struct CAIStateGroupBase {
     unsigned char _pad[0x4];
     CFirst* m_pFirst;                      // +0x4
-    void* GetCurrentMode();
+    void* GetPWorld();
 };
 
-void* CPlayer::GetCurrentMode()
+void* CAIStateGroupBase::GetPWorld()
 {
     return m_pFirst->m_pSecond->m_value;
 }

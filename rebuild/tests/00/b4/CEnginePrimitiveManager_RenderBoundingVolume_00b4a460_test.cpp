@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEnginePrimitiveManager_RenderBoundingVolume(int arg0) {}
+void __stdcall CEnginePrimitiveManager_RenderBoundingVolume(int primitive) {}
 int main()
 {
     CEnginePrimitiveManager_RenderBoundingVolume(1);

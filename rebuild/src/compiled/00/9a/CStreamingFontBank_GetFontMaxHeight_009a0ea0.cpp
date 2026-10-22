@@ -1,6 +1,6 @@
 #include "engine/CStreamingFontBank.h"
 
-float __fastcall GetFontMaxHeight(CStreamingFontBank* self)
+float __fastcall GetFontMaxHeight(CStreamingFontBank* bank)
 {
-    return (float)(unsigned long)self->m_maxHeight;
+    return (float)(unsigned long)bank->m_maxHeight;
 }

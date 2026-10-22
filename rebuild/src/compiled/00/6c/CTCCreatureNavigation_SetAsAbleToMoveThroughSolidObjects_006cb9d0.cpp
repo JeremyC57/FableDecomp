@@ -12,11 +12,11 @@ struct CTCCreatureNavigation {
     unsigned char flag;
 };
 
-void __fastcall CTCCreatureNavigation_SetAsAbleToMoveThroughSolidObjects(CTCCreatureNavigation* self, void* edx, unsigned char b)
+void __fastcall CTCCreatureNavigation_SetAsAbleToMoveThroughSolidObjects(CTCCreatureNavigation* navigation, void* edx, unsigned char b)
 {
-    if (b != self->flag) {
-        CObj* o = self->obj;
+    if (b != navigation->flag) {
+        CObj* o = navigation->obj;
         o->vtbl->slots[0x48/4](o);
     }
-    self->flag = b;
+    navigation->flag = b;
 }

@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch;
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CCombatDialogueDef;
+extern void __fastcall CCombatDialogueDef_dtor(CCombatDialogueDef* def);
 extern void __cdecl op_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int /*edx*/, unsigned int flags)
+void* __fastcall CCombatDialogueDef_scalar_deleting_destructor(CCombatDialogueDef* def, int /*edx*/, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCombatDialogueDef_dtor(def);
     if (flags & 1)
-        op_delete((void*)self);
-    return self;
+        op_delete((void*)def);
+    return def;
 }

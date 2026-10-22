@@ -1,1 +1,1 @@
-void __stdcall CStaticMapBankStateBlock_Set(int arg0) {}
+void __stdcall CStaticMapBankStateBlock_Set(int block) {}

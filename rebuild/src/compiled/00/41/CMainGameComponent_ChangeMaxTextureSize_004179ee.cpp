@@ -21,8 +21,8 @@ struct CTextureOwnerA { void SetMaxTextureSize(long size); };   // 0x00434DD0
 struct CTextureOwnerB { void SetMaxTextureSize(long size); };   // 0x0049D840
 struct CMainGameComponent {
     unsigned char   _pad00[0x24];
-    CTextureOwnerB* m_p24;                         // +0x24
-    CTextureOwnerA* m_p28;                         // +0x28
+    CTextureOwnerB* PWorld;                         // +0x24
+    CTextureOwnerA* PDisplayEngine;                         // +0x28
     bool InitGraphics();                           // 0x00416C8A
     void ChangeMaxTextureSize(long size);
 };
@@ -31,6 +31,6 @@ void CMainGameComponent::ChangeMaxTextureSize(long size)
     g_MaxTextureWidth = Min<unsigned long>(size, g_pDisplayCaps->MaxTextureWidth);
     g_MaxTextureHeight = Min<unsigned long>(size, g_pDisplayCaps->MaxTextureHeight);
     InitGraphics();
-    m_p28->SetMaxTextureSize(size);
-    m_p24->SetMaxTextureSize(size);
+    PDisplayEngine->SetMaxTextureSize(size);
+    PWorld->SetMaxTextureSize(size);
 }

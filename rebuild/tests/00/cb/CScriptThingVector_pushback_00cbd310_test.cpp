@@ -15,7 +15,7 @@ static int g_overflow = 0;
 struct CScriptThingVector {
     CScriptThing* m_start; CScriptThing* m_finish; CScriptThing* m_end_of_storage;
     void _M_insert_overflow(CScriptThing*, const CScriptThing&, const __false_type&, unsigned long, bool) { ++g_overflow; }
-    void push_back(const CScriptThing& x) { if (m_finish != m_end_of_storage) { new (m_finish) CScriptThing(x); ++m_finish; } else _M_insert_overflow(m_finish, x, __false_type(), 1, true); }
+    void push_back(const CScriptThing& scriptThing) { if (m_finish != m_end_of_storage) { new (m_finish) CScriptThing(scriptThing); ++m_finish; } else _M_insert_overflow(m_finish, scriptThing, __false_type(), 1, true); }
 };
 int main()
 {

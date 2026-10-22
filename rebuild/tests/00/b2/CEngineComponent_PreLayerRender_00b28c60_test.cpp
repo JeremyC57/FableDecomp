@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngineComponent_PreLayerRender(int arg0) {}
+void __stdcall CEngineComponent_PreLayerRender(int params) {}
 int main()
 {
     CEngineComponent_PreLayerRender(1);

@@ -1,7 +1,7 @@
 
 #include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
-bool __fastcall CCreatureActionBase_IsStrikeAction(const CCreatureActionBase* self)
+bool __fastcall CCreatureActionBase_IsStrikeAction(const CCreatureActionBase* action)
 {
-    (void)self;
+    (void)action;
     return false;
 }

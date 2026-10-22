@@ -1,1 +1,1 @@
-void __stdcall CEngineSkyRenderer_FrameStart(int arg0) {}
+void __stdcall CEngineSkyRenderer_FrameStart(int params) {}

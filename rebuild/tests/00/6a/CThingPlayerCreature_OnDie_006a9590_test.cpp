@@ -5,7 +5,7 @@ static int g_crimes = 0, g_baseDies = 0;
 struct CTCVillage { void ProcessCrimeDeeds() { ++g_crimes; } };
 struct CThingCreatureBase;
 struct CPlayer {
-    long m_value3c; bool m_main; CTCVillage* m_village; CThingCreatureBase* m_lastDied;
+    long PlayerRespawnDelay; bool m_main; CTCVillage* m_village; CThingCreatureBase* m_lastDied;
     void GlobalEventCreatureDied(CThingCreatureBase* creature) { m_lastDied = creature; }
     bool IsMainPlayer() { return m_main; }
     CTCVillage* GetPNearestTCVillage() { return m_village; }
@@ -25,7 +25,7 @@ void CThingPlayerCreature::OnDie()
     player->GlobalEventCreatureDied(this);
     if (player->IsMainPlayer())
     {
-        player->m_value3c = GetWorldState()->m_value80;
+        player->PlayerRespawnDelay = GetWorldState()->m_value80;
         CTCVillage* village = player->GetPNearestTCVillage();
         if (village)
             village->ProcessCrimeDeeds();
@@ -36,13 +36,13 @@ int main()
 {
     int bad = 0;
     g_world.m_value80 = 1234;
-    CPlayer p; p.m_value3c = 0; p.m_main = false; p.m_village = 0; p.m_lastDied = 0;
+    CPlayer p; p.PlayerRespawnDelay = 0; p.m_main = false; p.m_village = 0; p.m_lastDied = 0;
     CThingPlayerCreature c; c.m_player = &p;
     c.OnDie();
-    if (p.m_lastDied != &c || p.m_value3c != 0 || g_baseDies != 1) bad = 1;
+    if (p.m_lastDied != &c || p.PlayerRespawnDelay != 0 || g_baseDies != 1) bad = 1;
     p.m_main = true;
     c.OnDie();
-    if (p.m_value3c != 1234 || g_crimes != 0 || g_baseDies != 2) bad = 2;
+    if (p.PlayerRespawnDelay != 1234 || g_crimes != 0 || g_baseDies != 2) bad = 2;
     CTCVillage v; p.m_village = &v;
     c.OnDie();
     if (g_crimes != 1 || g_baseDies != 3) bad = 3;

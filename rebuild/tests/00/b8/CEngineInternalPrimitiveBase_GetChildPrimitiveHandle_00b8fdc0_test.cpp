@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngineInternalPrimitiveBase_GetChildPrimitiveHandle(int arg0, int arg1) {}
+void __stdcall CEngineInternalPrimitiveBase_GetChildPrimitiveHandle(int arg0, int handle) {}
 int main()
 {
     CEngineInternalPrimitiveBase_GetChildPrimitiveHandle(1, 2);

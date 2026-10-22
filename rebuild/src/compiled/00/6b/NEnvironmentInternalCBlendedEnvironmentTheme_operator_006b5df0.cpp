@@ -31,7 +31,7 @@ struct CBlendedEnvironmentTheme {
 };
 }
 
-void AssignTheme(NEnvironmentInternal::CBlendedEnvironmentTheme& a, const NEnvironmentInternal::CBlendedEnvironmentTheme& b)
+void AssignTheme(NEnvironmentInternal::CBlendedEnvironmentTheme& a, const NEnvironmentInternal::CBlendedEnvironmentTheme& theme)
 {
-    a = b;
+    a = theme;
 }

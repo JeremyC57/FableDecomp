@@ -1,1 +1,1 @@
-void __stdcall CEngineComponent_FrameStart(int arg0) {}
+void __stdcall CEngineComponent_FrameStart(int params) {}

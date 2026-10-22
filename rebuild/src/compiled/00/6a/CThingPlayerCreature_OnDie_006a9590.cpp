@@ -19,7 +19,7 @@ struct CThingCreatureBase;
 
 struct CPlayer {
     unsigned char _pad00[0x3c];
-    long          m_value3c;                             // +0x3c
+    long          PlayerRespawnDelay;                             // +0x3c
     void        GlobalEventCreatureDied(CThingCreatureBase* creature);   // 0x0087C580
     bool        IsMainPlayer();                          // 0x00487520
     CTCVillage* GetPNearestTCVillage();                  // 0x00488620
@@ -41,7 +41,7 @@ void CThingPlayerCreature::OnDie()
     player->GlobalEventCreatureDied(this);
     if (player->IsMainPlayer())
     {
-        player->m_value3c = GetWorldState()->m_value80;
+        player->PlayerRespawnDelay = GetWorldState()->m_value80;
         CTCVillage* village = player->GetPNearestTCVillage();
         if (village)
             village->ProcessCrimeDeeds();

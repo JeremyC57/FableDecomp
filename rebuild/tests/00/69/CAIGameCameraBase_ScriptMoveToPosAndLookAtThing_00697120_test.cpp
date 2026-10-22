@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CAIGameCameraBase_ScriptMoveToPosAndLookAtThing(int arg0, int arg1, int arg2) {}
+void __stdcall CAIGameCameraBase_ScriptMoveToPosAndLookAtThing(int gameObject, int pos, int arg2) {}
 int main()
 {
     CAIGameCameraBase_ScriptMoveToPosAndLookAtThing(1, 2, 3);

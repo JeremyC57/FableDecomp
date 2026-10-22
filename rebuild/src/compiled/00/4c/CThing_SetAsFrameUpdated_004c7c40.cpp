@@ -7,7 +7,7 @@ struct CThing {
     unsigned char pad[0x91];
     unsigned char flags;
 };
-void __fastcall SetAsFrameUpdated(CThing* self) {
-    if (!(self->flags & 1))
-        g_mgr->Notify(self);
+void __fastcall SetAsFrameUpdated(CThing* thing) {
+    if (!(thing->flags & 1))
+        g_mgr->Notify(thing);
 }

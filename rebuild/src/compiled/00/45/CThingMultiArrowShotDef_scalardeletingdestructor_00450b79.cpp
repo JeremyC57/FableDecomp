@@ -1,19 +1,19 @@
 #pragma optimize("s",on)
-extern const void* CLandscapeBackgroundPatch_vftable;
+extern const void* CThingMultiArrowShotDef_vftable;
 extern "C" void __cdecl FableFreeMem(void* p);
 
-struct CLandscapeBackgroundPatch {
+struct CThingMultiArrowShotDef {
     const void** vft;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CThingMultiArrowShotDef_dtor(CThingMultiArrowShotDef* def);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags) {
+void* __fastcall CThingMultiArrowShotDef_scalar_deleting_destructor(CThingMultiArrowShotDef* def, int edx, unsigned int flags) {
     (void)edx;
-    self->vft = (const void**)&CLandscapeBackgroundPatch_vftable;
-    CLandscapeBackgroundPatch_dtor(self);
+    def->vft = (const void**)&CThingMultiArrowShotDef_vftable;
+    CThingMultiArrowShotDef_dtor(def);
     if (flags & 1) {
-        FableFreeMem(self);
+        FableFreeMem(def);
     }
-    return self;
+    return def;
 }

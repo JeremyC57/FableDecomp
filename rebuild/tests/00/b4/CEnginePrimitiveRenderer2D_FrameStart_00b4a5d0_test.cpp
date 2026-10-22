@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEnginePrimitiveRenderer2D_FrameStart(int arg0) {}
+void __stdcall CEnginePrimitiveRenderer2D_FrameStart(int params) {}
 int main()
 {
     CEnginePrimitiveRenderer2D_FrameStart(1);

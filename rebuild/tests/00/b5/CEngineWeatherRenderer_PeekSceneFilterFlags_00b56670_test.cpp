@@ -2,9 +2,9 @@
 
 struct CEngineWeatherRenderer { int dummy; };
 
-unsigned long __fastcall PeekSceneFilterFlags(CEngineWeatherRenderer* self)
+unsigned long __fastcall PeekSceneFilterFlags(CEngineWeatherRenderer* renderer)
 {
-    (void)self;
+    (void)renderer;
     return 1UL;
 }
 

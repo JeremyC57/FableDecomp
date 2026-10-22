@@ -6,7 +6,7 @@ struct CGraphicDataBank {
     char* f1e0;
 };
 
-void __fastcall NotifyEntryRemoved(CGraphicDataBank* self, int edx, unsigned long idx);
+void __fastcall NotifyEntryRemoved(CGraphicDataBank* bank, int edx, unsigned long idx);
 
 int main()
 {

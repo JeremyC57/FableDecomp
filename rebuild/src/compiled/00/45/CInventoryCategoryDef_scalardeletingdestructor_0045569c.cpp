@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { int f0; };
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CInventoryCategoryDef { int f0; };
+extern void __fastcall CInventoryCategoryDef_dtor(CInventoryCategoryDef* def);
 extern void __cdecl operator_delete_impl(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int /*edx*/, unsigned int flags)
+void* __fastcall CInventoryCategoryDef_scalar_deleting_destructor(CInventoryCategoryDef* def, int /*edx*/, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CInventoryCategoryDef_dtor(def);
     if (flags & 1)
-        operator_delete_impl(self);
-    return self;
+        operator_delete_impl(def);
+    return def;
 }

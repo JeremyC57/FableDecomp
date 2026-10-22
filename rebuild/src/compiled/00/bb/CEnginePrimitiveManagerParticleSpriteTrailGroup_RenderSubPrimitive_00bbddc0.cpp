@@ -1,1 +1,1 @@
-void __stdcall CEnginePrimitiveManagerParticleSpriteTrailGroup_RenderSubPrimitive(int arg0, int arg1) {}
+void __stdcall CEnginePrimitiveManagerParticleSpriteTrailGroup_RenderSubPrimitive(int primitive, int arg1) {}

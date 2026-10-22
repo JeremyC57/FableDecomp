@@ -1,16 +1,16 @@
 #pragma optimize("s", on)
-struct AutoTinyVectorObject
+struct CThingDrainLifeShotDef
 {
     void* vftable;
 };
-extern void* const g_AutoTinyVectorVftable;
-extern void __fastcall AutoTinyVectorDestructor(void* self);
+extern void* const g_CThingDrainLifeShotDef_vftable;
+extern void __fastcall CThingDrainLifeShotDef_Destruct(void* def);
 void operator delete(void*);
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CThingDrainLifeShotDef* def, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    def->vftable = (void*)&g_CThingDrainLifeShotDef_vftable;
+    CThingDrainLifeShotDef_Destruct(def);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(def);
+    return def;
 }

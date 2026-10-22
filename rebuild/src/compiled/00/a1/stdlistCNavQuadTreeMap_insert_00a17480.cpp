@@ -1,4 +1,4 @@
-// CCombatSequence_WillForcePush::OnCreate(iterator) -- (label propagated; really an STLport list<SEntry>::insert(iterator where)) insert a default-constructed 0x20-byte entry before `where` and return the new node's iterator
+// std::list<CNavQuadTreeMap>::insert(iterator) -- (label propagated; really an STLport list<SEntry>::insert(iterator where)) insert a default-constructed 0x20-byte entry before `where` and return the new node's iterator
 // Leaf: insert
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A17480, 139 bytes (incl. padding).
 // Callees: CCharString::CCharString() 0x0099E4B0, malloc 0x00BFEA0E, entry copy constructor 0x00A16960,

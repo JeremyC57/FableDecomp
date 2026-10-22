@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CDraggable {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CDraggable_dtor(CDraggable* draggable);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CDraggable_scalar_deleting_destructor(CDraggable* draggable, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CDraggable_dtor(draggable);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(draggable);
+    return draggable;
 }

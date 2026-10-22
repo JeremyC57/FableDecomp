@@ -1,4 +1,4 @@
-// CMap::GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) -- the dominant engine theme at a map cell; when it covers the cell fully (blend >= 255) the theme definition's float at +0x84 (PDB CEngineThemeDef MinCameraHeight, one dword lower in retail), else 0
+// CMap::GetThemeMinCameraHeightAt(const C2DCoordI& pos) -- the dominant engine theme at a map cell; when it covers the cell fully (blend >= 255) the theme definition's float at +0x84 (PDB CEngineThemeDef MinCameraHeight, one dword lower in retail), else 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081FA90, length 103 bytes (twin of 0x0081FA20 at the neighbouring float).
 // Callees: CMap::GetDominantEngineThemeAt(const C2DCoordI&, long* blend) @ 0x0081F910 (the manifest's "CopyPos" label is wrong: it returns the
 //   palette's theme def index and writes the blend), CDefinitionManager::GetDef<CEngineThemeDef> @ 0x0063F3A0 (manifest label GetDef<CThingPhysicalSwitchDef>,

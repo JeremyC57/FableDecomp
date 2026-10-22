@@ -3,9 +3,9 @@ struct Inner { char pad[0xb]; unsigned char flags; };
 struct Held { Inner* p; };
 struct C3DAnimation2 { char pad[0x40]; Held* held; };
 
-bool HasRotation(C3DAnimation2* self)
+bool HasRotation(C3DAnimation2* animation2)
 {
-    Held* h = self->held;
+    Held* h = animation2->held;
     if (h != 0) {
         if (h->p->flags & 3)
             return true;

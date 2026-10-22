@@ -21,13 +21,13 @@ struct Self {
     char sentinel[16];   // +0x18 embedded sentinel node
 };
 
-void __fastcall UnregisterVertexShaderConstantLayouts(Self* self)
+void __fastcall UnregisterVertexShaderConstantLayouts(Self* manager)
 {
-    ListImpl* impl = (ListImpl*)((char*)self + 0xc);
-    self->count = -1;
+    ListImpl* impl = (ListImpl*)((char*)manager + 0xc);
+    manager->count = -1;
     ListNode* local = 0;
     impl->erase_range(1, &local);
-    ListNode* sentinel = (ListNode*)((char*)self + 0x18);
+    ListNode* sentinel = (ListNode*)((char*)manager + 0x18);
     impl->head->next = sentinel;
-    self->tail = sentinel;
+    manager->tail = sentinel;
 }

@@ -4,47 +4,47 @@
 // mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0x8c]
 // Proxy: forward to the wrapped implementation object at this->f4; false when absent.
 struct CScriptThingInner {
-  virtual bool m0(int a0);
-  virtual bool m1(int a0);
-  virtual bool m2(int a0);
-  virtual bool m3(int a0);
-  virtual bool m4(int a0);
-  virtual bool m5(int a0);
-  virtual bool m6(int a0);
-  virtual bool m7(int a0);
-  virtual bool m8(int a0);
-  virtual bool m9(int a0);
-  virtual bool m10(int a0);
-  virtual bool m11(int a0);
-  virtual bool m12(int a0);
-  virtual bool m13(int a0);
-  virtual bool m14(int a0);
-  virtual bool m15(int a0);
-  virtual bool m16(int a0);
-  virtual bool m17(int a0);
-  virtual bool m18(int a0);
-  virtual bool m19(int a0);
-  virtual bool m20(int a0);
-  virtual bool m21(int a0);
-  virtual bool m22(int a0);
-  virtual bool m23(int a0);
-  virtual bool m24(int a0);
-  virtual bool m25(int a0);
-  virtual bool m26(int a0);
-  virtual bool m27(int a0);
-  virtual bool m28(int a0);
-  virtual bool m29(int a0);
-  virtual bool m30(int a0);
-  virtual bool m31(int a0);
-  virtual bool m32(int a0);
-  virtual bool m33(int a0);
-  virtual bool m34(int a0);
-  virtual bool m35(int a0);
+  virtual bool m0(int name);
+  virtual bool m1(int name);
+  virtual bool m2(int name);
+  virtual bool m3(int name);
+  virtual bool m4(int name);
+  virtual bool m5(int name);
+  virtual bool m6(int name);
+  virtual bool m7(int name);
+  virtual bool m8(int name);
+  virtual bool m9(int name);
+  virtual bool m10(int name);
+  virtual bool m11(int name);
+  virtual bool m12(int name);
+  virtual bool m13(int name);
+  virtual bool m14(int name);
+  virtual bool m15(int name);
+  virtual bool m16(int name);
+  virtual bool m17(int name);
+  virtual bool m18(int name);
+  virtual bool m19(int name);
+  virtual bool m20(int name);
+  virtual bool m21(int name);
+  virtual bool m22(int name);
+  virtual bool m23(int name);
+  virtual bool m24(int name);
+  virtual bool m25(int name);
+  virtual bool m26(int name);
+  virtual bool m27(int name);
+  virtual bool m28(int name);
+  virtual bool m29(int name);
+  virtual bool m30(int name);
+  virtual bool m31(int name);
+  virtual bool m32(int name);
+  virtual bool m33(int name);
+  virtual bool m34(int name);
+  virtual bool m35(int name);
 };
-struct CScriptThing_Methods : CScriptThing { bool MsgIsPresentedWithItem(int a0); };
-bool CScriptThing_Methods::MsgIsPresentedWithItem(int a0)
+struct CScriptThing_Methods : CScriptThing { bool MsgIsPresentedWithItem(int name); };
+bool CScriptThing_Methods::MsgIsPresentedWithItem(int name)
 {
     CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
     if (!p) return false;
-    return p->m35(a0);
+    return p->m35(name);
 }

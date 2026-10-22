@@ -1,22 +1,22 @@
 struct CUserProfileManager {
   char pad0[0xc];
-  char m_flagC;    /* +0xc */
+  char UseNewProfileValues;    /* +0xc */
   char pad1[0x8];
-  char m_flag15;   /* +0x15 */
+  char CameraPCViewHeroXYInverted;   /* +0x15 */
   char pad2[0xbf];
-  char m_flagD5;   /* +0xd5 */
+  char CameraPCViewHeroXYInvertedNewProfile;   /* +0xd5 */
 };
-extern void __fastcall CUserProfileManager_HelperA(CUserProfileManager* self);
-extern void __fastcall CUserProfileManager_HelperB(CUserProfileManager* self);
-void __fastcall CUserProfileManager_SetCameraResetting(CUserProfileManager* self, void* edx, char resetting, char reload)
+extern void __fastcall CUserProfileManager_HelperA(CUserProfileManager* manager);
+extern void __fastcall CUserProfileManager_HelperB(CUserProfileManager* manager);
+void __fastcall CUserProfileManager_SetCameraPCViewHeroXYInverted(CUserProfileManager* manager, void* edx, char resetting, char reload)
 {
   (void)edx;
-  if (self->m_flagC) {
-    self->m_flagD5 = resetting;
+  if (manager->UseNewProfileValues) {
+    manager->CameraPCViewHeroXYInvertedNewProfile = resetting;
   }
-  self->m_flag15 = resetting;
-  CUserProfileManager_HelperA(self);
+  manager->CameraPCViewHeroXYInverted = resetting;
+  CUserProfileManager_HelperA(manager);
   if (reload) {
-    CUserProfileManager_HelperB(self);
+    CUserProfileManager_HelperB(manager);
   }
 }

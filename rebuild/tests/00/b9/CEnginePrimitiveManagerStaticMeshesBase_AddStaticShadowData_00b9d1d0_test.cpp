@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEnginePrimitiveManagerStaticMeshesBase_AddStaticShadowData(int arg0, int arg1) {}
+void __stdcall CEnginePrimitiveManagerStaticMeshesBase_AddStaticShadowData(int primitive, int context) {}
 int main()
 {
     CEnginePrimitiveManagerStaticMeshesBase_AddStaticShadowData(1, 2);

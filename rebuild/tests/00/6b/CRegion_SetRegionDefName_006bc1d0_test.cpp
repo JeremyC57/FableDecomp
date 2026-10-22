@@ -29,13 +29,13 @@ struct CRegion {
     int field24;
 };
 
-void __fastcall CRegion_SetRegionDefName(CRegion* self, int, int name)
+void __fastcall CRegion_SetRegionDefName(CRegion* region, int, int name)
 {
-    self->field20.Assign(name);
-    Counted* c = Resolve(&self->field20);
+    region->field20.Assign(name);
+    Counted* c = Resolve(&region->field20);
     int cnt = c->GetCount();
     if (cnt > 0) {
-        Applied* a = Resolve2(cnt, &self->field24);
+        Applied* a = Resolve2(cnt, &region->field24);
         a->Apply();
     }
 }

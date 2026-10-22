@@ -3,20 +3,20 @@
 
 struct CScriptThingVtbl {
     unsigned char _pad[0x12c];
-    unsigned char (__fastcall *IsAlive)(CScriptThing* self);
+    unsigned char (__fastcall *IsAlive)(CScriptThing* scriptThing);
 };
 
 static unsigned char g_aliveVal = 0;
 
-static unsigned char __fastcall stub_IsAlive(CScriptThing* self)
+static unsigned char __fastcall stub_IsAlive(CScriptThing* scriptThing)
 {
-    (void)self;
+    (void)scriptThing;
     return g_aliveVal;
 }
 
-bool __fastcall CScriptThing_IsDead(CScriptThing* self)
+bool __fastcall CScriptThing_IsDead(CScriptThing* scriptThing)
 {
-    return ((CScriptThingVtbl*)self->__vftable)->IsAlive(self) == 0;
+    return ((CScriptThingVtbl*)scriptThing->__vftable)->IsAlive(scriptThing) == 0;
 }
 
 int main()

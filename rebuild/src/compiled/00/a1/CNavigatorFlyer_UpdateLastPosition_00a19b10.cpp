@@ -1,1 +1,1 @@
-void __stdcall CNavigatorFlyer_UpdateLastPosition(int arg0) {}
+void __stdcall CNavigatorFlyer_UpdateLastPosition(int pos) {}

@@ -9,10 +9,10 @@ struct CTCBoastUI {
     unsigned char f2a;
 };
 
-void __fastcall RequestActivate(CTCBoastUI *self)
+void __fastcall RequestActivate(CTCBoastUI *boastUI)
 {
-    if (!self->f2a && !self->f18 && !self->f28)
-        self->f2a = 1;
+    if (!boastUI->f2a && !boastUI->f18 && !boastUI->f28)
+        boastUI->f2a = 1;
 }
 
 static void call_ra(CTCBoastUI *p)

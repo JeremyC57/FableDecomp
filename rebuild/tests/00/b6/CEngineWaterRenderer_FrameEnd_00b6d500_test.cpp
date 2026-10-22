@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngineWaterRenderer_FrameEnd(int arg0) {}
+void __stdcall CEngineWaterRenderer_FrameEnd(int params) {}
 int main()
 {
     CEngineWaterRenderer_FrameEnd(1);

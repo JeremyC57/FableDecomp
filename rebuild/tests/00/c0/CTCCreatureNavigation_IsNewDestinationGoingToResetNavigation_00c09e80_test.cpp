@@ -16,13 +16,13 @@ struct CTCCreatureNavigation {
 
 // The tested forwarder, modelled with a manual vtable dispatch that matches
 // retail: ecx=this->f4, args (this, v) on the stack, slot 6 (offset 0x18).
-typedef bool (__fastcall *Vfn6)(Delegate* self, int edx, CTCCreatureNavigation* orig, C3DVector* v);
+typedef bool (__fastcall *Vfn6)(Delegate* self, int edx, CTCCreatureNavigation* orig, C3DVector* pos);
 
-bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int edx, C3DVector* v)
+bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int edx, C3DVector* pos)
 {
     Delegate* d = self->ParentThing;
     Vfn6 fn = (Vfn6)d->vptr[6];
-    return fn(d, 0, self, v);
+    return fn(d, 0, self, pos);
 }
 
 static Delegate* g_expect_self;
@@ -31,12 +31,12 @@ static C3DVector* g_expect_vec;
 static bool g_ret;
 static int g_hits;
 
-static bool __fastcall Check(Delegate* self, int edx, CTCCreatureNavigation* orig, C3DVector* v)
+static bool __fastcall Check(Delegate* self, int edx, CTCCreatureNavigation* orig, C3DVector* pos)
 {
     g_hits++;
     if (self != g_expect_self) { printf("BAD self\n"); return false; }
     if (orig != g_expect_orig) { printf("BAD orig\n"); return false; }
-    if (v != g_expect_vec) { printf("BAD vec\n"); return false; }
+    if (pos != g_expect_vec) { printf("BAD vec\n"); return false; }
     return g_ret;
 }
 

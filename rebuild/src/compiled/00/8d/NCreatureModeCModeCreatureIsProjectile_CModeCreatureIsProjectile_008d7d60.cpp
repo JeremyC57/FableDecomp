@@ -58,7 +58,7 @@ namespace NCreatureMode {
 struct CModeCreatureIsProjectile : CModeBase_00861e00 {
     unsigned char m_state[0xc];            // +0x68 (not touched by the ctor)
     CAnimFilterOfGroup m_animFilter;       // +0x74
-    unsigned long m_unknown80;             // +0x80 (not touched by the ctor)
+    unsigned long OldTargetFlags;             // +0x80 (not touched by the ctor)
     CThing* m_pThrower;                    // +0x84
     virtual void v00();
     CModeCreatureIsProjectile(CThing* thing);

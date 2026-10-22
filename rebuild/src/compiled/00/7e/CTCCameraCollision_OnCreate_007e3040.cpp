@@ -1,4 +1,4 @@
-// CTCCameraCollision::vfunc_4() -- vtable slot 4: run the base slot, look the parent thing's def up by its global index and fetch its camera-collision sub-def into CameraCollisionDef
+// CTCCameraCollision::OnCreate() -- vtable slot 4: run the base slot, look the parent thing's def up by its global index and fetch its camera-collision sub-def into CameraCollisionDef
 //
 // Retail 0x007E3040, 81 bytes. Slot 4 of the CTCCameraCollision vtable 0x01270394 (rtti-vtables.tsv).
 // Callees: CTCBase's slot-4 body @ 0x00686850 (an empty `ret`, called non-virtually; manifest "$E2"),

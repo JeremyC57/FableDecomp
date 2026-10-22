@@ -16,12 +16,12 @@ struct CDisplayManager {
 
 struct FmtHolder { unsigned int fmt; };
 
-bool __fastcall CDisplayManager_IsValidTextureFormat(CDisplayManager* self, void* edx, FmtHolder* h)
+bool __fastcall CDisplayManager_IsValidTextureFormat(CDisplayManager* manager, void* edx, FmtHolder* h)
 {
     unsigned int idx = h->fmt;
     unsigned int entry = g_texFormatTable[idx * 9];
-    void* dev = self->dev;
+    void* dev = manager->dev;
     CDispVtbl** vt = (CDispVtbl**)dev;
-    int r = (*vt)->fns[0x28/4](dev, self->f60, self->f5c, self->f1c4, 0, 3, entry);
+    int r = (*vt)->fns[0x28/4](dev, manager->f60, manager->f5c, manager->f1c4, 0, 3, entry);
     return r >= 0;
 }

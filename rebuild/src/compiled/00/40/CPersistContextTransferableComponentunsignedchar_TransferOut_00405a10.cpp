@@ -1,4 +1,4 @@
-// CPersistContext_TransferableComponent::TransferOut(CPersistContext*, CCharString*) -- widens the byte behind the target pointer to a long local and hands its address to the long writer 0x009E2560
+// CPersistContext_TransferableComponent<unsigned char>::TransferOut(CPersistContext*, CCharString*) -- widens the byte behind the target pointer to a long local and hands its address to the long writer 0x009E2560
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00405A10, 31 bytes. Callee: 0x009E2560 (TransferOutLong, __fastcall).
 //

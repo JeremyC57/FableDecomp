@@ -28,19 +28,19 @@ struct CTCGraphicAppearance {
     char state;
 };
 
-void __fastcall CTCGraphicAppearance_ClearAllPrimitivesDueToBeingOutOfRange(CTCGraphicAppearance* self)
+void __fastcall CTCGraphicAppearance_ClearAllPrimitivesDueToBeingOutOfRange(CTCGraphicAppearance* appearance)
 {
-    if (self->state < 0) {
-        ListNode* sentinel = self->head;
+    if (appearance->state < 0) {
+        ListNode* sentinel = appearance->head;
         ListNode* n = sentinel->next;
         while (n != sentinel) {
             IPrimitive* p = n->payload;
             p->vt->slot1(p);
             n = n->next;
         }
-        SubObj_Clear((SubObj*)((char*)self + 0x38));
-        self->counter = GetSomeCounter() + 1;
-        self->state &= 0x7f;
+        SubObj_Clear((SubObj*)((char*)appearance + 0x38));
+        appearance->counter = GetSomeCounter() + 1;
+        appearance->state &= 0x7f;
     }
 }
 

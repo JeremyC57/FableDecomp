@@ -2,9 +2,9 @@
 
 struct CEngine { unsigned char pad[0x10]; unsigned int flags; };
 
-static bool model(CEngine* self)
+static bool model(CEngine* engine)
 {
-    return (self->flags & 0x217) != 0;
+    return (engine->flags & 0x217) != 0;
 }
 
 int main()

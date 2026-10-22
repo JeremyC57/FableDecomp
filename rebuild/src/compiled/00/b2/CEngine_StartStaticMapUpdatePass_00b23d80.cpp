@@ -1,1 +1,1 @@
-void __stdcall CEngine_StartStaticMapUpdatePass(int arg0, int arg1, int arg2, int arg3) {}
+void __stdcall CEngine_StartStaticMapUpdatePass(int text, int arg1, int info, int array) {}

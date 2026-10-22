@@ -1,16 +1,16 @@
 #pragma optimize("s",on)
-// MSVC vector deleting destructor for CLandscapeBackgroundPatch
-struct CLandscapeBackgroundPatch {
+// MSVC vector deleting destructor for CSpecialAbilitiesDrunkennessDef
+struct CSpecialAbilitiesDrunkennessDef {
     void* vftable;
 };
 
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+extern "C" void __fastcall CSpecialAbilitiesDrunkennessDef_dtor(CSpecialAbilitiesDrunkennessDef* def);
 extern "C" void __cdecl operator_delete_stub(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int /*edx*/, unsigned int flags)
+void* __fastcall CSpecialAbilitiesDrunkennessDef_scalar_deleting_destructor(CSpecialAbilitiesDrunkennessDef* def, int /*edx*/, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CSpecialAbilitiesDrunkennessDef_dtor(def);
     if (flags & 1)
-        operator_delete_stub(self);
-    return self;
+        operator_delete_stub(def);
+    return def;
 }

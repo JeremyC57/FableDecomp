@@ -1,4 +1,4 @@
-// CTCInventoryWeapons::vfunc_33(long, bool*) -- slot 33: clears the caller's flag, and when the def index is an augmentation, makes it the active weapon (no menu entry)
+// CTCInventoryWeapons::OnItemSelected(long, bool*) -- slot 33: clears the caller's flag, and when the def index is an augmentation, makes it the active weapon (no menu entry)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CBCEA, 40 bytes. rtti-vtables: CTCInventoryWeapons 0x01253FF4 slot 33
 // (the same slot is labelled CTCInventory::OnItemSelected at 0x00583E26; the real name is unknown, catalog label kept).
 // Callees: the free `__fastcall` IsAugmentation(long) @ 0x005D97F0 (argument in ecx),

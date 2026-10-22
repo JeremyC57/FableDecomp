@@ -1,4 +1,4 @@
-// CActionEventCameraShake::Dispatch(const CActionEventContext&) -- starts a camera shake at the context thing's (bone) position unless the thing is gone or flagged dead
+// NCreatureAction::CActionEventCameraShake::Dispatch(const CActionEventContext&) -- starts a camera shake at the context thing's (bone) position unless the thing is gone or flagged dead
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00871250, length 59 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on the intelligent pointer at +8 of the
 // context), CThing::GetBonePosition @ 0x004C73D0 (__fastcall(long bone, unsigned char flag), pointer

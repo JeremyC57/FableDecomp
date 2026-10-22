@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_ClearAllChildPrimitives(int arg0) {}
+void __stdcall CIEngine_ClearAllChildPrimitives(int handle) {}
 int main()
 {
     CIEngine_ClearAllChildPrimitives(1);

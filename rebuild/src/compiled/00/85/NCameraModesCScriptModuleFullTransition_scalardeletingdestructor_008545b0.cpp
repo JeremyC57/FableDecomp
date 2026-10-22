@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CScriptModuleFullTransition {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CScriptModuleFullTransition_dtor(CScriptModuleFullTransition* transition);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CScriptModuleFullTransition_scalar_deleting_destructor(CScriptModuleFullTransition* transition, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CScriptModuleFullTransition_dtor(transition);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(transition);
+    return transition;
 }

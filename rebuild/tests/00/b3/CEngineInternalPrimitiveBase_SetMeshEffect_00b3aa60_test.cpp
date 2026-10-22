@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngineInternalPrimitiveBase_SetMeshEffect(int arg0) {}
+void __stdcall CEngineInternalPrimitiveBase_SetMeshEffect(int pointer) {}
 int main()
 {
     CEngineInternalPrimitiveBase_SetMeshEffect(1);

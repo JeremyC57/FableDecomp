@@ -9,9 +9,9 @@ struct GContainer {
 extern GContainer g_container;
 
 
-void __fastcall RemoveFromGlobalTCs(CTCBase* self)
+void __fastcall RemoveFromGlobalTCs(CTCBase* other)
 {
-    self->IsInGlobalUpdateTCs = 0;
-    CTCBase* local = self;
+    other->IsInGlobalUpdateTCs = 0;
+    CTCBase* local = other;
     g_container.Remove(&local);
 }

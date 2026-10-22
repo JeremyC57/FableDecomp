@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CModeSummonerLightningOrb {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CModeSummonerLightningOrb_dtor(CModeSummonerLightningOrb* mode);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CModeSummonerLightningOrb_scalar_deleting_destructor(CModeSummonerLightningOrb* mode, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CModeSummonerLightningOrb_dtor(mode);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(mode);
+    return mode;
 }

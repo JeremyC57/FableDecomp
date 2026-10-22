@@ -1,4 +1,4 @@
-int __fastcall CNavNavigableLeafNode_GetRegion(const unsigned char* self)
+int __fastcall CNavNavigableLeafNode_GetRegion(const unsigned char* node)
 {
-    return *reinterpret_cast<const int*>(self + 16);
+    return *reinterpret_cast<const int*>(node + 16);
 }

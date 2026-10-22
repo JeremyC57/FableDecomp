@@ -10,15 +10,15 @@
 struct CLandscapeBackgroundPatch; // opaque
 
 // The scalar destructor called at 0x3 (relocation-masked target).
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* thisptr);
+extern "C" void __fastcall CCombatSequenceDef_dtor(CLandscapeBackgroundPatch* thisptr);
 
 // operator delete (single-arg form) — masked call target.
 extern "C" void __cdecl LBP_operator_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_dtor(
+void* __fastcall CCombatSequenceDef_vector_deleting_dtor(
     CLandscapeBackgroundPatch* thisptr, int /*edx_unused*/, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(thisptr);
+    CCombatSequenceDef_dtor(thisptr);
     if (flags & 1)
     {
         LBP_operator_delete(thisptr);

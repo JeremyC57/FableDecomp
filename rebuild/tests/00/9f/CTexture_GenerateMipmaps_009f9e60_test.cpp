@@ -16,7 +16,7 @@ void __stdcall sub_bfefce(void* p, int zero, ulong b, ulong a)
     g_p = p; g_zero = zero; g_b = b; g_a = a;
 }
 
-void __fastcall GenerateMipmaps(CTexture* self, int edx, ulong a, ulong b);
+void __fastcall GenerateMipmaps(CTexture* texture, int edx, ulong a, ulong b);
 
 int main()
 {

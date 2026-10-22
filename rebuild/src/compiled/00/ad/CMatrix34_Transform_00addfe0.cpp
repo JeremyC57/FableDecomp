@@ -1,4 +1,4 @@
-// CQuaternion::operator*(C4DVector& v, float w) -- transform a vector in place by a 3x4 row matrix: v.xyz = rows . (v.x, v.y, v.z, w), v.w = w
+// CMatrix34::Transform(C4DVector& v, float w) -- transform a vector in place by a 3x4 row matrix: v.xyz = rows . (v.x, v.y, v.z, w), v.w = w
 // Grade: MATCH -- rows 1 and 2 are `float y = R[1].Dot3(t); y += R[1].T * w; out.Y = y;` (the accumulator statement keeps the w term last, as in the twin 0x00987BF0)
 // Twin of 0x00987BF0 with the output written over the input (the local copy makes it alias-safe).
 // Leaf: Transform

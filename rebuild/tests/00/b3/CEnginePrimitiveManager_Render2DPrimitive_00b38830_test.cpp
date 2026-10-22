@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEnginePrimitiveManager_Render2DPrimitive(int arg0, int arg1, int arg2) {}
+void __stdcall CEnginePrimitiveManager_Render2DPrimitive(int primitive, int chain, int arg2) {}
 int main()
 {
     CEnginePrimitiveManager_Render2DPrimitive(1, 2, 3);

@@ -1,4 +1,4 @@
-// CModeJackOfBladesScream::FrameUpdate() -- while the sword is alive and falling, for the first 30 frames interpolate its orientation from InitialSwordRHS towards (forward 0,1,0 / up 0,0,-1) and its position from InitialSwordPos towards SwordFallPos by timer/30, then advance the timer
+// NCreatureMode::CModeJackOfBladesScream::FrameUpdate() -- while the sword is alive and falling, for the first 30 frames interpolate its orientation from InitialSwordRHS towards (forward 0,1,0 / up 0,0,-1) and its position from InitialSwordPos towards SwordFallPos by timer/30, then advance the timer
 // Leaf: FrameUpdate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D77A0, 316 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CRightHandedSet::Interpolate 0x00A23190 (result by hidden pointer),

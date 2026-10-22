@@ -1,4 +1,4 @@
-// CPersistContext_TransferableComponent<EHeroAbility>::TransferIn  @ 0x0057f93e
+// CPersistContext_TransferableComponent<EHeroTrainingStatus>::TransferIn  @ 0x0057f93e
 #pragma optimize("y", off)   // retail keeps the EBP frame here
 #pragma optimize("s", on)    // favor size -> reload temp lands in eax (retail regalloc)
 struct CPersistContext;

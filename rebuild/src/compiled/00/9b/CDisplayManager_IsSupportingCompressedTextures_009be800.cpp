@@ -11,8 +11,8 @@ struct CDisplayManager {
 };
 
 /* Returns bool (>=0). VC7.1 emits a 1-byte return; modeled as char for exact bytes. */
-char __fastcall CDisplayManager_IsSupportingCompressedTextures(CDisplayManager* self)
+char __fastcall CDisplayManager_IsSupportingCompressedTextures(CDisplayManager* manager)
 {
-    void*** o = self->D3D;
-    return ((PFN)(*o)[10])((int)o, self->f60, self->f5c, self->f1c4, 0, 3, 0x31545844) >= 0;
+    void*** o = manager->D3D;
+    return ((PFN)(*o)[10])((int)o, manager->f60, manager->f5c, manager->f1c4, 0, 3, 0x31545844) >= 0;
 }

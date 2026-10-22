@@ -19,7 +19,7 @@ void __fastcall CGuiVarTransferBool_Helper(void* self, int edx, bool value)
     g_seen_val  = value;
 }
 
-void __fastcall CGuiVarTransferBool_TransferToGui(CGuiVarTransferBool* self);
+void __fastcall CComponentMap_Resort(CGuiVarTransferBool* self);
 
 int main()
 {
@@ -31,7 +31,7 @@ int main()
     o.fC = true;
     o.fD = true;
 
-    CGuiVarTransferBool_TransferToGui(&o);
+    CComponentMap_Resort(&o);
 
     bool ok = (g_seen_self == &sentinel)
            && (g_seen_edx == 0x1234)

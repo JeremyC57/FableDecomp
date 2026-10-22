@@ -1,22 +1,22 @@
 #pragma optimize("s",on)
 #include <new>
 
-struct CEngineSubPrimitiveText;
+struct CEngineLocalDetailGeneratorDef;
 
 struct CMember { void __fastcall dtor(); };
-extern void __fastcall CMember_dtor(CMember* self);
-extern void __fastcall CEngineSubPrimitiveText_dtor(CEngineSubPrimitiveText* self);
+extern void __fastcall CMember_dtor(CMember* def);
+extern void __fastcall CEngineLocalDetailGeneratorDef_dtor(CEngineLocalDetailGeneratorDef* def);
 
-struct CEngineSubPrimitiveText {
+struct CEngineLocalDetailGeneratorDef {
   char pad[0x3c];
 };
 
-void* __fastcall CEngineSubPrimitiveText_scalar_deleting_destructor(CEngineSubPrimitiveText* self, int /*edx*/, unsigned int flags)
+void* __fastcall CEngineLocalDetailGeneratorDef_scalar_deleting_destructor(CEngineLocalDetailGeneratorDef* def, int /*edx*/, unsigned int flags)
 {
-  CMember_dtor((CMember*)((char*)self + 0x3c));
-  CEngineSubPrimitiveText_dtor(self);
+  CMember_dtor((CMember*)((char*)def + 0x3c));
+  CEngineLocalDetailGeneratorDef_dtor(def);
   if (flags & 1) {
-    ::operator delete(self);
+    ::operator delete(def);
   }
-  return self;
+  return def;
 }

@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CAIStateGroupBase_InitStateGroup(int arg0, int arg1) {}
+void __stdcall CAIStateGroupBase_InitStateGroup(int world, int creature) {}
 int main()
 {
     CAIStateGroupBase_InitStateGroup(1, 2);

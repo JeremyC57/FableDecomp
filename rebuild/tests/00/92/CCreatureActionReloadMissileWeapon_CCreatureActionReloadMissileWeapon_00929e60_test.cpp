@@ -9,9 +9,9 @@ static Obj* g_last = 0;
 void SubCleanup(Sub* s){ g_sub_called++; s->x = 0; }
 void FinalDtor(Obj* o){ g_final_called++; g_last = o; o->finalized = 1; }
 
-void DestVal_A8_E(Obj* self){
-    SubCleanup(&self->member);
-    FinalDtor(self);
+void DestVal_A8_E(Obj* action){
+    SubCleanup(&action->member);
+    FinalDtor(action);
 }
 
 int main(){

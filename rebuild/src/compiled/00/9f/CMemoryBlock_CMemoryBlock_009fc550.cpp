@@ -25,7 +25,7 @@ struct CMemoryBlockOwner {
 struct CMemoryBlock {
     void*             vptr;      // +0
     int               pad4;      // +4
-    CMemoryBlockOwner* member8;  // +8
+    CMemoryBlockOwner* BlockData;  // +8
 };
 
 // vtable pointers (relocated -> masked by the harness).
@@ -35,8 +35,8 @@ static void* const kVtblBase     = (void*)0x012354d0;
 void __fastcall CMemoryBlock_dtor_009fc550(CMemoryBlock* self)
 {
     self->vptr = kVtblDerived;
-    if (self->member8 != 0) {
-        self->member8->Free(self);
+    if (self->BlockData != 0) {
+        self->BlockData->Free(self);
     }
     self->vptr = kVtblBase;
 }

@@ -2,7 +2,7 @@
 
 struct CTCInventoryItem {
     unsigned char _pad_0x0[0x10];
-    void* ptr10;
+    void* PInventory;
     unsigned char _pad_0x14[0xc];
     char DefaultItem;
     unsigned char _pad_0x21[0x5f];

@@ -1,4 +1,4 @@
-// CNamedPhysicsMeshInfo_0092e3e0::`scalar deleting destructor'(unsigned int flags) -- destroy the two CCharStrings at +0xb4 / +0xb0 (0x0099EAE0) and the intelligent pointer at +0xa8 (0x00A01C10), then the CPhysicsMeshInfo base destructor (0x00693EF0) and free for flag bit 0
+// CCreatureAction_GetInBed::`scalar deleting destructor'(unsigned int flags) -- destroy the two CCharStrings at +0xb4 / +0xb0 (0x0099EAE0) and the intelligent pointer at +0xa8 (0x00A01C10), then the CPhysicsMeshInfo base destructor (0x00693EF0) and free for flag bit 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092E3E0, length 65 bytes.
 // Leaf: ??_GCNamedPhysicsMeshInfo_0092e3e0@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: no vtable store (the derived vtable folds into the base's; the base destructor is out of line), `ret 4`.

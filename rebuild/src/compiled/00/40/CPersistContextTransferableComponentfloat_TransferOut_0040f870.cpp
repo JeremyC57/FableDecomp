@@ -1,4 +1,4 @@
-// CPersistContext_TransferableComponent::TransferOut(CPersistContext*, CCharString*) -- formats the float behind the target pointer with six decimals ("%.*f") and appends it to the output string
+// CPersistContext_TransferableComponent<float>::TransferOut(CPersistContext*, CCharString*) -- formats the float behind the target pointer with six decimals ("%.*f") and appends it to the output string
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0040F870, 48 bytes.
 // Callees: 0x009A08B0 CCharString::FormatDouble (__fastcall, hidden result in ecx, digit count in edx,

@@ -28,7 +28,7 @@ struct CRenderStateManager {
     CTrackedRenderState* m_dirty[0x200];           // +0x2008
     long                 m_capturedCount;          // +0x2808
     long                 m_dirtyCount;             // +0x280C
-    long                 m_unknown2810;            // +0x2810
+    long                 AllStatesListSize;            // +0x2810
     unsigned long        m_captureMask;            // +0x2814
     unsigned char        _pad2818[0x2944 - 0x2818];
     CTrackedRenderState  m_fogEnable;              // +0x2944

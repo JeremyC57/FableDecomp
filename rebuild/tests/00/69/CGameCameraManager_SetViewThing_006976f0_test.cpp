@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CGameCameraManager_SetViewThing(int arg0) {}
+void __stdcall CGameCameraManager_SetViewThing(int gameObject) {}
 int main()
 {
     CGameCameraManager_SetViewThing(1);

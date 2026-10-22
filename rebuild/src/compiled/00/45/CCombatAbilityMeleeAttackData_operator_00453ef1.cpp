@@ -12,11 +12,11 @@ struct CCombatAbilityMeleeAttackData : public CCombatAbilityBase {
 };
 
 CCombatAbilityMeleeAttackData* __fastcall CCombatAbilityMeleeAttackData_operator_assign(
-    CCombatAbilityMeleeAttackData* self, void* dummy, const CCombatAbilityMeleeAttackData* other)
+    CCombatAbilityMeleeAttackData* attack, void* dummy, const CCombatAbilityMeleeAttackData* other)
 {
-    self->assign(other);
-    self->Blockable = other->Blockable;
-    self->Knockdown = other->Knockdown;
-    self->d1c = other->d1c;
-    return self;
+    attack->assign(other);
+    attack->Blockable = other->Blockable;
+    attack->Knockdown = other->Knockdown;
+    attack->d1c = other->d1c;
+    return attack;
 }

@@ -9,13 +9,13 @@ struct CCombatAbilityData {
     int InterfaceType;
 };
 
-CCombatAbilityData* __fastcall CCombatAbilityData_operator_assign(CCombatAbilityData* self, int edx_dummy, const CCombatAbilityData* rhs) {
-    self->PercentageChance  = rhs->PercentageChance;
-    self->f8  = rhs->f8;
-    self->fc  = rhs->fc;
-    self->f10 = rhs->f10;
-    self->InterfaceType = rhs->InterfaceType;
-    return self;
+CCombatAbilityData* __fastcall CCombatAbilityData_operator_assign(CCombatAbilityData* ability, int edx_dummy, const CCombatAbilityData* rhs) {
+    ability->PercentageChance  = rhs->PercentageChance;
+    ability->f8  = rhs->f8;
+    ability->fc  = rhs->fc;
+    ability->f10 = rhs->f10;
+    ability->InterfaceType = rhs->InterfaceType;
+    return ability;
 }
 
 int main() {

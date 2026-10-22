@@ -12,11 +12,11 @@ struct CTCPhysicsRigidBody {
 };
 #pragma pack(pop)
 
-void __fastcall GetFacingVector(CTCPhysicsRigidBody* self, int, C3DVector* out)
+void __fastcall GetFacingVector(CTCPhysicsRigidBody* body, int, C3DVector* out)
 {
-    out->x = self->facing_x;
-    out->y = self->facing_y;
-    out->z = self->facing_z;
+    out->x = body->facing_x;
+    out->y = body->facing_y;
+    out->z = body->facing_z;
 }
 
 int main()

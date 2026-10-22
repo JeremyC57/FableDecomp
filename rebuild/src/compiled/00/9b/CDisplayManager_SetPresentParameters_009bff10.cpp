@@ -1,4 +1,4 @@
-// CDisplayManager::ChangePresentationInterval(bool, long, bool) -- builds a CPresentationIntervalDesc from its three fields and applies it
+// CDisplayManager::SetPresentParameters(bool, long, bool) -- builds a CPresentationIntervalDesc from its three fields and applies it
 // Leaf: ?ChangePresentationInterval@CDisplayManager@@QAEX_NJ0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BFF10, length 41 bytes (the 48-byte catalog row ends in int3 padding).
 // Callees: CDisplayManager::ChangePresentationInterval(const CPresentationIntervalDesc&) @ 0x009BFE70.
@@ -18,12 +18,12 @@ struct CPresentationIntervalDesc {
 };
 
 struct CDisplayManager {
-    void ChangePresentationInterval(const CPresentationIntervalDesc& desc);   // 0x009BFE70
-    void ChangePresentationInterval(bool presentImmediate, long vsyncCount, bool presentImmediateIfSyncMissed);
+    void SetPresentParameters(const CPresentationIntervalDesc& desc);   // 0x009BFE70
+    void SetPresentParameters(bool presentImmediate, long vsyncCount, bool presentImmediateIfSyncMissed);
 };
 
-void CDisplayManager::ChangePresentationInterval(bool presentImmediate, long vsyncCount, bool presentImmediateIfSyncMissed)
+void CDisplayManager::SetPresentParameters(bool presentImmediate, long vsyncCount, bool presentImmediateIfSyncMissed)
 {
     CPresentationIntervalDesc desc(presentImmediate, vsyncCount, presentImmediateIfSyncMissed);
-    ChangePresentationInterval(desc);
+    SetPresentParameters(desc);
 }

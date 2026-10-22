@@ -1,4 +1,4 @@
-// CModeIntangiblePointer_00743a40::`scalar deleting destructor'(unsigned int) -- destroy the member at +0x98 out of line, the CModeIntangible member at +0 destroyed out of line, then the flag-tested operator delete
+// NCreatureMode::CModeDragonStrafeBurninate::`scalar deleting destructor'(unsigned int) -- destroy the member at +0x98 out of line, the CModeIntangible member at +0 destroyed out of line, then the flag-tested operator delete
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00743A40.
 // Callees: the member destructor @ 0x00A01C10 (CBaseIntelligentPointer::~CBaseIntelligentPointer), the base destructor @ 0x00743000 (CModeIntangible::~CModeIntangible), operator delete @ 0x00BFE9BC. Shape: no vtable store (the class is
 // non-polymorphic: the polymorphic object at +0 is a member, so VC7.1 emits the non-virtual deleting destructor); the member at +0x98 is destroyed first. The chunk label

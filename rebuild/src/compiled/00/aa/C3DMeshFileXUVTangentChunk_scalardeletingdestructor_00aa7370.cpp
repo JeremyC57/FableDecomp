@@ -1,4 +1,4 @@
-// CChunkedFileChunkBuffers_00aa7370::`scalar deleting destructor'(unsigned int) -- non-virtual: free the buffers at +0x1c and +0x10 (each when held), the CChunkedFileChunk base destructor, then the flag-tested operator delete
+// C3DMeshFileXUVTangentChunk::`scalar deleting destructor'(unsigned int) -- non-virtual: free the buffers at +0x1c and +0x10 (each when held), the CChunkedFileChunk base destructor, then the flag-tested operator delete
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA7370, length 64 bytes.
 // Callees: free @ 0x00BFEA14 twice, CChunkedFileChunk::~CChunkedFileChunk @ 0x00AA75C0 (on `this`: a non-polymorphic base at +0), operator delete @ 0x00BFE9BC. Shape:
 // the landed CBufferOwner family with a base destructor call before `test byte ptr [esp+8],1`. The chunk label is propagated; the class is named by address.

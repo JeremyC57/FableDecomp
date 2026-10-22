@@ -124,19 +124,19 @@ public:
     virtual void _v118() const {}
     virtual void _v119() const {}
     virtual void _v120() const {}
-    virtual void GiveHeroObject(const CCharString& name, long count, bool equip) const {}// slot 121 (+0x1e4)
-    virtual void GiveHeroTitle(const CCharString& name) const;
+    virtual void GiveHeroObject(const CCharString& titleKey, long count, bool equip) const {}// slot 121 (+0x1e4)
+    virtual void GiveHeroTitle(const CCharString& titleKey) const;
 };
 
-void CGameScriptInterface::GiveHeroTitle(const CCharString& name) const
+void CGameScriptInterface::GiveHeroTitle(const CCharString& titleKey) const
 {
-    GiveHeroObject(name, -1, true);
+    GiveHeroObject(titleKey, -1, true);
 }
 
 static const CCharString* g_name; static long g_count; static bool g_equip;
 class CTest : public CGameScriptInterface {
 public:
-    void GiveHeroObject(const CCharString& name, long count, bool equip) const { g_name = &name; g_count = count; g_equip = equip; }
+    void GiveHeroObject(const CCharString& titleKey, long count, bool equip) const { g_name = &titleKey; g_count = count; g_equip = equip; }
 };
 int main()
 {

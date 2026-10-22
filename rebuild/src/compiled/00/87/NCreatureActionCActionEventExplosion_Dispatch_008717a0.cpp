@@ -1,4 +1,4 @@
-// CActionEventExplosion::Dispatch(const CCreatureActionBase&) -- resolve an effect point, create its thing, and add the source as an explosion exclusion
+// NCreatureAction::CActionEventExplosion::Dispatch(const CCreatureActionBase&) -- resolve an effect point, create its thing, and add the source as an explosion exclusion
 // Retail address 0x008717a0, 262 bytes. Captures SourceThing's appearance before the action helper-name callback; TC41 is CTCDExplosion and AddExcludedThing appends to ImmuneThings. PDB CThing uses UsingComponents/Components/PTCGraphicAppearance at +0x20/+0x48/+0x74; the local retail view adjusts Components to +0x44 and PTCGraphicAppearance to +0x64. CTCDExplosion::ImmuneThings is donor +0x68 and retail +0x60 after native vector widths differ.
 #include "fable_string.h"
 #include "engine/CCreatureActionBase.h"

@@ -1,4 +1,4 @@
-// CTCTavernGameShoveHaPenny::vfunc_33() -- end-of-game override: coin-base hook, then if the game was won and the hero has no best score yet (0) or beat it, flags a new best score; enters state 8
+// CTCTavernGameShoveHaPenny::EndRound() -- end-of-game override: coin-base hook, then if the game was won and the hero has no best score yet (0) or beat it, flags a new best score; enters state 8
 // Retail: Fable.exe @ 0x007CF4C0, 96 bytes (vtable 0x0126F2F4 slot 33).
 // Callees: CTCTavernGameCoinBase::vfunc_33 0x008EF190 (non-virtual base call),
 //          CTCTavernGame::GetHeroStats(CHeroStats**) 0x005EB4B0 (out parameter),

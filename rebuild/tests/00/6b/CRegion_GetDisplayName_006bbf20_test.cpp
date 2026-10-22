@@ -23,12 +23,12 @@ struct CRegion {
     CCharString nameB;
 };
 
-CCharString* __fastcall CRegion_GetDisplayName(CRegion* self)
+CCharString* __fastcall CRegion_GetDisplayName(CRegion* region)
 {
-    CCharString* pB = &self->nameB;
+    CCharString* pB = &region->nameB;
     if (pB->Compare(kEmptyDisplayNameTag))
         return pB;
-    return &self->nameA;
+    return &region->nameA;
 }
 
 int main()

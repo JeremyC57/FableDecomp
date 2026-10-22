@@ -35,10 +35,10 @@ struct CDefinitionManager {
 
 void operator delete(void*);
 
-void __fastcall CDefinitionManager_ClearInstantiatedDefs(CDefinitionManager* self)
+void __fastcall CDefinitionManager_ClearInstantiatedDefs(CDefinitionManager* manager)
 {
-    CDef** p = self->d_first;
-    if (p != self->d_last) {
+    CDef** p = manager->d_first;
+    if (p != manager->d_last) {
         do {
             CDef* d = *p;
             if (d != 0) {
@@ -52,15 +52,15 @@ void __fastcall CDefinitionManager_ClearInstantiatedDefs(CDefinitionManager* sel
             }
             *p = 0;
             ++p;
-        } while (p != self->d_last);
+        } while (p != manager->d_last);
     }
 
-    Slot* s = self->s_first;
-    if (s != self->s_last) {
+    Slot* s = manager->s_first;
+    if (s != manager->s_last) {
         do {
             Vec* v = &s->v;
             v->last = erase_range(v->last, v->last, v->first);
             ++s;
-        } while (s != self->s_last);
+        } while (s != manager->s_last);
     }
 }

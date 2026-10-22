@@ -1,1 +1,1 @@
-void __stdcall CEngine_UpdateDebugOverlay(int arg0, int arg1, int arg2) {}
+void __stdcall CEngine_UpdateDebugOverlay(int arg0, int colour, int boxI) {}

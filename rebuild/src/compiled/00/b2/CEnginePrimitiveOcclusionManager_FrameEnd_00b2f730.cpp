@@ -1,1 +1,1 @@
-void __stdcall CEnginePrimitiveOcclusionManager_FrameEnd(int arg0) {}
+void __stdcall CEnginePrimitiveOcclusionManager_FrameEnd(int params) {}

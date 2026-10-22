@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_CutsceneAddCameraAngle(int arg0) {}
+void __stdcall CIEngine_CutsceneAddCameraAngle(int camera) {}
 int main()
 {
     CIEngine_CutsceneAddCameraAngle(1);

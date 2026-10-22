@@ -1,1 +1,1 @@
-void __stdcall CEnginePrimitiveManager_RenderSubPrimitive(int arg0, int arg1) {}
+void __stdcall CEnginePrimitiveManager_RenderSubPrimitive(int primitive, int arg1) {}

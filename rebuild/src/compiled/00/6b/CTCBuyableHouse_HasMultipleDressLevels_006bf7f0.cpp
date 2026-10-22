@@ -8,9 +8,9 @@ struct CDefPointeeBase {
 };
 
 
-bool __fastcall HasMultipleDressLevels(CTCBuyableHouse* self)
+bool __fastcall HasMultipleDressLevels(CTCBuyableHouse* house)
 {
-    CDefPointeeBase* d = self->PDef_Object;
+    CDefPointeeBase* d = house->PDef_Object;
     if (d != 0)
     {
         unsigned int count = (unsigned int)(d->last - d->first);

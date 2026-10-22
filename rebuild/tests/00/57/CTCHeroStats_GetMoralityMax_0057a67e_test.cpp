@@ -10,15 +10,15 @@ static char g_mid[0x100];     // holds pointer-to-inner at +0xDC
 extern "C" {}
 
 // __fastcall stub matching the modeled helper signature.
-void * __fastcall CTCHeroStats_GetHelper(CTCHeroStats *self)
+void * __fastcall CTCHeroStats_GetHelper(CTCHeroStats *stats)
 {
-    (void)self;
+    (void)stats;
     return (void *)g_mid;
 }
 
-long __fastcall CTCHeroStats__GetMoralityMax(CTCHeroStats *self)
+long __fastcall CTCHeroStats__GetMoralityMax(CTCHeroStats *stats)
 {
-    char *p = (char *)CTCHeroStats_GetHelper(self);
+    char *p = (char *)CTCHeroStats_GetHelper(stats);
     char *q = *(char **)(p + 0xDC);
     return *(long *)(q + 0xD0);
 }

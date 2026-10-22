@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineOcclusionManager {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineOcclusionManager_dtor(CEngineOcclusionManager* manager);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineOcclusionManager_scalar_deleting_destructor(CEngineOcclusionManager* manager, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineOcclusionManager_dtor(manager);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(manager);
+    return manager;
 }

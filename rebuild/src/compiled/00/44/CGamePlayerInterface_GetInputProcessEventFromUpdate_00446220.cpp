@@ -41,8 +41,8 @@ typedef char PMF4[sizeof(CInputUpdateCall)==4?1:-1];
 bool CGamePlayerInterface::GetInputProcessEventFromUpdate(CProcessedInput& input)const{
  if(!AlreadyProcessed){AlreadyProcessed=true;CInputScan scan;
  input.Clear();input.SetPlayer(PlayerManager->GetMainPlayerNumber());
- for(CAInputProcess* p=scan.Begin(InputProcesses);p;p=scan.Advance()){
- CInputUpdateCall update=0;memcpy(&update,static_cast<const CInputUpdateCall*>(p->__vftable)+6,sizeof(update));(p->*update)(input);
+ for(CAInputProcess* process=scan.Begin(InputProcesses);process;process=scan.Advance()){
+ CInputUpdateCall update=0;memcpy(&update,static_cast<const CInputUpdateCall*>(process->__vftable)+6,sizeof(update));(process->*update)(input);
  }
  scan.End(InputProcesses);if(input.NoGameEvents)return true;}return false;
 }

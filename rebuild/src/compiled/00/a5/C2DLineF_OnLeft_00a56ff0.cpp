@@ -14,13 +14,13 @@ struct C2DVector {
 struct C2DLineF {
     C2DVector Point1;   // +0x00
     C2DVector Point2;   // +0x08
-    bool OnLeft(const C2DVector& p) const;
+    bool OnLeft(const C2DVector& pos) const;
 };
 
-bool C2DLineF::OnLeft(const C2DVector& p) const
+bool C2DLineF::OnLeft(const C2DVector& pos) const
 {
     C2DVector dir(Point2.X - Point1.X, Point2.Y - Point1.Y);
     C2DVector normal(-dir.Y, dir.X);
-    C2DVector rel(p.X - Point1.X, p.Y - Point1.Y);
+    C2DVector rel(pos.X - Point1.X, pos.Y - Point1.Y);
     return rel.Dot(normal) > 0.0f ? true : false;
 }

@@ -1,10 +1,10 @@
 #include "engine/CTCTargeted.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CDefPointeeBase { char pad[0x28]; unsigned int defFlags; };
-void __fastcall ReturnToDefaultTargetingFlags(CTCTargeted* self)
+void __fastcall ReturnToDefaultTargetingFlags(CTCTargeted* targeted)
 {
-  CDefPointeeBase* s = self->PTargetingDef_Object;
+  CDefPointeeBase* s = targeted->PTargetingDef_Object;
   if (s)
-    self->TargetingFlags = s->defFlags;
+    targeted->TargetingFlags = s->defFlags;
   else
-    self->TargetingFlags = 0;
+    targeted->TargetingFlags = 0;
 }

@@ -25,7 +25,7 @@ struct CTCHeroExperience {
 struct CThing;
 struct CThingCreatureBase;
 struct CCombatantInfo {
-    long m_word0;
+    long Parent;
     CThing* Attacked;                           // +0x04
 };
 struct CCombatManager {

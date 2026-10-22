@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct MicroThreadDetails {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall MicroThreadDetails_dtor(MicroThreadDetails* details);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall MicroThreadDetails_scalar_deleting_destructor(MicroThreadDetails* details, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    MicroThreadDetails_dtor(details);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(details);
+    return details;
 }

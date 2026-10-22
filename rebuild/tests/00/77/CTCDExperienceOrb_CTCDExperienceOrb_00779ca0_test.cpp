@@ -17,7 +17,7 @@ struct CTCDExperienceOrb : CTCDriverBase {
     long          m_target;
     CIndexM1      m_index10;
     CIndexM1      m_index14;
-    long          m_unknown18;
+    long          LifeTimer;
     bool          m_firstUpdate;
     bool          m_collected;
     virtual void v00() {}
@@ -38,7 +38,7 @@ int main()
     CHECK(g_baseCalls == 1); CHECK(g_baseParent == parent);
     CHECK(p->m_target == 0); CHECK(p->m_index10.v == -1); CHECK(p->m_index14.v == -1);
     CHECK(p->m_firstUpdate == true); CHECK(p->m_collected == false);
-    CHECK(p->m_unknown18 == (long)0xAAAAAAAA);
+    CHECK(p->LifeTimer == (long)0xAAAAAAAA);
     if (fails == 0) printf("00779ca0_TEST PASS\n"); else printf("00779ca0_TEST FAIL\n");
     return fails;
 }

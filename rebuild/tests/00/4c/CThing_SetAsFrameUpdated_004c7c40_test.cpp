@@ -5,8 +5,8 @@ static CThing* g_last = 0;
 struct GlobalMgr { void Notify(CThing* t){ g_calls++; g_last=t; } };
 static GlobalMgr mgr;
 static GlobalMgr* g_mgr = &mgr;
-void model_SetAsFrameUpdated(CThing* self){
-    if(!(self->flags & 1)) g_mgr->Notify(self);
+void model_SetAsFrameUpdated(CThing* thing){
+    if(!(thing->flags & 1)) g_mgr->Notify(thing);
 }
 int main(){
     CThing a; a.flags=0;

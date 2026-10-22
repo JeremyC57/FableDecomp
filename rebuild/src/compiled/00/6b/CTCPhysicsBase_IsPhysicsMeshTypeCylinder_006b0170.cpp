@@ -5,16 +5,16 @@ struct CPhysicsMeshTypeView {
     unsigned char Flags;
 };
 
-typedef int (__fastcall *PhysicsMeshTypeFn)(CTCPhysicsBase* self);
+typedef int (__fastcall *PhysicsMeshTypeFn)(CTCPhysicsBase* physics);
 struct CTCPhysicsBaseVTable {
     unsigned char _pad_0x000[0x174];
     PhysicsMeshTypeFn GetPhysicsMeshType;
 };
 
-bool __fastcall IsPhysicsMeshTypeCylinder(CTCPhysicsBase* self)
+bool __fastcall IsPhysicsMeshTypeCylinder(CTCPhysicsBase* physics)
 {
-    if (((CTCPhysicsBaseVTable*)self->__vftable)->GetPhysicsMeshType(self) == 0 &&
-        (((CPhysicsMeshTypeView*)self->sub)->Flags & 8))
+    if (((CTCPhysicsBaseVTable*)physics->__vftable)->GetPhysicsMeshType(physics) == 0 &&
+        (((CPhysicsMeshTypeView*)physics->sub)->Flags & 8))
         return true;
     return false;
 }

@@ -14,13 +14,13 @@
 struct CLandscapeBackgroundPatch;
 
 /* engine callees (addresses relocation-masked) */
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* thisptr);
+extern "C" void __fastcall CLensFlareElementDef_dtor(CLandscapeBackgroundPatch* thisptr);
 extern "C" void __cdecl operator_delete_thunk(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_dtor(
+void* __fastcall CLensFlareElementDef_vector_deleting_dtor(
         CLandscapeBackgroundPatch* thisptr, int /*edx*/, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(thisptr);
+    CLensFlareElementDef_dtor(thisptr);
     if (flags & 1)
         operator_delete_thunk(thisptr);
     return thisptr;

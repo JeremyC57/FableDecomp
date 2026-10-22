@@ -1,4 +1,4 @@
-// CTCThingOwner::vfunc_13() -- sets the byte flag at +0x10
+// CTCThingOwner::OnDie() -- sets the byte flag at +0x10
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071B1A0, oracle length 5 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

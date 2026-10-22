@@ -8,7 +8,7 @@ struct CInputProcessJumpingAndRolling {
 struct CProcessedInput { int dummy; };
 
 extern "C" char __stdcall JR_Helper(int a, int b);
-void __fastcall Update(CInputProcessJumpingAndRolling* self, int edx_ignored, CProcessedInput& in);
+void __fastcall Update(CInputProcessJumpingAndRolling* process, int edx_ignored, CProcessedInput& in);
 
 static int g_a, g_b, g_calls;
 static char g_ret;

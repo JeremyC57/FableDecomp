@@ -1,4 +1,4 @@
-// CTCShotDefinitionDrainLife::UpdateCollision(bool* finished) -- base collision update; a drain-life shot that hit its (alive) target heals it by AmountToHeal and ends; a hit on anything else clears the collision type and keeps going; a dead target ends the shot. Ending kills the soul effect.
+// NThingShot::CTCShotDefinitionDrainLife::UpdateCollision(bool* finished) -- base collision update; a drain-life shot that hit its (alive) target heals it by AmountToHeal and ends; a hit on anything else clears the collision type and keeps going; a dead target ends the shot. Ending kills the soul effect.
 // Leaf: UpdateCollision
 // Retail: Fable.exe 0x007BDAC7, 157 bytes (`ret 4`; size TU with frame: optimize("y", off) + ("s", on)).
 // Callees: CTCShotDefinitionBase::UpdateCollision(bool*) @ 0x007BFE30, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,

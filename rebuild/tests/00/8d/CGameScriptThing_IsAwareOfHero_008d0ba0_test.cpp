@@ -53,10 +53,10 @@ struct CGameScriptThing {
 bool CGameScriptThing::IsAwareOfHero()
 {
     CIntelligentPointer<CThing>* p = &PThing;
-    CThing* t;
-    if (p->Get() && !p->Get()->Dead && (t = p->Get())->UsingComponents[0x34 >> 5] & (1UL << (0x34 & 31))) {
+    CThing* thing;
+    if (p->Get() && !p->Get()->Dead && (thing = p->Get())->UsingComponents[0x34 >> 5] & (1UL << (0x34 & 31))) {
         long kind = 0x34;
-        CInterfaceMap* map = &t->Interfaces;
+        CInterfaceMap* map = &thing->Interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&kind);
         if (it == map->last || it->type > 0x34) it = map->last;
         CTCPerceiveThing* perceive = (CTCPerceiveThing*)it->component;

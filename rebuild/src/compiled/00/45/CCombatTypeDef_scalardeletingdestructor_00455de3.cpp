@@ -1,16 +1,16 @@
 #pragma optimize("s",on)
-extern void __fastcall CLandscapeBackgroundPatch_dtor(void* self);
+extern void __fastcall CCombatTypeDef_dtor(void* def);
 
-struct CLandscapeBackgroundPatch {
+struct CCombatTypeDef {
     int f0;
     int Parent;
     void* f8;
-    void* vector_deleting_destructor(unsigned int flags);
+    void* scalar_deleting_destructor(unsigned int flags);
 };
 
-void* CLandscapeBackgroundPatch::vector_deleting_destructor(unsigned int flags)
+void* CCombatTypeDef::scalar_deleting_destructor(unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(this);
+    CCombatTypeDef_dtor(this);
     if (flags & 1)
         ::operator delete(this);
     return this;

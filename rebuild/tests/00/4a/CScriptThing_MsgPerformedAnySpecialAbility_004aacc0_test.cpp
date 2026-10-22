@@ -13,9 +13,9 @@ struct CScriptThing {
     Target* m_target;
 };
 
-bool __fastcall CScriptThing_MsgPerformedAnySpecialAbility(CScriptThing* self)
+bool __fastcall CScriptThing_MsgPerformedAnySpecialAbility(CScriptThing* scriptThing)
 {
-    Target* t = self->m_target;
+    Target* t = scriptThing->m_target;
     if (t == 0)
         return false;
     return t->vtbl->slot(t);

@@ -1,19 +1,19 @@
 #include <cstdio>
 static int g_deleted = 0;
 static int g_dtored = 0;
-struct CLandscapeBackgroundPatch { void* vftable; };
+struct CSurface { void* vftable; };
 static void* op_delete(void* p) { g_deleted = 1; return p; }
 static const void* g_vft = (const void*)0x122f84c;
-static void dtor(CLandscapeBackgroundPatch* self) { g_dtored = 1; }
-static void* vdd(CLandscapeBackgroundPatch* self, char flags)
+static void dtor(CSurface* surface) { g_dtored = 1; }
+static void* vdd(CSurface* surface, char flags)
 {
-    self->vftable = (void*)&g_vft;
-    dtor(self);
-    if (flags & 1) { op_delete(self); }
-    return self;
+    surface->vftable = (void*)&g_vft;
+    dtor(surface);
+    if (flags & 1) { op_delete(surface); }
+    return surface;
 }
 int main() {
-    CLandscapeBackgroundPatch obj; obj.vftable = 0;
+    CSurface obj; obj.vftable = 0;
     void* r = vdd(&obj, 0);
     if (r != &obj || obj.vftable != (void*)&g_vft || !g_dtored || g_deleted) { std::printf("FAIL nodelete\n"); return 1; }
     g_dtored = 0;

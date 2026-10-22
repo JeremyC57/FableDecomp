@@ -7,10 +7,10 @@ struct CQuestManager {
     void* screenPtr;
 };
 
-bool __fastcall CQuestManager_IsBetweenQuestStartAndFinishScreens(const CQuestManager* self)
+bool __fastcall CQuestManager_IsBetweenQuestStartAndFinishScreens(const CQuestManager* manager)
 {
     if (g_questScreenFlag)
-        return self->screenPtr != 0;
+        return manager->screenPtr != 0;
     return false;
 }
 

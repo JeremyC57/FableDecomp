@@ -1,19 +1,19 @@
 struct CInner;
-void __fastcall CLandscapeBackgroundPatch_dtor_inner(CInner* self);
+void __fastcall CConsoleInputBase_dtor_inner(CInner* input);
 extern void __cdecl engine_operator_delete(void* p);
 
-struct CLandscapeBackgroundPatch {
+struct CConsoleInputBase {
     unsigned int vftable;
     char inner[0xb4];
     void* tex;
 };
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, void* edx, unsigned int flags)
+void* __fastcall CConsoleInputBase_scalar_deleting_destructor(CConsoleInputBase* input, void* edx, unsigned int flags)
 {
     (void)edx;
-    self->vftable = 0x122e5b0;
-    CLandscapeBackgroundPatch_dtor_inner((CInner*)(&self->inner));
+    input->vftable = 0x122e5b0;
+    CConsoleInputBase_dtor_inner((CInner*)(&input->inner));
     if (flags & 1)
-        engine_operator_delete(self);
-    return self;
+        engine_operator_delete(input);
+    return input;
 }

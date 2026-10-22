@@ -1,16 +1,16 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch {
+struct CVillagerInteractionsDef {
     int f0;
 };
 
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+extern void __fastcall CVillagerInteractionsDef_dtor(CVillagerInteractionsDef* def);
 extern void __cdecl op_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags) {
+void* __fastcall CVillagerInteractionsDef_scalar_deleting_destructor(CVillagerInteractionsDef* def, int edx, unsigned int flags) {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    CVillagerInteractionsDef_dtor(def);
     if (flags & 1) {
-        op_delete(self);
+        op_delete(def);
     }
-    return self;
+    return def;
 }

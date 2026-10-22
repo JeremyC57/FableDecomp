@@ -20,22 +20,22 @@ public:
         : E11(o.E11), E12(o.E12), E13(o.E13), E21(o.E21), E22(o.E22), E23(o.E23),
           E31(o.E31), E32(o.E32), E33(o.E33), E41(o.E41), E42(o.E42), E43(o.E43) {}
 
-    void __fastcall PostMultiply(const CMatrix3x4& b);
+    void __fastcall PostMultiply(const CMatrix3x4& matrix);
 };
 
-void __fastcall CMatrix3x4::PostMultiply(const CMatrix3x4& b)
+void __fastcall CMatrix3x4::PostMultiply(const CMatrix3x4& matrix)
 {
     CMatrix3x4 a(*this);
-    E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
-    E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;
-    E13 = a.E11 * b.E13 + a.E12 * b.E23 + a.E13 * b.E33;
-    E21 = a.E21 * b.E11 + a.E22 * b.E21 + a.E23 * b.E31;
-    E22 = a.E21 * b.E12 + a.E22 * b.E22 + a.E23 * b.E32;
-    E23 = a.E21 * b.E13 + a.E22 * b.E23 + a.E23 * b.E33;
-    E31 = a.E31 * b.E11 + a.E32 * b.E21 + a.E33 * b.E31;
-    E32 = a.E31 * b.E12 + a.E32 * b.E22 + a.E33 * b.E32;
-    E33 = a.E31 * b.E13 + a.E32 * b.E23 + a.E33 * b.E33;
-    E41 = a.E41 * b.E11 + a.E42 * b.E21 + a.E43 * b.E31 + b.E41;
-    E42 = a.E41 * b.E12 + a.E42 * b.E22 + a.E43 * b.E32 + b.E42;
-    E43 = a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33 + b.E43;
+    E11 = a.E11 * matrix.E11 + a.E12 * matrix.E21 + a.E13 * matrix.E31;
+    E12 = a.E11 * matrix.E12 + a.E12 * matrix.E22 + a.E13 * matrix.E32;
+    E13 = a.E11 * matrix.E13 + a.E12 * matrix.E23 + a.E13 * matrix.E33;
+    E21 = a.E21 * matrix.E11 + a.E22 * matrix.E21 + a.E23 * matrix.E31;
+    E22 = a.E21 * matrix.E12 + a.E22 * matrix.E22 + a.E23 * matrix.E32;
+    E23 = a.E21 * matrix.E13 + a.E22 * matrix.E23 + a.E23 * matrix.E33;
+    E31 = a.E31 * matrix.E11 + a.E32 * matrix.E21 + a.E33 * matrix.E31;
+    E32 = a.E31 * matrix.E12 + a.E32 * matrix.E22 + a.E33 * matrix.E32;
+    E33 = a.E31 * matrix.E13 + a.E32 * matrix.E23 + a.E33 * matrix.E33;
+    E41 = a.E41 * matrix.E11 + a.E42 * matrix.E21 + a.E43 * matrix.E31 + matrix.E41;
+    E42 = a.E41 * matrix.E12 + a.E42 * matrix.E22 + a.E43 * matrix.E32 + matrix.E42;
+    E43 = a.E41 * matrix.E13 + a.E42 * matrix.E23 + a.E43 * matrix.E33 + matrix.E43;
 }

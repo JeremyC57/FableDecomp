@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 
-float __fastcall CGameScriptThing__GetAngleXY(const CGameScriptThing* this_ptr)
+float __fastcall CGameScriptThing__GetAngleXY(const CGameScriptThing* thing)
 {
-    return this_ptr->AngleXY;
+    return thing->AngleXY;
 }
 
 int main()

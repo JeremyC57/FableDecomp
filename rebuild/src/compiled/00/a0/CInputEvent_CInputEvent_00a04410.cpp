@@ -1,4 +1,4 @@
-// CDefaultEngineMemoryInit_00a04410::CDefaultEngineMemoryInit_00a04410() -- zero the two trailing words and clear the eight-word block at the front
+// CInputEvent::CInputEvent() -- zero the two trailing words and clear the eight-word block at the front
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A04410, length 36 bytes.
 // Callees: none (the 32-byte memset is the intrinsic). The manifest label "CDefaultEngineMemoryInit::CDefaultEngineMemoryInit"
 // is propagated; the PDB class is 0x28 bytes with a vptr while this body zeroes +0x24/+0x28 and +0..+0x1c with no vtable

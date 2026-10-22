@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEnginePersistentPrimitiveBase_NotifyReleased(int arg0) {}
+void __stdcall CEnginePersistentPrimitiveBase_NotifyReleased(int handle) {}
 int main()
 {
     CEnginePersistentPrimitiveBase_NotifyReleased(1);

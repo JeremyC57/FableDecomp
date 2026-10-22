@@ -1,17 +1,17 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch {
+struct C3DPrimitive2 {
     void* vftable;
     int destroyed;
 };
 
 static int g_freed = 0;
-static CLandscapeBackgroundPatch* g_last_dtor = 0;
+static C3DPrimitive2* g_last_dtor = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
+void __fastcall C3DPrimitive2_dtor(C3DPrimitive2* primitive2)
 {
-    g_last_dtor = self;
-    self->destroyed = 1;
+    g_last_dtor = primitive2;
+    primitive2->destroyed = 1;
 }
 
 void operator delete(void* p)
@@ -20,31 +20,31 @@ void operator delete(void* p)
     (void)p;
 }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DPrimitive2_scalar_deleting_destructor(C3DPrimitive2* primitive2, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DPrimitive2_dtor(primitive2);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(primitive2);
+    return primitive2;
 }
 
 int main()
 {
-    CLandscapeBackgroundPatch a;
+    C3DPrimitive2 a;
     a.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 0);
+    void* r = C3DPrimitive2_scalar_deleting_destructor(&a, 0, 0);
     if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
         std::printf("FAIL no-free path\n");
         return 1;
     }
 
-    CLandscapeBackgroundPatch b;
+    C3DPrimitive2 b;
     b.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&b, 0, 1);
+    void* r2 = C3DPrimitive2_scalar_deleting_destructor(&b, 0, 1);
     if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
         std::printf("FAIL free path\n");
         return 1;

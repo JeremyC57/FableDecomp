@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CIntelligentPointer {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CIntelligentPointer_dtor(CIntelligentPointer* pointer);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CIntelligentPointer_scalar_deleting_destructor(CIntelligentPointer* pointer, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CIntelligentPointer_dtor(pointer);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(pointer);
+    return pointer;
 }

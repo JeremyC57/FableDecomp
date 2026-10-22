@@ -25,20 +25,20 @@ struct CThingGameObject {
     unsigned short m_defGlobalIndex;            // +0x8c
     CDefinitionManager* GetDefinitionManager() const;       // 0x004C7990
     bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, unsigned long a4,
-                             const CCharString& name, CThingPhysical* p1, CThingPhysical* p2, bool flag);   // 0x008388D0
+                             const CCharString& name, CThingPhysical* p1, CThingPhysical* physical, bool flag);   // 0x008388D0
 };
 
 struct CThingCreatureBase : CThingGameObject {
     unsigned char       _pad8e[0x52];
     CDefPointerCreature m_def;                  // +0xe0
     bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, CThingPhysical* p1,
-                             CThingPhysical* p2, const CCharString& name, bool flag);
+                             CThingPhysical* physical, const CCharString& name, bool flag);
 };
 
 bool CThingCreatureBase::ConstructFromParams(long defIndex, const C3DVector& position, long a3, CThingPhysical* p1,
-                                             CThingPhysical* p2, const CCharString& name, bool flag)
+                                             CThingPhysical* physical, const CCharString& name, bool flag)
 {
-    if (CThingGameObject::ConstructFromParams(defIndex, position, a3, 0, name, p1, p2, flag)) {
+    if (CThingGameObject::ConstructFromParams(defIndex, position, a3, 0, name, p1, physical, flag)) {
         GetDefinitionManager()->GetDef(m_defGlobalIndex, &m_def);
         return true;
     }

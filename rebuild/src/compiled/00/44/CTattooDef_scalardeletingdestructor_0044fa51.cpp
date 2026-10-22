@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(void* self);
+extern "C" void __fastcall CTattooDef_dtor(void* def);
 extern "C" void __cdecl fable_operator_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(void* self, int edx, unsigned int flags)
+void* __fastcall CTattooDef_scalar_deleting_destructor(void* def, int edx, unsigned int flags)
 {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    CTattooDef_dtor(def);
     if (flags & 1)
-        fable_operator_delete(self);
-    return self;
+        fable_operator_delete(def);
+    return def;
 }

@@ -12,12 +12,12 @@
 struct CInputEvent { int _pad; };
 struct CProcessedInput { int _pad; };
 
-void __fastcall ProcessInput(CInputProcessDead* self,
+void __fastcall ProcessInput(CInputProcessDead* process,
                              int edx_dummy,
                              const CInputEvent& ev,
                              CProcessedInput& out)
 {
-    (void)self;
+    (void)process;
     (void)edx_dummy;
     (void)ev;
     (void)out;

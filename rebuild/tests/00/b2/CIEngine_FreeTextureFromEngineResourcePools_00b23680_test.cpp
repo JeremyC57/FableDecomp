@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_FreeTextureFromEngineResourcePools(int arg0) {}
+void __stdcall CIEngine_FreeTextureFromEngineResourcePools(int texture) {}
 int main()
 {
     CIEngine_FreeTextureFromEngineResourcePools(1);

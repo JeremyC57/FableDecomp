@@ -25,19 +25,19 @@ struct CTCCombat {
     int    count;
 };
 
-bool __fastcall CTCCombat_IsUsingUnarmedCombatIdle(CTCCombat* self)
+bool __fastcall CTCCombat_IsUsingUnarmedCombatIdle(CTCCombat* combat)
 {
-    if (self->obj->Get(0x1b)->Check())
+    if (combat->obj->Get(0x1b)->Check())
         return false;
-    if (self->obj->Get(0x2f)->Check())
+    if (combat->obj->Get(0x2f)->Check())
         return false;
-    if (self->obj->Check3())
+    if (combat->obj->Check3())
         return false;
-    if (self->obj->Get2()->buf[0x217])
+    if (combat->obj->Get2()->buf[0x217])
         return true;
     if (g_flag)
         return false;
-    return self->count > 0;
+    return combat->count > 0;
 }
 
 int main() {

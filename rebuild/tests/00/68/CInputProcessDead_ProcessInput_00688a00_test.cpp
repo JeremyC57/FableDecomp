@@ -8,12 +8,12 @@ struct CInputEvent { int code; };
 struct CProcessedInput { int flags; };
 struct CInputProcessDead { int dummy; };
 
-void __fastcall ProcessInput(CInputProcessDead* self,
+void __fastcall ProcessInput(CInputProcessDead* process,
                              int edx_dummy,
                              const CInputEvent& ev,
                              CProcessedInput& out)
 {
-    (void)self;
+    (void)process;
     (void)edx_dummy;
     (void)ev;
     (void)out;

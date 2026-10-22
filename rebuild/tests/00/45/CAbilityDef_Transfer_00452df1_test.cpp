@@ -8,10 +8,10 @@ struct CTransferData {
     void Accept(void* p) { got = p; g_passed = p; }
 };
 
-void __fastcall CAbilityDef_Transfer(CAbilityDef* self, void* edx, CTransferData* t)
+void __fastcall CAbilityDef_Transfer(CAbilityDef* self, void* edx, CTransferData* context)
 {
     (void)edx;
-    t->Accept((char*)self + 0x28);
+    context->Accept((char*)self + 0x28);
 }
 
 int main()

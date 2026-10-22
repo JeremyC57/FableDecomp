@@ -5,6 +5,6 @@ extern Inner* g_cutscene;
 struct CGameScriptInterface_Methods : CGameScriptInterface {
     void SetCutsceneActionMode(bool, const CCharString&) const;
 };
-void CGameScriptInterface_Methods::SetCutsceneActionMode(bool a, const CCharString& b) const {
-    ((Inner*)((char*)g_cutscene + 0x18))->SetMode(a, b);
+void CGameScriptInterface_Methods::SetCutsceneActionMode(bool a, const CCharString& name) const {
+    ((Inner*)((char*)g_cutscene + 0x18))->SetMode(a, name);
 }

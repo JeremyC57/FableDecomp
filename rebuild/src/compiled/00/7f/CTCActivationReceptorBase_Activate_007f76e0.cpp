@@ -7,11 +7,11 @@ struct CTCActivationReceptorBase {
     void* f28;           // +0x28
 };
 
-extern void* __fastcall helper_49d870(CTCActivationReceptorBase* self);
+extern void* __fastcall helper_49d870(CTCActivationReceptorBase* receptor);
 
-void __fastcall Activate(CTCActivationReceptorBase* self)
+void __fastcall Activate(CTCActivationReceptorBase* receptor)
 {
-    self->Activated = 1;
-    if (self->f20)
-        self->f28 = helper_49d870(self);
+    receptor->Activated = 1;
+    if (receptor->f20)
+        receptor->f28 = helper_49d870(receptor);
 }

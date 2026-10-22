@@ -7,10 +7,10 @@ struct CEngineLandscapeMemoryManager {
     unsigned char flag;
 };
 
-void __fastcall FrameStart(CEngineLandscapeMemoryManager* self)
+void __fastcall FrameStart(CEngineLandscapeMemoryManager* manager)
 {
-    self->frame = (self->frame + 1) % 3;
-    self->flag = 1;
+    manager->frame = (manager->frame + 1) % 3;
+    manager->flag = 1;
 }
 
 int main()

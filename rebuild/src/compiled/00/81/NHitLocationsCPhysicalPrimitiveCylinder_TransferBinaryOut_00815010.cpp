@@ -1,4 +1,4 @@
-// CPhysicalPrimitiveCylinder::TransferBinaryOut(CDataOutputStream*) -- writes the base-name def index, the radius and the height to the binary stream
+// NHitLocations::CPhysicalPrimitiveCylinder::TransferBinaryOut(CDataOutputStream*) -- writes the base-name def index, the radius and the height to the binary stream
 // Leaf: TransferBinaryOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00815010, 46 bytes.
 // Callees: 0x00993EB0 CDataOutputStream 4-byte writer (long), 0x00993EE0 CDataOutputStream 4-byte

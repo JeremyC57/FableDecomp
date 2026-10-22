@@ -1,4 +1,4 @@
-// CActionEventAddObject::Dispatch(const CCreatureActionBase&) -- when the creature can carry: resolve the hand slot and the object def by name, create the object at the creature's position for the main player and put it in that carry slot, optionally tagging it to be destroyed when the action finishes
+// NCreatureAction::CActionEventAddObject::Dispatch(const CCreatureActionBase&) -- when the creature can carry: resolve the hand slot and the object def by name, create the object at the creature's position for the main player and put it in that carry slot, optionally tagging it to be destroyed when the action finishes
 // Retry 10b (combined accessor sweeps, FIXES B-4/B-15): the player manager and the script thing are read through inline getters (`g_pMainGameComponent->GetPlayerManager()`, `GetThing()`); plain member reads give the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008718B0, length 339 bytes (`ret 4`; the action argument is unused).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 70 = bit 6 of the bitset dword at +0x28 =

@@ -2,7 +2,7 @@
 #include <cstdio>
 
 
-bool __fastcall CLandscapeBackgroundPatch_IsPatch(CLandscapeBackgroundPatch* self)
+bool __fastcall CLandscapeBackgroundPatch_IsPatch(CLandscapeBackgroundPatch* patch)
 {
     return true;
 }

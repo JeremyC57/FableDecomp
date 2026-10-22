@@ -9,13 +9,13 @@ struct CThingAICreature {
 };
 
 // tail-call target: __fastcall on this->f1a8, same 2 stack args
-extern "C" bool __fastcall sub_88bcb0(void* self, int /*edx*/, long a, void* p);
+extern "C" bool __fastcall sub_88bcb0(void* self, int /*edx*/, long a, void* output);
 
 // this-in-ECX method modeled as __fastcall(self, edx, a, p)
-bool __fastcall UpdateBrain(CThingAICreature* self, int edx, long a, void* p)
+bool __fastcall UpdateBrain(CThingAICreature* self, int edx, long a, void* output)
 {
     if (!g_updateBrainEnabled)
         return false;
     // tail-call: ecx <- self->f1a8, edx passed through unchanged, same stack args
-    return sub_88bcb0(self->f1a8, edx, a, p);
+    return sub_88bcb0(self->f1a8, edx, a, output);
 }

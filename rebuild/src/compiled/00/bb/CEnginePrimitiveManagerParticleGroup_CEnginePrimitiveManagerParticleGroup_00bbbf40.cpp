@@ -15,21 +15,21 @@ struct CEnginePrimitiveManager {
 };
 
 struct CEnginePrimitiveManagerParticleGroup : CEnginePrimitiveManager {
-    bool m_flag20;                           // +0x20
+    bool ClipEffectToWeatherMask;                           // +0x20
     bool m_enabled;                          // +0x21
-    bool m_flag22;                           // +0x22
-    bool m_flag23;                           // +0x23
-    bool m_flag24;                           // +0x24
+    bool WriteZBuffer;                           // +0x22
+    bool DisplayBoundingBox;                           // +0x23
+    bool DisplayBoundingSphere;                           // +0x24
     virtual void v00();
     CEnginePrimitiveManagerParticleGroup(CEngine* engine);
 };
 
 CEnginePrimitiveManagerParticleGroup::CEnginePrimitiveManagerParticleGroup(CEngine* engine)
     : CEnginePrimitiveManager(engine)
-    , m_flag20(false)
-    , m_flag22(false)
-    , m_flag23(false)
-    , m_flag24(false)
+    , ClipEffectToWeatherMask(false)
+    , WriteZBuffer(false)
+    , DisplayBoundingBox(false)
+    , DisplayBoundingSphere(false)
 {
     m_enabled = true;
 }

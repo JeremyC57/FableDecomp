@@ -1,1 +1,1 @@
-void __stdcall CEnginePersistentPrimitiveBase_NotifyReleased(int arg0) {}
+void __stdcall CEnginePersistentPrimitiveBase_NotifyReleased(int handle) {}

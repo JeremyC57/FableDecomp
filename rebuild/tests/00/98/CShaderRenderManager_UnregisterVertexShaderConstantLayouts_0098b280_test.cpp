@@ -21,14 +21,14 @@ void list_erase_range(ListImpl* impl, ListNode** local, int one) {
     (void)impl;
 }
 
-void model_reset(Self* self) {
+void model_reset(Self* manager) {
     ListNode* local = 0;
-    ListImpl* impl = (ListImpl*)((char*)self + 0xc);
-    self->count = -1;
+    ListImpl* impl = (ListImpl*)((char*)manager + 0xc);
+    manager->count = -1;
     list_erase_range(impl, &local, 1);
-    ListNode* sentinel = (ListNode*)((char*)self + 0x18);
+    ListNode* sentinel = (ListNode*)((char*)manager + 0x18);
     impl->head->next = sentinel;
-    self->tail = sentinel;
+    manager->tail = sentinel;
 }
 
 int main() {

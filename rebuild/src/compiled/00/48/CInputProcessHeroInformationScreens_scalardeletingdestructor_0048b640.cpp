@@ -1,4 +1,4 @@
-// CLandscapeBackgroundPatch::`vector_deleting_destructor'  (retail 0x0048b640)
+// CInputProcessHeroInformationScreens::`scalar deleting destructor'  (retail 0x0048b640)
 //
 // MSVC VC7.1 compiler-generated vector deleting destructor shape:
 //   push esi; mov esi,ecx; call <scalar_dtor>(this)

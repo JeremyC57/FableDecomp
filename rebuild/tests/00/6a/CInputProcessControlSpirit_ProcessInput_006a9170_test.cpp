@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CInputProcessControlSpirit_ProcessInput(int arg0, int arg1) {}
+void __stdcall CInputProcessControlSpirit_ProcessInput(int event, int input) {}
 int main()
 {
     CInputProcessControlSpirit_ProcessInput(1, 2);

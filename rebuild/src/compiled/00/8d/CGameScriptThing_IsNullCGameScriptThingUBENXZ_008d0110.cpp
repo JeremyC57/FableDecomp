@@ -7,9 +7,9 @@ struct CCharStringData {
 extern CCharStringData* g_nullThing;
 extern "C" int __fastcall Thing_Compare(void* a, void* b);
 
-bool __fastcall CGameScriptThing_IsNull(const CGameScriptThing* self)
+bool __fastcall CGameScriptThing_IsNull(const CGameScriptThing* thing)
 {
-    CCharStringData* a = self->Name_PStringData;
+    CCharStringData* a = thing->Name_PStringData;
     CCharStringData* b = g_nullThing;
     if (a == b)
         return true;

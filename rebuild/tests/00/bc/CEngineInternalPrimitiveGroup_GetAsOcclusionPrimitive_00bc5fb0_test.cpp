@@ -1,7 +1,7 @@
 #include <cstdio>
-void* __fastcall CEngineInternalPrimitiveGroup_GetAsOcclusionPrimitive(void* self)
+void* __fastcall CEngineInternalPrimitiveGroup_GetAsOcclusionPrimitive(void* group)
 {
-    return self;
+    return group;
 }
 int main()
 {

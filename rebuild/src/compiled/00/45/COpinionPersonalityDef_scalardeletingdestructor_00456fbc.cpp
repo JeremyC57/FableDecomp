@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { int f0; };
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct COpinionPersonalityDef { int f0; };
+extern void __fastcall COpinionPersonalityDef_dtor(COpinionPersonalityDef* def);
 extern void __cdecl engine_operator_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags) {
+void* __fastcall COpinionPersonalityDef_scalar_deleting_destructor(COpinionPersonalityDef* def, int edx, unsigned int flags) {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    COpinionPersonalityDef_dtor(def);
     if (flags & 1) {
-        engine_operator_delete((void*)self);
+        engine_operator_delete((void*)def);
     }
-    return (void*)self;
+    return (void*)def;
 }

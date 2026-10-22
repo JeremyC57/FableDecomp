@@ -1,4 +1,4 @@
-// CVillageTaskHorn::AssignTarget_00860750(CBaseObject*) -- routes the argument through a temporary CIntelligentPointer into the member pointer at +0x10
+// CVillageTaskHorn::AssignCreatureToTask(CBaseObject*) -- routes the argument through a temporary CIntelligentPointer into the member pointer at +0x10
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00860750, oracle length 71 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

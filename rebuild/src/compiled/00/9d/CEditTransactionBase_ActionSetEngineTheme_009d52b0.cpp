@@ -12,7 +12,7 @@ struct CEditTransactionBase {
     void*   m8;   // +0x08
 };
 
-void __fastcall ActionSetEngineTheme(CEditTransactionBase* self, void* /*edx*/, C2DCoordI* coord, unsigned long a, unsigned long b)
+void __fastcall ActionSetEngineTheme(CEditTransactionBase* transaction, void* /*edx*/, C2DCoordI* coord, unsigned long a, unsigned long b)
 {
-    self->m4->Apply(self->m8, coord, a, b);
+    transaction->m4->Apply(transaction->m8, coord, a, b);
 }

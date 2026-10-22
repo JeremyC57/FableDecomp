@@ -1,1 +1,1 @@
-void __stdcall CIEngine_SetRenderTargetTexture(int arg0) {}
+void __stdcall CIEngine_SetRenderTargetTexture(int texture) {}

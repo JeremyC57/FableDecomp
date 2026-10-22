@@ -1,4 +1,4 @@
-// CTCAvoidRegionExit::vfunc_16(bool flag) -- run the base slot-16 hook; when the flag is set, remove the parent thing's entry from the global exit-weight map and recompute the maximum weight
+// CTCAvoidRegionExit::OnSetInLimbo(bool flag) -- run the base slot-16 hook; when the flag is set, remove the parent thing's entry from the global exit-weight map and recompute the maximum weight
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E9360, length 91 bytes (+ int3 padding).
 // Identity: slot 16 of vtable 0x0123EFAC = CTCAvoidRegionExit (rtti-vtables.tsv). The base call is
 // CTCBase's empty slot-16 implementation @ 0x00686910 (`ret 4`, a direct, qualified call).

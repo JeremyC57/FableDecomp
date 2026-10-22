@@ -1,4 +1,4 @@
-// CEngineSubPrimitiveText::`scalar_deleting_destructor' @ 0x004DC568 (retail, 38 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
+// CTCCarriedActionUseTrophy::`scalar deleting destructor' @ 0x004DC568 (retail, 38 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
 // stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
 // +0x14 C3DAnimationBlendState (~ @ 0x004DA967), then +0x0 C3DAnimationBlendState (~ @ 0x004DA967), and frees the block with operator delete
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /

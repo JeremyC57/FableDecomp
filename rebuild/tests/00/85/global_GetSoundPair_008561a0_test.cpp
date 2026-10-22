@@ -35,18 +35,18 @@ struct CThingCreatureBase {
     virtual void v77() {} virtual void v78() {} virtual void v79() {} virtual void v80() {}
     virtual void v81() {} virtual void v82() {} virtual void v83() {} virtual void v84() {}
     virtual void v85() {} virtual void v86() {} virtual void v87() {} virtual void v88() {}
-    virtual void GetSoundPairVirtual(CSoundPair* out, CCharString* s) { (void)out; (void)s; }
+    virtual void GetSoundPairVirtual(CSoundPair* out, CCharString* name) { (void)out; (void)name; }
 };
 
 // Function under test (defined in s.cpp).
-CSoundPair* __fastcall GetSoundPair(CSoundPair* ret, CThingCreatureBase* c, CCharString* s);
+CSoundPair* __fastcall GetSoundPair(CSoundPair* ret, CThingCreatureBase* c, CCharString* name);
 
 // A concrete creature whose slot-89 virtual fills the out buffer with known values.
 struct TestCreature : CThingCreatureBase {
-    virtual void GetSoundPairVirtual(CSoundPair* out, CCharString* s) {
+    virtual void GetSoundPairVirtual(CSoundPair* out, CCharString* name) {
         out->a = 0x11112222u;
         out->b = 0x33334444u;
-        out->c = (unsigned int)(unsigned long)s;
+        out->c = (unsigned int)(unsigned long)name;
     }
 };
 

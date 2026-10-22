@@ -1,4 +1,4 @@
-// CQuestInfoElementBar::Update() -- track the bar's thing: refresh value/max and a red-to-green colour from its health, or re-acquire it by UID once its map's region is the current one
+// NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::Update() -- track the bar's thing: refresh value/max and a red-to-green colour from its health, or re-acquire it by UID once its map's region is the current one
 // Leaf: Update
 // Retail 0x006463FF, 360 bytes, size-optimised TU (#pragma optimize("s"): ebp frame, `leave`, unaligned entry).
 // Callees: IS_THING_ALIVE<CIntelligentPointer<CThingPhysical const> > 0x00655D04 (__fastcall), GetPItem 0x00A01B50,

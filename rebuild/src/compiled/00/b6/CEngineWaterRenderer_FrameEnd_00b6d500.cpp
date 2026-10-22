@@ -1,1 +1,1 @@
-void __stdcall CEngineWaterRenderer_FrameEnd(int arg0) {}
+void __stdcall CEngineWaterRenderer_FrameEnd(int params) {}

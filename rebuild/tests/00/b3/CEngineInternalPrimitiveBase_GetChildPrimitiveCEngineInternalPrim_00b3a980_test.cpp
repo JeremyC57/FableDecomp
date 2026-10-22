@@ -3,9 +3,9 @@
 struct CEngineInternalPrimitiveBase;
 struct CEnginePersistentPrimitiveBase;
 
-CEnginePersistentPrimitiveBase* __fastcall CEngineInternalPrimitiveBase_GetChildPrimitive(CEngineInternalPrimitiveBase* self, int edx_pad, unsigned long index)
+CEnginePersistentPrimitiveBase* __fastcall CEngineInternalPrimitiveBase_GetChildPrimitive(CEngineInternalPrimitiveBase* primitive, int edx_pad, unsigned long index)
 {
-    (void)self;
+    (void)primitive;
     (void)edx_pad;
     (void)index;
     return 0;

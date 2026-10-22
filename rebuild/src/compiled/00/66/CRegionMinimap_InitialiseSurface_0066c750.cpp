@@ -15,14 +15,14 @@ struct CRegionMinimap {
     CSurface surf;   // +0x24
 };
 
-void __fastcall InitialiseSurface(CRegionMinimap* self)
+void __fastcall InitialiseSurface(CRegionMinimap* minimap)
 {
     CPixelFormat pf;
-    int dim = self->handle;
+    int dim = minimap->handle;
     *(int*)&pf = -1;
     pf.Initialise(8, 8, 8, 0, true);
     C2DExtentsI ext;
     ext.x = dim;
     ext.y = dim;
-    self->surf.InitialiseAsImage(&ext, &pf, false);
+    minimap->surf.InitialiseAsImage(&ext, &pf, false);
 }

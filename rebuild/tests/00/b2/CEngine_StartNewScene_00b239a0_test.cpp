@@ -7,10 +7,10 @@ struct CEngine {
   float sceneParam;
 };
 
-void __fastcall CEngine_StartNewScene(CEngine* self, int, unsigned long id, float param) {
-  self->active = 1;
-  self->sceneId = id;
-  self->sceneParam = param;
+void __fastcall CEngine_StartNewScene(CEngine* engine, int, unsigned long id, float param) {
+  engine->active = 1;
+  engine->sceneId = id;
+  engine->sceneParam = param;
 }
 
 int main() {

@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
 extern void __cdecl operator_delete(void* p);
 
-struct CLandscapeBackgroundPatch {
+struct CCameraManagerDef {
     int f0;
     void __fastcall scalar_dtor();
-    void* vector_deleting_destructor(unsigned int flags);
+    void* scalar_deleting_destructor(unsigned int flags);
 };
 
-void* CLandscapeBackgroundPatch::vector_deleting_destructor(unsigned int flags)
+void* CCameraManagerDef::scalar_deleting_destructor(unsigned int flags)
 {
     this->scalar_dtor();
     if (flags & 1)

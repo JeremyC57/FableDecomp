@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CScriptModuleCameraOnAStick {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CScriptModuleCameraOnAStick_dtor(CScriptModuleCameraOnAStick* stick);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CScriptModuleCameraOnAStick_scalar_deleting_destructor(CScriptModuleCameraOnAStick* stick, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CScriptModuleCameraOnAStick_dtor(stick);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(stick);
+    return stick;
 }

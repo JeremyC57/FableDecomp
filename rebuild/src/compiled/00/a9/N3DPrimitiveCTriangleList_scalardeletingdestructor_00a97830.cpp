@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTriangleList {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTriangleList_dtor(CTriangleList* list);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTriangleList_scalar_deleting_destructor(CTriangleList* list, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTriangleList_dtor(list);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(list);
+    return list;
 }

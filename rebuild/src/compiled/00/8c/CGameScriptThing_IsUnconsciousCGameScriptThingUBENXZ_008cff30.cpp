@@ -1,7 +1,7 @@
 struct CGameScriptThing;
 
-bool __fastcall CGameScriptThing_IsUnconscious(const CGameScriptThing* self)
+bool __fastcall CGameScriptThing_IsUnconscious(const CGameScriptThing* thing)
 {
-    (void)self;
+    (void)thing;
     return false;
 }

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineInternalPrimitiveMeshBase {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineInternalPrimitiveMeshBase_dtor(CEngineInternalPrimitiveMeshBase* mesh);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineInternalPrimitiveMeshBase_scalar_deleting_destructor(CEngineInternalPrimitiveMeshBase* mesh, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineInternalPrimitiveMeshBase_dtor(mesh);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(mesh);
+    return mesh;
 }

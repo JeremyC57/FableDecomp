@@ -3,12 +3,12 @@ struct CCombatSequenceBase {
         void* slot0;
         void* slot4;
         void* slot8;
-        int (__fastcall *GetSequenceType)(CCombatSequenceBase* self);
+        int (__fastcall *GetSequenceType)(CCombatSequenceBase* sequence);
     };
     VTable* vfptr;
 };
 
-int __fastcall CCombatSequenceBase_IsMeleeSequence(CCombatSequenceBase* self, void* edx)
+int __fastcall CCombatSequenceBase_IsMeleeSequence(CCombatSequenceBase* sequence, void* edx)
 {
-    return self->vfptr->GetSequenceType(self) == 1;
+    return sequence->vfptr->GetSequenceType(sequence) == 1;
 }

@@ -1,4 +1,4 @@
-// CPhysicsLeaf::`scalar deleting destructor'(unsigned int flags) -- this class's vtable (0x01275974), the raw buffer at +0x10 freed (`operator delete`), the async data member at +0xc discarded (0x00850530, `__fastcall`), the NCameraModes::CSubComponentBase base's inline destructor stores its vtable (0x012758F4), then free for flag bit 0
+// NCameraModes::CPhysicsLeaf<NCameraModes::CPhysicsTargetModelGoTo, NCameraModes::CPhysicsForceModelGotoOutsideSimple, NCameraModes::CPhysicsCoordCartesian>::`scalar deleting destructor'(unsigned int flags) -- this class's vtable (0x01275974), the raw buffer at +0x10 freed (`operator delete`), the async data member at +0xc discarded (0x00850530, `__fastcall`), the NCameraModes::CSubComponentBase base's inline destructor stores its vtable (0x012758F4), then free for flag bit 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00850670, length 57 bytes.
 // Leaf: ??_GCPhysicsLeaf@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x01275974) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.

@@ -1,4 +1,4 @@
-// CTCInventoryBase::OpenInventory() -- opens the inventory screen: stamps the render time, flags the first render frame, remembers the display's presentation interval once, marks the inventory open, closes the player GUI, deselects the item, selects the current category (if any) and restarts the item animation on the highlighted item, then rearms the four menu arrow highlights
+// NInventory::CTCInventoryBase::OpenInventory() -- opens the inventory screen: stamps the render time, flags the first render frame, remembers the display's presentation interval once, marks the inventory open, closes the player GUI, deselects the item, selects the current category (if any) and restarts the item animation on the highlighted item, then rearms the four menu arrow highlights
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD4EA, length 173 bytes. Size TU without frame pointer (optimize("s",on)).
 // Callees: GFGetTime @ 0x009E1BC0 (`__fastcall`, a double on the FPU stack stored straight into LastRenderTime), CPlayerGui::Close(bool)
 // @ 0x00438400 on g_pPlayerGui (0x013B8790), CTCInventoryBase virtual slot 46 (+0xB8, SelectItem(long)), CCategory::SetAsSelected(bool)

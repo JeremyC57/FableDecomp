@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CConsoleVariable {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CConsoleVariable_dtor(CConsoleVariable* variable);
 extern void free_engine(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CConsoleVariable_scalar_deleting_destructor(CConsoleVariable* variable, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CConsoleVariable_dtor(variable);
     if (flags & 1)
-        free_engine(self);
-    return self;
+        free_engine(variable);
+    return variable;
 }

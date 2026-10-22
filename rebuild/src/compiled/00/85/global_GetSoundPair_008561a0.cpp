@@ -45,11 +45,11 @@ struct CThingCreatureBase {
     virtual void v81(); virtual void v82(); virtual void v83(); virtual void v84();
     virtual void v85(); virtual void v86(); virtual void v87(); virtual void v88();
     // slot 89 = 0x164/4
-    virtual void GetSoundPairVirtual(CSoundPair* out, CCharString* s);
+    virtual void GetSoundPairVirtual(CSoundPair* out, CCharString* name);
 };
 
-CSoundPair* __fastcall GetSoundPair(CSoundPair* ret, CThingCreatureBase* c, CCharString* s)
+CSoundPair* __fastcall GetSoundPair(CSoundPair* ret, CThingCreatureBase* c, CCharString* name)
 {
-    c->GetSoundPairVirtual(ret, s);
+    c->GetSoundPairVirtual(ret, name);
     return ret;
 }

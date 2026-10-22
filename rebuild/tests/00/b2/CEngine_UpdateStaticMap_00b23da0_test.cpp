@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngine_UpdateStaticMap(int arg0, int arg1, int arg2, int arg3) {}
+void __stdcall CEngine_UpdateStaticMap(int arg0, int name, int arg2, int arg3) {}
 int main()
 {
     CEngine_UpdateStaticMap(1, 2, 3, 4);

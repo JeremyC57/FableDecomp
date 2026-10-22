@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_SetWorld(int arg0) {}
+void __stdcall CIEngine_SetWorld(int world) {}
 int main()
 {
     CIEngine_SetWorld(1);

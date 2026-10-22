@@ -1,5 +1,5 @@
 #pragma optimize("s", on)
-// CHoverWanderAroundThingGroup_004e2d89::`scalar deleting destructor'(unsigned int) -- destroy the member at +0x1a4 out of line, the CAIStateGroup_HoverWanderAroundThing member at +0 destroyed out of line, then the flag-tested operator delete
+// CTavernGameShoveHaPennyDef::`scalar deleting destructor'(unsigned int) -- destroy the member at +0x1a4 out of line, the CAIStateGroup_HoverWanderAroundThing member at +0 destroyed out of line, then the flag-tested operator delete
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E2D89.
 // Callees: the member destructor @ 0x004DF9EF (the manifest label "CActiveFile::OnReadFinished" is propagated), the base destructor @ 0x004E108C (CAIStateGroup_HoverWanderAroundThing::~CAIStateGroup_HoverWanderAroundThing), operator delete @ 0x00BFE9BC. Shape: no vtable store (the class is
 // non-polymorphic: the polymorphic object at +0 is a member, so VC7.1 emits the non-virtual deleting destructor); the member at +0x1a4 is destroyed first. The size-optimised module uses `pop ecx` after the delete. The chunk label

@@ -16,12 +16,12 @@ long __stdcall ValidateClassIndex(CDefinitionManager* mgr, long classIndex)
     return -1;
 }
 
-const CDefClassBase* __fastcall GetPDefFromClassIndex(CDefinitionManager* self, long classIndex)
+const CDefClassBase* __fastcall GetPDefFromClassIndex(CDefinitionManager* manager, long classIndex)
 {
-    long idx = ValidateClassIndex(self, classIndex);
+    long idx = ValidateClassIndex(manager, classIndex);
     if (idx < 0)
         return (const CDefClassBase*)idx;
-    return self->m_classArray[idx];
+    return manager->m_classArray[idx];
 }
 
 int main()

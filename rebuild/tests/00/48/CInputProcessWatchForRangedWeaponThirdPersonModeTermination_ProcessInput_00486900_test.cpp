@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CInputProcessWatchForRangedWeaponThirdPersonModeTermination_ProcessInput(int arg0, int arg1) {}
+void __stdcall CInputProcessWatchForRangedWeaponThirdPersonModeTermination_ProcessInput(int event, int input) {}
 int main()
 {
     CInputProcessWatchForRangedWeaponThirdPersonModeTermination_ProcessInput(1, 2);

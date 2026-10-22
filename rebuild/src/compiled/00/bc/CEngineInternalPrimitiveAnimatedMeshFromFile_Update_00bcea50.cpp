@@ -1,1 +1,1 @@
-void __stdcall CEngineInternalPrimitiveAnimatedMeshFromFile_Update(int arg0, int arg1) {}
+void __stdcall CEngineInternalPrimitiveAnimatedMeshFromFile_Update(int primitive, int arg1) {}

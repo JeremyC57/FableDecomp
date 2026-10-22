@@ -3,8 +3,8 @@ class CAIStateGroupBase {
 public:
   virtual const CCharString* GetDebugText() const;
 };
-const CCharString* __fastcall CAIStateGroupBase_GetDebugText(const CAIStateGroupBase* self)
+const CCharString* __fastcall CAIStateGroupBase_GetDebugText(const CAIStateGroupBase* stateGroup)
 {
-  (void)self;
+  (void)stateGroup;
   return 0;
 }

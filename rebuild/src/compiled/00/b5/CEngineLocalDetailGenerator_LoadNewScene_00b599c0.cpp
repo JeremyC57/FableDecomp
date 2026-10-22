@@ -15,7 +15,7 @@ struct CLocalDetailCacheMap {
 };
 
 struct CEngineMap {
-    void*                 m_unknown00;             // +0x00
+    void*                 LandscapeMap;             // +0x00
     CLocalDetailCacheMap* m_pLocalDetailCache;     // +0x04
 };
 

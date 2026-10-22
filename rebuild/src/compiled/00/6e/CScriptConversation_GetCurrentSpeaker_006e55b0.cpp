@@ -25,10 +25,10 @@ struct CScriptConversation {
 // tail callee @ 0xa01b50 : takes a pointer to an Entry8, returns CThing*
 extern "C" CThing* __fastcall ResolveSpeaker(Entry8* e);
 
-CThing* __fastcall GetCurrentSpeaker(CScriptConversation* self)
+CThing* __fastcall GetCurrentSpeaker(CScriptConversation* conversation)
 {
-    int idx = self->current;
+    int idx = conversation->current;
     if (idx > -1)
-        return ResolveSpeaker(&self->entries[ self->speakers[idx].index ]);
+        return ResolveSpeaker(&conversation->entries[ conversation->speakers[idx].index ]);
     return 0;
 }

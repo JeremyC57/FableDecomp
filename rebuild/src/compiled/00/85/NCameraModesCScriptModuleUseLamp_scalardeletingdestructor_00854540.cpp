@@ -1,4 +1,4 @@
-// CThingSwitch::`vector_deleting_destructor' @ 0x00854540 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
+// NCameraModes::CScriptModuleUseLamp::`scalar deleting destructor' @ 0x00854540 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
 // stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
 // +0x5c CBaseIntelligentPointer (~ @ 0x00A01C10), +0x54 CBaseIntelligentPointer (~ @ 0x00A01C10), then the base NCameraModes::CScriptModuleBase (~ @ 0x00854310), and frees the block with operator delete
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
@@ -25,13 +25,13 @@ struct CObject_00854540 : NCameraModes::CScriptModuleBase {
 };
 #pragma pack(pop)
 
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CScriptModuleUseLamp_CompositeScalarDeletingDestructor(void* lamp, int, unsigned int flags)
 {
-    CObject_00854540* object = static_cast<CObject_00854540*>(self);
+    CObject_00854540* object = static_cast<CObject_00854540*>(lamp);
     object->Member5c.~CBaseIntelligentPointer();
     object->Member54.~CBaseIntelligentPointer();
     object->NCameraModes::CScriptModuleBase::~CScriptModuleBase();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return lamp;
 }

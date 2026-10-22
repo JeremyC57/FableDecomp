@@ -138,9 +138,9 @@ virtual void slot131();
 virtual void slot132();
 virtual void UnregisterDrag(); //slot133
 char nativeBase[0x15c];bool Dragging;
-void EndDrag();
+void OnDeactivate();
 };
-void CHoverable::EndDrag(){Dragging=false;UnregisterDrag();}
+void CHoverable::OnDeactivate(){Dragging=false;UnregisterDrag();}
 }
 
 #include <cstdio>
@@ -282,5 +282,5 @@ void CHoverable::slot132(){}
 void CHoverable::UnregisterDrag(){++errors;}
 }
 struct TestDrag:NUISystem::CHoverable{virtual void UnregisterDrag(){if(Dragging)++errors;++calls;Dragging=true;}};
-int main(){{TestDrag d;d.Dragging=true;d.EndDrag();if(calls!=1||!d.Dragging)++errors;d.Dragging=false;d.EndDrag();if(calls!=2||!d.Dragging)++errors;}if(dtors!=1)++errors;
+int main(){{TestDrag d;d.Dragging=true;d.OnDeactivate();if(calls!=1||!d.Dragging)++errors;d.Dragging=false;d.OnDeactivate();if(calls!=2||!d.Dragging)++errors;}if(dtors!=1)++errors;
 if(errors){std::printf("0055bde0_TEST FAIL\n");return 1;}std::printf("0055bde0_TEST PASS\n");return 0;}

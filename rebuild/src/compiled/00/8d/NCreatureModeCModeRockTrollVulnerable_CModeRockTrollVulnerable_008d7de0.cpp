@@ -57,7 +57,7 @@ struct CModeBase {
 namespace NCreatureMode {
 
 struct CModeRockTrollVulnerable : CModeBase {
-    unsigned long m_unknown1c;             // +0x1c (not touched by the ctor)
+    unsigned long RecoveryCount;             // +0x1c (not touched by the ctor)
     CAnimFilterOfGroup m_animFilter;       // +0x20
     CThing* m_pOwner;                      // +0x2c
     virtual void v00();

@@ -4,19 +4,19 @@ struct CTCHeroRangedAttacks {
     unsigned char Aiming;
 };
 
-static bool __fastcall Helper(CTCHeroRangedAttacks* self);
+static bool __fastcall Helper(CTCHeroRangedAttacks* attacks);
 
-void __fastcall ContinueAimingRangedWeapon(CTCHeroRangedAttacks* self)
+void __fastcall ContinueAimingRangedWeapon(CTCHeroRangedAttacks* attacks)
 {
-    if (Helper(self)) {
-        self->FireCycleInProgress = true;
-        self->Aiming = true;
+    if (Helper(attacks)) {
+        attacks->FireCycleInProgress = true;
+        attacks->Aiming = true;
     }
 }
 
 #pragma optimize("", off)
-static bool __fastcall Helper(CTCHeroRangedAttacks* self)
+static bool __fastcall Helper(CTCHeroRangedAttacks* attacks)
 {
-    return self->FireCycleInProgress != 0;
+    return attacks->FireCycleInProgress != 0;
 }
 #pragma optimize("", on)

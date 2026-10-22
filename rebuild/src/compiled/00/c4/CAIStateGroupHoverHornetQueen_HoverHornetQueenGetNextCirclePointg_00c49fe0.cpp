@@ -2,7 +2,7 @@ struct CAIStateGroup_HoverHornetQueen
 {
     void* vfptr_unused_00;
     long m_circleTotal_04;
-    long m_pad_08;
+    long ScriptAIPriority;
     long m_circleMax_0c;
     long m_circleCur_10;
 

@@ -16,11 +16,11 @@ struct CScriptConversation {
 Entry8* g_lastArg = 0;
 void* ResolveSpeaker(Entry8* e) { g_lastArg = e; return (void*)e; }
 
-void* GetCurrentSpeaker(CScriptConversation* self)
+void* GetCurrentSpeaker(CScriptConversation* conversation)
 {
-    int idx = self->current;
+    int idx = conversation->current;
     if (idx <= -1) return 0;
-    return ResolveSpeaker(&self->entries[ self->speakers[idx].index ]);
+    return ResolveSpeaker(&conversation->entries[ conversation->speakers[idx].index ]);
 }
 
 int main()

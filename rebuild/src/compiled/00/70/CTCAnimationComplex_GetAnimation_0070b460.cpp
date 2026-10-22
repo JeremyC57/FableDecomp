@@ -1,4 +1,4 @@
-int __fastcall DrawGetEnvironment(const unsigned char* self)
+int __fastcall DrawGetEnvironment(const unsigned char* complex)
 {
-    return *reinterpret_cast<const int*>(self + 12);
+    return *reinterpret_cast<const int*>(complex + 12);
 }

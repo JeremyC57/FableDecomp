@@ -7,14 +7,14 @@ struct CTCPhysicsStandard {
     unsigned int flag;  // +0x80
 };
 
-extern void __fastcall CTCPhysicsStandard_helper(CTCPhysicsStandard* self);
+extern void __fastcall CTCPhysicsStandard_helper(CTCPhysicsStandard* standard);
 extern unsigned int __cdecl CTCPhysicsStandard_getFlag(void);
-extern void __fastcall CTCPhysicsStandard_tail(CTCPhysicsStandard* self);
+extern void __fastcall CTCPhysicsStandard_tail(CTCPhysicsStandard* standard);
 
-void __fastcall CTCPhysicsStandard_ResetInterpolation(CTCPhysicsStandard* self)
+void __fastcall CTCPhysicsStandard_ResetInterpolation(CTCPhysicsStandard* standard)
 {
-    self->interp = self->cur;
-    CTCPhysicsStandard_helper(self);
-    self->flag = CTCPhysicsStandard_getFlag();
-    CTCPhysicsStandard_tail(self);
+    standard->interp = standard->cur;
+    CTCPhysicsStandard_helper(standard);
+    standard->flag = CTCPhysicsStandard_getFlag();
+    CTCPhysicsStandard_tail(standard);
 }

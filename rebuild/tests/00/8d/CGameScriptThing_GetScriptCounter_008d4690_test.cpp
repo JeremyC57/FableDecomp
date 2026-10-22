@@ -1,7 +1,7 @@
 #include <cstdio>
-int __fastcall CGameScriptThing_GetScriptCounter(const unsigned char* self)
+int __fastcall CGameScriptThing_GetScriptCounter(const unsigned char* thing)
 {
-    return *reinterpret_cast<const int*>(self + 20);
+    return *reinterpret_cast<const int*>(thing + 20);
 }
 int main()
 {

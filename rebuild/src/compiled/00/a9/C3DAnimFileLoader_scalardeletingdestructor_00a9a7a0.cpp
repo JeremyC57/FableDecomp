@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct C3DAnimFileLoader {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall C3DAnimFileLoader_dtor(C3DAnimFileLoader* loader);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DAnimFileLoader_scalar_deleting_destructor(C3DAnimFileLoader* loader, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DAnimFileLoader_dtor(loader);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(loader);
+    return loader;
 }

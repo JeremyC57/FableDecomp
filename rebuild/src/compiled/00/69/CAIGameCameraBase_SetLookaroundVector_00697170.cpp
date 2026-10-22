@@ -1,1 +1,1 @@
-void __stdcall CAIGameCameraBase_SetLookaroundVector(int arg0) {}
+void __stdcall CAIGameCameraBase_SetLookaroundVector(int pos) {}

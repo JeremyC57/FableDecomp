@@ -1,4 +1,4 @@
-// CTCForcePushed::vfunc_2() -- when the owning thing is alive and is the player creature (type byte 1), call its animation-suspend hook with (false, 0)
+// CTCForcePushed::FinalCleanup() -- when the owning thing is alive and is the player creature (type byte 1), call its animation-suspend hook with (false, 0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798540, length 34 bytes (slot 2 of CTCForcePushed's vtable 0x0126C09C).
 // Callees: the creature method @ 0x00833A10 (manifest "CThingAnimatable::SetSuspendAnimation"; a two-argument thiscall,
 // bool first, working on the creature's +0x1cc member).

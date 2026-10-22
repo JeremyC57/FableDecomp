@@ -1,4 +1,4 @@
-// CQuestInfoElementMiniGameBar::Update() -- while the bar is updatable, stop updating it once the living hero lets go of the button held for its mini-game's expression (pick-lock or pick-pocket); always reports success
+// NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::Update() -- while the bar is updatable, stop updating it once the living hero lets go of the button held for its mini-game's expression (pick-lock or pick-pocket); always reports success
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064A568, length 209 bytes, plain `ret` (bool true).
 // Callees: CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), CPlayer::GetHeroThing
 // 0x00487DC0, IS_THING_ALIVE 0x0043DBF0 (`__fastcall`, by reference; a separate instantiation from the CThing* one at

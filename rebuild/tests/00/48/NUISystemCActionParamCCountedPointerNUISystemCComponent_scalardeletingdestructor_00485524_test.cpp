@@ -25,7 +25,7 @@ void __cdecl fable_operator_delete(void* p)
     g_delete_seq = ++g_order;
 }
 
-void* __fastcall CLandscapeBackgroundSubNodeSplitBranch_scalar_deleting_dtor(
+void* __fastcall CActionParamCCountedPointer_scalar_deleting_dtor(
         void* thisptr, int /*edx*/, unsigned int flags)
 {
     unsigned long* vfptr = (unsigned long*)thisptr;
@@ -46,7 +46,7 @@ static int run(unsigned int flags, int expect_delete)
     g_order = 0; g_base_seq = 0; g_delete_seq = 0;
     g_base_arg = 0; g_delete_arg = 0; g_vptr_at_base_dtor = 0;
 
-    void* ret = CLandscapeBackgroundSubNodeSplitBranch_scalar_deleting_dtor(
+    void* ret = CActionParamCCountedPointer_scalar_deleting_dtor(
         g_obj, 0, flags);
 
     int ok = 1;

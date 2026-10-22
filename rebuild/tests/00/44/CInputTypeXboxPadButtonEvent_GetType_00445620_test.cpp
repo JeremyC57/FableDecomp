@@ -1,9 +1,9 @@
 #include <cstdio>
 
 // Function under test: exact reconstruction of CInputTypeXboxPadButtonEvent::GetType
-int __fastcall GetType(void *this_ptr)
+int __fastcall GetType(void *event)
 {
-    (void)this_ptr;
+    (void)event;
     return 2;
 }
 

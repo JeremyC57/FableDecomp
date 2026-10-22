@@ -18,8 +18,8 @@ extern "C" DWORD_0099abd0 (__stdcall *CDiskFileWin32_SetFilePointerIAT_0099abd0)
 
 
 extern "C" long __fastcall
-GetPosition_0099abd0(CDiskFileWin32* self)
+GetPosition_0099abd0(CDiskFileWin32* win32)
 {
-    CDiskFileWin32_SetFilePointerIAT_0099abd0(self->WinFileHandle, 0, 0, 1 /*FILE_CURRENT*/);
-    return self->Position;
+    CDiskFileWin32_SetFilePointerIAT_0099abd0(win32->WinFileHandle, 0, 0, 1 /*FILE_CURRENT*/);
+    return win32->Position;
 }

@@ -1,1 +1,1 @@
-void __stdcall CInputProcessWatchForWillChargeUpThirdPersonModeTermination_ProcessInput(int arg0, int arg1) {}
+void __stdcall CInputProcessWatchForWillChargeUpThirdPersonModeTermination_ProcessInput(int event, int input) {}

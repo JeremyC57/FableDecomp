@@ -1,1 +1,1 @@
-void __stdcall CEnginePrimitiveRenderer2D_FrameStart(int arg0) {}
+void __stdcall CEnginePrimitiveRenderer2D_FrameStart(int params) {}

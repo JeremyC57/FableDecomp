@@ -1,6 +1,6 @@
 struct S; typedef int (__fastcall* VFn)(S*);
 struct S { VFn* vtbl; };
-bool __fastcall IsBreakIntoMeleeSequence(S* self)
+bool __fastcall IsBreakIntoMeleeSequence(S* sequence)
 {
-    return self->vtbl[0xc/4](self) == 2;
+    return sequence->vtbl[0xc/4](sequence) == 2;
 }

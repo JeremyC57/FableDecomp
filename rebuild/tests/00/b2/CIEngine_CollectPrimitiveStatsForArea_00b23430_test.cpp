@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_CollectPrimitiveStatsForArea(int arg0, int arg1, int arg2, int arg3) {}
+void __stdcall CIEngine_CollectPrimitiveStatsForArea(int arg0, int boxF, int arg2, int arg3) {}
 int main()
 {
     CIEngine_CollectPrimitiveStatsForArea(1, 2, 3, 4);

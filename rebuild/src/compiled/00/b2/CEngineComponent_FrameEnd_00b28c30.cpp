@@ -1,1 +1,1 @@
-void __stdcall CEngineComponent_FrameEnd(int arg0) {}
+void __stdcall CEngineComponent_FrameEnd(int params) {}

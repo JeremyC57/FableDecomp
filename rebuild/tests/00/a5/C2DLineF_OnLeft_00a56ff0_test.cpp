@@ -7,11 +7,11 @@ struct C2DVector {
 struct C2DLineF {
     C2DVector Point1; C2DVector Point2;
     C2DLineF(float x1, float y1, float x2, float y2) : Point1(x1, y1), Point2(x2, y2) {}
-    bool OnLeft(const C2DVector& p) const
+    bool OnLeft(const C2DVector& pos) const
     {
         C2DVector dir(Point2.X - Point1.X, Point2.Y - Point1.Y);
         C2DVector normal(-dir.Y, dir.X);
-        C2DVector rel(p.X - Point1.X, p.Y - Point1.Y);
+        C2DVector rel(pos.X - Point1.X, pos.Y - Point1.Y);
         return rel.Dot(normal) > 0.0f ? true : false;
     }
 };

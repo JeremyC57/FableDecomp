@@ -1,4 +1,4 @@
-// CPSCSingleSprite::ClearAllPrimitives(CEngineInterface*, const CPrimitiveGroupHandle&) -- when the group handle is live, removes every sprite primitive id in PrimIDList from it through the engine
+// NParticleEngine::CPSCSingleSprite::ClearAllPrimitives(CEngineInterface*, const CPrimitiveGroupHandle&) -- when the group handle is live, removes every sprite primitive id in PrimIDList from it through the engine
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B07570, length 93 bytes.
 // Callees: the engine interface's virtual slot 30 (+0x78), called as (group handle, primitive id).
 // Identity: slot 29 of NParticleEngine::CPSCSingleSprite's vtable 0x0129FB84 (rtti-vtables.tsv); the CPSCBase

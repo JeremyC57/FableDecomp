@@ -16,7 +16,7 @@ struct CMemoryBlockOwner {
 struct CMemoryBlock {
     unsigned int      vptr;
     int               pad4;
-    CMemoryBlockOwner* member8;
+    CMemoryBlockOwner* BlockData;
 };
 
 void CMemoryBlockOwner::Free(CMemoryBlock* self) { g_freed++; (void)self; }
@@ -26,8 +26,8 @@ static const unsigned int kB = 0x012354d0u;
 
 static void dtor(CMemoryBlock* self) {
     self->vptr = kA;
-    if (self->member8 != 0) {
-        self->member8->Free(self);
+    if (self->BlockData != 0) {
+        self->BlockData->Free(self);
     }
     self->vptr = kB;
 }
@@ -36,11 +36,11 @@ int main() {
     CMemoryBlockOwner owner;
 
     // member8 non-null -> Free runs once.
-    CMemoryBlock a; a.vptr = 0; a.pad4 = 0; a.member8 = &owner;
+    CMemoryBlock a; a.vptr = 0; a.pad4 = 0; a.BlockData = &owner;
     dtor(&a);
 
     // member8 null -> Free skipped.
-    CMemoryBlock b; b.vptr = 0; b.pad4 = 0; b.member8 = 0;
+    CMemoryBlock b; b.vptr = 0; b.pad4 = 0; b.BlockData = 0;
     dtor(&b);
 
     if (g_freed == 1 && a.vptr == kB && b.vptr == kB) {

@@ -1,4 +1,4 @@
-// CPersistContext_TransferableVector::TransferOut(CPersistContext*, CCharString*, long) -- copies element `index` of the long vector into a local and hands its address to the long writer 0x009E2560
+// CPersistContext_TransferableVector<ETutorialCategory>::TransferOut(CPersistContext*, CCharString*, long) -- copies element `index` of the long vector into a local and hands its address to the long writer 0x009E2560
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0040FBA0, 37 bytes (+11 int3 padding).
 // Callee: 0x009E2560 TransferOutLong (__fastcall: context in ecx, output string in edx, &value on the stack).

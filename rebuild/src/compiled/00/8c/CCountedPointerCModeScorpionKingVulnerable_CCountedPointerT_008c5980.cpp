@@ -1,4 +1,4 @@
-// CCountedPointer_008c57f0::CCountedPointer_008c57f0(T*) -- adopt the object: null-checked count block with the per-type destroy function
+// CCountedPointer<CModeScorpionKingVulnerable>::CCountedPointer(T*)(T*) -- adopt the object: null-checked count block with the per-type destroy function
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C5980, oracle length 78 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

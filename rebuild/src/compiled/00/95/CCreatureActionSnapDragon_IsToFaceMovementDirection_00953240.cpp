@@ -1,2 +1,2 @@
 #include "rebuild_abi.h"
-extern "C" char FABLE_FASTCALL R_953240(void* self){ return 0; }
+extern "C" char FABLE_FASTCALL R_953240(void* action){ return 0; }

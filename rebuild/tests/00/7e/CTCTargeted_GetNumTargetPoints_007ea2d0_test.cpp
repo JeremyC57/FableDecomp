@@ -22,7 +22,7 @@ struct CTCTargeted {
     Inner* obj;
 };
 
-long __fastcall CTCTargeted_GetNumTargetPoints(CTCTargeted* self);
+long __fastcall CTCTargeted_GetNumTargetPoints(CTCTargeted* targeted);
 
 int main()
 {

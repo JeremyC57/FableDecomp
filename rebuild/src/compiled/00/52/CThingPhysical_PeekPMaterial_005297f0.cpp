@@ -1,4 +1,4 @@
-// CThingPhysical::vfunc_58(long*) -- stores 0x0 through the out-pointer
+// CThingPhysical::PeekPMaterial(long*) -- stores 0x0 through the out-pointer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005297F0, oracle length 13 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

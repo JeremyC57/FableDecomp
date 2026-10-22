@@ -30,10 +30,10 @@ struct Helper {
 // Retail PlaceInMapwho is __fastcall: this in ecx, the C3DVector* on the stack.
 // The harness rewrites __fastcall->__fastcall, so model the this pointer in
 // ecx and force the vector onto the stack by consuming edx with a dummy arg.
-void __fastcall PlaceInMapwho(CTCMapwho* self, int /*edx*/, C3DVector* v)
+void __fastcall PlaceInMapwho(CTCMapwho* mapwho, int /*edx*/, C3DVector* v)
 {
-    if (!(self->flags & 1)) {
+    if (!(mapwho->flags & 1)) {
         Helper* h = GetMapwhoHelper();
-        h->slot->Place(self, v);
+        h->slot->Place(mapwho, v);
     }
 }

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch {
+struct CHeroPostcardGeneratorDef {
     int f0;
     int Parent;
     void* f8;
@@ -8,14 +8,14 @@ struct CLandscapeBackgroundPatch {
     void* tex;
 };
 
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+extern void __fastcall CHeroPostcardGeneratorDef_dtor(CHeroPostcardGeneratorDef* def);
 extern void __cdecl eng_operator_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags)
+void* __fastcall CHeroPostcardGeneratorDef_scalar_deleting_destructor(CHeroPostcardGeneratorDef* def, int edx, unsigned int flags)
 {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    CHeroPostcardGeneratorDef_dtor(def);
     if (flags & 1)
-        eng_operator_delete(self);
-    return self;
+        eng_operator_delete(def);
+    return def;
 }

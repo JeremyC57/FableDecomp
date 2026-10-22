@@ -1,4 +1,4 @@
-// CTCInventoryMap::vfunc_77(long) -- slot 77 of the map screen: rebuilds the map UI for the given argument with the two trailing options cleared
+// CTCInventoryMap::ConstructScreen(long) -- slot 77 of the map screen: rebuilds the map UI for the given argument with the two trailing options cleared
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006116C0, 17 bytes (+15 int3). rtti-vtables: CTCInventoryMap primary
 // vtable 0x01257A9C slot 77 (the only reference).
 // Callee: CTCInventoryMap::BuildMapTeleportUI-labelled builder @ 0x0060C900 (`ret 0Ch`: three dword arguments, a 0x298-byte

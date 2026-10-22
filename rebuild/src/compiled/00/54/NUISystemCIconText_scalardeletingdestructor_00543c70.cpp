@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CIconText {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CIconText_dtor(CIconText* text);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CIconText_scalar_deleting_destructor(CIconText* text, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CIconText_dtor(text);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(text);
+    return text;
 }

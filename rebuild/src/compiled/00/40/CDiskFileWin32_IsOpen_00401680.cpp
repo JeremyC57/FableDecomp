@@ -8,7 +8,7 @@
 //
 // Matching: uses the PDB layout from engine/CDiskFileWin32.h (Opened at +0x14, a byte load).
 #include "engine/CDiskFileWin32.h"  // PDB layout: AccessType, Position, Length, WinFileHandle, Opened, Pathname
-bool __fastcall CDiskFileWin32_IsOpen(const CDiskFileWin32* self)
+bool __fastcall CDiskFileWin32_IsOpen(const CDiskFileWin32* win32)
 {
-    return self->Opened;
+    return win32->Opened;
 }

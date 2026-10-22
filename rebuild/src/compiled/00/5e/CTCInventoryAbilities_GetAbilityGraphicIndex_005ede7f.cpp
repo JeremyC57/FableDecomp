@@ -22,7 +22,7 @@ struct CTCInventoryAbilities {
     AbilityEntry* entries; // +0x160
 };
 
-int __fastcall GetAbilityGraphicIndex(CTCInventoryAbilities* self, void* /*edx*/, int index)
+int __fastcall GetAbilityGraphicIndex(CTCInventoryAbilities* abilities, void* /*edx*/, int index)
 {
-    return self->entries[index].def->graphicIndex;
+    return abilities->entries[index].def->graphicIndex;
 }

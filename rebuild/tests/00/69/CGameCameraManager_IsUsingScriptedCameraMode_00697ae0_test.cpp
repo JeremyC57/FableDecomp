@@ -16,9 +16,9 @@ struct CGameCameraManager {
     int  flag_dc;
 };
 
-bool __fastcall CGameCameraManager_IsUsingScriptedCameraMode(const CGameCameraManager* self) {
-    if (self->flag_dc == 0) {
-        Sub* s = self->obj_d4;
+bool __fastcall CGameCameraManager_IsUsingScriptedCameraMode(const CGameCameraManager* manager) {
+    if (manager->flag_dc == 0) {
+        Sub* s = manager->obj_d4;
         if (s == 0)
             return false;
         if (s->vptr->s2(s))

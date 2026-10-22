@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CStaticMapBankStateBlock_GetDefault(int arg0) {}
+void __stdcall CStaticMapBankStateBlock_GetDefault(int block) {}
 int main()
 {
     CStaticMapBankStateBlock_GetDefault(1);

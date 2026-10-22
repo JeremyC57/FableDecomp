@@ -16,18 +16,18 @@ struct CParticleEmitter {
     CSplineRef* end;
 };
 
-float __fastcall CParticleEmitter_GetApproximateTotalSplineLength(CParticleEmitter* self)
+float __fastcall CParticleEmitter_GetApproximateTotalSplineLength(CParticleEmitter* emitter)
 {
     float total = 0.0f;
-    CSplineRef* p = self->begin;
-    if (p != self->end) {
+    CSplineRef* p = emitter->begin;
+    if (p != emitter->end) {
         do {
             CSplineSeg* seg = p->seg;
             if (seg->flags & 0x2) {
                 total += CSplineSeg_GetLen(seg);
             }
             ++p;
-        } while (p != self->end);
+        } while (p != emitter->end);
     }
     return total;
 }

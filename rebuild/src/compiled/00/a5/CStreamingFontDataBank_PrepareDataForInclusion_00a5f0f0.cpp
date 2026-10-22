@@ -48,7 +48,7 @@ class CStreamingFontDataBank {
 protected:
     virtual void PrepareDataForInclusion(
         unsigned long a1,
-        const CArray<CCharString>& a2,
+        const CArray<CCharString>& array,
         unsigned long a3,
         CCountedPointer<CBankStateBlock> a4,
         CDataOutputStream& a5,
@@ -57,13 +57,13 @@ protected:
 
 void CStreamingFontDataBank::PrepareDataForInclusion(
         unsigned long a1,
-        const CArray<CCharString>& a2,
+        const CArray<CCharString>& array,
         unsigned long a3,
         CCountedPointer<CBankStateBlock> a4,
         CDataOutputStream& a5,
         CDataOutputStream& a6)
 {
     // Whole body is the destruction of the by-value counted pointer a4.
-    (void)a1; (void)a2; (void)a3; (void)a5; (void)a6;
+    (void)a1; (void)array; (void)a3; (void)a5; (void)a6;
     // a4 destructor runs at end of scope.
 }

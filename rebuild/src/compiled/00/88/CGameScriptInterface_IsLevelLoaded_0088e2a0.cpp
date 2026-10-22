@@ -78,13 +78,13 @@ struct CWorldMap_Retail {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009();
     virtual bool IsMapLoaded(long map);            // slot 10 (+0x28)
-    long GetMapNumberFromScriptName(const CCharString& name);   // 0x004FB880
+    long GetMapNumberFromScriptName(const CCharString& levelName);   // 0x004FB880
     bool IsMapLoadedOnPlayerProximity(long map);   // 0x004FD000
     long GetCurrentRegionNumber();                 // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
     CRegion_Retail* GetRegion(long region);        // 0x004FC180
     void SetRegionsAsConnectedInGraph(long a, long b, long c);   // 0x004FC970
-    long GetRegionNumberFromName(const CCharString& name);      // 0x004FC210
-    void ApplyScriptBrush(const CCharString& name, long flag);  // 0x004FE510 (the label "CDrawQuestInfo::OracleSymbolPushBack" is propagated)
+    long GetRegionNumberFromName(const CCharString& levelName);      // 0x004FC210
+    void ApplyScriptBrush(const CCharString& levelName, long flag);  // 0x004FE510 (the label "CDrawQuestInfo::OracleSymbolPushBack" is propagated)
 };
 struct CEnvironmentSpellEffectInterpolator_Retail;
 struct CEnvironment_Retail {
@@ -125,12 +125,12 @@ struct CGameScriptInterface {
     CPlayerManager_Retail*  PlayerManager;                   // +0x14
     unsigned char           _pad18[0x15];
     bool                    AllowScreenFadingIfAlreadyFaded; // +0x2d
-    bool IsLevelLoaded(const CCharString& name) const;
+    bool IsLevelLoaded(const CCharString& levelName) const;
 };
 
-bool CGameScriptInterface::IsLevelLoaded(const CCharString& name) const
+bool CGameScriptInterface::IsLevelLoaded(const CCharString& levelName) const
 {
-    long map = World->GetWorldMap()->GetMapNumberFromScriptName(name);
+    long map = World->GetWorldMap()->GetMapNumberFromScriptName(levelName);
     if (!map)
         return false;
     return World->GetWorldMap()->IsMapLoaded(map) && !World->GetWorldMap()->IsMapLoadedOnPlayerProximity(map);

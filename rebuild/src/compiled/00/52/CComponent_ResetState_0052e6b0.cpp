@@ -30,14 +30,14 @@ struct CComponent {
     int fa8;                /* 0xa8 */
 };
 
-void __fastcall CComponent_ResetState(CComponent* self)
+void __fastcall CComponent_ResetState(CComponent* component)
 {
-    char* p = self->f50();
-    self->f15(p + 0x8);
-    self->f11(p + 0x10);
-    self->f13(p + 0x18);
-    self->fa0 = 0;
-    self->f98 = 0;
-    self->fa8 = 0;
-    self->f30 = 0;
+    char* p = component->f50();
+    component->f15(p + 0x8);
+    component->f11(p + 0x10);
+    component->f13(p + 0x18);
+    component->fa0 = 0;
+    component->f98 = 0;
+    component->fa8 = 0;
+    component->f30 = 0;
 }

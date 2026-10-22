@@ -2,10 +2,10 @@
 
 struct CScriptThingVtbl {
     unsigned char _pad[0x12c];
-    unsigned char (__fastcall *IsAlive)(CScriptThing* self);
+    unsigned char (__fastcall *IsAlive)(CScriptThing* scriptThing);
 };
 
-bool __fastcall CScriptThing_IsDead(CScriptThing* self)
+bool __fastcall CScriptThing_IsDead(CScriptThing* scriptThing)
 {
-    return ((CScriptThingVtbl*)self->__vftable)->IsAlive(self) == 0;
+    return ((CScriptThingVtbl*)scriptThing->__vftable)->IsAlive(scriptThing) == 0;
 }

@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEnginePrimitiveOcclusionManager_FrameEnd(int arg0) {}
+void __stdcall CEnginePrimitiveOcclusionManager_FrameEnd(int params) {}
 int main()
 {
     CEnginePrimitiveOcclusionManager_FrameEnd(1);

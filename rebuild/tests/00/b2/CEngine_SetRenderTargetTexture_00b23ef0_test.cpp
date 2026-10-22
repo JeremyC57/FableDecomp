@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngine_SetRenderTargetTexture(int arg0) {}
+void __stdcall CEngine_SetRenderTargetTexture(int texture) {}
 int main()
 {
     CEngine_SetRenderTargetTexture(1);

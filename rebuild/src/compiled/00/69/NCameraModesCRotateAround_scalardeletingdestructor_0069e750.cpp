@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CRotateAround {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CRotateAround_dtor(CRotateAround* around);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CRotateAround_scalar_deleting_destructor(CRotateAround* around, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CRotateAround_dtor(around);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(around);
+    return around;
 }

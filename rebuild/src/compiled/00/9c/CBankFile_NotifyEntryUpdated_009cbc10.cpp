@@ -1,1 +1,1 @@
-void __stdcall CBankFile_NotifyEntryUpdated(int arg0, int arg1, int arg2) {}
+void __stdcall CBankFile_NotifyEntryUpdated(int arg0, int arg1, int array) {}

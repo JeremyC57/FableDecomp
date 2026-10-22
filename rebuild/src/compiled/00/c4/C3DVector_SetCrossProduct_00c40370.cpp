@@ -7,12 +7,12 @@
 // member at +0x3c of its owner. The three statements store X, Y, Z in turn.
 struct C3DVector {
     float X, Y, Z;
-    void SetCrossProduct(const C3DVector& a, const C3DVector& b);
+    void SetCrossProduct(const C3DVector& a, const C3DVector& pos);
 };
 
-void C3DVector::SetCrossProduct(const C3DVector& a, const C3DVector& b)
+void C3DVector::SetCrossProduct(const C3DVector& a, const C3DVector& pos)
 {
-    X = b.Y * a.Z - a.Y * b.Z;
-    Y = a.X * b.Z - b.X * a.Z;
-    Z = a.Y * b.X - a.X * b.Y;
+    X = pos.Y * a.Z - a.Y * pos.Z;
+    Y = a.X * pos.Z - pos.X * a.Z;
+    Z = a.Y * pos.X - a.X * pos.Y;
 }

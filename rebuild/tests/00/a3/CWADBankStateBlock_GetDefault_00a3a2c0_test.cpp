@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CWADBankStateBlock_GetDefault(int arg0) {}
+void __stdcall CWADBankStateBlock_GetDefault(int block) {}
 int main()
 {
     CWADBankStateBlock_GetDefault(1);

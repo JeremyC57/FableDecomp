@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_ProcessPrimitiveStats(int arg0, int arg1, int arg2, int arg3) {}
+void __stdcall CIEngine_ProcessPrimitiveStats(int arg0, int arg1, int arg2, int array) {}
 int main()
 {
     CIEngine_ProcessPrimitiveStats(1, 2, 3, 4);

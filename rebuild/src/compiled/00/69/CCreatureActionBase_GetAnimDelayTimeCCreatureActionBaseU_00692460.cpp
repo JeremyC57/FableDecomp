@@ -6,8 +6,8 @@
 
 // long GetAnimDelayTime() const  ->  xor eax,eax ; ret
 #include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
-long __fastcall CCreatureActionBase_GetAnimDelayTime(const CCreatureActionBase* self)
+long __fastcall CCreatureActionBase_GetAnimDelayTime(const CCreatureActionBase* action)
 {
-    (void)self;
+    (void)action;
     return 0;
 }

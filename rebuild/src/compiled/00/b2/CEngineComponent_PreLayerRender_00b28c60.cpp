@@ -1,1 +1,1 @@
-void __stdcall CEngineComponent_PreLayerRender(int arg0) {}
+void __stdcall CEngineComponent_PreLayerRender(int params) {}

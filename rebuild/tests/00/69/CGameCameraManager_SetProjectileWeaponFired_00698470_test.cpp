@@ -21,12 +21,12 @@ void __fastcall Handle(Inner* p)
     g_handled = 1;
 }
 
-void __fastcall CGameCameraManager_SetProjectileWeaponFired(CGameCameraManager* self)
+void __fastcall CGameCameraManager_SetProjectileWeaponFired(CGameCameraManager* manager)
 {
-    Inner* p = self->inner;
+    Inner* p = manager->inner;
     int r = p->vptr->slot2(p);
     if (r == 0xf) {
-        Handle(self->inner);
+        Handle(manager->inner);
     }
 }
 

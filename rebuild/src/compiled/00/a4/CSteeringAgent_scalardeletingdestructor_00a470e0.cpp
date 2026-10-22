@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CSteeringAgent {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CSteeringAgent_dtor(CSteeringAgent* agent);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CSteeringAgent_scalar_deleting_destructor(CSteeringAgent* agent, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CSteeringAgent_dtor(agent);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(agent);
+    return agent;
 }

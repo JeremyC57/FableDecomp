@@ -1,1 +1,1 @@
-void __stdcall CEngineComponent_Render(int arg0) {}
+void __stdcall CEngineComponent_Render(int params) {}

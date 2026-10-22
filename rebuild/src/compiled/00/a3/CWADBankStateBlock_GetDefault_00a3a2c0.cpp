@@ -1,1 +1,1 @@
-void __stdcall CWADBankStateBlock_GetDefault(int arg0) {}
+void __stdcall CWADBankStateBlock_GetDefault(int block) {}

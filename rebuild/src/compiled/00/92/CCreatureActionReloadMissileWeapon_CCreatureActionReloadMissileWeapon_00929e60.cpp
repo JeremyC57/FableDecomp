@@ -7,8 +7,8 @@ struct Obj {
 extern void __fastcall SubCleanup(Sub* s);
 extern void __fastcall FinalDtor(Obj* o);
 
-void __fastcall DestVal_A8_E(Obj* self)
+void __fastcall DestVal_A8_E(Obj* action)
 {
-    SubCleanup(&self->member);
-    FinalDtor(self);
+    SubCleanup(&action->member);
+    FinalDtor(action);
 }

@@ -4,10 +4,10 @@
 float g_sortDistanceNumerator = 100.0f; // [0x12a3a20]
 
 
-void __fastcall SetMaxSortDistance(CEngineSubPrimitiveRenderer* self, float dist)
+void __fastcall SetMaxSortDistance(CEngineSubPrimitiveRenderer* renderer, float dist)
 {
-    self->MaxSortDistance = dist;
-    self->SortDistanceMultiplier = g_sortDistanceNumerator / dist;
+    renderer->MaxSortDistance = dist;
+    renderer->SortDistanceMultiplier = g_sortDistanceNumerator / dist;
 }
 
 int main()

@@ -126,11 +126,11 @@ public:
     virtual void _v118() const;
     virtual void _v119() const;
     virtual void _v120() const;
-    virtual void GiveHeroObject(const CCharString& name, long count, bool equip) const;// slot 121 (+0x1e4)
-    virtual void GiveHeroTitle(const CCharString& name) const;
+    virtual void GiveHeroObject(const CCharString& titleKey, long count, bool equip) const;// slot 121 (+0x1e4)
+    virtual void GiveHeroTitle(const CCharString& titleKey) const;
 };
 
-void CGameScriptInterface::GiveHeroTitle(const CCharString& name) const
+void CGameScriptInterface::GiveHeroTitle(const CCharString& titleKey) const
 {
-    GiveHeroObject(name, -1, true);
+    GiveHeroObject(titleKey, -1, true);
 }

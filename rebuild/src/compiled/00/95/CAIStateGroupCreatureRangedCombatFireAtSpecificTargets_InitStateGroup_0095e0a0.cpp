@@ -1,1 +1,1 @@
-void __stdcall CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets_InitStateGroup(int arg0, int arg1) {}
+void __stdcall CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets_InitStateGroup(int world, int creature) {}

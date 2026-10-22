@@ -10,9 +10,9 @@ struct C3DAnimation2 {
     Held* held;
 };
 
-bool __fastcall C3DAnimation2_HasRotation(C3DAnimation2* self)
+bool __fastcall C3DAnimation2_HasRotation(C3DAnimation2* animation2)
 {
-    Held* h = self->held;
+    Held* h = animation2->held;
     if (h != 0) {
         if (h->p->flags & 3)
             return true;

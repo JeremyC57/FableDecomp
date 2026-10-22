@@ -1,4 +1,4 @@
-// CObserver::`scalar deleting destructor'(unsigned int flags) -- this class's vtable (0x01246020), the member at +4 destroyed (0x0052E1E0, labelled "LTextTreeWalkThrough::Dtor"), then free for flag bit 0
+// NUISystem::CObserver::`scalar deleting destructor'(unsigned int flags) -- this class's vtable (0x01246020), the member at +4 destroyed (0x0052E1E0, labelled "LTextTreeWalkThrough::Dtor"), then free for flag bit 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052E2F0, length 39 bytes.
 // Leaf: ??_GCObserver@NUISystem@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x01246020) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.

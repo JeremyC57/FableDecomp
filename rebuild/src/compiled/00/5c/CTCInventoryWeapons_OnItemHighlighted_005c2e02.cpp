@@ -1,4 +1,4 @@
-// CTCInventoryWeapons::vfunc_36(long) -- slot 36 for the weapons screen: runs the (empty) base slot-36 hook, then resets the inventory item animation
+// CTCInventoryWeapons::OnItemHighlighted(long) -- slot 36 for the weapons screen: runs the (empty) base slot-36 hook, then resets the inventory item animation
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C2E02, 27 bytes. rtti-vtables: CTCInventoryWeapons 0x01253FF4 slot 36.
 // Callees: the base slot-36 implementation @ 0x005BC4C0 (an empty `ret 4`), CTCInventoryBase::ResetInventoryAnim(long)
 //          @ 0x005BCD2D.

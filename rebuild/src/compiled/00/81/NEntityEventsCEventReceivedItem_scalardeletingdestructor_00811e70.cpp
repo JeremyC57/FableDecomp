@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEventReceivedItem {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEventReceivedItem_dtor(CEventReceivedItem* event);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEventReceivedItem_scalar_deleting_destructor(CEventReceivedItem* event, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEventReceivedItem_dtor(event);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(event);
+    return event;
 }

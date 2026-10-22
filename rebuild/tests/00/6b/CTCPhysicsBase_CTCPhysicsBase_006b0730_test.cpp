@@ -3,16 +3,16 @@ static int g_arg = 0; static int g_ok = 0;
 struct CBase {
     int vt;
     int base1, base2;
-    CBase(int arg) { g_arg = arg; g_ok = 1; base1 = 0; base2 = 0; }
+    CBase(int thing) { g_arg = thing; g_ok = 1; base1 = 0; base2 = 0; }
 };
 struct CTCPhysicsBase : public CBase {
     int f0c, f10, f14, f18, f1c, f20, f24, f28, f2c, f30;
     int f34;
     int f38;
     unsigned char f3c;
-    CTCPhysicsBase(int arg);
+    CTCPhysicsBase(int thing);
 };
-CTCPhysicsBase::CTCPhysicsBase(int arg) : CBase(arg)
+CTCPhysicsBase::CTCPhysicsBase(int thing) : CBase(thing)
 {
     volatile int* p = (volatile int*)this;
     p[0] = 0x0125d2c4;

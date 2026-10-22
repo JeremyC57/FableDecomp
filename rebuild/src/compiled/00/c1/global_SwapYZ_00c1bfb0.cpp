@@ -16,7 +16,7 @@ struct C3DVector {
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-C3DVector __fastcall SwapYZ(const C3DVector& v)
+C3DVector __fastcall SwapYZ(const C3DVector& pos)
 {
-    return C3DVector(v.X, v.Z, v.Y);
+    return C3DVector(pos.X, pos.Z, pos.Y);
 }

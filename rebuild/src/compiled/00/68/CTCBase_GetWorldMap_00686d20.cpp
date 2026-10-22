@@ -1,4 +1,4 @@
-// NDisplayView::CViewBase::GetDisplayEngine @ retail 0x004c79d0
+// CTCBase::GetWorldMap @ 0x00686D20
 // Retail bytes: a1 1c8a3b01 8b4028 c3
 //   mov eax, ds:[0x13b8a1c]   ; load global singleton pointer
 //   mov eax, [eax+0x28]       ; return CDisplayEngine* at +0x28
@@ -27,7 +27,7 @@ struct CViewGlobal
 extern CViewGlobal *g_viewBaseGlobal;
 
 // __fastcall so the (unused) this arrives in ecx exactly like __fastcall.
-CDisplayEngine * __fastcall NDisplayView__CViewBase__GetDisplayEngine(void * /*thisptr*/)
+CDisplayEngine * __fastcall CTCBase__GetWorldMap(void * /*thisptr*/)
 {
     return g_viewBaseGlobal->pEngine;
 }

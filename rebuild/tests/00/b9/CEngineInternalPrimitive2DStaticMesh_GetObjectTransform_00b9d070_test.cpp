@@ -10,7 +10,7 @@ struct CEngineInternalPrimitive2DStaticMesh {
 };
 
 bool __fastcall CEngineInternalPrimitive2DStaticMesh_GetObjectTransform(
-    CEngineInternalPrimitive2DStaticMesh* self, int edx, CMatrix3x4& out);
+    CEngineInternalPrimitive2DStaticMesh* mesh, int edx, CMatrix3x4& out);
 
 int main() {
     CEngineInternalPrimitive2DStaticMesh obj;

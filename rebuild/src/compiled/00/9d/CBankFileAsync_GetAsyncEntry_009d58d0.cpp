@@ -1,4 +1,4 @@
-// CBankFileAsync::CreateEntry(unsigned long index) -- allocate a CBankFileAsyncEntry bound to this bank and entry index and return it in a fresh counted pointer
+// CBankFileAsync::GetAsyncEntry(unsigned long index) -- allocate a CBankFileAsyncEntry bound to this bank and entry index and return it in a fresh counted pointer
 // Leaf: CreateEntry
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D58D0, 152 bytes (+ int3 padding).
 // Label correction: the manifest's "CEngineWorldMap::CreateNewBankMap" is propagated over byte-similar factories; the
@@ -67,7 +67,7 @@ struct CCountedPointer {
 struct CBankFileAsync {
     unsigned long GetEntryDataSize(unsigned long index) const;   // 0x009CC240 (CBankFile)
     unsigned long Align(unsigned long size) const;               // 0x009CBB90 (CBankFile)
-    CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);
+    CCountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long index);
 };
 
 inline CBankFileAsyncEntry::CBankFileAsyncEntry(CBankFileAsync* bank, unsigned long index)
@@ -76,7 +76,7 @@ inline CBankFileAsyncEntry::CBankFileAsyncEntry(CBankFileAsync* bank, unsigned l
     m_alignedSize = m_pBank->Align(m_pBank->GetEntryDataSize(index));
 }
 
-CCountedPointer<CBankFileAsyncEntry> CBankFileAsync::CreateEntry(unsigned long index)
+CCountedPointer<CBankFileAsyncEntry> CBankFileAsync::GetAsyncEntry(unsigned long index)
 {
     CCountedPointer<CBankFileAsyncEntry> entry(new CBankFileAsyncEntry(this, index), DeleteBankFileAsyncEntry);
     return entry;

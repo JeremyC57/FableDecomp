@@ -3,9 +3,9 @@
 struct Inner { char pad[0x5c]; unsigned char flag; };
 struct CLandscapeBackgroundTreeNode { char pad[0xa4]; Inner* inner; };
 
-bool __fastcall CanRelocateData(CLandscapeBackgroundPatch* self, int /*edx*/, long a) {
+bool __fastcall CanRelocateData(CLandscapeBackgroundPatch* patch, int /*edx*/, long a) {
     (void)a;
-    return self->Parent->inner->flag == 0;
+    return patch->Parent->inner->flag == 0;
 }
 
 int main() {

@@ -1,6 +1,6 @@
 struct S; typedef int (__fastcall* VFn)(S*);
 struct S { VFn* vtbl; };
-bool __fastcall IsBoastSequence(S* self)
+bool __fastcall IsBoastSequence(S* sequence)
 {
-    return self->vtbl[0xc/4](self) == 3;
+    return sequence->vtbl[0xc/4](sequence) == 3;
 }

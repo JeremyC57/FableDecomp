@@ -1,7 +1,7 @@
 struct CEnginePrimitiveTypeInfo;
 
-unsigned long __fastcall CEnginePrimitiveTypeInfo_PeekSceneFilterFlags(CEnginePrimitiveTypeInfo* self)
+unsigned long __fastcall CEnginePrimitiveTypeInfo_PeekSceneFilterFlags(CEnginePrimitiveTypeInfo* info)
 {
-    (void)self;
+    (void)info;
     return 3UL;
 }

@@ -10,8 +10,8 @@ struct CEngineResourceManager {
     char pad[0x10];
 };
 
-void __fastcall ProcessLoading(CEngineResourceManager* self)
+void __fastcall ProcessLoading(CEngineResourceManager* manager)
 {
-    SubObj* s = reinterpret_cast<SubObj*>(reinterpret_cast<char*>(self) - 0xc);
+    SubObj* s = reinterpret_cast<SubObj*>(reinterpret_cast<char*>(manager) - 0xc);
     s->Do(0, g_procLoadTime);
 }

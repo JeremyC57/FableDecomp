@@ -1,4 +1,4 @@
-// CPointerListOwner_007fef40::Add(CListItem* item) -- appends the item pointer to the 4-byte-element vector at +0xc through the inlined retail push_back
+// CTCUserActionPointBase::FreeActionPoint(CListItem* item) -- appends the item pointer to the 4-byte-element vector at +0xc through the inlined retail push_back
 // Leaf: Add
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FEF40, length 53 bytes.
 // Callees: the vector's reallocating insert @ 0x00440990.

@@ -1,17 +1,17 @@
-// vector deleting destructor for CEngineSubPrimitiveGameMesh @ 0x00bdfd60
-struct CEngineSubPrimitiveGameMesh;
+// vector deleting destructor for CLocalDetailPrimitiveMesh @ 0x00bdfd60
+struct CLocalDetailPrimitiveMesh;
 
 // scalar destructor @ 0xbdfd80 : __fastcall(self) -> void
-extern void __fastcall CEngineSubPrimitiveGameMesh_dtor(CEngineSubPrimitiveGameMesh* self);
+extern void __fastcall CLocalDetailPrimitiveMesh_dtor(CLocalDetailPrimitiveMesh* mesh);
 // deallocator @ 0xbf9920 : ecx=self, edx=0
-extern void __fastcall CEngineSubPrimitiveGameMesh_dealloc(CEngineSubPrimitiveGameMesh* self, int edx);
+extern void __fastcall CLocalDetailPrimitiveMesh_dealloc(CLocalDetailPrimitiveMesh* mesh, int edx);
 
-void* __fastcall CEngineSubPrimitiveGameMesh_vector_deleting_destructor(CEngineSubPrimitiveGameMesh* self, int edx, unsigned int flags)
+void* __fastcall CLocalDetailPrimitiveMesh_scalar_deleting_destructor(CLocalDetailPrimitiveMesh* mesh, int edx, unsigned int flags)
 {
     (void)edx;
-    CEngineSubPrimitiveGameMesh_dtor(self);
+    CLocalDetailPrimitiveMesh_dtor(mesh);
     if (flags & 1) {
-        CEngineSubPrimitiveGameMesh_dealloc(self, 0);
+        CLocalDetailPrimitiveMesh_dealloc(mesh, 0);
     }
-    return self;
+    return mesh;
 }

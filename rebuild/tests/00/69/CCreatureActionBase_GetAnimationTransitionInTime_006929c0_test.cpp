@@ -16,10 +16,10 @@ struct CCreatureActionBase {
     Foo* f74;
 };
 
-static long model(CCreatureActionBase* self)
+static long model(CCreatureActionBase* action)
 {
-    Foo* f = self->f74;
-    long r = Sub_Helper(&self->sub);
+    Foo* f = action->f74;
+    long r = Sub_Helper(&action->sub);
     return f->Method(r);
 }
 

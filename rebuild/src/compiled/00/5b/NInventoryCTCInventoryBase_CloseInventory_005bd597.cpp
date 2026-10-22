@@ -1,5 +1,5 @@
 #pragma optimize("s", on)
-// CTCInventoryBase::OnInventoryClosed() -- clears InventoryOpen, notifies the global GUI owner, walks the categories (an inlined empty per-category hook) and resets the two animation def indices
+// NInventory::CTCInventoryBase::CloseInventory() -- clears InventoryOpen, notifies the global GUI owner, walks the categories (an inlined empty per-category hook) and resets the two animation def indices
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD597, length 68 bytes; size-optimised TU (`push 14h ; pop ecx` divisor, pass-through pushes).
 // Callees: the global object at 0x013B8790 (method @ 0x004374B0, manifest "CPlayerGui::Open", propagated). CTCInventoryBase virtual slot 31 (vtable 0x01253DBC); the manifest label "CCategory::SetQuestPersistentFlagForItems" is propagated and rejected.
 // Retail CTCInventoryBase: the PDB layout minus 4 bytes per vector before each member -- Categories
@@ -13,7 +13,7 @@ extern CPlayerGuiCalls* g_pPlayerGui;            // 0x013B8790
 
 struct CCategory_Retail {
     unsigned char _body[0x2C];
-    void OnInventoryClosed() { }                 // inlined to nothing; the loop remains
+    void CloseInventory() { }                 // inlined to nothing; the loop remains
 };
 
 struct CCategoryVector {                         // retail std::vector<CCategory>
@@ -32,15 +32,15 @@ struct CTCInventoryBase_Retail {
     unsigned char   _pad_0x59[0xCB];
     long            InventoryAnimThingDefIndex;  // +0x124
     long            RHSetInvItemDefIndex;        // +0x128
-    void OnInventoryClosed();
+    void CloseInventory();
 };
 
-void CTCInventoryBase_Retail::OnInventoryClosed()
+void CTCInventoryBase_Retail::CloseInventory()
 {
     InventoryOpen = false;
     g_pPlayerGui->Close();
     for (unsigned long i = 0; i < Categories.size(); ++i)
-        Categories[i].OnInventoryClosed();
+        Categories[i].CloseInventory();
     InventoryAnimThingDefIndex = 0;
     RHSetInvItemDefIndex = 0;
 }

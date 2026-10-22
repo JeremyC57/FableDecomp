@@ -10,8 +10,8 @@ static CWideString* g_tp2; static long g_tp3; static bool g_tp4;
 int __fastcall callee_5d97b0(CWideString* self){ return self->v + 100; }
 
 struct Tail {
-    void tail_5bf19c(CWideString* p2, long p3, bool p4){
-        g_tail_called = 1; g_tp2 = p2; g_tp3 = p3; g_tp4 = p4;
+    void tail_5bf19c(CWideString* text, long p3, bool p4){
+        g_tail_called = 1; g_tp2 = text; g_tp3 = p3; g_tp4 = p4;
     }
 };
 static Tail g_tail;
@@ -24,14 +24,14 @@ struct CTCInventoryBase {
     char pad[0x20];
     void* m20;
     void* m24;
-    void GetItemDescription(CWideString* p2, long p3, bool p4);
+    void GetItemDescription(CWideString* text, long p3, bool p4);
 };
 
-void CTCInventoryBase::GetItemDescription(CWideString* p2, long p3, bool p4)
+void CTCInventoryBase::GetItemDescription(CWideString* text, long p3, bool p4)
 {
-    int r = callee_5d97b0(p2);
+    int r = callee_5d97b0(text);
     Tail* t = (Tail*)callee_5c08c0(this->m20, this->m24, r);
-    t->tail_5bf19c(p2, p3, p4);
+    t->tail_5bf19c(text, p3, p4);
 }
 
 int main(){

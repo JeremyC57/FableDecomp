@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CBankFile_NotifyBankSize(int arg0, int arg1) {}
+void __stdcall CBankFile_NotifyBankSize(int arg0, int array) {}
 int main()
 {
     CBankFile_NotifyBankSize(1, 2);

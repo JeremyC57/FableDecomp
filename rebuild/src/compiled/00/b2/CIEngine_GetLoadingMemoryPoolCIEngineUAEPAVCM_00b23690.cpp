@@ -1,8 +1,8 @@
 struct CMovableResourceMemoryPool;
 struct CIEngine;
 
-CMovableResourceMemoryPool* __fastcall CIEngine_GetLoadingMemoryPool(CIEngine* self)
+CMovableResourceMemoryPool* __fastcall CIEngine_GetLoadingMemoryPool(CIEngine* engine)
 {
-    (void)self;
+    (void)engine;
     return 0;
 }

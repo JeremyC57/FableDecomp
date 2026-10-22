@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEventHitBySpecialAbility {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEventHitBySpecialAbility_dtor(CEventHitBySpecialAbility* event);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEventHitBySpecialAbility_scalar_deleting_destructor(CEventHitBySpecialAbility* event, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEventHitBySpecialAbility_dtor(event);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(event);
+    return event;
 }

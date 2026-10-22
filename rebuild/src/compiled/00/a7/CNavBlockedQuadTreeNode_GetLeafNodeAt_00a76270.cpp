@@ -1,4 +1,4 @@
-void* __fastcall CNavBlockedQuadTreeNode_GetLeafNodeAt(void* self, int, int)
+void* __fastcall CNavBlockedQuadTreeNode_GetLeafNodeAt(void* node, int, int)
 {
-    return self;
+    return node;
 }

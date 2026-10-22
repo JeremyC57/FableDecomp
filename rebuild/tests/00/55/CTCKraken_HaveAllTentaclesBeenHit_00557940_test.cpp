@@ -8,11 +8,11 @@ struct CTCKraken {
     int  m_remaining;  // +0x1ac
 };
 
-char __fastcall HaveAllTentaclesBeenHit(CTCKraken *self)
+char __fastcall HaveAllTentaclesBeenHit(CTCKraken *kraken)
 {
-    if (self->m_phase != 2)
+    if (kraken->m_phase != 2)
         return 0;
-    return self->m_remaining == 0;
+    return kraken->m_remaining == 0;
 }
 
 int main()

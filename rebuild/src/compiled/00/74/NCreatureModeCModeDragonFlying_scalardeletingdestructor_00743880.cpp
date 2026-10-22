@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CModeDragonFlying {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CModeDragonFlying_dtor(CModeDragonFlying* mode);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CModeDragonFlying_scalar_deleting_destructor(CModeDragonFlying* mode, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CModeDragonFlying_dtor(mode);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(mode);
+    return mode;
 }

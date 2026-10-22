@@ -1,4 +1,4 @@
-// CEmitterData::UnloadResource() -- refuse while an asynchronous bank read is still pending; otherwise drop the resource's counted pointer (held through the pointer at +0x2c) and report true
+// NParticleEngine::CParticleEmitterInfo::CEmitterData::UnloadResource() -- refuse while an asynchronous bank read is still pending; otherwise drop the resource's counted pointer (held through the pointer at +0x2c) and report true
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF1440, length 56 bytes.
 // Callees: CBankFileAsyncData::IsFinished() @ 0x009D54E0 (on the async record at +0x1c), the counted object's virtual slot 1 (Destroy) when its count at +4
 // reaches zero. Shape: the pending test returns the IsFinished result's zero byte straight (`pop esi ; ret`); the release is the landed counted-pointer

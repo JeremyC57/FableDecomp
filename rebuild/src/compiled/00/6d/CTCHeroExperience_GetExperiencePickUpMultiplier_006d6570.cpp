@@ -5,8 +5,8 @@ struct CTCHeroExperience {
   char pad34[0x54-0x34];
   COther* p54;
 };
-long __fastcall CTCHeroExperience_GetExperiencePickUpMultiplier(const CTCHeroExperience* self) {
-  long v = (long)(self->f30 / self->p54->f64 + 0.5);
+long __fastcall CTCHeroExperience_GetExperiencePickUpMultiplier(const CTCHeroExperience* experience) {
+  long v = (long)(experience->f30 / experience->p54->f64 + 0.5);
   if (v < 1) v = 1;
   return v;
 }

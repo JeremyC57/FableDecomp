@@ -1,17 +1,17 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch {
+struct CHitLocationsDef {
     int f0;
     int Parent;
     void* f8;
-    void* vector_deleting_destructor(unsigned int flags);
+    void* scalar_deleting_destructor(unsigned int flags);
 };
 
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+extern void __fastcall CHitLocationsDef_dtor(CHitLocationsDef* def);
 extern void __cdecl eng_operator_delete(void* p);
 
-void* CLandscapeBackgroundPatch::vector_deleting_destructor(unsigned int flags)
+void* CHitLocationsDef::scalar_deleting_destructor(unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(this);
+    CHitLocationsDef_dtor(this);
     if (flags & 1)
         eng_operator_delete(this);
     return this;

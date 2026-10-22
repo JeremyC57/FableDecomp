@@ -16,7 +16,7 @@
 struct CResourceList;
 struct CResource {
     virtual void v00();
-    unsigned long m_pad4;                  // +4
+    unsigned long IVRefCount;                  // +4
     CResourceList* ResourceList;           // +8
     CResource* PrevResource;               // +0xc
     CResource* NextResource;               // +0x10

@@ -8,7 +8,7 @@ struct Delegate {
     virtual void v3();
     virtual void v4();
     virtual void v5();
-    virtual bool Check(CTCCreatureNavigation* orig, C3DVector* v);
+    virtual bool Check(CTCCreatureNavigation* orig, C3DVector* pos);
 };
 
 struct CTCCreatureNavigation {
@@ -16,7 +16,7 @@ struct CTCCreatureNavigation {
     Delegate* ParentThing;
 };
 
-bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int edx, C3DVector* v)
+bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int edx, C3DVector* pos)
 {
-    return self->ParentThing->Check(self, v);
+    return self->ParentThing->Check(self, pos);
 }

@@ -6,14 +6,14 @@ struct C {
   char a[0xc]; unsigned long fc;
   char b[0x48-0x10]; V4 blk48; V6 blk58; V12 blk70; unsigned long fa0, fa4;
   void Method(int x);
-  void U(P& p, unsigned long k);
+  void U(P& primitive, unsigned long k);
 };
-void C::U(P& p, unsigned long k){
+void C::U(P& primitive, unsigned long k){
   this->fc = k;
-  this->blk48 = p.blkc;
-  this->blk58 = p.blk1c;
-  this->blk70 = p.blk34;
-  this->fa0 = p.f64;
-  this->fa4 = p.f68;
+  this->blk48 = primitive.blkc;
+  this->blk58 = primitive.blk1c;
+  this->blk70 = primitive.blk34;
+  this->fa0 = primitive.f64;
+  this->fa4 = primitive.f68;
   this->Method(0);
 }

@@ -10,9 +10,9 @@ extern int __fastcall GetCurrentTick_49d870(void);
 extern int g_div_1375550;   // [0x1375550] divisor
 extern int g_cmp_138c694;   // [0x138c694] compare value
 
-bool __fastcall ShouldBuyFromSeller(CAIStateGroup_BuyFromSeller* self)
+bool __fastcall ShouldBuyFromSeller(CAIStateGroup_BuyFromSeller* stateGroup)
 {
-    int elapsed = GetCurrentTick_49d870() - self->FrameLastBought;
+    int elapsed = GetCurrentTick_49d870() - stateGroup->FrameLastBought;
     int quot = elapsed / g_div_1375550;
     if ((unsigned int)quot > (unsigned int)g_cmp_138c694)
         return true;

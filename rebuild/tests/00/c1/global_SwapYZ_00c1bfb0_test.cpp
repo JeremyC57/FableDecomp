@@ -8,16 +8,16 @@ struct C3DVector {
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-C3DVector SwapYZ(const C3DVector& v)
+C3DVector SwapYZ(const C3DVector& pos)
 {
-    return C3DVector(v.X, v.Z, v.Y);
+    return C3DVector(pos.X, pos.Z, pos.Y);
 }
 
 int main()
 {
-    C3DVector v(1.0f, 2.0f, 3.0f);
-    C3DVector r = SwapYZ(v);
-    if (r.X != 1.0f || r.Y != 3.0f || r.Z != 2.0f || v.Y != 2.0f) { std::printf("00c1bfb0_TEST FAIL\n"); return 1; }
+    C3DVector pos(1.0f, 2.0f, 3.0f);
+    C3DVector r = SwapYZ(pos);
+    if (r.X != 1.0f || r.Y != 3.0f || r.Z != 2.0f || pos.Y != 2.0f) { std::printf("00c1bfb0_TEST FAIL\n"); return 1; }
     std::printf("00c1bfb0_TEST PASS\n");
     return 0;
 }

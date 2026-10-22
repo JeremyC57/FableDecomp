@@ -1,9 +1,9 @@
 #include <cstdio>
 typedef unsigned long ulong;
 struct CCombatActionBase { void* vtbl; };
-ulong __fastcall CCombatActionBase_GetAnimExtraFlags(const CCombatActionBase* self)
+ulong __fastcall CCombatActionBase_GetAnimExtraFlags(const CCombatActionBase* action)
 {
-    (void)self;
+    (void)action;
     return 8u;
 }
 int main()

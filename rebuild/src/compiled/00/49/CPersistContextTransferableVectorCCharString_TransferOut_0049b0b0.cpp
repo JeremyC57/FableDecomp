@@ -1,4 +1,4 @@
-// CPersistContext_TransferableVector::TransferOut(CPersistContext*, CCharString*, long) -- writes element `index` of the CCharString vector through a CPersistTraits<CCharString> (0x0040E630) that owns a default string
+// CPersistContext_TransferableVector<CCharString>::TransferOut(CPersistContext*, CCharString*, long) -- writes element `index` of the CCharString vector through a CPersistTraits<CCharString> (0x0040E630) that owns a default string
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049B0B0, 59 bytes (+5 int3 padding).
 // Callees: 0x0099E4B0 CCharString::CCharString(), 0x0040E630 CPersistTraits<CCharString>::TransferOut

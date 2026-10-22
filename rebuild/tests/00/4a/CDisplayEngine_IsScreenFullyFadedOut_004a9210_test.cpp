@@ -9,11 +9,11 @@ struct CDisplayEngine {
     unsigned char flagC9;       // +0xc9
 };
 
-int __fastcall IsScreenFullyFadedOut(CDisplayEngine *thisp)
+int __fastcall IsScreenFullyFadedOut(CDisplayEngine *engine)
 {
-    if (thisp->fadeActive) {
-        if (!thisp->flagC9) {
-            if (!thisp->flagC8) {
+    if (engine->fadeActive) {
+        if (!engine->flagC9) {
+            if (!engine->flagC8) {
                 return 1;
             }
         }

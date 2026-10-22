@@ -8,10 +8,10 @@ struct SubList {
     void Insert(CCountedPointer* arg) { calls++; last = arg; }
 };
 
-struct CSpellContainerList {
+struct CTCAnimation {
     SubList a;
     SubList b;
-    void AddChild(CCountedPointer* arg)
+    void RemoveCombinationAnimsOfType(CCountedPointer* arg)
     {
         this->a.Insert(arg);
         this->b.Insert(arg);
@@ -20,11 +20,11 @@ struct CSpellContainerList {
 
 int main()
 {
-    CSpellContainerList list;
+    CTCAnimation list;
     list.a.calls = 0; list.a.last = 0;
     list.b.calls = 0; list.b.last = 0;
     CCountedPointer cp; cp.p = (void*)0x1234;
-    list.AddChild(&cp);
+    list.RemoveCombinationAnimsOfType(&cp);
     if (list.a.calls == 1 && list.b.calls == 1 &&
         list.a.last == &cp && list.b.last == &cp) {
         printf("PARITY_OK\n");

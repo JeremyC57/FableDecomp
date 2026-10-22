@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CGameCameraBase_PreparePrimitivesForRendering(int arg0) {}
+void __stdcall CGameCameraBase_PreparePrimitivesForRendering(int prepareInfo) {}
 int main()
 {
     CGameCameraBase_PreparePrimitivesForRendering(1);

@@ -1,4 +1,4 @@
-// CStopWatch::GetTicks @ 0x0051ed80  (__fastcall, returns DWORD)
+// CWorld::GetThingWithUID @ 0x0051ed80  (__fastcall, returns DWORD)
 typedef unsigned long DWORD;
 
 struct Node {
@@ -12,13 +12,13 @@ struct Sub {
     Node* Find(void* key);      // __fastcall member @ 0x527d80 (this in ecx, key on stack)
 };
 
-struct CStopWatch {
+struct CWorld {
     char pad[0x58];
     Sub sub;                    // at +0x58
-    DWORD GetTicks(int a1, int a2);
+    DWORD GetThingWithUID(int a1, int a2);
 };
 
-DWORD CStopWatch::GetTicks(int a1, int a2)
+DWORD CWorld::GetThingWithUID(int a1, int a2)
 {
     Sub* s = &this->sub;
     Node* r = s->Find(&a1);

@@ -11,12 +11,12 @@ struct CThingCreatureBase {
 float g_scale = 2.0f;
 float g_thresh = 5.0f;
 
-float __fastcall CThingCreatureBase_GetCombatRadius(const CThingCreatureBase* self)
+float __fastcall CThingCreatureBase_GetCombatRadius(const CThingCreatureBase* creature)
 {
-    float t = self->p->f134;
+    float t = creature->p->f134;
     if (t * g_scale > g_thresh)
         return t * g_scale;
-    return self->q->f34;
+    return creature->q->f34;
 }
 
 int main()

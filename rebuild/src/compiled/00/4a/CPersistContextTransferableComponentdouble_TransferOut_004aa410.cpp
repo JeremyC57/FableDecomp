@@ -1,4 +1,4 @@
-// CPersistContext_TransferableComponent::TransferOut(CPersistContext*, CCharString*) -- truncates the double behind the target pointer to a long local and hands its address to the long writer 0x009E2560
+// CPersistContext_TransferableComponent<double>::TransferOut(CPersistContext*, CCharString*) -- truncates the double behind the target pointer to a long local and hands its address to the long writer 0x009E2560
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AA410, 36 bytes.
 // Callees: 0x00BFEA70 __ftol2 (CRT, implicit), 0x009E2560 TransferOutLong (__fastcall: context in ecx,

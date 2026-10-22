@@ -7,14 +7,14 @@ static bool checkframe(int v)
   return v == 0 || v == (int)0xfffffcf7;
 }
 
-bool __fastcall CTCCombat_IsCurrentActionBlockable(CTCCombat* self)
+bool __fastcall CTCCombat_IsCurrentActionBlockable(CTCCombat* combat)
 {
-  void* obj = self->f24->p100;
+  void* obj = combat->f24->p100;
   if (obj != 0)
   {
     CVtbl** vt = (CVtbl**)obj;
     if (!(**vt).m(obj))
-      return checkframe(self->fC);
+      return checkframe(combat->fC);
   }
   return false;
 }

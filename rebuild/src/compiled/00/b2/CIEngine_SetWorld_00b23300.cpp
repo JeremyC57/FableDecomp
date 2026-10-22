@@ -1,1 +1,1 @@
-void __stdcall CIEngine_SetWorld(int arg0) {}
+void __stdcall CIEngine_SetWorld(int world) {}

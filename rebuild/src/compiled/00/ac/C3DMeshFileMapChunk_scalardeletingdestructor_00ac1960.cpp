@@ -1,4 +1,4 @@
-// CThingSwitch::`vector_deleting_destructor' @ 0x00AC1960 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
+// C3DMeshFileMapChunk::`scalar deleting destructor' @ 0x00AC1960 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
 // stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
 // +0x34 CCharString (~ @ 0x0099EAE0), +0x30 CCharString (~ @ 0x0099EAE0), then the base CChunkedFileSuperChunk (~ @ 0x00AA8490), and frees the block with operator delete
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /

@@ -1,4 +1,4 @@
-// CPhysicalPrimitiveSphere::TransferBinaryIn(CMemoryDataInputStream* stream) -- read the base name, then the radius (one inlined 4-byte stream read)
+// NHitLocations::CPhysicalPrimitiveSphere::TransferBinaryIn(CMemoryDataInputStream* stream) -- read the base name, then the radius (one inlined 4-byte stream read)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00815620, length 117 bytes (+ int3 padding).
 // Leaf: TransferBinaryIn
 // Callees: CDefString::TransferBinaryIn(CMemoryDataInputStream*) @ 0x0044FC00 (on BaseName),

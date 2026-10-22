@@ -4,7 +4,7 @@ struct CCreatureActionBase {
     void* vtbl;
 };
 
-long __fastcall CCreatureActionBase_GetAnimDelayTime(const CCreatureActionBase* self);
+long __fastcall CCreatureActionBase_GetAnimDelayTime(const CCreatureActionBase* action);
 
 int main()
 {

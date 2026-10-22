@@ -1,2 +1,2 @@
-struct S { char pad[0x14]; unsigned char b14; unsigned char b15; char pad2[0x20-0x16]; int f20; unsigned char b24; void M(int a, int b); };
-void S::M(int a, int b){ this->b24=0; this->f20=0; this->b14=0; this->b15=0; }
+struct S { char pad[0x14]; unsigned char b14; unsigned char b15; char pad2[0x20-0x16]; int f20; unsigned char b24; void M(int world, int creature); };
+void S::M(int world, int creature){ this->b24=0; this->f20=0; this->b14=0; this->b15=0; }

@@ -1,1 +1,1 @@
-void __stdcall CSBIAgents_Display(int arg0) {}
+void __stdcall CSBIAgents_Display(int agent) {}

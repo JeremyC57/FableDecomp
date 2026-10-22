@@ -14,7 +14,7 @@ static SubFilter sfa, sfb;
 bool SubFilter::Test(Thing* t){ (void)t; return true; }
 List* __stdcall GetThingList(int kind){ (void)kind; return &g_list; }
 
-bool __fastcall CThingSearchTools_GetPFirstLeafThing(void* self, int edx, Filter* filter, Thing** out)
+bool __fastcall CThingSearchTools_GetPFirstLeafThing(void* tools, int edx, Filter* filter, Thing** out)
 {
     List* lst = GetThingList(0xf);
     Node* n = lst->sentinel->next;

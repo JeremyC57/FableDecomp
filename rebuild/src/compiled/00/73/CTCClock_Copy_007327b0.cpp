@@ -1,4 +1,4 @@
-// CTCClock::vfunc_12(const CTCClock*) -- copies the other clock's def pointer: the old def released (virtual destroy at zero) and cleared, the new one stored and add-ref'd, nothing done when both already hold the same def
+// CTCClock::Copy(const CTCClock*) -- copies the other clock's def pointer: the old def released (virtual destroy at zero) and cleared, the new one stored and add-ref'd, nothing done when both already hold the same def
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007327B0, length 57 bytes (+ int3 padding). Vtable 0x01267044
 // (CTCClock) slot 12.
 // Callees: none (the def's slot-1 destroy is a virtual call).

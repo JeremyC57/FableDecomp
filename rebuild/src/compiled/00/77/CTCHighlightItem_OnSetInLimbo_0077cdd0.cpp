@@ -1,4 +1,4 @@
-// CTCHighlightItem::vfunc_16(bool) -- calls the member method @ 0x0077CCA0 when the flag argument is set
+// CTCHighlightItem::OnSetInLimbo(bool) -- calls the member method @ 0x0077CDD0 when the flag argument is set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CDD0, oracle length 16 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

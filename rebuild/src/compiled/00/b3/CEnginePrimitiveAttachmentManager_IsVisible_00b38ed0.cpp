@@ -63,7 +63,7 @@ static __forceinline bool IsSphereInFrustum(const CEngineCamera& camera, const C
     return true;
 }
 
-bool __fastcall IsVisible(CEnginePrimitiveAttachmentManager* self, int, const C3DBoundingSphere& sphere, float maxDistance, const CCameraVector& cameras)
+bool __fastcall IsVisible(CEnginePrimitiveAttachmentManager* manager, int, const C3DBoundingSphere& sphere, float maxDistance, const CCameraVector& cameras)
 {
     for (CCameraVector::const_iterator it = cameras.begin(); it != cameras.end(); ++it) {
         const CEngineCamera& camera = **it;

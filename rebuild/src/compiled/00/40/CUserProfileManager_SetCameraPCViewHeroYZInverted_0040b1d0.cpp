@@ -1,21 +1,21 @@
 struct CUserProfileManager {
     char pad0[0xc];
-    unsigned char flagC;   // +0xc
+    unsigned char UseNewProfileValues;   // +0xc
     char pad1[0x9];
     unsigned char CameraPCViewHeroYZInverted;  // +0x16
     char pad2[0xbf];
-    unsigned char byteD6;  // +0xd6
+    unsigned char CameraPCViewHeroYZInvertedNewProfile;  // +0xd6
 };
 
-extern void __fastcall UPM_helperA(CUserProfileManager* self);
-extern void __fastcall UPM_helperB(CUserProfileManager* self);
+extern void __fastcall UPM_helperA(CUserProfileManager* manager);
+extern void __fastcall UPM_helperB(CUserProfileManager* manager);
 
-void __fastcall CUserProfileManager_SetCameraResetting(CUserProfileManager* self, void* /*edx*/, char p1, char p2)
+void __fastcall CUserProfileManager_SetCameraPCViewHeroYZInverted(CUserProfileManager* manager, void* /*edx*/, char p1, char p2)
 {
-    if (self->flagC)
-        self->byteD6 = (unsigned char)p1;
-    self->CameraPCViewHeroYZInverted = (unsigned char)p1;
-    UPM_helperA(self);
+    if (manager->UseNewProfileValues)
+        manager->CameraPCViewHeroYZInvertedNewProfile = (unsigned char)p1;
+    manager->CameraPCViewHeroYZInverted = (unsigned char)p1;
+    UPM_helperA(manager);
     if (p2)
-        UPM_helperB(self);
+        UPM_helperB(manager);
 }

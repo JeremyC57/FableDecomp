@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { int f0; };
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CCreatureGenerationFamilyDef { int f0; };
+extern void __fastcall CCreatureGenerationFamilyDef_dtor(CCreatureGenerationFamilyDef* def);
 extern void __cdecl eng_operator_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCreatureGenerationFamilyDef_scalar_deleting_destructor(CCreatureGenerationFamilyDef* def, int edx_unused, unsigned int flags)
 {
     (void)edx_unused;
-    CLandscapeBackgroundPatch_dtor(self);
+    CCreatureGenerationFamilyDef_dtor(def);
     if (flags & 1)
-        eng_operator_delete(self);
-    return self;
+        eng_operator_delete(def);
+    return def;
 }

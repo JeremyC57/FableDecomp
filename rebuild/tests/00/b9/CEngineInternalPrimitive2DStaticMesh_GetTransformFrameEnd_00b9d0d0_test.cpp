@@ -9,9 +9,9 @@ struct CEngineInternalPrimitive2DStaticMesh {
     CMatrix3x4 frameEnd;
 };
 
-bool __fastcall GetTransformFrameEnd(CEngineInternalPrimitive2DStaticMesh* self, int /*edx*/, CMatrix3x4& out)
+bool __fastcall GetTransformFrameEnd(CEngineInternalPrimitive2DStaticMesh* mesh, int /*edx*/, CMatrix3x4& out)
 {
-    out = self->frameEnd;
+    out = mesh->frameEnd;
     return true;
 }
 

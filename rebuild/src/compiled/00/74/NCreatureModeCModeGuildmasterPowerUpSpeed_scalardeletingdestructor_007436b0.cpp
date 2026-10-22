@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CModeGuildmasterPowerUpSpeed {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CModeGuildmasterPowerUpSpeed_dtor(CModeGuildmasterPowerUpSpeed* mode);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CModeGuildmasterPowerUpSpeed_scalar_deleting_destructor(CModeGuildmasterPowerUpSpeed* mode, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CModeGuildmasterPowerUpSpeed_dtor(mode);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(mode);
+    return mode;
 }

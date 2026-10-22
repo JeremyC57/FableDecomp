@@ -5,9 +5,9 @@ struct CContainmentVolume {
   char* data;
 };
 
-static void RelocateModel(CContainmentVolume* self, void* oldBase, void* newBase) {
-  if (self->data) {
-    self->data = self->data - (char*)oldBase + (char*)newBase;
+static void RelocateModel(CContainmentVolume* volume, void* oldBase, void* newBase) {
+  if (volume->data) {
+    volume->data = volume->data - (char*)oldBase + (char*)newBase;
   }
 }
 

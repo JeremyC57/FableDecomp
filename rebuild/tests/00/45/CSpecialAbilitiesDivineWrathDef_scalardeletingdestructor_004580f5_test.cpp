@@ -1,20 +1,20 @@
 #include <cstdio>
-struct CLandscapeBackgroundPatch { void* vftable; int dtored; };
+struct CSpecialAbilitiesDivineWrathDef { void* vftable; int dtored; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
-static void dtor_impl(CLandscapeBackgroundPatch* self){ g_dtor_called++; self->dtored = 1; }
+static void dtor_impl(CSpecialAbilitiesDivineWrathDef* def){ g_dtor_called++; def->dtored = 1; }
 static void delete_impl(void* p){ (void)p; g_delete_called++; }
 
-static void* vdd(CLandscapeBackgroundPatch* self, unsigned int flags)
+static void* vdd(CSpecialAbilitiesDivineWrathDef* def, unsigned int flags)
 {
-    dtor_impl(self);
+    dtor_impl(def);
     if (flags & 1)
-        delete_impl(self);
-    return self;
+        delete_impl(def);
+    return def;
 }
 
 int main(){
-    CLandscapeBackgroundPatch obj; obj.vftable=0; obj.dtored=0;
+    CSpecialAbilitiesDivineWrathDef obj; obj.vftable=0; obj.dtored=0;
     g_dtor_called=0; g_delete_called=0;
     void* r = vdd(&obj, 0);
     if (r != &obj || g_dtor_called != 1 || g_delete_called != 0 || obj.dtored != 1){

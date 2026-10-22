@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CNavigatorFlyer_UpdateLastPosition(int arg0) {}
+void __stdcall CNavigatorFlyer_UpdateLastPosition(int pos) {}
 int main()
 {
     CNavigatorFlyer_UpdateLastPosition(1);

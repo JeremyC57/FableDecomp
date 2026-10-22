@@ -9,15 +9,15 @@ struct Obj {
 
 static Obj* g_last = 0;
 
-static void Destroy(Obj* self) { self->destroyed = 1; }
-static void FreeThis(Obj* self) { self->freed = 1; g_last = self; }
+static void Destroy(Obj* allocator) { allocator->destroyed = 1; }
+static void FreeThis(Obj* allocator) { allocator->freed = 1; g_last = allocator; }
 
-static void* vecdeldtor(Obj* self, unsigned int flags)
+static void* vecdeldtor(Obj* allocator, unsigned int flags)
 {
-    Destroy(self);
+    Destroy(allocator);
     if (flags & 1)
-        FreeThis(self);
-    return self;
+        FreeThis(allocator);
+    return allocator;
 }
 
 int main()

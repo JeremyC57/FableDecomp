@@ -7,7 +7,7 @@ static int g_drawCalls = 0; static long g_drawArg = -1; static void* g_drawThis 
 struct CTCBase_Retail {
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {}
-    virtual void DrawSaveScreen(long arg) { ++g_drawCalls; g_drawArg = arg; g_drawThis = this; }
+    virtual void DrawSaveScreen(long prepareInfo) { ++g_drawCalls; g_drawArg = prepareInfo; g_drawThis = this; }
 };
 struct STCEntry_Retail { long m_kind; CTCBase_Retail* m_pTC; };
 struct CTCMap_Retail {
@@ -49,15 +49,15 @@ struct CPlayerGui {
     CWorld_Retail*   World;
     unsigned char    _pad008[0x2a8 - 0x008];
     unsigned __int64 HeroCentreUID;
-    void DrawSaveScreen(long arg);
+    void DrawSaveScreen(long prepareInfo);
 };
-void CPlayerGui::DrawSaveScreen(long arg)
+void CPlayerGui::DrawSaveScreen(long prepareInfo)
 {
     if (HeroCentreUID > 0) {
         CThing_Retail* thing = World->GetThingManager()->GetThingWithUID(HeroCentreUID);
         if (thing) {
             if (CTCBase_Retail* tc = GetTCIfPresent(thing, 0x6a))
-                tc->DrawSaveScreen(arg);
+                tc->DrawSaveScreen(prepareInfo);
         }
     }
 }

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCombatSequence_WillPhysicalShieldNonMelee {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCombatSequence_WillPhysicalShieldNonMelee_dtor(CCombatSequence_WillPhysicalShieldNonMelee* sequence);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCombatSequence_WillPhysicalShieldNonMelee_scalar_deleting_destructor(CCombatSequence_WillPhysicalShieldNonMelee* sequence, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCombatSequence_WillPhysicalShieldNonMelee_dtor(sequence);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(sequence);
+    return sequence;
 }

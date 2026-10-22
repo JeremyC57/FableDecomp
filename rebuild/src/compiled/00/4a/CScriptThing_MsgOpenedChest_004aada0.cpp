@@ -52,9 +52,9 @@ struct CScriptThing {
     CInner* m_inner; /* +0x4 */
 };
 
-bool __fastcall CScriptThing_MsgOpenedChest(CScriptThing* self)
+bool __fastcall CScriptThing_MsgOpenedChest(CScriptThing* scriptThing)
 {
-    CInner* p = self->m_inner;
+    CInner* p = scriptThing->m_inner;
     if (!p)
         return false;
     return p->m45();

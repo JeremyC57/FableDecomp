@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CGroundNavigatorExternalInterface {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CGroundNavigatorExternalInterface_dtor(CGroundNavigatorExternalInterface* interface);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CGroundNavigatorExternalInterface_scalar_deleting_destructor(CGroundNavigatorExternalInterface* interface, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CGroundNavigatorExternalInterface_dtor(interface);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(interface);
+    return interface;
 }

@@ -16,10 +16,10 @@ struct CSystemManager
     FocusSink* m_focusSink;  // +0x58
 };
 
-void __fastcall CSystemManager_SetHasInputFocus(CSystemManager* self, int edx, bool focus)
+void __fastcall CSystemManager_SetHasInputFocus(CSystemManager* manager, int edx, bool focus)
 {
-    self->m_hasInputFocus = focus;
-    FocusSink* sink = self->m_focusSink;
+    manager->m_hasInputFocus = focus;
+    FocusSink* sink = manager->m_focusSink;
     if (sink)
         sink->NotifyFocus(focus);
 }

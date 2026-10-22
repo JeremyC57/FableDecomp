@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_SetScreenColourFilter(int arg0) {}
+void __stdcall CIEngine_SetScreenColourFilter(int settings) {}
 int main()
 {
     CIEngine_SetScreenColourFilter(1);

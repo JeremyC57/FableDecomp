@@ -21,7 +21,7 @@ template <class T> struct CCountedPointer {
 struct CBankFileAsync {
     unsigned long GetEntryDataSize(unsigned long index) const { return index * 10 + 3; }
     unsigned long Align(unsigned long size) const { return (size + 15) & ~15UL; }
-    CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index)
+    CCountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long index)
     {
         CCountedPointer<CBankFileAsyncEntry> entry(new CBankFileAsyncEntry(this, index), DeleteEntry);
         return entry;
@@ -35,7 +35,7 @@ int main()
 {
     CBankFileAsync bank; bool ok;
     {
-        CCountedPointer<CBankFileAsyncEntry> e = bank.CreateEntry(5);
+        CCountedPointer<CBankFileAsyncEntry> e = bank.GetAsyncEntry(5);
         ok = e.m_pObject->m_pBank == &bank && e.m_pObject->m_index == 5 && e.m_pObject->m_alignedSize == 64 && e.m_pCount->m_references == 1;
     }
     ok = ok && g_deleted == 1;

@@ -1,4 +1,4 @@
-// CModeBase::`scalar deleting destructor'(unsigned int flags) -- this class's vtable (0x012673CC), the CCharString at +0xc destroyed (0x0099EAE0), the CAnimFilterBase member at +8 destroyed inline (its vtable 0x0122FFCC), then free for flag bit 0
+// CTCCreatureModeManager::CModeBase::`scalar deleting destructor'(unsigned int flags) -- this class's vtable (0x012673CC), the CCharString at +0xc destroyed (0x0099EAE0), the CAnimFilterBase member at +8 destroyed inline (its vtable 0x0122FFCC), then free for flag bit 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00739EE0, length 46 bytes.
 // Leaf: ??_GCModeBase@CTCCreatureModeManager@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x012673CC) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.

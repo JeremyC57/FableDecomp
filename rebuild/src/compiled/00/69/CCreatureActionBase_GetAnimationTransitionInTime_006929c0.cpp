@@ -9,9 +9,9 @@ struct CCreatureActionBase {
     Foo* f74;
 };
 
-long __fastcall GetAnimationTransitionInTime(CCreatureActionBase* self)
+long __fastcall GetAnimationTransitionInTime(CCreatureActionBase* action)
 {
-    Foo* f = self->f74;
-    long r = Sub_Helper(&self->sub);
+    Foo* f = action->f74;
+    long r = Sub_Helper(&action->sub);
     return f->Method(r);
 }

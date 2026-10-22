@@ -1,6 +1,6 @@
 struct Inner { char pad[0xC0]; int refs; };
 struct Outer { char pad[0xE0]; Inner* inner; };
-int __fastcall CountReferences(Outer* self)
+int __fastcall CountReferences(Outer* creature)
 {
-    return self->inner->refs;
+    return creature->inner->refs;
 }

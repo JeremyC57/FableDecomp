@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
-// CLandscapeBackgroundPatch::`vector deleting destructor' @ 0x0046f483
+// CAbilityButtonGuiDef::`scalar deleting destructor' @ 0x0046f483
 //
 // Standard MSVC vector-deleting-destructor thunk. Retail:
 //   push esi ; mov esi,ecx        ; esi = this
@@ -21,19 +21,19 @@ struct CLandscapeBackgroundPatch
 };
 
 // Scalar (ordinary) destructor; thisptr in ecx -> modeled __fastcall.
-extern void FABLE_FASTCALL CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* thisptr);
+extern void FABLE_FASTCALL CAbilityButtonGuiDef_dtor(CLandscapeBackgroundPatch* thisptr);
 
 // operator delete (engine allocator free), __cdecl argument pushed.
-extern void FABLE_CDECL CLandscapeBackgroundPatch_opDelete(void* block);
+extern void FABLE_CDECL CAbilityButtonGuiDef_opDelete(void* block);
 
-void* FABLE_FASTCALL CLandscapeBackgroundPatch_vector_deleting_dtor(
+void* FABLE_FASTCALL CAbilityButtonGuiDef_vector_deleting_dtor(
     CLandscapeBackgroundPatch* thisptr, int edx_unused, fable_u32 flags)
 {
     (void)edx_unused;
-    CLandscapeBackgroundPatch_dtor(thisptr);
+    CAbilityButtonGuiDef_dtor(thisptr);
     if (flags & 1)
     {
-        CLandscapeBackgroundPatch_opDelete(thisptr);
+        CAbilityButtonGuiDef_opDelete(thisptr);
     }
     return thisptr;
 }

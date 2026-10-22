@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEnginePrimitiveManagerRepeatedZSprites_RenderSubPrimitive(int arg0, int arg1) {}
+void __stdcall CEnginePrimitiveManagerRepeatedZSprites_RenderSubPrimitive(int primitive, int arg1) {}
 int main()
 {
     CEnginePrimitiveManagerRepeatedZSprites_RenderSubPrimitive(1, 2);

@@ -3,8 +3,8 @@
 struct GBlob { char pad[0xa0]; float thresh; };
 struct GHolder { char pad[0xdc]; GBlob* blob; };
 extern "C" GHolder* GetGlobal(void);
-bool __fastcall CTCHeroStats_IsDrunk(const CTCHeroStats* self)
+bool __fastcall CTCHeroStats_IsDrunk(const CTCHeroStats* stats)
 {
     GHolder* h = GetGlobal();
-    return self->BestScoreCoinGolfOakVale >= h->blob->thresh;
+    return stats->BestScoreCoinGolfOakVale >= h->blob->thresh;
 }

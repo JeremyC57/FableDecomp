@@ -1,7 +1,7 @@
 #include <cstdio>
-int __fastcall CInputProcessHeroAbilitiesScreen_GetPInventory(const unsigned char* self)
+int __fastcall CInputProcessHeroAbilitiesScreen_GetPInventory(const unsigned char* process)
 {
-    return *reinterpret_cast<const int*>(self + 52);
+    return *reinterpret_cast<const int*>(process + 52);
 }
 int main()
 {

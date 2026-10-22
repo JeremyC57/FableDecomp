@@ -2,7 +2,7 @@
 
 struct CCreatureActionBase { void* vtbl; };
 
-unsigned long __fastcall CCreatureActionBase_GetAnimExtraFlags(const CCreatureActionBase* self);
+unsigned long __fastcall CCreatureActionBase_GetAnimExtraFlags(const CCreatureActionBase* action);
 
 int main()
 {

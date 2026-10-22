@@ -15,10 +15,10 @@ struct C3DVector {
 struct CScaledObject_Retail {
     unsigned char _pad_0x00[0x10];
     float         m_scale;                     // +0x10
-    C3DVector func_00991640(const C3DVector& v) const;
+    C3DVector func_00991640(const C3DVector& pos) const;
 };
 
-C3DVector CScaledObject_Retail::func_00991640(const C3DVector& v) const
+C3DVector CScaledObject_Retail::func_00991640(const C3DVector& pos) const
 {
-    return C3DVector(v.X * m_scale, v.Y * m_scale, v.Z * m_scale);
+    return C3DVector(pos.X * m_scale, pos.Y * m_scale, pos.Z * m_scale);
 }

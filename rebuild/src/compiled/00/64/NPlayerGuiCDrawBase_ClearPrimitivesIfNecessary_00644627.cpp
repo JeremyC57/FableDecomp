@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// CSystemManager::UninitWindow  @ 00644627  (VC7.1 /O2 /Oy)
+// NPlayerGui::CDrawBase::ClearPrimitivesIfNecessary  @ 00644627  (VC7.1 /O2 /Oy)
 
 struct Temp {
     int slot;
@@ -10,16 +10,16 @@ void __fastcall Temp_helper(Temp* draw, int edx, int a0, int a1);
 
 struct CDrawBase {
     char pad0[0x18];
-    unsigned char byte18;   // +0x18
+    unsigned char Drawing;   // +0x18
     int   field1c;          // +0x1c
     int   field20;          // +0x20
-    void UninitWindow();
+    void ClearPrimitivesIfNecessary();
 };
 
-void CDrawBase::UninitWindow()
+void CDrawBase::ClearPrimitivesIfNecessary()
 {
     Temp t;
-    if (this->byte18 == 0) {
+    if (this->Drawing == 0) {
         Temp_helper(&t, this->field1c, this->field20, 0x41be70);
     }
 }

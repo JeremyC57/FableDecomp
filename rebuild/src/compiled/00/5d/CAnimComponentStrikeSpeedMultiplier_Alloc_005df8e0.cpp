@@ -15,7 +15,7 @@ struct CAnimComponentStrikeSpeedMultiplier {
 extern "C" void * __cdecl fable_op_new(unsigned int size);
 
 // this-call modeled as __fastcall: self arrives in ecx
-CAnimComponentBase * __fastcall Alloc(CAnimComponentStrikeSpeedMultiplier * self)
+CAnimComponentBase * __fastcall Alloc(CAnimComponentStrikeSpeedMultiplier * component)
 {
     CAnimComponentStrikeSpeedMultiplier * p =
         (CAnimComponentStrikeSpeedMultiplier *)fable_op_new(0xc);

@@ -2,7 +2,7 @@
 #include <cstdio>
 
 
-extern "C" long __fastcall GetPosition_0099abd0(CDiskFileWin32* self);
+extern "C" long __fastcall GetPosition_0099abd0(CDiskFileWin32* win32);
 
 static int g_calls;
 static void* g_handle;

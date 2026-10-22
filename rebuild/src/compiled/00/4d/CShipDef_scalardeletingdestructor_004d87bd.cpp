@@ -1,16 +1,16 @@
 #pragma optimize("s", on)
-struct AutoTinyVectorObject
+struct CShipDef
 {
     void* vftable;
 };
-extern void* const g_AutoTinyVectorVftable;
-extern void __fastcall AutoTinyVectorDestructor(void* self);
+extern void* const g_CShipDef_vftable;
+extern void __fastcall CShipDef_Destruct(void* def);
 void operator delete(void*);
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CShipDef* def, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    def->vftable = (void*)&g_CShipDef_vftable;
+    CShipDef_Destruct(def);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(def);
+    return def;
 }

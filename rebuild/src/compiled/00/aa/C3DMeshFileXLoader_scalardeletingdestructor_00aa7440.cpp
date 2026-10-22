@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct C3DMeshFileXLoader {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall C3DMeshFileXLoader_dtor(C3DMeshFileXLoader* loader);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DMeshFileXLoader_scalar_deleting_destructor(C3DMeshFileXLoader* loader, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DMeshFileXLoader_dtor(loader);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(loader);
+    return loader;
 }

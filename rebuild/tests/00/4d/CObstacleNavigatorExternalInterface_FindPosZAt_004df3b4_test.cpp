@@ -3,7 +3,7 @@
 // global that FindPosZAt returns
 float g_obstacleNavPosZ = 0.0f;
 
-float __stdcall FindPosZAt(float a, float b)
+float __stdcall FindPosZAt(float pos, float b)
 {
     return g_obstacleNavPosZ;
 }

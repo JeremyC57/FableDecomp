@@ -12,11 +12,11 @@ struct CEngineInternalPrimitiveParticleSpriteTrailGroup {
 
 // this-in-ECX, dummy EDX to force both real args onto the stack ([esp+4],[esp+8]).
 void __fastcall CEngineInternalPrimitiveParticleSpriteTrailGroup_Update(
-        CEngineInternalPrimitiveParticleSpriteTrailGroup* self,
+        CEngineInternalPrimitiveParticleSpriteTrailGroup* group,
         int /*edx*/,
         const CEnginePrimitive& prim,
         unsigned long n)
 {
-    self->EnginePrimitiveFlags = n;
-    self->fieldb8 = prim.field18;
+    group->EnginePrimitiveFlags = n;
+    group->fieldb8 = prim.field18;
 }

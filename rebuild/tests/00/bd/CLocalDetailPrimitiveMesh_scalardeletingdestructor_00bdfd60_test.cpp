@@ -5,16 +5,16 @@ struct Obj { int alive; };
 static int g_dtor = 0;
 static int g_freed = 0;
 
-static void model_dtor(Obj* self) { self->alive = 0; g_dtor++; }
-static void model_dealloc(Obj* self, int edx) { (void)self; (void)edx; g_freed++; }
+static void model_dtor(Obj* mesh) { mesh->alive = 0; g_dtor++; }
+static void model_dealloc(Obj* mesh, int edx) { (void)mesh; (void)edx; g_freed++; }
 
-static void* model_vdtor(Obj* self, unsigned int flags)
+static void* model_vdtor(Obj* mesh, unsigned int flags)
 {
-    model_dtor(self);
+    model_dtor(mesh);
     if (flags & 1) {
-        model_dealloc(self, 0);
+        model_dealloc(mesh, 0);
     }
-    return self;
+    return mesh;
 }
 
 int main()

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// CPersistContext_TransferableComponent<float>::TransferIn  @ 005cbe9d
+// CPersistContext_TransferableComponent<CDefIndex>::TransferIn  @ 005cbe9d
 // __fastcall void TransferIn(CPersistContext*, CStringParser*)
 
 class CPersistContext;

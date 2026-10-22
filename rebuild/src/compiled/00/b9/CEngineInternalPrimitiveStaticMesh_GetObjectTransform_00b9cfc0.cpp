@@ -6,8 +6,8 @@ struct CEngineInternalPrimitiveStaticMesh {
 };
 
 bool __fastcall CEngineInternalPrimitiveStaticMesh_GetObjectTransform(
-    CEngineInternalPrimitiveStaticMesh* self, int /*edx*/, CMatrix3x4& out)
+    CEngineInternalPrimitiveStaticMesh* mesh, int /*edx*/, CMatrix3x4& out)
 {
-    out = self->transform;
+    out = mesh->transform;
     return true;
 }

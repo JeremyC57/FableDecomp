@@ -4,7 +4,7 @@ struct CIME {
     unsigned char _pad_0x0[0x8];
     char enabled;
     unsigned char _pad_0x9[0x47];
-    char flag50;
+    char CancelOnOKClick;
 };
 
 static int g_a_called = 0;
@@ -15,9 +15,9 @@ static char g_b_arg = -1;
 void __fastcall CIME_cb_a(char b) { g_a_called++; g_a_arg = b; }
 void __fastcall CIME_cb_b(char b) { g_b_called++; g_b_arg = b; }
 
-void __fastcall CIME_Enable(CIME* self, int edx, char enable)
+void __fastcall CIME_Enable(CIME* ime, int edx, char enable)
 {
-    if (self->enabled) {
+    if (ime->enabled) {
         CIME_cb_a(0);
         CIME_cb_b(enable != 0);
     }

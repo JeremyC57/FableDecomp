@@ -16,22 +16,22 @@ struct CTCSpotLight {                                   // the engine header's m
     float OldAccumilativeFlickerFactor;
 };
 static float g_random = 0.0f; static unsigned long g_seed = 0; static unsigned long* g_seedPassed = 0; static float g_range = 0.0f;
-unsigned long* __fastcall GetPLocalSeed(CTCSpotLight* self) { return &g_seed; }
+unsigned long* __fastcall GetPLocalSeed(CTCSpotLight* light) { return &g_seed; }
 float __fastcall GFFloatRandom(float range, unsigned long* seed) { g_range = range; g_seedPassed = seed; return g_random; }
 
-void __fastcall FrameUpdate(CTCSpotLight* self)
+void __fastcall FrameUpdate(CTCSpotLight* light)
 {
-    self->OldAccumilativeFlickerFactor = self->AccumilativeFlickerFactor;
-    CSpotLightDef* def = (CSpotLightDef*)self->PLightDef_Object;
-    float flicker = (self->Overridden ? self->PLightInfo_Data->Flicker : def->Flicker) * 0.1;
+    light->OldAccumilativeFlickerFactor = light->AccumilativeFlickerFactor;
+    CSpotLightDef* def = (CSpotLightDef*)light->PLightDef_Object;
+    float flicker = (light->Overridden ? light->PLightInfo_Data->Flicker : def->Flicker) * 0.1;
     if (flicker > 0.00390625f) {
-        float speed = ((CSpotLightDef*)self->PLightDef_Object)->FlickerSpeed;
-        self->AccumilativeFlickerFactor += (GFFloatRandom(1.0f, GetPLocalSeed(self)) - 0.5f) * speed * flicker;
+        float speed = ((CSpotLightDef*)light->PLightDef_Object)->FlickerSpeed;
+        light->AccumilativeFlickerFactor += (GFFloatRandom(1.0f, GetPLocalSeed(light)) - 0.5f) * speed * flicker;
         float low = 1.0f - flicker;
-        if (self->AccumilativeFlickerFactor < low)
-            self->AccumilativeFlickerFactor = low;
-        else if (self->AccumilativeFlickerFactor > 1.0f)
-            self->AccumilativeFlickerFactor = 1.0f;
+        if (light->AccumilativeFlickerFactor < low)
+            light->AccumilativeFlickerFactor = low;
+        else if (light->AccumilativeFlickerFactor > 1.0f)
+            light->AccumilativeFlickerFactor = 1.0f;
     }
 }
 

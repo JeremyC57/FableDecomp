@@ -19,7 +19,7 @@ struct CTCEntityEvents {
     CSubObject sub;
 };
 
-void __fastcall CTCEntityEvents_FrameUpdate(CTCEntityEvents* self);
+void __fastcall CTCEntityEvents_FrameUpdate(CTCEntityEvents* events);
 
 // definitions of externs for the test
 void CBaseEntityEvents::baseUpdate() { g_baseCalled++; g_baseThis = this; }

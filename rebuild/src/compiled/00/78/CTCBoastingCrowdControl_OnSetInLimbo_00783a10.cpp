@@ -1,4 +1,4 @@
-// CTCBoastingCrowdControl::vfunc_16(bool flag) -- with the flag set, release every crowd thing; otherwise start the crowd control up unless it is already active
+// CTCBoastingCrowdControl::OnSetInLimbo(bool flag) -- with the flag set, release every crowd thing; otherwise start the crowd control up unless it is already active
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00783A10, length 31 bytes (+ int3 padding).
 // Callees: the crowd-thing teardown @ 0x007832B0 (walks HeroCrowdThings; manifest "LTextTree_KillAllThings"),
 // CTCBoastingCrowdControl::Startup @ 0x00783850.

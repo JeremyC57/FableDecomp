@@ -7,6 +7,6 @@
 //
 // Matching: uses the PDB layout from engine/CDiskFileWin32.h (Length at +0x0C).
 #include "engine/CDiskFileWin32.h"  // PDB layout: AccessType, Position, Length, WinFileHandle, Opened, Pathname
-long __fastcall CDiskFileWin32_GetLength(const CDiskFileWin32* self) {
-    return self->Length;
+long __fastcall CDiskFileWin32_GetLength(const CDiskFileWin32* win32) {
+    return win32->Length;
 }

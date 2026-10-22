@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { void* vftable; };
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CSpecialAbilitiesGhostSwordDef { void* vftable; };
+extern void __fastcall CSpecialAbilitiesGhostSwordDef_dtor(CSpecialAbilitiesGhostSwordDef* def);
 extern void operator_delete_stub(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags) {
+void* __fastcall CSpecialAbilitiesGhostSwordDef_scalar_deleting_destructor(CSpecialAbilitiesGhostSwordDef* def, int edx, unsigned int flags) {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    CSpecialAbilitiesGhostSwordDef_dtor(def);
     if (flags & 1) {
-        operator_delete_stub(self);
+        operator_delete_stub(def);
     }
-    return self;
+    return def;
 }

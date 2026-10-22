@@ -13,7 +13,7 @@ struct CEngineInternalPrimitiveParticleSpriteTrailGroup {
 };
 
 void __fastcall CEngineInternalPrimitiveParticleSpriteTrailGroup_Update(
-        CEngineInternalPrimitiveParticleSpriteTrailGroup* self,
+        CEngineInternalPrimitiveParticleSpriteTrailGroup* group,
         int, const CEnginePrimitive& prim, unsigned long n);
 
 int main() {

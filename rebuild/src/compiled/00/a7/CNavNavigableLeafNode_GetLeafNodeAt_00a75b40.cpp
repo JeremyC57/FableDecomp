@@ -1,4 +1,4 @@
-void* __fastcall CNavNavigableLeafNode_GetLeafNodeAt(void* self, int, int)
+void* __fastcall CNavNavigableLeafNode_GetLeafNodeAt(void* node, int, int)
 {
-    return self;
+    return node;
 }

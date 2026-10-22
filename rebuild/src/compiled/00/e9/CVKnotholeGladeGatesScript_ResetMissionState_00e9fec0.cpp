@@ -1,4 +1,4 @@
-// CMeleeApprentice::Init() -- clear the script's state: the thirteen flag bytes +0x48..+0x54 (stored in the order 48..4f, 51, 53, 54, 50, 52), the dword at +0x58 and the byte at +0x68
+// CV_KnotholeGladeGatesScript::ResetMissionState() -- clear the script's state: the thirteen flag bytes +0x48..+0x54 (stored in the order 48..4f, 51, 53, 54, 50, 52), the dword at +0x58 and the byte at +0x68
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E9FEC0, length 48 bytes.
 // Leaf: Init
 // Shape: no frame, one zero register, the stores in declaration order of the model, `ret`.

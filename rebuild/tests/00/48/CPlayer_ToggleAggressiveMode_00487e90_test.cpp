@@ -9,16 +9,16 @@ struct CPlayer {
 
 int g_tailCalls = 0;
 
-extern "C" void __fastcall CPlayer_OnAggressiveChanged(CPlayer* self)
+extern "C" void __fastcall CPlayer_OnAggressiveChanged(CPlayer* player)
 {
     g_tailCalls++;
 }
 
-void __fastcall ToggleAggressiveMode(CPlayer* self)
+void __fastcall ToggleAggressiveMode(CPlayer* player)
 {
     if (g_aggressiveEnabled) {
-        self->aggressive = (self->aggressive == 0);
-        CPlayer_OnAggressiveChanged(self);
+        player->aggressive = (player->aggressive == 0);
+        CPlayer_OnAggressiveChanged(player);
     }
 }
 

@@ -1,1 +1,1 @@
-void __stdcall CEngineComponent_PostLayerRender(int arg0) {}
+void __stdcall CEngineComponent_PostLayerRender(int params) {}

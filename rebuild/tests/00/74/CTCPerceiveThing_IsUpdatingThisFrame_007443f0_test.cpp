@@ -5,9 +5,9 @@
 extern int __cdecl GetFrameCount(void);
 
 
-bool __fastcall CTCPerceiveThing_IsUpdatingThisFrame(CTCPerceiveThing *self)
+bool __fastcall CTCPerceiveThing_IsUpdatingThisFrame(CTCPerceiveThing *thing)
 {
-    return (GetFrameCount() % 4) == self->UpdateOffset;
+    return (GetFrameCount() % 4) == thing->UpdateOffset;
 }
 
 // Controllable stub for the extern frame counter.

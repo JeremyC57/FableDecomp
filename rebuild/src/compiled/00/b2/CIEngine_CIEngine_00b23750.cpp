@@ -6,7 +6,7 @@
 // Shape: base constructor, the derived vtable store, then the body assignment `m_initialised = false` (+8).
 struct CInitBaseClass {
     virtual void v00();                         // (a non-virtual destructor keeps the deleting destructor out of the TU)
-    bool m_flag04;                              // +0x04 (cleared by the base constructor)
+    bool Valid;                              // +0x04 (cleared by the base constructor)
     CInitBaseClass();                           // 0x0099A310
 };
 

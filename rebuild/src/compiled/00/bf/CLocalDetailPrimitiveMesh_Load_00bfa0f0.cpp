@@ -38,16 +38,16 @@ struct CLocalDetailPrimitiveMesh {
     unsigned char     _pad30[8];
     CMatrix3x4        Matrix;                       // +0x38
     float             Scale;                        // +0x68
-    bool Load(CDataInputStream* in);
+    bool Load(CDataInputStream* stream);
 };
 
-bool CLocalDetailPrimitiveMesh::Load(CDataInputStream* in)
+bool CLocalDetailPrimitiveMesh::Load(CDataInputStream* stream)
 {
-    in->Read(BBox);
-    in->Read(BSphere);
-    in->Read(Matrix);
+    stream->Read(BBox);
+    stream->Read(BSphere);
+    stream->Read(Matrix);
     float scale;
-    in->Read(scale);
+    stream->Read(scale);
     Scale = scale;
     return true;
 }

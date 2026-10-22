@@ -1,4 +1,4 @@
-// CEventShownItem::~CEventShownItem() -- if the shown item is still alive and has its type-0x1a component, tell that component the showing has ended; then destroy both intelligent pointers
+// NEntityEvents::CEventShownItem::~CEventShownItem() -- if the shown item is still alive and has its type-0x1a component, tell that component the showing has ended; then destroy both intelligent pointers
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008116D0, 129 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times), the component map's LowerBound @ 0x0040F020
 //   (inlined GetInterface, type 0x1a = bit 26 of the presence dword at +0x20), the component method @ 0x005D8E50 (manifest

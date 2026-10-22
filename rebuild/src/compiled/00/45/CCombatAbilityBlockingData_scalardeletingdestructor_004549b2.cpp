@@ -1,19 +1,19 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch {
+struct CCombatAbilityBlockingData {
     int f0;
     int Parent;
     void* f8;
     char inner[4];
     unsigned char _pad_0x10[0xa8];
     void* tex;
-    ~CLandscapeBackgroundPatch();
+    ~CCombatAbilityBlockingData();
 };
 extern "C" void __cdecl fable_operator_delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags) {
-    self->~CLandscapeBackgroundPatch();
+void* __fastcall CCombatAbilityBlockingData_scalar_deleting_destructor(CCombatAbilityBlockingData* blocking, int edx, unsigned int flags) {
+    blocking->~CCombatAbilityBlockingData();
     if (flags & 1) {
-        fable_operator_delete(self);
+        fable_operator_delete(blocking);
     }
-    return self;
+    return blocking;
 }

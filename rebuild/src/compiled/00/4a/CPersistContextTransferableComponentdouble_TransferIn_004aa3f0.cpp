@@ -1,4 +1,4 @@
-// CPersistContext_TransferableComponent::TransferIn(CPersistContext*, CStringParser*) -- parses a long through 0x009E2590 and stores it, converted to double, through the target pointer
+// CPersistContext_TransferableComponent<double>::TransferIn(CPersistContext*, CStringParser*) -- parses a long through 0x009E2590 and stores it, converted to double, through the target pointer
 // Leaf: TransferIn
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AA3F0, 32 bytes.
 // Callee: 0x009E2590 TransferInLong (__fastcall: context in ecx, parser in edx, long* result on the stack).

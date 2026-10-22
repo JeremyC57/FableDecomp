@@ -9,7 +9,7 @@ enum ECombatAbilityDataType
 
 
 // this-call member modeled as __fastcall free fn (self in ecx).
-ECombatAbilityDataType __fastcall CCombatAbilityData_GetCombatAbilityDataType(CCombatAbilityData* self)
+ECombatAbilityDataType __fastcall CCombatAbilityData_GetCombatAbilityDataType(CCombatAbilityData* ability)
 {
     return ECADT_Base;
 }

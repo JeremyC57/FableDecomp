@@ -6,7 +6,7 @@ struct CGhostGrannySon {
     bool m_flag;    // +0x18
 };
 
-void __fastcall Init(CGhostGrannySon *this_) {
-    this_->m_index = -1;
-    this_->m_flag  = false;
+void __fastcall Init(CGhostGrannySon *son) {
+    son->m_index = -1;
+    son->m_flag  = false;
 }

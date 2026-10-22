@@ -1,4 +1,4 @@
-// CCombatTypeDef::operator=(const CCombatTypeDef&) -- memberwise copy: CParentDefClassBase part, the ring-occupation, combat-sequence and sequence-def vectors, the distance limits, the attack-pattern map and the creature/recoil flags; returns *this
+// CCombatTypeDef::Copy(const CCombatTypeDef&) -- memberwise copy: CParentDefClassBase part, the ring-occupation, combat-sequence and sequence-def vectors, the distance limits, the attack-pattern map and the creature/recoil flags; returns *this
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0045C2E8, length 231 bytes.
 // Pragma: #pragma optimize("s", on) -- the def module is size-optimised (every copy goes through eax/al).

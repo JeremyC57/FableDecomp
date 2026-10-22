@@ -8,19 +8,19 @@ struct CPresentationIntervalDesc {
 struct CDisplayManager {
     CPresentationIntervalDesc current;
     CDisplayManager() : current(false, 0, false) { }
-    void ChangePresentationInterval(const CPresentationIntervalDesc& desc) { current = desc; }
-    void ChangePresentationInterval(bool presentImmediate, long vsyncCount, bool presentImmediateIfSyncMissed)
+    void SetPresentParameters(const CPresentationIntervalDesc& desc) { current = desc; }
+    void SetPresentParameters(bool presentImmediate, long vsyncCount, bool presentImmediateIfSyncMissed)
     {
         CPresentationIntervalDesc desc(presentImmediate, vsyncCount, presentImmediateIfSyncMissed);
-        ChangePresentationInterval(desc);
+        SetPresentParameters(desc);
     }
 };
 int main()
 {
     CDisplayManager m;
-    m.ChangePresentationInterval(true, 2, false);
+    m.SetPresentParameters(true, 2, false);
     if (!m.current.PresentImmediate || m.current.PresentImmediateIfSyncMissed || m.current.VSyncCount != 2) { std::printf("009bff10_TEST FAIL\n"); return 1; }
-    m.ChangePresentationInterval(false, 1, true);
+    m.SetPresentParameters(false, 1, true);
     if (m.current.PresentImmediate || !m.current.PresentImmediateIfSyncMissed || m.current.VSyncCount != 1) { std::printf("009bff10_TEST FAIL\n"); return 1; }
     std::printf("009bff10_TEST PASS\n");
     return 0;

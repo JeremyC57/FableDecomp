@@ -5,8 +5,8 @@ struct CMatrix3x4 {
 };
 
 bool __fastcall GetTransformFrameStart(
-    CEngineInternalPrimitive2DStaticMesh* self, int /*edx*/, CMatrix3x4& out)
+    CEngineInternalPrimitive2DStaticMesh* mesh, int /*edx*/, CMatrix3x4& out)
 {
-    out = *(CMatrix3x4*)&self->transform;
+    out = *(CMatrix3x4*)&mesh->transform;
     return true;
 }

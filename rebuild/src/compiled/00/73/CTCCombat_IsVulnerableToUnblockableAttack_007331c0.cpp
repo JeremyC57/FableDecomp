@@ -6,9 +6,9 @@ struct CTCCombat {
     int field_68;
 };
 
-char __fastcall CTCCombat_IsVulnerableToUnblockableAttack(const CTCCombat* self)
+char __fastcall CTCCombat_IsVulnerableToUnblockableAttack(const CTCCombat* combat)
 {
-    if ((float)self->field_68 > (float)g_someCount * g_someFactor)
+    if ((float)combat->field_68 > (float)g_someCount * g_someFactor)
         return 1;
     return 0;
 }

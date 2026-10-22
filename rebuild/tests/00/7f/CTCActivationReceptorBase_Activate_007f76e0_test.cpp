@@ -10,18 +10,18 @@ struct CTCActivationReceptorBase {
 };
 
 static int g_helper_calls = 0;
-void* __fastcall helper_49d870(CTCActivationReceptorBase* self)
+void* __fastcall helper_49d870(CTCActivationReceptorBase* receptor)
 {
-    (void)self;
+    (void)receptor;
     ++g_helper_calls;
     return (void*)0xDEADBEEF;
 }
 
-void __fastcall Activate(CTCActivationReceptorBase* self)
+void __fastcall Activate(CTCActivationReceptorBase* receptor)
 {
-    self->Activated = 1;
-    if (self->f20)
-        self->f28 = helper_49d870(self);
+    receptor->Activated = 1;
+    if (receptor->f20)
+        receptor->f28 = helper_49d870(receptor);
 }
 
 int main()

@@ -1,6 +1,6 @@
 struct CUserProfileManager {
     char pad0[0x0c];
-    char flagC;        // +0x0c
+    char UseNewProfileValues;        // +0x0c
     char pad1[0x38 - 0x0d];
     int Antialiasing;         // +0x38
     char pad2[0xf4 - 0x3c];
@@ -14,7 +14,7 @@ extern "C" void __fastcall UPM_Refresh(CUserProfileManager* self);
 // then the real stack params (value, doRefresh) => ret 0x8.
 void __fastcall CUserProfileManager_SetAntialiasing(CUserProfileManager* self, int /*edx*/, int value, char doRefresh)
 {
-    if (self->flagC)
+    if (self->UseNewProfileValues)
         self->fldF4 = value;
     self->Antialiasing = value;
     UPM_Apply(self);

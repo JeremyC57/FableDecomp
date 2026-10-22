@@ -18,8 +18,8 @@ struct CCombatSequenceBase
 // ecx = self, edx = value (a second register-passed unsigned param).
 // Retail returns the raw modulo remainder in eax (no bool normalization),
 // so the return type is the integer remainder; caller treats low byte as bool.
-unsigned int __fastcall CCombatSequenceBase_IsBoastSequence(CCombatSequenceBase* self, unsigned int value)
+unsigned int __fastcall CCombatSequenceBase_IsBoastSequence(CCombatSequenceBase* sequence, unsigned int value)
 {
-    unsigned int period = self->GetPeriod();
+    unsigned int period = sequence->GetPeriod();
     return value - (value / period) * period;
 }

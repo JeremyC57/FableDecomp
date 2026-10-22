@@ -11,10 +11,10 @@ extern int __cdecl GetEngineTimeMs(void);
 extern float g_defaultNoControlMovementTime; // ds:0x122dedc, read via fld
 extern int   g_noControlTimeDivisor;         // ds:0x1375550, read via fidiv (integer divisor)
 
-float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager *self)
+float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager *manager)
 {
-    if (self->InsideHeroCount == 0)
+    if (manager->InsideHeroCount == 0)
         return g_defaultNoControlMovementTime;
 
-    return (float)(GetEngineTimeMs() - self->InsideHeroCount) / g_noControlTimeDivisor;
+    return (float)(GetEngineTimeMs() - manager->InsideHeroCount) / g_noControlTimeDivisor;
 }

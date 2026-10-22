@@ -1,17 +1,17 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch {
+struct CHoverable {
     void* vftable;
     int destroyed;
 };
 
 static int g_freed = 0;
-static CLandscapeBackgroundPatch* g_last_dtor = 0;
+static CHoverable* g_last_dtor = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
+void __fastcall CHoverable_dtor(CHoverable* hoverable)
 {
-    g_last_dtor = self;
-    self->destroyed = 1;
+    g_last_dtor = hoverable;
+    hoverable->destroyed = 1;
 }
 
 void operator delete(void* p)
@@ -20,31 +20,31 @@ void operator delete(void* p)
     (void)p;
 }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CHoverable_scalar_deleting_destructor(CHoverable* hoverable, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CHoverable_dtor(hoverable);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(hoverable);
+    return hoverable;
 }
 
 int main()
 {
-    CLandscapeBackgroundPatch a;
+    CHoverable a;
     a.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 0);
+    void* r = CHoverable_scalar_deleting_destructor(&a, 0, 0);
     if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
         std::printf("FAIL no-free path\n");
         return 1;
     }
 
-    CLandscapeBackgroundPatch b;
+    CHoverable b;
     b.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&b, 0, 1);
+    void* r2 = CHoverable_scalar_deleting_destructor(&b, 0, 1);
     if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
         std::printf("FAIL free path\n");
         return 1;

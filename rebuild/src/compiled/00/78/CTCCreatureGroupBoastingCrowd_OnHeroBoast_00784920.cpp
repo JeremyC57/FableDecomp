@@ -15,7 +15,7 @@ extern long g_framesPerSecond;                                      // 0x0137555
 
 struct CBoast {
     unsigned char _pad00[0x18];
-    bool m_flag18;                              // +0x18
+    bool Evil;                              // +0x18
 };
 struct CTCCreatureGroupBoastingCrowd {
     virtual void v00();
@@ -48,7 +48,7 @@ void CTCCreatureGroupBoastingCrowd::OnHeroBoast(const CBoast* boast)
     float delay = (GFFloatRandom(0.5f, GetPRandomSeed()) + 0.5f) * framesPerSecond * 10.0f;
     FrameToLeavePostBoastState = (long)(GFGetCurrentFrame() + delay);
     bool flagged;
-    if (boast && boast->m_flag18)
+    if (boast && boast->Evil)
         flagged = true;
     else {
         flagged = false;

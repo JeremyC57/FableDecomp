@@ -13,9 +13,9 @@ struct CTCTargeted {
     Inner* obj;   // +4
 };
 
-long __fastcall CTCTargeted_GetNumTargetPoints(CTCTargeted* self)
+long __fastcall CTCTargeted_GetNumTargetPoints(CTCTargeted* targeted)
 {
-    Inner* o = self->obj->sub;
+    Inner* o = targeted->obj->sub;
     if (o)
         return o->Query((void*)0x13bac50, 1.0f);
     return 0;

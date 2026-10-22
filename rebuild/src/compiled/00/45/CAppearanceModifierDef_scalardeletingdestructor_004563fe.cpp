@@ -1,16 +1,16 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch {
+struct CAppearanceModifierDef {
     int f0;
     int Parent;
     void* f8;
-    void CLandscapeBackgroundPatch_dtor();
-    void* CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags);
+    void CAppearanceModifierDef_dtor();
+    void* CAppearanceModifierDef_scalar_deleting_destructor(unsigned int flags);
 };
 extern void __cdecl eng_operator_delete(void* p);
 
-void* CLandscapeBackgroundPatch::CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags)
+void* CAppearanceModifierDef::CAppearanceModifierDef_scalar_deleting_destructor(unsigned int flags)
 {
-    this->CLandscapeBackgroundPatch_dtor();
+    this->CAppearanceModifierDef_dtor();
     if (flags & 1) {
         eng_operator_delete(this);
     }

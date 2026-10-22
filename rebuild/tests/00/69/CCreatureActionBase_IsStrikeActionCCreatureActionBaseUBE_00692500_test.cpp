@@ -2,7 +2,7 @@
 
 struct CCreatureActionBase { int vtbl; };
 
-bool __fastcall CCreatureActionBase_IsStrikeAction(const CCreatureActionBase* self);
+bool __fastcall CCreatureActionBase_IsStrikeAction(const CCreatureActionBase* action);
 
 int main()
 {

@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CWADFile_Write(int arg0, int arg1, int arg2) {}
+void __stdcall CWADFile_Write(int arg0, int arg1, int process) {}
 int main()
 {
     CWADFile_Write(1, 2, 3);

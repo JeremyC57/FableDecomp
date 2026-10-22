@@ -9,7 +9,7 @@ struct StrPtr {
 typedef int (__stdcall *CmpFn)(char*, char*);
 CmpFn g_cmp;
 
-int __fastcall StrPtr_operator_ne(StrPtr* self, int /*edx*/, char* rhs)
+int __fastcall StrPtr_operator_ne(StrPtr* ptr, int /*edx*/, char* rhs)
 {
-    return (*g_cmp)(self->p, rhs) == 0x102;
+    return (*g_cmp)(ptr->p, rhs) == 0x102;
 }

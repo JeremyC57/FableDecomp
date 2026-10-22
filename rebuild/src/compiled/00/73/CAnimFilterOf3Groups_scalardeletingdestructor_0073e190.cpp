@@ -1,4 +1,4 @@
-// CNamedAnimFilter_0073e190::`scalar deleting destructor'(unsigned int flags) -- destroy the three CCharStrings at +0xc, +8, +4 (0x0099EAE0), the CAnimFilterBase base's inline destructor stores its vtable (0x0122FFCC), then free for flag bit 0
+// CAnimFilterOf3Groups::`scalar deleting destructor'(unsigned int flags) -- destroy the three CCharStrings at +0xc, +8, +4 (0x0099EAE0), the CAnimFilterBase base's inline destructor stores its vtable (0x0122FFCC), then free for flag bit 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073E190, length 64 bytes.
 // Leaf: ??_GCNamedAnimFilter_0073e190@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: the derived class stores no vtable of its own (its vtable folds into the base's), the base's inline destructor stores the base vtable, `ret 4`.

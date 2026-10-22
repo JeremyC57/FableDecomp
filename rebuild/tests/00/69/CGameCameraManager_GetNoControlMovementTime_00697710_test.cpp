@@ -6,7 +6,7 @@ extern int __cdecl GetEngineTimeMs(void);
 extern float g_defaultNoControlMovementTime;
 extern int   g_noControlTimeDivisor;
 
-float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager *self);
+float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager *manager);
 
 // ---- trivial extern stub defs so the test links ----
 float g_defaultNoControlMovementTime = -1.0f;

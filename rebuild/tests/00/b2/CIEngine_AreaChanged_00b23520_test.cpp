@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_AreaChanged(int arg0) {}
+void __stdcall CIEngine_AreaChanged(int boxI) {}
 int main()
 {
     CIEngine_AreaChanged(1);

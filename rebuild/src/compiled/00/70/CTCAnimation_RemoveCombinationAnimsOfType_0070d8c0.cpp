@@ -1,4 +1,4 @@
-// CSpellContainerList::AddChild @ 0x0070d8c0
+// CTCAnimation::RemoveCombinationAnimsOfType @ 0x0070d8c0
 
 struct CCountedPointer { void* p; };
 
@@ -7,15 +7,15 @@ struct SubList {
     void Insert(CCountedPointer* arg);  // __fastcall member; callee @ 0x711800
 };
 
-struct CSpellContainerList {
+struct CTCAnimation {
     char pad[0x58];
     SubList a;     // +0x58
     char gap[0x64 - 0x58 - sizeof(SubList)];
     SubList b;     // +0x64
-    void AddChild(CCountedPointer* arg);
+    void RemoveCombinationAnimsOfType(CCountedPointer* arg);
 };
 
-void CSpellContainerList::AddChild(CCountedPointer* arg)
+void CTCAnimation::RemoveCombinationAnimsOfType(CCountedPointer* arg)
 {
     this->a.Insert(arg);
     this->b.Insert(arg);

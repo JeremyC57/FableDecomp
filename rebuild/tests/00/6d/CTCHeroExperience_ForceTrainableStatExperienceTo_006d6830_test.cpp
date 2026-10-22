@@ -5,7 +5,7 @@ struct CTCHeroExperience {
     long* stats;
 };
 
-void __fastcall ForceTrainableStatExperienceTo(CTCHeroExperience* self, int edxpad, int category, long value);
+void __fastcall ForceTrainableStatExperienceTo(CTCHeroExperience* experience, int edxpad, int category, long value);
 
 int main() {
     long arr[8];

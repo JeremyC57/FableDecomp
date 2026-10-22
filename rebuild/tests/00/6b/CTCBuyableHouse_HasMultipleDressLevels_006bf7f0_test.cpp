@@ -8,7 +8,7 @@ struct CDefPointeeBase {
 };
 
 
-bool __fastcall HasMultipleDressLevels(CTCBuyableHouse* self);
+bool __fastcall HasMultipleDressLevels(CTCBuyableHouse* house);
 
 int main()
 {

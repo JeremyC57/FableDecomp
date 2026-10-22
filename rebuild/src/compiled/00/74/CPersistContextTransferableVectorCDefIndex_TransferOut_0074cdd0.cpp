@@ -1,4 +1,4 @@
-// CPersistContext_TransferableVector::TransferOut(CPersistContext*, CCharString*, long) -- writes element `index` of the CDefIndex vector through a default-constructed CPersistTraits<CDefIndex> (0x00A3E180)
+// CPersistContext_TransferableVector<CDefIndex>::TransferOut(CPersistContext*, CCharString*, long) -- writes element `index` of the CDefIndex vector through a default-constructed CPersistTraits<CDefIndex> (0x00A3E180)
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074CDD0, 44 bytes.
 // Callee: 0x00A3E180 CPersistTraits<CDefIndex>::TransferOut(CPersistContext*, CCharString*, CDefIndex*) (__fastcall).

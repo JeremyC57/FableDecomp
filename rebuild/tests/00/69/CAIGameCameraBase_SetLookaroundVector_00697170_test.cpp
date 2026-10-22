@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CAIGameCameraBase_SetLookaroundVector(int arg0) {}
+void __stdcall CAIGameCameraBase_SetLookaroundVector(int pos) {}
 int main()
 {
     CAIGameCameraBase_SetLookaroundVector(1);

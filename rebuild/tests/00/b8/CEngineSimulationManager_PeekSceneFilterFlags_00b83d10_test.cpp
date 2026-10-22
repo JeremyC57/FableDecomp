@@ -2,7 +2,7 @@
 
 struct CEngineSimulationManager;
 
-unsigned long __fastcall CEngineSimulationManager_PeekSceneFilterFlags(CEngineSimulationManager* self);
+unsigned long __fastcall CEngineSimulationManager_PeekSceneFilterFlags(CEngineSimulationManager* manager);
 
 struct CEngineSimulationManager { int dummy; };
 

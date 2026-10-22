@@ -2,9 +2,9 @@
 
 struct CAFile { unsigned char pad[4]; };
 
-bool __fastcall CAFile_IsIOFinished(const CAFile* self)
+bool __fastcall CAFile_IsIOFinished(const CAFile* file)
 {
-    (void)self;
+    (void)file;
     return true;
 }
 

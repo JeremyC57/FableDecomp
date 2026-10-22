@@ -2,7 +2,7 @@ class CTCCreditsUI
 {
 public:
     char pad0[0xC];
-    char flagC;
+    char Active;
     char pad2[0x1C - 0xC - 1];
     char flag1C;
 
@@ -11,7 +11,7 @@ public:
 
 void CTCCreditsUI::Deactivate()
 {
-    if (flagC)
+    if (Active)
     {
         flag1C = 1;
     }

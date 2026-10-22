@@ -1,14 +1,14 @@
 #include <cstdio>
 struct Vec3 { float x, y, z; };
 static int g_called = 0;
-int __fastcall CTCPhysicsNavigator_Notify(void* self, int edxpass, const Vec3* v)
+int __fastcall CTCPhysicsNavigator_Notify(void* navigator, int edxpass, const Vec3* v)
 {
-    (void)self; (void)edxpass; (void)v; g_called = 1; return 0;
+    (void)navigator; (void)edxpass; (void)v; g_called = 1; return 0;
 }
-void __fastcall CTCPhysicsNavigator_SetPosition(void* self, int edxpass, const Vec3* v)
+void __fastcall CTCPhysicsNavigator_SetPosition(void* navigator, int edxpass, const Vec3* v)
 {
-    CTCPhysicsNavigator_Notify(self, edxpass, v);
-    *(Vec3*)((char*)self + 0x89) = *v;
+    CTCPhysicsNavigator_Notify(navigator, edxpass, v);
+    *(Vec3*)((char*)navigator + 0x89) = *v;
 }
 int main()
 {

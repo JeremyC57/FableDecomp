@@ -1,1 +1,1 @@
-void __stdcall CIEngine_SetPrimitivePosition(int arg0, int arg1) {}
+void __stdcall CIEngine_SetPrimitivePosition(int handle, int position) {}

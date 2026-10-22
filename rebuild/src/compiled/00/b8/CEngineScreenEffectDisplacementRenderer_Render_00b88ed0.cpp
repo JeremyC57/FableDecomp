@@ -13,7 +13,7 @@
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
 struct CEngineComponentRenderParams {
-    long          m_word00;
+    long          Params;
     unsigned long m_pass;                          // +0x04
 };
 

@@ -9,10 +9,10 @@ struct CCategory {
     int count;     /* +0x3c */
 };
 
-long __fastcall CCategory_GetHighlightedItemCountInCategory(CCategory* self, void* edx, CResult* out)
+long __fastcall CCategory_GetHighlightedItemCountInCategory(CCategory* category, void* edx, CResult* out)
 {
     (void)edx;
-    void* p = (void*)(self->base + self->count * 0x44 + 0xc);
+    void* p = (void*)(category->base + category->count * 0x44 + 0xc);
     out->Init(p);
     return (long)out;
 }

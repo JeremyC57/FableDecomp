@@ -5,9 +5,9 @@ struct CFontBankStateBlock {
     char  fc;
 };
 
-void __stdcall GetDefault(CFontBankStateBlock* p)
+void __stdcall GetDefault(CFontBankStateBlock* block)
 {
-    p->f4 = 0;
-    p->f8 = 0x190;
-    p->fc = 0;
+    block->f4 = 0;
+    block->f8 = 0x190;
+    block->fc = 0;
 }

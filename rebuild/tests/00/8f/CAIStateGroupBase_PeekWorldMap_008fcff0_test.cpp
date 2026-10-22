@@ -30,9 +30,9 @@ struct CInnerImpl : CInner {
 };
 CWorldMap* CInner::PeekWorldMap() { return 0; }
 
-CWorldMap* __fastcall CAIStateGroupBase_PeekWorldMap(CAIStateGroupBase* self)
+CWorldMap* __fastcall CAIStateGroupBase_PeekWorldMap(CAIStateGroupBase* stateGroup)
 {
-    return self->PBrain->mid->inner->PeekWorldMap();
+    return stateGroup->PBrain->mid->inner->PeekWorldMap();
 }
 
 int main() {

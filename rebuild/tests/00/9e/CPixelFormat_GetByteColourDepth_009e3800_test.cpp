@@ -2,9 +2,9 @@
 #include <cstdio>
 struct PixFmtEntry { int bits; int pad[8]; };
 PixFmtEntry g_pixFmtTable[4] = { {8}, {16}, {24}, {32} };
-unsigned long model(CPixelFormat* self)
+unsigned long model(CPixelFormat* format)
 {
-    int bits = g_pixFmtTable[self->FormatIndex].bits;
+    int bits = g_pixFmtTable[format->FormatIndex].bits;
     return (unsigned long)(bits / 8);
 }
 int main(){

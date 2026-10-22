@@ -6,23 +6,23 @@ static void* g_seen_self = 0;
 static long g_seen_a = 0;
 static void* g_seen_p = 0;
 
-extern "C" bool __fastcall sub_88bcb0(void* self, int, long a, void* p) {
+extern "C" bool __fastcall sub_88bcb0(void* self, int, long a, void* output) {
     g_seen_self = self;
     g_seen_a = a;
-    g_seen_p = p;
+    g_seen_p = output;
     return true;
 }
 
 struct CThingAICreature {
     char pad[0x1a8];
     void* f1a8;
-    bool __fastcall UpdateBrain(long a, void* p);
+    bool __fastcall UpdateBrain(long a, void* output);
 };
 
-bool __fastcall CThingAICreature::UpdateBrain(long a, void* p) {
+bool __fastcall CThingAICreature::UpdateBrain(long a, void* output) {
     if (!g_updateBrainEnabled)
         return false;
-    return sub_88bcb0(this->f1a8, 0, a, p);
+    return sub_88bcb0(this->f1a8, 0, a, output);
 }
 
 int main() {

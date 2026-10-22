@@ -6,8 +6,8 @@ struct CMemoryFile {
     long position;
 };
 
-long __fastcall CMemoryFile_GetPosition(const CMemoryFile* self) {
-    return self->position;
+long __fastcall CMemoryFile_GetPosition(const CMemoryFile* file) {
+    return file->position;
 }
 
 int main() {

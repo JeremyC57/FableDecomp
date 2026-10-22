@@ -1,4 +1,4 @@
-// CPersistContext_TransferableVector::TransferOut(CPersistContext*, CCharString*, long) -- formats element `index` of the unsigned 64-bit vector ("%I64u") and appends it to the output string
+// CPersistContext_TransferableVector<unsigned __int64>::TransferOut(CPersistContext*, CCharString*, long) -- formats element `index` of the unsigned 64-bit vector ("%I64u") and appends it to the output string
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00614450, 49 bytes.
 // Callees: 0x0099F930 CCharString::CCharString(unsigned __int64), 0x0099F0A0

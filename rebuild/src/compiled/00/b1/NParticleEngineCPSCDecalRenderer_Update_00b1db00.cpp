@@ -1,4 +1,4 @@
-// CPSCDecalRenderer::Update(CParticleSystem*, float, bool&) -- age the particle system's decals: give fresh decals their life (or pool them into an existing one), delete expired and inactive decals, reset a decal's collision state on its update tick, and report whether any decal is still alive
+// NParticleEngine::CPSCDecalRenderer::Update(CParticleSystem*, float, bool&) -- age the particle system's decals: give fresh decals their life (or pool them into an existing one), delete expired and inactive decals, reset a decal's collision state on its update tick, and report whether any decal is still alive
 // Leaf: ?Update@CPSCDecalRenderer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B1DB00, 219 bytes (+ int3 padding; `ret 0Ch`).
 // Callees: the update-rate query 0x00AEA9F0 (a long; manifest "GFGetPreMainMemoryUsed" is propagated), CPSCDecalRenderer::

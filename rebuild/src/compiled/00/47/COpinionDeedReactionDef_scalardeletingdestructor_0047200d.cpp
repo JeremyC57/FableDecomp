@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
-// CEngineSubPrimitiveText::`scalar deleting destructor' @ 0x0047200d
+// COpinionDeedReactionDef::`scalar deleting destructor' @ 0x0047200d
 // module: CEngineSubPrimitiveText  (thiscall, void*, 2 params)
 //
 // Standard MSVC scalar deleting destructor:
@@ -17,26 +17,26 @@
 // free __fastcall(objptr). The main destructor takes ecx = this.
 
 struct CEngineSubPrimitiveText;
-struct CEngineSubPrimitiveText_Member;
+struct COpinionDeedReactionDef_Member;
 
 // sub-object destructor at +0x3c (thiscall)
-extern void FABLE_FASTCALL CEngineSubPrimitiveText_Member_dtor(
-        CEngineSubPrimitiveText_Member* thisptr);
+extern void FABLE_FASTCALL COpinionDeedReactionDef_Member_dtor(
+        COpinionDeedReactionDef_Member* thisptr);
 
 // this object's own (non-deleting) destructor (thiscall)
-extern void FABLE_FASTCALL CEngineSubPrimitiveText_dtor(
+extern void FABLE_FASTCALL COpinionDeedReactionDef_dtor(
         CEngineSubPrimitiveText* thisptr);
 
 extern void FABLE_CDECL fable_operator_delete(void* p);
 
-void* FABLE_FASTCALL CEngineSubPrimitiveText_scalar_deleting_dtor(
+void* FABLE_FASTCALL COpinionDeedReactionDef_scalar_deleting_dtor(
         CEngineSubPrimitiveText* thisptr,
         int /*edx*/,
         unsigned int flags)
 {
-    CEngineSubPrimitiveText_Member_dtor(
-        (CEngineSubPrimitiveText_Member*)((fable_u8*)thisptr + 0x3c));
-    CEngineSubPrimitiveText_dtor(thisptr);
+    COpinionDeedReactionDef_Member_dtor(
+        (COpinionDeedReactionDef_Member*)((fable_u8*)thisptr + 0x3c));
+    COpinionDeedReactionDef_dtor(thisptr);
     if (flags & 1)
         fable_operator_delete(thisptr);
     return thisptr;

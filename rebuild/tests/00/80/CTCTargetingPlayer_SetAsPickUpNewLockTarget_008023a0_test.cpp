@@ -8,14 +8,14 @@ struct CTCTargetingPlayer {
     unsigned int f44;
 };
 
-extern "C" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* self);
+extern "C" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* player);
 
-void __fastcall SetAsPickUpNewLockTarget(CTCTargetingPlayer* self);
+void __fastcall SetAsPickUpNewLockTarget(CTCTargetingPlayer* player);
 
 static CTCTargetingPlayer* g_seen = 0;
-extern "C" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* self)
+extern "C" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* player)
 {
-    g_seen = self;
+    g_seen = player;
     return 0xDEADBEEF;
 }
 

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CScriptModuleSpline {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CScriptModuleSpline_dtor(CScriptModuleSpline* spline);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CScriptModuleSpline_scalar_deleting_destructor(CScriptModuleSpline* spline, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CScriptModuleSpline_dtor(spline);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(spline);
+    return spline;
 }

@@ -7,7 +7,7 @@ struct CEngineInternalPrimitive2DStaticMesh {
     CMatrix3x4 frame;
 };
 
-bool __fastcall GetTransformFrameStart(CEngineInternalPrimitive2DStaticMesh* self, int, CMatrix3x4& out);
+bool __fastcall GetTransformFrameStart(CEngineInternalPrimitive2DStaticMesh* mesh, int, CMatrix3x4& out);
 
 int main()
 {

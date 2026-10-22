@@ -1,4 +1,4 @@
-// NUISystem::CDraggableInto::EndDrag() -- clear dragging flag and unregister from the drag list.
+// NUISystem::CHoverable::OnDeactivate() -- clear dragging flag and unregister from the drag list.
 // Retail0055bde0 is15 bytes, tail jump ends55bdee; int3 at55bdef; following int3 separates unrelated bodies.
 // RTTI0124b2d4 slot141; slot133=0055bbf0 removes this from global013b8ad4 list.
 // No shared target header exists. Donor CDraggableInto has only opaque padding here.
@@ -138,7 +138,7 @@ virtual void slot131();
 virtual void slot132();
 virtual void UnregisterDrag(); //slot133
 char nativeBase[0x15c];bool Dragging;
-void EndDrag();
+void OnDeactivate();
 };
-void CHoverable::EndDrag(){Dragging=false;UnregisterDrag();}
+void CHoverable::OnDeactivate(){Dragging=false;UnregisterDrag();}
 }

@@ -1,1 +1,1 @@
-void __stdcall CIEngine_SetGlobalLightingParameters(int arg0, int arg1, int arg2, int arg3) {}
+void __stdcall CIEngine_SetGlobalLightingParameters(int pos, int arg1, int arg2, int arg3) {}

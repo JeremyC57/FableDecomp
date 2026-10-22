@@ -1,4 +1,4 @@
-// CTCTavernGameSpotTheAddition::vfunc_33() -- end-of-game override: tavern-game hook, score = the time taken, and a won game with no best time yet (0) or a faster time flags a new best score; enters state 8
+// CTCTavernGameSpotTheAddition::EndRound() -- end-of-game override: tavern-game hook, score = the time taken, and a won game with no best time yet (0) or a faster time flags a new best score; enters state 8
 // Retail: Fable.exe @ 0x007D7BA0, 101 bytes; CTCTavernGameSpotTheAddition vtable 0x0126F814 slot 33 (same slot as the landed
 //         CTCTavernGameShoveHaPenny::vfunc_33 0x007CF4C0).
 // Callees: CTCTavernGame::vfunc_33 0x005E9AA0 (non-virtual base call; manifest "CXMVPlaybackInfo" ctor label is a

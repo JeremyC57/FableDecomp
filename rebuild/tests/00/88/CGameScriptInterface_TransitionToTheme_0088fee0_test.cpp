@@ -22,9 +22,9 @@ void Inner::Apply(int one, int n, int arg2) {
 void* __stdcall Resolve(int a) { g_resolveArg = a; return (void*)(long)a; }
 int CountOf(void* self) { return g_count; }
 
-void CGameScriptInterface_TransitionToTheme(CGameScriptInterface* self, int arg1, int arg2)
+void CGameScriptInterface_TransitionToTheme(CGameScriptInterface* self, int name, int arg2)
 {
-    void* r = Resolve(arg1);
+    void* r = Resolve(name);
     int n = CountOf(r);
     if (n > 0) {
         self->World->PEnvironment->Apply(1, n, arg2);

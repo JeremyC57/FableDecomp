@@ -11,14 +11,14 @@ struct CEngineSubPrimitiveChain { int dummy; };
 extern "C" void __stdcall SpriteHelper(CEngineInternalPrimitiveBase &prim);
 
 ERendered __fastcall RenderPrimitive(
-    CEnginePrimitiveManagerSprites *self,  // ecx
+    CEnginePrimitiveManagerSprites *sprites,  // ecx
     int edx_dummy,                         // edx (unused by thiscall)
     CEngineInternalPrimitiveBase &prim,    // [esp+4]
     EEngineRenderLayer layer,              // [esp+8]
     CEngineSubPrimitiveChain &chain)       // [esp+c]
 {
     (void)edx_dummy; (void)layer; (void)chain;
-    if (self->enabled == 0)
+    if (sprites->enabled == 0)
         return 0;
     SpriteHelper(prim);
     return 2;

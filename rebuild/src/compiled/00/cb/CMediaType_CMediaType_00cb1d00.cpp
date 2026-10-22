@@ -1,4 +1,4 @@
-// CCodecState_00cb1d00::CCodecState_00cb1d00() -- default constructor of a 0x48-byte libpk record: the whole object zeroed (`rep stosd`, 18 words) then the two scale words at +0x28 and +0x20 set to 1
+// CMediaType::CMediaType() -- default constructor of a 0x48-byte libpk record: the whole object zeroed (`rep stosd`, 18 words) then the two scale words at +0x28 and +0x20 set to 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1D00, length 29 bytes.
 // Callees: none (memset is the intrinsic `rep stosd`). Shape: `this` moves to edx so ecx can be the stosd count; the constant 1 is shared by the
 // two stores (+0x28 first, then +0x20, in source order); `mov eax,edx` returns `this`. The twin @ 0x00CB1AC0 is the same body without the

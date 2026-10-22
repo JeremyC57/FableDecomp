@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
-// CLandscapeBackgroundPatch::`vector deleting destructor'
+// CGameDefinitionManager::`scalar deleting destructor'
 // this in ecx (__fastcall), flags on stack. Calls scalar dtor then optional delete.
-extern void __fastcall CLandscapeBackgroundPatch_dtor(void* self);
+extern void __fastcall CGameDefinitionManager_dtor(void* manager);
 extern void __cdecl operator_delete_impl(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(void* self, int /*edx*/, unsigned int flags)
+void* __fastcall CGameDefinitionManager_scalar_deleting_destructor(void* manager, int /*edx*/, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CGameDefinitionManager_dtor(manager);
     if (flags & 1)
-        operator_delete_impl(self);
-    return self;
+        operator_delete_impl(manager);
+    return manager;
 }

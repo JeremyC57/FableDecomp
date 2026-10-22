@@ -1,4 +1,4 @@
-// CMatrix3x4::operator*(float scale) -- return a copy of the matrix with every element multiplied by scale
+// CMatrix3x4::operator*(float)(float scale) -- return a copy of the matrix with every element multiplied by scale
 // Leaf: ??DCMatrix3x4
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075B6C0, length 187 bytes, `ret 8` (hidden result, scale).
 // The manifest label "CEnvironmentSpellEffectInterface::SetRadialBlurPositionParams" is propagated: the body is the

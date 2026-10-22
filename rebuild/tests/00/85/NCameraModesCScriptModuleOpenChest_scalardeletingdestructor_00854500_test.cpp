@@ -22,19 +22,19 @@ void __cdecl AutoTinyCompositeDelete(void*)
 {
     ++g_AutoTinyCompositeDeleteCalls;
 }
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CScriptModuleOpenChest_CompositeScalarDeletingDestructor(void* chest, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 92);
-    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 84);
-    AutoTinyCompositeDestructor(self);
+    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(chest) + 92);
+    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(chest) + 84);
+    AutoTinyCompositeDestructor(chest);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        AutoTinyCompositeDelete(chest);
+    return chest;
 }
 int main()
 {
     unsigned char object[256] = {0};
-    if (CThingSwitch_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
+    if (CScriptModuleOpenChest_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
         g_AutoTinyFirstMember != object + 92 ||
         g_AutoTinySecondMember != object + 84 ||
         g_AutoTinySequenceCount != 3 ||
@@ -43,7 +43,7 @@ int main()
         g_AutoTinySequence[2] != 3 ||
         g_AutoTinyCompositeDeleteCalls != 0)
         return 1;
-    CThingSwitch_CompositeScalarDeletingDestructor(object, 0, 1);
+    CScriptModuleOpenChest_CompositeScalarDeletingDestructor(object, 0, 1);
     if (g_AutoTinySequenceCount != 6 ||
         g_AutoTinyCompositeDeleteCalls != 1)
         return 1;

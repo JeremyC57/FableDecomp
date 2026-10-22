@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngineSceneEnumeratorResetVisibilityRatio_ProcessPrimitive(int arg0) {}
+void __stdcall CEngineSceneEnumeratorResetVisibilityRatio_ProcessPrimitive(int primitive) {}
 int main()
 {
     CEngineSceneEnumeratorResetVisibilityRatio_ProcessPrimitive(1);

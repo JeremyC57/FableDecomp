@@ -11,10 +11,10 @@ struct CTCQuestCompletionUI {
     unsigned char m_c0;
 };
 
-bool __fastcall IsOverridingScreenFade(CTCQuestCompletionUI* this_)
+bool __fastcall IsOverridingScreenFade(CTCQuestCompletionUI* completionUI)
 {
-    if (this_->Active != 0 && this_->m_1c == 0 && this_->m_c0 == 0
-        && this_->m_10 != this_->m_14)
+    if (completionUI->Active != 0 && completionUI->m_1c == 0 && completionUI->m_c0 == 0
+        && completionUI->m_10 != completionUI->m_14)
         return true;
     return false;
 }

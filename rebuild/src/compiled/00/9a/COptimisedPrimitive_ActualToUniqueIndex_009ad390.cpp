@@ -13,9 +13,9 @@ extern "C" SubTable* __stdcall sub_9ad2e0(unsigned long a);
 
 struct COptimisedPrimitive;
 
-long __fastcall ActualToUniqueIndex(COptimisedPrimitive* self, int /*edx*/, unsigned long a, unsigned long b)
+long __fastcall ActualToUniqueIndex(COptimisedPrimitive* primitive, int /*edx*/, unsigned long a, unsigned long b)
 {
-    (void)self;
+    (void)primitive;
     SubTable* t = sub_9ad2e0(a);
     return t->data[b];
 }

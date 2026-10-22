@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct C3DPrimitive2 {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall C3DPrimitive2_dtor(C3DPrimitive2* primitive2);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DPrimitive2_scalar_deleting_destructor(C3DPrimitive2* primitive2, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DPrimitive2_dtor(primitive2);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(primitive2);
+    return primitive2;
 }

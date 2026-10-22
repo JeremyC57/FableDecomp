@@ -25,8 +25,8 @@ struct CWorld { char pad[0x38]; }; // CCamMgr* at +0x34
 void __fastcall CGameScriptInterface_CameraShake(const CGameScriptInterface* self, float magnitude, float duration)
 {
     CCamObj* local;
-    CWorld* a = self->World;
-    CCamMgr* b = *(CCamMgr**)((char*)a + 0x34);
+    CWorld* world = self->World;
+    CCamMgr* b = *(CCamMgr**)((char*)world + 0x34);
     if (b->GetObj(&local)) {
         local->SetEarthquakeAt((C3DVector*)((char*)local + 4), magnitude, duration, false);
     }

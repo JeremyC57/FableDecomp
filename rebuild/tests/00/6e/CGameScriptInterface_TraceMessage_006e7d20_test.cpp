@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CGameScriptInterface_TraceMessage(int arg0) {}
+void __stdcall CGameScriptInterface_TraceMessage(int name) {}
 int main()
 {
     CGameScriptInterface_TraceMessage(1);

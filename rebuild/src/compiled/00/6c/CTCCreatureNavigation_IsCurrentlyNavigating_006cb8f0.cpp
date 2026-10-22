@@ -4,11 +4,11 @@ struct CTCCreatureNavigation {
 };
 extern "C" int helperA(void);
 extern "C" int helperB(void);
-int __fastcall CTCCreatureNavigation_IsCurrentlyNavigating(CTCCreatureNavigation* self)
+int __fastcall CTCCreatureNavigation_IsCurrentlyNavigating(CTCCreatureNavigation* navigation)
 {
-    if (self->cur >= 0) {
+    if (navigation->cur >= 0) {
         helperA();
-        if (helperB() - self->cur <= 1)
+        if (helperB() - navigation->cur <= 1)
             return 1;
     }
     return 0;

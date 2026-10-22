@@ -1,4 +1,4 @@
-// CPSCOrbit::WriteBinary(CDataOutputStream*) -- writes the centre-position parameter id, then the three orbit settings records as one raw 0x90-byte block
+// NParticleEngine::CPSCOrbit::WriteBinary(CDataOutputStream*) -- writes the centre-position parameter id, then the three orbit settings records as one raw 0x90-byte block
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B163E0, length 40 bytes.
 // Callees: CDataOutputStream::WriteULong @ 0x00993EA0, CDataOutputStream virtual slot 4 (+0x10) WriteData(const void*, unsigned long).
 // Identity: slot 16 of NParticleEngine::CPSCOrbit's vtable 0x012A0374 (rtti-vtables.tsv).

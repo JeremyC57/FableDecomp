@@ -3,4 +3,4 @@
 struct G { char pad[0xf9]; unsigned char flag; };
 #pragma pack(pop)
 extern G* g_obj;
-extern "C" unsigned char __fastcall ProcessWhilePaused(void* self) { return g_obj->flag; }
+extern "C" unsigned char __fastcall ProcessWhilePaused(void* process) { return g_obj->flag; }

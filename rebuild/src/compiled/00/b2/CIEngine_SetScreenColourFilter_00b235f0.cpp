@@ -1,1 +1,1 @@
-void __stdcall CIEngine_SetScreenColourFilter(int arg0) {}
+void __stdcall CIEngine_SetScreenColourFilter(int settings) {}

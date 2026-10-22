@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { void* vftable; };
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CSpecialAbilitiesDivineWrathDef { void* vftable; };
+extern void __fastcall CSpecialAbilitiesDivineWrathDef_dtor(CSpecialAbilitiesDivineWrathDef* def);
 extern void __cdecl operator_delete_stub(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CSpecialAbilitiesDivineWrathDef_scalar_deleting_destructor(CSpecialAbilitiesDivineWrathDef* def, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CSpecialAbilitiesDivineWrathDef_dtor(def);
     if (flags & 1)
-        operator_delete_stub(self);
-    return self;
+        operator_delete_stub(def);
+    return def;
 }

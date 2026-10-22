@@ -1,4 +1,4 @@
-// CTCOverheadDisplay::vfunc_11(long) -- clears PrimitiveHandles (vector<CEnginePrimitiveHandle> at +0x1c: erase of the whole [first, last) range); the argument is unused
+// CTCOverheadDisplay::DrawPreparePrimitivesForRendering(long) -- clears PrimitiveHandles (vector<CEnginePrimitiveHandle> at +0x1c: erase of the whole [first, last) range); the argument is unused
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B7DE0, length 19 bytes.
 // Callees: vector<T>::erase(first, last) @ 0x00440D70 (Vector_EraseRange, a __fastcall taking two element pointers).
 // Shape: the inlined clear() pushes m_pLast then m_pFirst (right to left) and forms `this` of the vector with

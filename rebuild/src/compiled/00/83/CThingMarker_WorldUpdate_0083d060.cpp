@@ -1,4 +1,4 @@
-// CThingMarker::vfunc_19() -- true when the byte state returned by the method @ 0x00838BA0 equals 1
+// CThingMarker::WorldUpdate() -- true when the byte state returned by the method @ 0x0083D060 equals 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083D060, oracle length 14 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

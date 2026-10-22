@@ -1,4 +1,4 @@
-// CSwappingStateComponent::Initialise() -- run the CChangingStateComponent base Initialise, then seed the swap state from the component's current value at +0x30 and set the swap mode word to 13
+// NUISystem::CSwappingStateComponent::Initialise() -- run the CChangingStateComponent base Initialise, then seed the swap state from the component's current value at +0x30 and set the swap mode word to 13
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00547360, length 29 bytes.
 // Callees: CChangingStateComponent::Initialise @ 0x0052C730 (zeroes its own +0x134..+0x158 state and calls its base).
 // Shape: `push esi ; mov esi,ecx` keeps `this` for the two stores after the base call; the +0x30 word is read

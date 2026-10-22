@@ -1,4 +1,4 @@
-// CTCChest::vfunc_4() -- while the chest is open, clears the flag byte (+0x10) of the parent thing's interface-9 component when the thing has that interface
+// CTCChest::OnCreate() -- while the chest is open, clears the flag byte (+0x10) of the parent thing's interface-9 component when the thing has that interface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00750730, length 67 bytes (+ int3 padding). Vtable 0x0126957C
 // (CTCChest) slot 4.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (landed callers).

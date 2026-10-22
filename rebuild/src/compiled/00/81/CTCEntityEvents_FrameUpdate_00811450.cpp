@@ -17,9 +17,9 @@ struct CTCEntityEvents {
     CSubObject sub;           // +0x0c
 };
 
-void __fastcall CTCEntityEvents_FrameUpdate(CTCEntityEvents* self)
+void __fastcall CTCEntityEvents_FrameUpdate(CTCEntityEvents* events)
 {
-    self->base.baseUpdate();
+    events->base.baseUpdate();
     int x = helper_49d870();
-    self->sub.consume(x);
+    events->sub.consume(x);
 }

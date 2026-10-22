@@ -19,9 +19,9 @@ struct CScriptThing_Methods : CScriptThing {
     void SetDataString(const CCharString&);
 };
 
-void CScriptThing_Methods::SetDataString(const CCharString& s)
+void CScriptThing_Methods::SetDataString(const CCharString& name)
 {
     CScriptThing* p = this->PImp_Data;
     if (p)
-        ((CScriptThingVirtuals*)p)->SetDataString(s);
+        ((CScriptThingVirtuals*)p)->SetDataString(name);
 }

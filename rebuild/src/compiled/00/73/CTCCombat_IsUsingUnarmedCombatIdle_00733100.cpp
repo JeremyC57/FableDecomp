@@ -28,17 +28,17 @@ struct CTCCombat {
     int     count;                               // +0x1c
 };
 
-bool __fastcall CTCCombat_IsUsingUnarmedCombatIdle(CTCCombat* self)
+bool __fastcall CTCCombat_IsUsingUnarmedCombatIdle(CTCCombat* combat)
 {
-    if (self->obj->GetPlayer()->HasMode(0x1b))
+    if (combat->obj->GetPlayer()->HasMode(0x1b))
         return false;
-    if (self->obj->GetPlayer()->HasMode(0x2f))
+    if (combat->obj->GetPlayer()->HasMode(0x2f))
         return false;
-    if (IsThingCarryingWeapon(self->obj))
+    if (IsThingCarryingWeapon(combat->obj))
         return false;
-    if (self->obj->GetPlayer()->buf[0x217])
+    if (combat->obj->GetPlayer()->buf[0x217])
         return true;
     if (g_bAggressiveModeAvailable)
         return false;
-    return self->count > 0;
+    return combat->count > 0;
 }

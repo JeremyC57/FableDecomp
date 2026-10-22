@@ -21,14 +21,14 @@ struct C2DVector {
 struct C2DLineF {
     C2DVector Point1;   // +0x00
     C2DVector Point2;   // +0x08
-    int IsWithinDist(const C2DVector& p, float dist) const;
+    int IsWithinDist(const C2DVector& pos, float dist) const;
 };
 
-int C2DLineF::IsWithinDist(const C2DVector& p, float dist) const
+int C2DLineF::IsWithinDist(const C2DVector& pos, float dist) const
 {
     C2DVector mid = (Point2 + Point1) * 0.5f;
     C2DVector dir = Point1 - Point2;
-    C2DVector rel = p - mid;
+    C2DVector rel = pos - mid;
     float lengthSquared = dir.GetLengthSquared();
     if (lengthSquared * 0.25f + dist * dist > rel.GetLengthSquared())
         return 1;

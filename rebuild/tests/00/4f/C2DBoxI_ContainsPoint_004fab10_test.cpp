@@ -4,15 +4,15 @@
 struct C2DPointI { int x; int y; };
 struct C2DBoxI {
     int minX; int minY; int maxX; int maxY;
-    int ContainsPoint(const C2DPointI* p) const;
+    int ContainsPoint(const C2DPointI* coordI) const;
 };
 
-int C2DBoxI::ContainsPoint(const C2DPointI* p) const
+int C2DBoxI::ContainsPoint(const C2DPointI* coordI) const
 {
-    int x = p->x;
+    int x = coordI->x;
     if (x >= minX && x < maxX)
     {
-        int y = p->y;
+        int y = coordI->y;
         if (y >= minY && y < maxY)
             return 1;
     }

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// CEngineSubPrimitiveGameMesh::`vector_deleting_destructor' @ 0x00bb1760
+// CEngineSubPrimitive2DSprite::`scalar deleting destructor' @ 0x00bb1760
 // Standard MSVC vector deleting destructor.
 
 extern "C" void __fastcall SubPrim_dtor(void* sprite);   // 0x99a300 scalar dtor (this in ecx)

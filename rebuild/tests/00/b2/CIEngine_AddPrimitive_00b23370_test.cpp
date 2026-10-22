@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_AddPrimitive(int arg0) {}
+void __stdcall CIEngine_AddPrimitive(int primitive) {}
 int main()
 {
     CIEngine_AddPrimitive(1);

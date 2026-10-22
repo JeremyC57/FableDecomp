@@ -12,13 +12,13 @@ static char* find_slot(char* begin, char* end, int* pred)
     if (g_hit) return g_hit;
     return end;
 }
-long CCategory_GetFirstEmptySlot(CCategory* self)
+long CCategory_GetFirstEmptySlot(CCategory* category)
 {
-    char* end = self->m_end;
-    char* begin = self->m_begin;
+    char* end = category->m_end;
+    char* begin = category->m_begin;
     char* found = find_slot(begin, end, &g_predicate);
-    if (found != self->m_end)
-        return (long)(found - self->m_begin) / 0x14;
+    if (found != category->m_end)
+        return (long)(found - category->m_begin) / 0x14;
     return -1;
 }
 int main()

@@ -5,9 +5,9 @@ struct CThing {
     unsigned char flags;
 };
 
-int __fastcall IsIncludedInThingScans(CThing *self)
+int __fastcall IsIncludedInThingScans(CThing *thing)
 {
-    unsigned char f = self->flags;
+    unsigned char f = thing->flags;
     unsigned char nf = ~f;
     if ((f & 0x04) && (f & 0x08) && (nf & 0x01) && !(f & 0x20))
         return 1;

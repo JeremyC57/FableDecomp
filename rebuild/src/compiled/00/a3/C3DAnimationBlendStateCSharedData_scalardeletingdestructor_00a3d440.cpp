@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CSharedData {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CSharedData_dtor(CSharedData* shared);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CSharedData_scalar_deleting_destructor(CSharedData* shared, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CSharedData_dtor(shared);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(shared);
+    return shared;
 }

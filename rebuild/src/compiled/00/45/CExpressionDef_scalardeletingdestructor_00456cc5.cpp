@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { int vt; };
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CExpressionDef { int vt; };
+extern void __fastcall CExpressionDef_dtor(CExpressionDef* def);
 extern void __cdecl fable_operator_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags) {
-    CLandscapeBackgroundPatch_dtor(self);
+void* __fastcall CExpressionDef_scalar_deleting_destructor(CExpressionDef* def, int edx_unused, unsigned int flags) {
+    CExpressionDef_dtor(def);
     if (flags & 1) {
-        fable_operator_delete(self);
+        fable_operator_delete(def);
     }
-    return self;
+    return def;
 }

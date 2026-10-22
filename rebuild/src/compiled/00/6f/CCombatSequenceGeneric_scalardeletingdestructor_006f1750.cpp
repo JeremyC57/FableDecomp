@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCombatSequenceGeneric {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCombatSequenceGeneric_dtor(CCombatSequenceGeneric* sequence);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCombatSequenceGeneric_scalar_deleting_destructor(CCombatSequenceGeneric* sequence, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCombatSequenceGeneric_dtor(sequence);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(sequence);
+    return sequence;
 }

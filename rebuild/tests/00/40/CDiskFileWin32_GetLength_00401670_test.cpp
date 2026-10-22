@@ -2,8 +2,8 @@
 #include <cstdio>
 
 
-long __fastcall CDiskFileWin32_GetLength(const CDiskFileWin32* self) {
-    return self->Length;
+long __fastcall CDiskFileWin32_GetLength(const CDiskFileWin32* win32) {
+    return win32->Length;
 }
 
 int main() {

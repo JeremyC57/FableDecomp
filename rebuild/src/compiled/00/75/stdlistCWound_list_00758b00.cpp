@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 
-// Target: 0x00436900  CGuiControlTreePane::SortTreeRecursively
+// Target: 0x00436900  std::list<CWound>::~list
 // __fastcall (modeled as __fastcall this-only), void return.
 //
 // `this` [+0x0] holds a pointer to a circular list sentinel/head node.

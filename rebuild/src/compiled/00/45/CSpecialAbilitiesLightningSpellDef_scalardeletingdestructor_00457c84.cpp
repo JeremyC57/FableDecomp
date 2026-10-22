@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { void* vftable; };
+struct CSpecialAbilitiesLightningSpellDef { void* vftable; };
 
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+extern void __fastcall CSpecialAbilitiesLightningSpellDef_dtor(CSpecialAbilitiesLightningSpellDef* def);
 void __cdecl operator delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_pad, unsigned int flags)
+void* __fastcall CSpecialAbilitiesLightningSpellDef_scalar_deleting_destructor(CSpecialAbilitiesLightningSpellDef* def, int edx_pad, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CSpecialAbilitiesLightningSpellDef_dtor(def);
     if (flags & 1)
-        operator delete((void*)self);
-    return self;
+        operator delete((void*)def);
+    return def;
 }

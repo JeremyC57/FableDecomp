@@ -2,7 +2,7 @@
 
 struct CParticleSimulationRenderData { int dummy; };
 
-static bool IsBusy_model(CParticleSimulationRenderData* self)
+static bool IsBusy_model(CParticleSimulationRenderData* render)
 {
     return false;
 }

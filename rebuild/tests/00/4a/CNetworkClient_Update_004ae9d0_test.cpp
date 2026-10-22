@@ -3,23 +3,23 @@
 #include <string.h>
 
 
-void __fastcall Update(CNetworkClient *self, void * /*edx*/, int a, int b, int c)
+void __fastcall Update(CNetworkClient *client, void * /*edx*/, int a, int b, int c)
 {
-    if (self->LocalGame) {
-        self->LocalFrame = a;
-        self->Checksum1 = b;
-        self->Checksum2 = c;
+    if (client->LocalGame) {
+        client->LocalFrame = a;
+        client->Checksum1 = b;
+        client->Checksum2 = c;
     }
 }
 
 // __fastcall shim: this in ecx, args pushed right-to-left, callee cleans (ret 0xc)
-static void call_update(CNetworkClient *self, int a, int b, int c)
+static void call_update(CNetworkClient *client, int a, int b, int c)
 {
     __asm {
         push c
         push b
         push a
-        mov  ecx, self
+        mov  ecx, client
         call Update
     }
 }

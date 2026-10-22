@@ -1,1 +1,1 @@
-void __stdcall CEnginePrimitiveManager_AddStaticShadowData(int arg0, int arg1) {}
+void __stdcall CEnginePrimitiveManager_AddStaticShadowData(int primitive, int context) {}

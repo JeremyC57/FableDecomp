@@ -7,9 +7,9 @@ struct CTCCoopSpirit {
     C3DVector movement;
 };
 
-void __fastcall ApplyMovementVector(CTCCoopSpirit* self, int /*edx_unused*/, const C3DVector* v)
+void __fastcall ApplyMovementVector(CTCCoopSpirit* self, int /*edx_unused*/, const C3DVector* pos)
 {
-    self->movement = *v;
+    self->movement = *pos;
 }
 
 int main()

@@ -1,4 +1,4 @@
-// CTCBoss::CountEffects() const -- catalog label; the body counts the boss's HelperCreatures (+0x30) that still exist and are not dead
+// CTCBoss::CountLivingHelperCreatures() const -- catalog label; the body counts the boss's HelperCreatures (+0x30) that still exist and are not dead
 // Leaf: CountLivingHelperCreatures
 //
 // Retail 0x007AEEC0, 78 bytes. Callee: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 (twice

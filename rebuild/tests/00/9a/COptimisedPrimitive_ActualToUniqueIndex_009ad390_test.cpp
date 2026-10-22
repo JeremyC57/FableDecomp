@@ -16,7 +16,7 @@ extern "C" SubTable* __stdcall sub_9ad2e0(unsigned long a)
 }
 
 struct COptimisedPrimitive;
-long __fastcall ActualToUniqueIndex(COptimisedPrimitive* self, int e, unsigned long a, unsigned long b);
+long __fastcall ActualToUniqueIndex(COptimisedPrimitive* primitive, int e, unsigned long a, unsigned long b);
 
 int main()
 {

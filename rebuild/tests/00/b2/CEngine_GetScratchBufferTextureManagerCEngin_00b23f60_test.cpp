@@ -4,9 +4,9 @@ struct CGPUScratchBufferTextureManager;
 struct CEngine;
 char* g_engineSingleton;
 
-CGPUScratchBufferTextureManager* CEngine_GetScratchBufferTextureManager(CEngine* self)
+CGPUScratchBufferTextureManager* CEngine_GetScratchBufferTextureManager(CEngine* engine)
 {
-    (void)self;
+    (void)engine;
     return (CGPUScratchBufferTextureManager*)(g_engineSingleton + 0x3190);
 }
 

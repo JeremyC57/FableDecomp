@@ -1,13 +1,13 @@
 
 #include "engine/CDecal.h"  // retyped onto the PDB layout; byte parity re-verified
-void __fastcall CDecal_Dtor(CDecal* self);
-void __fastcall CDecal_OpDelete(CDecal* self);
+void __fastcall CDecal_Dtor(CDecal* decal);
+void __fastcall CDecal_OpDelete(CDecal* decal);
 
-void __fastcall CDecal_Delete(CDecal* self)
+void __fastcall CDecal_Delete(CDecal* decal)
 {
-    if (self)
+    if (decal)
     {
-        CDecal_Dtor(self);
-        CDecal_OpDelete(self);
+        CDecal_Dtor(decal);
+        CDecal_OpDelete(decal);
     }
 }

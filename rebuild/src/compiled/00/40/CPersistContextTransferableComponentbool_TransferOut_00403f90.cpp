@@ -1,4 +1,4 @@
-// CPersistContext_TransferableComponent::TransferOut(CPersistContext*, CCharString* out) -- write a bool to the text save as "TRUE" or "FALSE"
+// CPersistContext_TransferableComponent<bool>::TransferOut(CPersistContext*, CCharString* out) -- write a bool to the text save as "TRUE" or "FALSE"
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00403F90, 38 bytes (+10 int3 padding).
 // Callee: 0x0099F100 CCharString::operator+=(const char*) (__fastcall, returns CCharString&).

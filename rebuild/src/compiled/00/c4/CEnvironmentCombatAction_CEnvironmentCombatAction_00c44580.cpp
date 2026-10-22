@@ -1,4 +1,4 @@
-// CAIStateGroup_Derived_00c44580::CAIStateGroup_Derived_00c44580() -- the CAIStateGroup_CreatureUseCoverBase constructor (0x00C42D60), this class's vtable (0x012B7B88, no RTTI), then the two self-pointers at +0x11c / +0x124 aimed at the embedded records at +0x128 / +0x168
+// CEnvironmentCombatAction::CEnvironmentCombatAction() -- the CAIStateGroup_CreatureUseCoverBase constructor (0x00C42D60), this class's vtable (0x012B7B88, no RTTI), then the two self-pointers at +0x11c / +0x124 aimed at the embedded records at +0x128 / +0x168
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C44580, length 48 bytes.
 // The chunk label "CIcicleData::Initialize" is propagated; named by the base. Shape: both `lea`s before the vtable store, `mov eax,esi`.
 struct CAIStateGroup_CreatureUseCoverBase_00c42d60 {   // 0xf8 bytes (landed 0x00C42D60)

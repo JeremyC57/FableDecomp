@@ -57,7 +57,7 @@ struct CModeBase_00861e00 {
 namespace NCreatureMode {
 
 struct CModeScorpionKingExhausted : CModeBase_00861e00 {
-    unsigned long m_unknown68;             // +0x68 (not touched by the ctor)
+    unsigned long RecoveryCount;             // +0x68 (not touched by the ctor)
     CAnimFilterOfGroup m_animFilter;       // +0x6c
     CThing* m_pOwner;                      // +0x78
     virtual void v00();

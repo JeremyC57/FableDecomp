@@ -1,4 +1,4 @@
-// CPhysicsFacesSegmentBranch::scalar_deleting_destructor(unsigned int) -- `scalar deleting destructor': runs the inlined destructor (deletes both children, restores the interface vtable) and frees the object when bit 0 of the flags is set
+// CPhysicsFacesSegmentBranch::`scalar deleting destructor'(unsigned int) -- `scalar deleting destructor': runs the inlined destructor (deletes both children, restores the interface vtable) and frees the object when bit 0 of the flags is set
 // Leaf: ??_GCPhysicsFacesSegmentBranch
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A86F60, 79 bytes. Callee: 0x00BFE9BC operator delete.
 //

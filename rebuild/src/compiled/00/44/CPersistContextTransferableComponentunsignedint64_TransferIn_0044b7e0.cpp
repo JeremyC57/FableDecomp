@@ -1,4 +1,4 @@
-// CPersistContext_TransferableComponent::TransferIn(CPersistContext*, CStringParser*) -- reads a 64-bit integer with CStringParser::ReadInt64 and stores it through the target pointer
+// CPersistContext_TransferableComponent<unsigned __int64>::TransferIn(CPersistContext*, CStringParser*) -- reads a 64-bit integer with CStringParser::ReadInt64 and stores it through the target pointer
 // Leaf: TransferIn
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044B7E0, 22 bytes (+10 int3 padding).
 // Callee: 0x009BA5B0 CStringParser::ReadInt64 (__fastcall, result in edx:eax).

@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CResourceList;
 static int g_removed = 0, g_loading = -1; static void* g_insertPrev = 0; static void* g_insertNext = 0;
-struct CResource { virtual void v00() { } unsigned long m_pad4; CResourceList* ResourceList; CResource* PrevResource; CResource* NextResource; unsigned long ResourceSize; unsigned long LastUsedFrame;
+struct CResource { virtual void v00() { } unsigned long IVRefCount; CResourceList* ResourceList; CResource* PrevResource; CResource* NextResource; unsigned long ResourceSize; unsigned long LastUsedFrame;
     void ListRemove() { ++g_removed; } void ListInsert(CResource* p, CResource* n) { g_insertPrev = p; g_insertNext = n; } };
 struct CResourceList { long m_pad0; CResource Head; unsigned long ResourceCount; long AllocatedMemory; long MaximumMemory; unsigned long CurrentFrame; };
 struct CAnimationData : CResource { unsigned char Animations[0xc]; void* SharedAnimation; };

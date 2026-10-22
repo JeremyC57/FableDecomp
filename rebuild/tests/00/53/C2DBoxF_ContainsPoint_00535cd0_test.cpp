@@ -2,11 +2,11 @@
 struct C2DVector { float X; float Y; };
 struct C2DBoxF {
     float TLX; float TLY; float BRX; float BRY;
-    long ContainsPoint(const C2DVector& p) const;
+    long ContainsPoint(const C2DVector& pos) const;
 };
-long C2DBoxF::ContainsPoint(const C2DVector& p) const
+long C2DBoxF::ContainsPoint(const C2DVector& pos) const
 {
-    if (p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY)
+    if (pos.X >= TLX && pos.X < BRX && pos.Y >= TLY && pos.Y < BRY)
         return 1;
     return 0;
 }

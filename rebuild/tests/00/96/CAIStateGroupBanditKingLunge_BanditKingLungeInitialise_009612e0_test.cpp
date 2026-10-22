@@ -16,10 +16,10 @@ static long g_param3_seen = -1;
 static EScriptAIPriority g_priority_seen = -1;
 static CCharString* g_name_seen = 0;
 
-extern "C" void __fastcall CAIStateGroupBase_Initialise(CAIStateGroup_BanditKingLunge* self, void* edx, CAIBrain& brain, CThingAICreature& creature, long param3, EScriptAIPriority priority, CCharString const& name)
+extern "C" void __fastcall CAIStateGroupBase_Initialise(CAIStateGroup_BanditKingLunge* stateGroup, void* edx, CAIBrain& brain, CThingAICreature& creature, long param3, EScriptAIPriority priority, CCharString const& name)
 {
     g_called = 1;
-    g_self_seen = self;
+    g_self_seen = stateGroup;
     g_brain_seen = &brain;
     g_creature_seen = &creature;
     g_param3_seen = param3;
@@ -27,10 +27,10 @@ extern "C" void __fastcall CAIStateGroupBase_Initialise(CAIStateGroup_BanditKing
     g_name_seen = (CCharString*)&name;
 }
 
-extern "C" void __fastcall CAIStateGroup_BanditKingLunge_Initialise(CAIStateGroup_BanditKingLunge* self, void* edx, CAIBrain& brain, CThingAICreature& creature, long param3, EScriptAIPriority priority, CCharString const& name)
+extern "C" void __fastcall CAIStateGroup_BanditKingLunge_Initialise(CAIStateGroup_BanditKingLunge* stateGroup, void* edx, CAIBrain& brain, CThingAICreature& creature, long param3, EScriptAIPriority priority, CCharString const& name)
 {
-    self->TimeOfLastLunge = 0;
-    CAIStateGroupBase_Initialise(self, 0, brain, creature, param3, priority, name);
+    stateGroup->TimeOfLastLunge = 0;
+    CAIStateGroupBase_Initialise(stateGroup, 0, brain, creature, param3, priority, name);
 }
 
 int main()

@@ -1,4 +1,4 @@
-// CTCParticleAttacher::vfunc_27(CTCMessage*) -- on a type-5 message: forward it to every attached particle, clear the list and attach afresh
+// CTCParticleAttacher::HandleMessage(CTCMessage*) -- on a type-5 message: forward it to every attached particle, clear the list and attach afresh
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F8B60, length 67 bytes.
 // Callees: the message's virtual GetType() (slot 1), for_each<CIntelligentPointer<CThing>*, CKillParticle> @ 0x007F8760 (SGI,
 // __fastcall under /Gr: the hidden functor result in ecx, first in edx, last and the functor on the stack; its body kills every

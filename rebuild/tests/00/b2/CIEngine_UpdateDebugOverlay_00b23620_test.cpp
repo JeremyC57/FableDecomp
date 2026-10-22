@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_UpdateDebugOverlay(int arg0, int arg1, int arg2) {}
+void __stdcall CIEngine_UpdateDebugOverlay(int arg0, int colour, int boxI) {}
 int main()
 {
     CIEngine_UpdateDebugOverlay(1, 2, 3);

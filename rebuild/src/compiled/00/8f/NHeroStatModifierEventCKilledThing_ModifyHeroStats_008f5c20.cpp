@@ -1,4 +1,4 @@
-// CKilledThing_008f5c20::ModifyHeroStats(CTCHeroStats* stats) -- set the hero's morality (0x0057C2E6) to its current value (+0x28) plus the def's change (+4 -> +0x28), then add the def's renown (+0x38, 0x0057D8BE)
+// NHeroStatModifierEvent::CKilledThing::ModifyHeroStats(CTCHeroStats* stats) -- set the hero's morality (0x0057C2E6) to its current value (+0x28) plus the def's change (+4 -> +0x28), then add the def's renown (+0x38, 0x0057D8BE)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F5C20, length 48 bytes.
 // Callees: CTCHeroStats::SetMorality @ 0x0057C2E6, CTCHeroStats::AddRenown @ 0x0057D8BE. Two byte-identical bodies (0x008F5BF0 / 0x008F5C20) of two killed-thing classes; named by address. Shape: the def's change loaded before the argument, `add ecx,edx`, `ret 4`.
 struct CTCHeroStats {

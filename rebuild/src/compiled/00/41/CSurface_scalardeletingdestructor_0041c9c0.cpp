@@ -1,13 +1,13 @@
 extern void __cdecl operator_delete_stub(void*);
-struct CLandscapeBackgroundPatch { void* vftable; };
-extern const void* CLandscapeBackgroundPatch_vftable;
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int _edx, unsigned int flags)
+struct CSurface { void* vftable; };
+extern const void* CSurface_vftable;
+extern void __fastcall CSurface_dtor(CSurface* surface);
+void* __fastcall CSurface_scalar_deleting_destructor(CSurface* surface, int _edx, unsigned int flags)
 {
-    self->vftable = (void*)&CLandscapeBackgroundPatch_vftable;
-    CLandscapeBackgroundPatch_dtor(self);
+    surface->vftable = (void*)&CSurface_vftable;
+    CSurface_dtor(surface);
     if (flags & 1) {
-        operator_delete_stub(self);
+        operator_delete_stub(surface);
     }
-    return self;
+    return surface;
 }

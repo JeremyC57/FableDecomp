@@ -9,7 +9,7 @@ static int g_lastLvl = -999;
 void CTCBuyableHouse_Methods::SetDressLevel(int lvl) { g_lastLvl = lvl; }
 int GetNewThing() { return 0x1234; }
 
-void __fastcall CTCBuyableHouse_IncrementDressLevel(CTCBuyableHouse* self);
+void __fastcall CTCBuyableHouse_IncrementDressLevel(CTCBuyableHouse* house);
 
 int main()
 {

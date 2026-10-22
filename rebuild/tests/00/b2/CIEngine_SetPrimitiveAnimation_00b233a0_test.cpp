@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_SetPrimitiveAnimation(int arg0, int arg1) {}
+void __stdcall CIEngine_SetPrimitiveAnimation(int handle, int animation) {}
 int main()
 {
     CIEngine_SetPrimitiveAnimation(1, 2);

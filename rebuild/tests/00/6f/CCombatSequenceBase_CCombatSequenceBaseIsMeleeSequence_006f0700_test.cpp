@@ -3,19 +3,19 @@ struct CCombatSequenceBase {
         void* slot0;
         void* slot4;
         void* slot8;
-        int (__fastcall *GetSequenceType)(CCombatSequenceBase* self);
+        int (__fastcall *GetSequenceType)(CCombatSequenceBase* sequence);
     };
     VTable* vfptr;
 };
 
-int __fastcall CCombatSequenceBase_IsMeleeSequence(CCombatSequenceBase* self, void* edx)
+int __fastcall CCombatSequenceBase_IsMeleeSequence(CCombatSequenceBase* sequence, void* edx)
 {
-    return self->vfptr->GetSequenceType(self) == 1;
+    return sequence->vfptr->GetSequenceType(sequence) == 1;
 }
 
-static int __fastcall FakeGetType1(CCombatSequenceBase* self) { return 1; }
-static int __fastcall FakeGetType0(CCombatSequenceBase* self) { return 0; }
-static int __fastcall FakeGetType2(CCombatSequenceBase* self) { return 2; }
+static int __fastcall FakeGetType1(CCombatSequenceBase* sequence) { return 1; }
+static int __fastcall FakeGetType0(CCombatSequenceBase* sequence) { return 0; }
+static int __fastcall FakeGetType2(CCombatSequenceBase* sequence) { return 2; }
 
 #include <cstdio>
 

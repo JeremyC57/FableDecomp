@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
-extern void __fastcall CLandscapeBackgroundPatch_dtor(void* self);
+extern void __fastcall CTextureReplacementDef_dtor(void* def);
 extern void __cdecl op_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(void* self, int edx, unsigned int flags)
+void* __fastcall CTextureReplacementDef_scalar_deleting_destructor(void* def, int edx, unsigned int flags)
 {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    CTextureReplacementDef_dtor(def);
     if (flags & 1)
-        op_delete(self);
-    return self;
+        op_delete(def);
+    return def;
 }

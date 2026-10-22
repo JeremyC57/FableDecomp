@@ -3,9 +3,9 @@
 struct CEngineInternalPrimitiveOcclusionBase;
 struct CEngineInternalPrimitiveBase;
 
-CEngineInternalPrimitiveOcclusionBase* __fastcall CEngineInternalPrimitiveBase_GetAsOcclusionPrimitive(CEngineInternalPrimitiveBase* self)
+CEngineInternalPrimitiveOcclusionBase* __fastcall CEngineInternalPrimitiveBase_GetAsOcclusionPrimitive(CEngineInternalPrimitiveBase* primitive)
 {
-    (void)self;
+    (void)primitive;
     return 0;
 }
 

@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
-// CLandscapeBackgroundSubNodeSplitBranch::`scalar deleting destructor' @ 0x00485524
+// NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::`scalar deleting destructor' @ 0x00485524
 // module: CLandscapeBackgroundSubNodeSplitBranch  (thiscall, void*, 2 params)
 // VC7.1, x86, /O2 /Oy.
 //
@@ -42,7 +42,7 @@ extern "C" void FABLE_CDECL fable_operator_delete(void* p);
 static const fable_u32 kSplitBranchDerivedVtable = 0x01236794u;
 static const fable_u32 kSplitBranchBaseVtable    = 0x0122f83cu;
 
-extern "C" void* FABLE_FASTCALL CLandscapeBackgroundSubNodeSplitBranch_scalar_deleting_dtor(
+extern "C" void* FABLE_FASTCALL CActionParamCCountedPointer_scalar_deleting_dtor(
         CLandscapeBackgroundSubNodeSplitBranch* thisptr,
         int /*edx*/,
         unsigned int flags)

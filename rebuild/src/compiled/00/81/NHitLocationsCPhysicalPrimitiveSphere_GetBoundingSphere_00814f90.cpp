@@ -1,4 +1,4 @@
-// CPhysicalPrimitiveSphere::GetBoundingSphere(CThing* thing, C3DVector& centre, float& radius) -- the world bounding sphere: the dummy-object origin and the radius (or the thing's physics radius when unset)
+// NHitLocations::CPhysicalPrimitiveSphere::GetBoundingSphere(CThing* thing, C3DVector& centre, float& radius) -- the world bounding sphere: the dummy-object origin and the radius (or the thing's physics radius when unset)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00814F90, length 124 bytes (+ int3 padding).
 // Leaf: GetBoundingSphere
 // Callees: CPhysicalPrimitiveSphere::GetDummyObjectOrigin(CThing*) @ 0x00814C70, CThingCreatureBase::GetCombatRadius @ 0x00661F90.

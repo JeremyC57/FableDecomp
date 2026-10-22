@@ -1,1 +1,1 @@
-void __stdcall CInputProcessTargetLockRightStickTargetSelect_Update(int arg0) {}
+void __stdcall CInputProcessTargetLockRightStickTargetSelect_Update(int input) {}

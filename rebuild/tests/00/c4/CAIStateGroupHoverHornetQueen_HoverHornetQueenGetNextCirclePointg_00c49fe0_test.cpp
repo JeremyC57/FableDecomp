@@ -4,7 +4,7 @@ struct CAIStateGroup_HoverHornetQueen
 {
     void* vfptr_unused_00;
     long m_circleTotal_04;
-    long m_pad_08;
+    long ScriptAIPriority;
     long m_circleMax_0c;
     long m_circleCur_10;
 
@@ -23,7 +23,7 @@ int main()
 {
     CAIStateGroup_HoverHornetQueen obj;
     obj.vfptr_unused_00 = 0;
-    obj.m_pad_08 = 0;
+    obj.ScriptAIPriority = 0;
 
     // Case 1: no wraparound (cur >= max)
     obj.m_circleTotal_04 = 100;

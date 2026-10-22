@@ -27,8 +27,8 @@ unsigned long CEngineSceneGrid::GetCellRenderMask(unsigned long x, unsigned long
                 for (unsigned long j=0; j<2; ++j)
                     mask |= LevelDown->GetCellRenderMask(x*2+j,y*2+i);
         }
-        for (CEngineInternalPrimitiveBase* p=cell->FirstPrimitive; p; p=p->NextLayerMask)
-            mask |= p->RenderLayerMask;
+        for (CEngineInternalPrimitiveBase* primitive=cell->FirstPrimitive; primitive; primitive=primitive->NextLayerMask)
+            mask |= primitive->RenderLayerMask;
         cell->RenderMask = mask;
         cell->RenderMaskValid = 1;
     }

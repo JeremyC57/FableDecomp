@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 
-void model(CThingGameObject *self, bool value)
+void model(CThingGameObject *gameObject, bool value)
 {
-    self->flags = (unsigned char)((((value & 1) | 2) << 2) | (self->flags & 0xfb));
+    gameObject->flags = (unsigned char)((((value & 1) | 2) << 2) | (gameObject->flags & 0xfb));
 }
 
 int main()

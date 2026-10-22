@@ -14,7 +14,7 @@ struct CIME {
     char pad0[0x8];
     char enabled;     /* IsInitialised: the IME was set up at start-up */
     char pad9[0x47];  /* window handle, appearance, edit box */
-    char flag50;      /* CancelOnOKClick profile option */
+    char CancelOnOKClick;      /* CancelOnOKClick profile option */
 };
 
 // IME UI: end the composition (true = finalise, false = cancel).
@@ -26,7 +26,7 @@ void __fastcall CIME_FinaliseString(CIME* self, void* /*edx*/, char param)
         char v = param;
         // Finalise becomes cancel when the player asked for OK to cancel.
         if (param) {
-            if (self->flag50)
+            if (self->CancelOnOKClick)
                 v = 0;
         }
         CIME_sink(v != 0);

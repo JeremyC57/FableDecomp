@@ -1,11 +1,11 @@
 #pragma optimize("s",on)
 void operator delete(void*);
-void __fastcall CLandscapeBackgroundPatch_dtor(void* self);
+void __fastcall CSpecialAbilitiesBattleChargeDef_dtor(void* def);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(void* self, int edx, unsigned int flags)
+void* __fastcall CSpecialAbilitiesBattleChargeDef_scalar_deleting_destructor(void* def, int edx, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CSpecialAbilitiesBattleChargeDef_dtor(def);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(def);
+    return def;
 }

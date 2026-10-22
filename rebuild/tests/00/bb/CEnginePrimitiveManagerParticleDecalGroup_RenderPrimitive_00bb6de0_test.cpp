@@ -2,9 +2,9 @@
 #include <cstdio>
 struct CEngineInternalPrimitiveBase; struct CEngineSubPrimitiveChain;
 struct CEnginePrimitiveManagerParticleDecalGroup {
-    int RenderPrimitive(CEngineInternalPrimitiveBase *p, int layer, CEngineSubPrimitiveChain *c);
+    int RenderPrimitive(CEngineInternalPrimitiveBase *primitive, int layer, CEngineSubPrimitiveChain *chain);
 };
-int CEnginePrimitiveManagerParticleDecalGroup::RenderPrimitive(CEngineInternalPrimitiveBase *p, int layer, CEngineSubPrimitiveChain *c){ return 0; }
+int CEnginePrimitiveManagerParticleDecalGroup::RenderPrimitive(CEngineInternalPrimitiveBase *primitive, int layer, CEngineSubPrimitiveChain *chain){ return 0; }
 int main(){
     CEnginePrimitiveManagerParticleDecalGroup g;
     if(g.RenderPrimitive(0,0,0)!=0){std::printf("BAD\n");return 1;}

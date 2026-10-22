@@ -5,9 +5,9 @@ struct CGameCameraManager {
     unsigned char changeInControlDirection;
 };
 
-void __fastcall CGameCameraManager_SetChangeInControlDirection(CGameCameraManager* self)
+void __fastcall CGameCameraManager_SetChangeInControlDirection(CGameCameraManager* manager)
 {
-    self->changeInControlDirection = 1;
+    manager->changeInControlDirection = 1;
 }
 
 int main()

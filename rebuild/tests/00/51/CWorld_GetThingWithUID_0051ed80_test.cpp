@@ -3,12 +3,12 @@ typedef unsigned long DWORD;
 
 struct Node { Node* _00; char pad[0x14]; DWORD _18; };
 struct Sub { Node* head; };
-struct CStopWatch { char pad[0x58]; Sub sub; };
+struct CWorld { char pad[0x58]; Sub sub; };
 
 static Node* g_result;
 static Node* Model_Find(Sub*, void*) { return g_result; }
 
-static DWORD GetTicks_model(CStopWatch* self, int a1, int a2)
+static DWORD GetTicks_model(CWorld* self, int a1, int a2)
 {
     Sub* s = &self->sub;
     Node* r = Model_Find(s, &a1);
@@ -18,7 +18,7 @@ static DWORD GetTicks_model(CStopWatch* self, int a1, int a2)
 
 int main()
 {
-    CStopWatch w;
+    CWorld w;
     Node endSentinel;
     Node found;
     found._18 = 0x12345678u;

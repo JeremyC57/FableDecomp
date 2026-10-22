@@ -14,12 +14,12 @@ struct C2DBoxF {
     float TLY;  // +0x04
     float BRX;  // +0x08
     float BRY;  // +0x0c
-    long ContainsPoint(const C2DVector& p) const;
+    long ContainsPoint(const C2DVector& pos) const;
 };
 
-long C2DBoxF::ContainsPoint(const C2DVector& p) const
+long C2DBoxF::ContainsPoint(const C2DVector& pos) const
 {
-    if (p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY)
+    if (pos.X >= TLX && pos.X < BRX && pos.Y >= TLY && pos.Y < BRY)
         return 1;
     return 0;
 }

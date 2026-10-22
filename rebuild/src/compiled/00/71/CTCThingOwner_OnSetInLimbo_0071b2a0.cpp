@@ -1,4 +1,4 @@
-// CTCThingOwner::vfunc_16(bool) -- vtable slot 16 (0x012412A4): forwards a drawable flag to every owned object, std::for_each over the object list with a CSetThingAsDrawable functor
+// CTCThingOwner::OnSetInLimbo(bool) -- vtable slot 16 (0x012412A4): forwards a drawable flag to every owned object, std::for_each over the object list with a CSetThingAsDrawable functor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071B2A0, length 35 bytes.
 // Name: the PDB lists CTCThingOwner::SetAsDrawable(bool) (public, non-virtual) and this slot-16 virtual holds the same
 // for_each body; the slot name is kept because the virtual it overrides is not identified.

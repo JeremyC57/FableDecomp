@@ -3,7 +3,7 @@ struct CThing;
 struct CThingFilter_HasScriptSupervision { bool m_wanted; };
 static int g_ret = 0;
 extern "C" bool __fastcall Thing_IsUnderScriptSupervision(CThing* thing){ return g_ret != 0; }
-bool __fastcall CThingFilter_HasScriptSupervision__op(CThingFilter_HasScriptSupervision* self, void* edx, CThing* thing);
+bool __fastcall CThingFilter_HasScriptSupervision__op(CThingFilter_HasScriptSupervision* filter, void* edx, CThing* thing);
 int main(){
     CThingFilter_HasScriptSupervision f;
     f.m_wanted = true;  g_ret = 1; bool a = CThingFilter_HasScriptSupervision__op(&f,0,(CThing*)0x1234);

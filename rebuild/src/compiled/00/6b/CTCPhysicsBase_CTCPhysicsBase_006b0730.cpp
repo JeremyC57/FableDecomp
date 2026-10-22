@@ -1,7 +1,7 @@
 struct CBase {
     int vt;
     int base1, base2;
-    CBase(int arg);
+    CBase(int thing);
 };
 
 struct CTCPhysicsBase : public CBase {
@@ -9,10 +9,10 @@ struct CTCPhysicsBase : public CBase {
     int f34;
     int f38;
     unsigned char f3c;
-    CTCPhysicsBase(int arg);
+    CTCPhysicsBase(int thing);
 };
 
-CTCPhysicsBase::CTCPhysicsBase(int arg) : CBase(arg)
+CTCPhysicsBase::CTCPhysicsBase(int thing) : CBase(thing)
 {
     volatile int* p = (volatile int*)this;
     p[0] = 0x0125d2c4;

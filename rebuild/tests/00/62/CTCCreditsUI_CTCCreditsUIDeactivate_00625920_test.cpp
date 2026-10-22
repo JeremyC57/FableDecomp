@@ -4,7 +4,7 @@ class CTCCreditsUI
 {
 public:
     char pad0[0xC];
-    char flagC;
+    char Active;
     char pad2[0x1C - 0xC - 1];
     char flag1C;
 
@@ -13,7 +13,7 @@ public:
 
 void CTCCreditsUI::Deactivate()
 {
-    if (flagC)
+    if (Active)
     {
         flag1C = 1;
     }
@@ -24,7 +24,7 @@ int main()
     unsigned char buf1[0x20];
     for (int i = 0; i < 0x20; ++i) buf1[i] = 0;
     CTCCreditsUI* obj1 = (CTCCreditsUI*)buf1;
-    obj1->flagC = 1;
+    obj1->Active = 1;
     obj1->flag1C = 0;
     obj1->Deactivate();
     int ok1 = (obj1->flag1C == 1);
@@ -32,7 +32,7 @@ int main()
     unsigned char buf2[0x20];
     for (int i = 0; i < 0x20; ++i) buf2[i] = 0;
     CTCCreditsUI* obj2 = (CTCCreditsUI*)buf2;
-    obj2->flagC = 0;
+    obj2->Active = 0;
     obj2->flag1C = 0;
     obj2->Deactivate();
     int ok2 = (obj2->flag1C == 0);

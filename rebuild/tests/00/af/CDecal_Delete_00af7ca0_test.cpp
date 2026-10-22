@@ -6,15 +6,15 @@ static void* g_last = 0;
 
 struct CDecal { int dummy; };
 
-static void Dtor(CDecal* self) { g_dtor++; }
-static void OpDelete(CDecal* self) { g_del++; g_last = self; }
+static void Dtor(CDecal* decal) { g_dtor++; }
+static void OpDelete(CDecal* decal) { g_del++; g_last = decal; }
 
-static void Delete(CDecal* self)
+static void Delete(CDecal* decal)
 {
-    if (self)
+    if (decal)
     {
-        Dtor(self);
-        OpDelete(self);
+        Dtor(decal);
+        OpDelete(decal);
     }
 }
 

@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CAIStateGroup_SitInPub_InitStateGroup(int arg0, int arg1) {}
+void __stdcall CAIStateGroup_SitInPub_InitStateGroup(int world, int creature) {}
 int main()
 {
     CAIStateGroup_SitInPub_InitStateGroup(1, 2);

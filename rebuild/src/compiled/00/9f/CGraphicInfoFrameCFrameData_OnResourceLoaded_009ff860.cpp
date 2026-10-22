@@ -1,4 +1,4 @@
-// CFrameData::OnResourceLoaded() -- once an async read is pending (+0x30): try to upload the frame (0x009FF220, 0); when that fails and no graphic frame data exists (+0x1c), drop the owner's counted data pointer (owner at +0x40, pointer at its +8)
+// CGraphicInfoFrame::CFrameData::OnResourceLoaded() -- once an async read is pending (+0x30): try to upload the frame (0x009FF220, 0); when that fails and no graphic frame data exists (+0x1c), drop the owner's counted data pointer (owner at +0x40, pointer at its +8)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FF860, length 80 bytes.
 // Callees: UploadFrame @ 0x009FF220 (on `this`, 0; a bool in al), CIVCountedPointeeBase virtual slot 1 (Delete) when the count reaches zero. Shape: the inlined
 // `CIVCountedPointer::operator=(0)` (GOTCHAS wave 24h: the release through a local pointee copy, its zero store inside the null test, then the assignment's

@@ -17,11 +17,11 @@ struct CTestPos
     int         field_c;
 };
 
-int __stdcall CTestPos_Init(CTestPos* self)
+int __stdcall CTestPos_Init(CTestPos* pos)
 {
-    IProvider* p = self->field_8;
-    self->field_4 = 0;
-    self->field_c = p->v4();
+    IProvider* p = pos->field_8;
+    pos->field_4 = 0;
+    pos->field_c = p->v4();
     return 0;
 }
 

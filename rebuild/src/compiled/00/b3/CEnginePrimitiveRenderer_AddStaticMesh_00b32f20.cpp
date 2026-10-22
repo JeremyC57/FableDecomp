@@ -5,16 +5,16 @@
 struct SHandle_00b32f20 { long m_id; long m_tag; };   // the by-value result (returned through a hidden pointer)
 
 struct CEnginePrimitiveManagerStaticMeshesBase {
-    SHandle_00b32f20 AddStaticMesh(long a, long b, long c, long d, long e, long f, long g, long h, long i, long j, long k);   // 0x00BA0FC0
+    SHandle_00b32f20 AddStaticMesh(long a, long b, long matrix, long d, long e, long f, long g, long h, long i, long j, long k);   // 0x00BA0FC0
 };
 
 struct CEnginePrimitiveRenderer {
     unsigned char                          _pad[0x280];
     CEnginePrimitiveManagerStaticMeshesBase* m_pStaticMeshes;   // +0x280
-    SHandle_00b32f20 AddStaticMesh(long a, long b, long c, long d, long e, long f, long g, long h, long i, long j, long k);
+    SHandle_00b32f20 AddStaticMesh(long a, long b, long matrix, long d, long e, long f, long g, long h, long i, long j, long k);
 };
 
-SHandle_00b32f20 CEnginePrimitiveRenderer::AddStaticMesh(long a, long b, long c, long d, long e, long f, long g, long h, long i, long j, long k)
+SHandle_00b32f20 CEnginePrimitiveRenderer::AddStaticMesh(long a, long b, long matrix, long d, long e, long f, long g, long h, long i, long j, long k)
 {
-    return m_pStaticMeshes->AddStaticMesh(a, b, c, d, e, f, g, h, i, j, k);
+    return m_pStaticMeshes->AddStaticMesh(a, b, matrix, d, e, f, g, h, i, j, k);
 }

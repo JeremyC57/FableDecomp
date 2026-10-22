@@ -1,4 +1,4 @@
-// Byte-exact reconstruction of CLandscapeBackgroundPatch::`vector deleting destructor'
+// Byte-exact reconstruction of CRegion::`vector deleting destructor'
 // retail 0x0047b300, __fastcall(self, uint flags) -> void*
 //
 // Pattern:
@@ -9,7 +9,7 @@
 // S: mov eax,esi; pop esi; ret 4
 
 struct Sub;                 // subobject at offset +4
-struct CLandscapeBackgroundPatch {
+struct CRegion {
     int   m_vtbl;           // +0  (vtable / first dword)
     Sub*  dummy;            // placeholder so member sits at +4
 };
@@ -23,12 +23,12 @@ extern "C" void __cdecl EngineOperatorDelete(void* p);
 
 // __fastcall: this in ecx, flags on the stack. Model via __fastcall with an
 // unused edx dummy so the real `flags` param lands on the stack (=> ret 4).
-extern "C" void* __fastcall VecDelDtor(CLandscapeBackgroundPatch* self, int edxDummy, unsigned int flags)
+extern "C" void* __fastcall VecDelDtor(CRegion* region, int edxDummy, unsigned int flags)
 {
     (void)edxDummy;
     // scalar dtor on the subobject at self+4
-    InnerDtor((char*)self + 4);
+    InnerDtor((char*)region + 4);
     if (flags & 1)
-        EngineOperatorDelete(self);
-    return self;
+        EngineOperatorDelete(region);
+    return region;
 }

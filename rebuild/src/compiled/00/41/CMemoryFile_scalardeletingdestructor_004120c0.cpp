@@ -3,7 +3,7 @@ struct CMemoryFile {
     char pad4[0x0C]; // +0x4 .. +0x10
     void* member10;  // +0x10
     char pad14[0x0C];// +0x14 .. +0x20
-    char member20;   // +0x20 (subobject destructed via ecx=esi+0x20)
+    char Opened;   // +0x20 (subobject destructed via ecx=esi+0x20)
 };
 
 extern const void* CMemoryFile_vtbl[];
@@ -17,7 +17,7 @@ void* __fastcall CMemoryFile_scalar_deleting_destructor(CMemoryFile* file, void*
 {
     file->vptr = (void*)CMemoryFile_vtbl;
     Cleanup_5d72d0(file);
-    SubDtor_589450(&file->member20);
+    SubDtor_589450(&file->Opened);
     if (file->member10)
         Free_7ec954(file->member10);
     BaseDtor_588240(file);

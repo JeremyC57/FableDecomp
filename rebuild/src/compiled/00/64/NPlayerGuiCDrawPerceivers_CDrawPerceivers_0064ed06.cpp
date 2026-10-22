@@ -1,6 +1,6 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// NPlayerGui::CVtable0125a670::CVtable0125a670(CPlayerGui*, std::vector<CDrawBase*>*) -- CDrawBase(gui, list), two zero counters, a zero and a unit float, a zero word, a list member built with a default allocator, own vtable, three primitive handles reserved
+// NPlayerGui::CDrawPerceivers::CDrawPerceivers(CPlayerGui*, std::vector<CDrawBase*>*) -- CDrawBase(gui, list), two zero counters, a zero and a unit float, a zero word, a list member built with a default allocator, own vtable, three primitive handles reserved
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064ED06, length 73 bytes.
 // Callees: NPlayerGui::CDrawBase::CDrawBase @ 0x0064CC65 (`push [ebp+0Ch] ; push [ebp+8]`), the list constructor @ 0x00655AD8 (on +0x3c, the empty allocator
 // tag by reference, homed in the high byte of a dead argument slot `lea eax,[ebp+0Fh]`), the primitive-handle vector's Reserve @ 0x00443F90 (on +0x1c, 3).

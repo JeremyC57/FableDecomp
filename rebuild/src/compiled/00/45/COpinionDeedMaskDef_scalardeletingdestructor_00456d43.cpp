@@ -7,11 +7,11 @@ extern void __fastcall MemberAt3C_dtor(void* p);   // dtor of member subobject a
 extern void __fastcall Self_dtor(void* p);         // the real (non-deleting) destructor
 extern void __cdecl operator_delete(void* p);      // operator delete
 
-void* __fastcall CEngineSubPrimitiveText_scalar_deleting_destructor(char* self, int /*edx*/, unsigned int flags)
+void* __fastcall COpinionDeedMaskDef_scalar_deleting_destructor(char* def, int /*edx*/, unsigned int flags)
 {
-    MemberAt3C_dtor(self + 0x3c);
-    Self_dtor(self);
+    MemberAt3C_dtor(def + 0x3c);
+    Self_dtor(def);
     if (flags & 1)
-        operator_delete(self);
-    return self;
+        operator_delete(def);
+    return def;
 }

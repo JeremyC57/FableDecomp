@@ -1,4 +1,4 @@
-// CGuiVarTransferStruct::Add(CGuiVar* var, const CCharString& name) -- name the GUI variable and append a counted pointer to it to the struct's variable list
+// CScriptBase::AddSpawnedFunction(CGuiVar* var, const CCharString& name) -- name the GUI variable and append a counted pointer to it to the struct's variable list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB7E50, length 135 bytes.
 // Callees: CCharString::operator= @ 0x0099EFB0, operator new @ 0x00BFEA1A (the 12-byte count block),
 // malloc @ 0x00BFEA0E (the 16-byte list node), operator delete @ 0x00BFE9BC; the block's destroy function is

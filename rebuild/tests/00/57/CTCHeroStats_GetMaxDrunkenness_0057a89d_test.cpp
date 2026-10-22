@@ -5,15 +5,15 @@ struct CTCHeroStats { char pad[0xdc]; CTCHeroStatsInner* inner; };
 
 static CTCHeroStats* g_owner = 0;
 
-CTCHeroStats* __fastcall CTCHeroStats_GetOwner(CTCHeroStats* self)
+CTCHeroStats* __fastcall CTCHeroStats_GetOwner(CTCHeroStats* stats)
 {
-    (void)self;
+    (void)stats;
     return g_owner;
 }
 
-float __fastcall CTCHeroStats_GetMaxDrunkenness(CTCHeroStats* self)
+float __fastcall CTCHeroStats_GetMaxDrunkenness(CTCHeroStats* stats)
 {
-    CTCHeroStats* p = CTCHeroStats_GetOwner(self);
+    CTCHeroStats* p = CTCHeroStats_GetOwner(stats);
     return p->inner->maxDrunkenness;
 }
 

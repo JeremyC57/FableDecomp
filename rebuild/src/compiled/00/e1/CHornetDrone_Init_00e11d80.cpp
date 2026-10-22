@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 
-void __fastcall Init(CHornetDrone* self)
+void __fastcall Init(CHornetDrone* drone)
 {
-    self->EatNow = (rand() % 200) + 1;
+    drone->EatNow = (rand() % 200) + 1;
 }

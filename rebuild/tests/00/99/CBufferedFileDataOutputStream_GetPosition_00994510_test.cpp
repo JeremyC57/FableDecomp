@@ -1,7 +1,7 @@
 #include <cstdio>
-int __fastcall CBufferedFileDataOutputStream_GetPosition(const unsigned char* self)
+int __fastcall CBufferedFileDataOutputStream_GetPosition(const unsigned char* stream)
 {
-    return *reinterpret_cast<const int*>(self + 32);
+    return *reinterpret_cast<const int*>(stream + 32);
 }
 int main()
 {

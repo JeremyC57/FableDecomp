@@ -7,7 +7,7 @@ struct CTCCoopSpirit {
 
 // Retail is __fastcall: this=ecx, source ptr on stack, ret 4.
 // Emulate with __fastcall + an unused edx slot so the real arg stays on the stack.
-void __fastcall ApplyMovementVector(CTCCoopSpirit* self, int /*edx_unused*/, const C3DVector* v)
+void __fastcall ApplyMovementVector(CTCCoopSpirit* self, int /*edx_unused*/, const C3DVector* pos)
 {
-    self->movement = *v;
+    self->movement = *pos;
 }

@@ -4,9 +4,9 @@
 // xor eax,eax; ret 0xc  -> returns ERendered(0); 3 stack args (thiscall)
 struct CEngineInternalPrimitiveBase; struct CEngineSubPrimitiveChain;
 struct CEnginePrimitiveManagerParticleDecalGroup_Methods : CEnginePrimitiveManagerParticleDecalGroup {
-    int RenderPrimitive(CEngineInternalPrimitiveBase *p, int layer, CEngineSubPrimitiveChain *c);
+    int RenderPrimitive(CEngineInternalPrimitiveBase *primitive, int layer, CEngineSubPrimitiveChain *chain);
 };
-int CEnginePrimitiveManagerParticleDecalGroup_Methods::RenderPrimitive(CEngineInternalPrimitiveBase *p, int layer, CEngineSubPrimitiveChain *c)
+int CEnginePrimitiveManagerParticleDecalGroup_Methods::RenderPrimitive(CEngineInternalPrimitiveBase *primitive, int layer, CEngineSubPrimitiveChain *chain)
 {
     return 0;
 }

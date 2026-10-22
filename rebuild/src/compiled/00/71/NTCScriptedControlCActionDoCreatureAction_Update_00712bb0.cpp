@@ -1,4 +1,4 @@
-// CActionDoCreatureAction::Update() -- hand the creature action to the creature once, then watch for it to end
+// NTCScriptedControl::CActionDoCreatureAction::Update() -- hand the creature action to the creature once, then watch for it to end
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00712BB0, length 112 bytes.
 // Callees: CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0, the creature's action queue (+0x100)
 // current-action id getter @ 0x00692620 (manifest label "CWorld::DrawGetEnvironment" is propagated),

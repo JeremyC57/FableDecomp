@@ -11,14 +11,14 @@ struct Theme {
 };
 int main()
 {
-    Theme a, b;
+    Theme a, channel;
 #if 0
-    b.TimeOfDay = 0.5f; a.TimeOfDay = 0;
+    channel.TimeOfDay = 0.5f; a.TimeOfDay = 0;
 #endif
-    for (int i = 0; i < 19; ++i) { b.Colours[i].R = (float)i; b.Colours[i].A = 1; a.Colours[i].R = -1; a.Colours[i].A = 0; }
-    for (int i = 0; i < 30; ++i) { b.Scalers[i] = (float)(i * 2); a.Scalers[i] = 0; }
-    for (int i = 0; i < 3; ++i) { b.TextureSets[i].Textures.v = i + 10; b.TextureSets[i].Blends.v = i * 0.25f; }
-    a = b;
+    for (int i = 0; i < 19; ++i) { channel.Colours[i].R = (float)i; channel.Colours[i].A = 1; a.Colours[i].R = -1; a.Colours[i].A = 0; }
+    for (int i = 0; i < 30; ++i) { channel.Scalers[i] = (float)(i * 2); a.Scalers[i] = 0; }
+    for (int i = 0; i < 3; ++i) { channel.TextureSets[i].Textures.v = i + 10; channel.TextureSets[i].Blends.v = i * 0.25f; }
+    a = channel;
     bool ok = g_assigns == 6 && a.Colours[18].R == 18 && a.Colours[0].A == 1 && a.Scalers[29] == 58 && a.TextureSets[2].Textures.v == 12 && a.TextureSets[1].Blends.v == 0.25f;
 #if 0
     ok = ok && a.TimeOfDay == 0.5f;

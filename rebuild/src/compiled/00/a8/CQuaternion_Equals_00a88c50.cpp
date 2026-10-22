@@ -11,15 +11,15 @@ extern const float g_QuaternionEpsilon;   // 0x0129BA3C (0.0001f)
 
 struct CQuaternion {
     float X, Y, Z, W;
-    bool Equals(const CQuaternion& q) const;
+    bool Equals(const CQuaternion& quaternion) const;
 };
 
-bool CQuaternion::Equals(const CQuaternion& q) const
+bool CQuaternion::Equals(const CQuaternion& quaternion) const
 {
-    if (fabs(X - q.X) < g_QuaternionEpsilon &&
-        fabs(Y - q.Y) < g_QuaternionEpsilon &&
-        fabs(Z - q.Z) < g_QuaternionEpsilon &&
-        fabs(W - q.W) < g_QuaternionEpsilon)
+    if (fabs(X - quaternion.X) < g_QuaternionEpsilon &&
+        fabs(Y - quaternion.Y) < g_QuaternionEpsilon &&
+        fabs(Z - quaternion.Z) < g_QuaternionEpsilon &&
+        fabs(W - quaternion.W) < g_QuaternionEpsilon)
         return true;
     return false;
 }

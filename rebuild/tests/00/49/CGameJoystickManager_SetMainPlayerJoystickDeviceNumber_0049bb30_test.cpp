@@ -7,10 +7,10 @@ struct CGameJoystickManager {
 };
 
 // Function under test (same lowering as retail 0x0049bb30)
-void __fastcall SetMainPlayerJoystickDeviceNumber(CGameJoystickManager *this_, void * /*edx*/, int deviceNumber)
+void __fastcall SetMainPlayerJoystickDeviceNumber(CGameJoystickManager *manager, void * /*edx*/, int deviceNumber)
 {
-    this_->deviceNumber = deviceNumber;
-    this_->isSet = true;
+    manager->deviceNumber = deviceNumber;
+    manager->isSet = true;
 }
 
 int main()

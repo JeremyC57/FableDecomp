@@ -50,7 +50,7 @@ struct CWorld { virtual CThingManager_Retail* GetThingManager() { std::strcat(g_
 static CWorld g_world;
 struct CDisplayEngine_Retail; struct CPlayerManager_Retail;
 struct CGameScriptInterface { virtual void v000() { } CWorld* World; long Component; CDisplayEngine_Retail* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
-    bool IsLevelLoaded(const CCharString& name) const {long map = World->GetWorldMap()->GetMapNumberFromScriptName(name); if (!map) return false; return World->GetWorldMap()->IsMapLoaded(map) && !World->GetWorldMap()->IsMapLoadedOnPlayerProximity(map);}
+    bool IsLevelLoaded(const CCharString& levelName) const {long map = World->GetWorldMap()->GetMapNumberFromScriptName(levelName); if (!map) return false; return World->GetWorldMap()->IsMapLoaded(map) && !World->GetWorldMap()->IsMapLoadedOnPlayerProximity(map);}
 };
 
 int main() {

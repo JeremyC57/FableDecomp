@@ -4,12 +4,12 @@
 struct CThingAICreature;
 
 
-extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* self);
+extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* traits);
 
-void __fastcall LogReaction(CReactionFrequencyTraits_PeriodicFrequency* self,
+void __fastcall LogReaction(CReactionFrequencyTraits_PeriodicFrequency* traits,
                             int edx_pad,
-                            const CThingAICreature& c, bool flag)
+                            const CThingAICreature& creature, bool flag)
 {
     if (flag)
-        self->LastHappenedFrame = Helper_LR(self);
+        traits->LastHappenedFrame = Helper_LR(traits);
 }

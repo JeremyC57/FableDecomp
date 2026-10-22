@@ -1,7 +1,7 @@
 #include <cstdio>
-void* __fastcall CChunkedFileSuperChunk_GetAsSuperChunk(void* self)
+void* __fastcall CChunkedFileSuperChunk_GetAsSuperChunk(void* chunk)
 {
-    return self;
+    return chunk;
 }
 int main()
 {

@@ -24,7 +24,7 @@ extern int __cdecl GetFrameCount(void);
 
 
 // __fastcall places 'this' in ecx, byte-identical to __fastcall for a this-only accessor.
-bool __fastcall CTCPerceiveThing_IsUpdatingThisFrame(CTCPerceiveThing *self)
+bool __fastcall CTCPerceiveThing_IsUpdatingThisFrame(CTCPerceiveThing *thing)
 {
-    return (GetFrameCount() % 4) == self->UpdateOffset;
+    return (GetFrameCount() % 4) == thing->UpdateOffset;
 }

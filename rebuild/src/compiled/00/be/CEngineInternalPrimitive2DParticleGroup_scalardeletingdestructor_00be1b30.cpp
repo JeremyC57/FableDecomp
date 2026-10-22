@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineInternalPrimitive2DParticleGroup {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineInternalPrimitive2DParticleGroup_dtor(CEngineInternalPrimitive2DParticleGroup* group);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineInternalPrimitive2DParticleGroup_scalar_deleting_destructor(CEngineInternalPrimitive2DParticleGroup* group, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineInternalPrimitive2DParticleGroup_dtor(group);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(group);
+    return group;
 }

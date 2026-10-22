@@ -30,18 +30,18 @@ int CHandleBasedMemoryPool::TestIfAreaIsGrowable(CHeader* area,int required) {
  char* start=(char*)(area+1);
  char* end=start+area->Size+area->Padding;
  if(end-start>=required)return 1;
- CHeader* p=area->PrevContiguous;
- while(p) {
-  if(p->Status!='N' && (p->Locked || !CanMoveResource(p->Resource,p->Handle)))break;
-  start=(char*)(p+1);
+ CHeader* header=area->PrevContiguous;
+ while(header) {
+  if(header->Status!='N' && (header->Locked || !CanMoveResource(header->Resource,header->Handle)))break;
+  start=(char*)(header+1);
   if(end-start>=required)return 1;
-  p=p->PrevContiguous;
+  header=header->PrevContiguous;
  }
- p=area->NextContiguous;
- while(p) {
-  if(p->Status!='N' && (p->Locked || !CanMoveResource(p->Resource,p->Handle)))break;
-  if((char*)(p+1)+p->Size+p->Padding-start>=required)return 1;
-  p=p->NextContiguous;
+ header=area->NextContiguous;
+ while(header) {
+  if(header->Status!='N' && (header->Locked || !CanMoveResource(header->Resource,header->Handle)))break;
+  if((char*)(header+1)+header->Size+header->Padding-start>=required)return 1;
+  header=header->NextContiguous;
  }
  return 0;
 }

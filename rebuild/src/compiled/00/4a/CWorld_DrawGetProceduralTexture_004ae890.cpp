@@ -1,8 +1,8 @@
 struct CProceduralTexture;
 struct CWorld;
 
-CProceduralTexture const * __fastcall CWorld_DrawGetProceduralTexture(CWorld *self)
+CProceduralTexture const * __fastcall CWorld_DrawGetProceduralTexture(CWorld *world)
 {
-    (void)self;
+    (void)world;
     return 0;
 }

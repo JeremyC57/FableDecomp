@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
 extern "C" void __cdecl eng_operator_delete(void* p);
 
-struct CLandscapeBackgroundPatch {
+struct CSpecialAbilitiesBurntEffectDef {
     void* vftable;
     void Dtor();
-    void* vector_deleting_destructor(unsigned int flags);
+    void* scalar_deleting_destructor(unsigned int flags);
 };
 
-void* CLandscapeBackgroundPatch::vector_deleting_destructor(unsigned int flags)
+void* CSpecialAbilitiesBurntEffectDef::scalar_deleting_destructor(unsigned int flags)
 {
     this->Dtor();
     if (flags & 1) {

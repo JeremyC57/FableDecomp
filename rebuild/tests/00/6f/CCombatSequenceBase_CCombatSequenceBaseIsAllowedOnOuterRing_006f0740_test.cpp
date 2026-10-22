@@ -10,16 +10,16 @@ struct CCombatSequenceBase
     CCombatSequenceBase_vtbl* vtbl;
 };
 
-typedef unsigned int (__fastcall *IsAllowedOnOuterRing_fn)(CCombatSequenceBase* self, void* edx);
+typedef unsigned int (__fastcall *IsAllowedOnOuterRing_fn)(CCombatSequenceBase* sequence, void* edx);
 
-unsigned int __fastcall CCombatSequenceBase_IsAllowedOnOuterRing(CCombatSequenceBase* self, void* edx)
+unsigned int __fastcall CCombatSequenceBase_IsAllowedOnOuterRing(CCombatSequenceBase* sequence, void* edx)
 {
-    return (((IsAllowedOnOuterRing_fn)(*(void***)self)[0xF])(self, edx) >> 7) & 1;
+    return (((IsAllowedOnOuterRing_fn)(*(void***)sequence)[0xF])(sequence, edx) >> 7) & 1;
 }
 
 static int g_calls = 0;
 
-unsigned int __fastcall FakeVirtual(CCombatSequenceBase* self, void* edx)
+unsigned int __fastcall FakeVirtual(CCombatSequenceBase* sequence, void* edx)
 {
     g_calls = g_calls + 1;
     return 0x80;

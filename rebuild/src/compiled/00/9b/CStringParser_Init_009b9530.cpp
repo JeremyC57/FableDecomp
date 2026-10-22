@@ -11,7 +11,7 @@ typedef void (__fastcall *ParserCallback)(void*, void*);
 
 class CStringParser {
 public:
-    void Init(char* buf, ParserCallback cb, CCharString* s, long n);
+    void Init(char* buf, ParserCallback cb, CCharString* name, long n);
 
     long m_unk0;             // +0x00
     char* m_buf;             // +0x04
@@ -23,13 +23,13 @@ public:
     long m_n2;               // +0x24
 };
 
-void CStringParser::Init(char* buf, ParserCallback cb, CCharString* s, long n)
+void CStringParser::Init(char* buf, ParserCallback cb, CCharString* name, long n)
 {
     m_buf = buf;
     m_zero = 0;
     m_n2 = n;
     m_n1 = n;
-    m_str = *s;
+    m_str = *name;
     m_cb = cb;
     m_flag = 0;
 }

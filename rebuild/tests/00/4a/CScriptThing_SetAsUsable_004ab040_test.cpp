@@ -15,20 +15,20 @@ typedef void (__fastcall *SlotFn)(CInner*, int, int);
 static CInner* g_last = 0;
 static int g_arg = 0;
 
-void __fastcall slot66(CInner* p, int edx, int arg)
+void __fastcall slot66(CInner* p, int edx, int isUsable)
 {
     (void)edx;
     g_last = p;
-    g_arg = arg;
-    p->captured = arg;
+    g_arg = isUsable;
+    p->captured = isUsable;
 }
 
-void __fastcall CScriptThing_SetAsUsable(CScriptThing* self, int edx, int arg)
+void __fastcall CScriptThing_SetAsUsable(CScriptThing* scriptThing, int edx, int isUsable)
 {
-    CInner* p = self->inner;
+    CInner* p = scriptThing->inner;
     if (p) {
         void** vt = *(void***)p;
-        ((SlotFn)vt[66])(p, edx, arg);
+        ((SlotFn)vt[66])(p, edx, isUsable);
     }
 }
 

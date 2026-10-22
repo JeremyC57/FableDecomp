@@ -1,4 +1,4 @@
-void* __fastcall CEngineInternalPrimitiveOcclusionBase_GetAsOcclusionPrimitive(void* self)
+void* __fastcall CEngineInternalPrimitiveOcclusionBase_GetAsOcclusionPrimitive(void* occlusion)
 {
-    return self;
+    return occlusion;
 }

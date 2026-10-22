@@ -1,22 +1,22 @@
 struct CUserProfileManager {
     char pad0[0xc];
-    char flag0c;
+    char UseNewProfileValues;
     char pad1[0x13 - 0xd];
     char CameraPCBowXYInverted;
     char pad2[0xd3 - 0x14];
-    char bd3;
+    char CameraPCBowXYInvertedNewProfile;
 };
 
-extern void __fastcall UPM_Update(CUserProfileManager* self);
-extern void __fastcall UPM_Refresh(CUserProfileManager* self);
+extern void __fastcall UPM_Update(CUserProfileManager* manager);
+extern void __fastcall UPM_Refresh(CUserProfileManager* manager);
 
-void __fastcall CUserProfileManager_SetCameraResetting(CUserProfileManager* self, int edx_pad, char p1, char p2)
+void __fastcall CUserProfileManager_SetCameraPCBowXYInverted(CUserProfileManager* manager, int edx_pad, char p1, char p2)
 {
     (void)edx_pad;
-    if (self->flag0c)
-        self->bd3 = p1;
-    self->CameraPCBowXYInverted = p1;
-    UPM_Update(self);
+    if (manager->UseNewProfileValues)
+        manager->CameraPCBowXYInvertedNewProfile = p1;
+    manager->CameraPCBowXYInverted = p1;
+    UPM_Update(manager);
     if (p2)
-        UPM_Refresh(self);
+        UPM_Refresh(manager);
 }

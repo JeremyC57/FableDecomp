@@ -1,4 +1,4 @@
-// CPersistContext_TransferableVector::TransferOut(CPersistContext*, CCharString*, long) -- formats element `index` of the float vector with six decimals and appends it to the output string
+// CPersistContext_TransferableVector<float>::TransferOut(CPersistContext*, CCharString*, long) -- formats element `index` of the float vector with six decimals and appends it to the output string
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005663F0, 54 bytes (+10 int3 padding).
 // Callees: 0x009A08B0 CCharString::FormatDouble (__fastcall, hidden result in ecx, digit count in edx,

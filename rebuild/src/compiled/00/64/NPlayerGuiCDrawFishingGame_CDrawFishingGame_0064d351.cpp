@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// CVtable_0125a580::CVtable_0125a580(CPlayerGui*, void*) -- forwards both arguments to CDrawBase, then this class's vtable
+// NPlayerGui::CDrawFishingGame::CDrawFishingGame(CPlayerGui*, void*) -- forwards both arguments to CDrawBase, then this class's vtable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064D351, oracle length 28 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

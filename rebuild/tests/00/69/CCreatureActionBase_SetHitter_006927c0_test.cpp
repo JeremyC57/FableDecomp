@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CCreatureActionBase_SetHitter(int arg0) {}
+void __stdcall CCreatureActionBase_SetHitter(int thing) {}
 int main()
 {
     CCreatureActionBase_SetHitter(1);

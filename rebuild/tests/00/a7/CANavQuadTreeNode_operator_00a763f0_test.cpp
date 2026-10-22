@@ -23,7 +23,7 @@ static int fails = 0;
 
 struct C2DVector {
     float X, Y;
-    bool IsNear(const C2DVector& o) const { return fabs(X - o.X) <= 0.0001f && fabs(Y - o.Y) <= 0.0001f; }
+    bool IsNear(const C2DVector& node) const { return fabs(X - node.X) <= 0.0001f && fabs(Y - node.Y) <= 0.0001f; }
 };
 class CANavQuadTreeNode {
 public:

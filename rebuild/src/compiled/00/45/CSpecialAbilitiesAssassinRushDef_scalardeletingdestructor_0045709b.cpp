@@ -1,14 +1,14 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch;
-extern void __fastcall CLBP_dtor(CLandscapeBackgroundPatch* self);
-extern void __cdecl CLBP_operator_delete(void* self);
+struct CSpecialAbilitiesAssassinRushDef;
+extern void __fastcall CLBP_dtor(CSpecialAbilitiesAssassinRushDef* def);
+extern void __cdecl CLBP_operator_delete(void* def);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_dummy, unsigned int flags)
+void* __fastcall CSpecialAbilitiesAssassinRushDef_scalar_deleting_destructor(CSpecialAbilitiesAssassinRushDef* def, int edx_dummy, unsigned int flags)
 {
     (void)edx_dummy;
-    CLBP_dtor(self);
+    CLBP_dtor(def);
     if (flags & 1) {
-        CLBP_operator_delete(self);
+        CLBP_operator_delete(def);
     }
-    return self;
+    return def;
 }

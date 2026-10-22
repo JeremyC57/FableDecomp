@@ -1,1 +1,1 @@
-void __stdcall CAIStateGroup_CreatureFindCover_InitStateGroup(int arg0, int arg1) {}
+void __stdcall CAIStateGroup_CreatureFindCover_InitStateGroup(int world, int creature) {}

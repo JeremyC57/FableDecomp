@@ -4,14 +4,14 @@
 struct CThingAICreature;
 
 
-extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* self);
+extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* traits);
 
-void __fastcall LogReaction(CReactionFrequencyTraits_PeriodicFrequency* self,
+void __fastcall LogReaction(CReactionFrequencyTraits_PeriodicFrequency* traits,
                             int edx_pad,
-                            const CThingAICreature& c, bool flag);
+                            const CThingAICreature& creature, bool flag);
 
 static int g_called = 0;
-extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* self)
+extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* traits)
 {
     g_called++;
     return 0x1234;

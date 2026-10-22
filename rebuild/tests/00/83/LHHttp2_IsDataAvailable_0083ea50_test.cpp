@@ -7,9 +7,9 @@ static char query_stub(int) { return g_query_ret; }
 
 struct LHHttp2 { void* conn; };
 
-static LH_RETURN IsDataAvailable_model(LHHttp2* self)
+static LH_RETURN IsDataAvailable_model(LHHttp2* http2)
 {
-    void* c = *(void**)self;
+    void* c = *(void**)http2;
     if (c != 0)
         return query_stub(0) ? 0 : 3;
     return 2;

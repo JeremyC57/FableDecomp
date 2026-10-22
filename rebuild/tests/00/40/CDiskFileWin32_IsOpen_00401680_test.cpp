@@ -2,9 +2,9 @@
 #include <cstdio>
 
 
-bool __fastcall CDiskFileWin32_IsOpen(const CDiskFileWin32* self)
+bool __fastcall CDiskFileWin32_IsOpen(const CDiskFileWin32* win32)
 {
-    return self->Opened;
+    return win32->Opened;
 }
 
 int main()

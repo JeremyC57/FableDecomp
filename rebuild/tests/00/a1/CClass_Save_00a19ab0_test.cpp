@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CClass_Save(int arg0) {}
+void __stdcall CClass_Save(int name) {}
 int main()
 {
     CClass_Save(1);

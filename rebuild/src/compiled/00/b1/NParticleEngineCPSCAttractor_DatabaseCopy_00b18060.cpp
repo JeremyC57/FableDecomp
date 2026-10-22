@@ -1,4 +1,4 @@
-// CPSCAttractor::DatabaseCopy(const CPSCAttractor&) -- copy an attractor component's database settings: the two flag bits, the position parameter and its name, radius, force, fall-off and the user point list
+// NParticleEngine::CPSCAttractor::DatabaseCopy(const CPSCAttractor&) -- copy an attractor component's database settings: the two flag bits, the position parameter and its name, radius, force, fall-off and the user point list
 // Leaf: DatabaseCopy
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B18060, 170 bytes (+ int3 padding; `ret 4`).
 // Callees: vector<C3DVector>::reserve(size_type) 0x00920FF0 (manifest "vector_reserve") and resize(size_type, const C3DVector&)

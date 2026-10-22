@@ -1,4 +1,4 @@
-// CQuaternion::operator*(const C4DVector& in, C4DVector& out, float w) -- transform a vector by a 3x4 row matrix: out.xyz = rows . (in.x, in.y, in.z, w), out.w = w
+// CMatrix34::Transform(const C4DVector& in, C4DVector& out, float w) -- transform a vector by a 3x4 row matrix: out.xyz = rows . (in.x, in.y, in.z, w), out.w = w
 // Grade: MATCH -- rows 1 and 2 are `float y = R[1].Dot3(t); y += R[1].T * w; out.Y = y;` (the accumulator statement keeps the w term last; the single-expression `Dot3(t) + T * w` reassociates to z,y,w,x)
 // Leaf: Transform
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00987BF0, length 156 bytes, `ret 0Ch`. No callees.

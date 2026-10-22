@@ -29,7 +29,7 @@ struct CThemeChannel {
     CIDrawEnvironmentTextureSet TextureSets[3]; // +0x1A8
 };
 
-void AssignChannel(CThemeChannel& a, const CThemeChannel& b)
+void AssignChannel(CThemeChannel& a, const CThemeChannel& channel)
 {
-    a = b;
+    a = channel;
 }

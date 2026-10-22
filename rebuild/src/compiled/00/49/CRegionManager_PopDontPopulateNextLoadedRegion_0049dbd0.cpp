@@ -1,7 +1,7 @@
 struct S { char pad[0xD8]; unsigned char f; };
-unsigned char __fastcall PopDontPopulateNextLoadedRegion(S* self)
+unsigned char __fastcall PopDontPopulateNextLoadedRegion(S* world)
 {
-    unsigned char v = self->f;
-    self->f = 0;
+    unsigned char v = world->f;
+    world->f = 0;
     return v;
 }

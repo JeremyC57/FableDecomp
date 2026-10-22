@@ -3,8 +3,8 @@
 struct CASuspendableProcess;
 
 struct CASuspendableProcessVtbl {
-    void (__fastcall *slot0)(CASuspendableProcess* self);
-    void (__fastcall *Pump)(CASuspendableProcess* self);
+    void (__fastcall *slot0)(CASuspendableProcess* process);
+    void (__fastcall *Pump)(CASuspendableProcess* process);
 };
 
 #pragma pack(push,1)
@@ -15,21 +15,21 @@ struct CASuspendableProcess {
 };
 #pragma pack(pop)
 
-void __fastcall TerminateProcess(CASuspendableProcess* self)
+void __fastcall TerminateProcess(CASuspendableProcess* process)
 {
-    self->terminateRequested = 1;
-    while (self->active) {
-        self->vtbl->Pump(self);
+    process->terminateRequested = 1;
+    while (process->active) {
+        process->vtbl->Pump(process);
     }
 }
 
 static int g_pumps = 0;
 
 // Pump decrements a countdown; when it hits 0, clears active.
-void __fastcall TestPump(CASuspendableProcess* self)
+void __fastcall TestPump(CASuspendableProcess* process)
 {
     g_pumps++;
-    if (g_pumps >= 3) self->active = 0;
+    if (g_pumps >= 3) process->active = 0;
 }
 
 int main()

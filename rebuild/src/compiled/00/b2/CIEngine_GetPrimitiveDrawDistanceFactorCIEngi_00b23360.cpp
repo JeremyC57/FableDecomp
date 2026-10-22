@@ -15,8 +15,8 @@
 
 extern float g_PrimitiveDrawDistanceFactor;
 
-float __fastcall CIEngine__GetPrimitiveDrawDistanceFactor(void *this_ptr)
+float __fastcall CIEngine__GetPrimitiveDrawDistanceFactor(void *engine)
 {
-    (void)this_ptr;
+    (void)engine;
     return g_PrimitiveDrawDistanceFactor;
 }

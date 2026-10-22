@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CANavQuadTreeNode_SetUpNeighboursWithLeaf(int arg0, int arg1) {}
+void __stdcall CANavQuadTreeNode_SetUpNeighboursWithLeaf(int arg0, int node) {}
 int main()
 {
     CANavQuadTreeNode_SetUpNeighboursWithLeaf(1, 2);

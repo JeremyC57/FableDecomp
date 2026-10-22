@@ -21,12 +21,12 @@ struct CSurface {
     IRefObj* obj;    // +4
 };
 
-long __fastcall GetRefCount(CSurface* self)
+long __fastcall GetRefCount(CSurface* surface)
 {
-    IRefObj* p = self->obj;
+    IRefObj* p = surface->obj;
     if (p) {
         p->vtbl->slot1(p);
-        IRefObj* q = self->obj;
+        IRefObj* q = surface->obj;
         return q->vtbl->slot2(q);
     }
     return 0;

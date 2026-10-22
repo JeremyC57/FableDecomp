@@ -23,8 +23,8 @@ struct CWorld { char pad[0x38]; };
 bool __fastcall CGameScriptInterface_IsCameraInScriptedMode(CGameScriptInterface* self)
 {
     CCamObj* local;
-    CWorld* a = self->World;
-    CCamMgr* b = *(CCamMgr**)((char*)a + 0x34);
+    CWorld* world = self->World;
+    CCamMgr* b = *(CCamMgr**)((char*)world + 0x34);
     b->GetObj(&local);
     return GetCameraScriptedMode(local);
 }

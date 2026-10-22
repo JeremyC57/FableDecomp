@@ -60,7 +60,7 @@ namespace NCreatureMode {
 
 struct CModeBriarRoseTeleportIntangible : CModeBase_00861e00 {
     CAnimFilterOfGroup m_animFilter;       // +0x68
-    unsigned long m_unknown74;             // +0x74 (not touched by the ctor)
+    unsigned long Timer;             // +0x74 (not touched by the ctor)
     CIntelligentPointerCreature m_pTarget; // +0x78
     virtual void v00();
     CModeBriarRoseTeleportIntangible(CThing* thing, CThingCreatureBase* target);

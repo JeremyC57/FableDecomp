@@ -12,12 +12,12 @@ struct CMiniMapDisplay {
     MapSub sub;
 };
 
-void __fastcall GetRelativePosOnMap(CMiniMapDisplay* self, void* edx,
+void __fastcall GetRelativePosOnMap(CMiniMapDisplay* display, void* edx,
                                     C3DVector* a, C2DVector* out)
 {
     IPair lo;
     IPair hi;
-    self->sub.GetBounds(&lo, &hi);
+    display->sub.GetBounds(&lo, &hi);
     out->x = (a->x - (float)lo.a) / (float)hi.a;
     out->y = (a->y - (float)lo.b) / (float)hi.b;
 }

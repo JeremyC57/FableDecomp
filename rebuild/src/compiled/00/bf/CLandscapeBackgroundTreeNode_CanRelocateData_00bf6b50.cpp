@@ -6,8 +6,8 @@ struct CLandscapeBackgroundTreeNode {
     char pad[0xa4];
     Inner* inner;
 };
-bool __fastcall CLandscapeBackgroundTreeNode_CanRelocateData(CLandscapeBackgroundTreeNode* self, int /*edx*/, long a)
+bool __fastcall CLandscapeBackgroundTreeNode_CanRelocateData(CLandscapeBackgroundTreeNode* node, int /*edx*/, long a)
 {
     (void)a;
-    return self->inner->flag == 0;
+    return node->inner->flag == 0;
 }

@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 
-// CEngineLightingManager::UpdateShadowScene @ 0x00473593  (__fastcall, ret 4)
+// CPersistContext::TransferBool @ 0x0043314A  (__fastcall, ret 4)
 //
 // Retail idiom:
 //   push ebp; mov ebp,esp; push ecx          -> 1 local byte at [ebp-4]
@@ -22,19 +22,19 @@ struct Local {
     void Fill(int a, void* b);   // __fastcall, ecx=&local, two dword args
 };
 
-class CEngineLightingManager {
+class CPersistContext {
 public:
     char  pad00[0x18];
     int   mode;                  // +0x18
     char  pad1C[0x08];
     int   obj24;                 // +0x24
     Sink* sink28;                // +0x28
-    void UpdateShadowScene(unsigned char* p);
+    void TransferBool(unsigned char* p);
 };
 
 extern void __stdcall Prep(unsigned int tag);   // push 0x122d70e; call
 
-void CEngineLightingManager::UpdateShadowScene(unsigned char* p)
+void CPersistContext::TransferBool(unsigned char* p)
 {
     Local h;
     Prep(0x122d70eU);

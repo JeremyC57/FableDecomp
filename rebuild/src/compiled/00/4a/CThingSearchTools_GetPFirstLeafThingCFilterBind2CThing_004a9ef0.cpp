@@ -11,7 +11,7 @@ struct List { Node* sentinel; };
 
 extern List* __stdcall GetThingList(int kind);
 
-bool __fastcall CThingSearchTools_GetPFirstLeafThing(void* self, int edx, Filter* filter, Thing** out)
+bool __fastcall CThingSearchTools_GetPFirstLeafThing(void* tools, int edx, Filter* filter, Thing** out)
 {
     List* lst = GetThingList(0xf);
     Node* n = lst->sentinel->next;

@@ -27,10 +27,10 @@ struct CModeDragonBase
     char active;
 };
 
-void __fastcall CModeDragonBase_OnDeactivate(CModeDragonBase* self)
+void __fastcall CModeDragonBase_OnDeactivate(CModeDragonBase* mode)
 {
-    self->holder->inner->Deactivate(1);
-    self->active = 0;
+    mode->holder->inner->Deactivate(1);
+    mode->active = 0;
 }
 
 int main()

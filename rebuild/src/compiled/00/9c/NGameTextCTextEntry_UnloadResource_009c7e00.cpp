@@ -1,4 +1,4 @@
-// CTextEntry::UnloadResource() -- unless the entry's asynchronous bank read is still pending, drop the owner's counted resource pointer (the first word of Owner); always reports true
+// NGameText::CTextEntry::UnloadResource() -- unless the entry's asynchronous bank read is still pending, drop the owner's counted resource pointer (the first word of Owner); always reports true
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C7E00, length 64 bytes.
 // Callees: CBankFileAsyncData::IsFinished() @ 0x009D54E0 (on PFileData's object), the resource's virtual slot 1 (Destroy) when its count at +4 reaches zero.
 // Shape: as the landed CEmitterData::UnloadResource @ 0x00AF1440 but the pending case ALSO answers true (`je` to the shared `mov al,1`): the release is guarded by

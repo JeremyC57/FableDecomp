@@ -1,4 +1,4 @@
-// CActionEventAddObject::SetDataFromString(const CCharString&) -- parse "object, hand[, destroy]" event data
+// NCreatureAction::CActionEventAddObject::SetDataFromString(const CCharString&) -- parse "object, hand[, destroy]" event data
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00870D70, length 102 bytes (+ int3 padding).
 // Callees: GetDataFromEventString(const CCharString&, long index, CCharString* out) @ 0x00870C90 (__fastcall:
 // string in ecx, index in edx, out pointer on the stack), CCharString::CCharString() @ 0x0099E4B0,

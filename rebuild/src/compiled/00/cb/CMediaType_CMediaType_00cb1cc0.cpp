@@ -1,4 +1,4 @@
-// CComHolder_00cb1cc0::Release() -- free the COM task memory at +0x44 when the block at +0x40 is held (both cleared), then release the COM interface at +0x3c (cleared)
+// CMediaType::~CMediaType() -- free the COM task memory at +0x44 when the block at +0x40 is held (both cleared), then release the COM interface at +0x3c (cleared)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1CC0, length 56 bytes.
 // Callees: ole32 CoTaskMemFree (IAT 0x01440630, `call dword ptr [__imp]`), the interface's virtual slot 2 (Release, `__stdcall` with `this` pushed). Shape: the
 // clears are immediates; the interface pointer is loaded once for the vtable read and the push. The chunk label "FinishWithDynamicTextures" is propagated; the

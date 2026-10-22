@@ -26,10 +26,10 @@ extern "C" int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Query(void)
 extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Prep(void);
 extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Query(void);
 
-bool __fastcall CTCVillage_GetIsHeroEnemyOfGuards(CTCVillage* thisPtr)
+bool __fastcall CTCVillage_GetIsHeroEnemyOfGuards(CTCVillage* village)
 {
     CTCVillage_GetIsHeroEnemyOfGuards_Prep();
-    return CTCVillage_GetIsHeroEnemyOfGuards_Query() < thisPtr->m_guardEnemyThreshold;
+    return CTCVillage_GetIsHeroEnemyOfGuards_Query() < village->m_guardEnemyThreshold;
 }
 
 int main(void)

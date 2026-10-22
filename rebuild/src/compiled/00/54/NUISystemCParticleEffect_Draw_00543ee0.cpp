@@ -98,7 +98,7 @@ class CChangingStateComponent {                    // polymorphic root (retail v
 public:
     virtual void v000();
     virtual void v001();
-    virtual void Draw(long target, long a, long layerOffset, long c, long d);            // slot 2
+    virtual void Draw(long target, long a, long layerOffset, long c, long component);            // slot 2
     virtual void v003();
     virtual void v004();
     virtual void v005();
@@ -253,7 +253,7 @@ public:
     }
     virtual void Initialise();
     virtual void ChangeState(long state);
-    virtual void Draw(long target, long a, long layerOffset, long c, long d);
+    virtual void Draw(long target, long a, long layerOffset, long c, long component);
 };
 
 extern bool  g_bScreenSizeOverride;                // 0x013B8768
@@ -265,7 +265,7 @@ static inline float ScaleScreenX(float x) { float r; if (g_bScreenSizeOverride) 
 static inline float ScaleScreenY(float y) { float r; if (g_bScreenSizeOverride) r = (y / g_DisplayHeight) * g_OverrideScreenHeight; else r = y; return r; }
 
 
-void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long d)
+void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long component)
 {
     if (Emitter) {
         bool independent = IsIndependent();

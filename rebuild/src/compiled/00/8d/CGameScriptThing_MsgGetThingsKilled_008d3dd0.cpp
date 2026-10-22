@@ -94,11 +94,11 @@ struct CGameScriptThingMethods : CGameScriptThing {
 bool CGameScriptThingMethods::MsgGetThingsKilled(CULongVector& groups) const
 {
     bool found = false;
-    const CBaseIntelligentPointer* p = reinterpret_cast<const CBaseIntelligentPointer*>(PThing);
-    if (p->Get() && !(p->Get()->LifeFlags & 1)) {
+    const CBaseIntelligentPointer* pointer = reinterpret_cast<const CBaseIntelligentPointer*>(PThing);
+    if (pointer->Get() && !(pointer->Get()->LifeFlags & 1)) {
         long last = LastFrame(QuestManager->PQuestCurrentlyRunning);
         long current = CurrentFrame(QuestManager->PQuestCurrentlyRunning);
-        CThingNative* thing = p->Get();
+        CThingNative* thing = pointer->Get();
         if (thing->HasTC(0x42)) {
             const CTCEntityEventsNative* events = thing->GetTC<CTCEntityEventsNative>(0x42);
             for (SEventNode* node = events->Events->Next; node != events->Events; node = node->Next) {

@@ -1,14 +1,14 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch {
+struct CVillagerInteractionsDef {
     int f0;
 };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self) {
-    (void)self;
+extern "C" void __fastcall CVillagerInteractionsDef_dtor(CVillagerInteractionsDef* def) {
+    (void)def;
     ++g_dtor_calls;
 }
 extern "C" void __cdecl op_delete(void* p) {
@@ -16,22 +16,22 @@ extern "C" void __cdecl op_delete(void* p) {
     ++g_delete_calls;
 }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags) {
+void* __fastcall CVillagerInteractionsDef_scalar_deleting_destructor(CVillagerInteractionsDef* def, int edx, unsigned int flags) {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    CVillagerInteractionsDef_dtor(def);
     if (flags & 1) {
-        op_delete(self);
+        op_delete(def);
     }
-    return self;
+    return def;
 }
 
 int main() {
-    CLandscapeBackgroundPatch obj;
+    CVillagerInteractionsDef obj;
     obj.f0 = 42;
 
     // flags with bit0 set => destructor + delete
     g_dtor_calls = 0; g_delete_calls = 0;
-    void* r1 = CLandscapeBackgroundPatch_vector_deleting_destructor(&obj, 0, 1);
+    void* r1 = CVillagerInteractionsDef_scalar_deleting_destructor(&obj, 0, 1);
     if (r1 != &obj || g_dtor_calls != 1 || g_delete_calls != 1) {
         std::printf("FAIL case1 r=%p dtor=%d del=%d\n", r1, g_dtor_calls, g_delete_calls);
         return 1;
@@ -39,7 +39,7 @@ int main() {
 
     // flags without bit0 => destructor only, no delete
     g_dtor_calls = 0; g_delete_calls = 0;
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&obj, 0, 0);
+    void* r2 = CVillagerInteractionsDef_scalar_deleting_destructor(&obj, 0, 0);
     if (r2 != &obj || g_dtor_calls != 1 || g_delete_calls != 0) {
         std::printf("FAIL case2 r=%p dtor=%d del=%d\n", r2, g_dtor_calls, g_delete_calls);
         return 1;
@@ -47,7 +47,7 @@ int main() {
 
     // even flag with bit0 clear (2) => no delete
     g_dtor_calls = 0; g_delete_calls = 0;
-    void* r3 = CLandscapeBackgroundPatch_vector_deleting_destructor(&obj, 0, 2);
+    void* r3 = CVillagerInteractionsDef_scalar_deleting_destructor(&obj, 0, 2);
     if (r3 != &obj || g_delete_calls != 0) {
         std::printf("FAIL case3\n");
         return 1;

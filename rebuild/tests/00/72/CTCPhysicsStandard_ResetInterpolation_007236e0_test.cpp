@@ -11,16 +11,16 @@ struct CTCPhysicsStandard {
 int g_helper_called = 0;
 int g_tail_called = 0;
 
-void __fastcall CTCPhysicsStandard_helper(CTCPhysicsStandard* self) { g_helper_called = 1; (void)self; }
+void __fastcall CTCPhysicsStandard_helper(CTCPhysicsStandard* standard) { g_helper_called = 1; (void)standard; }
 unsigned int __cdecl CTCPhysicsStandard_getFlag(void) { return 0xABCD1234u; }
-void __fastcall CTCPhysicsStandard_tail(CTCPhysicsStandard* self) { g_tail_called = 1; (void)self; }
+void __fastcall CTCPhysicsStandard_tail(CTCPhysicsStandard* standard) { g_tail_called = 1; (void)standard; }
 
-void __fastcall CTCPhysicsStandard_ResetInterpolation(CTCPhysicsStandard* self)
+void __fastcall CTCPhysicsStandard_ResetInterpolation(CTCPhysicsStandard* standard)
 {
-    self->interp = self->cur;
-    CTCPhysicsStandard_helper(self);
-    self->flag = CTCPhysicsStandard_getFlag();
-    CTCPhysicsStandard_tail(self);
+    standard->interp = standard->cur;
+    CTCPhysicsStandard_helper(standard);
+    standard->flag = CTCPhysicsStandard_getFlag();
+    CTCPhysicsStandard_tail(standard);
 }
 
 int main()

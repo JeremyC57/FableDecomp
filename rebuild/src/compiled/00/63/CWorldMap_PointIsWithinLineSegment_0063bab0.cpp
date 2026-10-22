@@ -15,13 +15,13 @@ struct C3DVector
 class CWorldMap
 {
 protected:
-    bool PointIsWithinLineSegment(const C3DVector* point, const C3DVector* a, const C3DVector* b) const;
+    bool PointIsWithinLineSegment(const C3DVector* point, const C3DVector* a, const C3DVector* pos) const;
 };
 
-bool CWorldMap::PointIsWithinLineSegment(const C3DVector* point, const C3DVector* a, const C3DVector* b) const
+bool CWorldMap::PointIsWithinLineSegment(const C3DVector* point, const C3DVector* a, const C3DVector* pos) const
 {
-    return (a->X < b->X ? a->X : b->X) <= point->X
-        && (a->X > b->X ? a->X : b->X) >= point->X
-        && (a->Y < b->Y ? a->Y : b->Y) <= point->Y
-        && (a->Y > b->Y ? a->Y : b->Y) >= point->Y;
+    return (a->X < pos->X ? a->X : pos->X) <= point->X
+        && (a->X > pos->X ? a->X : pos->X) >= point->X
+        && (a->Y < pos->Y ? a->Y : pos->Y) <= point->Y
+        && (a->Y > pos->Y ? a->Y : pos->Y) >= point->Y;
 }

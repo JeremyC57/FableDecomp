@@ -1,12 +1,12 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct AutoTinyVectorObject
+struct CHeroCentreDef
 {
     void* vftable;
 };
-void* const g_AutoTinyVectorVftable = (void*)0x12345678;
-void __fastcall AutoTinyVectorDestructor(void*)
+void* const g_CHeroCentreDef_vftable = (void*)0x12345678;
+void __fastcall CHeroCentreDef_Destruct(void*)
 {
     ++g_AutoTinyVectorDestructorCalls;
 }
@@ -14,23 +14,23 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CHeroCentreDef* def, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    def->vftable = (void*)&g_CHeroCentreDef_vftable;
+    CHeroCentreDef_Destruct(def);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(def);
+    return def;
 }
 int main()
 {
-    AutoTinyVectorObject object = {0};
-    if (vector_deleting_destructor(&object, 0, 0) != &object ||
-        object.vftable != &g_AutoTinyVectorVftable ||
+    CHeroCentreDef object = {0};
+    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+        object.vftable != &g_CHeroCentreDef_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    vector_deleting_destructor(&object, 0, 1);
+    scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

@@ -17,14 +17,14 @@ void __stdcall SpriteHelper(CEngineInternalPrimitiveBase &prim) {
 }
 
 ERendered __fastcall RenderPrimitive(
-    CEnginePrimitiveManagerSprites *self,
+    CEnginePrimitiveManagerSprites *sprites,
     int edx_dummy,
     CEngineInternalPrimitiveBase &prim,
     EEngineRenderLayer layer,
     CEngineSubPrimitiveChain &chain)
 {
     (void)edx_dummy; (void)layer; (void)chain;
-    if (self->enabled == 0)
+    if (sprites->enabled == 0)
         return 0;
     SpriteHelper(prim);
     return 2;

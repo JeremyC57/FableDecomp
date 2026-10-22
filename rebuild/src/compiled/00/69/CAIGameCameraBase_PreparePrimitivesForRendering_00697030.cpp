@@ -1,1 +1,1 @@
-void __stdcall CAIGameCameraBase_PreparePrimitivesForRendering(int arg0) {}
+void __stdcall CAIGameCameraBase_PreparePrimitivesForRendering(int prepareInfo) {}

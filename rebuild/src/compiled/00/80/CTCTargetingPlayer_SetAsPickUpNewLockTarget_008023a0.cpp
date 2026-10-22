@@ -7,11 +7,11 @@ struct CTCTargetingPlayer {
     unsigned int f44;    // +0x44
 };
 
-extern "C" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* self);
+extern "C" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* player);
 
-void __fastcall SetAsPickUpNewLockTarget(CTCTargetingPlayer* self)
+void __fastcall SetAsPickUpNewLockTarget(CTCTargetingPlayer* player)
 {
-    self->f3c = 1;
-    self->f40 = 0;
-    self->f44 = helper_49d870(self);
+    player->f3c = 1;
+    player->f40 = 0;
+    player->f44 = helper_49d870(player);
 }

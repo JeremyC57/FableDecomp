@@ -1,4 +1,4 @@
-int __fastcall CInputProcessInventoryMapScreen_GetPInventory(const unsigned char* self)
+int __fastcall CInputProcessInventoryMapScreen_GetPInventory(const unsigned char* process)
 {
-    return *reinterpret_cast<const int*>(self + 52);
+    return *reinterpret_cast<const int*>(process + 52);
 }

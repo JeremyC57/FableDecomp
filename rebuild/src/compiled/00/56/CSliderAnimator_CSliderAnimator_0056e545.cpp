@@ -1,6 +1,6 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// CRecord_0056e545::CRecord_0056e545(long, long, long, long, long) -- five dword arguments copied into +0..+0xc and +0x14, a float at +0x10 zeroed, two flag bytes at +0x18/+0x19 cleared
+// CSliderAnimator::CSliderAnimator(long, long, long, long, long) -- five dword arguments copied into +0..+0xc and +0x14, a float at +0x10 zeroed, two flag bytes at +0x18/+0x19 cleared
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056E545, length 51 bytes.
 // Callees: none. A frame-pointer body with `[ebp+8]` argument reads and no spills: the size-optimised TU with
 // global optimisation and /Oy off (`optimize("gsy",off)` then `("s",on)`, see GOTCHAS). The float is stored

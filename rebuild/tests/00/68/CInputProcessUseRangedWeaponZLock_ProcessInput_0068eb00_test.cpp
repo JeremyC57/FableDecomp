@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CInputProcessUseRangedWeaponZLock_ProcessInput(int arg0, int arg1) {}
+void __stdcall CInputProcessUseRangedWeaponZLock_ProcessInput(int event, int input) {}
 int main()
 {
     CInputProcessUseRangedWeaponZLock_ProcessInput(1, 2);

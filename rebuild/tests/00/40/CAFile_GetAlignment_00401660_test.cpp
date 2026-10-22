@@ -1,9 +1,9 @@
 #include <cstdio>
 
 struct CAFile;
-static long CAFile_GetAlignment(const CAFile* self)
+static long CAFile_GetAlignment(const CAFile* file)
 {
-    (void)self;
+    (void)file;
     return 1;
 }
 

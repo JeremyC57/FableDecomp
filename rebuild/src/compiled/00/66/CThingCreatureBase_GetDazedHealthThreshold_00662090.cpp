@@ -6,7 +6,7 @@ struct CThingCreatureBase {
     char pad[0xe0];
     CDazedDef* pDef; /* +0xe0 */
 };
-float __fastcall CThingCreatureBase_GetDazedHealthThreshold(CThingCreatureBase* self)
+float __fastcall CThingCreatureBase_GetDazedHealthThreshold(CThingCreatureBase* creature)
 {
-    return (float)self->pDef->dazedThreshold;
+    return (float)creature->pDef->dazedThreshold;
 }

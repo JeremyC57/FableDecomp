@@ -1,10 +1,10 @@
 struct CUserProfileManager { char pad[0x33]; char flag; };
-extern "C" void __fastcall UPM_Prep(CUserProfileManager* self);
-extern "C" void __fastcall UPM_Commit(CUserProfileManager* self);
+extern "C" void __fastcall UPM_Prep(CUserProfileManager* manager);
+extern "C" void __fastcall UPM_Commit(CUserProfileManager* manager);
 
-void __fastcall CUserProfileManager_Apply(CUserProfileManager* self)
+void __fastcall CUserProfileManager_Apply(CUserProfileManager* manager)
 {
-    UPM_Prep(self);
-    if (self->flag)
-        UPM_Commit(self);
+    UPM_Prep(manager);
+    if (manager->flag)
+        UPM_Commit(manager);
 }

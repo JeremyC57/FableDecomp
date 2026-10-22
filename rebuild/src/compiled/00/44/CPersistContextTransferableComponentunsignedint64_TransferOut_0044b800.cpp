@@ -1,4 +1,4 @@
-// CPersistContext_TransferableComponent::TransferOut(CPersistContext*, CCharString*) -- formats the 64-bit integer behind the target pointer ("%I64u") and appends it to the output string
+// CPersistContext_TransferableComponent<unsigned __int64>::TransferOut(CPersistContext*, CCharString*) -- formats the 64-bit integer behind the target pointer ("%I64u") and appends it to the output string
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044B800, 42 bytes.
 // Callees: 0x0099F930 CCharString::CCharString(unsigned __int64), 0x0099F0A0

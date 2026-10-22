@@ -1,4 +1,4 @@
-// CHitThing::ModifyHeroStats(CTCHeroStats* heroStats) -- credit a hero's hit: add the configured trainable-stat experience to the hero's experience component (kind 0x68) when enabled, and shift the hero's morality by the hit creature's punch or weapon-hit morality
+// NHeroStatModifierEvent::CHitThing::ModifyHeroStats(CTCHeroStats* heroStats) -- credit a hero's hit: add the configured trainable-stat experience to the hero's experience component (kind 0x68) when enabled, and shift the hero's morality by the hit creature's punch or weapon-hit morality
 // Leaf: ModifyHeroStats
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F5C50, length 146 bytes.
 // Callees: the component map's LowerBound @ 0x0040F020 (inlined `find` of kind 0x68), __ftol2 @ 0x00BFEA70,

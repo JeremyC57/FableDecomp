@@ -1,1 +1,1 @@
-void __stdcall CEngineInternalPrimitiveBase_SetAnimation(int arg0) {}
+void __stdcall CEngineInternalPrimitiveBase_SetAnimation(int animation) {}

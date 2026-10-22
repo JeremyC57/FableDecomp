@@ -1,1 +1,1 @@
-void __stdcall CLandscapeBackgroundSubNodeBase_OnPostParentRelocation(int arg0) {}
+void __stdcall CLandscapeBackgroundSubNodeBase_OnPostParentRelocation(int node) {}

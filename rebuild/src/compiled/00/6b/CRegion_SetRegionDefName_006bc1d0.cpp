@@ -23,11 +23,11 @@ struct CRegion {
     CCharString DefName;     // at +0x20
     CDefPointer PDef;        // at +0x24
 };
-void __fastcall CRegion_SetRegionDefName(CRegion* self, int /*edx*/, const CCharString& name)
+void __fastcall CRegion_SetRegionDefName(CRegion* region, int /*edx*/, const CCharString& name)
 {
-    self->DefName = name;
-    long index = CDefinitionManager::Get()->GetDefGlobalIndexFromName(self->DefName);
+    region->DefName = name;
+    long index = CDefinitionManager::Get()->GetDefGlobalIndexFromName(region->DefName);
     if (index > 0) {
-        CDefinitionManager::Get()->GetDef(index, self->PDef);
+        CDefinitionManager::Get()->GetDef(index, region->PDef);
     }
 }

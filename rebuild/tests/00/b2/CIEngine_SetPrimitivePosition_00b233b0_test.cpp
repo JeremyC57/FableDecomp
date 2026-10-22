@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CIEngine_SetPrimitivePosition(int arg0, int arg1) {}
+void __stdcall CIEngine_SetPrimitivePosition(int handle, int position) {}
 int main()
 {
     CIEngine_SetPrimitivePosition(1, 2);

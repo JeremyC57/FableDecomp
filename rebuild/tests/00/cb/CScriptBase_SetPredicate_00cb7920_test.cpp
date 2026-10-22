@@ -2,9 +2,9 @@
 
 static void* g_captured = 0;
 
-void __fastcall _Cons_val_tail_00f35a10(void* self) { g_captured = self; }
+void __fastcall _Cons_val_tail_00f35a10(void* script) { g_captured = script; }
 
-extern void __fastcall _Cons_val_pair_EHeroMorphType_CEntry_v2(void* self);
+extern void __fastcall _Cons_val_pair_EHeroMorphType_CEntry_v2(void* script);
 
 int main()
 {

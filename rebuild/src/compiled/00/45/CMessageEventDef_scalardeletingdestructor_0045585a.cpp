@@ -1,18 +1,18 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { int f0; };
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CMessageEventDef { int f0; };
+extern "C" void __fastcall CMessageEventDef_dtor(CMessageEventDef* message);
 extern void __cdecl op_delete(void* p);
 
 struct CLBP_Vtbl {
-    void* CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags);
+    void* CMessageEventDef_scalar_deleting_destructor(unsigned int flags);
 };
 
-void* CLBP_Vtbl::CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags)
+void* CLBP_Vtbl::CMessageEventDef_scalar_deleting_destructor(unsigned int flags)
 {
-    CLandscapeBackgroundPatch* self = (CLandscapeBackgroundPatch*)this;
-    CLandscapeBackgroundPatch_dtor(self);
+    CMessageEventDef* message = (CMessageEventDef*)this;
+    CMessageEventDef_dtor(message);
     if (flags & 1) {
-        op_delete(self);
+        op_delete(message);
     }
-    return self;
+    return message;
 }

@@ -6,7 +6,7 @@ struct SubObj {
 };
 
 struct CTCPhysicsBase;
-typedef int (__fastcall *SlotFn)(CTCPhysicsBase* self);
+typedef int (__fastcall *SlotFn)(CTCPhysicsBase* physics);
 
 struct CTCPhysicsBaseVtbl {
     char pad[0x174];
@@ -18,15 +18,15 @@ struct CTCPhysicsBase {
     SubObj* sub;
 };
 
-bool __fastcall IsPhysicsMeshTypeCylinder(CTCPhysicsBase* self)
+bool __fastcall IsPhysicsMeshTypeCylinder(CTCPhysicsBase* physics)
 {
-    if (self->vtbl->slot174(self) == 0 && (self->sub->flags & 8))
+    if (physics->vtbl->slot174(physics) == 0 && (physics->sub->flags & 8))
         return true;
     return false;
 }
 
 static int g_ret = 0;
-int __fastcall stub(CTCPhysicsBase* self) { return g_ret; }
+int __fastcall stub(CTCPhysicsBase* physics) { return g_ret; }
 
 int main()
 {

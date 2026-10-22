@@ -30,9 +30,9 @@ struct CTCVillage
 };
 
 // __fastcall models __fastcall: 'this' arrives in ECX.
-bool __fastcall CTCVillage_GetIsHeroEnemyOfGuards(CTCVillage* thisPtr)
+bool __fastcall CTCVillage_GetIsHeroEnemyOfGuards(CTCVillage* village)
 {
     CTCVillage_GetIsHeroEnemyOfGuards_Prep();          // call A, result discarded
     return CTCVillage_GetIsHeroEnemyOfGuards_Query()   // call B, eax
-           < thisPtr->m_guardEnemyThreshold;           // cmp eax,[esi+0xd4] ; setl
+           < village->m_guardEnemyThreshold;           // cmp eax,[esi+0xd4] ; setl
 }

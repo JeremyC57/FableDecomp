@@ -6,17 +6,17 @@ struct CBinaryStream {
 
 struct CCombatAbilityData {
     int   field_0;
-    int   int4;
+    int   PercentageChance;
     float SecondsDuration;
     float SecondsToWaitBeforeRepeat;
     int   int10;
 };
 
-void __fastcall CCombatAbilityData_TransferBinaryOut(CCombatAbilityData* self, void* edx, CBinaryStream* stream, int extra)
+void __fastcall CCombatAbilityData_TransferBinaryOut(CCombatAbilityData* ability, void* edx, CBinaryStream* stream, int extra)
 {
     (void)edx; (void)extra;
-    stream->PutInt(self->int4);
-    stream->PutFloat(*(volatile float*)&self->SecondsDuration);
-    stream->PutFloat(*(volatile float*)&self->SecondsToWaitBeforeRepeat);
-    stream->PutInt(self->int10);
+    stream->PutInt(ability->PercentageChance);
+    stream->PutFloat(*(volatile float*)&ability->SecondsDuration);
+    stream->PutFloat(*(volatile float*)&ability->SecondsToWaitBeforeRepeat);
+    stream->PutInt(ability->int10);
 }

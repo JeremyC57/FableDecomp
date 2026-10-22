@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// CDisplayManager::CopyBackBufferToTexture @ 0x004df7ff
+// map<EDamageAttribute,float>::map @ 0x00453554
 // __fastcall CTexture* (CDisplayManager*)
 //
 // The retail body forms two 1-byte stack temporaries in disjoint lifetimes

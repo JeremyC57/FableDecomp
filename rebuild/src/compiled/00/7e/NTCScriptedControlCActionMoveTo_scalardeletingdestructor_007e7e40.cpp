@@ -1,4 +1,4 @@
-// CThingSwitch::`vector_deleting_destructor' @ 0x007E7E40 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
+// NTCScriptedControl::CActionMoveTo::`scalar deleting destructor' @ 0x007E7E40 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
 // stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
 // +0x38 CScriptThing (~ @ 0x004AA840), +0x24 CScriptThing (~ @ 0x004AA840), then the base CBaseClassNonCopyable (~ @ 0x0099A300), and frees the block with operator delete
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /

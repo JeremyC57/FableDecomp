@@ -8,14 +8,14 @@ struct CMusicManager {
     void* f10;
 };
 
-static void* model(CMusicManager* self)
+static void* model(CMusicManager* manager)
 {
     void* p;
-    if ((p = self->f8) != 0) return p;
-    if ((p = self->fc) != 0) return p;
-    if ((p = self->f4) != 0) return p;
-    if ((p = self->f10) != 0) return p;
-    return self->f0;
+    if ((p = manager->f8) != 0) return p;
+    if ((p = manager->fc) != 0) return p;
+    if ((p = manager->f4) != 0) return p;
+    if ((p = manager->f10) != 0) return p;
+    return manager->f0;
 }
 
 int main()

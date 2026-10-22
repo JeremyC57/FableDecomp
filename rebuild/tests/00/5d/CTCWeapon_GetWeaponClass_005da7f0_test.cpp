@@ -21,7 +21,7 @@ struct CCategory {
 static int g_released = 0;
 static void __fastcall my_release(CCounted* p) { g_released = 1; }
 
-EInventoryCategoryIdentifier __fastcall GetCategoryIdentifier(CCategory* self)
+EInventoryCategoryIdentifier __fastcall GetWeaponClass(CCategory* self)
 {
     CCounted* p = self->counted;
     if (p) { ++p->refcount; }
@@ -36,7 +36,7 @@ int main() {
     CCategory cat; cat.counted = &c;
 
     // refcount 5 -> inc 6 -> dec 5, not zero, no release; return 42
-    int r = GetCategoryIdentifier(&cat);
+    int r = GetWeaponClass(&cat);
     if (r != 42) { printf("FAIL r=%d\n", r); return 1; }
     if (g_released != 0) { printf("FAIL released early\n"); return 1; }
     if (c.refcount != 5) { printf("FAIL rc=%d\n", c.refcount); return 1; }
@@ -44,7 +44,7 @@ int main() {
     // refcount 0 -> inc 1 -> dec 0 -> release; return identifier
     g_released = 0;
     c.refcount = 0; c.identifier = 99;
-    r = GetCategoryIdentifier(&cat);
+    r = GetWeaponClass(&cat);
     if (r != 99) { printf("FAIL r2=%d\n", r); return 1; }
     if (g_released != 1) { printf("FAIL not released\n"); return 1; }
 

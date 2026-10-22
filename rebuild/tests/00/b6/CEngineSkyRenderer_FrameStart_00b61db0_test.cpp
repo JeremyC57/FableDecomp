@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngineSkyRenderer_FrameStart(int arg0) {}
+void __stdcall CEngineSkyRenderer_FrameStart(int params) {}
 int main()
 {
     CEngineSkyRenderer_FrameStart(1);

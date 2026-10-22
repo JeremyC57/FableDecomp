@@ -22,7 +22,7 @@ struct CVideoSys {
 // Exercise the reconstructed function from the linked source object; the
 // behavior exe links this test obj together with CVideoSys_AttemptToPlay_
 // 00a3b1a0.cpp (Invoke-VerifiedLeaf), so redefining it here collides (LNK2005).
-bool __fastcall AttemptToPlay(CVideoSys* self);
+bool __fastcall AttemptToPlay(CVideoSys* sys);
 
 static int g_ret;
 static int __stdcall busy(IPlayer*) { return g_ret; }

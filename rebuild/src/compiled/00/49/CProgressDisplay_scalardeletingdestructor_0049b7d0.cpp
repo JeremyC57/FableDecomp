@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CProgressDisplay {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CProgressDisplay_dtor(CProgressDisplay* display);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CProgressDisplay_scalar_deleting_destructor(CProgressDisplay* display, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CProgressDisplay_dtor(display);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(display);
+    return display;
 }

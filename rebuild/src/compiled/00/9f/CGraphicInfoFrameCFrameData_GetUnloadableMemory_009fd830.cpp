@@ -1,4 +1,4 @@
-// CFrameData::GetUnloadableMemory() -- with an async bank read pending (+0x30): its byte count (+0x10) once it has finished, else 0; otherwise the byte length of mip level 0 of the frame's texture (+0x1c -> texture at +8), or 0 when there is none
+// CGraphicInfoFrame::CFrameData::GetUnloadableMemory() -- with an async bank read pending (+0x30): its byte count (+0x10) once it has finished, else 0; otherwise the byte length of mip level 0 of the frame's texture (+0x1c -> texture at +8), or 0 when there is none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FD830, length 64 bytes.
 // Callees: CBankFileAsyncData::IsFinished @ 0x009D54E0 (a bool in al), CTexture::GetLevelByteLength @ 0x009F9E80 (on the texture, level 0). Shape: three
 // `xor eax,eax` returns folded into one tail, the frame pointer walked through esi.

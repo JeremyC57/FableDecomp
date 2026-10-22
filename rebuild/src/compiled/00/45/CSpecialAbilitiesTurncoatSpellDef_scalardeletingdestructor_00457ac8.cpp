@@ -1,14 +1,14 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { void* vftable; };
+struct CSpecialAbilitiesTurncoatSpellDef { void* vftable; };
 
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+extern void __fastcall CSpecialAbilitiesTurncoatSpellDef_dtor(CSpecialAbilitiesTurncoatSpellDef* def);
 extern void __cdecl eng_operator_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags) {
+void* __fastcall CSpecialAbilitiesTurncoatSpellDef_scalar_deleting_destructor(CSpecialAbilitiesTurncoatSpellDef* def, int edx, unsigned int flags) {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    CSpecialAbilitiesTurncoatSpellDef_dtor(def);
     if (flags & 1) {
-        eng_operator_delete(self);
+        eng_operator_delete(def);
     }
-    return self;
+    return def;
 }

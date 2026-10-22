@@ -1,7 +1,7 @@
 #include <cstdio>
-int __fastcall DrawGetEnvironment(const unsigned char* self)
+int __fastcall DrawGetEnvironment(const unsigned char* action)
 {
-    return *reinterpret_cast<const int*>(self + 16);
+    return *reinterpret_cast<const int*>(action + 16);
 }
 int main()
 {

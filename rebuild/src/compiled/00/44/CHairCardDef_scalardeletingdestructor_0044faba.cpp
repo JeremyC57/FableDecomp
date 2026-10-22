@@ -1,17 +1,17 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch {
+struct CHairCardDef {
     void* vptr;
 };
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+extern void __fastcall CHairCardDef_dtor(CHairCardDef* def);
 extern void __cdecl engine_delete(void* p);
-extern void* const CLandscapeBackgroundPatch_vftable;
+extern void* const CHairCardDef_vftable;
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int /*edx*/, unsigned int flags)
+void* __fastcall CHairCardDef_scalar_deleting_destructor(CHairCardDef* def, int /*edx*/, unsigned int flags)
 {
-    self->vptr = (void*)&CLandscapeBackgroundPatch_vftable;
-    CLandscapeBackgroundPatch_dtor(self);
+    def->vptr = (void*)&CHairCardDef_vftable;
+    CHairCardDef_dtor(def);
     if (flags & 1) {
-        engine_delete(self);
+        engine_delete(def);
     }
-    return self;
+    return def;
 }

@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CBankFile_NotifyEntryAdded(int arg0, int arg1, int arg2) {}
+void __stdcall CBankFile_NotifyEntryAdded(int arg0, int arg1, int array) {}
 int main()
 {
     CBankFile_NotifyEntryAdded(1, 2, 3);

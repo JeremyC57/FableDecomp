@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CHeroCentreDef_Transfer(int arg0) {}
+void __stdcall CHeroCentreDef_Transfer(int context) {}
 int main()
 {
     CHeroCentreDef_Transfer(1);

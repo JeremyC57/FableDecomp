@@ -8,10 +8,10 @@ struct CTCInventoryQuests {
 static int g_a = 0;
 static int g_b = 0;
 
-void __fastcall CTCInventoryQuests_HelperA(CTCInventoryQuests* self) { (void)self; g_a++; }
-void __fastcall CTCInventoryQuests_HelperB(CTCInventoryQuests* self) { (void)self; g_b++; }
+void __fastcall CTCInventoryQuests_HelperA(CTCInventoryQuests* quests) { (void)quests; g_a++; }
+void __fastcall CTCInventoryQuests_HelperB(CTCInventoryQuests* quests) { (void)quests; g_b++; }
 
-void __fastcall CTCInventoryQuests_ProcessButtonBReleased(CTCInventoryQuests* self);
+void __fastcall CTCInventoryQuests_ProcessButtonBReleased(CTCInventoryQuests* quests);
 
 int main() {
     CTCInventoryQuests o1; o1.m_flag = 0;

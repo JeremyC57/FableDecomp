@@ -10,7 +10,7 @@ typedef unsigned long ulong;
 
 extern void __stdcall sub_bfefce(void* p, int zero, ulong b, ulong a);
 
-void __fastcall GenerateMipmaps(CTexture* self, int /*edx*/, ulong a, ulong b)
+void __fastcall GenerateMipmaps(CTexture* texture, int /*edx*/, ulong a, ulong b)
 {
-    sub_bfefce(self->PD3DTexture, 0, b, a);
+    sub_bfefce(texture->PD3DTexture, 0, b, a);
 }

@@ -7,13 +7,13 @@ struct CTCInventoryQuests {
 };
 
 // helper A @ 0x61ac60 (non-virtual member call on this)
-void __fastcall CTCInventoryQuests_HelperA(CTCInventoryQuests* self);
+void __fastcall CTCInventoryQuests_HelperA(CTCInventoryQuests* quests);
 // helper B @ 0x5bc66f (tail-called member on this)
-void __fastcall CTCInventoryQuests_HelperB(CTCInventoryQuests* self);
+void __fastcall CTCInventoryQuests_HelperB(CTCInventoryQuests* quests);
 
-void __fastcall CTCInventoryQuests_ProcessButtonBReleased(CTCInventoryQuests* self)
+void __fastcall CTCInventoryQuests_ProcessButtonBReleased(CTCInventoryQuests* quests)
 {
-    if (self->m_flag)
-        CTCInventoryQuests_HelperA(self);
-    CTCInventoryQuests_HelperB(self);
+    if (quests->m_flag)
+        CTCInventoryQuests_HelperA(quests);
+    CTCInventoryQuests_HelperB(quests);
 }

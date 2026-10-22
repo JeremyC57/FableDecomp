@@ -14,12 +14,12 @@ void __stdcall Persist_Serialize(int id, float* pf, unsigned char* pb)
     *pf = *pf + 1.0f;
 }
 
-CApprenticeSpeedTest* __fastcall CApprenticeSpeedTest_OnPersist(CApprenticeSpeedTest* self)
+CApprenticeSpeedTest* __fastcall CApprenticeSpeedTest_OnPersist(CApprenticeSpeedTest* test)
 {
     float f = 0.0f;
     unsigned char b;
     Persist_Serialize(5, &f, &b);
-    return self;
+    return test;
 }
 
 int main()

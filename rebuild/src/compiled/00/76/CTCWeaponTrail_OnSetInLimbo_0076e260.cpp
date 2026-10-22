@@ -1,4 +1,4 @@
-// CTCWeaponTrail::vfunc_16(bool) -- calls the member method @ 0x0076E150 when the flag argument is set
+// CTCWeaponTrail::OnSetInLimbo(bool) -- calls the member method @ 0x0076E260 when the flag argument is set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076E260, oracle length 16 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

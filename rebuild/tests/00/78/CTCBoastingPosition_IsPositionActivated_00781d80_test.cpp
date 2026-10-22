@@ -2,12 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 
-static bool IsPositionActivated(CTCBoastingPosition* self, long* out)
+static bool IsPositionActivated(CTCBoastingPosition* position, long* out)
 {
-    if (self->PositionActivated) {
-        *out = self->BoastIndex;
+    if (position->PositionActivated) {
+        *out = position->BoastIndex;
     }
-    return self->PositionActivated != 0;
+    return position->PositionActivated != 0;
 }
 
 int main()

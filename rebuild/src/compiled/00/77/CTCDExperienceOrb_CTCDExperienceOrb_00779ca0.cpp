@@ -22,7 +22,7 @@ struct CTCDExperienceOrb : CTCDriverBase {
     long          m_target;                  // +0x0c
     CIndexM1      m_index10;                 // +0x10
     CIndexM1      m_index14;                 // +0x14
-    long          m_unknown18;               // +0x18 (not initialised)
+    long          LifeTimer;               // +0x18 (not initialised)
     bool          m_firstUpdate;             // +0x1c
     bool          m_collected;               // +0x1d
     virtual void v00();

@@ -1,4 +1,4 @@
-// CTCRandomAppearanceMorph::vfunc_4() -- fetch the parent thing's skeletal-morph component (TC kind 120) into PTCSkeletalMorph when the thing has one; then rebuild the morph set
+// CTCRandomAppearanceMorph::OnCreate() -- fetch the parent thing's skeletal-morph component (TC kind 120) into PTCSkeletalMorph when the thing has one; then rebuild the morph set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00728470, length 71 bytes (slot 4 of the CTCRandomAppearanceMorph vtable 0x0126653C,
 // rtti-vtables.tsv).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the thing's component map at +0x44),

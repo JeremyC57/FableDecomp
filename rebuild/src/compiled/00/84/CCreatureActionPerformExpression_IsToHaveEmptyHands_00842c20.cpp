@@ -1,6 +1,6 @@
 struct Inner { char pad[0x85]; unsigned char f; };
 struct S { char pad[0xA8]; Inner* p; };
-unsigned char __fastcall IsToHaveEmptyHands(S* self)
+unsigned char __fastcall IsToHaveEmptyHands(S* action)
 {
-    return self->p->f;
+    return action->p->f;
 }

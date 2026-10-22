@@ -6,8 +6,8 @@ struct Self {
     unsigned char active; int lastT;
     void a(Prim*,void*,int t){ ++g_a; lastT=t; }
     void b(Prim*,void*,int t){ ++g_b; lastT=t; }
-    void Render(Prim* p, void* c, int t){
-        if (active){ if (p->f8==0x23) a(p,c,t); else b(p,c,t); }
+    void Render(Prim* primitive, void* c, int t){
+        if (active){ if (primitive->f8==0x23) a(primitive,c,t); else b(primitive,c,t); }
     }
 };
 int main(){

@@ -18,7 +18,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
 struct CQuestObjectiveDesc {
-    long m_word0;
+    long SubObjectiveID;
     long m_word4;
     long m_word8;
     CQuestObjectiveDesc& operator=(const CQuestObjectiveDesc& other);

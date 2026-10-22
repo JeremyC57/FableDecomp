@@ -7,8 +7,8 @@
 //
 // Matching: `this` is unused, body is `mov eax,1; ret`.
 struct CAFile;
-long __fastcall CAFile_GetAlignment(const CAFile* self)
+long __fastcall CAFile_GetAlignment(const CAFile* file)
 {
-    (void)self;
+    (void)file;
     return 1;
 }

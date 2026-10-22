@@ -15,16 +15,16 @@ struct CTCInventoryAbilities {
     AbilityEntry* entries; // +0x160
 };
 
-int __fastcall GetAbilityGraphicIndex(CTCInventoryAbilities* self, void* /*edx*/, int index)
+int __fastcall GetAbilityGraphicIndex(CTCInventoryAbilities* abilities, void* /*edx*/, int index)
 {
-    return self->entries[index].def->graphicIndex;
+    return abilities->entries[index].def->graphicIndex;
 }
 
-static int call_it(CTCInventoryAbilities* self, int index)
+static int call_it(CTCInventoryAbilities* abilities, int index)
 {
     int result;
     __asm {
-        mov  ecx, self
+        mov  ecx, abilities
         push index
         call GetAbilityGraphicIndex
         mov  result, eax

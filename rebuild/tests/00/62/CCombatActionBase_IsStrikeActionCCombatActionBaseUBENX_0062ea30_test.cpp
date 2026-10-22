@@ -5,9 +5,9 @@ struct CCombatActionBase {
     int strikeCount;
 };
 
-bool __fastcall CCombatActionBase_IsStrikeAction(const CCombatActionBase* self)
+bool __fastcall CCombatActionBase_IsStrikeAction(const CCombatActionBase* action)
 {
-    return self->strikeCount > 0;
+    return action->strikeCount > 0;
 }
 
 int main()

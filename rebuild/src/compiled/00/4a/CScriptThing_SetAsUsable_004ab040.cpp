@@ -10,11 +10,11 @@ struct CScriptThing {
 
 typedef void (__fastcall *SlotFn)(CInner*, int, int);
 
-void __fastcall CScriptThing_SetAsUsable(CScriptThing* self, int edx, int arg)
+void __fastcall CScriptThing_SetAsUsable(CScriptThing* scriptThing, int edx, int isUsable)
 {
-    CInner* p = self->inner;
+    CInner* p = scriptThing->inner;
     if (p) {
         void** vt = *(void***)p;
-        ((SlotFn)vt[66])(p, edx, arg);
+        ((SlotFn)vt[66])(p, edx, isUsable);
     }
 }

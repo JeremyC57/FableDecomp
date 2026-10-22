@@ -1,5 +1,5 @@
 #include <cstdio>
-void __stdcall CEngineComponent_PostLayerRender(int arg0) {}
+void __stdcall CEngineComponent_PostLayerRender(int params) {}
 int main()
 {
     CEngineComponent_PostLayerRender(1);

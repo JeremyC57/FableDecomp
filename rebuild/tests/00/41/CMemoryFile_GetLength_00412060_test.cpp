@@ -7,9 +7,9 @@ struct CMemoryFile {
     long m_length;
 };
 
-long __fastcall CMemoryFile_GetLength(const CMemoryFile* self)
+long __fastcall CMemoryFile_GetLength(const CMemoryFile* file)
 {
-    return self->m_length;
+    return file->m_length;
 }
 
 int main()

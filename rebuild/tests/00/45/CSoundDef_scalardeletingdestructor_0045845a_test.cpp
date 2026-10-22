@@ -5,7 +5,7 @@ struct CLandscapeBackgroundPatch { int destroyed; int freed; };
 
 static CLandscapeBackgroundPatch* g_obj;
 
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* thisptr) {
+extern "C" void __fastcall CSoundDef_dtor(CLandscapeBackgroundPatch* thisptr) {
     thisptr->destroyed = 1;
 }
 extern "C" void __cdecl engine_operator_delete(void* p) {

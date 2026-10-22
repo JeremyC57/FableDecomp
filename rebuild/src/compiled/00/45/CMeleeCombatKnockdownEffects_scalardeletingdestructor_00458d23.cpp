@@ -1,10 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall AutoTinyScalarDestructor(void* self);
-extern void __cdecl AutoTinyScalarDelete(void* object);
-void* __fastcall CLandscapeBackgroundPatch_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall CMeleeCombatKnockdownEffects_Destruct(void* effects);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CMeleeCombatKnockdownEffects_ScalarDeletingDestructor(void* effects, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CMeleeCombatKnockdownEffects_Destruct(effects);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(effects);
+    return effects;
 }

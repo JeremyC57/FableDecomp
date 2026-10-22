@@ -1,21 +1,21 @@
 struct CUserProfileManager {
     char pad0[0x0c];
-    char flag0c;
+    char UseNewProfileValues;
     char pad1[0x4c - 0x0d];
     int RefreshRate;
     char pad2[0x108 - 0x50];
-    int val108;
+    int RefreshRateNewProfile;
 };
 
-extern void __fastcall CUserProfileManager_Apply(CUserProfileManager* self);
-extern void __fastcall CUserProfileManager_Notify(CUserProfileManager* self);
+extern void __fastcall CUserProfileManager_Apply(CUserProfileManager* manager);
+extern void __fastcall CUserProfileManager_Notify(CUserProfileManager* manager);
 
-void __fastcall CUserProfileManager_SetAntialiasing(CUserProfileManager* self, void* edx, int value, char doNotify)
+void __fastcall CUserProfileManager_SetRefreshRate(CUserProfileManager* manager, void* edx, int value, char doNotify)
 {
-    if (self->flag0c)
-        self->val108 = value;
-    self->RefreshRate = value;
-    CUserProfileManager_Apply(self);
+    if (manager->UseNewProfileValues)
+        manager->RefreshRateNewProfile = value;
+    manager->RefreshRate = value;
+    CUserProfileManager_Apply(manager);
     if (doNotify)
-        CUserProfileManager_Notify(self);
+        CUserProfileManager_Notify(manager);
 }

@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { int f0; };
-extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CSpecialAbilitiesMultiStrikeDef { int f0; };
+extern void __fastcall CSpecialAbilitiesMultiStrikeDef_dtor(CSpecialAbilitiesMultiStrikeDef* def);
 extern void __cdecl operator_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_ignored, unsigned int flags)
+void* __fastcall CSpecialAbilitiesMultiStrikeDef_scalar_deleting_destructor(CSpecialAbilitiesMultiStrikeDef* def, int edx_ignored, unsigned int flags)
 {
     (void)edx_ignored;
-    CLandscapeBackgroundPatch_dtor(self);
+    CSpecialAbilitiesMultiStrikeDef_dtor(def);
     if (flags & 1)
-        operator_delete(self);
-    return self;
+        operator_delete(def);
+    return def;
 }

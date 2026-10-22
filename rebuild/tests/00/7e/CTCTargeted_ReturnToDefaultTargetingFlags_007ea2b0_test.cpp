@@ -1,13 +1,13 @@
 #include "engine/CTCTargeted.h"
 #include <stdio.h>
 struct CDefPointeeBase { char pad[0x28]; unsigned int defFlags; };
-void __fastcall ReturnToDefaultTargetingFlags(CTCTargeted* self)
+void __fastcall ReturnToDefaultTargetingFlags(CTCTargeted* targeted)
 {
-  CDefPointeeBase* s = self->PTargetingDef_Object;
+  CDefPointeeBase* s = targeted->PTargetingDef_Object;
   if (s)
-    self->TargetingFlags = s->defFlags;
+    targeted->TargetingFlags = s->defFlags;
   else
-    self->TargetingFlags = 0;
+    targeted->TargetingFlags = 0;
 }
 int main(){
   CDefPointeeBase s; s.defFlags = 0x1234;

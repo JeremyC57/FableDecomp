@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CScreenFilterEntry {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CScreenFilterEntry_dtor(CScreenFilterEntry* entry);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CScreenFilterEntry_scalar_deleting_destructor(CScreenFilterEntry* entry, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CScreenFilterEntry_dtor(entry);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(entry);
+    return entry;
 }

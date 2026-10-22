@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEventVillagerInteraction {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEventVillagerInteraction_dtor(CEventVillagerInteraction* event);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEventVillagerInteraction_scalar_deleting_destructor(CEventVillagerInteraction* event, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEventVillagerInteraction_dtor(event);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(event);
+    return event;
 }

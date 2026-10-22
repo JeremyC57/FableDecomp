@@ -11,9 +11,9 @@ struct LSocket {
 
 
 // __fastcall modeled as __fastcall free fn (self in ecx)
-LH_RETURN __fastcall IsDataAvailable(LHHttp2* self)
+LH_RETURN __fastcall IsDataAvailable(LHHttp2* http2)
 {
-    LSocket* c = *(LSocket**)self; // mov ecx,[ecx]
+    LSocket* c = *(LSocket**)http2; // mov ecx,[ecx]
     if (c != 0)
         return c->query(0) ? 0 : 3;
     return 2;

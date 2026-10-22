@@ -13,7 +13,7 @@ struct Sub {
     virtual bool m0c() { return false; }
     virtual bool m10() { return false; }
     virtual bool m14() { return false; }
-    virtual bool Check(void* origThis, C3DVector* p) { g_this=origThis; g_p=p; return g_ret; }
+    virtual bool Check(void* origThis, C3DVector* pos) { g_this=origThis; g_p=pos; return g_ret; }
 };
 
 struct CTCCreatureNavigation {
@@ -21,9 +21,9 @@ struct CTCCreatureNavigation {
     Sub*  ParentThing;
 };
 
-bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* p)
+bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* pos)
 {
-    return self->ParentThing->Check(self, p);
+    return self->ParentThing->Check(self, pos);
 }
 
 int main()

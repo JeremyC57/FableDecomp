@@ -1,1 +1,1 @@
-void __stdcall CIEngine_FreeTextureFromEngineResourcePools(int arg0) {}
+void __stdcall CIEngine_FreeTextureFromEngineResourcePools(int texture) {}
