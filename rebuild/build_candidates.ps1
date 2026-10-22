@@ -266999,6 +266999,13 @@ $catalog = @(
         TestSource = '00/b2/CEngineSurfaceCompositionManager_IsNearlyIdentical_00b2b050_test.cpp'
         PassPattern = '00b2b050_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009109b0'
+        Module = 'CIsSeatWithSpaceOwnedBy'
+        Source = '00/91/CIsSeatWithSpaceOwnedBy_operator_009109b0.cpp'
+        TestSource = '00/91/CIsSeatWithSpaceOwnedBy_operator_009109b0_test.cpp'
+        PassPattern = '009109b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
