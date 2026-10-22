@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a56c80	DIFFER	865v867	-	x87 only: retail emits the first projection dot X-term first and multiplies A.Y by t on the stack (fld A.Y ; fmul st(2) ; ... fstp st(0)) where ours u
+00a571a0	DIFFER	653v654	-	x87 operand order of the length square (retail X*X first) and p/before esi/edx swap; GetLength/GetLengthSquared/inline sqrt/named-local forms all keep
+00a57430	RELOCATION_MATCH	764v764	PASS	segment-segment distance; 4-entry jump table; CSE switch vector, named sqrt locals
+00a57cc0	RELOCATION_MATCH	553v553	PASS	segment-box distance via four edge GetDist calls
+00aaf850	RELOCATION_MATCH	657v657	PASS	sequence chunk read
+00a50c20	DIFFER	611v611	-	scheduling only: in the allocation-failure exit retail emits `xor al,al ; mov [ebp+74h],al` before `pop edi ; pop esi`, ours interleaves the pops; eve
+00a53860	DIFFER	922v1005	-	lane gap: inline-asm fistp rounding helper in the inlined slerp; first draft
+00a3c3b0	DIFFER	777v777	-	scheduling only: in the 4x-unrolled blend loop retail pops the x87 copy (fstp st(0)) before reloading the next element pointer in two places where our
+00ab1740	DIFFER	605v592	-	register allocation: retail frees edi for the child and reloads source into esi after the prefix loop (index in esi); ours keeps source in edi and spi
+00ab2160	DIFFER	1097v960	-	first draft: structure and destruction order match (outA, outB, infosA, infosB, roots, index map), but the AssignAnimation result is kept in edi not t
+00a9d750	DIFFER	492v551	-	lane gap (original inline-assembly SSE block): retail stores the row pointer to a frame local and re-reads it into edx, loads the scale from the frame
+00a9dfa0	DIFFER	565v565	-	SIB operand order only: retail reads the bone word as `[ecx+edx+4]` (array base, then the strength-reduced i*0x3c), ours `[edx+ecx+4]`, plus one `add 
+00aa09f0	RELOCATION_MATCH	608v608	PASS	pooled 4x4 blend then 3x4 convert
+00a4c1f0	DIFFER	922v1006	-	lane gap: inline-asm fistp rounding helper (fsub 0.5 ; fstp ; fld ; fistp) inside the table acos/sin of the inlined slerp; first draft, (int) cast cal
+00a52760	DIFFER	922v1004	-	lane gap: inline-asm fistp rounding helper in the inlined slerp; same draft as 00a4c1f0
+00a4ebb0	DIFFER	606v604	-	first drafts: retail's locals sit 8 bytes higher (the event pair at +0x10, the map pointer at +0x18) and it builds pair<CCharString,float> by storing 
+00add690	DIFFER	646v648	-	the 4x-unrolled radius loop's remainder: retail copies count into esi (`mov esi,ebx ; dec esi`) and places the base lea after it, ours counts ebx down
+00add920	DIFFER	637v690	-	first draft: retail keeps this in ecx (no esi copy), tail-duplicates the centre step into both arms of the best-radius test with separate frame temps 
+00ac3bd0	RELOCATION_MATCH	560v560	PASS	cloth primitive pooled program load
+00aaf1e0	DIFFER	839v904	-	first draft: frame 0x78 v 0x84 (retail spills the position copy and quaternion products to more frame words), this/argument in ebx/ebp swapped, and th
+00a89a70	DIFFER	970v970	-	x87 operand order only: retail picks a different fld/fmul operand and term order in both inlined 3x4 multiplies (and loads the bone index into eax, ou
+00a89e40	DIFFER	986v986	-	x87 operand order in the two inlined 3x4 multiplies, as 0x00A89A70
+00a8a220	DIFFER	966v965	-	first draft: retail computes &Bones[bone] once into edi before the call and tests the scale flag inside the multiply; x87 operand order as 0x00A89A70
+00a8a5f0	DIFFER	982v981	-	first draft, as 0x00A8A220
+00a8a9d0	DIFFER	876v874	-	first draft: this/offset registers swapped (retail this in ebx, the bone byte offset in ebp with Bones in ecx), x87 operand order of some cofactor pro
+00ac6750	RELOCATION_MATCH	583v583	PASS	cloth chunk read
+00aa9e60	RELOCATION_MATCH	608v608	PASS	dummy object chunk read
+00ac53f0	DIFFER	703v755	-	retail builds an `and esp,-8` frame with ebp as frame pointer (material in edi, no zero register, immediate zero stores); ours uses ebp for `material`
+00abcc80	RELOCATION_MATCH	560v560	PASS	group blend list with vertex merge
+00ac0010	RELOCATION_MATCH	576v576	PASS	material chunk read
+00aa6c70	RELOCATION_MATCH	928v928	PASS	group list, bone weights, sub-chunks
+00aa5030	RELOCATION_MATCH	544v544	PASS	six inlined stream Reads
+00c5acb0	SKIP	-	-	wrong label: D3DX-style library code, not C3DMeshFileXBoundingBoxChunk::LoadData
+00aa6a60	RELOCATION_MATCH	528v528	PASS	U/V tangent arrays; resize 0x75C040
+00aa66b0	RELOCATION_MATCH	592v592	PASS	vertex header + compression params
+00a24a80	RELOCATION_MATCH	592v592	PASS	mesh data create + async stats read; DecRef-style release forms
+00a256f0	RELOCATION_MATCH	640v640	PASS	LOD touch or async LOD read
+00a25e70	RELOCATION_MATCH	755v755	PASS	LOD fallback walk; CCountedPointer<const C3DMesh2>::operator= 0xA2ACC0
+00a24520	DIFFER	849v847	-	register allocation: retail spills the primitive index to the dead flag slot and reuses esi for Materials; ours spills ok there and keeps i in edi (ba
+00abf840	RELOCATION_MATCH	528v528	PASS	material from file chunk

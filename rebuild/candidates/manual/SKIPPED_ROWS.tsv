@@ -75,6 +75,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00be5ca0	224	2026-10-19_linux_hand195	CLandscapeBackgroundPatch::InvalidateEdge	multi	open	00be5ca0:50,00be5cd2:21,00be5cf0:29,00be5d10:15,00be5d20:20,00be5d40:26,00be5d60:26	row spans InvalidateEdge + jump table + four more bodies
 00c3eb60	64	2026-10-15_linux_hand74	CScriptThing::GetCurrentScriptPriority	multi	done	00c3eb60:25,00c3eb80:25	row spans two functions (0xc3eb60 + 0xc3eb80)
 00c40e20	64	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	00c40e20:8,00c40e30:11,00c40e40:11,00c40e50:14	row spans four functions
+00c5acb0	672	2026-10-22_linux_hand276	C3DMeshFileXBoundingBoxChunk::C3DMeshFileXBoundingBoxChunk::LoadData	single	open	00c5acb0:662	wrong label: D3DX-style library code, not C3DMeshFileXBoundingBoxChunk::LoadData
 00c6b050	496	2026-10-21_linux_hand270	CTCHeroStats::CTCHeroStats::InitializeAudioEffects	single	open	00c6b050:490	lane gap: inline fstp/fld/fistp rounding (audio reverb; catalog name wrong)
 00c8a4b0	112	2026-10-15_linux_hand171	CTCVillageMember::IsAttachedToVillage	single	open	00c8a4b0:109	object received in esi (LTCG/library register convention, 0xC8xxxx); not CTCVillageMember
 00c8a520	32	2026-10-14_linux_hand57	CMemoryDataOutputStream::Clear	ltcg	open		a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG

@@ -1,0 +1,118 @@
+// C3DMesh2::GetDummyObjectPositionAnimated(const C3DDummyObject&, C3DDummyObject&, const C3DAnimationBlendState&, C3DAnimationManager&, bool) const -- dummy transform times its bone's localization matrix, scaled by the animated bone scale, times the animated bone transform
+// Grade: DIFFER(970v970) -- x87 operand order only: retail picks a different fld/fmul operand and term order in both inlined 3x4 multiplies (and loads the bone index into eax, ours edx); a 96-spelling per-element in-context search could not move it
+// Leaf: GetDummyObjectPositionAnimated
+class C3DVector {
+public:
+    float X, Y, Z;
+    C3DVector() {}
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
+    C3DVector operator*(const C3DVector& o) const { return C3DVector(X * o.X, Y * o.Y, Z * o.Z); }
+};
+class CMatrix3x4 {
+public:
+    float E11, E12, E13;
+    float E21, E22, E23;
+    float E31, E32, E33;
+    float E41, E42, E43;
+    C3DVector GetPosition() const { return C3DVector(E41, E42, E43); }
+    void SetPosition(const C3DVector& p) { E41 = p.X; E42 = p.Y; E43 = p.Z; }
+    __forceinline CMatrix3x4& operator*=(const CMatrix3x4& b)
+    {
+        CMatrix3x4 a = *this;
+        E11 = a.E13 * b.E31 + a.E12 * b.E21 + a.E11 * b.E11;
+        E12 = a.E12 * b.E22 + a.E11 * b.E12 + a.E13 * b.E32;
+        E13 = a.E12 * b.E23 + a.E11 * b.E13 + a.E13 * b.E33;
+        E21 = a.E23 * b.E31 + a.E22 * b.E21 + a.E21 * b.E11;
+        E22 = a.E22 * b.E22 + a.E21 * b.E12 + a.E23 * b.E32;
+        E23 = a.E22 * b.E23 + a.E21 * b.E13 + a.E23 * b.E33;
+        E31 = a.E33 * b.E31 + (a.E32 * b.E21 + a.E31 * b.E11);
+        E32 = a.E33 * b.E32 + (a.E31 * b.E12 + a.E32 * b.E22);
+        E33 = a.E32 * b.E23 + a.E31 * b.E13 + a.E33 * b.E33;
+        E41 = a.E43 * b.E31 + a.E42 * b.E21 + a.E41 * b.E11 + b.E41;
+        E42 = a.E43 * b.E32 + (a.E41 * b.E12 + a.E42 * b.E22) + b.E42;
+        E43 = a.E42 * b.E23 + a.E41 * b.E13 + a.E43 * b.E33 + b.E43;
+        return *this;
+    }
+    __forceinline void Multiply(const CMatrix3x4& a, const CMatrix3x4& b)
+    {
+        E11 = a.E13 * b.E31 + a.E12 * b.E21 + a.E11 * b.E11;
+        E12 = a.E12 * b.E22 + a.E11 * b.E12 + a.E13 * b.E32;
+        E13 = a.E12 * b.E23 + a.E11 * b.E13 + a.E13 * b.E33;
+        E21 = a.E23 * b.E31 + a.E22 * b.E21 + a.E21 * b.E11;
+        E22 = a.E22 * b.E22 + a.E21 * b.E12 + a.E23 * b.E32;
+        E23 = a.E22 * b.E23 + a.E21 * b.E13 + a.E23 * b.E33;
+        E31 = a.E33 * b.E31 + (a.E32 * b.E21 + a.E31 * b.E11);
+        E32 = a.E33 * b.E32 + (a.E31 * b.E12 + a.E32 * b.E22);
+        E33 = a.E32 * b.E23 + a.E31 * b.E13 + a.E33 * b.E33;
+        E41 = a.E43 * b.E31 + a.E42 * b.E21 + a.E41 * b.E11 + b.E41;
+        E42 = a.E43 * b.E32 + (a.E41 * b.E12 + a.E42 * b.E22) + b.E42;
+        E43 = a.E42 * b.E23 + a.E41 * b.E13 + a.E43 * b.E33 + b.E43;
+    }
+};
+struct C3DDummyObject {
+    CMatrix3x4 Transform;   // +0x00
+    long BoneIndex;         // +0x30
+};
+struct C3DBone2 {
+    unsigned long NameCRC;
+    long Parent;
+    long OriginalNoChildren;
+    CMatrix3x4 LocalizationMatrix;   // +0x0c
+};
+class C3DAnimationBlendState;
+class C3DMesh2;
+class C3DAnimationManager {
+public:
+    void CalcBoneTransformation(const C3DAnimationBlendState& blend, const C3DMesh2& mesh, unsigned long bone, CMatrix3x4& transform, C3DVector& scale); // 0x00AA0FA0
+};
+class C3DMesh2 {
+public:
+    char _pad0[0x9c];
+    C3DBone2* Bones;   // +0x9c
+    void GetDummyObjectPositionAnimated(const C3DDummyObject& in, C3DDummyObject& out, const C3DAnimationBlendState& blend, C3DAnimationManager& manager, bool applyScale) const;
+};
+
+void C3DMesh2::GetDummyObjectPositionAnimated(const C3DDummyObject& in, C3DDummyObject& out, const C3DAnimationBlendState& blend, C3DAnimationManager& manager, bool applyScale) const
+{
+    out.BoneIndex = in.BoneIndex;
+    long bone = in.BoneIndex;
+    if (bone != -1) {
+        {
+            const CMatrix3x4& a = in.Transform;
+            const CMatrix3x4& b = Bones[bone].LocalizationMatrix;
+            CMatrix3x4& o = out.Transform;
+            o.E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
+            o.E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;
+            o.E13 = a.E11 * b.E13 + a.E12 * b.E23 + a.E13 * b.E33;
+            o.E21 = a.E21 * b.E11 + (a.E22 * b.E21 + a.E23 * b.E31);
+            o.E22 = a.E21 * b.E12 + a.E22 * b.E22 + a.E23 * b.E32;
+            o.E23 = a.E21 * b.E13 + a.E22 * b.E23 + a.E23 * b.E33;
+            o.E31 = a.E31 * b.E11 + a.E32 * b.E21 + a.E33 * b.E31;
+            o.E32 = a.E31 * b.E12 + a.E32 * b.E22 + a.E33 * b.E32;
+            o.E33 = a.E31 * b.E13 + a.E32 * b.E23 + a.E33 * b.E33;
+            o.E41 = a.E41 * b.E11 + a.E42 * b.E21 + a.E43 * b.E31 + b.E41;
+            o.E42 = a.E41 * b.E12 + a.E42 * b.E22 + b.E32 * a.E43 + b.E42;
+            o.E43 = a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33 + b.E43;
+        }
+        CMatrix3x4 boneTransform;
+        C3DVector scale;
+        manager.CalcBoneTransformation(blend, *this, bone, boneTransform, scale);
+        if (applyScale) {
+            out.Transform.E11 *= scale.X;
+            out.Transform.E12 *= scale.X;
+            out.Transform.E13 *= scale.X;
+            out.Transform.E21 *= scale.Y;
+            out.Transform.E22 *= scale.Y;
+            out.Transform.E23 *= scale.Y;
+            out.Transform.E31 *= scale.Z;
+            out.Transform.E32 *= scale.Z;
+            out.Transform.E33 *= scale.Z;
+        } else {
+            out.Transform.SetPosition(out.Transform.GetPosition() * scale);
+        }
+        out.Transform *= boneTransform;
+    } else {
+        out.Transform = in.Transform;
+    }
+}
