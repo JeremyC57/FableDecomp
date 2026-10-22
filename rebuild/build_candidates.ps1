@@ -267097,6 +267097,90 @@ $catalog = @(
         TestSource = '00/a4/C3DAnimationStats_InitialiseStats_00a4ebb0_test.cpp'
         PassPattern = '00a4ebb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00942ee0'
+        Module = 'CAIStateGroup_TellStory'
+        Source = '00/94/CAIStateGroupTellStory_Update_00942ee0.cpp'
+        TestSource = '00/94/CAIStateGroupTellStory_Update_00942ee0_test.cpp'
+        PassPattern = '00942ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009474f0'
+        Module = 'CAIStateGroup_WanderAroundShops'
+        Source = '00/94/CAIStateGroupWanderAroundShops_Update_009474f0.cpp'
+        TestSource = '00/94/CAIStateGroupWanderAroundShops_Update_009474f0_test.cpp'
+        PassPattern = '009474f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00968bc0'
+        Module = 'CAIStateGroup_TavernKeeper'
+        Source = '00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0.cpp'
+        TestSource = '00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0_test.cpp'
+        PassPattern = '00968bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00969470'
+        Module = 'CAIStateGroup_TavernKeeper'
+        Source = '00/96/CAIStateGroupTavernKeeper_Update_00969470.cpp'
+        TestSource = '00/96/CAIStateGroupTavernKeeper_Update_00969470_test.cpp'
+        PassPattern = '00969470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096c2e0'
+        Module = 'CAIStateGroup_Thunder'
+        Source = '00/96/CAIStateGroupThunder_IsRunnable_0096c2e0.cpp'
+        TestSource = '00/96/CAIStateGroupThunder_IsRunnable_0096c2e0_test.cpp'
+        PassPattern = '0096c2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096fcd0'
+        Module = 'CAIStateGroup_SummonerLightningAttack'
+        Source = '00/96/CAIStateGroupSummonerLightningAttack_Update_0096fcd0.cpp'
+        TestSource = '00/96/CAIStateGroupSummonerLightningAttack_Update_0096fcd0_test.cpp'
+        PassPattern = '0096fcd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d16dc0'
+        Module = 'CBH_GangLeader'
+        Source = '00/d1/CBHGangLeader_Init_00d16dc0.cpp'
+        TestSource = '00/d1/CBHGangLeader_Init_00d16dc0_test.cpp'
+        PassPattern = '00d16dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d81820'
+        Module = 'CBRIAR_ROSE_IMPOSTER'
+        Source = '00/d8/CBRIARROSEIMPOSTER_Main_00d81820.cpp'
+        TestSource = '00/d8/CBRIARROSEIMPOSTER_Main_00d81820_test.cpp'
+        PassPattern = '00d81820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1ee30'
+        Module = 'CAttackingBandit'
+        Source = '00/e1/CAttackingBandit_Main_00e1ee30.cpp'
+        TestSource = '00/e1/CAttackingBandit_Main_00e1ee30_test.cpp'
+        PassPattern = '00e1ee30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e383a0'
+        Module = 'CAttackingAssassin'
+        Source = '00/e3/CAttackingAssassin_Main_00e383a0.cpp'
+        TestSource = '00/e3/CAttackingAssassin_Main_00e383a0_test.cpp'
+        PassPattern = '00e383a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6aac0'
+        Module = 'CAT_BanditContact'
+        Source = '00/e6/CATBanditContact_Init_00e6aac0.cpp'
+        TestSource = '00/e6/CATBanditContact_Init_00e6aac0_test.cpp'
+        PassPattern = '00e6aac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f08c30'
+        Module = 'CAT_ConvoyMember'
+        Source = '00/f0/CATConvoyMember_Init_00f08c30.cpp'
+        TestSource = '00/f0/CATConvoyMember_Init_00f08c30_test.cpp'
+        PassPattern = '00f08c30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

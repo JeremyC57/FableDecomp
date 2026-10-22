@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0096ff10	DIFFER	628v628	-	scratch-register rotation only (loop-head PBrain load ecx v eax, later creature reloads eax/edx v ecx/eax); structure, frame and size identical (the two out-of actions are an if/else of two perform calls, tail-merged)
+0096f770	DIFFER	676v674	-	frame 0x48 v 0x44: retail homes the LOS distance float in the +0xc IP-temp word, the lane gives it its own word; camera-manager this lands in eax then ecx (retail loads ecx directly); everything else identical
+0096fcd0	RELOCATION_MATCH	568v568	PASS	byte-exact modulo relocations
+00968bc0	RELOCATION_MATCH	570v570	PASS	byte-exact modulo relocations
+00968fa0	DIFFER	788v788	-	frame-slot colouring only: retail puts the HasDefName filter temp at +4 and the tap name at +8 (later the DRAW count at +4, the DRAW string at +8, the 0x83 key in the dead tap slot +0); the lane swaps +4/+8
+00969470	RELOCATION_MATCH	698v698	PASS	byte-exact modulo relocations
+00966da0	SKIP	0v768	-	known lane gap: inlined lower_bound eax copy (the 0xb8 serving-point lookup at 0x00966FA1 is an inlined STLport lower_bound, mov eax,ecx ; cdq ; sub ; sar); STLport list build/erase/random pick otherwise; not attempted per the brief
+009673b0	DIFFER	657v657	-	register swap only: retail keeps this in esi and the IP vtable constant in edi, the lane swaps them (aligned frame and every instruction otherwise identical)
+00967d40	SKIP	0v768	-	known lane gap: inlined lower_bound eax copy (three inlined STLport lower_bound searches for interfaces 0xbb/0xb8 at 0x00967E34, 0x00967EE0, 0x00967F53); not attempted per the brief
+00942ee0	RELOCATION_MATCH	767v767	PASS	byte-exact modulo relocations
+0091f140	DIFFER	956v949	-	structure right (inline STLport vector copy ctor + _M_insert_overflow, hoisted Bind2 filter stores); left: zero register re-materialised at the loop head (retail re-zeroes ebx at the end of both push_back arms), found.start in ebx v edi, empty filter tag at +2 v +0x1e, wander-position argument scheduling
+0096c2e0	RELOCATION_MATCH	524v524	PASS	byte-exact modulo relocations
+009474f0	RELOCATION_MATCH	647v647	PASS	byte-exact modulo relocations
+0096a8b0	DIFFER	536v542	-	loop reads the trap into edx and copies it to ebx for the IP temp (lane keeps ebx throughout), plus two load-schedule swaps around the filter stores; the 8-byte IP (real virtual base) restores the aligned frame
+0096ac20	DIFFER	557v557	-	one load scheduled early: mov edx,[esi+4] (PBrain for the body GetForward) lands inside the landing fadd sequence instead of between the 2nd and 3rd fstp
+00945060	SKIP	0v944	-	known lane gap: inlined lower_bound eax copy (interface-0x23 lookup inlined as an STLport lower_bound at 0x009450D0, mov eax,ecx ; cdq ; sub ; sar); not attempted per the brief
+00944730	DIFFER	526v526	-	eax/ecx scratch-register swap only
+00944940	SKIP	0v883	-	known lane gap: inlined lower_bound eax copy (two inlined STLport lower_bound interface searches at 0x009449C0 and 0x00944A70); not attempted per the brief
+00e6aac0	RELOCATION_MATCH	594v594	PASS	byte-exact modulo relocations
+00f08c30	RELOCATION_MATCH	608v608	PASS	byte-exact modulo relocations
+00f04000	DIFFER	624v630	-	inline destructor site choice (VC7.1 places the inlined counted-pointer release at a different site)
+00871430	DIFFER	859v871	-	structure right (nested ifs give the shared def-release tail and the late push); left: callee-saved permutation (retail this=ebx, late edi; lane this=edi, late ebx), the strike-weapon local is not homed in the dead action arg slot (frame 0x44 v 0x40), ability release keeps no def copy
+00871a80	DIFFER	547v547	-	scratch-register rotation only from the HasHelperPoint call on (retail lea eax/ecx/edx where the lane picks edx/eax/ecx; the second HasDummyObject this-load then schedules after the push); structure, frame and size identical
+00714370	DIFFER	950v948	-	frame 0x54 v 0x50: the uninitialised route pointer (read on the no-0xa6 path) gets its own word where retail shares the GetInterface key word, shifting every local by 4; plus ClaimActionPoint argument scheduling
+00716b30	SKIP	0v688	-	known lane gap: two inline-asm fistp rounding helpers (fld/fadd 0.5/fistp [ebp-4]/fild/fsub 1.0, ebp frame) for the frame counts; not attempted per the brief
+007132c0	DIFFER	584v583	-	retail destroys the copied line text before the ToWideString argument temps (built before font/gui, so a local here); lane destroys it after them; the else arm loads the font into eax not edx
+0070e2a0	DIFFER	618v618	-	temp slot colouring (retail gives the second blend-state temp and the morph temps the +0x14 pair, lane reuses +0xc) and a scratch-register rotation in the queue-head chain (retail mov eax,[eax], lane mov ecx,[eax]); structure identical
+0070e8b0	DIFFER	893v881	-	structure right (erase-first test, ctor-built set info, inline list pop/push); left: the clamped alpha is not homed in the dead info arg slot (frame 0x24 v 0x20), ebx/ebp swapped for the node/vector pointers, the weight loop is entered by je not jmp, total=0 stored early
+00a90ae0	DIFFER	620v629	-	structure right (CMeshBones sub-struct copy, 12-byte STLport set, release through a local copy); left: ebx/ebp role swap (retail mesh in ebp, zero in ebx: cmp dl,bl v test) and nested weight-copy loop registers
+005dd090	DIFFER	602v590	-	pair temp dtor reloads [esp+0x20] after _M_insert_overflow (retail uses esi); key read temp takes own frame slot (frame 0x18 v 0x14)
+005dd440	DIFFER	548v545	-	structure right; release form of the counted pointer differs (3 bytes)
+00727220	DIFFER	732v732	-	frame and structure right (two-way interface-0x4d filter bool, angle turns local); left: x87 operand order on the offset Y (dy CSE copy at +0x10 read first in the length and both scalings) and owner-creature load through ecx v eax
+00726340	DIFFER	729v713	-	frame, structure and order right; left: both inline offset scalings keep the scalar on the x87 stack to the end (fld Z ; fmul st(1) ; fstp st(0)) where retail consumes it on Z (fmul [Z]); member, void, const&, friend, comma and explicit-statement forms all keep it
+006b1f30	DIFFER	811v811	-	all code right (same-TU stand-ins for GetAllThingsInRoughArea and GetDef<CSoundThemeDef>, named SOUND_THEME strings, raw region def AddRef); left: frame layout only -- retail reserves 0x7c v 0x44 (0x38 more, likely dead inline-helper temporaries), camera-position return temp at +0x54 v +0x2c, checked bool at +0x13 (shared with the empty filter) v +0x12
+00e383a0	RELOCATION_MATCH	547v547	PASS	byte-exact modulo relocations
+00e1ee30	RELOCATION_MATCH	656v656	PASS	byte-exact modulo relocations
+00c72200	DIFFER	737v770	-	catalog row over-captures the next function at 0x00C724F0 (int3 padding + a 0x14-byte getter after the two-level jump table), so it cannot match before a catalog split; code left: retail shares xor al,al as the null-envelope return, VC7.1 cross-jumps the case-2/case-8 Gain stores into the release store, one 64-bit load order
+00c5d7f0	DIFFER	592v592	-	/GS row (the cookie needs a byte array); ebx/ebp role swap only
+00d16dc0	RELOCATION_MATCH	519v519	PASS	byte-exact modulo relocations
+00d81820	RELOCATION_MATCH	822v822	PASS	byte-exact modulo relocations
