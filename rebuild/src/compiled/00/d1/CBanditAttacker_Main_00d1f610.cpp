@@ -13,7 +13,8 @@
 //   (CQ_BreakSiegeScript: retail = PDB - 0x14, so BanditLeaderFree +0x4c, StartSecondWave +0x4f, HeroLetInTown +0x51),
 //   PMasterData +0x18, HeroHitMe +0x1c.
 // Shape: CScriptThing has an INLINE destructor (VC7.1 expands it at the first return only, as in the landed
-//   CTrophiesBriarTrophy); the filter member is the out-of-line ScriptThingCopy projection (retail calls 0x004AA840 there).
+//   CTrophiesBriarTrophy); the filter member is a plain CScriptThing, and `#pragma inline_depth(0)` around the filter
+//   class keeps its member destruction an out-of-line call to ~CScriptThing (retail calls 0x004AA840 there).
 struct C3DVector { float X, Y, Z; };
 struct CCharString {
     void* PStringData;
@@ -200,16 +201,14 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (ghi
     virtual void v814(); virtual void v815(); virtual void v816();
     virtual void SetCombatNearbyBreakOffRange(CScriptThing thing, float range);   // slot 817 (+0xcc4)
 };
-struct ScriptThingCopy : CScriptThing {            // the filter's member: the genuine out-of-line copy/release
-    ScriptThingCopy(const CScriptThing& other);        // 0x004ABE90
-    ~ScriptThingCopy();                                // 0x004AA840
-};
+#pragma inline_depth(0)
 struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
     virtual void f00();
-    ScriptThingCopy m_thing;                              // +0x04
+    CScriptThing    m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
+#pragma inline_depth()
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04

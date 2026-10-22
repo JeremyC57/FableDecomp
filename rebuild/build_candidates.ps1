@@ -267393,6 +267393,20 @@ $catalog = @(
         TestSource = '00/90/CAIStateGroupMinionListenToStory_SitDown_0090f830_test.cpp'
         PassPattern = '0090f830_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d1f610'
+        Module = 'CBanditAttacker'
+        Source = '00/d1/CBanditAttacker_Main_00d1f610.cpp'
+        TestSource = '00/d1/CBanditAttacker_Main_00d1f610_test.cpp'
+        PassPattern = '00d1f610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1fa00'
+        Module = 'CBanditFirstWave'
+        Source = '00/d1/CBanditFirstWave_Main_00d1fa00.cpp'
+        TestSource = '00/d1/CBanditFirstWave_Main_00d1fa00_test.cpp'
+        PassPattern = '00d1fa00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

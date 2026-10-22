@@ -7,7 +7,7 @@ static void Log(const char* s) { char b[32]; std::sprintf(b, "@%d;", g_frame); s
 static void Reset(int termAt) { g_log[0] = 0; g_frame = 0; g_termAt = termAt; }
 static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL %s [%s]\n", addr, what, g_log); return 1; }
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
-// behaviour test: CBanditAttacker::Main waits for HeroLetInTown and StartSecondWave, takes Me over, runs to the leader until within 5 units (or the leader is freed), frees the leader and follows him
+// behaviour test: CBanditFirstWave::Main takes Me over, runs to the leader until within 5 units (or the leader is freed), frees the leader and follows him
 #include <cmath>
 enum EScriptAIPriority { P0 };
 enum EScriptEntityMoveType { MT0 };
@@ -16,6 +16,8 @@ static int g_taskEnds = 0;
 struct CScriptThing {
     const char* Name; float X;
     CScriptThing(const char* n = "", float x = 0.0f) : Name(n), X(x) { }
+    struct InlineCopy { };
+    CScriptThing(const CScriptThing& o, InlineCopy) : Name(o.Name), X(o.X) { }
 };
 struct CQ_BreakSiegeScript { bool BanditLeaderFree, StartSecondWave, HeroLetInTown; };
 static CQ_BreakSiegeScript g_parent;
@@ -42,29 +44,14 @@ struct CGame {
     void EntityFollowThing(const CScriptThing& a, const CScriptThing& b, float d, bool f) const
     { char x[64]; std::sprintf(x, "follow %s %s %g %d", a.Name, b.Name, d, (int)f); Log(x); }
 };
-struct CBanditAttacker {
+struct CBanditFirstWave {
     CGame* Game; CScriptThing Me; CQ_BreakSiegeScript* ParentClass;
     bool IsActiveThreadTerminating() const { return g_frame >= g_termAt; }
     void Main();
 };
-void CBanditAttacker::Main()
+void CBanditFirstWave::Main()
 {
-    CScriptThing chief = Game->GetThingWithScriptName("MB_HeroTalksToChief");
     Game->NewScriptFrame();
-    if (IsActiveThreadTerminating())
-        return;
-    while (!ParentClass->HeroLetInTown) {
-        Game->NewScriptFrame();
-        if (IsActiveThreadTerminating())
-            return;
-    }
-    if (IsActiveThreadTerminating())
-        return;
-    while (!ParentClass->StartSecondWave) {
-        Game->NewScriptFrame();
-        if (IsActiveThreadTerminating())
-            return;
-    }
     if (IsActiveThreadTerminating())
         return;
     CScripted scripted;
@@ -77,7 +64,7 @@ void CBanditAttacker::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    Game->SetCombatNearbyBreakOffRange(Me, g_pScriptDef->BanditAttackerBreakOffRange);
+    Game->SetCombatNearbyBreakOffRange(CScriptThing(Me, CScriptThing::InlineCopy()), g_pScriptDef->BanditAttackerBreakOffRange);
     CScriptThing leader = Game->GetThingWithScriptName("ImprisonedBanditLeader");
     while (IsDistanceBetweenThingsOver(Me, leader, 5.0f) && !ParentClass->BanditLeaderFree) {
         Game->NewScriptFrame();
@@ -101,18 +88,18 @@ void CBanditAttacker::Main()
 }
 int main()
 {
-    CGame game; CBanditAttacker b; b.Game = &game; b.Me = CScriptThing("ME"); b.ParentClass = &g_parent;
+    CGame game; CBanditFirstWave b; b.Game = &game; b.Me = CScriptThing("ME"); b.ParentClass = &g_parent;
     g_def.BanditAttackerBreakOffRange = 7.5f;
     Reset(30); g_pos = 0.0f; g_taskEnds = 0;
     b.Main();
-    CHECK("00d1f610", std::strcmp(g_log, "start ME 3@4;range ME 7.5@4;move ImprisonedBanditLeader 0 10101@5;move ImprisonedBanditLeader 0 10101@7;release@7;follow ME ImprisonedBanditLeader 1 1@7;") == 0);
-    CHECK("00d1f610", g_parent.BanditLeaderFree && g_frame == 30);
-    Reset(3); g_parent.HeroLetInTown = g_parent.StartSecondWave = g_parent.BanditLeaderFree = false; g_pos = 0.0f; g_taskEnds = 0;
+    CHECK("00d1fa00", std::strcmp(g_log, "start ME 3@1;range ME 7.5@1;move ImprisonedBanditLeader 0 10101@2;move ImprisonedBanditLeader 0 10101@4;release@4;follow ME ImprisonedBanditLeader 1 1@4;") == 0);
+    CHECK("00d1fa00", g_parent.BanditLeaderFree && g_frame == 30);
+    Reset(1); g_parent.BanditLeaderFree = false; g_pos = 0.0f; g_taskEnds = 0;
     b.Main();
-    CHECK("00d1f610", g_log[0] == 0 && g_frame == 3 && !g_parent.BanditLeaderFree);
-    Reset(30); g_parent.HeroLetInTown = g_parent.StartSecondWave = false; g_parent.BanditLeaderFree = true; g_pos = 0.0f; g_taskEnds = 0;
+    CHECK("00d1fa00", g_log[0] == 0 && g_frame == 1 && !g_parent.BanditLeaderFree);
+    Reset(3); g_parent.BanditLeaderFree = false; g_pos = 0.0f; g_taskEnds = 0;
     b.Main();
-    CHECK("00d1f610", std::strcmp(g_log, "start ME 3@4;range ME 7.5@4;release@4;follow ME ImprisonedBanditLeader 1 1@4;") == 0);
-    std::printf("00d1f610_TEST PASS\n");
+    CHECK("00d1fa00", std::strcmp(g_log, "start ME 3@1;range ME 7.5@1;move ImprisonedBanditLeader 0 10101@2;") == 0 && !g_parent.BanditLeaderFree);
+    std::printf("00d1fa00_TEST PASS\n");
     return 0;
 }

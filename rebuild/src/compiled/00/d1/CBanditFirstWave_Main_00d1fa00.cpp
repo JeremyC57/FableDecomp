@@ -6,11 +6,13 @@
 //   0x00CD23B9 / Release 0x00CD2770 / MoveToThing 0x007E7300 / IsPerformingScriptTask 0x007E7450 / dtor 0x007E74D0,
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, IsDistanceBetweenThingsOver 0x00CBE3EA (__fastcall);
 //   CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity, 72 GetThingWithScriptName, 229 EntityFollowThing,
-//   817 SetCombatNearbyBreakOffRange (CScriptThing by value: the copy constructor is expanded inline, CBase vtable
-//   0x01231710 then CScriptThing 0x01238C8C, AddRef). Script def global 0x0143E90C. Literal "ImprisonedBanditLeader" 0x012CAD60.
+//   817 SetCombatNearbyBreakOffRange (CScriptThing by value: the copy is expanded inline, CBase vtable
+//   0x01231710 then CScriptThing 0x01238C8C, AddRef; written as a tagged inline constructor whose temporary is built
+//   straight into the argument slot, so 0x004ABE90 binds only to CScriptThing's own copy ctor). Script def global 0x0143E90C. Literal "ImprisonedBanditLeader" 0x012CAD60.
 // Layout: Ego_r.pdb CBanditFirstWave: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_BreakSiegeScript,
 //   retail = PDB - 0x14: BanditLeaderFree +0x4c), PMasterData +0x18.
-// Shape: the tail of the sibling CBanditAttacker::Main (0x00D1F610); the by-value argument copy is the inline copy ctor.
+// Shape: the tail of the sibling CBanditAttacker::Main (0x00D1F610); the filter member is a plain CScriptThing (out-of-line
+//   copy ctor 0x004ABE90 / dtor 0x004AA840); the by-value argument copy is the inline tagged constructor.
 struct C3DVector { float X, Y, Z; };
 struct CCharString {
     void* PStringData;
@@ -55,7 +57,9 @@ struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12
                 ++Info->RefCount;
         }
     } PImp;                                             // +0x04
-    CScriptThing(const CScriptThing& other) : PImp(other.PImp) { }   // inline here (out-of-line copy 0x004ABE90)
+    CScriptThing(const CScriptThing& other);            // 0x004ABE90
+    struct InlineCopy { };                              // tag: the by-value argument copy VC7.1 expands inline
+    CScriptThing(const CScriptThing& other, InlineCopy) : PImp(other.PImp) { }
     ~CScriptThing();                                    // 0x004AA840
 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
@@ -194,13 +198,9 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (ghi
     virtual void v814(); virtual void v815(); virtual void v816();
     virtual void SetCombatNearbyBreakOffRange(CScriptThing thing, float range);   // slot 817 (+0xcc4)
 };
-struct ScriptThingCopy : CScriptThing {            // the filter's member: the genuine out-of-line copy/release
-    ScriptThingCopy(const CScriptThing& other);        // 0x004ABE90
-    ~ScriptThingCopy();                                // 0x004AA840
-};
 struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
     virtual void f00();
-    ScriptThingCopy m_thing;                              // +0x04
+    CScriptThing    m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
@@ -246,7 +246,7 @@ void CBanditFirstWave::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    Game->SetCombatNearbyBreakOffRange(Me, g_pScriptDef->BanditAttackerBreakOffRange);
+    Game->SetCombatNearbyBreakOffRange(CScriptThing(Me, CScriptThing::InlineCopy()), g_pScriptDef->BanditAttackerBreakOffRange);
     CScriptThing leader = Game->GetThingWithScriptName("ImprisonedBanditLeader");
     while (IsDistanceBetweenThingsOver(Me, leader, 5.0f) && !ParentClass->BanditLeaderFree) {
         Game->NewScriptFrame();
