@@ -268053,6 +268053,34 @@ $catalog = @(
         TestSource = '00/8d/CGameScriptThing_MsgIsTalkedToBy_008d19a0_test.cpp'
         PassPattern = '008d19a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008d1fd0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsKnockedOutBy_008d1fd0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsKnockedOutBy_008d1fd0_test.cpp'
+        PassPattern = '008d1fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d2bb0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsHitByAnySpecialAbilityFrom_008d2bb0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsHitByAnySpecialAbilityFrom_008d2bb0_test.cpp'
+        PassPattern = '008d2bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d2d90'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsHitByAnyAggressiveSpecialAbilityFrom_008d2d90.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsHitByAnyAggressiveSpecialAbilityFrom_008d2d90_test.cpp'
+        PassPattern = '008d2d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d2f80'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsHitByAnyNonAggressiveSpecialAbilityFrom_008d2f80.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsHitByAnyNonAggressiveSpecialAbilityFrom_008d2f80_test.cpp'
+        PassPattern = '008d2f80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
