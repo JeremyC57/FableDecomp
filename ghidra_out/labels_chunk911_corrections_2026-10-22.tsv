@@ -26,3 +26,4 @@ address	name	evidence
 00be5d40	GetWorldMapX	real name for the FUN_ row (chunk 911)
 00be5d60	GetWorldMapY	real name for the FUN_ row (chunk 911)
 00a64130	CGenericVar::ReadFromParserAsULONG	landed as ReadFromParserAsSLONG; stores an unsigned long, twin of the SLONG reader at 0x00A640D0 (chunk 911)
+007a3bc0	CHitParameters::CHitParameters	default ctor of CHitParameters, not the forge name CWound_Constructor (callee, retry 10u)

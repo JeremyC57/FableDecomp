@@ -265850,6 +265850,41 @@ $catalog = @(
         TestSource = '00/f3/CPersistContext_TransferVectorlong_00f333b0_test.cpp'
         PassPattern = '00f333b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b0460'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_GetOrientationInterpolator_006b0460.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_GetOrientationInterpolator_006b0460_test.cpp'
+        PassPattern = '006b0460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c9a10'
+        Module = 'CPersistContext'
+        Source = '00/6c/CPersistContext_TransferCIntelligentPointerCThing_006c9a10.cpp'
+        TestSource = '00/6c/CPersistContext_TransferCIntelligentPointerCThing_006c9a10_test.cpp'
+        PassPattern = '006c9a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00726be0'
+        Module = 'CTCPhysicsNavigator'
+        Source = '00/72/CTCPhysicsNavigator_UpdateAdditionalImpulse_00726be0.cpp'
+        TestSource = '00/72/CTCPhysicsNavigator_UpdateAdditionalImpulse_00726be0_test.cpp'
+        PassPattern = '00726be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771660'
+        Module = 'CTCOpinionSource'
+        Source = '00/77/CTCOpinionSource_OnCreate_00771660.cpp'
+        TestSource = '00/77/CTCOpinionSource_OnCreate_00771660_test.cpp'
+        PassPattern = '00771660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cce20'
+        Module = 'CTCMultiStrike'
+        Source = '00/7c/CTCMultiStrike_FrameUpdate_007cce20.cpp'
+        TestSource = '00/7c/CTCMultiStrike_FrameUpdate_007cce20_test.cpp'
+        PassPattern = '007cce20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
