@@ -269686,6 +269686,13 @@ $catalog = @(
         TestSource = '00/eb/CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0_test.cpp'
         PassPattern = '00eb15c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006dd1c0'
+        Module = 'CHeroExperienceDef'
+        Source = '00/6d/CHeroExperienceDef_ReadFromStream_006dd1c0.cpp'
+        TestSource = '00/6d/CHeroExperienceDef_ReadFromStream_006dd1c0_test.cpp'
+        PassPattern = '006dd1c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

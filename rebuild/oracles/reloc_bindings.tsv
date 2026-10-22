@@ -25021,3 +25021,9 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?DoSuspicious@CMurderTwistSheriff@@QAEXXZ	00eb19c0	00eaef30
 ?PlayBeingRumbledCutscene@CV_MurderTwistFinalScript@@QAEXXZ	00eaf1e0	00eaef30
 ?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@@QAEXABUCScriptThing@@@Z	00eb0700	00eb15c0
+??0CStatTree@@QAE@ABU0@@Z	004f9960	006dd1c0
+?Erase@CStatMapTree@@QAEXPAUSNode@@@Z	004e6e43	006dd1c0
+?Erase@CStatTree@@QAEXPAUSNode@@@Z	004da252	006dd1c0
+?InsertUnique@CStatMapTree@@QAE?AUSPairIB@@ABUSStatPair@@@Z	006dce90	006dd1c0
+?TransferBinaryIn@CPersistTraitsAttr@@QAEXPAUCMemoryDataInputStream@@PAJ@Z	00459083	006dd1c0
+?TransferBinaryIn@CPersistTraitsStat@@QAEXPAUCMemoryDataInputStream@@PAUCHeroStatIncreaseData@@@Z	006dc070	006dd1c0
