@@ -266229,6 +266229,13 @@ $catalog = @(
         TestSource = '00/d9/CFadeinSummoner_GetAlphaChange_00d9fe40_test.cpp'
         PassPattern = '00d9fe40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c564f0'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_SetEAXGlobalProperty_00c564f0.cpp'
+        TestSource = '00/c5/CAudioContext_SetEAXGlobalProperty_00c564f0_test.cpp'
+        PassPattern = '00c564f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
