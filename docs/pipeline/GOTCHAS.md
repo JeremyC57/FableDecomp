@@ -682,3 +682,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - **Advisor b42 (2026-10-22, RST2, 00aebc90 CParticleEmitterManager::GetVisibleEmitterNames, empty-tag rule):** same-TU template bodies for `__find` and `vector<long>::_M_insert_overflow`, both with unnamed tags. Read the `unsigned short Dead:1` bitfield through a bool accessor to get retail's `shr al,5; test al,1`. Declare `last` before `first`, and use an int index with STLport `operator[]` in the second loop.
 - **Chunk 294 follow-up (b44, 00438aa0 CPlayerGui::AddScreenMessage):** an inline list-node allocation calls the CRT malloc import thunk 0x00BFEA0E, not operator new. Write malloc() plus placement new, or RELOC_IDENTITY refuses the row.
 - **Advisor b45 (2026-10-22, E1, 0070cad0 / 0070cc70 CAnimSet GetLast/StartMeshAnim twins, near-miss pool):** read the alpha through an inline begin()/operator[] (the b29 lever), and null the CIVCountedPointer inside the dtor's null test.
+- **D1 near-miss pass (2026-10-22, 13 rows, 2 landed in b41):**
+  - **Sibling scopes:** VC7.1 shares frame words only between SIBLING scopes (if/else arms), never between a nested block and its enclosing scope. Example: 007f4990's text-bank half in `else { CWideString name; ... }`.
+  - **64-bit UIDs:** `typedef unsigned __int64 CThingUID` passed by value gives retail's low-word-first 64-bit push.
+  - **Named end pointer:** keep it short-lived (empty test plus `count = last - begin()` only). It then shares the single finish load without taking a frame word (005f64dd).
+  - **Open (no lever found):** in ours, the loop-carried web (node, loop index) takes the later-freed callee-saved register and the invariant web takes the earlier-freed one. Retail does the reverse (00774730, 0057dc22).
+  - **Open (no lever found):** the lane never packs a destructible temporary into the home word of an uninitialised scalar that is read back on the miss path (007c25a0, 0072c790).
