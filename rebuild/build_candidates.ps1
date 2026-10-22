@@ -265178,6 +265178,237 @@ $catalog = @(
         TestSource = '00/ae/CParticleEmitterManager_CreateEmitter_00aeb6d0_test.cpp'
         PassPattern = '00aeb6d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00449b60'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_GetMultiplayerColour_00449b60.cpp'
+        TestSource = '00/44/CPlayerManager_GetMultiplayerColour_00449b60_test.cpp'
+        PassPattern = '00449b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d80ae0'
+        Module = 'NScript::CQ_HeroSoulsArenaScript'
+        Source = '00/d8/NScriptCQHeroSoulsArenaScript_GetJackSpeech_00d80ae0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsArenaScript_GetJackSpeech_00d80ae0_test.cpp'
+        PassPattern = '00d80ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33b90'
+        Module = 'CPersistContext'
+        Source = '00/f3/CPersistContext_TransferVectorOfSubComponentsCFireHeartPatternDe_00f33b90.cpp'
+        TestSource = '00/f3/CPersistContext_TransferVectorOfSubComponentsCFireHeartPatternDe_00f33b90_test.cpp'
+        PassPattern = '00f33b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f349f0'
+        Module = 'CPersistContext'
+        Source = '00/f3/CPersistContext_TransferVectorOfSubComponentsCArenaRoundDef_00f349f0.cpp'
+        TestSource = '00/f3/CPersistContext_TransferVectorOfSubComponentsCArenaRoundDef_00f349f0_test.cpp'
+        PassPattern = '00f349f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f351f0'
+        Module = 'CPersistContext'
+        Source = '00/f3/CPersistContext_TransferVectorOfSubComponentsCHeroSoulsRoundDef_00f351f0.cpp'
+        TestSource = '00/f3/CPersistContext_TransferVectorOfSubComponentsCHeroSoulsRoundDef_00f351f0_test.cpp'
+        PassPattern = '00f351f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006421c0'
+        Module = 'CPersistContext_TransferableComponent<CRGBColour>'
+        Source = '00/64/CPersistContextTransferableComponentCRGBColour_TransferIn_006421c0.cpp'
+        TestSource = '00/64/CPersistContextTransferableComponentCRGBColour_TransferIn_006421c0_test.cpp'
+        PassPattern = '006421c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bace0'
+        Module = 'CPersistContext_TransferableComponent<CFaction>'
+        Source = '00/6b/CPersistContextTransferableComponentCFaction_TransferIn_006bace0.cpp'
+        TestSource = '00/6b/CPersistContextTransferableComponentCFaction_TransferIn_006bace0_test.cpp'
+        PassPattern = '006bace0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ad7b0'
+        Module = 'CPersistContext_TransferableComponent<EScriptingStateGroups>'
+        Source = '00/7a/CPersistContextTransferableComponentEScriptingStateGroups_TransferIn_007ad7b0.cpp'
+        TestSource = '00/7a/CPersistContextTransferableComponentEScriptingStateGroups_TransferIn_007ad7b0_test.cpp'
+        PassPattern = '007ad7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ad7d0'
+        Module = 'CPersistContext_TransferableComponent<EScriptingStateGroups>'
+        Source = '00/7a/CPersistContextTransferableComponentEScriptingStateGroups_TransferOut_007ad7d0.cpp'
+        TestSource = '00/7a/CPersistContextTransferableComponentEScriptingStateGroups_TransferOut_007ad7d0_test.cpp'
+        PassPattern = '007ad7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d80ba0'
+        Module = 'NScript::CQ_HeroSoulsArenaScript'
+        Source = '00/d8/NScriptCQHeroSoulsArenaScript_Alloc_00d80ba0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsArenaScript_Alloc_00d80ba0_test.cpp'
+        PassPattern = '00d80ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f28010'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CArenaWaveDef>'
+        Source = '00/f2/CPersistContextTransferableVectorOfSubComponentsCArenaWaveDef_Size_00f28010.cpp'
+        TestSource = '00/f2/CPersistContextTransferableVectorOfSubComponentsCArenaWaveDef_Size_00f28010_test.cpp'
+        PassPattern = '00f28010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f28030'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CArenaWaveDef>'
+        Source = '00/f2/CPersistContextTransferableVectorOfSubComponentsCArenaWaveDef_AreDefaultValsApplied_00f28030.cpp'
+        TestSource = '00/f2/CPersistContextTransferableVectorOfSubComponentsCArenaWaveDef_AreDefaultValsApplied_00f28030_test.cpp'
+        PassPattern = '00f28030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f28050'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CArenaWaveDef>'
+        Source = '00/f2/CPersistContextTransferableVectorOfSubComponentsCArenaWaveDef_SetDefaultValsApplied_00f28050.cpp'
+        TestSource = '00/f2/CPersistContextTransferableVectorOfSubComponentsCArenaWaveDef_SetDefaultValsApplied_00f28050_test.cpp'
+        PassPattern = '00f28050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f28080'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CArenaWaveDef>'
+        Source = '00/f2/CPersistContextTransferableVectorOfSubComponentsCArenaWaveDef_Transfer_00f28080.cpp'
+        TestSource = '00/f2/CPersistContextTransferableVectorOfSubComponentsCArenaWaveDef_Transfer_00f28080_test.cpp'
+        PassPattern = '00f28080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f28780'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsWaveDef>'
+        Source = '00/f2/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsWaveDef_Size_00f28780.cpp'
+        TestSource = '00/f2/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsWaveDef_Size_00f28780_test.cpp'
+        PassPattern = '00f28780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f287a0'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsWaveDef>'
+        Source = '00/f2/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsWaveDef_AreDefaultValsApplied_00f287a0.cpp'
+        TestSource = '00/f2/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsWaveDef_AreDefaultValsApplied_00f287a0_test.cpp'
+        PassPattern = '00f287a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f287c0'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsWaveDef>'
+        Source = '00/f2/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsWaveDef_SetDefaultValsApplied_00f287c0.cpp'
+        TestSource = '00/f2/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsWaveDef_SetDefaultValsApplied_00f287c0_test.cpp'
+        PassPattern = '00f287c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f287f0'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsWaveDef>'
+        Source = '00/f2/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsWaveDef_Transfer_00f287f0.cpp'
+        TestSource = '00/f2/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsWaveDef_Transfer_00f287f0_test.cpp'
+        PassPattern = '00f287f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33470'
+        Module = 'CPersistContext_TransferableVector<CDefString>'
+        Source = '00/f3/CPersistContextTransferableVectorCDefString_Size_00f33470.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorCDefString_Size_00f33470_test.cpp'
+        PassPattern = '00f33470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33480'
+        Module = 'CPersistContext_TransferableVector<CDefString>'
+        Source = '00/f3/CPersistContextTransferableVectorCDefString_TransferIn_00f33480.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorCDefString_TransferIn_00f33480_test.cpp'
+        PassPattern = '00f33480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f334a0'
+        Module = 'CPersistContext_TransferableVector<CDefString>'
+        Source = '00/f3/CPersistContextTransferableVectorCDefString_TransferOut_00f334a0.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorCDefString_TransferOut_00f334a0_test.cpp'
+        PassPattern = '00f334a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33d00'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCFireHeartPatternDef_Size_00f33d00.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCFireHeartPatternDef_Size_00f33d00_test.cpp'
+        PassPattern = '00f33d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33d20'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCFireHeartPatternDef_AreDefaultValsApplied_00f33d20.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCFireHeartPatternDef_AreDefaultValsApplied_00f33d20_test.cpp'
+        PassPattern = '00f33d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33d40'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCFireHeartPatternDef_SetDefaultValsApplied_00f33d40.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCFireHeartPatternDef_SetDefaultValsApplied_00f33d40_test.cpp'
+        PassPattern = '00f33d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33d70'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCFireHeartPatternDef_Transfer_00f33d70.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCFireHeartPatternDef_Transfer_00f33d70_test.cpp'
+        PassPattern = '00f33d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f34b60'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CArenaRoundDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCArenaRoundDef_Size_00f34b60.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCArenaRoundDef_Size_00f34b60_test.cpp'
+        PassPattern = '00f34b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f34b80'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CArenaRoundDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCArenaRoundDef_AreDefaultValsApplied_00f34b80.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCArenaRoundDef_AreDefaultValsApplied_00f34b80_test.cpp'
+        PassPattern = '00f34b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f34ba0'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CArenaRoundDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCArenaRoundDef_SetDefaultValsApplied_00f34ba0.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCArenaRoundDef_SetDefaultValsApplied_00f34ba0_test.cpp'
+        PassPattern = '00f34ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f34bd0'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CArenaRoundDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCArenaRoundDef_Transfer_00f34bd0.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCArenaRoundDef_Transfer_00f34bd0_test.cpp'
+        PassPattern = '00f34bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f35360'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsRoundDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_Size_00f35360.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_Size_00f35360_test.cpp'
+        PassPattern = '00f35360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f35380'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsRoundDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_AreDefaultValsApplied_00f35380.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_AreDefaultValsApplied_00f35380_test.cpp'
+        PassPattern = '00f35380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f353a0'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsRoundDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_SetDefaultValsApplied_00f353a0.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_SetDefaultValsApplied_00f353a0_test.cpp'
+        PassPattern = '00f353a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f353d0'
+        Module = 'CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsRoundDef>'
+        Source = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_Transfer_00f353d0.cpp'
+        TestSource = '00/f3/CPersistContextTransferableVectorOfSubComponentsCHeroSoulsRoundDef_Transfer_00f353d0_test.cpp'
+        PassPattern = '00f353d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

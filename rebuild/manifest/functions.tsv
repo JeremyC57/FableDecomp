@@ -331,6 +331,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004109a0	Transfer<CIntelligentPointer<CThing>_>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,CIntelligentPointer<CThing> *,CIntelligentPointer<class_CThing> *	1	yes	accepted									
 00410ac0	Transfer<CIntelligentPointer<CThing>_>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,CIntelligentPointer<CThing> *,CIntelligentPointer<class_CThing> *	1	yes	accepted									
 00410be0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00410cb0	FUN_00410cb0	_global	unknown	undefined	0		0			discovered	boundary							
+00410d10	FUN_00410d10	_global	unknown	undefined	0		0			discovered	boundary							
+00410d40	FUN_00410d40	_global	unknown	undefined	0		0			discovered	boundary							
+00410d60	FUN_00410d60	_global	unknown	undefined	0		0			discovered	boundary							
 00410d80	bitset_advance_iterator	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x00410D80_global_bitset_advance_iterator.cpp				
 00410de0	std::bitset::test	std::bitset	unknown	undefined	0		0	yes	accepted									
 00410ed0	Std_Deque_PopFront_ChunkBased	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x00410ED0_global_Std_Deque_PopFront_ChunkBased.cpp				
@@ -1479,6 +1483,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0043e3d0	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\Destvalstd_allocatorCMacroCMacro_0043e3d0.cpp
 0043e420	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 0043e430	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+0043e440	FUN_0043e440	_global	unknown	undefined	0		0			discovered	boundary							
+0043e450	FUN_0043e450	_global	unknown	undefined	0		0			discovered	boundary							
+0043e460	FUN_0043e460	_global	unknown	undefined	0		0			discovered	boundary							
+0043e470	CRGBFloatColour	CRGBFloatColour	unknown	undefined	0		0			discovered	boundary							
 0043e4d0	GetVStringWidth	CFontBank	__thiscall	float	2	CFontBank *,CWideString *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CFontBank_GetVStringWidth_0043e4d0.cpp
 0043e520	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CLandscapeBackgroundPatch_vectordeletingdestructor_0043e520.cpp
 0043e550	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043e550.cpp
@@ -1886,6 +1894,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00449b20	AddChild	CSpellContainerList	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CSpellContainerList_AddChild_00449b20.cpp
 00449b40	GetEditorAnimation	CEngine	__thiscall	C3DAnimationInfo *	2	CEngine *,CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CEngine_GetEditorAnimation_00449b40.cpp
 00449b60	GetMultiplayerColour	CPlayerManager	__thiscall	CRGBColour	2	CPlayerManager *,long	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x00449B60_CPlayerManager_GetMultiplayerColour.cpp				
+00449bf0	FUN_00449bf0	_global	unknown	undefined	0		0			discovered	boundary							
+00449c10	FUN_00449c10	_global	unknown	undefined	0		0			discovered	boundary							
 00449c30	PrepareForLoad	CPlayerManager	__thiscall	void	1	CPlayerManager *	1	yes	accepted									
 00449cb0	CPlayerManager::SwapToHero	CPlayerManager	unknown	undefined	0		0	yes	accepted									
 00449d20	IsMultiplayerGameActive	CPlayerManager	__thiscall	bool	1	CPlayerManager *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x00449D20_CPlayerManager_IsMultiplayerGameActive.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CPlayerManager_IsMultiplayerGameActive_00449d20.cpp
@@ -4557,6 +4567,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ab610	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CActiveFile_OnReadFinished_004ab610.cpp
 004ab640	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 004ab710	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+004ab7f0	Transfer	CPersistContext	unknown	undefined	0		0			discovered	boundary							
 004ab810	Transfer<long>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,long *	1	yes	accepted									
 004ab840	GetDef<CThingPhysicalSwitchDef>	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
 004ab8b0	FindMostRecentMessage<CMessageEventFilter_IsOfType>	CMessageEventManager	__thiscall	CMessageEvent *	2	CMessageEventManager *,CMessageEventFilter_IsOfType *	1	yes	accepted									
@@ -5309,6 +5320,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004cc3b0	sub_004cc3b0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 004cc3c0	_Cons_val<std::allocator<std::pair<CIntelligentPointer<CThing>,CTCBase*>_>,std::pair<CIntelligentPointer<CThing>,CTCBase*>,std::pair<class_CIntelligentPointer<class_CThing>,class_CTCBase*>_>	_Cons_val<std::allocator<std::pair<CIntelligentPointer<CThing>,CTCBase*>_>,std::pair<CIntelligentPointer<CThing>,CTCBase*>,std	__fastcall	void	3	allocator<std::pair<CIntelligentPointer<CThing>,CTCBase*>_> *,pair<CIntelligentPointer<CThing>,CTCBase*> *,pair<class_CIntelligentPointer<class_CThing>,class_CTCBase*> *	1	yes	accepted									
 004cc3f0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+004cc4d0	TransferBinary<signed_char>	CPersistContext	unknown	undefined	0		0			discovered	boundary							
 004cc520	CPersistTraits_uint64_TransferBinary	_global	unknown	undefined	0		0	yes	accepted									
 004cc5c0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 004cc690	std::heapsort_SiftDown	std	unknown	undefined	0		0	yes	accepted									
@@ -5329,6 +5341,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004cd1c0	CThing::vfunc_14	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004cd1d0	CThing::vfunc_26	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004cd1e0	CThing::vfunc_30	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004cd220	vfunc_34	CThing	unknown	undefined	0		0			discovered	boundary							
+004cd230	vfunc_35	CThing	unknown	undefined	0		0			discovered	boundary							
+004cd2a0	FUN_004cd2a0	_global	unknown	undefined	0		0			discovered	boundary							
+004cd2b0	FUN_004cd2b0	_global	unknown	undefined	0		0			discovered	boundary							
+004cd2d0	FUN_004cd2d0	_global	unknown	undefined	0		0			discovered	boundary							
+004cd2f0	FUN_004cd2f0	_global	unknown	undefined	0		0			discovered	boundary							
 004cd330	_Insertion_sort1<std::pair<long,long>*,CKeyPairCompareLess<long,long>,std::pair<long,long>_>	_Insertion_sort1<std::pair<long,long>*,CKeyPairCompareLess<long,long>,std	__fastcall	void	4	pair<long,long> *,pair<long,long> *,CKeyPairCompareLess<long,long>,pair<long,long> *	1	yes	accepted									
 004cd370	std::introsort_PopHeap_OnPartition_Float	std	unknown	undefined	0		0	yes	accepted									
 004cd3e0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CLandscapeBackgroundPatch_vectordeletingdestructor_004cd3e0.cpp
@@ -10197,6 +10215,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00567bb0	RBTree_Insert	_global	unknown	undefined	0		0	yes	accepted									
 00567d00	CTCElectrocutedEffect::InitFromStringRange	CTCElectrocutedEffect	unknown	undefined	0		0	yes	accepted									
 00567d60	CTCElectrocutedEffect::ReplaceString	CTCElectrocutedEffect	unknown	undefined	0		0	yes	accepted									
+00567e80	FUN_00567e80	_global	unknown	undefined	0		0			discovered	boundary							
+00567e90	FUN_00567e90	_global	unknown	undefined	0		0			discovered	boundary							
 00567ea0	StdVector_Construct	_global	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\global_StdVectorConstruct_00567ea0.cpp
 00567eb0	DoublyLinkedListNode_Initialize	_global	unknown	undefined	0		0	yes	accepted									
 00567ef0	LTextTreeWalkThrough_Destructor	_global	unknown	undefined	0		0	yes	accepted									
@@ -12057,6 +12077,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005d92f0	GetStartingRightHandedSet	CTCInventoryItem	__thiscall	CRightHandedSet	1	CTCInventoryItem *	1	yes	accepted									
 005d9320	ClearCachedDefs	_global	__fastcall	void	0		1	yes	accepted									
 005d9380	CTCInventoryItem::vfunc_4	CTCInventoryItem	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005d93b0	FUN_005d93b0	_global	unknown	undefined	0		0			discovered	boundary							
+005d9430	FUN_005d9430	_global	unknown	undefined	0		0			discovered	boundary							
 005d94b0	CacheDef	_global	__fastcall	bool	1	long	1	yes	accepted									
 005d95c0	GetDescription	_global	__fastcall	CWideString	1	long	1	yes	accepted									
 005d9630	GetDescription	_global	__fastcall	CWideString	1	long	1	yes	accepted									
@@ -12387,6 +12409,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005e3df0	Deactivate	CTCQuestCompletionUI	__thiscall	void	1	CTCQuestCompletionUI *	1	yes	accepted									
 005e3e70	IsOverridingScreenFade	CTCQuestCompletionUI	__thiscall	bool	1	CTCQuestCompletionUI *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\CTCQuestCompletionUI_IsOverridingScreenFade_005e3e70.cpp
 005e3ea0	IsHeroControlledByPlayer	CTCQuestCompletionUI	__thiscall	bool	1	CTCQuestCompletionUI *	1	yes	accepted									
+005e3f00	DrawPreparePrimitivesForRendering	CTCQuestCompletionUI	unknown	undefined	0		0			discovered	boundary							
 005e4030	CEngineSubPrimitive2DClockSprite::CEngineSubPrimitive2DClockSprite	CEngineSubPrimitive2DClockSprite	unknown	undefined	0		0	yes	accepted									
 005e41e0	~CTCQuestCompletionUI	CTCQuestCompletionUI	__thiscall	void	1	CTCQuestCompletionUI *	1	yes	accepted									
 005e4430	Activate	CTCQuestCompletionUI	__thiscall	void	4	CTCQuestCompletionUI *,CompletionType,CTCQuestCard *,bool	1	yes	accepted									
@@ -13014,6 +13037,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00619710	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 006197d0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00619890	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00619950	FUN_00619950	_global	unknown	undefined	0		0			discovered	boundary							
+006199a0	FUN_006199a0	_global	unknown	undefined	0		0			discovered	boundary							
 006199d0	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\61\CTCCarryable_OnKill_006199d0.cpp
 00619a10	TreeNode_Clone	_global	unknown	undefined	0		0	yes	accepted									
 00619b40	CMemoryAllocatorVariableSize::InsertLarge	CMemoryAllocatorVariableSize	unknown	undefined	0		0	yes	accepted									
@@ -13621,6 +13646,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00641eb0	Reset	CCountedPointer<CIPhysicsFacesSegmentBase_const_>	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 00642000	CEnginePrimitiveShadowedSpotLight	CEnginePrimitiveShadowedSpotLight	__thiscall	undefined	10	CEnginePrimitiveShadowedSpotLight *,__uint64,C3DVector *,C3DVector *,CRGBColour *,float,float,float,EEngineInterpolationSet,ulong	0	yes	accepted									
 006420f0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+006421c0	TransferIn	CPersistContext_TransferableComponent<CRGBColour>	unknown	undefined	0		0			discovered	boundary							
 006421f0	TransferIn	CPersistContext_TransferableComponent<float>	__thiscall	void	3	CPersistContext_TransferableComponent<float> *,CPersistContext *,CStringParser *	1	yes	accepted									
 006422b0	Vector_InsertValues	_global	unknown	undefined	0		0	yes	accepted									
 00642390	CPrimitive	CPrimitive	__thiscall	undefined	3	CPrimitive *,EPrimitiveType,long	0	yes	accepted									
@@ -15241,6 +15267,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00685e70	GetDef<CThingPhysicalSwitchDef>	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
 00685ee0	GetPFirstLeafThing<CThingFilter_AICreatureHasProperty,CThingAICreature>	CThingSearchTools	__thiscall	bool	3	CThingSearchTools *,CThingFilter_AICreatureHasProperty *,CThingAICreature * *	1	yes	accepted									
 00685f80	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00686090	FUN_00686090	_global	unknown	undefined	0		0			discovered	boundary							
 006860c0	DoubleLinkedList_InitializeEmpty	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\global_DoubleLinkedListInitializeEmpty_006860c0.cpp
 006860f0	std::vector_insert_value	std	unknown	undefined	0		0	yes	accepted									
 006861c0	_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>	_Ucopy<std	__thiscall	pair<long,CCountedPointer<CContainmentVolume>_> *	4	vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_> *,pair<long,class_CCountedPointer<class_CContainmentVolume>_> *,pair<long,class_CCountedPointer<class_CContainmentVolume>_> *,pair<long,class_CCountedPointer<class_CContainmentVolume>_> *	1	yes	accepted									
@@ -16548,6 +16575,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006baa90	Vector_ResizeAndFillCounted	_global	unknown	undefined	0		0	yes	accepted									
 006bab80	AddEntry	CSharerParserOutputToDebugContextMapper	__thiscall	void	4	CSharerParserOutputToDebugContextMapper *,long,long,CCharString	1	yes	accepted									
 006babd0	Transfer<CIntelligentPointer<CThing>_>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,CIntelligentPointer<CThing> *,CIntelligentPointer<class_CThing> *	1	yes	accepted									
+006bace0	TransferIn	CPersistContext_TransferableComponent<CFaction>	unknown	undefined	0		0			discovered	boundary							
 006bad20	TransferIn	CPersistContext_TransferableComponent<CIntelligentPointer<CThing>_>	__thiscall	void	3	CPersistContext_TransferableComponent<CIntelligentPointer<CThing>_> *,CPersistContext *,CStringParser *	1	yes	accepted									
 006bad60	Heap_BuildHeapPair	_global	unknown	undefined	0		0	yes	accepted									
 006badb0	Heap_SiftDown	_global	unknown	undefined	0		0	yes	accepted									
@@ -16859,6 +16887,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006ca400	SetTitle	CTCHero	__thiscall	void	2	CTCHero *,long	1	yes	accepted									
 006ca4e0	OnInitialActivate	CTCHero	__thiscall	void	1	CTCHero *	1	yes	accepted									
 006ca5a0	OnCreate	CTCHero	__thiscall	void	1	CTCHero *	1	yes	accepted									
+006ca650	FUN_006ca650	_global	unknown	undefined	0		0			discovered	boundary							
+006ca680	operator=	CCountedPointer	unknown	undefined	0		0			discovered	boundary							
 006ca6c0	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ca6c0.cpp
 006ca6f0	CTCHero::vfunc_21	CTCHero	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006ca700	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
@@ -17054,6 +17084,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006d4aa0	Resize	CPersistContext_TransferableVector<std::pair<CCharString	__thiscall	void	2	CPersistContext_TransferableVector<std::pair<CCharString,long>_> *,long	1	yes	accepted									
 006d4b40	GFSerialiseVectorBinaryIn<CCharString>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CCharString,std::allocator<CCharString>_> *	1	yes	accepted									
 006d4c00	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+006d4cc0	FUN_006d4cc0	_global	unknown	undefined	0		0			discovered	boundary							
+006d4cd0	FUN_006d4cd0	_global	unknown	undefined	0		0			discovered	boundary							
+006d4ce0	IS_THING_DEAD<CThing*>	_global	unknown	undefined	0		0			discovered	boundary							
+006d4d00	FUN_006d4d00	_global	unknown	undefined	0		0			discovered	boundary							
 006d4d10	CIntelligentPointer<CThing_const_><CThing_const_>	CIntelligentPointer<CThing_const_>	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CIntelligentPointer<class_CThing_const_> *	0	yes	accepted									
 006d4d40	RemoveAllFollowers	CTCFollowed	__thiscall	void	1	CTCFollowed *	1	yes	accepted									
 006d4d70	IsAIFollower	CTCFollowed	__thiscall	bool	2	CTCFollowed *,CThingAICreature *	1	yes	accepted									
@@ -21901,6 +21935,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007ad270	LTextBinTree_SerializeNode	_global	unknown	undefined	0		0	yes	accepted									
 007ad300	?Transfer@CAIScratchpadDef@@UAEXAAVCPersistContext@@@Z	CAIScratchpadDef	__thiscall	void	2	CAIScratchpadDef *,CPersistContext *	1	yes	accepted									
 007ad6d0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+007ad7b0	TransferIn	CPersistContext_TransferableComponent<EScriptingStateGroups>	unknown	undefined	0		0			discovered	boundary							
+007ad7d0	TransferOut	CPersistContext_TransferableComponent<EScriptingStateGroups>	unknown	undefined	0		0			discovered	boundary							
 007ad7f0	TransferBinaryIn	CPersistTraits<float>	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 007ad880	OnCreate	CTCAIScratchpad	__thiscall	void	1	CTCAIScratchpad *	1	yes	accepted									
 007ad9c0	GetSubDef<CAICreatureWillPowerIndicatorDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
@@ -22063,6 +22099,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007b5370	GFSerialiseVectorBinaryIn<CDefString>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CDefString,std::allocator<CDefString>_> *	1	yes	accepted									
 007b5400	Vector_InsertRange_8byte_StdVector	_global	unknown	undefined	0		0	yes	accepted									
 007b5470	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+007b5530	FUN_007b5530	_global	unknown	undefined	0		0			discovered	boundary							
+007b5560	FUN_007b5560	_global	unknown	undefined	0		0			discovered	boundary							
+007b5590	FUN_007b5590	_global	unknown	undefined	0		0			discovered	boundary							
+007b55b0	FUN_007b55b0	_global	unknown	undefined	0		0			discovered	boundary							
+007b55c0	FUN_007b55c0	_global	unknown	undefined	0		0			discovered	boundary							
 007b55f0	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b55f0.cpp
 007b5620	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b5620.cpp
 007b5680	GetSubDef<CAICreatureWillPowerIndicatorDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
@@ -22720,6 +22761,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007da230	GetHandValue	CTCTavernGameCardBlackjack	__thiscall	long	3	CTCTavernGameCardBlackjack *,vector<CCard*,std::allocator<CCard*>_> *,bool	1	yes	accepted									
 007da290	TurnPlayerCards	CTCTavernGameCardBlackjack	__thiscall	void	1	CTCTavernGameCardBlackjack *	1	yes	accepted									
 007da360	FrameUpdate	CTCTavernGameCardBlackjack	__thiscall	void	1	CTCTavernGameCardBlackjack *	1	yes	accepted									
+007da3a0	vfunc_42	CTCTavernGameCardBlackjack	unknown	undefined	0		0			discovered	boundary							
 007da400	GetRequiredScore	CTCTavernGameCoinGolf	__thiscall	CWideString	1	CTCTavernGameCoinGolf *	1	yes	accepted									
 007da520	GetRequiredScore	CTCTavernGameCoinGolf	__thiscall	CWideString	1	CTCTavernGameCoinGolf *	1	yes	accepted									
 007da640	GetBet	CTCTavernGameCardBlackjack	__thiscall	CWideString	1	CTCTavernGameCardBlackjack *	1	yes	accepted									
@@ -23269,9 +23311,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007eea50	CCreatureAction_OpenChest::Clone	CCreatureAction_OpenChest	__thiscall	CCreatureActionBase *	1	CCreatureAction_OpenChest *	1	yes	accepted									
 007eea80	CCreatureAction_PickUpJug	CCreatureAction_PickUpJug	__thiscall	undefined	2	CCreatureAction_PickUpJug *,CCreatureAction_PickUpJug *	0	yes	accepted									
 007eeb20	Smash	CTCSmashableBarrier	__thiscall	void	1	CTCSmashableBarrier *	1	yes	accepted									
+007eeb80	FUN_007eeb80	_global	unknown	undefined	0		0			discovered	boundary							
+007eeb90	FUN_007eeb90	_global	unknown	undefined	0		0			discovered	boundary							
 007eebb0	IsAvailableToHit	CTCSmashableBase	__thiscall	bool	1	CTCSmashableBase *	1	yes	accepted									
 007eebe0	CTCCameraCollision	CTCCameraCollision	__thiscall	undefined	2	CTCCameraCollision *,CThing *	0	yes	accepted									
 007eec50	OnDie	CTCSmashableBase	__thiscall	void	1	CTCSmashableBase *	1	yes	accepted									
+007eec90	OnCreate	CTCSmashableBase	unknown	undefined	0		0			discovered	boundary							
 007eecf0	OnInitialActivate	CTCSmashableBase	__thiscall	void	1	CTCSmashableBase *	1	yes	accepted									
 007eed20	Smash	CTCSmashableBase	__thiscall	void	1	CTCSmashableBase *	1	yes	accepted									
 007eeea0	GetSubDef<CAICreatureWillPowerIndicatorDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
@@ -23368,6 +23413,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f4c90	GetSubDef<CAICreatureWillPowerIndicatorDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 007f4d50	CTCCarriedActionUseAbility::vfunc_28	CTCCarriedActionUseAbility	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f4e10	Smash	CTCSmashableBarrier	__thiscall	void	1	CTCSmashableBarrier *	1	yes	accepted									
+007f4e80	OnCreate	CTCStockItem	unknown	undefined	0		0			discovered	boundary							
+007f4ed0	OnSerialise	CTCStockItem	unknown	undefined	0		0			discovered	boundary							
+007f4f40	FUN_007f4f40	_global	unknown	undefined	0		0			discovered	boundary							
 007f4f80	GetBanter	CTCTavernGame	__thiscall	long	1	CTCTavernGame *	1	yes	accepted									
 007f4fc0	GetShopTC	CTCStockItem	__thiscall	CTCShop *	1	CTCStockItem *	1	yes	accepted									
 007f5050	OnInitialActivate	CTCStockItem	__thiscall	void	1	CTCStockItem *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\CTCStockItem_OnInitialActivate_007f5050.cpp
@@ -23420,6 +23468,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f7810	EditCyclePreviousKeyCamera	CTCCameraPointScriptedSpline	__thiscall	void	1	CTCCameraPointScriptedSpline *	1	yes	accepted									
 007f7850	CTCActivationReceptorCreatureGenerator::vfunc_14	CTCActivationReceptorCreatureGenerator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007f7870	FrameUpdate	CTCActivationReceptorBase	__thiscall	void	1	CTCActivationReceptorBase *	1	yes	accepted									
+007f7930	FUN_007f7930	_global	unknown	undefined	0		0			discovered	boundary							
+007f7940	FUN_007f7940	_global	unknown	undefined	0		0			discovered	boundary							
 007f7970	vector_find_Value_16byte	_global	unknown	undefined	0		0	yes	accepted									
 007f7a50	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\CLandscapeBackgroundPatch_vectordeletingdestructor_007f7a50.cpp
 007f7b70	_For_each<CThing**,CInformTriggerOfReceptorDeath>	_global	__fastcall	CInformTriggerOfReceptorDeath	3	CThing * *,CThing * *,CInformTriggerOfReceptorDeath	1	yes	accepted									
@@ -23515,6 +23565,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007fc7d0	StartHighAttackBeam	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
 007fc800	EndAttackBeam	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\CTCKraken_EndAttackBeam_007fc800.cpp
 007fc820	SetPhase	CTCKraken	__thiscall	void	2	CTCKraken *,EKrakenBossPhase	1	yes	accepted									
+007fc8e0	OnInitialActivate	CTCKraken	unknown	undefined	0		0			discovered	boundary							
 007fc9d0	FrameUpdate	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
 007fcd00	AssignCreatureToTask	CVillageTaskCarryCrate	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 007fcd50	GetSubDef<CAICreatureWillPowerIndicatorDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
@@ -23592,6 +23643,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008008b0	LoadRoute	CTCPreCalculatedNavigationRoute	__thiscall	void	3	CTCPreCalculatedNavigationRoute *,CPersistContext *,long	1	yes	accepted									
 00800a60	OnSerialise	CTCPreCalculatedNavigationRoute	__thiscall	void	3	CTCPreCalculatedNavigationRoute *,CPersistContext *,bool	1	yes	accepted									
 00800b90	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00800c60	FUN_00800c60	_global	unknown	undefined	0		0			discovered	boundary							
+00800c90	FUN_00800c90	_global	unknown	undefined	0		0			discovered	boundary							
 00800ca0	std_vector_Reserve	_global	unknown	undefined	0		0	yes	accepted									
 00800d30	Transfer<C2DVector>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,C2DVector *	1	yes	accepted									
 00800da0	std_vector_AllocateAndInsert	_global	unknown	undefined	0		0	yes	accepted									
@@ -24735,6 +24788,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0083ca90	SwitchTriggerPlayerOnlyOnceInArea	CThingSwitch	__thiscall	void	1	CThingSwitch *	1	yes	accepted									
 0083cc10	CThingSwitch::vfunc_71	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0083cd70	CThingSwitch::vfunc_19	CThingSwitch	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0083ce50	FUN_0083ce50	_global	unknown	undefined	0		0			discovered	boundary							
+0083ce60	CCountedPointer	CCountedPointer	unknown	undefined	0		0			discovered	boundary							
 0083ce90	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083ce90.cpp
 0083cec0	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083cec0.cpp
 0083cf20	CEventFiredShot	CEventFiredShot	__thiscall	undefined	2	CEventFiredShot *,CThing *	0	yes	accepted									
@@ -31432,6 +31487,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0092ae70	LookAtLeaderBoard	CAIStateGroup_ApprenticeHero	__thiscall	bool	1	CAIStateGroup_ApprenticeHero *	1	yes	accepted									
 0092afe0	LookAtMap	CAIStateGroup_ApprenticeHero	__thiscall	bool	1	CAIStateGroup_ApprenticeHero *	1	yes	accepted									
 0092b110	CAIStateGroup_ApprenticeHero::Update	CAIStateGroup_ApprenticeHero	__thiscall	void	1	CAIStateGroup_ApprenticeHero *	1	yes	accepted									
+0092b230	FUN_0092b230	_global	unknown	undefined	0		0			discovered	boundary							
+0092b240	FUN_0092b240	_global	unknown	undefined	0		0			discovered	boundary							
+0092b250	FUN_0092b250	_global	unknown	undefined	0		0			discovered	boundary							
+0092b260	FUN_0092b260	_global	unknown	undefined	0		0			discovered	boundary							
+0092b270	FUN_0092b270	_global	unknown	undefined	0		0			discovered	boundary							
+0092b290	FUN_0092b290	_global	unknown	undefined	0		0			discovered	boundary							
+0092b2b0	FUN_0092b2b0	_global	unknown	undefined	0		0			discovered	boundary							
 0092b2d0	GetAllThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_None,CThingFilter_HasTC>_>	GetAllThings<CThingAICreature,std::vector<CThingAICreature*,std	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_None,CThingFilter_HasTC> *,vector<CThingAICreature*,std::allocator<CThingAICreature*>_> *	1	yes	accepted									
 0092b360	CAIStateGroup_SkillPractice::IsRunnable	CAIStateGroup_SkillPractice	__thiscall	bool	1	CAIStateGroup_SkillPractice *	1	yes	accepted									
 0092b3a0	?Update@CAIStateGroup_SkillPractice@@MAEXXZ	CAIStateGroup_SkillPractice	__thiscall	void	1	CAIStateGroup_SkillPractice *	1	yes	accepted									
@@ -33339,6 +33401,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0099b070	FindCharPos	CCharString	__thiscall	long	2	CCharString *,char	1	yes	accepted									
 0099b0f0	CCharString::operator==	CCharString	unknown	undefined	0		0	yes	accepted									
 0099b150	CWideString::operator!=	CWideString	__thiscall	bool	2	CWideString const *,wchar_t const *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_NotEqualWide_0099b150.cpp
+0099b1d0	operator!=	CWideString	unknown	undefined	0		0			discovered	boundary							
 0099b220	GetLength	CCharString	__thiscall	long	1	CCharString *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CCharString_GetLength_0099b220.cpp
 0099b240	GetLength	CCharString	__thiscall	long	1	CCharString *	1	yes	accepted									
 0099b2a0	Sizeof	CWideString	__thiscall	ulong	1	CWideString *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_Sizeof_0099b2a0.cpp
@@ -34031,6 +34094,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009be1e0	~CPhysicsMeshInfo	CPhysicsMeshInfo	__thiscall	void	1	CPhysicsMeshInfo *	1	yes	accepted									
 009be210	CVertexShader::CountReferences	CVertexShader	__thiscall	ulong	1	CVertexShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\CVertexShader_CountReferences_009be210.cpp
 009be2d0	CalculateD3DPresentationInterval	CDisplayManager	__thiscall	uint	2	CDisplayManager *,CPresentationIntervalDesc *	1	yes	accepted									
+009be340	GetRefreshRate	CDisplayManager	unknown	undefined	0		0			discovered	boundary							
+009be380	FUN_009be380	_global	unknown	undefined	0		0			discovered	boundary							
 009be390	DestroyDevice	CDisplayManager	__thiscall	void	1	CDisplayManager *	1	yes	accepted									
 009be420	ClearRenderTarget	CDisplayManager	__thiscall	void	3	CDisplayManager *,CRGBColour *,ulong	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\CDisplayManager_ClearRenderTarget_009be420.cpp
 009be490	ResizeWindowToBackBufferSize	CDisplayManager	__thiscall	void	1	CDisplayManager *	1	yes	accepted									
@@ -35669,6 +35734,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a0d0e0	ReadAsInteger	CWStringParser	__thiscall	long	1	CWStringParser *	1	yes	accepted									
 00a0d140	ReadAsInteger	CWStringParser	__thiscall	long	1	CWStringParser *	1	yes	accepted									
 00a0d1a0	ReadAsString	CWStringParser	__thiscall	CWideString	1	CWStringParser *	1	yes	accepted									
+00a0d200	ReadAsSymbol	CWStringParser	unknown	undefined	0		0			discovered	boundary							
+00a0d260	FUN_00a0d260	_global	unknown	undefined	0		0			discovered	boundary							
+00a0d280	FUN_00a0d280	_global	unknown	undefined	0		0			discovered	boundary							
 00a0d290	CAInputProcess	CAInputProcess	__thiscall	undefined	1	CAInputProcess *	0	yes	accepted									
 00a0d2b0	?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z	CAInputProcess	__thiscall	bool	2	CAInputProcess *,CInputProcessManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CAInputProcess_AddToInterfaceCAInputProcessUAENAAVCInputProcess_00a0d2b0.cpp
 00a0d2d0	RemoveFromInterface	CAInputProcess	__thiscall	void	1	CAInputProcess *	1	yes	accepted									
@@ -36677,6 +36745,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a3e180	TransferOut	CPersistTraits<CDefIndex>	__thiscall	void	4	CPersistTraits<CDefIndex> *,CPersistContext *,CCharString *,CDefIndex *	1	yes	accepted									
 00a3e290	LHA::CAllocator::vfunc_0	LHA::CAllocator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3e330	CSoundManagerLH::vfunc_53	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3e350	vfunc_7	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
+00a3e380	vfunc_8	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
+00a3e3c0	vfunc_50	CSoundManagerLH	unknown	undefined	0		0			discovered	boundary							
 00a3e3e0	GetNoNavCollisionLineLists	CThingPhysical	__thiscall	long	1	CThingPhysical *	1	yes	accepted									
 00a3e420	DecrementScriptCounter	CGameScriptThing	__thiscall	void	1	CGameScriptThing *	1	yes	accepted									
 00a3e430	CSoundManagerLH::vfunc_1	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -37435,6 +37506,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a641a0	ReadFromParserAsFloat	CGenericVar	__thiscall	bool	2	CGenericVar *,CStringParser *	1	yes	accepted									
 00a64230	ReadFromParserAsBool	CGenericVar	__thiscall	bool	2	CGenericVar *,CStringParser *	1	yes	accepted									
 00a64360	ReadFromParser	CGenericVar	__thiscall	bool	2	CGenericVar *,CStringParser *	1	yes	accepted									
+00a643b0	FUN_00a643b0	CMemoryAllocatorBase	unknown	undefined	0		0			discovered	boundary							
+00a64420	SetPermanent	CMemoryAreaChunk	unknown	undefined	0		0			discovered	boundary							
+00a64440	SetDemandPaged	CMemoryAreaChunk	unknown	undefined	0		0			discovered	boundary							
+00a64460	SetPTreeRoot	CMemoryAllocatorVariableSize	unknown	undefined	0		0			discovered	boundary							
+00a64470	GetPTreeRoot	CMemoryAllocatorVariableSize	unknown	undefined	0		0			discovered	boundary							
+00a64480	FUN_00a64480	_global	unknown	undefined	0		0			discovered	boundary							
+00a644a0	FUN_00a644a0	_global	unknown	undefined	0		0			discovered	boundary							
 00a644c0	GFCheckTreeNodes	_global	__fastcall	bool	1	CMemoryArea *	1	yes	accepted									
 00a64500	CMemoryAllocatorVariableSize::GetLargestFreeAreaSize	CMemoryAllocatorVariableSize	__thiscall	ulong	1	CMemoryAllocatorVariableSize *	1	yes	accepted									
 00a64530	CMemoryAllocatorVariableSize::GetNoFreeAreas	CMemoryAllocatorVariableSize	__thiscall	ulong	1	CMemoryAllocatorVariableSize *	1	yes	accepted									
@@ -38802,6 +38880,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aab980	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00aab9a0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aab9a0.cpp
 00aab9c0	CSoundEmitterLH::vfunc_16	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00aaba00	vfunc_1	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba10	vfunc_2	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba20	vfunc_6	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba40	vfunc_7	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba60	vfunc_17	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba80	vfunc_11	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aabac0	vfunc_22	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aabb00	vfunc_21	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aabb60	vfunc_13	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
 00aabbb0	Particle_Or_Emitter_SetPosition	_global	unknown	undefined	0		0	yes	accepted									
 00aabc50	CSoundEmitterLH::vfunc_23	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aabca0	CModeHoverBase::RemoveInactiveHoverAnims	CModeHoverBase	unknown	undefined	0		0	yes	accepted									
@@ -42928,6 +43015,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00be5c30	ClearTextures	CLandscapeBackgroundPatch	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CLandscapeBackgroundPatch_ClearTextures_00be5c30.cpp
 00be5c60	GetEdgeStrip	CLandscapeBackgroundPatch	__thiscall	CPatchTesselationEdgeStrip *	2	CLandscapeBackgroundPatch *,LANDSCAPE_EDGE_STRIP_SIDE	1	yes	accepted									
 00be5ca0	InvalidateEdge	CLandscapeBackgroundPatch	__thiscall	void	2	CLandscapeBackgroundPatch *,LANDSCAPE_EDGE_STRIP_SIDE	1	yes	accepted									
+00be5d10	FUN_00be5d10	_global	unknown	undefined	0		0			discovered	boundary							
+00be5d20	FUN_00be5d20	_global	unknown	undefined	0		0			discovered	boundary							
+00be5d40	FUN_00be5d40	CLandscapeBackgroundPatch	unknown	undefined	0		0			discovered	boundary							
+00be5d60	FUN_00be5d60	CLandscapeBackgroundPatch	unknown	undefined	0		0			discovered	boundary							
 00be5d80	CLandscapeBackgroundPatch::OnPostRelocation	CLandscapeBackgroundPatch	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted									
 00be5e50	CLandscapeBackgroundPatch::CanRelocateData	CLandscapeBackgroundPatch	__thiscall	bool	2	CLandscapeBackgroundPatch *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CLandscapeBackgroundPatch_CanRelocateData_00be5e50.cpp
 00be5e70	CLandscapeBackgroundPatch::CLandscapeBackgroundPatch	CLandscapeBackgroundPatch	__thiscall	void	16	CLandscapeBackgroundPatch *,CLandscapeBackgroundTreeNode *,float,float,long,long,long,long,long,long,long,CSubPatchTreeLODLockElement *,CSubPatchTreeLODLockElement *,long,long,long	1	yes	accepted									
@@ -47780,6 +47871,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca53b0	CTextureRenderer::vfunc_19	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca53c0	CallCommandFunction	CConsoleCommand<CNewFrontendGameComponent>	__thiscall	void	2	CConsoleCommand<CNewFrontendGameComponent> *,vector<CGenericVar,std::allocator<CGenericVar>_> *	1	yes	accepted									
 00ca53f0	operator==	CScriptThing	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
+00ca5400	vfunc_45	CTextureRenderer	unknown	undefined	0		0			discovered	boundary							
 00ca5510	operator==	CScriptThing	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
 00ca5520	CScriptThing::func_00ca5520	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 00ca5530	CScriptThing::func_00ca5530	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
@@ -50074,6 +50166,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d7fc70	WatchForRoundsInArena_Setup	_global	unknown	undefined	0		0	yes	accepted									
 00d7fe90	WatchForRoundsInArena	CQ_HeroSoulsArenaScript	__thiscall	void	1	CQ_HeroSoulsArenaScript *	1	yes	accepted									
 00d80ae0	GetJackSpeech	CQ_HeroSoulsArenaScript	__thiscall	CCharString	2	CQ_HeroSoulsArenaScript *,long	1	yes	accepted									
+00d80ba0	Alloc	CQ_HeroSoulsArenaScript	unknown	undefined	0		0			discovered	boundary							
 00d80c00	`vector_deleting_destructor'	CThingSwitch	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d8\CThingSwitch_vectordeletingdestructor_00d80c00.cpp
 00d80c30	CQ_HeroSoulsBriarScript	CQ_HeroSoulsBriarScript	__thiscall	undefined	3	CQ_HeroSoulsBriarScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00d80cc0	Init	CQ_HeroSoulsBriarScript	__thiscall	void	1	CQ_HeroSoulsBriarScript *	1	yes	accepted									
@@ -54647,6 +54740,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f27e00	Vector_CopyElementsWithClanMemberAssignment	_global	unknown	undefined	0		0	yes	accepted									
 00f27e60	sub_00f27e60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00f27ea0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f28010	vfunc_0	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f28030	vfunc_2	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f28050	vfunc_3	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f28080	vfunc_4	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
 00f280a0	Transfer<CFireEffectCreationSet>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CFireEffectCreationSet *	1	yes	accepted									
 00f280e0	CAIStateGroup_WhisperPotionCombat	CAIStateGroup_WhisperPotionCombat	__thiscall	undefined	1	CAIStateGroup_WhisperPotionCombat *	0	yes	accepted									
 00f28100	resize	vector<CVectorMap<unsigned_long	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
@@ -54658,6 +54755,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f285c0	__EH_epilog3	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f2\global_EHepilog3_00f285c0.cpp
 00f285d0	sub_00f285d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00f28610	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f28780	vfunc_0	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f287a0	vfunc_2	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f287c0	vfunc_3	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f287f0	vfunc_4	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
 00f28810	Transfer<CFireEffectCreationSet>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CFireEffectCreationSet *	1	yes	accepted									
 00f28850	CAIStateGroup_WhisperPotionCombat	CAIStateGroup_WhisperPotionCombat	__thiscall	undefined	1	CAIStateGroup_WhisperPotionCombat *	0	yes	accepted									
 00f28870	resize	vector<CVectorMap<unsigned_long	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
@@ -54706,6 +54807,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f2d690	std_vector_allocate_CFeatDef	_global	unknown	undefined	0		0	yes	accepted									
 00f2d6e0	sub_00f2d6e0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00f333b0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f33470	vfunc_0	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f33480	vfunc_3	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f334a0	vfunc_2	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
 00f334c0	_Umove<EWeaponClass*>	vector<EWeaponClass	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f3\vectorEWeaponClass_UmoveEWeaponClass_00f334c0.cpp
 00f334e0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00f336f0	CSpecialAbilitiesBattleChargeDef	CSpecialAbilitiesBattleChargeDef	__thiscall	undefined	1	CSpecialAbilitiesBattleChargeDef *	0	yes	accepted									
@@ -54716,6 +54820,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f33a10	vector_reallocate_insert_CConversation	_global	unknown	undefined	0		0	yes	accepted									
 00f33b60	Transfer<CAnimationSet>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CAnimationSet *	1	yes	accepted									
 00f33b90	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f33d00	vfunc_0	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f33d20	vfunc_2	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f33d40	vfunc_3	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f33d70	vfunc_4	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
 00f33d90	Transfer<CAnimationSet>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CAnimationSet *	1	yes	accepted									
 00f33dc0	CAIStateGroup_WhisperPotionCombat	CAIStateGroup_WhisperPotionCombat	__thiscall	undefined	1	CAIStateGroup_WhisperPotionCombat *	0	yes	accepted									
 00f33de0	resize	vector<CVectorMap<unsigned_long	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
@@ -54738,6 +54846,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f34860	vector_reallocate_insert_CFeatDef	_global	unknown	undefined	0		0	yes	accepted									
 00f349b0	Transfer<CAnimationSet>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CAnimationSet *	1	yes	accepted									
 00f349f0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f34b60	vfunc_0	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f34b80	vfunc_2	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f34ba0	vfunc_3	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f34bd0	vfunc_4	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
 00f34bf0	Transfer<CFireEffectCreationSet>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CFireEffectCreationSet *	1	yes	accepted									
 00f34c30	CAIStateGroup_WhisperPotionCombat	CAIStateGroup_WhisperPotionCombat	__thiscall	undefined	1	CAIStateGroup_WhisperPotionCombat *	0	yes	accepted									
 00f34c50	resize	vector<CVectorMap<unsigned_long	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
@@ -54750,6 +54862,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f35170	OnPersist	CQ_HeroSoulsScript	__thiscall	void	2	CQ_HeroSoulsScript *,CPersistContext *	1	yes	accepted									
 00f351e0	__EH_epilog3	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f3\global_EHepilog3_00f351e0.cpp
 00f351f0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f35360	vfunc_0	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f35380	vfunc_2	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f353a0	vfunc_3	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
+00f353d0	vfunc_4	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	boundary							
 00f353f0	Transfer<CFireEffectCreationSet>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CFireEffectCreationSet *	1	yes	accepted									
 00f35430	CAIStateGroup_WhisperPotionCombat	CAIStateGroup_WhisperPotionCombat	__thiscall	undefined	1	CAIStateGroup_WhisperPotionCombat *	0	yes	accepted									
 00f35450	resize	vector<CVectorMap<unsigned_long	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									

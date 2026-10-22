@@ -1,0 +1,166 @@
+address	module	name	length	evidence
+00410be0	CPersistContext	Transfer<long>	208	code 185 B; oracle 208 B incl. jump table to 0x00410CB0; code ret 0xc at +0xB6, table to +0xD0; builds .?AV?$CPersistContext_TransferableComponent@J@@ (vt 0x122DF38) = PDB ??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z
+00410cb0	_global	FUN_00410cb0	30	code 30 B; unreferenced memmove copy: ecx=first edx=last [esp+4]=dest, returns dest+(last-first), ret 8 (fastcall-shaped, unused tag arg)
+00410d10	_global	FUN_00410d10	35	code 35 B; unreferenced destroy-range: calls 0x99B510 (string dtor) on each 4-B element ecx..edx, ret 4 (fastcall-shaped)
+00410d40	_global	FUN_00410d40	30	code 30 B; unreferenced memmove copy as 0x410CB0 with ret 4 (masked twin of landed _global::Std_Move_Backward 0x405BA0)
+00410d60	_global	FUN_00410d60	26	code 26 B; unreferenced copy_backward via memmove(dest-(last-first)), ret 4 (fastcall-shaped)
+0042e3ee	CNewFrontendGameComponent	Input	1441	code 1441 B; frame function (push ebp; mov ebp,esp; sub esp,84h) jumps to 0x42E98C; runs to ret at 0x42E98E = next manifest 0x42E98F (1441 B); no EH frame; caller CNewFrontendGameComponent::Run
+0043e430	CThingFilter_IsValid	operator()	5	code 5 B; 5-byte vcall thunk jmp [eax+4]
+0043e440	_global	FUN_0043e440	7	code 7 B; unreferenced getter of this+0x2EC
+0043e450	_global	FUN_0043e450	7	code 7 B; unreferenced getter of this+0x2FC
+0043e460	_global	FUN_0043e460	7	code 7 B; unreferenced getter of this+0x1C8
+0043e470	CRGBFloatColour	CRGBFloatColour	91	code 91 B; unreferenced; 4 packed bytes * 1/255 (0x1231724) into 4 floats, returns this, ret 4 = PDB ??0CRGBFloatColour@@QAE@ABVCRGBColour@@@Z
+00449b60	CPlayerManager	GetMultiplayerColour	140	code 123 B; oracle 140 B incl. jump table to 0x00449BEC; code ret 8 at +0x78, 4-entry table to +0x8C
+00449bf0	_global	FUN_00449bf0	19	code 19 B; unreferenced: GetPlayer(this+0x1C) then 0x487DC0 on it, ret 4
+00449c10	_global	FUN_00449c10	19	code 19 B; unreferenced exact twin of 0x449BF0
+004a1840	CWorld	Load	1129	code 1129 B; EH-framed function 0x4A1840..ret 4 at 0x4A1CA6 (1129 B) with inline catch funclet 0x4A1C41; manifest splits it at 0x4A1C41/0x4A1C8E
+004ab710	CPersistContext	Transfer<double>	212	code 190 B; oracle 212 B incl. jump table to 0x004AB7E4; code ret 0xc at +0xBB, table to +0xD4; builds .?AV?$CPersistContext_TransferableComponent@N@@ (vt 0x1238C80) = PDB ??$Transfer@N@CPersistContext@@QAEXPBDAANABN@Z
+004ab7f0	CPersistContext	Transfer	32	code 32 B; unreferenced 2-arg overload: calls 3-arg 0x4AB640 with a zeroed 4-B default, ret 8 (masked twin of landed CPersistContext::Transfer<long> 0x410800/0x4107E0/0x4110B0)
+004ca010	CThing	ConstructFromParams	437	code 437 B; real entry (mov eax,[esp+10h]; push ebx; xor ebx,ebx; cmp al,bl) to ret 10h at 0x4CA1C2, 437 B; callers _global::Create, CThingPhysical::ConstructFromParams, CThingNoise vfunc_19
+004cc3f0	CPersistContext	Transfer<short>	212	code 190 B; oracle 212 B incl. jump table to 0x004CC4C4; code ret 0xc at +0xBB, table to +0xD4; builds .?AV?$CPersistContext_TransferableComponent@F@@ (vt 0x1239A74) = PDB ??$Transfer@F@CPersistContext@@QAEXPBDAAFABF@Z
+004cc4d0	CPersistContext	TransferBinary<signed_char>	66	code 66 B; unreferenced; CheckCRC then mode 3 WriteCBYTE(movsx byte) / mode 2 CPersistTraits<unsigned char>::TransferBinaryIn - name inferred
+004cd1e0	CThing	vfunc_30	5	code 5 B; 5-byte vcall thunk mov eax,[ecx]; jmp [eax+6Ch]; int3 pad then 16 more functions
+004cd220	CThing	vfunc_34	5	code 5 B; RTTI vtable slot 34 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd230	CThing	vfunc_35	5	code 5 B; RTTI vtable slot 35 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd2a0	_global	FUN_004cd2a0	16	code 16 B; unreferenced 16-B ctor shape: zeroes +0,+4,+8 and byte +0xD, returns this (exact twin of CNavigationLayer::CNavigationLayer piece bodies; no class evidence)
+004cd2b0	_global	FUN_004cd2b0	27	code 27 B; unreferenced copy-assign shape: calls 0x4CC290 (vector copy) then copies byte +0xD, returns this, ret 4; same 14-B struct as 0x4CD2A0
+004cd2d0	_global	FUN_004cd2d0	25	code 25 B; unreferenced; wraps ListNode insert 0x4CCC80 with a by-value copy of *this, ret 4
+004cd2f0	_global	FUN_004cd2f0	58	code 58 B; unreferenced vector<8-byte>::push_back shape: construct at end if capacity else _Insert_n 0x4CCCE0
+00567d60	CTCElectrocutedEffect	ReplaceString	280	code 280 B; body ends with call to noreturn 0x565A30 at +0x113 (280 B) then int3 pad
+00567e80	_global	FUN_00567e80	13	code 13 B; unreferenced 13-B thunk: rewrites an arg slot then tail-jumps to 0x567400 (InsertStringRange)
+00567e90	_global	FUN_00567e90	14	code 14 B; unreferenced: operator delete(*this) if non-null (past the 301-B row end, before manifest 0x567EA0)
+005aceda	CTCInventoryTrade	OpenInventory	1067	code 1067 B; row cut at 485 but frame function (push ebp; mov ebp,esp) runs to ret at 0x5AD304 = next manifest start 0x5AD305 (1067 B); caller CTCInventoryTrade::OpenInventoryPC
+005d9380	CTCInventoryItem	vfunc_4	44	code 44 B; RTTI vtable slot 4 of .?AVCTCInventoryItem@@; 44 B to final ret (release tail jmp [edx+4] inside)
+005d93b0	_global	FUN_005d93b0	128	code 128 B; unreferenced CTCInventoryItem-shaped helper: (this+4)->+0x70 counted def, GetSubDef 0x5B1EFC into an out counted pointer, ret 4
+005d9430	_global	FUN_005d9430	128	code 128 B; twin of 0x5D93B0 using GetSubDef 0x5DA180; address taken at 0x41832C (CMainGameComponent::Update)
+005e3ea0	CTCQuestCompletionUI	IsHeroControlledByPlayer	90	code 48 B; oracle 90 B incl. jump table to 0x005E3EFA; code ends ret at +0x2F; 2-entry dword table +0x30 and 34-entry byte index table to +0x5A (dense two-outcome switch on GetCurrentMode-4); caller CTCQuestCompletionUI::GlobalUpdate
+005e3f00	CTCQuestCompletionUI	DrawPreparePrimitivesForRendering	295	code 295 B; RTTI vtable slot 11 of .?AVCTCQuestCompletionUI@@ (vt 0x125589C); CTCBase slot 11 = DrawPreparePrimitivesForRendering
+005eb080	CTCTavernGame	SetStateAfterOK	256	code 256 B; real entry to ret 0Ch at 0x5EB17D (256 B, next fn 0x5EB180 unpadded); 21 callers incl. CTCTavernGame::FrameUpdate and the tavern-game subclasses
+00619890	CPersistContext	TransferVector<CHeroLogBook::CHeroLogBookEntry::ECategory>	180	code 158 B; oracle 180 B incl. jump table to 0x00619944; code ret 8 at +0x9B, table to +0xB4; builds .?AV?$CPersistContext_TransferableVector@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@ (vt 0x12571A0) = PDB ??$TransferVector@W4ECategory@...
+00619950	_global	FUN_00619950	67	code 67 B; unreferenced 0x20-B tree-node allocate+copy (std::_Tree::_Buynode shape)
+006199a0	_global	FUN_006199a0	46	code 46 B; unreferenced 0x6C-B node allocate, copies key+CRegion value (0x51A900)
+006420f0	CPersistContext	Transfer<CRGBColour>	208	code 186 B; oracle 208 B incl. jump table to 0x006421C0; code ret 0xc at +0xB7, table to +0xD0; builds .?AV?$CPersistContext_TransferableComponent@VCRGBColour@@ (vt 0x125A188) = PDB ??$Transfer@VCRGBColour@@@CPersistContext@@...ABV1@@Z
+006421c0	CPersistContext_TransferableComponent<CRGBColour>	TransferIn	46	code 46 B; RTTI vtable slot 1 of .?AV?$CPersistContext_TransferableComponent@VCRGBColour@@ (vt 0x125A188)
+0064dd9a	CDrawMiniMap	UpdateRegionExitNames	580	code 580 B; row cut at 321 but body jumps to 0x64dfbe and ends ret 4 at 0x64dfdb (580 B, manifest cut agrees); callers CDrawMiniMap::SetRegion/ToggleCentering (landed); Ego_r PDB orders ?UpdateRegionExitNames@CDrawMiniMap then ?SetRegion then ?ToggleCentering exactly like retail 0x64dd9a/0x64dfde/0x64e019; fills the RegionExits vector (this+0x154)
+00685f80	CPersistContext	Transfer<COpinionTransientOffset>	264	code 244 B; oracle 264 B incl. jump table to 0x00686088; code ret 0xc at +0xF1, table to +0x108; builds .?AV?$CPersistContext_TransferableComponent@VCOpinionTransientOffset@@ (vt 0x125BAB0) = PDB ??$Transfer@VCOpinionTransientOffset@@@CPersistContext@@...ABV1@@Z
+00686090	_global	FUN_00686090	41	code 41 B; unreferenced: zero-fills every 4-B element of the vector at this
+006babd0	CPersistContext	Transfer<CFaction>	272	code 250 B; oracle 272 B incl. jump table to 0x006BACE0; code ends ret 0xc at +0xf7, mov edi,edi pad, 5-entry jump table to +0x110; stores CPersistContext_TransferableComponent<CFaction> vtable 0x125D560 (RTTI) and returns ret 0xc = PDB ??$Transfer@VCFaction@@@CPersistContext@@QAEXPBDAAVCFaction@@ABV1@@Z (defaulted overload)
+006bace0	CPersistContext_TransferableComponent<CFaction>	TransferIn	54	code 54 B; RTTI vtable slot 1 of .?AV?$CPersistContext_TransferableComponent@VCFaction@@ (vt 0x125D560); slot 1 = TransferIn in the <float>/<CIntelligentPointer> instances; calls CPersistTraits<CFaction>::TransferIn
+006ca5a0	CTCHero	OnCreate	171	code 171 B; RTTI vtable slot 4 of .?AVCTCHero@@; 171 B to final ret (inner vcall tail jmp)
+006ca650	_global	FUN_006ca650	11	code 11 B; unreferenced: *this = arg, returns this, ret 4
+006ca680	CCountedPointer	operator=	54	code 54 B; unreferenced counted-pointer assign: release old (--+4, vtbl[1]) then addref new, returns this
+006d4c00	CPersistContext	TransferVector<std::pair<CCharString,long>_>	188	code 165 B; oracle 188 B incl. jump table to 0x006D4CBC; code ret 8 at +0xA2, table to +0xBC; builds .?AV?$CPersistContext_TransferableVector@U?$pair@VCCharString@@J@std@@ (vt 0x125ED48) = PDB ??$TransferVector@U?$pair@VCCharString@@J@std@@@CPersistContext@@; callers CThingNPC::TransferLoveState
+006d4cc0	_global	FUN_006d4cc0	9	code 9 B; unreferenced: returns bit 0 of byte this+0x1C9
+006d4cd0	_global	FUN_006d4cd0	14	code 14 B; unreferenced: list empty() shape (head->next == head)
+006d4ce0	_global	IS_THING_DEAD<CThing*>	21	code 21 B; unreferenced; exact twin of landed _global::IS_THING_DEAD<CThing*> 0x5CBDBD/0x65D639 (null or flag +0x91 bit 0)
+006d4d00	_global	FUN_006d4d00	5	code 5 B; unreferenced 5-B tail jmp to CBaseIntelligentPointer::GetPItem 0xA01B50
+007ad6d0	CPersistContext	Transfer<EScriptingStateGroups>	216	code 193 B; oracle 216 B incl. jump table to 0x007AD7A8; code ret 0xc at +0xBE, table to +0xD8; builds .?AV?$CPersistContext_TransferableComponent@W4EScriptingStateGroups@@ (vt 0x126D3AC) = PDB ??$Transfer@W4EScriptingStateGroups@@@CPersistContext@@QAEXPBDAAW4EScriptingStateGroups@@ABW41@@Z
+007ad7b0	CPersistContext_TransferableComponent<EScriptingStateGroups>	TransferIn	32	code 32 B; RTTI vtable slot 1 of .?AV?$CPersistContext_TransferableComponent@W4EScriptingStateGroups@@ (vt 0x126D3AC); reads via 0x9E2590 into *value
+007ad7d0	CPersistContext_TransferableComponent<EScriptingStateGroups>	TransferOut	30	code 30 B; RTTI vtable slot 0 of the same vtable; writes *value via 0x9E2560
+007b5470	CPersistContext	TransferVector<CCrimeWaitingForBribe>	180	code 158 B; oracle 180 B incl. jump table to 0x007B5524; code ret 8 at +0x9B, table to +0xB4; builds .?AV?$CPersistContext_TransferableVector@VCCrimeWaitingForBribe@@ (vt 0x126D7F8) = PDB ??$TransferVector@VCCrimeWaitingForBribe@@@CPersistContext@@; callers Save_TransferCriminalRecord
+007b5530	_global	FUN_007b5530	33	code 33 B; unreferenced range-ctor shape: (a,b,&c,0) -> 0x7B5400 vector insert-range, returns this, ret 0Ch
+007b5560	_global	FUN_007b5560	33	code 33 B; unreferenced twin of 0x7B5530 with ret 8
+007b5590	_global	FUN_007b5590	19	code 19 B; unreferenced: constructs CCharString(this, literal 0x1243E40, -1), returns this
+007b55b0	_global	FUN_007b55b0	13	code 13 B; unreferenced setter: byte this+0x241 = arg
+007b55c0	_global	FUN_007b55c0	11	code 11 B; unreferenced: *this = 0, returns this, ret 4
+007c9770	CTCCreatureGeneratorCreator	OnSerialise	300	code 300 B; RTTI vtable slot 1 of .?AVCTCCreatureGeneratorCreator@@ (vt 0x126EB3C); CTCBase slot 1 = OnSerialise; real entry 0x7C9770 to ret 8 at 0x7C9899 (300 B); manifest names 0x7C9770 'vfunc_1' and puts OnSerialise on the fragment
+007da360	CTCTavernGameCardBlackjack	FrameUpdate	50	code 50 B; RTTI vtable slot 9 of .?AVCTCTavernGameCardBlackjack@@; 50 B to final ret (tail jmps to TurnPlayerCards and a vcall inside)
+007da3a0	CTCTavernGameCardBlackjack	vfunc_42	92	code 92 B; RTTI vtable slot 42 of .?AVCTCTavernGameCardBlackjack@@ (vt 0x126F8F4)
+007eeb20	CTCSmashableBarrier	Smash	86	code 86 B; RTTI vtable slot 28 of .?AVCTCSmashableBarrier@@ (vt 0x124017C)
+007eeb80	_global	FUN_007eeb80	6	code 6 B; unreferenced: return 0x4E
+007eeb90	_global	FUN_007eeb90	10	code 10 B; unreferenced setter this+0xC = arg
+007eec50	CTCSmashableBase	OnDie	53	code 53 B; RTTI vtable slot 13 of CTCSmashableBase/Barrier/Window; 53 B to final ret (inner vcall tail jmp)
+007eec90	CTCSmashableBase	OnCreate	93	code 93 B; RTTI vtable slot 4 shared by .?AVCTCSmashableBase@@/Barrier/Window; CTCBase slot 4 = OnCreate
+007f4e10	CTCSmashableWindow	Smash	86	code 86 B; 86 B to final ret (a vcall tail jmp inside); RTTI vtable slot 28 of .?AVCTCSmashableWindow@@ (vt 0x1240BA4) only - manifest says CTCSmashableBarrier::Smash, which is 0x007EEB20
+007f4e80	CTCStockItem	OnCreate	68	code 68 B; RTTI vtable slot 4 of .?AVCTCStockItem@@; CTCBase slot 4 = OnCreate (75 manifest names)
+007f4ed0	CTCStockItem	OnSerialise	100	code 100 B; RTTI vtable slot 1 of .?AVCTCStockItem@@; CTCBase slot 1 = OnSerialise (48 manifest names)
+007f4f40	_global	FUN_007f4f40	52	code 52 B; unreferenced; this->+4->+0x70 GetSubDef then returns def+0x30; sits between CTCStockItem methods (likely a CTCStockItem helper)
+007f7870	CTCActivationReceptorBase	FrameUpdate	192	code 174 B; oracle 192 B incl. jump table to 0x007F7930; code ret at +0xAD, 4-entry table to +0xC0
+007f7930	_global	FUN_007f7930	5	code 5 B; unreferenced: return this; ret 4
+007f7940	_global	FUN_007f7940	39	code 39 B; unreferenced remove_copy shape: copies 4-B elements ecx..edx != *[esp+8] to dest [esp+4] (fastcall-shaped)
+007fc820	CTCKraken	SetPhase	180	code 162 B; oracle 180 B incl. jump table to 0x007FC8D4; code ends +0xA2, 4-entry table to +0xB4
+007fc8e0	CTCKraken	OnInitialActivate	230	code 230 B; RTTI vtable slot 6 of .?AVCTCKraken@@ (vt 0x1241B94); CTCBase slot 6 = OnInitialActivate (57 manifest names)
+00800b90	CPersistContext	Transfer<C2DVector>	204	code 184 B; oracle 204 B incl. jump table to 0x00800C5C; code ret 0xc at +0xB5, table to +0xCC; builds .?AV?$CPersistContext_TransferableComponent@VC2DVector@@ (vt 0x1272208) = PDB ??$Transfer@VC2DVector@@@CPersistContext@@...ABV1@@Z
+00800c60	_global	FUN_00800c60	38	code 38 B; unreferenced vector insert/push shape via 0x8001F0 (_Move), updates this+4, ret 8 (masked twin of landed _global::vector_push_back_copy 0x411B00)
+00800c90	_global	FUN_00800c90	14	code 14 B; unreferenced: operator delete(*this) if non-null
+0080aa60	_global	std_insert_WithComparison	219	code 219 B; real function 0x80AA60..ret 50h at 0x80AB38 (219 B); manifest row stops at the je target 0x80AAD1; caller _global::NPlayerTargeting_InsertMultipleTargets; name is the weak forge_autoname4 label
+0083cd70	CThingSwitch	vfunc_19	220	code 200 B; oracle 220 B incl. jump table to 0x0083CE4C; RTTI vtable slot 19 of .?AVCThingSwitch@@; code ends +0xC8, table to +0xDC
+0083ce50	_global	FUN_0083ce50	11	code 11 B; unreferenced: *this = 0, returns this, ret 4
+0083ce60	CCountedPointer	CCountedPointer	20	code 20 B; unreferenced copy-ctor shape: *this = *arg, ++arg->refcount(+4), returns this
+0092b110	CAIStateGroup_ApprenticeHero	Update	276	code 256 B; oracle 276 B incl. jump table to 0x0092B224; code ret at +0xFF, table to +0x114
+0092b230	_global	FUN_0092b230	11	code 11 B; unreferenced: *this = arg, returns this (iterator/pointer ctor shape), ret 4
+0092b240	_global	FUN_0092b240	9	code 9 B; unreferenced: *this = **this, returns this (list iterator ++ shape)
+0092b250	_global	FUN_0092b250	13	code 13 B; unreferenced: *out = **this (list begin() shape; exact twin of landed list<NUISystem::CList*>::begin 0x429A85)
+0092b260	_global	FUN_0092b260	11	code 11 B; unreferenced: *out = *this, ret 4 (end()/copy shape)
+0092b270	_global	FUN_0092b270	26	code 26 B; unreferenced static: counts list nodes between two iterators (std::distance shape)
+0092b290	_global	FUN_0092b290	26	code 26 B; unreferenced exact twin of 0x92B270 (distance)
+0092b2b0	_global	FUN_0092b2b0	24	code 24 B; unreferenced list::size() loop (exact twin of landed CGuiControlTreePane::SortTreeRecursively pieces)
+0099b1d0	CWideString	operator!=	71	code 71 B; unreferenced (inlined at call sites); builds {wchar,0} and returns wcscmp!=0 (true when empty) = operator!=(wchar_t) overload; past the 121-B row end, before manifest 0x99B220
+009be2d0	CDisplayManager	CalculateD3DPresentationInterval	84	code 64 B; oracle 84 B incl. jump table to 0x009BE324; code ret 4 at +0x3D, table +0x40..+0x54
+009be340	CDisplayManager	GetRefreshRate	54	code 54 B; unreferenced; this+0x54 device ->vtbl[8](0,&mode) (IDirect3DDevice9::GetDisplayMode), throws on failure, returns mode.RefreshRate; name inferred from body
+009be380	_global	FUN_009be380	11	code 11 B; unreferenced static float ratio: fild [esp+8]; fidiv [esp+4]; ret 8
+009fd2b0	CGraphicDataBank	GetTextureType	212	code 196 B; oracle 212 B incl. jump table to 0x009FD384; code ends +0xC4, 4-entry table to +0xD4
+00a0d1a0	CWStringParser	ReadAsString	95	code 95 B; ends with call _CxxThrowException 0xBFEB84 at +0x5A (95 B), 1 int3 pad
+00a0d200	CWStringParser	ReadAsSymbol	95	code 95 B; unreferenced twin of ReadAsString checking item type 1 instead of 2 (chunk 216 analysis: ReadAsString + ReadAsSymbol + stub)
+00a0d260	_global	FUN_00a0d260	5	code 5 B; unreferenced: byte this+0x26 = 0
+00a0d280	_global	FUN_00a0d280	13	code 13 B; unreferenced 3-dword zero ctor (exact twin of landed CIndexBuffer::CIndexBuffer pieces); past the 197-B row end
+00a3e330	CSoundManagerLH	vfunc_53	23	code 23 B; RTTI vtable slot 53 of .?AVCSoundManagerLH@@; 23 B to ret 4 (inner vcall tail jmp)
+00a3e350	CSoundManagerLH	vfunc_7	41	code 41 B; RTTI vtable slot 7 of .?AVCSoundManagerLH@@ (vt 0x129D2C4)
+00a3e380	CSoundManagerLH	vfunc_8	30	code 30 B; RTTI vtable slot 8 of .?AVCSoundManagerLH@@ (vt 0x129D2C4)
+00a3e3c0	CSoundManagerLH	vfunc_50	24	code 24 B; RTTI vtable slot 50 of .?AVCSoundManagerLH@@ (vt 0x129D2C4)
+00a64360	CGenericVar	ReadFromParser	80	code 57 B; oracle 80 B incl. jump table to 0x00A643B0; ret 4 at +0x36, lea pad, 5-entry jump table to +0x50; cases tail-jump to ReadFromParserAs* bodies
+00a643b0	CMemoryAllocatorBase	FUN_00a643b0	24	code 24 B; unreferenced; copies this+0xC18/+0xC14 (PDB CMemoryAllocatorBase AlignmentShift/Alignment) to globals 0x13D28D8/0x13D28D4
+00a64420	CMemoryAreaChunk	SetPermanent	5	code 5 B; unreferenced: byte +0x1C = 1 (PDB CMemoryAreaChunk.Permanent)
+00a64440	CMemoryAreaChunk	SetDemandPaged	10	code 10 B; unreferenced: byte +0x1D = arg (PDB CMemoryAreaChunk.DemandPaged)
+00a64460	CMemoryAllocatorVariableSize	SetPTreeRoot	13	code 13 B; unreferenced: this+0xC34 = arg (PDB CMemoryAllocatorVariableSize.PTreeRoot @3124)
+00a64470	CMemoryAllocatorVariableSize	GetPTreeRoot	7	code 7 B; unreferenced getter of this+0xC34 (PDB PTreeRoot @3124)
+00a64480	_global	FUN_00a64480	27	code 27 B; unreferenced static: returns 1 when arg is NULL or arg->+0x1C==1 (Permanent chunk test)
+00a644a0	_global	FUN_00a644a0	22	code 22 B; unreferenced self-tail-recursive counter: ecx=chunk, edx=count, counts +0x1C==1 along +0x10 links (fastcall-shaped register args)
+00aab9c0	CSoundEmitterLH	vfunc_16	5	code 5 B; 5-byte vcall thunk jmp [eax+3Ch]
+00aaba00	CSoundEmitterLH	vfunc_1	12	code 12 B; RTTI vtable slot 1 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba10	CSoundEmitterLH	vfunc_2	13	code 13 B; RTTI vtable slot 2 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba20	CSoundEmitterLH	vfunc_6	25	code 25 B; RTTI vtable slot 6 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba40	CSoundEmitterLH	vfunc_7	25	code 25 B; RTTI vtable slot 7 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba60	CSoundEmitterLH	vfunc_17	24	code 24 B; RTTI vtable slot 17 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba80	CSoundEmitterLH	vfunc_11	60	code 60 B; RTTI vtable slot 11 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aabac0	CSoundEmitterLH	vfunc_22	50	code 50 B; RTTI vtable slot 22 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aabb00	CSoundEmitterLH	vfunc_21	93	code 93 B; RTTI vtable slot 21 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aabb60	CSoundEmitterLH	vfunc_13	72	code 72 B; RTTI vtable slot 13 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00be5ca0	CLandscapeBackgroundPatch	InvalidateEdge	68	code 50 B; oracle 68 B incl. jump table to 0x00BE5CE4; code ret 4 at +0x2F, 4-entry table to +0x44
+00be5d10	_global	FUN_00be5d10	15	code 15 B; unreferenced: (float)ecx * 1/255
+00be5d20	_global	FUN_00be5d20	20	code 20 B; unreferenced: calls 0xB67E30 on global 0x1436EA8 with this+0x100
+00be5d40	CLandscapeBackgroundPatch	FUN_00be5d40	26	code 26 B; unreferenced: word (this+4)->+0xA4->+0x14->+0x60 + word this+0x10C
+00be5d60	CLandscapeBackgroundPatch	FUN_00be5d60	26	code 26 B; unreferenced twin of 0xBE5D40 for +0x62/+0x10E
+00ca53f0	_global	FUN_00ca53f0	16	code 16 B; 16-B COM stdcall delegating thunk: this=[esp+4], loads [this-8] owner and tail-calls owner->vtbl[1] (AddRef pattern); slot in non-RTTI DirectShow vtable 0x12BF3C4; manifest CScriptThing::operator== is a propagated label
+00ca5400	CTextureRenderer	vfunc_45	262	code 262 B; RTTI vtable slot 45 of .?AVCTextureRenderer@@ (DirectShow CBaseVideoRenderer chain, vt 0x129D08C)
+00d80ae0	CQ_HeroSoulsArenaScript	GetJackSpeech	192	code 159 B; oracle 192 B incl. jump table to 0x00D80BA0; code ends +0x9F, 8-entry table to +0xC0
+00d80ba0	CQ_HeroSoulsArenaScript	Alloc	92	code 92 B; script factory registered as 'S_QHSA' in _global::CScriptManager_RegisterAllScripts (0xCD685B); new(0x68)+ctor 0xCB8110, ecx/edx args = static __fastcall Alloc like the other script Allocs
+00f27ea0	CPersistContext	TransferVector	364	code 341 B; oracle 364 B incl. jump table to 0x00F2800C; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x12FB598 (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f28010	CPersistContext_TransferableVector	vfunc_0	28	code 28 B; slot 0 of non-RTTI vtable 0x12FB598 built by TransferVector head 0x00F27EA0; Size() shape (end-begin)/0x3C
+00f28030	CPersistContext_TransferableVector	vfunc_2	24	code 24 B; slot 2 of non-RTTI vtable 0x12FB598 built by TransferVector head 0x00F27EA0
+00f28050	CPersistContext_TransferableVector	vfunc_3	38	code 38 B; slot 3 of non-RTTI vtable 0x12FB598 built by TransferVector head 0x00F27EA0
+00f28080	CPersistContext_TransferableVector	vfunc_4	28	code 28 B; slot 4 of non-RTTI vtable 0x12FB598 built by TransferVector head 0x00F27EA0
+00f28610	CPersistContext	TransferVector	364	code 341 B; oracle 364 B incl. jump table to 0x00F2877C; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x12FB5AC (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f28780	CPersistContext_TransferableVector	vfunc_0	28	code 28 B; slot 0 of non-RTTI vtable 0x12FB5AC built by TransferVector head 0x00F28610; Size() shape (end-begin)/0x3C
+00f287a0	CPersistContext_TransferableVector	vfunc_2	24	code 24 B; slot 2 of non-RTTI vtable 0x12FB5AC built by TransferVector head 0x00F28610
+00f287c0	CPersistContext_TransferableVector	vfunc_3	38	code 38 B; slot 3 of non-RTTI vtable 0x12FB5AC built by TransferVector head 0x00F28610
+00f287f0	CPersistContext_TransferableVector	vfunc_4	28	code 28 B; slot 4 of non-RTTI vtable 0x12FB5AC built by TransferVector head 0x00F28610
+00f333b0	CPersistContext	TransferVector	188	code 165 B; oracle 188 B incl. jump table to 0x00F3346C; code ret 8 at +0xA2, table to +0xBC; builds non-RTTI 5-slot vtable 0x1301C1C (slot0 Size of 4-B elements); element type unknown - manifest Transfer<signed_char> is a propagated label
+00f33470	CPersistContext_TransferableVector	vfunc_0	12	code 12 B; slot 0 of non-RTTI vtable 0x1301C1C; exact twin of landed CPersistContext_TransferableVector::vfunc_0 (0x40FB60, 0x49B060, ...)
+00f33480	CPersistContext_TransferableVector	vfunc_3	25	code 25 B; slot 3 of vtable 0x1301C1C; tail-jumps to the element TransferIn 0x7E3820
+00f334a0	CPersistContext_TransferableVector	vfunc_2	25	code 25 B; slot 2 of vtable 0x1301C1C; tail-jumps to the element TransferOut 0x7E3930
+00f33b90	CPersistContext	TransferVector	364	code 341 B; oracle 364 B incl. jump table to 0x00F33CFC; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x1301C40 (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f33d00	CPersistContext_TransferableVector	vfunc_0	26	code 26 B; slot 0 of non-RTTI vtable 0x1301C40 built by TransferVector head 0x00F33B90; Size() shape (end-begin)/0x3C
+00f33d20	CPersistContext_TransferableVector	vfunc_2	24	code 24 B; slot 2 of non-RTTI vtable 0x1301C40 built by TransferVector head 0x00F33B90
+00f33d40	CPersistContext_TransferableVector	vfunc_3	38	code 38 B; slot 3 of non-RTTI vtable 0x1301C40 built by TransferVector head 0x00F33B90
+00f33d70	CPersistContext_TransferableVector	vfunc_4	28	code 28 B; slot 4 of non-RTTI vtable 0x1301C40 built by TransferVector head 0x00F33B90
+00f349f0	CPersistContext	TransferVector	364	code 341 B; oracle 364 B incl. jump table to 0x00F34B5C; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x1301C68 (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f34b60	CPersistContext_TransferableVector	vfunc_0	28	code 28 B; slot 0 of non-RTTI vtable 0x1301C68 built by TransferVector head 0x00F349F0; Size() shape (end-begin)/0x3C
+00f34b80	CPersistContext_TransferableVector	vfunc_2	24	code 24 B; slot 2 of non-RTTI vtable 0x1301C68 built by TransferVector head 0x00F349F0
+00f34ba0	CPersistContext_TransferableVector	vfunc_3	38	code 38 B; slot 3 of non-RTTI vtable 0x1301C68 built by TransferVector head 0x00F349F0
+00f34bd0	CPersistContext_TransferableVector	vfunc_4	28	code 28 B; slot 4 of non-RTTI vtable 0x1301C68 built by TransferVector head 0x00F349F0
+00f351f0	CPersistContext	TransferVector	364	code 341 B; oracle 364 B incl. jump table to 0x00F3535C; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x1301C7C (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f35360	CPersistContext_TransferableVector	vfunc_0	28	code 28 B; slot 0 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0; Size() shape (end-begin)/0x3C
+00f35380	CPersistContext_TransferableVector	vfunc_2	24	code 24 B; slot 2 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0
+00f353a0	CPersistContext_TransferableVector	vfunc_3	38	code 38 B; slot 3 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0
+00f353d0	CPersistContext_TransferableVector	vfunc_4	28	code 28 B; slot 4 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0

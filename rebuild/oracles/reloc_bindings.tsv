@@ -23657,3 +23657,12 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?SortPoolSizes@@YIXPAUSPoolSize@@0@Z	00a6c080	00a6aaa0
 ??0CEmitterPointer@@QAE@PAUCParticleEmitter@NParticleEngine@@@Z	00ae9450	00aeb6d0
 ?Insert@CParticleEmitterList@@QAE_NAAUCEmitterPointer@@@Z	00aeb060	00aeb6d0
+?TransferIn@?$CPersistTraits@VCRGBColour@@@@QAEXAAUCPersistContext@@AAUCStringParser@@PAVCRGBColour@@@Z	009e8c10	006421c0
+??0CFaction@@QAE@XZ	006ba420	006bace0
+??1CFaction@@QAE@XZ	006ba6d0	006bace0
+?TransferIn@?$CPersistTraits@VCFaction@@@@QAEXAAUCPersistContext@@AAUCStringParser@@PAVCFaction@@@Z	006ba480	006bace0
+?TransferInLong@@YIXAAUCPersistContext@@AAUCStringParser@@PAJ@Z	009e2590	007ad7b0
+?TransferOutLong@@YIXAAUCPersistContext@@AAUCCharString@@PAJ@Z	009e2560	007ad7d0
+??_7CQ_HeroSoulsArenaScript@NScript@@6B@	012d3994	00d80ba0
+?TransferIn@?$CPersistTraits@VCDefString@@@@QAEXAAUCPersistContext@@AAUCStringParser@@PAVCDefString@@@Z	007e3820	00f33480
+?TransferOut@?$CPersistTraits@VCDefString@@@@QAEXAAUCPersistContext@@AAUCCharString@@PAVCDefString@@@Z	007e3930	00f334a0

@@ -1,0 +1,11 @@
+address	name	evidence
+00f33d90	std::vector<CFireHeartPatternDef>::resize	one-argument resize(n) called by binary-load TransferVectorOfSubComponents<CFireHeartPatternDef>, not Transfer<CAnimationSet> (callee, chunk 912)
+00f34bf0	std::vector<CArenaRoundDef>::resize	one-argument resize(n) called by TransferVectorOfSubComponents<CArenaRoundDef>, not Transfer<CAnimationSet> (callee, chunk 912)
+00f353f0	std::vector<CHeroSoulsRoundDef>::resize	one-argument resize(n) called by TransferVectorOfSubComponents<CHeroSoulsRoundDef>, not Transfer<CAnimationSet> (callee, chunk 912)
+009e8c10	CPersistTraits<CRGBColour>::TransferIn	called by CPersistContext_TransferableComponent<CRGBColour>::TransferIn, not CPersistTraits<NInventory::CItem> (callee, chunk 912)
+006ba420	CFaction::CFaction	constructs the CFaction temporary in TransferableComponent<CFaction>::TransferIn, not std::pair<CCharString,CCharString>::pair (callee, chunk 912)
+006ba6d0	CFaction::~CFaction	destroys that CFaction temporary, not ~CPatchTesselationEdgeStrip (callee, chunk 912)
+009e2560	CPersistContext::TransferOutLong	__fastcall long writer, not CTCInventoryBase::GetItemDescription (callee, chunk 912)
+0099eae0	CCharString::~CCharString	string dtor body, not _Cons_val (callee, chunk 912)
+00f27ea0	CPersistContext::TransferVectorOfSubComponents<CArenaWaveDef>	"Waves" vector-of-subcomponents transfer with the same body as landed 0x00F274D0, not Transfer<signed_char> (chunk 912)
+00f28610	CPersistContext::TransferVectorOfSubComponents<CHeroSoulsWaveDef>	"Waves" vector-of-subcomponents transfer with the same body as landed 0x00F274D0, not Transfer<signed_char> (chunk 912)
