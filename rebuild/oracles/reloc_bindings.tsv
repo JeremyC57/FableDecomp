@@ -23881,3 +23881,4 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?TransformVertices@CAnimatedBlock@@QAEXPAUCAnimatedVertex@@PBUCDeviceIndependent@@@Z	00a8ff50	00a91180
 ?TransformVerticesWithNormals@CAnimatedBlock@@QAEXPAUCAnimatedVertexWithNormals@@PBUCDeviceIndependent@@@Z	00a90040	00a91180
 ?SetCurrentAreaName@CTCRegionDisplay@@QAEXABUCCharString@@M_N11@Z	00639ba0	0083c990
+?resize@CLipSyncEntryVector@@QAEXKABUSLipSyncEntry@@@Z	00a43f20	00a42df0

@@ -266964,6 +266964,13 @@ $catalog = @(
         TestSource = '00/83/CThingSwitch_TriggerSetPlayerAreaName_0083c990_test.cpp'
         PassPattern = '0083c990_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a42df0'
+        Module = 'CLipSyncDataBank'
+        Source = '00/a4/CLipSyncDataBank_NotifyEntryAdded_00a42df0.cpp'
+        TestSource = '00/a4/CLipSyncDataBank_NotifyEntryAdded_00a42df0_test.cpp'
+        PassPattern = '00a42df0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
