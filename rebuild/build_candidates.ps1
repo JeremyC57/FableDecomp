@@ -264898,6 +264898,13 @@ $catalog = @(
         TestSource = '00/8c/CCreatureActionScorpionSummon_Initialise_008c4a80_test.cpp'
         PassPattern = '008c4a80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00732950'
+        Module = 'CTCClock'
+        Source = '00/73/CTCClock_FrameUpdate_00732950.cpp'
+        TestSource = '00/73/CTCClock_FrameUpdate_00732950_test.cpp'
+        PassPattern = '00732950_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

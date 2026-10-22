@@ -23569,3 +23569,5 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?PrepareForRenderIfNeeded@CTCGraphicAppearance@@QAEXABUCEnginePrimitivePrepareInfo@@PAUC3DPositionInterpolator@@PAUC3DOrientationInterpolator@@@Z	004be490	00703590
 ?UpdateAttachedParticles@CTCParticleAttachmentTracker@@QAEXM@Z	0071a9c0	00703590
 ?g_ShowWeaponTrails@@3_NA	0137548e	00703590
+?GetHandAnimationUpdateAmount@CTCClock@@QAEMXZ	00732730	00732950
+?GetWorld@CTCClock@@QAEPAUCWorld@@XZ	00686a70	00732950
