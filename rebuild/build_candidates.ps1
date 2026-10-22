@@ -270253,6 +270253,13 @@ $catalog = @(
         TestSource = '00/57/CTCInventoryExperience_vfunc90_005778ca_test.cpp'
         PassPattern = '005778ca_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d773e0'
+        Module = 'CQ_HangingTreeGoodScript'
+        Source = '00/d7/CQHangingTreeGoodScript_MonitorRegionPresence_00d773e0.cpp'
+        TestSource = '00/d7/CQHangingTreeGoodScript_MonitorRegionPresence_00d773e0_test.cpp'
+        PassPattern = '00d773e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
