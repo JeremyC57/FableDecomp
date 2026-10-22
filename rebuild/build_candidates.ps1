@@ -264877,6 +264877,13 @@ $catalog = @(
         TestSource = '00/91/CAIStateGroupBirdFlyToFood_IsRunnable_00913f30_test.cpp'
         PassPattern = '00913f30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0090ee20'
+        Module = 'CAIStateGroup_MinionKidCalledToMother'
+        Source = '00/90/CAIStateGroupMinionKidCalledToMother_FindCallHomeEvent_0090ee20.cpp'
+        TestSource = '00/90/CAIStateGroupMinionKidCalledToMother_FindCallHomeEvent_0090ee20_test.cpp'
+        PassPattern = '0090ee20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
