@@ -25046,3 +25046,4 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?RegisterObjectCollectionType@CEngineLocalDetailGenerator@@QAEPBVCLocalDetailObjectCollectionType@@ABV2@@Z	00b59c70	00bdedd0
 ?_M_insert_overflow@?$vector@PBVCLocalDetailObjectCollectionType@@@@QAEXPAPBVCLocalDetailObjectCollectionType@@ABQBV2@ABU__true_type@@K_N@Z	00bdfc00	00bdedd0
 ?g_pLocalDetailGenerator@@3PAVCEngineLocalDetailGenerator@@A	01436e88	00bdedd0
+?WatchForHostage2Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d16d00	00d16bb0

@@ -269728,6 +269728,13 @@ $catalog = @(
         TestSource = '00/bd/CLocalDetailCacheMapCObjectTypeCollectionPalette_Load_00bdedd0_test.cpp'
         PassPattern = '00bdedd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d16bb0'
+        Module = 'CBH_Hostage2'
+        Source = '00/d1/CBHHostage2_Init_00d16bb0.cpp'
+        TestSource = '00/d1/CBHHostage2_Init_00d16bb0_test.cpp'
+        PassPattern = '00d16bb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
