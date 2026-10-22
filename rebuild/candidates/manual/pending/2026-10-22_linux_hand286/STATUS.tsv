@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b9bcc0	RELOCATION_MATCH	735v735	PASS	LOD pick + texture preload; forceinline loop condition + nested RequestLoad
+00bac0f0	DIFFER	553v553	-	spill slots of this/scratch pointer swapped (mov [esp+0x18],edi / [esp+0x1c],ebp and the reloads)
+00bcb800	RELOCATION_MATCH	1022v1022	PASS	sprite trail render; inline SetTexture via global core, explicit frame-data dtor
+00bad2e0	RELOCATION_MATCH	908v908	PASS	sprite sub-primitive render
+00bade40	DIFFER	726v793	-	lane gap: inline-asm FloatToInt for the faded alpha (fstp/fld/fistp through two stack slots) -- not expressibl
+00bc6930	DIFFER	522v530	-	world-to-view transform shape (retail: eager X/Y/Z with fld X, fld Y, int-copied Z, Y*m3+Z*m6 summed first, re
+00bc6b50	RELOCATION_MATCH	597v597	PASS	text manager ctor (shader lookups)
+00bc7660	DIFFER	701v692	-	inline font-frame texture fetch: retail cross-jumps two early-return frame tails into one (after the forced-lo
+00bf0740	DIFFER	992v992	-	prologue `push edi ; mov ecx,[0x01436E14]` (retail) v `mov ecx,[G] ; push edi` (ours), all eight SetState bloc
+00bf1030	RELOCATION_MATCH	622v622	PASS	stencil mask setup
+00bf1ee0	DIFFER	837v855	-	register allocation: ours hoists the constant 1 into ebx and stores m_queued from bl; retail keeps 1 in edi (v
+00b328c0	DIFFER	501v517	-	ebp frame + inline-asm ceil (fld/fsub [ebp-0x10 = 0.5f]/fistp [ebp+8]/fild/fadd [ebp-4 = 1.0f]/cmp/inc) vs C++
+00b32ad0	RELOCATION_MATCH	947v947	PASS	pre-render layer state setup
+00b33010	RELOCATION_MATCH	892v892	PASS	layer switch; this-adjusted secondary-base Render + named scene locals
+00b4a700	DIFFER	926v926	-	loop info zero stores scheduled before push 2/push &info (retail: after) + eax/edx swap in one 16-byte colour 
+00b4ac10	DIFFER	861v826	-	five converted CCountedPointer temps: retail keeps the count block in ebp across AddPrimitiveManager (no reloa
+00b3b240	DIFFER	582v600	-	fstp [arg]; fld [arg]; fistp [arg2] (inline-asm FloatToInt through the dead argument slots) vs C++ _ftol call
+00b94540	DIFFER	679v664	-	frame 0x20 v 0xc; levels in ebx (retail ebp, reused as the new level index); push_back/insert_overflow and the
+00b919c0	RELOCATION_MATCH	732v732	PASS	grid cell box + draw distance
+00b92950	DIFFER	719v707	-	early return-false epilogue placement (retail duplicates it after the GetCellRenderMask test), this/inside fra
+00b88bc0	RELOCATION_MATCH	776v776	PASS	displacement debug quad
+00b61690	RELOCATION_MATCH	795v795	PASS	glow debug quad
+00b5c120	DIFFER	580v580	-	second inlined Transform: the Y/Z rows emit `x*Right` before `z*Forward` (retail z first, as in the first copy
+00b5e700	RELOCATION_MATCH	803v803	PASS	radial blur debug quad
+00b4ba60	RELOCATION_MATCH	594v594	PASS	shadow matrix derivation
+00b4f510	RELOCATION_MATCH	967v967	PASS	shadow pre-layer render
+00b4f8e0	DIFFER	805v811	-	register caching of the texture members (ours lea ebp/ebx up front), -1 format seeding, the depth-technique lo
+00b63010	RELOCATION_MATCH	581v581	PASS	sky base band
+00b63260	RELOCATION_MATCH	711v711	PASS	sky sprite (/GS)
+00b63530	RELOCATION_MATCH	705v705	PASS	sky screen-space sprite (/GS)
+00b63800	DIFFER	1022v1023	-	register/frame allocation: retail this=ebp, zero/started=ebx, last=ecx, loop index+bound spilled (frame 0x18);
+00b662f0	RELOCATION_MATCH	737v737	PASS	sky render
+00be95f0	DIFFER	811v808	-	register/stack allocation: retail keeps `this` in edx, the four shift-history pointers in ecx/edi/esi/ebx, a 0
+00b58fb0	RELOCATION_MATCH	773v773	PASS	state block apply
+00aabd50	DIFFER	514v515	-	register allocation only: params pointer eax (retail ecx, bools in al), sample/vtable in ebx/edi (retail edi/e
+00b2b9b0	DIFFER	965v971	-	register allocation: retail info=ebx overwritten by the cache pointer (info re-read from its arg slot on the c
+00b2bd80	DIFFER	641v641	-	frame-slot layout only (instructions identical): retail packs offset@+0x20, level@+0x28, top-level size@+0x30,
+00b2c010	DIFFER	953v993	-	register/frame allocation in the preload pass: retail hoists 0 into ebp (push ebp; cmp reg,ebp; mov [x],ebp) a
+00b2c4e0	DIFFER	1042v1009	-	register allocation + frame packing: retail this=ebx, name=ebp, texture read from its arg slot, -1 built local
+00b2c8e0	RELOCATION_MATCH	599v599	PASS	staged file copy; top-tested pool retry needs a __forceinline early-return condition

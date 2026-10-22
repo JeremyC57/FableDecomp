@@ -1,0 +1,6 @@
+address	name	evidence
+00be95f0	CEngineWaterSettings::UpdateWorldFrameState	chunk 286; was CEngineSkyRenderer
+00aabd50	CSoundEmitterLH::VSlot4	CSoundEmitterLH vtable 0x0129E6EC slot 4; was CEngineSubPrimitiveAnimatedMesh::Create (chunk 286; slot name not confirmed)
+009fd870	CGraphicDataBank::SetTextureManager	called from 0x00B2C88C/0x00B2CAE7; was NUISystem::CFrontEndScreen::AddActionOnLeftClicked (chunk 286)
+009cc8b0	CBankFile::UpdateEntryInfoOnly	was CBankFile::LoadEntryData (chunk 286)
+009ccdc0	CBankFile::FindEntry	chunk 286
