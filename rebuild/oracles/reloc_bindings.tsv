@@ -23871,3 +23871,4 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ??0CWADFile@@QAE@PAUCWADBank@@ABUCWideString@@W4FileAccessType@@K@Z	00a39d80	00506e30
 ?GetLevelDimensions@CWorldMap@@QAE?AUC2DBoxI@@PAVCAFile@@@Z	00506bb0	00506e30
 ?Reset@?$CCountedPointer@VCAFile@@@@QAEXPAVCAFile@@@Z	0050f550	00506e30
+?EndSpecialMoveMode@CPlayer@@QAEXXZ	00487150	007aa370

@@ -266894,6 +266894,13 @@ $catalog = @(
         TestSource = '00/6b/CTCBuyableHouse_NeedsMainSignPost_006bfb90_test.cpp'
         PassPattern = '006bfb90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007aa370'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_CleanUpEffects_007aa370.cpp'
+        TestSource = '00/7a/CTCAssassinRush_CleanUpEffects_007aa370_test.cpp'
+        PassPattern = '007aa370_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
