@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00858a20	RELOCATION_MATCH	665v665	PASS	CCombatActionBase::SetupCombatInterrupts; regraded
+008597a0	RELOCATION_MATCH	638v638	PASS	CCombatActionBase::ProcessStrikeEvents; regraded
+00859a70	RELOCATION_MATCH	775v775	PASS	CCombatActionBase::SetupCombatStrikeEvents; same-TU noinline parser stand-in, named GetPItem local, literal 10000000000
+0085bd70	RELOCATION_MATCH	830v830	PASS	ControlledStrafeJump::Initialise; temporary CRightHandedSet arg to ResetRHSet, sequenced dot product
+0087e860	RELOCATION_MATCH	880v880	PASS	KickThingOnGround::Initialise; block-scoped CCharString anim names, user C3DVector copy ctor, eps*eps at run time
+008c12d0	DIFFER	809v808	-	parked: register allocation (&PCreature edi v retail ebp, frame 0x38 v 0x3c); lane gap
+008c1600	RELOCATION_MATCH	761v761	PASS	JackOfBladesIntoRush::GetValidRushPosition(C3DVector*), ret 4
+008c2550	RELOCATION_MATCH	607v607	PASS	JackOfBladesIntoRush::FinishAction; GetValidRushPosition + CCountedPointer ctor stand-ins, CDefPointer via inline GetSubDef
+006e99b0	DIFFER	852v852	-	parked: one immediate zero-store slot (toPredicted.Z = 0); lane gap
+006ea770	RELOCATION_MATCH	799v799	PASS	GetPreferredPos; same-TU noinline combatant-map find 0x006F0250 frees a key slot (sub esp,5Ch)
+006eb390	RELOCATION_MATCH	622v622	PASS	SetupNextSequenceForAttacker; out-pointer GetInterface(&combat,0x30) flips this->ebx / sequence->ebp
+006ec4f0	RELOCATION_MATCH	697v697	PASS	FillCombatSequenceList; regraded
+006ed510	RELOCATION_MATCH	941v941	PASS	DeregisterAttackingCombatant; nested forceinline trace helpers, erase(begin,end), const LowerBound 0x004365B0
+0052f5c0	RELOCATION_MATCH	826v826	PASS	NUISystem::CComponent::UpdateZoom; declared-then-assigned C2DVector locals, operator/ as *(1/f), inline pow loop
+0052ffd0	RELOCATION_MATCH	644v644	PASS	NUISystem::CComponent::UpdatePosition; free inline Add(C2DVector&,const C2DVector&) for +=
+00531ba0	RELOCATION_MATCH	682v682	PASS	NUISystem::CComponent::AddPositionChild; copy-then-*= for the scaled vector
+005331a0	RELOCATION_MATCH	756v756	PASS	NUISystem::CComponent::GetDataFromDef; same-TU explicit specialisation of _Rb_tree::insert_unique 0x0042D2C6
+005334a0	RELOCATION_MATCH	629v629	PASS	NUISystem::CComponent::CComponent(long); regraded
+00533720	RELOCATION_MATCH	641v641	PASS	NUISystem::CComponent::CComponent(const CComponent&)
+009ead60	RELOCATION_MATCH	536v536	PASS	CConsole::DrawHistoryScrollBar; implicit double->float initialisations
+00ef12f0	RELOCATION_MATCH	693v693	PASS	CCrateDeathMarker::Main; nested villager block, in-body #pragma inline_depth(0) around ~CScriptThing sites
+00dcdf60	RELOCATION_MATCH	710v710	PASS	CCrateTeamMember::Init; CCharString == literal, insert_unique stand-in
+00694430	RELOCATION_MATCH	656v656	PASS	CCreatureActionBase::FinishAction; regraded
+008beee0	RELOCATION_MATCH	528v528	PASS	CCreatureAction_Ambush::Initialise; C3DVector(C2DVector(a-b)) + FastInvSqrt Normalise
+008ccd70	RELOCATION_MATCH	685v685	PASS	BalverineCorneredJumpIntoSky::FinishAction; same-TU GetSubDef stand-in keeps def in ebp
+008c8c30	RELOCATION_MATCH	830v830	PASS	BanditKingLunge::FinishAction; test expectation fixed (3 pointer destroys)
+008c8f70	RELOCATION_MATCH	569v569	PASS	BanditKingStuck::FinishAction; inverted && condition order
+008c89d0	RELOCATION_MATCH	595v595	PASS	BanditKingThrowWeapons::PerformAction; if (--count == 0) Destroy() release, two-slot carry array
+008c8550	RELOCATION_MATCH	586v586	PASS	BanditKingUnstuck::Initialise; regraded
+008cd820	RELOCATION_MATCH	527v527	PASS	BattleChargeImpact::FinishAction; sibling 008cda30 levers (inline IsDead, CIntelligentPointer ->/*, ternary out-store)
+008cda30	RELOCATION_MATCH	521v521	PASS	BattleChargeMiss::FinishAction; inline IsDead, CIntelligentPointer ->/*, ternary GetInterface out-store
+00855500	RELOCATION_MATCH	892v892	PASS	BlockRespond::Initialise; v *= FastInvSqrt(len2) with plain-inline length, explicit dot, noinline LowerBound
+008c1f70	RELOCATION_MATCH	712v712	PASS	BriarRoseInvulnerableTeleport::Initialise; CSoundInit ctor assigns PlaybackType in body
+008c0900	RELOCATION_MATCH	513v513	PASS	BriarRoseShotFarOutof::PerformAction; regraded
+008f3100	RELOCATION_MATCH	513v513	PASS	real name CCreatureAction_DragonLandFireball::PerformAction (label correction); regraded
+00849380	RELOCATION_MATCH	886v886	PASS	BuyThingFromShop::PerformAction; const-CThing GetInterface, inline CreateThingAt, inline GetShopKeeper
+008ce6f0	RELOCATION_MATCH	522v522	PASS	CastSkillMultiArrow ctor; regraded
+008ba3c0	RELOCATION_MATCH	744v744	PASS	CastWillEnflameSpell::FinishAction; regraded
+008f3310	DIFFER	796v796	-	parked: one x87 scheduling slot (mov ecx,edi before fsub); lane gap
+008f3630	RELOCATION_MATCH	880v880	PASS	DragonRearUpFull::PerformAction; inline GetDef/GetPhysics, Newton step 0.5f*(r*(3-l*(r*r)))

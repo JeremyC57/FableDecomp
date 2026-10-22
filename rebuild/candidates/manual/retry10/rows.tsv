@@ -2315,3 +2315,6 @@ address	module	name	length	chunk	reason
 00896390	CGameScriptInterface	CGameScriptInterface::OpenChest	720	hand287	DIFFER(698v711) -- retail saves all four registers up front and shares one return-false tail; VC7.1 shrink-wraps ebx/ebp and inlines early returns
 00897fa0	CGameScriptInterface	?MakeHeroCarryItemInHand@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z	544	hand287	DIFFER(541v541) -- frame and slots as retail after LowerBound stand-ins; object/item ebx-ebp register swap left
 0089c910	CGameScriptInterface	CanThingBe_Sensed_ByOtherThing	1024	hand287	DIFFER(1136v1016) -- shared return-false tail and cross-jumped sight tails in retail; VC7.1 CSEs the whole squares sum (test ah,0x41/jp) and orders cos(FOV) later
+008c12d0	CCombatAction_StrikeResponseJackOfBladesIntoRush	?Initialise@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ	816	hand282	DIFFER(809v808) -- parked: register allocation (&PCreature edi v retail ebp, frame 0x38 v 0x3c); lane gap
+006e99b0	CCombatManager	GetDefenderZone	864	hand282	DIFFER(852v852) -- parked: one immediate zero-store slot (toPredicted.Z = 0); lane gap
+008f3310	CCreatureAction_DragonFireBlastBase	?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ	800	hand282	DIFFER(796v796) -- parked: one x87 scheduling slot (mov ecx,edi before fsub); lane gap

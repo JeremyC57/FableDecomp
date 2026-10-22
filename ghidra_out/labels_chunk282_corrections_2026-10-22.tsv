@@ -1,0 +1,25 @@
+address	name	evidence
+008f3100	CCreatureAction_DragonLandFireball::PerformAction	catalog repeated 008c0900's name (chunk 282)
+005d9030	CTCInventoryItem::GetInventoryType	chunk 282
+005d9050	CTCInventoryItem::GetMaxNumberItems	chunk 282
+006e9700	CCombatManager::IsCreatureOnRotatingCombatRing	chunk 282
+006e99b0	CCombatManager::GetDefenderZone	chunk 282
+00662410	CThingCreatureBase::IsInMeleeAsAttacker	chunk 282
+00662430	CThingCreatureBase::IsInMeleeAsAttacked	chunk 282
+006e92c0	CCombatManager::IsAttacker	chunk 282
+006e9270	CCombatManager::IsAttacked	chunk 282
+005da4e0	CTCWeapon::ResetAiming	chunk 282
+006ed030	CCombatManager::UpdateAttackingCombatantsList	chunk 282
+00856b10	CCombatActionBase::GetCombatManager	chunk 282
+00692940	CCreatureActionBase::GetPWorld	chunk 282 (008c1600 world fetch)
+00692910	CCreatureActionBase::GetPDefinitionManager	chunk 282
+0078b230	CDefinitionManager::GetDef<CThingShotDef>	chunk 282
+00814bf0	CTCHitLocations::GetHitLocation	chunk 282
+00815370	CHitLocation::GetClosestPointToPos2D	chunk 282
+005cc091	CCreatureAction_UnsheatheItemFromInventory::~CCreatureAction_UnsheatheItemFromInventory	chunk 282
+008ac060	std::remove_if<C3DVector*,CDistancePredicate>	008c1600 RushAwayDistance predicate (chunk 282)
+008c34a0	std::remove_if<C3DVector*,CPhaseDistancePredicate>	008c1600 second filter (chunk 282)
+0074ca20	_STL::__copy<C3DVector*,C3DVector*>	vector erase in 008c1600 (chunk 282)
+006cb620	CTCCreatureNavigation::IsAbleToNavigateFromPosToPos	008c1600 loop, interface 7 (chunk 282)
+0074a5d0	GetValidPositions	__fastcall (chunk 282)
+008c33e0	CDefClassBase::GetSubDef<CJackOfBladesBattleDef>	008c1600 and 008c12d0 (chunk 282)
