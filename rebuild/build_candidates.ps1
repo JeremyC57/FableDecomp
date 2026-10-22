@@ -269959,6 +269959,13 @@ $catalog = @(
         TestSource = '00/ae/CParticleEmitterManager_GetVisibleEmitterNames_00aebc90_test.cpp'
         PassPattern = '00aebc90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00de19f0'
+        Module = 'CVictimsFather'
+        Source = '00/de/CVictimsFather_Init_00de19f0.cpp'
+        TestSource = '00/de/CVictimsFather_Init_00de19f0_test.cpp'
+        PassPattern = '00de19f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
