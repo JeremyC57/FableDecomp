@@ -1,0 +1,55 @@
+# Chunk 292 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- **Named result of an out-of-line struct-returning call (0x00A1CC30).**
+  - Give the callee a same-TU `auto_inline(off)` stand-in and direct-initialise the named local: `SConnectingPoints points = GetConnectingPoints(...)`.
+  - VC7.1 then reads the hidden-return slot in place: 659v632 became 632v632.
+  - `points; points = Get...()` copies the result. Without the stand-in, the slot is treated as escaped.
+- **Inlined STLport list `push_front`/`clear` (0x00A1CC30).**
+  - Model the real shape: a copy-ctor iterator, `push_front(x) { insert(begin(), x); }`, `_M_create_node`, and `prev` read into a local.
+  - Otherwise VC7.1 shrink-wraps ebx/ebp (pushes them after the first block and pops them before the tail). This confirms the 10i/263 rule for push_front.
+- **Open-list `const T&` arguments (0x00A1D290).**
+  - Same-TU stand-ins for `CPriorityQueue::UpdateElement(T const&, const Comp&)` and `Push(...)` let VC7.1 keep the pointer local in ebp while storing it to its frame word: 854v817 became 817v817. This is the coordinator's const& lever.
+  - The empty comparator needs a user-declared ctor. `Comp()` otherwise value-initialises with a `mov byte [esp+x],0`.
+  - With the ctor, its temporaries home in the LIVE `bool` argument slot, as retail does (`lea ecx,[esp+5Ch] ; push ecx` and `push dword [esp+5Ch]` for the by-value copy).
+- **STLport `pop_heap` inline (0x00A1D290).**
+  - Write it through by-value `first`/`last` parameters: `__pop_heap(first, last-1, last-1, *(last-1), comp)` then `*result = *first; __adjust_heap(first, 0, last-first, value, comp)`.
+  - This way `*first` is read once and CSE'd with the popped `top`. Member-pointer forms reload `_M_start` after the store.
+  - `__adjust_heap` 0x00A20750 is `__fastcall` (first in ecx, hole in edx).
+- **Find-result ternary block order (0x00A1D290).**
+  - `if (it != end) return &it->second; return 0;` gives retail's `je -> xor ebp,ebp` layout.
+  - `if (it == end) return 0;` flips the two blocks.
+- **Counted A\* states (0x00A1D290).**
+  - CAStarState's ctor, copy ctor and dtor maintain the counters at 0x013D27B8/BC/C0. The copy ctor and dtor are conditional on OnOpenList/OnClosedList.
+  - `States.insert(make_pair((long)node, state))` creates two copies:
+    - a make_pair temporary, whose dtor is folded to an unconditional `dec`;
+    - a pair<const long, ...> conversion temporary, whose conditional dtor is kept because the temporary escapes into insert.
+  - The default ctor's `++count` lands before the first call; SetOnOpenList's `++open` merges with the copies' increments after the calls.
+- **CPersistContext::Transfer stand-ins (0x00B17030).**
+  - Stand-ins for the `unsigned long`/`long` overloads remove 7 bytes: the zero register and default slots move to retail's.
+  - Stand-ins for all four overloads also let VC push the default/value addresses BEFORE evaluating the `"Name" + index` CCharString argument. Retail evaluates the name first. Apply the lever per overload and re-check the push order.
+- **Advisor C1 (0x00BDE860): a hoisted zero register means a free callee-saved register.**
+  - The hoisted `xor ebx,ebx` is a symptom of a free callee-saved register, not of how many zero uses there are.
+  - Keep ebx/ebp busy the way retail does:
+    - assign the CSE'd `written = size + 3` AFTER the CTemporaryBuffer ctor;
+    - read the buffer pointer through a `__forceinline GetData()` accessor, so it loads before the call-shaped arguments.
+- **Entity-script Main rows (0x00D00050).** The landed CHobbeLarder::Main model (GameCalls, inline CTimer, `__fastcall` IsDistanceBetweenThingsUnder at 0x00CBE2FF) reproduces a 1002-byte quest Main on the first grade:
+  - the dtor is expanded in the early-loop returns and the out-of-line `~CTimer` 0x00CD4470 is called on the later ones;
+  - GetSquaredDistanceBetweenThings 0x00CBE512 is also `__fastcall`;
+  - VC hoists the shared `IsActiveThreadTerminating()` out of an if/else whose two arms both start with it.
+- **Aligned frame (0x00A793D0 / 0x00A79680).** A C2DVector temporary passed by reference to an out-of-line GetNodeAt inside nested loops forces `and esp,-8`. Same-TU stand-ins for the callee do not remove it, so this confirms the chunk 232 lane gap.
+
+Review at landing:
+- **0x0042EC7C CNewFrontendGameComponent::Run:** the catalog row is truncated (965 of 2191 bytes). The function ends at `ret 4` at 0x0042F508; 0x0042F50B is ~CNewFrontendGameComponent. Fix the row length before re-queueing it.
+- **0x00A793D0:** the catalog name ConnectVerticalMapEdge is wrong; it is ConnectHorizantalMapEdge. 0x00A79680 is the real ConnectVerticalMapEdge.
+- **0x00ACD5A0:** catalogued under COptimisedMesh but in the CPSCOrbit-family label set; the leaf is `?CopyTo@COptimisedMesh@QuadricOptimiserInternals@@`.
+- **0x004550AC and 0x00606D20:** catalogued as CPSCOrbit ctors; they are CInventoryDef and CTCInventoryMap.
+- **0x00BDE860:** matched by advisor C1 (final.cpp). The test needed a `TNewSize` typedef for the class operator new (size_t on the g++ host) so it builds without `-fpermissive`.
+- **Local models next to existing engine headers:**
+  - CNavQuadTree in 0x00A793D0 / 0x00A79680 (rebuild/include/engine/CNavQuadTree.h exists, but the retail map is pack(1) with MapPos at +7);
+  - CNavigatorAStar / CNavigatorManager in 0x00A1D290 / 0x00A1CC30 (retail offsets are Ego_r.pdb minus 4 or 8 because of the 12-byte STLport map).
+  - Both carry `// Layout:` comments.
+- **Rows that needed more than 4 grades:**
+  - 0x00A1D290: 20 variants.
+  - 0x00A1CC30: about 10 across both sessions.
+  - 0x00A793D0: about 20 bisection probes.
+  - 0x00B17030: 6 more this session.

@@ -1,0 +1,11 @@
+address	name	evidence
+00a793d0	CMap::ConnectHorizantalMapEdge	was ConnectVerticalMapEdge; 00a79680 is the vertical twin (chunk 292)
+00acd5a0	QuadricOptimiserInternals::COptimisedMesh::CopyTo	(chunk 292)
+004550ac	CInventoryDef::CInventoryDef	was CPSCOrbit label (chunk 292)
+00606d20	CTCInventoryMap::CTCInventoryMap	was CPSCOrbit label (chunk 292)
+00b0b5c0	CPSCUpdateNormal::WriteBinary	(chunk 292)
+00afee00	CPSCRenderMesh::WriteBinary	(chunk 292)
+00cff9a0	CQ_AwakeningTheOracleScript::PlayCutscene	(CCharString, bool) (chunk 292)
+00bde680	CObjectTypeCollection::Load	callee of LoadContents (chunk 292)
+00be04c0	GetBlockData	callee of LoadContents (chunk 292)
+00ad1e80	C3DMeshFile::GetMeshChunk	(chunk 292)

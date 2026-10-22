@@ -2346,3 +2346,21 @@ address	module	name	length	chunk	reason
 008e7040	CMeleeCombatAbilityDef	IsAbilityValid	592	hand290	DIFFER(584v588) -- entry esi/edi pushes are shrink-wrapped in ours and the iterator-tag temporary gets its own slot (retail overlays it on the dead argument slot)
 009f20b0	CMemoryAllocator	CMemoryAllocator	608	hand290	DIFFER(596v598) -- register allocation only: retail keeps a zero register in ebx through the first loop (cmp/push ebx, bl store) and reads heap from its argument slot ea
 00a64910	CMemoryAllocatorVariableSize	RemoveFromTreeFixup	768	hand290	DIFFER(756v757) -- register allocation only: retail keeps this in ebp, info in edx and the near nephew in edi (4 callee-saved pushes)
+00a793d0	CNavQuadTree	ConnectVerticalMapEdge	688	hand292	DIFFER(593v678) -- push ebp/mov ebp,esp/and esp,-8 aligned frame (retail: plain sub esp,0x44) forced by the 8-byte C2DVector GetN
+00a79680	CNavQuadTree	ConnectVerticalMapEdge	688	hand292	DIFFER(593v678) -- vertical twin of 0x00A793D0: same and esp,-8 aligned-frame lane gap
+00a1ba10	CNavigatorAStar	?GetRandomNavigablePos@CNavigatorAStar@@UBE?AVC3DVector@@ABV2@MABVC2DVector@@M@Z	656	hand292	DIFFER(642v642) -- operand order of the three fadds in ahead + g_NavHeightTestOffset
+00a1cc30	CNavigatorAStar	ConstructFinalRoute	640	hand292	DIFFER(632v632) -- one x87 store scheduled differently: retail sinks the radius 'fstp [esp+10h]' below the statistics 'mov eax,[1
+00a1d290	CNavigatorAStar	CalculateRoute	832	hand292	DIFFER(817v817) -- frame-slot packing (key/cost vs key/state), budget-exit block placement, goal-pointer register
+00a1e110	CNavigatorAStar	MoveTowardNextWayPoint	608	hand292	DIFFER(596v601) -- esi/edi swapped (retail esi=pos, edi=this) with the push esi/push edi prologue interleave
+00874790	CPCMouseLook	OnInit	752	hand292	DIFFER(749v752) -- x87 scheduling/operand order: retail loads the three scaled components from frame copies (fld [esp+1Ch]/[esp+1
+00b18390	CPSCAttractor	ReadBinary	785	hand292	DIFFER(780v785) -- register allocation: retail keeps this in ebp and the stream-size word in ecx/edi (ours ebx/edi/ebp rotated) t
+00b1d550	CPSCDecalRenderer	DecalCollides	576	hand292	DIFFER(-v576) -- not authored: retail rounds with 2 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly
+00b1d790	CPSCDecalRenderer	PoolDecal	880	hand292	DIFFER(-v876) -- not authored: retail rounds with 2 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly
+00b1dc70	CPSCDecalRenderer	AddToBoundingSphere	864	hand292	DIFFER(-v860) -- not authored: retail rounds with 4 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly
+00b1dfd0	CPSCDecalRenderer	CPSCDecalRenderer	944	hand292	DIFFER(-v931) -- not authored: retail rounds with 14 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly
+00b0fbf0	CPSCEmitterGeneric	GetNumberOfParticles	976	hand292	DIFFER(-v973) -- not authored: retail rounds with 5 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly
+00b0ffc0	CPSCEmitterGeneric	GetNumberOfDecals	608	hand292	DIFFER(-v605) -- not authored: retail rounds with 3 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly
+00b16aa0	CPSCOrbit	GetUpdateParam	688	hand292	DIFFER(673v681) -- x87 scheduling only: tangent-branch temp slots (0x30/0x1c v 0x24/0x10), Normalise squares z,y,x v retail y,z,x
+00b17030	CPSCOrbit	DatabaseSerialise	992	hand292	DIFFER(991v991) -- same size after same-TU auto_inline(off) stand-ins for the unsigned long/long CPersistContext::Transfer overlo
+00af90c0	CPSCRenderSprite	GetComponentCost	592	hand292	DIFFER(-v588) -- not authored: retail rounds with 3 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly
+00b075d0	CPSCSingleSprite	AddToBoundingSphere	992	hand292	DIFFER(-v977) -- not authored: retail rounds with 1 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly

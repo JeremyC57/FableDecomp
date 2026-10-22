@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a793d0	DIFFER	593v678	-	push ebp/mov ebp,esp/and esp,-8 aligned frame (retail: plain sub esp,0x44) forced by the 8-byte C2DVector GetN
+00a79680	DIFFER	593v678	-	vertical twin of 0x00A793D0: same and esp,-8 aligned-frame lane gap
+00a1ba10	DIFFER	642v642	-	operand order of the three fadds in ahead + g_NavHeightTestOffset
+00a1cc30	DIFFER	632v632	-	one x87 store scheduled differently: retail sinks the radius 'fstp [esp+10h]' below the statistics 'mov eax,[1
+00a1d290	DIFFER	817v817	-	frame-slot packing (key/cost vs key/state), budget-exit block placement, goal-pointer register
+00a1e110	DIFFER	596v601	-	esi/edi swapped (retail esi=pos, edi=this) with the push esi/push edi prologue interleave
+00a1e370	RELOCATION_MATCH	588v588	PASS	STLport erase/__copy_ptrs + C2DVector op=(C3DVector)
+00a472f0	RELOCATION_MATCH	708v708	PASS	x87 compare: left operand first
+00d00050	RELOCATION_MATCH	1002v1002	PASS	CHobbeLarder script model; first try
+0042ec7c	SKIP	-v965	-	row length 965 truncates CNewFrontendGameComponent::Run (0x0042EC7C..0x0042F50A, 2191 bytes)
+00db8300	RELOCATION_MATCH	534v534	PASS	CHTG_Audience skeleton
+00bde860	RELOCATION_MATCH	752v752	PASS	advisor C1: written after buffer ctor + GetData accessor
+00478ee2	RELOCATION_MATCH	677v677	PASS	flag-per-block Transfer
+00ef7800	RELOCATION_MATCH	627v627	PASS	forceinline ~CScriptThing + inline_depth(0)
+0045e8ed	RELOCATION_MATCH	784v784	PASS	nine persist reads
+007004b0	RELOCATION_MATCH	698v698	PASS	inline STLport find per reaction
+00acd5a0	RELOCATION_MATCH	670v670	PASS	COptimisedMesh::CopyTo (CPSCOrbit-family label wrong); counted-pointer dtor zeroes + cached count
+00cfee30	RELOCATION_MATCH	733v733	PASS	else-if chain cross-jumped
+00dcf0b0	RELOCATION_MATCH	789v789	PASS	CHTG_Audience skeleton
+00874790	DIFFER	749v752	-	x87 scheduling/operand order: retail loads the three scaled components from frame copies (fld [esp+1Ch]/[esp+1
+00b18110	RELOCATION_MATCH	640v640	PASS	flag blocks + shared name string
+00b18390	DIFFER	780v785	-	register allocation: retail keeps this in ebp and the stream-size word in ecx/edi (ours ebx/edi/ebp rotated) t
+00b0b5c0	RELOCATION_MATCH	672v672	PASS	CPSCUpdateNormal::WriteBinary (label wrong)
+00b1ba10	RELOCATION_MATCH	611v611	PASS	original write order
+00b1d550	DIFFER	-v576	-	not authored: retail rounds with 2 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly 
+00b1d790	DIFFER	-v876	-	not authored: retail rounds with 2 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly 
+00b1dc70	DIFFER	-v860	-	not authored: retail rounds with 4 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly 
+00b1dfd0	DIFFER	-v931	-	not authored: retail rounds with 14 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly
+00b0fbf0	DIFFER	-v973	-	not authored: retail rounds with 5 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly 
+00b0ffc0	DIFFER	-v605	-	not authored: retail rounds with 3 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly 
+00b12ef0	RELOCATION_MATCH	741v741	PASS	copy-ctor stand-in
+004550ac	RELOCATION_MATCH	1016v1016	PASS	CInventoryDef ctor (label CPSCOrbit wrong)
+00606d20	RELOCATION_MATCH	597v597	PASS	CTCInventoryMap ctor (label CPSCOrbit wrong)
+00b16aa0	DIFFER	673v681	-	x87 scheduling only: tangent-branch temp slots (0x30/0x1c v 0x24/0x10), Normalise squares z,y,x v retail y,z,x
+00b17030	DIFFER	991v991	-	same size after same-TU auto_inline(off) stand-ins for the unsigned long/long CPersistContext::Transfer overlo
+00af90c0	DIFFER	-v588	-	not authored: retail rounds with 3 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly 
+00af9620	RELOCATION_MATCH	535v535	PASS	member-order writes
+00afee00	RELOCATION_MATCH	672v672	PASS	CPSCRenderMesh::WriteBinary (label wrong)
+00b06060	RELOCATION_MATCH	576v576	PASS	member-order writes
+00b075d0	DIFFER	-v977	-	not authored: retail rounds with 1 bare dword `fistp` (float store/reload, no _ftol), the original hand-written assembly 

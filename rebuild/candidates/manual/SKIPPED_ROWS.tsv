@@ -4,6 +4,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00417747	596	2026-10-22_linux_hand290	CMainGameComponent::UpdateForcedTickSpeed	single	open	00417747:596	inline asm fnstcw/fldcw rounding (known lane gap)
 00418289	564	2026-10-22_linux_hand290	CMainGameComponent::?Update@CMainGameComponent@@MAEXXZ	single	open	00418289:564	inline asm fnstcw/fldcw rounding + /GS (known lane gap)
 0042e3ee	101	2026-10-15_linux_hand149	CNewFrontendGameComponent::Input	prefix	done	0042e3ee:1441	prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function
+0042ec7c	965	2026-10-22_linux_hand292	CNewFrontendGameComponent::CNewFrontendGameComponent::Run	prefix	open	0042ec7c:2191	row length 965 truncates CNewFrontendGameComponent::Run (0x0042EC7C..0x0042F50A, 2191 bytes)
 0043e430	160	2026-10-15_linux_hand174	CThingFilter_IsValid::operator()	multi	done	0043e430:5,0043e440:7,0043e450:7,0043e460:7,0043e470:91	CThingFilter_IsValid::operator(): row holds several functions (jmp [eax+4] thunk, int3 padding, then four more bodies)
 00449b60	208	2026-10-20_linux_hand201	CPlayerManager::GetMultiplayerColour	multi	open	00449b60:123,00449bdc:17,00449bf0:19,00449c10:19	jump-table switch followed by two more bodies in the row
 00455fa0	42	2026-10-15_linux_hand66	CPersistContext_TransferableSubComponent::CPersistContext_TransferableSubComponent::vfunc_0	multi	done	00455fa0:8,00455fa8:12,00455fb4:22	three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter)
