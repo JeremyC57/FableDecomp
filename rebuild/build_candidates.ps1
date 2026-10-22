@@ -270260,6 +270260,13 @@ $catalog = @(
         TestSource = '00/d7/CQHangingTreeGoodScript_MonitorRegionPresence_00d773e0_test.cpp'
         PassPattern = '00d773e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ebf1e0'
+        Module = 'CV_ParanoidWhispersScript'
+        Source = '00/eb/CVParanoidWhispersScript_CheckForNecklaceAndQuit_00ebf1e0.cpp'
+        TestSource = '00/eb/CVParanoidWhispersScript_CheckForNecklaceAndQuit_00ebf1e0_test.cpp'
+        PassPattern = '00ebf1e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

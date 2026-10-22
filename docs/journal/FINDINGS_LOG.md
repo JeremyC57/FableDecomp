@@ -410,3 +410,13 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
 - 2026-10-22 0049be90 806v808 (A3, 10 grades): the lane ranks the per-thing hit flag above hitPos for the last callee-saved register; a both-arms hitNormal fixes hitPos but promotes hitNormal. Parked.
 - 2026-10-22 009bae70 CPersistContext::ReadSection 589v593 (A3, 10 grades): retail keeps the "" temp's ctor return as a spilled value and homes the temp in the dead name slot; every spelling folds to the temp's address. Parked.
 - 2026-10-22 RST2 near-miss sweep (8 rows, 0 matches): shared root cause across 0052b6a0, 007fede0, 00bdedd0 (likely 00744fb0): retail's VC7.1 treats an empty tag temporary as conflict-free and overlaps it with live objects; every lane form (about 15) leaves the temporary undefined, so it counts as live from entry and blocks its slot. Also 005f0c5f now 358v358 (one frame slot) and 00ab5030 342v342 (frame order). Tools: retry_shared/advisor/fas.py, fasscan.py, qq.py.
+
+## 2026-10-22 — advisor parks (RST2 empty-tag sweep, E1 pool rows 78–110)
+NOTES.md for each under `$S/w22/retry_shared/advisor/<addr>/` (scratch); residues are not tag-related.
+- 006e3580 PlaySpeech 490v502: dead `player = 0` store kept by retail; name/list-end ebp↔edi swap.
+- 0064dd9a UpdateRegionExitNames 579v580: frame 0x40 v 0x4c packing + ebx/edi swap (tags now at [ebp+0Bh] as retail).
+- 008e7040 IsAbilityValid 584v588: retail pushes esi/edi before the first je and shares one `return false` epilogue; ours shrink-wraps.
+- 00cbc130 vector<SMusicTrack>::_M_insert_overflow 287v284: fillLen/newFinish ebx↔edi.
+- 00744fb0: comparator temporary with no dead parameter slot still gets its own frame byte.
+- 00489d40 CPlayer::CreateCharacter 815v815: retail's holySite conflicts with `up` but not `name`; a {} block around name over-shares (frame 0x4c→0x48).
+- 00871290 (+twin 00870e00) PStringData ecx/esi home; 00712e40 arg load sunk below rand(); 0090c900 thing/map esi/edi; 0065be6c this/def-temp ebx/edi; 00a60fb0 full callee-saved permutation.
