@@ -2057,3 +2057,24 @@ address	module	name	length	chunk	reason
 004ff150	CWorldMap	?GetAllMapsInArea@CWorldMap@@UBEXABVC2DBoxI@@AAV?$vector@KV?$allocator@K@std@@@std@@@Z	448	hand275	DIFFER(437v436) -- CWorldMap::GetAllMapsInArea; retail keeps the `maps` reference in ebp for the whole body, ours reloads it from the arg slot
 0063d960	CWorldMap	FindLastUnblockedGroundPositionAndReportCollision	464	hand275	DIFFER(461v461) -- frame slot order only: next/to-from temp at +0x10 in ours, +0x28 in retail (direction/pos below it)
 0063db30	CWorldMap	FindLastUnblockedGroundPositionAndReportCollision	461	hand275	DIFFER(461v461) -- twin of 0063d960 with the theme callees (really FindLastUnblockedThemePositionAndReportCollision); same slot-order gap
+0065a41c	CTCVillage	GetFineAmountForCurrentCrimes	415	hand273	DIFFER(383v415) -- parked: register allocation (this/village/fine) + null-village exit threading
+0065aa6f	CTCVillage	IsTimeToGoToTavern	415	hand273	DIFFER(413v415) -- parked: register allocation + dead villager arg-slot reuse
+0065c5bb	CTCVillage	UpdateMirroredCrimeData	421	hand273	DIFFER(421v421) -- parked: register allocation only (this in ebx vs hero)
+007df770	CTCWallMountEffects	CTCWallMountEffects::vfunc_9	437	hand273	DIFFER(436v437) -- parked: lane gap: register-cached frame local (advisor confirmed)
+0076e2f0	CTCWeaponTrail	CalculateInterpolatedWeaponHelpers	432	hand273	DIFFER(421v421) -- parked: parent eax/lea vs ebp; else-call register choice
+006d0630	CTCWife	ReceivedNiceGiftIsOpinionReactionHappening	464	hand273	DIFFER(472v459) -- parked: block order (not-nice branch after shared block) and registers
+0054f6e0	CText	~CText	512	hand273	DIFFER(506v510) -- parked: member handle dtor vtable store vs primitive load order
+009c8de0	CTextEntry	ReadFromDataStream	464	hand273	DIFFER(459v452) -- parked: temps in param slot, count cache, index CSE
+009faf70	CTexture	GenerateMipmapsWithGPU	416	hand273	DIFFER(407v407) -- parked: register assignment only
+006d5b50	CThingAICreature	UpdateAITurning	480	hand273	DIFFER(475v479) -- parked: turn-state/flags register swap; shared C3DVector frame temp
+0082d3b0	CThingBuilding	PeekPCameraManagerSetDefinition	455	hand273	DIFFER(459v455) -- parked: region def add-ref RMW inc vs load/inc/store (layout now right)
+008565e0	CThingFilter_CombatIsStrikeToStrike	operator()	416	hand273	DIFFER(383v406) -- parked: def temp/assignment chain count stores
+00808e40	CThingFilter_IsValidTargetForPlayerCreature	operator()	496	hand273	DIFFER(507v488) -- parked: this spilled; literal/key temporaries in param slot
+00838ec0	CThingGameObject	GetShotHitParameters	448	hand273	DIFFER(448v448) -- parked: dead-argument-slot choice (params vs shot) + copy register rotation
+0085d180	CThingMap	InitMapwhoLevels	496	hand273	DIFFER(429v481) -- parked: STLport resize inlined on one path only + frame packing
+00703590	CThingObject	DrawPreparePrimitivesForRendering	496	hand273	DIFFER(492v492) -- parked: orientation interpolator vptr store sunk past the 0x47 bit test (scheduling only)
+00680050	CThingObjectDef	?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	439	hand273	DIFFER(432v439) -- parked: empty-string c_str arm placed out of line in retail; index reg edx v ecx
+0083d990	CThingPhysicalSwitch	ConstructFromLevelScript	464	hand273	DIFFER(464v460) -- parked: slot packing (token/value) + EndThing block layout
+006a9690	CThingPlayerCreature	ResolveRelativeMovementAcceleration	450	hand273	DIFFER(458v450) -- parked: flag clear RMW and byte ptr vs load/and/store; RotateAboutZ this-lea order
+006ab430	CThingPlayerCreature	GetMovementBandTypeFromJoytickMagnitude	416	hand273	DIFFER(404v408) -- parked: merged return-block copy placement; sneak component register
+006ab5d0	CThingPlayerCreature	GetCurrentMaxMovementSpeed	416	hand273	DIFFER(412v412) -- parked: band speed kept on x87 stack vs homed in memory

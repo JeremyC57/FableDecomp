@@ -1,0 +1,16 @@
+address	name	evidence
+00449970	CPlayerManager::GetMainPlayer	not Catch@0040d959 (callee, chunk 273)
+00436ac0	std::vector<CThing*>::_M_insert_overflow	vector<CThing*> growth, not Vector_InsertN (callee, chunk 273)
+005d8e90	CTCInventoryItem::GetInventoryOwner	callee, chunk 273
+0049d810	CWorld::GetPRandomSeed	not CVertexBufferWin32::DoSizeof (callee, chunk 273)
+00a14440	C3DVector::Normalise	not GetScaled (callee, chunk 273)
+00a14040	C3DVector::RotateAboutZ	not Math_CartesianToSpherical (callee, chunk 273)
+00868ca0	CHitParameters::AddDamageWithAttribute	not CIME::SetEditBoxRegion (callee, chunk 273)
+009b9ba0	CStringParser::FindKeyword	not CThingCreatureBase::SerialiseGameState (callee, chunk 273)
+00838930	CThingGameObject::ConstructFromLevelScript	callee, chunk 273
+00686f10	CreateTC	__fastcall TC factory (name, thing), not CMeshVolumeMap::Find (callee, chunk 273)
+004cd650	CComponentMap::Resort	sort then clear Dirty, not CGuiVarTransferBool::TransferToGui (callee, chunk 273)
+004cc820	std::list<CTCBase*>::push_back	not ListNode_InsertTCNode (callee, chunk 273)
+004cc150	std::list<CTCBase*>::remove	callee, chunk 273
+004cc090	std::bitset::set	callee, chunk 273
+0085e8d0	std::vector<CThingMapCell>::resize	callee, chunk 273

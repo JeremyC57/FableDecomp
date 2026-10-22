@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0065a41c	DIFFER	383v415	-	parked: register allocation (this/village/fine) + null-village exit threading
+0065aa6f	DIFFER	413v415	-	parked: register allocation + dead villager arg-slot reuse
+0065b400	RELOCATION_MATCH	408	PASS	CTCVillage ctor
+0065c5bb	DIFFER	421v421	-	parked: register allocation only (this in ebx vs hero)
+007df770	DIFFER	436v437	-	parked: lane gap: register-cached frame local (advisor confirmed)
+007b5ca0	RELOCATION_MATCH	419	PASS	IsInWater
+0076df90	RELOCATION_MATCH	444	PASS	GetStrikeEventIndexFromEventName
+0076e2f0	DIFFER	421v421	-	parked: parent eax/lea vs ebp; else-call register choice
+006cf1d0	RELOCATION_MATCH	468	PASS	~CTCWife (Flags: /GS)
+006d0630	DIFFER	472v459	-	parked: block order (not-nice branch after shared block) and registers
+00581765	RELOCATION_MATCH	428	PASS	IsInvalidCustomTattoo
+0071b840	RELOCATION_MATCH	439	PASS	CopyCustomTattooToUserDir
+0054f6e0	DIFFER	506v510	-	parked: member handle dtor vtable store vs primitive load order
+009c8de0	DIFFER	459v452	-	parked: temps in param slot, count cache, index CSE
+009faf70	DIFFER	407v407	-	parked: register assignment only
+00a3b730	RELOCATION_MATCH	481	PASS	DoRenderSample
+004c9d60	RELOCATION_MATCH	504	PASS	AddTC: early address-taken copy local for the update-list push_back
+004ca019	SKIP	-	-	mis-cut row: real entry 0x004CA010 (row starts 9 bytes in)
+006d5b50	DIFFER	475v479	-	parked: turn-state/flags register swap; shared C3DVector frame temp
+008326a0	RELOCATION_MATCH	415	PASS	UpdateMovement: forceinline out-param GetInterface
+00832e60	RELOCATION_MATCH	431	PASS	OnDie: same-TU GetDef stand-in + const-object release
+0082d3b0	DIFFER	459v455	-	parked: region def add-ref RMW inc vs load/inc/store (layout now right)
+004e493e	RELOCATION_MATCH	429	PASS	operator=
+004e9813	RELOCATION_MATCH	411	PASS	operator=
+00663610	RELOCATION_MATCH	433	PASS	PreloadBasicAnimations (test defines __declspec(x) for g++)
+00666b50	RELOCATION_MATCH	440	PASS	GetAppropriateCombatAnimationFromList
+008565e0	DIFFER	383v406	-	parked: def temp/assignment chain count stores
+00808e40	DIFFER	507v488	-	parked: this spilled; literal/key temporaries in param slot
+00838ec0	DIFFER	448v448	-	parked: dead-argument-slot choice (params vs shot) + copy register rotation
+00522880	RELOCATION_MATCH	413	PASS	SaveMainPlayerCreatureState: const-escape stand-ins
+0085d180	DIFFER	429v481	-	parked: STLport resize inlined on one path only + frame packing
+00703590	DIFFER	492v492	-	parked: orientation interpolator vptr store sunk past the 0x47 bit test (scheduling only)
+0045912f	RELOCATION_MATCH	445	PASS	Transfer
+00680050	DIFFER	432v439	-	parked: empty-string c_str arm placed out of line in retail; index reg edx v ecx
+006a5460	RELOCATION_MATCH	425	PASS	GetFirstCollisionBetweenPoints
+006a62e0	RELOCATION_MATCH	489	PASS	InternalModifyHealth
+0083d990	DIFFER	464v460	-	parked: slot packing (token/value) + EndThing block layout
+006a9690	DIFFER	458v450	-	parked: flag clear RMW and byte ptr vs load/and/store; RotateAboutZ this-lea order
+006ab430	DIFFER	404v408	-	parked: merged return-block copy placement; sneak component register
+006ab5d0	DIFFER	412v412	-	parked: band speed kept on x87 stack vs homed in memory

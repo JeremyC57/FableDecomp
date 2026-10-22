@@ -264680,6 +264680,133 @@ $catalog = @(
         TestSource = '00/8f/NCameraModesCPhysicsForceModelBase_DoThingEvasion_008faf70_test.cpp'
         PassPattern = '008faf70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0045912f'
+        Module = 'CThingObjectDef'
+        Source = '00/45/CThingObjectDef_Transfer_0045912f.cpp'
+        TestSource = '00/45/CThingObjectDef_Transfer_0045912f_test.cpp'
+        PassPattern = '0045912f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c9d60'
+        Module = 'CThing'
+        Source = '00/4c/CThing_AddTC_004c9d60.cpp'
+        TestSource = '00/4c/CThing_AddTC_004c9d60_test.cpp'
+        PassPattern = '004c9d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e493e'
+        Module = 'CWeaponDef'
+        Source = '00/4e/CWeaponDef_operator_004e493e.cpp'
+        TestSource = '00/4e/CWeaponDef_operator_004e493e_test.cpp'
+        PassPattern = '004e493e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9813'
+        Module = 'CShopDef'
+        Source = '00/4e/CShopDef_operator_004e9813.cpp'
+        TestSource = '00/4e/CShopDef_operator_004e9813_test.cpp'
+        PassPattern = '004e9813_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00522880'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_SaveMainPlayerCreatureState_00522880.cpp'
+        TestSource = '00/52/CThingManager_SaveMainPlayerCreatureState_00522880_test.cpp'
+        PassPattern = '00522880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581765'
+        Module = 'CTattooDef'
+        Source = '00/58/CTattooDef_IsInvalidCustomTattoo_00581765.cpp'
+        TestSource = '00/58/CTattooDef_IsInvalidCustomTattoo_00581765_test.cpp'
+        PassPattern = '00581765_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065b400'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_CTCVillage_0065b400.cpp'
+        TestSource = '00/65/CTCVillage_CTCVillage_0065b400_test.cpp'
+        PassPattern = '0065b400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00663610'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_PreloadBasicAnimations_00663610.cpp'
+        TestSource = '00/66/CThingCreatureBase_PreloadBasicAnimations_00663610_test.cpp'
+        PassPattern = '00663610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00666b50'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetAppropriateCombatAnimationFromList_00666b50.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetAppropriateCombatAnimationFromList_00666b50_test.cpp'
+        PassPattern = '00666b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a5460'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_GetFirstCollisionBetweenPoints_006a5460.cpp'
+        TestSource = '00/6a/CThingPhysical_GetFirstCollisionBetweenPoints_006a5460_test.cpp'
+        PassPattern = '006a5460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a62e0'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_InternalModifyHealth_006a62e0.cpp'
+        TestSource = '00/6a/CThingPhysical_InternalModifyHealth_006a62e0_test.cpp'
+        PassPattern = '006a62e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cf1d0'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_CTCWife_006cf1d0.cpp'
+        TestSource = '00/6c/CTCWife_CTCWife_006cf1d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '006cf1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071b840'
+        Module = 'CTattooDef'
+        Source = '00/71/CTattooDef_CopyCustomTattooToUserDir_0071b840.cpp'
+        TestSource = '00/71/CTattooDef_CopyCustomTattooToUserDir_0071b840_test.cpp'
+        PassPattern = '0071b840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076df90'
+        Module = 'CTCWeaponTrail'
+        Source = '00/76/CTCWeaponTrail_GetStrikeEventIndexFromEventName_0076df90.cpp'
+        TestSource = '00/76/CTCWeaponTrail_GetStrikeEventIndexFromEventName_0076df90_test.cpp'
+        PassPattern = '0076df90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b5ca0'
+        Module = 'CTCWaterWader'
+        Source = '00/7b/CTCWaterWader_IsInWater_007b5ca0.cpp'
+        TestSource = '00/7b/CTCWaterWader_IsInWater_007b5ca0_test.cpp'
+        PassPattern = '007b5ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008326a0'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_UpdateMovement_008326a0.cpp'
+        TestSource = '00/83/CThingAICreature_UpdateMovement_008326a0_test.cpp'
+        PassPattern = '008326a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00832e60'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_OnDie_00832e60.cpp'
+        TestSource = '00/83/CThingAICreature_OnDie_00832e60_test.cpp'
+        PassPattern = '00832e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3b730'
+        Module = 'CTextureRenderer'
+        Source = '00/a3/CTextureRenderer_DoRenderSample_00a3b730.cpp'
+        TestSource = '00/a3/CTextureRenderer_DoRenderSample_00a3b730_test.cpp'
+        PassPattern = '00a3b730_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
