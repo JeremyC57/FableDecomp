@@ -574,3 +574,11 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - **Getter result before the global** (0093a080 MinionGuardReactToPlayerWithWeapon::Update): in the inline IsWithinWarningTime, write `CWorld* world = GetPThingWorld(); long framesPerSecond = g_FramesPerSecond;` in that order. Reading fps into a local first hoists the global load above the call.
 - **When not to use a same-TU stand-in** (AdvB3, 0084e590 UpdateTrackMeleeOpponents): if retail's frame keeps a vector's zero stores as immediates, the vector escapes into the real callee. A GetThingsInRect stand-in then shrinks the frame (0x7c to 0x70) and recolours everything. Two same-value locals: retail stores the later-declared one first.
 - **Parse-time pointer chains get distinct registers** (AdvB3, 0096ff10): direct `PBrain->PCreature->` reads fix a loop-head scratch rotation that an inline GetCreature() accessor causes, because inline-expanded chains go through eax.
+- **Chunk 281 lessons:**
+  - Copy a counted pointer member by member and take the raw pointer before `++Info->RefCount`, so Data is not reloaded after the increment.
+  - An empty exception class with a user ctor makes `throw E()` copy an uninitialised byte from the dead argument slot, as retail does.
+  - An intrinsic `memcmp(a, b, 4)` gives retail's ID-compare shape.
+  - For an STLport list insert at the end, name the old tail first: `prev = head->_M_prev`.
+  - `GetPosition() + GetCentre()` runs GetCentre first.
+  - `!(x > y)` gives `je`.
+- **A shadow copy class binding the same retail ctor/dtor is RELOC_IDENTITY** (chunk 281, 00d1f610 and 00d1fa00): a local `ScriptThingCopy` whose ctor/dtor resolve to CScriptThing's 004abe90 and 004aa840 is refused by the lander even though the bytes match. Use the real class's ctor and dtor.

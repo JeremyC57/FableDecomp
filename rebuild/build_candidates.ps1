@@ -267209,6 +267209,161 @@ $catalog = @(
         TestSource = '00/91/CAIStateGroupClean_IsRunnable_00917a10_test.cpp'
         PassPattern = '00917a10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00456564'
+        Module = 'CCameraModeDef'
+        Source = '00/45/CCameraModeDef_Transfer_00456564.cpp'
+        TestSource = '00/45/CCameraModeDef_Transfer_00456564_test.cpp'
+        PassPattern = '00456564_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00555eb0'
+        Module = 'NUISystem::CScrollableList'
+        Source = '00/55/NUISystemCScrollableList_Initialise_00555eb0.cpp'
+        TestSource = '00/55/NUISystemCScrollableList_Initialise_00555eb0_test.cpp'
+        PassPattern = '00555eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00856b20'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_UpdateFacingDirection_00856b20.cpp'
+        TestSource = '00/85/CCombatActionBase_UpdateFacingDirection_00856b20_test.cpp'
+        PassPattern = '00856b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00858130'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_ProcessPossibleCreatureStrikeEvent_00858130.cpp'
+        TestSource = '00/85/CCombatActionBase_ProcessPossibleCreatureStrikeEvent_00858130_test.cpp'
+        PassPattern = '00858130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00858590'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_ProcessPossibleShotStrikeEvent_00858590.cpp'
+        TestSource = '00/85/CCombatActionBase_ProcessPossibleShotStrikeEvent_00858590_test.cpp'
+        PassPattern = '00858590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008587b0'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_ProcessPossibleObjectStrikeEvent_008587b0.cpp'
+        TestSource = '00/85/CCombatActionBase_ProcessPossibleObjectStrikeEvent_008587b0_test.cpp'
+        PassPattern = '008587b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d0380'
+        Module = 'CBankFile'
+        Source = '00/9d/CBankFile_ReadRecoveryFile_009d0380.cpp'
+        TestSource = '00/9d/CBankFile_ReadRecoveryFile_009d0380_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '009d0380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d1320'
+        Module = 'CBankFile'
+        Source = '00/9d/CBankFile_UpdateEntry_009d1320.cpp'
+        TestSource = '00/9d/CBankFile_UpdateEntry_009d1320_test.cpp'
+        PassPattern = '009d1320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d6490'
+        Module = 'CBankFileAsync'
+        Source = '00/9d/CBankFileAsync_CBankFileAsync_009d6490.cpp'
+        TestSource = '00/9d/CBankFileAsync_CBankFileAsync_009d6490_test.cpp'
+        PassPattern = '009d6490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa79c0'
+        Module = 'CChunkedFileLoader'
+        Source = '00/aa/CChunkedFileLoader_LoadChunkedFile_00aa79c0.cpp'
+        TestSource = '00/aa/CChunkedFileLoader_LoadChunkedFile_00aa79c0_test.cpp'
+        PassPattern = '00aa79c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdfb00'
+        Module = 'CBSGateGuard'
+        Source = '00/cd/CBSGateGuard_Main_00cdfb00.cpp'
+        TestSource = '00/cd/CBSGateGuard_Main_00cdfb00_test.cpp'
+        PassPattern = '00cdfb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d246c0'
+        Module = 'CBowerstoneIntroGuard'
+        Source = '00/d2/CBowerstoneIntroGuard_Main_00d246c0.cpp'
+        TestSource = '00/d2/CBowerstoneIntroGuard_Main_00d246c0_test.cpp'
+        PassPattern = '00d246c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d27950'
+        Module = 'CQ_EndGameScript'
+        Source = '00/d2/CQEndGameScript_CheckRegionLeaving_00d27950.cpp'
+        TestSource = '00/d2/CQEndGameScript_CheckRegionLeaving_00d27950_test.cpp'
+        PassPattern = '00d27950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da2a20'
+        Module = 'CBriarRose'
+        Source = '00/da/CBriarRose_UpdateTarget_00da2a20.cpp'
+        TestSource = '00/da/CBriarRose_UpdateTarget_00da2a20_test.cpp'
+        PassPattern = '00da2a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3b4a0'
+        Module = 'CBordelloEntrance'
+        Source = '00/e3/CBordelloEntrance_Main_00e3b4a0.cpp'
+        TestSource = '00/e3/CBordelloEntrance_Main_00e3b4a0_test.cpp'
+        PassPattern = '00e3b4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6b400'
+        Module = 'CCOE_Victim'
+        Source = '00/e6/CCOEVictim_Main_00e6b400.cpp'
+        TestSource = '00/e6/CCOEVictim_Main_00e6b400_test.cpp'
+        PassPattern = '00e6b400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7f410'
+        Module = 'CBountyHuntActivationChecker'
+        Source = '00/e7/CBountyHuntActivationChecker_Main_00e7f410.cpp'
+        TestSource = '00/e7/CBountyHuntActivationChecker_Main_00e7f410_test.cpp'
+        PassPattern = '00e7f410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7f7f0'
+        Module = 'CBountyHuntActivationChecker'
+        Source = '00/e7/CBountyHuntActivationChecker_RespawnFishermen_00e7f7f0.cpp'
+        TestSource = '00/e7/CBountyHuntActivationChecker_RespawnFishermen_00e7f7f0_test.cpp'
+        PassPattern = '00e7f7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee8870'
+        Module = 'CCS_OakValeRevisitedScript'
+        Source = '00/ee/CCSOakValeRevisitedScript_OakValeFire_00ee8870.cpp'
+        TestSource = '00/ee/CCSOakValeRevisitedScript_OakValeFire_00ee8870_test.cpp'
+        PassPattern = '00ee8870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efeb60'
+        Module = 'CBalvMarker'
+        Source = '00/ef/CBalvMarker_Main_00efeb60.cpp'
+        TestSource = '00/ef/CBalvMarker_Main_00efeb60_test.cpp'
+        PassPattern = '00efeb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01480'
+        Module = 'NScript::CCS_PlayCutsceneScript'
+        Source = '00/f0/NScriptCCSPlayCutsceneScript_Main_00f01480.cpp'
+        TestSource = '00/f0/NScriptCCSPlayCutsceneScript_Main_00f01480_test.cpp'
+        PassPattern = '00f01480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f14770'
+        Module = 'CCham'
+        Source = '00/f1/CCham_Main_00f14770.cpp'
+        TestSource = '00/f1/CCham_Main_00f14770_test.cpp'
+        PassPattern = '00f14770_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

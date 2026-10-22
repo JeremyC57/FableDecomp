@@ -2209,3 +2209,19 @@ address	module	name	length	chunk	reason
 006b1f30	CAtmosProcess	UpdateInsideBuildings	816	hand280	DIFFER(811v811) -- all code right (same-TU stand-ins for GetAllThingsInRoughArea and GetDef<CSoundThemeDef>, named SOUND_THEME strings, raw region def AddRef); left: frame layout only -- retail reserves 0x7c v 0x44 (0x38 more, likely dead inline-helper temporaries), camera-position return temp at +0x54 v +0x2c, checked bool at +0x13 (shared with the empty filter) v +0x12
 00c72200	CAudioSource	CAudioSource::UpdateGainState	784	hand280	DIFFER(737v770) -- catalog row over-captures the next function at 0x00C724F0 (int3 padding + a 0x14-byte getter after the two-level jump table), so it cannot match before a catalog split; code left: retail shares xor al,al as the null-envelope return, VC7.1 cross-jumps the case-2/case-8 Gain stores into the release store, one 64-bit load order
 00c5d7f0	CAudioWaveOut	CAudioWaveOut::Initialize	592	hand280	DIFFER(592v592) -- /GS row (the cookie needs a byte array); ebx/ebp role swap only
+00d90290	CBanditCommentMarker	Main	704	hand281	DIFFER(711v702) -- CBanditCommentMarker::Main ebp-zero / ordering
+009ccef0	CBankFile	FindIndicesByFilename	592	hand281	DIFFER(620v592) -- CBankFile::FindIndicesByFilename register allocation + dead-arg-slot temporaries (lane gap)
+009ce370	CBankFile	WriteFileInformation	624	hand281	DIFFER(622v620) -- CBankFile::WriteFileInformation /GS; strength-reduced offset temp frame slot + loop-tail register choice
+009ce5e0	CBankFile	AddEntryMultipleFiles	752	hand281	DIFFER(726v741) -- CBankFile::AddEntryMultipleFiles ebx/ebp swap + tail merge of the two InitEntry calls
+0084d910	CBase	UpdateCameraStretchAroundHero	544	hand281	DIFFER(525v542) -- CBase::UpdateCameraStretchAroundHero x87 schedule around a virtual call + frame order
+0084dc10	CBase	FrameUpdate	976	hand281	DIFFER(950v966) -- CBase::FrameUpdate frame-slot packing of lookAt/zOffset/blend + temporaries (5 forms)
+0084e590	CBase	UpdateTrackMeleeOpponents	593	hand281	DIFFER(593v593) -- CBase::UpdateTrackMeleeOpponents 4 register/scheduling spots (15 + AdvB3 10 forms)
+00a38c20	CCRCSymbolMap	LoadBinary	560	hand281	DIFFER(564v551) -- CCRCSymbolMap::LoadBinary constant 0/4 register caching (lane gap)
+00a5b370	CCachedFile	?Read@CCachedFile@@UAEXPAXJPAVCASuspendableProcess@@@Z	544	hand281	DIFFER(533v534) -- CCachedFile::Read ebx/ebp swap + dead-arg temp slots
+00a0bf20	CCamera	CCamera	528	hand281	DIFFER(517v517) -- CCamera::CCamera one x87 scheduling swap (mov esi,0x17c vs fld up.Y)
+00d08790	CCampHostage2	Main	736	hand281	DIFFER(766v730) -- CCampHostage2::Main zero-in-ebp + timer index in ebx across calls (lane gap)
+00d08b40	CCampHostageDoor	Main	784	hand281	DIFFER(778v778) -- CCampHostageDoor::Main one epilogue jump target (AdvB3: 1-byte jne displacement, 10 grades)
+00a567a0	CCardinalSpline	GetSplinePosition	768	hand281	DIFFER(790v766) -- CCardinalSpline::GetSplinePosition inline-asm fistp rounding (lane gap)
+0099c1e0	CCharString	CCharString::ReplaceSubstring	609	hand281	DIFFER(610v609) -- CWideString::Replace (label: catalogue says CCharString::ReplaceSubstring) register/frame allocation
+00a60d40	CChecksumCacheFile	Open	624	hand281	DIFFER(621v623) -- CChecksumCacheFile::Open vptr-constant/4 register caching (lane-gap-like)
+00aa8830	CChunkedFileSuperChunk	?ReadFromFile@CChunkedFileSuperChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	889	hand281	DIFFER(918v889) -- CChunkedFileSuperChunk::ReadFromFile /GS: ebp zero-constant caching + frame 0x38 vs 0x28 (5 forms)

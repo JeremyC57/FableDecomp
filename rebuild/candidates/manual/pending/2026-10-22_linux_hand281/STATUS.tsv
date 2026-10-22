@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00cdfb00	RELOCATION_MATCH	563v563	PASS	CBSGateGuard::Main
+00efeb60	RELOCATION_MATCH	751v751	PASS	CBalvMarker::Main (inline-once dtor idiom: dtor-less local views + forceinline destroy at first return)
+00d1f610	RELOCATION_MATCH	757v757	PASS	CBanditAttacker::Main (filter member ScriptThingCopy ool; CScriptThing inline dtor once)
+00d90290	DIFFER	711v702	-	CBanditCommentMarker::Main ebp-zero / ordering
+00d1fa00	RELOCATION_MATCH	557v557	PASS	CBanditFirstWave::Main (inline CScriptThing copy ctor via counted-pointer member copy ctor -> [esi+0xc] addressing)
+009ccef0	DIFFER	620v592	-	CBankFile::FindIndicesByFilename register allocation + dead-arg-slot temporaries (lane gap)
+009ce370	DIFFER	622v620	-	CBankFile::WriteFileInformation /GS; strength-reduced offset temp frame slot + loop-tail register choice
+009ce5e0	DIFFER	726v741	-	CBankFile::AddEntryMultipleFiles ebx/ebp swap + tail merge of the two InitEntry calls
+009d0380	RELOCATION_MATCH	679v679	PASS	CBankFile::ReadRecoveryFile /GS (outer if(PathExists); scoped signature/value/entry-word blocks reuse frame + dead arg slot)
+009d1320	RELOCATION_MATCH	726v726	PASS	CBankFile::UpdateEntry (AdvB3: named Align local before call-bearing arg; uninitialized_fill_n local start; model pad +0x11..+0x13)
+009d6490	RELOCATION_MATCH	524v524	PASS	CBankFileAsync::~CBankFileAsync (label fix; landed ctor/disposal models; first try)
+0084d910	DIFFER	525v542	-	CBase::UpdateCameraStretchAroundHero x87 schedule around a virtual call + frame order
+0084dc10	DIFFER	950v966	-	CBase::FrameUpdate frame-slot packing of lookAt/zOffset/blend + temporaries (5 forms)
+0084e590	DIFFER	593v593	-	CBase::UpdateTrackMeleeOpponents 4 register/scheduling spots (15 + AdvB3 10 forms)
+00d27950	RELOCATION_MATCH	686v686	PASS	label fix -> CQ_EndGameScript::CheckRegionLeaving (? true : false for setne)
+00e3b4a0	RELOCATION_MATCH	671v671	PASS	CBordelloEntrance::Main
+00e7f410	RELOCATION_MATCH	786v786	PASS	CBountyHuntActivationChecker::Main
+00e7f7f0	RELOCATION_MATCH	908v908	PASS	RespawnFishermen (thing=inline everywhere; named locals in the if-block share temp slots)
+00d246c0	RELOCATION_MATCH	896v896	PASS	CBowerstoneIntroGuard::Main (inline-once views; forceinline movie ctor; explicit forceinline handle operator=; first try after 3 grades)
+00da2a20	RELOCATION_MATCH	638v638	PASS	CBriarRose::UpdateTarget (CQ_MinionCampScript's; implicit const char* -> CCharString for early temp)
+00e6b400	RELOCATION_MATCH	842v842	PASS	CCOE_Victim::Main (inline vector dtor x3; inline operator!= wrapper fixes eax/edx)
+00a38c20	DIFFER	564v551	-	CCRCSymbolMap::LoadBinary constant 0/4 register caching (lane gap)
+00ee8870	RELOCATION_MATCH	866v866	PASS	CCS_OakValeRevisitedScript::OakValeFire (forceinline CScriptThing op=; *(begin()+i))
+00f01480	RELOCATION_MATCH	734v734	PASS	CCS_PlayCutsceneScript::Main (inline STLport map ctor/dtor; counted-pointer op= reads Info before Data)
+00a5b370	DIFFER	533v534	-	CCachedFile::Read ebx/ebp swap + dead-arg temp slots
+00a0bf20	DIFFER	517v517	-	CCamera::CCamera one x87 scheduling swap (mov esi,0x17c vs fld up.Y)
+00456564	RELOCATION_MATCH	533v533	PASS	CCameraModeDef::Transfer (pragma optimize s, as landed Transfer siblings)
+00d08790	DIFFER	766v730	-	CCampHostage2::Main zero-in-ebp + timer index in ebx across calls (lane gap)
+00d08b40	DIFFER	778v778	-	CCampHostageDoor::Main one epilogue jump target (AdvB3: 1-byte jne displacement, 10 grades)
+00a567a0	DIFFER	790v766	-	CCardinalSpline::GetSplinePosition inline-asm fistp rounding (lane gap)
+00f14770	RELOCATION_MATCH	527v527	PASS	CCham::Main (arena; inline-once handle dtor at first return)
+00555eb0	RELOCATION_MATCH	834v834	PASS	CScrollableList::Initialise (label fix; landed CRedefinerList model; list insert with named tail)
+0099c1e0	DIFFER	610v609	-	CWideString::Replace (label: catalogue says CCharString::ReplaceSubstring) register/frame allocation
+00a60d40	DIFFER	621v623	-	CChecksumCacheFile::Open vptr-constant/4 register caching (lane-gap-like)
+00aa79c0	RELOCATION_MATCH	683v683	PASS	CChunkedFileLoader::LoadChunkedFile (empty exception w/ user ctor; inline ReadULong -> dead arg slot; implicit copy + chunk ptr before inc)
+00aa8830	DIFFER	918v889	-	CChunkedFileSuperChunk::ReadFromFile /GS: ebp zero-constant caching + frame 0x38 vs 0x28 (5 forms)
+00856b20	RELOCATION_MATCH	513v513	PASS	CCombatActionBase::UpdateFacingDirection (inline GetPhysics accessor; float fabs overload; target==creature order)
+00858130	RELOCATION_MATCH	719v719	PASS	CCombatActionBase::ProcessPossibleCreatureStrikeEvent (tip pointer assigned between the first two push_backs keeps ebp)
+00858590	RELOCATION_MATCH	540v540	PASS	CCombatActionBase::ProcessPossibleShotStrikeEvent (sibling model; extern const epsilon keeps eps*eps unfolded)
+008587b0	RELOCATION_MATCH	622v622	PASS	CCombatActionBase::ProcessPossibleObjectStrikeEvent (first try from the Shot model; four finite-line tries as if(!hit) chain)
