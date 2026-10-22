@@ -264884,6 +264884,13 @@ $catalog = @(
         TestSource = '00/90/CAIStateGroupMinionKidCalledToMother_FindCallHomeEvent_0090ee20_test.cpp'
         PassPattern = '0090ee20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00703590'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_DrawPreparePrimitivesForRendering_00703590.cpp'
+        TestSource = '00/70/CThingObject_DrawPreparePrimitivesForRendering_00703590_test.cpp'
+        PassPattern = '00703590_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

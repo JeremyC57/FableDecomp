@@ -23563,3 +23563,9 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?GetPBestThing@CThingSearchTools@@QAE_NABUCThingFilter_None@@ABUCThingCompare_Nearest@@PAPAUCThingPhysical@@@Z	009142b0	00913f30
 ?g_flyingMode@@3JA	0129cba4	00913f30
 ?FindMostRecentMessage@CMessageEventManager@@QAEPAUCMessageEvent@@ABU?$CFilter_Bind3@UCMessageEventFilter_IsOfType@@UCMessageEventFilter_IsOriginatedByThing@@UCMessageEventFilter_IsForThing@@@@@Z	0090edc0	0090ee20
+?DrawPreparePrimitivesForRendering@CTCWeaponTrail@@QAEXABUCEnginePrimitivePrepareInfo@@@Z	0076e6a0	00703590
+?GetCarriedPositionInfo@CTCCarryable@@QAE_NPAUC3DPositionInterpolator@@PAUC3DOrientationInterpolator@@M@Z	00705b00	00703590
+?GetOrientationInterpolator@CTCPhysicsBase@@QBEXAAUC3DOrientationInterpolator@@@Z	006b0460	00703590
+?PrepareForRenderIfNeeded@CTCGraphicAppearance@@QAEXABUCEnginePrimitivePrepareInfo@@PAUC3DPositionInterpolator@@PAUC3DOrientationInterpolator@@@Z	004be490	00703590
+?UpdateAttachedParticles@CTCParticleAttachmentTracker@@QAEXM@Z	0071a9c0	00703590
+?g_ShowWeaponTrails@@3_NA	0137548e	00703590
