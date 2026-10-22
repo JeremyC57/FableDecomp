@@ -25042,3 +25042,7 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?g_pEngineComponentGlobal@@3PAXA	01436e78	00b25d80
 ?g_pEngineGlobal_01436eb0@@3PAXA	01436eb0	00b25d80
 ?g_pRenderManager@@3PAVCRenderManager@@A	01436e1c	00b25d80
+?Load@CLocalDetailObjectCollectionType@@QAEXAAUCDataInputStream@@_N@Z	00be27b0	00bdedd0
+?RegisterObjectCollectionType@CEngineLocalDetailGenerator@@QAEPBVCLocalDetailObjectCollectionType@@ABV2@@Z	00b59c70	00bdedd0
+?_M_insert_overflow@?$vector@PBVCLocalDetailObjectCollectionType@@@@QAEXPAPBVCLocalDetailObjectCollectionType@@ABQBV2@ABU__true_type@@K_N@Z	00bdfc00	00bdedd0
+?g_pLocalDetailGenerator@@3PAVCEngineLocalDetailGenerator@@A	01436e88	00bdedd0
