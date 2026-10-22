@@ -269217,6 +269217,13 @@ $catalog = @(
         TestSource = '00/82/CMap_ApplyScriptedMapBrushUpdate_008203a0_test.cpp'
         PassPattern = '008203a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d701c0'
+        Module = 'CHTG_FreedomFighter'
+        Source = '00/d7/CHTGFreedomFighter_Main_00d701c0.cpp'
+        TestSource = '00/d7/CHTGFreedomFighter_Main_00d701c0_test.cpp'
+        PassPattern = '00d701c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

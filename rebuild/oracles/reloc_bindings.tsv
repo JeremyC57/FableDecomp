@@ -24812,3 +24812,5 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?GetTheme@CScriptedMapBrush@@QBEKJJK@Z	0082e330	008203a0
 ?GetThemeBlend@CScriptedMapBrush@@QBEEJJK@Z	0082e3d0	008203a0
 ?GetWorldBox@CMapRegionTable@@QAE?AUC2DBoxI@@JABU2@@Z	004fc560	008203a0
+?IsActiveThreadTerminating@CHTG_FreedomFighter@@QAE_NXZ	00f35b30	00d701c0
+?SetPredicate@CHTG_FreedomFighter@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00d701c0
