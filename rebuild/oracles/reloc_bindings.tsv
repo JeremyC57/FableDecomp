@@ -24794,3 +24794,11 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?FollowThing@CScriptGameResourceObjectScriptedThingBase@@QAEXABUCScriptThing@@M_N@Z	007e7320	00e386e0
 ?SetPredicate@CEntityScriptBase@@QAEXABUCIsThingConscious@@@Z	00f35b10	00e386e0
 ?SetPredicate@CEntityScriptBase@NScript@@QAEXABUCPredicateBase@2@@Z	00f35b10	00ef5cb0
+?AccumulateDamageModifierFromTree@@YI_NJABUCArmourMap@@MAAM@Z	008687a0	00869020
+?AccumulateMeleeBuffFromTree@@YIXJABUCArmourMap@@MAAM@Z	00868a80	00869020
+?CalculateDamageFromArmourTree@@YIMJABUCArmourMap@@M@Z	008686e0	00869020
+?CalculateEffectiveDamageMultiplier@@YIMABVCThing@@@Z	00868b40	00869020
+?GetArmourDefsForThing@@YIXABVCThing@@AAUCArmourMap@@AAM@Z	00868e50	00869020
+?IsRanged@CTCWeapon@@QBE_NXZ	007bed60	00869020
+?_M_erase@CArmourMap@@QAEXPAUCRbNode@@@Z	00869bb0	00869020
+?_M_insert@CArmourMap@@QAE?AUCArmourIterator@@PAUCRbNode@@0ABUCArmourPair@@0@Z	00869ca0	00869020

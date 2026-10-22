@@ -269189,6 +269189,13 @@ $catalog = @(
         TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_Main_00ef5cb0_test.cpp'
         PassPattern = '00ef5cb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00869020'
+        Module = 'CHitParameters'
+        Source = '00/86/CHitParameters_SetAsModifiedByArmour_00869020.cpp'
+        TestSource = '00/86/CHitParameters_SetAsModifiedByArmour_00869020_test.cpp'
+        PassPattern = '00869020_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
