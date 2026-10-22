@@ -267090,6 +267090,13 @@ $catalog = @(
         TestSource = '00/95/CAIStateGroupReactToDeadLeader_Update_0095e470_test.cpp'
         PassPattern = '0095e470_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a4ebb0'
+        Module = 'C3DAnimationStats'
+        Source = '00/a4/C3DAnimationStats_InitialiseStats_00a4ebb0.cpp'
+        TestSource = '00/a4/C3DAnimationStats_InitialiseStats_00a4ebb0_test.cpp'
+        PassPattern = '00a4ebb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

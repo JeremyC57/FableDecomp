@@ -23923,3 +23923,11 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?IsAbleToBeEngagedInCombat@@YI_NPAUCThing@@@Z	0085fbc0	0093d800
 ?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@QAE_NXZ	0093d3a0	0093d800
 ?SetAsRunningAwayFromCombat@CTCStealth@@QAEXXZ	007470e0	0093d800
+?FindFirstEvent@C3DAnimFileHelpersChunk@@QAE?AV?$CCountedPointer@VC3DAnimFileTimingEventChunk@@@@XZ	00aae7b0	00a4ebb0
+?FindNextEvent@C3DAnimFileHelpersChunk@@QAE?AV?$CCountedPointer@VC3DAnimFileTimingEventChunk@@@@ABV2@@Z	00aae840	00a4ebb0
+?GetHelpers@C3DAnimFileRootChunk@@QAE?AV?$CCountedPointer@VC3DAnimFileHelpersChunk@@@@XZ	00a99390	00a4ebb0
+?GetMovementVector@C3DAnimFileHelpersChunk@@QAE?AV?$CCountedPointer@VC3DAnimFileMovementVectorChunk@@@@XZ	00aae5b0	00a4ebb0
+?GetRootChunk@C3DAnimFile@@QBE?AV?$CCountedPointer@VC3DAnimFileRootChunk@@@@XZ	00a537f0	00a4ebb0
+?HasHelpers@C3DAnimFileRootChunk@@QBE_NXZ	00a99280	00a4ebb0
+?HasMovementVector@C3DAnimFileHelpersChunk@@QBE_NXZ	00aae4d0	00a4ebb0
+?insert@CEventMap@@QAE?AUiterator@1@ABU?$pair@VCCharString@@M@std@@@Z	00a54b50	00a4ebb0
