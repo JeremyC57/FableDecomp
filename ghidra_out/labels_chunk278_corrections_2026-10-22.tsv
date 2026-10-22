@@ -1,0 +1,7 @@
+address	name	evidence
+0044bc10	CPlayer::CPlayer	ctor matched with leaf ??0CPlayer, not the JackOfBladesBase ctor (chunk 278)
+0049d810	CWorld::GetRandomSeed	returns the CWorld random seed, labelled DoSizeof (callee, chunk 278)
+0062e900	CCombatAction::~CCombatAction	combat action destructor, labelled ~CTCLightningOrb (callee, chunk 278)
+008fcfb0	GetDefinitionManager	returns the definition manager, labelled _Cons_val (callee, chunk 278)
+00a14040	C3DVector::RotateAboutZ	rotates the vector about Z (callee, chunk 278)
+00693ef0	CCreatureActionBase::~CCreatureActionBase	labelled ~CPhysicsMeshInfo (callee, chunk 278)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0092cb30	DIFFER	610v610	-	component ptr eax/ecx + byte cl/al tie-break in TC-flag tests (5 tries)
+0092d7c0	RELOCATION_MATCH	604v604	PASS	bool arrived declared before failed
+00948060	RELOCATION_MATCH	571v571	PASS	uninit out-param scratchpad + named item operator=
+00949580	DIFFER	805v808	-	HasTC bit-24 byte-load narrowing and look-at vector slot scattering (+4 frame) (6 tries)
+0094a3b0	DIFFER	813v785	-	shared Drink/SitIdle tail blocks not merged; 0xcf key frame slot (+4 frame)
+0094a840	RELOCATION_MATCH	637v637	PASS	named barman/creature/zero-pos locals ahead of a named world/manager local per message call
+00977e00	DIFFER	729v732	-	def pointer zero-after-push + ebp cache not reproduced; key/boss frame words swapped (frame +0x10)
+0091ddd0	DIFFER	509v626	-	x87 rotation-matrix schedule and 8-aligned frame not modelled (1 try)
+0091e050	RELOCATION_MATCH	534v534	PASS	creature named before a named CWorld* local orders the GetPWorld call
+0091e270	DIFFER	499v513	-	distSq not spilled before range call; Normalise r kept in st; this edi vs ebx
+0095a490	DIFFER	558v560	-	second inline Normalise: retail fstp r/fxch/fmul [r] vs ours fst r/fmul st2 (x87 stack)
+0095ad20	DIFFER	754v754	-	fast Normalise matched via const float& operator*=; ecx/edx register choice in 2nd/3rd normalise left (8 tries)
+0095b020	RELOCATION_MATCH	599v599	PASS	/GS; search rectangle as a function-scope local written member by member keeps its own frame words and the x-60-first schedule; dead CWorld seed-getter call
+0095b9e0	DIFFER	782v782	-	one int/x87 interleave of the diveTo.Z frame copy left (13 tries)
+0095bcf0	DIFFER	948v948	-	one mov ecx,edi scheduled 4 x87 ops later than retail (15 tries)
+0095c1f0	DIFFER	572v595	-	code+jump table RELOCATION_MATCH at 0x23C; row over-captures two stubs (needs split + jumptable lander)
+00959f80	DIFFER	716v752	-	first pass: rotation-matrix x87 schedule (HoverWander family) not modelled (1 try)
+0091d510	RELOCATION_MATCH	724v724	PASS	sibling of landed 0x0097E890 model; length-squared written Y*Y + Z*Z + X*X for retail Z,Y,X load order
+00959bf0	DIFFER	626v739	-	first pass: rotation-matrix x87 schedule and unsigned fild fix-ups not modelled (1 try)
+00959800	DIFFER	625v595	-	frame order of the two vectors and the rough area; retail reuses the live vector slot for the pointer temp (6 tries)
+009621f0	RELOCATION_MATCH	733v733	PASS	bool-has HasTC locals; named stealth GetTC; boast result compared to 1 keeps the edi copy
+009624d0	RELOCATION_MATCH	738v738	PASS	frame target copy (copy ctor); full 3D difference then Z=0 fixes dot operand order
+00950cf0	DIFFER	896v886	-	first approximation: marker register pair, heading fst/fstp, +4 frame (2 tries)
+00951070	DIFFER	944v953	-	success-tail placement after the terminate return, +12 frame, physics-body vcall register (4 tries)
+00951b20	RELOCATION_MATCH	562v562	PASS	named bool for the or-terminate condition puts the Terminate arm first; dead GetPosition call; packed JackDragon
+00951d60	DIFFER	601v588	-	zero register (ebx) and def-in-ebp allocation not reproduced; frame +0x10 (4 tries)
+0044bc10	RELOCATION_MATCH	533v533	PASS	CPlayer::CPlayer (label wrong); list sentinel via local node
+009735d0	DIFFER	670v690	-	x87 spill pattern of the inline normalise + distance (squared terms in frame words) (3 tries)
+00973dc0	DIFFER	834v833	-	Pillars[i] add vs lea, squared-length add order, SetPosition vcall register (6 tries)
+00972990	DIFFER	792v803	-	frame-slot packing of keys/filters/areas; code shape otherwise aligned (3 tries)
+00972cc0	DIFFER	601v612	-	vptr constant held in ebp and +4 frame not reproduced; this/zero register swap (3 tries)
+00974770	DIFFER	817v807	-	frame-slot packing of the sword-block locals (+8 bytes); body otherwise aligned
+00915350	DIFFER	867v867	-	frame packing of the present/arrived byte vs the interface key word; one mov ecx,esi scheduling (11 tries; advisor requested)
+00941690	DIFFER	550v609	-	retail keeps a dead HasTC byte store + lower_bound loop (result unused); ours folds it away (2 tries)
+00941900	DIFFER	529v529	-	scheduling only: int copy of cross-product temp interleaved with fld/fmul (2 spots)
+00941fc0	DIFFER	578v578	-	one register choice left (add edi,eax vs add eax,edi on the box corner) after advisor AdvB3 (8 own tries + 64 advisor grades)
+00946850	RELOCATION_MATCH	653v653	PASS	HasTC result in the arrival bool; frame C3DVector copy ctor; named null pointer for operator=
+009552c0	DIFFER	862v861	-	hand-released def pointer frame word reused for the proximity float; move-result jump into the shared check (4 tries)
+00954f40	DIFFER	604v604	-	/GS; code identical, frame slot order of position/found/filter/name only (VC7.1 packs by type class; 12 own + 16 advisor tries)
+00955c90	DIFFER	916v970	-	counted-def release inlining, by-value intelligent pointer built in the argument slot, defender-zone switch shape (3 tries)

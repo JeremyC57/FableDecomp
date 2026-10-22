@@ -2101,3 +2101,32 @@ address	module	name	length	chunk	reason
 00ac53f0	C3DMeshFileEngineMaterialChunk	C3DMeshFileEngineMaterialChunk	768	hand276	DIFFER(703v755) -- retail builds an `and esp,-8` frame with ebp as frame pointer (material in edi, no zero register, immediate zero stores); ours uses ebp for `material`
 00a24520	C3DMeshLODInfo	BuildMesh	848	hand276	DIFFER(849v847) -- register allocation: retail spills the primitive index to the dead flag slot and reuses esi for Materials; ours spills ok there and keeps i in edi (ba
 0064dd9a	CDrawMiniMap	UpdateRegionExitNames	580	hand911	DIFFER(521v580) -- empty CAllocatorTag/filter temporaries homed at [ebp-1]/[ebp-2] v retail [ebp+0Bh] in the live region arg slot (GOTCHAS lane gap) + frame 0x44 v 0x4c
+0092cb30	CAIStateGroup_GoToBed	IsHeroTrespassingPerceived	624	hand278	DIFFER(610v610) -- component ptr eax/ecx + byte cl/al tie-break in TC-flag tests (5 tries)
+00949580	CAIStateGroup_GoToPub	WalktoSeatAndSit	816	hand278	DIFFER(805v808) -- HasTC bit-24 byte-load narrowing and look-at vector slot scattering (+4 frame) (6 tries)
+0094a3b0	CAIStateGroup_GoToPub	ChooseAction	800	hand278	DIFFER(813v785) -- shared Drink/SitIdle tail blocks not merged; 0xcf key frame slot (+4 frame)
+00977e00	CAIStateGroup_Guildmaster	CAIStateGroup_Guildmaster::Update	732	hand278	DIFFER(729v732) -- def pointer zero-after-push + ebp cache not reproduced; key/boss frame words swapped (frame +0x10)
+0091ddd0	CAIStateGroup_HoverAllAroundTest	?Update@CAIStateGroup_HoverAllAroundTest@@UAEXXZ	640	hand278	DIFFER(509v626) -- x87 rotation-matrix schedule and 8-aligned frame not modelled (1 try)
+0091e270	CAIStateGroup_HoverAttack	IsEnemyRunningAway	528	hand278	DIFFER(499v513) -- distSq not spilled before range call; Normalise r kept in st; this edi vs ebx
+0095a490	CAIStateGroup_HoverHornetQueen	IsRouteToPosBlockedByTarget	560	hand278	DIFFER(558v560) -- second inline Normalise: retail fstp r/fxch/fmul [r] vs ours fst r/fmul st2 (x87 stack)
+0095ad20	CAIStateGroup_HoverHornetQueen	GotoSafestCirclePoint	768	hand278	DIFFER(754v754) -- fast Normalise matched via const float& operator*=; ecx/edx register choice in 2nd/3rd normalise left (8 tries)
+0095b9e0	CAIStateGroup_HoverHornetQueen	DiveBomb	784	hand278	DIFFER(782v782) -- one int/x87 interleave of the diveTo.Z frame copy left (13 tries)
+0095bcf0	CAIStateGroup_HoverHornetQueen	Attack	960	hand278	DIFFER(948v948) -- one mov ecx,edi scheduled 4 x87 ops later than retail (15 tries)
+0095c1f0	CAIStateGroup_HoverHornetQueen	CAIStateGroup_HoverHornetQueen::Update	608	hand278	DIFFER(572v595) -- code+jump table RELOCATION_MATCH at 0x23C; row over-captures two stubs (needs split + jumptable lander)
+00959f80	CAIStateGroup_HoverKeepInArea	?Update@CAIStateGroup_HoverKeepInArea@@UAEXXZ	752	hand278	DIFFER(716v752) -- first pass: rotation-matrix x87 schedule (HoverWander family) not modelled (1 try)
+00959bf0	CAIStateGroup_HoverWander	?Update@CAIStateGroup_HoverWander@@UAEXXZ	752	hand278	DIFFER(626v739) -- first pass: rotation-matrix x87 schedule and unsigned fild fix-ups not modelled (1 try)
+00959800	CAIStateGroup_HoverWanderAroundThing	?IsRunnable@CAIStateGroup_HoverWanderAroundThing@@UAE_NXZ	608	hand278	DIFFER(625v595) -- frame order of the two vectors and the rough area; retail reuses the live vector slot for the pointer temp (6 tries)
+00950cf0	CAIStateGroup_JackDragon	UpdateStrafe	896	hand278	DIFFER(896v886) -- first approximation: marker register pair, heading fst/fstp, +4 frame (2 tries)
+00951070	CAIStateGroup_JackDragon	IntoGround	960	hand278	DIFFER(944v953) -- success-tail placement after the terminate return, +12 frame, physics-body vcall register (4 tries)
+00951d60	CAIStateGroup_JackDragon	IntoHover	592	hand278	DIFFER(601v588) -- zero register (ebx) and def-in-ebp allocation not reproduced; frame +0x10 (4 tries)
+009735d0	CAIStateGroup_JackOfBladesBase	RushToPos	690	hand278	DIFFER(670v690) -- x87 spill pattern of the inline normalise + distance (squared terms in frame words) (3 tries)
+00973dc0	CAIStateGroup_JackOfBladesBase	SummonPillars	848	hand278	DIFFER(834v833) -- Pillars[i] add vs lea, squared-length add order, SetPosition vcall register (6 tries)
+00972990	CAIStateGroup_JackOfBladesStage1	?OnActivate@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	816	hand278	DIFFER(792v803) -- frame-slot packing of keys/filters/areas; code shape otherwise aligned (3 tries)
+00972cc0	CAIStateGroup_JackOfBladesStage1	MeleeCombat	624	hand278	DIFFER(601v612) -- vptr constant held in ebp and +4 frame not reproduced; this/zero register swap (3 tries)
+00974770	CAIStateGroup_JackOfBladesStage1	PowerUpSword	816	hand278	DIFFER(817v807) -- frame-slot packing of the sword-block locals (+8 bytes); body otherwise aligned
+00915350	CAIStateGroup_KidHurtSelfRunToMother	CAIStateGroup_KidHurtSelfRunToMother::Update	880	hand278	DIFFER(867v867) -- frame packing of the present/arrived byte vs the interface key word; one mov ecx,esi scheduling (11 tries; advisor requested)
+00941690	CAIStateGroup_KidPlayHopscotch	CAIStateGroup_KidPlayHopscotch::Update	624	hand278	DIFFER(550v609) -- retail keeps a dead HasTC byte store + lower_bound loop (result unused); ours folds it away (2 tries)
+00941900	CAIStateGroup_KidPlayHopscotch	?IsRunnable@CAIStateGroup_KidPlayHopscotch@@MAE_NXZ	544	hand278	DIFFER(529v529) -- scheduling only: int copy of cross-product temp interleaved with fld/fmul (2 spots)
+00941fc0	CAIStateGroup_KidReactToBlockage	CAIStateGroup_KidReactToBlockage::IsRunnable	578	hand278	DIFFER(578v578) -- one register choice left (add edi,eax vs add eax,edi on the box corner) after advisor AdvB3 (8 own tries + 64 advisor grades)
+009552c0	CAIStateGroup_MazeShieldedChase	CAIStateGroup_MazeShieldedChase::Update	864	hand278	DIFFER(862v861) -- hand-released def pointer frame word reused for the proximity float; move-result jump into the shared check (4 tries)
+00954f40	CAIStateGroup_MazeTeleport	CAIStateGroup_MazeTeleport::Update	608	hand278	DIFFER(604v604) -- /GS; code identical, frame slot order of position/found/filter/name only (VC7.1 packs by type class; 12 own + 16 advisor tries)
+00955c90	CAIStateGroup_MazeTutorialBattle	CAIStateGroup_MazeTutorialBattle::Update	976	hand278	DIFFER(916v970) -- counted-def release inlining, by-value intelligent pointer built in the argument slot, defender-zone switch shape (3 tries)
