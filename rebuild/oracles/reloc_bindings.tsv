@@ -23984,3 +23984,4 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?IsAnotherGuardAdmonishingPlayer@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ	00939d00	0093a080
 ?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ	00939e70	0093a080
 ?RemoveMyWarningMessage@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ	00939dd0	0093a080
+?PeekPSimDefinition@CThingBuilding@@QAE?AU?$CDefPointer@UCSimBuildingDef@@@@XZ	0082d2d0	00917a10

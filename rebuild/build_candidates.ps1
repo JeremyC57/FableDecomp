@@ -267202,6 +267202,13 @@ $catalog = @(
         TestSource = '00/93/CAIStateGroupMinionGuardReactToPlayerWithWeapon_Update_0093a080_test.cpp'
         PassPattern = '0093a080_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00917a10'
+        Module = 'CAIStateGroup_Clean'
+        Source = '00/91/CAIStateGroupClean_IsRunnable_00917a10.cpp'
+        TestSource = '00/91/CAIStateGroupClean_IsRunnable_00917a10_test.cpp'
+        PassPattern = '00917a10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
