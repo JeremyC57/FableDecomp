@@ -23577,3 +23577,14 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBUCThing@@@Z	0097e270	0097ec00
 ?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z	0097e2d0	0097ec00
 ?CreateObject@@YIPAUCThingObject@@JPBUC3DVector@@JPAMKABUCCharString@@@Z	00703210	00848500
+??0?$CIntelligentPointer@UCParticleEmitter@NParticleEngine@@@@QAE@PAUCParticleEmitter@NParticleEngine@@@Z	00655318	00645f8d
+??4?$CIntelligentPointer@UCParticleEmitter@NParticleEngine@@@@QAEAAU0@ABU0@@Z	0065533c	00645f8d
+?for_each@@YI?AUCMemFunRefClear@@PAUCEnginePrimitiveHandle@@0U1@@Z	0043f360	00645f8d
+??_7CIntelligentPointerGossip@@6B@	0123e7e0	0090ca60
+?GetPWorld@CAIStateGroup_MinionGossip@@QAEPAUCWorld@@XZ	008fcfc0	0090ca60
+?RemoveMode@CTCModes@@QAEXK@Z	0073aba0	0090ca60
+?AddPrimitive@CEnginePrimitiveRenderer2D@@QAEXPAVCEngineInternalPrimitiveBase@@@Z	00b4a670	00b324a0
+?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z	00bacdd0	00b324a0
+?UpdatePosition@CEngineScene@@SIXAAVCEngineInternalPrimitiveBase@@K@Z	00b91840	00b324a0
+?g_pEnginePrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A	01436e7c	00b324a0
+?g_pEngineRenderSettings@@3PAUCEngineRenderSettings@@A	01436e78	00bc6340

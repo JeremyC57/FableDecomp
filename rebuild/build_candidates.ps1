@@ -264926,6 +264926,41 @@ $catalog = @(
         TestSource = '00/84/CCreatureActionGetPlateFromCupboard_PerformAction_00848500_test.cpp'
         PassPattern = '00848500_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00645f8d'
+        Module = 'NPlayerGui::CStatBar'
+        Source = '00/64/NPlayerGuiCStatBar_ClearGraphics_00645f8d.cpp'
+        TestSource = '00/64/NPlayerGuiCStatBar_ClearGraphics_00645f8d_test.cpp'
+        PassPattern = '00645f8d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090ca60'
+        Module = 'CAIStateGroup_MinionGossip'
+        Source = '00/90/CAIStateGroupMinionGossip_OnReplace_0090ca60.cpp'
+        TestSource = '00/90/CAIStateGroupMinionGossip_OnReplace_0090ca60_test.cpp'
+        PassPattern = '0090ca60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1aeb0'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_CPSCLight_00b1aeb0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_CPSCLight_00b1aeb0_test.cpp'
+        PassPattern = '00b1aeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b324a0'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_SetPersistentPrimitive_00b324a0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_SetPersistentPrimitive_00b324a0_test.cpp'
+        PassPattern = '00b324a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc6340'
+        Module = 'CEnginePrimitiveGroupManager'
+        Source = '00/bc/CEnginePrimitiveGroupManager_RenderPrimitive_00bc6340.cpp'
+        TestSource = '00/bc/CEnginePrimitiveGroupManager_RenderPrimitive_00bc6340_test.cpp'
+        PassPattern = '00bc6340_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
