@@ -265598,6 +265598,34 @@ $catalog = @(
         TestSource = '00/ac/C3DMeshFileClothChunk_ReadFromFile_00ac6750_test.cpp'
         PassPattern = '00ac6750_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a38e50'
+        Module = 'CCRCSymbolMap'
+        Source = '00/a3/CCRCSymbolMap_ParseBuffer_00a38e50.cpp'
+        TestSource = '00/a3/CCRCSymbolMap_ParseBuffer_00a38e50_test.cpp'
+        PassPattern = '00a38e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d56c0'
+        Module = 'CBankFileAsync'
+        Source = '00/9d/CBankFileAsync_OpenReadOnly_009d56c0.cpp'
+        TestSource = '00/9d/CBankFileAsync_OpenReadOnly_009d56c0_test.cpp'
+        PassPattern = '009d56c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d61f0'
+        Module = 'CBankFileAsyncData'
+        Source = '00/9d/CBankFileAsyncData_CBankFileAsyncData_009d61f0.cpp'
+        TestSource = '00/9d/CBankFileAsyncData_CBankFileAsyncData_009d61f0_test.cpp'
+        PassPattern = '009d61f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070d390'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_UpdateCombinationAnimList_0070d390.cpp'
+        TestSource = '00/70/CAnimateThing_UpdateCombinationAnimList_0070d390_test.cpp'
+        PassPattern = '0070d390_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
