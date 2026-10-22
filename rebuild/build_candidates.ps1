@@ -269483,6 +269483,13 @@ $catalog = @(
         TestSource = '00/ef/NScriptCPersonalScriptAardvarkScript_Main_00efc500_test.cpp'
         PassPattern = '00efc500_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b22b40'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b2/NParticleEngineCPSCSplineBase_ReadBinary_00b22b40.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBase_ReadBinary_00b22b40_test.cpp'
+        PassPattern = '00b22b40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

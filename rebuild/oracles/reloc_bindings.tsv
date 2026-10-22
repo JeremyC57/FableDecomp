@@ -24898,3 +24898,6 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?InterpolateTo@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXABU123@M@Z	00b211b0	00b22310
 ?GFUIntToCharString@@YI?AUCCharString@@K@Z	0099f8b0	00ef5200
 ?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABUCScriptThing@@PBD_N222@Z	007e7390	00efc500
+??0?$CArray@UC3DVector@@@@QAE@K@Z	007c2ab0	00b22b40
+?ReadBinary@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXPAUCDataInputStream@@@Z	00b21c90	00b22b40
+?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXPAUCDataInputStream@@@Z	00b22100	00b22b40
