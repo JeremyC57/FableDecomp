@@ -270239,6 +270239,20 @@ $catalog = @(
         TestSource = '00/b9/CEnginePrimitiveManagerOcclusionBase_RenderBoundingBox_00b91140_test.cpp'
         PassPattern = '00b91140_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0057770a'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_vfunc89_0057770a.cpp'
+        TestSource = '00/57/CTCInventoryExperience_vfunc89_0057770a_test.cpp'
+        PassPattern = '0057770a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005778ca'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_vfunc90_005778ca.cpp'
+        TestSource = '00/57/CTCInventoryExperience_vfunc90_005778ca_test.cpp'
+        PassPattern = '005778ca_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
