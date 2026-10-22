@@ -25110,3 +25110,6 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?g_XAxis@@3UC3DVector@@B	0137cdfc	005bd699
 ?g_YAxis@@3UC3DVector@@B	0137cdf0	005bd699
 ?g_ZAxis@@3UC3DVector@@B	0137ce08	005bd699
+??$FindString@PAUCCharString@@U1@USRandomAccessIteratorTag@@@@YIPAUCCharString@@PAU0@0ABU0@ABUSRandomAccessIteratorTag@@@Z	004b8e40	00aebc90
+??$_M_insert_overflow@U__true_type@@@CLongVector@@QAEXPAJABJABU__true_type@@K_N@Z	00440990	00aebc90
+?IsVisible@CParticleEmitter@NParticleEngine@@QAE_NXZ	00aed010	00aebc90
