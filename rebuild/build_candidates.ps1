@@ -264961,6 +264961,13 @@ $catalog = @(
         TestSource = '00/bc/CEnginePrimitiveGroupManager_RenderPrimitive_00bc6340_test.cpp'
         PassPattern = '00bc6340_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0095d3a0'
+        Module = 'CAIStateGroup_RangedCombatUsePreferredFirePoint'
+        Source = '00/95/CAIStateGroupRangedCombatUsePreferredFirePoint_OnReplace_0095d3a0.cpp'
+        TestSource = '00/95/CAIStateGroupRangedCombatUsePreferredFirePoint_OnReplace_0095d3a0_test.cpp'
+        PassPattern = '0095d3a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
