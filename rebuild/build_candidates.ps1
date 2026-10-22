@@ -269497,6 +269497,27 @@ $catalog = @(
         TestSource = '00/ae/NParticleEngineCParticleEmitter_IsVisible_00aed2f0_test.cpp'
         PassPattern = '00aed2f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00463334'
+        Module = 'CPersistContext'
+        Source = '00/46/CPersistContext_TransferMap_00463334.cpp'
+        TestSource = '00/46/CPersistContext_TransferMap_00463334_test.cpp'
+        PassPattern = '00463334_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00475026'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferMap_00475026.cpp'
+        TestSource = '00/47/CPersistContext_TransferMap_00475026_test.cpp'
+        PassPattern = '00475026_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047550f'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferMap_0047550f.cpp'
+        TestSource = '00/47/CPersistContext_TransferMap_0047550f_test.cpp'
+        PassPattern = '0047550f_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
