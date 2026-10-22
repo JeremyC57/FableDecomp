@@ -5,11 +5,11 @@ struct Pair;
 static int g_calls = 0;
 static void* g_last = 0;
 
-extern "C" void __fastcall Dtor_first(Pair* self){ g_calls++; g_last = (void*)self; }
-extern "C" void __fastcall Dtor_second(Pair* self){ g_calls++; g_last = (void*)self; }
-extern "C" void __fastcall Dtor_node(Pair* self){ g_calls++; g_last = (void*)self; }
+extern "C" void __fastcall Dtor_first(Pair* tentacle){ g_calls++; g_last = (void*)tentacle; }
+extern "C" void __fastcall Dtor_second(Pair* tentacle){ g_calls++; g_last = (void*)tentacle; }
+extern "C" void __fastcall Dtor_node(Pair* tentacle){ g_calls++; g_last = (void*)tentacle; }
 
-void __fastcall Dest_val(Pair* self);
+void __fastcall Dest_val(Pair* tentacle);
 
 int main(){
     int dummy = 0;

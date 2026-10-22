@@ -13,10 +13,10 @@ struct Sub {
 
 struct CTCCreatureNavigation {
     void* pad0;
-    Sub* f4;
+    Sub* ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* dest)
 {
-    return self->f4->v6(self, dest);
+    return self->ParentThing->v6(self, dest);
 }

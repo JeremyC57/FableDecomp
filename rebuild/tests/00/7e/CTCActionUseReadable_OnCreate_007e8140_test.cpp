@@ -12,7 +12,7 @@ struct Sub {
 };
 struct Owner {
     void* f0;
-    Sub*  f4;
+    Sub*  ParentThing;
     char  pad[0x14 - 8];
     int   f14;
     void  OnCreate();
@@ -38,7 +38,7 @@ int main()
     Owner o;
     Sub s;
     Consumer c;
-    o.f4 = &s;
+    o.ParentThing = &s;
     s.f70 = &c;
     o.f14 = 777;
 

@@ -6,8 +6,8 @@
 static int g_pushes = 0, g_frees = 0;
 
 struct CEngineComponent {
-    long m_4; bool m_enabled; bool m_9;
-    CEngineComponent() : m_4(0), m_enabled(true), m_9(false) {}
+    long GlobalPointerAddress; bool m_enabled; bool KeepAlive;
+    CEngineComponent() : GlobalPointerAddress(0), m_enabled(true), KeepAlive(false) {}
 };
 struct CEngineCameraDesc { bool m_valid; CEngineCameraDesc() : m_valid(false) {} };
 struct CLongArray {

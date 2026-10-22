@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCDegradableBarrier {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCDegradableBarrier_dtor(CTCDegradableBarrier* barrier);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCDegradableBarrier_scalar_deleting_destructor(CTCDegradableBarrier* barrier, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCDegradableBarrier_dtor(barrier);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(barrier);
+    return barrier;
 }

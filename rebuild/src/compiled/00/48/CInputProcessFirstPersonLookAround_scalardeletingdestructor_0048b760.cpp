@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CInputProcessFirstPersonLookAround {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CInputProcessFirstPersonLookAround_dtor(CInputProcessFirstPersonLookAround* process);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CInputProcessFirstPersonLookAround_scalar_deleting_destructor(CInputProcessFirstPersonLookAround* process, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CInputProcessFirstPersonLookAround_dtor(process);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(process);
+    return process;
 }

@@ -7,10 +7,10 @@
 static int g_component = 0, g_strings = 0, g_banks = 0, g_staticSet = 0;
 struct CEngineComponent {                          // vtable 0x012A2544
     virtual void v00() {}
-    long m_4;                                      // +0x04
+    long GlobalPointerAddress;                                      // +0x04
     bool m_enabled;                                // +0x08
-    bool m_9;                                      // +0x09
-    CEngineComponent() : m_4(7), m_enabled(true), m_9(true) { ++g_component; }
+    bool KeepAlive;                                      // +0x09
+    CEngineComponent() : GlobalPointerAddress(7), m_enabled(true), KeepAlive(true) { ++g_component; }
 };
 template <class T> struct CArray {                 // retail CArray (STLport vector): first / last / end
     T* m_first;
@@ -129,7 +129,7 @@ int main()
     ok = ok && m->ChangedAreas.m_first == 0 && m->ChangedAreas.m_last == 0 && m->ChangedAreas.m_end == 0;
     ok = ok && m->VisibleMapList._M_node != 0 && m->VisibleMapList._M_node->_M_next == m->VisibleMapList._M_node && m->VisibleMapList._M_node->_M_prev == m->VisibleMapList._M_node;
     ok = ok && m->GameWorld == 0 && m->GameWorldMap == 0 && m->StaticMapOpenState == 0 && m->StaticMapBuildStatus == 0;
-    ok = ok && !m->DynamicUpdateEnabled && !m->BuildRetailStaticMaps && m->m_4 == 7;
+    ok = ok && !m->DynamicUpdateEnabled && !m->BuildRetailStaticMaps && m->GlobalPointerAddress == 7;
     ok = ok && Build(-3, false)->StaticMapQuality == 0 && !Build(-3, false)->EnableMinimumStaticMapRebuild;
     ok = ok && Build(11, false)->StaticMapQuality == 10 && Build(10, false)->StaticMapQuality == 10 && Build(0, false)->StaticMapQuality == 0;
     if (!ok) { std::printf("00b423f0_TEST FAIL\n"); return 1; }

@@ -41,10 +41,10 @@ struct CTCSpecialAbilities {
     CUndeadFollowerList UndeadFollowers;        // +0x14
     CThing* Creature;                           // +0x18 (PDB +0x20)
     void KillReclaimedUndead(CThing* thing);    // 0x0072B3B0
-    void vfunc_16(bool on);
+    void OnSetInLimbo(bool on);
 };
 
-void CTCSpecialAbilities::vfunc_16(bool on)
+void CTCSpecialAbilities::OnSetInLimbo(bool on)
 {
     if (on) {
         for (CUndeadFollowerList::node* n = UndeadFollowers.head->next; n != UndeadFollowers.head; n = n->next) {

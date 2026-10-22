@@ -1,29 +1,29 @@
 #include <cstdio>
 static int g_AutoTinyScalarDestructorCalls = 0;
 static int g_AutoTinyScalarDeleteCalls = 0;
-void __fastcall AutoTinyScalarDestructor(void*)
+void __fastcall CTCPlot_Destruct(void*)
 {
     ++g_AutoTinyScalarDestructorCalls;
 }
-void __cdecl AutoTinyScalarDelete(void*)
+void __cdecl OperatorDelete(void*)
 {
     ++g_AutoTinyScalarDeleteCalls;
 }
-void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCPlot_ScalarDeletingDestructor(void* plot, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCPlot_Destruct(plot);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(plot);
+    return plot;
 }
 int main()
 {
     int object = 0;
-    if (CAssoc_ScalarDeletingDestructor(&object, 0, 0) != &object ||
+    if (CTCPlot_ScalarDeletingDestructor(&object, 0, 0) != &object ||
         g_AutoTinyScalarDestructorCalls != 1 ||
         g_AutoTinyScalarDeleteCalls != 0)
         return 1;
-    CAssoc_ScalarDeletingDestructor(&object, 0, 1);
+    CTCPlot_ScalarDeletingDestructor(&object, 0, 1);
     if (g_AutoTinyScalarDestructorCalls != 2 ||
         g_AutoTinyScalarDeleteCalls != 1)
         return 1;

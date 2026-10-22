@@ -14,10 +14,10 @@ struct Sub {
 
 struct CTCCreatureNavigation {
     void* f0;
-    Sub* f4;
+    Sub* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest) {
-    return f4->v7(this, dest);
+    return ParentThing->v7(this, dest);
 }

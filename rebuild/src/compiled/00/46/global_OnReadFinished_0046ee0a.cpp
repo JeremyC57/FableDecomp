@@ -19,7 +19,7 @@
 struct CActiveFile
 {
     void* field_0;   // +0x0 : sub-object pointer (ecx of call1; tested; freed by call2)
-    int   field_4;   // +0x4 : passed in edx to call1
+    int   DstFileHandle;   // +0x4 : passed in edx to call1
 };
 
 // call1: ecx = field_0, edx = field_4, one pushed stack arg (&local byte).
@@ -31,7 +31,7 @@ extern void FABLE_CDECL CActiveFile_call2(void* p);
 void FABLE_FASTCALL CActiveFile_OnReadFinished(CActiveFile* thisptr)
 {
     char local;
-    CActiveFile_call1(thisptr->field_0, thisptr->field_4, &local);
+    CActiveFile_call1(thisptr->field_0, thisptr->DstFileHandle, &local);
     if (thisptr->field_0 != 0)
         CActiveFile_call2(thisptr->field_0);
 }

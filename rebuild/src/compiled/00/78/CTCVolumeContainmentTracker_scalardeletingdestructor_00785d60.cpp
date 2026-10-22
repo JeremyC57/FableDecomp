@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCVolumeContainmentTracker {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCVolumeContainmentTracker_dtor(CTCVolumeContainmentTracker* tracker);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCVolumeContainmentTracker_scalar_deleting_destructor(CTCVolumeContainmentTracker* tracker, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCVolumeContainmentTracker_dtor(tracker);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(tracker);
+    return tracker;
 }

@@ -1,12 +1,12 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct AutoTinyVectorObject
+struct CTCCameraPointGeneralCase
 {
     void* vftable;
 };
-void* const g_AutoTinyVectorVftable = (void*)0x12345678;
-void __fastcall AutoTinyVectorDestructor(void*)
+void* const g_CTCCameraPointGeneralCase_vftable = (void*)0x12345678;
+void __fastcall CTCCameraPointGeneralCase_Destruct(void*)
 {
     ++g_AutoTinyVectorDestructorCalls;
 }
@@ -14,23 +14,23 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CTCCameraPointGeneralCase* generalCase, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    generalCase->vftable = (void*)&g_CTCCameraPointGeneralCase_vftable;
+    CTCCameraPointGeneralCase_Destruct(generalCase);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(generalCase);
+    return generalCase;
 }
 int main()
 {
-    AutoTinyVectorObject object = {0};
-    if (vector_deleting_destructor(&object, 0, 0) != &object ||
-        object.vftable != &g_AutoTinyVectorVftable ||
+    CTCCameraPointGeneralCase object = {0};
+    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+        object.vftable != &g_CTCCameraPointGeneralCase_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    vector_deleting_destructor(&object, 0, 1);
+    scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

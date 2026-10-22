@@ -21,7 +21,7 @@ inline long ParseLong(CPersistContext& c, CStringParser& p) { long v; TransferIn
 struct CAnimComponentCombatHandedness {
  virtual ~CAnimComponentCombatHandedness(); virtual void v01(); virtual void v02();
  virtual bool Initialise(CPersistContext&, const CCharString&); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void Reset();
- long f4; long StartHandedness; long EndHandedness;
+ long IVRefCount; long StartHandedness; long EndHandedness;
 };
 bool CAnimComponentCombatHandedness::Initialise(CPersistContext& context, const CCharString& text) {
  Reset();

@@ -5,7 +5,7 @@ struct FableDestVal_0085baf0_t
 static int g_inner = 0, g_outer = 0;
 void FABLE_FASTCALL FableDestVal_0085baf0_t::inner() { g_inner++; }
 void FABLE_FASTCALL FableDestVal_0085baf0_t::outer() { g_outer++; }
-extern "C" void FABLE_FASTCALL FableDestVal_0085baf0(FableDestVal_0085baf0_t* self);
+extern "C" void FABLE_FASTCALL FableDestVal_0085baf0(FableDestVal_0085baf0_t* action);
 int main()
 {
     char buf[0x8 + 8];

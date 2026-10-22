@@ -12,7 +12,7 @@ void __cdecl op_delete(void* p) { (void)p; delete_calls++; }
 
 struct CLandscapeBackgroundPatch {
     int f0;
-    int f4;
+    int Parent;
     void* f8;
     char pad[0x28 - 0xc];
     CMember m28;

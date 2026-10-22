@@ -4,7 +4,7 @@ struct Inner { int tag; };
 
 struct CTCVillage {
     Inner *field0;
-    int    field4;
+    int    ParentThing;
     char   pad8[4];
     char   fieldC;
     char   fieldD;
@@ -26,7 +26,7 @@ void __fastcall Helper(Inner *self, int edxVal, unsigned char arg)
 void __fastcall OnInitialActivate(CTCVillage *self)
 {
     if (self->fieldD) {
-        Helper(self->field0, self->field4, (unsigned char)self->fieldC);
+        Helper(self->field0, self->ParentThing, (unsigned char)self->fieldC);
         self->fieldD = 0;
     }
 }
@@ -38,7 +38,7 @@ int main()
     // Case 1: guard set -> Helper called, arg = fieldC (as unsigned char), flag cleared.
     CTCVillage v;
     v.field0 = &inner;
-    v.field4 = 0x1234;
+    v.ParentThing = 0x1234;
     v.fieldC = (char)0xAB;   // 171
     v.fieldD = 1;
     OnInitialActivate(&v);
@@ -50,7 +50,7 @@ int main()
     g_callCount = 0;
     CTCVillage v2;
     v2.field0 = &inner;
-    v2.field4 = 5;
+    v2.ParentThing = 5;
     v2.fieldC = 3;
     v2.fieldD = 0;
     OnInitialActivate(&v2);

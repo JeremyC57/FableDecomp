@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CMessageOnMorphChanged {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CMessageOnMorphChanged_dtor(CMessageOnMorphChanged* message);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CMessageOnMorphChanged_scalar_deleting_destructor(CMessageOnMorphChanged* message, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CMessageOnMorphChanged_dtor(message);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(message);
+    return message;
 }

@@ -51,7 +51,7 @@ static CWorld g_world;
 static const char* g_wander = "wander"; static char g_regIn[4];
 struct CGameScriptInterface_Base { };
 struct CDisplayEngine_Retail; struct CPlayerManager_Retail;
-struct CGameScriptInterface { virtual void v000() { } CWorld* World; long m_08; CDisplayEngine_Retail* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
+struct CGameScriptInterface { virtual void v000() { } CWorld* World; long Component; CDisplayEngine_Retail* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
     void GetWanderingPopulationScriptDefName(const CCharString& region, CCharString& name) const { std::strcat(g_seq, "W"); std::memcpy(g_regIn, &region, 4); name.m_p = g_wander; }
     void GetWanderingPopulationScriptDefNameInCurrentRegion(CCharString& name) const {CRegion_Retail* region = World->GetWorldMap()->GetRegion(World->GetWorldMap()->GetCurrentRegionNumber()); GetWanderingPopulationScriptDefName(*(const CCharString*)region->m_name, name);}
 };

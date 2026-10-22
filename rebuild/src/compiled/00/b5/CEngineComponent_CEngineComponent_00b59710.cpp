@@ -3,13 +3,13 @@
 // Vtable 0x012A2544 names the class; the chunk label is propagated. Shape: no frame, one zero register, `ret`.
 struct CEngineComponent {                          // vtable 0x012A2544
     virtual void v00();
-    long m_4;                                      // +0x04
+    long GlobalPointerAddress;                                      // +0x04
     bool m_enabled;                                // +0x08
-    bool m_9;                                      // +0x09
+    bool KeepAlive;                                      // +0x09
     CEngineComponent();
 };
 
 CEngineComponent::CEngineComponent()
-    : m_4(0), m_enabled(true), m_9(false)
+    : GlobalPointerAddress(0), m_enabled(true), KeepAlive(false)
 {
 }

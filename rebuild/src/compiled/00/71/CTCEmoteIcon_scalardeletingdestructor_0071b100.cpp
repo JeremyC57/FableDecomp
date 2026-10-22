@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCEmoteIcon {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCEmoteIcon_dtor(CTCEmoteIcon* icon);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCEmoteIcon_scalar_deleting_destructor(CTCEmoteIcon* icon, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCEmoteIcon_dtor(icon);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(icon);
+    return icon;
 }

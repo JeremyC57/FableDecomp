@@ -12,13 +12,13 @@ struct CTCInventoryItemBase
 struct CTCInventoryItem : public CTCInventoryItemBase
 {
     char pad0[0x10];
-    void* member10;     // +0x10
+    void* PInventory;     // +0x10
     void OnDie();
 };
 
 void CTCInventoryItem::OnDie()
 {
-    if (this->member10)
-        FreeHelper_bfea14(this->member10);
+    if (this->PInventory)
+        FreeHelper_bfea14(this->PInventory);
     this->BaseOnDie();
 }

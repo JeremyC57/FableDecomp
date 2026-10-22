@@ -7,7 +7,7 @@ static const float g_animScale = 65535.0f / 360.0f;  // static float at .rdata (
 
 struct C3DAnimationSequence
 {
-    int   field0;      // +0x00
+    int   Data;      // +0x00
     int   field4;      // +0x04
     short m_value;     // +0x08
 

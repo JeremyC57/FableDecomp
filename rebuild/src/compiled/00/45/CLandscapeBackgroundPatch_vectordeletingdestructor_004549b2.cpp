@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 struct CLandscapeBackgroundPatch {
     int f0;
-    int f4;
+    int Parent;
     void* f8;
     char inner[4];
     unsigned char _pad_0x10[0xa8];

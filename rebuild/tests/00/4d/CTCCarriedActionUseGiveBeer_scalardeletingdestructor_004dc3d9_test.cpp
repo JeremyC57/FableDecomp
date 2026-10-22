@@ -1,29 +1,29 @@
 #include <cstdio>
 static int g_AutoTinyScalarDestructorCalls = 0;
 static int g_AutoTinyScalarDeleteCalls = 0;
-void __fastcall AutoTinyScalarDestructor(void*)
+void __fastcall CTCCarriedActionUseGiveBeer_Destruct(void*)
 {
     ++g_AutoTinyScalarDestructorCalls;
 }
-void __cdecl AutoTinyScalarDelete(void*)
+void __cdecl OperatorDelete(void*)
 {
     ++g_AutoTinyScalarDeleteCalls;
 }
-void* __fastcall CLandscapeBackgroundPatch_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCCarriedActionUseGiveBeer_ScalarDeletingDestructor(void* beer, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCCarriedActionUseGiveBeer_Destruct(beer);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(beer);
+    return beer;
 }
 int main()
 {
     int object = 0;
-    if (CLandscapeBackgroundPatch_ScalarDeletingDestructor(&object, 0, 0) != &object ||
+    if (CTCCarriedActionUseGiveBeer_ScalarDeletingDestructor(&object, 0, 0) != &object ||
         g_AutoTinyScalarDestructorCalls != 1 ||
         g_AutoTinyScalarDeleteCalls != 0)
         return 1;
-    CLandscapeBackgroundPatch_ScalarDeletingDestructor(&object, 0, 1);
+    CTCCarriedActionUseGiveBeer_ScalarDeletingDestructor(&object, 0, 1);
     if (g_AutoTinyScalarDestructorCalls != 2 ||
         g_AutoTinyScalarDeleteCalls != 1)
         return 1;

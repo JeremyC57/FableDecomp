@@ -18,20 +18,20 @@ static int g_checkResult = 0;
 static int g_slot3Called = 0;
 static int g_baseCalled = 0;
 
-bool __fastcall CreatureForcePush_Check(CCreatureAction_ForcePushOutOf* self) {
-    (void)self;
+bool __fastcall CreatureForcePush_Check(CCreatureAction_ForcePushOutOf* action) {
+    (void)action;
     return g_checkResult != 0;
 }
-void __fastcall CreatureAction_FinishAction_Base(CCreatureAction_ForcePushOutOf* self) {
-    (void)self;
+void __fastcall CreatureAction_FinishAction_Base(CCreatureAction_ForcePushOutOf* action) {
+    (void)action;
     g_baseCalled++;
 }
-static void __fastcall Slot3Impl(CCreatureAction_ForcePushOutOf* self) {
-    self->marker = 99;
+static void __fastcall Slot3Impl(CCreatureAction_ForcePushOutOf* action) {
+    action->marker = 99;
     g_slot3Called++;
 }
 
-void __fastcall CCreatureAction_ForcePushOutOf_FinishAction(CCreatureAction_ForcePushOutOf* self);
+void __fastcall CCreatureAction_ForcePushOutOf_FinishAction(CCreatureAction_ForcePushOutOf* action);
 
 int main() {
     CCreatureAction_ForcePushOutOf_vtbl vt;

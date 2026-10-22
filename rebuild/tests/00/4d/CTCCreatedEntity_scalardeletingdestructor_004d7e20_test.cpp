@@ -3,37 +3,37 @@ static int g_AutoTinyMemberDestructorCalls = 0;
 static int g_AutoTinyCompositeDestructorCalls = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
 static void* g_AutoTinyObservedMember = 0;
-void __fastcall AutoTinyMemberDestructor(void* member)
+void __fastcall DestructMember(void* member)
 {
     ++g_AutoTinyMemberDestructorCalls;
     g_AutoTinyObservedMember = member;
 }
-void __fastcall AutoTinyCompositeDestructor(void*)
+void __fastcall CTCCreatedEntity_Destruct(void*)
 {
     ++g_AutoTinyCompositeDestructorCalls;
 }
-void __cdecl AutoTinyCompositeDelete(void*)
+void __cdecl OperatorDelete(void*)
 {
     ++g_AutoTinyCompositeDeleteCalls;
 }
-void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCCreatedEntity_CompositeScalarDeletingDestructor(void* entity, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor(static_cast<unsigned char*>(self) + 12);
-    AutoTinyCompositeDestructor(self);
+    DestructMember(static_cast<unsigned char*>(entity) + 12);
+    CTCCreatedEntity_Destruct(entity);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(entity);
+    return entity;
 }
 int main()
 {
     unsigned char object[256] = {0};
-    if (CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
+    if (CTCCreatedEntity_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
         g_AutoTinyObservedMember != object + 12 ||
         g_AutoTinyMemberDestructorCalls != 1 ||
         g_AutoTinyCompositeDestructorCalls != 1 ||
         g_AutoTinyCompositeDeleteCalls != 0)
         return 1;
-    CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(object, 0, 1);
+    CTCCreatedEntity_CompositeScalarDeletingDestructor(object, 0, 1);
     if (g_AutoTinyMemberDestructorCalls != 2 ||
         g_AutoTinyCompositeDestructorCalls != 2 ||
         g_AutoTinyCompositeDeleteCalls != 1)

@@ -5,9 +5,9 @@ static int g_overflow = 0;
 struct CDataInputStream {
     void* m_pVtable;
     unsigned long m_position;
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size) { ++g_overflow; std::memset(buffer, 0, size); }
     static bool IsValidPosition(long long position) { return position >= 0 && position <= 0x7fffffff; }

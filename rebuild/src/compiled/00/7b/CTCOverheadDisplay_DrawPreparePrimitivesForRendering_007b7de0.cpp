@@ -21,10 +21,10 @@ struct CTCBase_007b7de0 {
 struct CTCOverheadDisplay : CTCBase_007b7de0 {
     unsigned char       _pad0c[0x1c - 0x0c];       // DamageValues/RepairValues/RenownValues (4-byte retail lists), PDef
     CRetailHandleVector PrimitiveHandles;                   // +0x1c
-    virtual void vfunc_11(long unused);
+    virtual void DrawPreparePrimitivesForRendering(long unused);
 };
 
-void CTCOverheadDisplay::vfunc_11(long)
+void CTCOverheadDisplay::DrawPreparePrimitivesForRendering(long)
 {
     PrimitiveHandles.clear();
 }

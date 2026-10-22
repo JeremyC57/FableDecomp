@@ -16,24 +16,24 @@ void __cdecl AutoTinyCompositeDelete(void*)
 {
     ++g_AutoTinyCompositeDeleteCalls;
 }
-void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCCarriedActionUseTrophy_CompositeScalarDeletingDestructor(void* trophy, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor(static_cast<unsigned char*>(self) + 20);
-    AutoTinyCompositeDestructor(self);
+    AutoTinyMemberDestructor(static_cast<unsigned char*>(trophy) + 20);
+    AutoTinyCompositeDestructor(trophy);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        AutoTinyCompositeDelete(trophy);
+    return trophy;
 }
 int main()
 {
     unsigned char object[256] = {0};
-    if (CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
+    if (CTCCarriedActionUseTrophy_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
         g_AutoTinyObservedMember != object + 20 ||
         g_AutoTinyMemberDestructorCalls != 1 ||
         g_AutoTinyCompositeDestructorCalls != 1 ||
         g_AutoTinyCompositeDeleteCalls != 0)
         return 1;
-    CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(object, 0, 1);
+    CTCCarriedActionUseTrophy_CompositeScalarDeletingDestructor(object, 0, 1);
     if (g_AutoTinyMemberDestructorCalls != 2 ||
         g_AutoTinyCompositeDestructorCalls != 2 ||
         g_AutoTinyCompositeDeleteCalls != 1)

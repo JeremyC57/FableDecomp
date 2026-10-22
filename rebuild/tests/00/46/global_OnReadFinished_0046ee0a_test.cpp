@@ -4,7 +4,7 @@
 struct CActiveFile
 {
     void* field_0;
-    int   field_4;
+    int   DstFileHandle;
 };
 
 extern void FABLE_FASTCALL CActiveFile_call1(void* thisp, int edx, char* p);
@@ -35,13 +35,13 @@ int main(void)
     // field_0 non-null: both calls fire.
     CActiveFile a;
     a.field_0 = &dummy;
-    a.field_4 = 0x1234;
+    a.DstFileHandle = 0x1234;
     CActiveFile_OnReadFinished(&a);
 
     // field_0 null: only call1 fires.
     CActiveFile b;
     b.field_0 = 0;
-    b.field_4 = 0x5678;
+    b.DstFileHandle = 0x5678;
     CActiveFile_OnReadFinished(&b);
 
     if (g_call1_hits == 2 && g_call2_hits == 1 && g_call1_seen_edx == 0x5678)

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CPSCRenderSprite {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CPSCRenderSprite_dtor(CPSCRenderSprite* sprite);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CPSCRenderSprite_scalar_deleting_destructor(CPSCRenderSprite* sprite, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CPSCRenderSprite_dtor(sprite);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(sprite);
+    return sprite;
 }

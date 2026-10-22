@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEnginePrimitive2DViewportManager {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEnginePrimitive2DViewportManager_dtor(CEnginePrimitive2DViewportManager* manager);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEnginePrimitive2DViewportManager_scalar_deleting_destructor(CEnginePrimitive2DViewportManager* manager, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEnginePrimitive2DViewportManager_dtor(manager);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(manager);
+    return manager;
 }

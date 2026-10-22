@@ -21,7 +21,7 @@ struct CGameScriptInterface_Base { virtual void v000() { } };
 struct CPlayer_Retail { CThing_Retail* GetHeroCreature() { std::strcat(g_seq, "h"); return &g_thing; } }; static CPlayer_Retail g_player;
 struct CPlayerManager_Retail { CPlayer_Retail* GetMainPlayer() { std::strcat(g_seq, "p"); return &g_player; } }; static CPlayerManager_Retail g_pm;
 struct CRegionExit_Retail { unsigned char _pad[0xc]; bool m_active; };
-struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long m_08; void* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager;
+struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long Component; void* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager;
     void SetRegionEntranceAsActive(const CScriptThing& thing, bool active) const { if (thing.IsValid()) { CThing_Retail* t = thing.GetThing(); if (t->HasTC(99)) ((CRegionExit_Retail*)t->m_pRegionLink)->m_active = active; } } };
 int main() {
     CGameScriptInterface i; reset(99, true); CRegionExit_Retail x; x.m_active = false; g_thing.m_pRegionLink = &x; i.SetRegionEntranceAsActive(g_script, true); if (std::strcmp(g_seq, "vg") || !x.m_active) { std::printf("0089ef00_TEST FAIL\n"); return 1; }

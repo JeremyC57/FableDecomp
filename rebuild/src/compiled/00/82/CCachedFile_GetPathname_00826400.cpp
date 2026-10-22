@@ -7,8 +7,8 @@ struct CCachedFile {
     char m_pathname[4];
 };
 
-void* __fastcall GetPathname(CCachedFile* self, int /*edx*/, CCharString* dst)
+void* __fastcall GetPathname(CCachedFile* file, int /*edx*/, CCharString* dst)
 {
-    dst->copyCtor(self->m_pathname);
+    dst->copyCtor(file->m_pathname);
     return dst;
 }

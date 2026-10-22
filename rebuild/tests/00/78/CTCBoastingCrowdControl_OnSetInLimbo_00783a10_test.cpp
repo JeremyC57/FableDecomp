@@ -31,7 +31,7 @@ struct CTCBoastingCrowdControl {
     int m_kills, m_startups;
     void KillAllCrowdThings() { ++m_kills; }
     void Startup() { ++m_startups; }
-    void vfunc_16(bool flag)
+    void OnSetInLimbo(bool flag)
     {
         if (flag)
             KillAllCrowdThings();
@@ -44,12 +44,12 @@ int main()
 {
     CTCBoastingCrowdControl c; c.m_kills = 0; c.m_startups = 0;
     c.Active = false;
-    c.vfunc_16(true);
+    c.OnSetInLimbo(true);
     if (c.m_kills != 1 || c.m_startups != 0) { std::printf("00783a10_TEST FAIL\n"); return 1; }
-    c.vfunc_16(false);
+    c.OnSetInLimbo(false);
     if (c.m_kills != 1 || c.m_startups != 1) { std::printf("00783a10_TEST FAIL\n"); return 1; }
     c.Active = true;
-    c.vfunc_16(false);
+    c.OnSetInLimbo(false);
     if (c.m_kills != 1 || c.m_startups != 1) { std::printf("00783a10_TEST FAIL\n"); return 1; }
     std::printf("00783a10_TEST PASS\n");
     return 0;

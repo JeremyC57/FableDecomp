@@ -28,9 +28,9 @@ public:
     virtual void v05();
     virtual CCharString ReadNullTerminatedString();                  // slot 6 (+0x18)
     unsigned long m_position;              // +0x04
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;          // +0x0C current chunk read pointer
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     __forceinline void Read(void* buffer, long size)

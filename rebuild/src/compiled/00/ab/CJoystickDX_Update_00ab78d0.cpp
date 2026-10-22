@@ -1,3 +1,3 @@
-struct S; extern void __fastcall h1(S* self); extern void __fastcall h2(S* self);
-struct S { int x; };
-void __fastcall Close(S* self){ h1(self); h2(self); }
+struct CJoystickDX; extern void __fastcall h1(CJoystickDX* joystickDX); extern void __fastcall h2(CJoystickDX* joystickDX);
+struct CJoystickDX { int x; };
+void __fastcall Close(CJoystickDX* joystickDX){ h1(joystickDX); h2(joystickDX); }

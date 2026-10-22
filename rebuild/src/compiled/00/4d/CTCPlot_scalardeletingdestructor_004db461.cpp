@@ -1,10 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall AutoTinyScalarDestructor(void* self);
-extern void __cdecl AutoTinyScalarDelete(void* object);
-void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall CTCPlot_Destruct(void* plot);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CTCPlot_ScalarDeletingDestructor(void* plot, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCPlot_Destruct(plot);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(plot);
+    return plot;
 }

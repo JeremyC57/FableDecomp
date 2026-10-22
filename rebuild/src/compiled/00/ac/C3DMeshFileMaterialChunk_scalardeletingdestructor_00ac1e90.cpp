@@ -1,12 +1,12 @@
 #pragma optimize("t", on)
-extern void __fastcall AutoTinyMemberDestructor(void* member);
-extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
-void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall DestructMember(void* member);
+extern void __fastcall C3DMeshFileMaterialChunk_Destruct(void* chunk);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall C3DMeshFileMaterialChunk_CompositeScalarDeletingDestructor(void* chunk, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor(static_cast<unsigned char*>(self) + 76);
-    AutoTinyCompositeDestructor(self);
+    DestructMember(static_cast<unsigned char*>(chunk) + 76);
+    C3DMeshFileMaterialChunk_Destruct(chunk);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(chunk);
+    return chunk;
 }

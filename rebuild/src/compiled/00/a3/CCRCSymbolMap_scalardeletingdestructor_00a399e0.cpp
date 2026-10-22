@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCRCSymbolMap {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCRCSymbolMap_dtor(CCRCSymbolMap* map);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCRCSymbolMap_scalar_deleting_destructor(CCRCSymbolMap* map, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCRCSymbolMap_dtor(map);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(map);
+    return map;
 }

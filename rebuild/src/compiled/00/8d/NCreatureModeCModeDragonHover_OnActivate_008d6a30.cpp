@@ -11,8 +11,8 @@ struct FableDestValV_008d6a30_inner
 {
     void FABLE_FASTCALL h2(char flag);
 };
-extern "C" void FABLE_FASTCALL FableDestValV_008d6a30(FableDestValV_008d6a30_t* self)
+extern "C" void FABLE_FASTCALL FableDestValV_008d6a30(FableDestValV_008d6a30_t* mode)
 {
-    self->h1();
-    ((FableDestValV_008d6a30_inner*)self->field_4)->h2(0);
+    mode->h1();
+    ((FableDestValV_008d6a30_inner*)mode->field_4)->h2(0);
 }

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCTavernTable {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCTavernTable_dtor(CTCTavernTable* table);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCTavernTable_scalar_deleting_destructor(CTCTavernTable* table, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCTavernTable_dtor(table);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(table);
+    return table;
 }

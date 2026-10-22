@@ -15,7 +15,7 @@ void HelperArg::MethodC1C830() { g_helperCalls++; this->tag += 100; }
 struct CTCHeroExperience
 {
     HelperArg* field0;
-    int field4;
+    int ParentThing;
     CTCHeroExperience* AddSuccessfulBlockParry(HelperArg* arg);
 };
 
@@ -23,7 +23,7 @@ CTCHeroExperience* CTCHeroExperience::AddSuccessfulBlockParry(HelperArg* arg)
 {
     this->field0 = arg;
     arg->MethodC1C830();
-    this->field4 = g_TimerFnPtr();
+    this->ParentThing = g_TimerFnPtr();
     return this;
 }
 
@@ -34,7 +34,7 @@ int main()
 {
     CTCHeroExperience h;
     h.field0 = 0;
-    h.field4 = -1;
+    h.ParentThing = -1;
 
     HelperArg a;
     a.tag = 5;
@@ -44,12 +44,12 @@ int main()
     bool ok = true;
     if (r != &h) ok = false;
     if (h.field0 != &a) ok = false;
-    if (h.field4 != 0x1234ABCD) ok = false;
+    if (h.ParentThing != 0x1234ABCD) ok = false;
     if (g_helperCalls != 1) ok = false;
     if (a.tag != 105) ok = false;
 
     if (ok) {
-        printf("PARRY_OK f4=%08X tag=%d\n", h.field4, a.tag);
+        printf("PARRY_OK f4=%08X tag=%d\n", h.ParentThing, a.tag);
         return 0;
     }
     printf("PARRY_FAIL\n");

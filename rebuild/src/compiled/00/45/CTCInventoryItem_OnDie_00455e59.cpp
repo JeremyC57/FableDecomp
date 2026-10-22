@@ -5,7 +5,7 @@ struct CTCInventoryItem {
     unsigned char _pad_0xc[0x4];
     void* ptr10;
     unsigned char _pad_0x14[0xc];
-    char sub20;
+    char DefaultItem;
 };
 extern "C" void __cdecl eng_free(void* p);
 void __fastcall CTCInventoryItem_base_OnDie(CTCInventoryItem* self);

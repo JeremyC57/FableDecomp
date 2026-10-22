@@ -15,9 +15,9 @@ struct CDataInputStream {
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;          // +0xC
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }

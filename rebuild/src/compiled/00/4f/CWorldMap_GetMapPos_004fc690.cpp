@@ -15,9 +15,9 @@ struct MapEntry {
 struct CWorldMap {
     long f0;
     long f4;
-    long f8;
-    long fc;
-    long f10;
+    long World;
+    long Component;
+    long PThingMapManager;
     long f14;
     long f18;
     long f1c;

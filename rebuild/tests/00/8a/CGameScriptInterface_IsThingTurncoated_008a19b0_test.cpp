@@ -21,7 +21,7 @@ struct CGameScriptInterface_Base { virtual void v000() { } };
 struct CPlayer_Retail { CThing_Retail* GetHeroCreature() { std::strcat(g_seq, "h"); return &g_thing; } }; static CPlayer_Retail g_player;
 struct CPlayerManager_Retail { CPlayer_Retail* GetMainPlayer() { std::strcat(g_seq, "p"); return &g_player; } }; static CPlayerManager_Retail g_pm;
 static bool g_turned = false; struct CTCTurncoat_Retail { bool IsTurncoated() { std::strcat(g_seq, "T"); return g_turned; } };
-struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long m_08; void* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager;
+struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long Component; void* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager;
     bool IsThingTurncoated(const CScriptThing& thing) const { if (thing.IsValid()) { CThing_Retail* t = thing.GetThing(); if (t->HasTC(0x9f)) return ((CTCTurncoat_Retail*)GetTC(t, 0x9f))->IsTurncoated(); } return false; } };
 int main() {
     CGameScriptInterface i; reset(0x9f, true); g_turned = true; if (!i.IsThingTurncoated(g_script) || std::strcmp(g_seq, "vgT") || g_lbKind != 0x9f) { std::printf("008a19b0_TEST FAIL\n"); return 1; } g_turned = false; if (i.IsThingTurncoated(g_script)) { std::printf("008a19b0_TEST FAIL\n"); return 1; } reset(0x9f, false); g_turned = true; if (i.IsThingTurncoated(g_script)) { std::printf("008a19b0_TEST FAIL\n"); return 1; }

@@ -15,9 +15,9 @@ struct FakeTarget : INavTarget {
 
 struct CTCCreatureNavigation {
     void* field_0;
-    INavTarget* field_4;
+    INavTarget* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest) {
-        return field_4->Query(this, dest);
+        return ParentThing->Query(this, dest);
     }
 };
 
@@ -26,7 +26,7 @@ int main() {
     t.ret = true;
     CTCCreatureNavigation nav;
     nav.field_0 = 0;
-    nav.field_4 = &t;
+    nav.ParentThing = &t;
     C3DVector v = {1.f, 2.f, 3.f};
 
     bool r = nav.IsNewDestinationGoingToResetNavigation(&v);

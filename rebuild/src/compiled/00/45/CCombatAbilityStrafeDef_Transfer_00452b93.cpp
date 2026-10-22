@@ -14,8 +14,8 @@ struct CCombatAbilityStrafeDef {
     CFieldA f40;
 };
 
-void __fastcall CCombatAbilityStrafeDef_Transfer(CCombatAbilityStrafeDef* self, int, CPersistContext* ctx)
+void __fastcall CCombatAbilityStrafeDef_Transfer(CCombatAbilityStrafeDef* def, int, CPersistContext* ctx)
 {
-    ctx->TransferA(&self->f40);
-    ctx->TransferB(&self->f28);
+    ctx->TransferA(&def->f40);
+    ctx->TransferB(&def->f28);
 }

@@ -2,7 +2,7 @@ struct CAIStateGroup_HoverHornetQueen
 {
     void* vfptr;
     long m_wrapAmount;
-    long field_0x8;
+    long ScriptAIPriority;
     long m_current;
     long m_total;
 

@@ -1,2 +1,2 @@
-struct C006868d0 { int x; void M(int p0); };
-void C006868d0::M(int p0){ }
+struct C006868d0 { int x; void Copy(int other); };
+void C006868d0::Copy(int other){ }

@@ -19,7 +19,7 @@ struct Obj4 {
 
 struct CParticleSystem {
     char pad0[4];        // +0x00
-    Obj4* p4;            // +0x04
+    Obj4* PParentEmitter;            // +0x04
     char pad8[0x18-8];   // +0x08 .. +0x17
     Sub18 sub;           // +0x18
     char pad1c[0x58-0x18-(int)sizeof(Sub18)];
@@ -30,6 +30,6 @@ struct CParticleSystem {
 void __fastcall Kill(CParticleSystem* self, int edx, int arg)
 {
     self->sub.Method(&arg);
-    self->p4->Method();
+    self->PParentEmitter->Method();
     self->flags |= 4;
 }

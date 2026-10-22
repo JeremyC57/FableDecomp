@@ -7,7 +7,7 @@ struct SubObj {
 struct CLocalDetailCacheMap {
     int    f0;
     int    f4;
-    int    f8;
+    int    Map;
     SubObj sub;
 };
 
@@ -29,14 +29,14 @@ void __fastcall CloseStaticMap(CLocalDetailCacheMap* self)
 int main()
 {
     CLocalDetailCacheMap o;
-    o.f0 = 111; o.f4 = 42; o.f8 = 333;
+    o.f0 = 111; o.f4 = 42; o.Map = 333;
 
     CloseStaticMap(&o);
 
     bool ok = (g_seen_arg == 42)
            && (g_seen_self == &o.sub)
            && (o.f4 == 0)
-           && (o.f0 == 111) && (o.f8 == 333);
+           && (o.f0 == 111) && (o.Map == 333);
 
     if (ok) printf("00bddd50_TEST PASS\n");
     else    printf("FAIL arg=%d f4=%d\n", g_seen_arg, o.f4);

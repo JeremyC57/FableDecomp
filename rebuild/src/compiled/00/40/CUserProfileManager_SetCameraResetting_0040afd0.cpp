@@ -2,7 +2,7 @@ struct CUserProfileManager {
     char pad0[0xc];
     char flag_c;       // +0xc
     char pad_d;        // +0xd
-    char field_e;      // +0xe
+    char VibrationEnabled;      // +0xe
     char pad2[0xce - 0xf];
     char field_ce;     // +0xce
 };
@@ -14,7 +14,7 @@ void __fastcall CUserProfileManager_SetCameraResetting(CUserProfileManager* self
 {
     if (self->flag_c)
         self->field_ce = p1;
-    self->field_e = p1;
+    self->VibrationEnabled = p1;
     CUPM_Helper1(self);
     if (p2)
         CUPM_Helper2(self);

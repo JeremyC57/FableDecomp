@@ -12,9 +12,9 @@ struct CTCNoiseDef {
     int c;
 };
 
-void __fastcall CTCNoiseDef_Transfer(CTCNoiseDef* self, void* edx, CPersistContext* ctx)
+void __fastcall CTCNoiseDef_Transfer(CTCNoiseDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->Transfer_004dedda(&self->a);
-    ctx->TransferFloat(&self->b);
-    ctx->TransferLong(&self->c);
+    ctx->Transfer_004dedda(&def->a);
+    ctx->TransferFloat(&def->b);
+    ctx->TransferLong(&def->c);
 }

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCCreatureFlyInCircles {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCCreatureFlyInCircles_dtor(CTCCreatureFlyInCircles* circles);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCCreatureFlyInCircles_scalar_deleting_destructor(CTCCreatureFlyInCircles* circles, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCCreatureFlyInCircles_dtor(circles);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(circles);
+    return circles;
 }

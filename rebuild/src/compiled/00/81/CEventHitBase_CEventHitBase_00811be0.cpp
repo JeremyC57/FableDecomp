@@ -31,7 +31,7 @@ struct CEventBase {                                  // vtable 0x0124F2C4
     ~CEventBase() { }                                // inline: the vtable store
 };
 struct CEventHitBase : CEventBase {                        // vtable 0x01272344
-    long          m_4;                             // +0x04
+    long          WorldFrame;                             // +0x04
     CCountedPointer_00811be0 m_pointer;             // +0x8
     ~CEventHitBase();
 };

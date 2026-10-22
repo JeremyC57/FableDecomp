@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTextureManager {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTextureManager_dtor(CTextureManager* manager);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTextureManager_scalar_deleting_destructor(CTextureManager* manager, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTextureManager_dtor(manager);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(manager);
+    return manager;
 }

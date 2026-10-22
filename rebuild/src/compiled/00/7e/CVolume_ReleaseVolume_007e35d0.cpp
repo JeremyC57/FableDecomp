@@ -13,7 +13,7 @@ IVolumeManager** const g_volumeManager = (IVolumeManager**)0x013b8394;
 
 struct CVolume {
     int f0;
-    int f4;
+    int PD3DVolume;
     int f8;
     int handle; // +0xc
 };

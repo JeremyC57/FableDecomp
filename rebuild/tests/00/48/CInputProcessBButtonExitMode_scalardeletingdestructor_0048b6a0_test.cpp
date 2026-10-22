@@ -1,15 +1,15 @@
 #include <stdio.h>
 
-struct CLandscapeBackgroundPatch { int tag; };
+struct CInputProcessBButtonExitMode { int tag; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void* g_last_deleted = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
+void __fastcall CInputProcessBButtonExitMode_dtor(CInputProcessBButtonExitMode* process)
 {
     g_dtor_calls++;
-    self->tag = -1;
+    process->tag = -1;
 }
 void operator_delete_stub(void* p)
 {
@@ -17,17 +17,17 @@ void operator_delete_stub(void* p)
     g_last_deleted = p;
 }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
-        CLandscapeBackgroundPatch* self, int edx, unsigned int flags);
+void* __fastcall CInputProcessBButtonExitMode_scalar_deleting_destructor(
+        CInputProcessBButtonExitMode* process, int edx, unsigned int flags);
 
 int main()
 {
-    CLandscapeBackgroundPatch a; a.tag = 7;
+    CInputProcessBButtonExitMode a; a.tag = 7;
     // flags & 1 == 0 -> no delete
-    void* r1 = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 0);
+    void* r1 = CInputProcessBButtonExitMode_scalar_deleting_destructor(&a, 0, 0);
     // flags & 1 == 1 -> delete
-    CLandscapeBackgroundPatch b; b.tag = 9;
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&b, 0, 3);
+    CInputProcessBButtonExitMode b; b.tag = 9;
+    void* r2 = CInputProcessBButtonExitMode_scalar_deleting_destructor(&b, 0, 3);
 
     int ok = (r1 == &a) && (r2 == &b)
           && (g_dtor_calls == 2) && (g_delete_calls == 1)

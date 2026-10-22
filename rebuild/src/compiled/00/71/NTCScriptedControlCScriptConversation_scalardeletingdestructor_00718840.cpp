@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CScriptConversation {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CScriptConversation_dtor(CScriptConversation* conversation);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CScriptConversation_scalar_deleting_destructor(CScriptConversation* conversation, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CScriptConversation_dtor(conversation);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(conversation);
+    return conversation;
 }

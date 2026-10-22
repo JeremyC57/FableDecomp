@@ -29,9 +29,9 @@ struct CDataInputStream {
     virtual CCharString ReadNullTerminatedString();       // slot 6 (+0x18)
     CMatrix3x4 ReadMatrix3x4();                           // 0x00995340 (by value through the hidden pointer)
     unsigned long m_position;              // +4
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;          // +0xC
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }

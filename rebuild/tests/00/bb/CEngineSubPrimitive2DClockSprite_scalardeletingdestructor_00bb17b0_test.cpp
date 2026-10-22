@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CEngineSubPrimitiveGameMesh {
+struct CEngineSubPrimitive2DClockSprite {
     int marker;
     void destroy();
     void freeMem();
@@ -10,10 +10,10 @@ struct CEngineSubPrimitiveGameMesh {
 static int g_destroyed = 0;
 static int g_freed = 0;
 
-void CEngineSubPrimitiveGameMesh::destroy() { g_destroyed++; }
-void CEngineSubPrimitiveGameMesh::freeMem() { g_freed++; }
+void CEngineSubPrimitive2DClockSprite::destroy() { g_destroyed++; }
+void CEngineSubPrimitive2DClockSprite::freeMem() { g_freed++; }
 
-void* CEngineSubPrimitiveGameMesh::vec_deleting_destructor(unsigned int flags)
+void* CEngineSubPrimitive2DClockSprite::vec_deleting_destructor(unsigned int flags)
 {
     this->destroy();
     if (flags & 1)
@@ -23,7 +23,7 @@ void* CEngineSubPrimitiveGameMesh::vec_deleting_destructor(unsigned int flags)
 
 int main()
 {
-    CEngineSubPrimitiveGameMesh a; a.marker = 7;
+    CEngineSubPrimitive2DClockSprite a; a.marker = 7;
     // flags=0: destroy only, no free, returns this
     g_destroyed = g_freed = 0;
     void* r0 = a.vec_deleting_destructor(0);

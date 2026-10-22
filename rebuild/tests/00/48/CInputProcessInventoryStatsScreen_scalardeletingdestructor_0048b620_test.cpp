@@ -6,15 +6,15 @@ static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void *g_last_deleted = 0;
 
-struct CLandscapeBackgroundPatch
+struct CInputProcessInventoryStatsScreen
 {
     int marker;
     void * vecdtor(unsigned int flags);
 };
 
-static void scalar_dtor(void *self)
+static void scalar_dtor(void *process)
 {
-    (void)self;
+    (void)process;
     ++g_dtor_calls;
 }
 
@@ -24,7 +24,7 @@ static void op_delete(void *p)
     g_last_deleted = p;
 }
 
-void * CLandscapeBackgroundPatch::vecdtor(unsigned int flags)
+void * CInputProcessInventoryStatsScreen::vecdtor(unsigned int flags)
 {
     scalar_dtor(this);
     if (flags & 1)
@@ -34,7 +34,7 @@ void * CLandscapeBackgroundPatch::vecdtor(unsigned int flags)
 
 int main()
 {
-    CLandscapeBackgroundPatch a;
+    CInputProcessInventoryStatsScreen a;
     a.marker = 0x1234;
 
     // flags bit0 clear: dtor runs, no delete, returns this

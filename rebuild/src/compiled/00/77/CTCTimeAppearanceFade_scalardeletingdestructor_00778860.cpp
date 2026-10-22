@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCTimeAppearanceFade {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCTimeAppearanceFade_dtor(CTCTimeAppearanceFade* fade);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCTimeAppearanceFade_scalar_deleting_destructor(CTCTimeAppearanceFade* fade, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCTimeAppearanceFade_dtor(fade);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(fade);
+    return fade;
 }

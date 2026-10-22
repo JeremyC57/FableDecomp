@@ -24,7 +24,7 @@ struct CThing {
 };
 struct CTCChest {
     CThing* ParentThing; bool ChestOpen;
-    void vfunc_4()
+    void OnCreate()
     {
         if (ChestOpen) {
             CTCBase* component;
@@ -42,13 +42,13 @@ int main()
     thing.m_presentBits[0] = 0x200;                        /* interface 9 present */
     thing.m_interfaces.first = entries; thing.m_interfaces.last = entries + 2;
     CTCChest chest; chest.ParentThing = &thing; chest.ChestOpen = false;
-    chest.vfunc_4();
+    chest.OnCreate();
     if (!comp.m_flag) { std::printf("00750730_TEST FAIL\n"); return 1; }
     chest.ChestOpen = true; thing.m_presentBits[0] = 0;
-    chest.vfunc_4();
+    chest.OnCreate();
     if (!comp.m_flag) { std::printf("00750730_TEST FAIL\n"); return 1; }
     thing.m_presentBits[0] = 0x200;
-    chest.vfunc_4();
+    chest.OnCreate();
     if (comp.m_flag) { std::printf("00750730_TEST FAIL\n"); return 1; }
     std::printf("00750730_TEST PASS\n");
     return 0;

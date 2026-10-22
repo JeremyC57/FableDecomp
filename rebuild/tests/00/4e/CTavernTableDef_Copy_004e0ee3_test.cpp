@@ -2,8 +2,8 @@
 
 struct CTavernTableDef {
     unsigned char pad[0x25];
-    unsigned char b25;
-    unsigned char b26;
+    unsigned char AddTankards;
+    unsigned char HighQualityTankards;
     int base_copied;
 };
 
@@ -14,17 +14,17 @@ static void Base_Copy(CTavernTableDef* self, CTavernTableDef* src) {
 
 static void Copy(CTavernTableDef* self, CTavernTableDef* src) {
     Base_Copy(self, src);
-    self->b25 = src->b25;
-    self->b26 = src->b26;
+    self->AddTankards = src->AddTankards;
+    self->HighQualityTankards = src->HighQualityTankards;
 }
 
 int main() {
     CTavernTableDef src = {};
     CTavernTableDef dst = {};
-    src.b25 = 0xAB;
-    src.b26 = 0xCD;
+    src.AddTankards = 0xAB;
+    src.HighQualityTankards = 0xCD;
     Copy(&dst, &src);
-    if (dst.b25 == 0xAB && dst.b26 == 0xCD && dst.base_copied == 1) {
+    if (dst.AddTankards == 0xAB && dst.HighQualityTankards == 0xCD && dst.base_copied == 1) {
         printf("COPY_OK\n");
     } else {
         printf("FAIL\n");

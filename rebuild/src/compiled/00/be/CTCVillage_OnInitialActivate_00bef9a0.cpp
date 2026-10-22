@@ -6,7 +6,7 @@ extern void __fastcall Callee(CObj* obj, void* edxarg, unsigned char v);
 
 struct CTCVillage {
     CObj*  f0;       // +0x00 -> ecx
-    void*  f4;       // +0x04 -> edx
+    void*  ParentThing;       // +0x04 -> edx
     // +0x08
     int    pad8;
     unsigned char fC; // +0x0c
@@ -16,7 +16,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->fD) {
-        Callee(self->f0, self->f4, self->fC);
+        Callee(self->f0, self->ParentThing, self->fC);
         self->fD = 0;
     }
 }

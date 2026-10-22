@@ -8,7 +8,7 @@ struct P {
   virtual char d6(){return 0;}
   virtual char d7(){return 0;}
   virtual char d8(){return 0;}
-  virtual char tgt(int a0);
+  virtual char tgt(int scriptThing);
 };
-struct S { char pad[8]; P* fp; char M(int a0); };
-char S::M(int a0){ P* p=this->fp; if(!p) return 0; return p->tgt(a0); }
+struct CScriptGameResourceObjectScriptedThingBase { char pad[8]; P* fp; char IsFollowActionRunning(int scriptThing); };
+char CScriptGameResourceObjectScriptedThingBase::IsFollowActionRunning(int scriptThing){ P* p=this->fp; if(!p) return 0; return p->tgt(scriptThing); }

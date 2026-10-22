@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCreatureAction_ReleaseTimeSpell {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCreatureAction_ReleaseTimeSpell_dtor(CCreatureAction_ReleaseTimeSpell* action);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCreatureAction_ReleaseTimeSpell_scalar_deleting_destructor(CCreatureAction_ReleaseTimeSpell* action, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCreatureAction_ReleaseTimeSpell_dtor(action);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(action);
+    return action;
 }

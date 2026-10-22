@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTemporaryBuffer {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTemporaryBuffer_dtor(CTemporaryBuffer* buffer);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTemporaryBuffer_scalar_deleting_destructor(CTemporaryBuffer* buffer, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTemporaryBuffer_dtor(buffer);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(buffer);
+    return buffer;
 }

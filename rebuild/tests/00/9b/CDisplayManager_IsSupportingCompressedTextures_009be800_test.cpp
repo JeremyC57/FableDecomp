@@ -4,7 +4,7 @@ typedef int (__stdcall *PFN)(int obj, int f60, int f5c, int f1c4, int z, int thr
 
 struct CDisplayManager {
     char pad0[0x54];
-    void*** obj54;
+    void*** D3D;
     char pad1[0x5c-0x58];
     int f5c;
     int f60;
@@ -14,7 +14,7 @@ struct CDisplayManager {
 
 char __fastcall CDisplayManager_IsSupportingCompressedTextures(CDisplayManager* self)
 {
-    void*** o = self->obj54;
+    void*** o = self->D3D;
     return ((PFN)(*o)[10])((int)o, self->f60, self->f5c, self->f1c4, 0, 3, 0x31545844) >= 0;
 }
 
@@ -35,7 +35,7 @@ int main()
     void** vtp = vtbl;
 
     CDisplayManager dm;
-    dm.obj54 = &vtp;   /* *(*obj54) == vtbl */
+    dm.D3D = &vtp;   /* *(*obj54) == vtbl */
     dm.f5c  = 0xAAAA;
     dm.f60  = 0xBBBB;
     dm.f1c4 = 0xCCCC;
@@ -49,7 +49,7 @@ int main()
     g_ret = 7;
     if (!CDisplayManager_IsSupportingCompressedTextures(&dm)) { std::printf("FAIL: 7 should be true\n"); return 1; }
 
-    if (g_seen[0] != (int)dm.obj54) { std::printf("FAIL: arg0 obj\n"); return 1; }
+    if (g_seen[0] != (int)dm.D3D) { std::printf("FAIL: arg0 obj\n"); return 1; }
     if (g_seen[1] != 0xBBBB) { std::printf("FAIL: arg1 f60\n"); return 1; }
     if (g_seen[2] != 0xAAAA) { std::printf("FAIL: arg2 f5c\n"); return 1; }
     if (g_seen[3] != 0xCCCC) { std::printf("FAIL: arg3 f1c4\n"); return 1; }

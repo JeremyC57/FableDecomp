@@ -5,7 +5,7 @@ void __fastcall Inner_Do(Inner* self, int edx, unsigned char v);
 
 struct CTCVillage {
     Inner* p0;      // +0x00  -> ecx of callee
-    int    v4;      // +0x04  -> edx of callee
+    int    ParentThing;      // +0x04  -> edx of callee
     char   pad8;    // +0x08
     char   pad9;    // +0x09
     char   pada;    // +0x0a
@@ -17,7 +17,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->flagd) {
-        Inner_Do(self->p0, self->v4, self->bytec);
+        Inner_Do(self->p0, self->ParentThing, self->bytec);
         self->flagd = 0;
     }
 }

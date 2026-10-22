@@ -28,7 +28,7 @@ struct CCountedPointer {
     }
 };
 struct CLevelFiles {
-    long            m_0;                           // +0x00
+    long            LevelID;                           // +0x00
     CCountedPointer m_first;                       // +0x04
     CCountedPointer m_second;                      // +0x0c
     CCountedPointer m_third;                       // +0x14

@@ -44,7 +44,7 @@ struct CExitWeightMap {                                     // map<CThing*, floa
     SExitWeightRange EqualRange(CThing* const& key);        // 0x007E9AE0
     void Erase(CExitWeightIterator first, CExitWeightIterator last);   // 0x007E99F0
 };
-long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work Erase does (outside the bytes graded here)
+long TmplSink_s7_0(const void* exit, long seen);   // stand-in: the work Erase does (outside the bytes graded here)
 #pragma auto_inline(off)
 // Same-TU stand-in for the Erase instantiation (template bodies are compiled in the caller's TU): reads the const-reference
 // arguments (not the empty tags), stores the out pointers, lets no argument escape.
@@ -96,7 +96,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CThing* GetParentThing() const { return ParentThing; }  // by value: the key is an rvalue temporary
     void vfunc_2();                                         // 0x006867F0 (empty base implementation, virtual slot 2)
     void OnKill();                                          // 0x006868F0 (empty base implementation, virtual slot 14)
-    void vfunc_16(bool flag);                               // 0x00686910 (empty base implementation, virtual slot 16)
+    void OnSetInLimbo(bool flag);                               // 0x00686910 (empty base implementation, virtual slot 16)
 };
 
 struct CTCAvoidRegionExit : CTCBase_Calls {
@@ -108,9 +108,9 @@ struct CTCAvoidRegionExit : CTCBase_Calls {
         g_AvoidRegionExitWeights.Erase(range.first, range.second);
         UpdateMaxExitWeight();
     }
-    void vfunc_16(bool flag);
+    void OnSetInLimbo(bool flag);
 };
-long NearSink_s7_0(const void* self, long seen);   // stand-in: the work UpdateMaxExitWeight does outside this TU
+long NearSink_s7_0(const void* exit, long seen);   // stand-in: the work UpdateMaxExitWeight does outside this TU
 #pragma auto_inline(off)
 // Same-TU stand-in for CTCAvoidRegionExit::UpdateMaxExitWeight @ 0x007E9250 (compiled in retail's TU): reads its const reference / pointer-to-const
 // arguments, updates its out-parameters, and lets no argument escape.
@@ -120,9 +120,9 @@ __declspec(noinline) void CTCAvoidRegionExit::UpdateMaxExitWeight()
 }
 #pragma auto_inline(on)
 
-void CTCAvoidRegionExit::vfunc_16(bool flag)
+void CTCAvoidRegionExit::OnSetInLimbo(bool flag)
 {
-    CTCBase_Calls::vfunc_16(flag);
+    CTCBase_Calls::OnSetInLimbo(flag);
     if (flag)
         RemoveFromExitWeights();
 }
@@ -133,11 +133,11 @@ CExitWeightMap g_AvoidRegionExitWeights;
 static int g_base = 0;
 void CTCBase_Calls::vfunc_2() { ++g_base; }
 void CTCBase_Calls::OnKill() { ++g_base; }
-void CTCBase_Calls::vfunc_16(bool flag) { ++g_base; }
+void CTCBase_Calls::OnSetInLimbo(bool flag) { ++g_base; }
 static int g_erases = 0; static const void* g_eraseFirst = 0; static long g_eraseLast = 0;
-long TmplSink_s7_0(const void* self, long seen) { ++g_erases; g_eraseFirst = self; g_eraseLast = seen; return 0; }
+long TmplSink_s7_0(const void* exit, long seen) { ++g_erases; g_eraseFirst = exit; g_eraseLast = seen; return 0; }
 static int g_updates = 0;
-long NearSink_s7_0(const void* self, long seen) { ++g_updates; return 0; }
+long NearSink_s7_0(const void* exit, long seen) { ++g_updates; return 0; }
 struct SRawNode { long color; SRawNode* parent; SRawNode* left; SRawNode* right; CThing* key; float weight; };
 int main()
 {
@@ -146,10 +146,10 @@ int main()
     head.parent = &b; b.left = &a; b.right = &c; a.key = ka; b.key = kb; c.key = kc;
     g_AvoidRegionExitWeights.m_pHeader = (SExitWeightNode*)&head;
     static CTCAvoidRegionExit g; g.ParentThing = kb;
-    g.vfunc_16(false); CHECK(g_base == 1); CHECK(g_erases == 0); CHECK(g_updates == 0); g.vfunc_16(true); CHECK(g_base == 2);
+    g.OnSetInLimbo(false); CHECK(g_base == 1); CHECK(g_erases == 0); CHECK(g_updates == 0); g.OnSetInLimbo(true); CHECK(g_base == 2);
     CHECK(g_erases == 1); CHECK(g_eraseFirst == &b); CHECK(g_eraseLast == (long)&c); CHECK(g_updates == 1);
     g.ParentThing = kc; g_erases = 0; g_base = 0; g_updates = 0;
-    g.vfunc_16(false); CHECK(g_base == 1); CHECK(g_erases == 0); CHECK(g_updates == 0); g.vfunc_16(true); CHECK(g_base == 2);
+    g.OnSetInLimbo(false); CHECK(g_base == 1); CHECK(g_erases == 0); CHECK(g_updates == 0); g.OnSetInLimbo(true); CHECK(g_base == 2);
     CHECK(g_eraseFirst == &c); CHECK(g_eraseLast == (long)&head);
     if (fails == 0) printf("007e9360_TEST PASS\n"); else printf("007e9360_TEST FAIL\n");
     return fails;

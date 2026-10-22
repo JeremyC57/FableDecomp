@@ -7,15 +7,15 @@ static void* g_last_deleted = 0;
 
 struct Obj { int x; };
 
-static void inner_dtor(Obj* self) { (void)self; ++g_dtor_calls; }
+static void inner_dtor(Obj* renderer) { (void)renderer; ++g_dtor_calls; }
 static void op_delete(void* p) { ++g_delete_calls; g_last_deleted = p; }
 
-static void* vdtor(Obj* self, unsigned int flags)
+static void* vdtor(Obj* renderer, unsigned int flags)
 {
-    inner_dtor(self);
+    inner_dtor(renderer);
     if (flags & 1)
-        op_delete(self);
-    return self;
+        op_delete(renderer);
+    return renderer;
 }
 
 int main()

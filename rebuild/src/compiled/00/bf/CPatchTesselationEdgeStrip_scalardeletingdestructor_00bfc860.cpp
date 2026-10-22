@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CPatchTesselationEdgeStrip {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* strip);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CPatchTesselationEdgeStrip_scalar_deleting_destructor(CPatchTesselationEdgeStrip* strip, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CPatchTesselationEdgeStrip_dtor(strip);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(strip);
+    return strip;
 }

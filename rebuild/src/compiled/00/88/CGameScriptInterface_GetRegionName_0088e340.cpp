@@ -25,13 +25,13 @@ struct CMidArg {
 };
 
 
-const CCharString& __fastcall CGameScriptInterface_GetRegionName(CGameScriptInterface* self)
+const CCharString& __fastcall CGameScriptInterface_GetRegionName(CGameScriptInterface* interface)
 {
-    CMidNoArg* m = (CMidNoArg*)self->World;
+    CMidNoArg* m = (CMidNoArg*)interface->World;
     CRegions* col = m->GetRegions();
     int n = CRegions_GetCount(col);
     if (n > 0) {
-        CMidArg* m2 = (CMidArg*)self->World;
+        CMidArg* m2 = (CMidArg*)interface->World;
         CRegions* e = m2->GetRegions(n);
         return *(const CCharString*)((char*)CRegions_GetEntry(e) + 0x18);
     }

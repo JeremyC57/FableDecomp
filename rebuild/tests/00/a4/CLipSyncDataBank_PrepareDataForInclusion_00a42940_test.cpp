@@ -2,7 +2,7 @@
 
 struct Ref {
     long refCount;
-    void (__fastcall *dtor)(void* self);
+    void (__fastcall *dtor)(void* bank);
     void* object;
 };
 
@@ -10,7 +10,7 @@ static int g_dtorCalls = 0;
 static int g_freeCalls = 0;
 static void* g_lastDtorSelf = 0;
 
-static void __fastcall myDtor(void* self) { g_dtorCalls++; g_lastDtorSelf = self; }
+static void __fastcall myDtor(void* bank) { g_dtorCalls++; g_lastDtorSelf = bank; }
 
 static void relFree(Ref* p) { g_freeCalls++; (void)p; }
 

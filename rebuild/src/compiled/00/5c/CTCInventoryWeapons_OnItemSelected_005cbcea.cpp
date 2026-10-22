@@ -13,9 +13,9 @@ namespace NUISystem { struct CComponent; }
 bool __fastcall IsAugmentation(long defIndex);   // 0x005D97F0
 struct CTCInventoryWeapons {
     void SetThingAsActiveWeapon(long defIndex, NUISystem::CComponent* menuEntry);   // 0x005CB2B0
-    void vfunc_33(long defIndex, bool* handled);
+    void OnItemSelected(long defIndex, bool* handled);
 };
-void CTCInventoryWeapons::vfunc_33(long defIndex, bool* handled)
+void CTCInventoryWeapons::OnItemSelected(long defIndex, bool* handled)
 {
     *handled = false;
     if (IsAugmentation(defIndex))

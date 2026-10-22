@@ -1,19 +1,19 @@
 #include <cstdio>
 
 // Mirror the source's class shape so we can drive its logic in a standalone test.
-struct CEngineSubPrimitiveGameMesh
+struct CThingBuilding
 {
     int scalarCalled;
     int deleteCalled;
     void ScalarDtor();
     void DeleteHelper();
-    void* VectorDeletingDestructor(unsigned int flags);
+    void* ScalarDeletingDestructor(unsigned int flags);
 };
 
-void CEngineSubPrimitiveGameMesh::ScalarDtor()  { scalarCalled = 1; }
-void CEngineSubPrimitiveGameMesh::DeleteHelper(){ deleteCalled = 1; }
+void CThingBuilding::ScalarDtor()  { scalarCalled = 1; }
+void CThingBuilding::DeleteHelper(){ deleteCalled = 1; }
 
-void* CEngineSubPrimitiveGameMesh::VectorDeletingDestructor(unsigned int flags)
+void* CThingBuilding::ScalarDeletingDestructor(unsigned int flags)
 {
     this->ScalarDtor();
     if (flags & 1)
@@ -24,21 +24,21 @@ void* CEngineSubPrimitiveGameMesh::VectorDeletingDestructor(unsigned int flags)
 int main()
 {
     // flags bit0 clear: dtor runs, no delete
-    CEngineSubPrimitiveGameMesh a;
+    CThingBuilding a;
     a.scalarCalled = 0; a.deleteCalled = 0;
-    void* ra = a.VectorDeletingDestructor(0);
+    void* ra = a.ScalarDeletingDestructor(0);
     bool ok = (ra == &a) && a.scalarCalled == 1 && a.deleteCalled == 0;
 
     // flags bit0 set: dtor runs, delete runs
-    CEngineSubPrimitiveGameMesh b;
+    CThingBuilding b;
     b.scalarCalled = 0; b.deleteCalled = 0;
-    void* rb = b.VectorDeletingDestructor(1);
+    void* rb = b.ScalarDeletingDestructor(1);
     ok = ok && (rb == &b) && b.scalarCalled == 1 && b.deleteCalled == 1;
 
     // even flag value with bit0 clear -> no delete
-    CEngineSubPrimitiveGameMesh c;
+    CThingBuilding c;
     c.scalarCalled = 0; c.deleteCalled = 0;
-    c.VectorDeletingDestructor(2);
+    c.ScalarDeletingDestructor(2);
     ok = ok && c.scalarCalled == 1 && c.deleteCalled == 0;
 
     if (ok) { printf("VDD_OK\n"); return 0; }

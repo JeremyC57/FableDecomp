@@ -4,9 +4,9 @@ struct C2DVector { float X, Y; C2DVector() {} };
 struct CMemoryDataInputStream {
     void* m_pVtable;
     unsigned int m_position;
-    int m_08;
+    int StreamSize;
     const unsigned char* m_pData;
-    int m_10;
+    int SourceChunkStreamPos;
     int m_remaining;
     int m_overflowCalls;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, int size)

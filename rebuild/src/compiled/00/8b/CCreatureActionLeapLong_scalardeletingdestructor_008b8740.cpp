@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCreatureAction_LeapLong {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCreatureAction_LeapLong_dtor(CCreatureAction_LeapLong* action);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCreatureAction_LeapLong_scalar_deleting_destructor(CCreatureAction_LeapLong* action, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCreatureAction_LeapLong_dtor(action);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(action);
+    return action;
 }

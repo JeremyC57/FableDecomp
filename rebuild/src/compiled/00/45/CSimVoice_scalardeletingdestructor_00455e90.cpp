@@ -1,14 +1,14 @@
 #pragma optimize("s",on)
-struct CLandscapeBackgroundPatch { int f0; };
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+struct CSimVoice { int f0; };
+extern "C" void __fastcall CSimVoice_dtor(CSimVoice* voice);
 extern "C" void __cdecl op_delete(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CSimVoice_scalar_deleting_destructor(CSimVoice* voice, int edx_unused, unsigned int flags)
 {
     (void)edx_unused;
-    CLandscapeBackgroundPatch_dtor(self);
+    CSimVoice_dtor(voice);
     if (flags & 1) {
-        op_delete(self);
+        op_delete(voice);
     }
-    return self;
+    return voice;
 }

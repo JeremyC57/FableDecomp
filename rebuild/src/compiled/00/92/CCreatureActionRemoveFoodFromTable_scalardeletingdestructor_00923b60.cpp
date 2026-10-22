@@ -1,12 +1,12 @@
 #pragma optimize("t", on)
-extern void __fastcall AutoTinyMemberDestructor(void* member);
-extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
-void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall DestructMember(void* member);
+extern void __fastcall CCreatureAction_RemoveFoodFromTable_Destruct(void* action);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CCreatureAction_RemoveFoodFromTable_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor(static_cast<unsigned char*>(self) + 168);
-    AutoTinyCompositeDestructor(self);
+    DestructMember(static_cast<unsigned char*>(action) + 168);
+    CCreatureAction_RemoveFoodFromTable_Destruct(action);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(action);
+    return action;
 }

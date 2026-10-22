@@ -5,7 +5,7 @@ extern void __fastcall Sub_Handle(Sub* thisp, int edxArg, unsigned char stackArg
 
 struct CTCVillage {
     Sub*          f0;   // +0x00
-    int           f4;   // +0x04
+    int           ParentThing;   // +0x04
     // ... padding to 0x0c
     char          pad8[4];
     unsigned char f0c;  // +0x0c
@@ -15,7 +15,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->f0d) {
-        Sub_Handle(self->f0, self->f4, self->f0c);
+        Sub_Handle(self->f0, self->ParentThing, self->f0c);
         self->f0d = 0;
     }
 }

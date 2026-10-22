@@ -19,11 +19,11 @@ static int g_n;
 void CPersistContext::PersistA(int& r) { calls++; g_seq[g_n++] = 1; }
 void CPersistContext::PersistB(int& r) { calls++; g_seq[g_n++] = 2; }
 
-void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* self, void* edx, CPersistContext* ctx)
+void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->PersistA(self->fieldA);
-    ctx->PersistA(self->fieldB);
-    ctx->PersistB(self->fieldC);
+    ctx->PersistA(def->fieldA);
+    ctx->PersistA(def->fieldB);
+    ctx->PersistB(def->fieldC);
 }
 
 int main() {

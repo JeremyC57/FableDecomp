@@ -20,9 +20,9 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 struct CMemoryDataInputStream {
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     __forceinline void Read(void* buffer, long size)

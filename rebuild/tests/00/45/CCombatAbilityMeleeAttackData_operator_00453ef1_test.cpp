@@ -8,8 +8,8 @@ struct CCombatAbilityBase {
 };
 
 struct CCombatAbilityMeleeAttackData : public CCombatAbilityBase {
-    unsigned char b18;
-    unsigned char b19;
+    unsigned char Blockable;
+    unsigned char Knockdown;
     char pad2[2];
     int d1c;
 };
@@ -18,8 +18,8 @@ CCombatAbilityMeleeAttackData* __fastcall CCombatAbilityMeleeAttackData_operator
     CCombatAbilityMeleeAttackData* self, void* dummy, const CCombatAbilityMeleeAttackData* other)
 {
     self->assign(other);
-    self->b18 = other->b18;
-    self->b19 = other->b19;
+    self->Blockable = other->Blockable;
+    self->Knockdown = other->Knockdown;
     self->d1c = other->d1c;
     return self;
 }
@@ -27,10 +27,10 @@ CCombatAbilityMeleeAttackData* __fastcall CCombatAbilityMeleeAttackData_operator
 int main()
 {
     CCombatAbilityMeleeAttackData a, b;
-    b.b18 = 0x11; b.b19 = 0x22; b.d1c = 0x12345678;
-    a.b18 = 0; a.b19 = 0; a.d1c = 0;
+    b.Blockable = 0x11; b.Knockdown = 0x22; b.d1c = 0x12345678;
+    a.Blockable = 0; a.Knockdown = 0; a.d1c = 0;
     CCombatAbilityMeleeAttackData* r = CCombatAbilityMeleeAttackData_operator_assign(&a, 0, &b);
-    if (r == &a && g_base_called == 1 && a.b18 == 0x11 && a.b19 == 0x22 && a.d1c == 0x12345678) {
+    if (r == &a && g_base_called == 1 && a.Blockable == 0x11 && a.Knockdown == 0x22 && a.d1c == 0x12345678) {
         std::printf("CCombatAbilityMeleeAttackData_00453ef1_TEST PASS\n");
         return 0;
     }

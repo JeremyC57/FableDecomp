@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCHeroExperience {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCHeroExperience_dtor(CTCHeroExperience* experience);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCHeroExperience_scalar_deleting_destructor(CTCHeroExperience* experience, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCHeroExperience_dtor(experience);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(experience);
+    return experience;
 }

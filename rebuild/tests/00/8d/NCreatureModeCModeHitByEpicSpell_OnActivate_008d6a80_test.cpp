@@ -9,7 +9,7 @@ struct Sub
     void Notify(int one, void* who) { notified = one; seen = who; }
 };
 
-struct CModeDragonRearUp
+struct CModeHitByEpicSpell
 {
     int   vslot;
     Sub*  sub;
@@ -18,7 +18,7 @@ struct CModeDragonRearUp
     void  OnActivate();
 };
 
-void CModeDragonRearUp::OnActivate()
+void CModeHitByEpicSpell::OnActivate()
 {
     BaseActivate();
     Sub* s = this->sub;
@@ -30,7 +30,7 @@ int main()
 {
     Sub s;
     s.flag = 1; s.notified = 0; s.seen = 0;
-    CModeDragonRearUp m;
+    CModeHitByEpicSpell m;
     m.vslot = 0; m.sub = &s; m.baseCalled = 0;
     m.OnActivate();
 
@@ -38,7 +38,7 @@ int main()
 
     Sub s2;
     s2.flag = 0; s2.notified = 0; s2.seen = 0;
-    CModeDragonRearUp m2;
+    CModeHitByEpicSpell m2;
     m2.vslot = 0; m2.sub = &s2; m2.baseCalled = 0;
     m2.OnActivate();
     ok = ok && m2.baseCalled == 1 && s2.notified == 0;

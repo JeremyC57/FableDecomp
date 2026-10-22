@@ -3,7 +3,7 @@
 // Callees: GetCurrentTime @ 0x0049D870 (`__fastcall`, no arguments; the label GFGetPreMainMemoryUsed is propagated), CMessageEvent::~CMessageEvent through vtable slot 0 (the scalar deleting destructor with flag 0), free @ 0x00BFEA14 (the STLport malloc allocator). Shape: the manager in ebp, the node in esi and the event in ebx, the successor in edi across the erase, an unsigned time compare, a 16-byte aligned loop head (speed module), `ret`.
 struct CMessageEvent {                             // PDB layout (0x58 bytes); only the words this body touches are named
     virtual ~CMessageEvent();                      // slot 0
-    long          m_4;
+    long          IntelligentPointer;
     long          Type;                            // +0x08
     unsigned char _pad0c[0x28];
     long          TimeStamp;                       // +0x34

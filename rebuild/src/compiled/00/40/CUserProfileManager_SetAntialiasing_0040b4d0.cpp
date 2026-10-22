@@ -2,7 +2,7 @@ struct CUserProfileManager {
     char pad0[0x0c];
     char flagC;        // +0x0c
     char pad1[0x38 - 0x0d];
-    int fld38;         // +0x38
+    int Antialiasing;         // +0x38
     char pad2[0xf4 - 0x3c];
     int fldF4;         // +0xf4
 };
@@ -16,7 +16,7 @@ void __fastcall CUserProfileManager_SetAntialiasing(CUserProfileManager* self, i
 {
     if (self->flagC)
         self->fldF4 = value;
-    self->fld38 = value;
+    self->Antialiasing = value;
     UPM_Apply(self);
     if (doRefresh)
         UPM_Refresh(self);

@@ -24,7 +24,7 @@ struct CWorld {
     virtual void v9() {}
     virtual bool getCam(CamObj** out);
     unsigned char _pad[0x30];
-    CWorld* m34;
+    CWorld* PCurrentGameCamera;
 };
 
 static CamObj g_cam;
@@ -34,7 +34,7 @@ bool CWorld::getCam(CamObj** out) { *out = &g_cam; return g_camHasCam; }
 bool __fastcall CGameScriptInterface_IsCameraPosOnScreen(CGameScriptInterface* self, int edx_unused, void* pos)
 {
     CamObj* cam;
-    CWorld* m = self->World->m34;
+    CWorld* m = self->World->PCurrentGameCamera;
     if (m->getCam(&cam)) {
         if (cam->onScreen(pos))
             return true;
@@ -44,7 +44,7 @@ bool __fastcall CGameScriptInterface_IsCameraPosOnScreen(CGameScriptInterface* s
 
 int main() {
     CWorld inner;
-    inner.m34 = &inner;
+    inner.PCurrentGameCamera = &inner;
     CGameScriptInterface gsi; gsi.World = &inner;
 
     int dummy;

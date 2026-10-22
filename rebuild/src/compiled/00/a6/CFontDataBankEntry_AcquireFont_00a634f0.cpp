@@ -23,7 +23,7 @@ struct CCountedPointer_00a634f0 {                        // 8 bytes: object + co
 struct CFontDataBankEntry {
     virtual void v00();
     CCountedPointer_00a634f0 m_font;                     // +0x04
-    long m_c;                                      // +0x0c
+    long Bank;                                      // +0x0c
     long m_b;                                      // +0x10
     static CStaticFontBank* CreateBank(long a, long b) { return new CStaticFontBank(a, b); }
     CCountedPointer_00a634f0 AcquireFont();
@@ -32,6 +32,6 @@ struct CFontDataBankEntry {
 CCountedPointer_00a634f0 CFontDataBankEntry::AcquireFont()
 {
     if (!m_font.m_pObject)
-        m_font.Reset(CreateBank(m_c, m_b));
+        m_font.Reset(CreateBank(Bank, m_b));
     return m_font;
 }

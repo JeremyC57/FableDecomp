@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineDynamic3DResource {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineDynamic3DResource_dtor(CEngineDynamic3DResource* resource);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineDynamic3DResource_scalar_deleting_destructor(CEngineDynamic3DResource* resource, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineDynamic3DResource_dtor(resource);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(resource);
+    return resource;
 }

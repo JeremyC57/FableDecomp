@@ -5,7 +5,7 @@ struct CEnginePrimitive {
 
 struct CEngineInternalPrimitiveParticleSpriteTrailGroup {
     char pad0[0x0c];
-    unsigned long field0c;  // +0x0c
+    unsigned long EnginePrimitiveFlags;  // +0x0c
     char pad1[0xb8 - 0x10];
     unsigned long fieldb8;  // +0xb8
 };
@@ -17,6 +17,6 @@ void __fastcall CEngineInternalPrimitiveParticleSpriteTrailGroup_Update(
         const CEnginePrimitive& prim,
         unsigned long n)
 {
-    self->field0c = n;
+    self->EnginePrimitiveFlags = n;
     self->fieldb8 = prim.field18;
 }

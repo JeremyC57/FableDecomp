@@ -1,3 +1,3 @@
 // Constant-return member: returns true. __fastcall this=ecx.
-struct T { bool Get(); };
-bool T::Get() { return true; }
+struct CInputProcessPhotojournalCapture { bool ProcessWhilePaused(); };
+bool CInputProcessPhotojournalCapture::ProcessWhilePaused() { return true; }

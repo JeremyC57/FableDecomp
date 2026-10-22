@@ -4,7 +4,7 @@ struct Sub28 { char pad[4]; };
 
 struct CDraw2DText {
     char pad0[0x18];
-    unsigned char f18;
+    unsigned char Drawing;
     char pad19[0x28-0x19];
     Sub28 f28;
 };
@@ -22,14 +22,14 @@ void __fastcall CDraw2DText_ClearPrimitivesIfNecessary(CDraw2DText* self);
 int main(){
     CDraw2DText o;
     // case: f18 == 0 -> helper runs, base runs
-    o.f18 = 0;
+    o.Drawing = 0;
     g_helper_called=g_base_called=0;
     CDraw2DText_ClearPrimitivesIfNecessary(&o);
     bool ok1 = (g_helper_called==1) && (g_base_called==1)
         && (g_helper_arg == &o.f28) && (g_base_arg == &o);
 
     // case: f18 != 0 -> helper skipped, base still runs
-    o.f18 = 5;
+    o.Drawing = 5;
     g_helper_called=g_base_called=0;
     CDraw2DText_ClearPrimitivesIfNecessary(&o);
     bool ok2 = (g_helper_called==0) && (g_base_called==1) && (g_base_arg == &o);

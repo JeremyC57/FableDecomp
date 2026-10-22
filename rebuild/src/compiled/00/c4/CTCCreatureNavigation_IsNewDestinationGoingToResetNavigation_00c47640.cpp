@@ -14,10 +14,10 @@ struct NavSub {
 
 struct CTCCreatureNavigation {
     void* f0;
-    NavSub* f4;
+    NavSub* ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* dest)
 {
-    return self->f4->IsReset(self, dest);
+    return self->ParentThing->IsReset(self, dest);
 }

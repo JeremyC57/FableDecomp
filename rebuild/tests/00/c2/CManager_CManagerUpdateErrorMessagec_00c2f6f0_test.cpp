@@ -16,7 +16,7 @@ struct IErrorNotifier
 class CManager
 {
 public:
-    void* field0;
+    void* World;
     IErrorNotifier* notifier;
 };
 
@@ -47,7 +47,7 @@ int main()
     helper.vt = &vt;
 
     CManager mgr;
-    mgr.field0 = 0;
+    mgr.World = 0;
     mgr.notifier = &helper;
 
     CManager_UpdateErrorMessage_c(&mgr);

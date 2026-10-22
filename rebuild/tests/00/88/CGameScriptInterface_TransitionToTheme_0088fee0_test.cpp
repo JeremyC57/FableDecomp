@@ -7,7 +7,7 @@ struct Inner {
     int lastArg2;
     void Apply(int one, int n, int arg2);
 };
-struct CWorld { unsigned char pad[0x18]; Inner* p18; };
+struct CWorld { unsigned char pad[0x18]; Inner* PEnvironment; };
 
 static int g_resolveArg = 0;
 static int g_count = 0;
@@ -27,7 +27,7 @@ void CGameScriptInterface_TransitionToTheme(CGameScriptInterface* self, int arg1
     void* r = Resolve(arg1);
     int n = CountOf(r);
     if (n > 0) {
-        self->World->p18->Apply(1, n, arg2);
+        self->World->PEnvironment->Apply(1, n, arg2);
     }
 }
 
@@ -38,7 +38,7 @@ int main()
     inner.lastN = 0;
     inner.lastArg2 = 0;
     CWorld midObj;
-    midObj.p18 = &inner;
+    midObj.PEnvironment = &inner;
     CGameScriptInterface gsi;
     gsi.World = &midObj;
 

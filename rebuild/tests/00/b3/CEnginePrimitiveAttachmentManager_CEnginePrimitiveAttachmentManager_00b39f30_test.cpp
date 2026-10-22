@@ -6,8 +6,8 @@ static int g_rootCalls = 0, g_componentCalls = 0;
 struct CEngineRoot_0099a2f0 { virtual void v00() { } CEngineRoot_0099a2f0() { ++g_rootCalls; } };
 struct CEngineComponent {
     virtual void v00() { }
-    long m_4; bool m_enabled; bool m_9;
-    CEngineComponent() : m_4(0), m_enabled(true), m_9(false) { ++g_componentCalls; }
+    long GlobalPointerAddress; bool m_enabled; bool KeepAlive;
+    CEngineComponent() : GlobalPointerAddress(0), m_enabled(true), KeepAlive(false) { ++g_componentCalls; }
 };
 struct CEngineInternalAttachedPrimitiveInfo { long m_words[3]; };
 template <class T> struct CRetailSTLportList {
@@ -32,7 +32,7 @@ int main()
     static unsigned char buf[sizeof(CEnginePrimitiveAttachmentManager)];
     std::memset(buf, 0xCD, sizeof(buf));
     CEnginePrimitiveAttachmentManager* m = new (buf) CEnginePrimitiveAttachmentManager();
-    bool ok = g_rootCalls == 1 && g_componentCalls == 1 && m->m_enabled && !m->m_9
+    bool ok = g_rootCalls == 1 && g_componentCalls == 1 && m->m_enabled && !m->KeepAlive
         && m->AttachedPrimitives.m_node != 0
         && m->AttachedPrimitives.m_node->next == m->AttachedPrimitives.m_node
         && m->AttachedPrimitives.m_node->prev == m->AttachedPrimitives.m_node;

@@ -4,7 +4,7 @@ struct CUserProfileManager {
     char pad0[0x0c];
     char flag0c;
     char pad1[0x4c - 0x0d];
-    int val4c;
+    int RefreshRate;
     char pad2[0x108 - 0x50];
     int val108;
 };
@@ -19,7 +19,7 @@ void __fastcall CUserProfileManager_SetAntialiasing(CUserProfileManager* self, v
 {
     if (self->flag0c)
         self->val108 = value;
-    self->val4c = value;
+    self->RefreshRate = value;
     CUserProfileManager_Apply(self);
     if (doNotify)
         CUserProfileManager_Notify(self);
@@ -29,14 +29,14 @@ int main()
 {
     CUserProfileManager o;
     // case: flag set, notify set
-    o.flag0c = 1; o.val4c = 0; o.val108 = 0; g_apply = 0; g_notify = 0;
+    o.flag0c = 1; o.RefreshRate = 0; o.val108 = 0; g_apply = 0; g_notify = 0;
     CUserProfileManager_SetAntialiasing(&o, 0, 7, 1);
-    if (o.val108 != 7 || o.val4c != 7 || g_apply != 1 || g_notify != 1) { std::printf("FAIL a\n"); return 1; }
+    if (o.val108 != 7 || o.RefreshRate != 7 || g_apply != 1 || g_notify != 1) { std::printf("FAIL a\n"); return 1; }
 
     // case: flag clear, notify clear
-    o.flag0c = 0; o.val4c = 0; o.val108 = 99; g_apply = 0; g_notify = 0;
+    o.flag0c = 0; o.RefreshRate = 0; o.val108 = 99; g_apply = 0; g_notify = 0;
     CUserProfileManager_SetAntialiasing(&o, 0, 5, 0);
-    if (o.val108 != 99 || o.val4c != 5 || g_apply != 1 || g_notify != 0) { std::printf("FAIL b\n"); return 1; }
+    if (o.val108 != 99 || o.RefreshRate != 5 || g_apply != 1 || g_notify != 0) { std::printf("FAIL b\n"); return 1; }
 
     std::printf("CUserProfileManager_0040b6d0_TEST PASS\n");
     return 0;

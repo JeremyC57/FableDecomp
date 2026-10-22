@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEnginePrimitiveRendererSharedData {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEnginePrimitiveRendererSharedData_dtor(CEnginePrimitiveRendererSharedData* shared);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEnginePrimitiveRendererSharedData_scalar_deleting_destructor(CEnginePrimitiveRendererSharedData* shared, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEnginePrimitiveRendererSharedData_dtor(shared);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(shared);
+    return shared;
 }

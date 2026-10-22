@@ -18,10 +18,10 @@ struct CThing {
 struct CTCForcePushed {
     unsigned char _pad_0x00[0x04];                      // vptr
     CThing*       ParentThing;                          // +0x04 (CTCBase)
-    void vfunc_2();
+    void FinalCleanup();
 };
 
-void CTCForcePushed::vfunc_2()
+void CTCForcePushed::FinalCleanup()
 {
     CThing* thing = ParentThing;
     if (thing && !thing->Dead && thing->m_type == 1)

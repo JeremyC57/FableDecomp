@@ -10,9 +10,9 @@ struct Sub {
 };
 struct CTCCreatureNavigation {
   void* f0;
-  Sub* f4;
+  Sub* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest) {
-  return this->f4->slot6(this, dest);
+  return this->ParentThing->slot6(this, dest);
 }

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCreatureAction_TrollWhackGroundBase {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCreatureAction_TrollWhackGroundBase_dtor(CCreatureAction_TrollWhackGroundBase* action);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCreatureAction_TrollWhackGroundBase_scalar_deleting_destructor(CCreatureAction_TrollWhackGroundBase* action, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCreatureAction_TrollWhackGroundBase_dtor(action);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(action);
+    return action;
 }

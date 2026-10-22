@@ -32,13 +32,13 @@ extern void* const s_vtbl_12b33f0[];
 
 struct CAIStateGroupBase {
     void** vptr;       // +0x00
-    Field4* field4;    // +0x04
+    Field4* PBrain;    // +0x04
     CThingSearchTools* PeekThingSearchTools();
 };
 
 CThingSearchTools* CAIStateGroupBase::PeekThingSearchTools()
 {
-    Field4* f = this->field4;
+    Field4* f = this->PBrain;
     this->vptr = (void**)s_vtbl_12b33f0;
     return (CThingSearchTools*)f->inner->sub.slot8((void*)this);
 }

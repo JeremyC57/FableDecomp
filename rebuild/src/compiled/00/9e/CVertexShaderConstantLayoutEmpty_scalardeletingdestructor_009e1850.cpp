@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CVertexShaderConstantLayoutEmpty {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CVertexShaderConstantLayoutEmpty_dtor(CVertexShaderConstantLayoutEmpty* empty);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CVertexShaderConstantLayoutEmpty_scalar_deleting_destructor(CVertexShaderConstantLayoutEmpty* empty, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CVertexShaderConstantLayoutEmpty_dtor(empty);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(empty);
+    return empty;
 }

@@ -1,5 +1,5 @@
-// CModeChargeForcePush::OnActivate  @ 008d68e0
-// __fastcall void OnActivate(CModeChargeForcePush* this)
+// CModeSummonerSummon::OnActivate  @ 008d68e0
+// __fastcall void OnActivate(CModeSummonerSummon* this)
 
 struct CSomeState {
     char pad0[0x10];
@@ -8,15 +8,15 @@ struct CSomeState {
 };
 
 // base-class OnActivate (direct thiscall member call @ 0x8621a0)
-void __fastcall BaseMode_OnActivate(void* self);
+void __fastcall BaseMode_OnActivate(void* mode);
 
-struct CModeChargeForcePush {
+struct CModeSummonerSummon {
     void* vtbl;          // +0x00
     CSomeState* state;   // +0x04
     void OnActivate();
 };
 
-void CModeChargeForcePush::OnActivate()
+void CModeSummonerSummon::OnActivate()
 {
     BaseMode_OnActivate(this);
     CSomeState* s = this->state;

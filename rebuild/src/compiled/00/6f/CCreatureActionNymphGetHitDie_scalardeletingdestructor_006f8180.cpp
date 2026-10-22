@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCreatureAction_NymphGetHitDie {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCreatureAction_NymphGetHitDie_dtor(CCreatureAction_NymphGetHitDie* action);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCreatureAction_NymphGetHitDie_scalar_deleting_destructor(CCreatureAction_NymphGetHitDie* action, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCreatureAction_NymphGetHitDie_dtor(action);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(action);
+    return action;
 }

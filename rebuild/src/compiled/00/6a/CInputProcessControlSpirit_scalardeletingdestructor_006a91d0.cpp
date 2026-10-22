@@ -1,12 +1,12 @@
 #pragma optimize("t", on)
-extern void __fastcall AutoTinyMemberDestructor(void* member);
-extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
-void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall DestructMember(void* member);
+extern void __fastcall CInputProcessControlSpirit_Destruct(void* process);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CInputProcessControlSpirit_CompositeScalarDeletingDestructor(void* process, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor(static_cast<unsigned char*>(self) + 40);
-    AutoTinyCompositeDestructor(self);
+    DestructMember(static_cast<unsigned char*>(process) + 40);
+    CInputProcessControlSpirit_Destruct(process);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(process);
+    return process;
 }

@@ -9,7 +9,7 @@ void __fastcall base_dup(CPrizeScoreDef* self, void* edx, CDefClassBase const* s
 struct CPrizeScoreDef {
     char pad[0x28];
     int f28;
-    int f2c;
+    int Mult;
 };
 
 void __fastcall CPrizeScoreDef_Copy(CPrizeScoreDef* self, void* edx, CDefClassBase const* src)
@@ -17,5 +17,5 @@ void __fastcall CPrizeScoreDef_Copy(CPrizeScoreDef* self, void* edx, CDefClassBa
     base_dup(self, edx, src);
     const CPrizeScoreDef* s = (const CPrizeScoreDef*)src;
     self->f28 = s->f28;
-    self->f2c = s->f2c;
+    self->Mult = s->Mult;
 }

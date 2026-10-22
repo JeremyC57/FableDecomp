@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct T { void Hook(int a0, int a1); };
-void T::Hook(int a0, int a1) {}
+struct CThingMarker { void ModifyHealth(int a0, int a1); };
+void CThingMarker::ModifyHealth(int a0, int a1) {}

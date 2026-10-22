@@ -1,10 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall AutoTinyScalarDestructor(void* self);
-extern void __cdecl AutoTinyScalarDelete(void* object);
-void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall CTCCreatureGroupTag_Destruct(void* tag);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CTCCreatureGroupTag_ScalarDeletingDestructor(void* tag, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCCreatureGroupTag_Destruct(tag);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(tag);
+    return tag;
 }

@@ -25,11 +25,11 @@ struct CAnimComponentCombatFlourishTargetOffset : public CAnimComponentBase
 
 CAnimComponentBase* CAnimComponentCombatFlourishTargetOffset::Clone() const
 {
-    CAnimComponentCombatFlourishTargetOffset* self =
+    CAnimComponentCombatFlourishTargetOffset* component =
         (CAnimComponentCombatFlourishTargetOffset*)this;
-    CAnimComponentBase* dst = self->v4();
-    dst->f8 = self->f8;
-    dst->f9 = self->f9;
-    dst->fd = self->fd;
+    CAnimComponentBase* dst = component->v4();
+    dst->f8 = component->f8;
+    dst->f9 = component->f9;
+    dst->fd = component->fd;
     return dst;
 }

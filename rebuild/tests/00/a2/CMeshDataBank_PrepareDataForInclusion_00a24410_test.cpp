@@ -2,7 +2,7 @@
 
 struct RefBlock {
     long count;
-    void (__fastcall *dtor)(void* self, void* edx, int flags);
+    void (__fastcall *dtor)(void* bank, void* edx, int flags);
     void* obj;
 };
 
@@ -10,8 +10,8 @@ static int g_freed = 0;
 static int g_dtored = 0;
 
  void operator delete(void* p) { (void)p; ++g_freed; }
-static void __fastcall fake_dtor(void* self, void* edx, int flags) {
-    (void)self;(void)edx;(void)flags; ++g_dtored;
+static void __fastcall fake_dtor(void* bank, void* edx, int flags) {
+    (void)bank;(void)edx;(void)flags; ++g_dtored;
 }
 
 // Re-implemented logic mirror of the release path.

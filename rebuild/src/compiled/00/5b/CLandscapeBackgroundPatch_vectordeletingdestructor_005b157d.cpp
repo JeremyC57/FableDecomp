@@ -4,7 +4,7 @@ extern void __cdecl Op_Delete(void* p);
 
 struct CLandscapeBackgroundPatch {
     int f0;
-    int f4;
+    int Parent;
     void* f8;
 };
 

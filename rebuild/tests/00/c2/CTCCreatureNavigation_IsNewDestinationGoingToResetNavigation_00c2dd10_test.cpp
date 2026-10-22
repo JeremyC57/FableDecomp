@@ -9,9 +9,9 @@ struct IHelper {
 
 struct CTCCreatureNavigation {
     void* field0;
-    IHelper* field4;
+    IHelper* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest) {
-        return this->field4->CheckReset(this, dest);
+        return this->ParentThing->CheckReset(this, dest);
     }
 };
 
@@ -29,7 +29,7 @@ int main() {
     FakeHelper h;
     CTCCreatureNavigation nav;
     nav.field0 = 0;
-    nav.field4 = &h;
+    nav.ParentThing = &h;
     C3DVector v = {1.0f, 2.0f, 3.0f};
 
     h.ret = true;

@@ -61,7 +61,7 @@ struct CDisplayEngineObject {
 };
 struct CDisplayEngine {
     unsigned char         _pad00[0x2c];
-    CDisplayEngineObject* m_2c;                    // +0x2C
+    CDisplayEngineObject* Engine3D;                    // +0x2C
 };
 struct CDisplayManager {
     void ChangePresentationInterval(bool enable, long interval, bool apply);   // 0x009BFF10
@@ -149,7 +149,7 @@ bool CMainGameComponent::Run(CGameComponent** next)
         world->GetWorldMap()->GetRegion(world->GetWorldMap()->GetCurrentRegionIndex()).GetPointer();
     }
     CUserProfileManager::Get().Apply();
-    PDisplayEngine->m_2c->SetOption(0xc, 20.0f);
+    PDisplayEngine->Engine3D->SetOption(0xc, 20.0f);
     g_pMemoryAllocator->ConsolidateFreeAreas();
     g_pMemoryAllocator->ClearPerformanceStats();
     while (!Quit) {

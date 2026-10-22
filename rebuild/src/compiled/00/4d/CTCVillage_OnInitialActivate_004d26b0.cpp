@@ -7,7 +7,7 @@ void __fastcall Sub_Call(SubObj* self, int a1, unsigned char a2);
 
 struct CTCVillage {
     SubObj* sub;       // +0x00 -> ecx
-    int     field4;    // +0x04 -> edx
+    int     ParentThing;    // +0x04 -> edx
     // +0x08 ...
     char    pad8[4];   // +0x08..0x0b
     unsigned char b_c; // +0x0c pushed arg
@@ -17,7 +17,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->b_d) {
-        Sub_Call(self->sub, self->field4, self->b_c);
+        Sub_Call(self->sub, self->ParentThing, self->b_c);
         self->b_d = 0;
     }
 }

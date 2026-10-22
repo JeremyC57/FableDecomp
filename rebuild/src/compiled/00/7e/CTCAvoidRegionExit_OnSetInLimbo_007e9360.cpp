@@ -37,7 +37,7 @@ struct CExitWeightMap {                                     // map<CThing*, floa
     SExitWeightRange EqualRange(CThing* const& key);        // 0x007E9AE0
     void Erase(CExitWeightIterator first, CExitWeightIterator last);   // 0x007E99F0
 };
-long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work Erase does (outside the bytes graded here)
+long TmplSink_s7_0(const void* exit, long seen);   // stand-in: the work Erase does (outside the bytes graded here)
 #pragma auto_inline(off)
 // Same-TU stand-in for the Erase instantiation (template bodies are compiled in the caller's TU): reads the const-reference
 // arguments (not the empty tags), stores the out pointers, lets no argument escape.
@@ -89,7 +89,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CThing* GetParentThing() const { return ParentThing; }  // by value: the key is an rvalue temporary
     void vfunc_2();                                         // 0x006867F0 (empty base implementation, virtual slot 2)
     void OnKill();                                          // 0x006868F0 (empty base implementation, virtual slot 14)
-    void vfunc_16(bool flag);                               // 0x00686910 (empty base implementation, virtual slot 16)
+    void OnSetInLimbo(bool flag);                               // 0x00686910 (empty base implementation, virtual slot 16)
 };
 
 struct CTCAvoidRegionExit : CTCBase_Calls {
@@ -101,9 +101,9 @@ struct CTCAvoidRegionExit : CTCBase_Calls {
         g_AvoidRegionExitWeights.Erase(range.first, range.second);
         UpdateMaxExitWeight();
     }
-    void vfunc_16(bool flag);
+    void OnSetInLimbo(bool flag);
 };
-long NearSink_s7_0(const void* self, long seen);   // stand-in: the work UpdateMaxExitWeight does outside this TU
+long NearSink_s7_0(const void* exit, long seen);   // stand-in: the work UpdateMaxExitWeight does outside this TU
 #pragma auto_inline(off)
 // Same-TU stand-in for CTCAvoidRegionExit::UpdateMaxExitWeight @ 0x007E9250 (compiled in retail's TU): reads its const reference / pointer-to-const
 // arguments, updates its out-parameters, and lets no argument escape.
@@ -113,9 +113,9 @@ __declspec(noinline) void CTCAvoidRegionExit::UpdateMaxExitWeight()
 }
 #pragma auto_inline(on)
 
-void CTCAvoidRegionExit::vfunc_16(bool flag)
+void CTCAvoidRegionExit::OnSetInLimbo(bool flag)
 {
-    CTCBase_Calls::vfunc_16(flag);
+    CTCBase_Calls::OnSetInLimbo(flag);
     if (flag)
         RemoveFromExitWeights();
 }

@@ -4,8 +4,8 @@ static int g_base_called = 0;
 static int g_notify_called = 0;
 static void* g_notify_self = 0;
 
-extern "C" void __fastcall BaseGroupOnReplace(void* self) { g_base_called++; }
-extern "C" void __fastcall SubNotify(void* self) { g_notify_called++; g_notify_self = self; }
+extern "C" void __fastcall BaseGroupOnReplace(void* stateGroup) { g_base_called++; }
+extern "C" void __fastcall SubNotify(void* stateGroup) { g_notify_called++; g_notify_self = stateGroup; }
 
 struct CAIStateGroup_BanditGossip {
     void*  vtbl;

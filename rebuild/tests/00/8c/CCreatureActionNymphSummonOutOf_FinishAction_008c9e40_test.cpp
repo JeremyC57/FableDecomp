@@ -18,10 +18,10 @@ struct Fake {
     void** vtbl;
 };
 
-static void __fastcall vslot(void* self, int arg) {
-    (void)self; g_vslot_called++; g_vslot_arg = arg;
+static void __fastcall vslot(void* action, int arg) {
+    (void)action; g_vslot_called++; g_vslot_arg = arg;
 }
-static void __fastcall base_fn(void* self) { (void)self; g_base_called++; }
+static void __fastcall base_fn(void* action) { (void)action; g_base_called++; }
 
 static Inner* lookup(void* ecxSub) {
     g_lookup_ecx = ecxSub;
@@ -34,12 +34,12 @@ static Inner* lookup(void* ecxSub) {
     return &inner;
 }
 
-static void finish(void* self) {
-    Inner* p = lookup((char*)self + 8);
+static void finish(void* action) {
+    Inner* p = lookup((char*)action + 8);
     void* h = *(void**)((char*)p + 0x60);
     void** vt = *(void***)h;
     ((void (__fastcall*)(void*, int))vt[0x90/4])(h, 0);
-    base_fn(self);
+    base_fn(action);
 }
 
 int main() {

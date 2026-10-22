@@ -1,4 +1,4 @@
 #pragma optimize("s",on)
 // Constant-return member: returns 64. __fastcall this=ecx.
-struct T { int Get(); };
-int T::Get() { return 64; }
+struct CDialogueLayerDef { int GetSizeofClass(); };
+int CDialogueLayerDef::GetSizeofClass() { return 64; }

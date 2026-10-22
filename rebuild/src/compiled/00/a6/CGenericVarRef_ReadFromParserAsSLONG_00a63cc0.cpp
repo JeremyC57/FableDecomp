@@ -19,7 +19,7 @@ struct CStringParser {
 };
 
 struct CGenericVarRef {
-    long  m_0;
+    long  Type;
     long* m_pValue;                                // +0x04
     bool ReadFromParserAsSLONG(CStringParser& parser);
 };

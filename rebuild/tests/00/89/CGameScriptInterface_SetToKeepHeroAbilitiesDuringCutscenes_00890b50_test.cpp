@@ -3,7 +3,7 @@
 
 struct CMainGameComponent {
     char pad[0x1c];
-    void* f1c;
+    void* PPlayerManager;
 };
 
 static unsigned char g_obj[0x300];
@@ -21,7 +21,7 @@ int main()
     CMainGameComponent inner;
     CGameScriptInterface gsi;
     gsi.Component = &inner;
-    inner.f1c = (void*)0x1234;
+    inner.PPlayerManager = (void*)0x1234;
 
     g_obj[0x224] = 0;
     SetToKeepHeroAbilitiesDuringCutscenes(&gsi, 0, true);

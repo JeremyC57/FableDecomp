@@ -13,12 +13,12 @@ struct Callee {
 };
 struct CTCCreatureNavigation {
     void* f0;
-    Callee* f4;
-    bool IsNewDestinationGoingToResetNavigation(C3DVector* dest){ return f4->Query(this, dest); }
+    Callee* ParentThing;
+    bool IsNewDestinationGoingToResetNavigation(C3DVector* dest){ return ParentThing->Query(this, dest); }
 };
 int main(){
     Callee c; c.marker=1;
-    CTCCreatureNavigation nav; nav.f0=0; nav.f4=&c;
+    CTCCreatureNavigation nav; nav.f0=0; nav.ParentThing=&c;
     C3DVector vpos = {1.0f,0,0};
     C3DVector vneg = {-1.0f,0,0};
     bool r1 = nav.IsNewDestinationGoingToResetNavigation(&vpos);

@@ -17,11 +17,11 @@ struct CIntelligentPointer_01238c6c : CBaseIntelligentPointer {   // vtable 0x01
 struct CLightningBranch {
     CIntelligentPointer_01238c6c m_target;         // +0x00
     CIntelligentPointer_01238c6c m_other;          // +0x08
-    long                         m_10;             // +0x10
+    long                         Timer;             // +0x10
     CLightningBranch(void* target);
 };
 
 CLightningBranch::CLightningBranch(void* target)
-    : m_target(target), m_other(), m_10(0)
+    : m_target(target), m_other(), Timer(0)
 {
 }

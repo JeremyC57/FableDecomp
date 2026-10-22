@@ -7,7 +7,7 @@ extern const int g_vtbl;
 
 struct CLandscapeBackgroundPatch {
     int f0;
-    int f4;
+    int Parent;
     void* f8;
     char pad[0x28 - 0xc];
     CMember m28;

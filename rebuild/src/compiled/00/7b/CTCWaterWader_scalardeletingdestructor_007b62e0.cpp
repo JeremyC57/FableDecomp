@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCWaterWader {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCWaterWader_dtor(CTCWaterWader* wader);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCWaterWader_scalar_deleting_destructor(CTCWaterWader* wader, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCWaterWader_dtor(wader);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(wader);
+    return wader;
 }

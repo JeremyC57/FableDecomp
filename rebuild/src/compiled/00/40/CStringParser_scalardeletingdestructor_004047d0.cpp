@@ -1,4 +1,4 @@
-// CLandscapeBackgroundPatch::`vector deleting destructor'(unsigned int flags) -- destroy a background landscape patch and free it when bit 0 is set
+// CStringParser::`vector deleting destructor'(unsigned int flags) -- destroy a background landscape patch and free it when bit 0 is set
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004047D0, 56 bytes. Callees: member destructors at +0x14, +0x10, +0x0C, the class destructor, operator delete.
 //
 // Vtable slot 0 of the patch class. A background patch is one tile of the distant landscape (the
@@ -18,7 +18,7 @@ extern void __fastcall CLBP_dtor(void* p);      // the class destructor proper
 extern void __cdecl operator_delete_stub(void* p);
 void operator delete(void* p);
 
-struct CLandscapeBackgroundPatch {
+struct CStringParser {
     void* vftable;
     CInner inner4;                  // parent tree node
     void* f8;
@@ -27,15 +27,15 @@ struct CLandscapeBackgroundPatch {
     void* tex;                      // the patch texture (released by the class destructor)
 };
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_dummy, unsigned int flags)
+void* __fastcall CStringParser_scalar_deleting_destructor(CStringParser* parser, int edx_dummy, unsigned int flags)
 {
     // Owned sub-objects in reverse order, then the rest of the patch.
-    Inner14_dtor((char*)self + 0x14);
-    Inner_dtor((char*)self + 0x10);
-    Inner_dtor((char*)self + 0xc);
-    CLBP_dtor(self);
+    Inner14_dtor((char*)parser + 0x14);
+    Inner_dtor((char*)parser + 0x10);
+    Inner_dtor((char*)parser + 0xc);
+    CLBP_dtor(parser);
     // Bit 0: the caller used `delete`, so give the storage back too.
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(parser);
+    return parser;
 }

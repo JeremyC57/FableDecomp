@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCHeroSpecialMovement {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCHeroSpecialMovement_dtor(CTCHeroSpecialMovement* movement);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCHeroSpecialMovement_scalar_deleting_destructor(CTCHeroSpecialMovement* movement, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCHeroSpecialMovement_dtor(movement);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(movement);
+    return movement;
 }

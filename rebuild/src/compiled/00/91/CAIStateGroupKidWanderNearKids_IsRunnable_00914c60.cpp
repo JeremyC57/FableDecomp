@@ -73,22 +73,22 @@ struct CThingSearchTools_Methods : CThingSearchTools {
 unsigned int __fastcall GFROR13(unsigned int);          // 0x00497890
 
 bool CAIStateGroup_KidWanderNearKids_Methods::IsRunnable() {
-    CAIStateGroupBase_Methods* self = (CAIStateGroupBase_Methods*)(CAIStateGroupBase*)this;
-    if (((CThing*)self->PBrain->Creature)->UsingComponents[6] & 0x80000) {
-        CTCIdleScheduler* scheduler=((CThing*)(self->PBrain->Creature))->GetTC<CTCIdleScheduler>(0xd3);
-        if (!scheduler->IsPreferredIdle(self)) return false;
+    CAIStateGroupBase_Methods* stateGroup = (CAIStateGroupBase_Methods*)(CAIStateGroupBase*)this;
+    if (((CThing*)stateGroup->PBrain->Creature)->UsingComponents[6] & 0x80000) {
+        CTCIdleScheduler* scheduler=((CThing*)(stateGroup->PBrain->Creature))->GetTC<CTCIdleScheduler>(0xd3);
+        if (!scheduler->IsPreferredIdle(stateGroup)) return false;
     }
-    if (((CThing*)self->PBrain->Creature)->UsingComponents[1] & 0x20000) {
-        CTCCreatureModeManager* modes=((CThing*)(self->PBrain->Creature))->GetTCConst<CTCCreatureModeManager>(0x31);
+    if (((CThing*)stateGroup->PBrain->Creature)->UsingComponents[1] & 0x20000) {
+        CTCCreatureModeManager* modes=((CThing*)(stateGroup->PBrain->Creature))->GetTCConst<CTCCreatureModeManager>(0x31);
         if (modes->HasMode(8) || modes->HasMode(9)) {
-            unsigned int* seed=((CWorld_Methods*)self->GetPWorld())->GetPRandomSeed();
+            unsigned int* seed=((CWorld_Methods*)stateGroup->GetPWorld())->GetPRandomSeed();
             *seed=*seed*0x24a1+0x24df;
             *seed=GFROR13(*seed);
             if (*seed % 100 > 10) return false;
         }
     }
     CThingAICreature* found;
-    return ((CThingSearchTools_Methods*)self->PeekThingSearchTools())->GetPFirstThing(
-        CThingFilter_IsNot((const CThing*)self->PBrain->Creature) && CThingFilter_IsChild(),
+    return ((CThingSearchTools_Methods*)stateGroup->PeekThingSearchTools())->GetPFirstThing(
+        CThingFilter_IsNot((const CThing*)stateGroup->PBrain->Creature) && CThingFilter_IsChild(),
         &found);
 }

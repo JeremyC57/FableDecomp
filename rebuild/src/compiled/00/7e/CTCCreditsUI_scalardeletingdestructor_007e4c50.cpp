@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCCreditsUI {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCCreditsUI_dtor(CTCCreditsUI* creditsUI);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCCreditsUI_scalar_deleting_destructor(CTCCreditsUI* creditsUI, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCCreditsUI_dtor(creditsUI);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(creditsUI);
+    return creditsUI;
 }

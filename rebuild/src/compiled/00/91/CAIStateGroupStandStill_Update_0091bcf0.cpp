@@ -1,3 +1,3 @@
-struct S; int __fastcall ss_sub(S* self);
-struct S { int x; void M(); };
-void S::M(){ int r; do { r = ss_sub(this); } while(r==4); }
+struct CAIStateGroup_StandStill; int __fastcall ss_sub(CAIStateGroup_StandStill* stateGroup);
+struct CAIStateGroup_StandStill { int x; void Update(); };
+void CAIStateGroup_StandStill::Update(){ int r; do { r = ss_sub(this); } while(r==4); }

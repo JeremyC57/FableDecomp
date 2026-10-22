@@ -9,7 +9,7 @@ void __fastcall Callee(Target* ecxObj, void* edxArg, unsigned char arg);
 struct CTCVillage
 {
     Target* field0;   // +0 -> ecx
-    void*   field4;   // +4 -> edx
+    void*   ParentThing;   // +4 -> edx
     char    pad8;      // +8
     char    pad9;
     char    padA;
@@ -22,7 +22,7 @@ void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->fieldD)
     {
-        Callee(self->field0, self->field4, self->fieldC);
+        Callee(self->field0, self->ParentThing, self->fieldC);
         self->fieldD = 0;
     }
 }

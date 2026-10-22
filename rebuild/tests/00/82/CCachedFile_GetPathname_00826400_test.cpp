@@ -3,8 +3,8 @@
 struct CCharString { char* got; };
 struct CCachedFile { char pad[0x18]; char m_pathname[8]; };
 static void* modelCopy(CCharString* d, char* s){ d->got = s; return d; }
-static void* GetPathnameModel(CCachedFile* self, CCharString* dst){
-    modelCopy(dst, self->m_pathname);
+static void* GetPathnameModel(CCachedFile* file, CCharString* dst){
+    modelCopy(dst, file->m_pathname);
     return dst;
 }
 int main(){

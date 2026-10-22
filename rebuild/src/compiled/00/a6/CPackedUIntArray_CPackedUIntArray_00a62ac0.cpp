@@ -11,12 +11,12 @@ void operator delete[](void*);
 struct CPackedUIntArray
 {
     void* buffer;   // +0x0
-    int   f4;       // +0x4
-    char  f8;       // +0x8
+    int   Size;       // +0x4
+    char  Bits;       // +0x8
     char  pad9;
     char  padA;
     char  padB;
-    int   fC;       // +0xc
+    int   Bias;       // +0xc
 
     ~CPackedUIntArray();
 };
@@ -25,7 +25,7 @@ CPackedUIntArray::~CPackedUIntArray()
 {
     operator delete[](this->buffer);
     this->buffer = 0;
-    this->f4 = 0;
-    this->f8 = 0;
-    this->fC = 0;
+    this->Size = 0;
+    this->Bits = 0;
+    this->Bias = 0;
 }

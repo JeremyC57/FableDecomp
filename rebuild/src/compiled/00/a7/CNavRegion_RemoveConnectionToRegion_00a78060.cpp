@@ -15,7 +15,7 @@ struct SConnectionNode_00a78060 {
 };
 
 struct CNavRegion {
-    long                      m_0;
+    long                      RegionID;
     SConnectionNode_00a78060* m_pConnections;      // +0x04: the sentinel
     void RemoveConnection(SNavConnection_00a78060* connection);   // 0x00A77710
     void RemoveConnectionToRegion(CNavRegion* other);

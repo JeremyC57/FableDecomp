@@ -22,13 +22,13 @@ struct CObject_006956e0 : CBaseClass {
 };
 #pragma pack(pop)
 
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CActionEventAddObject_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    CObject_006956e0* object = static_cast<CObject_006956e0*>(self);
+    CObject_006956e0* object = static_cast<CObject_006956e0*>(action);
     object->Member18.~CCharString();
     object->Member14.~CCharString();
     object->CBaseClass::~CBaseClass();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return action;
 }

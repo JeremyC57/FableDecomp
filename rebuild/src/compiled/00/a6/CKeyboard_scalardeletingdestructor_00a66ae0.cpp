@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CKeyboard {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CKeyboard_dtor(CKeyboard* keyboard);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CKeyboard_scalar_deleting_destructor(CKeyboard* keyboard, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CKeyboard_dtor(keyboard);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(keyboard);
+    return keyboard;
 }

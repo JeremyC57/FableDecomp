@@ -14,7 +14,7 @@ void __fastcall Callee(CObj* obj, void* edxarg, unsigned char v)
 
 struct CTCVillage {
     CObj*  f0;
-    void*  f4;
+    void*  ParentThing;
     int    pad8;
     unsigned char fC;
     unsigned char fD;
@@ -23,7 +23,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->fD) {
-        Callee(self->f0, self->f4, self->fC);
+        Callee(self->f0, self->ParentThing, self->fC);
         self->fD = 0;
     }
 }
@@ -35,7 +35,7 @@ int main()
 
     // case: fD set -> calls callee, clears fD
     CTCVillage v;
-    v.f0 = &o; v.f4 = &edxmark; v.pad8 = 0; v.fC = 0x2a; v.fD = 1;
+    v.f0 = &o; v.ParentThing = &edxmark; v.pad8 = 0; v.fC = 0x2a; v.fD = 1;
     OnInitialActivate(&v);
     bool ok1 = (g_calls == 1) && (g_obj == &o) && (g_edx == &edxmark)
                && (g_v == 0x2a) && (v.fD == 0);

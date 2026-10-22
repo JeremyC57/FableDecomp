@@ -10,11 +10,11 @@ struct CPersistContext {
     void PersistC(int* p){ calls++; g_c=p; }
 };
 
-void __fastcall CSmashableDef_Transfer(CSmashableDef* self, int edx, CPersistContext* ctx)
+void __fastcall CSmashableDef_Transfer(CSmashableDef* def, int edx, CPersistContext* ctx)
 {
-    ctx->PersistA(reinterpret_cast<unsigned char*>(&self->Smashable));
-    ctx->PersistB(reinterpret_cast<unsigned char*>(&self->ReplacementObject_Val));
-    ctx->PersistC(reinterpret_cast<int*>(&self->SmashParticleEmitter));
+    ctx->PersistA(reinterpret_cast<unsigned char*>(&def->Smashable));
+    ctx->PersistB(reinterpret_cast<unsigned char*>(&def->ReplacementObject_Val));
+    ctx->PersistC(reinterpret_cast<int*>(&def->SmashParticleEmitter));
 }
 
 int main(){

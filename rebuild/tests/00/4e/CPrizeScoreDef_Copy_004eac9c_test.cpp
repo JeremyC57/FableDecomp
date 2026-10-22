@@ -5,7 +5,7 @@ struct Base { int tag; };
 struct CPrizeScoreDef {
     char pad[0x28];
     int f28;
-    int f2c;
+    int Mult;
     int basecalled;
 };
 
@@ -18,14 +18,14 @@ static void Copy_model(CPrizeScoreDef* self, const Base* src) {
     base_dup(self, src);
     const CPrizeScoreDef* s = (const CPrizeScoreDef*)src;
     self->f28 = s->f28;
-    self->f2c = s->f2c;
+    self->Mult = s->Mult;
 }
 
 int main() {
-    CPrizeScoreDef src; src.f28 = 111; src.f2c = 222;
-    CPrizeScoreDef dst; dst.f28 = 0; dst.f2c = 0; dst.basecalled = 0;
+    CPrizeScoreDef src; src.f28 = 111; src.Mult = 222;
+    CPrizeScoreDef dst; dst.f28 = 0; dst.Mult = 0; dst.basecalled = 0;
     Copy_model(&dst, (const Base*)&src);
-    if (dst.f28 == 111 && dst.f2c == 222 && dst.basecalled == 1)
+    if (dst.f28 == 111 && dst.Mult == 222 && dst.basecalled == 1)
         printf("PRIZECOPY_OK\n");
     else
         printf("FAIL\n");

@@ -1,21 +1,21 @@
-// CEngineSubPrimitiveGameMesh::`vector_deleting_destructor' @ 0x00529ca0
+// CThingPhysicalSwitch::`vector_deleting_destructor' @ 0x00529ca0
 // Standard MSVC deleting destructor:
 //   push esi; mov esi,ecx; call <dtor>; test [esp+8],1; je +; mov ecx,esi; call <delete>; mov eax,esi; ret 4
 
-struct CEngineSubPrimitiveGameMesh {
+struct CThingPhysicalSwitch {
     void *vfptr;
 };
 
 // Base/class destructor forwarded to (direct call, this in ecx).
-void __fastcall CEngineSubPrimitiveGameMesh_dtor(CEngineSubPrimitiveGameMesh *self);
+void __fastcall CThingPhysicalSwitch_dtor(CThingPhysicalSwitch *physicalSwitch);
 // Fable operator-delete wrapper: pointer passed in ecx (thiscall-style).
-void __fastcall CEngineSubPrimitiveGameMesh_del(void *p);
+void __fastcall CThingPhysicalSwitch_del(void *p);
 
-void * __fastcall CEngineSubPrimitiveGameMesh_vector_deleting_destructor(
-    CEngineSubPrimitiveGameMesh *self, int /*edx*/, unsigned int flags)
+void * __fastcall CThingPhysicalSwitch_scalar_deleting_destructor(
+    CThingPhysicalSwitch *physicalSwitch, int /*edx*/, unsigned int flags)
 {
-    CEngineSubPrimitiveGameMesh_dtor(self);
+    CThingPhysicalSwitch_dtor(physicalSwitch);
     if (flags & 1)
-        CEngineSubPrimitiveGameMesh_del(self);
-    return self;
+        CThingPhysicalSwitch_del(physicalSwitch);
+    return physicalSwitch;
 }

@@ -26,13 +26,13 @@ struct CRetailList_node0x14 {                   // retail std::list, one sentine
     CRetailList_node0x14(const CRetailAllocator& al = CRetailAllocator());   // 0x00655B18
 };
 
-struct CVtable_0125a5a4 : CDrawBase {
+struct CDrawDamage : CDrawBase {
     virtual void v00();                          // own vtable (0x0125A5A4)
     CRetailList_node0x14 m_entries;              // +0x28
-    CVtable_0125a5a4(CPlayerGui* gui, void* draws);
+    CDrawDamage(CPlayerGui* gui, void* draws);
 };
 
-CVtable_0125a5a4::CVtable_0125a5a4(CPlayerGui* gui, void* draws)
+CDrawDamage::CDrawDamage(CPlayerGui* gui, void* draws)
     : CDrawBase(gui, draws), m_entries()
 {
 }

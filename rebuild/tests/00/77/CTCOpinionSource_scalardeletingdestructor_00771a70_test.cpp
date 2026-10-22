@@ -1,17 +1,17 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch {
+struct CTCOpinionSource {
     void* vftable;
     int destroyed;
 };
 
 static int g_freed = 0;
-static CLandscapeBackgroundPatch* g_last_dtor = 0;
+static CTCOpinionSource* g_last_dtor = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
+void __fastcall CTCOpinionSource_dtor(CTCOpinionSource* source)
 {
-    g_last_dtor = self;
-    self->destroyed = 1;
+    g_last_dtor = source;
+    source->destroyed = 1;
 }
 
 void operator delete(void* p)
@@ -20,31 +20,31 @@ void operator delete(void* p)
     (void)p;
 }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCOpinionSource_scalar_deleting_destructor(CTCOpinionSource* source, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCOpinionSource_dtor(source);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(source);
+    return source;
 }
 
 int main()
 {
-    CLandscapeBackgroundPatch a;
+    CTCOpinionSource a;
     a.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 0);
+    void* r = CTCOpinionSource_scalar_deleting_destructor(&a, 0, 0);
     if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
         std::printf("FAIL no-free path\n");
         return 1;
     }
 
-    CLandscapeBackgroundPatch b;
+    CTCOpinionSource b;
     b.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&b, 0, 1);
+    void* r2 = CTCOpinionSource_scalar_deleting_destructor(&b, 0, 1);
     if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
         std::printf("FAIL free path\n");
         return 1;

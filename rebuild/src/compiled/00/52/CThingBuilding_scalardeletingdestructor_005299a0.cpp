@@ -1,4 +1,4 @@
-// CEngineSubPrimitiveGameMesh::`vector_deleting_destructor'
+// CThingBuilding::`vector_deleting_destructor'
 // retail 0x005299a0  __fastcall(void* this, unsigned int flags) -> void*
 //
 //   push esi; mov esi,ecx
@@ -8,17 +8,17 @@
 //   mov ecx,esi; call 0x4c73b0 ; this-in-ecx delete helper
 //   skip: mov eax,esi; pop esi; ret 4
 
-struct CEngineSubPrimitiveGameMesh
+struct CThingBuilding
 {
     // scalar destructor helper (retail 0x838a00) — this-in-ecx member call
     void ScalarDtor();
     // this-in-ecx delete helper (retail 0x4c73b0)
     void DeleteHelper();
 
-    void* VectorDeletingDestructor(unsigned int flags);
+    void* ScalarDeletingDestructor(unsigned int flags);
 };
 
-void* CEngineSubPrimitiveGameMesh::VectorDeletingDestructor(unsigned int flags)
+void* CThingBuilding::ScalarDeletingDestructor(unsigned int flags)
 {
     this->ScalarDtor();
     if (flags & 1)

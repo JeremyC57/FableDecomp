@@ -31,13 +31,13 @@ struct CObject_007e5920 : CTCBase {
 };
 #pragma pack(pop)
 
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCBetting_CompositeScalarDeletingDestructor(void* betting, int, unsigned int flags)
 {
-    CObject_007e5920* object = static_cast<CObject_007e5920*>(self);
+    CObject_007e5920* object = static_cast<CObject_007e5920*>(betting);
     object->Member1c.~vector();
     object->Member10.~vector();
     object->CTCBase::~CTCBase();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return betting;
 }

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineBillboardGenerator {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineBillboardGenerator_dtor(CEngineBillboardGenerator* generator);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineBillboardGenerator_scalar_deleting_destructor(CEngineBillboardGenerator* generator, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineBillboardGenerator_dtor(generator);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(generator);
+    return generator;
 }

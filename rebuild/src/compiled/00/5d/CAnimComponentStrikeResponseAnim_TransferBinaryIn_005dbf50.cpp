@@ -58,7 +58,7 @@ public:
 class CAnimComponentStrikeResponseAnim {
 public:
     virtual void v00();
-    long m_04;                             // +0x04 (base component data)
+    long IVRefCount;                             // +0x04 (base component data)
     CCharString ResponseAnimName;          // +0x08
     void TransferBinaryIn(CDataInputStream& in);
 };

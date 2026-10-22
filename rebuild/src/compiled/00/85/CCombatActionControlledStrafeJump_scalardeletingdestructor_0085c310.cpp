@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCombatAction_ControlledStrafeJump {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCombatAction_ControlledStrafeJump_dtor(CCombatAction_ControlledStrafeJump* action);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCombatAction_ControlledStrafeJump_scalar_deleting_destructor(CCombatAction_ControlledStrafeJump* action, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCombatAction_ControlledStrafeJump_dtor(action);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(action);
+    return action;
 }

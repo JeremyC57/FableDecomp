@@ -12,11 +12,11 @@ struct Callee {
 
 struct CTCCreatureNavigation {
     void* f0;
-    Callee* f4;
+    Callee* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest)
 {
-    return f4->Query(this, dest);
+    return ParentThing->Query(this, dest);
 }

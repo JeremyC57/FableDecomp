@@ -12,14 +12,14 @@ void __fastcall Inner_Do(Inner* self, int edx, unsigned char v){
 }
 
 struct CTCVillage {
-    Inner* p0; int v4;
+    Inner* p0; int ParentThing;
     char pad8,pad9,pada,padb;
     unsigned char bytec; char flagd;
 };
 
 void __fastcall OnInitialActivate(CTCVillage* self){
     if (self->flagd) {
-        Inner_Do(self->p0, self->v4, self->bytec);
+        Inner_Do(self->p0, self->ParentThing, self->bytec);
         self->flagd = 0;
     }
 }
@@ -29,7 +29,7 @@ int main(){
     Inner* pin = &innerObj;
     CTCVillage v;
     CTCVillage* pv = &v;
-    v.p0 = pin; v.v4 = 0x1234; v.bytec = 0x7f; v.flagd = 1;
+    v.p0 = pin; v.ParentThing = 0x1234; v.bytec = 0x7f; v.flagd = 1;
     v.pad8=v.pad9=v.pada=v.padb=0;
 
     OnInitialActivate(pv);

@@ -49,7 +49,7 @@ struct CWorld { virtual CThingManager_Retail* GetThingManager() { std::strcat(g_
     CWorldMap_Retail* PWorldMap_ptr; CEnvironment_Retail* PEnvironment_ptr; COpinionReactionManager_Retail* POpinionReactionManager_Data; CScriptConversationManager_Retail* PScriptConversationManager_ptr; CEnvironment_Retail* GetEnvironment() { return PEnvironment_ptr; } };
 static CWorld g_world;
 struct CDisplayEngine_Retail; struct CPlayerManager_Retail;
-struct CGameScriptInterface { virtual void v000() { } CWorld* World; long m_08; CDisplayEngine_Retail* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
+struct CGameScriptInterface { virtual void v000() { } CWorld* World; long Component; CDisplayEngine_Retail* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
     long AddNewConversation(const CScriptThing& thing, bool a, bool b) const {if (thing.IsValid()) { CScriptConversationManager_Retail* conversations = World->PScriptConversationManager_ptr; return conversations->MakeNewConversation(thing.GetThing(), a, b); } return 0;}
 };
 

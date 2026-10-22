@@ -2,7 +2,7 @@
 
 struct CLandscapeBackgroundPatch {
     int f0;
-    int f4;
+    int Parent;
     void* f8;
     void* vector_deleting_destructor(unsigned int flags);
 };

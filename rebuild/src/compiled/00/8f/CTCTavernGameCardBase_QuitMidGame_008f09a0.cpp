@@ -7,16 +7,16 @@
 // Tiny-body shape `BeginWith` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CTCTavernGameCardSorting {
+struct CTCTavernGameCardBase {
     unsigned char _pad[0x21];
     unsigned char m_flagB;                  // +0x21
     unsigned char _pad2[0x6];
     unsigned char m_flagA;                  // +0x28
     void Begin(long kind);                 // 0x005E9B20
-    void vfunc_34();
+    void QuitMidGame();
 };
 
-void CTCTavernGameCardSorting::vfunc_34()
+void CTCTavernGameCardBase::QuitMidGame()
 {
     m_flagA = 1;
     m_flagB = 0;

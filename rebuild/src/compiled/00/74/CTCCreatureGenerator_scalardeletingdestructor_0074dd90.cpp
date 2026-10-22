@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCCreatureGenerator {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCCreatureGenerator_dtor(CTCCreatureGenerator* generator);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCCreatureGenerator_scalar_deleting_destructor(CTCCreatureGenerator* generator, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCCreatureGenerator_dtor(generator);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(generator);
+    return generator;
 }

@@ -7,14 +7,14 @@ struct CShaderResourceField4 {
 
 struct CShaderResource {
     void* field0;
-    CShaderResourceField4* field4;
+    CShaderResourceField4* ShaderBank;
     CCharString* GetPixelShader(CCharString* a, CPixelShader* b);
     void Fetch(CCharString* a, int handle);
 };
 
 CCharString* CShaderResource::GetPixelShader(CCharString* a, CPixelShader* b)
 {
-    int handle = this->field4->ResolveHandle(b);
+    int handle = this->ShaderBank->ResolveHandle(b);
     this->Fetch(a, handle);
     return a;
 }

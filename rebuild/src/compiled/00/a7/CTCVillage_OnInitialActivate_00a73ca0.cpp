@@ -20,7 +20,7 @@ void __fastcall Callee_method(Callee* obj, void* edxArg, bool flag);
 
 struct CTCVillage {
     Callee*       field0;  // +0x00  -> ecx to callee
-    void*         field4;  // +0x04  -> edx to callee
+    void*         ParentThing;  // +0x04  -> edx to callee
     int           dummy8;  // +0x08
     bool          fieldC;  // +0x0c  -> pushed bool arg
     unsigned char fieldD;  // +0x0d  -> guard flag
@@ -29,7 +29,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->fieldD) {
-        Callee_method(self->field0, self->field4, self->fieldC);
+        Callee_method(self->field0, self->ParentThing, self->fieldC);
         self->fieldD = 0;
     }
 }

@@ -1,10 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall AutoTinyScalarDestructor(void* self);
-extern void __cdecl AutoTinyScalarDelete(void* object);
-void* __fastcall CLandscapeBackgroundPatch_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall CTCShotDefinitionFireballSpell_Destruct(void* spell);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CTCShotDefinitionFireballSpell_ScalarDeletingDestructor(void* spell, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCShotDefinitionFireballSpell_Destruct(spell);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(spell);
+    return spell;
 }

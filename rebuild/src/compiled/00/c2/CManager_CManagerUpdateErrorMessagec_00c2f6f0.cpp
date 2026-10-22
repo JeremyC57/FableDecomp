@@ -14,7 +14,7 @@ struct IErrorNotifier
 class CManager
 {
 public:
-    void* field0;
+    void* World;
     IErrorNotifier* notifier;
 };
 

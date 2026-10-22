@@ -11,9 +11,9 @@ struct IDelegate {
 };
 struct CTCCreatureNavigation {
   void* f0;
-  IDelegate* f4;
+  IDelegate* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest) {
-  return this->f4->m6(this, dest);
+  return this->ParentThing->m6(this, dest);
 }

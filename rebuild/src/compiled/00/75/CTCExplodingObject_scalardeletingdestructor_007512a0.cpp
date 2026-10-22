@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCExplodingObject {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCExplodingObject_dtor(CTCExplodingObject* explodingObject);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCExplodingObject_scalar_deleting_destructor(CTCExplodingObject* explodingObject, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCExplodingObject_dtor(explodingObject);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(explodingObject);
+    return explodingObject;
 }

@@ -3,7 +3,7 @@
 struct SubObj8;
 
 // method at 0xa01b50 called with ecx = &self at +8 (subobject)
-void __fastcall Sub8_Method(SubObj8* self);
+void __fastcall Sub8_Method(SubObj8* action);
 
 struct CCreatureActionHeroJump {
     int   m00;      // +0x00
@@ -17,13 +17,13 @@ struct CCreatureActionHeroJump {
 };
 
 // tail-called method at 0x859d80 (ecx = self)
-void __fastcall Base_FrameStep(CCreatureActionHeroJump* self);
+void __fastcall Base_FrameStep(CCreatureActionHeroJump* action);
 
-void __fastcall FrameUpdate(CCreatureActionHeroJump* self)
+void __fastcall FrameUpdate(CCreatureActionHeroJump* action)
 {
-    int v = self->m1c + 7;
-    if (v >= self->m10) {
-        Sub8_Method((SubObj8*)&self->m08);
+    int v = action->m1c + 7;
+    if (v >= action->m10) {
+        Sub8_Method((SubObj8*)&action->m08);
     }
-    Base_FrameStep(self);
+    Base_FrameStep(action);
 }

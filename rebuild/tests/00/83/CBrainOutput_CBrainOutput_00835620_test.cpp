@@ -17,7 +17,7 @@ struct CCountedPointer_CCreatureActionBase {
     }
 };
 struct C3DVector { float X, Y, Z; };
-struct CNavigationInput { long m_00, m_04, m_08, m_0c, m_10, m_14; CNavigationInput() : m_0c(0), m_10(0), m_14(0) { } };
+struct CNavigationInput { long m_00, m_04, m_08, m_0c, MovementType, m_14; CNavigationInput() : m_0c(0), MovementType(0), m_14(0) { } };
 struct CBrainOutput {
     unsigned long Types; long LookFlags; CNavigationInput NavigationInput; CCountedPointer_CCreatureActionBase PAction; C3DVector MoveToPos; C3DVector LookAtPos; CIntelligentPointer LookAtThing;
     CBrainOutput();
@@ -27,7 +27,7 @@ int main()
 {
     unsigned char raw[sizeof(CBrainOutput)]; memset(raw, 0xCD, sizeof(raw));
     CBrainOutput* o = new (raw) CBrainOutput();
-    bool ok = sizeof(CBrainOutput) == 72 && g_ipCtors == 1 && g_destroyed == 0 && o->Types == 0 && o->LookFlags == 0 && o->NavigationInput.m_0c == 0 && o->NavigationInput.m_10 == 0 && o->NavigationInput.m_14 == 0
+    bool ok = sizeof(CBrainOutput) == 72 && g_ipCtors == 1 && g_destroyed == 0 && o->Types == 0 && o->LookFlags == 0 && o->NavigationInput.m_0c == 0 && o->NavigationInput.MovementType == 0 && o->NavigationInput.m_14 == 0
         && o->NavigationInput.m_00 == (long)0xCDCDCDCD && o->PAction.m_pObject == 0 && o->PAction.m_pCount == 0 && o->LookAtThing.m_pItem == 0 && *(void**)&o->LookAtThing != 0;
     // Reset on a live block releases it
     CCreatureActionBase act; SCountBlock* blk = new SCountBlock; blk->m_references = 1; blk->m_pfnDestroy = DestroyAction; blk->m_pObject = &act;

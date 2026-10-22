@@ -16,12 +16,12 @@ struct CDragonActionNapalmDef {
     Field f3;
 };
 
-void __fastcall CDragonActionNapalmDef_Transfer(CDragonActionNapalmDef* self, int edx, CPersistContext* ctx)
+void __fastcall CDragonActionNapalmDef_Transfer(CDragonActionNapalmDef* def, int edx, CPersistContext* ctx)
 {
-    ctx->Xfer(&self->f0);
-    ctx->Xfer(&self->f1);
-    ctx->Xfer(&self->f2);
-    ctx->Xfer(&self->f3);
+    ctx->Xfer(&def->f0);
+    ctx->Xfer(&def->f1);
+    ctx->Xfer(&def->f2);
+    ctx->Xfer(&def->f3);
 }
 
 int main()

@@ -54,9 +54,9 @@ struct CNavigationInput {                       // 24 bytes: the first three dwo
     long m_04;
     long m_08;
     long m_0c;
-    long m_10;
+    long MovementType;
     long m_14;
-    CNavigationInput() : m_0c(0), m_10(0), m_14(0) { }
+    CNavigationInput() : m_0c(0), MovementType(0), m_14(0) { }
 };
 
 struct CBrainOutput {

@@ -6,14 +6,14 @@ struct IHelper {
 };
 struct CTCCreatureNavigation {
     void* f0;
-    IHelper* f4;
+    IHelper* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest) {
-        return this->f4->v6(this, dest);
+        return this->ParentThing->v6(this, dest);
     }
 };
 int main(){
     IHelper h;
-    CTCCreatureNavigation n; n.f0=0; n.f4=&h;
+    CTCCreatureNavigation n; n.f0=0; n.ParentThing=&h;
     C3DVector pos; pos.x=1.0f; pos.y=0; pos.z=0;
     C3DVector neg; neg.x=-1.0f; neg.y=0; neg.z=0;
     bool a = n.IsNewDestinationGoingToResetNavigation(&pos);

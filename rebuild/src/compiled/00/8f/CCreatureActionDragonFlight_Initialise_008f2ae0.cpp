@@ -13,16 +13,16 @@ struct CCreatureAction_DragonFlight : public CCreatureAction_Base
 {
     // vtable ptr at +0x00
     char pad4[0x10 - 4]; // bring field10 to offset 0x10
-    int  field10;        // [esi+0x10]
-    int  field14;        // [esi+0x14]
+    int  TotalTime;        // [esi+0x10]
+    int  ActionTime;        // [esi+0x14]
     virtual void Initialise();
 };
 
 // base initialise: __fastcall (this in ecx, no stack args) -> model __fastcall
-void __fastcall CCreatureAction_Base_Initialise(CCreatureAction_Base* self);
+void __fastcall CCreatureAction_Base_Initialise(CCreatureAction_Base* action);
 
 void CCreatureAction_DragonFlight::Initialise()
 {
     CCreatureAction_Base_Initialise(this);
-    this->field14 = (int)((float)this->field10 * g_dragonFlightScale);
+    this->ActionTime = (int)((float)this->TotalTime * g_dragonFlightScale);
 }

@@ -1,5 +1,5 @@
-// CTCElectrocutedEffect::OnInitialActivate @ 0076c830
-struct CTCElectrocutedEffect;
+// CTCEnemy::OnInitialActivate @ 0076c830
+struct CTCEnemy;
 
 // g_global singleton at 0x13b8790; its method is a real __fastcall member
 struct GlobalThing {
@@ -8,10 +8,10 @@ struct GlobalThing {
 extern GlobalThing* g_electroGlobal;
 
 // base OnInitialActivate (tail jmp 0x686870), __fastcall(this)
-void __fastcall CTCElectrocutedEffect_base_OnInitialActivate(CTCElectrocutedEffect* self);
+void __fastcall CTCEnemy_base_OnInitialActivate(CTCEnemy* enemy);
 
-void __fastcall OnInitialActivate(CTCElectrocutedEffect* self)
+void __fastcall OnInitialActivate(CTCEnemy* enemy)
 {
     g_electroGlobal->Register(0);
-    CTCElectrocutedEffect_base_OnInitialActivate(self);
+    CTCEnemy_base_OnInitialActivate(enemy);
 }

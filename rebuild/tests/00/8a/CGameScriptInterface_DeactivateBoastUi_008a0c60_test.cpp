@@ -21,7 +21,7 @@ struct CGameScriptInterface_Base { virtual void v000() { } };
 struct CPlayer_Retail { CThing_Retail* GetHeroCreature() { std::strcat(g_seq, "h"); return &g_thing; } }; static CPlayer_Retail g_player;
 struct CPlayerManager_Retail { CPlayer_Retail* GetMainPlayer() { std::strcat(g_seq, "p"); return &g_player; } }; static CPlayerManager_Retail g_pm;
 static void* g_tc = 0; struct CTCBoastUI_Retail { void Deactivate() { std::strcat(g_seq, "D"); g_tc = this; } };
-struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long m_08; void* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager;
+struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long Component; void* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager;
     void DeactivateBoastUi() const { CThing_Retail* t = PlayerManager->GetMainPlayer()->GetHeroCreature(); if (t->HasTC(0xe8)) ((CTCBoastUI_Retail*)GetTC(t, 0xe8))->Deactivate(); } };
 int main() {
     CGameScriptInterface i; i.PlayerManager = &g_pm; reset(0xe8, true); i.DeactivateBoastUi(); if (std::strcmp(g_seq, "phD") || g_tc != &g_tcs[1] || g_lbKind != 0xe8) { std::printf("008a0c60_TEST FAIL\n"); return 1; } reset(0xe8, false); i.DeactivateBoastUi(); if (std::strcmp(g_seq, "ph")) { std::printf("008a0c60_TEST FAIL\n"); return 1; }

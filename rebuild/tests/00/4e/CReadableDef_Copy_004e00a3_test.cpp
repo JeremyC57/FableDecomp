@@ -8,7 +8,7 @@ struct CReadableBase {
 
 struct CReadableDef : CReadableBase {
     unsigned char field25pad[0x25];
-    unsigned char field25;
+    unsigned char UseInfoDisplay;
     void Copy(CDefClassBase const* src);
 };
 
@@ -24,13 +24,13 @@ int main() {
     CReadableDef dst; CReadableDef srcObj;
     for (int i=0;i<(int)sizeof(dst);++i) ((char*)&dst)[i]=0;
     for (int i=0;i<(int)sizeof(srcObj);++i) ((char*)&srcObj)[i]=0;
-    srcObj.field25 = 0xAB;
-    dst.field25 = 0x00;
+    srcObj.UseInfoDisplay = 0xAB;
+    dst.UseInfoDisplay = 0x00;
     CReadableDef_Copy(&dst, 0, (CDefClassBase const*)&srcObj);
-    if (g_basecalled && dst.field25 == 0xAB) {
+    if (g_basecalled && dst.UseInfoDisplay == 0xAB) {
         printf("004e00a3_TEST PASS\n");
     } else {
-        printf("FAIL base=%d f=%02x\n", g_basecalled, (unsigned)dst.field25);
+        printf("FAIL base=%d f=%02x\n", g_basecalled, (unsigned)dst.UseInfoDisplay);
     }
     return 0;
 }

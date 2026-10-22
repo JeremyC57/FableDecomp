@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCUserActionPointBase {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCUserActionPointBase_dtor(CTCUserActionPointBase* point);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCUserActionPointBase_scalar_deleting_destructor(CTCUserActionPointBase* point, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCUserActionPointBase_dtor(point);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(point);
+    return point;
 }

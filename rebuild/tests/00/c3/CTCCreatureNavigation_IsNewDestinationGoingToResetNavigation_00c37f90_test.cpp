@@ -21,13 +21,13 @@ bool Inner::ret = false;
 
 struct CTCCreatureNavigation {
     int f0;
-    Inner* f4;
+    Inner* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* vec);
 };
 
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* vec)
 {
-    Inner* n = this->f4;
+    Inner* n = this->ParentThing;
     return n->v7(this, vec);
 }
 
@@ -36,7 +36,7 @@ int main()
     Inner inner;
     CTCCreatureNavigation nav;
     nav.f0 = 123;
-    nav.f4 = &inner;
+    nav.ParentThing = &inner;
     C3DVector vec = {1.0f, 2.0f, 3.0f};
 
     Inner::ret = true;

@@ -12,7 +12,7 @@ struct CCharString {
 // __fastcall: self in ecx, hidden return-buffer ptr is first stack arg.
 // Model as free __fastcall: (self=ecx, edx, retbuf).
 extern "C" CCharString* __fastcall CCombatSequence2StrikeCombo_GetName(
-    CCombatSequence2StrikeCombo* self, int edx, CCharString* ret)
+    CCombatSequence2StrikeCombo* sequence, int edx, CCharString* ret)
 {
     ret->ctor("2StrikeCombo", -1);
     return ret;

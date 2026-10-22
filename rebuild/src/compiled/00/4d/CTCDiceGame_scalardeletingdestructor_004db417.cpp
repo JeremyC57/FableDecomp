@@ -1,10 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall AutoTinyScalarDestructor(void* self);
-extern void __cdecl AutoTinyScalarDelete(void* object);
-void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall CTCDiceGame_Destruct(void* game);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CTCDiceGame_ScalarDeletingDestructor(void* game, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCDiceGame_Destruct(game);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(game);
+    return game;
 }

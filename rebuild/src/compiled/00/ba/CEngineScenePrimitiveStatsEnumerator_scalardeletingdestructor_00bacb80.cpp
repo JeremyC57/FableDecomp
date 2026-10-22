@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineScenePrimitiveStatsEnumerator {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineScenePrimitiveStatsEnumerator_dtor(CEngineScenePrimitiveStatsEnumerator* enumerator);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineScenePrimitiveStatsEnumerator_scalar_deleting_destructor(CEngineScenePrimitiveStatsEnumerator* enumerator, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineScenePrimitiveStatsEnumerator_dtor(enumerator);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(enumerator);
+    return enumerator;
 }

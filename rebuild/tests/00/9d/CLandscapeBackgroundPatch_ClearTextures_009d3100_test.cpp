@@ -12,7 +12,7 @@ void __fastcall CInner_dtor(CInner* p){ (void)p; g_inner++; }
 
 struct CLandscapeBackgroundPatch {
   int f0;
-  int f4;
+  int Parent;
   void* f8;
   CInner inner;
   void* CLandscapeBackgroundPatch_ClearTextures(int flag);
@@ -24,7 +24,7 @@ void* CLandscapeBackgroundPatch::CLandscapeBackgroundPatch_ClearTextures(int fla
     my_free(this->f8);
     this->f8 = 0;
   }
-  this->f4 = 0;
+  this->Parent = 0;
   CInner_dtor(&this->inner);
   if (flag & 1) {
     my_delete(this);
@@ -34,16 +34,16 @@ void* CLandscapeBackgroundPatch::CLandscapeBackgroundPatch_ClearTextures(int fla
 
 int main(){
   CLandscapeBackgroundPatch obj;
-  obj.f0 = 1; obj.f4 = 99; static int dummy; obj.f8 = &dummy; obj.inner.x = 7;
+  obj.f0 = 1; obj.Parent = 99; static int dummy; obj.f8 = &dummy; obj.inner.x = 7;
   void* r = obj.CLandscapeBackgroundPatch_ClearTextures(0);
   if (r != &obj) { std::printf("FAIL ret\n"); return 1; }
   if (obj.f8 != 0) { std::printf("FAIL f8\n"); return 1; }
-  if (obj.f4 != 0) { std::printf("FAIL f4\n"); return 1; }
+  if (obj.Parent != 0) { std::printf("FAIL f4\n"); return 1; }
   if (g_freed != 1) { std::printf("FAIL freed\n"); return 1; }
   if (g_inner != 1) { std::printf("FAIL inner\n"); return 1; }
   if (g_deleted != 0) { std::printf("FAIL deleted0\n"); return 1; }
   CLandscapeBackgroundPatch obj2;
-  obj2.f8 = 0; obj2.f4 = 5; obj2.inner.x = 0;
+  obj2.f8 = 0; obj2.Parent = 5; obj2.inner.x = 0;
   obj2.CLandscapeBackgroundPatch_ClearTextures(1);
   if (g_deleted != 1) { std::printf("FAIL deleted1\n"); return 1; }
   if (g_freed != 1) { std::printf("FAIL freed2\n"); return 1; }

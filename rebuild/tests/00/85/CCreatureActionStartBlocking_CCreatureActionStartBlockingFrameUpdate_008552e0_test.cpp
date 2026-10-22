@@ -3,7 +3,7 @@
 struct CCombatActionBase
 {
     int vtbl;
-    int field_4;
+    int IntelligentPointer;
     int field_8;
     int field_c;
     int field_10;

@@ -93,20 +93,20 @@ struct CTCBase
     bool    ToBeRemoved;                            // +0x08
     bool    IsInGlobalUpdateTCs;                    // +0x09
     unsigned char _pad_0x0a[0x2];                   // +0x0a
-    void vfunc_4();                                 // 0x00686850 (empty)
+    void OnCreate();                                 // 0x00686850 (empty)
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
 
 struct CTCCameraCollision : CTCBase
 {
     CDefPointer<CCameraCollisionDef> CameraCollisionDef;   // +0x0c
-    void vfunc_4();
+    void OnCreate();
 };
 #pragma pack(pop)
 
-void CTCCameraCollision::vfunc_4()
+void CTCCameraCollision::OnCreate()
 {
-    CTCBase::vfunc_4();
+    CTCBase::OnCreate();
     CDefPointer<CThingDef> thingDef;
     GetDefinitionManager()->GetDef(ParentThing->DefGlobalIndex, &thingDef);
     thingDef->GetSubDef(&CameraCollisionDef);

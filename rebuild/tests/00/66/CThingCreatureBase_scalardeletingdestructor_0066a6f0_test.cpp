@@ -4,24 +4,24 @@
 static int g_dtorCalls = 0;
 static int g_freeCalls = 0;
 
-struct CEngineSubPrimitiveGameMesh {
+struct CThingCreatureBase {
     int marker;
     void nonvirt_dtor();
     void free_this();
     void* vecDeletingDestructor(unsigned int flags);
 };
 
-void CEngineSubPrimitiveGameMesh::nonvirt_dtor()
+void CThingCreatureBase::nonvirt_dtor()
 {
     g_dtorCalls++;
 }
 
-void CEngineSubPrimitiveGameMesh::free_this()
+void CThingCreatureBase::free_this()
 {
     g_freeCalls++;
 }
 
-void* CEngineSubPrimitiveGameMesh::vecDeletingDestructor(unsigned int flags)
+void* CThingCreatureBase::vecDeletingDestructor(unsigned int flags)
 {
     this->nonvirt_dtor();
     if (flags & 1)
@@ -31,7 +31,7 @@ void* CEngineSubPrimitiveGameMesh::vecDeletingDestructor(unsigned int flags)
 
 int main()
 {
-    CEngineSubPrimitiveGameMesh obj;
+    CThingCreatureBase obj;
     obj.marker = 42;
 
     // Case 1: flags & 1 == 0 -> dtor only, no free, returns this

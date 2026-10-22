@@ -20,9 +20,9 @@ struct CEngineRoot_0099a2f0 {
 
 struct CEngineComponent {                       // vtable 0x012A2544
     virtual void v00();
-    long m_4;                                   // +0x04
+    long GlobalPointerAddress;                                   // +0x04
     bool m_enabled;                             // +0x08
-    bool m_9;                                   // +0x09
+    bool KeepAlive;                                   // +0x09
     CEngineComponent();                         // 0x00B59710
 };
 

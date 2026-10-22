@@ -5,8 +5,8 @@ struct CCombatAbilityBase {
 };
 
 struct CCombatAbilityMeleeAttackData : public CCombatAbilityBase {
-    unsigned char b18;
-    unsigned char b19;
+    unsigned char Blockable;
+    unsigned char Knockdown;
     char pad2[2];
     int d1c;
 };
@@ -15,8 +15,8 @@ CCombatAbilityMeleeAttackData* __fastcall CCombatAbilityMeleeAttackData_operator
     CCombatAbilityMeleeAttackData* self, void* dummy, const CCombatAbilityMeleeAttackData* other)
 {
     self->assign(other);
-    self->b18 = other->b18;
-    self->b19 = other->b19;
+    self->Blockable = other->Blockable;
+    self->Knockdown = other->Knockdown;
     self->d1c = other->d1c;
     return self;
 }

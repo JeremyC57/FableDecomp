@@ -1,10 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall AutoTinyScalarDestructor(void* self);
-extern void __cdecl AutoTinyScalarDelete(void* object);
-void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall CTCGatherPointRadialArea_Destruct(void* area);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CTCGatherPointRadialArea_ScalarDeletingDestructor(void* area, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCGatherPointRadialArea_Destruct(area);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(area);
+    return area;
 }

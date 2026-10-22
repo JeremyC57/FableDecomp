@@ -18,12 +18,12 @@ public:
     float __fastcall PeekNavigatorRadius(void* /*unused_edx*/, bool bSomeFlag);
 
     void* field_0;
-    CObstacleNavigatorField4* field_4;
+    CObstacleNavigatorField4* Obstacle;
 };
 
 float __fastcall CObstacleNavigatorExternalInterface::PeekNavigatorRadius(void* /*unused_edx*/, bool bSomeFlag)
 {
-    return field_4->holder->radius;
+    return Obstacle->holder->radius;
 }
 
 int main()
@@ -36,7 +36,7 @@ int main()
 
     CObstacleNavigatorExternalInterface obj;
     obj.field_0 = 0;
-    obj.field_4 = &f4;
+    obj.Obstacle = &f4;
 
     float result = obj.PeekNavigatorRadius(0, true);
 

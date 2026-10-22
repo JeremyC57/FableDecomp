@@ -86,13 +86,13 @@ struct Fable_TrollInit_008c5fd0
     virtual void s50() {}
     virtual void act() { g_act++; }
     void FABLE_FASTCALL base();
-    void Run();
+    void Initialise();
 };
 void FABLE_FASTCALL Fable_TrollInit_008c5fd0::base() { g_base++; }
 int main()
 {
     Fable_TrollInit_008c5fd0 o;
-    o.Run();
+    o.Initialise();
     if (g_act != 1 || g_base != 1) { std::printf("BAD\n"); return 1; }
     std::printf("TrollInit_008c5fd0_OK\n"); return 0;
 }

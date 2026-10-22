@@ -6,7 +6,7 @@ static void* g_deleted = 0;
 
 struct CLandscapeBackgroundPatch {
     int f0;
-    int f4;
+    int Parent;
     void* f8;
     void CLandscapeBackgroundPatch_dtor();
     void* CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags);

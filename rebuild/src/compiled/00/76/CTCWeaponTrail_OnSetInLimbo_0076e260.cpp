@@ -9,10 +9,10 @@
 // placeholder); member names are descriptive. 
 struct CTCWeaponTrail {
     void Update();                         // 0x0076E150
-    void vfunc_16(bool enable);
+    void OnSetInLimbo(bool enable);
 };
 
-void CTCWeaponTrail::vfunc_16(bool enable)
+void CTCWeaponTrail::OnSetInLimbo(bool enable)
 {
     if (enable)
         Update();

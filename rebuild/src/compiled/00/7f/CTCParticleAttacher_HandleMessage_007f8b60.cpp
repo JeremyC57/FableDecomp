@@ -38,10 +38,10 @@ struct CTCParticleAttacher : CTCBase_007f8b60 {
     const void*     PDef;                           // +0x0c
     CParticleVector ParticleList;                   // +0x10
     void AttachParticles();                         // 0x007F8890
-    virtual void vfunc_27(CTCMessage* msg);
+    virtual void HandleMessage(CTCMessage* msg);
 };
 
-void CTCParticleAttacher::vfunc_27(CTCMessage* msg)
+void CTCParticleAttacher::HandleMessage(CTCMessage* msg)
 {
     if (msg->GetType() == 5) {
         for_each(ParticleList.m_pFirst, ParticleList.m_pLast, CKillParticle());

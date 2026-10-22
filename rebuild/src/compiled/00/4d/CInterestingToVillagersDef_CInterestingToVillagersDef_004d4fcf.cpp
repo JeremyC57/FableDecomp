@@ -8,12 +8,12 @@ struct CDefBase_0044c0c0 {                        // the def base (its construct
 };
 struct CInterestingToVillagersDef : CDefBase_0044c0c0 {   // vtable 0x0123C6D4
     unsigned char _pad04[0x24];
-    float         m_28;                            // +0x28
+    float         Interest;                            // +0x28
     virtual void v00();
     CInterestingToVillagersDef();
 };
 
 CInterestingToVillagersDef::CInterestingToVillagersDef()
-    : CDefBase_0044c0c0(), m_28(1.0f)
+    : CDefBase_0044c0c0(), Interest(1.0f)
 {
 }

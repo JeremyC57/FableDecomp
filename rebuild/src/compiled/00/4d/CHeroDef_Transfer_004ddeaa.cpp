@@ -12,8 +12,8 @@ struct CGuildMasterDef {
     CMember m2c;
 };
 
-void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* self, void* edx, CPersistContext* ctx)
+void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->TransferLong(&self->m28);
-    ctx->Transfer_004ddecb(&self->m2c);
+    ctx->TransferLong(&def->m28);
+    ctx->Transfer_004ddecb(&def->m2c);
 }

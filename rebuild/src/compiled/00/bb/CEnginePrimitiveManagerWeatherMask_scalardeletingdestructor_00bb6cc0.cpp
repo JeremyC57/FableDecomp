@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEnginePrimitiveManagerWeatherMask {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEnginePrimitiveManagerWeatherMask_dtor(CEnginePrimitiveManagerWeatherMask* mask);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEnginePrimitiveManagerWeatherMask_scalar_deleting_destructor(CEnginePrimitiveManagerWeatherMask* mask, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEnginePrimitiveManagerWeatherMask_dtor(mask);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(mask);
+    return mask;
 }

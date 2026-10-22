@@ -1,6 +1,6 @@
 #include "engine/CCreatureAction_NymphGetHit.h"
 
-extern "C" void FABLE_FASTCALL FableBase_8c9dd0(CCreatureAction_NymphGetHit* self);
+extern "C" void FABLE_FASTCALL FableBase_8c9dd0(CCreatureAction_NymphGetHit* action);
 
 struct CCreatureAction_NymphGetHit_Methods : CCreatureAction_NymphGetHit {
     void OnAnimationLoaded();

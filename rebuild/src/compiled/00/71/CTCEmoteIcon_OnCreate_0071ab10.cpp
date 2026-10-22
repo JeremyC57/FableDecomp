@@ -12,10 +12,10 @@ struct CTCEmoteIcon {
     long m_first;                          // +0xc
     unsigned char _pad2[0xc];
     long m_second;                          // +0x1c
-    void vfunc_4();
+    void OnCreate();
 };
 
-void CTCEmoteIcon::vfunc_4()
+void CTCEmoteIcon::OnCreate()
 {
     m_first = 0;
     m_second = 2;

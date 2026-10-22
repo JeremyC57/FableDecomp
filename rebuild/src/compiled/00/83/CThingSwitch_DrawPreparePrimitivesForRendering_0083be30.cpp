@@ -1,3 +1,3 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct T { bool Get(int a0); };
-bool T::Get(int a0) { return false; }
+struct CThingSwitch { bool DrawPreparePrimitivesForRendering(int prepareInfo); };
+bool CThingSwitch::DrawPreparePrimitivesForRendering(int prepareInfo) { return false; }

@@ -14,10 +14,10 @@ struct CBaseIntelligentPointer {
 struct CTCDParticleEmitter {
     unsigned char _pad[0x1c];
     CBaseIntelligentPointer m_pointer;     // +0x1c
-    void* vfunc_11(long unused);
+    void* DrawPreparePrimitivesForRendering(long unused);
 };
 
-void* CTCDParticleEmitter::vfunc_11(long unused)
+void* CTCDParticleEmitter::DrawPreparePrimitivesForRendering(long unused)
 {
     return m_pointer.GetPItem();
 }

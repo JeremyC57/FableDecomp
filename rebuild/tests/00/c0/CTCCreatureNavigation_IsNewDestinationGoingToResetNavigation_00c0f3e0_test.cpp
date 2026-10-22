@@ -3,7 +3,7 @@
 struct C3DVector { float x, y, z; };
 
 struct Inner;
-struct CTCCreatureNavigation { void* field_0; Inner* field_4; };
+struct CTCCreatureNavigation { void* field_0; Inner* ParentThing; };
 
 struct Inner {
     int calls;
@@ -16,12 +16,12 @@ struct Inner {
 };
 
 static bool model(CTCCreatureNavigation* self, C3DVector* dest) {
-    return self->field_4->Check(self, dest);
+    return self->ParentThing->Check(self, dest);
 }
 
 int main() {
     Inner inner; inner.calls = 0; inner.ret = true; inner.last_self = 0; inner.last_dest = 0;
-    CTCCreatureNavigation nav; nav.field_0 = 0; nav.field_4 = &inner;
+    CTCCreatureNavigation nav; nav.field_0 = 0; nav.ParentThing = &inner;
     C3DVector d; d.x = 1; d.y = 2; d.z = 3;
 
     bool r = model(&nav, &d);

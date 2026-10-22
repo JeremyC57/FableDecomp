@@ -7,13 +7,13 @@ struct Sub {
 
 struct CTCActivationTrigger {
     char pad[0xc];
-    Sub* fc;   // +0xc
+    Sub* PTCReceptor;   // +0xc
 };
 
 void __fastcall CTCActivationTrigger_OnKill(CTCActivationTrigger* self)
 {
-    if (self->fc) {
-        self->fc->destroy(self);
-        self->fc = 0;
+    if (self->PTCReceptor) {
+        self->PTCReceptor->destroy(self);
+        self->PTCReceptor = 0;
     }
 }

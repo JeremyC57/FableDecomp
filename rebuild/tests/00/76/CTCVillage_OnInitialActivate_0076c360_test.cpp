@@ -10,7 +10,7 @@ static void CalleeDo(Callee* ecx, void* edx, int arg) {
 
 struct CTCVillage {
     Callee* field0;
-    void*   field4;
+    void*   ParentThing;
     char    pad8[4];
     unsigned char flagC;
     unsigned char flagD;
@@ -18,7 +18,7 @@ struct CTCVillage {
 
 static void OnInitialActivate(CTCVillage* self) {
     if (self->flagD) {
-        CalleeDo(self->field0, self->field4, self->flagC);
+        CalleeDo(self->field0, self->ParentThing, self->flagC);
         self->flagD = 0;
     }
 }
@@ -28,7 +28,7 @@ int main() {
     void* edxVal = (void*)0x1234;
     CTCVillage v;
     v.field0 = &c;
-    v.field4 = edxVal;
+    v.ParentThing = edxVal;
     v.flagC = 42;
     v.flagD = 1;
 
@@ -43,7 +43,7 @@ int main() {
 
     Callee c2 = {0,0,0};
     CTCVillage v2;
-    v2.field0 = &c2; v2.field4 = 0; v2.flagC = 7; v2.flagD = 0;
+    v2.field0 = &c2; v2.ParentThing = 0; v2.flagC = 7; v2.flagD = 0;
     OnInitialActivate(&v2);
     if (c2.calls != 0) { printf("BAD inactive called\n"); return 1; }
 

@@ -1,13 +1,13 @@
-// CEngineSubPrimitiveGameMesh::`vector deleting destructor'  @ 0x00bb1740
-struct CEngineSubPrimitiveGameMesh {
+// CEngineSubPrimitiveSprite::`vector deleting destructor'  @ 0x00bb1740
+struct CEngineSubPrimitiveSprite {
     void Destroy();   // scalar destructor -> 0x0099a300 (this in ecx)
     void* VDD(unsigned int flags);
 };
 
 // free-the-object helper (this in ecx, cleans own stack) -> 0x00beb550
-void __fastcall FreeMesh(CEngineSubPrimitiveGameMesh* self);
+void __fastcall FreeMesh(CEngineSubPrimitiveSprite* sprite);
 
-void* CEngineSubPrimitiveGameMesh::VDD(unsigned int flags)
+void* CEngineSubPrimitiveSprite::VDD(unsigned int flags)
 {
     this->Destroy();          // call 0x0099a300
     if (flags & 1)

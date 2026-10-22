@@ -44,10 +44,10 @@ struct CTCRandomAppearanceMorph {
     unsigned char _pad08[0x20];                             // +0x08 .. +0x27: flags, PMeshMorphSet, Seed, PrimHandles
     CTCBase*      PTCSkeletalMorph;                         // +0x28 CTCSkeletalMorph*
     void UpdateMorphSet();                                  // 0x007280C0
-    void vfunc_4();
+    void OnCreate();
 };
 
-void CTCRandomAppearanceMorph::vfunc_4()
+void CTCRandomAppearanceMorph::OnCreate()
 {
     CTCBase* morph;
     if (ParentThing->GetInterface(120, &morph))

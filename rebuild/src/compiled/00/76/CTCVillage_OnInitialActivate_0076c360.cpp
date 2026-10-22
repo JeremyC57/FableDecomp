@@ -7,7 +7,7 @@ extern void __fastcall Callee_Do(Callee* ecx, void* edx, unsigned char arg);
 
 struct CTCVillage {
     Callee* field0;   // +0x00  -> passed in ecx
-    void*   field4;   // +0x04  -> passed in edx
+    void*   ParentThing;   // +0x04  -> passed in edx
     // +0x08 padding
     char    pad8[4];
     unsigned char flagC; // +0x0c
@@ -17,7 +17,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->flagD) {
-        Callee_Do(self->field0, self->field4, self->flagC);
+        Callee_Do(self->field0, self->ParentThing, self->flagC);
         self->flagD = 0;
     }
 }

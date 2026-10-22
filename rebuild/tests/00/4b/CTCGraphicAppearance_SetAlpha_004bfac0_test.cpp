@@ -9,7 +9,7 @@ void Sub::Touch() { g_sub.touched++; }
 
 struct CTCGraphicAppearance {
     char pad0[4];        // +0x00
-    Sub* f4;             // +0x04
+    Sub* ParentThing;             // +0x04
     char pad8[0x58 - 8]; // +0x08 .. +0x57
     unsigned char flags; // +0x58
     char pad59;          // +0x59
@@ -20,7 +20,7 @@ struct CTCGraphicAppearance {
 void CTCGraphicAppearance::SetAlpha(unsigned char a)
 {
     this->alpha = a;
-    this->f4->Touch();
+    this->ParentThing->Touch();
     this->flags |= 4;
 }
 
@@ -29,7 +29,7 @@ int main()
     CTCGraphicAppearance obj;
     obj.flags = 0x01;
     obj.alpha = 0x00;
-    obj.f4 = &g_sub;
+    obj.ParentThing = &g_sub;
     g_sub.touched = 0;
 
     obj.SetAlpha(0xAB);

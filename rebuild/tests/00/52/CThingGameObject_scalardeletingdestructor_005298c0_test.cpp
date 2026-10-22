@@ -7,12 +7,12 @@
 static int g_destroyed = 0;
 static int g_freed = 0;
 
-struct CEngineSubPrimitiveGameMesh
+struct CThingGameObject
 {
     int tag;
     void Destroy()  { g_destroyed++; }
     void FreeSelf() { g_freed++; }
-    void *VecDelDtor(unsigned int flags)
+    void *ScalarDeletingDestructor(unsigned int flags)
     {
         Destroy();
         if (flags & 1)
@@ -23,26 +23,26 @@ struct CEngineSubPrimitiveGameMesh
 
 int main()
 {
-    CEngineSubPrimitiveGameMesh obj;
+    CThingGameObject obj;
     obj.tag = 7;
 
     // flags bit0 clear: destroy only, no free
     g_destroyed = g_freed = 0;
-    void *r0 = obj.VecDelDtor(0);
+    void *r0 = obj.ScalarDeletingDestructor(0);
     if (r0 != &obj)       { printf("FAIL ret0\n"); return 1; }
     if (g_destroyed != 1) { printf("FAIL dtor0\n"); return 1; }
     if (g_freed != 0)     { printf("FAIL free0\n"); return 1; }
 
     // flags bit0 set: destroy then free
     g_destroyed = g_freed = 0;
-    void *r1 = obj.VecDelDtor(1);
+    void *r1 = obj.ScalarDeletingDestructor(1);
     if (r1 != &obj)       { printf("FAIL ret1\n"); return 1; }
     if (g_destroyed != 1) { printf("FAIL dtor1\n"); return 1; }
     if (g_freed != 1)     { printf("FAIL free1\n"); return 1; }
 
     // even flag (bit0 clear) -> no free
     g_destroyed = g_freed = 0;
-    obj.VecDelDtor(2);
+    obj.ScalarDeletingDestructor(2);
     if (g_freed != 0)     { printf("FAIL free2\n"); return 1; }
 
     printf("VECDELDTOR_OK\n");

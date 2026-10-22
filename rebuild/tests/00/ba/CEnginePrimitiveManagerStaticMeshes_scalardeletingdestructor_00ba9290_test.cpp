@@ -1,17 +1,17 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch {
+struct CEnginePrimitiveManagerStaticMeshes {
     void* vftable;
     int destroyed;
 };
 
 static int g_freed = 0;
-static CLandscapeBackgroundPatch* g_last_dtor = 0;
+static CEnginePrimitiveManagerStaticMeshes* g_last_dtor = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
+void __fastcall CEnginePrimitiveManagerStaticMeshes_dtor(CEnginePrimitiveManagerStaticMeshes* meshes)
 {
-    g_last_dtor = self;
-    self->destroyed = 1;
+    g_last_dtor = meshes;
+    meshes->destroyed = 1;
 }
 
 void operator delete(void* p)
@@ -20,31 +20,31 @@ void operator delete(void* p)
     (void)p;
 }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEnginePrimitiveManagerStaticMeshes_scalar_deleting_destructor(CEnginePrimitiveManagerStaticMeshes* meshes, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEnginePrimitiveManagerStaticMeshes_dtor(meshes);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(meshes);
+    return meshes;
 }
 
 int main()
 {
-    CLandscapeBackgroundPatch a;
+    CEnginePrimitiveManagerStaticMeshes a;
     a.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 0);
+    void* r = CEnginePrimitiveManagerStaticMeshes_scalar_deleting_destructor(&a, 0, 0);
     if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
         std::printf("FAIL no-free path\n");
         return 1;
     }
 
-    CLandscapeBackgroundPatch b;
+    CEnginePrimitiveManagerStaticMeshes b;
     b.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&b, 0, 1);
+    void* r2 = CEnginePrimitiveManagerStaticMeshes_scalar_deleting_destructor(&b, 0, 1);
     if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
         std::printf("FAIL free path\n");
         return 1;

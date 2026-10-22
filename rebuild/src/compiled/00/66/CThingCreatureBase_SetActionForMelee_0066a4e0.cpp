@@ -1,3 +1,3 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct T { bool Get(int a0); };
-bool T::Get(int a0) { return false; }
+struct CThingCreatureBase { bool SetActionForMelee(int a0); };
+bool CThingCreatureBase::SetActionForMelee(int a0) { return false; }

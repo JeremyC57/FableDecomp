@@ -23,10 +23,10 @@ struct CTCCarriedActionUseRead {
     COwner* m_pOwner;                      // +0x4
     unsigned char _pad1[0xc];
     SEntry m_entry;                        // +0x14
-    void vfunc_4();
+    void OnCreate();
 };
 
-void CTCCarriedActionUseRead::vfunc_4()
+void CTCCarriedActionUseRead::OnCreate()
 {
     m_pOwner->m_pRegistry->Register(&m_entry);
 }

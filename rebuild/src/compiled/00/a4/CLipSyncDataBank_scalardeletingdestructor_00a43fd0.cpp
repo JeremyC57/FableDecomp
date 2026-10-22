@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CLipSyncDataBank {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CLipSyncDataBank_dtor(CLipSyncDataBank* bank);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CLipSyncDataBank_scalar_deleting_destructor(CLipSyncDataBank* bank, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CLipSyncDataBank_dtor(bank);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(bank);
+    return bank;
 }

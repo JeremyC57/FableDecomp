@@ -16,9 +16,9 @@ struct Helper24
 struct CInputProcessGameBase
 {
     char pad0[0x18];
-    Helper18* m18;
+    Helper18* MyPlayer;
     char pad1[0x24 - 0x1C];
-    Helper24* m24;
+    Helper24* PGamePlayerInterface;
 
     bool IsOtherQuickAccessItemButtonHeld(long param);
 };
@@ -32,8 +32,8 @@ int main()
     Helper24 h24; h24.expectA = 7; h24.expectB = 42;
 
     CInputProcessGameBase obj;
-    obj.m18 = &h18;
-    obj.m24 = &h24;
+    obj.MyPlayer = &h18;
+    obj.PGamePlayerInterface = &h24;
 
     bool r1 = obj.IsOtherQuickAccessItemButtonHeld(42);
     bool r2 = obj.IsOtherQuickAccessItemButtonHeld(99);

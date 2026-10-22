@@ -9,7 +9,7 @@ struct CFrameRateSmoother {
     long          m_10;
     long          m_capacity;                      // +0x14
     long          m_count;                         // +0x18
-    long          m_1c;
+    long          NoTimes;
     long          m_start;                         // +0x20
     long          m_next;                          // +0x24
     double        m_smoothedTime;                  // +0x28

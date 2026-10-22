@@ -2,7 +2,7 @@ struct CUserProfileManager {
     char pad0[0xc];
     unsigned char flagC;   // +0xc
     char pad1[0x9];
-    unsigned char byte16;  // +0x16
+    unsigned char CameraPCViewHeroYZInverted;  // +0x16
     char pad2[0xbf];
     unsigned char byteD6;  // +0xd6
 };
@@ -14,7 +14,7 @@ void __fastcall CUserProfileManager_SetCameraResetting(CUserProfileManager* self
 {
     if (self->flagC)
         self->byteD6 = (unsigned char)p1;
-    self->byte16 = (unsigned char)p1;
+    self->CameraPCViewHeroYZInverted = (unsigned char)p1;
     UPM_helperA(self);
     if (p2)
         UPM_helperB(self);

@@ -1,11 +1,11 @@
-// CCardDef::Copy(const CDefClassBase* source) -- the virtual def copy: memberwise assignment from the source cast to this class
+// CBlurredAttitudesDef::Copy(const CDefClassBase* source) -- the virtual def copy: memberwise assignment from the source cast to this class
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067C980, length 61 bytes.
 // Callees: CBase_00431f10::operator= @ 0x00431F10 (the def base), retail vector<long>::operator=
 // @ 0x00431F90 on the packed member at +0x29, CSubObject_00471e44::operator= @ 0x00471E44 on +0x3c.
 // Same body as operator= @ 0x0067C490 without the `mov eax,esi`: `*this = *source` with the
 // class's own inline operator= expanded in place (an implicit one is emitted as a COMDAT and
 // tail-jumped to, not inlined) -- the void virtual Copy does not return `this`. Layout as in
-// 0067c490 (vtable 0x01243A44 = CCardDef; the manifest label CBlurredAttitudesDef is propagated):
+// 0067c490 (vtable 0x01243A44 = CBlurredAttitudesDef; the manifest label CBlurredAttitudesDef is propagated):
 // +0x25 long, then the vector (+0x29) and its flag byte (+0x36) in one sub-object whose inline
 // assignment gives retail's `lea ebx/ebp` addressing, +0x3c a sub-object with its own operator=.
 #pragma pack(push, 1)
@@ -40,13 +40,13 @@ struct CSubObject_00471e44 {
 
 struct CDefClassBase;
 
-struct CCardDef : CBase_00431f10 {
+struct CBlurredAttitudesDef : CBase_00431f10 {
     long                m_id;                   // +0x25
     SAttitudeBlock      m_block;                // +0x29 (vector + flag)
     unsigned char       m_pad37[5];             // +0x37..+0x3b
     CSubObject_00471e44 m_tail;                 // +0x3c
     void Copy(const CDefClassBase* source);
-    CCardDef& operator=(const CCardDef& other)   // inline: expanded into Copy (the out-of-line copy is @ 0x0067C490)
+    CBlurredAttitudesDef& operator=(const CBlurredAttitudesDef& other)   // inline: expanded into Copy (the out-of-line copy is @ 0x0067C490)
     {
         CBase_00431f10::operator=(other);
         m_id = other.m_id;
@@ -57,7 +57,7 @@ struct CCardDef : CBase_00431f10 {
 };
 #pragma pack(pop)
 
-void CCardDef::Copy(const CDefClassBase* source)
+void CBlurredAttitudesDef::Copy(const CDefClassBase* source)
 {
-    *this = *reinterpret_cast<const CCardDef*>(source);
+    *this = *reinterpret_cast<const CBlurredAttitudesDef*>(source);
 }

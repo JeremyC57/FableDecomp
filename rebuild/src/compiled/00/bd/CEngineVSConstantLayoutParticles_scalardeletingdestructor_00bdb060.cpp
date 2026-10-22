@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineVSConstantLayoutParticles {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineVSConstantLayoutParticles_dtor(CEngineVSConstantLayoutParticles* particles);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineVSConstantLayoutParticles_scalar_deleting_destructor(CEngineVSConstantLayoutParticles* particles, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineVSConstantLayoutParticles_dtor(particles);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(particles);
+    return particles;
 }

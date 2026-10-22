@@ -28,10 +28,10 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
 struct CCombatAction_GenericStrikeResponseBase {
     unsigned char _pad[0x114];
     CBaseIntelligentPointer m_target;      // +0x114
-    void AssignTarget_006f5720(CBaseObject* thing);
+    void SetHitter(CBaseObject* thing);
 };
 
-void CCombatAction_GenericStrikeResponseBase::AssignTarget_006f5720(CBaseObject* thing)
+void CCombatAction_GenericStrikeResponseBase::SetHitter(CBaseObject* thing)
 {
     CIntelligentPointer pointer;
     pointer.SetPItem(thing);

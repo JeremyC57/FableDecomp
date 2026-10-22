@@ -32,7 +32,7 @@ struct CDrawBase {
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CVtable0125a670 : CDrawBase {               // vtable 0x0125A670
+struct CDrawPerceivers : CDrawBase {               // vtable 0x0125A670
     virtual void v00();
     long  m_counterA;                              // +0x28
     long  m_counterB;                              // +0x2c
@@ -40,10 +40,10 @@ struct CVtable0125a670 : CDrawBase {               // vtable 0x0125A670
     float m_scale;                                 // +0x34
     long  m_state;                                 // +0x38
     CRetailList_0064ed06 m_entries;                // +0x3c
-    CVtable0125a670(CPlayerGui* gui, void* drawList);
+    CDrawPerceivers(CPlayerGui* gui, void* drawList);
 };
 
-CVtable0125a670::CVtable0125a670(CPlayerGui* gui, void* drawList)
+CDrawPerceivers::CDrawPerceivers(CPlayerGui* gui, void* drawList)
     : CDrawBase(gui, drawList), m_counterA(0), m_counterB(0), m_progress(0.0f), m_scale(1.0f), m_state(0), m_entries(CRetailAllocator())
 {
     PrimitiveHandles.Reserve(3);

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCOracleMinigame {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCOracleMinigame_dtor(CTCOracleMinigame* minigame);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCOracleMinigame_scalar_deleting_destructor(CTCOracleMinigame* minigame, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCOracleMinigame_dtor(minigame);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(minigame);
+    return minigame;
 }

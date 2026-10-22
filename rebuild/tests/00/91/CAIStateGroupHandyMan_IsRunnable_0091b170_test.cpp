@@ -6,8 +6,8 @@ struct CAIStateGroup_HandyMan {
     bool IsRunnable();
 };
 
-bool __fastcall helper_91a6f0(CAIStateGroup_HandyMan* self) { return self->hval != 0; }
-bool __fastcall tail_91b010(CAIStateGroup_HandyMan* self) { return self->tval != 0; }
+bool __fastcall helper_91a6f0(CAIStateGroup_HandyMan* stateGroup) { return stateGroup->hval != 0; }
+bool __fastcall tail_91b010(CAIStateGroup_HandyMan* stateGroup) { return stateGroup->tval != 0; }
 
 bool CAIStateGroup_HandyMan::IsRunnable()
 {

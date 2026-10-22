@@ -16,12 +16,12 @@ struct CDrawBase {
     CDrawBase(CPlayerGui* first, void* second);   // 0x0064CC65
 };
 
-struct CVtable_0125a574 : CDrawBase {
+struct CDrawReceivedItems : CDrawBase {
     virtual void v00();
-    CVtable_0125a574(CPlayerGui* first, void* second);
+    CDrawReceivedItems(CPlayerGui* first, void* second);
 };
 
-CVtable_0125a574::CVtable_0125a574(CPlayerGui* first, void* second)
+CDrawReceivedItems::CDrawReceivedItems(CPlayerGui* first, void* second)
     : CDrawBase(first, second)
 {
 }

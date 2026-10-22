@@ -53,12 +53,12 @@ struct CModeBase {
 };
 
 struct CModeDragonBase : CModeBase {
-    Mid* f4;                    // +4
+    Mid* ParentThing;                    // +4
     void OnActivate();
 };
 
 void CModeDragonBase::OnActivate()
 {
-    this->f4->obj->slot38(0);
+    this->ParentThing->obj->slot38(0);
     CModeBase::OnActivate();
 }

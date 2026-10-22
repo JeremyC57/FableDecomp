@@ -23,10 +23,10 @@ struct CTCHeroCentre {
     COwner* m_pOwner;                      // +0x4
     unsigned char _pad1[0x4];
     SEntry m_entry;                        // +0xc
-    void vfunc_4();
+    void OnCreate();
 };
 
-void CTCHeroCentre::vfunc_4()
+void CTCHeroCentre::OnCreate()
 {
     m_pOwner->m_pRegistry->Register(&m_entry);
 }

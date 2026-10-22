@@ -12,10 +12,10 @@ struct Helper {
 };
 struct CTCCreatureNavigation {
   void* f0;
-  Helper* f4;
+  Helper* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* v)
   {
-    return this->f4->m6(this, v);
+    return this->ParentThing->m6(this, v);
   }
 };
 static CTCCreatureNavigation* g_expect_self;
@@ -32,7 +32,7 @@ int main()
   Helper h;
   CTCCreatureNavigation nav;
   nav.f0 = 0;
-  nav.f4 = &h;
+  nav.ParentThing = &h;
   C3DVector v = {1,2,3};
   g_expect_self = &nav;
   g_expect_v = &v;

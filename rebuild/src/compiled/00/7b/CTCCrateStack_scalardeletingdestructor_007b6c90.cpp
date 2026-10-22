@@ -28,13 +28,13 @@ struct CObject_007b6c90 : CTCBase {
 };
 #pragma pack(pop)
 
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCCrateStack_CompositeScalarDeletingDestructor(void* stack, int, unsigned int flags)
 {
-    CObject_007b6c90* object = static_cast<CObject_007b6c90*>(self);
+    CObject_007b6c90* object = static_cast<CObject_007b6c90*>(stack);
     object->Member14.~CBaseIntelligentPointer();
     object->Memberc.~CBaseIntelligentPointer();
     object->CTCBase::~CTCBase();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return stack;
 }

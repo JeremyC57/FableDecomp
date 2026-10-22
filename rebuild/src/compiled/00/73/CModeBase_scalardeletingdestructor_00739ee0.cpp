@@ -16,7 +16,7 @@ struct CModeBaseRoot_00739ee0 {
 };
 namespace CTCCreatureModeManager {
 struct CModeBase : CModeBaseRoot_00739ee0 {              // vtable 0x012673CC
-    long            m_4;                           // +0x04
+    long            ParentThing;                           // +0x04
     CAnimFilterBase m_filter;                      // +0x08
     CCharString     m_name;                        // +0x0c
     __forceinline virtual ~CModeBase() { }

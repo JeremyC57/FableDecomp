@@ -2,7 +2,7 @@
 
 struct CActiveFile {
     void* p;    // +0x0
-    void* f4;   // +0x4
+    void* DstFileHandle;   // +0x4
 };
 
 static int g_reader_calls = 0;
@@ -29,7 +29,7 @@ void FreeThing(void* p)
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char local;
-    Reader_Op(self->p, self->f4, &local);
+    Reader_Op(self->p, self->DstFileHandle, &local);
     if (self->p) {
         FreeThing(self->p);
     }
@@ -42,7 +42,7 @@ int main()
     int dummyF4;
     CActiveFile a;
     a.p = &dummyReader;
-    a.f4 = &dummyF4;
+    a.DstFileHandle = &dummyF4;
     g_reader_calls = g_free_calls = 0;
     CActiveFile_OnReadFinished(&a);
     if (g_reader_calls != 1) { std::printf("FAIL reader not called\n"); return 1; }
@@ -54,7 +54,7 @@ int main()
     // Case 2: p null -> reader called but free NOT called
     CActiveFile b;
     b.p = 0;
-    b.f4 = 0;
+    b.DstFileHandle = 0;
     g_reader_calls = g_free_calls = 0;
     CActiveFile_OnReadFinished(&b);
     if (g_reader_calls != 1) { std::printf("FAIL reader not called (null)\n"); return 1; }

@@ -17,9 +17,9 @@ void __fastcall SubCall(Obj* self, void* arg2, unsigned char flag)
 
 struct CTCVillage {
     Obj*          field0;
-    void*         field4;
-    unsigned char field8;
-    unsigned char field9;
+    void*         ParentThing;
+    unsigned char ToBeRemoved;
+    unsigned char IsInGlobalUpdateTCs;
     unsigned char fieldA;
     unsigned char fieldB;
     unsigned char fieldC;
@@ -29,7 +29,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->fieldD) {
-        SubCall(self->field0, self->field4, self->fieldC);
+        SubCall(self->field0, self->ParentThing, self->fieldC);
         self->fieldD = 0;
     }
 }
@@ -41,7 +41,7 @@ int main()
 
     CTCVillage v;
     v.field0 = &o;
-    v.field4 = &dummy;
+    v.ParentThing = &dummy;
     v.fieldC = 0xC5;
     v.fieldD = 1;
     g_callCount = 0;
@@ -54,7 +54,7 @@ int main()
 
     CTCVillage v2;
     v2.field0 = &o;
-    v2.field4 = &dummy;
+    v2.ParentThing = &dummy;
     v2.fieldC = 3;
     v2.fieldD = 0;
     g_callCount = 0;

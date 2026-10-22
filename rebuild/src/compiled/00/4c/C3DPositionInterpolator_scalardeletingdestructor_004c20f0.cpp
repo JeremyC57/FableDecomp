@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct C3DPositionInterpolator {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall C3DPositionInterpolator_dtor(C3DPositionInterpolator* interpolator);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DPositionInterpolator_scalar_deleting_destructor(C3DPositionInterpolator* interpolator, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DPositionInterpolator_dtor(interpolator);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(interpolator);
+    return interpolator;
 }

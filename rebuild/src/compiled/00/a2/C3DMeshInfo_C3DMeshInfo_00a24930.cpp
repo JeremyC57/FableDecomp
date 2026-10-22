@@ -47,8 +47,8 @@ struct C3DMeshLODInfo : CCountedObject { };
 
 struct CMeshDataBankEntry {                        // the 12-byte root: vptr + two words
     virtual void v00();
-    long m_4;                                      // +0x04
-    long m_8;                                      // +0x08
+    long Bank;                                      // +0x04
+    long Index;                                      // +0x08
     ~CMeshDataBankEntry() { }
 };
 

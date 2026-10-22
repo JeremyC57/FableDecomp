@@ -25,14 +25,14 @@ struct CBankFileAsyncData {
     char pad0[0x18];
     Inner* field_18;
     char pad1[0x28 - 0x1c];
-    Manager* field_28;
+    Manager* BankFile;
 };
 
 void ChangeLoadingPriority(CBankFileAsyncData* self, EThreadedFilePriority prio)
 {
     Inner* item = self->field_18;
     if (item) {
-        Consumer* c = self->field_28->field_110;
+        Consumer* c = self->BankFile->field_110;
         c->SetPriority(item, prio);
     }
 }
@@ -44,7 +44,7 @@ int main() {
 
     CBankFileAsyncData a;
     a.field_18 = &item;
-    a.field_28 = &mgr;
+    a.BankFile = &mgr;
 
     // Case 1: field_18 non-null -> calls SetPriority(item, prio)
     ChangeLoadingPriority(&a, 42);

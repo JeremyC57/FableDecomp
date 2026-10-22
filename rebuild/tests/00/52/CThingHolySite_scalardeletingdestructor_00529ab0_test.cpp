@@ -5,10 +5,10 @@ static int g_delete_calls = 0;
 static void* g_dtor_self = 0;
 static void* g_delete_self = 0;
 
-void __fastcall dtor_scalar_529ad0(void* self)
+void __fastcall dtor_scalar_529ad0(void* site)
 {
     g_dtor_calls++;
-    g_dtor_self = self;
+    g_dtor_self = site;
 }
 void __fastcall op_delete_4c73b0(void* p)
 {
@@ -16,7 +16,7 @@ void __fastcall op_delete_4c73b0(void* p)
     g_delete_self = p;
 }
 
-struct CEngineSubPrimitiveGameMesh
+struct CThingHolySite
 {
     void* vDeletingDtor(unsigned int flags)
     {
@@ -29,7 +29,7 @@ struct CEngineSubPrimitiveGameMesh
 
 int main()
 {
-    CEngineSubPrimitiveGameMesh obj;
+    CThingHolySite obj;
 
     // flags bit0 clear: dtor runs, no delete
     g_dtor_calls = g_delete_calls = 0;

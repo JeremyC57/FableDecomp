@@ -9,7 +9,7 @@ struct CAFile {
     virtual void v4(const void* p, long n, int zero) = 0;
 };
 
-void __fastcall Write(CFileDataOutputStream* self, int, const void* p, long n);
+void __fastcall Write(CFileDataOutputStream* stream, int, const void* p, long n);
 
 static CAFile* g_self;
 static long   g_n;

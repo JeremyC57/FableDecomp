@@ -44,10 +44,10 @@ struct CThingComponent {
 struct CTCThingOwner : CThingComponent {
     CThingList ObjectList;                  // +0x0C
     bool CallOnDie;                         // +0x10
-    virtual void vfunc_16(bool drawable);
+    virtual void OnSetInLimbo(bool drawable);
 };
 
-void CTCThingOwner::vfunc_16(bool drawable)
+void CTCThingOwner::OnSetInLimbo(bool drawable)
 {
     ForEachSetThingAsDrawable(ObjectList.begin(), ObjectList.end(), CSetThingAsDrawable(drawable));
 }

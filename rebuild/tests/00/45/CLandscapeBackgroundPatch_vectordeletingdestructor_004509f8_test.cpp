@@ -3,7 +3,7 @@
 struct CInner { int a; };
 struct CLandscapeBackgroundPatch {
     int f0;
-    int f4;
+    int Parent;
     void* f8;
     CInner inner;
     unsigned char _pad_0x10[0xa8];

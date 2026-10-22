@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCFlammable {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCFlammable_dtor(CTCFlammable* flammable);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCFlammable_scalar_deleting_destructor(CTCFlammable* flammable, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCFlammable_dtor(flammable);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(flammable);
+    return flammable;
 }

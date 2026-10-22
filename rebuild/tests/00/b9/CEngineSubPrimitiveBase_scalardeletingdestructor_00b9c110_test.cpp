@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineSubPrimitiveGameMesh
+struct CEngineSubPrimitiveBase
 {
     int marker;
     void Destroy();
@@ -11,10 +11,10 @@ struct CEngineSubPrimitiveGameMesh
 static int g_destroyed = 0;
 static int g_freed = 0;
 
-void CEngineSubPrimitiveGameMesh::Destroy() { g_destroyed++; }
-void CEngineSubPrimitiveGameMesh::FreeSelf() { g_freed++; }
+void CEngineSubPrimitiveBase::Destroy() { g_destroyed++; }
+void CEngineSubPrimitiveBase::FreeSelf() { g_freed++; }
 
-void* CEngineSubPrimitiveGameMesh::VecDelDtor_CEngineSubPrimitiveGameMesh(unsigned int flags)
+void* CEngineSubPrimitiveBase::VecDelDtor_CEngineSubPrimitiveGameMesh(unsigned int flags)
 {
     this->Destroy();
     if (flags & 1)
@@ -24,7 +24,7 @@ void* CEngineSubPrimitiveGameMesh::VecDelDtor_CEngineSubPrimitiveGameMesh(unsign
 
 int main()
 {
-    CEngineSubPrimitiveGameMesh a;
+    CEngineSubPrimitiveBase a;
     a.marker = 0x1234;
 
     // flags bit0 clear: destroy only, no free, returns this

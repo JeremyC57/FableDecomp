@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEnginePrimitiveManagerRepeatedZSprites {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEnginePrimitiveManagerRepeatedZSprites_dtor(CEnginePrimitiveManagerRepeatedZSprites* sprites);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEnginePrimitiveManagerRepeatedZSprites_scalar_deleting_destructor(CEnginePrimitiveManagerRepeatedZSprites* sprites, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEnginePrimitiveManagerRepeatedZSprites_dtor(sprites);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(sprites);
+    return sprites;
 }

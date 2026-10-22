@@ -13,7 +13,7 @@ struct CQuadTreeElement_00bded90 {
 struct CLocalDetailCacheMap {
     bool                      m_busy;              // +0x00
     CBankFileList_00bded90*   m_pFiles;            // +0x04
-    long                      m_8;                 // +0x08
+    long                      Map;                 // +0x08
     CQuadTreeElement_00bded90 m_element;           // +0x0c
     SCacheRecord_00bded90     m_record;            // +0x64
     bool Update(double time);

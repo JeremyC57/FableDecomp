@@ -1,4 +1,4 @@
-// CLandscapeBackgroundPatch::`vector deleting destructor'
+// CInputProcessConsole::`vector deleting destructor'
 // Retail 0x0048b3b0 (VC7.1 /O2 /Oy)
 //
 //   push esi
@@ -17,19 +17,19 @@
 // operator delete (cdecl, one ptr arg) -> matches call;add esp,4
 void operator_delete_impl(void* p);
 
-struct CLandscapeBackgroundPatch
+struct CInputProcessConsole
 {
 	// scalar destructor: this in ecx, no args. Out-of-line -> a plain call.
 	void ScalarDtor();
 
 	// vector deleting destructor: __fastcall, one stack arg (flags), returns this.
-	void* vector_deleting_destructor(unsigned int flags);
+	void* scalar_deleting_destructor(unsigned int flags);
 };
 
 // ScalarDtor is left as an external declaration (no body in this TU) so the
 // compiler must emit a real 'call' relocation instead of inlining an empty body.
 
-void* CLandscapeBackgroundPatch::vector_deleting_destructor(unsigned int flags)
+void* CInputProcessConsole::scalar_deleting_destructor(unsigned int flags)
 {
 	this->ScalarDtor();
 	if (flags & 1)

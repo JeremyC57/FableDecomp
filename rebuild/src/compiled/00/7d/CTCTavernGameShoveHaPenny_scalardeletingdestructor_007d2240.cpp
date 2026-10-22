@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCTavernGameShoveHaPenny {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCTavernGameShoveHaPenny_dtor(CTCTavernGameShoveHaPenny* penny);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCTavernGameShoveHaPenny_scalar_deleting_destructor(CTCTavernGameShoveHaPenny* penny, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCTavernGameShoveHaPenny_dtor(penny);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(penny);
+    return penny;
 }

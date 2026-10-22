@@ -5,7 +5,7 @@
 struct CActiveFile
 {
     void* field0; // +0x00
-    void* field4; // +0x04
+    void* DstFileHandle; // +0x04
 };
 
 // __fastcall helper at 0x478751: ecx = obj, edx = arg
@@ -17,7 +17,7 @@ void ActiveFile_Free(void* p);
 // this-in-ecx modeled as __fastcall(self, edx-unused)
 void __fastcall OnReadFinished(CActiveFile* self)
 {
-    ActiveFile_Dispatch(self->field0, self->field4);
+    ActiveFile_Dispatch(self->field0, self->DstFileHandle);
     if (self->field0)
         ActiveFile_Free(self->field0);
 }

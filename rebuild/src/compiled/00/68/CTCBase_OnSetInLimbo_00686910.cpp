@@ -1,2 +1,2 @@
-struct C00686910 { int x; void M(int p0); };
-void C00686910::M(int p0){ }
+struct C00686910 { int x; void OnSetInLimbo(int p0); };
+void C00686910::OnSetInLimbo(int p0){ }

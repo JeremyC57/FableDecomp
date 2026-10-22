@@ -18,7 +18,7 @@ struct CDataOutputStream;
 //   +0x08 : void* object            (mov ecx,[esi+8])
 struct CBankStateBlockRef {
     long  refCount;
-    void  (__fastcall *dtor)(void* self);
+    void  (__fastcall *dtor)(void* bank);
     void* object;
 };
 
@@ -35,13 +35,13 @@ void operator delete(void*);
 // Only the counted-pointer argument is touched: it sits at [esp+0x18] on
 // entry (after the single push esi), i.e. the 5th dword argument.
 void __fastcall CLipSyncDataBank_PrepareDataForInclusion(
-        CLipSyncDataBank* self, int edxDummy,
+        CLipSyncDataBank* bank, int edxDummy,
         CWorldMap* map, long key,
         CDataOutputStream* d3, int a4,
         CBankStateBlockRef* ref,
         int a6, int a7)
 {
-    (void)self; (void)edxDummy; (void)map; (void)key;
+    (void)bank; (void)edxDummy; (void)map; (void)key;
     (void)d3; (void)a4; (void)a6; (void)a7;
 
     if (ref) {

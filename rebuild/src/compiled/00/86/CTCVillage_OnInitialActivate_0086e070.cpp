@@ -9,7 +9,7 @@ extern void __fastcall Callee_86dd20(void* ecxArg, void* edxArg, unsigned char s
 
 struct CTCVillage {
     void*        field_0;   // +0x00  -> ecx target
-    void*        field_4;   // +0x04  -> edx arg
+    void*        ParentThing;   // +0x04  -> edx arg
     // +0x08 padding
     char         pad8[4];
     unsigned char field_C;  // +0x0C
@@ -19,7 +19,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->field_D) {
-        Callee_86dd20(self->field_0, self->field_4, self->field_C);
+        Callee_86dd20(self->field_0, self->ParentThing, self->field_C);
         self->field_D = 0;
     }
 }

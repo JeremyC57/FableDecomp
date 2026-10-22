@@ -8,10 +8,10 @@ struct Helper {
         g_calls++; g_h=this; g_self=(void*)nav; g_v=(void*)v; return g_ret;
     }
 };
-struct CTCCreatureNavigation { void* f0; Helper* f4; };
-bool model(CTCCreatureNavigation* self, C3DVector* v){ return self->f4->slot7(self, v); }
+struct CTCCreatureNavigation { void* f0; Helper* ParentThing; };
+bool model(CTCCreatureNavigation* self, C3DVector* v){ return self->ParentThing->slot7(self, v); }
 int main(){
-    Helper h; CTCCreatureNavigation nav; nav.f0=0; nav.f4=&h; C3DVector v={1,2,3};
+    Helper h; CTCCreatureNavigation nav; nav.f0=0; nav.ParentThing=&h; C3DVector v={1,2,3};
     g_ret=true;
     bool r=model(&nav,&v);
     if(!(r==true && g_calls==1 && g_h==(void*)&h && g_self==(void*)&nav && g_v==(void*)&v)){ printf("FAIL1\n"); return 1; }

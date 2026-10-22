@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCShop {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCShop_dtor(CTCShop* shop);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCShop_scalar_deleting_destructor(CTCShop* shop, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCShop_dtor(shop);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(shop);
+    return shop;
 }

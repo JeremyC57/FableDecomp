@@ -11,7 +11,7 @@ struct Sub {
 };
 struct Owner {
     void* f0;
-    Sub*  f4;           // +4
+    Sub*  ParentThing;           // +4
     char  pad[0x14 - 8];
     int   f14;          // +0x14 (arg passed by address)
     void  OnCreate();
@@ -21,5 +21,5 @@ struct Owner {
 void Owner::OnCreate()
 {
     this->Base_OnCreate();
-    this->f4->f70->Consume(&this->f14);
+    this->ParentThing->f70->Consume(&this->f14);
 }

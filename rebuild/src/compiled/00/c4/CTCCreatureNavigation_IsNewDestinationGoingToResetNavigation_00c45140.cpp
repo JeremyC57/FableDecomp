@@ -14,9 +14,9 @@ struct Helper {
 
 struct CTCCreatureNavigation {
     void* f0;
-    Helper* f4;
+    Helper* ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* v) {
-    return self->f4->slot7(self, v);
+    return self->ParentThing->slot7(self, v);
 }

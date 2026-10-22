@@ -63,19 +63,19 @@ struct CTCBase
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
     unsigned char _pad_0x0a[0x2];
-    void vfunc_4() { ++g_baseOnCreate; }
+    void OnCreate() { ++g_baseOnCreate; }
     CDefinitionManager* GetDefinitionManager() const { return &g_manager; }
 };
 struct CTCCameraCollision : CTCBase
 {
     CDefPointer<CCameraCollisionDef> CameraCollisionDef;
-    void vfunc_4();
+    void OnCreate();
 };
 #pragma pack(pop)
 
-void CTCCameraCollision::vfunc_4()
+void CTCCameraCollision::OnCreate()
 {
-    CTCBase::vfunc_4();
+    CTCBase::OnCreate();
     CDefPointer<CThingDef> thingDef;
     GetDefinitionManager()->GetDef(ParentThing->DefGlobalIndex, &thingDef);
     thingDef->GetSubDef(&CameraCollisionDef);
@@ -86,14 +86,14 @@ int main()
     thing.DefGlobalIndex = 0x2bc;
     {
         CTCCameraCollision c; c.ParentThing = &thing; c.CameraCollisionDef.Object = 0;
-        c.vfunc_4();
+        c.OnCreate();
         CHECK(g_baseOnCreate == 1 && g_getDef == 1 && g_getDefIndex == 0x2bc); CHECK(g_getSubDef == 1 && g_subDefOn == &thingDef);
         CHECK(c.CameraCollisionDef.Object == &camDef && camDef.m_refCount == 2); CHECK(thingDef.m_refCount == 1 && g_destroyed == 0);
     }
     CHECK(camDef.m_refCount == 1);
     // a thing def held only by the lookup is destroyed once the sub-def is taken
     thingDef.m_refCount = 0;
-    { CTCCameraCollision c; c.ParentThing = &thing; c.CameraCollisionDef.Object = 0; c.vfunc_4(); CHECK(g_destroyed == 1 && c.CameraCollisionDef.Object == &camDef); }
+    { CTCCameraCollision c; c.ParentThing = &thing; c.CameraCollisionDef.Object = 0; c.OnCreate(); CHECK(g_destroyed == 1 && c.CameraCollisionDef.Object == &camDef); }
     if (fails == 0) printf("007e3040_TEST PASS\n"); else printf("007e3040_TEST FAIL\n");
     return fails;
 }

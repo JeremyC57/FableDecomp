@@ -2,34 +2,34 @@
 
 struct CLandscapeLayerMesh {
     void* vtbl;
-    int f04, f08, f0c, f10, f14, f18, f1c, f20, f24, f28, f2c, f30, f34, f38, f3c, f40;
-    short f44, f46;
-    char f48;
+    int ForegroundTextureIndex, BackgroundTextureIndex, BumpMapTextureIndex, f10, ForegroundTexture, BackgroundTexture, BumpMap, MinTextureMipMap, MinBumpMapMipMap, f28, ForegroundTextureMipmapLevel, ForegroundBumpmapTextureMipmapLevel, IndexBuffer, ForegroundVertexBuffer, Next, Map;
+    short VertexCount, PolyCountIncDegenerates;
+    char UsesSharedIndexBuffer;
     CLandscapeLayerMesh* CLandscapeLayerMesh_ctor(int arg);
 };
 
 void* CLandscapeLayerMesh_vtbl;
 
 CLandscapeLayerMesh* CLandscapeLayerMesh::CLandscapeLayerMesh_ctor(int arg) {
-    this->f40 = arg;
+    this->Map = arg;
     this->vtbl = &CLandscapeLayerMesh_vtbl;
-    this->f3c = 0;
-    this->f44 = 0;
-    this->f46 = 0;
-    this->f04 = 0;
-    this->f08 = 0;
-    this->f0c = 0;
-    this->f14 = 0;
-    this->f18 = 0;
-    this->f1c = 0;
+    this->Next = 0;
+    this->VertexCount = 0;
+    this->PolyCountIncDegenerates = 0;
+    this->ForegroundTextureIndex = 0;
+    this->BackgroundTextureIndex = 0;
+    this->BumpMapTextureIndex = 0;
+    this->ForegroundTexture = 0;
+    this->BackgroundTexture = 0;
+    this->BumpMap = 0;
     this->f28 = 0;
-    this->f34 = 0;
-    this->f38 = 0;
-    this->f48 = 0;
-    this->f30 = 0;
-    this->f2c = 0;
-    this->f20 = 0;
-    this->f24 = 0;
+    this->IndexBuffer = 0;
+    this->ForegroundVertexBuffer = 0;
+    this->UsesSharedIndexBuffer = 0;
+    this->ForegroundBumpmapTextureMipmapLevel = 0;
+    this->ForegroundTextureMipmapLevel = 0;
+    this->MinTextureMipMap = 0;
+    this->MinBumpMapMipMap = 0;
     return this;
 }
 
@@ -38,13 +38,13 @@ int main() {
     for (char* p = (char*)&obj; p < (char*)&obj + sizeof(obj); ++p) *p = (char)0xAB;
     CLandscapeLayerMesh* r = obj.CLandscapeLayerMesh_ctor(0x12345678);
     if (r != &obj) { std::printf("FAIL: return\n"); return 1; }
-    if (obj.f40 != 0x12345678) { std::printf("FAIL: arg\n"); return 1; }
+    if (obj.Map != 0x12345678) { std::printf("FAIL: arg\n"); return 1; }
     if (obj.vtbl != &CLandscapeLayerMesh_vtbl) { std::printf("FAIL: vtbl\n"); return 1; }
-    if (obj.f3c != 0 || obj.f44 != 0 || obj.f46 != 0 || obj.f04 != 0 ||
-        obj.f08 != 0 || obj.f0c != 0 || obj.f14 != 0 || obj.f18 != 0 ||
-        obj.f1c != 0 || obj.f28 != 0 || obj.f34 != 0 || obj.f38 != 0 ||
-        obj.f48 != 0 || obj.f30 != 0 || obj.f2c != 0 || obj.f20 != 0 ||
-        obj.f24 != 0) { std::printf("FAIL: zero fields\n"); return 1; }
+    if (obj.Next != 0 || obj.VertexCount != 0 || obj.PolyCountIncDegenerates != 0 || obj.ForegroundTextureIndex != 0 ||
+        obj.BackgroundTextureIndex != 0 || obj.BumpMapTextureIndex != 0 || obj.ForegroundTexture != 0 || obj.BackgroundTexture != 0 ||
+        obj.BumpMap != 0 || obj.f28 != 0 || obj.IndexBuffer != 0 || obj.ForegroundVertexBuffer != 0 ||
+        obj.UsesSharedIndexBuffer != 0 || obj.ForegroundBumpmapTextureMipmapLevel != 0 || obj.ForegroundTextureMipmapLevel != 0 || obj.MinTextureMipMap != 0 ||
+        obj.MinBumpMapMipMap != 0) { std::printf("FAIL: zero fields\n"); return 1; }
     std::printf("CLandscapeLayerMesh_00bfddd0_TEST PASS\n");
     return 0;
 }

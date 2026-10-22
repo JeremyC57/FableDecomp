@@ -13,10 +13,10 @@ struct CTCTavernGameShoveHaPenny {
     unsigned char _pad2[0x6];
     unsigned char m_flagA;                  // +0x28
     void Begin(long kind);                 // 0x005E9B20
-    void vfunc_34();
+    void QuitMidGame();
 };
 
-void CTCTavernGameShoveHaPenny::vfunc_34()
+void CTCTavernGameShoveHaPenny::QuitMidGame()
 {
     m_flagA = 1;
     m_flagB = 0;

@@ -16,12 +16,12 @@ struct NavSub {
 
 struct CTCCreatureNavigation {
     void* f0;
-    NavSub* f4;
+    NavSub* ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* dest)
 {
-    return self->f4->IsReset(self, dest);
+    return self->ParentThing->IsReset(self, dest);
 }
 
 static CTCCreatureNavigation* g_expectedNav;
@@ -44,7 +44,7 @@ int main()
     NavSubImpl* pNavSub = &navSubObj;
     CTCCreatureNavigation nav;
     nav.f0 = 0;
-    nav.f4 = pNavSub;
+    nav.ParentThing = pNavSub;
 
     C3DVector dest = {1.0f, 2.0f, 3.0f};
 

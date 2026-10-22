@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CEngineSubPrimitiveGameMesh
+struct CThingPlayerCreature
 {
     int tag;
     void destroy();
@@ -10,17 +10,17 @@ struct CEngineSubPrimitiveGameMesh
 static int g_destroyed = 0;
 static int g_freed = 0;
 
-void CEngineSubPrimitiveGameMesh::destroy()
+void CThingPlayerCreature::destroy()
 {
     g_destroyed = this->tag;
 }
 
-void __fastcall mesh_free(void* self)
+void __fastcall mesh_free(void* creature)
 {
-    g_freed = ((CEngineSubPrimitiveGameMesh*)self)->tag;
+    g_freed = ((CThingPlayerCreature*)creature)->tag;
 }
 
-void* CEngineSubPrimitiveGameMesh::vec_deleting_destructor(unsigned int flags)
+void* CThingPlayerCreature::vec_deleting_destructor(unsigned int flags)
 {
     this->destroy();
     if (flags & 1)
@@ -30,7 +30,7 @@ void* CEngineSubPrimitiveGameMesh::vec_deleting_destructor(unsigned int flags)
 
 int main()
 {
-    CEngineSubPrimitiveGameMesh m;
+    CThingPlayerCreature m;
     m.tag = 77;
 
     g_destroyed = 0; g_freed = 0;

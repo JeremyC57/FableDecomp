@@ -3,9 +3,9 @@
 struct CMemoryDataInputStream {
     void* m_pVtable;
     unsigned int m_position;
-    int m_08;
+    int StreamSize;
     const unsigned char* m_pData;
-    int m_10;
+    int SourceChunkStreamPos;
     int m_remaining;
     const unsigned char* m_pNext;
     int m_overflowCalls;

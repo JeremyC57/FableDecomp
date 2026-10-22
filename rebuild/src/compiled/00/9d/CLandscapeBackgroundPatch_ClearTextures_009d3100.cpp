@@ -8,7 +8,7 @@ extern void __fastcall CInner_dtor(CInner* p);
 
 struct CLandscapeBackgroundPatch {
   int f0;
-  int f4;
+  int Parent;
   void* f8;
   CInner inner;
   void* CLandscapeBackgroundPatch_ClearTextures(int flag);
@@ -20,7 +20,7 @@ void* CLandscapeBackgroundPatch::CLandscapeBackgroundPatch_ClearTextures(int fla
     operator delete[](this->f8);
     this->f8 = 0;
   }
-  this->f4 = 0;
+  this->Parent = 0;
   CInner_dtor(&this->inner);
   if (flag & 1) {
     operator delete(this);

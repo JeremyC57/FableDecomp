@@ -9,11 +9,11 @@ struct CANavQuadTreeNode : CBaseClassNonCopyable { // vtable 0x0129CBBC
     virtual void v00();
     float m_x;                                     // +0x04
     float m_y;                                     // +0x08
-    bool  m_c;                                     // +0x0c
-    bool  m_d;                                     // +0x0d
-    bool  m_e;                                     // +0x0e
-    bool  m_f;                                     // +0x0f
-    CANavQuadTreeNode(float x, float y, bool c, bool d) : CBaseClassNonCopyable(), m_x(x), m_y(y), m_c(c), m_d(d), m_e(true), m_f(true) { }
+    bool  QuadTreeLevel;                                     // +0x0c
+    bool  NavLayer;                                     // +0x0d
+    bool  LeafNode;                                     // +0x0e
+    bool  Blocked;                                     // +0x0f
+    CANavQuadTreeNode(float x, float y, bool c, bool d) : CBaseClassNonCopyable(), m_x(x), m_y(y), QuadTreeLevel(c), NavLayer(d), LeafNode(true), Blocked(true) { }
 };
 
 struct CNavBlockedQuadTreeNode : CANavQuadTreeNode {   // vtable 0x0129DD3C

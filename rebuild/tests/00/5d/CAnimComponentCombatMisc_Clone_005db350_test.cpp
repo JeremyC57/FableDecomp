@@ -3,7 +3,7 @@
 struct CAnimComponentCombatMisc;
 struct Vtbl {
     void* s0; void* s1; void* s2; void* s3;
-    CAnimComponentCombatMisc* (__fastcall* clone)(CAnimComponentCombatMisc* self);
+    CAnimComponentCombatMisc* (__fastcall* clone)(CAnimComponentCombatMisc* component);
 };
 struct CAnimComponentCombatMisc {
     Vtbl* vptr;
@@ -13,18 +13,18 @@ struct CAnimComponentCombatMisc {
 };
 
 static CAnimComponentCombatMisc g_new;
-static CAnimComponentCombatMisc* __fastcall my_clone(CAnimComponentCombatMisc* self)
+static CAnimComponentCombatMisc* __fastcall my_clone(CAnimComponentCombatMisc* component)
 {
-    g_new.vptr = self->vptr;
+    g_new.vptr = component->vptr;
     g_new.b8 = 0; g_new.b9 = 0;
     return &g_new;
 }
 
-void* __fastcall Clone_CombatMisc(CAnimComponentCombatMisc* self)
+void* __fastcall Clone_CombatMisc(CAnimComponentCombatMisc* component)
 {
-    CAnimComponentCombatMisc* n = self->vptr->clone(self);
-    n->b8 = self->b8;
-    n->b9 = self->b9;
+    CAnimComponentCombatMisc* n = component->vptr->clone(component);
+    n->b8 = component->b8;
+    n->b9 = component->b9;
     return n;
 }
 

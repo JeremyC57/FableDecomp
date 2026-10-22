@@ -3,12 +3,12 @@
 struct Node
 {
     char pad0[0x20];
-    void* m20;
+    void* GridCell;
     char pad1[0x14];
-    Node* m38;
-    void* m3c;
-    void* m40;
-    void* m44;
+    Node* NextPrimitive;
+    void* RefPrimitive;
+    void* NextLayerMask;
+    void* RefLayerMask;
 };
 
 void __fastcall ClearPrimitiveList(Node* self)
@@ -16,12 +16,12 @@ void __fastcall ClearPrimitiveList(Node* self)
     Node* p = self;
     while (p != 0)
     {
-        Node* next = p->m38;
-        p->m20 = 0;
-        p->m38 = 0;
-        p->m3c = 0;
-        p->m40 = 0;
-        p->m44 = 0;
+        Node* next = p->NextPrimitive;
+        p->GridCell = 0;
+        p->NextPrimitive = 0;
+        p->RefPrimitive = 0;
+        p->NextLayerMask = 0;
+        p->RefLayerMask = 0;
         p = next;
     }
 }
@@ -29,10 +29,10 @@ void __fastcall ClearPrimitiveList(Node* self)
 int main()
 {
     Node a, b, c;
-    a.m20 = (void*)1; a.m3c = (void*)1; a.m40 = (void*)1; a.m44 = (void*)1;
-    b.m20 = (void*)1; b.m3c = (void*)1; b.m40 = (void*)1; b.m44 = (void*)1;
-    c.m20 = (void*)1; c.m3c = (void*)1; c.m40 = (void*)1; c.m44 = (void*)1;
-    a.m38 = &b; b.m38 = &c; c.m38 = 0;
+    a.GridCell = (void*)1; a.RefPrimitive = (void*)1; a.NextLayerMask = (void*)1; a.RefLayerMask = (void*)1;
+    b.GridCell = (void*)1; b.RefPrimitive = (void*)1; b.NextLayerMask = (void*)1; b.RefLayerMask = (void*)1;
+    c.GridCell = (void*)1; c.RefPrimitive = (void*)1; c.NextLayerMask = (void*)1; c.RefLayerMask = (void*)1;
+    a.NextPrimitive = &b; b.NextPrimitive = &c; c.NextPrimitive = 0;
 
     ClearPrimitiveList(&a);
 
@@ -40,7 +40,7 @@ int main()
     Node* arr[3]; arr[0]=&a; arr[1]=&b; arr[2]=&c;
     for (int i = 0; i < 3; i++)
     {
-        if (arr[i]->m20 || arr[i]->m38 || arr[i]->m3c || arr[i]->m40 || arr[i]->m44)
+        if (arr[i]->GridCell || arr[i]->NextPrimitive || arr[i]->RefPrimitive || arr[i]->NextLayerMask || arr[i]->RefLayerMask)
             ok = 0;
     }
 

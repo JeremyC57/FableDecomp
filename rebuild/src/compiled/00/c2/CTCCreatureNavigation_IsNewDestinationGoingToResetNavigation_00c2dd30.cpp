@@ -13,10 +13,10 @@ struct Inner {
 
 struct CTCCreatureNavigation {
     void* field_0;
-    Inner* field_4;
+    Inner* ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* dest)
 {
-    return self->field_4->v6(self, dest);
+    return self->ParentThing->v6(self, dest);
 }

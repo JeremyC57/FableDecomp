@@ -11,7 +11,7 @@ struct Delegate {
 
 struct CTCCreatureNavigation {
     void* f0;
-    Delegate* f4;
+    Delegate* ParentThing;
 };
 
 // The tested forwarder, modelled with a manual vtable dispatch that matches
@@ -20,7 +20,7 @@ typedef bool (__fastcall *Vfn6)(Delegate* self, int edx, CTCCreatureNavigation* 
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int edx, C3DVector* v)
 {
-    Delegate* d = self->f4;
+    Delegate* d = self->ParentThing;
     Vfn6 fn = (Vfn6)d->vptr[6];
     return fn(d, 0, self, v);
 }
@@ -51,7 +51,7 @@ int main()
 
     CTCCreatureNavigation nav;
     nav.f0 = 0;
-    nav.f4 = &d;
+    nav.ParentThing = &d;
 
     C3DVector vec; vec.x = 1; vec.y = 2; vec.z = 3;
 

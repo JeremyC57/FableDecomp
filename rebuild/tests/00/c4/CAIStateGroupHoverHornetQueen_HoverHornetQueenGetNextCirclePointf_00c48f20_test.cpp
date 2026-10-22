@@ -2,7 +2,7 @@ struct CAIStateGroup_HoverHornetQueen
 {
     void* vfptr;
     long m_wrapAmount;
-    long field_0x8;
+    long ScriptAIPriority;
     long m_current;
     long m_total;
 
@@ -24,7 +24,7 @@ int main()
     CAIStateGroup_HoverHornetQueen a;
     a.vfptr = 0;
     a.m_wrapAmount = 100;
-    a.field_0x8 = 0;
+    a.ScriptAIPriority = 0;
     a.m_current = 30;
     a.m_total = 50;
     long r1 = a.GetNextCirclePoint(0);
@@ -33,7 +33,7 @@ int main()
     CAIStateGroup_HoverHornetQueen b;
     b.vfptr = 0;
     b.m_wrapAmount = 100;
-    b.field_0x8 = 0;
+    b.ScriptAIPriority = 0;
     b.m_current = 90;
     b.m_total = 50;
     long r2 = b.GetNextCirclePoint(0);

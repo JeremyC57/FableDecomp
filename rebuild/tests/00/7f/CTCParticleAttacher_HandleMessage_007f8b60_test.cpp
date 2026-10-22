@@ -14,7 +14,7 @@ struct CParticleVector {
 struct CTCParticleAttacher {
     CParticleVector ParticleList;
     void AttachParticles() { g_attachStep = ++g_step; }
-    void vfunc_27(CTCMessage* msg)
+    void HandleMessage(CTCMessage* msg)
     {
         if (msg->GetType() == 5) {
             for_each(ParticleList.m_pFirst, ParticleList.m_pLast, CKillParticle());
@@ -28,10 +28,10 @@ int main()
     CParticlePointer ps[3] = { { 1 }, { 0 }, { 1 } };
     CTCParticleAttacher a; a.ParticleList.m_pFirst = ps; a.ParticleList.m_pLast = ps + 3;
     CTCMessage other; other.type = 4;
-    a.vfunc_27(&other);
+    a.HandleMessage(&other);
     if (g_kills != 0 || g_step != 0) { std::printf("007f8b60_TEST FAIL\n"); return 1; }
     CTCMessage replaced; replaced.type = 5;
-    a.vfunc_27(&replaced);
+    a.HandleMessage(&replaced);
     if (g_kills != 2 || g_clearStep != 1 || g_attachStep != 2 || a.ParticleList.m_pLast != ps) { std::printf("007f8b60_TEST FAIL\n"); return 1; }
     std::printf("007f8b60_TEST PASS\n");
     return 0;

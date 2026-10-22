@@ -26,7 +26,7 @@ struct CTCActionUseBuyHouse
 {
     // vtable/base at +0 (unused here)
     void*   v0;             // +0x00
-    Holder* m4;             // +0x04
+    Holder* ParentThing;             // +0x04
     char    pad8[4];        // +0x08
     char    member0c;       // +0x0c  (address taken)
 
@@ -36,6 +36,6 @@ struct CTCActionUseBuyHouse
 
 void CTCActionUseBuyHouse::OnCreate()
 {
-    this->m4->slot70->Register(reinterpret_cast<CMemberArg*>(&this->member0c));
+    this->ParentThing->slot70->Register(reinterpret_cast<CMemberArg*>(&this->member0c));
     this->BaseOnCreate();
 }

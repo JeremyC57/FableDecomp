@@ -4,16 +4,16 @@ struct CTCNoiseDef;
 static int g_called = 0;
 static const void* g_self = 0;
 static const void* g_other = 0;
-void __fastcall CTCNoiseDef_Copy_impl(CTCNoiseDef* self, void* edx, const CDefClassBase* other)
+void __fastcall CTCNoiseDef_Copy_impl(CTCNoiseDef* def, void* edx, const CDefClassBase* other)
 {
     g_called = 1;
-    g_self = self;
+    g_self = def;
     g_other = other;
     (void)edx;
 }
-void __fastcall CTCNoiseDef_Copy(CTCNoiseDef* self, void* edx, const CDefClassBase* other)
+void __fastcall CTCNoiseDef_Copy(CTCNoiseDef* def, void* edx, const CDefClassBase* other)
 {
-    CTCNoiseDef_Copy_impl(self, edx, other);
+    CTCNoiseDef_Copy_impl(def, edx, other);
 }
 int main()
 {

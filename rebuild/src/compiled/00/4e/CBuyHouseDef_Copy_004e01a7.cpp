@@ -9,12 +9,12 @@ struct CBuyHouseBase {
 
 struct CBuyHouseDef {
     char pad[0x25];
-    unsigned char field25; // 0x25
+    unsigned char Main; // 0x25
     void Copy(CDefClassBase const* src);
 };
 
 void __fastcall CBuyHouseDef_Copy(CBuyHouseDef* self, int /*edx*/, CDefClassBase const* src)
 {
     ((CBuyHouseBase*)self)->BaseCopy(src);
-    self->field25 = ((const CBuyHouseDef*)src)->field25;
+    self->Main = ((const CBuyHouseDef*)src)->Main;
 }

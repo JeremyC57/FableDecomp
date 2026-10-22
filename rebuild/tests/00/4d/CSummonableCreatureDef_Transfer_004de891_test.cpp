@@ -14,10 +14,10 @@ struct CGuildMasterDef {
     CMember m2c;
 };
 
-void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* self, void* edx, CPersistContext* ctx)
+void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->Persist(&self->m28);
-    ctx->Persist(&self->m2c);
+    ctx->Persist(&def->m28);
+    ctx->Persist(&def->m2c);
 }
 
 int main()

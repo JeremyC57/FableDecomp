@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CWADFile {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CWADFile_dtor(CWADFile* file);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CWADFile_scalar_deleting_destructor(CWADFile* file, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CWADFile_dtor(file);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(file);
+    return file;
 }

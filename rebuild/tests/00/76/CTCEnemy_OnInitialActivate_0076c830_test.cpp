@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCElectrocutedEffect { int tag; };
+struct CTCEnemy { int tag; };
 
 struct GlobalThing {
     int calls;
@@ -14,19 +14,19 @@ static GlobalThing g_obj = {0,-1};
 GlobalThing* g_electroGlobal = &g_obj;
 
 static int g_baseCalled = 0;
-static CTCElectrocutedEffect* g_baseSelf = 0;
+static CTCEnemy* g_baseSelf = 0;
 
-void __fastcall CTCElectrocutedEffect_base_OnInitialActivate(CTCElectrocutedEffect* self)
+void __fastcall CTCEnemy_base_OnInitialActivate(CTCEnemy* enemy)
 {
     g_baseCalled++;
-    g_baseSelf = self;
+    g_baseSelf = enemy;
 }
 
-void __fastcall OnInitialActivate(CTCElectrocutedEffect* self);
+void __fastcall OnInitialActivate(CTCEnemy* enemy);
 
 int main()
 {
-    CTCElectrocutedEffect e; e.tag = 42;
+    CTCEnemy e; e.tag = 42;
     OnInitialActivate(&e);
     if (g_obj.calls == 1 && g_obj.lastArg == 0 &&
         g_baseCalled == 1 && g_baseSelf == &e)

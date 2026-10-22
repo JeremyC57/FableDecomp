@@ -1,3 +1,3 @@
 // Constant-return member: returns 0x6a. __fastcall this=ecx.
-struct T { int Get(); };
-int T::Get() { return 0x6a; }
+struct CDataBank { int GetDataFormatVersion(); };
+int CDataBank::GetDataFormatVersion() { return 0x6a; }

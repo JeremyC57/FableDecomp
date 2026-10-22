@@ -5,7 +5,7 @@ struct Sub {
 
 struct CTCGraphicAppearance {
     char pad0[4];        // +0x00
-    Sub* f4;             // +0x04
+    Sub* ParentThing;             // +0x04
     char pad8[0x58 - 8]; // +0x08 .. +0x57
     unsigned char flags; // +0x58
     char pad59;          // +0x59
@@ -16,6 +16,6 @@ struct CTCGraphicAppearance {
 void CTCGraphicAppearance::SetAlpha(unsigned char a)
 {
     this->alpha = a;
-    this->f4->Touch();
+    this->ParentThing->Touch();
     this->flags |= 4;
 }

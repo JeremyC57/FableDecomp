@@ -6,9 +6,9 @@ extern int __fastcall sub_86dd80(void* ecx, void* edx, unsigned char b);
 
 struct CTCVillage {
     void* m0;     // +0x00
-    void* m4;     // +0x04
-    unsigned char m8;   // +0x08
-    unsigned char m9;
+    void* ParentThing;     // +0x04
+    unsigned char ToBeRemoved;   // +0x08
+    unsigned char IsInGlobalUpdateTCs;
     unsigned char ma;
     unsigned char mb;
     unsigned char mc;   // +0x0c
@@ -18,7 +18,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->md) {
-        sub_86dd80(self->m0, self->m4, self->mc);
+        sub_86dd80(self->m0, self->ParentThing, self->mc);
         self->md = 0;
     }
 }

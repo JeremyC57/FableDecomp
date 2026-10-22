@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct C3DMeshFileXTextureIndexChunk {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall C3DMeshFileXTextureIndexChunk_dtor(C3DMeshFileXTextureIndexChunk* chunk);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DMeshFileXTextureIndexChunk_scalar_deleting_destructor(C3DMeshFileXTextureIndexChunk* chunk, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DMeshFileXTextureIndexChunk_dtor(chunk);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(chunk);
+    return chunk;
 }

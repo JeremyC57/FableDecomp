@@ -13,10 +13,10 @@ struct CTCTavernGameCoinGolf {
     unsigned char _pad2[0x6];
     unsigned char m_flagA;                  // +0x28
     void Begin(long kind);                 // 0x005E9B20
-    void vfunc_34();
+    void QuitMidGame();
 };
 
-void CTCTavernGameCoinGolf::vfunc_34()
+void CTCTavernGameCoinGolf::QuitMidGame()
 {
     m_flagA = 1;
     m_flagB = 0;

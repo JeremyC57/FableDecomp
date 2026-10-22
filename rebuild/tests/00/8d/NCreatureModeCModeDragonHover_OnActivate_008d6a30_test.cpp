@@ -13,7 +13,7 @@ struct FableDestValV_008d6a30_inner
 };
 void FABLE_FASTCALL FableDestValV_008d6a30_t::h1() { g_h1++; }
 void FABLE_FASTCALL FableDestValV_008d6a30_inner::h2(char flag) { g_h2++; g_flag = flag; g_this = (void*)this; }
-extern "C" void FABLE_FASTCALL FableDestValV_008d6a30(FableDestValV_008d6a30_t* self);
+extern "C" void FABLE_FASTCALL FableDestValV_008d6a30(FableDestValV_008d6a30_t* mode);
 int main()
 {
     static FableDestValV_008d6a30_inner inner;

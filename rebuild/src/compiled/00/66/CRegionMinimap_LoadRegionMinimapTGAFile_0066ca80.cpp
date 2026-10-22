@@ -17,7 +17,7 @@ struct SubObj {
 };
 
 struct CRegionMinimap {
-    int    field0;            // +0x00
+    int    RegionMinimapSize;            // +0x00
     char   gap[0x24-4];
     SubObj sub;               // +0x24
     void LoadRegionMinimapTGAFile(CWideString* ws);
@@ -28,8 +28,8 @@ void CRegionMinimap::LoadRegionMinimapTGAFile(CWideString* ws)
     Temp t;
 
     int pair[2];
-    pair[0] = this->field0;
-    pair[1] = this->field0;
+    pair[0] = this->RegionMinimapSize;
+    pair[1] = this->RegionMinimapSize;
 
     this->sub.Build(pair, &t, 0);
 

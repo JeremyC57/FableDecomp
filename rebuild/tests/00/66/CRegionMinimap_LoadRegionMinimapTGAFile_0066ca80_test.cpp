@@ -6,7 +6,7 @@
 struct WS { int valid; };
 
 struct Local { int f0; int rest[7]; };
-struct Rgn { int field0; char gap[0x24-4]; int subMarker; };
+struct Rgn { int RegionMinimapSize; char gap[0x24-4]; int subMarker; };
 
 static int  g_ctor=0, g_build=0, g_finish=0, g_lastBuildKey=-999;
 
@@ -18,14 +18,14 @@ static void finish(void* sub, WS* w, int one){ g_finish++; (void)sub;(void)w;(vo
 static void model(Rgn* self, WS* ws){
     Local lo; lo.f0=-1;
     ctor(&lo, 8,8,8,8,1);
-    int a=self->field0, b=self->field0; (void)b;
+    int a=self->RegionMinimapSize, b=self->RegionMinimapSize; (void)b;
     void* subp=(char*)self+0x24;
     build(subp,&a,&lo,0);
     if(check(ws)) finish(subp,ws,1);
 }
 
 int main(){
-    Rgn r; r.field0=1234;
+    Rgn r; r.RegionMinimapSize=1234;
     WS good; good.valid=1;
     WS bad; bad.valid=0;
 

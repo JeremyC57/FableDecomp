@@ -29,7 +29,7 @@ struct CIsThingAliveEndGame {                      // vtable 0x012C2FE8: the end
 };
 struct CBaseObject {
     virtual void v00();
-    long m_04;                                     // +0x04
+    long IntelligentPointer;                                     // +0x04
     CBaseObject();                                 // 0x0099A380
 };
 struct SCountedImp {

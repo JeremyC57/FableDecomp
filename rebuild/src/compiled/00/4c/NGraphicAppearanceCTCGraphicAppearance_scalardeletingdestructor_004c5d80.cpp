@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCGraphicAppearance {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCGraphicAppearance_dtor(CTCGraphicAppearance* appearance);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCGraphicAppearance_scalar_deleting_destructor(CTCGraphicAppearance* appearance, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCGraphicAppearance_dtor(appearance);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(appearance);
+    return appearance;
 }

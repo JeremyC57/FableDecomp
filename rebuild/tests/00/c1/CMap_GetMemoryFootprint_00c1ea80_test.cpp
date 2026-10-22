@@ -2,7 +2,7 @@
 
 struct CMap {
     char pad0[8];
-    long m8;
+    long CachedVolumes;
     long BaseFootprintA();
     long BaseFootprintB();
     long GetMemoryFootprint();
@@ -16,13 +16,13 @@ long CMap::GetMemoryFootprint()
 {
     long a = this->BaseFootprintA();
     a += this->BaseFootprintB();
-    return a + this->m8;
+    return a + this->CachedVolumes;
 }
 
 int main()
 {
     CMap m;
-    m.m8 = 100;
+    m.CachedVolumes = 100;
     g_a = 7; g_b = 20;
     long r = m.GetMemoryFootprint();
     if (r == 127) {

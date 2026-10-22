@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEnginePrimitiveManagerStaticMeshes {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEnginePrimitiveManagerStaticMeshes_dtor(CEnginePrimitiveManagerStaticMeshes* meshes);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEnginePrimitiveManagerStaticMeshes_scalar_deleting_destructor(CEnginePrimitiveManagerStaticMeshes* meshes, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEnginePrimitiveManagerStaticMeshes_dtor(meshes);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(meshes);
+    return meshes;
 }

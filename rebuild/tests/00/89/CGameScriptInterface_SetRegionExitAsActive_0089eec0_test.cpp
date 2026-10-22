@@ -22,7 +22,7 @@ struct CPlayer_Retail { CThing_Retail* GetHeroCreature() { std::strcat(g_seq, "h
 struct CPlayerManager_Retail { CPlayer_Retail* GetMainPlayer() { std::strcat(g_seq, "p"); return &g_player; } }; static CPlayerManager_Retail g_pm;
 struct CRegionExit_Retail { unsigned char _pad[0xc]; bool m_active; };
 static long g_refresh = -1; struct CPlayerGui_Retail { void Refresh(long f) { std::strcat(g_seq, "R"); g_refresh = f; } }; static CPlayerGui_Retail g_gui; static CPlayerGui_Retail* g_pPlayerGui_013b8790 = &g_gui;
-struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long m_08; void* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager;
+struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long Component; void* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager;
     void SetRegionExitAsActive(const CScriptThing& thing, bool active) const { if (thing.IsValid()) { CThing_Retail* t = thing.GetThing(); if (t->HasTC(100)) { ((CRegionExit_Retail*)t->m_pRegionLink)->m_active = active; g_pPlayerGui_013b8790->Refresh(0); } } } };
 int main() {
     CGameScriptInterface i; reset(100, true); CRegionExit_Retail x; x.m_active = false; g_thing.m_pRegionLink = &x; i.SetRegionExitAsActive(g_script, true); if (std::strcmp(g_seq, "vgR") || !x.m_active || g_refresh != 0) { std::printf("0089eec0_TEST FAIL\n"); return 1; }

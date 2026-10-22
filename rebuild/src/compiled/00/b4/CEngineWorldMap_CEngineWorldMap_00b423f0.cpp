@@ -16,9 +16,9 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 struct CEngineComponent {                          // vtable 0x012A2544
     virtual void v00();
-    long m_4;                                      // +0x04
+    long GlobalPointerAddress;                                      // +0x04
     bool m_enabled;                                // +0x08
-    bool m_9;                                      // +0x09
+    bool KeepAlive;                                      // +0x09
     CEngineComponent();                            // 0x00B59710
 };
 template <class T> struct CArray {                 // retail CArray (STLport vector): first / last / end

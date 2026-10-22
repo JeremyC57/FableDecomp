@@ -14,11 +14,11 @@ struct IHelper {
 
 struct CTCCreatureNavigation {
     void* field0;
-    IHelper* field4;
+    IHelper* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest)
 {
-    return this->field4->CheckReset(this, dest);
+    return this->ParentThing->CheckReset(this, dest);
 }

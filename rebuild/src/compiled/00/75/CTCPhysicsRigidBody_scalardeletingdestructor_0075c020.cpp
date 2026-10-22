@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCPhysicsRigidBody {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCPhysicsRigidBody_dtor(CTCPhysicsRigidBody* body);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCPhysicsRigidBody_scalar_deleting_destructor(CTCPhysicsRigidBody* body, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCPhysicsRigidBody_dtor(body);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(body);
+    return body;
 }

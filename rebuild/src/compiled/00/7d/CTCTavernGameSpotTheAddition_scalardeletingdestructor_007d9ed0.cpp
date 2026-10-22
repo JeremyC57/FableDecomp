@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCTavernGameSpotTheAddition {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCTavernGameSpotTheAddition_dtor(CTCTavernGameSpotTheAddition* addition);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCTavernGameSpotTheAddition_scalar_deleting_destructor(CTCTavernGameSpotTheAddition* addition, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCTavernGameSpotTheAddition_dtor(addition);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(addition);
+    return addition;
 }

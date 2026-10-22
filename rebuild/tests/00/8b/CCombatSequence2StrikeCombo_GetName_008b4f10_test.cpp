@@ -8,12 +8,12 @@ static const char* g_last_str = 0;
 static int g_last_len = 0;
 
 // Local stand-in for the real ctor at 0x0099ebf0.
-CCharString* __fastcall CCharString_ctor(CCharString* self, int /*edx*/, const char* str, int len)
+CCharString* __fastcall CCharString_ctor(CCharString* sequence, int /*edx*/, const char* str, int len)
 {
     g_last_str = str;
     g_last_len = len;
-    self->m_data = (char*)str;
-    return self;
+    sequence->m_data = (char*)str;
+    return sequence;
 }
 
 struct CCombatSequence2StrikeCombo {

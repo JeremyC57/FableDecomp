@@ -1,29 +1,29 @@
 #include <cstdio>
 static int g_AutoTinyScalarDestructorCalls = 0;
 static int g_AutoTinyScalarDeleteCalls = 0;
-void __fastcall AutoTinyScalarDestructor(void*)
+void __fastcall CAIStateGroupBehaviourBase_Destruct(void*)
 {
     ++g_AutoTinyScalarDestructorCalls;
 }
-void __cdecl AutoTinyScalarDelete(void*)
+void __cdecl OperatorDelete(void*)
 {
     ++g_AutoTinyScalarDeleteCalls;
 }
-void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CAIStateGroupBehaviourBase_ScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CAIStateGroupBehaviourBase_Destruct(stateGroup);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(stateGroup);
+    return stateGroup;
 }
 int main()
 {
     int object = 0;
-    if (CAssoc_ScalarDeletingDestructor(&object, 0, 0) != &object ||
+    if (CAIStateGroupBehaviourBase_ScalarDeletingDestructor(&object, 0, 0) != &object ||
         g_AutoTinyScalarDestructorCalls != 1 ||
         g_AutoTinyScalarDeleteCalls != 0)
         return 1;
-    CAssoc_ScalarDeletingDestructor(&object, 0, 1);
+    CAIStateGroupBehaviourBase_ScalarDeletingDestructor(&object, 0, 1);
     if (g_AutoTinyScalarDestructorCalls != 2 ||
         g_AutoTinyScalarDeleteCalls != 1)
         return 1;

@@ -9,10 +9,10 @@
 // placeholder); member names are descriptive. 
 struct CTCHighlightItem {
     void Update();                         // 0x0077CCA0
-    void vfunc_16(bool enable);
+    void OnSetInLimbo(bool enable);
 };
 
-void CTCHighlightItem::vfunc_16(bool enable)
+void CTCHighlightItem::OnSetInLimbo(bool enable)
 {
     if (enable)
         Update();

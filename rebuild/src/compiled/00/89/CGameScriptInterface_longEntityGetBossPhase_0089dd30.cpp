@@ -75,9 +75,9 @@ struct CDisplayEngine_Retail; struct CWorld;
 struct CGameScriptInterface {
     virtual void v000();
     CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
-    long                    m_08;
+    long                    Component;
     CDisplayEngine_Retail*  DisplayEngine;                   // +0x0c
-    long                    m_10;
+    long                    DefinitionManager;
     CPlayerManager_Retail*  PlayerManager;                   // +0x14
     unsigned char           _pad18[4];
     bool                    m_handLampLit;                   // +0x1c (read when the hero has no hand-lamp component)

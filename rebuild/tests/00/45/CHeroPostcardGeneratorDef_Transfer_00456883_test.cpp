@@ -10,12 +10,12 @@ struct CHeroPostcardGeneratorDef {
     char base[4];
 };
 
-void Transfer_impl(CHeroPostcardGeneratorDef* self, CPersistContext* ctx)
+void Transfer_impl(CHeroPostcardGeneratorDef* def, CPersistContext* ctx)
 {
-    ctx->PutA((char*)self + 0x39);
-    ctx->PutA((char*)self + 0x41);
-    ctx->PutB((char*)self + 0x49);
-    ctx->PutC((char*)self + 0x58);
+    ctx->PutA((char*)def + 0x39);
+    ctx->PutA((char*)def + 0x41);
+    ctx->PutB((char*)def + 0x49);
+    ctx->PutC((char*)def + 0x58);
 }
 
 int main(){

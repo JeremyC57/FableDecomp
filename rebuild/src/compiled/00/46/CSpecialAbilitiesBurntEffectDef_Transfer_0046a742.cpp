@@ -6,13 +6,13 @@ struct CPersistContext {                       // typed transfer helpers: each s
 struct CCameraManagerSetDef {
   char pad0[0x3c];
   int f3c;
-  int f40;
-  int f44;
-  int f48;
+  int CameraManagerMain;
+  int CameraManagerCombat;
+  int CameraManagerPCMain;
 };
-void __fastcall CCameraManagerSetDef_Transfer(CCameraManagerSetDef* self, void* unused, CPersistContext* ctx) {
-  ctx->TransferFloat(&self->f3c);
-  ctx->TransferFloat(&self->f40);
-  ctx->TransferFloat(&self->f44);
-  ctx->Transfer_00466a47(&self->f48);
+void __fastcall CCameraManagerSetDef_Transfer(CCameraManagerSetDef* def, void* unused, CPersistContext* ctx) {
+  ctx->TransferFloat(&def->f3c);
+  ctx->TransferFloat(&def->CameraManagerMain);
+  ctx->TransferFloat(&def->CameraManagerCombat);
+  ctx->Transfer_00466a47(&def->CameraManagerPCMain);
 }

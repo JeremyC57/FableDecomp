@@ -4,17 +4,17 @@
 static int g_dtor_calls = 0;
 static void* g_last_deleted = 0;
 
-struct CLandscapeBackgroundPatch {
+struct CInputProcessInventoryExperienceScreen {
     int a, b, c;
     void* deleting_destructor(unsigned int flags);
 };
 
-extern void __fastcall CLandscapeBackgroundPatch_dtor(void* self);
-void __fastcall CLandscapeBackgroundPatch_dtor(void* self) { (void)self; ++g_dtor_calls; }
+extern void __fastcall CInputProcessInventoryExperienceScreen_dtor(void* process);
+void __fastcall CInputProcessInventoryExperienceScreen_dtor(void* process) { (void)process; ++g_dtor_calls; }
 
-void* CLandscapeBackgroundPatch::deleting_destructor(unsigned int flags)
+void* CInputProcessInventoryExperienceScreen::deleting_destructor(unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(this);
+    CInputProcessInventoryExperienceScreen_dtor(this);
     if (flags & 1)
         ::operator delete(this);
     return this;
@@ -23,13 +23,13 @@ void* CLandscapeBackgroundPatch::deleting_destructor(unsigned int flags)
 int main()
 {
     // flags & 1 clear: destructor runs, no delete, returns this
-    CLandscapeBackgroundPatch obj;
+    CInputProcessInventoryExperienceScreen obj;
     g_dtor_calls = 0;
     void* r = obj.deleting_destructor(0);
     bool ok1 = (r == &obj) && (g_dtor_calls == 1);
 
     // flags & 1 set: destructor runs then operator delete on heap object
-    CLandscapeBackgroundPatch* p = new CLandscapeBackgroundPatch();
+    CInputProcessInventoryExperienceScreen* p = new CInputProcessInventoryExperienceScreen();
     g_dtor_calls = 0;
     void* r2 = p->deleting_destructor(1);
     bool ok2 = (r2 == p) && (g_dtor_calls == 1);

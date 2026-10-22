@@ -1,4 +1,4 @@
-// Behaviour test for 00909ba0 CCombatSequence_WhisperAdvance::OnCreate: actions are queued in retail order with the sequence's
+// Behaviour test for 00909ba0 CCombatSequenceWhisperAdvance::OnCreate: actions are queued in retail order with the sequence's
 // owner/target, each held once by the queue after the local counted pointer is released.
 #include <cstdio>
 #include <cstring>

@@ -13,12 +13,12 @@ struct Inner {
 
 struct CTCCreatureNavigation {
     int f0;
-    Inner* f4;
+    Inner* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* vec);
 };
 
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* vec)
 {
-    Inner* n = this->f4;
+    Inner* n = this->ParentThing;
     return n->v7(this, vec);
 }

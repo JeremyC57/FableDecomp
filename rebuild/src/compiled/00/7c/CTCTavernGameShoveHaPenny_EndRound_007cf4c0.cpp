@@ -20,18 +20,18 @@ struct CTCTavernGameCoinBase {
     float Score;                        // +0x2c
     unsigned char _pad_0x30[0x70];
     bool NewBestScore;                  // +0xa0
-    void vfunc_33();                    // 0x008EF190
+    void EndRound();                    // 0x008EF190
     void GetHeroStats(CHeroStats** stats);      // 0x005EB4B0
     void SetState(long state);          // 0x005E9B20
 };
 
 struct CTCTavernGameShoveHaPenny : CTCTavernGameCoinBase {
-    void vfunc_33();
+    void EndRound();
 };
 
-void CTCTavernGameShoveHaPenny::vfunc_33()
+void CTCTavernGameShoveHaPenny::EndRound()
 {
-    CTCTavernGameCoinBase::vfunc_33();
+    CTCTavernGameCoinBase::EndRound();
     CHeroStats* stats = 0;
     GetHeroStats(&stats);
     if (GameWon) {

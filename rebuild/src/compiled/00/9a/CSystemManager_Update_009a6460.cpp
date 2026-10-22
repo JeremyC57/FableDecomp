@@ -15,7 +15,7 @@ enum ESystemReturn
 struct CSystemManager
 {
     unsigned char unknown00[0x08];
-    bool busy08;
+    bool WindowsQuit;
     bool notifyObserver09;
     unsigned char unknown0A[0x72];
     CSystemManagerObserver* observer7C;
@@ -29,7 +29,7 @@ struct CSystemManager
 ESystemReturn CSystemManager::Update()
 {
     UpdateActive();
-    if (!busy08)
+    if (!WindowsQuit)
     {
         if (resetPendingEA)
             resetPendingEA = false;

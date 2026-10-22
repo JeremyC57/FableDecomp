@@ -73,10 +73,10 @@ struct P {
   virtual char d69(){return 0;}
   virtual void tgt(int x);
 };
-struct S { char pad[4]; P* f4; void M(int x); };
+struct CScriptThing { char pad[4]; P* f4; void SetToKillOnLevelUnload(int x); };
 void P::tgt(int x){ g_hit=x; }
-void S::M(int x){ P* p=this->f4; if(p) p->tgt(x); }
-int main(){ P pp; S o; o.f4=&pp; o.M(7);
+void CScriptThing::SetToKillOnLevelUnload(int x){ P* p=this->f4; if(p) p->tgt(x); }
+int main(){ P pp; CScriptThing o; o.f4=&pp; o.SetToKillOnLevelUnload(7);
  if(g_hit!=7){ std::printf("004ab0c0_TEST FAIL\n"); return 1;}
- g_hit=0; S o2; o2.f4=0; o2.M(9); if(g_hit!=0){ std::printf("004ab0c0_TEST FAIL\n"); return 1;}
+ g_hit=0; CScriptThing o2; o2.f4=0; o2.SetToKillOnLevelUnload(9); if(g_hit!=0){ std::printf("004ab0c0_TEST FAIL\n"); return 1;}
  std::printf("004ab0c0_TEST PASS\n"); return 0;}

@@ -7,7 +7,7 @@ struct CRequestOwner { virtual ~CRequestOwner() { std::strcat(g_seq, "O"); } }; 
 struct CLoadTask { CRequestOwner* m_pOwner; CBlockManager* m_pManager; void* m_pRequest; unsigned char _pad[2]; bool m_requested; unsigned char _pad2;
     ~CLoadTask() { if (m_pOwner) delete m_pOwner; if (m_requested) m_pManager->ReleaseRequest(m_pRequest); } static void operator delete(void* p) { g_pEngine->m_pMem->FreeVirtual(p); } static void* operator new(size_t n) { return std::malloc(n); } };
 struct CPatch { virtual ~CPatch() { std::strcat(g_seq, "P"); } }; struct CMovableResource { virtual void v00() { } ~CMovableResource() { std::strcat(g_seq, "M"); } };
-struct CTreeNode : CMovableResource { unsigned char _pad04[0x94]; CLoadTask* m_pLoadTask; long m_9c; CPatch* m_pPatch; virtual void v00() { } ~CTreeNode() { delete m_pPatch; delete m_pLoadTask; } };
+struct CTreeNode : CMovableResource { unsigned char _pad04[0x94]; CLoadTask* m_pLoadTask; long OffsetIntoFileBlock; CPatch* m_pPatch; virtual void v00() { } ~CTreeNode() { delete m_pPatch; delete m_pLoadTask; } };
 
 int main() {
     g_engine.m_pMem = &g_mem; CBlockManager bm; int req; CLoadTask* t = new CLoadTask; t->m_pOwner = 0; t->m_pManager = &bm; t->m_pRequest = &req; t->m_requested = true; { CTreeNode n; n.m_pLoadTask = t; n.m_pPatch = new CPatch; } if (std::strcmp(g_seq, "PRFM") || g_freed != t) { std::printf("00bf73a0_TEST FAIL\n"); return 1; }

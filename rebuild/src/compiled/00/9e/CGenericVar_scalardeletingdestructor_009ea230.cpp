@@ -11,7 +11,7 @@ struct CGenericVarRoot_009ea230 {
     virtual void v00();
 };
 struct CGenericVar : CGenericVarRoot_009ea230 {              // vtable 0x0129C3E4
-    long        m_4;                               // +0x04
+    long        Type;                               // +0x04
     CCharString m_name;                            // +0x08
     __forceinline virtual ~CGenericVar() { }
 };

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCDummyVillager {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCDummyVillager_dtor(CTCDummyVillager* villager);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCDummyVillager_scalar_deleting_destructor(CTCDummyVillager* villager, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCDummyVillager_dtor(villager);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(villager);
+    return villager;
 }

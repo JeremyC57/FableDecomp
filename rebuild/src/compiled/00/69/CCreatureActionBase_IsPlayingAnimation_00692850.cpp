@@ -14,7 +14,7 @@ public:
     virtual int  v6();               // vtable slot 6 = [vptr+0x18]
     // members
     char pad_04[0x1c - 0x04];        // +0x04 .. +0x1b
-    int  m_1c;                       // +0x1c
+    int  FramesRunning;                       // +0x1c
     char pad_20[0x48 - 0x20];        // +0x20 .. +0x47
     int  m_48;                       // +0x48
 public:
@@ -24,5 +24,5 @@ public:
 bool CCreatureActionBase::IsPlayingAnimation() const
 {
     int end = ((CCreatureActionBase*)this)->v6() + m_48;
-    return m_1c >= end;
+    return FramesRunning >= end;
 }

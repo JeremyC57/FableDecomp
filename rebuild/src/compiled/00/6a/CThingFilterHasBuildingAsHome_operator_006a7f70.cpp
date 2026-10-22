@@ -16,12 +16,12 @@ struct CThingAICreature {
 };
 
 struct CThingFilter_HasBuildingAsHome {
-    int field0;        // the id to match
+    int HomeBuilding;        // the id to match
 
     bool operator()(CThingAICreature* creature);
 };
 
 bool CThingFilter_HasBuildingAsHome::operator()(CThingAICreature* creature)
 {
-    return creature->home.GetHomeId() == this->field0;
+    return creature->home.GetHomeId() == this->HomeBuilding;
 }

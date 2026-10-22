@@ -3,26 +3,26 @@
 struct Self;
 struct VTbl {
     void* s0; void* s1; void* s2; void* s3;
-    Self* (__fastcall* clone)(Self* self);
+    Self* (__fastcall* clone)(Self* component);
 };
 struct Self {
     VTbl* vt; int f4; int f8; int fc;
 };
 
 static Self g_new;
-static Self* __fastcall clone_impl(Self* self) {
-    g_new.vt = self->vt;
+static Self* __fastcall clone_impl(Self* component) {
+    g_new.vt = component->vt;
     g_new.f4 = 999;
     g_new.f8 = 0;
     g_new.fc = 0;
     return &g_new;
 }
 
-Self* __fastcall Clone_CombatHandedness(Self* self)
+Self* __fastcall Clone_CombatHandedness(Self* component)
 {
-    Self* n = self->vt->clone(self);
-    n->f8 = self->f8;
-    n->fc = self->fc;
+    Self* n = component->vt->clone(component);
+    n->f8 = component->f8;
+    n->fc = component->fc;
     return n;
 }
 

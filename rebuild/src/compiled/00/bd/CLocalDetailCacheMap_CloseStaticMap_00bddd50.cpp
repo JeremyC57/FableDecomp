@@ -9,7 +9,7 @@ struct SubObj {
 struct CLocalDetailCacheMap {
     int    f0;      // +0x00
     int    f4;      // +0x04
-    int    f8;      // +0x08
+    int    Map;      // +0x08
     SubObj sub;     // +0x0c
 };
 

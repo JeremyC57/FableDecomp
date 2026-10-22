@@ -19,9 +19,9 @@ static int g_base = 0;
 static void __fastcall my_slot12(void* p) { g_virt++; }
 static CCreatureVtbl g_vtbl = { 0, 0, 0, my_slot12 };
 
-void __fastcall CCreatureAction_Base_FinishAction(CCreatureAction_GetOutOfBed* self) { g_base++; }
+void __fastcall CCreatureAction_Base_FinishAction(CCreatureAction_GetOutOfBed* action) { g_base++; }
 
-void __fastcall FinishAction(CCreatureAction_GetOutOfBed* self);
+void __fastcall FinishAction(CCreatureAction_GetOutOfBed* action);
 
 int main() {
     CCreatureAction_GetOutOfBed obj;

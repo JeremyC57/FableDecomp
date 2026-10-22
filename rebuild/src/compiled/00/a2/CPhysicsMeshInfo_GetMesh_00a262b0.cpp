@@ -81,8 +81,8 @@ public:
         void BuildMesh();                                   // 0x00A25D20
     };
     void*                         __vftable;               // +0x00
-    long                          m_04;                    // +0x04
-    long                          m_08;                    // +0x08
+    long                          Bank;                    // +0x04
+    long                          Index;                    // +0x08
     CMeshData*                    MeshData;                // +0x0C CIVCountedPointer<CMeshData>::Object
     void BeginLoading();                                   // 0x00A25BD0
     CIVCountedPointer<const CPhysicsMesh> GetMesh();

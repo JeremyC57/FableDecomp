@@ -9,10 +9,10 @@
 // placeholder); member names are descriptive. `this` passes through ecx untouched to the callee; the `dec/neg/sbb/inc` tail is VC's `== 1` on a byte.
 struct CThingHolySite {
     unsigned char GetState();             // 0x00838BA0
-    unsigned char vfunc_19();                   // a byte result: a `bool` return would widen through eax
+    unsigned char WorldUpdate();                   // a byte result: a `bool` return would widen through eax
 };
 
-unsigned char CThingHolySite::vfunc_19()
+unsigned char CThingHolySite::WorldUpdate()
 {
     return GetState() == 1;
 }

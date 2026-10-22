@@ -2,8 +2,8 @@
 // Retail0055bde0 is15 bytes, tail jump ends55bdee; int3 at55bdef; following int3 separates unrelated bodies.
 // RTTI0124b2d4 slot141; slot133=0055bbf0 removes this from global013b8ad4 list.
 // No shared target header exists. Donor CDraggableInto has only opaque padding here.
-namespace NUISystem { struct CDraggableInto {
-virtual ~CDraggableInto(); //retail slot0=00559040
+namespace NUISystem { struct CHoverable {
+virtual ~CHoverable(); //retail slot0=00559040
 virtual void slot1();
 virtual void slot2();
 virtual void slot3();
@@ -140,5 +140,5 @@ virtual void UnregisterDrag(); //slot133
 char nativeBase[0x15c];bool Dragging;
 void EndDrag();
 };
-void CDraggableInto::EndDrag(){Dragging=false;UnregisterDrag();}
+void CHoverable::EndDrag(){Dragging=false;UnregisterDrag();}
 }

@@ -10,9 +10,9 @@ struct CVillagerInteractionsDef {
     int fieldC;   // +0x44
 };
 
-void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* self, void* /*edx*/, CPersistContext* ctx)
+void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->TransferFloat(self->fieldA);
-    ctx->TransferFloat(self->fieldB);
-    ctx->TransferFloat(self->fieldC);
+    ctx->TransferFloat(def->fieldA);
+    ctx->TransferFloat(def->fieldB);
+    ctx->TransferFloat(def->fieldC);
 }

@@ -4,37 +4,37 @@ static int g_AutoTinySequenceCount = 0;
 static void* g_AutoTinyFirstMember = 0;
 static void* g_AutoTinySecondMember = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall AutoTinyFirstMemberDestructor(void* member)
+void __fastcall DestructFirstMember(void* member)
 {
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall AutoTinySecondMemberDestructor(void* member)
+void __fastcall DestructSecondMember(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
 }
-void __fastcall AutoTinyCompositeDestructor(void*)
+void __fastcall CTCTrespasser_Destruct(void*)
 {
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 3;
 }
-void __cdecl AutoTinyCompositeDelete(void*)
+void __cdecl OperatorDelete(void*)
 {
     ++g_AutoTinyCompositeDeleteCalls;
 }
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCTrespasser_CompositeScalarDeletingDestructor(void* trespasser, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 56);
-    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 45);
-    AutoTinyCompositeDestructor(self);
+    DestructFirstMember(static_cast<unsigned char*>(trespasser) + 56);
+    DestructSecondMember(static_cast<unsigned char*>(trespasser) + 45);
+    CTCTrespasser_Destruct(trespasser);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(trespasser);
+    return trespasser;
 }
 int main()
 {
     unsigned char object[256] = {0};
-    if (CThingSwitch_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
+    if (CTCTrespasser_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
         g_AutoTinyFirstMember != object + 56 ||
         g_AutoTinySecondMember != object + 45 ||
         g_AutoTinySequenceCount != 3 ||
@@ -43,7 +43,7 @@ int main()
         g_AutoTinySequence[2] != 3 ||
         g_AutoTinyCompositeDeleteCalls != 0)
         return 1;
-    CThingSwitch_CompositeScalarDeletingDestructor(object, 0, 1);
+    CTCTrespasser_CompositeScalarDeletingDestructor(object, 0, 1);
     if (g_AutoTinySequenceCount != 6 ||
         g_AutoTinyCompositeDeleteCalls != 1)
         return 1;

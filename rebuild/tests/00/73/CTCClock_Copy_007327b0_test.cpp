@@ -17,17 +17,17 @@ struct CDefPointer {
 };
 struct CTCClock {
     CDefPointer PDef; float LastTimeUpdated;
-    void vfunc_12(const CTCClock* other) { PDef = other->PDef; }
+    void Copy(const CTCClock* other) { PDef = other->PDef; }
 };
 int main()
 {
     CDefBase a; a.m_count = 1; CDefBase b; b.m_count = 2;
     CTCClock x; x.PDef.m_p = &a; CTCClock y; y.PDef.m_p = &b;
-    x.vfunc_12(&y);
+    x.Copy(&y);
     if (x.PDef.m_p != &b || a.m_count != 0 || g_destroyed != 1 || b.m_count != 3) { std::printf("007327b0_TEST FAIL\n"); return 1; }
-    x.vfunc_12(&y);                                        /* same def: nothing changes */
+    x.Copy(&y);                                        /* same def: nothing changes */
     if (b.m_count != 3 || g_destroyed != 1) { std::printf("007327b0_TEST FAIL\n"); return 1; }
-    CTCClock z; z.PDef.m_p = 0; x.vfunc_12(&z);
+    CTCClock z; z.PDef.m_p = 0; x.Copy(&z);
     if (x.PDef.m_p != 0 || b.m_count != 2 || g_destroyed != 1) { std::printf("007327b0_TEST FAIL\n"); return 1; }
     std::printf("007327b0_TEST PASS\n");
     return 0;

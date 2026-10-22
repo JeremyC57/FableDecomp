@@ -1,17 +1,17 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch {
+struct C3DAnimationInterpolator {
     void* vftable;
     int destroyed;
 };
 
 static int g_freed = 0;
-static CLandscapeBackgroundPatch* g_last_dtor = 0;
+static C3DAnimationInterpolator* g_last_dtor = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
+void __fastcall C3DAnimationInterpolator_dtor(C3DAnimationInterpolator* interpolator)
 {
-    g_last_dtor = self;
-    self->destroyed = 1;
+    g_last_dtor = interpolator;
+    interpolator->destroyed = 1;
 }
 
 void operator delete(void* p)
@@ -20,31 +20,31 @@ void operator delete(void* p)
     (void)p;
 }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DAnimationInterpolator_scalar_deleting_destructor(C3DAnimationInterpolator* interpolator, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DAnimationInterpolator_dtor(interpolator);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(interpolator);
+    return interpolator;
 }
 
 int main()
 {
-    CLandscapeBackgroundPatch a;
+    C3DAnimationInterpolator a;
     a.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 0);
+    void* r = C3DAnimationInterpolator_scalar_deleting_destructor(&a, 0, 0);
     if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
         std::printf("FAIL no-free path\n");
         return 1;
     }
 
-    CLandscapeBackgroundPatch b;
+    C3DAnimationInterpolator b;
     b.destroyed = 0;
     g_freed = 0;
     g_last_dtor = 0;
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&b, 0, 1);
+    void* r2 = C3DAnimationInterpolator_scalar_deleting_destructor(&b, 0, 1);
     if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
         std::printf("FAIL free path\n");
         return 1;

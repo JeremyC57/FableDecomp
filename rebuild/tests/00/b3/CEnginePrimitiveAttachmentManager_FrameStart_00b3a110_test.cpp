@@ -72,9 +72,9 @@ struct CEngineRoot_0099a2f0 {
 struct CEngineComponent {                          // secondary base at +4
     virtual void v00();
     virtual void FrameStart(const CEngineComponentParams& params);   // slot 1
-    long m_4;                                      // +0x04
+    long GlobalPointerAddress;                                      // +0x04
     bool m_enabled;                                // +0x08
-    bool m_9;                                      // +0x09
+    bool KeepAlive;                                      // +0x09
 };
 
 struct CEnginePrimitiveAttachmentManager : CEngineRoot_0099a2f0, CEngineComponent {

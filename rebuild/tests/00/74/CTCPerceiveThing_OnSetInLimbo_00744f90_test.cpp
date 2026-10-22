@@ -2,7 +2,7 @@
 
 struct C3DAnimationStateAlpha { int tag; };
 
-struct C3DAnimationBlendState {
+struct CTCPerceiveThing {
     int aCalls;
     int bCalls;
     C3DAnimationStateAlpha* lastArg;
@@ -13,14 +13,14 @@ struct C3DAnimationBlendState {
     void AddCombinationBlend(C3DAnimationStateAlpha* a);
 };
 
-void C3DAnimationBlendState::AddCombinationBlend(C3DAnimationStateAlpha* a)
+void CTCPerceiveThing::AddCombinationBlend(C3DAnimationStateAlpha* a)
 {
     this->helperA();
     this->helperB(a);
 }
 
 int main() {
-    C3DAnimationBlendState s = {0,0,0,0};
+    CTCPerceiveThing s = {0,0,0,0};
     C3DAnimationStateAlpha alpha = {42};
     s.AddCombinationBlend(&alpha);
     bool ok = (s.aCalls==1) && (s.bCalls==1) && (s.lastArg==&alpha) && (s.seq==12);

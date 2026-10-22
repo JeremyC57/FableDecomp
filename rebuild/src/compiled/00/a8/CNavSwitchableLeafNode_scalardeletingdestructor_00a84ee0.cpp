@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CNavSwitchableLeafNode {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CNavSwitchableLeafNode_dtor(CNavSwitchableLeafNode* node);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CNavSwitchableLeafNode_scalar_deleting_destructor(CNavSwitchableLeafNode* node, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CNavSwitchableLeafNode_dtor(node);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(node);
+    return node;
 }

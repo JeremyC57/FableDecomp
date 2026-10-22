@@ -11,10 +11,10 @@ struct Target4 {
 };
 struct CTCDParticleEmitter {
     int      m0;
-    Target4* m4;
+    Target4* ParentThing;
     int      m8;
     int      mC;
-    int      m10;
+    int      ParticleTypeID;
     Sub14    m14;
     void OnDie();
 };
@@ -25,14 +25,14 @@ void Target4::Notify() { g_notified++; }
 void CTCDParticleEmitter::OnDie()
 {
     if (this->m14.Check())
-        this->m4->Notify();
+        this->ParentThing->Notify();
 }
 
 int main()
 {
     Target4 tgt;
     CTCDParticleEmitter e;
-    e.m4 = &tgt;
+    e.ParentThing = &tgt;
 
     g_checkRet = 0; g_notified = 0;
     e.OnDie();

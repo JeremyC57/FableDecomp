@@ -1,14 +1,14 @@
 #pragma optimize("t", on)
-extern void __fastcall AutoTinyFirstMemberDestructor(void* member);
-extern void __fastcall AutoTinySecondMemberDestructor(void* member);
-extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall DestructFirstMember(void* member);
+extern void __fastcall DestructSecondMember(void* member);
+extern void __fastcall CTCTextureDecal_Destruct(void* decal);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CTCTextureDecal_CompositeScalarDeletingDestructor(void* decal, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 16);
-    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 12);
-    AutoTinyCompositeDestructor(self);
+    DestructFirstMember(static_cast<unsigned char*>(decal) + 16);
+    DestructSecondMember(static_cast<unsigned char*>(decal) + 12);
+    CTCTextureDecal_Destruct(decal);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(decal);
+    return decal;
 }

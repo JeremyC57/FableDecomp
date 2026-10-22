@@ -18,7 +18,7 @@ struct CTCInventoryItemBase
 struct CTCInventoryItem : public CTCInventoryItemBase
 {
     char pad0[0x10];
-    void* member10;
+    void* PInventory;
     void OnDie();
 };
 
@@ -29,8 +29,8 @@ void CTCInventoryItemBase::BaseOnDie()
 
 void CTCInventoryItem::OnDie()
 {
-    if (this->member10)
-        FreeHelper_bfea14(this->member10);
+    if (this->PInventory)
+        FreeHelper_bfea14(this->PInventory);
     this->BaseOnDie();
 }
 
@@ -39,13 +39,13 @@ int main()
     // Case 1: non-null member -> freed once, base called
     CTCInventoryItem a;
     int dummy = 0x1234;
-    a.member10 = &dummy;
+    a.PInventory = &dummy;
     a.OnDie();
     bool ok1 = (g_freed == 1) && (g_freedPtr == &dummy) && (g_baseCalled == 1);
 
     // Case 2: null member -> not freed, base still called
     CTCInventoryItem b;
-    b.member10 = 0;
+    b.PInventory = 0;
     b.OnDie();
     bool ok2 = (g_freed == 1) && (g_baseCalled == 2);
 

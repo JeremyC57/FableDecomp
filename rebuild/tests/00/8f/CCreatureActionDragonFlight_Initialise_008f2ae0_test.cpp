@@ -11,15 +11,15 @@ struct CCreatureAction_Base
 struct CCreatureAction_DragonFlight : public CCreatureAction_Base
 {
     char pad4[0x10 - 4];
-    int  field10;
-    int  field14;
+    int  TotalTime;
+    int  ActionTime;
     virtual void Initialise();
 };
 
 static int g_baseCalled = 0;
-void __fastcall CCreatureAction_Base_Initialise(CCreatureAction_Base* self)
+void __fastcall CCreatureAction_Base_Initialise(CCreatureAction_Base* action)
 {
-    (void)self;
+    (void)action;
     g_baseCalled = 1;
 }
 
@@ -28,25 +28,25 @@ void CCreatureAction_Base::Initialise() {}
 void CCreatureAction_DragonFlight::Initialise()
 {
     CCreatureAction_Base_Initialise(this);
-    this->field14 = (int)((float)this->field10 * g_dragonFlightScale);
+    this->ActionTime = (int)((float)this->TotalTime * g_dragonFlightScale);
 }
 
 int main()
 {
     CCreatureAction_DragonFlight a;
-    a.field10 = 10;
-    a.field14 = -1;
+    a.TotalTime = 10;
+    a.ActionTime = -1;
     g_baseCalled = 0;
 
     a.Initialise();
 
     // 10 * 2.5 = 25.0 -> (int)25
-    int ok = (g_baseCalled == 1) && (a.field14 == 25);
+    int ok = (g_baseCalled == 1) && (a.ActionTime == 25);
 
     // negative truncation check: -3 * 2.5 = -7.5 -> ftol truncates toward zero -> -7
-    a.field10 = -3;
+    a.TotalTime = -3;
     a.Initialise();
-    ok = ok && (a.field14 == -7);
+    ok = ok && (a.ActionTime == -7);
 
     printf(ok ? "DRAGONFLIGHT_INIT_OK\n" : "FAIL\n");
     return ok ? 0 : 1;

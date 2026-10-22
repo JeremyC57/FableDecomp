@@ -9,8 +9,8 @@ struct CDefClassBase {
 };
 
 struct CGiftDef : CDefClassBase {
-    unsigned int f28;   // +0x28
-    unsigned char f2c;  // +0x2c
+    unsigned int Type;   // +0x28
+    unsigned char IsWeddingRing;  // +0x2c
     void Copy(const CDefClassBase* src);
 };
 
@@ -18,6 +18,6 @@ void CGiftDef::Copy(const CDefClassBase* src)
 {
     CDefClassBase::Copy(src);
     const CGiftDef* s = (const CGiftDef*)src;
-    this->f28 = s->f28;
-    this->f2c = s->f2c;
+    this->Type = s->Type;
+    this->IsWeddingRing = s->IsWeddingRing;
 }

@@ -8,8 +8,8 @@ struct Sub {
 
 struct CMemoryFile {
     char pad0[8];       // +0x00
-    int  field8;        // +0x08
-    int  fieldC;        // +0x0c
+    int  Position;        // +0x08
+    int  Length;        // +0x0c
     char pad10[0x0c];   // +0x10 .. 0x1b
     char field1C;       // +0x1c
     char pad1D[3];      // +0x1d
@@ -19,7 +19,7 @@ struct CMemoryFile {
 void __fastcall Open(CMemoryFile* self)
 {
     self->sub.init((const char*)0x122d70c);
-    self->field8 = 0;
-    self->fieldC = 0;
+    self->Position = 0;
+    self->Length = 0;
     self->field1C = 1;
 }

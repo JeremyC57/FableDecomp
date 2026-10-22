@@ -7,9 +7,9 @@ struct CEngineInternalPrimitiveStaticMesh {
     CMatrix3x4 transform;
 };
 
-bool __fastcall SetObjectTransform(CEngineInternalPrimitiveStaticMesh* self, int /*edx*/, const CMatrix3x4& mat)
+bool __fastcall SetObjectTransform(CEngineInternalPrimitiveStaticMesh* mesh, int /*edx*/, const CMatrix3x4& mat)
 {
-    self->transform = mat;
+    mesh->transform = mat;
     return true;
 }
 

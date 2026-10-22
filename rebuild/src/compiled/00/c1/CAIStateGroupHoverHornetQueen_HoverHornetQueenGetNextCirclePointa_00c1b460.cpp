@@ -3,7 +3,7 @@ class CAIStateGroup_HoverHornetQueen
 public:
     int field_0;
     int m_numCirclePoints;
-    int field_8;
+    int ScriptAIPriority;
     int m_curCircleIndex;
     int m_nextCircleIndex;
 

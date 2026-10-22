@@ -25,9 +25,9 @@ struct CMemoryDataInputStream {
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10(); virtual void v14();
     virtual CCharString ReadNullTerminatedString();    // slot 6 (+0x18), by value
     unsigned long m_position;              // +4
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;          // +0xC
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
     CMatrix3x4 ReadMatrix3x4();                        // 0x00995340
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0

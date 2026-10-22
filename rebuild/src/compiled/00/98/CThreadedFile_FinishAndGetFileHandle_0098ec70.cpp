@@ -14,7 +14,7 @@ extern CThreadedFileManager g_ThreadedFileManager;
 struct CThreadedFile
 {
     int   field_0;   // +0
-    int   field_4;   // +4
+    int   DeviceID;   // +4
     void* handle;    // +8
 
     void* FinishAndGetFileHandle();

@@ -8,7 +8,7 @@ struct CSurface
 {
     void* resource04;
     unsigned long resourceState08;
-    unsigned long unknown0C;
+    unsigned long PAllocatedMemory;
 
     __forceinline CSurface()
         : resource04(0),

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CBankFileAsyncData {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CBankFileAsyncData_dtor(CBankFileAsyncData* async);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CBankFileAsyncData_scalar_deleting_destructor(CBankFileAsyncData* async, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CBankFileAsyncData_dtor(async);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(async);
+    return async;
 }

@@ -14,19 +14,19 @@ void CDoorInner::Toggle()
 struct CTCDoor
 {
     void*        m0;
-    CDoorInner*  m4;
+    CDoorInner*  ParentThing;
     char         pad8[8];
-    bool         m10;
+    bool         CurrentOpen;
     void ScriptTriggerOpen(bool open);
 };
 
 void CTCDoor::ScriptTriggerOpen(bool open)
 {
-    if (this->m10 != open)
+    if (this->CurrentOpen != open)
     {
-        this->m4->Toggle();
+        this->ParentThing->Toggle();
     }
-    this->m10 = open;
+    this->CurrentOpen = open;
 }
 
 int main()
@@ -34,8 +34,8 @@ int main()
     CDoorInner inner;
     CTCDoor d;
     d.m0 = 0;
-    d.m4 = &inner;
-    d.m10 = false;
+    d.ParentThing = &inner;
+    d.CurrentOpen = false;
 
     // state changes false->true: should toggle once
     d.ScriptTriggerOpen(true);
@@ -46,11 +46,11 @@ int main()
     // no change false->false
     d.ScriptTriggerOpen(false);
 
-    if (g_toggleCount == 2 && d.m10 == false)
+    if (g_toggleCount == 2 && d.CurrentOpen == false)
     {
         printf("SCRIPTTRIGGEROPEN_OK\n");
         return 0;
     }
-    printf("FAIL count=%d state=%d\n", g_toggleCount, (int)d.m10);
+    printf("FAIL count=%d state=%d\n", g_toggleCount, (int)d.CurrentOpen);
     return 1;
 }

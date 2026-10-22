@@ -20,17 +20,17 @@ struct CTCCarryableNode {
 
 struct CTCCarryable {
     CTCCarryableNode* m0;   /* +0x0 */
-    unsigned int      m4;   /* +0x4 */
+    unsigned int      ParentThing;   /* +0x4 */
     void Detach(unsigned int a);   /* masked __fastcall callee */
 };
 
 void __fastcall CTCCarryable_OnKill(CTCCarryable* self)
 {
-    if (self->m4 != 0) {
+    if (self->ParentThing != 0) {
         self->Detach(self->m0->f4);
         self->m0->f8 = self->m0;
         self->m0->f4 = 0;
         self->m0->fc = self->m0;
-        self->m4 = 0;
+        self->ParentThing = 0;
     }
 }

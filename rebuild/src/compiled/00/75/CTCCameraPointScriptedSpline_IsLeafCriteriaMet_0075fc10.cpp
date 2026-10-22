@@ -1,3 +1,3 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct T { bool Get(); };
-bool T::Get() { return false; }
+struct CTCCameraPointScriptedSpline { bool IsLeafCriteriaMet(); };
+bool CTCCameraPointScriptedSpline::IsLeafCriteriaMet() { return false; }

@@ -46,10 +46,10 @@ struct CTCClock {                           // vtable 0x01267044
     unsigned char _pad04[8];                // +0x04 CTCBase
     CDefPointer   PDef;                     // +0x0c
     float         LastTimeUpdated;          // +0x10
-    void vfunc_12(const CTCClock* other);
+    void Copy(const CTCClock* other);
 };
 
-void CTCClock::vfunc_12(const CTCClock* other)
+void CTCClock::Copy(const CTCClock* other)
 {
     PDef = other->PDef;
 }

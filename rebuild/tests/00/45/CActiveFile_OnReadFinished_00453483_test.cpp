@@ -2,7 +2,7 @@
 
 struct CActiveFile {
     void* p;     // +0x0
-    int field4;  // +0x4
+    int DstFileHandle;  // +0x4
 };
 
 static int g_cb_called = 0;
@@ -29,7 +29,7 @@ void __cdecl CActiveFile_free(void* q)
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char buf;
-    CActiveFile_cb(self->p, self->field4, &buf);
+    CActiveFile_cb(self->p, self->DstFileHandle, &buf);
     void* q = self->p;
     if (q)
         CActiveFile_free(q);
@@ -41,7 +41,7 @@ int main()
     int dummy;
     CActiveFile a;
     a.p = &dummy;
-    a.field4 = 0x1234;
+    a.DstFileHandle = 0x1234;
     CActiveFile_OnReadFinished(&a);
     if (g_cb_called != 1) { std::printf("FAIL cb not called\n"); return 1; }
     if (g_cb_ecx != &dummy) { std::printf("FAIL cb ecx\n"); return 1; }
@@ -52,7 +52,7 @@ int main()
     // Case 2: p zero -> cb called, free NOT called
     CActiveFile b;
     b.p = 0;
-    b.field4 = 7;
+    b.DstFileHandle = 7;
     CActiveFile_OnReadFinished(&b);
     if (g_cb_called != 2) { std::printf("FAIL cb2\n"); return 1; }
     if (g_free_called != 1) { std::printf("FAIL free2 should not fire\n"); return 1; }

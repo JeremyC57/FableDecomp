@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // Mirror of the source declarations.
-struct CLandscapeBackgroundPatch
+struct CInputProcessInventoryWeapons
 {
     int marker;
     void destroy();
@@ -14,7 +14,7 @@ static int g_freed = 0;
 static void* g_last_free = 0;
 
 // External targets referenced by the source translation unit.
-void CLandscapeBackgroundPatch::destroy()
+void CInputProcessInventoryWeapons::destroy()
 {
     g_destroyed++;
     this->marker = -1;
@@ -32,7 +32,7 @@ int main()
 
     // Case A: flags bit0 clear -> destructor runs, no free, returns this.
     {
-        CLandscapeBackgroundPatch a;
+        CInputProcessInventoryWeapons a;
         a.marker = 7;
         g_destroyed = g_freed = 0; g_last_free = 0;
         void* r = a.deleting(0);
@@ -44,7 +44,7 @@ int main()
 
     // Case B: flags bit0 set -> destructor runs AND operator delete(this).
     {
-        CLandscapeBackgroundPatch b;
+        CInputProcessInventoryWeapons b;
         b.marker = 42;
         g_destroyed = g_freed = 0; g_last_free = 0;
         void* r = b.deleting(1);
@@ -56,7 +56,7 @@ int main()
 
     // Case C: only bit0 matters (flags=2 -> no free).
     {
-        CLandscapeBackgroundPatch c;
+        CInputProcessInventoryWeapons c;
         c.marker = 5;
         g_destroyed = g_freed = 0; g_last_free = 0;
         void* r = c.deleting(2);

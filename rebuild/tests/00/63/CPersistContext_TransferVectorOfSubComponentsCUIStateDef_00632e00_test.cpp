@@ -10,7 +10,7 @@ static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";");
 
 struct CPersistContext;
 struct CMemoryDataInputStream {
-    void* m_pVtable; unsigned long m_position; long m_08; const unsigned char* m_pData; long m_10; long m_remaining;
+    void* m_pVtable; unsigned long m_position; long StreamSize; const unsigned char* m_pData; long SourceChunkStreamPos; long m_remaining;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size) { LOG("overflow"); long v = 3; std::memcpy(buffer, &v, 4); (void)size; }
     static bool IsValidPosition(i64 position) { return position >= 0 && position <= 0x7fffffff; }
     void Read(void* buffer, long size)

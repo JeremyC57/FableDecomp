@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCElectrocuteOnTouch {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCElectrocuteOnTouch_dtor(CTCElectrocuteOnTouch* touch);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCElectrocuteOnTouch_scalar_deleting_destructor(CTCElectrocuteOnTouch* touch, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCElectrocuteOnTouch_dtor(touch);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(touch);
+    return touch;
 }

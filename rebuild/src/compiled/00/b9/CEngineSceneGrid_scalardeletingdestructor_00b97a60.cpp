@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineSceneGrid {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineSceneGrid_dtor(CEngineSceneGrid* grid);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineSceneGrid_scalar_deleting_destructor(CEngineSceneGrid* grid, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineSceneGrid_dtor(grid);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(grid);
+    return grid;
 }

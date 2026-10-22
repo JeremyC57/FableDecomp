@@ -18,18 +18,18 @@ struct Sub {
 
 struct CTCCreatureNavigation {
     void* f0;
-    Sub*  f4;
+    Sub*  ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* p)
 {
-    return self->f4->Check(self, p);
+    return self->ParentThing->Check(self, p);
 }
 
 int main()
 {
     Sub navSub;
-    CTCCreatureNavigation nav; nav.f0 = 0; nav.f4 = &navSub;
+    CTCCreatureNavigation nav; nav.f0 = 0; nav.ParentThing = &navSub;
     C3DVector v = {1.f, 2.f, 3.f};
 
     g_ret = true;

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCRockTrollShield {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCRockTrollShield_dtor(CTCRockTrollShield* shield);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCRockTrollShield_scalar_deleting_destructor(CTCRockTrollShield* shield, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCRockTrollShield_dtor(shield);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(shield);
+    return shield;
 }

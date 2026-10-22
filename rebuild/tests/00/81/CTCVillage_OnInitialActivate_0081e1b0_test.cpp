@@ -10,7 +10,7 @@ static int     g_callCount;
 struct CTCVillage
 {
     Target* field0;
-    void*   field4;
+    void*   ParentThing;
     char    pad8;
     char    pad9;
     char    padA;
@@ -28,7 +28,7 @@ void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->fieldD)
     {
-        Callee(self->field0, self->field4, self->fieldC);
+        Callee(self->field0, self->ParentThing, self->fieldC);
         self->fieldD = 0;
     }
 }
@@ -39,7 +39,7 @@ int main()
     CTCVillage v;
     v.field0 = &t;
     int edxMarker = 0;
-    v.field4 = &edxMarker;
+    v.ParentThing = &edxMarker;
     v.fieldC = 0x7a;
     v.fieldD = 1;
 

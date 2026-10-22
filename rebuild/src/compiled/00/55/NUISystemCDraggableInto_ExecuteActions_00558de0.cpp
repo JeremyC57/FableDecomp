@@ -1,4 +1,4 @@
-// NUISystem::CComponent::ExecuteActions(std::list<CCountedPointer<CAction>>*) -- hand every action of the list to the front-end manager
+// NUISystem::CDraggableInto::ExecuteActions(std::list<CCountedPointer<CAction>>*) -- hand every action of the list to the front-end manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00558DE0, length 45 bytes.
 // Callees: NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 (`__fastcall`, no arguments), then
 // its vtable slot 14 (+0x38) ExecuteAction(const CCountedPointer<CAction>&) with the node's value
@@ -48,12 +48,12 @@ struct CFrontEndManager_Calls {                                // engine/CFrontE
     static CFrontEndManager_Calls* __fastcall GetInstance();          // 0x0041E5F2
 };
 
-struct CComponent {
+struct CDraggableInto {
     virtual void v00();
     void ExecuteActions(CRetailList<CCountedActionPointer>* actions);
 };
 
-void CComponent::ExecuteActions(CRetailList<CCountedActionPointer>* actions)
+void CDraggableInto::ExecuteActions(CRetailList<CCountedActionPointer>* actions)
 {
     if (actions != 0) {
         for (CRetailList<CCountedActionPointer>::iterator it = actions->begin(); it != actions->end(); ++it)

@@ -530,7 +530,7 @@ struct CMurderTwistBrotherOlder {
     CGameCalls_00eabac0*    PGame;                    // +0x04
     CScriptThing         Thing;                    // +0x08
     SQuestState_00eabac0*   PQuest;                   // +0x14
-    long                 m_18;
+    long                 PMasterData;
     long                 m_counter;                // +0x1c
     void Init();
 };

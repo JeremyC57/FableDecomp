@@ -18,12 +18,12 @@ struct CObject_004dc568 {
 };
 #pragma pack(pop)
 
-void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCCarriedActionUseTrophy_CompositeScalarDeletingDestructor(void* trophy, int, unsigned int flags)
 {
-    CObject_004dc568* object = static_cast<CObject_004dc568*>(self);
+    CObject_004dc568* object = static_cast<CObject_004dc568*>(trophy);
     object->Member14.~C3DAnimationBlendState();
     object->Member0.~C3DAnimationBlendState();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return trophy;
 }

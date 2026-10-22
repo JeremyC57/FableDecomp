@@ -27,8 +27,8 @@ struct C3DBoundingSphere { C3DVector Center; float Radius; };
 
 struct CMeshDataBankEntry {                         // vtable 0x0129CD28
     virtual void v00();
-    long m_04;                                      // +4
-    long m_08;                                      // +8
+    long Bank;                                      // +4
+    long Index;                                      // +8
 };
 struct C3DMeshInfo : CMeshDataBankEntry {           // vtable 0x0129CD3C
     struct CMeshData : CIVCountedPointee {};

@@ -8,10 +8,10 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CThingPhysical {
-    void vfunc_58(long* out);
+    void PeekPMaterial(long* out);
 };
 
-void CThingPhysical::vfunc_58(long* out)
+void CThingPhysical::PeekPMaterial(long* out)
 {
     *out = 0x0;
 }

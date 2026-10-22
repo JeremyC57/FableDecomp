@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct T { void Hook(int a0); };
-void T::Hook(int a0) {}
+struct CPhysicalPrimitiveMesh { void TransferBinaryIn(int stream); };
+void CPhysicalPrimitiveMesh::TransferBinaryIn(int stream) {}

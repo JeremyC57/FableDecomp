@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEnginePrimitiveManagerParticleSpriteGroup {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEnginePrimitiveManagerParticleSpriteGroup_dtor(CEnginePrimitiveManagerParticleSpriteGroup* group);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEnginePrimitiveManagerParticleSpriteGroup_scalar_deleting_destructor(CEnginePrimitiveManagerParticleSpriteGroup* group, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEnginePrimitiveManagerParticleSpriteGroup_dtor(group);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(group);
+    return group;
 }

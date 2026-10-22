@@ -1,9 +1,9 @@
 #include "engine/CAnimComponentTransitionInTime.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef CAnimComponentTransitionInTime* (__fastcall* CloneTransitionFn)(CAnimComponentTransitionInTime*);
-CAnimComponentTransitionInTime* __fastcall Clone(CAnimComponentTransitionInTime* self)
+CAnimComponentTransitionInTime* __fastcall Clone(CAnimComponentTransitionInTime* component)
 {
-    CloneTransitionFn* vtable = (CloneTransitionFn*)self->__vftable;
-    CAnimComponentTransitionInTime* copy = vtable[0x10 / 4](self);
-    copy->TransitionInTime = self->TransitionInTime;
+    CloneTransitionFn* vtable = (CloneTransitionFn*)component->__vftable;
+    CAnimComponentTransitionInTime* copy = vtable[0x10 / 4](component);
+    copy->TransitionInTime = component->TransitionInTime;
     return copy;
 }

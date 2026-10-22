@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCombatAction_GenericResponseToDrain {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCombatAction_GenericResponseToDrain_dtor(CCombatAction_GenericResponseToDrain* action);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCombatAction_GenericResponseToDrain_scalar_deleting_destructor(CCombatAction_GenericResponseToDrain* action, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCombatAction_GenericResponseToDrain_dtor(action);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(action);
+    return action;
 }

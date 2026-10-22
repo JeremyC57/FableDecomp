@@ -11,7 +11,7 @@ struct CThing {
 
 struct CTCForcePushed {
     CThing* ParentThing;
-    void vfunc_2()
+    void FinalCleanup()
     {
         CThing* thing = ParentThing;
         if (thing && !thing->Dead && thing->m_type == 1)
@@ -23,13 +23,13 @@ int main()
 {
     CThing t; t.m_type = 1; t.Dead = 0; t._flags = 0;
     CTCForcePushed c; c.ParentThing = 0;
-    c.vfunc_2();
+    c.FinalCleanup();
     if (g_calls != 0) { std::printf("00798540_TEST FAIL\n"); return 1; }
-    c.ParentThing = &t; t.Dead = 1; c.vfunc_2();
+    c.ParentThing = &t; t.Dead = 1; c.FinalCleanup();
     if (g_calls != 0) { std::printf("00798540_TEST FAIL\n"); return 1; }
-    t.Dead = 0; t.m_type = 2; c.vfunc_2();
+    t.Dead = 0; t.m_type = 2; c.FinalCleanup();
     if (g_calls != 0) { std::printf("00798540_TEST FAIL\n"); return 1; }
-    t.m_type = 1; c.vfunc_2();
+    t.m_type = 1; c.FinalCleanup();
     if (g_calls != 1 || g_suspend || g_reason != 0) { std::printf("00798540_TEST FAIL\n"); return 1; }
     std::printf("00798540_TEST PASS\n");
     return 0;

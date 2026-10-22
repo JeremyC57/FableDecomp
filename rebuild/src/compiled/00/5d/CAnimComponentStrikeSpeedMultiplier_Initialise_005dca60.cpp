@@ -66,7 +66,7 @@ public:
     virtual void v06();
     virtual void v07();
     virtual void SetDefaultValue();                                                    // slot 8 (0x005DB410)
-    long m_04;                                     // +0x04 (base component data)
+    long IVRefCount;                                     // +0x04 (base component data)
     float AnimationSpeedMultiplier;                // +0x08
 };
 

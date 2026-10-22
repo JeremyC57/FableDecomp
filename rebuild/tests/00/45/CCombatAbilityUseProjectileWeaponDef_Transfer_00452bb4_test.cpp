@@ -12,11 +12,11 @@ struct CPersistContext {
     void PersistC(void* p){ args[calls++]=p; }
 };
 
-static void Transfer(CCombatAbilityUseProjectileWeaponDef* self, CPersistContext* ctx)
+static void Transfer(CCombatAbilityUseProjectileWeaponDef* def, CPersistContext* ctx)
 {
-    ctx->PersistA(self->_tail + 0x40);
-    ctx->PersistB(self->_tail + 0x44);
-    ctx->PersistC(self->_tail + 0x28);
+    ctx->PersistA(def->_tail + 0x40);
+    ctx->PersistB(def->_tail + 0x44);
+    ctx->PersistC(def->_tail + 0x28);
 }
 
 int main(){

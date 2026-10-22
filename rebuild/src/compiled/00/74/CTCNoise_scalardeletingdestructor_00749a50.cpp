@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCNoise {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCNoise_dtor(CTCNoise* noise);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCNoise_scalar_deleting_destructor(CTCNoise* noise, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCNoise_dtor(noise);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(noise);
+    return noise;
 }

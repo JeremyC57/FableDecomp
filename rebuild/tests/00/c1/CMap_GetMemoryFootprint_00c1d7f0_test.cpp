@@ -3,7 +3,7 @@
 struct CMap {
     int   field0;
     int   field4;
-    long  field8;
+    long  CachedVolumes;
     long GetSubMemA();
     long GetSubMemB();
     long GetMemoryFootprint();
@@ -16,7 +16,7 @@ long CMap::GetMemoryFootprint()
 {
     long total = this->GetSubMemA();
     total += this->GetSubMemB();
-    return this->field8 + total;
+    return this->CachedVolumes + total;
 }
 
 int main()
@@ -24,7 +24,7 @@ int main()
     CMap m;
     m.field0 = 7;
     m.field4 = 13;
-    m.field8 = 1000;
+    m.CachedVolumes = 1000;
     long r = m.GetMemoryFootprint();
     // expect (100+7) + (200+13) + 1000 = 1320
     if (r == 1320) {

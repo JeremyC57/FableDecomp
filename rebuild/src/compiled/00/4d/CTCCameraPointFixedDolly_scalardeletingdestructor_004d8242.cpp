@@ -1,16 +1,16 @@
 #pragma optimize("s", on)
-struct AutoTinyVectorObject
+struct CTCCameraPointFixedDolly
 {
     void* vftable;
 };
-extern void* const g_AutoTinyVectorVftable;
-extern void __fastcall AutoTinyVectorDestructor(void* self);
+extern void* const g_CTCCameraPointFixedDolly_vftable;
+extern void __fastcall CTCCameraPointFixedDolly_Destruct(void* dolly);
 void operator delete(void*);
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CTCCameraPointFixedDolly* dolly, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    dolly->vftable = (void*)&g_CTCCameraPointFixedDolly_vftable;
+    CTCCameraPointFixedDolly_Destruct(dolly);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(dolly);
+    return dolly;
 }

@@ -16,7 +16,7 @@ struct Holder
 struct CTCActionUseBuyHouse
 {
     void*   v0;
-    Holder* m4;
+    Holder* ParentThing;
     char    pad8[4];
     char    member0c;
 
@@ -49,7 +49,7 @@ int main()
 
     CTCActionUseBuyHouse obj;
     obj.v0 = 0;
-    obj.m4 = &h;
+    obj.ParentThing = &h;
 
     obj.OnCreate();
 

@@ -15,7 +15,7 @@ static IVolumeManager g_mgr;
 static IVolumeManager* g_mgr_ptr = &g_mgr;
 static IVolumeManager** const g_volumeManager = &g_mgr_ptr;
 
-struct CVolume { int f0; int f4; int f8; int handle; };
+struct CVolume { int f0; int PD3DVolume; int f8; int handle; };
 
 void __fastcall ReleaseVolume(CVolume* self)
 {
@@ -28,7 +28,7 @@ void __fastcall ReleaseVolume(CVolume* self)
 
 int main() {
     // case: handle non-zero -> releases and zeros
-    CVolume v; v.f0=1; v.f4=2; v.f8=3; v.handle=0x1234;
+    CVolume v; v.f0=1; v.PD3DVolume=2; v.f8=3; v.handle=0x1234;
     ReleaseVolume(&v);
     if (g_released != 0x1234) { printf("BAD1\n"); return 1; }
     if (v.handle != 0) { printf("BAD2\n"); return 1; }

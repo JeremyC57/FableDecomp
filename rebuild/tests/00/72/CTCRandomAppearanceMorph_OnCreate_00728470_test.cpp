@@ -43,9 +43,9 @@ struct CTCRandomAppearanceMorph {
     unsigned char _pad08[0x20];
     CTCBase*      PTCSkeletalMorph;
     void UpdateMorphSet() { ++g_update; }
-    void vfunc_4();
+    void OnCreate();
 };
-void CTCRandomAppearanceMorph::vfunc_4()
+void CTCRandomAppearanceMorph::OnCreate()
 {
     CTCBase* morph;
     if (ParentThing->GetInterface(120, &morph))
@@ -62,14 +62,14 @@ int main()
     entries[2].type = 130; entries[2].component = (CTCBase*)0x130;
     thing.m_interfaces.first = entries; thing.m_interfaces.last = entries + 3;
     CTCRandomAppearanceMorph m; m.ParentThing = &thing; m.PTCSkeletalMorph = (CTCBase*)0xdead;
-    m.vfunc_4();                                            // presence bit clear: no lookup, member untouched
+    m.OnCreate();                                            // presence bit clear: no lookup, member untouched
     CHECK(g_lower == 0); CHECK(m.PTCSkeletalMorph == (CTCBase*)0xdead); CHECK(g_update == 1);
     thing.m_presentBits[120 >> 5] |= 1UL << (120 & 31);
-    m.vfunc_4();                                            // present: the entry's component is stored
+    m.OnCreate();                                            // present: the entry's component is stored
     CHECK(g_lower == 1); CHECK(g_lowerKey == 120); CHECK(m.PTCSkeletalMorph == (CTCBase*)0x120); CHECK(g_update == 2);
     entries[1].type = 121;                                  // bit set but no exact entry: the end entry's word is taken
     entries[2].type = 130; thing.m_interfaces.last = entries + 2; entries[2].component = (CTCBase*)0x77;
-    m.vfunc_4();
+    m.OnCreate();
     CHECK(g_lower == 2); CHECK(m.PTCSkeletalMorph == (CTCBase*)0x77); CHECK(g_update == 3);
     if (fails == 0) printf("00728470_TEST PASS\n"); else printf("00728470_TEST FAIL\n");
     return fails;

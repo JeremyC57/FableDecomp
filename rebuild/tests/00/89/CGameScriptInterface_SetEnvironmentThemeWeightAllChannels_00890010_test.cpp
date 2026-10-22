@@ -5,7 +5,7 @@ struct Inner {
     int applied; int one; int count; int arg2;
     void Apply(int a, int b, int c) { applied = 1; one = a; count = b; arg2 = c; }
 };
-struct CWorld { char pad[0x18]; Inner* p18; };
+struct CWorld { char pad[0x18]; Inner* PEnvironment; };
 
 struct ThemeObj { int cnt; };
 
@@ -21,13 +21,13 @@ void __fastcall CGameScriptInterface_SetEnvironmentThemeWeightAllChannels(
     ThemeObj* t = GetTheme(channel);
     int n = ThemeCount(t);
     if (n > 0) {
-        self->World->p18->Apply(1, n, arg2);
+        self->World->PEnvironment->Apply(1, n, arg2);
     }
 }
 
 int main() {
     Inner innerObj; innerObj.applied = 0;
-    CWorld midObj; midObj.p18 = &innerObj;
+    CWorld midObj; midObj.PEnvironment = &innerObj;
     CGameScriptInterface obj; obj.World = &midObj;
 
     g_theme.cnt = 5;

@@ -1,48 +1,48 @@
 struct CLandscapeLayerMesh {
     void* vtbl;        // +0x00
-    int f04;           // +0x04
-    int f08;           // +0x08
-    int f0c;           // +0x0c
+    int ForegroundTextureIndex;           // +0x04
+    int BackgroundTextureIndex;           // +0x08
+    int BumpMapTextureIndex;           // +0x0c
     int f10;           // +0x10
-    int f14;           // +0x14
-    int f18;           // +0x18
-    int f1c;           // +0x1c
-    int f20;           // +0x20
-    int f24;           // +0x24
+    int ForegroundTexture;           // +0x14
+    int BackgroundTexture;           // +0x18
+    int BumpMap;           // +0x1c
+    int MinTextureMipMap;           // +0x20
+    int MinBumpMapMipMap;           // +0x24
     int f28;           // +0x28
-    int f2c;           // +0x2c
-    int f30;           // +0x30
-    int f34;           // +0x34
-    int f38;           // +0x38
-    int f3c;           // +0x3c
-    int f40;           // +0x40
-    short f44;         // +0x44
-    short f46;         // +0x46
-    char f48;          // +0x48
+    int ForegroundTextureMipmapLevel;           // +0x2c
+    int ForegroundBumpmapTextureMipmapLevel;           // +0x30
+    int IndexBuffer;           // +0x34
+    int ForegroundVertexBuffer;           // +0x38
+    int Next;           // +0x3c
+    int Map;           // +0x40
+    short VertexCount;         // +0x44
+    short PolyCountIncDegenerates;         // +0x46
+    char UsesSharedIndexBuffer;          // +0x48
     CLandscapeLayerMesh* CLandscapeLayerMesh_ctor(int arg);
 };
 
 extern void* CLandscapeLayerMesh_vtbl;
 
 CLandscapeLayerMesh* CLandscapeLayerMesh::CLandscapeLayerMesh_ctor(int arg) {
-    this->f40 = arg;
+    this->Map = arg;
     this->vtbl = &CLandscapeLayerMesh_vtbl;
-    this->f3c = 0;
-    this->f44 = 0;
-    this->f46 = 0;
-    this->f04 = 0;
-    this->f08 = 0;
-    this->f0c = 0;
-    this->f14 = 0;
-    this->f18 = 0;
-    this->f1c = 0;
+    this->Next = 0;
+    this->VertexCount = 0;
+    this->PolyCountIncDegenerates = 0;
+    this->ForegroundTextureIndex = 0;
+    this->BackgroundTextureIndex = 0;
+    this->BumpMapTextureIndex = 0;
+    this->ForegroundTexture = 0;
+    this->BackgroundTexture = 0;
+    this->BumpMap = 0;
     this->f28 = 0;
-    this->f34 = 0;
-    this->f38 = 0;
-    this->f48 = 0;
-    this->f30 = 0;
-    this->f2c = 0;
-    this->f20 = 0;
-    this->f24 = 0;
+    this->IndexBuffer = 0;
+    this->ForegroundVertexBuffer = 0;
+    this->UsesSharedIndexBuffer = 0;
+    this->ForegroundBumpmapTextureMipmapLevel = 0;
+    this->ForegroundTextureMipmapLevel = 0;
+    this->MinTextureMipMap = 0;
+    this->MinBumpMapMipMap = 0;
     return this;
 }

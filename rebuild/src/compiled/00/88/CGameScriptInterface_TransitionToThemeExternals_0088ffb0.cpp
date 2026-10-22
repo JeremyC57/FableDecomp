@@ -9,7 +9,7 @@ struct Thing {
 
 struct CWorld {
     unsigned char pad[0x18];
-    Inner* p18; // +0x18
+    Inner* PEnvironment; // +0x18
 };
 
 
@@ -20,6 +20,6 @@ void __fastcall CGameScriptInterface_TransitionToThemeExternals(CGameScriptInter
     Thing* t = GetTheme(arg1);
     int n = t->count();
     if (n > 0) {
-        self->World->p18->method(0, 1, n, arg2);
+        self->World->PEnvironment->method(0, 1, n, arg2);
     }
 }

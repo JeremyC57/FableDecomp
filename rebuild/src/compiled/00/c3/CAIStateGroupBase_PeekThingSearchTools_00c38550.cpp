@@ -20,7 +20,7 @@ extern "C" CThingSearchTools* __fastcall SubPeek(Sub* self, float scaled);
 
 struct CAIStateGroupBase {
     char pad0[4];
-    Inner1* f4;     // +4
+    Inner1* PBrain;     // +4
     char pad8[4];   // +8
     char sub[4];    // +0xc subobject
 };
@@ -29,5 +29,5 @@ extern const float g_const; // 0x1252370
 
 CThingSearchTools* __fastcall PeekThingSearchTools(CAIStateGroupBase* self)
 {
-    return SubPeek((Sub*)((char*)self + 0xc), g_const / self->f4->p4->p4->rate);
+    return SubPeek((Sub*)((char*)self + 0xc), g_const / self->PBrain->p4->p4->rate);
 }

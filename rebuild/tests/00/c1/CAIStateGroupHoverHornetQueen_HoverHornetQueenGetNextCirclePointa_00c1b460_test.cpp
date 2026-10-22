@@ -5,7 +5,7 @@ class CAIStateGroup_HoverHornetQueen
 public:
     int field_0;
     int m_numCirclePoints;
-    int field_8;
+    int ScriptAIPriority;
     int m_curCircleIndex;
     int m_nextCircleIndex;
 
@@ -25,7 +25,7 @@ int main()
     CAIStateGroup_HoverHornetQueen obj;
     obj.field_0 = 0;
     obj.m_numCirclePoints = 8;
-    obj.field_8 = 0;
+    obj.ScriptAIPriority = 0;
     obj.m_curCircleIndex = 5;
     obj.m_nextCircleIndex = 2;
     long r1 = obj.GetNextCirclePoint_a();

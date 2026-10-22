@@ -13,12 +13,12 @@ struct CCharString {
 struct CConsoleCommandLine : CBase {               // vtable 0x0129C400
     virtual void v00();
     CCharString m_line;                            // +0x04
-    bool        m_8;                               // +0x08
-    long        m_c;                               // +0x0c
+    bool        UserEntry;                               // +0x08
+    long        CursorPosition;                               // +0x0c
     CConsoleCommandLine();
 };
 
 CConsoleCommandLine::CConsoleCommandLine()
-    : CBase(), m_line("", -1), m_8(false), m_c(0)
+    : CBase(), m_line("", -1), UserEntry(false), CursorPosition(0)
 {
 }

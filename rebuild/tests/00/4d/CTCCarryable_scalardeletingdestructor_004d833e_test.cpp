@@ -1,29 +1,29 @@
 #include <cstdio>
 static int g_AutoTinyScalarDestructorCalls = 0;
 static int g_AutoTinyScalarDeleteCalls = 0;
-void __fastcall AutoTinyScalarDestructor(void*)
+void __fastcall CTCCarryable_Destruct(void*)
 {
     ++g_AutoTinyScalarDestructorCalls;
 }
-void __cdecl AutoTinyScalarDelete(void*)
+void __cdecl OperatorDelete(void*)
 {
     ++g_AutoTinyScalarDeleteCalls;
 }
-void* __fastcall CLandscapeBackgroundPatch_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCCarryable_ScalarDeletingDestructor(void* carryable, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCCarryable_Destruct(carryable);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(carryable);
+    return carryable;
 }
 int main()
 {
     int object = 0;
-    if (CLandscapeBackgroundPatch_ScalarDeletingDestructor(&object, 0, 0) != &object ||
+    if (CTCCarryable_ScalarDeletingDestructor(&object, 0, 0) != &object ||
         g_AutoTinyScalarDestructorCalls != 1 ||
         g_AutoTinyScalarDeleteCalls != 0)
         return 1;
-    CLandscapeBackgroundPatch_ScalarDeletingDestructor(&object, 0, 1);
+    CTCCarryable_ScalarDeletingDestructor(&object, 0, 1);
     if (g_AutoTinyScalarDestructorCalls != 2 ||
         g_AutoTinyScalarDeleteCalls != 1)
         return 1;

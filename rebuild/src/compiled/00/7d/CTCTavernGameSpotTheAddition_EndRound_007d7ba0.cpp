@@ -22,19 +22,19 @@ struct CTCTavernGame {
     unsigned char _pad_0x30[0x70];
     bool NewBestScore;                  // +0xa0
     unsigned char _pad_0xa1[0x53];
-    void vfunc_33();                    // 0x005E9AA0
+    void EndRound();                    // 0x005E9AA0
     void GetHeroStats(CHeroStats** stats);      // 0x005EB4B0
     void SetState(long state);          // 0x005E9B20
 };
 
 struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     float CurrentTime;                  // +0xf4
-    void vfunc_33();
+    void EndRound();
 };
 
-void CTCTavernGameSpotTheAddition::vfunc_33()
+void CTCTavernGameSpotTheAddition::EndRound()
 {
-    CTCTavernGame::vfunc_33();
+    CTCTavernGame::EndRound();
     CHeroStats* stats;
     GetHeroStats(&stats);
     Score = CurrentTime;

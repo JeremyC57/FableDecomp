@@ -9,14 +9,14 @@ struct CTCTavernGameCoinBase {
     float Score;
     unsigned char _pad_0x30[0x70];
     bool NewBestScore;
-    void vfunc_33() { ++g_base; }
+    void EndRound() { ++g_base; }
     void GetHeroStats(CHeroStats** stats) { *stats = &g_stats; }
     void SetState(long state) { g_state = state; }
 };
-struct CTCTavernGameShoveHaPenny : CTCTavernGameCoinBase { void vfunc_33(); };
-void CTCTavernGameShoveHaPenny::vfunc_33()
+struct CTCTavernGameShoveHaPenny : CTCTavernGameCoinBase { void EndRound(); };
+void CTCTavernGameShoveHaPenny::EndRound()
 {
-    CTCTavernGameCoinBase::vfunc_33();
+    CTCTavernGameCoinBase::EndRound();
     CHeroStats* stats = 0;
     GetHeroStats(&stats);
     if (GameWon) {
@@ -28,7 +28,7 @@ void CTCTavernGameShoveHaPenny::vfunc_33()
 static int Run(CTCTavernGameShoveHaPenny& g, bool won, float score, float best)
 {
     g.GameWon = won; g.Score = score; g_stats.m_bestShoveHaPennyScore = best; g.NewBestScore = false; g_state = -1;
-    g.vfunc_33();
+    g.EndRound();
     if (g_state != 8) return -1;
     return g.NewBestScore ? 1 : 0;
 }

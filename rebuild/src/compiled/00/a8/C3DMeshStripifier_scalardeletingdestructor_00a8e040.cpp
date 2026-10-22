@@ -22,13 +22,13 @@ struct CObject_00a8e040 : CBaseClassNonCopyable {
 };
 #pragma pack(pop)
 
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall C3DMeshStripifier_CompositeScalarDeletingDestructor(void* stripifier, int, unsigned int flags)
 {
-    CObject_00a8e040* object = static_cast<CObject_00a8e040*>(self);
+    CObject_00a8e040* object = static_cast<CObject_00a8e040*>(stripifier);
     object->Memberc.~CCountedPointer_00a8e000();
     object->Member4.~CCountedPointer_00a8e000();
     object->CBaseClassNonCopyable::~CBaseClassNonCopyable();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return stripifier;
 }

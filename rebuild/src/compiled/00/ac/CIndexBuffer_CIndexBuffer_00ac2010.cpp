@@ -22,12 +22,12 @@ struct CIndexBuffer {                              // vtable 0x0129EF2C
     IDirect3DIndexBuffer_Retail* m_pBuffer;        // +0x04
     unsigned long                m_length;         // +0x08
     long                         m_count;          // +0x0c
-    long                         m_10;             // +0x10
+    long                         PAllocatedBuffer;             // +0x10
     CIndexBuffer(unsigned long length, unsigned long usage, long format, long pool, long count);
 };
 
 CIndexBuffer::CIndexBuffer(unsigned long length, unsigned long usage, long format, long pool, long count)
-    : m_10(0)
+    : PAllocatedBuffer(0)
 {
     m_pBuffer = 0;
     GetDeviceRecord_009a4ec0()->m_pRender->m_pDevice->CreateIndexBuffer(length, usage, format, pool, &m_pBuffer, 0);

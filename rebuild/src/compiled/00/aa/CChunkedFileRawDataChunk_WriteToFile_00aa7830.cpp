@@ -12,13 +12,13 @@ struct CChunkedFileSaver;
 
 struct CChunkedFileRawDataChunk {
     char pad[0x10];
-    void* f10;          // +0x10 buffer
-    unsigned int f14;   // +0x14 length
+    void* Data;          // +0x10 buffer
+    unsigned int ByteSize;   // +0x14 length
     void WriteToFile(CDataOutputStream& stream, CChunkedFileSaver& saver);
 };
 
 void CChunkedFileRawDataChunk::WriteToFile(CDataOutputStream& stream,
                                            CChunkedFileSaver& saver)
 {
-    stream.Write(this->f10, this->f14);
+    stream.Write(this->Data, this->ByteSize);
 }

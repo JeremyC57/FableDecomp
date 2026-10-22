@@ -4,16 +4,16 @@ struct Nav;
 struct Inner {
   int calls; Nav* gotSelf; C3DVector* gotV; bool ret;
 };
-struct Nav { void* f0; Inner* f4; };
+struct Nav { void* f0; Inner* ParentThing; };
 static Inner g_in;
 static bool model(Nav* self, C3DVector* dest){
-  Inner* in = self->f4;
+  Inner* in = self->ParentThing;
   in->calls++; in->gotSelf=self; in->gotV=dest;
   return in->ret;
 }
 int main(){
   g_in.calls=0; g_in.ret=true;
-  Nav nav; nav.f4=&g_in;
+  Nav nav; nav.ParentThing=&g_in;
   C3DVector v={1,2,3};
   bool r = model(&nav, &v);
   int ok=1;

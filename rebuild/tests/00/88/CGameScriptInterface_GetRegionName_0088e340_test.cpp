@@ -19,17 +19,17 @@ extern "C" void* __fastcall CRegions_GetEntry(CRegions* r) { return (void*)g_reg
 
 // Free-function stand-ins for the vtable slot (native thiscall via /Gd default is
 // fine here since we only test behaviour, not bytes).
-CRegions* slot_noarg(void* self) { return (CRegions*)g_regions; }
-CRegions* slot_arg(void* self, int n) { return (CRegions*)g_regions; }
+CRegions* slot_noarg(void* interface) { return (CRegions*)g_regions; }
+CRegions* slot_arg(void* interface, int n) { return (CRegions*)g_regions; }
 
-const CCharString& __fastcall CGameScriptInterface_GetRegionName(CGameScriptInterface* self)
+const CCharString& __fastcall CGameScriptInterface_GetRegionName(CGameScriptInterface* interface)
 {
-    CMid* m = self->mid;
+    CMid* m = interface->mid;
     // Behavioural model (call the collection accessor, count, maybe fetch entry).
     CRegions* col = (CRegions*)slot_noarg(m);
     int n = CRegions_GetCount(col);
     if (n > 0) {
-        CMid* m2 = self->mid;
+        CMid* m2 = interface->mid;
         CRegions* e = (CRegions*)slot_arg(m2, n);
         return *(const CCharString*)((char*)CRegions_GetEntry(e) + 0x18);
     }

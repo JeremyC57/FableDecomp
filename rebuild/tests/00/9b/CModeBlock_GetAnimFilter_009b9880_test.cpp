@@ -12,7 +12,7 @@ public:
     CAnimFilterBase* GetAnimFilter();
 private:
     void* vfptr;
-    void* field4;
+    void* ParentThing;
     CAnimFilterBase animFilter;
 };
 

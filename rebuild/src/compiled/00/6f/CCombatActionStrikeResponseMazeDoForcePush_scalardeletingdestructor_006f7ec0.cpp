@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCombatAction_StrikeResponseMazeDoForcePush {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCombatAction_StrikeResponseMazeDoForcePush_dtor(CCombatAction_StrikeResponseMazeDoForcePush* action);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCombatAction_StrikeResponseMazeDoForcePush_scalar_deleting_destructor(CCombatAction_StrikeResponseMazeDoForcePush* action, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCombatAction_StrikeResponseMazeDoForcePush_dtor(action);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(action);
+    return action;
 }

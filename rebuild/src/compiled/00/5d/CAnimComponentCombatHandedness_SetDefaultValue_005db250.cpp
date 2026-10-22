@@ -1,2 +1,2 @@
-struct S { char pad[8]; int f8; int fC; };
-void __fastcall SetDefaultValue(S* self){ self->f8 = 2; self->fC = 0; }
+struct CAnimComponentCombatHandedness { char pad[8]; int StartHandedness; int EndHandedness; };
+void __fastcall SetDefaultValue(CAnimComponentCombatHandedness* component){ component->StartHandedness = 2; component->EndHandedness = 0; }

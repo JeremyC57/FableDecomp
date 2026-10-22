@@ -15,7 +15,7 @@ struct Inner {
 
 struct CTCCreatureNavigation {
     void* field_0;
-    Inner* field_4;
+    Inner* ParentThing;
 };
 
 static CTCCreatureNavigation* g_seen_this;
@@ -35,7 +35,7 @@ struct InnerImpl : Inner {
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int, C3DVector* dest)
 {
-    return self->field_4->v6(self, dest);
+    return self->ParentThing->v6(self, dest);
 }
 
 int main()
@@ -43,7 +43,7 @@ int main()
     InnerImpl inner;
     CTCCreatureNavigation nav;
     nav.field_0 = 0;
-    nav.field_4 = &inner;
+    nav.ParentThing = &inner;
 
     C3DVector d = {1,2,3};
 

@@ -23,10 +23,10 @@ struct CTCBoastingPodium {
     COwner* m_pOwner;                      // +0x4
     unsigned char _pad1[0x20];
     SEntry m_entry;                        // +0x28
-    void vfunc_4();
+    void OnCreate();
 };
 
-void CTCBoastingPodium::vfunc_4()
+void CTCBoastingPodium::OnCreate()
 {
     m_pOwner->m_pRegistry->Register(&m_entry);
 }

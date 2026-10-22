@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCHeroPodium {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCHeroPodium_dtor(CTCHeroPodium* podium);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCHeroPodium_scalar_deleting_destructor(CTCHeroPodium* podium, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCHeroPodium_dtor(podium);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(podium);
+    return podium;
 }

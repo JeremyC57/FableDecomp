@@ -23,7 +23,7 @@ struct CStringParser {
     bool ReadNextItem(SParsedItem& item);          // 0x009BA080
 };
 struct CGenericVarRef {
-    long   m_0;
+    long   Type;
     float* m_pValue;                               // +0x04
     bool ReadFromParserAsFloat(CStringParser& parser);
 };

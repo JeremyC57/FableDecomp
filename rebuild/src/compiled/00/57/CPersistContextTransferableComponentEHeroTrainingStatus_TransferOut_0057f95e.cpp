@@ -6,7 +6,7 @@ struct CPersistContext;
 struct CCharString;
 typedef int ETextAlignement;
 
-struct Self {
+struct CPersistContext_TransferableComponent {
     void* vtbl;
     ETextAlignement* pValue; // field at +4: pointer to the transferable value
 };
@@ -16,8 +16,8 @@ extern "C" void __fastcall Transfer_9e2560(CPersistContext* ctx, CCharString* na
 
 // this in ecx, ctx+name on stack, ret 8. Model with __fastcall + dummy edx so the
 // two real args land on the stack and get cleaned by the callee (retN).
-void __fastcall TransferOut(Self* self, int /*edx*/, CPersistContext* ctx, CCharString* name)
+void __fastcall TransferOut(CPersistContext_TransferableComponent* transferable, int /*edx*/, CPersistContext* ctx, CCharString* name)
 {
-    ETextAlignement v = *(self->pValue);
+    ETextAlignement v = *(transferable->pValue);
     Transfer_9e2560(ctx, name, &v);
 }

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCOpinionSource {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCOpinionSource_dtor(CTCOpinionSource* source);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCOpinionSource_scalar_deleting_destructor(CTCOpinionSource* source, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCOpinionSource_dtor(source);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(source);
+    return source;
 }

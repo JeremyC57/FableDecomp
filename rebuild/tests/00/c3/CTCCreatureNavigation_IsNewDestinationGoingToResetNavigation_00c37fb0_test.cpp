@@ -7,7 +7,7 @@ struct Helper {
     virtual bool s6(CTCCreatureNavigation* nav, C3DVector* v);
 };
 struct CTCCreatureNavigation {
-    void* field0; Helper* field4;
+    void* field0; Helper* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 static CTCCreatureNavigation* g_nav; static C3DVector* g_vec; static bool g_ret;
@@ -17,10 +17,10 @@ bool Helper::s6(CTCCreatureNavigation* nav, C3DVector* v){
     return g_ret;
 }
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest){
-    return field4->s6(this, dest);
+    return ParentThing->s6(this, dest);
 }
 int main(){
-    Helper h; CTCCreatureNavigation nav; nav.field0=0; nav.field4=&h;
+    Helper h; CTCCreatureNavigation nav; nav.field0=0; nav.ParentThing=&h;
     C3DVector v; v.x=1;v.y=2;v.z=3;
     g_nav=&nav; g_vec=&v;
     g_ret=true;

@@ -15,13 +15,13 @@ void __cdecl free(void* p) { g_deleted = (CInner*)p; }
 
 struct CActiveFile {
     CInner* p;   /* +0x0 */
-    int     f4;  /* +0x4 */
+    int     DstFileHandle;  /* +0x4 */
 };
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char local;
-    Inner_Process(self->p, self->f4, &local);
+    Inner_Process(self->p, self->DstFileHandle, &local);
     CInner* q = self->p;
     if (q)
         free(q);
@@ -29,7 +29,7 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 
 int main() {
     CInner inner; inner.calls = 0; inner.edxseen = 0;
-    CActiveFile a; a.p = &inner; a.f4 = 0x1234;
+    CActiveFile a; a.p = &inner; a.DstFileHandle = 0x1234;
     CActiveFile_OnReadFinished(&a);
     if (g_processCalls != 1) { std::printf("FAIL processCalls\n"); return 1; }
     if (g_edxSeen != 0x1234) { std::printf("FAIL edx\n"); return 1; }
@@ -38,7 +38,7 @@ int main() {
 
     /* null branch: no delete */
     g_deleted = 0; g_processCalls = 0;
-    CActiveFile b; b.p = 0; b.f4 = 7;
+    CActiveFile b; b.p = 0; b.DstFileHandle = 7;
     CActiveFile_OnReadFinished(&b);
     if (g_processCalls != 1) { std::printf("FAIL processCalls2\n"); return 1; }
     if (g_deleted != 0) { std::printf("FAIL nulldelete\n"); return 1; }

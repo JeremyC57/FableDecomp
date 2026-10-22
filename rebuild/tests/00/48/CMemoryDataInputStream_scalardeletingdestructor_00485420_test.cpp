@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// Self-contained behaviour harness for CLandscapeBackgroundPatch::`vector
+// Self-contained behaviour harness for CMemoryDataInputStream::`vector
 // deleting destructor' @ 0x00485420. The verifier links the test object ALONE
 // (no fallback to source.obj), so the harness defines the target function and
 // its two masked callees itself, matching the exact F1 control flow:
@@ -9,17 +9,17 @@
 //   scalar dtor  = __fastcall (this in ecx, no caller cleanup)
 //   operator delete stub = __cdecl (pushed arg, caller cleans -> add esp,4)
 
-struct CLandscapeBackgroundPatch { int dummy; };
+struct CMemoryDataInputStream { int dummy; };
 
 static int   g_dtor_calls   = 0;
 static int   g_delete_calls = 0;
 static void* g_last_dtor    = 0;
 static void* g_freed        = 0;
 
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
+extern "C" void __fastcall CMemoryDataInputStream_dtor(CMemoryDataInputStream* stream)
 {
     ++g_dtor_calls;
-    g_last_dtor = (void*)self;
+    g_last_dtor = (void*)stream;
 }
 
 extern "C" void operator_delete_stub(void* p)
@@ -28,29 +28,29 @@ extern "C" void operator_delete_stub(void* p)
     g_freed = p;
 }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
-        CLandscapeBackgroundPatch* self, int edx_pad, unsigned int flags)
+void* __fastcall CMemoryDataInputStream_scalar_deleting_destructor(
+        CMemoryDataInputStream* stream, int edx_pad, unsigned int flags)
 {
     (void)edx_pad;
-    CLandscapeBackgroundPatch_dtor(self);
+    CMemoryDataInputStream_dtor(stream);
     if (flags & 1) {
-        operator_delete_stub((void*)self);
+        operator_delete_stub((void*)stream);
     }
-    return (void*)self;
+    return (void*)stream;
 }
 
 int main()
 {
-    CLandscapeBackgroundPatch obj;
+    CMemoryDataInputStream obj;
     obj.dummy = 0;
     void* p = (void*)&obj;
 
     // flags bit0 clear -> dtor runs, no delete, returns this
-    void* r0 = CLandscapeBackgroundPatch_vector_deleting_destructor((CLandscapeBackgroundPatch*)p, 0, 0);
+    void* r0 = CMemoryDataInputStream_scalar_deleting_destructor((CMemoryDataInputStream*)p, 0, 0);
     // flags bit0 set   -> dtor runs, delete runs, returns this
-    void* r1 = CLandscapeBackgroundPatch_vector_deleting_destructor((CLandscapeBackgroundPatch*)p, 0, 1);
+    void* r1 = CMemoryDataInputStream_scalar_deleting_destructor((CMemoryDataInputStream*)p, 0, 1);
     // flags = 2 (bit0 clear via other bits) -> dtor runs, no delete
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor((CLandscapeBackgroundPatch*)p, 0, 2);
+    void* r2 = CMemoryDataInputStream_scalar_deleting_destructor((CMemoryDataInputStream*)p, 0, 2);
 
     bool ok =
         r0 == p && r1 == p && r2 == p &&

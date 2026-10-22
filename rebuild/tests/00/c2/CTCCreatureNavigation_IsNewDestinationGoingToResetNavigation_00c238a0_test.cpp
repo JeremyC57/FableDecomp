@@ -25,12 +25,12 @@ struct Delegate {
 
 struct CTCCreatureNavigation {
     void* f0;
-    Delegate* f4;
+    Delegate* ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int edx, C3DVector* vec)
 {
-    return self->f4->v7(self, vec);
+    return self->ParentThing->v7(self, vec);
 }
 
 int main()
@@ -38,7 +38,7 @@ int main()
     Delegate d;
     CTCCreatureNavigation nav;
     nav.f0 = 0;
-    nav.f4 = &d;
+    nav.ParentThing = &d;
     C3DVector v = {1.0f, 2.0f, 3.0f};
 
     g_expect_self = &nav;

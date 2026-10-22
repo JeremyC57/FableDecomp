@@ -54,10 +54,10 @@ struct CTCBase {
 struct CTCStealth : CTCBase {
     unsigned char _pad0c[0x48 - 0x0c];
     long RegionBasedMaxNumberOfDangerThings;    // +0x48
-    void vfunc_16(bool on);
+    void OnSetInLimbo(bool on);
 };
 
-void CTCStealth::vfunc_16(bool on)
+void CTCStealth::OnSetInLimbo(bool on)
 {
     RegionBasedMaxNumberOfDangerThings = -1;
     if (!on) {

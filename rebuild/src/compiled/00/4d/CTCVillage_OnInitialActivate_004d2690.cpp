@@ -9,7 +9,7 @@ void __fastcall Inner_Do(CInner* obj, int arg1, unsigned char b);
 
 struct CTCVillage {
     CInner* obj;        // +0x00
-    int     field4;     // +0x04
+    int     ParentThing;     // +0x04
     // +0x08 unknown
     char    pad8;       // +0x08
     char    pad9;       // +0x09
@@ -22,7 +22,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->flagD) {
-        Inner_Do(self->obj, self->field4, self->byteC);
+        Inner_Do(self->obj, self->ParentThing, self->byteC);
         self->flagD = 0;
     }
 }

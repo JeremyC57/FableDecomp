@@ -30,10 +30,10 @@ struct CTCBoastingCrowdControl {
     bool GetCrowd(CThing* thing, CThing** groupThing, CTCCreatureGroupBoastingCrowd** crowd, bool create);   // 0x00783A30
     void KillAllCrowdThings();                              // 0x007832B0
     void Startup();                                         // 0x00783850
-    void vfunc_16(bool flag);
+    void OnSetInLimbo(bool flag);
 };
 
-void CTCBoastingCrowdControl::vfunc_16(bool flag)
+void CTCBoastingCrowdControl::OnSetInLimbo(bool flag)
 {
     if (flag)
         KillAllCrowdThings();

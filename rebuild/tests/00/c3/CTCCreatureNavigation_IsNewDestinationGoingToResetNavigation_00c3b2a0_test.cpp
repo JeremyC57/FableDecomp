@@ -14,13 +14,13 @@ struct Helper {
 };
 struct CTCCreatureNavigation {
   void* f0;
-  Helper* f4;
+  Helper* ParentThing;
 };
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int, C3DVector* dest) {
-  return self->f4->slot7(self, dest);
+  return self->ParentThing->slot7(self, dest);
 }
 int main(){
-  Helper h; CTCCreatureNavigation nav; nav.f0=0; nav.f4=&h;
+  Helper h; CTCCreatureNavigation nav; nav.f0=0; nav.ParentThing=&h;
   C3DVector pos; pos.x=1.0f; pos.y=0; pos.z=0;
   bool r = IsNewDestinationGoingToResetNavigation(&nav, 0, &pos);
   if(!g_called){ printf("FAIL not called\n"); return 1; }

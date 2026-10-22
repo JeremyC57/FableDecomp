@@ -2,7 +2,7 @@
 
 struct CPlayerGui {
     int   f0;
-    int   f4;
+    int   World;
     float f8;
     char  fc;
     char  fd;
@@ -12,7 +12,7 @@ CPlayerGui* __fastcall ForceOpen(CPlayerGui* self)
 {
     self->fd = 0;
     self->fc = 0;
-    self->f4 = 0;
+    self->World = 0;
     self->f0 = 0;
     self->f8 = 1.0f;
     return self;
@@ -21,9 +21,9 @@ CPlayerGui* __fastcall ForceOpen(CPlayerGui* self)
 int main()
 {
     CPlayerGui g;
-    g.f0 = 7; g.f4 = 7; g.f8 = 99.0f; g.fc = 9; g.fd = 9;
+    g.f0 = 7; g.World = 7; g.f8 = 99.0f; g.fc = 9; g.fd = 9;
     CPlayerGui* r = ForceOpen(&g);
-    if (r == &g && g.f0 == 0 && g.f4 == 0 && g.fc == 0 && g.fd == 0 && g.f8 == 1.0f)
+    if (r == &g && g.f0 == 0 && g.World == 0 && g.fc == 0 && g.fd == 0 && g.f8 == 1.0f)
         printf("OK_0067d7b0\n");
     else
         printf("FAIL\n");

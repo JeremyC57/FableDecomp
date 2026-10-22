@@ -28,13 +28,13 @@ struct CObject_007e7e40 : CBaseClassNonCopyable {
 };
 #pragma pack(pop)
 
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CActionMoveTo_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    CObject_007e7e40* object = static_cast<CObject_007e7e40*>(self);
+    CObject_007e7e40* object = static_cast<CObject_007e7e40*>(action);
     object->Member38.~CScriptThing();
     object->Member24.~CScriptThing();
     object->CBaseClassNonCopyable::~CBaseClassNonCopyable();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return action;
 }

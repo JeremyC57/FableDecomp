@@ -16,7 +16,7 @@ void __fastcall Sub_Call(SubObj* self, int a1, unsigned char a2)
 
 struct CTCVillage {
     SubObj* sub;
-    int     field4;
+    int     ParentThing;
     char    pad8[4];
     unsigned char b_c;
     unsigned char b_d;
@@ -25,7 +25,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->b_d) {
-        Sub_Call(self->sub, self->field4, self->b_c);
+        Sub_Call(self->sub, self->ParentThing, self->b_c);
         self->b_d = 0;
     }
 }
@@ -34,7 +34,7 @@ int main()
 {
     SubObj s; s.tag = 1;
     CTCVillage v;
-    v.sub = &s; v.field4 = 0x1234; v.b_c = 0x7f; v.b_d = 1;
+    v.sub = &s; v.ParentThing = 0x1234; v.b_c = 0x7f; v.b_d = 1;
 
     // flag set -> should call and clear
     OnInitialActivate(&v);

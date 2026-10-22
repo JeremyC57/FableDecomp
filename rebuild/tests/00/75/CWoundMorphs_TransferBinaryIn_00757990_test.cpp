@@ -28,9 +28,9 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 struct CMemoryDataInputStream {
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
@@ -171,7 +171,7 @@ static int Run(long firstChunk, bool dirty, int expectOverflow, int expectSort)
 {
     BuildBlock();
     CMemoryDataInputStream stream;
-    stream.m_pVtable = 0; stream.m_position = 0; stream.m_08 = 0; stream.m_pData = g_buffer; stream.m_10 = 0;
+    stream.m_pVtable = 0; stream.m_position = 0; stream.StreamSize = 0; stream.m_pData = g_buffer; stream.SourceChunkStreamPos = 0;
     stream.m_remaining = firstChunk;
     CWoundMorphs morphs;
     morphs.Morphs._M_start = morphs.Morphs._M_finish = morphs.Morphs._M_end_of_storage = 0;

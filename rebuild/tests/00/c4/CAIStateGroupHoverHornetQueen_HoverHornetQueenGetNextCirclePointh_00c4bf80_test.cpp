@@ -4,7 +4,7 @@ struct CAIStateGroup_HoverHornetQueen
 {
     int unk00;
     int numCirclePoints;
-    int unk08;
+    int ScriptAIPriority;
     int currentCircleIndex;
     int circlePointCount;
 };
@@ -22,7 +22,7 @@ int main()
     CAIStateGroup_HoverHornetQueen obj;
     obj.unk00 = 0;
     obj.numCirclePoints = 8;
-    obj.unk08 = 0;
+    obj.ScriptAIPriority = 0;
     obj.currentCircleIndex = 5;
     obj.circlePointCount = 3;
 

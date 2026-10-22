@@ -53,7 +53,7 @@ struct CRenderer_00890550 { virtual bool IsPreloadComplete() { std::strcat(g_seq
 struct CEngineDevice_00890550 { CRenderer_00890550* m_pRenderer; }; static CEngineDevice_00890550 g_dev = { &g_r };
 struct CEngine_00890550 { CEngineDevice_00890550* m_pDevice; }; static CEngine_00890550 g_eng = { &g_dev }; static CEngine_00890550* g_pEngine_013b86a0 = &g_eng;
 struct CDisplayEngine_Retail; struct CPlayerManager_Retail;
-struct CGameScriptInterface { virtual void v000() { } CWorld* World; long m_08; CDisplayEngine_Retail* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager;
+struct CGameScriptInterface { virtual void v000() { } CWorld* World; long Component; CDisplayEngine_Retail* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager;
     bool IsRegionLoadedAndPreloaded(const CCharString& name) const { long region = World->GetWorldMap()->GetRegionNumberFromName(name); if (region == World->GetWorldMap()->GetCurrentRegionNumber()) { if (g_pEngine_013b86a0->m_pDevice->m_pRenderer->IsPreloadComplete()) return true; } return false; } };
 int main() {
     CGameScriptInterface i; i.World = &g_world; CCharString n = { "Q" }; g_region = 5; g_current = 5; g_preload = true; g_seq[0] = 0; if (!i.IsRegionLoadedAndPreloaded(n) || std::strcmp(g_seq, "mNmcp")) { std::printf("00890550_TEST FAIL\n"); return 1; }

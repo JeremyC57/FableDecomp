@@ -17,14 +17,14 @@ struct CRetailHandleVector {
 };
 struct CTCOverheadDisplay {
     CRetailHandleVector PrimitiveHandles;
-    void vfunc_11(long) { PrimitiveHandles.clear(); }
+    void DrawPreparePrimitivesForRendering(long) { PrimitiveHandles.clear(); }
 };
 int main()
 {
     CEnginePrimitiveHandle items[3];
     CTCOverheadDisplay d;
     d.PrimitiveHandles.m_pFirst = items; d.PrimitiveHandles.m_pLast = items + 3; d.PrimitiveHandles.m_pEnd = items + 3;
-    d.vfunc_11(7);
+    d.DrawPreparePrimitivesForRendering(7);
     if (g_first != items || g_last != items + 3 || d.PrimitiveHandles.m_pLast != items) { std::printf("007b7de0_TEST FAIL\n"); return 1; }
     std::printf("007b7de0_TEST PASS\n");
     return 0;

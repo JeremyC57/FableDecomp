@@ -10,9 +10,9 @@ static int g_overflowCalls = 0;
 struct CDataInputStream {
     void* m_pVtable;
     unsigned long m_position;
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;
     const unsigned char* m_pOverflow;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
@@ -62,7 +62,7 @@ int main()
     std::memcpy(chunk, &n, 4); std::memcpy(chunk + 4, &r, 4);
     std::memcpy(over, &a, 4); std::memcpy(over + 4, &s, 4);
     CDataInputStream in;
-    in.m_pVtable = 0; in.m_position = 0; in.m_08 = 0; in.m_pData = chunk; in.m_10 = 0; in.m_remaining = 8; in.m_pOverflow = over;
+    in.m_pVtable = 0; in.m_position = 0; in.StreamSize = 0; in.m_pData = chunk; in.SourceChunkStreamPos = 0; in.m_remaining = 8; in.m_pOverflow = over;
     CExplosionRing ring;
     ring.RingRadius = 0; ring.NumExplosions = 0; ring.AngleOffset = 0; ring.SecondsBeforeSpawnNewRing = 0;
     ring.TransferBinaryIn(&in);

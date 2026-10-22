@@ -8,7 +8,7 @@ struct IBufImplVtbl {
     void (__stdcall *GetDesc)(IBufImpl* self, Desc* out);
 };
 struct IBufImpl { IBufImplVtbl* vtbl; };
-struct CIndexBuffer { void* f0; IBufImpl* f4; };
+struct CIndexBuffer { void* f0; IBufImpl* PD3DIndexBuffer; };
 
 long __fastcall GetSize(CIndexBuffer* self);
 
@@ -25,7 +25,7 @@ int main()
     for (int i=0;i<13;i++) ((void**)&vt)[i]=0;
     vt.GetDesc = FakeGetDesc;
     IBufImpl impl; impl.vtbl = &vt;
-    CIndexBuffer ib; ib.f0=0; ib.f4=&impl;
+    CIndexBuffer ib; ib.f0=0; ib.PD3DIndexBuffer=&impl;
     g_expect=&impl;
 
     long r = GetSize(&ib);

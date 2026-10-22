@@ -10,7 +10,7 @@ static void notify(Sub* s, int arg, unsigned char flag) {
 
 struct CTCVillage {
     Sub*          field0;
-    int           field4;
+    int           ParentThing;
     char          pad8[4];
     unsigned char byte_0c;
     unsigned char byte_0d;
@@ -18,7 +18,7 @@ struct CTCVillage {
 
 static void OnInitialActivate(CTCVillage* self) {
     if (self->byte_0d) {
-        notify(self->field0, self->field4, self->byte_0c);
+        notify(self->field0, self->ParentThing, self->byte_0c);
         self->byte_0d = 0;
     }
 }
@@ -27,7 +27,7 @@ int main() {
     Sub sink = {0,0,0};
     CTCVillage v;
     v.field0 = &sink;
-    v.field4 = 42;
+    v.ParentThing = 42;
     v.byte_0c = 7;
 
     // case active

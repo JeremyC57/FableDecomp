@@ -4,7 +4,7 @@ static const float g_animScale = 65535.0f / 360.0f;
 
 struct C3DAnimationSequence
 {
-    int   field0;
+    int   Data;
     int   field4;
     short m_value;
 
@@ -19,7 +19,7 @@ void InitialiseFromFileData_C3DAnimationSequence(C3DAnimationSequence* self, flo
 int main()
 {
     C3DAnimationSequence a;
-    a.field0 = 0; a.field4 = 0; a.m_value = 0;
+    a.Data = 0; a.field4 = 0; a.m_value = 0;
 
     // 360 deg * (65535/360) = 65535 -> truncates to short = -1 (0xFFFF)
     InitialiseFromFileData_C3DAnimationSequence(&a, 1.0f);

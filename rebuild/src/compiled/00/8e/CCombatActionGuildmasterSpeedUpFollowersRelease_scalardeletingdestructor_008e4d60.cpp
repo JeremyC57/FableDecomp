@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CCombatAction_Guildmaster_SpeedUpFollowersRelease {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CCombatAction_Guildmaster_SpeedUpFollowersRelease_dtor(CCombatAction_Guildmaster_SpeedUpFollowersRelease* action);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CCombatAction_Guildmaster_SpeedUpFollowersRelease_scalar_deleting_destructor(CCombatAction_Guildmaster_SpeedUpFollowersRelease* action, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CCombatAction_Guildmaster_SpeedUpFollowersRelease_dtor(action);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(action);
+    return action;
 }

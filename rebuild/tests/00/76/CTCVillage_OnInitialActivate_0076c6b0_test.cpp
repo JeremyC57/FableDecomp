@@ -11,14 +11,14 @@ void __fastcall Inner_Do(Inner* self, void* edx, unsigned char arg) {
     g_called++; g_ecx = self; g_edx = edx; g_arg = arg;
 }
 
-struct CTCVillage { Inner* p0; void* p4; char pad8[4]; unsigned char c; unsigned char d; };
+struct CTCVillage { Inner* p0; void* ParentThing; char pad8[4]; unsigned char c; unsigned char d; };
 
 void __fastcall OnInitialActivate(CTCVillage* self) {
-    if (self->d) { Inner_Do(self->p0, self->p4, self->c); self->d = 0; }
+    if (self->d) { Inner_Do(self->p0, self->ParentThing, self->c); self->d = 0; }
 }
 
 int main() {
-    CTCVillage v; v.p0=(Inner*)0x1111; v.p4=(void*)0x2222; v.c=0x5A; v.d=0;
+    CTCVillage v; v.p0=(Inner*)0x1111; v.ParentThing=(void*)0x2222; v.c=0x5A; v.d=0;
     OnInitialActivate(&v); if (g_called!=0){printf("FAIL1\n");return 1;}
     v.d=1; OnInitialActivate(&v);
     if (g_called!=1){printf("FAIL2\n");return 1;}

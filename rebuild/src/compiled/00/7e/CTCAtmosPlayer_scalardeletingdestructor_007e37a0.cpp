@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCAtmosPlayer {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCAtmosPlayer_dtor(CTCAtmosPlayer* player);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCAtmosPlayer_scalar_deleting_destructor(CTCAtmosPlayer* player, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCAtmosPlayer_dtor(player);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(player);
+    return player;
 }

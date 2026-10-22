@@ -12,13 +12,13 @@ struct CPhysicsFacesSegmentBase
 struct CPhysicsFacesSegmentBranch
 {
 	char pad[0x14];
-	CPhysicsFacesSegmentBase* m14;  // +0x14
-	CPhysicsFacesSegmentBase* m18;  // +0x18
+	CPhysicsFacesSegmentBase* PositiveChild;  // +0x14
+	CPhysicsFacesSegmentBase* NegativeChild;  // +0x18
 
 	long GetNoFaces();
 };
 
 long CPhysicsFacesSegmentBranch::GetNoFaces()
 {
-	return this->m14->GetNoFaces() + this->m18->GetNoFaces();
+	return this->PositiveChild->GetNoFaces() + this->NegativeChild->GetNoFaces();
 }

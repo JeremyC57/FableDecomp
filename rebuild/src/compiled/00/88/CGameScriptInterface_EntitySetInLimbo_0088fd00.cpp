@@ -77,9 +77,9 @@ struct CScriptThing {
 struct CGameScriptInterface {
     virtual void v000();
     CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
-    long                    m_08;
+    long                    Component;
     CDisplayEngine_Retail*  DisplayEngine;                   // +0x0c
-    long                    m_10;
+    long                    DefinitionManager;
     CPlayerManager_Retail*  PlayerManager;                   // +0x14
     unsigned char           _pad18[0x15];
     bool                    AllowScreenFadingIfAlreadyFaded; // +0x2d

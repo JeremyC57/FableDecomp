@@ -2,14 +2,14 @@
 // __fastcall this=ecx, out=stack (ret 4).
 #pragma pack(push,1)
 struct Out { int a; int b; };
-struct T {
+struct CIconText {
     char pad_0[0xcc];
     int first;
     int second;
-    void Get(Out* out);
+    void GetSize(Out* out);
 };
 #pragma pack(pop)
-void T::Get(Out* out) {
+void CIconText::GetSize(Out* out) {
     out->a = this->first;
     out->b = this->second;
 }

@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineClothRenderer {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineClothRenderer_dtor(CEngineClothRenderer* renderer);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineClothRenderer_scalar_deleting_destructor(CEngineClothRenderer* renderer, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineClothRenderer_dtor(renderer);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(renderer);
+    return renderer;
 }

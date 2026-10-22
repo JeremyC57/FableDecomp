@@ -11,14 +11,14 @@
 struct CTCInventoryBase_Retail {
     virtual void v00();
     unsigned char _pad_0x04[0x130 - 4];
-    void vfunc_36(long item);                       // 0x005BC4C0 (empty base slot 36)
+    void OnItemHighlighted(long item);                       // 0x005BC4C0 (empty base slot 36)
     void ResetInventoryAnim(long item);             // 0x005BCD2D
 };
 struct CTCInventoryWeapons : CTCInventoryBase_Retail {
-    void vfunc_36(long item);
+    void OnItemHighlighted(long item);
 };
-void CTCInventoryWeapons::vfunc_36(long item)
+void CTCInventoryWeapons::OnItemHighlighted(long item)
 {
-    CTCInventoryBase_Retail::vfunc_36(item);
+    CTCInventoryBase_Retail::OnItemHighlighted(item);
     ResetInventoryAnim(item);
 }

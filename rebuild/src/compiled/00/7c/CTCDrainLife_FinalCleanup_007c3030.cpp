@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct T { void Hook(); };
-void T::Hook() {}
+struct CTCDrainLife { void FinalCleanup(); };
+void CTCDrainLife::FinalCleanup() {}

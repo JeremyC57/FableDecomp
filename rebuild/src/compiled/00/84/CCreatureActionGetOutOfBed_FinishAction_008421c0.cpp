@@ -6,11 +6,11 @@ struct CCreatureActionGetOutOfBedVTable {
 };
 
 extern void __fastcall CCreatureAction_Base_FinishAction(
-    CCreatureAction_GetOutOfBed* self);
+    CCreatureAction_GetOutOfBed* action);
 
-void __fastcall FinishAction(CCreatureAction_GetOutOfBed* self)
+void __fastcall FinishAction(CCreatureAction_GetOutOfBed* action)
 {
-    if (!self->interrupted)
-        ((CCreatureActionGetOutOfBedVTable*)self->__vftable)->Slots[3](self);
-    CCreatureAction_Base_FinishAction(self);
+    if (!action->interrupted)
+        ((CCreatureActionGetOutOfBedVTable*)action->__vftable)->Slots[3](action);
+    CCreatureAction_Base_FinishAction(action);
 }

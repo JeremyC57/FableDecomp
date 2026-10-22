@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CAIStateGroup_GazeOutside {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CAIStateGroup_GazeOutside_dtor(CAIStateGroup_GazeOutside* stateGroup);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CAIStateGroup_GazeOutside_scalar_deleting_destructor(CAIStateGroup_GazeOutside* stateGroup, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CAIStateGroup_GazeOutside_dtor(stateGroup);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(stateGroup);
+    return stateGroup;
 }

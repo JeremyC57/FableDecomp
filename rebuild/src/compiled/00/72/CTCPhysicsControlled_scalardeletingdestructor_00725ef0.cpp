@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCPhysicsControlled {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCPhysicsControlled_dtor(CTCPhysicsControlled* controlled);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCPhysicsControlled_scalar_deleting_destructor(CTCPhysicsControlled* controlled, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCPhysicsControlled_dtor(controlled);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(controlled);
+    return controlled;
 }

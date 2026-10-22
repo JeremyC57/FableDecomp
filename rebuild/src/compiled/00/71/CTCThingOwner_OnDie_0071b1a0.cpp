@@ -8,12 +8,12 @@
 // from the vtable-slot label of this address; the flag's name is descriptive. One of 8 bodies.
 struct CTCThingOwner {
     virtual void v00();
-    virtual void vfunc_13();
+    virtual void OnDie();
     unsigned char _pad[0xc];
     bool m_flag;                           // +0x10
 };
 
-void CTCThingOwner::vfunc_13()
+void CTCThingOwner::OnDie()
 {
     m_flag = true;
 }

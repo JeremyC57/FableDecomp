@@ -29,7 +29,7 @@ struct CModeBase {
 };
 
 struct CModeDragonBase : CModeBase {
-    Mid* f4;
+    Mid* ParentThing;
     void OnActivate();
 };
 
@@ -37,7 +37,7 @@ void CModeBase::OnActivate(){ g_base = 1; }
 
 void CModeDragonBase::OnActivate()
 {
-    this->f4->obj->slot38(0);
+    this->ParentThing->obj->slot38(0);
     CModeBase::OnActivate();
 }
 
@@ -45,7 +45,7 @@ int main()
 {
     VObj o;
     Mid m; m.obj = &o;
-    CModeDragonBase c; c.vfp = 0; c.f4 = &m;
+    CModeDragonBase c; c.vfp = 0; c.ParentThing = &m;
     c.OnActivate();
     if (g_slot==1 && g_arg==0 && g_base==1)
         printf("DRAGON_ONACTIVATE_OK\n");

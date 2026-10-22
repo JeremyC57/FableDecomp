@@ -6,7 +6,7 @@ struct Inner {
         calls++; lastArg = arg; lastCount = count;
     }
 };
-struct CMid { char pad[0x18]; Inner* p18; };
+struct CMid { char pad[0x18]; Inner* PEnvironment; };
 struct CGameScriptInterface { void* vt; CMid* mid; };
 
 static Inner g_inner = {0,0,0};
@@ -21,12 +21,12 @@ void __fastcall CGameScriptInterface_SetEnvironmentThemeWeightExternals(CGameScr
     void* r = Resolve(arg1);
     int count = CountOf(r);
     if (count > 0) {
-        self->mid->p18->Do(0, 1, count, arg2);
+        self->mid->PEnvironment->Do(0, 1, count, arg2);
     }
 }
 
 int main() {
-    CMid mnode; mnode.p18 = &g_inner;
+    CMid mnode; mnode.PEnvironment = &g_inner;
     CGameScriptInterface obj; obj.vt = 0; obj.mid = &mnode;
 
     // count <= 0 : no DoThing

@@ -15,7 +15,7 @@ struct CCountedPointer_00a5f110 {                        // 8 bytes: object + co
 
 struct CStreamingFontDataBankEntry : CBase {                        // vtable 0x0129D5B4
     CCountedPointer_00a5f110 m_font;                     // +0x04
-    long m_c;                                      // +0x0c
+    long Bank;                                      // +0x0c
     long m_b;                                      // +0x10
     long m_a;                                      // +0x14
     virtual void v00();
@@ -24,6 +24,6 @@ struct CStreamingFontDataBankEntry : CBase {                        // vtable 0x
 
 CStreamingFontDataBankEntry::CStreamingFontDataBankEntry(long a, long b, long c)
     : CBase()
-    , m_c(c), m_b(b), m_a(a)
+    , Bank(c), m_b(b), m_a(a)
 {
 }

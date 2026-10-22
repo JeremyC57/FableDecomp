@@ -8,7 +8,7 @@ struct CAFile {
     virtual void v4(const void* p, long n, int zero);
 };
 
-void __fastcall Write(CFileDataOutputStream* self, int /*edx*/, const void* p, long n)
+void __fastcall Write(CFileDataOutputStream* stream, int /*edx*/, const void* p, long n)
 {
-    self->File->v4(p, n, 0);
+    stream->File->v4(p, n, 0);
 }

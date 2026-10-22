@@ -27,13 +27,13 @@ struct CObject_00ac1960 : CChunkedFileSuperChunk {
 };
 #pragma pack(pop)
 
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall C3DMeshFileMapChunk_CompositeScalarDeletingDestructor(void* chunk, int, unsigned int flags)
 {
-    CObject_00ac1960* object = static_cast<CObject_00ac1960*>(self);
+    CObject_00ac1960* object = static_cast<CObject_00ac1960*>(chunk);
     object->Member34.~CCharString();
     object->Member30.~CCharString();
     object->CChunkedFileSuperChunk::~CChunkedFileSuperChunk();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return chunk;
 }

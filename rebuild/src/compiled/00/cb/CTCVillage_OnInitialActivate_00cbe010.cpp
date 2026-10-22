@@ -7,7 +7,7 @@ extern "C" void __fastcall Sub_notify(Sub* self, int arg, unsigned char flag);
 
 struct CTCVillage {
     Sub*          field0;   // +0x00
-    int           field4;   // +0x04
+    int           ParentThing;   // +0x04
     // +0x08 padding
     char          pad8[4];  // +0x08
     unsigned char byte_0c;  // +0x0c
@@ -17,7 +17,7 @@ struct CTCVillage {
 void __fastcall CTCVillage_OnInitialActivate(CTCVillage* self)
 {
     if (self->byte_0d) {
-        Sub_notify(self->field0, self->field4, self->byte_0c);
+        Sub_notify(self->field0, self->ParentThing, self->byte_0c);
         self->byte_0d = 0;
     }
 }

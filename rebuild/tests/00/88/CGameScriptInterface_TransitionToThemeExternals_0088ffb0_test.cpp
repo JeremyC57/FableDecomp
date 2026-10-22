@@ -19,7 +19,7 @@ struct Inner {
 
 struct CWorld {
     unsigned char pad[0x18];
-    Inner* p18;
+    Inner* PEnvironment;
 };
 
 
@@ -31,13 +31,13 @@ void __fastcall CGameScriptInterface_TransitionToThemeExternals(CGameScriptInter
     Thing* t = GetTheme(arg1);
     int n = t->count();
     if (n > 0) {
-        self->World->p18->method(0, 1, n, arg2);
+        self->World->PEnvironment->method(0, 1, n, arg2);
     }
 }
 
 int main() {
     Inner inner;
-    CWorld theMid; theMid.p18 = &inner;
+    CWorld theMid; theMid.PEnvironment = &inner;
     CGameScriptInterface iface; iface.World = &theMid;
 
     g_count = 0; g_method_calls = 0;

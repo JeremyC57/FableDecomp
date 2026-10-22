@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch
+struct CInputProcessStrafe
 {
     void *vfptr;
     void dtor();
@@ -10,9 +10,9 @@ static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void *g_deleted = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch *self)
+void __fastcall CInputProcessStrafe_dtor(CInputProcessStrafe *process)
 {
-    (void)self;
+    (void)process;
     g_dtor_calls++;
 }
 extern "C" void __cdecl fable_op_delete(void *p)
@@ -21,27 +21,27 @@ extern "C" void __cdecl fable_op_delete(void *p)
     g_deleted = p;
 }
 
-void * __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
-    CLandscapeBackgroundPatch *self, int edx, unsigned int flags);
+void * __fastcall CInputProcessStrafe_scalar_deleting_destructor(
+    CInputProcessStrafe *process, int edx, unsigned int flags);
 
 int main()
 {
-    CLandscapeBackgroundPatch obj;
+    CInputProcessStrafe obj;
     obj.vfptr = 0;
 
     // flags bit0 clear: dtor called, no delete, returns self
     g_dtor_calls = g_delete_calls = 0; g_deleted = 0;
-    void *r1 = CLandscapeBackgroundPatch_vector_deleting_destructor(&obj, 0, 0);
+    void *r1 = CInputProcessStrafe_scalar_deleting_destructor(&obj, 0, 0);
     bool ok1 = (g_dtor_calls == 1) && (g_delete_calls == 0) && (r1 == &obj);
 
     // flags bit0 set: dtor called, delete called with self, returns self
     g_dtor_calls = g_delete_calls = 0; g_deleted = 0;
-    void *r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&obj, 0, 1);
+    void *r2 = CInputProcessStrafe_scalar_deleting_destructor(&obj, 0, 1);
     bool ok2 = (g_dtor_calls == 1) && (g_delete_calls == 1) && (g_deleted == &obj) && (r2 == &obj);
 
     // even flag (bit0 clear) -> no delete
     g_dtor_calls = g_delete_calls = 0;
-    CLandscapeBackgroundPatch_vector_deleting_destructor(&obj, 0, 2);
+    CInputProcessStrafe_scalar_deleting_destructor(&obj, 0, 2);
     bool ok3 = (g_delete_calls == 0);
 
     if (ok1 && ok2 && ok3) { printf("VDD_PARITY_OK\n"); return 0; }

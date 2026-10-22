@@ -19,18 +19,18 @@ void CSomeState::Notify(int a, int b) {
     g_notify_this = this;
 }
 
-void __fastcall BaseMode_OnActivate(void* self) {
-    (void)self;
+void __fastcall BaseMode_OnActivate(void* mode) {
+    (void)mode;
     ++g_base_calls;
 }
 
-struct CModeChargeForcePush {
+struct CModeSummonerSummon {
     void* vtbl;
     CSomeState* state;
     void OnActivate();
 };
 
-void CModeChargeForcePush::OnActivate()
+void CModeSummonerSummon::OnActivate()
 {
     BaseMode_OnActivate(this);
     CSomeState* s = this->state;
@@ -41,7 +41,7 @@ void CModeChargeForcePush::OnActivate()
 int main() {
     CSomeState st;
     st.flag = 1;
-    CModeChargeForcePush m;
+    CModeSummonerSummon m;
     m.vtbl = 0;
     m.state = &st;
 

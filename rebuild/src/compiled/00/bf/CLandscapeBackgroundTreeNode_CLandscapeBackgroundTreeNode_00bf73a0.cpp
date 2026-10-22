@@ -42,7 +42,7 @@ struct CMovableResource {                          // vtable 0x0129B860
 struct CLandscapeBackgroundTreeNode : CMovableResource {   // vtable 0x012A8240
     unsigned char                  _pad04[0x94];
     CLandscapeBackgroundLoadTask*  m_pLoadTask;    // +0x98
-    long                           m_9c;
+    long                           OffsetIntoFileBlock;
     CPatch_00bf73a0*               m_pPatch;       // +0xa0
     virtual void v00();
     ~CLandscapeBackgroundTreeNode();

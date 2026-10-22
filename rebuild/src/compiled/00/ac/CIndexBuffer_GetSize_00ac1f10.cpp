@@ -33,12 +33,12 @@ struct IBufImpl {
 
 struct CIndexBuffer {
     void* f0;         // +0x00
-    IBufImpl* f4;     // +0x04
+    IBufImpl* PD3DIndexBuffer;     // +0x04
 };
 
 long __fastcall GetSize(CIndexBuffer* self)
 {
     Desc d;
-    self->f4->vtbl->GetDesc(self->f4, &d);
+    self->PD3DIndexBuffer->vtbl->GetDesc(self->PD3DIndexBuffer, &d);
     return d.e;
 }

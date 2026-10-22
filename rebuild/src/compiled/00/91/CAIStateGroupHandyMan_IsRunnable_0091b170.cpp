@@ -4,9 +4,9 @@ struct CAIStateGroup_HandyMan_Methods : CAIStateGroup_HandyMan {
 };
 
 // helper at 0x91a6f0: __fastcall(this) -> bool
-bool __fastcall helper_91a6f0(CAIStateGroup_HandyMan* self);
+bool __fastcall helper_91a6f0(CAIStateGroup_HandyMan* stateGroup);
 // tail at 0x91b010: __fastcall(this) -> bool
-bool __fastcall tail_91b010(CAIStateGroup_HandyMan* self);
+bool __fastcall tail_91b010(CAIStateGroup_HandyMan* stateGroup);
 
 bool CAIStateGroup_HandyMan_Methods::IsRunnable()
 {

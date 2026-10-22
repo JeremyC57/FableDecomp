@@ -66,10 +66,10 @@ struct P {
   virtual char d63(){return 0;}
   virtual char tgt();
 };
-struct S { char pad[4]; P* f4; char M(); };
+struct CScriptThing { char pad[4]; P* f4; char IsOpenDoor(); };
 char P::tgt(){ return 1; }
-char S::M(){ P* p=this->f4; if(!p) return 0; return p->tgt(); }
-int main(){ P pp; S o; o.f4=&pp;
- if(o.M()!=1){ std::printf("004ab000_TEST FAIL\n"); return 1;}
- S o2; o2.f4=0; if(o2.M()!=0){ std::printf("004ab000_TEST FAIL\n"); return 1;}
+char CScriptThing::IsOpenDoor(){ P* p=this->f4; if(!p) return 0; return p->tgt(); }
+int main(){ P pp; CScriptThing o; o.f4=&pp;
+ if(o.IsOpenDoor()!=1){ std::printf("004ab000_TEST FAIL\n"); return 1;}
+ CScriptThing o2; o2.f4=0; if(o2.IsOpenDoor()!=0){ std::printf("004ab000_TEST FAIL\n"); return 1;}
  std::printf("004ab000_TEST PASS\n"); return 0;}

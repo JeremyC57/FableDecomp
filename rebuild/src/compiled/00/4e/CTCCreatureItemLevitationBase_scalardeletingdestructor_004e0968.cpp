@@ -1,10 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall AutoTinyScalarDestructor(void* self);
-extern void __cdecl AutoTinyScalarDelete(void* object);
-void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall CTCCreatureItemLevitationBase_Destruct(void* levitation);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CTCCreatureItemLevitationBase_ScalarDeletingDestructor(void* levitation, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCCreatureItemLevitationBase_Destruct(levitation);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(levitation);
+    return levitation;
 }

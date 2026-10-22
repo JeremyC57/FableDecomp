@@ -5,7 +5,7 @@ static long g_a = 0, g_b = 0, g_key = 0; static void Handler(long a, long b) { g
 struct CRetailTree { struct node { unsigned char flag; unsigned char _pad[3]; node* parent; node* left; node* right; long key; void (*value)(long, long); }; struct iterator { node* current; iterator(node* n) : current(n) { } }; node* head; unsigned long size;
     iterator find(const long& key) { g_key = key; node* result = head; node* n = head->parent; while (n) { if (!(n->key < key)) { result = n; n = n->left; } else n = n->right; } node* found = result; if (found == head || key < found->key) found = head; return iterator(found); } };
 static CRetailTree g_tree; struct COwner { unsigned char _pad[0x78]; long m_code; };
-struct CHitLocation { long m_0; COwner* m_pOwner; void ProcessHitLocationCode(long a, long b) { CRetailTree::iterator it = g_tree.find(m_pOwner->m_code); if (it.current != g_tree.head) it.current->value(a, b); } };
+struct CHitLocation { long POwnerThing; COwner* m_pOwner; void ProcessHitLocationCode(long a, long b) { CRetailTree::iterator it = g_tree.find(m_pOwner->m_code); if (it.current != g_tree.head) it.current->value(a, b); } };
 
 int main() {
     CRetailTree::node head, n; g_tree.head = &head; g_tree.size = 1; head.parent = &n; n.left = n.right = 0; n.key = 77; n.value = Handler; COwner o; o.m_code = 77; CHitLocation l; l.m_pOwner = &o;

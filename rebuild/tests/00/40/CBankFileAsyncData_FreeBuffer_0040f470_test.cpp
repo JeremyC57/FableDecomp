@@ -8,9 +8,9 @@ static void* g_freed = 0;
 
 struct CBankFileAsyncData {
   char pad0[0xc];
-  void* p0c;
+  void* Buffer;
   char pad10[0x1c-0x10];
-  unsigned int v1c;
+  unsigned int MemoryPool;
   void* p20;
   void Inner(void* a, unsigned int b);
 };
@@ -23,7 +23,7 @@ void __cdecl EngineFree(void* p) { g_free_called++; g_freed = p; }
 void __fastcall CBankFileAsyncData_FreeBuffer(CBankFileAsyncData* self)
 {
   if (self->p20 != 0) {
-    self->Inner(self->p0c, self->v1c + 4);
+    self->Inner(self->Buffer, self->MemoryPool + 4);
     if (self->p20 != 0) {
       EngineFree(self->p20);
     }
@@ -33,8 +33,8 @@ void __fastcall CBankFileAsyncData_FreeBuffer(CBankFileAsyncData* self)
 int main() {
   CBankFileAsyncData o;
   char buf[8];
-  o.p0c = (void*)0x1234;
-  o.v1c = 100;
+  o.Buffer = (void*)0x1234;
+  o.MemoryPool = 100;
   o.p20 = (void*)buf;
   CBankFileAsyncData_FreeBuffer(&o);
   if (g_inner_called != 1) { std::printf("FAIL inner\n"); return 1; }

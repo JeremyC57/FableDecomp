@@ -10,7 +10,7 @@ void __cdecl Op_Delete(void* p) { g_delete_called++; g_delete_arg = p; }
 
 struct CLandscapeBackgroundPatch {
     int f0;
-    int f4;
+    int Parent;
     void* f8;
 };
 
@@ -24,7 +24,7 @@ void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscape
 
 int main() {
     CLandscapeBackgroundPatch obj;
-    obj.f0 = 0; obj.f4 = 0; obj.f8 = 0;
+    obj.f0 = 0; obj.Parent = 0; obj.f8 = 0;
 
     // flags without bit0: destructor called, no delete
     g_dtor_called = g_delete_called = 0;

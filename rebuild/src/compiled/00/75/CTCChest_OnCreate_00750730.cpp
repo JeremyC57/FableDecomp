@@ -47,10 +47,10 @@ struct CTCChest {                           // vtable 0x0126957C
     CThing*       ParentThing;              // +0x04 (CTCBase)
     unsigned char _pad08[0x28];             // +0x08 CTCContainerRewardHero, ChestOpener
     bool          ChestOpen;                // +0x30
-    void vfunc_4();
+    void OnCreate();
 };
 
-void CTCChest::vfunc_4()
+void CTCChest::OnCreate()
 {
     if (ChestOpen) {
         CTCBase* component;

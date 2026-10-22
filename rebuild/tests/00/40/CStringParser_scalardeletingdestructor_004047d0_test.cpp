@@ -9,7 +9,7 @@ void Inner14_dtor(void* p){ g_calls[0]++; }
 void Inner_dtor(void* p){ g_calls[1]++; }
 void CLBP_dtor(void* p){ g_calls[2]++; }
 
-struct CLandscapeBackgroundPatch {
+struct CStringParser {
     void* vftable;
     CInner inner4;
     void* f8;
@@ -20,29 +20,29 @@ struct CLandscapeBackgroundPatch {
 
 static void mydelete(void* p){ g_deleted = p; }
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_dummy, unsigned int flags)
+void* __fastcall CStringParser_scalar_deleting_destructor(CStringParser* parser, int edx_dummy, unsigned int flags)
 {
-    Inner14_dtor((char*)self + 0x14);
-    Inner_dtor((char*)self + 0x10);
-    Inner_dtor((char*)self + 0xc);
-    CLBP_dtor(self);
+    Inner14_dtor((char*)parser + 0x14);
+    Inner_dtor((char*)parser + 0x10);
+    Inner_dtor((char*)parser + 0xc);
+    CLBP_dtor(parser);
     if (flags & 1)
-        mydelete(self);
-    return self;
+        mydelete(parser);
+    return parser;
 }
 
 int main(){
     static unsigned char buf[0x100];
-    CLandscapeBackgroundPatch* p = (CLandscapeBackgroundPatch*)buf;
+    CStringParser* p = (CStringParser*)buf;
     // flags without delete bit
     for(int i=0;i<8;i++) g_calls[i]=0; g_deleted=0;
-    void* r = CLandscapeBackgroundPatch_vector_deleting_destructor(p, 0, 0);
+    void* r = CStringParser_scalar_deleting_destructor(p, 0, 0);
     if (r != p) { std::printf("FAIL ret\n"); return 1; }
     if (g_calls[0]!=1 || g_calls[1]!=2 || g_calls[2]!=1) { std::printf("FAIL dtor counts\n"); return 1; }
     if (g_deleted != 0) { std::printf("FAIL unexpected delete\n"); return 1; }
     // flags with delete bit
     for(int i=0;i<8;i++) g_calls[i]=0; g_deleted=0;
-    r = CLandscapeBackgroundPatch_vector_deleting_destructor(p, 0, 1);
+    r = CStringParser_scalar_deleting_destructor(p, 0, 1);
     if (r != p) { std::printf("FAIL ret2\n"); return 1; }
     if (g_deleted != p) { std::printf("FAIL no delete\n"); return 1; }
     std::printf("CLandscapeBackgroundPatch_004047d0_TEST PASS\n");

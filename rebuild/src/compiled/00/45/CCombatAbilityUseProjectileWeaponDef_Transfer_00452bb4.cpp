@@ -9,9 +9,9 @@ struct CPersistContext {
     void PersistC(void* p);
 };
 
-void __fastcall CCombatAbilityUseProjectileWeaponDef_Transfer(CCombatAbilityUseProjectileWeaponDef* self, void* edx, CPersistContext* ctx)
+void __fastcall CCombatAbilityUseProjectileWeaponDef_Transfer(CCombatAbilityUseProjectileWeaponDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->PersistA(self->_tail + 0x40);
-    ctx->PersistB(self->_tail + 0x44);
-    ctx->PersistC(self->_tail + 0x28);
+    ctx->PersistA(def->_tail + 0x40);
+    ctx->PersistB(def->_tail + 0x44);
+    ctx->PersistC(def->_tail + 0x28);
 }

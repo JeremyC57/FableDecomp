@@ -1,16 +1,16 @@
 #pragma optimize("s", on)
-struct AutoTinyVectorObject
+struct CVillageTaskBase
 {
     void* vftable;
 };
-extern void* const g_AutoTinyVectorVftable;
-extern void __fastcall AutoTinyVectorDestructor(void* self);
+extern void* const g_CVillageTaskBase_vftable;
+extern void __fastcall CVillageTaskBase_Destruct(void* task);
 void operator delete(void*);
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CVillageTaskBase* task, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    task->vftable = (void*)&g_CVillageTaskBase_vftable;
+    CVillageTaskBase_Destruct(task);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(task);
+    return task;
 }

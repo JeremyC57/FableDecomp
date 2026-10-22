@@ -8,11 +8,11 @@ struct CAIStateGroupBase {
     CAIStateGroupBase();                           // 0x008FD255
 };
 struct CAIStateGroup_Clean : CAIStateGroupBase {                    // vtable 0x01289A4C
-    long m_18;                                     // +0x18
+    long FrameToClean;                                     // +0x18
     CAIStateGroup_Clean();
 };
 
 CAIStateGroup_Clean::CAIStateGroup_Clean()
-    : CAIStateGroupBase(), m_18(0)
+    : CAIStateGroupBase(), FrameToClean(0)
 {
 }

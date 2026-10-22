@@ -25,7 +25,7 @@ extern void* const s_vtbl_12b33f0[16] = {0};
 
 struct CAIStateGroupBase {
     void** vptr;
-    Field4* field4;
+    Field4* PBrain;
     CThingSearchTools* PeekThingSearchTools();
 };
 
@@ -46,7 +46,7 @@ int main() {
     f4.inner = inner;
 
     CAIStateGroupBase self;
-    self.field4 = &f4;
+    self.PBrain = &f4;
     self.vptr = 0;
 
     CThingSearchTools* r = self.PeekThingSearchTools();

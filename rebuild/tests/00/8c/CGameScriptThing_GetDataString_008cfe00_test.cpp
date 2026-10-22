@@ -5,8 +5,8 @@ struct CGameScriptThing { char pad[0x24]; char data; };
 
 static void model_consume(Arg* a, void* p) { a->got = p; }
 
-void* model_GetDataString(CGameScriptThing* self, void* arg) {
-    model_consume((Arg*)arg, &self->data);
+void* model_GetDataString(CGameScriptThing* thing, void* arg) {
+    model_consume((Arg*)arg, &thing->data);
     return arg;
 }
 

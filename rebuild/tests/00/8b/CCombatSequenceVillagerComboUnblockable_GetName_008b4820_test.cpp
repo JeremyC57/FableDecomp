@@ -16,7 +16,7 @@ struct CCombatSequence_VillagerComboUnblockable {
 };
 
 extern "C" CCharString* __fastcall CCombatSequence_VillagerComboUnblockable_GetName(
-    CCombatSequence_VillagerComboUnblockable* self, int edx, CCharString* ret);
+    CCombatSequence_VillagerComboUnblockable* sequence, int edx, CCharString* ret);
 
 int main()
 {

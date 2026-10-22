@@ -1,5 +1,5 @@
-// CCombatSequence_WhisperAdvance::OnCreate() -- queue strafe-backward, strafe-forward and an interruptable mid attack, then the base OnCreate
-// Leaf: ?OnCreate@CCombatSequence_WhisperAdvance
+// CCombatSequenceWhisperAdvance::OnCreate() -- queue strafe-backward, strafe-forward and an interruptable mid attack, then the base OnCreate
+// Leaf: ?OnCreate@CCombatSequenceWhisperAdvance
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00909BA0, 272 bytes (incl. int3 padding).
 // Callees: operator new 0x00BFEA1A, CCreatureAction_StrafeBackward ctor 0x008BFD60, CCreatureAction_StrafeForward
 //          ctor 0x008BFD00, CCombatActionBase ctor 0x00857F30 (inlined InterruptableMidAttack ctor, vtable
@@ -11,7 +11,7 @@
 // out-of-line constructors; the third is CCreatureAction_InterruptableMidAttack (0x118 bytes) whose
 // inline ctor forwards to CCombatActionBase(owner, target, 150, CSoundPair()) and stores its vtable; the
 // zeroed CSoundPair stores are what keep zero in ebx for the whole body. The engine header
-// CCombatSequence_WhisperAdvance.h is a flattened blob, so the sequence is modelled locally. Owner/target are
+// CCombatSequenceWhisperAdvance.h is a flattened blob, so the sequence is modelled locally. Owner/target are
 // read through inline GetCreature()/GetTarget() reference getters (direct `*Creature` reads rotate eax/ecx/edx).
 struct CThingCreatureBase;
 struct CThing;
@@ -73,11 +73,11 @@ struct CCombatSequenceBase {
     void AddAction(const CCountedPointer& action); // 0x008B0B10
     void OnCreate();                        // 0x008B0650 (base slot, called directly)
 };
-struct CCombatSequence_WhisperAdvance : CCombatSequenceBase {
+struct CCombatSequenceWhisperAdvance : CCombatSequenceBase {
     void OnCreate();
 };
 
-void CCombatSequence_WhisperAdvance::OnCreate()
+void CCombatSequenceWhisperAdvance::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_StrafeBackward(GetCreature(), GetTarget());

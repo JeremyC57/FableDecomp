@@ -2,7 +2,7 @@
 
 struct CTCVillage {
     void* field0;
-    void* field4;
+    void* ParentThing;
     char  pad8[4];
     unsigned char b0c;
     unsigned char b0d;
@@ -21,7 +21,7 @@ void __fastcall Callee(void* self, void* a1, unsigned char a2)
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->b0d) {
-        Callee(self->field0, self->field4, self->b0c);
+        Callee(self->field0, self->ParentThing, self->b0c);
         self->b0d = 0;
     }
 }
@@ -30,7 +30,7 @@ int main()
 {
     CTCVillage v;
     v.field0 = (void*)0x1111;
-    v.field4 = (void*)0x2222;
+    v.ParentThing = (void*)0x2222;
     v.b0c = 0x37;
     v.b0d = 1;
 

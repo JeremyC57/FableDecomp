@@ -6,12 +6,12 @@ struct Sub {
     bool v7(CTCCreatureNavigation* nav, C3DVector* dest){ got_nav=nav; got_dest=dest; return ret; }
 };
 struct CTCCreatureNavigation {
-    void* f0; Sub* f4;
-    bool IsNewDestinationGoingToResetNavigation(C3DVector* dest){ return f4->v7(this, dest); }
+    void* f0; Sub* ParentThing;
+    bool IsNewDestinationGoingToResetNavigation(C3DVector* dest){ return ParentThing->v7(this, dest); }
 };
 int main(){
     Sub s; s.ret=true; s.got_nav=0; s.got_dest=0;
-    CTCCreatureNavigation nav; nav.f4=&s;
+    CTCCreatureNavigation nav; nav.ParentThing=&s;
     C3DVector d;
     bool r=nav.IsNewDestinationGoingToResetNavigation(&d);
     if(!(r==true && s.got_nav==&nav && s.got_dest==&d)){ printf("FAIL a\n"); return 1; }

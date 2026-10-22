@@ -15,11 +15,11 @@ struct NavDelegate {
 
 struct CTCCreatureNavigation {
     void* pad0;
-    NavDelegate* field4;
+    NavDelegate* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest)
 {
-    return field4->v7(this, dest);
+    return ParentThing->v7(this, dest);
 }

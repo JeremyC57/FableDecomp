@@ -7,8 +7,8 @@ struct CGameScriptThing {
     char data;
 };
 
-void* __fastcall GetDataString(CGameScriptThing* self, int /*edx*/, void* arg)
+void* __fastcall GetDataString(CGameScriptThing* thing, int /*edx*/, void* arg)
 {
-    ((Arg*)arg)->Consume(&self->data);
+    ((Arg*)arg)->Consume(&thing->data);
     return arg;
 }

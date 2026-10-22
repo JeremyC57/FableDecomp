@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCCameraPointScriptedSpline {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCCameraPointScriptedSpline_dtor(CTCCameraPointScriptedSpline* spline);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCCameraPointScriptedSpline_scalar_deleting_destructor(CTCCameraPointScriptedSpline* spline, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCCameraPointScriptedSpline_dtor(spline);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(spline);
+    return spline;
 }

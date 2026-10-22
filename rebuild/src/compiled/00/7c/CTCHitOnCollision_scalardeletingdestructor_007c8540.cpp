@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCHitOnCollision {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCHitOnCollision_dtor(CTCHitOnCollision* collision);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCHitOnCollision_scalar_deleting_destructor(CTCHitOnCollision* collision, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCHitOnCollision_dtor(collision);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(collision);
+    return collision;
 }

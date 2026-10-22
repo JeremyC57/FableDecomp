@@ -7,16 +7,16 @@ struct CPersistContext {
 struct CMessageEventDef {
     char pad[0x3c];
     int f3c;
-    int f40;
-    int f44;
-    int f48;
-    int f4c;
+    int MaxSeenRadius;
+    int MaxHeardRadius;
+    int Lifespan;
+    int ReactionSpeechType;
 };
 
-void __fastcall CMessageEventDef_Transfer(CMessageEventDef* self, void* edx, CPersistContext* ctx) {
-    ctx->TransferA(&self->f3c);
-    ctx->TransferA(&self->f40);
-    ctx->TransferA(&self->f44);
-    ctx->TransferB(&self->f4c);
-    ctx->TransferC(&self->f48);
+void __fastcall CMessageEventDef_Transfer(CMessageEventDef* message, void* edx, CPersistContext* ctx) {
+    ctx->TransferA(&message->f3c);
+    ctx->TransferA(&message->MaxSeenRadius);
+    ctx->TransferA(&message->MaxHeardRadius);
+    ctx->TransferB(&message->ReactionSpeechType);
+    ctx->TransferC(&message->Lifespan);
 }

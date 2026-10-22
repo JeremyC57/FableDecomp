@@ -19,14 +19,14 @@ struct CWorld {
     virtual void v9();
     virtual bool getCam(CamObj** out); // slot index 10 => 0x28
     unsigned char _pad[0x30]; // vptr at +0, then pad to +0x34
-    CWorld* m34;               // +0x34
+    CWorld* PCurrentGameCamera;               // +0x34
 };
 
 
 bool __fastcall CGameScriptInterface_IsCameraPosOnScreen(CGameScriptInterface* self, int edx_unused, void* pos)
 {
     CamObj* cam;
-    CWorld* m = self->World->m34;
+    CWorld* m = self->World->PCurrentGameCamera;
     if (m->getCam(&cam)) {
         if (cam->onScreen(pos))
             return true;

@@ -21,7 +21,7 @@ struct CGameScriptInterface_Base { virtual void v000() { } };
 struct CPlayer_Retail { CThing_Retail* GetHeroCreature() { std::strcat(g_seq, "h"); return &g_thing; } }; static CPlayer_Retail g_player;
 struct CPlayerManager_Retail { CPlayer_Retail* GetMainPlayer() { std::strcat(g_seq, "p"); return &g_player; } }; static CPlayerManager_Retail g_pm;
 struct CTCTavernTable_Retail { unsigned char _pad[4]; bool m_availableForUse; };
-struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long m_08; void* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager;
+struct CGameScriptInterface : CGameScriptInterface_Base { void* World; long Component; void* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager;
     void SetTavernTableAvailableForUse(const CScriptThing& thing, bool available) const { if (thing.IsValid()) { CThing_Retail* t = thing.GetThing(); if (t->HasTC(0xb8)) { CTCTavernTable_Retail* tc = (CTCTavernTable_Retail*)GetTC(t, 0xb8); if (tc) tc->m_availableForUse = available; } } } };
 int main() {
     CGameScriptInterface i; reset(0xb8, true); CTCTavernTable_Retail* tc = (CTCTavernTable_Retail*)&g_tcs[1]; tc->m_availableForUse = false; i.SetTavernTableAvailableForUse(g_script, true); if (std::strcmp(g_seq, "vg") || !tc->m_availableForUse || g_lbKind != 0xb8) { std::printf("008a1890_TEST FAIL\n"); return 1; }

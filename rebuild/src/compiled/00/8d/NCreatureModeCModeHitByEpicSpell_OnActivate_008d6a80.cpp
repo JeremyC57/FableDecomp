@@ -1,4 +1,4 @@
-// CModeDragonRearUp::OnActivate  @ 008d6a80
+// CModeHitByEpicSpell::OnActivate  @ 008d6a80
 // push esi; mov esi,ecx; call 0x8621a0(this)
 // ecx=[esi+4]; if ([ecx+0x10]==1) { (obj)->m(1, this); }
 
@@ -9,7 +9,7 @@ struct Sub
     void Notify(int one, void* who);
 };
 
-struct CModeDragonRearUp
+struct CModeHitByEpicSpell
 {
     int   vslot;    // +0x00 (padding to reach +4)
     Sub*  sub;      // +0x04
@@ -17,7 +17,7 @@ struct CModeDragonRearUp
     void  OnActivate();
 };
 
-void CModeDragonRearUp::OnActivate()
+void CModeHitByEpicSpell::OnActivate()
 {
     BaseActivate();
     Sub* s = this->sub;

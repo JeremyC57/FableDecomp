@@ -1,18 +1,18 @@
-// CLandscapeBackgroundPatch::`vector_deleting_destructor'
+// CInputProcessHeroAbilitiesScreen::`vector_deleting_destructor'
 // Canonical MSVC vector deleting destructor.
 
-struct CLandscapeBackgroundPatch
+struct CInputProcessHeroAbilitiesScreen
 {
     void scalar_destructor();   // scalar dtor at 0xa0d3d0 (external, non-inlined)
 };
 
 extern void __cdecl fable_operator_delete(void*);  // operator delete at 0xbfe9bc
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
-        CLandscapeBackgroundPatch* self, int /*edx*/, unsigned int flags)
+void* __fastcall CInputProcessHeroAbilitiesScreen_scalar_deleting_destructor(
+        CInputProcessHeroAbilitiesScreen* process, int /*edx*/, unsigned int flags)
 {
-    self->scalar_destructor();
+    process->scalar_destructor();
     if (flags & 1)
-        fable_operator_delete(self);
-    return self;
+        fable_operator_delete(process);
+    return process;
 }

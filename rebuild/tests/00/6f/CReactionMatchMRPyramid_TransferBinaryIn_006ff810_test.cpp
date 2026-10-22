@@ -5,9 +5,9 @@ static int g_baseCalls = 0, g_overflowCalls = 0;
 struct CMemoryDataInputStream {
     void* m_pVtable;
     unsigned long m_position;
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
     {

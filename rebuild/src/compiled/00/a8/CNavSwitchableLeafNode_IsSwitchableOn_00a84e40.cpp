@@ -1,4 +1,4 @@
-// CSwitchStateMap_00a84e40::IsSwitchableOn(unsigned __int64 key) -- true when the 64-bit key is in the sorted vector map at +0x20 (LowerBound @ 0x00A84E80, then the end / `key < found` check with the high word compared first)
+// CNavSwitchableLeafNode::IsSwitchableOn(unsigned __int64 key) -- true when the 64-bit key is in the sorted vector map at +0x20 (LowerBound @ 0x00A84E80, then the end / `key < found` check with the high word compared first)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A84E40, length 64 bytes.
 // Leaf: IsSwitchableOn
 // The chunk label (CNavSwitchableLeafNode::IsSwitchableOn) is propagated; named by address. Shape: the map in esi, the two-word compare, the result as `setne cl ; mov al,cl`, `ret 8`.
@@ -16,13 +16,13 @@ struct CVectorMap_00a84e40 {
     }
 };
 
-struct CSwitchStateMap_00a84e40 {
+struct CNavSwitchableLeafNode {
     unsigned char       _pad00[0x20];
     CVectorMap_00a84e40 m_states;                  // +0x20
     bool IsSwitchableOn(unsigned __int64 key);
 };
 
-bool CSwitchStateMap_00a84e40::IsSwitchableOn(unsigned __int64 key)
+bool CNavSwitchableLeafNode::IsSwitchableOn(unsigned __int64 key)
 {
     return m_states.Find(key) != m_states.m_last;
 }

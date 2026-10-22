@@ -12,11 +12,11 @@ struct INavTarget {
 
 struct CTCCreatureNavigation {
     void* field_0;
-    INavTarget* field_4;
+    INavTarget* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest)
 {
-    return field_4->Query(this, dest);
+    return ParentThing->Query(this, dest);
 }

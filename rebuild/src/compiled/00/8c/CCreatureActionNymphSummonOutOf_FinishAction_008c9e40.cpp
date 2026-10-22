@@ -28,12 +28,12 @@ extern Inner* __fastcall sub_a01b50(void* ecxSub);
 
 
 // base method tail-jumped to: 0x859a20, __fastcall(self)
-extern void __fastcall base_FinishAction_859a20(CCreatureAction_NymphSummonOutOf* self);
+extern void __fastcall base_FinishAction_859a20(CCreatureAction_NymphSummonOutOf* action);
 
-void __fastcall FinishAction(CCreatureAction_NymphSummonOutOf* self)
+void __fastcall FinishAction(CCreatureAction_NymphSummonOutOf* action)
 {
-    Inner* p = sub_a01b50((char*)self + 8);
+    Inner* p = sub_a01b50((char*)action + 8);
     Target* h = p->pField60;      // ecx = [eax+0x60]; slot fetched from [ecx]
     h->slot36(0);                 // push 0; call [eax+0x90]
-    base_FinishAction_859a20(self);
+    base_FinishAction_859a20(action);
 }

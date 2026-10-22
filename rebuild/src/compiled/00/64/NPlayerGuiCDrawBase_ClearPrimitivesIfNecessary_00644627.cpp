@@ -6,9 +6,9 @@ struct Temp {
 };
 
 // callee at 0x43f360 : __fastcall(this=temp, edx=arg, stackarg0, stackarg1)
-void __fastcall Temp_helper(Temp* self, int edx, int a0, int a1);
+void __fastcall Temp_helper(Temp* draw, int edx, int a0, int a1);
 
-struct CSystemManager {
+struct CDrawBase {
     char pad0[0x18];
     unsigned char byte18;   // +0x18
     int   field1c;          // +0x1c
@@ -16,7 +16,7 @@ struct CSystemManager {
     void UninitWindow();
 };
 
-void CSystemManager::UninitWindow()
+void CDrawBase::UninitWindow()
 {
     Temp t;
     if (this->byte18 == 0) {

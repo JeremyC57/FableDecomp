@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCBulletTime {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCBulletTime_dtor(CTCBulletTime* time);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCBulletTime_scalar_deleting_destructor(CTCBulletTime* time, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCBulletTime_dtor(time);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(time);
+    return time;
 }

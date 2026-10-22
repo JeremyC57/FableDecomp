@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCContainerRewardHero {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCContainerRewardHero_dtor(CTCContainerRewardHero* hero);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCContainerRewardHero_scalar_deleting_destructor(CTCContainerRewardHero* hero, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCContainerRewardHero_dtor(hero);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(hero);
+    return hero;
 }

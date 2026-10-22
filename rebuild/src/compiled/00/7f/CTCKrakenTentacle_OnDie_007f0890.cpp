@@ -2,13 +2,13 @@
 
 struct Pair;
 
-extern "C" void __fastcall Dtor_first(Pair* self);
-extern "C" void __fastcall Dtor_second(Pair* self);
-extern "C" void __fastcall Dtor_node(Pair* self);
+extern "C" void __fastcall Dtor_first(Pair* tentacle);
+extern "C" void __fastcall Dtor_second(Pair* tentacle);
+extern "C" void __fastcall Dtor_node(Pair* tentacle);
 
-void __fastcall Dest_val(Pair* self)
+void __fastcall Dest_val(Pair* tentacle)
 {
-    Dtor_first(self);
-    Dtor_second(self);
-    Dtor_node(self);
+    Dtor_first(tentacle);
+    Dtor_second(tentacle);
+    Dtor_node(tentacle);
 }

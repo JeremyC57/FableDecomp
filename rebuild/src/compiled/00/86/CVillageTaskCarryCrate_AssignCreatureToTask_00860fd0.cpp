@@ -28,10 +28,10 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
 struct CVillageTaskCarryCrate {
     unsigned char _pad[0x8];
     CBaseIntelligentPointer m_target;      // +0x8
-    void AssignTarget_00860fd0(CBaseObject* thing);
+    void AssignCreatureToTask(CBaseObject* thing);
 };
 
-void CVillageTaskCarryCrate::AssignTarget_00860fd0(CBaseObject* thing)
+void CVillageTaskCarryCrate::AssignCreatureToTask(CBaseObject* thing)
 {
     CIntelligentPointer pointer;
     pointer.SetPItem(thing);

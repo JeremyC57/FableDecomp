@@ -29,13 +29,13 @@ struct CObject_00719120 {
 };
 #pragma pack(pop)
 
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CActionSummonerLightningAttackTarget_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    CObject_00719120* object = static_cast<CObject_00719120*>(self);
+    CObject_00719120* object = static_cast<CObject_00719120*>(action);
     object->Member1c.~CBaseClassNonCopyable();
     object->Memberc.~CScriptThing();
     object->Member0.~CBaseClassNonCopyable();
     if (flags & 1)
         operator delete(object);
-    return self;
+    return action;
 }

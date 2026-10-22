@@ -19,7 +19,7 @@ static CSetThingAsDrawable ForEach(CThingListIterator first, CThingListIterator 
 }
 struct CTCThingOwner {
     CThingList ObjectList;
-    void vfunc_16(bool b) { ForEach(ObjectList.begin(), ObjectList.end(), CSetThingAsDrawable(b)); }
+    void OnSetInLimbo(bool b) { ForEach(ObjectList.begin(), ObjectList.end(), CSetThingAsDrawable(b)); }
 };
 int main()
 {
@@ -27,9 +27,9 @@ int main()
     head.next = &a; a.next = &b; b.next = &head; head.prev = &b; b.prev = &a; a.prev = &head;
     head.flag = 7; a.flag = 0; b.flag = 0;
     CTCThingOwner o; o.ObjectList.m_head = &head;
-    o.vfunc_16(true);
+    o.OnSetInLimbo(true);
     if (a.flag != 1 || b.flag != 1 || head.flag != 7 || g_calls != 2) { std::printf("0071b2a0_TEST FAIL\n"); return 1; }
-    o.vfunc_16(false);
+    o.OnSetInLimbo(false);
     if (a.flag != 0 || b.flag != 0 || head.flag != 7 || g_calls != 4) { std::printf("0071b2a0_TEST FAIL\n"); return 1; }
     std::printf("0071b2a0_TEST PASS\n");
     return 0;

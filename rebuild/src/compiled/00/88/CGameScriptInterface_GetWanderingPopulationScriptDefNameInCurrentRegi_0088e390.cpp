@@ -128,9 +128,9 @@ struct CGameScriptInterface {
     virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060();
     virtual void GetWanderingPopulationScriptDefName(const CCharString& region, CCharString& name) const;   // slot 61 (+0xf4)
     CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
-    long                    m_08;
+    long                    Component;
     CDisplayEngine_Retail*  DisplayEngine;                   // +0x0c
-    long                    m_10;
+    long                    DefinitionManager;
     CPlayerManager_Retail*  PlayerManager;                   // +0x14
     unsigned char           _pad18[0x15];
     bool                    AllowScreenFadingIfAlreadyFaded; // +0x2d

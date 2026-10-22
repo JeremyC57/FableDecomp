@@ -40,7 +40,7 @@ public:
 class CAnimComponentStrikeSpeedMultiplier {
 public:
     virtual void v00();
-    long m_04;                             // +0x04 (base component data)
+    long IVRefCount;                             // +0x04 (base component data)
     float AnimationSpeedMultiplier;               // +0x08
     void TransferBinaryIn(CDataInputStream& in);
 };

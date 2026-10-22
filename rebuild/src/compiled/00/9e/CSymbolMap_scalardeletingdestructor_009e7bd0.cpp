@@ -1,14 +1,14 @@
 #pragma optimize("t", on)
-extern void __fastcall AutoTinyFirstMemberDestructor(void* member);
-extern void __fastcall AutoTinySecondMemberDestructor(void* member);
-extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall DestructFirstMember(void* member);
+extern void __fastcall DestructSecondMember(void* member);
+extern void __fastcall CSymbolMap_Destruct(void* map);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CSymbolMap_CompositeScalarDeletingDestructor(void* map, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 20);
-    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 4);
-    AutoTinyCompositeDestructor(self);
+    DestructFirstMember(static_cast<unsigned char*>(map) + 20);
+    DestructSecondMember(static_cast<unsigned char*>(map) + 4);
+    CSymbolMap_Destruct(map);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(map);
+    return map;
 }

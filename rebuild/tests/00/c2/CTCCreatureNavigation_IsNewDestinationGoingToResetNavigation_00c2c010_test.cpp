@@ -12,11 +12,11 @@ struct Sub {
 };
 struct CTCCreatureNavigation {
   void* f0;
-  Sub* f4;
+  Sub* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest) {
-  return this->f4->slot6(this, dest);
+  return this->ParentThing->slot6(this, dest);
 }
 int main(){
   Sub subObj;
@@ -24,7 +24,7 @@ int main(){
   CTCCreatureNavigation navObj;
   CTCCreatureNavigation* navPtr = &navObj;
   navObj.f0 = 0;
-  navObj.f4 = subPtr;
+  navObj.ParentThing = subPtr;
   C3DVector vecObj;
   C3DVector* vecPtr = &vecObj;
   vecObj.x = 1; vecObj.y = 2; vecObj.z = 3;

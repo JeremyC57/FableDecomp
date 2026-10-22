@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct C3DAnimFileBoneMaskChunk {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall C3DAnimFileBoneMaskChunk_dtor(C3DAnimFileBoneMaskChunk* chunk);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DAnimFileBoneMaskChunk_scalar_deleting_destructor(C3DAnimFileBoneMaskChunk* chunk, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DAnimFileBoneMaskChunk_dtor(chunk);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(chunk);
+    return chunk;
 }

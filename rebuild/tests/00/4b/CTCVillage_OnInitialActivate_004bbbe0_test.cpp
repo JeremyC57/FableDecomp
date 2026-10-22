@@ -5,8 +5,8 @@ struct CInner { int dummy; };
 struct CTCVillage
 {
     CInner* m0;
-    void*   m4;
-    unsigned char m8, m9, ma, mb, mc, md;
+    void*   ParentThing;
+    unsigned char ToBeRemoved, IsInGlobalUpdateTCs, ma, mb, mc, md;
 };
 
 static CInner* g_ecx;
@@ -23,7 +23,7 @@ void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->md)
     {
-        InnerActivate(self->m0, self->m4, self->mc);
+        InnerActivate(self->m0, self->ParentThing, self->mc);
         self->md = 0;
     }
 }
@@ -32,7 +32,7 @@ int main()
 {
     CInner inner;
     CTCVillage v;
-    v.m0 = &inner; v.m4 = (void*)0x1234; v.mc = 0xAB; v.md = 1;
+    v.m0 = &inner; v.ParentThing = (void*)0x1234; v.mc = 0xAB; v.md = 1;
 
     // guard set: call happens, args forwarded, flag cleared
     OnInitialActivate(&v);

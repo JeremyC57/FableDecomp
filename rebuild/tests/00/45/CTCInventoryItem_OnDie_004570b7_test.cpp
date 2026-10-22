@@ -4,7 +4,7 @@ struct CTCInventoryItem {
     unsigned char _pad_0x0[0x10];
     void* ptr10;
     unsigned char _pad_0x14[0xc];
-    char sub20;
+    char DefaultItem;
     unsigned char _pad_0x21[0x5f];
     void* ptr80;
 };

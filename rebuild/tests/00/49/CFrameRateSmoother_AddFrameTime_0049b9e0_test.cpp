@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static int g_calc = 0;
-struct CFrameRateSmoother { unsigned char _pad[8]; float* m_pSamples; long m_c; long m_10; long m_capacity; long m_count; long m_1c; long m_start; long m_next; double m_smoothedTime; void CalculateSmoothedTime() { ++g_calc; }
+struct CFrameRateSmoother { unsigned char _pad[8]; float* m_pSamples; long m_c; long m_10; long m_capacity; long m_count; long NoTimes; long m_start; long m_next; double m_smoothedTime; void CalculateSmoothedTime() { ++g_calc; }
     void AddFrameTime(double t) { if (m_count == m_capacity) { m_start = (m_start + 1) % m_capacity; --m_count; } m_pSamples[m_next] = (float)t; m_next = (m_next + 1) % m_capacity; ++m_count; CalculateSmoothedTime(); } };
 int main() {
     float samples[4] = { 0, 0, 0, 0 }; CFrameRateSmoother s; std::memset(&s, 0, sizeof s); s.m_pSamples = samples; s.m_capacity = 4;

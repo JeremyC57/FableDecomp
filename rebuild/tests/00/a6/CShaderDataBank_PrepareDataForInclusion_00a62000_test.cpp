@@ -10,7 +10,7 @@ static int g_dtorCalled = 0;
 static int g_freed = 0;
 static void* g_dtorArg = 0;
 
-static void my_dtor(void* self) { g_dtorCalled++; g_dtorArg = self; }
+static void my_dtor(void* bank) { g_dtorCalled++; g_dtorArg = bank; }
 static void my_free(void* p) { (void)p; g_freed++; }
 
 static void release(RefBlock* ptr) {

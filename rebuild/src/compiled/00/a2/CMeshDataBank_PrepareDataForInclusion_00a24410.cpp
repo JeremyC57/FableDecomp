@@ -10,7 +10,7 @@
 #include "engine/CMeshDataBank.h"  // retyped onto the PDB layout; byte parity re-verified
 struct RefBlock {
     long          count;   // +0x00
-    void        (__fastcall *dtor)(void* self); // +0x04 vfn slot (thiscall)
+    void        (__fastcall *dtor)(void* bank); // +0x04 vfn slot (thiscall)
     void*         obj;      // +0x08
 };
 

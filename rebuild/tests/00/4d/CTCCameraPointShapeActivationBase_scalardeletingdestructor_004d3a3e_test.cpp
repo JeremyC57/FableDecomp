@@ -1,12 +1,12 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct AutoTinyVectorObject
+struct CTCCameraPointShapeActivationBase
 {
     void* vftable;
 };
-void* const g_AutoTinyVectorVftable = (void*)0x12345678;
-void __fastcall AutoTinyVectorDestructor(void*)
+void* const g_CTCCameraPointShapeActivationBase_vftable = (void*)0x12345678;
+void __fastcall CTCCameraPointShapeActivationBase_Destruct(void*)
 {
     ++g_AutoTinyVectorDestructorCalls;
 }
@@ -14,23 +14,23 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CTCCameraPointShapeActivationBase* activation, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    activation->vftable = (void*)&g_CTCCameraPointShapeActivationBase_vftable;
+    CTCCameraPointShapeActivationBase_Destruct(activation);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(activation);
+    return activation;
 }
 int main()
 {
-    AutoTinyVectorObject object = {0};
-    if (vector_deleting_destructor(&object, 0, 0) != &object ||
-        object.vftable != &g_AutoTinyVectorVftable ||
+    CTCCameraPointShapeActivationBase object = {0};
+    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+        object.vftable != &g_CTCCameraPointShapeActivationBase_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    vector_deleting_destructor(&object, 0, 1);
+    scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

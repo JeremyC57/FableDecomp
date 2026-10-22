@@ -22,10 +22,10 @@ void ActiveFile_Free(void* p)
 struct CActiveFile
 {
     void* field0;
-    void* field4;
+    void* DstFileHandle;
     void OnReadFinished()
     {
-        ActiveFile_Dispatch(this->field0, this->field4);
+        ActiveFile_Dispatch(this->field0, this->DstFileHandle);
         if (this->field0)
             ActiveFile_Free(this->field0);
     }
@@ -39,7 +39,7 @@ int main()
     // Case 1: non-null field0 -> dispatch + free called
     CActiveFile a;
     a.field0 = &dummyObj;
-    a.field4 = &dummyArg;
+    a.DstFileHandle = &dummyArg;
     a.OnReadFinished();
 
     bool ok1 = (g_dispatch_calls == 1) &&
@@ -53,7 +53,7 @@ int main()
     g_dispatch_obj = 0; g_dispatch_arg = 0; g_freed = 0;
     CActiveFile b;
     b.field0 = 0;
-    b.field4 = &dummyArg;
+    b.DstFileHandle = &dummyArg;
     b.OnReadFinished();
 
     bool ok2 = (g_dispatch_calls == 1) &&

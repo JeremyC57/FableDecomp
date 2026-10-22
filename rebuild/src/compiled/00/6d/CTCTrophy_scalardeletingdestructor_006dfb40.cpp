@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCTrophy {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCTrophy_dtor(CTCTrophy* trophy);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCTrophy_scalar_deleting_destructor(CTCTrophy* trophy, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCTrophy_dtor(trophy);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(trophy);
+    return trophy;
 }

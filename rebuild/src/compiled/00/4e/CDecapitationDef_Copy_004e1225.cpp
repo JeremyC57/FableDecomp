@@ -10,14 +10,14 @@ struct CDefBase {
 
 struct CDecapitationDef : public CDefBase {
     char pad[0x28]; // ensure f28 lands at +0x28
-    unsigned int f28; // +0x28
-    unsigned int f2c; // +0x2c
+    unsigned int BodyParticleEffect; // +0x28
+    unsigned int Head; // +0x2c
     void Copy(CDefClassBase const* src);
 };
 
 void CDecapitationDef::Copy(CDefClassBase const* src)
 {
     CDefBase::Copy(src);
-    this->f28 = ((const CDecapitationDef*)src)->f28;
-    this->f2c = ((const CDecapitationDef*)src)->f2c;
+    this->BodyParticleEffect = ((const CDecapitationDef*)src)->BodyParticleEffect;
+    this->Head = ((const CDecapitationDef*)src)->Head;
 }

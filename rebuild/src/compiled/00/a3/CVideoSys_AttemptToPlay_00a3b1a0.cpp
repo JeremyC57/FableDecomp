@@ -16,17 +16,17 @@ struct IPlayer {
 };
 
 struct CVideoSys {
-    void* m0;         // +0x00
-    IPlayer* m4;      // +0x04
+    void* GBuilder;         // +0x00
+    IPlayer* MControl;      // +0x04
     char pad[0x28-0x08];
-    int  m28;         // +0x28
+    int  State;         // +0x28
 };
 
 bool __fastcall AttemptToPlay(CVideoSys* self)
 {
-    IPlayer* p = self->m4;
+    IPlayer* p = self->MControl;
     if (p->vtbl->slot7(p) == 0) {
-        self->m28 = 1;
+        self->State = 1;
         return true;
     }
     return false;

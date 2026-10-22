@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CParticleEmitter {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CParticleEmitter_dtor(CParticleEmitter* emitter);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CParticleEmitter_scalar_deleting_destructor(CParticleEmitter* emitter, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CParticleEmitter_dtor(emitter);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(emitter);
+    return emitter;
 }

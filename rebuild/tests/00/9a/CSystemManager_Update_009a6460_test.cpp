@@ -17,7 +17,7 @@ enum ESystemReturn
 struct CSystemManager
 {
     unsigned char unknown00[0x08];
-    bool busy08;
+    bool WindowsQuit;
     bool notifyObserver09;
     unsigned char unknown0A[0x72];
     CSystemManagerObserver* observer7C;
@@ -78,7 +78,7 @@ int main()
         return 1;
     }
 
-    manager.busy08 = true;
+    manager.WindowsQuit = true;
     manager.resetPendingEA = true;
     if (manager.Update() != FABLE_SYSTEM_BUSY ||
         !manager.resetPendingEA ||

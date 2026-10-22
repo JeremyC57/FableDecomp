@@ -24,10 +24,10 @@ struct Fable_TrollInit_008c5fd0 : CCreatureAction_TrollWhackGroundBase {
     virtual void s50();
     virtual void act();
     void FABLE_FASTCALL base();
-    void Run();
+    void Initialise();
 };
 
-void Fable_TrollInit_008c5fd0::Run() {
+void Fable_TrollInit_008c5fd0::Initialise() {
     act();
     base();
 }

@@ -17,11 +17,11 @@ struct CDateAndTime {
     CDateAndTime(long year, long month, long day, long hour, long minute, long second, long millisecond);   // 0x009E9A70
 };
 
-struct CStreamingFontDataBank_Methods {
+struct CDataBank_Methods {
     CDateAndTime GetLastModifiedTime(CCharString* entryName);
 };
 
-CDateAndTime CStreamingFontDataBank_Methods::GetLastModifiedTime(CCharString* entryName)
+CDateAndTime CDataBank_Methods::GetLastModifiedTime(CCharString* entryName)
 {
     return CDateAndTime(1, 1, 1, 1, 1, 0, 0);
 }

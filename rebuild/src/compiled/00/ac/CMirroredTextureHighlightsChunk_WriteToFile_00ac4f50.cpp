@@ -9,7 +9,7 @@ struct CMirroredTextureHighlightsChunk {
     virtual void v00();
     long           m_4;
     long           m_8;
-    long           m_c;
+    long           Parent;
     unsigned long* m_pIndexBegin;                  // +0x10 TriangleVertexIndexList (CArray<unsigned long>): begin
     unsigned long* m_pIndexEnd;                    // +0x14 end
     unsigned long* m_pIndexCapacity;               // +0x18

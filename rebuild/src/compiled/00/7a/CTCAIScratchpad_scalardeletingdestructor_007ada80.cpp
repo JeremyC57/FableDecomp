@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCAIScratchpad {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCAIScratchpad_dtor(CTCAIScratchpad* scratchpad);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCAIScratchpad_scalar_deleting_destructor(CTCAIScratchpad* scratchpad, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCAIScratchpad_dtor(scratchpad);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(scratchpad);
+    return scratchpad;
 }

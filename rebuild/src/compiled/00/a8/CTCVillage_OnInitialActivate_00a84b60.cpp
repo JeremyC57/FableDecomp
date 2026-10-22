@@ -5,7 +5,7 @@ struct Inner;
 
 struct CTCVillage {
     Inner *field0;   // +0x00
-    int    field4;   // +0x04
+    int    ParentThing;   // +0x04
     char   pad8[4];  // +0x08
     char   fieldC;   // +0x0C
     char   fieldD;   // +0x0D  (bool guard flag)
@@ -19,7 +19,7 @@ extern void __fastcall Helper(Inner *self, int edxVal, unsigned char arg);
 void __fastcall OnInitialActivate(CTCVillage *self)
 {
     if (self->fieldD) {
-        Helper(self->field0, self->field4, (unsigned char)self->fieldC);
+        Helper(self->field0, self->ParentThing, (unsigned char)self->fieldC);
         self->fieldD = 0;
     }
 }

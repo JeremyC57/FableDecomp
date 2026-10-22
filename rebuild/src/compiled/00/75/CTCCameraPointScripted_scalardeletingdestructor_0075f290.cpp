@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCCameraPointScripted {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCCameraPointScripted_dtor(CTCCameraPointScripted* scripted);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCCameraPointScripted_scalar_deleting_destructor(CTCCameraPointScripted* scripted, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCCameraPointScripted_dtor(scripted);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(scripted);
+    return scripted;
 }

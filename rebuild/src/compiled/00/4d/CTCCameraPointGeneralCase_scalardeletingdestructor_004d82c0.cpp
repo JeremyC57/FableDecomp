@@ -1,16 +1,16 @@
 #pragma optimize("s", on)
-struct AutoTinyVectorObject
+struct CTCCameraPointGeneralCase
 {
     void* vftable;
 };
-extern void* const g_AutoTinyVectorVftable;
-extern void __fastcall AutoTinyVectorDestructor(void* self);
+extern void* const g_CTCCameraPointGeneralCase_vftable;
+extern void __fastcall CTCCameraPointGeneralCase_Destruct(void* generalCase);
 void operator delete(void*);
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CTCCameraPointGeneralCase* generalCase, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    generalCase->vftable = (void*)&g_CTCCameraPointGeneralCase_vftable;
+    CTCCameraPointGeneralCase_Destruct(generalCase);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(generalCase);
+    return generalCase;
 }

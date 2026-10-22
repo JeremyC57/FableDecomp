@@ -17,10 +17,10 @@ struct CCarrySlotDef {
     A a2;  // +0x34
 };
 
-void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* self, void* edx, CPersistContext* ctx)
+void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->PersistA(&self->a);
-    ctx->PersistB(&self->b);
-    ctx->PersistC(&self->c);
-    ctx->PersistA(&self->a2);
+    ctx->PersistA(&def->a);
+    ctx->PersistB(&def->b);
+    ctx->PersistC(&def->c);
+    ctx->PersistA(&def->a2);
 }

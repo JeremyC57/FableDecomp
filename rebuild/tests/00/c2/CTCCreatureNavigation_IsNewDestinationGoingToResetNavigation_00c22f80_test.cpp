@@ -13,14 +13,14 @@ struct MockDelegate : IDelegate {
 };
 struct CTCCreatureNavigation {
   void* f0;
-  IDelegate* f4;
+  IDelegate* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* dest) {
-    return this->f4->m6(this, dest);
+    return this->ParentThing->m6(this, dest);
   }
 };
 int main() {
   MockDelegate d; d.calls=0; d.lastN=0; d.lastV=0; d.ret=true;
-  CTCCreatureNavigation nav; nav.f0=0; nav.f4=&d;
+  CTCCreatureNavigation nav; nav.f0=0; nav.ParentThing=&d;
   C3DVector v; v.x=1; v.y=2; v.z=3;
   bool r = nav.IsNewDestinationGoingToResetNavigation(&v);
   if (!(r==true && d.calls==1 && d.lastN==&nav && d.lastV==&v)) { printf("FAIL\n"); return 1; }

@@ -6,7 +6,7 @@ struct IHelper {
 };
 struct CTCCreatureNavigation {
   int f0;
-  IHelper* f4;
+  IHelper* ParentThing;
 };
 static bool g_expected;
 struct HelperImpl : IHelper {
@@ -18,11 +18,11 @@ struct HelperImpl : IHelper {
 };
 static bool ModelLeaf(CTCCreatureNavigation* self, C3DVector* dest, float f) {
   (void)f;
-  return self->f4->v7(self, dest);
+  return self->ParentThing->v7(self, dest);
 }
 int main() {
   HelperImpl h; h.seenNav = 0; h.seenDest = 0;
-  CTCCreatureNavigation nav; nav.f0 = 0; nav.f4 = &h;
+  CTCCreatureNavigation nav; nav.f0 = 0; nav.ParentThing = &h;
   C3DVector d; d.x = 1; d.y = 2; d.z = 3;
   g_expected = true;
   bool r1 = ModelLeaf(&nav, &d, 5.0f);

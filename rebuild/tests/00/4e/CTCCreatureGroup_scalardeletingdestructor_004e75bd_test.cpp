@@ -1,29 +1,29 @@
 #include <cstdio>
 static int g_AutoTinyScalarDestructorCalls = 0;
 static int g_AutoTinyScalarDeleteCalls = 0;
-void __fastcall AutoTinyScalarDestructor(void*)
+void __fastcall CTCCreatureGroup_Destruct(void*)
 {
     ++g_AutoTinyScalarDestructorCalls;
 }
-void __cdecl AutoTinyScalarDelete(void*)
+void __cdecl OperatorDelete(void*)
 {
     ++g_AutoTinyScalarDeleteCalls;
 }
-void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCCreatureGroup_ScalarDeletingDestructor(void* group, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    CTCCreatureGroup_Destruct(group);
     if (flags & 1)
-        AutoTinyScalarDelete(self);
-    return self;
+        OperatorDelete(group);
+    return group;
 }
 int main()
 {
     int object = 0;
-    if (CAssoc_ScalarDeletingDestructor(&object, 0, 0) != &object ||
+    if (CTCCreatureGroup_ScalarDeletingDestructor(&object, 0, 0) != &object ||
         g_AutoTinyScalarDestructorCalls != 1 ||
         g_AutoTinyScalarDeleteCalls != 0)
         return 1;
-    CAssoc_ScalarDeletingDestructor(&object, 0, 1);
+    CTCCreatureGroup_ScalarDeletingDestructor(&object, 0, 1);
     if (g_AutoTinyScalarDestructorCalls != 2 ||
         g_AutoTinyScalarDeleteCalls != 1)
         return 1;

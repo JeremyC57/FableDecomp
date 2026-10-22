@@ -1,4 +1,4 @@
-// CLandscapeBackgroundPatch::`vector deleting destructor' @ 0x00485420
+// CMemoryDataInputStream::`vector deleting destructor' @ 0x00485420
 //
 // The 72-byte manifest capture over-captures: it holds the leading real
 // function F1 (offsets 0x00-0x1d, a 30-byte `vector deleting destructor'),
@@ -24,21 +24,21 @@
 // 30-byte body and lands RELOCATION_MATCH with relocations at 0x4;0x11 (the two
 // call rel32s). This is the same spelling.
 
-struct CLandscapeBackgroundPatch;
+struct CMemoryDataInputStream;
 
 // __fastcall scalar destructor: `this` arrives in ecx, so declare it __fastcall
 // with the object as the leading (ecx) argument -> `call` with no push.
-extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+extern "C" void __fastcall CMemoryDataInputStream_dtor(CMemoryDataInputStream* stream);
 
 // engine operator delete: __cdecl -> `push esi; call; add esp,4`.
 extern "C" void operator_delete_stub(void* p);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
-        CLandscapeBackgroundPatch* self, int /*edx_pad*/, unsigned int flags)
+void* __fastcall CMemoryDataInputStream_scalar_deleting_destructor(
+        CMemoryDataInputStream* stream, int /*edx_pad*/, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CMemoryDataInputStream_dtor(stream);
     if (flags & 1) {
-        operator_delete_stub((void*)self);
+        operator_delete_stub((void*)stream);
     }
-    return (void*)self;
+    return (void*)stream;
 }

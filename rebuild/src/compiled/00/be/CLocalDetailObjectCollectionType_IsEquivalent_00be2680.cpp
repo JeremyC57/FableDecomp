@@ -10,7 +10,7 @@ struct SCollectionBlock_00be2680 {                 // 0x34 bytes of plain data a
 
 struct CLocalDetailObjectCollectionType {
     unsigned char             _pad00[0x14];
-    long                      m_14;                // +0x14
+    long                      MeshBankIndex;                // +0x14
     long                      m_18;                // +0x18
     long                      m_1c;                // +0x1c
     SCollectionBlock_00be2680 m_block;             // +0x20
@@ -19,7 +19,7 @@ struct CLocalDetailObjectCollectionType {
 
 bool CLocalDetailObjectCollectionType::IsEquivalent(const CLocalDetailObjectCollectionType& other)
 {
-    if (m_14 == other.m_14 && m_18 == other.m_18 && m_1c == other.m_1c && memcmp(&m_block, &other.m_block, sizeof(m_block)) == 0)
+    if (MeshBankIndex == other.MeshBankIndex && m_18 == other.m_18 && m_1c == other.m_1c && memcmp(&m_block, &other.m_block, sizeof(m_block)) == 0)
         return true;
     return false;
 }

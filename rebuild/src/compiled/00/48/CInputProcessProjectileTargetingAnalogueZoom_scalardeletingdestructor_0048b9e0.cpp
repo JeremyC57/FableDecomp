@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CInputProcessProjectileTargetingAnalogueZoom {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CInputProcessProjectileTargetingAnalogueZoom_dtor(CInputProcessProjectileTargetingAnalogueZoom* process);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CInputProcessProjectileTargetingAnalogueZoom_scalar_deleting_destructor(CInputProcessProjectileTargetingAnalogueZoom* process, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CInputProcessProjectileTargetingAnalogueZoom_dtor(process);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(process);
+    return process;
 }

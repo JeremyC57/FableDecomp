@@ -8,14 +8,14 @@ void __fastcall PC_Transfer(CPersistContext* pc, int value, int* pValue);
 
 struct EHeroAbility_slot { int value; };
 
-struct Self {
+struct CPersistContext_TransferableComponent {
     void*              pad0;  // +0
     EHeroAbility_slot* dst;   // +4
 };
 
-void __fastcall TransferIn(Self* self, int /*edx*/, CPersistContext* pc, int value)
+void __fastcall TransferIn(CPersistContext_TransferableComponent* transferable, int /*edx*/, CPersistContext* pc, int value)
 {
-    EHeroAbility_slot* dst = self->dst;
+    EHeroAbility_slot* dst = transferable->dst;
     PC_Transfer(pc, value, &value);
     dst->value = value;
 }

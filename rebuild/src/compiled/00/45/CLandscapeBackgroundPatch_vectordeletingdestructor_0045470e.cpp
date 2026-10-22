@@ -2,7 +2,7 @@
 struct CMember { };
 struct CLandscapeBackgroundPatch {
     void* vtbl;
-    int f4;
+    int Parent;
     void* f8;
     unsigned char pad[0x74 - 0xc];
     CMember member;

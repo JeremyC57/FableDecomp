@@ -13,7 +13,7 @@ struct GuiProvider { void GetHeld(GuiHolder* out); };
 struct Sub4 { char pad[0x70]; GuiProvider* provider70; };
 struct CTCInGameMenu {
     void* v0field;
-    Sub4* field4;
+    Sub4* ParentThing;
     void ApplyGuiField(int v);
     void OnCreate();
 };
@@ -53,7 +53,7 @@ void CTCInGameMenu::ApplyGuiField(int v)
 void CTCInGameMenu::OnCreate()
 {
     GuiHolder h;
-    field4->provider70->GetHeld(&h);
+    ParentThing->provider70->GetHeld(&h);
     GuiObject* o = h.obj;
     ApplyGuiField(o->fieldA8);
     if (--o->refs == 0)
@@ -73,7 +73,7 @@ int main()
 
     CTCInGameMenu menu;
     menu.v0field = 0;
-    menu.field4  = subPtr;
+    menu.ParentThing  = subPtr;
 
     menu.OnCreate();
 

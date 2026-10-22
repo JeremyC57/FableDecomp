@@ -22,19 +22,19 @@ void __cdecl AutoTinyCompositeDelete(void*)
 {
     ++g_AutoTinyCompositeDeleteCalls;
 }
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+void* __fastcall CTCEnemy_CompositeScalarDeletingDestructor(void* enemy, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 20);
-    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 16);
-    AutoTinyCompositeDestructor(self);
+    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(enemy) + 20);
+    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(enemy) + 16);
+    AutoTinyCompositeDestructor(enemy);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        AutoTinyCompositeDelete(enemy);
+    return enemy;
 }
 int main()
 {
     unsigned char object[256] = {0};
-    if (CThingSwitch_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
+    if (CTCEnemy_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
         g_AutoTinyFirstMember != object + 20 ||
         g_AutoTinySecondMember != object + 16 ||
         g_AutoTinySequenceCount != 3 ||
@@ -43,7 +43,7 @@ int main()
         g_AutoTinySequence[2] != 3 ||
         g_AutoTinyCompositeDeleteCalls != 0)
         return 1;
-    CThingSwitch_CompositeScalarDeletingDestructor(object, 0, 1);
+    CTCEnemy_CompositeScalarDeletingDestructor(object, 0, 1);
     if (g_AutoTinySequenceCount != 6 ||
         g_AutoTinyCompositeDeleteCalls != 1)
         return 1;

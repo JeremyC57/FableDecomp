@@ -4,7 +4,7 @@
 // push esi; esi=ecx; ecx=ds:[g]; call helper(g); [esi+0x39]=1; ret
 struct GObj;
 extern GObj *g_camThing_b23a50;
-extern "C" void FABLE_FASTCALL FableCamCall_b23a50(GObj *self);
+extern "C" void FABLE_FASTCALL FableCamCall_b23a50(GObj *engine);
 struct CEngine_Methods : CEngine {
     void ChangeCameraAngle();
 };

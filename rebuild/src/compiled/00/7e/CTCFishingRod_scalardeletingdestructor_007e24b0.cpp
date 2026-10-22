@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCFishingRod {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCFishingRod_dtor(CTCFishingRod* rod);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCFishingRod_scalar_deleting_destructor(CTCFishingRod* rod, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCFishingRod_dtor(rod);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(rod);
+    return rod;
 }

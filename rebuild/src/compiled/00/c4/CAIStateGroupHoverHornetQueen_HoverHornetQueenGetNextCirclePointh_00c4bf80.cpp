@@ -2,7 +2,7 @@ struct CAIStateGroup_HoverHornetQueen
 {
     int unk00;
     int numCirclePoints;   // +0x04
-    int unk08;
+    int ScriptAIPriority;
     int currentCircleIndex; // +0x0c
     int circlePointCount;   // +0x10
 };

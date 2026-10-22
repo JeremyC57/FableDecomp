@@ -23,10 +23,10 @@ struct CTCVolumeContainmentTracker {
     COwner* m_pOwner;                      // +0x4
     unsigned char _pad1[0x14];
     SEntry m_entry;                        // +0x1c
-    void vfunc_4();
+    void OnCreate();
 };
 
-void CTCVolumeContainmentTracker::vfunc_4()
+void CTCVolumeContainmentTracker::OnCreate()
 {
     m_pOwner->m_pRegistry->Register(&m_entry);
 }

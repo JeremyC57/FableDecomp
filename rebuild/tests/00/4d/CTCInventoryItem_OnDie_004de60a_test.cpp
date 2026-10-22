@@ -2,7 +2,7 @@
 
 struct CTCInventoryItem {
     char pad[0x10];
-    void* f10;
+    void* PInventory;
 };
 
 static int g_freed = 0;
@@ -15,8 +15,8 @@ void __fastcall base_686830(CTCInventoryItem* self) { g_base++; g_baseSelf = sel
 
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
-    if (self->f10)
-        free_bfea14(self->f10);
+    if (self->PInventory)
+        free_bfea14(self->PInventory);
     base_686830(self);
 }
 
@@ -25,14 +25,14 @@ int main()
     CTCInventoryItem a;
     for (int i = 0; i < 0x10; ++i) a.pad[i] = 0;
     int dummy = 0;
-    a.f10 = &dummy;
+    a.PInventory = &dummy;
     CTCInventoryItem_OnDie(&a);
     bool ok1 = (g_freed == 1) && (g_freedPtr == &dummy) && (g_base == 1) && (g_baseSelf == &a);
 
     g_freed = 0; g_freedPtr = 0; g_base = 0; g_baseSelf = 0;
     CTCInventoryItem b;
     for (int i = 0; i < 0x10; ++i) b.pad[i] = 0;
-    b.f10 = 0;
+    b.PInventory = 0;
     CTCInventoryItem_OnDie(&b);
     bool ok2 = (g_freed == 0) && (g_base == 1) && (g_baseSelf == &b);
 

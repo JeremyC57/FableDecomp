@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEngineClothSimulation2DAnimatedMesh {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEngineClothSimulation2DAnimatedMesh_dtor(CEngineClothSimulation2DAnimatedMesh* mesh);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEngineClothSimulation2DAnimatedMesh_scalar_deleting_destructor(CEngineClothSimulation2DAnimatedMesh* mesh, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEngineClothSimulation2DAnimatedMesh_dtor(mesh);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(mesh);
+    return mesh;
 }

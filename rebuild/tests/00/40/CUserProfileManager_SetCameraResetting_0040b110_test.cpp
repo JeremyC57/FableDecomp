@@ -4,7 +4,7 @@ struct CUserProfileManager {
     char pad0[0xc];
     char flag0c;
     char pad1[0x13 - 0xd];
-    char b13;
+    char CameraPCBowXYInverted;
     char pad2[0xd3 - 0x14];
     char bd3;
 };
@@ -20,7 +20,7 @@ void __fastcall CUserProfileManager_SetCameraResetting(CUserProfileManager* self
     (void)edx_pad;
     if (self->flag0c)
         self->bd3 = p1;
-    self->b13 = p1;
+    self->CameraPCBowXYInverted = p1;
     UPM_Update(self);
     if (p2)
         UPM_Refresh(self);
@@ -34,7 +34,7 @@ int main()
     o.flag0c = 1;
     CUserProfileManager_SetCameraResetting(&o, 0, 7, 1);
     if (o.bd3 != 7) { std::printf("FAIL bd3\n"); return 1; }
-    if (o.b13 != 7) { std::printf("FAIL b13\n"); return 1; }
+    if (o.CameraPCBowXYInverted != 7) { std::printf("FAIL b13\n"); return 1; }
     if (g_update != 1) { std::printf("FAIL update\n"); return 1; }
     if (g_refresh != 1) { std::printf("FAIL refresh\n"); return 1; }
 
@@ -43,7 +43,7 @@ int main()
     o2.bd3 = 99;
     CUserProfileManager_SetCameraResetting(&o2, 0, 3, 0);
     if (o2.bd3 != 99) { std::printf("FAIL bd3 unchanged\n"); return 1; }
-    if (o2.b13 != 3) { std::printf("FAIL b13_2\n"); return 1; }
+    if (o2.CameraPCBowXYInverted != 3) { std::printf("FAIL b13_2\n"); return 1; }
     if (g_update != 2) { std::printf("FAIL update2\n"); return 1; }
     if (g_refresh != 1) { std::printf("FAIL refresh2\n"); return 1; }
 

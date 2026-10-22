@@ -9,17 +9,17 @@ struct CDoorInner
 struct CTCDoor
 {
     void*        m0;      // +0x00
-    CDoorInner*  m4;      // +0x04
+    CDoorInner*  ParentThing;      // +0x04
     char         pad8[8]; // +0x08 .. +0x0f
-    bool         m10;     // +0x10  current open state
+    bool         CurrentOpen;     // +0x10  current open state
     void ScriptTriggerOpen(bool open);
 };
 
 void CTCDoor::ScriptTriggerOpen(bool open)
 {
-    if (this->m10 != open)
+    if (this->CurrentOpen != open)
     {
-        this->m4->Toggle();
+        this->ParentThing->Toggle();
     }
-    this->m10 = open;
+    this->CurrentOpen = open;
 }

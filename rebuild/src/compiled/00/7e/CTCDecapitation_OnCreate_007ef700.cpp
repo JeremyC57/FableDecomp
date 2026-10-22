@@ -23,10 +23,10 @@ struct CTCDecapitation {
     COwner* m_pOwner;                      // +0x4
     unsigned char _pad1[0x8];
     SEntry m_entry;                        // +0x10
-    void vfunc_4();
+    void OnCreate();
 };
 
-void CTCDecapitation::vfunc_4()
+void CTCDecapitation::OnCreate()
 {
     m_pOwner->m_pRegistry->Register(&m_entry);
 }

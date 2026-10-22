@@ -2,7 +2,7 @@
 
 struct CTCVillage {
     void*         field_0;
-    void*         field_4;
+    void*         ParentThing;
     char          pad8[4];
     unsigned char field_C;
     unsigned char field_D;
@@ -22,7 +22,7 @@ void Sub_model(void* ecx, void* edx, int arg) {
 
 void OnInitialActivate_model(CTCVillage* self) {
     if (self->field_D) {
-        Sub_model(self->field_0, self->field_4, self->field_C);
+        Sub_model(self->field_0, self->ParentThing, self->field_C);
         self->field_D = 0;
     }
 }
@@ -31,7 +31,7 @@ int main() {
     int e0 = 0, e4 = 0;
     CTCVillage v;
     v.field_0 = &e0;
-    v.field_4 = &e4;
+    v.ParentThing = &e4;
     v.field_C = 0x7A;
     v.field_D = 1;
 
@@ -48,7 +48,7 @@ int main() {
 
     // fresh with flag 0 from start
     CTCVillage v2;
-    v2.field_0 = 0; v2.field_4 = 0; v2.field_C = 5; v2.field_D = 0;
+    v2.field_0 = 0; v2.ParentThing = 0; v2.field_C = 5; v2.field_D = 0;
     OnInitialActivate_model(&v2);
     if (g_called != 1) { printf("FAIL inactive called\n"); return 1; }
 

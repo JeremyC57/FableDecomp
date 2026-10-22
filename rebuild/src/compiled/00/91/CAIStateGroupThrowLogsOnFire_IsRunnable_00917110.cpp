@@ -3,12 +3,12 @@ struct CAIStateGroup_IdleAtHome;
 
 // The two retail callees at 0x917050 and 0x9170b0 (this-call, return a testable value).
 // Model as __fastcall (ecx = self) returning int (retail tests full eax).
-int __fastcall subA(CAIStateGroup_IdleAtHome* self);
-int __fastcall subB(CAIStateGroup_IdleAtHome* self);
+int __fastcall subA(CAIStateGroup_IdleAtHome* stateGroup);
+int __fastcall subB(CAIStateGroup_IdleAtHome* stateGroup);
 
-bool __fastcall IsRunnable(CAIStateGroup_IdleAtHome* self)
+bool __fastcall IsRunnable(CAIStateGroup_IdleAtHome* stateGroup)
 {
-    if (subA(self) != 0 && subB(self) != 0)
+    if (subA(stateGroup) != 0 && subB(stateGroup) != 0)
         return true;
     return false;
 }

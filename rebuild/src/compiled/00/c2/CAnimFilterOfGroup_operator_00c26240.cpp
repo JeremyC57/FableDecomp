@@ -14,11 +14,11 @@ struct CAnimationEntry {
 struct CAnimFilterOfGroup {
     int m0;   // +0
     int m4;   // +4
-    int m8;   // +8
+    int GroupCRC;   // +8
     int Call(CAnimationEntry* entry);
 };
 
 int CAnimFilterOfGroup::Call(CAnimationEntry* entry)
 {
-    return entry->sub.Compute(this->m4) + this->m8;
+    return entry->sub.Compute(this->m4) + this->GroupCRC;
 }

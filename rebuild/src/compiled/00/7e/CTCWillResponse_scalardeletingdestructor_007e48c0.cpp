@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CTCWillResponse {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CTCWillResponse_dtor(CTCWillResponse* response);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CTCWillResponse_scalar_deleting_destructor(CTCWillResponse* response, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CTCWillResponse_dtor(response);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(response);
+    return response;
 }

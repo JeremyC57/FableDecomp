@@ -20,7 +20,7 @@ unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned lon
 { unsigned long h = seed; const unsigned char* p = (const unsigned char*)data; for (unsigned long i = 0; i < length; ++i) h = h * 31 + p[i]; return h + 1000 * length; }
 inline unsigned long GetCRC(const CCharString& text) { return Calc(0, text.GetPString(), text.GetLength()); }
 struct CMemoryDataInputStream {
-    void* m_pVtable; unsigned long m_position; long m_08; const unsigned char* m_pData; long m_10; long m_remaining; int overflows;
+    void* m_pVtable; unsigned long m_position; long StreamSize; const unsigned char* m_pData; long SourceChunkStreamPos; long m_remaining; int overflows;
     void ReadWithSrcChunkOverflow(unsigned char*, long) { ++overflows; }
     static bool IsValidPosition(i64 position) { return position >= 0 && position <= 0x7fffffff; }
     void Read(void* buffer, long size)

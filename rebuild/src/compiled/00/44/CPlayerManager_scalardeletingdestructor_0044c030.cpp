@@ -1,12 +1,12 @@
 extern void __cdecl engine_operator_delete(void* p);
 
-struct CLandscapeBackgroundPatch {
+struct CPlayerManager {
     void* vftable;
     void RealDtor();
-    void* CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags);
+    void* CPlayerManager_scalar_deleting_destructor(unsigned int flags);
 };
 
-void* CLandscapeBackgroundPatch::CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags)
+void* CPlayerManager::CPlayerManager_scalar_deleting_destructor(unsigned int flags)
 {
     this->RealDtor();
     if (flags & 1)

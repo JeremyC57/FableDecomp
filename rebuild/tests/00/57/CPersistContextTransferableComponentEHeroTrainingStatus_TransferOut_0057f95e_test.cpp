@@ -2,7 +2,7 @@
 
 typedef int ETextAlignement;
 
-struct Self {
+struct CPersistContext_TransferableComponent {
     void* vtbl;
     ETextAlignement* pValue;
 };
@@ -18,16 +18,16 @@ static void Transfer_stub(void* ctx, void* name, ETextAlignement* pval)
     g_captured = *pval;
 }
 
-static void TransferOut_model(Self* self, void* ctx, void* name)
+static void TransferOut_model(CPersistContext_TransferableComponent* transferable, void* ctx, void* name)
 {
-    ETextAlignement v = *(self->pValue);
+    ETextAlignement v = *(transferable->pValue);
     Transfer_stub(ctx, name, &v);
 }
 
 int main()
 {
     ETextAlignement value = 7;
-    Self s;
+    CPersistContext_TransferableComponent s;
     s.vtbl = 0;
     s.pValue = &value;
 

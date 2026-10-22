@@ -11,14 +11,14 @@ struct CDefBase {
 };
 
 struct CTavernTableDef : CDefBase {
-    unsigned char b25;   // +0x25
-    unsigned char b26;   // +0x26
+    unsigned char AddTankards;   // +0x25
+    unsigned char HighQualityTankards;   // +0x26
 };
 
 void __fastcall Copy(CTavernTableDef* self, void* /*edx*/, CDefClassBase const* src)
 {
     self->CDefBase::Copy(src);
     CTavernTableDef* s = (CTavernTableDef*)src;
-    self->b25 = s->b25;
-    self->b26 = s->b26;
+    self->AddTankards = s->AddTankards;
+    self->HighQualityTankards = s->HighQualityTankards;
 }

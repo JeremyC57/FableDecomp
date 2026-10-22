@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct CEnvironment {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall CEnvironment_dtor(CEnvironment* environment);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall CEnvironment_scalar_deleting_destructor(CEnvironment* environment, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CEnvironment_dtor(environment);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(environment);
+    return environment;
 }

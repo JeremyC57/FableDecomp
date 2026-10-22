@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <new>
 
-struct CLandscapeBackgroundPatch { int marker; };
+struct CInputProcessInventoryClothing { int marker; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 
 // definition of the extern scalar destructor the source calls
-extern void __fastcall CLandscapeBackgroundPatch_scalar_destructor(CLandscapeBackgroundPatch* self);
-void __fastcall CLandscapeBackgroundPatch_scalar_destructor(CLandscapeBackgroundPatch* self)
+extern void __fastcall CInputProcessInventoryClothing_scalar_destructor(CInputProcessInventoryClothing* process);
+void __fastcall CInputProcessInventoryClothing_scalar_destructor(CInputProcessInventoryClothing* process)
 {
-    (void)self;
+    (void)process;
     ++g_dtor_calls;
 }
 
@@ -23,32 +23,32 @@ void operator delete(void* p) throw()
     // no real free; test objects are stack/static
 }
 
-extern void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
-    CLandscapeBackgroundPatch* self, int edx, unsigned int flags);
+extern void* __fastcall CInputProcessInventoryClothing_scalar_deleting_destructor(
+    CInputProcessInventoryClothing* process, int edx, unsigned int flags);
 
 int main()
 {
-    CLandscapeBackgroundPatch a;
+    CInputProcessInventoryClothing a;
     a.marker = 7;
 
     // flags bit0 clear: dtor runs, no delete, returns self
     g_dtor_calls = g_delete_calls = 0; g_last_delete = 0;
-    void* r1 = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 0);
+    void* r1 = CInputProcessInventoryClothing_scalar_deleting_destructor(&a, 0, 0);
     bool ok1 = (r1 == &a) && (g_dtor_calls == 1) && (g_delete_calls == 0);
 
     // flags bit0 set: dtor runs, delete called with self, returns self
     g_dtor_calls = g_delete_calls = 0; g_last_delete = 0;
-    void* r2 = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 1);
+    void* r2 = CInputProcessInventoryClothing_scalar_deleting_destructor(&a, 0, 1);
     bool ok2 = (r2 == &a) && (g_dtor_calls == 1) && (g_delete_calls == 1) && (g_last_delete == &a);
 
     // even flags value with bit0 clear (2): no delete
     g_dtor_calls = g_delete_calls = 0; g_last_delete = 0;
-    void* r3 = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 2);
+    void* r3 = CInputProcessInventoryClothing_scalar_deleting_destructor(&a, 0, 2);
     bool ok3 = (r3 == &a) && (g_dtor_calls == 1) && (g_delete_calls == 0);
 
     // odd flags value with bit0 set (3): delete
     g_dtor_calls = g_delete_calls = 0; g_last_delete = 0;
-    void* r4 = CLandscapeBackgroundPatch_vector_deleting_destructor(&a, 0, 3);
+    void* r4 = CInputProcessInventoryClothing_scalar_deleting_destructor(&a, 0, 3);
     bool ok4 = (r4 == &a) && (g_dtor_calls == 1) && (g_delete_calls == 1);
 
     if (ok1 && ok2 && ok3 && ok4) {

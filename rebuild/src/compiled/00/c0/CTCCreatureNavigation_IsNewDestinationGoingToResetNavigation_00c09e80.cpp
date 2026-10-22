@@ -13,10 +13,10 @@ struct Delegate {
 
 struct CTCCreatureNavigation {
     void* f0;
-    Delegate* f4;
+    Delegate* ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int edx, C3DVector* v)
 {
-    return self->f4->Check(self, v);
+    return self->ParentThing->Check(self, v);
 }

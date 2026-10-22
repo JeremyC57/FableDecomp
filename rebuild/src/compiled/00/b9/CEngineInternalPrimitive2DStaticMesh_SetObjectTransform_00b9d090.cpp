@@ -5,8 +5,8 @@ struct CMatrix3x4 {
 };
 
 bool __fastcall CEngineInternalPrimitive2DStaticMesh_SetObjectTransform(
-    CEngineInternalPrimitive2DStaticMesh* self, int /*edx*/, const CMatrix3x4& matrix)
+    CEngineInternalPrimitive2DStaticMesh* mesh, int /*edx*/, const CMatrix3x4& matrix)
 {
-    *(CMatrix3x4*)&self->transform = matrix;
+    *(CMatrix3x4*)&mesh->transform = matrix;
     return true;
 }

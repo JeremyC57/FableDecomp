@@ -11,9 +11,9 @@ struct CDataInputStream {
     virtual void v1() {}
     virtual unsigned long GetPosition() { return m_position; }
     unsigned long m_position;
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;
     int m_overflowCalls;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size)

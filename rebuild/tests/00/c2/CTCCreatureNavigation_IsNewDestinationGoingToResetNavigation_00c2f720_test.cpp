@@ -25,19 +25,19 @@ struct SubBase {
 
 struct CTCCreatureNavigation {
     void* pad0;
-    SubBase* f4;
+    SubBase* ParentThing;
 };
 
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* dest)
 {
-    return self->f4->v6(self, dest);
+    return self->ParentThing->v6(self, dest);
 }
 
 int main() {
     SubBase node;
     CTCCreatureNavigation nav;
     nav.pad0 = 0;
-    nav.f4 = &node;
+    nav.ParentThing = &node;
     C3DVector dv = {1.0f, 2.0f, 3.0f};
 
     g_ret = true; g_called = 0; g_owner = 0; g_dest = 0;

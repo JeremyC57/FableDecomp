@@ -14,7 +14,7 @@ struct CHitOwner_00815e80 {
     long          m_code;                          // +0x78
 };
 struct CHitLocation {
-    long                 m_0;
+    long                 POwnerThing;
     CHitOwner_00815e80*  m_pOwner;                 // +0x04
     void ProcessHitLocationCode(long a, long b);
 };

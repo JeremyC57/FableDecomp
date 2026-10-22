@@ -1,16 +1,16 @@
 #pragma optimize("s", on)
-struct AutoTinyVectorObject
+struct CAIStateGroup_HoverWander
 {
     void* vftable;
 };
-extern void* const g_AutoTinyVectorVftable;
-extern void __fastcall AutoTinyVectorDestructor(void* self);
+extern void* const g_CAIStateGroup_HoverWander_vftable;
+extern void __fastcall CAIStateGroup_HoverWander_Destruct(void* stateGroup);
 void operator delete(void*);
-void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, unsigned int flags)
+void* __fastcall scalar_deleting_destructor(CAIStateGroup_HoverWander* stateGroup, int, unsigned int flags)
 {
-    self->vftable = (void*)&g_AutoTinyVectorVftable;
-    AutoTinyVectorDestructor(self);
+    stateGroup->vftable = (void*)&g_CAIStateGroup_HoverWander_vftable;
+    CAIStateGroup_HoverWander_Destruct(stateGroup);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(stateGroup);
+    return stateGroup;
 }

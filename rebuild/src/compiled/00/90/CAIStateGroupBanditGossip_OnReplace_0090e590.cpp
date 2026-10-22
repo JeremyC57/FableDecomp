@@ -16,8 +16,8 @@
 //   ret
 
 // external targets (become masked relocations in the .obj compare)
-extern "C" void __fastcall BaseGroupOnReplace(void* self);     // 0x90ca60
-extern "C" void __fastcall SubNotify(void* self);              // 0x664a50
+extern "C" void __fastcall BaseGroupOnReplace(void* stateGroup);     // 0x90ca60
+extern "C" void __fastcall SubNotify(void* stateGroup);              // 0x664a50
 
 struct CAIStateGroup_BanditGossip {
     void*  vtbl;          // +0x00

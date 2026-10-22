@@ -1,5 +1,5 @@
 #include "engine/CAnimComponentCombatFlourishTargetOffset.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CAnimComponentCombatFlourishTargetOffset_Methods : CAnimComponentCombatFlourishTargetOffset {
-    void M();
+    void SetDefaultValue();
 };
-void CAnimComponentCombatFlourishTargetOffset_Methods::M(){ this->TargetOffset = 0u; }
+void CAnimComponentCombatFlourishTargetOffset_Methods::SetDefaultValue(){ this->TargetOffset = 0u; }

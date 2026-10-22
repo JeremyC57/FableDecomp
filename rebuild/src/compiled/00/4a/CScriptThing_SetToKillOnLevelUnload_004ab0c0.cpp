@@ -71,5 +71,5 @@ struct P {
   virtual char d69(){return 0;}
   virtual void tgt(int x);
 };
-struct S { char pad[4]; P* f4; void M(int x); };
-void S::M(int x){ P* p=this->f4; if(p) p->tgt(x); }
+struct CScriptThing { char pad[4]; P* f4; void SetToKillOnLevelUnload(int x); };
+void CScriptThing::SetToKillOnLevelUnload(int x){ P* p=this->f4; if(p) p->tgt(x); }

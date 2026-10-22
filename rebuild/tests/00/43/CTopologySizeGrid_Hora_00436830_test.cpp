@@ -6,14 +6,14 @@ struct CTopologySizeGrid {
     int pad8;
     int padC;
     int pad10;
-    int* p14;   // +0x14
+    int* UnitSizeVert;   // +0x14
 };
 
 float* __fastcall CTopologySizeGrid_Hora(CTopologySizeGrid* self, int edx_unused, unsigned char i, int b, int c)
 {
     unsigned int idx = (unsigned char)i;
     int* rowbase = self->p4;
-    int* ptrs = self->p14;
+    int* ptrs = self->UnitSizeVert;
     int t = rowbase[idx * 5 + 1] * c;
     int base = ptrs[idx * 3];
     t = t + b;
@@ -33,7 +33,7 @@ int main()
 
     CTopologySizeGrid g;
     g.p4 = rowbase;
-    g.p14 = ptrs;
+    g.UnitSizeVert = ptrs;
 
     unsigned char i = 2;
     int b = 5;

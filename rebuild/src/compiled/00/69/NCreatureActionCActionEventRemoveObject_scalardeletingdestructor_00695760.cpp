@@ -1,12 +1,12 @@
 #pragma optimize("t", on)
-extern void __fastcall AutoTinyMemberDestructor(void* member);
-extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
-void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall DestructMember(void* member);
+extern void __fastcall CActionEventRemoveObject_Destruct(void* action);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CActionEventRemoveObject_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor(static_cast<unsigned char*>(self) + 20);
-    AutoTinyCompositeDestructor(self);
+    DestructMember(static_cast<unsigned char*>(action) + 20);
+    CActionEventRemoveObject_Destruct(action);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(action);
+    return action;
 }

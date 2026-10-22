@@ -17,7 +17,7 @@ void __fastcall Sub_Handle(Sub* thisp, int edxArg, unsigned char stackArg)
 
 struct CTCVillage {
     Sub*          f0;
-    int           f4;
+    int           ParentThing;
     char          pad8[4];
     unsigned char f0c;
     unsigned char f0d;
@@ -26,7 +26,7 @@ struct CTCVillage {
 void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->f0d) {
-        Sub_Handle(self->f0, self->f4, self->f0c);
+        Sub_Handle(self->f0, self->ParentThing, self->f0c);
         self->f0d = 0;
     }
 }
@@ -35,7 +35,7 @@ int main()
 {
     Sub s; s.tag = 77;
     CTCVillage v;
-    v.f0 = &s; v.f4 = 0x1234; v.f0c = 0xAB; v.f0d = 1;
+    v.f0 = &s; v.ParentThing = 0x1234; v.f0c = 0xAB; v.f0d = 1;
 
     OnInitialActivate(&v);
     if (g_called != 1 || g_this != &s || g_edx != 0x1234 || g_stack != 0xAB || v.f0d != 0) {

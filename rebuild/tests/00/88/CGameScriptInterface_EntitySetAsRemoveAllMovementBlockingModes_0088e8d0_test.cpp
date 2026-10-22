@@ -32,7 +32,7 @@ struct CScriptThing { CThing_Retail* m_pThing; virtual CThing_Retail* GetThing()
 static CThing_Retail g_thing; static CScriptThing g_script;
 static void reset(unsigned char type, unsigned char flags) { g_thing = CThing_Retail(); g_thing.m_type = type; g_thing.m_flags = flags; g_script.m_pThing = &g_thing; g_seq[0] = 0; g_valid = true; }
 struct CDisplayEngine_Retail; struct CPlayerManager_Retail; struct CWorld;
-struct CGameScriptInterface { virtual void v000() { } CWorld* World; long m_08; CDisplayEngine_Retail* DisplayEngine; long m_10; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
+struct CGameScriptInterface { virtual void v000() { } CWorld* World; long Component; CDisplayEngine_Retail* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
     void EntitySetAsRemoveAllMovementBlockingModes(CScriptThing& thing) const {if (thing.IsValid()) { if (thing.GetThing()->m_flags & 8) thing.GetThing()->RemoveMovementBlockingModes(); }}
 };
 

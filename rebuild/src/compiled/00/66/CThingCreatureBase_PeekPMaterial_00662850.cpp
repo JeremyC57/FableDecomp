@@ -7,11 +7,11 @@
 // Tiny-body shape `SetOut` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CThingPlayerCreature {
-    void vfunc_58(long* out);
+struct CThingCreatureBase {
+    void PeekPMaterial(long* out);
 };
 
-void CThingPlayerCreature::vfunc_58(long* out)
+void CThingCreatureBase::PeekPMaterial(long* out)
 {
     *out = 0x0;
 }

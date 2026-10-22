@@ -11,10 +11,10 @@ struct Helper {
 };
 struct CTCCreatureNavigation {
   void* f0;
-  Helper* f4;
+  Helper* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* v);
 };
 bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* v)
 {
-  return this->f4->m6(this, v);
+  return this->ParentThing->m6(this, v);
 }

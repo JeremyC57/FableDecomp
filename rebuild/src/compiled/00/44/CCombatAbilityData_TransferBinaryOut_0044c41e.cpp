@@ -7,8 +7,8 @@ struct CBinaryStream {
 struct CCombatAbilityData {
     int   field_0;
     int   int4;
-    float f8;
-    float fc;
+    float SecondsDuration;
+    float SecondsToWaitBeforeRepeat;
     int   int10;
 };
 
@@ -16,7 +16,7 @@ void __fastcall CCombatAbilityData_TransferBinaryOut(CCombatAbilityData* self, v
 {
     (void)edx; (void)extra;
     stream->PutInt(self->int4);
-    stream->PutFloat(*(volatile float*)&self->f8);
-    stream->PutFloat(*(volatile float*)&self->fc);
+    stream->PutFloat(*(volatile float*)&self->SecondsDuration);
+    stream->PutFloat(*(volatile float*)&self->SecondsToWaitBeforeRepeat);
     stream->PutInt(self->int10);
 }

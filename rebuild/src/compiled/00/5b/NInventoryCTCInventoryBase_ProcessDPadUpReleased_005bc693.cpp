@@ -7,7 +7,7 @@
 // Tiny-body shape `TailVirtual` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CThingFilter_IsValid {
+struct CTCInventoryBase {
     virtual void v00();
     virtual void v04();
     virtual void v08();
@@ -50,7 +50,7 @@ struct CThingFilter_IsValid {
     void CallVirtual38_005bc693();
 };
 
-void CThingFilter_IsValid::CallVirtual38_005bc693()
+void CTCInventoryBase::CallVirtual38_005bc693()
 {
     Virtual38();
 }

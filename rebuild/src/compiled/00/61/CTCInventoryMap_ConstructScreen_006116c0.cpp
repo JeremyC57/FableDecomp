@@ -9,10 +9,10 @@
 // name is unknown (catalog label kept); the two trailing arguments are modelled as bools. Local model.
 struct CTCInventoryMap {
     void BuildMapTeleportUI(long screen, bool forceRebuild, bool keepSelection);   // 0x0060C900
-    void vfunc_77(long screen);
+    void ConstructScreen(long screen);
 };
 
-void CTCInventoryMap::vfunc_77(long screen)
+void CTCInventoryMap::ConstructScreen(long screen)
 {
     BuildMapTeleportUI(screen, false, false);
 }

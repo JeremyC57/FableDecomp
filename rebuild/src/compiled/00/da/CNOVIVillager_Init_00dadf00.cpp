@@ -610,8 +610,8 @@ struct CNOVI_Villager {
     long                   m_0;
     CGameCalls_00dadf00*   PGame;                  // +0x04
     CScriptThing           Thing;                  // +0x08
-    long                   m_14;
-    long                   m_18;
+    long                   ParentClass;
+    long                   PMasterData;
     bool                   m_1c;                   // +0x1c
     void Init();
 };

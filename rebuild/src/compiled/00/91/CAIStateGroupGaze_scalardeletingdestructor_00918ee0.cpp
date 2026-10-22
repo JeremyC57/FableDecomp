@@ -1,14 +1,14 @@
 #pragma optimize("t", on)
-extern void __fastcall AutoTinyFirstMemberDestructor(void* member);
-extern void __fastcall AutoTinySecondMemberDestructor(void* member);
-extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+extern void __fastcall DestructFirstMember(void* member);
+extern void __fastcall DestructSecondMember(void* member);
+extern void __fastcall CAIStateGroup_Gaze_Destruct(void* stateGroup);
+extern void __cdecl OperatorDelete(void* object);
+void* __fastcall CAIStateGroup_Gaze_CompositeScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 20);
-    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 12);
-    AutoTinyCompositeDestructor(self);
+    DestructFirstMember(static_cast<unsigned char*>(stateGroup) + 20);
+    DestructSecondMember(static_cast<unsigned char*>(stateGroup) + 12);
+    CAIStateGroup_Gaze_Destruct(stateGroup);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
+        OperatorDelete(stateGroup);
+    return stateGroup;
 }

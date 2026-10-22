@@ -1,14 +1,14 @@
-struct CLandscapeBackgroundPatch {
+struct C3DQuadricBasedMeshOptimiser {
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
+void __fastcall C3DQuadricBasedMeshOptimiser_dtor(C3DQuadricBasedMeshOptimiser* optimiser);
 void operator delete(void*);
 
-void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
+void* __fastcall C3DQuadricBasedMeshOptimiser_scalar_deleting_destructor(C3DQuadricBasedMeshOptimiser* optimiser, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    C3DQuadricBasedMeshOptimiser_dtor(optimiser);
     if (flags & 1)
-        operator delete(self);
-    return self;
+        operator delete(optimiser);
+    return optimiser;
 }

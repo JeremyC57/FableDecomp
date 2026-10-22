@@ -42,7 +42,7 @@ struct Sub4 {
 
 struct CTCInGameMenu {
     void* v0field;                  // +0x0
-    Sub4* field4;                   // +0x4
+    Sub4* ParentThing;                   // +0x4
     void ApplyGuiField(int v);      // __fastcall member (masked callee)
     void OnCreate();
 };
@@ -50,7 +50,7 @@ struct CTCInGameMenu {
 void CTCInGameMenu::OnCreate()
 {
     GuiHolder h;
-    field4->provider70->GetHeld(&h);
+    ParentThing->provider70->GetHeld(&h);
     GuiObject* o = h.obj;
     ApplyGuiField(o->fieldA8);
     if (--o->refs == 0)

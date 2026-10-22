@@ -8,15 +8,15 @@ static int g_sub_called = 0;
 static int g_base_called = 0;
 
 void Sub8(void* p) { g_sub_called++; (void)p; }
-void Base(Obj* self) { g_base_called++; (void)self; }
+void Base(Obj* action) { g_base_called++; (void)action; }
 
-void FrameUpdate(Obj* self)
+void FrameUpdate(Obj* action)
 {
-    int v = self->m1c + 7;
-    if (v >= self->m10) {
-        Sub8(&self->m08);
+    int v = action->m1c + 7;
+    if (v >= action->m10) {
+        Sub8(&action->m08);
     }
-    Base(self);
+    Base(action);
 }
 
 int main()

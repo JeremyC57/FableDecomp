@@ -19,9 +19,9 @@ struct C2DVector {
 struct CMemoryDataInputStream {
     void* m_pVtable;                            // +0x00
     unsigned long m_position;                   // +0x04
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;               // +0x0c current chunk read pointer
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;                           // +0x14 bytes left in the current chunk
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     C2DVector ReadC2DVector();                  // 0x00995030

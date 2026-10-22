@@ -8,7 +8,7 @@ struct CDefClassBase;
 struct CCardDef {
     char pad[0x3c];
     unsigned int f3c;   // +0x3c
-    unsigned int f40;   // +0x40
+    unsigned int CardName;   // +0x40
 };
 
 // base-class Copy (non-virtual direct call @ 0x431ed0), __fastcall(this, src)
@@ -18,5 +18,5 @@ void __fastcall CCardDef_Copy(CCardDef* self, int edx_, CDefClassBase const* src
 {
     BaseCopy(self, edx_, src);
     self->f3c = ((CCardDef const*)src)->f3c;
-    self->f40 = ((CCardDef const*)src)->f40;
+    self->CardName = ((CCardDef const*)src)->CardName;
 }

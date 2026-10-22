@@ -30,9 +30,9 @@ struct CDataInputStream {
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
-    long m_08;
+    long StreamSize;
     const unsigned char* m_pData;          // +0xC
-    long m_10;
+    long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
@@ -192,7 +192,7 @@ void CChunkedFileSuperChunk::ReadFromFile(CDataInputStream& in, unsigned long ch
 
 static void Reset() { gGetPos = 0; gOverflowCalls = 0; gOverflowSize = 0; gBaseCalls = 0; gBaseIn = 0; gBaseSize = 0; gBaseLoader = 0; }
 static void SetStream(CDataInputStream& s, unsigned long pos, const unsigned char* data, long remaining)
-{ s.m_position = pos; s.m_08 = 0; s.m_pData = data; s.m_10 = 0; s.m_remaining = remaining; }
+{ s.m_position = pos; s.StreamSize = 0; s.m_pData = data; s.SourceChunkStreamPos = 0; s.m_remaining = remaining; }
 
 int main()
 {
