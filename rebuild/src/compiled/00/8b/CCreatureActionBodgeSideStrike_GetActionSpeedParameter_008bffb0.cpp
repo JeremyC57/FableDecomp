@@ -15,8 +15,8 @@
 
 extern float g_FloatOne;
 
-float __fastcall CCreatureAction_BodgeSideStrike__GetActionSpeedParameter(void *this_ptr)
+float __fastcall CCreatureAction_BodgeSideStrike__GetActionSpeedParameter(void *action)
 {
-    (void)this_ptr;
+    (void)action;
     return g_FloatOne;
 }

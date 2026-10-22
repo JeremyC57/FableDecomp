@@ -18,18 +18,18 @@ struct ScopeGuard { char buf[0x18]; void init(int flag); };
 
 extern void __stdcall SomeGlobalFunc(const void* arg);
 
-void __fastcall CScrollingComponent_ChangeState(CScrollingComponent* self, void* edx, IVisitor* p)
+void __fastcall CScrollingComponent_ChangeState(CScrollingComponent* component, void* edx, IVisitor* p)
 {
     SomeGlobalFunc((const void*)0x122d70e);
     ScopeGuard g;
     g.init(0);
-    int s = self->state;
+    int s = component->state;
     switch (s) {
     case 2:
-        p->f01(self->field24, p);
+        p->f01(component->field24, p);
         break;
     case 3:
-        p->f02(self->field28, p);
+        p->f02(component->field28, p);
         break;
     }
 }

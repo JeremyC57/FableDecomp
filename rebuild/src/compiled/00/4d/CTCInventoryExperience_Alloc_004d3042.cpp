@@ -1,0 +1,22 @@
+#pragma optimize("s",on)
+// CTCInventoryExperience::Alloc(CThing&) -- factory: new CTCInventoryExperience(owner)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3042, oracle length 32 bytes.
+// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
+//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
+//
+// Retail bytes:  push esi ; push 0x270 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCInventoryExperience::CTCInventoryExperience ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
+// A __fastcall factory: allocates sizeof(CTCInventoryExperience) = 0x270 bytes (operator new @ 0x00BFEA1A,
+// landed-trusted), null-checks the block and runs the constructor @ 0x0057832D on it with the
+// argument, returning the new object (or null). One of 338 bodies of this shape; the class
+// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+struct CThing;
+
+struct CTCInventoryExperience {
+    unsigned char _body[0x270];       // sizeof(CTCInventoryExperience) = 0x270
+    CTCInventoryExperience(CThing* owner);                   // 0x0057832D
+};
+
+CTCInventoryExperience* __fastcall CTCInventoryExperience_Alloc(CThing* owner)
+{
+    return new CTCInventoryExperience(owner);
+}

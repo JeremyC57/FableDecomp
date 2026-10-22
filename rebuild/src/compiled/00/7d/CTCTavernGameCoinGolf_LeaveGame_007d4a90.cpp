@@ -1,4 +1,4 @@
-// CTCTavernGameCoinGolf::vfunc_30() -- LeaveGame override: coin-base LeaveGame, fade the table occupants back in, then (when the world hands out a camera manager) restore automatic camera control and reset the camera
+// CTCTavernGameCoinGolf::LeaveGame() -- LeaveGame override: coin-base LeaveGame, fade the table occupants back in, then (when the world hands out a camera manager) restore automatic camera control and reset the camera
 // Retail: Fable.exe @ 0x007D4A90, 69 bytes (vtable 0x0126F49C slot 30 = the LeaveGame slot).
 // Callees: CTCTavernGameCoinBase::LeaveGame 0x008EF110 (non-virtual base call),
 //          CTCTavernGameCoinGolf::FadeOutTableOccupants(bool) 0x007D46D0, CTCBase::GetWorld 0x00686A70

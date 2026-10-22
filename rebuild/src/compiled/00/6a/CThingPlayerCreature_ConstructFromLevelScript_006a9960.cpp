@@ -1,4 +1,4 @@
-// CThingPlayerCreature::vfunc_4(const char*) -- base construct step, then MaxHealth from the creature def, Health filled when it is still 0, and the Drawable flag set
+// CThingPlayerCreature::ConstructFromLevelScript(const char*) -- base construct step, then MaxHealth from the creature def, Health filled when it is still 0, and the Drawable flag set
 // Retail: Fable.exe 0x006A9960, 82 bytes (CThingPlayerCreature vtable 0x012457FC slot 4).
 // Callees: CThingCreatureBase 0x00662930 (manifest "ConstructFromLevelScript", the direct base call);
 // float pool 0x0122DEDC = 0.0f.

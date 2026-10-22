@@ -1,4 +1,4 @@
-// CTCDParticleEmitter::DrawPreparePrimitivesForRendering(long) -- calls the method @ 0x006E0470 on the member at +0x1c (the argument is unused)
+// CTCDParticleEmitter::DrawPreparePrimitivesForRendering(long) -- calls the method @ 0x00A01B50 on the member at +0x1c (the argument is unused)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0470, oracle length 11 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

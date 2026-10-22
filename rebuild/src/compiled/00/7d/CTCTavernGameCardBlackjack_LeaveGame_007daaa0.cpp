@@ -1,4 +1,4 @@
-// CTCTavernGameCardBlackjack::vfunc_30() -- LeaveGame override: card-base LeaveGame, then clears the card vector at +0x318 (erase(begin(), end()))
+// CTCTavernGameCardBlackjack::LeaveGame() -- LeaveGame override: card-base LeaveGame, then clears the card vector at +0x318 (erase(begin(), end()))
 // Retail: Fable.exe @ 0x007DAAA0, 59 bytes (vtable 0x0126F8F4 slot 30 = the LeaveGame slot; the
 //         CardSorting/CardPairs slot-30 overrides carry the LeaveGame label).
 // Callees: CTCTavernGameCardBase::LeaveGame 0x008F20F0, memmove 0x00BFEAE6.

@@ -27,8 +27,8 @@ public:
     char  pad00[0x18];
     int   mode;                  // +0x18
     char  pad1C[0x08];
-    int   obj24;                 // +0x24
-    Sink* sink28;                // +0x28
+    int   PLoadStream;                 // +0x24
+    Sink* PSaveStream;                // +0x28
     void TransferBool(unsigned char* p);
 };
 
@@ -41,10 +41,10 @@ void CPersistContext::TransferBool(unsigned char* p)
     h.flag = 0;
     switch (this->mode) {
     case 2:
-        h.Fill(this->obj24, p);
+        h.Fill(this->PLoadStream, p);
         break;
     case 3:
-        this->sink28->Take(*p);
+        this->PSaveStream->Take(*p);
         break;
     }
 }

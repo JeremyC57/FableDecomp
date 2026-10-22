@@ -1,4 +1,4 @@
-// CThingPhysicalSwitch::vfunc_8() -- normalises OnCreate()'s byte result to a bool
+// CThingPhysicalSwitch::OnCreate() -- normalises OnCreate()'s byte result to a bool
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083D6F0, oracle length 11 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

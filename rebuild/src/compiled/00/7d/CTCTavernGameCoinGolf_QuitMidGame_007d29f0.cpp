@@ -1,4 +1,4 @@
-// CTCTavernGameCoinGolf::QuitMidGame() -- sets the flag bytes at +0x28 and +0x21 and calls the member method @ 0x007D29F0 with the constant 6
+// CTCTavernGameCoinGolf::QuitMidGame() -- sets the flag bytes at +0x28 and +0x21 and calls the member method @ 0x005E9B20 with the constant 6
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D29F0, oracle length 16 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

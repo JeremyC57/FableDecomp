@@ -37,14 +37,14 @@ struct CMouseDX
 };
 
 // __fastcall(thisptr in ecx, unused edx, position) models the __thiscall member.
-void __fastcall CMouseDX_SetPos(CMouseDX* self, void* /*edx*/, const C2DVector* position)
+void __fastcall CMouseDX_SetPos(CMouseDX* mouseDX, void* /*edx*/, const C2DVector* position)
 {
-    self->PositionX = position->X;
-    self->PositionY = position->Y;
-    self->CachedPositionX = self->PositionX;
-    self->CachedPositionY = self->PositionY;
+    mouseDX->PositionX = position->X;
+    mouseDX->PositionY = position->Y;
+    mouseDX->CachedPositionX = mouseDX->PositionX;
+    mouseDX->CachedPositionY = mouseDX->PositionY;
 
-    if (self->DisableCursorWarp != 0)
+    if (mouseDX->DisableCursorWarp != 0)
         return;
 
     void* window = ResolveMouseWindowOwner()->Window;
@@ -58,8 +58,8 @@ void __fastcall CMouseDX_SetPos(CMouseDX* self, void* /*edx*/, const C2DVector* 
     FableGetClientRect(window, &rect);
     FableOffsetRect(&rect, pt.x, pt.y);
 
-    const int& x = (int)((float)rect.left + self->PositionX);
-    const int& y = (int)((float)rect.top + self->PositionY);
+    const int& x = (int)((float)rect.left + mouseDX->PositionX);
+    const int& y = (int)((float)rect.top + mouseDX->PositionY);
     FableSetCursorPos(x, y);
 }
 

@@ -1,4 +1,4 @@
-// CTCTavernGameCoinGolf::vfunc_11(CRenderContext* context) -- DrawPreparePrimitivesForRendering override: base draw-prepare, then FadeOutTableOccupants(false) while the game is being played
+// CTCTavernGameCoinGolf::DrawPreparePrimitivesForRendering(CRenderContext* context) -- DrawPreparePrimitivesForRendering override: base draw-prepare, then FadeOutTableOccupants(false) while the game is being played
 // Retail: Fable.exe @ 0x007D4A60, 33 bytes (vtable 0x0126F49C slot 11, `ret 4`; slot 11 of the
 //         CTCTavernGame vtable 0x012560BC is DrawPreparePrimitivesForRendering 0x005ECA50).
 // Callees: CTCTavernGame::DrawPreparePrimitivesForRendering 0x005ECA50 (non-virtual base call),

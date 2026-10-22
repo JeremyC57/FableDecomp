@@ -1,4 +1,4 @@
-// CTCTavernGameSpotTheAddition::vfunc_11(CRenderContext* context) -- DrawPreparePrimitivesForRendering override: base draw-prepare, then while the game is played fetches (and immediately drops) the spot-the-addition definition
+// CTCTavernGameSpotTheAddition::DrawPreparePrimitivesForRendering(CRenderContext* context) -- DrawPreparePrimitivesForRendering override: base draw-prepare, then while the game is played fetches (and immediately drops) the spot-the-addition definition
 // Retail: Fable.exe @ 0x007D7EC0, 66 bytes (vtable 0x0126F814 slot 11, `ret 4`).
 // Callees: CTCTavernGame::DrawPreparePrimitivesForRendering 0x005ECA50 (non-virtual base call),
 //          CDefClassBase::GetSubDef<T>(CDefPointer<T>*) 0x007D9A80 (bool; result unused).

@@ -15,8 +15,8 @@
 
 extern float g_FloatOne;
 
-float __fastcall CCreatureAction_TrollProjectileAttack__GetIsToFaceTargetCone(void *this_ptr)
+float __fastcall CCreatureAction_TrollProjectileAttack__GetIsToFaceTargetCone(void *action)
 {
-    (void)this_ptr;
+    (void)action;
     return g_FloatOne;
 }

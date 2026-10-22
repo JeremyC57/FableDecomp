@@ -1,4 +1,4 @@
-// CTCTavernGameSpotTheAddition::vfunc_30() -- LeaveGame override: base LeaveGame, then fetches the camera manager from the world, releases scripted camera control and resets the camera
+// CTCTavernGameSpotTheAddition::LeaveGame() -- LeaveGame override: base LeaveGame, then fetches the camera manager from the world, releases scripted camera control and resets the camera
 // Retail: Fable.exe @ 0x007D7B40, 50 bytes (vtable 0x0126F814 slot 30 = the LeaveGame slot).
 // Callees: CTCTavernGame::LeaveGame 0x005EC650 (non-virtual base call), CTCBase::GetWorld 0x00686A70 (manifest
 //          "CViewBase::GetDisplayEngine" is propagated), the world's +0x34 object's virtual slot 9

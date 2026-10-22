@@ -1,4 +1,4 @@
-// QuadricOptimiserInternals::COptimisedMesh::`scalar deleting destructor'(unsigned int flags) -- destroy the member at +4 (0x00AD83A0, labelled "CActiveFile::OnReadFinished"), then the C3DOptimisedMeshBase base's inline destructor (its vtable 0x0129F048, CBaseClassNonCopyable::~ @ 0x00AD88C0) and free for flag bit 0
+// QuadricOptimiserInternals::COptimisedMesh::`scalar deleting destructor'(unsigned int flags) -- destroy the member at +4 (0x00AD83A0, labelled "CActiveFile::OnReadFinished"), then the C3DOptimisedMeshBase base's inline destructor (its vtable 0x0129F048, CBaseClassNonCopyable::~ @ 0x0099A300) and free for flag bit 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD88C0, length 46 bytes.
 // Leaf: ??_GCLoadedMesh_00ad88c0@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: the derived class stores no vtable of its own (its vtable folds into the base's), the base's inline destructor stores the base vtable, `ret 4`.

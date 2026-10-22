@@ -1,4 +1,4 @@
-// CTCVolumeContainmentTracker::OnCreate() -- passes the member at +0x1c by address to the method @ 0x00785150 of the object at +0x70 of the object at +0x4
+// CTCVolumeContainmentTracker::OnCreate() -- passes the member at +0x1c by address to the method @ 0x00785010 of the object at +0x70 of the object at +0x4
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00785150, oracle length 16 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

@@ -4,10 +4,10 @@
 
 struct C2DVector { float x; float y; };
 
-void __fastcall CJoystickDX_SetAxes(CJoystickDX* self, int /*edx*/, const C2DVector& v)
+void __fastcall CJoystickDX_SetAxes(CJoystickDX* joystickDX, int /*edx*/, const C2DVector& v)
 {
-    *(float*)&self->f = v.x;
-    *(float*)&self->f_2 = v.y;
+    *(float*)&joystickDX->f = v.x;
+    *(float*)&joystickDX->f_2 = v.y;
 }
 
 int main()

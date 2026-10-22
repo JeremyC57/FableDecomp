@@ -1,4 +1,4 @@
-// CTCTavernGameCardPairs::vfunc_29() -- enter the card game, then create the pointer game piece from the card def and place it at the game position, raised by the def's pointer height
+// CTCTavernGameCardPairs::EnterGame() -- enter the card game, then create the pointer game piece from the card def and place it at the game position, raised by the def's pointer height
 // Leaf: vfunc_29
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D60C0, length 143 bytes (padded row 144); CTCTavernGameCardPairs vtable 0x0126F6FC slot 29
 // (an EnterGame override: it starts with CTCTavernGameCardBase::EnterGame).
