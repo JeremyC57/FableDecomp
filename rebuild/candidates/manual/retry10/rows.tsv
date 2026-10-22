@@ -2294,3 +2294,24 @@ address	module	name	length	chunk	reason
 00b2bd80	CEngineSurfaceCompositionManager	WriteTextureToBank	656	hand286	DIFFER(641v641) -- frame-slot layout only (instructions identical): retail packs offset@+0x20, level@+0x28, top-level size@+0x30,
 00b2c010	CEngineSurfaceCompositionManager	PreloadCompletedBank	1008	hand286	DIFFER(953v993) -- register/frame allocation in the preload pass: retail hoists 0 into ebp (push ebp; cmp reg,ebp; mov [x],ebp) a
 00b2c4e0	CEngineSurfaceCompositionManager	AddCustomMorphTexture	1024	hand286	DIFFER(1042v1009) -- register allocation + frame packing: retail this=ebx, name=ebp, texture read from its arg slot, -1 built local
+00bf2b50	CEngineTreeFilerBase	ConvertListToTree	688	hand287	DIFFER(732v682) -- /GS: retail keeps the 32-step loop rolled where VC7.1 unrolls it 4x; frame 8 bytes short
+00b6dc40	CEngineWaterRenderer	ProcessSeaLoading	784	hand287	DIFFER(773v771) -- GetEntryDataSize evaluated before the read-priority global load and pop edi after the last UnloadSea store; 15 advisor grades (A3)
+00b51ad0	CEngineWeatherRenderer	BuildBoxPositionMatrix	976	hand287	DIFFER(951v969) -- inline-asm fistp rounding helper in retail (asm_bake lane gap), parked at once
+00b50fb0	CEngineWeatherSettings	CEngineWeatherSettings	1024	hand287	DIFFER(1034v1018) -- retail materialises the zero constant in eax before the first C3DVector temporaries; ours after MistVertexSpan2; loop padding follows
+00b420f0	CEngineWorldMap	CEngineWorldMap::OpenMapFile	672	hand287	DIFFER(658v662) -- VC7.1 keeps the entry argument in ebx and zero in edi; retail reloads [ebp+8], keeps this in edi and zero in ebx
+006b3030	CEnvironment	UpdateWind	624	hand287	DIFFER(619v619) -- epilogue pop edi hoisted by VC7.1 (RTM and QFE) to after the last [edi] read; retail keeps it at the end
+006b3ff0	CEnvironment	Update	768	hand287	DIFFER(751v758) -- retail frame 0x244 vs 0x210 here (GetPosition return temp placement); RainEnabled zeroing store laid out of line
+008884d0	CEnvironmentThemePriorityStackEntry	GetLevelTheme	528	hand287	DIFFER(514v514) -- one register pair in the inline blended-array teardown: retail mov esi,[First]; mov ecx,esi vs ours mov ecx,[First]; mov esi,ecx
+008886e0	CEnvironmentThemePriorityStackEntry	BlendInLevel	736	hand287	DIFFER(727v727) -- same teardown register pair as 0x008884D0
+009c3c20	CFileInstaller	ProcessActiveFileForDecompression	912	hand287	DIFFER(877v909) -- first pass: retail keeps finished flag / read size in the dead argument slot (lane gap), rotated decompress loop, out-of-line dirty-disc exits
+009c4440	CFileInstaller	IsFileCopyNecessary	624	hand287	DIFFER(625v609) -- retail keeps a dead load of DirtyDiscError in the inlined SetDirtyDiscError; source/dest spill words swapped
+009ff220	CFrameData	UploadFrame	544	hand287	DIFFER(536v540) -- volume-arm register allocation (retail: level in the dead param slot, bank in a frame word, file data in ebx, &LoadingManagedTexture in ebp); 8 order/stand-in variants
+0054d660	CFrontEndList	Initialise	1008	hand287	DIFFER(976v1001) -- retail keeps a function-wide zero in ebp, shares one xor on the counted-pointer null paths, different back() index registers
+00599e3f	CFrontEndManager	Update	1017	hand287	DIFFER(1019v1017) -- one line: the profile-name search loads begin through eax then edi where retail loads edi directly (12 loop spellings + C1 stand-ins)
+00698170	CGameCameraManager	?IsVolumeInViewingFrustrum@CGameCameraManager@@UBE_NABVC3DVector@@M@Z	704	hand287	DIFFER(693v693) -- one scheduling slot: retail interleaves the perp.y fld/fmul before push ebp at the first IsPosInViewingFrustrum call
+00699670	CGameCameraManager	UpdateHeightLimits	768	hand287	DIFFER(759v761) -- frame-slot assignment of the parameter copies / position / vectors plus one fstp scheduled before a lea
+00446330	CGamePlayerInterface	GetInputProcessEvent	1008	hand287	DIFFER(1026v1002) -- /GS first pass; retail puts the alt-key query event between bestEvent and the result buffers, VC7.1 puts it last (frame layout)
+00895190	CGameScriptInterface	CGameScriptInterface::GiveThingItemInSlot	528	hand287	DIFFER(520v525) -- retail spills this to a frame word and keeps &itemDefName in ebp; VC7.1 keeps this in ebp
+00896390	CGameScriptInterface	CGameScriptInterface::OpenChest	720	hand287	DIFFER(698v711) -- retail saves all four registers up front and shares one return-false tail; VC7.1 shrink-wraps ebx/ebp and inlines early returns
+00897fa0	CGameScriptInterface	?MakeHeroCarryItemInHand@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z	544	hand287	DIFFER(541v541) -- frame and slots as retail after LowerBound stand-ins; object/item ebx-ebp register swap left
+0089c910	CGameScriptInterface	CanThingBe_Sensed_ByOtherThing	1024	hand287	DIFFER(1136v1016) -- shared return-false tail and cross-jumped sight tails in retail; VC7.1 CSEs the whole squares sum (test ah,0x41/jp) and orders cos(FOV) later

@@ -268216,6 +268216,141 @@ $catalog = @(
         TestSource = '00/bf/CEnginePrimitiveRenderUtil_SetupStencilMask_00bf1030_test.cpp'
         PassPattern = '00bf1030_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004558df'
+        Module = 'CEnvironmentDef'
+        Source = '00/45/CEnvironmentDef_Transfer_004558df.cpp'
+        TestSource = '00/45/CEnvironmentDef_Transfer_004558df_test.cpp'
+        PassPattern = '004558df_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00496070'
+        Module = 'CFrontendGameComponent'
+        Source = '00/49/CFrontendGameComponent_CFrontendGameComponent_00496070.cpp'
+        TestSource = '00/49/CFrontendGameComponent_CFrontendGameComponent_00496070_test.cpp'
+        PassPattern = '00496070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00594fdb'
+        Module = 'CFrontEndManager'
+        Source = '00/59/CFrontEndManager_GenerateAboutMessage_00594fdb.cpp'
+        TestSource = '00/59/CFrontEndManager_GenerateAboutMessage_00594fdb_test.cpp'
+        PassPattern = '00594fdb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b4900'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_CEnvironment_006b4900.cpp'
+        TestSource = '00/6b/CEnvironment_CEnvironment_006b4900_test.cpp'
+        PassPattern = '006b4900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b1f10'
+        Module = 'CFishingDef'
+        Source = '00/7b/CFishingDef_Transfer_007b1f10.cpp'
+        TestSource = '00/7b/CFishingDef_Transfer_007b1f10_test.cpp'
+        PassPattern = '007b1f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089b780'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_EntityTeleportToPosition_0089b780.cpp'
+        TestSource = '00/89/CGameScriptInterface_EntityTeleportToPosition_0089b780_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0089b780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c53a0'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_ProcessReads_009c53a0.cpp'
+        TestSource = '00/9c/CFileInstaller_ProcessReads_009c53a0_test.cpp'
+        PassPattern = '009c53a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b52b30'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_WorldFrameUpdate_00b52b30.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_WorldFrameUpdate_00b52b30_test.cpp'
+        PassPattern = '00b52b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6e010'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b6/CEngineWaterRenderer_RenderBackgroundPatch_00b6e010.cpp'
+        TestSource = '00/b6/CEngineWaterRenderer_RenderBackgroundPatch_00b6e010_test.cpp'
+        PassPattern = '00b6e010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7c510'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_SetupSeaMidgroundShaderConstantsAndFog_00b7c510.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_SetupSeaMidgroundShaderConstantsAndFog_00b7c510_test.cpp'
+        PassPattern = '00b7c510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7eec0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_SetupForegroundShaderConstantsAndFog_00b7eec0.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_SetupForegroundShaderConstantsAndFog_00b7eec0_test.cpp'
+        PassPattern = '00b7eec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7f0f0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_SetupBackgroundShaderConstantsAndFog_00b7f0f0.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_SetupBackgroundShaderConstantsAndFog_00b7f0f0_test.cpp'
+        PassPattern = '00b7f0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7f3b0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_SetupIceForegroundShaderConstantsAndFog_00b7f3b0.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_SetupIceForegroundShaderConstantsAndFog_00b7f3b0_test.cpp'
+        PassPattern = '00b7f3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7fa20'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_SetupSeaNonReflectiveForegroundShaderConstantsAn_00b7fa20.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_SetupSeaNonReflectiveForegroundShaderConstantsAn_00b7fa20_test.cpp'
+        PassPattern = '00b7fa20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c22520'
+        Module = 'CEngineVSConstantBlockSet'
+        Source = '00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp'
+        TestSource = '00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c22520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c65170'
+        Module = 'CEntity'
+        Source = '00/c6/CEntity_SetLightComponentsProperty_00c65170.cpp'
+        TestSource = '00/c6/CEntity_SetLightComponentsProperty_00c65170_test.cpp'
+        PassPattern = '00c65170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c65450'
+        Module = 'CEntity'
+        Source = '00/c6/CEntity_SetSoundComponentsProperty_00c65450.cpp'
+        TestSource = '00/c6/CEntity_SetSoundComponentsProperty_00c65450_test.cpp'
+        PassPattern = '00c65450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0f4e0'
+        Module = 'CFleeingWoman'
+        Source = '00/e0/CFleeingWoman_Main_00e0f4e0.cpp'
+        TestSource = '00/e0/CFleeingWoman_Main_00e0f4e0_test.cpp'
+        PassPattern = '00e0f4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eea460'
+        Module = 'CExpression_WaitScript'
+        Source = '00/ee/CExpressionWaitScript_Main_00eea460.cpp'
+        TestSource = '00/ee/CExpressionWaitScript_Main_00eea460_test.cpp'
+        PassPattern = '00eea460_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

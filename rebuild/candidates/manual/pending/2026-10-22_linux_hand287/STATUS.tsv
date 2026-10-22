@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bf2b50	DIFFER	732v682	-	/GS: retail keeps the 32-step loop rolled where VC7.1 unrolls it 4x; frame 8 bytes short
+00c22520	RELOCATION_MATCH	594	test/00c22520.cpp	CEngineVSConstantBlockSet::~CEngineVSConstantBlockSet() [/EHsc]
+00b6dc40	DIFFER	773v771	-	GetEntryDataSize evaluated before the read-priority global load and pop edi after the last UnloadSea store; 15 advisor grades (A3)
+00b6e010	RELOCATION_MATCH	592	test/00b6e010.cpp	CEngineWaterRenderer::RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch)
+00b7c510	RELOCATION_MATCH	864	test/00b7c510.cpp	CEngineWaterRenderer::SetupSeaMidgroundShaderConstantsAndFog()
+00b7f0f0	RELOCATION_MATCH	704	test/00b7f0f0.cpp	CEngineWaterRenderer::SetupBackgroundShaderConstantsAndFog()
+00b7fa20	RELOCATION_MATCH	704	test/00b7fa20.cpp	CEngineWaterRenderer::SetupSeaNonReflectiveForegroundShaderConstantsAndFog()
+00b51ad0	DIFFER	951v969	-	inline-asm fistp rounding helper in retail (asm_bake lane gap), parked at once
+00b52b30	RELOCATION_MATCH	672	test/00b52b30.cpp	CEngineWeatherRenderer::WorldFrameUpdate(bool)
+00b7eec0	RELOCATION_MATCH	560	test/00b7eec0.cpp	CEngineWaterRenderer::SetupForegroundShaderConstantsAndFog()
+00b7f3b0	RELOCATION_MATCH	592	test/00b7f3b0.cpp	CEngineWaterRenderer::SetupIceForegroundShaderConstantsAndFog()
+00b50fb0	DIFFER	1034v1018	-	retail materialises the zero constant in eax before the first C3DVector temporaries; ours after MistVertexSpan2; loop padding follows
+00b420f0	DIFFER	658v662	-	VC7.1 keeps the entry argument in ebx and zero in edi; retail reloads [ebp+8], keeps this in edi and zero in ebx
+00c65170	RELOCATION_MATCH	736	test/00c65170.cpp	CEntity::SetLightComponentsProperty(const SAllComponentLevels* levels, unsigned long size)
+00c65450	RELOCATION_MATCH	576	test/00c65450.cpp	CEntity::SetSoundComponentsProperty(const SSoundComponentLevels* levels, unsigned long size)
+006b3030	DIFFER	619v619	-	epilogue pop edi hoisted by VC7.1 (RTM and QFE) to after the last [edi] read; retail keeps it at the end
+006b3ff0	DIFFER	751v758	-	retail frame 0x244 vs 0x210 here (GetPosition return temp placement); RainEnabled zeroing store laid out of line
+006b4900	RELOCATION_MATCH	824	test/006b4900.cpp	CEnvironment::CEnvironment(CGameDefinitionManager* defs)
+004558df	RELOCATION_MATCH	830	test/004558df.cpp	CEnvironmentDef::Transfer(CPersistContext& context)
+008884d0	DIFFER	514v514	-	one register pair in the inline blended-array teardown: retail mov esi,[First]; mov ecx,esi vs ours mov ecx,[First]; mov esi,ecx
+008886e0	DIFFER	727v727	-	same teardown register pair as 0x008884D0
+00eea460	RELOCATION_MATCH	544	test/00eea460.cpp	CExpression_WaitScript::Main()
+009c3c20	DIFFER	877v909	-	first pass: retail keeps finished flag / read size in the dead argument slot (lane gap), rotated decompress loop, out-of-line dirty-disc exits
+009c4440	DIFFER	625v609	-	retail keeps a dead load of DirtyDiscError in the inlined SetDirtyDiscError; source/dest spill words swapped
+009c53a0	RELOCATION_MATCH	688	test/009c53a0.cpp	CFileInstaller::ProcessReads()
+007b1f10	RELOCATION_MATCH	1016	test/007b1f10.cpp	CFishingDef::Transfer(CPersistContext& context)
+00e0f4e0	RELOCATION_MATCH	736	test/00e0f4e0.cpp	CFleeingWoman::Main()
+009ff220	DIFFER	536v540	-	volume-arm register allocation (retail: level in the dead param slot, bank in a frame word, file data in ebx, &LoadingManagedTexture in ebp); 8 order/stand-in variants
+0054d660	DIFFER	976v1001	-	retail keeps a function-wide zero in ebp, shares one xor on the counted-pointer null paths, different back() index registers
+00594fdb	RELOCATION_MATCH	583	test/00594fdb.cpp	CFrontEndManager::GenerateAboutMessage()
+00599e3f	DIFFER	1019v1017	-	one line: the profile-name search loads begin through eax then edi where retail loads edi directly (12 loop spellings + C1 stand-ins)
+00496070	RELOCATION_MATCH	592	test/00496070.cpp	CFrontendGameComponent::CFrontendGameComponent(CMainGameComponentParent* parent, long unused)
+00698170	DIFFER	693v693	-	one scheduling slot: retail interleaves the perp.y fld/fmul before push ebp at the first IsPosInViewingFrustrum call
+00699670	DIFFER	759v761	-	frame-slot assignment of the parameter copies / position / vectors plus one fstp scheduled before a lea
+00446330	DIFFER	1026v1002	-	/GS first pass; retail puts the alt-key query event between bestEvent and the result buffers, VC7.1 puts it last (frame layout)
+00895190	DIFFER	520v525	-	retail spills this to a frame word and keeps &itemDefName in ebp; VC7.1 keeps this in ebp
+00896390	DIFFER	698v711	-	retail saves all four registers up front and shares one return-false tail; VC7.1 shrink-wraps ebx/ebp and inlines early returns
+00897fa0	DIFFER	541v541	-	frame and slots as retail after LowerBound stand-ins; object/item ebx-ebp register swap left
+0089b780	RELOCATION_MATCH	944	test/0089b780.cpp	CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, const C3DVector& pos, float angle, bool keepOnGround, bool fade) const [/GS]
+0089c910	DIFFER	1136v1016	-	shared return-false tail and cross-jumped sight tails in retail; VC7.1 CSEs the whole squares sum (test ah,0x41/jp) and orders cos(FOV) later

@@ -1,0 +1,18 @@
+address	name	evidence
+006b5d80	CBlendedEnvironmentTheme::~CBlendedEnvironmentTheme	chunk 287
+006b63c0	CEnvironmentGameTickState::operator=	chunk 287
+00887330	CEnvironmentThemePriorityStackEntry::Reset	was CBrainBehaviour::Init (chunk 287)
+006b84b0	CEnvironmentSpellEffectInterpolator::CEnvironmentSpellEffectInterpolator	was AddToInterface (chunk 287)
+008883c0	CEnvironmentThemePriorityStack::CEnvironmentThemePriorityStack(long)	was vector<long> (chunk 287)
+006b6840	CEnvironmentThemePriorityStack::CEnvironmentThemePriorityStack(const CEnvironmentThemePriorityStack&)	copy ctor; was vector<CMusicEntry> (chunk 287)
+00888260	CEnvironmentThemeSetDay::GetBlendedTheme	chunk 287
+00a03be0	CInputEvent::Reset	was CWADFile::Close (chunk 287)
+00a0d300	CInputProcessEvent::Reset	was CGameEventPackage (chunk 287)
+00a0d3a0	CInputProcessEvent::SetPlayerNumber	was __EH_epilog3 (chunk 287; class inferred from callers)
+00a04410	CInputEvent::CInputEvent	was CDefaultEngineMemoryInit (chunk 287)
+0059b039	CScreenStack::Top	was CTCTrophy::OnShowTrophyInitialise (chunk 287; class name descriptive)
+0059aee5	CScreenStack::Pop	was CCreatureAction_FireMissileWeapon::FrameUpdate (chunk 287; class name descriptive)
+00594fa9	CFrontEndManager::EnableInput	(bool); was FinishWithDynamicTextures (chunk 287)
+00412130	std::vector<CWideString>::~vector	was ResetRings (chunk 287)
+004292c0	std::_Rb_tree_base_iterator::_M_increment	was GetNoAllocatedAreas (chunk 287)
+0043020a	std::_Rb_tree::_M_erase	map erase; was BuildTreeArray (chunk 287)
