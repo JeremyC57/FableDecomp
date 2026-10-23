@@ -205,3 +205,16 @@ python -c "d=open('Fable.exe','rb').read(); print(d[0x44FDB0:0x450182].hex())"
 
 To disassemble it, run `objdump -D -b binary -mi386 -Mintel --adjust-vma=0x84FDB0` on that slice, or open the exe in
 Ghidra/IDA at the VA.
+
+**Outcome of 960–962 (2026-10-23).** The outside AI returned 61 matches. Every row was regraded with
+`verify_and_land.py`, its test was re-run, and all 61 landed (batch `2026-10-23_external_960_962`). The 59 rows it
+parked or blocked are being retried in-house.
+
+**Next round: 963–965.** `docs/pipeline/external_chunks_963-965.tsv` lists 120 rows:
+- 963: STL and serialisation templates;
+- 964–965: free-function rows, whose manifest names are guesses.
+
+The scope file is `external_963-965_AUTHORIZED_SCOPE.json`. The prompt to paste, with every fix and how to recognise
+it, is `EXTERNAL_CHUNKS_963-965_PROMPT.md`. Sparse library-looking regions were left out: zlib/winsock `__` names and
+the sound library at 0xC40000–0xCB0000. The rows are recorded in `chunk_history.tsv`, so in-house cuts never take
+them.
