@@ -8,12 +8,12 @@ static int g_base_called = 0;
 static int g_free_called = 0;
 static void* g_free_arg = (void*)0;
 
-void __fastcall CActiveFile_base(CActiveFile* self) { g_base_called++; (void)self; }
+void __fastcall CActiveFile_base_00566e10(CActiveFile* self) { g_base_called++; (void)self; }
 void free_helper(void* p) { g_free_called++; g_free_arg = p; }
 
 void __fastcall OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_base(self);
+    CActiveFile_base_00566e10(self);
     void* p = self->field0;
     if (p)
         free_helper(p);

@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+namespace N_0099b720 { struct CWideString {
     char* p;
     CWideString(const char* s) { p = (char*)s; }
-};
+}; } using N_0099b720::CWideString;
 
 struct CDiskFileWin32 {
     char pad[0x18];

@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CWideString {
+namespace N_0099eae0 { struct CWideString {
     void* p;
     CWideString(const char* s, int len){ p=(void*)s; }
     CWideString(const char* s){ p=(void*)s; }
     ~CWideString(){}
-};
+}; } using N_0099eae0::CWideString;
 struct SaveSub { CWideString Format(CWideString* in){ return CWideString((const char*)0xF07,0); } };
 struct SaveMgr { char pad[0x14]; SaveSub* f14; };
 SaveMgr* g_saveMgr;

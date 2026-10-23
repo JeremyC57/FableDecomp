@@ -8,9 +8,9 @@ struct ListIt {
 };
 struct MyList {
     Node* head;
-    ListIt erase(ListIt _Where);
+    ListIt erase_0053c7b9(ListIt _Where);
 };
 void __fastcall pop_front(MyList* self)
 {
-    self->erase(ListIt(self->head->next));
+    self->erase_0053c7b9(ListIt(self->head->next));
 }

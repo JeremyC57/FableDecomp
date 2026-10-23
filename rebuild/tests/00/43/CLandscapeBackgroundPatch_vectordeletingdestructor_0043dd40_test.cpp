@@ -6,13 +6,13 @@ static int g_dtor_called = 0;
 static int g_delete_called = 0;
 static void* g_delete_arg = 0;
 
-extern "C" void __fastcall CLandscapeBackgroundPatch_scalar_dtor(CLandscapeBackgroundPatch* self) { (void)self; g_dtor_called++; }
+extern "C" void __fastcall CLandscapeBackgroundPatch_scalar_dtor_0099b510(CLandscapeBackgroundPatch* self) { (void)self; g_dtor_called++; }
 extern "C" void __cdecl CLandscapeBackgroundPatch_op_delete(void* p) { g_delete_called++; g_delete_arg = p; }
 
 void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_dummy, unsigned int flags)
 {
     (void)edx_dummy;
-    CLandscapeBackgroundPatch_scalar_dtor(self);
+    CLandscapeBackgroundPatch_scalar_dtor_0099b510(self);
     if (flags & 1)
         CLandscapeBackgroundPatch_op_delete(self);
     return self;

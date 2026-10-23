@@ -43,7 +43,7 @@ struct CThing {
     }
 };
 
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBD0 (CThing*)
+template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
 
 struct CThingCreatureBase : CThing { };
 
@@ -76,7 +76,7 @@ void CDrawQuickAccessIcons::ClearSoundEffects()
 {
     if (ChargingSoundID > 0) {
         CThingCreatureBase* hero = PlayerManager->GetMainPlayer()->GetCharacterThing();
-        if (IS_THING_ALIVE<CThing*>(hero)) {
+        if (IS_THING_ALIVE_0043dbd0<CThing*>(hero)) {
             if (hero->HasInterface(TC_SOUND)) {
                 hero->GetInterfaceUnchecked<CTCSound>(TC_SOUND)->StopSound(ChargingSoundID);
                 ChargingSoundID = 0;

@@ -3,12 +3,12 @@ static int g_member_calls = 0;
 static int g_base_calls = 0;
 struct Member { int flag; };
 struct Base { void* vt; };
-void Member_dtor(Member* m){ m->flag = 1; g_member_calls++; }
+void Member_dtor_00453e1a(Member* m){ m->flag = 1; g_member_calls++; }
 void Base_dtor(Base* b){ g_base_calls++; }
 static void* g_vtbl_data[1] = {0};
 struct Obj { void* vt; char pad[0x24]; Member* m28ignore; };
 void Obj_dtor(Obj* self){
-    Member_dtor((Member*)((char*)self + 0x28));
+    Member_dtor_00453e1a((Member*)((char*)self + 0x28));
     self->vt = (void*)g_vtbl_data;
     Base_dtor((Base*)self);
 }

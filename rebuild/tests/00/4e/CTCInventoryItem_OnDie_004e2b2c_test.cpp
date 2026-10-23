@@ -12,14 +12,14 @@ extern "C" void __cdecl free_thing(void* p) { g_freed++; g_freed_ptr = p; }
 
 static int g_base = 0;
 static void* g_base_self = 0;
-void __fastcall Base_OnDie(void* self) { g_base++; g_base_self = self; }
+void __fastcall Base_OnDie_009fc550(void* self) { g_base++; g_base_self = self; }
 
 void __fastcall OnDie(CTCInventoryItem* self)
 {
     if (self->p28 != 0)
         free_thing(self->p28);
     self->vtbl = (void*)0x1230ba0;
-    Base_OnDie(self);
+    Base_OnDie_009fc550(self);
 }
 
 int main()

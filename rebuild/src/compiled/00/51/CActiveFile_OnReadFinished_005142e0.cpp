@@ -8,7 +8,7 @@ void my_free(void*);
 struct CActiveFile;
 
 // base method @ 0x510d40, __fastcall(this)
-void __fastcall CActiveFile_base(CActiveFile* self);
+void __fastcall CActiveFile_base_00510d40(CActiveFile* self);
 
 struct CActiveFile {
     void* buffer; // +0
@@ -16,7 +16,7 @@ struct CActiveFile {
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_base(self);
+    CActiveFile_base_00510d40(self);
     void* p = self->buffer;
     if (p)
         my_free(p);

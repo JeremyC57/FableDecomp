@@ -44,7 +44,7 @@ extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 struct CThing {
 };
 
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBD0 (CThing*)
+template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
 
 struct CThingCreatureBase : CThing {
     unsigned char _pad_0x00[0x90];
@@ -72,7 +72,7 @@ struct CTCInGameMenu {
 void CTCInGameMenu::CloseInGameMenuViaGameEvent()
 {
     CThingCreatureBase* const& hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing();
-    if (IS_THING_ALIVE<CThing*>(hero)) {
+    if (IS_THING_ALIVE_0043dbd0<CThing*>(hero)) {
         CGameEvent event(GAME_EVENT_CLOSE_IN_GAME_MENU);
         event.Player = hero->PlayerNumber;
         g_pMainGameComponent->AddGameEvent(event);
@@ -88,7 +88,7 @@ static int g_events = 0; static CGameEvent* g_last = 0; static unsigned char g_c
 CPlayerManager* CTCInGameMenu::GetPlayerManager() const { return &g_manager; }
 CPlayer* CPlayerManager::GetMainPlayer() { return &g_player; }
 CThingCreatureBase* CPlayer::GetCharacterThing() { return &g_hero; }
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { g_aliveArg = (CThing*)thing; return g_alive; }
+template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing) { g_aliveArg = (CThing*)thing; return g_alive; }
 void CMainGameComponent::AddGameEvent(const CGameEvent& event) { ++g_events; memcpy(g_copy, &event, sizeof(event)); }
 static CMainGameComponent g_mgc;
 CMainGameComponent* g_pMainGameComponent = &g_mgc;

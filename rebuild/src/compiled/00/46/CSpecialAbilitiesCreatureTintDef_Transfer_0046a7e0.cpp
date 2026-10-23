@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 struct CPersistContext {
     void PersistA(int& r);
-    void PersistB(int& r);
+    void PersistB_00466a47(int& r);
 };
 
 struct CVillagerInteractionsDef {
@@ -15,5 +15,5 @@ void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def,
 {
     ctx->PersistA(def->fieldA);
     ctx->PersistA(def->fieldB);
-    ctx->PersistB(def->fieldC);
+    ctx->PersistB_00466a47(def->fieldC);
 }

@@ -8,7 +8,7 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CMember {
-    void Set(const long& value);           // 0x0042B687
+    void Set_0042b687(const long& value);           // 0x0042B687
 };
 
 struct CClass_0041db74 {
@@ -19,5 +19,5 @@ struct CClass_0041db74 {
 
 void CClass_0041db74::vfunc_24(long value)
 {
-    m_member.Set(value);
+    m_member.Set_0042b687(value);
 }

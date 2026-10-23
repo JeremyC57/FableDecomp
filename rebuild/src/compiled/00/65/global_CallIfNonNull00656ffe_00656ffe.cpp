@@ -7,11 +7,11 @@
 // Tiny-body shape `CallIfNonNull` synthesised from the instruction pattern; the manifest label is
 // propagated where it is a plain name, the other names are descriptive.
 struct CTarget {
-    void Method(long kind);                // 0x00656E6F
+    void Method_00656e6f(long kind);                // 0x00656E6F
 };
 
 void __fastcall CallIfNonNull_00656ffe(CTarget* target)
 {
     if (target)
-        target->Method(1);
+        target->Method_00656e6f(1);
 }

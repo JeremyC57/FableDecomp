@@ -5,7 +5,7 @@ static int g_process_called = 0;
 static int g_free_called = 0;
 static void* g_freed = 0;
 
-void __fastcall Inner_Process(CInner* self, int arg, char* out) {
+void __fastcall Inner_Process_00450a90(CInner* self, int arg, char* out) {
     g_process_called = 1;
     *out = (char)(arg & 0xFF);
     (void)self;
@@ -23,7 +23,7 @@ struct CActiveFile {
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char local;
-    Inner_Process(self->p, self->arg, &local);
+    Inner_Process_00450a90(self->p, self->arg, &local);
     if (self->p != 0)
         Free_Buf(self->p);
 }

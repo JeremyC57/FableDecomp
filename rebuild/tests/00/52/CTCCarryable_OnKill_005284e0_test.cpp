@@ -10,13 +10,13 @@ struct CTCCarryableNode {
 struct CTCCarryable {
     CTCCarryableNode* m0;   /* +0x0 */
     unsigned int      ParentThing;   /* +0x4 */
-    void Detach(unsigned int a);
+    void Detach_00527910(unsigned int a);
 };
 
 static int   g_detach_called = 0;
 static unsigned int g_detach_arg = 0;
 
-void CTCCarryable::Detach(unsigned int a) {
+void CTCCarryable::Detach_00527910(unsigned int a) {
     g_detach_called++;
     g_detach_arg = a;
 }
@@ -24,7 +24,7 @@ void CTCCarryable::Detach(unsigned int a) {
 void __fastcall CTCCarryable_OnKill(CTCCarryable* self)
 {
     if (self->ParentThing != 0) {
-        self->Detach(self->m0->f4);
+        self->Detach_00527910(self->m0->f4);
         self->m0->f8 = self->m0;
         self->m0->f4 = 0;
         self->m0->fc = self->m0;

@@ -11,7 +11,7 @@ static int g_freed = 0;
 static void* g_freed_ptr = 0;
 static int g_base_called = 0;
 void engine_free(void* p){ g_freed++; g_freed_ptr = p; }
-void CTCInventoryItem_Base_OnDie(CTCInventoryItem* s){ g_base_called++; }
+void CTCInventoryItem_Base_OnDie_009fc550(CTCInventoryItem* s){ g_base_called++; }
 const void* CTCInventoryItem_vftable_storage = 0;
 const void* const CTCInventoryItem_vftable = (const void*)0x1230ba0;
 void CTCInventoryItem_OnDie(CTCInventoryItem* self)
@@ -19,7 +19,7 @@ void CTCInventoryItem_OnDie(CTCInventoryItem* self)
     if (self->ptr30)
         engine_free(self->ptr30);
     *(const void**)self = &CTCInventoryItem_vftable;
-    CTCInventoryItem_Base_OnDie(self);
+    CTCInventoryItem_Base_OnDie_009fc550(self);
 }
 int main(){
     CTCInventoryItem a;

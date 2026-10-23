@@ -14,7 +14,7 @@ static int g_freed = 0;
 
 void __fastcall Member599270(void* win32) { (void)win32; g_599270++; }
 void __fastcall Member18Dtor(void* p) { (void)p; g_m18++; }
-void __fastcall BaseDtor(void* win32) { (void)win32; g_base++; }
+void __fastcall BaseDtor_0099a300(void* win32) { (void)win32; g_base++; }
 void __cdecl operator delete(void* p) { (void)p; g_freed++; }
 
 void* __fastcall CDiskFileWin32_scalar_deleting_destructor(CDiskFileWin32* win32, int edx, unsigned int flags)
@@ -23,7 +23,7 @@ void* __fastcall CDiskFileWin32_scalar_deleting_destructor(CDiskFileWin32* win32
     win32->vptr = (void*)CDiskFileWin32_vftable;
     Member599270(win32);
     Member18Dtor((char*)win32 + 0x18);
-    BaseDtor(win32);
+    BaseDtor_0099a300(win32);
     if (flags & 1) {
         operator delete(win32);
     }

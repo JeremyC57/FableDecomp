@@ -7,10 +7,10 @@ __onexit_impl	00401296	004012bc
 ?__imp_free_01440190@@3P6AXPAX@ZA	01440190	00401356
 __controlfp	004013e4	0040135c
 ?Water_QueryType@@YAHPAUCEngineMap@@H@Z	00bfe94c	00401490
-?base_dtor@@YIXPAX@Z	0099a300	00401630
+?base_dtor_0099a300@@YIXPAX@Z	0099a300	00401630
 ?sub_5992f0@@YIXPAX@Z	0099a920	00401630
 ?sub_599ee0@@YIXPAX@Z	0099b510	00401630
-??0CWideString@@QAE@PBD@Z	0099b720	00401690
+N_0099b720	0099b720	00401690
 ?Add@Obj@@QAEXPBDH@Z	0099cf10	00401780
 ?Apply@Obj@@QAEXXZ	0099cf70	00401780
 ?Set@Obj@@QAEXPBDH@Z	0099d100	00401780
@@ -36,7 +36,7 @@ __controlfp	004013e4	0040135c
 ?g_FableTextureBitDepth_013B7D68@@3IA	013b7d68	004022b0
 ?g_FableTextureManager_013B837C@@3IA	013b837c	004022b0
 ?g_GFInitialiseState_013B83D0@@3UGFInitialiseState@@A	013b83d0	004022b0
-@dtorA@4	0099b510	00403510
+@dtorA_0099b510@4	0099b510	00403510
 @dtorB@4	0099eae0	00403510
 ?g_EmptyCharString_0129AAF4@@3PADA	0129aaf4	00403a10
 ??4CCharString@@QAEAAV0@ABV0@@Z	0099efb0	00403c20
@@ -50,7 +50,7 @@ __controlfp	004013e4	0040135c
 _Free2	00bfea14	004042d0
 ?g_pointer_013ca818@@3UCCountedPointerStatic@@A	013ca818	00404490
 _malloc	00bfea0e	00404690
-??0CBase@@QAE@XZ	0099a2d0	00404720
+N_0099a2d0	0099a2d0	00404720
 ??0CCharString@@QAE@XZ	0099e4b0	00404720
 ??_7CStringParser@@6B@	0122d874	00404720
 @dtorBase@4	0099a2e0	004047a0
@@ -269,7 +269,7 @@ _FableFacesControlDelete_00413590	00bfe9bc	00413590
 ?ToWideString@CCharString@@QBE?AUCWideString@@XZ	0099e480	00415d90
 ?g_DefStringTable@@3UCDefStringTable@@A	013ca828	00415d90
 ??_7CNetworkServer@@6B@	0122ed30	00415e50
-_GFGetPreMainMemoryUsedImpl	0044c6b0	00415fbc
+_GFGetPreMainMemoryUsedImpl_0044c6b0	0044c6b0	00415fbc
 ?g_scale@@3HA	01375550	00415fc1
 ?g_gameSpeed@@3HA	01375550	00415fd3
 ?Add@Iface@@QAEXXZ	009f26d0	00416047
@@ -435,7 +435,7 @@ _Helper	004292c0	004293db
 ?Override_004298f3@CMulti_004298f3@@UAEXXZ	004298f3	0042983f
 ?Override_0042990f@CMulti_0042990f@@UAEXXZ	0042990f	0042984f
 ?Destroy_00428b10@@YIXPAX@Z	00428b10	00429c15
-@FableH1_5c281c@4	0053fd00	00429f43
+@FableH1_5c281c_0053fd00@4	0053fd00	00429f43
 _FableH2_5c281c	00bfe9bc	00429f43
 _RegionExitTextHelper	004292c0	0042a0ce
 ?BuildTreeArray@Tree@@QAEXPAUNode@@@Z	0042a1b6	0042a1b6
@@ -470,7 +470,7 @@ _helper_5b155a	0042a8bd	0042b44a
 ?LinkedList_Initialize@@YGXK@Z	0042acec	0042b7ad
 ?Allocator_Alloc_28bytes@@YGXK@Z	0042ad10	0042b7ee
 ?BuildTreeArray@CTextTreeWalkThrough@@QAEXPAUTreeNode@@@Z	0042b8fc	0042b8fc
-?Cleanup@SubObject@@QAEXXZ	00429e16	0042b8fc
+?Cleanup_00429e16@SubObject@@QAEXXZ	00429e16	0042b8fc
 ?ProcessTreeNode@@YAXPAUTreeNode@@@Z	00bfea14	0042b8fc
 ?Buynode@CRetailTree_ulongkey_buy0042b5a8@@QAEPAUnode@1@ABK@Z	0042b5a8	0042b98b
 ?Rebalance_0042971d@@YAXPAUnode@CRetailTree_ulongkey_buy0042b5a8@@PAPAU12@@Z	0042971d	0042b98b
@@ -488,7 +488,7 @@ _helper_5b155a	0042a8bd	0042b44a
 ??0CLongList@NUISystem@@QAE@ABUSRetailAllocator@1@@Z	0042ab58	0042be50
 ??0CRetailListBase@NUISystem@@QAE@ABUSRetailAllocator@1@@Z	0042ac0a	0042be7b
 ??_7CObservable@NUISystem@@6B@	01230044	0042be7b
-?Add@Sub@@QAEXPAH@Z	0042b6b8	0042bead
+?Add_0042b6b8@Sub@@QAEXPAH@Z	0042b6b8	0042bead
 ?Grab_0042b72b@CDisplayManager@@QAEXPAD0@Z	0042b72b	0042bf35
 ?LowerBound@CTCMapRemaining@@QAEPAHPBH@Z	0040f020	0042c43f
 ?Test@CTCBitsRemaining@@QAEKK@Z	00410de0	0042c43f
@@ -529,7 +529,7 @@ _helper_5b155a	0042a8bd	0042b44a
 ??1?$CCountedPointer@UCASoundBank@@@@QAE@XZ	0042f9a0	0042f50b
 ??1?$CCountedPointer@UCIEngine@@@@QAE@XZ	0042f974	0042f50b
 ??1?$CCountedPointer@UCMeshDataBank@@@@QAE@XZ	0042918c	0042f50b
-??1CBase@@UAE@XZ	0099a300	0042f50b
+N_0099a300	0099a300	0042f50b
 ??1CWideStringVector@@QAE@XZ	00412130	0042f50b
 ??_7CGameComponent@@6BCBase@@@	0122ecb0	0042f50b
 ??_7CGameComponent@@6BCGameComponentInterface@@@	0122eca4	0042f50b
@@ -649,7 +649,7 @@ _list_node_free	00bfea14	004367c0
 ?AutoTinyCompositeDelete@@YAXPAX@Z	00bfe9bc	0043dd10
 ?AutoTinyCompositeDestructor@@YIXPAX@Z	0099b510	0043dd10
 ?AutoTinyMemberDestructor@@YIXPAX@Z	0099eae0	0043dd10
-@CLandscapeBackgroundPatch_scalar_dtor@4	0099b510	0043dd40
+@CLandscapeBackgroundPatch_scalar_dtor_0099b510@4	0099b510	0043dd40
 _CLandscapeBackgroundPatch_op_delete	00bfe9bc	0043dd40
 ?C3DAnimationBlendState_vtable@@3QAXA	0122f598	0043f450
 @CActiveFile_Helper_0043f230@4	0043f230	0043fcd0
@@ -734,7 +734,7 @@ _fable_op_delete	00bfe9bc	00447e00
 ?GetPlayer@CPlayerManager449970@@QAEPAUCPlayer@@H@Z	004498c0	00449970
 ?DrawGetEnvironment@@YIXPAUCPlayer@@@Z	00487510	00449980
 ?GetPlayer@CPlayerManager449980@@QAEPAUCPlayer@@H@Z	00449910	00449980
-@FableSpellConsume_6a4dd0@4	00487140	00449a30
+@FableSpellConsume_6a4dd0_00487140@4	00487140	00449a30
 _FableSpellWrap_6a4dd0@4	004498c0	00449a30
 ?PrepareForLoad@CPlayer_Calls@@QAEXXZ	00487550	00449c30
 ?GetHeroThing@CPlayerRetail@@QAEPAUCThingCalls@@XZ	00487dc0	00449cb0
@@ -915,9 +915,9 @@ _EnterShadowScope@4	00404500	004522f4
 ?Transfer_00431061@CPersistContext@@QAEXPAJ@Z	00431061	004525e9
 ?Transfer_00431102@CPersistContext@@QAEXPAJ@Z	00431102	004525e9
 ??_7CHitLocationsDef@@6B@	01232cb4	0045264e
-?TransferA@CPersistContext@@QAEXPAX@Z	0045228f	0045266f
+?TransferA_0045228f@CPersistContext@@QAEXPAX@Z	0045228f	0045266f
 ?TransferB@CPersistContext@@QAEXPAX@Z	00431061	0045266f
-?PersistA@CPersistContext@@QAEXPAX@Z	004526f7	004526b3
+?PersistA_004526f7@CPersistContext@@QAEXPAX@Z	004526f7	004526b3
 ?PersistB@CPersistContext@@QAEXPAX@Z	00431102	004526b3
 ?DoA@CObjA@@QAEXPAX@Z	00993eb0	004526f7
 ?DoB@TLocal@@QAEXPAXPAPAX@Z	00452738	004526f7
@@ -937,7 +937,7 @@ _LM_Prologue@4	00404500	00452a60
 ?init@ScopeGuard@@QAEXH@Z	0044c3ee	00452b4d
 ?TransferA@CPersistContext@@QAEXPAUCFieldA@@@Z	00431061	00452b93
 ?TransferB@CPersistContext@@QAEXPAUCFieldB@@@Z	00452b4d	00452b93
-?PersistC@CPersistContext@@QAEXPAX@Z	00452b4d	00452bb4
+?PersistC_00452b4d@CPersistContext@@QAEXPAX@Z	00452b4d	00452bb4
 ?Xfer@CPersistContext@@QAEXPAUField@@@Z	00431061	00452c94
 ?Transfer@CSerializer@@QAEXPAUCSubField@@@Z	00431061	00452ccd
 ?Accept@CTransferData@@QAEXPAX@Z	00452e01	00452df1
@@ -991,7 +991,7 @@ _FreeThing@4	00451b82	00453630
 ??_7CCombatAbilityBlockDefBase@@6B@	01232e04	00453e2d
 ?g_vtbl@@3QBQAXB	01230ba0	00453e51
 @Base_dtor@4	009fc550	00453e51
-@Member_dtor@4	00453e1a	00453e51
+@Member_dtor_00453e1a@4	00453e1a	00453e51
 ?Copy@CMemberDef@@QAEXPBU1@@Z	00453ef1	00453ed2
 ?assign@CCombatAbilityBase@@QAEXPBU1@@Z	00453f18	00453ef1
 ?Copy@CBaseDef@@QAEXPAU1@@Z	00431f10	00453f3f
@@ -1013,7 +1013,7 @@ _FreeThing@4	00451b82	00453630
 _CActiveFile_Release	00bfea14	004543af
 ?Dtor@CFlash@@QAEXH@Z	00451c83	00454404
 ?CDegradableDef_Copy_impl@@YIXPAUCDegradableDef@@PAXPBU1@@Z	00454434	0045442f
-?CTCInventoryItem_Base_OnDie@@YIXPAUCTCInventoryItem@@@Z	009fc550	0045460a
+?CTCInventoryItem_Base_OnDie_009fc550@@YIXPAUCTCInventoryItem@@@Z	009fc550	0045460a
 ?CTCInventoryItem_vftable@@3QBXB	01230ba0	0045460a
 ??0CMember_004533c5@@QAE@XZ	004533c5	00454629
 ??_7CSpecialEffectsDef@@6B@	0123300c	00454629
@@ -1117,7 +1117,7 @@ _free_block	00bfea14	0045645d
 ??_7CRegionDef@@6B@	01233aac	004564b5
 ??_7CFactionDef@@6B@	01233b14	004564eb
 @Owner_base_dtor@4	00430300	00456531
-@Sub_dtor@4	00414ea0	00456531
+@Sub_dtor_00414ea0@4	00414ea0	00456531
 ??_7CCameraModeDef@@6B@	01233b7c	0045654c
 ??_7CCameraManagerDef@@6B@	01233be4	00456795
 ?scalar_dtor@CLandscapeBackgroundPatch@@QAIXXZ	004567db	004567bf
@@ -1167,7 +1167,7 @@ _operator_delete_impl	00bfe9bc	00456da4
 ??_7CCombatDialogueDef@@6B@	01233ebc	00456de3
 ?Transfer@CPersistContext@@QAEXAAJ@Z	00431102	00456dfb
 ?Transfer@CPersistContext@@QAEXAAM@Z	00431061	00456dfb
-?PersistA@CPersistContext@@QAEXAAH@Z	0045228f	00456f27
+?PersistA_0045228f@CPersistContext@@QAEXAAH@Z	0045228f	00456f27
 ?PersistB@CPersistContext@@QAEXAAH@Z	00431061	00456f27
 ?dtor@CLandscapeBackgroundPatch@@QAEXXZ	0045704a	0045702e
 ?CTCInventoryItem_base@@YIXPAUCTCInventoryItem@@@Z	00430300	0045704a
@@ -2062,7 +2062,7 @@ _FableHelp_baa30@4	004b9370	004baa30
 ??0CEnginePrimitiveAnimation@@QAE@ABUC3DAnimationInterpolator@@ABUC3DPositionInterpolator@@ABUC3DOrientationInterpolator@@@Z	004c3d30	004bcfe0
 ??1C3DAnimationInterpolator@@QAE@XZ	004c2e90	004bcfe0
 ??1CInterpolatorBase@@QAE@XZ	0099a2e0	004bcfe0
-?g_pEngineGlobals@@3PAUCEngineGlobals@@A	013b8a18	004bcfe0
+?g_pEngineGlobals_013b8a18@@3PAUCEngineGlobals@@A	013b8a18	004bcfe0
 ??0C3DMeshObject@@QAE@PBUC3DMeshInfo@@ABUC3DVector@@ABUCRightHandedSet@@M@Z	00a36e70	004bd160
 ??4C3DMeshObject@@QAEAAU0@ABU0@@Z	004c3380	004bd160
 ??_7C3DMeshObject@@6B@	01239860	004bd160
@@ -2992,7 +2992,7 @@ _AF_free	00bfea14	004dd52b
 ??1CMember_004df54f@@QAE@XZ	004df54f	004df507
 ??_7CNavigatorExternalInterface@@6B@	01241d74	004df507
 ?Handler@CDisplayManager@@QAEXPAD0@Z	004dd1f2	004df84e
-?Helper@CDisplayManager@@QAEXPAD0@Z	004dd342	004df8cb
+?Helper_004dd342@CDisplayManager@@QAEXPAD0@Z	004dd342	004df8cb
 ?helper_4dd383@@YGXPAD0@Z	004dd383	004df8e9
 ?helper@CDisplayManager@@QAEPAUCTexture@@PAD0@Z	004dd405	004df956
 ?free_thing_bfea14@@YAXPAX@Z	00bfea14	004dfb47
@@ -3572,7 +3572,7 @@ _fable_opdel	00bfe9bc	0051af00
 ?push_back@?$CRetailVector@J@@QAEXABJ@Z	005178a0	0053beac
 ?push_back@?$CRetailVector@PAUCComponent@NUISystem@@@@QAEXABQAUCComponent@NUISystem@@@Z	00486024	0053beac
 ?push_back@CBoolList@@QAEXAB_N@Z	0053cb4f	0053beac
-?erase@MyList@@QAE?AUListIt@@U2@@Z	0053c7b9	0053c7d9
+?erase_0053c7b9@MyList@@QAE?AUListIt@@U2@@Z	0053c7b9	0053c7d9
 ?Construct@CVector_0053c8d0@@QAEXUSIterator@@0ABUSInputIteratorTag@@@Z	00535f38	0053c8d0
 ?AllocateInsertNode_0053c97c@@YGPAUInsertNode_0053c97c@@K@Z	0053c879	0053c97c
 ?AllocateInsertNode_0053ca7b@@YGPAUInsertNode_0053ca7b@@K@Z	0053c9f1	0053ca7b
@@ -3822,7 +3822,7 @@ _fable_opdel	00bfe9bc	0051af00
 ??_7CMouseCursor@NUISystem@@6BISecondaryB_0055c8d0@@@	0124c200	0055c8d0
 ?Close@CPlayerGui@@QAEX_N@Z	00438400	0055d490
 ?IsOpen@CPlayerGui@@QBE_NXZ	004374f0	0055d490
-?dv_h1@@YIXPAX@Z	0055d180	0055d4c0
+?dv_h1_0055d180@@YIXPAX@Z	0055d180	0055d4c0
 ?dv_h2@@YIXPAX@Z	004374b0	0055d4c0
 ?g_glob@@3PAXA	013b8790	0055d4c0
 ?Open@CPlayerGui@@QAEXXZ	004374b0	0055d4d0
@@ -4952,7 +4952,7 @@ _g_FloatZero	0122dedc	006448a4
 ??_7CQuestInfoElementMiniGameBar@NPlayerGui@@6B@	0125a46c	0064a515
 ?g_pPlayerGui@NPlayerGui@@3PAUCPlayerGui@1@A	013b8790	0064a515
 ?PopEntry@SubList@@QAEXXZ	00655fe9	0064ae66
-??$IS_THING_ALIVE@PAUCThing@@@@YI_NABQAUCThing@@@Z	0043dbd0	0064b668
+??$IS_THING_ALIVE_0043dbd0@PAUCThing@@@@YI_NABQAUCThing@@@Z	0043dbd0	0064b668
 ?GetCharacterThing@CPlayer@@QAEPAUCThingCreatureBase@@XZ	00487dc0	0064b668
 ?StopSound@CTCSound@@QAEXK@Z	0066ad90	0064b668
 ??_7CStatBase@NPlayerGui@@6B@	0125a4e4	0064cc11
@@ -5083,7 +5083,7 @@ _FableH2_656e3e	00bfe9bc	00656e3e
 ?Sub_destroy@@YIXPAUSub@@@Z	00440c40	00656ead
 ?InsertGrow@CRetailVector_CElement16_00654dd4@@QAEXPAUCElement16_00654dd4@@ABU2@ABUSScalarTag@@K_N@Z	00656d5e	00656ef2
 ?Destroy_00656e3e@@YIXPAX@Z	00656e3e	00656f2f
-?Method@CTarget@@QAEXJ@Z	00656e6f	00656ffe
+?Method_00656e6f@CTarget@@QAEXJ@Z	00656e6f	00656ffe
 @FableH1_657022@4	006568bb	00657022
 _FableH2_657022	00bfe9bc	00657022
 ?Destroy_00656fe9@@YIXPAX@Z	00656fe9	0065707e
@@ -17276,7 +17276,7 @@ _g_Cleanup_LTextTreeWalker_6_0122a7c0	013ca86c	0122a7c0
 ?First@AutoTinyFieldMethodsTarget@@QAEXXZ	00a5c600	0122ab10
 ?Second@AutoTinyFieldMethodsTarget@@QAEXXZ	0099a300	0122ab10
 ?g_AutoTinyFieldMethodsObject@@3UAutoTinyFieldMethodsTarget@@A	013d2db0	0122ab10
-?BaseDtor@@YIXPAX@Z	0099a300	004016b0
+?BaseDtor_0099a300@@YIXPAX@Z	0099a300	004016b0
 ?CThingTrackNode_vftable@@3PBXB	0122d06c	004016b0
 ?Member18Dtor@@YIXPAX@Z	0099b510	004016b0
 ?Member599270@@YIXPAX@Z	0099a920	004016b0
@@ -17295,7 +17295,7 @@ _g_Cleanup_LTextTreeWalker_6_0122a7c0	013ca86c	0122a7c0
 @Sub28_clear@4	00442610	00443cf0
 @CTCMapwho_Cleanup@4	00443140	00444d70
 ?Inner_Process@@YIXPAUCInner@@HPAD@Z	00450a58	004532e6
-?CBase_dtor@@YIXPAX@Z	009fc550	00453b15
+?CBase_dtor_009fc550@@YIXPAX@Z	009fc550	00453b15
 ?CBase_dtor@@YIXPAUCBase@@@Z	00430300	00455d44
 @BaseDtor@4	00430300	004567db
 ??0CAttitudeEnabledMap@@QAE@XZ	004534a6	00456f71

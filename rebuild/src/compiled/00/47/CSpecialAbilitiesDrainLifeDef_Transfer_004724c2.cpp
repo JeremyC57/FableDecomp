@@ -1,8 +1,8 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[0xc]; };
 struct CPersistContext {
-    void PersistA(void* p);
-    void PersistB(void* p);
+    void PersistA_00464cbf(void* p);
+    void PersistB_00466a47(void* p);
     void PersistC(void* p);
     void PersistD(void* p);
 };
@@ -18,9 +18,9 @@ struct CSpecialAbilitiesDrainLifeDef {
 
 void CSpecialAbilitiesDrainLifeDef::Transfer(CPersistContext& ctx)
 {
-    ctx.PersistA(&f0);
-    ctx.PersistB(&f1);
-    ctx.PersistA(&f2);
+    ctx.PersistA_00464cbf(&f0);
+    ctx.PersistB_00466a47(&f1);
+    ctx.PersistA_00464cbf(&f2);
     ctx.PersistC(&f3);
     ctx.PersistD(&f4);
 }

@@ -11,10 +11,10 @@
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 struct CThing;
 
-struct CTCCameraCollision {
+namespace N_007e3020 { struct CTCCameraCollision {
     unsigned char _body[0x10];       // sizeof(CTCCameraCollision) = 0x10
     CTCCameraCollision(CThing* owner);                   // 0x007E3020
-};
+}; } using N_007e3020::CTCCameraCollision;
 
 CTCCameraCollision* __fastcall CTCCameraCollision_Alloc(CThing* owner)
 {

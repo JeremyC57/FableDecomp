@@ -9,7 +9,7 @@ static int g_base_calls = 0;
 static char* g_last_sub[2];
 static char* g_last_base = 0;
 
-extern "C" void __fastcall Sub_dtor(Sub* s)
+extern "C" void __fastcall Sub_dtor_00414ea0(Sub* s)
 {
     if (g_sub_calls < 2) g_last_sub[g_sub_calls] = (char*)s;
     g_sub_calls++;
@@ -22,8 +22,8 @@ extern "C" void __fastcall Owner_base_dtor(Owner* o)
 
 void __fastcall _Dest_val(Owner* self)
 {
-    Sub_dtor((Sub*)((char*)self + 0x48));
-    Sub_dtor((Sub*)((char*)self + 0x3c));
+    Sub_dtor_00414ea0((Sub*)((char*)self + 0x48));
+    Sub_dtor_00414ea0((Sub*)((char*)self + 0x3c));
     Owner_base_dtor(self);
 }
 

@@ -6,7 +6,7 @@ static int member_calls = 0;
 static int base_calls = 0;
 static int delete_calls = 0;
 
-void __fastcall CMember_dtor(CMember* def) { (void)def; member_calls++; }
+void __fastcall CMember_dtor_00414ea0(CMember* def) { (void)def; member_calls++; }
 void __fastcall Base_dtor(void* def) { (void)def; base_calls++; }
 void __cdecl op_delete(void* p) { (void)p; delete_calls++; }
 
@@ -20,7 +20,7 @@ struct CSoundAtmospheresDef {
 
 void* __fastcall CSoundAtmospheresDef_scalar_deleting_destructor(CSoundAtmospheresDef* def, int edx, unsigned char flags)
 {
-    CMember_dtor(&def->m28);
+    CMember_dtor_00414ea0(&def->m28);
     *(const int**)def = &g_vtbl;
     Base_dtor(def);
     if (flags & 1)

@@ -2,7 +2,7 @@
 
 struct SubObject {
     int touched;
-    void Cleanup();
+    void Cleanup_0099b510();
 };
 
 struct TreeNode {
@@ -17,7 +17,7 @@ int g_cleaned = 0;
 int g_order[64];
 int g_n = 0;
 
-void SubObject::Cleanup()
+void SubObject::Cleanup_0099b510()
 {
     this->touched = 1;
     g_cleaned++;
@@ -35,7 +35,7 @@ void CTextTreeWalkThrough::BuildTreeArray(TreeNode* node)
         do {
             this->BuildTreeArray(node->child);
             TreeNode* next = node->next;
-            node->sub.Cleanup();
+            node->sub.Cleanup_0099b510();
             ProcessTreeNode(node);
             node = next;
         } while (node);

@@ -1,3 +1,3 @@
 // Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
-extern "C" void ForwardTarget();
-extern "C" void CIconText_Update() { ForwardTarget(); }
+extern "C" void ForwardTarget_0052c7e0();
+extern "C" void CIconText_Update() { ForwardTarget_0052c7e0(); }

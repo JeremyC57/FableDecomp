@@ -3,11 +3,11 @@ struct CActiveFile { void* p; };
 static int g_notify = 0;
 static int g_freed = 0;
 static void* g_freed_ptr = 0;
-void __fastcall CActiveFile_Notify(CActiveFile* self) { g_notify++; }
+void __fastcall CActiveFile_Notify_004511f3(CActiveFile* self) { g_notify++; }
 void __cdecl FreeBuffer(void* p) { g_freed++; g_freed_ptr = p; }
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_Notify(self);
+    CActiveFile_Notify_004511f3(self);
     void* q = self->p;
     if (q)
         FreeBuffer(q);

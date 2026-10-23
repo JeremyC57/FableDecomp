@@ -10,7 +10,7 @@ struct CThing {
     }
 };
 struct CPlayer { CThing* c; CThing* GetControlledCreature() { return c; } };
-struct CPlayerManager { CPlayer* p; CPlayer* GetMainPlayer() { return p; } };
+struct CPlayerManager { CPlayer* p; CPlayer* GetMainPlayer() const { return p; } };
 struct CGameScriptInterface {
     CPlayerManager* PlayerManager;
     void GiveHeroGold(int amount)

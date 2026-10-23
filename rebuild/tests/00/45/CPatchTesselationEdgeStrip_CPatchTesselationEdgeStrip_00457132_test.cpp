@@ -16,7 +16,7 @@ struct CPatchTesselationEdgeStrip {
 };
 
 static int g_baseCalled = 0;
-static void Base_dtor(void* self) { g_baseCalled++; }
+static void Base_dtor_00430300(void* self) { g_baseCalled++; }
 
 void CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {
@@ -24,7 +24,7 @@ void CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
     if (self->p58) eng_free(self->p58);
     if (self->p4c) eng_free(self->p4c);
     if (self->p40) eng_free(self->p40);
-    Base_dtor(self);
+    Base_dtor_00430300(self);
 }
 
 int main() {

@@ -28,7 +28,7 @@ struct CLSocketServer { void CloseSocket(void*) { logs("C"); } };
 static CLSocketServer g_server; static CLSocketServer* g_pSocketServer = &g_server;
 static CCountedPointer g_GlobalCountedPointer = { (void*)1, 0, "g" };
 static int g_gameObj; static void* g_pGame = &g_gameObj;
-struct CInitBaseClass { bool init; bool IsInitialised() const { return init; } void Uninitialise() { logs("U"); init = false; } };
+struct CInitBaseClass { bool init; bool IsInitialised() const { return init; } void Uninitialise_004ae990() { logs("U"); init = false; } };
 struct CEditWorld { void Shutdown() { logs("E"); } };
 struct CConsole { static CConsole* Get() { static CConsole c; return &c; } void Initialise(long w, long h, void*) { if (w == 0x60 && h == 0x29) logs("K"); } };
 static void UninitialiseParticles() { logs("P"); }
@@ -55,7 +55,7 @@ void CMainGameComponent::Shutdown()
     g_pGame = 0;
     g_pSocketServer->CloseSocket(Socket);
     EditWorld.Shutdown();
-    if (InputSystem.IsInitialised()) InputSystem.Uninitialise();
+    if (InputSystem.IsInitialised()) InputSystem.Uninitialise_004ae990();
     UninitEventPackageLoading();
     UninitEventPackageSaving();
     UninitialiseParticles();

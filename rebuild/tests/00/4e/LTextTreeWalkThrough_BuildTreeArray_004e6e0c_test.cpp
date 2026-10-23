@@ -6,7 +6,7 @@ static int g_freeCount = 0;
 
 struct CInner {
     int marker;
-    void Destroy(int flag);
+    void Destroy_004e3625(int flag);
 };
 
 struct CTextTreeNode {
@@ -23,7 +23,7 @@ public:
     void BuildTreeArray(CTextTreeNode* node);
 };
 
-void CInner::Destroy(int flag) {
+void CInner::Destroy_004e3625(int flag) {
     (void)flag;
     g_destroyCount++;
 }
@@ -38,7 +38,7 @@ void LTextTreeWalkThrough::BuildTreeArray(CTextTreeNode* node)
     while (node) {
         this->BuildTreeArray(node->child);
         CTextTreeNode* nxt = node->next;
-        node->inner.Destroy(0);
+        node->inner.Destroy_004e3625(0);
         FreeTreeNode(node);
         node = nxt;
     }

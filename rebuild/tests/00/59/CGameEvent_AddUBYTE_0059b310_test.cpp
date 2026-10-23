@@ -2,7 +2,7 @@
 
 struct CGameEvent
 {
-    void Helper(void* p, int n);
+    void Helper_0059aef9(void* p, int n);
     CGameEvent* AddUBYTE();
     int marker;
 };
@@ -11,7 +11,7 @@ static void* g_seenPtr = 0;
 static int   g_seenN   = -1;
 static int   g_calls   = 0;
 
-void CGameEvent::Helper(void* p, int n)
+void CGameEvent::Helper_0059aef9(void* p, int n)
 {
     g_seenPtr = p;
     g_seenN   = n;
@@ -21,7 +21,7 @@ void CGameEvent::Helper(void* p, int n)
 CGameEvent* CGameEvent::AddUBYTE()
 {
     unsigned char buf;
-    Helper(&buf, 0);
+    Helper_0059aef9(&buf, 0);
     return this;
 }
 

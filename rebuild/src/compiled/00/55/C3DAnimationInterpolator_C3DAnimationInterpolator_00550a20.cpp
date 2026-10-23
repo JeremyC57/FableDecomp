@@ -3,10 +3,10 @@
 // Callees: CBase::CBase @ 0x0099A2D0. Vtables: 0x01239840 = C3DAnimationInterpolator (this class), 0x01239838 = C3DAnimationBlendState (both members, the constant
 // kept in ecx). Shape: the first argument's animation is loaded before the vtable stores, each member's `test eax,eax ; mov [member+4],eax ; je ; inc [eax+4]`
 // bumps the count after the store; `this` is returned. The chunk label "CEnginePrimitiveAnimation" is propagated; the classes are named through rtti-vtables.tsv.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct SCountedAnimation_00550a20 {               // the shared animation: the reference count at +4
     long m_a;

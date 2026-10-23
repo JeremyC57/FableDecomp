@@ -116,7 +116,7 @@ struct CEngineGlobals {
     CEnginePrimitiveManager* m_pPrimitiveManager;       // +0x34
 };
 
-extern CEngineGlobals* g_pEngineGlobals;                // 0x013B8A18
+extern CEngineGlobals* g_pEngineGlobals_013b8a18;                // 0x013B8A18
 
 #pragma pack(push, 2)
 struct CEngineGraphic {                                 // 14 bytes (PDB size 14)
@@ -164,7 +164,7 @@ struct CTCGraphicAppearance {
 void CTCGraphicAppearance::RefreshPrimitiveAnimationAndPos(CPrimitive* primitive, const C3DAnimationInterpolator& animation,
                                                            const C3DPositionInterpolator& position, const C3DOrientationInterpolator& orientation)
 {
-    g_pEngineGlobals->m_pPrimitiveManager->SetPrimitiveAnimation(&primitive->PrimitiveHandle,
+    g_pEngineGlobals_013b8a18->m_pPrimitiveManager->SetPrimitiveAnimation(&primitive->PrimitiveHandle,
                                                                  CEnginePrimitiveAnimation(animation, position, orientation));
 }
 

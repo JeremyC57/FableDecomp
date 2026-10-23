@@ -62,7 +62,7 @@ public:
 };
 struct CPlayer { CThing* GetHeroCreature(); };                      // 0x00487DC0
 struct CTCInventoryBase;
-long __fastcall GetInventoryCategory(long defIndex);       // 0x005D99D0
+long __fastcall GetInventoryCategory_005d99d0(long defIndex);       // 0x005D99D0
 struct CPlayerManager { CPlayer* GetMainPlayer() const; };          // 0x00449960
 struct CEngine {
     unsigned char _pad00[0x1c];
@@ -152,7 +152,7 @@ void CTCInventoryTrade::BuyHighlightedItem()
             hero->GetInterface(&stats, 4);
             if (stats->Money >= price) {
                 CTCInventoryBase* inventory = 0;
-                hero->GetInterface(&inventory, GetInventoryCategory(item));
+                hero->GetInterface(&inventory, GetInventoryCategory_005d99d0(item));
                 if (inventory->CanAddItem(item)) {
                     shop->SellItem(item);
                     stats->AddMoney(-price, true);
@@ -174,7 +174,7 @@ void CTCInventoryTrade::BuyHighlightedItem()
 bool CPresenceBits::test(long kind) const { return (((const unsigned long*)this)[kind >> 5] >> (kind & 31)) & 1; }
 static CThing* g_hero; static CThing* g_owner;
 CThing* CPlayer::GetHeroCreature() { return g_hero; }
-long __fastcall GetInventoryCategory(long defIndex) { return 0x30; }
+long __fastcall GetInventoryCategory_005d99d0(long defIndex) { return 0x30; }
 static CPlayer g_player; CPlayer* CPlayerManager::GetMainPlayer() const { return &g_player; }
 static CPlayerManager g_pm; static CEngine g_engine; CEngine* g_pEngine = &g_engine;
 static long g_slotItem; static long g_slotIndex;

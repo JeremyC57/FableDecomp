@@ -55,12 +55,12 @@ struct CThing {
     }
 };
 struct CThingPhysical : CThing { };
-template<class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 (CThing*)
+template<class T> bool __fastcall IS_THING_ALIVE_0040dce0(const T& thing);   // 0x0040DCE0 (CThing*)
 bool IsThingAliveImpl(const void* thing);                // stand-in callee of the stand-in body below
 // Same-TU read-only stand-in for the IS_THING_ALIVE<CThing*> instantiation (out of line in retail): the argument's
 // address does not escape, so VC7.1 can reuse its slot.
 #pragma auto_inline(off)
-template<class T> bool __fastcall IS_THING_ALIVE(const T& thing)
+template<class T> bool __fastcall IS_THING_ALIVE_0040dce0(const T& thing)
 {
     return thing != 0 && IsThingAliveImpl(thing);
 }
@@ -152,7 +152,7 @@ long CDrawQuestInfo::AddMiniGameBar(EMiniGameType type, CThingPhysical* thing)
         bar->FadeColour = CRGBColour(255, 0, 0, 255);
         break;
     case 6: {
-        if (IS_THING_ALIVE<CThing*>(thing) && thing->UsingComponents.test(0x1a))
+        if (IS_THING_ALIVE_0040dce0<CThing*>(thing) && thing->UsingComponents.test(0x1a))
             bar->Graphic = thing->GetTC<CTCInventoryItem>(0x1a)->GetEngineGraphic();
         CCountedPointer<CQuestInfoElementCounter> counter(new CQuestInfoElementCounter(def->CounterGraphic484, 0, 1.0f));
         AddElement(counter);

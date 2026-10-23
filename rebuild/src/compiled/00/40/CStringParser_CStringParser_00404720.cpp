@@ -17,11 +17,11 @@
 // literal is the fall-through arm; TempCharString's address lives in edi across the two calls on it.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-class CBase {
+namespace N_0099a2d0 { class CBase {
 public:
     CBase();                                       // 0x0099A2D0
     virtual ~CBase();
-};
+}; } using N_0099a2d0::CBase;
 
 struct CCharStringData {                           // shared representation block of a CCharString
     char*         PData;                           // characters

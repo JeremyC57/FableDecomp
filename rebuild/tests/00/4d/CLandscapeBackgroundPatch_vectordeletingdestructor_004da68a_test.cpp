@@ -6,12 +6,12 @@ static void* g_freed = 0;
 struct Sub { int x; };
 struct Obj { int pad0; Sub sub; };
 
-static void Sub_dtor(Sub* s) { (void)s; g_dtor_calls++; }
+static void Sub_dtor_0099eae0(Sub* s) { (void)s; g_dtor_calls++; }
 static void eng_delete(void* p) { g_freed = p; }
 
 static void* vdtor(Obj* self, unsigned int flags)
 {
-    Sub_dtor(&self->sub);
+    Sub_dtor_0099eae0(&self->sub);
     if (flags & 1) eng_delete(self);
     return self;
 }

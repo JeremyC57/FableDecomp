@@ -2,7 +2,7 @@
 struct CDefClassBase;
 
 struct SubDef {
-    void Copy(const void* src);   // member @ 0x4611f5 (thiscall)
+    void Copy_004611f5(const void* src);   // member @ 0x4611f5 (thiscall)
 };
 
 struct BaseDef {
@@ -17,5 +17,5 @@ struct CObjectFamilyDef {
 void __fastcall CObjectFamilyDef_Copy(CObjectFamilyDef* self, int /*edx*/, const CDefClassBase* src)
 {
     ((BaseDef*)self)->BaseCopy(src);
-    ((SubDef*)((char*)self + 0x3c))->Copy((const char*)src + 0x3c);
+    ((SubDef*)((char*)self + 0x3c))->Copy_004611f5((const char*)src + 0x3c);
 }

@@ -62,14 +62,14 @@ struct CThingGameObject47 : CThingGameObject {    // a CThingGameObject subclass
     enum { ThingTypeMask = 0x47 };
 };
 
-struct CThingFilter_HasScriptName {
+namespace N_006a7930 { struct CThingFilter_HasScriptName {
     const char* ScriptName;
     bool operator()(const CThing* thing) const;      // 0x006A7930 (manifest: CThingFilter_InMap)
-};
-struct CThingFilter_InMap {
+}; } using N_006a7930::CThingFilter_HasScriptName;
+namespace N_006a7c20 { struct CThingFilter_InMap {
     long MapNumber;
     bool operator()(const CThing* thing) const;      // 0x006A7C20
-};
+}; } using N_006a7c20::CThingFilter_InMap;
 template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
     const A& First;
     const B& Second;

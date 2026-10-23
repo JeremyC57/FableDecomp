@@ -7,7 +7,7 @@ static int fails = 0;
 static int g_baseCtor = 0, g_fadeCtor = 0, g_handleCtor = 0, g_resizeE = 0, g_resizeC = 0; static long g_resizeECount = -1; static unsigned long g_resizeCCount = 0;
 static const void* g_baseGui = 0; static const void* g_baseList = 0;
 struct CPlayerGui;
-struct CBase { virtual void v00() {} CBase() { ++g_handleCtor; } };
+namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() { ++g_handleCtor; } }; } using N_0099a2d0::CBase;
 struct CIVCountedPointeeBase;
 struct CIVCountedPointer { CIVCountedPointeeBase* Object; __forceinline CIVCountedPointer() : Object(0) { } };
 struct CEnginePrimitiveHandle : CBase { CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };

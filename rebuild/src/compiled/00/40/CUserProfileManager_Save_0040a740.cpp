@@ -21,9 +21,9 @@ bool __fastcall PathExists(const CWideString& path);       // 0x00999230
 bool __fastcall VerifySignature(const CWideString& path);  // 0x00409730
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual ~CBase();                                       // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CAFile : CBase {
     long AccessType;                                        // +0x04 FileAccessType
     long Position;                                          // +0x08

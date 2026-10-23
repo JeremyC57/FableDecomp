@@ -3,7 +3,7 @@
 struct CPersistContext {
     int calls;
     void PersistA(int& r);
-    void PersistB(int& r);
+    void PersistB_00466a47(int& r);
 };
 
 struct CVillagerInteractionsDef {
@@ -17,13 +17,13 @@ static int g_seq[4];
 static int g_n;
 
 void CPersistContext::PersistA(int& r) { calls++; g_seq[g_n++] = 1; }
-void CPersistContext::PersistB(int& r) { calls++; g_seq[g_n++] = 2; }
+void CPersistContext::PersistB_00466a47(int& r) { calls++; g_seq[g_n++] = 2; }
 
 void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->PersistA(def->fieldA);
     ctx->PersistA(def->fieldB);
-    ctx->PersistB(def->fieldC);
+    ctx->PersistB_00466a47(def->fieldC);
 }
 
 int main() {

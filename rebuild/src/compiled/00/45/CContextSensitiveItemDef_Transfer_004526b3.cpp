@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
 struct CPersistContext {
-    void PersistA(void* p);
+    void PersistA_004526f7(void* p);
     void PersistB(void* p);
 };
 struct CContextSensitiveItemDef {
@@ -16,7 +16,7 @@ struct CContextSensitiveItemDef {
 
 void CContextSensitiveItemDef::Transfer(CPersistContext& ctx)
 {
-    ctx.PersistA(&f0);
+    ctx.PersistA_004526f7(&f0);
     ctx.PersistB(&f1);
     ctx.PersistB(&f2);
     ctx.PersistB(&f3);

@@ -13,7 +13,7 @@ struct C3DAnimationBlendState {
 static int g_baseDtorCalls = 0;
 static int g_releaseCalls = 0;
 
-void __fastcall base_dtor(void* self) { (void)self; g_baseDtorCalls++; }
+void __fastcall base_dtor_004da967(void* self) { (void)self; g_baseDtorCalls++; }
 
 void __fastcall releaseFn(RefCounted* p) { (void)p; g_releaseCalls++; }
 
@@ -27,7 +27,7 @@ void __fastcall dtor_C3DAnimationBlendState(C3DAnimationBlendState* self)
         }
         self->pRef = 0;
     }
-    base_dtor(self);
+    base_dtor_004da967(self);
 }
 
 int main() {

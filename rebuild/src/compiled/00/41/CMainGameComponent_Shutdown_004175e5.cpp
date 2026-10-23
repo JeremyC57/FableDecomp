@@ -80,7 +80,7 @@ extern void* g_pGame;                                // 0x013B86A0
 class CInitBaseClass {
 public:
     bool IsInitialised() const;                      // 0x0099A330
-    void Uninitialise();                             // 0x004AE990
+    void Uninitialise_004ae990();                             // 0x004AE990
 };
 class CEditWorld {
 public:
@@ -143,7 +143,7 @@ void CMainGameComponent::Shutdown()
     g_pSocketServer->CloseSocket(Socket);
     EditWorld.Shutdown();
     if (InputSystem.IsInitialised())
-        InputSystem.Uninitialise();
+        InputSystem.Uninitialise_004ae990();
     UninitEventPackageLoading();
     UninitEventPackageSaving();
     UninitialiseParticles();

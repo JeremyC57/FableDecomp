@@ -5,7 +5,7 @@
 //   lea ecx,[esi+0x10]
 //   call <Sub::Cleanup>
 struct SubObject {
-    void Cleanup();
+    void Cleanup_004dd728();
 };
 
 struct TreeNode {
@@ -27,7 +27,7 @@ void CTextTreeWalkThrough::BuildTreeArray(TreeNode* node)
         do {
             this->BuildTreeArray(node->child);
             TreeNode* next = node->next;
-            node->sub.Cleanup();
+            node->sub.Cleanup_004dd728();
             ProcessTreeNode(node);
             node = next;
         } while (node);

@@ -85,7 +85,7 @@ struct CEngineGlobals {
     CEnginePrimitiveManager* m_pPrimitiveManager;       // +0x34
 };
 
-extern CEngineGlobals* g_pEngineGlobals;                // 0x013B8A18
+extern CEngineGlobals* g_pEngineGlobals_013b8a18;                // 0x013B8A18
 
 #pragma pack(push, 2)
 struct CEngineGraphic {                                 // 14 bytes (PDB size 14)
@@ -137,7 +137,7 @@ void CTCGraphicAppearance::SetAttachedPrimitiveGraphics(CPrimitive* primitive, C
         flags = 0x800;
     if (IsDrawingAfterWater())
         flags |= 8;
-    g_pEngineGlobals->m_pPrimitiveManager->AttachPrimitive(&primitive->PrimitiveHandle, attachTo, info, &parent->PrimitiveHandle, -1, flags);
+    g_pEngineGlobals_013b8a18->m_pPrimitiveManager->AttachPrimitive(&primitive->PrimitiveHandle, attachTo, info, &parent->PrimitiveHandle, -1, flags);
 }
 
 }

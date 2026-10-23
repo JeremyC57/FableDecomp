@@ -2,14 +2,14 @@
 
 struct CFlash {
     void *vptr;
-    void Dtor(int flags);
+    void Dtor_005b1b5e(int flags);
 };
 struct Alloc {};
 
 static int g_calls = 0;
 static int g_lastFlags = -1;
 
-void CFlash::Dtor(int flags) {
+void CFlash::Dtor_005b1b5e(int flags) {
     g_calls++;
     g_lastFlags = flags;
 }
@@ -17,7 +17,7 @@ void CFlash::Dtor(int flags) {
 void __fastcall _Destroy_range_CFlash(CFlash *first, CFlash *last, Alloc *al)
 {
     for (; first != last; ++first)
-        first->Dtor(0);
+        first->Dtor_005b1b5e(0);
 }
 
 int main() {

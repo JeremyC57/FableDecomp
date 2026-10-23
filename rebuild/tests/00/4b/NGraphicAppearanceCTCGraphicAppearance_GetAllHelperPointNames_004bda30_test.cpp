@@ -34,10 +34,10 @@ struct CCountedPointer {
     }
 };
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase() {}
     virtual ~CBase() { ++g_baseDtors; }
-};
+}; } using N_0099a2d0::CBase;
 
 struct C3DMeshObject : CBase {
     CCountedPointer    Mesh;

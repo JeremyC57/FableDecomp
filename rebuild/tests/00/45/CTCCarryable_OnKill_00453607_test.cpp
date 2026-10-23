@@ -10,12 +10,12 @@ struct CTCCarryable {
     int count;
 };
 void* g_freed = (void*)0;
-void __stdcall FreeNode(void* data){ g_freed = data; }
+void __stdcall FreeNode_00451b4b(void* data){ g_freed = data; }
 void __fastcall CTCCarryable_OnKill(CTCCarryable* self)
 {
     if (self->count != 0) {
         Node* n = self->head;
-        FreeNode(n->data);
+        FreeNode_00451b4b(n->data);
         n = self->head; n->next = n;
         n = self->head; n->data = 0;
         n = self->head; n->prev = n;

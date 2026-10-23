@@ -6,14 +6,14 @@ struct CActiveFile {
     int helper_called;
 };
 
-void __fastcall CActiveFile_Helper(CActiveFile* self)
+void __fastcall CActiveFile_Helper_004dfb5e(CActiveFile* self)
 {
     self->helper_called = 1;
 }
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_Helper(self);
+    CActiveFile_Helper_004dfb5e(self);
     void* p = self->buffer;
     if (p)
         free(p);

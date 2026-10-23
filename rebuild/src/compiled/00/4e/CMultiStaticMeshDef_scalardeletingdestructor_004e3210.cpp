@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 struct CMember { };
-extern void __fastcall CMember_dtor(CMember* def);
+extern void __fastcall CMember_dtor_004dfa66(CMember* def);
 extern void __fastcall Base_dtor(void* def);
 extern void __cdecl op_delete(void* p);
 extern const int g_vtbl;
@@ -15,7 +15,7 @@ struct CMultiStaticMeshDef {
 
 void* __fastcall CMultiStaticMeshDef_scalar_deleting_destructor(CMultiStaticMeshDef* def, int edx, unsigned char flags)
 {
-    CMember_dtor(&def->m28);
+    CMember_dtor_004dfa66(&def->m28);
     *(const int**)def = &g_vtbl;
     Base_dtor(def);
     if (flags & 1)

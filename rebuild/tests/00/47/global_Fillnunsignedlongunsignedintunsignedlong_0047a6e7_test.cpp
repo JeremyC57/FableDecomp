@@ -8,10 +8,10 @@ static unsigned long g_lastThis  = 0;
 static unsigned long g_lastValue = 0;
 static int           g_calls     = 0;
 
-struct Elem {
+namespace N_004786cf { struct Elem {
     Elem& operator=(unsigned long _v);
     char _storage[0x50];
-};
+}; } using N_004786cf::Elem;
 
 // Out-of-line definition (the masked __fastcall element-assign helper).
 Elem& Elem::operator=(unsigned long _v)

@@ -6,7 +6,7 @@
 struct CFlash {
     void *vptr; // makes sizeof==4 so ++first strides by 4 (retail 'add esi,4')
     // one int arg (the retail 'push 0'): scalar-deleting-destructor style.
-    void Dtor(int flags);
+    void Dtor_005b1b5e(int flags);
 };
 
 struct Alloc {};
@@ -14,5 +14,5 @@ struct Alloc {};
 void __fastcall _Destroy_range_CFlash(CFlash *first, CFlash *last, Alloc *al)
 {
     for (; first != last; ++first)
-        first->Dtor(0);
+        first->Dtor_005b1b5e(0);
 }

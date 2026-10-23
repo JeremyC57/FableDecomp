@@ -10,14 +10,14 @@ struct CAIStateGroup_CreatureUseCoverBase {
 
 void __fastcall sub_5992f0(void* self){ g_steps += 1; (void)self; }
 void __fastcall sub_599ee0(void* member){ g_steps += 10; (void)member; }
-void __fastcall base_dtor(void* self){ g_steps += 100; (void)self; }
+void __fastcall base_dtor_0099a300(void* self){ g_steps += 100; (void)self; }
 
 void __fastcall CAIStateGroup_CreatureUseCoverBase_dtor(CAIStateGroup_CreatureUseCoverBase* self)
 {
     self->vtbl = 0x122d06c;
     sub_5992f0(self);
     sub_599ee0(&self->member18);
-    base_dtor(self);
+    base_dtor_0099a300(self);
 }
 
 int main(){

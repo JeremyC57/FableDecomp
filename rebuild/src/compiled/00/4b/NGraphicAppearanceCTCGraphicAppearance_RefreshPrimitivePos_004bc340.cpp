@@ -69,7 +69,7 @@ struct CEngineGlobals {
     unsigned char _pad_0x00[0x34];
     CEngine*      m_pEngine;                        // +0x34
 };
-extern CEngineGlobals* g_pEngineGlobals;            // 0x013B8A18
+extern CEngineGlobals* g_pEngineGlobals_013b8a18;            // 0x013B8A18
 
 class CEnginePrimitiveHandle {
 public:
@@ -93,7 +93,7 @@ public:
 
 void CTCGraphicAppearance::RefreshPrimitivePos(CPrimitive* primitive, const C3DPositionInterpolator& position, const C3DOrientationInterpolator& orientation)
 {
-    g_pEngineGlobals->m_pEngine->SetPrimitivePosition(primitive->PrimitiveHandle,
+    g_pEngineGlobals_013b8a18->m_pEngine->SetPrimitivePosition(primitive->PrimitiveHandle,
         CEnginePrimitivePosition(position.GetPosition(0.0f), orientation.GetOrientation(0.0f)));
 }
 

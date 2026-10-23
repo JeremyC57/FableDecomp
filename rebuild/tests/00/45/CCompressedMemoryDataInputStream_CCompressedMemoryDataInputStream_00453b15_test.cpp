@@ -16,7 +16,7 @@ static int g_base_called = 0;
 // under test; any other free (CRT start-up/exit) is left as a harmless leak
 static int g_armed = 0;
 extern "C" void __cdecl free(void* p) { if (g_armed) { g_freed++; g_last_free = p; } }
-void __fastcall CBase_dtor(void* self) { g_base_called++; }
+void __fastcall CBase_dtor_009fc550(void* self) { g_base_called++; }
 
 void __fastcall CCompressedMemoryDataInputStream_dtor(CCompressedMemoryDataInputStream* self)
 {
@@ -25,7 +25,7 @@ void __fastcall CCompressedMemoryDataInputStream_dtor(CCompressedMemoryDataInput
     if (self->buf_a8)
         free(self->buf_a8);
     self->vtbl = (void*)0x1230ba0;
-    CBase_dtor(self);
+    CBase_dtor_009fc550(self);
 }
 
 int main()

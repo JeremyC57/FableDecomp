@@ -4,10 +4,10 @@
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+namespace N_0099b720 { struct CCharString {
     char* p;                       // +0
     CCharString(const CCharString&); // copy ctor -> retail 0x0099b720 (external)
-};
+}; } using N_0099b720::CCharString;
 
 struct LongPair { long first; long second; };
 

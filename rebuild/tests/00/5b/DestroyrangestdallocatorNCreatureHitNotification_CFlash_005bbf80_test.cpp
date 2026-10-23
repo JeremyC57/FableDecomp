@@ -2,7 +2,7 @@
 
 struct CFlash {
     char pad[0x14];
-    void Dtor(int flag);
+    void Dtor_005bbbce(int flag);
 };
 
 struct AllocTag {};
@@ -10,7 +10,7 @@ struct AllocTag {};
 static int g_calls = 0;
 static int g_argsum = 0;
 
-void CFlash::Dtor(int flag) {
+void CFlash::Dtor_005bbbce(int flag) {
     g_calls++;
     g_argsum += flag;
     pad[0] = (char)0xAB; // touch memory
@@ -20,7 +20,7 @@ void __fastcall Destroy_range_flash(CFlash* first, CFlash* last,
                                     AllocTag* al)
 {
     for (; first != last; ++first)
-        first->Dtor(0);
+        first->Dtor_005bbbce(0);
 }
 
 int main() {

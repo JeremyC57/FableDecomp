@@ -23,12 +23,12 @@ struct CEnginePrimitiveManager {
 struct CEngineGlobals { CEnginePrimitiveManager* m_pPrimitiveManager; };
 static CEnginePrimitiveManager g_manager;
 static CEngineGlobals g_globals = { &g_manager };
-static CEngineGlobals* g_pEngineGlobals = &g_globals;
+static CEngineGlobals* g_pEngineGlobals_013b8a18 = &g_globals;
 struct CTCGraphicAppearance {
     void RefreshPrimitiveAnimationAndPos(CPrimitive* primitive, const C3DAnimationInterpolator& animation,
                                          const C3DPositionInterpolator& position, const C3DOrientationInterpolator& orientation)
     {
-        g_pEngineGlobals->m_pPrimitiveManager->SetPrimitiveAnimation(&primitive->PrimitiveHandle,
+        g_pEngineGlobals_013b8a18->m_pPrimitiveManager->SetPrimitiveAnimation(&primitive->PrimitiveHandle,
                                                                      CEnginePrimitiveAnimation(animation, position, orientation));
     }
 };

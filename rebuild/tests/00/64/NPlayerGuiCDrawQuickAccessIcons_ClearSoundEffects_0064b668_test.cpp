@@ -5,14 +5,14 @@
 // is stopped and its ID forgotten; otherwise nothing changes.
 struct CTCSound { unsigned int stopped; void StopSound(unsigned int id) { stopped = id; } };
 struct CThing { bool alive; bool hasSound; CTCSound sound; bool HasInterface(long t) { return t == 0x10 && hasSound; } CTCSound* GetInterfaceUnchecked(long t) { (void)t; return &sound; } };
-static bool IS_THING_ALIVE(CThing* const& t) { return t != 0 && t->alive; }
+static bool IS_THING_ALIVE_0043dbd0(CThing* const& t) { return t != 0 && t->alive; }
 struct CDrawQuickAccessIcons {
     CThing* hero; unsigned int ChargingSoundID;
     void ClearSoundEffects()
     {
         if (ChargingSoundID > 0) {
             CThing* h = hero;
-            if (IS_THING_ALIVE(h)) {
+            if (IS_THING_ALIVE_0043dbd0(h)) {
                 if (h->HasInterface(0x10)) { h->GetInterfaceUnchecked(0x10)->StopSound(ChargingSoundID); ChargingSoundID = 0; }
             }
         }

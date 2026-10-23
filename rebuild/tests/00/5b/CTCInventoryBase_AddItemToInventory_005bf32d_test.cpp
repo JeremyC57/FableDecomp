@@ -4,7 +4,7 @@ static long g_augAdded = -1, g_catAdded = -1, g_notified = -1;
 static bool g_addOk = true;
 static bool g_hasAugComp = true;
 struct CCategory { long ident; bool AddItem(long t, bool, long, long) { if (g_addOk) g_catAdded = t * 100 + ident; return g_addOk; } };
-static bool IsAugmentation(long t) { return t >= 1000; }
+static bool IsAugmentation_005d98f0(long t) { return t >= 1000; }
 static long GetInventoryCategory(long t) { return t % 3; }
 static CCategory* FindCategory(CCategory* f, CCategory* l, long id) { for (; f != l; ++f) if (f->ident == id) break; return f; }
 struct CInv {
@@ -12,7 +12,7 @@ struct CInv {
     void OnItemAdded(long t, bool, bool) { g_notified = t; }
     bool AddItemToInventory(long itemType, long count, bool silent, bool notify, long price, bool flag)
     {
-        if (IsAugmentation(itemType)) {
+        if (IsAugmentation_005d98f0(itemType)) {
             if (g_hasAugComp) g_augAdded = itemType;
         } else {
             CCategory* category = FindCategory(cats, cats + 3, GetInventoryCategory(itemType));

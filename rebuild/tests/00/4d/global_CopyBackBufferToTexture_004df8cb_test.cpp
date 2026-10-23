@@ -4,12 +4,12 @@ struct CTexture;
 
 struct CDisplayManager {
     int marker;
-    void Helper(char *a, char *b);
+    void Helper_004dd342(char *a, char *b);
     CTexture * CopyBackBufferToTexture();
 };
 
 static int g_called = 0;
-void CDisplayManager::Helper(char *a, char *b) { g_called = (a != 0 && b != 0) ? 1 : 0; }
+void CDisplayManager::Helper_004dd342(char *a, char *b) { g_called = (a != 0 && b != 0) ? 1 : 0; }
 
 #pragma optimize("t",off)
 CTexture * CDisplayManager::CopyBackBufferToTexture()
@@ -17,7 +17,7 @@ CTexture * CDisplayManager::CopyBackBufferToTexture()
     char *pa, *pb;
     { char a; pa = &a; }
     { char b; pb = &b; }
-    Helper(pa, pb);
+    Helper_004dd342(pa, pb);
     return (CTexture *)this;
 }
 

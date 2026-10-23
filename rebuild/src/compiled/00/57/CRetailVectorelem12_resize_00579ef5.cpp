@@ -18,8 +18,8 @@ struct CRetailVector_elem12 {
     SElement12* first;
     SElement12* last;
     SElement12* end;
-    SElement12* Erase(SElement12* f, SElement12* l);   // 0x005798A3
-    void Insert(SElement12* where, unsigned long count, const SElement12& value);   // 0x00579B3C
+    SElement12* Erase_005798a3(SElement12* f, SElement12* l);   // 0x005798A3
+    void Insert_00579b3c(SElement12* where, unsigned long count, const SElement12& value);   // 0x00579B3C
     long size() const { return last - first; }
     void resize(unsigned long n, const SElement12& value);
 };
@@ -27,7 +27,7 @@ struct CRetailVector_elem12 {
 void CRetailVector_elem12::resize(unsigned long n, const SElement12& value)
 {
     if (n < (unsigned long)size())
-        Erase(first + n, last);
+        Erase_005798a3(first + n, last);
     else
-        Insert(last, n - size(), value);
+        Insert_00579b3c(last, n - size(), value);
 }

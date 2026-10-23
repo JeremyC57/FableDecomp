@@ -16,7 +16,7 @@ extern void __fastcall sub_5992f0(void* self);
 // Destructor of the member sub-object at +0x18.
 extern void __fastcall sub_599ee0(void* member);
 // Base-class destructor.
-extern void __fastcall base_dtor(void* self);
+extern void __fastcall base_dtor_0099a300(void* self);
 
 struct CAIStateGroup_CreatureUseCoverBase {
     unsigned int vtbl;      // vtable pointer, reset to this class's table on entry
@@ -31,5 +31,5 @@ void __fastcall CAIStateGroup_CreatureUseCoverBase_dtor(CAIStateGroup_CreatureUs
     sub_5992f0(self);
     // Destroy the owned member, then let the base clean up.
     sub_599ee0(&self->member18);
-    base_dtor(self);
+    base_dtor_0099a300(self);
 }

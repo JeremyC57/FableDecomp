@@ -4,7 +4,7 @@ extern void __cdecl eng_free(void*);
 struct CPatchTesselationEdgeStripBase {
 };
 
-extern void __fastcall Base_dtor(void* self);
+extern void __fastcall Base_dtor_00430300(void* self);
 
 struct CPatchTesselationEdgeStrip {
     char pad00[0x40];
@@ -27,5 +27,5 @@ void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self
         eng_free(self->p4c);
     if (self->p40)
         eng_free(self->p40);
-    Base_dtor(self);
+    Base_dtor_00430300(self);
 }

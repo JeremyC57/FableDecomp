@@ -8,7 +8,7 @@ struct CCompressedMemoryDataInputStream {
 };
 
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
-extern void __fastcall CBase_dtor(void* self);
+extern void __fastcall CBase_dtor_009fc550(void* self);
 
 void __fastcall CCompressedMemoryDataInputStream_dtor(CCompressedMemoryDataInputStream* self)
 {
@@ -17,5 +17,5 @@ void __fastcall CCompressedMemoryDataInputStream_dtor(CCompressedMemoryDataInput
     if (self->buf_a8)
         free(self->buf_a8);
     self->vtbl = (void*)0x1230ba0;
-    CBase_dtor(self);
+    CBase_dtor_009fc550(self);
 }

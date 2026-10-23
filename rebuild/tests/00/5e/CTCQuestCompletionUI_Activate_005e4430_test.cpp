@@ -55,7 +55,7 @@ struct CDefinitionManager {
     static CDefinitionManager* __fastcall Get() { static CDefinitionManager m; return &m; }
     bool GetDef(long index, CDefPointer<CObjectDef>* out) { ++g_getdef_calls; out->P = &g_defs[index]; ++out->P->RefCount; return true; }
 };
-bool __fastcall IsAugmentation(long index) { return index == 6; }
+bool __fastcall IsAugmentation_005d9930(long index) { return index == 6; }
 struct CThing { unsigned short DefIndex; };
 struct CTCQuestCard {
     CThing* Owner;
@@ -161,7 +161,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
             if (PCardDef.P && Completion == COMPLETION_1) {
                 bool found = false;
                 for (unsigned long i = 0; i < PCardDef->RewardObjects.size() && !found; ++i) {
-                    if (IsAugmentation(PCardDef->RewardObjects[i])) {
+                    if (IsAugmentation_005d9930(PCardDef->RewardObjects[i])) {
                         CDefPointer<CObjectDef> reward;
                         CDefinitionManager::Get()->GetDef(PCardDef->RewardObjects[i], &reward);
                         RenderedObjectDef = PCardDef->RewardObjects[i];

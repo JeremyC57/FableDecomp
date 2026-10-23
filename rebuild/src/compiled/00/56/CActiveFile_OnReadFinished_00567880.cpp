@@ -1,7 +1,7 @@
 struct CActiveFile;
 
 // __fastcall helper on self, returns nothing we use
-void __fastcall CActiveFile_base(CActiveFile* self);
+void __fastcall CActiveFile_base_00566e10(CActiveFile* self);
 // cdecl free helper taking the field0 pointer
 void free_helper(void* p);
 
@@ -11,7 +11,7 @@ struct CActiveFile {
 
 void __fastcall OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_base(self);
+    CActiveFile_base_00566e10(self);
     void* p = self->field0;
     if (p)
         free_helper(p);

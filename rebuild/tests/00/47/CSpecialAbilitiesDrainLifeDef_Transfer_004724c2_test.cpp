@@ -3,8 +3,8 @@ struct Field { unsigned char b[0xc]; };
 static int g_calls = 0;
 static void* g_last = 0;
 struct CPersistContext {
-    void PersistA(void* p){ g_calls++; g_last = p; }
-    void PersistB(void* p){ g_calls++; g_last = p; }
+    void PersistA_00464cbf(void* p){ g_calls++; g_last = p; }
+    void PersistB_00466a47(void* p){ g_calls++; g_last = p; }
     void PersistC(void* p){ g_calls++; g_last = p; }
     void PersistD(void* p){ g_calls++; g_last = p; }
 };
@@ -20,9 +20,9 @@ struct CSpecialAbilitiesDrainLifeDef {
 
 void CSpecialAbilitiesDrainLifeDef::Transfer(CPersistContext& ctx)
 {
-    ctx.PersistA(&f0);
-    ctx.PersistB(&f1);
-    ctx.PersistA(&f2);
+    ctx.PersistA_00464cbf(&f0);
+    ctx.PersistB_00466a47(&f1);
+    ctx.PersistA_00464cbf(&f2);
     ctx.PersistC(&f3);
     ctx.PersistD(&f4);
 }

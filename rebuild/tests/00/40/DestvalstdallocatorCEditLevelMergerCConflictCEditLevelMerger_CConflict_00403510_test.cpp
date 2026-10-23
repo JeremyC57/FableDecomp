@@ -8,7 +8,7 @@ static void* g_ptr[8];
 static int   g_kind[8];   // 1 = dtorA, 2 = dtorB
 static int   g_n     = 0;
 
-extern "C" void __fastcall dtorA(MemberA* p) { g_ptr[g_n] = p; g_kind[g_n] = 1; ++g_n; ++g_seq; }
+extern "C" void __fastcall dtorA_0099b510(MemberA* p) { g_ptr[g_n] = p; g_kind[g_n] = 1; ++g_n; ++g_seq; }
 extern "C" void __fastcall dtorB(MemberB* p) { g_ptr[g_n] = p; g_kind[g_n] = 2; ++g_n; ++g_seq; }
 
 struct Host {
@@ -26,12 +26,12 @@ struct Host {
 
 void __fastcall Dest_val(Host* self)
 {
-    dtorA(&self->m_bc);
-    dtorA(&self->m_b8);
-    dtorA(&self->m_94);
+    dtorA_0099b510(&self->m_bc);
+    dtorA_0099b510(&self->m_b8);
+    dtorA_0099b510(&self->m_94);
     dtorB(&self->m_30);
     dtorB(&self->m_2c);
-    dtorA(&self->m_0c);
+    dtorA_0099b510(&self->m_0c);
 }
 
 int main()

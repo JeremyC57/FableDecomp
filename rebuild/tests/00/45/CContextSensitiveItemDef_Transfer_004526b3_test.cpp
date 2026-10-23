@@ -3,7 +3,7 @@ struct Field { unsigned char b[4]; };
 static int g_calls = 0;
 static void* g_last = 0;
 struct CPersistContext {
-    void PersistA(void* p){ g_calls++; g_last = p; }
+    void PersistA_004526f7(void* p){ g_calls++; g_last = p; }
     void PersistB(void* p){ g_calls++; g_last = p; }
 };
 struct CContextSensitiveItemDef {
@@ -18,7 +18,7 @@ struct CContextSensitiveItemDef {
 
 void CContextSensitiveItemDef::Transfer(CPersistContext& ctx)
 {
-    ctx.PersistA(&f0);
+    ctx.PersistA_004526f7(&f0);
     ctx.PersistB(&f1);
     ctx.PersistB(&f2);
     ctx.PersistB(&f3);

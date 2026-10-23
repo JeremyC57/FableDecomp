@@ -15,7 +15,7 @@ struct CEnginePrimitiveManager {
 struct CEngineGlobals { CEnginePrimitiveManager* m_pPrimitiveManager; };
 static CEnginePrimitiveManager g_manager;
 static CEngineGlobals g_globals = { &g_manager };
-static CEngineGlobals* g_pEngineGlobals = &g_globals;
+static CEngineGlobals* g_pEngineGlobals_013b8a18 = &g_globals;
 struct CTCGraphicAppearance {
     signed char ByPassColorFilter; bool m_afterWater;
     bool IsDrawingAfterWater() { return m_afterWater; }
@@ -26,7 +26,7 @@ struct CTCGraphicAppearance {
             flags = 0x800;
         if (IsDrawingAfterWater())
             flags |= 8;
-        g_pEngineGlobals->m_pPrimitiveManager->AttachPrimitive(&primitive->PrimitiveHandle, attachTo, info, &parent->PrimitiveHandle, -1, flags);
+        g_pEngineGlobals_013b8a18->m_pPrimitiveManager->AttachPrimitive(&primitive->PrimitiveHandle, attachTo, info, &parent->PrimitiveHandle, -1, flags);
     }
 };
 

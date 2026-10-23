@@ -14,7 +14,7 @@
 struct MemberA { char pad[4]; };   // sub-object type destroyed by dtorA (four of them)
 struct MemberB { char pad[4]; };   // sub-object type destroyed by dtorB (two of them)
 
-extern "C" void __fastcall dtorA(MemberA* p);   // destructor of the MemberA sub-objects (0x00598000)
+extern "C" void __fastcall dtorA_0099b510(MemberA* p);   // destructor of the MemberA sub-objects (0x00598000)
 extern "C" void __fastcall dtorB(MemberB* p);   // destructor of the MemberB sub-objects (0x0059B5D0)
 
 // CEditLevelMerger::CConflict, as far as the destructor touches it.
@@ -34,10 +34,10 @@ struct Host {
 void __fastcall Dest_val(Host* self)
 {
     // Reverse declaration order.
-    dtorA(&self->m_bc);
-    dtorA(&self->m_b8);
-    dtorA(&self->m_94);
+    dtorA_0099b510(&self->m_bc);
+    dtorA_0099b510(&self->m_b8);
+    dtorA_0099b510(&self->m_94);
     dtorB(&self->m_30);
     dtorB(&self->m_2c);
-    dtorA(&self->m_0c);
+    dtorA_0099b510(&self->m_0c);
 }

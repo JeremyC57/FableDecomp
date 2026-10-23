@@ -3,8 +3,8 @@
 
 struct CThingHeapElem { char _[8]; };
 
-extern void FABLE_FASTCALL heap_build_44(CThingHeapElem*, CThingHeapElem*, void*);
-extern void FABLE_FASTCALL heap_adjust_45(CThingHeapElem*, CThingHeapElem*, int, void*);
+extern void FABLE_FASTCALL heap_build_44_00594b59(CThingHeapElem*, CThingHeapElem*, void*);
+extern void FABLE_FASTCALL heap_adjust_45_00593e10(CThingHeapElem*, CThingHeapElem*, int, void*);
 void FABLE_FASTCALL make_heap_004711f5(CThingHeapElem*, CThingHeapElem*, void*);
 
 static int g_build_calls = 0;
@@ -12,10 +12,10 @@ static int g_adjust_calls = 0;
 static CThingHeapElem* g_last_build_first = 0;
 static CThingHeapElem* g_last_build_last  = 0;
 
-void FABLE_FASTCALL heap_build_44(CThingHeapElem* f, CThingHeapElem* l, void*) {
+void FABLE_FASTCALL heap_build_44_00594b59(CThingHeapElem* f, CThingHeapElem* l, void*) {
     g_build_calls++; g_last_build_first = f; g_last_build_last = l;
 }
-void FABLE_FASTCALL heap_adjust_45(CThingHeapElem*, CThingHeapElem*, int, void*) {
+void FABLE_FASTCALL heap_adjust_45_00593e10(CThingHeapElem*, CThingHeapElem*, int, void*) {
     g_adjust_calls++;
 }
 

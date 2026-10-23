@@ -18,10 +18,10 @@
 // 8-byte frame slot.
 struct CPlayerGui;
 
-struct CBase {                                     // vtable 0x01231710
+namespace N_0099a2d0 { struct CBase {                                     // vtable 0x01231710
     virtual void v00();
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CIVCountedPointeeBase;
 

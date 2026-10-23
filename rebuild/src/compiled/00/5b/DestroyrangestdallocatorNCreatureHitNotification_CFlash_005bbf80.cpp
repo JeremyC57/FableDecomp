@@ -5,7 +5,7 @@
 
 struct CFlash {
     char pad[0x14];
-    void Dtor(int flag);   // __fastcall, one stack arg (push 0)
+    void Dtor_005bbbce(int flag);   // __fastcall, one stack arg (push 0)
 };
 
 struct AllocTag {};
@@ -14,5 +14,5 @@ void __fastcall Destroy_range_flash(CFlash* first, CFlash* last,
                                     AllocTag* al)
 {
     for (; first != last; ++first)
-        first->Dtor(0);
+        first->Dtor_005bbbce(0);
 }

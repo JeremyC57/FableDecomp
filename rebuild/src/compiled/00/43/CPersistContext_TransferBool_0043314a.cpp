@@ -14,7 +14,7 @@
 //   pop esi; leave; ret 4
 
 struct Sink {
-    void Take(int v);            // __fastcall, ecx=this, one dword arg
+    void Take_00993e30(int v);            // __fastcall, ecx=this, one dword arg
 };
 
 struct Local {
@@ -44,7 +44,7 @@ void CPersistContext::TransferBool(unsigned char* p)
         h.Fill(this->PLoadStream, p);
         break;
     case 3:
-        this->PSaveStream->Take(*p);
+        this->PSaveStream->Take_00993e30(*p);
         break;
     }
 }

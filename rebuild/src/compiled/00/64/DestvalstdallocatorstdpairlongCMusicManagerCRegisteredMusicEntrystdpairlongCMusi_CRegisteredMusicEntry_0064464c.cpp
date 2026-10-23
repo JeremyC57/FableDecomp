@@ -1,7 +1,7 @@
 // std::pair _Dest_val: release the member at this+0x28, then TAIL-call the one
 // at this+0x34. __fastcall this=ecx. pack(1) pins both offsets.
 #pragma pack(push,1)
-struct Part { void Release(); };
+struct Part { void Release_006445ba(); };
 struct Pair {
     char lead[0x28];
     Part second;
@@ -11,6 +11,6 @@ struct Pair {
 };
 #pragma pack(pop)
 void Pair::Destroy() {
-    this->second.Release();
-    this->first.Release();
+    this->second.Release_006445ba();
+    this->first.Release_006445ba();
 }

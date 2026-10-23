@@ -21,14 +21,14 @@
 // 0x13b8768 : override flag  (byte-sized bool)
 extern unsigned char g_HeadAngVelMaxXY_OverrideFlag;
 // 0x13b876c : override value (4 bytes after the flag -> same struct)
-extern float         g_HeadAngVelMaxXY_OverrideValue;
+extern float         g_HeadAngVelMaxXY_OverrideValue_013b8770;
 // 0x1375cd4 : default value  (separate global)
-extern float         g_HeadAngVelMaxXY_Default;
+extern float         g_HeadAngVelMaxXY_Default_01375cd8;
 
 float __fastcall CTCLook__GetHeadAngularVelocityMaxXY(void *ecx_this)
 {
     (void)ecx_this; // ecx unused; every operand is an absolute global
     if (g_HeadAngVelMaxXY_OverrideFlag != 0)
-        return g_HeadAngVelMaxXY_OverrideValue;
-    return g_HeadAngVelMaxXY_Default;
+        return g_HeadAngVelMaxXY_OverrideValue_013b8770;
+    return g_HeadAngVelMaxXY_Default_01375cd8;
 }

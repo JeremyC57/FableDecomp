@@ -15,9 +15,9 @@
 //   are `__forceinline`.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CGameComponentInterface {
     virtual void v00();
 };

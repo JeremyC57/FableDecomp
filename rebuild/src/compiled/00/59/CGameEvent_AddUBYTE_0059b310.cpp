@@ -20,13 +20,13 @@
 
 struct CGameEvent
 {
-    void Helper(void* p, int n);      // retail 0x0059aef9  (__fastcall)
+    void Helper_0059aef9(void* p, int n);      // retail 0x0059aef9  (__fastcall)
     CGameEvent* AddUBYTE();
 };
 
 CGameEvent* CGameEvent::AddUBYTE()
 {
     unsigned char buf;
-    Helper(&buf, 0);
+    Helper_0059aef9(&buf, 0);
     return this;
 }

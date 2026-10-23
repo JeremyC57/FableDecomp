@@ -1,8 +1,8 @@
 #pragma optimize("s",on)
 extern "C" void __stdcall Profile_Enter(int marker);
 
-extern void __fastcall LM_ShadowApply24(void* self24, void* arg);
-extern void __fastcall LM_ShadowApply28(void* self28, void* arg);
+extern void __fastcall LM_ShadowApply24_004e9156(void* self24, void* arg);
+extern void __fastcall LM_ShadowApply28_004e910f(void* self28, void* arg);
 
 struct CEngineLightingManager {
     char pad[0x18];
@@ -18,10 +18,10 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(
     Profile_Enter(0x122d70e);
     switch (self->mode) {
     case 2:
-        LM_ShadowApply24(self->p24, arg);
+        LM_ShadowApply24_004e9156(self->p24, arg);
         break;
     case 3:
-        LM_ShadowApply28(self->p28, arg);
+        LM_ShadowApply28_004e910f(self->p28, arg);
         break;
     }
 }

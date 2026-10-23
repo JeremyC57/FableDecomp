@@ -9,7 +9,7 @@ struct C3DAnimationBlendState {
     RefCounted* pRef;
 };
 
-void __fastcall base_dtor(void* self);
+void __fastcall base_dtor_004da967(void* self);
 
 void __fastcall dtor_C3DAnimationBlendState(C3DAnimationBlendState* self)
 {
@@ -21,5 +21,5 @@ void __fastcall dtor_C3DAnimationBlendState(C3DAnimationBlendState* self)
         }
         self->pRef = 0;
     }
-    base_dtor(self);
+    base_dtor_004da967(self);
 }

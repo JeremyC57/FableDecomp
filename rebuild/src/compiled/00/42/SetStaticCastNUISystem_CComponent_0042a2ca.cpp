@@ -5,6 +5,6 @@
 struct CP { void* p; void* info; };
 struct T {
     void SetStaticCast(const CP* src);
-    void ShareData(void* p, void* info);
+    void ShareData_00429460(void* p, void* info);
 };
-void T::SetStaticCast(const CP* src) { this->ShareData(src->p, src->info); }
+void T::SetStaticCast(const CP* src) { this->ShareData_00429460(src->p, src->info); }

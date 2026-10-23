@@ -8,7 +8,7 @@ static void* g_freedPtr = 0;
 
 void my_free(void* p) { g_freed++; g_freedPtr = p; }
 
-void __fastcall CActiveFile_base(CActiveFile* self) { g_baseCalled++; }
+void __fastcall CActiveFile_base_00510d40(CActiveFile* self) { g_baseCalled++; }
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self);
 

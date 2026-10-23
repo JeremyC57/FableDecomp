@@ -61,7 +61,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<COb
     return true;
 }
 #pragma auto_inline(on)
-bool __fastcall IsAugmentation(long index);                 // 0x005D9930
+bool __fastcall IsAugmentation_005d9930(long index);                 // 0x005D9930
 struct CThing { unsigned char _pad00[0x8c]; unsigned short DefIndex; };
 struct CTCQuestCard {
     void*  vftable;
@@ -179,7 +179,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
             if (PCardDef.P && Completion == COMPLETION_1) {
                 bool found = false;
                 for (unsigned long i = 0; i < PCardDef->RewardObjects.size() && !found; ++i) {
-                    if (IsAugmentation(PCardDef->RewardObjects[i])) {
+                    if (IsAugmentation_005d9930(PCardDef->RewardObjects[i])) {
                         CDefPointer<CObjectDef> reward;
                         CDefinitionManager::Get()->GetDef(PCardDef->RewardObjects[i], &reward);
                         RenderedObjectDef = PCardDef->RewardObjects[i];

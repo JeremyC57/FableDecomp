@@ -44,10 +44,10 @@ struct CCountedPointer {
     }
 };
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                                // 0x0099A2D0
     virtual ~CBase();                                       // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 
 struct C3DMeshInfo;
 struct C3DMeshObject : CBase {                              // vtable 0x01239860, 0x78 bytes

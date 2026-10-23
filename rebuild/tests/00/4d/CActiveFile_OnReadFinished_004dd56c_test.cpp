@@ -5,12 +5,12 @@ struct CActiveFile { void* field0; };
 static int g_helper_calls = 0;
 static void* g_freed = (void*)0;
 
-void __fastcall CActiveFile_helper(CActiveFile* self) { (void)self; g_helper_calls++; }
+void __fastcall CActiveFile_helper_004dbc3a(CActiveFile* self) { (void)self; g_helper_calls++; }
 void __cdecl free_thing(void* p) { g_freed = p; }
 
 void __fastcall OnReadFinished_13(CActiveFile* self)
 {
-    CActiveFile_helper(self);
+    CActiveFile_helper_004dbc3a(self);
     void* p = self->field0;
     if (p)
         free_thing(p);

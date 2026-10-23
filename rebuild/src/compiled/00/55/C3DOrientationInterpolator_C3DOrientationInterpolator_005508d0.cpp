@@ -15,10 +15,10 @@ struct CRightHandedSet {                   // 24 bytes (PDB)
     C3DVector Forward;                     // +0x0c
 };
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                               // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct C3DOrientationInterpolator : CBase {
     virtual void v00();                    // own vtable (0x01239824)

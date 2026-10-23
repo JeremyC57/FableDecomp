@@ -48,7 +48,7 @@ struct CCategory {
     bool AddItem(long itemType, bool silent, long price, long count);   // 0x005BF060
 };
 }
-bool __fastcall IsAugmentation(long itemType);                  // 0x005D98F0
+bool __fastcall IsAugmentation_005d98f0(long itemType);                  // 0x005D98F0
 long __fastcall GetInventoryCategory(long itemType);            // 0x005D97B0
 NInventory::CCategory* __fastcall FindCategory(NInventory::CCategory* first, NInventory::CCategory* last, long ident);   // 0x005C08D3
 
@@ -148,7 +148,7 @@ struct CTCInventoryBase_Retail {
 
 bool CTCInventoryBase_Retail::AddItemToInventory(long itemType, long count, bool silent, bool notify, long price, bool flag)
 {
-    if (IsAugmentation(itemType)) {
+    if (IsAugmentation_005d98f0(itemType)) {
         CTCAugmentations* augmentations;
         if (ParentThing->GetInterface(&augmentations, 0x29))
             augmentations->AddAugmentation(itemType);

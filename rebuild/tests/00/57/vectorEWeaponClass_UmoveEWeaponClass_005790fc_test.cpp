@@ -3,7 +3,7 @@
 struct EWeaponClass;
 
 struct AllocT {
-    EWeaponClass* construct(EWeaponClass* p, char* local);
+    EWeaponClass* construct_00578c8d(EWeaponClass* p, char* local);
 };
 
 EWeaponClass* __fastcall _Umove_EWeaponClass(AllocT* self, int edx_unused, EWeaponClass* p);
@@ -12,7 +12,7 @@ static char* g_seen_local = 0;
 static EWeaponClass* g_seen_p = 0;
 static AllocT* g_seen_self = 0;
 
-EWeaponClass* AllocT::construct(EWeaponClass* p, char* local)
+EWeaponClass* AllocT::construct_00578c8d(EWeaponClass* p, char* local)
 {
     g_seen_self = this;
     g_seen_p = p;

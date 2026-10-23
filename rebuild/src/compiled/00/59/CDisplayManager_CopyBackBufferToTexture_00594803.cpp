@@ -12,7 +12,7 @@
 struct CTexture;
 
 struct CDisplayManager {
-    void Grab(char* a, char* b);
+    void Grab_00593b3f(char* a, char* b);
     CTexture* CopyBackBufferToTexture();
 };
 
@@ -22,6 +22,6 @@ CTexture* CDisplayManager::CopyBackBufferToTexture()
     char* q;
     { char a; p = &a; }
     { char b; q = &b; }
-    Grab(p, q);
+    Grab_00593b3f(p, q);
     return (CTexture*)this;
 }

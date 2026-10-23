@@ -9,10 +9,10 @@
 // constructor @ 0x004D545A; the compiler then stores this class's vtable (0x0123CE9C, named
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
 
-struct CEnginePrimitiveGroupManager {
+namespace N_004d545a { struct CEnginePrimitiveGroupManager {
     virtual void v00();
     CEnginePrimitiveGroupManager(void* argument);            // 0x004D545A
-};
+}; } using N_004d545a::CEnginePrimitiveGroupManager;
 
 struct CTCShotDefinitionThrowPredictive : CEnginePrimitiveGroupManager {
     virtual void v00();

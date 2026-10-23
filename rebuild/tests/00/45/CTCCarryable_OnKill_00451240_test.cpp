@@ -10,12 +10,12 @@ struct CTCCarryable {
     int flag;
 };
 static void* g_released = (void*)0;
-void __stdcall ReleaseThing(void* p) { g_released = p; }
+void __stdcall ReleaseThing_004508d6(void* p) { g_released = p; }
 void __fastcall CTCCarryable_OnKill(CTCCarryable* self)
 {
     if (self->flag != 0) {
         Node* n = self->node;
-        ReleaseThing(n->f4);
+        ReleaseThing_004508d6(n->f4);
         n = self->node;
         n->f8 = n;
         n = self->node;

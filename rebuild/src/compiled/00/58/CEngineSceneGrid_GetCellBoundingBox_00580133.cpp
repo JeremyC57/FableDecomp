@@ -5,10 +5,10 @@
 
 struct CEngineSceneGrid;
 
-extern "C" char __cdecl helper_5b155a(unsigned long a, unsigned long b, char* out);
+extern "C" char __cdecl helper_5b155a_0057f906(unsigned long a, unsigned long b, char* out);
 
 char __cdecl GetCellBoundingBox(unsigned long a, unsigned long b)
 {
     char r;
-    return helper_5b155a(a, b, &r);
+    return helper_5b155a_0057f906(a, b, &r);
 }

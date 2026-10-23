@@ -9,14 +9,14 @@ struct CPersistContext {
     void* args[3];
     void PersistA(void* p){ args[calls++]=p; }
     void PersistB(void* p){ args[calls++]=p; }
-    void PersistC(void* p){ args[calls++]=p; }
+    void PersistC_00452b4d(void* p){ args[calls++]=p; }
 };
 
 static void Transfer(CCombatAbilityUseProjectileWeaponDef* def, CPersistContext* ctx)
 {
     ctx->PersistA(def->_tail + 0x40);
     ctx->PersistB(def->_tail + 0x44);
-    ctx->PersistC(def->_tail + 0x28);
+    ctx->PersistC_00452b4d(def->_tail + 0x28);
 }
 
 int main(){

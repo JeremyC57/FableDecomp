@@ -5,7 +5,7 @@
 struct Sub;
 
 // scalar destructor of the subobject at offset +4 (retail 0x4e25f1), __fastcall
-extern "C" void __fastcall Sub_dtor(Sub* self);
+extern "C" void __fastcall Sub_dtor_004e25f1(Sub* self);
 
 // operator delete (retail 0xbfe9bc)
 void __cdecl operator delete(void* p);
@@ -17,7 +17,7 @@ struct CLandscapeBackgroundPatch { char raw[8]; };
 // (read via test byte ptr [esp+8],1 after the push esi).
 void* __fastcall vector_deleting_destructor(CLandscapeBackgroundPatch* self, int /*edx*/, unsigned int flags)
 {
-    Sub_dtor(reinterpret_cast<Sub*>(reinterpret_cast<char*>(self) + 4));
+    Sub_dtor_004e25f1(reinterpret_cast<Sub*>(reinterpret_cast<char*>(self) + 4));
     if (flags & 1)
         operator delete(self);
     return self;

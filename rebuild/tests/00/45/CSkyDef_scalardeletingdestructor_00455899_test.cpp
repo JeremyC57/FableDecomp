@@ -6,14 +6,14 @@ static int g_subDtor = 0;
 static int g_dtor = 0;
 static int g_deleted = 0;
 
-void __fastcall Sub_Dtor(void* p) { (void)p; g_subDtor++; }
+void __fastcall Sub_Dtor_00453327(void* p) { (void)p; g_subDtor++; }
 void __fastcall CSkyDef_Dtor(CSkyDef* def) { (void)def; g_dtor++; }
 void __cdecl operator_delete(void* p) { (void)p; g_deleted++; }
 
 void* __fastcall CSkyDef_scalar_deleting_destructor(CSkyDef* def, int edx, unsigned int flags)
 {
     (void)edx;
-    Sub_Dtor((char*)def + 0x74);
+    Sub_Dtor_00453327((char*)def + 0x74);
     CSkyDef_Dtor(def);
     if (flags & 1)
         operator_delete(def);

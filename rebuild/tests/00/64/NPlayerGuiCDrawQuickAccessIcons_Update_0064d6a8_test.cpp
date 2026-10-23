@@ -20,7 +20,7 @@ static int fails = 0;
 // +0x35, ChargeFade +0x38); CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527; the hero's player byte +0x90.
 struct CThing { unsigned char _pad[0x90]; unsigned char PlayerNumber; };   // +0x90 (descriptive)
 struct CThingCreatureBase : CThing { };
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBD0 (CThing*)
+template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
 struct CPlayer { CThingCreatureBase* GetCharacterThing(); };          // 0x00487DC0
 struct CPlayerManager { CPlayer* GetMainPlayer(); };                  // 0x00449970
 struct CMemoryBuffer { void Copy(unsigned long length, const void* data); };   // 0x009F1760
@@ -55,7 +55,7 @@ struct CDrawQuickAccessIcons {
 void CDrawQuickAccessIcons::Update()
 {
     CThingCreatureBase* const& hero = PlayerManager->GetMainPlayer()->GetCharacterThing();
-    if (!IS_THING_ALIVE<CThing*>(hero))
+    if (!IS_THING_ALIVE_0043dbd0<CThing*>(hero))
         return;
     if (Charging) {
         float level = GetActivationTimeForButton(ChargingAbility);
@@ -88,7 +88,7 @@ float g_fEpsilon = 0.0001f;
 long g_framesPerSecond = 10;
 CThingCreatureBase* CPlayer::GetCharacterThing() { return &g_hero; }
 CPlayer* CPlayerManager::GetMainPlayer() { return &g_player; }
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return g_alive && thing == (CThing*)&g_hero; }
+template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing) { return g_alive && thing == (CThing*)&g_hero; }
 void CMemoryBuffer::Copy(unsigned long length, const void* data) { if (length == 4) memcpy(&g_payload, data, 4); }
 void CMainGameComponent::AddGameEvent(const CGameEvent& e) { ++g_events; g_eventType = e.Type; g_eventPlayer = e.Player; }
 static CMainGameComponent g_mgc;

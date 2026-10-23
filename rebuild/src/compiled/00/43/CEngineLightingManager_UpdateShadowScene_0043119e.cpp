@@ -5,7 +5,7 @@ struct Ctx { int value; };
 struct Sink { void Take(int value); };
 struct Handle {
     int value;
-    void Fill(void* source, Ctx* arg);
+    void Fill_004311df(void* source, Ctx* arg);
 };
 #pragma pack(push,1)
 struct T {
@@ -25,7 +25,7 @@ void T::UpdateShadowScene(Ctx* arg) {
     local.value = 0;
     switch (this->mode) {
     case 2:
-        local.Fill(this->source, arg);
+        local.Fill_004311df(this->source, arg);
         break;
     case 3:
         this->sink->Take(arg->value);

@@ -77,9 +77,9 @@ struct CTCEntityEvents {                             // interface type 0x42
 struct CTCHero {                                     // interface type 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
-bool __fastcall IsAugmentation(long itemDefIndex);           // 0x005D9830
+bool __fastcall IsAugmentation_005d9830(long itemDefIndex);           // 0x005D9830
 bool __fastcall IsTutorialSubDefItem(long itemDefIndex);     // 0x005D98B0
-long __fastcall GetInventoryCategory(long itemDefIndex);     // 0x005D9B70
+long __fastcall GetInventoryCategory_005d9b70(long itemDefIndex);     // 0x005D9B70
 
 namespace NInventory {
 struct CTCInventoryBase {
@@ -95,11 +95,11 @@ void CTCInventoryBase::OnItemAdded(long itemDefIndex, bool unused, bool suppress
     if (!suppressTutorials) {
         CTCHero* hero;
         if (ParentThing->GetInterface(&hero, 0x29)) {
-            if (!IsAugmentation(itemDefIndex))
+            if (!IsAugmentation_005d9830(itemDefIndex))
                 hero->GiveTutorialForCategory(3, false);
             if (IsTutorialSubDefItem(itemDefIndex))
                 hero->GiveTutorialForCategory(0x20, false);
-            long category = GetInventoryCategory(itemDefIndex);
+            long category = GetInventoryCategory_005d9b70(itemDefIndex);
             if (category)
                 hero->GiveTutorialForCategory(category, false);
         }
@@ -132,9 +132,9 @@ void CTCEntityEvents::AddEvent(CEventBase* event)
 static int g_tuts = 0; static long g_tutList[8];
 bool CTCHero::GiveTutorialForCategory(long category, bool force) { if (g_tuts < 8) g_tutList[g_tuts] = category; ++g_tuts; return !force; }
 static bool g_aug = false, g_sub = false; static long g_cat = 0;
-bool __fastcall IsAugmentation(long) { return g_aug; }
+bool __fastcall IsAugmentation_005d9830(long) { return g_aug; }
 bool __fastcall IsTutorialSubDefItem(long) { return g_sub; }
-long __fastcall GetInventoryCategory(long) { return g_cat; }
+long __fastcall GetInventoryCategory_005d9b70(long) { return g_cat; }
 static CThing g_owner;
 static CTCEntityEvents g_eventsTC;
 static CTCHero g_hero;

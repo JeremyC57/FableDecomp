@@ -14,10 +14,10 @@
 struct CCharString;
 
 // Helper at 0x592f92: takes the forwarded raw dword and cleans it (stdcall).
-extern int __stdcall Helper592f92(int f);
+extern int __stdcall Helper592f92_0042b467(int f);
 
 extern "C" CCharString* __stdcall SetMiniMapRegionExitTextOffsetX(CCharString* dst, int f)
 {
-    *(int*)dst = Helper592f92(f);
+    *(int*)dst = Helper592f92_0042b467(f);
     return dst;
 }

@@ -7,7 +7,7 @@ struct CActiveFile {
 static int g_pre_called = 0;
 static void* g_freed = (void*)0;
 
-extern "C" void __fastcall CActiveFile_PreRead(CActiveFile* self) {
+extern "C" void __fastcall CActiveFile_PreRead_005f8197(CActiveFile* self) {
     g_pre_called = 1;
     (void)self;
 }

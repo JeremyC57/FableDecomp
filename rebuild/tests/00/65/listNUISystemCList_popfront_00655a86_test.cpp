@@ -14,12 +14,12 @@ static MyList* g_self = 0;
 
 struct MyList {
     Node* head;
-    ListIt erase(ListIt _Where) { g_erased_ptr = _Where._Ptr; g_self = this; return _Where; }
+    ListIt erase_006553d0(ListIt _Where) { g_erased_ptr = _Where._Ptr; g_self = this; return _Where; }
 };
 
 void __fastcall pop_front(MyList* self)
 {
-    self->erase(ListIt(self->head->next));
+    self->erase_006553d0(ListIt(self->head->next));
 }
 
 int main()

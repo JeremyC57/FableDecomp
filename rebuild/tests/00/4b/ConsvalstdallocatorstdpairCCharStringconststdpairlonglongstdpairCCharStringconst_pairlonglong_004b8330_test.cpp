@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CCharString { char* p; };
+namespace N_0099b720 { struct CCharString { char* p; }; } using N_0099b720::CCharString;
 struct LongPair { long first; long second; };
 struct MyPair { CCharString first; LongPair second; };
 

@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_base = 0;
-struct CBase { virtual void v00() { } CBase() { ++g_base; } };
+namespace N_0099a2d0 { struct CBase { virtual void v00() { } CBase() { ++g_base; } }; } using N_0099a2d0::CBase;
 struct SCountedAnimation_00550a20 { long m_a; long m_refCount; };
 struct C3DAnimationBlendState { virtual void v00() { } SCountedAnimation_00550a20* m_pAnimation; C3DAnimationBlendState(SCountedAnimation_00550a20* p) : m_pAnimation(p) { }
     C3DAnimationBlendState(const C3DAnimationBlendState& o) : m_pAnimation(o.m_pAnimation) { if (m_pAnimation) ++m_pAnimation->m_refCount; } };

@@ -6,7 +6,7 @@ static int member_calls = 0;
 static int base_calls = 0;
 static int delete_calls = 0;
 
-void __fastcall CMember_dtor(CMember* def) { (void)def; member_calls++; }
+void __fastcall CMember_dtor_00461f3b(CMember* def) { (void)def; member_calls++; }
 void __fastcall Base_dtor(void* def) { (void)def; base_calls++; }
 void __cdecl op_delete(void* p) { (void)p; delete_calls++; }
 
@@ -20,7 +20,7 @@ struct CAnimatingObjectDef {
 
 void* __fastcall CAnimatingObjectDef_scalar_deleting_destructor(CAnimatingObjectDef* def, int edx, unsigned char flags)
 {
-    CMember_dtor(&def->m28);
+    CMember_dtor_00461f3b(&def->m28);
     *(const int**)def = &g_vtbl;
     Base_dtor(def);
     if (flags & 1)

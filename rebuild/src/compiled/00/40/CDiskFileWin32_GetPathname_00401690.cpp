@@ -8,10 +8,10 @@
 // Matching: the return value is constructed in place (hidden return pointer in [esp+4]), so the body
 // is one copy-constructor call with `&Pathname` (this+0x18) as the source; CWideString is modelled as a
 // single pointer so the constructor takes one argument.
-struct CWideString {
+namespace N_0099b720 { struct CWideString {
     char* p;                        // string storage pointer
     CWideString(const char* s);     // copy-construct from existing storage
-};
+}; } using N_0099b720::CWideString;
 
 struct CDiskFileWin32 {
     char pad[0x18];                 // access type, position, length, handle, opened flag

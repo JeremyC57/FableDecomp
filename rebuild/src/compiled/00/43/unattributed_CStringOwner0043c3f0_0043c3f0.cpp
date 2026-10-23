@@ -9,9 +9,9 @@
 // string-instance counter). No vtable store and no other initialisation, so the owning class
 // cannot be named from the body; it is landed under a descriptive placeholder. One of
 // 18 bodies of this shape.
-struct CCharStringMember {
+namespace N_0099aed0 { struct CCharStringMember {
     CCharStringMember();                        // 0x0099AED0
-};
+}; } using N_0099aed0::CCharStringMember;
 
 struct CStringOwner_0043c3f0 {
     unsigned char _pad[0x8];

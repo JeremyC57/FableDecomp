@@ -12,11 +12,11 @@
 // after the `add esp,4` (as the landed default constructor 0x00485C90); ErrorCallback and CursorPos are left to Init.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-class CBase {
+namespace N_0099a2d0 { class CBase {
 public:
     CBase();                                       // 0x0099A2D0
     virtual ~CBase();
-};
+}; } using N_0099a2d0::CBase;
 
 struct CCharStringData {
     char*         PData;                           // +0x0

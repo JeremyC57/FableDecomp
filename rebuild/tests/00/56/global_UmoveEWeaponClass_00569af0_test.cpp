@@ -1,7 +1,7 @@
 typedef int EWeaponClass;
 
 struct Elem {
-    EWeaponClass* Move(EWeaponClass* arg, EWeaponClass* dest);
+    EWeaponClass* Move_005697c0(EWeaponClass* arg, EWeaponClass* dest);
 };
 
 struct Vec {
@@ -10,7 +10,7 @@ struct Vec {
     EWeaponClass* Inner(EWeaponClass* arg);
 };
 
-EWeaponClass* Elem::Move(EWeaponClass* arg, EWeaponClass* dest)
+EWeaponClass* Elem::Move_005697c0(EWeaponClass* arg, EWeaponClass* dest)
 {
     (void)arg;
     return dest;
@@ -19,7 +19,7 @@ EWeaponClass* Elem::Move(EWeaponClass* arg, EWeaponClass* dest)
 EWeaponClass* Vec::Inner(EWeaponClass* arg)
 {
     EWeaponClass tmp = 0;
-    return this->_Myfirst->Move(arg, &tmp);
+    return this->_Myfirst->Move_005697c0(arg, &tmp);
 }
 
 #include <cstdio>

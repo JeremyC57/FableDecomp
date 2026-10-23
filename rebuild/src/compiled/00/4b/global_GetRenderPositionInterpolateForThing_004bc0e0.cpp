@@ -21,10 +21,10 @@ struct C3DVector {
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                                       // 0x0099A2E0
     CBase();                                                // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct C3DPositionInterpolator : CBase {                    // vtable 0x0123981C
     C3DVector StartPosition;                                // +0x04

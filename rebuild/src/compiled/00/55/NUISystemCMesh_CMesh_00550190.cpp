@@ -15,10 +15,10 @@ struct CDraggableInto : IViewportPrimary_00550190, IViewportSecondaryA_00550190,
     unsigned char _pad1c[0x164 - 0x1c];
     CDraggableInto(void* def);                     // 0x0052CC50
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 struct SRecordBody_00550190 { long m_4; SRecordBody_00550190() : m_4(0) { } };
 struct CBatchRecord_0122f598 : CBase {             // vtable 0x0122F598
     virtual void v00();

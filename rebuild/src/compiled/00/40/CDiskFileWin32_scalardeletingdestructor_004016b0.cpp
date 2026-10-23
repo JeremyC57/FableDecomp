@@ -23,7 +23,7 @@ extern void __fastcall Member599270(void* win32);
 // Destructor of the member sub-object at +0x18.
 extern void __fastcall Member18Dtor(void* p);
 // Base-class destructor.
-extern void __fastcall BaseDtor(void* win32);
+extern void __fastcall BaseDtor_0099a300(void* win32);
 // Engine heap release used by every deleting destructor.
 void operator delete(void*);
 
@@ -34,7 +34,7 @@ void* __fastcall CDiskFileWin32_scalar_deleting_destructor(CDiskFileWin32* win32
     win32->vptr = (void*)&CDiskFileWin32_vftable;
     Member599270(win32);
     Member18Dtor((char*)win32 + 0x18);
-    BaseDtor(win32);
+    BaseDtor_0099a300(win32);
     // Bit 0: the caller used `delete`, so release the storage as well.
     if (flags & 1) {
         operator delete(win32);

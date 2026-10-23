@@ -7,12 +7,12 @@ struct CActiveFile {
 static int g_helper_called = 0;
 static void* g_released = (void*)0;
 
-extern "C" void __fastcall CActiveFile_helper(CActiveFile* self) { (void)self; g_helper_called++; }
+extern "C" void __fastcall CActiveFile_helper_004511a6(CActiveFile* self) { (void)self; g_helper_called++; }
 extern "C" void __cdecl CActiveFile_release(void* p) { g_released = p; }
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_helper(self);
+    CActiveFile_helper_004511a6(self);
     void* p = self->field0;
     if (p) {
         CActiveFile_release(p);

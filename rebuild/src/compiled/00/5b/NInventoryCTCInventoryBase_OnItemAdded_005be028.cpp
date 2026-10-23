@@ -77,9 +77,9 @@ struct CTCEntityEvents {                             // interface type 0x42
 struct CTCHero {                                     // interface type 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
-bool __fastcall IsAugmentation(long itemDefIndex);           // 0x005D9830
+bool __fastcall IsAugmentation_005d9830(long itemDefIndex);           // 0x005D9830
 bool __fastcall IsTutorialSubDefItem(long itemDefIndex);     // 0x005D98B0
-long __fastcall GetInventoryCategory(long itemDefIndex);     // 0x005D9B70
+long __fastcall GetInventoryCategory_005d9b70(long itemDefIndex);     // 0x005D9B70
 
 namespace NInventory {
 struct CTCInventoryBase {
@@ -95,11 +95,11 @@ void CTCInventoryBase::OnItemAdded(long itemDefIndex, bool unused, bool suppress
     if (!suppressTutorials) {
         CTCHero* hero;
         if (ParentThing->GetInterface(&hero, 0x29)) {
-            if (!IsAugmentation(itemDefIndex))
+            if (!IsAugmentation_005d9830(itemDefIndex))
                 hero->GiveTutorialForCategory(3, false);
             if (IsTutorialSubDefItem(itemDefIndex))
                 hero->GiveTutorialForCategory(0x20, false);
-            long category = GetInventoryCategory(itemDefIndex);
+            long category = GetInventoryCategory_005d9b70(itemDefIndex);
             if (category)
                 hero->GiveTutorialForCategory(category, false);
         }

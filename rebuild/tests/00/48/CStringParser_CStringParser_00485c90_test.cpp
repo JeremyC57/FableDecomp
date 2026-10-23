@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-struct CBase { virtual ~CBase() {} CBase() {} };
+namespace N_0099a2d0 { struct CBase { virtual ~CBase() {} CBase() {} }; } using N_0099a2d0::CBase;
 struct CCharString { char* m_pData; CCharString() : m_pData(0) {} };
 struct CTokenList {
     struct SNode { SNode* next; SNode* prev; char* text; long length; };

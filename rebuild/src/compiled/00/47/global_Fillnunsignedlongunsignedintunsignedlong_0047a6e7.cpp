@@ -28,13 +28,13 @@
 // The call target (rel32) is relocation-masked in parity, so operator= is left
 // out-of-line (declared, not defined) to force the __fastcall call instruction.
 
-struct Elem {
+namespace N_004786cf { struct Elem {
     // Out-of-line member operator= taking the scalar fill value. Being
     // out-of-line forces a __fastcall call (this in ecx, value on the stack),
     // matching retail `push [esp+0xc]; mov ecx,esi; call <masked>`.
     Elem& operator=(unsigned long _v);
     char _storage[0x50];   // sizeof(Elem) == 0x50 -> stride `add esi,0x50`
-};
+}; } using N_004786cf::Elem;
 
 // __fastcall: dest in ecx, count in edx; the fill value is the single stack
 // argument (ret 4). Returns the one-past-the-end destination pointer (esi).

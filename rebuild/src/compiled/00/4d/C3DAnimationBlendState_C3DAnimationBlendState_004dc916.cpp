@@ -8,7 +8,7 @@ struct RefCounted {
 
 struct BaseBlendState;
 // base destructor tail-called at 0x686830
-extern "C" void __fastcall Base_dtor(BaseBlendState* self);
+extern "C" void __fastcall Base_dtor_00686830(BaseBlendState* self);
 
 struct C3DAnimationBlendState {
     char        pad0[0xc];   // +0
@@ -26,5 +26,5 @@ void __fastcall dtor(C3DAnimationBlendState* self)
         }
         self->handle = 0;
     }
-    Base_dtor((BaseBlendState*)self);
+    Base_dtor_00686830((BaseBlendState*)self);
 }

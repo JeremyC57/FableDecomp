@@ -9,10 +9,10 @@
 // constructor @ 0x004DACFD; the compiler then stores this class's vtable (0x0123FB3C, named
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
 
-struct CEnginePrimitiveGroupManager {
+namespace N_004dacfd { struct CEnginePrimitiveGroupManager {
     virtual void v00();
     CEnginePrimitiveGroupManager(void* argument);            // 0x004DACFD
-};
+}; } using N_004dacfd::CEnginePrimitiveGroupManager;
 
 struct CTCCarriedActionUseGiveBeer : CEnginePrimitiveGroupManager {
     virtual void v00();

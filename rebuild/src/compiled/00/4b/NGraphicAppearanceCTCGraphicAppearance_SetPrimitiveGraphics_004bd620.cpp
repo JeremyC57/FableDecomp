@@ -32,7 +32,7 @@ struct CEngineGlobals {
     unsigned char        _pad00[0x34];
     CEngineSceneManager* PSceneManager;                     // +0x34
 };
-extern CEngineGlobals* g_pEngineGlobals;                    // 0x013B8A18
+extern CEngineGlobals* g_pEngineGlobals_013b8a18;                    // 0x013B8A18
 
 namespace NGraphicAppearance {
 
@@ -70,10 +70,10 @@ void CTCGraphicAppearance::SetPrimitiveGraphics(CPrimitive* primitive, const CEn
             allFlags |= 0x4000;
         if (IsDrawingAfterWater())
             allFlags |= 8;
-        g_pEngineGlobals->PSceneManager->SetPersistentPrimitive(primitive->Handle, enginePrimitive, allFlags);
+        g_pEngineGlobals_013b8a18->PSceneManager->SetPersistentPrimitive(primitive->Handle, enginePrimitive, allFlags);
     }
     else
-        g_pEngineGlobals->PSceneManager->SetPrimitive(enginePrimitive);
+        g_pEngineGlobals_013b8a18->PSceneManager->SetPrimitive(enginePrimitive);
 }
 
 }

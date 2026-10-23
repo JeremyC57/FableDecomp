@@ -1,7 +1,7 @@
 struct CTexture;
 
 struct CDisplayManager {
-    void Helper(char *a, char *b);
+    void Helper_004dd342(char *a, char *b);
     CTexture * CopyBackBufferToTexture();
 };
 
@@ -11,6 +11,6 @@ CTexture * CDisplayManager::CopyBackBufferToTexture()
     char *pa, *pb;
     { char a; pa = &a; }
     { char b; pb = &b; }
-    Helper(pa, pb);
+    Helper_004dd342(pa, pb);
     return (CTexture *)this;
 }

@@ -3,11 +3,11 @@
 struct CActiveFile { void* member0; };
 static int g_helper_called = 0;
 static void* g_deleted = (void*)0;
-void __fastcall CActiveFile_helper(CActiveFile* self) { g_helper_called++; }
+void __fastcall CActiveFile_helper_004db806(CActiveFile* self) { g_helper_called++; }
 void __cdecl free(void* p) { g_deleted = p; }
 void __fastcall OnReadFinished_3(CActiveFile* self)
 {
-    CActiveFile_helper(self);
+    CActiveFile_helper_004db806(self);
     void* m = self->member0;
     if (m) free(m);
 }

@@ -5,7 +5,7 @@ typedef int EWeaponClass;
 // Element/proxy object; the engine helper at 0x5697c0 is a __fastcall member
 // (ecx = _Myfirst) taking two stack args (arg, &tmp). Reloc-masked call.
 struct Elem {
-    EWeaponClass* Move(EWeaponClass* arg, EWeaponClass* dest);
+    EWeaponClass* Move_00619000(EWeaponClass* arg, EWeaponClass* dest);
 };
 
 struct Vec {
@@ -17,5 +17,5 @@ struct Vec {
 EWeaponClass* Vec::Inner(EWeaponClass* arg)
 {
     EWeaponClass tmp = 0;
-    return this->_Myfirst->Move(arg, &tmp);
+    return this->_Myfirst->Move_00619000(arg, &tmp);
 }

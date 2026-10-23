@@ -8,7 +8,7 @@ struct ListHead {
 };
 
 static void* g_freed;
-void __stdcall FreeNode(void* p) { g_freed = p; }
+void __stdcall FreeNode_00450828(void* p) { g_freed = p; }
 
 struct CTCCarryable {
     ListHead* head;
@@ -19,7 +19,7 @@ void __fastcall CTCCarryable_OnKill(CTCCarryable* self)
 {
     if (self->flag != 0) {
         ListHead* h = self->head;
-        FreeNode(h->next);
+        FreeNode_00450828(h->next);
         h = self->head;
         h->prev8 = h;
         h = self->head;

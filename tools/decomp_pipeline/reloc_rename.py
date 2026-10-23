@@ -28,6 +28,23 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import verify_and_land as V, reloc_identity as RI
 
 ROOT = V.ROOT
+
+def _run_tool_timeout(exe, args, e, _timeout=120):
+    """V.run_tool with a 120 s limit: a VC7.1 compile/link/test that spins (seen on 00a35af0's
+    test) becomes a failed step instead of hanging the worker."""
+    cmd = ([V.WINE] if V.WINE else []) + [str(exe)] + V.tool_args(args)
+    try:
+        return subprocess.run(cmd, capture_output=True, text=True, errors="replace", env=e, timeout=_timeout)
+    except subprocess.TimeoutExpired:
+        return subprocess.CompletedProcess(cmd, 124, "", "timeout")
+V.run_tool = _run_tool_timeout
+_sp_run = subprocess.run
+def _run_with_timeout(*a, **k):
+    k.setdefault("timeout", 120)
+    try: return _sp_run(*a, **k)
+    except subprocess.TimeoutExpired as ex:
+        return subprocess.CompletedProcess(ex.cmd, 124, "", "timeout")
+V.subprocess = type("SP", (), {"run": staticmethod(_run_with_timeout), "CompletedProcess": subprocess.CompletedProcess, "PIPE": subprocess.PIPE})
 COMPILED = ROOT / "rebuild" / "src" / "compiled"
 
 # ---------------------------------------------------------------- catalog

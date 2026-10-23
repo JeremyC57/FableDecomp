@@ -11,7 +11,7 @@ struct CMessageEventDef {
 };
 struct CPersistContext {
     void TransferA(void* p){ g_calls++; g_seq[g_n++]=1; }
-    void TransferB(void* p){ g_calls++; g_seq[g_n++]=2; }
+    void TransferB_00455712(void* p){ g_calls++; g_seq[g_n++]=2; }
     void TransferC(void* p){ g_calls++; g_seq[g_n++]=3; }
 };
 
@@ -19,7 +19,7 @@ void __fastcall CMessageEventDef_Transfer(CMessageEventDef* message, void* edx, 
     ctx->TransferA(&message->f3c);
     ctx->TransferA(&message->MaxSeenRadius);
     ctx->TransferA(&message->MaxHeardRadius);
-    ctx->TransferB(&message->ReactionSpeechType);
+    ctx->TransferB_00455712(&message->ReactionSpeechType);
     ctx->TransferC(&message->Lifespan);
 }
 

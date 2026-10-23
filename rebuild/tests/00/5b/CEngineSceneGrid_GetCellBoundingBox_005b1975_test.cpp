@@ -3,7 +3,7 @@
 static unsigned long g_a, g_b;
 static char g_ret;
 
-extern "C" char __cdecl helper_5b155a(unsigned long a, unsigned long b, char* out)
+extern "C" char __cdecl helper_5b155a_005b155a(unsigned long a, unsigned long b, char* out)
 {
     g_a = a;
     g_b = b;

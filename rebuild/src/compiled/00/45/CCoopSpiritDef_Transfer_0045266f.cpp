@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 struct CPersistContext {
-    void TransferA(void* field);
+    void TransferA_0045228f(void* field);
     void TransferB(void* field);
 };
 struct CCoopSpiritDef {
@@ -10,9 +10,9 @@ struct CCoopSpiritDef {
 
 void CCoopSpiritDef::CCoopSpiritDef_Transfer(CPersistContext& ctx)
 {
-    ctx.TransferA(this->_tail + 0x28);
-    ctx.TransferA(this->_tail + 0x2c);
-    ctx.TransferA(this->_tail + 0x30);
+    ctx.TransferA_0045228f(this->_tail + 0x28);
+    ctx.TransferA_0045228f(this->_tail + 0x2c);
+    ctx.TransferA_0045228f(this->_tail + 0x30);
     ctx.TransferB(this->_tail + 0x38);
-    ctx.TransferA(this->_tail + 0x34);
+    ctx.TransferA_0045228f(this->_tail + 0x34);
 }
