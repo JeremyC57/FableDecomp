@@ -270309,6 +270309,13 @@ $catalog = @(
         TestSource = '00/a4/CSuspendableProcessMicrothread_RunSuspendableProcess_00a44880_test.cpp'
         PassPattern = '00a44880_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00becba0'
+        Module = 'CEngineInternalPrimitiveMorphInfo'
+        Source = '00/be/CEngineInternalPrimitiveMorphInfo_InitialiseCompositeSurfaces_00becba0.cpp'
+        TestSource = '00/be/CEngineInternalPrimitiveMorphInfo_InitialiseCompositeSurfaces_00becba0_test.cpp'
+        PassPattern = '00becba0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

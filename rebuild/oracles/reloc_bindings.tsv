@@ -25215,3 +25215,11 @@ __Rb_tree_increment	004292c0	0057770a
 ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A	013d2838	00a44880
 ?pop_back@?$vector@PAVCASuspendableProcess@@@@QAEXXZ	00a44a80	00a44880
 ?push_back@?$vector@PAVCASuspendableProcess@@@@QAEXABQAVCASuspendableProcess@@@Z	00a44c20	00a44880
+??$DestroySurfacePairs@U__false_type@@@@YIXPAUCSurfacePair@@0ABU__false_type@@@Z	00ba9fd0	00becba0
+??$SortSurfacePairs@UCKeyPairCompareLess@@@@YIXPAUCSurfacePair@@0UCKeyPairCompareLess@@@Z	00bef5c0	00becba0
+??$_M_insert_overflow@U__false_type@@@CCompositeSurfaceMap@@QAEXPAUCSurfacePair@@ABU1@ABU__false_type@@K_N@Z	00beef90	00becba0
+??4CSurfaceList@@QAEAAU0@ABU0@@Z	006cade0	00becba0
+?InitialiseCompositeSurface@CResourceBank@@QAEXPAUCCompositeSurfaceInfo@@@Z	00b2c460	00becba0
+?LowerBound@CCompositeSurfaceMap@@QAEPAUCSurfacePair@@ABJ@Z	00bed2a0	00becba0
+?g_pResourceBank_01436eac@@3PAUCResourceBank@@A	01436eac	00becba0
+?reserve@CCompositeSurfaceMap@@QAEXK@Z	00beeb80	00becba0

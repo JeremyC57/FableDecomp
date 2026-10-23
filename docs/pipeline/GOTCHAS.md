@@ -714,3 +714,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - **Block-scoped named CCharString argument** (005be8f3, D1): naming the empty-name argument in a block sequences its ctor before a member load the temporary form hoists above it.
 - **Branch sense differs (ja vs jbe)?** Check the differ source's comparison first; 00b66c10's bank-frame test was simply inverted.
 - **df.sh/--qfe need the row's leaf and flags**: 00c11d00 reads 420v507 without `--flags /EHsc`.
+- **Same-TU noinline bodies for every callee that takes a local's address** (00becba0, b56; 538→569 match): plus a polymorphic CBase + CCountedPointer-member info class. Check the class name against struct_layouts_egor.tsv before landing — the advisor draft used `CEnginePrimitiveMorphInfo`; the PDB class is `CEngineInternalPrimitiveMorphInfo`.
