@@ -1,229 +1,98 @@
+// CThreadedFile::Open(const CWideString& filename, bool unbuffered) -- open the file read-only for overlapped reads (optionally unbuffered), note whether it lives on drive D:, its length and a sort key
+// Leaf: Open
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0098E1E0, length 308 bytes (+ int3 padding), `ret 8`.
+// Callees: ConvertPathToFullPath @ 0x00999110 and SplitPath @ 0x00997620 (both `__fastcall`, hidden result / first
+// arguments in ecx/edx), CWideString::CWideString() @ 0x0099AED0, CWideString::ConvertToCharString() const @ 0x0099B2C0,
+// CCharString::ToUpper() const @ 0x0099EE20, CBasicString<char>::operator==(const char*) @ 0x004115A0, ~CCharString
+// @ 0x0099EAE0, CWideString::operator const wchar_t* @ 0x0099AF00, CreateFileW (IAT 0x0143FE2C), CWideString::operator=
+// @ 0x0099B7D0, GetFileSize (IAT 0x0143FDF0), ~CWideString @ 0x0099B510.
+// Globals: 0x013BC9EC the physical sort-key counter; strings 0x0129A15C "D:", 0x0122D70E "".
+// Layout: Ego_r.pdb CThreadedFile (= retail, as the landed deleting dtor 0x00991450): DeviceID +0x04, FileHandle +0x08,
+// Filename +0x0c, Length +0x10, PhysicalSortKey +0x14, OpenedForWrite +0x18, OpenFlag +0x19.
+// Shape: the drive test is the inline CCharString == "D:" written as the two tests (strcmp on the null string, the
+// block compare otherwise) on the upper-cased converted drive; the bool lives in bl across both temporaries'
+// destructors and becomes the device id through `setne`; the full path and the drive are destroyed on both exits.
 #include <string.h>
-
-#include "fable_threaded_file.h"
-
-extern "C" void FABLE_FASTCALL
-FableThreadedCharConstruct_0098E1E0(void* self);
-extern "C" void FABLE_FASTCALL
-FableThreadedCharDestroy_0098E1E0(void* self);
-
-// Opaque 4-byte handle types matching the retail stack-slot sizes of
-// CWideString / CCharString (both are single-pointer-to-data objects).
-class CWideStringSlot
-{
+typedef unsigned short wchar_t;                                // VC7.1 without /Zc:wchar_t
+#pragma pack(push, 1)
+struct CBasicStringChar {                                      // CBasicString<char>, 13 bytes
+    char*         PData;                                       // +0x00
+    unsigned long StringLength;                                // +0x04
+    unsigned long DataLength : 31;                             // +0x08
+    bool          UseFastExtend : 1;                           // +0x0c
+    bool operator==(const char* text) const;                   // 0x004115A0
+};
+struct CCharStringData {                                       // 17 bytes
+    CBasicStringChar Data;                                     // +0x00
+    long             NoRefs;                                   // +0x0d
+};
+#pragma pack(pop)
+class CCharString {
 public:
-    void* data_;
-
-    ~CWideStringSlot()
+    CCharStringData* PStringData;
+    ~CCharString();                                            // 0x0099EAE0
+    CCharString ToUpper() const;                               // 0x0099EE20
+    bool operator==(const char* text) const
     {
-        FableThreadedCharDestroy_0098E1E0(this);
+        if (PStringData == 0)
+            return strcmp(text, "") == 0;
+        return PStringData->Data == text;
     }
 };
-
-class CCharStringSlot
-{
+class CWideString {
 public:
-    void* data_;
+    void* PStringData;
+    CWideString();                                             // 0x0099AED0
+    ~CWideString();                                            // 0x0099B510
+    CWideString& operator=(const CWideString& other);          // 0x0099B7D0
+    operator const wchar_t*() const;                           // 0x0099AF00
+    CCharString ConvertToCharString() const;                   // 0x0099B2C0
+};
+CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
+void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* dir, CWideString* name, CWideString* ext);   // 0x00997620
+
+extern "C" __declspec(dllimport) void* __stdcall CreateFileW(const wchar_t* name, unsigned long access, unsigned long share,
+                                                             void* security, unsigned long disposition, unsigned long flags,
+                                                             void* templateFile);   // IAT 0x0143FE2C
+extern "C" __declspec(dllimport) unsigned long __stdcall GetFileSize(void* file, unsigned long* high);   // IAT 0x0143FDF0
+
+// The sort-key counter is a file-scope static of the threaded-file TU: an extern global keeps its store before the drive
+// destructor's `lea ecx,[esp+8]` (the callee might read it), retail schedules the lea first.
+static unsigned long g_ThreadedFilePhysicalSortKey;            // 0x013BC9EC
+// "D:" is the literal 0x0129A15C (VC inlines the null-string strcmp against it with its known length 3).
+
+enum EThreadedFileDeviceID { THREADED_FILE_DEVICE_HD = 0, THREADED_FILE_DEVICE_D = 1 };
+
+class CThreadedFile {
+public:
+    virtual ~CThreadedFile();
+    EThreadedFileDeviceID DeviceID;                            // +0x04
+    void*                 FileHandle;                          // +0x08
+    CWideString           Filename;                            // +0x0c
+    unsigned long         Length;                              // +0x10
+    unsigned long         PhysicalSortKey;                     // +0x14
+    bool                  OpenedForWrite;                      // +0x18
+    bool                  OpenFlag;                            // +0x19
+    bool Open(const CWideString& filename, bool unbuffered);
 };
 
-class CDriveStringSlot
+bool CThreadedFile::Open(const CWideString& filename, bool unbuffered)
 {
-public:
-    void* data_;
-
-    CDriveStringSlot()
-    {
-        FableThreadedCharConstruct_0098E1E0(this);
-    }
-
-    ~CDriveStringSlot()
-    {
-        FableThreadedCharDestroy_0098E1E0(this);
-    }
-};
-
-extern "C" fable_u8 g_FableThreadedEmptyChar_0122D70E;
-extern "C" char g_FableThreadedDDrive_0129A15C[];
-extern "C" fable_u32 g_FableThreadedPhysicalSortKey_013BC9EC;
-
-typedef void* (__stdcall* CreateFileWProc)(
-    const wchar_t*, unsigned long, unsigned long, void*,
-    unsigned long, unsigned long, void*);
-typedef unsigned long (__stdcall* GetFileSizeProc)(void*, unsigned long*);
-
-extern "C" CreateFileWProc g_FableThreadedCreateFileW_0143FE2C;
-extern "C" GetFileSizeProc g_FableThreadedGetFileSize_0143FDF0;
-
-// CAFile::ConvertPathToFullPath(const CWideString&) @ 0x00999110.
-// Hidden return-value pointer in ecx, source path in edx.
-extern "C" CWideStringSlot* FABLE_FASTCALL
-FableThreadedConvertFullPath_0098E1E0(
-    CWideStringSlot* result,
-    const void* pathname);
-
-// CAFile::SplitPath(...) @ 0x00997620.  The recovered call boundary has the
-// full-path object in ecx and the drive destination in edx.
-extern "C" void FABLE_FASTCALL
-FableThreadedSplitPath_0098E1E0(
-    CWideStringSlot* fullPath,
-    void* drive,
-    void* filename,
-    void* extension,
-    void* reserved);
-
-// CCharString::ConvertToCharString-shaped helper @ 0x0098D0E0. this = ecx
-// = &drive (the value being converted); the two stack args reuse &drive
-// again (as the by-value result destination) and &directory (as scratch
-// temporary storage) rather than fresh locals.
-class CCharStringConvertShim
-{
-public:
-    void* ToCharPointer(CCharStringSlot* temporary, CCharStringSlot* result);
-};
-
-// CCharString::ToUpper() @ 0x0099EE20.
-extern "C" void* FABLE_FASTCALL
-FableThreadedCharToUpper_0098E1E0(void* string);
-
-// CBasicString<char>::operator==(char*) @ 0x004115A0.
-// Real thiscall: this occupies ecx, the literal is a regular stack-pushed
-// argument (not edx) -- model it as a member function so the compiler emits
-// a plain push for the second argument.
-class CBasicStringCharShim
-{
-public:
-    bool Equals(const char* literal);
-};
-
-// (CBasicStringCharShim::Equals is declared-only: it forwards to the real
-// retail CBasicString<char>::operator== at 0x004115A0 and is provided by
-// the linkage environment, matching the other helper declarations here.)
-
-// CWideString::operator const wchar_t*() @ implicit conversion helper.
-extern "C" const wchar_t* FABLE_FASTCALL
-FableThreadedWideConversion_0098E1E0(const void* string);
-
-// CWideString::operator=(const CWideString&) @ 0x0099B7D0.
-// CWideString::operator=(const CWideString&) @ 0x0099B7D0 is thiscall:
-// destination in ecx and the source reference on the stack.
-class CWideAssignShim
-{
-public:
-    void Assign(const void* source);
-};
-
-// CThreadedFile::Open(CWideString const&, bool) @ 0x0098E1E0.
-__declspec(naked)
-bool CThreadedFile::Open(const CWideString&, bool)
-{
-    __asm
-    {
-        mov edx, dword ptr [esp + 4]
-        sub esp, 10h
-        push ebx
-        push ebp
-        mov ebp, ecx
-        lea ecx, [esp + 0Ch]
-        call FableThreadedConvertFullPath_0098E1E0
-        lea ecx, [esp + 08h]
-        call FableThreadedCharConstruct_0098E1E0
-        push 0
-        push 0
-        push 0
-        lea edx, [esp + 14h]
-        lea ecx, [esp + 18h]
-        call FableThreadedSplitPath_0098E1E0
-        lea eax, [esp + 10h]
-        push eax
-        lea ecx, [esp + 18h]
-        push ecx
-        lea ecx, [esp + 10h]
-        mov byte ptr [ebp + 18h], 0
-        call CCharStringConvertShim::ToCharPointer
-        mov ecx, eax
-        call FableThreadedCharToUpper_0098E1E0
-        mov ecx, dword ptr [eax]
-        test ecx, ecx
-        jne threadedFileDriveString
-        push esi
-        push edi
-        mov edi, offset g_FableThreadedDDrive_0129A15C
-        mov esi, offset g_FableThreadedEmptyChar_0122D70E
-        mov ecx, 3
-        xor edx, edx
-        repe cmpsb
-        pop edi
-        sete bl
-        pop esi
-        jmp threadedFileDriveChecked
-
-threadedFileDriveString:
-        push offset g_FableThreadedDDrive_0129A15C
-        call CBasicStringCharShim::Equals
-        mov bl, al
-
-threadedFileDriveChecked:
-        lea ecx, [esp + 10h]
-        call FableThreadedCharDestroy_0098E1E0
-        lea ecx, [esp + 14h]
-        call FableThreadedCharDestroy_0098E1E0
-        mov cl, byte ptr [esp + 20h]
-        xor eax, eax
-        test bl, bl
-        setne al
-        test cl, cl
-        mov dword ptr [ebp + 04h], eax
-        mov eax, 40000001h
-        je threadedFileOpenFlagsReady
-        mov eax, 60000001h
-
-threadedFileOpenFlagsReady:
-        push 0
-        push eax
-        push 3
-        push 0
-        push 1
-        push 80000000h
-        lea ecx, [esp + 24h]
-        call FableThreadedWideConversion_0098E1E0
-        push eax
-        call dword ptr [g_FableThreadedCreateFileW_0143FE2C]
-        cmp eax, -1
-        mov dword ptr [ebp + 08h], eax
-        jne threadedFileOpenSucceeded
-        lea ecx, [esp + 08h]
-        call FableThreadedCharDestroy_0098E1E0
-        lea ecx, [esp + 0Ch]
-        call FableThreadedCharDestroy_0098E1E0
-        pop ebp
-        xor al, al
-        pop ebx
-        add esp, 10h
-        ret 8
-
-threadedFileOpenSucceeded:
-        mov ecx, dword ptr [esp + 1Ch]
-        push ecx
-        lea ecx, [ebp + 0Ch]
-        call CWideAssignShim::Assign
-        mov edx, dword ptr [ebp + 08h]
-        push 0
-        push edx
-        call dword ptr [g_FableThreadedGetFileSize_0143FDF0]
-        mov dword ptr [ebp + 10h], eax
-        mov eax, dword ptr [g_FableThreadedPhysicalSortKey_013BC9EC]
-        inc eax
-        lea ecx, [esp + 08h]
-        mov dword ptr [g_FableThreadedPhysicalSortKey_013BC9EC], eax
-        mov dword ptr [ebp + 14h], eax
-        mov byte ptr [ebp + 19h], 1
-        call FableThreadedCharDestroy_0098E1E0
-        lea ecx, [esp + 0Ch]
-        call FableThreadedCharDestroy_0098E1E0
-        pop ebp
-        mov al, 1
-        pop ebx
-        add esp, 10h
-        ret 8
-    }
+    CWideString fullPath = ConvertPathToFullPath(filename);
+    CWideString drive;
+    SplitPath(fullPath, &drive, 0, 0, 0);
+    OpenedForWrite = false;
+    bool onDriveD = drive.ConvertToCharString().ToUpper() == "D:";
+    DeviceID = (EThreadedFileDeviceID)(onDriveD != 0);
+    unsigned long flags = 0x40000001;                          // FILE_FLAG_OVERLAPPED | FILE_ATTRIBUTE_READONLY
+    if (unbuffered)
+        flags = 0x60000001;                                    // ... | FILE_FLAG_NO_BUFFERING
+    FileHandle = CreateFileW(fullPath, 0x80000000, 1, 0, 3, flags, 0);
+    if (FileHandle == (void*)-1)
+        return false;
+    Filename = filename;
+    Length = GetFileSize(FileHandle, 0);
+    PhysicalSortKey = ++g_ThreadedFilePhysicalSortKey;
+    OpenFlag = true;
+    return true;
 }

@@ -26480,3 +26480,13 @@ __allrem	00bfec30	00937b10
 ?GetNearestMember@CTCCreatureGroupTag@@QAEPAUCThing@@ABUC3DVector@@@Z	008128f0	00934920
 ?GetDef@CDefinitionManager@@QAE_NABUCCharString@@JPAU?$CDefPointer@UCHeroAbilityDef@@@@@Z	005f89f2	005eede2
 ?resize@CAbilityOrderVector@@QAEXKABW4EHeroAbility@@@Z	005f9df8	005eede2
+?ConvertPathToFullPath@@YI?AVCWideString@@ABV1@@Z	00999110	0098e1e0
+?ToUpper@CCharString@@QBE?AV1@XZ	0099ee20	0098e1e0
+__imp__CreateFileW@28	0143fe2c	0098e1e0
+__imp__GetFileSize@8	0143fdf0	0098e1e0
+_g_ThreadedFilePhysicalSortKey	013bc9ec	0098e1e0
+??0CCreatureAction_NymphTeleportIntoLimbo@@QAE@PAUCThingCreatureBase@@@Z	008ca800	0091c3d0
+?CheckIfCanAttack@CTCNymph@@QAEXJ@Z	0080f210	0091c3d0
+?GetGame@CTCCameraPointTrack@@QAEPAUCGame@@XZ	00686a70	0075cad0
+?GetMainHero@CPlayerManager@@QAEPAUCThing@@XZ	00487dd0	0075cad0
+?GetPlayerManager@CGame@@QAEPAUCPlayerManager@@XZ	0049d9d0	0075cad0

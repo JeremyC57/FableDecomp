@@ -273298,6 +273298,27 @@ $catalog = @(
         TestSource = '00/5e/CTCInventoryAbilities_InitialiseAbilities_005eede2_test.cpp'
         PassPattern = '005eede2_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0098e1e0'
+        Module = 'CThreadedFile'
+        Source = '00/98/CThreadedFile_Open_0098e1e0.cpp'
+        TestSource = '00/98/CThreadedFile_Open_0098e1e0_test.cpp'
+        PassPattern = '0098e1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091c3d0'
+        Module = 'CAIStateGroup_NymphFloatAround'
+        Source = '00/91/CAIStateGroupNymphFloatAround_Update_0091c3d0.cpp'
+        TestSource = '00/91/CAIStateGroupNymphFloatAround_Update_0091c3d0_test.cpp'
+        PassPattern = '0091c3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075cad0'
+        Module = 'CTCCameraPointTrack'
+        Source = '00/75/CTCCameraPointTrack_UpdateActiveCameraPosition_0075cad0.cpp'
+        TestSource = '00/75/CTCCameraPointTrack_UpdateActiveCameraPosition_0075cad0_test.cpp'
+        PassPattern = '0075cad0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
