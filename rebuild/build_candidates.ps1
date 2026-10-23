@@ -273200,6 +273200,48 @@ $catalog = @(
         TestSource = '00/83/CThingAICreature_RandomiseMovementSpeed_00830260_test.cpp'
         PassPattern = '00830260_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00838bc0'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_GetMeleeHitParameters_00838bc0.cpp'
+        TestSource = '00/83/CThingGameObject_GetMeleeHitParameters_00838bc0_test.cpp'
+        PassPattern = '00838bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dd440'
+        Module = 'CAnimationSet'
+        Source = '00/5d/CAnimationSet_TransferBinaryIn_005dd440.cpp'
+        TestSource = '00/5d/CAnimationSet_TransferBinaryIn_005dd440_test.cpp'
+        PassPattern = '005dd440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090c1a0'
+        Module = 'CAIStateGroup_MinionGuardFollowPlayer'
+        Source = '00/90/CAIStateGroupMinionGuardFollowPlayer_IsRunnable_0090c1a0.cpp'
+        TestSource = '00/90/CAIStateGroupMinionGuardFollowPlayer_IsRunnable_0090c1a0_test.cpp'
+        PassPattern = '0090c1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00964ca0'
+        Module = 'CAIStateGroup_StealStealableItem'
+        Source = '00/96/CAIStateGroupStealStealableItem_FindPEscapePoint_00964ca0.cpp'
+        TestSource = '00/96/CAIStateGroupStealStealableItem_FindPEscapePoint_00964ca0_test.cpp'
+        PassPattern = '00964ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00937b10'
+        Module = 'CAIStateGroup_MinionReactToUnconsciousPerson'
+        Source = '00/93/CAIStateGroupMinionReactToUnconsciousPerson_FindUndiscoveredUnconsciousPerson_00937b10.cpp'
+        TestSource = '00/93/CAIStateGroupMinionReactToUnconsciousPerson_FindUndiscoveredUnconsciousPerson_00937b10_test.cpp'
+        PassPattern = '00937b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00937c20'
+        Module = 'CAIStateGroup_MinionReactToUnconsciousPerson'
+        Source = '00/93/CAIStateGroupMinionReactToUnconsciousPerson_FindUnconsciousPerson_00937c20.cpp'
+        TestSource = '00/93/CAIStateGroupMinionReactToUnconsciousPerson_FindUnconsciousPerson_00937c20_test.cpp'
+        PassPattern = '00937c20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
