@@ -42,4 +42,4 @@ address	exported_length	corrected_length	reason
 006ca5a0	288	171	code 171 B; exported row also holds 006ca650, 006ca660, 006ca670, 006ca680
 00ca53f0	288	16	code 16 B; exported row also holds 00ca5400
 005d9380	304	44	code 44 B; exported row also holds 005d93b0, 005d9430
-00548b50	00548f40	chunk 323: row holds CTextSlider::AdjustValueToProfile (0x3E6 bytes) and a second function at 0x00548F40
+00548b50	1616	998	code 998 B (0x3E6, CTextSlider::AdjustValueToProfile incl. jump tables); exported row also holds 00548f40 (chunk 323)
