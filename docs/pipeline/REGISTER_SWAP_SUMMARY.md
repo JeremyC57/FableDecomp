@@ -199,3 +199,9 @@ So neither callee visibility nor statement sequencing in the 0x4F test changes i
 - Two plain `if ... return false;`: 422v457, same. Ternary tail `c51 ? ... : true`: 463v457. Ternary condition: 457v457, byte-identical. `EOpinionDeedType(deed)` functional cast: byte-identical.
 - Diagnostic: replacing EITHER use of `deed` with a constant still leaves `push ebp`, and ours then puts `this` in ebp (`mov ebp,ecx`).
 **Finding:** retail does not use ebp anywhere in this function. It spills `this` to `[esp+0Ch]` and reloads both `this` and `deed` from memory. Ours always finds some value worth ebp's push/pop (deed, or `this` when deed has one use). This is a cost threshold on using the fourth callee-saved register for a 2-use value, not a per-variable ranking or a CSE decision. Next question: what lowers the estimated benefit of the 2-use candidates (or raises ebp's cost) so VC7.1 leaves ebp unused?
+
+## Round 14 (2026-10-23): compiler-side levers on 008508b0 — none drops ebp
+- Per-function `#pragma optimize`: "t", "a" and "w" are byte-identical to the base. "s" and `("", off)` + `("gsy", on)` build an ebp frame (395v457). `("g", off)` gives 755v457.
+- Flags on top of /O2 /Oy (/Oa, /Ow, /GS, /Op, /G5, /Ob1) all still `push ebp` with an identical 77-line diff. /G7 gives 441v457 and /Og- gives 749v457.
+- The QFE 13.10.4035 toolset is identical to RTM 3077 here.
+Conclusion: retail's choice to leave ebp unused is not a flag, pragma, CPU target, aliasing or compiler-build difference. Retail /O2 /Oy is confirmed (the frame shape matches). The cause is in the source the compiler saw: use counts, or a construct we have not reproduced (the callee bodies or the inlining of the CDefPointer temporary's dtor are the remaining candidates).
