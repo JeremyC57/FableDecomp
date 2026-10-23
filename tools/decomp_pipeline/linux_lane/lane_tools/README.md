@@ -28,3 +28,8 @@ workflow around `verify_and_land.py`. They contain no retail data. Every one exp
 | `eh_pass_example/parked*.txt` | the parked EH bodies with the evidence of why they do not match on this compiler build. |
 
 Resume recipe: `docs/HANDOFF.md`.
+
+## Landing helpers (2026-10-23)
+- `vland.py <payload> <oracle> [--land] [--recheck-landed]`: `verify_and_land.py` with a 180 s per-tool timeout (a Wine cl.exe can hang forever).
+- `recheck.py <outdir> <addr|src>...`: build a `--recheck-landed` payload from the catalog. Run it before and after any shared-header change.
+- `frommatches.py <MATCHES.tsv> <outdir>`: agent MATCHES.tsv to payload + oracle (needs `FABLE_EXE`).
