@@ -100,6 +100,6 @@ void CGameScriptInterface::ChangeHeroHealthBy(
     {
         hero->SetCurrentAction(CCreatureAction_StabbedToDeath(*hero, false));
     }
-    if (*(volatile const bool*)&applyHealthChange && amount < gDamageThreshold)
+    if (*(const bool*)&applyHealthChange && amount < gDamageThreshold)
         gPlayerGui->AddDamageChange(-amount, true);
 }

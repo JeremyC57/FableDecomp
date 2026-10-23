@@ -1,5 +1,5 @@
 #include <cstdio>
-volatile unsigned char g_redefineFlag=0;
+unsigned char g_redefineFlag=0;
 #define KEY_REDEFINER_FLAG_ADDRESS (&g_redefineFlag)
 // CKeyRedefiner::CanRedefineAction(long) -- classify category IDs through retail's dense switch table (0x00557960, 175 bytes).
 // Grade: RELOCATION_MATCH -- q.py verified the exact 175-byte body with embedded switch table.
@@ -15,7 +15,7 @@ bool CKeyRedefiner::CanRedefineAction(long category)
     case 1: case 89: case 90: case 91: case 98: case 118: case 119:
         return false;
     case 58:
-        if (*(volatile unsigned char*)KEY_REDEFINER_FLAG_ADDRESS == 0) break;
+        if (*(unsigned char*)KEY_REDEFINER_FLAG_ADDRESS == 0) break;
         return false;
     default:
         break;

@@ -10,8 +10,8 @@ struct CCombatAbilityData { int field_0; int PercentageChance; float SecondsDura
 static void TransferBinaryOut(CCombatAbilityData* ability, CBinaryStream* stream)
 {
     stream->PutInt(ability->PercentageChance);
-    stream->PutFloat(*(volatile float*)&ability->SecondsDuration);
-    stream->PutFloat(*(volatile float*)&ability->SecondsToWaitBeforeRepeat);
+    stream->PutFloat(*(float*)&ability->SecondsDuration);
+    stream->PutFloat(*(float*)&ability->SecondsToWaitBeforeRepeat);
     stream->PutInt(ability->int10);
 }
 

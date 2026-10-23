@@ -12,7 +12,7 @@ bool CKeyRedefiner::CanRedefineAction(long category)
     case 1: case 89: case 90: case 91: case 98: case 118: case 119:
         return false;
     case 58:
-        if (*(volatile unsigned char*)KEY_REDEFINER_FLAG_ADDRESS == 0) break;
+        if (*(unsigned char*)KEY_REDEFINER_FLAG_ADDRESS == 0) break;
         return false;
     default:
         break;

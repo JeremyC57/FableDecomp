@@ -6,7 +6,7 @@ static long InterlockedExchange(long volatile* t, long v) { long o = *t; *t = v;
 static unsigned long WaitForSingleObject(void* h, unsigned long) { g_waited = h; return 0; }
 static int CloseHandle(void* h) { g_closedH[g_closed++] = h; return 1; }
 struct _RTL_CRITICAL_SECTION { unsigned char _body[0x18]; }; static void DeleteCriticalSection(_RTL_CRITICAL_SECTION*) { ++g_deleted; }
-struct CWorkerThread_00cb0d20 { long m_0; void* m_hEventA; void* m_hEventB; unsigned char _pad0c[8]; long volatile m_hThread; _RTL_CRITICAL_SECTION m_sectionA; _RTL_CRITICAL_SECTION m_sectionB;
+struct CWorkerThread_00cb0d20 { long m_0; void* m_hEventA; void* m_hEventB; unsigned char _pad0c[8]; long m_hThread; _RTL_CRITICAL_SECTION m_sectionA; _RTL_CRITICAL_SECTION m_sectionB;
     ~CWorkerThread_00cb0d20() { void* t = (void*)InterlockedExchange(&m_hThread, 0); if (t) { WaitForSingleObject(t, 0xffffffff); CloseHandle(t); } DeleteCriticalSection(&m_sectionB); DeleteCriticalSection(&m_sectionA); if (m_hEventB) CloseHandle(m_hEventB); if (m_hEventA) CloseHandle(m_hEventA); } };
 int main() {
     { CWorkerThread_00cb0d20 w; std::memset(&w, 0, sizeof w); w.m_hThread = 7; w.m_hEventA = (void*)3; w.m_hEventB = 0; }

@@ -16,7 +16,7 @@ void __fastcall CCombatAbilityData_TransferBinaryOut(CCombatAbilityData* ability
 {
     (void)edx; (void)extra;
     stream->PutInt(ability->PercentageChance);
-    stream->PutFloat(*(volatile float*)&ability->SecondsDuration);
-    stream->PutFloat(*(volatile float*)&ability->SecondsToWaitBeforeRepeat);
+    stream->PutFloat(*(float*)&ability->SecondsDuration);
+    stream->PutFloat(*(float*)&ability->SecondsToWaitBeforeRepeat);
     stream->PutInt(ability->int10);
 }

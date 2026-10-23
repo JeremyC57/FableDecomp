@@ -7,7 +7,7 @@
 #pragma intrinsic(memset)
 struct T { char AddChildPrimitive(); };
 char T::AddChildPrimitive() {
-    volatile char flag;
+    char flag;
     memset((void*)&flag, 0, 1);
     return flag;
 }

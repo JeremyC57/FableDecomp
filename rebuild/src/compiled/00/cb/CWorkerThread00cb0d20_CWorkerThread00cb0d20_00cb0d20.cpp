@@ -14,7 +14,7 @@ struct CWorkerThread_00cb0d20 {
     void*                 m_hEventA;               // +0x04
     void*                 m_hEventB;               // +0x08
     unsigned char         _pad0c[8];
-    long volatile         m_hThread;               // +0x14
+    long m_hThread;               // +0x14
     _RTL_CRITICAL_SECTION m_sectionA;              // +0x18
     _RTL_CRITICAL_SECTION m_sectionB;              // +0x30
     ~CWorkerThread_00cb0d20();
