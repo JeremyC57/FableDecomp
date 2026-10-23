@@ -205,3 +205,8 @@ So neither callee visibility nor statement sequencing in the 0x4F test changes i
 - Flags on top of /O2 /Oy (/Oa, /Ow, /GS, /Op, /G5, /Ob1) all still `push ebp` with an identical 77-line diff. /G7 gives 441v457 and /Og- gives 749v457.
 - The QFE 13.10.4035 toolset is identical to RTM 3077 here.
 Conclusion: retail's choice to leave ebp unused is not a flag, pragma, CPU target, aliasing or compiler-build difference. Retail /O2 /Oy is confirmed (the frame shape matches). The cause is in the source the compiler saw: use counts, or a construct we have not reproduced (the callee bodies or the inlining of the CDefPointer temporary's dtor are the remaining candidates).
+
+## Round 15 (2026-10-23): dead-use counts and inline-body footprints on 008508b0 — all keep ebp
+- Dead or discarded uses before DCE: `(void)deed;`, `if (0) { ... = deed; }`, `(void)sizeof(deed)`, a scoped `unused = deed; unused = unused;`, a `__forceinline` no-op `Touch(deed); Touch(ExtraData2);`, `(void)this->ExtraData1;`, `if (deed != deed) return false;`, and `self = this; (void)self;`. All are byte-identical to the base, so VC7.1 strips dead uses before computing register weights.
+- Inline-body footprint: Release as `long n = --m_refCount; if (n == 0)`, and `__forceinline` Release, are byte-identical. A dtor that nulls `Object` after release, or one that inlines the decrement directly, gives 428v457 but still pushes ebp.
+Status: 15 rounds of source, sequencing, flag, toolset, dead-use and inline-footprint levers have not dropped ebp on 008508b0. Treat "retail leaves ebp unused" as a lane gap (park with the Grade tag 'family gap: ebp unused') until a matched row in the family shows the cause.
