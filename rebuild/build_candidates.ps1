@@ -270302,6 +270302,13 @@ $catalog = @(
         TestSource = '00/89/CGameScriptInterface_GetNearestWithDefName_0089a880_test.cpp'
         PassPattern = '0089a880_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a44880'
+        Module = 'CSuspendableProcessMicrothread'
+        Source = '00/a4/CSuspendableProcessMicrothread_RunSuspendableProcess_00a44880.cpp'
+        TestSource = '00/a4/CSuspendableProcessMicrothread_RunSuspendableProcess_00a44880_test.cpp'
+        PassPattern = '00a44880_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
