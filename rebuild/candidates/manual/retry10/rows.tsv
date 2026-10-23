@@ -2469,3 +2469,28 @@ address	module	name	length	chunk	reason
 006e1620	CTCDParticleEmitter	FrameUpdate	608	hand300	DIFFER(608) -- DIFFER 608v608 position copy load/store interleave only
 0078faf0	CTCDivineWrath	FinalCleanup	592	hand300	DIFFER(592) -- DIFFER 586v586 HitEffects loop register swap
 00795090	CTCDivineWrath	FinalCleanup	592	hand300	DIFFER(592) -- DIFFER 586v586 same as 0078faf0; label: CTCUnholyPower
+00492973	CSubtitleRenderer	CSubtitleRenderer::SetText	568	hand299	DIFFER(572v568) -- tail only: retail homes the found list in the dead text slot (+0xc, tag at +0xf) and the type filter in +0x14, ours list +8 / filter +0xc (a {} block
+00492bab	CSubtitleRenderer	Clear	672	hand299	DIFFER(670v672) -- register choice: retail caches L"" in edi and "" / the player mode / 0xcb in ebx (ours swaps them); the queue test loads finish first and re-reads
+004ce1b0	CSubtitledMessage	AddMasterShotCameraTagFromText	816	hand299	DIFFER(784v814) -- retail inlines ~CStringParser only at the first three exits and calls it out of line (0x004047A0) at the later ones (inline budget), keeps the first
+009f3b00	CSurface	CopyFromMemory	672	hand299	DIFFER(636v664) -- structure matches (box defaults, Lock, budget-limited inline GetWidth then out-of-line GetWidth/GetHeight, rep-movs memcpy); residue is register
+009f3da0	CSurface	CopyToMemoryB8G8R8A8	592	hand299	DIFFER(589v582) -- frame 0x84 v 0x78 (VC7.1 places format/this-spill/left in other words; disp32 forms add 7 bytes) and the inner byte swizzle loads s[0]/s[2] in the
+009f4590	CSurface	SaveAsTGA	864	hand299	DIFFER(916v864) -- first pass -- retail pushes ebx late (after the extents), keeps 0 in ebp, counts both pixel loops down with the locked-rect bounds treated as
+00f39730	CSurfaceCompositor	StartComposition	800	hand299	DIFFER(786v796) -- all control flow and calls match; residue is register use: retail materialises the first state value 0xf in ebx (push ebx) and does the capture-block
+007e0f20	CTCAICreatureWillPowerIndicator	FrameUpdate	544	hand299	DIFFER(537v537) -- register allocation only: retail keeps this in edi, the promoted zero and the found-bool in ebx
+0072a090	CTCActionUseScriptedHook	GlobalUpdate	848	hand299	DIFFER(848v844) -- control flow, frame, calls, CGameEvent and both sounds match; three register residues: camera-point vcall loads the component into eax then ecx
+007eb6a0	CTCActionUseSearch	CTCActionUseSearch::vfunc_28	752	hand299	DIFFER(735v748) -- flow, TC lookups, deed/message/tutorial calls in place; residue is the register map (retail this in ebp with the hero spilled to the dead height slot
+007e1fc0	CTCAmbientBird	FrameUpdate	843	hand299	DIFFER(872v843) -- flying arm matches; take-off arm differs -- retail CSEs the three squares of the hero distance into frame temps reused by the inline fast normalise
+007e4e30	CTCBetting	FrameUpdate	656	hand299	DIFFER(626v645) -- register allocation -- ours caches a zero in ebx for the whole function (pushes/stores of 0, cmp al,bl), retail materialises it only in the
+007e5230	CTCBetting	ProcessInput	832	hand299	DIFFER(817v817) -- frame 0x14 v 0x10 only -- retail packs the LowerBound key temp into the def pointer slot (key/def/CCharString temp all local+4); ours gives the key
+0056be00	CTCBoastUI	GlobalUpdate	574	hand299	DIFFER(574v574) -- frame 0x14 v 0x10: retail packs the named CCountedPointer `mode` into point's frame word (0x14);
+00783380	CTCBoastingCrowdControl	SpawnCrowdMember	768	hand299	DIFFER(764v768) -- one 4-byte gap -- retail re-tests the male def (cmp eax,ebp; jne) before the female=true arm on the both-defs path; VC7.1 threads that test away in
+00814260	CTCBoastingPodium	OnInitialActivate	839	hand299	DIFFER(839v839) -- scratch-register choice only (eax/ecx/edx rotation at the vector size, prefix data, Create player arg, sort args)
+007820e0	CTCBoastingPosition	FrameUpdate	688	hand299	DIFFER(690v680) -- structure matches; residue is allocation -- ours CSEs the hero's component-mask address (lea +0x20 spilled) and keeps &Podium in ebp, retail re-tests
+007af490	CTCBoss	KillHelpers	560	hand299	DIFFER(531v550) -- register allocation -- retail holds the sub-def pointer in ebx across the block and materialises the explode condition in a frame byte (ours: bool in
+0079c880	CTCBulletTime	FrameUpdate	933	hand299	DIFFER(933v933) -- frame slots only -- retail homes the parent-thing local at +0x10 and the CIntelligentPointer<CParticleEmitter> temporary at +0x14; ours puts the
+0079d7e0	CTCBulletTime	UnPause	732	hand299	DIFFER(727v732) -- effects def pointer not kept in ebp (retail caches it across CalcAndLookup/Create2DEmitter and uses ebp/ebx for the filter vector bases); frame slots
+007cd9a0	CTCBurntEffect	FrameUpdate	640	hand299	DIFFER(632v634) -- colour channel order: retail converts c[3], c[2], c[1], c[0]; ours c[3], c[1], c[0], c[2]; retail also spills parent (ebp) to the frame and uses ebp
+007cdd10	CTCBurntEffect	Reset	720	hand299	DIFFER(717v719) -- frame 0x28 v 0x20: retail spills the first effect into the dead type slot and keeps type in ebp after the lookup; ours caches 0 in ebp (push ebp) and
+006bfcd0	CTCBuyableHouse	GetSignPostPos	768	hand299	DIFFER(739v764) -- frame 0x5c v 0x6c (retail keeps 16 more bytes of vector temporaries: ahead +0x28, the ahead+position temp +0x58 with only z spilled) and the final
+006c0c90	CTCBuyableHouse	CreateRentMoney	624	hand299	DIFFER(611v611) -- frame -- retail has no home slot for the uninitialised gold pointer (ebp loaded from owned's word +0x20, fild temp in i's word), ours gives it +0x24
+006c1250	CTCBuyableHouse	CTCBuyableHouse::vfunc_9	640	hand299	DIFFER(638v638) -- register rotation only -- retail picks edx/eax where ours picks eax/ecx for the subtitle font, the price delta, the 0x23 key address and both day

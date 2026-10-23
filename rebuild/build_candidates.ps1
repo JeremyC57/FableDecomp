@@ -271158,6 +271158,97 @@ $catalog = @(
         TestSource = '00/80/CTCDExplosion_CreateStaticExplosion_0080d0b0_test.cpp'
         PassPattern = '0080d0b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0056a980'
+        Module = 'CTCBoastUI'
+        Source = '00/56/CTCBoastUI_BoastTaken_0056a980.cpp'
+        TestSource = '00/56/CTCBoastUI_BoastTaken_0056a980_test.cpp'
+        PassPattern = '0056a980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00686b00'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_BeginSerialising_00686b00.cpp'
+        TestSource = '00/68/CTCBase_BeginSerialising_00686b00_test.cpp'
+        PassPattern = '00686b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00729cf0'
+        Module = 'CTCActionUseScriptedHook'
+        Source = '00/72/CTCActionUseScriptedHook_OnSerialise_00729cf0.cpp'
+        TestSource = '00/72/CTCActionUseScriptedHook_OnSerialise_00729cf0_test.cpp'
+        PassPattern = '00729cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a9fe0'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_CreateTrailingEffect_007a9fe0.cpp'
+        TestSource = '00/7a/CTCAssassinRush_CreateTrailingEffect_007a9fe0_test.cpp'
+        PassPattern = '007a9fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007aa9e0'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_GetValidTeleportPos_007aa9e0.cpp'
+        TestSource = '00/7a/CTCAssassinRush_GetValidTeleportPos_007aa9e0_test.cpp'
+        PassPattern = '007aa9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ab190'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_FrameUpdate_007ab190.cpp'
+        TestSource = '00/7a/CTCAssassinRush_FrameUpdate_007ab190_test.cpp'
+        PassPattern = '007ab190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a5490'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_InitSystemColours_009a5490.cpp'
+        TestSource = '00/9a/CSystemManager_InitSystemColours_009a5490_test.cpp'
+        PassPattern = '009a5490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a60d0'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_Uninitialise_009a60d0.cpp'
+        TestSource = '00/9a/CSystemManager_Uninitialise_009a60d0_test.cpp'
+        PassPattern = '009a60d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a6610'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_Initialise_009a6610.cpp'
+        TestSource = '00/9a/CSystemManager_Initialise_009a6610_test.cpp'
+        PassPattern = '009a6610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a67a20'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_ClearArea_00a67a20.cpp'
+        TestSource = '00/a6/CVolume_ClearArea_00a67a20_test.cpp'
+        PassPattern = '00a67a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6c170'
+        Module = 'CSystemFont'
+        Source = '00/a6/CSystemFont_Initialise_00a6c170.cpp'
+        TestSource = '00/a6/CSystemFont_Initialise_00a6c170_test.cpp'
+        PassPattern = '00a6c170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e11dc0'
+        Module = 'NScript::CQ_WizardBattleScript::CSummoner1'
+        Source = '00/e1/NScriptCQWizardBattleScriptCSummoner1_Main_00e11dc0.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCSummoner1_Main_00e11dc0_test.cpp'
+        PassPattern = '00e11dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed54d0'
+        Module = 'CSwordOfStrength'
+        Source = '00/ed/CSwordOfStrength_Main_00ed54d0.cpp'
+        TestSource = '00/ed/CSwordOfStrength_Main_00ed54d0_test.cpp'
+        PassPattern = '00ed54d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

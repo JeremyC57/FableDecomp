@@ -1,0 +1,10 @@
+address	name	evidence
+00aeaaf0	CParticleEmitterManager::Get	chunk 299 callee body (was GFGetPreMainMemoryUsed, propagated)
+00686a70	CTCBase::GetWorld	chunk 299 callee body (was GetDisplayEngine, propagated)
+00a0d390	CProcessedInput::SetHandled	chunk 299 callee body (was CWomanToAttract::Init)
+00a22f80	CRightHandedSet::RotateAboutAxis	chunk 299 callee body
+004c7590	UpdateGraphicAppearance	chunk 299 callee body (was DetachTarget)
+0099a300	CBase::~CBase	chunk 299 callee body
+0099eae0	CCharString::~CCharString	chunk 299 callee body (was _Cons_val)
+0079ce80	CTCBulletTime::PlaySound	chunk 299 callee body
+008147d0	CTCBoastingPosition::SetPodium	chunk 299 callee body (was CVillageTaskCarryCrate::AssignCreatureToTask)
