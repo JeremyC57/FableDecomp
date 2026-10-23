@@ -27095,3 +27095,10 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?g_EmptyString@@3UCCharString@@B	0143e8ec	00d71b30
 ?PhaseMe@CFadeinSummoner@@QAEXXZ	00d9fd80	00d9f6c0
 ?Add@CQ_MinionClifftopChaseScript@@QAEXPAUCSpawnedFuncBase@@ABUCCharString@@@Z	00cb7e50	00da7d30
+?AIAction_DoNothing@CAIStateGroup_Clean@@QAEJXZ	0097e200	009175e0
+?AIAction_MoveToPosProximity@CAIStateGroup_Clean@@QAEJJUC3DVector@@MPA_NJ_N22PAUCThing@@2M@Z	0097e890	009175e0
+?AIAction_PerformActionAndWait@CAIStateGroup_Clean@@QAEJPAUCCreatureActionBase@@_N@Z	0097db70	009175e0
+?GetActionID@CCreatureActionBase@@QAEJXZ	00692620	009175e0
+?GetPWorldSeed@CAIStateGroup_Clean@@QAEPAKXZ	008fcfd0	009175e0
+?Terminate@CAIStateGroup_Clean@@QAEXXZ	008fcf40	009175e0
+?GetDefName@CThingNative@@QBE?AUCDefString@@XZ	004c7cc0	008d23c0

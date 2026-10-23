@@ -274812,6 +274812,20 @@ $catalog = @(
         TestSource = '00/e7/CFishCompCompetitor_Main_00e7e640_test.cpp'
         PassPattern = '00e7e640_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009175e0'
+        Module = 'CAIStateGroup_Clean'
+        Source = '00/91/CAIStateGroupClean_Update_009175e0.cpp'
+        TestSource = '00/91/CAIStateGroupClean_Update_009175e0_test.cpp'
+        PassPattern = '009175e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d23c0'
+        Module = 'CGameScriptThingMethods'
+        Source = '00/8d/CGameScriptThingMethods_MsgIsPresentedWithItem_008d23c0.cpp'
+        TestSource = '00/8d/CGameScriptThingMethods_MsgIsPresentedWithItem_008d23c0_test.cpp'
+        PassPattern = '008d23c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
