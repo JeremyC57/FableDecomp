@@ -271939,6 +271939,83 @@ $catalog = @(
         TestSource = '00/7b/CTCTavernBar_OnInitialActivate_007ba550_test.cpp'
         PassPattern = '007ba550_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0065c781'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_FrameUpdate_0065c781.cpp'
+        TestSource = '00/65/CTCVillage_FrameUpdate_0065c781_test.cpp'
+        PassPattern = '0065c781_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00757c90'
+        Module = 'CTCWound'
+        Source = '00/75/CTCWound_OnSerialise_00757c90.cpp'
+        TestSource = '00/75/CTCWound_OnSerialise_00757c90_test.cpp'
+        PassPattern = '00757c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a00e0'
+        Module = 'CTCWillLightning'
+        Source = '00/7a/CTCWillLightning_StartHandEffects_007a00e0.cpp'
+        TestSource = '00/7a/CTCWillLightning_StartHandEffects_007a00e0_test.cpp'
+        PassPattern = '007a00e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a09b0'
+        Module = 'CTCWillLightning'
+        Source = '00/7a/CTCWillLightning_CTCWillLightning_007a09b0.cpp'
+        TestSource = '00/7a/CTCWillLightning_CTCWillLightning_007a09b0_test.cpp'
+        PassPattern = '007a09b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c6aa0'
+        Module = 'CTCTurncoatSpell'
+        Source = '00/7c/CTCTurncoatSpell_StartTurncoatingEffects_007c6aa0.cpp'
+        TestSource = '00/7c/CTCTurncoatSpell_StartTurncoatingEffects_007c6aa0_test.cpp'
+        PassPattern = '007c6aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d4410'
+        Module = 'CTCTavernGameCoinGolf'
+        Source = '00/7d/CTCTavernGameCoinGolf_UpdateValues_007d4410.cpp'
+        TestSource = '00/7d/CTCTavernGameCoinGolf_UpdateValues_007d4410_test.cpp'
+        PassPattern = '007d4410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d62d0'
+        Module = 'CTCTavernGameCardPairs'
+        Source = '00/7d/CTCTavernGameCardPairs_CardsMainGame_007d62d0.cpp'
+        TestSource = '00/7d/CTCTavernGameCardPairs_CardsMainGame_007d62d0_test.cpp'
+        PassPattern = '007d62d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e00d0'
+        Module = 'CTCTeleporter'
+        Source = '00/7e/CTCTeleporter_FrameUpdate_007e00d0.cpp'
+        TestSource = '00/7e/CTCTeleporter_FrameUpdate_007e00d0_test.cpp'
+        PassPattern = '007e00d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df7bf0'
+        Module = 'CTC_GuardSpawnPoint'
+        Source = '00/df/CTCGuardSpawnPoint_Main_00df7bf0.cpp'
+        TestSource = '00/df/CTCGuardSpawnPoint_Main_00df7bf0_test.cpp'
+        PassPattern = '00df7bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfba60'
+        Module = 'CTC_BanditHostageKeeper'
+        Source = '00/df/CTCBanditHostageKeeper_Main_00dfba60.cpp'
+        TestSource = '00/df/CTCBanditHostageKeeper_Main_00dfba60_test.cpp'
+        PassPattern = '00dfba60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edc720'
+        Module = 'CTOL_AcolyteGood'
+        Source = '00/ed/CTOLAcolyteGood_Init_00edc720.cpp'
+        TestSource = '00/ed/CTOLAcolyteGood_Init_00edc720_test.cpp'
+        PassPattern = '00edc720_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

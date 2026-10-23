@@ -1,0 +1,8 @@
+address	name	evidence
+007d4410	CoinGolf::UpdateValues	chunk 306 landed row (was ShoveHaPenny)
+00669d30	GetEffectTableEntry	chunk 306 callee body (effect-table lookup, was CCRC)
+0044c6b0	CGameDefinitionManager::Get	chunk 306 callee body, static __fastcall
+009ad390	GetGlobalIndexFromClassIndex	chunk 306 callee body
+00443f90	CHandleVector::Resize	chunk 306 callee body
+0048dae0	ClampInPlace	chunk 306 callee body
+004db5bb	CMap::~CMap	chunk 306 callee body
