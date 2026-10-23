@@ -218,3 +218,9 @@ The shared header shows CContextSensitiveItemDef is polymorphic (vptr at +0), bu
 - a two-virtual base plus a derived pad;
 - `#pragma pack(push, 1)` around the class.
 Class layout, polymorphism and packing do not feed VC7.1's register weights when the member offsets are unchanged. The family stays parked as 'family gap: ebp unused'.
+
+## Round 17 (2026-10-23): /GL + /LTCG on the Linux lane — ebp still used
+Recipe (works under Wine with the RTM toolset): `cl /c /O2 /Oy /W3 /GL t.cpp`, then `link /DLL /NOENTRY /LTCG /FORCE:UNRESOLVED /OPT:NOREF /MAP /OUT:t.dll t.obj`, then objdump the function at its map address.
+- With no exports, LTCG gives 008508b0 a custom register convention (`target` arrives in edi; LowerBound takes its object in eax), unlike retail's plain thiscall. So retail's copy was externally visible to whatever optimiser built it.
+- With `/EXPORT:` on the function and on LowerBound, LTCG keeps the standard convention and produces the same length as the single-TU build (163 lines vs retail 160). It still opens with `sub esp,8 ; push ebp ; push esi ; push edi`.
+LTCG codegen by itself, with this TU's knowledge, does not leave ebp unused. What is left to test is whole-program knowledge of the REAL callee bodies (IsInScriptGroup 0x8302C0, GetDeedDef 0x6C5630, the 0x7122C0 IsRunning), which a single reconstructed TU does not have.
