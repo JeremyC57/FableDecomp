@@ -272359,6 +272359,13 @@ $catalog = @(
         TestSource = '00/64/CStatBar_DrawStatBox_00645ce9_test.cpp'
         PassPattern = '00645ce9_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005c150b'
+        Module = 'CIsSameItemType'
+        Source = '00/5c/CIsSameItemType_operator_005c150b.cpp'
+        TestSource = '00/5c/CIsSameItemType_operator_005c150b_test.cpp'
+        PassPattern = '005c150b_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
