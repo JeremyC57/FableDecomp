@@ -270569,6 +270569,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '0095ab50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0094fa00'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/94/CAIStateGroupJackDragon_FindFlightPathCurvePoint_0094fa00.cpp'
+        TestSource = '00/94/CAIStateGroupJackDragon_FindFlightPathCurvePoint_0094fa00_test.cpp'
+        PassPattern = '0094fa00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
