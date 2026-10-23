@@ -35,7 +35,7 @@ struct CStringParser : CBaseClass {                // retail 0x28 bytes
     long                     CursorPos[3];         // +0x1c CCursorPos
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
-    CCharString ReadAsStringUntilString(const CCharString& terminator);            // 0x009BA3E0
+    CCharString ReadAsStringUntilString_009ba3e0(const CCharString& terminator);            // 0x009BA3E0
     CCharString ReadAsStringUntilStringInclusive(const CCharString& terminator);   // 0x009BA330
     long SkipWhitespace();                         // 0x009B9C60
 };
@@ -59,7 +59,7 @@ extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 
 void CThingManager::LoadHeroStateScript(CStringParser& parser)
 {
-    parser.ReadAsStringUntilString(g_strNewThing);
+    parser.ReadAsStringUntilString_009ba3e0(g_strNewThing);
     CCharString heroState = parser.ReadAsStringUntilStringInclusive(g_strEndThingLevel);
     CStringParser heroParser(heroState, 0, CCharString(g_emptyString_0122d70e, -1), 0);
     heroParser.SkipWhitespace();

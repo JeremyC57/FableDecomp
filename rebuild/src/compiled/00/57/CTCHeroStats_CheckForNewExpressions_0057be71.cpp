@@ -64,7 +64,7 @@ struct CThingPlayerCreature : CThingCreatureBase {
 };
 
 struct CTCInventoryAbilities {
-    long GetAbilityLevel(long ability);              // 0x006D6520
+    long GetAbilityLevel_006d6520(long ability);              // 0x006D6520
 };
 
 struct CTCHeroStats {
@@ -125,7 +125,7 @@ void CTCHeroStats::CheckForNewExpressions()
         hero->LearnExpression("EXPRESSION_BALLET", -1, false);
     CTCInventoryAbilities* abilities;
     if (ParentThing->GetInterface(&abilities, 0x68)) {
-        long stealth = abilities->GetAbilityLevel(5);
+        long stealth = abilities->GetAbilityLevel_006d6520(5);
         if (stealth >= 3)
             hero->LearnExpression("EXPRESSION_STEAL", -1, false);
         if (stealth >= 6)

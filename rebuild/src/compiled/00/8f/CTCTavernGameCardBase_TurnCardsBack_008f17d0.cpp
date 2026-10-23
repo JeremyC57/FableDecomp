@@ -32,7 +32,7 @@ struct CCharString {
 
 namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
-    void ClearMeshEffect(void* key);            // 0x004BFFC0
+    void ClearMeshEffect_004bffc0(void* key);            // 0x004BFFC0
 };
 }
 
@@ -103,7 +103,7 @@ void CTCTavernGameCardBase::TurnCardsBack()
         NGraphicAppearance::CTCGraphicAppearance* appearance = 0;
         if (thing->HasTC(0x5b))
             appearance = (NGraphicAppearance::CTCGraphicAppearance*)thing->GetTC(0x5b);
-        appearance->ClearMeshEffect(this);
+        appearance->ClearMeshEffect_004bffc0(this);
         if (!(*it)->Turning && !(*it)->FaceDown) {
             {
                 CCharString sound("TAVERN_GAME_CARD_FLIP");

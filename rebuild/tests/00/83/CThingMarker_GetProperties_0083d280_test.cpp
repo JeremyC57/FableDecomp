@@ -23,9 +23,9 @@ struct CDefPointer {
 };
 static CThingMarkerDef* g_def = 0; static long g_askedIndex = -1; static int g_getDef = 0;
 struct CDefinitionManager {
-    bool GetDef(long globalIndex, CDefPointer& out);
+    bool GetDef_0083d630(long globalIndex, CDefPointer& out);
 };
-bool CDefinitionManager::GetDef(long globalIndex, CDefPointer& out)
+bool CDefinitionManager::GetDef_0083d630(long globalIndex, CDefPointer& out)
 {
     ++g_getDef; g_askedIndex = globalIndex;
     if (!g_def)
@@ -45,7 +45,7 @@ struct CThingMarker : CThing {
     __forceinline CDefPointer GetMarkerDef()
     {
         CDefPointer def;
-        GetDefinitionManager()->GetDef(DefGlobalIndex, def);
+        GetDefinitionManager()->GetDef_0083d630(DefGlobalIndex, def);
         return def;
     }
     virtual unsigned long GetProperties();

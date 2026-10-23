@@ -25,7 +25,7 @@ __forceinline bool SameText(const CCharStringData* a, const CCharStringData* b)
     return false;
 }
 
-extern CCharString g_EmptyCharString;          // 0x013BD804
+extern CCharString g_EmptyCharString_013bd804;          // 0x013BD804
 
 struct CQuestCard {
     CCharString DefName;                       // +0x00
@@ -58,5 +58,5 @@ const CCharString& CQuestManager::GetAvailableQuestCardDefNameFromScriptName(con
             node = node->next;
         } while (node != head);
     }
-    return g_EmptyCharString;
+    return g_EmptyCharString_013bd804;
 }

@@ -3,7 +3,7 @@ static int g_AutoTinyMemberDestructorCalls = 0;
 static int g_AutoTinyCompositeDestructorCalls = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
 static void* g_AutoTinyObservedMember = 0;
-void __fastcall DestructMember(void* member)
+void __fastcall DestructMember_00a94c70(void* member)
 {
     ++g_AutoTinyMemberDestructorCalls;
     g_AutoTinyObservedMember = member;
@@ -18,7 +18,7 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall C3DMeshFilePartitionChunk_CompositeScalarDeletingDestructor(void* chunk, int, unsigned int flags)
 {
-    DestructMember(static_cast<unsigned char*>(chunk) + 16);
+    DestructMember_00a94c70(static_cast<unsigned char*>(chunk) + 16);
     C3DMeshFilePartitionChunk_Destruct(chunk);
     if (flags & 1)
         OperatorDelete(chunk);

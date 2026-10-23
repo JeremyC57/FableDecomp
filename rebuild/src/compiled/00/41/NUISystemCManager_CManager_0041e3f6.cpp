@@ -48,7 +48,7 @@ struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80 (
     CGraphicBankParams();
 };
 struct CDisplayManager {
-    bool GetBestCompressedAlphaTextureFormat(unsigned long bits, CPixelFormat* out);    // 0x009BE830
+    bool GetBestCompressedAlphaTextureFormat_009be830(unsigned long bits, CPixelFormat* out);    // 0x009BE830
     bool GetBestCompressedAlphaTextureFormat2(unsigned long bits, CPixelFormat* out);   // 0x009BE870
     bool GetBestCompressedAlphaTextureFormat3(unsigned long bits, CPixelFormat* out);   // 0x009BE8B0
     bool GetBestAlphaTextureFormat(unsigned long bits, CPixelFormat* out);              // 0x009BE6C0
@@ -152,7 +152,7 @@ CManager::CManager()
     SetInput(EIT_KEYBOARD);
     PWeaponsInventory = 0;
     CGraphicBankParams params;
-    g_pDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, &params.CompressedAlpha);
+    g_pDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
     g_pDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
     g_pDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
     g_pDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);

@@ -10,10 +10,10 @@ struct CShaderConstantRange : CBaseClass {
     CShaderConstantRange() : m_firstRegister(0), m_registerCount(0) {}
     CShaderConstantRange(long f, long c) : m_firstRegister(f), m_registerCount(c) {}
 };
-struct CVertexShaderConstantLayout {
+namespace N_00bdbb70 { struct CVertexShaderConstantLayout {
     CShaderConstantRange User;
     CVertexShaderConstantLayout() {}
-};
+}; } using N_00bdbb70::CVertexShaderConstantLayout;
 struct CEngineVSConstantLayoutRepeatedMesh : CVertexShaderConstantLayout {
     CShaderConstantRange LightingResults, MainLightLightingResults, ObjectMatricies, ObjectOffsets;
     CEngineVSConstantLayoutRepeatedMesh();

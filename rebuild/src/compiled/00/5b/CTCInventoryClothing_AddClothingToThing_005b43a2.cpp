@@ -28,7 +28,7 @@ struct CLongVector {                                           // STLport vector
     long* _M_end_of_storage;
     CLongVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     ~CLongVector() { if (_M_start) free(_M_start); }
-    void push_back(const long& value);                         // 0x005BBA94
+    void push_back_005bba94(const long& value);                         // 0x005BBA94
 };
 long* __fastcall FindLong(long* first, long* last, const long& value);   // 0x005BA7F9 (std::find)
 
@@ -208,7 +208,7 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
                         if (wornModifier->IsRemoveable)
                             modifiers->RemoveAppearanceModifier(node->_M_data);
                         else
-                            keptParts.push_back(wornModifier->SuitPart);
+                            keptParts.push_back_005bba94(wornModifier->SuitPart);
                     }
                 }
             }

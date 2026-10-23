@@ -22,7 +22,7 @@ static bool g_stringDefaultEmpty = false;
 struct CPersistContext {
     long Mode;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, long& value, const long& defaultValue) { g_lastName = name; g_savedLong = value; g_longDefault = defaultValue; }
+    void Transfer_007e39d0(const char* name, long& value, const long& defaultValue) { g_lastName = name; g_savedLong = value; g_longDefault = defaultValue; }
     void Transfer(const char* name, CCharString& value, const CCharString& defaultValue)
     { g_lastName = name; g_stringDefaultEmpty = defaultValue.Text[0] == 0; std::strcpy(value.Text, "ATMOS_CAVE"); }
 };
@@ -33,7 +33,7 @@ public:
     {
         if (context.IsSaving()) {
             CDefString name = CDefinitionManager::Get().GetDefNameFromGlobalIndex(AtmosDefIndex);
-            context.Transfer("AtmosName", name.m_tablePos, -1);
+            context.Transfer_007e39d0("AtmosName", name.m_tablePos, -1);
         } else {
             CCharString name;
             context.Transfer("AtmosName", name, EmptyString());

@@ -8,7 +8,7 @@ struct CMeshData {
 static int g_freed = 0;
 static CMeshData* g_last_dtor = 0;
 
-void __fastcall CMeshData_dtor(CMeshData* mesh)
+void __fastcall CMeshData_dtor_00a2b6f0(CMeshData* mesh)
 {
     g_last_dtor = mesh;
     mesh->destroyed = 1;
@@ -22,7 +22,7 @@ void operator delete(void* p)
 
 void* __fastcall CMeshData_scalar_deleting_destructor(CMeshData* mesh, int edx_unused, unsigned int flags)
 {
-    CMeshData_dtor(mesh);
+    CMeshData_dtor_00a2b6f0(mesh);
     if (flags & 1)
         operator delete(mesh);
     return mesh;

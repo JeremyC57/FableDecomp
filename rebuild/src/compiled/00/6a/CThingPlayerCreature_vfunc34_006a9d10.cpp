@@ -42,7 +42,7 @@ struct CPlayer : CInitBaseClass {
     CDefPointer<CPlayerDef> PlayerDef;          // +0x21c
 };
 struct CPlayerManager {
-    CPlayer* GetPlayer(long number);            // 0x00449910
+    CPlayer* GetPlayer_00449910(long number);            // 0x00449910
 };
 struct CThingHighlightInfo {
     unsigned char _pad00[4];
@@ -63,7 +63,7 @@ public:
 
 bool CThingPlayerCreature::vfunc_34(CThingHighlightInfo* info)
 {
-    CPlayer* player = GetPlayerManager_004c79f0()->GetPlayer(PlayerNumber);
+    CPlayer* player = GetPlayerManager_004c79f0()->GetPlayer_00449910(PlayerNumber);
     CRGBColour colour;
     if (player->IsInitialised() == true) {
         CDefPointer<CPlayerDef> def(player->PlayerDef);

@@ -6,7 +6,7 @@ static char g_log[64]; static int g_logLen = 0;
 static void Log(char c) { g_log[g_logLen++] = c; g_log[g_logLen] = 0; }
 
 struct CStringRecordList { void* m_head; void clear() { Log('c'); } ~CStringRecordList() { clear(); if (m_head) Log('f'); } };
-struct CPodList { int n; ~CPodList() { Log('p'); } };
+namespace N_0043fd80 { struct CPodList { int n; ~CPodList() { Log('p'); } }; } using N_0043fd80::CPodList;
 struct CBase { int x; ~CBase() { Log('B'); } };
 struct CDerived : CBase { CStringRecordList m_records; CPodList m_entries; ~CDerived() { } };
 int main()

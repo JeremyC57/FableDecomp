@@ -68,7 +68,7 @@ struct CEngine {
     unsigned char     _pad[0x130];
     CSimpleMemoryPool FrameMemoryPool;             // +0x130
 };
-extern CEngine* g_pEngine;                         // 0x01436EA4
+extern CEngine* g_pEngine_01436ea4;                         // 0x01436EA4
 
 struct CEngineLightingManager {
     unsigned char          _pad[0x44ec];
@@ -115,7 +115,7 @@ CEngineLocalLightArray* CEngineLightingManager::ClipLightCountAndBuildLightArray
     }
     if (lightCount == 0)
         return &EmptyLightArray;
-    CEngineLocalLightArray* array = (CEngineLocalLightArray*)g_pEngine->FrameMemoryPool.Allocate(lightCount * sizeof(CEngineLocalLightElement) + 4);
+    CEngineLocalLightArray* array = (CEngineLocalLightArray*)g_pEngine_01436ea4->FrameMemoryPool.Allocate(lightCount * sizeof(CEngineLocalLightElement) + 4);
     array->LightCount = lightCount;
     long i = 0;
     for (CManagerLocalLight* light = lights; light && i < maxLights; light = light->NextLocalLight, ++i) {

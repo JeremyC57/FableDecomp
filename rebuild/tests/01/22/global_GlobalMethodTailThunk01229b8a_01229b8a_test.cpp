@@ -4,14 +4,14 @@ struct AutoTinyThunkTarget
 {
     void Invoke();
 };
-AutoTinyThunkTarget g_AutoTinyThunkObject;
+AutoTinyThunkTarget g_AutoTinyThunkObject_013badf4;
 void AutoTinyThunkTarget::Invoke()
 {
     ++g_AutoTinyThunkCalls;
 }
 void __fastcall GlobalMethodTailThunk_01229b8a()
 {
-    g_AutoTinyThunkObject.Invoke();
+    g_AutoTinyThunkObject_013badf4.Invoke();
 }
 int main()
 {

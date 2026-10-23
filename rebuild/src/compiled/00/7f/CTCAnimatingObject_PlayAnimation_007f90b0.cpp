@@ -104,7 +104,7 @@ struct CAnimatingObjectDef : CDefPointeeBase {
     CAnimationSet Animation;                    // +0x28
 };
 struct CThingBaseDef {
-    bool GetSubDef(CDefPointer<CAnimatingObjectDef>* out) const;   // 0x007F9330
+    bool GetSubDef_007f9330(CDefPointer<CAnimatingObjectDef>* out) const;   // 0x007F9330
 };
 struct CThing {
     unsigned char _pad00[0x70];
@@ -114,7 +114,7 @@ void* FindDef_CThingBaseDef_GetSubDef();         // stand-in callee of the stand
 // Stand-in body (the real 0x007F9330 is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 / 0x00744ED0 / 0x0076C8A0 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAnimatingObjectDef>* out) const
+__declspec(noinline) bool CThingBaseDef::GetSubDef_007f9330(CDefPointer<CAnimatingObjectDef>* out) const
 {
     void* def = FindDef_CThingBaseDef_GetSubDef();
     if (!def)
@@ -145,7 +145,7 @@ void CTCAnimatingObject::PlayAnimation(const CCharString& name, long priority, b
         return;
     CDefPointer<CAnimatingObjectDef> def;
     const CThingBaseDef* baseDef = ParentThing->PBaseDef;
-    if (baseDef->GetSubDef(&def)) {
+    if (baseDef->GetSubDef_007f9330(&def)) {
         const CAnimationSet* set = &def->Animation;
         if (set->HasAnimation(name, CAnimFilterNoGroup())) {
             ClearQueuedAnims();

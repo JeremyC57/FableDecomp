@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_released = 0;
-struct CCountedPointer { void* m_pObject; void* m_pBlock; CCountedPointer() : m_pObject(0), m_pBlock(0) { } ~CCountedPointer() { ++g_released; m_pObject = 0; m_pBlock = 0; } };
+namespace N_005c04bf { struct CCountedPointer { void* m_pObject; void* m_pBlock; CCountedPointer() : m_pObject(0), m_pBlock(0) { } ~CCountedPointer() { ++g_released; m_pObject = 0; m_pBlock = 0; } }; } using N_005c04bf::CCountedPointer;
 struct CSoundPair { long m_sound; CCountedPointer m_pSample; long m_volume; CSoundPair() : m_sound(0), m_pSample(), m_volume(0) { } };
 struct SSoundPairEntry { unsigned long first; CSoundPair second; SSoundPairEntry() : first(0), second() { } };
 static long g_index = -1; static unsigned long g_sum = 1;

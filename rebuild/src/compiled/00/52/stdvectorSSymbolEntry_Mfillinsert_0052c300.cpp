@@ -20,14 +20,14 @@ struct CCharString {
     ~CCharString();                                        // 0x0099EAE0
     CCharString& operator=(const CCharString& other);
 };
-struct CLongVector {                                       // vector<POD> (12 bytes)
+namespace N_005290e0 { struct CLongVector {                                       // vector<POD> (12 bytes)
     long* _M_start;
     long* _M_finish;
     long* _M_end_of_storage;
     CLongVector(const CLongVector& other);                 // 0x005290E0
     ~CLongVector() { if (_M_start) free(_M_start); }
     CLongVector& operator=(const CLongVector& other);
-};
+}; } using N_005290e0::CLongVector;
 struct SSymbolEntry {                                      // 0x18 bytes
     CCharString Name;                                      // +0x00
     CLongVector Values;                                    // +0x04

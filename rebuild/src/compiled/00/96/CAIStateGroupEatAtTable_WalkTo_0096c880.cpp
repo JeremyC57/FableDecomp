@@ -30,7 +30,7 @@ struct CRightHandedSet {
 
 struct CThingCreatureBase {
     long GetMovementMode();                        // 0x00662000
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPosition_004c73d0() const;          // 0x004C73D0
 };
 
 struct CAIBrain {
@@ -54,7 +54,7 @@ struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
 bool CAIStateGroup_EatAtTable::WalkTo(C3DVector pos, CRightHandedSet axes)
 {
     long movementType = 3;
-    if (PBrain->PCreature->GetMovementMode() == 1 && (pos - PBrain->PCreature->GetPosition()).GetLength() > 8.0f)
+    if (PBrain->PCreature->GetMovementMode() == 1 && (pos - PBrain->PCreature->GetPosition_004c73d0()).GetLength() > 8.0f)
         movementType = 5;
     bool reached;
     long result;

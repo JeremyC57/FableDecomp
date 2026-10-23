@@ -11,7 +11,7 @@ struct CStringParser {
     const char* Cursor;
     CStringParser(const char* text) : Cursor(text) { }
     CStringParser(const CCharString& text, void (*)(CCharString*), const CCharString&, long) : Cursor(text.Text) { }
-    CCharString ReadAsStringUntilString(const CCharString& term)
+    CCharString ReadAsStringUntilString_009ba3e0(const CCharString& term)
     {
         const char* hit = std::strstr(Cursor, term.Text);
         CCharString out("");
@@ -37,7 +37,7 @@ struct CThingManager {
     void LoadSingleThing(CPersistContext& c, long mode) { std::strcpy(g_loaded, c.Parser->Cursor); g_mode = mode; }
     void LoadHeroStateScript(CStringParser& parser)
     {
-        parser.ReadAsStringUntilString("NewThing");
+        parser.ReadAsStringUntilString_009ba3e0("NewThing");
         CCharString heroState = parser.ReadAsStringUntilStringInclusive("END_THING_LEVEL");
         CStringParser heroParser(heroState, 0, CCharString("", -1), 0);
         heroParser.SkipWhitespace();

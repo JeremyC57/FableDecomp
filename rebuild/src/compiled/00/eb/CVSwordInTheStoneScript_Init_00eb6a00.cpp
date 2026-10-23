@@ -7,11 +7,11 @@
 // Shape: a 16-byte frame shared by the two full-expression temporaries (12 and 16 bytes); each explicit
 // temporary `T()` reuses the constructor's returned pointer for the push (`push eax`), is destroyed right after
 // its resize, and the four scalar clears (two words, two bytes from the zero register) come first.
-struct CScriptThing {                              // 12 bytes
+namespace N_006e7b40 { struct CScriptThing {                              // 12 bytes
     unsigned char _body[0xc];
     CScriptThing();                                // 0x006E7B40
     ~CScriptThing();                               // 0x004AA840
-};
+}; } using N_006e7b40::CScriptThing;
 
 struct CScriptGameResourceObjectScriptedThingBase {   // 16 bytes
     unsigned char _body[0x10];

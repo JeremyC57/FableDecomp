@@ -8,10 +8,10 @@
 // inline: CBase, vtable, two embedded CSurface (vtable shared through eax, PD3DSurface/AllocationSource zeroed).
 // Model: PDB CSurfaceCompositor (0x30 bytes): +4 CurrentBlend, +8 StateCaptureBlock, +9 WasRendering, +0xC DestSurface,
 // +0x10 CCountedPointer<CRenderTarget> RenderTarget, +0x18 C2DBoxF OldWindow, +0x28 LayerCount, +0x2C AlphaTarget.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                    // 0x0099A2D0
     virtual ~CBase();
-};
+}; } using N_0099a2d0::CBase;
 void* __cdecl operator new(unsigned int size);  // 0x00BFEA1A
 
 struct IDirect3DSurface9;

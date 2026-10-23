@@ -62,7 +62,7 @@ template <class T> struct CDefPointer {
     }
 };
 struct CDefinitionManager {
-    CDefPointerBase GetPDefFromGlobalIndex(long index);     // 0x009AD9E0 (hidden result pointer)
+    CDefPointerBase GetPDefFromGlobalIndex_009ad9e0(long index);     // 0x009AD9E0 (hidden result pointer)
 };
 struct CDefClassBase : CDefBase {
     bool GetSubDef(CDefPointer<CAppearanceModifierDef>& out);   // 0x0057FF92
@@ -166,7 +166,7 @@ void CTCHeroAttachableAppearanceModifiers::UpdateHiddenMaterials()
             CDefPointer<CDefClassBase> def;
             CDefinitionManager* defs = GetDefinitions();
             if (index > 0) {
-                CDefPointerBase result = defs->GetPDefFromGlobalIndex(index);
+                CDefPointerBase result = defs->GetPDefFromGlobalIndex_009ad9e0(index);
                 def = result;
             }
             CDefPointer<CAppearanceModifierDef> modifier;

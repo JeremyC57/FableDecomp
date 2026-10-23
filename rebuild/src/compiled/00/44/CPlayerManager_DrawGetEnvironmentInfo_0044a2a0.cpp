@@ -60,14 +60,14 @@ struct CPlayer {
 };
 
 struct CPlayerManager {
-    CPlayer* GetPlayer(long number);                   // 0x00449910
+    CPlayer* GetPlayer_00449910(long number);                   // 0x00449910
     bool DrawGetEnvironmentInfo(long playerNumber, CWideString& text);
 };
 
 bool CPlayerManager::DrawGetEnvironmentInfo(long playerNumber, CWideString& text)
 {
     text = L"";
-    CPlayer* player = GetPlayer(playerNumber);
+    CPlayer* player = GetPlayer_00449910(playerNumber);
     CThing* hero = player->GetHeroThing();
     if (player->IsMainPlayer() || hero == 0)
         return false;

@@ -20,6 +20,7 @@ void __fastcall Cons_val_pair(PairT* self, PairT* src)
 {
     if (self) {
         self->first.copy(&src->first);
-        self->second.copy(&src->second);
+        // retail 0x009AA570 calls CCharString::copy 0x0099EC30 for this member too (reloc identity), unlike 0x00518B60
+        ((CCharString*)&self->second)->copy((const CCharString*)&src->second);
     }
 }

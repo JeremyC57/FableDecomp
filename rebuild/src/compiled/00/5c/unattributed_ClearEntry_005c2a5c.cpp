@@ -14,12 +14,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCountedPointer {                    // 8 bytes: object, count block
+namespace N_005c04bf { struct CCountedPointer {                    // 8 bytes: object, count block
     void* m_pObject;
     void* m_pBlock;
     CCountedPointer() : m_pObject(0), m_pBlock(0) { }
     ~CCountedPointer();                     // 0x005C04BF
-};
+}; } using N_005c04bf::CCountedPointer;
 
 struct CSoundPair {                         // 0x10 bytes
     long            m_sound;                // +0x00

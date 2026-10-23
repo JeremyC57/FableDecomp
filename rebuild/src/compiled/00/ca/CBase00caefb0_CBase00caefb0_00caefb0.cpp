@@ -22,11 +22,11 @@ struct __declspec(novtable) INonDelegatingUnknownRetail {
     virtual unsigned long __stdcall NonDelegatingAddRef() = 0;
     virtual unsigned long __stdcall NonDelegatingRelease() = 0;
 };
-class CBaseObject {                                // strmbase object counter base (4 bytes in this build)
+namespace N_00cacaf0 { class CBaseObject {                                // strmbase object counter base (4 bytes in this build)
 public:
     const char* m_pName;
     ~CBaseObject();                                // 0x00CACAF0
-};
+}; } using N_00cacaf0::CBaseObject;
 class __declspec(novtable) CUnknown : public INonDelegatingUnknownRetail, public CBaseObject {
 public:
     long m_cRef;                                   // +0x08 within CUnknown

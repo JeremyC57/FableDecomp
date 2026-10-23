@@ -115,13 +115,13 @@ struct CWorld { CMap* GetMap(); };                      // 0x00449700
 struct CTCTavernGame {
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
-    CWorld* GetWorld();                                 // 0x00686D50
+    CWorld* GetWorld_00686d50();                                 // 0x00686D50
     CThingObject* CreateGamePiece(long defIndex);
 };
 
 CThingObject* CTCTavernGame::CreateGamePiece(long defIndex)
 {
-    CMap* map = GetWorld()->GetMap();
+    CMap* map = GetWorld_00686d50()->GetMap();
     C3DVector pos = ParentThing->GetPosition();
     CRightHandedSet rh(0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f);
     CThingObject* piece = CreateThingObject(defIndex, pos, map, rh, 0, "");

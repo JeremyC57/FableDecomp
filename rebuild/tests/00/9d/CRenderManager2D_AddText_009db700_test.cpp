@@ -29,7 +29,7 @@ struct __true_type { __true_type() { } };
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-float __fastcall GFAXToVX(float x);                     // 0x009E1E10
+float __fastcall GFAXToVX_009e1e10(float x);                     // 0x009E1E10
 float __fastcall GFAYToVY(float y);                     // 0x009E1E40
 
 struct C2DBoxF {
@@ -113,7 +113,7 @@ void CRenderManager2D::AddText(const C3DVector& position, float scale, const CWi
     info.Window = GetViewportBoxFloat();
     info.Line = false;
     info.IsText = true;
-    info.StringX = GFAXToVX(position.X);
+    info.StringX = GFAXToVX_009e1e10(position.X);
     info.StringY = GFAYToVY(position.Y);
     info.StringZ = position.Z;
     info.String = text;
@@ -142,7 +142,7 @@ void CQuickDrawTriInfoVector::_M_insert_overflow(CQuickDrawTriInfo* position, co
     ++g_overflow; memcpy(&g_overflowValue, &value, sizeof(value)); g_overflowAtEnd = atEnd; g_overflowCount = count;
     CHECK(position == _M_finish);
 }
-float __fastcall GFAXToVX(float x) { return x * 2.0f; }
+float __fastcall GFAXToVX_009e1e10(float x) { return x * 2.0f; }
 float __fastcall GFAYToVY(float y) { return y * 3.0f; }
 static C2DBoxF g_box = { 1, 2, 3, 4 };
 const C2DBoxF& CRenderManager2D::GetViewportBoxFloat() const { return g_box; }

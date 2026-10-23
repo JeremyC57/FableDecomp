@@ -78,7 +78,7 @@ struct CTCBase {
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     CPlayerManager*     GetPlayerManager();             // 0x00686D40
-    CWorld*             GetWorld();                     // 0x00686D60
+    CWorld*             GetWorld_00686d60();                     // 0x00686D60
     CThingSearchTools*  GetThingSearchTools() const;    // 0x00686D90
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
@@ -92,7 +92,7 @@ struct CTCKraken : CTCBase {
 
 void CTCKraken::GetCentreMarker()
 {
-    if (GetWorld()->IsLoading())
+    if (GetWorld_00686d60()->IsLoading())
         return;
     CDefinitionManager* definitions = GetDefinitionManager();
     long chamberIndex = definitions->GetDefGlobalIndexFromName("BUILDING_KRAKEN_CHAMBER");

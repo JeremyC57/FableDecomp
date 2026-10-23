@@ -40,7 +40,7 @@ template<class T> struct CCountedPointer {
             delete m_pCount;
         }
     }
-    void Reset(T* object);                              // 0x00668D90
+    void Reset_00668d90(T* object);                              // 0x00668D90
     T* operator->() const { return m_pObject; }
     T* Get() const { return m_pObject; }
 };
@@ -112,9 +112,9 @@ bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action)
         if (action.HasPrecedingAction()) {
             CCreatureActionBase* preceding = 0;
             action.GetPrecedingAction(&preceding);
-            PCurrentAction.Reset(preceding);
+            PCurrentAction.Reset_00668d90(preceding);
         } else {
-            PCurrentAction.Reset(action.Clone());
+            PCurrentAction.Reset_00668d90(action.Clone());
         }
         CCountedPointer<CCreatureActionBase> newAction = PCurrentAction;
         if (oldAction.Get())

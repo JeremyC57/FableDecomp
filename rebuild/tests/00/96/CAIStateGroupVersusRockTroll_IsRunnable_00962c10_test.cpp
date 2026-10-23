@@ -99,7 +99,7 @@ struct CDefPointer {
 };
 static CAbilityDef* g_ability = 0; static int g_getSubDef = 0;
 struct CDefClassBase {
-    bool GetSubDef(CDefPointer<CAbilityDef>* out)
+    bool GetSubDef_00485815(CDefPointer<CAbilityDef>* out)
     {
         ++g_getSubDef;
         if (!g_ability) return false;
@@ -127,7 +127,7 @@ bool CAIStateGroup_VersusRockTroll::IsRunnable()
     CThing* enemy = tracker->GetEnemy();
     CDefPointer<CAbilityDef> holder;
     if (enemy && !(enemy->m_flags91 & 1)) {
-        bool found = GetThingDef(enemy)->GetSubDef(&holder);
+        bool found = GetThingDef(enemy)->GetSubDef_00485815(&holder);
         CAbilityDef* ability = holder.Object;
         if (found && (ability->AbilityType == 0x10000 || ability->AbilityType == 0x8000)) {
             unsigned long* seed = GetPWorld()->GetPRandomSeed();

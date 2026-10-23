@@ -9,7 +9,7 @@ void __fastcall DestructFirstMember(void* member)
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall DestructSecondMember(void* member)
+void __fastcall DestructSecondMember_007b9830(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
@@ -25,7 +25,7 @@ void __cdecl OperatorDelete(void*)
 void* __fastcall CTCTavernBar_CompositeScalarDeletingDestructor(void* bar, int, unsigned int flags)
 {
     DestructFirstMember(static_cast<unsigned char*>(bar) + 24);
-    DestructSecondMember(static_cast<unsigned char*>(bar) + 12);
+    DestructSecondMember_007b9830(static_cast<unsigned char*>(bar) + 12);
     CTCTavernBar_Destruct(bar);
     if (flags & 1)
         OperatorDelete(bar);

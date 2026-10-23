@@ -11,7 +11,7 @@ struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s)
 enum ECombatAnimationHandedness { COMBAT_ANIM_LEFT_HANDED = 0, COMBAT_ANIM_RIGHT_HANDED = 1 };
 struct CThingCreatureBase {
     C3DVector pos, facing; int hand;
-    const C3DVector& GetPosition() const { return pos; }
+    const C3DVector& GetPosition_004c73d0() const { return pos; }
     C3DVector GetFacing() const { return facing; }
     void SetLastActionHandedness(ECombatAnimationHandedness h) { hand = h; }
 };
@@ -22,7 +22,7 @@ struct CCreatureAction_BodgeSideStrike {
     void Initialise()
     {
         CThingCreatureBase* target = Target.GetPItem();
-        C3DVector delta = target->GetPosition() - Owner.GetPItem()->GetPosition();
+        C3DVector delta = target->GetPosition_004c73d0() - Owner.GetPItem()->GetPosition_004c73d0();
         C3DVector facing = Owner.GetPItem()->GetFacing();
         facing.Z = 0.0f;
         float side = delta.X * facing.Y - delta.Y * facing.X;

@@ -51,9 +51,9 @@ struct CCreatureAction_PlayAnimation : CCreatureActionBase {
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
-struct CCreatureAction_PutDownTankard : CCreatureAction_PlayAnimation {
+namespace N_0096c820 { struct CCreatureAction_PutDownTankard : CCreatureAction_PlayAnimation {
     CCreatureAction_PutDownTankard(CThingCreatureBase* creature);           // 0x0096C820
-};
+}; } using N_0096c820::CCreatureAction_PutDownTankard;
 struct CAIBrain {
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                      // +0x18

@@ -109,7 +109,7 @@ struct CTCPerceiveThing {
                 UpdateDrawPerceivers();
         }
     }
-    void SetAsDirectlyAwareOfPerceivedThing();  // 0x00744730
+    void SetAsDirectlyAwareOfPerceivedThing_00744730();  // 0x00744730
     void UpdateSmell();                         // 0x00744B50
     void UpdateHearing();                       // 0x00744FB0
     void UpdateLineOfSight();                   // 0x00745120
@@ -139,7 +139,7 @@ void CTCPerceiveThing::UpdatePerception()
     UpdateHearing();
     bool perceived = LineOfSight || Smelt;
     if (perceived) {
-        SetAsDirectlyAwareOfPerceivedThing();
+        SetAsDirectlyAwareOfPerceivedThing_00744730();
     } else if (AwarenessTimer > g_epsilon_0129ba3c) {
         float frameTime = GetGameSubsystem()->GetSecondsPerFrame();
         GetAwarenessTimer() -= frameTime * 4.0f;

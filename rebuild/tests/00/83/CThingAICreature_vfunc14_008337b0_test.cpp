@@ -1,7 +1,7 @@
 // Behaviour test for CThingAICreature::vfunc_14 @ 0x008337B0: resuming -> summon-spell component resumed (if present); else sounds restarted.
 #include <cstdio>
 struct CTCBase { int dummy; };
-struct CTCSummonSpell : CTCBase { int resumed; CTCSummonSpell() : resumed(0) { } void ResumeForCutscene() { ++resumed; } };
+struct CTCSummonSpell : CTCBase { int resumed; CTCSummonSpell() : resumed(0) { } void ResumeForCutscene_0066aeb0() { ++resumed; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
@@ -30,7 +30,7 @@ struct CThingAICreature {
         if (resuming) {
             CTCSummonSpell* summon;
             if (GetInterface(&summon, 0x10))
-                summon->ResumeForCutscene();
+                summon->ResumeForCutscene_0066aeb0();
         } else {
             PlayCreatureContinuousSounds();
         }

@@ -10,7 +10,7 @@
 struct CTCBase;
 
 struct CTCSummonSpell {
-    void ResumeForCutscene();                        // 0x0066AEB0
+    void ResumeForCutscene_0066aeb0();                        // 0x0066AEB0
 };
 
 struct CInterfaceMap {                               // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
@@ -53,7 +53,7 @@ void CThingAICreature::vfunc_14(bool resuming)
     if (resuming) {
         CTCSummonSpell* summon;
         if (GetInterface(&summon, 0x10))
-            summon->ResumeForCutscene();
+            summon->ResumeForCutscene_0066aeb0();
     } else {
         PlayCreatureContinuousSounds();
     }

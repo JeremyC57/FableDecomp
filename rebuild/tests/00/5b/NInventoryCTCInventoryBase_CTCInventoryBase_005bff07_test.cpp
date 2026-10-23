@@ -50,7 +50,7 @@ struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80
     CGraphicBankParams();
 };
 struct CDisplayManager {
-    bool GetBestCompressedAlphaTextureFormat(unsigned long bits, CPixelFormat* out);    // 0x009BE830
+    bool GetBestCompressedAlphaTextureFormat_009be830(unsigned long bits, CPixelFormat* out);    // 0x009BE830
     bool GetBestCompressedAlphaTextureFormat2(unsigned long bits, CPixelFormat* out);   // 0x009BE870
     bool GetBestCompressedAlphaTextureFormat3(unsigned long bits, CPixelFormat* out);   // 0x009BE8B0
     bool GetBestAlphaTextureFormat(unsigned long bits, CPixelFormat* out);              // 0x009BE6C0
@@ -177,7 +177,7 @@ CTCInventoryBase::CTCInventoryBase(CThing& thing)
       ParentMapNumber(0)
 {
     CGraphicBankParams params;
-    g_pDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, &params.CompressedAlpha);
+    g_pDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
     g_pDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
     g_pDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
     g_pDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);
@@ -205,7 +205,7 @@ CTCBase::CTCBase(CThing* parent) : ParentThing(parent), ToBeRemoved(false), IsIn
 CTCBase::~CTCBase() { }
 void CTCBase::AddToGlobalUpdateTCs() { g_added++; IsInGlobalUpdateTCs = true; }
 CGraphicBankParams::CGraphicBankParams() { std::memset(this, 0x55, sizeof(*this)); Flag1c = true; Flag28 = true; }
-bool CDisplayManager::GetBestCompressedAlphaTextureFormat(unsigned long bits, CPixelFormat* out) { out->Format = 100 + bits; g_log[g_n++] = 1; return true; }
+bool CDisplayManager::GetBestCompressedAlphaTextureFormat_009be830(unsigned long bits, CPixelFormat* out) { out->Format = 100 + bits; g_log[g_n++] = 1; return true; }
 bool CDisplayManager::GetBestCompressedAlphaTextureFormat2(unsigned long bits, CPixelFormat* out) { out->Format = 200 + bits; g_log[g_n++] = 2; return true; }
 bool CDisplayManager::GetBestCompressedAlphaTextureFormat3(unsigned long bits, CPixelFormat* out) { out->Format = 300 + bits; g_log[g_n++] = 3; return true; }
 bool CDisplayManager::GetBestAlphaTextureFormat(unsigned long bits, CPixelFormat* out) { out->Format = 400 + bits; g_log[g_n++] = 4; return true; }

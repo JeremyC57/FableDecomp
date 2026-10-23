@@ -53,18 +53,18 @@ CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
 struct CFont;
 struct CGraphicDataBank;
-template <class T> class CCountedPointer {
+template <class T> class CCountedPointer_0042fe34 {
 public:
     T*    m_pObject;
     void* m_pCount;
-    CCountedPointer<T>& operator=(const CCountedPointer<T>& other);   // 0x0042FE34 (CFont) / 0x004194BA (CGraphicDataBank)
-    ~CCountedPointer();                            // 0x004057A0 (CFont) / 0x00419108 (CGraphicDataBank)
+    CCountedPointer_0042fe34<T>& operator=(const CCountedPointer_0042fe34<T>& other);   // 0x0042FE34 (CFont) / 0x004194BA (CGraphicDataBank)
+    ~CCountedPointer_0042fe34();                            // 0x004057A0 (CFont) / 0x00419108 (CGraphicDataBank)
 };
 struct CFontBank {
-    CCountedPointer<CFont> GetFont(const CCharString& name);   // 0x009E2C80
+    CCountedPointer_0042fe34<CFont> GetFont(const CCharString& name);   // 0x009E2C80
 };
 struct CGraphicDataBankManager {
-    CCountedPointer<CGraphicDataBank> CreateAndInitialize(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0
+    CCountedPointer_0042fe34<CGraphicDataBank> CreateAndInitialize(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0
 };
 extern CFontBank* g_pFontBank;                     // 0x013B838C
 extern CGraphicDataBankManager* g_pGraphicDataBankManager;   // 0x013B837C
@@ -72,9 +72,9 @@ extern CCharString g_FrontEndMenuFontName;         // 0x013B875C
 
 struct CNewFrontendGameComponent {
     unsigned char                     _pad00[0x10];
-    CCountedPointer<CFont>            m_pMenuFont;              // +0x10
+    CCountedPointer_0042fe34<CFont>            m_pMenuFont;              // +0x10
     unsigned char                     _pad18[0x40 - 0x18];
-    CCountedPointer<CGraphicDataBank> m_pFrontEndGraphicBank;   // +0x40
+    CCountedPointer_0042fe34<CGraphicDataBank> m_pFrontEndGraphicBank;   // +0x40
     bool InitialiseGraphics();
 };
 

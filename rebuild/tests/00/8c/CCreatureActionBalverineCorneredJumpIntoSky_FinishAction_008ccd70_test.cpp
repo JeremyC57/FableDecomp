@@ -210,10 +210,10 @@ struct CCombatActionBase : CCreatureActionBase {
 struct CCreatureAction_BalverineDropInFromSky : CCombatActionBase {
     CCreatureAction_BalverineDropInFromSky(CThingCreatureBase* owner) { m_kind = KIND_DROPIN; m_owner = owner; }
 };
-struct CCreatureAction_BalverineLungeAttack : CCreatureAction_BalverineDropInFromSky {
+namespace N_008ccc10 { struct CCreatureAction_BalverineLungeAttack : CCreatureAction_BalverineDropInFromSky {
     CCreatureAction_BalverineLungeAttack(CThingCreatureBase* owner, CThing* target)
         : CCreatureAction_BalverineDropInFromSky(owner) { m_kind = KIND_LUNGE; m_target = target; }
-};
+}; } using N_008ccc10::CCreatureAction_BalverineLungeAttack;
 struct CCreatureAction_BalverineCorneredJumpIntoSky : CCombatActionBase {
     C3DVector* EndPos;
     virtual void FinishAction();

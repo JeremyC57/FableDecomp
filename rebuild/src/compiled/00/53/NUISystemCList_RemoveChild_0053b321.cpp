@@ -97,13 +97,13 @@ public:
 namespace NUISystem {
 class CActionParam;
 enum EActionType { ACTION_NONE };
-class CAction {                                      // 8 bytes
+namespace N_0042bed4 { class CAction {                                      // 8 bytes
 public:
     EActionType              ActionType;             // +0x00
     std::list<CActionParam*> UIActionParams;         // +0x04
     CAction();                                       // 0x0042BED4
     CAction(const CAction& other);                   // 0x0042CD84
-};
+}; } using N_0042bed4::CAction;
 struct CStateHolder {                                // the component's second base (+4)
     virtual void s00(); virtual void s01(); virtual void s02();
     virtual void AddState(long state);               // slot 3 (+0x0C)

@@ -128,7 +128,7 @@ struct CAIStateGroupBase {
     unsigned char _pad08[0x0c];
     CThingAICreature* GetCreature() const { return PBrain->Creature; }
     CPlayerManager* GetPPlayerManager() const;  // 0x008FCF90
-    CWorld* GetPWorld() const;                  // 0x008FCFA0
+    CWorld* GetPWorld_008fcfa0() const;                  // 0x008FCFA0
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
     void Terminate();                           // 0x008FCF40
     unsigned long Random(unsigned long range) const
@@ -155,7 +155,7 @@ struct CAIStateGroup_FireflyWander : CAIStateGroup_FlyingThingBase {
 
 void CAIStateGroup_FireflyWander::Update()
 {
-    if (!GetPWorld()->PEnvironment->IsDaytime()) {
+    if (!GetPWorld_008fcfa0()->PEnvironment->IsDaytime()) {
         C3DVector target = StartPos;
         CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroCreature();
         if (hero && !(hero->m_flags91 & 1)) {

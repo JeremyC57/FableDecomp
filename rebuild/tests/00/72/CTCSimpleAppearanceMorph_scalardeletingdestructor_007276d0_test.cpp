@@ -3,7 +3,7 @@ static int g_AutoTinyMemberDestructorCalls = 0;
 static int g_AutoTinyCompositeDestructorCalls = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
 static void* g_AutoTinyObservedMember = 0;
-void __fastcall DestructMember(void* member)
+void __fastcall DestructMember_0071ee70(void* member)
 {
     ++g_AutoTinyMemberDestructorCalls;
     g_AutoTinyObservedMember = member;
@@ -18,7 +18,7 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CTCSimpleAppearanceMorph_CompositeScalarDeletingDestructor(void* morph, int, unsigned int flags)
 {
-    DestructMember(static_cast<unsigned char*>(morph) + 12);
+    DestructMember_0071ee70(static_cast<unsigned char*>(morph) + 12);
     CTCSimpleAppearanceMorph_Destruct(morph);
     if (flags & 1)
         OperatorDelete(morph);

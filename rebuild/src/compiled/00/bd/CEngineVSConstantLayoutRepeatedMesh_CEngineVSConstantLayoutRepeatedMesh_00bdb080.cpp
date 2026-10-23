@@ -24,13 +24,13 @@ struct CShaderConstantRange : CBaseClass {         // vtable 0x0129A04C: a regis
     CShaderConstantRange(long firstRegister, long registerCount) : CBaseClass(), m_firstRegister(firstRegister), m_registerCount(registerCount) { }
 };
 
-struct CVertexShaderConstantLayout {               // retail 0x14c bytes
+namespace N_00bdbb70 { struct CVertexShaderConstantLayout {               // retail 0x14c bytes
     virtual void v00();
     unsigned char        _pad04[0xc];              // +0x04 Reserved
     CShaderConstantRange User;                     // +0x10
     unsigned char        _pad1c[0x14c - 0x1c];     // +0x1c the remaining ranges
     CVertexShaderConstantLayout();                 // 0x00BDBB70
-};
+}; } using N_00bdbb70::CVertexShaderConstantLayout;
 
 struct CEngineVSConstantLayoutRepeatedMesh : CVertexShaderConstantLayout {   // vtable 0x012A7CE4
     CShaderConstantRange LightingResults;          // +0x14c

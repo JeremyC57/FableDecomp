@@ -64,10 +64,10 @@ template <class T> struct _Vector_base {
 template <class T> struct CRetailVector : _Vector_base<T> {   // STLport vector<T>: three pointers (12 bytes in retail)
     CRetailVector() : _Vector_base<T>(allocator<T>()) { }
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                       // 0x0099A2D0
     virtual ~CBase();                              // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThingImp;
 struct CCPPointerInfo;
 struct CCountedPointer_CScriptThing {              // CScriptThing::PImp

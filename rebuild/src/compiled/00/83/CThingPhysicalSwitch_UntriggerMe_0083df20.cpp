@@ -35,13 +35,13 @@ template<class T> struct CDefPointer {
     }
 };
 struct CDefinitionManager {
-    bool GetDef(long globalIndex, CDefPointer<CThingPhysicalSwitchDef>* out);   // 0x0083E0D0
+    bool GetDef_0083e0d0(long globalIndex, CDefPointer<CThingPhysicalSwitchDef>* out);   // 0x0083E0D0
 };
 void* FindDef_CDefinitionManager_GetDef_0083e0d0();
 #pragma auto_inline(off)
 // Same-TU stand-in for GetDef<CThingPhysicalSwitchDef> 0x0083E0D0: writes the out slot only inline, so VC7.1 knows the
 // def pointer's address does not escape the call (retail's LTCG knowledge; the landed 0x0083C1E0 idiom).
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingPhysicalSwitchDef>* out)
+__declspec(noinline) bool CDefinitionManager::GetDef_0083e0d0(long globalIndex, CDefPointer<CThingPhysicalSwitchDef>* out)
 {
     void* def = FindDef_CDefinitionManager_GetDef_0083e0d0();
     if (!def)
@@ -124,7 +124,7 @@ public:
     const CThingPhysicalSwitchDef* GetSwitchDefPtr()
     {
         CDefPointer<CThingPhysicalSwitchDef> def;
-        GetDefinitionManager()->GetDef(DefGlobalIndex, &def);
+        GetDefinitionManager()->GetDef_0083e0d0(DefGlobalIndex, &def);
         return def.Object;
     }
     bool HasTC(long interfaceType) const

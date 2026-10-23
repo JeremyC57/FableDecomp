@@ -43,7 +43,7 @@ struct CTCBase {
     CThing* ParentThing;
     bool ToBeRemoved;
     bool IsInGlobalUpdateTCs;
-    CWorldMap* GetWorldMap() { return &g_map; }
+    CWorldMap* GetWorldMap_00686d30() { return &g_map; }
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }
 };
 struct CTCStealth : CTCBase {
@@ -59,7 +59,7 @@ void CTCStealth::UpdateViewability()
     if (Sneaking) {
         const C3DVector& position = ParentThing->GetPosition();
         long weight;
-        long theme = GetWorldMap()->GetStrongestEngineThemeAt(position, &weight);
+        long theme = GetWorldMap_00686d30()->GetStrongestEngineThemeAt(position, &weight);
         CDefPointer<const CEngineThemeDef> def;
         GetDefinitionManager()->GetDef(theme, &def);
         if (def.Object) {

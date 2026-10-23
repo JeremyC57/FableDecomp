@@ -2,8 +2,8 @@ struct AutoTinyThunkTarget
 {
     void Invoke();
 };
-extern AutoTinyThunkTarget g_AutoTinyThunkObject;
+extern AutoTinyThunkTarget g_AutoTinyThunkObject_013badfc;
 void __fastcall GlobalMethodTailThunk_01229b9e()
 {
-    g_AutoTinyThunkObject.Invoke();
+    g_AutoTinyThunkObject_013badfc.Invoke();
 }

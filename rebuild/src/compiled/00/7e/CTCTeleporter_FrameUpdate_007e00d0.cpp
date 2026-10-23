@@ -65,7 +65,7 @@ struct CThing {
     void Kill(bool immediately);                        // 0x004C9B80
 };
 struct CThingPlayerCreature : CThing { };
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x0043DBD0
+bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -93,7 +93,7 @@ struct CPlayer {
     CThingPlayerCreature* GetHeroThing() const;         // 0x00487DC0
 };
 struct CPlayerManager {
-    CPlayer* GetPlayer();                               // 0x00449960
+    CPlayer* GetPlayer_00449960();                               // 0x00449960
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 struct CWorld {
@@ -157,7 +157,7 @@ void CTCTeleporter::FrameUpdate()
         if (g_pPlayerGui->TutorialShowing || GetWorld()->Paused)
             return;
         WaitingForTutorialToFinish = false;
-        CThingPlayerCreature* hero = GetPlayerManager2()->GetPlayer()->GetHeroThing();
+        CThingPlayerCreature* hero = GetPlayerManager2()->GetPlayer_00449960()->GetHeroThing();
         if (hero && !(hero->m_flags & 1))
             StartTeleporting(hero);
         return;
@@ -181,7 +181,7 @@ void CTCTeleporter::FrameUpdate()
         return;
     if (GetWorld()->TeleportingEnabled) {
     CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
-    if (IS_THING_ALIVE(hero)) {
+    if (IS_THING_ALIVE_0043dbd0(hero)) {
         const C3DVector& myPos = ParentThing->GetPosition();
         const C3DVector& heroPos = hero->GetPosition();
         float dx = heroPos.X - myPos.X;

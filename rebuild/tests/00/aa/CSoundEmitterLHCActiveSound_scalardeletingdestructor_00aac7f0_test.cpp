@@ -3,7 +3,7 @@ static int g_AutoTinyMemberDestructorCalls = 0;
 static int g_AutoTinyCompositeDestructorCalls = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
 static void* g_AutoTinyObservedMember = 0;
-void __fastcall DestructMember(void* member)
+void __fastcall DestructMember_0099eae0(void* member)
 {
     ++g_AutoTinyMemberDestructorCalls;
     g_AutoTinyObservedMember = member;
@@ -18,7 +18,7 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CActiveSound_CompositeScalarDeletingDestructor(void* sound, int, unsigned int flags)
 {
-    DestructMember(static_cast<unsigned char*>(sound) + 28);
+    DestructMember_0099eae0(static_cast<unsigned char*>(sound) + 28);
     CActiveSound_Destruct(sound);
     if (flags & 1)
         OperatorDelete(sound);

@@ -128,11 +128,11 @@ struct CIsThingAlive : NScript::CPredicateBase {            // vtable 0x012C32F0
     ~CIsThingAlive();                                       // 0x00E241B0
     virtual bool IsTrue();
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+namespace N_0099a380 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+}; } using N_0099a380::CBaseIntelligentPointer;
 struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
 };

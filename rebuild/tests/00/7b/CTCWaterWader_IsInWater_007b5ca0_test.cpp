@@ -98,14 +98,14 @@ struct CWorldMap {
 struct CTCBase {
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
-    CWorld* GetWorld() const;                               // 0x00686A70
+    CWorld* GetWorld_00686a70() const;                               // 0x00686A70
     CWorldMap* GetWorldMap() const;                         // 0x00686D20
 };
 struct CTCWaterWader : CTCBase {
     void IsInWater(bool& inWater, bool& deep, float& waterHeight) const;
     __forceinline float GetDistanceSquaredFromReferencePoint() const
     {
-        CWorld* world = GetWorld();
+        CWorld* world = GetWorld_00686a70();
         const CThing* parent = ParentThing;
         return (parent->GetPosition() - world->GetReferencePoint()).GetLengthSquared();
     }
@@ -116,7 +116,7 @@ void CTCWaterWader::IsInWater(bool& inWater, bool& deep, float& waterHeight) con
     inWater = false;
     deep = false;
     waterHeight = 0.0f;
-    if (!GetWorld()->GetModeObject()->IsAlwaysChecking())
+    if (!GetWorld_00686a70()->GetModeObject()->IsAlwaysChecking())
     {
         if (GetDistanceSquaredFromReferencePoint() > 400.0f)
             return;
@@ -163,7 +163,7 @@ float CWorldMap::GetGroundSizeZAt(const C3DVector&) const { return g_ground; }
 static CWorldModeObject g_mode;
 static CWorld g_world;
 static CWorldMap g_map;
-CWorld* CTCBase::GetWorld() const { return &g_world; }
+CWorld* CTCBase::GetWorld_00686a70() const { return &g_world; }
 CWorldMap* CTCBase::GetWorldMap() const { return &g_map; }
 void CTCBase::v00() {}
 static int g_tc31;

@@ -77,10 +77,10 @@ struct CScriptThingImp {
     virtual void i076() const {} virtual void i077() const {}
     virtual bool IsEqualTo(const CScriptThingImp* other) const;         // slot 78 (+0x138)
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThing : CBase {
     virtual void s001() const {} virtual void s002() const {} virtual void s003() const {} virtual void s004() const {} virtual void s005() const {} virtual void s006() const {}
     virtual void s007() const {} virtual void s008() const {} virtual void s009() const {} virtual void s010() const {} virtual void s011() const {} virtual void s012() const {}

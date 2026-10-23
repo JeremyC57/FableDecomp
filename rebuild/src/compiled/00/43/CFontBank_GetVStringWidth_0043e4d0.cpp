@@ -20,7 +20,7 @@ public:
     C2DExtentsF(float width, float height) : Width(width), Height(height) {}
 };
 float __fastcall GFAXToVX(float x);                      // 0x009E1DA0
-float __fastcall GFAYToVY(float y);                      // 0x009E1DD0
+float __fastcall GFAYToVY_009e1dd0(float y);                      // 0x009E1DD0
 class CFontManager;
 class CFontBank {
 public:
@@ -33,7 +33,7 @@ public:
     {
         C2DExtentsF extents = GetStringExtents(text, false);
         extents.Width = GFAXToVX(extents.Width);
-        return C2DExtentsF(extents.Width, GFAYToVY(extents.Height));
+        return C2DExtentsF(extents.Width, GFAYToVY_009e1dd0(extents.Height));
     }
     float GetVStringWidth(const CWideString& text) const;
 };

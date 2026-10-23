@@ -24,7 +24,7 @@ bool __fastcall PathExists(const CWideString& path);        // 0x00999230
 bool __fastcall IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0
 CWideString __fastcall GetValidProfileName(const CWideString& name);   // 0x00406350
 namespace NResourceDirectoryNames {
-CWideString __fastcall GetSaveDir();                        // 0x0041A650
+CWideString __fastcall GetSaveDir_0041a650();                        // 0x0041A650
 CWideString __fastcall GetCustomTattooDir();                // 0x0041A6A0
 }
 struct CCharStringData;
@@ -69,7 +69,7 @@ struct CTattooDef {
 bool CTattooDef::CopyCustomTattooToUserDir() const
 {
     CUserProfileManager* profiles = CUserProfileManager::Get();
-    CWideString destination = NResourceDirectoryNames::GetSaveDir() + GetValidProfileName(profiles->ProfileName) + L"\\" + CustomFileName.ToWideString();
+    CWideString destination = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\" + CustomFileName.ToWideString();
     if (PathExists(destination))
         return true;
     CWideString source = NResourceDirectoryNames::GetCustomTattooDir() + CustomFileNameBase.ToWideString();

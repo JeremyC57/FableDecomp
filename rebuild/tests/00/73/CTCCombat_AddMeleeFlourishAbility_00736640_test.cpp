@@ -12,7 +12,7 @@ struct CDefPointer {
 };
 static CMeleeCombatAbilityDef g_def; static bool g_found = true; static int g_getDef = 0; static long g_getDefIndex = 0;
 struct CDefinitionManager {
-    bool GetDef(long defIndex, CDefPointer* def) { ++g_getDef; g_getDefIndex = defIndex; if (!g_found) return false; def->Object = &g_def; ++g_def.RefCount; return true; }
+    bool GetDef_00737f80(long defIndex, CDefPointer* def) { ++g_getDef; g_getDefIndex = defIndex; if (!g_found) return false; def->Object = &g_def; ++g_def.RefCount; return true; }
 };
 struct __false_type { __false_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -41,7 +41,7 @@ struct CTCCombat {
 void CTCCombat::AddMeleeFlourishAbility(long defIndex)
 {
     CDefPointer def;
-    GetDefinitionManager()->GetDef(defIndex, &def);
+    GetDefinitionManager()->GetDef_00737f80(defIndex, &def);
     CMeleeCombatAbilityDef* object = def.Object;
     AbilityList.push_back(def);
     UpdateUsableMeleeCombatAbilities();

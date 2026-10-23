@@ -127,7 +127,7 @@ struct CAIStateGroupBase {
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF80
+    CPlayerManager* GetPPlayerManager_008fcf80();        // 0x008FCF80
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
@@ -143,7 +143,7 @@ struct CAIStateGroup_PerformAction : CAIStateGroup_ScriptingBase {
 
 void CAIStateGroup_PerformAction::Update()
 {
-    CThingCreatureBase* hero = GetPPlayerManager()->GetPMainPlayer()->GetHeroCreature();
+    CThingCreatureBase* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetHeroCreature();
     CThingCreatureBase* creature = GetCreature();
     CTCPerceiveThing* perceive;
     static_cast<const CThing*>(creature)->GetInterface(&perceive, 0x34);

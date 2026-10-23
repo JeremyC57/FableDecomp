@@ -61,7 +61,7 @@ struct CThing {
     unsigned char _pad1[0xf4 - 0x4c];
     CBaseIntelligentPointer LastAttacker;       // +0xf4 (CThingCreatureBase)
     const C3DVector& GetPosition();             // 0x004C73D0
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
     bool TestTC(long interfaceType) const
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
@@ -126,7 +126,7 @@ void CAIStateGroup_ChickenPanic::Update()
         CThing* chicken = PBrain->PCreature;
         chicken->GetInterfaceT(&navigation, 7);
         C3DVector fleePos;
-        if (navigation->GetNearestFleePosition(((const CThing*)chicken->LastAttacker.GetPItem())->GetPosition(), 8.0f, &fleePos)) {
+        if (navigation->GetNearestFleePosition(((const CThing*)chicken->LastAttacker.GetPItem())->GetPosition_006a4d00(), 8.0f, &fleePos)) {
             bool reached = false;
             AIAction_MoveToPosProximity(1, fleePos, 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
         }

@@ -37,8 +37,8 @@ template <class T> struct CCountedPointer {
     }
 };
 struct CGraphicDataBank;
-float GFAXToVX(float x) { return x * 2.0f; }
-float GFAYToVY(float y) { return y * 4.0f; }
+float GFAXToVX_009e1da0(float x) { return x * 2.0f; }
+float GFAYToVY_009e1dd0(float y) { return y * 4.0f; }
 struct CRenderManager2D {
     C2DBoxF got; CGraphicDataBank* gotBank; unsigned long gotGraphic; long refsDuring;
     bool Draw2DScaledGraphic(const C2DBoxF& box, CGraphicDataBank* bank, unsigned long graphic,
@@ -77,10 +77,10 @@ void CSprite::DrawWithRenderManager()
     box.BRY = pos.Y + dim.Y;
     if (IsCentred())
         box.MoveTo(C2DVector(pos.X - dim.X * 0.5f, pos.Y - dim.Y * 0.5f));
-    box.TLX = GFAXToVX(box.TLX);
-    box.TLY = GFAYToVY(box.TLY);
-    box.BRX = GFAXToVX(box.BRX);
-    box.BRY = GFAYToVY(box.BRY);
+    box.TLX = GFAXToVX_009e1da0(box.TLX);
+    box.TLY = GFAYToVY_009e1dd0(box.TLY);
+    box.BRX = GFAXToVX_009e1da0(box.BRX);
+    box.BRY = GFAYToVY_009e1dd0(box.BRY);
     CCountedPointer<CGraphicDataBank> bank = CFrontEndManager::GetInstance()->PGraphicBank;
     CSystemManager* system = GFGetSystemManager();
     system->RenderManager->RenderManager2D->Draw2DScaledGraphic(box, bank.Data, GraphicIndex, 0, 0);

@@ -28,12 +28,12 @@ struct CScriptThing {                                  // 12 bytes, vtable 0x012
     virtual void SetActivationTriggerStatus(bool on);  // slot 69 (+0x114), 0x004AB0A0
 };
 
-struct CIsThingAlive {                                 // vtable 0x012C2FE8: a predicate holding a script thing
+namespace N_00ef7ab0 { struct CIsThingAlive {                                 // vtable 0x012C2FE8: a predicate holding a script thing
     virtual void v00();
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00EF7AB0
-};
+}; } using N_00ef7ab0::CIsThingAlive;
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 struct CGameScriptInterface {

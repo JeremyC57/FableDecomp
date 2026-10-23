@@ -24,7 +24,7 @@ public:
 template <class T>
 class CPersistTraits {
 public:
-    void TransferBinaryIn(CDataInputStream* stream, T& value);   // 0x004DDF0C for T = CDefIndex
+    void TransferBinaryIn_004ddf0c(CDataInputStream* stream, T& value);   // 0x004DDF0C for T = CDefIndex
 };
 
 class CPersistContext_TransferableObjectBase {
@@ -73,7 +73,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
     }
     case 2: {
         CPersistTraits<T> traits;
-        traits.TransferBinaryIn(LoadStream, value);
+        traits.TransferBinaryIn_004ddf0c(LoadStream, value);
         break;
     }
     case 3:

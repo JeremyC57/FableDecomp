@@ -75,7 +75,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDe
 struct CThing;
 struct CTCBase;
 struct CTCTrophy {
-    void OnShownByCreature(CThing* creature);   // 0x006DE8C0
+    void OnShownByCreature_006de8c0(CThing* creature);   // 0x006DE8C0
 };
 struct CTCDParticleEmitter {
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
@@ -182,6 +182,6 @@ void CCreatureAction_ShowTrophy::PerformAction()
                     emitter->AttachToThing(GetCreature(), 10, g_RightHandAttachmentName, 0, 0.0f);
             }
         }
-        GetTrophy()->OnShownByCreature(GetCreature());
+        GetTrophy()->OnShownByCreature_006de8c0(GetCreature());
     }
 }

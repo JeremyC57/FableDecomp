@@ -354,7 +354,7 @@ struct CManagedTexture : CBaseNative {
  long Sizeof(); //00a69e60
 };
 struct CResourceNative : CResource {CResourceNative();void SetResourceSize(unsigned long);}; //009fbec0,009fbf20
-struct CResourceBank {void* Vtable;CResourceList ResourceList;void AddResource(CResource*);}; //009fc380
+struct CResourceBank {void* Vtable;CResourceList ResourceList;void AddResource_009fc380(CResource*);}; //009fc380
 struct CGraphicDataBank {unsigned char Base[0x164];CResourceBank Resources;};
 struct CGraphicHeader {unsigned char Data[0x1c];};
 struct CGraphicInfo {CGraphicHeader Header;long TextureType;CGraphicDataBank* Bank;long Index;void* Frames;};
@@ -374,7 +374,7 @@ CFrameData::CFrameData(CGraphicInfoFrame* frame):Frame(this) {
  CurrentMipmapLevel=-1;TouchedMipmapLevel=127;
  TouchedFrame=frame->GraphicInfo->Bank->Resources.ResourceList.CurrentFrame-1;
  SetResourceSize(Sizeof());
- frame->GraphicInfo->Bank->Resources.AddResource(this);
+ frame->GraphicInfo->Bank->Resources.AddResource_009fc380(this);
 }
 
 #include <stdio.h>
@@ -398,7 +398,7 @@ CBaseNative::CBaseNative(){++baseCalls;Vtable=0;}
 CResourceNative::CResourceNative(){++resourceCalls;ResourceList=0;PrevResource=0;NextResource=0;ResourceSize=0;LastUsedFrame=0;}
 static CGraphicInfo* redirectGraphic;static CGraphicDataBank* redirectBank;
 void CResourceNative::SetResourceSize(unsigned long n){++sizeCalls;sizeSeen=n;ResourceSize=n;if(redirectGraphic)redirectGraphic->Bank=redirectBank;}
-void CResourceBank::AddResource(CResource* p){++added;addedResource=p;bankSeen=this;}
+void CResourceBank::AddResource_009fc380(CResource* p){++added;addedResource=p;bankSeen=this;}
 long CGraphicFrameData::Sizeof(){return 100;}
 long CManagedTexture::Sizeof(){return 80;}
 #define CHECK(x) do {if(!(x)){printf("009fe380_TEST FAIL line %d\n",__LINE__);return 1;}}while(0)

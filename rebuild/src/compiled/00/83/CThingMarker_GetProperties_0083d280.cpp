@@ -24,13 +24,13 @@ struct CDefPointer {
     CThingMarkerDef* operator->() const { return m_p; }
 };
 struct CDefinitionManager {
-    bool GetDef(long globalIndex, CDefPointer& out);   // 0x0083D630
+    bool GetDef_0083d630(long globalIndex, CDefPointer& out);   // 0x0083D630
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer& out)
+__declspec(noinline) bool CDefinitionManager::GetDef_0083d630(long globalIndex, CDefPointer& out)
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -49,7 +49,7 @@ struct CThingMarker : CThing {
     __forceinline CDefPointer GetMarkerDef()
     {
         CDefPointer def;
-        GetDefinitionManager()->GetDef(DefGlobalIndex, def);
+        GetDefinitionManager()->GetDef_0083d630(DefGlobalIndex, def);
         return def;
     }
     virtual unsigned long GetProperties();

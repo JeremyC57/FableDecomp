@@ -23,11 +23,11 @@ struct CGameScriptInterface_Calls {
     CScriptThing& GetHero() { return g_hero; }
     void Pause(float s) const { if (s == 10.0f) { Log('P'); ++g_paused; } }
 };
-struct CIsThingAlive {
+namespace N_00ef7ab0 { struct CIsThingAlive {
     CScriptThing m_thing;
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { ++g_filters; }
     ~CIsThingAlive() { --g_filters; }
-};
+}; } using N_00ef7ab0::CIsThingAlive;
 static bool FoundMessageIsThingHitBy(CScriptThing* thing, CScriptThing* hitter) { return thing->MsgIsHitBy(hitter->GetName()); }
 struct CHitSwitch {
     CGameScriptInterface_Calls* Game;

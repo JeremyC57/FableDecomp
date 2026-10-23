@@ -75,13 +75,13 @@ public:
     }
     CPlayer& GetPlayer();                               // 0x004C7A30
 };
-class CCreatureActionBase {
+namespace N_0062e900 { class CCreatureActionBase {
 public:
     virtual ~CCreatureActionBase();                     // 0x0062E900
     unsigned char _pad04[0x2c - 0x04];
     CIntelligentPointer<const CThing> PLookAtThing;     // +0x2C
     unsigned char _pad34[0x114 - 0x34];
-};
+}; } using N_0062e900::CCreatureActionBase;
 class CCreatureAction_FinishFireballSpell : public CCreatureActionBase {
 public:
     CCreatureAction_FinishFireballSpell(class CThingCreatureBase& creature, CThing& target);   // 0x008BCE50

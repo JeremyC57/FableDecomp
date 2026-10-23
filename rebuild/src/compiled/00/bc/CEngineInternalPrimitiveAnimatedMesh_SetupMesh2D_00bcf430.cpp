@@ -40,7 +40,7 @@ struct CEngine {
     unsigned char _pad[0x88];
     long          CurrentRenderFrame;                  // +0x88 (retail)
 };
-extern CEngine* g_pEngine;                             // 0x01436EA4
+extern CEngine* g_pEngine_01436ea4;                             // 0x01436EA4
 
 struct CEngineRenderInfoAnimatedMesh {                 // retail +0xe0 in the primitive
     void*           Lights;                            // +0x00
@@ -62,7 +62,7 @@ struct CEngineInternalPrimitiveAnimatedMesh {
 
 bool CEngineInternalPrimitiveAnimatedMesh::SetupMesh2D()
 {
-    long frame = g_pEngine->CurrentRenderFrame;
+    long frame = g_pEngine_01436ea4->CurrentRenderFrame;
     if (RenderInfo.Mesh && RenderInfo.RenderFrame == frame)
         return true;
     CCountedPointer<const C3DMesh2> mesh;

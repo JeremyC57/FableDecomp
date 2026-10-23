@@ -85,10 +85,10 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
         this->_M_header->_M_right = this->_M_header;
     }
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                       // 0x0099A2D0
     virtual ~CBase();                              // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThingImp;
 struct CCPPointerInfo;
 struct CCountedPointer_CScriptThing {              // CScriptThing::PImp

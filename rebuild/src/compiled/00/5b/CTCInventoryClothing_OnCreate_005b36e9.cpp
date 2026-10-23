@@ -82,7 +82,7 @@ struct CThing {
         return false;
     }
 };
-CThing* __fastcall CreateThing(long defIndex, const C3DVector& position);   // 0x007FF7D0
+CThing* __fastcall CreateThing_007ff7d0(long defIndex, const C3DVector& position);   // 0x007FF7D0
 // Stand-in for CThing::GetPosition() const @ 0x004C73D0 (the retail body; same TU so the caller sees it writes nothing).
 #pragma auto_inline(off)
 __declspec(noinline) const C3DVector& CThing::GetPosition() const
@@ -234,7 +234,7 @@ void CTCInventoryClothing::OnCreate()
     const CLongVector& startingItems = GetStartingItems();
     for (unsigned long i = 0; i < startingItems.size(); ++i) {
         const C3DVector& pos = ParentThing->GetPosition();
-        CThing* thing = CreateThing(startingItems._M_start[i], pos);
+        CThing* thing = CreateThing_007ff7d0(startingItems._M_start[i], pos);
         if (thing) {
             CTCInventoryItem* item;
             if (thing->GetInterface(&item, 0x1a)) {

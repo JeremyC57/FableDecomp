@@ -56,7 +56,7 @@ struct CMessageEventFilter_CanBeSeenOrHeard {      // "newer than the recorded i
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CWarningFilter;
 
 struct CMessageEventManager {
-    CMessageEvent* FindMostRecentMessage(const CWarningFilter& filter);   // 0x00939CB0
+    CMessageEvent* FindMostRecentMessage_00939cb0(const CWarningFilter& filter);   // 0x00939CB0
 };
 
 struct CWorld {
@@ -80,7 +80,7 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::CheckForOtherGuardsNewWarning()
 {
-    CMessageEvent* event = GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage(
+    CMessageEvent* event = GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage_00939cb0(
         CMessageEventFilter_IsOfType(0x1b) && CMessageEventFilter_CanBeSeenOrHeard(m_lastWarningId));
     if (event) {
         m_lastWarningId = event->m_id;

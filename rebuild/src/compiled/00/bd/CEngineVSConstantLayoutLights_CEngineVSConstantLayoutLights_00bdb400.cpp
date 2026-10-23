@@ -26,7 +26,7 @@ struct CShaderConstantRange : CBaseClass {         // vtable 0x0129A04C: a regis
     CShaderConstantRange(long firstRegister, long registerCount) : CBaseClass(), m_firstRegister(firstRegister), m_registerCount(registerCount) { }
 };
 
-struct CVertexShaderConstantLayout {               // 0x150 bytes
+namespace N_00bdbb70 { struct CVertexShaderConstantLayout {               // 0x150 bytes
     virtual void v00();
     unsigned char        _pad04[0xc];                          // +0x04 Reserved
     CShaderConstantRange User;                                 // +0x10
@@ -41,7 +41,7 @@ struct CVertexShaderConstantLayout {               // 0x150 bytes
     CShaderConstantRange ShadowedSpotlightColour;              // +0x11c
     unsigned char        _pad128[0x150 - 0x128];               // +0x128 screen-space transforms, ReservedPresets
     CVertexShaderConstantLayout();                             // 0x00BDBB70
-};
+}; } using N_00bdbb70::CVertexShaderConstantLayout;
 
 struct CEngineVSConstantLayoutLights : CVertexShaderConstantLayout {   // vtable 0x012A7D24
     virtual void v00();

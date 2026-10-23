@@ -4,12 +4,12 @@ static int g_AutoTinySequenceCount = 0;
 static void* g_AutoTinyFirstMember = 0;
 static void* g_AutoTinySecondMember = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall DestructFirstMember(void* member)
+void __fastcall DestructFirstMember_009a4400(void* member)
 {
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall DestructSecondMember(void* member)
+void __fastcall DestructSecondMember_006e46f0(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
@@ -24,8 +24,8 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CData_CompositeScalarDeletingDestructor(void* data, int, unsigned int flags)
 {
-    DestructFirstMember(static_cast<unsigned char*>(data) + 36);
-    DestructSecondMember(static_cast<unsigned char*>(data) + 28);
+    DestructFirstMember_009a4400(static_cast<unsigned char*>(data) + 36);
+    DestructSecondMember_006e46f0(static_cast<unsigned char*>(data) + 28);
     CData_Destruct(data);
     if (flags & 1)
         OperatorDelete(data);

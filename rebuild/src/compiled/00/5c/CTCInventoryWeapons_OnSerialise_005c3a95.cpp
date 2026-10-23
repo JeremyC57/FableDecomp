@@ -21,11 +21,11 @@ struct CCharString {
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     bool operator!=(const char* text) const;            // 0x0099E960
 };
-struct CDefString {
+namespace N_00415dd0 { struct CDefString {
     long Index;
     CDefString(const CDefString& other);
     operator CCharString() const;                       // 0x00415DD0
-};
+}; } using N_00415dd0::CDefString;
 struct CGameDefinitionManager {
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0

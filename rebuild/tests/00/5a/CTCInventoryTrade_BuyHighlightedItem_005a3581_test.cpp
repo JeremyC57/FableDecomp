@@ -93,7 +93,7 @@ struct CPairVector {                                        // STLport vector<pa
     }
 };
 struct CTCShop {
-    long GetCurrentBuyPrice(long defIndex, long count) const;   // 0x007743B0
+    long GetCurrentBuyPrice_007743b0(long defIndex, long count) const;   // 0x007743B0
     void SellItem(long defIndex);                           // 0x00774730
 };
 struct CTCHeroStats {
@@ -146,7 +146,7 @@ void CTCInventoryTrade::BuyHighlightedItem()
             CThing* owner = GetOwner();
             CTCShop* shop = 0;
             owner->GetInterface(&shop, 0x53);
-            long price = shop->GetCurrentBuyPrice(item, 1);
+            long price = shop->GetCurrentBuyPrice_007743b0(item, 1);
             CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->GetHeroCreature();
             CTCHeroStats* stats = 0;
             hero->GetInterface(&stats, 4);
@@ -180,7 +180,7 @@ static CPlayerManager g_pm; static CEngine g_engine; CEngine* g_pEngine = &g_eng
 static long g_slotItem; static long g_slotIndex;
 long NInventory::CCategory::GetItemInSlotWithIndex(long index) const { g_slotIndex = index; return g_slotItem; }
 static long g_price = 50; static long g_priceItem, g_priceCount;
-long CTCShop::GetCurrentBuyPrice(long defIndex, long count) const { g_priceItem = defIndex; g_priceCount = count; return g_price; }
+long CTCShop::GetCurrentBuyPrice_007743b0(long defIndex, long count) const { g_priceItem = defIndex; g_priceCount = count; return g_price; }
 static int g_sold; static long g_soldItem; static CTCShop* g_soldShop;
 void CTCShop::SellItem(long defIndex) { ++g_sold; g_soldItem = defIndex; g_soldShop = this; }
 static int g_paid; static long g_paidAmount; static bool g_paidMsg;

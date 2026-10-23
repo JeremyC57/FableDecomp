@@ -50,7 +50,7 @@ template<class T> struct CCountedPointer {
             delete m_pCount;
         }
     }
-    void Reset(T* object);                              // 0x00668D90
+    void Reset_00668d90(T* object);                              // 0x00668D90
     T* operator->() const { return m_pObject; }
     T* Get() const { return m_pObject; }
 };
@@ -122,9 +122,9 @@ bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action)
         if (action.HasPrecedingAction()) {
             CCreatureActionBase* preceding = 0;
             action.GetPrecedingAction(&preceding);
-            PCurrentAction.Reset(preceding);
+            PCurrentAction.Reset_00668d90(preceding);
         } else {
-            PCurrentAction.Reset(action.Clone());
+            PCurrentAction.Reset_00668d90(action.Clone());
         }
         CCountedPointer<CCreatureActionBase> newAction = PCurrentAction;
         if (oldAction.Get())
@@ -172,7 +172,7 @@ static void* g_lastDestroyed = 0; static const CActionState* g_takenFrom = 0; st
 static bool g_free = true, g_combat = false, g_hijack = false; static CCreatureActionBase* g_preceding = 0;
 static CThingCreatureBase* g_creature = 0;
 void __fastcall Destroy_CCreatureActionBase(void* object) { ++g_destroyed; g_lastDestroyed = object; }
-template<class T> void CCountedPointer<T>::Reset(T* object)
+template<class T> void CCountedPointer<T>::Reset_00668d90(T* object)
 {
     if (m_pCount && --m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; }
     m_pCount = 0; m_pObject = object;
@@ -181,7 +181,7 @@ template<class T> void CCountedPointer<T>::Reset(T* object)
 static CCreatureActionBase g_pool[8]; static int g_used = 0; static CCreatureActionBase g_other;
 void CCreatureActionBase::OnReplaced() { ++g_replaced; }
 CCreatureActionBase* CCreatureActionBase::Clone() const { CCreatureActionBase* c = &g_pool[g_used++]; c->Finished = false; return c; }
-void CCreatureActionBase::Start() { ++g_started; if (g_hijack) g_creature->PCurrentAction.Reset(&g_other); }
+void CCreatureActionBase::Start() { ++g_started; if (g_hijack) g_creature->PCurrentAction.Reset_00668d90(&g_other); }
 bool CCreatureActionBase::IsCombatAction() const { return g_combat; }
 bool CCreatureActionBase::HasPrecedingAction() const { return g_preceding != 0; }
 void CCreatureActionBase::GetPrecedingAction(CCreatureActionBase** out) const { *out = g_preceding; }
@@ -199,7 +199,7 @@ int main()
     entries[0].type = 0x30; entries[0].component = (CTCBase*)&combat; entries[1].type = 0x7fffffff; entries[1].component = 0;
     c.m_interfaces.first = entries; c.m_interfaces.last = entries + 1; c.m_presentBits[1] = 0x10000;
     static CCreatureActionBase a, b, p; a.Finished = false;
-    c.PCurrentAction.Reset(&a); c.CurrentlyFrameUpdating = 1;
+    c.PCurrentAction.Reset_00668d90(&a); c.CurrentlyFrameUpdating = 1;
     CHECK(c.SetCurrentAction(b));                                      // clone of b replaces a
     CHECK(c.PCurrentAction.Get() == &g_pool[0] && c.PCurrentAction.m_pCount->m_references == 1);
     CHECK(g_takeOvers == 1 && g_takenFrom == &a.State && g_started == 1 && g_updates == 1 && g_replaced == 1);

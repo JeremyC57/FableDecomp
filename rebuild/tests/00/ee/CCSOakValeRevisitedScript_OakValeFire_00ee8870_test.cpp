@@ -11,11 +11,11 @@ static char g_log[4096];
 static int g_frame = 0, g_termAt = 1000, g_fireOn = 3, g_fireOff = 7;
 static void Log(const char* s) { char b[16]; std::sprintf(b, "@%d;", g_frame); std::strcat(g_log, s); std::strcat(g_log, b); }
 struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+namespace N_006e7b40 { struct CScriptThing {
     std::string Name; C3DVector Pos;
     CScriptThing() : Name("") { Pos.X = Pos.Y = Pos.Z = 0.0f; }
     const C3DVector& GetPos() const { return Pos; }
-};
+}; } using N_006e7b40::CScriptThing;
 struct CGame {
     std::vector<CScriptThing> Points;
     void NewScriptFrame() const { ++g_frame; }

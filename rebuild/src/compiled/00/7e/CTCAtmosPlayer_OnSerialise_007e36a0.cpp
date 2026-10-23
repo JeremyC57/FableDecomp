@@ -29,7 +29,7 @@ struct CPersistContext {
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, long& value, const long& defaultValue);                  // 0x007E39D0
+    void Transfer_007e39d0(const char* name, long& value, const long& defaultValue);                  // 0x007E39D0
     void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);    // 0x004109A0
 };
 class CTCAtmosPlayer {
@@ -47,7 +47,7 @@ void CTCAtmosPlayer::OnSerialise(CPersistContext& context, bool)
 {
     if (context.IsSaving()) {
         CDefString name = CDefinitionManager::Get().GetDefNameFromGlobalIndex(AtmosDefIndex);
-        context.Transfer("AtmosName", name.m_tablePos, -1);
+        context.Transfer_007e39d0("AtmosName", name.m_tablePos, -1);
     } else {
         CCharString name;
         context.Transfer("AtmosName", name, EmptyString());

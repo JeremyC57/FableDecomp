@@ -7,10 +7,10 @@ struct CCharString {
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CDefString {
+namespace N_00415dd0 { struct CDefString {
     long m_index;
     operator CCharString() const;                        // 0x00415DD0
-};
+}; } using N_00415dd0::CDefString;
 struct C3DVector {
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

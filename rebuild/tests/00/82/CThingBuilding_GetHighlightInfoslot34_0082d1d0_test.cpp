@@ -26,7 +26,7 @@ struct CPlayerDef : CDefPointeeBase { unsigned char _pad08[0x40 - 0x08]; CRGBCol
 static bool g_local = false;
 struct CPlayer { unsigned char _pad00[0x21c]; CDefPointer<CPlayerDef> PlayerDef; CPlayer(CPlayerDef* def) : PlayerDef(def) {} bool IsLocal() { return g_local; } };
 static CPlayer* g_player; static long g_askedPlayer = -99;
-struct CPlayerManager { CPlayer* GetPlayer(long playerNumber) { g_askedPlayer = playerNumber; return g_player; } };
+struct CPlayerManager { CPlayer* GetPlayer_00449910(long playerNumber) { g_askedPlayer = playerNumber; return g_player; } };
 static CPlayerManager g_manager; static float g_time = 0.5f;
 struct SThingHighlightInfo { long _unused; float Scale; float Alpha; CRGBColour Colour; bool Valid; };
 struct CThingBuilding {
@@ -38,7 +38,7 @@ struct CThingBuilding {
 bool CThingBuilding::GetHighlightInfo_slot34(SThingHighlightInfo* info)
 {
     CRGBColour colour;
-    CPlayer* player = GetPlayerManager()->GetPlayer(PlayerNumber);
+    CPlayer* player = GetPlayerManager()->GetPlayer_00449910(PlayerNumber);
     if (player->IsLocal() == true) {
         CDefPointer<CPlayerDef> def(player->PlayerDef);
         colour = def->Colour;

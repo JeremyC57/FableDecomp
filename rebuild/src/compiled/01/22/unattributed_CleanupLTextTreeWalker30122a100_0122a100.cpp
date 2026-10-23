@@ -24,11 +24,11 @@ struct SNode {
 struct CRetailTree {
     SNode* m_header;                       // +0
     long m_size;                           // +4
-    void Erase(SNode* root);               // 0x008B1D80 recursive node release
+    void Erase_008b1d80(SNode* root);               // 0x008B1D80 recursive node release
     void Clear()
     {
         if (m_size != 0) {
-            Erase(m_header->m_parent);
+            Erase_008b1d80(m_header->m_parent);
             m_header->m_left = m_header;
             m_header->m_parent = 0;
             m_header->m_right = m_header;

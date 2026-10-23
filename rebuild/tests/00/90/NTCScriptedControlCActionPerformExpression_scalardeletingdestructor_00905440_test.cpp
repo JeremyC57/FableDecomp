@@ -4,12 +4,12 @@ static int g_AutoTinySequenceCount = 0;
 static void* g_AutoTinyFirstMember = 0;
 static void* g_AutoTinySecondMember = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall DestructFirstMember(void* member)
+void __fastcall DestructFirstMember_0099eae0(void* member)
 {
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall DestructSecondMember(void* member)
+void __fastcall DestructSecondMember_004aa840(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
@@ -24,8 +24,8 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CActionPerformExpression_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    DestructFirstMember(static_cast<unsigned char*>(action) + 28);
-    DestructSecondMember(static_cast<unsigned char*>(action) + 12);
+    DestructFirstMember_0099eae0(static_cast<unsigned char*>(action) + 28);
+    DestructSecondMember_004aa840(static_cast<unsigned char*>(action) + 12);
     CActionPerformExpression_Destruct(action);
     if (flags & 1)
         OperatorDelete(action);

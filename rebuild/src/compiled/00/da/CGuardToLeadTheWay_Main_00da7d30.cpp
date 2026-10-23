@@ -80,7 +80,7 @@ struct CBase {                                          // vtable 0x01231710
     virtual ~CBase();                                   // 0x0099A2E0
 };
 struct C3DVector { float X, Y, Z; };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+namespace N_006e7b40 { struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const;
@@ -103,12 +103,12 @@ struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // out-of-line copy 0x008AB980
     CScriptThing();                                     // 0x006E7B40
-};
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+}; } using N_006e7b40::CScriptThing;
+namespace N_0099a380 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+}; } using N_0099a380::CBaseIntelligentPointer;
 struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }

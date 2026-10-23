@@ -78,11 +78,11 @@ struct CCharString {
     ~CCharString();                                      // 0x0099EAE0
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
 };
-struct CDefString {
+namespace N_00415dd0 { struct CDefString {
     long Index;
     operator CCharString();                              // 0x00415D70
     operator CCharString() const;                        // 0x00415DD0
-};
+}; } using N_00415dd0::CDefString;
 struct CAnimFilterBase {                                 // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
     virtual void v01();

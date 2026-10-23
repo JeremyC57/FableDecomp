@@ -4,13 +4,13 @@ struct CTexture_Calls { int x; };
 static long g_released[8]; static int g_n = 0;
 struct CTexturePool_Retail { void Release(long handle) { g_released[g_n++] = handle; } };
 struct CEngine_Retail { unsigned char _pad[0x3190]; CTexturePool_Retail TexturePool; };
-static CEngine_Retail g_engine; CEngine_Retail* g_pEngine = &g_engine;
+static CEngine_Retail g_engine; CEngine_Retail* g_pEngine_01436e98 = &g_engine;
 struct CEngineScreenEffectGlowRenderer_Retail {
     unsigned char _pad[0x10]; CTexture_Calls* GlowTexture256; CTexture_Calls* GlowTexture64; CTexture_Calls* GlowTexture64Alt; CTexture_Calls* GlowTexture16;
     long GlowTexture256Handle; long GlowTexture64Handle; long GlowTexture64AltHandle; long GlowTexture16Handle;
     void ReleaseGlowTextures()
     {
-        CTexturePool_Retail* pool = &g_pEngine->TexturePool;
+        CTexturePool_Retail* pool = &g_pEngine_01436e98->TexturePool;
         pool->Release(GlowTexture256Handle); pool->Release(GlowTexture64Handle); pool->Release(GlowTexture64AltHandle); pool->Release(GlowTexture16Handle);
         GlowTexture256 = 0; GlowTexture64 = 0; GlowTexture64Alt = 0; GlowTexture16 = 0;
     }

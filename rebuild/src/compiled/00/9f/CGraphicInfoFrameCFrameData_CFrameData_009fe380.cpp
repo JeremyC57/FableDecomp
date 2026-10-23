@@ -19,7 +19,7 @@ struct CManagedTexture : CBaseNative {
  long Sizeof(); //00a69e60
 };
 struct CResourceNative : CResource {CResourceNative();void SetResourceSize(unsigned long);}; //009fbec0,009fbf20
-struct CResourceBank {void* Vtable;CResourceList ResourceList;void AddResource(CResource*);}; //009fc380
+struct CResourceBank {void* Vtable;CResourceList ResourceList;void AddResource_009fc380(CResource*);}; //009fc380
 struct CGraphicDataBank {unsigned char Base[0x164];CResourceBank Resources;};
 struct CGraphicHeader {unsigned char Data[0x1c];};
 struct CGraphicInfo {CGraphicHeader Header;long TextureType;CGraphicDataBank* Bank;long Index;void* Frames;};
@@ -39,5 +39,5 @@ CFrameData::CFrameData(CGraphicInfoFrame* frame):Frame(this) {
  CurrentMipmapLevel=-1;TouchedMipmapLevel=127;
  TouchedFrame=frame->GraphicInfo->Bank->Resources.ResourceList.CurrentFrame-1;
  SetResourceSize(Sizeof());
- frame->GraphicInfo->Bank->Resources.AddResource(this);
+ frame->GraphicInfo->Bank->Resources.AddResource_009fc380(this);
 }

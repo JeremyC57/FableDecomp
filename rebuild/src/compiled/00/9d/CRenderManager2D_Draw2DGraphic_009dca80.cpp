@@ -106,7 +106,7 @@ struct CGraphicDataBank {
     CRetailVector<CGraphicInfo> m_records;             // +0x1e0
     __forceinline const CGraphicInfo* Get(unsigned long index) const { return index < m_records.size() ? &m_records[index] : 0; }
 };
-float __fastcall GFAXToVX(float x);                    // 0x009E1E10
+float __fastcall GFAXToVX_009e1e10(float x);                    // 0x009E1E10
 float __fastcall GFAYToVY(float y);                    // 0x009E1E40
 extern float g_ScreenRHW;                              // 0x0139652C
 static const unsigned long s_CornerOrderNormal[4] = { 0, 1, 2, 3 };    // 0x0129B94C
@@ -142,7 +142,7 @@ bool CRenderManager2D::Draw2DGraphic(const C2DVector& pos, const CGraphicDataBan
     const unsigned long* order = s_CornerOrderNormal;
     CTVertexRHWColSpecTex1 v[4];
     CTextureQuadUVs uvs;
-    v[0].X = GFAXToVX(pos.X);
+    v[0].X = GFAXToVX_009e1e10(pos.X);
     v[0].Y = GFAYToVY(pos.Y);
     v[0].Diffuse = colour;
     v[1].X = v[0].X + bank.GetFrameWidth(graphic, frameIndex);

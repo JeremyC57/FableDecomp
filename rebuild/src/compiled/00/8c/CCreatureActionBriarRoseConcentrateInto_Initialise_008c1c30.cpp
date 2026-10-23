@@ -98,7 +98,7 @@ public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;             // 0x004C73D0
-    void UnsheatheMeleeWeapon();                      // 0x00666820 (CThingCreatureBase)
+    void UnsheatheMeleeWeapon_00666820();                      // 0x00666820 (CThingCreatureBase)
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -167,7 +167,7 @@ struct CCreatureAction_BriarRoseConcentrateInto : CCombatActionBase {
 void CCreatureAction_BriarRoseConcentrateInto::Initialise()
 {
     CTCCreatureModeManager* modes = 0;
-    GetCreature()->UnsheatheMeleeWeapon();
+    GetCreature()->UnsheatheMeleeWeapon_00666820();
     SetAnimationName("POWER_UP_INTO");
     CCombatActionBase::Initialise();
     if (GetCreature()->GetInterface(&modes, 0x31) && IS_THING_ALIVE(PEnemy))

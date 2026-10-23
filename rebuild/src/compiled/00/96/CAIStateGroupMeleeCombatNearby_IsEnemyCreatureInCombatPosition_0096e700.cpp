@@ -35,11 +35,11 @@ struct CCombatManager {
     bool IsPositionOccupied(CThingCreatureBase* creature);                  // 0x006E9700
 };
 struct CAIStateGroupBase_Methods : CAIStateGroupBase {
-    CWorld* GetPWorld();                                // 0x008FCFC0
+    CWorld* GetPWorld_008fcfc0();                                // 0x008FCFC0
 };
 struct CAIStateGroup_MeleeCombatNearby_Methods : CAIStateGroup_MeleeCombatNearby {
     __forceinline CThingCreatureBase* Creature() { return (CThingCreatureBase*)((CAIStateGroupBase*)this)->PBrain->Creature; }
-    __forceinline CWorld* GetPWorld() { return ((CAIStateGroupBase_Methods*)(CAIStateGroupBase*)this)->GetPWorld(); }
+    __forceinline CWorld* GetPWorld() { return ((CAIStateGroupBase_Methods*)(CAIStateGroupBase*)this)->GetPWorld_008fcfc0(); }
     __forceinline CBaseIntelligentPointer* PEnemy() { return (CBaseIntelligentPointer*)_pad_0x14; }   // +0x14
     bool IsEnemyCreatureInCombatPosition();
 };

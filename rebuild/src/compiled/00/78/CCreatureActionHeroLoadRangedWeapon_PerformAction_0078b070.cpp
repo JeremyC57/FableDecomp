@@ -103,7 +103,7 @@ __forceinline CThingObject* CreateThingObject(long defIndex, const CThing* owner
     return CreateThingObject(defIndex, &at->GetPosition(), owner->PlayerNumber, 0, 0, name);
 }
 struct CTCWeapon {                                    // interface 0x48
-    bool IsAnalogueLoading();                         // 0x005DA8F0
+    bool IsAnalogueLoading_005da8f0();                         // 0x005DA8F0
     long GetCategoryIdentifier();                     // 0x005DA920
     long GetCreatedShotDefGlobalIndex();              // 0x005DA750
 };
@@ -148,7 +148,7 @@ void CCreatureAction_HeroLoadRangedWeapon::PerformAction()
     CTCWeapon* weapon;
     if (IS_THING_ALIVE(PRangedWeapon) && PRangedWeapon.GetPItem()->GetInterface(&weapon, 0x48)) {
         CTCCarrying* carrying;
-        if (GetCreature()->GetInterface(&carrying, 0x46) && weapon->IsAnalogueLoading()) {
+        if (GetCreature()->GetInterface(&carrying, 0x46) && weapon->IsAnalogueLoading_005da8f0()) {
             long category = weapon->GetCategoryIdentifier();
             long shot = weapon->GetCreatedShotDefGlobalIndex();
             if (category >= 0 && shot >= 0) {

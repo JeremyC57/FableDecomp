@@ -36,6 +36,7 @@ struct CThing {
 struct CThingCreatureBase : CThing { };
 struct CThingPlayerCreature : CThingCreatureBase { };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && thing->alive; }
+template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing) { return thing != 0 && thing->alive; }
 static CThingPlayerCreature* g_hero = 0;
 struct CPlayer {
     CThingPlayerCreature* GetControlledCreature() { return g_hero; }
@@ -99,7 +100,7 @@ void CDrawPerceivers::Update()
         return;
     for (CRetailThingPointerList::iterator it = Things.begin(); it != Things.end(); ) {
         const CThing* thing = (*it).GetPItem();
-        if (IS_THING_ALIVE(thing)) {
+        if (IS_THING_ALIVE_00436380(thing)) {
             long countBefore = ThingCount;
             if (thing->HasInterface(0x34)) {
                 CTCPerceiveThing* perceive = thing->GetInterfaceUncheckedConst<CTCPerceiveThing>(0x34);

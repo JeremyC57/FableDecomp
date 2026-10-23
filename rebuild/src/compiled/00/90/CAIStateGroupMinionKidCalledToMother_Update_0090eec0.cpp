@@ -77,7 +77,7 @@ struct CAIStateGroupBase {
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF80
+    CPlayerManager* GetPPlayerManager_008fcf80();        // 0x008FCF80
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float distance, bool* reached,
@@ -100,7 +100,7 @@ void CAIStateGroup_MinionKidCalledToMother::Update()
             Terminate();
             return;
         }
-        CThing* hero = GetPPlayerManager()->GetPMainPlayer()->GetControlledCreature();
+        CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetControlledCreature();
         if (hero != 0 && !(hero->m_flags91 & 1)) {
             CThing* mother = GetCreature()->PMother.GetPItem();
             if (mother != 0 && !(mother->m_flags91 & 1)) {

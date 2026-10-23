@@ -123,7 +123,7 @@ struct CThingObject {
 
 struct CTCHeroAttachableAppearanceModifiers {
     void GetModifiers(CLongList& out, long type);            // 0x00706800
-    void AddAppearanceModifier(long def);                    // 0x00706370
+    void AddAppearanceModifier_00706370(long def);                    // 0x00706370
 };
 struct CTCBase;
 struct CInterfaceMap {
@@ -198,7 +198,7 @@ void CCreatureAction_Undress::PerformAction()
     }
     while (!worn.empty()) {
         long item = worn.back();
-        modifiers->AddAppearanceModifier(item);
+        modifiers->AddAppearanceModifier_00706370(item);
         C3DVector velocity;
         velocity.X = 0.2f - GFFloatRandom(0.4f, GetPWorld()->GetRandomSeed());
         velocity.Y = 0.2f - GFFloatRandom(0.4f, GetPWorld()->GetRandomSeed());

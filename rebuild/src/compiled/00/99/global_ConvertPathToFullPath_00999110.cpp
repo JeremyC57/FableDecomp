@@ -19,6 +19,8 @@ private:
     wchar_t* m_data;
 };
 
+CWideString __fastcall GetCurrentWorkingDirectory();   // 0x00997F80 (relocation identity: the scratch buffer is its by-value result)
+
 namespace
 {
 // __fastcall CWideString ExpandPath(CWideString* in, CWideString* scratch)
@@ -46,5 +48,5 @@ public:
 
 CWideString __fastcall CAFile::ConvertPathToFullPath(const CWideString& path)
 {
-    return ExpandPath(const_cast<CWideString*>(&path), &CWideString());
+    return ExpandPath(const_cast<CWideString*>(&path), &GetCurrentWorkingDirectory());
 }

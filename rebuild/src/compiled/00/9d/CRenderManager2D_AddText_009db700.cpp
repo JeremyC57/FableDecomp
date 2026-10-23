@@ -22,7 +22,7 @@ struct __true_type { __true_type() { } };
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-float __fastcall GFAXToVX(float x);                     // 0x009E1E10
+float __fastcall GFAXToVX_009e1e10(float x);                     // 0x009E1E10
 float __fastcall GFAYToVY(float y);                     // 0x009E1E40
 
 struct C2DBoxF {
@@ -106,7 +106,7 @@ void CRenderManager2D::AddText(const C3DVector& position, float scale, const CWi
     info.Window = GetViewportBoxFloat();
     info.Line = false;
     info.IsText = true;
-    info.StringX = GFAXToVX(position.X);
+    info.StringX = GFAXToVX_009e1e10(position.X);
     info.StringY = GFAYToVY(position.Y);
     info.StringZ = position.Z;
     info.String = text;

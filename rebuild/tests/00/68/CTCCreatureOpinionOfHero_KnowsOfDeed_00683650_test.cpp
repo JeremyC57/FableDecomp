@@ -31,7 +31,7 @@ static long g_typedHandle = -2, g_typedType = -2; static int g_typedPending = -1
 struct CTCCreatureOpinionOfHero {
     virtual void v00() {}
     CThing* ParentThing;
-    CPlayerManager* GetPlayerManager() { return &g_pm; }
+    CPlayerManager* GetPlayerManager_00686d50() { return &g_pm; }
     bool KnowsOfDeed(long deedHandle, long deedType, bool includePending) { ++g_typedCalls; g_typedHandle = deedHandle; g_typedType = deedType; g_typedPending = includePending; return g_typedResult; }
     bool KnowsOfDeed(long deedHandle, bool includePending);
 };
@@ -51,7 +51,7 @@ static __forceinline CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
 }
 bool CTCCreatureOpinionOfHero::KnowsOfDeed(long deedHandle, bool includePending)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager_00686d50()->GetMainPlayer()->GetHeroThing();
     if (hero) {
         COpinionDeed* deed = GetDeedLog(hero)->GetDeedFromHandle(deedHandle);
         if (deed)

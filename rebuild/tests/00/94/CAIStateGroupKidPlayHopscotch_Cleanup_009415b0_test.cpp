@@ -60,7 +60,7 @@ struct CAIBrain { CThing* PCreature; };
 struct CMessageEvent { long type; unsigned long long uid; bool removed; };
 struct CMessageEventManager {
     CMessageEvent* list; int n;
-    CMessageEvent* FindMostRecentMessage(long type, unsigned long long uid)
+    CMessageEvent* FindMostRecentMessage_0090dee0(long type, unsigned long long uid)
     { for (int i = n - 1; i >= 0; --i) if (!list[i].removed && list[i].type == type && list[i].uid == uid) return &list[i]; return 0; }
     void RemoveMessage(CMessageEvent* e) { e->removed = true; }
 };
@@ -79,7 +79,7 @@ struct CAIStateGroup_KidPlayHopscotch {
             m_pMarker.GetPItem()->GetInterface(&point, 0x2d);
             if (!point->IsActionPointFree())
                 point->ReleaseSlot(m_slot);
-            CMessageEvent* event = m_mgr->FindMostRecentMessage(0x18, m_kidUID);
+            CMessageEvent* event = m_mgr->FindMostRecentMessage_0090dee0(0x18, m_kidUID);
             if (event)
                 m_mgr->RemoveMessage(event);
         }

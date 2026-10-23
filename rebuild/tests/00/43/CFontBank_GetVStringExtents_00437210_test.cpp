@@ -13,7 +13,7 @@ public:
     C2DExtentsF(float width, float height) : Width(width), Height(height) {}
 };
 float __fastcall GFAXToVX(float x);                      // 0x009E1DA0
-float __fastcall GFAYToVY(float y);                      // 0x009E1DD0
+float __fastcall GFAYToVY_009e1dd0(float y);                      // 0x009E1DD0
 class CFontManager;
 class CFontBank {
 public:
@@ -29,13 +29,13 @@ C2DExtentsF CFontBank::GetVStringExtents(const CWideString& text) const
 {
     C2DExtentsF extents = GetStringExtents(text, false);
     extents.Width = GFAXToVX(extents.Width);
-    return C2DExtentsF(extents.Width, GFAYToVY(extents.Height));
+    return C2DExtentsF(extents.Width, GFAYToVY_009e1dd0(extents.Height));
 }
 
 static const wchar_t g_empty[1] = {0};
 CWideString::operator const wchar_t*() const { return PStringData ? (const wchar_t*)PStringData : g_empty; }
 float __fastcall GFAXToVX(float x) { return x * 2.0f; }
-float __fastcall GFAYToVY(float y) { return y * 3.0f; }
+float __fastcall GFAYToVY_009e1dd0(float y) { return y * 3.0f; }
 CFontBank::~CFontBank() {}
 static const wchar_t* g_seen; static bool g_wrap = true;
 C2DExtentsF CFontBank::GetStringExtents(const wchar_t* text, bool wrap) const { g_seen = text; g_wrap = wrap; return C2DExtentsF(10.0f, 20.0f); }

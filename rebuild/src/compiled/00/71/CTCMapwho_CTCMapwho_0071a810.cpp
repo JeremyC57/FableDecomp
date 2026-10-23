@@ -24,7 +24,7 @@ struct CWorldMap {
 struct CTCBase {
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
-    CWorldMap* GetWorldMap();                      // 0x00686D30
+    CWorldMap* GetWorldMap_00686d30();                      // 0x00686D30
     CThing* m_pThing;                              // +0x04
     long    m_baseWord;                            // +0x08
 };
@@ -56,7 +56,7 @@ struct CTCMapwho : CTCBase {
     __forceinline void RemoveFromMapwho()
     {
         if (InMapwho) {
-            CWorldMap* map = GetWorldMap();
+            CWorldMap* map = GetWorldMap_00686d30();
             map->m_pThingMapManager->DestroyMapwhoNode(this);
         }
     }

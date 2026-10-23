@@ -30,11 +30,11 @@ struct CPersistContext {
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
 
-    void Transfer(const char* name, long& value, const long& defaultValue);   // 0x007E39D0
+    void Transfer_007e39d0(const char* name, long& value, const long& defaultValue);   // 0x007E39D0
     void Transfer(const char* name, long& value);
 };
 
 void CPersistContext::Transfer(const char* name, long& value)
 {
-    Transfer(name, value, -1L);
+    Transfer_007e39d0(name, value, -1L);
 }

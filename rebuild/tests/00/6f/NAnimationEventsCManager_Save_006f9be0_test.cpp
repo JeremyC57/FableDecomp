@@ -60,9 +60,9 @@ CCharString __fastcall operator+(const char* a, const CCharString& b);          
 struct CPersistContext {                               // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CCharString& output);              // 0x009BAE10
-    void Transfer(CCharString& value);                 // 0x009BAB50
+    void Transfer_009bab50(CCharString& value);                 // 0x009BAB50
 #ifndef _MSC_VER
-    void Transfer(const CCharString& value) { Transfer(const_cast<CCharString&>(value)); }   // test-only: g++ cannot bind a temporary to CCharString&
+    void Transfer_009bab50(const CCharString& value) { Transfer_009bab50(const_cast<CCharString&>(value)); }   // test-only: g++ cannot bind a temporary to CCharString&
 #endif
 };
 struct CSymbolInfo {
@@ -119,29 +119,29 @@ void CManager::Save(const CWideString& fileName)
         CPersistContext context(text);
         {
             CCharString line("BEGIN_ANIMATION_EVENTS\r\n");
-            context.Transfer(line);
+            context.Transfer_009bab50(line);
         }
         CSymbolMap animTypes;
         animTypes.LoadFromHeaderFile(GetDataDirectory() + (const unsigned short*)L"meshdata.h");
         for (CAnimEvents* it = ExtraAnimEvents_start; it != ExtraAnimEvents_finish; ++it) {
             unsigned long animID = it->AnimID;
             const CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType", animID);
-            context.Transfer("BEGIN_EVENTS: " + info->EntryName + "\r\n");
+            context.Transfer_009bab50("BEGIN_EVENTS: " + info->EntryName + "\r\n");
             for (CEvent* e = it->Events.begin(); e != it->Events.end(); ++e) {
                 const CSymbolInfo* name = EventNames.FindFirstSymbolWithVal(e->Packed & 0x3fffffff);
                 if (e->Packed & 0x80000000)
-                    context.Transfer(name->EntryName + " " + CCharString::FormatDouble(6, e->Time) + " STOP\r\n");
+                    context.Transfer_009bab50(name->EntryName + " " + CCharString::FormatDouble(6, e->Time) + " STOP\r\n");
                 else
-                    context.Transfer(name->EntryName + " " + CCharString::FormatDouble(6, e->Time) + " START\r\n");
+                    context.Transfer_009bab50(name->EntryName + " " + CCharString::FormatDouble(6, e->Time) + " START\r\n");
             }
             {
                 CCharString line("END_EVENTS\r\n\r\n");
-                context.Transfer(line);
+                context.Transfer_009bab50(line);
             }
         }
         {
             CCharString line("END_ANIMATION_EVENTS\r\n");
-            context.Transfer(line);
+            context.Transfer_009bab50(line);
         }
         text.SaveToFile(file);
         Dirty = false;
@@ -175,7 +175,7 @@ CCharString __fastcall operator+(const CCharString& a, const CCharString& b) { r
 CCharString __fastcall operator+(const CCharString& a, const char* b) { return Cat((const char*)a.PStringData, b); }
 CCharString __fastcall operator+(const char* a, const CCharString& b) { return Cat(a, (const char*)b.PStringData); }
 CPersistContext::CPersistContext(CCharString& output) { memset(_pad00, 0, sizeof(_pad00)); *(CCharString**)_pad00 = &output; }
-void CPersistContext::Transfer(CCharString& value) { strcat(g_log, (const char*)value.PStringData); }
+void CPersistContext::Transfer_009bab50(CCharString& value) { strcat(g_log, (const char*)value.PStringData); }
 static CSymbolInfo g_anim, g_evt;
 CSymbolMap::CSymbolMap() { memset(_body, 0, sizeof(_body)); }
 CSymbolMap::~CSymbolMap() {}

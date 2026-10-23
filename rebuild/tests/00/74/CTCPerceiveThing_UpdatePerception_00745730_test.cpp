@@ -116,7 +116,7 @@ struct CTCPerceiveThing {
                 UpdateDrawPerceivers();
         }
     }
-    void SetAsDirectlyAwareOfPerceivedThing();  // 0x00744730
+    void SetAsDirectlyAwareOfPerceivedThing_00744730();  // 0x00744730
     void UpdateSmell();                         // 0x00744B50
     void UpdateHearing();                       // 0x00744FB0
     void UpdateLineOfSight();                   // 0x00745120
@@ -146,7 +146,7 @@ void CTCPerceiveThing::UpdatePerception()
     UpdateHearing();
     bool perceived = LineOfSight || Smelt;
     if (perceived) {
-        SetAsDirectlyAwareOfPerceivedThing();
+        SetAsDirectlyAwareOfPerceivedThing_00744730();
     } else if (AwarenessTimer > g_epsilon_0129ba3c) {
         float frameTime = GetGameSubsystem()->GetSecondsPerFrame();
         GetAwarenessTimer() -= frameTime * 4.0f;
@@ -175,7 +175,7 @@ static CPlayerGui g_gui;
 CPlayerGui* g_pPlayerGui = &g_gui;
 long CGameSubsystem::FrameRate = 20;
 float g_epsilon_0129ba3c = 1e-4f;
-void CTCPerceiveThing::SetAsDirectlyAwareOfPerceivedThing() { ++g_aware; }
+void CTCPerceiveThing::SetAsDirectlyAwareOfPerceivedThing_00744730() { ++g_aware; }
 void CTCPerceiveThing::UpdateSmell() { ++g_smell; Smelt = g_setSmelt; }
 void CTCPerceiveThing::UpdateHearing() { ++g_hear; }
 void CTCPerceiveThing::UpdateLineOfSight() { ++g_los; LineOfSight = g_setLOS; }

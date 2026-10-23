@@ -18,7 +18,7 @@ struct C3DVector {
 static float g_Epsilon = 1e-4f;
 static long g_framesPerSecond = 30;
 static float GFFloatRandom(float range, unsigned long* seed) { (void)seed; return range * 0.5f; }   // fixed: 0.25
-struct CThingCreatureBase { C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
+struct CThingCreatureBase { C3DVector Pos; const C3DVector& GetPosition_004c73d0() const { return Pos; } };
 struct CWorld { unsigned long Seed; unsigned long* GetRandomSeed() { return &Seed; } };
 struct CAttackingCombatantInfo { bool PreferredAttackDollySet; long PreferredAttackDollyTimer; C2DVector PreferredAttackDollyVector; };
 struct CCombatantInfo { CThingCreatureBase* Parent; CAttackingCombatantInfo AttackerInfo; };
@@ -28,10 +28,10 @@ void CCombatWheel::ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCo
 {
     C3DVector dolly;
     if (position) {
-        dolly = *position - defender->Parent->GetPosition();
+        dolly = *position - defender->Parent->GetPosition_004c73d0();
         dolly.Z = 0.0f;
     } else {
-        dolly = attacker->Parent->GetPosition() - defender->Parent->GetPosition();
+        dolly = attacker->Parent->GetPosition_004c73d0() - defender->Parent->GetPosition_004c73d0();
         dolly.Z = 0.0f;
         if (dolly.GetLengthSquared() > g_Epsilon * g_Epsilon)
             dolly.Rotate(C3DVector(0.0f, 0.0f, 1.0f), GFFloatRandom(0.5f, world->GetRandomSeed()) + 0.25f);

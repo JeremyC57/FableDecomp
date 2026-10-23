@@ -9,7 +9,7 @@ void __fastcall DestructFirstMember(void* member)
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall DestructSecondMember(void* member)
+void __fastcall DestructSecondMember_0099eae0(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
@@ -25,7 +25,7 @@ void __cdecl OperatorDelete(void*)
 void* __fastcall CAIStateGroup_Gaze_CompositeScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
     DestructFirstMember(static_cast<unsigned char*>(stateGroup) + 20);
-    DestructSecondMember(static_cast<unsigned char*>(stateGroup) + 12);
+    DestructSecondMember_0099eae0(static_cast<unsigned char*>(stateGroup) + 12);
     CAIStateGroup_Gaze_Destruct(stateGroup);
     if (flags & 1)
         OperatorDelete(stateGroup);

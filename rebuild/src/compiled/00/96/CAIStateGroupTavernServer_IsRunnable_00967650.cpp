@@ -57,10 +57,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
+namespace N_0065e133 { namespace N_007b82c0 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     CIntelligentPointerConstThing(CThing* item);    // 0x0065E133
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x007B82C0
-};
+}; } using N_007b82c0::CIntelligentPointerConstThing; } using N_0065e133::CIntelligentPointerConstThing;
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
@@ -69,7 +69,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-bool __fastcall IS_THING_ALIVE_Pointer(const CBaseIntelligentPointer& p);   // 0x0078B2A0 (IS_THING_ALIVE<CIntelligentPointer<T>>)
+bool __fastcall IS_THING_ALIVE_Pointer_0078b2a0(const CBaseIntelligentPointer& p);   // 0x0078B2A0 (IS_THING_ALIVE<CIntelligentPointer<T>>)
 
 struct CThingAICreature {
     unsigned char _pad[0x170];
@@ -105,7 +105,7 @@ bool CAIStateGroupTavernServerMethods::IsRunnable()
         if (!Pub().GetPItem())
             Pub() = CIntelligentPointerThing(((CThingAICreature*)GetCreature())->PWorkplace.GetPItem());
         if (IS_THING_ALIVE(Pub()) && village
-            && (IS_THING_ALIVE_Pointer(Bar()) || GetBar())
+            && (IS_THING_ALIVE_Pointer_0078b2a0(Bar()) || GetBar())
             && (ServingActionPointIndex != -1 || GetServingPoint())) {
             FreeServingPoint();
             if (GetJug()) {

@@ -89,7 +89,7 @@ struct CTCBase {
     unsigned char _pad08[4];
     CTCBase(CThing* owner);                          // 0x00686800
     CWorld* GetWorld();                              // 0x00686A70
-    CWorldMap* GetWorldMap();                        // 0x00686D30
+    CWorldMap* GetWorldMap_00686d30();                        // 0x00686D30
     CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
 };
 
@@ -237,7 +237,7 @@ CTCHeroStats::CTCHeroStats(CThing* owner)
 {
     ExperienceSpentOn.resize(11, 0);
     NumberOfTimesUsedAbility.resize(20, 0);
-    RegionTime.resize(GetWorldMap()->GetNoMaps(), 0);
+    RegionTime.resize(GetWorldMap_00686d30()->GetNoMaps(), 0);
     HeroStatsExperience.resize(4, 0);
     UCounter = GFFloatRandom(1.0f, GetWorld()->GetRandomSeed());
     VCounter = GFFloatRandom(1.0f, GetWorld()->GetRandomSeed());

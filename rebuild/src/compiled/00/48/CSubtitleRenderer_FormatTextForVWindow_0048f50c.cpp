@@ -21,8 +21,8 @@ public:
     float Height;
 };
 
-float __stdcall GFAXToVX(float x);                           // 0x009E1DA0
-float __stdcall GFAYToVY(float y);                           // 0x009E1DD0
+float __stdcall GFAXToVX_009e1da0(float x);                           // 0x009E1DA0
+float __stdcall GFAYToVY_009e1dd0(float y);                           // 0x009E1DD0
 extern double g_VirtualScreenWidth;                          // 0x013961E8
 void __fastcall GFLimit(float& value, const float& minimum, const float& maximum);   // 0x0048DAE0
 
@@ -32,7 +32,7 @@ public:
     virtual C2DExtentsF GetStringExtents(const wchar* text, bool wrap) const;
     virtual float GetMaxHeight() const;                      // slot 2 (+0x08)
     C2DExtentsF GetVStringExtents(const CWideString& text) const;   // 0x00437210
-    float GetVFontMaxHeight() const { return GFAYToVY(GetMaxHeight()); }
+    float GetVFontMaxHeight() const { return GFAYToVY_009e1dd0(GetMaxHeight()); }
 };
 extern const CFontBank* g_pWordWrapFont;                     // 0x013B87AC
 
@@ -112,7 +112,7 @@ void CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank
         lines = 1;
     float scale = g_pDisplayManager->GetRenderTargetDimensions().X * (1.0f / 640.0f);
     const CPlayerGuiDef* def = PeekGuiDef();
-    GFLimit(maxWidth, GFAXToVX(def->TextBoxMinWidth) * scale, GFAXToVX(def->TextBoxMaxWidth) * scale);
+    GFLimit(maxWidth, GFAXToVX_009e1da0(def->TextBoxMinWidth) * scale, GFAXToVX_009e1da0(def->TextBoxMaxWidth) * scale);
     outBox = box;
     outBox.TLX = (float)((g_VirtualScreenWidth - maxWidth) * 0.5);
     outBox.BRX = outBox.TLX + maxWidth;

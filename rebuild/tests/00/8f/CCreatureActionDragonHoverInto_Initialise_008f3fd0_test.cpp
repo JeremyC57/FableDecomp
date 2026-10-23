@@ -5,7 +5,7 @@ struct C3DVector { float X, Y, Z; };
 struct CTCHover { bool m_bFlag10; };
 struct CThingCreatureBase {
     C3DVector pos, reset; int facingQueries; CTCHover hover;
-    const C3DVector& GetPosition() const { return pos; }
+    const C3DVector& GetPosition_004c73d0() const { return pos; }
     void ResetPosition(const C3DVector& p) { reset = p; }
     C3DVector GetFacing() { ++facingQueries; return pos; }
     bool GetInterface(CTCHover** pp, long t) { if (t == 9) { *pp = &hover; return true; } return false; }
@@ -19,7 +19,7 @@ struct CCreatureAction_DragonHoverInto {
     {
         { CCharString name("HOVER_INTO"); SetAnimationName(name); }
         ++baseInit;
-        const C3DVector& pos = PCreature.GetPItem()->GetPosition();
+        const C3DVector& pos = PCreature.GetPItem()->GetPosition_004c73d0();
         C3DVector lowered; lowered.X = pos.X; lowered.Y = pos.Y; lowered.Z = pos.Z - 30.148378f;
         PCreature.GetPItem()->ResetPosition(lowered);
         PCreature.GetPItem()->GetFacing();

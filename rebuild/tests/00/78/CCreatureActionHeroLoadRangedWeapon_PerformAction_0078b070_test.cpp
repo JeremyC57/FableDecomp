@@ -105,7 +105,7 @@ __forceinline CThingObject* CreateThingObject(long defIndex, const CThing* owner
     return CreateThingObject(defIndex, &at->GetPosition(), owner->PlayerNumber, 0, 0, name);
 }
 struct CTCWeapon {                                    // interface 0x48
-    bool IsAnalogueLoading();                         // 0x005DA8F0
+    bool IsAnalogueLoading_005da8f0();                         // 0x005DA8F0
     long GetCategoryIdentifier();                     // 0x005DA920
     long GetCreatedShotDefGlobalIndex();              // 0x005DA750
 };
@@ -150,7 +150,7 @@ void CCreatureAction_HeroLoadRangedWeapon::PerformAction()
     CTCWeapon* weapon;
     if (IS_THING_ALIVE(PRangedWeapon) && PRangedWeapon.GetPItem()->GetInterface(&weapon, 0x48)) {
         CTCCarrying* carrying;
-        if (GetCreature()->GetInterface(&carrying, 0x46) && weapon->IsAnalogueLoading()) {
+        if (GetCreature()->GetInterface(&carrying, 0x46) && weapon->IsAnalogueLoading_005da8f0()) {
             long category = weapon->GetCategoryIdentifier();
             long shot = weapon->GetCreatedShotDefGlobalIndex();
             if (category >= 0 && shot >= 0) {
@@ -182,7 +182,7 @@ static C3DVector g_heroPos = { 4.0f, 5.0f, 6.0f };
 const C3DVector& CThing::GetPosition() const { return g_heroPos; }
 CThingObject* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set, unsigned long flags, const CCharString& name)
 { g_creates++; g_createDef = defIndex; g_createPos = position; g_createPlayer = player; g_createSet = set; g_createFlags = (long)flags; g_createName = (const char*)name.PStringData; return g_newObject; }
-bool CTCWeapon::IsAnalogueLoading() { return g_analogue; }
+bool CTCWeapon::IsAnalogueLoading_005da8f0() { return g_analogue; }
 long CTCWeapon::GetCategoryIdentifier() { return g_category; }
 long CTCWeapon::GetCreatedShotDefGlobalIndex() { return g_shot; }
 void CTCCarrying::PutThingInCarrySlot(CThing* thing, long slot, bool show) { g_puts++; g_putThing = thing; g_putSlot = slot; g_putShow = show; }

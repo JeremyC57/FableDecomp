@@ -11,9 +11,9 @@ template <class T> class allocator {
 public:
     allocator() {}
 };
-template <class T, class A = allocator<T> > class list {
+template <class T, class A = allocator<T> > class list_0042abaf {
 public:
-    explicit list(const A& a = A());                     // 0x0042ABAF (out of line)
+    explicit list_0042abaf(const A& a = A());                     // 0x0042ABAF (out of line)
     void* _M_node;
 };
 }
@@ -23,7 +23,7 @@ enum EActionType { ACTION_NONE };
 class CAction {
 public:
     EActionType                ActionType;               // +0x00
-    std::list<CActionParam*>   UIActionParams;           // +0x04
+    std::list_0042abaf<CActionParam*>   UIActionParams;           // +0x04
     CAction();
 };
 CAction::CAction()

@@ -72,9 +72,9 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004CC340
+bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& thing);   // 0x004CC340
 bool __fastcall IS_THING_ALIVE_Villager(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x0043DBD0
+bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
 struct CASoundBank {
     long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
 };
@@ -191,7 +191,7 @@ struct CTCVillage {
     unsigned char _padb2;
     bool AnnouncementsDisabled;                 // +0xb3
     CWorldMap* GetWorldMap();                   // 0x00686D30 (CTCBase)
-    CWorld* GetWorld();                         // 0x00686A80 (CTCBase)
+    CWorld* GetWorld_00686a80();                         // 0x00686A80 (CTCBase)
     CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
     void ClearOutNullMembers();                 // 0x0065890B
     void ReleaseInvalidTasks();                 // 0x0065BE32
@@ -202,8 +202,8 @@ struct CTCVillage {
     void SetEnemyToHeroStatus();                // 0x0065A852
     void RemoveTimedoutCrimes();                // 0x0065A7A9
     void UpdateMirroredCrimeData();             // 0x0065C5BB
-    bool IsCurfewTime();                        // 0x00658DB3
-    bool IsCookTime();                          // 0x00658B20
+    bool IsCurfewTime_00658db3();                        // 0x00658DB3
+    bool IsCookTime_00658b20();                          // 0x00658B20
     void UpdateCurfew();                        // 0x0065AD37
     void FrameUpdate();
 };
@@ -237,13 +237,13 @@ void CTCVillage::FrameUpdate()
     if (CWorld::GetWorldFrame() % 30 == 0) {
         if (!torchesUpdated) {
             for (SNode<CBaseIntelligentPointer>* node = Lights->_M_next; node != Lights; node = node->_M_next) {
-                if (IS_THING_ALIVE(node->_M_data)) {
+                if (IS_THING_ALIVE_004cc340(node->_M_data)) {
                     CThing* thing = node->_M_data.GetPItem();
                     if (thing->HasTC(0x27)) {
                         CTCLight* light = (CTCLight*)thing->GetTC(0x27);
                         bool onDuringDay = light->OnDuringDay;
-                        if (onDuringDay == GetWorld()->PTimeManager->IsDay())
-                            light->SetActive(!GetWorld()->PTimeManager->IsDay());
+                        if (onDuringDay == GetWorld_00686a80()->PTimeManager->IsDay())
+                            light->SetActive(!GetWorld_00686a80()->PTimeManager->IsDay());
                     }
                 }
             }
@@ -259,10 +259,10 @@ void CTCVillage::FrameUpdate()
     if (PDef->HasCurfewAnnouncements && !AnnouncementsDisabled) {
         CCharString text(0);
         bool was = WasCurfewTime;
-        if (was != IsCurfewTime())
+        if (was != IsCurfewTime_00658db3())
             text = was ? PDef->CurfewStartText : PDef->CurfewEndText;
         was = WasCookTime;
-        if (was != IsCookTime())
+        if (was != IsCookTime_00658b20())
             text = was ? PDef->CookStartText : PDef->CookEndText;
         if (text != "") {
             CTextBank* bank = g_pMainGameComponent->PTextBank;
@@ -270,8 +270,8 @@ void CTCVillage::FrameUpdate()
             bool exists = bank->EntryExists(id);
             CGroupEntryRef::CEntry* entry = bank->GetPGroupEntry(id, false).Object;
             if (entry || !exists) {
-                WasCurfewTime = IsCurfewTime();
-                WasCookTime = IsCookTime();
+                WasCurfewTime = IsCurfewTime_00658db3();
+                WasCookTime = IsCookTime_00658b20();
                 if (entry) {
                     CASoundBank* soundBank = g_pSoundBankMap->FindFirstSymbolWithVal(&entry->BankName);
                     if (soundBank) {
@@ -279,7 +279,7 @@ void CTCVillage::FrameUpdate()
                         if (sample > 0) {
                             C3DVector pos = ParentThing->GetPosition();
                             CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
-                            if (IS_THING_ALIVE(hero)) {
+                            if (IS_THING_ALIVE_0043dbd0(hero)) {
                                 C3DVector offset = hero->PhysicsTC->GetRHSet().Forward * 20.0f;
                                 pos = hero->GetPosition() + offset;
                             }

@@ -137,7 +137,7 @@ struct CMovement {
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                           // 0x00449960
+    CPlayer* GetMainPlayer() const;                           // 0x00449960
 };
 long __fastcall GFGetCurrentFrame();                    // 0x0049D870
 extern long g_HeroIdleParticleDelay;                    // 0x013BAD24

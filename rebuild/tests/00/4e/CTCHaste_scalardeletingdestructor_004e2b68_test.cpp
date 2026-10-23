@@ -3,7 +3,7 @@ static int g_AutoTinyMemberDestructorCalls = 0;
 static int g_AutoTinyCompositeDestructorCalls = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
 static void* g_AutoTinyObservedMember = 0;
-void __fastcall DestructMember(void* member)
+void __fastcall DestructMember_004dd4db(void* member)
 {
     ++g_AutoTinyMemberDestructorCalls;
     g_AutoTinyObservedMember = member;
@@ -18,7 +18,7 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CTCHaste_CompositeScalarDeletingDestructor(void* haste, int, unsigned int flags)
 {
-    DestructMember(static_cast<unsigned char*>(haste) + 24);
+    DestructMember_004dd4db(static_cast<unsigned char*>(haste) + 24);
     CTCHaste_Destruct(haste);
     if (flags & 1)
         OperatorDelete(haste);

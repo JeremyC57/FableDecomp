@@ -38,6 +38,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);
+template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing);   // the 0x00436380 copy (CThing*)
 struct CTCShotDefinitionBase {
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
@@ -64,7 +65,7 @@ void CTCShotDefinitionDrainLife::UpdateCollision(bool* finished)
     CThing* target = PTargetThing.GetPItem();
     CThing* hit = PBestCollisionThing.GetPItem();
     const CThing* constHit = hit;
-    if (!IS_THING_ALIVE<CThing*>(target)) {
+    if (!IS_THING_ALIVE_00436380<CThing*>(target)) {
         if (IS_THING_ALIVE<CBaseIntelligentPointer>(PSoulEffect))
             PSoulEffect.GetPItem()->Kill(true);
         *finished = true;

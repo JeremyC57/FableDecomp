@@ -107,7 +107,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
-struct CThingList {                             // retail std::list<CIntelligentPointer<CThing>>: one sentinel pointer
+namespace N_004b96f0 { struct CThingList {                             // retail std::list<CIntelligentPointer<CThing>>: one sentinel pointer
     struct SNode { SNode* m_pNext; SNode* m_pPrev; CBaseIntelligentPointer m_value; };
     SNode* m_pHead;
     struct _List_iterator_base {
@@ -127,7 +127,7 @@ struct CThingList {                             // retail std::list<CIntelligent
     CThingList(const CThingList& other);        // 0x00618DA0
     void clear();                               // 0x004B8050
     ~CThingList();                              // 0x004B96F0
-};
+}; } using N_004b96f0::CThingList;
 void* ListCopySink_618DA0(const void* head);
 #pragma auto_inline(off)
 CThingList::CThingList(const CThingList& other)

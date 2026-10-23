@@ -23,7 +23,7 @@ void CEngineWorldMapRetail::SetStaticMapFileForUse(const wchar_t* file){
  CloseStaticMapFile();
  {CCharString m("SetStaticMapFileForUse: EnablePoolAllocation",-1);ReportStaticMapProgress(m,false,-1.0f,0);}
  gStaticMapEngineState->Pool->EnablePoolAllocation(true);
- StaticMapBankName=file;
+ StaticMapBankName=*reinterpret_cast<const CWideString*>(file); // retail calls the copy operator= 0x0099B7D0 with the argument as a CWideString&
  {CCharString m("SetStaticMapFileForUse: OpenStaticMaps",-1);ReportStaticMapProgress(m,false,-1.0f,0);}
  OpenStaticMaps(true);
  StaticMapOpenState=3;

@@ -19,10 +19,10 @@ struct CStringRecordList {                     // VC6-era std::list whose values
     ~CStringRecordList() { clear(); if (m_head) free(m_head); }
 };
 
-struct CPodList {                              // VC6-era std::list of PODs, destructor out of line
+namespace N_0043fd80 { struct CPodList {                              // VC6-era std::list of PODs, destructor out of line
     SListNode* m_head;
     ~CPodList();                               // 0x0043FD80
-};
+}; } using N_0043fd80::CPodList;
 
 struct CBase_00443220 {
     virtual void v00();

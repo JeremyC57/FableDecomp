@@ -86,7 +86,7 @@ __declspec(noinline) bool __fastcall IS_THING_ALIVE(CThing* const& thing)       
         return true;
     return false;
 }
-__declspec(noinline) bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& pointer)   // 0x004CC340
+__declspec(noinline) bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& pointer)   // 0x004CC340
 {
     if (pointer.GetPItem() != 0) {
         if ((pointer.GetPItem()->m_flags & 1) == 0)
@@ -145,11 +145,11 @@ void CTCTrapBase::Trigger()
             CTCDExplosion* explosionDriver;
             explosion->GetTCDriver(&explosionDriver);
             for (CHitThing* it = HitThings.begin(); it != HitThings.end(); ++it)
-                if (IS_THING_ALIVE(it->first))
+                if (IS_THING_ALIVE_004cc340(it->first))
                     explosionDriver->SetThingAsImmune(*it->first.GetPItem());
             long count = ImmuneThings.size();
             for (long i = 0; i < count; ++i)
-                if (IS_THING_ALIVE(*(ImmuneThings.begin() + i)))
+                if (IS_THING_ALIVE_004cc340(*(ImmuneThings.begin() + i)))
                     explosionDriver->SetThingAsImmune(*(ImmuneThings.begin() + i)->GetPItem());
             if (PTrapDef->PhysicalObstructionDefIndex >= 0) {
                 float radius = explosionDriver->PhysicsRadius;

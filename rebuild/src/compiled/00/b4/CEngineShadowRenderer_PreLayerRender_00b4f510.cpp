@@ -24,14 +24,14 @@ struct CDisplayManager {
     void SetRenderTarget(CRenderTarget* target);        // 0x009BF160
     void ClearRenderTarget(const CRGBColour* colour, unsigned long flags);   // 0x009BE420
 };
-extern CDisplayManager* g_pDisplayManager;              // 0x01436E1C
+extern CDisplayManager* g_pDisplayManager_01436e1c;              // 0x01436E1C
 class CShaderRenderManager {
 public:
     void SetViewTransform(const CMatrix3x4& view);      // 0x00988350
     void SetProjectionTransform(const CMatrix4x4& projection);   // 0x00988540
 };
 extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
-extern CEngineShadowRenderer* g_pShadowRenderer;        // 0x01436E60
+extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;        // 0x01436E60
 struct CEngineComponentRenderParams {
     void*         Params;                               // +0x00
     long          RenderLayer;                          // +0x04
@@ -136,16 +136,16 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
     if (*(long*)RenderingTechnique != 0 && params.RenderLayer == 2) {
         *(bool*)ShadowBufferRenderStateCaptureBlock = true;
         g_pRenderStateManager->OpenCaptureBlock();
-        SetState(g_pRenderManagerCore->m_state2b60, FloatBits(g_pShadowRenderer->ShadowProjectionZOffset), g_pRenderManagerCore);
-        SetState(g_pRenderManagerCore->m_state2b74, FloatBits(g_pShadowRenderer->ShadowProjectionZSlopeOffset), g_pRenderManagerCore);
-        g_pDisplayManager->SetRenderTarget((CRenderTarget*)RenderTarget);
+        SetState(g_pRenderManagerCore->m_state2b60, FloatBits(g_pShadowRenderer_01436e60->ShadowProjectionZOffset), g_pRenderManagerCore);
+        SetState(g_pRenderManagerCore->m_state2b74, FloatBits(g_pShadowRenderer_01436e60->ShadowProjectionZSlopeOffset), g_pRenderManagerCore);
+        g_pDisplayManager_01436e1c->SetRenderTarget((CRenderTarget*)RenderTarget);
         if (*(long*)RenderingTechnique == 1) {
             CRGBColour white;
             white.R = 0xff;
             white.G = 0xff;
             white.B = 0xff;
             white.A = 0xff;
-            g_pDisplayManager->ClearRenderTarget(&white, 1);
+            g_pDisplayManager_01436e1c->ClearRenderTarget(&white, 1);
             SetState(g_pRenderManagerCore->m_state2840, 0, g_pRenderManagerCore);
         } else {
             CRGBColour white;
@@ -153,7 +153,7 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
             white.G = 0xff;
             white.B = 0xff;
             white.A = 0xff;
-            g_pDisplayManager->ClearRenderTarget(&white, 5);
+            g_pDisplayManager_01436e1c->ClearRenderTarget(&white, 5);
         }
         C2DBoxF window;
         SetWindowSize(window, ((CTextureView*)ShadowBufferTexture)->GetDimensions(0).Width,

@@ -4,12 +4,12 @@ static int g_AutoTinySequenceCount = 0;
 static void* g_AutoTinyFirstMember = 0;
 static void* g_AutoTinySecondMember = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall DestructFirstMember(void* member)
+void __fastcall DestructFirstMember_00739dd0(void* member)
 {
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall DestructSecondMember(void* member)
+void __fastcall DestructSecondMember_0099eae0(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
@@ -24,8 +24,8 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CModeCrouch_CompositeScalarDeletingDestructor(void* mode, int, unsigned int flags)
 {
-    DestructFirstMember(static_cast<unsigned char*>(mode) + 32);
-    DestructSecondMember(static_cast<unsigned char*>(mode) + 28);
+    DestructFirstMember_00739dd0(static_cast<unsigned char*>(mode) + 32);
+    DestructSecondMember_0099eae0(static_cast<unsigned char*>(mode) + 28);
     CModeCrouch_Destruct(mode);
     if (flags & 1)
         OperatorDelete(mode);

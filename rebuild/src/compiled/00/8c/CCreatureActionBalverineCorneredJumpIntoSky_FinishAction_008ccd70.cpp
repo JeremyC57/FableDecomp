@@ -183,9 +183,9 @@ struct CCombatActionBase : CCreatureActionBase {        // retail sizeof 0x114
 struct CCreatureAction_BalverineDropInFromSky : CCombatActionBase {    // vtable 0x0128390C
     CCreatureAction_BalverineDropInFromSky(CThingCreatureBase* owner); // 0x008CCBD0
 };
-struct CCreatureAction_BalverineLungeAttack : CCreatureAction_BalverineDropInFromSky {   // vtable 0x01283A54
+namespace N_008ccc10 { struct CCreatureAction_BalverineLungeAttack : CCreatureAction_BalverineDropInFromSky {   // vtable 0x01283A54
     CCreatureAction_BalverineLungeAttack(CThingCreatureBase* owner, CThing* target);    // 0x008CCC10
-};
+}; } using N_008ccc10::CCreatureAction_BalverineLungeAttack;
 struct CCreatureAction_BalverineCorneredJumpIntoSky : CCombatActionBase {
     C3DVector* EndPos;                                  // +0x114
     virtual void FinishAction();

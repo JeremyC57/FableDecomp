@@ -19,13 +19,13 @@ struct CCharString {
     CCharString(const char* text, long length);            // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
 };
-struct CByteArray {                                        // retail vector<unsigned char>: begin/end/capacity
+namespace N_00411910 { struct CByteArray {                                        // retail vector<unsigned char>: begin/end/capacity
     unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
     CByteArray(unsigned long n);                           // 0x00411910
     ~CByteArray() { if (m_begin) free(m_begin); }
     unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
     unsigned char& operator[](long index) { return m_begin[index]; }
-};
+}; } using N_00411910::CByteArray;
 struct CMemoryDataInputStream {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void ReadBuffer(void* buffer, long size);      // slot 4 (+0x10)

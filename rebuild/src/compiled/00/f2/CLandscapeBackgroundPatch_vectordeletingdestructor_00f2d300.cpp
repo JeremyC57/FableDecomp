@@ -2,11 +2,11 @@
 // destructor prologue for a polymorphic class), then destroys and optionally frees.
 // __fastcall this=ecx, flags=stack (ret 4).
 extern void* g_vtable[];              // 0x01230BA0
-struct T { void** vptr; void Dtor(); void* VecDel(unsigned flags); };
+struct T { void** vptr; void Dtor_009fc550(); void* VecDel(unsigned flags); };
 void operator delete(void*);
 void* T::VecDel(unsigned flags) {
     this->vptr = g_vtable;
-    this->Dtor();
+    this->Dtor_009fc550();
     if (flags & 1) operator delete(this);
     return this;
 }

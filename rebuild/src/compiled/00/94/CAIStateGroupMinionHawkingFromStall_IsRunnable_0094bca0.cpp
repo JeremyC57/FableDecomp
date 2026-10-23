@@ -62,10 +62,10 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
+namespace N_00668b60 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     CIntelligentPointerConstThing(CThing* item);    // 0x00668B60
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x00668B80
-};
+}; } using N_00668b60::CIntelligentPointerConstThing;
 struct CAIBrain {
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18

@@ -5,7 +5,7 @@ struct AutoTinyReverseLoopTarget
     unsigned char storage[4];
     void Invoke();
 };
-AutoTinyReverseLoopTarget g_AutoTinyReverseLoopObjects[3] = {0};
+AutoTinyReverseLoopTarget g_AutoTinyReverseLoopObjects_0143e934[3] = {0};
 void AutoTinyReverseLoopTarget::Invoke()
 {
     ++g_AutoTinyReverseLoopCalls;
@@ -13,7 +13,7 @@ void AutoTinyReverseLoopTarget::Invoke()
 void __fastcall CreateCRC()
 {
     AutoTinyReverseLoopTarget* cursor =
-        g_AutoTinyReverseLoopObjects + 3;
+        g_AutoTinyReverseLoopObjects_0143e934 + 3;
     for (int remaining = 3; remaining != 0; --remaining)
     {
         --cursor;

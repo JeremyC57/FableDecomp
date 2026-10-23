@@ -55,7 +55,7 @@ inline bool IS_THING_ALIVE(const CThing* thing)
 }
 
 struct SThingListNode { SThingListNode* _M_next; SThingListNode* _M_prev; CThing* _M_data; };
-struct CThingList {                                  // std::list<CThing*>: the header-node pointer
+namespace N_004ab4f0 { struct CThingList {                                  // std::list<CThing*>: the header-node pointer
     SThingListNode* _M_node;
     CThingList()
     {
@@ -76,7 +76,7 @@ struct CThingList {                                  // std::list<CThing*>: the 
         _M_node->_M_prev = _M_node;
         free(_M_node);
     }
-};
+}; } using N_004ab4f0::CThingList;
 
 struct CThingFilter_None {
 };

@@ -29,13 +29,13 @@ struct CDefPointer {                                              // CDefPointer
     }
 };
 struct CDefinitionManager {
-    bool GetDef(long defIndex, CDefPointer* def);                 // 0x00737F80
+    bool GetDef_00737f80(long defIndex, CDefPointer* def);                 // 0x00737F80
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long defIndex, CDefPointer* out)
+__declspec(noinline) bool CDefinitionManager::GetDef_00737f80(long defIndex, CDefPointer* out)
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -86,7 +86,7 @@ struct CTCCombat {
 void CTCCombat::AddMeleeFlourishAbility(long defIndex)
 {
     CDefPointer def;
-    GetDefinitionManager()->GetDef(defIndex, &def);
+    GetDefinitionManager()->GetDef_00737f80(defIndex, &def);
     CMeleeCombatAbilityDef* object = def.Object;
     AbilityList.push_back(def);
     UpdateUsableMeleeCombatAbilities();

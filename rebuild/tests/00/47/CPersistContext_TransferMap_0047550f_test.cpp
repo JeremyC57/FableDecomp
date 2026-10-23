@@ -90,10 +90,10 @@ struct CStringLongInsertResult {                       // pair<iterator, bool> (
 };
 struct CStringLongMap {                                // STLport map<CCharString, long>
     SMapNode* _M_header;                               // +0x00
-    SMapNode* find(const CCharString& key);            // 0x00475861
-    unsigned long erase(const CCharString& key);       // 0x00475BF6
-    CStringLongInsertResult insert(const CStringLongPair& value);   // 0x004758E3
-    void clear();                                      // 0x00453630
+    SMapNode* find_00475861(const CCharString& key);            // 0x00475861
+    unsigned long erase_00475bf6(const CCharString& key);       // 0x00475BF6
+    CStringLongInsertResult insert_004758e3(const CStringLongPair& value);   // 0x004758E3
+    void clear_00453630();                                      // 0x00453630
 };
 struct CMemoryDataInputStream;
 struct CDataOutputStream;
@@ -147,7 +147,7 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
         TransferMapOut_00475a51(PSaveStream, map);
         return;
     case 4:
-        map.clear();
+        map.clear_00453630();
         return;
     default: {
         CStringParser parser(*PParser);
@@ -159,12 +159,12 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
                 CCharString key;
                 traits.TransferIn(this, &parser, &key);
                 if (parser.ReadAsSymbol() == "]") {
-                    map.find(key);
+                    map.find_00475861(key);
                     long value;
                     TransferInLong_009e2590(this, &parser, &value);
                     EntryTransferred();
-                    map.erase(key);
-                    map.insert(CStringLongPair(key, value));
+                    map.erase_00475bf6(key);
+                    map.insert_004758e3(CStringLongPair(key, value));
                     if (parser.ReadAsSymbol() == ";")
                         CleanText(start, parser.CursorPos.StringPos);
                     else
@@ -210,10 +210,10 @@ void __fastcall TransferInLong_009e2590(CPersistContext*, CStringParser*, long* 
 void __fastcall TransferOutLong_009e2560(CPersistContext*, CCharString* out, long* value) { char b[32]; sprintf(b, "%ld", *value); *out += b; }
 SMapNode* __cdecl _M_increment(SMapNode* node) { return node->_M_right; }
 static int g_find = 0, g_erase = 0, g_insert = 0, g_clear = 0, g_in = 0, g_out = 0; static char g_insKey[32]; static long g_insVal = 0; static void* g_stream = 0;
-SMapNode* CStringLongMap::find(const CCharString& key) { CHECK(strcmp(Text(key), "Key1") == 0); ++g_find; return _M_header; }
-unsigned long CStringLongMap::erase(const CCharString& key) { CHECK(strcmp(Text(key), "Key1") == 0); ++g_erase; return 0; }
-CStringLongInsertResult CStringLongMap::insert(const CStringLongPair& value) { ++g_insert; strcpy(g_insKey, Text(value.first)); g_insVal = value.second; CStringLongInsertResult r; r._M_node = _M_header; return r; }
-void CStringLongMap::clear() { ++g_clear; }
+SMapNode* CStringLongMap::find_00475861(const CCharString& key) { CHECK(strcmp(Text(key), "Key1") == 0); ++g_find; return _M_header; }
+unsigned long CStringLongMap::erase_00475bf6(const CCharString& key) { CHECK(strcmp(Text(key), "Key1") == 0); ++g_erase; return 0; }
+CStringLongInsertResult CStringLongMap::insert_004758e3(const CStringLongPair& value) { ++g_insert; strcpy(g_insKey, Text(value.first)); g_insVal = value.second; CStringLongInsertResult r; r._M_node = _M_header; return r; }
+void CStringLongMap::clear_00453630() { ++g_clear; }
 void __fastcall TransferMapOut_00475a51(CDataOutputStream* stream, CStringLongMap&) { ++g_out; g_stream = stream; }
 void __fastcall TransferMapIn_00475aa6(CMemoryDataInputStream* stream, CStringLongMap&) { ++g_in; g_stream = stream; }
 static int g_crc = 0, g_err = 0, g_entries = 0; static long g_cleanStart = -1, g_cleanEnd = -1;

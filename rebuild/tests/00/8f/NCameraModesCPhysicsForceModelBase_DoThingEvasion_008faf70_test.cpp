@@ -61,7 +61,7 @@ template <class T> struct SListProxy {
     T* _M_data;
     SListProxy(T* p) : _M_data(p) { }
 };
-struct CThingList {                                 // list<const CThing*> (header node 0x0C)
+namespace N_00615540 { struct CThingList {                                 // list<const CThing*> (header node 0x0C)
     SListProxy<SThingNode> _M_node;
     CThingList() : _M_node(0)
     {
@@ -74,7 +74,7 @@ struct CThingList {                                 // list<const CThing*> (head
     SThingListIterator begin() { return SThingListIterator(_M_node._M_data->_M_next); }
     SThingListIterator end() { return SThingListIterator(_M_node._M_data); }
     void remove_if(unary_negate<NCameraModes::CGetThingsWithCollisionMesh> pred);   // 0x008FBDD0
-};
+}; } using N_00615540::CThingList;
 struct CPhysicsMeshObject { virtual ~CPhysicsMeshObject(); unsigned char _data[0x3c]; };
 struct SMeshNode { SMeshNode* _M_next; SMeshNode* _M_prev; CPhysicsMeshObject _M_data; };
 struct CMeshList {                                  // list<CPhysicsMeshObject> (header node 0x48)

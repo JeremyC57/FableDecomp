@@ -25,7 +25,7 @@ CCharString __fastcall GetRelativePathName(const CCharString& path, const CCharS
 struct CPersistContext {                               // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CCharString& output);              // 0x009BAE10
-    void Transfer(CCharString& value);                 // 0x009BAB50
+    void Transfer_009bab50(CCharString& value);                 // 0x009BAB50
 };
 
 namespace NParticleEngine {
@@ -57,31 +57,31 @@ void CParticleEmitterDatabase::GenerateHeaderFile(const CCharString& filename, l
     CPersistContext context(text);
     {
         CCharString line("HeaderFilename \"");
-        context.Transfer(line);
+        context.Transfer_009bab50(line);
     }
-    context.Transfer(GetRelativePathName(ParFilename, HeaderFilename));
+    context.Transfer_009bab50(GetRelativePathName(ParFilename, HeaderFilename));
     {
         CCharString line("\"\r\n");
-        context.Transfer(line);
+        context.Transfer_009bab50(line);
     }
     {
         CCharString line("BEGIN_DATABASE\r\n");
-        context.Transfer(line);
+        context.Transfer_009bab50(line);
     }
     for (CEmitterEntry* it = Emitters_start; it != Emitters_finish; ++it) {
         {
             CCharString line("BEGIN_EMITTER\r\n");
-            context.Transfer(line);
+            context.Transfer_009bab50(line);
         }
         it->Emitter->GenerateHeader(context, options);
         {
             CCharString line("END_EMITTER\r\n");
-            context.Transfer(line);
+            context.Transfer_009bab50(line);
         }
     }
     {
         CCharString line("END_DATABASE\r\n");
-        context.Transfer(line);
+        context.Transfer_009bab50(line);
     }
     text.SaveToFile(filename);
 }

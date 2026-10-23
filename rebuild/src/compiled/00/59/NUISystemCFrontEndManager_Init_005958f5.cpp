@@ -30,7 +30,7 @@ public:
 };
 class CUserProfileManager {
 public:
-    void SetDefaultValues();                             // 0x00409B70
+    void SetDefaultValues_00409b70();                             // 0x00409B70
     void DeleteTempSavesForProfile(const CWideString& name);   // 0x00406770
 };
 template <class T> class CTBaseSingleton {
@@ -86,7 +86,7 @@ void CFrontEndManager::Init(CCountedPointer<CGraphicDataBank> graphics, CCounted
     CManager::GetInstance()->SetDefinitionManager(definitions);
     PScreenToActivate = 0;
     PScreenToDeactivate = 0;
-    CTBaseSingleton<CUserProfileManager>::Get().SetDefaultValues();
+    CTBaseSingleton<CUserProfileManager>::Get().SetDefaultValues_00409b70();
     std::vector<CWideString> names;
     GetProfileNames(names);
     const unsigned int count = names.size();

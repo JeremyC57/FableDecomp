@@ -5,16 +5,16 @@ static void* g_subArg = 0;
 static int g_subFlag = 0;
 static void* g_subThis = 0;
 
-void __fastcall CThingNoiseDef_baseTransfer(void* self)
+void __fastcall CThingNoiseDef_baseTransfer_00c39f10(void* self)
 {
     g_baseCalled = 1;
     (void)self;
 }
 
 struct CThingNoiseSub {
-    void Transfer(void* a, int flag);
+    void Transfer_00c39450(void* a, int flag);
 };
-void CThingNoiseSub::Transfer(void* a, int flag)
+void CThingNoiseSub::Transfer_00c39450(void* a, int flag)
 {
     g_subThis = this;
     g_subArg = a;

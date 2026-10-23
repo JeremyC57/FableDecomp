@@ -23,10 +23,10 @@ struct SPair { CCharString first; CPersistInfo second; };
 
 struct CPersistMap {
     SPair* m_pFirst; SPair* m_pLast; SPair* m_pEnd; long m_sorted;
-    SPair* LowerBound(const CCharString& key) { SPair* it = m_pFirst; while (it != m_pLast && it->first < key) ++it; return it; }
+    SPair* LowerBound_004b97d0(const CCharString& key) { SPair* it = m_pFirst; while (it != m_pLast && it->first < key) ++it; return it; }
     SPair* Find(const CCharString& key)
     {
-        SPair* it = LowerBound(key);
+        SPair* it = LowerBound_004b97d0(key);
         SPair* last = m_pLast;
         return (it == last || key < it->first) ? last : it;
     }

@@ -30,13 +30,13 @@ struct CThingCreatureDef : CDefPointeeBase {
 };
 
 struct CDefinitionManager {
-    bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);   // 0x0083E0D0
+    bool GetDef_0083e0d0(long index, CDefPointer<CThingCreatureDef>& out);   // 0x0083E0D0
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingCreatureDef>& out)
+__declspec(noinline) bool CDefinitionManager::GetDef_0083e0d0(long index, CDefPointer<CThingCreatureDef>& out)
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -59,7 +59,7 @@ struct CThingDeadCreature : CThing {
 const CThingCreatureDef& CThingDeadCreature::PeekDefinition() const
 {
     CDefPointer<CThingCreatureDef> def;
-    GetDefinitionManager()->GetDef(m_defGlobalIndex, def);
+    GetDefinitionManager()->GetDef_0083e0d0(m_defGlobalIndex, def);
     CThingCreatureDef* creatureDef = def.m_pObject;
     if (creatureDef)
         creatureDef->ReleaseDef();

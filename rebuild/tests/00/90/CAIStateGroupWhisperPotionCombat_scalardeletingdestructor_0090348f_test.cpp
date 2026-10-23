@@ -3,7 +3,7 @@ static int g_AutoTinyMemberDestructorCalls = 0;
 static int g_AutoTinyCompositeDestructorCalls = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
 static void* g_AutoTinyObservedMember = 0;
-void __fastcall DestructMember(void* member)
+void __fastcall DestructMember_004406d0(void* member)
 {
     ++g_AutoTinyMemberDestructorCalls;
     g_AutoTinyObservedMember = member;
@@ -18,7 +18,7 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CAIStateGroup_WhisperPotionCombat_CompositeScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
-    DestructMember(static_cast<unsigned char*>(stateGroup) + 28);
+    DestructMember_004406d0(static_cast<unsigned char*>(stateGroup) + 28);
     CAIStateGroup_WhisperPotionCombat_Destruct(stateGroup);
     if (flags & 1)
         OperatorDelete(stateGroup);

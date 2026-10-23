@@ -62,7 +62,7 @@ struct CThing {
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_statusFlags;           // +0x91 (bit 0: dead)
     const C3DVector& GetPosition() const;   // 0x004C73D0
-    CPlayerManager* GetPlayerManager();     // 0x004C79F0
+    CPlayerManager* GetPlayerManager_004c79f0();     // 0x004C79F0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -92,7 +92,7 @@ bool CThingCreatureBase::IsPickPocketable()
     CCreatureDef* def = out.m_pObject;
     if (def) {
         if (def->PickPocketable) {
-            CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPlayerCreature();
+            CThing* hero = GetPlayerManager_004c79f0()->GetMainPlayer()->GetPlayerCreature();
             CTCPerceiveThing* perceive;
             if (hero && !(hero->m_statusFlags & 1) && GetInterface(&perceive, 0x34)) {
                 if (perceive->GetPerceivedThing() != hero || !perceive->CanSeeOrSmellPerceivedThing()) {
@@ -120,7 +120,7 @@ bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector
 static C3DVector g_pos[2]; static CThing* g_thingForPos[2];
 const C3DVector& CThing::GetPosition() const { return this == g_thingForPos[0] ? g_pos[0] : g_pos[1]; }
 static CThing* g_hero; static CPlayer g_player; static CPlayerManager g_pm;
-CPlayerManager* CThing::GetPlayerManager() { return &g_pm; }
+CPlayerManager* CThing::GetPlayerManager_004c79f0() { return &g_pm; }
 CPlayer* CPlayerManager::GetMainPlayer() const { return &g_player; }
 CThing* CPlayer::GetPlayerCreature() { return g_hero; }
 static CTCPerceiveThing g_perceive; static CThing* g_perceived; static bool g_canSee;

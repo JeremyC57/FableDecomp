@@ -28,7 +28,7 @@ struct CPersistContext {
     long               Mode;
     unsigned char      _pad1c[0xc];
     CDataOutputStream* Stream;
-    void Transfer(CCharString& value) { g_transferAt = ++g_seq; g_transferred = &value; }
+    void Transfer_009bab50(CCharString& value) { g_transferAt = ++g_seq; g_transferred = &value; }
 };
 static CPersistContext* g_boastsContext;
 struct CQuestManager {
@@ -45,7 +45,7 @@ void CQuestManager::SaveGameState(CPersistContext& context)
         context.Stream->WriteULong(state.GetLength());
         context.Stream->WriteBuffer(state.GetPString(), state.GetLength());
     } else
-        context.Transfer(state);
+        context.Transfer_009bab50(state);
     TransferBoasts(context);
 }
 static void reset() { g_seq = 0; g_ulongAt = g_bufferAt = g_transferAt = g_boastsAt = 0; g_ulong = 99; g_bufData = 0; g_bufSize = -1; g_transferred = 0; g_ctorCalls = g_dtorCalls = g_buildCalls = 0; }

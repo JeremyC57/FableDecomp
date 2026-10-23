@@ -37,7 +37,7 @@ struct CPersistContext {
     long               Mode;                       // +0x18
     unsigned char      _pad1c[0xc];
     CDataOutputStream* Stream;                     // +0x28
-    void Transfer(CCharString& value);             // 0x009BAB50
+    void Transfer_009bab50(CCharString& value);             // 0x009BAB50
 };
 
 struct CQuestManager {
@@ -55,6 +55,6 @@ void CQuestManager::SaveGameState(CPersistContext& context)
         context.Stream->WriteULong(state.GetLength());
         context.Stream->WriteBuffer(state.GetPString(), state.GetLength());
     } else
-        context.Transfer(state);
+        context.Transfer_009bab50(state);
     TransferBoasts(context);
 }

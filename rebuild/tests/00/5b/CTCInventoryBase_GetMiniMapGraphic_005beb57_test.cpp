@@ -82,7 +82,7 @@ extern const float g_mapEdgeZ;                  // 0x01253D40 (51.0f)
 
 namespace NInventory {
 struct CTCInventoryBase {
-    CPlayerManager* GetPlayerManager() const;   // 0x00686D50 (CTCBase, const)
+    CPlayerManager* GetPlayerManager_00686d50() const;   // 0x00686D50 (CTCBase, const)
     long GetMiniMapGraphic(const CRegion* region);
 };
 long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
@@ -105,7 +105,7 @@ long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
             isPrisonCourtyard = true;
     }
     {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+        CThing* hero = GetPlayerManager_00686d50()->GetMainPlayer()->GetControlledCreature();
         if (IS_THING_ALIVE(hero) && isPrisonCourtyard && hero->GetPosition().Z > g_mapEdgeZ) {
             SGraphicNode* upperCourtyard;
             {
@@ -135,7 +135,7 @@ CThing* CPlayer::GetControlledCreature() { return g_heroPtr; }
 static CPlayer g_player;
 CPlayer* CPlayerManager::GetMainPlayer() const { return &g_player; }
 static CPlayerManager g_pm;
-CPlayerManager* CTCInventoryBase::GetPlayerManager() const { return &g_pm; }
+CPlayerManager* CTCInventoryBase::GetPlayerManager_00686d50() const { return &g_pm; }
 const float g_mapEdgeZ = 51.0f;
 // a three-node tree: root "MINIMAP_PRISONCOURTYARD1" with left "MINIMAP_FOREST" and right "MINIMAP_PRISONCOURTYARD2"
 static SGraphicNode* mk(unsigned char* raw, const char* key, long value)

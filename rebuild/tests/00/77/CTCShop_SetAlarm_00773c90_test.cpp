@@ -31,7 +31,7 @@ static unsigned long g_stopped = 0; static int g_stopAll = 0;
 struct CTCSoundPlayer : CTCBase {
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool attach, long, long)
     { g_playedFirst = sound.First; g_playedSecond = sound.Second; g_playLoop = init.LoopCount; g_playFlags = init.Flags; g_playAttach = attach; return 0x777; }
-    void StopSample(unsigned long sample) { g_stopped = sample; }
+    void StopSample_0066ad90(unsigned long sample) { g_stopped = sample; }
     void StopAllAttachedSounds() { ++g_stopAll; }
 };
 struct CInterfaceMap {
@@ -74,7 +74,7 @@ void CTCShop::SetAlarm(bool on)
         unsigned long alarm = Alarm;
         if (alarm && ParentThing->HasTC(0x10)) {
             CTCSoundPlayer* player = ParentThing->GetTC<CTCSoundPlayer>(0x10);
-            player->StopSample(alarm);
+            player->StopSample_0066ad90(alarm);
             player->StopAllAttachedSounds();
         }
         Alarm = 0;

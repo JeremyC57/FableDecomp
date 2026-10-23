@@ -95,7 +95,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
 #pragma pack(pop)
 class CThing;
 class CComponent;
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x005CC1B0
+template <class T> bool __fastcall IS_THING_ALIVE_005cc1b0(const T& thing);   // 0x005CC1B0
 bool __fastcall IsMeleeWeaponClass(long weaponClass);       // 0x005DA510
 
 namespace NInventory {
@@ -119,9 +119,9 @@ struct CTCInventoryWeapons : NInventory::CTCInventoryBase {
 void CTCInventoryWeapons::CheckForSoldWieldedWeapons()
 {
     CItemVector items;
-    if (IS_THING_ALIVE(PActiveMeleeWeapon) || IS_THING_ALIVE(PActiveRangedWeapon))
+    if (IS_THING_ALIVE_005cc1b0(PActiveMeleeWeapon) || IS_THING_ALIVE_005cc1b0(PActiveRangedWeapon))
         GetAllItems(items);
-    if (IS_THING_ALIVE(PActiveMeleeWeapon)) {
+    if (IS_THING_ALIVE_005cc1b0(PActiveMeleeWeapon)) {
         for (unsigned int i = 0; i < items.size(); ++i) {
             if (items[i].count > 0) {
                 CDefClassPointer def = GetDefinitionManager()->GetPDefFromGlobalIndex(items[i].defIndex);
@@ -134,7 +134,7 @@ void CTCInventoryWeapons::CheckForSoldWieldedWeapons()
             }
         }
     }
-    if (IS_THING_ALIVE(PActiveRangedWeapon)) {
+    if (IS_THING_ALIVE_005cc1b0(PActiveRangedWeapon)) {
         for (unsigned int i = 0; i < items.size(); ++i) {
             if (items[i].count > 0) {
                 CDefClassPointer def = GetDefinitionManager()->GetPDefFromGlobalIndex(items[i].defIndex);

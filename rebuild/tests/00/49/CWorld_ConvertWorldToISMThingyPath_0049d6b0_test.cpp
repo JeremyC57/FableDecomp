@@ -13,18 +13,18 @@ static void SplitPath(const CWideString& path, CWideString*, CWideString*, CWide
     const char* p = std::strrchr(path.text, '\\'); p = p ? p + 1 : path.text;
     std::strcpy(name->text, p); char* dot = std::strrchr(name->text, '.'); if (dot) *dot = 0;
 }
-static CWideString GetLevelsDirectory() { return CWideString("Data\\Levels\\"); }
+static CWideString GetLevelsDirectory_0041a410() { return CWideString("Data\\Levels\\"); }
 struct CWorld {
     CWideString ConvertWorldToISMThingyPath(const CWideString& world, bool xbox, bool runtime) const
     {
         CWideString name;
         SplitPath(world, 0, 0, &name, 0);
         if (runtime) {
-            if (xbox) name = GetLevelsDirectory() + name + "_RT_XB.ism";
-            else name = GetLevelsDirectory() + name + "_RT.ism";
+            if (xbox) name = GetLevelsDirectory_0041a410() + name + "_RT_XB.ism";
+            else name = GetLevelsDirectory_0041a410() + name + "_RT.ism";
         } else {
-            if (xbox) name = GetLevelsDirectory() + name + "_XB.ism";
-            else name = GetLevelsDirectory() + name + ".ism";
+            if (xbox) name = GetLevelsDirectory_0041a410() + name + "_XB.ism";
+            else name = GetLevelsDirectory_0041a410() + name + ".ism";
         }
         return name;
     }

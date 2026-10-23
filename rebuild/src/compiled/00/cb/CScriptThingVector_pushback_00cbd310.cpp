@@ -42,7 +42,7 @@ struct CScriptThingVector {
     CScriptThing* m_start;                  // +0
     CScriptThing* m_finish;                 // +4
     CScriptThing* m_end_of_storage;         // +8
-    void _M_insert_overflow(CScriptThing* position, const CScriptThing& scriptThing, const __false_type&,
+    void _M_insert_overflow_00cbc940(CScriptThing* position, const CScriptThing& scriptThing, const __false_type&,
                             unsigned long fill_len, bool atend);        // 0x00CBC940
     void push_back(const CScriptThing& scriptThing);
 };
@@ -54,5 +54,5 @@ void CScriptThingVector::push_back(const CScriptThing& scriptThing)
         ++m_finish;
     }
     else
-        _M_insert_overflow(m_finish, scriptThing, __false_type(), 1, true);
+        _M_insert_overflow_00cbc940(m_finish, scriptThing, __false_type(), 1, true);
 }

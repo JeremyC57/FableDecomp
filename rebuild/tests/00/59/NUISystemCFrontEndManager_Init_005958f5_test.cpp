@@ -13,7 +13,7 @@ public:
 };
 class CUserProfileManager {
 public:
-    void SetDefaultValues();                             // 0x00409B70
+    void SetDefaultValues_00409b70();                             // 0x00409B70
     void DeleteTempSavesForProfile(const CWideString& name);   // 0x00406770
 };
 template <class T> class CTBaseSingleton {
@@ -69,7 +69,7 @@ void CFrontEndManager::Init(CCountedPointer<CGraphicDataBank> graphics, CCounted
     CManager::GetInstance()->SetDefinitionManager(definitions);
     PScreenToActivate = 0;
     PScreenToDeactivate = 0;
-    CTBaseSingleton<CUserProfileManager>::Get().SetDefaultValues();
+    CTBaseSingleton<CUserProfileManager>::Get().SetDefaultValues_00409b70();
     std::vector<CWideString> names;
     GetProfileNames(names);
     const unsigned int count = names.size();
@@ -86,7 +86,7 @@ template <class T> CCountedPointer<T>::CCountedPointer(const CCountedPointer& o)
 template <class T> CCountedPointer<T>::~CCountedPointer() { Log(Info == (void*)1 ? 10 : Info == (void*)2 ? 11 : 12); }
 static CUserProfileManager g_upm;
 template <class T> T& __fastcall CTBaseSingleton<T>::Get() { Log(5); return g_upm; }
-void CUserProfileManager::SetDefaultValues() { Log(6); }
+void CUserProfileManager::SetDefaultValues_00409b70() { Log(6); }
 void CUserProfileManager::DeleteTempSavesForProfile(const CWideString& n) { Log(8); g_deleted[g_del++] = &n; }
 template <class T> std::vector<T>::~vector() { Log(9); }
 template <class K, class V> void std::map<K, V>::clear() { Log(1); _M_node_count = 0; }

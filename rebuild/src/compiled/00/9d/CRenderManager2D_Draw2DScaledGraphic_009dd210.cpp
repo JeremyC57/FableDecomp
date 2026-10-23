@@ -103,7 +103,7 @@ struct CGraphicDataBank {
     CRetailVector<CGraphicInfo> m_records;             // +0x1e0
     __forceinline const CGraphicInfo* Get(unsigned long index) const { return index < m_records.size() ? &m_records[index] : 0; }
 };
-float __fastcall GFAXToVX(float x);                    // 0x009E1E10
+float __fastcall GFAXToVX_009e1e10(float x);                    // 0x009E1E10
 float __fastcall GFAYToVY(float y);                    // 0x009E1E40
 extern float g_ScreenRHW;                              // 0x0139652C
 static const unsigned long s_CornerOrderNormal[4] = { 0, 1, 2, 3 };    // 0x0129B94C
@@ -141,10 +141,10 @@ bool CRenderManager2D::Draw2DScaledGraphic(const C2DBoxF& box, const CGraphicDat
     CTextureQuadUVs uvs;
     {
         float left = box.TLX;
-        v[0].X = GFAXToVX(left);
+        v[0].X = GFAXToVX_009e1e10(left);
         v[0].Y = GFAYToVY(box.TLY);
         v[0].Diffuse = 0xffffffff;
-        v[2].X = v[1].X = GFAXToVX(box.BRX);
+        v[2].X = v[1].X = GFAXToVX_009e1e10(box.BRX);
         v[1].Y = v[0].Y;
         v[1].Diffuse = 0xffffffff;
         v[3].Y = v[2].Y = GFAYToVY(box.BRY);

@@ -54,8 +54,8 @@ public:
 class CTCHeroStats {                                    // interface 4
 public:
     enum { INTERFACE_TYPE = 4 };
-    void SetAge(float age);                              // 0x0057B26F (clamped to [0, 1]; name not confirmed)
-    void ResetTrainingStatus();                          // 0x0057A5BE (name not confirmed)
+    void SetAge_0057b26f(float age);                              // 0x0057B26F (clamped to [0, 1]; name not confirmed)
+    void ResetTrainingStatus_0057a5be();                          // 0x0057A5BE (name not confirmed)
 };
 class CThingPlayerCreature : public CThing { };
 struct CPlayer_Methods : CPlayer {
@@ -85,8 +85,8 @@ void CGameScriptInterface::SetHeroAsTeenager(bool teenager) const
         CTCHeroStats* stats;
         if (hero->GetTC(&stats))
         {
-            stats->SetAge(1.0f);
-            stats->ResetTrainingStatus();
+            stats->SetAge_0057b26f(1.0f);
+            stats->ResetTrainingStatus_0057a5be();
         }
     }
 }
@@ -100,8 +100,8 @@ static unsigned char g_playerRaw[sizeof(CPlayer_Methods)];
 CPlayer_Methods& CPlayerManager::GetMainPlayer() { return *(CPlayer_Methods*)g_playerRaw; }
 static int g_teenCalls, g_ageCalls, g_resetCalls; static bool g_teen; static float g_age; static void* g_morphThis; static void* g_statsThis;
 void CTCHeroMorph::SetAsTeenager(bool t) { ++g_teenCalls; g_teen = t; g_morphThis = this; }
-void CTCHeroStats::SetAge(float a) { ++g_ageCalls; g_age = a; g_statsThis = this; }
-void CTCHeroStats::ResetTrainingStatus() { ++g_resetCalls; if (this != g_statsThis) g_resetCalls += 100; }
+void CTCHeroStats::SetAge_0057b26f(float a) { ++g_ageCalls; g_age = a; g_statsThis = this; }
+void CTCHeroStats::ResetTrainingStatus_0057a5be() { ++g_resetCalls; if (this != g_statsThis) g_resetCalls += 100; }
 int main()
 {
     static char morph, stats;

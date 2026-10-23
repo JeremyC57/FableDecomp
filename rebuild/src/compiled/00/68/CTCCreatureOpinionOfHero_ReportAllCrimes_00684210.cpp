@@ -47,7 +47,7 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer { CThing* GetHeroCreature(); };               // 0x00487DD0
+struct CPlayer { CThing* GetHeroCreature_00487dd0(); };               // 0x00487DD0
 struct CPlayerManager { CPlayer* GetMainPlayer() const; };   // 0x00449960
 struct CTCVillager;
 struct CTCVillage {
@@ -137,7 +137,7 @@ void CTCCreatureOpinionOfHero::ReportAllCrimes(CTCCreatureOpinionOfHero* informe
         if (!GetThingSearchTools()->GetPFirstLeafThing(CThingFilter_AICreatureHasProperty(3), &guard))
             return;
     }
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature_00487dd0();
     if (!hero)
         return;
     CTCHeroOpinionDeedLog* log;

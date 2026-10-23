@@ -110,10 +110,10 @@ struct CDefPointer {
 };
 struct CDefinitionManager {
     CDefPointer GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40 (hidden result pointer)
-    bool GetDef(const CCharString& name, CDefPointer& out);   // 0x00CDE280 (body below: the template's header definition)
+    bool GetDef_00cde280(const CCharString& name, CDefPointer& out);   // 0x00CDE280 (body below: the template's header definition)
 };
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(const CCharString& name, CDefPointer& out)
+bool CDefinitionManager::GetDef_00cde280(const CCharString& name, CDefPointer& out)
 {
     CDefPointer def = GetPDefFromInstantiationName(name);
     if (def.m_p) {
@@ -202,7 +202,7 @@ void CV_RandomPopulationSimScript::ProcessAlbionPopulationSim()
             HighDetailSimulationActive = false;
             CDefPointer def;
             CCharString defName = CCharString("REGION_") + CCharString(region).ToUpper();
-            if (!bountyHuntRegion && GFGetPDefinitionManager()->GetDef(defName, def)) {
+            if (!bountyHuntRegion && GFGetPDefinitionManager()->GetDef_00cde280(defName, def)) {
                 if (IsActiveThreadTerminating())
                     return;
                 SetCurrentPopulationRegionFromRegionName(region);

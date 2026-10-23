@@ -23,13 +23,13 @@ struct CPlayer { CThing* hero; bool main; long number;
     CThing* GetHeroThing() { return hero; } bool IsMainPlayer() const { return main; } long GetJoystickDeviceNumber() const { return number; } };
 static CPlayer g_players[2];
 struct CPlayerManager {
-    CPlayer* GetPlayer(long n) { return &g_players[n]; }
+    CPlayer* GetPlayer_00449910(long n) { return &g_players[n]; }
     bool DrawGetEnvironmentInfo(long playerNumber, CWideString& text);
 };
 bool CPlayerManager::DrawGetEnvironmentInfo(long playerNumber, CWideString& text)
 {
     text = "";
-    CPlayer* player = GetPlayer(playerNumber);
+    CPlayer* player = GetPlayer_00449910(playerNumber);
     CThing* hero = player->GetHeroThing();
     if (player->IsMainPlayer() || hero == 0)
         return false;

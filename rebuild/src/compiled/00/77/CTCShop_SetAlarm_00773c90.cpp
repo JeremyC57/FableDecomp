@@ -45,7 +45,7 @@ struct CSoundInit {                                     // 0x20 bytes (ctor 0x00
 };
 struct CTCSoundPlayer {
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool attach, long a, long b);   // 0x0066B280
-    void StopSample(unsigned long sample);              // 0x0066AD90
+    void StopSample_0066ad90(unsigned long sample);              // 0x0066AD90
     void StopAllAttachedSounds();                       // 0x0066AEB0
 };
 struct CInterfaceMap {
@@ -93,7 +93,7 @@ void CTCShop::SetAlarm(bool on)
         unsigned long alarm = Alarm;
         if (alarm && ParentThing->HasTC(0x10)) {
             CTCSoundPlayer* player = ParentThing->GetTC<CTCSoundPlayer>(0x10);
-            player->StopSample(alarm);
+            player->StopSample_0066ad90(alarm);
             player->StopAllAttachedSounds();
         }
         Alarm = 0;

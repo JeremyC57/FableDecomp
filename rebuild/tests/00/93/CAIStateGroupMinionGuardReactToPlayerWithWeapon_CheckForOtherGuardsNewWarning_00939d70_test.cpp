@@ -11,12 +11,12 @@ template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(con
 struct CMessageEventFilter_CanBeSeenOrHeard { long m_sinceId; CMessageEventFilter_CanBeSeenOrHeard(long s) : m_sinceId(s) {} };
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CWarningFilter;
 static CMessageEvent g_ev; static long g_type = 0; static long g_since = 0; static bool g_found = true;
-struct CMessageEventManager { CMessageEvent* FindMostRecentMessage(const CWarningFilter& f) { g_type = f.m_pFirst->m_type; g_since = f.m_pSecond->m_sinceId; return g_found ? &g_ev : 0; } };
+struct CMessageEventManager { CMessageEvent* FindMostRecentMessage_00939cb0(const CWarningFilter& f) { g_type = f.m_pFirst->m_type; g_since = f.m_pSecond->m_sinceId; return g_found ? &g_ev : 0; } };
 struct CWorld { unsigned char _pad[0x60]; CMessageEventManager* m_pMessageManager; CMessageEventManager* GetPMessageManager() { return m_pMessageManager; } };
 struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; CWorld* w; CWorld* GetPThingWorld() { return w; } };
 struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase { void* m_pWarningSource; long _pad18; long m_lastWarningId; bool CheckForOtherGuardsNewWarning(); };
 bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::CheckForOtherGuardsNewWarning()
-{ CMessageEvent* event = GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x1b) && CMessageEventFilter_CanBeSeenOrHeard(m_lastWarningId));
+{ CMessageEvent* event = GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage_00939cb0(CMessageEventFilter_IsOfType(0x1b) && CMessageEventFilter_CanBeSeenOrHeard(m_lastWarningId));
   if (event) { m_lastWarningId = event->m_id; m_pWarningSource = event->m_pSource; return true; } return false; }
 int main()
 {

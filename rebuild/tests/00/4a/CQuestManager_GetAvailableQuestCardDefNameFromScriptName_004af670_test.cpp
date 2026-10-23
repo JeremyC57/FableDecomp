@@ -14,7 +14,7 @@ static inline bool SameText(const CCharStringData* a, const CCharStringData* b)
     return false;
 }
 
-static CCharString g_EmptyCharString = { 0 };
+static CCharString g_EmptyCharString_013bd804 = { 0 };
 
 struct CQuestCard { CCharString DefName; CCharString ScriptName; bool Replayable; long FeatIndex; };
 struct CQuestCardNode { CQuestCardNode* next; CQuestCardNode* prev; CQuestCard value; };
@@ -33,7 +33,7 @@ struct CQuestManager {
                 node = node->next;
             } while (node != head);
         }
-        return g_EmptyCharString;
+        return g_EmptyCharString_013bd804;
     }
 };
 
@@ -48,9 +48,9 @@ int main()
     CCharString k = { &key }, o = { &other }, same = { &sA };
     if (&q.GetAvailableQuestCardDefNameFromScriptName(k) != &n2.value.DefName) { std::printf("004af670_TEST FAIL\n"); return 1; }
     if (&q.GetAvailableQuestCardDefNameFromScriptName(same) != &n1.value.DefName) { std::printf("004af670_TEST FAIL\n"); return 1; }
-    if (&q.GetAvailableQuestCardDefNameFromScriptName(o) != &g_EmptyCharString) { std::printf("004af670_TEST FAIL\n"); return 1; }
+    if (&q.GetAvailableQuestCardDefNameFromScriptName(o) != &g_EmptyCharString_013bd804) { std::printf("004af670_TEST FAIL\n"); return 1; }
     CQuestCardNode empty; empty.next = &empty; q.AvailableQuestCardTypes = &empty;
-    if (&q.GetAvailableQuestCardDefNameFromScriptName(k) != &g_EmptyCharString) { std::printf("004af670_TEST FAIL\n"); return 1; }
+    if (&q.GetAvailableQuestCardDefNameFromScriptName(k) != &g_EmptyCharString_013bd804) { std::printf("004af670_TEST FAIL\n"); return 1; }
     std::printf("004af670_TEST PASS\n");
     return 0;
 }

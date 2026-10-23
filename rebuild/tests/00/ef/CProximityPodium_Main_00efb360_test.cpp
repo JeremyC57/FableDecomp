@@ -15,11 +15,11 @@ struct CScriptThing {
     virtual ~CScriptThing() {}
     virtual void SetActivationTriggerStatus(bool on) { Log(on ? "on" : "off"); }
 };
-struct CIsThingAlive {
+namespace N_00ef7ab0 { struct CIsThingAlive {
     CScriptThing m_thing;
     CIsThingAlive(const CScriptThing& t) : m_thing(t) { Log("pred"); }
     ~CIsThingAlive() { Log("~pred"); }
-};
+}; } using N_00ef7ab0::CIsThingAlive;
 static CScriptThing g_hero;
 static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float d)
 { char c = *g_near; if (c) ++g_near; return c == '1' && a.id == 5 && &b == &g_hero && d == 2.0f; }

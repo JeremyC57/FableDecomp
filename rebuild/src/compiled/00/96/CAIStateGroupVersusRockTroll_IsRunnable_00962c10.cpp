@@ -220,13 +220,13 @@ struct CDefPointer {
     T* operator->() const { return Object; }
 };
 struct CDefClassBase {
-    bool GetSubDef(CDefPointer<CAbilityDef>* out);   // 0x00485815 (GetSubDef<CAbilityDef>)
+    bool GetSubDef_00485815(CDefPointer<CAbilityDef>* out);   // 0x00485815 (GetSubDef<CAbilityDef>)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAbilityDef>* out)
+__declspec(noinline) bool CDefClassBase::GetSubDef_00485815(CDefPointer<CAbilityDef>* out)
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -256,7 +256,7 @@ bool CAIStateGroup_VersusRockTroll::IsRunnable()
     CThing* enemy = tracker->GetEnemy();
     CDefPointer<CAbilityDef> holder;
     if (enemy && !(enemy->m_flags91 & 1)) {
-        bool found = GetThingDef(enemy)->GetSubDef(&holder);
+        bool found = GetThingDef(enemy)->GetSubDef_00485815(&holder);
         CAbilityDef* ability = holder.Object;
         if (found && (ability->AbilityType == 0x10000 || ability->AbilityType == 0x8000)) {
             unsigned long* seed = GetPWorld()->GetPRandomSeed();

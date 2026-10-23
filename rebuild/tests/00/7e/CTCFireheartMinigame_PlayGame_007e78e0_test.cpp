@@ -71,7 +71,7 @@ public:
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x4];
     CThingSearchTools* GetThingSearchTools() const; // 0x00686D90
-    CPlayerManager* GetPlayerManager();             // 0x00686D40
+    CPlayerManager* GetPlayerManager_00686d40();             // 0x00686D40
 };
 
 class CTCFireheartMinigame : public CTCBase {
@@ -105,7 +105,7 @@ void CTCFireheartMinigame::PlayGame()
     YPos = 3;
     CTCPhysicsBase* physics = ParentThing->PhysicsTC;
     physics->SetPosition(Markers[0][3]->GetPosition());
-    CPlayer* player = GetPlayerManager()->GetMainPlayer();
+    CPlayer* player = GetPlayerManager_00686d40()->GetMainPlayer();
     if (player->GetCurrentMode() != 0x2a)
         player->AddMode(0x2a, false);
     g_pPlayerGui->DisplayBottomHalfGUI = false;
@@ -137,7 +137,7 @@ static CPlayerGui g_gui;
 CPlayerGui* g_pPlayerGui = &g_gui;
 void CTCBase::v00() {}
 CThingSearchTools* CTCBase::GetThingSearchTools() const { return &g_tools; }
-CPlayerManager* CTCBase::GetPlayerManager() { return &g_pm; }
+CPlayerManager* CTCBase::GetPlayerManager_00686d40() { return &g_pm; }
 
 int main()
 {

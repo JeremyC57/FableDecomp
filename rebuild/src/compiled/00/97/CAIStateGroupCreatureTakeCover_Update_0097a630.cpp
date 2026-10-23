@@ -74,11 +74,11 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
+namespace N_0056c860 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(CThing* item);                         // 0x0056C860
     CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other);   // 0x0091F990
-};
+}; } using N_0056c860::CIntelligentPointerConstThing;
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing>
     virtual void v00();
 };

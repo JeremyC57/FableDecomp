@@ -71,6 +71,14 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)
     *(void**)&thing = p;
     return false;
 }
+template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing)   // the 0x00436380 copy (same stand-in body)
+{
+    void* p = FindRef_free_IS_THING_ALIVE_2();
+    if (!p)
+        return false;
+    *(void**)&thing = p;
+    return false;
+}
 #pragma auto_inline(on)
 struct CPlayer {
     CThingPlayerCreature* GetControlledCreature(); // 0x00487DD0
@@ -164,7 +172,7 @@ void CDrawPerceivers::Update()
         return;
     for (CRetailThingPointerList::iterator it = Things.begin(); it != Things.end(); ) {
         const CThing* thing = (*it).GetPItem();
-        if (IS_THING_ALIVE(thing)) {
+        if (IS_THING_ALIVE_00436380(thing)) {
             long countBefore = ThingCount;
             if (thing->HasInterface(0x34)) {
                 CTCPerceiveThing* perceive = thing->GetInterfaceUncheckedConst<CTCPerceiveThing>(0x34);

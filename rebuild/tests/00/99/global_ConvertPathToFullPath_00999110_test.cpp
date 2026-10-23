@@ -23,6 +23,8 @@ CWideString::~CWideString()
     ++g_dtorCount;
 }
 
+CWideString __fastcall GetCurrentWorkingDirectory() { return CWideString(); }   // 0x00997F80 stand-in
+
 namespace
 {
 CWideString __fastcall ExpandPath(CWideString* in, CWideString* scratch);
@@ -36,7 +38,7 @@ public:
 
 CWideString __fastcall CAFile::ConvertPathToFullPath(const CWideString& path)
 {
-    return ExpandPath(const_cast<CWideString*>(&path), &CWideString());
+    return ExpandPath(const_cast<CWideString*>(&path), &GetCurrentWorkingDirectory());
 }
 
 int g_expandCalls = 0;

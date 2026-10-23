@@ -116,10 +116,10 @@ struct CMessageEventFilter_IsForThing {
     CMessageEventFilter_IsForThing(CThing* thing) : m_pThing(thing) { }
 };
 
-struct CMessageEventFilter_IsOriginatedByThing {
+namespace N_006af2b0 { struct CMessageEventFilter_IsOriginatedByThing {
     unsigned __int64 UID;                       // the originator's 64-bit UID (PDB)
     CMessageEventFilter_IsOriginatedByThing(const CThing* thing);    // 0x006AF2B0 (out of line, `ret 4`)
-};
+}; } using N_006af2b0::CMessageEventFilter_IsOriginatedByThing;
 
 template<class A, class B> struct CFilter_Bind2 {
     const A* m_pFirst;

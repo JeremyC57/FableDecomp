@@ -1,20 +1,20 @@
 #include <cstdio>
 static int g_AutoTinyOptionalValue = 0;
 static void* g_AutoTinyObservedObject = 0;
-void* g_AutoTinyOptionalObject = &g_AutoTinyOptionalValue;
+void* g_AutoTinyOptionalObject_013bad80 = &g_AutoTinyOptionalValue;
 void __cdecl AutoTinyOptionalTarget(void* object)
 {
     g_AutoTinyObservedObject = object;
 }
 void __fastcall DisplayProgress()
 {
-    if (g_AutoTinyOptionalObject != 0)
-        AutoTinyOptionalTarget(g_AutoTinyOptionalObject);
+    if (g_AutoTinyOptionalObject_013bad80 != 0)
+        AutoTinyOptionalTarget(g_AutoTinyOptionalObject_013bad80);
 }
 int main()
 {
     DisplayProgress();
-    if (g_AutoTinyObservedObject == g_AutoTinyOptionalObject) { std::printf("AUTO_TINY_01229ab0_TEST PASS\n"); return 0; }
+    if (g_AutoTinyObservedObject == g_AutoTinyOptionalObject_013bad80) { std::printf("AUTO_TINY_01229ab0_TEST PASS\n"); return 0; }
     std::printf("AUTO_TINY_01229ab0_TEST FAIL\n");
     return 1;
 }

@@ -7,13 +7,13 @@ struct CCharString {
     char m[64];
     CCharString(const char* text, long) { std::strncpy(m, text, 63); m[63] = 0; }
 };
-struct CByteArray {
+namespace N_00411910 { struct CByteArray {
     unsigned char* m_begin; unsigned char* m_end;
     CByteArray(unsigned long n) { m_begin = (unsigned char*)std::calloc(n, 1); m_end = m_begin + n; }
     ~CByteArray() { if (m_begin) std::free(m_begin); }
     unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
     unsigned char& operator[](long index) { return m_begin[index]; }
-};
+}; } using N_00411910::CByteArray;
 struct CMemoryDataInputStream {
     const unsigned char* src; unsigned long StreamPos;
     void ReadBuffer(void* buffer, long size) { std::memcpy(buffer, src + StreamPos, size); StreamPos += size; }

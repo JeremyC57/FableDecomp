@@ -52,7 +52,7 @@ template <class T> struct CCountedPointer {
 struct CBase {
     virtual ~CBase();                                  // 0x0099A2E0
 };
-struct CScriptThing : CBase {                          // vtable 0x01238C8C, 12 bytes
+namespace N_006e7b40 { struct CScriptThing : CBase {                          // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
     CCountedPointer<void> PImp;                        // +0x04 Data, +0x08 Info
@@ -60,7 +60,7 @@ struct CScriptThing : CBase {                          // vtable 0x01238C8C, 12 
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
     __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // inline here (out-of-line copy 0x008AB980)
-};
+}; } using N_006e7b40::CScriptThing;
 template <class T> struct vector {                     // STLport vector (retail 12 bytes)
     T* _M_start;
     T* _M_finish;

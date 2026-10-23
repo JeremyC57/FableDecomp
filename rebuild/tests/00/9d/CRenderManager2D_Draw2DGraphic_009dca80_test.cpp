@@ -19,7 +19,7 @@ static const float g_ScreenRHW = 0.25f;
 static const unsigned long s_CornerOrderNormal[4] = { 0, 1, 2, 3 };
 static const unsigned long s_CornerOrderFlipX[4]  = { 1, 0, 3, 2 };
 static const unsigned long s_CornerOrderFlipY[4]  = { 3, 2, 1, 0 };
-static float GFAXToVX(float x) { return x * 2.0f; }
+static float GFAXToVX_009e1e10(float x) { return x * 2.0f; }
 static float GFAYToVY(float y) { return y * 4.0f; }
 static void SetRHWForZ(CTVertex& vert)
 {
@@ -35,7 +35,7 @@ struct CRenderManager2D {
     {
         const unsigned long* order = s_CornerOrderNormal;
         CTVertex v[4];
-        v[0].X = GFAXToVX(pos.X); v[0].Y = GFAYToVY(pos.Y); v[0].Diffuse = colour;
+        v[0].X = GFAXToVX_009e1e10(pos.X); v[0].Y = GFAYToVY(pos.Y); v[0].Diffuse = colour;
         v[1].X = v[0].X + bank.GetFrameWidth(graphic, frameIndex); v[1].Y = v[0].Y; v[1].Diffuse = colour;
         v[2].X = v[0].X + bank.GetFrameWidth(graphic, frameIndex); v[2].Y = v[0].Y + bank.GetFrameHeight(graphic, frameIndex); v[2].Diffuse = colour;
         v[3].X = v[0].X; v[3].Y = v[0].Y + bank.GetFrameHeight(graphic, frameIndex); v[3].Diffuse = colour;

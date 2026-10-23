@@ -23,7 +23,7 @@ public:
 };
 class CInputEvent {
 public:
-    long GetKey() const;                           // 0x00A03B40
+    long GetKey_00a03b40() const;                           // 0x00A03B40
     long GetDeviceType() const;                    // 0x00A03B50
 };
 struct CPlayerGuiQuestion {
@@ -51,13 +51,13 @@ void CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcess
     if (!IsEventButtonPressed(event))
         return;
     if (g_pPlayerGui->UsingKeyboard) {
-        if (event.GetDeviceType() == 3 && event.GetKey() == 4) {
+        if (event.GetDeviceType() == 3 && event.GetKey_00a03b40() == 4) {
             CGameEvent gameEvent(0x1d);
             gameEvent.AddLong(1);
             gameEvent.AddLong(PreviousMode);
             processed.SetHandled();
             processed.AddGameEvent(gameEvent);
-        } else if (event.GetDeviceType() == 3 && event.GetKey() == 10) {
+        } else if (event.GetDeviceType() == 3 && event.GetKey_00a03b40() == 10) {
             CGameEvent gameEvent(0x1d);
             gameEvent.AddLong(0);
             gameEvent.AddLong(PreviousMode);

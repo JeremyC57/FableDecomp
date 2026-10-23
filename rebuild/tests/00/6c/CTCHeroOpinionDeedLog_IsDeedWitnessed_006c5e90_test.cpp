@@ -25,7 +25,7 @@ struct CThing {
 };
 inline bool IS_THING_ALIVE(const CThing* thing) { if (thing != 0) { if (!(thing->m_flags91 & 1)) return true; } return false; }
 struct SThingListNode { SThingListNode* _M_next; SThingListNode* _M_prev; CThing* _M_data; };
-struct CThingList {
+namespace N_004ab4f0 { struct CThingList {
     SThingListNode* _M_node;
     CThingList() { SThingListNode* node = (SThingListNode*)Alloc(sizeof(SThingListNode)); node->_M_next = node; node->_M_prev = node; _M_node = node; }
     ~CThingList()
@@ -34,7 +34,7 @@ struct CThingList {
         while (cur != _M_node) { SThingListNode* victim = cur; cur = cur->_M_next; Free(victim); }
         _M_node->_M_next = _M_node; _M_node->_M_prev = _M_node; Free(_M_node);
     }
-};
+}; } using N_004ab4f0::CThingList;
 struct CThingFilter_None {};
 struct CThingFilter_HasTC { long Type; };
 template <class A, class B> struct CFilter_Bind2 : A { B Second; };

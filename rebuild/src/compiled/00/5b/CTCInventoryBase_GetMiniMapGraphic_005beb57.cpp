@@ -75,7 +75,7 @@ extern const float g_mapEdgeZ;                  // 0x01253D40 (51.0f)
 
 namespace NInventory {
 struct CTCInventoryBase {
-    CPlayerManager* GetPlayerManager() const;   // 0x00686D50 (CTCBase, const)
+    CPlayerManager* GetPlayerManager_00686d50() const;   // 0x00686D50 (CTCBase, const)
     long GetMiniMapGraphic(const CRegion* region);
 };
 long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
@@ -98,7 +98,7 @@ long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
             isPrisonCourtyard = true;
     }
     {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+        CThing* hero = GetPlayerManager_00686d50()->GetMainPlayer()->GetControlledCreature();
         if (IS_THING_ALIVE(hero) && isPrisonCourtyard && hero->GetPosition().Z > g_mapEdgeZ) {
             SGraphicNode* upperCourtyard;
             {

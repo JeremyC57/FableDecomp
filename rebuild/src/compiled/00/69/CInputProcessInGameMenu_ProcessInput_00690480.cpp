@@ -23,7 +23,7 @@ public:
 struct C2DVector { float X, Y; };
 class CInputEvent {
 public:
-    long GetKey() const;                           // 0x00A03B40
+    long GetKey_00a03b40() const;                           // 0x00A03B40
     void GetAnalogueVector(C2DVector& vector) const;   // 0x00A043A0
 };
 namespace NUISystem {
@@ -77,7 +77,7 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
 {
     if (PInGameMenu->CurrentSubPage != -1)
         return;
-    if (event.GetKey() == 0x11) {
+    if (event.GetKey_00a03b40() == 0x11) {
         C2DVector stick;
         event.GetAnalogueVector(stick);
         if (stick.Y > 0.6f) {
@@ -94,7 +94,7 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x14);
             processed.SetHandled();
         }
-    } else if (event.GetKey() == 0x12) {
+    } else if (event.GetKey_00a03b40() == 0x12) {
         C2DVector stick;
         event.GetAnalogueVector(stick);
         if (stick.Y > 0.6f) {

@@ -101,10 +101,10 @@ struct CStringLongInsertResult {                       // pair<iterator, bool> (
 };
 struct CStringLongMap {                                // STLport map<CCharString, long>
     SMapNode* _M_header;                               // +0x00
-    SMapNode* find(const CCharString& key);            // 0x00475861
-    unsigned long erase(const CCharString& key);       // 0x00475BF6
-    CStringLongInsertResult insert(const CStringLongPair& value);   // 0x004758E3
-    void clear();                                      // 0x00453630
+    SMapNode* find_00475861(const CCharString& key);            // 0x00475861
+    unsigned long erase_00475bf6(const CCharString& key);       // 0x00475BF6
+    CStringLongInsertResult insert_004758e3(const CStringLongPair& value);   // 0x004758E3
+    void clear_00453630();                                      // 0x00453630
 };
 struct CMemoryDataInputStream;
 struct CDataOutputStream;
@@ -158,7 +158,7 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
         TransferMapOut_00475a51(PSaveStream, map);
         return;
     case 4:
-        map.clear();
+        map.clear_00453630();
         return;
     default: {
         CStringParser parser(*PParser);
@@ -170,12 +170,12 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
                 CCharString key;
                 traits.TransferIn(this, &parser, &key);
                 if (parser.ReadAsSymbol() == "]") {
-                    map.find(key);
+                    map.find_00475861(key);
                     long value;
                     TransferInLong_009e2590(this, &parser, &value);
                     EntryTransferred();
-                    map.erase(key);
-                    map.insert(CStringLongPair(key, value));
+                    map.erase_00475bf6(key);
+                    map.insert_004758e3(CStringLongPair(key, value));
                     if (parser.ReadAsSymbol() == ";")
                         CleanText(start, parser.CursorPos.StringPos);
                     else

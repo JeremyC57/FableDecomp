@@ -23,7 +23,7 @@ CWideString __fastcall operator+(const CWideString& left, const CWideString& rig
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);       // 0x0099BF30
 void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name,
                           CWideString* extension);  // 0x00997620
-CWideString __fastcall GetLevelsDirectory();       // 0x0041A410 (L"Data\\Levels\\", hidden result in ecx)
+CWideString __fastcall GetLevelsDirectory_0041a410();       // 0x0041A410 (L"Data\\Levels\\", hidden result in ecx)
 struct CWorld {
     CWideString ConvertWorldToISMThingyPath(const CWideString& world, bool xbox, bool runtime) const;
 };
@@ -33,15 +33,15 @@ CWideString CWorld::ConvertWorldToISMThingyPath(const CWideString& world, bool x
     SplitPath(world, 0, 0, &name, 0);
     if (runtime) {
         if (xbox)
-            name = GetLevelsDirectory() + name + (const wchar16*)L"_RT_XB.ism";
+            name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L"_RT_XB.ism";
         else
-            name = GetLevelsDirectory() + name + (const wchar16*)L"_RT.ism";
+            name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L"_RT.ism";
     }
     else {
         if (xbox)
-            name = GetLevelsDirectory() + name + (const wchar16*)L"_XB.ism";
+            name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L"_XB.ism";
         else
-            name = GetLevelsDirectory() + name + (const wchar16*)L".ism";
+            name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L".ism";
     }
     return name;
 }

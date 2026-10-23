@@ -14,14 +14,14 @@ public:
 };
 
 template<class _Ty1, class _Ty2>
-struct fpair
+struct fpair_00c166d0
 {
-    fpair() : first(), second() {}
+    fpair_00c166d0() : first(), second() {}
     _Ty1 first;
     _Ty2 second;
 };
 
-typedef fpair<EHeroMorphType, CParticleMorphs::CEntry> PairT;
+typedef fpair_00c166d0<EHeroMorphType, CParticleMorphs::CEntry> PairT;
 
 struct DummyAllocator
 {
@@ -30,7 +30,7 @@ struct DummyAllocator
 
 void DummyAllocator::Cons_val_pair_morph_g(PairT* _Ptr)
 {
-    _Ptr->fpair<EHeroMorphType, CParticleMorphs::CEntry>::fpair();
+    _Ptr->fpair_00c166d0<EHeroMorphType, CParticleMorphs::CEntry>::fpair_00c166d0();
 }
 
 int main()

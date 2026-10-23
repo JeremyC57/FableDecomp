@@ -23,11 +23,11 @@ struct CCharString {
     CCharString(const CCharString& other);
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CDefString {
+namespace N_00415dd0 { struct CDefString {
     void* m_pData;
     CDefString(const CDefString& other);
     operator CCharString() const;                      // 0x00415DD0
-};
+}; } using N_00415dd0::CDefString;
 struct SAllocator { SAllocator() {} };
 template <class T> struct _STLP_alloc_proxy {          // the end-of-storage pointer over an empty allocator
     T _M_data;

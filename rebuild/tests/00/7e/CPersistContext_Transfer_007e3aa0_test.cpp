@@ -4,8 +4,8 @@
 static const char* g_name; static long* g_value; static long g_default; static long g_calls;
 struct CPersistContext {
     long pad[11];
-    void Transfer(const char* name, long& value, const long& defaultValue) { g_name = name; g_value = &value; g_default = defaultValue; ++g_calls; }
-    void Transfer(const char* name, long& value) { Transfer(name, value, -1L); }
+    void Transfer_007e39d0(const char* name, long& value, const long& defaultValue) { g_name = name; g_value = &value; g_default = defaultValue; ++g_calls; }
+    void Transfer(const char* name, long& value) { Transfer_007e39d0(name, value, -1L); }
 };
 int main()
 {

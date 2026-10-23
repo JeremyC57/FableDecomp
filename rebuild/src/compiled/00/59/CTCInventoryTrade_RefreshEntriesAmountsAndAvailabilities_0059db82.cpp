@@ -33,12 +33,12 @@ struct CActionParamList {                       // STLport list<CActionParam*> (
     void* _M_node;
     ~CActionParamList();                        // 0x0042ABCA
 };
-struct CAction {                                // retail 8 bytes: ActionType +0, UIActionParams +4
+namespace N_0042bed4 { struct CAction {                                // retail 8 bytes: ActionType +0, UIActionParams +4
     long             ActionType;
     CActionParamList UIActionParams;
     CAction();                                  // 0x0042BED4
     CAction(const CAction& other);              // 0x0042CD84
-};
+}; } using N_0042bed4::CAction;
 struct CComponentPointer {                      // CCountedPointer<NUISystem::CComponent>
     CComponent* m_pObject;
     void*       m_pCount;

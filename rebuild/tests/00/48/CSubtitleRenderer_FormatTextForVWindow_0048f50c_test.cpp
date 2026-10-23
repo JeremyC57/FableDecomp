@@ -22,8 +22,8 @@ struct C2DBoxF { float TLX, TLY, BRX, BRY; };
 struct C2DExtentsI { long X, Y; };
 struct C2DExtentsF { float Width, Height; };
 
-static float GFAXToVX(float x) { return x * 2.0f; }
-static float GFAYToVY(float y) { return y * 3.0f; }
+static float GFAXToVX_009e1da0(float x) { return x * 2.0f; }
+static float GFAYToVY_009e1dd0(float y) { return y * 3.0f; }
 static double g_VirtualScreenWidth = 1000.0;
 static void GFLimit(float& value, const float& minimum, const float& maximum)
 { if (value < minimum) value = minimum; if (value > maximum) value = maximum; }
@@ -32,7 +32,7 @@ class CFontBank {
 public:
     float GetMaxHeight() const { return 5.0f; }
     C2DExtentsF GetVStringExtents(const CWideString& text) const { C2DExtentsF e = { 10.0f * text.s.size(), 1.0f }; return e; }
-    float GetVFontMaxHeight() const { return GFAYToVY(GetMaxHeight()); }
+    float GetVFontMaxHeight() const { return GFAYToVY_009e1dd0(GetMaxHeight()); }
 };
 static const CFontBank* g_pWordWrapFont = 0;
 static long WordWrapCharWidth(wchar) { return 1; }
@@ -86,7 +86,7 @@ public:
             lines = 1;
         float scale = g_pDisplayManager->GetRenderTargetDimensions().X * (1.0f / 640.0f);
         const CPlayerGuiDef* def = PeekGuiDef();
-        GFLimit(maxWidth, GFAXToVX(def->TextBoxMinWidth) * scale, GFAXToVX(def->TextBoxMaxWidth) * scale);
+        GFLimit(maxWidth, GFAXToVX_009e1da0(def->TextBoxMinWidth) * scale, GFAXToVX_009e1da0(def->TextBoxMaxWidth) * scale);
         outBox = box;
         outBox.TLX = (float)((g_VirtualScreenWidth - maxWidth) * 0.5);
         outBox.BRX = outBox.TLX + maxWidth;

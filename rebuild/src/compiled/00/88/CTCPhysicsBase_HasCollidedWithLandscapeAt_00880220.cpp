@@ -23,15 +23,15 @@ struct CWorldMap {
 struct CTCPhysicsBase {
     virtual void v00();
     void* ParentThing;                          // +0x04
-    CWorldMap* GetWorldMap();                   // 0x006AF630 (CTCBase)
+    CWorldMap* GetWorldMap_006af630();                   // 0x006AF630 (CTCBase)
     bool HasCollidedWithLandscapeAt(const C3DVector& position, CPhysicsCollideResponse* response);
 };
 
 bool CTCPhysicsBase::HasCollidedWithLandscapeAt(const C3DVector& position, CPhysicsCollideResponse* response)
 {
-    float ground = GetWorldMap()->GetGroundSizeZAt(position);
+    float ground = GetWorldMap_006af630()->GetGroundSizeZAt(position);
     if (ground > position.Z) {
-        response->CollideNormal = GetWorldMap()->GetGroundFaceNormalAt(position);
+        response->CollideNormal = GetWorldMap_006af630()->GetGroundFaceNormalAt(position);
         response->CollidePos.X = position.X;
         response->CollidePos.Y = position.Y;
         response->CollidePos.Z = ground;

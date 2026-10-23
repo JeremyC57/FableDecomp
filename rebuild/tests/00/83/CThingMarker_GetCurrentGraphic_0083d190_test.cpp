@@ -64,7 +64,7 @@ struct CThingBaseDef : CDefPointeeBase {
     bool GetSubDef(CDefPointer<CVillageStateDef>* out) const;   // 0x0042B0A2
 };
 struct CDefinitionManager {
-    bool GetDef(long index, CDefPointer<CThingVillageDef>* out);   // 0x0083B970
+    bool GetDef_0083d630(long index, CDefPointer<CThingVillageDef>* out);   // 0x0083B970
 };
 
 void* FindSubDef_CThingBaseDef_GetSubDef(const CThingBaseDef* def);       // stand-in callees of the stand-in bodies below
@@ -80,7 +80,7 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CVillageStateDef>
     out->Object = (CVillageStateDef*)def;
     return true;
 }
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CThingVillageDef>* out)
+__declspec(noinline) bool CDefinitionManager::GetDef_0083d630(long index, CDefPointer<CThingVillageDef>* out)
 {
     void* def = FindDef_CDefinitionManager_GetDef(index);
     if (!def)
@@ -116,7 +116,7 @@ CEngineGraphic CThingMarker::GetCurrentGraphic()
     if (found && state.Object->Graphic.BankIndex > 0)
         return state.Object->Graphic;
     CDefPointer<CThingVillageDef> defOut;
-    GetDefinitionManager()->GetDef(DefGlobalIndex, &defOut);
+    GetDefinitionManager()->GetDef_0083d630(DefGlobalIndex, &defOut);
     CHeldDef<CThingVillageDef> def(CCountedDefPointer<CThingVillageDef>(defOut.Object).Object);
     return def.Object->Graphic;
 }

@@ -10,13 +10,13 @@ struct CShaderConstantRange : CBaseClass {
     CShaderConstantRange() : m_firstRegister(-1), m_registerCount(-1) {}
     CShaderConstantRange(long f, long c) : m_firstRegister(f), m_registerCount(c) {}
 };
-struct CVertexShaderConstantLayout {
+namespace N_00bdbb70 { struct CVertexShaderConstantLayout {
     CShaderConstantRange User;
     long LightSize;
     CShaderConstantRange LightArray, LightGlobals, LightAttenuations;
     CShaderConstantRange ShadowedSpotlightFalloffTransform, ShadowedSpotlightAttenuation, ShadowedSpotlightColour;
     CVertexShaderConstantLayout() : LightSize(0) { ++g_baseLayout; }
-};
+}; } using N_00bdbb70::CVertexShaderConstantLayout;
 struct CEngineVSConstantLayoutLights : CVertexShaderConstantLayout {
     CEngineVSConstantLayoutLights();
 };

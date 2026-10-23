@@ -552,6 +552,9 @@ def patch_source(src, renames, use_conv=True, cls_mode=False):
 
 BOUND = set()   # every symbol any scanned row binds (a leaf symbol in here must not change)
 
+def _anon(sym):
+    return re.sub(r"\?A0x[0-9a-f]+@", "?A0x@", sym)
+
 def verify(base, r, done):
     """None when the patched compile is acceptable, else a reason."""
     if not r["st"].startswith(("MATCH", "RELOCATION")): return f"parity {r['st']}"
@@ -578,7 +581,7 @@ def verify(base, r, done):
                 return f"{s} -> {t} became {ns_}, expected {n}"
             if k == "ns" and f"@{n}@" not in ns_: return f"{s} -> {t} became {ns_}, expected namespace {n}"
             if k == "cls" and f"{n}@" not in ns_: return f"{s} -> {t} became {ns_}, expected class {n}"
-        elif ns_ != s:
+        elif ns_ != s and _anon(ns_) != _anon(s):   # anonymous-namespace hashes (?A0x...) differ per compile path
             if not any(m in ns_ for m in marks): return f"other binding changed: {s} -> {ns_} ({t})"
     for sym, n, k in done:
         if any(s == sym for s, _ in r["pairs"]): return f"{sym} still bound"

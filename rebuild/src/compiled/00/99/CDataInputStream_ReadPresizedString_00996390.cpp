@@ -19,13 +19,13 @@ struct CCharString {
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
 };
-struct CByteArray {                                        // retail vector<unsigned char>: begin/end/capacity
+namespace N_00411910 { struct CByteArray {                                        // retail vector<unsigned char>: begin/end/capacity
     unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
     CByteArray(unsigned long n);                           // 0x00411910
     ~CByteArray() { if (m_begin) free(m_begin); }
     unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
     unsigned char& operator[](long index) { return m_begin[index]; }
-};
+}; } using N_00411910::CByteArray;
 
 struct CDataInputStreamReader : CDataInputStream {         // the engine layout plus the retail member functions
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0

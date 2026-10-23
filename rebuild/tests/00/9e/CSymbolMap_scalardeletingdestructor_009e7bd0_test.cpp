@@ -4,12 +4,12 @@ static int g_AutoTinySequenceCount = 0;
 static void* g_AutoTinyFirstMember = 0;
 static void* g_AutoTinySecondMember = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall DestructFirstMember(void* member)
+void __fastcall DestructFirstMember_004ad4a0(void* member)
 {
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall DestructSecondMember(void* member)
+void __fastcall DestructSecondMember_006fcf10(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
@@ -24,8 +24,8 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CSymbolMap_CompositeScalarDeletingDestructor(void* map, int, unsigned int flags)
 {
-    DestructFirstMember(static_cast<unsigned char*>(map) + 20);
-    DestructSecondMember(static_cast<unsigned char*>(map) + 4);
+    DestructFirstMember_004ad4a0(static_cast<unsigned char*>(map) + 20);
+    DestructSecondMember_006fcf10(static_cast<unsigned char*>(map) + 4);
     CSymbolMap_Destruct(map);
     if (flags & 1)
         OperatorDelete(map);

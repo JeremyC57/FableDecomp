@@ -54,13 +54,13 @@ struct CDefPointer {                                 // CDefPointer<const CThing
     }
 };
 struct CDefinitionManager {
-    bool GetDef(long index, CDefPointer* out);       // 0x004AB840
+    bool GetDef_004ab840(long index, CDefPointer* out);       // 0x004AB840
 };
 void* FindDef_CDefinitionManager_GetDef(long index);   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer* out)
+__declspec(noinline) bool CDefinitionManager::GetDef_004ab840(long index, CDefPointer* out)
 {
     void* def = FindDef_CDefinitionManager_GetDef(index);
     if (!def)
@@ -90,7 +90,7 @@ struct CThingBuilding {
     __forceinline const CThingBuildingDef* PeekPDef() const
     {
         CDefPointer def;
-        GetDefinitionManager()->GetDef(DefGlobalIndex, &def);
+        GetDefinitionManager()->GetDef_004ab840(DefGlobalIndex, &def);
         return def.Object;
     }
     bool OnCreateGameObject();                       // 0x00838A40 CThingGameObject::OnCreate (called non-virtually)

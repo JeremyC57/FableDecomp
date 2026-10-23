@@ -35,7 +35,7 @@ struct CTCCreatureModeManager;
 struct CThing {
     unsigned char m_flags91; CDefClassBase* m_pDef; C3DVector Pos; CTCCreatureModeManager* Modes;
     const C3DVector& GetPosition() const { return Pos; }
-    void UnsheatheMeleeWeapon() { ++g_unsheathes; }
+    void UnsheatheMeleeWeapon_00666820() { ++g_unsheathes; }
     bool GetInterface(CTCCreatureModeManager** out, long) { if (!Modes) return false; *out = Modes; return true; }
 };
 CThing* CreateEffectThing(long type, const C3DVector* pos, bool) { g_effectType = type; g_effectPos = pos; ++g_effects; return 0; }
@@ -65,7 +65,7 @@ struct CCreatureAction_BriarRoseConcentrateInto : CCombatActionBase { bool Impos
 void CCreatureAction_BriarRoseConcentrateInto::Initialise()
 {
     CTCCreatureModeManager* modes = 0;
-    GetCreature()->UnsheatheMeleeWeapon();
+    GetCreature()->UnsheatheMeleeWeapon_00666820();
     SetAnimationName("POWER_UP_INTO");
     CCombatActionBase::Initialise();
     if (GetCreature()->GetInterface(&modes, 0x31) && IS_THING_ALIVE(PEnemy))

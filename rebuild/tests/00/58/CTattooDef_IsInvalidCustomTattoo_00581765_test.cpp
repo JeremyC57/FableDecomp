@@ -34,7 +34,7 @@ CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       
 bool __fastcall PathExists(const CWideString& path);        // 0x00999230
 CWideString __fastcall GetValidProfileName(const CWideString& name);   // 0x00406350
 namespace NResourceDirectoryNames {
-CWideString __fastcall GetSaveDir();                        // 0x0041A650
+CWideString __fastcall GetSaveDir_0041a650();                        // 0x0041A650
 CWideString __fastcall GetCustomTattooDir();                // 0x0041A6A0
 }
 struct CCharStringData;
@@ -70,7 +70,7 @@ bool CTattooDef::IsInvalidCustomTattoo() const
     if (BankIndex != -1)
         return false;
     CUserProfileManager* profiles = CUserProfileManager::Get();
-    CWideString profileDir = NResourceDirectoryNames::GetSaveDir() + GetValidProfileName(profiles->ProfileName) + L"\\";
+    CWideString profileDir = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\";
     if (PathExists(profileDir + CustomFileName.ToWideString())) {
         CWideString baseDir = NResourceDirectoryNames::GetCustomTattooDir() + L"\\";
         CDiskFileWin32 file(profileDir + CustomFileName.ToWideString(), FILE_ACCESS_READ, 2);
@@ -93,7 +93,7 @@ CWideString __fastcall operator+(const CWideString& a, const CWideString& b) { r
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b) { return Make(b[0] == L'\\' ? 6 : 7); }
 bool __fastcall PathExists(const CWideString& path) { return g_exists[g_pathCalls++]; }
 CWideString __fastcall GetValidProfileName(const CWideString& name) { return Make(1); }
-CWideString __fastcall NResourceDirectoryNames::GetSaveDir() { return Make(2); }
+CWideString __fastcall NResourceDirectoryNames::GetSaveDir_0041a650() { return Make(2); }
 CWideString __fastcall NResourceDirectoryNames::GetCustomTattooDir() { return Make(3); }
 CWideString CCharString::ToWideString() const { return Make(4); }
 static CUserProfileManager g_profiles;

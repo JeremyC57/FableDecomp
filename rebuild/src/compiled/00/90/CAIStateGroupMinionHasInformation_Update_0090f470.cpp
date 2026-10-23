@@ -88,7 +88,7 @@ struct CAIStateGroupBase {
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF80
+    CPlayerManager* GetPPlayerManager_008fcf80();        // 0x008FCF80
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_DoNothing();                  // 0x0097E200
@@ -105,7 +105,7 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
 
 void CAIStateGroup_MinionHasInformation::Update()
 {
-    CThing* hero = GetPPlayerManager()->GetPMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetHeroCreature();
     if (hero == 0 || (hero->m_flags91 & 1)) {
         Terminate();
         return;

@@ -4,12 +4,12 @@ static int g_AutoTinySequenceCount = 0;
 static void* g_AutoTinyFirstMember = 0;
 static void* g_AutoTinySecondMember = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall DestructFirstMember(void* member)
+void __fastcall DestructFirstMember_0075f2b0(void* member)
 {
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall DestructSecondMember(void* member)
+void __fastcall DestructSecondMember_0099a2e0(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
@@ -24,8 +24,8 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CPSCEmitterGeneric_CompositeScalarDeletingDestructor(void* emitter, int, unsigned int flags)
 {
-    DestructFirstMember(static_cast<unsigned char*>(emitter) + 24);
-    DestructSecondMember(static_cast<unsigned char*>(emitter) + 12);
+    DestructFirstMember_0075f2b0(static_cast<unsigned char*>(emitter) + 24);
+    DestructSecondMember_0099a2e0(static_cast<unsigned char*>(emitter) + 12);
     CPSCEmitterGeneric_Destruct(emitter);
     if (flags & 1)
         OperatorDelete(emitter);

@@ -61,10 +61,10 @@ struct CScriptThingImpl {                              // the game-side thing be
     virtual void i071() const; virtual void i072() const; virtual void i073() const; virtual void i074() const;
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-struct CBase {                                          // vtable 0x01231710
+namespace N_0099a2d0 { struct CBase {                                          // vtable 0x01231710
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
@@ -89,11 +89,11 @@ struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12
     ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+namespace N_0099a380 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+}; } using N_0099a380::CBaseIntelligentPointer;
 struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }

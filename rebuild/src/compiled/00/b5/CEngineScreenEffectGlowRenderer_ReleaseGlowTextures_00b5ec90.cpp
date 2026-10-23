@@ -20,7 +20,7 @@ struct CEngine_Retail {
     CTexturePool_Retail TexturePool;                        // +0x3190
 };
 
-extern CEngine_Retail* g_pEngine;                           // 0x01436E98
+extern CEngine_Retail* g_pEngine_01436e98;                           // 0x01436E98
 
 struct CEngineScreenEffectGlowRenderer_Retail {
     unsigned char   _pad[0x10];
@@ -37,7 +37,7 @@ struct CEngineScreenEffectGlowRenderer_Retail {
 
 void CEngineScreenEffectGlowRenderer_Retail::ReleaseGlowTextures()
 {
-    CTexturePool_Retail* pool = &g_pEngine->TexturePool;
+    CTexturePool_Retail* pool = &g_pEngine_01436e98->TexturePool;
     pool->Release(GlowTexture256Handle);
     pool->Release(GlowTexture64Handle);
     pool->Release(GlowTexture64AltHandle);

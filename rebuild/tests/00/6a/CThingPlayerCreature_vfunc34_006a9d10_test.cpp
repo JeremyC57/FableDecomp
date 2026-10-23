@@ -9,7 +9,7 @@ template <class T> struct CDefPointer { T* Object; CDefPointer(T* o) : Object(o)
 struct CRGBColour { unsigned char B, G, R, A; CRGBColour() {} CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } };
 struct CPlayerDef : CDefPointeeBase { CRGBColour Colour; };
 struct CPlayer { bool m_init; CDefPointer<CPlayerDef> PlayerDef; CPlayer(CPlayerDef* d) : PlayerDef(d) {} bool IsInitialised() { return m_init; } };
-struct CPlayerManager { CPlayer* m_players[2]; CPlayer* GetPlayer(long n) { return m_players[n]; } };
+struct CPlayerManager { CPlayer* m_players[2]; CPlayer* GetPlayer_00449910(long n) { return m_players[n]; } };
 struct CThingHighlightInfo { float Scale; float Value; CRGBColour Colour; bool Enabled; };
 static CPlayerManager g_manager;
 class CThingPlayerCreature { public:
@@ -18,7 +18,7 @@ class CThingPlayerCreature { public:
     float GetNormalisedValue_006a4e40() { return m_value; }
     bool vfunc_34(CThingHighlightInfo* info)
     {
-        CPlayer* player = GetPlayerManager_004c79f0()->GetPlayer(PlayerNumber);
+        CPlayer* player = GetPlayerManager_004c79f0()->GetPlayer_00449910(PlayerNumber);
         CRGBColour colour;
         if (player->IsInitialised() == true) { CDefPointer<CPlayerDef> def(player->PlayerDef); colour = def->Colour; }
         else colour = CRGBColour(0, 0, 0, 255);

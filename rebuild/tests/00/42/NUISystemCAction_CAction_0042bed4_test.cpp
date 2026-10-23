@@ -6,15 +6,15 @@ template <class T> class allocator {
 public:
     allocator() {}
 };
-template <class T, class A = allocator<T> > class list {
+template <class T, class A = allocator<T> > class list_0042abaf {
 public:
-    explicit list(const A& a = A());
+    explicit list_0042abaf(const A& a = A());
     void* _M_node;
 };
 }
 static int g_listCtors = 0;
 struct ListNode { ListNode* next; ListNode* prev; void* data; };
-template <class T, class A> std::list<T, A>::list(const A&)
+template <class T, class A> std::list_0042abaf<T, A>::list_0042abaf(const A&)
 {
     ++g_listCtors;
     ListNode* n = (ListNode*)malloc(sizeof(ListNode)); n->next = n->prev = n; _M_node = n;
@@ -25,7 +25,7 @@ enum EActionType { ACTION_NONE };
 class CAction {
 public:
     EActionType                ActionType;               // +0x00
-    std::list<CActionParam*>   UIActionParams;           // +0x04
+    std::list_0042abaf<CActionParam*>   UIActionParams;           // +0x04
     CAction();
 };
 CAction::CAction()

@@ -105,8 +105,8 @@ struct CSpawnedFuncBaseRuntime : CScriptProcessBaseRuntime {
 
 struct CSpawnedFuncAmbush;
 struct CQ_AcolyteParentScript {
-    void WatchForAcolyteHit(CScriptThingRuntime thing);
-    void WatchForAcolyteDeath(CScriptThingRuntime thing);
+    void WatchForAcolyteHit_00edcb80(CScriptThingRuntime thing);
+    void WatchForAcolyteDeath_00edc980(CScriptThingRuntime thing);
     void Add(CSpawnedFuncAmbush* function, const CCharString& name); // 0x00CB7E50
     unsigned char _pad00[0x5b];
     bool AcolyteFlag5B;                         // +0x5b (descriptive)
@@ -1105,12 +1105,12 @@ void CTOL_AcolyteGood::Init()
     ParentClass->Add(
         new CSpawnedFuncAmbush(
             CCharString("ParentClass.", -1) + CCharString("WatchForAcolyteHit", -1),
-            0, &CQ_AcolyteParentScript::WatchForAcolyteHit, ParentClass, Thing),
+            0, &CQ_AcolyteParentScript::WatchForAcolyteHit_00edcb80, ParentClass, Thing),
         CCharString("", -1));
     ParentClass->Add(
         new CSpawnedFuncAmbush(
             CCharString("ParentClass.", -1) + CCharString("WatchForAcolyteDeath", -1),
-            0, &CQ_AcolyteParentScript::WatchForAcolyteDeath, ParentClass, Thing),
+            0, &CQ_AcolyteParentScript::WatchForAcolyteDeath_00edc980, ParentClass, Thing),
         CCharString("", -1));
     g_pScriptTimerManager->SetTimer(Timer.TimerIndex, g_pQuestGlobals->GetAcolyteTimerTime());
     GSI->SetThingFlags(Thing, 0, 0, 0);

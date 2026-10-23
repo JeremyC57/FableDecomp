@@ -66,11 +66,11 @@ struct CCreatureActionBase {
     virtual void v00() {}
     unsigned char _body[0xa4];
 };
-struct CCreatureAction_DeclarePlayerACriminal : CCreatureActionBase {
+namespace N_00910c30 { struct CCreatureAction_DeclarePlayerACriminal : CCreatureActionBase {
     CBaseIntelligentPointer PPlayer;            // +0xa8
     CCreatureAction_DeclarePlayerACriminal(CThingCreatureBase* creature, CThingPlayerCreature* player);
     ~CCreatureAction_DeclarePlayerACriminal();
-};
+}; } using N_00910c30::CCreatureAction_DeclarePlayerACriminal;
 struct CAIBrain {
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18

@@ -83,10 +83,10 @@ struct CThing {
     }
 };
 
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x00436380
+bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing);   // 0x00436380
 #pragma auto_inline(off)
 // Same-TU stand-in for IS_THING_ALIVE 0x00436380 (not the retail body): it only reads the pointer.
-bool __fastcall IS_THING_ALIVE(CThing* const& thing)
+bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing)
 {
     return thing != 0 && thing->HasTC(0);
 }
@@ -218,12 +218,12 @@ void CTCHeroStats::FrameUpdate()
         CThing* melee = weapons->PActiveMeleeWeapon.GetPItem();
         CThing* ranged = weapons->PActiveRangedWeapon.GetPItem();
         CTCObjectAugmentations* augmentations;
-        if (IS_THING_ALIVE(melee) && melee->PeekInterface(&augmentations, 0xBF)) {
+        if (IS_THING_ALIVE_00436380(melee) && melee->PeekInterface(&augmentations, 0xBF)) {
             thing->ModifyHealth((float)augmentations->GetHealthToAddThisFrame(), false);
             if (!ScriptOverridePreventStaminaRefill)
                 Stamina += augmentations->GetStaminaToAddThisFrame();
         }
-        if (IS_THING_ALIVE(ranged) && ranged->PeekInterface(&augmentations, 0xBF)) {
+        if (IS_THING_ALIVE_00436380(ranged) && ranged->PeekInterface(&augmentations, 0xBF)) {
             thing->ModifyHealth((float)augmentations->GetHealthToAddThisFrame(), false);
             if (!ScriptOverridePreventStaminaRefill)
                 Stamina += augmentations->GetStaminaToAddThisFrame();

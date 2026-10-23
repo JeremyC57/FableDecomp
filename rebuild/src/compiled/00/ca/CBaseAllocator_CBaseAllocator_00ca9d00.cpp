@@ -32,10 +32,10 @@ struct __declspec(novtable) INonDelegatingUnknown {
     virtual unsigned long __stdcall NonDelegatingAddRef() = 0;
     virtual unsigned long __stdcall NonDelegatingRelease() = 0;
 };
-class CBaseObject {                                // strmbase object counter (no data in the release build)
+namespace N_00cacaf0 { class CBaseObject {                                // strmbase object counter (no data in the release build)
 public:
     ~CBaseObject();                                // 0x00CACAF0
-};
+}; } using N_00cacaf0::CBaseObject;
 class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CBaseObject {
     IUnknownRetail* const m_pUnknown;              // +0x04
 protected:

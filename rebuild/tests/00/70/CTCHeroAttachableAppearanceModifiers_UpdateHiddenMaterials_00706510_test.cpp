@@ -69,7 +69,7 @@ template <class T> struct CDefPointer {
     }
 };
 struct CDefinitionManager {
-    CDefPointerBase GetPDefFromGlobalIndex(long index);     // 0x009AD9E0 (hidden result pointer)
+    CDefPointerBase GetPDefFromGlobalIndex_009ad9e0(long index);     // 0x009AD9E0 (hidden result pointer)
 };
 struct CDefClassBase : CDefBase {
     bool GetSubDef(CDefPointer<CAppearanceModifierDef>& out);   // 0x0057FF92
@@ -173,7 +173,7 @@ void CTCHeroAttachableAppearanceModifiers::UpdateHiddenMaterials()
             CDefPointer<CDefClassBase> def;
             CDefinitionManager* defs = GetDefinitions();
             if (index > 0) {
-                CDefPointerBase result = defs->GetPDefFromGlobalIndex(index);
+                CDefPointerBase result = defs->GetPDefFromGlobalIndex_009ad9e0(index);
                 def = result;
             }
             CDefPointer<CAppearanceModifierDef> modifier;
@@ -194,7 +194,7 @@ static CDefinitionManager g_mgr;
 CDefinitionManager* CTCHeroAttachableAppearanceModifiers::GetDefinitions() const { return &g_mgr; }
 static CDefBase g_defs[8];
 static long g_requested[16]; static int g_requests = 0;
-CDefPointerBase CDefinitionManager::GetPDefFromGlobalIndex(long index)
+CDefPointerBase CDefinitionManager::GetPDefFromGlobalIndex_009ad9e0(long index)
 {   // the stub's own local is released once when it is copied out, so it takes two references
     g_requested[g_requests++ & 15] = index; CDefPointerBase r; r.m_p = &g_defs[index]; g_defs[index].m_count += 2; return r; }
 static CAppearanceModifierDef g_mods[8];

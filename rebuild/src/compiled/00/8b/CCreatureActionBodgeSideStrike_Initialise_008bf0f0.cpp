@@ -46,7 +46,7 @@ enum ECombatAnimationHandedness { COMBAT_ANIM_LEFT_HANDED = 0, COMBAT_ANIM_RIGHT
 struct CThingCreatureBase {
     unsigned char _pad00[0x60];
     CPhysicsBody* m_pBody;                      // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0 (CThing)
+    const C3DVector& GetPosition_004c73d0() const;       // 0x004C73D0 (CThing)
     C3DVector GetFacing() const { return m_pBody->GetFacing(); }   // inline forwarder
     void SetLastActionHandedness(ECombatAnimationHandedness handedness);   // 0x006619F0
 };
@@ -75,7 +75,7 @@ struct CCreatureAction_BodgeSideStrike : CCombatActionBase {
 void CCreatureAction_BodgeSideStrike::Initialise()
 {
     CThingCreatureBase* target = Target.GetPItem();
-    C3DVector delta = target->GetPosition() - Owner.GetPItem()->GetPosition();
+    C3DVector delta = target->GetPosition_004c73d0() - Owner.GetPItem()->GetPosition_004c73d0();
     C3DVector facing = Owner.GetPItem()->GetFacing();
     facing.Z = 0.0f;
     float side = delta.X * facing.Y - delta.Y * facing.X;

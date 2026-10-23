@@ -38,7 +38,7 @@ struct CPlayer {
     bool IsLocal();                                  // 0x0099A330 (manifest label propagated; landed twin names it CInitBaseClass::IsInitialised)
 };
 struct CPlayerManager {
-    CPlayer* GetPlayer(long playerNumber);           // 0x00449910
+    CPlayer* GetPlayer_00449910(long playerNumber);           // 0x00449910
 };
 struct SThingHighlightInfo {                         // descriptive
     long       _unused;
@@ -57,7 +57,7 @@ struct CThingBuilding {
 bool CThingBuilding::GetHighlightInfo_slot34(SThingHighlightInfo* info)
 {
     CRGBColour colour;
-    CPlayer* player = GetPlayerManager()->GetPlayer(PlayerNumber);
+    CPlayer* player = GetPlayerManager()->GetPlayer_00449910(PlayerNumber);
     if (player->IsLocal() == true) {
         CDefPointer<CPlayerDef> def(player->PlayerDef);
         colour = def->Colour;

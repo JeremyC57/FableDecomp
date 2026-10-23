@@ -19,7 +19,7 @@ static const float g_ScreenRHW = 0.25f;
 static const unsigned long s_CornerOrderNormal[4] = { 0, 1, 2, 3 };
 static const unsigned long s_CornerOrderFlipX[4]  = { 1, 0, 3, 2 };
 static const unsigned long s_CornerOrderFlipY[4]  = { 3, 2, 1, 0 };
-static float GFAXToVX(float x) { return x * 2.0f; }
+static float GFAXToVX_009e1e10(float x) { return x * 2.0f; }
 static float GFAYToVY(float y) { return y * 4.0f; }
 static void SetRHWForZ(CTVertex& vert)
 {
@@ -35,8 +35,8 @@ struct CRenderManager2D {
     {
         const unsigned long* order = s_CornerOrderNormal;
         CTVertex v[4];
-        v[0].X = GFAXToVX(box.TLX); v[0].Y = GFAYToVY(box.TLY); v[0].Diffuse = 0xffffffff;
-        v[2].X = v[1].X = GFAXToVX(box.BRX); v[1].Y = v[0].Y; v[1].Diffuse = 0xffffffff;
+        v[0].X = GFAXToVX_009e1e10(box.TLX); v[0].Y = GFAYToVY(box.TLY); v[0].Diffuse = 0xffffffff;
+        v[2].X = v[1].X = GFAXToVX_009e1e10(box.BRX); v[1].Y = v[0].Y; v[1].Diffuse = 0xffffffff;
         v[3].Y = v[2].Y = GFAYToVY(box.BRY); v[3].X = v[0].X; v[2].Diffuse = 0xffffffff; v[3].Diffuse = 0xffffffff;
         if (!bank.has)
             return false;

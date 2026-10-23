@@ -153,10 +153,10 @@ struct CMessageEventFilter_IsOfType {
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_IsOriginatedByThing {
+namespace N_006af2b0 { struct CMessageEventFilter_IsOriginatedByThing {
     unsigned __int64 UID;                       // the originator's 64-bit UID (PDB)
     CMessageEventFilter_IsOriginatedByThing(const CThing* thing);    // 0x006AF2B0
-};
+}; } using N_006af2b0::CMessageEventFilter_IsOriginatedByThing;
 template<class A, class B> struct CFilter_Bind2 {
     const A* m_pFirst;
     const B* m_pSecond;
@@ -165,7 +165,7 @@ template<class A, class B> struct CFilter_Bind2 {
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 struct CMessageEvent;
 struct CMessageEventManager {
-    CMessageEvent* FindMostRecentMessage(const CFilter_Bind2<CMessageEventFilter_IsOfType,
+    CMessageEvent* FindMostRecentMessage_0090dee0(const CFilter_Bind2<CMessageEventFilter_IsOfType,
         CMessageEventFilter_IsOriginatedByThing>& filter);              // 0x0090DEE0
     void RemoveMessage(const CMessageEvent* message);                   // 0x00493B5B
 };
@@ -173,7 +173,7 @@ long TmplSink_ca60(const void* self, long seen);   // stand-in: the work FindMos
 #pragma auto_inline(off)
 // Same-TU stand-in for the FindMostRecentMessage<Bind2> instantiation (template bodies are compiled in the caller's TU):
 // reads the const-reference argument, lets no argument escape (as the advisor's 0x0090EE20 model).
-__declspec(noinline) CMessageEvent* CMessageEventManager::FindMostRecentMessage(const CFilter_Bind2<CMessageEventFilter_IsOfType,
+__declspec(noinline) CMessageEvent* CMessageEventManager::FindMostRecentMessage_0090dee0(const CFilter_Bind2<CMessageEventFilter_IsOfType,
     CMessageEventFilter_IsOriginatedByThing>& filter)
 {
     long r = TmplSink_ca60(this, 0 + *(const long*)&filter);
@@ -211,7 +211,7 @@ struct CAIStateGroup_MinionGossip : CAIStateGroupBase {
 void CAIStateGroup_MinionGossip::OnReplace()
 {
     CThing* creature = PBrain->PCreature;
-    CMessageEvent* message = GetPWorld()->GetPMessageManager()->FindMostRecentMessage(
+    CMessageEvent* message = GetPWorld()->GetPMessageManager()->FindMostRecentMessage_0090dee0(
         CMessageEventFilter_IsOfType(0x2c) && CMessageEventFilter_IsOriginatedByThing(creature));
     if (message)
         GetPWorld()->GetPMessageManager()->RemoveMessage(message);

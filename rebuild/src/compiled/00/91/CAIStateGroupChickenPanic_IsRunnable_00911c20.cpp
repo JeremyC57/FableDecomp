@@ -175,12 +175,12 @@ namespace NEntityEvents {
 struct CTCEntityEvents {                        // interface 0x42
     unsigned char _00[0x0c];
     const NEntityEvents::CEventHitBy* FirstHit; // stand-in view of the event list
-    bool GetEvent(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None& filter);   // 0x008AF0A0 (stand-in body below)
+    bool GetEvent_008af0a0(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None& filter);   // 0x008AF0A0 (stand-in body below)
 };
 #pragma auto_inline(off)
 // Same-TU stand-in for CTCEntityEvents::GetEvent<const CEventHitBy, CEventFilter_None> (0x008AF0A0; retail's LTCG saw its
 // body): it only writes the out pointer, so `hit` stays in a register (edi) after the call as in retail.
-__declspec(noinline) bool CTCEntityEvents::GetEvent(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None&)
+__declspec(noinline) bool CTCEntityEvents::GetEvent_008af0a0(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None&)
 {
     if (FirstHit) {
         *out = FirstHit;
@@ -218,7 +218,7 @@ bool CAIStateGroup_ChickenPanic::IsRunnable()
             events = creature->GetTC<CTCEntityEvents>(0x42);
         {
             const NEntityEvents::CEventHitBy* hit = 0;
-            if (events->GetEvent(&hit, NEntityEvents::CEventFilter_None())) {
+            if (events->GetEvent_008af0a0(&hit, NEntityEvents::CEventFilter_None())) {
                 bool airGuitar;
                 {
                     CHitDefPointer def(hit->Def);

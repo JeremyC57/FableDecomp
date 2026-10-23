@@ -55,7 +55,7 @@ public:
 class CTCBattleCharge : public CTCBase {
 public:
     virtual void OnInitialActivate();
-    void Reset();                               // 0x007A7000
+    void Reset_007a7000();                               // 0x007A7000
 };
 
 void CTCBattleCharge::OnInitialActivate()
@@ -67,5 +67,5 @@ void CTCBattleCharge::OnInitialActivate()
     if (!thing->m_dead && thing->m_type == 1)
         ParentThing->SetSuspendAnimation(true, false);
     else
-        Reset();
+        Reset_007a7000();
 }

@@ -56,7 +56,7 @@ struct CTCWeapon {
     unsigned char _pad[0x1c];
     long NumberOfKills;                    // +0x1c
     long TimeWielded;                      // +0x20
-    bool IsAnalogueLoading();              // 0x005D9270
+    bool IsAnalogueLoading_005d9270();              // 0x005D9270
 };
 struct CTCAugmentations {
     void GetAugmentations(vector_long* out);   // 0x00766920
@@ -125,7 +125,7 @@ void CItem::UpdateItemStats(CThing* thing)
     }
     if (!PPerItemData.Data || PPerItemData.Data->QuestPersistentRefCount == -1) {
         CTCWeapon* loader;
-        if (thing->GetInterface(&loader, 0x1a) && loader && loader->IsAnalogueLoading()) {
+        if (thing->GetInterface(&loader, 0x1a) && loader && loader->IsAnalogueLoading_005d9270()) {
             EnsurePerItemData();
             if (g_pQuestManager->IsBetweenQuestStartAndFinishScreens())
                 PPerItemData.Data->QuestPersistent = false;

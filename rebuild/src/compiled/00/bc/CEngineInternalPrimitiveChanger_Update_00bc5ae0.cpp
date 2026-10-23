@@ -78,7 +78,7 @@ struct CRetailHandleVector {                       // STLport vector<CEnginePrim
     CEnginePrimitiveHandle* m_pLast;
     CEnginePrimitiveHandle* m_pEnd;
     unsigned long GetCount() const { return m_pLast - m_pFirst; }
-    void reserve(unsigned long count);             // 0x00BC5E90
+    void reserve_00bc5e90(unsigned long count);             // 0x00BC5E90
 };
 
 class CEnginePrimitive {                           // 12 bytes: Type, InterpolationSet, ThemeChannelDesc
@@ -131,7 +131,7 @@ public:
 void CEngineInternalPrimitiveChanger::Update(const CEnginePrimitive& primitive, unsigned long flags)
 {
     const CEnginePrimitiveChanger& desc = static_cast<const CEnginePrimitiveChanger&>(primitive);
-    Primitives.reserve(desc.InitialSize);
+    Primitives.reserve_00bc5e90(desc.InitialSize);
     MeshEffect = desc.MeshEffect;
     m_currentIndex = desc.ActiveIndex;
     PreloadAll = desc.PreloadAll;

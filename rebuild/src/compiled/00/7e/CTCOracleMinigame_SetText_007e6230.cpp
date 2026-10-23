@@ -55,7 +55,7 @@ struct CTCOracleMinigame {
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _base08[4];
     unsigned long CurrentText;                      // +0x0c
-    CPlayerManager* GetPlayerManager();             // 0x00686D50 (CTCBase)
+    CPlayerManager* GetPlayerManager_00686d50();             // 0x00686D50 (CTCBase)
     CWideString GetTextWithNarrator(unsigned long text);   // 0x007E5FF0
     void SetText(unsigned long text);
 };
@@ -63,7 +63,7 @@ struct CTCOracleMinigame {
 void CTCOracleMinigame::SetText(unsigned long text)
 {
     if (CurrentText != text) {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+        CThing* hero = GetPlayerManager_00686d50()->GetMainPlayer()->GetHeroThing();
         if (hero && !(hero->m_flags91 & 1)) {
             CTCRegionDisplay* display = 0;
             hero->GetInterface(&display, 0x8e);

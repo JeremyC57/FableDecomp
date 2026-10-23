@@ -21,9 +21,9 @@ template<class T> struct CDefPointer {
 struct CThingCreatureDef : CDefPointeeBase { };
 static CThingCreatureDef* g_def = 0; static long g_askedIndex = -1; static int g_getDef = 0;
 struct CDefinitionManager {
-    bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);
+    bool GetDef_0083e0d0(long index, CDefPointer<CThingCreatureDef>& out);
 };
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingCreatureDef>& out)
+bool CDefinitionManager::GetDef_0083e0d0(long index, CDefPointer<CThingCreatureDef>& out)
 {
     ++g_getDef; g_askedIndex = index;
     if (!g_def) return false;
@@ -41,7 +41,7 @@ struct CThingDeadCreature : CThing {
 const CThingCreatureDef& CThingDeadCreature::PeekDefinition() const
 {
     CDefPointer<CThingCreatureDef> def;
-    GetDefinitionManager()->GetDef(m_defGlobalIndex, def);
+    GetDefinitionManager()->GetDef_0083e0d0(m_defGlobalIndex, def);
     CThingCreatureDef* creatureDef = def.m_pObject;
     if (creatureDef)
         creatureDef->ReleaseDef();

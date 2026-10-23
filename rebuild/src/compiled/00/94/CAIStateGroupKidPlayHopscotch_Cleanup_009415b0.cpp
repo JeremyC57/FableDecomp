@@ -151,7 +151,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing> COwnMessageFilter;
 
 struct CMessageEventManager {
-    CMessageEvent* FindMostRecentMessage(const COwnMessageFilter& filter);   // 0x0090DEE0
+    CMessageEvent* FindMostRecentMessage_0090dee0(const COwnMessageFilter& filter);   // 0x0090DEE0
     void RemoveMessage(CMessageEvent* event);  // 0x00493B5B
 };
 
@@ -177,7 +177,7 @@ void CAIStateGroup_KidPlayHopscotch::Cleanup()
         m_pMarker.GetPItem()->GetInterface(&point, 0x2d);
         if (!point->IsActionPointFree())
             point->ReleaseSlot(m_slot);
-        CMessageEvent* event = GetPWorld()->GetPMessageManager()->FindMostRecentMessage(
+        CMessageEvent* event = GetPWorld()->GetPMessageManager()->FindMostRecentMessage_0090dee0(
             CMessageEventFilter_IsOfType(0x18) && CMessageEventFilter_IsOriginatedByThing(PBrain->PCreature));
         if (event)
             GetPWorld()->GetPMessageManager()->RemoveMessage(event);

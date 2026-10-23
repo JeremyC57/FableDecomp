@@ -43,7 +43,7 @@ struct CRGBColour {
 };
 class CFontBank;
 
-float __stdcall GFVXToAX(float x);                           // 0x009E1E10
+float __stdcall GFVXToAX_009e1e10(float x);                           // 0x009E1E10
 float __stdcall GFVYToAY(float y);                           // 0x009E1E40
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 
@@ -120,7 +120,7 @@ void CSubtitleRenderer::DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareIn
     const CPlayerGuiDef* def = PeekGuiDef();
     for (unsigned long i = 0; i < EmbeddedGraphics.size(); ++i) {
         if (AllCharactersDisplayed || TextCharactersShowing > EmbeddedGraphics[i].CharIndex) {
-            C2DVector pos = EmbeddedGraphics[i].Offset + def->ControllerGraphicOffset + C2DVector(GFVXToAX(box.TLX), GFVYToAY(box.TLY));
+            C2DVector pos = EmbeddedGraphics[i].Offset + def->ControllerGraphicOffset + C2DVector(GFVXToAX_009e1e10(box.TLX), GFVYToAY(box.TLY));
             CEnginePrimitive2DSprite sprite(0, pos, 0x45, EmbeddedGraphics[i].Graphic, 0, 2, 0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0,
                                             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
             info.Renderer->AddPrimitive(&EmbeddedPrimitiveHandles[i], sprite, 0xc0);
@@ -148,7 +148,7 @@ bool CWideString::operator!=(const unsigned short* text) const
     while (*a && *a == *text) { ++a; ++text; }
     return *a != *text;
 }
-float __stdcall GFVXToAX(float x) { Log("VX"); return x * 2.0f; }
+float __stdcall GFVXToAX_009e1e10(float x) { Log("VX"); return x * 2.0f; }
 float __stdcall GFVYToAY(float y) { Log("VY"); return y * 3.0f; }
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out) { Log("VCoord"); out->X = in->X * 10.0f; out->Y = in->Y * 10.0f; }
 struct SSprite { float X, Y; long layer; unsigned long graphic, b; long blend, interp; float sx, sy; unsigned char a, r, g, bl; unsigned long e; float u0, v0, u1, v1; };

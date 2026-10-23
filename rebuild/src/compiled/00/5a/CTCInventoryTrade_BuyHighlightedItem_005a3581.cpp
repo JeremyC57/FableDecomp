@@ -85,7 +85,7 @@ struct CPairVector {                                        // STLport vector<pa
     }
 };
 struct CTCShop {
-    long GetCurrentBuyPrice(long defIndex, long count) const;   // 0x007743B0
+    long GetCurrentBuyPrice_007743b0(long defIndex, long count) const;   // 0x007743B0
     void SellItem(long defIndex);                           // 0x00774730
 };
 struct CTCHeroStats {
@@ -138,7 +138,7 @@ void CTCInventoryTrade::BuyHighlightedItem()
             CThing* owner = GetOwner();
             CTCShop* shop = 0;
             owner->GetInterface(&shop, 0x53);
-            long price = shop->GetCurrentBuyPrice(item, 1);
+            long price = shop->GetCurrentBuyPrice_007743b0(item, 1);
             CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->GetHeroCreature();
             CTCHeroStats* stats = 0;
             hero->GetInterface(&stats, 4);

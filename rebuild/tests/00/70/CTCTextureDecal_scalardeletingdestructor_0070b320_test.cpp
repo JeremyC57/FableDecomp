@@ -4,12 +4,12 @@ static int g_AutoTinySequenceCount = 0;
 static void* g_AutoTinyFirstMember = 0;
 static void* g_AutoTinySecondMember = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall DestructFirstMember(void* member)
+void __fastcall DestructFirstMember_007099e0(void* member)
 {
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall DestructSecondMember(void* member)
+void __fastcall DestructSecondMember_0070a7f0(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
@@ -24,8 +24,8 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CTCTextureDecal_CompositeScalarDeletingDestructor(void* decal, int, unsigned int flags)
 {
-    DestructFirstMember(static_cast<unsigned char*>(decal) + 16);
-    DestructSecondMember(static_cast<unsigned char*>(decal) + 12);
+    DestructFirstMember_007099e0(static_cast<unsigned char*>(decal) + 16);
+    DestructSecondMember_0070a7f0(static_cast<unsigned char*>(decal) + 12);
     CTCTextureDecal_Destruct(decal);
     if (flags & 1)
         OperatorDelete(decal);

@@ -37,11 +37,11 @@ struct CCombatManager {
     bool IsPositionOccupied(CThingCreatureBase* creature);                  // 0x006E9700
 };
 struct CAIStateGroupBase_Methods : CAIStateGroupBase {
-    CWorld* GetPWorld();                                // 0x008FCFC0
+    CWorld* GetPWorld_008fcfc0();                                // 0x008FCFC0
 };
 struct CAIStateGroup_MeleeCombatNearby_Methods : CAIStateGroup_MeleeCombatNearby {
     __forceinline CThingCreatureBase* Creature() { return (CThingCreatureBase*)((CAIStateGroupBase*)this)->PBrain->Creature; }
-    __forceinline CWorld* GetPWorld() { return ((CAIStateGroupBase_Methods*)(CAIStateGroupBase*)this)->GetPWorld(); }
+    __forceinline CWorld* GetPWorld() { return ((CAIStateGroupBase_Methods*)(CAIStateGroupBase*)this)->GetPWorld_008fcfc0(); }
     __forceinline CBaseIntelligentPointer* PEnemy() { return (CBaseIntelligentPointer*)_pad_0x14; }   // +0x14
     bool IsEnemyCreatureInCombatPosition();
 };
@@ -74,7 +74,7 @@ extern const float ReachScale=0.8333333134651184f,PreferredPosMargin=0.3f,ReachE
 bool CThingCreatureBase::IsAttackingCombatant(){if(this!=&actor)++errors;return scenario!=0;}
 const C3DVector& CThingCreatureBase::GetPosition(){++positionCalls;if(this==&actor)return origin;if(this!=&enemy)++errors;return enemyPosition;}
 CBaseObject* CBaseIntelligentPointer::GetPItem()const{++enemyGets;return (CBaseObject*)&enemy;}
-CWorld* CAIStateGroupBase_Methods::GetPWorld(){++worldCalls;return &world;}
+CWorld* CAIStateGroupBase_Methods::GetPWorld_008fcfc0(){++worldCalls;return &world;}
 C3DVector CCombatManager::GetPreferredPos(CThingCreatureBase* p){++preferredCalls;if(this!=&manager||p!=&actor||worldCalls!=1)++errors;return preferred;}
 bool CCombatManager::IsPositionOccupied(CThingCreatureBase* p){++occupiedCalls;if(this!=&manager||p!=&actor||worldCalls!=2)++errors;if(scenario==5)physics.Radius=10;return scenario==3;}
 int main(){CAIStateGroup_MeleeCombatNearby_Methods g;CAIBrain brain;

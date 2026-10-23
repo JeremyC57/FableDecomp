@@ -7,12 +7,12 @@ static CWorldMap* g_map;
 struct CTCBase {
     CTCBase() { }
     virtual ~CTCBase() { ++g_baseDtors; }
-    CWorldMap* GetWorldMap() { return g_map; }
+    CWorldMap* GetWorldMap_00686d30() { return g_map; }
 };
 struct CTCMapwho : CTCBase {
     unsigned char InMapwho : 1;
     CTCMapwho(bool in) { InMapwho = in ? 1 : 0; }
-    void RemoveFromMapwho() { if (InMapwho) { CWorldMap* map = GetWorldMap(); map->m_pThingMapManager->DestroyMapwhoNode(this); } }
+    void RemoveFromMapwho() { if (InMapwho) { CWorldMap* map = GetWorldMap_00686d30(); map->m_pThingMapManager->DestroyMapwhoNode(this); } }
     virtual ~CTCMapwho() { RemoveFromMapwho(); }
 };
 int main()

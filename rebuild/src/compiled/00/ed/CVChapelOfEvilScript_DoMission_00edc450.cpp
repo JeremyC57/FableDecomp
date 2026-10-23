@@ -120,8 +120,8 @@ struct CScriptBase {                                     // retail 0x40 bytes
 struct CV_ChapelOfEvilScript : CScriptBase {
     CGameScriptInterface* GSI;                           // +0x40
     void*                 Owner;                         // +0x44
-    void WatchForLeaving();
-    void EndMission();                                   // 0x00EDC640
+    void WatchForLeaving_00edc5a0();
+    void EndMission_00edc640();                                   // 0x00EDC640
     void DoMission();
 };
 
@@ -134,10 +134,10 @@ void CV_ChapelOfEvilScript::DoMission()
     }
     if (IsActiveThreadTerminating())
         return;
-    SpawnFunction(new CSpawnedFunc<CV_ChapelOfEvilScript>("WatchForLeaving", 0, this, &CV_ChapelOfEvilScript::WatchForLeaving));
+    SpawnFunction(new CSpawnedFunc<CV_ChapelOfEvilScript>("WatchForLeaving", 0, this, &CV_ChapelOfEvilScript::WatchForLeaving_00edc5a0));
     GSI->DisplayQuestInfo(false);
     GSI->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    EndMission();
+    EndMission_00edc640();
 }

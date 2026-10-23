@@ -35,16 +35,16 @@ struct SKeyLess {                           // empty comparator, passed by value
     bool operator()(const SElement16& a, const SElement16& b) const { return a.m_key < b.m_key; }
 };
 
-SElement16* __fastcall __copy_backward(SElement16* first, SElement16* last, SElement16* result,
+SElement16* __fastcall __copy_backward_0086a4a0(SElement16* first, SElement16* last, SElement16* result,
                                        const random_access_iterator_tag& tag, int* distance);   // 0x0086A4A0
-void __fastcall __unguarded_linear_insert(SElement16* last, SElement16 value, SKeyLess comp);   // 0x0086A6E0
+void __fastcall __unguarded_linear_insert_0086a6e0(SElement16* last, SElement16 value, SKeyLess comp);   // 0x0086A6E0
 
 void __fastcall __linear_insert(SElement16* first, SElement16* last, SElement16 value, SKeyLess comp)
 {
     if (comp(value, *first)) {
-        __copy_backward(first, last, last + 1, random_access_iterator_tag(), (int*)0);
+        __copy_backward_0086a4a0(first, last, last + 1, random_access_iterator_tag(), (int*)0);
         *first = value;
     } else {
-        __unguarded_linear_insert(last, value, comp);
+        __unguarded_linear_insert_0086a6e0(last, value, comp);
     }
 }

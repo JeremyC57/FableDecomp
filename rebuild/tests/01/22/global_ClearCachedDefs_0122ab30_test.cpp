@@ -5,27 +5,27 @@ struct AutoTinyFieldMethodsTarget
 {
     unsigned int value;
     void First();
-    void Second();
+    void Second_0099a300();
 };
-AutoTinyFieldMethodsTarget g_AutoTinyFieldMethodsObject = {0};
+AutoTinyFieldMethodsTarget g_AutoTinyFieldMethodsObject_013d2dcc = {0};
 void AutoTinyFieldMethodsTarget::First()
 {
     ++g_AutoTinyFieldFirstCalls;
 }
-void AutoTinyFieldMethodsTarget::Second()
+void AutoTinyFieldMethodsTarget::Second_0099a300()
 {
     ++g_AutoTinyFieldSecondCalls;
 }
 void __fastcall ClearCachedDefs()
 {
-    g_AutoTinyFieldMethodsObject.value = 0x0129a064;
-    g_AutoTinyFieldMethodsObject.First();
-    g_AutoTinyFieldMethodsObject.Second();
+    g_AutoTinyFieldMethodsObject_013d2dcc.value = 0x0129a064;
+    g_AutoTinyFieldMethodsObject_013d2dcc.First();
+    g_AutoTinyFieldMethodsObject_013d2dcc.Second_0099a300();
 }
 int main()
 {
     ClearCachedDefs();
-    if (g_AutoTinyFieldMethodsObject.value == 0x0129a064 && g_AutoTinyFieldFirstCalls == 1 && g_AutoTinyFieldSecondCalls == 1) { std::printf("AUTO_TINY_0122ab30_TEST PASS\n"); return 0; }
+    if (g_AutoTinyFieldMethodsObject_013d2dcc.value == 0x0129a064 && g_AutoTinyFieldFirstCalls == 1 && g_AutoTinyFieldSecondCalls == 1) { std::printf("AUTO_TINY_0122ab30_TEST PASS\n"); return 0; }
     std::printf("AUTO_TINY_0122ab30_TEST FAIL\n");
     return 1;
 }

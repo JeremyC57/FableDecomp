@@ -8,7 +8,7 @@ struct CBankFile {
 static int g_freed = 0;
 static CBankFile* g_last_dtor = 0;
 
-void __fastcall CBankFile_dtor(CBankFile* file)
+void __fastcall CBankFile_dtor_00c4f220(CBankFile* file)
 {
     g_last_dtor = file;
     file->destroyed = 1;
@@ -22,7 +22,7 @@ void free_engine(void* p)
 
 void* __fastcall CBankFile_scalar_deleting_destructor(CBankFile* file, int edx_unused, unsigned int flags)
 {
-    CBankFile_dtor(file);
+    CBankFile_dtor_00c4f220(file);
     if (flags & 1)
         free_engine(file);
     return file;

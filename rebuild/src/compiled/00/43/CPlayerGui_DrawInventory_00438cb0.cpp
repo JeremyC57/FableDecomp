@@ -32,7 +32,7 @@ struct CThing {
     }
 };
 struct CPlayer {
-    CThing* GetControlledCreature();                       // 0x00487DC0
+    CThing* GetControlledCreature_00487dc0();                       // 0x00487DC0
 };
 struct CPlayerManager {
     CPlayer* GetMainPlayer();                              // 0x00449970
@@ -47,7 +47,7 @@ struct CPlayerGui {
 
 void CPlayerGui::DrawInventory(void* world)
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetControlledCreature();
+    CThing* hero = PlayerManager->GetMainPlayer()->GetControlledCreature_00487dc0();
     if (!hero || (hero->m_statusFlags & 1))
         return;
     DRAW_TC(0x11);

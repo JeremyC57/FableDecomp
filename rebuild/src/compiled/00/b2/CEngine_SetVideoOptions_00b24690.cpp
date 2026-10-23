@@ -71,7 +71,7 @@ struct CEngine {
     bool SetVideoOptions(const CEngineVideoOptions& options);
 };
 
-extern CDisplayManager*                 g_pDisplayManager;        // 0x01436E1C
+extern CDisplayManager*                 g_pDisplayManager_01436e1c;        // 0x01436E1C
 extern CEngineScreenEffectColourFilter* g_pColourFilter;          // 0x01436E40
 extern CShaderBankStateBlock*           g_pShaderBankStateBlock;  // 0x01436E44
 extern CEngineVideoOptionsListener*     g_pVideoOptionsListener;  // 0x01436E54
@@ -79,7 +79,7 @@ extern CEngineVideoOptionsSink*         g_pVideoOptionsSink;      // 0x01436E58
 extern CEngineMeshDetailManager*        g_pMeshDetailManager;     // 0x01436E80
 extern CEngineLocalDetailGenerator*     g_pLocalDetailGenerator;  // 0x01436E88
 extern CEngineResourceManager*          g_pResourceManager;       // 0x01436E98
-extern CEngine*                         g_pEngine;                // 0x01436EA4
+extern CEngine*                         g_pEngine_01436ea4;                // 0x01436EA4
 extern CEngineVideoOptions*             g_pVideoOptions;          // 0x01436EB0
 
 bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
@@ -90,26 +90,26 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     VideoOptions = options;
     g_pVideoOptions = &VideoOptions;
     bool result = true;
-    if (g_pDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, options.Antialiasing, options.RefreshRate) != CREATE_DEVICE_OK) {
+    if (g_pDisplayManager_01436e1c->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, options.Antialiasing, options.RefreshRate) != CREATE_DEVICE_OK) {
         result = false;
-        if (g_pDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
+        if (g_pDisplayManager_01436e1c->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
             C2DExtentsI resolution = options.ScreenResolution;
             if (resolution.X > 1024)
                 resolution.X = 1024;
             if (resolution.Y > 768)
                 resolution.Y = 768;
-            if (g_pDisplayManager->SetDisplayMode(resolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
+            if (g_pDisplayManager_01436e1c->SetDisplayMode(resolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
                 EnablePostDeviceReset = true;
                 return false;
             }
         }
     }
-    g_pDisplayManager->SetPresentParameters(!options.VerticalSync, true, true);
+    g_pDisplayManager_01436e1c->SetPresentParameters(!options.VerticalSync, true, true);
     g_pShaderBankStateBlock->Set(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pColourFilter->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
     g_pVideoOptionsListener->SetEffectQuality(PEngineVideoOptionsDefs[VideoOptions.EffectsQuality]);
-    g_pResourceManager->ResizeHiresTextureMemory(g_pEngine->PEngineVideoOptionsDefs[VideoOptions.TextureDetail]->HiresTextureMemory);
-    CEngineVideoOptionsDef* meshDef = g_pEngine->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
+    g_pResourceManager->ResizeHiresTextureMemory(g_pEngine_01436ea4->PEngineVideoOptionsDefs[VideoOptions.TextureDetail]->HiresTextureMemory);
+    CEngineVideoOptionsDef* meshDef = g_pEngine_01436ea4->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
     g_pMeshDetailManager->SetMeshDetail(VideoOptions.MeshDetail, meshDef);
     if (g_pLocalDetailGenerator)
         g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(meshDef);

@@ -28,7 +28,7 @@ struct CEnginePrimitiveManager {
  CEngineSceneArray* SceneList;bool Enable;
  CEnginePrimitiveManager(CEngineSceneArray*);
 };
-struct CEnginePrimitiveGroupManager:CEnginePrimitiveManager { CEnginePrimitiveGroupManager(CEngineSceneArray*); }; //00bacf70
+namespace N_00bacf70 { struct CEnginePrimitiveGroupManager:CEnginePrimitiveManager { CEnginePrimitiveGroupManager(CEngineSceneArray*); }; } using N_00bacf70::CEnginePrimitiveGroupManager; //00bacf70
 struct SFlareBufferTreeNode { unsigned char Colour; SFlareBufferTreeNode *Parent,*Left,*Right; unsigned long Key; void* HandleVtable;void* Buffer; };
 struct CFlareBufferMap {
  SFlareBufferTreeNode* Header;unsigned long Count;unsigned char Compare;

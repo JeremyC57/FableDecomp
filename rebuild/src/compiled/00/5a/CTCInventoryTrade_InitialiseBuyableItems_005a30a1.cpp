@@ -91,12 +91,12 @@ CDefBasePointer<CTattooDef> __fastcall GetTattooCardDef(long defIndex);      // 
 bool __fastcall IsBuyable(long defIndex);               // 0x005D9B50
 struct CAbilityDef : CDefBase { };
 struct CDefClassBase : CDefBase {
-    bool GetSubDef(CDefPointer<CAbilityDef>* out);      // 0x005B1E5A
+    bool GetSubDef_005b1e5a(CDefPointer<CAbilityDef>* out);      // 0x005B1E5A
 };
 void* FindDef_a();
 void* FindDef_b();
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAbilityDef>* out)
+__declspec(noinline) bool CDefClassBase::GetSubDef_005b1e5a(CDefPointer<CAbilityDef>* out)
 {
     void* def = FindDef_a();
     if (!def)
@@ -209,7 +209,7 @@ void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
             special = GetHairCardDef(defIndex).Object && shop->IsBarberShop();
         if (special)
             stock[key] = 1;
-        else if (def->GetSubDef(&ability) && shop->IsAbilityShop())
+        else if (def->GetSubDef_005b1e5a(&ability) && shop->IsAbilityShop())
             stock[key] = 1;
         else
             goto next;

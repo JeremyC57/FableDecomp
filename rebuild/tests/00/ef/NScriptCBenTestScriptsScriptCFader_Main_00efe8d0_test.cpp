@@ -19,11 +19,11 @@ struct CGameScriptInterface_Calls {
     void NewScriptFrame() const { ++g_frames; }
     void SetThingHasInformation(const CScriptThing&, bool a, bool b, bool c) const { if (!a && b && !c) Log('I'); }
 };
-struct CIsThingAlive {
+namespace N_00ef7ab0 { struct CIsThingAlive {
     CScriptThing m_thing;
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { ++g_filters; }
     ~CIsThingAlive() { --g_filters; }
-};
+}; } using N_00ef7ab0::CIsThingAlive;
 struct CBenTestScriptsScript {
     void FadeEntityOut(const CScriptThing& thing, bool fadeOut) { if (thing.id == 7 && fadeOut) Log('F'); }
 };

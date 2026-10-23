@@ -58,7 +58,7 @@ public:
     CNewFrontendGameComponent*  PGameComponent;          // +0x1c
     unsigned char               _pad20[0xc0 - 0x20];
     bool                        m_bQuitFromGame;         // +0xc0
-    static CFrontEndManager* __fastcall GetInstance();   // 0x00595582
+    static CFrontEndManager* __fastcall GetInstance_00595582();   // 0x00595582
     void Init(CCountedPointer<CGraphicDataBank> graphics, CCountedPointer<CMeshDataBank> meshes, CInputManager* input,
               CDefinitionManager* defs);                 // 0x005958F5
     void BuildComponents(bool flag);                     // 0x00598A1C
@@ -84,7 +84,7 @@ public:
 };
 void CNewFrontendGameComponent::Init2()
 {
-    m_pFrontEndManager = NUISystem::CFrontEndManager::GetInstance();
+    m_pFrontEndManager = NUISystem::CFrontEndManager::GetInstance_00595582();
     m_pFrontEndManager->PGameComponent = this;
     m_pFrontEndManager->m_bQuitFromGame = !g_bFrontEndFlag_01375448;
     InitialiseGraphics();
@@ -126,7 +126,7 @@ CDisplayManager* g_pDisplayManager = &g_dm;
 bool g_bFrontEndFlag_01375448;
 void __fastcall NUISystem::CManager::Clear() { L(10); }
 static NUISystem::CFrontEndManager g_fem;
-NUISystem::CFrontEndManager* __fastcall NUISystem::CFrontEndManager::GetInstance() { L(1); return &g_fem; }
+NUISystem::CFrontEndManager* __fastcall NUISystem::CFrontEndManager::GetInstance_00595582() { L(1); return &g_fem; }
 static CInputManager* g_initInput; static CDefinitionManager* g_initDefs; static void* g_initG; static void* g_initM;
 void NUISystem::CFrontEndManager::Init(CCountedPointer<CGraphicDataBank> g, CCountedPointer<CMeshDataBank> m, CInputManager* i, CDefinitionManager* d)
 { L(11); g_initG = g.Object; g_initM = m.Object; g_initInput = i; g_initDefs = d; }

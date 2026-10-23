@@ -82,12 +82,12 @@ struct CGameScriptInterface_Calls {
     virtual void SetThingHasInformation(const CScriptThing& thing, bool a, bool b, bool c) const;   // slot 360 (+0x5a0)
 };
 
-struct CIsThingAlive {                                  // vtable 0x012C2FE8
+namespace N_00ef7ab0 { struct CIsThingAlive {                                  // vtable 0x012C2FE8
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) {}
     virtual bool operator()(const CScriptThing& thing) const;
     ~CIsThingAlive();                                   // 0x00EF7AB0
-};
+}; } using N_00ef7ab0::CIsThingAlive;
 
 namespace NScript {
 struct CBenTestScriptsScript {

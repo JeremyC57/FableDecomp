@@ -65,8 +65,8 @@ public:
 class CTCHeroStats {                                    // interface 4
 public:
     enum { INTERFACE_TYPE = 4 };
-    void SetAge(float age);                              // 0x0057B26F (clamped to [0, 1]; name not confirmed)
-    void ResetTrainingStatus();                          // 0x0057A5BE (name not confirmed)
+    void SetAge_0057b26f(float age);                              // 0x0057B26F (clamped to [0, 1]; name not confirmed)
+    void ResetTrainingStatus_0057a5be();                          // 0x0057A5BE (name not confirmed)
 };
 class CThingPlayerCreature : public CThing { };
 struct CPlayer_Methods : CPlayer {
@@ -96,8 +96,8 @@ void CGameScriptInterface::SetHeroAsTeenager(bool teenager) const
         CTCHeroStats* stats;
         if (hero->GetTC(&stats))
         {
-            stats->SetAge(1.0f);
-            stats->ResetTrainingStatus();
+            stats->SetAge_0057b26f(1.0f);
+            stats->ResetTrainingStatus_0057a5be();
         }
     }
 }
