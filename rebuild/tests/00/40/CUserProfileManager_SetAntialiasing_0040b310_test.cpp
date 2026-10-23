@@ -1,12 +1,16 @@
 #include <cstdio>
+#if !defined(_MSC_VER)
+#  define __fastcall
+#  define __stdcall
+#endif
 
 struct CUserProfileManager {
     char pad0[0x0c];
     char UseNewProfileValues;
     char pad1[0x13];
-    int  val20;
+    float val20;            // +0x20 HUDAlpha (PDB)
     char pad2[0xbc];
-    int  vale0;
+    float vale0;            // +0xe0
 };
 
 int g_apply = 0;
@@ -15,7 +19,7 @@ int g_refresh = 0;
 void __fastcall CUserProfileManager_Apply(CUserProfileManager* self) { (void)self; g_apply++; }
 void __fastcall CUserProfileManager_Refresh(CUserProfileManager* self) { (void)self; g_refresh++; }
 
-void __fastcall CUserProfileManager_SetAntialiasing(CUserProfileManager* self, int edx, volatile int val, char flag)
+void __fastcall CUserProfileManager_SetAntialiasing(CUserProfileManager* self, int edx, float val, char flag)
 {
     if (self->UseNewProfileValues)
         self->vale0 = val;
@@ -32,19 +36,19 @@ int main()
 
     // Case 1: flag0c set, flag arg set
     m.UseNewProfileValues = 1;
-    CUserProfileManager_SetAntialiasing(&m, 0, 1234, 1);
-    if (m.vale0 != 1234) { std::printf("FAIL vale0\n"); return 1; }
-    if (m.val20 != 1234) { std::printf("FAIL val20\n"); return 1; }
+    CUserProfileManager_SetAntialiasing(&m, 0, 0.75f, 1);
+    if (m.vale0 != 0.75f) { std::printf("FAIL vale0\n"); return 1; }
+    if (m.val20 != 0.75f) { std::printf("FAIL val20\n"); return 1; }
     if (g_apply != 1) { std::printf("FAIL apply\n"); return 1; }
     if (g_refresh != 1) { std::printf("FAIL refresh\n"); return 1; }
 
     // Case 2: flag0c clear, flag arg clear
     m.UseNewProfileValues = 0;
-    m.vale0 = 999;
+    m.vale0 = 9.0f;
     g_apply = 0; g_refresh = 0;
-    CUserProfileManager_SetAntialiasing(&m, 0, 55, 0);
-    if (m.vale0 != 999) { std::printf("FAIL vale0 2\n"); return 1; }
-    if (m.val20 != 55) { std::printf("FAIL val20 2\n"); return 1; }
+    CUserProfileManager_SetAntialiasing(&m, 0, 0.25f, 0);
+    if (m.vale0 != 9.0f) { std::printf("FAIL vale0 2\n"); return 1; }
+    if (m.val20 != 0.25f) { std::printf("FAIL val20 2\n"); return 1; }
     if (g_apply != 1) { std::printf("FAIL apply 2\n"); return 1; }
     if (g_refresh != 0) { std::printf("FAIL refresh 2\n"); return 1; }
 

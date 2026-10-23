@@ -14,10 +14,22 @@ struct C2DVector {
     C2DVector() { }
     C2DVector(const C2DVector& other) : x(other.x), y(other.y) { }
 };
-struct CListOwner {                                // reference-counted: count at +4, Delete in slot 1
+struct CListOwnerVirtual {
     virtual void v000();
     virtual void Delete();                         // slot 1
-    unsigned long IVRefCount;                      // +0x04
+};
+struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
+    unsigned long IVRefCount;
+    __forceinline void DecRef() { --IVRefCount; }
+    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+};
+struct CListOwner : CListOwnerVirtual, CIVRefCounted {   // reference-counted: count at +4, Delete in slot 1
+    __forceinline void ReleaseTemporary()
+    {
+        DecRef();
+        if (GetRefCount() == 0)
+            Delete();
+    }
     unsigned char _pad08[0x218];
     bool          m_scrolling;                     // +0x220
 };
@@ -29,11 +41,7 @@ struct CListOwnerPointer {                         // 4 bytes: the counted objec
     ~CListOwnerPointer()
     {
         if (m_pObject) {
-            CListOwner* object = m_pObject;
-            unsigned long* count = &m_pObject->IVRefCount;
-            --*count;
-            if (*(volatile unsigned long*)count == 0)
-                object->Delete();
+            m_pObject->ReleaseTemporary();
         }
     }
 };

@@ -16,23 +16,29 @@ struct CWideString {
     CWideString(const CWideString& other);         // 0x0099B720
 };
 extern CWideString g_emptyWideString;              // 0x013BCA24
-struct CIVCountedPointeeBase {
+struct CIVCountedPointeeVirtual {
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
-    unsigned long IVRefCount;                      // +4
+};
+struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
+    unsigned long IVRefCount;
+    __forceinline void DecRef() { --IVRefCount; }
+    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+};
+struct CIVCountedPointeeBase : CIVCountedPointeeVirtual, CIVRefCounted {
+    __forceinline void ReleaseTemporary()
+    {
+        DecRef();
+        if (GetRefCount() == 0)
+            Delete();
+    }
 };
 template <class T> struct CIVCountedPointer {      // 4 bytes
     T* Object;
     __forceinline ~CIVCountedPointer()
     {
-        T* old = Object;
-        if (old) {
-            T* object = old;                       // kept for the virtual call (ecx)
-            unsigned long* count = &old->IVRefCount;
-            --*count;
-            if (*(volatile unsigned long*)count == 0)
-                object->Delete();
-        }
+        if (Object)
+            Object->ReleaseTemporary();
     }
 };
 struct CInventoryItemDef_Retail : CIVCountedPointeeBase {

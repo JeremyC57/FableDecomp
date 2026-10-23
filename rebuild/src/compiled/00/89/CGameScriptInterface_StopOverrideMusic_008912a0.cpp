@@ -4,9 +4,9 @@ struct CGSIStopMusicCodeSection
     unsigned char pad00[0x0c];
     unsigned char useAlternate;
     unsigned char pad0d[0x1b];
-    unsigned long primaryValue;
+    float primaryValue;
     unsigned char pad2c[0xbc];
-    unsigned long alternateValue;
+    float alternateValue;
 };
 
 struct CGSIStopMusicEvent;
@@ -65,7 +65,7 @@ struct CGSIStopMusicEmitter
     virtual void Slotac();
     virtual void Slotb0();
     virtual void Slotb4();
-    virtual void Stop(unsigned long command, unsigned long value, float fade);
+    virtual void Stop(unsigned long command, float value, float fade);
 };
 
 struct CGameScriptInterface_Methods : CGameScriptInterface {
@@ -85,7 +85,7 @@ void CGameScriptInterface_Methods::StopOverrideMusic(bool enabled) const
         {
             CGSIStopMusicCodeSection* section =
                 CGSIStopMusic_GetCodeSection();
-            volatile unsigned long value;
+            float value;
             if (section->useAlternate != 0)
                 value = section->alternateValue;
             else

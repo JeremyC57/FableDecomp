@@ -4,10 +4,22 @@
 // Shape: the size-optimised frame-pointer module, a 4-byte frame slot for the returned pointer, `this` in esi, `leave ; ret`.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CComponentOwner_005366ff {                  // reference-counted: count at +4, Delete in slot 1
+struct CComponentOwnerVirtual_005366ff {
     virtual void v000();
     virtual void Delete();                         // slot 1
-    unsigned long IVRefCount;                      // +0x04
+};
+struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
+    unsigned long IVRefCount;
+    __forceinline void DecRef() { --IVRefCount; }
+    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+};
+struct CComponentOwner_005366ff : CComponentOwnerVirtual_005366ff, CIVRefCounted {   // count at +4, Delete in slot 1
+    __forceinline void ReleaseTemporary()
+    {
+        DecRef();
+        if (GetRefCount() == 0)
+            Delete();
+    }
     unsigned char _pad08[0x154];
     bool          m_active;                        // +0x15c
 };
@@ -17,11 +29,7 @@ struct CDefPointer_005366ff {                      // 4 bytes: the counted objec
     CDefPointer_005366ff(const CDefPointer_005366ff& other);
     ~CDefPointer_005366ff()
     {
-        CComponentOwner_005366ff* object = m_pObject;
-        unsigned long* count = &m_pObject->IVRefCount;
-        --*count;
-        if (*(volatile unsigned long*)count == 0)
-            object->Delete();
+        m_pObject->ReleaseTemporary();
     }
 };
 

@@ -26229,3 +26229,9 @@ __TI1?AUCGenericException@@	013692f8	00a37060
 ?Alloc@CSwordCrowd@CV_SwordInTheStoneScript@@SI?AU?$CCountedPointer@UCEntityScriptBase@@@@AAU2@PAUCScriptDataBase@@ABUCScriptThing@@@Z	00ed5260	00ed4d20
 ?Alloc@CSwordOfStrength@CV_SwordInTheStoneScript@@SI?AU?$CCountedPointer@UCEntityScriptBase@@@@AAU2@PAUCScriptDataBase@@ABUCScriptThing@@@Z	00ed5130	00ed4d20
 ?WatchForSwordPickup@CV_SwordInTheStoneScript@@QAEXXZ	00ed57e0	00ed4d20
+??_7CSpecialAbilitiesDivineWrathDef@@6B@	0123487c	00458033
+??_7CSpecialAbilitiesUnholyPowerDef@@6B@	012348e4	004581f8
+??_7CTCPhysicsBase@@6B@	0125d2c4	006b0730
+?d@AstmTarget@@QAEXPAXM_NHH@Z	00639ba0	0089e4c0
+?lb@AstmMap@@QAEPAUAstmNode@@PAH@Z	0040f020	0089e4c0
+?find@MapT@@QAEPAUNode@@ABK@Z	0040f020	0089ec60

@@ -12,11 +12,9 @@ struct CHandleBasedMemoryPool {
 
 void __fastcall Lock(CHandleBasedMemoryPool* self, int /*edx*/, long index)
 {
-    Entry** base = self->table;
-    Entry* volatile* slot = base + index;
-    Entry* e = *slot;
-    if (e->flag == 0) {
-        e->flag = 1;
+    Entry** slot = &self->table[index];
+    if ((*slot)->flag == 0) {
+        (*slot)->flag = 1;
         self->lockCount++;
     }
 }

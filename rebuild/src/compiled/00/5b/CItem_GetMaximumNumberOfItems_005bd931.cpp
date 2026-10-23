@@ -4,10 +4,22 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CItem.h"
-struct CIVCountedPointeeBase {
+struct CIVCountedPointeeVirtual {
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
-    unsigned long IVRefCount;                      // +4
+};
+struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
+    unsigned long IVRefCount;
+    __forceinline void DecRef() { --IVRefCount; }
+    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+};
+struct CIVCountedPointeeBase : CIVCountedPointeeVirtual, CIVRefCounted {
+    __forceinline void ReleaseTemporary()
+    {
+        DecRef();
+        if (GetRefCount() == 0)
+            Delete();
+    }
 };
 struct CInventoryItemDef_Retail : CIVCountedPointeeBase {
     unsigned char _pad[0x40 - 8];
@@ -17,14 +29,8 @@ struct CIVCountedPointer_Def {                     // 4 bytes
     CInventoryItemDef_Retail* Object;
     __forceinline ~CIVCountedPointer_Def()
     {
-        CInventoryItemDef_Retail* old = Object;
-        if (old) {
-            CInventoryItemDef_Retail* object = old;     // kept for the virtual call (ecx)
-            unsigned long* count = &old->IVRefCount;    // the count by address: `add eax,4 ; dec [eax] ; cmp [eax],0`
-            --*count;
-            if (*(volatile unsigned long*)count == 0)   // re-read after the decrement
-                object->Delete();
-        }
+        if (Object)
+            Object->ReleaseTemporary();
     }
 };
 struct CItem_Methods : CItem {

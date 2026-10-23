@@ -1,25 +1,22 @@
 #include <cstdio>
 
 struct GPBOut {
-    int   f0;
-    float f4;
-    int   f8;
+    int   f0;   // +0
+    float f4;   // +4
+    int   f8;   // +8
+    GPBOut(int a, float b) : f0(a), f4(b), f8(0) { }
 };
 
 struct CTCGatherPointBuilding {
-    int            f0;
-    volatile float f4;
-    int            f8;
-    void Init(GPBOut *out);
+    int   f0;   // +0
+    float f4;   // +4
+    int   f8;   // +8
+    GPBOut Init();
 };
 
-void CTCGatherPointBuilding::Init(GPBOut *out)
+GPBOut CTCGatherPointBuilding::Init()
 {
-    float t = this->f4;
-    int   u = this->f0;
-    out->f4 = t;
-    out->f0 = u;
-    out->f8 = 0;
+    return GPBOut(f0, f4);
 }
 
 int main()
@@ -29,10 +26,7 @@ int main()
     s.f4 = 3.5f;
     s.f8 = 999;
 
-    GPBOut o;
-    o.f0 = -1; o.f4 = -1.0f; o.f8 = -1;
-
-    s.Init(&o);
+    GPBOut o = s.Init();
 
     if (o.f0 == 0x12345678 && o.f4 == 3.5f && o.f8 == 0)
         printf("00c46eb0_TEST PASS\n");

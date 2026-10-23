@@ -48,7 +48,22 @@ struct HeroMap {
     void*    pad_00;                               // +0x0
     void*    endNode;                              // +0x4 accessed as [this+4]
     MapNode* lower_bound(const long* key);         // __fastcall
+    __forceinline void* Find(long kind)            // the inlined map find: end when the key is absent
+    {
+        long key = kind;
+        MapNode* found = lower_bound(&key);
+        if (found == (MapNode*)endNode || found->key > kind)
+            found = (MapNode*)endNode;
+        return found->value;
+    }
 };
+__forceinline void* GetTCIfPresent(HeroThing* thing, long kind)
+{
+    void* tc;                                      // deliberately unset when the component is absent (retail reads a dead slot)
+    if (thing->flags38 & 0x0800)
+        tc = ((HeroMap*)((unsigned char*)thing + 0x44))->Find(kind);
+    return tc;
+}
 
 // The "give" target object. The final sink is a __fastcall member:
 //   push 0 ; push eax ; mov ecx,target ; call   (args on stack, ecx=this),
@@ -84,34 +99,7 @@ void __fastcall CGameScriptInterface_GiveHeroItem(void* thisPtr, unsigned long /
     if (h->flags91 & 0x1)
         return;
 
-    void* target;   // esi at 0x6b
-
-    // mov ecx,[eax+0x38] ; test ch,0x8 ; je 0x67
-    if (h->flags38 & 0x0800) {
-        // 0x8-in-ch path: map lower_bound for key 0xcb
-        long key = 0xcb;                           // mov [esp+0x10],0xcb
-        HeroMap* hdr = (HeroMap*)((unsigned char*)h + 0x44); // lea esi,[eax+0x44]
-        MapNode* found = hdr->lower_bound(&key);   // __fastcall: push &key ; mov ecx,hdr ; call
-
-        // mov esi,[esi+0x4] : the tree's "end"/head node
-        MapNode* end = (MapNode*)hdr->endNode;
-
-        // cmp eax,esi ; je 0x60
-        if (found != end) {
-            // cmp [eax],0xcb ; jle 0x62  (keep found when key<=0xcb, i.e. ==0xcb)
-            if (found->key > 0xcb)
-                found = end;                       // mov eax,esi
-        } else {
-            found = end;                           // mov eax,esi
-        }
-        // mov esi,[eax+0x4]
-        target = found->value;
-    } else {
-        // 0x67: mov esi,[esp+0xc]  -> reload the query arg from its home slot.
-        // The volatile-through-address read forces VC7.1 to re-fetch from the
-        // stack home (matching retail) instead of `mov esi,edi`.
-        target = *(HeroItemQuery* volatile*)&query;
-    }
+    void* target = GetTCIfPresent(h, 0xcb);   // left unset when the component is absent
 
     // mov edx,[edi] ; mov ecx,edi ; call [edx+0x2c]
     void* itemDef = query->vtbl->GetItemDef(query);

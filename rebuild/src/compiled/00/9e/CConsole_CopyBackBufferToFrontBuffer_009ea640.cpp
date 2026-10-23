@@ -1,20 +1,23 @@
-struct CConBuf {
-    void* vp;
-    unsigned char b;
-    int d;
-    void Assign(CConBuf* src);
+struct CCharString {
+    void* m_pData;
+    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+};
+struct CConBuf {                                         // 12 bytes: implicit copy assignment
+    CCharString text;                                    // +0
+    bool        b;                                       // +4
+    int         d;                                       // +8
 };
 struct CConsole {
     char pad20[0x20];
-    CConBuf front;
+    CConBuf front;                                       // +0x20
     char pad2c[4];
-    CConBuf back;
+    CConBuf back;                                        // +0x30
     void CopyBackBufferToFrontBuffer();
 };
 void CConsole::CopyBackBufferToFrontBuffer()
 {
-    volatile CConsole* self = this;
-    this->front.Assign(&this->back);
+    CConsole* const& self = this;
+    front.text = back.text;
     self->front.b = self->back.b;
     self->front.d = self->back.d;
 }

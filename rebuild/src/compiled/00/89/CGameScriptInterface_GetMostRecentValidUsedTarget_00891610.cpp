@@ -8,27 +8,25 @@ class CBase
 {
 public:
     CBase();
+    virtual ~CBase();
 };
 }
 
-extern const unsigned char
-    CGSIGetMostRecentValidUsedTarget_EmptyVTable;
+struct CCountedPointerWords
+{
+    void* Data;
+    void* Info;
+    CCountedPointerWords() : Data(0), Info(0) { }
+};
 
 class CScriptThing : public NHeroInformationScreens::CBase
 {
 public:
-    CScriptThing()
-        : m_VTable(
-              &CGSIGetMostRecentValidUsedTarget_EmptyVTable),
-          m_Field04(0),
-          m_Field08(0)
-    {
-    }
+    CScriptThing() { }
+    virtual ~CScriptThing();
 
 private:
-    const void* volatile m_VTable;
-    volatile unsigned long m_Field04;
-    volatile unsigned long m_Field08;
+    CCountedPointerWords PImp;
 };
 
 class CBaseObject

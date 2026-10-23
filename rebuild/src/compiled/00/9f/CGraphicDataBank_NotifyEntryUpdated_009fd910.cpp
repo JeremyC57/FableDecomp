@@ -10,6 +10,13 @@ struct SEntry44_009fd910 {
     unsigned char _pad28[4];
 };
 
+struct CEntryVector_009fd910 {                     // the 44-byte entry vector (first, last)
+    SEntry44_009fd910* m_pFirst;
+    SEntry44_009fd910* m_pLast;
+    unsigned long size() const { return m_pLast - m_pFirst; }
+    SEntry44_009fd910& operator[](unsigned long i) { return m_pFirst[i]; }
+};
+
 struct CGraphicDataBank {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -17,18 +24,14 @@ struct CGraphicDataBank {
     virtual void v013();
     virtual void OnEntrySlotUpdated(unsigned long entry);                                        // slot 14 (+0x38)
     unsigned char      _pad04[0x1dc];
-    SEntry44_009fd910* volatile m_pEntriesFirst;   // +0x1e0 (re-read for the index after the count: not cached across the division)
-    SEntry44_009fd910* m_pEntriesLast;             // +0x1e4
+    CEntryVector_009fd910 m_entries;               // +0x1e0
 protected:
     virtual void NotifyEntryUpdated(unsigned long a, unsigned long entry, const CArrayChar& data);
 };
 
 void CGraphicDataBank::NotifyEntryUpdated(unsigned long a, unsigned long entry, const CArrayChar& data)
 {
-    long count = m_pEntriesLast - m_pEntriesFirst;
-    if (entry < (unsigned long)count) {
-        if (m_pEntriesFirst[entry].m_slot != -1)
-            OnEntrySlotUpdated(entry);
-    }
+    if (entry < m_entries.size() && m_entries[entry].m_slot != -1)
+        OnEntrySlotUpdated(entry);
     OnEntryUpdated(a, entry, data);
 }

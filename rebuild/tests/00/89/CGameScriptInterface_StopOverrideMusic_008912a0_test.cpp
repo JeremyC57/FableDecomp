@@ -1,4 +1,8 @@
 #include <cstdio>
+#if !defined(_MSC_VER)
+#  define __fastcall
+#  define __cdecl
+#endif
 #include <cstring>
 
 struct CGSIStopMusicCodeSection
@@ -6,9 +10,9 @@ struct CGSIStopMusicCodeSection
     unsigned char pad00[0x0c];
     unsigned char useAlternate;
     unsigned char pad0d[0x1b];
-    unsigned long primaryValue;
+    float primaryValue;
     unsigned char pad2c[0xbc];
-    unsigned long alternateValue;
+    float alternateValue;
 };
 
 struct CGSIStopMusicEvent;
@@ -67,7 +71,7 @@ struct CGSIStopMusicEmitter
     virtual void Slotac();
     virtual void Slotb0();
     virtual void Slotb4();
-    virtual void Stop(unsigned long command, unsigned long value, float fade);
+    virtual void Stop(unsigned long command, float value, float fade);
 };
 
 struct CGameScriptInterface
@@ -91,7 +95,7 @@ void CGameScriptInterface::StopOverrideMusic(bool enabled) const
         {
             CGSIStopMusicCodeSection* section =
                 CGSIStopMusic_GetCodeSection();
-            volatile unsigned long value;
+            float value;
             if (section->useAlternate != 0)
                 value = section->alternateValue;
             else
@@ -109,7 +113,7 @@ static CGSIStopMusicCodeSection g_section;
 static int g_stopEvents;
 static int g_resumeEvents;
 static unsigned long g_command;
-static unsigned long g_value;
+static float g_value;
 static float g_fade;
 
 CGSIStopMusicCodeSection* __cdecl CGSIStopMusic_GetCodeSection()
@@ -127,24 +131,66 @@ void __fastcall CGSIStopMusic_ResumeEvent(CGSIStopMusicEvent*)
     ++g_resumeEvents;
 }
 
-void __fastcall CGSIStopMusic_VirtualStop(
-    CGSIStopMusicEmitter*,
-    void*,
-    unsigned long command,
-    unsigned long value,
-    float fade)
+void CGSIStopMusicEmitter::Slot00() { }
+void CGSIStopMusicEmitter::Slot04() { }
+void CGSIStopMusicEmitter::Slot08() { }
+void CGSIStopMusicEmitter::Slot0c() { }
+void CGSIStopMusicEmitter::Slot10() { }
+void CGSIStopMusicEmitter::Slot14() { }
+void CGSIStopMusicEmitter::Slot18() { }
+void CGSIStopMusicEmitter::Slot1c() { }
+void CGSIStopMusicEmitter::Slot20() { }
+void CGSIStopMusicEmitter::Slot24() { }
+void CGSIStopMusicEmitter::Slot28() { }
+void CGSIStopMusicEmitter::Slot2c() { }
+void CGSIStopMusicEmitter::Slot30() { }
+void CGSIStopMusicEmitter::Slot34() { }
+void CGSIStopMusicEmitter::Slot38() { }
+void CGSIStopMusicEmitter::Slot3c() { }
+void CGSIStopMusicEmitter::Slot40() { }
+void CGSIStopMusicEmitter::Slot44() { }
+void CGSIStopMusicEmitter::Slot48() { }
+void CGSIStopMusicEmitter::Slot4c() { }
+void CGSIStopMusicEmitter::Slot50() { }
+void CGSIStopMusicEmitter::Slot54() { }
+void CGSIStopMusicEmitter::Slot58() { }
+void CGSIStopMusicEmitter::Slot5c() { }
+void CGSIStopMusicEmitter::Slot60() { }
+void CGSIStopMusicEmitter::Slot64() { }
+void CGSIStopMusicEmitter::Slot68() { }
+void CGSIStopMusicEmitter::Slot6c() { }
+void CGSIStopMusicEmitter::Slot70() { }
+void CGSIStopMusicEmitter::Slot74() { }
+void CGSIStopMusicEmitter::Slot78() { }
+void CGSIStopMusicEmitter::Slot7c() { }
+void CGSIStopMusicEmitter::Slot80() { }
+void CGSIStopMusicEmitter::Slot84() { }
+void CGSIStopMusicEmitter::Slot88() { }
+void CGSIStopMusicEmitter::Slot8c() { }
+void CGSIStopMusicEmitter::Slot90() { }
+void CGSIStopMusicEmitter::Slot94() { }
+void CGSIStopMusicEmitter::Slot98() { }
+void CGSIStopMusicEmitter::Slot9c() { }
+void CGSIStopMusicEmitter::Slota0() { }
+void CGSIStopMusicEmitter::Slota4() { }
+void CGSIStopMusicEmitter::Slota8() { }
+void CGSIStopMusicEmitter::Slotac() { }
+void CGSIStopMusicEmitter::Slotb0() { }
+void CGSIStopMusicEmitter::Slotb4() { }
+void CGSIStopMusicEmitter::Stop(unsigned long, float, float) { }
+struct CRecordingEmitter : CGSIStopMusicEmitter
 {
-    g_command = command;
-    g_value = value;
-    g_fade = fade;
-}
+    void Stop(unsigned long command, float value, float fade)
+    {
+        g_command = command;
+        g_value = value;
+        g_fade = fade;
+    }
+};
 
 int main()
 {
-    void* vtable[47];
-    std::memset(vtable, 0, sizeof(vtable));
-    vtable[46] = (void*)&CGSIStopMusic_VirtualStop;
-    void* emitterObject[1] = { vtable };
+    CRecordingEmitter emitterObject;
     CGSIStopMusicInner inner;
     CGameScriptInterface self;
     std::memset(&inner, 0, sizeof(inner));
@@ -156,17 +202,17 @@ int main()
     if (g_stopEvents != 1 || g_resumeEvents != 0)
         return 1;
 
-    CGSIStopMusic_Emitter = (CGSIStopMusicEmitter*)emitterObject;
+    CGSIStopMusic_Emitter = &emitterObject;
     std::memset(&g_section, 0, sizeof(g_section));
-    g_section.primaryValue = 77;
+    g_section.primaryValue = 0.75f;
     self.StopOverrideMusic(true);
-    if (g_command != 0x100 || g_value != 77 || g_fade != 500.0f)
+    if (g_command != 0x100 || g_value != 0.75f || g_fade != 500.0f)
         return 2;
 
     g_section.useAlternate = 1;
-    g_section.alternateValue = 99;
+    g_section.alternateValue = 0.25f;
     self.StopOverrideMusic(true);
-    if (g_value != 99)
+    if (g_value != 0.25f)
         return 3;
 
     self.StopOverrideMusic(false);

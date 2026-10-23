@@ -3,7 +3,7 @@
 enum EMusicSetType { MUSIC_SET_NONE = 0 };
 struct CGSIOverrideMusicCodeSection {
     unsigned char pad00[0x0c]; unsigned char useAlternate; unsigned char pad0d[0x17];
-    unsigned long primaryValue; unsigned char pad28[0xbc]; unsigned long alternateValue;
+    float primaryValue; unsigned char pad28[0xbc]; float alternateValue;
 };
 struct CGSIOverrideMusicEvent {
     void AddUBYTE(unsigned char musicSetType);
@@ -23,7 +23,7 @@ struct CGSIOverrideMusicEmitter {
     virtual void Slot90(); virtual void Slot94(); virtual void Slot98(); virtual void Slot9c();
     virtual void Slota0(); virtual void Slota4(); virtual void Slota8(); virtual void Slotac();
     virtual void Slotb0(); virtual void Slotb4();
-    virtual void Stop(unsigned long command, unsigned long value, float fade);
+    virtual void Stop(unsigned long command, float value, float fade);
 };
 struct CGameScriptInterface_OverrideMusicMethods : CGameScriptInterface {
     virtual void OverrideMusic(EMusicSetType musicSetType, bool enabled, bool forcePlay) const;
@@ -38,7 +38,7 @@ void CGameScriptInterface_OverrideMusicMethods::OverrideMusic(
     if (enabled) {
         if (CGSIOverrideMusic_Emitter != 0) {
             CGSIOverrideMusicCodeSection* section = CGSIOverrideMusic_GetCodeSection();
-            volatile unsigned long value;
+            float value;
             if (section->useAlternate != 0)
                 value = section->alternateValue;
             else

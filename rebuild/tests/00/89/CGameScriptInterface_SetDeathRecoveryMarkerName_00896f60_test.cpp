@@ -1,12 +1,26 @@
-#include "engine/CGameScriptInterface.h"
 #include <cstdio>
+#if !defined(_MSC_VER)
+#  define __fastcall
+#  define __forceinline inline
+#endif
 
 // Standalone behavior fixture for
 // CGameScriptInterface::SetDeathRecoveryMarkerName @ 0x00896f60.
+struct CCharString
+{
+    const char* text;
+    CCharString& operator=(const CCharString& other);
+};
+struct DeathRecoveryMarkerNameInterface
+{
+    char pad00[0x170];
+    CCharString markerName;
+    void SetMarkerName(const CCharString& n) { markerName = n; }
+};
 struct DeathRecoveryMarkerNameNode
 {
     int key;
-    void* value;
+    DeathRecoveryMarkerNameInterface* value;
 };
 
 struct DeathRecoveryMarkerNameMap
@@ -15,6 +29,14 @@ struct DeathRecoveryMarkerNameMap
     DeathRecoveryMarkerNameNode* end;
 
     DeathRecoveryMarkerNameNode* lower_bound(const int* key);
+    __forceinline DeathRecoveryMarkerNameInterface* Find(int kind)   // the inlined map find: end when the key is absent
+    {
+        int key = kind;
+        DeathRecoveryMarkerNameNode* found = lower_bound(&key);
+        if (found == end || found->key > kind)
+            found = end;
+        return found->value;
+    }
 };
 
 struct CPlayerManager
@@ -22,17 +44,24 @@ struct CPlayerManager
     void* GetTarget();
 };
 
-struct CCharString
+struct CGameScriptInterface                        // test-local view (engine/CGameScriptInterface.h is 32-bit only)
 {
-    const char* text;
-    CCharString& operator=(const CCharString& other);
+    void* VTable;                                  // +0x00
+    void* World;                                   // +0x04
+    void* Component;                               // +0x08
+    void* DisplayEngine;                           // +0x0c
+    void* DefinitionManager;                       // +0x10
+    CPlayerManager* PlayerManager;                 // +0x14
 };
 
-struct DeathRecoveryMarkerNameInterface
+template <class T> __forceinline bool GetTCOut(unsigned char* thing, int kind, T** out)
 {
-    char pad00[0x170];
-    CCharString markerName;
-};
+    if (*(unsigned char*)(thing + 0x20) & 0x10) {
+        *out = ((DeathRecoveryMarkerNameMap*)(thing + 0x44))->Find(kind);
+        return true;
+    }
+    return false;
+}
 
 
 static void* g_sourceThis;
@@ -88,19 +117,9 @@ void __fastcall CGameScriptInterface_SetDeathRecoveryMarkerName(
         return;
     if (*(unsigned char*)(target + 0x91) & 0x01)
         return;
-    if (!(*(unsigned char*)(target + 0x20) & 0x10))
-        return;
-
-    int key = 4;
-    DeathRecoveryMarkerNameMap* map =
-        (DeathRecoveryMarkerNameMap*)(target + 0x44);
-    DeathRecoveryMarkerNameNode* found = map->lower_bound(&key);
-    DeathRecoveryMarkerNameNode* end = map->end;
-    if (found == end || found->key > 4)
-        found = end;
-
-    int markerInterface = ((volatile int*)found)[1];
-    ((CCharString*)(markerInterface + 0x170))->operator=(name);
+    DeathRecoveryMarkerNameInterface* markerInterface;
+    if (GetTCOut(target, 4, &markerInterface))
+        markerInterface->markerName = name;
 }
 
 static void ResetRecorders()

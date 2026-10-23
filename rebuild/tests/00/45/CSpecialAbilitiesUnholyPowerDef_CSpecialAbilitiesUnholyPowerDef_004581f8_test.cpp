@@ -1,33 +1,84 @@
 #include <cstdio>
-// CSpecialAbilitiesUnholyPowerDef::CSpecialAbilitiesUnholyPowerDef() -- initialise inherited definition, scalar defaults, and nine empty vector members at their padded retail offsets; retail @004581f8 length 188.
-// The quarantine header for UnholyPowerDef places 16-byte vectors at +0x40, but retail constructor bytes zero +0x3c..+0x74 then initialize nine 12-byte triples at +0x78, so the test embeds the retail-derived local layout.
-#pragma optimize("s", on)
-struct CParentDefClassBase { unsigned char base[0x3c]; CParentDefClassBase(); }; // 0x00430370
-struct Vec { unsigned int first,last,end; };
-struct CSpecialAbilitiesUnholyPowerDef : CParentDefClassBase { unsigned char pad0[0x3c]; Vec v0; unsigned char gap0[4]; Vec v1,v2,v3,v4,v5,v6; unsigned char gap1[12]; Vec v7; Vec v8; CSpecialAbilitiesUnholyPowerDef(); };
-CSpecialAbilitiesUnholyPowerDef::CSpecialAbilitiesUnholyPowerDef() {
-    *(volatile unsigned int*)this = 0x012348e4; volatile unsigned int* z=(volatile unsigned int*)this;
-    z[15]=0;z[16]=0;z[17]=0;z[18]=0;z[19]=0;z[20]=0;z[21]=0;z[22]=0;z[23]=0;z[24]=0;z[25]=0;z[26]=0;z[27]=0;z[28]=0;z[29]=0;
-    Vec& a=v0; a.first=0;a.last=0;a.end=0; Vec& b=v1; b.first=0;b.last=0;b.end=0;
-    Vec& c=v2; c.first=0;c.last=0;c.end=0; Vec& d=v3; d.first=0;d.last=0;d.end=0;
-    Vec& e=v4; e.first=0;e.last=0;e.end=0; Vec& f=v5; f.first=0;f.last=0;f.end=0;
-    Vec& g=v6; g.first=0;g.last=0;g.end=0; Vec& h=v7; h.first=0;h.last=0;h.end=0;
-    Vec& i=v8; i.first=0;i.last=0;i.end=0;
+#include <cstring>
+#include <new>
+// Behaviour test for the retail-model constructor (12-byte vectors, scalars left unset).
+class CParentDefClassBase {                        // 0x3C bytes in retail
+public:
+    virtual void v000();
+    unsigned long _body[0x0E];
+    CParentDefClassBase();                         // 0x00430370
+};
+struct CDefString {
+    long TablePos;
+};
+template <class T> struct CRetailVector {          // retail std::vector<T> (12 bytes)
+    T* m_first; T* m_last; T* m_end;
+    CRetailVector() : m_first(0), m_last(0), m_end(0) {}
+};
+class CSpecialAbilitiesUnholyPowerDef : public CParentDefClassBase {   // vtable 0x012348E4
+public:
+    virtual void v000();
+    CRetailVector<CDefString> StartPowerupSound;             // +0x3c
+    CRetailVector<CDefString> LoopingPowerupSound;           // +0x48
+    CRetailVector<CDefString> ReleaseSound;                  // +0x54
+    CRetailVector<CDefString> ReleaseLoopSound;              // +0x60
+    CRetailVector<CDefString> FinishSound;                   // +0x6c
+    CRetailVector<CDefString> CancelSound;                   // +0x78
+    float                     RandomFactorForNumSecsBetweenDamageHit;   // +0x84
+    CRetailVector<float>      NumSecsBetweenDamageHit;       // +0x88
+    CRetailVector<float>      DamagePerHit;                  // +0x94
+    CRetailVector<float>      DurationOfSpellSecs;           // +0xa0
+    CRetailVector<float>      RadiusOfEffect;                // +0xac
+    CRetailVector<float>      EnvChangeSecs;                 // +0xb8
+    CRetailVector<float>      EnvReturnSecs;                 // +0xc4
+    bool                      DoLifting;                     // +0xd0
+    float                     VelocityOfLift;                // +0xd4
+    float                     DistanceToLift;                // +0xd8
+    CRetailVector<float>      StaminaCostPerSec;             // +0xdc
+    CRetailVector<float>      DamageTakenMultiplier;         // +0xe8
+    float                     SmallRingRadius;               // +0xf4
+    float                     LargeRingRadius;               // +0xf8
+    CSpecialAbilitiesUnholyPowerDef();
+};
+
+CSpecialAbilitiesUnholyPowerDef::CSpecialAbilitiesUnholyPowerDef()
+{
 }
 
-CParentDefClassBase::CParentDefClassBase() { for (int i=0;i<0x3c;++i) base[i]=0x5a; }
-#include <new>
+CParentDefClassBase::CParentDefClassBase() { for (int i = 0; i < 0x0E; ++i) _body[i] = 0x5a5a5a5aUL; }
+void CParentDefClassBase::v000() { }
+void CSpecialAbilitiesUnholyPowerDef::v000() { }
+
 int main() {
-    union Storage { unsigned int align; unsigned char bytes[sizeof(CSpecialAbilitiesUnholyPowerDef)]; } storage;
-    for (unsigned int i=0;i<sizeof(storage.bytes);++i) storage.bytes[i]=0xa5;
-    CSpecialAbilitiesUnholyPowerDef* value=new (storage.bytes) CSpecialAbilitiesUnholyPowerDef();
-    if (*(unsigned int*)value!=0x012348e4) { std::printf("004581f8_TEST FAIL\n"); return 1; }
-    for (int i=4;i<0x3c;++i) if (value->base[i]!=0x5a) { std::printf("004581f8_TEST FAIL\n"); return 1; }
-    for (int i=0;i<0x3c;++i) if (value->pad0[i]!=0) { std::printf("004581f8_TEST FAIL\n"); return 1; }
-    for (int i=0;i<4;++i) if (value->gap0[i]!=0xa5) { std::printf("004581f8_TEST FAIL\n"); return 1; }
-    for (int i=0;i<12;++i) if (value->gap1[i]!=0xa5) { std::printf("004581f8_TEST FAIL\n"); return 1; }
-    Vec* vectors[9]={&value->v0,&value->v1,&value->v2,&value->v3,&value->v4,&value->v5,&value->v6,&value->v7,&value->v8};
-    for (int i=0;i<9;++i) if (vectors[i]->first || vectors[i]->last || vectors[i]->end) { std::printf("004581f8_TEST FAIL\n"); return 1; }
-    value->~CSpecialAbilitiesUnholyPowerDef();
-    std::printf("004581f8_TEST PASS\n"); return 0;
+    union Storage { double align; unsigned char bytes[sizeof(CSpecialAbilitiesUnholyPowerDef)]; } storage;
+    std::memset(storage.bytes, 0xa5, sizeof(storage.bytes));
+    CSpecialAbilitiesUnholyPowerDef* d = new (storage.bytes) CSpecialAbilitiesUnholyPowerDef();
+    for (int i = 0; i < 0x0E; ++i) if (d->_body[i] != 0x5a5a5a5aUL) { std::printf("004581f8_TEST FAIL base\n"); return 1; }
+    const void* vectors[][3] = {
+        { d->StartPowerupSound.m_first, d->StartPowerupSound.m_last, d->StartPowerupSound.m_end },
+        { d->LoopingPowerupSound.m_first, d->LoopingPowerupSound.m_last, d->LoopingPowerupSound.m_end },
+        { d->ReleaseSound.m_first, d->ReleaseSound.m_last, d->ReleaseSound.m_end },
+        { d->ReleaseLoopSound.m_first, d->ReleaseLoopSound.m_last, d->ReleaseLoopSound.m_end },
+        { d->FinishSound.m_first, d->FinishSound.m_last, d->FinishSound.m_end },
+        { d->CancelSound.m_first, d->CancelSound.m_last, d->CancelSound.m_end },
+        { d->NumSecsBetweenDamageHit.m_first, d->NumSecsBetweenDamageHit.m_last, d->NumSecsBetweenDamageHit.m_end },
+        { d->DamagePerHit.m_first, d->DamagePerHit.m_last, d->DamagePerHit.m_end },
+        { d->DurationOfSpellSecs.m_first, d->DurationOfSpellSecs.m_last, d->DurationOfSpellSecs.m_end },
+        { d->RadiusOfEffect.m_first, d->RadiusOfEffect.m_last, d->RadiusOfEffect.m_end },
+        { d->EnvChangeSecs.m_first, d->EnvChangeSecs.m_last, d->EnvChangeSecs.m_end },
+        { d->EnvReturnSecs.m_first, d->EnvReturnSecs.m_last, d->EnvReturnSecs.m_end },
+        { d->StaminaCostPerSec.m_first, d->StaminaCostPerSec.m_last, d->StaminaCostPerSec.m_end },
+        { d->DamageTakenMultiplier.m_first, d->DamageTakenMultiplier.m_last, d->DamageTakenMultiplier.m_end },
+    };
+    for (int i = 0; i < 14; ++i)
+        for (int j = 0; j < 3; ++j)
+            if (vectors[i][j] != 0) { std::printf("004581f8_TEST FAIL vector\n"); return 1; }
+    const unsigned char* scalars[] = {
+        (const unsigned char*)&d->RandomFactorForNumSecsBetweenDamageHit, (const unsigned char*)&d->DoLifting,
+        (const unsigned char*)&d->VelocityOfLift, (const unsigned char*)&d->DistanceToLift,
+        (const unsigned char*)&d->SmallRingRadius, (const unsigned char*)&d->LargeRingRadius,
+    };
+    for (int i = 0; i < 6; ++i) if (scalars[i][0] != 0xa5) { std::printf("004581f8_TEST FAIL scalar\n"); return 1; }
+    std::printf("004581f8_TEST PASS\n");
+    return 0;
 }

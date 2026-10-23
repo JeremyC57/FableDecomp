@@ -1,34 +1,68 @@
 #include <cstdio>
-static int g_arg = 0; static int g_ok = 0;
-struct CBase {
-    int vt;
-    int base1, base2;
-    CBase(int thing) { g_arg = thing; g_ok = 1; base1 = 0; base2 = 0; }
+#include <cstring>
+#include <new>
+struct CThing;
+struct CDefPointeeBase;
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector() { }
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CTCPhysicsBase : public CBase {
-    int f0c, f10, f14, f18, f1c, f20, f24, f28, f2c, f30;
-    int f34;
-    int f38;
-    unsigned char f3c;
-    CTCPhysicsBase(int thing);
+struct CTCBase {                                   // polymorphic base: vptr +0, two words
+    virtual ~CTCBase();
+    long  sub;                                     // +0x04
+    void* _base08;                                 // +0x08
+    CTCBase(CThing* thing);                        // 0x00686800
 };
-CTCPhysicsBase::CTCPhysicsBase(int thing) : CBase(thing)
+template <class T> struct CDefPointer {
+    T* Object;
+    CDefPointer() : Object(0) { }
+};
+struct CPhysicsDef;
+struct CTCPhysicsBase : public CTCBase {
+    C3DVector                       Position;                  // +0x0c
+    C3DVector                       OldPosition;               // +0x18
+    long                            OldPositionLastFrameSet;   // +0x24
+    C3DVector                       Velocity;                  // +0x28
+    float                           Radius;                    // +0x34
+    CDefPointer<const CPhysicsDef>  PhysicsDef;                // +0x38
+    bool                            Moving : 1;                // +0x3c bit 0
+    bool                            OldMoving : 1;             // +0x3c bit 1
+    CTCPhysicsBase(CThing* thing);
+    virtual ~CTCPhysicsBase();
+};
+
+CTCPhysicsBase::CTCPhysicsBase(CThing* thing)
+    : CTCBase(thing),
+      Position(0.0f, 0.0f, 0.0f),
+      OldPosition(0.0f, 0.0f, 0.0f),
+      OldPositionLastFrameSet(0),
+      Velocity(0.0f, 0.0f, 0.0f),
+      Radius(-1.0f)
 {
-    volatile int* p = (volatile int*)this;
-    p[0] = 0x0125d2c4;
-    p[3] = 0; p[4] = 0; p[5] = 0; p[6] = 0; p[7] = 0;
-    p[8] = 0; p[9] = 0; p[10] = 0; p[11] = 0; p[12] = 0;
-    p[13] = 0xbf800000;
-    p[14] = 0;
-    f3c &= 0xfc;
+    Moving = false;
+    OldMoving = false;
 }
+
+static CThing* g_arg = 0;
+CTCBase::CTCBase(CThing* thing) { g_arg = thing; sub = 0; _base08 = 0; }
+CTCBase::~CTCBase() { }
+CTCPhysicsBase::~CTCPhysicsBase() { }
+
 int main()
 {
-    CTCPhysicsBase o(7);
-    if (g_arg != 7) { std::printf("FAIL arg\n"); return 1; }
-    if (o.vt != 0x0125d2c4) { std::printf("FAIL vt\n"); return 1; }
-    if (o.f0c || o.f30 || o.f38) { std::printf("FAIL zero\n"); return 1; }
-    if ((unsigned)o.f34 != 0xbf800000u) { std::printf("FAIL f34\n"); return 1; }
+    union Storage { double align; unsigned char bytes[sizeof(CTCPhysicsBase)]; } storage;
+    std::memset(storage.bytes, 0xff, sizeof(storage.bytes));
+    CThing* thing = (CThing*)&storage;
+    CTCPhysicsBase* o = new (storage.bytes) CTCPhysicsBase(thing);
+    if (g_arg != thing) { std::printf("FAIL arg\n"); return 1; }
+    if (o->Position.X != 0.0f || o->Position.Y != 0.0f || o->Position.Z != 0.0f) { std::printf("FAIL position\n"); return 1; }
+    if (o->OldPosition.X != 0.0f || o->OldPosition.Z != 0.0f || o->OldPositionLastFrameSet != 0) { std::printf("FAIL old\n"); return 1; }
+    if (o->Velocity.X != 0.0f || o->Velocity.Y != 0.0f || o->Velocity.Z != 0.0f) { std::printf("FAIL velocity\n"); return 1; }
+    if (o->Radius != -1.0f) { std::printf("FAIL radius\n"); return 1; }
+    if (o->PhysicsDef.Object != 0) { std::printf("FAIL def\n"); return 1; }
+    if (o->Moving || o->OldMoving) { std::printf("FAIL moving\n"); return 1; }
+    o->~CTCPhysicsBase();
     std::printf("CTCPhysicsBase_006b0730_TEST PASS\n");
     return 0;
 }

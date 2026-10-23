@@ -789,3 +789,11 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk 310) A same-TU `#pragma auto_inline(off)` body for Compare_00411570 or GetDef 0xCDE280 keeps values in callee-saved registers across the call, as retail does. `__forceinline` CCharString::operator== and the handle operator= when they are used many times.
 - (chunk 310) Script loops: `for(;;)` versus `while(!IsActiveThreadTerminating())` decides which cleanup copy jumps and which falls through; put post-loop statements inside the exit branch. `inline_depth(0)` around closing braces and the function-end `return;` places the dtor calls.
 - (chunk 310) A by-value CCharString built from a virtual's return needs a declared copy ctor, or it is bit-copied instead of constructed in place. The `// Leaf:` line must hold only the symbol (finish.py); notes go on a `// Label:` line.
+- (volatile rework, 2026-10-23) 26 rows that "needed" volatile were reworked without it:
+  - IVRefCount re-read (`add eax,4; dec [eax]; cmp [eax],0`): put the count in a second base class at +4 with inline DecRef/GetRefCount and a ReleaseTemporary helper (00537956, 005bd8a0, 005bde50; model 005ee207).
+  - Re-read argument slot: the value is really `float`; VC7.1 never holds a float in an integer register across branches (0040b310, 00891220).
+  - "Volatile float global": 0x0123822C/0x0122DC88 are the compiler literals 24.0f and 1/24.
+  - Component lookups: GetTCOut / GetTCIfPresent out-parameter forms.
+  - Hand-built vtable stores: real polymorphic classes with inline-zeroed members.
+
+  Only 009e1da0 (GFAXToVX, `fld qword g; fmul dword x` operand order) still needs volatile; it is pending un-land.
