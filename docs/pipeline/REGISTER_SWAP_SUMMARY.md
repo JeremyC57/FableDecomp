@@ -210,3 +210,11 @@ Conclusion: retail's choice to leave ebp unused is not a flag, pragma, CPU targe
 - Dead or discarded uses before DCE: `(void)deed;`, `if (0) { ... = deed; }`, `(void)sizeof(deed)`, a scoped `unused = deed; unused = unused;`, a `__forceinline` no-op `Touch(deed); Touch(ExtraData2);`, `(void)this->ExtraData1;`, `if (deed != deed) return false;`, and `self = this; (void)self;`. All are byte-identical to the base, so VC7.1 strips dead uses before computing register weights.
 - Inline-body footprint: Release as `long n = --m_refCount; if (n == 0)`, and `__forceinline` Release, are byte-identical. A dtor that nulls `Object` after release, or one that inlines the decrement directly, gives 428v457 but still pushes ebp.
 Status: 15 rounds of source, sequencing, flag, toolset, dead-use and inline-footprint levers have not dropped ebp on 008508b0. Treat "retail leaves ebp unused" as a lane gap (park with the Grade tag 'family gap: ebp unused') until a matched row in the family shows the cause.
+
+## Round 16 (2026-10-23): class-declaration levers on 008508b0 — byte-identical
+The shared header shows CContextSensitiveItemDef is polymorphic (vptr at +0), but the parked model was a plain struct. Each of these is byte-identical to the base and still pushes ebp:
+- a virtual dtor in the class itself;
+- a polymorphic base class holding the vptr and padding;
+- a two-virtual base plus a derived pad;
+- `#pragma pack(push, 1)` around the class.
+Class layout, polymorphism and packing do not feed VC7.1's register weights when the member offsets are unchanged. The family stays parked as 'family gap: ebp unused'.
