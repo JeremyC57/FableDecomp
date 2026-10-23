@@ -156,3 +156,9 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
   - Declaring `offset` inside the y-loop body gives base bytes. The compiler hoists it again, so it's the index
     again. Retail's order only appears when a *variable* holds the offset at loop entry, and that variable always
     costs a register and moves the rest.
+- **Round 8 on the SIB family:**
+  - Inside the per-row inline, so `LevelInfo` still reloads each row: `(&LevelInfo)[0]` bound to a const pointer, a
+    `(char*)LevelInfo + 4` shifted base plus `level*20`, and a static `LevelWidth(LevelInfo, level)` helper taking
+    the pointer explicitly. All give base bytes, still `[LevelInfo + offset + 4]`.
+  - Binding the shifted base once before the y loop: 546 v 542, 101 diff lines. Retail reloads `LevelInfo` each
+    row, so a loop-invariant copy is the wrong model anyway.
