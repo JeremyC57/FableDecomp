@@ -25764,3 +25764,8 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?GetDisplayEngine@CTCKraken@@QAEPAUCDisplayEngine@@XZ	00686a70	007fbe50
 ?g_LastBeamExplosionFrame@@3JA	013baf10	007fbe50
 ?HasMode@CTCScriptedHook@@QAE_NJ@Z	0073a8a0	007fb270
+?IsActive@CFrontEnd@@QAE_NXZ	00434d60	00490a22
+?IsTextFullyShown@CSubtitleRenderer@@QBE_NXZ	0048e072	00490a22
+?IsWaitingForClickPast@CSubtitleRenderer@@QBE_NXZ	0048db46	00490a22
+?Create@CThingObject@@SIPAU1@JPBUC3DVector@@JPAXKABUCCharString@@@Z	00703210	006c0c90
+?GetRentMoneyPos@CTCBuyableHouse@@QAE_NPAUC3DVector@@JJ@Z	006c06d0	006c0c90

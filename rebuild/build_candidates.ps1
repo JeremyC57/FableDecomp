@@ -271623,6 +271623,20 @@ $catalog = @(
         TestSource = '00/5f/CTCInventoryMap_FindTeleportsForActiveRegion_005fd1d0_test.cpp'
         PassPattern = '005fd1d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00490a22'
+        Module = 'CSubtitleRenderer'
+        Source = '00/49/CSubtitleRenderer_IsInInteractiveState_00490a22.cpp'
+        TestSource = '00/49/CSubtitleRenderer_IsInInteractiveState_00490a22_test.cpp'
+        PassPattern = '00490a22_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c0c90'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_CreateRentMoney_006c0c90.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_CreateRentMoney_006c0c90_test.cpp'
+        PassPattern = '006c0c90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
