@@ -27117,3 +27117,16 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ??_7?$CSpawnedFunc@UCV_MazeResearchScript@@@@6B@	012ee458	00ea8130
 ?AddSpawnedFunction@CV_MazeResearchScript@@QAEXPAUCSpawnedFuncBase@@ABUCCharString@@@Z	00cb7e50	00ea8130
 ?UnLimboSword@CV_MazeResearchScript@@QAEXXZ	00ea85e0	00ea8130
+?Add@CRegisteredPSCMap@NParticleEngine@@QAEXABUCCharString@@ABUCRegisteredPSCInfo@2@@Z	00af2910	00af8170
+?Alloc@CPSCAttractor@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af7fb0	00af8170
+?Alloc@CPSCDecalRenderer@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af8100	00af8170
+?Alloc@CPSCEmitterGeneric@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af7ed0	00af8170
+?Alloc@CPSCLight@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af8020	00af8170
+?Alloc@CPSCOrbit@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af7f40	00af8170
+?Alloc@CPSCRenderMesh@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af7d80	00af8170
+?Alloc@CPSCRenderSprite@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af7d10	00af8170
+?Alloc@CPSCSingleSprite@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af7df0	00af8170
+?Alloc@CPSCSpline@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af8090	00af8170
+?Alloc@CPSCUpdateNormal@NParticleEngine@@SAPAVCPSCBase@2@XZ	00af7e60	00af8170
+??BCCharString@@QBEPBDXZ	0099e4c0	00eb10c0
+?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@@QAE_NABUCScriptThing@@@Z	00eb07d0	00eb23e0

@@ -1,0 +1,11 @@
+address	name	evidence
+00995340	CDataInputStream::ReadMatrix3x4	chunk 320: matched body reads a 3x4 matrix from the input stream
+00eb5d50	CMurderTwistAssassinGuard::Main	chunk 320: entity-script state owner by vtable/callers
+00eb5750	CMurderTwistAssassinGuard::State	chunk 320: same script class as 0xEB5D50
+00eb19c0	CMurderTwistSheriff::DoSuspicious	chunk 320: matched entity-script state
+00af2910	CVectorMap::Add	chunk 320: callee of CPSCManager::RegisterPSCs
+0049d810	CWorld::GetBank	chunk 320: world bank getter (was DoSizeof)
+00f35b10	RegisterFilter	chunk 320: confirmed again (was CWorldMap::AllocateMapThingUID)
+004fd020	CWorldMap::PostLoadInitialise	chunk 320: post-load initialise (was _Cons_val)
+00514400	std::set<CCharString>::set	chunk 320: copy ctor
+006f0810	CArray<C3DVector>::CArray	chunk 320: copy ctor

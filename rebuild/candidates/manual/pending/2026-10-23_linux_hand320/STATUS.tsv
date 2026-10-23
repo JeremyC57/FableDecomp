@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00af8170	RELOCATION_MATCH	1051v1051	PASS	named guiName/info/key locals per registration
+00b1a870	DIFFER	1310v1310	-	one bitfield write-back register fold (xor cl,[mem])
+00eb4f80	RELOCATION_MATCH	1044v1044	PASS	port of landed twin 0x00EB15C0 + text inner block with goto exits
+00eb3740	RELOCATION_MATCH	1108v1108	PASS	same model as 00eb4f80; hit && !HasHeroEnflamedEntity
+00eb5d50	RELOCATION_MATCH	1185v1185	PASS	label: CMurderTwistAssassinGuard (henchman); Me.GetDataString() in the line
+00eb10c0	RELOCATION_MATCH	1274v1274	PASS	landed-twin model; cycling text inner block in its arm
+00eb19c0	RELOCATION_MATCH	1274v1274	PASS	named DoSuspicious (landed Main binding); PLEASED lines
+00eb23e0	RELOCATION_MATCH	1298v1298	PASS	block-scope prefix ternary string + inner text blocks
+00eb5750	DIFFER	1542v1536	-	identical exit copies merged into block 2 instead of block 1 (tail-merge survivor)
+00eb40c0	DIFFER	1601v1601	-	block placement of the shared early-terminate exit (first arm vs else arm)
+00995340	RELOCATION_MATCH	1072v1072	PASS	label: CDataInputStream::ReadMatrix3x4 (landed caller 0x00AA9E60); 12 inlined ReadFloat into a local
+006c2170	DIFFER	1345v1329	-	loop induction register choice (offset vs index) in the six level-file loops
+00b22670	DIFFER	1201v1217	-	structure right; this-register, local slot order and push_back zero constant-folding differ
+00a781a0	DIFFER	-v1248	-	lane gap: 4 bare dword fistp rounding sites (inline-asm helper)
+00b16410	DIFFER	-v1680	-	lane gap: 8 bare dword fistp rounding sites (inline-asm helper)
+00b103f0	DIFFER	-v1472	-	lane gap: 28 bare dword fistp rounding sites (inline-asm helper)
+00b00db0	DIFFER	-v1184	-	lane gap: 7 bare dword fistp rounding sites (inline-asm helper)
+00b012e0	DIFFER	-v1296	-	lane gap: 22 bare dword fistp rounding sites (inline-asm helper)
+00afb7c0	DIFFER	-v1040	-	lane gap: 16 bare dword fistp rounding sites (inline-asm helper)
+008621a0	DIFFER	1503v1503	-	same length; zero-constant register choice around the ST_RUN/ST_SPRINT temporaries (xor eax vs ebx)
+00f00c90	DIFFER	1190v1203	-	register choice ebx/ebp for paused game pointer spills health bool; frame 0x4c v 0x48
+00ac7300	DIFFER	1075v1091	-	x87 spill/scheduling of the first Newton factor, a cross component and the final scale
+00acd0e0	DIFFER	1048v1041	-	jump-threaded -1 of the inline vertex lookup; x87 order in the final dot products
+00a18fc0	DIFFER	1123v1125	-	frame 0x34 v 0x30 extra temp slot; register choice; x87 order in scaled Normalise
+00a19430	DIFFER	1215v1165	-	draft: temporaries/slot reuse and x87 order differ throughout
+008dd0f0	DIFFER	-v1513	-	triage only: aligned `and esp,-8` frame from a double/__int64 local (fild of the frame counter) plus 26
+00ab4bb0	DIFFER	-v1152	-	triage only: x87-heavy (93 ops) DirectInput/Win32 body
+009bd460	DIFFER	-v1193	-	triage only: 37 distinct callees (string/parser/vector helpers) and inline CCharString temporaries
+00a7a8d0	DIFFER	-v1665	-	triage only: 31 distinct callees incl. operator new/ctor pairs and STLport vector growth
+00a79b30	DIFFER	-v1381	-	triage only: x87 sampling loop plus child allocation
+00a1a260	DIFFER	-v1399	-	triage only: x87-dominated (137 ops) line walk
+00a1b5a0	DIFFER	-v1136	-	triage only: same family as the parked flyer row 0x00A19430 (x87 temporaries and dead-argument slot reu
+00a1d6e0	DIFFER	-v1863	-	triage only: function-static guard init plus 104 x87 ops and 20 callees
+00a475c0	DIFFER	-v1857	-	triage only: `and esp,-8` aligned frame (8-byte local in the search loop) plus 222 x87 ops
+00700ae0	DIFFER	-v1322	-	triage only: pointer-select clamp ternaries (`lea edi,[esp+x]` per arm) in an 85-op x87 loop plus two i
+00701010	DIFFER	-v1405	-	triage only: 0x16c frame with large local records, counted-pointer temporaries with flag words and 14 c
+00ace600	DIFFER	-v1820	-	triage only: `and esp,-8` aligned frame plus inline STLport vector growth and 19 callees
+00acc490	DIFFER	-v1888	-	triage only: /GS cookie frame, inline vector growth and map iteration (43 calls)
+00d9c680	DIFFER	-v2048	-	triage only: quest Main with conditional-temporary flag words in a register and on the frame, two timer
+00b079b0	DIFFER	-v2032	-	triage only: contains the same `xor cl,[mem]` bitfield write-back that keeps the parked twin 0x00B1A870

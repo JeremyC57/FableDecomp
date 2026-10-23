@@ -274840,6 +274840,62 @@ $catalog = @(
         TestSource = '00/ea/CEmptyGrave_Main_00ea8130_test.cpp'
         PassPattern = '00ea8130_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00995340'
+        Module = 'CDataInputStream'
+        Source = '00/99/CDataInputStream_ReadMatrix3x4_00995340.cpp'
+        TestSource = '00/99/CDataInputStream_ReadMatrix3x4_00995340_test.cpp'
+        PassPattern = '00995340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af8170'
+        Module = 'NParticleEngine::CPSCManager'
+        Source = '00/af/NParticleEngineCPSCManager_RegisterPSCs_00af8170.cpp'
+        TestSource = '00/af/NParticleEngineCPSCManager_RegisterPSCs_00af8170_test.cpp'
+        PassPattern = '00af8170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb10c0'
+        Module = 'CMurderTwistSheriff'
+        Source = '00/eb/CMurderTwistSheriff_DoBecomingSuspiciousOfHero_00eb10c0.cpp'
+        TestSource = '00/eb/CMurderTwistSheriff_DoBecomingSuspiciousOfHero_00eb10c0_test.cpp'
+        PassPattern = '00eb10c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb19c0'
+        Module = 'CMurderTwistSheriff'
+        Source = '00/eb/CMurderTwistSheriff_DoSuspicious_00eb19c0.cpp'
+        TestSource = '00/eb/CMurderTwistSheriff_DoSuspicious_00eb19c0_test.cpp'
+        PassPattern = '00eb19c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb23e0'
+        Module = 'CMurderTwistSheriffGuard'
+        Source = '00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp'
+        TestSource = '00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0_test.cpp'
+        PassPattern = '00eb23e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb3740'
+        Module = 'CMurderTwistSheriffGuard'
+        Source = '00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp'
+        TestSource = '00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740_test.cpp'
+        PassPattern = '00eb3740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb4f80'
+        Module = 'CMurderTwistAssassin'
+        Source = '00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp'
+        TestSource = '00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80_test.cpp'
+        PassPattern = '00eb4f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb5d50'
+        Module = 'CMurderTwistAssassinGuard'
+        Source = '00/eb/CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50.cpp'
+        TestSource = '00/eb/CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50_test.cpp'
+        PassPattern = '00eb5d50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

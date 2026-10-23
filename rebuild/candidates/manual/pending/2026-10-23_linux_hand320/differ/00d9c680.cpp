@@ -1,0 +1,3 @@
+// COrchardFarmFarmer::Main() -- the orchard farmer entity script: wait for the quest flag (+0x58), talk-to handling with conditional CCharString temporaries (flag word or ebx,1/2/4/8/0x10/0x20), movie + Speak while alive, timers via the global timer manager 0x0143E8F8 (slots 0x15c/0x164/0x168), random greeting animations (rand()%3)
+// Grade: DIFFER(-v2048) -- triage only, no source drafted: quest Main with conditional-temporary flag words in a register and on the frame, two timer handles with out-of-line dtors and a movie; the GetHealth bool is in bl as in the parked 0x00F00C90
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00D9C680, 2048 bytes. Decoded from dis_all.txt; see NOTES.md for the next step.

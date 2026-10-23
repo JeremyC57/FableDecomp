@@ -2854,3 +2854,35 @@ address	module	name	length	chunk	reason
 0088edc0	CGameScriptInterface	?CameraDoConversation@CGameScriptInterface@@UBEXABVCScriptThing@@0W4ECameraOp@@_N@Z	1568	hand318	DIFFER(-v1568) -- decode only: x87-heavy conversation camera (154 x87 instructions)
 006cddf0	CGroundNavigatorExternalInterface	?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	1056	hand318	DIFFER(-v1056) -- decode only: x87-heavy navigation geometry (80 x87 instructions)
 00541a00	CIconText	FitInWindow	1120	hand318	DIFFER(-v1120) -- decode only: aligned-stack x87 word wrap over CWStringParser chunks with CWideString temporaries and iswspace
+00b1a870	CPSCLight	DatabaseSerialise	1312	hand320	DIFFER(1310v1310) -- one bitfield write-back register fold (xor cl,[mem])
+00eb5750	CMurderTwistSheriffGuard	DoAskingHeroToSpeakToBossAgain	1536	hand320	DIFFER(1542v1536) -- identical exit copies merged into block 2 instead of block 1 (tail-merge survivor)
+00eb40c0	CMurderTwistAssassin	DoWatchingForTrouble	1616	hand320	DIFFER(1601v1601) -- block placement of the shared early-terminate exit (first arm vs else arm)
+006c2170	CObject	Load	1344	hand320	DIFFER(1345v1329) -- loop induction register choice (offset vs index) in the six level-file loops
+00b22670	CPSCSplineBase	DatabaseSerialise	1232	hand320	DIFFER(1201v1217) -- structure right; this-register, local slot order and push_back zero constant-folding differ
+00a781a0	CNavQuadTree	UpdateLines	1248	hand320	DIFFER(-v1248) -- lane gap: 4 bare dword fistp rounding sites (inline-asm helper)
+00b16410	COrbitState	Update	1680	hand320	DIFFER(-v1680) -- lane gap: 8 bare dword fistp rounding sites (inline-asm helper)
+00b103f0	CPSCEmitterGeneric	CPSCEmitterGeneric	1472	hand320	DIFFER(-v1472) -- lane gap: 28 bare dword fistp rounding sites (inline-asm helper)
+00b00db0	CPSCRenderMesh	GetComponentCost	1184	hand320	DIFFER(-v1184) -- lane gap: 7 bare dword fistp rounding sites (inline-asm helper)
+00b012e0	CPSCRenderMesh	CPSCRenderMesh	1296	hand320	DIFFER(-v1296) -- lane gap: 22 bare dword fistp rounding sites (inline-asm helper)
+00afb7c0	CPSCRenderSprite	CPSCRenderSprite	1040	hand320	DIFFER(-v1040) -- lane gap: 16 bare dword fistp rounding sites (inline-asm helper)
+008621a0	CModeStandBase	?OnActivate@CModeStandBase@@UAEXXZ	1504	hand320	DIFFER(1503v1503) -- same length; zero-constant register choice around the ST_RUN/ST_SPRINT temporaries (xor eax vs ebx)
+00f00c90	COracleSpectator	Main	1216	hand320	DIFFER(1190v1203) -- register choice ebx/ebp for paused game pointer spills health bool; frame 0x4c v 0x48
+00ac7300	COptimisedPrimitive	FindTextureTangent	1104	hand320	DIFFER(1075v1091) -- x87 spill/scheduling of the first Newton factor, a cross component and the final scale
+00acd0e0	COptimisedPrimitive	DetectFoldOver	1056	hand320	DIFFER(1048v1041) -- jump-threaded -1 of the inline vertex lookup; x87 order in the final dot products
+00a18fc0	CNavigatorFlyer	?MoveToPosProximity@CNavigatorFlyer@@UAE?AW4ENavigatorReturn@@ABVC3DVector@@0MMAAV3@_N22222M@Z	1136	hand320	DIFFER(1123v1125) -- frame 0x34 v 0x30 extra temp slot; register choice; x87 order in scaled Normalise
+00a19430	CNavigatorFlyer	?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@M_N@Z	1168	hand320	DIFFER(1215v1165) -- draft: temporaries/slot reuse and x87 order differ throughout
+008dd0f0	CModeScorpionKingVulnerable	OnActivate	1520	hand320	DIFFER(-v1513) -- triage only: aligned `and esp,-8` frame from a double/__int64 local (fild of the frame counter) plus 26
+00ab4bb0	CMouseDX	GetNonExclusiveModeDeviceMouseEvent	1152	hand320	DIFFER(-v1152) -- triage only: x87-heavy (93 ops) DirectInput/Win32 body
+009bd460	CMovieSubtitles	ParseSubtitles	1200	hand320	DIFFER(-v1193) -- triage only: 37 distinct callees (string/parser/vector helpers) and inline CCharString temporaries
+00a7a8d0	CNavQuadTree	Initialise	1680	hand320	DIFFER(-v1665) -- triage only: 31 distinct callees incl. operator new/ctor pairs and STLport vector growth
+00a79b30	CNavQuadTreeNode	Initialise	1392	hand320	DIFFER(-v1381) -- triage only: x87 sampling loop plus child allocation
+00a1a260	CNavigatorAStar	IsRouteClear	1408	hand320	DIFFER(-v1399) -- triage only: x87-dominated (137 ops) line walk
+00a1b5a0	CNavigatorAStar	CNavigatorAStar::GetRandomNavigablePos	1136	hand320	DIFFER(-v1136) -- triage only: same family as the parked flyer row 0x00A19430 (x87 temporaries and dead-argument slot reu
+00a1d6e0	CNavigatorAStar	CalculateNavigableWidthOfLine	1872	hand320	DIFFER(-v1863) -- triage only: function-static guard init plus 104 x87 ops and 20 callees
+00a475c0	CNavigatorBase	FindNearestNavigableNode	1872	hand320	DIFFER(-v1857) -- triage only: `and esp,-8` aligned frame (8-byte local in the search loop) plus 222 x87 ops
+00700ae0	COpinionReactionManager	GetOpinions	1328	hand320	DIFFER(-v1322) -- triage only: pointer-select clamp ternaries (`lea edi,[esp+x]` per arm) in an 85-op x87 loop plus two i
+00701010	COpinionReactionManager	GetAttitudeOrReactionType	1408	hand320	DIFFER(-v1405) -- triage only: 0x16c frame with large local records, counted-pointer temporaries with flag words and 14 c
+00ace600	COptimisedMesh	COptimisedMesh	1824	hand320	DIFFER(-v1820) -- triage only: `and esp,-8` aligned frame plus inline STLport vector growth and 19 callees
+00acc490	COptimisedPrimitive	CopyTo	1888	hand320	DIFFER(-v1888) -- triage only: /GS cookie frame, inline vector growth and map iteration (43 calls)
+00d9c680	COrchardFarmFarmer	Main	2048	hand320	DIFFER(-v2048) -- triage only: quest Main with conditional-temporary flag words in a register and on the frame, two timer
+00b079b0	CPSCSingleSprite	DatabaseSerialise	2032	hand320	DIFFER(-v2032) -- triage only: contains the same `xor cl,[mem]` bitfield write-back that keeps the parked twin 0x00B1A870
