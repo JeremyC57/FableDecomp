@@ -26300,3 +26300,11 @@ __TI1?AUCGenericException@@	013692f8	00a37060
 ?remove@CActiveQuestList@@QAEXABU?$CCountedPointer@UCActiveQuest@@@@@Z	004ba390	004b3a20
 ??_7CEventMissedStrike@@6B@	01277874	0087cb10
 ?IsAbleToFlourishDangerThings@CTCStealth@@QAE_NXZ	007471a0	0087cb10
+?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventHitBy@@ABU?$CFilter_Bind2@UCIsEventCreatedAfter@@UCIsEventCreatedBeforeOrOn@@@@@Z	008d47a0	008d0fb0
+?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventHitBy@@ABU?$CFilter_Bind3@UCIsEventCreatedAfter@@UCIsEventCreatedBeforeOrOn@@UCIsHitEventHitByThingWithScriptName@@@@@Z	008d4840	008d0fb0
+??0CCombatAction_GenericStrikeResponse@@QAE@PAVCThing@@ABUCCharString@@PAUCCombatActionBase@@J@Z	0069f060	0072c790
+??0CCreatureAction_CastWillEnflameSpell@@QAE@PAVCThing@@0_NJ@Z	008bb500	0072c790
+??1CCombatAction_GenericStrikeResponse@@QAE@XZ	0072d390	0072c790
+??1CCreatureAction_CastWillEnflameSpell@@UAE@XZ	0062e900	0072c790
+?GetThingInPrimarySlot@CTCInventory@@QAEPAVCThing@@XZ	006a1440	0072c790
+?g_StrikeResponseName@@3UCCharString@@B	013bad30	0072c790

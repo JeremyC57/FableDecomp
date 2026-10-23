@@ -273004,6 +273004,20 @@ $catalog = @(
         TestSource = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_FrameUpdate_0087cb10_test.cpp'
         PassPattern = '0087cb10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008d0fb0'
+        Module = 'CGameScriptThingMethods'
+        Source = '00/8d/CGameScriptThingMethods_MsgIsHitBy_008d0fb0.cpp'
+        TestSource = '00/8d/CGameScriptThingMethods_MsgIsHitBy_008d0fb0_test.cpp'
+        PassPattern = '008d0fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072c790'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupEnflameSpell_0072c790.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupEnflameSpell_0072c790_test.cpp'
+        PassPattern = '0072c790_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
