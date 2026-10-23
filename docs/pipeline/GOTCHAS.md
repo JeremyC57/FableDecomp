@@ -846,3 +846,13 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk 313) Three register-only rows (009647c0, 009658b0, 00927f30) resisted the by-value FindInterface, weighted-count and scope levers; they are queued for R&D.
 - (2026-10-23) Chunk 314 (8/40): `#pragma inline_depth(0)` around ONE return or throw moves only that exit's dtor/ctor out of line, which is the dtor-inline-budget split (009a8840 47→17, 009d0880 47→42 blocks, still parked). `(float)fabs(x)` gives retail's dword compare where plain fabs compares a double. An iterator class with a user copy ctor is built in its stack-argument slot. An incremental `c = …; c += …;` dot product keeps the Y,X,Z load order. The STLport map dtor must be `__forceinline` in big functions, and retail maps are 12 bytes in frames. AngleDifference 0x00A441E0 is `__stdcall`. In CCreatureActionBase, retail CutSceneEvents is at +0x90, not +0x94.
 - (2026-10-23, R&D I-35, 004091c0) /GS push_back tag bytes packed into one flag dword: make the vector's `_M_insert_overflow` a same-TU `template <class Tag> __declspec(noinline)` member template with the tag parameter UNNAMED. The empty tag temporaries then share retail's `more` dword (frame 0x250).
+- (2026-10-23, R&D round 3b) Dtor inlining:
+  - A member dtor reached through an implicit or plain-inline enclosing dtor is called out of line even when it is itself `__forceinline`; mark the enclosing dtor `__forceinline` too.
+  - `#pragma inline_depth(n)` with n ≥ 1 does not cut a dtor chain at a scope exit. Only depth 0 blocks it, and depth 0 blocks at the outermost dtor.
+- (2026-10-23, R&D round 3b) Dead stores and block layout:
+  - A dead zero store survives only into memory that escapes, so make it a member of the aggregate whose address escapes (00e2eac0 went from 42 lines to 2).
+  - Block layout comes from the CFG after tail merge. Where a label or `return` sits in the source does not choose which merged exit copy survives.
+  - Loop shape (while, if+do-while, a bool flag) is canonicalised before the exit head-hoist decision, so the exit head-merge (00da6d50, 00da7830) is still a gap.
+- (2026-10-23, R&D round 3b) Register and x87 limits:
+  - The R-29 priority rule cannot reach a free ebx/ebp choice or a web-coalescing decision (00846dd0, 009647c0).
+  - An x87 per-value operand key survives intervening possibly-aliasing stores: a later read of the same field keeps the first read's key.
