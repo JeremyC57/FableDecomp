@@ -272338,6 +272338,13 @@ $catalog = @(
         TestSource = '00/7c/CTCTurncoat_ModifyTurncoatedness_007c7a00_test.cpp'
         PassPattern = '007c7a00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00730070'
+        Module = 'CTCDummyVillager'
+        Source = '00/73/CTCDummyVillager_OnInitialActivate_00730070.cpp'
+        TestSource = '00/73/CTCDummyVillager_OnInitialActivate_00730070_test.cpp'
+        PassPattern = '00730070_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

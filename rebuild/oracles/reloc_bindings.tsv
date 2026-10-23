@@ -26075,3 +26075,12 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?SetDirtyDiscError@CFileInstaller@@SIX_N@Z	009c3530	009c3ae0
 __imp__ReadFileEx@20	0143fdf4	009c3ae0
 ?erase@CEffectVector@@QAEPAUCIntelligentPointer@@PAU2@0@Z	004ac0f0	007c7a00
+?AddThingToVillage@CTCVillage@@QAEXPAVCThing@@@Z	0065b854	00730070
+?CanBeRecreated@CTCDummyVillager@@QAE_NXZ	0072f9e0	00730070
+?CreateVillager@CTCDummyVillager@@QAEPAVCThingAICreature@@PAVCTCVillage@@ABUC3DVector@@_N@Z	0072f750	00730070
+?FindThingByUID@CThingManager@@QAEPAVCThing@@_K@Z	0051ed80	00730070
+?GetThingManager@CTCDummyVillagerBase@@QBEPAVCThingManager@@XZ	00686ae0	00730070
+?GetWorld@CTCDummyVillagerBase@@QBEPAUCWorld@@XZ	00686a70	00730070
+?IS_THING_ALIVE@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z	0065f8ca	00730070
+?SetHomeBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z	00512210	00730070
+?SetWorkBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z	00512260	00730070
