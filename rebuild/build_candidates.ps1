@@ -271869,6 +271869,13 @@ $catalog = @(
         TestSource = '00/72/CTCPhysicsStandard_OnCreate_00724010_test.cpp'
         PassPattern = '00724010_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007a1870'
+        Module = 'CTCWillLightning'
+        Source = '00/7a/CTCWillLightning_MakeRandomBeam_007a1870.cpp'
+        TestSource = '00/7a/CTCWillLightning_MakeRandomBeam_007a1870_test.cpp'
+        PassPattern = '007a1870_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -25894,3 +25894,6 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?GetWorldMap@CTCPhysicsStandard@@QAEPAUCWorldMap@@XZ	006af620	00724010
 ?HasPhysicsMesh@C3DMeshInfo@@QBE_NXZ	00a23c40	00724010
 ?g_OnGroundTolerance@@3MB	0125a15c	00724010
+??0CLightningBeam@@QAE@PAUCThing@@0@Z	007a0630	007a1870
+?DestroyObject@?$CCountedPointer@UCLightningBeam@@@@SIXPAX@Z	007a4120	007a1870
+?GetWorld@CTCWillLightning@@QAEPAUCWorld@@XZ	00686a70	007a1870
