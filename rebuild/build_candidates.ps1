@@ -272016,6 +272016,13 @@ $catalog = @(
         TestSource = '00/ed/CTOLAcolyteGood_Init_00edc720_test.cpp'
         PassPattern = '00edc720_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006d0180'
+        Module = 'CTCWife'
+        Source = '00/6d/CTCWife_Divorce_006d0180.cpp'
+        TestSource = '00/6d/CTCWife_Divorce_006d0180_test.cpp'
+        PassPattern = '006d0180_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

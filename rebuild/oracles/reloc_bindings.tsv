@@ -25988,3 +25988,8 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?IsActiveThreadTerminating@CTC_GuardSpawnPoint@@QAE_NXZ	00f35b30	00df7bf0
 ?IsActiveThreadTerminating@CTC_BanditHostageKeeper@@QAE_NXZ	00f35b30	00dfba60
 ?SetPredicate@CTC_BanditHostageKeeper@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00dfba60
+?ClearAllKnownDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	00681a70	006d0180
+?GetMoralityMax@CTCHeroStats@@QAEJXZ	0057a67e	006d0180
+?GetOccupant@CTCHome@@QAEPAUCHomeOccupant@@XZ	007ee540	006d0180
+?GetWorld@CTCCreatureOpinionOfHero@@QAEPAUCWorld@@XZ	00686a70	006d0180
+?SetOpinionReactionMask@CTCCreatureOpinionOfHero@@QAEXABUCCharString@@@Z	00681e30	006d0180
