@@ -25404,3 +25404,9 @@ _s_CornerOrderNormal	0129b94c	009dca80
 ?RenderBackgroundPatch@CEngineWaterRenderer@@QAEXPAVCEngineWaterBackgroundSubPatch@@@Z	00b6e010	00b6e260
 ?RenderOcclusionBox@CEngineOcclusionManager@@QAEJABUCMatrix3x4@@@Z	00b8d420	00b6e260
 ?g_pEngineOcclusionManager@@3PAVCEngineOcclusionManager@@A	01436e5c	00b6e260
+?GetWorld@CThingBuilding@@QBEPAUCWorld@@XZ	004c7ab0	0082d3b0
+?GetHeadPosition@CTCGraphicAppearance@@QBE?AUC3DVector@@XZ	004c10e0	006d5b50
+?LooksAtHeadHelper@CThingAICreature@@QBE_NXZ	00661e80	006d5b50
+??0CCreatureAction_WhisperLand@@QAE@PAUCThingCreatureBase@@@Z	008ccbd0	0096af60
+?SetPDef@CCombatActionBase@@QAEXABUCCharString@@@Z	008574d0	0096af60
+?GetPhysicsPosition@CThingCreature@@QBEABUC3DVector@@XZ	006a4d00	009385f0

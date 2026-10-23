@@ -271053,6 +271053,34 @@ $catalog = @(
         TestSource = '00/b6/CEngineWaterRenderer_RenderBackgroundList_00b6e260_test.cpp'
         PassPattern = '00b6e260_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0082d3b0'
+        Module = 'CThingBuilding'
+        Source = '00/82/CThingBuilding_PeekPCameraManagerSetDefinition_0082d3b0.cpp'
+        TestSource = '00/82/CThingBuilding_PeekPCameraManagerSetDefinition_0082d3b0_test.cpp'
+        PassPattern = '0082d3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d5b50'
+        Module = 'CThingAICreature'
+        Source = '00/6d/CThingAICreature_UpdateAITurning_006d5b50.cpp'
+        TestSource = '00/6d/CThingAICreature_UpdateAITurning_006d5b50_test.cpp'
+        PassPattern = '006d5b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096af60'
+        Module = 'CAIStateGroup_WhisperPotionCombat'
+        Source = '00/96/CAIStateGroupWhisperPotionCombat_DisappearJump_0096af60.cpp'
+        TestSource = '00/96/CAIStateGroupWhisperPotionCombat_DisappearJump_0096af60_test.cpp'
+        PassPattern = '0096af60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009385f0'
+        Module = 'CAIStateGroup_UsesSeat'
+        Source = '00/93/CAIStateGroupUsesSeat_MoveToSeat_009385f0.cpp'
+        TestSource = '00/93/CAIStateGroupUsesSeat_MoveToSeat_009385f0_test.cpp'
+        PassPattern = '009385f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
