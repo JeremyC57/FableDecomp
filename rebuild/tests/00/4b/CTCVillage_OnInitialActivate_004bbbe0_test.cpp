@@ -14,7 +14,7 @@ static void*   g_edx;
 static unsigned int g_flag;
 static int g_calls;
 
-void __fastcall InnerActivate(CInner* self, void* p, unsigned char flag)
+void __fastcall InnerActivate_004bbb40(CInner* self, void* p, unsigned char flag)
 {
     g_ecx = self; g_edx = p; g_flag = flag; g_calls++;
 }
@@ -23,7 +23,7 @@ void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->md)
     {
-        InnerActivate(self->m0, self->ParentThing, self->mc);
+        InnerActivate_004bbb40(self->m0, self->ParentThing, self->mc);
         self->md = 0;
     }
 }

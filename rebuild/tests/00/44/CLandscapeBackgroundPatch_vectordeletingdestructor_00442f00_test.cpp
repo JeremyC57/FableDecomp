@@ -1,13 +1,13 @@
 #include <cstdio>
 struct CLandscapeBackgroundPatch { void* vftable; int destroyed; };
 static int g_deleted = 0;
-static void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self){ self->destroyed = 1; }
+static void __fastcall CLandscapeBackgroundPatch_dtor_00441ee0(CLandscapeBackgroundPatch* self){ self->destroyed = 1; }
 static void __cdecl operator_delete_stub(void* p){ g_deleted = 1; (void)p; }
 
 static void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_pad, unsigned int flags)
 {
     (void)edx_pad;
-    CLandscapeBackgroundPatch_dtor(self);
+    CLandscapeBackgroundPatch_dtor_00441ee0(self);
     if (flags & 1)
         operator_delete_stub(self);
     return self;

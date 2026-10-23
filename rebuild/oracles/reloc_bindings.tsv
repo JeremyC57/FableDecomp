@@ -194,7 +194,7 @@ _free	00bfea14	00408900
 ?Save@CUserProfileManager@@AAEXXZ	0040a740	0040d400
 ??0CElement4_0099b720@@QAE@ABU0@@Z	0099b720	0040dd60
 ?g_CombatMinDistance@@3MA	0122dedc	0040e250
-?Dtor@T@@QAEXXZ	0099b510	0040ec50
+?Dtor_0099b510@T@@QAEXXZ	0099b510	0040ec50
 ?g_floatEpsilon@@3MB	0129ba3c	0040ed10
 ?g_floatZero@@3MB	0122dedc	0040ed10
 ?MemCmp_Unsigned16@@YAHKKH@Z	00403c60	0040f0a0
@@ -239,7 +239,7 @@ _engine_free	00bfea14	00412130
 ?InsertRange@VectorPushBackOverlay@@QAEXPAUCWideString@@0PAPAU2@HH@Z	00412330	004128a0
 ?InsertGrow@CRetailVector_00412970@@QAEXPAUSInputRecord_00412970@@ABU2@ABUSScalarTag@@K_N@Z	004125a0	00412970
 ?Move@Elem@@QAEPAHPAH0@Z	00412a50	00412c50
-_ForwardTarget	0099a360	00412f60
+_ForwardTarget_0099a360	0099a360	00412f60
 ??0CInitBaseClass@@QAE@XZ	0099a310	00413200
 ??_7CGame@@6B@	0122e59c	00413200
 @CLandscapeBackgroundPatch_dtor@4	0099eae0	004133a0
@@ -453,7 +453,7 @@ _fable_operator_delete	00bfe9bc	0042a8e0
 ?Destroy_00429f43@@YIXPAX@Z	00429f43	0042aa29
 ?LinkedList_AllocateNode_12bytes@@YGPAULinkedListNode12@@K@Z	00429fbe	0042aadc
 ?malloc@@YAPAXI@Z	00bfea0e	0042ab01
-?Base@CActiveFile@@QAEXXZ	0042a141	0042ab1c
+?Base_0042a141@CActiveFile@@QAEXXZ	0042a141	0042ab1c
 ?LinkedList_AllocateNode@@YGPAULinkedListInsertNode@@K@Z	00429fe3	0042ab33
 ?Std_List_AllocateNode@@YGPAUStdListInsertNode@@K@Z	0042a008	0042ab8a
 ?BuildTreeArray@T@@QAEXPAX@Z	0042a1b6	0042abe1
@@ -489,7 +489,7 @@ _helper_5b155a	0042a8bd	0042b44a
 ??0CRetailListBase@NUISystem@@QAE@ABUSRetailAllocator@1@@Z	0042ac0a	0042be7b
 ??_7CObservable@NUISystem@@6B@	01230044	0042be7b
 ?Add@Sub@@QAEXPAH@Z	0042b6b8	0042bead
-?Grab@CDisplayManager@@QAEXPAD0@Z	0042b72b	0042bf35
+?Grab_0042b72b@CDisplayManager@@QAEXPAD0@Z	0042b72b	0042bf35
 ?LowerBound@CTCMapRemaining@@QAEPAHPBH@Z	0040f020	0042c43f
 ?Test@CTCBitsRemaining@@QAEKK@Z	00410de0	0042c43f
 ?LowerBound@InterfaceMap@@QAEPAHPBH@Z	0040f020	0042c48b
@@ -616,7 +616,7 @@ _list_node_free	00bfea14	004367c0
 ?Set_00a0c8e0@CWStringParser@@QAEXPAG@Z	00a0c8e0	00437260
 ?CPlayerGui_UpdateTimer_00437500_Lower@@3MB	0122ded8	00437500
 ?CPlayerGui_UpdateTimer_00437500_Upper@@3MB	0122dedc	00437500
-?Run@Sub@@QAEXXZ	009fd0c0	00437570
+?Run_009fd0c0@Sub@@QAEXXZ	009fd0c0	00437570
 ?AddDamageChange@CDrawDamage@NPlayerGui@@QAEXM_N@Z	006472b2	00437940
 ?ConvertToCharString@CWideString@@QBE?AUCCharString@@XZ	0099b2c0	00438020
 ?GetLength@CWideString@@QBEJXZ	0099b220	00438020
@@ -1617,7 +1617,7 @@ _sub_free_46fedb	00bfea14	0046fedb
 ?CAppearanceDef_Copy_impl@@YIXPAUCAppearanceDef@@0@Z	004717c7	004717c2
 ??4CAnimationSet@@QAEAAU0@ABU0@@Z	00471832	004717c7
 ??4CBase_00471865@@QAEAAU0@ABU0@@Z	00471865	00471832
-?AutoTinyFinishRead@@YIXPAX0PAD@Z	00454404	00471a4f
+?AutoTinyFinishRead_00454404@@YIXPAX0PAD@Z	00454404	00471a4f
 ?AutoTinyReleaseResource@@YAXPAX@Z	00bfea14	00471a4f
 ?COpinionDeedEffectsDef_Copy_impl@@YIXPAUCOpinionDeedEffectsDef@@PAX@Z	00471a77	00471a72
 ??4OpinionOffsetList@@QAEAAU0@ABU0@@Z	00471b73	00471a77
@@ -2240,7 +2240,7 @@ _helper_bfeb1c	00bfeb1c	004c73b0
 ?m@GAN004d2b17@@QAEPAXPAXH@Z	0099ebf0	004d2b17
 ??0CTCBase@@QAE@PAUCThing@@@Z	00686800	004d2b2a
 ??_7CTCRotate@@6B@	0123a024	004d2b2a
-?Init@T@@QAEXXZ	004d2b17	004d2b67
+?Init_004d2b17@T@@QAEXXZ	004d2b17	004d2b67
 ?m@GAN004d2b7a@@QAEPAXPAXH@Z	0099ebf0	004d2b7a
 ?m@GAN004d2b8d@@QAEPAXPAXH@Z	0099ebf0	004d2b8d
 ?m@GAN004d2ba0@@QAEPAXPAXH@Z	0099ebf0	004d2ba0
@@ -17286,7 +17286,7 @@ _g_Cleanup_LTextTreeWalker_6_0122a7c0	013ca86c	0122a7c0
 ?FableDiskFileWin32Vftable@@3PAPAXA	0122d06c	00401f30
 ?FableFullBuildVersion@@3VCCharString@@A	013b85e0	00401f30
 ?PathExists@CWideString@@QBE_NXZ	00999230	00401f30
-?Cleanup@T@@QAEXXZ	009f9f70	0041bd80
+?Cleanup_009f9f70@T@@QAEXXZ	009f9f70	0041bd80
 ??1CList_0042a141@@QAE@XZ	0042a141	0041d207
 ??1CList_0042a168@@QAE@XZ	0042a168	0041d207
 ??1CCountedPointer_004291de@@QAE@XZ	004291de	00429e16

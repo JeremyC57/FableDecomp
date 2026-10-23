@@ -13,7 +13,7 @@ struct AutoTinyOwnedList
 };
 static int g_AutoTinyFreeListCalls = 0;
 static void* g_AutoTinyFreedAllocation = 0;
-void __stdcall AutoTinyFreeListAllocation(void* allocation)
+void __stdcall AutoTinyFreeListAllocation_004da225(void* allocation)
 {
     ++g_AutoTinyFreeListCalls;
     g_AutoTinyFreedAllocation = allocation;
@@ -22,7 +22,7 @@ void __fastcall OnKill(AutoTinyOwnedList* self)
 {
     if (self->count != 0)
     {
-        AutoTinyFreeListAllocation(self->head->allocation);
+        AutoTinyFreeListAllocation_004da225(self->head->allocation);
         self->head->next = self->head;
         self->head->allocation = 0;
         self->head->previous = self->head;
