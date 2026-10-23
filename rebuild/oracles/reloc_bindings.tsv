@@ -25305,3 +25305,6 @@ __Rb_tree_increment	004292c0	0057770a
 ?ProcessAlbionPopulationSim@CV_RandomPopulationSimScript@NScript@@QAEXXZ	00ec2240	00ec1910
 ?IsActiveThreadTerminating@CEntityScriptBase@NScript@@QAE_NXZ	00f35b30	00ee76f0
 ?SetPredicate@CEntityScriptBase@NScript@@QAEXABUCIsThingAlive@2@@Z	00f35b10	00ee76f0
+??$GetPFirstThingInRoughArea@UCThingFilter_HasTrackName@@UCThing@@@CThingSearchTools@@QBE_NABUC2DBoxI@@ABUCThingFilter_HasTrackName@@PAPAUCThing@@@Z	007fd110	0095ab50
+?erase@?$CRetailVector@UCIntelligentPointer@@@@QAEPAUCIntelligentPointer@@PAU2@0@Z	004ac0f0	0095ab50
+?g_WaspQueenCircleRadius@@3MA	0138d2d8	0095ab50

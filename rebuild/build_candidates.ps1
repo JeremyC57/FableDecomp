@@ -270561,6 +270561,14 @@ $catalog = @(
         TestSource = '00/ee/CTrophyDealerInCave_Main_00ee76f0_test.cpp'
         PassPattern = '00ee76f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0095ab50'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/95/CAIStateGroupHoverHornetQueen_SetUpCirclePoints_0095ab50.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueen_SetUpCirclePoints_0095ab50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0095ab50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
