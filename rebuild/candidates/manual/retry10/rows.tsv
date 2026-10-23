@@ -2886,3 +2886,29 @@ address	module	name	length	chunk	reason
 00acc490	COptimisedPrimitive	CopyTo	1888	hand320	DIFFER(-v1888) -- triage only: /GS cookie frame, inline vector growth and map iteration (43 calls)
 00d9c680	COrchardFarmFarmer	Main	2048	hand320	DIFFER(-v2048) -- triage only: quest Main with conditional-temporary flag words in a register and on the frame, two timer
 00b079b0	CPSCSingleSprite	DatabaseSerialise	2032	hand320	DIFFER(-v2032) -- triage only: contains the same `xor cl,[mem]` bitfield write-back that keeps the parked twin 0x00B1A870
+005430f0	CIconText	InitIcons	1088	hand319	DIFFER(22v1081) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+009f57a0	CInputManager	?Update@CInputManager@@UAEXXZ	1072	hand319	DIFFER(88v1072) -- first-pass stub, one grade; not reconstructed (time)
+0068f470	CInputProcessCombat	ProcessCombatInput	1376	hand319	DIFFER(1365v1361) -- same instructions; frame 0x50 v 0x48 from TC-key temp / tag slot overlay
+00688360	CInputProcessControlCreature	?ProcessInput@CInputProcessControlCreature@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	1696	hand319	DIFFER(1714v1690) -- register rotation in the nine quick-slot blocks; held-branch tail not cross-jumped
+006a40d0	CInputProcessJumpingAndRolling	ProcessRolling	1584	hand319	DIFFER(13v1579) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+0068dd00	CInputProcessUseEnvironment	?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	1472	hand319	DIFFER(1469v1471) -- frame 0x44 v 0x40: TC-key slot reuse and the 0xd key CSE'd into ebp (register allocation)
+00be6880	CLandscapeBackgroundPatch	BuildDefaultSection	1776	hand319	DIFFER(19v1776) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+0079f970	CLightningBeam	UpdatePositions	1056	hand319	DIFFER(8v1052) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+00a495f0	CLipSyncSampleData	ReadFromFile	1261	hand319	DIFFER(47v1261) -- first-pass stub, one grade; not reconstructed (time)
+0053b91e	CList	Initialise	1422	hand319	DIFFER(1416v1422) -- structure matches; retail promotes constant 0 into ebx (bool spill, frame 0x28), ours hoists the scroll-layout lea into ebx
+00bfad90	CLocalDetailPrimitiveMeshZSpriteBatch	RenderUpdate	1152	hand319	DIFFER(18v1151) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+00bfa2a0	CLocalDetailPrimitiveRepeatedMesh	Load	1536	hand319	DIFFER(93v1533) -- first-pass stub, one grade; not reconstructed (time)
+00ea5230	CLostTraderBanditSpawn	Main	1120	hand319	DIFFER(1117v1117) -- same length; one lea hoisted above jne in two wait loops
+00e37e40	CM_AssassinTrigger	Main	1104	hand319	DIFFER(1097v1103) -- frame matches; Knothole bool set shape and wait-loop exit block placement (timer dtor tails)
+00e96110	CM_QuestControl	Main	1360	hand319	DIFFER(1360v1356) -- structure matches; retail promotes constant 0 into ebx (timer index in edi), ours gives ebx to the timer
+00e95770	CM_UndeadHere	Main	1152	hand319	DIFFER(1144v1144) -- same length; AXE-branch register choice (eax vs edx) for the Game vtable
+00e03f70	CMagicBarrier	Main	1920	hand319	DIFFER(1986v1906) -- region-2 temp ~CScriptThing out of line in retail (inline budget); fstp schedule
+004184bd	CMainGameComponent	?Init@CMainGameComponent@@UAEXXZ	1285	hand319	DIFFER(24v1285) -- first-pass stub, one grade; not reconstructed (time)
+00428494	CManager	CreateMenuEntryComponent	1062	hand319	DIFFER(45v1062) -- first-pass stub, one grade; not reconstructed (time)
+006fa4e0	CManager	Load	1456	hand319	DIFFER(1405v1444) -- full parse decoded; frame slot order and the END_EVENTS loop inversion differ
+00a276d0	CMeshDataBank	?InitialiseEntry@CMeshDataBank@@MAEXKKABV?$CArray@D@@@Z	1330	hand319	DIFFER(37v1330) -- first-pass stub, one grade; not reconstructed (time)
+0082afa0	CMiniMapDisplay	InitialiseRegionExitMarkers	1408	hand319	DIFFER(16v1393) -- first-pass stub, one grade; not reconstructed (time)
+008e8060	CModeBriarRoseConcentrate	OnActivate	1792	hand319	DIFFER(5v1784) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+008de080	CModeDragonStrafeBurninate	FrameUpdate	1440	hand319	DIFFER(5v1437) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+008de7a0	CModeIceTrollGroundSmashIcicleAssault	FrameUpdate	1248	hand319	DIFFER(5v1239) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+008dcc80	CModeJackOfBladesFlash	Flash	1136	hand319	DIFFER(1v1136) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)

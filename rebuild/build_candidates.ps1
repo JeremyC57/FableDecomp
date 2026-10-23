@@ -274896,6 +274896,86 @@ $catalog = @(
         TestSource = '00/eb/CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50_test.cpp'
         PassPattern = '00eb5d50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0053bf20'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_AddScrollingChildDynamicallyAndSetOffsets_0053bf20.cpp'
+        TestSource = '00/53/NUISystemCList_AddScrollingChildDynamicallyAndSetOffsets_0053bf20_test.cpp'
+        PassPattern = '0053bf20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068ae30'
+        Module = 'CInputProcessInventoryMapScreen'
+        Source = '00/68/CInputProcessInventoryMapScreen_ProcessInput_0068ae30.cpp'
+        TestSource = '00/68/CInputProcessInventoryMapScreen_ProcessInput_0068ae30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068ae30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068b2e0'
+        Module = 'CInputProcessInventoryExperienceScreen'
+        Source = '00/68/CInputProcessInventoryExperienceScreen_ProcessInput_0068b2e0.cpp'
+        TestSource = '00/68/CInputProcessInventoryExperienceScreen_ProcessInput_0068b2e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068b2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068b7c0'
+        Module = 'CInputProcessInventoryTradeScreen'
+        Source = '00/68/CInputProcessInventoryTradeScreen_ProcessInput_0068b7c0.cpp'
+        TestSource = '00/68/CInputProcessInventoryTradeScreen_ProcessInput_0068b7c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068b7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f9f90'
+        Module = 'NAnimationEvents::CManager'
+        Source = '00/6f/NAnimationEventsCManager_LoadBinary_006f9f90.cpp'
+        TestSource = '00/6f/NAnimationEventsCManager_LoadBinary_006f9f90_test.cpp'
+        PassPattern = '006f9f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab64e0'
+        Module = 'CKeyboardDX'
+        Source = '00/ab/CKeyboardDX_CKeyboardDX_00ab64e0.cpp'
+        TestSource = '00/ab/CKeyboardDX_CKeyboardDX_00ab64e0_test.cpp'
+        PassPattern = '00ab64e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf8a70'
+        Module = 'CLadyGreyWifeManagerScript'
+        Source = '00/cf/CLadyGreyWifeManagerScript_Main_00cf8a70.cpp'
+        TestSource = '00/cf/CLadyGreyWifeManagerScript_Main_00cf8a70_test.cpp'
+        PassPattern = '00cf8a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d22880'
+        Module = 'CKG_ChiefBreakSiege'
+        Source = '00/d2/CKGChiefBreakSiege_Main_00d22880.cpp'
+        TestSource = '00/d2/CKGChiefBreakSiege_Main_00d22880_test.cpp'
+        PassPattern = '00d22880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2a180'
+        Module = 'CMazeJournal'
+        Source = '00/d2/CMazeJournal_Main_00d2a180.cpp'
+        TestSource = '00/d2/CMazeJournal_Main_00d2a180_test.cpp'
+        PassPattern = '00d2a180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da9c70'
+        Module = 'CMinionWarningGuard'
+        Source = '00/da/CMinionWarningGuard_Main_00da9c70.cpp'
+        TestSource = '00/da/CMinionWarningGuard_Main_00da9c70_test.cpp'
+        PassPattern = '00da9c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e96660'
+        Module = 'CM_HeroInsideHouse'
+        Source = '00/e9/CMHeroInsideHouse_Main_00e96660.cpp'
+        TestSource = '00/e9/CMHeroInsideHouse_Main_00e96660_test.cpp'
+        PassPattern = '00e96660_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

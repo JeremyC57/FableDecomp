@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005430f0	DIFFER	22v1081	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+009f57a0	DIFFER	88v1072	-	first-pass stub, one grade; not reconstructed (time)
+0068f470	DIFFER	1365v1361	-	same instructions; frame 0x50 v 0x48 from TC-key temp / tag slot overlay
+00688360	DIFFER	1714v1690	-	register rotation in the nine quick-slot blocks; held-branch tail not cross-jumped
+0068b2e0	RELOCATION_MATCH	1168v1168	PASS	/GS; experience screen input, buttons |= as separate statements keep the call order
+0068ae30	RELOCATION_MATCH	1106v1106	PASS	/GS; inventory map screen input, landed inventory-screen siblings model
+0068b7c0	RELOCATION_MATCH	1111v1111	PASS	/GS; trade screen input, sibling of 0068ae30
+006a40d0	DIFFER	13v1579	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+0068dd00	DIFFER	1469v1471	-	frame 0x44 v 0x40: TC-key slot reuse and the 0xd key CSE'd into ebp (register allocation)
+00d22880	RELOCATION_MATCH	1711v1711	PASS	CMKGHCHERO3 model; inline budget picks inline vs 0x007E72A0 handle ctors
+00ab64e0	RELOCATION_MATCH	1293v1293	PASS	CKeyboardDX ctor; CKeyboard layout as the landed keyboard base
+00cf8a70	RELOCATION_MATCH	1679v1679	PASS	CScriptBase script; inline budget splits the temp dtors; GameCalls slot 11 IsLevelLoaded for the named regions
+00be6880	DIFFER	19v1776	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+0079f970	DIFFER	8v1052	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+00a495f0	DIFFER	47v1261	-	first-pass stub, one grade; not reconstructed (time)
+0053b91e	DIFFER	1416v1422	-	structure matches; retail promotes constant 0 into ebx (bool spill, frame 0x28), ours hoists the scroll-layout lea into ebx
+0053bf20	RELOCATION_MATCH	1042v1042	PASS	/Os + optimize(y off) TU; first half shared with landed AddScrollingChildAndSetOffsets
+00bfad90	DIFFER	18v1151	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+00bfa2a0	DIFFER	93v1533	-	first-pass stub, one grade; not reconstructed (time)
+00ea5230	DIFFER	1117v1117	-	same length; one lea hoisted above jne in two wait loops
+00e37e40	DIFFER	1097v1103	-	frame matches; Knothole bool set shape and wait-loop exit block placement (timer dtor tails)
+00e96660	RELOCATION_MATCH	1482v1482	PASS	forceinline null-test position; virtual GetPos on temp hoisted; handle ctor inline
+00e96110	DIFFER	1360v1356	-	structure matches; retail promotes constant 0 into ebx (timer index in edi), ours gives ebx to the timer
+00e95770	DIFFER	1144v1144	-	same length; AXE-branch register choice (eax vs edx) for the Game vtable
+00da4e30	RELOCATION_MATCH	1389v1389	PASS	novtable CPredicateThing holder + inline_depth(0) exits
+00e03f70	DIFFER	1986v1906	-	region-2 temp ~CScriptThing out of line in retail (inline budget); fstp schedule
+004184bd	DIFFER	24v1285	-	first-pass stub, one grade; not reconstructed (time)
+00428494	DIFFER	45v1062	-	first-pass stub, one grade; not reconstructed (time)
+006f9f90	RELOCATION_MATCH	1109v1109	PASS	same-TU auto_inline(off) resize stand-ins; ReadEBOOL as value != 0
+006fa4e0	DIFFER	1405v1444	-	full parse decoded; frame slot order and the END_EVENTS loop inversion differ
+00d2a180	RELOCATION_MATCH	1592v1592	PASS	CMKGHCHERO3 model; out-of-line ~CScriptThing; reference helper for Me.MsgIsUsedBy
+00a276d0	DIFFER	37v1330	-	first-pass stub, one grade; not reconstructed (time)
+0082afa0	DIFFER	16v1393	-	first-pass stub, one grade; not reconstructed (time)
+00daa260	RELOCATION_MATCH	1172v1172	PASS	sibling of 00daa700; nested blocks set the frame overlay
+00daa700	RELOCATION_MATCH	1133v1133	PASS	ShineLight handle model; post-cutscene block for the frame overlay
+00da9c70	RELOCATION_MATCH	1509v1509	PASS	CCorneredGuard model; Me copied via out-of-line const copy
+008e8060	DIFFER	5v1784	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+008de080	DIFFER	5v1437	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+008de7a0	DIFFER	5v1239	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+008dcc80	DIFFER	1v1136	-	first-pass stub, one grade; x87-heavy body, not reconstructed (time)

@@ -171,9 +171,11 @@ def ident_of(sym):
 def special_class(sym):
     """The class whose ctor/dtor/operator this is (`??0C@NS@@...` -> C)."""
     b = sym[2:]
-    if b[:1] in ("0", "1"): return b[1:].split("@")[0]
-    b = b[2:] if b.startswith("_") else b[1:]
-    if b.startswith("@"): return None                                # free operator
+    if b[:1] in ("0", "1"): b = b[1:]
+    else:
+        b = b[2:] if b.startswith("_") else b[1:]
+        if b.startswith("@"): return None                            # free operator
+    if b.startswith("?$"): b = b[2:]                                 # class template instance
     c = b.split("@")[0]
     return c or None
 
@@ -458,7 +460,7 @@ def member_class(sym):
     m = re.match(r"\?[^@]+@[^@]+@@([A-Z])", sym)
     # member functions code access A..V (Q = public near); free functions in a namespace use Y/Z
     if m and m.group(1) in "YZ": return None
-    return parts[1]
+    return parts[1][2:] if parts[1].startswith("?$") else parts[1]
 
 def unrename_other_classes(src, cls, ident, new):
     """After a whole-file token rename for member `cls::ident`, give the identifier back to every
@@ -572,7 +574,8 @@ def verify(base, r, done):
         ns_ = new[t]
         if t in want:
             n, k = want[t]
-            if k == "rename" and ns_ != n: return f"{s} -> {t} became {ns_}, expected {n}"
+            if k == "rename" and ns_ != n and not (ns_.split("@")[0] == n.split("@")[0] and any(m in ns_ for m in marks)):
+                return f"{s} -> {t} became {ns_}, expected {n}"
             if k == "ns" and f"@{n}@" not in ns_: return f"{s} -> {t} became {ns_}, expected namespace {n}"
             if k == "cls" and f"{n}@" not in ns_: return f"{s} -> {t} became {ns_}, expected class {n}"
         elif ns_ != s:

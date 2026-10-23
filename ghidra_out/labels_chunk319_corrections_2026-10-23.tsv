@@ -1,0 +1,12 @@
+address	name	evidence
+00687d50	CInputProcessGameBase::IsGameActionEventInQueue	chunk 319: callers in input-process rows (was CPersistContext::Transfer)
+00687cf0	CInputProcessGameBase::IsEventGameAction	chunk 319: (was _Cons_val)
+00687d10	CInputProcessGameBase::GetButtonPressureForEvent	chunk 319: (was operator_new)
+00487dc0	CPlayer::GetHeroCreature	chunk 319: (was _Cons_val)
+009b9ba0	CStringParser::NextItemIs	chunk 319: (was CThingCreatureBase::SerialiseGameState)
+009e5200	CSymbolMap::CSymbolMap	chunk 319: (was CParticleUpdateParameters)
+006fd040	CSymbolMap::~CSymbolMap	chunk 319: (was ~CPatchTesselationEdgeStrip)
+006e7b60	CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase	chunk 319: (was CCarriedReadableDef)
+008ac970	std::vector<CScriptThing>::~vector	chunk 319: (was ~vector<CConversation>)
+009b9880	CParsedItem::GetString	chunk 319: (was CModeBlock::GetAnimFilter)
+0040dce0	IS_THING_ALIVE<CThing*>	chunk 319: (was CThingBuilding* instantiation)
