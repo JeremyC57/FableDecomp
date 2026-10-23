@@ -177,7 +177,9 @@ def plan(scan, syms):
     out = {}
     for s, tg in by.items():
         if len(tg) < 2: continue
-        owners = sorted(t for t in tg if t in scan and scan[t].get("leafsym") == s)
+        # several landed rows may define X (byte-identical twins landed under one name): the one
+        # most rows bind wins (ties: lowest); the others' own leaves cannot be renamed here
+        owners = sorted((t for t in tg if t in scan and scan[t].get("leafsym") == s), key=lambda t: (-len(tg[t]), int(t, 16)))
         conv_ok = sorted(t for t in tg if (ident_of(s), t) in CONST_PAIRS and convention(s, t) is None)
         if owners: canon, why = owners[0], "landed-def"
         elif conv_ok: canon, why = conv_ok[0], "convention"
