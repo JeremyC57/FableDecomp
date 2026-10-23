@@ -56,6 +56,8 @@ or retail reuses a dead argument slot.
 - A 4-byte `long` dummy instead of an empty struct.
 - Packing scalar locals into one `C3DVector`.
 - Naming a by-reference argument when retail has an extra 12-byte slot.
+- Naming a default-argument temporary, e.g. `SAllocator allocator; CLongList worn(allocator);`. On
+  `AddClothingToThing` this put every other local into retail's slot (147 to 27 diff lines).
 
 **Unsolved:**
 - "Retail puts a temp inside a dead parameter's slot (`[ebp+0Fh]`)."
@@ -97,3 +99,14 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
 2. How to make VC7.1 reuse a dead parameter's stack slot for a temporary.
 3. ~~String-literal ternary~~ solved 2026-10-23: write the call in each branch so VC7.1 cross-jumps them (see GOTCHAS).
 4. The `/Os` `push ecx` before `fsubp` case in section 5.
+
+## Outside suggestions tried (round 2, 2026-10-23); all no change unless noted
+- **Typed zeros** (`0L`, `0U`, `'\0'`) for the `ebx`-zero row: bytes identical. Constants are canonicalised before
+  register allocation, so their spelling cannot change it.
+- **Pre-initialising a pointer and then overwriting it, or `(T*&)p = ...`**: identical bytes, or worse. On
+  `AssignAbilityPC`, retail gives `old` the same treatment as an earlier `icon` local (`ebx` plus a shared slot). Ours
+  keeps it in memory. Block scope, declaration order, a whole-call ternary and hoisting `manager` don't move it.
+- **The comma operator `C2DVector((0, a - b), c - d)` and a named vector local** for the `/Os` `push ecx`/`fsubp`
+  case: the comma forms are byte-identical, and the named local is worse.
+- **A dead parameter slot for a temporary**: no clean spelling found. Only aliasing the parameter's own storage
+  moves the temp there, which isn't acceptable source.
