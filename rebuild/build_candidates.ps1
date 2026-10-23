@@ -274672,6 +274672,69 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c3bcb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0089f4a0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_TurnCreatureInto_0089f4a0.cpp'
+        TestSource = '00/89/CGameScriptInterface_TurnCreatureInto_0089f4a0_test.cpp'
+        PassPattern = '0089f4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cffb60'
+        Module = 'CFinalTabletSarcophagus'
+        Source = '00/cf/CFinalTabletSarcophagus_Main_00cffb60.cpp'
+        TestSource = '00/cf/CFinalTabletSarcophagus_Main_00cffb60_test.cpp'
+        PassPattern = '00cffb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3b410'
+        Module = 'CGameflowScript'
+        Source = '00/d3/CGameflowScript_DeclareGossipCategories_00d3b410.cpp'
+        TestSource = '00/d3/CGameflowScript_DeclareGossipCategories_00d3b410_test.cpp'
+        PassPattern = '00d3b410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d446d0'
+        Module = 'CHeroBed'
+        Source = '00/d4/CHeroBed_Main_00d446d0.cpp'
+        TestSource = '00/d4/CHeroBed_Main_00d446d0_test.cpp'
+        PassPattern = '00d446d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d85b40'
+        Module = 'CGuildmaster_HS'
+        Source = '00/d8/CGuildmasterHS_Main_00d85b40.cpp'
+        TestSource = '00/d8/CGuildmasterHS_Main_00d85b40_test.cpp'
+        PassPattern = '00d85b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d874f0'
+        Module = 'CGuardOutsideWoods'
+        Source = '00/d8/CGuardOutsideWoods_Main_00d874f0.cpp'
+        TestSource = '00/d8/CGuardOutsideWoods_Main_00d874f0_test.cpp'
+        PassPattern = '00d874f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da68e0'
+        Module = 'CGuardNotThisWay'
+        Source = '00/da/CGuardNotThisWay_Main_00da68e0.cpp'
+        TestSource = '00/da/CGuardNotThisWay_Main_00da68e0_test.cpp'
+        PassPattern = '00da68e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df2f90'
+        Module = 'CFireHeart'
+        Source = '00/df/CFireHeart_Main_00df2f90.cpp'
+        TestSource = '00/df/CFireHeart_Main_00df2f90_test.cpp'
+        PassPattern = '00df2f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eec890'
+        Module = 'CGlobal_OpenChestScript'
+        Source = '00/ee/CGlobalOpenChestScript_Main_00eec890.cpp'
+        TestSource = '00/ee/CGlobalOpenChestScript_Main_00eec890_test.cpp'
+        PassPattern = '00eec890_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

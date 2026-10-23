@@ -27077,3 +27077,16 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?CreateErrorText@CriteriaContext@@QAEPAUCriteriaLog@@XZ	00c30840	00c3bcb0
 ?FindSegment@CriteriaReader@@QAEHABUCriteriaText@@@Z	00c2d9c0	00c3bcb0
 ?Read@CriteriaReader@@QAEHPAXH@Z	00c2da00	00c3bcb0
+??0CThingAICreatureInit@@QAE@PAUCThingPhysical@@0_NABUCCharString@@21@Z	004facd0	0089f4a0
+?AddAndCopyTC@CThing@@QAEXPBUCTCBase@@_N@Z	004c9f60	0089f4a0
+?CopyTCIfExists@CThing@@QAEXPBUCTCBase@@@Z	004c8fb0	0089f4a0
+?Create@CThingAICreature@@SIPAU1@JABUC3DVector@@JABUCThingAICreatureInit@@@Z	00833800	0089f4a0
+?Create@CThingPlayerCreature@@SIPAU1@JABUC3DVector@@JABUCThingPlayerCreatureInit@@@Z	006ac910	0089f4a0
+?DeregisterAllScreens@CManager@@QAEXXZ	0066ebe0	0089f4a0
+?GetDef@CGameDefinitionManager@@QAE_NJAAU?$CDefPointer@UCThingCreatureDef@@@@@Z	00513160	0089f4a0
+?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAUCManager@@XZ	00437cd0	0089f4a0
+?SetPlayerCharacter_00487B80@CPlayer@@QAEXPAUCThingPlayerCreature@@@Z	00487b80	0089f4a0
+??0CScriptThingCopy@@QAE@ABUCScriptThing@@@Z	004abe90	00d874f0
+??1CScriptThingCopy@@UAE@XZ	004aa840	00d874f0
+?PlayCutscene@CQ_HeroSoulsGuildmasterScript@@QAEXUCCharString@@@Z	00d872d0	00d874f0
+?MakeBriarRoseComment@CQ_SummoningTheShipScript@@QAE_NABUCCharString@@@Z	00df20f0	00df2f90

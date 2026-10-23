@@ -1,0 +1,12 @@
+address	name	evidence
+004c73d0	CThing::GetPosition	chunk 318: called as CThing position getter from TurnCreatureInto 0x89F4A0 (was CVertexBufferWin32::DoSizeof)
+004c7e50	CThing::GetScriptThing	chunk 318: called from TurnCreatureInto 0x89F4A0 (was GFPredicateAnd<...>)
+00437cd0	CPlayerGui::GetPHeroInfoScreensManager	chunk 318: called from TurnCreatureInto 0x89F4A0 (was CWorld::DrawGetEnvironment)
+006ac910	CThingPlayerCreature::Create	chunk 318: called from TurnCreatureInto 0x89F4A0 (was _global::Create)
+00449970	CPlayerManager::GetMainPlayer	chunk 318: called from TurnCreatureInto 0x89F4A0 (was Catch@0040d959)
+00f35b10	RegisterFilter	chunk 318: callee of 0xD71B30 (was CWorldMap::AllocateMapThingUID)
+00f35b30	IsActiveThreadTerminating	chunk 318: callee of 0xD71B30 (was CCreatureAction_TrollWhackGroundBase::Initialise)
+00cff9a0	CQ_AwakeningTheOracleScript::PlayCutscene	chunk 318: script member called from the quest Main
+00df20f0	CQ_SummoningTheShipScript::MakeBriarRoseComment	chunk 318: script member called from the quest Main
+006e7b40	CScriptThing::CScriptThing	chunk 318: default constructor
+0099a2e0	CBase::~CBase	chunk 318: out-of-line ~CBase

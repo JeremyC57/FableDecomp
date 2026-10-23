@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00d91960	DIFFER	1101v1085	-	final while-loop entry test duplicated (retail jumps into the bottom test); 8 grades
+00dc3fc0	RELOCATION_MATCH	1111v1111	PASS	CDF_ShineLight handle model + hand-destroyed movie view (inline at two exits, out of line at one)
+00d85b40	RELOCATION_MATCH	1085v1085	PASS	CTimer inline ctor/dtor with inline_depth(0) at the last two exits; InlineCopy by-value CScriptThing
+00e1b1f0	RELOCATION_MATCH	1131v1131	PASS	graveyard model; screamer local in its own {} block shares the GetScriptThing temp slot
+00d91e00	DIFFER	-v1408	-	decode only: mixed inline/out-of-line vector<CScriptThing> and CTimer exit copies (dtor inline-site family)
+00da68e0	RELOCATION_MATCH	1125v1125	PASS	__forceinline ~CTimer + inline_depth(0) on the wait returns; for(;;) top-return loop
+00d83fa0	RELOCATION_MATCH	1230v1230	PASS	OOL handle/CTimer ctor-dtor with auto_inline(off) CTimer bodies (keeps ebp cache); forceinline ~CScriptThing + inline_depth(0) on the member assignment
+00df2f90	RELOCATION_MATCH	1220v1220	PASS	same-TU auto_inline(off) ~CTimer body keeps the beat timer in ebp; else-if heartbeat chain
+00eebdf0	DIFFER	1239v1240	-	register-allocation only: constant 0 cached in edi early (one zero use too many) + framesLeft enregistered in ebp (retail memory); 14 grades
+00cffb60	RELOCATION_MATCH	1252v1252	PASS	plain inline ~CScriptThing + inline_depth(0) on the second CreateObjectOnEntity statement; first grade
+00d73f40	DIFFER	1250v1256	-	block placement of the inline handle-dtor exit copies (retail parks them inside the main loop after the hit-test jmp); 4 grades (also tried un-pragma'ing the first hit-arm return: no change)
+00d81c50	RELOCATION_MATCH	1464v1464	PASS	inline CScriptThing operator= (source Info/Data read into locals first) + plain inline dtor; inline_depth(0) on the two OFF assignments; IsDead inline over virtual IsAlive
+00d446d0	RELOCATION_MATCH	1415v1415	PASS	three STLport vectors with __forceinline ~vector (free 0x00BFEA14); first grade
+00da7d30	RELOCATION_MATCH	1472v1472	PASS	inline operator=/~CScriptThing in the search loop, inline_depth(0) on the hint line, by-value spawn arg as an out-of-line CScriptThingArg
+00d874f0	RELOCATION_MATCH	1418v1418	PASS	switch on NumberOfWarnings; both attack tails written out in full; first grade
+00d3b410	RELOCATION_MATCH	1856v1856	PASS	28 rumour/gossip GSI calls with implicit const char*->CCharString temps; first grade
+00d02b80	RELOCATION_MATCH	1489v1489	PASS	!Gate1Open arm first puts the extra term check where retail has it; movie destroyed inline; 2 grades
+00eec890	RELOCATION_MATCH	1544v1544	PASS	canOpen flag (then=main, else=locked) gives retail block order; cancelled = A || B keeps the bl store inside the temp scope; 4 grades
+00d37530	RELOCATION_MATCH	1783v1783	PASS	loop group test as while(!Succeeded){ if (MyID<3){if(G1)break;} else if(G2)break; } gives retail cl register and exit-block order; 6 grades
+00d9f6c0	RELOCATION_MATCH	1720v1720	PASS	inline CScriptThing copy for by-value SetIsPushableByHero; IsDead() inline gives the virtual IsAlive call; flag store before SetTime; 3 grades
+00e7e640	RELOCATION_MATCH	1604v1604	PASS	implicit handle dtor inline on the normal/first exit, inline_depth(0) on the later returns; named {} pointer local for SizeComment picks eax; 4 grades
+00e82950	DIFFER	1574v1574	-	jump targets only: the two inline ~CTimer exit blocks swap which terminate checks they serve; 9 grades (while-loop form, forceinline timer accessors and pragma'd out-of-line exits all fixed)
+00d1e3e0	RELOCATION_MATCH	1584v1584	PASS	CIsThingConscious filter, inline CCharString == "EXPRESSION_FOLLOW" (landed WatchForExpressionFollow model); first grade
+00d71b30	RELOCATION_MATCH	1453v1453	PASS	escape loop decoded; inline GetDataString/GetPos written as !Data ? global : Data->vslot (retail branch order); the MoveToPosition arm also clears ReturningToParty (found from the tail-merged jump); 4 grades
+0089f4a0	RELOCATION_MATCH	1134v1134	PASS	TurnCreatureInto: CreateObject sibling model + GetDef stand-in; the eight interface copies needed one shared `tc` out-variable with an out-param GetInterface (landed 005b37f7 idiom) to keep each component load in eax; 8 grades
+00d2988b	SKIP	-v1317	-	bogus mid-function row: CHookCoastTeleporter::Main starts at 0x00D29880 (row begins 0xb bytes in; edx/ebx used undefined)
+009c47a0	DIFFER	-v1920	-	decode only: 1.9 KB path filter (112 calls) -- CWideString/CCharString ToUpper/ConvertPathToFullPath, ScanNextFile loop, inline std::map FindNode + node new/delete; calling convention unknown in the manifest
+009fde80	DIFFER	-v1280	-	decode only: resource-manager body -- inline CResource LRU relinks (ListRemove/ListInsert), texture-allocation retry loop halving the dimensions, async bank read swapping three CCountedPointer handles; CFrameData/CGraphicInfo/bank-entry layouts not recovered
+009fed30	DIFFER	-v1206	-	decode only: 9-argument texture loader -- surface lock/decompress through chunked memory streams, deque insert, mip copies, free(); surface/texture layouts not recovered
+004959e0	DIFFER	-v1536	-	decode only: FrontEnd /GS TU (cookie 0x0139C8A8) with an aligned 0x524-byte frame (and esp,-8) and a CAFile find loop over profile files
+00595cc1	DIFFER	-v1613	-	decode only: FrontEnd size-optimised /GS + EH TU (`leave` epilogue); low-yield family
+00597df7	DIFFER	-v1644	-	decode only: FrontEnd size-optimised /GS + EH TU (`leave` epilogue); low-yield family
+00598463	DIFFER	-v1335	-	decode only: FrontEnd size-optimised /GS + EH TU (`leave` epilogue); low-yield family
+00598a1c	DIFFER	-v2007	-	decode only: FrontEnd size-optimised /GS + EH TU (`leave` epilogue); low-yield family
+006fdd60	DIFFER	-v1659	-	decode only: x87-heavy camera update (162 x87 instructions)
+0069ae80	DIFFER	-v1936	-	decode only: 1.9 KB constructor of ~60 members incl. three STLport list/tree header nodes (malloc), a counted-pointer camera registration and global flag resets
+00446ef0	DIFFER	-v1184	-	decode only: control-scheme rebuild -- four STLport vector clears, def lookup, 28-byte-record loop building ~14 polymorphic input-action classes into counted pointers, routed to three lists or a sorted pair vector (Reallocate + make_heap)
+0088edc0	DIFFER	-v1568	-	decode only: x87-heavy conversation camera (154 x87 instructions)
+006cddf0	DIFFER	-v1056	-	decode only: x87-heavy navigation geometry (80 x87 instructions)
+00541a00	DIFFER	-v1120	-	decode only: aligned-stack x87 word wrap over CWStringParser chunks with CWideString temporaries and iswspace
