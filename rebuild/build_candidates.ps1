@@ -270316,6 +270316,13 @@ $catalog = @(
         TestSource = '00/be/CEngineInternalPrimitiveMorphInfo_InitialiseCompositeSurfaces_00becba0_test.cpp'
         PassPattern = '00becba0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00880510'
+        Module = 'CTCPhysicsBase'
+        Source = '00/88/CTCPhysicsBase_HasSphereSphereCollidedAt_00880510.cpp'
+        TestSource = '00/88/CTCPhysicsBase_HasSphereSphereCollidedAt_00880510_test.cpp'
+        PassPattern = '00880510_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
