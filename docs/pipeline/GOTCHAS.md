@@ -860,3 +860,11 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - A same-TU noinline stand-in's body is VISIBLE to its callers. If it never reads a by-reference argument, VC7.1 deletes the caller's stores to that local, so stand-ins must read every input.
   - The empty-tag lever generalises past `_M_insert_overflow`: a noinline `find` stand-in with the tag unnamed matched 008e7040, and 008865c0 (dead-parameter slot) matched once its stand-in read `x`.
   - 00ce1280: the loop-2 depth-0 exits `goto` a label on loop 1's depth-0 return, which selects retail's merged exit copy (I-42).
+- (2026-10-23, retry of ChatGPT's 960-962 parks, 6/59)
+  - **Receiver spelling:** writing the receiver as `typed->HasDriverType(n)` rather than `thing->` re-weights register assignment across the WHOLE function (005185f0, 00518900).
+  - **Byte-twins:** a byte-twin's landed body transplants (00746560 and 007f9c00 from 00905d10).
+  - **Named float temp:** `float a=(float)alpha; alpha=(long)(a*fade);` gives fild/fmulp instead of fimul.
+  - **Getter temporaries:** chained by-value getter temporaries are read through the returned pointer (`fild [eax]`), while a named local reads its stack slot.
+  - **Ctor stand-ins:** they must not expose member values; a visible zero shrank the code.
+  - **Include paths:** an absolute `/workspace/...` include hangs Wine cl.
+  - **Test layout:** tests that `#include` the source need the source inlined before landing.

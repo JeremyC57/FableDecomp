@@ -273966,6 +273966,48 @@ $catalog = @(
         TestSource = '00/88/NEnvironmentInternalCBlendedEnvironmentTheme_BuildFromSource_008865c0_test.cpp'
         PassPattern = '008865c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00746560'
+        Module = 'CThingSearchTools_Calls'
+        Source = '00/74/CThingSearchToolsCalls_GetAllThingsInRoughArea_00746560.cpp'
+        TestSource = '00/74/CThingSearchToolsCalls_GetAllThingsInRoughArea_00746560_test.cpp'
+        PassPattern = '00746560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f9c00'
+        Module = 'CThingSearchTools_Calls'
+        Source = '00/7f/CThingSearchToolsCalls_GetAllThingsInRoughArea_007f9c00.cpp'
+        TestSource = '00/7f/CThingSearchToolsCalls_GetAllThingsInRoughArea_007f9c00_test.cpp'
+        PassPattern = '007f9c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080ecc0'
+        Module = 'CThingSearchTools_Calls'
+        Source = '00/80/CThingSearchToolsCalls_GetAllThingsInRoughArea_0080ecc0.cpp'
+        TestSource = '00/80/CThingSearchToolsCalls_GetAllThingsInRoughArea_0080ecc0_test.cpp'
+        PassPattern = '0080ecc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091ba40'
+        Module = 'CThingSearchTools_Calls'
+        Source = '00/91/CThingSearchToolsCalls_GetAllTCsInRoughArea_0091ba40.cpp'
+        TestSource = '00/91/CThingSearchToolsCalls_GetAllTCsInRoughArea_0091ba40_test.cpp'
+        PassPattern = '0091ba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005185f0'
+        Module = 'CThingSearchTools_Calls'
+        Source = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_005185f0.cpp'
+        TestSource = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_005185f0_test.cpp'
+        PassPattern = '005185f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00518900'
+        Module = 'CThingSearchTools_Calls'
+        Source = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_00518900.cpp'
+        TestSource = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_00518900_test.cpp'
+        PassPattern = '00518900_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

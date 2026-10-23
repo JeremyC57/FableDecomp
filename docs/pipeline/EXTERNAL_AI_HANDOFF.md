@@ -218,3 +218,7 @@ The scope file is `external_963-965_AUTHORIZED_SCOPE.json`. The prompt to paste,
 it, is `EXTERNAL_CHUNKS_963-965_PROMPT.md`. Sparse library-looking regions were left out: zlib/winsock `__` names and
 the sound library at 0xC40000–0xCB0000. The rows are recorded in `chunk_history.tsv`, so in-house cuts never take
 them.
+
+**In-house retry of the 960–962 parks (2026-10-23):** 6 of 59 recovered (batch `2026-10-23_linux_adv_b99`).
+- Still parked: 53. The residues are in `$S/w22/gptretry/STATUS.tsv`, and most are the rough-area loop-exit reload gap or register rotations.
+- Not yet attempted: 14 large rows.
