@@ -274735,6 +274735,83 @@ $catalog = @(
         TestSource = '00/ee/CGlobalOpenChestScript_Main_00eec890_test.cpp'
         PassPattern = '00eec890_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d02b80'
+        Module = 'CGate1GuardInner'
+        Source = '00/d0/CGate1GuardInner_Main_00d02b80.cpp'
+        TestSource = '00/d0/CGate1GuardInner_Main_00d02b80_test.cpp'
+        PassPattern = '00d02b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1e3e0'
+        Module = 'CGuardHoldingBandit'
+        Source = '00/d1/CGuardHoldingBandit_Main_00d1e3e0.cpp'
+        TestSource = '00/d1/CGuardHoldingBandit_Main_00d1e3e0_test.cpp'
+        PassPattern = '00d1e3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d37530'
+        Module = 'CFH_Villager'
+        Source = '00/d3/CFHVillager_Main_00d37530.cpp'
+        TestSource = '00/d3/CFHVillager_Main_00d37530_test.cpp'
+        PassPattern = '00d37530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d71b30'
+        Module = 'CHTG_Prisoner'
+        Source = '00/d7/CHTGPrisoner_Main_00d71b30.cpp'
+        TestSource = '00/d7/CHTGPrisoner_Main_00d71b30_test.cpp'
+        PassPattern = '00d71b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d81c50'
+        Module = 'CHSB_MagicBarrier'
+        Source = '00/d8/CHSBMagicBarrier_Main_00d81c50.cpp'
+        TestSource = '00/d8/CHSBMagicBarrier_Main_00d81c50_test.cpp'
+        PassPattern = '00d81c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d83fa0'
+        Module = 'CHS_Screamer'
+        Source = '00/d8/CHSScreamer_Main_00d83fa0.cpp'
+        TestSource = '00/d8/CHSScreamer_Main_00d83fa0_test.cpp'
+        PassPattern = '00d83fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9f6c0'
+        Module = 'CFadeinSummoner'
+        Source = '00/d9/CFadeinSummoner_Main_00d9f6c0.cpp'
+        TestSource = '00/d9/CFadeinSummoner_Main_00d9f6c0_test.cpp'
+        PassPattern = '00d9f6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da7d30'
+        Module = 'CGuardToLeadTheWay'
+        Source = '00/da/CGuardToLeadTheWay_Main_00da7d30.cpp'
+        TestSource = '00/da/CGuardToLeadTheWay_Main_00da7d30_test.cpp'
+        PassPattern = '00da7d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc3fc0'
+        Module = 'CGraveyardDemon'
+        Source = '00/dc/CGraveyardDemon_Main_00dc3fc0.cpp'
+        TestSource = '00/dc/CGraveyardDemon_Main_00dc3fc0_test.cpp'
+        PassPattern = '00dc3fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1b1f0'
+        Module = 'CHKC_VillagerScreamer'
+        Source = '00/e1/CHKCVillagerScreamer_Main_00e1b1f0.cpp'
+        TestSource = '00/e1/CHKCVillagerScreamer_Main_00e1b1f0_test.cpp'
+        PassPattern = '00e1b1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7e640'
+        Module = 'CFishCompCompetitor'
+        Source = '00/e7/CFishCompCompetitor_Main_00e7e640.cpp'
+        TestSource = '00/e7/CFishCompCompetitor_Main_00e7e640_test.cpp'
+        PassPattern = '00e7e640_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

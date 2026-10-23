@@ -27090,3 +27090,8 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ??1CScriptThingCopy@@UAE@XZ	004aa840	00d874f0
 ?PlayCutscene@CQ_HeroSoulsGuildmasterScript@@QAEXUCCharString@@@Z	00d872d0	00d874f0
 ?MakeBriarRoseComment@CQ_SummoningTheShipScript@@QAE_NABUCCharString@@@Z	00df20f0	00df2f90
+??1CScriptGameResourceObjectMovieFull@@UAE@XZ	006e7b80	00d37530
+?g_fSixteen@@3MB	01238164	00d37530
+?g_EmptyString@@3UCCharString@@B	0143e8ec	00d71b30
+?PhaseMe@CFadeinSummoner@@QAEXXZ	00d9fd80	00d9f6c0
+?Add@CQ_MinionClifftopChaseScript@@QAEXPAUCSpawnedFuncBase@@ABUCCharString@@@Z	00cb7e50	00da7d30
