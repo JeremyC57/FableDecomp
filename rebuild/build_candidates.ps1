@@ -274997,6 +274997,27 @@ $catalog = @(
         TestSource = '00/da/CMinionTrollSummoner_Main_00daa700_test.cpp'
         PassPattern = '00daa700_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0096ee90'
+        Module = 'CAIStateGroup_MeleeCombatNearby'
+        Source = '00/96/CAIStateGroupMeleeCombatNearby_Update_0096ee90.cpp'
+        TestSource = '00/96/CAIStateGroupMeleeCombatNearby_Update_0096ee90_test.cpp'
+        PassPattern = '0096ee90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2f2d0'
+        Module = 'C3DMeshStats'
+        Source = '00/a2/C3DMeshStats_LoadBinary_00a2f2d0.cpp'
+        TestSource = '00/a2/C3DMeshStats_LoadBinary_00a2f2d0_test.cpp'
+        PassPattern = '00a2f2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfc630'
+        Module = 'CQ_TraderConflictGoodScript'
+        Source = '00/df/CQTraderConflictGoodScript_WatchForHittingEnemies_00dfc630.cpp'
+        TestSource = '00/df/CQTraderConflictGoodScript_WatchForHittingEnemies_00dfc630_test.cpp'
+        PassPattern = '00dfc630_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

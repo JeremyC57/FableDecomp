@@ -27161,3 +27161,13 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?SetPredicate@CMinionFieldGenerator@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00daa260
 ?IsActiveThreadTerminating@CMinionTrollSummoner@@QAE_NXZ	00f35b30	00daa700
 ?SetPredicate@CMinionTrollSummoner@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00daa700
+?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@QAEXXZ	0096ea50	0096ee90
+?Combat_ProcessMeleeAttackMessage@CAIStateGroup_MeleeCombatNearby@@QAEXXZ	0096eb40	0096ee90
+?GetPWorld@CAIStateGroupBase@@QAEPAUCWorld@@XZ	008fcfc0	0096ee90
+?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby@@QAE_NXZ	0096ec10	0096ee90
+?AllocateBuffers@C3DMeshStats@@QAE_NKKK@Z	00a2e760	00a2f2d0
+?LoadBinary@C3DGeneratorObject@@QAEXPAUCMemoryDataInputStream@@@Z	00a2e5b0	00a2f2d0
+?LoadBinary@C3DMeshVolume@@QAE_NPAUCMemoryDataInputStream@@PAUCMovableResourceMemoryPool@@@Z	00a2e860	00a2f2d0
+?resize@CGeneratorArray@@QAEXK@Z	00a34df0	00a2f2d0
+?resize@CMeshVolumeMap@@QAEXK@Z	00a35580	00a2f2d0
+?UpdateTraders@CQ_TraderConflictGoodScript@NScript@@QAEXXZ	00dfc320	00dfc630
