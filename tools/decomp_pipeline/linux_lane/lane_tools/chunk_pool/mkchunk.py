@@ -18,7 +18,11 @@ for shape,fam in d:
         if not re.match(r'^C[A-Z0-9]',m) or '::' in m or '<' in m or not (LO<=l<=HI): continue
         if a.lower() in cat or a in used: continue
         rows.append((m,a,n,l,h))
-rows.sort(key=lambda r:(r[0],r[1]))
+# graphics-API wrapper rows (D3D9 device/display, buffers, shaders, textures/surfaces, Win32 window/video) go last: game logic,
+# CPU math, scene graph, draw-order lists and mesh processing (renderers, stripifier) stay in normal order (owner, 2026-10-23)
+GFX=re.compile(r'D3D|Direct3D|VertexBuffer|IndexBuffer|Shader|VertexDecl|^CTexture$|VolumeTexture|CubeTexture|^CSurface$|RenderTarget|DisplayManager|DisplayEngine|VideoSys|Vsync|GraphicsDevice|MainWindow|Win32Window')
+rows.sort(key=lambda r:(bool(GFX.search(r[0])),r[0],r[1]))
+print('graphics rows deferred',sum(1 for r in rows if GFX.search(r[0])))
 print('pool left',len(rows))
 hist=open(HIST,'a') if os.path.exists(HIST) else open(HIST,'w'); hist.write('' if os.path.getsize(HIST) else 'chunk\taddress\tmodule\tname\tlength\n')
 for k in range(K):
