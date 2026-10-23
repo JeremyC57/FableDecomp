@@ -9,6 +9,6 @@ static bool Check() { X x; int s, t; return x.LoadLayer(&s, &t) == 42 && g_mo ==
 int main()
 {
     if (!Check()) { std::printf("00c13310_TEST FAIL\n"); return 1; }
-    std::printf("00c13310_TEST PASS\n");
+    std::printf("012117e6_TEST PASS\n");
     return 0;
 }

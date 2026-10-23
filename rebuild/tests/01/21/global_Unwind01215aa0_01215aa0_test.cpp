@@ -5,6 +5,6 @@ int main()
 {
     { X x; } if (g_d != 21) { std::printf("00c49a70_TEST FAIL\n"); return 1; }
 
-    std::printf("00c49a70_TEST PASS\n");
+    std::printf("01215aa0_TEST PASS\n");
     return 0;
 }

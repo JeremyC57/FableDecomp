@@ -8,6 +8,6 @@ static bool Check() { g_e[0].bound = 1; g_e[1].bound = 0; g_e[2].bound = 1; Ow o
 int main()
 {
     if (!Check()) { std::printf("00c12880_TEST FAIL\n"); return 1; }
-    std::printf("00c12880_TEST PASS\n");
+    std::printf("0121175d_TEST PASS\n");
     return 0;
 }

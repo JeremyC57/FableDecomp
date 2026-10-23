@@ -22,6 +22,6 @@ static bool Check() { Mo* m = (Mo*)std::calloc(1, sizeof(Mo)); Rd rd; int a, c; 
 int main()
 {
     if (!Check()) { std::printf("00c4c8b0_TEST FAIL\n"); return 1; }
-    std::printf("00c4c8b0_TEST PASS\n");
+    std::printf("01215fd3_TEST PASS\n");
     return 0;
 }

@@ -7,6 +7,6 @@ static bool Check() { { Tc t; } return g_rem == 3 && g_mem == 3 && g_map == 1; }
 int main()
 {
     if (!Check()) { std::printf("00c30940_TEST FAIL\n"); return 1; }
-    std::printf("00c30940_TEST PASS\n");
+    std::printf("01213fb4_TEST PASS\n");
     return 0;
 }

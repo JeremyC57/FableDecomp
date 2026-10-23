@@ -10,6 +10,6 @@ static bool Check() { int e; X* x = new X; x->ev = &e; x->waiters = 0; Rc out; o
 int main()
 {
     if (!Check()) { std::printf("00cb1030_TEST FAIL\n"); return 1; }
-    std::printf("00cb1030_TEST PASS\n");
+    std::printf("012173c0_TEST PASS\n");
     return 0;
 }

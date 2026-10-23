@@ -8,6 +8,6 @@ static bool Check() { En e; Ow o; o.e = &e; return F(&o) == 5 && g_enter == 2 &&
 int main()
 {
     if (!Check()) { std::printf("00ca5030_TEST FAIL\n"); return 1; }
-    std::printf("00ca5030_TEST PASS\n");
+    std::printf("01216968_TEST PASS\n");
     return 0;
 }

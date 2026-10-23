@@ -7,6 +7,6 @@ static bool Check() { Fc f; if (f.Cr(0) != 0) return false; int a; Ag* g = f.Cr(
 int main()
 {
     if (!Check()) { std::printf("00c1abb0_TEST FAIL\n"); return 1; }
-    std::printf("00c1abb0_TEST PASS\n");
+    std::printf("01212379_TEST PASS\n");
     return 0;
 }

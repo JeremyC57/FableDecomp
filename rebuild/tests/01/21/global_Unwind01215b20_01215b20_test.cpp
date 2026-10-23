@@ -6,6 +6,6 @@ static bool Check() { X x(3); bool ok = g_b == 1 && x.n == 3 && x.p && x.u == 0 
 int main()
 {
     if (!Check()) { std::printf("00c49c90_TEST FAIL\n"); return 1; }
-    std::printf("00c49c90_TEST PASS\n");
+    std::printf("01215b20_TEST PASS\n");
     return 0;
 }

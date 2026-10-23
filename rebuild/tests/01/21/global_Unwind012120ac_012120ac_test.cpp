@@ -12,6 +12,6 @@ static bool Check() { Nd* n = new Nd; n->head = n->sent; n->blk = std::malloc(8)
 int main()
 {
     if (!Check()) { std::printf("00c19250_TEST FAIL\n"); return 1; }
-    std::printf("00c19250_TEST PASS\n");
+    std::printf("012120ac_TEST PASS\n");
     return 0;
 }

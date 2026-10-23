@@ -14,6 +14,6 @@ static bool Check() { Bk* b = new Bk; Src src; En en; int r, c; b->src = 0; if (
 int main()
 {
     if (!Check()) { std::printf("00cab990_TEST FAIL\n"); return 1; }
-    std::printf("00cab990_TEST PASS\n");
+    std::printf("01216fe0_TEST PASS\n");
     return 0;
 }

@@ -10,6 +10,6 @@ static bool Check() { Pa p; Tk* t = (Tk*)1; int i; g_fail = true; if (p.Alloc(&t
 int main()
 {
     if (!Check()) { std::printf("00caf680_TEST FAIL\n"); return 1; }
-    std::printf("00caf680_TEST PASS\n");
+    std::printf("012172a8_TEST PASS\n");
     return 0;
 }

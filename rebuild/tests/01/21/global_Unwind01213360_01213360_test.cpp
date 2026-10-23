@@ -8,6 +8,6 @@ static bool Check() { int t; X* x = new X(&t); bool ok = g_base == 1 && g_timer 
 int main()
 {
     if (!Check()) { std::printf("00c27070_TEST FAIL\n"); return 1; }
-    std::printf("00c27070_TEST PASS\n");
+    std::printf("01213360_TEST PASS\n");
     return 0;
 }

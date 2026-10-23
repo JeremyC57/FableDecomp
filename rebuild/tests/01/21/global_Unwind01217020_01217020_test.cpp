@@ -8,6 +8,6 @@ static bool Check() { Src s; X* a = new X(&s, 0); if (!(a->period == 16 && a->ph
 int main()
 {
     if (!Check()) { std::printf("00cabe00_TEST FAIL\n"); return 1; }
-    std::printf("00cabe00_TEST PASS\n");
+    std::printf("01217020_TEST PASS\n");
     return 0;
 }

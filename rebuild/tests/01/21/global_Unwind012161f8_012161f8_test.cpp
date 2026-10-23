@@ -6,6 +6,6 @@ static bool Check() { X x; return g_root == 1 && g_slot == 1 && g_ptr == 2 && x.
 int main()
 {
     if (!Check()) { std::printf("00c555e0_TEST FAIL\n"); return 1; }
-    std::printf("00c555e0_TEST PASS\n");
+    std::printf("012161f8_TEST PASS\n");
     return 0;
 }

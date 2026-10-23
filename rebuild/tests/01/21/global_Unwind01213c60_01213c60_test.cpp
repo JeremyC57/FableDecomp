@@ -10,6 +10,6 @@ static bool Check() { long d[3] = { 1, 2, 3 }; A a; a.p = d; a.n = 3; if (a.At(1
 int main()
 {
     if (!Check()) { std::printf("00c2ebc0_TEST FAIL\n"); return 1; }
-    std::printf("00c2ebc0_TEST PASS\n");
+    std::printf("01213c60_TEST PASS\n");
     return 0;
 }

@@ -7,6 +7,6 @@ static bool Check() { V v(1.0f, 2.0f, 3.0f); X x; x.Set(&v); return g_s == 17.0f
 int main()
 {
     if (!Check()) { std::printf("00c110a0_TEST FAIL\n"); return 1; }
-    std::printf("00c110a0_TEST PASS\n");
+    std::printf("012114e2_TEST PASS\n");
     return 0;
 }

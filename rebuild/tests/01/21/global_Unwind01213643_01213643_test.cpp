@@ -7,6 +7,6 @@ static bool Check() { X* x = new X; delete x; return g_node == 4; }
 int main()
 {
     if (!Check()) { std::printf("00c2a9b0_TEST FAIL\n"); return 1; }
-    std::printf("00c2a9b0_TEST PASS\n");
+    std::printf("01213643_TEST PASS\n");
     return 0;
 }

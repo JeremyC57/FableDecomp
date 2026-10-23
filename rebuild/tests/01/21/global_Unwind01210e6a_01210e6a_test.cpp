@@ -11,6 +11,6 @@ static bool Check() { Cs n[3]; n[0].Append("a"); n[1].Append("b"); n[2].Append("
 int main()
 {
     if (!Check()) { std::printf("00c0ad10_TEST FAIL\n"); return 1; }
-    std::printf("00c0ad10_TEST PASS\n");
+    std::printf("01210e6a_TEST PASS\n");
     return 0;
 }

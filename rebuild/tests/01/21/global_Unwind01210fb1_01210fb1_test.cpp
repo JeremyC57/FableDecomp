@@ -9,6 +9,6 @@ static bool Check() { { Cs a("c:\\dir\\file.v2.txt"); Cs s = a.Stem(); if (std::
 int main()
 {
     if (!Check()) { std::printf("00c0e360_TEST FAIL\n"); return 1; }
-    std::printf("00c0e360_TEST PASS\n");
+    std::printf("01210fb1_TEST PASS\n");
     return 0;
 }

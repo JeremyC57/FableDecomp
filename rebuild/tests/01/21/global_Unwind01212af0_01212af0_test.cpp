@@ -5,6 +5,6 @@ int main()
 {
     X x; int i; if (x.F(&i) != 7) { std::printf("00c21f50_TEST FAIL\n"); return 1; }
 
-    std::printf("00c21f50_TEST PASS\n");
+    std::printf("01212af0_TEST PASS\n");
     return 0;
 }

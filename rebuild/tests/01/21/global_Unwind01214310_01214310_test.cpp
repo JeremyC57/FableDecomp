@@ -7,6 +7,6 @@ static bool Check() { long s = 0, e = 0; g_ok = false; if (F((void*)10, 0, &s, &
 int main()
 {
     if (!Check()) { std::printf("00c347b0_TEST FAIL\n"); return 1; }
-    std::printf("00c347b0_TEST PASS\n");
+    std::printf("01214310_TEST PASS\n");
     return 0;
 }

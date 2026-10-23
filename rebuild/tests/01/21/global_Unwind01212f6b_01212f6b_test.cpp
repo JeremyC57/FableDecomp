@@ -19,6 +19,6 @@ static bool Check() { Es* z = new Es(0); if (z->n != 0 || z->m8 || z->mc || z->e
 int main()
 {
     if (!Check()) { std::printf("00c24050_TEST FAIL\n"); return 1; }
-    std::printf("00c24050_TEST PASS\n");
+    std::printf("01212f6b_TEST PASS\n");
     return 0;
 }

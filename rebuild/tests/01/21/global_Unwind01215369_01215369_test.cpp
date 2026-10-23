@@ -11,6 +11,6 @@ static bool Check() { Wd w; Rs rs; w.res = &rs; w.key = 21; Op op; Ow o; o.part 
 int main()
 {
     if (!Check()) { std::printf("00c44eb0_TEST FAIL\n"); return 1; }
-    std::printf("00c44eb0_TEST PASS\n");
+    std::printf("01215369_TEST PASS\n");
     return 0;
 }

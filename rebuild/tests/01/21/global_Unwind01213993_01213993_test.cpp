@@ -5,6 +5,6 @@ static bool Check() { X x; int i; return x.Q(&i) == 6 && g_v == &i && g_l == 0; 
 int main()
 {
     if (!Check()) { std::printf("00c2c9d0_TEST FAIL\n"); return 1; }
-    std::printf("00c2c9d0_TEST PASS\n");
+    std::printf("01213993_TEST PASS\n");
     return 0;
 }

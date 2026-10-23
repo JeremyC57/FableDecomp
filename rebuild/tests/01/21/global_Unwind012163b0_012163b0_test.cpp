@@ -3,6 +3,6 @@ static int g_r = 0; struct B { virtual void v() {} ~B() {} }; struct X : B { vir
 int main()
 {
     { X x; } if (g_r != 1) { std::printf("00c5eef0_TEST FAIL\n"); return 1; }
-    std::printf("00c5eef0_TEST PASS\n");
+    std::printf("012163b0_TEST PASS\n");
     return 0;
 }

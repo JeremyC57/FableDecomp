@@ -12,6 +12,6 @@ static bool Check() { X x; int k; void* kp = &k; En* e = x.Create(&kp); if (!e |
 int main()
 {
     if (!Check()) { std::printf("00c31560_TEST FAIL\n"); return 1; }
-    std::printf("00c31560_TEST PASS\n");
+    std::printf("012140bb_TEST PASS\n");
     return 0;
 }

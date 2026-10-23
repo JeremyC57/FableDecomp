@@ -8,6 +8,6 @@ int main()
 {
     { T t; } if (g_r != 2 || g_d != 2 || g_n != 1) { std::printf("00c30550_TEST FAIL\n"); return 1; }
 
-    std::printf("00c30550_TEST PASS\n");
+    std::printf("01213eb8_TEST PASS\n");
     return 0;
 }

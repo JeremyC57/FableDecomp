@@ -8,6 +8,6 @@ static bool Check() { Isi src; X* x = new X; x->fa = 0; x->m48 = 7; g_hr = -5; i
 int main()
 {
     if (!Check()) { std::printf("00cadc10_TEST FAIL\n"); return 1; }
-    std::printf("00cadc10_TEST PASS\n");
+    std::printf("01217160_TEST PASS\n");
     return 0;
 }

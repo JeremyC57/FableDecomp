@@ -8,6 +8,6 @@ static bool Check() { St s; X x; return x.Q(&s, 2, 0) == 0 && x.Q(&s, 1, 3) == 0
 int main()
 {
     if (!Check()) { std::printf("00c19760_TEST FAIL\n"); return 1; }
-    std::printf("00c19760_TEST PASS\n");
+    std::printf("01212112_TEST PASS\n");
     return 0;
 }

@@ -95,7 +95,7 @@ int main()
     if (g_eraseCalled != 0) ok = 0;
     if (g_insertCount != 0u) ok = 0;
 
-    if (ok) printf("CARRAY_PAIR_RESIZE_00475E92_TEST PASS\n");
+    if (ok) printf("CARRAY_PAIR_RESIZE_00470A28_TEST PASS\n");
     else    printf("CARRAY_PAIR_RESIZE_00475E92_TEST FAIL\n");
     return ok ? 0 : 1;
 }

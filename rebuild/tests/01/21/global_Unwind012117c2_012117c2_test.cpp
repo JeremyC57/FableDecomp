@@ -7,6 +7,6 @@ static bool Check() { g_e.v = 42; X x; int a; return x.G(&a, 0, 0) == 42 && x.G(
 int main()
 {
     if (!Check()) { std::printf("00c13140_TEST FAIL\n"); return 1; }
-    std::printf("00c13140_TEST PASS\n");
+    std::printf("012117c2_TEST PASS\n");
     return 0;
 }

@@ -8,6 +8,6 @@ static bool Check() { X x; x.N(0); if (g_ob.seen) return false; x.N(&x); return 
 int main()
 {
     if (!Check()) { std::printf("00c114b0_TEST FAIL\n"); return 1; }
-    std::printf("00c114b0_TEST PASS\n");
+    std::printf("0121153c_TEST PASS\n");
     return 0;
 }

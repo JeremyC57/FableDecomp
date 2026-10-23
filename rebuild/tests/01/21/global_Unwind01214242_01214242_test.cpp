@@ -8,6 +8,6 @@ static bool Check() { Warn(0); if (g_sunk) return false; g_pfn = Sink; Warn(0); 
 int main()
 {
     if (!Check()) { std::printf("00c328b0_TEST FAIL\n"); return 1; }
-    std::printf("00c328b0_TEST PASS\n");
+    std::printf("01214242_TEST PASS\n");
     return 0;
 }

@@ -11,6 +11,6 @@ static bool Check() { X x; x.count = 0; x.fin = false; x.OnFin(); if (x.count !=
 int main()
 {
     if (!Check()) { std::printf("00c4c6c0_TEST FAIL\n"); return 1; }
-    std::printf("00c4c6c0_TEST PASS\n");
+    std::printf("01215f8f_TEST PASS\n");
     return 0;
 }

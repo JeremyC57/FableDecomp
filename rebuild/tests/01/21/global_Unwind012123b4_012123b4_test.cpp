@@ -13,6 +13,6 @@ static bool Check() { int o; Fm* f = new Fm(&o); if (f->thr != (void*)0x66 || f-
 int main()
 {
     if (!Check()) { std::printf("00c1ac40_TEST FAIL\n"); return 1; }
-    std::printf("00c1ac40_TEST PASS\n");
+    std::printf("012123b4_TEST PASS\n");
     return 0;
 }

@@ -7,6 +7,6 @@ static bool Check() { int a, b; void* e[2] = { &a, &b }; X x; x.e = e; x.n = 2; 
 int main()
 {
     if (!Check()) { std::printf("00c4a0e0_TEST FAIL\n"); return 1; }
-    std::printf("00c4a0e0_TEST PASS\n");
+    std::printf("01215c90_TEST PASS\n");
     return 0;
 }

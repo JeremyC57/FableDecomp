@@ -7,6 +7,6 @@ static bool Check() { Gf w; w.v = 2.0f; X x(6.0f, w); return g_o == &x && g_r ==
 int main()
 {
     if (!Check()) { std::printf("00c467d0_TEST FAIL\n"); return 1; }
-    std::printf("00c467d0_TEST PASS\n");
+    std::printf("01215575_TEST PASS\n");
     return 0;
 }

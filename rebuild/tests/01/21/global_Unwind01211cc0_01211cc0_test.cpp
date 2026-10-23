@@ -19,6 +19,6 @@ static bool Check() { En en; Ld l; l.eng = &en; int s, c; Pm p; p.kind = 9; p.li
 int main()
 {
     if (!Check()) { std::printf("00c16310_TEST FAIL\n"); return 1; }
-    std::printf("00c16310_TEST PASS\n");
+    std::printf("01211cc0_TEST PASS\n");
     return 0;
 }

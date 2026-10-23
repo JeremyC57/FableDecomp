@@ -12,6 +12,6 @@ static bool Check() { M* out = 0; int a; Nt nt; Pt pt; pt.flag = 0; g_fail = tru
 int main()
 {
     if (!Check()) { std::printf("00c4d340_TEST FAIL\n"); return 1; }
-    std::printf("00c4d340_TEST PASS\n");
+    std::printf("012160a0_TEST PASS\n");
     return 0;
 }

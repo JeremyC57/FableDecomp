@@ -13,6 +13,6 @@ static bool Check() { M* m = new M; m->dep = 2; m->target = 3; m->fin = false; i
 int main()
 {
     if (!Check()) { std::printf("00c4cd80_TEST FAIL\n"); return 1; }
-    std::printf("00c4cd80_TEST PASS\n");
+    std::printf("01216042_TEST PASS\n");
     return 0;
 }

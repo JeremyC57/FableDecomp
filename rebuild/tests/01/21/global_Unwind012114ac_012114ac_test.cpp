@@ -8,6 +8,6 @@ static bool Check() { Ow o; X* x = new X; x->o = &o; x->fl = 0; V a = { 1, 2, 3 
 int main()
 {
     if (!Check()) { std::printf("00c10e50_TEST FAIL\n"); return 1; }
-    std::printf("00c10e50_TEST PASS\n");
+    std::printf("012114ac_TEST PASS\n");
     return 0;
 }

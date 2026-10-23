@@ -10,6 +10,6 @@ static bool Check() { Fo f; F(&f); if (g_rel != 1 || g_flags != 1 || g_lines) re
 int main()
 {
     if (!Check()) { std::printf("00c19fa0_TEST FAIL\n"); return 1; }
-    std::printf("00c19fa0_TEST PASS\n");
+    std::printf("01212280_TEST PASS\n");
     return 0;
 }

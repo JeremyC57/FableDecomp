@@ -10,6 +10,6 @@ static bool Check() { X x; Tn t1, t2; Rf rf; rf.rel = Rel; t1.ref = &rf; t2.ref 
 int main()
 {
     if (!Check()) { std::printf("00caff70_TEST FAIL\n"); return 1; }
-    std::printf("00caff70_TEST PASS\n");
+    std::printf("01217360_TEST PASS\n");
     return 0;
 }

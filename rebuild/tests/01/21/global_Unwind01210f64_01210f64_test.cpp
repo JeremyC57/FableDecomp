@@ -11,6 +11,6 @@ static bool Check() { bool ok; { Cs a("abcdef"); Cs r = a.Right(2); ok = std::st
 int main()
 {
     if (!Check()) { std::printf("00c0e0f0_TEST FAIL\n"); return 1; }
-    std::printf("00c0e0f0_TEST PASS\n");
+    std::printf("01210f64_TEST PASS\n");
     return 0;
 }

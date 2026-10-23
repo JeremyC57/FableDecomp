@@ -7,6 +7,6 @@ static bool Check() { X x; x.P(0); if (g_ob.seen || g_ref) return false; x.P(&x)
 int main()
 {
     if (!Check()) { std::printf("00c11330_TEST FAIL\n"); return 1; }
-    std::printf("00c11330_TEST PASS\n");
+    std::printf("01211506_TEST PASS\n");
     return 0;
 }

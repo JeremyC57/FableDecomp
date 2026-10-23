@@ -8,6 +8,6 @@ static bool Check() { IE a, b; X x; x.pend = 0; x.eff = 0; x.Set(&a); int t; x.p
 int main()
 {
     if (!Check()) { std::printf("00cb0040_TEST FAIL\n"); return 1; }
-    std::printf("00cb0040_TEST PASS\n");
+    std::printf("01217380_TEST PASS\n");
     return 0;
 }

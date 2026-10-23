@@ -10,6 +10,6 @@ static bool Check() { Bf b; b.al = 16; if (b.Chk(64) != 4 || g_lines) return fal
 int main()
 {
     if (!Check()) { std::printf("00c4c1d0_TEST FAIL\n"); return 1; }
-    std::printf("00c4c1d0_TEST PASS\n");
+    std::printf("01215f22_TEST PASS\n");
     return 0;
 }

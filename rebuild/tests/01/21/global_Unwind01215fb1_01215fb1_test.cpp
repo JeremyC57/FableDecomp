@@ -11,6 +11,6 @@ static bool Check() { X x; x.exp = 2; x.rec = 0; x.ontime = 0; x.fin = false; x.
 int main()
 {
     if (!Check()) { std::printf("00c4c7a0_TEST FAIL\n"); return 1; }
-    std::printf("00c4c7a0_TEST PASS\n");
+    std::printf("01215fb1_TEST PASS\n");
     return 0;
 }

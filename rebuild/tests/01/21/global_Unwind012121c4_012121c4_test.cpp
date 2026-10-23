@@ -9,6 +9,6 @@ static bool Check() { X x; int a, k; return x.Visit(&k, &a) == 0 && g_pa && g_na
 int main()
 {
     if (!Check()) { std::printf("00c19d90_TEST FAIL\n"); return 1; }
-    std::printf("00c19d90_TEST PASS\n");
+    std::printf("012121c4_TEST PASS\n");
     return 0;
 }

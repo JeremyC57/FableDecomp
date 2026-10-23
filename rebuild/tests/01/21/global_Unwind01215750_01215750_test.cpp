@@ -5,6 +5,6 @@ int main()
 {
     int q; X x(&q); if (x.p != &x.v || x.v.d != &q) { std::printf("00c47d10_TEST FAIL\n"); return 1; }
 
-    std::printf("00c47d10_TEST PASS\n");
+    std::printf("01215750_TEST PASS\n");
     return 0;
 }

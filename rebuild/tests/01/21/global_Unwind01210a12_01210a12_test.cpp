@@ -9,6 +9,6 @@ static bool Check() { Pl pl; Hd h; Op op; X x; x.h = &h; x.op = 0; Ev* e = new E
 int main()
 {
     if (!Check()) { std::printf("00c08940_TEST FAIL\n"); return 1; }
-    std::printf("00c08940_TEST PASS\n");
+    std::printf("01210a12_TEST PASS\n");
     return 0;
 }

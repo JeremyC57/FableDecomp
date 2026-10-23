@@ -9,6 +9,6 @@ static bool Check() { int h; g_it[0].h = &h; g_it[0].st = 1; g_it[1].h = &h; g_i
 int main()
 {
     if (!Check()) { std::printf("00caab30_TEST FAIL\n"); return 1; }
-    std::printf("00caab30_TEST PASS\n");
+    std::printf("01216e80_TEST PASS\n");
     return 0;
 }

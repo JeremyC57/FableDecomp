@@ -12,6 +12,6 @@ static bool Check() { M* m = new M; int a, k, c, d; V3 v = { 1, 2, 3 }; if (m->C
 int main()
 {
     if (!Check()) { std::printf("00c2bb10_TEST FAIL\n"); return 1; }
-    std::printf("00c2bb10_TEST PASS\n");
+    std::printf("012137d8_TEST PASS\n");
     return 0;
 }

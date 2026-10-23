@@ -12,6 +12,6 @@ static bool Check() { R r; r.bs = 16; r.lb = 2; r.size = 1000; r.first = 10; r.m
 int main()
 {
     if (!Check()) { std::printf("00c4aa40_TEST FAIL\n"); return 1; }
-    std::printf("00c4aa40_TEST PASS\n");
+    std::printf("01215d34_TEST PASS\n");
     return 0;
 }

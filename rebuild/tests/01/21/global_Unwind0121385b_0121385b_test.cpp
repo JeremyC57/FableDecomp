@@ -6,6 +6,6 @@ static bool Check() { { X x; } return g_map == 2; }
 int main()
 {
     if (!Check()) { std::printf("00c2be10_TEST FAIL\n"); return 1; }
-    std::printf("00c2be10_TEST PASS\n");
+    std::printf("0121385b_TEST PASS\n");
     return 0;
 }

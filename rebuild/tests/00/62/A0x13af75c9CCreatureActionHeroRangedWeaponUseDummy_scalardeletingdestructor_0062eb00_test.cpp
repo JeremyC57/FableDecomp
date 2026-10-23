@@ -50,6 +50,6 @@ int main()
         return 1;
     }
 
-    std::printf("CLandscapeBackgroundPatch_00442980_TEST PASS\n");
+    std::printf("CLandscapeBackgroundPatch_0062eb00_TEST PASS\n");
     return 0;
 }

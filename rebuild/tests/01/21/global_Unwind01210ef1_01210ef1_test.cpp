@@ -12,6 +12,6 @@ static bool Check() { int o; Ab* a = new Ab(&o); bool ok = a->owner == &o && g_f
 int main()
 {
     if (!Check()) { std::printf("00c0b200_TEST FAIL\n"); return 1; }
-    std::printf("00c0b200_TEST PASS\n");
+    std::printf("01210ef1_TEST PASS\n");
     return 0;
 }

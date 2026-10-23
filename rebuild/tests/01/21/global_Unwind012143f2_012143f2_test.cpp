@@ -13,6 +13,6 @@ static bool Check() { int o; Sp2 p = { 0x3000, 2 }; W* w = new W(&o, &p); if (w-
 int main()
 {
     if (!Check()) { std::printf("00c355e0_TEST FAIL\n"); return 1; }
-    std::printf("00c355e0_TEST PASS\n");
+    std::printf("012143f2_TEST PASS\n");
     return 0;
 }

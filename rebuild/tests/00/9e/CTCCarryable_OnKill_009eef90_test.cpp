@@ -69,6 +69,6 @@ int main() {
     if (node.fc != (void*)0x2)  { std::printf("FAIL null fc\n"); return 1; }
     if (o.ParentThing != 0)              { std::printf("FAIL null m4\n"); return 1; }
 
-    std::printf("CTCCARRYABLE_ONKILL_0047C880_TEST PASS\n");
+    std::printf("CTCCARRYABLE_ONKILL_009EEF90_TEST PASS\n");
     return 0;
 }

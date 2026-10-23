@@ -9,6 +9,6 @@ static bool Check() { X x; x.dirty = false; int a; g_known68 = true; if (x.Add(&
 int main()
 {
     if (!Check()) { std::printf("00c2a490_TEST FAIL\n"); return 1; }
-    std::printf("00c2a490_TEST PASS\n");
+    std::printf("01213555_TEST PASS\n");
     return 0;
 }

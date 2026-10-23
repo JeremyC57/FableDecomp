@@ -11,6 +11,6 @@ static bool Check() { Q q; X* x = new X; x->q = &q; if (x->Get() != &g_pop || g_
 int main()
 {
     if (!Check()) { std::printf("00c49ff0_TEST FAIL\n"); return 1; }
-    std::printf("00c49ff0_TEST PASS\n");
+    std::printf("01215c70_TEST PASS\n");
     return 0;
 }

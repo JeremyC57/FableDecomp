@@ -5,6 +5,6 @@ static bool Check() { X x; x.n = 5; return x.O() == 0 && x.n == 0 && g_e == 1 &&
 int main()
 {
     if (!Check()) { std::printf("00caf890_TEST FAIL\n"); return 1; }
-    std::printf("00caf890_TEST PASS\n");
+    std::printf("012172e0_TEST PASS\n");
     return 0;
 }

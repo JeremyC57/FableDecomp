@@ -5,6 +5,6 @@ int main()
 {
     { P p; } if (g_m != 1 || g_s != 1) { std::printf("00c20150_TEST FAIL\n"); return 1; }
 
-    std::printf("00c20150_TEST PASS\n");
+    std::printf("012128c8_TEST PASS\n");
     return 0;
 }

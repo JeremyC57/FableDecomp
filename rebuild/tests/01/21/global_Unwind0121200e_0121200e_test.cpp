@@ -12,6 +12,6 @@ static bool Check() { Mn a(1); if (a.n == 0 || g_tree != 1 || g_flat != 0) retur
 int main()
 {
     if (!Check()) { std::printf("00c185b0_TEST FAIL\n"); return 1; }
-    std::printf("00c185b0_TEST PASS\n");
+    std::printf("0121200e_TEST PASS\n");
     return 0;
 }

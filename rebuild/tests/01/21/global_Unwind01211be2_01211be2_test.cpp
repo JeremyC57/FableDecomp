@@ -7,6 +7,6 @@ static bool Check() { Tg t; X x; x.t = 0; if (!x.Has()) return false; x.t = &t; 
 int main()
 {
     if (!Check()) { std::printf("00c15b00_TEST FAIL\n"); return 1; }
-    std::printf("00c15b00_TEST PASS\n");
+    std::printf("01211be2_TEST PASS\n");
     return 0;
 }

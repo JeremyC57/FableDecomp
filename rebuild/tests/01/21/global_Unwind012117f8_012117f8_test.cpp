@@ -8,6 +8,6 @@ static bool Check() { Mp m; Ow o; o.m = &m; X x; x.o = &o; int a, b; return x.R(
 int main()
 {
     if (!Check()) { std::printf("00c133d0_TEST FAIL\n"); return 1; }
-    std::printf("00c133d0_TEST PASS\n");
+    std::printf("012117f8_TEST PASS\n");
     return 0;
 }

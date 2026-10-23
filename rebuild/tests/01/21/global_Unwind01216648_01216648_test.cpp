@@ -12,6 +12,6 @@ static bool Check() { K* k = new K; k->blk = std::malloc(4); k->f = 1; delete k;
 int main()
 {
     if (!Check()) { std::printf("00c6a780_TEST FAIL\n"); return 1; }
-    std::printf("00c6a780_TEST PASS\n");
+    std::printf("01216648_TEST PASS\n");
     return 0;
 }

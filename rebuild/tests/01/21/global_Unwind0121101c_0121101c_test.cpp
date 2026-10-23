@@ -7,6 +7,6 @@ static bool Check() { Fc f; int a, b, c, d; Ob* o = f.Create(&a, &b, &c, &d); bo
 int main()
 {
     if (!Check()) { std::printf("00c0e7e0_TEST FAIL\n"); return 1; }
-    std::printf("00c0e7e0_TEST PASS\n");
+    std::printf("0121101c_TEST PASS\n");
     return 0;
 }

@@ -9,6 +9,6 @@ static bool Check() { En en; Ir ir; V* v = new V; v->e = &en; v->r = &ir; delete
 int main()
 {
     if (!Check()) { std::printf("00ca6370_TEST FAIL\n"); return 1; }
-    std::printf("00ca6370_TEST PASS\n");
+    std::printf("012169f8_TEST PASS\n");
     return 0;
 }

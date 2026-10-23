@@ -10,6 +10,6 @@ static bool Check() { Sl s[3]; Fa f; f.slots = s; f.count = 2; if (f.Get(1) != &
 int main()
 {
     if (!Check()) { std::printf("00c13700_TEST FAIL\n"); return 1; }
-    std::printf("00c13700_TEST PASS\n");
+    std::printf("01211860_TEST PASS\n");
     return 0;
 }

@@ -6,6 +6,6 @@ static bool Check() { { Tc t; } return g_rem == 3 && g_map == 1; }
 int main()
 {
     if (!Check()) { std::printf("00c3b1d0_TEST FAIL\n"); return 1; }
-    std::printf("00c3b1d0_TEST PASS\n");
+    std::printf("01214e1a_TEST PASS\n");
     return 0;
 }

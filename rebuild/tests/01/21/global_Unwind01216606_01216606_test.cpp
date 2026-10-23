@@ -11,6 +11,6 @@ static bool Check() { K* k = new K; bool ok = k->m28.ch == 2 && k->m28.rate == 4
 int main()
 {
     if (!Check()) { std::printf("00c6a650_TEST FAIL\n"); return 1; }
-    std::printf("00c6a650_TEST PASS\n");
+    std::printf("01216606_TEST PASS\n");
     return 0;
 }

@@ -76,7 +76,9 @@ authored, orows = [], []
 for ai, name, b in chunk:
     ah = "%08x" % ai
     authored.append({"address": ah, "name": name, "module": "CLandscapeBackgroundPatch",
-                     "source_cpp": src, "test_cpp": test, "pass_pattern": PASS})
+                     # each twin's test prints its own address, not the template's
+                     "source_cpp": src, "test_cpp": test.replace(PASS, PASS.replace("00442980", ah)),
+                     "pass_pattern": PASS.replace("00442980", ah)})
     orows.append((ah, name, "30", b.hex()))
 json.dump({"result": {"authored": authored}}, open(SCR / (PREFIX + "_land.json"), "w"))
 with open(SCR / (PREFIX + "_oracle.tsv"), "w", newline="", encoding="utf-8") as f:

@@ -7,6 +7,6 @@ int main()
     X* x = C(); if (!x || g_c != 1) { std::printf("00c3ebb0_TEST FAIL\n"); return 1; }
     delete x;
 
-    std::printf("00c3ebb0_TEST PASS\n");
+    std::printf("01215120_TEST PASS\n");
     return 0;
 }

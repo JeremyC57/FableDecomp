@@ -12,6 +12,6 @@ static bool Check() { X* x = new X; if (x->th == 0 || g_base != 1 || g_th != 1 |
 int main()
 {
     if (!Check()) { std::printf("00c48640_TEST FAIL\n"); return 1; }
-    std::printf("00c48640_TEST PASS\n");
+    std::printf("012159e1_TEST PASS\n");
     return 0;
 }

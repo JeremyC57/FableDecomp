@@ -38,6 +38,6 @@ int main()
     if (g_n != 4) { std::printf("FAIL count %d\n", g_n); return 1; }
     if (g_seq[0]!=1 || g_seq[1]!=2 || g_seq[2]!=3 || g_seq[3]!=1) { std::printf("FAIL seq\n"); return 1; }
     if (d.a.x!=10 || d.b.x!=20 || d.c.x!=30 || d.a2.x!=10) { std::printf("FAIL vals\n"); return 1; }
-    std::printf("CCarrySlotDef_00452256_TEST PASS\n");
+    std::printf("CCarrySlotDef_004de50c_TEST PASS\n");
     return 0;
 }

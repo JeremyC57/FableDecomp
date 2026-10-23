@@ -9,6 +9,6 @@ static bool Check() { Tg t; X x; x.t = &t; int a; if (!x.Go(&a, 0, 0, 0) || g_hd
 int main()
 {
     if (!Check()) { std::printf("00c1df70_TEST FAIL\n"); return 1; }
-    std::printf("00c1df70_TEST PASS\n");
+    std::printf("012125b0_TEST PASS\n");
     return 0;
 }

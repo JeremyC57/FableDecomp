@@ -9,6 +9,6 @@ int main()
     X* x = new X; int i; x->F(&i, &i); if (g_s != x || g_v != &i || g_l != 0) { std::printf("00c115d0_TEST FAIL\n"); return 1; }
     delete x;
 
-    std::printf("00c115d0_TEST PASS\n");
+    std::printf("01211560_TEST PASS\n");
     return 0;
 }

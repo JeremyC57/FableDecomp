@@ -10,6 +10,6 @@ static bool Check() { Ar a; a.count = 2; a.data = g_d; if (a.Get(1) != &g_d[1] |
 int main()
 {
     if (!Check()) { std::printf("00c13620_TEST FAIL\n"); return 1; }
-    std::printf("00c13620_TEST PASS\n");
+    std::printf("01211840_TEST PASS\n");
     return 0;
 }

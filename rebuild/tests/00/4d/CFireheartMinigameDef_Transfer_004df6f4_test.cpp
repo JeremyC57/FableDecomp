@@ -30,7 +30,7 @@ int main(){
     CPersistContext ctx;
     obj.Transfer(ctx);
     if (g_calls == 5 && g_last == (void*)&obj.f4) {
-        std::printf("CContextSensitiveItemDef_004526b3_TEST PASS\n");
+        std::printf("CContextSensitiveItemDef_004df6f4_TEST PASS\n");
         return 0;
     }
     std::printf("FAIL calls=%d\n", g_calls);

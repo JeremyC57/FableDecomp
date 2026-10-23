@@ -22,6 +22,6 @@ static bool Check() { Rc* r = Mk(1, false); r->~Rc(); std::free(r); if (g_q != 1
 int main()
 {
     if (!Check()) { std::printf("00c38b20_TEST FAIL\n"); return 1; }
-    std::printf("00c38b20_TEST PASS\n");
+    std::printf("01214a68_TEST PASS\n");
     return 0;
 }

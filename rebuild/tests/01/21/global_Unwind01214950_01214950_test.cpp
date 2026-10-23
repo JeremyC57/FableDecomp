@@ -5,6 +5,6 @@ int main()
 {
     Q q; X x; x.q = &q; if (x.Get() != 7 || g_g != 0) { std::printf("00c39770_TEST FAIL\n"); return 1; }
 
-    std::printf("00c39770_TEST PASS\n");
+    std::printf("01214950_TEST PASS\n");
     return 0;
 }

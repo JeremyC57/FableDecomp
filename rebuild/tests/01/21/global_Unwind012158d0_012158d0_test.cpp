@@ -7,6 +7,6 @@ int main()
 {
     M m; Q q; q.m = &m; if (q.P(0) != 0 || g_r != 1 || g_p != 1 || g_l != 0 || q.P(0) != 1) { std::printf("00c48be0_TEST FAIL\n"); return 1; }
 
-    std::printf("00c48be0_TEST PASS\n");
+    std::printf("012158d0_TEST PASS\n");
     return 0;
 }

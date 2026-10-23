@@ -11,6 +11,6 @@ static bool Check() { X* x = new X; x->budget = 1; if (x->Create() != &g_pool_a 
 int main()
 {
     if (!Check()) { std::printf("00c3dcd0_TEST FAIL\n"); return 1; }
-    std::printf("00c3dcd0_TEST PASS\n");
+    std::printf("01215020_TEST PASS\n");
     return 0;
 }

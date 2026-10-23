@@ -47,6 +47,6 @@ int main()
     r = CMultiStaticMeshDef_scalar_deleting_destructor(&obj, 0, 1);
     if (delete_calls != 1) { std::printf("FAIL delete-flag\n"); return 1; }
 
-    std::printf("CLandscapeBackgroundPatch_00454647_TEST PASS\n");
+    std::printf("CLandscapeBackgroundPatch_004e3210_TEST PASS\n");
     return 0;
 }

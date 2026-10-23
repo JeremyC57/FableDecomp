@@ -7,6 +7,6 @@ static bool Check() { St s; X x; x.s = &s; float r = 0; if (x.Calc(&r) != 2 || r
 int main()
 {
     if (!Check()) { std::printf("00c15d50_TEST FAIL\n"); return 1; }
-    std::printf("00c15d50_TEST PASS\n");
+    std::printf("01211c3c_TEST PASS\n");
     return 0;
 }

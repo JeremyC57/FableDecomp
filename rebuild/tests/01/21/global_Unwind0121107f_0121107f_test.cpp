@@ -8,6 +8,6 @@ static bool Check() { X* x = new X; bool ok = x->GetAt(3) == 0 && x->GetAt(2) ==
 int main()
 {
     if (!Check()) { std::printf("00c0eb70_TEST FAIL\n"); return 1; }
-    std::printf("00c0eb70_TEST PASS\n");
+    std::printf("0121107f_TEST PASS\n");
     return 0;
 }

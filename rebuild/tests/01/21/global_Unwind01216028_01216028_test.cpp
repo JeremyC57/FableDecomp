@@ -12,6 +12,6 @@ static bool Check() { int n, v; Cv* c = Create(&n, &v); if (!c || g_ctor != 1 ||
 int main()
 {
     if (!Check()) { std::printf("00c4cc90_TEST FAIL\n"); return 1; }
-    std::printf("00c4cc90_TEST PASS\n");
+    std::printf("01216028_TEST PASS\n");
     return 0;
 }

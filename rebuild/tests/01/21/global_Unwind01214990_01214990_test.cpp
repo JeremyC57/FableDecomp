@@ -10,6 +10,6 @@ int main()
     M m; Q q; q.m = &m; int v; if (q.P(&v) != &v || g_a != 1 || g_d != 1 || g_b != 1 || g_n != 4 || g_l != 0) { std::printf("00c39830_TEST FAIL\n"); return 1; }
     if (q.P(&v) != &v || g_b != 1) { std::printf("00c39830_TEST FAIL\n"); return 1; }
 
-    std::printf("00c39830_TEST PASS\n");
+    std::printf("01214990_TEST PASS\n");
     return 0;
 }

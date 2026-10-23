@@ -11,6 +11,6 @@ static bool Check() { Ow* o = new Ow; Ds d; int a, b; d.a = &a; d.b = &b; o->ctx
 int main()
 {
     if (!Check()) { std::printf("00c3ec80_TEST FAIL\n"); return 1; }
-    std::printf("00c3ec80_TEST PASS\n");
+    std::printf("01215140_TEST PASS\n");
     return 0;
 }

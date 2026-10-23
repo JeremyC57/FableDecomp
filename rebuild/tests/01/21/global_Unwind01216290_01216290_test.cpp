@@ -7,6 +7,6 @@ static bool Check() { D* d = C(); bool ok = d && g_c == 1; delete d; return ok; 
 int main()
 {
     if (!Check()) { std::printf("00c56cd0_TEST FAIL\n"); return 1; }
-    std::printf("00c56cd0_TEST PASS\n");
+    std::printf("01216290_TEST PASS\n");
     return 0;
 }

@@ -10,6 +10,6 @@ static bool Check() { { Cs a("song.ogg"), b("x.wma"), c("abc"), d("tune.mp3"); i
 int main()
 {
     if (!Check()) { std::printf("00c73a00_TEST FAIL\n"); return 1; }
-    std::printf("00c73a00_TEST PASS\n");
+    std::printf("01216750_TEST PASS\n");
     return 0;
 }

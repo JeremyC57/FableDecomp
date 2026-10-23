@@ -10,6 +10,6 @@ static bool Check() { int a; void* d[2] = { &a, 0 }; Ar r; r.data = d; r.count =
 int main()
 {
     if (!Check()) { std::printf("00c324f0_TEST FAIL\n"); return 1; }
-    std::printf("00c324f0_TEST PASS\n");
+    std::printf("012141fa_TEST PASS\n");
     return 0;
 }

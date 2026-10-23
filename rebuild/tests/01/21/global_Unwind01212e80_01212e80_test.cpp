@@ -5,6 +5,6 @@ int main()
 {
     { D d; } if (g_d != 1) { std::printf("00c23280_TEST FAIL\n"); return 1; }
 
-    std::printf("00c23280_TEST PASS\n");
+    std::printf("01212e80_TEST PASS\n");
     return 0;
 }

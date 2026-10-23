@@ -9,6 +9,6 @@ static bool Check() { Ow o; X* x = new X; x->o = &o; delete x; return g_a == 1 &
 int main()
 {
     if (!Check()) { std::printf("00c44f80_TEST FAIL\n"); return 1; }
-    std::printf("00c44f80_TEST PASS\n");
+    std::printf("012153e1_TEST PASS\n");
     return 0;
 }

@@ -7,6 +7,6 @@ static bool Check() { A a; B b; Ow o; o.a = &a; o.b = &b; X x; x.o = &o; x.HB(ne
 int main()
 {
     if (!Check()) { std::printf("00c2c8f0_TEST FAIL\n"); return 1; }
-    std::printf("00c2c8f0_TEST PASS\n");
+    std::printf("0121396f_TEST PASS\n");
     return 0;
 }

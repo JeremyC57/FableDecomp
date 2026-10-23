@@ -8,6 +8,6 @@ static bool Check() { Own o; int a1, a2, a3, a4; X x(&o, &a1, &a2, &a3, &a4); re
 int main()
 {
     if (!Check()) { std::printf("00c1e110_TEST FAIL\n"); return 1; }
-    std::printf("00c1e110_TEST PASS\n");
+    std::printf("012125d0_TEST PASS\n");
     return 0;
 }

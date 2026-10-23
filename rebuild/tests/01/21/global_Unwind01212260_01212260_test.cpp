@@ -8,6 +8,6 @@ static bool Check() { Mb mb; X x; x.mb = &mb; int a; g_pend = 1; if (x.P(&a) != 
 int main()
 {
     if (!Check()) { std::printf("00c1b130_TEST FAIL\n"); return 1; }
-    std::printf("00c1b130_TEST PASS\n");
+    std::printf("01212260_TEST PASS\n");
     return 0;
 }

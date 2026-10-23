@@ -10,6 +10,6 @@ static bool Check() { Ow o; X* x = new X; x->o = &o; x->bf.p = std::malloc(8); d
 int main()
 {
     if (!Check()) { std::printf("00c0ece0_TEST FAIL\n"); return 1; }
-    std::printf("00c0ece0_TEST PASS\n");
+    std::printf("01211091_TEST PASS\n");
     return 0;
 }

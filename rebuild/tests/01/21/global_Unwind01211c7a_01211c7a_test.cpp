@@ -10,6 +10,6 @@ static bool Check() { Ow ow; int bd, a; ow.bind = &bd; Ds d; d.w0 = 7; d.w2 = 9;
 int main()
 {
     if (!Check()) { std::printf("00c16050_TEST FAIL\n"); return 1; }
-    std::printf("00c16050_TEST PASS\n");
+    std::printf("01211c7a_TEST PASS\n");
     return 0;
 }

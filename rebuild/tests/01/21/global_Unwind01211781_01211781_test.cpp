@@ -7,6 +7,6 @@ static bool Check() { K k; k.id = 9; k.d = 1; X x; E* e = x.Fr(&k, 0, 0, 0); ret
 int main()
 {
     if (!Check()) { std::printf("00c12cd0_TEST FAIL\n"); return 1; }
-    std::printf("00c12cd0_TEST PASS\n");
+    std::printf("01211781_TEST PASS\n");
     return 0;
 }

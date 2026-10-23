@@ -9,6 +9,6 @@ static bool Check() { Host* h = new Host; int t, p; h->gm = 0; h->tbl = &t; void
 int main()
 {
     if (!Check()) { std::printf("00c08b80_TEST FAIL\n"); return 1; }
-    std::printf("00c08b80_TEST PASS\n");
+    std::printf("01210a5a_TEST PASS\n");
     return 0;
 }

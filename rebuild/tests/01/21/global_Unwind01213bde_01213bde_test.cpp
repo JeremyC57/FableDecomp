@@ -8,6 +8,6 @@ static bool Check() { { X x; } return g_rem == 2 && g_str == 2 && g_node == 1 &&
 int main()
 {
     if (!Check()) { std::printf("00c2dbe0_TEST FAIL\n"); return 1; }
-    std::printf("00c2dbe0_TEST PASS\n");
+    std::printf("01213bde_TEST PASS\n");
     return 0;
 }

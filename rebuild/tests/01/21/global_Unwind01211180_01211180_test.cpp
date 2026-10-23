@@ -5,6 +5,6 @@ int main()
 {
     int q; T t; X x; x.t = &t; x.Call(&q); if (g_v != &q) { std::printf("00c0f4e0_TEST FAIL\n"); return 1; }
 
-    std::printf("00c0f4e0_TEST PASS\n");
+    std::printf("01211180_TEST PASS\n");
     return 0;
 }

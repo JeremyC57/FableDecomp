@@ -7,6 +7,6 @@ static bool Check() { if (!Create() || g_a != 0 || g_cnt != 1 || !g_p) return fa
 int main()
 {
     if (!Check()) { std::printf("00c74360_TEST FAIL\n"); return 1; }
-    std::printf("00c74360_TEST PASS\n");
+    std::printf("012167d0_TEST PASS\n");
     return 0;
 }

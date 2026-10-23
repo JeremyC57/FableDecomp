@@ -7,6 +7,6 @@ static bool Check() { Tg t; X x; x.t = &t; return x.Q() == 23 && g_l == 0; }
 int main()
 {
     if (!Check()) { std::printf("00c1e280_TEST FAIL\n"); return 1; }
-    std::printf("00c1e280_TEST PASS\n");
+    std::printf("01212600_TEST PASS\n");
     return 0;
 }

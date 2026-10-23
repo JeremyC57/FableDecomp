@@ -5,6 +5,6 @@ int main()
 {
     int q; X x(&q); if (x.p != &q || g_m != 1) { std::printf("00c1fb00_TEST FAIL\n"); return 1; }
 
-    std::printf("00c1fb00_TEST PASS\n");
+    std::printf("012127a0_TEST PASS\n");
     return 0;
 }

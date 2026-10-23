@@ -5,6 +5,6 @@ int main()
 {
     X x; x.Act(); if (g_c != 1) { std::printf("00c14d80_TEST FAIL\n"); return 1; }
 
-    std::printf("00c14d80_TEST PASS\n");
+    std::printf("012119d3_TEST PASS\n");
     return 0;
 }

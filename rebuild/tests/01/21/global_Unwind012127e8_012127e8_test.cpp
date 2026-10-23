@@ -6,6 +6,6 @@ int main()
 {
     int v; X x(&v, &v); if (x.p != &v || g_a != 1 || g_b != 1) { std::printf("00c1fcc0_TEST FAIL\n"); return 1; }
 
-    std::printf("00c1fcc0_TEST PASS\n");
+    std::printf("012127e8_TEST PASS\n");
     return 0;
 }

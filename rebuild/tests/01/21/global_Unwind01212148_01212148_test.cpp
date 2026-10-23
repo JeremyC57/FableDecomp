@@ -11,6 +11,6 @@ static bool Check() { g_groups = 2; g_cog[0] = 2; g_cog[1] = 1; g_an[0][0].dm.d 
 int main()
 {
     if (!Check()) { std::printf("00c199a0_TEST FAIL\n"); return 1; }
-    std::printf("00c199a0_TEST PASS\n");
+    std::printf("01212148_TEST PASS\n");
     return 0;
 }

@@ -8,6 +8,6 @@ static bool Check() { W(0); if (g_sunk || g_d != 1) return false; g_sink = Sk; W
 int main()
 {
     if (!Check()) { std::printf("00c191b0_TEST FAIL\n"); return 1; }
-    std::printf("00c191b0_TEST PASS\n");
+    std::printf("0121209a_TEST PASS\n");
     return 0;
 }

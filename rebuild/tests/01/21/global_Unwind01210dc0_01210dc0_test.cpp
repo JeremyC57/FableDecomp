@@ -7,6 +7,6 @@ static bool Check() { X x; return g_n == 2 && x.a.pn == &x.a.n && x.b.pn == &x.b
 int main()
 {
     if (!Check()) { std::printf("00c0a6d0_TEST FAIL\n"); return 1; }
-    std::printf("00c0a6d0_TEST PASS\n");
+    std::printf("01210dc0_TEST PASS\n");
     return 0;
 }

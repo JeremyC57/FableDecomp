@@ -10,6 +10,6 @@ static bool Check() { Ow o; Tm m; m.o = &o; X x; return x.P(&m) == 0 && g_run ==
 int main()
 {
     if (!Check()) { std::printf("00c35510_TEST FAIL\n"); return 1; }
-    std::printf("00c35510_TEST PASS\n");
+    std::printf("012143d5_TEST PASS\n");
     return 0;
 }

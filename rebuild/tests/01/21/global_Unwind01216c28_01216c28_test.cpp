@@ -5,6 +5,6 @@ static bool Check() { { X x; x.k = ::operator new(4); } return g_f == 1 && g_s =
 int main()
 {
     if (!Check()) { std::printf("00ca7c80_TEST FAIL\n"); return 1; }
-    std::printf("00ca7c80_TEST PASS\n");
+    std::printf("01216c28_TEST PASS\n");
     return 0;
 }

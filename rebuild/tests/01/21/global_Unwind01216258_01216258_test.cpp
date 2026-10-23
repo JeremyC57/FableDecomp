@@ -9,6 +9,6 @@ static bool Check() { int m, c; X* x = new X; x->mod = &m; x->mk = MakeCurrent; 
 int main()
 {
     if (!Check()) { std::printf("00c56370_TEST FAIL\n"); return 1; }
-    std::printf("00c56370_TEST PASS\n");
+    std::printf("01216258_TEST PASS\n");
     return 0;
 }

@@ -11,6 +11,6 @@ static bool Check() { Da a; Db b; Wd w; w.a = &a; w.b = &b; X x; x.w = &w; Tg t;
 int main()
 {
     if (!Check()) { std::printf("00c2c7e0_TEST FAIL\n"); return 1; }
-    std::printf("00c2c7e0_TEST PASS\n");
+    std::printf("01213952_TEST PASS\n");
     return 0;
 }

@@ -10,6 +10,6 @@ static bool Check() { Ms ms; X x; x.ms = &ms; x.buf = 0; g_fail = true; if (x.Cr
 int main()
 {
     if (!Check()) { std::printf("00c3df10_TEST FAIL\n"); return 1; }
-    std::printf("00c3df10_TEST PASS\n");
+    std::printf("01215060_TEST PASS\n");
     return 0;
 }

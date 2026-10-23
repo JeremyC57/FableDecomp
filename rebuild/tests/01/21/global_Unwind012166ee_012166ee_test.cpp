@@ -5,6 +5,6 @@ static bool Check() { { X* x = new X; delete x; } return g_c == 1 && g_d == 1; }
 int main()
 {
     if (!Check()) { std::printf("00c6ae90_TEST FAIL\n"); return 1; }
-    std::printf("00c6ae90_TEST PASS\n");
+    std::printf("012166ee_TEST PASS\n");
     return 0;
 }

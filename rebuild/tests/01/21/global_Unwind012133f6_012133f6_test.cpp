@@ -13,6 +13,6 @@ static bool Check() { Pb p; p.src = &p; p.len = 10; Cs a = p.LogStatus(); if (st
 int main()
 {
     if (!Check()) { std::printf("00c27760_TEST FAIL\n"); return 1; }
-    std::printf("00c27760_TEST PASS\n");
+    std::printf("012133f6_TEST PASS\n");
     return 0;
 }

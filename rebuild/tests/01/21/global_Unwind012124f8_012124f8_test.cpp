@@ -13,6 +13,6 @@ static bool Check() { M m; H h; m.h = &h; if (m.Dispatch(42) != 42 || g_wait != 
 int main()
 {
     if (!Check()) { std::printf("00c1da30_TEST FAIL\n"); return 1; }
-    std::printf("00c1da30_TEST PASS\n");
+    std::printf("012124f8_TEST PASS\n");
     return 0;
 }

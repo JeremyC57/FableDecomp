@@ -8,6 +8,6 @@ static bool Check() { Mw a, b; X x; x.mw = &a; En n; n.mw = &b; Ev e; e.en = &n;
 int main()
 {
     if (!Check()) { std::printf("00c164b0_TEST FAIL\n"); return 1; }
-    std::printf("00c164b0_TEST PASS\n");
+    std::printf("01211cd2_TEST PASS\n");
     return 0;
 }

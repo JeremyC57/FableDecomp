@@ -31,7 +31,7 @@ int main() {
     CPersistContext c; c.calls = 0; g_n = 0;
     CVillagerInteractionsDef_Transfer(&d, 0, &c);
     if (c.calls == 3 && g_seq[0]==1 && g_seq[1]==1 && g_seq[2]==2) {
-        std::printf("CVillagerInteractionsDef_00456f27_TEST PASS\n");
+        std::printf("CVillagerInteractionsDef_00459704_TEST PASS\n");
         return 0;
     }
     std::printf("FAIL\n");

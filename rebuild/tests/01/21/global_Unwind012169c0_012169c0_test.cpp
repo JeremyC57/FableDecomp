@@ -11,6 +11,6 @@ static bool Check() { int a, b, c, d; V* v = new V(&a, &b, &c, &d); bool ok = g_
 int main()
 {
     if (!Check()) { std::printf("00ca61d0_TEST FAIL\n"); return 1; }
-    std::printf("00ca61d0_TEST PASS\n");
+    std::printf("012169c0_TEST PASS\n");
     return 0;
 }

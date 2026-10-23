@@ -8,6 +8,6 @@ static bool Check() { X x; V a(1, 0, 0), b(0, 2, 0), c(0, 0, 4); x.SetFrame(&a, 
 int main()
 {
     if (!Check()) { std::printf("00c10fe0_TEST FAIL\n"); return 1; }
-    std::printf("00c10fe0_TEST PASS\n");
+    std::printf("012114d0_TEST PASS\n");
     return 0;
 }

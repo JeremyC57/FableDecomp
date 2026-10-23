@@ -8,6 +8,6 @@ static bool Check() { int a, b; g_e[0].cr = &a; g_e[1].cr = &b; g_e[2].cr = &a; 
 int main()
 {
     if (!Check()) { std::printf("00c12270_TEST FAIL\n"); return 1; }
-    std::printf("00c12270_TEST PASS\n");
+    std::printf("012116b3_TEST PASS\n");
     return 0;
 }

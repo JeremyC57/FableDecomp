@@ -9,6 +9,6 @@ static bool Check() { X* x = new X; x->st = 0; x->wk = 0; int w; x->ev = &w; if 
 int main()
 {
     if (!Check()) { std::printf("00ca4d80_TEST FAIL\n"); return 1; }
-    std::printf("00ca4d80_TEST PASS\n");
+    std::printf("01216900_TEST PASS\n");
     return 0;
 }

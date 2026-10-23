@@ -6,6 +6,6 @@ static bool Check() { Hr h; Q q; return q.G(&h) == (long)&h && g_l == 0; }
 int main()
 {
     if (!Check()) { std::printf("00c19850_TEST FAIL\n"); return 1; }
-    std::printf("00c19850_TEST PASS\n");
+    std::printf("01212124_TEST PASS\n");
     return 0;
 }

@@ -65,7 +65,7 @@ int main() {
     walker.BuildTreeArray(root);
 
     if (g_freeCount == 4 && g_destroyCount == 4) {
-        std::printf("LTextTreeWalkThrough_00451b4b_TEST PASS\n");
+        std::printf("LTextTreeWalkThrough_005b1e23_TEST PASS\n");
         return 0;
     }
     std::printf("FAIL free=%d destroy=%d\n", g_freeCount, g_destroyCount);

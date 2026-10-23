@@ -6,6 +6,6 @@ static bool Check() { X* x = new X; for (int i = 0; i < 8; ++i) x->e[i] = (float
 int main()
 {
     if (!Check()) { std::printf("00c0aad0_TEST FAIL\n"); return 1; }
-    std::printf("00c0aad0_TEST PASS\n");
+    std::printf("01210e2c_TEST PASS\n");
     return 0;
 }

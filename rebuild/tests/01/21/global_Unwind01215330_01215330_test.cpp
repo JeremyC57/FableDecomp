@@ -7,6 +7,6 @@ static bool Check() { void* e[3] = { 0, 0, 0 }; Hd h; h.t.e = e; h.t.c = 3; Ow o
 int main()
 {
     if (!Check()) { std::printf("00c44c50_TEST FAIL\n"); return 1; }
-    std::printf("00c44c50_TEST PASS\n");
+    std::printf("01215330_TEST PASS\n");
     return 0;
 }

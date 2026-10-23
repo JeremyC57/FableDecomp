@@ -10,6 +10,6 @@ static bool Check() { unsigned short d[3] = { 1, 2, 3 }; A a; a.p = d; a.n = 3; 
 int main()
 {
     if (!Check()) { std::printf("00c16b10_TEST FAIL\n"); return 1; }
-    std::printf("00c16b10_TEST PASS\n");
+    std::printf("01211d20_TEST PASS\n");
     return 0;
 }

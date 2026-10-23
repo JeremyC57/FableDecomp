@@ -7,6 +7,6 @@ int main()
 {
     T t; if (g_i != 1 || g_n != 1 || t.p != &t.n) { std::printf("00c306d0_TEST FAIL\n"); return 1; }
 
-    std::printf("00c306d0_TEST PASS\n");
+    std::printf("01213f10_TEST PASS\n");
     return 0;
 }

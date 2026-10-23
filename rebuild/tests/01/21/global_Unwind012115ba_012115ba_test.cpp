@@ -7,6 +7,6 @@ static bool Check() { Th t; for (int i = 0; i < 21; ++i) t.v[i] = i * 3; X* x = 
 int main()
 {
     if (!Check()) { std::printf("00c11860_TEST FAIL\n"); return 1; }
-    std::printf("00c11860_TEST PASS\n");
+    std::printf("012115ba_TEST PASS\n");
     return 0;
 }

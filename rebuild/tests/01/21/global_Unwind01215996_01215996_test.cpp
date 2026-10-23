@@ -9,6 +9,6 @@ static bool Check() { X x; int a; x.Update(&a); return g_type == 5 && g_v == &a 
 int main()
 {
     if (!Check()) { std::printf("00c48430_TEST FAIL\n"); return 1; }
-    std::printf("00c48430_TEST PASS\n");
+    std::printf("01215996_TEST PASS\n");
     return 0;
 }

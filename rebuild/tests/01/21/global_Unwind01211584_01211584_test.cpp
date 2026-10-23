@@ -7,6 +7,6 @@ int main()
     X* x = new X; x->F(0); if (g_a != 1 || g_l != 0) { std::printf("00c11710_TEST FAIL\n"); return 1; }
     delete x;
 
-    std::printf("00c11710_TEST PASS\n");
+    std::printf("01211584_TEST PASS\n");
     return 0;
 }

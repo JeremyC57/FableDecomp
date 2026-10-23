@@ -8,6 +8,6 @@ static bool Check() { g_e[0].b = 1; g_e[0].s = 1; g_e[1].b = 1; g_e[1].s = 0; g_
 int main()
 {
     if (!Check()) { std::printf("00c125e0_TEST FAIL\n"); return 1; }
-    std::printf("00c125e0_TEST PASS\n");
+    std::printf("0121170d_TEST PASS\n");
     return 0;
 }

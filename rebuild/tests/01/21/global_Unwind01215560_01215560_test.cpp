@@ -8,6 +8,6 @@ static bool Check() { Tb tb; X x; x.tb = &tb; Rk k; k.x = 2; k.y = 3; x.Mark(&k,
 int main()
 {
     if (!Check()) { std::printf("00c465f0_TEST FAIL\n"); return 1; }
-    std::printf("00c465f0_TEST PASS\n");
+    std::printf("01215560_TEST PASS\n");
     return 0;
 }

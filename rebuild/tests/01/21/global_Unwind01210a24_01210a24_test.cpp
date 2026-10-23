@@ -7,6 +7,6 @@ static bool Check() { X x; x.All(); return g_p == 3 && g_l == 0; }
 int main()
 {
     if (!Check()) { std::printf("00c08a00_TEST FAIL\n"); return 1; }
-    std::printf("00c08a00_TEST PASS\n");
+    std::printf("01210a24_TEST PASS\n");
     return 0;
 }

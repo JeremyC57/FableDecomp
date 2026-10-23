@@ -8,6 +8,6 @@ static bool Check() { En e; return Q(&e, 3) == -1 && Q(&e, 2) == 20 && g_l == 0;
 int main()
 {
     if (!Check()) { std::printf("00c198c0_TEST FAIL\n"); return 1; }
-    std::printf("00c198c0_TEST PASS\n");
+    std::printf("01212136_TEST PASS\n");
     return 0;
 }

@@ -12,6 +12,6 @@ static bool Check() { Iq q; X x; x.q = &q; { Ms m = x.Take(); if (m.p != (void*)
 int main()
 {
     if (!Check()) { std::printf("00c48860_TEST FAIL\n"); return 1; }
-    std::printf("00c48860_TEST PASS\n");
+    std::printf("01215820_TEST PASS\n");
     return 0;
 }

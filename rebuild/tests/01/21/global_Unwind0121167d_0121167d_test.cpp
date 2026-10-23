@@ -8,6 +8,6 @@ static bool Check() { g_el[0].ok = true; g_el[1].ok = false; g_en[0].el = &g_el[
 int main()
 {
     if (!Check()) { std::printf("00c11f50_TEST FAIL\n"); return 1; }
-    std::printf("00c11f50_TEST PASS\n");
+    std::printf("0121167d_TEST PASS\n");
     return 0;
 }

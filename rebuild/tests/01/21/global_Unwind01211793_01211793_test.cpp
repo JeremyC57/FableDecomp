@@ -9,6 +9,6 @@ static bool Check() { X x; int a, t; g_h.v = 42; if (x.RB(0, 0, &t) != -1 || g_r
 int main()
 {
     if (!Check()) { std::printf("00c12d50_TEST FAIL\n"); return 1; }
-    std::printf("00c12d50_TEST PASS\n");
+    std::printf("01211793_TEST PASS\n");
     return 0;
 }

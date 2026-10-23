@@ -8,6 +8,6 @@ static bool Check() { int k, j; g_e[0].key = &k; g_e[0].bound = 1; g_e[1].key = 
 int main()
 {
     if (!Check()) { std::printf("00c12520_TEST FAIL\n"); return 1; }
-    std::printf("00c12520_TEST PASS\n");
+    std::printf("012116fb_TEST PASS\n");
     return 0;
 }

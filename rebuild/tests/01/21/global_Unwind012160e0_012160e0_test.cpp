@@ -5,6 +5,6 @@ static bool Check() { { X x; x.p = new P; } { X y; y.p = 0; } return g_d == 1; }
 int main()
 {
     if (!Check()) { std::printf("00c4f220_TEST FAIL\n"); return 1; }
-    std::printf("00c4f220_TEST PASS\n");
+    std::printf("012160e0_TEST PASS\n");
     return 0;
 }

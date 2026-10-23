@@ -15,6 +15,6 @@ static bool Check() { Mg* m = (Mg*)std::calloc(1, sizeof(Mg)); Th t; t.m0 = 4; t
 int main()
 {
     if (!Check()) { std::printf("00c2d5e0_TEST FAIL\n"); return 1; }
-    std::printf("00c2d5e0_TEST PASS\n");
+    std::printf("01213b22_TEST PASS\n");
     return 0;
 }

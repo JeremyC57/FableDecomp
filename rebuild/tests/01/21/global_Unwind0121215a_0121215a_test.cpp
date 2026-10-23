@@ -7,6 +7,6 @@ static bool Check() { X x; int a, b, c; return x.R(0, &b, &c) == 0 && x.R(&a, &b
 int main()
 {
     if (!Check()) { std::printf("00c19ad0_TEST FAIL\n"); return 1; }
-    std::printf("00c19ad0_TEST PASS\n");
+    std::printf("0121215a_TEST PASS\n");
     return 0;
 }

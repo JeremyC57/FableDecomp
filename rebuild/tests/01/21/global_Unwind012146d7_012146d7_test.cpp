@@ -9,6 +9,6 @@ static bool Check() { int p; g_en.pr = &p; Wp wp; Wi wi; wi.part = &wp; W w; w.i
 int main()
 {
     if (!Check()) { std::printf("00c37da0_TEST FAIL\n"); return 1; }
-    std::printf("00c37da0_TEST PASS\n");
+    std::printf("012146d7_TEST PASS\n");
     return 0;
 }

@@ -12,6 +12,6 @@ static bool Check() { Sn sh; Nd* a = new Nd(&sh); if (a->root != &sh || a->owned
 int main()
 {
     if (!Check()) { std::printf("00c194f0_TEST FAIL\n"); return 1; }
-    std::printf("00c194f0_TEST PASS\n");
+    std::printf("012120d8_TEST PASS\n");
     return 0;
 }

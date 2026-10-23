@@ -10,6 +10,6 @@ static bool Check() { Q q; X x; x.q = &q; int m; x.Reply(3, &m); if (g_f != 3 ||
 int main()
 {
     if (!Check()) { std::printf("00c1db60_TEST FAIL\n"); return 1; }
-    std::printf("00c1db60_TEST PASS\n");
+    std::printf("01212510_TEST PASS\n");
     return 0;
 }

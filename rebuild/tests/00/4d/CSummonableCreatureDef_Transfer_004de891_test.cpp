@@ -27,7 +27,7 @@ int main()
     CGuildMasterDef_Transfer(&d, 0, &ctx);
     unsigned char* base = (unsigned char*)&d;
     if (ctx.calls == 2 && ctx.args[0] == (void*)(base + 0x28) && ctx.args[1] == (void*)(base + 0x2c)) {
-        std::printf("CGuildMasterDef_004530bb_TEST PASS\n");
+        std::printf("CGuildMasterDef_004de891_TEST PASS\n");
         return 0;
     }
     std::printf("FAIL calls=%d\n", ctx.calls);

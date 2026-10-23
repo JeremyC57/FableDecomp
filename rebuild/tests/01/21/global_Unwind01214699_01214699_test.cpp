@@ -10,6 +10,6 @@ static bool Check() { Wp wp; Wl wl; wl.part = &wp; Wd wd; wd.link = &wl; Ow o; o
 int main()
 {
     if (!Check()) { std::printf("00c37c90_TEST FAIL\n"); return 1; }
-    std::printf("00c37c90_TEST PASS\n");
+    std::printf("01214699_TEST PASS\n");
     return 0;
 }

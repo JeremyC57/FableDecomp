@@ -16,6 +16,6 @@ static bool Check() { Tg t; Tg u; int k1, k2, k3; void* keys[3] = { &k1, &k2, &k
 int main()
 {
     if (!Check()) { std::printf("00c12140_TEST FAIL\n"); return 1; }
-    std::printf("00c12140_TEST PASS\n");
+    std::printf("012116a1_TEST PASS\n");
     return 0;
 }

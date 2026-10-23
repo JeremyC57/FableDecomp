@@ -8,6 +8,6 @@ static bool Check() { { X x; x.en = true; } { X y; y.en = true; } return g_res =
 int main()
 {
     if (!Check()) { std::printf("00c71cf0_TEST FAIL\n"); return 1; }
-    std::printf("00c71cf0_TEST PASS\n");
+    std::printf("01216730_TEST PASS\n");
     return 0;
 }

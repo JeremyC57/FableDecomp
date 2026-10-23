@@ -15,6 +15,6 @@ static bool Check() { Cs2* c = new Cs2; c->src = &c; c->frames = 3; delete c; re
 int main()
 {
     if (!Check()) { std::printf("00c49650_TEST FAIL\n"); return 1; }
-    std::printf("00c49650_TEST PASS\n");
+    std::printf("01215bcb_TEST PASS\n");
     return 0;
 }

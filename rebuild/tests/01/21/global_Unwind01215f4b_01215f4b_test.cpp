@@ -10,6 +10,6 @@ static bool Check() { X* x = new X; x->fin = true; delete x; if (g_lines || g_me
 int main()
 {
     if (!Check()) { std::printf("00c4c370_TEST FAIL\n"); return 1; }
-    std::printf("00c4c370_TEST PASS\n");
+    std::printf("01215f4b_TEST PASS\n");
     return 0;
 }

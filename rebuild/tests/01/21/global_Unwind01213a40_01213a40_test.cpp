@@ -7,6 +7,6 @@ int main()
 {
     if (H(0, 0) != 0 || g_n != 4 || g_b != 1 || g_r != 11) { std::printf("00c2ce60_TEST FAIL\n"); return 1; }
 
-    std::printf("00c2ce60_TEST PASS\n");
+    std::printf("01213a40_TEST PASS\n");
     return 0;
 }

@@ -14,6 +14,6 @@ static bool Check() { A a; a.Resize(3); if (a.n != 3 || !a.p || g_allocs != 1) r
 int main()
 {
     if (!Check()) { std::printf("00c31810_TEST FAIL\n"); return 1; }
-    std::printf("00c31810_TEST PASS\n");
+    std::printf("01214110_TEST PASS\n");
     return 0;
 }

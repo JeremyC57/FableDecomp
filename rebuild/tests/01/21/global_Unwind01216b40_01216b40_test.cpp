@@ -8,6 +8,6 @@ static bool Check() { Src s; int b; s.buf = &b; s.loop = false; X* x = new X; x-
 int main()
 {
     if (!Check()) { std::printf("00ca7080_TEST FAIL\n"); return 1; }
-    std::printf("00ca7080_TEST PASS\n");
+    std::printf("01216b40_TEST PASS\n");
     return 0;
 }

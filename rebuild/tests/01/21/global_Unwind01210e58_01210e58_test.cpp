@@ -8,6 +8,6 @@ static bool Check() { X* x = (X*)new char[sizeof(X)]; x->Set(3, "abc"); x->Set(8
 int main()
 {
     if (!Check()) { std::printf("00c0ac30_TEST FAIL\n"); return 1; }
-    std::printf("00c0ac30_TEST PASS\n");
+    std::printf("01210e58_TEST PASS\n");
     return 0;
 }

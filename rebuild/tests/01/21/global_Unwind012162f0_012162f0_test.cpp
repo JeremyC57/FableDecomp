@@ -7,6 +7,6 @@ static bool Check() { X* x = new X; bool ok = g_base == 1 && g_snd == 1 && g_el 
 int main()
 {
     if (!Check()) { std::printf("00c5b1a0_TEST FAIL\n"); return 1; }
-    std::printf("00c5b1a0_TEST PASS\n");
+    std::printf("012162f0_TEST PASS\n");
     return 0;
 }

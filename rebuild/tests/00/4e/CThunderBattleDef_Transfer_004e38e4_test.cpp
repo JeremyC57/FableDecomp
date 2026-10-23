@@ -24,7 +24,7 @@ int main() {
   if (ctx.count == 4 &&
       ctx.seen[0] == &d.f3c && ctx.seen[1] == &d.CameraManagerMain &&
       ctx.seen[2] == &d.CameraManagerCombat && ctx.seen[3] == &d.CameraManagerPCMain) {
-    std::printf("CCameraManagerSetDef_00456818_TEST PASS\n");
+    std::printf("CCameraManagerSetDef_004e38e4_TEST PASS\n");
     return 0;
   }
   std::printf("FAIL count=%d\n", ctx.count);
