@@ -26913,3 +26913,7 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?g_renderStateValue_01396f40@@3KA	01396f40	00b871b0
 ?g_skipStencilState_0143b8cc@@3EA	0143b8cc	00b871b0
 ?Is2DDistanceBetweenThingsUnder@@YI_NABUCScriptThing@@0M@Z	00cbe371	00eea7c0
+??0CCreatureAction_PlayCombatAnimation@@QAE@AAUCThingCreatureBase@@ABUCCharString@@_N@Z	008b7ff0	008df680
+?RemoveTC@CThing@@QAEXK@Z	004c9840	008df680
+?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z	0066add0	008df680
+?g_InvalidSoundHandle_0129D25C@@3JA	0129d25c	008df680

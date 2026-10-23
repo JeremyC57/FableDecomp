@@ -903,3 +903,10 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - **VC7.1 tests:** `T t = T();` does not zero-initialise; use memset.
   - **Script vtable:** CScriptThing slot 21 is MsgIsHitBy and slot 75 is IsAlive.
   - **Open gap:** pure SetState test/or operand swaps; park them early.
+- (2026-10-23) Follow-up on ChatGPT's 14 large 960-962 rows (1/14; 008df680 NCreatureMode::CModeThunderLightningStorm::OnDeactivate):
+  - **erase:** an STLport erase written with inline `CopyPtrs(last,_Last,first)` / `Destroy(i,_Last)` helpers fixes a last/out register swap.
+  - **GetTC:** retail GetTC often inlines the lower_bound len/half loop instead of calling LowerBound.
+  - **Scope sharing:** a local declared after an if-block does not share that block's slots until it is wrapped in `{}` (007a6760 frame 0x98→0x88).
+  - **Empty tags:** a user ctor on an empty tag removes its byte store.
+  - **Colour structs:** byte stores in the ctor body (not an init list) give retail's store order.
+- The other 13 stay parked, with residues in `$S/w22/gptretry/STATUS.tsv`.

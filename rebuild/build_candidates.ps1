@@ -274267,6 +274267,13 @@ $catalog = @(
         TestSource = '00/ee/CExpressionPicklockScript_Main_00eeb7b0_test.cpp'
         PassPattern = '00eeb7b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008df680'
+        Module = 'CModeThunderLightningStorm'
+        Source = '00/8d/CModeThunderLightningStorm_OnDeactivate_008df680.cpp'
+        TestSource = '00/8d/CModeThunderLightningStorm_OnDeactivate_008df680_test.cpp'
+        PassPattern = '008df680_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
