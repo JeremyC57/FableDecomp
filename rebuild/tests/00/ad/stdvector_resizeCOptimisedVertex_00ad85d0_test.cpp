@@ -1,15 +1,15 @@
-// 00ad85d0 RetailVector::FillInsert
+// 00ad85d0 N00ad85d0::vector<Element>::_M_fill_insert (STLport; catalog: resize_COptimisedVertex)
 // Flags: /O2 /Oy /W3
-// Leaf: FillInsert
+// Leaf: _M_fill_insert
 // Layout: PDB COptimisedVertex192, retail maps12 shift Exists to144,Unique148,Output152,Groups156,PairContractions168; FaceList132; stride184. Copy00ad77f0 and dtor00ad7400 confirm three owning trees.
 namespace N00ad85d0 {
-struct FalseTag { FalseTag() {} }; struct RandomTag { RandomTag() {} };
+struct __false_type { __false_type() {} }; struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
 extern "C" void __cdecl free(void*);
 struct Buffer {
- unsigned int* Start; unsigned int* Finish; unsigned int* End;
+ unsigned int* _M_start; unsigned int* _M_finish; unsigned int* _M_end_of_storage;
  Buffer(); Buffer(const Buffer&); Buffer& operator=(const Buffer&);
- __forceinline ~Buffer() { if(Start) free(Start); }
+ __forceinline ~Buffer() { if(_M_start) free(_M_start); }
 };
 struct String { unsigned int W0; String(); String(const String&); ~String(); String& operator=(const String&); };
 
@@ -23,42 +23,42 @@ struct Vec3 {float X,Y,Z;};struct Quadric {double Coefficients[11];};
 struct COptimisedVertex {Vec3 Position,Normal,TextureCoord;Quadric PositionError;float Cost;RetailSet FaceList;bool Exists;unsigned int UniqueIndex,OutputIndex;RetailTree<float> Groups;RetailTree<ContractionReference> PairContractions;
  COptimisedVertex();COptimisedVertex(const COptimisedVertex&);COptimisedVertex& operator=(const COptimisedVertex&);~COptimisedVertex();};
 typedef COptimisedVertex Element;
-void Construct(Element*,const Element&);
+void _Construct(Element*,const Element&);
 #pragma auto_inline(off)
-template<class T> __declspec(noinline) T* __fastcall UninitCopy(T* first,T* last,T* out,const FalseTag&) { for(;first!=last;++first,++out) Construct(out,*first); return out; }
-template<class T> __declspec(noinline) T* __fastcall CopyBackward(T* first,T* last,T* out,const RandomTag&,int*) { for(int n=int(last-first);n>0;--n) *--out=*--last; return out; }
-template<class T> __declspec(noinline) void __fastcall Fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
-template<class T> __declspec(noinline) T* __fastcall UninitFill(T* first,unsigned int n,const T& x) { for(;n>0;--n,++first) Construct(first,x); return first; }
+template<class T> __declspec(noinline) T* __fastcall __uninitialized_copy(T* first,T* last,T* out,const __false_type&) { for(;first!=last;++first,++out) _Construct(out,*first); return out; }
+template<class T> __declspec(noinline) T* __fastcall __copy_backward(T* first,T* last,T* out,const random_access_iterator_tag&,int*) { for(int n=int(last-first);n>0;--n) *--out=*--last; return out; }
+template<class T> __declspec(noinline) void __fastcall fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
+template<class T> __declspec(noinline) T* __fastcall __uninitialized_fill_n(T* first,unsigned int n,const T& x) { for(;n>0;--n,++first) _Construct(first,x); return first; }
 #pragma auto_inline(on)
-template<class T> __forceinline T* CopyBack(T* first,T* last,T* out,const FalseTag&) { return CopyBackward(first,last,out,RandomTag(),(int*)0); }
-template<class T> __forceinline T* UninitializedFillN(T* first,unsigned int n,const T& x){return UninitFill(first,n,x);}
-template<class T> struct RetailVector {
- T* Start; T* Finish; T* End;
- void Overflow(T* pos,const T& x,const FalseTag&,unsigned int n,bool atend=false);
- void FillInsert(T* pos,unsigned int n,const T& x);
+template<class T> __forceinline T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
+template<class T> __forceinline T* UninitializedFillN(T* first,unsigned int n,const T& x){return __uninitialized_fill_n(first,n,x);}
+template<class T> struct vector {
+ T* _M_start; T* _M_finish; T* _M_end_of_storage;
+ void _M_insert_overflow(T* pos,const T& x,const __false_type&,unsigned int n,bool atend=false);
+ void _M_fill_insert(T* pos,unsigned int n,const T& x);
 };
-template<class T> void RetailVector<T>::FillInsert(T* pos,unsigned int n,const T& x) {
+template<class T> void vector<T>::_M_fill_insert(T* pos,unsigned int n,const T& x) {
  if(n!=0) {
-  if((unsigned int)(End-Finish)>=n) {
+  if((unsigned int)(_M_end_of_storage-_M_finish)>=n) {
    T x_copy=x;
-   const unsigned int after=Finish-pos;
-   T* old_finish=Finish;
+   const unsigned int after=_M_finish-pos;
+   T* old_finish=_M_finish;
    if(after>n) {
-    UninitCopy(Finish-n,Finish,Finish,FalseTag());
-    Finish+=n;
-    CopyBack(pos,old_finish-n,old_finish,FalseTag());
-    Fill(pos,pos+n,x_copy);
+    __uninitialized_copy(_M_finish-n,_M_finish,_M_finish,__false_type());
+    _M_finish+=n;
+    __copy_backward_ptrs(pos,old_finish-n,old_finish,__false_type());
+    fill(pos,pos+n,x_copy);
    } else {
-    UninitializedFillN(Finish,n-after,x_copy);
-    Finish+=n-after;
-    UninitCopy(pos,old_finish,Finish,FalseTag());
-    Finish+=after;
-    Fill(pos,old_finish,x_copy);
+    UninitializedFillN(_M_finish,n-after,x_copy);
+    _M_finish+=n-after;
+    __uninitialized_copy(pos,old_finish,_M_finish,__false_type());
+    _M_finish+=after;
+    fill(pos,old_finish,x_copy);
    }
-  } else Overflow(pos,x,FalseTag(),n);
+  } else _M_insert_overflow(pos,x,__false_type(),n);
  }
 }
-template void RetailVector<Element>::FillInsert(Element*,unsigned int,const Element&);
+template void vector<Element>::_M_fill_insert(Element*,unsigned int,const Element&);
 
 }
 
@@ -97,8 +97,8 @@ COptimisedVertex::COptimisedVertex():Cost(0),Exists(false),UniqueIndex(0),Output
 COptimisedVertex::COptimisedVertex(const COptimisedVertex& o):Position(o.Position),Normal(o.Normal),TextureCoord(o.TextureCoord),PositionError(o.PositionError),Cost(o.Cost),FaceList(o.FaceList),Exists(o.Exists),UniqueIndex(o.UniqueIndex),OutputIndex(o.OutputIndex),Groups(o.Groups),PairContractions(o.PairContractions){}
 COptimisedVertex& COptimisedVertex::operator=(const COptimisedVertex& o){Position=o.Position;Normal=o.Normal;TextureCoord=o.TextureCoord;PositionError=o.PositionError;Cost=o.Cost;FaceList=o.FaceList;Exists=o.Exists;UniqueIndex=o.UniqueIndex;OutputIndex=o.OutputIndex;Groups=o.Groups;PairContractions=o.PairContractions;return *this;}
 COptimisedVertex::~COptimisedVertex(){}
-void Construct(Element* p,const Element& o){new(p)Element(o);}
-template<class T>void RetailVector<T>::Overflow(T*,const T&,const FalseTag&,unsigned int,bool){++overflowCalls;}
+void _Construct(Element* p,const Element& o){new(p)Element(o);}
+template<class T>void vector<T>::_M_insert_overflow(T*,const T&,const __false_type&,unsigned int,bool){++overflowCalls;}
 void Init(Element& e,int value){e.UniqueIndex=value;e.Exists=true;e.Position.X=(float)value;e.FaceList.Insert(value);e.Groups.Insert(value,0.5f);ContractionReference r;r.Block=new RefBlock;r.Block->Refs=1;r.Object=new int(value);r.Block->Object=r.Object;r.Block->Destroy=DisposeObject;r.SubIndex=value;++liveControls;++liveObjects;e.PairContractions.Insert(value,r);}
 }
 int main(){using namespace N00ad85d0;
@@ -115,4 +115,4 @@ int main(){using namespace N00ad85d0;
  Element empty;assigned=empty;assert(!assigned.FaceList.Count&&assigned.FaceList.Head->Left==assigned.FaceList.Head&&assigned.Groups.Head->Right==assigned.Groups.Head&&!assigned.PairContractions.Head->Parent);
  }
  assert(!liveNodes&&!liveControls&&!liveObjects);
-{Element* a=(Element*)std::malloc(12*sizeof(Element));for(int i=0;i<5;++i){new(a+i)Element();Init(a[i],i+1);}Element x;Init(x,99);RetailVector<Element> v={a,a+5,a+12};v.FillInsert(a+1,2,x);unsigned int want[]={1,99,99,2,3,4,5};for(int j=0;j<7;++j)if(a[j].UniqueIndex!=want[j]||!a[j].FaceList.Find(want[j])||!a[j].Groups.Find(want[j])||!a[j].PairContractions.Find(want[j]))return 1;if(a[1].FaceList.Head==x.FaceList.Head||a[1].PairContractions.Head==a[2].PairContractions.Head||*a[1].Groups.Find(99)!=0.5f)return 2;for(int k=0;k<7;++k)a[k].~Element();for(int q=0;q<3;++q){new(a+q)Element();Init(a[q],q+1);}v.Finish=a+3;v.FillInsert(a+2,4,x);if(v.Finish-a!=7||a[6].UniqueIndex!=3)return 3;v.FillInsert(a+2,1,a[0]);if(v.Finish-a!=8||a[2].UniqueIndex!=1||a[2].FaceList.Head==a[0].FaceList.Head)return 4;v.FillInsert(a,0,x);v.End=v.Finish;v.FillInsert(a,1,x);if(overflowCalls!=1)return 5;for(int z=0;z<8;++z)a[z].~Element();std::free(a);}if(liveNodes!=0||liveControls!=0||liveObjects!=0)return 6;std::printf("00ad85d0_TEST PASS\n");return 0;}
+{Element* a=(Element*)std::malloc(12*sizeof(Element));for(int i=0;i<5;++i){new(a+i)Element();Init(a[i],i+1);}Element x;Init(x,99);vector<Element> v={a,a+5,a+12};v._M_fill_insert(a+1,2,x);unsigned int want[]={1,99,99,2,3,4,5};for(int j=0;j<7;++j)if(a[j].UniqueIndex!=want[j]||!a[j].FaceList.Find(want[j])||!a[j].Groups.Find(want[j])||!a[j].PairContractions.Find(want[j]))return 1;if(a[1].FaceList.Head==x.FaceList.Head||a[1].PairContractions.Head==a[2].PairContractions.Head||*a[1].Groups.Find(99)!=0.5f)return 2;for(int k=0;k<7;++k)a[k].~Element();for(int q=0;q<3;++q){new(a+q)Element();Init(a[q],q+1);}v._M_finish=a+3;v._M_fill_insert(a+2,4,x);if(v._M_finish-a!=7||a[6].UniqueIndex!=3)return 3;v._M_fill_insert(a+2,1,a[0]);if(v._M_finish-a!=8||a[2].UniqueIndex!=1||a[2].FaceList.Head==a[0].FaceList.Head)return 4;v._M_fill_insert(a,0,x);v._M_end_of_storage=v._M_finish;v._M_fill_insert(a,1,x);if(overflowCalls!=1)return 5;for(int z=0;z<8;++z)a[z].~Element();std::free(a);}if(liveNodes!=0||liveControls!=0||liveObjects!=0)return 6;std::printf("00ad85d0_TEST PASS\n");return 0;}

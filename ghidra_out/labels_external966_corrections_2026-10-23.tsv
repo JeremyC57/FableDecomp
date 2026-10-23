@@ -1,0 +1,18 @@
+address	name	evidence
+004110d0	_STL::vector<char>::_M_fill_insert	external 966-968 rename: fill-insert body; catalog CString_FillRange was wrong
+0040f6b0	_STL::vector<char>::_M_insert_overflow	external 966-968 rename: bound by 004110d0 as the overflow path
+00433530	_STL::vector<CCharString>::_M_insert_overflow	external 966-968 rename: CCharString copy/dtor bindings 0099ec30/0099eae0
+0051b940	CReplaceSerialise::ConvertPreviousUnknownVersionUp	external 966-968 rename: FableWin method list; neighbouring ConvertFromOld bindings
+0051c2f0	CReplaceSerialise::ConvertPreviousUnknownVersionUp	external 966-968 rename: twin of 0051b940, different template instance
+0050ee40	CFileLargeThemePalette::CFileLargeThemePalette	external 966-968 rename: bound as the block constructor by 0051b940/0051c2f0
+004fa7f0	ConvertFromOld	external 966-968 rename: bound by 0051b940
+004fa860	ConvertFromOld	external 966-968 rename: bound by 0051c2f0
+0050ceb0	DeleteData	external 966-968 rename: bound as payload delete by 0051b940
+009979e0	CAFile::ConvertDirectoryAndFilenameToPath	external 966-968 rename: FableWin method list
+007f1b70	CTCDRumble::Create	external 966-968 rename: body builds CTCDRumble; callers bind it as CreateCameraShake
+00820e20	CMap::~CMap	external 966-968 rename: vtable bindings; catalog CParticleMorphs_Destructor was wrong
+00f27bc0	_STL::vector<CHeroSoulsWaveDef>::operator=	external 966-968 rename: 56-byte element with nested 52-byte CreatureDef, PDB layout
+006a23e0	CTCCarrying::ResetAllCarriedThingsAsBypassFilter	external 966-968 rename (inferred): binds GetAllCarriedThings and SetBypassScreenFilter; FableWin method list
+00e15500	CQ_WhiteBalverineKnotholeGladeScript::Main	external 966-968 rename (inferred): flag fields fit PDB MissionFailed/Succeeded with a 0x14-smaller retail base
+00e1e530	CQR_EscortTraderScript::Main	external 966-968 rename (inferred): same 0x14 base offset as 00e15500
+0099af00	CWideString::operator_const_wchar_ptr	external 966-968 rename: non-const overload; 0099af10 is the const one

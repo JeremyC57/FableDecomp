@@ -1,16 +1,15 @@
-// 009979e0 NPath009979e0::ConvertDirectoryAndFilenameToPath
+// 009979e0 CAFile::ConvertDirectoryAndFilenameToPath (catalog; bsim .99 static CAFile member; CWideString method names from FableWin.pdb)
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: ConvertDirectoryAndFilenameToPath
-namespace NPath009979e0 {
 // Layout: string object is one pointer; retail stack locals +8 and +12.
-struct Wide {void* data;Wide();Wide(const Wide&);~Wide();const unsigned short* Text()const;int Length()const;void Set(const unsigned short*,int);Wide& operator=(const Wide&);};
-Wide __fastcall operator+(const Wide&,const unsigned short*);
-Wide __fastcall operator+(const Wide&,const Wide&);
-extern const unsigned short Slash[];
-Wide __fastcall ConvertDirectoryAndFilenameToPath(const Wide& directory,const Wide& filename){
- Wide dir(directory),file(filename);
- int length; while((length=dir.Length(),dir.Text()[length])=='\\'){Wide temp;temp.Set(dir.Text(),dir.Length()-1);dir=temp;}
- while(file.Text()[0]=='\\'){Wide temp;temp.Set(file.Text()+1,file.Length()-1);file=temp;}
- return (dir+Slash)+file;
-}
+struct CWideString {void* data;CWideString();CWideString(const CWideString&);~CWideString();const unsigned short* GetAsCharArray()const;long GetLength()const;void SetAsSubString(const unsigned short*,long);CWideString& operator=(const CWideString&);};
+CWideString __fastcall operator+(const CWideString&,const unsigned short*);
+CWideString __fastcall operator+(const CWideString&,const CWideString&);
+extern const unsigned short g_Slash_0122de78[];
+struct CAFile {static CWideString __fastcall CAFile::ConvertDirectoryAndFilenameToPath(const CWideString&,const CWideString&);};
+CWideString __fastcall CAFile::ConvertDirectoryAndFilenameToPath(const CWideString& directory,const CWideString& filename){
+ CWideString dir(directory),file(filename);
+ int length; while((length=dir.GetLength(),dir.GetAsCharArray()[length])=='\\'){CWideString temp;temp.SetAsSubString(dir.GetAsCharArray(),dir.GetLength()-1);dir=temp;}
+ while(file.GetAsCharArray()[0]=='\\'){CWideString temp;temp.SetAsSubString(file.GetAsCharArray()+1,file.GetLength()-1);file=temp;}
+ return (dir+g_Slash_0122de78)+file;
 }

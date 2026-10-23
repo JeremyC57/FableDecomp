@@ -1,23 +1,23 @@
-// 005fc2d0 NScreen005fc2d0::Manager::Construct
+// 005fc2d0 NScreen005fc2d0::CTCInventoryMap::ConstructQuestsScreen_CurrentQuests (catalog name; called from CTCInventoryMap::ConstructQuestsScreen)
 // Flags: /O2 /Oy /W3
-// Leaf: Construct
+// Leaf: ConstructQuestsScreen_CurrentQuests
 #include <stdlib.h>
 #include <new>
 namespace NScreen005fc2d0 {
 #pragma pack(push,1)
-struct StringData{char* text;int length,capacity;unsigned char owned;int refs;};
+struct CCharStringData{char* text;int length,capacity;unsigned char owned;int refs;};
 #pragma pack(pop)
-extern int StringInstances;StringData* NewStringData(const char*,int);void DeleteStringData(StringData*);
-struct String {void* data;String(const char*,int=-1);__forceinline String(const String& x):data(x.data){++StringInstances;if(data)++((StringData*)data)->refs;}~String();const char* Text()const{return data?((StringData*)data)->text:"";}};
+extern int StringInstances;CCharStringData* NewStringData(const char*,int);void DeleteStringData(CCharStringData*);
+struct CCharString {void* data;CCharString(const char*,int=-1);__forceinline CCharString(const CCharString& x):data(x.data){++StringInstances;if(data)++((CCharStringData*)data)->refs;}~CCharString();const char* Text()const{return data?((CCharStringData*)data)->text:"";}};
 
-struct Tag{Tag(){}};struct Vector {void **first,**last,**end;Vector():first(0),last(0),end(0){}__forceinline ~Vector(){if(first)free(first);}template<class T> __declspec(noinline) void Overflow(void** pos,void*const& value,const T&,int count,int skipTail){unsigned old=first?(unsigned)(last-first):0;unsigned cap=old+(old<(unsigned)count?(unsigned)count:old);void** fresh=(void**)malloc(cap*sizeof(void*));void** out=fresh;for(void** i=first;i!=pos;++i)*out++=*i;for(int j=0;j<count;++j)*out++=value;if(!skipTail)for(void** k=pos;k!=last;++k)*out++=*k;free(first);first=fresh;last=out;end=fresh+cap;}__forceinline void Push(void*const& p){if(last!=end){if(last)new(last)void*(p);++last;}else Overflow(last,p,Tag(),1,1);}};
-struct PtrBase {void* table;void* p;void* Get();};
-struct Node {Node* next;Node* prev;PtrBase value;};struct List {Node* head;__forceinline unsigned Size()const{unsigned n=0;for(Node* p=head->next;p!=head;p=p->next)++n;return n;}};
+struct __true_type{__true_type(){}};struct vector {void **first,**last,**end;vector():first(0),last(0),end(0){}__forceinline ~vector(){if(first)free(first);}template<class T> __declspec(noinline) void _M_insert_overflow(void** pos,void*const& value,const T&,int count,int skipTail){unsigned old=first?(unsigned)(last-first):0;unsigned cap=old+(old<(unsigned)count?(unsigned)count:old);void** fresh=(void**)malloc(cap*sizeof(void*));void** out=fresh;for(void** i=first;i!=pos;++i)*out++=*i;for(int j=0;j<count;++j)*out++=value;if(!skipTail)for(void** k=pos;k!=last;++k)*out++=*k;free(first);first=fresh;last=out;end=fresh+cap;}__forceinline void push_back(void*const& p){if(last!=end){if(last)new(last)void*(p);++last;}else _M_insert_overflow(last,p,__true_type(),1,1);}};
+struct CBaseIntelligentPointer {void* table;void* p;void* Get();};
+struct Node {Node* next;Node* prev;CBaseIntelligentPointer value;};struct List {Node* head;__forceinline unsigned Size()const{unsigned n=0;for(Node* p=head->next;p!=head;p=p->next)++n;return n;}};
 struct CopiedList:List {CopiedList(const List&);~CopiedList();};
-struct Global {char pad[92];List current,past;};extern Global* global;
-struct Widget;void __fastcall DestroyWidget(void*);struct Block {int refs;void(__fastcall*destroy)(void*);void* object;Block(void* p):refs(1),destroy(DestroyWidget),object(p){}};
-struct Ptr {Widget* p;Block* b;__forceinline Ptr(Widget* w):p(w),b(p?new Block(p):0){}__forceinline ~Ptr(){if(b&&!--b->refs){b->destroy(b->object);delete b;}p=0;b=0;}};
-struct Widget {
+struct CQuestManager {char pad[92];List current,past;};extern CQuestManager* g_pQuestManager;
+struct CComponent;void __fastcall DestroyWidget(void*);struct Block {int refs;void(__fastcall*destroy)(void*);void* object;Block(void* p):refs(1),destroy(DestroyWidget),object(p){}};
+struct Ptr {CComponent* p;Block* b;__forceinline Ptr(CComponent* w):p(w),b(p?new Block(p):0){}__forceinline ~Ptr(){if(b&&!--b->refs){b->destroy(b->object);delete b;}p=0;b=0;}};
+struct CComponent {
 virtual void v0()=0;
 virtual void v1()=0;
 virtual void v2()=0;
@@ -142,7 +142,7 @@ virtual void v120()=0;
 virtual void v121()=0;
 virtual void v122()=0;
 virtual void v123()=0;
-virtual void Attach(Widget*)=0;
+virtual void Attach(CComponent*)=0;
 virtual void v125()=0;
 virtual void v126()=0;
 virtual void v127()=0;
@@ -165,26 +165,26 @@ virtual void v143()=0;
 virtual void v144()=0;
 virtual void Add(const Ptr&)=0;
 };
-struct UI {__declspec(noinline) Widget* Find(const String&,int);};UI* __fastcall GetUI();
-Widget* LookupWidget(UI*,const char*,int);
-Widget* UI::Find(const String& name,int flag){return LookupWidget(this,name.Text(),flag);}
-struct Def {virtual void v0()=0;virtual void Delete()=0;int refs;};
-struct Ref {Def* p;Ref():p(0){}__forceinline ~Ref(){Def* d=p;if(d&&!--d->refs)d->Delete();}};
-struct Database {__declspec(noinline) int Index(const String&,bool);__declspec(noinline) bool Get(int,Def*&);};Database* __fastcall DatabaseInstance();
-int LookupDefinitionIndex(Database*,const char*,bool);Def* LookupDefinition(Database*,int);
-int Database::Index(const String& name,bool flag){return LookupDefinitionIndex(this,name.Text(),flag);}
-bool Database::Get(int index,Def*& out){if(index<=0)return false;Def* d=LookupDefinition(this,index);if(!d)return false;if(out!=d){if(out){if(!--out->refs)out->Delete();out=0;}out=d;++d->refs;}if(!--d->refs)d->Delete();return true;}
-struct Component {void Populate(Vector&,Widget*,int,int);void PopulatePC(int,Vector&,Widget*,int,int);};
-struct Pair {int key;Component* component;};struct Map {Pair *first,*last,*end;__declspec(noinline) Pair* Lower(const int& key){Pair* p=first;int n=last-first;while(n>0){int half=n/2;Pair* middle=p+half;if(middle->key<key){p=middle+1;n-=half+1;}else n=half;}return p;}};struct Thing {char pad[32];unsigned flags;char gap[32];Map map;};
-struct Parent {virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virtual Widget* Find(String)=0;};
-// Layout: receiver thing+4, thing flags+0x20/map+0x44; current/past lists global+0x5c/+0x60.
-struct Manager {void* table;Thing* thing;Widget* Construct(int arg);};
-Widget* Manager::Construct(int arg){
- Component* component=0;if(thing->flags&0x2000000){Map* map=&thing->map;int key=25;Pair* p=map->Lower(key);if(p==map->last||key<p->key)p=map->last;component=p->component;}
- List& list=global->current;
- Vector items;for(Node* n=list.head->next;n!=list.head;n=n->next){void* p=n->value.Get();items.Push(p);}if(list.Size()<=0u)return 0;
- Ref def;int index=DatabaseInstance()->Index("UI_MISC_THINGS_DEF",true);DatabaseInstance()->Get(index,def.p);UI* ui=GetUI();Widget* widget=ui->Find("UI_SUB_LIST",0);Ptr title(ui->Find("UI_TITLE_QUEST_CURRENT",0));widget->Add(title);
- component->Populate(items,widget,1,arg);
+struct CManager {__declspec(noinline) CComponent* CreateComponent(const CCharString&,int);};CManager* __fastcall GetUI();
+CComponent* LookupWidget(CManager*,const char*,int);
+CComponent* CManager::CreateComponent(const CCharString& name,int flag){return LookupWidget(this,name.Text(),flag);}
+struct CUIMiscThingsDef {virtual void v0()=0;virtual void Delete()=0;int refs;};
+struct CDefPointer {CUIMiscThingsDef* p;CDefPointer():p(0){}__forceinline ~CDefPointer(){CUIMiscThingsDef* d=p;if(d&&!--d->refs)d->Delete();}};
+struct CDefinitionManager {__declspec(noinline) int Index(const CCharString&,bool);__declspec(noinline) bool Get(int,CUIMiscThingsDef*&);};CDefinitionManager* __fastcall GetDefinitionManager();
+int LookupDefinitionIndex(CDefinitionManager*,const char*,bool);CUIMiscThingsDef* LookupDefinition(CDefinitionManager*,int);
+int CDefinitionManager::Index(const CCharString& name,bool flag){return LookupDefinitionIndex(this,name.Text(),flag);}
+bool CDefinitionManager::Get(int index,CUIMiscThingsDef*& out){if(index<=0)return false;CUIMiscThingsDef* d=LookupDefinition(this,index);if(!d)return false;if(out!=d){if(out){if(!--out->refs)out->Delete();out=0;}out=d;++d->refs;}if(!--d->refs)d->Delete();return true;}
+struct CTCInventoryQuests {void ConstructQuestList(vector&,CComponent*,int,int);void ConstructQuestListPC(int,vector&,CComponent*,int,int);};
+struct Pair {int key;CTCInventoryQuests* component;};struct CVectorMap {Pair *first,*last,*end;__declspec(noinline) Pair* LowerBound(const int& key){Pair* p=first;int n=last-first;while(n>0){int half=n/2;Pair* middle=p+half;if(middle->key<key){p=middle+1;n-=half+1;}else n=half;}return p;}};struct CThing {char pad[32];unsigned flags;char gap[32];CVectorMap map;};
+struct Parent {virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virtual CComponent* CreateComponent(CCharString)=0;};
+// Layout: receiver thing+4, thing flags+0x20/map+0x44; current/past lists g_pQuestManager+0x5c/+0x60.
+struct CTCInventoryMap {void* table;CThing* thing;CComponent* ConstructQuestsScreen_CurrentQuests(int arg);};
+CComponent* CTCInventoryMap::ConstructQuestsScreen_CurrentQuests(int arg){
+ CTCInventoryQuests* component=0;if(thing->flags&0x2000000){CVectorMap* map=&thing->map;int key=25;Pair* p=map->LowerBound(key);if(p==map->last||key<p->key)p=map->last;component=p->component;}
+ List& list=g_pQuestManager->current;
+ vector items;for(Node* n=list.head->next;n!=list.head;n=n->next){void* p=n->value.Get();items.push_back(p);}if(list.Size()<=0u)return 0;
+ CDefPointer def;int index=GetDefinitionManager()->Index("UI_MISC_THINGS_DEF",true);GetDefinitionManager()->Get(index,def.p);CManager* ui=GetUI();CComponent* widget=ui->CreateComponent("UI_SUB_LIST",0);Ptr title(ui->CreateComponent("UI_TITLE_QUEST_CURRENT",0));widget->Add(title);
+ component->ConstructQuestList(items,widget,1,arg);
  return widget;
 }
 }

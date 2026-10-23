@@ -1,10 +1,10 @@
-// 00a97f70 RetailVector::FillInsert
+// 00a97f70 N00a97f70::vector<Element>::_M_fill_insert (STLport; catalog: vector_InsertRange)
 // Flags: /O2 /Oy /W3
-// Leaf: FillInsert
+// Leaf: _M_fill_insert
 // Layout: counted pointer data/control at0/4 and 8-byte stride; a95890 uses ecx/edx plus one stack input and ret4. Tagged copy helpers remain distinct.
 #include <new>
 namespace N00a97f70 {
-struct FalseTag { FalseTag() {} }; struct RandomTag { RandomTag() {} };
+struct __false_type { __false_type() {} }; struct random_access_iterator_tag { random_access_iterator_tag() {} };
 struct RefBlock { unsigned int Refs; void (__fastcall *Destroy)(void*); void* Data; };
 struct Base { virtual void v00(); ~Base(); };
 template<class T> struct Counted {
@@ -25,41 +25,41 @@ template<class T> struct PolyCounted:Base {
 struct String {unsigned int Key; String();String(const String&);~String();String& operator=(const String&);bool FastCompare(const String&) const;};
 struct WideString {unsigned int Key; WideString();WideString(const WideString&);~WideString();WideString& operator=(const WideString&);};
 struct Element {Counted<void> P;};
-__forceinline void Construct(Element* p,const Element& x){if(p)new(p)Element(x);}
+__forceinline void _Construct(Element* p,const Element& x){if(p)new(p)Element(x);}
 #pragma auto_inline(off)
-template<class T> __declspec(noinline) T* __fastcall UninitCopy(T* first,T* last,T* out,const FalseTag&) { for(;first!=last;++first,++out) Construct(out,*first); return out; }
-template<class T> __declspec(noinline) T* __fastcall CopyBackward(T* first,T* last,T* out,const RandomTag&,int*) { for(int n=int(last-first);n>0;--n) *--out=*--last; return out; }
-template<class T> __declspec(noinline) void __fastcall Fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
-template<class T> __declspec(noinline) T* __fastcall UninitFill(T* first,unsigned int n,const T& x) { for(;n>0;--n,++first) Construct(first,x); return first; }
+template<class T> __declspec(noinline) T* __fastcall __uninitialized_copy(T* first,T* last,T* out,const __false_type&) { for(;first!=last;++first,++out) _Construct(out,*first); return out; }
+template<class T> __declspec(noinline) T* __fastcall __copy_backward(T* first,T* last,T* out,const random_access_iterator_tag&,int*) { for(int n=int(last-first);n>0;--n) *--out=*--last; return out; }
+template<class T> __declspec(noinline) void __fastcall fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
+template<class T> __declspec(noinline) T* __fastcall __uninitialized_fill_n(T* first,unsigned int n,const T& x) { for(;n>0;--n,++first) _Construct(first,x); return first; }
 #pragma auto_inline(on)
-template<class T> __forceinline T* CopyBack(T* first,T* last,T* out,const FalseTag&) { return CopyBackward(first,last,out,RandomTag(),(int*)0); }
-template<class T> struct RetailVector {
- T* Start; T* Finish; T* End;
- void Overflow(T* pos,const T& x,const FalseTag&,unsigned int n,bool atend=false);
- void FillInsert(T* pos,unsigned int n,const T& x);
+template<class T> __forceinline T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
+template<class T> struct vector {
+ T* _M_start; T* _M_finish; T* _M_end_of_storage;
+ void _M_insert_overflow(T* pos,const T& x,const __false_type&,unsigned int n,bool atend=false);
+ void _M_fill_insert(T* pos,unsigned int n,const T& x);
 };
-template<class T> void RetailVector<T>::FillInsert(T* pos,unsigned int n,const T& x) {
+template<class T> void vector<T>::_M_fill_insert(T* pos,unsigned int n,const T& x) {
  if(n!=0) {
-  if((unsigned int)(End-Finish)>=n) {
+  if((unsigned int)(_M_end_of_storage-_M_finish)>=n) {
    T x_copy=x;
-   const unsigned int after=Finish-pos;
-   T* old_finish=Finish;
+   const unsigned int after=_M_finish-pos;
+   T* old_finish=_M_finish;
    if(after>n) {
-    UninitCopy(Finish-n,Finish,Finish,FalseTag());
-    Finish+=n;
-    CopyBack(pos,old_finish-n,old_finish,FalseTag());
-    Fill(pos,pos+n,x_copy);
+    __uninitialized_copy(_M_finish-n,_M_finish,_M_finish,__false_type());
+    _M_finish+=n;
+    __copy_backward_ptrs(pos,old_finish-n,old_finish,__false_type());
+    fill(pos,pos+n,x_copy);
    } else {
-    UninitFill(Finish,n-after,x_copy);
-    Finish+=n-after;
-    UninitCopy(pos,old_finish,Finish,FalseTag());
-    Finish+=after;
-    Fill(pos,old_finish,x_copy);
+    __uninitialized_fill_n(_M_finish,n-after,x_copy);
+    _M_finish+=n-after;
+    __uninitialized_copy(pos,old_finish,_M_finish,__false_type());
+    _M_finish+=after;
+    fill(pos,old_finish,x_copy);
    }
-  } else Overflow(pos,x,FalseTag(),n);
+  } else _M_insert_overflow(pos,x,__false_type(),n);
  }
 }
-template void RetailVector<Element>::FillInsert(Element*,unsigned int,const Element&);
+template void vector<Element>::_M_fill_insert(Element*,unsigned int,const Element&);
 
 
 }
@@ -72,16 +72,16 @@ static int destroyed,liveControls,overflowCalls;
 void __fastcall Dispose(void* p){delete (int*)p;++destroyed;--liveControls;}
 void SetPointer(Element& e,int id){e.P.Data=new int(id);e.P.Block=new RefBlock;e.P.Block->Refs=1;e.P.Block->Destroy=Dispose;e.P.Block->Data=e.P.Data;++liveControls;}
 
-template<class T>void RetailVector<T>::Overflow(T* pos,const T& x,const FalseTag&,unsigned int n,bool){
- ++overflowCalls;T copy(x);unsigned int oldSize=(unsigned int)(Finish-Start),offset=(unsigned int)(pos-Start);unsigned int extra=oldSize>n?oldSize:n;
+template<class T>void vector<T>::_M_insert_overflow(T* pos,const T& x,const __false_type&,unsigned int n,bool){
+ ++overflowCalls;T copy(x);unsigned int oldSize=(unsigned int)(_M_finish-_M_start),offset=(unsigned int)(pos-_M_start);unsigned int extra=oldSize>n?oldSize:n;
  T* fresh=(T*)std::malloc((oldSize+extra)*sizeof(T));T* end=fresh;T* p;
- for(p=Start;p!=pos;++p,++end)new(end)T(*p);
+ for(p=_M_start;p!=pos;++p,++end)new(end)T(*p);
  for(unsigned int i=0;i<n;++i,++end)new(end)T(copy);
- for(p=pos;p!=Finish;++p,++end)new(end)T(*p);
- for(p=Start;p!=Finish;++p)p->~T();std::free(Start);Start=fresh;Finish=end;End=fresh+oldSize+extra;
- if((unsigned int)(Finish-Start)!=oldSize+n||offset>oldSize)++overflowCalls;
+ for(p=pos;p!=_M_finish;++p,++end)new(end)T(*p);
+ for(p=_M_start;p!=_M_finish;++p)p->~T();std::free(_M_start);_M_start=fresh;_M_finish=end;_M_end_of_storage=fresh+oldSize+extra;
+ if((unsigned int)(_M_finish-_M_start)!=oldSize+n||offset>oldSize)++overflowCalls;
 }
-struct Owner {RetailVector<Element> V;Owner(){V.Start=(Element*)std::malloc(7*sizeof(Element));V.Finish=V.Start;V.End=V.Start+7;}~Owner(){for(Element* p=V.Start;p!=V.Finish;++p)p->~Element();std::free(V.Start);}};
+struct Owner {vector<Element> V;Owner(){V._M_start=(Element*)std::malloc(7*sizeof(Element));V._M_finish=V._M_start;V._M_end_of_storage=V._M_start+7;}~Owner(){for(Element* p=V._M_start;p!=V._M_finish;++p)p->~Element();std::free(V._M_start);}};
 int ID(const Element& e){return *(int*)e.P.Data;}
 }
 int main(){using namespace N00a97f70;
@@ -89,15 +89,15 @@ int main(){using namespace N00a97f70;
  second.Data=new int(42);second.Block=new RefBlock;second.Block->Refs=1;second.Block->Destroy=Dispose;second.Block->Data=second.Data;++liveControls;
  first=second;if(destroyed!=1||second.Block->Refs!=2)return 1;first=first;second=first;if(second.Block->Refs!=2)return 2;}
  if(destroyed!=2||liveControls!=0)return 3;
- {Element probe;SetPointer(probe,77);Construct(0,probe);if(probe.P.Block->Refs!=1||liveControls!=1||destroyed!=2)return 11;Element* copy=(Element*)::operator new(sizeof(Element));Construct(copy,probe);if(copy->P.Data!=probe.P.Data||copy->P.Block!=probe.P.Block||probe.P.Block->Refs!=2)return 12;copy->~Element();::operator delete(copy);if(probe.P.Block->Refs!=1||destroyed!=2)return 13;}
+ {Element probe;SetPointer(probe,77);_Construct(0,probe);if(probe.P.Block->Refs!=1||liveControls!=1||destroyed!=2)return 11;Element* copy=(Element*)::operator new(sizeof(Element));_Construct(copy,probe);if(copy->P.Data!=probe.P.Data||copy->P.Block!=probe.P.Block||probe.P.Block->Refs!=2)return 12;copy->~Element();::operator delete(copy);if(probe.P.Block->Refs!=1||destroyed!=2)return 13;}
  if(destroyed!=3||liveControls)return 14;
- {Owner owner;RetailVector<Element>& v=owner.V;for(int i=0;i<3;++i){new(v.Finish)Element;SetPointer(*v.Finish,i+1);++v.Finish;}RefBlock* shared=v.Start[1].P.Block;
- v.FillInsert(v.Start,1,v.Start[1]);if(v.Finish-v.Start!=4||shared->Refs!=2||ID(v.Start[0])!=2||ID(v.Start[1])!=1||ID(v.Start[2])!=2||ID(v.Start[3])!=3)return 4;
- v.FillInsert(v.Start+3,3,v.Start[0]);if(v.Finish-v.Start!=7||shared->Refs!=5||ID(v.Start[6])!=3)return 5;
- for(int i=2;i<6;++i)if(ID(v.Start[i])!=2)return 6;
- v.FillInsert(v.Start,0,v.Start[0]);if(shared->Refs!=5||overflowCalls!=0)return 7;
- v.FillInsert(v.Start+2,2,v.Start[0]);if(v.Finish-v.Start!=9||shared->Refs!=7||overflowCalls!=1||ID(v.Start[1])!=1||ID(v.Start[8])!=3)return 8;
- for(int i=2;i<8;++i)if(ID(v.Start[i])!=2)return 9;
+ {Owner owner;vector<Element>& v=owner.V;for(int i=0;i<3;++i){new(v._M_finish)Element;SetPointer(*v._M_finish,i+1);++v._M_finish;}RefBlock* shared=v._M_start[1].P.Block;
+ v._M_fill_insert(v._M_start,1,v._M_start[1]);if(v._M_finish-v._M_start!=4||shared->Refs!=2||ID(v._M_start[0])!=2||ID(v._M_start[1])!=1||ID(v._M_start[2])!=2||ID(v._M_start[3])!=3)return 4;
+ v._M_fill_insert(v._M_start+3,3,v._M_start[0]);if(v._M_finish-v._M_start!=7||shared->Refs!=5||ID(v._M_start[6])!=3)return 5;
+ for(int i=2;i<6;++i)if(ID(v._M_start[i])!=2)return 6;
+ v._M_fill_insert(v._M_start,0,v._M_start[0]);if(shared->Refs!=5||overflowCalls!=0)return 7;
+ v._M_fill_insert(v._M_start+2,2,v._M_start[0]);if(v._M_finish-v._M_start!=9||shared->Refs!=7||overflowCalls!=1||ID(v._M_start[1])!=1||ID(v._M_start[8])!=3)return 8;
+ for(int i=2;i<8;++i)if(ID(v._M_start[i])!=2)return 9;
  }
  if(destroyed!=6||liveControls!=0)return 10;
  std::printf("00a97f70_TEST PASS\n");return 0;}

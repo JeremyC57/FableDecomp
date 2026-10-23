@@ -1,14 +1,14 @@
-// 00af2780 NPosition00af2780::Parameters::TransformPosition
+// 00af2780 NParticleEngine::CPSCBase::GetCurrentPosition (catalog: CParticleUpdateParameters_TransformPosition; symbol of caller 00b16d50)
 // Flags: /O2 /Oy /W3
-// Leaf: TransformPosition
-namespace NPosition00af2780 {
-struct V {float x,y,z;V(){} __forceinline V(const V& v){z=v.z;x=v.x;y=v.y;}__forceinline V(float a,float b,float c){x=a;y=b;z=c;}};
-struct Matrix {float m[12];};
+// Leaf: GetCurrentPosition
+struct C3DVector {float x,y,z;C3DVector(){} __forceinline C3DVector(const C3DVector& v){z=v.z;x=v.x;y=v.y;}__forceinline C3DVector(float a,float b,float c){x=a;y=b;z=c;}};
+struct CMatrix3x4 {float m[12];};
 // ABI: 0x00af3080 dereferences second stack argument as a key; 0x00af2c50 receives its address.
-struct Request {bool Get(V&,const unsigned&,int,int,int);};
+template<class A,class B> struct CParticleUpdateParameters {bool GetUpdateParam(C3DVector&,const unsigned long&,float,bool,unsigned long)const;};
+namespace NParticleEngine {
 // Layout: retail owner +4, owner flags +0x50, fallback virtual slot30.
-struct Owner {char pad[80];unsigned char flags;void GetMatrix(Matrix&);__forceinline V Transform(const V& p){V q=p;if(!(flags&64)){Matrix m;GetMatrix(m);const Matrix& mat=m;float x=q.x,y=q.y;q.x=mat.m[6]*q.z+mat.m[3]*q.y+mat.m[0]*q.x+mat.m[9];q.y=mat.m[7]*q.z+mat.m[4]*q.y+mat.m[1]*x+mat.m[10];q.z=mat.m[8]*q.z+mat.m[5]*y+mat.m[2]*x+mat.m[11];}return V(q.x,q.y,q.z);}};
-struct Parameters {
+struct CParticleSystem {char pad[80];unsigned char flags;void GetInverseSystemTransform(CMatrix3x4&);__forceinline C3DVector Transform(const C3DVector& p){C3DVector q=p;if(!(flags&64)){CMatrix3x4 m;GetInverseSystemTransform(m);const CMatrix3x4& mat=m;float x=q.x,y=q.y;q.x=mat.m[6]*q.z+mat.m[3]*q.y+mat.m[0]*q.x+mat.m[9];q.y=mat.m[7]*q.z+mat.m[4]*q.y+mat.m[1]*x+mat.m[10];q.z=mat.m[8]*q.z+mat.m[5]*y+mat.m[2]*x+mat.m[11];}return C3DVector(q.x,q.y,q.z);}};
+struct CPSCBase {
 virtual void v0()=0;
 virtual void v1()=0;
 virtual void v2()=0;
@@ -39,7 +39,7 @@ virtual void v26()=0;
 virtual void v27()=0;
 virtual void v28()=0;
 virtual void v29()=0;
-virtual bool Fallback(V&)=0;Owner* owner;V TransformPosition(Request*,const unsigned&,int,int,int);
+virtual bool Fallback(C3DVector&)const=0;CParticleSystem* owner;C3DVector GetCurrentPosition(const CParticleUpdateParameters<unsigned long,unsigned long>&,const unsigned long&,float,bool,unsigned long)const;
 };
-V Parameters::TransformPosition(Request* r,const unsigned&a,int b,int c,int d){V p;if(!r->Get(p,a,b,c,d)&&!Fallback(p)){p.z=0;p.y=0;p.x=0;}if(owner)p=owner->Transform(p);return V(p.x,p.y,p.z);}
+C3DVector CPSCBase::GetCurrentPosition(const CParticleUpdateParameters<unsigned long,unsigned long>& r,const unsigned long&a,float b,bool c,unsigned long d)const{C3DVector p;if(!r.GetUpdateParam(p,a,b,c,d)&&!Fallback(p)){p.z=0;p.y=0;p.x=0;}if(owner)p=owner->Transform(p);return C3DVector(p.x,p.y,p.z);}
 }

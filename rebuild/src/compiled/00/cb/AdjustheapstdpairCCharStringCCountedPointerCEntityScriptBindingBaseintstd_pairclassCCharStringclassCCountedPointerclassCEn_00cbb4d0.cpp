@@ -1,6 +1,6 @@
-// 00cbb4d0 AdjustHeap
+// 00cbb4d0 N00cbb4d0::__adjust_heap<Element,CCompareString> (STLport; catalog: _Adjust_heap<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>*,int,std::_Adjust_heap<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>*,int,std::pair<class_CCharString)
 // Flags: /O2 /Oy /W3 /Gr
-// Leaf: AdjustHeap
+// Leaf: __adjust_heap
 // Layout: SGI heap iterator stride and by-value element/comparator sizes are taken from oracle indexed accesses and ret cleanup.
 #include <new>
 #include <string.h>
@@ -32,21 +32,21 @@ template<class T> struct PolyCounted:Base {
 struct StringData{char*Data;unsigned Length,Capacity;unsigned char Fast;int Refs;};
 #pragma pack(pop)
 extern int StringInstances;
-struct String {
+struct CCharString {
  StringData*Data;
  __declspec(noinline) void Clear();
- __declspec(noinline) String();
- __declspec(noinline) String(const String&v);
- __declspec(noinline) ~String();
- __declspec(noinline) String&operator=(const String&v);
- __declspec(noinline) bool FastCompare(const String&v)const;
+ __declspec(noinline) CCharString();
+ __declspec(noinline) CCharString(const CCharString&v);
+ __declspec(noinline) ~CCharString();
+ __declspec(noinline) CCharString&operator=(const CCharString&v);
+ __declspec(noinline) bool FastCompare(const CCharString&v)const;
 };
-struct WideString {unsigned int Key; WideString();WideString(const WideString&);~WideString();WideString& operator=(const WideString&);};
-struct Element {String S;Counted<void> P;};
-struct Compare {unsigned int State; __forceinline bool operator()(const Element& a,const Element& b) const {return a.S.FastCompare(b.S);}};
+struct CWideString {unsigned int Key; CWideString();CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
+struct Element {CCharString S;Counted<void> P;};
+struct CCompareString {unsigned int State; __forceinline bool operator()(const Element& a,const Element& b) const {return a.S.FastCompare(b.S);}};
 
-template<class T,class C> void __fastcall PushHeap(T* first,int hole,int top,T value,C comp);
-template<class T,class C> void __fastcall AdjustHeap(T* first,int hole,int length,T value,C comp) {
+template<class T,class C> void __fastcall __push_heap(T* first,int hole,int top,T value,C comp);
+template<class T,class C> void __fastcall __adjust_heap(T* first,int hole,int length,T value,C comp) {
  int top=hole;
  int second=2*hole+2;
  while(second<length) {
@@ -55,8 +55,8 @@ template<class T,class C> void __fastcall AdjustHeap(T* first,int hole,int lengt
   hole=second;second=2*(second+1);
  }
  if(second==length) {first[hole]=first[second-1];hole=second-1;}
- PushHeap(first,hole,top,value,comp);
+ __push_heap(first,hole,top,value,comp);
 }
 
-template void __fastcall AdjustHeap<Element,Compare>(Element*,int,int,Element,Compare);
+template void __fastcall __adjust_heap<Element,CCompareString>(Element*,int,int,Element,CCompareString);
 }
