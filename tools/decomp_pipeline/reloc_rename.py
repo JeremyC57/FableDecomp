@@ -235,16 +235,15 @@ def cmd_plan(args):
 _LIT = re.compile(r'"(?:\\.|[^"\\\n])*"|\'(?:\\.|[^\'\\\n])*\'')
 
 def token_rename(src, ident, new):
-    """Rename every `ident` token outside string/char literals and the `// Leaf:` line."""
+    """Rename every `ident` token in CODE only: comments (so `// Leaf:` lines and address notes stay
+    true) and string/char literals are left alone."""
     pat = re.compile(r"(?<![A-Za-z0-9_$])" + re.escape(ident) + r"(?![A-Za-z0-9_$])")
-    out = []
-    for line in src.split("\n"):
-        if re.match(r"\s*//\s*Leaf:", line): out.append(line); continue
-        parts = []; pos = 0
-        for m in _LIT.finditer(line):
-            parts.append(pat.sub(new, line[pos:m.start()])); parts.append(m.group(0)); pos = m.end()
-        parts.append(pat.sub(new, line[pos:])); out.append("".join(parts))
-    return "\n".join(out)
+    code = _code_mask(src)
+    out = []; pos = 0
+    for m in pat.finditer(code):
+        out.append(src[pos:m.start()]); out.append(new); pos = m.end()
+    out.append(src[pos:])
+    return "".join(out)
 
 def _code_mask(src):
     """Copy of src with comments and literals blanked (same length), for structural search."""
