@@ -274064,6 +274064,13 @@ $catalog = @(
         TestSource = '00/ce/CMKHS2SOUL_Main_00ce0ce0_test.cpp'
         PassPattern = '00ce0ce0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004f97b3'
+        Module = '_Rb_tree'
+        Source = '00/4f/Rbtree_Rbtree_004f97b3.cpp'
+        TestSource = '00/4f/Rbtree_Rbtree_004f97b3_test.cpp'
+        PassPattern = '004f97b3_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

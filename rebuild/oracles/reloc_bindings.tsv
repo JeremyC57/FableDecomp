@@ -26854,3 +26854,4 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?SetPredicate@CHTE_AssaultGuard@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00d6aea0
 ?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABUCCharString@@ABUCScriptThing@@W4ETraderComment@@@Z	00e01900	00e06050
 ?erase@CScriptThingVector@@QAEPAUCScriptThing@@PAU2@0@Z	008ac9d0	00e06050
+?_M_copy@_Rb_tree@NPairLongMapTree@@QAEPAUSRbNode@2@PAU32@0@Z	00461533	004f97b3

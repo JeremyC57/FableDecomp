@@ -877,3 +877,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - 00e06050 matched only with the I-44 view plus `balverine` held as a VALUE local; the view alone is inert on a const& temporary. 00e1b750 also matched.
   - The I-44 family is now exhausted.
   - Label review: 00ce0920, 00ce0b00 and 00ce0ce0 are three different soul scripts, with soul thresholds 0, 1 and 2, that all carry the propagated label CMK_HS2_SOUL::Main. Find their real class names in the script-registration tables.
+- (2026-10-23, R&D round 4 wrap-up)
+  - **I-44 needs a value local and an unmerged reference.** VC7.1 folds a CScriptThing reference back to the object and devirtualises it, so the view cast forms `this`. The view cast works only on a VALUE local.
+  - **Sibling scan.** Retail functions that byte-match a landed body apart from call targets compile from the landed source. Scan for them with call targets normalised (`$S/w22/rnd/r4/`) before re-authoring. BUT a verbatim port binds the same mangled callee to a second retail address: put the port's model in its own namespace (004f97b3 uses `NPairLongMapTree`).
+  - **The lander does not catch this.** It only WARNS on a cross-row `RELOC_CONFLICT`, and the duplicate binding is silently not recorded.
+  - **Unchangeable order.** `this`-before-arguments order for a global interface pointer cannot be moved from source (00d910b0).
+  - **Dtor arm stays inline.** I-43 (goto to an existing exit) leaves 00d05a60/00d06130 at 1400v1400, because retail puts the CPauseNonScripted dtor arm cold after `ret`.
