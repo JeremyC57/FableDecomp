@@ -518,6 +518,14 @@ def generate(classes: list[str], donor: dict[str, DonorStruct], mf: label_trust.
         if pinned and quarantine:
             quarantine = False
             status += f"; PINNED by {pinned} retyped file(s) despite conflicts"
+        # Hand retail corrections (12-byte STLport containers, opt-in FABLE_RETAIL_* layouts) are
+        # proven against every landed includer; a donor regenerate would silently undo them.
+        prev = OUT / f"{cls}.h"
+        if prev.exists() and RETAIL_MARK.search(prev.read_text(encoding="utf-8", errors="ignore")):
+            print(f"  keep {cls}.h: hand retail correction present (edit it by hand)")
+            index_rows.append((cls, f"{cls}.h", d.size, 0, "HAND_RETAIL", "hand retail correction kept"))
+            written += 1
+            continue
         text = emit_header(cls, d, emitted, fwd, used_n, status)
         named = sum(1 for e in emitted if not e.is_pad and e.kind != "vptr")
         if quarantine:
@@ -602,6 +610,9 @@ def compile_check(classes: list[str]) -> int:
             print(f"  COMPILE_FAIL {c}: {err}")
     print(f"compile-check headers ok={ok} quarantined_for_compile_fail={bad}")
     return 0
+
+
+RETAIL_MARK = re.compile(r"^// Retail (override|layout|opt-in)|FABLE_RETAIL_", re.M)
 
 
 def main() -> int:
