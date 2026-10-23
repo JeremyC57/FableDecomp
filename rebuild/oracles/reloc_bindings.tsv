@@ -25396,3 +25396,11 @@ _s_CornerOrderNormal	0129b94c	009dca80
 ?g_SteeringCallback@@3P6AXXZA	0143bb2c	00c094a0
 ?g_SteeringTimer@@3PADA	0143bb14	00c094a0
 ??1?$CScriptThingVector@UCScriptThing@@@@QAE@XZ	008ac970	00dc8890
+??0CEnginePrimitiveParticleGroup@@QAE@MPBUC3DBoundingSphere@@_N1W4EEngineEffectWaterStage@@111@Z	00af08d0	00aee560
+?PreparePrimitives@CParticleSystem@NParticleEngine@@QAEXMPBUCEnginePrimitivePrepareInfo@@PAUCEnginePrimitiveHandle@@@Z	00af40b0	00aee560
+?BeginQuery@CEngineOcclusionManager@@QAEXXZ	00b8d090	00b6e260
+?EndQuery@CEngineOcclusionManager@@QAEXJ@Z	00b8d0a0	00b6e260
+?IsQueryVisible@CEngineOcclusionManager@@QAEJK_N@Z	00b8d0b0	00b6e260
+?RenderBackgroundPatch@CEngineWaterRenderer@@QAEXPAVCEngineWaterBackgroundSubPatch@@@Z	00b6e010	00b6e260
+?RenderOcclusionBox@CEngineOcclusionManager@@QAEJABUCMatrix3x4@@@Z	00b8d420	00b6e260
+?g_pEngineOcclusionManager@@3PAVCEngineOcclusionManager@@A	01436e5c	00b6e260

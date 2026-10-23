@@ -271018,6 +271018,41 @@ $catalog = @(
         TestSource = '00/ef/CShowTargetedThingHealthScript_ShowTargetedThingsHealth_00eff930_test.cpp'
         PassPattern = '00eff930_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008b6c30'
+        Module = 'CCreatureAction_ProjectileCrouch'
+        Source = '00/8b/CCreatureActionProjectileCrouch_FrameUpdate_008b6c30.cpp'
+        TestSource = '00/8b/CCreatureActionProjectileCrouch_FrameUpdate_008b6c30_test.cpp'
+        PassPattern = '008b6c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aee560'
+        Module = 'CParticleEmitter'
+        Source = '00/ae/CParticleEmitter_PreparePrimitives_00aee560.cpp'
+        TestSource = '00/ae/CParticleEmitter_PreparePrimitives_00aee560_test.cpp'
+        PassPattern = '00aee560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f0f910'
+        Module = 'CQ_AmbushTradersScript'
+        Source = '00/f0/CQAmbushTradersScript_WatchForArcherSpawnConditions_00f0f910.cpp'
+        TestSource = '00/f0/CQAmbushTradersScript_WatchForArcherSpawnConditions_00f0f910_test.cpp'
+        PassPattern = '00f0f910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a90630'
+        Module = 'CVertexShaderInputAnimated'
+        Source = '00/a9/CVertexShaderInputAnimated_Initialise_00a90630.cpp'
+        TestSource = '00/a9/CVertexShaderInputAnimated_Initialise_00a90630_test.cpp'
+        PassPattern = '00a90630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6e260'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b6/CEngineWaterRenderer_RenderBackgroundList_00b6e260.cpp'
+        TestSource = '00/b6/CEngineWaterRenderer_RenderBackgroundList_00b6e260_test.cpp'
+        PassPattern = '00b6e260_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
