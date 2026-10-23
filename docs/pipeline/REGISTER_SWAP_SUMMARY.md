@@ -123,3 +123,13 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
   constructor reads (`mov ecx,[ebp+8]` then `mov [ebp+8],eax`). Ours picks another dead parameter's slot or a frame
   slot. Changing the constructor (by value, `const long&`, assigning in the body), naming the pointer or adding block
   scopes did not change it. This blocks `AssignAbilityPC` (996 v 996) and its sibling `AssignThingPC`.
+
+## Round 4 (2026-10-23)
+- `CActionParamLong(ability++)`, `ability--` and `(ability = ability)` give identical bytes: the dead store is removed,
+  so it can't free the slot. `CActionParamLong p = { ability };` won't compile because the class has a constructor and
+  a vtable, so it isn't an aggregate.
+- `CLongList worn((const SAllocator&)SAllocator());` is the same as the unnamed temp: 147 diff lines. Only the named
+  local gets to 27.
+- **New family question, about 17 rows (`CThingSearchTools` rough-area templates).** Retail encodes the per-row `Width`
+  load as `[hoisted + LevelInfo + 4]`, with `LevelInfo` as the SIB index; ours makes `LevelInfo` the base. Every
+  spelling of the indexing tried canonicalises to the same tree. Which source shapes make VC7.1 swap base and index?
