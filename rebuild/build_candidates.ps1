@@ -272821,6 +272821,140 @@ $catalog = @(
         TestSource = '00/ee/CVTravellingHeroesScript_PlayCutscene_00ee2db0_test.cpp'
         PassPattern = '00ee2db0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049e370'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_UpdateEnvironmentCameraPos_0049e370.cpp'
+        TestSource = '00/49/CWorld_UpdateEnvironmentCameraPos_0049e370_test.cpp'
+        PassPattern = '0049e370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a3200'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_LoadGameState_004a3200.cpp'
+        TestSource = '00/4a/CWorld_LoadGameState_004a3200_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '004a3200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a67d0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_CWorld_004a67d0.cpp'
+        TestSource = '00/4a/CWorld_CWorld_004a67d0_test.cpp'
+        PassPattern = '004a67d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e82c7'
+        Module = 'CVillageDef'
+        Source = '00/4e/CVillageDef_Transfer_004e82c7.cpp'
+        TestSource = '00/4e/CVillageDef_Transfer_004e82c7_test.cpp'
+        PassPattern = '004e82c7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fe2a0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_LoadAllLoadableGlobalThingsFromSingleFile_004fe2a0.cpp'
+        TestSource = '00/4f/CWorldMap_LoadAllLoadableGlobalThingsFromSingleFile_004fe2a0_test.cpp'
+        PassPattern = '004fe2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00506940'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_CWorldMap_00506940.cpp'
+        TestSource = '00/50/CWorldMap_CWorldMap_00506940_test.cpp'
+        PassPattern = '00506940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063b0f0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetHighestThemeSizeZInArea_0063b0f0.cpp'
+        TestSource = '00/63/CWorldMap_GetHighestThemeSizeZInArea_0063b0f0_test.cpp'
+        PassPattern = '0063b0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063bbc0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_ClipLinePointsToMapBox_0063bbc0.cpp'
+        TestSource = '00/63/CWorldMap_ClipLinePointsToMapBox_0063bbc0_test.cpp'
+        PassPattern = '0063bbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063bf20'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetHighestThemeMinCameraSizeZOffsetInArea_0063bf20.cpp'
+        TestSource = '00/63/CWorldMap_GetHighestThemeMinCameraSizeZOffsetInArea_0063bf20_test.cpp'
+        PassPattern = '0063bf20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063c230'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetAverageThemeMinCameraSizeZOffsetInArea_0063c230.cpp'
+        TestSource = '00/63/CWorldMap_GetAverageThemeMinCameraSizeZOffsetInArea_0063c230_test.cpp'
+        PassPattern = '0063c230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063dfd0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_UpdateAllEdges_0063dfd0.cpp'
+        TestSource = '00/63/CWorldMap_UpdateAllEdges_0063dfd0_test.cpp'
+        PassPattern = '0063dfd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00665260'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_IsPosInFOV_00665260.cpp'
+        TestSource = '00/66/CThingCreatureBase_IsPosInFOV_00665260_test.cpp'
+        PassPattern = '00665260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008eddd0'
+        Module = 'CWillButtonHelperTimer'
+        Source = '00/8e/CWillButtonHelperTimer_FrameUpdate_008eddd0.cpp'
+        TestSource = '00/8e/CWillButtonHelperTimer_FrameUpdate_008eddd0_test.cpp'
+        PassPattern = '008eddd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098d490'
+        Module = 'CVertexShaderConstantLayout'
+        Source = '00/98/CVertexShaderConstantLayout_CVertexShaderConstantLayout_0098d490.cpp'
+        TestSource = '00/98/CVertexShaderConstantLayout_CVertexShaderConstantLayout_0098d490_test.cpp'
+        PassPattern = '0098d490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be91e0'
+        Module = 'CWaterSeaGenerator'
+        Source = '00/be/CWaterSeaGenerator_LoadSea_00be91e0.cpp'
+        TestSource = '00/be/CWaterSeaGenerator_LoadSea_00be91e0_test.cpp'
+        PassPattern = '00be91e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d68810'
+        Module = 'CWillWhisper'
+        Source = '00/d6/CWillWhisper_Main_00d68810.cpp'
+        TestSource = '00/d6/CWillWhisper_Main_00d68810_test.cpp'
+        PassPattern = '00d68810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d823a0'
+        Module = 'NScript::CQ_HeroSoulsBriarScript'
+        Source = '00/d8/NScriptCQHeroSoulsBriarScript_PlayCutscene_00d823a0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsBriarScript_PlayCutscene_00d823a0_test.cpp'
+        PassPattern = '00d823a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86680'
+        Module = 'CWaitingGuardInWoods'
+        Source = '00/d8/CWaitingGuardInWoods_Main_00d86680.cpp'
+        TestSource = '00/d8/CWaitingGuardInWoods_Main_00d86680_test.cpp'
+        PassPattern = '00d86680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed0b10'
+        Module = 'CWomanToAttract'
+        Source = '00/ed/CWomanToAttract_DoLeavingCutscene_00ed0b10.cpp'
+        TestSource = '00/ed/CWomanToAttract_DoLeavingCutscene_00ed0b10_test.cpp'
+        PassPattern = '00ed0b10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

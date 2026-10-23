@@ -797,3 +797,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - Hand-built vtable stores: real polymorphic classes with inline-zeroed members.
 
   Only 009e1da0 (GFAXToVX, `fld qword g; fmul dword x` operand order) still needs volatile; it is pending un-land.
+- (chunk 311) ~CWorldMap 0x506940 matched only with three changes together: an inline (first, last) region-destroy helper, an SAllocTag with a user ctor, and a conditional free of the map header plus a Release that nulls the pointer unconditionally. Most other CWorldMap rows show whole-program register caching across calls; park them early as the lane gap.
+- (chunk 311) C2DBoxI needs a user copy ctor. Write an int-to-float expression out again at each use rather than sharing it. Switch case order in the source shapes the emitted layout. Bind2/IsNot filter temporaries sit in dead argument slots. 0xBFEA0E is the malloc thunk.
