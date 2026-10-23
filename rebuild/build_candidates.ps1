@@ -270337,6 +270337,13 @@ $catalog = @(
         TestSource = '00/63/CThingMapManager_AddGameMapWithArea_006381a0_test.cpp'
         PassPattern = '006381a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0097cb10'
+        Module = 'CAIStateGroup_CreatureFindCover'
+        Source = '00/97/CAIStateGroupCreatureFindCover_IsStillRunnable_0097cb10.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureFindCover_IsStillRunnable_0097cb10_test.cpp'
+        PassPattern = '0097cb10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
