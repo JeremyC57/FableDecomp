@@ -1,0 +1,190 @@
+// 005fc2d0 NScreen005fc2d0::Manager::Construct
+// Flags: /O2 /Oy /W3
+// Leaf: Construct
+#include <stdlib.h>
+#include <new>
+namespace NScreen005fc2d0 {
+#pragma pack(push,1)
+struct StringData{char* text;int length,capacity;unsigned char owned;int refs;};
+#pragma pack(pop)
+extern int StringInstances;StringData* NewStringData(const char*,int);void DeleteStringData(StringData*);
+struct String {void* data;String(const char*,int=-1);__forceinline String(const String& x):data(x.data){++StringInstances;if(data)++((StringData*)data)->refs;}~String();const char* Text()const{return data?((StringData*)data)->text:"";}};
+
+struct Tag{Tag(){}};struct Vector {void **first,**last,**end;Vector():first(0),last(0),end(0){}__forceinline ~Vector(){if(first)free(first);}template<class T> __declspec(noinline) void Overflow(void** pos,void*const& value,const T&,int count,int skipTail){unsigned old=first?(unsigned)(last-first):0;unsigned cap=old+(old<(unsigned)count?(unsigned)count:old);void** fresh=(void**)malloc(cap*sizeof(void*));void** out=fresh;for(void** i=first;i!=pos;++i)*out++=*i;for(int j=0;j<count;++j)*out++=value;if(!skipTail)for(void** k=pos;k!=last;++k)*out++=*k;free(first);first=fresh;last=out;end=fresh+cap;}__forceinline void Push(void*const& p){if(last!=end){if(last)new(last)void*(p);++last;}else Overflow(last,p,Tag(),1,1);}};
+struct PtrBase {void* table;void* p;void* Get();};
+struct Node {Node* next;Node* prev;PtrBase value;};struct List {Node* head;__forceinline unsigned Size()const{unsigned n=0;for(Node* p=head->next;p!=head;p=p->next)++n;return n;}};
+struct CopiedList:List {CopiedList(const List&);~CopiedList();};
+struct Global {char pad[92];List current,past;};extern Global* global;
+struct Widget;void __fastcall DestroyWidget(void*);struct Block {int refs;void(__fastcall*destroy)(void*);void* object;Block(void* p):refs(1),destroy(DestroyWidget),object(p){}};
+struct Ptr {Widget* p;Block* b;__forceinline Ptr(Widget* w):p(w),b(p?new Block(p):0){}__forceinline ~Ptr(){if(b&&!--b->refs){b->destroy(b->object);delete b;}p=0;b=0;}};
+struct Widget {
+virtual void v0()=0;
+virtual void v1()=0;
+virtual void v2()=0;
+virtual void v3()=0;
+virtual void v4()=0;
+virtual void v5()=0;
+virtual void v6()=0;
+virtual void v7()=0;
+virtual void v8()=0;
+virtual void v9()=0;
+virtual void v10()=0;
+virtual void v11()=0;
+virtual void v12()=0;
+virtual void v13()=0;
+virtual void v14()=0;
+virtual void v15()=0;
+virtual void v16()=0;
+virtual void v17()=0;
+virtual void v18()=0;
+virtual void v19()=0;
+virtual void v20()=0;
+virtual void v21()=0;
+virtual void v22()=0;
+virtual void v23()=0;
+virtual void v24()=0;
+virtual void v25()=0;
+virtual void v26()=0;
+virtual void v27()=0;
+virtual void v28()=0;
+virtual void v29()=0;
+virtual void v30()=0;
+virtual void v31()=0;
+virtual void v32()=0;
+virtual void v33()=0;
+virtual void v34()=0;
+virtual void v35()=0;
+virtual void v36()=0;
+virtual void v37()=0;
+virtual void v38()=0;
+virtual void v39()=0;
+virtual void v40()=0;
+virtual void v41()=0;
+virtual void v42()=0;
+virtual void v43()=0;
+virtual void v44()=0;
+virtual void v45()=0;
+virtual void v46()=0;
+virtual void v47()=0;
+virtual void v48()=0;
+virtual void v49()=0;
+virtual void v50()=0;
+virtual void v51()=0;
+virtual void v52()=0;
+virtual void v53()=0;
+virtual void v54()=0;
+virtual void v55()=0;
+virtual void v56()=0;
+virtual void v57()=0;
+virtual void v58()=0;
+virtual void v59()=0;
+virtual void v60()=0;
+virtual void v61()=0;
+virtual void v62()=0;
+virtual void v63()=0;
+virtual void v64()=0;
+virtual void v65()=0;
+virtual void v66()=0;
+virtual void v67()=0;
+virtual void v68()=0;
+virtual void v69()=0;
+virtual void v70()=0;
+virtual void v71()=0;
+virtual void v72()=0;
+virtual void v73()=0;
+virtual void v74()=0;
+virtual void v75()=0;
+virtual void v76()=0;
+virtual void v77()=0;
+virtual void v78()=0;
+virtual void v79()=0;
+virtual void v80()=0;
+virtual void v81()=0;
+virtual void v82()=0;
+virtual void v83()=0;
+virtual void v84()=0;
+virtual void v85()=0;
+virtual void v86()=0;
+virtual void v87()=0;
+virtual void v88()=0;
+virtual void v89()=0;
+virtual void v90()=0;
+virtual void v91()=0;
+virtual void v92()=0;
+virtual void v93()=0;
+virtual void v94()=0;
+virtual void v95()=0;
+virtual void v96()=0;
+virtual void v97()=0;
+virtual void v98()=0;
+virtual void v99()=0;
+virtual void v100()=0;
+virtual void v101()=0;
+virtual void v102()=0;
+virtual void v103()=0;
+virtual void v104()=0;
+virtual void v105()=0;
+virtual void v106()=0;
+virtual void v107()=0;
+virtual void v108()=0;
+virtual void v109()=0;
+virtual void v110()=0;
+virtual void v111()=0;
+virtual void v112()=0;
+virtual void v113()=0;
+virtual void v114()=0;
+virtual void v115()=0;
+virtual void v116()=0;
+virtual void v117()=0;
+virtual void v118()=0;
+virtual void v119()=0;
+virtual void v120()=0;
+virtual void v121()=0;
+virtual void v122()=0;
+virtual void v123()=0;
+virtual void Attach(Widget*)=0;
+virtual void v125()=0;
+virtual void v126()=0;
+virtual void v127()=0;
+virtual void v128()=0;
+virtual void v129()=0;
+virtual void v130()=0;
+virtual void v131()=0;
+virtual void v132()=0;
+virtual void v133()=0;
+virtual void v134()=0;
+virtual void v135()=0;
+virtual void v136()=0;
+virtual void v137()=0;
+virtual void v138()=0;
+virtual void v139()=0;
+virtual void v140()=0;
+virtual void v141()=0;
+virtual void v142()=0;
+virtual void v143()=0;
+virtual void v144()=0;
+virtual void Add(const Ptr&)=0;
+};
+struct UI {__declspec(noinline) Widget* Find(const String&,int);};UI* __fastcall GetUI();
+Widget* LookupWidget(UI*,const char*,int);
+Widget* UI::Find(const String& name,int flag){return LookupWidget(this,name.Text(),flag);}
+struct Def {virtual void v0()=0;virtual void Delete()=0;int refs;};
+struct Ref {Def* p;Ref():p(0){}__forceinline ~Ref(){Def* d=p;if(d&&!--d->refs)d->Delete();}};
+struct Database {__declspec(noinline) int Index(const String&,bool);__declspec(noinline) bool Get(int,Def*&);};Database* __fastcall DatabaseInstance();
+int LookupDefinitionIndex(Database*,const char*,bool);Def* LookupDefinition(Database*,int);
+int Database::Index(const String& name,bool flag){return LookupDefinitionIndex(this,name.Text(),flag);}
+bool Database::Get(int index,Def*& out){if(index<=0)return false;Def* d=LookupDefinition(this,index);if(!d)return false;if(out!=d){if(out){if(!--out->refs)out->Delete();out=0;}out=d;++d->refs;}if(!--d->refs)d->Delete();return true;}
+struct Component {void Populate(Vector&,Widget*,int,int);void PopulatePC(int,Vector&,Widget*,int,int);};
+struct Pair {int key;Component* component;};struct Map {Pair *first,*last,*end;__declspec(noinline) Pair* Lower(const int& key){Pair* p=first;int n=last-first;while(n>0){int half=n/2;Pair* middle=p+half;if(middle->key<key){p=middle+1;n-=half+1;}else n=half;}return p;}};struct Thing {char pad[32];unsigned flags;char gap[32];Map map;};
+struct Parent {virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virtual Widget* Find(String)=0;};
+// Layout: receiver thing+4, thing flags+0x20/map+0x44; current/past lists global+0x5c/+0x60.
+struct Manager {void* table;Thing* thing;Widget* Construct(int arg);};
+Widget* Manager::Construct(int arg){
+ Component* component=0;if(thing->flags&0x2000000){Map* map=&thing->map;int key=25;Pair* p=map->Lower(key);if(p==map->last||key<p->key)p=map->last;component=p->component;}
+ List& list=global->current;
+ Vector items;for(Node* n=list.head->next;n!=list.head;n=n->next){void* p=n->value.Get();items.Push(p);}if(list.Size()<=0u)return 0;
+ Ref def;int index=DatabaseInstance()->Index("UI_MISC_THINGS_DEF",true);DatabaseInstance()->Get(index,def.p);UI* ui=GetUI();Widget* widget=ui->Find("UI_SUB_LIST",0);Ptr title(ui->Find("UI_TITLE_QUEST_CURRENT",0));widget->Add(title);
+ component->Populate(items,widget,1,arg);
+ return widget;
+}
+}

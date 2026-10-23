@@ -227,3 +227,8 @@ them.
 - **Landing:** all 51 were regraded and their tests re-run here. 48 landed as-is (batch `2026-10-23_external_963_965`). Three used scalar new/delete where retail calls the MSVCR71 array thunks; they were fixed by declaring `operator new[]` / `operator delete[]` and landed in `_963_965b`.
 - **Annotations:** its "review annotations" (APPROVED_REVIEW_ANNOTATIONS.json) are a review-only allowlist for label disagreements (RELOC_NAME). Our lander only warns on those, so no action was needed. Recovered helper names with evidence went to `ghidra_out/labels_external963_corrections_2026-10-23.tsv`.
 - **Blocked rows:** 00c400d0 and 0099c7e0 have bad extents, because each span holds more than one function. 00c174a0 takes extra register arguments (ESI/EBX).
+
+**Outcome of 966–968 (2026-10-23):** the outside AI returned 54 matches, 58 parks and 8 blocked rows (00924520 among them).
+- **Landing:** all 54 were regraded here with retail bytes read from Fable.exe at our offsets and their tests re-run under VC7.1. All landed as delivered (batch `2026-10-23_linux_external966`), with no relocation-identity errors.
+- **Names:** its `assigned_name` values are placeholders (`Row00406e30::Create`, `RetailVector::FillInsert`, `NFactory…`), so the catalog keeps the manifest names from `external_chunks_966-968.tsv`. The source's `// Leaf:` line still selects the symbol. Its NAME_RECOVERY.md marks its descriptive names as uncertain, so no labels file was written.
+- **Parks:** an in-house quick pass over the near misses is in `$S/gpt966/nm/`. Any recoveries land as their own batch.
