@@ -273018,6 +273018,41 @@ $catalog = @(
         TestSource = '00/72/CTCSpecialAbilities_SetupEnflameSpell_0072c790_test.cpp'
         PassPattern = '0072c790_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005b43a2'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_AddClothingToThing_005b43a2.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_AddClothingToThing_005b43a2_test.cpp'
+        PassPattern = '005b43a2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9470'
+        Module = 'CVertexGroupBlock'
+        Source = '00/ad/CVertexGroupBlock_RemoveLast_00ad9470.cpp'
+        TestSource = '00/ad/CVertexGroupBlock_RemoveLast_00ad9470_test.cpp'
+        PassPattern = '00ad9470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065c146'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_RemoveCrime_0065c146.cpp'
+        TestSource = '00/65/CTCVillage_RemoveCrime_0065c146_test.cpp'
+        PassPattern = '0065c146_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00788406'
+        Module = 'CTCMeleeTrap'
+        Source = '00/78/CTCMeleeTrap_TriggerTrap_00788406.cpp'
+        TestSource = '00/78/CTCMeleeTrap_TriggerTrap_00788406_test.cpp'
+        PassPattern = '00788406_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005252b0'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_SaveThingsOnLevelReadyForUnloading_005252b0.cpp'
+        TestSource = '00/52/CThingManager_SaveThingsOnLevelReadyForUnloading_005252b0_test.cpp'
+        PassPattern = '005252b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
