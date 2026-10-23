@@ -27177,3 +27177,6 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?insert@CULongMap@@QAE?AUSInsertResult@@ABUSULongPair@@@Z	00431363	009cda70
 ?DestroyRange@@YIXPAUCMapInfo@@0ABU__false_type@@@Z	00515250	005022f0
 ?resize@CMapInfoVector@@QAEXI@Z	0051be20	005022f0
+?clear@CNavConnectorNodeMap@@QAEXXZ	00a83fd0	00a792e0
+?GetQuestText@CV_FisticuffsClubScript@@QAE?AUCCharString@@U2@@Z	00e82f80	00e82950
+?SetUpRing@CFisticuffsClubRing@@QAEXXZ	00e83230	00e82950

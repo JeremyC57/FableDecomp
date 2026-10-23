@@ -275039,6 +275039,27 @@ $catalog = @(
         TestSource = '00/50/CWorldMap_DeleteAllLevels_005022f0_test.cpp'
         PassPattern = '005022f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a792e0'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_ClearNodes_00a792e0.cpp'
+        TestSource = '00/a7/CNavQuadTree_ClearNodes_00a792e0_test.cpp'
+        PassPattern = '00a792e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e82950'
+        Module = 'CFisticuffsClubRing'
+        Source = '00/e8/CFisticuffsClubRing_Main_00e82950.cpp'
+        TestSource = '00/e8/CFisticuffsClubRing_Main_00e82950_test.cpp'
+        PassPattern = '00e82950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c25860'
+        Module = 'C3DVector'
+        Source = '00/c2/C3DVector_CrossProduct_00c25860.cpp'
+        TestSource = '00/c2/C3DVector_CrossProduct_00c25860_test.cpp'
+        PassPattern = '00c25860_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
