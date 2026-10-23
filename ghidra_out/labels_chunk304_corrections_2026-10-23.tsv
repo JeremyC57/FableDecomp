@@ -1,0 +1,15 @@
+address	name	evidence
+007f87a0	GetSubDef<CParticleAttacherDef>	chunk 304 callee body
+004be000	GetNoDummyObjects	chunk 304 callee body
+004bde90	GetNoHelperPoints	chunk 304 callee body
+00449960	CPlayerManager::GetMainPlayer	chunk 304 callee body, const (was Catch@0040d959)
+0044c6b0	CDefinitionManager::Get	chunk 304 callee body, __fastcall (was GFGetPreMainMemoryUsed)
+005ede93	CTCInventoryAbilities::GetAbilityLevel	chunk 304 callee body
+00662110	MakeNoise	chunk 304 callee body
+006e11f0	CTCDParticleEmitter::Create	chunk 304 callee body
+0072ab70	CreateParticleEffect	chunk 304 callee body, __fastcall
+0075bc40	GetAllThingsInRoughArea	chunk 304 callee body
+0063ab10	GetGroundFaceNormalAt	chunk 304 callee body
+0099b510	CWideString::~CWideString	chunk 304 callee body
+0099aed0	CWideString::CWideString	chunk 304 callee body
+0099e900	CCharString::operator!=	chunk 304 callee body (was less::operator())

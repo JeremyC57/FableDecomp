@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007f08b0	RELOCATION_MATCH	593v593	PASS	DoDieFX model + named thingDef local
+007f0c70	DIFFER	718v715	-	regalloc ebp/edi swap + x87 dist fold + final fadd order
+00752640	RELOCATION_MATCH	607v607	PASS	CDefPointer operator-> for PAppearanceDef
+00753c70	RELOCATION_MATCH	544v544	PASS	vfunc_9 = FrameUpdate; out-param GetInterface + same-TU SetHeadTurnState
+007cc4d0	RELOCATION_MATCH	563v563	PASS	WillEnflame ctor model; named sound string; out-param GetInterface(0x10)
+007ccb00	RELOCATION_MATCH	619v619	PASS	out-param GetInterface(0x68)
+007cd390	SKIP	-	-	row covers ctor + jump table + 3 more functions (0x7cd6b0, 0x7cd6c0, 0x7cd6d0)
+0080f5e0	DIFFER	650v650	-	register rotation in the GetDummyObject call + GetPosition copy (26 difflines)
+0080f870	RELOCATION_MATCH	608v608	PASS	StartFlyingAround model; __forceinline IsAlive (4th use outlined otherwise)
+0080fad0	RELOCATION_MATCH	593v593	PASS	named block-local CIntelligentPointer temps (op= arg address + dtor tail-merge)
+0080f270	RELOCATION_MATCH	878v878	PASS	named def local (edi across GetWorld); size() twice keeps inlined range zero test
+007e8590	DIFFER	645v650	-	constant CSE picks 0x21 (ours) vs bit mask 2 (retail) in ebx; reg cascade (70 difflines)
+007f11d0	RELOCATION_MATCH	575v575	PASS	C3DVector pos copy + origin(x,y,0) then .Z assign keeps target Z on x87
+0072e290	RELOCATION_MATCH	550v550	PASS	inline STLport list/vector dtors; vector _Destroy(first,last) by value
+007f0f40	DIFFER	561v559	-	frame slot swap dist/angle + x87 operand order (55 difflines)
+007fc9d0	SKIP	-	-	row covers FrameUpdate + jump table + following functions
+007e6750	SKIP	-	-	row covers several functions after a jump table
+006b0250	RELOCATION_MATCH	524v524	PASS	GetOrientationInterpolator model; __forceinline C3DVector Interpolate; no user C3DVector operator=
+006b08f0	DIFFER	564v565	-	x87 load order of the marker LengthSquared + map-number scheduling (27 difflines)
+006af7d0	DIFFER	614v612	-	x87 axis caching (retail memory operands via &axis) (130 difflines)
+00724010	DIFFER	558v556	-	register choice al vs dl for the graphic type byte (18 difflines)
+007243c0	DIFFER	620v617	-	loop-head alignment + frame layout (140 difflines)
+00724630	DIFFER	749v741	-	RMW bitfield clear + x87 operand load order (20 difflines)
+0075a530	DIFFER	611v611	-	x87 operand load order in one product (6 difflines)
+00754050	DIFFER	613v588	-	ebx/ebp role swap + frame 0x24v0x20 + push_back shape (156 difflines)
+007f8890	RELOCATION_MATCH	630v630	PASS	bitfield if-form flag; named appearance; if (count > 0) for (i != count) loop
+00766660	DIFFER	700v696	-	this/effect esi/edi swap + end-particle spill + or-byte RMW lane gap (160 difflines)
+007e6450	DIFFER	748v756	-	/GS + jump table; appearance register + ftol channel order (112 difflines)
+0055d810	DIFFER	944v998	-	path tail wide-string helper chain unresolved; front close (336 difflines)
+0055d180	DIFFER	685v772	-	/GS; coarse pass: frame sizes + wide-string path chain (145 difflines)
+0079deb0	DIFFER	921v925	-	stack-home swap of def pointer/effect types + out-of-line op= in blended branch (275 difflines)
+0079e5f0	DIFFER	892v916	-	jump table; colour arms cache vector begin + owner register (277 difflines)
+00726980	DIFFER	609v595	-	step copy x87 forwarding + loop-head alignment (34 difflines)
+0075aaf0	DIFFER	607v593	-	coarse: frame slot reuse + loop alignment + x87 scheduling (163 difflines)
+0075b000	DIFFER	861v709	-	coarse: inertia/config x87 + zeroing shape (222 difflines)
+00759f80	DIFFER	1416v975	-	coarse: matrix temporaries/rep movsd shape (457 difflines)
+0075a7a0	DIFFER	672v726	-	coarse: this/config register homes and strength-reduced normal offset differ (312 difflines)
+00726ce0	DIFFER	1002v1011	-	near: frame/compare match; FastInvSqrt reg choice (ebx/edi v edx/ecx) and prologue push edi (227 difflines)
+005e4430	DIFFER	775v775	-	near: same length, 18 difflines; eax/ecx naming at both GetDef call sites (advisor asked)
+00625af0	DIFFER	963v989	-	coarse: shape right; ebx/ebp swap (list head/zero) and name-format temporaries (226 difflines)
