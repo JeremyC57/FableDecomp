@@ -222,3 +222,8 @@ them.
 **In-house retry of the 960–962 parks (2026-10-23):** 7 of 59 recovered (batches `2026-10-23_linux_adv_b99` and `_b103`).
 - Still parked: 52. The residues are in `$S/w22/gptretry/STATUS.tsv`, and most are the rough-area loop-exit reload gap or register rotations.
 - All 59 have now been attempted.
+
+**Outcome of 963–965 (2026-10-23):** the outside AI returned 51 matches, 66 parks and 3 blocked rows.
+- **Landing:** all 51 were regraded and their tests re-run here. 48 landed as-is (batch `2026-10-23_external_963_965`). Three used scalar new/delete where retail calls the MSVCR71 array thunks; they were fixed by declaring `operator new[]` / `operator delete[]` and landed in `_963_965b`.
+- **Annotations:** its "review annotations" (APPROVED_REVIEW_ANNOTATIONS.json) are a review-only allowlist for label disagreements (RELOC_NAME). Our lander only warns on those, so no action was needed. Recovered helper names with evidence went to `ghidra_out/labels_external963_corrections_2026-10-23.tsv`.
+- **Blocked rows:** 00c400d0 and 0099c7e0 have bad extents, because each span holds more than one function. 00c174a0 takes extra register arguments (ESI/EBX).

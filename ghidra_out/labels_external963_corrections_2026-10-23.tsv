@@ -1,0 +1,15 @@
+address	name	evidence
+00499ce0	CProgressDisplay::CProgressDisplay	external 963-965 (ChatGPT): ctor evidence from accepted 0049e7c0 AutoSave_StartProgress
+00841e90	LHNetworkLib::LAddress::LAddress	external 963-965: LSocket::SendBlock 008f95d0 builds it; signature/field evidence
+0047832d	std::vector<CAppearanceModifierScalingDef>::operator=	external 963-965: copy ctor installs RTTI 0x01236434, size getter returns 72 (manifest said CAbilityTrackLevelDef)
+00ab4540	std::vector<CVertexShaderInput::CStreamInfo>::_M_insert_overflow	external 963-965: nested CVertexStreamFormat RTTI 0x0129d578
+00753630	CTCLook::InitialiseTurningViaAnimation	external 963-965 (parked): CGetBestTurningAnim functor and for_each by value
+0084e420	NCameraModes::CBase::CBase	external 963-965 (parked): camera manager ref + CDefPointer<const CCameraModeDef>
+008334f0	CThingAICreature::GetGatherPosInBuilding	external 963-965 (parked)
+0055dc00	CTCPhotojournalCapture::CreateScreen	external 963-965 (parked)
+005458a0	NUISystem::CSpellContainer::AssignSpell	external 963-965 (parked)
+00a90d60	N3DPrimitive::CDeviceIndependent::RemapBoneIndices	external 963-965 (parked)
+006d72d0	CTCHeroExperience::GetActiveComboMultiplierData	external 963-965 (parked)
+004bd040	NGraphicAppearance::CTCGraphicAppearance::GetTintColour	external 963-965 (parked)
+009ce050	CBankFile::InitEntry	external 963-965 (parked)
+0076d2f0	CTCEnemy::AreThingsEnemies	external 963-965 (parked)

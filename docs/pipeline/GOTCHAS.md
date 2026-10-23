@@ -910,3 +910,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - **Empty tags:** a user ctor on an empty tag removes its byte store.
   - **Colour structs:** byte stores in the ctor body (not an init list) give retail's store order.
 - The other 13 stay parked, with residues in `$S/w22/gptretry/STATUS.tsv`.
+- (2026-10-23, external 963-965) **Array new/delete:** VC7.1 lowers `new T[n]` and `delete[] p` to the SCALAR `??2`/`??3` unless a global `void* __cdecl operator new[](unsigned int); void __cdecl operator delete[](void*);` is declared in the TU. When retail calls the MSVCR71 array thunks (`operator new[]` 0x00BFEB22, `operator delete[]` 0x00BFEB1C), declare both. The lander's identity check rejects the scalar binding; this fixed 00870370, 008709f0 and 00c3bcb0.

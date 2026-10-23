@@ -1,0 +1,72 @@
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+// BEGIN exact source snapshot SHA256 1c3d9faa04bfe3fd5123622da8dac8f57c8b89d3ad6a89a9a69b9ba368964fa5
+// 004788ca Vector<CAbilityTrackLevelDef>::Assign
+// Flags: /O1 /Oy-
+// Leaf: Assign
+// Layout: retail 004788ca reads vector pointers at +0,+4,+8; signed pointer differences divide by 72. Element identity follows the constructor vtable and PDB; donor layout differs.
+#include <stddef.h>
+#include <new>
+// Layout: quarantined donor definition differs from retail; retail element size 72 from idiv and constructor increments.
+class CAbilityTrackLevelDef {
+public:
+ virtual ~CAbilityTrackLevelDef();unsigned rest[17];
+ CAbilityTrackLevelDef() {}
+ CAbilityTrackLevelDef(const CAbilityTrackLevelDef&);
+ CAbilityTrackLevelDef& operator=(const CAbilityTrackLevelDef&);
+};
+struct EmptyTag {};
+#pragma auto_inline(off)
+void __fastcall DestroyRange(CAbilityTrackLevelDef* first,CAbilityTrackLevelDef* last){for(;first!=last;++first)first->~CAbilityTrackLevelDef();}
+#pragma auto_inline(on)
+
+template<class T> class Vector {
+public:
+ T *begin_, *end_, *limit_;
+ T* AllocateCopy(unsigned n,const T* first,const T* last);
+ void Dispose();
+ static __forceinline T* Copy(const T* first,const T* last,T* result) {
+  for(ptrdiff_t n=last-first;n>0;--n,++first,++result) *result=*first;
+  return result;
+ }
+ static __forceinline T* Construct(const T* first,const T* last,T* result) {
+  T* current=result;
+  for(;first!=last;++first,++current) if(current) new(current) T(*first);
+  return current;
+ }
+ Vector& Assign(const Vector& other) {
+  if(&other!=this) {
+   const unsigned n=other.end_-other.begin_;
+   if(n>unsigned(limit_-begin_)) {
+    T* fresh=AllocateCopy(n,other.begin_,other.end_); Dispose(); begin_=fresh;limit_=begin_+n;
+   } else if(unsigned(end_-begin_)>=n) {
+    T* last=Copy(other.begin_,other.end_,begin_); DestroyRange(last,end_);
+   } else {
+    Copy(other.begin_,other.begin_+(end_-begin_),begin_);
+    Construct(other.begin_+(end_-begin_),other.end_,end_);
+   }
+   end_=begin_+n;
+  }
+  return *this;
+ }
+};
+template Vector<CAbilityTrackLevelDef>& Vector<CAbilityTrackLevelDef>::Assign(const Vector<CAbilityTrackLevelDef>&);
+
+// END exact source snapshot
+template<class T> T* Vector<T>::AllocateCopy(unsigned n,const T* first,const T* last) { T* out=(T*)malloc(n*sizeof(T)); Construct(first,last,out); return out; }
+template<class T> void Vector<T>::Dispose() { free(begin_); }
+CAbilityTrackLevelDef::CAbilityTrackLevelDef(const CAbilityTrackLevelDef& r) {for(int i=0;i<17;++i)rest[i]=r.rest[i];}
+CAbilityTrackLevelDef& CAbilityTrackLevelDef::operator=(const CAbilityTrackLevelDef& r) {for(int i=0;i<17;++i)rest[i]=r.rest[i];return *this;}
+static int destroyed;CAbilityTrackLevelDef::~CAbilityTrackLevelDef(){++destroyed;}
+int main() {
+ CAbilityTrackLevelDef data[3]; for(int i=0;i<3;++i) {for(int j=0;j<17;++j)data[i].rest[j]=100+i+j;}
+ Vector<CAbilityTrackLevelDef> source={data,data+3,data+3};
+ Vector<CAbilityTrackLevelDef> target={(CAbilityTrackLevelDef*)malloc(sizeof(CAbilityTrackLevelDef)),0,0}; target.end_=target.begin_;target.limit_=target.begin_+1;
+ assert(&target.Assign(source)==&target); assert(target.end_-target.begin_==3);assert(target.begin_[2].rest[0]==102);assert(target.begin_[1].rest[0]==101);
+ CAbilityTrackLevelDef* saved=target.begin_; target.Assign(target);assert(target.begin_==saved);
+ source.end_=data+1;target.Assign(source); assert(target.end_-target.begin_==1);assert(destroyed==2);assert(target.begin_[0].rest[0]==100);
+ source.end_=data+3;target.Assign(source); assert(target.end_-target.begin_==3);assert(target.begin_[2].rest[0]==102);
+ source.end_=source.begin_;target.Assign(source);assert(target.end_==target.begin_);assert(destroyed==5);free(target.begin_);
+ puts("004788ca_TEST PASS");return 0;
+}
