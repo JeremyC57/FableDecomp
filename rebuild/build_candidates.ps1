@@ -276826,6 +276826,27 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '009c7a60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006eba60'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_CCombatManagerRebuildCombatLists_006eba60.cpp'
+        TestSource = '00/6e/CCombatManager_CCombatManagerRebuildCombatLists_006eba60_test.cpp'
+        PassPattern = '006eba60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b08c0'
+        Module = 'CDefinitionManager'
+        Source = '00/9b/CDefinitionManager_Compile_009b08c0.cpp'
+        TestSource = '00/9b/CDefinitionManager_Compile_009b08c0_test.cpp'
+        PassPattern = '009b08c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f4d60'
+        Module = 'CCreatureAction_DragonFlight'
+        Source = '00/8f/CCreatureActionDragonFlight_CCreatureActionDragonFlight_008f4d60.cpp'
+        TestSource = '00/8f/CCreatureActionDragonFlight_CCreatureActionDragonFlight_008f4d60_test.cpp'
+        PassPattern = '008f4d60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

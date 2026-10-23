@@ -28213,3 +28213,16 @@ _lzo1x_999_compress	00c08130	00a99840
 ?FormatNumber_AddThousandsSeparators@NGameText@@YIXHPAG@Z	00a0dac0	009c7a60
 ?Prefix@NGameText@@3QBGB	0129b470	009c7a60
 ?Replace@CWideString@NGameText@@QAEXABU12@0@Z	0099c1e0	009c7a60
+?GetCombatManager@CThingCreatureBase@CombatLists@@QAEPAUCCombatManager@2@XZ	00661ec0	006eba60
+?GetCombatTypeDef@CThingCreatureBase@CombatLists@@QAEPAUCCombatTypeDef@@XZ	00666d10	006eba60
+?sort@list@CombatLists@@QAEXUCCompareByDistance@2@@Z	006f3a30	006eba60
+?CheckDependencies@CDefinitionManager@NDefinitionManager@@QAEXABU?$vector@UCWideString@@@@@Z	009b05f0	009b08c0
+?CreateSymbolsFromPathList@CDefinitionManager@NDefinitionManager@@QAEXABU?$vector@UCWideString@@@@_N@Z	009aef60	009b08c0
+?DoCompilePathList@CDefinitionManager@NDefinitionManager@@QAEXABU?$vector@UCWideString@@@@ABUCCharString@@@Z	009af480	009b08c0
+?GetData@CMemoryDataOutputStream@@QBEPBXXZ	00995e70	009b08c0
+?GetSize@CMemoryDataOutputStream@@QBEKXZ	00994b40	009b08c0
+?LoadBinaryDefinitions@CDefinitionManager@NDefinitionManager@@QAE_NAAUCDataInputStream@@@Z	009afb90	009b08c0
+?RemoveUnusedMemory@CDefinitionManager@NDefinitionManager@@QAEXXZ	009ae5f0	009b08c0
+?SaveBinaryDefinitions@CDefinitionManager@NDefinitionManager@@QAEXAAUCDataOutputStream@@@Z	009af7a0	009b08c0
+?g_bLoadBinaryDefinitions@@3_NA	013ca7d8	009b08c0
+?g_bSaveBinaryDefinitions@@3_NA	0138e188	009b08c0

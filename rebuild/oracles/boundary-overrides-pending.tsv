@@ -79,3 +79,4 @@ address	exported_length	corrected_length	reason
 00801cb0	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
 00ad52a0	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
 00ad5030	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
+009b08c0	512	506	code 506 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
