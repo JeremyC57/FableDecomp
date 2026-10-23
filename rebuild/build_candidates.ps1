@@ -271284,6 +271284,41 @@ $catalog = @(
         TestSource = '00/6e/CTCDParticleEmitter_FrameUpdate_006e1620_test.cpp'
         PassPattern = '006e1620_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0095fed0'
+        Module = 'CAIStateGroup_DeedReactionRoot'
+        Source = '00/95/CAIStateGroupDeedReactionRoot_IsStillValid_0095fed0.cpp'
+        TestSource = '00/95/CAIStateGroupDeedReactionRoot_IsStillValid_0095fed0_test.cpp'
+        PassPattern = '0095fed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2fd0'
+        Module = 'CTCGuard'
+        Source = '00/7b/CTCGuard_WitnessedCrime_007b2fd0.cpp'
+        TestSource = '00/7b/CTCGuard_WitnessedCrime_007b2fd0_test.cpp'
+        PassPattern = '007b2fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e5230'
+        Module = 'CTCBetting'
+        Source = '00/7e/CTCBetting_ProcessInput_007e5230.cpp'
+        TestSource = '00/7e/CTCBetting_ProcessInput_007e5230_test.cpp'
+        PassPattern = '007e5230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00783380'
+        Module = 'CTCBoastingCrowdControl'
+        Source = '00/78/CTCBoastingCrowdControl_SpawnCrowdMember_00783380.cpp'
+        TestSource = '00/78/CTCBoastingCrowdControl_SpawnCrowdMember_00783380_test.cpp'
+        PassPattern = '00783380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d99b0'
+        Module = 'CModeJackOfBladesDeath'
+        Source = '00/8d/CModeJackOfBladesDeath_FrameUpdate_008d99b0.cpp'
+        TestSource = '00/8d/CModeJackOfBladesDeath_FrameUpdate_008d99b0_test.cpp'
+        PassPattern = '008d99b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
