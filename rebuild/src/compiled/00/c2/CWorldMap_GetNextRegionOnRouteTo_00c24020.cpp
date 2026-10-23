@@ -11,14 +11,14 @@ struct CWorldMap {
 
 // callee member at 0xc24040, takes self in ecx; return value ignored but
 // leaves the count value live in eax so the caller reuses it as index.
-long __fastcall CWorldMap_helper(CWorldMap* self);
+long __fastcall CWorldMap_helper_00c24040(CWorldMap* self);
 
 long __fastcall CWorldMap_GetNextRegionOnRouteTo(CWorldMap* self)
 {
     long i = self->count;
     if (i == 0)
         return 0;
-    i = CWorldMap_helper(self);
+    i = CWorldMap_helper_00c24040(self);
     long r = self->arr[i];
     self->count = self->count - 1;
     return r;

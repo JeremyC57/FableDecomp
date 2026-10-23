@@ -9,11 +9,11 @@ struct CIsThingAlive;
 
 struct CPredicate_And {
     // __fastcall helper at 0xc0dcf0: this=ecx, one stack arg.
-    void helper(CIsThingAlive* arg);
+    void helper_00c0dcf0(CIsThingAlive* arg);
 };
 
 // operator&&: __fastcall  self in ecx, arg in edx.
 CPredicate_And* __fastcall operator_And(CPredicate_And* self, CIsThingAlive* arg) {
-    self->helper(arg);
+    self->helper_00c0dcf0(arg);
     return self;
 }

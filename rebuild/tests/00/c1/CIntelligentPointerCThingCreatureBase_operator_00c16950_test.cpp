@@ -6,12 +6,12 @@ class CIntelligentPointer
 {
 public:
     void* m_ptr;
-    CThingCreatureBase* GetTarget();
+    CThingCreatureBase* GetTarget_00c16800();
     void SetTarget(CThingCreatureBase*);
     CIntelligentPointer* operator=(CIntelligentPointer& rhs);
 };
 
-CThingCreatureBase* CIntelligentPointer::GetTarget()
+CThingCreatureBase* CIntelligentPointer::GetTarget_00c16800()
 {
     return (CThingCreatureBase*)this->m_ptr;
 }
@@ -23,7 +23,7 @@ void CIntelligentPointer::SetTarget(CThingCreatureBase* p)
 
 CIntelligentPointer* CIntelligentPointer::operator=(CIntelligentPointer& rhs)
 {
-    this->SetTarget(rhs.GetTarget());
+    this->SetTarget(rhs.GetTarget_00c16800());
     return this;
 }
 

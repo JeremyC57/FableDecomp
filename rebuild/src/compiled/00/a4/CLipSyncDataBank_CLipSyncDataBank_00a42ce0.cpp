@@ -65,10 +65,10 @@ struct CEntryVector {                               // STLport vector<CLipSyncDa
 };
 
 struct CResourceBank;
-struct CBankFile {
+namespace N_009d6490 { struct CBankFile {
     virtual ~CBankFile();                           // 0x009D6490
     unsigned char _body[0x160];                     // retail CBankFile is 0x164 bytes
-};
+}; } using N_009d6490::CBankFile;
 
 struct CLipSyncDataBank : CBankFile {
     CEntryVector Entries;                           // +0x164

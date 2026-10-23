@@ -4,7 +4,7 @@ struct IDrawableObj { void* vtbl; };
 static IDrawableObj g_obj;
 static void* g_self=0; static void* g_node=0;
 int __fastcall rec(IDrawableObj* self, int /*edx*/, CThingTrackNode* node){ g_self=self; g_node=node; return 7; }
-IDrawableObj* __fastcall GetDrawableObject(CThingTrackNode* self){ (void)self; return &g_obj; }
+IDrawableObj* __fastcall GetDrawableObject_00af7e60(CThingTrackNode* self){ (void)self; return &g_obj; }
 struct CThingTrackNode { IDrawableObj* DrawIsDrawable(); };
 int main(){
   static void* vt[0x13];

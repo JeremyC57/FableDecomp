@@ -8,13 +8,13 @@ struct CWorldMap {
 };
 
 // member fn @ 0xc23df0 (__fastcall, returns long index)
-extern long __fastcall CWorldMap_helper(CWorldMap* self);
+extern long __fastcall CWorldMap_helper_00c23df0(CWorldMap* self);
 
 long __fastcall GetNextRegionOnRouteTo(CWorldMap* self)
 {
     if (self->count == 0)
         return 0;
-    long idx = CWorldMap_helper(self);
+    long idx = CWorldMap_helper_00c23df0(self);
     long r = self->array[idx];
     self->count = self->count - 1;
     return r;

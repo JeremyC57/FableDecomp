@@ -15,7 +15,7 @@ static int          g_seenEdx;
 static int          g_seenValue;
 static int          g_callCount;
 
-void __fastcall CGuiVarTransferBool_Apply(void* pTarget, int edxArg, bool value)
+void __fastcall CGuiVarTransferBool_Apply_00aea880(void* pTarget, int edxArg, bool value)
 {
     g_seenTarget = pTarget;
     g_seenEdx    = edxArg;
@@ -25,7 +25,7 @@ void __fastcall CGuiVarTransferBool_Apply(void* pTarget, int edxArg, bool value)
 
 void CGuiVarTransferBool::TransferToGui()
 {
-    CGuiVarTransferBool_Apply(this->m_pTarget, this->m_edxArg, this->m_value);
+    CGuiVarTransferBool_Apply_00aea880(this->m_pTarget, this->m_edxArg, this->m_value);
     this->m_dirty = 0;
 }
 

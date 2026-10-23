@@ -23,7 +23,7 @@ struct CBase {
 struct CVolume : CBase {                            // vtable 0x0129C840
     IDirect3DVolume9* m_pVolume;                    // +0x04
     void ReleaseVolume(bool release);               // 0x00A67460
-    void Helper(void* argument);                    // 0x00A67450 (empty)
+    void Helper_00a67450(void* argument);                    // 0x00A67450 (empty)
     virtual ~CVolume() { ReleaseVolume(true); }
 };
 
@@ -34,5 +34,5 @@ struct CVolumeTexture {
 
 void CVolumeTexture::ForwardToVolumeLevel(unsigned long level, void* argument)
 {
-    GetVolumeLevel(level).Helper(argument);
+    GetVolumeLevel(level).Helper_00a67450(argument);
 }

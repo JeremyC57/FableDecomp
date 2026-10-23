@@ -12,12 +12,12 @@
 // Shape: the derived vtable store follows the base constructor, then the member constructors in declaration order
 // (StateBlock's inline constructor stores its vtable; the CArray and counted pointer zero from ebx); `Filename = ""` is
 // a body statement (the counted-pointer zero stores are scheduled between its push and its call).
-class CBankFile {
+namespace N_009d5f80 { class CBankFile {
 public:
     CBankFile();                                     // 0x009D5F80
     virtual ~CBankFile();
     unsigned char _body[0x160];                      // +0x04 .. +0x163 (retail size 0x164)
-};
+}; } using N_009d5f80::CBankFile;
 
 struct CStateBlock {
     long FontHeight;

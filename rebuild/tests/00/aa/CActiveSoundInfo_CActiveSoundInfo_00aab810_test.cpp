@@ -5,7 +5,7 @@
 #define __declspec(x)
 #endif
 static int g_base = 0;
-struct CBase { virtual void v00() { } CBase() { ++g_base; } };
+namespace N_0099a2d0 { struct CBase { virtual void v00() { } CBase() { ++g_base; } }; } using N_0099a2d0::CBase;
 struct __declspec(novtable) CActiveSoundInfoBase : CBase { void* m_pSound; CActiveSoundInfoBase(void* s) : CBase(), m_pSound(s) { } };
 struct CActiveSoundInfo : CActiveSoundInfoBase {
     void* m_pOwner; void* m_pInfo; virtual void v00() { }

@@ -6,11 +6,11 @@
 // operator delete @ 0x00BFE9BC, CBase::~CBase @ 0x0099A300 (jmp).
 // CBase: the engine's polymorphic root (vtable @ 0x0129A7C4 in the ctor, 0x01231710 in the dtor);
 // both members are out of line in retail.
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void VSlot0();
     CBase();                                    // 0x0099A2F0
     ~CBase();                                   // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CChunkedFileSuperChunk;
 struct SCountBlock {                            // CCPPointerInfo: {references, destroy function, object}
     long m_references;                          // +0

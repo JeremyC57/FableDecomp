@@ -19,12 +19,12 @@ struct SPair {
 
 struct SLess { char m_tag; };              // comparator object passed by value
 
-void __fastcall AdjustHeap(SPair* first, long hole, long bottom, SPair value, SLess pred);   // 0x00A6B4F0
+void __fastcall AdjustHeap_00a6b4f0(SPair* first, long hole, long bottom, SPair value, SLess pred);   // 0x00A6B4F0
 
 inline void PopHeap(SPair* first, SPair* last, SPair* dest, SPair value, SLess pred)
 {
     *dest = *first;
-    AdjustHeap(first, 0, last - first, value, pred);
+    AdjustHeap_00a6b4f0(first, 0, last - first, value, pred);
 }
 
 void __fastcall SortHeap_00a6b990(SPair* first, SPair* last, SLess pred)

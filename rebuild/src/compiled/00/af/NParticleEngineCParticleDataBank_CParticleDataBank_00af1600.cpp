@@ -33,10 +33,10 @@ struct CSymbolMap {                                            // retail 36 byte
     unsigned char _body[0x24];
     ~CSymbolMap();                                             // 0x006FD040
 };
-struct CBankFile {
+namespace N_009d6490 { struct CBankFile {
     virtual ~CBankFile();                                      // 0x009D6490
     unsigned char _pad04[0x164 - 0x04];
-};
+}; } using N_009d6490::CBankFile;
 struct CBankSecondaryBase {                                    // vtable 0x0129F380 in the derived object
     virtual ~CBankSecondaryBase();                             // 0x009FC690
     unsigned char _pad04[0x7c - 0x04];

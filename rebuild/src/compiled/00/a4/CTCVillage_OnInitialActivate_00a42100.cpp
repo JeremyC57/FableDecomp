@@ -4,7 +4,7 @@ struct CInner;
 
 // __fastcall/__fastcall member on the inner object:
 //   ecx = inner (self->m0), edx = self->m4, stack = byte value.
-extern void __fastcall InnerActivate(CInner* self, void* p, unsigned char flag);
+extern void __fastcall InnerActivate_00a42060(CInner* self, void* p, unsigned char flag);
 
 struct CTCVillage
 {
@@ -22,7 +22,7 @@ void __fastcall OnInitialActivate(CTCVillage* self)
 {
     if (self->md)
     {
-        InnerActivate(self->m0, self->ParentThing, self->mc);
+        InnerActivate_00a42060(self->m0, self->ParentThing, self->mc);
         self->md = 0;
     }
 }

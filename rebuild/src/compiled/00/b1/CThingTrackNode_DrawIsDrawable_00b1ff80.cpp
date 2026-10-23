@@ -24,7 +24,7 @@ struct IDrawableObj {
     virtual int slot12(CThingTrackNode* node);
 };
 
-extern IDrawableObj* __fastcall GetDrawableObject(CThingTrackNode* self);
+extern IDrawableObj* __fastcall GetDrawableObject_00af8100(CThingTrackNode* self);
 
 struct CThingTrackNode {
     IDrawableObj* DrawIsDrawable();
@@ -32,7 +32,7 @@ struct CThingTrackNode {
 
 IDrawableObj* CThingTrackNode::DrawIsDrawable()
 {
-    IDrawableObj* obj = GetDrawableObject(this);
+    IDrawableObj* obj = GetDrawableObject_00af8100(this);
     obj->slot12(this);
     return obj;
 }

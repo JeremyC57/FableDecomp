@@ -3,7 +3,7 @@
 #include <cstring>
 static char g_order[16]; static int g_n = 0;
 static void Note(char c) { g_order[g_n++] = c; g_order[g_n] = 0; }
-struct CBankFile { virtual ~CBankFile() { Note('B'); } };
+namespace N_009d6490 { struct CBankFile { virtual ~CBankFile() { Note('B'); } }; } using N_009d6490::CBankFile;
 struct CSecondary { virtual ~CSecondary() { Note('S'); } };
 struct CArray { ~CArray() { Note('A'); } };
 struct CSymbolMap { char tag; ~CSymbolMap() { Note(tag); } };

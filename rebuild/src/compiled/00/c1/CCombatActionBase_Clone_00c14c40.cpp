@@ -4,11 +4,11 @@
 // The block is kept in the frame because the copy constructor may throw (EH state 0; the funclet
 // frees it through operator delete); the null path has its own epilogue. The class comes from the
 // manifest label; the copy constructor is out of line.
-struct CCombatActionBase {
+namespace N_00c2cbd0 { struct CCombatActionBase {
     unsigned char _body[0x44];
     CCombatActionBase(const CCombatActionBase& other);   // 0x00C2CBD0
     CCombatActionBase* Clone();
-};
+}; } using N_00c2cbd0::CCombatActionBase;
 
 CCombatActionBase* CCombatActionBase::Clone()
 {

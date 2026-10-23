@@ -10,11 +10,11 @@
 // Shape: two bases (both ctors out of line; the secondary vtable is stored before the primary), the CArray modelled as
 // STLport _Vector_base with the _STLP_alloc_proxy end member (puts the `lea ecx` before the third zero store), its inline
 // zeroing ctor, then the body: ResourceList's +0x34 word cleared and SetMaxSize(0x10000).
-struct CBankFile {
+namespace N_009d5f80 { struct CBankFile {
     virtual void v00();
     unsigned char _bankFile[0x160];         // +0x004
     CBankFile();                            // 0x009D5F80
-};
+}; } using N_009d5f80::CBankFile;
 struct CResourceList {
     unsigned char _list[0x28];              // +0x00
     unsigned long m_maxSize;                // +0x28

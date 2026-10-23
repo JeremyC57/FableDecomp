@@ -20,12 +20,12 @@ struct CShaderRenderManager {unsigned char EarlierMembers[0x390];bool VertexShad
  void DisableVertexShaders(); //009880e0
 };
 struct CEngineLightingManager_Methods:CEngineLightingManager {void DisablePointLights();}; //00b44d50
-extern CRenderStateManager* g_pRenderStateManager; //01436e18
+extern CRenderStateManager* g_pRenderStateManager_01436e18; //01436e18
 extern CShaderRenderManager* g_pShaderRenderManager; //01436e14
 extern CEngineLightingManager_Methods* g_pLightingManager; //01436e9c
 static __forceinline void ClearNormalizeNormals()
 {
- CRenderStateManager* manager=g_pRenderStateManager;
+ CRenderStateManager* manager=g_pRenderStateManager_01436e18;
  CStateInfo& state=reinterpret_cast<CDeviceStateNormalizeView*>(manager->DeviceState)->NormalizeNormals;
  if(state.DesiredState!=0){
   unsigned long oldMask=state.BookmarkMask;
@@ -56,7 +56,7 @@ void CEnginePrimitiveRenderer_Methods::PostRenderLayer()
 static int failures=0,step=0,pixelCalls=0,vertexCalls=0;static bool wantPixel,wantVertex;
 static CEnginePrimitiveRenderer_Methods* active=0;static CStateInfo* tracked=0;static CShaderRenderManager* swapManager=0;
 static void check(bool b){if(!b)++failures;}
-CRenderStateManager* g_pRenderStateManager=0;CShaderRenderManager* g_pShaderRenderManager=0;CEngineLightingManager_Methods* g_pLightingManager=0;
+CRenderStateManager* g_pRenderStateManager_01436e18=0;CShaderRenderManager* g_pShaderRenderManager=0;CEngineLightingManager_Methods* g_pLightingManager=0;
 void CEngineLightingManager_Methods::DisablePointLights(){check(step==0 && reinterpret_cast<long&>(active->_pad_0x78)==-1 && tracked->DesiredState==0);step=1;}
 void CEnginePrimitiveRenderer_Methods::ResetWorldTransform(){check(this==active && step==1);step=2;}
 void CShaderRenderManager::EnablePixelShaders(){check(step==2 && wantPixel && !PixelShadersEnabled);++pixelCalls;PixelShadersEnabled=true;if(swapManager)g_pShaderRenderManager=swapManager;}
@@ -68,7 +68,7 @@ static void run(unsigned long desired,unsigned long mask,unsigned long activeMas
  CStateInfo* state=&reinterpret_cast<CDeviceStateNormalizeView*>(manager.DeviceState)->NormalizeNormals;state->CurrentState=83;state->DesiredState=desired;state->BookmarkMask=mask;state->DeviceStateID=91;state->DirtyListFlag=dirty;state->StateType=2;state->TextureStage=4;
  manager.CurrentBookmarkMask=activeMask;manager.StateStackSize=2;manager.StateUpdateListSize=3;CStateStackElement* stack=reinterpret_cast<CStateStackElement*>(manager.StateStack);stack[1].State=state;stack[1].Value=731;
  renderer._pad_0x260[0]=savedP;renderer._pad_0x260[1]=savedV;reinterpret_cast<long&>(renderer._pad_0x78)=89;shader.PixelShadersEnabled=oldP;shader.VertexShadersEnabled=oldV;other.PixelShadersEnabled=savedP;other.VertexShadersEnabled=!savedV;
- g_pRenderStateManager=&manager;g_pShaderRenderManager=&shader;g_pLightingManager=&lights;active=&renderer;tracked=state;step=pixelCalls=vertexCalls=0;wantPixel=savedP;wantVertex=savedV;swapManager=swap?&other:0;
+ g_pRenderStateManager_01436e18=&manager;g_pShaderRenderManager=&shader;g_pLightingManager=&lights;active=&renderer;tracked=state;step=pixelCalls=vertexCalls=0;wantPixel=savedP;wantVertex=savedV;swapManager=swap?&other:0;
  renderer.PostRenderLayer();bool capture=desired && !(mask&activeMask);bool queue=desired && !dirty;
  check(step==2 && reinterpret_cast<long&>(renderer._pad_0x78)==-1 && state->DesiredState==0 && state->CurrentState==83 && state->DeviceStateID==91 && state->StateType==2 && state->TextureStage==4);
  check(state->BookmarkMask==(capture?(mask|activeMask):mask) && state->DirtyListFlag==(dirty||desired!=0));

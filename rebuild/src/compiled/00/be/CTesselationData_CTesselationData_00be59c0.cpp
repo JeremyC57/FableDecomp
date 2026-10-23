@@ -9,10 +9,10 @@
 // derived constructor's own store is scheduled with the member stores.
 struct CEngineMap;
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v0();
     CBase();                                    // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CTesselationData : CBase {               // vtable 0x012A800C
     long PatchWorldX;                           // +0x04

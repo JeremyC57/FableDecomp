@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_baseCtor = 0, g_baseDtor = 0, g_destroyed = 0, g_commentCtor = 0, g_commentDtor = 0; static const char* g_commentText = 0; static long g_commentLength = 0; static void* g_destroyedObject = 0;
-struct CBase { virtual void VSlot0() { } CBase() { ++g_baseCtor; } ~CBase() { ++g_baseDtor; } };
+namespace N_0099a300 { struct CBase { virtual void VSlot0() { } CBase() { ++g_baseCtor; } ~CBase() { ++g_baseDtor; } }; } using N_0099a300::CBase;
 struct CChunkedFileSuperChunk;
 struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(void*); void* m_pObject; };
 static void __fastcall DestroyChunk(void* object) { ++g_destroyed; g_destroyedObject = object; }

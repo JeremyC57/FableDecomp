@@ -3,7 +3,7 @@
 #include <cstring>
 struct C3DVector { float X, Y, Z; };
 struct CGameScriptThing { long DecrementScriptCounter() { return 77; } };
-struct CBase { virtual void v00() { } CBase() { } };
+namespace N_0099a2d0 { struct CBase { virtual void v00() { } CBase() { } }; } using N_0099a2d0::CBase;
 struct SListNode_00aac580 { SListNode_00aac580* m_pNext; SListNode_00aac580* m_pPrev; long m_a; long m_b; };
 struct CRetailList_00aac580 { SListNode_00aac580* m_pHead; CRetailList_00aac580() { m_pHead = 0; SListNode_00aac580* n = (SListNode_00aac580*)std::malloc(sizeof(SListNode_00aac580)); n->m_pNext = n; n->m_pPrev = n; m_pHead = n; } };
 struct CSoundEmitterLH : CBase { CGameScriptThing* m_pThing; float m_positionX, m_positionY, m_positionZ; CRetailList_00aac580 m_sounds; bool m_active, m_paused, m_finished; long m_scriptCounter;

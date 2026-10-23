@@ -12,10 +12,10 @@
 // no vtable store of this class (`__declspec(novtable)`), then the base destructor as a plain call; `ret`.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CBase {                                     // vtable 0x01231710
+namespace N_0099a300 { struct CBase {                                     // vtable 0x01231710
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 

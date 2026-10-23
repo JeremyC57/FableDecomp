@@ -4,14 +4,14 @@
 typedef unsigned int TKey;
 struct SRecord { TKey first; unsigned int second[4]; };
 struct SKeyLess { bool operator()(const SRecord& a, const SRecord& b) const { return a.first < b.first; } };
-static SRecord* __copy_backward(SRecord* first, SRecord* last, SRecord* result)
+static SRecord* __copy_backward_00a31480(SRecord* first, SRecord* last, SRecord* result)
 { for (long n = last - first; n > 0; --n) *--result = *--last; return result; }
-static void __unguarded_linear_insert(SRecord* last, SRecord value, SKeyLess comp)
+static void __unguarded_linear_insert_00a31280(SRecord* last, SRecord value, SKeyLess comp)
 { SRecord* next = last; --next; while (comp(value, *next)) { *last = *next; last = next; --next; } *last = value; }
 static void __linear_insert(SRecord* first, SRecord* last, SRecord value, SKeyLess comp)
 {
-    if (comp(value, *first)) { __copy_backward(first, last, last + 1); *first = value; }
-    else __unguarded_linear_insert(last, value, comp);
+    if (comp(value, *first)) { __copy_backward_00a31480(first, last, last + 1); *first = value; }
+    else __unguarded_linear_insert_00a31280(last, value, comp);
 }
 static SRecord R(TKey k) { SRecord r; r.first = k; for (int i = 0; i < 4; ++i) r.second[i] = (unsigned int)k * 10 + i; return r; }
 int main()

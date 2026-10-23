@@ -13,7 +13,7 @@ struct CTCInventoryItem {
 extern "C" void __cdecl EngineFree(void* p);
 
 // this-call base OnDie at 0xb59730, value model as __fastcall(self)
-extern void __fastcall BaseOnDie(CTCInventoryItem* self);
+extern void __fastcall BaseOnDie_00b59730(CTCInventoryItem* self);
 
 void __fastcall OnDie(CTCInventoryItem* self)
 {
@@ -21,5 +21,5 @@ void __fastcall OnDie(CTCInventoryItem* self)
     if (p) {
         EngineFree(p);
     }
-    BaseOnDie(self);
+    BaseOnDie_00b59730(self);
 }

@@ -3,7 +3,7 @@ static int g_deleted = 0, g_baseDtor = 0;
 struct CRefCountedShader_00bc9a00 { virtual ~CRefCountedShader_00bc9a00() { ++g_deleted; } unsigned char _pad[0xc]; long m_refCount; };
 struct CShaderBase { virtual void v00() { } ~CShaderBase() { } };
 struct CVertexShader : CShaderBase { CRefCountedShader_00bc9a00* m_pShader; CVertexShader() : m_pShader(0) { } ~CVertexShader() { CRefCountedShader_00bc9a00* shader = m_pShader; if (shader) { if (--shader->m_refCount == 0) delete shader; } } };
-struct CBase { virtual void v00() { } ~CBase() { ++g_baseDtor; } };
+namespace N_0099a300 { struct CBase { virtual void v00() { } ~CBase() { ++g_baseDtor; } }; } using N_0099a300::CBase;
 static int g_destroyed = 0; static void Destroy(void*) { ++g_destroyed; }
 struct SCountBlock_00b38590 { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
 struct CCountedPointer_00b38590 { void* m_pObject; SCountBlock_00b38590* m_pCount; CCountedPointer_00b38590() : m_pObject(0), m_pCount(0) { }

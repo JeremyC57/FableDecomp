@@ -12,10 +12,10 @@
 // compared; the funclets land through the funclet pass). The manifest label
 // (`_Dest_val<allocator<pair<...>>>`) is propagated; the types are modelled by layout. One of
 // 3 bodies of this shape.
-struct CMember8 {                          // +8, 0x10 bytes, destroyed out of line
+namespace N_00c34b80 { struct CMember8 {                          // +8, 0x10 bytes, destroyed out of line
     unsigned char _body[0x10];
     ~CMember8();                           // 0x00C34B80
-};
+}; } using N_00c34b80::CMember8;
 
 struct CDebugStream {                      // the shared-buffer stream
     char* m_pBuffer;

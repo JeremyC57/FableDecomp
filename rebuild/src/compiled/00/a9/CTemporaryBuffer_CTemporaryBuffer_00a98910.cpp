@@ -19,10 +19,10 @@ struct CScratchBuffer {
     void Unlock();                                 // 0x009F49A0
 };
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 enum EAllocateType {
     ALLOCATE_FROM_MEMORY_POOL = 0,

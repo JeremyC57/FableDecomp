@@ -62,7 +62,7 @@ struct CKeyedChunkVector {
     SKeyedChunk* m_pFirst;                           // +0x00
     SKeyedChunk* m_pLast;                            // +0x04
     SKeyedChunk* m_pEnd;                             // +0x08
-    void push_back(const SKeyedChunk& record);       // 0x00A73530
+    void push_back_00a73530(const SKeyedChunk& record);       // 0x00A73530
 };
 
 struct C3DAnimFile {
@@ -74,6 +74,6 @@ struct C3DAnimFile {
 
 void C3DAnimFile::AddStringKeyedChunk(const CCharString& key, const SNamedChunk& value)
 {
-    m_Chunks.push_back(SKeyedChunk(key, value));
+    m_Chunks.push_back_00a73530(SKeyedChunk(key, value));
     m_Changed = true;
 }

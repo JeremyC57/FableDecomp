@@ -4,7 +4,7 @@
 // KillAllDecalEmitters, the decal array (teardown + free), the +0x14 string, then the CBase root.
 static int g_order[8]; static int g_n = 0; static int g_freed = 0;
 struct CCharString { void* m_pData; ~CCharString() { g_order[g_n++] = 2; } };
-struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } };
+namespace N_0099a300 { struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } }; } using N_0099a300::CBase;
 struct CDecalEmitterArray {
     void* m_pData; long m_size; long m_capacity;
     void DestroyElements() { g_order[g_n++] = 3; }

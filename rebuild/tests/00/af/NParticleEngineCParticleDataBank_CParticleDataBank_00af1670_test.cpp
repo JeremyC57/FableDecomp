@@ -1,7 +1,7 @@
 // behaviour test for 0x00AF1670 CParticleDataBank::CParticleDataBank: bases, empty emitter array, symbol maps, resource list reset + 64 KB budget
 #include <cstdio>
 static int g_order[8]; static int g_n = 0;
-struct CBankFile { CBankFile() { g_order[g_n++] = 1; } };
+namespace N_009d5f80 { struct CBankFile { CBankFile() { g_order[g_n++] = 1; } }; } using N_009d5f80::CBankFile;
 struct CResourceList { unsigned int m_maxSize; unsigned int m_usedSize; CResourceList() : m_maxSize(1), m_usedSize(5) {}
     void SetMaxSize(unsigned int s) { m_maxSize = s; g_order[g_n++] = 4; } };
 struct CResourceBank { CResourceList ResourceList, LoadingQueue; CResourceBank() { g_order[g_n++] = 2; } };

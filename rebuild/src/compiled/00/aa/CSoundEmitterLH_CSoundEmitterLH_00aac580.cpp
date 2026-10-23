@@ -11,10 +11,10 @@ struct CGameScriptThing {
     long DecrementScriptCounter();                 // 0x00A3E420
 };
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct SListNode_00aac580 { SListNode_00aac580* m_pNext; SListNode_00aac580* m_pPrev; long m_a; long m_b; };   // 16 bytes
 

@@ -15,7 +15,7 @@ static int g_edx = 0;
 static bool g_val = false;
 static GuiTarget* g_self = 0;
 
-void __fastcall GuiTarget_Set(GuiTarget* self, int edx, bool value) {
+void __fastcall GuiTarget_Set_00a73600(GuiTarget* self, int edx, bool value) {
     g_self = self;
     g_edx = edx;
     g_val = value;
@@ -24,7 +24,7 @@ void __fastcall GuiTarget_Set(GuiTarget* self, int edx, bool value) {
 }
 
 void CGuiVarTransferBool::TransferToGui() {
-    GuiTarget_Set(this->target, this->edxArg, this->value);
+    GuiTarget_Set_00a73600(this->target, this->edxArg, this->value);
     this->dirty = false;
 }
 

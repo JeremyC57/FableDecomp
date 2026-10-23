@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CBase { virtual void v00() {} CBase() {} };
+namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() {} }; } using N_0099a2d0::CBase;
 struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 struct SReceiverState { void* m_pSound; void* m_pChannel; float m_volume; SReceiverState() : m_pSound(0), m_pChannel(0), m_volume(1.0f) { } };
 struct CSoundReceiverLH : CBase { unsigned char _pad[0x0c]; SReceiverState m_state; C3DVector m_up; void* m_pOwner; virtual void v00() {} CSoundReceiverLH(void* owner); };

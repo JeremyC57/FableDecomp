@@ -5,12 +5,12 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_bankCtor = 0, g_strCtor = 0, g_strAssign = 0; static const char* g_assigned = 0;
-class CBankFile {
+namespace N_009d5f80 { class CBankFile {
 public:
     CBankFile() { ++g_bankCtor; }
     virtual ~CBankFile() {}
     unsigned char _body[0x160];
-};
+}; } using N_009d5f80::CBankFile;
 struct CStateBlock {
     long FontHeight;
     long FontWeight;

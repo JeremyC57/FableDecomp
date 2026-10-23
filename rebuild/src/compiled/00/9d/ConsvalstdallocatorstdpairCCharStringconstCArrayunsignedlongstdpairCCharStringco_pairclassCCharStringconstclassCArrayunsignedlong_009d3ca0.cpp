@@ -7,7 +7,7 @@ struct CCharString {
 };
 struct CArrayUL {
     void* vt; unsigned long* a; int n; int c;
-    void copy(const CArrayUL* src);      // __fastcall copy-construct
+    void copy_00535470(const CArrayUL* src);      // __fastcall copy-construct
 };
 
 struct PairT {
@@ -20,6 +20,6 @@ void __fastcall Cons_val_pair(PairT* self, PairT* src)
 {
     if (self) {
         self->first.copy(&src->first);
-        self->second.copy(&src->second);
+        self->second.copy_00535470(&src->second);
     }
 }

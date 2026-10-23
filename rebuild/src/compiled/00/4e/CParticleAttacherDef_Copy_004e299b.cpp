@@ -12,7 +12,7 @@ struct BaseDef {
 
 // sub-object at +0x28 with its own Copy at 0x4e29ba: __fastcall SubDef::Copy(self, const void* src)
 struct SubDef {
-    void Copy(const void* src);
+    void Copy_004e29ba(const void* src);
 };
 
 struct CParticleAttacherDef : public BaseDef {
@@ -26,5 +26,5 @@ void CParticleAttacherDef::Copy(const CDefClassBase* src)
     // base class copy (this in ecx, src pushed)
     ((BaseDef*)this)->Copy(src);
     // sub-object copy: src advanced by 0x28
-    this->sub.Copy((const char*)src + 0x28);
+    this->sub.Copy_004e29ba((const char*)src + 0x28);
 }

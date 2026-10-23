@@ -3,7 +3,7 @@
 
 struct CMember {
     int val;
-    void Copy(const CMember* src) { val = src->val; }
+    void Copy_00461bb7(const CMember* src) { val = src->val; }
 };
 struct Def {
     unsigned char base[0x28];
@@ -14,17 +14,17 @@ struct Def {
 int base_called = 0;
 void BaseCopy(Def* self, const Def* src) { base_called = 1; }
 
-void Copy(Def* self, const Def* src)
+void Copy_00461bb7(Def* self, const Def* src)
 {
     BaseCopy(self, src);
-    self->member.Copy(&src->member);
+    self->member.Copy_00461bb7(&src->member);
 }
 
 int main() {
     Def a, b;
     b.member.val = 77;
     a.member.val = 0;
-    Copy(&a, &b);
+    Copy_00461bb7(&a, &b);
     if (base_called == 1 && a.member.val == 77) {
         std::printf("CCombatAbilityBlockHeavyWeaponAttackDef_00461d0d_TEST_PASS\n");
         return 0;

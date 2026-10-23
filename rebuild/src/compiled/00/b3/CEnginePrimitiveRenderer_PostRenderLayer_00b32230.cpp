@@ -20,12 +20,12 @@ struct CShaderRenderManager {unsigned char EarlierMembers[0x390];bool VertexShad
  void DisableVertexShaders(); //009880e0
 };
 struct CEngineLightingManager_Methods:CEngineLightingManager {void DisablePointLights();}; //00b44d50
-extern CRenderStateManager* g_pRenderStateManager; //01436e18
+extern CRenderStateManager* g_pRenderStateManager_01436e18; //01436e18
 extern CShaderRenderManager* g_pShaderRenderManager; //01436e14
 extern CEngineLightingManager_Methods* g_pLightingManager; //01436e9c
 static __forceinline void ClearNormalizeNormals()
 {
- CRenderStateManager* manager=g_pRenderStateManager;
+ CRenderStateManager* manager=g_pRenderStateManager_01436e18;
  CStateInfo& state=reinterpret_cast<CDeviceStateNormalizeView*>(manager->DeviceState)->NormalizeNormals;
  if(state.DesiredState!=0){
   unsigned long oldMask=state.BookmarkMask;

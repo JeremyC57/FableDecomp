@@ -9,7 +9,7 @@ struct IDrawableObj {
 
 typedef int (IDrawableObj::*DrawPMF)(CThingTrackNode*);
 
-extern IDrawableObj* __fastcall GetDrawableObject(CThingTrackNode* self);
+extern IDrawableObj* __fastcall GetDrawableObject_00af7e60(CThingTrackNode* self);
 
 struct CThingTrackNode {
     IDrawableObj* DrawIsDrawable();
@@ -17,7 +17,7 @@ struct CThingTrackNode {
 
 IDrawableObj* CThingTrackNode::DrawIsDrawable()
 {
-    IDrawableObj* obj = GetDrawableObject(this);
+    IDrawableObj* obj = GetDrawableObject_00af7e60(this);
     void** vt = (void**)obj->vtbl;
     void* raw = vt[0x12];
     DrawPMF pmf;

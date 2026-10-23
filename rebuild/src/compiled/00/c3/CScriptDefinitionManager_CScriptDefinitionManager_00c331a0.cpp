@@ -11,11 +11,11 @@ struct CScriptDefinitionManagerBase {
 };
 
 struct CScriptDefinitionManager : CScriptDefinitionManagerBase {                 // vtable 0x012B4F84
-    void Shutdown();                       // 0x00C3C720
+    void Shutdown_00c3c720();                       // 0x00C3C720
     ~CScriptDefinitionManager();
 };
 
 CScriptDefinitionManager::~CScriptDefinitionManager()
 {
-    Shutdown();
+    Shutdown_00c3c720();
 }

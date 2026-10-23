@@ -24,7 +24,7 @@ struct CHandleBasedMemoryPool {
  int GrowFreeArea(CHeader*&);
  void RemoveFreeArea(CHeader*); // 00c27f50
  CHeader* FindFreeArea(int); // 00c27fd0
- __declspec(noinline) void InsertFreeArea(CHeader*); // 00c27ef0
+ __declspec(noinline) void InsertFreeArea_00c27ef0(CHeader*); // 00c27ef0
  void MoveArea(CHeader*,CHeader*); // 00c28580
  CHeader* CombineAdjacentAreas(CHeader*); // 00c282e0
 };
@@ -37,7 +37,7 @@ FABLE_STATIC_ASSERT(offsetof(CHeader,NextContiguous)==28);
 
 // Genuine adjacent callee implementation; compiler can see its register effects.
 // Mirrors independently landed c27ef0 and its retail body; no shortened fixture stub.
-void CHandleBasedMemoryPool::InsertFreeArea(CHeader* area) {
+void CHandleBasedMemoryPool::InsertFreeArea_00c27ef0(CHeader* area) {
  area->Size+=area->Padding;
  int size=area->Size;unsigned int bucket=(unsigned int)size>>9;
  area->Padding=0;if(bucket>=255)bucket=255;
@@ -52,7 +52,7 @@ int CHandleBasedMemoryPool::GrowFreeArea(CHeader*& area) {
   RemoveFreeArea(area);
   CHeader* freeArea=FindFreeArea(p->Size);
   area->Status='N';
-  InsertFreeArea(area);
+  InsertFreeArea_00c27ef0(area);
   if(freeArea) {
    MoveArea(p,freeArea);
    CombineAdjacentAreas(p);
@@ -64,7 +64,7 @@ int CHandleBasedMemoryPool::GrowFreeArea(CHeader*& area) {
   RemoveFreeArea(area);
   CHeader* freeArea=FindFreeArea(p->Size);
   area->Status='N';
-  InsertFreeArea(area);
+  InsertFreeArea_00c27ef0(area);
   if(freeArea) {
    MoveArea(p,freeArea);
    area=CombineAdjacentAreas(p);

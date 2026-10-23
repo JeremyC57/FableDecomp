@@ -8,14 +8,14 @@ struct CWorldMap {
 };
 
 static long g_helper_ret = 0;
-static long CWorldMap_helper(CWorldMap* self) { (void)self; return g_helper_ret; }
+static long CWorldMap_helper_00c23df0(CWorldMap* self) { (void)self; return g_helper_ret; }
 
 static long GetNextRegionOnRouteTo(CWorldMap* self, long a, long b)
 {
     (void)a; (void)b;
     long c = self->count;
     if (c == 0) return 0;
-    long idx = CWorldMap_helper(self);
+    long idx = CWorldMap_helper_00c23df0(self);
     long r = self->array[idx];
     self->count = c - 1;
     return r;

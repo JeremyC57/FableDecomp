@@ -22,7 +22,7 @@ struct CRetailVector_SRecord28 {
     SRecord28* first;
     SRecord28* last;
     SRecord28* end;
-    void InsertGrow(SRecord28* where, const SRecord28& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00BF5EE0
+    void InsertGrow_00bf5ee0(SRecord28* where, const SRecord28& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00BF5EE0
     void PushBack_SRecord28_00bf5fe0(const SRecord28& value);
 };
 
@@ -33,5 +33,5 @@ void CRetailVector_SRecord28::PushBack_SRecord28_00bf5fe0(const SRecord28& value
         ++last;
     }
     else
-        InsertGrow(last, value, SScalarTag(), 1, true);
+        InsertGrow_00bf5ee0(last, value, SScalarTag(), 1, true);
 }

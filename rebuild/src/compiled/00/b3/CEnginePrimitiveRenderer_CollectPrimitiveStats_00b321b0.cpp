@@ -13,10 +13,10 @@ struct C2DBoxF {
 
 struct CPrimitiveStatMap;                    // map<unsigned long, unsigned long>
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct CEngineScenePrimitiveStatsEnumerator : CBase {   // 0x20 bytes, vtable 0x012A534C
     CPrimitiveStatMap* Destination;          // +0x04

@@ -5,10 +5,10 @@
 // manifest label "CCarriedReadableDef" is propagated and rejected.
 // PDB CCompositeSurfaceInfo (sizeof 0xC): +0x04 CCountedPointer<CCompositeSurfaceCache> Cache. The vtable
 // store precedes the two zero stores because the pointer is an embedded member with an inline constructor.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                     // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CCountedPointer {
     void* m_pObject;

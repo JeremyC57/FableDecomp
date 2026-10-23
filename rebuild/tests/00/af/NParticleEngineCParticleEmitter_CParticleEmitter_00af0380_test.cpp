@@ -35,10 +35,10 @@ struct CCharString {
     void* PStringData;
     CCharString() : PStringData(0) {}
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase() {}
     virtual ~CBase() {}
-};
+}; } using N_0099a2d0::CBase;
 struct CBaseObject {
     virtual ~CBaseObject() {}
     void* m_pIntelligentPointer;

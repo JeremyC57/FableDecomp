@@ -19,10 +19,10 @@ struct CBaseClass {                                // vtable 0x01231710
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 

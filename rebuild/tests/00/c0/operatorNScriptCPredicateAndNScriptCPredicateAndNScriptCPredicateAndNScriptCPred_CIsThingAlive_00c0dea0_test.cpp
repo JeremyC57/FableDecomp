@@ -3,14 +3,14 @@
 struct CIsThingAlive;
 
 struct CPredicate_And {
-    void helper(CIsThingAlive* arg);
+    void helper_00c0dcf0(CIsThingAlive* arg);
 };
 
 CPredicate_And* __fastcall operator_And(CPredicate_And* self, CIsThingAlive* arg);
 
 static void* g_lastSelf;
 static void* g_lastArg;
-void CPredicate_And::helper(CIsThingAlive* arg) {
+void CPredicate_And::helper_00c0dcf0(CIsThingAlive* arg) {
     g_lastSelf = this;
     g_lastArg = arg;
 }

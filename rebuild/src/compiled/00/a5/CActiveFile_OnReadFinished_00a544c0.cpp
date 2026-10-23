@@ -3,7 +3,7 @@
 
 struct CActiveFile {
     void* m_buffer;   // +0x00
-    void PreFinish();
+    void PreFinish_00a53300();
     void OnReadFinished();
 };
 
@@ -12,7 +12,7 @@ extern "C" void __cdecl ReleaseBuffer(void* p);
 
 void CActiveFile::OnReadFinished()
 {
-    this->PreFinish();
+    this->PreFinish_00a53300();
     void* p = this->m_buffer;
     if (p != 0) {
         ReleaseBuffer(p);

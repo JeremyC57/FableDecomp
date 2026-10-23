@@ -19,10 +19,10 @@ struct SCountBlock {
     SCountBlock(void* object);
 };
 
-void __fastcall CountedDestroy(void* object);   // 0x00A5FB70
+void __fastcall CountedDestroy_00a5fb70(void* object);   // 0x00A5FB70
 
 inline SCountBlock::SCountBlock(void* object)
-    : m_references(1), m_pfnDestroy(CountedDestroy), m_pObject(object)
+    : m_references(1), m_pfnDestroy(CountedDestroy_00a5fb70), m_pObject(object)
 {
 }
 

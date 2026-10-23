@@ -10,10 +10,10 @@
 // destructors); the data word is loaded and pushed before the vtable store. The intermediate
 // CChunkedFileChunk (vtable 0x0129E474) has an inline empty destructor (its vtable store follows).
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
-struct CBase {                                     // root polymorphic base
+namespace N_0099a300 { struct CBase {                                     // root polymorphic base
     CBase();
     virtual ~CBase();                              // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct CChunkedFileChunk : CBase {                 // vtable 0x0129E474
     unsigned char _pad_0x04[0x0c];                 // +0x04

@@ -6,10 +6,10 @@
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
 struct CRetailList_CountedPointer {                     // the inner list: one head-node pointer
     void* m_pHead;
-    void clear();                                  // 0x00A80A20
+    void clear_00a80a20();                                  // 0x00A80A20
     ~CRetailList_CountedPointer()
     {
-        clear();
+        clear_00a80a20();
         if (m_pHead)
             free(m_pHead);
     }

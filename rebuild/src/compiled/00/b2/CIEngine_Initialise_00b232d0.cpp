@@ -3,11 +3,11 @@
 class CFrontendGameComponent_00495610
 {
 public:
-    bool InitGraphics();
+    bool InitGraphics_0099a350();
     void Initialise(long);
 };
 
 void CFrontendGameComponent_00495610::Initialise(long)
 {
-    InitGraphics();
+    InitGraphics_0099a350();
 }

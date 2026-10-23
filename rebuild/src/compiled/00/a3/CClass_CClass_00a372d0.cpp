@@ -10,11 +10,11 @@
 // register call. The vtable and Type stores are scheduled between the argument pushes.
 struct CClassFactory_Calls;
 
-struct CBaseIntelligentPointer {
+namespace N_0099a380 { struct CBaseIntelligentPointer {
     virtual void v00();
     void* PData;                                            // +4
     CBaseIntelligentPointer();                              // 0x0099A380
-};
+}; } using N_0099a380::CBaseIntelligentPointer;
 
 struct CClass_Calls : CBaseIntelligentPointer {
     void*         ClassListPos;                             // +0x08 list<CClass*>::iterator (node pointer)

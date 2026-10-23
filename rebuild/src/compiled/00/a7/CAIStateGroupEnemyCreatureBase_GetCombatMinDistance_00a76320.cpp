@@ -2,9 +2,9 @@
 // retail: fld dword ptr [0x122f59c]; ret  -> return a float global
 struct CAIStateGroup_EnemyCreatureBase;
 
-extern float g_CombatMinDistance;
+extern float g_CombatMinDistance_0122f59c;
 
 float __fastcall GetCombatMinDistance(CAIStateGroup_EnemyCreatureBase* self)
 {
-    return g_CombatMinDistance;
+    return g_CombatMinDistance_0122f59c;
 }

@@ -11,7 +11,7 @@ static int g_base_called = 0;
 static CTCInventoryItem* g_base_self = 0;
 
 void EngineFree(void* p) { g_freed++; g_freed_ptr = p; }
-void BaseOnDie(CTCInventoryItem* self) { g_base_called++; g_base_self = self; }
+void BaseOnDie_00b59730(CTCInventoryItem* self) { g_base_called++; g_base_self = self; }
 
 void OnDie(CTCInventoryItem* self)
 {
@@ -19,7 +19,7 @@ void OnDie(CTCInventoryItem* self)
     if (p) {
         EngineFree(p);
     }
-    BaseOnDie(self);
+    BaseOnDie_00b59730(self);
 }
 
 int main()

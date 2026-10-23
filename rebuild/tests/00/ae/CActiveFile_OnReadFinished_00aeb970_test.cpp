@@ -6,20 +6,20 @@
 struct CActiveFile
 {
     void* field0;
-    void Helper();
+    void Helper_00aec840();
     void OnReadFinished();
 };
 
 static int g_helperCalls = 0;
 static void* g_freed = (void*)0;
 
-void CActiveFile::Helper() { ++g_helperCalls; }
+void CActiveFile::Helper_00aec840() { ++g_helperCalls; }
 
 extern "C" void __cdecl FreeMem(void* p) { g_freed = p; }
 
 void CActiveFile::OnReadFinished()
 {
-    this->Helper();
+    this->Helper_00aec840();
     void* p = this->field0;
     if (p)
         FreeMem(p);

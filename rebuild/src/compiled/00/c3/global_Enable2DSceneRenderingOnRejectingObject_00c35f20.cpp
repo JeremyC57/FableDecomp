@@ -6,11 +6,11 @@
 struct CRenderTarget {
     virtual void v00();
     virtual bool Accepts();                        // slot 1
-    void Enable2DSceneRendering(bool enable);      // 0x00C445C0
+    void Enable2DSceneRendering_00c445c0(bool enable);      // 0x00C445C0
 };
 
 void __stdcall Enable2DSceneRenderingOnRejectingObject(CRenderTarget* object, bool enable)
 {
     CRenderTarget* target = object->Accepts() ? 0 : object;
-    target->Enable2DSceneRendering(enable);
+    target->Enable2DSceneRendering_00c445c0(enable);
 }

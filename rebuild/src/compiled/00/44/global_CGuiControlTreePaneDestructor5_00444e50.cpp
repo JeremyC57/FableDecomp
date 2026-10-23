@@ -4,7 +4,7 @@ void __cdecl operator delete(void* memory);
 
 struct GuiSortStateOverlay
 {
-    void SortTreeRecursively();
+    void SortTreeRecursively_0043fd80();
 };
 
 struct GuiTreeStorageOverlay5
@@ -25,7 +25,7 @@ struct GuiControlTreePaneOverlay5
 void __fastcall CGuiControlTreePane_Destructor_5(GuiControlTreePaneOverlay5* self)
 {
     if (self != 0) {
-        self->state.SortTreeRecursively();
+        self->state.SortTreeRecursively_0043fd80();
         self->tree.SortTreeRecursively();
         void* memory = self->tree.memory;
         if (memory != 0) {

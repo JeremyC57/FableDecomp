@@ -2,7 +2,7 @@
 
 struct CActiveFile {
     void* m_buffer;
-    void PreFinish();
+    void PreFinish_00a53300();
     void OnReadFinished();
 };
 
@@ -10,7 +10,7 @@ static int g_preCalled = 0;
 static int g_freeCalled = 0;
 static void* g_freedPtr = 0;
 
-void CActiveFile::PreFinish() { g_preCalled++; }
+void CActiveFile::PreFinish_00a53300() { g_preCalled++; }
 
 extern "C" void __cdecl ReleaseBuffer(void* p) { g_freeCalled++; g_freedPtr = p; }
 

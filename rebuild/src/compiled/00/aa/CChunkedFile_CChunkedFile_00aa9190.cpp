@@ -38,9 +38,9 @@ struct CCountedPointer_CChunkedFileSuperChunk {                  // {object, cou
     }
 };
 
-struct CBaseClass {                             // vtable 0x01231710
+namespace N_0099a300 { struct CBaseClass {                             // vtable 0x01231710
     virtual ~CBaseClass();                      // 0x0099A300
-};
+}; } using N_0099a300::CBaseClass;
 
 struct CChunkedFile : CBaseClass {              // vtable 0x0129E4E8
     CCountedPointer_CChunkedFileSuperChunk RootChunk;   // +0x04

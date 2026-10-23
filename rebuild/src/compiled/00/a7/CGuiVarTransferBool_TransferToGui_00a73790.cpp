@@ -2,7 +2,7 @@
 struct GuiTarget;
 
 // callee 0xa73600: ecx=GuiTarget*, edx=int, stack=bool
-void __fastcall GuiTarget_Set(GuiTarget* self, int edx, bool value);
+void __fastcall GuiTarget_Set_00a73600(GuiTarget* self, int edx, bool value);
 
 struct CGuiVarTransferBool {
     GuiTarget* target;   // +0
@@ -15,6 +15,6 @@ struct CGuiVarTransferBool {
 };
 
 void CGuiVarTransferBool::TransferToGui() {
-    GuiTarget_Set(this->target, this->edxArg, this->value);
+    GuiTarget_Set_00a73600(this->target, this->edxArg, this->value);
     this->dirty = false;
 }

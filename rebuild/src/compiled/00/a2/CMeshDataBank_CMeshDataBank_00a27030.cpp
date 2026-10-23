@@ -27,12 +27,12 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 struct __true_type { __true_type() { } };
 
-struct CBankFile {
+namespace N_009d5f80 { struct CBankFile {
     virtual void v00();
     unsigned char _bankFile[0x160];                 // +0x004
     CBankFile();                                    // 0x009D5F80
     void SetIsStaticMap(bool isStaticMap);          // 0x009D5230
-};
+}; } using N_009d5f80::CBankFile;
 
 struct CCharString {
     struct CCharStringData* PStringData;

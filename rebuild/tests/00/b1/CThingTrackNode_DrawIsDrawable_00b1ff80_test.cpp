@@ -37,14 +37,14 @@ struct CThingTrackNode {
 
 static IDrawableObj g_obj;
 
-IDrawableObj* __fastcall GetDrawableObject(CThingTrackNode* self)
+IDrawableObj* __fastcall GetDrawableObject_00af8100(CThingTrackNode* self)
 {
     return &g_obj;
 }
 
 IDrawableObj* CThingTrackNode::DrawIsDrawable()
 {
-    IDrawableObj* obj = GetDrawableObject(this);
+    IDrawableObj* obj = GetDrawableObject_00af8100(this);
     obj->slot12(this);
     return obj;
 }

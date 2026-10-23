@@ -20,10 +20,10 @@ struct CCharString {
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CBase {                                     // root polymorphic base
+namespace N_0099a300 { struct CBase {                                     // root polymorphic base
     CBase();
     virtual ~CBase();                              // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 namespace NParticleEngine {
 

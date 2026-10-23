@@ -4,10 +4,10 @@
 #include <new>
 
 // CWideString: single pointer-sized member; copy ctor is an out-of-line thiscall
-struct CWideString {
+namespace N_0099ec30 { struct CWideString {
     wchar_t* p;
     CWideString(const CWideString& o);   // extern copy ctor @ 0x99ec30
-};
+}; } using N_0099ec30::CWideString;
 
 struct CEntry {
     int raw[13];   // 52 bytes, copied verbatim

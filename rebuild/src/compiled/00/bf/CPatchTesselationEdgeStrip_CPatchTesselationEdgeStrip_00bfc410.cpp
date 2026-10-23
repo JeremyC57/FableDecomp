@@ -14,10 +14,10 @@ struct SEngine_01436ea8 {
 };
 extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 template <class T>
 struct CEdgeStipVertexArray {

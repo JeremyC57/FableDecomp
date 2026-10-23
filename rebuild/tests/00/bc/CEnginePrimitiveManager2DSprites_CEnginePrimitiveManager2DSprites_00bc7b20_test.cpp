@@ -1,7 +1,7 @@
 // Behaviour test for CEnginePrimitiveManager2DSprites::~CEnginePrimitiveManager2DSprites @ 0x00BC7B20 (release order and counts).
 #include <cstdio>
 static int g_log[16]; static int g_n = 0;
-struct CBase { virtual ~CBase() { g_log[g_n++] = 99; } };
+namespace N_0099a300 { struct CBase { virtual ~CBase() { g_log[g_n++] = 99; } }; } using N_0099a300::CBase;
 struct CPixelShaderObject { int id; long m_refCount; virtual ~CPixelShaderObject() { g_log[g_n++] = id; } };
 struct CVertexShaderObject { int id; long m_refCount; virtual ~CVertexShaderObject() { g_log[g_n++] = id; } };
 struct CShaderBase { virtual ~CShaderBase() { } };

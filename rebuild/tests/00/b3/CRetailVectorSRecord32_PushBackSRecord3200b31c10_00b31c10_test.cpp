@@ -15,7 +15,7 @@ struct CRetailVector_SRecord32 {
     SRecord32* first;
     SRecord32* last;
     SRecord32* end;
-    void InsertGrow(SRecord32* where, const SRecord32& value, const SScalarTag& tag, unsigned long count, bool noTail);
+    void InsertGrow_00b31b10(SRecord32* where, const SRecord32& value, const SScalarTag& tag, unsigned long count, bool noTail);
     void PushBack_SRecord32_00b31c10(const SRecord32& value);
 };
 
@@ -25,7 +25,7 @@ static unsigned long g_count = 0;
 static bool g_noTail = false;
 static int g_calls = 0;
 
-void CRetailVector_SRecord32::InsertGrow(SRecord32* where, const SRecord32& value, const SScalarTag&, unsigned long count, bool noTail)
+void CRetailVector_SRecord32::InsertGrow_00b31b10(SRecord32* where, const SRecord32& value, const SScalarTag&, unsigned long count, bool noTail)
 {
     g_where = where; g_value = &value; g_count = count; g_noTail = noTail; ++g_calls;
 }
@@ -37,7 +37,7 @@ void CRetailVector_SRecord32::PushBack_SRecord32_00b31c10(const SRecord32& value
         ++last;
     }
     else
-        InsertGrow(last, value, SScalarTag(), 1, true);
+        InsertGrow_00b31b10(last, value, SScalarTag(), 1, true);
 }
 
 int main()

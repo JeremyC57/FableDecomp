@@ -129,10 +129,10 @@ private:
     friend struct CShaderResourceTestFactory;
 };
 
-struct CBase {
+namespace N_00bf2880 { struct CBase {
     CNodeHeader* BaseNode;
     CBase(); // 00BF2880
-};
+}; } using N_00bf2880::CBase;
 struct CEngineTreeFilerBase : CBase {
     long KeySize;
     void Initialise(long); // 00BF3180

@@ -16,10 +16,10 @@
 // Leaf: ??1CEnginePrimitiveManagerFlareSprites
 extern "C" void __cdecl free(void* block);               // 0x00BFEA14
 
-class CBase {                                            // vtable 0x01231710
+namespace N_0099a300 { class CBase {                                            // vtable 0x01231710
 public:
     virtual ~CBase();                                    // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 class __declspec(novtable) CEnginePrimitiveManager : public CBase {
 public:
     void* SceneList;                                     // +0x04

@@ -15,12 +15,12 @@
 //         (16 x 0x54), FailedAllocations +0x58C, BufferSize +0x5CC, TextureBuffer +0x5D0; CPreallocTexturePool: CResourceList
 //         base 0x3C, Count +0x3C, MaxSize +0x40, PoolIndex +0x44, Textures +0x48 (12-byte STLport vector; PDB 16).
 extern "C" void __cdecl free(void* p);           // 0x00BFEA14
-class CBaseClass {                               // vtable 0x01231710
+namespace N_0099a300 { class CBaseClass {                               // vtable 0x01231710
 public:
     virtual void v000();
     CBaseClass();                                // 0x0099A2D0
     ~CBaseClass();                               // 0x0099A300
-};
+}; } using N_0099a300::CBaseClass;
 struct CManagedTextureData {
     virtual void v00();
     virtual void Destroy();                      // slot 1

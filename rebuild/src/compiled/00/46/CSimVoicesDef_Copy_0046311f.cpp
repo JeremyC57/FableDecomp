@@ -6,7 +6,7 @@
 
 struct CDefClassBase {
     // base Copy @ 0x431ed0 : __fastcall CDefClassBase::Copy(src)
-    void Copy(CDefClassBase const* src);
+    void Copy_00431ed0(CDefClassBase const* src);
 };
 
 // A sub-object type at this+0x3c with its own non-virtual Copy @ 0x46313e.
@@ -23,7 +23,7 @@ struct CSimVoicesDef {
 
 void CSimVoicesDef::Copy(CDefClassBase const* src)
 {
-    ((CDefClassBase*)this)->Copy(src);
+    ((CDefClassBase*)this)->Copy_00431ed0(src);
     SubVoices const* srcSub = (SubVoices const*)((char const*)src + 0x3c);
     this->sub.Copy(srcSub);
 }

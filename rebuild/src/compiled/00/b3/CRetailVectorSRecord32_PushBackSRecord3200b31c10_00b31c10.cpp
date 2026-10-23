@@ -22,7 +22,7 @@ struct CRetailVector_SRecord32 {
     SRecord32* first;
     SRecord32* last;
     SRecord32* end;
-    void InsertGrow(SRecord32* where, const SRecord32& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00B31B10
+    void InsertGrow_00b31b10(SRecord32* where, const SRecord32& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00B31B10
     void PushBack_SRecord32_00b31c10(const SRecord32& value);
 };
 
@@ -33,5 +33,5 @@ void CRetailVector_SRecord32::PushBack_SRecord32_00b31c10(const SRecord32& value
         ++last;
     }
     else
-        InsertGrow(last, value, SScalarTag(), 1, true);
+        InsertGrow_00b31b10(last, value, SScalarTag(), 1, true);
 }

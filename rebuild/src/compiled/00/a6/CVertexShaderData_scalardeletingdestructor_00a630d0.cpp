@@ -15,10 +15,10 @@ struct IUnknownRetail {
     virtual unsigned long __stdcall Release();
 };
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                 // 0x0099A300 (out of line, restores the CBase vtable)
-};
+}; } using N_0099a300::CBase;
 
 struct CVertexShaderData : CBase {            // vtable 0x0129DA50
     IUnknownRetail* m_pShader;                // +0x04

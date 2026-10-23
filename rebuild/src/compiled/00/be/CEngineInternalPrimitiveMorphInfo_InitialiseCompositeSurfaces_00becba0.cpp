@@ -7,10 +7,10 @@
 inline void* operator new(unsigned int, void* where) { return where; }
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                       // 0x0099A2D0
     virtual ~CBase();                              // 0x0099A2E0 (vtable 0x01231710)
-};
+}; } using N_0099a2d0::CBase;
 struct CCPInfo {
     long  References;
     void (__fastcall* Destroy)(void* object);

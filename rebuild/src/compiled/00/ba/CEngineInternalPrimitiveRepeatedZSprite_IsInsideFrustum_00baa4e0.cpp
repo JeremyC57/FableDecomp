@@ -35,7 +35,7 @@ struct CEngineGlobals {
     unsigned char _pad[0x8c];
     float FadeDistanceScale;                       // +0x8c
 };
-extern CEngineGlobals* g_pEngineGlobals;           // 0x01436E80
+extern CEngineGlobals* g_pEngineGlobals_01436e80;           // 0x01436E80
 
 struct CEngineCameraDesc {                         // Ego_r.pdb, 0x6c bytes (CEngineCamera::CameraDesc +0x14)
     float     Window[4];                           // +0x00 C2DBoxF
@@ -79,7 +79,7 @@ static __forceinline float FadeFar(const CEngineInternalPrimitiveRepeatedZSprite
 bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveRepeatedZSprite* self, int, const CEngineCamera& camera, bool ignoreFrustum)
 {
     float dist = (Sphere(self).Center - CameraPosition(camera)).GetLength();
-    if (dist - Sphere(self).Radius > g_pEngineGlobals->FadeDistanceScale * FadeFar(self)) return false;
+    if (dist - Sphere(self).Radius > g_pEngineGlobals_01436e80->FadeDistanceScale * FadeFar(self)) return false;
     if (dist + Sphere(self).Radius < static_cast<const CZSprite*>(self)->GetFadeInRange().Start) return false;
     if (ignoreFrustum) return true;
     return IsSphereInFrustum(camera, Sphere(self).Center, Sphere(self).Radius);

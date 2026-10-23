@@ -18,7 +18,7 @@ struct CVertexBufferMap {
     void clear() { if (count != 0) { Erase(header->parent); header->left = header; header->parent = 0; header->right = header; count = 0; } }
     ~CVertexBufferMap() { clear(); if (header) { ++g_frees; delete header; } }
 };
-struct CBase { virtual ~CBase() { ++g_baseDtor; } };
+namespace N_0099a300 { struct CBase { virtual ~CBase() { ++g_baseDtor; } }; } using N_0099a300::CBase;
 struct CEnginePrimitiveManagerFlareSprites : CBase { CVertexBufferMap FlareVertexBuffers; CVertexShader VertexShaderFlareTest; float FadeInSpeed; };
 int main()
 {

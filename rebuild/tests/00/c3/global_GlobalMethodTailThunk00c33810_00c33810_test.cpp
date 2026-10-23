@@ -2,16 +2,16 @@
 static int g_AutoTinyThunkCalls = 0;
 struct AutoTinyThunkTarget
 {
-    void Invoke();
+    void Invoke_00c3dcd0();
 };
 AutoTinyThunkTarget g_AutoTinyThunkObject;
-void AutoTinyThunkTarget::Invoke()
+void AutoTinyThunkTarget::Invoke_00c3dcd0()
 {
     ++g_AutoTinyThunkCalls;
 }
 void __fastcall GlobalMethodTailThunk_00c33810()
 {
-    g_AutoTinyThunkObject.Invoke();
+    g_AutoTinyThunkObject.Invoke_00c3dcd0();
 }
 int main()
 {

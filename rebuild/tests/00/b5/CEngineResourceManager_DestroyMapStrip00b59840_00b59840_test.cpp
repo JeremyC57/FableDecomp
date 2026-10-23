@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static int g_dtor = 0;
-struct CPatchTesselationEdgeStrip { ~CPatchTesselationEdgeStrip() { ++g_dtor; } };
+namespace N_00bded60 { struct CPatchTesselationEdgeStrip { ~CPatchTesselationEdgeStrip() { ++g_dtor; } }; } using N_00bded60::CPatchTesselationEdgeStrip;
 struct SMapEntry_00b59840 { long m_id; CPatchTesselationEdgeStrip* m_pStrip; };
 struct CEngineResourceManager { void DestroyMapStrip_00b59840(SMapEntry_00b59840& e) { if (e.m_pStrip) { delete e.m_pStrip; e.m_pStrip = 0; } } };
 int main() {

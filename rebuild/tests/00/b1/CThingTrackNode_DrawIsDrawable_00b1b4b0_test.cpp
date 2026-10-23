@@ -19,7 +19,7 @@ static IDrawableObj g_obj;
 static CThingTrackNode* g_seen_node = 0;
 static void* g_seen_self = 0;
 
-IDrawableObj* __fastcall GetDrawableObject(CThingTrackNode* self)
+IDrawableObj* __fastcall GetDrawableObject_00af8090(CThingTrackNode* self)
 {
     return &g_obj;
 }
@@ -33,7 +33,7 @@ static int __fastcall my_slot12(void* self, int edx, CThingTrackNode* node)
 
 IDrawableObj* CThingTrackNode::DrawIsDrawable()
 {
-    IDrawableObj* obj = GetDrawableObject(this);
+    IDrawableObj* obj = GetDrawableObject_00af8090(this);
     obj->vtbl->slot12(obj, 0, this);
     return obj;
 }

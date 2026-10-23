@@ -14,11 +14,11 @@
 // 0x00C0DAB0). `this` is kept in the frame for the unwind funclets. Built under /EHsc (the
 // `__ehhandler` is not compared; the funclets land through the funclet pass). The manifest
 // label names the class; the member types are opaque. One of 4 bodies of this shape.
-struct CMember8 {                          // member at +8, default-constructed out of line
+namespace N_00c35170 { struct CMember8 {                          // member at +8, default-constructed out of line
     unsigned char _body[0x8];
     CMember8();                            // 0x00C35170
     ~CMember8();
-};
+}; } using N_00c35170::CMember8;
 
 struct CMemberN {                          // member at +0x10, constructed from the first argument
     unsigned char _body[4];

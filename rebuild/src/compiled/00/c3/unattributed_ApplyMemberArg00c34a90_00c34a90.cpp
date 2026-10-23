@@ -8,7 +8,7 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CMember {
-    void Apply(void* value);               // 0x00C42B80
+    void Apply_00c42b80(void* value);               // 0x00C42B80
 };
 
 struct CClass_00c34a90 {
@@ -19,5 +19,5 @@ struct CClass_00c34a90 {
 
 void CClass_00c34a90::ApplyMemberArg_00c34a90(long unused0, void* value)
 {
-    m_member.Apply(value);
+    m_member.Apply_00c42b80(value);
 }

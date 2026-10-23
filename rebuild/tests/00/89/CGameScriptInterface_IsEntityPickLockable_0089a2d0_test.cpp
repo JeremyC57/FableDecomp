@@ -35,7 +35,7 @@ struct CVectorMap
 {
     CKeyPair* m_pBegin;
     CKeyPair* m_pEnd;
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
+    CKeyPair* LowerBound(const ETCInterfaceType* pKey) const;
 };
 
 struct CThingOverlay
@@ -75,9 +75,9 @@ static CThingOverlay* __fastcall Resolve(CScriptThing* self)
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x26;
 
-CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey)
+CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey) const
 {
-    g_observed_map = this;
+    g_observed_map = const_cast<CVectorMap*>(this);
     g_observed_key = *pKey;
     return g_lower_bound_result;
 }

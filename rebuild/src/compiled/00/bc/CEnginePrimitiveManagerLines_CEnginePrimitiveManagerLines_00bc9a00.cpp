@@ -27,10 +27,10 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0: 8 bytes
     }
 };
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct __declspec(novtable) CEnginePrimitiveManagerLines : CBase {
     long          m_type;                          // +0x04

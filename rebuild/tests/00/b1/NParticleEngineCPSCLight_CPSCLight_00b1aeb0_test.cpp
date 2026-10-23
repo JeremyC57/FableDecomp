@@ -83,10 +83,10 @@ struct CArray {                              // retail CArray: 12 bytes, the buf
     }
 };
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 namespace NParticleEngine {
 

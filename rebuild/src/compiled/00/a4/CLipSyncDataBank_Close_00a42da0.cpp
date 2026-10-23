@@ -9,7 +9,7 @@ void __fastcall Destroy_00a43a00(SEntry_00a42da0* first, SEntry_00a42da0* last, 
 
 struct CBankFile {
     unsigned char _body[0x164];
-    void Close();                                  // 0x009CE360
+    void Close_009ce360();                                  // 0x009CE360
 };
 
 struct CLipSyncDataBank : CBankFile {
@@ -26,5 +26,5 @@ void CLipSyncDataBank::Close()
     SEntry_00a42da0* kept = Move_00a438e0(last, last, first, SMoveTag_00a42da0(), false);
     Destroy_00a43a00(kept, m_last, SAllocatorTag_00a42da0());
     m_last = kept;
-    CBankFile::Close();
+    CBankFile::Close_009ce360();
 }

@@ -3,7 +3,7 @@
 #include <cstddef>
 static int g_base = 0;
 struct CEngineMap { int dummy; };
-struct CBase { virtual void v0() { } CBase() { ++g_base; } };
+namespace N_0099a2d0 { struct CBase { virtual void v0() { } CBase() { ++g_base; } }; } using N_0099a2d0::CBase;
 struct CTesselationData : CBase {
     long PatchWorldX; long PatchWorldY; long Width; long Height; CEngineMap* EngineMap;
     CTesselationData(CEngineMap* map, long worldX, long worldY, unsigned short width, unsigned short height)

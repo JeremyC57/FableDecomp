@@ -6,7 +6,7 @@ struct IDirect3DPixelShader9 {
     virtual unsigned long AddRef() { return 1; }
     virtual unsigned long Release() { ++g_released; return 0; }
 };
-struct CBaseClass { CBaseClass() { } virtual ~CBaseClass() { ++g_baseDestroyed; } };
+namespace N_0099a300 { struct CBaseClass { CBaseClass() { } virtual ~CBaseClass() { ++g_baseDestroyed; } }; } using N_0099a300::CBaseClass;
 struct CPixelShaderData : CBaseClass {
     IDirect3DPixelShader9* PixelShader; unsigned long ReferenceCount; unsigned long ConstCount; long* ConstIndices;
     CPixelShaderData() : PixelShader(0), ReferenceCount(1), ConstCount(0), ConstIndices(0) { }

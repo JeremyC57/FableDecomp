@@ -3,7 +3,7 @@
 #include <new>
 struct CClassFactory_Calls; struct CClass_Calls;
 static int g_base = 0; static CClass_Calls* g_cls = 0; static unsigned long g_type = 0; static int g_local = -1; static CClassFactory_Calls* g_fac = 0;
-struct CBaseIntelligentPointer { virtual void v00() { } void* PData; CBaseIntelligentPointer() : PData(0) { ++g_base; } };
+namespace N_0099a380 { struct CBaseIntelligentPointer { virtual void v00() { } void* PData; CBaseIntelligentPointer() : PData(0) { ++g_base; } }; } using N_0099a380::CBaseIntelligentPointer;
 struct CClass_Calls : CBaseIntelligentPointer {
     void* ClassListPos; void* TypeListPos; unsigned char Type; virtual void v00() { }
     CClass_Calls(CClassFactory_Calls* f, unsigned long type, bool local);

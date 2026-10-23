@@ -14,10 +14,10 @@
 struct CEngineMap { unsigned char _pad[0x60]; unsigned short OriginX, OriginY; };   // +0x60 / +0x62
 struct CIndexBuffer;
 struct CVertexBufferWin32;
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                               // 0x0099A2E0
     CBase();                                        // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 struct CPatchTesselationEdgeStrip {                 // 0x2c bytes
     unsigned char _pad[0x28];
     bool          Tesselated;                       // +0x28

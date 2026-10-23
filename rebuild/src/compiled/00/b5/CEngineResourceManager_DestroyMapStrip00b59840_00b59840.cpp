@@ -5,9 +5,9 @@
 // "WorldFrameUpdate" is propagated; named by effect.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
-struct CPatchTesselationEdgeStrip {
+namespace N_00bded60 { struct CPatchTesselationEdgeStrip {
     ~CPatchTesselationEdgeStrip();                 // 0x00BDED60
-};
+}; } using N_00bded60::CPatchTesselationEdgeStrip;
 
 struct SMapEntry_00b59840 {
     long                        m_id;

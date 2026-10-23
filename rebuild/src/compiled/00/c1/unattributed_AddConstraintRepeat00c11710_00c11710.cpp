@@ -22,7 +22,7 @@ struct CScopedLock {                       // 8-byte scoped lock
 
 struct CObservable {
     long m_a;
-    void AddObserver(void* observer);      // 0x00C25E80
+    void AddObserver_00c25e80(void* observer);      // 0x00C25E80
 };
 
 struct CParticleProgram_00c11710 {
@@ -34,5 +34,5 @@ struct CParticleProgram_00c11710 {
 void CParticleProgram_00c11710::AddConstraintRepeat_00c11710(void* observer)
 {
     CScopedLock lock(&g_observerLock);
-    m_observable.AddObserver(observer);
+    m_observable.AddObserver_00c25e80(observer);
 }

@@ -101,7 +101,7 @@ struct CEngineGlobals {
     unsigned char               _pad000[0x6b0];
     CMovableResourceMemoryPool* LocalDetailPool;             // +0x6b0
 };
-extern CEngineGlobals* g_pEngineGlobals;                     // 0x01436EA8
+extern CEngineGlobals* g_pEngineGlobals_01436ea8;                     // 0x01436EA8
 struct CMovableResource {
     virtual void v00();
 };
@@ -121,7 +121,7 @@ struct CLocalDetailCacheMap {
         bool                   RenderUpdateNeeded;           // +0x14
         CObjectTypeCollection(CLocalDetailCacheMap* map) : Type(0), Primitives(0), Next(0), Map(map), RenderUpdateNeeded(false) {}
         virtual void v00();
-        static void* operator new(unsigned int size, CMovableResource* owner) { return g_pEngineGlobals->LocalDetailPool->Allocate(size, owner); }
+        static void* operator new(unsigned int size, CMovableResource* owner) { return g_pEngineGlobals_01436ea8->LocalDetailPool->Allocate(size, owner); }
         static void operator delete(void* p, CMovableResource* owner);
         bool Load(CDataInputStream& in, const CObjectTypeCollectionPalette& palette);   // 0x00BDE680
     };
@@ -156,7 +156,7 @@ bool CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadContents(CEngineStat
         CMemoryDataInputStream stream(blocks->GetBlockData(FileBlockPos) + OffsetIntoFileBlock, FileBlockSize - OffsetIntoFileBlock);
         long uncompressedSize = stream.ReadLong();
         long compressedSize = stream.ReadLong();
-        CTemporaryBuffer buffer(uncompressedSize + 3, g_pEngineGlobals->LocalDetailPool->HandlePool, &g_ScratchBuffer);
+        CTemporaryBuffer buffer(uncompressedSize + 3, g_pEngineGlobals_01436ea8->LocalDetailPool->HandlePool, &g_ScratchBuffer);
         unsigned int written = uncompressedSize + 3;
         LZSS_Decompress(stream.GetDataAndSkip(compressedSize), compressedSize, buffer.GetData(), &written, 0);
         CMemoryDataInputStream contents(buffer.GetData(), uncompressedSize);

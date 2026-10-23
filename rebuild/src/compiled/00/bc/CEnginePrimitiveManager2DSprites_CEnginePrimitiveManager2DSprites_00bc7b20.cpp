@@ -10,9 +10,9 @@
 // for vertex shaders; `delete` on the known-non-null object needs no second test) and the inline CShaderBase destructor
 // stores the base vtable (kept in edi). The manager is `__declspec(novtable)` (no vtable store of its own) over the
 // out-of-line CBase destructor.
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual ~CBase();                              // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct CPixelShaderObject {
     virtual ~CPixelShaderObject();                 // slot 0

@@ -18,7 +18,7 @@ struct CVolume : CBase {
     CVolume(IVolume* v) : m_pVolume(v) { }
     CVolume(const CVolume& o) : CBase(), m_pVolume(o.m_pVolume) { if (m_pVolume) ++m_pVolume->m_refs; }
     void ReleaseVolume(bool) { if (m_pVolume) { m_pVolume->Release(); ++g_releases; m_pVolume = 0; } }
-    void Helper(void* argument) { ++g_helperCalls; g_helperArg = argument; }
+    void Helper_00a67450(void* argument) { ++g_helperCalls; g_helperArg = argument; }
     virtual ~CVolume() { ReleaseVolume(true); }
 };
 struct CVolumeTexture {
@@ -33,7 +33,7 @@ struct CVolumeTexture {
 };
 void CVolumeTexture::ForwardToVolumeLevel(unsigned long level, void* argument)
 {
-    GetVolumeLevel(level).Helper(argument);
+    GetVolumeLevel(level).Helper_00a67450(argument);
 }
 
 int main()

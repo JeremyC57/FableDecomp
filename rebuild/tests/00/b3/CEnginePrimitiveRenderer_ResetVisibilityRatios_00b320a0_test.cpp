@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_enum = 0, g_ctor = 0, g_dtor = 0; static void* g_arg = (void*)1;
-struct CBase { virtual void v00() { } CBase() { ++g_ctor; } ~CBase() { ++g_dtor; } };
+namespace N_0099a300 { struct CBase { virtual void v00() { } CBase() { ++g_ctor; } ~CBase() { ++g_dtor; } }; } using N_0099a300::CBase;
 struct CEngineSceneEnumeratorResetVisibilityRatio : CBase { void* m_argument; CEngineSceneEnumeratorResetVisibilityRatio(void* a) : CBase(), m_argument(a) { } };
 struct CEngineSceneGrid_00b320a0 { void Enumerate(CEngineSceneEnumeratorResetVisibilityRatio& e) { ++g_enum; g_arg = e.m_argument; } };
 struct CEnginePrimitiveRenderer { unsigned char _pad[0x338]; CEngineSceneGrid_00b320a0** m_pFirstGrid; CEngineSceneGrid_00b320a0** m_pLastGrid;

@@ -9,10 +9,10 @@
 // Layout (Ego_r.pdb CCRCSymbolMap): SLONGMap CVectorMap<unsigned long, long> +4 (the retail vector {first +4, last +8}),
 //          8-byte {key, value} pairs.
 // Shape: size() is the inline (last - first) / 8 re-read every iteration; the file's Write arguments are evaluated right to left.
-struct CBase {
+namespace N_0099a300 { struct CBase {
     CBase();                                       // 0x0099A2F0
     virtual ~CBase();                              // 0x0099A300 (CBase owns the vptr)
-};
+}; } using N_0099a300::CBase;
 struct CWideString {
     void* PStringData;
     ~CWideString();                                // 0x0099B510

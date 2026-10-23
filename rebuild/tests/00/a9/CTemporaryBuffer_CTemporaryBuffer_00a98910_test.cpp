@@ -7,7 +7,7 @@ struct CHandleBasedMemoryPool {
     void Free(long h) { if (h == lastHandle) std::strcat(g_seq, "F"); }
 };
 struct CScratchBuffer { bool Locked; void Unlock() { Locked = false; std::strcat(g_seq, "S"); } };
-struct CBase { virtual ~CBase() { std::strcat(g_seq, "B"); } };
+namespace N_0099a300 { struct CBase { virtual ~CBase() { std::strcat(g_seq, "B"); } }; } using N_0099a300::CBase;
 struct CTemporaryBuffer : CBase {
     void* Data; CHandleBasedMemoryPool* MemoryPool; long MemoryHandle; CScratchBuffer* ScratchBuffer; int AllocateType;
     ~CTemporaryBuffer()

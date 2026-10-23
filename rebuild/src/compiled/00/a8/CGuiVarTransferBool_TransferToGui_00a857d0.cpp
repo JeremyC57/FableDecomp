@@ -9,10 +9,10 @@ struct CGuiVarTransferBool {
 };
 
 // Callee: ecx = this->field_0, edx = this->field_4, one stack byte arg.
-extern void __fastcall CGuiVarTransferBool_Sink(void* ecx, int edx, unsigned char val);
+extern void __fastcall CGuiVarTransferBool_Sink_00a853a0(void* ecx, int edx, unsigned char val);
 
 void __fastcall CGuiVarTransferBool_TransferToGui(CGuiVarTransferBool* thisptr)
 {
-    CGuiVarTransferBool_Sink(thisptr->field_0, thisptr->field_4, (unsigned char)thisptr->value);
+    CGuiVarTransferBool_Sink_00a853a0(thisptr->field_0, thisptr->field_4, (unsigned char)thisptr->value);
     thisptr->flag = 0;
 }

@@ -6,9 +6,9 @@
 // Retail bytes:  mov dword ptr [0x143bb38], ecx ; ret 
 // Tiny-body shape `SetGlobal`: a `__fastcall` setter of one global pointer (the global's address
 // is a relocation). The manifest label is propagated; the name is descriptive.
-extern void* g_value;                      // 0x0143BB38
+extern void* g_value_0143bb38;                      // 0x0143BB38
 
 void __fastcall SetCurrentThingManager(void* value)
 {
-    g_value = value;
+    g_value_0143bb38 = value;
 }

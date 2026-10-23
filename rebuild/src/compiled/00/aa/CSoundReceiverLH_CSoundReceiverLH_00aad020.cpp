@@ -7,10 +7,10 @@
 // state {sound, channel, volume 1.0f} at +0x10 and a C3DVector(0, 1, 0) at +0x1c -- one flat
 // object groups the two 1.0f stores together. The 1.0f values travel in an integer register
 // (0x3F800000 in ecx) as VC7.1 emits float-constant stores; the owner is assigned in the body.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct C3DVector {
     float X;                                // +0x00

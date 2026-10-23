@@ -13,10 +13,10 @@ struct CGuiVarTransferBool
 };
 
 // The callee at 0xaea880: __fastcall (ecx = target, edx = extra), plus a stack bool arg.
-extern void __fastcall CGuiVarTransferBool_Apply(void* pTarget, int edxArg, bool value);
+extern void __fastcall CGuiVarTransferBool_Apply_00aea880(void* pTarget, int edxArg, bool value);
 
 void CGuiVarTransferBool::TransferToGui()
 {
-    CGuiVarTransferBool_Apply(this->m_pTarget, this->m_edxArg, this->m_value);
+    CGuiVarTransferBool_Apply_00aea880(this->m_pTarget, this->m_edxArg, this->m_value);
     this->m_dirty = 0;
 }

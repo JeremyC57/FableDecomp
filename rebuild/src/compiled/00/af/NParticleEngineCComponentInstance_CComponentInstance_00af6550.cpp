@@ -10,10 +10,10 @@
 // initialised in the mem-init list schedule after the vtable store (tried: DIFFER), so the pair is a
 // sub-object with its own inline zeroing constructor -- the engine's CCountedPointer {object, count
 // block}. Member names are descriptive (no PDB layout for this class in struct_layouts_egor.tsv).
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                               // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CCountedPointer {
     void* m_pObject;                       // +0

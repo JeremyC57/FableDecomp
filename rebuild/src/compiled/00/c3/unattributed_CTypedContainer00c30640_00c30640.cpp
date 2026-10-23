@@ -13,9 +13,9 @@
 // still lives), and the root's inline empty destructor restores the root vtable. Built under
 // /EHsc (the funclets land through the funclet pass). The manifest label is propagated garbage;
 // the classes are named by address. One of 3 bodies of this shape.
-struct CItem {
+namespace N_00c3b960 { struct CItem {
     ~CItem();                              // 0x00C3B960
-};
+}; } using N_00c3b960::CItem;
 
 struct CNode {
     unsigned char _body[0x10];

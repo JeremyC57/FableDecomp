@@ -14,10 +14,10 @@ struct __declspec(novtable) CEngineSubPrimitiveBase : CBase {   // vtable 0x012A
     CEngineSubPrimitiveBase(void* primitive) : CBase(), m_pPrimitive(primitive), m_pNext(0) { }
 };
 
-struct CCharString {
+namespace N_0099aed0 { struct CCharString {
     void* m_pData;
     CCharString();                                 // 0x0099AED0
-};
+}; } using N_0099aed0::CCharString;
 
 struct CEngineSubPrimitiveText : CEngineSubPrimitiveBase {   // vtable 0x012A6858
     unsigned char _pad14[0x18];                    // +0x14 .. +0x2c

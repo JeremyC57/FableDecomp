@@ -1,5 +1,5 @@
 
-struct CMember { void Copy(const CMember* src); };
+struct CMember { void Copy_00461bb7(const CMember* src); };
 struct CBaseDef { void Copy(const CBaseDef* src); };
 struct CCombatAbilityBlockHeavyWeaponAttackDef : public CBaseDef {
     unsigned char _pad[0x48];
@@ -9,5 +9,5 @@ void __fastcall CCombatAbilityBlockHeavyWeaponAttackDef_Copy(CCombatAbilityBlock
 {
     ((CBaseDef*)self)->Copy((const CBaseDef*)src);
     CMember* m = (CMember*)((unsigned char*)self + 0x28);
-    m->Copy((const CMember*)((const unsigned char*)src + 0x28));
+    m->Copy_00461bb7((const CMember*)((const unsigned char*)src + 0x28));
 }

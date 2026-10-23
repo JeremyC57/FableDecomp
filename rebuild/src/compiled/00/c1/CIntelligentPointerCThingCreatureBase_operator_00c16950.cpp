@@ -6,7 +6,7 @@ class CIntelligentPointer
 public:
     void* m_ptr;
     // 0x00c16800 : thiscall on the source pointer, returns a CThingCreatureBase* in eax
-    CThingCreatureBase* GetTarget();
+    CThingCreatureBase* GetTarget_00c16800();
     // 0x00c16820 : thiscall on the destination pointer, takes the resolved target
     void SetTarget(CThingCreatureBase*);
 
@@ -15,6 +15,6 @@ public:
 
 CIntelligentPointer* CIntelligentPointer::operator=(CIntelligentPointer& rhs)
 {
-    this->SetTarget(rhs.GetTarget());
+    this->SetTarget(rhs.GetTarget_00c16800());
     return this;
 }

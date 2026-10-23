@@ -6,10 +6,10 @@
 // Shape: the request is filled by six assignments in retail store order (b, d, e, c, the constant 4, a); member order or
 // a constructor schedules the loads differently. The system pointer is re-read for the call.
 // Leaf: vfunc_17
-struct CCharString {
+namespace N_0099af10 { struct CCharString {
     void* PStringData;
     operator const char*() const;                   // 0x0099AF10
-};
+}; } using N_0099af10::CCharString;
 
 struct SSoundParams {                               // 24-byte request block
     long m_a;                                       // +0x00 = arg 5

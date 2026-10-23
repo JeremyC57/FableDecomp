@@ -4,7 +4,7 @@ struct CTCBase;
 
 struct TList {
     void* head;
-    void remove(CTCBase* const& val);
+    void remove_00c22820(CTCBase* const& val);
 };
 
 struct CTCInventoryAbilities { char pad0[0x30]; TList learned; };
@@ -12,7 +12,7 @@ struct CTCInventoryAbilities { char pad0[0x30]; TList learned; };
 static TList*   g_self;
 static CTCBase* g_val;
 
-void TList::remove(CTCBase* const& val)
+void TList::remove_00c22820(CTCBase* const& val)
 {
     g_self = this;
     g_val  = val;

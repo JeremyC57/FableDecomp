@@ -9,10 +9,10 @@ struct IDirect3DVolumeTexture9 {
     virtual unsigned long __stdcall AddRef();
     virtual unsigned long __stdcall Release();
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();
     CBase();                                // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 struct CVolumeTexture : CBase {             // vtable 0x0129DC18
     IDirect3DVolumeTexture9* m_pTexture;    // +0x04
     long                     m_format;      // +0x08

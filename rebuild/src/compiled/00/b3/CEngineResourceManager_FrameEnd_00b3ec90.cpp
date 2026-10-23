@@ -3,11 +3,11 @@
 class CFrontendGameComponent_00495610
 {
 public:
-    bool InitGraphics();
+    bool InitGraphics_00b3b870();
     void ChangeTextureColourDepth(long);
 };
 
 void CFrontendGameComponent_00495610::ChangeTextureColourDepth(long)
 {
-    InitGraphics();
+    InitGraphics_00b3b870();
 }

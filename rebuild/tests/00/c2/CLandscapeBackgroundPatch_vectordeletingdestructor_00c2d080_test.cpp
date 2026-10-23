@@ -8,7 +8,7 @@ struct CLandscapeBackgroundPatch {
 static int g_freed = 0;
 static CLandscapeBackgroundPatch* g_last_dtor = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
+void __fastcall CLandscapeBackgroundPatch_dtor_00c2d030(CLandscapeBackgroundPatch* self)
 {
     g_last_dtor = self;
     self->destroyed = 1;
@@ -22,7 +22,7 @@ void operator delete(void* p)
 
 void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor(self);
+    CLandscapeBackgroundPatch_dtor_00c2d030(self);
     if (flags & 1)
         operator delete(self);
     return self;

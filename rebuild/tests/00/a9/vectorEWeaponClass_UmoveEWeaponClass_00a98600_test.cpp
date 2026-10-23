@@ -6,7 +6,7 @@ static Iter8* g_last_tmp;
 static int g_last_first;
 static void* g_last_self;
 
-EWeaponClass* callee_a98540(void* self, int first, Iter8* tmp)
+EWeaponClass* callee_a98540_00a98540(void* self, int first, Iter8* tmp)
 {
     g_last_self = self;
     g_last_first = first;
@@ -19,7 +19,7 @@ EWeaponClass* f_model(void* self, int first)
     Iter8 tmp;
     tmp.a = 0;
     tmp.b = 0;
-    return callee_a98540(self, first, &tmp);
+    return callee_a98540_00a98540(self, first, &tmp);
 }
 
 int main()

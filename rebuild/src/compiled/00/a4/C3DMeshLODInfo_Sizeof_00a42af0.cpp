@@ -15,14 +15,14 @@ struct C3DMeshInfo {
     void RemoveLOD(unsigned long lod, bool keepStats);   // 0x00A249A0
 };
 
-struct C3DMesh2           { unsigned long Sizeof() const; };   // 0x00A43960
+struct C3DMesh2           { unsigned long Sizeof_00a43960() const; };   // 0x00A43960
 struct CBankFileAsyncData { unsigned long Sizeof() const; };   // 0x009D5620
 struct C3DMeshLODInfo_Methods : C3DMeshLODInfo {
     unsigned long Sizeof() const;
 };
 unsigned long C3DMeshLODInfo_Methods::Sizeof() const
 {
-    unsigned long meshSize = Mesh_Data ? Mesh_Data->Sizeof() + 8 : 8;
+    unsigned long meshSize = Mesh_Data ? Mesh_Data->Sizeof_00a43960() + 8 : 8;
     unsigned long fileSize = FileData_Data ? FileData_Data->Sizeof() + 8 : 8;
     return sizeof(C3DMeshLODInfo) + meshSize + fileSize;
 }

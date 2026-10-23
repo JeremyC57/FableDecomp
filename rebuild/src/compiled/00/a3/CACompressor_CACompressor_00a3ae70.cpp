@@ -8,10 +8,10 @@
 // type disagrees by one dword, so the vector is modelled locally. The vtable store precedes the
 // vector's register-zeroed stores (an embedded member with an inline constructor), and the two
 // arguments are assigned in the body (init-list members would sink the vtable store below them).
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CRetailByteVector {                  // VC6-era vector<unsigned char>: three raw pointers
     unsigned char* first;

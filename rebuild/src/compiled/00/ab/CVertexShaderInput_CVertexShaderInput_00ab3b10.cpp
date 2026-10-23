@@ -6,10 +6,10 @@
 // Shape: base ctor, own vtable, then the embedded state block's six dwords at +4..+0x18 zeroed from one
 // cleared register (the `xor` is hoisted above the vtable store). The member types are not recoverable from the body;
 // pointers/counts named descriptively.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                    // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct SVertexShaderInputState {                // embedded block with an inline constructor: that is what keeps
     void* m_pDeclaration;                       // +0x04   the vtable store AHEAD of the zero stores (a plain

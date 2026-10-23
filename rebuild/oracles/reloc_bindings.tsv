@@ -1456,7 +1456,7 @@ _fable_alloc_462f50	00bfea0e	00462f50
 ?Copy@CRetailTree_00463057@@QAEPAUnode@1@PAU21@0@Z	00463057	00462fe4
 ?Buynode@CRetailTree_004630e7@@QAEPAUnode@1@AAY03$$CBE@Z	004630e7	00463057
 ?Copy@CRetailTree_004630e7@@QAEPAUnode@1@PAU21@0@Z	00463057	00463057
-?Copy@CDefClassBase@@QAEXPBU1@@Z	00431ed0	0046311f
+?Copy_00431ed0@CDefClassBase@@QAEXPBU1@@Z	00431ed0	0046311f
 ?Copy@SubVoices@@QAEXPBU1@@Z	0046313e	0046311f
 _freeBuffer_46324a	00bfea14	0046324a
 ?TransferBinary@CPersistContext@@QAEXPAJ@Z	00431102	0046329e
@@ -12113,7 +12113,7 @@ __imp__CoInitialize@4	01440644	00a3bc70
 ??_7CLipSyncDataBank@@6B@	0129d3d4	00a42b80
 ?Reset@?$CCountedPointer@UCResourceBank@@@@QAEXPAUCResourceBank@@@Z	00992170	00a42b80
 ?SetIsStaticMap@CBankFile@@QAEX_N@Z	009d5230	00a42b80
-??1CBankFile@@UAE@XZ	009d6490	00a42ce0
+N_009d6490	009d6490	00a42ce0
 ?_Destroy@@YIXPAUCLipSyncDataBankEntry@@0ABU__false_type@@@Z	00a43a00	00a42ce0
 ?__copy@@YIPAUCLipSyncDataBankEntry@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	00a438e0	00a42ce0
 ?Destroy_00a43a00@@YIXPAUSEntry_00a42da0@@0ABUSAllocatorTag_00a42da0@@@Z	00a43a00	00a42da0
@@ -13214,7 +13214,7 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?FableVtbl_CEngineComponent_b59730@@3PAPAXA	012a2544	00b59730
 @FableConsume_b59760@4	0099eae0	00b59760
 ??0CLocalDetailMap_00bdefc0@@QAE@PAUSMapEntry@@@Z	00bdefc0	00b59800
-??1CPatchTesselationEdgeStrip@@QAE@XZ	00bded60	00b59840
+N_00bded60	00bded60	00b59840
 ?Render@CLocalDetailCacheMap@@QAEXPAUCEngineCamera@@M@Z	00bddd70	00b599c0
 ?Update@CLocalDetailCacheMap@@QAE_NN@Z	00bded90	00b599c0
 ??0CEngineBaseGenerator@@QAE@XZ	00b59710	00b59b60
@@ -13945,7 +13945,7 @@ __imp__memmove	01440144	00c0d970
 ?SafeStringLength@@YGKPBD@Z	00c0bcc0	00c0dbb0
 ?ConsumeMapBrush@CWorldMap@@QAEXPAX@Z	00c0c270	00c0dd40
 ?ResolveMapBrush@@YGPAXPAUCScriptedMapBrush@@0@Z	00c0bcc0	00c0dd40
-?And@Pred@@QAEXPAU1@@Z	00c0dd40	00c0dec0
+?And_00c0dd40@Pred@@QAEXPAU1@@Z	00c0dd40	00c0dec0
 ?helper_c0dd60@@YIXPAUObj@@N@Z	00c0dd60	00c0ded0
 ??0CString_00c0e0f0@@QAE@ABU0@@Z	00c0dab0	00c0e0f0
 ??0CTrace_00c0e0f0@@QAE@XZ	00c16750	00c0e0f0
@@ -14024,7 +14024,7 @@ __imp_??1CImportedPositions_00c10940@@QAE@XZ	0143ff9c	00c10940
 ?g_observerLock@@3UCGlobalLockTarget@@A	0143bb14	00c113b0
 ?Find@CObservable_00c114b0@@QAEPAUCObserver_00c114b0@@PAX@Z	00c21e20	00c114b0
 ?Find@CObservable_00c11650@@QAEPAUCObserver_00c11650@@PAX@Z	00c21e20	00c11650
-?AddObserver@CObservable@@QAEXPAX@Z	00c25e80	00c11710
+?AddObserver_00c25e80@CObservable@@QAEXPAX@Z	00c25e80	00c11710
 ?Update@CView_00c11860@@QAEXXZ	00c25ea0	00c11860
 ?Transfer@CTarget_00c118e0@@QAEXPAX0@Z	00c25ff0	00c118e0
 ?FindNext@CRegistry_00c11950@@QAEPAUCElement_00c11950@@PAX@Z	00c21ee0	00c11950
@@ -14699,7 +14699,7 @@ __imp__rand	01440124	00c2d100
 ??_7CVtable_012b4bd8@@6B@	012b4bd8	00c30350
 ??0CNode@@QAE@J@Z	00c185b0	00c304f0
 ??_7CContainer_00c304f0@@6B@	012b4b48	00c304f0
-??1CItem@@QAE@XZ	00c3b840	00c30550
+N_00c3b840	00c3b840	00c30550
 ??1CNode@@QAE@XZ	00c17b10	00c30550
 ??_7CContainer_00c30550@@6B@	012b4b48	00c30550
 ??_7CRoot_00c30550@@6B@	012b1ab0	00c30550
@@ -14818,7 +14818,7 @@ __imp__SetThreadPriority@8	0143fdd0	00c355e0
 ?UpdateIdle@CNavigation_00c35c50@@QAEXPAX0@Z	00c43980	00c35c50
 ?SetTarget@CMarkedBufferOwner_00c43810@@QAE_NPAUCTarget_00c43e20@@@Z	00c43e20	00c35d50
 ?Shutdown@CMarkedBufferOwner_00c43810@@QAEXXZ	00c43810	00c35d50
-_helper	00c3cd00	00c36080
+_helper_00c3cd00	00c3cd00	00c36080
 _Callback_00C3CDE0	00c3cde0	00c36090
 __imp__CreateSemaphoreA@16	0143fea8	00c36120
 ?g_cmp@@3P6GHPAD0@ZA	0143feac	00c36150
@@ -14827,7 +14827,7 @@ __imp__CreateSemaphoreA@16	0143fea8	00c36120
 ?Add@Sub@@QAEHPAX@Z	00c458a0	00c36210
 ?Method_00c44e80@CObject_00c44e80@@QAEXXZ	00c44e80	00c36230
 ?Method_00c44b40@CObject_00c44b40@@QAEXXZ	00c44b40	00c36240
-?Receive@CTarget@@QAEXJ@Z	00c44b50	00c36250
+?Receive_00c44b50@CTarget@@QAEXJ@Z	00c44b50	00c36250
 ??_7CVtable_012b50cc@@6B@	012b50cc	00c36270
 ??_7CVtable_012b50e4@@6B@	012b50e4	00c362d0
 ??_7CParam_012b50d4@@6B@	012b50d4	00c36340

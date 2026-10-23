@@ -9,13 +9,13 @@ struct CLandscapeBackgroundPatch { char pad[0xb8]; void* tex; };
 
 static CTexMgr g_mgrObj;
 static CGlobal g_globalObj;
-CGlobal* g_obj = &g_globalObj;
+CGlobal* g_obj_01436ea8 = &g_globalObj;
 
 void CLandscapeBackgroundPatch_ClearTextures(CLandscapeBackgroundPatch* self)
 {
   void* tex = self->tex;
   if (tex) {
-    g_obj->mgr->ReleaseTexture(tex);
+    g_obj_01436ea8->mgr->ReleaseTexture(tex);
     self->tex = 0;
   }
 }

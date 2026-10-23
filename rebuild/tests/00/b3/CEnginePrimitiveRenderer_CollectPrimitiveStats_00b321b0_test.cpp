@@ -3,7 +3,7 @@
 struct C2DBoxF { float TLX, TLY, BRX, BRY; };
 struct CPrimitiveStatMap { int total; };
 static int g_baseDestroyed = 0;
-struct CBase { virtual void v00() {} ~CBase() { ++g_baseDestroyed; } };
+namespace N_0099a300 { struct CBase { virtual void v00() {} ~CBase() { ++g_baseDestroyed; } }; } using N_0099a300::CBase;
 struct CEngineScenePrimitiveStatsEnumerator : CBase {
     CPrimitiveStatMap* Destination; C2DBoxF Area; long StatIndex; unsigned int StatFlags;
     CEngineScenePrimitiveStatsEnumerator(CPrimitiveStatMap* destination, const C2DBoxF& area, long statIndex, unsigned int statFlags)

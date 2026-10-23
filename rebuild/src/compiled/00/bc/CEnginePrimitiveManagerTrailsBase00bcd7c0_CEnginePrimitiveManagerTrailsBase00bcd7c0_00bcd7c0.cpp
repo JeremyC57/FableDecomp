@@ -28,10 +28,10 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0: 8 bytes
     }
 };
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct CResourceOwner_00bf3160 {                   // the resource manager's member at +0x10 of it
     unsigned char _body[4];

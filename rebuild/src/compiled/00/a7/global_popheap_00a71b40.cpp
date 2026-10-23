@@ -64,12 +64,12 @@ struct SKeyedPair {                                     // std::pair<long, SName
 
 struct CKeyPairCompareLess { };                         // empty, passed by value
 
-void __fastcall __adjust_heap(SKeyedPair* first, long holeIndex, long len, SKeyedPair value,
+void __fastcall __adjust_heap_00a71220(SKeyedPair* first, long holeIndex, long len, SKeyedPair value,
                               CKeyPairCompareLess comp);   // 0x00A71220
 
 void __fastcall __pop_heap(SKeyedPair* first, SKeyedPair* last, SKeyedPair* result, SKeyedPair value,
                            CKeyPairCompareLess comp, long*)
 {
     *result = *first;
-    __adjust_heap(first, 0, long(last - first), value, comp);
+    __adjust_heap_00a71220(first, 0, long(last - first), value, comp);
 }

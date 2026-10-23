@@ -5,7 +5,7 @@ struct CTCBase;
 // arg by const-reference, callee-cleaned ret 4) matching callee @ 0xc22820.
 struct TList {
     void* head;
-    void remove(CTCBase* const& val);   // @ 0xc22820
+    void remove_00c22820(CTCBase* const& val);   // @ 0xc22820
 };
 
 struct CTCInventoryAbilities {
@@ -20,5 +20,5 @@ struct CTCInventoryAbilities {
 // (mov eax,[esp+4] ... mov [esp+8],eax).
 void __fastcall AddLearnedExpression(CTCInventoryAbilities* self, void* /*edx*/, long a)
 {
-    self->learned.remove((CTCBase*)a);
+    self->learned.remove_00c22820((CTCBase*)a);
 }

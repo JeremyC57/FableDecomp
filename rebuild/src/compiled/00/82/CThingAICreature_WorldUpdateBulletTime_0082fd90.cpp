@@ -24,7 +24,7 @@ struct CCamera {
 };
 struct CThing {
     virtual void v00();
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
     CCamera* GetCamera() const;                 // 0x004C7AA0
     void WorldUpdateBulletTime();               // 0x004C8BA0 (slot 20)
 };
@@ -41,6 +41,6 @@ void CThingAICreature::WorldUpdateBulletTime()
     UpdateAction();
     CThing::WorldUpdateBulletTime();
     CCamera* camera = GetCamera();
-    const C3DVector& pos = GetPosition();
+    const C3DVector& pos = GetPosition_006a4d00();
     UpdateAnimation((camera->GetPosition() - pos).GetLength());
 }

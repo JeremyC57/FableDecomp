@@ -7,7 +7,7 @@ struct IDrawableObj {
 };
 
 // helper: __fastcall on the node, returns the drawable object
-extern IDrawableObj* __fastcall GetDrawableObject(CThingTrackNode* self);
+extern IDrawableObj* __fastcall GetDrawableObject_00af8090(CThingTrackNode* self);
 
 struct CThingTrackNode {
     IDrawableObj* DrawIsDrawable();
@@ -19,7 +19,7 @@ typedef int (IDrawableObj::*Slot)(CThingTrackNode* node);
 
 IDrawableObj* CThingTrackNode::DrawIsDrawable()
 {
-    IDrawableObj* obj = GetDrawableObject(this);
+    IDrawableObj* obj = GetDrawableObject_00af8090(this);
     Slot* vtbl = *(Slot**)obj;
     (obj->*vtbl[0x12])(this);
     return obj;

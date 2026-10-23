@@ -25,13 +25,13 @@ struct SValue {
     long m_key;
 };
 
-struct SIterator {
+namespace N_00a20fe0 { struct SIterator {
     SNode* m_node;
     SIterator(SNode* node) : m_node(node) { }
     SIterator(const SIterator& other) : m_node(other.m_node) { }
     SIterator& operator--();               // 0x00A20FE0
     bool operator==(const SIterator& other) const { return m_node == other.m_node; }
-};
+}; } using N_00a20fe0::SIterator;
 
 struct SPairIB {
     SIterator first;

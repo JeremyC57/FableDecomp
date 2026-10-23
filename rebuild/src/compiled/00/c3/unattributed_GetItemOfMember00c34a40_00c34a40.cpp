@@ -8,7 +8,7 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CBaseIntelligentPointer {
-    void* GetPItem();                      // 0x00C42AC0
+    void* GetPItem_00c42ac0();                      // 0x00C42AC0
 };
 
 struct CClass_00c34a40 {
@@ -19,5 +19,5 @@ struct CClass_00c34a40 {
 
 void* CClass_00c34a40::GetItemOfMember_00c34a40(long unused)
 {
-    return m_pointer.GetPItem();
+    return m_pointer.GetPItem_00c42ac0();
 }

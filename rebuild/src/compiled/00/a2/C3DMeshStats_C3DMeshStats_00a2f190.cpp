@@ -20,7 +20,7 @@ struct CCharString {
     ~CCharString();                                // 0x0099EAE0
 };
 struct CHandleBasedMemoryPool {
-    void Free(long handle);                        // 0x00A62ED0
+    void Free_00a62ed0(long handle);                        // 0x00A62ED0
 };
 struct CMovableResource {                          // vtable 0x0129B860
     virtual void v00();
@@ -90,5 +90,5 @@ struct C3DMeshStats : CMovableResource {           // vtable 0x0129CF04, retail 
 C3DMeshStats::~C3DMeshStats()
 {
     if (StatsMemoryHandle != -1)
-        MemoryPool->Free(StatsMemoryHandle);
+        MemoryPool->Free_00a62ed0(StatsMemoryHandle);
 }

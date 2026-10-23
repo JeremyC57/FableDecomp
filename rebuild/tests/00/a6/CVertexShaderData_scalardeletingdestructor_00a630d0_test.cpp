@@ -10,7 +10,7 @@ struct IUnknownRetail {
     virtual unsigned long __stdcall AddRef() { return 1; }
     virtual unsigned long __stdcall Release() { g_order[g_released++] = this; return 0; }
 };
-struct CBase { virtual void v00() { } ~CBase() { ++g_baseDtor; } };
+namespace N_0099a300 { struct CBase { virtual void v00() { } ~CBase() { ++g_baseDtor; } }; } using N_0099a300::CBase;
 struct CVertexShaderData : CBase {
     IUnknownRetail* m_pShader; IUnknownRetail* m_pDeclaration; long m_handle; long m_refCount;
     CVertexShaderData(IUnknownRetail* s, IUnknownRetail* d) : m_pShader(s), m_pDeclaration(d), m_handle(0), m_refCount(1) { }

@@ -3,7 +3,7 @@ struct CBaseDef {
 };
 
 struct CMemberDef {
-    void Copy(const CMemberDef* other);
+    void Copy_00461bb7(const CMemberDef* other);
 };
 
 struct CCombatAbilityFlourishCounterAttackDef {
@@ -18,5 +18,5 @@ void CCombatAbilityFlourishCounterAttackDef::Copy(
         const CCombatAbilityFlourishCounterAttackDef* other)
 {
     ((CBaseDef*)this)->Copy((const CBaseDef*)other);
-    m_member.Copy(&other->m_member);
+    m_member.Copy_00461bb7(&other->m_member);
 }

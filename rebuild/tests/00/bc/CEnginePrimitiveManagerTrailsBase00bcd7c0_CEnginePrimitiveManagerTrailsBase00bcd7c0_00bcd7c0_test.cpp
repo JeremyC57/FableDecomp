@@ -3,7 +3,7 @@ static int g_deleted = 0, g_baseDtor = 0;
 struct CRefCountedShader_00bc9a00 { virtual ~CRefCountedShader_00bc9a00() { ++g_deleted; } unsigned char _pad[0xc]; long m_refCount; };
 struct CShaderBase { virtual void v00() { } ~CShaderBase() { } };
 struct CVertexShader : CShaderBase { CRefCountedShader_00bc9a00* m_pShader; CVertexShader() : m_pShader(0) { } ~CVertexShader() { CRefCountedShader_00bc9a00* shader = m_pShader; if (shader) { if (--shader->m_refCount == 0) delete shader; } } };
-struct CBase { virtual void v00() { } ~CBase() { ++g_baseDtor; } };
+namespace N_0099a300 { struct CBase { virtual void v00() { } ~CBase() { ++g_baseDtor; } }; } using N_0099a300::CBase;
 static int g_owner = 0;
 struct CResourceOwner_00bf3160 { unsigned char _body[4]; ~CResourceOwner_00bf3160() { ++g_owner; } };
 struct CEngineDynamic3DResourceManager { virtual void v00() { } unsigned char _pad[0xc]; CResourceOwner_00bf3160 m_owner; ~CEngineDynamic3DResourceManager() { } };

@@ -8,7 +8,7 @@ struct CDataOutputStream {
     void SetPosition(long p) { pos = p; }
     long GetPosition() { return pos; }
     void Write(const void* d, long n) { std::memcpy(buf + pos, d, n); pos += n; if (pos > end) end = pos; }
-    void WriteLong(long v) { int x = (int)v; Write(&x, 4); }
+    void WriteLong_00993ea0(long v) { int x = (int)v; Write(&x, 4); }
 };
 struct CChunkedFileChunk {
     long unknown; long bodySize;
@@ -33,12 +33,12 @@ struct CChunkedFileSuperChunk {
     {
         for (CChunkPointer* it = SubChunks.begin(); it != SubChunks.end(); ++it) {
             stream.Write(it->Object->ChunkType, 4);
-            stream.WriteLong(0);
+            stream.WriteLong_00993ea0(0);
             long start = stream.GetPosition();
             it->Object->WriteToFile(stream);
             long finish = stream.GetPosition();
             stream.SetPosition(start - 4);
-            stream.WriteLong(finish - start);
+            stream.WriteLong_00993ea0(finish - start);
             stream.SetPosition(finish);
         }
     }

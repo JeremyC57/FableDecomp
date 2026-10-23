@@ -14,10 +14,10 @@
 // first base's as the tail jump.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CEngineComponent {                          // 0x0c bytes
     virtual void v01();
     void* m_pOwner;

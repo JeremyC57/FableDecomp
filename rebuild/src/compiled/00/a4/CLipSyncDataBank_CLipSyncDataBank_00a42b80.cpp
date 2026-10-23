@@ -15,12 +15,12 @@
 // Shape: one shared zero register (ebx); the setter's false is that register; the new-expression's null test feeds Reset.
 #include <stddef.h>
 void* __cdecl operator new(size_t size);            // 0x00BFEA1A
-struct CBankFile {
+namespace N_009d5f80 { struct CBankFile {
     virtual void v00();
     unsigned char _bankFile[0x160];                 // +0x004
     CBankFile();                                    // 0x009D5F80
     void SetIsStaticMap(bool isStaticMap);          // 0x009D5230 (empty body: `ret 4`)
-};
+}; } using N_009d5f80::CBankFile;
 struct CResourceBank {
     unsigned char _bank[0x7c];
     CResourceBank();                                // 0x009FC5F0

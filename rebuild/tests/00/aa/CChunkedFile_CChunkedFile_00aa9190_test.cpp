@@ -11,7 +11,7 @@ struct CCountedPointer_CChunkedFileSuperChunk {
         m_pObject = 0; m_pCount = 0;
     }
 };
-struct CBaseClass { virtual ~CBaseClass() { ++g_bases; } };
+namespace N_0099a300 { struct CBaseClass { virtual ~CBaseClass() { ++g_bases; } }; } using N_0099a300::CBaseClass;
 struct CChunkedFile : CBaseClass {
     CCountedPointer_CChunkedFileSuperChunk RootChunk; unsigned long Version; CCharString FileComment;
     virtual ~CChunkedFile() { }

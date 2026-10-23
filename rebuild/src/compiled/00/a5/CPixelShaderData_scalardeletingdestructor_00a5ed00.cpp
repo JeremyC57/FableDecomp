@@ -18,10 +18,10 @@ struct IDirect3DPixelShader9 {
     virtual unsigned long __stdcall Release();     // slot 2
 };
 
-struct CBaseClass {                                // vtable 0x01231710
+namespace N_0099a300 { struct CBaseClass {                                // vtable 0x01231710
     CBaseClass() { }
     virtual ~CBaseClass();                         // 0x0099A300
-};
+}; } using N_0099a300::CBaseClass;
 
 struct CPixelShaderData : CBaseClass {             // vtable 0x0129D58C
     IDirect3DPixelShader9* PixelShader;            // +0x04
