@@ -191,6 +191,36 @@ def plan(scan, syms):
                   "self": sorted(a for t, v in tg.items() if t != canon for a in v if a == t)}
     return out
 
+def restore_comments(src, names):
+    """Undo `old_new` -> `old` renames inside comments only (names: [(new, old)])."""
+    code = _code_mask(src); out = list(src)
+    for new, old in names:
+        pat = re.compile(r"(?<![A-Za-z0-9_$])" + re.escape(new) + r"(?![A-Za-z0-9_$])")
+        for m in reversed(list(pat.finditer(src))):
+            if code[m.start():m.end()].strip() == "" and src[m.start():m.end()] == new:
+                out[m.start():m.end()] = list(old)
+                code = code[:m.start()] + " " * len(old) + code[m.end():]
+        src = "".join(out); out = list(src)
+    return src
+
+def cmd_fixcomments(args):
+    """Restore comments that an earlier (comment-renaming) pass changed: results file -> fixed copies."""
+    out_root = Path(args["--out-root"]); n = 0
+    for l in open(args["--results"]):
+        r = json.loads(l)
+        if r.get("status") != "VERIFIED": continue
+        names = []
+        for (sym, t), (_, new, k) in zip(r["renames"], r["done"]):
+            if k == "rename":
+                ident = ident_of(sym)
+                if ident: names.append((f"{ident}_{t}", ident))
+            elif k == "cls": names.append((new, special_class(sym)))
+        p = COMPILED / r["rel"]; src = p.read_text(encoding="utf-8"); fixed = restore_comments(src, names)
+        if fixed != src:
+            o = out_root / r["rel"]; o.parent.mkdir(parents=True, exist_ok=True); o.write_text(fixed, encoding="utf-8"); n += 1
+            print(r["addr"], r["rel"])
+    print(n, "files with restored comments")
+
 def cmd_report(args):
     """Merge apply results into MANIFEST.tsv / FAILED.tsv and run the global consistency check."""
     scan = load_scan(args["--scan"]); P = json.load(open(args["--plan"]))
@@ -296,6 +326,7 @@ def ns_wrap(src, cls, ns):
             end = k + 1; found = True
         edits.append((start, end))
     if not found: return None
+    if re.search(r"\bnamespace\s+" + re.escape(ns) + r"\b", code): return src      # already moved
     for start, end in sorted(edits, reverse=True):
         src = src[:start] + f"namespace {ns} {{ " + src[start:end] + f" }} using {ns}::{cls};" + src[end:]
     return src
@@ -599,4 +630,4 @@ def parse_args(argv):
 
 if __name__ == "__main__":
     cmd = sys.argv[1]; args = parse_args(sys.argv[2:])
-    {"scan": cmd_scan, "plan": cmd_plan, "apply": cmd_apply, "report": cmd_report}[cmd](args)
+    {"scan": cmd_scan, "plan": cmd_plan, "apply": cmd_apply, "report": cmd_report, "fixcomments": cmd_fixcomments}[cmd](args)
