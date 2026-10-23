@@ -1,0 +1,16 @@
+address	name	evidence
+00ec1910	CV_RandomPopulationSimScript::Main	chunk 296 RELOCATION_MATCH body + script vtable slot
+00e75ba0	CV_ExposeMayorScript::Main	chunk 296 RELOCATION_MATCH body + script vtable slot
+00dd23a0	CQ_OrchardFarmRaidGoodScript::Init	chunk 296 RELOCATION_MATCH body + script vtable slot
+00dd9520	CQ_PrisonEscapeRescueMotherScript::PrisonEscape	chunk 296 body strings + caller
+00ee76f0	CV_TrophyDealerScript::CTrophyDealerInCave::Main	chunk 296 RELOCATION_MATCH body + nested-class vtable
+0049d870	CWorld::GetWorldFrame	chunk 296 callee body (was GFGetPreMainMemoryUsed)
+004ba390	list::remove	chunk 296 callee body (was remove_if)
+004b8770	vector::erase	chunk 296 callee body
+009f0500	CCountedPointerManager::GetSectionHandle	chunk 296 callee body (section-handle lookup)
+00be0140	vector::resize	chunk 296 callee body
+00bdfe70	vector::_M_insert_overflow	chunk 296 callee body
+0041a7e0	C2DBoxF::C2DBoxF	chunk 296 callee body (pos, size ctor)
+004b8c00	list::clear	chunk 296 callee body
+00f35b10	CEntityScriptBase::SetPredicate	chunk 296 callee body
+00f35b30	CEntityScriptBase::IsActiveThreadTerminating	chunk 296 callee body

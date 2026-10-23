@@ -2420,3 +2420,14 @@ address	module	name	length	chunk	reason
 00d6c830	CQ_HangingTreeEvilScript	CheckBanditFollowStatus	608	hand295	DIFFER(607v607) -- tail-merge lane gap (same instructions, other branch targets)
 00d773e0	CQ_HangingTreeGoodScript	MonitorRegionPresence	688	hand295	DIFFER(686v686) -- firstTime byte slot vs __false_type temporary slot
 00d8a240	CQ_HerosOldHouseScript	WatchForBooty	624	hand295	DIFFER(610v610) -- tail-merge lane gap (advisor b2 top-tested form)
+00dd9520	CQ_SecretPassageScript	PrisonEscape	992	hand296	DIFFER(986v986)(992) -- CQ_SecretPassageScript::PrisonEscape parked: one fstp scheduled before the GetPos null test; label is CQ_PrisonEscapeRescueMotherScript::PrisonEscape
+00dfc630	CQ_TraderConflictGoodScript	WatchForHittingEnemies	752	hand296	DIFFER(734v740)(752) -- CQ_TraderConflictGoodScript::WatchForHittingEnemies parked: retail caches 1 in edi, no loop-head padding, 0x20 frame
+00e06050	CQ_TraderEscortScript	WatchForSurprisingBalverines	1007	hand296	DIFFER(1007v1007)(1007) -- CQ_TraderEscortScript::WatchForSurprisingBalverines parked: one lea hoisted above the terminate jne (shared ~CScriptThing tail)
+00e1cae0	CQ_WizardBattleScript	MonitorMazePhases	576	hand296	DIFFER(564v568)(576) -- CQ_WizardBattleScript::MonitorMazePhases parked: handle dtor inlined at 3 of 9 returns (retail 7); vtable-correct model not reachable
+00bdf100	CQuadTreeElement	CalcBoundingSphereAndFadeDistanceFromChildren	610	hand296	DIFFER(637v610)(610) -- CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren parked: register allocation inside the inlined _M_insert_overflow (+27)
+006509f8	CQuestInfoElementCounter	DrawAt	549	hand296	DIFFER(549v549)(549) -- CQuestInfoElementCounter::DrawAt parked: one lea/fstp pair swapped in the epilogue
+00650c1d	CQuestInfoElementCounterList	DrawAt	635	hand296	DIFFER(639v635)(635) -- CQuestInfoElementCounterList::DrawAt parked: x87 promotion of drawPos/size in the icon loop, frame 0xb0 v 0xc0
+006507d5	CQuestInfoElementTimer	DrawAt	547	hand296	DIFFER(553v547)(547) -- CQuestInfoElementTimer::DrawAt parked: font v seconds edi allocation shifts slots
+004b2280	CQuestManager	SetQuestAsFailed	528	hand296	DIFFER(527v527)(528) -- CQuestManager::SetQuestAsFailed parked: questName/this register swap and interface slot homes
+004b2890	CQuestManager	PostBoastTransfer	576	hand296	DIFFER(569v569)(576) -- CQuestManager::PostBoastTransfer parked: register colouring at two call sites (edx/ecx v ecx/eax)
+004b3a20	CQuestManager	DeactivateQuest	704	hand296	DIFFER(693v693)(704) -- CQuestManager::DeactivateQuest parked: __find tag homed in the reason arg slot (two displacement bytes)

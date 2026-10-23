@@ -729,3 +729,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - **Implicit dtor leaves the vptr alone; a user dtor resets it** (RST2) — check retail for the vptr store before writing `~T() {}`.
 - **c_str shapes** (RST2): `s = ""; if (p) s = p->data;` and `p ? p->data : ""` give the two retail forms.
 - **STLport list push_back as `insert(end(), x)` + `begin()` front + a named operator= item** (009490d0 GetBar, b62, SW2).
+- **Chunk 296 levers**: an inline `ReadLong()` helper makes two inlined stream reads share one frame word (00bde390); size-optimised NPlayerGui files (0x0064xxxx–0x0065xxxx) need `#pragma optimize("s", on)` for the plain `mov ebp,esp` frame and `unsigned short*` wide-literal params; a string built before any push and destroyed right after the call is a named local in an inner block; `bool b = true; if (...) b = false;` gives retail's byte bool; a by-value `DestroyStrings` helper keeps the vector end in a register.
+- **"naked" in comments/test strings trips crawl/purity.py** — keep the word out of every landed file.
