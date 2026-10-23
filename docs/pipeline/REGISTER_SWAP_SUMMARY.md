@@ -110,3 +110,12 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
   case: the comma forms are byte-identical, and the named local is worse.
 - **A dead parameter slot for a temporary**: no clean spelling found. Only aliasing the parameter's own storage
   moves the temp there, which isn't acceptable source.
+
+## Round 3 (2026-10-23)
+- **Solved shape:** naming nothing and writing the **whole** find-and-use block in each `if`/`else` arm fixed
+  `AssignAbilityPC`'s `old` register and slot. It is now 996 v 996 bytes. Piping the result into an inline helper or a
+  ternary made it worse.
+- **Still open on that row:** the first `use` parameter's `new` temp is stored in container's dead slot instead of
+  ability's dead slot.
+- **No change:** allocator spellings on `AddClothingToThing`, and identity wrappers (inline or `__forceinline`) on
+  either axis for the `/Os` push case.
