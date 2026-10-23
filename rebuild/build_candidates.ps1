@@ -273263,6 +273263,13 @@ $catalog = @(
         TestSource = '00/58/CTCInventory_UseContextSensitiveItem_00583a92_test.cpp'
         PassPattern = '00583a92_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0048f50c'
+        Module = 'CSubtitleRenderer'
+        Source = '00/48/CSubtitleRenderer_FormatTextForVWindow_0048f50c.cpp'
+        TestSource = '00/48/CSubtitleRenderer_FormatTextForVWindow_0048f50c_test.cpp'
+        PassPattern = '0048f50c_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

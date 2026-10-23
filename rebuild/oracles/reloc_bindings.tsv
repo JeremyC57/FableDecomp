@@ -26458,3 +26458,16 @@ __allrem	00bfec30	00937b10
 ?IsLoadedStats@C3DMeshInfo@@QBE_NXZ	00a23e80	00b393d0
 ?GetDefinitions@CTCInventory@@QBEPAUCDefinitionManager@@XZ	006869d0	00583a92
 ?GetSubDef@CThingDef@@QAE_NPAU?$CDefPointer@UCContextSensitiveItemDef@@@@@Z	005933c8	00583a92
+??0CWStringParser@@QAE@PAG@Z	00437260	0048f50c
+??1CBase_0099a2d0@@QAE@XZ	0099a2e0	0048f50c
+?GFLimit@@YIXAAMABM1@Z	0048dae0	0048f50c
+?GetBuffer@CWideString@@QBEPAGXZ	0099af00	0048f50c
+?GetVStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@@Z	00437210	0048f50c
+?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@G@Z	00a0ccd0	0048f50c
+?Set@CWStringParser@@QAEXPAG@Z	00a0c8e0	0048f50c
+?SkipWhitespace@CWStringParser@@QAEXXZ	00a0c910	0048f50c
+?WordWrapCharWidth@@YAJG@Z	0048e012	0048f50c
+?WordWrapText@CSubtitleRenderer@@QBE?AVCWideString@@ABUC2DBoxF@@ABVCFontBank@@ABV2@@Z	0048dc8b	0048f50c
+?WordWrap_SetCallback@@YIXP6AJG@ZPAX@Z	00a0fd90	0048f50c
+?g_VirtualScreenWidth@@3NA	013961e8	0048f50c
+?g_pWordWrapFont@@3PBVCFontBank@@B	013b87ac	0048f50c
