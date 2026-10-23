@@ -270330,6 +270330,13 @@ $catalog = @(
         TestSource = '00/91/CAIStateGroupThrowLogsOnFire_Update_00917130_test.cpp'
         PassPattern = '00917130_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006381a0'
+        Module = 'CThingMapManager'
+        Source = '00/63/CThingMapManager_AddGameMapWithArea_006381a0.cpp'
+        TestSource = '00/63/CThingMapManager_AddGameMapWithArea_006381a0_test.cpp'
+        PassPattern = '006381a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

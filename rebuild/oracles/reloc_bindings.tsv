@@ -25237,3 +25237,6 @@ __Rb_tree_increment	004292c0	0057770a
 ?g_CCharString_013bb67c@@3UCCharString@@A	013bb67c	00917130
 ?g_CCharString_013bb680@@3UCCharString@@A	013bb680	00917130
 ?push_back@?$vector@PBUCCharString@@@@QAEXABQBUCCharString@@@Z	00916ef0	00917130
+??$_M_insert_overflow@U__true_type@@@CThingMapInfoPtrVector@@QAEXPAPAUCThingMapInfo@@ABQAU1@ABU__true_type@@K_N@Z	00639090	006381a0
+??0CThingMap@@QAE@PAUCThingMapManager@@ABUC2DBoxI@@@Z	0085d370	006381a0
+?insert_unique@CLongSet@@QAE?AUpair_iterator_bool@1@ABJ@Z	00512da0	006381a0
