@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0057b783	MATCH	596	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0057bc6e	MATCH	515	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0057be71	MATCH	968	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0057c2e6	MATCH	523	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0057cb7e	MATCH	567	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0057cdb5	MATCH	1007	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0057d5a0	MATCH	798	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0057df85	DIFFER	876v876	-	frame-slot rotation of search temporaries + marker load order (liveness-style slot sharing); /GS; 10 grades
+00c3dfd0	SKIP	656	-	third-party library code at 0xC3xxxx/0xC4xxxx mislabelled CTCHeroStats::InitializeVectorArrays (not CTCHeroStats)
+00c41060	SKIP	624	-	third-party library code at 0xC3xxxx/0xC4xxxx mislabelled CTCHeroStats::SetupCharacterStateInitial (not CTCHeroStats)
+007c81f0	DIFFER	762v768	-	frame order of iterator tag vs direction, Normalise scheduling; 6 grades
+0047d78b	MATCH	600	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass; /GS
+0047e651	DIFFER	752v752	-	push ecx vs fsubp scheduling swap only (6 grades)
+0047e9ae	DIFFER	860v860	-	SetPosition push ecx/fsubp swap only (same residue as 0047e651 family); /GS; 4 grades
+0047f30f	DIFFER	636v636	-	push ecx vs fsubp scheduling swap only, twin of 0047e651 (4 grades)
+0058216e	MATCH	678	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+00582414	MATCH	607	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+00584b86	DIFFER	854v854	-	name ternary select vs push-in-arms, GetDef arg order, use-param temps in the thingID arg slot; 16 grades
+00589a30	DIFFER	549v549	-	spill reload order esi/edi after repe cmpsb (7 grades, RTM+QFE)
+00589d30	MATCH	919	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0058f649	DIFFER	883v883	-	frame slot swap frontEnd/temps, lea edi placement, action store scheduling; 6 grades
+00591b7f	DIFFER	729v735	-	escape-analysis lane gap: candidates non-escaping but items start reloaded with items below candidates in the frame; 14 grades
+005ee49a	DIFFER	555v549	-	key/out-pointer frame-slot sharing + merged release lea (10 grades)
+005eea9b	DIFFER	684v684	-	frame-word sharing of stats pointer + interface key (0x18 v 0x14), SIB swap; 8 grades
+005f0dc5	DIFFER	996v996	-	name ternary select vs push-in-arms; use-param new-temp not packed into arg slot (shared residue with 00584b86); 12 grades
+005f1320	DIFFER	530v518	-	literal address CSE into ebx spills loop index; slot choice (6 grades)
+005f6bd6	DIFFER	588v618	-	register allocation (ability ebx, zero edi), level re-reads, i+1 in dead slot; 3 strategies
+005be3b1	MATCH	635	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+005be62c	MATCH	525	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+005b37f7	MATCH	760	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+005b3e4e	DIFFER	532v543	-	list.empty() sete before list dtor, default-anim re-store, disjoint frame words; 16 grades
+005b43a2	DIFFER	945v945	-	list ctor allocator temp homed in live thing slot (frame 0x34 v 0x30)
+005b4a95	MATCH	999	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0056f69f	MATCH	517	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+0056f8a4	MATCH	563	PASS	RELOCATION_MATCH; g++ + VC7.1 tests pass
+005726a0	DIFFER	824v824	-	action.ActionType store hoisted above vtable load; 12 grades
+00576c4f	DIFFER	642v642	-	SetPosition push ecx/fsubp swap only (5 grades)
+00576ed1	DIFFER	622v622	-	push ecx/fsubp swap + one global/vtable load order (3 grades)
+005fb140	DIFFER	873v877	-	loop allocation: best node vs iterator in edi; 9 grades
+005fbaa0	DIFFER	632v634	-	vector start/size cached across calls (whole-program caching gap); 5 grades

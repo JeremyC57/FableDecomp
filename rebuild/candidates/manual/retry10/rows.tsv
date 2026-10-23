@@ -2535,3 +2535,24 @@ address	module	name	length	chunk	reason
 005c8176	CTCInventoryWeapons	ConstructWeaponItemEntriesPC	739	hand303	DIFFER(617v739) -- lane gap: whole-function cross-call register caching (PC twin of 005c66b2)
 005cb974	CTCInventoryWeapons	OnInitialActivate	706	hand303	DIFFER(693v706) -- cross-call register caching of viewport/def pointers
 007fb270	CTCKraken	GetClosestTentacleToTarget	560	hand303	DIFFER(556v556) -- frame 0x2c v 0x28: fild temp / interface key word sharing
+0057df85	CTCHeroStats	KickHeroToMostRecentSafeRegion	876	hand302	DIFFER(876v876) -- frame-slot rotation of search temporaries + marker load order (liveness-style slot sharing); /GS; 10 grades
+007c81f0	CTCHitOnCollision	OnCollision	768	hand302	DIFFER(762v768) -- frame order of iterator tag vs direction, Normalise scheduling; 6 grades
+0047e651	CTCInGameMenu	VideoOptionsChanged	752	hand302	DIFFER(752v752) -- push ecx vs fsubp scheduling swap only (6 grades)
+0047e9ae	CTCInGameMenu	GlobalUpdate	860	hand302	DIFFER(860v860) -- SetPosition push ecx/fsubp swap only (same residue as 0047e651 family); /GS; 4 grades
+0047f30f	CTCInGameMenu	VideoOptionsNotAccepted	636	hand302	DIFFER(636v636) -- push ecx vs fsubp scheduling swap only, twin of 0047e651 (4 grades)
+00584b86	CTCInventory	AssignThingPC	854	hand302	DIFFER(854v854) -- name ternary select vs push-in-arms, GetDef arg order, use-param temps in the thingID arg slot; 16 grades
+00589a30	CTCInventory	OpenPCMapMenu	549	hand302	DIFFER(549v549) -- spill reload order esi/edi after repe cmpsb (7 grades, RTM+QFE)
+0058f649	CTCInventory	OpenPCInventory	883	hand302	DIFFER(883v883) -- frame slot swap frontEnd/temps, lea edi placement, action store scheduling; 6 grades
+00591b7f	CTCInventory	UpdateContextSensitiveItems	735	hand302	DIFFER(729v735) -- escape-analysis lane gap: candidates non-escaping but items start reloaded with items below candidates in the frame; 14 grades
+005ee49a	CTCInventoryAbilities	IsAbleToUseAbility	549	hand302	DIFFER(555v549) -- key/out-pointer frame-slot sharing + merged release lea (10 grades)
+005eea9b	CTCInventoryAbilities	OnSpecialAbilityUsed	684	hand302	DIFFER(684v684) -- frame-word sharing of stats pointer + interface key (0x18 v 0x14), SIB swap; 8 grades
+005f0dc5	CTCInventoryAbilities	AssignAbilityPC	996	hand302	DIFFER(996v996) -- name ternary select vs push-in-arms; use-param new-temp not packed into arg slot (shared residue with 00584b86); 12 grades
+005f1320	CTCInventoryAbilities	UnAssignAbilityPC	518	hand302	DIFFER(530v518) -- literal address CSE into ebx spills loop index; slot choice (6 grades)
+005f6bd6	CTCInventoryAbilities	SetAbilityAsAvailable	618	hand302	DIFFER(588v618) -- register allocation (ability ebx, zero edi), level re-reads, i+1 in dead slot; 3 strategies
+005b3e4e	CTCInventoryClothing	GlobalUpdate	543	hand302	DIFFER(532v543) -- list.empty() sete before list dtor, default-anim re-store, disjoint frame words; 16 grades
+005b43a2	CTCInventoryClothing	AddClothingToThing	945	hand302	DIFFER(945v945) -- list ctor allocator temp homed in live thing slot (frame 0x34 v 0x30)
+005726a0	CTCInventoryExperience	CTCInventoryExperience::UpdateAbilityDisplay	824	hand302	DIFFER(824v824) -- action.ActionType store hoisted above vtable load; 12 grades
+00576c4f	CTCInventoryExperience	UndoBuyAbility	642	hand302	DIFFER(642v642) -- SetPosition push ecx/fsubp swap only (5 grades)
+00576ed1	CTCInventoryExperience	UndoBuyStat	622	hand302	DIFFER(622v622) -- push ecx/fsubp swap + one global/vtable load order (3 grades)
+005fb140	CTCInventoryMap	PanMap	880	hand302	DIFFER(873v877) -- loop allocation: best node vs iterator in edi; 9 grades
+005fbaa0	CTCInventoryMap	GetRelativePosOnMiniMap	640	hand302	DIFFER(632v634) -- vector start/size cached across calls (whole-program caching gap); 5 grades

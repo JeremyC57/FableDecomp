@@ -1,0 +1,10 @@
+address	name	evidence
+005ee01a	SetAbilityLevel	chunk 302 callee body
+0056ffc5	GetTCInventoryAbilities	chunk 302 callee body
+0041cc2b	GetScreenHeight	chunk 302 callee body
+0041cc14	GetScreenWidth	chunk 302 callee body
+0042be50	CAction::CAction	chunk 302 callee body
+00405f00	IntToWideString	chunk 302 callee body (__fastcall)
+00686d20	CTCBase::GetWorldMap	chunk 302 callee body
+00686d90	CTCBase::GetThingSearchTools	chunk 302 callee body
+00686d50	CTCBase::GetPlayerManager	chunk 302 callee body
