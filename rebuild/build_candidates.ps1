@@ -272317,6 +272317,27 @@ $catalog = @(
         TestSource = '00/82/CThingBuilding_LockAllDoors_0082db00_test.cpp'
         PassPattern = '0082db00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009c3ae0'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_ProcessActiveFileForRead_009c3ae0.cpp'
+        TestSource = '00/9c/CFileInstaller_ProcessActiveFileForRead_009c3ae0_test.cpp'
+        PassPattern = '009c3ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9dfa0'
+        Module = 'C3DAnimationManager'
+        Source = '00/a9/C3DAnimationManager_ApplyBoneMorphDisplacement_00a9dfa0.cpp'
+        TestSource = '00/a9/C3DAnimationManager_ApplyBoneMorphDisplacement_00a9dfa0_test.cpp'
+        PassPattern = '00a9dfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c7a00'
+        Module = 'CTCTurncoat'
+        Source = '00/7c/CTCTurncoat_ModifyTurncoatedness_007c7a00.cpp'
+        TestSource = '00/7c/CTCTurncoat_ModifyTurncoatedness_007c7a00_test.cpp'
+        PassPattern = '007c7a00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

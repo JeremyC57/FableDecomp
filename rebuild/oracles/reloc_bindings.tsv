@@ -26069,3 +26069,9 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?IsClosed@CTCDoor@@QAE_NXZ	0082cf40	0082db00
 ?IsLockableByOwner@CTCDoor@@QAE_NXZ	00730610	0082db00
 ?WouldBlockPos@CTCSwitchableNavigation@@QAE_NABUC3DVector@@@Z	00787620	0082db00
+?AllocateBuffer@CFileInstaller@@QAEPAUCBufferChunk@@_N@Z	009c3a60	009c3ae0
+?FreeBuffer@CFileInstaller@@QAEXPAUCBufferChunk@@@Z	009c3330	009c3ae0
+?OnFileReadCompletion@CFileInstaller@@SGXKKPAUOVERLAPPED_Fable@@@Z	009c37a0	009c3ae0
+?SetDirtyDiscError@CFileInstaller@@SIX_N@Z	009c3530	009c3ae0
+__imp__ReadFileEx@20	0143fdf4	009c3ae0
+?erase@CEffectVector@@QAEPAUCIntelligentPointer@@PAU2@0@Z	004ac0f0	007c7a00
