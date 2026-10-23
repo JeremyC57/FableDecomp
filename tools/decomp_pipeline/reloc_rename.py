@@ -626,6 +626,31 @@ def error_driven_fix(addr, src, done, ren, work, e, r):
         if r["st"] != "SRC_FAIL": break
     return src, r
 
+def toggle_by_errors(src, ren, done, errors_of, rounds=4):
+    """Shared core of the C2039 toggling: errors_of(src) -> compiler stdout."""
+    pairs = [(ident_of(sym), f"{ident_of(sym)}_{t}") for (sym, t), (_, n, k) in zip(ren, done)
+             if k == "rename" and ident_of(sym) and member_class(sym)]
+    if not pairs: return src
+    for _ in range(rounds):
+        errs = re.findall(r"\((\d+)\) : error C2039: '(\w+)' : is not a member of", errors_of(src))
+        if not errs: break
+        lines = src.split("\n"); changed = False
+        for ln, name in errs:
+            i = int(ln) - 1
+            for old, new in pairs:
+                frm, to = (new, old) if name == new else (old, new) if name == old else (None, None)
+                if frm is None or i >= len(lines): continue
+                nl = re.sub(r"((?:->|\.)\s*)" + re.escape(frm) + r"(?![A-Za-z0-9_$])", lambda m: m.group(1) + to, lines[i])
+                if nl != lines[i]: lines[i] = nl; changed = True
+        if not changed: break
+        src = "\n".join(lines)
+    return src
+
+def test_compile_errors(test, work, e):
+    work.mkdir(parents=True, exist_ok=True)
+    p = work / "fixtest.cpp"; p.write_text(test, encoding="utf-8")
+    return V.cl(["/nologo", "/c", "/Od", "/W3", f"/Fo{work / 'fixtest.obj'}", str(p)], e).stdout or ""
+
 def cmd_apply(args):
     P = json.load(open(args["--plan"]))
     scan = apply_overlay(load_scan(args["--scan"]), args.get("--overlay"))
@@ -689,6 +714,10 @@ def cmd_apply(args):
                     b = None
                     if tt is not None:
                         b = V.behaviour_of(tt, a, catalog()[a]["PassPattern"], tw, e, sobj=tw / f"{a}.obj")
+                        if b == "TCC_FAIL":
+                            tt2 = toggle_by_errors(tt, ren, done, lambda x: test_compile_errors(x, tw, e))
+                            if tt2 != tt:
+                                tt = tt2; b = V.behaviour_of(tt, a, catalog()[a]["PassPattern"], tw, e, sobj=tw / f"{a}.obj")
                         if b == "PASS":
                             o = out_root / "tests" / catalog()[a]["TestSource"]; o.parent.mkdir(parents=True, exist_ok=True)
                             o.write_text(tt, encoding="utf-8"); rec["test"] = "patched PASS"
