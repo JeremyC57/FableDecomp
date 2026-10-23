@@ -270835,6 +270835,41 @@ $catalog = @(
         TestSource = '00/f3/CRangeCompressor_Compress_00f3a2e0_test.cpp'
         PassPattern = '00f3a2e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0091e750'
+        Module = 'CAIStateGroup_MinionMotherConsoleChild'
+        Source = '00/91/CAIStateGroupMinionMotherConsoleChild_Update_0091e750.cpp'
+        TestSource = '00/91/CAIStateGroupMinionMotherConsoleChild_Update_0091e750_test.cpp'
+        PassPattern = '0091e750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00928e20'
+        Module = 'CAIStateGroup_BanditPlayDice'
+        Source = '00/92/CAIStateGroupBanditPlayDice_OnReplace_00928e20.cpp'
+        TestSource = '00/92/CAIStateGroupBanditPlayDice_OnReplace_00928e20_test.cpp'
+        PassPattern = '00928e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00638340'
+        Module = 'CThingMapManager'
+        Source = '00/63/CThingMapManager_RemoveGameMap_00638340.cpp'
+        TestSource = '00/63/CThingMapManager_RemoveGameMap_00638340_test.cpp'
+        PassPattern = '00638340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006594bb'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_UpdateCrowds_006594bb.cpp'
+        TestSource = '00/65/CTCVillage_UpdateCrowds_006594bb_test.cpp'
+        PassPattern = '006594bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdc980'
+        Module = 'CEngineLandscapeMap'
+        Source = '00/bd/CEngineLandscapeMap_GetEdgeStrip_00bdc980.cpp'
+        TestSource = '00/bd/CEngineLandscapeMap_GetEdgeStrip_00bdc980_test.cpp'
+        PassPattern = '00bdc980_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

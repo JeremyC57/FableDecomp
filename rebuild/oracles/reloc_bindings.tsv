@@ -25358,3 +25358,11 @@ _s_CornerOrderNormal	0129b94c	009dca80
 ?GetHighResTime@@YANXZ	009e1bc0	00f39ed0
 ?g_RangeDecompressBytes@@3KA	0143e978	00f39ed0
 ?g_RangeDecompressTime@@3NA	0143e970	00f39ed0
+?GetEvent@CTCEntityEvents@@QAE_NPAPAUCEventChildHurtGoToMother@NEntityEvents@@ABUCIsEventOfType@3@@Z	00915760	0091e750
+?SetCurrentPlayer@CTCDiceGame@@QAEXPAUCThing@@@Z	00929550	00928e20
+?UnsheatheDefaultWeapon@CThingCreatureBase@@QAEXXZ	00664a50	00928e20
+?__find@@YIPAPAUCThingMapInfo@@PAPAU1@0ABQAU1@ABU__true_type@@@Z	006387f0	00638340
+?erase@CLongSet@@QAEXUiterator@1@0@Z	00638ee0	00638340
+??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@VCEntitySoundDef@@@@@Z	0065f604	006594bb
+?CanStartEvent@CTCCrowdEvents@@QAE_NJJ@Z	00811380	006594bb
+?GetPSoundPair@CSoundMap@@QBEPBVCSoundPair@@ABUCCharString@@@Z	0065fba4	006594bb
