@@ -238,3 +238,11 @@ them.
 - 970–971: free-function rows "Ap"–"CDi", including the `CActiveEntityScriptBase_Create*` script factories.
 
 The sound library at 0xC40000–0xCB0000 and `__` names stay excluded. The scope file `external_969-971_AUTHORIZED_SCOPE.json` also lists 54 of its own 966–968 parks as `retry_addresses`. The prompt to paste is `EXTERNAL_CHUNKS_969-971_PROMPT.md`. Section 0 runs five Codex agents (one per chunk plus two on retries) and keeps them all active until every row is landed, capped or blocked. Section 5 requires real names instead of placeholders. The rows are recorded in `chunk_history.tsv`.
+
+**Outcome of 969–971 (Codex, 2026-10-23):** Codex returned 107 accepted rows (93 of the 120 new rows and 14 of the 54 retries), 32 parks and 35 blocked rows.
+- **Landing:** all 107 were regraded here and their tests re-run under VC7.1, and all landed (batches `2026-10-23_linux_external969` and `_969b`).
+- **Names:** the catalog uses Codex's `assigned_name`. This round it gave real names, e.g. `CEntityScriptBinding<NScript::CQ_ArenaScript>::CreateActiveEntityScript` for the script factories.
+- **Recuts:** 41 rows had spans that ran into trailing 0xCC alignment. Codex's reviewed recuts (RECUT_APPROVED.json) were applied only after checking here that every dropped byte is 0xCC. The 31 landed recut rows are in `boundary-overrides-pending.tsv`.
+- **Headers:** 009ceae0, 00a99840 and 00a9ba70 need Codex's opt-in retail layouts in `engine/CBankFile.h` (`FABLE_RETAIL_BANK_FILE`) and `engine/CMemoryDataOutputStream.h` (`FABLE_RETAIL_MEMORY_OUTPUT_STREAM`, a 12-byte CArray). Both additions leave the default layout unchanged, so they were adopted.
+- **Jump table:** 00c3f110 owns a jump table; the lander reports RELOC_UNCHECKED for it. Codex audited its 7 local relocations.
+- **Follow-up:** an in-house pass over its parks and blocked rows is in `$S/cdx969/{U,N}/`.

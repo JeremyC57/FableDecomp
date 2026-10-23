@@ -15,6 +15,48 @@ struct CDiskFileWin32;
 struct CProgressCallback;
 struct CWideStringData;
 
+#if defined(FABLE_RETAIL_BANK_FILE)
+// Opt-in for authorized retail row009ceae0. Existing donor declaration remains default.
+// Evidence: InternalClose009cd850 members; CBankFileAsync009d5f80 base boundary110.
+// Unknown retail tail remains opaque, rather than importing displaced donor fields.
+#pragma pack(push, 1)
+struct CBankFile {
+    void* __vftable;                         // +00
+    unsigned long Size;                     // +04
+    unsigned char Symbols[0x0c];            // +08
+    unsigned char Checksums[0x0c];          // +14
+    unsigned char RuntimeData[0x0c];        // +20
+    unsigned char UpdateData[0x0c];         // +2c
+    unsigned char PackedDataOffset[0x10];   // +38
+    unsigned char PackedDataSize[0x10];     // +48
+    unsigned char PackedDataType[0x10];     // +58
+    unsigned char PackedValid[0x10];        // +68
+    unsigned long OpenFlags;                // +78
+    CDiskFileWin32* BankFile_Data;           // +7c
+    CCPPointerInfo* BankFile_Info;           // +80
+    unsigned char _retail_opaque_84[0x28];  // +84
+    unsigned char SymbolIndices[0x0c];      // +ac
+    unsigned char OldSymbolIndices[0x0c];   // +b8
+    unsigned char FilenameIndices[0x0c];    // +c4
+    unsigned char SymbolCRCIndices[0x10];   // +d0
+    unsigned char _retail_opaque_e0[0x30];   // +e0
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CBankFile) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, Size) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, Symbols) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, Checksums) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, RuntimeData) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, UpdateData) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, PackedDataOffset) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, OpenFlags) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, BankFile_Data) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, BankFile_Info) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, SymbolIndices) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, OldSymbolIndices) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, FilenameIndices) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CBankFile, SymbolCRCIndices) == 0xd0);
+#else
 #pragma pack(push, 1)
 struct CBankFile {
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
@@ -99,5 +141,7 @@ FABLE_STATIC_ASSERT(offsetof(CBankFile, WarningFlag) == 0x118);
 FABLE_STATIC_ASSERT(offsetof(CBankFile, ChecksumCache) == 0x11c);
 FABLE_STATIC_ASSERT(offsetof(CBankFile, Dependencies) == 0x138);
 FABLE_STATIC_ASSERT(offsetof(CBankFile, CurrentEntryDependencies) == 0x170);
+
+#endif // FABLE_RETAIL_BANK_FILE
 
 #endif // FABLE_ENGINE_CBANKFILE_H
