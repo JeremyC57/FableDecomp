@@ -148,3 +148,11 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
   the arithmetic right, and all are byte-identical to the base version, so the front end folds them before
   hoisting: a comma operator `(level*20, 0) + ...`, `level * sizeof(CMapwhoLevelInfo)`, `0L + level*20`,
   `&base[4] + level*20`, and `level*20 + (base + 4)`.
+- **Round 7 on the SIB family (structural):**
+  - `do { long offset = level*20; <y loop> } while (false);` gives the same bytes as declaring `offset` just before
+    the y loop: 553 v 542. Scoping it tightly doesn't stop it changing register allocation for the whole loop.
+  - `if (map) { ... }` around the y loop is worse: 129 diff lines.
+  - Wrapping `LevelInfo` in an anonymous struct gives base bytes.
+  - Declaring `offset` inside the y-loop body gives base bytes. The compiler hoists it again, so it's the index
+    again. Retail's order only appears when a *variable* holds the offset at loop entry, and that variable always
+    costs a register and moves the rest.
