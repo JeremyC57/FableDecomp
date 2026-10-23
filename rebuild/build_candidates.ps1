@@ -276847,6 +276847,21 @@ $catalog = @(
         TestSource = '00/8f/CCreatureActionDragonFlight_CCreatureActionDragonFlight_008f4d60_test.cpp'
         PassPattern = '008f4d60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009994a0'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_CreateDirectoryW_009994a0.cpp'
+        TestSource = '00/99/CAFile_CreateDirectoryW_009994a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr /GS'
+        PassPattern = '009994a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00681ba0'
+        Module = '_global'
+        Source = '00/68/global_CParticleMorphsTransferEntry_00681ba0.cpp'
+        TestSource = '00/68/global_CParticleMorphsTransferEntry_00681ba0_test.cpp'
+        PassPattern = '00681ba0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
