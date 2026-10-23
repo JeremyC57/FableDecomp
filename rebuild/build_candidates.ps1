@@ -271609,6 +271609,20 @@ $catalog = @(
         TestSource = '00/7f/CTCKraken_UpdateBeamExplosion_007fbe50_test.cpp'
         PassPattern = '007fbe50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007fb270'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_GetClosestTentacleToTarget_007fb270.cpp'
+        TestSource = '00/7f/CTCKraken_GetClosestTentacleToTarget_007fb270_test.cpp'
+        PassPattern = '007fb270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fd1d0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_FindTeleportsForActiveRegion_005fd1d0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_FindTeleportsForActiveRegion_005fd1d0_test.cpp'
+        PassPattern = '005fd1d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

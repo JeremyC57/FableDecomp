@@ -25763,3 +25763,4 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?GetDefinitionManager@CTCKraken@@QAEPAUCDefinitionManager@@XZ	006869d0	007fbe50
 ?GetDisplayEngine@CTCKraken@@QAEPAUCDisplayEngine@@XZ	00686a70	007fbe50
 ?g_LastBeamExplosionFrame@@3JA	013baf10	007fbe50
+?HasMode@CTCScriptedHook@@QAE_NJ@Z	0073a8a0	007fb270
