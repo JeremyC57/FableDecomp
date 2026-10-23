@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0063f7c0	DIFFER	785v785	-	residue: node-loop exit reload order only (retail reloads edx first); ForEachInRoughArea with CFilter_Bind3 reference members and the inline Overlappi
+006b2720	RELOCATION_MATCH	570v570	PASS	FindThingsInRoughArea (SIB recipe); catalog label propagated/wrong
+006fe7c0	DIFFER	680v680	-	residue: node-loop exit reload order (retail reloads edx before edi/esi); the SIB order is fixed by the 007FCEF0 recipe
+007313b0	RELOCATION_MATCH	568v568	PASS	GetPFirstThingInRoughArea (SIB recipe)
+0074d710	RELOCATION_MATCH	548v548	PASS	FindThingsInRoughArea (SIB recipe); catalog label propagated/wrong
+007512e0	RELOCATION_MATCH	618v618	PASS	GetPFirstThingInRoughArea
+00785dd0	RELOCATION_MATCH	581v581	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+0078db20	RELOCATION_MATCH	596v596	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+007930b0	RELOCATION_MATCH	602v602	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+0079a050	RELOCATION_MATCH	554v554	PASS	GetPBestThingInRoughArea
+0079a280	RELOCATION_MATCH	549v549	PASS	GetPFirstThingInRoughArea (SIB recipe)
+0079bf30	RELOCATION_MATCH	556v556	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+007a5190	RELOCATION_MATCH	602v602	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+007a63d0	RELOCATION_MATCH	596v596	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+007c3c20	RELOCATION_MATCH	581v581	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+007f5d20	RELOCATION_MATCH	594v594	PASS	GetPBestThingInRoughArea
+007fcef0	RELOCATION_MATCH	542v542	PASS	GetPFirstThingInRoughArea (SIB recipe)
+007fd110	RELOCATION_MATCH	542v542	PASS	GetPFirstThingInRoughArea (SIB recipe)
+007fe730	RELOCATION_MATCH	605v605	PASS	GetPFirstThingInRoughArea (SIB recipe)
+0080e8e0	RELOCATION_MATCH	602v602	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+0085b2a0	DIFFER	775v775	-	residue: node-loop exit reload order -- retail reloads the map iterator after `this` (or the spill VC reloads first differs); the SIB order is fixed b
+008780d0	DIFFER	680v680	-	residue: node-loop exit reload order (retail reloads edx before edi/esi); the SIB order is fixed by the 007FCEF0 recipe
+00878430	DIFFER	673v673	-	residue: node-loop exit reload order (retail reloads edx before edi/esi); the SIB order is fixed by the 007FCEF0 recipe
+0087a7c0	DIFFER	590v590	-	residue: node-loop exit reload order -- retail reloads the map iterator after `this` (or the spill VC reloads first differs); the SIB order is fixed b
+008ad710	RELOCATION_MATCH	570v570	PASS	FindThingsInRoughArea (SIB recipe); catalog label propagated/wrong
+009147e0	RELOCATION_MATCH	567v567	PASS	GetPBestThingInRoughArea (SIB recipe)
+00919780	DIFFER	590v590	-	residue: node-loop exit reload order -- retail reloads the map iterator after `this` (or the spill VC reloads first differs); the SIB order is fixed b
+0091adb0	RELOCATION_MATCH	602v602	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+00937080	RELOCATION_MATCH	570v570	PASS	FindThingsInRoughArea; catalog label propagated/wrong
+00937690	RELOCATION_MATCH	594v594	PASS	GetPBestThingInRoughArea
+0093cdb0	RELOCATION_MATCH	560v560	PASS	GetPBestThingInRoughArea
+00942390	RELOCATION_MATCH	573v573	PASS	GetPBestThingInRoughArea
+009595c0	RELOCATION_MATCH	573v573	PASS	FindThingsInRoughArea (SIB recipe); catalog label propagated/wrong
+0096bcb0	DIFFER	583v583	-	residue: node-loop exit reload order -- retail reloads the map iterator after `this` (or the spill VC reloads first differs); the SIB order is fixed b
+0096f260	RELOCATION_MATCH	552v552	PASS	GetPFirstThingInRoughArea (SIB recipe)
+009871c0	DIFFER	614v614	-	residue: node-loop exit reload placement of ebx (maps local) / this-maps slot swap (maps direct); the SIB order is fixed by the 007FCEF0 recipe
+00987430	RELOCATION_MATCH	549v549	PASS	GetPFirstThingInRoughArea (SIB recipe)
+0083bf90	RELOCATION_MATCH	584v584	PASS	Save
+0083c2d0	DIFFER	760v756	-	residue: the parsed item CCharString is homed in the dead argument slot and its handle reloaded and re-tested per else-if (retail keeps it at [esp+14h
+00837220	DIFFER	716v716	-	residue: the cross product's third component loads `dY` before `sX` (operand order is canonicalised: the swapped source spelling compiles the same), a

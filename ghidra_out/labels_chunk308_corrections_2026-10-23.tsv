@@ -1,0 +1,8 @@
+address	name	evidence
+0x0049C700	CThingSearchTools::GetCellExtents	chunk308: returns C2DBoxI by value, called from FindThingsInRoughArea family
+0x00662000	CThingTypeQuery::GetCreatureType	chunk308: inlined type test in GetPFirstThingInRoughArea
+0x004AC610	vector_ptr::_M_insert_overflow	chunk308: STLport growth body
+0x00515CC0	vector_ptr::_M_insert_overflow	chunk308: STLport growth body
+0x00959260	vector_ptr::_M_insert_overflow	chunk308: STLport growth body
+0x00788FFC	vector_ptr::_M_insert_overflow	chunk308: STLport growth body
+0x00436AC0	vector_ptr::_M_insert_overflow	chunk308: STLport growth body

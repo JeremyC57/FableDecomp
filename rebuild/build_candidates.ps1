@@ -272023,6 +272023,209 @@ $catalog = @(
         TestSource = '00/6d/CTCWife_Divorce_006d0180_test.cpp'
         PassPattern = '006d0180_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b2720'
+        Module = 'CThingSearchTools'
+        Source = '00/6b/CThingSearchTools_FindThingsInRoughArea_006b2720.cpp'
+        TestSource = '00/6b/CThingSearchTools_FindThingsInRoughArea_006b2720_test.cpp'
+        PassPattern = '006b2720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007313b0'
+        Module = 'CThingSearchTools'
+        Source = '00/73/CThingSearchTools_GetPFirstThingInRoughArea_007313b0.cpp'
+        TestSource = '00/73/CThingSearchTools_GetPFirstThingInRoughArea_007313b0_test.cpp'
+        PassPattern = '007313b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074d710'
+        Module = 'CThingSearchTools'
+        Source = '00/74/CThingSearchTools_FindThingsInRoughArea_0074d710.cpp'
+        TestSource = '00/74/CThingSearchTools_FindThingsInRoughArea_0074d710_test.cpp'
+        PassPattern = '0074d710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007512e0'
+        Module = 'CThingSearchTools'
+        Source = '00/75/CThingSearchTools_GetPFirstThingInRoughArea_007512e0.cpp'
+        TestSource = '00/75/CThingSearchTools_GetPFirstThingInRoughArea_007512e0_test.cpp'
+        PassPattern = '007512e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00785dd0'
+        Module = 'CThingSearchTools'
+        Source = '00/78/CThingSearchTools_FindThingsInRoughArea_00785dd0.cpp'
+        TestSource = '00/78/CThingSearchTools_FindThingsInRoughArea_00785dd0_test.cpp'
+        PassPattern = '00785dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078db20'
+        Module = 'CThingSearchTools'
+        Source = '00/78/CThingSearchTools_FindThingsInRoughArea_0078db20.cpp'
+        TestSource = '00/78/CThingSearchTools_FindThingsInRoughArea_0078db20_test.cpp'
+        PassPattern = '0078db20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007930b0'
+        Module = 'CThingSearchTools'
+        Source = '00/79/CThingSearchTools_FindThingsInRoughArea_007930b0.cpp'
+        TestSource = '00/79/CThingSearchTools_FindThingsInRoughArea_007930b0_test.cpp'
+        PassPattern = '007930b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079a050'
+        Module = 'CThingSearchTools'
+        Source = '00/79/CThingSearchTools_GetPBestThingInRoughArea_0079a050.cpp'
+        TestSource = '00/79/CThingSearchTools_GetPBestThingInRoughArea_0079a050_test.cpp'
+        PassPattern = '0079a050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079a280'
+        Module = 'CThingSearchTools'
+        Source = '00/79/CThingSearchTools_GetPFirstThingInRoughArea_0079a280.cpp'
+        TestSource = '00/79/CThingSearchTools_GetPFirstThingInRoughArea_0079a280_test.cpp'
+        PassPattern = '0079a280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079bf30'
+        Module = 'CThingSearchTools'
+        Source = '00/79/CThingSearchTools_FindThingsInRoughArea_0079bf30.cpp'
+        TestSource = '00/79/CThingSearchTools_FindThingsInRoughArea_0079bf30_test.cpp'
+        PassPattern = '0079bf30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a5190'
+        Module = 'CThingSearchTools'
+        Source = '00/7a/CThingSearchTools_FindThingsInRoughArea_007a5190.cpp'
+        TestSource = '00/7a/CThingSearchTools_FindThingsInRoughArea_007a5190_test.cpp'
+        PassPattern = '007a5190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a63d0'
+        Module = 'CThingSearchTools'
+        Source = '00/7a/CThingSearchTools_FindThingsInRoughArea_007a63d0.cpp'
+        TestSource = '00/7a/CThingSearchTools_FindThingsInRoughArea_007a63d0_test.cpp'
+        PassPattern = '007a63d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c3c20'
+        Module = 'CThingSearchTools'
+        Source = '00/7c/CThingSearchTools_FindThingsInRoughArea_007c3c20.cpp'
+        TestSource = '00/7c/CThingSearchTools_FindThingsInRoughArea_007c3c20_test.cpp'
+        PassPattern = '007c3c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f5d20'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetPBestThingInRoughArea_007f5d20.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetPBestThingInRoughArea_007f5d20_test.cpp'
+        PassPattern = '007f5d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fcef0'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetPFirstThingInRoughArea_007fcef0.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetPFirstThingInRoughArea_007fcef0_test.cpp'
+        PassPattern = '007fcef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fd110'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetPFirstThingInRoughArea_007fd110.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetPFirstThingInRoughArea_007fd110_test.cpp'
+        PassPattern = '007fd110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fe730'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetPFirstThingInRoughArea_007fe730.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetPFirstThingInRoughArea_007fe730_test.cpp'
+        PassPattern = '007fe730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080e8e0'
+        Module = 'CThingSearchTools'
+        Source = '00/80/CThingSearchTools_FindThingsInRoughArea_0080e8e0.cpp'
+        TestSource = '00/80/CThingSearchTools_FindThingsInRoughArea_0080e8e0_test.cpp'
+        PassPattern = '0080e8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083bf90'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_Save_0083bf90.cpp'
+        TestSource = '00/83/CThingSwitch_Save_0083bf90_test.cpp'
+        PassPattern = '0083bf90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ad710'
+        Module = 'CThingSearchTools'
+        Source = '00/8a/CThingSearchTools_FindThingsInRoughArea_008ad710.cpp'
+        TestSource = '00/8a/CThingSearchTools_FindThingsInRoughArea_008ad710_test.cpp'
+        PassPattern = '008ad710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009147e0'
+        Module = 'CThingSearchTools'
+        Source = '00/91/CThingSearchTools_GetPBestThingInRoughArea_009147e0.cpp'
+        TestSource = '00/91/CThingSearchTools_GetPBestThingInRoughArea_009147e0_test.cpp'
+        PassPattern = '009147e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091adb0'
+        Module = 'CThingSearchTools'
+        Source = '00/91/CThingSearchTools_FindThingsInRoughArea_0091adb0.cpp'
+        TestSource = '00/91/CThingSearchTools_FindThingsInRoughArea_0091adb0_test.cpp'
+        PassPattern = '0091adb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00937080'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_FindThingsInRoughArea_00937080.cpp'
+        TestSource = '00/93/CThingSearchTools_FindThingsInRoughArea_00937080_test.cpp'
+        PassPattern = '00937080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00937690'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestThingInRoughArea_00937690.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestThingInRoughArea_00937690_test.cpp'
+        PassPattern = '00937690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093cdb0'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestThingInRoughArea_0093cdb0.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestThingInRoughArea_0093cdb0_test.cpp'
+        PassPattern = '0093cdb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00942390'
+        Module = 'CThingSearchTools'
+        Source = '00/94/CThingSearchTools_GetPBestThingInRoughArea_00942390.cpp'
+        TestSource = '00/94/CThingSearchTools_GetPBestThingInRoughArea_00942390_test.cpp'
+        PassPattern = '00942390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009595c0'
+        Module = 'CThingSearchTools'
+        Source = '00/95/CThingSearchTools_FindThingsInRoughArea_009595c0.cpp'
+        TestSource = '00/95/CThingSearchTools_FindThingsInRoughArea_009595c0_test.cpp'
+        PassPattern = '009595c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096f260'
+        Module = 'CThingSearchTools'
+        Source = '00/96/CThingSearchTools_GetPFirstThingInRoughArea_0096f260.cpp'
+        TestSource = '00/96/CThingSearchTools_GetPFirstThingInRoughArea_0096f260_test.cpp'
+        PassPattern = '0096f260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00987430'
+        Module = 'CThingSearchTools'
+        Source = '00/98/CThingSearchTools_GetPFirstThingInRoughArea_00987430.cpp'
+        TestSource = '00/98/CThingSearchTools_GetPFirstThingInRoughArea_00987430_test.cpp'
+        PassPattern = '00987430_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
