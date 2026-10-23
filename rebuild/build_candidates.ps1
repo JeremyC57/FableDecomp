@@ -273172,6 +273172,34 @@ $catalog = @(
         TestSource = '00/ac/C3DMeshPartitionElement_ReadFromFile_00ac21e0_test.cpp'
         PassPattern = '00ac21e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00706040'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_UpdateHiddenModifiers_00706040.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_UpdateHiddenModifiers_00706040_test.cpp'
+        PassPattern = '00706040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00722590'
+        Module = 'CTCSmokeGenerator'
+        Source = '00/72/CTCSmokeGenerator_CreatePositions_00722590.cpp'
+        TestSource = '00/72/CTCSmokeGenerator_CreatePositions_00722590_test.cpp'
+        PassPattern = '00722590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c25a0'
+        Module = 'CTCShotDefinitionBase'
+        Source = '00/7c/CTCShotDefinitionBase_InitAttachedEffects_007c25a0.cpp'
+        TestSource = '00/7c/CTCShotDefinitionBase_InitAttachedEffects_007c25a0_test.cpp'
+        PassPattern = '007c25a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00830260'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_RandomiseMovementSpeed_00830260.cpp'
+        TestSource = '00/83/CThingAICreature_RandomiseMovementSpeed_00830260_test.cpp'
+        PassPattern = '00830260_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

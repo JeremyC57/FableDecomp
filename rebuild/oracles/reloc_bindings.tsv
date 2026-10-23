@@ -26417,3 +26417,12 @@ __wcsicmp	00f3fb84	00599e3f
 ??_7C3DAnimFileLoader@@6B@	0129e060	00a999b0
 ?AddRootSubChunkType@C3DAnimFileLoader@@QAE?AU?$CCountedPointer@UCChunkedFileChunk@@@@ABUCChunkedFileChunk@@@Z	00a98be0	00a999b0
 ?Reset@?$CCountedPointer@UC3DAnimFileRootChunk@@@@QAEXPAUC3DAnimFileRootChunk@@@Z	00a9a420	00a999b0
+?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefTempPointer@$$CBVCDefinition@@@@J@Z	009ad9e0	00706040
+?GetSubDef@CDefinition@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z	0057ff92	00706040
+?GetSubDef@CDefClassBase@@QAE_NPAUCSmokeDefPtr@@@Z	00722d30	00722590
+?IsResourcesLoaded@CTCGraphicAppearance@@QAE_N_N@Z	004be3e0	00722590
+?g_CCharString_013bacc0@@3UCCharString@@A	013bacc0	00722590
+?push_back@CGenerationPosVector@@QAEXABUCGenerationPos@@@Z	00723270	00722590
+?HasDummyObject@CThingAppearance@@QAE_NABUCCharString@@@Z	004be2c0	007c25a0
+?HasHelperPoint@CThingAppearance@@QAE_NABUCCharString@@@Z	004be170	007c25a0
+?g_CCharString_013bacb4@@3UCCharString@@A	013bacb4	007c25a0
