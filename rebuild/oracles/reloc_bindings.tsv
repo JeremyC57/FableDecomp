@@ -26330,3 +26330,14 @@ __TI1?AUCGenericException@@	013692f8	00a37060
 ?OnDeactivateEntity@CQuestManager@@QAEXPAVCThing@@_N@Z	004afb00	005252b0
 ?SavePersistentState@CThingManager@@QAEXJAAUCThingVector@@_N@Z	005239c0	005252b0
 ?push_back@CThingVector@@QAEXABQAVCThing@@@Z	00436c80	005252b0
+?EndSurfaceUse2@CGPUScratchBufferTextureManager@@QAEXJ@Z	00f36f30	00bac0f0
+?EndSurfaceUse@CGPUScratchBufferTextureManager@@QAEXJ@Z	00f36f00	00bac0f0
+?RenderFromSortList@CEnginePrimitiveManagerRepeatedZSprites@@QAEXPAUCEngineInternalPrimitiveRepeatedZSprite@@@Z	00baa870	00bac0f0
+?StartSurfaceUse2@CGPUScratchBufferTextureManager@@QAEJJ@Z	00f36f10	00bac0f0
+?StartSurfaceUse@CGPUScratchBufferTextureManager@@QAEJJ@Z	00f36ee0	00bac0f0
+?_M_fill_insert@CSortList@@QAEXPAPAUCEngineInternalPrimitiveRepeatedZSprite@@KABQAU2@@Z	00bac800	00bac0f0
+?g_pDisplayManager@@3PAUCDisplayManagerView@@A	01436e98	00bac0f0
+?g_pEngineLightingManager@@3PAUCEngineLightingManagerView@@A	01436e9c	00bac0f0
+?GetQueryResult@CEngineOcclusionManager@@QAEKJ_N@Z	00b8d0b0	00be79d0
+?Render@CLandscapeBackgroundPatch@@QAE_N_N@Z	00be6f70	00be79d0
+?SetVisibilityFlagAndUpdateParentChain@CLandscapeBackgroundTreeNode@@QAEX_N@Z	00bf7370	00be79d0

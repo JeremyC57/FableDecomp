@@ -273053,6 +273053,27 @@ $catalog = @(
         TestSource = '00/52/CThingManager_SaveThingsOnLevelReadyForUnloading_005252b0_test.cpp'
         PassPattern = '005252b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bac0f0'
+        Module = 'CEnginePrimitiveManagerRepeatedZSprites'
+        Source = '00/ba/CEnginePrimitiveManagerRepeatedZSprites_RenderNonsortedPrimitives_00bac0f0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerRepeatedZSprites_RenderNonsortedPrimitives_00bac0f0_test.cpp'
+        PassPattern = '00bac0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00518130'
+        Module = 'CThingSearchTools'
+        Source = '00/51/CThingSearchTools_ForEachInRoughArea_00518130.cpp'
+        TestSource = '00/51/CThingSearchTools_ForEachInRoughArea_00518130_test.cpp'
+        PassPattern = '00518130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be79d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_RenderWithOcclusion_00be79d0.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_RenderWithOcclusion_00be79d0_test.cpp'
+        PassPattern = '00be79d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
