@@ -133,3 +133,14 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
 - **New family question, about 17 rows (`CThingSearchTools` rough-area templates).** Retail encodes the per-row `Width`
   load as `[hoisted + LevelInfo + 4]`, with `LevelInfo` as the SIB index; ours makes `LevelInfo` the base. Every
   spelling of the indexing tried canonicalises to the same tree. Which source shapes make VC7.1 swap base and index?
+- **Round 5 on the SIB family (007fcef0, 15 grades):**
+  - `offset[(const char*)LevelInfo]`, `(DWORD)offset + (DWORD)LevelInfo + 4`, and a `pBase` char pointer all produce
+    the same bytes as each other.
+  - When `offset` is a **user loop variable** (`long offset = level*20;` in the level loop), the load *does* come out
+    as retail's `[offset + LevelInfo + 4]`. But the extra variable changes register allocation for the whole loop:
+    142 diff lines, or 553 v 542 bytes when it's declared just before the y loop.
+  - When the same arithmetic sits inside the inline `GetCellPtr`, VC7.1 hoists it itself and the order goes back to
+    `[LevelInfo + offset + 4]`.
+  - So base and index follow **who created the invariant**: a user variable becomes the base, a compiler-hoisted temp
+    becomes the index. Still needed: a spelling where the compiler does the hoisting but the offset ends up as the
+    base.
