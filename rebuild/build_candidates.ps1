@@ -272310,6 +272310,13 @@ $catalog = @(
         TestSource = '00/ce/CTargetForKey_Main_00ce15e0_test.cpp'
         PassPattern = '00ce15e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0082db00'
+        Module = 'CThingBuilding'
+        Source = '00/82/CThingBuilding_LockAllDoors_0082db00.cpp'
+        TestSource = '00/82/CThingBuilding_LockAllDoors_0082db00_test.cpp'
+        PassPattern = '0082db00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

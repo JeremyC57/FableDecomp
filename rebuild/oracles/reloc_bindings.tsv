@@ -26063,3 +26063,9 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?CreateSpecialEffect@@YIPAVCThing@@JABUC3DVector@@_N@Z	006e0880	00836260
 ?GetTCDriver@CThing@@QAE_NPAPAUCTCDParticleEmitter@@@Z	004acb50	00836260
 ?PeekDefinition@CThingDeadCreature@@QBEABUCThingCreatureDef@@XZ	00835b90	00836260
+?G_DoorPlayerRadiusSq@@3MB	0125d108	0082db00
+?GetCharacter@CPlayer@@QAEPAUCThingCreatureBase@@XZ	00487dc0	0082db00
+?GetCharacter@CPlayer@@QBEPBUCThingCreatureBase@@XZ	00487dd0	0082db00
+?IsClosed@CTCDoor@@QAE_NXZ	0082cf40	0082db00
+?IsLockableByOwner@CTCDoor@@QAE_NXZ	00730610	0082db00
+?WouldBlockPos@CTCSwitchableNavigation@@QAE_NABUC3DVector@@@Z	00787620	0082db00

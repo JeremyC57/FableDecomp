@@ -133,7 +133,7 @@ void CThingBuilding::LockAllDoors(bool lock, bool checkBlocking)
                 && door.GetPItem()->GetInterface(&tc, 0x26)) {
                 if (!tc->IsLockableByOwner())
                     continue;
-                const CThingCreatureBase* hero = GetPlayerManager()->GetMainPlayer()->GetCharacter();
+                const CThingCreatureBase* hero = static_cast<const CThingBuilding*>(this)->GetPlayerManager()->GetMainPlayer()->GetCharacter();
                 if (hero && !hero->Dead && lock && tc->OwnerLock) {
                     const C3DVector& a = door.GetPItem()->GetPosition();
                     const C3DVector& b = hero->GetPosition();
