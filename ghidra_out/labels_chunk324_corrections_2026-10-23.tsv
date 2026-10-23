@@ -1,0 +1,8 @@
+address	name	evidence
+00488020	CPlayer::~CPlayer	chunk 324: dtor body, vtable install and member dtor chain
+00561980	CTCHeroOnlineScoreboard::DownloadMyClansLogos	chunk 324: caller and string evidence
+006cc270	CTCCreatureNavigation::DrawPreparePrimitivesForRendering	chunk 324: vtable slot 11
+005671c0	_STL::__reverse	chunk 324: __fastcall reverse(first,last,const random_access_iterator_tag&) on pointers
+0055f090	Encrypt	chunk 324: __fastcall, hidden result in ecx, ret 4
+0055f140	Decrypt	chunk 324: __fastcall, hidden result in ecx, ret 4
+0042a34e	_STL::_Rb_tree_rebalance_for_erase	chunk 324: STLport red-black tree erase rebalance

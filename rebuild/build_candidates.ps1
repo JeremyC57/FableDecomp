@@ -275909,6 +275909,63 @@ $catalog = @(
         TestSource = '00/5d/global_CParticleMorphsFindAndSortByName_005dcf70_test.cpp'
         PassPattern = '005dcf70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0047eee4'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_ConstructSaveGameFileDescription_0047eee4.cpp'
+        TestSource = '00/47/CTCInGameMenu_ConstructSaveGameFileDescription_0047eee4_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0047eee4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00488020'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_CPlayer_00488020.cpp'
+        TestSource = '00/48/CPlayer_CPlayer_00488020_test.cpp'
+        PassPattern = '00488020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00561980'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_DownloadMyClansLogos_00561980.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_DownloadMyClansLogos_00561980_test.cpp'
+        PassPattern = '00561980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005621b0'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_DownloadLogosForThisClansMembers_005621b0.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_DownloadLogosForThisClansMembers_005621b0_test.cpp'
+        PassPattern = '005621b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00562710'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_InitialiseActivityInfo_00562710.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_InitialiseActivityInfo_00562710_test.cpp'
+        PassPattern = '00562710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00582ace'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ConstructStyleEntry_00582ace.cpp'
+        TestSource = '00/58/CTCInventory_ConstructStyleEntry_00582ace_test.cpp'
+        PassPattern = '00582ace_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0058315b'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ConstructStyleEntryPC_0058315b.cpp'
+        TestSource = '00/58/CTCInventory_ConstructStyleEntryPC_0058315b_test.cpp'
+        PassPattern = '0058315b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071c360'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_InitialiseCustomTattoos_0071c360.cpp'
+        TestSource = '00/71/CTCHeroMorph_InitialiseCustomTattoos_0071c360_test.cpp'
+        PassPattern = '0071c360_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

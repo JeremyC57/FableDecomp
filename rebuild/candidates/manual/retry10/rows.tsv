@@ -2973,3 +2973,34 @@ address	module	name	length	chunk	reason
 00a880c0	CSBCCorridor	?Process@CSBCCorridor@@UAE_NPBVCSteeringAgent@@@Z	1776	hand322	DIFFER(115v1768) -- skeleton draft, parked on sight: 1.7 KB x87 steering maths in an 8-byte aligned frame (doubles); only the disabled-steering early-out is modelled.
 00a87960	CSBIAgents	CSBIAgents::Process	1824	hand322	DIFFER(115v1824) -- skeleton draft, parked on sight: 1.8 KB x87 steering maths in an 8-byte aligned frame (doubles); only the disabled-steering early-out is modelled.
 006e5a00	CScriptConversation	FrameUpdate	1776	hand322	DIFFER(120v1772) -- skeleton draft, parked on sight (lane gap): the ebp frame and the fld/fadd 0.5/fistp/ fild/fsub 1.0 round-down sequence (twice) come from an inline-asm rounding helper, which pure C++ cannot emit.
+007dd540	CTCCreatureFlyInCircles	UpdateSwoop	1104	hand324	DIFFER(1074v1099) -- frame 0x40 v 0x4c (12-byte temp placement); register diffs in burn path
+0074b2b0	CTCCreatureGenerator	CreateCreatures	1216	hand324	DIFFER(1248v1208) -- register allocation (zero kept in ebx, this edi v esi), frame +8
+0074c130	CTCCreatureGenerator	FrameUpdate	1216	hand324	DIFFER(1220v1202) -- def release dec [edi+4] (no null test) + frame-slot placement; structure, remove/erase, effect/sound timers match
+007c99f0	CTCCreatureGeneratorCreator	FrameUpdate	1136	hand324	DIFFER(1186v1123) -- frame 0x38 v 0x30 + register assignment (this edi v ebx); control flow and callees as retail
+008651b0	CTCCreatureHitNotification	SetHitNotification	1161	hand324	DIFFER(685v1161) -- x87 temporary chains for the edge points not reproduced (first draft)
+006cc270	CTCCreatureNavigation	CTCCreatureNavigation::vfunc_11	1088	hand324	DIFFER(1035v1085) -- label: really CTCCreatureNavigation::DrawPreparePrimitivesForRendering (vslot 11); frame/temp order
+00683c10	CTCCreatureOpinionOfHero	GetGreetDialogueGroupIndex	1088	hand324	DIFFER(1085v1085) -- guard block placement (retail at end) + register assignment; same size
+0077a430	CTCDExperienceOrb	FrameUpdate	1120	hand324	DIFFER(1067v1115) -- lane gap: inlined asm round-to-int helper at entry (fistp + 0.5/1.0 slots)
+0080d300	CTCDExplosion	UpdateDynamicExplosion	1104	hand324	DIFFER(999v1097) -- x87 ring-direction sequence + pair conversion temporary (first draft)
+008101f0	CTCDExplosiveTrail	FrameUpdate	1920	hand324	DIFFER(1608v1914) -- x87 steering block (acos/tanh) approximated (first draft)
+007ef710	CTCDecapitation	Decapitate	1244	hand324	DIFFER(1157v1244) -- frame/slot sharing + x87 fling sequence (first draft)
+0078ecd0	CTCDivineWrath	CTCDivineWrath	2048	hand324	DIFFER(2000v2034) -- frame-slot layout (cond-temp flag, dead-param spills) + hand-effect/PlaySound ordering; structure and callees as retail
+0078a690	CTCHeroRangedAttacks	FrameUpdate	1097	hand324	DIFFER(1094v1097) -- frame 0x1c v 0x14 (lookup key words not shared; vector start not kept in ebp) + bitset byte narrowing lane gap; control flow and callees as retail
+0071d3b0	CTCHeroMorph	UpdateTattoos	1040	hand324	DIFFER(1017v1027) -- register assignment (tattoo def ebx v esi, texture id kept in memory/eax v ebx); CDateAndTime needs a user ctor for the fastcall hidden-ecx return
+005850fd	CTCInventory	GetStyleCardsListUIComponent	1678	hand324	DIFFER(1660v1678) -- block placement of the hair-card arm (retail out of line after the join / after the epilogue); everything else lines up
+00589402	CTCInventory	GetStyleCardsListUIComponent	1582	hand324	DIFFER(1581v1582) -- PC twin of 005850fd; same hair-card-arm block placement residue
+00587bff	CTCInventory	OpenPCSkillsMenu	1150	hand324	DIFFER(1150v1150) -- frame 0x20 v 0x1c (one extra reserved word in the find-loop group; advisor variants inert)
+0047e196	CTCInGameMenu	SaveGame	1211	hand324	DIFFER(1211v1211) -- frame-slot sharing only (first SetText key temp not sharing the -8 name slot); shape/callees/size as retail
+0047fe83	CTCInGameMenu	GetFileNameList	1627	hand324	DIFFER(1626v1627) -- one residue: count sum lea form (mov ecx,[first]; lea ebx,[eax+ecx]); loop matched via guard+do-while+named byte offset
+007c3220	CTCDrainLife	DoDrain	1152	hand324	DIFFER(1172v1138) -- FPO register allocation (ebx zero reg v this/shot def) + frame-slot sharing; structure/callees as retail (first drafts)
+0072fb70	CTCDummyVillager	FrameUpdate	1280	hand324	DIFFER(1280v1278) -- register allocation: lea CSE of def+0xB8 kills edi zero reg (thingDef spill) + vector/best slot order; frame, byte slots, loops, x87 as retail
+007b1a30	CTCFishing	CreateFish	1152	hand324	DIFFER(1207v1145) -- first drafts: RA (zero reg ebx v cached vector end in edi), def release forms, duplicated failure epilogues; flow/callees/x87 as retail
+007c57c0	CTCGhostSword	AddSword	1520	hand324	DIFFER(1531v1519) -- frame 0x44 v 0x3c (effect slot not shared with earlier temps) + scratch-register rotation; flow/callees/temps as retail
+007b3120	CTCGuard	FrameUpdate	1600	hand324	DIFFER(1568v1592) -- first drafts: RA (this/village registers), stats counter load/add/store + stack-copied fild forms, region def addref order, frame 0x20 v 0x1c
+00707440	CTCHeroAttachableAppearanceModifiers	CTCHeroAttachableAppearanceModifiers::OnAppearanceDraw	1264	hand324	DIFFER(1239v1253) -- first draft: register assignment (this/appearance/zero), morph param temp order, primitive index slot; flow/callees/arg lists as retail
+00563480	CTCHeroOnlineScoreboard	DownloadScoreboardForSelectedClan	1184	hand324	DIFFER(1178v1178) -- one eax/edx swap in the two inlined std::string copy ctors; everything else (frame 0x238, 39-vector array, reverse, map copy) as retail
+00560d00	CTCHeroOnlineScoreboard	CTCHeroOnlineScoreboard::ProcessLogin	1872	hand324	DIFFER(1844v1860) -- first draft: this in ebp (retail edi + late ebp push), std::string temp order, frame 0x98 v 0x9c; jump table -9..-1
+006c6990	CTCHeroOpinionDeedLog	PostDeed	1168	hand324	DIFFER(1183v1168) -- first draft: frame 0x40 v 0x3c, region-def addref CSE (dec eax v dec [eax+4]), faction-block flag register
+006c6e80	CTCHeroOpinionDeedLog	FrameUpdate	1264	hand324	DIFFER(1220v1251) -- first draft: frame 0x38 v 0x30, deed-map loop rotation and iterator registers
+0057c4f1	CTCHeroStats	ApplyBonusItemEffects	1192	hand324	DIFFER(1169v1192) -- lane gap: inline fistp round-to-int for the speed duration; plus this/def register swap, fabs compare copies
+0077d5b0	CTCHeroCentre	FrameUpdate	1504	hand324	DIFFER(-v1504) -- not drafted: lane gap /GS per-return epilogue (cookie check before pops on the early return); triage notes only
