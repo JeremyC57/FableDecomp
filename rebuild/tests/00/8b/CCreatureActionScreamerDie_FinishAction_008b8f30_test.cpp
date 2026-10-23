@@ -2,7 +2,7 @@
 #include <cstdio>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-struct CTCDParticleEmitter { void ClearAttachments() { Log(1); } };
+struct CTCDParticleEmitter { void ClearAttachments_006e0de0() { Log(1); } };
 struct CThing {
     unsigned int m_presentBits[9];
     CTCDParticleEmitter* m_pParticles;
@@ -28,7 +28,7 @@ struct CAction {
         if (IS_THING_ALIVE(PEffect)) {
             CTCDParticleEmitter* pEmitter = 0;
             PEffect.GetPItem()->GetInterface(&pEmitter, 0x4b);
-            pEmitter->ClearAttachments();
+            pEmitter->ClearAttachments_006e0de0();
         }
         Log(2);   // CCombatActionBase::FinishAction
         PCreature.GetPItem()->Kill(true);

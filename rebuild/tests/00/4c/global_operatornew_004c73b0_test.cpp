@@ -4,7 +4,7 @@ typedef unsigned int size_type;
 static size_type g_last = 0;
 static char g_buf[64];
 
-extern "C" void * __cdecl helper_bfeb1c(size_type n)
+extern "C" void * __cdecl helper_bfeb1c_00bfeb1c(size_type n)
 {
     g_last = n;
     return g_buf;

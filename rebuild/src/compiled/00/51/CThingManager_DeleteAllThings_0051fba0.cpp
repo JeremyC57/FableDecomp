@@ -51,7 +51,7 @@ struct CPlayer {
     CThing* GetHeroThing() const;               // 0x00487DC0 (CIntelligentPointer at +0x2c)
 };
 struct CPlayerManager {
-    CPlayer* GetMainPlayer() const;             // 0x00449970
+    CPlayer* GetMainPlayer();             // 0x00449970
 };
 struct SThingListNode {                         // STLport list<CThing*> node
     SThingListNode* _M_next;

@@ -11,5 +11,6 @@
 // exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
 // real identifier is not recoverable. One of 36 bodies of this shape.
 #include "fable_string.h"      // CCharString: ctor @ 0x0099EBF0 / default @ 0x0099AED0, ~CCharString @ 0x0099EAE0
+// Identity: the default constructor called here is 0x0099AED0, CWideString::CWideString() (labels, chunks 237/247/265/284), so the object is a CWideString.
 
-CCharString g_CCharString_013ca7d4;
+CWideString g_CCharString_013ca7d4;

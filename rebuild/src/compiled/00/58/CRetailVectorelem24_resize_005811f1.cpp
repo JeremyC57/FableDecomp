@@ -18,8 +18,8 @@ struct CRetailVector_elem24 {
     SElement24* first;
     SElement24* last;
     SElement24* end;
-    SElement24* Erase(SElement24* f, SElement24* l);   // 0x0058034C
-    void Insert(SElement24* where, unsigned long count, const SElement24& value);   // 0x00580928
+    SElement24* Erase_0058034c(SElement24* f, SElement24* l);   // 0x0058034C
+    void Insert_00580928(SElement24* where, unsigned long count, const SElement24& value);   // 0x00580928
     long size() const { return last - first; }
     void resize(unsigned long n, const SElement24& value);
 };
@@ -27,7 +27,7 @@ struct CRetailVector_elem24 {
 void CRetailVector_elem24::resize(unsigned long n, const SElement24& value)
 {
     if (n < (unsigned long)size())
-        Erase(first + n, last);
+        Erase_0058034c(first + n, last);
     else
-        Insert(last, n - size(), value);
+        Insert_00580928(last, n - size(), value);
 }

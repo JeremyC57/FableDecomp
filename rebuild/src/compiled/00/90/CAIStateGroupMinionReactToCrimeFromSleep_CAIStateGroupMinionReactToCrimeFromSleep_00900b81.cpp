@@ -8,10 +8,10 @@
 // constructor @ 0x00900B41 runs, then the compiler stores this class's vtable (0x0128C594
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CAIStateGroupBehaviourBase {
+namespace N_00900b41 { struct CAIStateGroupBehaviourBase {
     virtual void v00();
     CAIStateGroupBehaviourBase();                           // 0x00900B41
-};
+}; } using N_00900b41::CAIStateGroupBehaviourBase;
 
 struct CAIStateGroup_MinionReactToCrimeFromSleep : CAIStateGroupBehaviourBase {
     virtual void v00();                    // this class has its own vtable

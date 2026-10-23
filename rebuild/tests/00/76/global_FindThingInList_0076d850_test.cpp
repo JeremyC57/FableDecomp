@@ -17,7 +17,7 @@ struct CThingListIterator {
 
 struct CIteratorTag { CIteratorTag() { } };
 
-CThingListIterator FindThingInListImpl(CThingListIterator first, CThingListIterator last, CThing* const& value, const CIteratorTag&)
+CThingListIterator FindThingInListImpl_0076d760(CThingListIterator first, CThingListIterator last, CThing* const& value, const CIteratorTag&)
 {
     while (first.m_pNode != last.m_pNode && first.m_pNode->m_pItem != value)
         first.m_pNode = first.m_pNode->m_pNext;
@@ -26,7 +26,7 @@ CThingListIterator FindThingInListImpl(CThingListIterator first, CThingListItera
 
 CThingListIterator FindThingInList(CThingListIterator first, CThingListIterator last, CThing* const& value)
 {
-    return FindThingInListImpl(first, last, value, CIteratorTag());
+    return FindThingInListImpl_0076d760(first, last, value, CIteratorTag());
 }
 
 int main()

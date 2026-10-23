@@ -12,15 +12,15 @@
 // code relied on (C4238).
 struct CThingCreatureBase;
 
-struct CCreatureActionBase {
+namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
     unsigned char _body[0x110];             // +0x4..+0x113
     ~CCreatureActionBase();                 // 0x0062E900
-};
+}; } using N_0062e900::CCreatureActionBase;
 
-struct CCreatureAction_GoUnderground : CCreatureActionBase {
+namespace N_008ec6a0 { struct CCreatureAction_GoUnderground : CCreatureActionBase {
     CCreatureAction_GoUnderground(CThingCreatureBase* creature);    // 0x008EC6A0
-};
+}; } using N_008ec6a0::CCreatureAction_GoUnderground;
 
 struct CAIBrain {
     unsigned char _pad[0x18];

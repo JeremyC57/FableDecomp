@@ -11,6 +11,10 @@
 // byte-identical copies exist; this file is the copy at this address.
 struct CVtable_012b5868 {
     virtual ~CVtable_012b5868() { }
+    // Identity: this copy's deleting destructor frees through 0x00C3C370 (labelled AudioFree, the
+    // allocator twin of 0x00C3C360), not the global operator delete @ 0x00BFE9BC: a class-level
+    // operator delete, defined out of line.
+    static void operator delete(void* p);   // 0x00C3C370
 };
 
 // VC7.1 emits a class's vtable (and the deleting destructor it references) in every translation

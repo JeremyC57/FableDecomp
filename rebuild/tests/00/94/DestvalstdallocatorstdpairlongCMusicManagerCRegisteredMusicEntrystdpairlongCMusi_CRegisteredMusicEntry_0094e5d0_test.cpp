@@ -4,8 +4,8 @@ struct Sub { char pad[8]; };
 struct Base { char pad[8]; };
 struct Obj { char pad[0x114]; Sub sub; };
 void SubDtor(Sub* s){ subCalled++; }
-void BaseDtor(Base* b){ baseCalled++; }
-void DestVal_114_C(Obj* self){ SubDtor(&self->sub); BaseDtor((Base*)self); }
+void BaseDtor_0062e900(Base* b){ baseCalled++; }
+void DestVal_114_C(Obj* self){ SubDtor(&self->sub); BaseDtor_0062e900((Base*)self); }
 int main(){
   Obj o;
   DestVal_114_C(&o);

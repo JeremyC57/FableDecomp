@@ -9,7 +9,7 @@ struct CActiveFile
     fable_i32          m_status; // +0x04
 };
 
-extern void FABLE_FASTCALL CActiveFileReader_Notify(CActiveFileReader* thisptr,
+extern void FABLE_FASTCALL CActiveFileReader_Notify_00450aea(CActiveFileReader* thisptr,
                                                     fable_i32 status,
                                                     fable_u8* outByte);
 extern void FABLE_CDECL CActiveFile_ReleaseReader(CActiveFileReader* reader);
@@ -18,7 +18,7 @@ void FABLE_FASTCALL CActiveFile_OnReadFinished_471df4(CActiveFile* thisptr);
 static int g_notify = 0;
 static int g_release = 0;
 
-void FABLE_FASTCALL CActiveFileReader_Notify(CActiveFileReader* thisptr,
+void FABLE_FASTCALL CActiveFileReader_Notify_00450aea(CActiveFileReader* thisptr,
                                              fable_i32 status,
                                              fable_u8* outByte)
 {

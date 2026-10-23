@@ -7,7 +7,7 @@ struct CRanged { int Cancelled, Reset; };
 struct CPlayer { bool InRangedWeaponMode; int RemovedMode; void RemoveMode(long m) { RemovedMode = m; } };
 struct CThing {
     bool Dead; CTCCarrying* Carrying; CTCWeapon* Weapon; CRanged* Ranged; bool MeleeCarried; CPlayer* Player;
-    CPlayer* GetPlayer() { return Player; }
+    CPlayer* GetPlayer_004c7a30() { return Player; }
 };
 struct CInput {
     CPlayer* MyPlayer; CThing* Hero; int Forwarded; CThing* LastWeapon;
@@ -28,7 +28,7 @@ struct CInput {
         CTCWeapon* w;
         if (!weapon || weapon->Dead || (w = weapon->Weapon) == 0 || w->Loaded || !w->Analogue) {
             hero->Ranged->Cancelled++; hero->Ranged->Reset++;
-            hero->GetPlayer()->RemoveMode(0x22);
+            hero->GetPlayer_004c7a30()->RemoveMode(0x22);
         }
     }
 };

@@ -10,7 +10,7 @@
 struct SEntry { long m_value; };
 
 struct CRegistry {
-    void Register(SEntry* entry);          // 0x00785010
+    void Register_00785010(SEntry* entry);          // 0x00785010
 };
 
 struct COwner {
@@ -28,5 +28,5 @@ struct CTCVolumeContainmentTracker {
 
 void CTCVolumeContainmentTracker::OnCreate()
 {
-    m_pOwner->m_pRegistry->Register(&m_entry);
+    m_pOwner->m_pRegistry->Register_00785010(&m_entry);
 }

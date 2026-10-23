@@ -5,7 +5,7 @@ struct CPresenceBits { unsigned long m_bits[2]; bool test(long bit) { return (m_
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+    SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
 struct CThing {
     CPresenceBits m_present; CInterfaceMap m_interfaces;

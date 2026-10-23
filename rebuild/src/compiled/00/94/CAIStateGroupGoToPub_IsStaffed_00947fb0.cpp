@@ -21,7 +21,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
+    SEntry* LowerBound(const long* type) const;       // 0x0040F020
 };
 
 struct CThing {

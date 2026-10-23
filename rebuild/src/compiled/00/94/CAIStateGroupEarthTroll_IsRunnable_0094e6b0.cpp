@@ -24,7 +24,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
 struct CThing {
@@ -48,7 +48,7 @@ struct CThing {
         }
         return false;
     }
-    const struct C3DVector& GetPosition() const;   // 0x006A4D00 (this TU's out-of-line copy; 0x004C73D0 elsewhere)
+    const struct C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00 (this TU's out-of-line copy; 0x004C73D0 elsewhere)
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
     __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
@@ -135,8 +135,8 @@ bool CAIStateGroup_EarthTroll::IsRunnable()
     CThing* enemy = source->GetEnemy();
     if (enemy != 0 && !(enemy->m_flags91 & 1)) {
         CThing* creature = PBrain->PCreature;
-        const C3DVector& enemyPos = enemy->GetPosition();
-        const C3DVector& pos = creature->GetPosition();
+        const C3DVector& enemyPos = enemy->GetPosition_006a4d00();
+        const C3DVector& pos = creature->GetPosition_006a4d00();
         float dx = pos.X - enemyPos.X;
         float dy = pos.Y - enemyPos.Y;
         if ((float)sqrt(dx * dx + dy * dy) < AttackRange) {

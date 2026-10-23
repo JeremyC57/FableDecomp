@@ -17,10 +17,10 @@ struct CRightHandedSet {
     C3DVector Up;                           // +0x00
     C3DVector Forward;                      // +0x0c
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 namespace NParticleEngine {
 struct SVectorParam;                        // pair<unsigned long, C3DVector>
 struct SUpdateParam;                        // pair<unsigned long, CParticleUpdateParamDesc>

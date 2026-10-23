@@ -27,7 +27,7 @@ struct CRenderStateManager {                         // 0x3A3C bytes, vtable 0x0
 struct CInitBaseClass {                              // vptr + one word
     virtual void v00();
     bool IsInitialised();                            // 0x0099A330
-    void Uninitialise();                             // 0x00A6C120
+    void Uninitialise_00a6c120();                             // 0x00A6C120
     ~CInitBaseClass();                               // 0x0099A410
     void* m_pInitData;                               // +0x04
 };
@@ -50,7 +50,7 @@ struct CRenderManagerCore : CRenderStateManager {    // vtable 0x0129C9A4
     void Uninit()
     {
         if (SystemFont.IsInitialised())
-            SystemFont.Uninitialise();
+            SystemFont.Uninitialise_00a6c120();
     }
 
     __forceinline virtual ~CRenderManagerCore()

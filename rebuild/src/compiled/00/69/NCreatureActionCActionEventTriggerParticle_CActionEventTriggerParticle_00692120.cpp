@@ -7,10 +7,10 @@ struct CCharString {
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 namespace NCreatureAction {
 struct __declspec(novtable) CActionEventBase_00692120 : CBase {   // the intermediate base: its inline constructor clears the flag byte at +4 (stored before the derived vtable)

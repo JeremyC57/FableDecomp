@@ -58,7 +58,7 @@ struct CThing {
     CDefClassBase* m_pDef;                                   // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                                // +0x91 bit 0: dead
-    CPlayer* GetPlayer();                                    // 0x004C7A30
+    CPlayer* GetPlayer_004c7a30();                                    // 0x004C7A30
     template <class T> __forceinline T* GetTC(long interfaceType)
     {
         long type = interfaceType;
@@ -158,5 +158,5 @@ void CTCUnholyPower::UnsheatheWeapon()
     if (parent->HasTC(0x31))
         modeManager = parent->GetTC<CTCCreatureModeManager>(0x31);
     modeManager->RestartCurrentMode();
-    parent->GetPlayer()->SetAggressiveMode(true);
+    parent->GetPlayer_004c7a30()->SetAggressiveMode(true);
 }

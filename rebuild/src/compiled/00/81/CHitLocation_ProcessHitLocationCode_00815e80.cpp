@@ -6,7 +6,7 @@ struct CRetailTree_longkey {                      // the landed 0x00817740 tree 
     struct iterator { node* current; iterator(node* n) : current(n) { } };
     node* head;
     unsigned long size;
-    iterator find(const long& key);                // 0x00817740
+    iterator find_00817740(const long& key);                // 0x00817740
 };
 extern CRetailTree_longkey g_hitLocationCodes_013baf2c;   // 0x013BAF2C
 struct CHitOwner_00815e80 {
@@ -21,7 +21,7 @@ struct CHitLocation {
 
 void CHitLocation::ProcessHitLocationCode(long a, long b)
 {
-    CRetailTree_longkey::iterator it = g_hitLocationCodes_013baf2c.find(m_pOwner->m_code);
+    CRetailTree_longkey::iterator it = g_hitLocationCodes_013baf2c.find_00817740(m_pOwner->m_code);
     if (it.current != g_hitLocationCodes_013baf2c.head)
         it.current->value(a, b);
 }

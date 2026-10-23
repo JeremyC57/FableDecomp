@@ -31,7 +31,7 @@ struct CThing {
         if (HasTC(interfaceType)) { *ppOut = (T*)GetTC(interfaceType); return true; }
         return false;
     }
-    CPlayer* GetPlayer() { return Player; }
+    CPlayer* GetPlayer_004c7a30() { return Player; }
 };
 static char g_order[8]; static int g_n = 0;
 struct CTCHeroRangedAttacks {
@@ -60,7 +60,7 @@ void CTCCombat::SetBlocking()
         CTCHeroRangedAttacks* ranged = (CTCHeroRangedAttacks*)ParentThing->GetTC(0x81);
         ranged->CancelAimingWeapon();
         ranged->ResetProjectileWeaponMode();
-        ParentThing->GetPlayer()->RemoveMode(0x22);
+        ParentThing->GetPlayer_004c7a30()->RemoveMode(0x22);
     }
     CTCCreatureModeManager* modes;
     ParentThing->GetInterface(&modes, 0x31);

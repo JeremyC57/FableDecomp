@@ -7,11 +7,11 @@
 // constructor argument and the object of SetCurrentAction. The action is a temporary in the
 // call expression (address taken, VC extension C4238), destroyed through the base destructor
 // after the call; it is the only frame slot (0x118 bytes).
-struct CCreatureActionBase {
+namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
     unsigned char _body[0x114];             // +0x4..+0x117
     ~CCreatureActionBase();                 // 0x0062E900
-};
+}; } using N_0062e900::CCreatureActionBase;
 
 struct CThingCreatureBase {
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0

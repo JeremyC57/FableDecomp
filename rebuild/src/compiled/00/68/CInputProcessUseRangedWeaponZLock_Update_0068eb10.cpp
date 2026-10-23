@@ -8,7 +8,7 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CTarget {
-    void Method();                         // 0x00487DC0
+    void Method_00487dc0();                         // 0x00487DC0
 };
 
 struct CInputProcessUseRangedWeaponZLock {
@@ -19,5 +19,5 @@ struct CInputProcessUseRangedWeaponZLock {
 
 void CInputProcessUseRangedWeaponZLock::Update(long)
 {
-    m_pTarget->Method();
+    m_pTarget->Method_00487dc0();
 }

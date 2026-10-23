@@ -16,7 +16,7 @@ struct CGameScriptReactionSlot {
 typedef void (CGameScriptReactionSlot::*ReactionSlotMFP)(
     const void* entity, const CCharString* componentName, int enabled);
 
-extern const char kName[];
+extern const char kName_0125fd40[];
 
 struct CGameScriptInterface_Methods : CGameScriptInterface {
     void EntitySetOpinionReactionsEnabled(
@@ -26,7 +26,7 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
 void CGameScriptInterface_Methods::EntitySetOpinionReactionsEnabled(
     const CScriptThing& entity, int enabled) const
 {
-    CCharString componentName(kName, -1);
+    CCharString componentName(kName_0125fd40, -1);
     CGameScriptReactionSlot* target = (CGameScriptReactionSlot*)this;
     ReactionSlotMFP method;
     *(void**)&method = ((void**)this->__vftable)[0x938 / 4];

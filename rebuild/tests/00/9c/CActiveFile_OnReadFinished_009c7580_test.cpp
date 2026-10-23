@@ -8,15 +8,15 @@ extern "C" void __cdecl free_helper(void* p) { g_freed = p; }
 struct CActiveFile
 {
     void* m_ptr;
-    void Helper();
+    void Helper_009c71a0();
     void OnReadFinished();
 };
 
-void CActiveFile::Helper() { g_helperCalled++; }
+void CActiveFile::Helper_009c71a0() { g_helperCalled++; }
 
 void CActiveFile::OnReadFinished()
 {
-    Helper();
+    Helper_009c71a0();
     void* p = m_ptr;
     if (p)
         free_helper(p);

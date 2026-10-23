@@ -13,7 +13,7 @@ static int           g_edx;
 static unsigned char g_val;
 static int           g_called;
 
-void __fastcall CGuiVarTransferBool_Sink(void* ecx, int edx, unsigned char val)
+void __fastcall CGuiVarTransferBool_Sink_0076c000(void* ecx, int edx, unsigned char val)
 {
     g_ecx = ecx;
     g_edx = edx;

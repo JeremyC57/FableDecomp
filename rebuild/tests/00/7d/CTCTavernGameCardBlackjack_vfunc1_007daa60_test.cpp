@@ -3,7 +3,7 @@
 // Behaviour test for CTCTavernGameCardBlackjack::vfunc_1 (0x007DAA60).
 struct CPersistContext {
     int calls; const char* name; long* value; long def; long baseArg;
-    void Transfer(const char* n, long& v, const long& d) { ++calls; name = n; value = &v; def = d; }
+    void Transfer_00410620(const char* n, long& v, const long& d) { ++calls; name = n; value = &v; def = d; }
 };
 static int g_base = 0;
 struct CTCTavernGameCardBase {
@@ -18,7 +18,7 @@ struct CTCTavernGameCardBlackjack : CTCTavernGameCardBase {
 void CTCTavernGameCardBlackjack::vfunc_1(CPersistContext* context, long arg)
 {
     CTCTavernGameCardBase::vfunc_1(context, arg);
-    context->Transfer("MostMoneyWon", m_mostMoneyWon, 0);
+    context->Transfer_00410620("MostMoneyWon", m_mostMoneyWon, 0);
 }
 int main()
 {

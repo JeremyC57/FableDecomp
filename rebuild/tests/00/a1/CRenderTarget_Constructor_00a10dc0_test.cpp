@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-struct CBase
+namespace N_0099a2d0 { struct CBase
 {
     CBase();
     virtual void VTableAnchor();
-};
+}; } using N_0099a2d0::CBase;
 
 struct CSurface
 {

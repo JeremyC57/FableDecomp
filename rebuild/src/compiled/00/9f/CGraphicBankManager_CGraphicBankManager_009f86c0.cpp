@@ -57,9 +57,9 @@ struct list {
             free(_M_node);
     }
 };
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual ~CBase();                              // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CGraphicBankManager : CBase {
     list m_banks;                                  // +0x04
     virtual ~CGraphicBankManager();

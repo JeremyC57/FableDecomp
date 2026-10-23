@@ -4,7 +4,7 @@ struct CTCBase { };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
+    SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 struct CThing {
     unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
@@ -19,7 +19,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCVillage { bool m_answer; bool IsCookTime() { return m_answer; } };
+struct CTCVillage { bool m_answer; bool IsCookTime_00658bb9() { return m_answer; } };
 struct CComponent : CTCBase { CTCVillage* m_pOwner; };
 CTCVillage* __fastcall GFGetPVillageInterface(CComponent* c) { return c->m_pOwner; }
 struct CAIBrain { unsigned char _pad[0x18]; CThing* Creature; };
@@ -30,7 +30,7 @@ struct CAIStateGroup_WorkBase : CAIStateGroupBase {
         CComponent* pComponent;
         if (PBrain->Creature->GetInterface(&pComponent, 0x23)) {
             CTCVillage* pOwner = GFGetPVillageInterface(pComponent);
-            if (pOwner != 0) { if (pOwner->IsCookTime()) return true; }
+            if (pOwner != 0) { if (pOwner->IsCookTime_00658bb9()) return true; }
         }
         return false;
     }

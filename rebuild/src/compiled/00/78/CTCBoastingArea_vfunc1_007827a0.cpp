@@ -9,7 +9,7 @@
 // default built in a dword stack temporary. The second argument is not used by this body. The member name is taken from the
 // persisted key; the member type is any 4-byte scalar (`long` models it). One of 16 bodies.
 struct CPersistContext {
-    void Transfer(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x00410620
+    void Transfer_00410620(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x00410620
 };
 
 struct CTCBoastingArea {
@@ -22,5 +22,5 @@ struct CTCBoastingArea {
 void CTCBoastingArea::vfunc_1(CPersistContext* context, long unused)
 {
     long defaultValue = 0;
-    context->Transfer("Radius", m_Radius, defaultValue);
+    context->Transfer_00410620("Radius", m_Radius, defaultValue);
 }

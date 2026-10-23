@@ -3,12 +3,12 @@
 struct SElement12 { unsigned char _body[0xc]; };
 struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
 static int g_copies = 0;
-SElement12* __fastcall Copy_SElement12(SElement12* first, SElement12* last, SElement12* result, const SRandomAccessIteratorTag&, long*) { ++g_copies; for (long n = last - first; n > 0; --n) { *result = *first; ++first; ++result; } return result; }
+SElement12* __fastcall Copy_SElement12_009d1c30(SElement12* first, SElement12* last, SElement12* result, const SRandomAccessIteratorTag&, long*) { ++g_copies; for (long n = last - first; n > 0; --n) { *result = *first; ++first; ++result; } return result; }
 template<class P> P Exchange(P& slot, P value) { P old = slot; slot = value; return old; }
 template<class T> struct CArray {
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
-    void erase(T* f, T* l) { last = Copy_SElement12(l, last, f, SRandomAccessIteratorTag(), (long*)0); }
+    void erase(T* f, T* l) { last = Copy_SElement12_009d1c30(l, last, f, SRandomAccessIteratorTag(), (long*)0); }
     void DeallocateMemory() { if (capacity() > 0) { erase(first, last); T* p = Exchange(first, (T*)0); Exchange(last, (T*)0); end_of_storage = 0; if (p) std::free(p); } }
 };
 int main()

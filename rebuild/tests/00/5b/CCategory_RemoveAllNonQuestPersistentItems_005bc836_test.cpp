@@ -3,7 +3,7 @@ struct CItem { long ItemType; long NumberOfItems; void* PPerItemData_Data; void*
 static int g_calls = 0; static long g_lastArg = -99; static long g_lastArg2 = -99;
 struct CItem_Methods : CItem {
     bool IsSameItemTypeAsDefIndex(long d) { return NumberOfItems != 0 && d == ItemType; }
-    bool IsQuestPersistent() { return AverageBoughtPrice < 0; }
+    bool IsQuestPersistent_005bc746() { return AverageBoughtPrice < 0; }
     bool IsSlotFull() { return NumberOfItems >= 10; }
     void SetQuestPersistentFlag(bool f) { ++g_calls; AverageBoughtPrice = f ? -1 : 1; }
     void UpdateNonQuestPersistentRefCount(bool f) { ++g_calls; AverageBoughtPrice += f ? 1 : -1; }
@@ -18,7 +18,7 @@ struct CDefRef { CDefRetail* m_p; CDefRef(CDefRetail* p) : m_p(p) { if (m_p) m_p
 struct CDefPointer { CDefRetail* m_pObject; CDefRef operator->() const { return CDefRef(m_pObject); } };
 struct CInv { virtual void RemoveItems(long t, long n) { ++g_calls; g_lastArg = t; g_lastArg2 = n; } virtual void OnItemSelected(long t) { ++g_calls; g_lastArg = t; } virtual void OnItemOfTypeSelected(long t, int) { ++g_calls; g_lastArg = t; } };
 struct CCategory_Retail { unsigned char PAssociatedThing[8]; CItemVector ItemsInCategory; CDefPointer PDef; CInv* PInventory; long GlobalDefIndex; long SelectedItemIndex; long HighlightedItemIndex; bool Selected; bool DisplayItems;
-    void RemoveAllNonQuestPersistentItems() { for (unsigned long i = 0; i < ItemsInCategory.size(); ++i) if (ItemsInCategory[i].NumberOfItems != 0 && !ItemsInCategory[i].IsQuestPersistent()) PInventory->RemoveItems(ItemsInCategory[i].ItemType, ItemsInCategory[i].NumberOfItems); }
+    void RemoveAllNonQuestPersistentItems() { for (unsigned long i = 0; i < ItemsInCategory.size(); ++i) if (ItemsInCategory[i].NumberOfItems != 0 && !ItemsInCategory[i].IsQuestPersistent_005bc746()) PInventory->RemoveItems(ItemsInCategory[i].ItemType, ItemsInCategory[i].NumberOfItems); }
 };
 static CItem_Methods g_items[4];
 static CInv g_inv; static CDefRetail g_def = { 1, 6, true, 42, 0 };

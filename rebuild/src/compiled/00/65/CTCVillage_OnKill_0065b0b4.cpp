@@ -42,7 +42,7 @@ public:
     }
 };
 class CThingCreatureBase : public CThing {};
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x0043DBD0
+bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
 
 struct CTCInterface243 {                        // the hero's interface-243 component (class name unknown)
     void OnVillageKilled();                     // 0x007E2780
@@ -82,6 +82,6 @@ void CTCVillage::OnKill()
         world->TimeManager->SetTimeAsStopped(false, &TimeStopIndex);
     }
     CThingCreatureBase* hero = GetPlayerManager()->GetCurrentPlayer()->GetCharacterThing();
-    if (IS_THING_ALIVE(hero) && hero->HasTC(243))
+    if (IS_THING_ALIVE_0043dbd0(hero) && hero->HasTC(243))
         ((CTCInterface243*)hero->GetTC(243))->OnVillageKilled();
 }

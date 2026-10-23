@@ -40,7 +40,7 @@ public:
     void*   __vftable;                        // +0x00
     CBrain* PBrain;                           // +0x04
     bool IsStopping();                        // 0x008FD010
-    CWorld* GetPWorld();                      // 0x008FCFA0 (PBrain->+0x1c->+0x24)
+    CWorld* GetPWorld_008fcfa0();                      // 0x008FCFA0 (PBrain->+0x1c->+0x24)
     long WaitForMessageEvent(long waitMode, const CFilter_Bind2& filter, CMessageEvent** event);
 };
 
@@ -50,7 +50,7 @@ long CAIStateGroupBase::WaitForMessageEvent(long waitMode, const CFilter_Bind2& 
         return 1;
     long result;
     do {
-        CMessageEventManager* manager = GetPWorld()->MessageEventManager;
+        CMessageEventManager* manager = GetPWorld_008fcfa0()->MessageEventManager;
         *event = manager->FindMostRecentMessage(filter);
         if (*event) {
             result = 2;
@@ -75,7 +75,7 @@ static const char* g_stopScript = ""; static int g_stopIndex = 0;
 bool CAIStateGroupBase::IsStopping() { Log('S'); char c = g_stopScript[g_stopIndex]; if (c) ++g_stopIndex; return c == '1'; }
 static CMessageEventManager g_manager;
 static CWorld g_world;
-CWorld* CAIStateGroupBase::GetPWorld() { Log('W'); return &g_world; }
+CWorld* CAIStateGroupBase::GetPWorld_008fcfa0() { Log('W'); return &g_world; }
 static CMessageEvent* g_found[8]; static int g_findIndex = 0; static const CFilter_Bind2* g_filterSeen; static CMessageEventManager* g_findThis;
 CMessageEvent* CMessageEventManager::FindMostRecentMessage(const CFilter_Bind2& filter)
 { Log('F'); g_filterSeen = &filter; g_findThis = this; return g_found[g_findIndex++ & 7]; }

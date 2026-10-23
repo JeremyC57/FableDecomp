@@ -12,13 +12,13 @@ extern "C" void __cdecl FreeIt(void* p);
 struct CActiveFile
 {
     void* m_ptr;         // [ecx+0]
-    void Helper();       // external __fastcall, defined elsewhere -> real call
+    void Helper_009f89b0();       // external __fastcall, defined elsewhere -> real call
     void OnReadFinished();
 };
 
 void CActiveFile::OnReadFinished()
 {
-    Helper();
+    Helper_009f89b0();
     void* p = m_ptr;
     if (p)
         FreeIt(p);

@@ -7,7 +7,7 @@ static bool g_persistArg = false;
 static int g_destroyCalls = 0;
 
 struct CThing {
-    void SetAsGameStatePersisted(bool persisted) { ++g_persistCalls; g_persistArg = persisted; }
+    void SetAsGameStatePersisted_004c9c10(bool persisted) { ++g_persistCalls; g_persistArg = persisted; }
 };
 
 struct CSmashableDef {
@@ -39,7 +39,7 @@ void CTCSmashableBase::OnInitialActivate()
 {
     bool smashable = GetDef()->Smashable;
     if (smashable)
-        ParentThing->SetAsGameStatePersisted(true);
+        ParentThing->SetAsGameStatePersisted_004c9c10(true);
 }
 
 int main()

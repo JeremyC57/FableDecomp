@@ -21,7 +21,7 @@ struct CTCCarrying {CThing* GetThingInPrimarySlot()const;}; //0x006A1440
 struct CInterfaceMap {
  struct Entry {long Type;CTCCarrying* Component;};
  Entry* First;Entry* Last;
- Entry* LowerBound(const long*); //0x004365B0
+ Entry* LowerBound(const long*) const; //0x004365B0
 };
 struct CThingCreatureBase {
  unsigned char _nativeBeforeComponentFlags[0x20];

@@ -11,8 +11,8 @@ struct CTCMap_Retail {                             // the creature's component m
     STCEntry_Retail* m_pFirst;
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const long* kind);          // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound)
-    STCEntry_Retail* LowerBound(const long* kind) const;    // 0x004365B0 (the second instantiation)
+    STCEntry_Retail* LowerBound_004365b0(const long* kind);          // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound)
+    STCEntry_Retail* LowerBound_004365b0(const long* kind) const;    // 0x004365B0 (the second instantiation)
 };
 struct C3DVector {
     float x, y, z;
@@ -74,7 +74,7 @@ struct CThingCreatureBase {                        // the retail creature as see
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             long type = kind;
             CTCMap_Retail* map = &m_tcs;
-            STCEntry_Retail* it = map->LowerBound(&type);
+            STCEntry_Retail* it = map->LowerBound_004365b0(&type);
             if (it == map->m_pLast || kind < it->m_kind)
                 it = map->m_pLast;
             *ppOut = (T*)it->m_pTC;
@@ -85,7 +85,7 @@ struct CThingCreatureBase {                        // the retail creature as see
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             long type = kind;
             const CTCMap_Retail* map = &m_tcs;
-            STCEntry_Retail* it = map->LowerBound(&type);
+            STCEntry_Retail* it = map->LowerBound_004365b0(&type);
             if (it == map->m_pLast || kind < it->m_kind)
                 it = map->m_pLast;
             *ppOut = (T*)it->m_pTC;

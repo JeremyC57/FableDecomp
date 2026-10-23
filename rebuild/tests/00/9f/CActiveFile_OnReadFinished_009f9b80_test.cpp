@@ -9,15 +9,15 @@ extern "C" void __cdecl free_impl(void* p) { g_freed = 1; g_freed_ptr = p; }
 
 struct CActiveFile {
     void* buffer;
-    void Helper();
+    void Helper_009f9b30();
     void OnReadFinished();
 };
 
-void CActiveFile::Helper() { g_helper_called = 1; }
+void CActiveFile::Helper_009f9b30() { g_helper_called = 1; }
 
 void CActiveFile::OnReadFinished()
 {
-    this->Helper();
+    this->Helper_009f9b30();
     void* p = this->buffer;
     if (p)
         free_impl(p);

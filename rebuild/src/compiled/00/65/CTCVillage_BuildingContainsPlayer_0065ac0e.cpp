@@ -40,7 +40,7 @@ public:
         return it->component;
     }
 };
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x0043DBD0
+bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
 
 struct CBaseIntelligentPointer {
     void* _vfptr;
@@ -69,7 +69,7 @@ struct CTCVillage {
 bool CTCVillage::BuildingContainsPlayer(CThing* building)
 {
     CThingCreatureBase* hero = GetPlayerManager()->GetCurrentPlayer()->GetCharacterThing();
-    if (IS_THING_ALIVE(hero) && hero->HasTC(117)) {
+    if (IS_THING_ALIVE_0043dbd0(hero) && hero->HasTC(117)) {
         if (((CTCBuildingLocation*)hero->GetTC(117))->PBuilding.GetPItem() == building)
             return true;
     }

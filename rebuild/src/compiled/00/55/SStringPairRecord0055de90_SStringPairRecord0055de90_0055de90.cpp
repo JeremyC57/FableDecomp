@@ -5,11 +5,11 @@
 // {CCharString, long, CCharString}. Named by effect. Shape: the initialiser list in declaration order -- the first
 // string constructed on `this` itself, the -1 word stored between the `lea ecx,[esi+8]` and the second constructor call.
 // Leaf: ??0SStringPairRecord_0055de90
-class CCharString {
+namespace N_0099aed0 { class CCharString {
 public:
     CCharString();                                 // 0x0099AED0
     void* m_pStringData;
-};
+}; } using N_0099aed0::CCharString;
 
 struct SStringPairRecord_0055de90 {
     CCharString m_first;                           // +0x00

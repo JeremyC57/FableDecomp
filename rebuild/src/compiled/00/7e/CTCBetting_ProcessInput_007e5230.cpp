@@ -64,7 +64,7 @@ struct CPlayer {
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
 struct CPlayerManager {
-    CPlayer* GetMainPlayer();                           // 0x00449960
+    CPlayer* GetMainPlayer() const;                           // 0x00449960
 };
 struct CMainGameComponent {
     unsigned char   _pad00[0x1c];

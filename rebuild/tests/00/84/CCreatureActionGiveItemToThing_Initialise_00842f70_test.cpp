@@ -1,7 +1,7 @@
 #include <cstdio>
 struct C3DVector { float X, Y, Z; };
 struct CMessageEvent;
-struct CThing { C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } };
+struct CThing { C3DVector m_pos; const C3DVector& GetPosition_006a4d00() const { return m_pos; } };
 static long g_type, g_flags, g_prio; static const C3DVector* g_pos; static CThing *g_t1, *g_t2; static float g_a, g_b; static int g_baseInit;
 struct CMessageEventManager { CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority)
     { g_type = type; g_flags = flags; g_pos = position; g_t1 = thing1; g_t2 = thing2; g_a = a; g_b = b; g_prio = priority; return 0; } };
@@ -17,7 +17,7 @@ void CCreatureAction_GiveItemToThing::Initialise()
     CThing* pCreatureThing = PCreature.GetPItem();
     CThing* pCreature = PCreature.GetPItem();
     CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;
-    pManager->AddMessage(0x14, 0x10, &pCreature->GetPosition(), pCreatureThing, PReceivingThing.GetPItem(), 0.0f, 0.0f, 5);
+    pManager->AddMessage(0x14, 0x10, &pCreature->GetPosition_006a4d00(), pCreatureThing, PReceivingThing.GetPItem(), 0.0f, 0.0f, 5);
 }
 int main()
 {

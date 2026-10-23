@@ -11,9 +11,9 @@ struct CCreatureActionBase {
     ~CCreatureActionBase() { ++g_dtorCalls; }
 };
 
-struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
+namespace N_00842150 { struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
     CCreatureAction_AlertToPlayer(CThingAICreature* creature) { m_creature = creature; }
-};
+}; } using N_00842150::CCreatureAction_AlertToPlayer;
 
 struct CThingAICreature {
     unsigned char m_flags6c;

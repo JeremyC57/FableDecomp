@@ -35,7 +35,7 @@ struct CDefinitionManager {
 };
 
 struct CThing {
-    const C3DVector& GetPosition() const;   // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
 };
 
 struct CMessageEventManager {
@@ -80,7 +80,7 @@ void CCreatureAction_CallSpouseHome::PerformAction()
         CThing* pCreatureThing = PCreature.GetPItem();   // fetched but unused: retail keeps the dead call
         CThing* pCreature = PCreature.GetPItem();
         CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;   // named: resolved before the arguments
-        pManager->AddMessage(p, &pCreature->GetPosition(), PCreature.GetPItem(), 0, 0);
+        pManager->AddMessage(p, &pCreature->GetPosition_006a4d00(), PCreature.GetPItem(), 0, 0);
     }
     if (p) {
         if (--p->m_count == 0)

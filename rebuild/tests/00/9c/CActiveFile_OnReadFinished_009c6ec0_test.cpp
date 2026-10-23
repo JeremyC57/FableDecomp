@@ -5,16 +5,16 @@ static void* g_freed = (void*)0;
 
 struct CActiveFile {
     void* buffer;
-    void Helper();
+    void Helper_009c6cc0();
     void OnReadFinished();
 };
 
-void CActiveFile::Helper() { g_helper++; }
+void CActiveFile::Helper_009c6cc0() { g_helper++; }
 void freemem(void* p) { g_freed = p; }
 
 void CActiveFile::OnReadFinished()
 {
-    Helper();
+    Helper_009c6cc0();
     void* p = buffer;
     if (p)
         freemem(p);

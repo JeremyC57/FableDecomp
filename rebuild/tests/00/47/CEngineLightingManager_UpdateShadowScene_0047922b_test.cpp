@@ -1,14 +1,14 @@
 
 #include <cstdio>
 struct CShadowTarget28 { void Do(int v); };
-struct CLocalScene { int state; void Run(void* obj24, int* arg); };
+struct CLocalScene { int state; void Run_0047926c(void* obj24, int* arg); };
 struct CEngineLightingManager { char pad0[0x18]; int mode; char pad1c[0x24-0x1c]; void* obj24; CShadowTarget28* obj28; };
 
 // --- stubs for masked callees so test.obj links stand-alone ---
 static int g_called=0, g_v=0, g_state=-1;
 void __stdcall EnterGuard(void* p){ (void)p; g_called|=1; }
 void CShadowTarget28::Do(int v){ g_v=v; g_called|=2; }
-void CLocalScene::Run(void* obj24, int* arg){ (void)obj24; (void)arg; g_state=this->state; g_called|=4; }
+void CLocalScene::Run_0047926c(void* obj24, int* arg){ (void)obj24; (void)arg; g_state=this->state; g_called|=4; }
 
 // Self-contained definition of the target free function (matches source_cpp linkage:
 // free function, __fastcall, ret 4). Linked test-only, this drives the switch idiom.
@@ -17,7 +17,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
     EnterGuard((void*)0x122d70e);
     local.state=0;
     switch(self->mode){
-    case 2: local.Run(self->obj24,arg); break;
+    case 2: local.Run_0047926c(self->obj24,arg); break;
     case 3: self->obj28->Do(*arg); break;
     }
 }

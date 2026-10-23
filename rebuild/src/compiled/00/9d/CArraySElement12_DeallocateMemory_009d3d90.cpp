@@ -21,13 +21,13 @@ struct SElement12 {
 
 struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
 
-SElement12* __fastcall Copy_SElement12(SElement12* first, SElement12* last, SElement12* result,
+SElement12* __fastcall Copy_SElement12_009d1c30(SElement12* first, SElement12* last, SElement12* result,
                                        const SRandomAccessIteratorTag& category, long* distance);   // 0x009D1C30
 
 template<class T> struct CArray {
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
-    void erase(T* f, T* l) { last = Copy_SElement12(l, last, f, SRandomAccessIteratorTag(), (long*)0); }
+    void erase(T* f, T* l) { last = Copy_SElement12_009d1c30(l, last, f, SRandomAccessIteratorTag(), (long*)0); }
     void DeallocateMemory();
 };
 

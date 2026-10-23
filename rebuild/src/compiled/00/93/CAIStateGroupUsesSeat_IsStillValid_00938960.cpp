@@ -15,7 +15,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
 struct CThing {
@@ -55,7 +55,7 @@ struct CAIStateGroupBase {
 };
 
 struct CTCCreatureModeManager {                 // interface 0x42
-    bool HasMode(long mode);                    // 0x00811340 (manifest "CPlayer::HasMode", propagated)
+    bool HasMode_00811340(long mode);                    // 0x00811340 (manifest "CPlayer::HasMode", propagated)
 };
 
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
@@ -81,7 +81,7 @@ bool CAIStateGroup_UsesSeat::IsStillValid()
     }
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x42);
-    if (modes->HasMode(1) || modes->HasMode(6))
+    if (modes->HasMode_00811340(1) || modes->HasMode_00811340(6))
         return false;
     return true;
 }

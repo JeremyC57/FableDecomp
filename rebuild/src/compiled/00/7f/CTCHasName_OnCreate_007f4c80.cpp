@@ -10,7 +10,7 @@
 struct SEntry { long m_value; };
 
 struct CRegistry {
-    void Register(SEntry* entry);          // 0x007F4C90
+    void Register_007f4c90(SEntry* entry);          // 0x007F4C90
 };
 
 struct COwner {
@@ -28,5 +28,5 @@ struct CTCHasName {
 
 void CTCHasName::OnCreate()
 {
-    m_pOwner->m_pRegistry->Register(&m_entry);
+    m_pOwner->m_pRegistry->Register_007f4c90(&m_entry);
 }

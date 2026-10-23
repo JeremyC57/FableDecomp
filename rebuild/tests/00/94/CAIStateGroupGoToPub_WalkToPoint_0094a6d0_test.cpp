@@ -106,7 +106,7 @@ struct CBaseIntelligentPointer {
 struct CThing {
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -146,7 +146,7 @@ bool CAIStateGroupGoToPubMethods::WalkToPoint(const C3DVector& pos, const CRight
     } while (result == AI_ACTION_RUNNING);
     if (result == AI_ACTION_SUCCEEDED) {
         C3DVector forward = rhSet.Forward;
-        C3DVector lookAt = forward + GetCreature()->GetPosition();
+        C3DVector lookAt = forward + GetCreature()->GetPosition_006a4d00();
         do {
             if (!IS_THING_ALIVE(PPub) || !IS_THING_ALIVE(PBar))
                 goto failed;
@@ -166,7 +166,7 @@ static char g_log[64]; static int g_logn = 0;
 static void Log(char c) { if (g_logn < 63) { g_log[g_logn++] = c; g_log[g_logn] = 0; } }
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 static C3DVector g_creaturePos(100.0f, 200.0f, 300.0f);
-const C3DVector& CThing::GetPosition() const { return g_creaturePos; }
+const C3DVector& CThing::GetPosition_006a4d00() const { return g_creaturePos; }
 static const char* g_moveScript = ""; static int g_moveIndex = 0; static C3DVector g_movePos; static bool* g_reached;
 static EMovementType g_movement; static float g_speed; static CThing* g_avoid;
 EAIActionReturn CAIStateGroupGoToPubMethods::AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool* reached, EMovementType movement,

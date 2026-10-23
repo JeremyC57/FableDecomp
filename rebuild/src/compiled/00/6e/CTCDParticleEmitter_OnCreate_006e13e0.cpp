@@ -30,7 +30,7 @@ extern long g_framesPerSecond;                  // 0x01375550
 extern bool g_bParticlesEnabled;                // 0x01375754
 extern const CRightHandedSet g_IdentityRHSet;   // 0x01380104
 struct CThing {
-    void SetAsGameStatePersisted(bool persisted);   // 0x004C9C10
+    void SetAsGameStatePersisted_004c9c10(bool persisted);   // 0x004C9C10
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 namespace NParticleEngine {
@@ -74,7 +74,7 @@ struct CTCDParticleEmitter {
 void CTCDParticleEmitter::OnCreate()
 {
     if (!IndependantObject)
-        ParentThing->SetAsGameStatePersisted(false);
+        ParentThing->SetAsGameStatePersisted_004c9c10(false);
     ClearAttachments();
     if (g_bParticlesEnabled && ParticleTypeID) {
         CThing* thing = ParentThing;

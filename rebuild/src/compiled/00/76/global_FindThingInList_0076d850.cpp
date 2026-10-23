@@ -18,9 +18,9 @@ struct CThingListIterator {
 
 struct CIteratorTag { CIteratorTag() { } };
 
-CThingListIterator __fastcall FindThingInListImpl(CThingListIterator first, CThingListIterator last, CThing* const& value, const CIteratorTag& tag);   // 0x0076D760
+CThingListIterator __fastcall FindThingInListImpl_0076d760(CThingListIterator first, CThingListIterator last, CThing* const& value, const CIteratorTag& tag);   // 0x0076D760
 
 CThingListIterator __fastcall FindThingInList(CThingListIterator first, CThingListIterator last, CThing* const& value)
 {
-    return FindThingInListImpl(first, last, value, CIteratorTag());
+    return FindThingInListImpl_0076d760(first, last, value, CIteratorTag());
 }

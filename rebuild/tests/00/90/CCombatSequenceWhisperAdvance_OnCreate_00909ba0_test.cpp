@@ -16,8 +16,8 @@ struct CCountedPointer {
     CCountedPointer() : object(0), count(0) { }
     CCountedPointer(const CCountedPointer& o) : object(o.object), count(o.count) { if (count) ++count->references; }
     void Release() { if (count) { --count->references; if (count->references == 0) { count->destroy(count->object); delete count; } } object = 0; count = 0; }
-    void Reset(CActionBase* p) { Release(); object = p; if (p) { count = new SCountBlock; count->references = 1; count->destroy = DestroyAction; count->object = p; } }
-    CCountedPointer& operator=(CActionBase* p) { Reset(p); return *this; }
+    void Reset_00905fd0(CActionBase* p) { Release(); object = p; if (p) { count = new SCountBlock; count->references = 1; count->destroy = DestroyAction; count->object = p; } }
+    CCountedPointer& operator=(CActionBase* p) { Reset_00905fd0(p); return *this; }
     ~CCountedPointer() { Release(); }
 };
 struct CSeq {

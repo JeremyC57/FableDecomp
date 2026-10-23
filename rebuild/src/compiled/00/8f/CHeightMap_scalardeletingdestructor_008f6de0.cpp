@@ -13,9 +13,9 @@
 
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
-struct CBaseClass {
+namespace N_0099a300 { struct CBaseClass {
     virtual ~CBaseClass();                                                // 0x0099A300
-};
+}; } using N_0099a300::CBaseClass;
 
 struct CWorld;
 struct CMap;

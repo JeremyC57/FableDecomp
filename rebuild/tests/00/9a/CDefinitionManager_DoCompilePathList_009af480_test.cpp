@@ -37,10 +37,10 @@ struct CWideString {
 };
 CWideString CCharString::ToWideString() const { return CWideString(m_Text); }
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00() {}
     ~CBase() {}
-};
+}; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
 

@@ -7,14 +7,14 @@ struct CActiveFile {
 };
 
 // base function at 0x719280 (thiscall, void)
-extern void __fastcall CActiveFile_base(CActiveFile* self);
+extern void __fastcall CActiveFile_base_00719280(CActiveFile* self);
 
 // cdecl free function at 0xbfea14
 extern void free_helper(void* p);
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_base(self);
+    CActiveFile_base_00719280(self);
     void* p = self->field0;
     if (p)
         free_helper(p);

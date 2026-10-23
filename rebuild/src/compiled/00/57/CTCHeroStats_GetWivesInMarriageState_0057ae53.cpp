@@ -25,7 +25,7 @@ struct CThingCreatureBase : CThing {
 
 struct CThingList {                                  // std::list<CThingCreatureBase*> (retail: head pointer only)
     void* _M_node;
-    void clear();                                    // 0x0057F5E1
+    void clear_0057f5e1();                                    // 0x0057F5E1
     void push_back(CThingCreatureBase* const& wife); // 0x005805C9
 };
 
@@ -54,7 +54,7 @@ struct CTCHeroStats {
 
 void CTCHeroStats::GetWivesInMarriageState(CThingList& wives, long state) const
 {
-    wives.clear();
+    wives.clear_0057f5e1();
     CHeroMarriageInfoNode* head = Marriages_Head;
     for (CHeroMarriageInfoNode* node = head->Next; node != head; node = node->Next) {
         if (state == 0 || node->State == state) {

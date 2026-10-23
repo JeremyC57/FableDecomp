@@ -73,14 +73,14 @@ struct CTCPhysicsBase {
     void*     ParentThing;                      // +0x04
     unsigned char _pad08[0x4];
     C3DVector Position;                         // +0x0c
-    CWorld* GetWorld();                         // 0x00686A80 (CTCBase)
+    CWorld* GetWorld_00686a80();                         // 0x00686A80 (CTCBase)
     CPhysicsMeshObject GetPhysicsMeshObject();
 };
 
 CPhysicsMeshObject CTCPhysicsBase::GetPhysicsMeshObject()
 {
     const CThingPhysicsMeshInfo* info = GetPhysicsMeshInfo();
-    CMeshBank* bank = GetWorld()->PMeshBank;
+    CMeshBank* bank = GetWorld_00686a80()->PMeshBank;
     CPhysicsMeshInfo* meshInfo = bank->GetPhysicsMeshInfo(info->BankIndex);
     return CPhysicsMeshObject(meshInfo->GetMesh(), Position, GetRightHandedSet(), info->RenderSizeX * 0.01f);
 }

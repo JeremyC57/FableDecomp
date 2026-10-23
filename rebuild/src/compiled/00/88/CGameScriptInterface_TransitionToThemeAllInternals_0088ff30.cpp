@@ -18,7 +18,7 @@ public:
 class CEnvironment
 {
 public:
-    void TransitionToTheme(
+    void TransitionToTheme_006b3800(
         int internalIndex,
         int unknown1,
         long themeGlobalIndex,
@@ -59,7 +59,7 @@ void CGameScriptInterface::TransitionToThemeAllInternals(
 
         for (int internalIndex = 1; internalIndex <= 4; ++internalIndex)
         {
-            pThis->m_pEnvironmentOwner->m_pEnvironment->TransitionToTheme(
+            pThis->m_pEnvironmentOwner->m_pEnvironment->TransitionToTheme_006b3800(
                 internalIndex,
                 1,
                 globalIndex,

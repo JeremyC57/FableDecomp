@@ -28,7 +28,7 @@ struct CDefPointer {                                    // CDefPointer<const CTu
     CTurncoatDef* operator->() const { return Object; }
 };
 struct CDefClassBase {
-    bool GetSubDef(CDefPointer* out);                   // 0x007C8000
+    bool GetSubDef_007c8000(CDefPointer* out);                   // 0x007C8000
 };
 struct CThingDefs {
     unsigned char _pad[0x70];
@@ -88,7 +88,7 @@ CTCTurncoat::CTCTurncoat(CThing* parent)
     : CTCBase(parent), CurrentTurncoatedness(0), TurncoatedEffect(0), TurncoatTimeLast(0), TurncoatOverride(true),
       CurrentRecoveryTimer(0), CreatureTurncoatResistance(0)
 {
-    ParentThing->m_pDefinition->GetSubDef(&PDef);
+    ParentThing->m_pDefinition->GetSubDef_007c8000(&PDef);
     WillTurncoatTimer = 1;
     TimeDelayBeforeResistanceRecoveryFrames = (long)(g_framesPerSecond * PDef->TimeDelayBeforeResistanceRecoverySecs);
     ResistanceRecoveryPerFrame = PDef->ResistanceRecoveryPerSec / g_framesPerSecond;

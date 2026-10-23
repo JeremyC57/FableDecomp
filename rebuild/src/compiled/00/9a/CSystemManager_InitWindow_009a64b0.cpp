@@ -44,10 +44,10 @@ extern "C" __declspec(dllimport) int __stdcall ShowWindow(HWND wnd, int show);
 extern "C" __declspec(dllimport) int __stdcall UpdateWindow(HWND wnd);
 long __stdcall SystemManagerWndProc(HWND wnd, unsigned int msg, unsigned int wparam, long lparam);   // 0x009A5B60
 
-struct CWideString {
+namespace N_0099af00 { struct CWideString {
     void* PStringData;
     operator const unsigned short*() const;                // 0x0099AF00
-};
+}; } using N_0099af00::CWideString;
 struct CSystemManager {
     unsigned char _pad00[0x90];
     HINSTANCE     WinInstanceHandle;                       // +0x90

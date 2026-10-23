@@ -3,7 +3,7 @@
 struct BaseDef {
     char pad[0xd];       // 0x00..0x0c
     // base operator= is a real out-of-line __fastcall; forward-declared, not inlined here
-    BaseDef* AssignBase(const BaseDef* rhs);
+    BaseDef* AssignBase_005f9074(const BaseDef* rhs);
 };
 
 struct CTavernTableDef : public BaseDef {
@@ -13,7 +13,7 @@ struct CTavernTableDef : public BaseDef {
 
 CTavernTableDef& CTavernTableDef::operator=(const CTavernTableDef& rhs)
 {
-    this->AssignBase(&rhs);
+    this->AssignBase_005f9074(&rhs);
     this->m_flag = rhs.m_flag;
     return *this;
 }

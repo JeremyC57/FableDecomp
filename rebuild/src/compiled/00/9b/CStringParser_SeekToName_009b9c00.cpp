@@ -14,7 +14,7 @@ class CThingBase
 {
 public:
     virtual ~CThingBase() {}
-    bool SerialiseGameState(CPersistContext *ctx);
+    bool SerialiseGameState_009b9aa0(CPersistContext *ctx);
 };
 
 // CThingBase::SerialiseGameState is defined in another translation unit
@@ -43,7 +43,7 @@ public:
 
 bool CThingCreatureBase::SerialiseGameState(CPersistContext *ctx)
 {
-    if (CThingBase::SerialiseGameState(ctx))
+    if (CThingBase::SerialiseGameState_009b9aa0(ctx))
     {
         CPersistBlock *pBlk = ctx->m_pBlock;
         if (pBlk != 0)

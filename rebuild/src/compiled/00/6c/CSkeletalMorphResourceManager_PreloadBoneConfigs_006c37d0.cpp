@@ -31,10 +31,10 @@ CWideString __fastcall operator+(const CWideString& a, const wchar16* b);      /
 struct CFileFinder { void* Handle; unsigned long Flags; };
 bool __fastcall FindFirstFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);   // 0x00999760
 bool __fastcall FindNextFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);    // 0x00999850
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 struct CDiskFileWin32 : CBase {                    // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();

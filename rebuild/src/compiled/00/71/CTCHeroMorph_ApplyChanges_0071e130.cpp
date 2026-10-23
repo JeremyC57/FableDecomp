@@ -15,11 +15,11 @@
 // and the Changed byte cleared.
 // Layout: Changed is +0x3D in retail (PDB +0x55, see OnInitialActivate 0x0071C790); a local model.
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                  // 0x0099A2D0
     ~CBase();                                 // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CMessageOnMorphChanged : CBase {       // NTCMessages::CMessageOnMorphChanged
     virtual void v00();

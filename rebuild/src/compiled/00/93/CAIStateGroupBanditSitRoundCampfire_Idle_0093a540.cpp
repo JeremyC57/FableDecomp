@@ -24,7 +24,7 @@ struct CWorld {
 struct CAIStateGroupBase {
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
-    CWorld* GetPWorld();                        // 0x008FCFA0 (PBrain->+0x1c->+0x24)
+    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0 (PBrain->+0x1c->+0x24)
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     long AIAction_DoNothing();                  // 0x0097E200 (EAIActionReturn)
 };
@@ -42,12 +42,12 @@ struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupBase {
 
 long CAIStateGroup_BanditSitRoundCampfire::Idle()
 {
-    long framesPerSecond = GetPWorld()->GetFramesPerSecond();
+    long framesPerSecond = GetPWorld_008fcfa0()->GetFramesPerSecond();
     float delay = (GFFloatRandom(10.0f, GetPWorldSeed()) + 5.0f) * framesPerSecond;
     unsigned long endFrame = (unsigned long)(CWorld::GetFrame() + delay);
     long result;
     do {
         result = AIAction_DoNothing();
-    } while ((unsigned long)GetPWorld()->GetFrame() < endFrame && result == 4);
+    } while ((unsigned long)GetPWorld_008fcfa0()->GetFrame() < endFrame && result == 4);
     return result == 4;
 }

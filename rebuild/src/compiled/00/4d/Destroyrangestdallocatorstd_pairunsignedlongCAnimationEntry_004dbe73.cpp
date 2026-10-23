@@ -4,7 +4,7 @@
 // loop over [first,last) stride 0xc calling element dtor via thiscall.
 
 struct CAnimEntryPair { unsigned long k; unsigned long a; unsigned long b; }; // 12 bytes
-extern "C" void __fastcall Pair_Dtor(CAnimEntryPair* self);   // external dtor @0xa01c10 (thiscall)
+extern "C" void __fastcall Pair_Dtor_00a01c10(CAnimEntryPair* self);   // external dtor @0xa01c10 (thiscall)
 
 struct AllocDummy {};
 
@@ -13,7 +13,7 @@ void __fastcall _Destroy_range_pair(CAnimEntryPair* first, CAnimEntryPair* last,
     (void)al;
     while (first != last)
     {
-        Pair_Dtor(first);
+        Pair_Dtor_00a01c10(first);
         ++first;
     }
 }

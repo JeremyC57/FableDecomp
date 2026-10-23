@@ -7,21 +7,21 @@ static C3DAnimationBlendState* g_lastAdded = 0;
 
 struct BlendMgr {
     int addCount;
-    void Add(C3DAnimationBlendState* s) { addCount++; g_lastAdded = s; }
+    void Add_0051df70(C3DAnimationBlendState* s) { addCount++; g_lastAdded = s; }
 };
 
 static BlendMgr realMgr = {0};
 BlendMgr* g_theMgr = &realMgr;
 
-extern "C" void __fastcall helper_6a5230(C3DAnimationBlendState* self) {
+extern "C" void __fastcall helper_6a5230_006a5230(C3DAnimationBlendState* self) {
     g_helperCalls++;
     (void)self;
 }
 
 void __fastcall AddCombinationBlend(C3DAnimationBlendState* self)
 {
-    helper_6a5230(self);
-    g_theMgr->Add(self);
+    helper_6a5230_006a5230(self);
+    g_theMgr->Add_0051df70(self);
 }
 
 int main() {

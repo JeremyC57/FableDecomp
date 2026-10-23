@@ -1,11 +1,11 @@
 #include <cstdio>
 
 // definition of the global the function-under-test writes
-void *g_CurrentThingManager = 0;
+void *g_CurrentThingManager_013b8a1c = 0;
 
 void __fastcall SetCurrentThingManager(void *pManager)
 {
-    g_CurrentThingManager = pManager;
+    g_CurrentThingManager_013b8a1c = pManager;
 }
 
 int main()
@@ -19,9 +19,9 @@ int main()
         call SetCurrentThingManager
     }
 
-    if (g_CurrentThingManager != marker)
+    if (g_CurrentThingManager_013b8a1c != marker)
     {
-        printf("FAIL got=%p want=%p\n", g_CurrentThingManager, marker);
+        printf("FAIL got=%p want=%p\n", g_CurrentThingManager_013b8a1c, marker);
         return 1;
     }
 
@@ -32,9 +32,9 @@ int main()
         mov ecx, marker
         call SetCurrentThingManager
     }
-    if (g_CurrentThingManager != marker)
+    if (g_CurrentThingManager_013b8a1c != marker)
     {
-        printf("FAIL2 got=%p\n", g_CurrentThingManager);
+        printf("FAIL2 got=%p\n", g_CurrentThingManager_013b8a1c);
         return 1;
     }
 

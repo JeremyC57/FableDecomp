@@ -4,10 +4,10 @@
 
 #include <new>
 
-struct CCharString {
+namespace N_00673e10 { struct CCharString {
     char pad[13];
     CCharString(const CCharString& o);  // copy-ctor at 0x673e10
-};
+}; } using N_00673e10::CCharString;
 
 struct MyPair {
     CCharString first;   // +0 .. +0xc

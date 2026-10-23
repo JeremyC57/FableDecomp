@@ -8,10 +8,10 @@
 // constructor @ 0x009013FA runs, then the compiler stores this class's vtable (0x0128D21C
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CAIStateGroupBehaviourBase {
+namespace N_009013fa { struct CAIStateGroupBehaviourBase {
     virtual void v00();
     CAIStateGroupBehaviourBase();                           // 0x009013FA
-};
+}; } using N_009013fa::CAIStateGroupBehaviourBase;
 
 struct CAIStateGroup_VersusRockTroll : CAIStateGroupBehaviourBase {
     virtual void v00();                    // this class has its own vtable

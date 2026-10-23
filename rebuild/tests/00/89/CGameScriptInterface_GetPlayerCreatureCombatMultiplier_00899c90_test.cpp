@@ -12,7 +12,7 @@ struct CVectorMap
 {
     CKeyPair* m_pBegin;
     CKeyPair* m_pEnd;
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
+    CKeyPair* LowerBound(const ETCInterfaceType* pKey) const;
 };
 
 struct CThingOverlay
@@ -58,7 +58,7 @@ const ETCInterfaceType kTargetType = (ETCInterfaceType)0x68;
 
 static CKeyPair g_entries[4];
 
-CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey)
+CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey) const
 {
     for (CKeyPair* p = m_pBegin; p != m_pEnd; ++p)
         if ((int)p->m_Key >= (int)*pKey)

@@ -47,14 +47,14 @@ struct CThingFilter_HasTC {
     long Type;                                    // ETCInterfaceType
     bool operator()(const CThing* thing) const;      // 0x006A80A0
 };
-struct CThingFilter_InRegion {
+namespace N_006a7960 { struct CThingFilter_InRegion {
     void* Region;
     bool operator()(const CThing* thing) const;      // 0x006A7960
-};
-struct CThingFilter_IsRegionEntranceActive {
+}; } using N_006a7960::CThingFilter_InRegion;
+namespace N_006a8be0 { struct CThingFilter_IsRegionEntranceActive {
     void* RegionEntrance;
     bool operator()(const CThing* thing) const;      // 0x006A8BE0
-};
+}; } using N_006a8be0::CThingFilter_IsRegionEntranceActive;
 template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
     const A& First;
     const B& Second;

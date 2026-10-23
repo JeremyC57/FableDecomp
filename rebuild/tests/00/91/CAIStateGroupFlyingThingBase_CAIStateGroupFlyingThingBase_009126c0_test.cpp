@@ -2,7 +2,7 @@
 #include <cstddef>
 // Behaviour model of CAIStateGroup_FlyingThingBase::CAIStateGroup_FlyingThingBase @ 0x009126C0.
 static int g_n = 0;
-struct CBase { virtual void v00() {} CBase() { g_n++; } };
+namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() { g_n++; } }; } using N_0099a2d0::CBase;
 struct CCharString { void* m_pData; CCharString() : m_pData(0) { g_n++; } };
 struct CAIStateGroupBase : CBase { void* PBrain; long ScriptAIPriority; CCharString Name; unsigned char Terminated, Priority, Enabled, _pad;
     virtual void v00() {} CAIStateGroupBase() : CBase(), Name() {} };

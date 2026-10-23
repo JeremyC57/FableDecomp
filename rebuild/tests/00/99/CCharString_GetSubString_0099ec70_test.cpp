@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-extern "C" long g_charStringRefTrace = 0;
+extern "C" long g_charStringRefTrace_013bd800 = 0;
 extern "C" char g_emptyCharStringData = 0;
 
 struct CCharStringData
@@ -47,7 +47,7 @@ void CCharString::UnassignString()
 
 CCharString* CCharString::GetSubString(CCharString* retVal, unsigned long start, unsigned long len)
 {
-    ++g_charStringRefTrace;
+    ++g_charStringRefTrace_013bd800;
 
     CCharString localTmp;
     localTmp.storage = 0;
@@ -64,7 +64,7 @@ CCharString* CCharString::GetSubString(CCharString* retVal, unsigned long start,
     }
 
     retVal->storage = 0;
-    ++g_charStringRefTrace;
+    ++g_charStringRefTrace_013bd800;
 
     if ((void*)&localTmp != (void*)retVal)
     {
@@ -80,7 +80,7 @@ CCharString* CCharString::GetSubString(CCharString* retVal, unsigned long start,
     }
 
     localTmp.UnassignString();
-    --g_charStringRefTrace;
+    --g_charStringRefTrace_013bd800;
 
     return retVal;
 }

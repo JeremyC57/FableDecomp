@@ -20,7 +20,7 @@ struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;                                   // +0x00
     SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const long* type);            // 0x004365B0
+    SEntry* LowerBound(const long* type) const;            // 0x004365B0
 };
 struct CThing {
     unsigned char _pad_0x00[0x20];

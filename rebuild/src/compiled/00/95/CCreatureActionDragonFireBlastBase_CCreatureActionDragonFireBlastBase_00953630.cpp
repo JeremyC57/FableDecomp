@@ -38,10 +38,10 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     CIntelligentPointer() { }
 };
 
-struct CBase {                              // engine root object: vtable only
+namespace N_0099a2d0 { struct CBase {                              // engine root object: vtable only
     virtual void v00();
     CBase();                                // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CEnginePrimitiveHandle : CBase {     // vtable 0x0122F598; 8 bytes
     long m_id;                              // +4, zero = no primitive

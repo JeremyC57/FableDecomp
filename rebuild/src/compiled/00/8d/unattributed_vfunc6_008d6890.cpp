@@ -8,7 +8,7 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CTarget {
-    void Method(long value);               // 0x004C9B80
+    void Method_004c9b80(long value);               // 0x004C9B80
 };
 
 struct CClass_008d6890 {
@@ -19,5 +19,5 @@ struct CClass_008d6890 {
 
 void CClass_008d6890::vfunc_6()
 {
-    m_pObject->Method(1);
+    m_pObject->Method_004c9b80(1);
 }

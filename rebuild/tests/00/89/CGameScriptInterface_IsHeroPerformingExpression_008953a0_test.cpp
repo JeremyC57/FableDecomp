@@ -21,17 +21,17 @@ struct CCharString {
 static const char* g_strings[4] = { "", "DEF_ONE", "DEF_TWO", "DEF_THREE" };
 struct CDefStringTable_Retail { CCharString GetString(long index) { return CCharString(g_strings[index]); } };
 static CDefStringTable_Retail g_defStringTable;
-struct CDefString {
+namespace N_006aeb10 { struct CDefString {
     long m_index;
     CDefString(long i) : m_index(i) { }
     CDefString(const CDefString& o) : m_index(o.m_index) { }
     bool operator==(const CCharString& expressionName) const { return std::strcmp(g_strings[m_index], expressionName.s) == 0; }
-};
+}; } using N_006aeb10::CDefString;
 struct CTCBase_Retail { int x; };
 struct CInterfaceMap_Retail {
     struct SEntry { long type; CTCBase_Retail* component; };
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
+    SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 struct CScriptThing;
 struct CThing_Retail {

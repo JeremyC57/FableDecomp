@@ -13,9 +13,9 @@ struct CCreatureActionBase {
     ~CCreatureActionBase();                                     // 0x00693EF0
 };
 
-struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
+namespace N_00842150 { struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
     CCreatureAction_AlertToPlayer(CThingAICreature* creature);  // 0x00842150
-};
+}; } using N_00842150::CCreatureAction_AlertToPlayer;
 
 struct CThingAICreature {
     unsigned char _pad[0x6c];

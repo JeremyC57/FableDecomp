@@ -12,11 +12,11 @@
 // ecx/eax load pairs; the bare expression allocates differently).
 struct CThingCreatureBase;
 
-struct CCreatureActionBase {
+namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
     unsigned char _body[0x110];             // +0x4..+0x113
     ~CCreatureActionBase();                 // 0x0062E900
-};
+}; } using N_0062e900::CCreatureActionBase;
 
 struct CCreatureAction_BeetleLand : CCreatureActionBase {
     CCreatureAction_BeetleLand(CThingCreatureBase* creature);      // 0x00982C70

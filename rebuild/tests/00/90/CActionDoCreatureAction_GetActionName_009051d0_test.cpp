@@ -9,7 +9,7 @@ private:
     char* m_data;
 };
 
-const char kActionName[] = "DoCreatureAction";
+const char kActionName_0128d850[] = "DoCreatureAction";
 
 // Simple ctor: len == -1 means strlen.
 CCharString::CCharString(const char* s, int len)
@@ -28,7 +28,7 @@ public:
 
 CCharString CActionDoCreatureAction::GetActionName()
 {
-    return CCharString(kActionName, -1);
+    return CCharString(kActionName_0128d850, -1);
 }
 
 int main()

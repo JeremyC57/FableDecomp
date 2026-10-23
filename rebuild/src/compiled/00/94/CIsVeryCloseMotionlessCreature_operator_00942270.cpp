@@ -62,7 +62,7 @@ public:
     unsigned char  _pad50[0x10];
     CPhysicsBody*  m_pBody;                        // +0x60
     long GetCreatureCategory() const;              // 0x00662000
-    const C3DVector& GetPosition() const;          // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;          // 0x006A4D00
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 __forceinline CTCMotion* GetMotionIfPresent(const CThing* thing)
@@ -84,7 +84,7 @@ bool CIsVeryCloseMotionlessCreature::operator()(CThing* thing) const
     if (thing->GetCreatureCategory() == 2) {
         CTCMotion* motion = GetMotionIfPresent(thing);
         if (!((motion->Position - motion->LastPosition).GetLengthSquared() > g_minLength_0129ba3c * g_minLength_0129ba3c)) {
-            const C3DVector& pos = thing->GetPosition();
+            const C3DVector& pos = thing->GetPosition_006a4d00();
             if (C2DVector(pos.X - MyPos.X, pos.Y - MyPos.Y).GetLength() < (thing->m_pBody->Radius + MyRadius) * 1.4f)
                 return true;
         }

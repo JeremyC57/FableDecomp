@@ -45,7 +45,7 @@ struct CPlayer {
     CThing* GetPlayerCreature();             // 0x00487DC0
 };
 struct CPlayerManager {
-    CPlayer* GetMainPlayer();                // 0x00449960
+    CPlayer* GetMainPlayer() const;                // 0x00449960
 };
 struct CWorld {
     unsigned char   _pad_0x00[0x1c];

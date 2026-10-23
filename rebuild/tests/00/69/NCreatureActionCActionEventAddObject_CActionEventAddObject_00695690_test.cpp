@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_strings = 0;
-struct CBase { virtual void v00() { } CBase() { } };
+namespace N_0099a2d0 { struct CBase { virtual void v00() { } CBase() { } }; } using N_0099a2d0::CBase;
 struct CCharString { void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
 namespace NCreatureAction {
 struct CActionEventBase : CBase { bool m_bTriggered; long m_a; long m_b; long m_c; CActionEventBase(long a, long b, long c) : CBase(), m_bTriggered(false), m_a(a), m_b(b), m_c(c) { } };

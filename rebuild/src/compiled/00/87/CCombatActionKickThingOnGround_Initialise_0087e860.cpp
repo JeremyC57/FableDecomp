@@ -39,7 +39,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x004365B0
+    SEntry* LowerBound(const long* type) const;               // 0x004365B0
 };
 struct CHitLocation {
     C3DVector GetClosestPointToPos2D(const C3DVector& position, const C3DVector& direction);   // 0x00815370

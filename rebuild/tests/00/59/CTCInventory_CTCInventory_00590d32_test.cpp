@@ -86,7 +86,7 @@ struct CPlayer {
     CGameProfile* PProfile;                                   // +0x0C
 };
 struct CPlayerManager {
-    CPlayer* GetMainPlayer();                                 // 0x00449960
+    CPlayer* GetMainPlayer() const;                                 // 0x00449960
 };
 
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {   // vtables 0x01250DE4 / 0x01250DD0
@@ -184,7 +184,7 @@ unsigned long CGameProfile::GetNumContextSensitiveSlots() const { return 3; }
 static CGameProfile g_profile;
 static CPlayer g_player;
 static CPlayerManager g_pm;
-CPlayer* CPlayerManager::GetMainPlayer() { return &g_player; }
+CPlayer* CPlayerManager::GetMainPlayer() const { return &g_player; }
 CPlayerManager* CTCInventory::GetPlayerManager() const { return &g_pm; }
 CTCInventory::~CTCInventory() { }
 int main()

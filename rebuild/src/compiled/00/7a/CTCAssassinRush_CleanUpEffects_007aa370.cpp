@@ -41,7 +41,7 @@ public:
     CTCGraphicAppearance* m_pGraphicAppearance; // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
-    CPlayer* GetPlayer();                       // 0x004C7A30
+    CPlayer* GetPlayer_004c7a30();                       // 0x004C7A30
     void SetAlpha(unsigned char alpha)
     {
         if (m_pGraphicAppearance)
@@ -152,5 +152,5 @@ void CTCAssassinRush::CleanUpEffects()
     }
     ItemAlphaList.clear();
     if (!(parent->m_stateFlags & 1) && parent->m_state == 2)
-        parent->GetPlayer()->EndSpecialMoveMode();
+        parent->GetPlayer_004c7a30()->EndSpecialMoveMode();
 }

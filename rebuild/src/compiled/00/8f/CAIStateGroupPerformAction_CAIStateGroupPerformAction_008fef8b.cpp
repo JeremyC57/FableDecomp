@@ -8,10 +8,10 @@
 // constructor @ 0x008FE95B runs, then the compiler stores this class's vtable (0x0128B398
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CInterestingToVillagersDef {
+namespace N_008fe95b { struct CInterestingToVillagersDef {
     virtual void v00();
     CInterestingToVillagersDef();                           // 0x008FE95B
-};
+}; } using N_008fe95b::CInterestingToVillagersDef;
 
 struct CAIStateGroup_PerformAction : CInterestingToVillagersDef {
     virtual void v00();                    // this class has its own vtable

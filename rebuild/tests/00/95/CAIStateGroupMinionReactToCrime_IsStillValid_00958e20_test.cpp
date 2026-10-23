@@ -21,7 +21,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
 struct CThing {
@@ -156,7 +156,7 @@ void CAIStateGroupBase::v06() { } void CAIStateGroupBase::v07() { } void CAIStat
 void CAIStateGroupBase::Cleanup() { } void CAIStateGroupBase::OnReplace() { }
 bool CAIStateGroupBase::IsRunnable() { return false; } void CAIStateGroupBase::Update() { }
 void CAIStateGroupBase::InitStateGroup() { }
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 {
     SEntry* it = first;
     while (it != last && it->type < *type)

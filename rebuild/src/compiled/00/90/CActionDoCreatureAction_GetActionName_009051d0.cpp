@@ -10,7 +10,7 @@ private:
 };
 
 // The literal at 0x128d850 (content irrelevant to codegen shape).
-extern const char kActionName[];
+extern const char kActionName_0128d850[];
 
 class CActionDoCreatureAction {
 public:
@@ -19,5 +19,5 @@ public:
 
 CCharString CActionDoCreatureAction::GetActionName()
 {
-    return CCharString(kActionName, -1);
+    return CCharString(kActionName_0128d850, -1);
 }

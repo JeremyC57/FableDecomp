@@ -14,7 +14,7 @@ struct C3DVector {
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CBaseObject { virtual void v000(); CBaseObject(); };   // 0x0099A2F0
+namespace N_0099a2f0 { struct CBaseObject { virtual void v000(); CBaseObject(); }; } using N_0099a2f0::CBaseObject;   // 0x0099A2F0
 struct CBaseIntelligentPointer {
     virtual void v000();
     void* m_pItem;

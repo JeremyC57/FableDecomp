@@ -27,7 +27,7 @@ static long g_FramesPerSecond = 15;
 struct CThingCreatureBase { int id; };
 struct CCombatManager {
     CThingCreatureBase* m_last; int m_count;
-    void DeregisterCombatant(CThingCreatureBase* creature) { m_last = creature; ++m_count; }
+    void DeregisterCombatant_006ea430(CThingCreatureBase* creature) { m_last = creature; ++m_count; }
 };
 struct CTCCombat {
     CCombatManager* CombatManager; CThingCreatureBase* ParentCreature;
@@ -36,7 +36,7 @@ struct CTCCombat {
         CTCBase* component;
         if (blocker->m_thingType == 2 && blocker->GetInterface(48, &component))
             component->m_frameCounter = (long)(g_FramesPerSecond * 2.0f);
-        CombatManager->DeregisterCombatant(ParentCreature);
+        CombatManager->DeregisterCombatant_006ea430(ParentCreature);
     }
 };
 int main()

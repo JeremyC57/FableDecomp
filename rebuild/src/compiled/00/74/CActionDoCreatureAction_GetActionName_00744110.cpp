@@ -7,7 +7,7 @@ struct CCharString {
     CCharString(const char* s, int n);
 };
 
-extern const char kActionName[];
+extern const char kActionName_01268848[];
 
 struct CActionDoCreatureAction {
     CCharString GetActionName();
@@ -15,5 +15,5 @@ struct CActionDoCreatureAction {
 
 CCharString CActionDoCreatureAction::GetActionName()
 {
-    return CCharString(kActionName, -1);
+    return CCharString(kActionName_01268848, -1);
 }

@@ -17,7 +17,7 @@ struct CRetailVector_dword {
     long* first;
     long* last;
     long* end;
-    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x004E8C1A
+    void InsertGrow_004e8c1a(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x004E8C1A
     void PushBack_dword_007ca160(const long& value);
 };
 
@@ -28,5 +28,5 @@ void CRetailVector_dword::PushBack_dword_007ca160(const long& value)
         ++last;
     }
     else
-        InsertGrow(last, value, SScalarTag(), 1, true);
+        InsertGrow_004e8c1a(last, value, SScalarTag(), 1, true);
 }

@@ -84,7 +84,7 @@ struct CTCCreatureOpinionOfHero {
     bool InFindAGuardAndYellForHelp;        // +0x343
     CBaseIntelligentPointer PUnknownThreatOpinionSource;   // +0x344
     long FrameLastUpdatedUnknownThreat;     // +0x34c
-    CWorld* GetWorld() const;               // 0x00686A80
+    CWorld* GetWorld_00686a80() const;               // 0x00686A80
     float GetToleranceToBeingHitRemaining() const;
 };
 
@@ -93,7 +93,7 @@ float CTCCreatureOpinionOfHero::GetToleranceToBeingHitRemaining() const
     if (ToleranceToBeingHitOverride >= 0.0f)
         return ToleranceToBeingHitOverride;
     CThing* thing = ParentThing;
-    COpinionReactionManager* manager = GetWorld()->POpinionReactionManager;
+    COpinionReactionManager* manager = GetWorld_00686a80()->POpinionReactionManager;
     float tolerance = manager->GetToleranceToBeingHit(thing);
     if (PPersonalityDef)
         tolerance += PPersonalityDef->ToleranceToBeingHit;

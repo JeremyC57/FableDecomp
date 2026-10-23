@@ -11,7 +11,7 @@ struct Sink {
 
 struct Local {
     unsigned char flag;
-    void Fill(int a, void* b);
+    void Fill_00405940(int a, void* b);
 };
 
 class CEngineLightingManager {
@@ -32,7 +32,7 @@ void __stdcall Prep(unsigned int tag) { ++g_prepCalls; g_prepTag = tag; }
 static int g_fillCalls = 0;
 static int g_fillA = 0;
 static void* g_fillB = 0;
-void Local::Fill(int a, void* b) { ++g_fillCalls; g_fillA = a; g_fillB = b; }
+void Local::Fill_00405940(int a, void* b) { ++g_fillCalls; g_fillA = a; g_fillB = b; }
 
 void Sink::Take(int v) { lastTaken = v; ++takeCount; }
 
@@ -46,7 +46,7 @@ void CEngineLightingManager::UpdateShadowScene(unsigned char* p)
     Prep(0x122d70eU);
     h.flag = 0;
     switch (this->mode) {
-    case 2:  h.Fill(this->obj24, p); break;
+    case 2:  h.Fill_00405940(this->obj24, p); break;
     case 3:  this->sink28->Take(*p); break;
     }
 }

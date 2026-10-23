@@ -116,7 +116,7 @@ struct CTCVillager;
 struct CTCVillage {
     unsigned char _pad[0x94];
     CDefPointer PDef;                           // +0x94 the village's counted def
-    bool IsCookTime();                          // 0x00658B6B
+    bool IsCookTime_00658b6b();                          // 0x00658B6B
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
@@ -156,7 +156,7 @@ bool CAIStateGroup_PrepareMeal::IsTimeToPrepareMeal()
     ((CThingB*)PBrain->PCreature)->GetInterface(&villager, 0x23);
     if (GFGetPVillageInterface(villager) != 0) {
         CDefPointer def(GFGetPVillageInterface(villager)->PDef.m_p);
-        return GFGetPVillageInterface(villager)->IsCookTime();
+        return GFGetPVillageInterface(villager)->IsCookTime_00658b6b();
     }
     return false;
 }

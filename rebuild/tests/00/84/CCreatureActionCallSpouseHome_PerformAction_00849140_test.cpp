@@ -13,7 +13,7 @@ struct CMessageEventDef { virtual ~CMessageEventDef() { } virtual void Destroy()
 struct CDefPointer { CMessageEventDef* m_p; CDefPointer() : m_p(0) { } };
 static CMessageEventDef g_def; static bool g_found = true; static const char* g_lookedUp = 0;
 struct CDefinitionManager { bool GetDef(const CCharString& name, CDefPointer& def) { g_lookedUp = name.m_text; if (g_found) { def.m_p = &g_def; ++g_def.m_count; } return g_found; } };
-struct CThing { C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } };
+struct CThing { C3DVector m_pos; const C3DVector& GetPosition_006a4d00() const { return m_pos; } };
 static CMessageEventDef* g_msgDef = 0; static const C3DVector* g_msgPos = 0; static CThing* g_msgThing1 = 0; static CThing* g_msgThing2 = 0; static long g_msgPriority = -1; static int g_messages = 0;
 struct CMessageEventManager {
     CMessageEvent* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* thing1, CThing* thing2, long priority)
@@ -43,7 +43,7 @@ void CCreatureAction_CallSpouseHome::PerformAction()
         CThing* pCreatureThing = PCreature.GetPItem();
         CThing* pCreature = PCreature.GetPItem();
         CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;
-        pManager->AddMessage(p, &pCreature->GetPosition(), PCreature.GetPItem(), 0, 0);
+        pManager->AddMessage(p, &pCreature->GetPosition_006a4d00(), PCreature.GetPItem(), 0, 0);
         (void)pCreatureThing;
     }
     if (p) {

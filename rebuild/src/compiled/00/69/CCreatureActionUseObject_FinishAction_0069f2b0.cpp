@@ -22,11 +22,11 @@ struct CCharString {
     void* PStringData;
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     CBase();                                          // 0x0099A2F0
     ~CBase();                                         // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CTCParamsBase : CBase { };
 struct CTCParamsPhysicsBase : CTCParamsBase {         // vtable 0x0125C818, 0x28 bytes
     C3DVector       Position;                         // +0x04

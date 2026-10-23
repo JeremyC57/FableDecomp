@@ -43,14 +43,14 @@ struct CThingList {
 };
 
 
-struct CThingFilter_HasTC {
+namespace N_006a76a0 { struct CThingFilter_HasTC {
     long Type;                                    // ETCInterfaceType
     bool operator()(const CThing* thing) const;      // 0x006A76A0 (manifest: CThingFilter_IsNot)
-};
-struct CThingFilter_InMap {
+}; } using N_006a76a0::CThingFilter_HasTC;
+namespace N_006a7780 { struct CThingFilter_InMap {
     long MapNumber;
     bool operator()(const CThing* thing) const;      // 0x006A7780 (manifest: CThingFilter_In2DRange)
-};
+}; } using N_006a7780::CThingFilter_InMap;
 template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
     const A& First;
     const B& Second;

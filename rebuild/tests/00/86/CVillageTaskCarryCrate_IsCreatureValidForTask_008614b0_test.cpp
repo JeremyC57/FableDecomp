@@ -15,7 +15,7 @@ struct CInterfaceMap {                             // CVectorMap<ETCInterfaceTyp
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);          // 0x004365B0
+    SEntry* LowerBound(const long* type) const;          // 0x004365B0
 };
 struct CThing {
     unsigned char _pad0[0x20];
@@ -72,7 +72,7 @@ bool CVillageTaskCarryCrate::IsCreatureValidForTask(CThing* creature)
 
 // ---- stubs ----
 static long g_lbKey; static int g_lbOffset; static int g_lbCalls;
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { g_lbKey = *type; g_lbCalls++; return first + g_lbOffset; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { g_lbKey = *type; g_lbCalls++; return first + g_lbOffset; }
 void CBaseIntelligentPointer::v00() { }
 void CVillageTaskCarryCrate::v00() { }
 static CThing* g_slot; static const CTCCarrying* g_slotThis;

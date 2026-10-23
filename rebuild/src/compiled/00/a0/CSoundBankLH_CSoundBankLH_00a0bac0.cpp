@@ -6,10 +6,10 @@
 // store, and the argument store stays below it) while +0x14/+0x18/+0x1c come AFTER it: words zeroed after the vtable store belong to a
 // member object with its own inline constructor (body assignments get hoisted just like plain initialisers), so +0x14..+0x1d is modelled
 // as a 3-field record with an inline constructor.
-struct CBaseClass {
+namespace N_0099a2f0 { struct CBaseClass {
     virtual void v00();
     CBaseClass();                                  // 0x0099A2F0
-};
+}; } using N_0099a2f0::CBaseClass;
 
 struct SBankCounters_00a0bac0 {                    // +0x14: two counters and a flag with an inline constructor
     long          m_count;                         // +0x00

@@ -11,12 +11,12 @@ extern "C" void __cdecl freeHelper(void* p);
 
 // base class OnDie, tail-called (mov ecx,esi; jmp 0x62e900) -> __fastcall
 struct CBase { };
-void __fastcall Base_OnDie(void* self);
+void __fastcall Base_OnDie_0062e900(void* self);
 
 void __fastcall OnDie(CTCInventoryItem* self)
 {
     void* p = self->m120;
     if (p != 0)
         freeHelper(p);
-    Base_OnDie(self);
+    Base_OnDie_0062e900(self);
 }

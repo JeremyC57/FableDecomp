@@ -37,7 +37,7 @@ struct CDefReference {
 };
 static CTavernTableDef* g_tableDef = 0; static int g_getSubDef = 0;
 struct CDefClassBase {
-    bool GetSubDef(CDefPointer* out) { ++g_getSubDef; ++g_tableDef->m_count; out->Object = g_tableDef; return true; }
+    bool GetSubDef_007b9700(CDefPointer* out) { ++g_getSubDef; ++g_tableDef->m_count; out->Object = g_tableDef; return true; }
 };
 struct CThing {
     unsigned char _pad_0x00[0x70];
@@ -49,7 +49,7 @@ struct CTCTavernTable {
     CTavernTableDef* TakeTableDef()
     {
         CDefPointer out;
-        ParentThing->DefHolder->GetSubDef(&out);
+        ParentThing->DefHolder->GetSubDef_007b9700(&out);
         return out.Object;
     }
     CCharString GetTankardName();

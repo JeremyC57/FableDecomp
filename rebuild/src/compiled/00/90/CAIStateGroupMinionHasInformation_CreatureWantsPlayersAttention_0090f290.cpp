@@ -109,7 +109,7 @@ struct CPlayer {
     CThing* GetPHero();                         // 0x00487DC0 (+0x2c intelligent pointer -> GetPItem)
 };
 struct CPlayerManager {
-    CPlayer* GetCurrentPlayer();                // 0x00449960
+    CPlayer* GetCurrentPlayer_00449960();                // 0x00449960
 };
 struct CAIStateGroupBaseP : CAIStateGroupBase {
     CPlayerManager* GetPPlayerManager();        // 0x008FCF80 (PBrain->+0x20)
@@ -158,7 +158,7 @@ bool CAIStateGroup_MinionHasInformation::CreatureWantsPlayersAttention()
 {
     if (((CThingCreatureFlags*)PBrain->PCreature)->HasInformationFlag()) {
         if (!((CThingCreatureFlags*)PBrain->PCreature)->InformationGivenFlag()) {
-            CThing* hero = GetPPlayerManager()->GetCurrentPlayer()->GetPHero();
+            CThing* hero = GetPPlayerManager()->GetCurrentPlayer_00449960()->GetPHero();
             if (hero != 0 && !(hero->m_flags91 & 1)) {
                 CThingB* creature = (CThingB*)PBrain->PCreature;
                 if (creature->HasTC(0x34))

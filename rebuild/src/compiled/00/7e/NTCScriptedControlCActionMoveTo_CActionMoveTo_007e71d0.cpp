@@ -16,10 +16,10 @@ struct CBase {                                  // the action root
     CBase();                                    // 0x0099A2F0
 };
 
-struct CScriptBase {                            // CScriptThing's root (the manifest also calls it CBase::CBase)
+namespace N_0099a2d0 { struct CScriptBase {                            // CScriptThing's root (the manifest also calls it CBase::CBase)
     virtual void v00();
     CScriptBase();                              // 0x0099A2D0
-};
+}; } using N_0099a2d0::CScriptBase;
 
 struct C3DVector {
     float X, Y, Z;

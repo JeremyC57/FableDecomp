@@ -33,9 +33,9 @@ struct CCreatureActionBase {
     ~CCreatureActionBase();                 // 0x00693EF0
 };
 
-struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
+namespace N_00933cc0 { struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
     CCreatureAction_AlertToPlayer(CThingAICreature* creature);     // 0x00933CC0
-};
+}; } using N_00933cc0::CCreatureAction_AlertToPlayer;
 
 struct CAIBrain {
     unsigned char _pad[0x18];

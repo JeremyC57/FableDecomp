@@ -17,7 +17,7 @@ struct CAIBrain { CThingAICreature* Creature; };
 #include "engine/CTCCreatureOpinionOfHero.h"
 struct CThing;
 struct CBaseIntelligentPointer { virtual void PointerType(); void* Handle; CThing* GetPItem() const; }; // 0xA01B50
-struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
+struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
 struct CThing {
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead; unsigned char tail[0xd6]; CBaseIntelligentPointer Home; CThing* GetHome() { return Home.GetPItem(); }
@@ -67,7 +67,7 @@ long g_TrespassCheckInterval=10;
 long GetWorldFrame() { ++frames; return now; }
 void CBaseIntelligentPointer::PointerType() {}
 CThing* CBaseIntelligentPointer::GetPItem() const { ++homes; return selectedHome; }
-CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* key) { ++finds; if(*key!=0x4f) ++failures; return fallback?last:first; }
+CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* key) const { ++finds; if(*key!=0x4f) ++failures; return fallback?last:first; }
 void* CTCCreatureOpinionOfHeroMethods::FindMostRecentDeed(long type,const CFilter_Bind2& filter,long* frame,bool active) {
  ++deeds; if(this!=expectedOpinion || !filter.F1 || filter.F2->Target!=selectedHome || frame || !active) ++failures;
  long expected=deeds==1?10:deeds==2?11:2; if(type!=expected) ++failures;

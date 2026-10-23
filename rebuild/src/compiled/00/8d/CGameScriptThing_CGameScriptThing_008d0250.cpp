@@ -8,10 +8,10 @@
 // Leaf: ??0CGameScriptThing
 struct CThing;
 struct CWorld;
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 struct CCountedPointerWords {                      // the script thing's counted-pointer pair (+0x04 / +0x08)
     void* m_pObject;
     void* m_pCount;

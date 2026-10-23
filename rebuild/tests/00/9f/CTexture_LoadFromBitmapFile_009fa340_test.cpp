@@ -3,11 +3,11 @@
 #define __stdcall
 #define __fastcall
 #endif
-struct CWideString {
+namespace N_0099af00 { struct CWideString {
     void* PData;
     ~CWideString();                                         // 0x0099B510
     operator const unsigned short*() const;                 // 0x0099AF00
-};
+}; } using N_0099af00::CWideString;
 CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
 struct IDirect3DDevice9;
 struct CRenderSystem {

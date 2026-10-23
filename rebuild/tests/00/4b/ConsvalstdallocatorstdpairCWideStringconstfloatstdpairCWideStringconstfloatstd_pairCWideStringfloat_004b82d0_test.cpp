@@ -2,11 +2,11 @@
 typedef unsigned int size_t_;
 inline void* operator new(size_t_, void* p) { return p; }
 
-struct CWideString {
+namespace N_0099ec30 { struct CWideString {
     void* buf;
     CWideString(const CWideString& o) { buf = o.buf; }
     CWideString() { buf = 0; }
-};
+}; } using N_0099ec30::CWideString;
 
 struct WPair {
     CWideString first;

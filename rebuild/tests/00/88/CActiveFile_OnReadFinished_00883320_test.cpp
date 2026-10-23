@@ -6,17 +6,17 @@ static void* g_freed = 0;
 
 struct CActiveFile {
     void* pBuffer;
-    void Helper();
+    void Helper_00882c00();
     void OnReadFinished();
 };
 
-void CActiveFile::Helper() { g_helper_calls++; }
+void CActiveFile::Helper_00882c00() { g_helper_calls++; }
 
 void EngineFree(void* p) { g_free_calls++; g_freed = p; }
 
 void CActiveFile::OnReadFinished()
 {
-    Helper();
+    Helper_00882c00();
     if (pBuffer)
         EngineFree(pBuffer);
 }

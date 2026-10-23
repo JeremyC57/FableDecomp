@@ -16,7 +16,7 @@ struct CLandscapeBackgroundPatch {
 
 // scalar destructor operating on the subobject located at self+4.
 // __fastcall => arg1 in ecx. Single pointer param = ecx.
-extern "C" void __fastcall InnerDtor(void* subAtPlus4);
+extern "C" void __fastcall InnerDtor_00a01c10(void* subAtPlus4);
 
 // operator delete (cdecl)
 extern "C" void __cdecl EngineOperatorDelete(void* p);
@@ -27,7 +27,7 @@ extern "C" void* __fastcall VecDelDtor(CLandscapeBackgroundPatch* self, int edxD
 {
     (void)edxDummy;
     // scalar dtor on the subobject at self+4
-    InnerDtor((char*)self + 4);
+    InnerDtor_00a01c10((char*)self + 4);
     if (flags & 1)
         EngineOperatorDelete(self);
     return self;

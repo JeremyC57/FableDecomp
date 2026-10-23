@@ -31,10 +31,10 @@ CWideString __fastcall GetBonesDirectory();        // 0x0041A290 (L"Data\\Bones\
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 CWideString __fastcall ConvertPathToFullPath(const CWideString& path);         // 0x00999110
 bool __fastcall PathExists(const CWideString& path);                           // 0x00999230
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 struct CDiskFileWin32 : CBase {                    // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();

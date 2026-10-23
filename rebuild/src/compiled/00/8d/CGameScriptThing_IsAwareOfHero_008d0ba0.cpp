@@ -24,7 +24,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long*);                    // 0x004365B0
+    SEntry* LowerBound(const long*) const;                    // 0x004365B0
 };
 struct CThing {
     unsigned char _pad00[0x10];

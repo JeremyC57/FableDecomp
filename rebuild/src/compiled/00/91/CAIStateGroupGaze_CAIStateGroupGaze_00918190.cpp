@@ -29,10 +29,10 @@ struct CGameDefinitionManager : CDefinitionManager {
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();
     CBase();                                                // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

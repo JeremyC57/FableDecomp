@@ -4,9 +4,9 @@
 // __fastcall(size in ecx) -> restack as cdecl stack arg, cdecl cleanup via pop ecx
 typedef unsigned int size_type;
 
-extern "C" void * __cdecl helper_bfeb1c(size_type n);
+extern "C" void * __cdecl helper_bfeb1c_00bfeb1c(size_type n);
 
 void * __fastcall operator_new(size_type n)
 {
-    return helper_bfeb1c(n);
+    return helper_bfeb1c_00bfeb1c(n);
 }

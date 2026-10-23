@@ -2,14 +2,14 @@
 // Behaviour model of CAIStateGroup_FireflyWander::Initialise @ 0x00911F20.
 struct CAIBrain { int x; }; struct CCharString { int x; }; typedef long EScriptAIPriority;
 struct C3DVector { float X, Y, Z; };
-struct CThingAICreature { C3DVector m_pos; C3DVector* GetPosition() { return &m_pos; } };
+struct CThingAICreature { C3DVector m_pos; C3DVector* GetPosition_006a4d00() { return &m_pos; } };
 static int g_baseCalls = 0; static long g_prio = 0;
 struct CAIStateGroupBase { virtual void v00() {} CAIBrain* PBrain; long ScriptAIPriority; void* Name_PStringData; unsigned char Terminated, Priority, Enabled, _pad;
     void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name) { g_baseCalls++; g_prio = priority; PBrain = &brain; } };
 struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase { float m_heightAboveGround, m_speed, m_minHeight, m_maxHeight; };
 struct CAIStateGroup_FireflyWander : CAIStateGroup_FlyingThingBase { C3DVector m_wanderCentre; long m_frameLastChangedDirection;
     void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name)
-    { m_wanderCentre = *creature.GetPosition(); m_frameLastChangedDirection = 0; m_heightAboveGround = 0.7f; m_minHeight = 2.5f; m_maxHeight = 6.0f;
+    { m_wanderCentre = *creature.GetPosition_006a4d00(); m_frameLastChangedDirection = 0; m_heightAboveGround = 0.7f; m_minHeight = 2.5f; m_maxHeight = 6.0f;
       CAIStateGroupBase::Initialise(brain, creature, priority, scriptPriority, name); } };
 int main()
 {

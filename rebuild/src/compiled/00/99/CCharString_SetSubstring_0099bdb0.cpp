@@ -16,7 +16,7 @@ struct CCharString
     CWideStringData* storage;
 
     CWideStringData* AllocStringData(unsigned short* s, long n);
-    void UnassignString();
+    void UnassignString_0099b4d0();
     CCharString* SetSubstring(CCharString* retVal, unsigned long start, unsigned long len);
 };
 
@@ -61,7 +61,7 @@ skipAlloc:
         {
             if (oldRetStorage != 0)
             {
-                retVal->UnassignString();
+                retVal->UnassignString_0099b4d0();
             }
             if (newStorage != 0)
             {

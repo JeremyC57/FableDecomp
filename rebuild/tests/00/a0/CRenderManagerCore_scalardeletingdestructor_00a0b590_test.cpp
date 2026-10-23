@@ -11,7 +11,7 @@ struct CInitBaseClass {
     bool initialised;
     CInitBaseClass() : initialised(false) { }
     bool IsInitialised() { return initialised; }
-    void Uninitialise() { Log('U'); initialised = false; }
+    void Uninitialise_00a6c120() { Log('U'); initialised = false; }
     ~CInitBaseClass() { Log('F'); }
 };
 
@@ -19,7 +19,7 @@ struct CSystemFont : CInitBaseClass { };
 
 struct CRenderManagerCore : CRenderStateManager {
     CSystemFont SystemFont;
-    void Uninit() { if (SystemFont.IsInitialised()) SystemFont.Uninitialise(); }
+    void Uninit() { if (SystemFont.IsInitialised()) SystemFont.Uninitialise_00a6c120(); }
     virtual ~CRenderManagerCore() { Uninit(); }
 };
 

@@ -47,7 +47,7 @@ struct SKeyedDefString {                           // 8-byte element with a non-
     unsigned long m_key;
     void*         m_pString;
 };
-void __fastcall DestroyRange(SKeyedDefString* first, SKeyedDefString* last, const SScalarTag& tag);   // 0x0052BD70
+void __fastcall DestroyRange_0052bd70(SKeyedDefString* first, SKeyedDefString* last, const SScalarTag& tag);   // 0x0052BD70
 
 struct CKeyedDefStringVector {
     SKeyedDefString* m_pFirst;
@@ -55,7 +55,7 @@ struct CKeyedDefStringVector {
     SKeyedDefString* m_pEnd;
     ~CKeyedDefStringVector()
     {
-        DestroyRange(m_pFirst, m_pLast, SScalarTag());
+        DestroyRange_0052bd70(m_pFirst, m_pLast, SScalarTag());
         if (m_pFirst)
             free(m_pFirst);
     }

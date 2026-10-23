@@ -36,7 +36,7 @@ struct CThing {
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     struct CThingSubsystem* m_pSubsystem60;     // +0x60 (role not established; virtual slot 67 takes a zero)
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
     bool TestTC(long interfaceType) const
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
@@ -144,7 +144,7 @@ void CAIStateGroup_BirdGroundWander::Update()
         CTCCreatureNavigation* navigation;
         creature->GetInterfaceT(&navigation, 7);
         C3DVector target;
-        if (!navigation->GetNearbyWanderPosition(creature->GetPosition(), 1.5f, &target, true))
+        if (!navigation->GetNearbyWanderPosition(creature->GetPosition_006a4d00(), 1.5f, &target, true))
             break;
         bool reached = false;
         long result;

@@ -8,14 +8,14 @@ static int g_baseCalled = 0;
 static int g_freed = 0;
 static void* g_freedPtr = 0;
 
-void __fastcall CActiveFile_Base(CActiveFile* self) { g_baseCalled++; (void)self; }
+void __fastcall CActiveFile_Base_0075f580(CActiveFile* self) { g_baseCalled++; (void)self; }
 
 extern "C" void my_free(void* p) { g_freed++; g_freedPtr = p; }
 #define free my_free
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_Base(self);
+    CActiveFile_Base_0075f580(self);
     void* p = self->buffer;
     if (p)
         free(p);

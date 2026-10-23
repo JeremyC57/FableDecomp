@@ -26,7 +26,7 @@ static STreeNode* Successor(STreeNode* n)           // in-order successor (null 
     return p;
 }
 
-STreeIterator FindInTreeRangeTagged(STreeIterator first, STreeIterator last, const long& value, const SInputIteratorTag&)
+STreeIterator FindInTreeRangeTagged_00534f20(STreeIterator first, STreeIterator last, const long& value, const SInputIteratorTag&)
 {
     while (first._M_node != last._M_node && first._M_node->_M_value != value)
         first._M_node = Successor(first._M_node);
@@ -35,7 +35,7 @@ STreeIterator FindInTreeRangeTagged(STreeIterator first, STreeIterator last, con
 
 STreeIterator FindInTreeRange(STreeIterator first, STreeIterator last, const long& value)
 {
-    return FindInTreeRangeTagged(first, last, value, SInputIteratorTag());
+    return FindInTreeRangeTagged_00534f20(first, last, value, SInputIteratorTag());
 }
 
 int main()

@@ -21,7 +21,7 @@ struct CDefPointer {                                    // CDefPointer<const CTe
 };
 
 struct CDefClassBase {
-    bool GetSubDef(CDefPointer* out);                   // 0x007E0540
+    bool GetSubDef_007e0540(CDefPointer* out);                   // 0x007E0540
 };
 
 struct CThingDefs {
@@ -64,5 +64,5 @@ CTCTeleporter::CTCTeleporter(CThing* parent)
     : CTCBase(parent), Active(false), Activated(false), HeroInsideRadius(true)
 {
     WaitingForTutorialToFinish = false;
-    m_pParentThing->m_pDefinition->GetSubDef(&PDef);
+    m_pParentThing->m_pDefinition->GetSubDef_007e0540(&PDef);
 }

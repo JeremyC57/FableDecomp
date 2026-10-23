@@ -21,10 +21,10 @@ struct CThingComponent {
     CThingComponent(CThing* owner);              // 0x00686800
 };
 
-struct CRetailList_node0x10 {                   // retail std::list, one sentinel-node pointer
+namespace N_004db60e { struct CRetailList_node0x10 {                   // retail std::list, one sentinel-node pointer
     void* head;
     CRetailList_node0x10(const CRetailAllocator& al = CRetailAllocator());   // 0x004DB60E
-};
+}; } using N_004db60e::CRetailList_node0x10;
 
 struct CTCEntityEvents : CThingComponent {
     virtual void v00();                          // own vtable (0x01242FDC)

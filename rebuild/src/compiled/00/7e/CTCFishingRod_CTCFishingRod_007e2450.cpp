@@ -16,7 +16,7 @@ struct CDefPointer {                             // CDefPointer<CFishingRodDef c
 };
 
 struct CDefClassBase {
-    bool GetSubDef(CDefPointer* out);            // 0x007E2390 (GetSubDef<CFishingRodDef>)
+    bool GetSubDef_007e2390(CDefPointer* out);            // 0x007E2390 (GetSubDef<CFishingRodDef>)
 };
 
 struct CThing {
@@ -41,5 +41,5 @@ struct CTCFishingRod : CTCBase {
 CTCFishingRod::CTCFishingRod(CThing* parent)
     : CTCBase(parent), PDef()
 {
-    ParentThing->m_pDefClass->GetSubDef(&PDef);
+    ParentThing->m_pDefClass->GetSubDef_007e2390(&PDef);
 }

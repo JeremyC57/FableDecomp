@@ -13,15 +13,15 @@
 extern "C" void* __cdecl malloc(unsigned int size);
 
 struct CRetailList_node0x10 {
-    struct value_type { unsigned char _body[0x8]; value_type(const value_type& other); };   // copy ctor 0x0065D83E
-    struct node { node* next; node* prev; value_type value; };
+    struct value_type_0065d83e { unsigned char _body[0x8]; value_type_0065d83e(const value_type_0065d83e& other); };   // copy ctor 0x0065D83E
+    struct node { node* next; node* prev; value_type_0065d83e value; };
     node* head;
-    node* Buynode(const value_type& value);
+    node* Buynode(const value_type_0065d83e& value);
 };
 
-CRetailList_node0x10::node* CRetailList_node0x10::Buynode(const value_type& value)
+CRetailList_node0x10::node* CRetailList_node0x10::Buynode(const value_type_0065d83e& value)
 {
     node* n = (node*)malloc(sizeof(node));
-    new (&n->value) value_type(value);
+    new (&n->value) value_type_0065d83e(value);
     return n;
 }

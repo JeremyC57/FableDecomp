@@ -3,7 +3,7 @@ struct CShadowTarget28 {
 };
 struct CLocalScene {
     int state;
-    void Run(void* obj24, int* arg);
+    void Run_0047926c(void* obj24, int* arg);
 };
 
 struct CEngineLightingManager {
@@ -26,7 +26,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
     local.state = 0;
     switch (self->mode) {
     case 2:
-        local.Run(self->obj24, arg);
+        local.Run_0047926c(self->obj24, arg);
         break;
     case 3:
         self->obj28->Do(*arg);

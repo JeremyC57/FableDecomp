@@ -7,13 +7,13 @@ struct CActiveFile
 {
     void* m_ptr;          // +0
 
-    void Helper();        // __fastcall -> 0x9c71a0
+    void Helper_009c71a0();        // __fastcall -> 0x9c71a0
     void OnReadFinished();
 };
 
 void CActiveFile::OnReadFinished()
 {
-    Helper();
+    Helper_009c71a0();
     void* p = m_ptr;
     if (p)
         free_helper(p);

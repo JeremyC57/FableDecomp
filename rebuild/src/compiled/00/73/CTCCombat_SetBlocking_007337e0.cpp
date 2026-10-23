@@ -41,7 +41,7 @@ struct CThing {
         }
         return false;
     }
-    CPlayer* GetPlayer();                               // 0x004C7A30
+    CPlayer* GetPlayer_004c7a30();                               // 0x004C7A30
 };
 struct CTCHeroRangedAttacks {
     void CancelAimingWeapon();                          // 0x00789FF0
@@ -69,7 +69,7 @@ void CTCCombat::SetBlocking()
         CTCHeroRangedAttacks* ranged = (CTCHeroRangedAttacks*)ParentThing->GetTC(0x81);
         ranged->CancelAimingWeapon();
         ranged->ResetProjectileWeaponMode();
-        ParentThing->GetPlayer()->RemoveMode(0x22);
+        ParentThing->GetPlayer_004c7a30()->RemoveMode(0x22);
     }
     CTCCreatureModeManager* modes;
     ParentThing->GetInterface(&modes, 0x31);

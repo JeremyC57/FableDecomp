@@ -14,7 +14,7 @@ static void*         g_lastEdx;
 static int           g_lastValue;
 static int           g_called;
 
-extern void __fastcall guivar_bool_helper(void* self, void* edx, bool value)
+extern void __fastcall guivar_bool_helper_006bf6a0(void* self, void* edx, bool value)
 {
     g_lastSelf  = self;
     g_lastEdx   = edx;

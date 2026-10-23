@@ -32,10 +32,10 @@ struct STreeIterator                                // the tree's 4-byte iterato
 
 struct SInputIteratorTag { SInputIteratorTag() {} };   // input_iterator_tag
 
-STreeIterator __fastcall FindInTreeRangeTagged(STreeIterator first, STreeIterator last, const long& value,
+STreeIterator __fastcall FindInTreeRangeTagged_00534f20(STreeIterator first, STreeIterator last, const long& value,
                                                const SInputIteratorTag& tag);   // 0x00534F20
 
 STreeIterator __fastcall FindInTreeRange(STreeIterator first, STreeIterator last, const long& value)
 {
-    return FindInTreeRangeTagged(first, last, value, SInputIteratorTag());
+    return FindInTreeRangeTagged_00534f20(first, last, value, SInputIteratorTag());
 }

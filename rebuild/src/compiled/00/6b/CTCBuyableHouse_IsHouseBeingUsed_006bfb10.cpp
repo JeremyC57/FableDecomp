@@ -23,7 +23,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x004365B0
+    SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 
 struct CThingInterfaces {                                   // CThing: the interface bitset + map

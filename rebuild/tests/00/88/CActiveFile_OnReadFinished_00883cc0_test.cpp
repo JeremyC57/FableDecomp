@@ -5,19 +5,19 @@ extern "C" void __cdecl free_helper(void* p);
 
 struct CActiveFile {
     void* m_buffer;   // +0x00
-    void Helper();
+    void Helper_00882c40();
     void OnReadFinished();
 };
 
 static int g_helper_called = 0;
 static void* g_freed = (void*)-1;
 
-void CActiveFile::Helper() { g_helper_called++; }
+void CActiveFile::Helper_00882c40() { g_helper_called++; }
 extern "C" void __cdecl free_helper(void* p) { g_freed = p; free(p); }
 
 void CActiveFile::OnReadFinished()
 {
-    this->Helper();
+    this->Helper_00882c40();
     void* p = this->m_buffer;
     if (p)
         free_helper(p);

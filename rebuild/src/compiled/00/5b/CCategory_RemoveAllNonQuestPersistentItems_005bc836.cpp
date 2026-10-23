@@ -13,7 +13,7 @@
 #include "engine/CItem.h"
 
 struct CItem_Methods : CItem {
-    bool IsQuestPersistent();                 // 0x005BC746
+    bool IsQuestPersistent_005bc746();                 // 0x005BC746
 };
 // Retail std::vector<CItem> (12 bytes). size() is the signed element difference (`sub ; cdq ; idiv 14h`)
 // converted to the unsigned size_type; elements are reached through `first`.
@@ -125,7 +125,7 @@ struct CCategory_Retail {
 void CCategory_Retail::RemoveAllNonQuestPersistentItems()
 {
     for (unsigned long i = 0; i < ItemsInCategory.size(); ++i) {
-        if (ItemsInCategory[i].NumberOfItems != 0 && !ItemsInCategory[i].IsQuestPersistent())
+        if (ItemsInCategory[i].NumberOfItems != 0 && !ItemsInCategory[i].IsQuestPersistent_005bc746())
             PInventory->RemoveItems(ItemsInCategory[i].ItemType, ItemsInCategory[i].NumberOfItems);
     }
 }

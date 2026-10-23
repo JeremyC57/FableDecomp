@@ -39,11 +39,11 @@ template<class T> struct CCountedPointer {     // {object, count block}
     }
 };
 
-struct CBaseIntelligentPointer {               // the intelligent-pointer target root (8 bytes)
+namespace N_0099a430 { struct CBaseIntelligentPointer {               // the intelligent-pointer target root (8 bytes)
     virtual void v00();
     void* m_pReferences;                       // +0x04
     ~CBaseIntelligentPointer();                // 0x0099A430
-};
+}; } using N_0099a430::CBaseIntelligentPointer;
 
 struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
     __forceinline virtual ~CScriptGameResourceObjectBase() {}

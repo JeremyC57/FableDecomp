@@ -11,10 +11,10 @@
 // deriving from CDataStream that adds the name at +4; it is named descriptively (its own vtable never
 // appears in the body). The destructor is NON-virtual here (with another virtual keeping the class
 // polymorphic) so that the plain `??1` body is the symbol the lander grades, not a `??_G`.
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                   // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct CCharString {
     void* m_pData;

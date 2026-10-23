@@ -5,7 +5,7 @@ struct CUIState { int v; };
 static CUIState g_state;
 static char* g_seen;
 
-CUIState* __stdcall NUISystem_GetState(char* p)
+CUIState* __stdcall NUISystem_GetState_005bbf80(char* p)
 {
     g_seen = p;
     return &g_state;
@@ -14,7 +14,7 @@ CUIState* __stdcall NUISystem_GetState(char* p)
 CUIState* __fastcall CComponent_GetCurrentState(void* self)
 {
     char local;
-    return NUISystem_GetState(&local);
+    return NUISystem_GetState_005bbf80(&local);
 }
 
 int main()

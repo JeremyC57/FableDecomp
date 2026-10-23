@@ -12,18 +12,18 @@ struct CTCMap_Retail {                             // the thing's component map 
     STCEntry_Retail* m_pFirst;
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020 (the key by address)
-    STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
+    STCEntry_Retail* LowerBound_004365b0(const unsigned long& kind);         // 0x0040F020 (the key by address)
+    STCEntry_Retail* LowerBound_004365b0(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
     __forceinline CTCBase_Retail* Find(long kind)          // the inlined map `find`: end entry when the key is absent
     {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
+        STCEntry_Retail* it = LowerBound_004365b0((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
             it = m_pLast;
         return it->m_pTC;
     }
     __forceinline CTCBase_Retail* Find(long kind) const
     {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
+        STCEntry_Retail* it = LowerBound_004365b0((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
             it = m_pLast;
         return it->m_pTC;

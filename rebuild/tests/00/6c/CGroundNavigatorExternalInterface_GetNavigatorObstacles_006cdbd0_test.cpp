@@ -7,7 +7,7 @@ struct CTCBase_Retail { long m_kind; };
 struct STCEntry_Retail { long m_kind; CTCBase_Retail* m_pTC; };
 struct CTCMap_Retail {
     STCEntry_Retail* m_pFirst; STCEntry_Retail* m_pLast; STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const long* kind) const   // first entry whose kind is not less than *kind (the map is sorted)
+    STCEntry_Retail* LowerBound_004365b0(const long* kind) const   // first entry whose kind is not less than *kind (the map is sorted)
     {
         STCEntry_Retail* it = m_pFirst;
         while (it != m_pLast && it->m_kind < *kind) ++it;
@@ -28,7 +28,7 @@ struct CThingCreatureBase {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             long type = kind;
             const CTCMap_Retail* map = &m_tcs;
-            STCEntry_Retail* it = map->LowerBound(&type);
+            STCEntry_Retail* it = map->LowerBound_004365b0(&type);
             if (it == map->m_pLast || kind < it->m_kind)
                 it = map->m_pLast;
             *ppOut = (T*)it->m_pTC;

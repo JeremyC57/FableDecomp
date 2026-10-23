@@ -3,7 +3,7 @@
 struct C3DVector { float X, Y, Z; };
 static int g_kills; static bool g_inRange; static const C3DVector* g_rangePos; static float g_range; static bool g_silent;
 struct CThing { unsigned char _pad[0x91]; unsigned char m_flags91; C3DVector m_pos;
-    const C3DVector& GetPosition() const { return m_pos; }
+    const C3DVector& GetPosition_006a4d00() const { return m_pos; }
     bool IsInRange(const C3DVector& position, float range) { g_rangePos = &position; g_range = range; return g_inRange; }
     void Kill(bool silent) { ++g_kills; g_silent = silent; } };
 struct CBaseIntelligentPointer { virtual void v00() { } CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
@@ -11,7 +11,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p) { if (p.GetPItem() 
 struct CCreatureAction_KillCreature { virtual void v00() { } virtual void PerformAction(); unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xa8 - 0x10]; CBaseIntelligentPointer PTargetCreature; };
 void CCreatureAction_KillCreature::PerformAction()
 {
-    if (IS_THING_ALIVE(PTargetCreature)) { CThing* pTarget = PTargetCreature.GetPItem(); CThing* pCreature = PCreature.GetPItem(); if (pTarget->IsInRange(pCreature->GetPosition(), 2.0f)) pTarget->Kill(true); }
+    if (IS_THING_ALIVE(PTargetCreature)) { CThing* pTarget = PTargetCreature.GetPItem(); CThing* pCreature = PCreature.GetPItem(); if (pTarget->IsInRange(pCreature->GetPosition_006a4d00(), 2.0f)) pTarget->Kill(true); }
 }
 int main()
 {

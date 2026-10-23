@@ -65,7 +65,7 @@ struct CThing {
 static CThing* g_heroThing;
 struct CPlayer { CThing* GetHeroCreature() { return g_heroThing; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+struct CPlayerManager { CPlayer* GetMainPlayer() const { return &g_player; } };
 static long g_frame;
 struct CMainGameComponent { CPlayerManager* PlayerManager; long GetFrame() { return g_frame; } };
 static CPlayerManager g_pm;

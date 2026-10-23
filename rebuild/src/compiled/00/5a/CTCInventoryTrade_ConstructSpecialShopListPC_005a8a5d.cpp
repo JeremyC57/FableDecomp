@@ -58,7 +58,7 @@ struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x004365B0
+    SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 struct CTCInventoryBase { bool CanAddItem(long defIndex) const; };   // 0x005BF2ED
 struct CThing {

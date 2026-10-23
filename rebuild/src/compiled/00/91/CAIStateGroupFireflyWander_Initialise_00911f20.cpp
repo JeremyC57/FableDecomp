@@ -18,7 +18,7 @@ struct C3DVector {
 };
 
 struct CThingAICreature {
-    C3DVector* GetPosition();                   // 0x006A4D00
+    C3DVector* GetPosition_006a4d00();                   // 0x006A4D00
 };
 
 struct CAIStateGroupBase {
@@ -48,7 +48,7 @@ struct CAIStateGroup_FireflyWander : CAIStateGroup_FlyingThingBase {
 
 void CAIStateGroup_FireflyWander::Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name)
 {
-    m_wanderCentre = *creature.GetPosition();
+    m_wanderCentre = *creature.GetPosition_006a4d00();
     m_frameLastChangedDirection = 0;
     m_heightAboveGround = 0.7f;
     m_minHeight = 2.5f;

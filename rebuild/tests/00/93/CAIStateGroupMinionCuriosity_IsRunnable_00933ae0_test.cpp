@@ -1,13 +1,13 @@
 #include <cstdio>
 struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
-struct CThing { unsigned char _pad[0x91]; unsigned char m_flags91; C3DVector pos; const C3DVector& GetPosition() { return pos; } };
+struct CThing { unsigned char _pad[0x91]; unsigned char m_flags91; C3DVector pos; const C3DVector& GetPosition_006a4d00() { return pos; } };
 struct CThingCreatureBase { unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CThing* t;
     bool HasInterface(long i) { return (m_presentBits[i >> 5] & (1UL << (i & 31))) != 0; } CThing* GetCuriosityThing() { return t; } };
 struct CAIBrain { unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
 struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; };
 struct CAIStateGroup_MinionCuriosity : CAIStateGroupBase { C3DVector CuriosityPos; bool FindNewCuriosityPos(); virtual bool IsRunnable(); };
 bool CAIStateGroup_MinionCuriosity::FindNewCuriosityPos()
-{ CThing* thing = PBrain->Creature->GetCuriosityThing(); if (thing && !(thing->m_flags91 & 1)) { CuriosityPos = thing->GetPosition(); return true; } return false; }
+{ CThing* thing = PBrain->Creature->GetCuriosityThing(); if (thing && !(thing->m_flags91 & 1)) { CuriosityPos = thing->GetPosition_006a4d00(); return true; } return false; }
 bool CAIStateGroup_MinionCuriosity::IsRunnable() { if (PBrain->Creature->HasInterface(0x34)) return FindNewCuriosityPos(); return false; }
 int main()
 {

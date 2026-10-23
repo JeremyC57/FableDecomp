@@ -29,7 +29,7 @@ struct CActiveFile
 };
 
 // __fastcall member on the reader, modeled as free __fastcall so edx carries m_status.
-extern void FABLE_FASTCALL CActiveFileReader_Notify(CActiveFileReader* thisptr,
+extern void FABLE_FASTCALL CActiveFileReader_Notify_00450aea(CActiveFileReader* thisptr,
                                                     fable_i32 status,
                                                     fable_u8* outByte);
 
@@ -40,7 +40,7 @@ void FABLE_FASTCALL CActiveFile_OnReadFinished_471df4(CActiveFile* thisptr)
 {
     fable_u8 localByte;
 
-    CActiveFileReader_Notify(thisptr->m_reader, thisptr->m_status, &localByte);
+    CActiveFileReader_Notify_00450aea(thisptr->m_reader, thisptr->m_status, &localByte);
 
     CActiveFileReader* r = thisptr->m_reader;
     if (r)

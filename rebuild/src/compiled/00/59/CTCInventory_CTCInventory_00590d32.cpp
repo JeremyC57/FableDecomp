@@ -80,7 +80,7 @@ struct CPlayer {
     CGameProfile* PProfile;                                   // +0x0C
 };
 struct CPlayerManager {
-    CPlayer* GetMainPlayer();                                 // 0x00449960
+    CPlayer* GetMainPlayer() const;                                 // 0x00449960
 };
 
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {   // vtables 0x01250DE4 / 0x01250DD0

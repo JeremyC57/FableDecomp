@@ -17,7 +17,7 @@ extern "C" void __stdcall Profile_Enter(int marker);
 // __fastcall member takes two stack args: this=lea [ebp-4], push arg, push p24.
 struct ShadowGuard {
     void* slot;
-    void Apply(void* a, void* b);
+    void Apply_004791c8(void* a, void* b);
 };
 
 // __fastcall sink reached through esi->p28; single stack argument (*arg).
@@ -45,7 +45,7 @@ void CEngineLightingManager::UpdateShadowScene(void* arg)
 
     switch (this->mode) {
     case 2:
-        guard.Apply(this->p24, arg);
+        guard.Apply_004791c8(this->p24, arg);
         break;
     case 3:
         this->p28->Push(*(void**)arg);

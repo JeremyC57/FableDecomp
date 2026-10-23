@@ -10,7 +10,7 @@
 struct CDataOutputStream {
     void WriteULong(unsigned long value);           // 0x00993EA0
     void WriteLong(long value);                     // 0x00993EB0
-    void WriteUShort(unsigned short value);         // 0x00993E90
+    void WriteUShort_00993e90(unsigned short value);         // 0x00993E90
     void WriteBool(bool value);                     // 0x00993E30
 };
 
@@ -45,7 +45,7 @@ void CSkeletalMorphs::TransferBinaryOut(CDataOutputStream* stream) const
         stream->WriteULong(Morphs[i].first);
         const NSkeletalMorphs::CEntry& entry = Morphs[i].second;
         stream->WriteLong(entry.Morph);
-        stream->WriteUShort(entry.Index);
+        stream->WriteUShort_00993e90(entry.Index);
         stream->WriteBool(entry.Enabled);
     }
 }

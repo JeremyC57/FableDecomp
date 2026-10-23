@@ -11,13 +11,13 @@
 #pragma optimize("s", on)
 class CDefString;
 
-class CArrayDefString {                            // CArray<CDefString>, 12 bytes in retail
+namespace N_004ec4b0 { class CArrayDefString {                            // CArray<CDefString>, 12 bytes in retail
 public:
     CDefString*   m_pData;
     unsigned long m_size;
     unsigned long m_capacity;
     CArrayDefString(const CArrayDefString& other); // 0x004EC4B0
-};
+}; } using N_004ec4b0::CArrayDefString;
 
 class CObjectAugmentationParticleSet {
 public:

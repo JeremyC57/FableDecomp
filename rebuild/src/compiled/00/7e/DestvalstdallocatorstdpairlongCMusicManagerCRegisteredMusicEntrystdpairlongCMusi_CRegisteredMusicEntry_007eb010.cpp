@@ -3,7 +3,7 @@ struct Sub { char pad[4]; };
 struct Base { char pad[4]; };
 
 extern "C" void __fastcall Sub_dtor(Sub* s);   // 0xa01c10
-extern "C" void __fastcall Base_dtor(Base* b); // 0x693ef0
+extern "C" void __fastcall Base_dtor_00693ef0(Base* b); // 0x693ef0
 
 struct Obj {
     char pad_a8[0xa8];
@@ -13,5 +13,5 @@ struct Obj {
 void __fastcall DestVal_Music_E(Obj* self, void* /*edx*/)
 {
     Sub_dtor(&self->sub);
-    Base_dtor((Base*)self);
+    Base_dtor_00693ef0((Base*)self);
 }

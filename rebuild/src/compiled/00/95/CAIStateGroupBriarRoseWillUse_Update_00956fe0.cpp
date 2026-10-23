@@ -78,10 +78,10 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCreatureActionBase {
+namespace N_0062e900 { struct CCreatureActionBase {
     unsigned char _body[0x114];
     ~CCreatureActionBase();                     // 0x0062E900
-};
+}; } using N_0062e900::CCreatureActionBase;
 struct CCreatureAction_BriarRoseForcePush : CCreatureActionBase {
     CBaseIntelligentPointer PTarget;            // +0x114
     CCreatureAction_BriarRoseForcePush(CThing* creature, CThing* target);   // 0x009572A0

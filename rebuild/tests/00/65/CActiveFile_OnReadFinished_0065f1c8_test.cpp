@@ -7,7 +7,7 @@ struct CActiveFile {
 static int g_pre = 0;
 static void* g_freed = (void*)0;
 
-extern "C" void __fastcall CActiveFile_PreRead(CActiveFile* self) { g_pre++; }
+extern "C" void __fastcall CActiveFile_PreRead_0065e4d1(CActiveFile* self) { g_pre++; }
 extern "C" void __cdecl CActiveFile_Free(void* p) { g_freed = p; }
 
 void __fastcall OnReadFinished(CActiveFile* self);

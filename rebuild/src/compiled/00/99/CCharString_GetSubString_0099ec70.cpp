@@ -1,6 +1,6 @@
 #include <cstddef>
 
-extern "C" long g_charStringRefTrace; // 0x013bd800
+extern "C" long g_charStringRefTrace_013bd800; // 0x013bd800
 extern "C" char g_emptyCharStringData; // 0x0129aaf4 (empty-string storage byte)
 
 struct CCharStringData
@@ -30,7 +30,7 @@ CCharString* CCharString::GetSubString(CCharString* retVal, unsigned long start,
     CCharStringData* newStorage = 0;
     CCharString localTmp;
 
-    ++g_charStringRefTrace;
+    ++g_charStringRefTrace_013bd800;
 
     CCharStringData* storage = this->storage;
     localTmp.storage = newStorage;
@@ -53,7 +53,7 @@ CCharString* CCharString::GetSubString(CCharString* retVal, unsigned long start,
 skipAlloc:
 
     retVal->storage = 0;
-    ++g_charStringRefTrace;
+    ++g_charStringRefTrace_013bd800;
 
     if ((void*)&localTmp != (void*)retVal)
     {
@@ -69,7 +69,7 @@ skipAlloc:
     }
 
     localTmp.UnassignString();
-    --g_charStringRefTrace;
+    --g_charStringRefTrace_013bd800;
 
     return retVal;
 }

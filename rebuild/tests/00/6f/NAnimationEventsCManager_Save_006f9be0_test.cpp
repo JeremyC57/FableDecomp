@@ -26,10 +26,10 @@ struct CWideString {
 };
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);   // 0x0099BF30
 CWideString __fastcall GetDataDirectory();          // 0x009A76A0 (name descriptive)
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                       // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 struct CAFile : CBase {
 };

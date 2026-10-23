@@ -39,7 +39,7 @@ struct CThing {
 };
 
 struct CTCVillage {
-    bool IsCookTime();                                  // 0x00658B20
+    bool IsCookTime_00658b20();                                  // 0x00658B20
 };
 
 struct CTCVillager;
@@ -71,7 +71,7 @@ bool CAIStateGroup_WorkBase::IsInWorkHours()
     if (PBrain->Creature->GetInterface(&pComponent, 0x23)) {
         CTCVillage* pOwner = GFGetPVillageInterface(pComponent);
         if (pOwner != 0) {
-            if (pOwner->IsCookTime())
+            if (pOwner->IsCookTime_00658b20())
                 return true;
         }
     }

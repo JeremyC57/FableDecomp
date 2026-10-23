@@ -31,7 +31,7 @@ struct CTCBase_Retail { int x; };
 struct CInterfaceMap_Retail {
     struct SEntry { long type; CTCBase_Retail* component; };
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
+    SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 struct CScriptThing;
 struct CThing_Retail {

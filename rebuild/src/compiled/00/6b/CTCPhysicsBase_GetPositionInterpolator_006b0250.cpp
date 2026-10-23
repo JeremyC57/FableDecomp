@@ -20,11 +20,11 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     __forceinline C3DVector Interpolate(const C3DVector& to, float t) const { return (to - *this) * t + *this; }
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                        // 0x0099A2D0
     ~CBase();                                       // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct C3DPositionInterpolator : CBase {            // 0x1c bytes
     C3DVector StartPosition;                        // +0x04
     C3DVector EndPosition;                          // +0x10

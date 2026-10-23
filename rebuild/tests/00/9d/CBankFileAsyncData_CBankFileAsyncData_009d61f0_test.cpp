@@ -76,7 +76,7 @@ __forceinline void GFFreeFromGlobalAllocator(void* block)
     GFLeaveAllocatorLock();
 }
 
-struct CHandleBasedMemoryPool { void Free(long handle); };   // 0x00A62ED0
+struct CHandleBasedMemoryPool { void Free_00a62ed0(long handle); };   // 0x00A62ED0
 class CThreadedFile {
 public:
     bool HasReadFinished(unsigned long readUID);   // 0x0098EC90
@@ -99,9 +99,9 @@ struct CBankFileAsync {
     CThreadedFile* GetThreadedFile() const { return ThreadedFile; }
 };
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual ~CBase();                              // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CThreadedFileRequest {                      // the second base (vtable 0x0129B860): the file thread's callback interface
     virtual ~CThreadedFileRequest() { }
 };
@@ -140,7 +140,7 @@ CBankFileAsyncData::~CBankFileAsyncData()
             }
         }
         if (MemoryPool && MemoryHandle != -1) {
-            MemoryPool->Free(MemoryHandle);
+            MemoryPool->Free_00a62ed0(MemoryHandle);
             MemoryHandle = -1;
             Buffer = 0;
             Data = 0;
@@ -167,7 +167,7 @@ void __cdecl GFLeaveAllocatorLock() { note("leave"); }
 static CMemoryAllocator g_allocatorObject;
 CMemoryAllocator* g_pGlobalAllocator_013caa90 = &g_allocatorObject;
 bool g_bDestroyAllocatorWhenEmpty_013caa94 = false;
-void CHandleBasedMemoryPool::Free(long handle) { char b[32]; _snprintf(b, sizeof b, "poolfree%ld", handle); note(b); }
+void CHandleBasedMemoryPool::Free_00a62ed0(long handle) { char b[32]; _snprintf(b, sizeof b, "poolfree%ld", handle); note(b); }
 static int g_readsLeft = 0;
 bool CThreadedFile::HasReadFinished(unsigned long readUID) { char b[32]; _snprintf(b, sizeof b, "finished?%lu", readUID); note(b); return g_readsLeft-- <= 0; }
 static CBankFileAsyncData* g_erased[4]; static int g_erases = 0;

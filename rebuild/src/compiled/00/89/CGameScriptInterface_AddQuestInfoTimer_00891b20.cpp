@@ -6,7 +6,7 @@ namespace NPlayerGui
 class CDrawQuestInfo
 {
 public:
-    long AddCounter(
+    long AddCounter_0064f93f(
         const CTimer& timer,
         const CCharString& labelText,
         float fadeTime);
@@ -37,5 +37,5 @@ long CGameScriptInterface::AddQuestInfoTimer(
     float fadeTime) const
 {
     return CGSIAddQuestInfoTimer_Gui->m_QuestInfo
-        ->AddCounter(timer, labelText, fadeTime);
+        ->AddCounter_0064f93f(timer, labelText, fadeTime);
 }

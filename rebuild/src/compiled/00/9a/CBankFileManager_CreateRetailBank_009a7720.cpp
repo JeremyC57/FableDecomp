@@ -10,11 +10,11 @@
 // body); the stream is a 0xc-byte local over the file; Open/Write are direct calls on the locals.
 // Layout: retail CBankFileManager = Ego_r.pdb with 12-byte maps and a 4-byte list: Banks +0x04, RetailBanks +0x10,
 // UsingRetailBanks +0x14, BankAliasMap +0x18, BasePath +0x24, CreatedRetailBanks +0x28, FileVersion +0x34.
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2F0
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CWideString {
     void* PStringData;
     CWideString();                                 // 0x0099AED0

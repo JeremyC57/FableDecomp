@@ -6,7 +6,7 @@ extern "C" void __cdecl FreeIt(void* p);
 struct CActiveFile
 {
     void* m_ptr;
-    void Helper();
+    void Helper_009f89b0();
     void OnReadFinished();
 };
 
@@ -14,7 +14,7 @@ static int g_helperCalls = 0;
 static int g_freeCalls = 0;
 static void* g_freed = 0;
 
-void CActiveFile::Helper()
+void CActiveFile::Helper_009f89b0()
 {
     ++g_helperCalls;
 }
@@ -27,7 +27,7 @@ extern "C" void __cdecl FreeIt(void* p)
 
 void CActiveFile::OnReadFinished()
 {
-    Helper();
+    Helper_009f89b0();
     void* p = m_ptr;
     if (p)
         FreeIt(p);

@@ -34,11 +34,11 @@ struct CCountedPointerRetail {                 // {object, count block}
     CCountedPointerRetail() : m_pObject(0), m_pCount(0) {}
 };
 
-struct CBaseIntelligentPointer {               // the intelligent-pointer target root (8 bytes)
+namespace N_0099a380 { struct CBaseIntelligentPointer {               // the intelligent-pointer target root (8 bytes)
     virtual void v00();
     void* m_pReferences;                       // +0x04
     CBaseIntelligentPointer();                 // 0x0099A380
-};
+}; } using N_0099a380::CBaseIntelligentPointer;
 
 struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
     virtual void v00();

@@ -13,10 +13,10 @@
 // base destructor as a plain call (the frame word for the tag is popped after it); `ret`.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 

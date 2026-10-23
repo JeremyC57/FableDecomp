@@ -58,7 +58,7 @@ public:
     CTCGraphicAppearance* m_pGraphicAppearance; // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
-    CPlayer* GetPlayer();                       // 0x004C7A30
+    CPlayer* GetPlayer_004c7a30();                       // 0x004C7A30
     void SetAlpha(unsigned char alpha)
     {
         if (m_pGraphicAppearance)
@@ -169,7 +169,7 @@ void CTCAssassinRush::CleanUpEffects()
     }
     ItemAlphaList.clear();
     if (!(parent->m_stateFlags & 1) && parent->m_state == 2)
-        parent->GetPlayer()->EndSpecialMoveMode();
+        parent->GetPlayer_004c7a30()->EndSpecialMoveMode();
 }
 // ---- stubs ----
 static CThing g_parent, g_itemA, g_itemB;
@@ -184,7 +184,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 void CTCGraphicAppearance::SetAlpha(unsigned char alpha) { char b[48]; _snprintf(b, sizeof b, "alpha(%s,%d)", this == &g_parentApp ? "parent" : "item", (int)alpha); note(b); }
 void CPlayer::EndSpecialMoveMode() { note("endmove"); }
-CPlayer* CThing::GetPlayer() { note("player"); return &g_player; }
+CPlayer* CThing::GetPlayer_004c7a30() { note("player"); return &g_player; }
 void CTCCreatureModeManager::RemoveMode(unsigned long mode) { char b[32]; _snprintf(b, sizeof b, "remove(%lx)", mode); note(b); }
 CBaseIntelligentPointer::~CBaseIntelligentPointer() { char b[48]; _snprintf(b, sizeof b, "dtor(%s)", m_pItem ? ThingName(m_pItem) : "null"); note(b); }
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }

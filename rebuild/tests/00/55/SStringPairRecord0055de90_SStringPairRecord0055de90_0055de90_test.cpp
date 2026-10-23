@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for SStringPairRecord_0055de90::SStringPairRecord_0055de90 @ 0x0055DE90
 static int g_order = 0;
-class CCharString {
+namespace N_0099aed0 { class CCharString {
 public:
     CCharString() : m_pStringData(0), m_order(++g_order) {}
     void* m_pStringData;
     int m_order;
-};
+}; } using N_0099aed0::CCharString;
 struct SStringPairRecord_0055de90 {
     CCharString m_first;
     long m_index;

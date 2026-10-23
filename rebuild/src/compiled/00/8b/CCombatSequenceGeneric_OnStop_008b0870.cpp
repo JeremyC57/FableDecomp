@@ -76,7 +76,7 @@ struct CRetailTree_longkey {                      // std::map<long, OnStop modul
     struct iterator { node* current; iterator(node* n) : current(n) { } };
     node*         head;                        // +0 (end() node)
     unsigned long size;                        // +4
-    iterator find(const long& key);            // 0x008B24A0
+    iterator find_008b24a0(const long& key);            // 0x008B24A0
 };
 
 extern CRetailTree_longkey g_OnStopModules;                 // 0x013BAFC0
@@ -89,7 +89,7 @@ void CCombatSequenceGeneric_Retail::OnStop()
 {
     const CCombatSequenceDef_Retail* def = Def_Object;
     if (def->OnStopType != 0) {
-        CRetailTree_longkey::iterator it = g_OnStopModules.find(def->OnStopType);
+        CRetailTree_longkey::iterator it = g_OnStopModules.find_008b24a0(def->OnStopType);
         if (it.current != g_OnStopModules.head && it.current->value)
             it.current->value(Creature, Target);
     }

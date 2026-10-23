@@ -4,12 +4,12 @@ class CStopWatch;
 
 namespace NHeroInformationScreens
 {
-class CBase
+namespace N_0099a2d0 { class CBase
 {
 public:
     CBase();
     virtual ~CBase();
-};
+}; } using N_0099a2d0::CBase;
 }
 
 class CScriptThing : public NHeroInformationScreens::CBase

@@ -38,7 +38,7 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;                                  // +0x00
     SEntry* last;                                   // +0x04
-    SEntry* LowerBound(const long* type);           // 0x004365B0
+    SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
 __forceinline float FastInvSqrt(float lengthSquared)
@@ -178,7 +178,7 @@ CBaseIntelligentPointer::CBaseIntelligentPointer() : m_pItem(0) {}
 CBaseIntelligentPointer::~CBaseIntelligentPointer() {}
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 void CBaseIntelligentPointer::SetPItem(CThing* item) { m_pItem = item; }
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 {
     SEntry* it = first;
     while (it != last && it->type < *type) ++it;

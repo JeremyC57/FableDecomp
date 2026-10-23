@@ -43,7 +43,7 @@ public:
         return false;
     }
 };
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x00436380
+bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing);   // 0x00436380
 
 struct CPlayer {
     CThing* GetCharacterThing();                // 0x00487DC0
@@ -71,7 +71,7 @@ void CTCVillage::SetEnemyToHeroStatus()
     ParentThing->GetInterface(&enemy, 73);
     if (StanceToHero == 1) {
         CThing* hero = GetPlayerManager()->GetCurrentPlayer()->GetCharacterThing();
-        if (IS_THING_ALIVE(hero))
+        if (IS_THING_ALIVE_00436380(hero))
             enemy->AddEnemyThing(hero);
     } else {
         enemy->RemoveEnemyThing(GetPlayerManager()->GetCurrentPlayer()->GetCharacterThing());

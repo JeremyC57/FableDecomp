@@ -35,7 +35,7 @@ public:
 }
 struct CThing {
 };
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBD0 (CThing*)
+template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
 struct CThingCreatureBase : CThing {
     unsigned char _pad_0x00[0x90];
     signed char   PlayerNumber;                    // +0x90 (as in the landed CTCInGameMenu::CloseInGameMenuViaGameEvent 0x0047D21C)
@@ -135,7 +135,7 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
         } else if (IsEventGameAction(2, event)) {
             PInGameMenu->CloseInGameMenuViaGameEvent();
             CThingCreatureBase* const& hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroCreature();
-            if (IS_THING_ALIVE<CThing*>(hero)) {
+            if (IS_THING_ALIVE_0043dbd0<CThing*>(hero)) {
                 CGameEvent gameEvent(0x1a);
                 gameEvent.Player = hero->PlayerNumber;
                 gameEvent.AddLong(4);

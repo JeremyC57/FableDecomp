@@ -34,7 +34,7 @@ struct CAnimationBank {
     C3DAnimationInfo* GetAnimation(long animation);   // 0x00A242C0 (`m_pAnimations[animation]`; the manifest label "GetAbilityLevel" is propagated)
 };
 struct C3DAnimationStats {
-    void GetEmbeddedEventNames(void* names) const; // 0x00A50BF0
+    void GetEmbeddedEventNames_00a50bf0(void* names) const; // 0x00A50BF0
 };
 struct CAnimationEventQuery_006f91e0 {
     void*           __vftable;                     // +0x00
@@ -45,5 +45,5 @@ struct CAnimationEventQuery_006f91e0 {
 void CAnimationEventQuery_006f91e0::GetEmbeddedEventNames(long animation, void* names)
 {
     CCountedPointer_C3DAnimationStats stats = m_pBank->GetAnimation(animation)->GetAnimationStats();
-    stats->GetEmbeddedEventNames(names);
+    stats->GetEmbeddedEventNames_00a50bf0(names);
 }

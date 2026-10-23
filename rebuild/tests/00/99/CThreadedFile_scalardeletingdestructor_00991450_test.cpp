@@ -7,7 +7,7 @@ struct CThreadedFileManager { void RemovePendingRequests(CThreadedFile*) { ++g_p
 static CThreadedFileManager g_ThreadedFileManager;
 static int CloseHandle(void*) { ++g_closed; return 1; }
 struct CWideString { void* m_pData; ~CWideString() { g_order[g_n++] = 2; } };
-struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } };
+namespace N_0099a300 { struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } }; } using N_0099a300::CBase;
 struct CThreadedFile : CBase {
     long DeviceID; void* FileHandle; CWideString Filename; unsigned long Length, PhysicalSortKey;
     bool OpenedForWrite, OpenFlag;

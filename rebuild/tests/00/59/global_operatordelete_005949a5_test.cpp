@@ -7,7 +7,7 @@ static void *g_seen_heap;
 static int   g_seen_flags;
 static int   g_call_count;
 
-static void __stdcall inner_free(void *block, void *heap, int flags)
+static void __stdcall inner_free_00594706(void *block, void *heap, int flags)
 {
     g_seen_block = block;
     g_seen_heap  = heap;
@@ -17,7 +17,7 @@ static void __stdcall inner_free(void *block, void *heap, int flags)
 
 static void __stdcall operator_delete(void *block)
 {
-    inner_free(block, 0, 0);
+    inner_free_00594706(block, 0, 0);
 }
 
 int main(void)

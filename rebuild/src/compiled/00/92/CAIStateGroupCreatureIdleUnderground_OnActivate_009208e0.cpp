@@ -22,11 +22,11 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CCreatureActionBase {
+namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
     unsigned char _body[0x110];                 // +0x04..+0x113
     ~CCreatureActionBase();                     // 0x0062E900
-};
+}; } using N_0062e900::CCreatureActionBase;
 
 struct CCreatureAction_GoUnderground : CCreatureActionBase {
     CCreatureAction_GoUnderground(CThingCreatureBase* creature);   // 0x008B8110

@@ -9,7 +9,7 @@
 // default built in a dword stack temporary. The second argument is not used by this body. The member name is taken from the
 // persisted key; the member type is any 4-byte scalar (`long` models it). One of 16 bodies.
 struct CPersistContext {
-    void Transfer(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x004106F0
+    void Transfer_004106f0(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x004106F0
 };
 
 struct CTCRandomAppearanceMorph {
@@ -22,5 +22,5 @@ struct CTCRandomAppearanceMorph {
 void CTCRandomAppearanceMorph::vfunc_1(CPersistContext* context, long unused)
 {
     long defaultValue = 0;
-    context->Transfer("Seed", m_Seed, defaultValue);
+    context->Transfer_004106f0("Seed", m_Seed, defaultValue);
 }

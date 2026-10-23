@@ -42,7 +42,7 @@ struct CRetailVector_dword {                    // STLport vector<const CAnimati
     long* end;
     CRetailVector_dword() : first(0), last(0), end(0) { }
     ~CRetailVector_dword() { if (first) free(first); }
-    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x005E1420
+    void InsertGrow_005e1420(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x005E1420
     void push_back(const long& value)
     {
         if (last != end) {
@@ -50,7 +50,7 @@ struct CRetailVector_dword {                    // STLport vector<const CAnimati
             ++last;
         }
         else
-            InsertGrow(last, value, SScalarTag(), 1, true);
+            InsertGrow_005e1420(last, value, SScalarTag(), 1, true);
     }
     const long& operator[](long n) const { return *(first + n); }
 };
@@ -58,7 +58,7 @@ void* GrowVectorStorage_s7(void* vector, unsigned long count);
 #pragma auto_inline(off)
 // Same-TU body of the vector growth template (InsertGrow, instantiated in retail's TU): reads the value through its const
 // reference into the new storage and never touches the empty tag (the landed push_back idiom).
-__declspec(noinline) void CRetailVector_dword::InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail)
+__declspec(noinline) void CRetailVector_dword::InsertGrow_005e1420(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail)
 {
     long* p = (long*)GrowVectorStorage_s7(this, count);
     if (p)

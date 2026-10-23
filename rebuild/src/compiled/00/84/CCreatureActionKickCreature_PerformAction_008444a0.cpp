@@ -32,7 +32,7 @@ struct CThing {
     CThingPlacement* GetPlacement() const { return m_pPlacement; }
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;   // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
     void OnKicked();                        // 0x00661EE0 (name unconfirmed)
     bool IsKickable();                      // 0x00838A30 (name unconfirmed)
 };
@@ -65,7 +65,7 @@ void CCreatureAction_KickCreature::PerformAction()
 {
     if (IS_THING_ALIVE(PTargetCreature)) {
         CThing* target = PTargetCreature.GetPItem();
-        C3DVector delta = target->GetPosition() - PCreature.GetPItem()->GetPosition();
+        C3DVector delta = target->GetPosition_006a4d00() - PCreature.GetPItem()->GetPosition_006a4d00();
         float creatureRadius = PCreature.GetPItem()->GetPlacement()->Radius;
         float targetRadius = PTargetCreature.GetPItem()->GetPlacement()->Radius;
         if (delta.GetLength() < creatureRadius + targetRadius + 1.5f) {

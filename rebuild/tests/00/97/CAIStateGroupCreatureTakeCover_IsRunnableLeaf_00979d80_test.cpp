@@ -40,7 +40,7 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;                                  // +0x00
     SEntry* last;                                   // +0x04
-    SEntry* LowerBound(const long* type);           // 0x004365B0
+    SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
 struct CThing
@@ -199,7 +199,7 @@ CBaseIntelligentPointer::~CBaseIntelligentPointer() {}
 void CBaseIntelligentPointer::v00() {}
 template<class T> void CIntelligentPointer<T>::v00() {}
 CThing* CBaseIntelligentPointer::GetPItem() const { ++g_getitem_calls; event(2); return m_pItem; }
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* key) {
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* key) const {
     ++g_lower_calls; event((*key == 0x46) ? 4 : 6);
     SEntry* p = first; while (p != last && p->type < *key) ++p; return p;
 }

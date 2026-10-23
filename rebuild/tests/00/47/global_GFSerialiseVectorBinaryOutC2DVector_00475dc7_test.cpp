@@ -15,11 +15,11 @@ struct GFSerialiser {
     int seenCount;
     int elemSum;
     void WriteCount(int count);
-    void WriteElem(C2DVector* elem);
+    void WriteElem_00993f90(C2DVector* elem);
 };
 
 void GFSerialiser::WriteCount(int count) { seenCount = count; }
-void GFSerialiser::WriteElem(C2DVector* elem) { elemSum += (int)elem->x + (int)elem->y; }
+void GFSerialiser::WriteElem_00993f90(C2DVector* elem) { elemSum += (int)elem->x + (int)elem->y; }
 
 void __fastcall GFSerialiseVectorBinaryOut_C2DVector(GFSerialiser* thisptr, void* vec);
 

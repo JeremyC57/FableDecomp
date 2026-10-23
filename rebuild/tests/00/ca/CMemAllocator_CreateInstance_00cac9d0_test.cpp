@@ -1,4 +1,4 @@
-// CMemAllocator::CreateInstance -- allocate DirectShow memory allocator, initialize lock/free-list/semaphore and buffer; retail00cac9d0 212bytes. Propagated engine label rejected: CUnknown00cacc80, criticalsection import0143fee4, CreateSemaphoreA0143fe54, vtables012bf83c/012bf810 match allocator destructor00caa410. This is no-RTTI strmbase; CMemAllocator owner inferred from allocator methods and buffer+60. No shared class header exists.
+// CMemAllocator::CreateInstance -- allocate DirectShow memory allocator, initialize lock/free-list/semaphore and buffer; retail00cac9d0 212bytes. Propagated engine label rejected: CUnknown00cacc80, criticalsection import0143fee4, CreateSemaphoreW0143fe54, vtables012bf83c/012bf810 match allocator destructor00caa410. This is no-RTTI strmbase; CMemAllocator owner inferred from allocator methods and buffer+60. No shared class header exists.
 // Flags: /EHsc
 #ifdef _MSC_VER
 #else
@@ -12,7 +12,7 @@ void* __cdecl operator new(size_t);
 struct IUnknown;
 struct CRITICAL_SECTION_ {void* DebugInfo;long LockCount,RecursionCount;void* OwningThread;void* LockSemaphore;unsigned long SpinCount;};
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(CRITICAL_SECTION_*); // import0143fee4
-extern "C" __declspec(dllimport) void* __stdcall CreateSemaphoreA(void*,long,long,const char*); // import0143fe54
+extern "C" __declspec(dllimport) void* __stdcall CreateSemaphoreW(void*,long,long,const unsigned short*); // import 0143fe54 = KERNEL32 CreateSemaphoreW (Fable.exe import table)
 struct __declspec(novtable) INonDelegatingUnknown {
  virtual long __stdcall NonDelegatingQueryInterface(const void*,void**)=0;
  virtual unsigned long __stdcall NonDelegatingAddRef()=0;
@@ -43,7 +43,7 @@ struct __declspec(novtable) CBaseAllocatorNative:CUnknownAllocator,IMemAllocator
  void* m_hSem;long m_lWaiting,m_lSize,m_lCount,m_lAllocated,m_lAlignment,m_lPrefix;
  long m_bChanged,m_bCommitted,m_bDecommitInProgress;
  void* m_pNotify;long m_fEnableReleaseCallback;
- __forceinline CBaseAllocatorNative(IUnknown* outer,long* result):CUnknownAllocator(0,outer),m_lFree(),m_hSem(0),m_lWaiting(0),m_lSize(0),m_lCount(0),m_lAllocated(0),m_lAlignment(0),m_lPrefix(0),m_bChanged(0),m_bCommitted(0),m_bDecommitInProgress(0),m_pNotify(0),m_fEnableReleaseCallback(1){m_hSem=CreateSemaphoreA(0,0,0x7fffffff,0);if(!m_hSem)*result=(long)0x8007000e;}
+ __forceinline CBaseAllocatorNative(IUnknown* outer,long* result):CUnknownAllocator(0,outer),m_lFree(),m_hSem(0),m_lWaiting(0),m_lSize(0),m_lCount(0),m_lAllocated(0),m_lAlignment(0),m_lPrefix(0),m_bChanged(0),m_bCommitted(0),m_bDecommitInProgress(0),m_pNotify(0),m_fEnableReleaseCallback(1){m_hSem=CreateSemaphoreW(0,0,0x7fffffff,0);if(!m_hSem)*result=(long)0x8007000e;}
 };
 struct CMemAllocatorNative:CBaseAllocatorNative {
  void* m_pBuffer;
@@ -79,7 +79,7 @@ extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(CRITICAL_S
 #else
 static int lockCalls=0,semaphoreCalls=0;
 extern "C" void InitializeCriticalSection(CRITICAL_SECTION_* p){++lockCalls;check(p!=0);}
-extern "C" void* CreateSemaphoreA(void* security,long initial,long maximum,const char* name){++semaphoreCalls;check(!security && initial==0 && maximum==0x7fffffff && !name);return failSemaphore?0:reinterpret_cast<void*>(0x1234);}
+extern "C" void* CreateSemaphoreW(void* security,long initial,long maximum,const unsigned short* name){++semaphoreCalls;check(!security && initial==0 && maximum==0x7fffffff && !name);return failSemaphore?0:reinterpret_cast<void*>(0x1234);}
 #endif
 CMemAllocatorNative::~CMemAllocatorNative(){
 #ifdef _MSC_VER

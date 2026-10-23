@@ -64,7 +64,7 @@ struct CInterfaceMap_Retail {                       // CVectorMap<ETCInterfaceTy
     struct SEntry { long type; CTCBase_Retail* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);           // 0x004365B0 / 0x0040F020 (two copies of the same body)
+    SEntry* LowerBound(const long* type) const;           // 0x004365B0 / 0x0040F020 (two copies of the same body)
 };
 struct CThing_Retail {
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();

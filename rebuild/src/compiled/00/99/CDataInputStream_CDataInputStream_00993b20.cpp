@@ -6,11 +6,11 @@
 // Layout: engine/CDataInputStream.h is a flat data-only header; the ctor needs the polymorphic hierarchy
 // (CBaseClass <- CDataStream <- CDataInputStream, as 0x00994780), so the classes are modelled locally with the PDB
 // data members (Ego_r.pdb, 24 bytes).
-class CBaseClass {
+namespace N_0099a2f0 { class CBaseClass {
 public:
     CBaseClass();                                        // 0x0099A2F0 (folded body)
     virtual ~CBaseClass();
-};
+}; } using N_0099a2f0::CBaseClass;
 class CDataStream : public CBaseClass {
 public:
     virtual ~CDataStream() {}

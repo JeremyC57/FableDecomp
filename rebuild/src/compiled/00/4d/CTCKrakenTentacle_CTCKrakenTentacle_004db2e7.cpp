@@ -26,10 +26,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     virtual void v00();
     CIntelligentPointerThing() { }
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
+namespace N_004a96f0 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item);   // 0x004A96F0
-};
+}; } using N_004a96f0::CIntelligentPointerConstThing;
 struct CKrakenTentacleDef;
 template <class T> struct CDefPointer {
     const T* Object;

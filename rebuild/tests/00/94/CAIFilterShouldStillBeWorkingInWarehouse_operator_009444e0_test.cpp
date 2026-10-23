@@ -1,7 +1,7 @@
 // Behaviour test for 0x009444E0: warehouse-work filter predicate.
 #include <cstdio>
 struct CCrateThing { unsigned char m_bCarried; bool accepts; bool CanBePutIn(void* p) { return accepts && p != 0; } };
-struct CTCVillage { bool task, cook; bool IsThereACratePutDownTask() { return task; } bool IsCookTime() { return cook; } };
+struct CTCVillage { bool task, cook; bool IsThereACratePutDownTask() { return task; } bool IsCookTime_00658b20() { return cook; } };
 struct CIP { CCrateThing* p; CCrateThing* GetPItem() const { return p; } };
 struct CFilter {
     CTCVillage* m_pVillage; CIP m_pCrate; CIP m_pWarehouse;
@@ -10,7 +10,7 @@ struct CFilter {
         if (m_pCrate.GetPItem() != 0 && m_pWarehouse.GetPItem() != 0) {
             if (!m_pCrate.GetPItem()->m_bCarried || m_pVillage->IsThereACratePutDownTask()) {
                 if (m_pCrate.GetPItem()->CanBePutIn(m_pWarehouse.GetPItem())) {
-                    if (m_pVillage == 0 || m_pVillage->IsCookTime())
+                    if (m_pVillage == 0 || m_pVillage->IsCookTime_00658b20())
                         return true;
                 }
             }

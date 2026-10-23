@@ -129,7 +129,7 @@ struct CAddFreeSeat {                           // functor: appends free seats t
     CThingVector* m_pSeats;
     CAddFreeSeat(CThingVector* seats) : m_pSeats(seats) { }
 };
-CAddFreeSeat __fastcall ForEachSeat(CSeatListIterator first, CSeatListIterator last, CAddFreeSeat f);   // 0x00938E90
+CAddFreeSeat __fastcall ForEachSeat_00943990(CSeatListIterator first, CSeatListIterator last, CAddFreeSeat f);   // 0x00938E90
 
 struct CTCBuildingSeats {                       // interface 0x21
     unsigned char _pad[0x8];
@@ -157,7 +157,7 @@ CThing* CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding(CThing* building)
     if (building->GetInterface(&comp, 0x21)) {
         CSeatListNode* head = comp->m_seats.head;
         CThingVector seats;
-        ForEachSeat(CSeatListIterator(head->next), CSeatListIterator(head), CAddFreeSeat(&seats));
+        ForEachSeat_00943990(CSeatListIterator(head->next), CSeatListIterator(head), CAddFreeSeat(&seats));
         if (seats.m_first != seats.m_last) {
             long count = seats.size();
             CThing* seat = seats.m_first[GetRandom(count)];

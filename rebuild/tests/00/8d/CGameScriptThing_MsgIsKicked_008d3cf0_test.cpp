@@ -350,7 +350,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 #undef CThing
 struct ComponentEntry{long Type;void* Component;};
-struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //004365B0
+struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&) const;}; //004365B0
 // Quarantined CThing donor has Components+48, retail has+44; lifecycle+91 confirmed by native.
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x45];unsigned char LifeFlags;};
 struct IntelligentInfo{CThingNative* Object;long References;};
@@ -382,7 +382,7 @@ bool CGameScriptThingMethods::MsgIsKicked()const{
 static CThingNative* Current;static const PointerView* Expected;static int Gets,Queries,Lookups;static long ExpectedLast,ExpectedCurrent;static bool QueryResult;
 QuestManagerNative* QuestManager;
 CThingNative* PointerView::GetPItem()const{if(this!=Expected)return 0;++Gets;return Current;}
-ComponentEntry* ComponentMap::LowerBound(const long&key){++Lookups;if(key!=66)return Finish;return Start;}
+ComponentEntry* ComponentMap::LowerBound(const long&key) const{++Lookups;if(key!=66)return Finish;return Start;}
 bool EntityEventsMethods::HasEvent(const Bind3&b){++Queries;return b.First->Type==41&&b.Second->Frame==ExpectedLast&&b.Third->Frame==ExpectedCurrent&&QueryResult;}
 #define CHECK(x) do{if(!(x)){printf("008d3cf0_TEST FAIL line %d\n",__LINE__);return 1;}}while(0)
 int main(){CGameScriptThingMethods self;memset(&self,0,sizeof self);CThingNative thing;memset(&thing,0,sizeof thing);Expected=reinterpret_cast<const PointerView*>(self.PThing);EntityEventsMethods events;ComponentEntry entries[2];entries[0].Type=66;entries[0].Component=&events;entries[1].Type=0x7fffffff;entries[1].Component=&events;thing.Components.Start=entries;thing.Components.Finish=entries+1;

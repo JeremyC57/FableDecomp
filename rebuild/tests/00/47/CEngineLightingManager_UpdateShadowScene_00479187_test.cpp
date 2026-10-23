@@ -12,9 +12,9 @@ extern "C" void __stdcall Profile_Enter(int marker) { (void)marker; g_prof++; }
 
 struct ShadowGuard {
     void* slot;
-    void Apply(void* a, void* b);
+    void Apply_004791c8(void* a, void* b);
 };
-void ShadowGuard::Apply(void* a, void* b) {
+void ShadowGuard::Apply_004791c8(void* a, void* b) {
     g_apply++; g_apply_this = this; g_apply_a = a; g_apply_b = b;
 }
 

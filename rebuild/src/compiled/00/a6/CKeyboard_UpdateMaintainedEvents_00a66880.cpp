@@ -1,6 +1,6 @@
-// CKeyboard::UpdateMaintainedEvents() -- walk the maintained-event list (+0x340c) and restamp every maintained event of kind 2 (GetType @ 0x00A03B40) with the current time: timeGetTime (import 0x0143FDFC, unsigned) scaled by 0.001f (0x01266300) into the event's +0x2c
+// CKeyboard::UpdateMaintainedEvents() -- walk the maintained-event list (+0x340c) and restamp every maintained event of kind 2 (GetType @ 0x00A03B40) with the current time: GetTickCount (import 0x0143FDFC, unsigned) scaled by 0.001f (0x01266300) into the event's +0x2c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A66880, length 96 bytes.
-// Callees: CInputEvent::GetType @ 0x00A03B40 (on the node's event at +0xc), timeGetTime through the import table (held in ebx across the loop).
+// Callees: CInputEvent::GetType @ 0x00A03B40 (on the node's event at +0xc), GetTickCount through the import table (held in ebx across the loop).
 // Shape: a one-word frame (`push ecx`) for the unsigned-to-float conversion (`fild` plus 2^32 when negative), `this` in edi, the node in esi, `fstp [esi+38h]`, `ret`.
 struct CInputEvent {                                // 0x34 bytes (PDB): the kind word at +0x28, the time at +0x2c
     unsigned char _body[0x28];
@@ -33,13 +33,13 @@ struct CKeyboard {                                 // retail layout: 256 stored 
     void AddMaintainedEventsToEventStore();
     void UpdateMaintainedEvents();
 };
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);   // import 0x0143FDFC
+extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount(void);   // import 0x0143FDFC = KERNEL32 GetTickCount (Fable.exe import table), not timeGetTime
 extern const float g_timeScale_01266300;           // 0x01266300 = 0.001f (milliseconds to seconds)
 
 void CKeyboard::UpdateMaintainedEvents()
 {
     for (SMaintainedEventNode* node = m_pMaintainedEvents->m_pNext; node != m_pMaintainedEvents; node = node->m_pNext) {
         if (node->m_value.m_event.GetType() == 2)
-            node->m_value.m_event.m_time = (float)timeGetTime() * g_timeScale_01266300;
+            node->m_value.m_event.m_time = (float)GetTickCount() * g_timeScale_01266300;
     }
 }

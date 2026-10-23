@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
 };
 #pragma pack(pop)
 
-bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004CC340
+bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& thing);   // 0x004CC340
 float __fastcall GetUpdateTimeForThing(CThing* thing, CWorld* world);   // 0x00787C62
 
 struct SHitThing {                                      // pair<CIntelligentPointer<CThing>, long>
@@ -65,7 +65,7 @@ void CTCTrapBase::FrameUpdate()
     CThing* thing = ParentThing;
     TrapOpener.Update(GetUpdateTimeForThing(thing, GetWorld()));
     for (SHitThing* it = HitThings.begin(); it != HitThings.end(); ) {
-        if (it->second != 0 && IS_THING_ALIVE(it->first)) {
+        if (it->second != 0 && IS_THING_ALIVE_004cc340(it->first)) {
             --it->second;
             ++it;
         } else {

@@ -4,7 +4,7 @@ struct CActiveFile { void* member0; };
 static int g_base_called = 0;
 static void* g_freed = (void*)0;
 
-extern "C" void __fastcall CActiveFile_base(CActiveFile* self) { g_base_called++; (void)self; }
+extern "C" void __fastcall CActiveFile_base_00742290(CActiveFile* self) { g_base_called++; (void)self; }
 extern "C" void free_func(void* p) { g_freed = p; }
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self);

@@ -9,10 +9,10 @@
 // through rtti-vtables.tsv) and returns `this`. One of 12 bodies of this shape.
 struct CThing;
 
-struct CTCCameraCollision {
+namespace N_008ec850 { struct CTCCameraCollision {
     virtual void v00();
     CTCCameraCollision(CThing* argument);            // 0x008EC850
-};
+}; } using N_008ec850::CTCCameraCollision;
 
 struct CTCDegradableBarrier : CTCCameraCollision {
     virtual void v00();

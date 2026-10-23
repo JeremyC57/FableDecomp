@@ -6,10 +6,10 @@
 // Unlike most state groups this TU inlines CAIStateGroupBase's constructor (the base vtable
 // store between the CBase call and the Name construction), so the base is modelled with an
 // inline constructor here.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();
     CBase();                                // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CCharString {
     char* m_pData;

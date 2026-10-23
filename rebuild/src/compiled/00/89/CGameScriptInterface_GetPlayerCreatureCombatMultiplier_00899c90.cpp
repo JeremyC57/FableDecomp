@@ -12,7 +12,7 @@ struct CVectorMap
     CKeyPair* m_pBegin; // 0x00
     CKeyPair* m_pEnd;   // 0x04
 
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
+    CKeyPair* LowerBound(const ETCInterfaceType* pKey) const;
 };
 
 struct CThingOverlay

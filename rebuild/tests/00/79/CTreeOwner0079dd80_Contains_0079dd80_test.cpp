@@ -3,14 +3,14 @@ struct CRetailTree_longkey {
     struct node { unsigned char flag; unsigned char _pad[3]; node* parent; node* left; node* right; long key; };
     struct iterator { node* current; iterator(node* n) : current(n) { } };
     node* head; unsigned long size;
-    iterator find(long key) {
+    iterator find_0079f210(long key) {
         node* result = head; node* n = head->parent;
         while (n) { if (!(n->key < key)) { result = n; n = n->left; } else n = n->right; }
         if (result == head || key < result->key) result = head;
         return iterator(result);
     }
 };
-struct CTreeOwner_0079dd80 { unsigned char _pad[0x48]; CRetailTree_longkey m_tree; long Contains(long key) { CRetailTree_longkey::iterator it = m_tree.find(key); return it.current != m_tree.head; } };
+struct CTreeOwner_0079dd80 { unsigned char _pad[0x48]; CRetailTree_longkey m_tree; long Contains(long key) { CRetailTree_longkey::iterator it = m_tree.find_0079f210(key); return it.current != m_tree.head; } };
 int main()
 {
     typedef CRetailTree_longkey::node node;

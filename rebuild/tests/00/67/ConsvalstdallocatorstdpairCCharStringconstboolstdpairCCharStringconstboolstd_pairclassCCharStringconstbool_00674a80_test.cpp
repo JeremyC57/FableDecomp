@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CCharString {
+namespace N_00673e10 { struct CCharString {
     char pad[13];
     CCharString() {}
     CCharString(const CCharString& o);
-};
+}; } using N_00673e10::CCharString;
 
 CCharString::CCharString(const CCharString& o) { memcpy(pad, o.pad, 13); }
 

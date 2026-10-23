@@ -6,13 +6,13 @@ struct CWorld { COpinionReactionManager* POpinionReactionManager; };
 struct COpinionPersonalityDef { float ToleranceToBeingHit; };
 struct CTCCreatureOpinionOfHero {
     CThing* ParentThing; float ToleranceToBeingHitOverride; COpinionPersonalityDef* PPersonalityDef; CWorld* World;
-    CWorld* GetWorld() const { return World; }
+    CWorld* GetWorld_00686a80() const { return World; }
     float GetToleranceToBeingHitRemaining() const
     {
         if (ToleranceToBeingHitOverride >= 0.0f)
             return ToleranceToBeingHitOverride;
         CThing* thing = ParentThing;
-        COpinionReactionManager* manager = GetWorld()->POpinionReactionManager;
+        COpinionReactionManager* manager = GetWorld_00686a80()->POpinionReactionManager;
         float tolerance = manager->GetToleranceToBeingHit(thing);
         if (PPersonalityDef)
             tolerance += PPersonalityDef->ToleranceToBeingHit;

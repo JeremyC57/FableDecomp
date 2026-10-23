@@ -5,9 +5,9 @@ struct CInputEvent { unsigned char _body[0x28]; long m_kind; float m_time; unsig
 struct CInputEventScanInfo { bool Started; long Index; };
 struct CMaintainedEvent { long m_0; CInputEvent m_event; };
 struct SNode { SNode* m_pNext; SNode* m_pPrev; CMaintainedEvent m_value; };
-static unsigned long g_time = 0; static unsigned long timeGetTime() { return g_time; } static const float g_timeScale = 0.001f;
+static unsigned long g_time = 0; static unsigned long GetTickCount() { return g_time; } static const float g_timeScale = 0.001f;
 struct CKeyboard { CInputEvent EventStore[256]; long NoStoredEvents; long NoEventScansRunning; SNode* m_pMaintainedEvents;
-    void UpdateMaintainedEvents() { for (SNode* node = m_pMaintainedEvents->m_pNext; node != m_pMaintainedEvents; node = node->m_pNext) { if (node->m_value.m_event.GetType() == 2) node->m_value.m_event.m_time = (float)timeGetTime() * g_timeScale; } } };
+    void UpdateMaintainedEvents() { for (SNode* node = m_pMaintainedEvents->m_pNext; node != m_pMaintainedEvents; node = node->m_pNext) { if (node->m_value.m_event.GetType() == 2) node->m_value.m_event.m_time = (float)GetTickCount() * g_timeScale; } } };
 
 int main()
 {

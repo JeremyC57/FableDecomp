@@ -12,11 +12,11 @@
 //   AllocationSource = 0); width/height default to D3DX_DEFAULT (-1) and the format to D3DFMT_UNKNOWN unless given; the
 //   device is a named local fetched after them (kept in esi, `this` spilled); the result is tested by two separate
 //   `return false` statements (`jl ; je`), each destroying the path; the reported size is a C2DExtentsI temporary copy.
-struct CWideString {
+namespace N_0099af00 { struct CWideString {
     void* PData;
     ~CWideString();                                         // 0x0099B510
     operator const unsigned short*() const;                 // 0x0099AF00
-};
+}; } using N_0099af00::CWideString;
 CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
 struct IDirect3DDevice9;
 struct CRenderSystem {

@@ -23,7 +23,7 @@ struct CRightHandedSet {
 struct CThing {
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
 };
 struct CBaseIntelligentPointer {
     void* __vftable;
@@ -66,7 +66,7 @@ bool CAIStateGroupTavernKeeperMethods::WalkToPoint(const C3DVector& point, const
     if (result != 2)
         return false;
     C3DVector forward = orientation.Forward;
-    C3DVector look = forward + GetCreature()->GetPosition();
+    C3DVector look = forward + GetCreature()->GetPosition_006a4d00();
     do {
         if (!IS_THING_ALIVE(Pub()) || !IS_THING_ALIVE(Bar()))
             return false;

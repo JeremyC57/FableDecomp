@@ -34,7 +34,7 @@ struct SItemMatcher {
     bool m_allowMultipleSlots;                   // +0x04
     SItemMatcher(long itemType, bool allowMultipleSlots) : m_itemType(itemType), m_allowMultipleSlots(allowMultipleSlots) { }
 };
-CItem_Methods* __fastcall FindMatchingItem(CItem_Methods* first, CItem_Methods* last, SItemMatcher matcher);   // 0x005C190B
+CItem_Methods* __fastcall FindMatchingItem_005c190b(CItem_Methods* first, CItem_Methods* last, SItemMatcher matcher);   // 0x005C190B
 
 struct CCategory_Retail {
     unsigned char PAssociatedThing[0x8];         // +0x00 CIntelligentPointer<CThing>
@@ -44,6 +44,6 @@ struct CCategory_Retail {
 
 void CCategory_Retail::RemoveItem(long itemType, long number)
 {
-    CItem_Methods* item = FindMatchingItem(ItemsInCategory.first, ItemsInCategory.last, SItemMatcher(itemType, false));
+    CItem_Methods* item = FindMatchingItem_005c190b(ItemsInCategory.first, ItemsInCategory.last, SItemMatcher(itemType, false));
     item->RemoveItem(number);
 }

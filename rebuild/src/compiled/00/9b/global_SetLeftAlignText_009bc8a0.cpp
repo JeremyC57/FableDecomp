@@ -6,9 +6,9 @@
 // Retail bytes:  mov byte ptr [0x13ca7eb], cl ; ret 
 // Tiny-body shape `SetGlobalByte`: a `__fastcall` setter of one global byte flag (the global's
 // address is a relocation). The manifest label is propagated; the name is descriptive.
-extern bool g_flag;                        // 0x013CA7EB
+extern bool g_flag_013ca7eb;                        // 0x013CA7EB
 
 void __fastcall SetLeftAlignText(bool value)
 {
-    g_flag = value;
+    g_flag_013ca7eb = value;
 }

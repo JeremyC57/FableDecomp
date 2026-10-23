@@ -7,10 +7,10 @@
 //   CShaderConstantRange = CBase vptr + Offset + Count (12 bytes); LightSize at +0x4c; TextureTransform[4] at +0xa4;
 //   ReservedPresets (CArray<CVertexShaderConstant>) at +0x140, whose inline ctor zeroes its three leading words.
 // Shape: the TextureTransform[4] member array is the inline `mov ebp,4 ; ... dec ebp ; jne` construction loop.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                       // 0x0099A2D0
     virtual ~CBase();
-};
+}; } using N_0099a2d0::CBase;
 
 struct CShaderConstantRange : CBase {
     long Offset;                                   // +0x04

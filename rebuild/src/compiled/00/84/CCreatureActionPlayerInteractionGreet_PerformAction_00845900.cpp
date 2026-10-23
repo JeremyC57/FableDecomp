@@ -23,7 +23,7 @@ struct CThing {
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -96,6 +96,6 @@ void CCreatureAction_PlayerInteractionGreet::PerformAction()
         CThing* pCreatureThing = PCreature.GetPItem();
         CThing* pCreature = PCreature.GetPItem();
         CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;
-        pManager->AddMessage(0x14, 0x10, &pCreature->GetPosition(), pCreatureThing, PTarget.GetPItem(), 0.0f, 0.0f, 0);
+        pManager->AddMessage(0x14, 0x10, &pCreature->GetPosition_006a4d00(), pCreatureThing, PTarget.GetPItem(), 0.0f, 0.0f, 0);
     }
 }

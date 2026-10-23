@@ -15,13 +15,13 @@ static CMainGameComponent g_component;
 static CMainGameComponent* g_pMainGameComponent = &g_component;
 struct CPlayerManager { long m_main; long GetMainPlayerNumber() { return m_main; } };
 static CPlayerManager g_players = { 1 };
-static CPlayerManager* GetPlayerManager() { return &g_players; }
+static CPlayerManager* GetPlayerManager_00686d50() { return &g_players; }
 enum { GAME_EVENT_CLOSE_INVENTORY = 0x1B };
 struct CTCInventoryBase_Retail {
     void AddCloseInventoryEvent()
     {
         CGameEvent event(GAME_EVENT_CLOSE_INVENTORY);
-        event.Player = (signed char)GetPlayerManager()->GetMainPlayerNumber();
+        event.Player = (signed char)GetPlayerManager_00686d50()->GetMainPlayerNumber();
         event.AddUBYTE(0);
         g_pMainGameComponent->AddGameEvent(event);
     }

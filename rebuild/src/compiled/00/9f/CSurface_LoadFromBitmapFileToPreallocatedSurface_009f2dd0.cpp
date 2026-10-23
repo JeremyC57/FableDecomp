@@ -12,12 +12,12 @@
 
 struct CCharString;
 
-class CWideString {
+namespace N_0099af00 { class CWideString {
 public:
     unsigned short* m_pData;                       // +0x00 (wchar_t is unsigned short under the era defaults)
     ~CWideString();                                // 0x0099B510
     operator const unsigned short*() const;        // 0x0099AF00
-};
+}; } using N_0099af00::CWideString;
 
 CWideString __fastcall ConvertPathToFullPath(const CCharString& path);   // 0x00999110
 

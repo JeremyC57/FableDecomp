@@ -16,11 +16,11 @@ struct CRightHandedSet {
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
-struct CBase {                                  // polymorphic root of the interpolators
+namespace N_0099a2d0 { struct CBase {                                  // polymorphic root of the interpolators
     virtual void v00();
     CBase();                                    // 0x0099A2D0
     ~CBase();                                   // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct C3DOrientationInterpolator : CBase {     // 0x34 bytes
     CRightHandedSet Start;                      // +0x04
     CRightHandedSet End;                        // +0x1c

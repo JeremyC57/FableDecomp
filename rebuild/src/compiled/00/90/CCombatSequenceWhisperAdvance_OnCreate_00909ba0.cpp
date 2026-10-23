@@ -49,8 +49,8 @@ struct CCountedPointer {
     void* object;
     SCountBlock* count;
     CCountedPointer() : object(0), count(0) { }
-    CCountedPointer& operator=(void* value) { Reset(value); return *this; }
-    void Reset(void* value);                // 0x00905FD0
+    CCountedPointer& operator=(void* value) { Reset_00905fd0(value); return *this; }
+    void Reset_00905fd0(void* value);                // 0x00905FD0
     ~CCountedPointer()
     {
         if (count) {

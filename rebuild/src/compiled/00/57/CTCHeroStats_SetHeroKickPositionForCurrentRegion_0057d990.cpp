@@ -32,7 +32,7 @@ struct CRegion {
 
 struct CWorldMap {
     long GetCurrentRegionNumber();                   // 0x004FB150
-    CRegion& GetRegion(long index);                  // 0x004FB490
+    CRegion& GetRegion_004fb490(long index);                  // 0x004FB490
 };
 
 struct CWorld {
@@ -76,7 +76,7 @@ void CTCHeroStats::SetHeroKickPositionForCurrentRegion(const C3DVector& position
 {
     CWorld* world = GetWorld();
     MirroredCriminalStatus& status =
-        OutstandingCrimes[world->GetWorldMap()->GetRegion(GetWorldMap()->GetCurrentRegionNumber()).Name];
+        OutstandingCrimes[world->GetWorldMap()->GetRegion_004fb490(GetWorldMap()->GetCurrentRegionNumber()).Name];
     status.EntrancePosX = position.X;
     status.EntrancePosY = position.Y;
     status.EntrancePosZ = position.Z;

@@ -65,10 +65,10 @@ struct CThingAICreature : CThingCreatureBase {
     enum { ThingListType = 0xb };                // PeekTypeList index
 };
 
-struct CThingFilter_AICreatureHasProperty {
+namespace N_006a80a0 { struct CThingFilter_AICreatureHasProperty {
     long Property;
     bool operator()(const CThing* thing) const;      // 0x006A80A0 (the HasTC bitset test)
-};
+}; } using N_006a80a0::CThingFilter_AICreatureHasProperty;
 
 struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)

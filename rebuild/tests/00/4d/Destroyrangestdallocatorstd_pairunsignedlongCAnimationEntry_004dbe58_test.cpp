@@ -14,14 +14,14 @@ struct pair_ulong_anim
 {
     unsigned long first;
     CAnimationEntry second;
-    void DestroyElement();
+    void DestroyElement_00a01c10();
 };
 
 struct allocator_pair {};
 
 int g_destroyed = 0;
 // provide the out-of-line element destructor thunk the loop calls
-void pair_ulong_anim::DestroyElement()
+void pair_ulong_anim::DestroyElement_00a01c10()
 {
     if (second.p) ++g_destroyed;
 }
@@ -33,7 +33,7 @@ void __fastcall Destroy_range_pair_CAnimationEntry(pair_ulong_anim* first,
     (void)al;
     while (first != last)
     {
-        first->DestroyElement();
+        first->DestroyElement_00a01c10();
         ++first;
     }
 }

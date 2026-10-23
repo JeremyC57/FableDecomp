@@ -20,7 +20,7 @@ struct Sink {
 
 struct Local {
     unsigned char flag;          // [ebp-4] byte, set to 0
-    void Fill(int a, void* b);   // __fastcall, ecx=&local, two dword args
+    void Fill_00405940(int a, void* b);   // __fastcall, ecx=&local, two dword args
 };
 
 class CEngineLightingManager {
@@ -42,7 +42,7 @@ void CEngineLightingManager::UpdateShadowScene(unsigned char* p)
     h.flag = 0;
     switch (this->mode) {
     case 2:
-        h.Fill(this->obj24, p);
+        h.Fill_00405940(this->obj24, p);
         break;
     case 3:
         this->sink28->Take(*p);

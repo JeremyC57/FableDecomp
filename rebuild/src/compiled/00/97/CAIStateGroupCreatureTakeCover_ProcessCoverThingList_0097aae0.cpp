@@ -40,7 +40,7 @@ struct CCoverThingCompare {                         // the sort predicate: origi
     CCoverThingCompare(const CCoverThingCompare& other) : Origin(other.Origin), Direction(other.Direction) { }
 };
 
-void __fastcall SortCoverThings(CThing** first, CThing** last, CCoverThingCompare compare);   // 0x0097B660 std::sort
+void __fastcall SortCoverThings_0097b660(CThing** first, CThing** last, CCoverThingCompare compare);   // 0x0097B660 std::sort
 
 struct CThingVector {                               // std::vector<CThing*> {first, last, end of storage}
     CThing** m_pFirst;
@@ -85,5 +85,5 @@ void CAIStateGroup_CreatureTakeCover::ProcessCoverThingList(CThingVector& coverT
     const C3DVector* creaturePos = creature->GetPosition();
     const C3DVector* threatPos = threat->GetPosition();
     C3DVector direction = *threatPos - *creaturePos;
-    SortCoverThings(coverThings.begin(), coverThings.end(), CCoverThingCompare(*PBrain->Creature->GetPosition(), direction));
+    SortCoverThings_0097b660(coverThings.begin(), coverThings.end(), CCoverThingCompare(*PBrain->Creature->GetPosition(), direction));
 }

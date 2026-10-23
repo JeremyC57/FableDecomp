@@ -25,7 +25,7 @@ struct pair_ulong_anim
 {
     unsigned long first;
     CAnimationEntry second;
-    void DestroyElement();   // __fastcall, defined elsewhere
+    void DestroyElement_00a01c10();   // __fastcall, defined elsewhere
 };
 
 struct allocator_pair {};
@@ -38,7 +38,7 @@ void __fastcall Destroy_range_pair_CAnimationEntry(pair_ulong_anim* first,
     (void)al;
     while (first != last)
     {
-        first->DestroyElement();
+        first->DestroyElement_00a01c10();
         ++first;
     }
 }

@@ -2,7 +2,7 @@
 // callees; checks the emitter guards and ClearAttachments, the base call and the WaspQueenDie(owner, 0) restart.
 #include <cstdio>
 static int g_cleared = 0;
-struct CTCDParticleEmitter { void ClearAttachments() { ++g_cleared; } };
+struct CTCDParticleEmitter { void ClearAttachments_006e0de0() { ++g_cleared; } };
 struct CThing {
     unsigned long m_interfaceBits28; CTCDParticleEmitter* m_pParticleEmitter; unsigned char m_flags91;
     bool GetTCParticleEmitter(CTCDParticleEmitter** out) { if (m_interfaceBits28 & 0x800) { *out = m_pParticleEmitter; return true; } return false; }
@@ -36,7 +36,7 @@ void CCreatureAction_WaspQueenDeath::FinishAction()
 {
     CTCDParticleEmitter* emitter;
     if (PEmitter.GetPItem() && !(PEmitter.GetPItem()->m_flags91 & 1) && PEmitter.GetPItem()->GetTCParticleEmitter(&emitter))
-        emitter->ClearAttachments();
+        emitter->ClearAttachments_006e0de0();
     CCombatActionBase::FinishAction();
     PCreature.GetPItem()->SetCurrentAction(CCreatureAction_WaspQueenDie(PCreature.GetPItem(), 0));
 }

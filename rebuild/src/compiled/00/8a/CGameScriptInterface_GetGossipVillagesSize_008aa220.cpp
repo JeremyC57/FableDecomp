@@ -16,12 +16,12 @@ struct GossipMap {
     CArrayHdr& op_index(const CCharString& key);
 };
 
-extern GossipMap g_gossipVillagesMap; // at 0x13bae50 (reloc-masked)
+extern GossipMap g_gossipVillagesMap_013bae50; // at 0x13bae50 (reloc-masked)
 
 int __fastcall CGameScriptInterface_GetGossipVillagesSize(void* self, CCharString category)
 {
     CCharString key(category);
-    CArrayHdr& e = g_gossipVillagesMap.op_index(key);
+    CArrayHdr& e = g_gossipVillagesMap_013bae50.op_index(key);
     int first = (int)e.first;
     int last = (int)e.last;
     return (last - first) >> 2;

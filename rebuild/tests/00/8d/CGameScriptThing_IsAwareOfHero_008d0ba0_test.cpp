@@ -26,7 +26,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long*);                    // 0x004365B0
+    SEntry* LowerBound(const long*) const;                    // 0x004365B0
 };
 struct CThing {
     unsigned char _pad00[0x10];
@@ -74,7 +74,7 @@ bool CGameScriptThing::IsAwareOfHero()
 #include <stddef.h>
 static int g_los;
 CBaseObject* CBaseIntelligentPointer::GetPItem() const { return (CBaseObject*)PData; }
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* k) { SEntry* e = first; while (e != last && e->type < *k) ++e; return e; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* k) const { SEntry* e = first; while (e != last && e->type < *k) ++e; return e; }
 bool CTCPerceiveThing::IsPlayerExtendedLineOfSight() { return g_los != 0; }
 CThing* CTCPerceiveThing::GetPerceivedThing() const { return (CThing*)PerceivedThing.PData; }
 static CThing g_thing, g_hero; static CTCPerceiveThing g_perc; static CInterfaceMap::SEntry g_e[2];

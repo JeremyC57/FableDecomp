@@ -41,10 +41,10 @@ public:
 };
 
 class CASuspendableProcess;
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                           // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
 struct CDiskFileWin32 : CBase {                         // vtable 0x0122D06C, 0x1c bytes

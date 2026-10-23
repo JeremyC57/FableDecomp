@@ -17,8 +17,8 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
     CCountedPointer(const CCountedPointer& o) : m_pObject(o.m_pObject), m_pCount(o.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
     void Release() { if (m_pCount && --m_pCount->m_references == 0) { delete m_pCount->m_pObject; ++g_deleted; delete m_pCount; } m_pObject = 0; m_pCount = 0; }
-    void Reset(CCombatActionBase* o) { Release(); m_pObject = o; m_pCount = o ? new SCountBlock : 0; if (m_pCount) { m_pCount->m_references = 1; m_pCount->m_pObject = o; } }
-    CCountedPointer& operator=(CCombatActionBase* o) { Reset(o); return *this; }
+    void Reset_00905fd0(CCombatActionBase* o) { Release(); m_pObject = o; m_pCount = o ? new SCountBlock : 0; if (m_pCount) { m_pCount->m_references = 1; m_pCount->m_pObject = o; } }
+    CCountedPointer& operator=(CCombatActionBase* o) { Reset_00905fd0(o); return *this; }
     ~CCountedPointer() { Release(); }
 };
 struct CCombatSequenceBase {

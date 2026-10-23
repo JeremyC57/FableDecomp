@@ -55,10 +55,10 @@ struct CThingList {
 };
 
 
-struct CThingFilter_HasTC {
+namespace N_006a76a0 { struct CThingFilter_HasTC {
     long Type;                                    // ETCInterfaceType
     bool operator()(const CThing* thing) const;      // 0x006A76A0 (manifest: CThingFilter_IsNot)
-};
+}; } using N_006a76a0::CThingFilter_HasTC;
 struct CThingFilter_InRegion {
     void* Region;
     bool operator()(const CThing* thing) const;      // 0x006A76A0 (manifest: CThingFilter_IsNot)

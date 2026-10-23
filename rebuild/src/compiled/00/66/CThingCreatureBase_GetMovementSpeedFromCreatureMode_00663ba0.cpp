@@ -22,7 +22,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 struct CModeBase {                              // CTCCreatureModeManager::CModeBase, vtable 0x012673CC
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

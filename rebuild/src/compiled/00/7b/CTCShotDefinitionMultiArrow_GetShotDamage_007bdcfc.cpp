@@ -19,7 +19,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);           // 0x004365B0
+    SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 struct CThing {
     unsigned char _pad0[0x20];
@@ -37,7 +37,7 @@ struct CThing {
         return (T*)it->component;
     }
 };
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 (CThing*)
+template <class T> bool __fastcall IS_THING_ALIVE_0040dce0(const T& thing);   // 0x0040DCE0 (CThing*)
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                                // +4
@@ -60,7 +60,7 @@ struct CTCShotDefinitionMultiArrow : CTCShotDefinitionBase {
 float CTCShotDefinitionMultiArrow::GetShotDamage() const
 {
     float multiplier = 1.0f;
-    if (IS_THING_ALIVE<CThing*>(PShooter.GetPItem())) {
+    if (IS_THING_ALIVE_0040dce0<CThing*>(PShooter.GetPItem())) {
         CThing* shooter = PShooter.GetPItem();
         if (shooter->HasInterface(0x88))
             multiplier = shooter->GetInterfaceUnchecked<CTCDivineWrath>(0x88)->GetDamageMultiplier();

@@ -996,8 +996,8 @@ struct CCountedPointer {
     void* object;
     SCountBlock* count;
     CCountedPointer() : object(0), count(0) { }
-    CCountedPointer& operator=(void* value) { Reset(value); return *this; }
-    void Reset(void* value); // 0x00905fd0
+    CCountedPointer& operator=(void* value) { Reset_00905fd0(value); return *this; }
+    void Reset_00905fd0(void* value); // 0x00905fd0
     ~CCountedPointer()
     {
         if (count) {
@@ -1172,7 +1172,7 @@ CCombatActionBase::CCombatActionBase(CThingCreatureBase& owner,CThing& target,lo
 }
 CCreatureAction_VillagerAttackKnockdown::CCreatureAction_VillagerAttackKnockdown(CThingCreatureBase& owner,CThingCreatureBase& target,bool blockable):CCombatActionBase(owner,target,150,CSoundPair()),Blockable(blockable){++knockdowns;if(blockable!=1)++errors;}
 static void __fastcall Destroy(void*p){++destroyed;delete static_cast<CCreatureActionBase*>(p);}
-void CCountedPointer::Reset(void*p){if(count&&!--count->references){count->destroy(count->object);delete count;}object=p;count=0;if(p){count=new SCountBlock;count->references=1;count->object=p;count->destroy=&Destroy;}}
+void CCountedPointer::Reset_00905fd0(void*p){if(count&&!--count->references){count->destroy(count->object);delete count;}object=p;count=0;if(p){count=new SCountBlock;count->references=1;count->object=p;count->destroy=&Destroy;}}
 void CCombatSequenceBase::AddAction(const CCountedPointer&a){
  int before=query;if(a.object)static_cast<CCreatureActionBase*>(a.object)->IsPartOfComboChain();
  if(query-before!=((adds%3)<2?1:0))++errors;

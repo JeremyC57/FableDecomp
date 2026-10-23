@@ -14,7 +14,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) { ++g_lowerBounds; SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
+    SEntry* LowerBound(const long* type) const { ++g_lowerBounds; SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 struct C3DVector { float X, Y, Z; };
 struct CThing {
@@ -39,7 +39,7 @@ struct CThing {
         }
         return false;
     }
-    const C3DVector& GetPosition() const { return m_pos; }
+    const C3DVector& GetPosition_006a4d00() const { return m_pos; }
 };
 struct CAIBrain {
     unsigned char _pad[0x18];
@@ -94,8 +94,8 @@ bool CAIStateGroup_EarthTroll::IsRunnable()
     CThing* enemy = source->GetEnemy();
     if (enemy != 0 && !(enemy->m_flags91 & 1)) {
         CThing* creature = PBrain->PCreature;
-        const C3DVector& enemyPos = enemy->GetPosition();
-        const C3DVector& pos = creature->GetPosition();
+        const C3DVector& enemyPos = enemy->GetPosition_006a4d00();
+        const C3DVector& pos = creature->GetPosition_006a4d00();
         float dx = pos.X - enemyPos.X;
         float dy = pos.Y - enemyPos.Y;
         if ((float)sqrt(dx * dx + dy * dy) < AttackRange) {

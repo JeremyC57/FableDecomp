@@ -42,7 +42,7 @@ struct CThing {
         }
         return false;
     }
-    void SetAsGameStatePersisted(bool persisted);           // 0x004C9C10
+    void SetAsGameStatePersisted_004c9c10(bool persisted);           // 0x004C9C10
 };
 
 struct CThingPhysical {
@@ -91,7 +91,7 @@ struct CTCDegradableBase {
 void CTCDegradableBase::OnInitialActivate()
 {
     if (GetDefinition()->Degradable)
-        ParentThing->SetAsGameStatePersisted(true);
+        ParentThing->SetAsGameStatePersisted_004c9c10(true);
     if (PParentThingPhysical->Health < PParentThingPhysical->MaxHealth)
         OnParentHealthChanged(true);
     CTCSwitchableNavigation* navigation;

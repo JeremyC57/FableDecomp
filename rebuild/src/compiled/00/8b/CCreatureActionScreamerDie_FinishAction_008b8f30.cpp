@@ -52,7 +52,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 struct CTCDParticleEmitter {                // interface type 0x4b component
-    void ClearAttachments();                // 0x006E0DE0
+    void ClearAttachments_006e0de0();                // 0x006E0DE0
 };
 
 struct CCombatActionBase {                  // retail sizeof 0x114
@@ -73,7 +73,7 @@ void CCreatureAction_ScreamerDie::FinishAction()
     if (IS_THING_ALIVE(PEffect)) {
         CTCDParticleEmitter* pEmitter = 0;
         PEffect.GetPItem()->GetInterface(&pEmitter, 0x4b);
-        pEmitter->ClearAttachments();
+        pEmitter->ClearAttachments_006e0de0();
     }
     CCombatActionBase::FinishAction();
     PCreature.GetPItem()->Kill(true);

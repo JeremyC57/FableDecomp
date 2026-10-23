@@ -28,10 +28,10 @@ struct CCharString {
     CWideString ToWideString() const;                  // 0x0099E480
 };
 struct CASuspendableProcess;
-struct CBase {                                         // the polymorphic root (vptr at +0)
+namespace N_0099a300 { struct CBase {                                         // the polymorphic root (vptr at +0)
     CBase();                                           // 0x0099A2F0
     virtual ~CBase();                                  // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CDiskFileWin32 : CBase {                        // vtable 0x0122D06C
     long        AccessType;                            // +0x04
     long        Position;                              // +0x08

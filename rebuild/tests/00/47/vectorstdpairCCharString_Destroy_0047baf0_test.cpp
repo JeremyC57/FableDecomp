@@ -26,11 +26,11 @@ static int g_dtorCalls;
 static int g_order[16];
 static int g_orderIdx;
 
-class CCharString {
+namespace N_0099b510 { class CCharString {
 public:
     ~CCharString();
     int tag;
-};
+}; } using N_0099b510::CCharString;
 
 CCharString::~CCharString() {
     ++g_dtorCalls;

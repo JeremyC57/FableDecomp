@@ -4,13 +4,13 @@ extern "C" void __cdecl ReleaseBuf(void* p);  // 0xbfea14
 
 struct CActiveFile {
     void* m_ptr;      // [this+0x00]
-    void Notify();    // 0xa17390 (__fastcall on this)
+    void Notify_00a17390();    // 0xa17390 (__fastcall on this)
     void OnReadFinished();
 };
 
 void CActiveFile::OnReadFinished()
 {
-    Notify();
+    Notify_00a17390();
     void* p = m_ptr;
     if (p)
         ReleaseBuf(p);

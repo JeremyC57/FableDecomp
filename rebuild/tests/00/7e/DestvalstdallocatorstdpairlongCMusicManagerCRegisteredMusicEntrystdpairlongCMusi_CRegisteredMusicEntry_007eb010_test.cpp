@@ -3,9 +3,9 @@ static int calls=0;
 struct Sub{int x;};
 struct Base{int x;};
 static void Sub_dtor(Sub* s){ if(s) calls|=1; }
-static void Base_dtor(Base* b){ if(b) calls|=2; }
+static void Base_dtor_00693ef0(Base* b){ if(b) calls|=2; }
 struct Obj{ char pad[0xa8]; Sub sub; };
-static void model(Obj* self){ Sub_dtor(&self->sub); Base_dtor((Base*)self); }
+static void model(Obj* self){ Sub_dtor(&self->sub); Base_dtor_00693ef0((Base*)self); }
 int main(){
   Obj o; model(&o);
   int c2=0; Sub* np=0; if(np) c2|=1; if(!np) c2|=2;

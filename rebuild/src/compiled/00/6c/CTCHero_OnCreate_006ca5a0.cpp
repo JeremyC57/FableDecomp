@@ -49,7 +49,7 @@ public:
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual long GetMapNumberAt(const C3DVector& position);   // slot 16 (+0x40)
     long GetRegionNumberMapIsIn(long map);               // 0x004FC190
-    CRegion& GetRegion(long region);                     // 0x004FB490
+    CRegion& GetRegion_004fb490(long region);                     // 0x004FB490
 };
 
 class CTCHero {
@@ -66,7 +66,7 @@ public:
 
 void CTCHero::OnCreate()
 {
-    CRegion& region = GetWorldMap()->GetRegion(GetWorldMap()->GetRegionNumberMapIsIn(GetWorldMap()->GetMapNumberAt(ParentThing->GetPosition())));
+    CRegion& region = GetWorldMap()->GetRegion_004fb490(GetWorldMap()->GetRegionNumberMapIsIn(GetWorldMap()->GetMapNumberAt(ParentThing->GetPosition())));
     if (region.GetDef().Object) {
         SetWeaponsAsUsable(!region.GetDef()->PreventHeroWeaponUse);
         WillUsable = !region.GetDef()->PreventHeroWillUse;

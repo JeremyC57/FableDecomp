@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
 struct CThing {
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -70,7 +70,7 @@ bool CAIStateGroupGoToPubMethods::WalkToPoint(const C3DVector& pos, const CRight
     } while (result == AI_ACTION_RUNNING);
     if (result == AI_ACTION_SUCCEEDED) {
         C3DVector forward = rhSet.Forward;
-        C3DVector lookAt = forward + GetCreature()->GetPosition();
+        C3DVector lookAt = forward + GetCreature()->GetPosition_006a4d00();
         do {
             if (!IS_THING_ALIVE(PPub) || !IS_THING_ALIVE(PBar))
                 goto failed;

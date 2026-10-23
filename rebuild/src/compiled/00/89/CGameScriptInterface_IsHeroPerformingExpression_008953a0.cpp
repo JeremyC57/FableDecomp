@@ -32,11 +32,11 @@ public:
     }
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
-struct CDefString {                                 // a def name: its offset into the def string table
+namespace N_006aeb10 { struct CDefString {                                 // a def name: its offset into the def string table
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }   // user copy ctor: returned through the hidden pointer
     bool operator==(const CCharString& expressionName) const; // 0x006AEB10 (a second copy at 0x004B7980)
-};
+}; } using N_006aeb10::CDefString;
 struct CExpression_Retail {
     virtual void x000(); virtual void x001(); virtual void x002(); virtual void x003(); virtual void x004(); virtual void x005(); virtual void x006(); virtual void x007();
     virtual void x008(); virtual void x009();
@@ -73,7 +73,7 @@ struct CInterfaceMap_Retail {                       // CVectorMap<ETCInterfaceTy
     struct SEntry { long type; CTCBase_Retail* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);           // 0x004365B0 / 0x0040F020 (two copies of the same body)
+    SEntry* LowerBound(const long* type) const;           // 0x004365B0 / 0x0040F020 (two copies of the same body)
 };
 struct CThing_Retail {
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();

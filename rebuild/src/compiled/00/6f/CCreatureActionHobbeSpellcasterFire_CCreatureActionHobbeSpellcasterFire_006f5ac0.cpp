@@ -8,10 +8,10 @@
 // constructor @ 0x008BFA40 runs, then the compiler stores this class's vtable (0x01263E3C
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct C3DAnimFileHelpersChunk {
+namespace N_008bfa40 { struct C3DAnimFileHelpersChunk {
     virtual void v00();
     C3DAnimFileHelpersChunk();                           // 0x008BFA40
-};
+}; } using N_008bfa40::C3DAnimFileHelpersChunk;
 
 struct CCreatureAction_HobbeSpellcasterFire : C3DAnimFileHelpersChunk {
     virtual void v00();                    // this class has its own vtable

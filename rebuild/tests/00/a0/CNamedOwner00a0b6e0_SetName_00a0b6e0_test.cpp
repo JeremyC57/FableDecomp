@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_set = 0; static const char* g_name = 0;
-struct CCharString { void* m_pData; operator const char*() const { return (const char*)m_pData; } };
+namespace N_0099af10 { struct CCharString { void* m_pData; operator const char*() const { return (const char*)m_pData; } }; } using N_0099af10::CCharString;
 struct CNamedObject_00a0b6e0 { virtual void SetName(const char* n) { ++g_set; g_name = n; } };
 struct CNamedOwner_00a0b6e0 { unsigned char _pad[0x10]; CNamedObject_00a0b6e0* m_pObject; void SetName(const CCharString& name) { if (m_pObject) m_pObject->SetName(name); } };
 int main() {

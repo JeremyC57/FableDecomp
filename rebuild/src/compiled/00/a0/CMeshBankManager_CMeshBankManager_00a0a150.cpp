@@ -53,9 +53,9 @@ struct CBankInfoList {                              // STLport list<CMeshDataBan
     void clear();                                   // 0x00A0A720
 };
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual ~CBase();                               // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 
 struct CMeshBankListener {                          // second base
     virtual void v00();

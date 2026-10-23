@@ -20,7 +20,7 @@ struct VecRange {
 
 struct GFSerialiser {
     void WriteCount(int count);       // 0x51e0e9  stack arg, this in ecx
-    void WriteElem(C2DVector* elem);  // 0x51e1c9  stack arg, this in ecx
+    void WriteElem_00993f90(C2DVector* elem);  // 0x51e1c9  stack arg, this in ecx
 };
 
 void __fastcall GFSerialiseVectorBinaryOut_C2DVector(GFSerialiser* thisptr, void* /*edx*/ vec)
@@ -29,6 +29,6 @@ void __fastcall GFSerialiseVectorBinaryOut_C2DVector(GFSerialiser* thisptr, void
     int count = (int)(r->last - r->first);
     thisptr->WriteCount(count);
     for (int i = 0; i < count; ++i) {
-        thisptr->WriteElem(r->first + i);
+        thisptr->WriteElem_00993f90(r->first + i);
     }
 }

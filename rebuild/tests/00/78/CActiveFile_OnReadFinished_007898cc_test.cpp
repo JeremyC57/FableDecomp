@@ -8,7 +8,7 @@ static int g_AutoTinyFinishReadCalls = 0;
 static int g_AutoTinyReleaseResourceCalls = 0;
 static void* g_AutoTinyFinishedResource = 0;
 static void* g_AutoTinyFinishedReader = 0;
-void __fastcall AutoTinyFinishRead(void* resource, void* reader, char* status)
+void __fastcall AutoTinyFinishRead_00770670(void* resource, void* reader, char* status)
 {
     ++g_AutoTinyFinishReadCalls;
     g_AutoTinyFinishedResource = resource;
@@ -22,7 +22,7 @@ void __cdecl AutoTinyReleaseResource(void*)
 void __fastcall OnReadFinished(AutoTinyActiveFile* self)
 {
     char status;
-    AutoTinyFinishRead(self->resource, self->reader, &status);
+    AutoTinyFinishRead_00770670(self->resource, self->reader, &status);
     if (self->resource != 0)
         AutoTinyReleaseResource(self->resource);
 }

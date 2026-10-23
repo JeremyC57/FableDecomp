@@ -134,7 +134,7 @@ struct CAIStateGroupBase {
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFA0
+    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
 };
@@ -155,7 +155,7 @@ bool CAIStateGroup_BirdFlyToFood::IsRunnable()
     if (modes->GetCurrentModeType() == g_flyingMode) {
         long framesPerSecond;
         if ((FrameLastAte == 0
-             || (framesPerSecond = GetPWorld()->GetFramesPerSecond(),
+             || (framesPerSecond = GetPWorld_008fcfa0()->GetFramesPerSecond(),
                  GFGetCurrentFrame() - FrameLastAte > (unsigned long)(framesPerSecond * 20)))
             && WorldRandomRange(*GetPWorldSeed(), 100) < 74) {
             if (WorldRandomRange(*GetPWorldSeed(), 100) < 64) {

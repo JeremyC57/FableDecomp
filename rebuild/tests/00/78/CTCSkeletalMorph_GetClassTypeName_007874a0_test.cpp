@@ -7,7 +7,7 @@ struct CCharString {
 };
 int CCharString::last_n = 0;
 
-const char kActionName[] = "DoCreatureAction";
+const char kActionName_0123bffc[] = "DoCreatureAction";
 
 struct CTCSkeletalMorph {};
 
@@ -15,14 +15,14 @@ CCharString GetClassTypeName(CTCSkeletalMorph* self);
 
 CCharString GetClassTypeName(CTCSkeletalMorph* self)
 {
-    return CCharString(kActionName, -1);
+    return CCharString(kActionName_0123bffc, -1);
 }
 
 int main()
 {
     CTCSkeletalMorph obj;
     CCharString r = GetClassTypeName(&obj);
-    if (r.p == kActionName && CCharString::last_n == -1)
+    if (r.p == kActionName_0123bffc && CCharString::last_n == -1)
         std::printf("007874a0_TEST PASS\n");
     else
         std::printf("FAIL n=%d\n", CCharString::last_n);

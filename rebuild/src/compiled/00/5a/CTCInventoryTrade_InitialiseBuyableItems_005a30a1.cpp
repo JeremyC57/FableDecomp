@@ -156,7 +156,7 @@ struct CThing {
 };
 struct CPlayer { CThing* GetControlledCreature();       // 0x00487DD0
 };
-struct CPlayerManager { CPlayer* GetMainPlayer();       // 0x00449960
+struct CPlayerManager { CPlayer* GetMainPlayer() const;       // 0x00449960
 };
 struct CMainGameComponent { unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };   // +0x1c
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0

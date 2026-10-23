@@ -24,7 +24,7 @@ typedef void(__fastcall* SlotFn)(
     const CCharString* tcName,
     int enabled);
 
-const char kName[] = "SG_OPINION_REACTION_ROOT";
+const char kName_0125fd40[] = "SG_OPINION_REACTION_ROOT";
 
 static const char* g_ctorText = 0;
 static int g_ctorLen = 999;
@@ -57,7 +57,7 @@ static void __fastcall FakeSlot(
 void CGameScriptInterface::EntitySetOpinionReactionsEnabled(
     const CScriptThing& entity, int enabled) const
 {
-    CCharString tcName(kName, -1);
+    CCharString tcName(kName_0125fd40, -1);
     SlotFn slot = (SlotFn)(this->vt[0x938 / 4]);
     slot(this, 0, (const void*)&entity, &tcName, enabled);
 }

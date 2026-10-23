@@ -33,7 +33,7 @@ TCEntry* VMap::LowerBound(const int* key) { (void)key; return g_hit; }
 
 static int g_didCall;
 static void* g_lastIface;
-extern "C" void __fastcall Iface_Do(void* self) { g_lastIface = self; g_didCall++; }
+extern "C" void __fastcall Iface_Do_00788388(void* self) { g_lastIface = self; g_didCall++; }
 
 bool __stdcall CGameScriptInterface_ManuallyTriggerTrap(GSI* self)
 {
@@ -45,7 +45,7 @@ bool __stdcall CGameScriptInterface_ManuallyTriggerTrap(GSI* self)
         TCEntry* end = vm->end;
         if (it == end || it->key > 0x7d)
             it = end;
-        Iface_Do(it->iface);
+        Iface_Do_00788388(it->iface);
         return true;
     }
     return false;

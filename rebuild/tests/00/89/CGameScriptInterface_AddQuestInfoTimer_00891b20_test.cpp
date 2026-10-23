@@ -27,7 +27,7 @@ namespace NPlayerGui
 class CDrawQuestInfo
 {
 public:
-    long AddCounter(
+    long AddCounter_0064f93f(
         const CTimer& timer,
         const CCharString& labelText,
         float fadeTime);
@@ -64,7 +64,7 @@ static unsigned long g_ObservedFadeTimeBits;
 static long g_Result;
 static unsigned long g_CallCount;
 
-long NPlayerGui::CDrawQuestInfo::AddCounter(
+long NPlayerGui::CDrawQuestInfo::AddCounter_0064f93f(
     const CTimer& timer,
     const CCharString& labelText,
     float fadeTime)

@@ -14,7 +14,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
+    SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 static C3DVector g_offsetSeen, g_facingSeen; static long g_typeSeen = -1; static int g_speedCalls = 0;
 struct CModeBase {

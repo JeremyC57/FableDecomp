@@ -19,11 +19,11 @@ struct CThing {
 };
 
 struct CPlayer {
-    CThing* GetCharacterThing();              // 0x00487DD0
+    CThing* GetCharacterThing_00487dd0();              // 0x00487DD0
 };
 
 struct CPlayerManager {
-    CPlayer* GetMainPlayer();                 // 0x00449960
+    CPlayer* GetMainPlayer() const;                 // 0x00449960
 };
 
 struct CWorldMap {
@@ -40,7 +40,7 @@ struct CTCInventoryMap {
 
 void CTCInventoryMap::TeleportHeroToRegionTeleporter(long regionIndex)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing();
+    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing_00487dd0();
     if (hero && !(hero->m_flags & 1)) {
         CThing* teleporter = GetRegionTeleporter(&GetWorldMap()->GetRegion(regionIndex));
         if (teleporter && !(teleporter->m_flags & 1))

@@ -19,7 +19,7 @@ struct C3DVector {
     float GetLengthSquared() const { float s = Z * Z; s += Y * Y; s += X * X; return s; }
 };
 struct CThing {
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
 };
 struct CBaseIntelligentPointer {
     void* __vftable;                            // +0x00
@@ -90,14 +90,14 @@ CThing* CTCCreatureGroup::GetNearestMember(const C3DVector& pos)
     for (CGroupMemberIterator it = Members.begin(); it != Members.end(); ++it) {
         CThing* thing = it->Value.PMember.GetPItem();
         if (nearest) {
-            float distSq = (thing->GetPosition() - pos).GetLengthSquared();
+            float distSq = (thing->GetPosition_006a4d00() - pos).GetLengthSquared();
             if (distSq < nearestDistSq * nearestDistSq) {
                 nearest = it->Value.PMember.GetPItem();
                 nearestDistSq = distSq;
             }
         } else {
             nearest = thing;
-            nearestDistSq = (it->Value.PMember.GetPItem()->GetPosition() - pos).GetLengthSquared();
+            nearestDistSq = (it->Value.PMember.GetPItem()->GetPosition_006a4d00() - pos).GetLengthSquared();
         }
     }
     return nearest;

@@ -31,11 +31,11 @@ extern "C" void __cdecl _wsplitpath(const wchar16* path, wchar16* drive, wchar16
 extern "C" wchar16* __cdecl wcscpy(wchar16* dest, const wchar16* src);   // 0x00BFED76
 extern "C" wchar16* __cdecl wcscat(wchar16* dest, const wchar16* src);   // 0x00BFED5E
 
-struct CWideString {
+namespace N_0099af00 { struct CWideString {
     wchar16* m_pchData;
     operator const wchar16*() const;             // 0x0099AF00
     ~CWideString();                              // 0x0099B510
-};
+}; } using N_0099af00::CWideString;
 CWideString __fastcall GetCurrentWorkingDirectory();                                    // 0x00997F80
 CWideString __fastcall ExpandPath(const CWideString& path, const CWideString& base);   // 0x00998C90
 

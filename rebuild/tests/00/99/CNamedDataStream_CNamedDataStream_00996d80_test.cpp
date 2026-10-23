@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of CNamedDataStream::~CNamedDataStream @ 0x00996D80: the name member is destroyed before the base.
 static int g_order[4]; static int g_n = 0;
-struct CBase { virtual void v00() {} ~CBase() { g_order[g_n++] = 2; } };
+namespace N_0099a300 { struct CBase { virtual void v00() {} ~CBase() { g_order[g_n++] = 2; } }; } using N_0099a300::CBase;
 struct CCharString { void* m_pData; ~CCharString() { g_order[g_n++] = 1; } };
 struct CDataStream : CBase { virtual void v00() {} ~CDataStream() {} };
 struct CNamedDataStream : CDataStream { CCharString m_name; virtual void v00() {} ~CNamedDataStream() {} };

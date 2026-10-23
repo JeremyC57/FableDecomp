@@ -305,7 +305,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 #undef CThing
 struct ComponentEntry{long Type;void* Component;};
-struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //004365B0
+struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&) const;}; //004365B0
 // Quarantined CThing donor has Components+48, retail has+44; lifecycle+91 confirmed by native.
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x40];unsigned short DefinitionID;unsigned char LifecycleBeforeFlags[3];unsigned char LifeFlags;};
 #ifndef FABLE_ENGINE_CTCBASE_H
@@ -544,7 +544,7 @@ CCharString::CCharString(const char*t,long n){storage_=new CCharStringData;stora
 CCharString::~CCharString(){if(storage_){--Strings;delete storage_;}}
 static CThingNative* Current;static CThingNative* RootReplacement;static const PointerView* Expected;static int Gets,Queries,Lookups;static long DefID;static DefinitionManagerMethods Manager;
 CThingNative* PointerView::GetPItem()const{if(this!=Expected)return 0;++Gets;if(Gets==5&&Strings)++RootLifetimeFailures;return Current;}
-ComponentEntry* ComponentMap::LowerBound(const long&key){++Lookups;if(key!=160)return Finish;return Start;}
+ComponentEntry* ComponentMap::LowerBound(const long&key) const{++Lookups;if(key!=160)return Finish;return Start;}
 DefinitionManagerMethods* ThingMethods::GetDefinitionManager()const{return &Manager;}
 long DefinitionManagerMethods::GetDefGlobalIndexFromName(const CCharString&s){++Queries;CCharStringData*data=*reinterpret_cast<CCharStringData*const*>(&s);if(this!=&Manager||Strings!=1||strcmp(data->text,"GHOSTLY_SWORD"))return -99;if(RootReplacement)Current=RootReplacement;return DefID;}
 #define CHECK(x) do{if(!(x)){printf("008d08a0_TEST FAIL line %d\n",__LINE__);return 1;}}while(0)

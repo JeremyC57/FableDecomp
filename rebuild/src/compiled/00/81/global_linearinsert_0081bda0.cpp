@@ -29,13 +29,13 @@ struct SKeyLess {                                 // CKeyPairCompareLess<long, S
 
 struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
 
-SKeyedRecord* __fastcall __copy_backward(SKeyedRecord* first, SKeyedRecord* last, SKeyedRecord* result,
+SKeyedRecord* __fastcall __copy_backward_00819670(SKeyedRecord* first, SKeyedRecord* last, SKeyedRecord* result,
                                          const SRandomAccessIteratorTag& category, long* distance);   // 0x00819670
-void __fastcall __unguarded_linear_insert(SKeyedRecord* last, SKeyedRecord value, SKeyLess comp);   // 0x00819940
+void __fastcall __unguarded_linear_insert_00819940(SKeyedRecord* last, SKeyedRecord value, SKeyLess comp);   // 0x00819940
 
 static inline SKeyedRecord* copy_backward(SKeyedRecord* first, SKeyedRecord* last, SKeyedRecord* result)
 {
-    return __copy_backward(first, last, result, SRandomAccessIteratorTag(), (long*)0);
+    return __copy_backward_00819670(first, last, result, SRandomAccessIteratorTag(), (long*)0);
 }
 
 void __fastcall __linear_insert(SKeyedRecord* first, SKeyedRecord* last, SKeyedRecord value, SKeyLess comp)
@@ -45,5 +45,5 @@ void __fastcall __linear_insert(SKeyedRecord* first, SKeyedRecord* last, SKeyedR
         *first = value;
     }
     else
-        __unguarded_linear_insert(last, value, comp);
+        __unguarded_linear_insert_00819940(last, value, comp);
 }

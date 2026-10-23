@@ -6,7 +6,7 @@ struct AllocDummy {};
 static int g_calls = 0;
 static char* g_last = 0;
 
-extern "C" void __fastcall Pair_Dtor(CAnimEntryPair* self)
+extern "C" void __fastcall Pair_Dtor_00a01c10(CAnimEntryPair* self)
 {
     ++g_calls;
     g_last = (char*)self;

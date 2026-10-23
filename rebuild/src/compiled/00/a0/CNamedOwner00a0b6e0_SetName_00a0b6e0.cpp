@@ -3,10 +3,10 @@
 // Callees: CCharString::operator const char* @ 0x0099AF10 (on the argument), the object's virtual slot 5 (+0x14). Shape: the object's vtable is loaded into
 // edi before the string call (the object pointer is re-read from +0x10 for `this` afterwards). The chunk label "CEnginePrimitiveRenderer::ClearAllChildPrimitives"
 // is propagated (the 0x00A0xxxx module is game code); the class is named by address.
-struct CCharString {
+namespace N_0099af10 { struct CCharString {
     void* m_pData;
     operator const char*() const;                  // 0x0099AF10
-};
+}; } using N_0099af10::CCharString;
 
 struct CNamedObject_00a0b6e0 {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

@@ -19,11 +19,11 @@ struct CAIStateGroupBase { CAIBrain* PBrain; bool Terminated; };
 #include "engine/CAIBrain.h"
 struct CThing;
 struct C3DVector { float X,Y,Z; C3DVector() : X(0),Y(0),Z(0) {} C3DVector(const C3DVector& v) : X(v.X),Y(v.Y),Z(v.Z) {} };
-struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
+struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
 struct CThing { unsigned char pad0[0x20]; unsigned long flags20; unsigned long flags24; unsigned char pad28[0x1c]; CInterfaceMap interfaces; unsigned char pad4c[0x45]; unsigned char dead; };
 struct CBaseIntelligentPointer { virtual void v00(); void* Handle; CThing* GetPItem(); };
 struct CTCVillager;
-struct CTCVillage { bool IsCookTime(); };
+struct CTCVillage { bool IsCookTime_00658bb9(); };
 struct CAIStateGroup_StayNearFoodHall : CAIStateGroupBase {
     C3DVector Position;
     CBaseIntelligentPointer PFoodHall;
@@ -59,7 +59,7 @@ void CAIStateGroup_StayNearFoodHall::Update()
         it = map->LowerBound(&key);
         if (it == map->last || it->type > 0x23) it = map->last;
         village = GFGetVillage((CTCVillager*)it->component);
-        if (!village || !village->IsCookTime()) goto done;
+        if (!village || !village->IsCookTime_00658bb9()) goto done;
     } while (result == 4);
 done:
     Terminate();
@@ -97,7 +97,7 @@ long CAIStateGroup_StayNearFoodHall::AIAction_MoveToPosProximity(long repeat, C3
     }
     return scenario==12 ? 1 : 2;
 }
-CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* key) {
+CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* key) const {
     check(this==(scenario==11?&replacement.interfaces:&creature.interfaces));
     check(key && *key==0x23); ++mapCalls;
     if(scenario==7) return last;
@@ -108,7 +108,7 @@ CTCVillage* __fastcall GFGetVillage(CTCVillager* item) {
     check(item==(scenario==7 || scenario==8 ? &sentinelVillager : scenario==11 ? &replacementVillager : &normalVillager));
     return scenario==9 ? 0 : &village;
 }
-bool CTCVillage::IsCookTime() { check(this==&village); ++cookChecks; return scenario!=10; }
+bool CTCVillage::IsCookTime_00658bb9() { check(this==&village); ++cookChecks; return scenario!=10; }
 void CAIStateGroup_StayNearFoodHall::Terminate() { check(this==group); ++terminations; Terminated=true; }
 static void run(int which) {
     scenario=which; pointerReads=workChecks=actions=mapCalls=villageCalls=cookChecks=terminations=0;

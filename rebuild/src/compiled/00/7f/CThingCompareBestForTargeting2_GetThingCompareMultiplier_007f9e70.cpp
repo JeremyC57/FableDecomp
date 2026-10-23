@@ -12,7 +12,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 struct CTCInterface9 {                          // the component behind ETCInterfaceType 9
     unsigned char _pad[0xc];

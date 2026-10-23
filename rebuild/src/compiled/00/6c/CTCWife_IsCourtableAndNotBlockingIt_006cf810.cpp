@@ -12,7 +12,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0 (the other TU copy is 0x0040F020)
+    SEntry* LowerBound(const long* type) const;       // 0x004365B0 (the other TU copy is 0x0040F020)
 };
 class CThing {
 public:

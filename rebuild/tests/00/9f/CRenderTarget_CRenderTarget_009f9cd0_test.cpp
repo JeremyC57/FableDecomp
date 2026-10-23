@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstddef>
 // Behaviour model of CRenderTarget::CRenderTarget @ 0x009F9CD0.
-struct CBase { virtual void v00() {} CBase() {} };
+namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() {} }; } using N_0099a2d0::CBase;
 struct CSurface { virtual void v00() {} void* m_pSurface; void* m_pTexture; long m_format; CSurface() : m_pSurface(0), m_pTexture(0) {} };
 struct CRenderTarget : CBase { CSurface m_colour, m_depth; virtual void v00() {} CRenderTarget() : CBase(), m_colour(), m_depth() {} };
 int main()

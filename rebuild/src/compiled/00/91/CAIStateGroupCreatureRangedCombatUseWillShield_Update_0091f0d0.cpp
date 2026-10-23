@@ -20,11 +20,11 @@ struct CCharString {
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CCreatureActionBase {
+namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
     unsigned char _body[0x120];                             // +0x04..+0x123
     ~CCreatureActionBase();                                 // 0x0062E900
-};
+}; } using N_0062e900::CCreatureActionBase;
 
 struct CCreatureAction_CastPhysicalShieldSpell : CCreatureActionBase {
     CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase* caster, long spellLevel, bool force,

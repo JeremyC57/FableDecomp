@@ -6,13 +6,13 @@ void __cdecl EngineFree(void* p);   // 0xbfea14 (caller-cleanup: add esp,4)
 
 struct CActiveFile {
     void* pBuffer;          // +0x00
-    void Helper();          // 0x882c00 (this-call)
+    void Helper_00882c00();          // 0x882c00 (this-call)
     void OnReadFinished();
 };
 
 void CActiveFile::OnReadFinished()
 {
-    Helper();
+    Helper_00882c00();
     if (pBuffer)
         EngineFree(pBuffer);
 }

@@ -4,7 +4,7 @@
 static int g_str = 0; static void* g_strAt[4];
 struct CCharString { void* m_pData; CCharString() : m_pData(0) { g_strAt[g_str++] = this; } };
 static int g_base = 0;
-struct CBase { virtual void v00() { } CBase() { ++g_base; } };
+namespace N_0099a2d0 { struct CBase { virtual void v00() { } CBase() { ++g_base; } }; } using N_0099a2d0::CBase;
 namespace NCreatureAction { struct CActionEventBase_00692270 : CBase { bool CActionEventBase_flag; CActionEventBase_00692270() : CBase(), CActionEventBase_flag(false) { } };
 struct CActionEventAddObject : CActionEventBase_00692270 { unsigned char _pad08[0xc]; CCharString m_name; CCharString m_text; virtual void v00() { } CActionEventAddObject() : CActionEventBase_00692270() { } }; }
 int main() {

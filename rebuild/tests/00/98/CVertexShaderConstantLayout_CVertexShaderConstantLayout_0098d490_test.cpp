@@ -3,7 +3,7 @@
 #include <cstring>
 #include <new>
 static int g_bases = 0;
-struct CBase { CBase() { ++g_bases; } virtual ~CBase() {} };
+namespace N_0099a2d0 { struct CBase { CBase() { ++g_bases; } virtual ~CBase() {} }; } using N_0099a2d0::CBase;
 struct CShaderConstantRange : CBase { long Offset; unsigned long Count; CShaderConstantRange() : Offset(0), Count(0) {} };
 struct CVertexShaderConstantArray { void* Data; long Count; long Allocated; CVertexShaderConstantArray() : Data(0), Count(0), Allocated(0) {} };
 struct CVertexShaderConstantLayout : CBase {

@@ -20,7 +20,7 @@ struct CCrateThing {
 
 struct CTCVillage {
     bool IsThereACratePutDownTask();                    // 0x00658E09
-    bool IsCookTime();                                  // 0x00658B20
+    bool IsCookTime_00658b20();                                  // 0x00658B20
 };
 
 struct CBaseIntelligentPointer {
@@ -41,7 +41,7 @@ bool CAIFilter_ShouldStillBeWorkingInWarehouse::operator()()
     if (m_pCrate.GetPItem() != 0 && m_pWarehouse.GetPItem() != 0) {
         if (!m_pCrate.GetPItem()->m_bCarried || m_pVillage->IsThereACratePutDownTask()) {
             if (m_pCrate.GetPItem()->CanBePutIn((CBaseObject*)m_pWarehouse.GetPItem())) {
-                if (m_pVillage == 0 || m_pVillage->IsCookTime())
+                if (m_pVillage == 0 || m_pVillage->IsCookTime_00658b20())
                     return true;
             }
         }

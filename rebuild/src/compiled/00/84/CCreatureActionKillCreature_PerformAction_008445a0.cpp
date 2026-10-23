@@ -11,7 +11,7 @@ struct C3DVector;
 struct CThing {                             // engine/CThing.h exists but is not used: only the dead bit and the calls are modelled
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;   // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
     bool IsInRange(const C3DVector& position, float range);   // 0x006A4DF0
     void Kill(bool silent);                 // 0x004C9B80
 };
@@ -46,7 +46,7 @@ void CCreatureAction_KillCreature::PerformAction()
     if (IS_THING_ALIVE(PTargetCreature)) {
         CThing* pTarget = PTargetCreature.GetPItem();
         CThing* pCreature = PCreature.GetPItem();   // named: fetched before the 2.0f immediate is pushed
-        if (pTarget->IsInRange(pCreature->GetPosition(), 2.0f))
+        if (pTarget->IsInRange(pCreature->GetPosition_006a4d00(), 2.0f))
             pTarget->Kill(true);
     }
 }

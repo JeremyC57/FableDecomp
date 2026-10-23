@@ -25,7 +25,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
+    SEntry* LowerBound(const long* type) const;       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
 struct CThing {
@@ -201,7 +201,7 @@ static float g_measure = 10.0f;
 float CThingCreatureV::GetDistanceMeasure(const C3DVector& pos) { g_measuredAt = pos; return g_measure; }
 static CTCMovement g_move;
 static CInterfaceMap::SEntry g_entries[1] = { { 2, (CTCBase*)&g_move } };
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { return *type <= 2 ? first : last; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { return *type <= 2 ? first : last; }
 int main()
 {
     static unsigned char creatureRaw[0x100]; memset(creatureRaw, 0, sizeof(creatureRaw));

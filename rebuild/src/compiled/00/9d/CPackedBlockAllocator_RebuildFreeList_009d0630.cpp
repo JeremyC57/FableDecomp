@@ -20,7 +20,7 @@ struct CRetailVector_dword {
     long* first;
     long* last;
     long* end;
-    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00464ACE
+    void InsertGrow_00464ace(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00464ACE
     bool empty() const { return first == last; }
     void push_back(const long& value)
     {
@@ -29,14 +29,14 @@ struct CRetailVector_dword {
             ++last;
         }
         else
-            InsertGrow(last, value, SScalarTag(), 1, true);
+            InsertGrow_00464ace(last, value, SScalarTag(), 1, true);
     }
 };
 void* GrowVectorStorage_s7(void* vector, unsigned long count);
 #pragma auto_inline(off)
 // Same-TU body of the vector growth template (InsertGrow, instantiated in retail's TU): reads the value through its const
 // reference into the new storage and never touches the empty tag (the landed push_back idiom).
-__declspec(noinline) void CRetailVector_dword::InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail)
+__declspec(noinline) void CRetailVector_dword::InsertGrow_00464ace(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail)
 {
     long* p = (long*)GrowVectorStorage_s7(this, count);
     if (p)

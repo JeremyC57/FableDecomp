@@ -10,7 +10,7 @@
 struct SEntry { long m_value; };
 
 struct CRegistry {
-    void Register(SEntry* entry);          // 0x008148C0
+    void Register_008148c0(SEntry* entry);          // 0x008148C0
 };
 
 struct COwner {
@@ -28,5 +28,5 @@ struct CTCBoastingPodium {
 
 void CTCBoastingPodium::OnCreate()
 {
-    m_pOwner->m_pRegistry->Register(&m_entry);
+    m_pOwner->m_pRegistry->Register_008148c0(&m_entry);
 }

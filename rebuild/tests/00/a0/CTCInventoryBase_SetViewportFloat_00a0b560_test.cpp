@@ -29,7 +29,7 @@ GFVBoxToABox(
 
 struct CDisplayManager
 {
-    void SetViewport(const C2DBoxI& viewport);
+    void SetViewport_009bf490(const C2DBoxI& viewport);
 };
 
 struct CTCInventoryBaseViewportFloatView
@@ -43,7 +43,7 @@ struct CTCInventoryBaseViewportFloatView
 static CDisplayManager* g_observedManager = 0;
 static C2DBoxI g_observedViewport = {};
 
-void CDisplayManager::SetViewport(const C2DBoxI& viewport)
+void CDisplayManager::SetViewport_009bf490(const C2DBoxI& viewport)
 {
     g_observedManager = this;
     g_observedViewport = viewport;

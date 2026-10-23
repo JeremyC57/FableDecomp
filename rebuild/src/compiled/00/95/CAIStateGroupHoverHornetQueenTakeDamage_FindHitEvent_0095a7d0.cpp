@@ -20,12 +20,12 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
+    SEntry* LowerBound(const long* type) const;       // 0x0040F020
 };
 #pragma auto_inline(off)
 // Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
 // the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 {
     SEntry* it = first;
     int len = int(last - first);

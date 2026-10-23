@@ -15,10 +15,10 @@ struct CCharString {
 struct C3DVector { float x, y, z; };
 struct SCountBlock;
 static int g_baseCtors = 0;
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase() { ++g_baseCtors; }
     virtual void v00() {}
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThingImp;
 struct CScriptThingPImp {
     CScriptThingImp* Data;

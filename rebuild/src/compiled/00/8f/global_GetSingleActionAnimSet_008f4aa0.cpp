@@ -23,12 +23,12 @@ struct CAnimSetVector {                            // vector<CAnimSet*>: first, 
     unsigned long size() const { return m_pLast - m_pFirst; }
 };
 
-void __fastcall GetActionAnimSetList(CAnimSetVector* list, CThingCreatureBase* creature, long action);   // 0x008F4990
+void __fastcall GetActionAnimSetList_008f4990(CAnimSetVector* list, CThingCreatureBase* creature, long action);   // 0x008F4990
 
 CAnimSet* __fastcall GetSingleActionAnimSet(CThingCreatureBase* creature, long action)
 {
     CAnimSetVector list;
-    GetActionAnimSetList(&list, creature, action);
+    GetActionAnimSetList_008f4990(&list, creature, action);
     if (list.size() == 1)
         return list.m_pFirst[0];
     return 0;

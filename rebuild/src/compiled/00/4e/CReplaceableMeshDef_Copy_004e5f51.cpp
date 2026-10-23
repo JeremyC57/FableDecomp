@@ -10,7 +10,7 @@ struct CDefClassBaseImpl {
 
 // member at +0x28 (its Copy is 0x4e5f70), src passed on stack (native __fastcall)
 struct Member28 {
-    void Copy(Member28 const* src);
+    void Copy_004e5f70(Member28 const* src);
 };
 
 struct CReplaceableMeshDef : public CDefClassBaseImpl {
@@ -22,5 +22,5 @@ struct CReplaceableMeshDef : public CDefClassBaseImpl {
 void __fastcall CReplaceableMeshDef_Copy(CReplaceableMeshDef* self, void* /*edx*/, CDefClassBase const* src)
 {
     self->CDefClassBaseImpl::Copy(src);
-    self->member.Copy((Member28 const*)((char const*)src + 0x28));
+    self->member.Copy_004e5f70((Member28 const*)((char const*)src + 0x28));
 }

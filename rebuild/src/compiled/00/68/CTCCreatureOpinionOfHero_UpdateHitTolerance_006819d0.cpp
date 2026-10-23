@@ -34,13 +34,13 @@ struct CTCCreatureOpinionOfHero {
     long    FrameToDecayNumberOfTimesHit;          // +0x18
     void*   PDef;                                  // +0x1c CDefPointer<COpinionOfHeroDef const>
     COpinionPersonalityDef* PPersonalityDef;       // +0x20 CDefPointer<COpinionPersonalityDef const>
-    CWorld* GetWorld() const;                      // 0x00686A80
+    CWorld* GetWorld_00686a80() const;                      // 0x00686A80
     float GetToleranceToBeingHitRemaining() const  // 0x00681940 (landed; inline here)
     {
         if (ToleranceToBeingHitOverride >= 0.0f)
             return ToleranceToBeingHitOverride;
         CThing* thing = ParentThing;
-        COpinionReactionManager* manager = GetWorld()->POpinionReactionManager;
+        COpinionReactionManager* manager = GetWorld_00686a80()->POpinionReactionManager;
         float tolerance = manager->GetToleranceToBeingHit(thing);
         if (PPersonalityDef)
             tolerance += PPersonalityDef->ToleranceToBeingHit;

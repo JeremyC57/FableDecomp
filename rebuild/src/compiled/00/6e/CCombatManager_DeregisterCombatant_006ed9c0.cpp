@@ -1,14 +1,14 @@
 struct CThingCreatureBase {
-    bool IsCombatant();
+    bool IsCombatant_00662410();
 };
 
 struct CCombatManager {
-    void RemoveCombatant(CThingCreatureBase* c);
+    void RemoveCombatant_006ed510(CThingCreatureBase* c);
     void DeregisterCombatant(CThingCreatureBase* c);
 };
 
 void CCombatManager::DeregisterCombatant(CThingCreatureBase* c)
 {
-    if (c->IsCombatant())
-        this->RemoveCombatant(c);
+    if (c->IsCombatant_00662410())
+        this->RemoveCombatant_006ed510(c);
 }

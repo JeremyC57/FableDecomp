@@ -12,7 +12,7 @@ struct SubObj
 
 struct Base
 {
-    virtual void FinishAction();  // call 0x694430 (base FinishAction on this)
+    virtual void FinishAction_008663d0();  // call 0x694430 (base FinishAction on this)
 };
 
 struct CCreatureAction_Die : public Base
@@ -25,6 +25,6 @@ struct CCreatureAction_Die : public Base
 
 void CCreatureAction_Die::FinishAction()
 {
-    Base::FinishAction();
+    Base::FinishAction_008663d0();
     this->sub.GetPItem()->Kill(true);
 }

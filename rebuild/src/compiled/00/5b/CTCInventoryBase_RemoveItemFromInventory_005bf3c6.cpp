@@ -13,7 +13,7 @@ struct CCategory_Retail {
     unsigned char _body[0x2C];
     void RemoveItem(long itemType, long numberOfItems);          // 0x005BF221
 };
-CCategory_Retail* __fastcall FindCategoryWithDefIndex(CCategory_Retail* first, CCategory_Retail* last, long categoryDefIndex);   // 0x005C08D3
+CCategory_Retail* __fastcall FindCategoryWithDefIndex_005c08d3(CCategory_Retail* first, CCategory_Retail* last, long categoryDefIndex);   // 0x005C08D3
 struct CCategoryVector {
     CCategory_Retail* first;
     CCategory_Retail* last;
@@ -27,5 +27,5 @@ struct CTCInventoryBase_Retail {
 void CTCInventoryBase_Retail::RemoveItemFromInventory(long itemType, long numberOfItems)
 {
     long categoryDefIndex = GetInventoryCategory(itemType);
-    FindCategoryWithDefIndex(Categories.first, Categories.last, categoryDefIndex)->RemoveItem(itemType, numberOfItems);
+    FindCategoryWithDefIndex_005c08d3(Categories.first, Categories.last, categoryDefIndex)->RemoveItem(itemType, numberOfItems);
 }

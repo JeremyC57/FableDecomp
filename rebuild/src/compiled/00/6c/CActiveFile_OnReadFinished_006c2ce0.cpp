@@ -15,12 +15,12 @@ struct CActiveFile {
     void* m_ptr; // +0
 };
 
-void __fastcall BaseOnReadFinished(CActiveFile* self);
+void __fastcall BaseOnReadFinished_006c2c00(CActiveFile* self);
 extern "C" void FreeReleased(void* p);
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
-    BaseOnReadFinished(self);
+    BaseOnReadFinished_006c2c00(self);
     void* p = self->m_ptr;
     if (p)
         FreeReleased(p);

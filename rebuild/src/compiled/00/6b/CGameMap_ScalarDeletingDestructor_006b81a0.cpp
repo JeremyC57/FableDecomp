@@ -10,10 +10,10 @@
 // this `??_G`) is emitted because the TU constructs the object (MakeOne).
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
-struct CBaseClass {
+namespace N_0099a300 { struct CBaseClass {
     virtual void v00();
     ~CBaseClass();                              // 0x0099A300
-};
+}; } using N_0099a300::CBaseClass;
 
 struct CMapBuffer {
     void* m_pData;                              // +0x00 the map cells (malloc'd)

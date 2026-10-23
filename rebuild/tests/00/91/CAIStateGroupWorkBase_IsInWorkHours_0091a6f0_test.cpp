@@ -19,7 +19,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCVillage { bool m_answer; bool IsCookTime() { return m_answer; } };
+struct CTCVillage { bool m_answer; bool IsCookTime_00658b20() { return m_answer; } };
 struct CComponent : CTCBase { CTCVillage* m_pOwner; };
 CTCVillage* __fastcall GFGetPVillageInterface(CComponent* c) { return c->m_pOwner; }
 struct CAIBrain { unsigned char _pad[0x18]; CThing* Creature; };
@@ -30,7 +30,7 @@ struct CAIStateGroup_WorkBase : CAIStateGroupBase {
         CComponent* pComponent;
         if (PBrain->Creature->GetInterface(&pComponent, 0x23)) {
             CTCVillage* pOwner = GFGetPVillageInterface(pComponent);
-            if (pOwner != 0) { if (pOwner->IsCookTime()) return true; }
+            if (pOwner != 0) { if (pOwner->IsCookTime_00658b20()) return true; }
         }
         return false;
     }

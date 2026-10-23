@@ -150,7 +150,7 @@ struct CCharString;
 typedef long EScriptAIPriority;
 
 struct CThingAICreature {
-    const C3DVector& GetPosition();             // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00();             // 0x006A4D00
 };
 
 struct CTCBoss {                                // interface 0xad
@@ -181,7 +181,7 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_EnemyCreatureBase {
 void CAIStateGroup_HoverHornetQueen::Initialise(CAIBrain& brain, CThingAICreature& creature, long id,
                                                 EScriptAIPriority priority, const CCharString& name)
 {
-    StartPos = creature.GetPosition();
+    StartPos = creature.GetPosition_006a4d00();
     CAIStateGroup_EnemyCreatureBase::Initialise(brain, creature, id, priority, name);
     bOneTime = true;
     EnemyKnockDownFrame = 0;

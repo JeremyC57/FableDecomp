@@ -62,10 +62,10 @@ struct CThingVillage : CThingGameObject {
     enum { ThingTypeMask = 0x407 };
 };
 
-struct CThingFilter_HasScriptName {
+namespace N_006a80a0 { struct CThingFilter_HasScriptName {
     const char* ScriptName;
     bool operator()(const CThing* thing) const;      // 0x006A80A0 (the HasTC bitset test)
-};
+}; } using N_006a80a0::CThingFilter_HasScriptName;
 
 struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)

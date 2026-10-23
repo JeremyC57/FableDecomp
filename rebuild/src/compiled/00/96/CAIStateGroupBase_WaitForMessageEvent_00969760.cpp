@@ -33,7 +33,7 @@ public:
     void*   __vftable;                        // +0x00
     CBrain* PBrain;                           // +0x04
     bool IsStopping();                        // 0x008FD010
-    CWorld* GetPWorld();                      // 0x008FCFA0 (PBrain->+0x1c->+0x24)
+    CWorld* GetPWorld_008fcfa0();                      // 0x008FCFA0 (PBrain->+0x1c->+0x24)
     long WaitForMessageEvent(long waitMode, const CFilter_Bind2& filter, CMessageEvent** event);
 };
 
@@ -43,7 +43,7 @@ long CAIStateGroupBase::WaitForMessageEvent(long waitMode, const CFilter_Bind2& 
         return 1;
     long result;
     do {
-        CMessageEventManager* manager = GetPWorld()->MessageEventManager;
+        CMessageEventManager* manager = GetPWorld_008fcfa0()->MessageEventManager;
         *event = manager->FindMostRecentMessage(filter);
         if (*event) {
             result = 2;

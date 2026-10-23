@@ -439,7 +439,7 @@ struct CTCCarrying {CThing* GetThingInPrimarySlot()const;}; //0x006A1440
 struct CInterfaceMap {
  struct Entry {long Type;CTCCarrying* Component;};
  Entry* First;Entry* Last;
- Entry* LowerBound(const long*); //0x004365B0
+ Entry* LowerBound(const long*) const; //0x004365B0
 };
 struct CThingCreatureBase {
  unsigned char _nativeBeforeComponentFlags[0x20];
@@ -718,7 +718,7 @@ void CCreatureActionBase::OnAnimationLoaded() { }
 bool CCreatureActionBase::WaitForMeshToLoad() const { return false; }
 
 bool CCreatureActionBase::HasPrecedingAction()const{return hasAction!=0;}
-CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long*t){++lookups;if(*t!=0x46)++errors;return First;}
+CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long*t) const{++lookups;if(*t!=0x46)++errors;return First;}
 CThing* CTCCarrying::GetThingInPrimarySlot()const{++heldReads;return heldExpected;}
 CCreatureAction_SheatheItemToInventory::CCreatureAction_SheatheItemToInventory(CThingCreatureBase&owner,CCreatureActionBase*next,long group){
  ++created;if(&owner!=ownerExpected||next!=followup||group!=8||ownerReads!=2||clones!=1)++errors;FollowUpData=next;FollowUpInfo=0;

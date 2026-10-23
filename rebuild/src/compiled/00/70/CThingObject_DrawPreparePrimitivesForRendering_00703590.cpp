@@ -20,10 +20,10 @@ struct C3DVector {
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                                   // 0x0099A2E0
     CBase();                                            // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 struct C3DPositionInterpolator : CBase {                // vtable 0x0123981C
     C3DVector StartPosition;                            // +0x04
     C3DVector EndPosition;                              // +0x10

@@ -2,12 +2,12 @@
 // Behaviour test for CObjectAugmentationParticleSet::CObjectAugmentationParticleSet(const CObjectAugmentationParticleSet&) @ 0x004EC46D
 static int g_arrayCopies = 0;
 class CDefString { public: long m_index; };
-class CArrayDefString {
+namespace N_004ec4b0 { class CArrayDefString {
 public:
     CDefString* m_pData; unsigned long m_size; unsigned long m_capacity;
     CArrayDefString() : m_pData(0), m_size(0), m_capacity(0) {}
     CArrayDefString(const CArrayDefString& other) : m_pData(other.m_pData), m_size(other.m_size), m_capacity(other.m_size) { ++g_arrayCopies; }
-};
+}; } using N_004ec4b0::CArrayDefString;
 class CObjectAugmentationParticleSet {
 public:
     float PeriodSecs; long ParticleEffect; long ParticleEffectToBlendTo; long AttackParticleEffect; long AttackParticleEffectToBlendTo;

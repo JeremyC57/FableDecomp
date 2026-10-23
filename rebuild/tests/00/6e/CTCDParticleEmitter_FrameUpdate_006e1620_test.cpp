@@ -29,11 +29,11 @@ struct CRightHandedSet {
     C3DVector Up;                                            // +0x00
     C3DVector Forward;                                       // +0x0c
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                                 // 0x0099A2D0
     ~CBase();                                                // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct C3DOrientationInterpolator : CBase {
     CRightHandedSet Start;
     CRightHandedSet End;

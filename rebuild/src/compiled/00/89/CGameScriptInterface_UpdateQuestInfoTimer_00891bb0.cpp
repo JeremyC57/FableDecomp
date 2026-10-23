@@ -3,7 +3,7 @@ namespace NPlayerGui
 class CDrawQuestInfo
 {
 public:
-    void UpdateTick(long questId, bool enabled);
+    void UpdateTick_00643f79(long questId, bool enabled);
 };
 }
 
@@ -29,5 +29,5 @@ void CGameScriptInterface::UpdateQuestInfoTick(
     bool enabled) const
 {
     CGSIUpdateQuestInfoTick_Gui->m_QuestInfo
-        ->UpdateTick(questId, enabled);
+        ->UpdateTick_00643f79(questId, enabled);
 }

@@ -350,7 +350,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 #undef CThing
 struct ComponentEntry{long Type;void* Component;};
-struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //004365B0
+struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&) const;}; //004365B0
 // Quarantined CThing donor has Components+48, retail has+44; lifecycle+91 confirmed by native.
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x45];unsigned char LifeFlags;};
 struct IntelligentInfo{CThingNative* Object;long References;};
@@ -382,7 +382,7 @@ bool CGameScriptThingMethods::MsgPerformedSuccessfulFlourish()const{
 static CThingNative* Current;static const PointerView* Expected;static int Gets,Queries,Lookups;static long ExpectedLast,ExpectedCurrent;static bool QueryResult;
 QuestManagerNative* QuestManager;
 CThingNative* PointerView::GetPItem()const{if(this!=Expected)return 0;++Gets;return Current;}
-ComponentEntry* ComponentMap::LowerBound(const long&key){++Lookups;if(key!=66)return Finish;return Start;}
+ComponentEntry* ComponentMap::LowerBound(const long&key) const{++Lookups;if(key!=66)return Finish;return Start;}
 static bool CheckQuery(EventBase**out,const CreatedBeforeOrOn*first,const CreatedAfter*second){++Queries;if(first->Frame!=ExpectedCurrent||second->Frame!=ExpectedLast)return false;*out=0;return QueryResult;}
 bool EntityEventsMethods::GetFlourishEvent(EventBase**out,const Bind2&b){return CheckQuery(out,b.First,b.Second);}
 bool EntityEventsMethods::GetSuccessfulFlourishEvent(EventBase**out,const Bind3&b){return b.First&&CheckQuery(out,b.Second,b.Third);}

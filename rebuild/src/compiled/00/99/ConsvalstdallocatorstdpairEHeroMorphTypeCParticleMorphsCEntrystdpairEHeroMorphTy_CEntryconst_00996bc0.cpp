@@ -21,7 +21,7 @@ struct Pair {
 // The inner element-allocator subobject (lives at outer+8).
 struct InnerAlloc {
     // real target at 0x997330 (declared, resolved by linker/relocation)
-    void Cons_val(Pair* p, const Pair* v);
+    void Cons_val_00997330(Pair* p, const Pair* v);
 };
 
 // Outer allocator: 8 bytes of preceding state, then the inner subobject at +8.
@@ -36,5 +36,5 @@ struct OuterAlloc {
 void OuterAlloc::Cons_val(Pair* p, const Pair* v)
 {
     // ecx += 8 (adjust to inner), then tail-jmp into inner.Cons_val
-    inner.Cons_val(p, v);
+    inner.Cons_val_00997330(p, v);
 }

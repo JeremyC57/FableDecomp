@@ -9,7 +9,7 @@
 #endif
 
 static int g_base = 0;
-struct CBaseClass { virtual void v00() { } CBaseClass() { ++g_base; } };
+namespace N_0099a2f0 { struct CBaseClass { virtual void v00() { } CBaseClass() { ++g_base; } }; } using N_0099a2f0::CBaseClass;
 struct SBankCounters { long m_count; long m_limit; bool m_flag; SBankCounters() : m_count(0), m_limit(0), m_flag(false) { } };
 struct CSoundBankLH : CBaseClass { long m_4, m_8, m_bankIndex, m_10; SBankCounters m_counters; virtual void v00() { }
     CSoundBankLH(long bankIndex) : CBaseClass(), m_4(0), m_8(0), m_bankIndex(bankIndex), m_10(0), m_counters() { } };

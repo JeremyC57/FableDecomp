@@ -3,7 +3,7 @@
 static char g_seq[32] = ""; static const void* g_name = 0; static long g_access = 0, g_flags = 0; static const void* g_version = 0; static const void* g_file = 0;
 struct CWideString { void* PStringData; ~CWideString() { std::strcat(g_seq, "w"); } };
 struct CVersion { long a; };
-struct CBase { virtual void v00() { } ~CBase() { std::strcat(g_seq, "b"); } };
+namespace N_0099a300 { struct CBase { virtual void v00() { } ~CBase() { std::strcat(g_seq, "b"); } }; } using N_0099a300::CBase;
 struct CDiskFileWin32 : CBase {
     virtual void v00() { }
     virtual void Open(const CWideString&, long, unsigned long) { }

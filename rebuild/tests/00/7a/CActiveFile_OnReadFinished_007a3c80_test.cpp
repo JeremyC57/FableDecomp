@@ -7,7 +7,7 @@ struct CActiveFile {
 static int g_base_called = 0;
 static void* g_freed = (void*)0;
 
-void __fastcall BaseReadDone(CActiveFile* self) { (void)self; g_base_called++; }
+void __fastcall BaseReadDone_007a3910(CActiveFile* self) { (void)self; g_base_called++; }
 void FreeHelper(void* p) { g_freed = p; }
 
 void __fastcall OnReadFinished(CActiveFile* self);

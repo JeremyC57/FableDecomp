@@ -18,7 +18,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x004365B0
+    SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 
 struct CThing {
@@ -134,7 +134,7 @@ bool __fastcall IsThingVulnerableToMeleeStrikesFromThing(CThing* target, CThing*
     CHECK(target == g_target);
     return g_vulnerable;
 }
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 {
     SEntry* it = first;
     while (it != last && it->type < *type)

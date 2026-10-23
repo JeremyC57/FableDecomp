@@ -10,10 +10,10 @@
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
 struct CThing;
 
-struct CTCShotDefinitionProjectile {
+namespace N_004de6b6 { struct CTCShotDefinitionProjectile {
     virtual void v00();
     CTCShotDefinitionProjectile(CThing* argument);            // 0x004DE6B6
-};
+}; } using N_004de6b6::CTCShotDefinitionProjectile;
 
 struct CTCCreatureItemLevitationHero : CTCShotDefinitionProjectile {
     virtual void v00();

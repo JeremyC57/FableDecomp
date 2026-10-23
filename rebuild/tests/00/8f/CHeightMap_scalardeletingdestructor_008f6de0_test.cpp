@@ -10,9 +10,9 @@ static unsigned long* g_seedSeen = (unsigned long*)1;
 
 static void FreeBlock(void* p) { g_freed = p; g_events[g_count++] = 1; std::free(p); }
 
-struct CBaseClass {
+namespace N_0099a300 { struct CBaseClass {
     virtual ~CBaseClass() { g_events[g_count++] = 2; }
-};
+}; } using N_0099a300::CBaseClass;
 
 struct CWorld;
 struct CMap;

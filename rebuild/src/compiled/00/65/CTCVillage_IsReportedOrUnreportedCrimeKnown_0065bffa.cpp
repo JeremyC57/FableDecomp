@@ -21,7 +21,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 class CBaseObject {
 public:

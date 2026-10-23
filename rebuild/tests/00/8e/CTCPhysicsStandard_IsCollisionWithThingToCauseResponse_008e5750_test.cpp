@@ -14,7 +14,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 struct CThing {
     unsigned char _pad00[0x20];
@@ -72,7 +72,7 @@ bool CTCPhysicsStandard::IsCollisionWithThingToCauseResponse(CTCPhysicsBase* oth
 #include <cstdio>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 {
     SEntry* it = first;
     while (it != last && it->type < *type)

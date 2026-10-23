@@ -31,7 +31,7 @@ public:
     CInterfaceMap m_interfaces;                    // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                       // +0x91 bit 0: dead
-    CPlayer* GetPlayer();                          // 0x004C7A30
+    CPlayer* GetPlayer_004c7a30();                          // 0x004C7A30
     template<class T> __forceinline T* GetConstInterface(long interfaceType) const
     {
         T* result = 0;
@@ -131,6 +131,6 @@ void CInputProcessUseRangedWeapon::ProcessInput(const CInputEvent& event, CProce
         CTCHeroRangedAttacks* rangedAttacks = hero->GetInterface<CTCHeroRangedAttacks>(0x81);
         rangedAttacks->CancelAimingWeapon();
         rangedAttacks->ResetProjectileWeaponMode();
-        hero->GetPlayer()->RemoveMode(0x22);
+        hero->GetPlayer_004c7a30()->RemoveMode(0x22);
     }
 }

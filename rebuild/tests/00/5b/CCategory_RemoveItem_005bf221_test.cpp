@@ -19,8 +19,8 @@ struct CDefPointer { CDefRetail* m_pObject; CDefRef operator->() const { return 
 struct CInv { virtual void RemoveItems(long t, long n) { ++g_calls; g_lastArg = t; g_lastArg2 = n; } virtual void OnItemSelected(long t) { ++g_calls; g_lastArg = t; } virtual void OnItemOfTypeSelected(long t, int) { ++g_calls; g_lastArg = t; } };
 struct CCategory_Retail { unsigned char PAssociatedThing[8]; CItemVector ItemsInCategory; CDefPointer PDef; CInv* PInventory; long GlobalDefIndex; long SelectedItemIndex; long HighlightedItemIndex; bool Selected; bool DisplayItems;
     struct SItemMatcher { long m_itemType; bool m_allowMultipleSlots; SItemMatcher(long t, bool a) : m_itemType(t), m_allowMultipleSlots(a) {} };
-    CItem_Methods* FindMatchingItem(CItem_Methods* f, CItem_Methods* l, SItemMatcher m) { for (; f != l; ++f) if (f->ItemType == m.m_itemType && (m.m_allowMultipleSlots || f->NumberOfItems != 0)) return f; return l; }
-    void RemoveItem(long t, long n) { CItem_Methods* item = FindMatchingItem(ItemsInCategory.first, ItemsInCategory.last, SItemMatcher(t, false)); item->RemoveItem(n); }
+    CItem_Methods* FindMatchingItem_005c190b(CItem_Methods* f, CItem_Methods* l, SItemMatcher m) { for (; f != l; ++f) if (f->ItemType == m.m_itemType && (m.m_allowMultipleSlots || f->NumberOfItems != 0)) return f; return l; }
+    void RemoveItem(long t, long n) { CItem_Methods* item = FindMatchingItem_005c190b(ItemsInCategory.first, ItemsInCategory.last, SItemMatcher(t, false)); item->RemoveItem(n); }
 };
 static CItem_Methods g_items[4];
 static CInv g_inv; static CDefRetail g_def = { 1, 6, true, 42, 0 };

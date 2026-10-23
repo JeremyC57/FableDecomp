@@ -4,19 +4,19 @@ extern "C" void freefn(void* p);
 
 struct CActiveFile {
     void* buffer;
-    void Helper();
+    void Helper_009aae50();
     void OnReadFinished();
 };
 
 static int g_helper_calls = 0;
 static void* g_freed = (void*)-1;
 
-void CActiveFile::Helper() { g_helper_calls++; }
+void CActiveFile::Helper_009aae50() { g_helper_calls++; }
 extern "C" void freefn(void* p) { g_freed = p; }
 
 void CActiveFile::OnReadFinished()
 {
-    this->Helper();
+    this->Helper_009aae50();
     void* p = this->buffer;
     if (p != 0)
         freefn(p);

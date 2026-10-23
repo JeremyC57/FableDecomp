@@ -10,10 +10,10 @@
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
 struct CThing;
 
-struct CTCOpinionSource {
+namespace N_0075c180 { struct CTCOpinionSource {
     virtual void v00();
     CTCOpinionSource(CThing* argument);            // 0x0075C180
-};
+}; } using N_0075c180::CTCOpinionSource;
 
 struct CTCCameraPointShapeActivationBase : CTCOpinionSource {
     virtual void v00();

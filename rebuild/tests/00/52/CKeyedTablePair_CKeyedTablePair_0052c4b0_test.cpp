@@ -19,10 +19,10 @@ struct CRbTree {
 };
 struct SKeyedDefString { unsigned int m_key; void* m_pString; };
 static long g_destroyed = 0;
-static void DestroyRange(SKeyedDefString* first, SKeyedDefString* last, const SScalarTag&) { g_destroyed += last - first; g_order[g_n++] = 3; }
+static void DestroyRange_0052bd70(SKeyedDefString* first, SKeyedDefString* last, const SScalarTag&) { g_destroyed += last - first; g_order[g_n++] = 3; }
 struct CVec {
     SKeyedDefString* m_pFirst; SKeyedDefString* m_pLast; SKeyedDefString* m_pEnd;
-    ~CVec() { DestroyRange(m_pFirst, m_pLast, SScalarTag()); if (m_pFirst) { g_order[g_n++] = 4; std::free(m_pFirst); } }
+    ~CVec() { DestroyRange_0052bd70(m_pFirst, m_pLast, SScalarTag()); if (m_pFirst) { g_order[g_n++] = 4; std::free(m_pFirst); } }
 };
 struct CKeyedTablePair { CVec m_first; CVec m_second; CRbTree m_index; };
 

@@ -8,10 +8,10 @@
 // constructor @ 0x0090035D runs, then the compiler stores this class's vtable (0x0128D0A0
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CAIStateGroupBehaviourBase {
+namespace N_0090035d { struct CAIStateGroupBehaviourBase {
     virtual void v00();
     CAIStateGroupBehaviourBase();                           // 0x0090035D
-};
+}; } using N_0090035d::CAIStateGroupBehaviourBase;
 
 struct CAIStateGroup_RockTroll : CAIStateGroupBehaviourBase {
     virtual void v00();                    // this class has its own vtable

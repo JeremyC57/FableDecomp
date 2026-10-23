@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 // behaviour test for 0x0048DAA2: exercises the same logic through a copy of the model (compiled separately from the source)
-struct CCharString { const char* m_pData; operator const char*() const { return m_pData; } };
+namespace N_0099af10 { struct CCharString { const char* m_pData; operator const char*() const { return m_pData; } }; } using N_0099af10::CCharString;
 struct SEntryHandle_0048daa2 { long m_index; long m_tag; SEntryHandle_0048daa2() {} };
 struct CGuiControlListBox {
     virtual void v00() {}

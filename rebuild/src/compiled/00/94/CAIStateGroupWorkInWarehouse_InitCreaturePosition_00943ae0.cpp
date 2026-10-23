@@ -63,7 +63,7 @@ struct CAIStateGroupBase {
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFA0
+    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
 };
 
 struct CAIStateGroup_WorkInWarehouse : CAIStateGroupBase {
@@ -77,7 +77,7 @@ bool CAIStateGroup_WorkInWarehouse::InitCreaturePosition()
     if (IsRunnable()) {
         CThing* warehouse = static_cast<CThingCrate*>(PCrate.GetPItem())->GetPWarehouse();
         CThingAICreature* creature = PBrain->Creature;
-        return creature->AutoPlaceNear(warehouse->GetPosition(), GFFloatRandom(30.0f, GetPWorld()->GetPRandomSeed()));
+        return creature->AutoPlaceNear(warehouse->GetPosition(), GFFloatRandom(30.0f, GetPWorld_008fcfa0()->GetPRandomSeed()));
     }
     return false;
 }

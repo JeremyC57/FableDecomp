@@ -15,10 +15,10 @@
 #include <stdlib.h>
 void operator delete(void* p);                         // 0x00BFE9BC
 
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual ~CBase();                                  // 0x0099A300
     CBase();                                           // 0x0099A2F0
-};
+}; } using N_0099a300::CBase;
 struct CWorldMapBase2 {
     virtual void v00();
     virtual ~CWorldMapBase2() {}

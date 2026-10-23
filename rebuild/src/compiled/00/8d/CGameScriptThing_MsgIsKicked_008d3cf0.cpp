@@ -8,7 +8,7 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 struct ComponentEntry{long Type;void* Component;};
-struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //004365B0
+struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&) const;}; //004365B0
 // Quarantined CThing donor has Components+48, retail has+44; lifecycle+91 confirmed by native.
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x45];unsigned char LifeFlags;};
 struct IntelligentInfo{CThingNative* Object;long References;};

@@ -76,7 +76,7 @@ struct CRetailTree_longkey {                      // std::map<long, IsValid modu
     struct iterator { node* current; iterator(node* n) : current(n) { } };
     node*         head;                        // +0 (end() node)
     unsigned long size;                        // +4
-    iterator find(const long& key);            // 0x008B2400
+    iterator find_008b2400(const long& key);            // 0x008B2400
 };
 
 extern CRetailTree_longkey g_IsValidModules;                 // 0x013BAFA8
@@ -89,7 +89,7 @@ bool CCombatSequenceGeneric_Retail::IsValid()
 {
     const CCombatSequenceDef_Retail* def = Def_Object;
     if (def->IsValidType != 0) {
-        CRetailTree_longkey::iterator it = g_IsValidModules.find(def->IsValidType);
+        CRetailTree_longkey::iterator it = g_IsValidModules.find_008b2400(def->IsValidType);
         if (it.current != g_IsValidModules.head && it.current->value)
             return it.current->value(Creature, Target);
     }

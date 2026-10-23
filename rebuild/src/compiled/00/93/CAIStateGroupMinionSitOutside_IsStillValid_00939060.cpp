@@ -95,7 +95,7 @@ unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CTCVillager;
 struct CTCVillage {
-    bool IsCurfewTime();                        // 0x00658DB3
+    bool IsCurfewTime_00658db3();                        // 0x00658DB3
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
@@ -110,7 +110,7 @@ unsigned char CAIStateGroup_MinionSitOutside::IsStillValid()
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
         if (GFGetPVillageInterface(villager) != 0) {
-            if (GFGetPVillageInterface(villager)->IsCurfewTime())
+            if (GFGetPVillageInterface(villager)->IsCurfewTime_00658db3())
                 return false;
         }
     }

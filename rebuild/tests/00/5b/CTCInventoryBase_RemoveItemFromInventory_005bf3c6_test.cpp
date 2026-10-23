@@ -1,14 +1,14 @@
 #include <cstdio>
 long GetInventoryCategory(long itemType) { return itemType >= 100 ? itemType / 100 : -1; }
 struct CCategory { long GlobalDefIndex; long removedType, removedCount; void RemoveItem(long t, long n) { removedType = t; removedCount = n; } };
-CCategory* FindCategoryWithDefIndex(CCategory* first, CCategory* last, long idx) { while (first != last && first->GlobalDefIndex != idx) ++first; return first; }
+CCategory* FindCategoryWithDefIndex_005c08d3(CCategory* first, CCategory* last, long idx) { while (first != last && first->GlobalDefIndex != idx) ++first; return first; }
 struct CCategoryVector { CCategory* first; CCategory* last; CCategory* end_of_storage; };
 struct Inv {
     CCategoryVector Categories;
     void RemoveItemFromInventory(long itemType, long numberOfItems)
     {
         long categoryDefIndex = GetInventoryCategory(itemType);
-        FindCategoryWithDefIndex(Categories.first, Categories.last, categoryDefIndex)->RemoveItem(itemType, numberOfItems);
+        FindCategoryWithDefIndex_005c08d3(Categories.first, Categories.last, categoryDefIndex)->RemoveItem(itemType, numberOfItems);
     }
 };
 int main()

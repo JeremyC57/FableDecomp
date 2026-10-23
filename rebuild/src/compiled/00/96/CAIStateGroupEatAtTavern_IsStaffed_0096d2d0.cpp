@@ -11,7 +11,7 @@ struct CRetailInterfaceMap {
     struct Entry { long Type; void* Component; };
     Entry* First;
     Entry* Last;
-    Entry* LowerBound(const long*); // 0x004365B0
+    Entry* LowerBound(const long*) const; // 0x004365B0
 };
 // Retail CThing prefix: PDB UsingComponents name, compact component map; Dead is +0x91 vs donor +0xa1.
 struct CRetailThingView {

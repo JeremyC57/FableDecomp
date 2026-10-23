@@ -51,7 +51,7 @@ extern long g_FramesPerSecond;              // 0x01375550
 
 struct CThingCreatureBase;
 struct CCombatManager {
-    void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006EA430
+    void DeregisterCombatant_006ea430(CThingCreatureBase* creature);   // 0x006EA430
 };
 
 struct CTCCombat_Methods : CTCCombat {
@@ -63,5 +63,5 @@ void CTCCombat_Methods::SetBlocked(CThing* blocker)
     CTCBase* component;
     if (blocker->m_thingType == 2 && blocker->GetInterface(48, &component))
         component->m_frameCounter = (long)(g_FramesPerSecond * 2.0f);
-    CombatManager->DeregisterCombatant(ParentCreature);
+    CombatManager->DeregisterCombatant_006ea430(ParentCreature);
 }

@@ -3,11 +3,11 @@
 // message is sent to the parent thing (and destroyed right after), texture morphs rebuilt, the graphic appearance
 // flagged with 8 and Changed cleared.
 static int g_order = 0; static int g_sent = 0, g_destroyed = 0, g_update = 0, g_flagged = 0; static unsigned long g_flags = 0; static bool g_ok = true;
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual long Kind() const { return 0; }
     CBase() {}
     ~CBase() { g_destroyed = ++g_order; }
-};
+}; } using N_0099a2d0::CBase;
 struct CMessageOnMorphChanged : CBase {
     virtual long Kind() const { return 42; }
     CMessageOnMorphChanged() {}

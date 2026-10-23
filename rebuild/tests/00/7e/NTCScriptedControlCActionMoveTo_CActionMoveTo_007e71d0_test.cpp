@@ -6,7 +6,7 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_base = 0, g_scriptBase = 0;
 struct CBase { virtual void v00() {} CBase() { ++g_base; } };
-struct CScriptBase { virtual void v00() {} CScriptBase() { ++g_scriptBase; } };
+namespace N_0099a2d0 { struct CScriptBase { virtual void v00() {} CScriptBase() { ++g_scriptBase; } }; } using N_0099a2d0::CScriptBase;
 struct C3DVector {
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

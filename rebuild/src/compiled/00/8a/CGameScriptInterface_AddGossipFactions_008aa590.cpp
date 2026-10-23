@@ -15,9 +15,9 @@ struct CCharString {
 struct CGameScriptInterface { char pad[4]; };
 
 // Inner gossip routine @ 0x8ae660: takes the string BY VALUE (owns/destroys the copy).
-void __fastcall Inner(CCharString byval);
+void __fastcall Inner_008aeac0(CCharString byval);
 
 void __fastcall AddGossipFactions(CGameScriptInterface* self, void* edx, CCharString category)
 {
-    Inner(category);
+    Inner_008aeac0(category);
 }

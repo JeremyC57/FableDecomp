@@ -7,10 +7,10 @@
 // Default constructor that passes the constant 14 (0xe) to the base constructor @ 0x004C9030
 // (an identifier/type code of this class in the base's scheme) and installs this class's vtable
 // (0x01272EE4, named through rtti-vtables.tsv). One of 12 bodies of this shape.
-struct CThing {
+namespace N_004c9030 { struct CThing {
     virtual void v00();
     CThing(long typeCode);              // 0x004C9030
-};
+}; } using N_004c9030::CThing;
 
 struct CThingNoise : CThing {
     virtual void v00();

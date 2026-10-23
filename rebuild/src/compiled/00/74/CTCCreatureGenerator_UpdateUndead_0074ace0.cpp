@@ -21,11 +21,11 @@ struct CCharString {
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-struct CCreatureActionBase {
+namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
     unsigned char _body[0x110];
     ~CCreatureActionBase();                                  // 0x0062E900
-};
+}; } using N_0062e900::CCreatureActionBase;
 struct CCombatActionBase : CCreatureActionBase {
     void SetAnimationName(const CCharString& name);          // 0x008574D0
 };

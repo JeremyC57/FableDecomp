@@ -7,7 +7,7 @@ static int g_base = 0;
 static void* g_vt = 0;
 
 extern "C" void __fastcall MemberDtor_686df0(void* self){ g_member++; }
-extern "C" void __fastcall BaseDtor_686830(void* self){ g_base++; }
+extern "C" void __fastcall BaseDtor_686830_00686830(void* self){ g_base++; }
 
 extern const void* const g_vtbl_CInputProcessManager[1] = {0};
 

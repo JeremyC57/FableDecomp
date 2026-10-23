@@ -30,7 +30,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x004365B0
+    SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 
 struct CThingInterfaces {                                   // CThing: the interface bitset + map
@@ -102,7 +102,7 @@ bool CTCBuyableHouse_Model::IsHouseBeingUsed(bool asWorkplace) const
 // ---- stubs and driver ----
 static CInterfaceMap::SEntry g_entries[2];
 static long g_lbType = -1;
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { g_lbType = *type; return &g_entries[0]; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { g_lbType = *type; return &g_entries[0]; }
 static CTCVillage_Model g_village; static CTCVillage_Model* g_retVillage = &g_village; static const CTCVillageMember* g_memberThis;
 CTCVillage_Model* CTCVillageMember::GetPVillage() const { g_memberThis = this; return g_retVillage; }
 static int g_work = 0, g_home = 0; static SPeopleNode* g_first; static SPeopleNode* g_last; static CThingInterfaces* g_pred; static long g_count = 0;

@@ -7,7 +7,7 @@ struct CCharString {
     CCharString(const char* s, int n);
 };
 
-extern const char kActionName[];
+extern const char kActionName_0123bffc[];
 
 struct CTCSkeletalMorph {
     CCharString GetClassTypeName();
@@ -15,5 +15,5 @@ struct CTCSkeletalMorph {
 
 CCharString CTCSkeletalMorph::GetClassTypeName()
 {
-    return CCharString(kActionName, -1);
+    return CCharString(kActionName_0123bffc, -1);
 }

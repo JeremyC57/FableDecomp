@@ -3,7 +3,7 @@
 
 struct BaseDef {
     char pad[0xd];
-    BaseDef* AssignBase(const BaseDef* rhs);
+    BaseDef* AssignBase_005f9074(const BaseDef* rhs);
 };
 
 struct CTavernTableDef : public BaseDef {
@@ -12,7 +12,7 @@ struct CTavernTableDef : public BaseDef {
 };
 
 // out-of-line base operator= : copy the 0xd base bytes, return this
-BaseDef* BaseDef::AssignBase(const BaseDef* rhs)
+BaseDef* BaseDef::AssignBase_005f9074(const BaseDef* rhs)
 {
     memcpy(this->pad, rhs->pad, 0xd);
     return this;
@@ -20,7 +20,7 @@ BaseDef* BaseDef::AssignBase(const BaseDef* rhs)
 
 CTavernTableDef& CTavernTableDef::operator=(const CTavernTableDef& rhs)
 {
-    this->AssignBase(&rhs);
+    this->AssignBase_005f9074(&rhs);
     this->m_flag = rhs.m_flag;
     return *this;
 }

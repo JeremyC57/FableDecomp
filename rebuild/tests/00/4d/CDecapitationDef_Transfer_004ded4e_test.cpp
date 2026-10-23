@@ -5,7 +5,7 @@ struct CMember { int x; };
 struct CPersistContext {
     int calls;
     void* args[4];
-    void Persist(CMember* m) { if (calls < 4) args[calls] = m; calls++; }
+    void Persist_00431102(CMember* m) { if (calls < 4) args[calls] = m; calls++; }
 };
 
 struct CGuildMasterDef {
@@ -16,8 +16,8 @@ struct CGuildMasterDef {
 
 void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->Persist(&def->m28);
-    ctx->Persist(&def->m2c);
+    ctx->Persist_00431102(&def->m28);
+    ctx->Persist_00431102(&def->m2c);
 }
 
 int main()

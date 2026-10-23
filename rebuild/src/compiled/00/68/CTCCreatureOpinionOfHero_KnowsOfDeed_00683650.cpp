@@ -56,7 +56,7 @@ struct CPlayer {
     CThing* GetHeroThing();                     // 0x00487DC0 (the manifest's "_Cons_val<...>" is propagated)
 };
 struct CPlayerManager {
-    CPlayer* GetMainPlayer();                   // 0x00449960
+    CPlayer* GetMainPlayer() const;                   // 0x00449960
 };
 struct CTCCreatureOpinionOfHero {
     virtual void v00();

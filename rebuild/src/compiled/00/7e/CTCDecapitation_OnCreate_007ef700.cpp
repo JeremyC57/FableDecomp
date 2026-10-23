@@ -10,7 +10,7 @@
 struct SEntry { long m_value; };
 
 struct CRegistry {
-    void Register(SEntry* entry);          // 0x007EFC50
+    void Register_007efc50(SEntry* entry);          // 0x007EFC50
 };
 
 struct COwner {
@@ -28,5 +28,5 @@ struct CTCDecapitation {
 
 void CTCDecapitation::OnCreate()
 {
-    m_pOwner->m_pRegistry->Register(&m_entry);
+    m_pOwner->m_pRegistry->Register_007efc50(&m_entry);
 }

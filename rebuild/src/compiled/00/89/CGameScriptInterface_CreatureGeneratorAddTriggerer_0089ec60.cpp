@@ -1,7 +1,7 @@
 struct BObj {
     unsigned char pad[0x6c];
     unsigned char flag6c;
-    void consume(BObj* b);   // real member => thiscall, arg on stack
+    void consume_0074ac80(BObj* b);   // real member => thiscall, arg on stack
 };
 struct Node { int key; BObj* value; };
 struct MapT {
@@ -42,5 +42,5 @@ void __stdcall CGameScriptInterface_CreatureGeneratorRemoveTriggerer(Host* p0, H
 
     BObj* val;
     if (GetTCOut(a, 0x3d, &val) && (b->flag6c & 8))
-        val->consume(b);
+        val->consume_0074ac80(b);
 }

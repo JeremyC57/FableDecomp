@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem((void*)1) { m_pItem = 0; }
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() { } };
-struct CBase { int m_kind; CBase() : m_kind(1) { } };
+namespace N_0099a2d0 { struct CBase { int m_kind; CBase() : m_kind(1) { } }; } using N_0099a2d0::CBase;
 struct CEnginePrimitiveHandle : CBase {
     long m_id;
     CEnginePrimitiveHandle() : m_id(0) { m_kind = 2; }

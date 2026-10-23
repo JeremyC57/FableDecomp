@@ -54,10 +54,10 @@ struct CThingList {
 };
 
 
-struct CThingFilter_HasDefGlobalIndex {
+namespace N_006a7be0 { struct CThingFilter_HasDefGlobalIndex {
     unsigned short DefGlobalIndex;
     bool operator()(const CThing* thing) const;      // 0x006A7BE0 (manifest: CThingFilter_HasDefName)
-};
+}; } using N_006a7be0::CThingFilter_HasDefGlobalIndex;
 
 struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)

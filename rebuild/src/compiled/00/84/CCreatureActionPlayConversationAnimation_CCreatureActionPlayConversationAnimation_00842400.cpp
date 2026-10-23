@@ -7,7 +7,7 @@ struct CSoundPair { long FirstSound; long LastSound; };
 struct CThingCreatureBase {
     CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool loaded);   // 0x00662FA0
 };
-const CCharString& __fastcall GetAnimGroupName(long attitude);   // 0x004CD9B0 (EConversationAttitude)
+const CCharString& __fastcall GetAnimGroupName_004cd9b0(long attitude);   // 0x004CD9B0 (EConversationAttitude)
 struct CCreatureActionBase {                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
@@ -21,7 +21,7 @@ struct CCreatureAction_PlayConversationAnimation : CCreatureActionBase {   // vt
 };
 
 CCreatureAction_PlayConversationAnimation::CCreatureAction_PlayConversationAnimation(CThingCreatureBase* owner, long attitude, const CSoundPair& sound, long c, long d)
-    : CCreatureActionBase(owner, -1.0f, 1.0f, owner->GetRandomLoadedAnimFromName(GetAnimGroupName(attitude), true), sound, c, d)
+    : CCreatureActionBase(owner, -1.0f, 1.0f, owner->GetRandomLoadedAnimFromName(GetAnimGroupName_004cd9b0(attitude), true), sound, c, d)
     , m_finished(0)
 {
 }

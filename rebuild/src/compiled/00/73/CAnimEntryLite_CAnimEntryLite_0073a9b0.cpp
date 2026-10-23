@@ -18,7 +18,7 @@ struct CAnimationEntry {
     long AnimName;                              // +0x04 CDefString
     long GroupName;                             // +0x08 CDefString
     void* Components;                           // +0x0c CIVCountedPointer<CAnimComponentMap>
-    long GetAnimationTransitionInTime() const;  // 0x005DC1D0
+    long GetAnimationTransitionInTime_005dc1d0() const;  // 0x005DC1D0
     long GetAnimationDelayTime() const;         // 0x005DC1F0
     void GetFlagsComponent(CAnimComponentFlags** ppComponent) const;    // 0x005E0380 (out pointer)
     long GetAnimationFlags() const
@@ -40,7 +40,7 @@ struct CAnimEntryLite {
 CAnimEntryLite::CAnimEntryLite(const CAnimationEntry& entry)
 {
     BankIndex = entry.BankIndex;
-    TransitionTime = entry.GetAnimationTransitionInTime();
+    TransitionTime = entry.GetAnimationTransitionInTime_005dc1d0();
     DelayTime = entry.GetAnimationDelayTime();
     AnimFlags = entry.GetAnimationFlags();
 }

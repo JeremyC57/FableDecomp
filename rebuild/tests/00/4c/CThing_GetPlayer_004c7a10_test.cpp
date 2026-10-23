@@ -2,7 +2,7 @@
 struct CPlayer;
 struct CThing { char pad[0x90]; signed char idx; };
 static int g_last_idx;
-struct CInner { CPlayer* Get(int idx){ g_last_idx = idx; return (CPlayer*)0; } };
+struct CInner { CPlayer* Get_00449910(int idx){ g_last_idx = idx; return (CPlayer*)0; } };
 struct COuter { char pad[0x30]; CInner* inner; };
 static CInner g_inner_obj;
 static COuter g_outer_obj;
@@ -10,7 +10,7 @@ COuter* g_outer = &g_outer_obj;
 
 CPlayer* CThing_GetPlayer(CThing* self)
 {
-    return g_outer->inner->Get(self->idx);
+    return g_outer->inner->Get_00449910(self->idx);
 }
 
 int main(){

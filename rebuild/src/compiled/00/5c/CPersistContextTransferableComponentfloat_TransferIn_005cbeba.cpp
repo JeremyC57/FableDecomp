@@ -10,7 +10,7 @@ class CStringParser;
 struct TransferHelper {
     unsigned int m_dword;
     // out-of-line __fastcall method -> emitted as a direct call
-    void Apply(CPersistContext* ctx, CStringParser* parser, unsigned int value);
+    void Apply_00a3e180(CPersistContext* ctx, CStringParser* parser, unsigned int value);
 };
 
 struct CPersistContext_TransferableComponent_float {
@@ -23,5 +23,5 @@ void CPersistContext_TransferableComponent_float::TransferIn(CPersistContext* ct
 {
     TransferHelper tmp;
     tmp.m_dword = 0;
-    tmp.Apply(ctx, parser, this->m_value);
+    tmp.Apply_00a3e180(ctx, parser, this->m_value);
 }

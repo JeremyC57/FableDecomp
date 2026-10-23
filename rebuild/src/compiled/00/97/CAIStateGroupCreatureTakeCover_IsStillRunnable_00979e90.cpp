@@ -33,7 +33,7 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;                                  // +0x00
     SEntry* last;                                   // +0x04
-    SEntry* LowerBound(const long* type);           // 0x004365B0
+    SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
 struct CThing

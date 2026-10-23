@@ -15,7 +15,7 @@ struct C3DVector {
 struct CThing {
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition();         // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00();         // 0x006A4D00
 };
 
 struct CThingCreatureBase {
@@ -47,7 +47,7 @@ bool CAIStateGroup_MinionCuriosity::FindNewCuriosityPos()
 {
     CThing* thing = PBrain->Creature->GetCuriosityThing();
     if (thing && !(thing->m_flags91 & 1)) {
-        CuriosityPos = thing->GetPosition();
+        CuriosityPos = thing->GetPosition_006a4d00();
         return true;
     }
     return false;

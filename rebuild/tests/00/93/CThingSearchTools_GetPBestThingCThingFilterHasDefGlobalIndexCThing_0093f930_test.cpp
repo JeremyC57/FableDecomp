@@ -43,10 +43,10 @@ struct CThingList {
 };
 
 
-struct CThingFilter_HasDefGlobalIndex {
+namespace N_006a76b0 { struct CThingFilter_HasDefGlobalIndex {
     unsigned short DefGlobalIndex;
     bool operator()(const CThing* thing) const;      // 0x006A76B0 (manifest: CThingFilter_In2DRange)
-};
+}; } using N_006a76b0::CThingFilter_HasDefGlobalIndex;
 struct CThingCompare_Nearest {                       // out-of-line member template per thing type
     float X, Y, Z;
     template <class T> T* operator()(T* best, T* candidate) const;

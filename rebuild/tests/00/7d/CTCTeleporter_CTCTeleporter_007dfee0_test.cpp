@@ -6,7 +6,7 @@ static CTeleporterDef g_def;
 struct CDefPointer { CTeleporterDef* m_p; CDefPointer() : m_p(0) {} };
 struct CDefClassBase {
     int calls; CDefPointer* lastOut;
-    bool GetSubDef(CDefPointer* out) { ++calls; lastOut = out; out->m_p = &g_def; return true; }
+    bool GetSubDef_007e0540(CDefPointer* out) { ++calls; lastOut = out; out->m_p = &g_def; return true; }
 };
 struct CThingDefs { CDefClassBase* m_pDefinition; };
 class CThing : public CThingDefs {};
@@ -40,7 +40,7 @@ CTCTeleporter::CTCTeleporter(CThing* parent)
     : CTCBase(parent), Active(false), Activated(false), HeroInsideRadius(true)
 {
     WaitingForTutorialToFinish = false;
-    m_pParentThing->m_pDefinition->GetSubDef(&PDef);
+    m_pParentThing->m_pDefinition->GetSubDef_007e0540(&PDef);
 }
 int main()
 {

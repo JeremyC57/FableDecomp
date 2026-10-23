@@ -34,7 +34,7 @@ struct CTCPhysicsBase {                        // 0x40 bytes
     bool Moving : 1;                           // +0x3c bit 0
     bool OldMoving : 1;                        // +0x3c bit 1
     void SetAsMoving(bool moving);             // 0x006B0130
-    float GetAirResistance();                  // 0x006AFE00
+    float GetAirResistance_006afe00();                  // 0x006AFE00
 };
 
 struct CTCPhysicsStandard : CTCPhysicsBase {   // 0x88 bytes
@@ -59,7 +59,7 @@ void CTCPhysicsStandard::vfunc_38(bool enable)
 {
     SetAsMoving(true);
     if (enable)
-        FeelsGravity = GetAirResistance() > g_minAirResistance;
+        FeelsGravity = GetAirResistance_006afe00() > g_minAirResistance;
     else
         FeelsGravity = false;
 }

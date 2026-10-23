@@ -1,3 +1,3 @@
 // Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
-extern "C" void ForwardTarget();
-extern "C" void CModeExplosiveForcePushed_FrameUpdate() { ForwardTarget(); }
+extern "C" void ForwardTarget_0073ac50();
+extern "C" void CModeExplosiveForcePushed_FrameUpdate() { ForwardTarget_0073ac50(); }

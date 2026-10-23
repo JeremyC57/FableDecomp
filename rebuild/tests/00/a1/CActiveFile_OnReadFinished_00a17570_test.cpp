@@ -7,15 +7,15 @@ extern "C" void __cdecl ReleaseBuf(void* p) { g_released = p; }
 
 struct CActiveFile {
     void* m_ptr;
-    void Notify();
+    void Notify_00a17390();
     void OnReadFinished();
 };
 
-void CActiveFile::Notify() { g_notify++; }
+void CActiveFile::Notify_00a17390() { g_notify++; }
 
 void CActiveFile::OnReadFinished()
 {
-    Notify();
+    Notify_00a17390();
     void* p = m_ptr;
     if (p)
         ReleaseBuf(p);

@@ -38,7 +38,7 @@ extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 struct CPlayerManager {
     long GetMainPlayerNumber();                   // 0x00449700
 };
-CPlayerManager* GetPlayerManager();               // 0x00686D50
+CPlayerManager* GetPlayerManager_00686d50();               // 0x00686D50
 
 enum { GAME_EVENT_CLOSE_INVENTORY = 0x1B };
 
@@ -49,7 +49,7 @@ struct CTCInventoryBase_Retail {
 void CTCInventoryBase_Retail::AddCloseInventoryEvent()
 {
     CGameEvent event(GAME_EVENT_CLOSE_INVENTORY);
-    event.Player = (signed char)GetPlayerManager()->GetMainPlayerNumber();
+    event.Player = (signed char)GetPlayerManager_00686d50()->GetMainPlayerNumber();
     event.AddUBYTE(0);
     g_pMainGameComponent->AddGameEvent(event);
 }

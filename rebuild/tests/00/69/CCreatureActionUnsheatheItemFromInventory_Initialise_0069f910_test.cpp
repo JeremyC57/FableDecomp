@@ -8,7 +8,7 @@ struct CThing {
     unsigned int m_bits[9];
     CRanged* m_ranged;
     CPlayer m_player;
-    CPlayer* GetPlayer() { return &m_player; }
+    CPlayer* GetPlayer_004c7a30() { return &m_player; }
     bool GetInterface(CRanged** out, int type)
     {
         if (m_bits[type >> 5] & (1u << (type & 31))) { *out = m_ranged; return true; }
@@ -26,7 +26,7 @@ struct CAction {
         if (GetPItem()->GetInterface(&ranged, 0x81)) {
             ranged->CancelAimingWeapon();
             ranged->ResetProjectileWeaponMode();
-            GetPItem()->GetPlayer()->RemoveMode(0x22);
+            GetPItem()->GetPlayer_004c7a30()->RemoveMode(0x22);
         }
     }
 };

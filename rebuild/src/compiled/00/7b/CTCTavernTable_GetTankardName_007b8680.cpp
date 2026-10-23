@@ -43,13 +43,13 @@ struct CDefReference {                          // holder of the taken def: rele
 };
 
 struct CDefClassBase {
-    bool GetSubDef(CDefPointer* out);           // 0x007B9700
+    bool GetSubDef_007b9700(CDefPointer* out);           // 0x007B9700
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer* out)
+__declspec(noinline) bool CDefClassBase::GetSubDef_007b9700(CDefPointer* out)
 {
     void* def = FindDef_CDefClassBase_GetSubDef_0();
     if (!def)
@@ -69,7 +69,7 @@ struct CTCTavernTable {
     __forceinline CTavernTableDef* TakeTableDef()
     {
         CDefPointer out;
-        ParentThing->DefHolder->GetSubDef(&out);
+        ParentThing->DefHolder->GetSubDef_007b9700(&out);
         return out.Object;
     }
     CCharString GetTankardName();

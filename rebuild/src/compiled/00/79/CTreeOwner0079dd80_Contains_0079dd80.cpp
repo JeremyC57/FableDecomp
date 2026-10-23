@@ -13,7 +13,7 @@ struct CRetailTree_longkey {
     };
     node* head;
     unsigned long size;
-    iterator find(const long& key);                // 0x0079F210
+    iterator find_0079f210(const long& key);                // 0x0079F210
 };
 
 struct CTreeOwner_0079dd80 {
@@ -24,6 +24,6 @@ struct CTreeOwner_0079dd80 {
 
 long CTreeOwner_0079dd80::Contains(long key)
 {
-    CRetailTree_longkey::iterator it = m_tree.find(key);
+    CRetailTree_longkey::iterator it = m_tree.find_0079f210(key);
     return it.current != m_tree.head;
 }

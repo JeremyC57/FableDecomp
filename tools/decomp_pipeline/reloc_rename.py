@@ -238,6 +238,39 @@ def cmd_fixcomments(args):
             print(r["addr"], r["rel"])
     print(n, "files with restored comments")
 
+def cmd_manual(args):
+    """Verify hand-patched sources: --list TSV `addr<TAB>patched_path<TAB>old_sym=new_sym[;...]`
+    (target taken from the scan). Same gates as apply; VERIFIED files are copied to --out-root."""
+    scan = apply_overlay(load_scan(args["--scan"]), args.get("--overlay"))
+    for r in scan.values():
+        for s_, t_ in r.get("pairs", []): BOUND.add(s_)
+    out_root = Path(args["--out-root"]); e = V.env()
+    work = Path(args.get("--work", Path(os.environ["S"]) / "relink" / "work" / "manual"))
+    with open(args["--results"], "a") as f:
+        for line in open(args["--list"]):
+            if not line.strip() or line.startswith("#"): continue
+            a, path, maps = line.rstrip("\n").split("\t")[:3]
+            rel = catalog()[a]["Source"]; old = dict(scan[a]["pairs"])
+            ren = []; done = []
+            for m in maps.split(";"):
+                o, n = m.split("="); ren.append((o, old[o])); done.append((o, n, "rename"))
+            rec = {"addr": a, "rel": rel, "renames": ren, "done": done, "manual": True}
+            src = Path(path).read_text(encoding="utf-8")
+            src0 = SRC_OVERRIDE.get(a, COMPILED / rel).read_text(encoding="utf-8")
+            try:
+                for bad in ("__asm", "_emit", "naked", "volatile"):
+                    if src.count(bad) > src0.count(bad): raise ValueError(f"purity: {bad}")
+                r = compile_row(a, src, work / a, e)
+                why = verify(scan[a], r, done)
+                if why: raise ValueError(why)
+                rec.update(st=r["st"], pairs=r["pairs"], status="VERIFIED")
+                if r.get("leafsym") != scan[a].get("leafsym"): rec["leafsym"] = [scan[a].get("leafsym"), r.get("leafsym")]
+                o = out_root / rel; o.parent.mkdir(parents=True, exist_ok=True); o.write_text(src, encoding="utf-8")
+            except Exception as ex:
+                rec["status"] = "FAILED"; rec["reason"] = str(ex)[:400]
+            f.write(json.dumps(rec) + "\n"); f.flush()
+            print(a, rec["status"], rec.get("reason", ""))
+
 def cmd_report(args):
     """Merge apply results into MANIFEST.tsv / FAILED.tsv and run the global consistency check."""
     scan = load_scan(args["--scan"]); P = json.load(open(args["--plan"]))
@@ -556,6 +589,43 @@ def test_patch(test, renames, use_conv, cls_mode=False):
     out, _ = patch_source(test, inc, use_conv, cls_mode)
     return out if out != test else None
 
+def compile_errors(addr, src, work, e):
+    extra, comp = flags_of(addr)
+    if comp == "qfe4035": V.use_qfe()
+    else: V.use_default()
+    work.mkdir(parents=True, exist_ok=True)
+    p = work / f"{addr}.err.cpp"; p.write_text(V.vc71(src), encoding="utf-8")
+    cp = V.cl(["/nologo", "/c"] + V.BASE_FLAGS + extra + [f"/Fo{work / (addr + '.err.obj')}", str(p)], e)
+    return cp.stdout or ""
+
+def error_driven_fix(addr, src, done, ren, work, e, r):
+    """A member rename by token cannot tell `a.Copy(` of the renamed class from `b.Copy(` of another
+    one. Let the compiler say: C2039 "'X' : is not a member of 'C'" on a line toggles that line's
+    member-access spelling between the old and the new name. Up to 4 rounds."""
+    pairs = []
+    for (sym, t), (_, n, k) in zip(ren, done):
+        if k == "rename" and ident_of(sym) and member_class(sym): pairs.append((ident_of(sym), f"{ident_of(sym)}_{t}"))
+    if not pairs: return src, r
+    vc_lines = V.vc71(src).split("\n"); src_lines = src.split("\n")
+    if len(vc_lines) != len(src_lines): return src, r     # static_assert lines dropped: line numbers drift
+    for _ in range(4):
+        out = compile_errors(addr, src, work, e)
+        errs = re.findall(r"\((\d+)\) : error C2039: '(\w+)' : is not a member of", out)
+        if not errs: break
+        lines = src.split("\n"); changed = False
+        for ln, name in errs:
+            i = int(ln) - 1
+            for old, new in pairs:
+                frm, to = (new, old) if name == new else (old, new) if name == old else (None, None)
+                if frm is None or i >= len(lines): continue
+                nl = re.sub(r"((?:->|\.)\s*)" + re.escape(frm) + r"(?![A-Za-z0-9_$])", lambda m: m.group(1) + to, lines[i])
+                if nl != lines[i]: lines[i] = nl; changed = True
+        if not changed: break
+        src = "\n".join(lines)
+        r = compile_row(addr, src, work, e)
+        if r["st"] != "SRC_FAIL": break
+    return src, r
+
 def cmd_apply(args):
     P = json.load(open(args["--plan"]))
     scan = apply_overlay(load_scan(args["--scan"]), args.get("--overlay"))
@@ -599,6 +669,8 @@ def cmd_apply(args):
                         for bad in ("__asm", "_emit", "naked", "volatile"):
                             if src.count(bad) > src0.count(bad): raise ValueError(f"purity: {bad}")
                         r = compile_row(a, src, work / a[:4] / a, e)
+                        if r["st"] == "SRC_FAIL":
+                            src, r = error_driven_fix(a, src, done, ren, work / a[:4] / a, e, r)
                         why = verify(scan[a], r, done)
                     except ValueError as ex: why = str(ex)
                     if why is None:
@@ -672,4 +744,4 @@ def parse_args(argv):
 
 if __name__ == "__main__":
     cmd = sys.argv[1]; args = parse_args(sys.argv[2:])
-    {"scan": cmd_scan, "plan": cmd_plan, "apply": cmd_apply, "report": cmd_report, "fixcomments": cmd_fixcomments}[cmd](args)
+    {"scan": cmd_scan, "plan": cmd_plan, "apply": cmd_apply, "report": cmd_report, "fixcomments": cmd_fixcomments, "manual": cmd_manual}[cmd](args)

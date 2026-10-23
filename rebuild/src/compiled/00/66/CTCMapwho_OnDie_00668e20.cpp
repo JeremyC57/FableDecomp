@@ -1,10 +1,10 @@
 // Null-guarded teardown: run the cleanup member, then free the object.
 // __fastcall object=ecx, no args.
-struct T { void Cleanup(); };
+struct T { void Cleanup_008631a0(); };
 void operator delete(void*);   // 0x00bfe9bc
 extern "C" void __fastcall OnDie(T* p) {
     if (p) {
-        p->Cleanup();
+        p->Cleanup_008631a0();
         operator delete(p);
     }
 }

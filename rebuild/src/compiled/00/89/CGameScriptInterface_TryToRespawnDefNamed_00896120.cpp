@@ -36,10 +36,10 @@ public:
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
 struct CThing_Retail;
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                        // 0x0099A2D0
     virtual ~CBase();
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThing : CBase {                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
      virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010();

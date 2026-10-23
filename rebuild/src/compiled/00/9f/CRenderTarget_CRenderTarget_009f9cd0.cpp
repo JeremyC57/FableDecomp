@@ -7,10 +7,10 @@
 // Shape: base ctor, own vtable, then the two embedded CSurface members at +4 and +0x14 constructed
 // inline (vtable, two null pointers each; the fourth dword of each surface is not initialised). The
 // scheduler shares one zero register and one vtable register across both. Member names are descriptive.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                    // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CSurface {                               // vtable 0x0122F84C, 0x10 bytes
     virtual void v00();

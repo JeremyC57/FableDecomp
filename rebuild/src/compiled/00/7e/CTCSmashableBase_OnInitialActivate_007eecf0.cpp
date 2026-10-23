@@ -7,7 +7,7 @@
 // after the flag read. The release must be a member of the DEF (`if (--m_refCount == 0) Destroy();`) called from the
 // pointer's destructor: written inline in the destructor the decrement is scheduled above the flag load.
 struct CThing {
-    void SetAsGameStatePersisted(bool persisted);        // 0x004C9C10
+    void SetAsGameStatePersisted_004c9c10(bool persisted);        // 0x004C9C10
 };
 
 struct CSmashableDef {
@@ -45,5 +45,5 @@ void CTCSmashableBase::OnInitialActivate()
 {
     bool smashable = GetDef()->Smashable;
     if (smashable)
-        ParentThing->SetAsGameStatePersisted(true);
+        ParentThing->SetAsGameStatePersisted_004c9c10(true);
 }

@@ -24,11 +24,11 @@ struct CEntryMap {                         // retail CVectorMap<unsigned long, V
     SEntry* m_pEnd;
     bool    m_compare;
     bool    m_dirty;
-    SEntry* LowerBound(const unsigned long& key);   // 0x009B2230
+    SEntry* LowerBound_009b2230(const unsigned long& key);   // 0x009B2230
     SEntry* End() { return m_pLast; }
     SEntry* Find(const unsigned long& key)
     {
-        SEntry* it = LowerBound(key);
+        SEntry* it = LowerBound_009b2230(key);
         if (it == End() || key < it->first)
             it = End();
         return it;

@@ -11,7 +11,7 @@ struct CRetailInterfaceMap {
     struct Entry { long Type; void* Component; };
     Entry* First;
     Entry* Last;
-    Entry* LowerBound(const long*); // 0x004365B0
+    Entry* LowerBound(const long*) const; // 0x004365B0
 };
 // Retail CThing prefix: PDB UsingComponents name, compact component map; Dead is +0x91 vs donor +0xa1.
 struct CRetailThingView {
@@ -115,7 +115,7 @@ void IStateGroupBuildingView::Slot13() {}
 struct CTCVillager {};
 static CTCVillage* villageResult;
 static CThingBuilding* buildingResult;
-CRetailInterfaceMap::Entry* CRetailInterfaceMap::LowerBound(const long* key) {
+CRetailInterfaceMap::Entry* CRetailInterfaceMap::LowerBound(const long* key) const {
  Entry* p=First;while(p!=Last && p->Type<*key)++p;return p;
 }
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager*) { return villageResult; }

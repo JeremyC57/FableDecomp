@@ -504,7 +504,7 @@ struct ShotFilter {ShotFilter(){}};
 struct CreatedBeforeOrOn{long Frame;CreatedBeforeOrOn(long f):Frame(f){}};
 struct CreatedAfter{long Frame;CreatedAfter(long f):Frame(f){}};
 struct Bind4 {const ShotFilter*First;const ScriptNameFilter*Second;const CreatedBeforeOrOn*Third;const CreatedAfter*Fourth;Bind4(const ShotFilter&a,const ScriptNameFilter&b,const CreatedBeforeOrOn&c,const CreatedAfter&d):First(&a),Second(&b),Third(&c),Fourth(&d){}};
-struct EntityEventsMethods:CTCEntityEvents{bool GetEvent(HitByEvent**,const Bind4&)const;}; //008D4CD0 PDB0090B9D0
+struct EntityEventsMethods:CTCEntityEvents{bool GetEvent_008d4cd0(HitByEvent**,const Bind4&)const;}; //008D4CD0 PDB0090B9D0
 struct CGameScriptThingMethods:CGameScriptThing{bool MsgIsHitByWithProjectileWeapon(const CCharString&,float&)const;};
 bool CGameScriptThingMethods::MsgIsHitByWithProjectileWeapon(const CCharString& name,float& buildup)const {
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);
@@ -516,7 +516,7 @@ bool CGameScriptThingMethods::MsgIsHitByWithProjectileWeapon(const CCharString& 
  EntityEventsMethods* events;
  {long key=66;ComponentMap* map=&thing->Components;const ComponentEntry*it=map->LowerBound(key);const ComponentEntry*end=map->Finish;events=static_cast<EntityEventsMethods*>((it==end||it->Type>66?end:it)->Component);}
  HitByEvent* event;
- if(events->GetEvent(&event,Bind4(ShotFilter(),ScriptNameFilter(name),CreatedBeforeOrOn(current),CreatedAfter(last)))){buildup=event->GetBuildupTime();return true;}
+ if(events->GetEvent_008d4cd0(&event,Bind4(ShotFilter(),ScriptNameFilter(name),CreatedBeforeOrOn(current),CreatedAfter(last)))){buildup=event->GetBuildupTime();return true;}
  }
  }
  return false;
@@ -553,7 +553,7 @@ NEntityEvents::EEventType HitByEvent::GetType()const{return static_cast<NEntityE
 static CHitParameters Params;
 float HitEventBase::GetBuildupTime()const{++GetterCalls;return Data.owners==1?0.75f:-100.0f;}
 static HitByEvent Event(Params);
-bool EntityEventsMethods::GetEvent(HitByEvent**out,const Bind4&b)const{++Queries;if(b.Third->Frame!=WantCurrent||b.Fourth->Frame!=WantLast||strcmp(b.Second->ScriptName.storage_->text,"attacker")||Data.owners!=2)return false;if(QueryResult)*out=&Event;return QueryResult;}
+bool EntityEventsMethods::GetEvent_008d4cd0(HitByEvent**out,const Bind4&b)const{++Queries;if(b.Third->Frame!=WantCurrent||b.Fourth->Frame!=WantLast||strcmp(b.Second->ScriptName.storage_->text,"attacker")||Data.owners!=2)return false;if(QueryResult)*out=&Event;return QueryResult;}
 #define CHECK(x) do{if(!(x)){printf("008d15b0_TEST FAIL %d\n",__LINE__);return 1;}}while(0)
 int main(){CGameScriptThingMethods self;CThingNative thing;memset(&thing,0,sizeof thing);SelfPointer=reinterpret_cast<const CBaseIntelligentPointer*>(self.PThing);EntityEventsMethods events;ComponentEntry entries[2];entries[0].Type=66;entries[0].Component=&events;entries[1]=entries[0];thing.Components.Start=entries;thing.Components.Finish=entries+1;
 QuestManagerNative qm;QuestManager=&qm;ActiveQuest quest;ScriptBaseNative script;SpawnedFunc thread;thread.LastScriptFrame=17;thread.CurrentScriptFrame=29;script.PActiveThread=&thread;quest.Script=&script;qm.PQuestCurrentlyRunning=&quest;

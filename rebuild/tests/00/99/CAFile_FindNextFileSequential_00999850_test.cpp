@@ -29,13 +29,13 @@ wchar16* wcscpy(wchar16* d, const wchar16* s) { wchar16* r = d; while ((*d++ = *
 wchar16* wcscat(wchar16* d, const wchar16* s) { wchar16* r = d; while (*d) ++d; while ((*d++ = *s++) != 0) {} return r; }
 
 static int g_strings = 0;
-struct CWideString {
+namespace N_0099af00 { struct CWideString {
     wchar16* m_pchData; wchar16 buf[64];
     CWideString() : m_pchData(buf) { buf[0] = 0; ++g_strings; }
     CWideString(const CWideString& o) : m_pchData(buf) { wcscpy(buf, o.buf); ++g_strings; }
     operator const wchar16*() const { return m_pchData; }
     ~CWideString() { --g_strings; }
-};
+}; } using N_0099af00::CWideString;
 CWideString __fastcall GetCurrentWorkingDirectory() { CWideString s; Put(s.buf, "C:\\data"); return s; }
 CWideString __fastcall ExpandPath(const CWideString& path, const CWideString& base)
 {

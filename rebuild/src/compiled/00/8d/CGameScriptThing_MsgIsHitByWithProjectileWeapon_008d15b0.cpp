@@ -39,7 +39,7 @@ struct ShotFilter {ShotFilter(){}};
 struct CreatedBeforeOrOn{long Frame;CreatedBeforeOrOn(long f):Frame(f){}};
 struct CreatedAfter{long Frame;CreatedAfter(long f):Frame(f){}};
 struct Bind4 {const ShotFilter*First;const ScriptNameFilter*Second;const CreatedBeforeOrOn*Third;const CreatedAfter*Fourth;Bind4(const ShotFilter&a,const ScriptNameFilter&b,const CreatedBeforeOrOn&c,const CreatedAfter&d):First(&a),Second(&b),Third(&c),Fourth(&d){}};
-struct EntityEventsMethods:CTCEntityEvents{bool GetEvent(HitByEvent**,const Bind4&)const;}; //008D4CD0 PDB0090B9D0
+struct EntityEventsMethods:CTCEntityEvents{bool GetEvent_008d4cd0(HitByEvent**,const Bind4&)const;}; //008D4CD0 PDB0090B9D0
 struct CGameScriptThingMethods:CGameScriptThing{bool MsgIsHitByWithProjectileWeapon(const CCharString&,float&)const;};
 bool CGameScriptThingMethods::MsgIsHitByWithProjectileWeapon(const CCharString& name,float& buildup)const {
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);
@@ -51,7 +51,7 @@ bool CGameScriptThingMethods::MsgIsHitByWithProjectileWeapon(const CCharString& 
  EntityEventsMethods* events;
  {long key=66;ComponentMap* map=&thing->Components;const ComponentEntry*it=map->LowerBound(key);const ComponentEntry*end=map->Finish;events=static_cast<EntityEventsMethods*>((it==end||it->Type>66?end:it)->Component);}
  HitByEvent* event;
- if(events->GetEvent(&event,Bind4(ShotFilter(),ScriptNameFilter(name),CreatedBeforeOrOn(current),CreatedAfter(last)))){buildup=event->GetBuildupTime();return true;}
+ if(events->GetEvent_008d4cd0(&event,Bind4(ShotFilter(),ScriptNameFilter(name),CreatedBeforeOrOn(current),CreatedAfter(last)))){buildup=event->GetBuildupTime();return true;}
  }
  }
  return false;

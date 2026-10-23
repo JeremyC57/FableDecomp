@@ -11,7 +11,7 @@ struct CCharString {
         return PStringData->StringLength;
     }
 };
-struct CBase { virtual void v00() { } CBase() { } };
+namespace N_0099a2d0 { struct CBase { virtual void v00() { } CBase() { } }; } using N_0099a2d0::CBase;
 struct CConsoleCommandLine : CBase {
     virtual void v00() { }
     CCharString CurrentEntry;

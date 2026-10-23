@@ -8,12 +8,12 @@ struct T {
     char* m1C;
     void* m20;
     void FreeBuffer();
-    void Release(void* a, void* b);
+    void Release_00913690(void* a, void* b);
 };
 extern "C" void __cdecl Free2(void* p);
 void T::FreeBuffer() {
     if (this->m20) {
-        this->Release(this->mC, this->m1C + 4);
+        this->Release_00913690(this->mC, this->m1C + 4);
         if (this->m20) Free2(this->m20);
     }
 }

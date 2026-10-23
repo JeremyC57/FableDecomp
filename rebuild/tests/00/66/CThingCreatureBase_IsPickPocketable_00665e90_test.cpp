@@ -44,14 +44,14 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);   // 0x004365B0
+    SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 struct CThing;
 struct CPlayer {
     CThing* GetPlayerCreature();            // 0x00487DC0
 };
 struct CPlayerManager {
-    CPlayer* GetMainPlayer();               // 0x00449960
+    CPlayer* GetMainPlayer() const;               // 0x00449960
 };
 struct CThing {
     unsigned char  _pad0[0x20];
@@ -121,11 +121,11 @@ static C3DVector g_pos[2]; static CThing* g_thingForPos[2];
 const C3DVector& CThing::GetPosition() const { return this == g_thingForPos[0] ? g_pos[0] : g_pos[1]; }
 static CThing* g_hero; static CPlayer g_player; static CPlayerManager g_pm;
 CPlayerManager* CThing::GetPlayerManager() { return &g_pm; }
-CPlayer* CPlayerManager::GetMainPlayer() { return &g_player; }
+CPlayer* CPlayerManager::GetMainPlayer() const { return &g_player; }
 CThing* CPlayer::GetPlayerCreature() { return g_hero; }
 static CTCPerceiveThing g_perceive; static CThing* g_perceived; static bool g_canSee;
 static CInterfaceMap::SEntry g_entries[2];
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { return *type == 0x34 ? &g_entries[0] : last; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { return *type == 0x34 ? &g_entries[0] : last; }
 CThing* CTCPerceiveThing::GetPerceivedThing() const { return g_perceived; }
 bool CTCPerceiveThing::CanSeeOrSmellPerceivedThing() const { return g_canSee; }
 int main()

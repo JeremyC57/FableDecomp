@@ -21,7 +21,7 @@ struct CTCBase { };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+    SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
 struct CThing;
 struct CTCCarrying : CTCBase { CThing* Carried; CThing* GetThingInPrimarySlot() { return Carried; } };

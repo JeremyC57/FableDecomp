@@ -1,3 +1,3 @@
 // Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
-extern "C" void ForwardTarget();
-extern "C" void CTCWillLightning_FinalCleanup() { ForwardTarget(); }
+extern "C" void ForwardTarget_007a0950();
+extern "C" void CTCWillLightning_FinalCleanup() { ForwardTarget_007a0950(); }

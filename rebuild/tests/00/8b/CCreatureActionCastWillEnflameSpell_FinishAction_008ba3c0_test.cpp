@@ -123,7 +123,7 @@ struct CThing {
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    CPlayer* GetPlayer();                             // 0x004C7A30
+    CPlayer* GetPlayer_004c7a30();                             // 0x004C7A30
     CDefClassBase* GetDef() const { return m_pDef; }
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template<class T> __forceinline T* GetTC(long type)
@@ -244,8 +244,8 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
         CTCCreatureModeManager* modes;
         PCreature.GetPItem()->GetInterface(&modes, 0x31);
         modes->UpdateFrontMode();
-        if (PCreature.GetPItem()->GetPlayer()->IsMainPlayer())
-            PCreature.GetPItem()->GetPlayer()->SetAggressiveMode(true);
+        if (PCreature.GetPItem()->GetPlayer_004c7a30()->IsMainPlayer())
+            PCreature.GetPItem()->GetPlayer_004c7a30()->SetAggressiveMode(true);
     }
     CTCEnflame* enflame;
     if (PCreature.GetPItem()->GetInterface(&enflame, 0x95)) {
@@ -283,7 +283,7 @@ long* CDefClassBase::GetSubDefIndex(const CCharString& name) { g_subName = (cons
 static CPlayer g_player; static bool g_mainPlayer; static bool g_aggressive; static int g_aggressiveCalls;
 bool CPlayer::IsMainPlayer() { return g_mainPlayer; }
 void CPlayer::SetAggressiveMode(bool aggressive) { g_aggressive = aggressive; g_aggressiveCalls++; Log(E_AGGRESSIVE); }
-CPlayer* CThing::GetPlayer() { return &g_player; }
+CPlayer* CThing::GetPlayer_004c7a30() { return &g_player; }
 
 void CBaseIntelligentPointer::v00() {}
 CBaseIntelligentPointer::CBaseIntelligentPointer() : m_pItem(0) {}

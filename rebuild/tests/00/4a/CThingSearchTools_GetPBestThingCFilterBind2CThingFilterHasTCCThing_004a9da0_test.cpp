@@ -47,10 +47,10 @@ struct CThingFilter_HasTC {
     long Type;                                    // ETCInterfaceType
     bool operator()(const CThing* thing) const;      // 0x006A80A0
 };
-struct CThingFilter_In2DRange {
+namespace N_006a7960 { struct CThingFilter_In2DRange {
     float X, Y, RangeSq;
     bool operator()(const CThing* thing) const;      // 0x006A7960 (manifest: CThingFilter_InRegion)
-};
+}; } using N_006a7960::CThingFilter_In2DRange;
 template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
     const A& First;
     const B& Second;

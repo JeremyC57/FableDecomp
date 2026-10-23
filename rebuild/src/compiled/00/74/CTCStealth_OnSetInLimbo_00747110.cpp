@@ -36,7 +36,7 @@ struct CRegion {                                // CWorldMap::CRegion
 };
 struct CWorldMap {
     long GetCurrentRegionNumber();              // 0x004FB150
-    CRegion& GetRegion(long region);            // 0x004FB490
+    CRegion& GetRegion_004fb490(long region);            // 0x004FB490
 };
 struct CWorld {
     virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005();
@@ -61,7 +61,7 @@ void CTCStealth::OnSetInLimbo(bool on)
 {
     RegionBasedMaxNumberOfDangerThings = -1;
     if (!on) {
-        CRegion& region = GetWorld()->GetWorldMap()->GetRegion(GetWorld()->GetWorldMap()->GetCurrentRegionNumber());
+        CRegion& region = GetWorld()->GetWorldMap()->GetRegion_004fb490(GetWorld()->GetWorldMap()->GetCurrentRegionNumber());
         if (CDefPointerTest<CRegionDef>(region.PDef).Object != 0)
             RegionBasedMaxNumberOfDangerThings = CDefPointer<CRegionDef>(region.PDef)->MaxNumAttackersOnHero;
     }

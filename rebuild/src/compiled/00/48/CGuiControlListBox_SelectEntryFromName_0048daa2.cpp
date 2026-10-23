@@ -4,10 +4,10 @@
 // Shape: the vtable fetched before the conversion call, the mode pushed straight from its slot, the hidden pointer handed through and returned, `ret 0Ch`. The result type is
 // only known to be a class (hidden pointer); it is modelled as an 8-byte handle with a constructor. Size-optimised TU (the mode pushed straight from its slot).
 #pragma optimize("s", on)
-struct CCharString {
+namespace N_0099af10 { struct CCharString {
     void* m_pData;
     operator const char*() const;                  // 0x0099AF10
-};
+}; } using N_0099af10::CCharString;
 struct SEntryHandle_0048daa2 {                     // the class result (returned through the hidden pointer)
     long m_index;
     long m_tag;

@@ -556,7 +556,7 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 struct ComponentEntry {long Type;void* Component;};
-struct ComponentMap {ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; // 004365B0 names,0040F020 other uses: identical body
+struct ComponentMap {ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&) const;}; // 004365B0 names,0040F020 other uses: identical body
 // Native CThing map+44; donor+48. Life flag+91 and inventory19 bit are verified in retail.
 struct CTCInventoryWeaponsNative;
 struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char State[0x45];unsigned char LifeFlags;__forceinline bool GetInventory(CTCInventoryWeaponsNative** out);};
@@ -592,7 +592,7 @@ static CThingNative hero;static CPlayerMethods player;static CPlayerManagerMetho
 CDefStringTable g_DefStringTable;
 CPlayerMethods* CPlayerManagerMethods::GetMainPlayer(){check(this==&players);return &player;}
 CThingNative* CPlayerMethods::GetHeroThing(){check(this==&player);return mode==1?0:&hero;}
-ComponentEntry* ComponentMap::LowerBound(const long& type){check(type==19);++lookups;return Start;}
+ComponentEntry* ComponentMap::LowerBound(const long& type) const{check(type==19);++lookups;return Start;}
 CDefString CDefinitionManagerMethods::GetDefNameFromGlobalIndex(long index){++queries;check(index==5);CDefString r;r.TablePos=91;return r;}
 CCharString CDefStringTable::GetString(long offset){check(this==&g_DefStringTable&&offset==91);return CCharString(mode==5?"":"weapon",-1);}
 CCharStringData* CCharString::AllocStringData(const char* text,long length){if(length<0)length=(long)strlen(text);CCharStringData* p=new CCharStringData;p->text=(char*)malloc(length+1);memcpy(p->text,text,length);p->text[length]=0;p->unknown04=length;p->unknown08=length;p->flags0C=0;p->owners=1;++recordAllocations;return p;}

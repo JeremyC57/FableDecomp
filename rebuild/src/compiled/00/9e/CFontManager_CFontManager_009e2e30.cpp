@@ -22,10 +22,10 @@ struct CCharString {
     CCharStringData* PStringData;
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
-struct CBaseObject {
+namespace N_0099a2f0 { struct CBaseObject {
     CBaseObject();                                       // 0x0099A2F0
     virtual ~CBaseObject();
-};
+}; } using N_0099a2f0::CBaseObject;
 struct CCPPointerInfo;
 template <class T> struct CCountedPointer {
     T*              Data;

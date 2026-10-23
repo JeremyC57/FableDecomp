@@ -21,10 +21,10 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {
+namespace N_0050f3f0 { namespace N_0050f440 { struct CIntelligentPointerCreature : CBaseIntelligentPointer {
     CIntelligentPointerCreature(CThing* thing);   // 0x0050F3F0
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other);   // 0x0050F440
-};
+}; } using N_0050f440::CIntelligentPointerCreature; } using N_0050f3f0::CIntelligentPointerCreature;
 
 struct CTCDummyVillager {
     void*                       __vftable;  // +0x00

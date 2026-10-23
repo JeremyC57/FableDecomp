@@ -22,7 +22,7 @@ public:
 class CEnvironment
 {
 public:
-    void TransitionToTheme(int internalIndex, int unknown1, long themeGlobalIndex, float blendTime)
+    void TransitionToTheme_006b3800(int internalIndex, int unknown1, long themeGlobalIndex, float blendTime)
     {
         TransitionCall c; c.internalIndex = internalIndex; c.unknown1 = unknown1; c.themeGlobalIndex = themeGlobalIndex; c.blendTime = blendTime;
         g_calls[g_callCount++] = c;
@@ -46,7 +46,7 @@ void CGameScriptInterface::TransitionToThemeAllInternals(const CCharString& them
         const CGameScriptInterfaceOverlay* const pThis = reinterpret_cast<const CGameScriptInterfaceOverlay*>(this);
         for (int internalIndex = 1; internalIndex <= 4; ++internalIndex)
         {
-            pThis->m_pEnvironmentOwner->m_pEnvironment->TransitionToTheme(internalIndex, 1, globalIndex, blendTime);
+            pThis->m_pEnvironmentOwner->m_pEnvironment->TransitionToTheme_006b3800(internalIndex, 1, globalIndex, blendTime);
         }
     }
 }

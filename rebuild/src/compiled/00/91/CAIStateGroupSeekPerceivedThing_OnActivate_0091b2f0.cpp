@@ -20,7 +20,7 @@ struct CAIStateGroupBase {
     virtual void v01();
     virtual void OnActivate();                  // slot 2 (+0x08)
     unsigned char _pad[0x10];                   // +0x4..+0x13
-    CWorld* GetPWorld();                        // 0x008FCFA0
+    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
 };
 
 struct CAIStateGroup_SeekPerceivedThing : CAIStateGroupBase {
@@ -30,5 +30,5 @@ struct CAIStateGroup_SeekPerceivedThing : CAIStateGroupBase {
 
 void CAIStateGroup_SeekPerceivedThing::OnActivate()
 {
-    FrameLastCaptured = GetPWorld()->GetFrameCount() - GFSecondsToFrames(g_seekBackSeconds);
+    FrameLastCaptured = GetPWorld_008fcfa0()->GetFrameCount() - GFSecondsToFrames(g_seekBackSeconds);
 }

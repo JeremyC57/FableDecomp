@@ -136,7 +136,7 @@ struct CAIStateGroupBase {
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFA0
+    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
 };
@@ -157,7 +157,7 @@ bool CAIStateGroup_BirdFlyToFood::IsRunnable()
     if (modes->GetCurrentModeType() == g_flyingMode) {
         long framesPerSecond;
         if ((FrameLastAte == 0
-             || (framesPerSecond = GetPWorld()->GetFramesPerSecond(),
+             || (framesPerSecond = GetPWorld_008fcfa0()->GetFramesPerSecond(),
                  GFGetCurrentFrame() - FrameLastAte > (unsigned long)(framesPerSecond * 20)))
             && WorldRandomRange(*GetPWorldSeed(), 100) < 74) {
             if (WorldRandomRange(*GetPWorldSeed(), 100) < 64) {
@@ -211,7 +211,7 @@ CThingPhysical* FindBest_00914330(CThingSearchTools* tools, const CThingFilter_D
 { g_searchTools = tools; g_searchName = (const char*)filter.DefName.PStringData; g_searchX = x; g_searchY = y; g_searchZ = z; g_foodSearches++; return g_foodResult; }
 CAIStateGroupBase::~CAIStateGroupBase() {}
 static CWorld g_world; static unsigned long g_seed; static CThingSearchTools g_tools;
-CWorld* CAIStateGroupBase::GetPWorld() { return &g_world; }
+CWorld* CAIStateGroupBase::GetPWorld_008fcfa0() { return &g_world; }
 unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
 CThingSearchTools* CAIStateGroupBase::PeekThingSearchTools() { return &g_tools; }
 static bool g_flightOk[4]; static int g_flights; static C3DVector g_flightFrom[4]; static float g_flightRadius[4]; static C3DVector* g_flightOut[4]; static bool g_flightGround[4];

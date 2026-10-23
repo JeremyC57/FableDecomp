@@ -3,10 +3,10 @@
 typedef unsigned int size_t_;
 inline void* operator new(size_t_, void* p) { return p; }
 
-struct CWideString {
+namespace N_0099ec30 { struct CWideString {
     void* buf;                          // +0
     CWideString(const CWideString& o);  // copy-ctor -> call 0x99ec30 (external)
-};
+}; } using N_0099ec30::CWideString;
 
 struct WPair {
     CWideString first;   // +0 (one pointer)

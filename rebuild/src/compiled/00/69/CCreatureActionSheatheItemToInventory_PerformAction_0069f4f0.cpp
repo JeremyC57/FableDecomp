@@ -26,7 +26,7 @@ struct CThing {
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    CPlayer* GetPlayer();                       // 0x004C7A30
+    CPlayer* GetPlayer_004c7a30();                       // 0x004C7A30
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
         long type = interfaceType;
@@ -108,6 +108,6 @@ void CCreatureAction_SheatheItemToInventory::PerformAction()
             modeManager = creature->GetTC<CTCCreatureModeManager>(0x31);
     }
     modeManager->RestartCurrentMode();
-    if (PCreature.GetPItem()->GetPlayer()->IsMainPlayer())
-        PCreature.GetPItem()->GetPlayer()->SetAggressiveMode(false);
+    if (PCreature.GetPItem()->GetPlayer_004c7a30()->IsMainPlayer())
+        PCreature.GetPItem()->GetPlayer_004c7a30()->SetAggressiveMode(false);
 }

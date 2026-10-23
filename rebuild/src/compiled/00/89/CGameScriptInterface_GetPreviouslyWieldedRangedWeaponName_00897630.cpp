@@ -5,7 +5,7 @@
 #include "engine/CPlayer.h"
 #include "fable_string.h"
 struct ComponentEntry {long Type;void* Component;};
-struct ComponentMap {ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; // 004365B0 names,0040F020 other uses: identical body
+struct ComponentMap {ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&) const;}; // 004365B0 names,0040F020 other uses: identical body
 // Native CThing map+44; donor+48. Life flag+91 and inventory19 bit are verified in retail.
 struct CTCInventoryWeaponsNative;
 struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char State[0x45];unsigned char LifeFlags;__forceinline bool GetInventory(CTCInventoryWeaponsNative** out);};

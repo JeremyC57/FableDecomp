@@ -10,10 +10,10 @@
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
 struct CThing;
 
-struct CTCDHeroSuit {
+namespace N_004e0aab { struct CTCDHeroSuit {
     virtual void v00();
     CTCDHeroSuit(CThing* argument);            // 0x004E0AAB
-};
+}; } using N_004e0aab::CTCDHeroSuit;
 
 struct CTCGatherPointRadialArea : CTCDHeroSuit {
     virtual void v00();

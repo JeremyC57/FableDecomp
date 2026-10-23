@@ -22,12 +22,12 @@ struct CWorldMap {
 };
 
 struct CTCMapwhoMethods : CTCMapwho {
-    CWorldMap* GetWorldMap();                                           // 0x00686D30 (CTCBase accessor)
+    CWorldMap* GetWorldMap_00686d30();                                           // 0x00686D30 (CTCBase accessor)
     bool IsInMapwho() const { return (InMapwho[0] & 1) != 0; }
     void PlaceInMapwho(const C3DVector& pos)
     {
         if (!IsInMapwho()) {
-            CWorldMap* map = GetWorldMap();
+            CWorldMap* map = GetWorldMap_00686d30();
             map->m_pThingMapManager->PlaceThing(this, pos);
         }
     }
@@ -37,7 +37,7 @@ struct CTCMapwhoMethods : CTCMapwho {
 void CTCMapwhoMethods::MoveInMapwho(const C3DVector& pos)
 {
     if (IsInMapwho()) {
-        CWorldMap* map = GetWorldMap();
+        CWorldMap* map = GetWorldMap_00686d30();
         map->m_pThingMapManager->DestroyMapwhoNode(this);
     }
     PlaceInMapwho(pos);

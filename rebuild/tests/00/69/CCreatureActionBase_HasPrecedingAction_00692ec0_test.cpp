@@ -16,7 +16,7 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);   // 0x004365B0
+    SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 struct CThing {
     unsigned char _pad0[0x20];
@@ -76,7 +76,7 @@ static bool playing, pending;
 static int playCalls, pendingCalls, lbCalls;
 static CTCActionQueue* pendingThis;
 static long lbKey;
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 {
     ++lbCalls; lbKey = *type;
     SEntry* it = first;

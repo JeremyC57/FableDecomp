@@ -15,14 +15,14 @@ static int        g_edx;
 static bool       g_val;
 static int        g_calls;
 
-void __fastcall GuiSetBool(GuiTarget* self, int edx, bool val)
+void __fastcall GuiSetBool_006bb140(GuiTarget* self, int edx, bool val)
 {
     g_self = self; g_edx = edx; g_val = val; ++g_calls;
 }
 
 void __fastcall TransferToGui(CGuiVarTransferBool* self)
 {
-    GuiSetBool(self->target, self->arg2, self->value);
+    GuiSetBool_006bb140(self->target, self->arg2, self->value);
     self->flag = 0;
 }
 

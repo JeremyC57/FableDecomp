@@ -8,7 +8,7 @@ struct CTCBase_Retail { int x; };
 struct CInterfaceMap_Retail {
     struct SEntry { long type; CTCBase_Retail* component; };
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) { rec("L"); SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
+    SEntry* LowerBound(const long* type) const { rec("L"); SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 struct CPhysicsBody_Retail { unsigned char _pad[0x3c]; unsigned long m_collisionFlags; };
 static long g_pos = 0;

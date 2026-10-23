@@ -55,7 +55,7 @@ struct CPlayer {
 };
 
 struct CPlayerManager {
-    CPlayer* GetMainPlayer();                        // 0x00449960
+    CPlayer* GetMainPlayer() const;                        // 0x00449960
 };
 
 struct CEngineGlobals {

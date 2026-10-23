@@ -7,14 +7,14 @@ static long g_result = 0;
 static unsigned long g_lastFilter = 0;
 static IDirect3DSurface9* g_lastSurface = 0;
 static unsigned short g_lastFirst = 0;
-class CWideString {
+namespace N_0099af00 { class CWideString {
 public:
     unsigned short m_data[32];
     CWideString(const char* text) { int i = 0; for (; text[i] && i < 31; ++i) m_data[i] = (unsigned short)text[i]; m_data[i] = 0; ++g_wideAlive; }
     CWideString(const CWideString& o) { std::memcpy(m_data, o.m_data, sizeof(m_data)); ++g_wideAlive; }
     ~CWideString() { --g_wideAlive; }
     operator const unsigned short*() const { return m_data; }
-};
+}; } using N_0099af00::CWideString;
 static CWideString ConvertPathToFullPath(const CCharString& path) { return CWideString(path.m_text); }
 static long D3DXLoadSurfaceFromFileW(IDirect3DSurface9* dest, const void*, const void*, const unsigned short* file, const void*, unsigned long filter, unsigned long, void*)
 { ++g_loads; g_lastSurface = dest; g_lastFilter = filter; g_lastFirst = file[0]; return g_result; }

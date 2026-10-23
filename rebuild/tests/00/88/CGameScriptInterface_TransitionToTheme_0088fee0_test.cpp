@@ -5,14 +5,14 @@ struct Inner {
     int calls;
     int lastN;
     int lastArg2;
-    void Apply(int one, int n, int duration);
+    void Apply_006b38d0(int one, int n, int duration);
 };
 struct CWorld { unsigned char pad[0x18]; Inner* PEnvironment; };
 
 static int g_resolveArg = 0;
 static int g_count = 0;
 
-void Inner::Apply(int one, int n, int duration) {
+void Inner::Apply_006b38d0(int one, int n, int duration) {
     calls = calls + 1;
     lastN = n;
     lastArg2 = duration;
@@ -27,7 +27,7 @@ void CGameScriptInterface_TransitionToTheme(CGameScriptInterface* self, int name
     void* r = Resolve(name);
     int n = CountOf(r);
     if (n > 0) {
-        self->World->PEnvironment->Apply(1, n, duration);
+        self->World->PEnvironment->Apply_006b38d0(1, n, duration);
     }
 }
 

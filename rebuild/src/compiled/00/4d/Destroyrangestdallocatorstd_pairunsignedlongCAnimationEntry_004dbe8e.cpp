@@ -21,11 +21,11 @@ struct AnimAlloc {
 };
 
 // The element destroy helper (call [0x4aa840]); modeled as a __fastcall taking this in ecx.
-void __fastcall DestroyPair(AnimPair* self);
+void __fastcall DestroyPair_004d6902(AnimPair* self);
 
 void __fastcall Destroy_range(AnimPair* first, AnimPair* last, AnimAlloc* al)
 {
     (void)al;
     for (; first != last; ++first)
-        DestroyPair(first);
+        DestroyPair_004d6902(first);
 }

@@ -10,14 +10,14 @@ static int g_baseCalled = 0;
 static void* g_freedPtr = 0;
 
 void __cdecl freeHelper(void* p) { g_freed++; g_freedPtr = p; }
-void __fastcall Base_OnDie(void* self) { g_baseCalled++; }
+void __fastcall Base_OnDie_0062e900(void* self) { g_baseCalled++; }
 
 void __fastcall OnDie(CTCInventoryItem* self)
 {
     void* p = self->m120;
     if (p != 0)
         freeHelper(p);
-    Base_OnDie(self);
+    Base_OnDie_0062e900(self);
 }
 
 int main()

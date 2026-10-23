@@ -5,9 +5,9 @@ struct CThing { unsigned char m_flags; };
 static CThing g_hero, g_teleporter;
 static CRegion g_regions[4];
 static bool g_noTeleporter = false;
-struct CPlayer { CThing* GetCharacterThing() { return &g_hero; } };
+struct CPlayer { CThing* GetCharacterThing_00487dd0() { return &g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+struct CPlayerManager { CPlayer* GetMainPlayer() const { return &g_player; } };
 static CPlayerManager g_players;
 struct CWorldMap { CRegion& GetRegion(long index) { return g_regions[index]; } };
 static CWorldMap g_world;
@@ -19,7 +19,7 @@ struct CTCInventoryMap {
     void TeleportHeroToTeleporter(CThing* t) { ++m_teleports; m_lastTarget = t; }
     void TeleportHeroToRegionTeleporter(long regionIndex)
     {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing();
+        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing_00487dd0();
         if (hero && !(hero->m_flags & 1)) {
             CThing* teleporter = GetRegionTeleporter(&GetWorldMap()->GetRegion(regionIndex));
             if (teleporter && !(teleporter->m_flags & 1))

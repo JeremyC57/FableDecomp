@@ -27,7 +27,7 @@ struct CParsedItem
 class CStringParser
 {
 public:
-    bool FindMatchingSubstring(CCharString* terminator);
+    bool FindMatchingSubstring_009b9aa0(CCharString* terminator);
     bool ReadAsStringUntilString(CCharString* terminator, CParsedItem* item);
 
     long m_unk0;    // +0x00
@@ -41,7 +41,7 @@ bool CStringParser::ReadAsStringUntilString(CCharString* terminator, CParsedItem
 {
     char* scanStart = m_buffer + m_pos;
 
-    if (FindMatchingSubstring(terminator))
+    if (FindMatchingSubstring_009b9aa0(terminator))
     {
         long matchLen = (m_pos + (long)m_buffer) - (long)scanStart;
 

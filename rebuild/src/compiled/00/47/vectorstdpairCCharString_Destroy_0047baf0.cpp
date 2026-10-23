@@ -33,12 +33,12 @@
 // separate inline calls (rather than one out-of-line synthesized
 // Elem::~Elem).
 
-class CCharString {
+namespace N_0099b510 { class CCharString {
 public:
     ~CCharString();            // out-of-line -> masked call 0x51fa20
 private:
     void* _storage;            // 4-byte handle
-};
+}; } using N_0099b510::CCharString;
 
 struct Elem {
     CCharString _a;   // +0x00

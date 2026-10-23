@@ -4,7 +4,7 @@
 #include "engine/CAIStateGroup_StealthSeekEnemy.h"
 #include "engine/CAIBrain.h"
 #include "engine/CTCPerceiveThing.h"
-struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
+struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
 struct CThing {
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;

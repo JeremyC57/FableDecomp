@@ -15,7 +15,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCWallMountable* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type)
+    SEntry* LowerBound(const long* type) const
     {
         SEntry* it = first;
         while (it != last && it->type < *type)

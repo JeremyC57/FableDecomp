@@ -8,7 +8,7 @@
 // The retail card games are far larger than the PDB's CTCTavernGame (0x108): the card base is a
 // local model padded to the Blackjack members (+0x318.. zeroed by the constructor at 0x007DB280).
 struct CPersistContext {
-    void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410620
+    void Transfer_00410620(const char* name, long& value, const long& defaultValue);   // 0x00410620
 };
 
 struct CTCTavernGameCardBase {
@@ -25,5 +25,5 @@ struct CTCTavernGameCardBlackjack : CTCTavernGameCardBase {
 void CTCTavernGameCardBlackjack::vfunc_1(CPersistContext* context, long arg)
 {
     CTCTavernGameCardBase::vfunc_1(context, arg);
-    context->Transfer("MostMoneyWon", m_mostMoneyWon, 0);
+    context->Transfer_00410620("MostMoneyWon", m_mostMoneyWon, 0);
 }

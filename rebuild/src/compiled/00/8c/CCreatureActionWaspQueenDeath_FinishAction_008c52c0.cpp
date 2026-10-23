@@ -10,7 +10,7 @@
 // through the zero register shared with the CSoundPair() temporary) built in the SetCurrentAction call.
 // Layout: owner CIntelligentPointer +8; Ego_r.pdb PEmitter +0x12c, retail +0x114 (CCombatActionBase is 0x114 in retail).
 struct CTCDParticleEmitter {
-    void ClearAttachments();                    // 0x006E0DE0
+    void ClearAttachments_006e0de0();                    // 0x006E0DE0
 };
 struct CThing {
     unsigned char        _pad0[0x28];
@@ -75,7 +75,7 @@ void CCreatureAction_WaspQueenDeath::FinishAction()
 {
     CTCDParticleEmitter* emitter;
     if (PEmitter.GetPItem() && !(PEmitter.GetPItem()->m_flags91 & 1) && PEmitter.GetPItem()->GetTCParticleEmitter(&emitter))
-        emitter->ClearAttachments();
+        emitter->ClearAttachments_006e0de0();
     CCombatActionBase::FinishAction();
     PCreature.GetPItem()->SetCurrentAction(CCreatureAction_WaspQueenDie(PCreature.GetPItem(), 0));
 }

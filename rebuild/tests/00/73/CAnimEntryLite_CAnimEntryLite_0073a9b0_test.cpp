@@ -5,7 +5,7 @@ struct CAnimComponentFlags { unsigned char _pad[8]; long Flags; };
 static CAnimComponentFlags g_component;
 struct CAnimationEntry {
     long BankIndex; long AnimName; long GroupName; void* Components;
-    long GetAnimationTransitionInTime() const { return 300; }
+    long GetAnimationTransitionInTime_005dc1d0() const { return 300; }
     long GetAnimationDelayTime() const { return 40; }
     void GetFlagsComponent(CAnimComponentFlags** ppComponent) const { *ppComponent = &g_component; }
     long GetAnimationFlags() const { CAnimComponentFlags* p; GetFlagsComponent(&p); return p->Flags; }
@@ -13,7 +13,7 @@ struct CAnimationEntry {
 struct CAnimEntryLite {
     long BankIndex; long DelayTime; long TransitionTime; long AnimFlags;
     CAnimEntryLite(const CAnimationEntry& entry)
-    { BankIndex = entry.BankIndex; TransitionTime = entry.GetAnimationTransitionInTime(); DelayTime = entry.GetAnimationDelayTime(); AnimFlags = entry.GetAnimationFlags(); }
+    { BankIndex = entry.BankIndex; TransitionTime = entry.GetAnimationTransitionInTime_005dc1d0(); DelayTime = entry.GetAnimationDelayTime(); AnimFlags = entry.GetAnimationFlags(); }
 };
 int main()
 {

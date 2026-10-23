@@ -18,7 +18,7 @@ struct CTCPerceiveThing { bool ExtendedLineOfSight; float AwarenessTimer; };
 #include "engine/CAIStateGroup_StealthSeekEnemy.h"
 #include "engine/CAIBrain.h"
 #include "engine/CTCPerceiveThing.h"
-struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
+struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
 struct CThing {
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
@@ -69,7 +69,7 @@ CBaseIntelligentPointer::~CBaseIntelligentPointer() {}
 CThing* CBaseIntelligentPointer::GetPItem() const { ++reads; if(scenario==16 && reads==5) brain.Creature=(CThingAICreature*)&replacement; return scenario==1?0:&enemy; }
 bool CAIStateGroup_StealthSeekEnemy_Adapter::IsStopping() { return scenario==3; }
 CThing* CTCPerceiveThingMethods::GetPerceivedThing() const { Check(this==&perception); return scenario==5?&other:&enemy; }
-CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* key) { ++lookups; Check(*key==8); return scenario==14?last:first; }
+CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* key) const { ++lookups; Check(*key==8); return scenario==14?last:first; }
 bool CTCTargetingAI::IsThingAttackable(const CThing* t) const { ++attacks; Check(this==&targeting && t==&enemy); return scenario!=7; }
 bool __fastcall AreThingsEnemies(CThing* a,CThing* b) { ++enemies; Check(a==&enemy && b==&creature); return scenario!=8; }
 bool __fastcall IsWillingToAttackTarget(CThing* a,CThing* b) { ++willing; Check(a==(scenario==16?&replacement:&creature) && b==&enemy); return scenario!=9; }

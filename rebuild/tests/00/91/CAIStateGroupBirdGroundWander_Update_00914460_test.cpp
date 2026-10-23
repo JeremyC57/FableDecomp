@@ -43,7 +43,7 @@ struct CThing {
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     struct CThingSubsystem* m_pSubsystem60;     // +0x60 (role not established; virtual slot 67 takes a zero)
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
     bool TestTC(long interfaceType) const
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
@@ -151,7 +151,7 @@ void CAIStateGroup_BirdGroundWander::Update()
         CTCCreatureNavigation* navigation;
         creature->GetInterfaceT(&navigation, 7);
         C3DVector target;
-        if (!navigation->GetNearbyWanderPosition(creature->GetPosition(), 1.5f, &target, true))
+        if (!navigation->GetNearbyWanderPosition(creature->GetPosition_006a4d00(), 1.5f, &target, true))
             break;
         bool reached = false;
         long result;
@@ -176,7 +176,7 @@ void CAIStateGroup_BirdGroundWander::Update()
 static CInterfaceMap::SEntry g_entries[2];
 CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { CHECK(*type == 7); return first; }
 static C3DVector g_pos;
-const C3DVector& CThing::GetPosition() const { return g_pos; }
+const C3DVector& CThing::GetPosition_006a4d00() const { return g_pos; }
 void CThingSubsystem::s00() { } void CThingSubsystem::s01() { } void CThingSubsystem::s02() { } void CThingSubsystem::s03() { } void CThingSubsystem::s04() { } void CThingSubsystem::s05() { } void CThingSubsystem::s06() { } void CThingSubsystem::s07() { } void CThingSubsystem::s08() { } void CThingSubsystem::s09() { } void CThingSubsystem::s10() { } void CThingSubsystem::s11() { } void CThingSubsystem::s12() { } void CThingSubsystem::s13() { } void CThingSubsystem::s14() { } void CThingSubsystem::s15() { } void CThingSubsystem::s16() { } void CThingSubsystem::s17() { } void CThingSubsystem::s18() { } void CThingSubsystem::s19() { } void CThingSubsystem::s20() { } void CThingSubsystem::s21() { } void CThingSubsystem::s22() { } void CThingSubsystem::s23() { } void CThingSubsystem::s24() { } void CThingSubsystem::s25() { } void CThingSubsystem::s26() { } void CThingSubsystem::s27() { } void CThingSubsystem::s28() { } void CThingSubsystem::s29() { } void CThingSubsystem::s30() { } void CThingSubsystem::s31() { } void CThingSubsystem::s32() { } void CThingSubsystem::s33() { } void CThingSubsystem::s34() { } void CThingSubsystem::s35() { } void CThingSubsystem::s36() { } void CThingSubsystem::s37() { } void CThingSubsystem::s38() { } void CThingSubsystem::s39() { } void CThingSubsystem::s40() { } void CThingSubsystem::s41() { } void CThingSubsystem::s42() { } void CThingSubsystem::s43() { } void CThingSubsystem::s44() { } void CThingSubsystem::s45() { } void CThingSubsystem::s46() { } void CThingSubsystem::s47() { } void CThingSubsystem::s48() { } void CThingSubsystem::s49() { } void CThingSubsystem::s50() { } void CThingSubsystem::s51() { } void CThingSubsystem::s52() { } void CThingSubsystem::s53() { } void CThingSubsystem::s54() { } void CThingSubsystem::s55() { } void CThingSubsystem::s56() { } void CThingSubsystem::s57() { } void CThingSubsystem::s58() { } void CThingSubsystem::s59() { } void CThingSubsystem::s60() { } void CThingSubsystem::s61() { } void CThingSubsystem::s62() { } void CThingSubsystem::s63() { } void CThingSubsystem::s64() { } void CThingSubsystem::s65() { } void CThingSubsystem::s66() { }
 static long g_slot67Arg = -1; static int g_slot67Calls = 0;
 void CThingSubsystem::Slot67(long value) { ++g_slot67Calls; g_slot67Arg = value; }

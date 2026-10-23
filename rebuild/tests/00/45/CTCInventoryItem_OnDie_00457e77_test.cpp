@@ -3,7 +3,7 @@ struct CTCInventoryItem { void* vptr; char _pad4[0x44]; void* ptr48; };
 static int g_freed = 0;
 static int g_based = 0;
 extern "C" void freeThing(void* p){ (void)p; g_freed++; }
-void __fastcall CTCInventoryItem_base_OnDie(CTCInventoryItem* self){ (void)self; g_based++; }
+void __fastcall CTCInventoryItem_base_OnDie_00430300(CTCInventoryItem* self){ (void)self; g_based++; }
 
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
@@ -11,7 +11,7 @@ void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
     if (p) {
         freeThing(p);
     }
-    CTCInventoryItem_base_OnDie(self);
+    CTCInventoryItem_base_OnDie_00430300(self);
 }
 
 int main(){

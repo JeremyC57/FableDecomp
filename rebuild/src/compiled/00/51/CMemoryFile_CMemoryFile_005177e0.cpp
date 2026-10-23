@@ -6,10 +6,10 @@
 // Pathname +0x24 -> +0x20 retail. The engine header (CMemoryFile.h) carries the PDB offsets, so the retail layout is modelled locally.
 #include "fable_string.h"
 
-struct CBaseClass {
+namespace N_0099a2f0 { struct CBaseClass {
     virtual void v00();
     CBaseClass();                                  // 0x0099A2F0
-};
+}; } using N_0099a2f0::CBaseClass;
 
 struct CRetailByteArray_005177e0 {                 // retail CArray<unsigned char>: begin, end, capacity end
     unsigned char* m_pBegin;

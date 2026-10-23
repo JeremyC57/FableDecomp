@@ -59,7 +59,7 @@ struct CAIBrain { CThing* PCreature; };
 
 struct C3DVector { float x, y, z; };
 struct CTCBoss { long phase; bool force; void SetNextBossPhase(long p, bool f) { phase = p; force = f; } };
-struct CThingAICreature { C3DVector pos; const C3DVector& GetPosition() { return pos; } };
+struct CThingAICreature { C3DVector pos; const C3DVector& GetPosition_006a4d00() { return pos; } };
 static int g_baseInit = 0;
 
 struct CAIStateGroup_HoverHornetQueen {
@@ -71,7 +71,7 @@ struct CAIStateGroup_HoverHornetQueen {
     void BaseInitialise(CAIBrain& brain, CThingAICreature&, long, long, const char*) { PBrain = &brain; ++g_baseInit; }
     void Initialise(CAIBrain& brain, CThingAICreature& creature, long id, long priority, const char* name)
     {
-        StartPos = creature.GetPosition();
+        StartPos = creature.GetPosition_006a4d00();
         BaseInitialise(brain, creature, id, priority, name);
         bOneTime = true;
         EnemyKnockDownFrame = 0;

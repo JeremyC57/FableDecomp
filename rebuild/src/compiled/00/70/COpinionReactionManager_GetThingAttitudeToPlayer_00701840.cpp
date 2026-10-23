@@ -14,7 +14,7 @@ struct CInterfaceMap {                 // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);   // 0x004365B0 (a second copy of the 0x0040F020 body)
+    SEntry* LowerBound(const long* type) const;   // 0x004365B0 (a second copy of the 0x0040F020 body)
 };
 struct CThing {
     virtual void v00();

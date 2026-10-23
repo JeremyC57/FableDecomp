@@ -6,7 +6,7 @@ struct CActiveFile {
 };
 
 static int g_pre = 0;
-extern "C" void __fastcall CActiveFile_PreRead(CActiveFile* self) { g_pre = 1; (void)self; }
+extern "C" void __fastcall CActiveFile_PreRead_0065fefc(CActiveFile* self) { g_pre = 1; (void)self; }
 
 void __fastcall OnReadFinished(CActiveFile* self);
 

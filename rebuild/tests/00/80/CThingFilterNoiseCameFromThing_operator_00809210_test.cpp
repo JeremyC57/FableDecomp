@@ -5,7 +5,7 @@ struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type)
+    SEntry* LowerBound(const long* type) const
     {
         SEntry* p = first;
         while (p != last && p->type < *type) ++p;

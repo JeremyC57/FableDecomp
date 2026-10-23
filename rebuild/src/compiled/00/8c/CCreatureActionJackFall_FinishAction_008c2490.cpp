@@ -61,9 +61,9 @@ struct CCombatActionBase : CCreatureActionBase {          // retail sizeof 0x114
     virtual void FinishAction();            // 0x00859A20
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
 };
-struct CCreatureAction_GoUnderground : CCombatActionBase {
+namespace N_008c3810 { struct CCreatureAction_GoUnderground : CCombatActionBase {
     CCreatureAction_GoUnderground(CThingCreatureBase* creature);   // 0x008C3810
-};
+}; } using N_008c3810::CCreatureAction_GoUnderground;
 struct CCreatureAction_JackFall : CCombatActionBase {
     virtual void FinishAction();
 };

@@ -8,7 +8,7 @@ struct CThing {
     unsigned int m_presentBits[9];
     CTCHeroRangedAttacks* m_ranged;
     CPlayer* m_player;
-    CPlayer* GetPlayer() { return m_player; }
+    CPlayer* GetPlayer_004c7a30() { return m_player; }
     template<class T> bool GetInterface(T** ppOut, int interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) { *ppOut = (T*)m_ranged; return true; }
@@ -25,7 +25,7 @@ struct CAction {
         if (PCreature.GetPItem()->GetInterface(&pRanged, 0x81)) {
             pRanged->CancelAimingWeapon();
             pRanged->ResetProjectileWeaponMode();
-            PCreature.GetPItem()->GetPlayer()->RemoveMode(0x22);
+            PCreature.GetPItem()->GetPlayer_004c7a30()->RemoveMode(0x22);
         }
     }
 };

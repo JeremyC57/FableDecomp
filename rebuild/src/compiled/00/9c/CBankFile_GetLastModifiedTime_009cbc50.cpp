@@ -11,11 +11,11 @@
 // CDateAndTime local (`rep movsd` x7), then into the result.
 // Layout: PDB CDiskFileWin32 (0x1c: Opened +0x14, Pathname +0x18), CFileInformation (Creation +0, LastAccess +0x1c,
 // LastWrite +0x38, ReadOnly +0x54), CDateAndTime (7 dwords).
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2F0
     ~CBase();                                      // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 struct CWideString {
     void* PStringData;
     CWideString();                                 // 0x0099AED0
