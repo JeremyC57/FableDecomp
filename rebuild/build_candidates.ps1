@@ -271448,6 +271448,167 @@ $catalog = @(
         TestSource = '00/6c/CTCHero_OnSerialise_006ca120_test.cpp'
         PassPattern = '006ca120_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0059b79a'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_GetMenuBranchFromDefIndex_0059b79a.cpp'
+        TestSource = '00/59/CTCInventoryTrade_GetMenuBranchFromDefIndex_0059b79a_test.cpp'
+        PassPattern = '0059b79a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059c0c6'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_GetMenuBranchFromDefIndexPC_0059c0c6.cpp'
+        TestSource = '00/59/CTCInventoryTrade_GetMenuBranchFromDefIndexPC_0059c0c6_test.cpp'
+        PassPattern = '0059c0c6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059c447'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_GetTypeFromDefIndexPC_0059c447.cpp'
+        TestSource = '00/59/CTCInventoryTrade_GetTypeFromDefIndexPC_0059c447_test.cpp'
+        PassPattern = '0059c447_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059cb90'
+        Module = 'NInventory::CTCInventoryTrade'
+        Source = '00/59/NInventoryCTCInventoryTrade_AddWantedItemToList_0059cb90.cpp'
+        TestSource = '00/59/NInventoryCTCInventoryTrade_AddWantedItemToList_0059cb90_test.cpp'
+        PassPattern = '0059cb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059db82'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_RefreshEntriesAmountsAndAvailabilities_0059db82.cpp'
+        TestSource = '00/59/CTCInventoryTrade_RefreshEntriesAmountsAndAvailabilities_0059db82_test.cpp'
+        PassPattern = '0059db82_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059e2c7'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_CloseInventoryPC_0059e2c7.cpp'
+        TestSource = '00/59/CTCInventoryTrade_CloseInventoryPC_0059e2c7_test.cpp'
+        PassPattern = '0059e2c7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059e6bd'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_RecurseRefreshEntriesAmountsAndAvailabilitiesPC_0059e6bd.cpp'
+        TestSource = '00/59/CTCInventoryTrade_RecurseRefreshEntriesAmountsAndAvailabilitiesPC_0059e6bd_test.cpp'
+        PassPattern = '0059e6bd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059f304'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_CloseInventory_0059f304.cpp'
+        TestSource = '00/59/CTCInventoryTrade_CloseInventory_0059f304_test.cpp'
+        PassPattern = '0059f304_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a30a1'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_InitialiseBuyableItems_005a30a1.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_InitialiseBuyableItems_005a30a1_test.cpp'
+        PassPattern = '005a30a1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a8a5d'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_ConstructSpecialShopListPC_005a8a5d.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_ConstructSpecialShopListPC_005a8a5d_test.cpp'
+        PassPattern = '005a8a5d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c3a95'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_OnSerialise_005c3a95.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_OnSerialise_005c3a95_test.cpp'
+        PassPattern = '005c3a95_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c770c'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionWeight_005c770c.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionWeight_005c770c_test.cpp'
+        PassPattern = '005c770c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cc9ad'
+        Module = 'CTCInventoryStats'
+        Source = '00/5c/CTCInventoryStats_GetCreatureGroupAsString_005cc9ad.cpp'
+        TestSource = '00/5c/CTCInventoryStats_GetCreatureGroupAsString_005cc9ad_test.cpp'
+        PassPattern = '005cc9ad_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cd074'
+        Module = 'NInventory::CTCInventoryStats'
+        Source = '00/5c/NInventoryCTCInventoryStats_ConstructScreen_005cd074.cpp'
+        TestSource = '00/5c/NInventoryCTCInventoryStats_ConstructScreen_005cd074_test.cpp'
+        PassPattern = '005cd074_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cd767'
+        Module = 'CTCInventoryStats'
+        Source = '00/5c/CTCInventoryStats_InitialiseMannequin_005cd767.cpp'
+        TestSource = '00/5c/CTCInventoryStats_InitialiseMannequin_005cd767_test.cpp'
+        PassPattern = '005cd767_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fc0c0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_UpdateRegionsCorrespondances_005fc0c0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_UpdateRegionsCorrespondances_005fc0c0_test.cpp'
+        PassPattern = '005fc0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fc620'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_FindTeleports_005fc620.cpp'
+        TestSource = '00/5f/CTCInventoryMap_FindTeleports_005fc620_test.cpp'
+        PassPattern = '005fc620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fce60'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_vfunc31_005fce60.cpp'
+        TestSource = '00/5f/CTCInventoryMap_vfunc31_005fce60_test.cpp'
+        PassPattern = '005fce60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fdad0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_Copy_005fdad0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_Copy_005fdad0_test.cpp'
+        PassPattern = '005fdad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006116e0'
+        Module = 'CTCInventoryMap'
+        Source = '00/61/CTCInventoryMap_OpenInventory_006116e0.cpp'
+        TestSource = '00/61/CTCInventoryMap_OpenInventory_006116e0_test.cpp'
+        PassPattern = '006116e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00621720'
+        Module = 'CTCInventoryQuests'
+        Source = '00/62/CTCInventoryQuests_CloseInventoryPC_00621720.cpp'
+        TestSource = '00/62/CTCInventoryQuests_CloseInventoryPC_00621720_test.cpp'
+        PassPattern = '00621720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00621c80'
+        Module = 'CTCInventoryQuests'
+        Source = '00/62/CTCInventoryQuests_CloseInventory_00621c80.cpp'
+        TestSource = '00/62/CTCInventoryQuests_CloseInventory_00621c80_test.cpp'
+        PassPattern = '00621c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fbe50'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_UpdateBeamExplosion_007fbe50.cpp'
+        TestSource = '00/7f/CTCKraken_UpdateBeamExplosion_007fbe50_test.cpp'
+        PassPattern = '007fbe50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005fc0c0	RELOCATION_MATCH	526v526	PASS	CTCInventoryMap::UpdateRegionsCorrespondances
+005fc620	RELOCATION_MATCH	529v529	PASS	CTCInventoryMap::FindTeleports
+005fce60	RELOCATION_MATCH	585v585	PASS	CTCInventoryMap::vfunc_31
+005fd1d0	DIFFER	562v564	-	frame 0x48 v 0x40 key/out words not shared; __ftol2 Y-before-X order
+005fd5e0	DIFFER	986v982	-	block placement: retail puts non-core branch after ret
+005fdad0	RELOCATION_MATCH	760v760	PASS	CTCInventoryMap::vfunc_12
+006116e0	RELOCATION_MATCH	535v535	PASS	CTCInventoryMap::OpenInventory
+00621720	RELOCATION_MATCH	761v761	PASS	CTCInventoryQuests::CloseInventoryPC
+00621a20	DIFFER	620v600	-	lane gap: inlined lower_bound eax copy
+00621c80	RELOCATION_MATCH	752v752	PASS	CTCInventoryQuests::CloseInventory
+00622a00	DIFFER	877v877	-	ours caches 0 in ebx function-wide; retail uses immediates
+005cc9ad	RELOCATION_MATCH	528v528	PASS	CTCInventoryStats::GetCreatureGroupAsString
+005cd074	RELOCATION_MATCH	562v562	PASS	CTCInventoryStats::ConstructScreen
+005cd767	RELOCATION_MATCH	745v745	PASS	CTCInventoryStats::InitialiseMannequin
+005cdd86	DIFFER	860v864	-	slider-block register allocation/scheduling around CCharString temporaries
+0059b79a	RELOCATION_MATCH	897v897	PASS	CTCInventoryTrade::GetMenuBranchFromDefIndex
+0059c0c6	RELOCATION_MATCH	897v897	PASS	CTCInventoryTrade::GetMenuBranchFromDefIndex
+0059c447	RELOCATION_MATCH	617v617	PASS	CTCInventoryTrade::GetTypeFromDefIndexPC
+0059cb90	RELOCATION_MATCH	953v953	PASS	CTCInventoryTrade::AddWantedItemToList
+0059d270	DIFFER	996v1002	-	ebx zero-register caching (retail) vs and/test immediates (ours)
+0059db82	RELOCATION_MATCH	642v642	PASS	CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+0059e2c7	RELOCATION_MATCH	528v528	PASS	CTCInventoryTrade::CloseInventoryPC
+0059e6bd	RELOCATION_MATCH	656v656	PASS	CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+0059f304	RELOCATION_MATCH	538v538	PASS	CTCInventoryTrade::CloseInventory
+0059fc17	DIFFER	715v716	-	entry pointer edi vs ecx+spill; size kept in frame word
+005a30a1	RELOCATION_MATCH	917v917	PASS	CTCInventoryTrade::InitialiseBuyableItems
+005a8a5d	RELOCATION_MATCH	521v521	PASS	CTCInventoryTrade::ConstructSpecialShopListPC
+005ad305	DIFFER	620v620	-	frame 0x40 v 0x3c: vector temp takes one extra word
+005c323a	DIFFER	522v522	-	esi load scheduled before the viewport call
+005c3444	DIFFER	638v638	-	same esi-load residue as 005c323a
+005c3a95	RELOCATION_MATCH	1020v1020	PASS	CTCInventoryWeapons::OnSerialise
+005c66b2	DIFFER	695v760	-	lane gap: whole-function cross-call register caching
+005c71aa	DIFFER	681v680	-	retail cmp [eax+esi*4] addressing vs ours lea eax first; two push/lea swaps
+005c7452	DIFFER	-v698	-	lane gap: inline fistp rounding helper (not graded)
+005c770c	RELOCATION_MATCH	519v519	PASS	CTCInventoryWeapons::ConstructWeaponDescriptionWeight
+005c8176	DIFFER	617v739	-	lane gap: whole-function cross-call register caching (PC twin of 005c66b2)
+005cacb9	SKIP	-v653	-	catalog row truncated: body continues past the row end (jmp 0x5CB101 at +0x288, no ret/int3)
+005cb974	DIFFER	693v706	-	cross-call register caching of viewport/def pointers
+007fb270	DIFFER	556v556	-	frame 0x2c v 0x28: fild temp / interface key word sharing
+007fbe50	RELOCATION_MATCH	955v955	PASS	CTCKraken::UpdateBeamExplosion

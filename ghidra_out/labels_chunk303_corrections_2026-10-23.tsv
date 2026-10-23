@@ -1,0 +1,8 @@
+address	name	evidence
+005fdad0	CTCInventoryMap::Copy	chunk 303 RELOCATION_MATCH body (was vfunc_12)
+0080cbf0	AddExcludedThing	chunk 303 callee body (was AddDependentThing)
+00669d30	GetEffectFromString	chunk 303 callee body (was CCRC::CalcAndLookup; chunk 301 and SW2 agree it is a particle/effect name lookup)
+00487dd0	GetControlledCreature	chunk 303 callee body
+005d9a10	GetHairCardDef	chunk 303 callee body
+005d9aa0	GetTattooCardDef	chunk 303 callee body
+0071de20	GetTattooThings	chunk 303 callee body

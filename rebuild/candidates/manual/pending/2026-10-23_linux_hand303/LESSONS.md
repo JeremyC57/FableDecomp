@@ -1,0 +1,50 @@
+# Chunk 303 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- **Inline CWorld wrapper (005fc0c0, 005fc620).**
+  - Source: route the search through an inline wrapper, e.g. `long FindAllMessages(const F& f, list& l) { return PMgr->FindAllMessages(f, &l); }` or `GetAllThings` through PThingSearchTools at +0x20.
+  - Retail shape: the filter temporaries are stored BEFORE the GetWorld call and the pushes come after it.
+  - A direct `GetWorld()->...` call puts GetWorld first.
+- **Growth stand-in for the `__false_type` tag (005fdad0).**
+  - Source: a same-TU noinline `_M_insert_overflow` stand-in that only reads x: `if (*(void**)&x != p) return; _M_finish = pos;`.
+  - Effect: the tag (user ctor) homes on a LIVE argument slot, and the frame drops from 0x14 to retail's size.
+- **Forced-inline POD vector push_back (005fdad0).**
+  - Source: `__forceinline` on BOTH push_back and `_M_insert_overflow`, a separate `uninitialized_copy` helper that returns cur, and `max` taken by reference.
+  - Plain `inline` is not expanded in a speed TU of this size.
+- **Range-insert iterators (005fdad0).**
+  - Use a POD `const_iterator` (no user copy ctor) for first/last; retail pushes them directly.
+  - `pos` stays an iterator with a copy ctor (`mov eax,esp ; mov [eax],edx`).
+  - A copy ctor on all three copies every argument through esp.
+- **Bool-absent / cached-end idiom (005fc620).**
+  - Source: `bool absent = true; it = find(...); last = end(); if (it != last) absent = false; if (find2 == last && absent) insert(last, x);`
+  - Retail shape: the dl flag and the saved-end register.
+- **C3DVector user copy constructor also fixes x87 operand order (007fbe50).**
+  - Shape: with a POD C3DVector, the sum `start + dir * length` (product CSE'd and kept in the frame) emits `fld start.Y ; fadd st(1) ; fstp ; fstp st(0)`, which is +4 bytes.
+  - Retail emits `fadd [start.Y] ; fstp`.
+  - Fix: adding `C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}` matched the whole 955-byte row.
+- **Inline CThing accessors before a hidden-return virtual call (007fbe50).**
+  - Shape: `thing->PhysicsBody->GetFacing()` (C3DVector returned by value) and `engine->P34->vfunc(&out)` load `this` into eax and `mov ecx,eax` after the pushes.
+  - Fix: inline accessors (`GetPhysics()`, `GetCameraSource()`) give retail's `mov ecx,[eax+60h] ; mov eax,[ecx] ; lea edx ; push edx`.
+  - The same goes for `GetGraphicAppearance()->GetDummyObject(...)`: the appearance is loaded into ecx after the name temporary and before the six pushes.
+  - Neither a named local nor an inline CThing::GetDummyObject wrapper gives this.
+- **CSE'd product kept in the frame (007fbe50).**
+  - Source: write `dir * length` twice, once for the Create end argument and once for the line-of-sight end, rather than as a named `offset` local.
+  - Effect: retail's `fst` of the product after the CCharString temporary, reused later from the frame.
+  - A named local is computed before the string temporary and keeps `length` in st(1).
+- **Named result local before push_back (005fd1d0, parked).**
+  - Source: name the Convert result as a local before push_back.
+  - Effect: push_back no longer routes the value through eax.
+- **`unsigned long HasTC` return (007fb270).**
+  - Source: `unsigned long HasTC(long t) const { return bits[t >> 5] & (1UL << (t & 31)); }`.
+  - Retail shape: `test byte ptr` instead of `shr/test`.
+  - A named `facing` float gives retail's store-then-push for the AngleDifference argument.
+
+Review at landing:
+- These rows needed more than 4 grades (within the 5-per-strategy budget, several strategies):
+  - 007fbe50: 13 grades;
+  - 005fdad0: 10 grades;
+  - 005fc0c0: 5 grades;
+  - 005a30a1: 13 grades.
+- Local base models are used in place of an existing header: the CTCInventoryTrade rows use local views. CTCInventoryTrade.h offsets were checked against retail; the STLport vectors are 12 bytes in retail.
+- CTCKraken has no engine header. The rows use local layouts with `// Layout:` evidence. The PDB offsets from +0x30 onwards are 8 to 16 bytes larger, because each of the two STLport lists is 4 bytes in retail.
+- The catalog row 005cacb9 (RefreshWeaponDescriptions) is truncated at 653 bytes. Fix the row length before re-queueing it.
+- 0x00686A70 is labelled CViewBase::GetDisplayEngine but is called on CTCKraken. Confirm the ICF / label propagation with `label_trust.py`.

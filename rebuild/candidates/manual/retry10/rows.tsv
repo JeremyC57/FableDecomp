@@ -2519,3 +2519,19 @@ address	module	name	length	chunk	reason
 006c5a80	CTCHeroOpinionDeedLog	CTCHeroOpinionDeedLog	752	hand301	DIFFER(745v737) -- CTCHeroOpinionDeedLog::CTCHeroOpinionDeedLog; deed-loop induction variables and def temporaries
 0078a390	CTCHeroRangedAttacks	FireRangedWeapon	576	hand301	DIFFER(563v563) -- CTCHeroRangedAttacks::FireRangedWeapon; slot permutation (key/accuracy vs current/temp)
 0057b43f	CTCHeroStats	RenderHeroDrunkenness	836	hand301	DIFFER(830v836) -- CTCHeroStats::RenderHeroDrunkenness; first pass, 8 probes; size-opt pragma; next: first-block FP spills
+005fd1d0	CTCInventoryMap	FindTeleportsForActiveRegion	576	hand303	DIFFER(562v564) -- frame 0x48 v 0x40 key/out words not shared; __ftol2 Y-before-X order
+005fd5e0	CTCInventoryMap	ConstructRegionDescriptionQuests	992	hand303	DIFFER(986v982) -- block placement: retail puts non-core branch after ret
+00621a20	CTCInventoryQuests	InitialiseQuestCardList	608	hand303	DIFFER(620v600) -- lane gap: inlined lower_bound eax copy
+00622a00	CTCInventoryQuests	OpenInventory	877	hand303	DIFFER(877v877) -- ours caches 0 in ebx function-wide; retail uses immediates
+005cdd86	CTCInventoryStats	CreateExperienceSliders	864	hand303	DIFFER(860v864) -- slider-block register allocation/scheduling around CCharString temporaries
+0059d270	CTCInventoryTrade	AddWantedItemToList	1002	hand303	DIFFER(996v1002) -- ebx zero-register caching (retail) vs and/test immediates (ours)
+0059fc17	CTCInventoryTrade	AlreadyHaveSpecial	716	hand303	DIFFER(715v716) -- entry pointer edi vs ecx+spill; size kept in frame word
+005ad305	CTCInventoryTrade	ApplyTattooCard	620	hand303	DIFFER(620v620) -- frame 0x40 v 0x3c: vector temp takes one extra word
+005c323a	CTCInventoryWeapons	ConstructWieldEntry	522	hand303	DIFFER(522v522) -- esi load scheduled before the viewport call
+005c3444	CTCInventoryWeapons	ConstructWieldEntryPC	638	hand303	DIFFER(638v638) -- same esi-load residue as 005c323a
+005c66b2	CTCInventoryWeapons	ConstructWeaponItemEntries	760	hand303	DIFFER(695v760) -- lane gap: whole-function cross-call register caching
+005c71aa	CTCInventoryWeapons	ConstructWeaponDescriptionNoDamageNorWeight	680	hand303	DIFFER(681v680) -- retail cmp [eax+esi*4] addressing vs ours lea eax first; two push/lea swaps
+005c7452	CTCInventoryWeapons	ConstructWeaponDescriptionDamage	698	hand303	DIFFER(-v698) -- lane gap: inline fistp rounding helper (not graded)
+005c8176	CTCInventoryWeapons	ConstructWeaponItemEntriesPC	739	hand303	DIFFER(617v739) -- lane gap: whole-function cross-call register caching (PC twin of 005c66b2)
+005cb974	CTCInventoryWeapons	OnInitialActivate	706	hand303	DIFFER(693v706) -- cross-call register caching of viewport/def pointers
+007fb270	CTCKraken	GetClosestTentacleToTarget	560	hand303	DIFFER(556v556) -- frame 0x2c v 0x28: fild temp / interface key word sharing
