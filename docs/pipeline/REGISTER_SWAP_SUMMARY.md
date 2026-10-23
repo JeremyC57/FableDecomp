@@ -167,3 +167,15 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
   - `(ptr)((ulong)LevelInfo + (y - y))` gives base bytes.
   - `map->_pad10 = map->_pad10;` in the loop gives base bytes; the self-store is deleted.
   - Reloading the pointer in the `for` step expression is worse: 545 v 542, 141 diff lines.
+
+## SOLVED: rough-area SIB order (007fcef0, round 10)
+- **What decides the order.** When an explicit `offset` variable is used, it becomes the SIB base however the sum is
+  written. VC7.1 ranks a user variable ahead of a reloaded member load, and ranks its own hoisted temps behind it.
+- **Where the variable goes.** Computed *after* the y-loop's entry check (`y` declared first,
+  `if (y < box.Y1) { long offset = ...; for (; y < box.Y1; ++y) ... }`), the variable gets exactly the compiler's
+  hoist treatment: same register, same spill slot. That made `Width` match.
+- **Why the `Cells` load needed a variable too.** With only `offset`, the `Cells` load flipped: 64-build grid, 0 hits.
+  Giving `Cells` its own `cellsOffset` variable, declared after `offset`, with the pointer written first in its sum,
+  gave **RELOCATION_MATCH**.
+- **Lesson.** When expression spellings all canonicalise, change *which values are variables and where they are
+  assigned*. Then grade combinations systematically rather than one guess at a time.
