@@ -2758,3 +2758,36 @@ address	module	name	length	chunk	reason
 00ea8130	CEmptyGrave	Main	1191	hand315	DIFFER(1185v1191) -- register allocation: retail keeps the new-expression conditional-temporary flags in ebx from entry (push ebx first, flags word at [esp+0x18]) and spills the sword PImp Data across the counted-pointer release (frame 0x5c); the lane gives ebx to the Data local and keeps the flags in memory (frame 0x58)
 00b277a0	CEngine	LoadNewScene	1456	hand315	DIFFER(3v1446) -- parked unreached (skeleton only): aligned-stack frame (and esp,-8; 0x3f4 locals) scene loader with rep-movs struct copies, x87 setup and "Enable" config string; not reached beyond decode.
 00b30b50	CEngineCamera	SetCameraState	1499	hand315	DIFFER(3v1499) -- parked x87-heavy row over 1 KB (skeleton only): x87-heavy (353 x87 ops): inline camera matrix/vector interpolation with only two calls (0xB2FD60/0xB2FC50); register-cached x87 stack.
+00972f30	CAIStateGroup_JackOfBladesStage2	?SetupArena@CAIStateGroup_JackOfBladesStage2@@MAEXXZ	1026	hand313	DIFFER(1026v1026) -- frame slot layout only (masked diff 0)
+009756b0	CAIStateGroup_JackOfBladesStage3	CAIStateGroup_JackOfBladesStage3::Update	1280	hand313	DIFFER(1270v1276) -- register roles + loop rotation; first pass only
+00940bf0	CAIStateGroup_KidWatchHopscotch	?Update@CAIStateGroup_KidWatchHopscotch@@MAEXXZ	1568	hand313	DIFFER(1520v1563) -- register roles, fsqrt order, scheduling
+00955620	CAIStateGroup_MazeDefensiveMeleeCombat	?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ	1648	hand313	DIFFER(1635v1647) -- inline lower_bound regs, def release form, block order
+00921990	CAIStateGroup_MinionFollowThing	?Update@CAIStateGroup_MinionFollowThing@@MAEXXZ	1664	hand313	DIFFER(1797v1651) -- frame/temporaries, register roles
+009334f0	CAIStateGroup_MinionGuardReactToBribe	?Update@CAIStateGroup_MinionGuardReactToBribe@@UAEXXZ	1360	hand313	DIFFER(1357v1347) -- register roles (&PHero edi vs ebp), one extra frame slot; structure matches
+00932b50	CAIStateGroup_MinionGuardReactToCriminal	?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ	1680	hand313	DIFFER(1692v1671) -- frame 0x68 v 0x48, x87 schedule, fps*5 fold, vector arg via temp
+00936c70	CAIStateGroup_MinionReactToCorpse	CAIStateGroup_MinionReactToCorpse::Update	1040	hand313	DIFFER(1031v1037) -- list end/iterator register roles, x87 2D offset order
+0092ee10	CAIStateGroup_MinionReactToPlayerInteraction	UpdateWaitingForConfirmation	1072	hand313	DIFFER(1030v1059) -- register roles (this edi v ebp, constant 0x10 CSE in ebp)
+00930480	CAIStateGroup_MinionReactToPlayerInteraction	?Update@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ	1520	hand313	DIFFER(1486v1513) -- register roles, TestTC narrowing, wife double test merged
+009582d0	CAIStateGroup_MinionReactToTrespassing	?Update@CAIStateGroup_MinionReactToTrespassing@@UAEXXZ	1104	hand313	DIFFER(1097v1098) -- one insn: mov bl,1 hoisted and reused as the dead-bit mask (advisor candidate)
+00923070	CAIStateGroup_ServeFood	CAIStateGroup_ServeFood::IsRunnable	1184	hand313	DIFFER(1184v1184) -- frame slot sharing only (0x21 type word shared with tavern spill); masked 18
+00f03980	CAT_Phase1Guard	Main	1440	hand313	DIFFER(1448v1434) -- handle dtor inline expansion at the fall-through end (implicit: out of line; user: extra vptr store); rest matches
+0093fcd0	CAIStateGroup_VillageTaskSecuritySweep	CAIStateGroup_VillageTaskSecuritySweep::Update	1056	hand313	DIFFER(1052v1053) -- first pass; register roles + position copy form
+0096df50	CAIStateGroup_ScreamerPursueTarget	?Update@CAIStateGroup_ScreamerPursueTarget@@UAEXXZ	1150	hand313	DIFFER(1159v1150) -- first pass; vector exit path + block order
+0093ef30	CAIStateGroup_VillageTaskPatrol	?InitCreaturePosition@CAIStateGroup_VillageTaskPatrol@@UAE_NXZ	1168	hand313	DIFFER(1176v1161) -- first pass; copy order + start-node lea + frame
+00712340	CActionTalkBase	GetCameraSetupPositions	1408	hand313	DIFFER(1410v1404) -- switch case tail cross-jump only (advisor candidate)
+00716de0	CActionTalkBase	Update	1520	hand313	SKIPPED(-) -- not graded: known lane gap (inline fistp rounding helper, x2)
+0093f3c0	CAIStateGroup_VillageTaskPatrol	?Update@CAIStateGroup_VillageTaskPatrol@@UAEXXZ	1200	hand313	DIFFER(1182v1185) -- first pass; register roles + frame 0x160 v 0x150
+009647c0	CAIStateGroup_StealStealableItem	CAIStateGroup_StealStealableItem::Update	1248	hand313	DIFFER(1238v1238) -- register choice: const 0xAA probe registers only (5 insns); advisor by-value FindInterface and null-init levers both worse (whole-function swap)
+009658b0	CAIStateGroup_RecoverStealableItem	CAIStateGroup_RecoverStealableItem::Update	1276	hand313	DIFFER(1276v1276) -- register choice: pure esi/edi role swap (this v loop result); named/scoped alert fixes regs but moves the false push (+7 bytes); helper, ref-cast, early-return and reference-local levers unchanged
+0096b100	CAIStateGroup_WhisperPotionCombat	CAIStateGroup_WhisperPotionCombat::Update	1280	hand313	DIFFER(1293v1269) -- ebx/ebp role swap (boss pointer), x87 copy scheduling
+0094dd90	CAIStateGroup_RockTroll	CAIStateGroup_RockTroll::Update	1776	hand313	DIFFER(1754v1761) -- first pass; block placement of the throwing branch, exit copies
+00927f30	CAIStateGroup_SetupWares	CAIStateGroup_SetupWares::Update	1331	hand313	DIFFER(1331v1331) -- register choice: retry count ecx v eax + one push order; advisor ternary/if-else/scoped-reached levers all worse
+00926ed0	CAIStateGroup_OpenAndCloseShop	?Update@CAIStateGroup_OpenAndCloseShop@@UAEXXZ	1373	hand313	DIFFER(1389v1373) -- first pass; this ebx v ebp, first exit placement, wait-condition logical-not form
+0095ef80	CAIStateGroup_OpinionReactionRoot	?IsRunnable@CAIStateGroup_OpinionReactionRoot@@UAE_NXZ	1536	hand313	DIFFER(1536v1528) -- first pass; register roles, 0x20000 mask CSE, reaction-flag loop regs, frame 0x38 v 0x30 (jump table)
+00943cf0	CAIStateGroup_WorkInWarehouse	MoveCrates	1552	hand313	DIFFER(1612v1541) -- first pass; register roles, list-node spill, frame 0x58 v 0x48, by-value argument temporaries
+00962d50	CAIStateGroup_VersusRockTroll	?Update@CAIStateGroup_VersusRockTroll@@MAEXXZ	1680	hand313	DIFFER(1611v1679) -- first pass; x87 term order, call-temporary order, circling block layout
+00963a50	CAIStateGroup_VersusScorpionKing	CAIStateGroup_VersusScorpionKing::Update	1695	hand313	DIFFER(1635v1695) -- first pass; circling-branch layout, random-roll placement, x87 copy scheduling
+0092da20	CAIStateGroup_MinionSleep	CAIStateGroup_MinionSleep::Update	1808	hand313	SKIPPED(-) -- not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
+0094c050	CAIStateGroup_SellToBuyer	?Update@CAIStateGroup_SellToBuyer@@UAEXXZ	1859	hand313	SKIPPED(-) -- not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
+00915b60	CAIStateGroup_MoveGoodsBase	PlaceGoods	1936	hand313	SKIPPED(-) -- not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
+0097bda0	CAIStateGroup_ScorpionKing	UpdateCombat	2016	hand313	SKIPPED(-) -- not reached: 1.8-2 KB row, budget spent on first passes and advisor levers

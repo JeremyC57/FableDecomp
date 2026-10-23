@@ -1,0 +1,258 @@
+// CAIStateGroup_RecoverStealableItem::Update() -- claim a free action point on the stolen item, walk to it (or near it), face it, pick it up (dropping whatever was carried), carry it to the target point and alert the player there
+// Grade: DIFFER(1276v1276) -- a pure esi/edi swap (this in esi, results in edi; retail the reverse), every other byte identical; naming the AlertToPlayer action as a local fixes the swap but reorders its push 0 (1283v1276)
+struct CTCBase;
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector() { }
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
+    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+};
+struct CRightHandedSet {
+    C3DVector Forward;
+    C3DVector Up;
+};
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);       // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+};
+#pragma auto_inline(off)
+// Same-TU stand-in for the binary search 0x0040F020 (reads the map and the key only).
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+{
+    SEntry* f = first;
+    long n = last - first;
+    while (n > 0) {
+        long half = n >> 1;
+        if (f[half].type < *type) {
+            f += half + 1;
+            n -= half + 1;
+        } else
+            n = half;
+    }
+    return f;
+}
+#pragma auto_inline(on)
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20
+    CInterfaceMap m_interfaces;                 // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char m_flags91;                    // +0x91
+    const C3DVector& GetPosition() const;       // 0x004C73D0
+    void Kill(bool instant);                    // 0x004C9B80
+    __forceinline bool HasTC(long interfaceType) const
+    {
+        unsigned long word = m_presentBits[interfaceType >> 5];
+        return ((word >> (interfaceType & 31)) & 1) != 0;
+    }
+    __forceinline bool HasInterface(long interfaceType)
+    {
+        const bool& found = HasTC(interfaceType);
+        return found;
+    }
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        const bool& found = HasTC(interfaceType);
+        if (found) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        }
+        return found;
+    }
+    __forceinline unsigned long HasTCWord(long interfaceType) const
+    {
+        unsigned long word = m_presentBits[interfaceType >> 5];
+        return word & (1u << (interfaceType & 31));
+    }
+    template<class T> __forceinline void GetInterfaceC(T** ppOut, long interfaceType) const
+    {
+        const bool& found = HasTC(interfaceType);
+        if (found) {
+            long type = interfaceType;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        }
+    }
+};
+struct CThingCreatureBase : CThing {
+};
+struct CBaseIntelligentPointer {
+    virtual void v00();
+    CThing* m_pItem;                            // +0x04
+    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    CThing* GetPItem() const;                   // 0x00A01B50
+};
+struct CIntelligentPointerThing : CBaseIntelligentPointer {
+    CIntelligentPointerThing(CThing* item);     // 0x004A96F0
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& o);   // 0x004A9760
+};
+struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
+};
+bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThing& p);        // 0x004CC340
+bool __fastcall IS_THING_ALIVE(const CIntelligentPointerConstThing& p);   // 0x0069CE20
+struct CTCUserActionPointBase {
+    bool GetFreeActionPoint(CThingCreatureBase* creature, C3DVector* pos, CRightHandedSet* set, long* index);   // 0x007FEDE0
+};
+struct CTCStealable {                           // interface 0x47
+    unsigned char _pad[0x10];
+    void* POwnerAction;                         // +0x10
+};
+struct CTCCarrying {                            // interface 0x46
+    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    void RemoveThingFromPrimarySlot(bool drop); // 0x006A1E00
+    bool IsCarryingThing(CThing* thing);        // 0x006A1060
+};
+struct CTCTargetPoint {                         // interface 0xB2
+    unsigned char _pad[0x10];
+    float Radius;                               // +0x10
+};
+struct CCreatureActionBase {
+    long GetID() const;                         // 0x00692620
+};
+struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
+    unsigned char _data[0xa8];
+    CCreatureAction_AlertToPlayer(CThingCreatureBase* creature);   // 0x00842150
+    ~CCreatureAction_AlertToPlayer();           // 0x00693EF0
+};
+struct CCreatureAction_AddRealObjectToInventory : CCreatureActionBase {
+    unsigned char _data[0xb0];
+    CCreatureAction_AddRealObjectToInventory(CThingCreatureBase* creature, CThing* item);   // 0x00843700
+    ~CCreatureAction_AddRealObjectToInventory();   // 0x007120D0
+};
+struct CAIBrain {
+    unsigned char _pad[0x18];
+    CThingCreatureBase* PCreature;              // +0x18
+};
+struct CAIStateGroupBase {
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    unsigned char _pad08[0x0c];
+    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
+    void Terminate();                           // 0x008FCF40
+    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+    long AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool b);        // 0x0097DB70
+    long AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long a, bool b, bool c, bool d, bool e, long f);   // 0x0097EC00
+    long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float prox, bool* reached, long a, bool b, bool c, bool d, long e, bool f, float g);   // 0x0097E890
+};
+struct CAIStateGroup_RecoverStealableItem : CAIStateGroupBase {
+    CIntelligentPointerThing PStealableItem;            // +0x14
+    CIntelligentPointerConstThing PTargetPoint;         // +0x1c
+    CIntelligentPointerThing PPreviouslyCarriedItem;    // +0x24
+    bool GotActionPoint;                        // +0x2c
+    long ActionPointIndex;                      // +0x30
+    bool ReachedDestination;                    // +0x34
+    long PickUpActionID;                        // +0x38
+    bool NeedsCleanup;                          // +0x3c
+    virtual void Update();
+};
+
+void CAIStateGroup_RecoverStealableItem::Update()
+{
+    if (!PStealableItem.GetPItem() || (PStealableItem.GetPItem()->m_flags91 & 1)) {
+        Terminate();
+        return;
+    }
+    CTCUserActionPointBase* actionPoint;
+    PStealableItem.GetPItem()->GetInterface(&actionPoint, 0x2d);
+    C3DVector pos;
+    CRightHandedSet set;
+    if (!actionPoint->GetFreeActionPoint(GetCreature(), &pos, &set, &ActionPointIndex)) {
+        Terminate();
+        return;
+    }
+    GotActionPoint = true;
+    C3DVector facing = set.Up;
+    CTCStealable* stealable;
+    PStealableItem.GetPItem()->GetInterface(&stealable, 0x47);
+    bool arrived;
+    long result;
+    do {
+        if (!PStealableItem.GetPItem() || (PStealableItem.GetPItem()->m_flags91 & 1)) {
+            Terminate();
+            return;
+        }
+        if (stealable->POwnerAction != 0) {
+            Terminate();
+            return;
+        }
+        bool reached;
+        result = AIAction_MoveToPos(2, pos, &reached, 5, true, true, false, true, 0);
+    } while (result == 4);
+    if (result == 3) {
+        do {
+            if (!PStealableItem.GetPItem() || (PStealableItem.GetPItem()->m_flags91 & 1)) {
+                Terminate();
+                return;
+            }
+            if (stealable->POwnerAction != 0) {
+                Terminate();
+                return;
+            }
+            CThing* item = PStealableItem.GetPItem();
+            bool reached;
+            result = AIAction_MoveToPosProximity(2, item->GetPosition(), 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
+        } while (result == 4);
+        if (IS_THING_ALIVE(PStealableItem)) {
+            CThingCreatureBase* creature = GetCreature();
+            CThing* item = PStealableItem.GetPItem();
+            facing = item->GetPosition() - creature->GetPosition();
+        }
+    }
+    if (!IS_THING_ALIVE(PStealableItem)) {
+        Terminate();
+        return;
+    }
+    if (stealable->POwnerAction != 0) {
+        Terminate();
+        return;
+    }
+    if (result != 2) {
+        Terminate();
+        return;
+    }
+    result = AIAction_LookAtPos(1, GetCreature()->GetPosition() + facing, 0x21, 0.0027777f);
+    if (!IS_THING_ALIVE(PStealableItem)) {
+        Terminate();
+        return;
+    }
+    if (stealable->POwnerAction != 0) {
+        Terminate();
+        return;
+    }
+    if (result != 2) {
+        Terminate();
+        return;
+    }
+    CCreatureAction_AddRealObjectToInventory action(GetCreature(), PStealableItem.GetPItem());
+    PickUpActionID = action.GetID();
+    CTCCarrying* carrying;
+    GetCreature()->GetInterface(&carrying, 0x46);
+    {
+        CIntelligentPointerThing previous(carrying->GetThingInPrimarySlot());
+        PPreviouslyCarriedItem = previous;
+    }
+    carrying->RemoveThingFromPrimarySlot(false);
+    if (IS_THING_ALIVE(PPreviouslyCarriedItem) && PPreviouslyCarriedItem.GetPItem()->HasInterface(0x48))
+        PPreviouslyCarriedItem.GetPItem()->Kill(true);
+    long done = AIAction_PerformActionAndWait(action, false);
+    if (IS_THING_ALIVE(PTargetPoint) && IS_THING_ALIVE(PStealableItem) && done == 2
+        && carrying->IsCarryingThing(PStealableItem.GetPItem())) {
+        facing = PTargetPoint.GetPItem()->GetPosition();
+        const CTCTargetPoint* target;
+        PTargetPoint.GetPItem()->GetInterfaceC(&target, 0xb2);
+        float radius = target->Radius;
+        if (AIAction_MoveToPosProximity(1, facing, radius, &arrived, 5, true, false, true, 0, true, 0.0f) == 2) {
+            ReachedDestination = true;
+            AIAction_PerformActionAndWait(CCreatureAction_AlertToPlayer(GetCreature()), false);
+        }
+    }
+    Terminate();
+}

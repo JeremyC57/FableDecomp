@@ -273403,6 +273403,55 @@ $catalog = @(
         TestSource = '00/ee/CDemonDoorFace_Main_00ee7a20_test.cpp'
         PassPattern = '00ee7a20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00713ee0'
+        Module = 'NTCScriptedControl::CActionFollowCreature'
+        Source = '00/71/NTCScriptedControlCActionFollowCreature_Update_00713ee0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionFollowCreature_Update_00713ee0_test.cpp'
+        PassPattern = '00713ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009432c0'
+        Module = 'CAIStateGroup_WorkAtSchool'
+        Source = '00/94/CAIStateGroupWorkAtSchool_Update_009432c0.cpp'
+        TestSource = '00/94/CAIStateGroupWorkAtSchool_Update_009432c0_test.cpp'
+        PassPattern = '009432c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfd6c0'
+        Module = 'CATO_MagicBarrier'
+        Source = '00/cf/CATOMagicBarrier_Main_00cfd6c0.cpp'
+        TestSource = '00/cf/CATOMagicBarrier_Main_00cfd6c0_test.cpp'
+        PassPattern = '00cfd6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f045e0'
+        Module = 'CAT_Sentry'
+        Source = '00/f0/CATSentry_Main_00f045e0.cpp'
+        TestSource = '00/f0/CATSentry_Main_00f045e0_test.cpp'
+        PassPattern = '00f045e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f04cc0'
+        Module = 'CAT_Phase3Archer'
+        Source = '00/f0/CATPhase3Archer_Main_00f04cc0.cpp'
+        TestSource = '00/f0/CATPhase3Archer_Main_00f04cc0_test.cpp'
+        PassPattern = '00f04cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f051d0'
+        Module = 'CAT_Phase3Guard'
+        Source = '00/f0/CATPhase3Guard_Main_00f051d0.cpp'
+        TestSource = '00/f0/CATPhase3Guard_Main_00f051d0_test.cpp'
+        PassPattern = '00f051d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1a990'
+        Module = 'CArenaEnemy'
+        Source = '00/f1/CArenaEnemy_Main_00f1a990.cpp'
+        TestSource = '00/f1/CArenaEnemy_Main_00f1a990_test.cpp'
+        PassPattern = '00f1a990_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

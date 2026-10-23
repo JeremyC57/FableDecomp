@@ -842,3 +842,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk 315) CCountedPointer::operator= must read the source pair before the self-compare, and both it and CScriptThing's operator= need `__forceinline` (00e4e0e0). An inline `operator->` on a def pointer gives `mov eax / lea ecx`; `.m_pDef->` gives `add ecx`.
 - (chunk 315) Under lane flags wchar_t is not native: declare `CWideString(const unsigned short*)`. `$S/w17/xdis.py` takes its length in HEX.
 - (chunk 315) 19 of its 28 parks are one-grade placeholders (x87-heavy over 1 KB, or decode-only budget parks), not real attempts. Treat them as unworked in a retry.
+- (chunk 313) Packed classes need `#pragma pack(1)`. A member-function-pointer table needs `#pragma pointers_to_members(full_generality, multiple_inheritance)`; the `__multiple_inheritance` keyword fails with C2292. `(begin() + i)->` stops strength reduction. `(a - b).LengthSquared()` then sqrt gives the Z,Y,X sum order.
+- (chunk 313) Three register-only rows (009647c0, 009658b0, 00927f30) resisted the by-value FindInterface, weighted-count and scope levers; they are queued for R&D.

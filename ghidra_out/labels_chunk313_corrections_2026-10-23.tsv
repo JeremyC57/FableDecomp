@@ -1,0 +1,11 @@
+address	name	evidence
+0x008FCFA0	GetPThingWorld	chunk313
+0x0049D870	CWorld::GetWorldFrame	chunk313
+0x005CC1B0	IS_THING_DEAD	chunk313
+0x007AED10	CTCBoss::GetPhase	chunk313
+0x0094D930	CAIStateGroup_RockTroll::IsStillRunnable	chunk313: was BriarRose
+0x00842C70	CCreatureAction_PlaceSaleItem::CCreatureAction_PlaceSaleItem	chunk313: was ShopkeeperGetOut
+0x006621A0	IsInCombat	chunk313
+0x007EE540	GetVillage	chunk313
+0x00A14040	C3DVector::RotateZ	chunk313
+0x0088B8F0	CAIBrain::AddOutput	chunk313

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00972f30	DIFFER	1026v1026	-	frame slot layout only (masked diff 0)
+009756b0	DIFFER	1270v1276	-	register roles + loop rotation; first pass only
+00940bf0	DIFFER	1520v1563	-	register roles, fsqrt order, scheduling
+00955620	DIFFER	1635v1647	-	inline lower_bound regs, def release form, block order
+00921990	DIFFER	1797v1651	-	frame/temporaries, register roles
+009334f0	DIFFER	1357v1347	-	register roles (&PHero edi vs ebp), one extra frame slot; structure matches
+00932b50	DIFFER	1692v1671	-	frame 0x68 v 0x48, x87 schedule, fps*5 fold, vector arg via temp
+00936c70	DIFFER	1031v1037	-	list end/iterator register roles, x87 2D offset order
+0092ee10	DIFFER	1030v1059	-	register roles (this edi v ebp, constant 0x10 CSE in ebp)
+00930480	DIFFER	1486v1513	-	register roles, TestTC narrowing, wife double test merged
+009582d0	DIFFER	1097v1098	-	one insn: mov bl,1 hoisted and reused as the dead-bit mask (advisor candidate)
+00923070	DIFFER	1184v1184	-	frame slot sharing only (0x21 type word shared with tavern spill); masked 18
+00f04cc0	MATCH	1056	PASS	RELOCATION_MATCH (script Main; GetPos __forceinline)
+00f051d0	MATCH	1232	PASS	RELOCATION_MATCH (C3DVector user copy ctor)
+00f03980	DIFFER	1448v1434	-	handle dtor inline expansion at the fall-through end (implicit: out of line; user: extra vptr store); rest matches
+00f045e0	MATCH	1520	PASS	RELOCATION_MATCH (for(;;) terminate-first loop; implicit handle dtor)
+00f1a990	MATCH	1888	PASS	RELOCATION_MATCH (nested inline CCharStringData ==; user byte offset for SIB order)
+00cfd6c0	MATCH	1504	PASS	RELOCATION_MATCH (inline const-ref helper keeps IsAlive virtual)
+009432c0	MATCH	1198	PASS	RELOCATION_MATCH (time-of-day pointer local; MoveAndFace/GFRandom per arm)
+0093fcd0	DIFFER	1052v1053		first pass; register roles + position copy form
+0096df50	DIFFER	1159v1150		first pass; vector exit path + block order
+0093ef30	DIFFER	1176v1161		first pass; copy order + start-node lea + frame
+00713ee0	MATCH	1153	PASS	RELOCATION_MATCH (inline GetCreature accessor for the hoisted arm load; Offset(pos, vel) helper)
+00712340	DIFFER	1410v1404		switch case tail cross-jump only (advisor candidate)
+00716de0	SKIPPED	-	-	not graded: known lane gap (inline fistp rounding helper, x2)
+0093f3c0	DIFFER	1182v1185		first pass; register roles + frame 0x160 v 0x150
+009647c0	DIFFER	1238v1238		register choice: const 0xAA probe registers only (5 insns); advisor by-value FindInterface and null-init levers both worse (whole-function swap)
+009658b0	DIFFER	1276v1276		register choice: pure esi/edi role swap (this v loop result); named/scoped alert fixes regs but moves the false push (+7 bytes); helper, ref-cast, early-return and reference-local levers unchanged
+0096b100	DIFFER	1293v1269		ebx/ebp role swap (boss pointer), x87 copy scheduling
+0094dd90	DIFFER	1754v1761		first pass; block placement of the throwing branch, exit copies
+00927f30	DIFFER	1331v1331		register choice: retry count ecx v eax + one push order; advisor ternary/if-else/scoped-reached levers all worse
+00926ed0	DIFFER	1389v1373		first pass; this ebx v ebp, first exit placement, wait-condition logical-not form
+0095ef80	DIFFER	1536v1528		first pass; register roles, 0x20000 mask CSE, reaction-flag loop regs, frame 0x38 v 0x30 (jump table)
+00943cf0	DIFFER	1612v1541		first pass; register roles, list-node spill, frame 0x58 v 0x48, by-value argument temporaries
+00962d50	DIFFER	1611v1679		first pass; x87 term order, call-temporary order, circling block layout
+00963a50	DIFFER	1635v1695		first pass; circling-branch layout, random-roll placement, x87 copy scheduling
+0092da20	SKIPPED	-	-	not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
+0094c050	SKIPPED	-	-	not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
+00915b60	SKIPPED	-	-	not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
+0097bda0	SKIPPED	-	-	not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
