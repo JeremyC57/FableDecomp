@@ -162,3 +162,8 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
     the pointer explicitly. All give base bytes, still `[LevelInfo + offset + 4]`.
   - Binding the shifted base once before the y loop: 546 v 542, 101 diff lines. Retail reloads `LevelInfo` each
     row, so a loop-invariant copy is the wrong model anyway.
+- **Round 9 on the SIB family.** The premise was that ours treats `LevelInfo` as loop-invariant. It doesn't: ours
+  already reloads it every row (`mov eax,[edi+4]`), exactly like retail.
+  - `(ptr)((ulong)LevelInfo + (y - y))` gives base bytes.
+  - `map->_pad10 = map->_pad10;` in the loop gives base bytes; the self-store is deleted.
+  - Reloading the pointer in the `for` step expression is worse: 545 v 542, 141 diff lines.
