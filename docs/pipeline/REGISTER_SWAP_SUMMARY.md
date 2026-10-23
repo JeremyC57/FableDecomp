@@ -224,3 +224,10 @@ Recipe (works under Wine with the RTM toolset): `cl /c /O2 /Oy /W3 /GL t.cpp`, t
 - With no exports, LTCG gives 008508b0 a custom register convention (`target` arrives in edi; LowerBound takes its object in eax), unlike retail's plain thiscall. So retail's copy was externally visible to whatever optimiser built it.
 - With `/EXPORT:` on the function and on LowerBound, LTCG keeps the standard convention and produces the same length as the single-TU build (163 lines vs retail 160). It still opens with `sub esp,8 ; push ebp ; push esi ; push edi`.
 LTCG codegen by itself, with this TU's knowledge, does not leave ebp unused. What is left to test is whole-program knowledge of the REAL callee bodies (IsInScriptGroup 0x8302C0, GetDeedDef 0x6C5630, the 0x7122C0 IsRunning), which a single reconstructed TU does not have.
+
+## Round 18 (2026-10-23): LTCG with visible mock callees — ebp drops only with a non-retail convention
+Same-TU mock bodies for IsRunning, IsInScriptGroup and GetDeedDef, linked /LTCG with a grid over which symbols are exported:
+- ebp disappears (retail prologue `sub esp,8 ; push esi ; push edi`) exactly when GetDeedDef is internal. LTCG then gives GetDeedDef a custom convention (deed in ecx, result pointer in esi), so `deed` needs no register of its own.
+- Exporting GetDeedDef, or taking its address so it must keep thiscall, brings `push ebp` back (131–144 diff lines).
+- An internal leaf IsRunning mock also teaches LTCG that ecx survives the call. Retail reloads `mov ecx,esi`, so the real callee clobbers it.
+Conclusion: retail's 008508b0 calls GetDeedDef with the standard pushes AND leaves ebp unused. LTCG callee knowledge reproduces the second only by breaking the first, so it is not the explanation either. Family stays parked.
