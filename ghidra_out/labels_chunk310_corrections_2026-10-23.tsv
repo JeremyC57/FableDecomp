@@ -1,0 +1,17 @@
+address	name	evidence
+0x00D2F7F0	NScript::CQ_EndGameBossBattleScript::Main	chunk310: body 0xD30030
+0x00DA3F40	NScript::CQ_MinionClifftopChaseScript::ProcessMission	chunk310
+0x00E1A990	NScript::CQ_WizardBattleScript::Main	chunk310
+0x00E1AD30	NScript::CQ_WizardBattleScript::Init	chunk310: was ChickenKicking
+0x00EDBD80	NScript::CV_TempleOfLightScript::WatchForInsideTemple	chunk310
+0x00E6A0B0	NScript::CV_ChapelOfEvilScript::WatchForInsideChapel	chunk310
+0x00EDCB80	NScript::CV_TempleOfLightScript::WatchForAcolyteHit	chunk310
+0x00EE2DB0	NScript::CV_TravellingHeroesScript::PlayCutscene	chunk310
+0x00DEB000	NScript::CQ_RansomVictimScript::CVictimsBrother	chunk310: nested class
+0x00EB7370	WatchForTermination	chunk310: callee
+0x00EC2520	SetCurrentPopulationRegionFromRegionName	chunk310: callee
+0x00CD3EF0	GFGetPDefinitionManager	chunk310: callee
+0x00ADB570	std::list::size	chunk310: was SortTreeRecursively
+0x00A96DA0	CVertexGroupBlock::~CVertexGroupBlock	chunk310: was FinishWithDynamicTextures
+0x00AD9030	CVertexGroupBlock::CVertexGroupBlock	chunk310
+0x006699C0	std::map::find	chunk310

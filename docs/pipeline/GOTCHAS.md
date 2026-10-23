@@ -786,3 +786,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (chunk 309) An implicit wchar_t* to CWideString temporary is built before the pushes; a named local gives `lea`. An __int64 after the vptr needs `#pragma pack(push,4)`.
 - (chunk 309) Use xref.py callers to split byte-identical propagated copies across classes (0xE44A40 Bordello vs 0xE53670 BeardyBaldy).
 - (chunk 309) VC7.1 tests: a function-pointer typedef that returns a template UDT fails to compile; return void* instead.
+- (chunk 310) A same-TU `#pragma auto_inline(off)` body for Compare_00411570 or GetDef 0xCDE280 keeps values in callee-saved registers across the call, as retail does. `__forceinline` CCharString::operator== and the handle operator= when they are used many times.
+- (chunk 310) Script loops: `for(;;)` versus `while(!IsActiveThreadTerminating())` decides which cleanup copy jumps and which falls through; put post-loop statements inside the exit branch. `inline_depth(0)` around closing braces and the function-end `return;` places the dtor calls.
+- (chunk 310) A by-value CCharString built from a virtual's return needs a declared copy ctor, or it is bit-copied instead of constructed in place. The `// Leaf:` line must hold only the symbol (finish.py); notes go on a `// Label:` line.

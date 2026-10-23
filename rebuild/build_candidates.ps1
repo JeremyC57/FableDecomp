@@ -272555,6 +272555,272 @@ $catalog = @(
         TestSource = '00/ef/CTonyTestScriptsScript_AddQuestsToGuild_00eff1c0_test.cpp'
         PassPattern = '00eff1c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d2f7f0'
+        Module = 'CQ_EndGameBossBattleScript'
+        Source = '00/d2/CQEndGameBossBattleScript_Main_00d2f7f0.cpp'
+        TestSource = '00/d2/CQEndGameBossBattleScript_Main_00d2f7f0_test.cpp'
+        PassPattern = '00d2f7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da3f40'
+        Module = 'CQ_MinionClifftopChaseScript'
+        Source = '00/da/CQMinionClifftopChaseScript_ProcessMission_00da3f40.cpp'
+        TestSource = '00/da/CQMinionClifftopChaseScript_ProcessMission_00da3f40_test.cpp'
+        PassPattern = '00da3f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00deb000'
+        Module = 'CVictimsBrother'
+        Source = '00/de/CVictimsBrother_DealWithHeroHittingMe_00deb000.cpp'
+        TestSource = '00/de/CVictimsBrother_DealWithHeroHittingMe_00deb000_test.cpp'
+        PassPattern = '00deb000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1a990'
+        Module = 'CQ_WizardBattleScript'
+        Source = '00/e1/CQWizardBattleScript_Main_00e1a990.cpp'
+        TestSource = '00/e1/CQWizardBattleScript_Main_00e1a990_test.cpp'
+        PassPattern = '00e1a990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e62a00'
+        Module = 'CV_ChickenKickingScript'
+        Source = '00/e6/CVChickenKickingScript_Main_00e62a00.cpp'
+        TestSource = '00/e6/CVChickenKickingScript_Main_00e62a00_test.cpp'
+        PassPattern = '00e62a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6da80'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_TortureVictim_00e6da80.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_TortureVictim_00e6da80_test.cpp'
+        PassPattern = '00e6da80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6de10'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_GetTortureSoundEffect_00e6de10.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_GetTortureSoundEffect_00e6de10_test.cpp'
+        PassPattern = '00e6de10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7a740'
+        Module = 'CV_ExposeMayorScript'
+        Source = '00/e7/CVExposeMayorScript_PhaseFive_00e7a740.cpp'
+        TestSource = '00/e7/CVExposeMayorScript_PhaseFive_00e7a740_test.cpp'
+        PassPattern = '00e7a740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7b050'
+        Module = 'CV_ExposeMayorScript'
+        Source = '00/e7/CVExposeMayorScript_EndMission_00e7b050.cpp'
+        TestSource = '00/e7/CVExposeMayorScript_EndMission_00e7b050_test.cpp'
+        PassPattern = '00e7b050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e82220'
+        Module = 'CV_FisticuffsClubScript'
+        Source = '00/e8/CVFisticuffsClubScript_Main_00e82220.cpp'
+        TestSource = '00/e8/CVFisticuffsClubScript_Main_00e82220_test.cpp'
+        PassPattern = '00e82220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e82f80'
+        Module = 'CV_FisticuffsClubScript'
+        Source = '00/e8/CVFisticuffsClubScript_GetQuestText_00e82f80.cpp'
+        TestSource = '00/e8/CVFisticuffsClubScript_GetQuestText_00e82f80_test.cpp'
+        PassPattern = '00e82f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8b9c0'
+        Module = 'CV_GhostGrannyNecklaceScript'
+        Source = '00/e8/CVGhostGrannyNecklaceScript_Main_00e8b9c0.cpp'
+        TestSource = '00/e8/CVGhostGrannyNecklaceScript_Main_00e8b9c0_test.cpp'
+        PassPattern = '00e8b9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8cb40'
+        Module = 'CV_GhostGrannyNecklaceScript'
+        Source = '00/e8/CVGhostGrannyNecklaceScript_CreateBandit_00e8cb40.cpp'
+        TestSource = '00/e8/CVGhostGrannyNecklaceScript_CreateBandit_00e8cb40_test.cpp'
+        PassPattern = '00e8cb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e97fd0'
+        Module = 'CV_HeroDollsScript'
+        Source = '00/e9/CVHeroDollsScript_HeroHasAllDolls_00e97fd0.cpp'
+        TestSource = '00/e9/CVHeroDollsScript_HeroHasAllDolls_00e97fd0_test.cpp'
+        PassPattern = '00e97fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e98200'
+        Module = 'CV_HeroDollsScript'
+        Source = '00/e9/CVHeroDollsScript_HeroHasAnyDolls_00e98200.cpp'
+        TestSource = '00/e9/CVHeroDollsScript_HeroHasAnyDolls_00e98200_test.cpp'
+        PassPattern = '00e98200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e98fb0'
+        Module = 'CV_HeroDuelScript'
+        Source = '00/e9/CVHeroDuelScript_CleanUpHeroDuel_00e98fb0.cpp'
+        TestSource = '00/e9/CVHeroDuelScript_CleanUpHeroDuel_00e98fb0_test.cpp'
+        PassPattern = '00e98fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e99470'
+        Module = 'CV_HeroDuelScript'
+        Source = '00/e9/CVHeroDuelScript_ShowEnemyHealth_00e99470.cpp'
+        TestSource = '00/e9/CVHeroDuelScript_ShowEnemyHealth_00e99470_test.cpp'
+        PassPattern = '00e99470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9a270'
+        Module = 'CV_HeroDuelScript'
+        Source = '00/e9/CVHeroDuelScript_WatchForHeroEnteringCave_00e9a270.cpp'
+        TestSource = '00/e9/CVHeroDuelScript_WatchForHeroEnteringCave_00e9a270_test.cpp'
+        PassPattern = '00e9a270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9aeb0'
+        Module = 'CV_HeroDuelScript'
+        Source = '00/e9/CVHeroDuelScript_SecondFleeCutscene_00e9aeb0.cpp'
+        TestSource = '00/e9/CVHeroDuelScript_SecondFleeCutscene_00e9aeb0_test.cpp'
+        PassPattern = '00e9aeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9cb20'
+        Module = 'CV_IntroductionToTrophiesScript'
+        Source = '00/e9/CVIntroductionToTrophiesScript_WatchForInsideTavern_00e9cb20.cpp'
+        TestSource = '00/e9/CVIntroductionToTrophiesScript_WatchForInsideTavern_00e9cb20_test.cpp'
+        PassPattern = '00e9cb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9dc80'
+        Module = 'CV_IntroductionToTrophiesScript'
+        Source = '00/e9/CVIntroductionToTrophiesScript_WatchForAttack_00e9dc80.cpp'
+        TestSource = '00/e9/CVIntroductionToTrophiesScript_WatchForAttack_00e9dc80_test.cpp'
+        PassPattern = '00e9dc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea1090'
+        Module = 'CV_KnotholeGladeGatesScript'
+        Source = '00/ea/CVKnotholeGladeGatesScript_DoMission_00ea1090.cpp'
+        TestSource = '00/ea/CVKnotholeGladeGatesScript_DoMission_00ea1090_test.cpp'
+        PassPattern = '00ea1090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea1360'
+        Module = 'CV_KnotholeGladeGatesScript'
+        Source = '00/ea/CVKnotholeGladeGatesScript_EndMission_00ea1360.cpp'
+        TestSource = '00/ea/CVKnotholeGladeGatesScript_EndMission_00ea1360_test.cpp'
+        PassPattern = '00ea1360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea8830'
+        Module = 'CV_MurderTwistScript'
+        Source = '00/ea/CVMurderTwistScript_Main_00ea8830.cpp'
+        TestSource = '00/ea/CVMurderTwistScript_Main_00ea8830_test.cpp'
+        PassPattern = '00ea8830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea8c20'
+        Module = 'CV_MurderTwistScript'
+        Source = '00/ea/CVMurderTwistScript_MagicRuneProcess_00ea8c20.cpp'
+        TestSource = '00/ea/CVMurderTwistScript_MagicRuneProcess_00ea8c20_test.cpp'
+        PassPattern = '00ea8c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb03a0'
+        Module = 'CV_MurderTwistFinalScript'
+        Source = '00/eb/CVMurderTwistFinalScript_DoesAssassinTrustHero_00eb03a0.cpp'
+        TestSource = '00/eb/CVMurderTwistFinalScript_DoesAssassinTrustHero_00eb03a0_test.cpp'
+        PassPattern = '00eb03a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6d70'
+        Module = 'CV_MayorsInvitationScript'
+        Source = '00/eb/CVMayorsInvitationScript_Main_00eb6d70.cpp'
+        TestSource = '00/eb/CVMayorsInvitationScript_Main_00eb6d70_test.cpp'
+        PassPattern = '00eb6d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb70f0'
+        Module = 'CV_MayorsInvitationScript'
+        Source = '00/eb/CVMayorsInvitationScript_MonitorThunderHeroDuel_00eb70f0.cpp'
+        TestSource = '00/eb/CVMayorsInvitationScript_MonitorThunderHeroDuel_00eb70f0_test.cpp'
+        PassPattern = '00eb70f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb75f0'
+        Module = 'CV_MayorsInvitationScript'
+        Source = '00/eb/CVMayorsInvitationScript_DoMission_00eb75f0.cpp'
+        TestSource = '00/eb/CVMayorsInvitationScript_DoMission_00eb75f0_test.cpp'
+        PassPattern = '00eb75f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb94a0'
+        Module = 'CV_MayorsInvitationScript'
+        Source = '00/eb/CVMayorsInvitationScript_WatchExposeMayorProgress_00eb94a0.cpp'
+        TestSource = '00/eb/CVMayorsInvitationScript_WatchExposeMayorProgress_00eb94a0_test.cpp'
+        PassPattern = '00eb94a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec2240'
+        Module = 'CV_RandomPopulationSimScript'
+        Source = '00/ec/CVRandomPopulationSimScript_ProcessAlbionPopulationSim_00ec2240.cpp'
+        TestSource = '00/ec/CVRandomPopulationSimScript_ProcessAlbionPopulationSim_00ec2240_test.cpp'
+        PassPattern = '00ec2240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed10a0'
+        Module = 'CV_SingingStonesScript'
+        Source = '00/ed/CVSingingStonesScript_Main_00ed10a0.cpp'
+        TestSource = '00/ed/CVSingingStonesScript_Main_00ed10a0_test.cpp'
+        PassPattern = '00ed10a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4d20'
+        Module = 'CV_SwordInTheStoneScript'
+        Source = '00/ed/CVSwordInTheStoneScript_Main_00ed4d20.cpp'
+        TestSource = '00/ed/CVSwordInTheStoneScript_Main_00ed4d20_test.cpp'
+        PassPattern = '00ed4d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7320'
+        Module = 'CV_SwordInTheStoneScript'
+        Source = '00/ed/CVSwordInTheStoneScript_WatchForDeathDuringSwordPull_00ed7320.cpp'
+        TestSource = '00/ed/CVSwordInTheStoneScript_WatchForDeathDuringSwordPull_00ed7320_test.cpp'
+        PassPattern = '00ed7320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edbd80'
+        Module = 'CV_TempleOfLightScript'
+        Source = '00/ed/CVTempleOfLightScript_WatchForInsideTemple_00edbd80.cpp'
+        TestSource = '00/ed/CVTempleOfLightScript_WatchForInsideTemple_00edbd80_test.cpp'
+        PassPattern = '00edbd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edcb80'
+        Module = 'CV_TempleOfLightScript'
+        Source = '00/ed/CVTempleOfLightScript_WatchForAcolyteHit_00edcb80.cpp'
+        TestSource = '00/ed/CVTempleOfLightScript_WatchForAcolyteHit_00edcb80_test.cpp'
+        PassPattern = '00edcb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee2a80'
+        Module = 'CV_TravellingHeroesScript'
+        Source = '00/ee/CVTravellingHeroesScript_DoConversation_00ee2a80.cpp'
+        TestSource = '00/ee/CVTravellingHeroesScript_DoConversation_00ee2a80_test.cpp'
+        PassPattern = '00ee2a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee2db0'
+        Module = 'CV_TravellingHeroesScript'
+        Source = '00/ee/CVTravellingHeroesScript_PlayCutscene_00ee2db0.cpp'
+        TestSource = '00/ee/CVTravellingHeroesScript_PlayCutscene_00ee2db0_test.cpp'
+        PassPattern = '00ee2db0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

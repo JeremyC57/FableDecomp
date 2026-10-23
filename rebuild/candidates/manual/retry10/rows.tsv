@@ -2692,3 +2692,5 @@ address	module	name	length	chunk	reason
 00875b10	CTools	TestMeshForOccupationAndGetType	848	hand309	DIFFER(771v838) -- x87 scheduling/spills around the two getter results and the normalise; logic decoded
 00877840	CTools	IsLineOfSight	1024	hand309	DIFFER(1039v1023) -- frame layout: retail homes the hit-thing local in the dead ignore-arg slot; vector locals at other offsets; flow and calls match
 00f3ba70	CTriangleStripifier2	BuildCacheOptimizedVertexList	864	hand309	DIFFER(684v853) -- first-pass decode only: the look-ahead cache test and argument roles are not settled
+00ed94d0	CV_TalentlessBardScript	WatchForResetWanderCentre	704	hand310	DIFFER(689v689) -- one instruction: cmp al,bl vs retail test al,al after inlined IsAlive
+00ad9f10	CVertexGroupBlockOptimiser	AddBlocks	816	hand310	DIFFER(826v806) -- register allocation: zero register ebx vs retail ebp (late push)
