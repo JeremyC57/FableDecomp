@@ -1,0 +1,6 @@
+address	name	evidence
+00795090	CTCUnholyPower::FinalCleanup	chunk 300: body twin of 0078faf0, sits in the CTCUnholyPower range (was CTCDivineWrath)
+00686d30	CTCBase::GetWorldMap	chunk 300 callee body
+00686da0	CTCBase::GetPRandomSeed	chunk 300 callee body (was GetDisplayEngine, propagated)
+006a1270	CTCCarrying::HasPendingActions	chunk 300 RELOCATION_MATCH reloc ?HasPendingActions@CTCCarrying@@QAE_NXZ (was CThing_Array_GetFirstPhysicalSwitch)
+0073a840	CTCCreatureModeManager::RestartCurrentMode	chunk 300 RELOCATION_MATCH reloc ?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ

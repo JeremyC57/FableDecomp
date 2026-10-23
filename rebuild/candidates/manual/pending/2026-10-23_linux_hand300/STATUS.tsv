@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006c14d0	DIFFER	736	-	DIFFER 734v734 scheduling (AddTC this load, lookup key reg)
+0075c670	DIFFER	720	-	DIFFER 715v716 CoordAxis copy addressing
+0075d320	RELOCATION_MATCH	608	test/0075d320.cpp	
+0075d580	SKIP	816	-	SKIP: spline camera params, 16 callees incl. inline spline/interpolator math with no model
+007b57c0	SKIP	776	-	SKIP: vfunc_28 with 23 distinct callees (quest activation, CCharString, inventory) unmodelled
+007ef200	SKIP	734	-	SKIP: vfunc_28 expression action, 15 callees + vcalls unmodelled
+00705d40	DIFFER	526	-	DIFFER 522v526 ParentThing hoist + component-first order
+006a16a0	SKIP	784	-	SKIP: RemoveThingInCarrySlot, inline slot vector erase + CCountedPointer/def lookups, 18 callees
+006a1a00	SKIP	864	-	SKIP: CCountedPointer slot defs, CCharString temps, GetDummyObject + interpolation, 17 callees
+006a1f80	DIFFER	672	-	DIFFER 664v660 frame 8 vs 0xc
+007348c0	SKIP	928	-	SKIP: 23 distinct callees; CTCCombat.h layout is 0xc off retail here (AlwaysBlockThings at +0x50)
+00735fd0	SKIP	976	-	SKIP: 18 callees, particle def/CCharString lookups unmodelled
+0074e860	SKIP	1008	-	SKIP: 24 callees, inventory reward vectors (STL) unmodelled
+0074ec50	DIFFER	576	-	DIFFER 572v564 empty() cmp order, shrink-wrapped push
+0066fc90	DIFFER	656	-	DIFFER 655v655 movsx reg + ctor load order
+007b6810	DIFFER	624	-	DIFFER 615v615 param-home slot reuse
+007dda30	DIFFER	656	-	DIFFER 642v642 placement-copy interleave
+0074a260	RELOCATION_MATCH	640	test/0074a260.cpp	
+0074ace0	RELOCATION_MATCH	624	test/0074ace0.cpp	rpair ok
+0074af50	SKIP	864	-	SKIP: 29 distinct unmodelled callees (spawn/creature creation chain)
+00784260	RELOCATION_MATCH	672	test/00784260.cpp	
+007846b0	RELOCATION_MATCH	624	test/007846b0.cpp	EnterCrowdState defined in the same TU (retail inlines the state-9 call)
+006cbac0	SKIP	880	-	SKIP: 11-case jump table over creature speed vslots + 3 navigator vcalls with 10-12 args; retail CTCCreatureNavigation layout differs from Ego_r by 4
+006cbe80	SKIP	752	-	SKIP: bind2nd/ptr_fun cover search (0x6CD3B0 with predicate 0x6CCF50), inline fast rsqrt, map-bounds clamps
+006823d0	SKIP	976	-	SKIP: opaque +0x344 layout, transient list, __aullrem
+00683770	DIFFER	912	-	DIFFER 876v902 reg swap + shrink-wrap
+00684210	RELOCATION_MATCH	528	test/00684210.cpp	
+0080c6d0	SKIP	848	-	SKIP: STL-heavy hit filters (vector-of-def builds 0x80EC50, search filters 0x80E670/0x80E8E0)
+0080cd40	SKIP	880	-	SKIP: same filter machinery as 0080c6d0
+0080d0b0	RELOCATION_MATCH	592	test/0080d0b0.cpp	rpair ok
+006dffb0	DIFFER	640	-	DIFFER 635v633 wrapper vcall cross-jumped
+006e0230	DIFFER	576	-	DIFFER frame 0x7c vs 0x98
+006e1620	DIFFER	608	-	DIFFER 608v608 position copy load/store interleave only
+007796b0	RELOCATION_MATCH	608	test/007796b0.cpp	
+0078e9c0	RELOCATION_MATCH	560	test/0078e9c0.cpp	
+0078faf0	DIFFER	592	-	DIFFER 586v586 HitEffects loop register swap
+00793ec0	RELOCATION_MATCH	560	test/00793ec0.cpp	label: CTCUnholyPower (vtable 0x0126BFDC), not CTCDivineWrath
+00795090	DIFFER	592	-	DIFFER 586v586 same as 0078faf0; label: CTCUnholyPower
+007306c0	RELOCATION_MATCH	560	test/007306c0.cpp	
+007c36a0	SKIP	606	-	SKIP: inline list + filter object + search, 13 callees unmodelled

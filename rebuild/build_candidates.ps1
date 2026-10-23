@@ -271081,6 +271081,83 @@ $catalog = @(
         TestSource = '00/93/CAIStateGroupUsesSeat_MoveToSeat_009385f0_test.cpp'
         PassPattern = '009385f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00684210'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_ReportAllCrimes_00684210.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_ReportAllCrimes_00684210_test.cpp'
+        PassPattern = '00684210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007306c0'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_OnInitialActivate_007306c0.cpp'
+        TestSource = '00/73/CTCDoor_OnInitialActivate_007306c0_test.cpp'
+        PassPattern = '007306c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074a260'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_GetUndeadGenerationPoint_0074a260.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_GetUndeadGenerationPoint_0074a260_test.cpp'
+        PassPattern = '0074a260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074ace0'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_UpdateUndead_0074ace0.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_UpdateUndead_0074ace0_test.cpp'
+        PassPattern = '0074ace0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075d320'
+        Module = 'CTCCameraPointScripted'
+        Source = '00/75/CTCCameraPointScripted_OnSerialseLeaf_0075d320.cpp'
+        TestSource = '00/75/CTCCameraPointScripted_OnSerialseLeaf_0075d320_test.cpp'
+        PassPattern = '0075d320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007796b0'
+        Module = 'CTCDRegionExit'
+        Source = '00/77/CTCDRegionExit_FrameUpdate_007796b0.cpp'
+        TestSource = '00/77/CTCDRegionExit_FrameUpdate_007796b0_test.cpp'
+        PassPattern = '007796b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00784260'
+        Module = 'CTCCreatureGroupBoastingCrowd'
+        Source = '00/78/CTCCreatureGroupBoastingCrowd_EnterCrowdState_00784260.cpp'
+        TestSource = '00/78/CTCCreatureGroupBoastingCrowd_EnterCrowdState_00784260_test.cpp'
+        PassPattern = '00784260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007846b0'
+        Module = 'CTCCreatureGroupBoastingCrowd'
+        Source = '00/78/CTCCreatureGroupBoastingCrowd_OnHeroLeaveBoastingArea_007846b0.cpp'
+        TestSource = '00/78/CTCCreatureGroupBoastingCrowd_OnHeroLeaveBoastingArea_007846b0_test.cpp'
+        PassPattern = '007846b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078e9c0'
+        Module = 'CTCDivineWrath'
+        Source = '00/78/CTCDivineWrath_UnsheatheWeapon_0078e9c0.cpp'
+        TestSource = '00/78/CTCDivineWrath_UnsheatheWeapon_0078e9c0_test.cpp'
+        PassPattern = '0078e9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00793ec0'
+        Module = 'CTCUnholyPower'
+        Source = '00/79/CTCUnholyPower_UnsheatheWeapon_00793ec0.cpp'
+        TestSource = '00/79/CTCUnholyPower_UnsheatheWeapon_00793ec0_test.cpp'
+        PassPattern = '00793ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080d0b0'
+        Module = 'CTCDExplosion'
+        Source = '00/80/CTCDExplosion_CreateStaticExplosion_0080d0b0.cpp'
+        TestSource = '00/80/CTCDExplosion_CreateStaticExplosion_0080d0b0_test.cpp'
+        PassPattern = '0080d0b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

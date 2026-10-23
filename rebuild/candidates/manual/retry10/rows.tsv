@@ -2455,3 +2455,17 @@ address	module	name	length	chunk	reason
 009a1140	CStreamingFontBank	GlyphLookup	928	hand298	DIFFER(871v918) -- register allocation; ch kept in memory
 009a2000	CStreamingFontBank	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	992	hand298	DIFFER(1004v982) -- mip-loop colouring; frame +4
 004900f5	CSubtitleRenderer	DrawTextPrimitives	927	hand298	DIFFER(906v927) -- slot order, centring x87, ==L"" bool
+006c14d0	CTCBuyableHouse	OnInitialActivate	736	hand300	DIFFER(736) -- DIFFER 734v734 scheduling (AddTC this load, lookup key reg)
+0075c670	CTCCameraPointDefinitionBase	OnSerialise	720	hand300	DIFFER(720) -- DIFFER 715v716 CoordAxis copy addressing
+00705d40	CTCCarryable	SetAsCarriedBy	526	hand300	DIFFER(526) -- DIFFER 522v526 ParentThing hoist + component-first order
+006a1f80	CTCCarrying	PutThingInCarrySlot	672	hand300	DIFFER(672) -- DIFFER 664v660 frame 8 vs 0xc
+0074ec50	CTCContainerRewardHero	CreateItemPickupContainer	576	hand300	DIFFER(576) -- DIFFER 572v564 empty() cmp order, shrink-wrapped push
+0066fc90	CTCCoopSpirit	UpdateScreenRestrictingForces	656	hand300	DIFFER(656) -- DIFFER 655v655 movsx reg + ctor load order
+007b6810	CTCCrateStack	FillStack	624	hand300	DIFFER(624) -- DIFFER 615v615 param-home slot reuse
+007dda30	CTCCreatureFlyInCircles	QueueSwoop	656	hand300	DIFFER(656) -- DIFFER 642v642 placement-copy interleave
+00683770	CTCCreatureOpinionOfHero	GetHeadPendingDeed	912	hand300	DIFFER(912) -- DIFFER 876v902 reg swap + shrink-wrap
+006dffb0	CTCDParticleEmitter	UpdateEmitterThingAttachment	640	hand300	DIFFER(640) -- DIFFER 635v633 wrapper vcall cross-jumped
+006e0230	CTCDParticleEmitter	UpdateEmitterCameraAttachment	576	hand300	DIFFER(576) -- DIFFER frame 0x7c vs 0x98
+006e1620	CTCDParticleEmitter	FrameUpdate	608	hand300	DIFFER(608) -- DIFFER 608v608 position copy load/store interleave only
+0078faf0	CTCDivineWrath	FinalCleanup	592	hand300	DIFFER(592) -- DIFFER 586v586 HitEffects loop register swap
+00795090	CTCDivineWrath	FinalCleanup	592	hand300	DIFFER(592) -- DIFFER 586v586 same as 0078faf0; label: CTCUnholyPower
