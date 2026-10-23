@@ -270288,6 +270288,13 @@ $catalog = @(
         TestSource = '00/cb/CEntryScriptVectorMap_InsertEntry_00cbd5d0_test.cpp'
         PassPattern = '00cbd5d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00dfc920'
+        Module = 'CQ_TraderConflictGoodScript'
+        Source = '00/df/CQTraderConflictGoodScript_WatchForRegionTransitions_00dfc920.cpp'
+        TestSource = '00/df/CQTraderConflictGoodScript_WatchForRegionTransitions_00dfc920_test.cpp'
+        PassPattern = '00dfc920_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
