@@ -275235,6 +275235,62 @@ $catalog = @(
         TestSource = '00/f0/CQAmbushTradersScript_WatchForSpySpeechMarkers_00f0ef60_test.cpp'
         PassPattern = '00f0ef60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004336bc'
+        Module = 'CStartupDefinitionManager'
+        Source = '00/43/CStartupDefinitionManager_InitAndCompilePlatformSpecific_004336bc.cpp'
+        TestSource = '00/43/CStartupDefinitionManager_InitAndCompilePlatformSpecific_004336bc_test.cpp'
+        PassPattern = '004336bc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054bbb0'
+        Module = 'NUISystem::CSlider'
+        Source = '00/54/NUISystemCSlider_GetValueFromProfile_0054bbb0.cpp'
+        TestSource = '00/54/NUISystemCSlider_GetValueFromProfile_0054bbb0_test.cpp'
+        PassPattern = '0054bbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86c30'
+        Module = 'CSoulInfoAcolyte'
+        Source = '00/d8/CSoulInfoAcolyte_Main_00d86c30.cpp'
+        TestSource = '00/d8/CSoulInfoAcolyte_Main_00d86c30_test.cpp'
+        PassPattern = '00d86c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df2380'
+        Module = 'CSummonerAttacker'
+        Source = '00/df/CSummonerAttacker_Main_00df2380.cpp'
+        TestSource = '00/df/CSummonerAttacker_Main_00df2380_test.cpp'
+        PassPattern = '00df2380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2a320'
+        Module = 'CScytheNearOracle'
+        Source = '00/e2/CScytheNearOracle_Main_00e2a320.cpp'
+        TestSource = '00/e2/CScytheNearOracle_Main_00e2a320_test.cpp'
+        PassPattern = '00e2a320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e998f0'
+        Module = 'CSpectator'
+        Source = '00/e9/CSpectator_Main_00e998f0.cpp'
+        TestSource = '00/e9/CSpectator_Main_00e998f0_test.cpp'
+        PassPattern = '00e998f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec0ba0'
+        Module = 'CSecretWhisperingFriend'
+        Source = '00/ec/CSecretWhisperingFriend_Main_00ec0ba0.cpp'
+        TestSource = '00/ec/CSecretWhisperingFriend_Main_00ec0ba0_test.cpp'
+        PassPattern = '00ec0ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee36a0'
+        Module = 'CStopDrawing'
+        Source = '00/ee/CStopDrawing_Main_00ee36a0.cpp'
+        TestSource = '00/ee/CStopDrawing_Main_00ee36a0_test.cpp'
+        PassPattern = '00ee36a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

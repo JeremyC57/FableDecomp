@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00cfce90	DIFFER	1860v1852	-	hit-block ebx/ebp swap + movie dtor out of line at in-block exits
+00e2a320	RELOCATION_MATCH	1503v1503	PASS	__forceinline CTimer + for(;;){if(term)return;...} loop + inline_depth(0) in hit block
+00ec0ba0	RELOCATION_MATCH	1114v1114	PASS	inline_depth(0) after first exit keeps ~CScriptThing out of line
+00c61610	DIFFER	1196v1292	-	ctor (catalog CShadowRendererSceneData, size mismatch): member order and store scheduling
+00548b50	SKIP	996v1607	-	row holds two functions; first body (CTextSlider::AdjustValueToProfile) byte-exact
+0054b4b0	DIFFER	1413v1381	-	CSlider::GetDataFromDef: count-block caching in push_back block
+0054bbb0	RELOCATION_MATCH	1173v1173	PASS	switch cases with forceinline thumb helper; value chain stores StartValue first
+00d86c30	RELOCATION_MATCH	1296v1296	PASS	CEndScythe model; handle dtor declared out of line
+00e998f0	RELOCATION_MATCH	2019v2019	PASS	__forceinline CTimer accessors (plain inline ones stayed out of line in this big body)
+0041afa0	DIFFER	1041v1455	-	CSprite::Draw: bare fistp corner snaps (lane gap); inlined bank-texture refresh
+004336bc	RELOCATION_MATCH	1505v1505	PASS	size-optimised ebp-frame TU; fastcall hidden-result wide-string operator+ chains; tail-merged flag branches
+009df730	DIFFER	1633v1633	-	CStateBlockFunctionAlphaAdditive::Apply: register tie only (esi/edx swap in capture blocks 7/8+, global allocator flip)
+009e0410	DIFFER	1738v1738	-	CStateBlockFunctionAlphaBoolean::Apply: register tie only (same family as 009df730)
+009dfda0	DIFFER	1633v1633	-	CStateBlockFunctionAlphaMultiply::Apply: register tie only (same family as 009df730)
+009e0ae0	DIFFER	1635v1635	-	CStateBlockFunctionAlphaText::Apply: register tie only (same family as 009df730)
+00ab7c20	DIFFER	1783v1910	-	CStaticFontBank::Render: ours 8-aligned frame vs retail esp 0x15c; per-vertex temporaries + rep movsd copies; x87 scheduling
+00a1aff0	DIFFER	1155v1140	-	CSteeringAgent::Process: frame 0x18 vs 0x10 (position/distance slot sharing), vector copy load order
+00ee36a0	RELOCATION_MATCH	1151v1151	PASS	resumed: regraded
+009a3c20	DIFFER	1298v1298	-	same length; bank-search const hoist, vector zero reg, glyph-loop regs/slots
+0048fab6	DIFFER	1569v1599	-	CSubtitleRenderer::DrawButtonText: frame 0x38 vs 0x3c, param-slot reuse, slot order and tail merges
+00490494	DIFFER	1097v1094	-	CSubtitleRenderer::DrawPreparePrimitivesForEngine: frame 0x80 vs 0x64, dt pointer select, branch retest shape
+004cdc40	DIFFER	1349v1379	-	lookup register/frame assignment; this spilled
+004ce550	DIFFER	1128v1281	-	inline StartsWith tests not merged; frame 0x64 vs 0x74; ebx entry vs bool
+00df2380	RELOCATION_MATCH	1494v1494	PASS	resumed: regraded
+00f38ff0	DIFFER	1841v1842	-	CSurfaceCompositor::SetBaseBlendModes: register tie, 1 byte (same family as 009df730)
+00d33280	DIFFER	1205v1190	-	CSwordVoid::Main: block placement of the post-loop terminate-wait loop (+15 bytes)
+009e55a0	DIFFER	1332v1317	-	inline operator== materialises bool; const 1 cached in esi; EOF error tail not cross-jumped
+007fe040	DIFFER	1281v1250	-	CTCAISummon::SummonCreatures: 8-aligned frame 0x1cc vs 0x1bc, local slot order
+007ec710	DIFFER	1492v1516	-	CTCActionUseBed::GlobalUpdate: per-return /GS epilogues with cookie check before pops; message-manager spill
+007aac50	DIFFER	1285v1336	-	CTCAssassinRush::RushForwards: x87 scheduling and block order
+007e9460	DIFFER	1232v1277	-	CTCAvoidRegionExit vfunc_9 (Update): register map and x87 scheduling
+007a76f0	DIFFER	1237v1239	-	CTCBattleCharge::CreateStartUpEffect: frame 0x40 v 0x34, thing homed on stack
+007a8700	DIFFER	1205v1243	-	CTCBattleCharge::RushForwards: x87 register scheduling and branch layout
+0078cd80	DIFFER	1120v1164	-	CTCBerserk::CleanupAbility: HasTC kept as a dead stack bool; frame 0xd4 v 0xac
+0078d250	DIFFER	1592v1729	-	CTCBerserk vfunc_9 (Update): bare fistp lane gap; fast inverse-sqrt table
+00813d00	DIFFER	1372v1372	-	CTCBoastingPodium::FrameUpdate: register/slot allocation (list ref in ebx, shared key/group slot)
+0079d360	DIFFER	1037v1115	-	CTCBulletTime ctor: bare fistp (inline-asm ROUND, lane gap) + ebp frame
+0075ddf0	DIFFER	1242v1146	-	CTCCameraPointScriptedSpline::UpdateSplines: empty key vector never destroyed in retail; register map
+007055d0	DIFFER	694v1326	-	CTCCarryable::GetCarriedPositionInfo: inlined x87 matrix math, approximate draft
+00734c60	DIFFER	1588v1639	-	CTCCombat::SetStruck: first full draft; register map and counted-pointer flow differ

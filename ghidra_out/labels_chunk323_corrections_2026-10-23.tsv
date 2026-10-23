@@ -1,0 +1,5 @@
+address	name	evidence
+00548b50	NUISystem::CTextSlider::AdjustValueToProfile	chunk 323: CTextSlider not CSlider; row holds two functions, second starts 0x00548F40
+0054b4b0	CSlider::GetDataFromDef	chunk 323: (was Initialize)
+004047a0	CStringParser::~CStringParser	chunk 323
+004d18e0	std::vector::push_back	chunk 323
