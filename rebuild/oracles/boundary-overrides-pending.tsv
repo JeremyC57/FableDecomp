@@ -74,3 +74,8 @@ address	exported_length	corrected_length	reason
 00cb6fd0	272	258	code 258 B; trailing 0xCC alignment trimmed (Codex 969-971 recut, verified all-CC here)
 00e54990	272	261	code 261 B; trailing 0xCC alignment trimmed (Codex 969-971 recut, verified all-CC here)
 009ceae0	384	375	code 375 B; trailing 0xCC alignment trimmed (Codex 969-971 recut, verified all-CC here)
+006c2d40	336	325	code 325 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
+00adba40	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
+00801cb0	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
+00ad52a0	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
+00ad5030	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)

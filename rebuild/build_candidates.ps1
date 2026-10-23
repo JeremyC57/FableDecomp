@@ -276755,6 +276755,55 @@ $catalog = @(
         TestSource = '00/a9/C3DMeshFileSaver_SaveMeshFileCompressed_00a9ba70_test.cpp'
         PassPattern = '00a9ba70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006c2d40'
+        Module = '_STL'
+        Source = '00/6c/STL_operator_006c2d40.cpp'
+        TestSource = '00/6c/STL_operator_006c2d40_test.cpp'
+        PassPattern = '006c2d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adba40'
+        Module = '_STL'
+        Source = '00/ad/STL_insertunique_00adba40.cpp'
+        TestSource = '00/ad/STL_insertunique_00adba40_test.cpp'
+        PassPattern = '00adba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00801cb0'
+        Module = '_STL'
+        Source = '00/80/STL_insertunique_00801cb0.cpp'
+        TestSource = '00/80/STL_insertunique_00801cb0_test.cpp'
+        PassPattern = '00801cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad52a0'
+        Module = '_STL'
+        Source = '00/ad/STL_insertunique_00ad52a0.cpp'
+        TestSource = '00/ad/STL_insertunique_00ad52a0_test.cpp'
+        PassPattern = '00ad52a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad5030'
+        Module = '_STL'
+        Source = '00/ad/STL_insertunique_00ad5030.cpp'
+        TestSource = '00/ad/STL_insertunique_00ad5030_test.cpp'
+        PassPattern = '00ad5030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00801ec0'
+        Module = '_STL'
+        Source = '00/80/STL_insertunique_00801ec0.cpp'
+        TestSource = '00/80/STL_insertunique_00801ec0_test.cpp'
+        PassPattern = '00801ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a49f60'
+        Module = '_STL'
+        Source = '00/a4/STL_insertunique_00a49f60.cpp'
+        TestSource = '00/a4/STL_insertunique_00a49f60_test.cpp'
+        PassPattern = '00a49f60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
