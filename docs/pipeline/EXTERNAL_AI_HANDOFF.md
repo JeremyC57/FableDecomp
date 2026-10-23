@@ -1,0 +1,185 @@
+# FableDecomp — hand-off for an outside AI or contributor
+
+You are helping reconstruct the native PC **Fable: The Lost Chapters** `Fable.exe` as C++ source that compiles to
+the **exact retail bytes**. You don't need the in-house tooling to help. If you write a translation unit per
+function, the maintainers grade it with the real compiler and land it only if it matches.
+
+Repo: `JeremyC57/FableDecomp` (branch `FullDecomp`). Read `docs/ARCHITECTURE.md` for the big picture.
+
+## 1. What a row is and what "match" means
+
+- A **row** is one retail function: an address, a name, a length and its bytes. The bytes come from your own copy of
+  `Fable.exe`: file offset = VA − 0x400000 for the `.text` section, with ImageBase 0x400000.
+- **MATCH**: your object code is byte-identical to retail.
+- **RELOCATION_MATCH**: identical except for relocated operands (call targets, global/vtable/string addresses), and every
+  one of those operands names the **same symbol** retail uses. This is what almost every landed row is. Your code only
+  has to call the right function or reference the right global. The linker places them.
+- Rows are landed only through `tools/decomp_pipeline/verify_and_land.py`. It recompiles each source, compares bytes and
+  relocation identity, runs a behaviour test, and rejects inline assembly.
+
+## 2. Compiler
+
+- **Microsoft Visual C++ 7.1 (Visual Studio .NET 2003), `cl` 13.10.3077 (RTM).** The retail Rich header names it for
+  1,369 of 1,380 C++ objects. Eleven objects used the QFE build 13.10.4035 (DDK 2003), and two catalog rows need it.
+- Where the maintainers got it: archive.org item **`visual-studio-2003-unpacked`**, file `VisualStudio2003.zip`
+  (SHA-1 `298398e607a8e6033abe261987b94cab8fb57c24`) — <https://archive.org/details/visual-studio-2003-unpacked>.
+  - Use `Vc7/bin` (cl.exe, c1xx.dll, c2.dll, link.exe) plus `mspdb71.dll` and `msobj71.dll` from `Common7/IDE`.
+  - It runs under Wine on Linux; `docs/BUILDING.md` has the lane setup.
+  - You are responsible for having a licence to use it.
+- **Do not use the free "Visual C++ Toolkit 2003"**: it is a pre-RTM 13.10.3052 and produces different code.
+- Base flags: **`cl /nologo /c /O2 /Oy /W3`**, 32-bit.
+- Extra flags that some rows need:
+  - `/GS` — the prologue loads the security cookie and xors it into a frame slot. Test links then need
+    `bufferoverflowu.lib`.
+  - `/EHsc` — the function has an EH frame (`push -1 / push handler / mov eax,fs:[0]`).
+  - `#pragma optimize("s", on)` — size-optimised translation units. Signs: `lea ebp,[esp-N]` frames, push/pop instead of
+    mov, and fewer inlines.
+  - `#pragma optimize("t", on)` and `#pragma inline_depth(N)` — speed blocks and limited-inline blocks. The maintainers'
+    grader sweeps these automatically.
+- Inspect your output with `dumpbin /disasm /relocations x.obj`, or `objdump -d -r -Mintel` on the COFF.
+
+## 3. Hard rules (the lander rejects violations)
+
+1. **No inline assembly at all**: no `__asm`, `naked`, `_emit` or `volatile`, including in comments and identifiers
+   (e.g. `m_emitters` trips the check).
+2. **Use the shared class headers** `rebuild/include/engine/<Class>.h` for `this`. They come from the PDB, with real
+   member names and offsets. Don't write a local `struct T { char pad[...]; }` when a header exists. If retail provably
+   differs, say so in a `// Layout:` comment with the offset evidence.
+   - Retail `CThing` is 0x10 smaller than the PDB view, so derived padding starts at 0x94.
+   - Retail STLport vectors are 12 bytes; some headers use 16.
+   - `CTCCombat` is 0xc short before `AlwaysBlockThings`, and `CTCCreatureNavigation` is 4 short after
+     `PossibleNavigators`.
+   - A class with a virtual function and an `unsigned __int64` member pads its vfptr to 8. Never add an explicit
+     `__vftable` member next to virtual functions.
+3. **One symbol, one address.** Some functions have byte-identical copies, and each must bind to the one retail calls.
+   - `LowerBound` has copies at 0x40F020 (non-const) and 0x4365B0. Route the 0x4365B0 call through the const overload.
+   - `CThing::GetPosition` has copies at 0x4C73D0 and 0x6A4D00; the second is `CThingCreatureBase::GetPosition`.
+4. If retail calls the CRT `free` thunk at 0x00BFEA14, write `free()`, never `operator delete`. This includes STLport
+   vector storage.
+5. Don't redeclare `operator new(unsigned int)`.
+6. Behaviour tests are C++03:
+   - no C++11 and no NRVO;
+   - `long` is 8 bytes on 64-bit g++ hosts;
+   - use exactly representable float constants such as `0.125f`, because x87 and SSE round differently;
+   - don't name a local `lt`, `gt` or `amp`.
+7. Name everything by evidence. Check class names against `ghidra_out/struct_layouts_egor.tsv`, and treat manifest
+   labels that were propagated across identical bodies with suspicion. Many are wrong (e.g. 0x49D870 is the
+   world-frame getter, not "GFGetPreMainMemoryUsed").
+
+## 4. What to send back per row
+
+- `<address>.cpp`: one self-contained translation unit, headed `// <address> <Class::Function>` plus any special flags.
+  - Declare callees only. Define a body only when retail inlines it, or when a stand-in is needed (§5.1).
+- Optionally `<address>_test.cpp`: a small program that calls the function on a fake object and prints
+  `<address>_TEST PASS`.
+- For a miss, send your best attempt plus one line on what still differs, e.g. "frame 0x2c vs 0x28" or "esi/edi swapped
+  in the loop".
+
+## 5. Levers that turned near-misses into matches
+
+The full log is `docs/pipeline/GOTCHAS.md`, one line per lesson; read its tail first. These are the ones that recur.
+
+### 5.1 Out-of-line callees and stand-ins (the biggest single lever)
+- Some callees receive a local's address, fill a local (out-pointer, `long&`, const-ref slot, vector to fill), or
+  return a class by value. Give each one a **same-TU noinline body**, using `#pragma auto_inline(off)` or
+  `__declspec(noinline)`. VC7.1 then sees the local as non-escaping and shares frame slots the way retail does.
+  - Typical: `LowerBound`, `GetDef`/`GetSubDef`, `GetEffectFromString`, `_M_insert_overflow`, `__find`,
+    `IS_THING_ALIVE`.
+  - Stand-ins must be non-template and should write only their out-parameter.
+- The `LowerBound` body helps **only** when the residue is the lookup key's frame word failing to pack with another
+  local (frame bigger than retail). That fixed 5 of 6 such rows. On register-rotation residue it does nothing or makes
+  things worse.
+
+### 5.2 Register choice and load order
+- **Inline accessors** such as `GetDef()`, `GetWorld()`, `GetPlayerGui()` or `GetPhysics()` load early and shift
+  scratch-register rotation. Named locals load late. Try one before the first diff where eax/ecx/edx rotate
+  differently.
+- A **named value local** moves a read ahead of the argument pushes. `const T& x = e;` fixes SIB base/index order and
+  some load orders.
+- A global used as `this` of a call whose arguments are a call chain is read **first**, through an inline accessor or
+  a named local.
+- Split chained calls `P->F(a)->G()` into a named pointer local.
+- `__int64` arguments: `unsigned __int64 uid = p->UID; f(uid);` loads the low half before the high half.
+- A virtual call returning `C3DVector` by value, or taking an out-pointer, needs inline accessors to load `this` into
+  ecx before the pushes.
+- Scratch-register rotation is fixed at the **first** differing pair, so fix that one first.
+
+### 5.3 Frame layout
+- VC7.1 shares stack words by **lexical scope**. Put a local in its own `{}` block to free its word for a later
+  sibling.
+- Name a by-reference vector argument (`C3DVector position = …; f(position);`) when retail reserves an extra 12-byte
+  slot.
+- A 4-byte dummy (`long Reserved;`) can reuse a dead key slot, whereas an empty struct grows the frame.
+- A named result then `operator=` (`{ CCharString name = Get(...); defName = name; }`) fixes slot order and a `lea`
+  re-take.
+
+### 5.4 Control flow and code shape
+- Write every exit out in full; don't `goto` a shared label. VC7.1 tail-merges identical tails the way retail does.
+- Split a disjunction as `if (a) f = true; else if (b) f = true;` to get the flag register and merged stores.
+  Otherwise use a named bool for `a == 1 || a == 3`.
+- Retry loops: `if (r == 4) continue; break;` keeps the loop unrotated.
+- A return chain's last test is written `if (!f()) return false; return true;`.
+- `if (x >= 0)` after an `x == 0` test gives retail's `jl`.
+- Re-read members (not local copies) when retail keeps a redundant re-test.
+- Put a virtual call after an if/else inside each arm.
+- A same-class callee that retail inlines at one constant call site only should be defined in the same TU; `/Ob2`
+  reproduces the selective inline.
+
+### 5.5 Components, STL and strings
+- Interface/component lookup: `*out = (T*)((it == last || k < it->type) ? last : it)->component;`. The component
+  loads straight into ecx.
+- `*(begin() + i)` instead of `Start[i]` keeps `i` in a register and hoists the base loads.
+  - STLport loops use `_M_start`, with size from `_M_finish - _M_start`.
+  - A vector modelled as a nested `{_M_start; _M_finish; empty()}` struct stops CSE across a flag store.
+- STLport list iterators need a declared copy constructor. Use `insert(end(), x)` for push_back.
+- POD vector `push_back` needs `__forceinline` on `push_back` and `_M_insert_overflow`, plus a separate
+  `uninitialized_copy` helper.
+- Passing `const char*` to a `const CCharString&` parameter builds all temporaries before the first push. Explicit
+  `CCharString(...)` temporaries interleave with the pushes.
+- Bind a literal CCharString to a block-scoped `const CCharString&`.
+- Write CCharString `== ""` as `if (strcmp(text, "") == 0) return true; return false;`.
+- Ref-counted defs: `if (--RefCount == 0) DeleteThis();`. Conditionally destroyed `CCountedPointer` temps get
+  `__forceinline` copy ctor and dtor.
+- Filters whose dtor stores the vptr need an empty user dtor (`~CAnd(){}`). A user `CPred() {}` ctor stops the zeroing
+  of an empty predicate passed by value.
+
+### 5.6 Floating point (x87)
+- Operand order follows load-node creation order, i.e. the first source reference. Write `Y*Y + X*X + Z*Z` versus
+  `X*X + (Y*Y + Z*Z)` to match.
+- Parenthesise constant products: `((R - 1.5f) * 0.01f) * x`.
+- An `extern const float` epsilon stops `eps*eps` folding.
+- A `C3DVector` user copy ctor is needed when retail keeps vectors in the frame.
+- A `__forceinline` member taking a position **by value**, called with `GetPosition()`, gives the
+  load-ahead-of-store copy; a named local never does.
+- `#pragma intrinsic(sqrt)` gives inline `fsqrt`.
+- Normalise via `operator*=` only when the vector is homed in memory.
+- In big functions VC7.1 inlines `C3DVector`, `CrossProduct`, `CRightHandedSet`, `GFRandom`, `WrapAngle`, `HasTC` and
+  `IsDead` only when they are `__forceinline`.
+
+### 5.7 Bitfields and flags
+- `unsigned char f; f |= 0x10;` gives `or byte ptr [m],imm`.
+- An `unsigned short` bitfield gives `shr cl,5; test cl,1`.
+- `HasTC` as `if (bits & mask) return true; return false;` gives `test dword,imm`.
+- Clearing through a reference or setter gives load/and/store. A direct `x.f = 0` gives `and [mem],imm`.
+
+## 6. Known gaps (don't sink time here)
+
+No source shape found so far reproduces these:
+- whole-function register caching across calls;
+- the inlined `lower_bound` extra `mov` copy;
+- locals placed in dead argument slots with no frame;
+- the inline-asm `fistp` rounding helpers, which need real asm and are skipped;
+- block placement of a shared failure/Terminate block after `ret`;
+- under `/Os`, the float-argument slot reservation (`push ecx`) placed before the final `fsubp` in
+  `SetPosition(C2DVector(...), 0.0f, 0)` calls;
+- a string-literal ternary argument compiled to a register select where retail pushes in each arm;
+- the order of a call's `this` load versus its argument pushes in some rows (both directions seen).
+
+A clean idea for any of these would unblock dozens of parked rows.
+
+## 7. Rows set aside for outside work
+
+`docs/pipeline/external_chunks_960-962.tsv` lists 120 rows (3 chunks of 40): address, namespace or class, name, and
+length in bytes. They cover camera modes, creature modes, the particle engine, the UI system, scripted control, and the
+world "rough area" search templates. The in-house chunk cuts take only top-level `C…` class rows, so they don't reach
+these rows. Pull the bytes for each row from your own copy of `Fable.exe`, between `address` and `address + length`.
