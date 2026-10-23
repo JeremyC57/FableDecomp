@@ -26090,3 +26090,11 @@ __TI1?AUCGenericException@@	013692f8	00a37060
 ?DrawStatBox@CStatBar@NPlayerGui@@SIXABUCEnginePrimitivePrepareInfo@@AAU?$CRetailVector@UCEnginePrimitiveHandle@@@@ABUC2DVector@@JABVCWideString@@JE_N44@Z	00645853	00645ce9
 ?Get@CParticleEmitterManager@NParticleEngine@@SAPAU12@XZ	00aeaaf0	00645ce9
 ?g_pDisplayManager_013b8390@@3PAUCDisplayManager@@A	013b8390	00645ce9
+??0CAnimationEntry@@QAE@ABU0@@Z	00471954	00471865
+?AllocCopy@CAnimationVector@@QAEPAUSPair@@KPAU2@0@Z	0047197a	00471865
+?CopyRange@@YIPAUSPair@@PAU1@00ABUSTag@@@Z	004719ce	00471865
+?DestroyRange@@YIXPAUSPair@@0ABUSAlloc@@@Z	00454404	00471865
+?_Tidy@CAnimationVector@@QAEXXZ	00471a4f	00471865
+?ApplyLineImpulse@@YIXPAPAUCThing@@0USIterTag@@UCLineImpulse@@@Z	0080e5d0	0080c590
+?ApplyRingImpulse@@YIXPAPAUCThing@@0USIterTag@@UCRingImpulse@@@Z	0080e530	0080c590
+?TransformHitThings@@YI?AUCBackInserter@@PAUCBaseIntelligentPointer@@0U1@UCGetPItem@@@Z	0080ebe0	0080c590

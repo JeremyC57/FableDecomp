@@ -272366,6 +272366,20 @@ $catalog = @(
         TestSource = '00/5c/CIsSameItemType_operator_005c150b_test.cpp'
         PassPattern = '005c150b_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00471865'
+        Module = 'std'
+        Source = '00/47/std_vector_00471865.cpp'
+        TestSource = '00/47/std_vector_00471865_test.cpp'
+        PassPattern = '00471865_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080c590'
+        Module = 'CTCDExplosion'
+        Source = '00/80/CTCDExplosion_UpdateExplosiveAdditionalImpulse_0080c590.cpp'
+        TestSource = '00/80/CTCDExplosion_UpdateExplosiveAdditionalImpulse_0080c590_test.cpp'
+        PassPattern = '0080c590_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
