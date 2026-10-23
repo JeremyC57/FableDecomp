@@ -223,7 +223,7 @@ def cmd_report(args):
     print(f"verified {v} failed {len(res) - v}; symbols still bound to >1 target: {len(bad)}")
 
 def cmd_plan(args):
-    scan = load_scan(args["--scan"])
+    scan = apply_overlay(load_scan(args["--scan"]), args.get("--overlay"))
     syms = set(json.load(open(args["--conflicts"])))
     p = plan(scan, syms)
     json.dump(p, open(args["--out"], "w"), indent=1)
@@ -485,7 +485,7 @@ def test_patch(test, renames, use_conv, cls_mode=False):
 
 def cmd_apply(args):
     P = json.load(open(args["--plan"]))
-    scan = load_scan(args["--scan"])
+    scan = apply_overlay(load_scan(args["--scan"]), args.get("--overlay"))
     only = set(args["--only"].split(",")) if "--only" in args else None
     files = {}
     for sym, v in P.items():
@@ -514,7 +514,8 @@ def cmd_apply(args):
                 bound = set(map(tuple, scan[a].get("pairs", [])))
                 for sym, t in ren:
                     if (sym, t) not in bound: raise ValueError(f"scan has no binding {sym} -> {t}")
-                src0 = (COMPILED / rel).read_text(encoding="utf-8")
+                src0 = SRC_OVERRIDE.get(a, COMPILED / rel).read_text(encoding="utf-8")
+                if a in SRC_OVERRIDE: rec["base"] = str(SRC_OVERRIDE[a])
                 tries = [(True, False), (False, False)] if any(convention(s_, t_) is not None for s_, t_ in ren) else [(False, False)]
                 if any(is_special(s_) for s_, t_ in ren): tries += [(False, True)]
                 why = None
@@ -534,7 +535,7 @@ def cmd_apply(args):
                 rec["done"] = done
                 rec["st"] = r["st"]; rec["pairs"] = r["pairs"]
                 if r.get("leafsym") != scan[a].get("leafsym"): rec["leafsym"] = [scan[a].get("leafsym"), r.get("leafsym")]
-                tp = ROOT / "rebuild" / "tests" / catalog()[a]["TestSource"]
+                tp = TEST_OVERRIDE.get(a, ROOT / "rebuild" / "tests" / catalog()[a]["TestSource"])
                 if tp.exists():
                     t0 = tp.read_text(encoding="utf-8", errors="replace")
                     try: tt = test_patch(t0, ren, rec["conv"], rec["cls_mode"])
@@ -559,6 +560,26 @@ def cmd_apply(args):
             print(a, rec["status"], rec.get("reason", ""), flush=True)
 
 SKIP_SYMS = set()
+
+TEST_OVERRIDE = {}
+SRC_OVERRIDE = {}   # addr -> path of an already-patched source (phase 2 builds on phase 1 output)
+
+def apply_overlay(scan, spec):
+    """spec = 'res.jsonl=outdir,...': VERIFIED records there replace the scan baseline (pairs, leaf
+    symbol) and their patched file becomes the source to patch further."""
+    if not spec: return scan
+    for item in spec.split(","):
+        resf, outd = item.split("=")
+        if not Path(resf).exists(): continue
+        for l in open(resf):
+            r = json.loads(l)
+            if r.get("status") != "VERIFIED" or r["addr"] not in scan: continue
+            b = dict(scan[r["addr"]]); b["pairs"] = r["pairs"]
+            if r.get("leafsym"): b["leafsym"] = r["leafsym"][1]
+            scan[r["addr"]] = b; SRC_OVERRIDE[r["addr"]] = Path(outd) / r["rel"]
+            tp = Path(outd) / "tests" / catalog()[r["addr"]]["TestSource"]
+            if tp.exists(): TEST_OVERRIDE[r["addr"]] = tp
+    return scan
 
 def load_scan(paths):
     rows = {}

@@ -274826,6 +274826,20 @@ $catalog = @(
         TestSource = '00/8d/CGameScriptThingMethods_MsgIsPresentedWithItem_008d23c0_test.cpp'
         PassPattern = '008d23c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00694020'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_FrameUpdate_00694020.cpp'
+        TestSource = '00/69/CCreatureActionBase_FrameUpdate_00694020_test.cpp'
+        PassPattern = '00694020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea8130'
+        Module = 'CEmptyGrave'
+        Source = '00/ea/CEmptyGrave_Main_00ea8130.cpp'
+        TestSource = '00/ea/CEmptyGrave_Main_00ea8130_test.cpp'
+        PassPattern = '00ea8130_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
