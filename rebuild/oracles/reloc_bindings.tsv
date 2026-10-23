@@ -28199,3 +28199,17 @@ _lzo1x_999_compress	00c08130	00a99840
 ?_M_increment@_Rb_tree_base_iterator@HeroMorphTree@@QAEXXZ	00a48580	00a49f60
 ?_M_insert@_Rb_tree@HeroMorphTree@@QAE?AU_Rb_tree_iterator@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBIUCCharString@HeroMorphTree@@@_STL@2@0@Z	00632d30	00a49f60
 ?insert_unique@_Rb_tree@HeroMorphTree@@QAE?AU_Rb_tree_insert_result@2@ABU?$pair@$$CBIUCCharString@HeroMorphTree@@@_STL@2@@Z	00632c90	00a49f60
+?GetCameraFocalPos@CTCGraphicAppearance@NCameraModes@@QBE?AUC3DVector@2@M@Z	004c12d0	00853830
+?GetPItem@CBaseIntelligentPointer@NCameraModes@@QAEPAUCThing@2@XZ	00a01b50	00853830
+?Scale@NCameraModes@@3NB	0124f2b8	00853830
+??0CWideString@NGameText@@QAE@ABU01@@Z	0099b720	009c7a60
+??0CWideString@NGameText@@QAE@PBG@Z	0099b6b0	009c7a60
+??0CWideString@NGameText@@QAE@XZ	0099aed0	009c7a60
+??1CWideString@NGameText@@QAE@XZ	0099b510	009c7a60
+??HNGameText@@YI?AUCWideString@0@PBGABU10@@Z	0099bff0	009c7a60
+?Contains@CWideString@NGameText@@QBE_NABU12@@Z	0099af20	009c7a60
+?Format@CWideString@NGameText@@QAAXPBGZZ	0099ba70	009c7a60
+?FormatNumber@NGameText@@3QBGB	0122de44	009c7a60
+?FormatNumber_AddThousandsSeparators@NGameText@@YIXHPAG@Z	00a0dac0	009c7a60
+?Prefix@NGameText@@3QBGB	0129b470	009c7a60
+?Replace@CWideString@NGameText@@QAEXABU12@0@Z	0099c1e0	009c7a60

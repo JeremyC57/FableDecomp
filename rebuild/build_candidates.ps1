@@ -276804,6 +276804,28 @@ $catalog = @(
         TestSource = '00/a4/STL_insertunique_00a49f60_test.cpp'
         PassPattern = '00a49f60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00853830'
+        Module = 'NCameraModes::CScriptModuleOpenChest'
+        Source = '00/85/NCameraModesCScriptModuleOpenChest_Update_00853830.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleOpenChest_Update_00853830_test.cpp'
+        PassPattern = '00853830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00853ba0'
+        Module = 'NCameraModes::CScriptModuleUseLamp'
+        Source = '00/85/NCameraModesCScriptModuleUseLamp_Update_00853ba0.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleUseLamp_Update_00853ba0_test.cpp'
+        PassPattern = '00853ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c7a60'
+        Module = 'NGameText'
+        Source = '00/9c/NGameText_ConstructStringInternal_009c7a60.cpp'
+        TestSource = '00/9c/NGameText_ConstructStringInternal_009c7a60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '009c7a60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
