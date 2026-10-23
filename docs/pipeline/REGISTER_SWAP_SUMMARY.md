@@ -185,3 +185,11 @@ Graded in the main chat on two same-length rows. Every variant compiled to **byt
 - **00965640** (retail `this`=ebx and `&PStealableItem`=ebp, ours swapped): caching the item pointer in a local; inline accessors for the bool/index members; an inline accessor for the smart pointer; an uninitialised `T*` declared at block entry then assigned; an explicit base-class cast at each use; a named `self = this`; a `const T&` alias.
 - **008508b0** (ours CSEs the `deed` parameter into ebp, hoisted above the branch; retail reloads it from its arg slot at both uses): a `const T&` alias, `&deed` through a pointer, `(&deed)[0]`, `(long)` casts, pointer-arithmetic indexing, an uninitialised local assigned at each use (`d = deed`), a `__forceinline` by-value helper, and a char-pointer reinterpret. Splitting the `||` into two `if`s changes the layout (467v457) but keeps ebp.
 Conclusion: in VC7.1 the allocator's weight is not driven by source-level aliases, address-of without escape, accessor indirection or casts. What still differs is the global CSE decision itself (008508b0 hoists one load across the 0x4F lookup call). Next probes should change the *control flow or call set* between the two uses, not how the variable is spelled.
+
+## Round 12 (2026-10-23): call sequencing levers on 008508b0 — all keep `push ebp`
+- Hoisting the 0x4F lookup above the 0x1F test (`bool has4f = ...`): 472v457, worse, adds an ebx push.
+- Nested single-test `if`s for both lookups: 467v457 (same as the round-11 split), ebp kept.
+- Comma streaming `GetInterface(...) ? (c4f, !c4f->ReactsToDeed[deed]) : false`: 462v457, adds ebx.
+- `((GetInterface(...), c4f) && ...)`: 467v457, ebp kept.
+- Making LowerBound opaque (body removed, or defined after the caller): byte-identical to the base; the CSE of `deed` into ebp does not depend on what the compiler knows about the callee.
+So neither callee visibility nor statement sequencing in the 0x4F test changes it. The remaining suspects are the far use (GetDeedDef inside the conditionally-constructed CDefPointer temporary) and how retail wrote that tail.
