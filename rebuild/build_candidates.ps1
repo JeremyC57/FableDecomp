@@ -275060,6 +275060,27 @@ $catalog = @(
         TestSource = '00/c2/C3DVector_CrossProduct_00c25860_test.cpp'
         PassPattern = '00c25860_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0063aee0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_IsLineOfSight_0063aee0.cpp'
+        TestSource = '00/63/CWorldMap_IsLineOfSight_0063aee0_test.cpp'
+        PassPattern = '0063aee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d73f40'
+        Module = 'CHTG_Executioner'
+        Source = '00/d7/CHTGExecutioner_Main_00d73f40.cpp'
+        TestSource = '00/d7/CHTGExecutioner_Main_00d73f40_test.cpp'
+        PassPattern = '00d73f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e73930'
+        Module = 'CDF_SexMad'
+        Source = '00/e7/CDFSexMad_Main_00e73930.cpp'
+        TestSource = '00/e7/CDFSexMad_Main_00e73930_test.cpp'
+        PassPattern = '00e73930_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
