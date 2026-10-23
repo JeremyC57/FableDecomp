@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bb1f50	SKIP	-v1508	-	x87-heavy normal accumulation (decoded, low yield)
+00b8c830	SKIP	-v1203	-	x87-heavy environment frame update (decoded, low yield)
+00b399a0	SKIP	-v1414	-	x87 matrix work on the attached primitive (decoded, low yield)
+00b9d220	SKIP	-v1071	-	x87 interpolated transform (decoded, low yield)
+00bdcbb0	RELOCATION_MATCH	1323v1323	PASS	missing return in the dir 0/1 walk = retail fall-through
+00be2cd0	DIFFER	1091v1088	-	/GS; register/slot allocation in the vertex-lookup block
+00b68070	SKIP	-v1139	-	inline-asm fistp rounding helper (lane gap)
+00b46c80	SKIP	-v1531	-	x87-heavy lighting states (decoded, low yield)
+00b47bc0	SKIP	-v1028	-	x87 spotlight setup (decoded, low yield)
+00b484b0	SKIP	-v1177	-	fistp rounding + fast inverse sqrt + secondary-base thunk (lane gap)
+00b3f5e0	SKIP	-v1624	-	x87 normal + second inline 0xB43870 on the PeekLayerValue family gap
+00b40260	DIFFER	1034v1037	-	family gap: PeekLayerValue inline register/arg-slot allocation
+00b40670	DIFFER	1072v1125	-	family gap: PeekLayerValue inline allocation
+00b40bd0	SKIP	-v1736	-	x87 depth + second inline 0xB43870 on the PeekLayerValue family gap
+00b412a0	DIFFER	1070v1081	-	family gap: PeekLayerValue inline allocation
+00b8df50	SKIP	-v1626	-	x87-heavy + fistp rounding (lane gap)
+00b86c00	RELOCATION_MATCH	1181v1181	PASS	really CEngineScreenEffectDisplacementRenderer ctor
+00bd2360	SKIP	-v1159	-	x87 preload LOD distances (decoded, low yield)
+00bd7ef0	RELOCATION_MATCH	1323v1323	PASS	implicit dtor, forceinline shader dtors
+00bba480	RELOCATION_MATCH	1938v1938	PASS	copy of the 00bb6e00 shape
+00b90700	RELOCATION_MATCH	1481v1481	PASS	13 tracked SetStates in a capture block
+00b90cd0	RELOCATION_MATCH	1134v1134	PASS	pixel-shader toggle + 9 SetStates
+00bb6e00	RELOCATION_MATCH	1841v1841	PASS	named vertex-resource local + inline getters
+00bb8090	RELOCATION_MATCH	1407v1407	PASS	stencil-clear shaders + 9 SetStates + box corners
+00bb8750	SKIP	-v1951	-	x87 landscape decal render loop (decoded, low yield)
+00bb8ef0	SKIP	-v1941	-	long SetState chain + texture refcount + lighting inline (decoded, low yield)
+00b52250	RELOCATION_MATCH	1472v1472	PASS	really CEngineWeatherRenderer ctor
+00bc4d90	RELOCATION_MATCH	1345v1345	PASS	STLport _Vector_base + forceinline resize(5)
+00bc34d0	RELOCATION_MATCH	1520v1520	PASS	as 00bc4d90 on CEnginePrimitiveGroupManager
+00bbeaf0	RELOCATION_MATCH	1299v1299	PASS	counted-pointer member + vector resize
+00b99d90	RELOCATION_MATCH	1805v1805	PASS	texture-memory >= 1400 guard + AllocateAligned
+00b9a4a0	SKIP	-v1674	-	x87 repeated-mesh render (decoded, low yield)
+00ba4c10	SKIP	-v1159	-	x87 preload LOD distances (decoded, low yield)
+00ba6ff0	SKIP	-v1907	-	x87 + counted pointers + LOD (decoded, low yield)
+00ba8c70	RELOCATION_MATCH	1307v1307	PASS	implicit dtor, forceinline shader dtors
+00b5c460	RELOCATION_MATCH	1539v1539	PASS	really CEngineScreenEffectRadialBlurRenderer ctor
+00befd90	DIFFER	1100v1100	-	scheduling only: prologue push edi order
+00bf01e0	DIFFER	1374v1374	-	one SetState test/or operand swap
+00bf0b20	DIFFER	1290v1290	-	scheduling only: byte spill slot/order in prologue
+00bf12a0	SKIP	-v1549	-	x87 generated-object build (decoded, low yield)

@@ -883,3 +883,13 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - **The lander does not catch this.** It only WARNS on a cross-row `RELOC_CONFLICT`, and the duplicate binding is silently not recorded.
   - **Unchangeable order.** `this`-before-arguments order for a global interface pointer cannot be moved from source (00d910b0).
   - **Dtor arm stays inline.** I-43 (goto to an existing exit) leaves 00d05a60/00d06130 at 1400v1400, because retail puts the CPauseNonScripted dtor arm cold after `ret`.
+- (2026-10-23) Chunk 316 (render/engine ctors, 15/40):
+  - **Shader lookups:** a named resource local read once before the first lookup gives retail's edi-cached run; an inline getter reloads the global every time.
+  - **Fill loops:** VC7.1 fully unrolls a 4-iteration colour-fill loop, so write the loop.
+  - **Loop fall-through:** when retail falls through from a loop, leave that branch's `return` out.
+  - **Generated manager dtors:** declare no dtor on the manager, and give the shader wrappers a `__forceinline virtual` dtor.
+  - **SetState chains:** a named mask local moves where the test/or operands swap.
+  - **Open gap:** the inlined CEngineMap::PeekLayerValue (0xB43720) family in the PeekHasWater* rows.
+- (2026-10-23) Relocation-conflict audit of today's 456 landed rows:
+  - 171 rows carry cross-row `RELOC_CONFLICT` warnings across 61 symbols. These are the long-standing catalog backlog (`rebuild/oracles/reloc_audit.tsv`), mostly byte-twin callees that share one name: LowerBound 0x40F020/0x4365B0, GetMainPlayer 0x449960/0x449970, the CBaseClass dtors 0x99A2E0/0x99A300, the CBaseIntelligentPointer ctor/dtor pairs, and g_MapwhoLevels +0/+4.
+  - No new class of conflict was found. `landb.sh` now prints `RELOC_CONFLICT` lines so new ones are seen at landing.

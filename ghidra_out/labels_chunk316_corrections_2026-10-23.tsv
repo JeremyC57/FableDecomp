@@ -1,0 +1,7 @@
+address	name	evidence
+00b86c00	CEngineScreenEffectDisplacementRenderer::CEngineScreenEffectDisplacementRenderer	chunk 316: ctor body stores this class vftable (was 2DSprites)
+00b52250	CEngineWeatherRenderer::CEngineWeatherRenderer	chunk 316: ctor vftable (was ParticleLineGroup)
+00b5c460	CEngineScreenEffectRadialBlurRenderer::CEngineScreenEffectRadialBlurRenderer	chunk 316: ctor vftable (was Text)
+00b43720	CEngineMap::PeekLayerValue	chunk 316: inlined body in PeekHasWater* (was PeekLandscapeHeight)
+00b6cbd0	std::vector<CVertexShader>::resize	chunk 316: body is resize (was erase)
+00b59710	CEngineComponent::CEngineComponent	chunk 316: base ctor called by renderer ctors

@@ -2822,3 +2822,10 @@ address	module	name	length	chunk	reason
 00c41fb0	CCombatant	CCombatant::ComputeDerivedCombatStats	1584	hand314	DIFFER(1469v1570) -- first pass 81 blocks: inline-asm fistp rounding helper (asm_bake family lane gap); label is an autoname, body is a 3D sound-source update
 00531090	CComponent	GetBoundingBox	1232	hand314	DIFFER(1216v1227) -- first pass 73 blocks: frame 0xb4 v 0xa4 + first-index loop shape + register choice; aligned frame and calls match
 00533d30	CComponent	GetSize	1750	hand314	DIFFER(1764v1750) -- first pass 67 blocks: register/frame choice + first-index loop shape (as sibling 00531090); flow and calls match
+00be2cd0	CEngineLandscapeMeshBuilder	BuildSharedIndexBufferGenerationTables	1088	hand316	DIFFER(1091v1088) -- /GS; register/slot allocation in the vertex-lookup block
+00b40260	CEngineMap	PeekHasWaterFast	1040	hand316	DIFFER(1034v1037) -- family gap: PeekLayerValue inline register/arg-slot allocation
+00b40670	CEngineMap	PeekWaterType	1125	hand316	DIFFER(1072v1125) -- family gap: PeekLayerValue inline allocation
+00b412a0	CEngineMap	PeekHasWater	1081	hand316	DIFFER(1070v1081) -- family gap: PeekLayerValue inline allocation
+00befd90	CEnginePrimitiveRenderUtil	SetupOutlineSmoothStencilStates	1104	hand316	DIFFER(1100v1100) -- scheduling only: prologue push edi order
+00bf01e0	CEnginePrimitiveRenderUtil	SetupOutlineSmoothAlphaStencilMaskStates	1376	hand316	DIFFER(1374v1374) -- one SetState test/or operand swap
+00bf0b20	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	1296	hand316	DIFFER(1290v1290) -- scheduling only: byte spill slot/order in prologue
