@@ -144,3 +144,7 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
   - So base and index follow **who created the invariant**: a user variable becomes the base, a compiler-hoisted temp
     becomes the index. Still needed: a spelling where the compiler does the hoisting but the offset ends up as the
     base.
+- **Round 6 on the SIB family:** all of these were written as byte offsets through `(const char*)LevelInfo` to keep
+  the arithmetic right, and all are byte-identical to the base version, so the front end folds them before
+  hoisting: a comma operator `(level*20, 0) + ...`, `level * sizeof(CMapwhoLevelInfo)`, `0L + level*20`,
+  `&base[4] + level*20`, and `level*20 + (base + 4)`.
