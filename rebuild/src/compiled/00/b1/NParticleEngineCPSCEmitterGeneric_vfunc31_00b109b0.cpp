@@ -1,0 +1,62 @@
+// 00B109B0 NParticleEngine::CPSCEmitterGeneric::GetApproximateSplineLength.
+// PDB: ?GetApproximateSplineLength@CPSCEmitterGeneric@NParticleEngine@@UAEMXZ
+// (Ego_r row 30272, debug address 00AD17F0). Local layout follows the
+// landed CPSCEmitterGeneric::WriteBinary model: Spline counted pointer +0x18,
+// EmitterType bits 20-21 of word +0x30, and CCardinalSpline control-point
+// vector at offsets 0/+4/+8. Algorithm follows the matching spline-base
+// implementation: sum squared deltas for consecutive points, then sqrt once.
+extern "C" double __cdecl sqrt(double);
+#pragma intrinsic(sqrt)
+extern const float Zero_0122dedc; // retail zero constant at 0x0122DEDC
+
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector() {}
+    C3DVector(const C3DVector& b) : X(b.X), Y(b.Y), Z(b.Z) {}
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+    C3DVector operator-(const C3DVector& b) const
+    {
+        C3DVector r;
+        r.X = X - b.X; r.Y = Y - b.Y; r.Z = Z - b.Z;
+        return r;
+    }
+    float SquaredLength() const { return Y * Y + (Z * Z + X * X); }
+};
+struct CPointVector {
+    C3DVector* _M_start;
+    C3DVector* _M_finish;
+    C3DVector* _M_end_of_storage;
+};
+struct CCardinalSpline { CPointVector ControlPoints; };
+struct SCountedInfo;
+template<class T> struct CCountedPointer { T* Data; SCountedInfo* Info; };
+namespace NParticleEngine {
+struct CPSCEmitterGeneric {
+    unsigned char _pad00[0x18];
+    CCountedPointer<CCardinalSpline> Spline;
+    unsigned long _pad20;
+    unsigned long _pad24;
+    long _pad28;
+    float _pad2c;
+    unsigned long NoParticlesToStart : 10;
+    unsigned long NoParticlesToStartRand : 10;
+    unsigned long EmitterType : 2;
+    unsigned long _pad32 : 10;
+    C3DVector* begin() const { return Spline.Data->ControlPoints._M_start; }
+    C3DVector& at(int i) const { return *(begin() + i); }
+    int size() const { return (int)(Spline.Data->ControlPoints._M_finish - begin()); }
+    float GetApproximateSplineLength();
+};
+float CPSCEmitterGeneric::GetApproximateSplineLength()
+{
+    float total = Zero_0122dedc;
+    if (EmitterType == 3 && Spline.Data != 0) {
+        int count = size();
+        for (int i = 0; i < count - 1; ++i) {
+            total += (at(i) - at(i + 1)).SquaredLength();
+        }
+    }
+    float result = (float)sqrt(total);
+    return result;
+}
+}

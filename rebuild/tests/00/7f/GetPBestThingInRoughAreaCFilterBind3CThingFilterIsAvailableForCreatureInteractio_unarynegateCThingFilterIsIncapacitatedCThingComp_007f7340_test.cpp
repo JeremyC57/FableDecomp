@@ -1,0 +1,176 @@
+// BEGIN exact source snapshot SHA256 5e4f208012e7b9f0614e60237ae1ad4cdc20c5498f2822eae881994ae8c132f1
+// 007f7340 CThingSearchTools::GetPBestThingInRoughArea, 594 retail bytes.
+// Layout: shared CThingSearchTools donor has a 16-byte debug vector at +0xc;
+// retail uses the first three words (12-byte STLport vector). No trailing
+// donor member is accessed. CThing's retail type flags are +0x6c (PDB +0x7c).
+// Local helper/global names carrying addresses remain descriptive pending PDB proof.
+#include "engine/CThingSearchTools.h"
+#include "engine/CTCMapwho.h"
+#include "engine/CTCBase.h"
+#include <stddef.h>
+extern "C" void* __cdecl memmove(void*,const void*,size_t); // 0x00bfeae6
+__forceinline void* CopyTrivial(const void* first,const void* last,void* result) {
+ return last==first ? result : (char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
+}
+template<class T> struct RetailVector {
+ T* Start;T* Finish;T* End;
+ struct iterator {
+  T* Ptr;
+  explicit iterator(T* p):Ptr(p){}
+  iterator(const iterator& other):Ptr(other.Ptr){}
+  __forceinline T& operator*()const{return *Ptr;}
+  __forceinline iterator& operator++(){++Ptr;return *this;}
+  __forceinline bool operator!=(const iterator& other)const{return Ptr!=other.Ptr;}
+ };
+ __forceinline iterator begin()const{return iterator(Start);}
+ __forceinline iterator end()const{return iterator(Finish);}
+ __forceinline T& operator[](unsigned int n)const{return Start[n];}
+ __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
+};
+struct CThing {
+ unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
+ __forceinline bool IsAICreature()const{return (ThingTypeFlags&31)==31;}
+};
+struct CThingCreatureBase:CThing {};
+struct CThingAICreature:CThingCreatureBase {};
+struct C2DBoxI {
+ long TLX,TLY,BRX,BRY;
+ C2DBoxI(){}
+ C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
+ __forceinline long Width()const{return BRX-TLX;}
+ __forceinline long Height()const{return BRY-TLY;}
+};
+struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious;CThingMapCell* PCell;};
+struct CThingMapCell {CMapwhoNode* PFirstNode;};
+namespace NThingMap {
+struct CMapwhoLevelInfo {long Size;long Width,Height;long ScaleShift;long NoThings;};
+struct CThingMap {
+ long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
+ CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
+ C2DBoxI Area;long NoThings;
+ __forceinline CThingMapCell* GetCell(unsigned char layer,long x,long y)const {
+  return &Cells[layer][y*MapwhoLevelInfo[layer].Width+x];
+ }
+};
+}
+struct CLayerInfo {long Size;long ScaleShift;unsigned long UsedColour,UnusedColour;};
+extern long SearchCount_013b89a8;
+extern long SearchWork_013b89ac;
+extern unsigned long SearchID_013b89b0;
+namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
+extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
+struct CThingFilter_IsAvailableForCreatureInteraction {CThingAICreature* SourceThing;long Type;bool operator()(const CThingAICreature&)const;}; // 0x006a7430
+struct CThingFilter_IsAICreatureAwareOf {CThingAICreature* PCreature;bool operator()(const CThingCreatureBase&)const;}; // 0x006a7610: NCreatureAI::IsAwareOfThing forwarding
+struct CThingFilter_IsIncapacitated {bool operator()(const CThing&)const;}; // 0x006a73f0: NCreatureMode::IsIncapacitated forwarding
+struct Filters {
+ CThingFilter_IsAvailableForCreatureInteraction* F1;
+ CThingFilter_IsAICreatureAwareOf* F2;
+ CThingFilter_IsIncapacitated* F3;
+ __forceinline bool operator()(const CThingAICreature& p)const{return (*F1)(p)&&(*F2)(p)&&!(*F3)(p);}
+};
+struct CThingCompare_Nearest {float Pos[3];template<class T> T* operator()(T*,T*)const;}; // 0x0065da97
+struct CThingSearchTools_Calls {
+ CWorldMap* WorldMap;
+ CThingMapManager* PThingMapManager;
+ CThingManager* ThingManager;
+ mutable RetailVector<NThingMap::CThingMap*> AreaMaps;
+ void GetAllThingMapsInArea(const C2DBoxI&,RetailVector<NThingMap::CThingMap*>&)const;
+ C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap&,const C2DBoxI&)const;
+ __forceinline C2DBoxI GetMapwhoArea(const NThingMap::CThingMap&,long layer,const C2DBoxI& box)const {
+  long shift=LayerInfo_0137dad8[layer].ScaleShift;
+  C2DBoxI out;out.TLX=box.TLX>>shift;out.TLY=box.TLY>>shift;
+  out.BRX=((box.BRX-1)>>shift)+1;out.BRY=((box.BRY-1)>>shift)+1;return out;
+ }
+ bool GetPBestThingInRoughArea(const C2DBoxI&,const Filters&,const CThingCompare_Nearest&,CThingAICreature**)const;
+};
+bool CThingSearchTools_Calls::GetPBestThingInRoughArea(const C2DBoxI& area,const Filters& filter,const CThingCompare_Nearest& compare,CThingAICreature** result)const {
+ CThingAICreature* best=0;
+ GetAllThingMapsInArea(area,AreaMaps);
+ ++SearchCount_013b89a8;SearchWork_013b89ac=0;++SearchID_013b89b0;
+ for(RetailVector<NThingMap::CThingMap*>::iterator m=AreaMaps.begin();m!=AreaMaps.end();++m) {
+  NThingMap::CThingMap* map=*m;C2DBoxI bounds=ClipAndConvertWorldMapAreaToLocalArea(*map,area);
+  for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
+   C2DBoxI scaled=GetMapwhoArea(*map,layer,bounds);
+   if(scaled.Width()!=0 && scaled.Height()!=0) {
+    for(long y=scaled.TLY;y<scaled.BRY;++y) {
+     CThingMapCell* cell=map->GetCell((unsigned char)layer,scaled.TLX,y);
+     for(long x=scaled.TLX;x<scaled.BRX;++x,++cell) {
+      for(CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
+       CTCMapwho* who=node->PMapwho;
+       if(who->SearchID<SearchID_013b89b0) {
+        who->SearchID=SearchID_013b89b0;
+        CThingAICreature* thing=static_cast<CThingAICreature*>(((CTCBase*)who)->ParentThing);
+        if(thing->IsAICreature() && filter(*thing))best=compare(best,thing);
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ AreaMaps.clear();*result=best;return best!=0;
+}
+
+// END exact source snapshot
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+long SearchCount_013b89a8,SearchWork_013b89ac;
+unsigned long SearchID_013b89b0;
+namespace NThingMap {long g_NoMapwhoLevels;}
+CLayerInfo LayerInfo_0137dad8[2];
+static NThingMap::CThingMap* Maps[2];
+static unsigned MapCount;
+static CThingAICreature Things[5];
+static bool Available[5],Aware[5],Incapacitated[5];
+static int FirstCalls,SecondCalls,ThirdCalls,CompareCalls,AreaCalls,ClipCalls;
+static int Score[5]={9,2,7,4,1};
+static int Index(const CThing* p){int i=int(static_cast<const CThingAICreature*>(p)-Things);if(i<0||i>=5)exit(80);return i;}
+bool CThingFilter_IsAvailableForCreatureInteraction::operator()(const CThingAICreature& p)const{++FirstCalls;return Available[Index(&p)];}
+bool CThingFilter_IsAICreatureAwareOf::operator()(const CThingCreatureBase& p)const{++SecondCalls;return Aware[Index(&p)];}
+bool CThingFilter_IsIncapacitated::operator()(const CThing& p)const{++ThirdCalls;return Incapacitated[Index(&p)];}
+template<class T> T* CThingCompare_Nearest::operator()(T* best,T* p)const{++CompareCalls;return !best||Score[Index(p)]<Score[Index(best)]?p:best;}
+void CThingSearchTools_Calls::GetAllThingMapsInArea(const C2DBoxI&,RetailVector<NThingMap::CThingMap*>& out)const {
+ ++AreaCalls;out.Start=Maps;out.Finish=Maps+MapCount;out.End=Maps+2;
+}
+C2DBoxI CThingSearchTools_Calls::ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap&,const C2DBoxI& in)const{++ClipCalls;return in;}
+#define CHECK(x) do{if(!(x)){printf("failed at %d\n",__LINE__);return 1;}}while(0)
+static void ResetCalls(){FirstCalls=SecondCalls=ThirdCalls=CompareCalls=AreaCalls=ClipCalls=0;}
+int main(){
+ CHECK(sizeof(CLayerInfo)==16 && offsetof(CLayerInfo,ScaleShift)==4);
+ CHECK(offsetof(NThingMap::CThingMap,MapwhoLevelInfo)==4 && offsetof(NThingMap::CThingMap,Cells)==0x14 && offsetof(NThingMap::CThingMap,Area)==0x20);
+ CHECK(offsetof(CThingSearchTools_Calls,AreaMaps)==0xc && sizeof(CThingSearchTools_Calls)==24);
+ CThingSearchTools_Calls search;C2DBoxI area;area.TLX=area.TLY=0;area.BRX=area.BRY=2;
+ CThingFilter_IsAvailableForCreatureInteraction f1;CThingFilter_IsAICreatureAwareOf f2;CThingFilter_IsIncapacitated f3;
+ Filters filters={&f1,&f2,&f3};CThingCompare_Nearest compare;CThingAICreature* result=&Things[4];
+ SearchCount_013b89a8=5;SearchID_013b89b0=10;SearchWork_013b89ac=99;MapCount=0;
+ CHECK(!search.GetPBestThingInRoughArea(area,filters,compare,&result));
+ CHECK(!result && SearchCount_013b89a8==6 && SearchID_013b89b0==11 && SearchWork_013b89ac==0 && search.AreaMaps.Finish==search.AreaMaps.Start);
+ CTCMapwho who[5];CMapwhoNode nodes[8];memset(who,0,sizeof(who));memset(nodes,0,sizeof(nodes));memset(Things,0,sizeof(Things));
+ for(int i=0;i<5;++i){Things[i].ThingTypeFlags=31;((CTCBase*)&who[i])->ParentThing=Things+i;nodes[i].PMapwho=who+i;Available[i]=Aware[i]=true;Incapacitated[i]=false;}
+ // Same mapwho appears in two cells and at a second spatial level.
+ nodes[0].PNext=&nodes[1];nodes[1].PNext=&nodes[2];nodes[3].PNext=&nodes[4];
+ nodes[5].PMapwho=&who[0];nodes[6].PMapwho=&who[1];nodes[7].PMapwho=&who[4];nodes[6].PNext=&nodes[7];
+ CThingMapCell fine[4],coarse[1];fine[0].PFirstNode=&nodes[0];fine[1].PFirstNode=&nodes[3];fine[2].PFirstNode=0;fine[3].PFirstNode=&nodes[5];coarse[0].PFirstNode=&nodes[6];
+ NThingMap::CMapwhoLevelInfo info[2];memset(info,0,sizeof(info));info[0].Width=info[0].Height=2;info[1].Width=info[1].Height=1;
+ RetailVector<CThingMapCell> levels[2];levels[0].Start=fine;levels[0].Finish=levels[0].End=fine+4;levels[1].Start=coarse;levels[1].Finish=levels[1].End=coarse+1;
+ NThingMap::CThingMap map;map.MapwhoLevelInfo.Start=info;map.MapwhoLevelInfo.Finish=map.MapwhoLevelInfo.End=info+2;map.Cells.Start=levels;map.Cells.Finish=map.Cells.End=levels+2;
+ Maps[0]=Maps[1]=&map;MapCount=2;NThingMap::g_NoMapwhoLevels=2;LayerInfo_0137dad8[0].ScaleShift=0;LayerInfo_0137dad8[1].ScaleShift=1;
+ ResetCalls();CHECK(search.GetPBestThingInRoughArea(area,filters,compare,&result));
+ CHECK(result==&Things[4] && FirstCalls==5 && SecondCalls==5 && ThirdCalls==5 && CompareCalls==5 && ClipCalls==2 && AreaCalls==1);
+ for(i=0;i<5;++i)CHECK(who[i].SearchID==SearchID_013b89b0);
+ CHECK(search.AreaMaps.Finish==search.AreaMaps.Start);
+ // Every rejection gate: type, first filter, second filter, negated third.
+ Things[0].ThingTypeFlags=15;Available[1]=false;Aware[2]=false;Incapacitated[3]=true;
+ ResetCalls();CHECK(search.GetPBestThingInRoughArea(area,filters,compare,&result));
+ CHECK(result==&Things[4] && FirstCalls==4 && SecondCalls==3 && ThirdCalls==2 && CompareCalls==1);
+ // A preexisting future search stamp is never processed or lowered.
+ who[4].SearchID=SearchID_013b89b0+10;ResetCalls();
+ CHECK(!search.GetPBestThingInRoughArea(area,filters,compare,&result) && !result && CompareCalls==0);
+ CHECK(who[4].SearchID==SearchID_013b89b0+9);
+ // No levels and zero-area bounds both produce empty results and clear maps.
+ NThingMap::g_NoMapwhoLevels=0;ResetCalls();CHECK(!search.GetPBestThingInRoughArea(area,filters,compare,&result) && FirstCalls==0);
+ NThingMap::g_NoMapwhoLevels=2;area.BRX=area.TLX=0;area.BRY=area.TLY=0;ResetCalls();
+ CHECK(!search.GetPBestThingInRoughArea(area,filters,compare,&result) && FirstCalls==0 && search.AreaMaps.Finish==search.AreaMaps.Start);
+ puts("007f7340_TEST PASS");return 0;
+}

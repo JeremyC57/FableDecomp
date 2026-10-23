@@ -273452,6 +273452,435 @@ $catalog = @(
         TestSource = '00/f1/CArenaEnemy_Main_00f1a990_test.cpp'
         PassPattern = '00f1a990_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00405350'
+        Module = 'NUISystem::CIME'
+        Source = '00/40/NUISystemCIME_LoadIMESettings_00405350.cpp'
+        TestSource = '00/40/NUISystemCIME_LoadIMESettings_00405350_test.cpp'
+        PassPattern = '00405350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041b550'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_vfunc145_0041b550.cpp'
+        TestSource = '00/41/NUISystemCSprite_vfunc145_0041b550_test.cpp'
+        PassPattern = '0041b550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a6ab0'
+        Module = 'NHeroInformationScreens::CBase'
+        Source = '00/4a/NHeroInformationScreensCBase_CBase_004a6ab0.cpp'
+        TestSource = '00/4a/NHeroInformationScreensCBase_CBase_004a6ab0_test.cpp'
+        PassPattern = '004a6ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ecc0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/52/NUISystemCSprite_vfunc123_0052ecc0.cpp'
+        TestSource = '00/52/NUISystemCSprite_vfunc123_0052ecc0_test.cpp'
+        PassPattern = '0052ecc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053ddd0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_vfunc156_0053ddd0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_vfunc156_0053ddd0_test.cpp'
+        PassPattern = '0053ddd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005401b0'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_vfunc150_005401b0.cpp'
+        TestSource = '00/54/NUISystemCEditBox_vfunc150_005401b0_test.cpp'
+        PassPattern = '005401b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00541020'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_vfunc1_00541020.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_vfunc1_00541020_test.cpp'
+        PassPattern = '00541020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005414a0'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_vfunc147_005414a0.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_vfunc147_005414a0_test.cpp'
+        PassPattern = '005414a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00542140'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_vfunc143_00542140.cpp'
+        TestSource = '00/54/NUISystemCIconText_vfunc143_00542140_test.cpp'
+        PassPattern = '00542140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00544350'
+        Module = 'NUISystem::CSpellContainerList'
+        Source = '00/54/NUISystemCSpellContainerList_vfunc48_00544350.cpp'
+        TestSource = '00/54/NUISystemCSpellContainerList_vfunc48_00544350_test.cpp'
+        PassPattern = '00544350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005466b0'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_vfunc142_005466b0.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_vfunc142_005466b0_test.cpp'
+        PassPattern = '005466b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005518e0'
+        Module = 'NUISystem::CTable'
+        Source = '00/55/NUISystemCTable_ConstructHorizontalLine_005518e0.cpp'
+        TestSource = '00/55/NUISystemCTable_ConstructHorizontalLine_005518e0_test.cpp'
+        PassPattern = '005518e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00551bc0'
+        Module = 'NUISystem::CTable'
+        Source = '00/55/NUISystemCTable_ConstructVerticalLine_00551bc0.cpp'
+        TestSource = '00/55/NUISystemCTable_ConstructVerticalLine_00551bc0_test.cpp'
+        PassPattern = '00551bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00555cf0'
+        Module = 'NUISystem::CScrollableList'
+        Source = '00/55/NUISystemCScrollableList_vfunc1_00555cf0.cpp'
+        TestSource = '00/55/NUISystemCScrollableList_vfunc1_00555cf0_test.cpp'
+        PassPattern = '00555cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069e980'
+        Module = 'NDisplayView::CView3DBase'
+        Source = '00/69/NDisplayViewCView3DBase_vfunc3_0069e980.cpp'
+        TestSource = '00/69/NDisplayViewCView3DBase_vfunc3_0069e980_test.cpp'
+        PassPattern = '0069e980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ce300'
+        Module = 'GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std'
+        Source = '00/6c/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_006ce300.cpp'
+        TestSource = '00/6c/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_006ce300_test.cpp'
+        PassPattern = '006ce300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00713510'
+        Module = 'NTCScriptedControl::CActionPerformExpression'
+        Source = '00/71/NTCScriptedControlCActionPerformExpression_vfunc1_00713510.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionPerformExpression_vfunc1_00713510_test.cpp'
+        PassPattern = '00713510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00715560'
+        Module = 'NTCScriptedControl::CActionDropGenericBox'
+        Source = '00/71/NTCScriptedControlCActionDropGenericBox_vfunc1_00715560.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionDropGenericBox_vfunc1_00715560_test.cpp'
+        PassPattern = '00715560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00761620'
+        Module = 'NShape::CTrack'
+        Source = '00/76/NShapeCTrack_vfunc3_00761620.cpp'
+        TestSource = '00/76/NShapeCTrack_vfunc3_00761620_test.cpp'
+        PassPattern = '00761620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077adf0'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
+        Source = '00/77/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0077adf0.cpp'
+        TestSource = '00/77/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0077adf0_test.cpp'
+        PassPattern = '0077adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078954d'
+        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::vector<CIntelligentPointer<CThing>,std'
+        Source = '00/78/GetAllThingsInRoughAreaCThingCreatureBasestdvectorCIntelligentPointerCThingstd_allocatorCIntelligentPointerCThingCFilterBind2CT_0078954d.cpp'
+        TestSource = '00/78/GetAllThingsInRoughAreaCThingCreatureBasestdvectorCIntelligentPointerCThingstd_allocatorCIntelligentPointerCThingCFilterBind2CT_0078954d_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O1 /Oy-'
+        PassPattern = '0078954d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078971d'
+        Module = 'GetAllThingsInRoughArea<CThingGameObject,std::vector<CThingGameObject*,std::allocator<CThingGameObject*>_>,CFilter_Bind4<CThingFilter_IsNotList,_anon_EDF0DD2A::CThingFilter_IsAbleToBeAttacked,std::unary_negate<CThingFilter_HasTC>,_anon_EDF0DD2A'
+        Source = '00/78/GetAllThingsInRoughAreaCThingGameObjectstdvectorCThingGameObjectstdallocatorCThi_CThingFilterIsAffectedByTraps_0078971d.cpp'
+        TestSource = '00/78/GetAllThingsInRoughAreaCThingGameObjectstdvectorCThingGameObjectstdallocatorCThi_CThingFilterIsAffectedByTraps_0078971d_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O1 /Oy-'
+        PassPattern = '0078971d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a3ca0'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std'
+        Source = '00/7a/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_007a3ca0.cpp'
+        TestSource = '00/7a/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_007a3ca0_test.cpp'
+        PassPattern = '007a3ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a9300'
+        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea,std::unary_negate<_anon_41ACE303'
+        Source = '00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9300.cpp'
+        TestSource = '00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9300_test.cpp'
+        PassPattern = '007a9300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a9580'
+        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea,std::unary_negate<_anon_41ACE303'
+        Source = '00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9580.cpp'
+        TestSource = '00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9580_test.cpp'
+        PassPattern = '007a9580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f4020'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
+        Source = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f4020.cpp'
+        TestSource = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f4020_test.cpp'
+        PassPattern = '007f4020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f42a0'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
+        Source = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f42a0.cpp'
+        TestSource = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f42a0_test.cpp'
+        PassPattern = '007f42a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f4500'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
+        Source = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f4500.cpp'
+        TestSource = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f4500_test.cpp'
+        PassPattern = '007f4500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f70d0'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std'
+        Source = '00/7f/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_007f70d0.cpp'
+        TestSource = '00/7f/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_007f70d0_test.cpp'
+        PassPattern = '007f70d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f7340'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
+        Source = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f7340.cpp'
+        TestSource = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f7340_test.cpp'
+        PassPattern = '007f7340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fdb10'
+        Module = 'GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std'
+        Source = '00/7f/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_007fdb10.cpp'
+        TestSource = '00/7f/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_007fdb10_test.cpp'
+        PassPattern = '007fdb10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00809a70'
+        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind5<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_In2DRange,std::unary_negate<CThingFilter_In2DRange>,_anon_41ACE303'
+        Source = '00/80/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsAffectedByExplosions_00809a70.cpp'
+        TestSource = '00/80/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsAffectedByExplosions_00809a70_test.cpp'
+        PassPattern = '00809a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080a550'
+        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind5<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_In2DRange,std::unary_negate<CThingFilter_In2DRange>,_anon_41ACE303'
+        Source = '00/80/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsAffectedByExplosions_0080a550.cpp'
+        TestSource = '00/80/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsAffectedByExplosions_0080a550_test.cpp'
+        PassPattern = '0080a550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080e670'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std'
+        Source = '00/80/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_0080e670.cpp'
+        TestSource = '00/80/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_0080e670_test.cpp'
+        PassPattern = '0080e670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00815070'
+        Module = 'NHitLocations::CPhysicalPrimitiveMesh'
+        Source = '00/81/NHitLocationsCPhysicalPrimitiveMesh_vfunc7_00815070.cpp'
+        TestSource = '00/81/NHitLocationsCPhysicalPrimitiveMesh_vfunc7_00815070_test.cpp'
+        PassPattern = '00815070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00816000'
+        Module = 'NHitLocations::CPhysicalPrimitiveSphere'
+        Source = '00/81/NHitLocationsCPhysicalPrimitiveSphere_vfunc4_00816000.cpp'
+        TestSource = '00/81/NHitLocationsCPhysicalPrimitiveSphere_vfunc4_00816000_test.cpp'
+        PassPattern = '00816000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084f850'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
+        Source = '00/84/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0084f850.cpp'
+        TestSource = '00/84/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0084f850_test.cpp'
+        PassPattern = '0084f850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00851490'
+        Module = 'GetAllThingsInRoughArea<CThingObject,std::list<CThingObject*,std'
+        Source = '00/85/GetAllThingsInRoughAreaCThingObjectstdlistCThingObjectstd_allocatorCThingObjectCFilterBind2CThingFilterIn2_00851490.cpp'
+        TestSource = '00/85/GetAllThingsInRoughAreaCThingObjectstdlistCThingObjectstd_allocatorCThingObjectCFilterBind2CThingFilterIn2_00851490_test.cpp'
+        PassPattern = '00851490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00870fc0'
+        Module = 'NCreatureAction::CActionEventCameraShake'
+        Source = '00/87/NCreatureActionCActionEventCameraShake_vfunc4_00870fc0.cpp'
+        TestSource = '00/87/NCreatureActionCActionEventCameraShake_vfunc4_00870fc0_test.cpp'
+        PassPattern = '00870fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008786e0'
+        Module = 'GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std'
+        Source = '00/87/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_008786e0.cpp'
+        TestSource = '00/87/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_008786e0_test.cpp'
+        PassPattern = '008786e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008dd6e0'
+        Module = 'NCreatureMode::CModeThunderLightningStorm'
+        Source = '00/8d/NCreatureModeCModeThunderLightningStorm_vfunc5_008dd6e0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeThunderLightningStorm_vfunc5_008dd6e0_test.cpp'
+        PassPattern = '008dd6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008df9c0'
+        Module = 'NCreatureMode::CModeSummonerSummon'
+        Source = '00/8d/NCreatureModeCModeSummonerSummon_vfunc3_008df9c0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeSummonerSummon_vfunc3_008df9c0_test.cpp'
+        PassPattern = '008df9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e3c50'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
+        Source = '00/8e/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_008e3c50.cpp'
+        TestSource = '00/8e/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_008e3c50_test.cpp'
+        PassPattern = '008e3c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e4100'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
+        Source = '00/8e/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_008e4100.cpp'
+        TestSource = '00/8e/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_008e4100_test.cpp'
+        PassPattern = '008e4100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e60d0'
+        Module = 'GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std'
+        Source = '00/8e/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_008e60d0.cpp'
+        TestSource = '00/8e/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_008e60d0_test.cpp'
+        PassPattern = '008e60d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e8830'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportInvulnerable'
+        Source = '00/8e/NCreatureModeCModeBriarRoseTeleportInvulnerable_vfunc3_008e8830.cpp'
+        TestSource = '00/8e/NCreatureModeCModeBriarRoseTeleportInvulnerable_vfunc3_008e8830_test.cpp'
+        PassPattern = '008e8830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00905d10'
+        Module = 'GetAllThingsInRoughArea<CThing,std::list<CThing*,std'
+        Source = '00/90/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind4CThingFilterInMapCThi_00905d10.cpp'
+        TestSource = '00/90/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind4CThingFilterInMapCThi_00905d10_test.cpp'
+        PassPattern = '00905d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00937420'
+        Module = 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std'
+        Source = '00/93/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_00937420.cpp'
+        TestSource = '00/93/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_00937420_test.cpp'
+        PassPattern = '00937420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095db90'
+        Module = 'GetAllThingsInRoughArea<CThing,std::list<CThing*,std'
+        Source = '00/95/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind3CThingFilterIsNotCThi_0095db90.cpp'
+        TestSource = '00/95/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind3CThingFilterIsNotCThi_0095db90_test.cpp'
+        PassPattern = '0095db90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00969fb0'
+        Module = 'GetAllThingsInRoughArea<CThing,std::list<CThing*,std'
+        Source = '00/96/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind3CThingFilterIsNotCThi_00969fb0.cpp'
+        TestSource = '00/96/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind3CThingFilterIsNotCThi_00969fb0_test.cpp'
+        PassPattern = '00969fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c9070'
+        Module = 'NGameText::CDataBank'
+        Source = '00/9c/NGameTextCDataBank_GetPGroupEntry_009c9070.cpp'
+        TestSource = '00/9c/NGameTextCDataBank_GetPGroupEntry_009c9070_test.cpp'
+        PassPattern = '009c9070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af9410'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_vfunc18_00af9410.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_vfunc18_00af9410_test.cpp'
+        PassPattern = '00af9410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afeb90'
+        Module = 'NParticleEngine::CPSCRenderMesh'
+        Source = '00/af/NParticleEngineCPSCRenderMesh_vfunc18_00afeb90.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderMesh_vfunc18_00afeb90_test.cpp'
+        PassPattern = '00afeb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b05ea0'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_vfunc18_00b05ea0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_vfunc18_00b05ea0_test.cpp'
+        PassPattern = '00b05ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b109b0'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_vfunc31_00b109b0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_vfunc31_00b109b0_test.cpp'
+        PassPattern = '00b109b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1a700'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_vfunc18_00b1a700.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_vfunc18_00b1a700_test.cpp'
+        PassPattern = '00b1a700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1b1b0'
+        Module = 'NParticleEngine::CPSCSpline'
+        Source = '00/b1/NParticleEngineCPSCSpline_vfunc15_00b1b1b0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCSpline_vfunc15_00b1b1b0_test.cpp'
+        PassPattern = '00b1b1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1b710'
+        Module = 'NParticleEngine::CPSCDecalRenderer'
+        Source = '00/b1/NParticleEngineCPSCDecalRenderer_vfunc28_00b1b710.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_vfunc28_00b1b710_test.cpp'
+        PassPattern = '00b1b710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b209c0'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b2/NParticleEngineCPSCSingleSprite_vfunc31_00b209c0.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSingleSprite_vfunc31_00b209c0_test.cpp'
+        PassPattern = '00b209c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6a080'
+        Module = 'NScript::CQ_GuildTrainingSkillScript'
+        Source = '00/c6/NScriptCQGuildTrainingSkillScript_TransformGeometry_00c6a080.cpp'
+        TestSource = '00/c6/NScriptCQGuildTrainingSkillScript_TransformGeometry_00c6a080_test.cpp'
+        PassPattern = '00c6a080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6a8b0'
+        Module = 'NScript::CQ_GuildTrainingSkillScript'
+        Source = '00/c6/NScriptCQGuildTrainingSkillScript_BeginScript_00c6a8b0.cpp'
+        TestSource = '00/c6/NScriptCQGuildTrainingSkillScript_BeginScript_00c6a8b0_test.cpp'
+        PassPattern = '00c6a8b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
