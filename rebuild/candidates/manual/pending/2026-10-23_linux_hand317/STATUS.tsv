@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bf18b0	SKIP	-v1576	-	decode-only: 222 x87 ops, generated-object vertex math; low-yield
+00bf2240	DIFFER	1595v1589	-	colour copy arg slot / bl vs R register; one or/test commutation; C4DVector copy rotation
+00b33520	RELOCATION_MATCH	1469v1469	PASS	delete every scene, clear SceneList and the global lists; STLport clear via CopyTrivial
+00b3c5d0	SKIP	-v1363	-	decode-only: file streams + 64-bit arithmetic for the stipple texture; low-yield
+00b871b0	RELOCATION_MATCH	1224v1224	PASS	stencil capture block; OpenCaptureBlock inline + SetState inlines
+00b60f70	DIFFER	1834v1823	-	regalloc: constant 0 in ebp and this spilled (frame 0x20 v 0x1c)
+00b891b0	SKIP	-v1819	-	decode-only: 49-call ctor with many unmodelled member ctors; low-yield
+00b5e0f0	DIFFER	1547v1547	-	one SetState test/or operand commutation at +0x2a0c
+00b4ef80	SKIP	-v1028	-	decode-only: 234 x87 ops (spot-light shadow matrix); low-yield
+00b4fc40	SKIP	-v1837	-	decode-only: 55 x87 ops + per-stage state tables; low-yield
+00b63c00	SKIP	-v1243	-	decode-only: x87 + fast inverse-sqrt table + __ftol2; low-yield
+00b640e0	SKIP	-v1129	-	decode-only: x87 + fast inverse-sqrt table + __ftol2; low-yield
+00b65a20	SKIP	-v1893	-	decode-only: inlined texture-manager refcount lookups, large; low-yield
+00b665e0	SKIP	-v1171	-	decode-only: fptan, 0x138 frame, many unknown callees; low-yield
+00b586a0	RELOCATION_MATCH	1854v1854	PASS	17 tracked SetState inlines, generated
+00b592c0	RELOCATION_MATCH	1101v1101	PASS	10 tracked SetState inlines, generated
+00b56b00	RELOCATION_MATCH	1103v1103	PASS	10 tracked SetState inlines, generated
+00b56f50	RELOCATION_MATCH	1103v1103	PASS	10 tracked SetState inlines, generated
+00b2b180	SKIP	-v1539	-	decode-only: surface composition render-to-texture, 0xec frame, unknown callees; not reached
+00b2cb40	SKIP	-v1637	-	decode-only: aligned-frame (and esp,-8) ctor with many member ctors; not reached
+00b2d330	SKIP	-v1723	-	decode-only: disk-cache texture update, many unknown callees; not reached
+00bfd7c0	DIFFER	1203v1231	-	this/stream register swap; vertex-block size not kept in esi across ReadBlock
+00b6e3e0	RELOCATION_MATCH	1195v1195	PASS	local CEngineWaterRenderer view (12-byte STLport arrays); two bump passes
+00b6e890	DIFFER	1371v1371	-	last SetState(+0x28b8,0) core/state mask register swap (esi/edx)
+00b6fa40	DIFFER	2019v2019	-	three sampler SetState blocks commute test/or operands
+00b75ca0	RELOCATION_MATCH	1320v1320	PASS	0.5f literal (not extern); bones resize + 4 SetBoneTransform; PrepareForRender(0x604)
+00b76bc0	RELOCATION_MATCH	1965v1965	PASS	CRGBFloatColour product local + C4DVector(colour); StateMaskFirst SetState for +0x28b8
+00b77e20	RELOCATION_MATCH	1486v1486	PASS	swell const as whole if/else calls; Clamp inline for fresnel; matched first grade
+00be9920	SKIP	-v1886	-	decode-only: settings ctor with fcos/x87 constant setup; low-yield
+00bea110	SKIP	-v1607	-	decode-only: 150 x87 ops; low-yield
+00b51570	SKIP	-v1254	-	decode-only: RNG/pow loops with 4x-unrolled fills; low-yield
+00b54310	RELOCATION_MATCH	1234v1234	PASS	mist params global read into a named local for fld order; if/else SetIndices
+00b54890	SKIP	-v1431	-	decode-only: two STLport C3DVector vectors (push_back overflow 0x66E370) in nested x87 loops, 5 unknown same-class callees; not reached
+00b54e30	SKIP	-v1901	-	decode-only: as RenderRain plus more x87; not reached
+0051f480	SKIP	-v1270	-	decode-only: string parser + zlib compressor chain, many mislabelled callees; low-yield
+005248b0	SKIP	-v1543	-	decode-only: as 0051f480 (game-state stream parsing); low-yield
+006b42f0	SKIP	-v1543	-	decode-only: 151 x87 ops, 0x2b4 frame; low-yield
+00c604e0	SKIP	-v1093	-	decode-only: constant-store ctor scheduling; label likely wrong (0x4f0-byte object, vtable 0x12B9340)
+00eea7c0	RELOCATION_MATCH	1506v1506	PASS	found flag = one bool from the && chain (if/else assignment misplaces found=false)
+00eeb7b0	RELOCATION_MATCH	1272v1272	PASS	first IsAlive expanded inline via a forceinline PImp helper, second a direct call; movie in an inner block

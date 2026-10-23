@@ -1,0 +1,6 @@
+address	name	evidence
+006e7b60	CScriptMovie::CScriptMovie	chunk 317: script movie object ctor (was CCarriedReadableDef); dtor 0x6E7B80
+004aa840	CScriptThing::~CScriptThing	chunk 317: body is ~CScriptThing (was ~C3DClothPrimitive)
+007e74d0	CScriptThing::~CScriptThing_7e74d0	chunk 317: scripted-thing dtor copy (was movie dtor)
+00485f3a	std::vector<unsigned char>::insert	chunk 317 (was deque::insert)
+004ab130	CScriptThing::IsAlive	chunk 317: CScriptThing vtable slot 75

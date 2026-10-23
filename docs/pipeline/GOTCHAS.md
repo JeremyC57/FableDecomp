@@ -893,3 +893,13 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-10-23) Relocation-conflict audit of today's 456 landed rows:
   - 171 rows carry cross-row `RELOC_CONFLICT` warnings across 61 symbols. These are the long-standing catalog backlog (`rebuild/oracles/reloc_audit.tsv`), mostly byte-twin callees that share one name: LowerBound 0x40F020/0x4365B0, GetMainPlayer 0x449960/0x449970, the CBaseClass dtors 0x99A2E0/0x99A300, the CBaseIntelligentPointer ctor/dtor pairs, and g_MapwhoLevels +0/+4.
   - No new class of conflict was found. `landb.sh` now prints `RELOC_CONFLICT` lines so new ones are seen at landing.
+- (2026-10-23) Chunk 317 (engine renderers, quest-script mains, 13/40):
+  - **Flag from an `&&` chain:** write `bool found = a() && b(); if (found)`. An if/else assigning true/false misplaces the false store.
+  - **Same method inlined and called:** CScriptThing::IsAlive is expanded inline once and called once in the same function. Model the inline site with a `__forceinline` helper.
+  - **Float constant:** 0.5f at 0x0122F59C is a literal. Declaring it extern flips the x87 operand order.
+  - **Global read order:** a global read into a named local fixes the x87 load order.
+  - **Index/stream calls:** SetIndices/SetStreamSource are written as if/else whole calls.
+  - **Header bug:** retail CEngineWaterRenderer arrays are 12 bytes, not the 16 in engine/CEngineWaterRenderer.h.
+  - **VC7.1 tests:** `T t = T();` does not zero-initialise; use memset.
+  - **Script vtable:** CScriptThing slot 21 is MsgIsHitBy and slot 75 is IsAlive.
+  - **Open gap:** pure SetState test/or operand swaps; park them early.

@@ -274176,6 +274176,97 @@ $catalog = @(
         TestSource = '00/bd/CEngineLandscapeMap_InvalidateEdge_00bdcbb0_test.cpp'
         PassPattern = '00bdcbb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b33520'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_CEnginePrimitiveRenderer_00b33520.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_CEnginePrimitiveRenderer_00b33520_test.cpp'
+        PassPattern = '00b33520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b54310'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_RenderMist_00b54310.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_RenderMist_00b54310_test.cpp'
+        PassPattern = '00b54310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b56b00'
+        Module = 'CEngineStateBlockSolid'
+        Source = '00/b5/CEngineStateBlockSolid_Apply_00b56b00.cpp'
+        TestSource = '00/b5/CEngineStateBlockSolid_Apply_00b56b00_test.cpp'
+        PassPattern = '00b56b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b56f50'
+        Module = 'CEngineStateBlockSolid2X'
+        Source = '00/b5/CEngineStateBlockSolid2X_Apply_00b56f50.cpp'
+        TestSource = '00/b5/CEngineStateBlockSolid2X_Apply_00b56f50_test.cpp'
+        PassPattern = '00b56f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b586a0'
+        Module = 'CEngineStateBlockAlpha2XTFactor'
+        Source = '00/b5/CEngineStateBlockAlpha2XTFactor_Apply_00b586a0.cpp'
+        TestSource = '00/b5/CEngineStateBlockAlpha2XTFactor_Apply_00b586a0_test.cpp'
+        PassPattern = '00b586a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b592c0'
+        Module = 'CEngineStateBlockDiffuseEnv2X'
+        Source = '00/b5/CEngineStateBlockDiffuseEnv2X_Apply_00b592c0.cpp'
+        TestSource = '00/b5/CEngineStateBlockDiffuseEnv2X_Apply_00b592c0_test.cpp'
+        PassPattern = '00b592c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6e3e0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b6/CEngineWaterRenderer_RenderIceBumpMap_00b6e3e0.cpp'
+        TestSource = '00/b6/CEngineWaterRenderer_RenderIceBumpMap_00b6e3e0_test.cpp'
+        PassPattern = '00b6e3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b75ca0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_RenderIceBackground_00b75ca0.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_RenderIceBackground_00b75ca0_test.cpp'
+        PassPattern = '00b75ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b76bc0'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_RenderBackground_00b76bc0.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_RenderBackground_00b76bc0_test.cpp'
+        PassPattern = '00b76bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b77e20'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b7/CEngineWaterRenderer_RenderSeaNonReflectiveForeground_00b77e20.cpp'
+        TestSource = '00/b7/CEngineWaterRenderer_RenderSeaNonReflectiveForeground_00b77e20_test.cpp'
+        PassPattern = '00b77e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b871b0'
+        Module = 'CEngineScreenEffectDisplacementRenderer'
+        Source = '00/b8/CEngineScreenEffectDisplacementRenderer_BeginDisplacementStencilRendering_00b871b0.cpp'
+        TestSource = '00/b8/CEngineScreenEffectDisplacementRenderer_BeginDisplacementStencilRendering_00b871b0_test.cpp'
+        PassPattern = '00b871b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eea7c0'
+        Module = 'CExpression_DigScript'
+        Source = '00/ee/CExpressionDigScript_Main_00eea7c0.cpp'
+        TestSource = '00/ee/CExpressionDigScript_Main_00eea7c0_test.cpp'
+        PassPattern = '00eea7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeb7b0'
+        Module = 'CExpression_PicklockScript'
+        Source = '00/ee/CExpressionPicklockScript_Main_00eeb7b0.cpp'
+        TestSource = '00/ee/CExpressionPicklockScript_Main_00eeb7b0_test.cpp'
+        PassPattern = '00eeb7b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -16,6 +16,8 @@ address	row_len	batch	label	kind	status	pieces	note
 004cc3f0	304	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	004cc3f0:27,004cc40b:22,004cc421:24,004cc439:26,004cc453:37,004cc478:54,004cc4ae:23,004cc4d0:66	row holds the Transfer jump-table body plus following function(s) after int3 padding
 004cd1e0	336	2026-10-21_linux_hand254	CThing::CThing::vfunc_30	multi	open	004cd1e0:5,004cd1f0:3,004cd200:3,004cd210:3,004cd220:5,004cd230:5,004cd240:3,004cd250:3,004cd260:3,004cd270:3,004cd280:1,004cd290:1,004cd2a0:16,004cd2b0:27,004cd2d0:25,004cd2f0:58	int3 padding then another function inside the catalog row
 004debf7	37	2026-10-15_linux_hand102	CTCTargetingSpirit::CTCTargetingSpirit::vfunc_10	multi	done	004debf7:5,004debfc:3,004debff:5,004dec04:5,004dec09:16,004dec19:3	row holds six tiny functions back to back (jmp [eax+24h]; xor eax,eax ret; ret 0Ch; ret 4; a call forwarder; mov al,1 ret)
+0051f480	1280	2026-10-23_linux_hand317	CEntityRuntimePersistence::ClearPersistenceDataForSectionInEntityScript	single	open	0051f480:1270	decode-only: string parser + zlib compressor chain, many mislabelled callees; low-yield
+005248b0	1552	2026-10-23_linux_hand317	CEntityRuntimePersistence::LoadFromGameStateScript	single	open	005248b0:1543	decode-only: as 0051f480 (game-state stream parsing); low-yield
 005271b0	80	2026-10-15_linux_hand110	CThingFilter_IsValid::operator()	multi	done	005271b0:8,005271c0:62	row holds two functions (jmp thunk + ctor)
 0052f1b0	560	2026-10-23_linux_hand307	CThingFilter_IsValid::operator()	multi	open	0052f1b0:8,0052f1c0:15,0052f1d0:12,0052f1e0:14,0052f1f0:7,0052f200:1,0052f210:21,0052f230:24,0052f250:24,0052f270:24,0052f290:24,0052f2b0:23,0052f2d0:40,0052f300:13,0052f310:7,0052f320:3,0052f330:13,0052f340:14,0052f350:72,0052f3a0:15,0052f3b0:11,0052f3c0:25	CThingFilter_IsValid::operator(): catalog row holds ~20 small CThingFilter/accessor functions separated by int3 padding
 0055a5d0	704	2026-10-22_linux_hand284	CDraggable::OnLeftClicked	multi	open	0055a5d0:82,0055a630:39,0055a660:5787	multi-function row (6 int3-separated bodies to 0x55a890); first piece OnLeftClicked 82 bytes matched in probe/dg3.cpp
@@ -39,6 +41,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00691d70	624	2026-10-22_linux_hand289	CInputProcessCreatureMovement::?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	multi	open	00691d70:492,00691f5c:106,00691fd0:3	row holds ProcessInput + jump table + the next function (0x00691F80 GetInterface helper, ret 4) + a ret 8 stub
 006a16a0	784	2026-10-23_linux_hand300	CTCCarrying::RemoveThingInCarrySlot	single	open	006a16a0:772	SKIP: RemoveThingInCarrySlot, inline slot vector erase + CCountedPointer/def lookups, 18 callees
 006a1a00	864	2026-10-23_linux_hand300	CTCCarrying::GetCarriedThingInterpolatedPosAndOrientation	single	open	006a1a00:864	SKIP: CCountedPointer slot defs, CCharString temps, GetDummyObject + interpolation, 17 callees
+006b42f0	1552	2026-10-23_linux_hand317	CEnvironment::RenderUpdate	single	open	006b42f0:1543	decode-only: 151 x87 ops, 0x2b4 frame; low-yield
 006babd0	336	2026-10-21_linux_hand248	CPersistContext::Transfer<CIntelligentPointer<CThing>_>	multi	open	006babd0:36,006babf4:31,006bac13:35,006bac36:35,006bac59:46,006bac87:67,006bacca:76	row holds the switch body, its jump table and a further function body (two functions in one row)
 006ca5a0	288	2026-10-20_linux_hand231	CTCHero::OnCreate	multi	open	006ca5a0:171,006ca650:11,006ca660:3,006ca670:3,006ca680:54	row holds OnCreate (0x006CA5A0..0x006CA64A, 171 bytes) plus four small bodies at 0x006CA650..
 006cbac0	880	2026-10-23_linux_hand300	CTCCreatureNavigation::GetNextNavPosOnRoute	multi	open	006cbac0:827,006cbdfc:46	SKIP: 11-case jump table over creature speed vslots + 3 navigator vcalls with 10-12 args; retail CTCCreatureNavigation layout differs from Ego_r by 4
@@ -133,7 +136,11 @@ address	row_len	batch	label	kind	status	pieces	note
 00aacf90	32	2026-10-15_linux_hand76	CSoundReceiverLH::CSoundReceiverLH::vfunc_2	multi	done	00aacf90:5,00aacfa0:4	a jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding
 00ab2520	1265	2026-10-23_linux_hand312	C3DAnimationBuilder::BuildMeshAnimation	single	open	00ab2520:1265	not authored: inline 3x4 matrix inverse + product (x87 operand-order lane gap, chunk 293)
 00ac20d0	48	2026-10-15_linux_hand110	CThingFilter_IsValid::operator()	multi	done	00ac20d0:5,00ac20e0:11,00ac20f0:6	row holds three functions
+00b2b180	1552	2026-10-23_linux_hand317	CEngineSurfaceCompositionManager::RenderToTexture	single	open	00b2b180:1539	decode-only: surface composition render-to-texture, 0xec frame, unknown callees; not reached
+00b2cb40	1648	2026-10-23_linux_hand317	CEngineSurfaceCompositionManager::CEngineSurfaceCompositionManager	single	open	00b2cb40:1637	decode-only: aligned-frame (and esp,-8) ctor with many member ctors; not reached
+00b2d330	1728	2026-10-23_linux_hand317	CEngineSurfaceCompositionManager::UpdateDiskCacheTexture	single	open	00b2d330:1723	decode-only: disk-cache texture update, many unknown callees; not reached
 00b399a0	1424	2026-10-23_linux_hand316	CEngineInternalAttachedPrimitive::UpdateOutputPrimitive	single	open	00b399a0:1414	x87 matrix work on the attached primitive (decoded, low yield)
+00b3c5d0	1376	2026-10-23_linux_hand317	CEngineResourceManager::SetupAlphaStippleTexture	single	open	00b3c5d0:1363	decode-only: file streams + 64-bit arithmetic for the stipple texture; low-yield
 00b3f5e0	1632	2026-10-23_linux_hand316	CEngineMap::PeekMapNormal	single	open	00b3f5e0:1624	x87 normal + second inline 0xB43870 on the PeekLayerValue family gap
 00b3fc40	528	2026-10-22_linux_hand285	CEngineMap::PeekInterpolatedMapNormal	single	open	00b3fc40:528	GetInterpolatedMapNormal: ebp-frame inline-asm fistp floor/ceil helper (known lane gap)
 00b40bd0	1744	2026-10-23_linux_hand316	CEngineMap::PeekWaterDepth	single	open	00b40bd0:1736	x87 depth + second inline 0xB43870 on the PeekLayerValue family gap
@@ -146,8 +153,18 @@ address	row_len	batch	label	kind	status	pieces	note
 00b46c80	1536	2026-10-23_linux_hand316	CEngineLightingManager::UpdateGlobalLightingStates	single	open	00b46c80:1531	x87-heavy lighting states (decoded, low yield)
 00b47bc0	1040	2026-10-23_linux_hand316	CEngineLightingManager::UpdateShadowedSpotLights	single	open	00b47bc0:1028	x87 spotlight setup (decoded, low yield)
 00b484b0	1177	2026-10-23_linux_hand316	CEngineLightingManager::?FrameStart@CEngineLightingManager@@UAEXABVCEngineComponentParams@@@Z	single	open	00b484b0:1177	fistp rounding + fast inverse sqrt + secondary-base thunk (lane gap)
+00b4ef80	1040	2026-10-23_linux_hand317	CEngineShadowRenderer::UpdateSpotLightShadowSpace	single	open	00b4ef80:1028	decode-only: 234 x87 ops (spot-light shadow matrix); low-yield
+00b4fc40	1840	2026-10-23_linux_hand317	CEngineShadowRenderer::SetupShadowFuncRenderStates	single	open	00b4fc40:1837	decode-only: 55 x87 ops + per-stage state tables; low-yield
+00b51570	1254	2026-10-23_linux_hand317	CEngineWeatherRenderer::BuildBuffers	single	open	00b51570:1254	decode-only: RNG/pow loops with 4x-unrolled fills; low-yield
+00b54890	1440	2026-10-23_linux_hand317	CEngineWeatherRenderer::RenderRain	single	open	00b54890:1431	decode-only: two STLport C3DVector vectors (push_back overflow 0x66E370) in nested x87 loops, 5 unknown same-class callees; not reached
+00b54e30	1904	2026-10-23_linux_hand317	CEngineWeatherRenderer::RenderSnow	single	open	00b54e30:1901	decode-only: as RenderRain plus more x87; not reached
+00b63c00	1248	2026-10-23_linux_hand317	CEngineSkyRenderer::RenderSun	single	open	00b63c00:1243	decode-only: x87 + fast inverse-sqrt table + __ftol2; low-yield
+00b640e0	1136	2026-10-23_linux_hand317	CEngineSkyRenderer::RenderMoon	single	open	00b640e0:1129	decode-only: x87 + fast inverse-sqrt table + __ftol2; low-yield
+00b65a20	1904	2026-10-23_linux_hand317	CEngineSkyRenderer::RenderOuterSky	single	open	00b65a20:1893	decode-only: inlined texture-manager refcount lookups, large; low-yield
+00b665e0	1171	2026-10-23_linux_hand317	CEngineSkyRenderer::GetEnvironmentMap	single	open	00b665e0:1171	decode-only: fptan, 0x138 frame, many unknown callees; low-yield
 00b67270	528	2026-10-22_linux_hand285	CEngineLandscapeRenderer::BuildBlendingTables	single	open	00b67270:518	BuildBlendingTables: ebp-frame inline-asm fistp floor/ceil helper (known lane gap)
 00b68070	1152	2026-10-23_linux_hand316	CEngineLandscapeRenderer::LoadForegroundTextures	single	open	00b68070:1139	inline-asm fistp rounding helper (lane gap)
+00b891b0	1824	2026-10-23_linux_hand317	CEngineScreenEffectOutlineGlow::CEngineScreenEffectOutlineGlow::CEngineScreenEffectOutlineGlow	single	open	00b891b0:1819	decode-only: 49-call ctor with many unmodelled member ctors; low-yield
 00b8c830	1216	2026-10-23_linux_hand316	CEngineEnvironment::CEngineEnvironment::FrameStart	single	open	00b8c830:1203	x87-heavy environment frame update (decoded, low yield)
 00b8dcd0	640	2026-10-22_linux_hand285	CEngineOcclusionManager::SelectFlareTestVertexBuffer	single	open	00b8dcd0:639	SelectFlareTestVertexBuffer: inline-asm fistp float-to-int helper (fstp/fld/fistp round trip, known lane gap)
 00b8df50	1626	2026-10-23_linux_hand316	CEngineOcclusionManager::CEngineOcclusionManager::FrameEnd	single	open	00b8df50:1626	x87-heavy + fistp rounding (lane gap)
@@ -165,7 +182,10 @@ address	row_len	batch	label	kind	status	pieces	note
 00bd2d90	736	2026-10-22_linux_hand285	CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations	single	open	00bd2d90:721	GetBoneTransformations: SSE inline asm (ebp frame, and esp,-16)
 00bd71b0	28	2026-10-14_linux_hand34	CEnginePrimitiveManagerAnimatedMeshesBase::CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitive	prefix	in-chunk:902	00bd71b0:2116	bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function
 00be5ca0	224	2026-10-19_linux_hand195	CLandscapeBackgroundPatch::InvalidateEdge	multi	open	00be5ca0:50,00be5cd2:21,00be5cf0:29,00be5d10:15,00be5d20:20,00be5d40:26,00be5d60:26	row spans InvalidateEdge + jump table + four more bodies
+00be9920	1886	2026-10-23_linux_hand317	CEngineWaterSettings::CEngineWaterSettings	single	open	00be9920:1886	decode-only: settings ctor with fcos/x87 constant setup; low-yield
+00bea110	1616	2026-10-23_linux_hand317	CEngineWaterSettings::UpdateConstants	single	open	00bea110:1607	decode-only: 150 x87 ops; low-yield
 00bf12a0	1552	2026-10-23_linux_hand316	CEnginePrimitiveRenderUtil::AddGeneratedObjects	single	open	00bf12a0:1549	x87 generated-object build (decoded, low yield)
+00bf18b0	1584	2026-10-23_linux_hand317	CEnginePrimitiveRenderUtil::AddGeneratedObjects	single	open	00bf18b0:1576	decode-only: 222 x87 ops, generated-object vertex math; low-yield
 00bf7bc0	560	2026-10-22_linux_hand285	CEngineLandscapePatch::DebugCalcInForgroundRange	single	open	00bf7bc0:546	DebugCalcInForgroundRange: SSE inline asm block (movhps/maxps on reloaded locals)
 00c28870	528	2026-10-22_linux_hand288	CHandleBasedMemoryPool::PartialDefragment	single	open	00c28870:522	SKIP: /EHsc twin of 0x00A02DF0 (EH frame) with the same whole-program register caching
 00c3dfd0	656	2026-10-23_linux_hand302	CTCHeroStats::CTCHeroStats::InitializeVectorArrays	single	open	00c3dfd0:642	third-party library code at 0xC3xxxx/0xC4xxxx mislabelled CTCHeroStats::InitializeVectorArrays (not CTCHeroStats)
@@ -173,6 +193,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00c40e20	64	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	00c40e20:8,00c40e30:11,00c40e40:11,00c40e50:14	row spans four functions
 00c41060	624	2026-10-23_linux_hand302	CTCHeroStats::CTCHeroStats::SetupCharacterStateInitial	single	open	00c41060:621	third-party library code at 0xC3xxxx/0xC4xxxx mislabelled CTCHeroStats::SetupCharacterStateInitial (not CTCHeroStats)
 00c5acb0	672	2026-10-22_linux_hand276	C3DMeshFileXBoundingBoxChunk::C3DMeshFileXBoundingBoxChunk::LoadData	single	open	00c5acb0:662	wrong label: D3DX-style library code, not C3DMeshFileXBoundingBoxChunk::LoadData
+00c604e0	1104	2026-10-23_linux_hand317	CEnvironmentSpellEffectInterface::CEnvironmentSpellEffectInterface	single	open	00c604e0:1093	decode-only: constant-store ctor scheduling; label likely wrong (0x4f0-byte object, vtable 0x12B9340)
 00c6b050	496	2026-10-21_linux_hand270	CTCHeroStats::CTCHeroStats::InitializeAudioEffects	single	open	00c6b050:490	lane gap: inline fstp/fld/fistp rounding (audio reverb; catalog name wrong)
 00c8a4b0	112	2026-10-15_linux_hand171	CTCVillageMember::IsAttachedToVillage	single	open	00c8a4b0:109	object received in esi (LTCG/library register convention, 0xC8xxxx); not CTCVillageMember
 00c8a520	32	2026-10-14_linux_hand57	CMemoryDataOutputStream::Clear	ltcg	open		a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG

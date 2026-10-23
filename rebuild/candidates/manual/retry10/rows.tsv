@@ -2829,3 +2829,9 @@ address	module	name	length	chunk	reason
 00befd90	CEnginePrimitiveRenderUtil	SetupOutlineSmoothStencilStates	1104	hand316	DIFFER(1100v1100) -- scheduling only: prologue push edi order
 00bf01e0	CEnginePrimitiveRenderUtil	SetupOutlineSmoothAlphaStencilMaskStates	1376	hand316	DIFFER(1374v1374) -- one SetState test/or operand swap
 00bf0b20	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	1296	hand316	DIFFER(1290v1290) -- scheduling only: byte spill slot/order in prologue
+00bf2240	CEnginePrimitiveRenderUtil	SetupOutlineSmoothFillStates	1600	hand317	DIFFER(1595v1589) -- colour copy arg slot / bl vs R register; one or/test commutation; C4DVector copy rotation
+00b60f70	CEngineScreenEffectGlowRenderer	ApplyGlow	1824	hand317	DIFFER(1834v1823) -- regalloc: constant 0 in ebp and this spilled (frame 0x20 v 0x1c)
+00b5e0f0	CEngineScreenEffectRadialBlurRenderer	ApplyRadialBlur	1552	hand317	DIFFER(1547v1547) -- one SetState test/or operand commutation at +0x2a0c
+00bfd7c0	CEngineWaterBackgroundSubPatch	Load	1232	hand317	DIFFER(1203v1231) -- this/stream register swap; vertex-block size not kept in esi across ReadBlock
+00b6e890	CEngineWaterRenderer	RenderBumpMap	1376	hand317	DIFFER(1371v1371) -- last SetState(+0x28b8,0) core/state mask register swap (esi/edx)
+00b6fa40	CEngineWaterRenderer	RenderSeaMidground	2032	hand317	DIFFER(2019v2019) -- three sampler SetState blocks commute test/or operands
