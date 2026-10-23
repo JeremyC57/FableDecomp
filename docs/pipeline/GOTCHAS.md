@@ -811,3 +811,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - Closed 00518130 (the loop-exit reload family, previously listed as a gap), 00bac0f0 (spill-slot swap) and 00be79d0.
   - It is narrow: 3 gains in 213 rows. Apply it before statement reordering, since field-store order only shows once the alias web is gone.
 - (R&D R-15) Spill slots and address-taken locals share ONE ranking by reference count (a `long x; take(&x)` with 2 refs ranks after the spills; with 4 refs it takes the first slot).
+- (R&D E-18) The member-alias drop does NOT fix the rough-area NODE-loop exit reload order. Retail reloads the box-bound spill (edx) first, then map (edi) and box.Y1 (esi); ours emits edi, esi, edx. About 20 FindThingsInRoughArea rows were tried, all inert. That web still looks like a lane gap; 00518130 was the different level-loop exit web.
