@@ -272955,6 +272955,55 @@ $catalog = @(
         TestSource = '00/ed/CWomanToAttract_DoLeavingCutscene_00ed0b10_test.cpp'
         PassPattern = '00ed0b10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004fde80'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_SaveGameState_004fde80.cpp'
+        TestSource = '00/4f/CWorldMap_SaveGameState_004fde80_test.cpp'
+        PassPattern = '004fde80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063d960'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_FindLastUnblockedGroundPositionAndReportCollisio_0063d960.cpp'
+        TestSource = '00/63/CWorldMap_FindLastUnblockedGroundPositionAndReportCollisio_0063d960_test.cpp'
+        PassPattern = '0063d960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063db30'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_FindLastUnblockedThemePositionAndReportCollision_0063db30.cpp'
+        TestSource = '00/63/CWorldMap_FindLastUnblockedThemePositionAndReportCollision_0063db30_test.cpp'
+        PassPattern = '0063db30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056be00'
+        Module = 'CTCBoastUI'
+        Source = '00/56/CTCBoastUI_GlobalUpdate_0056be00.cpp'
+        TestSource = '00/56/CTCBoastUI_GlobalUpdate_0056be00_test.cpp'
+        PassPattern = '0056be00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00751610'
+        Module = 'CGetBestTurningAnim'
+        Source = '00/75/CGetBestTurningAnim_CGetBestTurningAnim_00751610.cpp'
+        TestSource = '00/75/CGetBestTurningAnim_CGetBestTurningAnim_00751610_test.cpp'
+        PassPattern = '00751610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b3a20'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_DeactivateQuest_004b3a20.cpp'
+        TestSource = '00/4b/CQuestManager_DeactivateQuest_004b3a20_test.cpp'
+        PassPattern = '004b3a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087cb10'
+        Module = 'CCreatureAction_InterruptableMidAttackAutoTurn'
+        Source = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_FrameUpdate_0087cb10.cpp'
+        TestSource = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_FrameUpdate_0087cb10_test.cpp'
+        PassPattern = '0087cb10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
