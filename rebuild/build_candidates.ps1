@@ -274976,6 +274976,27 @@ $catalog = @(
         TestSource = '00/e9/CMHeroInsideHouse_Main_00e96660_test.cpp'
         PassPattern = '00e96660_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00da4e30'
+        Module = 'CMagicBarrier'
+        Source = '00/da/CMagicBarrier_Main_00da4e30.cpp'
+        TestSource = '00/da/CMagicBarrier_Main_00da4e30_test.cpp'
+        PassPattern = '00da4e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daa260'
+        Module = 'CMinionFieldGenerator'
+        Source = '00/da/CMinionFieldGenerator_Main_00daa260.cpp'
+        TestSource = '00/da/CMinionFieldGenerator_Main_00daa260_test.cpp'
+        PassPattern = '00daa260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daa700'
+        Module = 'CMinionTrollSummoner'
+        Source = '00/da/CMinionTrollSummoner_Main_00daa700.cpp'
+        TestSource = '00/da/CMinionTrollSummoner_Main_00daa700_test.cpp'
+        PassPattern = '00daa700_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
