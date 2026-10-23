@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00dde940	RELOCATION_MATCH	748v748	PASS	book swap / open-book script
+00dc8030	RELOCATION_MATCH	938v938	PASS	&& loop condition temps carry destruction flags
+00a62120	RELOCATION_MATCH	678v678	PASS	by-value inline reader; STLport vector(n); GetData accessor
+00988e80	DIFFER	839v917	-	lane gap: inline-asm SSE matrix block in retail
+00989230	DIFFER	535v636	-	lane gap: inline-asm SSE matrix block in retail
+0098a540	MATCH	539v539	PASS	enabled copy count-down loop; GetData accessor
+00b4ced0	DIFFER	787v831	-	lane gap: inline-asm SSE box distance in retail
+00761c00	DIFFER	810v821	-	Transfer defaults hoisted to preheader; "]" temp order
+00eff930	RELOCATION_MATCH	893v893	PASS	b18 mixed-dtor recipe + inline_depth(0)
+00ed14e0	SKIP	-	-	row holds two functions (int3 pad at +0x291, next body follows)
+0054a6f0	RELOCATION_MATCH	657v657	PASS	profile value read
+0054a990	RELOCATION_MATCH	590v590	PASS	observer register/unregister
+00aabf60	DIFFER	625v620	-	LTCG: pure FindFirstSetBit call hoisted with register args
+00a3e520	SKIP	-	-	row holds two functions (24-byte body, int3 pad, next body)
+00a3e830	SKIP	-	-	row holds two functions (24-byte body, int3 pad, next body)
+0047042a	DIFFER	716v716	-	one lea SIB operand order
+00dc8890	RELOCATION_MATCH	998v998	PASS	whole-body CScriptThing local
+0046a2fc	RELOCATION_MATCH	620v620	PASS	TRANSFER list order
+0045fac1	RELOCATION_MATCH	628v628	PASS	compiler-generated operator=
+00464db5	RELOCATION_MATCH	942v942	PASS	element-by-element TRANSFER
+00465390	RELOCATION_MATCH	676v676	PASS	element-by-element TRANSFER (engine header)
+00a49240	RELOCATION_MATCH	699v699	PASS	forceinline ReadX helpers share the dead arg slot
+00544520	RELOCATION_MATCH	752v752	PASS	v[v.size()-1] in place
+00544810	RELOCATION_MATCH	855v855	PASS	v[v.size()-1] in place
+00a58790	DIFFER	699v707	-	|dir|^2 temp homing (x87)
+00b20d30	DIFFER	563v578	-	unrotated search loops + transform order
+00b21a50	DIFFER	565v565	-	size() load order
+00b206b0	DIFFER	799v773	-	x87 order + slot swap
+00b211b0	DIFFER	633v634	-	ebx/ebp colouring swap
+00b21e90	RELOCATION_MATCH	619v619	PASS	SaveValue wrapper; *(begin()+i)
+00b22100	RELOCATION_MATCH	522v522	PASS	inline readers; STLport clear()
+0041ac20	RELOCATION_MATCH	881v881	PASS	advisor: in-place bank CurrentFrame read in inlined GetFrame
+0053f810	RELOCATION_MATCH	972v972	PASS	really CScrollingViewport::Initialise; forceinline push_back
+00645ce9	DIFFER	581v581	-	one fld/add scheduling swap
+00646762	DIFFER	711v740	-	lane gap: inline-asm fistp rounding in retail
+00c094a0	RELOCATION_MATCH	573v573	PASS	steering-lib ctor (/EHsc)
+009a1140	DIFFER	871v918	-	register allocation; ch kept in memory
+009a2000	DIFFER	1004v982	-	mip-loop colouring; frame +4
+00872630	RELOCATION_MATCH	647v647	PASS	named physics/up before the sum
+004900f5	DIFFER	906v927	-	slot order, centring x87, ==L"" bool

@@ -270870,6 +270870,154 @@ $catalog = @(
         TestSource = '00/bd/CEngineLandscapeMap_GetEdgeStrip_00bdc980_test.cpp'
         PassPattern = '00bdc980_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041ac20'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_GetDataFromDef_0041ac20.cpp'
+        TestSource = '00/41/NUISystemCSprite_GetDataFromDef_0041ac20_test.cpp'
+        PassPattern = '0041ac20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045fac1'
+        Module = 'CSpecialAbilitiesBulletTimeDef'
+        Source = '00/45/CSpecialAbilitiesBulletTimeDef_operator_0045fac1.cpp'
+        TestSource = '00/45/CSpecialAbilitiesBulletTimeDef_operator_0045fac1_test.cpp'
+        PassPattern = '0045fac1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00464db5'
+        Module = 'CSpecialAbilitiesBulletTimeDef'
+        Source = '00/46/CSpecialAbilitiesBulletTimeDef_Transfer_00464db5.cpp'
+        TestSource = '00/46/CSpecialAbilitiesBulletTimeDef_Transfer_00464db5_test.cpp'
+        PassPattern = '00464db5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00465390'
+        Module = 'CSpecialAbilitiesPhysicalShieldDef'
+        Source = '00/46/CSpecialAbilitiesPhysicalShieldDef_Transfer_00465390.cpp'
+        TestSource = '00/46/CSpecialAbilitiesPhysicalShieldDef_Transfer_00465390_test.cpp'
+        PassPattern = '00465390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046a2fc'
+        Module = 'CSpecialAbilitiesBerserkDef'
+        Source = '00/46/CSpecialAbilitiesBerserkDef_Transfer_0046a2fc.cpp'
+        TestSource = '00/46/CSpecialAbilitiesBerserkDef_Transfer_0046a2fc_test.cpp'
+        PassPattern = '0046a2fc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053f810'
+        Module = 'NUISystem::CScrollingViewport'
+        Source = '00/53/NUISystemCScrollingViewport_Initialise_0053f810.cpp'
+        TestSource = '00/53/NUISystemCScrollingViewport_Initialise_0053f810_test.cpp'
+        PassPattern = '0053f810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00544520'
+        Module = 'NUISystem::CSpellContainerList'
+        Source = '00/54/NUISystemCSpellContainerList_ScrollUp_00544520.cpp'
+        TestSource = '00/54/NUISystemCSpellContainerList_ScrollUp_00544520_test.cpp'
+        PassPattern = '00544520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00544810'
+        Module = 'NUISystem::CSpellContainerList'
+        Source = '00/54/NUISystemCSpellContainerList_ScrollDown_00544810.cpp'
+        TestSource = '00/54/NUISystemCSpellContainerList_ScrollDown_00544810_test.cpp'
+        PassPattern = '00544810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054a6f0'
+        Module = 'NUISystem::CSlider'
+        Source = '00/54/NUISystemCSlider_AdjustValueToProfile_0054a6f0.cpp'
+        TestSource = '00/54/NUISystemCSlider_AdjustValueToProfile_0054a6f0_test.cpp'
+        PassPattern = '0054a6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054a990'
+        Module = 'NUISystem::CSlider'
+        Source = '00/54/NUISystemCSlider_ChangeState_0054a990.cpp'
+        TestSource = '00/54/NUISystemCSlider_ChangeState_0054a990_test.cpp'
+        PassPattern = '0054a990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00872630'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/87/NCameraModesCStringAndCageBase_OnInit_00872630.cpp'
+        TestSource = '00/87/NCameraModesCStringAndCageBase_OnInit_00872630_test.cpp'
+        PassPattern = '00872630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098a540'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateWorldSpaceLighting_0098a540.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateWorldSpaceLighting_0098a540_test.cpp'
+        PassPattern = '0098a540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a49240'
+        Module = 'CSpeechFrame'
+        Source = '00/a4/CSpeechFrame_ReadFromFile_00a49240.cpp'
+        TestSource = '00/a4/CSpeechFrame_ReadFromFile_00a49240_test.cpp'
+        PassPattern = '00a49240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62120'
+        Module = 'CShaderBankEntry'
+        Source = '00/a6/CShaderBankEntry_CShaderBankEntry_00a62120.cpp'
+        TestSource = '00/a6/CShaderBankEntry_CShaderBankEntry_00a62120_test.cpp'
+        PassPattern = '00a62120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b21e90'
+        Module = 'NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData'
+        Source = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_DatabaseSerialise_00b21e90.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_DatabaseSerialise_00b21e90_test.cpp'
+        PassPattern = '00b21e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b22100'
+        Module = 'NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData'
+        Source = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_ReadBinary_00b22100.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_ReadBinary_00b22100_test.cpp'
+        PassPattern = '00b22100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c094a0'
+        Module = 'CSteeringGroup'
+        Source = '00/c0/CSteeringGroup_CSteeringGroup_00c094a0.cpp'
+        TestSource = '00/c0/CSteeringGroup_CSteeringGroup_00c094a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c094a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc8030'
+        Module = 'CSecretPassageFirstGate'
+        Source = '00/dc/CSecretPassageFirstGate_Main_00dc8030.cpp'
+        TestSource = '00/dc/CSecretPassageFirstGate_Main_00dc8030_test.cpp'
+        PassPattern = '00dc8030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc8890'
+        Module = 'CSpeakingMarker'
+        Source = '00/dc/CSpeakingMarker_Main_00dc8890.cpp'
+        TestSource = '00/dc/CSpeakingMarker_Main_00dc8890_test.cpp'
+        PassPattern = '00dc8890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dde940'
+        Module = 'CSecretBook'
+        Source = '00/dd/CSecretBook_Main_00dde940.cpp'
+        TestSource = '00/dd/CSecretBook_Main_00dde940_test.cpp'
+        PassPattern = '00dde940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff930'
+        Module = 'CShowTargetedThingHealthScript'
+        Source = '00/ef/CShowTargetedThingHealthScript_ShowTargetedThingsHealth_00eff930.cpp'
+        TestSource = '00/ef/CShowTargetedThingHealthScript_ShowTargetedThingsHealth_00eff930_test.cpp'
+        PassPattern = '00eff930_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,3 @@
+address	name	evidence
+0053f810	NUISystem::CScrollingViewport::Initialise	chunk 298 RELOCATION_MATCH body (catalog had CSprite::Initialize)
+00c094a0	CSteeringGroup::CSteeringGroup	chunk 298 RELOCATION_MATCH body (/EHsc ctor)

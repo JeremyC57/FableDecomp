@@ -1,0 +1,95 @@
+# Hand chunk 298 (CSecretBook .. CSubtitleRenderer): 21 of 40 byte-exact
+
+## What matched (21)
+- **CSecretBook::Main** 00dde940: a book already read in an earlier visit is swapped for its open-book object, then the read-book script runs. Shape: a plain quest-script body with scoped CScriptThing temporaries.
+- **CSecretPassageFirstGate::Main** 00dc8030: the graveyard gate's mini-map marker and the keeper/demon-door waits. Shape: the keeper test is a `&&` loop condition, so its two temporaries carry VC's destruction flags (the frame word is zeroed in the prologue). The second wait is `while (!used)`, which emits `neg/sbb/inc`.
+- **CSpeakingMarker::Main** 00dc8890: the secret-passage voice warning once the hero is within 8 units. Shape: one default-constructed CScriptThing local lives for the whole body, and the warning number selects through an if/else-if chain.
+- **CShowTargetedThingHealthScript::ShowTargetedThingsHealth** 00eff930: shows the targeted thing's health bar. Shape: the GOTCHAS b18 mixed-dtor recipe:
+  - `__forceinline` ~CScriptThing;
+  - `#pragma inline_depth(0)` around the two late returns;
+  - a `for(;;)` loop with an IsActiveThreadTerminating early return;
+  - the counted-pointer assignment reads Info then Data.
+- **CShaderBankEntry::CShaderBankEntry** 00a62120: reads a shader bank entry. Shape:
+  - counts are read through a by-value inline reader;
+  - STLport `vector(n)`;
+  - the allocator proxy has its own ctor;
+  - `GetData()` is `size() > 0 ? _M_start : this`;
+  - push_back is inline with a `__false_type()` temporary.
+- **CShaderRenderManager::UpdateWorldSpaceLighting** 00a540 → 0098a540 (plain MATCH): uploads the dirty lights in runs, then the attenuation table. Shape:
+  - the enabled copy reads Size into a local (count-down loop);
+  - the (0,0,0,1) fill temporary is built inside the loop;
+  - the register and count are locals before the inline SetVSConstants.
+- **CSlider::AdjustValueToProfile / ChangeState** 0054a6f0, 0054a990: the profile value read, and the front-end observer register/unregister on state change. Shape: ordinary bodies through the landed CComponent headers.
+- **CSoundMap**: nothing matched (parked).
+- **CSpecialAbilitiesBulletTimeDef::operator=** 0045fac1: this is the compiler-generated memberwise copy, with element-typed fld/fstp array loops, `movsd`×3 C3DVector copies and the out-of-line screen-filter operator=. Shape: let VC generate it (no user operator=) and force its emission from a never-landed helper.
+- **CSpecialAbilities{BulletTime,PhysicalShield,Berserk}Def::Transfer** 00464db5, 00465390, 0046a2fc: persist the ability defs. Shape:
+  - fixed arrays and vectors go element by element (/Os never unrolls);
+  - the call order is the def's TRANSFER list order, not declaration order (camera arrays first, moved fields as noted in each header).
+- **CSpeechFrame::ReadFromFile** 00a49240: reads one lip-sync frame. Shape:
+  - every value goes through a `__forceinline ReadX()` that returns a local, and all of them share the dead stream-argument slot;
+  - CComplexNumber has an empty default ctor.
+- **CSpellContainerList::ScrollUp / ScrollDown** 00544520, 00544810: rotate the spell containers. Shape:
+  - the last element is written `v[v.size() - 1]` in place (an inline back() changes the _M_start CSE);
+  - the clamp is `x < 0 ? 0 : x`.
+- **CSplineRandomOffsetData::DatabaseSerialise / ReadBinary** 00b21e90, 00b22100: persist and read the random-offset arrays. Shape:
+  - names are `CCharString(prefix) + GFIntToCharString(i)` through a forceinline SaveValue wrapper;
+  - elements go through `*(begin() + i)`;
+  - the guarded do-while loop holds the zero defaults;
+  - ReadBinary inlines ReadBool/ReadULong and the STLport `clear()`.
+- **CSprite::GetDataFromDef** 0041ac20 (advisor-assisted, 16 grades): copies the def fields, reads the first graphic's frame size and starts streaming its first frame. Shape:
+  - an inline `GetFirstGraphicIndex()` makes the second def temporary die before the store;
+  - a forceinline bank `GetGraphicFrames(i)` written `GetGraphicInfo(i) ? GetGraphicInfo(i)->Frames : 0` over an STLport-shaped GraphicList (size()/operator[]);
+  - inside the inlined CGraphicInfoFrame::GetFrame (with mip 0 folded), the bank CurrentFrame is read in place rather than through the landed named `frame` local. That one temp's colour rotated 13 register pairs.
+- **NUISystem::CScrollingViewport::Initialise** 0053f810 (manifest says CSprite::Initialize): creates the scroll bar and outside scroll bar children and links them. Shape:
+  - forceinline STLport push_back;
+  - `__false_type` with a user ctor;
+  - the CCountedPointer dtor clears both words;
+  - `Children[Children.size()-1]`;
+  - the dummy name is an implicit const char* → CCharString conversion, so its temporary is built before `false` is pushed.
+- **CSteeringGroup ctor** 00c094a0 (manifest says CSteeringGroup::Initialize): builds a steering group from a saved record. Shape: needs `/EHsc` (`// Flags:`).
+- **NCameraModes::CStringAndCageBase::OnInit** 00872630 (17 forms, after the advisor sweep): starts the string-and-cage camera. Shape:
+  - the physics pointer and the `C3DVector(0,0,h)` up vector are named BEFORE the one-expression `pos - facing*(cage+string)*0.5f + up`;
+  - the distance is computed inline;
+  - the focal's thing is a named pointer at function scope;
+  - fps is read into a local before the virtual call.
+
+## Parked for Fable 5.1 (16)
+- 0047042a CSoundMap::TransferBinaryIn DIFFER(716v716): retail `lea ecx,[eax+ecx+4]`, ours `lea ecx,[ecx+eax+4]` (SIB operand order of the CDefString address) | tried: ref local, begin(), Start[i], (Start+i)->, pointer wrapper, named key, signed index | next: lane gap: SIB base/index choice
+- 004900f5 CSubtitleRenderer::DrawTextPrimitives DIFFER(906v927): frame-slot order (visible vs width/y, line vs visibleLine), centring x87 (`fld st0; fld st1; fsubr [screenH]`), inline `==L""` materialised as bool | tried: temp C2DBoxF argument (fixed the frame), inline/forceinline GetTextVWindow, block-scoped width, ?: equality, double height helper | next: declare the per-line locals in retail slot order; a CWideString::IsEmpty-style inline for the empty test
+- 00645ce9 NPlayerGui::CStatBar::DrawStatBox DIFFER(581v581): retail `fld [boxWidth]` before `add esi,2D8h`, ours after | tried: sum orders, named textBase, reversed operator+ operands, 0.5f*w, w/2, advisor's named base vector + offset | next: lane gap: x87/int scheduling
+- 00646762 NPlayerGui::CStatBar::DrawStatBarOnLeft DIFFER(711v740): retail rounds the bar end with an inline-asm fistp block (0.5/1.0 frame constants, +1 correction), which also forces the ebp frame | tried: one brief C++ form (floor rounding) | next: lane gap: inline asm in retail
+- 00761c00 CShape::OnSerialise DIFFER(810v821): retail hoists the three 0.0f Transfer defaults into the loop preheader and builds the "]" temporary after the name+".pos["+IntToString(i) part | tried: explicit 0.0f, declared default argument, inline 2-arg Transfer overloads, one shared value variable | next: a forceinline SaveValue wrapper (the 00b21e90 idiom) with the defaults as wrapper locals
+- 00988e80 CShaderRenderManager::UpdateLocalisedSphereMapping DIFFER(839v917): retail's SSE matrix product is a hand-written inline-asm block (operands through frame slots, fixed xmm0..7); the intrinsic form compiles differently | tried: one intrinsic + x87 form | next: lane gap: inline asm in retail
+- 00989230 CShaderRenderManager::UpdateObjectSpaceTextureTransform DIFFER(535v636): the same inline-asm SSE matrix block per texture stage | tried: one intrinsic + x87 form | next: lane gap: inline asm in retail
+- 009a1140 CStreamingFontBank::GlyphLookup DIFFER(871v918): retail keeps ch in its parameter slot, keeps this in ebx spilled to the frame, and tests BigChar via `shr 1Fh`/`js` (47 bytes larger) | tried: flat vs nested slot search, common return, `oldest <= age` | next: unsigned short temporaries for ch and the 0x25a1 fallback as a reassigned parameter
+- 009a2000 CStreamingFontBank::Preload DIFFER(1004v982): the mip-propagation loops colour x/y and scale/row the other way round (retail: x in ebp, scale in ebx, row in a frame slot; ours scale in a slot, so the frame is +4), and the fresh-entry glyphIndex/loading merge loads lookup indices after the entry | tried: GetCache(bool), BigChar pointer ternary, the drain bitfield through a reference (gives retail's load/and/store), for-loop, RAII scope, unsigned short index + inline GetCacheMemoryOffset (top half registers then match), no fresh ref, scoped mip blocks + `MemOffset * 0x400` (keeps the mask), inline ClearOtherMipLevels, y-first / scale-first declaration orders | next: a named row local in the inner loop; declaration order in the second block only
+- 00a58790 CSphere::GetFirstIntersectionWithFiniteLine DIFFER(699v707): retail homes |dir|^2 in a compiler temp (`fst [esp+2Ch]; fxch; fcompp`) and copies it with integer moves | tried: the advisor form (Dot by const ref, `!(len > eps*eps)`), array/struct home, forceinline solver taking a by value | next: lane gap: x87 temp homing
+- 00aabf60 CSoundEmitterLH::vfunc_3 DIFFER(625v620): retail is LTCG; the pure FindFirstSetBit 0x00A3F860 call is hoisted out of the second mask loop with a register convention | tried: inline/out-of-line helper, loop forms | next: lane gap: LTCG
+- 00b206b0 CSplineRandomOffsetData::OffsetSplinePositions DIFFER(799v773): x87 order (limit z,y,x loads; (m*m)/l2 vs ours (m/l2)*m) and the ly2/lz2 slot swap | tried: accumulate, Square helper, div-first, change+=offset, inline squares, by-value length | next: name m*m before the divide
+- 00b20d30 CSplinePosParamData::GetClosestParameterisedControlPoints DIFFER(563v578): retail's two search loops are neither rotated nor strength-reduced, and the transform sums z,y,x | tried: for(;;)+return, while&&, goto, pragma s, pragma g off | next: lane gap: loop rotation (likely a different optimisation pragma in that TU)
+- 00b211b0 CSplineRandomOffsetData::InterpolateTo DIFFER(633v634): ebx/ebp colouring swap (other vs &ThisSpline.ControlPoints/t) | tried: compare order, named count, const& view of other, forceinline getter | next: lane gap: register colouring
+- 00b21a50 CSplinePosParamData::DatabaseSerialise DIFFER(565v565): retail `mov edx,[ecx+4]; mov [esp+20h],eax; sub edx,[ecx]`, ours stores the CRC first and then loads start/finish | tried: int size, accessor, plain struct, same-TU Calc | next: lane gap: load scheduling
+- 00b4ced0 CShadowClipVolume::ClipBoundingBox DIFFER(787v831): retail's box-to-sphere squared distance is an inline-asm SSE block (movss/movhps, maxps/minps, shufps) | tried: one intrinsic + x87 form | next: lane gap: inline asm in retail
+
+## Skipped
+- 00a3e520 CSoundManagerLH::vfunc_18: the row holds two functions (a 24-byte body, int3 padding, then the next function).
+- 00a3e830 CSoundManagerLH::vfunc_35: the row holds two functions (a 24-byte body, int3 padding, then the next function).
+- 00ed14e0 CSingingStone::Init: the row holds two functions (int3 padding at +0x291, then the next body).
+
+## Label corrections
+- 0x0053F810 is NUISystem::CScrollingViewport::Initialise (RTTI vtable 0x012468D4 slot 43), not CSprite::Initialize.
+- 0x0049D870 is GetWorldFrame, not GFGetPreMainMemoryUsed.
+- 0x00464931 is CArray::resize.
+- 0x00995D30 is ReadNullTerminatedString.
+- 0x00410620 is Transfer<float>; 0x004109A0 is Transfer<CCharString>.
+- 0x0099AED0 is the CWideString default ctor; 0x0099A2E0 is the base dtor used by ~CWStringParser.
+- 0x00437210 is CFontBank::GetVStringExtents.
+- 0x00404280 is the CWideStringData == wchar_t* helper (inline `==L""` uses wcscmp when null, else this); 0x0099B150 is the out-of-line operator!=.
+- 0x00A0B560 is a viewport setter on g_pDisplayCaps 0x013B8384, not its manifest label.
+- 0x00C094A0 is the CSteeringGroup ctor (not Initialize); the steering-lib labels around it are wrong.
+- The sound-lib functions 0xC0A790, 0xC0A860, 0xC0A8A0, 0xC0A8C0, 0xC0A880, 0xAAB850, 0xAAC820, 0xAACCC0 and 0xC08750 are not engine code.
+- 0x004978A0 is GFFloatRandom.
+- 0x00B059F0 is CParticleUpdateParameters::GetValue.
+- 0x009A0F90 / 0x009A1020 are the anonymous-namespace UpdateUseStreamingFontCacheEntry / InsertNewStreamingFontCacheEntry (__fastcall).
+- 0x00A5F010 is CStreamingFontDataBank::StreamGlyph.
+- 0x009A4440 / 0x009A4400 are the CCountedPointer<CBankFileAsyncData> operator= / dtor (labelled as a CLipSyncDataBankEntry helper).

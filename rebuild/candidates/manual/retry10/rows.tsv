@@ -2439,3 +2439,19 @@ address	module	name	length	chunk	reason
 00aa3c50	CRightHandedSet	Interpolate	671	hand297	DIFFER(562v671) -- lane gap: inline fistp table rounding
 00f3a890	CRangeCompressor	CalcBestCompressionForBlock	864	hand297	DIFFER(844v857) -- Flags kept in ebp across operator=, ebx=0, this spilled
 00f3abf0	CRangeCompressor	CalcCompressionScript	608	hand297	DIFFER(605v605) -- register swap only
+00988e80	CShaderRenderManager	UpdateLocalisedSphereMapping	917	hand298	DIFFER(839v917) -- lane gap: inline-asm SSE matrix block in retail
+00989230	CShaderRenderManager	UpdateObjectSpaceTextureTransform	640	hand298	DIFFER(535v636) -- lane gap: inline-asm SSE matrix block in retail
+00b4ced0	CShadowClipVolume	ClipBoundingBox	832	hand298	DIFFER(787v831) -- lane gap: inline-asm SSE box distance in retail
+00761c00	CShape	OnSerialise	832	hand298	DIFFER(810v821) -- Transfer defaults hoisted to preheader; "]" temp order
+00aabf60	CSoundEmitterLH	CSoundEmitterLH::vfunc_3	624	hand298	DIFFER(625v620) -- LTCG: pure FindFirstSetBit call hoisted with register args
+0047042a	CSoundMap	TransferBinaryIn	716	hand298	DIFFER(716v716) -- one lea SIB operand order
+00a58790	CSphere	GetFirstIntersectionWithFiniteLine	720	hand298	DIFFER(699v707) -- |dir|^2 temp homing (x87)
+00b20d30	CSplinePosParamData	GetClosestParameterisedControlPoints	578	hand298	DIFFER(563v578) -- unrotated search loops + transform order
+00b21a50	CSplinePosParamData	DatabaseSerialise	576	hand298	DIFFER(565v565) -- size() load order
+00b206b0	CSplineRandomOffsetData	OffsetSplinePositions	784	hand298	DIFFER(799v773) -- x87 order + slot swap
+00b211b0	CSplineRandomOffsetData	InterpolateTo	634	hand298	DIFFER(633v634) -- ebx/ebp colouring swap
+00645ce9	CStatBar	DrawStatBox	581	hand298	DIFFER(581v581) -- one fld/add scheduling swap
+00646762	CStatBar	DrawStatBarOnLeft	740	hand298	DIFFER(711v740) -- lane gap: inline-asm fistp rounding in retail
+009a1140	CStreamingFontBank	GlyphLookup	928	hand298	DIFFER(871v918) -- register allocation; ch kept in memory
+009a2000	CStreamingFontBank	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	992	hand298	DIFFER(1004v982) -- mip-loop colouring; frame +4
+004900f5	CSubtitleRenderer	DrawTextPrimitives	927	hand298	DIFFER(906v927) -- slot order, centring x87, ==L"" bool
