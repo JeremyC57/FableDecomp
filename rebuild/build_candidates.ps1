@@ -271434,6 +271434,20 @@ $catalog = @(
         TestSource = '00/7e/CTCFineDialogue_Show_007e27f0_test.cpp'
         PassPattern = '007e27f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006d7960'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetFullHeroTitle_006d7960.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetFullHeroTitle_006d7960_test.cpp'
+        PassPattern = '006d7960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ca120'
+        Module = 'CTCHero'
+        Source = '00/6c/CTCHero_OnSerialise_006ca120.cpp'
+        TestSource = '00/6c/CTCHero_OnSerialise_006ca120_test.cpp'
+        PassPattern = '006ca120_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

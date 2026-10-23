@@ -25670,3 +25670,16 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_NK@Z	00492e4b	007e27f0
 ?UpdateMirroredCrimeData@CTCVillage@@QAEXXZ	0065c5bb	007e27f0
 ?g_GameText@@3PAUCGameTextManager@@A	013b86a0	007e27f0
+?GetDefinitions@CTCBase@@QBEPAVCDefinitionManager@@XZ	006869d0	006d7960
+?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AV?$CCountedPointer@VCDefClassBase@@@@J@Z	009ad9e0	006d7960
+?GetPTextEntry@CDataBank@@QAE?AV?$CCountedPointer@VCTextEntry@@@@J_N@Z	009c9070	006d7960
+?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTitleDef@@@@@Z	005b1e5a	006d7960
+?GetTitleGuiText@CTCHero@@QBE?AVCWideString@@XZ	006ca0a0	006d7960
+?GetTotalStatLevel@CTCHeroExperience@@QBEJJ@Z	006d6660	006d7960
+?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z	009ad410	006ca120
+?GetDefinitions@CTCBase@@QBEPBVCDefinitionManager@@XZ	006869d0	006ca120
+?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefinition@@@@J@Z	009ad9e0	006ca120
+?GetThingManager@CTCBase@@QBEPAVCThingManager@@XZ	00686ae0	006ca120
+?IsLevelLess@CThing@@QBE_NXZ	004c7930	006ca120
+?Transfer@CPersistContext@@QAEXPBDAAVCCharString@@ABV2@@Z	004109a0	006ca120
+?g_DefStringTable@@3VCDefStringTable@@A	013ca828	006ca120
