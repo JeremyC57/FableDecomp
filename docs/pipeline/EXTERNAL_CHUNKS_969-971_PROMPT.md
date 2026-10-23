@@ -23,8 +23,8 @@ Run **five agents at once** and keep all five working for the whole round.
 | **Chunk 969** | the 40 rows of chunk 969 |
 | **Chunk 970** | the 40 rows of chunk 970 |
 | **Chunk 971** | the 40 rows of chunk 971 |
-| **Retry A** | the first 29 of the 57 `retry_addresses` (your own 966–968 parks, sorted by address) |
-| **Retry B** | the last 28 of the 57 `retry_addresses` |
+| **Retry A** | the first 27 of the 54 `retry_addresses` (your own 966–968 parks, sorted by address) |
+| **Retry B** | the last 27 of the 54 `retry_addresses` |
 
 Rules for the agents:
 - **Keep every agent active.** When an agent finishes, stalls, crashes, or runs out of context, start a replacement
@@ -45,14 +45,14 @@ Rules for the agents:
 - **Stop condition:** stop only when every in-scope row is landed, parked at its grade cap, or BLOCKED with evidence.
   Then package the handoff.
 
-## 1. Scope: these 120 rows plus your 57 retries, and nothing else
+## 1. Scope: these 120 rows plus your 54 retries, and nothing else
 
 - The rows are in `docs/pipeline/external_chunks_969-971.tsv` (columns `chunk address_va file_offset file_offset_end
   length namespace name`). Bytes are `Fable.exe[file_offset:file_offset_end]`. Exe SHA-1 is
   `39fd416ba23a91a89713ec80c789f57ddb22e2c8`.
 - Your `AUTHORIZED_SCOPE.json` is `docs/pipeline/external_969-971_AUTHORIZED_SCOPE.json`:
   - `allowed_addresses`: the 120 new rows (chunks 969, 970 and 971);
-  - `retry_addresses`: your 57 parked rows from 966–968 (006a23e0 is left out: we matched it in-house).
+  - `retry_addresses`: 54 of your parked rows from 966–968. We matched 006a23e0, 006d41f0, 006ac910 and 005dcf70 in-house, so they are left out.
 - Do **not** work on 960–965 rows, or on your 8 blocked 966–968 rows (00924520 and the others).
 
 | Chunk | Rows | Content |
@@ -257,7 +257,7 @@ Keep scalar `operator delete(p)` where retail calls the scalar thunk at `0x00BFE
   target.
 
 ## 6. What to send back
-The same layout as last round. It covers the 120 new rows AND the 57 retries; mark each retry row `retry` in
+The same layout as last round. It covers the 120 new rows AND the 54 retries; mark each retry row `retry` in
 `ROWS.tsv`:
 - `SELECTED/{landed,parked,blocked}/<addr>/{<addr>.cpp,<addr>_test.cpp,ROW.json}`;
 - `ROWS.tsv`;
