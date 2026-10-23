@@ -23,7 +23,7 @@ struct CRGBColour {
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 struct CCPPointerInfo { long References; };
-struct CScriptThing;
+namespace N_006e7b40 { struct CScriptThing; } using N_006e7b40::CScriptThing;
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     CScriptThing*   Data;
     CCPPointerInfo* Info;
@@ -38,7 +38,7 @@ struct CCPPointerImp {                                 // CCountedPointer<CScrip
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+namespace N_006e7b40 { struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
     VPAD16(ta) VPAD4(tb) VPAD1(tc)                     // slots 0..20
     virtual bool MsgIsHitBy(const CCharString& name) const   // slot 21 (+0x54), 0x004AAB30
     {
@@ -58,7 +58,7 @@ struct CScriptThing {                                  // 12 bytes, vtable 0x012
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     __forceinline CScriptThing(CScriptThing& other) : PImp(other.PImp) { }   // the inline copy of a non-const thing
     ~CScriptThing();                                   // 0x004AA840
-};
+}; } using N_006e7b40::CScriptThing;
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 struct CScriptThingView {
     void* vptr; void* Data; void* Info;

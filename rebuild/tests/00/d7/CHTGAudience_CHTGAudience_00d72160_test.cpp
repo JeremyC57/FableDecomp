@@ -3,7 +3,7 @@
 #include <cstdio>
 
 static int g_baseCtors = 0, g_copies = 0;
-struct CBase { CBase() { ++g_baseCtors; } virtual ~CBase() {} };
+namespace N_0099a2d0 { struct CBase { CBase() { ++g_baseCtors; } virtual ~CBase() {} }; } using N_0099a2d0::CBase;
 struct SCountBlock { long refs; };
 struct CCountedPointer {
     void* m_pObject; SCountBlock* m_pCount;

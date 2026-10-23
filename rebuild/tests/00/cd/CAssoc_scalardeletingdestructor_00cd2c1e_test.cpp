@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_AutoTinyScalarDestructorCalls = 0;
 static int g_AutoTinyScalarDeleteCalls = 0;
-void __fastcall AutoTinyScalarDestructor(void*)
+void __fastcall AutoTinyScalarDestructor_00cd27b4(void*)
 {
     ++g_AutoTinyScalarDestructorCalls;
 }
@@ -11,7 +11,7 @@ void __cdecl AutoTinyScalarDelete(void*)
 }
 void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor(self);
+    AutoTinyScalarDestructor_00cd27b4(self);
     if (flags & 1)
         AutoTinyScalarDelete(self);
     return self;

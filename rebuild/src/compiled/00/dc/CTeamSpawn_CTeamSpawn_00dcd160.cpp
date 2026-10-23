@@ -10,10 +10,10 @@
 // Shape: the CPermanentBarrier shape (root interface pointer before the dead root vtable, the thing copy after the base
 // vtable, ParentClass in the init list before the derived vtable store, PMasterData a body assignment stored last); the
 // default-constructed OtherSpawnPoint is CBase() + its vtable + the PImp member's inline zeroing (after the vtable store).
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CCountedPointer_Imp {                       // CCountedPointer<CScriptThing>: object + count block
     void* m_pObject;                               // +0x00

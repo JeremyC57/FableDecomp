@@ -22,10 +22,10 @@ struct CCPPointerInfo {
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThing : CBase {
     virtual void s001() const {} virtual void s002() const {}
     virtual CCharString GetDataString() const;                          // slot 3 (+0xc)

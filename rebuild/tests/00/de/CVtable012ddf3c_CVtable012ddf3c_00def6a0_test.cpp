@@ -5,10 +5,10 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0, g_copyCtor = 0;
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase() { ++g_baseCtor; }
     virtual void v00() {}
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThingRef {
     void* m_pObject;
     void* m_pCount;

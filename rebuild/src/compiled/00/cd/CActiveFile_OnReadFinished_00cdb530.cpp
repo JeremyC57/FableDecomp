@@ -7,13 +7,13 @@ void __cdecl FreeThing(void* p);   // 0xbfea14
 struct CActiveFile
 {
     void* field0;      // +0x00
-    void Helper();     // 0xcd4df0 (thiscall)
+    void Helper_00cd4df0();     // 0xcd4df0 (thiscall)
     void OnReadFinished();
 };
 
 void CActiveFile::OnReadFinished()
 {
-    this->Helper();
+    this->Helper_00cd4df0();
     void* p = this->field0;
     if (p)
         FreeThing(p);

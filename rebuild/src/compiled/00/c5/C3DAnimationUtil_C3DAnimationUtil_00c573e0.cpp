@@ -8,10 +8,10 @@
 // constructor @ 0x00C57780 runs, then the compiler stores this class's vtable (0x012B8E20
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct CNavigationLayer {
+namespace N_00c57780 { struct CNavigationLayer {
     virtual void v00();
     CNavigationLayer();                           // 0x00C57780
-};
+}; } using N_00c57780::CNavigationLayer;
 
 struct C3DAnimationUtil : CNavigationLayer {
     virtual void v00();                    // this class has its own vtable

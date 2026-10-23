@@ -23,7 +23,7 @@ struct CNotificationManager {
 
 extern CNotificationManager* g_pNotificationManager;       // 0x0143BB5C
 
-void __cdecl FreeBuffer(void* buffer);                     // 0x00C3C370
+void __cdecl FreeBuffer_00c3c370(void* buffer);                     // 0x00C3C370
 
 struct CVtable_012B4F74 {
     virtual void v00();                                    // slot 0: deleting destructor 0x00C33170
@@ -42,7 +42,7 @@ void CVtable_012B4F74::Close()
         if (IsRegisteredA() && IsRegisteredB())
             g_pNotificationManager->Unregister(this);
         if ((m_state & 2) && m_pBuffer)
-            FreeBuffer(m_pBuffer);
+            FreeBuffer_00c3c370(m_pBuffer);
         m_state = 0;
     }
 }

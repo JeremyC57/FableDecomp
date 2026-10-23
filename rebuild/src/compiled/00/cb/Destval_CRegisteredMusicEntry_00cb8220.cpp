@@ -1,3 +1,3 @@
-struct S; extern void __fastcall h1(S* self); extern void __fastcall h2(S* self);
+struct S; extern void __fastcall h1_00cb7c40(S* self); extern void __fastcall h2_00cb8170(S* self);
 struct S { int x; };
-void __fastcall Close(S* self){ h1(self); h2(self); }
+void __fastcall Close(S* self){ h1_00cb7c40(self); h2_00cb8170(self); }

@@ -8,10 +8,10 @@
 // constructor @ 0x00C572F0 runs, then the compiler stores this class's vtable (0x012B8D98
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct C3DGroup2 {
+namespace N_00c572f0 { struct C3DGroup2 {
     virtual void v00();
     C3DGroup2();                           // 0x00C572F0
-};
+}; } using N_00c572f0::C3DGroup2;
 
 struct C3DAnimationUtil : C3DGroup2 {
     virtual void v00();                    // this class has its own vtable

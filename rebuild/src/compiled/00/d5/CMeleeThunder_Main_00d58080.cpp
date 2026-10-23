@@ -55,11 +55,11 @@ struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+namespace N_0099a380 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+}; } using N_0099a380::CBaseIntelligentPointer;
 struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }

@@ -2,7 +2,7 @@
 #include <cstdio>
 struct CService {
     long a, b, c, h;
-    long Forward(long a_, long b_, long c_, long handle) { a = a_; b = b_; c = c_; h = handle; return a_ + b_ + c_ + handle; }
+    long Forward_00c51f00(long a_, long b_, long c_, long handle) { a = a_; b = b_; c = c_; h = handle; return a_ + b_ + c_ + handle; }
 };
 static CService g_service;
 static CService* g_pService = &g_service;
@@ -12,7 +12,7 @@ struct CThing {
     long AddToRenderList(long context, long a, long b, long c)
     {
         if (IsValid())
-            return g_pService->Forward(a, b, c, m_handle);
+            return g_pService->Forward_00c51f00(a, b, c, m_handle);
         return -9;
     }
 };

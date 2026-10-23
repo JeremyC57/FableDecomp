@@ -15,14 +15,14 @@ static CCharString operator+(const CCharString& a, const CCharString& b) { CChar
 struct CRGBColour { unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) {} };
 // a thing: Id, and how many IsAlive checks it survives
 static int g_alive[8];
-struct CScriptThing {
+namespace N_006e7b40 { struct CScriptThing {
     int Id;
     CScriptThing() : Id(0) {}
     explicit CScriptThing(int id) : Id(id) {}
     virtual ~CScriptThing() {}
     virtual bool IsAlive() const { L("alive?"); if (g_alive[Id] > 0) { --g_alive[Id]; return true; } return false; }
     bool MsgIsHitBy(const char* by) const { std::string b(by); return (g_frames == 2 && Id == 2 && b == "") || (g_frames == 3 && Id == 3 && b == "CorneredGuard"); }
-};
+}; } using N_006e7b40::CScriptThing;
 struct CScriptThingView {
     void* vptr; void* Data; void* Info;
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }

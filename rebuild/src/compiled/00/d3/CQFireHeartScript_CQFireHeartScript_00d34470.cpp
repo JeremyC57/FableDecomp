@@ -24,10 +24,10 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
     void* m_pData;                                   // +0x44
     CScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pData(data) { }
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                         // 0x0099A2D0
     virtual ~CBase();                                // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThing;
 struct CCPPointerInfo;
 struct CCountedPointer_CScriptThing {                // CScriptThing::PImp

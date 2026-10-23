@@ -6,11 +6,11 @@
 // around the `lea ecx,[esi+10h]` of the member constructor, which runs last (declaration order); the word at +0
 // is left alone (a trivially constructed member).
 // Leaf: ??0CPointerHolder_00c48d90
-class CBaseIntelligentPointer {
+namespace N_00c167b0 { class CBaseIntelligentPointer {
 public:
     CBaseIntelligentPointer();               // 0x00C167B0
     void* m_pObject;
-};
+}; } using N_00c167b0::CBaseIntelligentPointer;
 
 class CPointerHolder_00c48d90 {
 public:

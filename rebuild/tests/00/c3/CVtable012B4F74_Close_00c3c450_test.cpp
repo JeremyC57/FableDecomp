@@ -15,7 +15,7 @@ struct CNotificationManager {
 static CNotificationManager g_manager;
 CNotificationManager* g_pNotificationManager = &g_manager;
 
-void FreeBuffer(void* buffer) { ++g_freeCount; g_lastFreed = buffer; }
+void FreeBuffer_00c3c370(void* buffer) { ++g_freeCount; g_lastFreed = buffer; }
 
 struct CVtable_012B4F74 {
     virtual void v00() { }
@@ -34,7 +34,7 @@ void CVtable_012B4F74::Close()
         if (IsRegisteredA() && IsRegisteredB())
             g_pNotificationManager->Unregister(this);
         if ((m_state & 2) && m_pBuffer)
-            FreeBuffer(m_pBuffer);
+            FreeBuffer_00c3c370(m_pBuffer);
         m_state = 0;
     }
 }

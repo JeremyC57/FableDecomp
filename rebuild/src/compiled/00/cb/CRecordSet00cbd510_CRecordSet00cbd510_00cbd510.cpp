@@ -18,9 +18,9 @@ struct CCharString {
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };
-struct CBase {
+namespace N_0099a300 { struct CBase {
     virtual ~CBase();                       // 0x0099A300
-};
+}; } using N_0099a300::CBase;
 template <class T> struct allocator { allocator() {} };
 template <class T> inline void _Destroy(T* first, T* last)
 {

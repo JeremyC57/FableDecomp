@@ -10,10 +10,10 @@
 //          inline counted operator= reads the source words first, so with a null source it folds to "release the old
 //          block and zero both words, only when the old block is non-null"; the temporary's inline destructor
 //          re-stores its vtable, releases its (null) block, zeroes the words and calls the base destructor.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                              // 0x0099A2E0
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct SScriptThingInfo {                          // the counted block behind CScriptThing::PImp_Info
     long m_references;                             // +0

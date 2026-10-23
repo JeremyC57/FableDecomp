@@ -19,13 +19,13 @@ struct CCharString {
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
+namespace N_006e7b40 { struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
     void* _vfptr;
     void* PImp_Data;
     void* PImp_Info;
     CScriptThing();                                     // 0x006E7B40
     ~CScriptThing();                                    // 0x004AA840
-};
+}; } using N_006e7b40::CScriptThing;
 struct CScriptGameResourceObjectScriptedThingBase {    // 0x10 bytes, vtable 0x0127094C
     unsigned char _body[0x10];
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0

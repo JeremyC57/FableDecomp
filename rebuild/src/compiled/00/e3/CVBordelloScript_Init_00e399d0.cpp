@@ -8,10 +8,10 @@
 // Shape: the stores follow the source order (HadSex first, WearingWhoreWig between ClientsAlive and the slots);
 // `BordelloVillage = CScriptThing();` is the landed CV_FisticuffsClubScript (0x00E82010) temporary + inline counted
 // operator= + inline destructor model.
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                              // 0x0099A2E0
     CBase();                                       // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct SScriptThingInfo {                          // the counted block behind CScriptThing::PImp_Info
     long m_references;                             // +0

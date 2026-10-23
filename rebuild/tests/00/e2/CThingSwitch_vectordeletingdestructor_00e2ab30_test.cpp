@@ -4,17 +4,17 @@ static int g_AutoTinySequenceCount = 0;
 static void* g_AutoTinyFirstMember = 0;
 static void* g_AutoTinySecondMember = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall AutoTinyFirstMemberDestructor(void* member)
+void __fastcall AutoTinyFirstMemberDestructor_00cdbfb0(void* member)
 {
     g_AutoTinyFirstMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
 }
-void __fastcall AutoTinySecondMemberDestructor(void* member)
+void __fastcall AutoTinySecondMemberDestructor_009ac310(void* member)
 {
     g_AutoTinySecondMember = member;
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
 }
-void __fastcall AutoTinyCompositeDestructor(void*)
+void __fastcall AutoTinyCompositeDestructor_00cbd510(void*)
 {
     g_AutoTinySequence[g_AutoTinySequenceCount++] = 3;
 }
@@ -24,9 +24,9 @@ void __cdecl AutoTinyCompositeDelete(void*)
 }
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 88);
-    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 76);
-    AutoTinyCompositeDestructor(self);
+    AutoTinyFirstMemberDestructor_00cdbfb0(static_cast<unsigned char*>(self) + 88);
+    AutoTinySecondMemberDestructor_009ac310(static_cast<unsigned char*>(self) + 76);
+    AutoTinyCompositeDestructor_00cbd510(self);
     if (flags & 1)
         AutoTinyCompositeDelete(self);
     return self;

@@ -5,14 +5,14 @@ struct CActiveFile;
 static int g_base_called = 0;
 static void* g_freed = (void*)0;
 
-extern "C" void __fastcall base_helper(CActiveFile* self);
+extern "C" void __fastcall base_helper_00cd2ddc(CActiveFile* self);
 extern "C" void __cdecl fable_free(void* p);
 
 struct CActiveFile {
     void* p0;
 };
 
-extern "C" void __fastcall base_helper(CActiveFile* self) { (void)self; g_base_called++; }
+extern "C" void __fastcall base_helper_00cd2ddc(CActiveFile* self) { (void)self; g_base_called++; }
 extern "C" void __cdecl fable_free(void* p) { g_freed = p; }
 
 void __fastcall CActiveFile__OnReadFinished(CActiveFile* self);

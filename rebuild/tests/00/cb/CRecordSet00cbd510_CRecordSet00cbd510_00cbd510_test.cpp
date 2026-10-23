@@ -1,7 +1,7 @@
 // behaviour test for 0x00CBD510 ~CRecordSet_00cbd510: records, the two maps, the list, then the base -- in reverse member order
 #include <cstdio>
 static int g_log[8]; static int g_n = 0;
-struct CBase { virtual ~CBase() { g_log[g_n++] = 9; } };
+namespace N_0099a300 { struct CBase { virtual ~CBase() { g_log[g_n++] = 9; } }; } using N_0099a300::CBase;
 struct M { int id; ~M() { g_log[g_n++] = id; } };
 struct CRecordSet : CBase {
     M m_list; M m_connections; M m_surfaces; int m_28; int m_2c; M m_records;

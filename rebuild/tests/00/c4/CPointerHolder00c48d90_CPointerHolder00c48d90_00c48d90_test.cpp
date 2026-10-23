@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for CPointerHolder_00c48d90::CPointerHolder_00c48d90 @ 0x00C48D90
 static int g_pointerCtors = 0;
-class CBaseIntelligentPointer {
+namespace N_00c167b0 { class CBaseIntelligentPointer {
 public:
     CBaseIntelligentPointer() : m_pObject(0) { ++g_pointerCtors; }
     void* m_pObject;
-};
+}; } using N_00c167b0::CBaseIntelligentPointer;
 class CPointerHolder_00c48d90 {
 public:
     CPointerHolder_00c48d90() : m_a(0), m_b(0), m_c(0) {}

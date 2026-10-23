@@ -5,14 +5,14 @@
 // is identified by its constructor and engine/CIndexBuffer.h (0x14 bytes: vptr, PD3DIndexBuffer,
 // ByteLength, PrimitiveType, PAllocatedBuffer). The vtable has no complete-object locator, so the
 // derived class is named by its vtable address; +0x2c holds 0x80000000 (an "unset" sentinel).
-struct CIndexBuffer {                      // engine/CIndexBuffer.h layout
+namespace N_00c4cf20 { struct CIndexBuffer {                      // engine/CIndexBuffer.h layout
     virtual void v00();
     void* PD3DIndexBuffer;                 // +4
     unsigned long ByteLength;              // +8
     long PrimitiveType;                    // +0xc
     void* PAllocatedBuffer;                // +0x10
     CIndexBuffer();                        // 0x00C4CF20
-};
+}; } using N_00c4cf20::CIndexBuffer;
 
 struct CVtable_012b5c10 : CIndexBuffer {
     unsigned char _pad_0x14[0x18];         // +0x14 (left as the base constructor leaves it)

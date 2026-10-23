@@ -15398,7 +15398,7 @@ __imp__ShutdownDisplay_00c57310@0	01440648	00c57310
 ??_7CActionParamBase_00c577b0@@6B@	012b5868	00c577b0
 ??_7CActionParamCountedPointer_00c577b0@@6B@	012b8ed4	00c577b0
 ??_7CVtable_012b8f64@@6B@	012b8f64	00c595a0
-?Forward@CService@@QAEJJJJJ@Z	00c51f00	00c597e0
+?Forward_00c51f00@CService@@QAEJJJJJ@Z	00c51f00	00c597e0
 ?g_pService@@3PAUCService@@A	0143bb70	00c597e0
 ??_7CVtable_012b5c10@@6B@	012b5c10	00c59ba0
 ?ApplyStageTransform@CMaterialState_00c59fc0@@QAEXPAUSStageDesc@@@Z	00c59c60	00c59fc0

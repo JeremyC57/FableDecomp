@@ -42,10 +42,10 @@ struct CThingManager_Calls {
 };
 extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                   // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct CCountedPointer_Retail {               // CCountedPointer<CScriptThing>: Data / Info, both null
     void* Data;

@@ -8,10 +8,10 @@
 // constructor @ 0x00C6D9D0 runs, then the compiler stores this class's vtable (0x012B8AB4
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct CResourceBank {
+namespace N_00c6d9d0 { struct CResourceBank {
     virtual void v00();
     CResourceBank();                           // 0x00C6D9D0
-};
+}; } using N_00c6d9d0::CResourceBank;
 
 struct C3DAnimationUtil : CResourceBank {
     virtual void v00();                    // this class has its own vtable

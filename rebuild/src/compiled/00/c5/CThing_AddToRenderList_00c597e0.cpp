@@ -7,7 +7,7 @@
 // Shape: `ret 10h` = four stack arguments, the first unused; the forwarded call takes (a, b, c, handle), pushed
 // right to left with the member loaded first. -9 (0xFFFFFFF7) is the failure code.
 struct CService {
-    long Forward(long a, long b, long c, long handle);   // 0x00C51F00
+    long Forward_00c51f00(long a, long b, long c, long handle);   // 0x00C51F00
 };
 
 extern CService* g_pService;                         // 0x0143BB70
@@ -23,6 +23,6 @@ struct CThing {
 long CThing::AddToRenderList(long context, long a, long b, long c)
 {
     if (IsValid())
-        return g_pService->Forward(a, b, c, m_handle);
+        return g_pService->Forward_00c51f00(a, b, c, m_handle);
     return -9;
 }

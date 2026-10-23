@@ -3,12 +3,12 @@ static int g_AutoTinyMemberDestructorCalls = 0;
 static int g_AutoTinyCompositeDestructorCalls = 0;
 static int g_AutoTinyCompositeDeleteCalls = 0;
 static void* g_AutoTinyObservedMember = 0;
-void __fastcall AutoTinyMemberDestructor(void* member)
+void __fastcall AutoTinyMemberDestructor_0099eae0(void* member)
 {
     ++g_AutoTinyMemberDestructorCalls;
     g_AutoTinyObservedMember = member;
 }
-void __fastcall AutoTinyCompositeDestructor(void*)
+void __fastcall AutoTinyCompositeDestructor_00f35b40(void*)
 {
     ++g_AutoTinyCompositeDestructorCalls;
 }
@@ -18,8 +18,8 @@ void __cdecl AutoTinyCompositeDelete(void*)
 }
 void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor(static_cast<unsigned char*>(self) + 32);
-    AutoTinyCompositeDestructor(self);
+    AutoTinyMemberDestructor_0099eae0(static_cast<unsigned char*>(self) + 32);
+    AutoTinyCompositeDestructor_00f35b40(self);
     if (flags & 1)
         AutoTinyCompositeDelete(self);
     return self;

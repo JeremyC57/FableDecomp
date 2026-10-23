@@ -6,7 +6,7 @@ struct CPersistTraits_CReactionFrequencyTraitsArray_
 };
 
 static void* g_seen = 0;
-void __stdcall PersistTraitsHelper(void* p) { g_seen = p; }
+void __stdcall PersistTraitsHelper_00cb13f0(void* p) { g_seen = p; }
 
 void __fastcall dtor_CPersistTraits_CReactionFrequencyTraitsArray_(
         CPersistTraits_CReactionFrequencyTraitsArray_* self);

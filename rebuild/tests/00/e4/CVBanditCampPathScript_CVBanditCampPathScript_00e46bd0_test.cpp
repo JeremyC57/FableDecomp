@@ -16,10 +16,10 @@ struct CScriptObject : CScriptBase {
     CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
 };
 
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase() { ++g_cbaseBuilt; }
     virtual ~CBase() { }
-};
+}; } using N_0099a2d0::CBase;
 
 struct CScriptThing;
 struct CCPPointerInfo;

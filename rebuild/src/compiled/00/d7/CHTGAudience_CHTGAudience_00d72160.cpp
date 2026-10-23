@@ -15,10 +15,10 @@
 // init list (before the derived vtable store), then the three CScriptThing members' inline default
 // constructors (CBase() out of line, the CScriptThing vtable, the PImp counted pointer zeroed from one ebx
 // zero register; CBase must own the vptr, else the members shift by 4), PMasterData a body assignment (stored last).
-struct CBase {                                  // polymorphic root (owns the vptr)
+namespace N_0099a2d0 { struct CBase {                                  // polymorphic root (owns the vptr)
     virtual void v00();
     CBase();                                    // 0x0099A2D0
-};
+}; } using N_0099a2d0::CBase;
 
 struct SCountBlock;
 

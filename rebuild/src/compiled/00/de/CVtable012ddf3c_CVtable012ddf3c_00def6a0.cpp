@@ -16,10 +16,10 @@
 // precedes the derived vtable (plain initialiser of the derived class); the three zero words follow it; the
 // default CScriptThing at +0x28 is an inline constructor over the out-of-line CBase; the argument is stored last
 // (a body assignment after the member constructors).
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                               // 0x0099A2D0
     virtual void v00();
-};
+}; } using N_0099a2d0::CBase;
 
 // The two words of a CScriptThing are zeroed AFTER its vtable store: they are a member object (a counted
 // reference: object + count block) with its own inline constructor.

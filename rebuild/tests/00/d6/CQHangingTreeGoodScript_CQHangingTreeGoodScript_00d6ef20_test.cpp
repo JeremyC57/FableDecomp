@@ -16,7 +16,7 @@ struct CScriptObject : CScriptBase {
     void* m_pOwner;
     CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
 };
-struct CBase { CBase() { ++g_thingRoots; } virtual ~CBase() {} };
+namespace N_0099a2d0 { struct CBase { CBase() { ++g_thingRoots; } virtual ~CBase() {} }; } using N_0099a2d0::CBase;
 struct CScriptThing;
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data; void* Info;

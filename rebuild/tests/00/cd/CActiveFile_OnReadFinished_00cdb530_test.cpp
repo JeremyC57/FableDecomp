@@ -3,7 +3,7 @@
 struct CActiveFile
 {
     void* field0;
-    void Helper();
+    void Helper_00cd4df0();
     void OnReadFinished();
 };
 
@@ -11,7 +11,7 @@ static int g_helperCalls = 0;
 static int g_freeCalls = 0;
 static void* g_freedPtr = 0;
 
-void CActiveFile::Helper()
+void CActiveFile::Helper_00cd4df0()
 {
     g_helperCalls++;
 }

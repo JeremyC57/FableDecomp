@@ -5,10 +5,10 @@
 // out of line), the out-of-line Shutdown runs on `this`, then the base destructor (state -1). `this`
 // is kept in the frame for the unwind funclet, which destroys the base. The class comes from the
 // manifest label; the base and the helper are descriptive. One of 4 bodies of this shape.
-struct CScriptDefinitionManagerBase {
+namespace N_00c3e2a0 { struct CScriptDefinitionManagerBase {
     virtual void v00();
     ~CScriptDefinitionManagerBase();                          // 0x00C3E2A0
-};
+}; } using N_00c3e2a0::CScriptDefinitionManagerBase;
 
 struct CScriptDefinitionManager : CScriptDefinitionManagerBase {                 // vtable 0x012B5BC0
     void Shutdown();                       // 0x00C3E580

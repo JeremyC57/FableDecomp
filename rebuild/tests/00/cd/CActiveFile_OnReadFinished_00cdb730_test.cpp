@@ -3,7 +3,7 @@
 static int g_helper = 0;
 static void* g_freed = (void*)0;
 
-void __fastcall CActiveFile_Helper(void* self) { g_helper++; (void)self; }
+void __fastcall CActiveFile_Helper_00cd4df0(void* self) { g_helper++; (void)self; }
 void CActiveFile_Free(void* p) { g_freed = p; }
 
 struct CActiveFile
@@ -14,7 +14,7 @@ struct CActiveFile
 
 void CActiveFile::OnReadFinished()
 {
-    CActiveFile_Helper(this);
+    CActiveFile_Helper_00cd4df0(this);
     void* p = this->m_buffer;
     if (p)
         CActiveFile_Free(p);

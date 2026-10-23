@@ -7,7 +7,7 @@
 struct CReactionFrequencyTraitsArray;
 
 // External helper at 0xcb13f0: one pointer arg, callee-cleans the stack.
-void __stdcall PersistTraitsHelper(void* p);
+void __stdcall PersistTraitsHelper_00cb13f0(void* p);
 
 struct CPersistTraits_CReactionFrequencyTraitsArray_
 {
@@ -17,5 +17,5 @@ struct CPersistTraits_CReactionFrequencyTraitsArray_
 void __fastcall dtor_CPersistTraits_CReactionFrequencyTraitsArray_(
         CPersistTraits_CReactionFrequencyTraitsArray_* self)
 {
-    PersistTraitsHelper(self->field0);
+    PersistTraitsHelper_00cb13f0(self->field0);
 }

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[16] = "";
-struct CBase { virtual ~CBase() { } CBase() { std::strcat(g_seq, "b"); } };
+namespace N_0099a2d0 { struct CBase { virtual ~CBase() { } CBase() { std::strcat(g_seq, "b"); } }; } using N_0099a2d0::CBase;
 struct CCountedPointer_Imp { void* m_pObject; void* m_pCount; CCountedPointer_Imp() : m_pObject(0), m_pCount(0) { } };
 struct CScriptThing : CBase {
     CCountedPointer_Imp PImp;

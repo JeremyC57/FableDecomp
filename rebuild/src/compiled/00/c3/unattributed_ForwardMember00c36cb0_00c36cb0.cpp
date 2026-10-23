@@ -8,7 +8,7 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CTarget {
-    void Receive(long value);              // 0x00C36430
+    void Receive_00c36430(long value);              // 0x00C36430
 };
 
 struct CClass_00c36cb0 {
@@ -19,5 +19,5 @@ struct CClass_00c36cb0 {
 
 void CClass_00c36cb0::ForwardMember_00c36cb0(CTarget* target)
 {
-    target->Receive(m_value);
+    target->Receive_00c36430(m_value);
 }

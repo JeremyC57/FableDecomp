@@ -83,10 +83,10 @@ struct CScriptThingImpl {
     virtual void v072(); virtual void v073(); virtual void v074(); virtual void v075(); virtual void v076(); virtual void v077();
     virtual bool IsSameThing(const CScriptThingImpl* other) const;   // slot 78 (+0x138)
 };
-struct CBase {
+namespace N_0099a2d0 { struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
-};
+}; } using N_0099a2d0::CBase;
 struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
      virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();

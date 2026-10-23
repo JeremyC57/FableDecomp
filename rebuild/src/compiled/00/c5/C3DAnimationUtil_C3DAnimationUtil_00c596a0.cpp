@@ -8,10 +8,10 @@
 // constructor @ 0x00C4CF20 runs, then the compiler stores this class's vtable (0x012B8F78
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct CIndexBuffer {
+namespace N_00c4cf20 { struct CIndexBuffer {
     virtual void v00();
     CIndexBuffer();                           // 0x00C4CF20
-};
+}; } using N_00c4cf20::CIndexBuffer;
 
 struct C3DAnimationUtil : CIndexBuffer {
     virtual void v00();                    // this class has its own vtable

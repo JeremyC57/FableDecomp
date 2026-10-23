@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CIndexBuffer { virtual void v00() { } void* PD3DIndexBuffer; unsigned long ByteLength; long PrimitiveType; void* PAllocatedBuffer; CIndexBuffer() : PD3DIndexBuffer(0), ByteLength(0) { } };
+namespace N_00c4cf20 { struct CIndexBuffer { virtual void v00() { } void* PD3DIndexBuffer; unsigned long ByteLength; long PrimitiveType; void* PAllocatedBuffer; CIndexBuffer() : PD3DIndexBuffer(0), ByteLength(0) { } }; } using N_00c4cf20::CIndexBuffer;
 struct CLockedIndexBuffer : CIndexBuffer { unsigned char _pad_0x14[0x18]; unsigned long m_lockOffset; CLockedIndexBuffer() : m_lockOffset(0x80000000) { } };
 int main()
 {
