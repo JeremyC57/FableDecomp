@@ -179,3 +179,9 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
   gave **RELOCATION_MATCH**.
 - **Lesson.** When expression spellings all canonicalise, change *which values are variables and where they are
   assigned*. Then grade combinations systematically rather than one guess at a time.
+
+## Round 11 (2026-10-23): ebp weight levers — all null
+Graded in the main chat on two same-length rows. Every variant compiled to **byte-identical** code (md5 of the built listing unchanged), so VC7.1 canonicalises all of these before register allocation:
+- **00965640** (retail `this`=ebx and `&PStealableItem`=ebp, ours swapped): caching the item pointer in a local; inline accessors for the bool/index members; an inline accessor for the smart pointer; an uninitialised `T*` declared at block entry then assigned; an explicit base-class cast at each use; a named `self = this`; a `const T&` alias.
+- **008508b0** (ours CSEs the `deed` parameter into ebp, hoisted above the branch; retail reloads it from its arg slot at both uses): a `const T&` alias, `&deed` through a pointer, `(&deed)[0]`, `(long)` casts, pointer-arithmetic indexing, an uninitialised local assigned at each use (`d = deed`), a `__forceinline` by-value helper, and a char-pointer reinterpret. Splitting the `||` into two `if`s changes the layout (467v457) but keeps ebp.
+Conclusion: in VC7.1 the allocator's weight is not driven by source-level aliases, address-of without escape, accessor indirection or casts. What still differs is the global CSE decision itself (008508b0 hoists one load across the 0x4F lookup call). Next probes should change the *control flow or call set* between the two uses, not how the variable is spelled.
