@@ -25897,3 +25897,7 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ??0CLightningBeam@@QAE@PAUCThing@@0@Z	007a0630	007a1870
 ?DestroyObject@?$CCountedPointer@UCLightningBeam@@@@SIXPAX@Z	007a4120	007a1870
 ?GetWorld@CTCWillLightning@@QAEPAUCWorld@@XZ	00686a70	007a1870
+?GetPFirstThingInRoughArea@CThingSearchTools@@QAE_NABUC2DBoxI@@ABUCThingFilter_IsDeadSpouse@@PAPAUCThing@@@Z	0096f260	0096f180
+?GetPWorld@CAIStateGroup_MinionBehaviourSad@@QAEPAUCWorld@@XZ	008fcfc0	0096f180
+?GetAnimIndex@CTCAnimationComplex@@QAEJXZ	0070b490	008dbb30
+?GetAnimateThing@CTCAnimationComplex@@QAEPAUCAnimateThing@@XZ	0070b460	008dbb30

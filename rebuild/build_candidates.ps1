@@ -271876,6 +271876,20 @@ $catalog = @(
         TestSource = '00/7a/CTCWillLightning_MakeRandomBeam_007a1870_test.cpp'
         PassPattern = '007a1870_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0096f180'
+        Module = 'CAIStateGroup_MinionBehaviourSad'
+        Source = '00/96/CAIStateGroupMinionBehaviourSad_FoundDeadSpouse_0096f180.cpp'
+        TestSource = '00/96/CAIStateGroupMinionBehaviourSad_FoundDeadSpouse_0096f180_test.cpp'
+        PassPattern = '0096f180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008dbb30'
+        Module = 'CModeDragonFlying'
+        Source = '00/8d/CModeDragonFlying_OnActivate_008dbb30.cpp'
+        TestSource = '00/8d/CModeDragonFlying_OnActivate_008dbb30_test.cpp'
+        PassPattern = '008dbb30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
