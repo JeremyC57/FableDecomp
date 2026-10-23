@@ -274036,6 +274036,34 @@ $catalog = @(
         TestSource = '00/d6/CHTEAssaultGuard_Main_00d6aea0_test.cpp'
         PassPattern = '00d6aea0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e06050'
+        Module = 'CQ_TraderEscortScript'
+        Source = '00/e0/CQTraderEscortScript_WatchForSurprisingBalverines_00e06050.cpp'
+        TestSource = '00/e0/CQTraderEscortScript_WatchForSurprisingBalverines_00e06050_test.cpp'
+        PassPattern = '00e06050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1b750'
+        Module = 'CHKC_ScreamerPoint'
+        Source = '00/e1/CHKCScreamerPoint_Main_00e1b750.cpp'
+        TestSource = '00/e1/CHKCScreamerPoint_Main_00e1b750_test.cpp'
+        PassPattern = '00e1b750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0b00'
+        Module = 'CMK_HS2_SOUL'
+        Source = '00/ce/CMKHS2SOUL_Main_00ce0b00.cpp'
+        TestSource = '00/ce/CMKHS2SOUL_Main_00ce0b00_test.cpp'
+        PassPattern = '00ce0b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0ce0'
+        Module = 'CMK_HS2_SOUL'
+        Source = '00/ce/CMKHS2SOUL_Main_00ce0ce0.cpp'
+        TestSource = '00/ce/CMKHS2SOUL_Main_00ce0ce0_test.cpp'
+        PassPattern = '00ce0ce0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

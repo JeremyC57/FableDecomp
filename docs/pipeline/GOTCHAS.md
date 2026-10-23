@@ -873,3 +873,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - with `struct CScriptThingView { void* vptr; void* Data; void* Info; const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); } };`.
 
   VC7.1 then hoists `lea ecx,[thing]` above the terminate `jne` into the shared `~CScriptThing` exit, as retail does. Matched 00da6d50, 00da7830, 00e11450 and 00d6aea0. A named view reference and an `AsThing(const void*)` helper are inert. Fidelity caveat: the view is a compiler lever, probably not the original spelling.
+- (2026-10-23, R&D R-47) I-44 sweep:
+  - 00e06050 matched only with the I-44 view plus `balverine` held as a VALUE local; the view alone is inert on a const& temporary. 00e1b750 also matched.
+  - The I-44 family is now exhausted.
+  - Label review: 00ce0920, 00ce0b00 and 00ce0ce0 are three different soul scripts, with soul thresholds 0, 1 and 2, that all carry the propagated label CMK_HS2_SOUL::Main. Find their real class names in the script-registration tables.
