@@ -2581,3 +2581,35 @@ address	module	name	length	chunk	reason
 00726ce0	CTCPhysicsNavigator	Move	1024	hand304	DIFFER(1002v1011) -- near: frame/compare match; FastInvSqrt reg choice (ebx/edi v edx/ecx) and prologue push edi (227 difflines)
 005e4430	CTCQuestCompletionUI	Activate	784	hand304	DIFFER(775v775) -- near: same length, 18 difflines; eax/ecx naming at both GetDef call sites (advisor asked)
 00625af0	CTCQuickAccessMenu	GetMagicListUI	992	hand304	DIFFER(963v989) -- coarse: shape right; ebx/ebp swap (list head/zero) and name-format temporaries (226 difflines)
+00627400	CTCQuickAccessMenu	ConstructExpressionCategoryList	752	hand305	DIFFER(737v742) -- fe/zero register swap
+005ea650	CTCTavernGame	OnInitialActivate	656	hand305	DIFFER(638v654) -- font temp slot/frame 0x14v0x10
+007af0f0	CTCRockTrollShield	OnHitAtPos	544	hand305	DIFFER(533v533) -- dot pair order Y/Z + one eax/edx rotation
+00773ee0	CTCShop	GetSaleItemsToPlace	544	hand305	DIFFER(495v540) -- this-in-ebp vs zero-register choice
+006e3890	CTCTalk	PlaySpeech	544	hand305	DIFFER(531v529) -- else block moved to end (join test threaded) + emote temp slots
+007f5ae0	CTCTargetingBase	UpdateNearestInterestingThing	544	hand305	DIFFER(544v544) -- callee-saved register rotation (creature/best/map)
+005eb180	CTCTavernGame	SetStateAfterInstructions	544	hand305	DIFFER(536v536) -- vtable load eax vs edx in the 0x2f arm
+0066a9e0	CTCSoundPlayer	PlayCollisionSound	626	hand305	DIFFER(626v626) -- frame-slot packing of CDefString hidden returns (0x1c v 0x14)
+0079b6f0	CTCSummonSpell	ResetMinionPos	736	hand305	DIFFER(732v732) -- same size with GetSubDef stand-in; late ebp push + fchs schedule + lookup arg registers
+00731ea0	CTCSpotLight	?OnAppearanceDraw@CTCSpotLight@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z	576	hand305	DIFFER(553v575) -- register/frame: ebx zero + esi=this-0xc; colour bytes via cl/dl/bl/al
+007bc6fa	CTCShotDefinitionProjectilePredictive	InitMovement	514	hand305	DIFFER(514v514) -- one esi reload scheduled after two fstp st(0) pops (near-miss)
+007bca30	CTCShotDefinitionDrainLife	UpdateMovement	528	hand305	DIFFER(539v528) -- second fast-Normalise operand forwarding + lenSq slot
+007bde31	CTCShotDefinitionFireballSpell	OnCollision	555	hand305	DIFFER(474v555) -- dead-arg slot reuse + level in ebx + per-arm string slots (switch tail-merge)
+007bc15a	CTCShotDefinitionMultiArrow	UpdateMovement	560	hand305	DIFFER(571v560) -- sibling of 007bca30: toTarget X forwarding + 2nd Normalise lenSq slot
+007bd2d1	CTCShotDefinitionThrow	OnSubShotTrigger	598	hand305	DIFFER(599v598) -- GetDef stand-in fixed esi caching; left: one frame slot + Create push order + [ecx+0xa4] CSE
+00803280	CTCTargetingPlayer	UpdateTargetThreatening	551	hand305	DIFFER(548v551) -- frame 0xc v 0x10 (creature spill/pointer slot sharing) + one lookup register
+007bf510	CTCShotDefinitionBase	OnCollision	640	hand305	DIFFER(583v635) -- frame 0x34v0x18: retail homes bool/tag/key in dead param slots, thing in ebp
+007bf790	CTCShotDefinitionBase	Init	768	hand305	DIFFER(752v762) -- component lookups via eax + 0x4d lookup tail-merge + constant register choice
+007bd845	CTCShotDefinitionDrainLife	InitMovement	642	hand305	DIFFER(642v642) -- same size: lenSq operand order, one lea schedule, cross/velocity operand swaps, rand temp slot
+007bd527	CTCShotDefinitionProjectilePredictive	OnSubShotTrigger	675	hand305	DIFFER(672v675) -- sibling residue of 007bd2d1: slot sharing ([ebp-4] alive temp/shot) + [ecx+0xa4] address CSE
+007bcf7f	CTCShotDefinitionMultiArrow	InitMovement	808	hand305	DIFFER(808v808) -- same size; DrainLife residue (lenSq/velocity operand order) + named-vector slot packing
+007be0f9	CTCShotDefinitionForcePushBall	OnCollision	743	hand305	DIFFER(743v743) -- NEAR-MISS: one fast-Normalise X multiply operand order (fld st(2);fmul st(1) v fld st(0);fmul st(3))
+00805600	CTCTargetingPlayer	FrameUpdate	656	hand305	DIFFER(641v641) -- NEAR-MISS: one register (ParentThing in edx v ecx before IsZTargetable)
+00639e40	CTCRegionDisplay	GlobalDraw	944	hand305	DIFFER(958v930) -- text position kept in frame by retail + dead-arg slot for GFAXToVX + draw tail-merge
+007993f0	CTCShopKeeper	WitnessedCrime	704	hand305	DIFFER(698v698) -- NEAR-MISS: CDefPointer hidden-return slot (dead deed param v retail key-0x23 word); rest exact
+007f9960	CTCTargetingSpirit	UpdateTargetList	560	hand305	DIFFER(626v551) -- frame 0x88v0x5c: temporaries not packed (pos/filter/facing share in retail) + this in ebp v esi
+00802e00	CTCTargetingPlayer	SetPTargetedThing	992	hand305	DIFFER(1002v990) -- register choice: thing param kept in edi (retail re-reads slot, this in ebp) + one frame word
+00803d60	CTCTargetingPlayer	UpdateProjectileTargeting	704	hand305	DIFFER(679v699) -- first draft: frame 0xbcv0xa4, FOV getter on camera base +4, filter/LOS argument shape unverified
+007bfa90	CTCShotDefinitionBase	GetWeaponTrailGraphic	928	hand305	DIFFER(929v926) -- frame 0x1cv0xc: def-pointer copies homed in frame (retail esi) + slot packing
+00747da0	CTCStealth	FrameUpdate	1010	hand305	DIFFER(988v1010) -- lane gap: inlined fistp rounding helper (hand-written x87, forces ebp frame); rest decoded
+007280c0	CTCRandomAppearanceMorph	UpdateMorphSet	816	hand305	DIFFER(807v802) -- def temp copy/release register (edi) + dec-flag test; loop temp scheduling
+00727d00	CTCRandomAppearanceMorph	CTCRandomAppearanceMorph::OnAppearanceDraw	768	hand305	DIFFER(438v760) -- structural draft: local set<CCharString>, counted mesh exchange and by-value push-esp argument not modelled

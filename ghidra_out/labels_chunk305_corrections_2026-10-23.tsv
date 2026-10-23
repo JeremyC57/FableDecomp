@@ -1,0 +1,12 @@
+address	name	evidence
+007ee540	CTCVillageMember::GetVillage	chunk 305 callee body (was IS_THING_ALIVE)
+0065914b	CTCVillage::IsCriminalKnown	chunk 305 callee body (was StartRead)
+006c5630	GetInterface51DeedDef	chunk 305 callee body (was GetFloorMaterial)
+00a0beb0	CCamera::GetFOV	chunk 305 callee body (was DrawGetSeaLevel)
+00485815	GetSubDef<CRandomMorphDef>	chunk 305 callee body (was GetSubDef<CAbilityDef>)
+006ca950	CTextureMorphList::Add	chunk 305 callee body (was IsMapIncluded)
+00786580	CSkeletalMorph::ClearByTag	chunk 305 callee body (was RemoveThingFromCoverList)
+004c7590	CThing::SetDirtyFlag	chunk 305 callee body (was DetachTarget)
+006869d0	CTCBase::GetGameData	chunk 305 callee body (was _Cons_val)
+0072bc60	CancelAbilitiesForCutscene	chunk 305 landed row (name copied from 0x0072BA40)
+00625ed0	GlobalUpdate	chunk 305 landed row, GlobalUpdate(bool) (was vfunc_26)

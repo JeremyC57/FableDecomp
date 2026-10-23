@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0072ba40	RELOCATION_MATCH	537v537	PASS	nine inline HasTC/GetTC CancelMove blocks
+0072bc60	RELOCATION_MATCH	596v596	PASS	CancelAbilitiesForCutscene (catalog label propagated)
+00625ed0	RELOCATION_MATCH	571v571	PASS	GlobalUpdate slot 26
+00627400	DIFFER	737v742	-	fe/zero register swap
+0072cf40	SKIP	-	-	row holds the function, its jump table and ~20 following small functions
+005ea650	DIFFER	638v654	-	font temp slot/frame 0x14v0x10
+005ea9b0	RELOCATION_MATCH	520v520	PASS	GetInterface out-param with uninit miss path
+007af0f0	DIFFER	533v533	-	dot pair order Y/Z + one eax/edx rotation
+00773ee0	DIFFER	495v540	-	this-in-ebp vs zero-register choice
+006e3890	DIFFER	531v529	-	else block moved to end (join test threaded) + emote temp slots
+007f5ae0	DIFFER	544v544	-	callee-saved register rotation (creature/best/map)
+005eb180	DIFFER	536v536	-	vtable load eax vs edx in the 0x2f arm
+0066a9e0	DIFFER	626v626	-	frame-slot packing of CDefString hidden returns (0x1c v 0x14)
+00639ba0	RELOCATION_MATCH	660v660	PASS	CCharString overload; early-return test is on infoDisplay
+0079b6f0	DIFFER	732v732	-	same size with GetSubDef stand-in; late ebp push + fchs schedule + lookup arg registers
+00731ea0	DIFFER	553v575	-	register/frame: ebx zero + esi=this-0xc; colour bytes via cl/dl/bl/al
+007bc6fa	DIFFER	514v514	-	one esi reload scheduled after two fstp st(0) pops (near-miss)
+007bca30	DIFFER	539v528	-	second fast-Normalise operand forwarding + lenSq slot
+007bde31	DIFFER	474v555	-	dead-arg slot reuse + level in ebx + per-arm string slots (switch tail-merge)
+007bc15a	DIFFER	571v560	-	sibling of 007bca30: toTarget X forwarding + 2nd Normalise lenSq slot
+007bd2d1	DIFFER	599v598	-	GetDef stand-in fixed esi caching; left: one frame slot + Create push order + [ecx+0xa4] CSE
+00803280	DIFFER	548v551	-	frame 0xc v 0x10 (creature spill/pointer slot sharing) + one lookup register
+005ea400	RELOCATION_MATCH	592v592	PASS	DrawBetAndMoney: Betting-draw form + same-TU GetSubDef stand-in
+007bf510	DIFFER	583v635	-	frame 0x34v0x18: retail homes bool/tag/key in dead param slots, thing in ebp
+007bf790	DIFFER	752v762	-	component lookups via eax + 0x4d lookup tail-merge + constant register choice
+007bd845	DIFFER	642v642	-	same size: lenSq operand order, one lea schedule, cross/velocity operand swaps, rand temp slot
+007bd527	DIFFER	672v675	-	sibling residue of 007bd2d1: slot sharing ([ebp-4] alive temp/shot) + [ecx+0xa4] address CSE
+007bcf7f	DIFFER	808v808	-	same size; DrainLife residue (lenSq/velocity operand order) + named-vector slot packing
+007be0f9	DIFFER	743v743	-	NEAR-MISS: one fast-Normalise X multiply operand order (fld st(2);fmul st(1) v fld st(0);fmul st(3))
+00805600	DIFFER	641v641	-	NEAR-MISS: one register (ParentThing in edx v ecx before IsZTargetable)
+00639e40	DIFFER	958v930	-	text position kept in frame by retail + dead-arg slot for GFAXToVX + draw tail-merge
+007993f0	DIFFER	698v698	-	NEAR-MISS: CDefPointer hidden-return slot (dead deed param v retail key-0x23 word); rest exact
+007f9960	DIFFER	626v551	-	frame 0x88v0x5c: temporaries not packed (pos/filter/facing share in retail) + this in ebp v esi
+00802e00	DIFFER	1002v990	-	register choice: thing param kept in edi (retail re-reads slot, this in ebp) + one frame word
+00803d60	DIFFER	679v699	-	first draft: frame 0xbcv0xa4, FOV getter on camera base +4, filter/LOS argument shape unverified
+007ba550	RELOCATION_MATCH	865v865	PASS	jug loop: 005ea9b0 GetInterface model + inline lower_bound (last loaded before first)
+007bfa90	DIFFER	929v926	-	frame 0x1cv0xc: def-pointer copies homed in frame (retail esi) + slot packing
+00747da0	DIFFER	988v1010	-	lane gap: inlined fistp rounding helper (hand-written x87, forces ebp frame); rest decoded
+007280c0	DIFFER	807v802	-	def temp copy/release register (edi) + dec-flag test; loop temp scheduling
+00727d00	DIFFER	438v760	-	structural draft: local set<CCharString>, counted mesh exchange and by-value push-esp argument not modelled

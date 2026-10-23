@@ -271890,6 +271890,55 @@ $catalog = @(
         TestSource = '00/8d/CModeDragonFlying_OnActivate_008dbb30_test.cpp'
         PassPattern = '008dbb30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005ea400'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_DrawBetAndMoney_005ea400.cpp'
+        TestSource = '00/5e/CTCTavernGame_DrawBetAndMoney_005ea400_test.cpp'
+        PassPattern = '005ea400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ea9b0'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_CreateGamePiece_005ea9b0.cpp'
+        TestSource = '00/5e/CTCTavernGame_CreateGamePiece_005ea9b0_test.cpp'
+        PassPattern = '005ea9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00625ed0'
+        Module = 'CTCQuickAccessMenu'
+        Source = '00/62/CTCQuickAccessMenu_GlobalUpdate_00625ed0.cpp'
+        TestSource = '00/62/CTCQuickAccessMenu_GlobalUpdate_00625ed0_test.cpp'
+        PassPattern = '00625ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00639ba0'
+        Module = 'CTCRegionDisplay'
+        Source = '00/63/CTCRegionDisplay_SetCurrentAreaName_00639ba0.cpp'
+        TestSource = '00/63/CTCRegionDisplay_SetCurrentAreaName_00639ba0_test.cpp'
+        PassPattern = '00639ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072ba40'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_CancelAllAbilities_0072ba40.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_CancelAllAbilities_0072ba40_test.cpp'
+        PassPattern = '0072ba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072bc60'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_CancelAbilitiesForCutscene_0072bc60.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_CancelAbilitiesForCutscene_0072bc60_test.cpp'
+        PassPattern = '0072bc60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ba550'
+        Module = 'CTCTavernBar'
+        Source = '00/7b/CTCTavernBar_OnInitialActivate_007ba550.cpp'
+        TestSource = '00/7b/CTCTavernBar_OnInitialActivate_007ba550_test.cpp'
+        PassPattern = '007ba550_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
