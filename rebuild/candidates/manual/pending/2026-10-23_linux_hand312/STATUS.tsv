@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a999b0	RELOCATION_MATCH	1148v1148	PASS	C3DAnimFileLoader ctor (leaf ??0C3DAnimFileLoader)
+00a4cec0	SKIP	-v-	-	lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quaternion slerp table lookup (asm_bake family)
+00a4d330	SKIP	-v-	-	lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quaternion slerp table lookup (asm_bake family)
+00a4d920	SKIP	-v-	-	lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quaternion slerp table lookup (asm_bake family)
+00a4e300	SKIP	-v1632	-	not attempted to completion: 0x104-frame x87 quaternion-to-matrix pair + inverse product (the chunk-293 x87 operand-canonicalisation lane gap applies)
+00a50510	SKIP	-v-	-	not authored: 1760-byte x87-heavy sequence initialisation (223 x87 ops); decoded only, budget
+00a53c50	SKIP	-v-	-	lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quaternion slerp table lookup (asm_bake family)
+00ab2520	SKIP	-v-	-	not authored: inline 3x4 matrix inverse + product (x87 operand-order lane gap, chunk 293)
+00a9eb90	SKIP	-v-	-	lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quaternion slerp table lookup (asm_bake family)
+00a4c5e0	SKIP	-v1844	-	lane gap: unsigned 64-bit size guard (mul; test edx,edx; ja) keeps a dead jb in this lane (see retry10b 00a533f0); not attempted beyond analysis
+00a8ad40	DIFFER	1621v1621	-	register allocation of ushort counts and the three block sizes
+00abf100	RELOCATION_MATCH	1456v1456	PASS	C3DMeshMaterial::LoadBinary
+00ac21e0	RELOCATION_MATCH	1460v1460	PASS	C3DMeshPartitionElement::ReadFromFile
+00a2f2d0	DIFFER	1129v1129	-	register swap eax/ecx in MeshVolumes loop LoadBinary arg setup
+0097e380	DIFFER	1240v1286	-	thing twin of landed MoveToPosProximity; register allocation (this/navigation/faceTarget) and route-end test layout
+0097fea0	SKIP	-v-	-	not authored: 1536-byte guard search (finder 0x8FD000/0x982450, CCountedPointer def, opinion list walk, crime report 0x8112D0, odd-address callees 0x65CE56/0x65C1FC/0x6585EE/0x65BFCE); decoded only, budget
+00980770	RELOCATION_MATCH	1117v1117	PASS	AIAction_MoveToPossiblyBlockedObjectAndFace
+00980bd0	DIFFER	1212v1233	-	first-call half exact; later-call half: return 3 / return 1 epilogues inlined where retail cross-jumps to shared cold blocks
+0092a3f0	DIFFER	1209v1188	-	first pass: pairing-loop block placement (first-arrival block sunk), Random()%10+10 fold, register choice
+0092a8a0	RELOCATION_MATCH	1082v1082	PASS	PracticeSkills (twin of landed 0x0092B3E0); leaf PracticeSkills@
+0090e5d0	DIFFER	1367v1367	-	same length; component local register vs frame word, message-query local layout, bitfield compare form
+009289b0	DIFFER	1131v1131	-	same length; Random()%300 div scheduled after GFGetCurrentFrame call (retail before), ebx/ebp swap downstream
+009663a0	DIFFER	1165v1180	-	first pass: flow and calls follow retail; frame layout and the in-slot LookAtPos vector build differ
+009175e0	DIFFER	1091v1064	-	first pass: flow/calls follow retail; loop counter register vs frame word and a 4-byte frame shift
+0091ec30	DIFFER	1059v1047	-	first pass: flag-byte slots swapped (reachable vs arrival), target pointer spill, hoisted brain load
+0097a1b0	SKIP	-v-	-	not authored: 0x20C-frame x87 arc search for a firing position (224 x87 ops; chunk-293 x87 operand-order lane gap)
+0097a630	RELOCATION_MATCH	1195v1195	PASS	CAIStateGroup_CreatureTakeCover::Update
+009609b0	SKIP	-v-	-	lane gap: ebp frame with 15.0/0.5/1.0 frame constants and dword fistp/fild = inline-asm rounding helper (asm_bake family)
+00922860	DIFFER	1620v1612	-	first pass: shape and call order follow retail; frame-slot sharing (bool/key/best/nav words) differs, offsets shift
+0094e7b0	SKIP	-v-	-	not authored: 0x15C-frame EarthTroll update with 394 x87 ops; decoded only, budget
+00912ba0	SKIP	-v-	-	not authored: CalculatePrettyPath x87 spline (136 x87 ops); decoded only, budget
+0094d020	DIFFER	1043v1035	-	creature load hoisted above GetInteractionTarget virtual call (+8) and lower_bound eax-copy lane gap
+0092d1f0	DIFFER	1034v1031	-	forward-vector copy shape, true/false exit cross-jump, ebx/edi swap (distance order fixed)
+009482a0	DIFFER	1072v1072	-	random-index register (edx vs eax), return-value/pop order, component local slot
+00948880	DIFFER	1194v1206	-	first pass: flow follows retail; conditional-temporary flag register/frame-byte split and a 4-byte frame shift
+00949ab0	SKIP	-v-	-	not authored: 8-aligned ebp frame, conditional CCharString temporaries with flag bits, inline STLport list build (malloc 0xC sentinel); decoded only, budget
+00951430	SKIP	-v-	-	not authored: 0x1A4-frame JackDragon swoop (196 x87 ops, 260 calls); decoded only, budget
+00952890	SKIP	-v-	-	not authored: 0x148-frame JackDragon ground update (86 x87 ops, 229 calls); decoded only, budget
+00973900	SKIP	-v-	-	not authored: 0x188-frame pillar summon (CCharString/def temporaries, 121 x87 ops); decoded only, budget
+00974110	SKIP	-v-	-	not authored: 0x3CC-frame Summon (140 x87 ops, 274 calls); decoded only, budget

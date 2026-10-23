@@ -1,0 +1,14 @@
+address	name	evidence
+0x00692620	CCreatureAction::GetActionID	chunk312: action-id getter (was CWorld::DrawGetEnvironment)
+0x007120D0	CCreatureAction_AddRealObjectToInventory::~CCreatureAction_AddRealObjectToInventory	chunk312: was _Dest_val
+0x007446A0	GetPerceivedThing	chunk312: was _Cons_val
+0x0049D810	CWorld::GetPRandomSeed	chunk312: was DoSizeof
+0x008FCF40	Terminate	chunk312: was CXMVPlaybackInfo
+0x007FEF40	FreeActionPoint	chunk312: was EditCyclePreviousKeyCamera
+0x0092E790	std::find_if<CIsFreeBed>	chunk312
+0x0094D430	SetGameMaster	chunk312
+0x00A14260	C3DVector::RotateAboutZ	chunk312
+0x0090EBE0	FindMessage	chunk312
+0x00981410	AIAction_InteractWith	chunk312
+0x00AA8360	CChunkedFileSuperChunk::CChunkedFileSuperChunk	chunk312
+0x00AA8490	CChunkedFileSuperChunk::~CChunkedFileSuperChunk	chunk312

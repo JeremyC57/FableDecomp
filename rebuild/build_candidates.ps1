@@ -273116,6 +273116,62 @@ $catalog = @(
         TestSource = '00/d0/CCampHostage2_Main_00d08790_test.cpp'
         PassPattern = '00d08790_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b81050'
+        Module = 'CEngineClothSimulationMeshBase'
+        Source = '00/b8/CEngineClothSimulationMeshBase_UpdateTransform_00b81050.cpp'
+        TestSource = '00/b8/CEngineClothSimulationMeshBase_UpdateTransform_00b81050_test.cpp'
+        PassPattern = '00b81050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b990b0'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes_Wind'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshesWind_UpdateBoneMatrixForWindSheer_00b990b0.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshesWind_UpdateBoneMatrixForWindSheer_00b990b0_test.cpp'
+        PassPattern = '00b990b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092a8a0'
+        Module = 'CAIStateGroup_ApprenticeHero'
+        Source = '00/92/CAIStateGroupApprenticeHero_PracticeSkills_0092a8a0.cpp'
+        TestSource = '00/92/CAIStateGroupApprenticeHero_PracticeSkills_0092a8a0_test.cpp'
+        PassPattern = '0092a8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097a630'
+        Module = 'CAIStateGroup_CreatureTakeCover'
+        Source = '00/97/CAIStateGroupCreatureTakeCover_Update_0097a630.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureTakeCover_Update_0097a630_test.cpp'
+        PassPattern = '0097a630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00980770'
+        Module = 'CAIStateGroupBase'
+        Source = '00/98/CAIStateGroupBase_AIActionMoveToPossiblyBlockedObjectAndFace_00980770.cpp'
+        TestSource = '00/98/CAIStateGroupBase_AIActionMoveToPossiblyBlockedObjectAndFace_00980770_test.cpp'
+        PassPattern = '00980770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a999b0'
+        Module = 'C3DAnimFileLoader'
+        Source = '00/a9/C3DAnimFileLoader_C3DAnimFileLoader_00a999b0.cpp'
+        TestSource = '00/a9/C3DAnimFileLoader_C3DAnimFileLoader_00a999b0_test.cpp'
+        PassPattern = '00a999b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abf100'
+        Module = 'C3DMeshMaterial'
+        Source = '00/ab/C3DMeshMaterial_LoadBinary_00abf100.cpp'
+        TestSource = '00/ab/C3DMeshMaterial_LoadBinary_00abf100_test.cpp'
+        PassPattern = '00abf100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac21e0'
+        Module = 'C3DMeshPartitionElement'
+        Source = '00/ac/C3DMeshPartitionElement_ReadFromFile_00ac21e0.cpp'
+        TestSource = '00/ac/C3DMeshPartitionElement_ReadFromFile_00ac21e0_test.cpp'
+        PassPattern = '00ac21e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
