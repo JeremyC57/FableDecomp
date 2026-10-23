@@ -2431,3 +2431,11 @@ address	module	name	length	chunk	reason
 004b2280	CQuestManager	SetQuestAsFailed	528	hand296	DIFFER(527v527)(528) -- CQuestManager::SetQuestAsFailed parked: questName/this register swap and interface slot homes
 004b2890	CQuestManager	PostBoastTransfer	576	hand296	DIFFER(569v569)(576) -- CQuestManager::PostBoastTransfer parked: register colouring at two call sites (edx/ecx v ecx/eax)
 004b3a20	CQuestManager	DeactivateQuest	704	hand296	DIFFER(693v693)(704) -- CQuestManager::DeactivateQuest parked: __find tag homed in the reason arg slot (two displacement bytes)
+00555a90	CScrollableList	UpdateVisibleList	608	hand297	DIFFER(595v595) -- register colouring only
+00853d30	CScriptModuleOpenGate	OnInitLeaf	640	hand297	DIFFER(627v625) -- dot operand load order, frame 0x30 v 0x24
+00881a40	CScreenEffectPriorityStack	ScreenFilterSetFlags	592	hand297	DIFFER(591v581) -- register allocation
+009ddc60	CRenderManager2D	Draw2DBoxWithZ	912	hand297	DIFFER(899v899) -- frame-slot swap only
+00a87700	CSBCAgents	?Process@CSBCAgents@@UAE_NPBVCSteeringAgent@@@Z	608	hand297	DIFFER(603v603) -- register colouring only
+00aa3c50	CRightHandedSet	Interpolate	671	hand297	DIFFER(562v671) -- lane gap: inline fistp table rounding
+00f3a890	CRangeCompressor	CalcBestCompressionForBlock	864	hand297	DIFFER(844v857) -- Flags kept in ebp across operator=, ebx=0, this spilled
+00f3abf0	CRangeCompressor	CalcCompressionScript	608	hand297	DIFFER(605v605) -- register swap only

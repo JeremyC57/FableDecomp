@@ -1,0 +1,16 @@
+address	name	evidence
+00de21d0	CRandomAttacker::Main	chunk 297 RELOCATION_MATCH body + script vtable (catalog had CRansomRevenge)
+00dedf30	CSP_DeskGuard::Main	chunk 297 RELOCATION_MATCH body + script vtable (catalog had CSP_SecretPassageGuard)
+008ac970	vector<CScriptThing>::~vector	chunk 297 callee body (manifest had ~vector<CConversation>)
+00a14440	C3DVector::Normalise	chunk 297 callee body
+0042d5b1	map::operator[]	chunk 297 callee body
+00cbd370	sort	chunk 297 callee body
+00cbc130	vector::_M_insert_overflow	chunk 297 callee body
+00cbbda0	vector::erase	chunk 297 callee body
+0099e960	CCharString::operator!=	chunk 297 callee body
+009fc810	GetTextureQuadUVs	chunk 297 callee body (catalog had GetObjectTransform)
+00defb10	CQ_SecretPassageScript::SwitchDoorsOnAndOff	chunk 297 callee body
+009a80b0	BankExists	chunk 297 callee body (forge had GetLanguageData)
+0099be70	CWideString::operator+	chunk 297 callee body, __fastcall (forge had CCharString::AssignFrom*)
+0099bf30	CWideString::operator+	chunk 297 callee body, __fastcall
+00a5d7c0	CShaderResource::OpenShaderBank	chunk 297 callee body
