@@ -271319,6 +271319,13 @@ $catalog = @(
         TestSource = '00/8d/CModeJackOfBladesDeath_FrameUpdate_008d99b0_test.cpp'
         PassPattern = '008d99b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007cdd10'
+        Module = 'CTCBurntEffect'
+        Source = '00/7c/CTCBurntEffect_Reset_007cdd10.cpp'
+        TestSource = '00/7c/CTCBurntEffect_Reset_007cdd10_test.cpp'
+        PassPattern = '007cdd10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

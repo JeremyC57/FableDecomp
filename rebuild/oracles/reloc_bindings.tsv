@@ -25597,3 +25597,7 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?GetSubDef@CDefClassBase@@QAE_NPAU?$CDefPointer@UCCrowdDef@@@@@Z	00512fe0	00783380
 ?g_CrowdMemberScriptName@@3UCCharString@@A	013bade8	00783380
 ?GetSubDef@CDefClassBase@@QAE_NPAPAUCJackOfBladesDeathDef@@@Z	008c33e0	008d99b0
+?GetEffectFromString@CEffectDef@@QBE_NABUCCharString@@AAJ@Z	00669d30	007cdd10
+?GetSubDef@CDefClassBase@@QAE_NPAU?$CDefPointer@UCEffectDef@@@@@Z	00669580	007cdd10
+?g_BurntHelperA@@3UCCharString@@B	013bac30	007cdd10
+?g_BurntHelperB@@3UCCharString@@B	013bac34	007cdd10
