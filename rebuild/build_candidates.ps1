@@ -275880,6 +275880,35 @@ $catalog = @(
         TestSource = '00/f2/std_vectorassignCClanMember_00f27bc0_test.cpp'
         PassPattern = '00f27bc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006a23e0'
+        Module = '_global'
+        Source = '00/6a/global_COptimisedPrimitiveRemapMorphs_006a23e0.cpp'
+        TestSource = '00/6a/global_COptimisedPrimitiveRemapMorphs_006a23e0_test.cpp'
+        PassPattern = '006a23e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d41f0'
+        Module = 'CPersistTraits<CSimVoice>'
+        Source = '00/6d/CPersistTraitsCSimVoice_TransferIn_006d41f0.cpp'
+        TestSource = '00/6d/CPersistTraitsCSimVoice_TransferIn_006d41f0_test.cpp'
+        PassPattern = '006d41f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ac910'
+        Module = '_global'
+        Source = '00/6a/global_Create_006ac910.cpp'
+        TestSource = '00/6a/global_Create_006ac910_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006ac910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dcf70'
+        Module = '_global'
+        Source = '00/5d/global_CParticleMorphsFindAndSortByName_005dcf70.cpp'
+        TestSource = '00/5d/global_CParticleMorphsFindAndSortByName_005dcf70_test.cpp'
+        PassPattern = '005dcf70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

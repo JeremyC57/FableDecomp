@@ -231,7 +231,7 @@ them.
 **Outcome of 966–968 (2026-10-23):** the outside AI returned 54 matches, 58 parks and 8 blocked rows (00924520 among them).
 - **Landing:** all 54 were regraded here with retail bytes read from Fable.exe at our offsets and their tests re-run under VC7.1. All landed as delivered (batch `2026-10-23_linux_external966`), with no relocation-identity errors.
 - **Names:** its `assigned_name` values are placeholders (`Row00406e30::Create`, `RetailVector::FillInsert`, `NFactory…`), so the catalog keeps the manifest names from `external_chunks_966-968.tsv`. The source's `// Leaf:` line still selects the symbol. Its NAME_RECOVERY.md marks its descriptive names as uncertain, so no labels file was written.
-- **Parks:** an in-house quick pass over the near misses is in `$S/gpt966/nm/`. Any recoveries land as their own batch.
+- **Parks:** an in-house quick pass worked 14 near misses and recovered 4 (006a23e0, 006d41f0, 006ac910, 005dcf70; batch `2026-10-23_linux_external966_nm`). The other 10 residues are in `$S/gpt966/nm/STATUS.tsv`. The remaining 57 parks go back to Codex as retries in 969–971.
 
 **Next round: 969–971 (ChatGPT Codex).** `docs/pipeline/external_chunks_969-971.tsv` lists 120 rows:
 - 969: STL and serialisation templates, 245–259 bytes;
