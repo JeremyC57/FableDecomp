@@ -272352,6 +272352,13 @@ $catalog = @(
         TestSource = '00/a3/CClassFactory_GetClassNumberFromName_00a37060_test.cpp'
         PassPattern = '00a37060_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00645ce9'
+        Module = 'CStatBar'
+        Source = '00/64/CStatBar_DrawStatBox_00645ce9.cpp'
+        TestSource = '00/64/CStatBar_DrawStatBox_00645ce9_test.cpp'
+        PassPattern = '00645ce9_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

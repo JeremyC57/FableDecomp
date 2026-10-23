@@ -26085,3 +26085,8 @@ __imp__ReadFileEx@20	0143fdf4	009c3ae0
 ?SetHomeBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z	00512210	00730070
 ?SetWorkBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z	00512260	00730070
 __TI1?AUCGenericException@@	013692f8	00a37060
+??0CRightHandedSet@@QAE@ABUC3DVector@@0@Z	00487050	00645ce9
+?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAUCParticleEmitter@2@JPBUC2DVector@@W4EEngine2DLayer@@_NABUCRightHandedSet@@@Z	00aeb790	00645ce9
+?DrawStatBox@CStatBar@NPlayerGui@@SIXABUCEnginePrimitivePrepareInfo@@AAU?$CRetailVector@UCEnginePrimitiveHandle@@@@ABUC2DVector@@JABVCWideString@@JE_N44@Z	00645853	00645ce9
+?Get@CParticleEmitterManager@NParticleEngine@@SAPAU12@XZ	00aeaaf0	00645ce9
+?g_pDisplayManager_013b8390@@3PAUCDisplayManager@@A	013b8390	00645ce9
