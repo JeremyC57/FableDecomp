@@ -270344,6 +270344,13 @@ $catalog = @(
         TestSource = '00/97/CAIStateGroupCreatureFindCover_IsStillRunnable_0097cb10_test.cpp'
         PassPattern = '0097cb10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b67ec0'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_AddFrameForegroundTexturesUsed_00b67ec0.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_AddFrameForegroundTexturesUsed_00b67ec0_test.cpp'
+        PassPattern = '00b67ec0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
