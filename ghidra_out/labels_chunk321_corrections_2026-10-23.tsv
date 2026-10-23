@@ -1,0 +1,16 @@
+address	name	evidence
+00dcc770	CQ_OrchardFarmRaidScript::Main	chunk 321: matched script Main
+00dabac0	CQ_NewOakValeIntroScript::Main	chunk 321: matched script Main
+00e0ea40	CQ_WaspBossScript::Main	chunk 321: matched script Main
+00d848d0	CQ_HeroSoulsMotherScript::PlayCutscene	chunk 321: script member called from Main
+00db4f70	StartBarrelTimer	chunk 321: script helper
+00e12330	WatchForCutscene	chunk 321: spawned script function
+00e0f1d0	WatchForTermination	chunk 321: spawned under this name
+00d39330	CQ_FireHeartScript::PlayCutscene	chunk 321: PlayCutscene(CCharString)
+00d38400	CQ_FireHeartScript::TriggerProphetComment	chunk 321: script member
+00443f90	std::vector::resize	chunk 321: handle vector resize (was AddPrimitive)
+0075f580	std::list<CCharString>::clear	chunk 321
+0075f6c0	std::list<CCharString>::~list	chunk 321
+0099f690	operator+	chunk 321: CCharString operator+ overload
+0099f600	operator+	chunk 321: CCharString operator+ overload
+0099f570	operator+	chunk 321: CCharString operator+ overload

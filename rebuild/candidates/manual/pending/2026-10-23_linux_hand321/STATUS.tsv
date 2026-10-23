@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00aed600	DIFFER	-v1264	-	not compiled: x87 bitfield interpolation with inline-asm fistp rounding (fld/fistp, no __ftol2): asm-only rounding, lane gap
+00ae1bc0	DIFFER	1158v1158	-	one mov/lea pair: StreamPos load register at the join after the alpha-array read
+00af4900	DIFFER	-v1296	-	not compiled: serializer with inline CRC32 table hash, inline CCharString compares, CMemoryDataInputStream: decoded only
+00756d00	DIFFER	1120v1116	-	found-branch pair copy: retail shares the two stores after loading both words per branch
+007ae3d0	DIFFER	1104v1104	-	frame 0x74 v 0x70: retail aliases the empty CPersistTraits<bool> this with &start
+009bbcc0	DIFFER	-v1120	-	not compiled: string-parser text loader (CStringParser, inline strlen, flag-guarded CCharString temps, error strings): decoded only, no realistic path in budget
+00cddcb0	DIFFER	1605v1475	-	return-cleanup tails: retail calls out-of-line ~list at the first return, ours runs out of inline budget at the last
+00dabac0	RELOCATION_MATCH	2032v2032	PASS	matched
+00a17af0	DIFFER	-v1168	-	not compiled: x87-heavy sphere/segment collision (172 x87 ops, 1168 bytes): decoded, parked as low-yield per brief
+00a182c0	DIFFER	-v1184	-	not compiled: x87-heavy sphere/segment collision (171 x87 ops, 1184 bytes): decoded, parked as low-yield per brief
+00a6cc10	DIFFER	-v1088	-	not compiled: /GS mesh loader with propagated-label helpers (SharedPtr_Assign, FindFirstBone...) and vector templates: decoded only
+00a12ee0	DIFFER	-v1144	-	not compiled: x87 + vector/CArray templates (74 x87 ops, quickselect, CVectorMap): decoded, parked as low-yield
+00487570	DIFFER	-v1305	-	not compiled: x87 debug text (102 x87 ops, 9 __ftol2, CWideString temporaries): decoded, parked as low-yield
+0043b050	RELOCATION_MATCH	1312v1312	PASS	matched
+00a6a670	DIFFER	-v1072	-	not compiled: texture-pool resize: inline vector erase/insert_n + inline CPreallocTexture ctor + counted-pointer swaps: decoded only
+00dd6440	RELOCATION_MATCH	1120v1120	PASS	matched
+00dd44c0	RELOCATION_MATCH	1248v1248	PASS	matched
+00ddc980	RELOCATION_MATCH	1488v1488	PASS	matched
+00497b60	DIFFER	1060v1052	-	this-pointer spill slot order + register choice around the EndsWith chain
+00497fd0	DIFFER	-v1088	-	not compiled: x87 drop-shadow text draw (static, ret 0xc, 4 Draw2DText + round-to-pixel temps): decoded, low-yield; sibling 00497b60 already parked
+00e24e10	RELOCATION_MATCH	1984v1984	PASS	matched
+00f05a10	DIFFER	1312v1312	-	scheduling of the vector-base / Game loads around the two EntitySetThingAsEnemyOfThing calls
+00f09cd0	RELOCATION_MATCH	1952v1952	PASS	matched
+00f0a470	RELOCATION_MATCH	1136v1136	PASS	matched
+00f0b130	RELOCATION_MATCH	1616v1616	PASS	matched
+00f0bb10	RELOCATION_MATCH	1584v1584	PASS	matched
+00f0ef60	RELOCATION_MATCH	1824v1824	PASS	matched
+00d00af0	RELOCATION_MATCH	1248v1248	PASS	matched
+00d1d7d0	RELOCATION_MATCH	1264v1264	PASS	matched
+00d20a40	DIFFER	1433v1478	-	CTimer dtor inline but thing/vector dtors out of line at two returns (inline split)
+00d39960	DIFFER	1774v1774	-	block placement only: post-loop return cleanup copy inline (je) vs at function end (jne)
+00d55e90	RELOCATION_MATCH	1824v1824	PASS	matched
+00d3cbd0	RELOCATION_MATCH	1168v1168	PASS	matched
+00d49d50	RELOCATION_MATCH	1312v1312	PASS	matched
+00dcc770	RELOCATION_MATCH	1984v1984	PASS	matched
+00e0ea40	RELOCATION_MATCH	1920v1920	PASS	matched
+00d61d20	RELOCATION_MATCH	1056v1056	PASS	matched
+00d72b70	RELOCATION_MATCH	1575v1575	PASS	matched
+00d80e40	RELOCATION_MATCH	2016v2016	PASS	matched
+00d835d0	RELOCATION_MATCH	1808v1808	PASS	matched

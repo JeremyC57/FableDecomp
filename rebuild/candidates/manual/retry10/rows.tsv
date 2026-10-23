@@ -2912,3 +2912,21 @@ address	module	name	length	chunk	reason
 008de080	CModeDragonStrafeBurninate	FrameUpdate	1440	hand319	DIFFER(5v1437) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
 008de7a0	CModeIceTrollGroundSmashIcicleAssault	FrameUpdate	1248	hand319	DIFFER(5v1239) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
 008dcc80	CModeJackOfBladesFlash	Flash	1136	hand319	DIFFER(1v1136) -- first-pass stub, one grade; x87-heavy body, not reconstructed (time)
+00aed600	CParticleEmitter	InterpolateTo	1264	hand321	DIFFER(-v1264) -- not compiled: x87 bitfield interpolation with inline-asm fistp rounding (fld/fistp, no __ftol2): asm-only rounding, lane gap
+00ae1bc0	CParticleSimulation	ReadFromFile	1168	hand321	DIFFER(1158v1158) -- one mov/lea pair: StreamPos load register at the join after the alpha-array read
+00af4900	CParticleSystem	CParticleSystem::SerializeComponents	1296	hand321	DIFFER(-v1296) -- not compiled: serializer with inline CRC32 table hash, inline CCharString compares, CMemoryDataInputStream: decoded only
+00756d00	CPersistContext	TransferMap<CObjectAugmentationParticleSet,EObjectAugmentationType>	1120	hand321	DIFFER(1120v1116) -- found-branch pair copy: retail shares the two stores after loading both words per branch
+007ae3d0	CPersistContext	TransferMap<CObjectAugmentationParticleSet,EObjectAugmentationType>	1184	hand321	DIFFER(1104v1104) -- frame 0x74 v 0x70: retail aliases the empty CPersistTraits<bool> this with &start
+009bbcc0	CPersistContext	TransferSubComponentLoadText	1120	hand321	DIFFER(-v1120) -- not compiled: string-parser text loader (CStringParser, inline strlen, flag-guarded CCharString temps, error strings): decoded only, no realistic path in budget
+00cddcb0	CPersonalScriptMainScript	Main	1488	hand321	DIFFER(1605v1475) -- return-cleanup tails: retail calls out-of-line ~list at the first return, ours runs out of inline budget at the last
+00a17af0	CPhysicsMesh	GetSphereIntersectionFromToUsingSegmentation	1168	hand321	DIFFER(-v1168) -- not compiled: x87-heavy sphere/segment collision (172 x87 ops, 1168 bytes): decoded, parked as low-yield per brief
+00a182c0	CPhysicsMesh	GetSphereIntersectionFromToUsingFullCollision	1184	hand321	DIFFER(-v1184) -- not compiled: x87-heavy sphere/segment collision (171 x87 ops, 1184 bytes): decoded, parked as low-yield per brief
+00a6cc10	CPhysicsMesh	GetMeshDataFromFileData	1088	hand321	DIFFER(-v1088) -- not compiled: /GS mesh loader with propagated-label helpers (SharedPtr_Assign, FindFirstBone...) and vector templates: decoded only
+00a12ee0	CPhysicsMeshObject	GetNavigationLevelVolumes	1144	hand321	DIFFER(-v1144) -- not compiled: x87 + vector/CArray templates (74 x87 ops, quickselect, CVectorMap): decoded, parked as low-yield
+00487570	CPlayer	DrawFreeCamDebug	1305	hand321	DIFFER(-v1305) -- not compiled: x87 debug text (102 x87 ops, 9 __ftol2, CWideString temporaries): decoded, parked as low-yield
+00a6a670	CPreallocTexturePool	ResizePool	1072	hand321	DIFFER(-v1072) -- not compiled: texture-pool resize: inline vector erase/insert_n + inline CPreallocTexture ctor + counted-pointer swaps: decoded only
+00497b60	CProgressDisplay	CalculateNextTextTag	1056	hand321	DIFFER(1060v1052) -- this-pointer spill slot order + register choice around the EndsWith chain
+00497fd0	CProgressDisplay	DisplayCenteredText	1088	hand321	DIFFER(-v1088) -- not compiled: x87 drop-shadow text draw (static, ret 0xc, 4 Draw2DText + round-to-pixel temps): decoded, low-yield; sibling 00497b60 already parked
+00f05a10	CQ_AmbushTradersScript	RefreshSpyAllegiences	1312	hand321	DIFFER(1312v1312) -- scheduling of the vector-base / Game loads around the two EntitySetThingAsEnemyOfThing calls
+00d20a40	CQ_BreakSiegeScript	WatchForOpenGates	1488	hand321	DIFFER(1433v1478) -- CTimer dtor inline but thing/vector dtors out of line at two returns (inline split)
+00d39960	CQ_FireHeartScript	StartRound	1776	hand321	DIFFER(1774v1774) -- block placement only: post-loop return cleanup copy inline (je) vs at function end (jne)
