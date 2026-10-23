@@ -95,6 +95,6 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
 1. Which source shapes change VC7.1's register-allocation weights, so that it keeps a pointer in `esi` or `edi`
    across calls, or stops caching 0 in `ebx`.
 2. How to make VC7.1 reuse a dead parameter's stack slot for a temporary.
-3. A string-literal ternary passed as an argument, `f(cond ? "a" : "b")`. Retail pushes in each branch; ours selects
+3. ~~String-literal ternary~~ solved 2026-10-23: write the call in each branch so VC7.1 cross-jumps them (see GOTCHAS).
    into a register and pushes once.
 4. The `/Os` `push ecx` before `fsubp` case in section 5.
