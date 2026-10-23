@@ -27171,3 +27171,9 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?resize@CGeneratorArray@@QAEXK@Z	00a34df0	00a2f2d0
 ?resize@CMeshVolumeMap@@QAEXK@Z	00a35580	00a2f2d0
 ?UpdateTraders@CQ_TraderConflictGoodScript@NScript@@QAEXXZ	00dfc320	00dfc630
+?resize@?$vector@UCCharString@@@@QAEXIABUCCharString@@@Z	0043332c	00e81d10
+??ACULongMap@@QAEAAKABK@Z	00553e60	009cda70
+?_M_erase_out@CULongMap@@QAEXPAUSULongNode@@@Z	0042fe07	009cda70
+?insert@CULongMap@@QAE?AUSInsertResult@@ABUSULongPair@@@Z	00431363	009cda70
+?DestroyRange@@YIXPAUCMapInfo@@0ABU__false_type@@@Z	00515250	005022f0
+?resize@CMapInfoVector@@QAEXI@Z	0051be20	005022f0

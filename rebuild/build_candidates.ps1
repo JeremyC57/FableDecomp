@@ -275018,6 +275018,27 @@ $catalog = @(
         TestSource = '00/df/CQTraderConflictGoodScript_WatchForHittingEnemies_00dfc630_test.cpp'
         PassPattern = '00dfc630_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e81d10'
+        Module = 'CFishCompOrganiser'
+        Source = '00/e8/CFishCompOrganiser_Initialize_00e81d10.cpp'
+        TestSource = '00/e8/CFishCompOrganiser_Initialize_00e81d10_test.cpp'
+        PassPattern = '00e81d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cda70'
+        Module = 'CBankFile_Retail'
+        Source = '00/9c/CBankFileRetail_InternalWriteEntryList_009cda70.cpp'
+        TestSource = '00/9c/CBankFileRetail_InternalWriteEntryList_009cda70_test.cpp'
+        PassPattern = '009cda70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005022f0'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_DeleteAllLevels_005022f0.cpp'
+        TestSource = '00/50/CWorldMap_DeleteAllLevels_005022f0_test.cpp'
+        PassPattern = '005022f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
