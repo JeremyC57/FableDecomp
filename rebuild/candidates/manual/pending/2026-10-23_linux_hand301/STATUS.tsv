@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0072f380	DIFFER	1002v968	-	CTCDummyVillager::OnSerialise; ebp/edi swap + spills
+0072f750	DIFFER	657v643	-	CTCDummyVillager::CreateVillager; param-slot temp + RMW forms
+00730070	DIFFER	739v737	-	CTCDummyVillager::OnInitialActivate; lea vs add+mov for member IP address
+007ce420	RELOCATION_MATCH	784	PASS	CTCElectrocutedEffect::FrameUpdate
+007ce7a0	DIFFER	847v863	-	CTCElectrocutedEffect::Reset; regalloc/frame
+0076c9a0	DIFFER	609v607	-	CTCEnemy::OnSerialise; reg swap edi/ebp + param-slot reuse
+0076cce0	DIFFER	767v754	-	CTCEnemy::IsEnemyOf; refcount caching + faction ternary
+007e27f0	RELOCATION_MATCH	624	PASS	CTCFineDialogue::Show
+007e2a60	DIFFER	697v707	-	CTCFineDialogue::GlobalUpdate; shrink-wrapped callee-saved pushes
+007c9180	RELOCATION_MATCH	560	PASS	CTCFireballSpell::FrameUpdate
+007b0950	RELOCATION_MATCH	592	PASS	CTCFishing::FinishFishing
+007b0360	DIFFER	773v773	-	CTCFishingSpot::FrameUpdate; esi/ebx swap in blocks 2-3
+00780d80	DIFFER	539v539	-	CTCFlammable::FrameUpdate (label vfunc_9); conversion-temp slot only
+006d53c0	RELOCATION_MATCH	800	PASS	CTCFollowed::FrameUpdate
+00798940	DIFFER	615v615	-	CTCForcePushed::FrameUpdate (label vfunc_9); fadd operand order + frame packing
+007c60a0	DIFFER	989v960	-	CTCGhostSword::UpdateGhostSwordParticleEffects; first pass, 3 probes; next: zero-register / this placement, shared name slot
+004bd6e0	DIFFER	828v845	-	CTCGraphicAppearance::SetPrimitive; first pass
+004c0560	DIFFER	786v851	-	CTCGraphicAppearance::GetHelperPoint; first pass
+004c08c0	DIFFER	898v953	-	CTCGraphicAppearance::GetDummyObject; first pass
+004c0c80	DIFFER	923v982	-	CTCGraphicAppearance::GetDummyObjectAssumingObjectAt; first pass
+007c3fb0	DIFFER	872v878	-	CTCHealLife::FrameUpdate; tried 8 probes (Find key local, IsAlive by ref, decl-order swaps); next: register roles i/node
+006ca120	DIFFER	591v595	-	CTCHero::OnSerialise; UID half order + sret slot swap
+00706040	DIFFER	684v582	-	CTCHeroAttachableAppearanceModifiers::UpdateHiddenModifiers; register roles and frame slots
+007070d0	DIFFER	910v868	-	CTCHeroAttachableAppearanceModifiers::UpdateGraphics; first pass, 4 probes; next: flag RMW, per-site temporaries
+006d7960	DIFFER	540v539	-	CTCHeroExperience::GetFullHeroTitle; one extra frame slot (GetTC key not shared)
+0071c7c0	RELOCATION_MATCH	560	PASS	CTCHeroMorph::AddParticles
+0071c9f0	RELOCATION_MATCH	832	PASS	CTCHeroMorph::UpdateIdleParticles
+0071d020	DIFFER	942v911	-	CTCHeroMorph::OnSerialise; first pass, 8 probes; next: def local in the dead param slot / cached in esi
+0071de80	DIFFER	677v677	-	CTCHeroMorph::UpdateTextureMorphs; heap-block register choice
+0055e850	RELOCATION_MATCH	560	PASS	CTCHeroOnlineScoreboard::GetCachedClanLogosAsString
+0055ea80	RELOCATION_MATCH	560	PASS	CTCHeroOnlineScoreboard::GetCachedClanLogosAsString
+0055f480	RELOCATION_MATCH	549	PASS	CTCHeroOnlineScoreboard::CreateStringFromMyScores
+0055fc90	RELOCATION_MATCH	560	PASS	CTCHeroOnlineScoreboard::GetCachedImage
+005615c0	RELOCATION_MATCH	960	PASS	CTCHeroOnlineScoreboard::DownloadListOfMyClans
+00561dc0	RELOCATION_MATCH	1008	PASS	CTCHeroOnlineScoreboard::DownloadLogosForThisClansMembers
+00563130	RELOCATION_MATCH	736	PASS	CTCHeroOnlineScoreboard::ShowScoreboard
+00564570	RELOCATION_MATCH	768	PASS	CTCHeroOnlineScoreboard::vfunc_26
+006c5a80	DIFFER	745v737	-	CTCHeroOpinionDeedLog::CTCHeroOpinionDeedLog; deed-loop induction variables and def temporaries
+0078a390	DIFFER	563v563	-	CTCHeroRangedAttacks::FireRangedWeapon; slot permutation (key/accuracy vs current/temp)
+0057b43f	DIFFER	830v836	-	CTCHeroStats::RenderHeroDrunkenness; first pass, 8 probes; size-opt pragma; next: first-block FP spills

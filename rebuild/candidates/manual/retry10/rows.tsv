@@ -2494,3 +2494,28 @@ address	module	name	length	chunk	reason
 006bfcd0	CTCBuyableHouse	GetSignPostPos	768	hand299	DIFFER(739v764) -- frame 0x5c v 0x6c (retail keeps 16 more bytes of vector temporaries: ahead +0x28, the ahead+position temp +0x58 with only z spilled) and the final
 006c0c90	CTCBuyableHouse	CreateRentMoney	624	hand299	DIFFER(611v611) -- frame -- retail has no home slot for the uninitialised gold pointer (ebp loaded from owned's word +0x20, fild temp in i's word), ours gives it +0x24
 006c1250	CTCBuyableHouse	CTCBuyableHouse::vfunc_9	640	hand299	DIFFER(638v638) -- register rotation only -- retail picks edx/eax where ours picks eax/ecx for the subtitle font, the price delta, the 0x23 key address and both day
+0072f380	CTCDummyVillager	OnSerialise	976	hand301	DIFFER(1002v968) -- CTCDummyVillager::OnSerialise; ebp/edi swap + spills
+0072f750	CTCDummyVillager	CreateVillager	656	hand301	DIFFER(657v643) -- CTCDummyVillager::CreateVillager; param-slot temp + RMW forms
+00730070	CTCDummyVillager	OnInitialActivate	752	hand301	DIFFER(739v737) -- CTCDummyVillager::OnInitialActivate; lea vs add+mov for member IP address
+007ce7a0	CTCElectrocutedEffect	Reset	864	hand301	DIFFER(847v863) -- CTCElectrocutedEffect::Reset; regalloc/frame
+0076c9a0	CTCEnemy	OnSerialise	608	hand301	DIFFER(609v607) -- CTCEnemy::OnSerialise; reg swap edi/ebp + param-slot reuse
+0076cce0	CTCEnemy	IsEnemyOf	768	hand301	DIFFER(767v754) -- CTCEnemy::IsEnemyOf; refcount caching + faction ternary
+007e2a60	CTCFineDialogue	GlobalUpdate	720	hand301	DIFFER(697v707) -- CTCFineDialogue::GlobalUpdate; shrink-wrapped callee-saved pushes
+007b0360	CTCFishingSpot	FrameUpdate	784	hand301	DIFFER(773v773) -- CTCFishingSpot::FrameUpdate; esi/ebx swap in blocks 2-3
+00780d80	CTCFlammable	CTCFlammable::vfunc_9	539	hand301	DIFFER(539v539) -- CTCFlammable::FrameUpdate (label vfunc_9); conversion-temp slot only
+00798940	CTCForcePushed	CTCForcePushed::vfunc_9	624	hand301	DIFFER(615v615) -- CTCForcePushed::FrameUpdate (label vfunc_9); fadd operand order + frame packing
+007c60a0	CTCGhostSword	UpdateGhostSwordParticleEffects	960	hand301	DIFFER(989v960) -- CTCGhostSword::UpdateGhostSwordParticleEffects; first pass, 3 probes; next: zero-register / this placement, shared name slot
+004bd6e0	CTCGraphicAppearance	SetPrimitive	848	hand301	DIFFER(828v845) -- CTCGraphicAppearance::SetPrimitive; first pass
+004c0560	CTCGraphicAppearance	GetHelperPoint	864	hand301	DIFFER(786v851) -- CTCGraphicAppearance::GetHelperPoint; first pass
+004c08c0	CTCGraphicAppearance	GetDummyObject	960	hand301	DIFFER(898v953) -- CTCGraphicAppearance::GetDummyObject; first pass
+004c0c80	CTCGraphicAppearance	GetDummyObjectAssumingObjectAt	992	hand301	DIFFER(923v982) -- CTCGraphicAppearance::GetDummyObjectAssumingObjectAt; first pass
+007c3fb0	CTCHealLife	FrameUpdate	880	hand301	DIFFER(872v878) -- CTCHealLife::FrameUpdate; tried 8 probes (Find key local, IsAlive by ref, decl-order swaps); next: register roles i/node
+006ca120	CTCHero	OnSerialise	608	hand301	DIFFER(591v595) -- CTCHero::OnSerialise; UID half order + sret slot swap
+00706040	CTCHeroAttachableAppearanceModifiers	UpdateHiddenModifiers	592	hand301	DIFFER(684v582) -- CTCHeroAttachableAppearanceModifiers::UpdateHiddenModifiers; register roles and frame slots
+007070d0	CTCHeroAttachableAppearanceModifiers	UpdateGraphics	880	hand301	DIFFER(910v868) -- CTCHeroAttachableAppearanceModifiers::UpdateGraphics; first pass, 4 probes; next: flag RMW, per-site temporaries
+006d7960	CTCHeroExperience	GetFullHeroTitle	544	hand301	DIFFER(540v539) -- CTCHeroExperience::GetFullHeroTitle; one extra frame slot (GetTC key not shared)
+0071d020	CTCHeroMorph	OnSerialise	912	hand301	DIFFER(942v911) -- CTCHeroMorph::OnSerialise; first pass, 8 probes; next: def local in the dead param slot / cached in esi
+0071de80	CTCHeroMorph	UpdateTextureMorphs	688	hand301	DIFFER(677v677) -- CTCHeroMorph::UpdateTextureMorphs; heap-block register choice
+006c5a80	CTCHeroOpinionDeedLog	CTCHeroOpinionDeedLog	752	hand301	DIFFER(745v737) -- CTCHeroOpinionDeedLog::CTCHeroOpinionDeedLog; deed-loop induction variables and def temporaries
+0078a390	CTCHeroRangedAttacks	FireRangedWeapon	576	hand301	DIFFER(563v563) -- CTCHeroRangedAttacks::FireRangedWeapon; slot permutation (key/accuracy vs current/temp)
+0057b43f	CTCHeroStats	RenderHeroDrunkenness	836	hand301	DIFFER(830v836) -- CTCHeroStats::RenderHeroDrunkenness; first pass, 8 probes; size-opt pragma; next: first-block FP spills

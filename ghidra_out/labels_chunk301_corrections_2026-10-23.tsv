@@ -1,0 +1,8 @@
+address	name	evidence
+00780d80	CTCFlammable::FrameUpdate	chunk 301 body (was vfunc_9)
+00798940	CTCForcePushed::FrameUpdate	chunk 301 body (was vfunc_9)
+007ee540	GetVillage	chunk 301 callee body (was IS_THING_ALIVE)
+004c9840	CThing::RemoveTC	chunk 301 callee body
+00686a70	CTCBase::GetWorld	chunk 301 callee body (was GetDisplayEngine, propagated)
+0099a2d0	CBase::CBase	chunk 301 callee body
+004c3200	C3DMeshObject::~C3DMeshObject	chunk 301 callee body
