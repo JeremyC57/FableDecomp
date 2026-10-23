@@ -274008,6 +274008,34 @@ $catalog = @(
         TestSource = '00/51/CThingSearchToolsCalls_GetAllTCDsInRoughArea_00518900_test.cpp'
         PassPattern = '00518900_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00da6d50'
+        Module = 'CBalverineFightingGuard'
+        Source = '00/da/CBalverineFightingGuard_Main_00da6d50.cpp'
+        TestSource = '00/da/CBalverineFightingGuard_Main_00da6d50_test.cpp'
+        PassPattern = '00da6d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da7830'
+        Module = 'CCorneredGuard'
+        Source = '00/da/CCorneredGuard_Main_00da7830.cpp'
+        TestSource = '00/da/CCorneredGuard_Main_00da7830_test.cpp'
+        PassPattern = '00da7830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e11450'
+        Module = 'CWaspAttacker'
+        Source = '00/e1/CWaspAttacker_Main_00e11450.cpp'
+        TestSource = '00/e1/CWaspAttacker_Main_00e11450_test.cpp'
+        PassPattern = '00e11450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6aea0'
+        Module = 'CHTE_AssaultGuard'
+        Source = '00/d6/CHTEAssaultGuard_Main_00d6aea0.cpp'
+        TestSource = '00/d6/CHTEAssaultGuard_Main_00d6aea0_test.cpp'
+        PassPattern = '00d6aea0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

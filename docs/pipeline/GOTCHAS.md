@@ -868,3 +868,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - **Ctor stand-ins:** they must not expose member values; a visible zero shrank the code.
   - **Include paths:** an absolute `/workspace/...` include hangs Wine cl.
   - **Test layout:** tests that `#include` the source need the source inlined before landing.
+- (2026-10-23, R&D I-44, closes the "exit head-merge" gap) In script `Main` wait loops, write the IsAlive test through a layout view:
+  - the loop is `while (reinterpret_cast<const CScriptThingView&>(thing).Thing().IsAlive())`;
+  - with `struct CScriptThingView { void* vptr; void* Data; void* Info; const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); } };`.
+
+  VC7.1 then hoists `lea ecx,[thing]` above the terminate `jne` into the shared `~CScriptThing` exit, as retail does. Matched 00da6d50, 00da7830, 00e11450 and 00d6aea0. A named view reference and an `AsThing(const void*)` helper are inert. Fidelity caveat: the view is a compiler lever, probably not the original spelling.
