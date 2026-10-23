@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ce15e0	RELOCATION_MATCH	954v954	PASS	CTargetForKey::Main
+004ea6dd	RELOCATION_MATCH	1011v1011	PASS	CTavernGameDef::operator=
+00ce1280	DIFFER	904v808	-	CTestGateSwitch::Main: vector-destructor placement: retail inlines ~vector<CScriptThing> at six exits but routes the four exits inside the open/close branches to one shared 
+005424b0	DIFFER	623v627	-	NUISystem::CIconText::~CIconText: three residues: (1) the font-name temporary is pushed straight from GetString's eax before GFGetSystemManager, where retail calls the manager first an
+0054f8e0	RELOCATION_MATCH	548v548	PASS	CText::FitInWindow
+0054fbc0	DIFFER	884v848	-	CText::SetValue: structure and frame: retail homes the by-value group-entry pointer and the GetText result in the dead text/flag argument slots, tail-merges the front-
+00549230	RELOCATION_MATCH	515v515	PASS	CTextSlider::Initialise
+00a69f70	DIFFER	881v955	-	CTextureManager::ReduceMipmapLevel: frame now matches (size as a C2DCoordI); residue is the inlined CManagedTexture release/assign shapes: retail duplicates the failure-path epilogue, ke
+004c9920	DIFFER	580v598	-	CThing::IsAffectedByBulletTime: component ptr into edx/ecx/edi vs retail eax reuse on 0xf9/0x4b lookups + return-false block placement
+006d5d30	DIFFER	883v897	-	CThingAICreature::UpdateAI: frame and register allocation: retail homes the nav component in ebp (spilled to the dead key slot), newOutput in bl and a 0x34 frame where the move t
+00671160	RELOCATION_MATCH	844v844	PASS	CThingCreatureDef::operator=
+008633b0	DIFFER	874v917	-	CThingBodyReorienter::ReorientBodyYZForSlopes: x87 scheduling and frame: retail keeps the helper-minus-position components on the x87 stack through the inline fast normalise (exponent ((0x17c-e)<<2
+0082db00	RELOCATION_MATCH	641v641	PASS	CThingBuilding::LockAllDoors
+004e1e06	RELOCATION_MATCH	537v537	PASS	CVillageDef::operator=
+00675c00	RELOCATION_MATCH	543v543	PASS	CCreatureDef::operator=
+006655a0	RELOCATION_MATCH	700v700	PASS	CThingCreatureBase::GetAnimationSpeedMultiplier
+00666310	DIFFER	915v908	-	CThingCreatureBase::OnCreate: one store shape: after CThingGameObject::OnCreate retail clears the two 0x15c flag bits with a memory-operand 'and byte ptr [esi+0x15c],0x7d' (7 bytes
+006a9ef0	RELOCATION_MATCH	526v526	PASS	CThingPlayerCreature::OnCreate
+00670d50	DIFFER	525v533	-	CThingCreatureDef::Validate: conditional-temporary bookkeeping: retail keeps the cleanup flags in eax (test al / and eax / store), its CAnimFilterNoGroup temporary's destructor st
+00835fd0	DIFFER	611v611	-	CThingDeadCreature::OnCreate: only the 24-byte CRightHandedSet copy from the virtual +0x120 result stores right after each load; retail lags each store one load behind (the positio
+00836260	RELOCATION_MATCH	539v539	PASS	CThingDeadCreature::WorldUpdate
+006c8e90	DIFFER	796v804	-	CThingFilter_IsEligibleWitness::operator(): register/frame allocation: retail keeps thing in ebp and this in edi (spilled to the push-ecx slot and reloaded into ebx for the unknown-threat block)
+0052f1b0	SKIP	-	-	CThingFilter_IsValid::operator(): catalog row holds ~20 small CThingFilter/accessor functions separated by int3 padding
+00838bc0	DIFFER	773v764	-	CThingGameObject::GetMeleeHitParameters: two residues: (1) the 0x87 and 0x68 interface keys take the weapon/position argument slots where retail reuses the params argument slot [esp+0x2c] (sh
+00839100	DIFFER	844v795	-	CThingGameObject::GetWeaponTrailGraphicIndex: the trail-def pointer: retail keeps the out-filled def in edi (its stack slot is reused for the reverse iterator) and releases it in place (dec [edi+4
+00521240	DIFFER	945v937	-	CThingManager::LoadEntitiesBinary: structure and every call match in order; residue is register/frame allocation: retail keeps this in ebx, the process in ebp and a zero in esi, copies 
+00521ae0	RELOCATION_MATCH	518v518	PASS	CThingManager::LoadFromFile
+00523cf0	DIFFER	785v799	-	CThingManager::RuntimeSaveGamePersistentEntitiesInLoadedMaps: call sequence and both save paths in place; residue: retail's hero path calls the vector grow directly (push_back on the known-empty vector folded), t
+0085cbd0	DIFFER	522v518	-	NThingMap::CThingMap::DebugDraw: x87 register variables: retail keeps the row's x (origin.X) on the FPU stack across the inner loop (fst into the box, spilled to a frame word only aro
+00663c40	DIFFER	573v577	-	CThingCreatureBase::DrawPreparePrimitivesForRendering: only residue: the two non-virtual TC calls (0x4c DrawAddWeaponTrails, 0xcd weapon-trail render) - retail loads the component into eax, pushes the cont
+006a4fb0	DIFFER	618v619	-	CThingPhysical::GetFirstCollision: the bool result: retail keeps it in bl (xor bl,bl at entry, ebp = this) and every false exit returns mov al,bl, the null-component exit sharing the me
+006a5610	DIFFER	849v818	-	CThingPhysical::GetFirstCylinderCollisionBetweenPoints: frame layout: retail packs the up axis, the 2D segment points and the normalised cylinder axis into one reused frame region (0x58 frame) and builds up
+006a64d0	DIFFER	837v865	-	CThingPhysical::DrawPreparePrimitivesForRendering: retail frame 0x68 (separate slots for the debug-name info and each text primitive) vs ours 0x54; retail keeps &info in ebx and pushes ebp/edi only aft
+006ab0e0	DIFFER	523v529	-	CThingPlayerCreature::OnHit: the Flourish byte is stored to a frame byte and pushed as a dword after operator new (an extra frame word), and the input device goes to eax where ret
+006ac430	DIFFER	603v606	-	CThingPlayerCreature::LearnExpression: register allocation: item in edi/map in ebx/inventory in ebp (retail ebp/edi/ebx) and ebp pushed late (shrink-wrapped into the inventory block)
+006ac690	RELOCATION_MATCH	630v630	PASS	CThingPlayerCreature::LearnAbility
+006ad700	DIFFER	615v615	-	CThingPlayerCreature::ControlledMove: x87 operand order: the 0.1 push vector loads the constant before each component (retail loads the component, then fmul by the constant); the accelerat
+0049c490	DIFFER	573v583	-	CThingSearchTools::FindThingsInRoughArea<CThing,CThingFilter_HasPhysicsMesh>: register assignment: retail keeps this in edi, the map vector in ebp and the map iterator in ebx (ours: ebx/edi/ebp), and its x87-free frame is 0x50 w
+00518130	DIFFER	526v526	-	CThingSearchTools::ForEachInRoughArea<CThingPhysical,CThingFilter_None,bool(__fastcall*)(CThingPhysical&)>: after the coordinator's 007FCEF0 recipe (y guard + hoisted level*20 / level*12 offsets + integer-sum indexing) the Width-load SIB residue is gone; the
+0063f4b0	DIFFER	769v769	-	CThingSearchTools::ForEachInRoughArea<CThingPhysical,CFilter_Bind2<HasNavigationInformation,OverlappingBoundingBox>,CThingFindNavigationLayerAt>: with the 007FCEF0 indexing recipe applied (no change in length), the only residue is one swapped spill-reload pair at the map-loop exit (edi before es

@@ -272226,6 +272226,90 @@ $catalog = @(
         TestSource = '00/98/CThingSearchTools_GetPFirstThingInRoughArea_00987430_test.cpp'
         PassPattern = '00987430_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004e1e06'
+        Module = 'CVillageDef'
+        Source = '00/4e/CVillageDef_operator_004e1e06.cpp'
+        TestSource = '00/4e/CVillageDef_operator_004e1e06_test.cpp'
+        PassPattern = '004e1e06_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ea6dd'
+        Module = 'CTavernGameDef'
+        Source = '00/4e/CTavernGameDef_operator_004ea6dd.cpp'
+        TestSource = '00/4e/CTavernGameDef_operator_004ea6dd_test.cpp'
+        PassPattern = '004ea6dd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00521ae0'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_LoadFromFile_00521ae0.cpp'
+        TestSource = '00/52/CThingManager_LoadFromFile_00521ae0_test.cpp'
+        PassPattern = '00521ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00549230'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_Initialise_00549230.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_Initialise_00549230_test.cpp'
+        PassPattern = '00549230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054f8e0'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_FitInWindow_0054f8e0.cpp'
+        TestSource = '00/54/NUISystemCText_FitInWindow_0054f8e0_test.cpp'
+        PassPattern = '0054f8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006655a0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetAnimationSpeedMultiplier_006655a0.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetAnimationSpeedMultiplier_006655a0_test.cpp'
+        PassPattern = '006655a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00671160'
+        Module = 'CThingCreatureDef'
+        Source = '00/67/CThingCreatureDef_operator_00671160.cpp'
+        TestSource = '00/67/CThingCreatureDef_operator_00671160_test.cpp'
+        PassPattern = '00671160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00675c00'
+        Module = 'CCreatureDef'
+        Source = '00/67/CCreatureDef_operator_00675c00.cpp'
+        TestSource = '00/67/CCreatureDef_operator_00675c00_test.cpp'
+        PassPattern = '00675c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a9ef0'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_OnCreate_006a9ef0.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_OnCreate_006a9ef0_test.cpp'
+        PassPattern = '006a9ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ac690'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_LearnAbility_006ac690.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_LearnAbility_006ac690_test.cpp'
+        PassPattern = '006ac690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00836260'
+        Module = 'CThingDeadCreature'
+        Source = '00/83/CThingDeadCreature_WorldUpdate_00836260.cpp'
+        TestSource = '00/83/CThingDeadCreature_WorldUpdate_00836260_test.cpp'
+        PassPattern = '00836260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce15e0'
+        Module = 'CTargetForKey'
+        Source = '00/ce/CTargetForKey_Main_00ce15e0.cpp'
+        TestSource = '00/ce/CTargetForKey_Main_00ce15e0_test.cpp'
+        PassPattern = '00ce15e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

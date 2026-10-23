@@ -1,0 +1,15 @@
+address	name	evidence
+0x004E1E06	CVillageDef::operator=	chunk307 match
+0x00671160	CThingCreatureDef::operator=	chunk307 match
+0x00675C00	CCreatureDef::operator=	chunk307 match
+0x004EA6DD	CTavernGameDef::operator=	chunk307 match
+0x006A9EF0	CThingPlayerCreature::OnCreate	chunk307 match
+0x006AB0E0	CThingPlayerCreature::OnHit	chunk307 body
+0x005424B0	NUISystem::CIconText::~CIconText	chunk307 body
+0x00663C40	CThingCreatureBase::DrawPreparePrimitivesForRendering	chunk307 body
+0x006CB610	IsNavLineOfSight	chunk307 callee usage
+0x00662410	IsRegisteredCombatant	chunk307 callee usage
+0x0099EF90	CCharString::Reserve	chunk307 callee usage
+0x0099EF70	CCharString::SetUseFastExtend	chunk307 callee usage
+0x00449970	GetMainPlayer	chunk307 callee usage
+0x00487DC0	GetHeroCreature	chunk307 callee usage
