@@ -58,6 +58,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## (c) Byte-parity reconstruction — `docs/pipeline/FULL_DECOMP.md`, `docs/pipeline/DEBAKE_WORKLIST.md`
 
+- [ ] 2026-10-23 owner priority: chunk cuts put graphics-API wrapper classes last (D3D9 device/display, vertex/index buffers, shaders, textures/surfaces, Win32 window/video, vsync) so authoring effort goes to game logic, CPU math, scene graph and draw-order lists first — the code a future source port reuses. Byte-exact rules are unchanged; deferred rows still land later. A port tree that swaps the D3D-facing engine classes (`CDisplayManager`, texture/buffer/shader wrappers) for placeholders is a possible separate track, not started.
 - [x] 2026-10-20 RTM 3077 on the Linux lane (Rich-header confirmed; /GS rows landed; other parked rows unchanged = formulation gaps)
 - [x] VC7.1 RTM 13.10.3077 harness; `verify_and_land.py` oracle->author->verify->land loop
 - [x] Byte-identical 8,082 (16.3%); functional-or-matching 18,579 (37.5%) as of 2026-08-28
