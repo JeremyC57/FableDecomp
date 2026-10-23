@@ -272345,6 +272345,13 @@ $catalog = @(
         TestSource = '00/73/CTCDummyVillager_OnInitialActivate_00730070_test.cpp'
         PassPattern = '00730070_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a37060'
+        Module = 'CClassFactory'
+        Source = '00/a3/CClassFactory_GetClassNumberFromName_00a37060.cpp'
+        TestSource = '00/a3/CClassFactory_GetClassNumberFromName_00a37060_test.cpp'
+        PassPattern = '00a37060_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

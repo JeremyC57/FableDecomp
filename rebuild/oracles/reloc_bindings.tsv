@@ -26084,3 +26084,4 @@ __imp__ReadFileEx@20	0143fdf4	009c3ae0
 ?IS_THING_ALIVE@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z	0065f8ca	00730070
 ?SetHomeBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z	00512210	00730070
 ?SetWorkBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z	00512260	00730070
+__TI1?AUCGenericException@@	013692f8	00a37060
