@@ -728,3 +728,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - **Iterator by value** (0070e710, RST2): an STLport iterator with a user copy ctor is built in place on the stack (`push ecx; mov ecx,esp`); a const_iterator with an implicit copy is pushed as a value. Pick per retail's argument shape.
 - **Implicit dtor leaves the vptr alone; a user dtor resets it** (RST2) — check retail for the vptr store before writing `~T() {}`.
 - **c_str shapes** (RST2): `s = ""; if (p) s = p->data;` and `p ? p->data : ""` give the two retail forms.
+- **STLport list push_back as `insert(end(), x)` + `begin()` front + a named operator= item** (009490d0 GetBar, b62, SW2).

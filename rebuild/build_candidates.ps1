@@ -270351,6 +270351,13 @@ $catalog = @(
         TestSource = '00/b6/CEngineLandscapeRenderer_AddFrameForegroundTexturesUsed_00b67ec0_test.cpp'
         PassPattern = '00b67ec0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009490d0'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/94/CAIStateGroupGoToPub_GetBar_009490d0.cpp'
+        TestSource = '00/94/CAIStateGroupGoToPub_GetBar_009490d0_test.cpp'
+        PassPattern = '009490d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
