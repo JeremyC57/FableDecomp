@@ -26855,3 +26855,5 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABUCCharString@@ABUCScriptThing@@W4ETraderComment@@@Z	00e01900	00e06050
 ?erase@CScriptThingVector@@QAEPAUCScriptThing@@PAU2@0@Z	008ac9d0	00e06050
 ?_M_copy@_Rb_tree@NPairLongMapTree@@QAEPAUSRbNode@2@PAU32@0@Z	00461533	004f97b3
+??RCThingFilter_IsEvadeExplosion@?A0x5e8a7539@@QBE_NABUCThing@@@Z	0080dc90	0080e670
+?GetDataFromEventString@?A0x5ba2ddd2@@YI_NABUCCharString@@JAAU2@@Z	00870c90	00870fc0
