@@ -193,3 +193,9 @@ Conclusion: in VC7.1 the allocator's weight is not driven by source-level aliase
 - `((GetInterface(...), c4f) && ...)`: 467v457, ebp kept.
 - Making LowerBound opaque (body removed, or defined after the caller): byte-identical to the base; the CSE of `deed` into ebp does not depend on what the compiler knows about the callee.
 So neither callee visibility nor statement sequencing in the 0x4F test changes it. The remaining suspects are the far use (GetDeedDef inside the conditionally-constructed CDefPointer temporary) and how retail wrote that tail.
+
+## Round 13 (2026-10-23): conditional-temporary tail on 008508b0 — theory falsified, real shape found
+- Flattened tail (`bool hasFlag = false; if (c51) hasFlag = ...; if (!hasFlag) return false;`): 416v457. The conditional-temp flag disappears and the frame shrinks, but `deed` is still in ebp, now loaded at entry.
+- Two plain `if ... return false;`: 422v457, same. Ternary tail `c51 ? ... : true`: 463v457. Ternary condition: 457v457, byte-identical. `EOpinionDeedType(deed)` functional cast: byte-identical.
+- Diagnostic: replacing EITHER use of `deed` with a constant still leaves `push ebp`, and ours then puts `this` in ebp (`mov ebp,ecx`).
+**Finding:** retail does not use ebp anywhere in this function. It spills `this` to `[esp+0Ch]` and reloads both `this` and `deed` from memory. Ours always finds some value worth ebp's push/pop (deed, or `this` when deed has one use). This is a cost threshold on using the fourth callee-saved register for a 2-use value, not a per-variable ranking or a CSE decision. Next question: what lowers the estimated benefit of the 2-use candidates (or raises ebp's cost) so VC7.1 leaves ebp unused?
