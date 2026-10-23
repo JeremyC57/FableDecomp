@@ -25308,3 +25308,14 @@ __Rb_tree_increment	004292c0	0057770a
 ??$GetPFirstThingInRoughArea@UCThingFilter_HasTrackName@@UCThing@@@CThingSearchTools@@QBE_NABUC2DBoxI@@ABUCThingFilter_HasTrackName@@PAPAUCThing@@@Z	007fd110	0095ab50
 ?erase@?$CRetailVector@UCIntelligentPointer@@@@QAEPAUCIntelligentPointer@@PAU2@0@Z	004ac0f0	0095ab50
 ?g_WaspQueenCircleRadius@@3MA	0138d2d8	0095ab50
+?AddAutoMarker@CMiniMapDisplay@@QAEXPBUCThing@@J@Z	0082a500	0082add0
+?ClipSphere@CEngineCamera@@QAEXABUC3DVector@@MAAK@Z	00b30480	00b99710
+?ClipSubSections@CEnginePrimitiveManagerRepeatedStaticMeshes@@QAEXPBUCSubsectionElement@NEnginePrimitiveManagerRepeatedStaticMeshes@@KM_NAAPAUCClipListElement@3@@Z	00b99710	00b99710
+?g_pEngineCamera@@3PAVCEngineCamera@@A	01436ea0	00b99710
+??0CEngineSubPrimitiveOcclusionTest@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00b98b10	00babf70
+?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEKPAVCEnginePrimitiveOcclusionInfo@@@Z	00b2fac0	00babf70
+?_M_insert_overflow@?$CVector@PAVCEngineInternalPrimitiveBase@@@@QAEXPAPAVCEngineInternalPrimitiveBase@@ABQAV2@ABU__true_type@@I_N@Z	00bac720	00babf70
+?g_pPrimitiveOcclusionManager@@3PAVCEnginePrimitiveOcclusionManager@@A	01436e58	00babf70
+?find@NUISystem@@YIPBKPBK0ABK@Z	0053c8f8	0053822b
+?push_back@BoolVector@NUISystem@@QAEXAB_N@Z	0053cb4f	0053822b
+?push_back@ComponentVector@NUISystem@@QAEXABQAUCComponent@2@@Z	00486024	0053822b

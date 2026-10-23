@@ -270576,6 +270576,41 @@ $catalog = @(
         TestSource = '00/94/CAIStateGroupJackDragon_FindFlightPathCurvePoint_0094fa00_test.cpp'
         PassPattern = '0094fa00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0082add0'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_InitialiseDemonDoorMarkers_0082add0.cpp'
+        TestSource = '00/82/CMiniMapDisplay_InitialiseDemonDoorMarkers_0082add0_test.cpp'
+        PassPattern = '0082add0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af4240'
+        Module = 'CParticleSystem'
+        Source = '00/af/CParticleSystem_WriteBinary_00af4240.cpp'
+        TestSource = '00/af/CParticleSystem_WriteBinary_00af4240_test.cpp'
+        PassPattern = '00af4240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b99710'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_ClipSubSections_00b99710.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_ClipSubSections_00b99710_test.cpp'
+        PassPattern = '00b99710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00babf70'
+        Module = 'CEnginePrimitiveManagerRepeatedZSprites'
+        Source = '00/ba/CEnginePrimitiveManagerRepeatedZSprites_RenderPrimitive_00babf70.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerRepeatedZSprites_RenderPrimitive_00babf70_test.cpp'
+        PassPattern = '00babf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053822b'
+        Module = 'CList'
+        Source = '00/53/CList_GetDataFromDef_0053822b.cpp'
+        TestSource = '00/53/CList_GetDataFromDef_0053822b_test.cpp'
+        PassPattern = '0053822b_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
