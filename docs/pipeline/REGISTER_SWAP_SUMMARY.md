@@ -119,3 +119,7 @@ which nodes the compiler created first. A choice inside an inlined helper can fl
   ability's dead slot.
 - **No change:** allocator spellings on `AddClothingToThing`, and identity wrappers (inline or `__forceinline`) on
   either axis for the `/Os` push case.
+- **New open question:** retail stores a `new T(param)` temp in the dead slot of the **same** parameter the
+  constructor reads (`mov ecx,[ebp+8]` then `mov [ebp+8],eax`). Ours picks another dead parameter's slot or a frame
+  slot. Changing the constructor (by value, `const long&`, assigning in the body), naming the pointer or adding block
+  scopes did not change it. This blocks `AssignAbilityPC` (996 v 996) and its sibling `AssignThingPC`.
