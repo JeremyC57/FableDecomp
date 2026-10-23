@@ -1,0 +1,15 @@
+address	name	evidence
+00f35b30	CEntityScriptBase::IsDone	chunk 322: script loop condition (was CCreatureAction_TrollWhackGroundBase::Initialise / IsActiveThreadTerminating)
+007e74d0	CScriptedThingBase::~CScriptedThingBase	chunk 322: scripted-thing handle dtor
+007e72a0	CScriptedThingBase::CScriptedThingBase	chunk 322: scripted-thing handle ctor
+004af740	CQuestManager::GetIndexFromRegisteredQuest	chunk 322
+004af610	CQuestManager::IsQuestActive	chunk 322
+004af5b0	CQuestManager::FindActiveQuest	chunk 322: active-quest lookup by name
+009f0570	CCodeSectionManager::Contains	chunk 322
+00cd23b9	IsScripting	chunk 322
+00cd2770	Release	chunk 322: (was CMemoryDataOutputStream::Clear)
+0044fc00	CDefString::TransferBinaryIn	chunk 322
+0041e5f2	CFrontEndManager::GetInstance	chunk 322: takes no argument
+005bf2ed	AcceptsItem	chunk 322: bool accepts-item check (was GetItemDescription)
+00995030	CDataInputStream::ReadC2DVector	chunk 322: C2DVector stream read
+00533cc0	CRedefinerList::Add	chunk 322: CRedefinerList member (was vector push_back)
