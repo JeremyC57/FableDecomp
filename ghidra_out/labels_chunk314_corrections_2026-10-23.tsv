@@ -1,0 +1,13 @@
+address	name	evidence
+00d06130	CAssassin3::Main	chunk 314: body drives CAssassin3 (was labelled CAssassin2)
+008574d0	SetAnimationName	chunk 314 callee analysis (was CTCInGameMenu::SetPDef)
+0073a6e0	GetCurrentMode	chunk 314 callee analysis (was CPixelShader::CountReferences)
+00a14440	C3DVector::Normalise	chunk 314 callee body
+009b9870	CParsedItem::GetString	chunk 314 callee body
+0099f560	CCharString::Trim	chunk 314 callee body
+006e7b40	CScriptThing::CScriptThing	chunk 314 ctor body
+0042d5b1	CUIStateMap::operator[]	chunk 314: CUIState map operator[]
+00535470	std::vector<unsigned long>::vector	chunk 314: copy ctor body
+0058119b	CTCHaste::PausedSetErase	chunk 314: paused-set erase
+00580d21	CTCHaste::PausedSetInsert	chunk 314: paused-set insert
+00800020	CTCHaste::Recalculate	chunk 314: recalculate

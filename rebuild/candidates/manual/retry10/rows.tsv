@@ -2791,3 +2791,34 @@ address	module	name	length	chunk	reason
 0094c050	CAIStateGroup_SellToBuyer	?Update@CAIStateGroup_SellToBuyer@@UAEXXZ	1859	hand313	SKIPPED(-) -- not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
 00915b60	CAIStateGroup_MoveGoodsBase	PlaceGoods	1936	hand313	SKIPPED(-) -- not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
 0097bda0	CAIStateGroup_ScorpionKing	UpdateCombat	2016	hand313	SKIPPED(-) -- not reached: 1.8-2 KB row, budget spent on first passes and advisor levers
+00887b70	CBlendedEnvironmentTheme	Blend	1776	hand314	DIFFER(1736v1769) -- register swap this/other + 8-byte frame gap
+00da6d50	CBalverineFightingGuard	Main	1168	hand314	DIFFER(1159v1159) -- exit head-merge (lea hoist into shared dtor exit); advisor opts block-scope ref + inline_depth(0) tried, no change
+00da7830	CCorneredGuard	Main	1280	hand314	DIFFER(1269v1269) -- exit head-merge (lea hoist into shared dtor exit); advisor opts block-scope ref + inline_depth(0) tried, no change
+00e4aa00	CBanditLeader	Main	1360	hand314	DIFFER(1362v1356) -- block placement: inline handle-dtor loop exit vs the angered block order (7 forms tried)
+00d05a60	CAssassin2	Main	1408	hand314	DIFFER(1448v1400) -- dtor inline budget (third exit called out of line): movie-handle generated dtor; advisor levers tried
+00d06130	CAssassin2	Main	1408	hand314	DIFFER(1448v1400) -- CAssassin3::Main (label says CAssassin2); same residue as 00d05a60
+00dc4600	CCeremonialEffect	Main	1184	hand314	DIFFER(1188v1173) -- register allocation (zero register ebx, &Me in ebp) + inline/out-of-line CScriptThing() split
+009cda70	CBankFile	InternalWriteEntryList	1248	hand314	DIFFER(1243v1243) -- SIB base/index tie-break on DataSize (1 block); frame slot fixed by operator[] stand-in; 34-variant grid no move
+009cfbc0	CBankFile	ReadEntryList	1984	hand314	DIFFER(1973v1969) -- register/dead-arg-slot assignment (index copy vs infoSize slots, this/flag L0-L4); structure matches
+009a8840	CBankFileManager	CBankFileManager::OpenRetailBank	1568	hand314	DIFFER(1581v1565) -- inline_depth(0) around version return fixes the out-of-line dtor exit; residue esi/edi register choice + tail dtor Info load via eax; 17 blocks
+009a8170	CBankFileManager	CBankFileManager::OpenIniFile	1744	hand314	DIFFER(1708v1732) -- frame-slot layout of loop temporaries + keyword temp reloaded from stack (ctor eax not reused); structure and compare shapes match
+009d0880	CBankFile	ReadFileInformation	1648	hand314	DIFFER(1570v1635) -- forceinline ctor + inline_depth(0) on 3rd throw gives the retail inline split; residue one extra frame word + throw-block layout; /GS, throws; 42 blocks
+0084d2f0	CBase	IsCameraOcclusionFromTo	1184	hand314	DIFFER(1134v1181) -- x87 temporaries/frame overlay (0x58 v 0x4c) + duplicated occluded-position tail; structure matches
+00886e80	CBlendedEnvironmentTheme	CompactTextureSet	1200	hand314	DIFFER(1174v1190) -- register allocation (count edi v ebx, zero constant in register); structure, unrolling and inline resize match
+008873c0	CBlendedEnvironmentTheme	SetAsWeightedBlendOfThemes	1136	hand314	DIFFER(1172v1131) -- texture-set loop address hoisting/register allocation around the inlined STLport push_back overflow; colour/scaler loops match
+008865c0	CBlendedEnvironmentTheme	BuildFromSource	1968	hand314	DIFFER(1962v1962) -- dead-parameter slot choice for the 1-blend temporary (theme slot v environment slot), 9 blocks; everything else matches; scoped-float/forceinline-helper/tag-scope/declaration-position levers inert or worse
+008575c0	CCombatActionBase	CCombatActionBase::GetNextPos	1040	hand314	DIFFER(1025v1032) -- register allocation (animation id in ebx, this esi/edi swap, hoisted push) shifts frame 0xc8 v 0xb0; structure, transforms and call order match
+009ebdd0	CConsoleCommandBase	?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z	1632	hand314	DIFFER(1584v1625) -- error/ok flag register choice + char argument passing + frame 0x8c v 0x78; first pass, structure and call order modelled
+00865f40	CCombatAction_GenericStrikeResponseBase	?Initialise@CCombatAction_GenericStrikeResponseBase@@UAEXXZ	1168	hand314	DIFFER(1106v1161) -- register choice + x87 sum order + cos compare fxch + animation-name tail merge; flow and interface lookups match
+00867200	CCombatAction_GenericResponseToExplosion	?Initialise@CCombatAction_GenericResponseToExplosion@@UAEXXZ	1184	hand314	DIFFER(1133v1182) -- frame/register allocation + orientation temp slot + inline mode ctor scheduling; flow and calls match
+008664f0	CCombatAction_GenericStrikeResponseKnockdown	?Initialise@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ	2032	hand314	DIFFER(1963v2028) -- first pass: inline string compare shape + x87 term order + register/slot choices; flow and calls match
+0087ee70	CCombatAction_StabThing	CCombatAction_StabThing::PerformAction	1232	hand314	DIFFER(1168v1219) -- first pass: && temporary conditional-destruction layout + def-pointer copy + register swap; flow and calls match
+008591e0	CCombatActionBase	PerformPossibleDamageAction	1152	hand314	DIFFER(1091v1146) -- first pass: frame/slot layout of the filter objects + AddRef shape; flow and calls match
+00859ef0	CCombatActionBase	?OnAnimationLoaded@CCombatActionBase@@MAEXXZ	1196	hand314	DIFFER(1198v1196) -- first pass: frame packing of out-pointers + ebx/ebp swap; flow and calls match
+00694020	CCreatureActionBase	?FrameUpdate@CCreatureActionBase@@MAEXXZ	1040	hand314	DIFFER(1042v1032) -- first pass 7 blocks: retry-loop rotation + cut-scene erase header reload + PauseTimer store order
+006ebf70	CCombatRing	AssignAttackersToRing	1040	hand314	DIFFER(1022v1026) -- first pass 32 blocks: register choice + x87 term order + loop variable homing
+006eae20	CCombatManager	GetBestSequenceIndexAttackerOnDefender	1392	hand314	DIFFER(1394v1387) -- first pass 73 blocks: register choice + frame 0xb4 v 0xbc; flow, calls and list selection match
+006ec850	CCombatWheel	CCombatWheel::PopulateCombatRings	1616	hand314	DIFFER(1606v1606) -- 1606v1606 73 blocks: frame-slot sharing of the insert_unique result (0x3c v 0x30) + list link store order; flow and size match
+00c41fb0	CCombatant	CCombatant::ComputeDerivedCombatStats	1584	hand314	DIFFER(1469v1570) -- first pass 81 blocks: inline-asm fistp rounding helper (asm_bake family lane gap); label is an autoname, body is a 3D sound-source update
+00531090	CComponent	GetBoundingBox	1232	hand314	DIFFER(1216v1227) -- first pass 73 blocks: frame 0xb4 v 0xa4 + first-index loop shape + register choice; aligned frame and calls match
+00533d30	CComponent	GetSize	1750	hand314	DIFFER(1764v1750) -- first pass 67 blocks: register/frame choice + first-index loop shape (as sibling 00531090); flow and calls match

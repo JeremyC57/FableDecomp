@@ -273881,6 +273881,62 @@ $catalog = @(
         TestSource = '00/c6/NScriptCQGuildTrainingSkillScript_BeginScript_00c6a8b0_test.cpp'
         PassPattern = '00c6a8b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00532d90'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_CComponent_00532d90.cpp'
+        TestSource = '00/53/NUISystemCComponent_CComponent_00532d90_test.cpp'
+        PassPattern = '00532d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b0d10'
+        Module = 'CCombatManager'
+        Source = '00/8b/CCombatManager_RegisterCombatSequences_008b0d10.cpp'
+        TestSource = '00/8b/CCombatManager_RegisterCombatSequences_008b0d10_test.cpp'
+        PassPattern = '008b0d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a38670'
+        Module = 'CCRCSymbolMap'
+        Source = '00/a3/CCRCSymbolMap_ParseEnum_00a38670.cpp'
+        TestSource = '00/a3/CCRCSymbolMap_ParseEnum_00a38670_test.cpp'
+        PassPattern = '00a38670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d15510'
+        Module = 'CBH_GangGruntSpawn'
+        Source = '00/d1/CBHGangGruntSpawn_Main_00d15510.cpp'
+        TestSource = '00/d1/CBHGangGruntSpawn_Main_00d15510_test.cpp'
+        PassPattern = '00d15510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d15a40'
+        Module = 'CBH_GangGrunt'
+        Source = '00/d1/CBHGangGrunt_Main_00d15a40.cpp'
+        TestSource = '00/d1/CBHGangGrunt_Main_00d15a40_test.cpp'
+        PassPattern = '00d15a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e49980'
+        Module = 'CBlockingBandit'
+        Source = '00/e4/CBlockingBandit_Main_00e49980.cpp'
+        TestSource = '00/e4/CBlockingBandit_Main_00e49980_test.cpp'
+        PassPattern = '00e49980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e57020'
+        Module = 'CBS_Teacher'
+        Source = '00/e5/CBSTeacher_GetBookSpecificArgs_00e57020.cpp'
+        TestSource = '00/e5/CBSTeacher_GetBookSpecificArgs_00e57020_test.cpp'
+        PassPattern = '00e57020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e57530'
+        Module = 'CBS_Teacher'
+        Source = '00/e5/CBSTeacher_LookForBook_00e57530.cpp'
+        TestSource = '00/e5/CBSTeacher_LookForBook_00e57530_test.cpp'
+        PassPattern = '00e57530_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

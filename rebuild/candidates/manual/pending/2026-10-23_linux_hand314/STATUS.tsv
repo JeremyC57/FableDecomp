@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008b0d10	RELOCATION_MATCH	1713v1713	PASS	63 name->factory registrations + tail call
+00887b70	DIFFER	1736v1769	-	register swap this/other + 8-byte frame gap
+00da6d50	DIFFER	1159v1159	-	exit head-merge (lea hoist into shared dtor exit); advisor opts block-scope ref + inline_depth(0) tried, no change
+00da7830	DIFFER	1269v1269	-	exit head-merge (lea hoist into shared dtor exit); advisor opts block-scope ref + inline_depth(0) tried, no change
+00d15510	RELOCATION_MATCH	1058v1058	PASS	leaf Main; scripted-handle hierarchy, filter, timer, exit-point loop
+00d15a40	RELOCATION_MATCH	1395v1395	PASS	leaf Main; C3DVector user copy ctor for the by-value wander centre
+00e49980	RELOCATION_MATCH	1413v1413	PASS	leaf Main; handle with declared out-of-line virtual dtor (0x7E74D0 at every exit); while(!term) outer loop
+00e4aa00	DIFFER	1362v1356	-	block placement: inline handle-dtor loop exit vs the angered block order (7 forms tried)
+00d05a60	DIFFER	1448v1400	-	dtor inline budget (third exit called out of line): movie-handle generated dtor; advisor levers tried
+00d06130	DIFFER	1448v1400	-	CAssassin3::Main (label says CAssassin2); same residue as 00d05a60
+00e57020	RELOCATION_MATCH	1295v1295	PASS	implicit const char* map keys; __forceinline CCharString == const char*
+00e57530	RELOCATION_MATCH	1197v1197	PASS	named vector-start pointer local ahead of GetHero; member handle called through its vtable
+00dc4600	DIFFER	1188v1173	-	register allocation (zero register ebx, &Me in ebp) + inline/out-of-line CScriptThing() split
+00e621f0	SKIP	-	-	row covers two functions: SetHenchmanAsHired ends at 0x00E6272C (jump tables + int3) and another body starts at 0x00E62730 inside the row
+00a38670	RELOCATION_MATCH	1448v1448	PASS	break in the first '}' arm orders the two ';' tails
+00532d90	RELOCATION_MATCH	1034v1034	PASS	static tree increment; uninitialised destroy-range tag local
+009cda70	DIFFER	1243v1243	-	SIB base/index tie-break on DataSize (1 block); frame slot fixed by operator[] stand-in; 34-variant grid no move
+009cfbc0	DIFFER	1973v1969	-	register/dead-arg-slot assignment (index copy vs infoSize slots, this/flag L0-L4); structure matches
+009a8840	DIFFER	1581v1565	-	inline_depth(0) around version return fixes the out-of-line dtor exit; residue esi/edi register choice + tail dtor Info load via eax; 17 blocks
+009a8170	DIFFER	1708v1732	-	frame-slot layout of loop temporaries + keyword temp reloaded from stack (ctor eax not reused); structure and compare shapes match
+009d0880	DIFFER	1570v1635	-	forceinline ctor + inline_depth(0) on 3rd throw gives the retail inline split; residue one extra frame word + throw-block layout; /GS, throws; 42 blocks
+0084d2f0	DIFFER	1134v1181	-	x87 temporaries/frame overlay (0x58 v 0x4c) + duplicated occluded-position tail; structure matches
+00886e80	DIFFER	1174v1190	-	register allocation (count edi v ebx, zero constant in register); structure, unrolling and inline resize match
+008873c0	DIFFER	1172v1131	-	texture-set loop address hoisting/register allocation around the inlined STLport push_back overflow; colour/scaler loops match
+008865c0	DIFFER	1962v1962	-	dead-parameter slot choice for the 1-blend temporary (theme slot v environment slot), 9 blocks; everything else matches; scoped-float/forceinline-helper/tag-scope/declaration-position levers inert or worse
+008575c0	DIFFER	1025v1032	-	register allocation (animation id in ebx, this esi/edi swap, hoisted push) shifts frame 0xc8 v 0xb0; structure, transforms and call order match
+009ebdd0	DIFFER	1584v1625	-	error/ok flag register choice + char argument passing + frame 0x8c v 0x78; first pass, structure and call order modelled
+00865f40	DIFFER	1106v1161	-	register choice + x87 sum order + cos compare fxch + animation-name tail merge; flow and interface lookups match
+00867200	DIFFER	1133v1182	-	frame/register allocation + orientation temp slot + inline mode ctor scheduling; flow and calls match
+008664f0	DIFFER	1963v2028	-	first pass: inline string compare shape + x87 term order + register/slot choices; flow and calls match
+0087ee70	DIFFER	1168v1219	-	first pass: && temporary conditional-destruction layout + def-pointer copy + register swap; flow and calls match
+008591e0	DIFFER	1091v1146	-	first pass: frame/slot layout of the filter objects + AddRef shape; flow and calls match
+00859ef0	DIFFER	1198v1196	-	first pass: frame packing of out-pointers + ebx/ebp swap; flow and calls match
+00694020	DIFFER	1042v1032	-	first pass 7 blocks: retry-loop rotation + cut-scene erase header reload + PauseTimer store order
+006ebf70	DIFFER	1022v1026	-	first pass 32 blocks: register choice + x87 term order + loop variable homing
+006eae20	DIFFER	1394v1387	-	first pass 73 blocks: register choice + frame 0xb4 v 0xbc; flow, calls and list selection match
+006ec850	DIFFER	1606v1606	-	1606v1606 73 blocks: frame-slot sharing of the insert_unique result (0x3c v 0x30) + list link store order; flow and size match
+00c41fb0	DIFFER	1469v1570	-	first pass 81 blocks: inline-asm fistp rounding helper (asm_bake family lane gap); label is an autoname, body is a 3D sound-source update
+00531090	DIFFER	1216v1227	-	first pass 73 blocks: frame 0xb4 v 0xa4 + first-index loop shape + register choice; aligned frame and calls match
+00533d30	DIFFER	1764v1750	-	first pass 67 blocks: register/frame choice + first-index loop shape (as sibling 00531090); flow and calls match

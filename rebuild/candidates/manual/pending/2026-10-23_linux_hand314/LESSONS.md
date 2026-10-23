@@ -1,0 +1,43 @@
+# Chunk 314 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- Exit dtors: `#pragma inline_depth(0)` / `#pragma inline_depth()` around a single early `return` makes VC call the local's dtor out of line at that exit only. This reproduces retail's out-of-line ~CCountedPointer 0x009A9BB0 at the version-mismatch exit (009a8840, 47->17 blocks).
+- Exception ctor inline split: a `__forceinline` exception ctor plus `inline_depth(0)` around only the third `throw` gives retail's inline/inline/out-of-line pattern of the bank exception ctor 0x009D1E70 (009d0880).
+- Global before vcall: an inline getter for the global frames-per-second (`GetFramesPerSecond()`) loads the global before the virtual call, as retail does (008575c0).
+- Matrix transforms: `__forceinline operator*=` with `float x = X, y = Y;` locals reproduces retail's in-place C3DVector-by-matrix transform (008575c0).
+- AngleDifference 0x00A441E0 is `__stdcall`.
+- `(float)fabs(x) > 0.25f` gives retail's dword compare; plain `fabs(x) > 0.25f` compares a double.
+- Inline mode objects (CModeKnockdown) and the CCountedPointer<CModeBase> ctor need `__forceinline` to inline as in retail (00867200). Model the mode base as `{vptr, CBaseIntelligentPointer{Data, Info}}` so the object is 0x30 bytes.
+- STLport vector erase: `vector::erase(remove_if(...), end())` in CCreatureActionBase::FrameUpdate calls the LTCG `__fastcall` helpers find_if 0x00695E30 / remove_copy_if 0x00696240 / copy 0x006962C0 / _Destroy_range 0x00696790. Their args are `(first ecx, last edx, ..., const tag&)`.
+  - Retail stores the new finish right after _Destroy_range. Ours only does so when the erase is an inline member of a vector struct, because a store through `this` of the inline member is not sunk past the next vcall.
+  - All the iterator tags share one frame byte when each is a `SRandomTag()` temporary with a user ctor (00694020).
+- Interface lookup with no out-of-line LowerBound: the loop is spelled `end = last; begin = first; count = end - begin; it = begin;`, which gives retail's `mov eax,[first] ... mov edi,eax` copy (00694020).
+- Struct iterator arguments: a map iterator passed by value to an LTCG `__fastcall` for_each is built in its stack slot (`push ecx ; mov eax,esp ; mov [eax],ecx`) only when the iterator class has a user copy ctor (006ebf70, 58->43 blocks).
+- Unused predicate argument: an uninitialised local empty-functor predicate (`CIsProngFree pred;`) pushed by value gives retail's push of a stale frame dword. A `Pred()` temporary stores a zero byte first (006ebf70).
+- Dot product: written as `c = a.Y*b.Y; c += a.X*b.X; c += a.Z*b.Z;` it reproduces retail's Y,X,Z load order. The single-expression form reorders it (006ebf70).
+- STLport map dtor: an inline `~_Rb_tree` (clear + free header) must be `__forceinline` in a large function, or VC calls it out of line and the body comes out 170 bytes short (006ec850).
+- STLport map size: the map is 12 bytes in retail frames (header, count, empty compare padded).
+- Scoping levers are inert on 008865c0's dead-parameter slot: scoped block float, `__forceinline` helper, per-branch tag and reversed scope (R&D E-26/E-27) all left the `1 - blend` temporary in the `environment` slot.
+- 0x00C4xxxx sound-source code: retail rounds levels with a bare dword `fistp` (`x - 0.5f` stored and reloaded through a dead argument slot, then `if (r < 0) ++r`). This is the inline-asm rounding family; park on sight (00c41fb0).
+- `and esp,-8` UI frames: NUISystem::CComponent::GetBoundingBox / GetSize got the aligned frame from C2DVector/C2DBoxF locals returned by hidden pointer without any explicit `align` (00531090, 00533d30). Check other aligned-frame UI rows the same way before assuming an aligned local.
+- Probe tooling: `probe/vt.py in out` expands `@VT prefix 0xOFF:decl; 0xOFF:decl` into padded virtual slots. It re-appends `;` to every declaration.
+
+Review at landing:
+- Rows that took more than 4 grades:
+  - 009cda70 (34-variant grid);
+  - 00d05a60/00d06130 (dtor inline budget);
+  - 008865c0 (R&D levers);
+  - 009a8840 (orb1-orb5);
+  - 009d0880 (rfd1-rfd3);
+  - 00694020 (fu1-fu8, 7 blocks left);
+  - 006ebf70 (aar1-aar5);
+  - 006ec850 (pcr1-pcr5);
+  - 008575c0 (gnp1-gnp7).
+- Local base models used next to existing engine headers, because the PDB headers are opaque or have debug-STL offsets:
+  - CCombatAction_StabThing (header is opaque padding);
+  - CCombatAction_GenericResponseToExplosion;
+  - CCombatAction_GenericStrikeResponseKnockdown;
+  - CConsoleCommandBase;
+  - CCreatureActionBase: its header has 16-byte PDB vectors, so CutSceneEvents sits at +0x94 there but the retail header pointer is +0x90 and the count +0x94;
+  - CBankFile.
+- Catalog row 00e621f0 holds two functions (SetHenchmanAsHired ends at 0x00E6272C, another body starts at 0x00E62730).
+- The 00C41FB0 row and its 0x00C4xxxx siblings carry "CCombatant" autonames but are a sound-source module. Re-label them before landing anything there.
