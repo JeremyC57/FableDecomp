@@ -272380,6 +272380,181 @@ $catalog = @(
         TestSource = '00/80/CTCDExplosion_UpdateExplosiveAdditionalImpulse_0080c590_test.cpp'
         PassPattern = '0080c590_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00407370'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_ApplyValues_00407370.cpp'
+        TestSource = '00/40/CUserProfileManager_ApplyValues_00407370_test.cpp'
+        PassPattern = '00407370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00408a70'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_SetAllTutorialsAsGiven_00408a70.cpp'
+        TestSource = '00/40/CUserProfileManager_SetAllTutorialsAsGiven_00408a70_test.cpp'
+        PassPattern = '00408a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008751d0'
+        Module = 'CTools'
+        Source = '00/87/CTools_GetIntersectionWithWorldMap_008751d0.cpp'
+        TestSource = '00/87/CTools_GetIntersectionWithWorldMap_008751d0_test.cpp'
+        PassPattern = '008751d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e05360'
+        Module = 'NScript::CQ_TraderEscortScript::CTraderComment'
+        Source = '00/e0/NScriptCQTraderEscortScriptCTraderComment_Main_00e05360.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCTraderComment_Main_00e05360_test.cpp'
+        PassPattern = '00e05360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0d210'
+        Module = 'CUndeadRisingBoss'
+        Source = '00/e0/CUndeadRisingBoss_Main_00e0d210.cpp'
+        TestSource = '00/e0/CUndeadRisingBoss_Main_00e0d210_test.cpp'
+        PassPattern = '00e0d210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0d850'
+        Module = 'CUndeadRisingCentre'
+        Source = '00/e0/CUndeadRisingCentre_Main_00e0d850.cpp'
+        TestSource = '00/e0/CUndeadRisingCentre_Main_00e0d850_test.cpp'
+        PassPattern = '00e0d850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0e2e0'
+        Module = 'CUndeadRisingZombieAttackerBoss'
+        Source = '00/e0/CUndeadRisingZombieAttackerBoss_Main_00e0e2e0.cpp'
+        TestSource = '00/e0/CUndeadRisingZombieAttackerBoss_Main_00e0e2e0_test.cpp'
+        PassPattern = '00e0e2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0f1d0'
+        Module = 'CQ_WaspBossScript'
+        Source = '00/e0/CQWaspBossScript_EndMission_00e0f1d0.cpp'
+        TestSource = '00/e0/CQWaspBossScript_EndMission_00e0f1d0_test.cpp'
+        PassPattern = '00e0f1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2e520'
+        Module = 'CV_AmbushScamScript'
+        Source = '00/e2/CVAmbushScamScript_WatchForHeroAttack_00e2e520.cpp'
+        TestSource = '00/e2/CVAmbushScamScript_WatchForHeroAttack_00e2e520_test.cpp'
+        PassPattern = '00e2e520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e331f0'
+        Module = 'CV_ArcheryCompetitionScript'
+        Source = '00/e3/CVArcheryCompetitionScript_WatchForOwnerKilled_00e331f0.cpp'
+        TestSource = '00/e3/CVArcheryCompetitionScript_WatchForOwnerKilled_00e331f0_test.cpp'
+        PassPattern = '00e331f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3a350'
+        Module = 'CV_BordelloScript'
+        Source = '00/e3/CVBordelloScript_CreateCustomers_00e3a350.cpp'
+        TestSource = '00/e3/CVBordelloScript_CreateCustomers_00e3a350_test.cpp'
+        PassPattern = '00e3a350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3e320'
+        Module = 'CV_BordelloScript'
+        Source = '00/e3/CVBordelloScript_IsHeroDressedAsLady_00e3e320.cpp'
+        TestSource = '00/e3/CVBordelloScript_IsHeroDressedAsLady_00e3e320_test.cpp'
+        PassPattern = '00e3e320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3e720'
+        Module = 'CV_BordelloScript'
+        Source = '00/e3/CVBordelloScript_PlayCutscene_00e3e720.cpp'
+        TestSource = '00/e3/CVBordelloScript_PlayCutscene_00e3e720_test.cpp'
+        PassPattern = '00e3e720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e44a40'
+        Module = 'CV_BordelloScript'
+        Source = '00/e4/CVBordelloScript_IsHeroWearingBeard_00e44a40.cpp'
+        TestSource = '00/e4/CVBordelloScript_IsHeroWearingBeard_00e44a40_test.cpp'
+        PassPattern = '00e44a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e480d0'
+        Module = 'CV_BanditTollScript'
+        Source = '00/e4/CVBanditTollScript_ResetToll_00e480d0.cpp'
+        TestSource = '00/e4/CVBanditTollScript_ResetToll_00e480d0_test.cpp'
+        PassPattern = '00e480d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e53670'
+        Module = 'CV_BeardyBaldyScript'
+        Source = '00/e5/CVBeardyBaldyScript_IsHeroWearingBeard_00e53670.cpp'
+        TestSource = '00/e5/CVBeardyBaldyScript_IsHeroWearingBeard_00e53670_test.cpp'
+        PassPattern = '00e53670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e566f0'
+        Module = 'CV_BookCollectingScript'
+        Source = '00/e5/CVBookCollectingScript_BookReaction_00e566f0.cpp'
+        TestSource = '00/e5/CVBookCollectingScript_BookReaction_00e566f0_test.cpp'
+        PassPattern = '00e566f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e569d0'
+        Module = 'CV_BookCollectingScript'
+        Source = '00/e5/CVBookCollectingScript_DoConversation_00e569d0.cpp'
+        TestSource = '00/e5/CVBookCollectingScript_DoConversation_00e569d0_test.cpp'
+        PassPattern = '00e569d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5d4f0'
+        Module = 'CV_BodyGuardScript'
+        Source = '00/e5/CVBodyGuardScript_Main_00e5d4f0.cpp'
+        TestSource = '00/e5/CVBodyGuardScript_Main_00e5d4f0_test.cpp'
+        PassPattern = '00e5d4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5db30'
+        Module = 'CV_BodyGuardScript'
+        Source = '00/e5/CVBodyGuardScript_FisticuffsWatch_00e5db30.cpp'
+        TestSource = '00/e5/CVBodyGuardScript_FisticuffsWatch_00e5db30_test.cpp'
+        PassPattern = '00e5db30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6a0b0'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_WatchForInsideChapel_00e6a0b0.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_WatchForInsideChapel_00e6a0b0_test.cpp'
+        PassPattern = '00e6a0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6af20'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20_test.cpp'
+        PassPattern = '00e6af20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9a5c0'
+        Module = 'NScript::CV_HeroDuelScript::CThunder'
+        Source = '00/e9/NScriptCVHeroDuelScriptCThunder_Main_00e9a5c0.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScriptCThunder_Main_00e9a5c0_test.cpp'
+        PassPattern = '00e9a5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef25e0'
+        Module = 'CTriggerCrate'
+        Source = '00/ef/CTriggerCrate_Main_00ef25e0.cpp'
+        TestSource = '00/ef/CTriggerCrate_Main_00ef25e0_test.cpp'
+        PassPattern = '00ef25e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff1c0'
+        Module = 'CTonyTestScriptsScript'
+        Source = '00/ef/CTonyTestScriptsScript_AddQuestsToGuild_00eff1c0.cpp'
+        TestSource = '00/ef/CTonyTestScriptsScript_AddQuestsToGuild_00eff1c0_test.cpp'
+        PassPattern = '00eff1c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

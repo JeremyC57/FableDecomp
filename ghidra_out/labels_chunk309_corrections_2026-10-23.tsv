@@ -1,0 +1,11 @@
+address	name	evidence
+0x00D043A0	NScript::CQ_BanditCampScript::CheckForSecondAreaDoorHelp	chunk309: row body + jump table (skipped, land via verify_land_jumptable)
+0x00E0F1D0	NScript::CQ_WaspBossScript::EndMission	chunk309: reads WB_ExperienceReward (PDB +0xF08), waits on PicnicArea
+0x00E3E320	NScript::CV_BordelloScript::IsHeroDressedAsLady	chunk309: Ego_r.pdb name
+0x00E53670	NScript::CV_BeardyBaldyScript::IsHeroWearingBeard	chunk309: byte-identical copy of 0xE44A40, only caller GoTalkToBeardyBaldy
+0x00E44A40	NScript::CV_BordelloScript::CMagicman::IsHeroWearingBeard	chunk309: called from nested CMagicman
+0x00E05360	NScript::CQ_TraderEscortScript::CTraderComment::Main	chunk309
+0x00E9A5C0	NScript::CV_HeroDuelScript::CThunder::Main	chunk309
+0x00A11C20	CPhysicsMeshObject::Getter_00A11C20	chunk309: ParticleLine label was propagated
+0x00A11C90	CPhysicsMeshObject::Getter_00A11C90	chunk309: ParticleLine label was propagated
+0x0099B0F0	CWideString::operator!=	chunk309

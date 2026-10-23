@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00407370	RELOCATION_MATCH	569v569	PASS	inline Get* accessors pick the new-profile copy
+00408a70	RELOCATION_MATCH	538v538	PASS	inline EndsWith (length diff then strcmp intrinsic)
+008751d0	RELOCATION_MATCH	713v713	PASS	return hits > 0 ? true : false; decl order remaining then initial
+00e05360	RELOCATION_MATCH	585v585	PASS	function-scope vector; out-of-line dtor under inline_depth(0) at two exits
+00e0d210	RELOCATION_MATCH	886v886	PASS	inline counted-pointer operator= for the effect
+00e0d850	RELOCATION_MATCH	545v545	PASS	CTimer RAII local; line switch
+00e0e2e0	RELOCATION_MATCH	698v698	PASS	new CSpawnedFunc1 inside Add with conditional name temps
+00e0f1d0	RELOCATION_MATCH	548v548	PASS	really CQ_WaspBossScript::EndMission; != false wait
+00e2e520	RELOCATION_MATCH	726v726	PASS	for(;;) terminate-first; Compare stand-in auto_inline(off)
+00e331f0	RELOCATION_MATCH	714v714	PASS	for(;;) terminate-first; Data && IsAlive form
+00e3a350	RELOCATION_MATCH	860v860	PASS	implicit-conversion name temps; inline CTimer
+00e3e320	RELOCATION_MATCH	902v902	PASS	really IsHeroDressedAsLady; named bool for count == 4
+00e3e720	RELOCATION_MATCH	995v995	PASS	CutsceneScreamers recipe
+00e44a40	RELOCATION_MATCH	632v632	PASS	|| chain of conditional temps (ebx bit flags)
+00e480d0	RELOCATION_MATCH	522v522	PASS	!= false wait; frame flag word
+00e53670	RELOCATION_MATCH	632v632	PASS	really CV_BeardyBaldyScript copy of 0x00E44A40
+00e566f0	RELOCATION_MATCH	721v721	PASS	plain script sequence
+00e569d0	RELOCATION_MATCH	823v823	PASS	handle pointer chosen per speaker; inline_depth exits
+00e5d4f0	RELOCATION_MATCH	1024v1024	PASS	explicit CCharString("") built after the new-expression
+00e5db30	RELOCATION_MATCH	557v557	PASS	marker temps destroyed inline per call
+00e6a0b0	RELOCATION_MATCH	650v650	PASS	inline virtual IsNull/GetDefName devirtualised
+00e6af20	RELOCATION_MATCH	725v725	PASS	__forceinline ~CScriptThing + inline_depth(0) returns
+00e9a5c0	RELOCATION_MATCH	943v943	PASS	really CV_HeroDuelScript::CThunder::Main
+00ef25e0	RELOCATION_MATCH	568v568	PASS	inline operator+ on C3DVector
+00eff1c0	RELOCATION_MATCH	536v536	PASS	seven ReplaceQuestCards statements
+00e36750	DIFFER	530v536	-	return-block tail merge (post-wait exit folded into function end)
+008378d0	DIFFER	601v601	-	register swap only (this/other in esi/edi); shared-tail vs per-branch call trades regs for push/mov order
+00e5e350	DIFFER	584v585	-	only the dead zero store to the first CTimer slot is missing
+00e6b900	DIFFER	860v841	-	merged out-of-line return block kept at the last return instead of the first; eax/edx rotation in the loop
+00d043a0	SKIP	948v964	-	row holds a jump table plus the next function 0x00D04760; code byte-identical (differ/00d043a0.cpp), land via verify_land_jumptable.py
+0040b790	DIFFER	938v918	-	category cached in ebx in retail (find tag in the dead param slot, 0x14 frame); ours keeps it in memory
+004085f0	DIFFER	622v557	-	retail caches the address-taken def pointer in edi across the vector assignments (tails cross-jump); ours reloads it after each call
+004093e0	DIFFER	924v841	-	block placement (def branch out of line), regalloc of width/height, register-cached index in the clamp loops, refresh loop peeled in ours
+00760e70	DIFFER	606v603	-	register allocation: retail keeps pos in ebx and reuses its dead arg slot for best; ours copies cur through ebx/ebp (+4 frame)
+00837570	DIFFER	697v697	-	stack-slot assignment only: retail reuses the conditional-temp flag slot for the ScriptName operator+ result; flag init scheduled before the out load
+0098ecd0	DIFFER	777v786	-	retail homes the GFGetTime double in an 8-aligned frame (ours keeps it in st0); &CriticalSection cached in esi; leave/wait block placement
+004091c0	DIFFER	534v534	-	/GS; frame 4 bytes bigger: retail packs the push_back tag bytes with the loop flag byte; every other instruction matches
+00875b10	DIFFER	771v838	-	x87 scheduling/spills around the two getter results and the normalise; logic decoded
+00877840	DIFFER	1039v1023	-	frame layout: retail homes the hit-thing local in the dead ignore-arg slot; vector locals at other offsets; flow and calls match
+00f3ba70	DIFFER	684v853	-	first-pass decode only: the look-ahead cache test and argument roles are not settled

@@ -143,6 +143,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00ca5510	96	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	00ca5510:16,00ca5520:8,00ca5530:7,00ca5540:44	row spans four functions
 00caef70	64	2026-10-15_linux_hand110	CThingFilter_IsValid::operator()	multi	done	00caef70:9,00caef80:3,00caef90:3,00caefa0:3	row holds four functions
 00cdd6b0	1024	2026-10-22_linux_hand288	CGlobal_TeleportToHeroGuildScript::Main	single	open	00cdd6b0:1012	SKIP: 1024-byte script Main with x87 distance tests and many virtual calls, not reached in budget
+00d043a0	976	2026-10-23_linux_hand309	CV_ChapelOfEvilScript::EndMission	multi	open	00d043a0:928,00d04740:20,00d04760:4	row holds a jump table plus the next function 0x00D04760; code byte-identical (differ/00d043a0.cpp), land via verify_land_jumptable.py
 00d80ae0	288	2026-10-20_linux_hand227	CQ_HeroSoulsArenaScript::GetJackSpeech	multi	open	00d80ae0:159,00d80b80:124	row holds GetJackSpeech (0x00D80AE0..0x00D80B7C), its jump table and the factory 0x00D80BA0
 00d9f1b0	160	2026-10-15_linux_hand145	CMC_Minion::OnPredicateFail	multi	done	00d9f1b0:75,00d9f200:69	row holds two CQ_MinionCampScript members under a propagated CMC_Minion label (0x00D9F1A0 is the real CMC_Minion::OnPredicateFail thunk: mov ecx,[ecx+14h] ; jmp): the minion-died handler and the spawn-timer restart it tail-calls
 00dfca90	373	2026-10-21_linux_hand241	CBanditExtra::Main	single	open	00dfca90:373	lane gap: inline-asm dword fistp rounding (GOTCHAS wave 25) in the shout-count Round; not authored
