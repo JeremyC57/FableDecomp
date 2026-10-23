@@ -273937,6 +273937,14 @@ $catalog = @(
         TestSource = '00/e5/CBSTeacher_LookForBook_00e57530_test.cpp'
         PassPattern = '00e57530_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004091c0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_LoadFileList_004091c0.cpp'
+        TestSource = '00/40/CUserProfileManager_LoadFileList_004091c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '004091c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

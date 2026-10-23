@@ -26820,3 +26820,8 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ??ACTextArgMap@@QAEAAUCCharString@@ABU1@@Z	009ac700	00e57020
 ?IsActiveThreadTerminating@CBS_Teacher@@QAE_NXZ	00f35b30	00e57020
 ?AskForBook@CBS_Teacher@@QAE_NJUCCharString@@@Z	00e55ce0	00e57530
+??$_M_insert_overflow@U__false_type@std@@@?$vector@UCWideString@@U__false_type@std@@@std@@QAEXPAUCWideString@@ABU2@ABU__false_type@1@I_N@Z	00412330	004091c0
+??$_M_insert_overflow@U__true_type@std@@@?$vector@UCDateAndTime@@U__true_type@std@@@std@@QAEXPAUCDateAndTime@@ABU2@ABU__true_type@1@I_N@Z	004125a0	004091c0
+??9CWideString@@QBE_NABU0@@Z	0099b0f0	004091c0
+?__copy@std@@YIPAUCDateAndTime@@PAU2@00ABUrandom_access_iterator_tag@1@PAH@Z	0040e350	004091c0
+?erase@CWideStringVector@std@@QAEPAUCWideString@@PAU3@0@Z	00412450	004091c0
