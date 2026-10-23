@@ -26825,3 +26825,15 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ??9CWideString@@QBE_NABU0@@Z	0099b0f0	004091c0
 ?__copy@std@@YIPAUCDateAndTime@@PAU2@00ABUrandom_access_iterator_tag@1@PAH@Z	0040e350	004091c0
 ?erase@CWideStringVector@std@@QAEPAUCWideString@@PAU3@0@Z	00412450	004091c0
+??BCDefString@@QAE?AUCCharString@@XZ	00415d70	008e7040
+?CanFlourish@CTCCombat@@QBE_NXZ	00733180	008e7040
+?GetCombatAnimationSet@CThingCreatureBase@@QBEABUCAnimationSet@@XZ	00663260	008e7040
+?GetCombatManager@CThingCreatureBase@@QBEPAUCCombatManager@@XZ	00661ec0	008e7040
+?GetCombatantInfo@CCombatManager@@QAEPAUCCombatantInfo@@PBUCThingCreatureBase@@@Z	006e9360	008e7040
+?GetComboMultiplier@CTCHeroStats@@QBEJXZ	006d6570	008e7040
+?GetWeaponClass@CTCWeapon@@QBEJXZ	005da7f0	008e7040
+?IsMetBy@CHeroAbilityStatPackage@@QBE_NPBUCTCHeroStats@@@Z	00851b50	008e7040
+?find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z	008e6fb0	008e7040
+??$_M_insert_overflow@U__true_type@@@?$CArray@J@@QAEXPAJABJABU__true_type@@K_N@Z	00440990	008865c0
+??$_M_insert_overflow@U__true_type@@@?$CArray@M@@QAEXPAMABMABU__true_type@@K_N@Z	004408a0	008865c0
+?GetColour@CEnvironmentLookupTexture@@QBE?AUCRGBFloatColour@@JJ@Z	008860d0	008865c0

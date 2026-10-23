@@ -273945,6 +273945,27 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '004091c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ce1280'
+        Module = 'CTestGateSwitch'
+        Source = '00/ce/CTestGateSwitch_Main_00ce1280.cpp'
+        TestSource = '00/ce/CTestGateSwitch_Main_00ce1280_test.cpp'
+        PassPattern = '00ce1280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e7040'
+        Module = 'CMeleeCombatAbilityDef'
+        Source = '00/8e/CMeleeCombatAbilityDef_IsAbilityValid_008e7040.cpp'
+        TestSource = '00/8e/CMeleeCombatAbilityDef_IsAbilityValid_008e7040_test.cpp'
+        PassPattern = '008e7040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008865c0'
+        Module = 'NEnvironmentInternal::CBlendedEnvironmentTheme'
+        Source = '00/88/NEnvironmentInternalCBlendedEnvironmentTheme_BuildFromSource_008865c0.cpp'
+        TestSource = '00/88/NEnvironmentInternalCBlendedEnvironmentTheme_BuildFromSource_008865c0_test.cpp'
+        PassPattern = '008865c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

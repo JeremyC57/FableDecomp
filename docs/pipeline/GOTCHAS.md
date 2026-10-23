@@ -856,3 +856,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-10-23, R&D round 3b) Register and x87 limits:
   - The R-29 priority rule cannot reach a free ebx/ebp choice or a web-coalescing decision (00846dd0, 009647c0).
   - An x87 per-value operand key survives intervening possibly-aliasing stores: a later read of the same field keeps the first read's key.
+- (2026-10-23, R&D round 4)
+  - A same-TU noinline stand-in's body is VISIBLE to its callers. If it never reads a by-reference argument, VC7.1 deletes the caller's stores to that local, so stand-ins must read every input.
+  - The empty-tag lever generalises past `_M_insert_overflow`: a noinline `find` stand-in with the tag unnamed matched 008e7040, and 008865c0 (dead-parameter slot) matched once its stand-in read `x`.
+  - 00ce1280: the loop-2 depth-0 exits `goto` a label on loop 1's depth-0 return, which selects retail's merged exit copy (I-42).
