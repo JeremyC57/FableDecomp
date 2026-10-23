@@ -273074,6 +273074,48 @@ $catalog = @(
         TestSource = '00/be/CLandscapeBackgroundPatch_RenderWithOcclusion_00be79d0_test.cpp'
         PassPattern = '00be79d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0071de80'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_UpdateTextureMorphs_0071de80.cpp'
+        TestSource = '00/71/CTCHeroMorph_UpdateTextureMorphs_0071de80_test.cpp'
+        PassPattern = '0071de80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac8540'
+        Module = 'COptimisedPrimitive'
+        Source = '00/ac/COptimisedPrimitive_PaintSegments_00ac8540.cpp'
+        TestSource = '00/ac/COptimisedPrimitive_PaintSegments_00ac8540_test.cpp'
+        PassPattern = '00ac8540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00944730'
+        Module = 'CAIStateGroup_WorkSawingWood'
+        Source = '00/94/CAIStateGroupWorkSawingWood_IsRunnable_00944730.cpp'
+        TestSource = '00/94/CAIStateGroupWorkSawingWood_IsRunnable_00944730_test.cpp'
+        PassPattern = '00944730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00599e3f'
+        Module = 'CFrontEndManager'
+        Source = '00/59/CFrontEndManager_Update_00599e3f.cpp'
+        TestSource = '00/59/CFrontEndManager_Update_00599e3f_test.cpp'
+        PassPattern = '00599e3f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fe030'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_CompileLoadableGlobalThingsToSingleFile_004fe030.cpp'
+        TestSource = '00/4f/CWorldMap_CompileLoadableGlobalThingsToSingleFile_004fe030_test.cpp'
+        PassPattern = '004fe030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d08790'
+        Module = 'CCampHostage2'
+        Source = '00/d0/CCampHostage2_Main_00d08790.cpp'
+        TestSource = '00/d0/CCampHostage2_Main_00d08790_test.cpp'
+        PassPattern = '00d08790_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
