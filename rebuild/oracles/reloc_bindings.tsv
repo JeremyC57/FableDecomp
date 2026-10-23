@@ -26471,3 +26471,12 @@ __allrem	00bfec30	00937b10
 ?WordWrap_SetCallback@@YIXP6AJG@ZPAX@Z	00a0fd90	0048f50c
 ?g_VirtualScreenWidth@@3NA	013961e8	0048f50c
 ?g_pWordWrapFont@@3PBVCFontBank@@B	013b87ac	0048f50c
+?CreateSpecialEffect@@YIPAUCThing@@JPBUC3DVector@@_N@Z	006e0880	008c9fe0
+?GetPWorld@CAIStateGroupMinionReactToNoiseMethods@@QAEPAUCWorld@@XZ	008fcfc0	0091cdc0
+?IsPointInside@CThing@@QAE_NABUC3DVector@@@Z	0082d000	0091cdc0
+?Create@@YIPAUCThing@@JABUC3DVector@@@Z	00870bb0	00934920
+?FindMostRecentMessage@CMessageEventManager@@QBEPBUCMessageEvent@@ABU?$CFilter_Bind3@UCMessageEventFilter_IsOfType@@U?$CMessageEventFilter_ThingSearchFilter@UCThingFilter_IsNotThing@@@@U?$CMessageEventFilter_ThingSearchFilter@UCThingFilter_In2DRange@@@@@@@Z	00934e50	00934920
+?FindMostRecentMessage@CMessageEventManager@@QBEPBUCMessageEvent@@ABU?$CFilter_Bind3@UCMessageEventFilter_IsOfType@@UCMessageEventFilter_IsOriginatedByThing@@U?$CMessageEventFilter_ThingSearchFilter@UCThingFilter_In2DRange@@@@@@@Z	0090e090	00934920
+?GetNearestMember@CTCCreatureGroupTag@@QAEPAUCThing@@ABUC3DVector@@@Z	008128f0	00934920
+?GetDef@CDefinitionManager@@QAE_NABUCCharString@@JPAU?$CDefPointer@UCHeroAbilityDef@@@@@Z	005f89f2	005eede2
+?resize@CAbilityOrderVector@@QAEXKABW4EHeroAbility@@@Z	005f9df8	005eede2

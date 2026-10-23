@@ -273270,6 +273270,34 @@ $catalog = @(
         TestSource = '00/48/CSubtitleRenderer_FormatTextForVWindow_0048f50c_test.cpp'
         PassPattern = '0048f50c_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008c9fe0'
+        Module = 'CCreatureAction_NymphTeleportLimboBase'
+        Source = '00/8c/CCreatureActionNymphTeleportLimboBase_DoEffect_008c9fe0.cpp'
+        TestSource = '00/8c/CCreatureActionNymphTeleportLimboBase_DoEffect_008c9fe0_test.cpp'
+        PassPattern = '008c9fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091cdc0'
+        Module = 'CAIStateGroupMinionReactToNoiseMethods'
+        Source = '00/91/CAIStateGroupMinionReactToNoiseMethods_IsRunnable_0091cdc0.cpp'
+        TestSource = '00/91/CAIStateGroupMinionReactToNoiseMethods_IsRunnable_0091cdc0_test.cpp'
+        PassPattern = '0091cdc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00934920'
+        Module = 'CAIStateGroup_MinionKidGroupTag'
+        Source = '00/93/CAIStateGroupMinionKidGroupTag_IsRunnable_00934920.cpp'
+        TestSource = '00/93/CAIStateGroupMinionKidGroupTag_IsRunnable_00934920_test.cpp'
+        PassPattern = '00934920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005eede2'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_InitialiseAbilities_005eede2.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_InitialiseAbilities_005eede2_test.cpp'
+        PassPattern = '005eede2_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

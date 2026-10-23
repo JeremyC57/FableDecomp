@@ -831,3 +831,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - A lost tail call (`jmp [eax+N]` becoming `call` plus pops) means an upstream CSE pulled in a callee-saved register. An STLport `*(begin()+n)` operator[] stops VC materialising `&v[i]` as a CSE; `_M_start[n]` does not.
   - Dtor inline budget: a `__forceinline` dtor plus `#pragma inline_depth(0)` regions inside the body gave partials (00e2eac0, 00ce1280).
   - Decide a match from the q.py status line only; diff-line counts hide reorders among relocation lines.
+- (near-miss b95) A filter-chain pointer store scheduled after a ctor call is fixed by a full-object reader body for the consuming FindMostRecentMessage. A Bind3 chain also needs operator&& to build the Bind3 from the bound operands (00934920, 0091cdc0).
+- (near-miss b95) A component lookup whose miss path reloads a pointer retail keeps in a register: return the interface by value (null by default) from a forceinline helper instead of through an out-parameter (008c9fe0).
+- (near-miss b95) Callees returning a CDefPointer by value respond to I-3 stand-ins only with a DEFINED add-ref copy ctor (005eede2). Read FramesPerSecond into a local ahead of the call when retail spills it first. The k-lever also flips fiadd versus fild/faddp.
