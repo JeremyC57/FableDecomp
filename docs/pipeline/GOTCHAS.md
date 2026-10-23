@@ -725,3 +725,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - **One trailing `return false;` vs early returns** (00896390, C1): nested tests that all fall into ONE shared `return false;` make VC7.1 push all four callee-saved registers at entry and emit one shared `xor al,al` tail; early `return false;` statements shrink-wrap ebx/ebp and lay the false returns inline. Try on "epilogue placement / tail" residues.
 - **`__forceinline` empty dtor for a temp with two member dtors** (00896390, C1): an implicit or plain `{}` dtor is called out of line by the lane; `__forceinline ~T() {}` gives retail's inline member-dtor pair.
 - **CBaseIntelligentPointer is 8 bytes** (`int _padding_; void* PData`, Ego_r.pdb); CTCOwnership needs `#pragma pack(push,1)` (Owner at +0xd).
+- **Iterator by value** (0070e710, RST2): an STLport iterator with a user copy ctor is built in place on the stack (`push ecx; mov ecx,esp`); a const_iterator with an implicit copy is pushed as a value. Pick per retail's argument shape.
+- **Implicit dtor leaves the vptr alone; a user dtor resets it** (RST2) — check retail for the vptr store before writing `~T() {}`.
+- **c_str shapes** (RST2): `s = ""; if (p) s = p->data;` and `p ? p->data : ""` give the two retail forms.
