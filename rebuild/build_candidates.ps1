@@ -270295,6 +270295,13 @@ $catalog = @(
         TestSource = '00/df/CQTraderConflictGoodScript_WatchForRegionTransitions_00dfc920_test.cpp'
         PassPattern = '00dfc920_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0089a880'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetNearestWithDefName_0089a880.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetNearestWithDefName_0089a880_test.cpp'
+        PassPattern = '0089a880_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
