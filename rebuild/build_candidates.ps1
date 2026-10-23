@@ -270323,6 +270323,13 @@ $catalog = @(
         TestSource = '00/88/CTCPhysicsBase_HasSphereSphereCollidedAt_00880510_test.cpp'
         PassPattern = '00880510_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00917130'
+        Module = 'CAIStateGroup_ThrowLogsOnFire'
+        Source = '00/91/CAIStateGroupThrowLogsOnFire_Update_00917130.cpp'
+        TestSource = '00/91/CAIStateGroupThrowLogsOnFire_Update_00917130_test.cpp'
+        PassPattern = '00917130_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

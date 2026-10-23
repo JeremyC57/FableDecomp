@@ -25223,3 +25223,17 @@ __Rb_tree_increment	004292c0	0057770a
 ?LowerBound@CCompositeSurfaceMap@@QAEPAUCSurfacePair@@ABJ@Z	00bed2a0	00becba0
 ?g_pResourceBank_01436eac@@3PAUCResourceBank@@A	01436eac	00becba0
 ?reserve@CCompositeSurfaceMap@@QAEXK@Z	00beeb80	00becba0
+??$_M_insert_overflow@U__true_type@@@?$vector@PBUCCharString@@@@QAEXPAPBUCCharString@@ABQBU1@ABU__true_type@@I_N@Z	00916d50	00917130
+??0?$vector@PBUCCharString@@@@QAE@ABU0@@Z	00916ce0	00917130
+??_7CAIFilterBase@CAIStateGroupBase@@6B@	0128fd20	00917130
+?FetchGoods@CAIStateGroup_MoveGoodsBase@@QAE_NUCIntelligentPointerThing@@MU?$vector@PBUCCharString@@@@ABUCAIFilterBase@CAIStateGroupBase@@PAUCThing@@@Z	00915890	00917130
+?GetAnimFromName@CThingCreature@@QAEPAXABUCCharString@@J@Z	00662a00	00917130
+?GetPBonfire@CAIStateGroup_ThrowLogsOnFire@@QAEPAUCThing@@XZ	009170b0	00917130
+?GetPDefinitionManager@CAIStateGroupBase@@QBEPAUCDefinitionManager@@XZ	008fcfb0	00917130
+?GetPLogPile@CAIStateGroup_ThrowLogsOnFire@@QAEPAUCThing@@XZ	00917050	00917130
+?PlaceGoods@CAIStateGroup_MoveGoodsBase@@QAE_NUCIntelligentPointerThing@@MU?$vector@PBUCCharString@@@@ABUCAIFilterBase@CAIStateGroupBase@@PAUCThing@@@Z	00915b60	00917130
+?g_CCharString_013bb674@@3UCCharString@@A	013bb674	00917130
+?g_CCharString_013bb678@@3UCCharString@@A	013bb678	00917130
+?g_CCharString_013bb67c@@3UCCharString@@A	013bb67c	00917130
+?g_CCharString_013bb680@@3UCCharString@@A	013bb680	00917130
+?push_back@?$vector@PBUCCharString@@@@QAEXABQBUCCharString@@@Z	00916ef0	00917130
