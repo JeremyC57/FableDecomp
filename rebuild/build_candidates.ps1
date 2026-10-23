@@ -271249,6 +271249,41 @@ $catalog = @(
         TestSource = '00/ed/CSwordOfStrength_Main_00ed54d0_test.cpp'
         PassPattern = '00ed54d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009bfb30'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_ResetDevice_009bfb30.cpp'
+        TestSource = '00/9b/CDisplayManager_ResetDevice_009bfb30_test.cpp'
+        PassPattern = '009bfb30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007032f0'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_OnCreate_007032f0.cpp'
+        TestSource = '00/70/CThingObject_OnCreate_007032f0_test.cpp'
+        PassPattern = '007032f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075c670'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/75/CTCCameraPointDefinitionBase_OnSerialise_0075c670.cpp'
+        TestSource = '00/75/CTCCameraPointDefinitionBase_OnSerialise_0075c670_test.cpp'
+        PassPattern = '0075c670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066fc90'
+        Module = 'CTCCoopSpirit'
+        Source = '00/66/CTCCoopSpirit_UpdateScreenRestrictingForces_0066fc90.cpp'
+        TestSource = '00/66/CTCCoopSpirit_UpdateScreenRestrictingForces_0066fc90_test.cpp'
+        PassPattern = '0066fc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e1620'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6e/CTCDParticleEmitter_FrameUpdate_006e1620.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_FrameUpdate_006e1620_test.cpp'
+        PassPattern = '006e1620_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
