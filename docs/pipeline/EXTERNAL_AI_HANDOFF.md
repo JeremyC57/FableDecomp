@@ -232,3 +232,9 @@ them.
 - **Landing:** all 54 were regraded here with retail bytes read from Fable.exe at our offsets and their tests re-run under VC7.1. All landed as delivered (batch `2026-10-23_linux_external966`), with no relocation-identity errors.
 - **Names:** its `assigned_name` values are placeholders (`Row00406e30::Create`, `RetailVector::FillInsert`, `NFactory…`), so the catalog keeps the manifest names from `external_chunks_966-968.tsv`. The source's `// Leaf:` line still selects the symbol. Its NAME_RECOVERY.md marks its descriptive names as uncertain, so no labels file was written.
 - **Parks:** an in-house quick pass over the near misses is in `$S/gpt966/nm/`. Any recoveries land as their own batch.
+
+**Next round: 969–971 (ChatGPT Codex).** `docs/pipeline/external_chunks_969-971.tsv` lists 120 rows:
+- 969: STL and serialisation templates, 245–259 bytes;
+- 970–971: free-function rows "Ap"–"CDi", including the `CActiveEntityScriptBase_Create*` script factories.
+
+The sound library at 0xC40000–0xCB0000 and `__` names stay excluded. The scope file `external_969-971_AUTHORIZED_SCOPE.json` also lists 57 of its own 966–968 parks as `retry_addresses`. The prompt to paste is `EXTERNAL_CHUNKS_969-971_PROMPT.md`. Section 0 runs five Codex agents (one per chunk plus two on retries) and keeps them all active until every row is landed, capped or blocked. Section 5 requires real names instead of placeholders. The rows are recorded in `chunk_history.tsv`.
