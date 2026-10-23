@@ -273319,6 +273319,90 @@ $catalog = @(
         TestSource = '00/75/CTCCameraPointTrack_UpdateActiveCameraPosition_0075cad0_test.cpp'
         PassPattern = '0075cad0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d2c810'
+        Module = 'CEndGameThunder'
+        Source = '00/d2/CEndGameThunder_Main_00d2c810.cpp'
+        TestSource = '00/d2/CEndGameThunder_Main_00d2c810_test.cpp'
+        PassPattern = '00d2c810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d79d50'
+        Module = 'CEndScythe'
+        Source = '00/d7/CEndScythe_Main_00d79d50.cpp'
+        TestSource = '00/d7/CEndScythe_Main_00d79d50_test.cpp'
+        PassPattern = '00d79d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7a360'
+        Module = 'CEndBriarRose'
+        Source = '00/d7/CEndBriarRose_Main_00d7a360.cpp'
+        TestSource = '00/d7/CEndBriarRose_Main_00d7a360_test.cpp'
+        PassPattern = '00d7a360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e02e50'
+        Module = 'CDarkwoodAssassinSpawn'
+        Source = '00/e0/CDarkwoodAssassinSpawn_Main_00e02e50.cpp'
+        TestSource = '00/e0/CDarkwoodAssassinSpawn_Main_00e02e50_test.cpp'
+        PassPattern = '00e02e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4e0e0'
+        Module = 'CTollBanditScript'
+        Source = '00/e4/CTollBanditScript_HandleBanditToll_00e4e0e0.cpp'
+        TestSource = '00/e4/CTollBanditScript_HandleBanditToll_00e4e0e0_test.cpp'
+        PassPattern = '00e4e0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6ea30'
+        Module = 'CDF_ShineLight'
+        Source = '00/e6/CDFShineLight_Main_00e6ea30.cpp'
+        TestSource = '00/e6/CDFShineLight_Main_00e6ea30_test.cpp'
+        PassPattern = '00e6ea30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6f1c0'
+        Module = 'CDF_ThunderHelmet'
+        Source = '00/e6/CDFThunderHelmet_Main_00e6f1c0.cpp'
+        TestSource = '00/e6/CDFThunderHelmet_Main_00e6f1c0_test.cpp'
+        PassPattern = '00e6f1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6f710'
+        Module = 'CDF_CombatMult'
+        Source = '00/e6/CDFCombatMult_Main_00e6f710.cpp'
+        TestSource = '00/e6/CDFCombatMult_Main_00e6f710_test.cpp'
+        PassPattern = '00e6f710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e71450'
+        Module = 'CDF_EatPies'
+        Source = '00/e7/CDFEatPies_Main_00e71450.cpp'
+        TestSource = '00/e7/CDFEatPies_Main_00e71450_test.cpp'
+        PassPattern = '00e71450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e71980'
+        Module = 'CDF_GiveGift'
+        Source = '00/e7/CDFGiveGift_Main_00e71980.cpp'
+        TestSource = '00/e7/CDFGiveGift_Main_00e71980_test.cpp'
+        PassPattern = '00e71980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e73410'
+        Module = 'CDF_MarryLadyGrey'
+        Source = '00/e7/CDFMarryLadyGrey_Main_00e73410.cpp'
+        TestSource = '00/e7/CDFMarryLadyGrey_Main_00e73410_test.cpp'
+        PassPattern = '00e73410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee7a20'
+        Module = 'CDemonDoorFace'
+        Source = '00/ee/CDemonDoorFace_Main_00ee7a20.cpp'
+        TestSource = '00/ee/CDemonDoorFace_Main_00ee7a20_test.cpp'
+        PassPattern = '00ee7a20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

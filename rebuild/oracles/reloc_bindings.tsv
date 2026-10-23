@@ -26490,3 +26490,10 @@ _g_ThreadedFilePhysicalSortKey	013bc9ec	0098e1e0
 ?GetGame@CTCCameraPointTrack@@QAEPAUCGame@@XZ	00686a70	0075cad0
 ?GetMainHero@CPlayerManager@@QAEPAUCThing@@XZ	00487dd0	0075cad0
 ?GetPlayerManager@CGame@@QAEPAUCPlayerManager@@XZ	0049d9d0	0075cad0
+?MoveTo@CScriptGameResourceObjectScriptedThingBase@@QAEXABUC3DVector@@M_N11@Z	007e72f0	00d2c810
+?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABUCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	007e7390	00d79d50
+?IsActiveThreadTerminating@CDarkwoodAssassinSpawn@@QAE_NXZ	00f35b30	00e02e50
+?SetPredicate@CDarkwoodAssassinSpawn@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00e02e50
+?IsActiveThreadTerminating@CTollBanditScript@@QAE_NXZ	00f35b30	00e4e0e0
+?g_ZeroPos@@3UC3DVector@@B	0143e8e0	00e4e0e0
+?FadeOutFaceAndOpenDoor@CV_DemonDoorsScript@@QAEXABUCScriptThing@@ABUCCharString@@@Z	00e6f040	00e6ea30

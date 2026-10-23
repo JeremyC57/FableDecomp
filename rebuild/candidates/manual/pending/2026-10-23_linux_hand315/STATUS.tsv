@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00694890	DIFFER	1v1140	-	parked unreached (skeleton only): aligned-stack frame (and esp,-8) animation update with x87 timing (ftol 0xBFEA70), anim-entry counted pointers and a cut-scene event map walk; not reached beyond decode.
+008bc1a0	DIFFER	1v1083	-	parked unreached (skeleton only): 0x170 frame: random spawn positions around the caster (GFROR13 random, x87 offsets), CREATURE_OK_UNDEAD_SOLDIER_SWORD creation with FACTION_HERO / BRAIN_PLAYER_UNDEAD_SERVANT and an intelligent-pointer list; not reached beyond decode.
+008d5aa0	DIFFER	1v1126	-	parked unreached (skeleton only): large multi-feature row: frame-counter gate, carried-thing check (0x46), SIMPLE_NOISE sound, multi-arrow shot-definition component (CTCShotDefinitionMultiArrow via AddTC) with by-value counted pointers, a local target vector loop and CRT free release; not reached beyond decode.
+00844bc0	DIFFER	1140v1144	-	register allocation: retail keeps &PReceivingThing in ebx, &PItemBeingGiven in ebp, &PCreature in edi and spills the deed-log component (frame 0x18); ours frame 0x14 with ebp/edi/ebx rotated
+008c6db0	DIFFER	1v1090	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (75 x87 ops incl. ftol 0xBFEA70) icicle aim/spawn maths over the target position; WEAPON_FOCUS_01/02 and ICICLE_ASSAULT anims, CTrollBattleDef/CAreaOfEffectAttackDef/CSnowTrollDef sub-defs.
+0087cfe0	DIFFER	3v1447	-	parked unreached (skeleton only): three local STLport vectors with inline push_back/grow (0x5E1420), sort/unique/erase (memmove 0xBFEAE6) and CRT free; def-pointer refcounts; not reached beyond decode.
+0087d590	DIFFER	1v1215	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (89 x87 ops) turn-angle maths, 0x1bc frame with STRIKE_MEDIUM_FRONT anim lookup and SetupTurningAnimation 0x0087CFE0.
+00846710	DIFFER	1170v1192	-	frame-slot layout (retail 0x10 locals: string temp 0x10, key 0x14, deed-def flag 0x18, &PCreature spill 0x1c; ours 0xc), the SpriteOverrideText wide-string hidden-return push order, and scheduling in the sprite/sound blocks
+00846dd0	DIFFER	1685v1685	-	register priority (R&D round): register name only: in the !ReplacedAction emote/sound block retail keeps &PCreature in ebp, ours in ebx (7 instructions); advisor requested
+00847520	DIFFER	1122v1122	-	register priority (R&D round): register allocation only: retail keeps &PCreature in edi, the GamePlayerInterface in ebx/ebp and spills the CTCInventory pointer (and the replacement-action creature) to the frame; ours spills the GamePlayerInterface instead
+00e4e0e0	RELOCATION_MATCH	1811v1811	PASS	CTollBanditScript::HandleBanditToll()
+00848020	DIFFER	1v1139	-	parked unreached (skeleton only): conditionally-destroyed def-pointer temporaries (flag bits in bl), a std::bitset::test bounds-check throw ("bitset"), inventory-room check with the "You don't have room" HUD message and trophy-mount help text; heavy frame-slot reuse; not reached beyond decode.
+00675e20	DIFFER	1912v1912	-	register rotation only: retail uses eax for every scratch load in the four counted-pointer transfers (both arms, the 0x00676740 argument, the stats vtable), so its long transfers start the eax/ecx/edx rotation one step later; ours rotates from the first block (QFE 4035 gives the same)
+00e70460	DIFFER	1651v1665	-	the two evil-enough arms (opening / already-evil opening) end in identical after-wait terminate checks; VC7.1 here cross-jumps the whole check into one copy, retail keeps one check per arm and shares only the pause(false) block
+00e71980	RELOCATION_MATCH	1205v1205	PASS	CDF_GiveGift::Main()
+00e6f710	RELOCATION_MATCH	1107v1107	PASS	CDF_CombatMult::Main()
+00e71450	RELOCATION_MATCH	1108v1108	PASS	CDF_EatPies::Main()
+00e73410	RELOCATION_MATCH	1091v1091	PASS	CDF_MarryLadyGrey::Main()
+00e73930	DIFFER	1755v1725	-	five-arm else-if chain: retail cross-jumps the arms terminate exits into four pause(false) blocks (c33/ecb/eda/fbe, push ebx vs push 0), the lane keeps two extra copies (one push-ebx block, one push-0 block)
+00e6ea30	RELOCATION_MATCH	1549v1549	PASS	CDF_ShineLight::Main()
+00e6f1c0	RELOCATION_MATCH	1140v1140	PASS	CDF_ThunderHelmet::Main()
+00e02e50	RELOCATION_MATCH	1349v1349	PASS	CDarkwoodAssassinSpawn::Main()
+009ae7c0	DIFFER	3v1456	-	parked unreached (skeleton only): definition compiler: 81 calls, string tables and inline STL map/vector updates (no x87); not reached beyond decode.
+009afb90	DIFFER	3v1344	-	parked unreached (skeleton only): inline CMemoryDataInputStream::Read template x6 (64-bit position checks, as landed 0x00757990), per-definition new + map lookup + inline vector push_backs, two block reads and a dirty re-sort; not reached beyond decode.
+00ee7a20	RELOCATION_MATCH	1659v1659	PASS	CDemonDoorFace::Main()
+0064b1ac	DIFFER	1058v1045	-	retail spills the component out-pointers (weapons [ebp-0x14], spells [ebp-0x20]) and the hero presence-bits pointer [ebp-8] and keeps the hero in ebx; ours enregisters the weapons component (frame-slot / register-priority miss)
+00649952	DIFFER	3v1337	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (102 x87 ops) /Os ebp-frame HUD layout; screen-space float maths around CGraphicDataBank/font calls.
+0064822a	DIFFER	3v1526	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (140 x87 ops) /Os ebp-frame 0x26c, multiplier meter layout with float scaling and sprite draws.
+0064a9c8	DIFFER	1v1182	-	parked unreached (skeleton only): /Os ebp-frame message queue pop (+0x68), frame-counter timing, guild-seal sound (HUD_ORB_QUEST_CORE / OBJECTIVE_UPDATE), text lookups, health-low/crit quest text and an x87 alpha tail (ftol 0xBFEA70); not reached beyond decode.
+00647ab4	DIFFER	3v1910	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (191 x87 ops) /Os ebp-frame health bar + OBJECT_RESURRECTION_PHIAL counter, float fill ratios.
+00647575	DIFFER	3v1343	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (100 x87 ops, two ftol 0xBFEA70) /Os frame `lea ebp,[esp-0x74]`, targeting reticle projection.
+0064e2cc	DIFFER	3v1395	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (133 x87 ops) /Os frame `lea ebp,[esp-0x74]`, 0x358 locals, spirit health bars.
+0064ccb3	DIFFER	3v1526	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (165 x87 ops) /Os ebp-frame stamina/will bar with float fill and flash timers.
+0064b8b3	DIFFER	3v1426	-	parked unreached (skeleton only): /Os ebp-frame target panel: button-map icon checks, demon-door face def-name compares (CREATURE_DEMON_DOOR_FACE_01 / NW variant) and target health float scaling (10 x87 ops); not reached beyond decode.
+00ea8130	DIFFER	1185v1191	-	register allocation: retail keeps the new-expression conditional-temporary flags in ebx from entry (push ebx first, flags word at [esp+0x18]) and spills the sword PImp Data across the counted-pointer release (frame 0x5c); the lane gives ebx to the Data local and keeps the flags in memory (frame 0x58)
+00d79d50	RELOCATION_MATCH	1333v1333	PASS	CEndScythe::Main()
+00d7a360	RELOCATION_MATCH	1333v1333	PASS	CEndBriarRose::Main()
+00d2c810	RELOCATION_MATCH	1901v1901	PASS	CEndGameThunder::Main()
+00b277a0	DIFFER	3v1446	-	parked unreached (skeleton only): aligned-stack frame (and esp,-8; 0x3f4 locals) scene loader with rep-movs struct copies, x87 setup and "Enable" config string; not reached beyond decode.
+00b30b50	DIFFER	3v1499	-	parked x87-heavy row over 1 KB (skeleton only): x87-heavy (353 x87 ops): inline camera matrix/vector interpolation with only two calls (0xB2FD60/0xB2FC50); register-cached x87 stack.

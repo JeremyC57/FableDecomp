@@ -1,0 +1,8 @@
+address	name	evidence
+0x00E4E0E0	CTollBanditScript::HandleBanditToll	chunk315: entity-script helper placing the toll-bandit blockade, called from Main 0x00E4B5B0 (vtable 0x012E4D8C); class name provisional, confirm before binding
+0x00E6F710	CDF_CombatMult::Main	chunk315: was CDF_MarryLadyGrey
+0x00E71450	CDF_EatPies::Main	chunk315: was CDF_MarryLadyGrey
+0x00D79D50	CEndScythe::Main	chunk315: was CEndBriarRose
+0x00415D70	CDefString::operator CCharString	chunk315
+0x00843310	CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended	chunk315: probable
+0x0084ADC0	CCreatureAction_PerformExpressionExtended::~CCreatureAction_PerformExpressionExtended	chunk315: probable
