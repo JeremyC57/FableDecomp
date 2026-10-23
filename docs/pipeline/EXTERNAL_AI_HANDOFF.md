@@ -179,7 +179,29 @@ A clean idea for any of these would unblock dozens of parked rows.
 
 ## 7. Rows set aside for outside work
 
-`docs/pipeline/external_chunks_960-962.tsv` lists 120 rows (3 chunks of 40): address, namespace or class, name, and
-length in bytes. They cover camera modes, creature modes, the particle engine, the UI system, scripted control, and the
-world "rough area" search templates. The in-house chunk cuts take only top-level `C…` class rows, so they don't reach
-these rows. Pull the bytes for each row from your own copy of `Fable.exe`, between `address` and `address + length`.
+`docs/pipeline/external_chunks_960-962.tsv` lists 120 rows (3 chunks of 40). They are camera modes, creature modes, the
+particle engine, the UI system, scripted control, and the world "rough area" search templates. The in-house chunk cuts
+take only top-level `C…` class rows, so they don't reach these rows.
+
+**Where to find each row in the retail exe.** The exe is the Steam `Fable The Lost Chapters/Fable.exe`: 16,666,624 bytes,
+SHA-1 `39fd416ba23a91a89713ec80c789f57ddb22e2c8`. Check yours matches first. The TSV gives, per row:
+
+| Column | Meaning |
+|---|---|
+| `address_va` | Virtual address in the loaded image (ImageBase 0x400000). This is what a disassembler or debugger shows. |
+| `file_offset` | Byte offset in `Fable.exe` on disk where the function starts. |
+| `file_offset_end` | One past the last byte; trailing `int3`/`nop` padding is already excluded. |
+| `length` | Byte count (`file_offset_end - file_offset`). |
+| `namespace`, `name` | Best known class and function name. `vfunc_N` means only the vtable slot is known. |
+
+The `.text` section starts at VA `0x00401000` and file offset `0x1000`, so for every row
+**file offset = VA − 0x400000**.
+
+To get a row's bytes:
+
+```
+python -c "d=open('Fable.exe','rb').read(); print(d[0x44FDB0:0x450182].hex())"
+```
+
+To disassemble it, run `objdump -D -b binary -mi386 -Mintel --adjust-vma=0x84FDB0` on that slice, or open the exe in
+Ghidra/IDA at the VA.
