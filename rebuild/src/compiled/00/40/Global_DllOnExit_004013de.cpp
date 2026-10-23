@@ -13,10 +13,10 @@
 extern "C" void __cdecl free(void*);
 typedef void (__cdecl *FreeFn)(void*);
 // Stand-in for the import slot that the jump goes through.
-extern FreeFn __imp_free;
-FreeFn __imp_free = &free;
+extern FreeFn __imp_free_01440174;
+FreeFn __imp_free_01440174 = &free;
 // Stand-in name for the thunk itself (the slot it reaches is __dllonexit).
 void __cdecl operator_delete(void* p)
 {
-    __imp_free(p);
+    __imp_free_01440174(p);
 }

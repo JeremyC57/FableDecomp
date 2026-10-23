@@ -53,8 +53,8 @@ struct CArrayElem {
     unsigned int size() const { return (unsigned int)(_Last - _First); }
 
     // Out-of-line members -> direct __fastcall calls, ecx = this.
-    void erase(Elem* _F, Elem* _L);
-    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val);
+    void erase_0047616e(Elem* _F, Elem* _L);
+    void _Insert_n_00476212(Elem* _Where, unsigned int _Count, const Elem& _Val);
 
     void resize(unsigned int _Newsize, const Elem& _Val);
 };
@@ -62,7 +62,7 @@ struct CArrayElem {
 void CArrayElem::resize(unsigned int _Newsize, const Elem& _Val)
 {
     if (_Newsize < size())
-        erase(begin() + _Newsize, end());
+        erase_0047616e(begin() + _Newsize, end());
     else
-        _Insert_n(end(), _Newsize - size(), _Val);
+        _Insert_n_00476212(end(), _Newsize - size(), _Val);
 }

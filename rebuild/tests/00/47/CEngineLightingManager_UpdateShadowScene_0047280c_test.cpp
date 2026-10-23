@@ -8,8 +8,8 @@ static void* g_arg24 = 0;
 static void* g_arg28 = 0;
 
 extern "C" void __stdcall Profile_Enter(int marker) { (void)marker; g_prof++; }
-void __fastcall LM_ShadowApply24(void* self24, void* arg) { g_c24++; g_self24 = self24; g_arg24 = arg; }
-void __fastcall LM_ShadowApply28(void* self28, void* arg) { g_c28++; g_self28 = self28; g_arg28 = arg; }
+void __fastcall LM_ShadowApply24_00472896(void* self24, void* arg) { g_c24++; g_self24 = self24; g_arg24 = arg; }
+void __fastcall LM_ShadowApply28_00472841(void* self28, void* arg) { g_c28++; g_self28 = self28; g_arg28 = arg; }
 
 struct CEngineLightingManager {
     char pad[0x18];

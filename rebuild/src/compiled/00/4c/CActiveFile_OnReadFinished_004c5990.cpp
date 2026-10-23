@@ -4,13 +4,13 @@ struct CActiveFile {
 };
 
 // base method called with ecx=this (__fastcall modeled as __fastcall)
-void __fastcall CActiveFile_base(CActiveFile* self);
+void __fastcall CActiveFile_base_004c5690(CActiveFile* self);
 // cdecl free-like function
 void free_bfea14(void* p);
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
-    CActiveFile_base(self);
+    CActiveFile_base_004c5690(self);
     void* p = self->buf;
     if (p)
         free_bfea14(p);

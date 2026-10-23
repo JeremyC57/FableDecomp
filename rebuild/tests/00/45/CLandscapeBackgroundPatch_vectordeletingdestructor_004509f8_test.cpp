@@ -13,13 +13,13 @@ struct CLandscapeBackgroundPatch {
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 
-void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self) { (void)self; g_dtor_called++; }
+void __fastcall CLandscapeBackgroundPatch_dtor_0099eae0(CLandscapeBackgroundPatch* self) { (void)self; g_dtor_called++; }
 void __cdecl operator_delete(void* p) { (void)p; g_delete_called++; }
 
 void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags)
 {
     (void)edx;
-    CLandscapeBackgroundPatch_dtor(self);
+    CLandscapeBackgroundPatch_dtor_0099eae0(self);
     if (flags & 1) {
         operator_delete(self);
     }

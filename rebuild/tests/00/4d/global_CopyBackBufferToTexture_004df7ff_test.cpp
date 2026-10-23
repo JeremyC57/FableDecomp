@@ -4,13 +4,13 @@ struct CTexture;
 
 struct CDisplayManager {
     int tag;
-    void Grab(char* a, char* b);
+    void Grab_004dd12f(char* a, char* b);
     CTexture* CopyBackBufferToTexture();
 };
 
 static char g_seen_two = 0, g_seen_this = 0;
 
-void CDisplayManager::Grab(char* a, char* b)
+void CDisplayManager::Grab_004dd12f(char* a, char* b)
 {
     if (a != 0 && b != 0) g_seen_two = 1;
     if (this != 0) g_seen_this = 1;
@@ -22,7 +22,7 @@ CTexture* CDisplayManager::CopyBackBufferToTexture()
     char* q;
     { char a; p = &a; }
     { char b; q = &b; }
-    Grab(p, q);
+    Grab_004dd12f(p, q);
     return (CTexture*)this;
 }
 

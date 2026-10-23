@@ -1,3 +1,3 @@
-extern const char g_str[];
+extern const char g_str_0122f48c[];
 struct S { int x; void N(const char* s); S* M(); };
-S* S::M(){ this->N(g_str); return this; }
+S* S::M(){ this->N(g_str_0122f48c); return this; }

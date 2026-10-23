@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 struct CMember { void dtor(); };
-extern void __fastcall CMember_dtor(CMember* self);
+extern void __fastcall CMember_dtor_0045185f(CMember* self);
 
 struct CBase { void dtor(); };
 extern void __fastcall CBase_dtor(CBase* self);
@@ -24,7 +24,7 @@ struct CPatchTesselationEdgeStrip {
 
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {
-    CMember_dtor(&self->m8c);
+    CMember_dtor_0045185f(&self->m8c);
     if (self->p80) free(self->p80);
     if (self->p74) free(self->p74);
     if (self->p68) free(self->p68);

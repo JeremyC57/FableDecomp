@@ -5,14 +5,14 @@ struct CActiveFile {
 };
 
 // first callee: __fastcall(ecx, edx, stack &byte)
-extern void __fastcall Consume(void* a, void* b, char* out);
+extern void __fastcall Consume_00450b1b(void* a, void* b, char* out);
 // second callee: __cdecl free-style, caller pops 1 arg
 extern void __cdecl Release(void* p);
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char status;
-    Consume(self->p, self->q, &status);
+    Consume_00450b1b(self->p, self->q, &status);
     if (self->p)
         Release(self->p);
 }

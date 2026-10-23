@@ -14,7 +14,7 @@ struct CArrayPair {
     unsigned int size() const { return (unsigned int)(_Last - _First); }
 
     void erase(Pair* _F, Pair* _L);
-    void _Insert_n(Pair* _Where, unsigned int _Count, const Pair& _Val);
+    void _Insert_n_00475ed0(Pair* _Where, unsigned int _Count, const Pair& _Val);
 
     void resize(unsigned int _Newsize, const Pair& _Val);
 };
@@ -38,7 +38,7 @@ void CArrayPair::erase(Pair* _F, Pair* _L)
     g_eraseCount   = (long)(_L - _F);
 }
 
-void CArrayPair::_Insert_n(Pair* _Where, unsigned int _Count, const Pair& _Val)
+void CArrayPair::_Insert_n_00475ed0(Pair* _Where, unsigned int _Count, const Pair& _Val)
 {
     g_insertCalled    = 1;
     g_insertCount     = _Count;

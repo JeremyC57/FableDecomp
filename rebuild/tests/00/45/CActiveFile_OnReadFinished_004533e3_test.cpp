@@ -10,7 +10,7 @@ static void* g_consumeEcx = (void*)0;
 static void* g_consumeEdx = (void*)0;
 static void* g_freed = (void*)0;
 
-void __fastcall Consume(void* ecxArg, void* edxArg, char* buf)
+void __fastcall Consume_00450ab2(void* ecxArg, void* edxArg, char* buf)
 {
     g_consumeEcx = ecxArg;
     g_consumeEdx = edxArg;
@@ -21,7 +21,7 @@ void FreeThing(void* p) { g_freed = p; }
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char local;
-    Consume(self->p, self->DstFileHandle, &local);
+    Consume_00450ab2(self->p, self->DstFileHandle, &local);
     void* q = self->p;
     if (q) {
         FreeThing(q);

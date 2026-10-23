@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
 // CTCKrakenTentacle::GetClassTypeName() const -- calls CTCKrakenTentacle::StatGetClassTypeName @ 0x004D5DEB into the hidden CCharString return slot and returns it; stand-in: a construct-and-return helper that runs a member function on the argument and
 // return the argument. __stdcall (ret 4); the callee takes this in ecx.
-struct T { void Init(); };
-extern "C" T* __stdcall CTCKrakenTentacle_GetClassTypeName(T* result) { result->Init(); return result; }
+struct T { void Init_004d5deb(); };
+extern "C" T* __stdcall CTCKrakenTentacle_GetClassTypeName(T* result) { result->Init_004d5deb(); return result; }

@@ -19,8 +19,8 @@ struct CArrayElem {
     Elem* end()   const { return _Last; }
     unsigned int size() const { return (unsigned int)(_Last - _First); }
 
-    void erase(Elem* _F, Elem* _L);
-    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val);
+    void erase_00478c2d(Elem* _F, Elem* _L);
+    void _Insert_n_00478c79(Elem* _Where, unsigned int _Count, const Elem& _Val);
 
     void resize(unsigned int _Newsize, const Elem& _Val);
 };
@@ -34,14 +34,14 @@ static Elem*  g_insertWhere;
 static unsigned int g_insertCount;
 static const Elem*  g_insertVal;
 
-void CArrayElem::erase(Elem* _F, Elem* _L)
+void CArrayElem::erase_00478c2d(Elem* _F, Elem* _L)
 {
     ++g_eraseCalls;
     g_eraseF = _F;
     g_eraseL = _L;
 }
 
-void CArrayElem::_Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val)
+void CArrayElem::_Insert_n_00478c79(Elem* _Where, unsigned int _Count, const Elem& _Val)
 {
     ++g_insertCalls;
     g_insertWhere = _Where;
@@ -52,9 +52,9 @@ void CArrayElem::_Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val)
 void CArrayElem::resize(unsigned int _Newsize, const Elem& _Val)
 {
     if (_Newsize < size())
-        erase(begin() + _Newsize, end());
+        erase_00478c2d(begin() + _Newsize, end());
     else
-        _Insert_n(end(), _Newsize - size(), _Val);
+        _Insert_n_00478c79(end(), _Newsize - size(), _Val);
 }
 
 static void Reset()

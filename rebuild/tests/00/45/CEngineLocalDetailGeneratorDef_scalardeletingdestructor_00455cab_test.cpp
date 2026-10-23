@@ -7,12 +7,12 @@ struct CMember { char c; };
 static int g_member = 0;
 static int g_dtor = 0;
 
-void __fastcall CMember_dtor(CMember* def) { (void)def; g_member++; }
+void __fastcall CMember_dtor_0045334a(CMember* def) { (void)def; g_member++; }
 void __fastcall CEngineLocalDetailGeneratorDef_dtor(CEngineLocalDetailGeneratorDef* def) { (void)def; g_dtor++; }
 
 void* __fastcall CEngineLocalDetailGeneratorDef_scalar_deleting_destructor(CEngineLocalDetailGeneratorDef* def, int, unsigned int flags)
 {
-  CMember_dtor((CMember*)((char*)def + 0x3c));
+  CMember_dtor_0045334a((CMember*)((char*)def + 0x3c));
   CEngineLocalDetailGeneratorDef_dtor(def);
   if (flags & 1) {
     ::operator delete(def);

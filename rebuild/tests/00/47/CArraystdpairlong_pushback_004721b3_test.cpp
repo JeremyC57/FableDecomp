@@ -24,11 +24,11 @@ struct CArrayElem {
     Elem* end() const   { return _Last; }
     unsigned int size() const { return (unsigned int)(_Last - _First); }
 
-    void erase(Elem* _F, Elem* _L)
+    void erase_004721f1(Elem* _F, Elem* _L)
     {
         ++g_EraseCalls; g_EraseF = _F; g_EraseL = _L;
     }
-    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val)
+    void _Insert_n_00472220(Elem* _Where, unsigned int _Count, const Elem& _Val)
     {
         ++g_InsertCalls; g_InsertWhere = _Where; g_InsertCount = _Count;
         g_InsertVal = &_Val;
@@ -37,9 +37,9 @@ struct CArrayElem {
     void resize(unsigned int _Newsize, const Elem& _Val)
     {
         if (_Newsize < size())
-            erase(begin() + _Newsize, end());
+            erase_004721f1(begin() + _Newsize, end());
         else
-            _Insert_n(end(), _Newsize - size(), _Val);
+            _Insert_n_00472220(end(), _Newsize - size(), _Val);
     }
 };
 

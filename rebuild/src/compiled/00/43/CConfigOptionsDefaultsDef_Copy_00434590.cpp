@@ -2,6 +2,6 @@
 // identical signature, so the frame is reused. __fastcall this=ecx, src=stack.
 struct CControlsDef {
     void Copy(const CControlsDef* src);
-    void CopyImpl(const CControlsDef* src);
+    void CopyImpl_004345a0(const CControlsDef* src);
 };
-void CControlsDef::Copy(const CControlsDef* src) { this->CopyImpl(src); }
+void CControlsDef::Copy(const CControlsDef* src) { this->CopyImpl_004345a0(src); }

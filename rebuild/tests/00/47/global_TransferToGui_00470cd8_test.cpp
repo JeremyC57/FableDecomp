@@ -9,13 +9,13 @@ struct CGuiVarTransferBool {
     unsigned char flag;
 };
 
-extern void __fastcall CGuiVarTransferBool_Sink(void* ecx, int edx, unsigned char val);
+extern void __fastcall CGuiVarTransferBool_Sink_00470cf1(void* ecx, int edx, unsigned char val);
 void __fastcall CGuiVarTransferBool_TransferToGui(CGuiVarTransferBool* thisptr);
 
 static void* g_ecx;
 static int   g_edx;
 static unsigned char g_val;
-void __fastcall CGuiVarTransferBool_Sink(void* ecx, int edx, unsigned char val) {
+void __fastcall CGuiVarTransferBool_Sink_00470cf1(void* ecx, int edx, unsigned char val) {
     g_ecx = ecx; g_edx = edx; g_val = val;
 }
 

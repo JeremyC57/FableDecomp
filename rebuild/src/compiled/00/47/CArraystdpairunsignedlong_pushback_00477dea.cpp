@@ -59,8 +59,8 @@ struct CArrayPair {
     unsigned int size() const { return (unsigned int)(_Last - _First); }
 
     // Out-of-line members -> direct __fastcall calls, ecx = this (masked).
-    void erase(Pair* _F, Pair* _L);
-    void _Insert_n(Pair* _Where, unsigned int _Count, const Pair& _Val);
+    void erase_00477e36(Pair* _F, Pair* _L);
+    void _Insert_n_00477e8e(Pair* _Where, unsigned int _Count, const Pair& _Val);
 
     void push_back(unsigned int _Newsize, const Pair& _Val);
 };
@@ -68,7 +68,7 @@ struct CArrayPair {
 void CArrayPair::push_back(unsigned int _Newsize, const Pair& _Val)
 {
     if (_Newsize < size())
-        erase(begin() + _Newsize, end());
+        erase_00477e36(begin() + _Newsize, end());
     else
-        _Insert_n(end(), _Newsize - size(), _Val);
+        _Insert_n_00477e8e(end(), _Newsize - size(), _Val);
 }

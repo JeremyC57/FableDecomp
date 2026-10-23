@@ -4,7 +4,7 @@ _DAT_0143e9a0	0143e9a0	00401296
 ___dllonexit	004013de	00401296
 __imp__CrtOnExit	01440170	00401296
 __onexit_impl	00401296	004012bc
-?__imp_free@@3P6AXPAX@ZA	01440190	00401356
+?__imp_free_01440190@@3P6AXPAX@ZA	01440190	00401356
 __controlfp	004013e4	0040135c
 ?Water_QueryType@@YAHPAUCEngineMap@@H@Z	00bfe94c	00401490
 ?base_dtor@@YIXPAX@Z	0099a300	00401630
@@ -233,8 +233,8 @@ _FreeMem	00bfea14	00412020
 ?SubDtor_589450@@YIXPAX@Z	0099b510	004120c0
 @Ring_dtor@4	0099b510	00412130
 _engine_free	00bfea14	00412130
-?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z	00411a10	004121d0
-?construct@AllocT@@QAEPAUEWeaponClass@@PAU2@PAD@Z	004122d0	00412880
+?InsertGrow_00411a10@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z	00411a10	004121d0
+?construct_004122d0@AllocT@@QAEPAUEWeaponClass@@PAU2@PAD@Z	004122d0	00412880
 ?CopyConstruct@CWideString@@QAEXPAU1@@Z	0099b720	004128a0
 ?InsertRange@VectorPushBackOverlay@@QAEXPAUCWideString@@0PAPAU2@HH@Z	00412330	004128a0
 ?InsertGrow@CRetailVector_00412970@@QAEXPAUSInputRecord_00412970@@ABU2@ABUSScalarTag@@K_N@Z	004125a0	00412970
@@ -355,14 +355,14 @@ _GFGetPreMainMemoryUsedImpl	0044c6b0	00415fbc
 ?ReleaseCur@CCPtr@@QAEXXZ	004057a0	004190e2
 ??0CGameEventPackage@@QAE@XZ	00419220	00419323
 ??_7CNetworkClient@@6B@	0122edac	00419323
-?Release@Part@@QAEXXZ	0099a410	00419352
+?Release_0099a410@Part@@QAEXXZ	0099a410	00419352
 ?ShareData@CCPtr@@QAEXPAXPAJ@Z	004190e2	00419463
 ?Destroy_00419086@@YIXPAX@Z	00419086	0041956c
 ??_7CFrameRateSmoother@@6B@	0122f168	00419747
 ?CTCInventoryItem_base_OnDie@@YIXPAUCTCInventoryItem@@@Z	0099a410	00419764
 _eng_free	00bfea14	00419764
 ?N@S@@QAEXPBD@Z	0099b6b0	0041a060
-?g_str@@3QBDB	0122f3b4	0041a060
+?g_str_0122f3b4@@3QBDB	0122f3b4	0041a060
 ??H@YI?AVCWideString@@ABV0@PBG@Z	0099bf30	0041a4c0
 ?GetDocumentsFolder@CUserProfileManager@@SI?AVCWideString@@XZ	0041a430	0041a4c0
 ?GetInstance@CFrontEndManagerGraphicsView@@SIPAU1@XZ	0041e5f2	0041a8d0
@@ -377,7 +377,7 @@ _eng_free	00bfea14	00419764
 ?ApplyKey@FableCameraPointScriptedSpline_0041B9C0@@QAEXIPAI@Z	009fbf90	0041b9c0
 ?StepBackward@FableCameraPointScriptedSpline_0041B9C0@@QAEXXZ	009fbfb0	0041b9c0
 ??0CBase_0099a2d0@@QAE@XZ	0099a2d0	0041be50
-?CountedDestroy@@YIXPAX@Z	0041bd80	0041c030
+?CountedDestroy_0041bd80@@YIXPAX@Z	0041bd80	0041c030
 ?Uninitialise@CGraphicFrameData@@QAEXXZ	009fcba0	0041c0e0
 ?Uninitialise@CGraphicFrameData_0041c150@@QAEXXZ	009fcba0	0041c150
 ??_7CActionParam@@6B@	0122f83c	0041c88f
@@ -576,7 +576,7 @@ _Profile_Enter@4	00404500	00431242
 ?_Insert_n@CArrayElem@@QAEXPAUElem@@IABU2@@Z	004333b3	0043332c
 ?erase@CArrayElem@@QAEXPAUElem@@0@Z	0043336a	0043332c
 ??0CClass_0062fe60@@QAE@XZ	0062fe60	00433670
-?g_value@@3HA	013b8760	0043368d
+?g_value_013b8760@@3HA	013b8760	0043368d
 ??0CDefinitionManager@@QAE@ABVCWideString@@P6AXPAVCCharString@@@Z@Z	009b0470	00433693
 ??_7CStartupDefinitionManager@@6B@	0123117c	00433693
 ?StartupErrorCallback@CStartupDefinitionManager@@SAXPAVCCharString@@@Z	0043368c	00433693
@@ -652,7 +652,7 @@ _list_node_free	00bfea14	004367c0
 @CLandscapeBackgroundPatch_scalar_dtor@4	0099b510	0043dd40
 _CLandscapeBackgroundPatch_op_delete	00bfe9bc	0043dd40
 ?C3DAnimationBlendState_vtable@@3QAXA	0122f598	0043f450
-@CActiveFile_Helper@4	0043f230	0043fcd0
+@CActiveFile_Helper_0043f230@4	0043f230	0043fcd0
 _CActiveFile_Free	00bfea14	0043fcd0
 ?Release@T@@QAEXPAX0@Z	0043f510	0043fdc0
 @NodeSub_Dtor@4	0099b510	004407b0
@@ -1018,7 +1018,7 @@ _CActiveFile_Release	00bfea14	004543af
 ??0CMember_004533c5@@QAE@XZ	004533c5	00454629
 ??_7CSpecialEffectsDef@@6B@	0123300c	00454629
 ?Base_dtor@@YIXPAX@Z	009fc550	00454647
-?CMember_dtor@@YIXPAUCMember@@@Z	004518e1	00454647
+?CMember_dtor_004518e1@@YIXPAUCMember@@@Z	004518e1	00454647
 ?g_vtbl@@3HB	01230ba0	00454647
 ??_7CTextureReplacementDef@@6B@	01233074	00454673
 ??_7CAppearanceModifierDef@@6B@	012330dc	004546af
@@ -1240,7 +1240,7 @@ _AssassinRush_Free	00bfea14	00458c66
 ?TransferBinaryIn@CFloatRangeReader_00458f89@@QAEXPAUCDataInputStream@@PAUCFloatRange@@@Z	00458f89	00458f2b
 ?WriteFloat@CDataOutputStream@@QAEXM@Z	00993ee0	00458f2b
 ??_7CCreatureAbilityDef@@6B@	01234f24	0045933d
-?Xfer@CPersistContext@@QAEXPAX@Z	00459363	00459353
+?Xfer_00459363@CPersistContext@@QAEXPAX@Z	00459363	00459353
 ??_7CThingGroupDef@@6B@	01234f8c	00459537
 ??_7CPlayerDef@@6B@	01234ff4	0045956c
 ?ReadColour@CDataInputStream@@QAEAAUCRGBColour@@AAU2@@Z	009945e0	004595a3
@@ -1543,7 +1543,7 @@ _freeBuffer_46324a	00bfea14	0046324a
 ?GFSerialiseVectorBinaryIn_CRGBColour_00469cb2@@YIXPAUCMemoryDataInputStream@@PAUSValue@@@Z	00469cb2	00469c3e
 ?GFSerialiseVectorBinaryOut_CAtmosBankEnt_00469c6c@@YIXPAUCDataOutputStream@@PAUSValue@@@Z	00469c6c	00469c3e
 ?_Insert_n@CArrayPair@@QAEXPAUPair@@IABU2@@Z	00469e74	00469e00
-?erase@CArrayPair@@QAEXPAUPair@@0@Z	00469e3e	00469e00
+?erase_00469e3e@CArrayPair@@QAEXPAUPair@@0@Z	00469e3e	00469e00
 ?Transfer_00431143@CPersistContext@@QAEXPAJ@Z	00431143	0046a6dd
 ?Transfer_0045228f@CPersistContext@@QAEXPAJ@Z	0045228f	0046a6dd
 ?Transfer_00464cbf@CPersistContext@@QAEXPAJ@Z	00464cbf	0046a6dd
@@ -1708,7 +1708,7 @@ _EngineOperatorDelete	00bfe9bc	0047b300
 ??4MemberB@@QAEAAU0@ABU0@@Z	0047be50	0047c600
 ??FSIterator@@QAEAAU0@XZ	0047b760	0047c720
 ?Insert@CRetailTree_0047c720@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	0047c500	0047c720
-?Detach@CTCCarryable@@QAEXI@Z	0047c6a0	0047c880
+?Detach_0047c6a0@CTCCarryable@@QAEXI@Z	0047c6a0	0047c880
 ?Read3DVector@CMemoryDataInputStream@@QAE?AUC3DVector@@XZ	009950f0	0047cf3f
 ?Helper@CAIStateGroup_BuyFromSeller@@QAEHXZ	0049d870	0047cfee
 ?GetDef@CGameDefinitionManager@@QBE_NJPAPAUCDefPointeeBase@@@Z	0048591c	0047d5f2
@@ -2114,7 +2114,7 @@ _Unlink_0042a34e	0042a34e	004c3f90
 ?UnguardedInsertionSortAux_004c2b90@@YIXPAUSElement12@@00USCompare@@@Z	004c2b90	004c5720
 ?InsertionSort_004c5190@@YIXPAUSElement12@@0USCompare@@@Z	004c5190	004c5770
 ?UnguardedInsertionSortAux_004c2c00@@YIXPAUSElement12@@00USCompare@@@Z	004c2c00	004c5770
-?CActiveFile_base@@YIXPAUCActiveFile@@@Z	004c5690	004c5990
+?CActiveFile_base_004c5690@@YIXPAUCActiveFile@@@Z	004c5690	004c5990
 ?free_bfea14@@YAXPAX@Z	00bfea14	004c5990
 ?CActiveFile_BaseReadDone@@YIXPAX@Z	004c5690	004c5c60
 ?FreePtr@@YAXPAX@Z	00bfea14	004c5c60
@@ -2987,7 +2987,7 @@ _AF_free	00bfea14	004dd52b
 ?g_terrainHeight@@3MA	0122dedc	004df3d4
 ?g_themeHeight@@3MA	0122dedc	004df3dd
 ?Normalise@C2DVector@@QAEPAU1@XZ	00a14540	004df3f7
-?g_value@@3MA	01241d68	004df4a3
+?g_value_01241d68@@3MA	01241d68	004df4a3
 ??0CObstacleNavigatorExternalInterface@@QAE@ABU0@@Z	004df4e7	004df4ca
 ??1CMember_004df54f@@QAE@XZ	004df54f	004df507
 ??_7CNavigatorExternalInterface@@6B@	01241d74	004df507

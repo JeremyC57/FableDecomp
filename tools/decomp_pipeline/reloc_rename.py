@@ -425,20 +425,45 @@ def unrename_other_classes(src, cls, ident, new):
                 depth -= 1
                 if depth == 0: break
             j += 1
-        # only the class's own member list (nested class bodies are visited on their own)
-        if pat.search(code[m.end():j]) and not re.search(r"\b(?:struct|class|union)\b[^;{}]*\{", code[m.end():j]):
-            spans.append((m.end(), j))
+        # only the class's own member declarations: depth 0 of its body (inline member bodies hold
+        # calls that may name the renamed member of `cls`), and not a `->x` / `.x` access
+        body = code[m.end():j]; depth = 0; k = 0
+        hits = {q.start() for q in pat.finditer(body)}
+        for k, ch in enumerate(body):
+            if k in hits and depth == 0 and not re.search(r"(?:->|\.)\s*$", body[:k]):
+                spans.append((m.end() + k, m.end() + k + len(new)))
+            if ch == "{": depth += 1
+            elif ch == "}": depth -= 1
         for q in re.finditer(r"(?<![A-Za-z0-9_])" + re.escape(m.group(1)) + r"\s*::\s*" + re.escape(new) + r"(?![A-Za-z0-9_$])", code):
             spans.append((q.start(), q.end()))
     for a, b in sorted(set(spans), reverse=True):
         src = src[:a] + pat.sub(ident, src[a:b]) + src[b:]
     return src
 
+# Free operators cannot be renamed: a call of `::operator delete` that retail sends to another
+# deallocator is respelled as a call of that function under its landed name (labels_*.tsv).
+FREE_OP_CALLS = {("??3@YAXPAX@Z", "00c3c370"): ("AudioFree", "?AudioFree@@YAXPAX@Z",
+                  "void __cdecl AudioFree(void* block);            // 0x00C3C370 (audio free; retail calls it here, not operator delete)")}
+
+def free_op_call(src, sym, t):
+    name, newsym, decl = FREE_OP_CALLS[(sym, t)]
+    code = _code_mask(src)
+    hits = [m for m in re.finditer(r"(?:::\s*)?operator\s+delete\s*\(", code)
+            if not re.search(r"(?:void|__cdecl)\s*$", code[:m.start()])]
+    if not hits: raise ValueError("no explicit operator delete call to respell")
+    for m in reversed(hits): src = src[:m.start()] + name + "(" + src[m.end():]
+    d = re.search(r"^[^\n]*\boperator\s+delete\s*\([^)]*\)\s*;[^\n]*$", src, re.M)
+    if d: src = src[:d.end()] + "\n" + decl + src[d.end():]
+    else: src = decl + "\n" + src
+    return src, newsym
+
 def patch_source(src, renames, use_conv=True, cls_mode=False):
     """renames: [(sym, target)] -> (patched src, [(sym, new_sym_or_marker, kind)]) or raise ValueError.
     kind: rename (exact new symbol), ns (class moved into namespace marker), cls (class renamed to marker)."""
     done = []; idents = {}
     for sym, t in renames:
+        if (sym, t) in FREE_OP_CALLS:
+            src, newsym = free_op_call(src, sym, t); done.append((sym, newsym, "rename")); continue
         conv = convention(sym, t) if use_conv else None
         if conv is not None:
             cls = sym[1:].split("@")[1]

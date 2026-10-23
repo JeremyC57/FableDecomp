@@ -14,13 +14,13 @@ static int g_base_dtor = 0;
 static int g_deleted = 0;
 void* g_CLandscapeBackgroundPatch_vftable;
 
-void __fastcall CMember_dtor(CMember* def) { (void)def; g_member_dtor++; }
+void __fastcall CMember_dtor_00451940(CMember* def) { (void)def; g_member_dtor++; }
 void __fastcall CTargetingDef_base_dtor(CTargetingDef* def) { (void)def; g_base_dtor++; }
 void __cdecl operator_delete(void* p) { (void)p; g_deleted++; }
 
 void* CTargetingDef::CTargetingDef_scalar_deleting_destructor(unsigned char flags)
 {
-    CMember_dtor(&this->member);
+    CMember_dtor_00451940(&this->member);
     this->vtbl = &g_CLandscapeBackgroundPatch_vftable;
     CTargetingDef_base_dtor(this);
     if (flags & 1) {

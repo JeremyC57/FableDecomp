@@ -2,7 +2,7 @@
 // CFactionDef::Transfer  0x004717a1
 struct SubA { int x; };
 struct SubB { int y; };
-struct CPersistContext { void Xfer(void* p); };
+struct CPersistContext { void Xfer_004331f9(void* p); };
 struct CFactionDef {
     char pad[0x3c];
     SubA a;
@@ -11,6 +11,6 @@ struct CFactionDef {
     void Transfer(CPersistContext* ctx);
 };
 void CFactionDef::Transfer(CPersistContext* ctx) {
-    ctx->Xfer(&this->a);
-    ctx->Xfer(&this->b);
+    ctx->Xfer_004331f9(&this->a);
+    ctx->Xfer_004331f9(&this->b);
 }

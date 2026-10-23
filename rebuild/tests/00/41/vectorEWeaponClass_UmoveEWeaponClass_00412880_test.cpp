@@ -6,10 +6,10 @@ struct AllocT {
     void* seen_self;
     EWeaponClass* seen_p;
     char* seen_local;
-    EWeaponClass* construct(EWeaponClass* p, char* local);
+    EWeaponClass* construct_004122d0(EWeaponClass* p, char* local);
 };
 
-EWeaponClass* AllocT::construct(EWeaponClass* p, char* local)
+EWeaponClass* AllocT::construct_004122d0(EWeaponClass* p, char* local)
 {
     seen_self = this;
     seen_p = p;
@@ -20,7 +20,7 @@ EWeaponClass* AllocT::construct(EWeaponClass* p, char* local)
 EWeaponClass* __fastcall vector_Umove(AllocT* self, int edx_unused, EWeaponClass* p)
 {
     char local = 0;
-    return self->construct(p, &local);
+    return self->construct_004122d0(p, &local);
 }
 
 int main()

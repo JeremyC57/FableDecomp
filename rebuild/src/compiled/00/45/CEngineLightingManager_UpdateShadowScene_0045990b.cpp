@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // CEngineLightingManager::UpdateShadowScene @ 00451e59  __fastcall void (this, void* arg)
 
-struct Local4 { int v; void Fill(void* obj24, void* arg); };
+struct Local4 { int v; void Fill_0045994c(void* obj24, void* arg); };
 struct Obj28 { void Draw(int v); };
 
 struct CEngineLightingManager {
@@ -21,7 +21,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
     local.v = 0;
     switch (self->mode) {
     case 2:
-        local.Fill(self->obj24, arg);
+        local.Fill_0045994c(self->obj24, arg);
         break;
     case 3:
         self->obj28->Draw(*(int*)arg);
