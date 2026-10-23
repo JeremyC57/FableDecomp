@@ -26452,3 +26452,9 @@ __wcsicmp	00f3fb84	00599e3f
 ?PeekThingSearchTools@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAUCThingSearchTools@@XZ	008fd000	00937b10
 __allrem	00bfec30	00937b10
 ?GetPBestThingInRoughArea@CThingSearchTools@@QAE_NABUC2DBoxI@@ABU?$CFilter_Bind3@UCThingFilter_IsAICreatureAwareOf@@UCThingFilter_IsUnconscious@@UCThingFilter_IsAnAlly@@@@ABUCThingCompare_Nearest@@PAPAUCThingCreatureBase@@@Z	00937690	00937c20
+??0CEnginePrimitiveParticleGroup2D@@QAE@JABVCMatrix3x4@@ABUC2DVector@@_N2@Z	00af0880	00aee240
+?Initialise@CParticleSystem@NParticleEngine@@QAE_NPAUCIEngine@@PAUCParticleUpdateParameters@2@PAUCEnginePrimitiveHandle@@@Z	00af4010	00aee240
+?GetDummyObject@C3DMeshStats@@QBEPBUC3DDummyObject@@KK@Z	00a2e920	00b393d0
+?IsLoadedStats@C3DMeshInfo@@QBE_NXZ	00a23e80	00b393d0
+?GetDefinitions@CTCInventory@@QBEPAUCDefinitionManager@@XZ	006869d0	00583a92
+?GetSubDef@CThingDef@@QAE_NPAU?$CDefPointer@UCContextSensitiveItemDef@@@@@Z	005933c8	00583a92

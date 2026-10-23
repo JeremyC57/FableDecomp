@@ -273242,6 +273242,27 @@ $catalog = @(
         TestSource = '00/93/CAIStateGroupMinionReactToUnconsciousPerson_FindUnconsciousPerson_00937c20_test.cpp'
         PassPattern = '00937c20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aee240'
+        Module = 'CParticleEmitter'
+        Source = '00/ae/CParticleEmitter_Initialise_00aee240.cpp'
+        TestSource = '00/ae/CParticleEmitter_Initialise_00aee240_test.cpp'
+        PassPattern = '00aee240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b393d0'
+        Module = 'CEngineInternalAttachedPrimitive'
+        Source = '00/b3/CEngineInternalAttachedPrimitive_GetChildInverseTransformStaticMesh_00b393d0.cpp'
+        TestSource = '00/b3/CEngineInternalAttachedPrimitive_GetChildInverseTransformStaticMesh_00b393d0_test.cpp'
+        PassPattern = '00b393d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00583a92'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_UseContextSensitiveItem_00583a92.cpp'
+        TestSource = '00/58/CTCInventory_UseContextSensitiveItem_00583a92_test.cpp'
+        PassPattern = '00583a92_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
