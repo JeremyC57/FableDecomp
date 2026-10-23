@@ -271841,6 +271841,34 @@ $catalog = @(
         TestSource = '00/80/CTCNymph_FrameUpdate_0080fad0_test.cpp'
         PassPattern = '0080fad0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005eea9b'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_OnSpecialAbilityUsed_005eea9b.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_OnSpecialAbilityUsed_005eea9b_test.cpp'
+        PassPattern = '005eea9b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e4430'
+        Module = 'CTCQuestCompletionUI'
+        Source = '00/5e/CTCQuestCompletionUI_Activate_005e4430.cpp'
+        TestSource = '00/5e/CTCQuestCompletionUI_Activate_005e4430_test.cpp'
+        PassPattern = '005e4430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080f5e0'
+        Module = 'CTCNymph'
+        Source = '00/80/CTCNymph_StartFlyingAround_0080f5e0.cpp'
+        TestSource = '00/80/CTCNymph_StartFlyingAround_0080f5e0_test.cpp'
+        PassPattern = '0080f5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00724010'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_OnCreate_00724010.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_OnCreate_00724010_test.cpp'
+        PassPattern = '00724010_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
