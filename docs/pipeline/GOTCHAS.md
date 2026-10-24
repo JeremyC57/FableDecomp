@@ -1193,3 +1193,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - VC7.1 hoists a loop-invariant load across a call only when the callee's read-only body is in the same TU (0x4AF610).
 - A scoped_ptr dtor `mov ecx,[ecx]; jmp F` means F is `boost::checked_delete<T>` (/Gr + explicit instantiation); the function `Reset` stores into a count block is `CCountedPointer<T>::DeleteData` (chunk 371).
 - `push 0; call [eax]` inside list::erase is the element's explicit virtual `~T()`; a fill keeping its count in a frame slot over three strings means a nested pair (0x4B8260).
+- STLport `vector::operator=`: `_TrivialAss()` is a POD empty `__false_type` (one `xor eax,eax; stosb`), the `__destroy` tag a named uninitialised local; under "s" `_Destroy`/`__destroy`/`__uninitialized_copy` need `__forceinline` (0x4E9AD3).
+- The same template source at a different element stride (0x44 vs 0x48) changes VC's register/frame choice with no source change (0x4EBF32).
+- GFSerialiseVectorBinaryIn: one pushed arg to `resize` means out-of-line `resize(n)`; an inline `T()` means `__forceinline` (0x4E9D71 vs 0x4EB219).
+- g++ test models checking `sizeof`: `unsigned long` is 8 bytes on x64, use `unsigned int` (chunk 373).

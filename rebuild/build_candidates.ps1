@@ -289005,6 +289005,265 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004b8260_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004d0460'
+        Module = '_STL'
+        Source = '00/4d/STL_unguardedinsertionsortaux_004d0460.cpp'
+        TestSource = '00/4d/STL_unguardedinsertionsortaux_004d0460_test.cpp'
+        PassPattern = '004d0460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d0660'
+        Module = '_STL'
+        Source = '00/4d/STL_adjustheap_004d0660.cpp'
+        TestSource = '00/4d/STL_adjustheap_004d0660_test.cpp'
+        PassPattern = '004d0660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d0830'
+        Module = '_STL::vector<pair<float,CCharString>>'
+        Source = '00/4d/STLvectorpairfloatCCharString_vector_004d0830.cpp'
+        TestSource = '00/4d/STLvectorpairfloatCCharString_vector_004d0830_test.cpp'
+        PassPattern = '004d0830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d08a0'
+        Module = '_STL::vector<pair<float,CCameraTag>>'
+        Source = '00/4d/STLvectorpairfloatCCameraTag_vector_004d08a0.cpp'
+        TestSource = '00/4d/STLvectorpairfloatCCameraTag_vector_004d08a0_test.cpp'
+        PassPattern = '004d08a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d0f10'
+        Module = '_STL'
+        Source = '00/4d/STL_linearinsert_004d0f10.cpp'
+        TestSource = '00/4d/STL_linearinsert_004d0f10_test.cpp'
+        PassPattern = '004d0f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d0f80'
+        Module = '_STL'
+        Source = '00/4d/STL_linearinsert_004d0f80.cpp'
+        TestSource = '00/4d/STL_linearinsert_004d0f80_test.cpp'
+        PassPattern = '004d0f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2060'
+        Module = 'CVectorMap<float,CCharString>'
+        Source = '00/4d/CVectorMapfloatCCharString_Insert_004d2060.cpp'
+        TestSource = '00/4d/CVectorMapfloatCCharString_Insert_004d2060_test.cpp'
+        PassPattern = '004d2060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dfd60'
+        Module = '_STL'
+        Source = '00/4d/STL_unguardedinsertionsortaux_004dfd60.cpp'
+        TestSource = '00/4d/STL_unguardedinsertionsortaux_004dfd60_test.cpp'
+        PassPattern = '004dfd60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e1c8a'
+        Module = '_STL'
+        Source = '00/4e/STL_linearinsert_004e1c8a.cpp'
+        TestSource = '00/4e/STL_linearinsert_004e1c8a_test.cpp'
+        PassPattern = '004e1c8a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e1d68'
+        Module = '_STL'
+        Source = '00/4e/STL_makeheap_004e1d68.cpp'
+        TestSource = '00/4e/STL_makeheap_004e1d68_test.cpp'
+        PassPattern = '004e1d68_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e415d'
+        Module = '_STL'
+        Source = '00/4e/STL_finalinsertionsort_004e415d.cpp'
+        TestSource = '00/4e/STL_finalinsertionsort_004e415d_test.cpp'
+        PassPattern = '004e415d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e4bee'
+        Module = '_STL::_Rb_tree<EObjectAugmentationType,pair<const EObjectAugmentationType,CWeaponTrailGraphicSet>,...>'
+        Source = '00/4e/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCWeaponTrailGrap_Mcreatenode_004e4bee.cpp'
+        TestSource = '00/4e/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCWeaponTrailGrap_Mcreatenode_004e4bee_test.cpp'
+        PassPattern = '004e4bee_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e5a76'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseMapBinaryIn_004e5a76.cpp'
+        TestSource = '00/4e/global_GFSerialiseMapBinaryIn_004e5a76_test.cpp'
+        PassPattern = '004e5a76_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6088'
+        Module = '_STL::vector<CEngineGraphic>'
+        Source = '00/4e/STLvectorCEngineGraphic_Mallocateandcopy_004e6088.cpp'
+        TestSource = '00/4e/STLvectorCEngineGraphic_Mallocateandcopy_004e6088_test.cpp'
+        PassPattern = '004e6088_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6e9e'
+        Module = '_STL'
+        Source = '00/4e/STL_partialsort_004e6e9e.cpp'
+        TestSource = '00/4e/STL_partialsort_004e6e9e_test.cpp'
+        PassPattern = '004e6e9e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e70cf'
+        Module = '_STL::vector<pair<EHeroMorphType,CTextureMorphEntry>>'
+        Source = '00/4e/STLvectorpairEHeroMorphTypeCTextureMorphEntry_Mallocateandcopy_004e70cf.cpp'
+        TestSource = '00/4e/STLvectorpairEHeroMorphTypeCTextureMorphEntry_Mallocateandcopy_004e70cf_test.cpp'
+        PassPattern = '004e70cf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e7279'
+        Module = '_STL::vector<pair<EHeroMorphType,CParticleMorphs::CEntry>>'
+        Source = '00/4e/STLvectorpairEHeroMorphTypeCParticleMorphsCEntry_Mallocateandcopy_004e7279.cpp'
+        TestSource = '00/4e/STLvectorpairEHeroMorphTypeCParticleMorphsCEntry_Mallocateandcopy_004e7279_test.cpp'
+        PassPattern = '004e7279_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e741d'
+        Module = '_STL::vector<pair<unsigned long,CSkeletalMorphs::CEntry>>'
+        Source = '00/4e/STLvectorpairunsignedlongCSkeletalMorphsCEntry_Mallocateandcopy_004e741d.cpp'
+        TestSource = '00/4e/STLvectorpairunsignedlongCSkeletalMorphsCEntry_Mallocateandcopy_004e741d_test.cpp'
+        PassPattern = '004e741d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e823b'
+        Module = '_STL'
+        Source = '00/4e/STL_introsortloop_004e823b.cpp'
+        TestSource = '00/4e/STL_introsortloop_004e823b_test.cpp'
+        PassPattern = '004e823b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e910f'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseMapBinaryOut_004e910f.cpp'
+        TestSource = '00/4e/global_GFSerialiseMapBinaryOut_004e910f_test.cpp'
+        PassPattern = '004e910f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9ad3'
+        Module = '_STL::vector<CShopItemDef>'
+        Source = '00/4e/STLvectorCShopItemDef_operator_004e9ad3.cpp'
+        TestSource = '00/4e/STLvectorCShopItemDef_operator_004e9ad3_test.cpp'
+        PassPattern = '004e9ad3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9ce8'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseVectorBinaryOut_004e9ce8.cpp'
+        TestSource = '00/4e/global_GFSerialiseVectorBinaryOut_004e9ce8_test.cpp'
+        PassPattern = '004e9ce8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9d71'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseVectorBinaryIn_004e9d71.cpp'
+        TestSource = '00/4e/global_GFSerialiseVectorBinaryIn_004e9d71_test.cpp'
+        PassPattern = '004e9d71_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ea40b'
+        Module = '_STL::vector<CEngineGraphic>'
+        Source = '00/4e/STLvectorCEngineGraphic_erase_004ea40b.cpp'
+        TestSource = '00/4e/STLvectorCEngineGraphic_erase_004ea40b_test.cpp'
+        PassPattern = '004ea40b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ea57f'
+        Module = '_STL'
+        Source = '00/4e/STL_uninitializedfilln_004ea57f.cpp'
+        TestSource = '00/4e/STL_uninitializedfilln_004ea57f_test.cpp'
+        PassPattern = '004ea57f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004eaf33'
+        Module = '_STL'
+        Source = '00/4e/STL_copyptrs_004eaf33.cpp'
+        TestSource = '00/4e/STL_copyptrs_004eaf33_test.cpp'
+        PassPattern = '004eaf33_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004eb1a8'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseVectorBinaryOut_004eb1a8.cpp'
+        TestSource = '00/4e/global_GFSerialiseVectorBinaryOut_004eb1a8_test.cpp'
+        PassPattern = '004eb1a8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004eb219'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseVectorBinaryIn_004eb219.cpp'
+        TestSource = '00/4e/global_GFSerialiseVectorBinaryIn_004eb219_test.cpp'
+        PassPattern = '004eb219_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ebca9'
+        Module = '_STL::vector<CCardPositionsDef>'
+        Source = '00/4e/STLvectorCCardPositionsDef_operator_004ebca9.cpp'
+        TestSource = '00/4e/STLvectorCCardPositionsDef_operator_004ebca9_test.cpp'
+        PassPattern = '004ebca9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ebdb0'
+        Module = '_STL'
+        Source = '00/4e/STL_copyptrs_004ebdb0.cpp'
+        TestSource = '00/4e/STL_copyptrs_004ebdb0_test.cpp'
+        PassPattern = '004ebdb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ebe1a'
+        Module = '_STL::vector<C2DVector>'
+        Source = '00/4e/STLvectorC2DVector_vector_004ebe1a.cpp'
+        TestSource = '00/4e/STLvectorC2DVector_vector_004ebe1a_test.cpp'
+        PassPattern = '004ebe1a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ebf32'
+        Module = '_STL::vector<CCardDef>'
+        Source = '00/4e/STLvectorCCardDef_operator_004ebf32.cpp'
+        TestSource = '00/4e/STLvectorCCardDef_operator_004ebf32_test.cpp'
+        PassPattern = '004ebf32_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec10f'
+        Module = '_STL::vector<CCardDef>'
+        Source = '00/4e/STLvectorCCardDef_Mallocateandcopy_004ec10f.cpp'
+        TestSource = '00/4e/STLvectorCCardDef_Mallocateandcopy_004ec10f_test.cpp'
+        PassPattern = '004ec10f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec4b0'
+        Module = '_STL::vector<CDefString>'
+        Source = '00/4e/STLvectorCDefString_vector_004ec4b0.cpp'
+        TestSource = '00/4e/STLvectorCDefString_vector_004ec4b0_test.cpp'
+        PassPattern = '004ec4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec85a'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseMapBinaryOut_004ec85a.cpp'
+        TestSource = '00/4e/global_GFSerialiseMapBinaryOut_004ec85a_test.cpp'
+        PassPattern = '004ec85a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ed353'
+        Module = '_STL::vector<CShopItemDef>'
+        Source = '00/4e/STLvectorCShopItemDef_Minsertoverflow_004ed353.cpp'
+        TestSource = '00/4e/STLvectorCShopItemDef_Minsertoverflow_004ed353_test.cpp'
+        PassPattern = '004ed353_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004edcc2'
+        Module = '_STL'
+        Source = '00/4e/STL_copybackwardptrs_004edcc2.cpp'
+        TestSource = '00/4e/STL_copybackwardptrs_004edcc2_test.cpp'
+        PassPattern = '004edcc2_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

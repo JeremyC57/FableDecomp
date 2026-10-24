@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004d0460	MATCH	132v132	PASS	STLport __unguarded_insertion_sort_aux, pair<float,CCameraTag> (28 B), linear insert inline
+004d0660	RELOCATION_MATCH	190v190	PASS	STLport __adjust_heap, pair<float,CCameraTag>; __push_heap 0x004CFEB0 out of line
+004d0830	RELOCATION_MATCH	87v87	PASS	STLport vector<pair<float,CCharString>> copy ctor (_Vector_base(n,a) + alloc proxy)
+004d08a0	RELOCATION_MATCH	104v104	PASS	STLport vector<pair<float,CCameraTag>> copy ctor
+004d0f10	RELOCATION_MATCH	105v105	PASS	STLport __linear_insert, pair<float,EConversationAttitude>; __copy_backward inline
+004d0f80	RELOCATION_MATCH	120v120	PASS	STLport __linear_insert, pair<float,CCharString>; __copy_backward out of line
+004d1e20	DIFFER	101v95	-	CVectorMap<float,EConversationAttitude>::Insert; register/scheduling only
+004d2060	RELOCATION_MATCH	132v132	PASS	CVectorMap<float,CCharString>::Insert = push_back(pair(key,value)); Dirty = true
+004dfcea	DIFFER	110v113	-	STLport __unguarded_partition, registry pair; pivot kept in memory + ebp frame
+004dfd60	RELOCATION_MATCH	42v42	PASS	STLport __unguarded_insertion_sort_aux, registry pair (16 B); size TU
+004e1c8a	RELOCATION_MATCH	114v114	PASS	STLport __linear_insert, registry pair; size TU, forceinline comparator
+004e1d68	RELOCATION_MATCH	77v77	PASS	STLport __make_heap, registry pair; size TU
+004e415d	RELOCATION_MATCH	68v68	PASS	STLport __final_insertion_sort, registry pair; size TU
+004e4bee	RELOCATION_MATCH	40v40	PASS	STLport _Rb_tree::_M_create_node, map<EObjectAugmentationType,CWeaponTrailGraphicSet>
+004e5a76	RELOCATION_MATCH	171v171	PASS	GFSerialiseMapBinaryIn<long,CDefString,CCompareDefString<long>>; y-off + s
+004e6088	RELOCATION_MATCH	66v66	PASS	vector<CEngineGraphic>::_M_allocate_and_copy (14 B pack 2); size TU
+004e6e9e	RELOCATION_MATCH	104v104	PASS	STLport __partial_sort, registry pair; size TU
+004e70cf	RELOCATION_MATCH	79v79	PASS	vector<pair<EHeroMorphType,CTextureMorphEntry>>::_M_allocate_and_copy
+004e7279	RELOCATION_MATCH	79v79	PASS	vector<pair<EHeroMorphType,CParticleMorphs::CEntry>>::_M_allocate_and_copy
+004e741d	RELOCATION_MATCH	80v80	PASS	vector<pair<ulong,CSkeletalMorphs::CEntry>>::_M_allocate_and_copy
+004e823b	RELOCATION_MATCH	140v140	PASS	STLport __introsort_loop, registry pair; size TU
+004e910f	RELOCATION_MATCH	71v71	PASS	GFSerialiseMapBinaryOut<CWeaponTrailGraphicSet,EObjectAugmentationType>; forceinline value traits
+004e9ad3	RELOCATION_MATCH	228v228	PASS	vector<CShopItemDef>::operator=; named destroy tag, forceinline helpers; y-off + s
+004e9ce8	RELOCATION_MATCH	76v76	PASS	GFSerialiseVectorBinaryOut<CMusicEntry>; inline DefaultVal; y-off + s
+004e9d71	RELOCATION_MATCH	154v154	PASS	GFSerialiseVectorBinaryIn<CMusicEntry> (catalog <CBrainUpdateZone> wrong); out-of-line resize(n)
+004ea21e	DIFFER	80v77	-	CPersistContext::Transfer<CReplaceableMeshes>; lea ecx hoisting only
+004ea40b	MATCH	59v59	PASS	vector<CEngineGraphic>::erase(first,last); everything inline; size TU
+004ea57f	MATCH	34v34	PASS	STLport uninitialized_fill_n<CEngineGraphic*>; size TU
+004eaf33	RELOCATION_MATCH	75v75	PASS	STLport __copy_ptrs<CShoveHaPennyRegionDef> (0x30); y-off + s
+004eb1a8	RELOCATION_MATCH	49v49	PASS	GFSerialiseVectorBinaryOut<CExplosionRing>; empty traits forwarding to the member
+004eb219	RELOCATION_MATCH	159v159	PASS	GFSerialiseVectorBinaryIn<CExplosionRing> (catalog <CBrainUpdateZone> wrong); forceinline resize(n)
+004ebca9	RELOCATION_MATCH	228v228	PASS	vector<CCardPositionsDef>::operator= (same bytes as 0x004E9AD3)
+004ebdb0	RELOCATION_MATCH	65v65	PASS	STLport __copy_ptrs<CCardPositionsDef> (0x48); size TU
+004ebe1a	RELOCATION_MATCH	72v72	PASS	vector<C2DVector> copy ctor; out-of-line _Vector_base(n,a); y-off + s
+004ebf32	RELOCATION_MATCH	234v234	PASS	vector<CCardDef>::operator= (catalog CShoveHaPennyRegionDef wrong)
+004ec10f	RELOCATION_MATCH	68v68	PASS	vector<CCardDef>::_M_allocate_and_copy (catalog CShoveHaPennyRegionDef wrong)
+004ec4b0	RELOCATION_MATCH	66v66	PASS	vector<CDefString> copy ctor; out-of-line _Vector_base(n,a); y-off + s
+004ec85a	RELOCATION_MATCH	104v104	PASS	GFSerialiseMapBinaryOut<CObjectAugmentationParticleSet,EObjectAugmentationType>; y-off + s
+004ed353	RELOCATION_MATCH	228v228	PASS	vector<CShopItemDef>::_M_insert_overflow; y-off + s
+004edcc2	RELOCATION_MATCH	81v81	PASS	STLport __copy_backward_ptrs<CPrizeScoreDef> (0x30); y-off + s
