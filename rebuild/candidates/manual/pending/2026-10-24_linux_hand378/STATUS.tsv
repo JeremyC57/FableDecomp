@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005806df	RELOCATION_MATCH	123v123	PASS	vector<CHeroMarriageInfo>::reserve
+00580928	RELOCATION_MATCH	227v227	PASS	vector<CHeroMarriageInfo>::_M_fill_insert
+00580a7b	RELOCATION_MATCH	180v180	PASS	vector<CHousePosition>::_M_insert_overflow
+005810da	RELOCATION_MATCH	58v58	PASS	__copy<const CHeroMarriageInfo*, back_insert_iterator> (was LoopConstructClosures)
+0058123a	RELOCATION_MATCH	44v44	PASS	__copy_aux<_List_iterator, back_insert_iterator> (was ConstructString)
+005812df	RELOCATION_MATCH	111v111	PASS	map<CCharString, MirroredCriminalStatus>::operator[]
+00581404	RELOCATION_MATCH	137v137	PASS	GFSerialiseVectorBinaryIn<CHeroMarriageInfo> (was <CBrainUpdateZone>)
+0058ef79	RELOCATION_MATCH	157v157	PASS	CTCInventory::ContructItemLists
+00590198	RELOCATION_MATCH	157v157	PASS	CTCInventory::ContructItemListsPC
+00592495	RELOCATION_MATCH	37v37	PASS	pair<const CCharString, CCharString> converting ctor
+005924f4	MATCH	32v32	PASS	__uninitialized_fill_n<CContextSensitiveItem> (was _Fill_n<unsigned long*>)
+0059266b	MATCH	45v45	PASS	__copy<CContextSensitiveItem*> (was _Move<CMusicSetEntry*>)
+005926ce	MATCH	51v51	PASS	__copy<CFadeInFadeOutBase*> (was _Copy_impl<CDegradableInfo*>)
+00592ffb	RELOCATION_MATCH	101v101	PASS	__median<CPriorityDefPair> (was Min3)
+0059339a	RELOCATION_MATCH	46v46	PASS	_Rb_tree<CDateAndTime>::_M_lower_bound
+00593924	RELOCATION_MATCH	65v65	PASS	__unguarded_linear_insert<CPriorityDefPair>
+00593ce4	RELOCATION_MATCH	146v146	PASS	_Rb_tree<CDateAndTime>::_M_insert
+00593d76	RELOCATION_MATCH	146v146	PASS	_Rb_tree<CDateAndTime>::insert_unique
+00593e10	RELOCATION_MATCH	41v41	PASS	__unguarded_insertion_sort_aux<CPriorityDefPair> (was _Fill<CIntelligentPointer>)
+00593f39	RELOCATION_MATCH	191v191	PASS	vector<CContextSensitiveItem>::_M_insert_overflow
+005943a2	RELOCATION_MATCH	73v73	PASS	CThing::GetTC<T> (ICF-folded member template)
+00594637	RELOCATION_MATCH	82v82	PASS	__unguarded_partition<CPriorityDefPair>
+00594706	RELOCATION_MATCH	72v72	PASS	__make_heap<CPriorityDefPair>
+00594782	RELOCATION_MATCH	52v52	PASS	vector<CContextSensitiveItem>::push_back
+00594880	RELOCATION_MATCH	183v183	PASS	vector<CFadeInFadeOutBase>::_M_insert_overflow
+00594946	RELOCATION_MATCH	95v95	PASS	__linear_insert<CPriorityDefPair>
+00594a08	DIFFER	104v107	-	map<CDateAndTime, CWideString>::operator[]; _Tp() push eax vs retail lea re-address
+00594a73	RELOCATION_MATCH	217v217	PASS	vector<CFadeInFadeOutBase>::_M_fill_insert
+00594c77	RELOCATION_MATCH	91v91	PASS	__partial_sort<CPriorityDefPair>
+00594d36	RELOCATION_MATCH	172v172	PASS	vector<CPriorityDefPair>::_M_insert_overflow
+00594e4d	RELOCATION_MATCH	135v135	PASS	__introsort_loop<CPriorityDefPair>
+0059525d	RELOCATION_MATCH	70v70	PASS	NUISystem::CFrontEndManager::ClearComponents
+005959ab	RELOCATION_MATCH	88v88	PASS	NUISystem::CFrontEndManager::IsScreenOnStack
+0059ac41	MATCH	35v35	PASS	_Deque_iterator<CComponent*>::_M_decrement (was lua_getglobals)
+0059ac9f	RELOCATION_MATCH	150v150	PASS	_Deque_base<CComponent*>::_M_initialize_map (was String_InitializeBuffer)
+0059afd7	DIFFER	73v73	-	__copy<_Deque_iterator<CComponent*>>; source/cursor load order only
+0059de04	RELOCATION_MATCH	114v114	PASS	CTCInventoryTrade::UpdateBuyActionsList
+0059de76	RELOCATION_MATCH	211v211	PASS	CTCInventoryTrade::UpdateSellActionsList
+005b3100	RELOCATION_MATCH	103v103	PASS	map<CComponent*, pair<CWideString, long> >::operator[]
+005b3275	RELOCATION_MATCH	176v176	PASS	vector<CDefPointer<const CTattooDef> >::_M_insert_overflow

@@ -1215,3 +1215,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - For tree `erase`, instantiate only `_Rb_tree` and use leaf `?erase@?$_Rb_tree@`; an implicit non-trivial pair dtor is called through its `??_G` with 0 (0x579D18, 0x579D55).
 - /Os turns `1.0f` stores into `fld1; fstp`; `ceil(float)` is a speed TU; `f /= max` is `fdiv st,st(1)` but `a / max` is `fidivr` (chunk 377).
 - Returning CWideString by value needs its user copy ctor and dtor or VC7.1 returns it in eax (0x57AD4C); test models returning counted pointers need a ref-adding copy ctor (no NRVO at /Od).
+- STLport `map::operator[]` with an inline `_Tp()` matches as `T def; i = insert(i, value_type(k, def));` (def at the frame top, result in the dead `k` slot) (0x5B3100).
+- In a size TU an inline copy ctor stays an out-of-line call even inside a `__forceinline` `_Copy_Construct`: mark the copy ctor `__forceinline` (0x5B3275).
+- A `/Gr` iterator returned by value travels in ecx only if it is non-POD (STLport user ctors + implicit copy give the `movsd` result copy) (0x59AFD7).
+- Empty tags land in dead argument slots only when the callees' bodies are visible in the TU (`auto_inline(off)` stand-ins) (chunk 378).
