@@ -28958,3 +28958,8 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?__adjust_heap@@YIXPAU?$pair@UCCharString@@UCRegisteredPSCInfo@NParticleEngine@@@std@@HHU12@U?$CKeyPairCompareLess@UCCharString@@UCRegisteredPSCInfo@NParticleEngine@@@@@Z	00af3290	00af3430
 ?PoolFree@@YIXPAX@Z	00c16680	00c27e60
 ??0?$vector@UCCharString@@@@QAE@ABV0@@Z	007acea0	00f0ca60
+??4CRecordHead@@QAEAAV0@ABV0@@Z	00431f10	004ed2f1
+??4SVector@@QAEAAU0@ABU0@@Z	00888ee0	008893d0
+??4CDefNameInserter8@@QAEAAU0@ABUSDefEntry8@@@Z	008ed3b0	008ed4d0
+??4CDefNameInserter4@@QAEAAU0@ABUSDefEntry4@@@Z	008ed440	008ed510
+??4SRecord20@@QAEAAU0@ABU0@@Z	00992630	009929c0

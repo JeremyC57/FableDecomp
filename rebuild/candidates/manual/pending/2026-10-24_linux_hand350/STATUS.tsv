@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00613390	RELOCATION_MATCH	130v130	PASS	__copy_backward CTCInventoryMap::CUIMiniMapMarker
+008074a0	RELOCATION_MATCH	119v119	PASS	really __unguarded_linear_insert pair<C3DVector,long> / CCompareTargetedPositionsForFirstPersonTargeting
+005e07f0	MATCH	141v141	PASS	really __unguarded_linear_insert pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>>
+005e0a00	MATCH	94v94	PASS	__copy_backward pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>>
+00a43720	MATCH	94v94	PASS	__copy_backward NGameText::CDataBankTextEntry
+00af1b30	MATCH	111v111	PASS	__copy_backward NParticleEngine::CParticleEmitterInfo
+00a31060	RELOCATION_MATCH	103v103	PASS	__copy_backward 0x40 record (C3DDummyObject block, name, index, flag)
+00a314e0	MATCH	73v73	PASS	__copy_backward pair<unsigned long,C3DDummyObject>
+00781720	RELOCATION_MATCH	137v137	PASS	forward __copy, 0x2C record (name, fields, two intelligent pointers)
+008893d0	RELOCATION_MATCH	112v112	PASS	__copy_backward 0x30 record (vector operator= out of line, double)
+00a70ab0	RELOCATION_MATCH	152v152	PASS	__copy_backward pair<CCharString,C3DMeshVolume>
+00769b90	RELOCATION_MATCH	97v97	PASS	forward __copy, 0x14 (string, string, three floats)
+00cbae30	RELOCATION_MATCH	143v143	PASS	__copy_backward pair<CCharString,CCountedPointer<CEntityScriptBindingBase>>
+00cb62f0	RELOCATION_MATCH	123v123	PASS	__copy_backward pair<CCharString,CScriptInfo>
+006b7a00	MATCH	84v84	PASS	__copy_backward 7-byte record
+009929c0	RELOCATION_MATCH	76v76	PASS	__copy_backward 0x24 (long, record with out-of-line operator=)
+00a522b0	MATCH	71v71	PASS	__copy_backward C3DVectorWord
+00a94a00	MATCH	71v71	PASS	__copy_backward C3DVectorWord
+00af6e10	RELOCATION_MATCH	181v181	PASS	__copy_backward pair<EPSCType,CComponentInstance>
+006a2eb0	RELOCATION_MATCH	80v80	PASS	__copy_backward pair<long,CIntelligentPointer<CThing>>
+006beaa0	RELOCATION_MATCH	134v134	PASS	__copy_backward pair<long,CRegisteredMusicEntry>
+00cb60f0	RELOCATION_MATCH	106v106	PASS	really STLport __uninitialized_copy pair<CCharString,CScriptInfo>
+0047130e	MATCH	42v42	PASS	__copy_backward_ptrs (SGI __copy_backward inlined, /Os, __forceinline)
+004ed2f1	RELOCATION_MATCH	98v98	PASS	__copy_backward_ptrs 0x48 record (/Os + frame pointers, __forceinline operator=)
+00a95a70	MATCH	46v46	PASS	__copy_backward_ptrs 0x20 POD (inlined __copy_backward)
+00a33050	RELOCATION_MATCH	151v151	PASS	__copy_backward pair<unsigned long,C3DMeshVolume>
+00a70a10	RELOCATION_MATCH	151v151	PASS	__copy_backward pair<unsigned long,C3DMeshVolume>
+00769ea0	MATCH	68v68	PASS	__copy_backward pair<unsigned long,CParticleUpdateParamDesc<ul,ul>> (vtable skipped)
+006c1ed0	DIFFER	241v240	-	copy_if into STLport list back inserter; lea vs mov/add + push placement
+00a52120	MATCH	70v70	PASS	__copy C3DVectorWord
+00a52260	MATCH	70v70	PASS	__copy C3DVectorWord
+00a744b0	MATCH	70v70	PASS	__copy C3DVectorWord
+00564d5d	SKIP	-v29	-	wrong bounds: mid-function entry of the memcpy-like helper at 0x00564D50 (42 bytes)
+008ed4d0	RELOCATION_MATCH	61v61	PASS	copy into def-name output iterator (hidden-pointer return)
+008ed510	RELOCATION_MATCH	61v61	PASS	copy into def-name output iterator (hidden-pointer return)
+00992a10	RELOCATION_MATCH	75v75	PASS	forward __copy 0x24 (long, record with out-of-line operator=)
+00a5e830	RELOCATION_MATCH	75v75	PASS	forward __copy 0x14 (long, polymorphic vector holder)
+006f0640	RELOCATION_MATCH	112v112	PASS	forward __copy 0x1C (packed flag+vector, word, intelligent pointer)
+00722c90	RELOCATION_MATCH	96v96	PASS	forward __copy CTCSmokeGenerator::CGenerationPos
+00769c00	RELOCATION_MATCH	108v108	PASS	forward __copy 0x18 (string, string, two words, intelligent pointer)

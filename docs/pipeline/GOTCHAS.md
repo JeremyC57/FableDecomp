@@ -1083,3 +1083,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport `map::operator[]` with retail's duplicated return tail is `It inserted = insert_unique(i, v); i = inserted;` (004c6e00); an early return or `i = insert_unique(...)` reorders it.
 - A predicate result spilled to a frame dword comes from a const-ref-bound temporary: `const unsigned long& bit = Random() & 1; return bit == 0;` (chunk 346).
 - `wchar_t` is not a keyword under the lane flags: include `<string.h>` for `_wcsicmp` instead of declaring it (chunk 346).
+- A `__copy_backward` with `ret 8` that loads result first and addresses the source as result + (last - result) is STLport `__copy_backward_ptrs(first, last, result, const __false_type&)` with SGI `__copy_backward` inlined (00a95a70, 0047130e, 004ed2f1).
+- An element copy that skips the word at +4 is a pair whose second member is polymorphic (vptr never assigned) (00769ea0, 00af6e10, 00a5e830).
+- A byte then a C3DVector at +1 is a `#pragma pack(1)` {bool, C3DVector} with a memberwise user operator=; the implicit one copies all 13 bytes as a block (006f0640).
+- `_Copy_backward` labels on `ret 0Ch`/`ret 3Ch` bodies with a `while (comp(val, *next))` loop are `__unguarded_linear_insert` (005e07f0, 008074a0).

@@ -28,6 +28,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00548b50	1616	2026-10-23_linux_hand323	CSlider::AdjustValueToProfile	multi	open	00548b50:682,00548dfa:315,00548f40:599	row holds two functions; first body (CTextSlider::AdjustValueToProfile) byte-exact
 00550dc0	1408	2026-10-24_linux_hand327	CTable::Draw	single	open	00550dc0:1399	NUISystem::CTable::Draw not attempted (aligned frame, x87 colour math)
 0055a5d0	704	2026-10-22_linux_hand284	CDraggable::OnLeftClicked	multi	open	0055a5d0:82,0055a630:39,0055a660:5787	multi-function row (6 int3-separated bodies to 0x55a890); first piece OnLeftClicked 82 bytes matched in probe/dg3.cpp
+00564d5d	29	2026-10-24_linux_hand350	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::CEntry*>	single	open	00564d5d:29	wrong bounds: mid-function entry of the memcpy-like helper at 0x00564D50 (42 bytes)
 00567d60	301	2026-10-20_linux_hand230	CTCElectrocutedEffect::CTCElectrocutedEffect::ReplaceString	multi	done	00567d60:280,00567e80:13	two functions: append copy (0x567D60) + 13-byte thunk after int3 padding
 00581ab3	78	2026-10-15_linux_hand91	CTCInventory::CTCInventory::vfunc_59	multi	done	00581ab3:46,00581ae1:32	two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging)
 005aceda	485	2026-10-21_linux_hand271	CTCInventoryTrade::OpenInventory	prefix	open	005aceda:1067	row truncated mid-function (body continues past the row)
