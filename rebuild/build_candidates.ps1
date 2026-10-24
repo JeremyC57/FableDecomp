@@ -287938,6 +287938,279 @@ $catalog = @(
         TestSource = '00/46/global_GFSerialiseVectorBinaryOutbool_004675c5_test.cpp'
         PassPattern = '004675c5_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004676bb'
+        Module = 'std::vector<unsigned char>'
+        Source = '00/46/stdvectorunsignedchar_erase_004676bb.cpp'
+        TestSource = '00/46/stdvectorunsignedchar_erase_004676bb_test.cpp'
+        PassPattern = '004676bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00467831'
+        Module = 'std::vector<unsigned char>'
+        Source = '00/46/stdvectorunsignedchar_Minsertoverflow_00467831.cpp'
+        TestSource = '00/46/stdvectorunsignedchar_Minsertoverflow_00467831_test.cpp'
+        PassPattern = '00467831_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00468f15'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryIn_00468f15.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryIn_00468f15_test.cpp'
+        PassPattern = '00468f15_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046916b'
+        Module = 'std::vector<CRGBColour>'
+        Source = '00/46/stdvectorCRGBColour_Minsertoverflow_0046916b.cpp'
+        TestSource = '00/46/stdvectorCRGBColour_Minsertoverflow_0046916b_test.cpp'
+        PassPattern = '0046916b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00469309'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseMapBinaryOut_00469309.cpp'
+        TestSource = '00/46/global_GFSerialiseMapBinaryOut_00469309_test.cpp'
+        PassPattern = '00469309_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00469c6c'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOut_00469c6c.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOut_00469c6c_test.cpp'
+        PassPattern = '00469c6c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00469cb2'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryIn_00469cb2.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryIn_00469cb2_test.cpp'
+        PassPattern = '00469cb2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046aa91'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOut_0046aa91.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOut_0046aa91_test.cpp'
+        PassPattern = '0046aa91_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046ab33'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryIn_0046ab33.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryIn_0046ab33_test.cpp'
+        PassPattern = '0046ab33_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046aff4'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOut_0046aff4.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOut_0046aff4_test.cpp'
+        PassPattern = '0046aff4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046b03a'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryIn_0046b03a.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryIn_0046b03a_test.cpp'
+        PassPattern = '0046b03a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046b422'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOut_0046b422.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOut_0046b422_test.cpp'
+        PassPattern = '0046b422_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046b4ab'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryIn_0046b4ab.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryIn_0046b4ab_test.cpp'
+        PassPattern = '0046b4ab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046b958'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOut_0046b958.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOut_0046b958_test.cpp'
+        PassPattern = '0046b958_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046b9b0'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryIn_0046b9b0.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryIn_0046b9b0_test.cpp'
+        PassPattern = '0046b9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046be4d'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOut_0046be4d.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOut_0046be4d_test.cpp'
+        PassPattern = '0046be4d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046be89'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryIn_0046be89.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryIn_0046be89_test.cpp'
+        PassPattern = '0046be89_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046bf72'
+        Module = 'std::vector<CReverbEnvironmentEntry>'
+        Source = '00/46/stdvectorCReverbEnvironmentEntry_resize_0046bf72.cpp'
+        TestSource = '00/46/stdvectorCReverbEnvironmentEntry_resize_0046bf72_test.cpp'
+        PassPattern = '0046bf72_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046c31c'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryIn_0046c31c.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryIn_0046c31c_test.cpp'
+        PassPattern = '0046c31c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046eb9e'
+        Module = 'std::vector<C2DVector>'
+        Source = '00/46/stdvectorC2DVector_Mallocateandcopy_0046eb9e.cpp'
+        TestSource = '00/46/stdvectorC2DVector_Mallocateandcopy_0046eb9e_test.cpp'
+        PassPattern = '0046eb9e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046ece7'
+        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >'
+        Source = '00/46/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mcreatenode_0046ece7.cpp'
+        TestSource = '00/46/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mcreatenode_0046ece7_test.cpp'
+        PassPattern = '0046ece7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046efb8'
+        Module = 'std'
+        Source = '00/46/std_copyptrs_0046efb8.cpp'
+        TestSource = '00/46/std_copyptrs_0046efb8_test.cpp'
+        PassPattern = '0046efb8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004708ef'
+        Module = 'std'
+        Source = '00/47/std_uninitializedfilln_004708ef.cpp'
+        TestSource = '00/47/std_uninitializedfilln_004708ef_test.cpp'
+        PassPattern = '004708ef_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00470e9e'
+        Module = 'std'
+        Source = '00/47/std_introsortloop_00470e9e.cpp'
+        TestSource = '00/47/std_introsortloop_00470e9e_test.cpp'
+        PassPattern = '00470e9e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00471055'
+        Module = 'std'
+        Source = '00/47/std_adjustheap_00471055.cpp'
+        TestSource = '00/47/std_adjustheap_00471055_test.cpp'
+        PassPattern = '00471055_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00471338'
+        Module = 'std'
+        Source = '00/47/std_introsortloop_00471338.cpp'
+        TestSource = '00/47/std_introsortloop_00471338_test.cpp'
+        PassPattern = '00471338_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004714ae'
+        Module = 'std'
+        Source = '00/47/std_adjustheap_004714ae.cpp'
+        TestSource = '00/47/std_adjustheap_004714ae_test.cpp'
+        PassPattern = '004714ae_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047197a'
+        Module = 'std::vector<pair<unsigned long, CAnimationEntry> >'
+        Source = '00/47/stdvectorpairunsignedlongCAnimationEntry_Mallocateandcopy_0047197a.cpp'
+        TestSource = '00/47/stdvectorpairunsignedlongCAnimationEntry_Mallocateandcopy_0047197a_test.cpp'
+        PassPattern = '0047197a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004719ce'
+        Module = 'std'
+        Source = '00/47/std_copyptrs_004719ce.cpp'
+        TestSource = '00/47/std_copyptrs_004719ce_test.cpp'
+        PassPattern = '004719ce_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00471c40'
+        Module = 'std::list<COpinionTransientOffset>'
+        Source = '00/47/stdlistCOpinionTransientOffset_Minsertdispatch_00471c40.cpp'
+        TestSource = '00/47/stdlistCOpinionTransientOffset_Minsertdispatch_00471c40_test.cpp'
+        PassPattern = '00471c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00471f97'
+        Module = 'std::vector<EOpinionAttitudeType>'
+        Source = '00/47/stdvectorEOpinionAttitudeType_vector_00471f97.cpp'
+        TestSource = '00/47/stdvectorEOpinionAttitudeType_vector_00471f97_test.cpp'
+        PassPattern = '00471f97_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00472841'
+        Module = '_global'
+        Source = '00/47/global_GFSerialiseMapBinaryOut_00472841.cpp'
+        TestSource = '00/47/global_GFSerialiseMapBinaryOut_00472841_test.cpp'
+        PassPattern = '00472841_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00472d79'
+        Module = 'std::vector<NSpeechGainManager::CDialogueLayerDef>'
+        Source = '00/47/stdvectorNSpeechGainManagerCDialogueLayerDef_Minsertoverflow_00472d79.cpp'
+        TestSource = '00/47/stdvectorNSpeechGainManagerCDialogueLayerDef_Minsertoverflow_00472d79_test.cpp'
+        PassPattern = '00472d79_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047536c'
+        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >'
+        Source = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_erase_0047536c.cpp'
+        TestSource = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_erase_0047536c_test.cpp'
+        PassPattern = '0047536c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047547d'
+        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >'
+        Source = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mlowerbound_0047547d.cpp'
+        TestSource = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mlowerbound_0047547d_test.cpp'
+        PassPattern = '0047547d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004754c6'
+        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >'
+        Source = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mupperbound_004754c6.cpp'
+        TestSource = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mupperbound_004754c6_test.cpp'
+        PassPattern = '004754c6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00475861'
+        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >'
+        Source = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mfind_00475861.cpp'
+        TestSource = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mfind_00475861_test.cpp'
+        PassPattern = '00475861_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004758e3'
+        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >'
+        Source = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_insertunique_004758e3.cpp'
+        TestSource = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_insertunique_004758e3_test.cpp'
+        PassPattern = '004758e3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004759ad'
+        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >'
+        Source = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Minsert_004759ad.cpp'
+        TestSource = '00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Minsert_004759ad_test.cpp'
+        PassPattern = '004759ad_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

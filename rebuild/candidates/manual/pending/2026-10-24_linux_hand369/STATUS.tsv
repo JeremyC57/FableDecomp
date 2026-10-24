@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004676bb	RELOCATION_MATCH	52v52	PASS	vector<unsigned char>::erase; __copy_trivial __forceinline
+00467831	RELOCATION_MATCH	177v177	PASS	vector<unsigned char>::_M_insert_overflow (__true_type)
+00468f15	RELOCATION_MATCH	144v144	PASS	GFSerialiseVectorBinaryIn<CRGBColour>; traits __forceinline
+0046916b	RELOCATION_MATCH	210v210	PASS	vector<CRGBColour>::_M_insert_overflow (__false_type)
+00469309	RELOCATION_MATCH	60v60	PASS	GFSerialiseMapBinaryOut<CBlendedParticleEffectSet,long>
+00469c6c	RELOCATION_MATCH	70v70	PASS	GFSerialiseVectorBinaryOut<CTextureReplacementDef::CEntry> (catalog <CAtmosBankEntry>)
+00469cb2	RELOCATION_MATCH	149v149	PASS	GFSerialiseVectorBinaryIn<CTextureReplacementDef::CEntry> (catalog <CRGBColour>)
+0046aa91	RELOCATION_MATCH	77v77	PASS	GFSerialiseVectorBinaryOut<CSoundBankEntry> (catalog <CBrainBehaviour>)
+0046ab33	RELOCATION_MATCH	145v145	PASS	GFSerialiseVectorBinaryIn<CSoundBankEntry> (catalog <CBrainBehaviour>)
+0046aff4	RELOCATION_MATCH	70v70	PASS	GFSerialiseVectorBinaryOut<CAtmosBankEntry>
+0046b03a	RELOCATION_MATCH	156v156	PASS	GFSerialiseVectorBinaryIn<CAtmosBankEntry> (catalog <CRGBColour>)
+0046b422	RELOCATION_MATCH	76v76	PASS	GFSerialiseVectorBinaryOut<CMusicEntry>
+0046b4ab	RELOCATION_MATCH	154v154	PASS	GFSerialiseVectorBinaryIn<CMusicEntry> (catalog <CBrainUpdateZone>)
+0046b958	RELOCATION_MATCH	88v88	PASS	GFSerialiseVectorBinaryOut<CMusicSetEntry> (catalog <CActionInputControl>)
+0046b9b0	RELOCATION_MATCH	155v155	PASS	GFSerialiseVectorBinaryIn<CMusicSetEntry> (catalog <CBrainUpdateZone>)
+0046be4d	RELOCATION_MATCH	60v60	PASS	GFSerialiseVectorBinaryOut<CReverbEnvironmentEntry>
+0046be89	RELOCATION_MATCH	147v147	PASS	GFSerialiseVectorBinaryIn<CReverbEnvironmentEntry> (catalog <CBrainUpdateZone>)
+0046bf72	RELOCATION_MATCH	38v38	PASS	vector<CReverbEnvironmentEntry>::resize(n) (catalog $E1)
+0046c31c	RELOCATION_MATCH	157v157	PASS	GFSerialiseVectorBinaryIn<CObjectFamilyEntry> (catalog <CRGBColour>)
+0046eb9e	RELOCATION_MATCH	70v70	PASS	vector<C2DVector>::_M_allocate_and_copy (CPlayerGuiDef)
+0046ece7	RELOCATION_MATCH	46v46	PASS	map<CCharString,long> _M_create_node
+0046efb8	RELOCATION_MATCH	104v104	PASS	__copy_ptrs<CQuickAccessItemButtonGuiDef*>; element operator= __forceinline
+004708ef	MATCH	41v41	PASS	uninitialized_fill_n<pair<ulong,CSoundPair>*>; leaf ??$uninitialized_fill_n
+00470e9e	RELOCATION_MATCH	148v148	PASS	__introsort_loop CSoundMap::SoundMap entries
+00471055	MATCH	155v155	PASS	__adjust_heap CSoundMap::SoundMap entries
+00471338	RELOCATION_MATCH	141v141	PASS	__introsort_loop CSoundMap::CriteriaMap entries
+004714ae	MATCH	130v130	PASS	__adjust_heap CSoundMap::CriteriaMap entries
+0047197a	RELOCATION_MATCH	84v84	PASS	vector<pair<ulong,CAnimationEntry>>::_M_allocate_and_copy (CAnimationSet::Anims)
+004719ce	RELOCATION_MATCH	59v59	PASS	__copy_ptrs<pair<ulong,CAnimationEntry>*>
+00471c40	RELOCATION_MATCH	57v57	PASS	list<COpinionTransientOffset>::_M_insert_dispatch
+00471f97	RELOCATION_MATCH	66v66	PASS	vector<EOpinionAttitudeType> copy ctor
+00472841	RELOCATION_MATCH	85v85	PASS	GFSerialiseMapBinaryOut<CCharString,long> (CGlobalDef::ConversationCameras)
+00472bdd	DIFFER	77v77	-	vector<CDialogueLayerDef>::erase; only the empty __false_type tag slot differs
+00472d79	RELOCATION_MATCH	223v223	PASS	vector<CDialogueLayerDef>::_M_insert_overflow (__false_type)
+0047536c	RELOCATION_MATCH	69v69	PASS	map<CCharString,long> erase(key)
+0047547d	RELOCATION_MATCH	73v73	PASS	map<CCharString,long> _M_lower_bound; compare body visible
+004754c6	RELOCATION_MATCH	73v73	PASS	map<CCharString,long> _M_upper_bound; compare body visible
+00475861	RELOCATION_MATCH	130v130	PASS	map<CCharString,long> _M_find; compare body visible
+004758e3	RELOCATION_MATCH	202v202	PASS	map<CCharString,long> insert_unique
+004759ad	RELOCATION_MATCH	164v164	PASS	map<CCharString,long> _M_insert

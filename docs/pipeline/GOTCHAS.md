@@ -1172,3 +1172,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport `resize(n)` is `resize(n, T())` with the value temporary in the frame; the STLport allocator needs user-declared ctors or `allocator_type()` emits `stosb` (chunk 368).
 - PDB def types are `class` (mangled `V`); a `struct` model mangles `U` and a PDB-derived leaf matches no symbol (chunk 368). Def vtable slot 19 is a `jmp` thunk to the def's operator=.
 - Packed defs without `#pragma pack`: CDefClassBase is 0x25 bytes and CEngineGraphic 14 bytes, both alignment 1 (chunk 368).
+- `T()` on a POD with no ctor zeroes with `stosd`; an empty user ctor leaves it unwritten: model never-written tags as `__false_type() {}` (chunk 369).
+- STLport pair copies memberwise when constructed (floats via fld/fstp) but bitwise (`movsd`) when assigned; STLport does not treat enums as POD (placement-new loop) (chunk 369).
+- A leaf `uninitialized_fill_n` also matches `__uninitialized_fill_n`: use `??$uninitialized_fill_n` (likewise `?erase@`, `??0?$vector@`) (chunk 369).
+- STLport `_M_find` byte-matches as `if (y == header || comp(k, key(y))) y = header; return y;`; `distance` at 0x4753B1 is `__cdecl` while the free algorithms are `__fastcall` (chunk 369).
