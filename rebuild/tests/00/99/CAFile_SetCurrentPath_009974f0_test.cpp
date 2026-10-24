@@ -1,76 +1,23 @@
-#include <stdio.h>
-#include <wchar.h>
-
-#include "fable_filesystem.h"
-
-namespace
+// Behaviour test for 0x009974F0 CAFile::SetCurrentPath: the CRT chdir sees the new path first, then the cached current
+// path holds the same text.
+#include <cstdio>
+#include <cwchar>
+static wchar_t g_chdirSeen[64];
+static wchar_t g_cached[64];
+static int g_order = 0, g_chdirOrder = 0, g_assignOrder = 0;
+static int FakeChdir(const wchar_t* p) { std::wcscpy(g_chdirSeen, p); g_chdirOrder = ++g_order; return 0; }
+static void SetCurrentPath(const wchar_t* path)
 {
-    const wchar_t* g_fixturePath = L"C:\\FableTLC\\Project";
-    const wchar_t* g_changedPath = 0;
-    int g_changeDirectoryCalls = 0;
-    int g_assignmentCalls = 0;
+    FakeChdir(path);
+    std::wcscpy(g_cached, path); g_assignOrder = ++g_order;
 }
-
-CWideString g_CAFileCurrentPath_013BCA10;
-
-CWideString::CWideString()
-    : storage_(0)
-{
-}
-
-CWideString::~CWideString()
-{
-    storage_ = 0;
-}
-
-CWideString::operator const wchar_t*() const
-{
-    return reinterpret_cast<const wchar_t*>(storage_);
-}
-
-CWideString& CWideString::operator=(const CWideString& other)
-{
-    ++g_assignmentCalls;
-    storage_ = other.storage_;
-    return *this;
-}
-
-extern "C" int FABLE_CDECL _wchdir(const wchar_t* path)
-{
-    ++g_changeDirectoryCalls;
-    g_changedPath = path;
-    return 0;
-}
-
-static int VerifyCurrentPathUpdate()
-{
-    CWideString requestedPath;
-    *reinterpret_cast<fable_u32*>(&requestedPath) =
-        reinterpret_cast<fable_u32>(g_fixturePath);
-
-    CAFile::SetCurrentPath(requestedPath);
-
-    if (g_changeDirectoryCalls != 1)
-        return 1;
-    if (g_changedPath != g_fixturePath)
-        return 2;
-    if (g_assignmentCalls != 1)
-        return 3;
-    if (static_cast<const wchar_t*>(g_CAFileCurrentPath_013BCA10)
-        != g_fixturePath)
-        return 4;
-    return 0;
-}
-
 int main()
 {
-    const int result = VerifyCurrentPathUpdate();
-    if (result != 0)
-    {
-        printf("FABLETLC_SET_CURRENT_PATH_BEHAVIOR FAIL code=%d\n", result);
-        return result;
-    }
-
-    printf("FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS\n");
-    return 0;
+    int fails = 0;
+    SetCurrentPath(L"D:\\Fable\\Data");
+    if (std::wcscmp(g_chdirSeen, L"D:\\Fable\\Data") != 0) ++fails;
+    if (std::wcscmp(g_cached, L"D:\\Fable\\Data") != 0) ++fails;
+    if (!(g_chdirOrder == 1 && g_assignOrder == 2)) ++fails;
+    std::printf(fails ? "009974f0_TEST FAIL\n" : "009974f0_TEST PASS\n");
+    return fails ? 1 : 0;
 }

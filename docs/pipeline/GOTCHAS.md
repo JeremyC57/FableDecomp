@@ -1328,3 +1328,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport sorts with a by-value comparator: compile operator() as a same-TU noinline stand-in, except in `__unguarded_insertion_sort_aux` where it must stay declaration-only (0x978C50, 0x978B00).
 - `position += v * t; return position;` reuses the position's slot for the result; `return position + v * t` gives the sum its own slot (0x961AB0). Only declare an anonymous-namespace sibling to keep the call out of line (0x961B90).
 - A PDB-packed class can be modelled with byte arrays instead of `#pragma pack` (0x95F830); retail CCombatantInfo has Attackers at +0x34 and UsingCombatWheel at +0x20 (0x979910).
+- STLport map walks need the static `_Rb_global::_M_increment(node)` form (0x98F2A0 is 172 vs 176 bytes without it); an STLport iterator passed by value needs a user copy ctor.
+- `bool flag = false; ... { flag = true; break; } return flag;` keeps retail's `bl` flag where an early `return true` drops it (0x9975E0); retail inlines CAFile::SplitPath into GetFilenameFromPathname (define it in the class body).
+- VC7.1 `<cwchar>` has no `std::wcsrchr`; a source naming `wchar_t` needs `<stddef.h>` (chunk 408).

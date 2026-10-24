@@ -49,3 +49,7 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - CFileInstallerSingleton_Get_00404440_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - Global_GetStreamingFontBankName_00415440.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - Global_GetStreamingFontBankName_00415440_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CAFile_GetProjectPath_00997510_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CAFile_GetProjectPath_00997510.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CAFile_SetCurrentPath_009974f0.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CAFile_SetCurrentPath_009974f0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.

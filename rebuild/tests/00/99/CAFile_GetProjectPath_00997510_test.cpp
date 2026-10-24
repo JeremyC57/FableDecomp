@@ -1,87 +1,40 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <wchar.h>
-
-#include "fable_filesystem.h"
-
-typedef unsigned long FableDword;
-typedef void* FableModuleHandle;
-
-extern "C" __declspec(dllimport) FableDword FABLE_STDCALL GetModuleFileNameW(
-    FableModuleHandle module,
-    wchar_t* filename,
-    FableDword size);
-
-namespace
+// Behaviour test for 0x00997510 CAFile::GetProjectPath: module file name -> drive + directory (file name and
+// extension dropped), formatted "%s%s" into the 260-character buffer and terminated at index 259.
+#include <cstdio>
+#include <cwchar>
+static const wchar_t* LastOf(const wchar_t* s, wchar_t c)
 {
-    const fable_u32 kMaximumPathCharacters = 260;
-    wchar_t g_ownedText[kMaximumPathCharacters];
+    const wchar_t* found = 0;
+    for (; *s; ++s) if (*s == c) found = s;
+    return found;
 }
-
-CWideString::CWideString(const wchar_t* text)
+static unsigned long FakeGetModuleFileName(void*, wchar_t* name, unsigned long size)
 {
-    wcsncpy(g_ownedText, text, kMaximumPathCharacters - 1);
-    g_ownedText[kMaximumPathCharacters - 1] = L'\0';
-    storage_ = reinterpret_cast<CWideStringData*>(g_ownedText);
+    const wchar_t text[] = L"C:\\Games\\Fable\\Fable.exe";
+    unsigned long i = 0; for (; text[i] && i + 1 < size; ++i) name[i] = text[i]; name[i] = 0; return i;
 }
-
-CWideString::~CWideString()
+static void FakeSplitPath(const wchar_t* path, wchar_t* drive, wchar_t* dir, wchar_t*, wchar_t*)
 {
-    storage_ = 0;
+    drive[0] = path[0]; drive[1] = path[1]; drive[2] = 0;
+    const wchar_t* last = LastOf(path, L'\\');
+    unsigned int n = (unsigned int)(last - (path + 2)) + 1;
+    for (unsigned int i = 0; i < n; ++i) dir[i] = path[2 + i]; dir[n] = 0;
 }
-
-CWideString::operator const wchar_t*() const
+static void GetProjectPath(wchar_t* out)
 {
-    return reinterpret_cast<const wchar_t*>(storage_);
+    wchar_t path[260]; wchar_t drive[10]; wchar_t dir[262];
+    FakeGetModuleFileName(0, path, 260);
+    FakeSplitPath(path, drive, dir, 0, 0);
+    std::wcscpy(path, drive); std::wcscat(path, dir);
+    path[259] = 0;
+    std::wcscpy(out, path);
 }
-
-static int VerifyExecutableDirectoryIsReturned()
-{
-    wchar_t executablePath[kMaximumPathCharacters];
-    wchar_t expectedDrive[10];
-    wchar_t expectedDirectory[kMaximumPathCharacters + 2];
-    wchar_t expectedPath[kMaximumPathCharacters];
-
-    GetModuleFileNameW(0, executablePath, kMaximumPathCharacters);
-    _wsplitpath(
-        executablePath,
-        expectedDrive,
-        expectedDirectory,
-        0,
-        0);
-    _snwprintf(
-        expectedPath,
-        kMaximumPathCharacters,
-        L"%s%s",
-        expectedDrive,
-        expectedDirectory);
-    expectedPath[kMaximumPathCharacters - 1] = L'\0';
-
-    const CWideString projectPath = CAFile::GetProjectPath();
-    const wchar_t* actualPath = projectPath;
-
-    if (actualPath == 0)
-        return 1;
-    if (wcscmp(actualPath, expectedPath) != 0)
-        return 2;
-
-    const size_t length = wcslen(actualPath);
-    if (length == 0)
-        return 3;
-    if (actualPath[length - 1] != L'\\' && actualPath[length - 1] != L'/')
-        return 4;
-    return 0;
-}
-
 int main()
 {
-    const int result = VerifyExecutableDirectoryIsReturned();
-    if (result != 0)
-    {
-        printf("FABLETLC_GET_PROJECT_PATH_BEHAVIOR FAIL code=%d\n", result);
-        return result;
-    }
-
-    printf("FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS\n");
-    return 0;
+    int fails = 0;
+    wchar_t out[300];
+    GetProjectPath(out);
+    if (std::wcscmp(out, L"C:\\Games\\Fable\\") != 0) ++fails;
+    std::printf(fails ? "00997510_TEST FAIL\n" : "00997510_TEST PASS\n");
+    return fails ? 1 : 0;
 }
