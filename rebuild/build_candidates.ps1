@@ -286554,6 +286554,318 @@ $catalog = @(
         TestSource = '00/78/std_uninitializedcopy_00786da0_test.cpp'
         PassPattern = '00786da0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004d15a0'
+        Module = 'std'
+        Source = '00/4d/std_Sortheap_004d15a0.cpp'
+        TestSource = '00/4d/std_Sortheap_004d15a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '004d15a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d1600'
+        Module = 'std'
+        Source = '00/4d/std_Sortheap_004d1600.cpp'
+        TestSource = '00/4d/std_Sortheap_004d1600_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '004d1600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593965'
+        Module = 'std'
+        Source = '00/59/std_Pushheap_00593965.cpp'
+        TestSource = '00/59/std_Pushheap_00593965_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00593965_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e1310'
+        Module = 'std'
+        Source = '00/5e/std_Pushheap_005e1310.cpp'
+        TestSource = '00/5e/std_Pushheap_005e1310_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '005e1310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f7d85'
+        Module = 'std'
+        Source = '00/5f/std_Pushheap_005f7d85.cpp'
+        TestSource = '00/5f/std_Pushheap_005f7d85_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '005f7d85_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f7dd4'
+        Module = 'std'
+        Source = '00/5f/std_Pushheap_005f7dd4.cpp'
+        TestSource = '00/5f/std_Pushheap_005f7dd4_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '005f7dd4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00671be0'
+        Module = 'std'
+        Source = '00/67/std_uniquecopy_00671be0.cpp'
+        TestSource = '00/67/std_uniquecopy_00671be0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00671be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067f040'
+        Module = 'std'
+        Source = '00/67/std_sortheap_0067f040.cpp'
+        TestSource = '00/67/std_sortheap_0067f040_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0067f040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a2e20'
+        Module = 'std'
+        Source = '00/6a/std_Pushheap_006a2e20.cpp'
+        TestSource = '00/6a/std_Pushheap_006a2e20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006a2e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006be9d0'
+        Module = 'std'
+        Source = '00/6b/std_Pushheap_006be9d0.cpp'
+        TestSource = '00/6b/std_Pushheap_006be9d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006be9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fb9c0'
+        Module = 'std'
+        Source = '00/6f/std_Pushheap_006fb9c0.cpp'
+        TestSource = '00/6f/std_Pushheap_006fb9c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006fb9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00737ad0'
+        Module = 'std'
+        Source = '00/73/std_removecopy_00737ad0.cpp'
+        TestSource = '00/73/std_removecopy_00737ad0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00737ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00748d80'
+        Module = 'std'
+        Source = '00/74/std_removecopyif_00748d80.cpp'
+        TestSource = '00/74/std_removecopyif_00748d80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00748d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074ce40'
+        Module = 'std'
+        Source = '00/74/std_removecopy_0074ce40.cpp'
+        TestSource = '00/74/std_removecopy_0074ce40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0074ce40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769470'
+        Module = 'std'
+        Source = '00/76/std_Pushheap_00769470.cpp'
+        TestSource = '00/76/std_Pushheap_00769470_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00769470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769e20'
+        Module = 'std'
+        Source = '00/76/std_Pushheap_00769e20.cpp'
+        TestSource = '00/76/std_Pushheap_00769e20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00769e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00777ee0'
+        Module = 'std'
+        Source = '00/77/std_Sortheap_00777ee0.cpp'
+        TestSource = '00/77/std_Sortheap_00777ee0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00777ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00807b70'
+        Module = 'std'
+        Source = '00/80/std_removecopyif_00807b70.cpp'
+        TestSource = '00/80/std_removecopyif_00807b70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00807b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00809d60'
+        Module = 'std'
+        Source = '00/80/std_removecopyif_00809d60.cpp'
+        TestSource = '00/80/std_removecopyif_00809d60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00809d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080b9f0'
+        Module = 'std'
+        Source = '00/80/std_sortheap_0080b9f0.cpp'
+        TestSource = '00/80/std_sortheap_0080b9f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0080b9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080df90'
+        Module = 'std'
+        Source = '00/80/std_removecopyif_0080df90.cpp'
+        TestSource = '00/80/std_removecopyif_0080df90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0080df90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008182e0'
+        Module = 'std'
+        Source = '00/81/std_sortheap_008182e0.cpp'
+        TestSource = '00/81/std_sortheap_008182e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '008182e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00819c30'
+        Module = 'std'
+        Source = '00/81/std_Pushheap_00819c30.cpp'
+        TestSource = '00/81/std_Pushheap_00819c30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00819c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086a770'
+        Module = 'std'
+        Source = '00/86/std_Pushheap_0086a770.cpp'
+        TestSource = '00/86/std_Pushheap_0086a770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0086a770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086a7f0'
+        Module = 'std'
+        Source = '00/86/std_Pushheap_0086a7f0.cpp'
+        TestSource = '00/86/std_Pushheap_0086a7f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0086a7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086f100'
+        Module = 'std'
+        Source = '00/86/std_Pushheap_0086f100.cpp'
+        TestSource = '00/86/std_Pushheap_0086f100_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0086f100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00992940'
+        Module = 'std'
+        Source = '00/99/std_Pushheap_00992940.cpp'
+        TestSource = '00/99/std_Pushheap_00992940_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00992940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b1ca0'
+        Module = 'std'
+        Source = '00/9b/std_Pushheap_009b1ca0.cpp'
+        TestSource = '00/9b/std_Pushheap_009b1ca0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009b1ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b77b0'
+        Module = 'std'
+        Source = '00/9b/std_Pushheap_009b77b0.cpp'
+        TestSource = '00/9b/std_Pushheap_009b77b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009b77b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d3040'
+        Module = 'std'
+        Source = '00/9d/std_Pushheap_009d3040.cpp'
+        TestSource = '00/9d/std_Pushheap_009d3040_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009d3040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a31380'
+        Module = 'std'
+        Source = '00/a3/std_Pushheap_00a31380.cpp'
+        TestSource = '00/a3/std_Pushheap_00a31380_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a31380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5a7d0'
+        Module = 'std'
+        Source = '00/a5/std_Sortheap_00a5a7d0.cpp'
+        TestSource = '00/a5/std_Sortheap_00a5a7d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a5a7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6b1e0'
+        Module = 'std'
+        Source = '00/a6/std_Pushheap_00a6b1e0.cpp'
+        TestSource = '00/a6/std_Pushheap_00a6b1e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a6b1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7d6f0'
+        Module = 'std'
+        Source = '00/a7/std_Pushheap_00a7d6f0.cpp'
+        TestSource = '00/a7/std_Pushheap_00a7d6f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a7d6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7d7a0'
+        Module = 'std'
+        Source = '00/a7/std_Pushheap_00a7d7a0.cpp'
+        TestSource = '00/a7/std_Pushheap_00a7d7a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a7d7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a820e0'
+        Module = 'std'
+        Source = '00/a8/std_Pushheap_00a820e0.cpp'
+        TestSource = '00/a8/std_Pushheap_00a820e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a820e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae5af0'
+        Module = 'std'
+        Source = '00/ae/std_Pushheap_00ae5af0.cpp'
+        TestSource = '00/ae/std_Pushheap_00ae5af0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ae5af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee420'
+        Module = 'std'
+        Source = '00/be/std_Pushheap_00bee420.cpp'
+        TestSource = '00/be/std_Pushheap_00bee420_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bee420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb93e0'
+        Module = 'std'
+        Source = '00/cb/std_Pushheap_00cb93e0.cpp'
+        TestSource = '00/cb/std_Pushheap_00cb93e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00cb93e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

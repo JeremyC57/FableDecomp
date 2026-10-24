@@ -1154,3 +1154,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - C3DVector is byte-packed: pair<C3DVector,bool> is 13 bytes and steps `add ecx,0Dh` (006efec0).
 - An out-of-line STLport `_Destroy(first,last)` is `__fastcall` with a plain `ret` calling an inline `__destroy_aux(first,last,__false_type())` (00675310).
 - An unaligned `__uninitialized_copy` with no loop-head padding, or a 12-byte POD copied with `movsd` x3, needs `optimize("s")` (005ba146, 005924d0).
+- Retail heap/remove algorithms are STLport (0x0080B430 takes first, last, `_Tp*`, comp): `hole > top` in `__push_heap`, `secondChild - 1` in the lone-child step, a pop_heap with no count test; a Dinkumware-style test gives `sar ; cmp 1` instead of `and -4 ; cmp 4` (00777ee0). The `_Push_heap`/`_Sort_heap`/`_Remove_if` catalog names are Ego_r spellings.
+- An out-of-line `__pop_heap_aux` shows as `push 0` after the by-value comparator copy (0080b9f0); an 8-byte pair local gives an `and esp,-8` frame (004d1600).
+- HasTC as `if (bits[t>>5] & (1UL<<(t&31))) return true; return false;` gives `test dword [eax+28h],100000h` (00809d60).

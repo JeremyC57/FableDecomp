@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00593965	RELOCATION_MATCH	98v98	PASS	STLport __push_heap, CContextSensitivePriorityCompare; unrotated loop
+006a2e20	RELOCATION_MATCH	136v136	PASS	__push_heap pair<long,CIntelligentPointer<CThing>>
+006be9d0	RELOCATION_MATCH	207v207	PASS	__push_heap pair<long,CRegisteredMusicEntry> (as labelled)
+00769470	MATCH	118v118	PASS	__push_heap pair<ulong,C3DVector>; label was the signed CSkeletalMorph twin 0x0086A7F0
+0086a7f0	MATCH	118v118	PASS	__push_heap pair<long,CSkeletalMorph>
+00ae5af0	MATCH	87v87	PASS	__push_heap pair<long,ulong> with less<pair>
+00a7d6f0	MATCH	129v129	PASS	__push_heap pair<u64,CANavQuadTreeNode*>; label pair<pair<long,long>,CEngineTextureDecal> wrong
+00a7d7a0	MATCH	129v129	PASS	byte twin of 0x00A7D6F0; same label correction
+00bee420	RELOCATION_MATCH	179v179	PASS	__push_heap pair<pair<long,long>,CEngineTextureDecal> (as labelled); key local + (entry,key0,key) overload
+00cbaba0	DIFFER	218v207	-	parked: by-value CCountedPointer release reloads the count block; 4 grades used
+00a820e0	RELOCATION_MATCH	152v152	PASS	__push_heap pair<u64, 8-byte list>; label CPersistInfo is the 0x00CB93E0 twin
+00cb93e0	RELOCATION_MATCH	178v178	PASS	__push_heap pair<u64,CPersistInfo> (as labelled)
+00a31380	MATCH	132v132	PASS	__push_heap pair<ulong,C3DHelperPoint> (as labelled)
+005e1310	MATCH	237v237	PASS	__push_heap pair<ulong,CAnimationEntry>; local-pointer intrusive release
+00992940	RELOCATION_MATCH	128v128	PASS	__push_heap pair<long,CSoundBankRecord>; label CDefClassInfo wrong (unsigned twin 0x009B77B0)
+009b77b0	RELOCATION_MATCH	189v189	PASS	__push_heap pair<ulong,CDefClassInfo> (as labelled)
+00769e20	RELOCATION_MATCH	116v116	PASS	__push_heap pair<ulong,CParticleUpdateParamDesc>; label CTextureMorph wrong
+00819c30	MATCH	106v106	PASS	__push_heap pair<ulong,CTextureMorph> (as labelled)
+0086a770	MATCH	106v106	PASS	byte twin of 0x00819C30
+0086f100	MATCH	106v106	PASS	__push_heap pair<EExpressionType,CExpressionSet::CEntry>; label CTextureMorph wrong
+009b1ca0	MATCH	106v106	PASS	__push_heap pair<ulong,CTextureMorph> (as labelled)
+006fb9c0	RELOCATION_MATCH	134v134	PASS	__push_heap pair<ulong,CSmallVector<CEvent,32>>; key local + (entry,key) overload
+005f7d85	MATCH	62v62	PASS	__push_heap 8-byte signed-key pair; label pair<ulong,CSoundPair> wrong; optimize("s")
+005f7dd4	MATCH	62v62	PASS	byte twin of 0x005F7D85
+00a6b1e0	MATCH	87v87	PASS	__push_heap pair<ulong,ulong> with less<pair>
+009d3040	RELOCATION_MATCH	186v186	PASS	__push_heap ulong indices with CBankFile::CompareDataOffset
+00671be0	MATCH	41v41	PASS	STLport __unique_copy<ENavigatorType*>; label _Remove_if<C3DVector*> wrong
+00809d60	RELOCATION_MATCH	213v213	PASS	STLport remove_copy_if CTargetPoint, CFilter_Bind2<IsInFOV,IsStealableStockItem>; forceinline filters
+00807b70	RELOCATION_MATCH	167v167	PASS	STLport remove_copy_if CTargetPoint, CTargetPointIsNotEnemyOfThing
+00737ad0	RELOCATION_MATCH	81v81	PASS	STLport remove_copy over CIntelligentPointer<const CThing>; label pair remove_if wrong
+0074ce40	RELOCATION_MATCH	81v81	PASS	STLport remove_copy over CIntelligentPointer<CThingCreatureBase>; label pair remove_if wrong
+0080df90	RELOCATION_MATCH	87v87	PASS	STLport remove_copy_if pair<CIntelligentPointer<CThing>,long>, CIsFirstElementEqualTo
+00748d80	RELOCATION_MATCH	129v129	PASS	STLport remove_copy_if pair<CIntelligentPointer<const CThing>,CDangerStatus>, CDeadDangerThing
+0067f040	RELOCATION_MATCH	152v152	PASS	STLport sort_heap CDegradableInfo (POD, rep movsd)
+0080b9f0	RELOCATION_MATCH	191v191	PASS	STLport sort_heap CTargetPoint; out-of-line __pop_heap_aux, 52-byte comparator
+008182e0	RELOCATION_MATCH	212v212	PASS	STLport sort_heap THitLocationIntersectionElement
+00777ee0	RELOCATION_MATCH	123v123	PASS	STLport sort_heap over 4-byte signed ints; label float* wrong
+00a5a7d0	RELOCATION_MATCH	144v144	PASS	STLport sort_heap float* (as labelled), float twin of 0x00777EE0
+004d15a0	RELOCATION_MATCH	96v96	PASS	STLport sort_heap pair<float,EConversationAttitude>; label pair<long,ulong> wrong
+004d1600	RELOCATION_MATCH	160v160	PASS	STLport sort_heap pair<float,CCharString> (as labelled)
