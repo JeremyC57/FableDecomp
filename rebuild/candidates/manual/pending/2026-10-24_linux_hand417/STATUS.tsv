@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a2d810	DIFFER	155v150	-	_STL::map<ulong,CCountedPointer<C3DAnimation2>>::operator[]; zero-store scheduling + release reg copy (dec [eax];cmp [esi],0 vs dec [esi];jne); 4 grades
+00a2dc20	RELOCATION_MATCH	112v112	PASS	_Rb_tree<CCharString,pair<const CCharString,CArray<CLipSyncEntry>>>::_M_erase; landed 0x007AE0E0 twin, 8-byte element
+00a2f150	RELOCATION_MATCH	25v25	PASS	C3DMeshStats::GetDummyObjectNamesStartingWith = UnpackNames(names,true,prefix,once)
+00a31280	MATCH	93v93	PASS	_STL::__unguarded_linear_insert, pair<ulong,C3DHelperPoint> 20B
+00a31320	MATCH	55v55	PASS	_STL::__unguarded_linear_insert, pair<ulong,C3DDummyObject> 0x38
+00a31ec0	RELOCATION_MATCH	82v82	PASS	_STL::__uninitialized_copy<C3DGeneratorObject>; 2nd grade: C3DDummyObject base gives the 13-dword rep movsd
+00a32020	MATCH	61v61	PASS	_STL::__uninitialized_fill_n, 20B helper-point pair
+00a32100	RELOCATION_MATCH	73v73	PASS	_STL::fill<C3DGeneratorObject>; 2nd grade (C3DDummyObject base)
+00a32170	RELOCATION_MATCH	103v103	PASS	_STL::__copy (counted) <C3DGeneratorObject>; 2nd grade (C3DDummyObject base)
+00a323d0	MATCH	98v98	PASS	_STL::__unguarded_insertion_sort_aux, 0x38 dummy-object pair
+00a32500	RELOCATION_MATCH	151v151	PASS	_STL::__adjust_heap, 0x38 dummy-object pair
+00a32620	RELOCATION_MATCH	101v101	PASS	C3DMeshFile::GetRoot() const: SetStaticCast(CCountedPointer<const CChunkedFileSuperChunk>(RootChunk)); twin 0x00A537F0
+00a329b0	MATCH	163v163	PASS	_STL::__unguarded_partition, 20B pair (inline __iter_swap)
+00a32a70	MATCH	109v109	PASS	_STL::__unguarded_partition, 0x38 pair (inline __iter_swap)
+00a32cc0	RELOCATION_MATCH	127v127	PASS	_STL::__make_heap, 0x38 pair
+00a33250	RELOCATION_MATCH	200v200	PASS	_STL::__unguarded_linear_insert, 16B C3DMeshVolume pair (record op= inline in loop, COMDAT call at the end)
+00a33670	RELOCATION_MATCH	162v162	PASS	_STL::__copy (counted), 16B C3DMeshVolume pair
+00a33870	RELOCATION_MATCH	79v79	PASS	_STL::__unguarded_insertion_sort_aux, 16B pair -> 0x00A33250
+00a33d90	RELOCATION_MATCH	232v232	PASS	vector<pair<ulong,C3DHelperPoint>>::_M_insert_overflow; 3rd grade: same-TU noinline tag callees home __false_type temps on atend
+00a34260	RELOCATION_MATCH	127v127	PASS	_STL::__unguarded_partition, 16B pair, swap 0x00A331B0, pivot destroyed
+00a342f0	RELOCATION_MATCH	110v110	PASS	_STL::__partial_sort, 20B pair (pop_heap 0x00A32B50 out of line)
+00a34360	RELOCATION_MATCH	177v177	PASS	_STL::__partial_sort, 0x38 pair (pop_heap inlined)
+00a344e0	RELOCATION_MATCH	116v116	PASS	_STL::__make_heap, 16B pair
+00a34820	RELOCATION_MATCH	179v179	PASS	_STL::__linear_insert, 16B pair
+00a34950	RELOCATION_MATCH	89v89	PASS	CVectorMap<ulong,C3DHelperPoint>::Insert = push_back + Dirty(+0xd)=true
+00a349b0	RELOCATION_MATCH	82v82	PASS	CVectorMap<ulong,C3DDummyObject>::Insert = push_back + Dirty=true
+00a34d10	RELOCATION_MATCH	109v109	PASS	_STL::__insertion_sort, 16B pair
+00a34df0	RELOCATION_MATCH	206v206	PASS	_STL::vector<C3DGeneratorObject>::resize(n); identity CMatrix3x4 chained SetIdentity
+00a35260	RELOCATION_MATCH	123v123	PASS	_STL::__partial_sort, 16B pair
+00a35490	RELOCATION_MATCH	234v234	PASS	_STL::__introsort_loop, 16B pair (recursive, __median inline)
+00a358f0	DIFFER	185v185	-	C3DMeshObject::GetPositionMatrixFromRHSet (static); one x87 operand order in the z cross product; 4 grades
+00a36090	RELOCATION_MATCH	112v112	PASS	C3DMeshObject::GetRenderMesh
+00a36140	RELOCATION_MATCH	88v88	PASS	C3DMeshObject::GetNoHelperPoints; named End local first
+00a36350	RELOCATION_MATCH	219v219	PASS	C3DMeshObject::GetHelperPointPositionAnimated; helper lookup in its own statement
+00a36430	RELOCATION_MATCH	66v66	PASS	C3DMeshObject::HasDummyObject; positive if-return form
+00a36480	RELOCATION_MATCH	90v90	PASS	C3DMeshObject::GetNoDummyObjects
+00a371f0	RELOCATION_MATCH	219v219	PASS	CClassFactory::RegisterAllocatedClass
+00a37800	RELOCATION_MATCH	66v66	PASS	_STL::list<CClass*>::_M_insert_dispatch<const_iterator>
+00a37940	RELOCATION_MATCH	117v117	PASS	_STL::list<CClass*>::operator=; 2nd grade (_List_iterator(const iterator&))
+00a37b50	RELOCATION_MATCH	101v101	PASS	CClassTypeInfo::CClassTypeInfo(const CClassTypeInfo&)
