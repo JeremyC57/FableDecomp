@@ -295868,6 +295868,272 @@ $catalog = @(
         TestSource = '00/80/STL_sort_0080b900_test.cpp'
         PassPattern = '0080b900_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0081b490'
+        Module = 'CParticleMorphs'
+        Source = '00/81/CParticleMorphs_Add_0081b490.cpp'
+        TestSource = '00/81/CParticleMorphs_Add_0081b490_test.cpp'
+        PassPattern = '0081b490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081b730'
+        Module = '_STL'
+        Source = '00/81/STL_unguardedpartition_0081b730.cpp'
+        TestSource = '00/81/STL_unguardedpartition_0081b730_test.cpp'
+        PassPattern = '0081b730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081b800'
+        Module = '_STL'
+        Source = '00/81/STL_unguardedpartition_0081b800.cpp'
+        TestSource = '00/81/STL_unguardedpartition_0081b800_test.cpp'
+        PassPattern = '0081b800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081bad0'
+        Module = '_STL'
+        Source = '00/81/STL_makeheap_0081bad0.cpp'
+        TestSource = '00/81/STL_makeheap_0081bad0_test.cpp'
+        PassPattern = '0081bad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081bb50'
+        Module = '_STL'
+        Source = '00/81/STL_makeheap_0081bb50.cpp'
+        TestSource = '00/81/STL_makeheap_0081bb50_test.cpp'
+        PassPattern = '0081bb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081bbd0'
+        Module = '_STL'
+        Source = '00/81/STL_makeheap_0081bbd0.cpp'
+        TestSource = '00/81/STL_makeheap_0081bbd0_test.cpp'
+        PassPattern = '0081bbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081bc90'
+        Module = '_STL'
+        Source = '00/81/STL_popheapaux_0081bc90.cpp'
+        TestSource = '00/81/STL_popheapaux_0081bc90_test.cpp'
+        PassPattern = '0081bc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081be80'
+        Module = '_STL'
+        Source = '00/81/STL_linearinsert_0081be80.cpp'
+        TestSource = '00/81/STL_linearinsert_0081be80_test.cpp'
+        PassPattern = '0081be80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081c270'
+        Module = 'vector'
+        Source = '00/81/vector_Minsertoverflow_0081c270.cpp'
+        TestSource = '00/81/vector_Minsertoverflow_0081c270_test.cpp'
+        PassPattern = '0081c270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081d450'
+        Module = '_STL'
+        Source = '00/81/STL_partialsort_0081d450.cpp'
+        TestSource = '00/81/STL_partialsort_0081d450_test.cpp'
+        PassPattern = '0081d450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081d4d0'
+        Module = '_STL'
+        Source = '00/81/STL_partialsort_0081d4d0.cpp'
+        TestSource = '00/81/STL_partialsort_0081d4d0_test.cpp'
+        PassPattern = '0081d4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081d820'
+        Module = 'CVectorMap'
+        Source = '00/81/CVectorMap_Add_0081d820.cpp'
+        TestSource = '00/81/CVectorMap_Add_0081d820_test.cpp'
+        PassPattern = '0081d820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00825590'
+        Module = 'CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>'
+        Source = '00/82/CReplaceSerialiseCFileFormatBrushCOldFileFormatBrush_ConvertPreviousUnknownVersionUp_00825590.cpp'
+        TestSource = '00/82/CReplaceSerialiseCFileFormatBrushCOldFileFormatBrush_ConvertPreviousUnknownVersionUp_00825590_test.cpp'
+        PassPattern = '00825590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008256a0'
+        Module = 'CReplaceSerialise<COldFileFormatHeightMapCell4,COldFileFormatHeightMapCell3>'
+        Source = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell4COldFileFormatHeightMapCell3_GetMaxSize_008256a0.cpp'
+        TestSource = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell4COldFileFormatHeightMapCell3_GetMaxSize_008256a0_test.cpp'
+        PassPattern = '008256a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00825700'
+        Module = 'CReplaceSerialise<COldFileFormatHeightMapCell2,COldFileFormatHeightMapCell1>'
+        Source = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell2COldFileFormatHeightMapCell1_ConvertPreviousUnknownVersionUp_00825700.cpp'
+        TestSource = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell2COldFileFormatHeightMapCell1_ConvertPreviousUnknownVersionUp_00825700_test.cpp'
+        PassPattern = '00825700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008259c0'
+        Module = '_Rb_tree'
+        Source = '00/82/Rbtree_Mcopy_008259c0.cpp'
+        TestSource = '00/82/Rbtree_Mcopy_008259c0_test.cpp'
+        PassPattern = '008259c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00825a80'
+        Module = '_Rb_tree'
+        Source = '00/82/Rbtree_Mclonenode_00825a80.cpp'
+        TestSource = '00/82/Rbtree_Mclonenode_00825a80_test.cpp'
+        PassPattern = '00825a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00825d40'
+        Module = 'CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>'
+        Source = '00/82/CReplaceSerialiseCFileFormatBrushCOldFileFormatBrush_ConvertToThisVersion_00825d40.cpp'
+        TestSource = '00/82/CReplaceSerialiseCFileFormatBrushCOldFileFormatBrush_ConvertToThisVersion_00825d40_test.cpp'
+        PassPattern = '00825d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008260c0'
+        Module = '_Rb_tree'
+        Source = '00/82/Rbtree_Mcopy_008260c0.cpp'
+        TestSource = '00/82/Rbtree_Mcopy_008260c0_test.cpp'
+        PassPattern = '008260c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00826560'
+        Module = 'CReplaceSerialise<COldFileFormatHeightMapCell6,COldFileFormatHeightMapCell5>'
+        Source = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell6COldFileFormatHeightMapCell5_GetMaxSize_00826560.cpp'
+        TestSource = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell6COldFileFormatHeightMapCell5_GetMaxSize_00826560_test.cpp'
+        PassPattern = '00826560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008273d0'
+        Module = 'CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>'
+        Source = '00/82/CReplaceSerialiseCFileFormatHeightMapCellCOldFileFormatHeightMapCell6_ConvertToThisVersion_008273d0.cpp'
+        TestSource = '00/82/CReplaceSerialiseCFileFormatHeightMapCellCOldFileFormatHeightMapCell6_ConvertToThisVersion_008273d0_test.cpp'
+        PassPattern = '008273d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008285d0'
+        Module = 'CRegionConnectionNode'
+        Source = '00/82/CRegionConnectionNode_SetAsConnectedToRegion_008285d0.cpp'
+        TestSource = '00/82/CRegionConnectionNode_SetAsConnectedToRegion_008285d0_test.cpp'
+        PassPattern = '008285d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008286a0'
+        Module = 'CRegionConnectionGraph'
+        Source = '00/82/CRegionConnectionGraph_SetRegionsAsConnected_008286a0.cpp'
+        TestSource = '00/82/CRegionConnectionGraph_SetRegionsAsConnected_008286a0_test.cpp'
+        PassPattern = '008286a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082a500'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_AddAutoMarker_0082a500.cpp'
+        TestSource = '00/82/CMiniMapDisplay_AddAutoMarker_0082a500_test.cpp'
+        PassPattern = '0082a500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082c920'
+        Module = 'list'
+        Source = '00/82/list_insert_0082c920.cpp'
+        TestSource = '00/82/list_insert_0082c920_test.cpp'
+        PassPattern = '0082c920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082c980'
+        Module = 'vector'
+        Source = '00/82/vector_operator_0082c980.cpp'
+        TestSource = '00/82/vector_operator_0082c980_test.cpp'
+        PassPattern = '0082c980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082cb70'
+        Module = '_STL'
+        Source = '00/82/STL_uninitializedcopy_0082cb70.cpp'
+        TestSource = '00/82/STL_uninitializedcopy_0082cb70_test.cpp'
+        PassPattern = '0082cb70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082cc40'
+        Module = '_STL'
+        Source = '00/82/STL_uninitializedfilln_0082cc40.cpp'
+        TestSource = '00/82/STL_uninitializedfilln_0082cc40_test.cpp'
+        PassPattern = '0082cc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082d920'
+        Module = 'CThingBuilding'
+        Source = '00/82/CThingBuilding_Create_0082d920.cpp'
+        TestSource = '00/82/CThingBuilding_Create_0082d920_test.cpp'
+        PassPattern = '0082d920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082e500'
+        Module = 'CScriptedMapBrush'
+        Source = '00/82/CScriptedMapBrush_RemoveThing_0082e500.cpp'
+        TestSource = '00/82/CScriptedMapBrush_RemoveThing_0082e500_test.cpp'
+        PassPattern = '0082e500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082e600'
+        Module = 'CScriptedMapBrush'
+        Source = '00/82/CScriptedMapBrush_CScriptedMapBrush_0082e600.cpp'
+        TestSource = '00/82/CScriptedMapBrush_CScriptedMapBrush_0082e600_test.cpp'
+        PassPattern = '0082e600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082e6e0'
+        Module = 'CScriptedMapBrush'
+        Source = '00/82/CScriptedMapBrush_CScriptedMapBrush_0082e6e0.cpp'
+        TestSource = '00/82/CScriptedMapBrush_CScriptedMapBrush_0082e6e0_test.cpp'
+        PassPattern = '0082e6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082f150'
+        Module = '_Rb_tree'
+        Source = '00/82/Rbtree_Minsert_0082f150.cpp'
+        TestSource = '00/82/Rbtree_Minsert_0082f150_test.cpp'
+        PassPattern = '0082f150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082f630'
+        Module = 'vector'
+        Source = '00/82/vector_vector_0082f630.cpp'
+        TestSource = '00/82/vector_vector_0082f630_test.cpp'
+        PassPattern = '0082f630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082f7b0'
+        Module = '_Rb_tree'
+        Source = '00/82/Rbtree_Minsert_0082f7b0.cpp'
+        TestSource = '00/82/Rbtree_Minsert_0082f7b0_test.cpp'
+        PassPattern = '0082f7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00833230'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsMessageEventWithinSightRange_00833230.cpp'
+        TestSource = '00/83/CThingAICreature_IsMessageEventWithinSightRange_00833230_test.cpp'
+        PassPattern = '00833230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008332e0'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsMessageEventWithinHearingRange_008332e0.cpp'
+        TestSource = '00/83/CThingAICreature_IsMessageEventWithinHearingRange_008332e0_test.cpp'
+        PassPattern = '008332e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00833800'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_Create_00833800.cpp'
+        TestSource = '00/83/CThingAICreature_Create_00833800_test.cpp'
+        PassPattern = '00833800_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

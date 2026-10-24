@@ -1298,3 +1298,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Nested `if (..) return true;` with one shared `return false;` gives retail's `mov al,1`/`xor al,al` tail; `return a && b` gives `mov eax,1` (0x809270).
 - Name both float compare values in an inlined comparator to get `fld; fcomp st(1); fstp st(0); test ah,41h` (0x808AA0); a comparator copied three times calls the out-of-line copy ctor 0x7F9730 (0x80B5A0).
 - Two-call float comparators where retail loads the second argument before the first result's `fstp` are a lane gap under RTM, QFE and /G7 alike: park after 2 grades (0x807170, 0x807250).
+- STLport 4.6 `find`/`lower_bound` are inline wrappers over out-of-line `_M_find`/`_M_lower_bound` returning the node in eax; modelling them as returning an iterator adds a hidden pointer (0x82E500).
+- `_STLP_DEFAULT_CONSTRUCTED(_Tp)` is an out-of-line `__fastcall __default_constructed` with ecx=0 and a hidden return pointer (0x82F5C0).
+- Non-POD `vector::operator=` needs `__forceinline` on `__copy`/`__copy_ptrs` (0x82C980); `__pop_heap` inlining depends on the instantiation (forceinline for 40-byte pairs 0x81BC90, a call for 24-byte 0x81D450).
+- An explicit-specialisation declaration keeps one inline callee out of line (0x82CB70); in Create factories declare `result = 0` after the allocation and give the CTCParamsPhysicsBase ctor a same-TU noinline body (0x82D920, 0x833800).

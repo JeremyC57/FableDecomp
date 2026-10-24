@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0081b490	RELOCATION_MATCH	122v122	PASS	CParticleMorphs::Add (push_back, Dirty, sort 0x0081E090)
+0081b730	MATCH	179v179	PASS	STLport __unguarded_partition, 24-byte (long, CTextureMorphEntry) pairs
+0081b800	MATCH	109v109	PASS	STLport __unguarded_partition, 40-byte (long, 36-byte payload) pairs
+0081bad0	RELOCATION_MATCH	123v123	PASS	STLport __make_heap, 24-byte pairs
+0081bb50	RELOCATION_MATCH	119v119	PASS	STLport __make_heap, 40-byte pairs
+0081bbd0	RELOCATION_MATCH	101v101	PASS	STLport __make_heap, 12-byte (unsigned, 8-byte) pairs
+0081bc90	RELOCATION_MATCH	113v113	PASS	STLport __pop_heap_aux, 40-byte pairs; __pop_heap __forceinline
+0081be80	RELOCATION_MATCH	91v91	PASS	STLport __linear_insert, 12-byte pairs
+0081c270	RELOCATION_MATCH	232v232	PASS	vector<SRecord20>::_M_insert_overflow; same-TU noinline uninitialized copy/fill
+0081d450	RELOCATION_MATCH	120v120	PASS	STLport __partial_sort, 24-byte pairs; __pop_heap out of line (0x0081B910)
+0081d4d0	RELOCATION_MATCH	175v175	PASS	STLport __partial_sort, 40-byte pairs; __pop_heap inline
+0081d820	RELOCATION_MATCH	122v122	PASS	CVectorMap<EHeroMorphType,CParticleMorphs::CEntry>::Add
+0081e550	DIFFER	25v29	-	FtoL: retail_asm candidate (bare fistp dword); C++ reference body only
+00825590	RELOCATION_MATCH	240v240	PASS	CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>::ConvertPreviousUnknownVersionUp; C2DBoxI user ctor
+008256a0	RELOCATION_MATCH	90v90	PASS	CReplaceSerialise<Cell4,Cell3>::GetMaxSize (MAX chain)
+00825700	RELOCATION_MATCH	236v236	PASS	CReplaceSerialise<Cell2,Cell1>::ConvertPreviousUnknownVersionUp
+008259c0	RELOCATION_MATCH	184v184	PASS	_Rb_tree<u64,u64>::_M_copy (set ThingsToDelete/ThingsToAdd)
+00825a80	RELOCATION_MATCH	93v93	PASS	_Rb_tree<u64,pair<u64,CThingPosAndOrientation>>::_M_clone_node
+00825d40	RELOCATION_MATCH	80v80	PASS	CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>::ConvertToThisVersion
+008260c0	RELOCATION_MATCH	192v192	PASS	_Rb_tree<u64,pair<u64,CThingPosAndOrientation>>::_M_copy
+00826560	RELOCATION_MATCH	95v95	PASS	CReplaceSerialise<Cell6,Cell5>::GetMaxSize (MAX chain)
+008273d0	RELOCATION_MATCH	102v102	PASS	CReplaceSerialise<CFileFormatHeightMapCell,Cell6>::ConvertToThisVersion
+008285d0	RELOCATION_MATCH	195v195	PASS	CRegionConnectionNode::SetAsConnectedToRegion (find/push_back, remove/erase)
+008286a0	RELOCATION_MATCH	101v101	PASS	CRegionConnectionGraph::SetRegionsAsConnected; same-TU noinline LowerBound
+0082a500	RELOCATION_MATCH	98v98	PASS	CMiniMapDisplay::AddAutoMarker; list insert noinline
+0082c920	RELOCATION_MATCH	95v95	PASS	list<CMiniMapDisplay::CMarkerInfo>::insert
+0082c980	RELOCATION_MATCH	222v222	PASS	vector<CMinimapData::MinimapTheme>::operator=; __copy __forceinline
+0082cb70	RELOCATION_MATCH	203v203	PASS	__uninitialized_copy<CMinimapData>; C2DExtentsI memberwise copy ctor
+0082cc40	RELOCATION_MATCH	191v191	PASS	__uninitialized_fill_n<CMinimapData>; C2DExtentsI memberwise copy ctor
+0082d920	RELOCATION_MATCH	153v153	PASS	CThingBuilding::Create; result=0 after Alloc, same-TU params ctor (4 grades)
+0082e500	RELOCATION_MATCH	183v183	PASS	CScriptedMapBrush::RemoveThing; STLport 4.6 find -> out-of-line _M_find
+0082e600	RELOCATION_MATCH	213v213	PASS	CScriptedMapBrush(const CScriptedMapBrushInit&)
+0082e6e0	RELOCATION_MATCH	150v150	PASS	CScriptedMapBrush()
+0082f150	RELOCATION_MATCH	203v203	PASS	_Rb_tree<u64,u64>::_M_insert
+0082f630	RELOCATION_MATCH	108v108	PASS	vector<CScriptedMapBrush::CScriptedMapCell>(n)
+0082f7b0	RELOCATION_MATCH	163v163	PASS	_Rb_tree<u64,pair<u64,CThingPosAndOrientation>>::_M_insert; _M_create_node noinline
+0082fb90	DIFFER	192v192	-	map<u64,CThingPosAndOrientation>::operator[]: scheduling-only diff
+00833230	RELOCATION_MATCH	176v176	PASS	CThingAICreature::IsMessageEventWithinSightRange; Z,Y,X squared length
+008332e0	RELOCATION_MATCH	176v176	PASS	CThingAICreature::IsMessageEventWithinHearingRange; Z,Y,X squared length
+00833800	RELOCATION_MATCH	197v197	PASS	CThingAICreature::Create
