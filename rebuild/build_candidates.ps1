@@ -302987,6 +302987,272 @@ $catalog = @(
         TestSource = '00/ae/CParticleSimulation_CParticleSimulation_00ae0600_test.cpp'
         PassPattern = '00ae0600_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aac530'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_CSoundEmitterLH_00aac530.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_CSoundEmitterLH_00aac530_test.cpp'
+        PassPattern = '00aac530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aacb10'
+        Module = '_STL'
+        Source = '00/aa/STL_uninitializedcopy_00aacb10.cpp'
+        TestSource = '00/aa/STL_uninitializedcopy_00aacb10_test.cpp'
+        PassPattern = '00aacb10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aacb50'
+        Module = '_STL'
+        Source = '00/aa/STL_uninitializedfilln_00aacb50.cpp'
+        TestSource = '00/aa/STL_uninitializedfilln_00aacb50_test.cpp'
+        PassPattern = '00aacb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aacef0'
+        Module = '_STL::vector<CActiveSoundInfo>'
+        Source = '00/aa/STLvectorCActiveSoundInfo_pushback_00aacef0.cpp'
+        TestSource = '00/aa/STLvectorCActiveSoundInfo_pushback_00aacef0_test.cpp'
+        PassPattern = '00aacef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aadd80'
+        Module = '_STL::vector<unsigned short>'
+        Source = '00/aa/STLvectorunsignedshort_vector_00aadd80.cpp'
+        TestSource = '00/aa/STLvectorunsignedshort_vector_00aadd80_test.cpp'
+        PassPattern = '00aadd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aade80'
+        Module = '_STL::vector<unsigned short>'
+        Source = '00/aa/STLvectorunsignedshort_operator_00aade80.cpp'
+        TestSource = '00/aa/STLvectorunsignedshort_operator_00aade80_test.cpp'
+        PassPattern = '00aade80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aafca0'
+        Module = '_STL::vector<CMatrix3x4>'
+        Source = '00/aa/STLvectorCMatrix3x4_MallocateandcopyconstCMatrix3x4_00aafca0.cpp'
+        TestSource = '00/aa/STLvectorCMatrix3x4_MallocateandcopyconstCMatrix3x4_00aafca0_test.cpp'
+        PassPattern = '00aafca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aafd90'
+        Module = '_STL::vector<CMatrix3x4>'
+        Source = '00/aa/STLvectorCMatrix3x4_reserve_00aafd90.cpp'
+        TestSource = '00/aa/STLvectorCMatrix3x4_reserve_00aafd90_test.cpp'
+        PassPattern = '00aafd90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab1660'
+        Module = 'C3DAnimationBuilder'
+        Source = '00/ab/C3DAnimationBuilder_C3DAnimationBuilder_00ab1660.cpp'
+        TestSource = '00/ab/C3DAnimationBuilder_C3DAnimationBuilder_00ab1660_test.cpp'
+        PassPattern = '00ab1660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab3740'
+        Module = 'CVertexStreamFormat'
+        Source = '00/ab/CVertexStreamFormat_GetDataTypeSize_00ab3740.cpp'
+        TestSource = '00/ab/CVertexStreamFormat_GetDataTypeSize_00ab3740_test.cpp'
+        PassPattern = '00ab3740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab3b40'
+        Module = 'CVertexShaderInput'
+        Source = '00/ab/CVertexShaderInput_AddStream_00ab3b40.cpp'
+        TestSource = '00/ab/CVertexShaderInput_AddStream_00ab3b40_test.cpp'
+        PassPattern = '00ab3b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab4490'
+        Module = '_STL'
+        Source = '00/ab/STL_uninitializedfilln_00ab4490.cpp'
+        TestSource = '00/ab/STL_uninitializedfilln_00ab4490_test.cpp'
+        PassPattern = '00ab4490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab9dd0'
+        Module = 'C3DMeshFileBoneChunk'
+        Source = '00/ab/C3DMeshFileBoneChunk_GetBone_00ab9dd0.cpp'
+        TestSource = '00/ab/C3DMeshFileBoneChunk_GetBone_00ab9dd0_test.cpp'
+        PassPattern = '00ab9dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abcec0'
+        Module = 'C3DMeshFileTrianglesChunk'
+        Source = '00/ab/C3DMeshFileTrianglesChunk_AddTriangle_00abcec0.cpp'
+        TestSource = '00/ab/C3DMeshFileTrianglesChunk_AddTriangle_00abcec0_test.cpp'
+        PassPattern = '00abcec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac3810'
+        Module = 'CCountedPointer<C3DMeshPartitionElement>'
+        Source = '00/ac/CCountedPointerC3DMeshPartitionElement_DeleteData_00ac3810.cpp'
+        TestSource = '00/ac/CCountedPointerC3DMeshPartitionElement_DeleteData_00ac3810_test.cpp'
+        PassPattern = '00ac3810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac4110'
+        Module = 'C3DGroup2'
+        Source = '00/ac/C3DGroup2_AddVertexBlend_00ac4110.cpp'
+        TestSource = '00/ac/C3DGroup2_AddVertexBlend_00ac4110_test.cpp'
+        PassPattern = '00ac4110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac8960'
+        Module = 'QuadricOptimiserInternals::CIndexList'
+        Source = '00/ac/QuadricOptimiserInternalsCIndexList_GetIntersection_00ac8960.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCIndexList_GetIntersection_00ac8960_test.cpp'
+        PassPattern = '00ac8960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac96e0'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_UpdateContractions_00ac96e0.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_UpdateContractions_00ac96e0_test.cpp'
+        PassPattern = '00ac96e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aca2b0'
+        Module = 'QuadricOptimiserInternals::CIndexList'
+        Source = '00/ac/QuadricOptimiserInternalsCIndexList_GetUnion_00aca2b0.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCIndexList_GetUnion_00aca2b0_test.cpp'
+        PassPattern = '00aca2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aca380'
+        Module = 'QuadricOptimiserInternals::CIndexList'
+        Source = '00/ac/QuadricOptimiserInternalsCIndexList_GetSymmetricDifference_00aca380.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCIndexList_GetSymmetricDifference_00aca380_test.cpp'
+        PassPattern = '00aca380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00acffe0'
+        Module = '_STL'
+        Source = '00/ac/STL_uninitializedfilln_00acffe0.cpp'
+        TestSource = '00/ac/STL_uninitializedfilln_00acffe0_test.cpp'
+        PassPattern = '00acffe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad04a0'
+        Module = '_STL'
+        Source = '00/ad/STL_fill_00ad04a0.cpp'
+        TestSource = '00/ad/STL_fill_00ad04a0_test.cpp'
+        PassPattern = '00ad04a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad04e0'
+        Module = '_STL::vector'
+        Source = '00/ad/STLvector_Mallocateandcopy_00ad04e0.cpp'
+        TestSource = '00/ad/STLvector_Mallocateandcopy_00ad04e0_test.cpp'
+        PassPattern = '00ad04e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad08b0'
+        Module = '_STL'
+        Source = '00/ad/STL_unguardedlinearinsert_00ad08b0.cpp'
+        TestSource = '00/ad/STL_unguardedlinearinsert_00ad08b0_test.cpp'
+        PassPattern = '00ad08b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad1ca0'
+        Module = '_STL'
+        Source = '00/ad/STL_unguardedinsertionsortaux_00ad1ca0.cpp'
+        TestSource = '00/ad/STL_unguardedinsertionsortaux_00ad1ca0_test.cpp'
+        PassPattern = '00ad1ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad1e80'
+        Module = 'C3DMeshFile'
+        Source = '00/ad/C3DMeshFile_GetRoot_00ad1e80.cpp'
+        TestSource = '00/ad/C3DMeshFile_GetRoot_00ad1e80_test.cpp'
+        PassPattern = '00ad1e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad24f0'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_Mlowerbound_00ad24f0.cpp'
+        TestSource = '00/ad/STLRbtree_Mlowerbound_00ad24f0_test.cpp'
+        PassPattern = '00ad24f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad2730'
+        Module = '_STL::vector'
+        Source = '00/ad/STLvector_vector_00ad2730.cpp'
+        TestSource = '00/ad/STLvector_vector_00ad2730_test.cpp'
+        PassPattern = '00ad2730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad2af0'
+        Module = '_STL'
+        Source = '00/ad/STL_unguardedpartition_00ad2af0.cpp'
+        TestSource = '00/ad/STL_unguardedpartition_00ad2af0_test.cpp'
+        PassPattern = '00ad2af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad3230'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_Mcopy_00ad3230.cpp'
+        TestSource = '00/ad/STLRbtree_Mcopy_00ad3230_test.cpp'
+        PassPattern = '00ad3230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad3500'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_Mcopy_00ad3500.cpp'
+        TestSource = '00/ad/STLRbtree_Mcopy_00ad3500_test.cpp'
+        PassPattern = '00ad3500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad3c30'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_erase_00ad3c30.cpp'
+        TestSource = '00/ad/STLRbtree_erase_00ad3c30_test.cpp'
+        PassPattern = '00ad3c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad42c0'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_Minsert_00ad42c0.cpp'
+        TestSource = '00/ad/STLRbtree_Minsert_00ad42c0_test.cpp'
+        PassPattern = '00ad42c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad43a0'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_Mcopy_00ad43a0.cpp'
+        TestSource = '00/ad/STLRbtree_Mcopy_00ad43a0_test.cpp'
+        PassPattern = '00ad43a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad4540'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_Minsert_00ad4540.cpp'
+        TestSource = '00/ad/STLRbtree_Minsert_00ad4540_test.cpp'
+        PassPattern = '00ad4540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad4720'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_insertunique_00ad4720.cpp'
+        TestSource = '00/ad/STLRbtree_insertunique_00ad4720_test.cpp'
+        PassPattern = '00ad4720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad4810'
+        Module = '_STL::insert_iterator'
+        Source = '00/ad/STLinsertiterator_operator_00ad4810.cpp'
+        TestSource = '00/ad/STLinsertiterator_operator_00ad4810_test.cpp'
+        PassPattern = '00ad4810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad48f0'
+        Module = '_STL'
+        Source = '00/ad/STL_copy_00ad48f0.cpp'
+        TestSource = '00/ad/STL_copy_00ad48f0_test.cpp'
+        PassPattern = '00ad48f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

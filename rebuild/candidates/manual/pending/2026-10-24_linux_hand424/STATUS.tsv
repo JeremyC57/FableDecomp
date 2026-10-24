@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00aac530	RELOCATION_MATCH	72v72	PASS	CSoundEmitterLH::CSoundEmitterLH(CGameScriptThing*); 1 grade
+00aacb10	RELOCATION_MATCH	58v58	PASS	__uninitialized_copy<CActiveSoundInfo*>; 1 grade
+00aacb50	RELOCATION_MATCH	54v54	PASS	__uninitialized_fill_n<CActiveSoundInfo*>; 1 grade
+00aacef0	RELOCATION_MATCH	72v72	PASS	vector<CActiveSoundInfo>::push_back; 1 grade
+00aadd80	RELOCATION_MATCH	97v97	PASS	vector<unsigned short>::vector(n); 1 grade
+00aade80	RELOCATION_MATCH	236v236	PASS	vector<unsigned short>::operator=; 1 grade
+00aafca0	RELOCATION_MATCH	78v78	PASS	vector<CMatrix3x4>::_M_allocate_and_copy; 1 grade
+00aafd90	RELOCATION_MATCH	153v153	PASS	vector<CMatrix3x4>::reserve; 1 grade
+00ab1660	RELOCATION_MATCH	219v219	PASS	C3DAnimationBuilder::C3DAnimationBuilder(); 1 grade
+00ab3740	RELOCATION_MATCH	108v108	PASS	CVertexStreamFormat::GetDataTypeSize; jump table checked case by case; 3 grades
+00ab3810	DIFFER	83v83	-	CVertexStreamFormat::AddDataElement; register allocation, parked in differ/; 4 grades
+00ab3b40	RELOCATION_MATCH	160v160	PASS	CVertexShaderInput::AddStream; same-TU noinline _M_insert_overflow body; 4 grades
+00ab4490	RELOCATION_MATCH	57v57	PASS	__uninitialized_fill_n<CVertexShaderInput::CStreamInfo*>; 2 grades
+00ab9dd0	RELOCATION_MATCH	82v82	PASS	C3DMeshFileBoneChunk::GetBone() const; 1 grade
+00abcec0	RELOCATION_MATCH	65v65	PASS	C3DMeshFileTrianglesChunk::AddTriangle; 1 grade
+00ac3810	RELOCATION_MATCH	60v60	PASS	CCountedPointer<C3DMeshPartitionElement>::DeleteData; 1 grade
+00ac4110	RELOCATION_MATCH	63v63	PASS	C3DGroup2::AddVertexBlend; 1 grade
+00ac6d50	DIFFER	96v104	-	CQuadric::EvaluateError; lane gap: x87 sum canonicalisation, parked in differ/; 3 grades
+00ac8960	RELOCATION_MATCH	196v196	PASS	CIndexList::GetIntersection; less<> needs binary_function base; 2 grades
+00ac96e0	RELOCATION_MATCH	236v236	PASS	COptimisedPrimitive::UpdateContractions; same-TU noinline UpdateCost/ComputeContraction; 4 grades
+00aca2b0	RELOCATION_MATCH	196v196	PASS	CIndexList::GetUnion; 1 grade
+00aca380	RELOCATION_MATCH	196v196	PASS	CIndexList::GetSymmetricDifference; 1 grade
+00acffe0	MATCH	58v58	PASS	__uninitialized_fill_n<COptimisedEdge*>; 1 grade
+00ad04a0	MATCH	40v40	PASS	fill<COptimisedFace*>; 1 grade
+00ad04e0	RELOCATION_MATCH	78v78	PASS	vector<COptimisedVertex::CGroup>::_M_allocate_and_copy; 1 grade
+00ad08b0	MATCH	68v68	PASS	__unguarded_linear_insert<CGroup*>; 1 grade
+00ad1ca0	MATCH	114v114	PASS	__unguarded_insertion_sort_aux<CGroup*>; 1 grade
+00ad1e80	RELOCATION_MATCH	101v101	PASS	C3DMeshFile::GetRoot() non-const; 1 grade
+00ad24f0	MATCH	53v53	PASS	_Rb_tree::_M_lower_bound, map<pair<long,long>,CCountedPointer<CVertexPairContraction>>; 1 grade
+00ad2730	RELOCATION_MATCH	87v87	PASS	vector<COptimisedBone>::vector(const vector&); 1 grade
+00ad2af0	MATCH	116v116	PASS	__unguarded_partition<CGroup*>; 1 grade
+00ad3230	RELOCATION_MATCH	169v169	PASS	_Rb_tree::_M_copy, set<unsigned long>; 1 grade
+00ad3500	RELOCATION_MATCH	184v184	PASS	_Rb_tree::_M_copy, map<unsigned long,float>; needs the pair user copy ctor; 3 grades
+00ad3c30	RELOCATION_MATCH	103v103	PASS	_Rb_tree::erase(iterator), multimap<float,CCountedPointer>; 1 grade
+00ad42c0	RELOCATION_MATCH	223v223	PASS	_Rb_tree::_M_insert, map<unsigned long,CContractionReference>; 1 grade
+00ad43a0	RELOCATION_MATCH	218v218	PASS	_Rb_tree::_M_copy, map<unsigned long,CContractionReference>; 2 grades
+00ad4540	RELOCATION_MATCH	216v216	PASS	_Rb_tree::_M_insert, multimap<float,CCountedPointer>; 1 grade
+00ad4720	RELOCATION_MATCH	175v175	PASS	_Rb_tree::insert_unique, map<pair<long,long>,...>; same-TU noinline operator--; 2 grades
+00ad4810	RELOCATION_MATCH	104v104	PASS	insert_iterator<set<unsigned long>>::operator=; 1 grade
+00ad48f0	RELOCATION_MATCH	111v111	PASS	__copy set const_iterator -> insert_iterator, __fastcall; 1 grade
