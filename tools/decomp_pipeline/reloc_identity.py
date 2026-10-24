@@ -71,22 +71,45 @@ def record_bindings(root, addr, pairs):
             if sym not in tbl:
                 f.write(f"{sym}\t{t:08x}\t{addr}\n"); tbl[sym] = (t, addr)
 
-def function_relocs(objdump, objpath, leaf, length):
-    """[(offset, kind, symbol)] for the object's function block that has `length` bytes and names `leaf`."""
+def _blocks(out):
+    """objdump -dr blocks as (section index, start, name, length, relocs)."""
+    sec = -1
+    for part in re.split(r"\n(?=Disassembly of section )", out):
+        sec += 1
+        for bl in re.split(r"\n(?=[0-9a-fA-F]{8} <)", part):
+            m = re.match(r"([0-9a-fA-F]{8}) <([^>]+)>:", bl)
+            if not m: continue
+            start = int(m.group(1), 16)
+            insn = re.findall(r"^\s+([0-9a-fA-F]+):\t((?:[0-9a-fA-F]{2} )+)", bl, re.M)
+            rel = [(int(x, 16), k, s) for x, k, s in re.findall(r"\t([0-9a-fA-F]+): (DISP32|dir32|DIR32|REL32)\t(\S+)", bl)]
+            if insn: last = insn[-1]; ln = int(last[0], 16) + len(last[1].split()) - start
+            elif rel: ln = max(o for o, _, _ in rel) + 4 - start   # a jump table: zero addends print as `...`
+            else: continue
+            yield sec, start, m.group(2), ln, rel
+
+def function_relocs(objdump, objpath, leaf, length, with_labels=False):
+    """[(offset, kind, symbol)] for the object's function block that has `length` bytes and names `leaf`.
+    A switch's case labels and jump table (`$L<n>`) split the function into several objdump blocks;
+    when no single block has the length, the blocks of one section are merged back into the function
+    that starts it at offset 0. With `with_labels`, also return {label: offset} for that function."""
     out = subprocess.run([objdump, "-dr", "-w", str(objpath)], capture_output=True, text=True).stdout
+    blocks = list(_blocks(out))
     best = None
-    for bl in re.split(r"\n(?=[0-9a-fA-F]{8} <)", out):
-        m = re.match(r"([0-9a-fA-F]{8}) <([^>]+)>:", bl)
-        if not m: continue
-        start = int(m.group(1), 16)
-        insn = re.findall(r"^\s+([0-9a-fA-F]+):\t((?:[0-9a-fA-F]{2} )+)", bl, re.M)
-        if not insn: continue
-        last = insn[-1]; ln = int(last[0], 16) + len(last[1].split()) - start
+    for sec, start, name, ln, rel in blocks:
         if ln != length: continue
-        rel = [(int(x, 16) - start, k, s) for x, k, s in re.findall(r"\t([0-9a-fA-F]+): (DISP32|dir32|DIR32|REL32)\t(\S+)", bl)]
-        if best is None or (leaf and leaf in m.group(2) and leaf not in best[0]):
-            best = (m.group(2), rel)
-    return best[1] if best else None
+        if best is None or (leaf and leaf in name and leaf not in best[0]):
+            best = (name, [(o - start, k, s) for o, k, s in rel], {})
+    if best is None:
+        merged = {}
+        for sec, start, name, ln, rel in blocks:
+            if start == 0 and not name.startswith("$L"): merged[sec] = [name, ln, list(rel), {}]
+            elif sec in merged and name.startswith("$L"):
+                f = merged[sec]; f[1] = max(f[1], start + ln); f[2] += rel; f[3][name] = start
+        for name, ln, rel, labs in merged.values():
+            if ln != length or not labs: continue
+            if best is None or (leaf and leaf in name and leaf not in best[0]): best = (name, rel, labs)
+    if best is None: return (None, {}) if with_labels else None
+    return (best[1], best[2]) if with_labels else best[1]
 
 _OPS = {"2": "operator new", "3": "operator delete", "_U": "operator new[]", "_V": "operator delete[]", "4": "operator=",
         "8": "operator==", "9": "operator!=", "A": "operator[]", "C": "operator->", "D": "operator*", "E": "operator++",
@@ -152,12 +175,20 @@ def check(root, objdump, objpath, leaf, addr, retail, roff=0, built=None):
     `built` (the compiled bytes of the same span) supplies each relocation's addend so a struct
     field reference (`sym+4`) resolves to the symbol base, not to the field address."""
     a = int(addr, 16)
-    rel = function_relocs(objdump, objpath, leaf, len(retail) + roff)
-    if rel is None: return ([], ["RELOC_UNCHECKED: no object block of the retail length (jump table or multi-block TU)"], [])
-    pairs = []; sym2t = {}; t2sym = {}
+    rel, lab_off = function_relocs(objdump, objpath, leaf, len(retail) + roff, with_labels=True)
+    if rel is None: return ([], ["RELOC_UNCHECKED: no object block of the retail length (multi-block TU)"], [])
+    pairs = []; sym2t = {}; t2sym = {}; hard = []
     for off, kind, sym in rel:
         off -= roff
-        if off < 0 or off + 4 > len(retail) or sym.startswith(SKIP_PREFIXES): continue
+        if off < 0 or off + 4 > len(retail): continue
+        if sym in lab_off and kind in ("dir32", "DIR32"):
+            # a jump table entry or the table base: the retail absolute address must be the same
+            # label inside this function (masked bytes alone would accept a permuted table)
+            want = (a + lab_off[sym] - roff + (struct.unpack_from("<I", built, off)[0] if built is not None and len(built) >= off + 4 else 0)) & 0xFFFFFFFF
+            got = struct.unpack_from("<I", retail, off)[0]
+            if got != want: hard.append(f"RELOC_JUMPTABLE: +{off:x} {sym} -> {want:08x} here, retail {got:08x}")
+            continue
+        if sym.startswith(SKIP_PREFIXES): continue
         if kind in ("DISP32", "REL32"):
             t = (a + off + 4 + struct.unpack_from("<i", retail, off)[0]) & 0xFFFFFFFF
             if built is not None and len(built) >= off + 4: t = (t - struct.unpack_from("<i", built, off)[0]) & 0xFFFFFFFF
@@ -165,7 +196,7 @@ def check(root, objdump, objpath, leaf, addr, retail, roff=0, built=None):
             t = struct.unpack_from("<I", retail, off)[0]
             if built is not None and len(built) >= off + 4: t = (t - struct.unpack_from("<I", built, off)[0]) & 0xFFFFFFFF
         pairs.append((off, kind, sym, t)); sym2t.setdefault(sym, set()).add(t); t2sym.setdefault(t, set()).add(sym)
-    hard, warn = [], []
+    warn = []
     for sym, ts in sym2t.items():
         if len(ts) > 1: hard.append(f"RELOC_IDENTITY: symbol {sym} bound to {', '.join(f'{t:08x}' for t in sorted(ts))}")
     for t, syms in t2sym.items():
