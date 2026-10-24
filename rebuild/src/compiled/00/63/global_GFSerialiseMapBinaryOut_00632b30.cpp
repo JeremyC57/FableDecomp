@@ -1,0 +1,87 @@
+// GFSerialiseMapBinaryOut(CDataOutputStream& stream, const map<unsigned long,CCharString>& value) -- write the element count, then every key and its string (null terminated) in key order
+// Leaf: GFSerialiseMapBinaryOut
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00632B30, 90 bytes (+ int3 padding), `ret` (__fastcall: the stream in ecx,
+// the map in edx).
+// Identity: the only caller is the binary map transfer 0x00632AF0 (mode 3) for PDB CUIDef::ActionMap, a
+// map<unsigned long, CCharString>; sibling of 0x006327E0 and the landed 0x00469309. The catalog label
+// "CDataOutputStream_WriteMap_CharStringPair" is descriptive.
+// Callees: CCharString::CCharString() @ 0x0099E4B0 and ~CCharString @ 0x0099EAE0 (the value traits' default value),
+// CDataOutputStream::WriteSLONG @ 0x00993EB0 (the count and each key; WriteULONG folds onto the same body, so one symbol
+// names both), CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0, `_Rb_global<bool>::_M_increment` @ 0x004292C0.
+// Shape: the GFSerialiseMapBinaryOut template of 0x006327E0; CPersistTraits<CCharString> carries its CCharString default
+// value (Ego_r.pdb CPersistTraits<T>::DefaultVal), so the value traits local is the `push ecx` frame word, built first and
+// destroyed last; the key traits are empty. Speed TU.
+// Model: engine/CDataOutputStream.h + a methods-only writer adapter (as 0x00469309).
+#include "engine/CDataOutputStream.h"
+
+class CCharString;
+struct CDataOutputStreamWriter : CDataOutputStream {
+    void WriteSLONG(long value);                                     // 0x00993EB0
+    void WriteNullTerminatedString(const CCharString& text);        // 0x00995AE0
+};
+
+namespace std {
+template <class T1, class T2> struct pair {
+    T1 first;
+    T2 second;
+};
+template <class T> struct less { };
+struct _Rb_tree_node_base {
+    bool                _M_color;                           // +0x00
+    _Rb_tree_node_base* _M_parent;                          // +0x04
+    _Rb_tree_node_base* _M_left;                            // +0x08
+    _Rb_tree_node_base* _M_right;                           // +0x0c
+};
+template <class V> struct _Rb_tree_node : _Rb_tree_node_base {
+    V _M_value_field;                                       // +0x10
+};
+template <class B> struct _Rb_global {
+    static _Rb_tree_node_base* __cdecl _M_increment(_Rb_tree_node_base* node);   // 0x004292C0
+};
+template <class V> struct _Rb_tree_iterator {
+    _Rb_tree_node_base* _M_node;
+    _Rb_tree_iterator(_Rb_tree_node_base* n) : _M_node(n) { }
+    const V& operator*() const { return ((_Rb_tree_node<V>*)_M_node)->_M_value_field; }
+    const V* operator->() const { return &((_Rb_tree_node<V>*)_M_node)->_M_value_field; }
+    _Rb_tree_iterator& operator++() { _M_node = _Rb_global<bool>::_M_increment(_M_node); return *this; }
+    bool operator!=(const _Rb_tree_iterator& o) const { return _M_node != o._M_node; }
+};
+template <class K, class V, class C> class map {
+public:
+    typedef pair<const K, V> value_type;
+    typedef _Rb_tree_iterator<value_type> const_iterator;
+    _Rb_tree_node_base* _M_header;                          // +0x00
+    unsigned long       _M_node_count;                      // +0x04
+    C                   _M_key_compare;                     // +0x08
+    const_iterator begin() const { return const_iterator(_M_header->_M_left); }
+    const_iterator end() const { return const_iterator(_M_header); }
+    unsigned long size() const { return _M_node_count; }
+};
+}
+template <class T> struct CPersistTraits;
+class CCharString {
+public:
+    void* PStringData;
+    CCharString();                                    // 0x0099E4B0
+    ~CCharString();                                   // 0x0099EAE0
+};
+template <> struct CPersistTraits<unsigned long> {
+    void TransferBinaryOut(CDataOutputStreamWriter& stream, const unsigned long& value) const { stream.WriteSLONG(value); }
+};
+template <> struct CPersistTraits<CCharString> {
+    CCharString DefaultVal;
+    void TransferBinaryOut(CDataOutputStreamWriter& stream, const CCharString& value) const { stream.WriteNullTerminatedString(value); }
+};
+template <class V, class K, class C>
+void __fastcall GFSerialiseMapBinaryOut(CDataOutputStreamWriter& stream, const std::map<K, V, C>& value)
+{
+    CPersistTraits<K> keyTraits;
+    CPersistTraits<V> valueTraits;
+    stream.WriteSLONG(value.size());
+    for (typename std::map<K, V, C>::const_iterator it = value.begin(); it != value.end(); ++it) {
+        keyTraits.TransferBinaryOut(stream, it->first);
+        valueTraits.TransferBinaryOut(stream, it->second);
+    }
+}
+template void __fastcall GFSerialiseMapBinaryOut<CCharString, unsigned long, std::less<unsigned long> >(
+    CDataOutputStreamWriter& stream, const std::map<unsigned long, CCharString, std::less<unsigned long> >& value);

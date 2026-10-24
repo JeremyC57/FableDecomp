@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00623c10	RELOCATION_MATCH	107v107	PASS	STLport __median<CTestQuest> (test-quest name sort)
+00623e90	RELOCATION_MATCH	201v201	PASS	STLport __unguarded_linear_insert<CTestQuest>
+00623f80	RELOCATION_MATCH	234v234	PASS	STLport __push_heap<CTestQuest>
+00624760	RELOCATION_MATCH	145v145	PASS	STLport __linear_insert<CTestQuest>
+00624880	RELOCATION_MATCH	172v172	PASS	STLport __make_heap core <CTestQuest>
+00624c90	RELOCATION_MATCH	126v126	PASS	STLport __insertion_sort<CTestQuest>
+00625630	RELOCATION_MATCH	167v167	PASS	real: NUISystem::CUIStateDef::Transfer (label InitialiseDefaultCameraTags wrong)
+0062f590	RELOCATION_MATCH	52v52	PASS	real: vector<const CAnimationEntry*> copy ctor (label lua_stackspace wrong)
+0062f610	RELOCATION_MATCH	56v56	PASS	real: list<CCountedPointer<CStrikeEvent>> copy ctor
+0062f690	RELOCATION_MATCH	52v52	PASS	real: list<CCountedPointer<CStrikeEvent>>::insert
+0062f9c0	RELOCATION_MATCH	79v79	PASS	real: CRGBFloatColour::GetTRGBALong
+00631020	RELOCATION_MATCH	184v184	PASS	_Rb_tree<ETableSprites,long>::_M_copy
+006310e0	RELOCATION_MATCH	193v193	PASS	_Rb_tree<unsigned long,CCharString>::_M_copy
+006327a0	RELOCATION_MATCH	56v56	PASS	CPersistContext::TransferMapBinary<ETableSprites,long>
+006327e0	RELOCATION_MATCH	75v75	PASS	GFSerialiseMapBinaryOut<ETableSprites,long>
+00632990	RELOCATION_MATCH	145v145	PASS	_Rb_tree<ETableSprites,long>::insert_unique
+00632af0	RELOCATION_MATCH	56v56	PASS	CPersistContext::TransferMapBinary<unsigned long,CCharString>
+00632b30	RELOCATION_MATCH	90v90	PASS	GFSerialiseMapBinaryOut<unsigned long,CCharString>
+00632c90	RELOCATION_MATCH	145v145	PASS	_Rb_tree<unsigned long,CCharString>::insert_unique
+006379d0	DIFFER	52v53	-	NThingMap::InitLayerInfo; register swap only (max in ecx vs eax) under RTM and QFE
+00637f40	RELOCATION_MATCH	123v123	PASS	real: CThingMapManager::IsToBePlacedInMapwho
+006384b0	DIFFER	133v132	-	real: CThingMapManager::GetAllActiveThingMapsInArea; /Oa fixes the shape, ebx/ebp swap remains
+00639250	MATCH	83v83	PASS	set<long>::equal_range
+0063b750	RELOCATION_MATCH	154v154	PASS	CWorldMap::FindMaxGroundZInCell; unsigned loop index
+0063b7f0	RELOCATION_MATCH	154v154	PASS	real: CWorldMap::FindMaxThemeZInCell
+0063e2e0	RELOCATION_MATCH	210v210	PASS	real: CWorldMap::InitPassabilityFromThemesIfNecessary; C2DBoxI user copy ctor
+0063f150	RELOCATION_MATCH	138v138	PASS	blocker/bounds-contain-point thing filter (descriptive class name); forceinline mesh helper
+0063f1e0	RELOCATION_MATCH	150v150	PASS	IsNot + blocker/bounds filter (descriptive class name)
+0063f2c0	RELOCATION_MATCH	118v118	PASS	real: CFilter_Bind2<CThingFilter_OverlappingCircle,CWorldMap::CThingFilterBase>::operator()<CThing>
+00640560	RELOCATION_MATCH	75v75	PASS	real: CEngineManager::AddChangedArea
+00641260	RELOCATION_MATCH	70v70	PASS	real: CTCLight::AttachParticles
+00643b9f	DIFFER	66v67	-	NPlayerGui::GFGetGraphicFrame; retail inline-asm fld/fistp rounding (retail_asm candidate)
+00643bfc	RELOCATION_MATCH	152v152	PASS	NPlayerGui::GFToScreenScaled; optimize("s")
+00643ca1	RELOCATION_MATCH	57v57	PASS	NPlayerGui::GFAnchorToTopRight; optimize("s")
+00643cda	RELOCATION_MATCH	50v50	PASS	NPlayerGui::GFAnchorToBottomLeft; optimize("s")
+00643d0c	RELOCATION_MATCH	81v81	PASS	NPlayerGui::GFAnchorToBottomRight; optimize("s")
+00643d8c	RELOCATION_MATCH	89v89	PASS	real: CPlayerGui::AddHitByMelee; optimize("s")
+006445ba	DIFFER	108v109	-	NPlayerGui::CDrawBase::ClearEffects; one register choice in the element re-fetch
+00646a46	RELOCATION_MATCH	204v204	PASS	NPlayerGui::CStatBar::DrawStatBoxWithText; optimize("s")
+0065431d	RELOCATION_MATCH	117v117	PASS	real: NPlayerGui::CStatBar::CStatBar; optimize("s"), same-TU noinline CStatBase ctor

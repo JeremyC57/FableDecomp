@@ -1235,3 +1235,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Give C2DVector a user copy ctor inside implicitly copied records; a POD C2DVector merges tail words into one block copy (0x613DD0).
 - STLport 4.5 out-of-line set/map find is `_M_find(k)`: node in eax, `ret 4` (0x614A10); record `CPersistTraits<T>` holds an uninitialised `T DefaultVal` (0x614700).
 - Retail STLport lists are 4 bytes and vectors 12, so PDB member offsets run high in STL-bearing classes (CTCVillage::PlayersCrimes +0x64) (chunk 381).
+- CPlayerGuiDef retail offset = PDB offset - 0x30 around +0x48C..+0x4E0 (twelve STLport vectors at 12 bytes, not 16) (chunk 382).
+- A loop over a small table with `unsigned int i` gives retail's indexed walk with `jb`; `int i` gives a pointer walk with `jl` (0x63B750).
+- A class temporary inside an `&&` chain gets a conditional-destruction flag: move it into a `__forceinline` helper with a named local (0x63F150).
+- `if (a||b||c||d) return true; return false;` gives retail's 8-bit `al` exits (0x637F40); STLport `equal_range` runs the upper_bound walk first (right-to-left pair args) (0x639250).
