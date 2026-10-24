@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006600ec	RELOCATION_MATCH	43v43	PASS	std::count_if<HasBuildingAsHomeOrWork> (list const_iterator); __stdcall, #pragma s (unaligned loop, jmp to bottom test)
+006c1c70	RELOCATION_MATCH	106v106	PASS	std::count_if<HasBuildingAsWork>; inline GetWorkBuilding() accessor gives lea ecx,[eax+170h] (2 grades)
+0065f6a6	RELOCATION_MATCH	52v52	PASS	std::count_if<HasGuardProperty>; by-value CIntelligentPointer<const CThing> predicate arg, #pragma s
+00512050	RELOCATION_MATCH	98v98	PASS	CMapInfo scalar deleting dtor (??_G, non-polymorphic: `delete p`)
+00870c50	RELOCATION_MATCH	43v43	PASS	NCreatureAction::CActionEventSound::Dispatch (slot 1): two empty CCharString locals
+00abefa0	RELOCATION_MATCH	43v43	PASS	C3DMeshMaterial::CFilenames::~CFilenames (label CMacro wrong)
+00ac6210	RELOCATION_MATCH	43v43	PASS	C3DMeshFileEngineMaterialChunk::CMapFilenames::~CMapFilenames (label CMacro wrong)
+00aecb80	RELOCATION_MATCH	111v111	PASS	record dtor: 2 strings, CCountedPointer, vector<pair<long,CCP>> (tag destroy 0xAE9D50), ~CStringKeyedTable 0x6FD040; descriptive
+004a7710	RELOCATION_MATCH	52v52	PASS	CTestQuest::CTestQuest implicit ctor emitted via placement new
+00633830	RELOCATION_MATCH	73v73	PASS	CPlayer::UninitModeParalysed (PlayerModeInfo table 0x0121B4xx); label CConflict wrong
+00633880	RELOCATION_MATCH	73v73	PASS	CPlayer::UninitModeBoastUI (PlayerModeInfo table); label CConflict wrong
+004ac800	RELOCATION_MATCH	87v87	PASS	COpinionReactionManager::~COpinionReactionManager (ctor 0x7004B0 landed); 2 lists, 2 CIntelligentPointers, CDefPointer
+00655230	MATCH	32v32	PASS	CIVCountedPointer<CTriangleList>::Attach, #pragma s (and dword ptr [esi],0)
+009bde90	RELOCATION_MATCH	43v43	PASS	CSubTitle::~CSubTitle (label CIVCountedPointer CTriangleList wrong)
+009bdfa0	RELOCATION_MATCH	43v43	PASS	CSubTitle::~CSubTitle second copy (other TU)
+00cd23da	MATCH	32v32	PASS	CIVCountedPointer<CTriangleList>::Attach, #pragma s
+00a6f390	RELOCATION_MATCH	72v72	PASS	std::pair<CCharString,C3DMeshVolume>::~pair
+00a70130	RELOCATION_MATCH	72v72	PASS	std::pair<CCharString,C3DMeshVolume>::~pair (second copy)
+00657037	RELOCATION_MATCH	50v50	PASS	vector<CIntelligentPointer<CParticleEmitter>>::resize(n); CDraw region pragmas y off + s on
+00728f80	RELOCATION_MATCH	46v46	PASS	STLport resize(n) of vector of {key, vector}; descriptive
+007d26e0	RELOCATION_MATCH	83v83	PASS	vector<CShoveHaPennyRegionDef>::resize(n); CDefPointeeBase inline virtual dtor chain
+0086ee50	RELOCATION_MATCH	44v44	PASS	STLport resize(n) of vector of vectors; descriptive
+00485cf1	RELOCATION_MATCH	28v28	PASS	CPersistContextReadSection::~CPersistContextReadSection (label pair CSymbolInfo wrong)
+004b86b0	RELOCATION_MATCH	31v31	PASS	std::pair<CCharString,CSymbolMap::CSymbolInfo>::~pair; Leaf ??1?$pair@VCCharString
+0056d190	RELOCATION_MATCH	28v28	PASS	record dtor: CCharString + two CWideStrings; descriptive
+006fb460	RELOCATION_MATCH	31v31	PASS	std::pair<CCharString,CSymbolMap::CSymbolInfo>::~pair (second copy)
+00736ae0	RELOCATION_MATCH	23v23	PASS	CTCCombat::FrameUpdate (vtable slot 9), engine/CTCCombat.h
+00739df0	RELOCATION_MATCH	35v35	PASS	CAnimFilterOf3Groups::~CAnimFilterOf3Groups (vtable 0x0122FFCC)
+00768bc0	RELOCATION_MATCH	38v38	PASS	record ctor: two CCharStrings + CIntelligentPointer; descriptive
+00a61b10	RELOCATION_MATCH	24v24	PASS	CInputManagerDX member dtor (+0x2b0): ReleaseAll 0xA61A80 + two list dtors; descriptive
+009f88c0	RELOCATION_MATCH	61v61	PASS	CGraphicBankManager::CGraphicDataBankInfo::~CGraphicDataBankInfo (label pair<CCharString,CCP<C3DSkeletalMorphTarget>> wrong)
+00a326d0	RELOCATION_MATCH	61v61	PASS	std::pair<long,C3DMeshVolume>::~pair; Leaf needs struct mangling U (??1?$pair@JUC3DMeshVolume)
+00ab34c0	RELOCATION_MATCH	95v95	PASS	record dtor: CCharString, vector<CCountedPointer> (tag destroy 0xAB2BD0), CCountedPointer; descriptive
+00af65b0	RELOCATION_MATCH	61v61	PASS	std::pair<EPSCType,CComponentInstance>::~pair; Leaf ??1?$pair@W4EPSCType
+00b2e6c0	RELOCATION_MATCH	82v82	PASS	CSurfaceCompositor::~CSurfaceCompositor: CRenderStateCaptureBlock inline dtor + CBase
+004420d0	RELOCATION_MATCH	115v115	PASS	NPlayerGui::CDrawMeleeActionButtonEffects implicit dtor; inline _Destroy(first,last) keeps bounds in regs (2 grades)
+004ae3e0	RELOCATION_MATCH	37v37	PASS	record dtor: vector dtor 0x4AE040 + CIVCountedPointer; descriptive
+00696560	RELOCATION_MATCH	42v42	PASS	CCountedPointer<T>::DeleteData static __fastcall deleter (explicit instantiation)
+006f48a0	RELOCATION_MATCH	132v132	PASS	CDefendingCombatantInfo implicit dtor: CDefPointer, CIntelligentPointer, ring vector (tag 0x6F44E0), STLport tree clear+free
+007550c0	MATCH	29v29	PASS	record dtor: CIVCountedPointer at +0x3c only; descriptive

@@ -1098,3 +1098,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A second strength-reduced src+N/dst+N pointer pair in a copy loop means a nested record member; its offset gives the member order (00748af0, 0088abc0).
 - `__fastcall` returning a class by value: hidden result pointer in ecx, class-type iterators stay on the stack, first pointer/reference argument in edx (005810ae).
 - The lane link does not fold byte-identical functions: grade each twin separately (0040fc50 / 00b8eed0).
+- To emit a compiler-generated destructor, call it qualified in a helper (`p->T::~T();`) with `// Leaf: ??1T`; for an implicit default ctor use placement new (chunk 352).
+- Leaf mangling is exact (struct `U`, class `V`, enum `W4`); on no match q.py silently grades the largest function (00a326d0).
+- No vtable store in a polymorphic class's destructor means no class in the chain declares a destructor (NPlayerGui::CDrawBase, 004420d0).
+- An inline accessor on the pointee gives `lea ecx,[eax+N]`; chaining `->Member.GetPItem()` gives `add eax,N ; mov ecx,eax` (006c1c70).
