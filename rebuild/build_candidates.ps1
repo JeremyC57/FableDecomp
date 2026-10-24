@@ -284591,6 +284591,286 @@ $catalog = @(
         TestSource = '00/cb/std_unguardedinsertionsortaux_00cbb2d0_test.cpp'
         PassPattern = '00cbb2d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0047c800'
+        Module = '_global'
+        Source = '00/47/global_DestroyAuxSNamedListRecord180047c800_0047c800.cpp'
+        TestSource = '00/47/global_DestroyAuxSNamedListRecord180047c800_0047c800_test.cpp'
+        PassPattern = '0047c800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b78d0'
+        Module = '_global'
+        Source = '00/4b/global_CopyBackwardPairCharStringQuestPersistInfo004b78_004b78d0.cpp'
+        TestSource = '00/4b/global_CopyBackwardPairCharStringQuestPersistInfo004b78_004b78d0_test.cpp'
+        PassPattern = '004b78d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005659d0'
+        Module = '_global'
+        Source = '00/56/global_CopyBackwardSQuestPersistRecord10005659d0_005659d0.cpp'
+        TestSource = '00/56/global_CopyBackwardSQuestPersistRecord10005659d0_005659d0_test.cpp'
+        PassPattern = '005659d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e0e70'
+        Module = '_global'
+        Source = '00/5e/global_CopyBackwardPairULongAnimationEntry005e0e70_005e0e70.cpp'
+        TestSource = '00/5e/global_CopyBackwardPairULongAnimationEntry005e0e70_005e0e70_test.cpp'
+        PassPattern = '005e0e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b9100'
+        Module = '_global'
+        Source = '00/6b/global_CopyBackwardPairLongCountedPointer006b9100_006b9100.cpp'
+        TestSource = '00/6b/global_CopyBackwardPairLongCountedPointer006b9100_006b9100_test.cpp'
+        PassPattern = '006b9100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f4470'
+        Module = '_global'
+        Source = '00/6f/global_CopySVectorRecord1C006f4470_006f4470.cpp'
+        TestSource = '00/6f/global_CopySVectorRecord1C006f4470_006f4470_test.cpp'
+        PassPattern = '006f4470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f44e0'
+        Module = '_global'
+        Source = '00/6f/global_DestroyAuxSPointerListRecord1C006f44e0_006f44e0.cpp'
+        TestSource = '00/6f/global_DestroyAuxSPointerListRecord1C006f44e0_006f44e0_test.cpp'
+        PassPattern = '006f44e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fbc50'
+        Module = '_global'
+        Source = '00/6f/global_CopyPairULongEventVector006fbc50_006fbc50.cpp'
+        TestSource = '00/6f/global_CopyPairULongEventVector006fbc50_006fbc50_test.cpp'
+        PassPattern = '006fbc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071ed80'
+        Module = '_global'
+        Source = '00/71/global_CopyBackwardSElement120071ed80_0071ed80.cpp'
+        TestSource = '00/71/global_CopyBackwardSElement120071ed80_0071ed80_test.cpp'
+        PassPattern = '0071ed80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071edd0'
+        Module = '_global'
+        Source = '00/71/global_CopyBackwardSElement240071edd0_0071edd0.cpp'
+        TestSource = '00/71/global_CopyBackwardSElement240071edd0_0071edd0_test.cpp'
+        PassPattern = '0071edd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00722130'
+        Module = '_global'
+        Source = '00/72/global_DestroyAuxSNestedVectorRecord1000722130_00722130.cpp'
+        TestSource = '00/72/global_DestroyAuxSNestedVectorRecord1000722130_00722130_test.cpp'
+        PassPattern = '00722130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075b5b0'
+        Module = '_global'
+        Source = '00/75/global_CopyBackwardSElement120075b5b0_0075b5b0.cpp'
+        TestSource = '00/75/global_CopyBackwardSElement120075b5b0_0075b5b0_test.cpp'
+        PassPattern = '0075b5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077e170'
+        Module = '_global'
+        Source = '00/77/global_CopyBackwardPairCharStringValue0C0077e170_0077e170.cpp'
+        TestSource = '00/77/global_CopyBackwardPairCharStringValue0C0077e170_0077e170_test.cpp'
+        PassPattern = '0077e170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008076d0'
+        Module = '_global'
+        Source = '00/80/global_CopyBackwardCTargetPoint008076d0_008076d0.cpp'
+        TestSource = '00/80/global_CopyBackwardCTargetPoint008076d0_008076d0_test.cpp'
+        PassPattern = '008076d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00819390'
+        Module = '_global'
+        Source = '00/81/global_CopySElement2400819390_00819390.cpp'
+        TestSource = '00/81/global_CopySElement2400819390_00819390_test.cpp'
+        PassPattern = '00819390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008194c0'
+        Module = '_global'
+        Source = '00/81/global_CopySElement20008194c0_008194c0.cpp'
+        TestSource = '00/81/global_CopySElement20008194c0_008194c0_test.cpp'
+        PassPattern = '008194c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00819670'
+        Module = '_global'
+        Source = '00/81/global_CopyBackwardSElement2400819670_00819670.cpp'
+        TestSource = '00/81/global_CopyBackwardSElement2400819670_00819670_test.cpp'
+        PassPattern = '00819670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008197b0'
+        Module = '_global'
+        Source = '00/81/global_CopyBackwardSElement20008197b0_008197b0.cpp'
+        TestSource = '00/81/global_CopyBackwardSElement20008197b0_008197b0_test.cpp'
+        PassPattern = '008197b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082cd00'
+        Module = '_global'
+        Source = '00/82/global_CopySResourceRecord3C0082cd00_0082cd00.cpp'
+        TestSource = '00/82/global_CopySResourceRecord3C0082cd00_0082cd00_test.cpp'
+        PassPattern = '0082cd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085d6e0'
+        Module = '_global'
+        Source = '00/85/global_CopySElement200085d6e0_0085d6e0.cpp'
+        TestSource = '00/85/global_CopySElement200085d6e0_0085d6e0_test.cpp'
+        PassPattern = '0085d6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085d870'
+        Module = '_global'
+        Source = '00/85/global_CopyBackwardSElement200085d870_0085d870.cpp'
+        TestSource = '00/85/global_CopyBackwardSElement200085d870_0085d870_test.cpp'
+        PassPattern = '0085d870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00889650'
+        Module = '_global'
+        Source = '00/88/global_CopySListRecord3000889650_00889650.cpp'
+        TestSource = '00/88/global_CopySListRecord3000889650_00889650_test.cpp'
+        PassPattern = '00889650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096ba30'
+        Module = '_global'
+        Source = '00/96/global_RemoveCopyIfSPoint0C0096ba30_0096ba30.cpp'
+        TestSource = '00/96/global_RemoveCopyIfSPoint0C0096ba30_0096ba30_test.cpp'
+        PassPattern = '0096ba30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e6410'
+        Module = '_global'
+        Source = '00/9e/global_CopyBackwardPairCharStringSymbolInfo009e6410_009e6410.cpp'
+        TestSource = '00/9e/global_CopyBackwardPairCharStringSymbolInfo009e6410_009e6410_test.cpp'
+        PassPattern = '009e6410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a31480'
+        Module = '_global'
+        Source = '00/a3/global_CopyBackwardSElement2000a31480_00a31480.cpp'
+        TestSource = '00/a3/global_CopyBackwardSElement2000a31480_00a31480_test.cpp'
+        PassPattern = '00a31480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45910'
+        Module = '_global'
+        Source = '00/a4/global_CopyBackwardSNamedIndexedValue1400a45910_00a45910.cpp'
+        TestSource = '00/a4/global_CopyBackwardSNamedIndexedValue1400a45910_00a45910_test.cpp'
+        PassPattern = '00a45910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5acc0'
+        Module = '_global'
+        Source = '00/a5/global_CopyPairLongCountedPointer00a5acc0_00a5acc0.cpp'
+        TestSource = '00/a5/global_CopyPairLongCountedPointer00a5acc0_00a5acc0_test.cpp'
+        PassPattern = '00a5acc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6e7c0'
+        Module = '_global'
+        Source = '00/a6/global_CopyBackwardPairCharStringValue1000a6e7c0_00a6e7c0.cpp'
+        TestSource = '00/a6/global_CopyBackwardPairCharStringValue1000a6e7c0_00a6e7c0_test.cpp'
+        PassPattern = '00a6e7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a802a0'
+        Module = '_global'
+        Source = '00/a8/global_CopyBackwardPairLongCountedPointer00a802a0_00a802a0.cpp'
+        TestSource = '00/a8/global_CopyBackwardPairLongCountedPointer00a802a0_00a802a0_test.cpp'
+        PassPattern = '00a802a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85740'
+        Module = '_global'
+        Source = '00/a8/global_CopyBackwardSTripleVectorRecord2800a85740_00a85740.cpp'
+        TestSource = '00/a8/global_CopyBackwardSTripleVectorRecord2800a85740_00a85740_test.cpp'
+        PassPattern = '00a85740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2ba0'
+        Module = '_global'
+        Source = '00/af/global_UninitCopyPairCharStringRegisteredPSCInfo00af2ba_00af2ba0.cpp'
+        TestSource = '00/af/global_UninitCopyPairCharStringRegisteredPSCInfo00af2ba_00af2ba0_test.cpp'
+        PassPattern = '00af2ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2d60'
+        Module = '_global'
+        Source = '00/af/global_CopyBackwardPairCharStringRegisteredPSCInfo00af2_00af2d60.cpp'
+        TestSource = '00/af/global_CopyBackwardPairCharStringRegisteredPSCInfo00af2_00af2d60_test.cpp'
+        PassPattern = '00af2d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bed9a0'
+        Module = '_global'
+        Source = '00/be/global_CopyBackwardPairLongPointerHolder00bed9a0_00bed9a0.cpp'
+        TestSource = '00/be/global_CopyBackwardPairLongPointerHolder00bed9a0_00bed9a0_test.cpp'
+        PassPattern = '00bed9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee4e0'
+        Module = '_global'
+        Source = '00/be/global_CopyBackwardPairLongPairTextureDecal00bee4e0_00bee4e0.cpp'
+        TestSource = '00/be/global_CopyBackwardPairLongPairTextureDecal00bee4e0_00bee4e0_test.cpp'
+        PassPattern = '00bee4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee7b0'
+        Module = '_global'
+        Source = '00/be/global_CopyPairLongPairTextureDecal00bee7b0_00bee7b0.cpp'
+        TestSource = '00/be/global_CopyPairLongPairTextureDecal00bee7b0_00bee7b0_test.cpp'
+        PassPattern = '00bee7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb94d0'
+        Module = '_global'
+        Source = '00/cb/global_CopyBackwardPairUInt64PersistInfo00cb94d0_00cb94d0.cpp'
+        TestSource = '00/cb/global_CopyBackwardPairUInt64PersistInfo00cb94d0_00cb94d0_test.cpp'
+        PassPattern = '00cb94d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb9c80'
+        Module = '_global'
+        Source = '00/cb/global_CopyPairUInt64PersistInfo00cb9c80_00cb9c80.cpp'
+        TestSource = '00/cb/global_CopyPairUInt64PersistInfo00cb9c80_00cb9c80_test.cpp'
+        PassPattern = '00cb9c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbada0'
+        Module = '_global'
+        Source = '00/cb/global_CopyBackwardPairUInt64CountedPointer00cbada0_00cbada0.cpp'
+        TestSource = '00/cb/global_CopyBackwardPairUInt64CountedPointer00cbada0_00cbada0_test.cpp'
+        PassPattern = '00cbada0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbb120'
+        Module = '_global'
+        Source = '00/cb/global_CopyPairUInt64CountedPointer00cbb120_00cbb120.cpp'
+        TestSource = '00/cb/global_CopyPairUInt64CountedPointer00cbb120_00cbb120_test.cpp'
+        PassPattern = '00cbb120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdc000'
+        Module = '_global'
+        Source = '00/cd/global_DestroyAuxSStringListRecord1C00cdc000_00cdc000.cpp'
+        TestSource = '00/cd/global_DestroyAuxSStringListRecord1C00cdc000_00cdc000_test.cpp'
+        PassPattern = '00cdc000_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

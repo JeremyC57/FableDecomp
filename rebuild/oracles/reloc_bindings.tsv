@@ -29049,3 +29049,12 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?GetUsedBones@CParticleProgram@@CIXAAU?$CArray@_N@@ABU?$CArray@UC3DGroup2@@@@@Z	00ae1210	00ae15d0
 ?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@U?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAU?$CArray@UC3DGroup2@@@@@Z	00ae3920	00ae3a30
 ?__unguarded_linear_insert@std@@YIXPAU?$pair@UCCharString@@U?$CCountedPointer@UCCountedObject@@@@@1@U21@USNamedCountedEntryLess@@@Z	00cba9b0	00cbb2d0
+??4?$CRetailVector@USVectorRecord1C@@@@QAEAAU0@ABU0@@Z	006f3c20	006f4470
+??4SMember08_24@@QAEAAU0@ABU0@@Z	009fa1c0	0082cd00
+??4SMember0C_30@@QAEAAU0@ABU0@@Z	0045baaa	0082cd00
+??4SMember0C_8@@QAEAAU0@ABU0@@Z	0082c980	0082cd00
+??4SMember10_14@@QAEAAU0@ABU0@@Z	009f2e70	0082cd00
+??4SVector0C_0@@QAEAAU0@ABU0@@Z	00a80ee0	00a85740
+??4SVector0C_18@@QAEAAU0@ABU0@@Z	00a84940	00a85740
+??4SVector0C_C@@QAEAAU0@ABU0@@Z	00a83d70	00a85740
+??4?$CRetailVector@UCCompositeBlendDesc@@@@QAEAAU0@ABU0@@Z	006cade0	00bee4e0

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a5acc0	RELOCATION_MATCH	145v145	PASS	SGI __copy, pair<long, CCountedPointer> (12 B), inlined counted operator=
+00cbb120	RELOCATION_MATCH	143v143	PASS	SGI __copy, pair<unsigned __int64, CCountedPointer> (16 B); label pair<long,..> is 12 B
+00af2ba0	RELOCATION_MATCH	94v94	PASS	STLport __uninitialized_copy (ret 8), pair<CCharString, CRegisteredPSCInfo>; nested pair needed
+006f4470	RELOCATION_MATCH	97v97	PASS	SGI __copy, 28-byte {4 dwords, vector} records (vector op= 0x6F3C20)
+00819390	MATCH	92v92	PASS	SGI __copy, 24-byte POD block
+008194c0	MATCH	86v86	PASS	SGI __copy, 20-byte POD block
+0082cd00	RELOCATION_MATCH	127v127	PASS	SGI __copy, 60-byte record, four out-of-line member op=
+0085d6e0	MATCH	86v86	PASS	SGI __copy, 20-byte POD block (twin of 008194c0)
+00889650	RELOCATION_MATCH	111v111	PASS	SGI __copy, 48-byte record with a vector and a double (fld/fstp qword)
+00cb9c80	RELOCATION_MATCH	93v93	PASS	SGI __copy, pair<unsigned __int64, CPersistInfo> (label right; +0x14 padding uncopied)
+006fbc50	RELOCATION_MATCH	105v105	PASS	SGI __copy, pair<unsigned long, CSmallVector<CEvent,32>> (self-test around Copy)
+0096ba30	MATCH	81v81	PASS	STLport remove_copy_if, 12-byte points, by-value {height, tolerance} predicate
+008076d0	RELOCATION_MATCH	136v136	PASS	SGI __copy_backward, NPlayerTargeting::CTargetPoint (landed 0x806EA0 model)
+009e6410	RELOCATION_MATCH	108v108	PASS	SGI __copy_backward, pair<CCharString, CSymbolMap::CSymbolInfo> (label right)
+00af2d60	RELOCATION_MATCH	95v95	PASS	SGI __copy_backward, pair<CCharString, CRegisteredPSCInfo> (label right)
+004b78d0	RELOCATION_MATCH	90v90	PASS	SGI __copy_backward, pair<CCharString, CRuntimeQuestPersistence::CPersistInfo> (label right)
+005659d0	RELOCATION_MATCH	91v91	PASS	SGI __copy_backward, 16-byte {3 CCharString, 2 bools}; label is 12 B
+00a85740	RELOCATION_MATCH	97v97	PASS	SGI __copy_backward, 40-byte {vector, vector, CVectorMap}; empty Compare byte skipped
+0077e170	RELOCATION_MATCH	95v95	PASS	SGI __copy_backward, pair<CCharString, 12-byte POD>
+00a45910	RELOCATION_MATCH	122v122	PASS	SGI __copy_backward, {CCharString, long, 12-byte POD}
+00a6e7c0	RELOCATION_MATCH	117v117	PASS	SGI __copy_backward, pair<CCharString, 16-byte POD>
+00bee4e0	RELOCATION_MATCH	116v116	PASS	SGI __copy_backward, pair<pair<long,long>, CEngineTextureDecal> (28 B retail)
+00bee7b0	RELOCATION_MATCH	119v119	PASS	SGI __copy (forward; label says _Move_backward), pair<pair<long,long>, CEngineTextureDecal>
+006b9100	RELOCATION_MATCH	149v149	PASS	SGI __copy_backward, pair<long, CCountedPointer> (12 B; label u64 key wrong)
+00a802a0	RELOCATION_MATCH	149v149	PASS	SGI __copy_backward, pair<long, CCountedPointer> (twin of 006b9100)
+00bed9a0	RELOCATION_MATCH	133v133	PASS	SGI __copy_backward, pair<long, polymorphic {vptr, CCountedPointer}>: +4 never copied
+00cbada0	RELOCATION_MATCH	139v139	PASS	SGI __copy_backward, pair<unsigned __int64, CCountedPointer> (label right)
+0071ed80	MATCH	76v76	PASS	SGI __copy_backward, 12-byte POD block (= landed 0xADAB20)
+0071edd0	MATCH	95v95	PASS	SGI __copy_backward, 24-byte POD block
+0075b5b0	MATCH	76v76	PASS	SGI __copy_backward, 12-byte POD block (twin of 0071ed80)
+00819670	MATCH	95v95	PASS	SGI __copy_backward, 24-byte POD block
+008197b0	MATCH	89v89	PASS	SGI __copy_backward, 20-byte POD block
+0085d870	MATCH	89v89	PASS	SGI __copy_backward, 20-byte POD block
+00a31480	MATCH	89v89	PASS	SGI __copy_backward, 20-byte POD block
+00cb94d0	RELOCATION_MATCH	94v94	PASS	SGI __copy_backward, pair<unsigned __int64, CPersistInfo> (label right)
+005e0e70	MATCH	144v144	PASS	SGI __copy_backward, pair<unsigned long, CAnimationEntry>, inlined CIVCountedPointer op=
+0047c800	RELOCATION_MATCH	85v85	PASS	STLport __destroy_aux (ret 4), 24-byte {key, CCharString, long, vector<12-byte>}
+006f44e0	RELOCATION_MATCH	77v77	PASS	STLport __destroy_aux (ret 4), 28-byte {16 B, vector<{20 B, intelligent ptr}>}
+00722130	RELOCATION_MATCH	85v85	PASS	STLport __destroy_aux (ret 4), 16-byte {key, vector<{8 B, vector<long>}>}
+00cdc000	RELOCATION_MATCH	91v91	PASS	STLport __destroy_aux (ret 4), 28-byte {CCharString, 8 B, CCharString, vector<CCharString>}

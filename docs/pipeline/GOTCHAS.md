@@ -1113,3 +1113,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Check the Ego_r PDB names (egor_pdb_names.tsv) before byte-RE: they named most propagated `_Dest_val` / `_Destroy_range` rows in chunk 353.
 - STLport `CArray::Clear()` is `if (capacity()) { clear(); swap(empty); }` (00996b60).
 - On the 64-bit g++ test host `unsigned long` is 64-bit: 32-bit wrap tests need a 32-bit typedef (chunk 353).
+- Read `ret` + element stride, not a `_Move` label: `ret 0Ch` + tag = `__copy`/`__copy_backward`, `ret 8` + placement null test = `__uninitialized_copy`, `ret 0Ch` no tag = `remove_copy_if`, `ret 4` no destination = `__destroy_aux` (chunk 358).
+- pair<u64, X> is 8-aligned: a never-copied word after the key/record is alignment padding (00cb9c80); one skipped byte then one copied byte after a 12-byte member is a CVectorMap (empty Compare, Dirty) (00a85740).
+- Intrusive counted-pointer assignment `if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++count; }` with Release storing 0 inside its non-null branch gives retail's `mov ecx,[dst] ; cmp ecx,[src]` (005e0e70).
+- Retail CEngineTextureDecal is 20 bytes (00bee4e0).
