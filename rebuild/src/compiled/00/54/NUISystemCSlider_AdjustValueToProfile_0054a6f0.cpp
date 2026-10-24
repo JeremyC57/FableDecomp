@@ -11,6 +11,14 @@
 // Layout: as the landed CSlider rows (Ego_r.pdb minus 0x30): Value +0x1A4, Move +0x1AC, OldValue +0x1AD, PDefAction +0x1D4,
 //   PAcceptButton +0x1E8. CUserProfileManager retail offsets = Ego_r.pdb with 12-byte vectors (UseNewProfileValues +0xc).
 //   The def model is the landed CMenuEntry::GoForward 0x0053D720 one; the slider sound is the def's +0x19c member.
+// Switch: 0x103 is the split pivot; 0x28..0x58 go through byte index 0x0054A904 + table 0x0054A8EC = { 0x0054A782 Gamma,
+//   0x0054A741 SoundVolume, 0x0054A763 MusicVolume, 0x0054A774 HUDAlpha, 0x0054A752 DialogueVolume, default } and
+//   0x10a..0x13e through byte index 0x0054A94C + table 0x0054A938 = { 0x0054A7C1 TextureDetail, 0x0054A7DD MeshDetail,
+//   0x0054A7EB EffectsDetail, 0x0054A7CF CameraSensitivity, default }. Each getter's profile field was checked against
+//   the PDB layout (Gamma +0x1c, HUDAlpha +0x20, Sound +0x24, Music +0x28, Dialogue +0x2c, Texture +0x3c, Mesh +0x44,
+//   Effects +0x70, Camera +0x7c). The arms sit in the bytes as Sound, Dialogue, Music, HUDAlpha, Gamma, Shadow, Texture,
+//   Camera, Mesh, Effects, so the cases are written in that order (an earlier version listed them by value: same
+//   behaviour, but every jump-table slot pointed at an arm calling a different getter than retail's).
 #include <math.h>
 struct C2DVector { float X, Y; };
 struct CRGBColour {
@@ -188,16 +196,16 @@ void CSlider::AdjustValueToProfile()
     OldValue = Value;
     if (PDefAction != 0) {
         switch (PDefAction) {
-        case 0x28:  Value.X = CUserProfileManager::Get()->GetGamma(); break;
         case 0x29:  Value.X = CUserProfileManager::Get()->GetSoundVolume(); break;
+        case 0x58:  Value.X = CUserProfileManager::Get()->GetDialogueVolume(); break;
         case 0x2a:  Value.X = CUserProfileManager::Get()->GetMusicVolume(); break;
         case 0x4e:  Value.X = CUserProfileManager::Get()->GetHUDAlpha(); break;
-        case 0x58:  Value.X = CUserProfileManager::Get()->GetDialogueVolume(); break;
+        case 0x28:  Value.X = CUserProfileManager::Get()->GetGamma(); break;
         case 0x103: Value.X = CUserProfileManager::Get()->GetShadowDetail(); break;
         case 0x10a: Value.X = CUserProfileManager::Get()->GetTextureDetail(); break;
+        case 0x13e: Value.X = CUserProfileManager::Get()->GetCameraSensitivity(); break;
         case 0x12a: Value.X = CUserProfileManager::Get()->GetMeshDetail(); break;
         case 0x12b: Value.X = CUserProfileManager::Get()->GetEffectsDetail(); break;
-        case 0x13e: Value.X = CUserProfileManager::Get()->GetCameraSensitivity(); break;
         }
     }
     if (Differs(OldValue, Value)) {

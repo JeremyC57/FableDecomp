@@ -1,4 +1,4 @@
-// CV_FisticuffsClubScript::GetCutsceneName(CCharString suffix) -- returns "CS_PUNCHCLUB_<region>_" + suffix for the four punch-club regions (BS, KG, OV, BC by RelevantRegion 1..4), "An error" otherwise
+// CV_FisticuffsClubScript::GetCutsceneName(CCharString suffix) -- returns "CS_PUNCHCLUB_<region>_" + suffix for the four punch-club regions (RelevantRegion 1 BS, 2 OV, 3 BC, 4 KG), "An error" otherwise
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E8A1D0, 200 bytes + a four-entry jump table (row 224), `ret 8`
 //   (hidden CCharString result + the by-value suffix, destroyed by the callee at the shared tail).
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0, CCharString copy ctor 0x0099EC30, ~CCharString
@@ -9,6 +9,9 @@
 //   temporary; the local is never read and dies at the shared tail. VC7.1 has no NRVO, so that is a local
 //   initialised from an inline by-value getter that returns a named local (build/copy/destroy). The switch over
 //   RelevantRegion (retail +0x48 = Ego_r.pdb 92 - 0x14) is dense 1..4 -> `lea eax,[esi-1] ; cmp eax,3 ; ja`.
+// Table: 0x00E8A298 = { 0x00E8A20F BS, 0x00E8A23D OV, 0x00E8A254 BC, 0x00E8A226 KG } for regions 1..4. The arms sit in
+//   the bytes as BS, KG, OV, BC (regions 1, 4, 2, 3), so the cases are written in that order; an earlier version read
+//   the cases off the arm order and returned KG/OV/BC for regions 2/3/4.
 struct CCharString {
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -32,9 +35,9 @@ CCharString CV_FisticuffsClubScript::GetCutsceneName(CCharString suffix)
     switch (RelevantRegion)
     {
     case 1: return "CS_PUNCHCLUB_BS_" + suffix;
-    case 2: return "CS_PUNCHCLUB_KG_" + suffix;
-    case 3: return "CS_PUNCHCLUB_OV_" + suffix;
-    case 4: return "CS_PUNCHCLUB_BC_" + suffix;
+    case 4: return "CS_PUNCHCLUB_KG_" + suffix;
+    case 2: return "CS_PUNCHCLUB_OV_" + suffix;
+    case 3: return "CS_PUNCHCLUB_BC_" + suffix;
     }
     return CCharString("An error", -1);
 }

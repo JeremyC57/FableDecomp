@@ -2,7 +2,7 @@
 // followed by dependency stubs/spies and a main that asserts on the observable effects.
 // ===== candidate source =====
 // CNavQuadTreeNode::SetUpNeighboursWithLeaf(ENavQuadTreeNeighbours side, CANavQuadTreeNode* leaf) -- forward the leaf to the two
-//   children on the given side, each told the opposite side (recursive virtual call, slot 16)
+//   children that border the given side, passing the same side down (recursive virtual call, slot 16)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A75F10, 0x52 bytes of code + a 4-entry jump table (164 bytes in the oracle row);
 //   slot 16 of vtable 0x0129DCD4 = CNavQuadTreeNode (rtti-vtables.tsv). FableWin.pdb mangles the family as
 //   ?SetUpNeighboursWithLeaf@CANavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAV1@@Z (global enum, protected virtual).
@@ -11,6 +11,9 @@
 //   Blocked +0x0f; CNavQuadTreeNode TLNode +0x10, TRNode +0x14, BLNode +0x18, BRNode +0x1c. Vtable slot names come from
 //   the CNavQuadTreeNode vtable labels (rtti-vtables.tsv + manifest); unlabelled slots are VFuncNN. The enumerator
 //   names are not in the evidence, so the four sides are numbered. Local model: no engine/ header for these classes.
+// Jump table 0x00A75FA4 = { 0x00A75F85, 0x00A75F66, 0x00A75F28, 0x00A75F47 }: side 0 -> BL+BR, 1 -> TL+TR, 2 -> TR+BR,
+//   3 -> TL+BL, each child told the same side. The arms sit in the bytes as 2, 3, 1, 0, so the cases are written in that
+//   order (an earlier version read the cases off the arm order and so sent every side to the wrong children).
 enum ENavQuadTreeNeighbours { NAV_NEIGHBOUR_0 = 0, NAV_NEIGHBOUR_1 = 1, NAV_NEIGHBOUR_2 = 2, NAV_NEIGHBOUR_3 = 3 };
 struct C2DVector { float X, Y; };
 class CANavQuadTreeNode {
@@ -46,10 +49,10 @@ public:
 void CNavQuadTreeNode::SetUpNeighboursWithLeaf(ENavQuadTreeNeighbours side, CANavQuadTreeNode* leaf)
 {
     switch (side) {
-    case NAV_NEIGHBOUR_0: TRNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_2, leaf); BRNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_2, leaf); break;
-    case NAV_NEIGHBOUR_1: TLNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_3, leaf); BLNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_3, leaf); break;
-    case NAV_NEIGHBOUR_2: TLNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_1, leaf); TRNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_1, leaf); break;
-    case NAV_NEIGHBOUR_3: BLNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_0, leaf); BRNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_0, leaf); break;
+    case NAV_NEIGHBOUR_2: TRNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_2, leaf); BRNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_2, leaf); break;
+    case NAV_NEIGHBOUR_3: TLNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_3, leaf); BLNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_3, leaf); break;
+    case NAV_NEIGHBOUR_1: TLNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_1, leaf); TRNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_1, leaf); break;
+    case NAV_NEIGHBOUR_0: BLNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_0, leaf); BRNode->SetUpNeighboursWithLeaf(NAV_NEIGHBOUR_0, leaf); break;
     default: break;
     }
 }
@@ -78,8 +81,9 @@ struct TChild : CANavQuadTreeNode {
 };
 int main() {
     int ok = offsetof(CNavQuadTreeNode, TLNode) == 0x10 && offsetof(CNavQuadTreeNode, BRNode) == 0x1c && offsetof(CANavQuadTreeNode, Blocked) == 0x0f;
-    /* side -> (first child, second child, side passed down); children order TL, TR, BL, BR */
-    static const int a[4] = { 1, 0, 0, 2 }, b[4] = { 3, 2, 1, 3 }, passed[4] = { 2, 3, 1, 0 };
+    /* side -> (first child, second child, side passed down); children order TL, TR, BL, BR. From retail jump table
+       0x00A75FA4 = { 0x00A75F85 BL+BR push 0, 0x00A75F66 TL+TR push 1, 0x00A75F28 TR+BR push 2, 0x00A75F47 TL+BL push 3 } */
+    static const int a[4] = { 2, 0, 1, 0 }, b[4] = { 3, 1, 3, 2 }, passed[4] = { 0, 1, 2, 3 };
     for (int s = 0; ok && s < 5; ++s) {
         TChild c[4]; for (int i = 0; i < 4; ++i) { c[i].side = -1; c[i].leaf = 0; c[i].calls = 0; }
         CNavQuadTreeNode n; n.TLNode = &c[0]; n.TRNode = &c[1]; n.BLNode = &c[2]; n.BRNode = &c[3];

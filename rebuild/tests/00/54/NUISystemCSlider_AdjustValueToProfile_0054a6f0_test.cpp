@@ -189,16 +189,16 @@ void CSlider::AdjustValueToProfile()
     OldValue = Value;
     if (PDefAction != 0) {
         switch (PDefAction) {
-        case 0x28:  Value.X = CUserProfileManager::Get()->GetGamma(); break;
         case 0x29:  Value.X = CUserProfileManager::Get()->GetSoundVolume(); break;
+        case 0x58:  Value.X = CUserProfileManager::Get()->GetDialogueVolume(); break;
         case 0x2a:  Value.X = CUserProfileManager::Get()->GetMusicVolume(); break;
         case 0x4e:  Value.X = CUserProfileManager::Get()->GetHUDAlpha(); break;
-        case 0x58:  Value.X = CUserProfileManager::Get()->GetDialogueVolume(); break;
+        case 0x28:  Value.X = CUserProfileManager::Get()->GetGamma(); break;
         case 0x103: Value.X = CUserProfileManager::Get()->GetShadowDetail(); break;
         case 0x10a: Value.X = CUserProfileManager::Get()->GetTextureDetail(); break;
+        case 0x13e: Value.X = CUserProfileManager::Get()->GetCameraSensitivity(); break;
         case 0x12a: Value.X = CUserProfileManager::Get()->GetMeshDetail(); break;
         case 0x12b: Value.X = CUserProfileManager::Get()->GetEffectsDetail(); break;
-        case 0x13e: Value.X = CUserProfileManager::Get()->GetCameraSensitivity(); break;
         }
     }
     if (Differs(OldValue, Value)) {
@@ -253,6 +253,7 @@ int main()
     g_def.Ref.Count = 1; g_def.SliderSound.Value = 77;
     g_prof.UseNewProfileValues = false; g_prof.ShadowDetail = 0.25f; g_prof.ShadowDetailNewProfile = 0.75f;
     static CSlider s; s.Value.X = 0; s.Value.Y = 0; s.Move = false; s.PAcceptButton = 0;
+    /* true mapping from retail tables 0x0054A8EC/0x0054A904 and 0x0054A938/0x0054A94C (0x103 inline) */
     const long acts[10] = { 0x28, 0x29, 0x2a, 0x4e, 0x58, 0x10a, 0x12a, 0x12b, 0x13e, 0x103 };
     const float want[10] = { 1.5f, 3.5f, 5.5f, 2.5f, 4.5f, 7.5f, 9.5f, 8.5f, 6.5f, 0.25f };
     for (int i = 0; i < 10; ++i) {
