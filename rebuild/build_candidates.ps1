@@ -297156,6 +297156,252 @@ $catalog = @(
         TestSource = '00/87/NCameraModes_IsThemeToBlockCameraBetween_00874ee0_test.cpp'
         PassPattern = '00874ee0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008e6030'
+        Module = 'CFilter_Bind3'
+        Source = '00/8e/CFilterBind3_operator_008e6030.cpp'
+        TestSource = '00/8e/CFilterBind3_operator_008e6030_test.cpp'
+        PassPattern = '008e6030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e9080'
+        Module = 'NCreatureMode'
+        Source = '00/8e/NCreatureMode_GetAnimDistanceAndIndexFromAnimName_008e9080.cpp'
+        TestSource = '00/8e/NCreatureMode_GetAnimDistanceAndIndexFromAnimName_008e9080_test.cpp'
+        PassPattern = '008e9080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ea3f0'
+        Module = 'NCreatureMode::CModeHoverBase::CRadialArea'
+        Source = '00/8e/NCreatureModeCModeHoverBaseCRadialArea_IsPosInArea_008ea3f0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeHoverBaseCRadialArea_IsPosInArea_008ea3f0_test.cpp'
+        PassPattern = '008ea3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008eba90'
+        Module = '_STL'
+        Source = '00/8e/STL_uninitializedcopy_008eba90.cpp'
+        TestSource = '00/8e/STL_uninitializedcopy_008eba90_test.cpp'
+        PassPattern = '008eba90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ecef0'
+        Module = '_STL'
+        Source = '00/8e/STL_findif_008ecef0.cpp'
+        TestSource = '00/8e/STL_findif_008ecef0_test.cpp'
+        PassPattern = '008ecef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ed040'
+        Module = 'CTCContainer'
+        Source = '00/8e/CTCContainer_RemoveItem_008ed040.cpp'
+        TestSource = '00/8e/CTCContainer_RemoveItem_008ed040_test.cpp'
+        PassPattern = '008ed040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ed2b0'
+        Module = 'CTCContainer'
+        Source = '00/8e/CTCContainer_OnSerialise_008ed2b0.cpp'
+        TestSource = '00/8e/CTCContainer_OnSerialise_008ed2b0_test.cpp'
+        PassPattern = '008ed2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ed3b0'
+        Module = 'CCreateItemNamesFromIndices'
+        Source = '00/8e/CCreateItemNamesFromIndices_operator_008ed3b0.cpp'
+        TestSource = '00/8e/CCreateItemNamesFromIndices_operator_008ed3b0_test.cpp'
+        PassPattern = '008ed3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ed440'
+        Module = 'CCreateIndicesFromItemNames'
+        Source = '00/8e/CCreateIndicesFromItemNames_operator_008ed440.cpp'
+        TestSource = '00/8e/CCreateIndicesFromItemNames_operator_008ed440_test.cpp'
+        PassPattern = '008ed440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f02e0'
+        Module = '_STL'
+        Source = '00/8f/STL_copy_008f02e0.cpp'
+        TestSource = '00/8f/STL_copy_008f02e0_test.cpp'
+        PassPattern = '008f02e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f57f0'
+        Module = 'CCreatureAction_DragonSwoop'
+        Source = '00/8f/CCreatureActionDragonSwoop_CCreatureActionDragonSwoop_008f57f0.cpp'
+        TestSource = '00/8f/CCreatureActionDragonSwoop_CCreatureActionDragonSwoop_008f57f0_test.cpp'
+        PassPattern = '008f57f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f5b50'
+        Module = 'NPhysicsHelpers'
+        Source = '00/8f/NPhysicsHelpers_GetLineOutFromClosestPointOnFiniteLineToPoint_008f5b50.cpp'
+        TestSource = '00/8f/NPhysicsHelpers_GetLineOutFromClosestPointOnFiniteLineToPoint_008f5b50_test.cpp'
+        PassPattern = '008f5b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f5ba0'
+        Module = 'NPhysicsHelpers'
+        Source = '00/8f/NPhysicsHelpers_GetPerpendicularDistanceFromFiniteLine_008f5ba0.cpp'
+        TestSource = '00/8f/NPhysicsHelpers_GetPerpendicularDistanceFromFiniteLine_008f5ba0_test.cpp'
+        PassPattern = '008f5ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f71a0'
+        Module = 'CMap'
+        Source = '00/8f/CMap_InitThemePalette_008f71a0.cpp'
+        TestSource = '00/8f/CMap_InitThemePalette_008f71a0_test.cpp'
+        PassPattern = '008f71a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f78e0'
+        Module = 'NCombatActionHelpers'
+        Source = '00/8f/NCombatActionHelpers_GetDustCreationHelperNames_008f78e0.cpp'
+        TestSource = '00/8f/NCombatActionHelpers_GetDustCreationHelperNames_008f78e0_test.cpp'
+        PassPattern = '008f78e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f7e70'
+        Module = 'NCombatActionHelpers'
+        Source = '00/8f/NCombatActionHelpers_CreateEffect_008f7e70.cpp'
+        TestSource = '00/8f/NCombatActionHelpers_CreateEffect_008f7e70_test.cpp'
+        PassPattern = '008f7e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f7f50'
+        Module = 'NCombatActionHelpers'
+        Source = '00/8f/NCombatActionHelpers_CreateEffect_008f7f50.cpp'
+        TestSource = '00/8f/NCombatActionHelpers_CreateEffect_008f7f50_test.cpp'
+        PassPattern = '008f7f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f80d0'
+        Module = 'LHNetworkLib::LTimer'
+        Source = '00/8f/LHNetworkLibLTimer_SetSpeedUpFactor_008f80d0.cpp'
+        TestSource = '00/8f/LHNetworkLibLTimer_SetSpeedUpFactor_008f80d0_test.cpp'
+        PassPattern = '008f80d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f84a0'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '00/8f/LHNetworkLibLSocket_Think_008f84a0.cpp'
+        TestSource = '00/8f/LHNetworkLibLSocket_Think_008f84a0_test.cpp'
+        PassPattern = '008f84a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f86a0'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '00/8f/LHNetworkLibLSocket_ResolveHost_008f86a0.cpp'
+        TestSource = '00/8f/LHNetworkLibLSocket_ResolveHost_008f86a0_test.cpp'
+        PassPattern = '008f86a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f86f0'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '00/8f/LHNetworkLibLSocket_ResolveHost_008f86f0.cpp'
+        TestSource = '00/8f/LHNetworkLibLSocket_ResolveHost_008f86f0_test.cpp'
+        PassPattern = '008f86f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f87a0'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '00/8f/LHNetworkLibLSocket_CreateSocket_008f87a0.cpp'
+        TestSource = '00/8f/LHNetworkLibLSocket_CreateSocket_008f87a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '008f87a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f8830'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '00/8f/LHNetworkLibLSocket_ConvertLAddress2Sockaddr_008f8830.cpp'
+        TestSource = '00/8f/LHNetworkLibLSocket_ConvertLAddress2Sockaddr_008f8830_test.cpp'
+        PassPattern = '008f8830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f8bb0'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '00/8f/LHNetworkLibLSocket_ConvertSockaddr2LAddress_008f8bb0.cpp'
+        TestSource = '00/8f/LHNetworkLibLSocket_ConvertSockaddr2LAddress_008f8bb0_test.cpp'
+        PassPattern = '008f8bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f9ca0'
+        Module = 'LHNetworkLib::LTimer'
+        Source = '00/8f/LHNetworkLibLTimer_Stop_008f9ca0.cpp'
+        TestSource = '00/8f/LHNetworkLibLTimer_Stop_008f9ca0_test.cpp'
+        PassPattern = '008f9ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fbcb0'
+        Module = 'NCameraModes::CPhysicsForceModelBase'
+        Source = '00/8f/NCameraModesCPhysicsForceModelBase_GetPointIntersection_008fbcb0.cpp'
+        TestSource = '00/8f/NCameraModesCPhysicsForceModelBase_GetPointIntersection_008fbcb0_test.cpp'
+        PassPattern = '008fbcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fbf10'
+        Module = '_STL::list<C3DVector>'
+        Source = '00/8f/STLlistC3DVector_Minsertdispatch_008fbf10.cpp'
+        TestSource = '00/8f/STLlistC3DVector_Minsertdispatch_008fbf10_test.cpp'
+        PassPattern = '008fbf10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fca40'
+        Module = '_STL'
+        Source = '00/8f/STL_transform_008fca40.cpp'
+        TestSource = '00/8f/STL_transform_008fca40_test.cpp'
+        PassPattern = '008fca40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fcf10'
+        Module = 'CAIStateGroupBase'
+        Source = '00/8f/CAIStateGroupBase_IsRunnableMain_008fcf10.cpp'
+        TestSource = '00/8f/CAIStateGroupBase_IsRunnableMain_008fcf10_test.cpp'
+        PassPattern = '008fcf10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fd21f'
+        Module = 'CAIStateGroupInfo'
+        Source = '00/8f/CAIStateGroupInfo_CAIStateGroupInfo_008fd21f.cpp'
+        TestSource = '00/8f/CAIStateGroupInfo_CAIStateGroupInfo_008fd21f_test.cpp'
+        PassPattern = '008fd21f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009015b9'
+        Module = 'CAIStateGroup_RecoverStealableItem'
+        Source = '00/90/CAIStateGroupRecoverStealableItem_CAIStateGroupRecoverStealableItem_009015b9.cpp'
+        TestSource = '00/90/CAIStateGroupRecoverStealableItem_CAIStateGroupRecoverStealableItem_009015b9_test.cpp'
+        PassPattern = '009015b9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00901658'
+        Module = 'CAIStateGroup_CarryCrateAndFollow'
+        Source = '00/90/CAIStateGroupCarryCrateAndFollow_CAIStateGroupCarryCrateAndFollow_00901658.cpp'
+        TestSource = '00/90/CAIStateGroupCarryCrateAndFollow_CAIStateGroupCarryCrateAndFollow_00901658_test.cpp'
+        PassPattern = '00901658_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009016d9'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/90/CAIStateGroupTavernServer_CAIStateGroupTavernServer_009016d9.cpp'
+        TestSource = '00/90/CAIStateGroupTavernServer_CAIStateGroupTavernServer_009016d9_test.cpp'
+        PassPattern = '009016d9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00901783'
+        Module = 'CAIStateGroup_TavernKeeper'
+        Source = '00/90/CAIStateGroupTavernKeeper_CAIStateGroupTavernKeeper_00901783.cpp'
+        TestSource = '00/90/CAIStateGroupTavernKeeper_CAIStateGroupTavernKeeper_00901783_test.cpp'
+        PassPattern = '00901783_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00903810'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_CreateNullHandle_00903810.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_CreateNullHandle_00903810_test.cpp'
+        PassPattern = '00903810_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008e6030	RELOCATION_MATCH	146v146	PASS	CFilter_Bind3<CanCollideOrInteract,OverlappingSphere,HasTC>::operator()<CThing>; sphere operator __forceinline; 2 grades
+008e8ff0	DIFFER	135v135	-	NCreatureMode::GetStrafingAnimationName(const CThing&,EMovementType); scheduling only (physics vtable load placement); 4 grades
+008e9080	RELOCATION_MATCH	91v91	PASS	NCreatureMode::GetAnimDistanceAndIndexFromAnimName; 1 grade
+008ea3f0	RELOCATION_MATCH	230v230	PASS	NCreatureMode::CModeHoverBase::CRadialArea::IsPosInArea; radius test as block condition, normalised vector by two statements; 2 grades
+008eba90	RELOCATION_MATCH	80v80	PASS	_STL::__uninitialized_copy<CHoverState*>; 1 grade
+008ecef0	MATCH	102v102	PASS	_STL::__find_if<pair<long,CCharString>*,CIsItemWithDefIndex>; same TU as 008ed040
+008ed040	RELOCATION_MATCH	77v77	PASS	CTCContainer::RemoveItem(long); same-TU __find_if body; 2 grades
+008ed2b0	RELOCATION_MATCH	183v183	PASS	CTCContainer::OnSerialise(CPersistContext&,bool); 1 grade
+008ed3b0	RELOCATION_MATCH	129v129	PASS	CCreateItemNamesFromIndices::operator(); 3 grades
+008ed440	RELOCATION_MATCH	143v143	PASS	CCreateIndicesFromItemNames::operator(); 3 grades
+008f02e0	RELOCATION_MATCH	161v161	PASS	_STL::__copy<Coin*>; 1 grade
+008f57f0	RELOCATION_MATCH	81v81	PASS	CCreatureAction_DragonSwoop implicit copy ctor; 1 grade
+008f58c0	DIFFER	164v163	-	NPhysicsHelpers::GetLineThingSearchArea; tail only (C2DBoxI corner store order); 4 grades
+008f5b50	RELOCATION_MATCH	74v74	PASS	NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint; 2 grades
+008f5ba0	RELOCATION_MATCH	74v74	PASS	NPhysicsHelpers::GetPerpendicularDistanceFromFiniteLine; 4 grades
+008f71a0	RELOCATION_MATCH	173v173	PASS	CMap::InitThemePalette; STLport clear()+push_back, same-TU _M_insert_overflow stand-in; 1 grade
+008f7860	DIFFER	112v113	-	NCombatActionHelpers::IsToCreateCombatParticleEffects; exit layout only; 4 grades
+008f78e0	RELOCATION_MATCH	112v112	PASS	NCombatActionHelpers::GetDustCreationHelperNames; 1 grade
+008f7e70	RELOCATION_MATCH	212v212	PASS	NCombatActionHelpers::CreateEffect(CThingCreatureBase&,long,const C3DVector&,const CCharString*); polymorphic CBaseClass; 2 grades
+008f7f50	RELOCATION_MATCH	182v182	PASS	NCombatActionHelpers::CreateEffect(const CThingCreatureBase&,long,const C3DVector&,const C3DVector&); 2 grades
+008f80d0	RELOCATION_MATCH	75v75	PASS	LHNetworkLib::LTimer::SetSpeedUpFactor(float)
+008f84a0	RELOCATION_MATCH	57v57	PASS	LHNetworkLib::LSocket::Think()
+008f86a0	RELOCATION_MATCH	71v71	PASS	LHNetworkLib::LSocket::ResolveHost(const string&)
+008f86f0	RELOCATION_MATCH	162v162	PASS	LHNetworkLib::LSocket::ResolveHost(LAddress&,unsigned long&)
+008f87a0	RELOCATION_MATCH	138v138	PASS	LHNetworkLib::LSocket::CreateSocket; Flags /GS
+008f8830	RELOCATION_MATCH	62v62	PASS	LHNetworkLib::LSocket::ConvertLAddress2Sockaddr
+008f8bb0	RELOCATION_MATCH	71v71	PASS	LHNetworkLib::LSocket::ConvertSockaddr2LAddress
+008f99a0	DIFFER	207v207	-	LHNetworkLib::LSocket::Receive(vector<char>&); scheduling only (string-local stores vs pushes)
+008f9ca0	RELOCATION_MATCH	82v82	PASS	LHNetworkLib::LTimer::Stop()
+008fa9f0	DIFFER	132v133	-	NCameraModes::CPhysicsCollisionPointsObject::GetPointsList; loop rotation; 4 grades
+008fbcb0	RELOCATION_MATCH	108v108	PASS	NCameraModes::CPhysicsForceModelBase::GetPointIntersection
+008fbf10	RELOCATION_MATCH	78v78	PASS	_STL::list<C3DVector>::_M_insert_dispatch; 1 grade
+008fca40	RELOCATION_MATCH	193v193	PASS	_STL::transform<list<const CThing*>::iterator,back_insert_iterator<list<CPhysicsMeshObject>>,CGetMeshObject>; STLport 4.6 iterator base; 3 grades
+008fcf10	MATCH	22v22	PASS	CAIStateGroupBase::IsRunnableMain()
+008fd21f	RELOCATION_MATCH	35v35	PASS	CAIStateGroupInfo::CAIStateGroupInfo; pragma optimize("s")
+009015b9	RELOCATION_MATCH	71v71	PASS	CAIStateGroup_RecoverStealableItem ctor; pragma optimize("s")
+00901658	RELOCATION_MATCH	63v63	PASS	CAIStateGroup_CarryCrateAndFollow ctor; pragma optimize("s")
+009016d9	RELOCATION_MATCH	91v91	PASS	CAIStateGroup_TavernServer ctor; pragma optimize("s")
+00901783	RELOCATION_MATCH	83v83	PASS	CAIStateGroup_TavernKeeper ctor; pragma optimize("s")
+00903810	RELOCATION_MATCH	178v178	PASS	CScriptGameResourceObjectScriptedThing::CreateNullHandle; 1 grade

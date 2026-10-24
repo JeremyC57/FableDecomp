@@ -1315,3 +1315,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `__false_type` and the STLport iterator tags need a user constructor, or VC zero-stores the tag (0x86B900); with /OPT:ICF name a shared body after its callers' element type (0x86AC40, 0x86CC50).
 - A template CDefPointer `operator->` gives `add eax,0D0h; mov eax,[eax]`; a plain pointer member gives `mov eax,[eax+0D0h]` (0x864FF0).
 - `while (--i != -1)` gives `dec; cmp -1`; `while (i--)` swaps registers (0x870C90); a `C3DVector offset(dx,dy,0)` local, not two floats, fixes frame size and slot reuse (0x871D50).
+- CBaseClass must be polymorphic, otherwise the base lands at +4 and callers get `lea ecx,[x+4]` (0x8F7E70); a named-result `operator-` stores X first, `return C3DVector(...)` computes Z first (0x8F5B50).
+- A same-TU `__find_if` body lets VC cache `end()` across the call (0x8ED040); the CAIStateGroup ctors need `#pragma optimize("s")` (0x8FCF10 family).
+- The double 2π pool constant comes from `angle * (double)TWO_PI` with `static const float TWO_PI = 6.2831855f` (0x8EA3F0).
