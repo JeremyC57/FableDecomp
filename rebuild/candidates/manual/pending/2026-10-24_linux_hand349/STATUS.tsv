@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00d34ec0	RELOCATION_MATCH	37v37	PASS	_Construct: CDefClassBase-derived def with a byte vector at +0x28
+008eba50	RELOCATION_MATCH	53v53	PASS	_Construct pair<CCharString,CContainedBank>; value members modelled flat
+009aa520	RELOCATION_MATCH	53v53	PASS	_Construct pair<CCharString,CContainedBank> (20-byte POD value)
+007aca30	RELOCATION_MATCH	25v25	PASS	_Construct pair<CCharString,bool>
+004e9c39	RELOCATION_MATCH	42v42	PASS	_Construct CShopItemDef; size TU, __forceinline copy ctor
+0071f4e0	RELOCATION_MATCH	38v38	PASS	_Construct pair<CCharString,pair<long,CDateAndTime>>; inner pair user copy
+004cc3c0	RELOCATION_MATCH	45v45	PASS	_Construct pair<CIntelligentPointer<CThing>,CTCBase*>
+006a30d0	RELOCATION_MATCH	45v45	PASS	_Construct pair<CIntelligentPointer<CThingObject>,bool>
+007ca600	RELOCATION_MATCH	45v45	PASS	_Construct pair<CIntelligentPointer<CThingObject>,bool> (vtable 0x125A858)
+00748a00	RELOCATION_MATCH	51v51	PASS	_Construct pair<CIntelligentPointer<const CThing>,CDangerStatus>
+005b1b20	DIFFER	21v21	-	_Construct pair<CEntry,float>; last word through edx not eax
+00a60950	RELOCATION_MATCH	32v32	PASS	_Construct pair<CWideString,CChecksumCacheFile::CEntry>
+00a6ee90	DIFFER	73v68	-	_Uninit_fill_n of 0x38-byte CCharString records; loop register allocation
+005bd328	RELOCATION_MATCH	20v20	PASS	CTCInventoryBase::GetNumberOfSlotsInCategory (label wrong)
+00643a8e	RELOCATION_MATCH	28v28	PASS	unreferenced (long)(byte*scale+0x2A0) helper (label wrong)
+00c1ba20	RELOCATION_MATCH	24v24	PASS	EncodeFixed16 fixed-point encoder (label wrong)
+00769270	RELOCATION_MATCH	41v41	PASS	_Construct pair<long,NProfileTimer::CProfilingInfo>
+00812840	RELOCATION_MATCH	79v79	PASS	pair<const u64,CGroupMemberData> converting ctor
+00813280	RELOCATION_MATCH	80v80	PASS	make_pair<u64,CGroupMemberData> (label wrong)
+008132d0	RELOCATION_MATCH	79v79	PASS	pair<const u64,CGroupMemberData> converting ctor (twin of 00812840)
+0098f350	RELOCATION_MATCH	19v19	PASS	CThreadedFile::AddObject forwarder (label wrong)
+0047c250	RELOCATION_MATCH	47v47	PASS	_Construct pair<ulong,CDefClassInfo>; value members modelled flat
+004cfd40	MATCH	56v56	PASS	__unguarded_linear_insert float-keyed 28-byte records, less (label wrong)
+0067e550	MATCH	56v56	PASS	__unguarded_linear_insert CDegradableInfo, CIsHealth1GTHealth2 (label wrong)
+004cfcb0	MATCH	49v49	PASS	__unguarded_linear_insert 8-byte float-keyed pairs (label wrong)
+00526fe0	RELOCATION_MATCH	81v81	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+0086d5e0	RELOCATION_MATCH	88v88	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+00a821c0	RELOCATION_MATCH	70v70	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+0051c710	RELOCATION_MATCH	79v79	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+006b6250	RELOCATION_MATCH	88v88	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+0075f0e0	RELOCATION_MATCH	72v72	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+008898c0	RELOCATION_MATCH	73v73	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+00a74d90	RELOCATION_MATCH	66v66	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+00ad6360	RELOCATION_MATCH	93v93	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+00ad6ff0	RELOCATION_MATCH	91v91	PASS	SGI __copy forward (label says copy_backward)
+00ad7120	RELOCATION_MATCH	88v88	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+0052b640	RELOCATION_MATCH	91v91	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+00623390	RELOCATION_MATCH	138v138	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+00a37a80	RELOCATION_MATCH	103v103	PASS	SGI __copy_backward, memberwise/out-of-line element operator=
+00a3fe60	RELOCATION_MATCH	84v84	PASS	SGI __copy_backward, memberwise/out-of-line element operator=

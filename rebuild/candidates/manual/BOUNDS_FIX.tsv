@@ -1,0 +1,90 @@
+address	pool	module	name	length	class	action	new_length	evidence
+0040128a	family3+	_global	_amsg_exit	12	OVERLONG	skip	12	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00bfefa4	family3+	_global	__security_error_handler	12	OVERLONG	skip	12	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00bfefe0	family3+	_global	D3DXMatrixInverse	12	OVERLONG	skip	12	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00c13840	small	_global	StdVector_ThrowTooLongException	142	OVERLONG	len	112	overlong: next body at 00c138c0 (+128, unlisted, refs=none)
+00c138f0	small	_global	StdVector_ThrowTooLongExceptionVariant	142	OVERLONG	len	112	overlong: next body at 00c13970 (+128, unlisted, refs=none)
+00401067	small	_global	entry	511	OK	skip	511	scanner unsure: gap_nonfill
+00415640	small	_global	GetUIGraphics	496	OVERLONG	len	471	overlong: next body at 00415820 (+480, unlisted, refs=none)
+004199c0	small	_global	HeroAbility_StringToID	731	MIDSTART	skip	731	not a function start: inside 00419880 (?, extent 1051, reaches 004199c0 by straddle)
+004c2c00	small	_global	_Copy_impl<CNavigationPosition*,CNavigationPosition*>	112	OK	skip	112	scanner unsure: gap_nonfill
+004ddaa4	class	CTCTargetingAI	CTCTargetingAI::vfunc_10	16	OVERLONG	len	5	overlong: next body at 004ddaa9 (+5, unlisted, refs=data_.rdata:1)
+004e0adc	class	CTCGatherPointBase	CTCGatherPointBase::vfunc_6	12	OVERLONG	len	5	overlong: next body at 004e0ae1 (+5, unlisted, refs=data_.rdata:3)
+005239cd	small	_global	CThingDeadCreature_SavePersistentState	371	MIDSTART	skip	371	not a function start: inside 005239c0 (Thing_SavePersistentState, extent 379, reaches 005239cd by fallthrough)
+00537e70	small	_global	ContainerUI_HandleMouseInput	955	MIDSTART	skip	955	not a function start: inside 005379f5 (NUISystem::CList::vfunc_185, extent 2102, reaches 00537e70 by fallthrough)
+00548790	small	_global	CEditControlCentre_DispatchPropertySetByEnum	960	OVERLONG	len	852	overlong: next body at 00548af0 (+864, unlisted, refs=data_.rdata:1)
+0054ac90	small	NUISystem::CSlider	NUISystem::CSlider::vfunc_1	1744	OVERLONG	len	1454	overlong: next body at 0054b240 (+1456, unlisted, refs=data_.rdata:1)
+005672d0	small	std::string	std::string::string	128	OVERLONG	len	89	overlong: next body at 00567330 (+96, unlisted, refs=none)
+00568f10	small	_global	ElectrocutedEffect_FillFromRange	176	OVERLONG	len	142	overlong: next body at 00568fa0 (+144, unlisted, refs=none)
+0074b77c	small	_global	CTCCreatureGenerator_SpawnInArea	388	MIDSTART	skip	388	not a function start: inside 0074b770 (InitialiseCreatureGenerator, extent 395, reaches 0074b77c by fallthrough)
+007891f2	class	CTCTrapBase	CTCTrapBase::vfunc_10	6	OVERLONG	len	5	overlong: next body at 007891f7 (+5, unlisted, refs=data_.rdata:2)
+007fac80	small	_global	std_introsort_Quicksort	436	TRUNCATED	len	468	truncated: cold arm after ret is reached from inside; scanner extent 468
+0080bd30	small	_global	std_introsort_TargetPointHeapsort	700	TRUNCATED	len	738	truncated: cold arm after ret is reached from inside; scanner extent 738
+0083f650	small	_global	ProcessTextWithRegex	467	OVERLONG	len	442	overlong: next body at 0083f810 (+448, unlisted, refs=none)
+0084fdb0	small	NCameraModes::CCameraPointModeBase	NCameraModes::CCameraPointModeBase::vfunc_22	992	OVERLONG	len	15	overlong: next body at 0084fdc0 (+16, unlisted, refs=data_.rdata:5)
+008edff0	class	CWillButtonHelperTimer	CWillButtonHelperTimer	1456	OVERLONG	len	1201	overlong: next body at 008ee4b0 (+1216, unlisted, refs=none)
+008f8f50	small	LSocket	LSocket::Send	927	TRUNCATED	keep	927	row ends at its own catch/SEH funclet (funclet convention)
+008f92fd	gapscan	_gapscan	sub_008f92fd	35	MIDSTART	skip	35	not a function start: inside 008f8f50 (LSocket::Send, extent 970, reaches 008f92fd by branch)
+00927740	small	_global	_Med3<CIntelligentPointer<CThing_const_>*,bool_(__fastcall*)(CIntelligentPointer<class_CThing_const_>,CIntelligentPointer<class_CThing_const_>)>	139	TRUNCATED	len	199	truncated: cold arm after ret is reached from inside; scanner extent 199
+009277cb	small	_Tree<std::_Tmap_traits<long,CCharString,std::less<long>,std::allocator<std	_Tree<std::_Tmap_traits<long,CCharString,std::less<long>,std::allocator<std::pair<long_const_,CCharString>_>,0>_>	69	MIDSTART	skip	69	not a function start: inside 00927740 (_Med3<CIntelligentPointer<CThing_const_>*,bool_(__fastcall*)(CIntelligentPointer<class_CThing_const_>,CIntelligentPointer<class_CThing_const_>)>, extent 199, reaches 009277cb by branch)
+0099c670	small	_global	CCharString_AllocStringData	120	OVERLONG	len	97	overlong: next body at 0099c6e0 (+112, unlisted, refs=none)
+0099ca70	small	_global	WideString_Allocate	144	OVERLONG	len	117	overlong: next body at 0099caf0 (+128, unlisted, refs=none)
+0099cb00	small	_global	std_vector_resize	183	OVERLONG	len	144	overlong: next body at 0099cba0 (+160, unlisted, refs=none)
+0099cc80	small	_global	CTCElectrocutedEffect_PushEffect	170	OVERLONG	len	140	overlong: next body at 0099cd10 (+144, unlisted, refs=none)
+009a5020	small	_global	CTCInventoryBase_ExceptionHandler	592	OVERLONG	len	496	overlong: next body at 009a5210 (+496, unlisted, refs=none)
+009cf2f4	funclet	_global	Catch@009cf2f4	99	OVERLONG	len	93	overlong: NOTE 009cec60's scan reaches it (after_call) but it has call/push/data refs: treated as an entry
+00a0f4b0	small	_global	RenderList_ProcessLargeInsert	570	TRUNCATED	len	1462	truncated: cold arm after ret is reached from inside; scanner extent 1462
+00a0f6ea	small	_global	Deque_InsertRange	220	MIDSTART	skip	220	not a function start: inside 00a0f4b0 (RenderList_ProcessLargeInsert, extent 1462, reaches 00a0f6ea by branch)
+00a0f98b	small	_global	Deque_InsertRangeReverse	219	MIDSTART	skip	219	not a function start: inside 00a0f4b0 (RenderList_ProcessLargeInsert, extent 1462, reaches 00a0f98b by branch)
+00a446a0	small	_global	ThreadEntry	46	TRUNCATED	skip	46	extent unreliable (runaway or tailcall chain): xrefs=imm_text:2; starts inside: 00a446ce,00a446f4(L),00a446fa,00a44719; code=15
+00a446ce	small	_global	NScript_CIngredientOwner_RunThread	38	MIDSTART	skip	38	not a function start: inside 00a446a0 (ThreadEntry, extent 158, reaches 00a446ce by branch)
+00a44719	small	_global	NScript_MicroThread_Idle	39	MIDSTART	skip	39	not a function start: inside 00a446a0 (ThreadEntry, extent 158, reaches 00a44719 by branch)
+00a46530	small	_global	Vector_InsertConditionalShift_Decal	100	TRUNCATED	len	169	truncated: cold arm after ret is reached from inside; scanner extent 169
+00a46594	small	_global	GetDefaultVal<CObjectAugmentationParticleSet>	69	MIDSTART	skip	69	not a function start: inside 00a46530 (Vector_InsertConditionalShift_Decal, extent 169, reaches 00a46594 by branch)
+00aad650	class	CWaveLoader	LoadWaveFile	1600	OVERLONG	len	1574	overlong: next body at 00aadc80 (+1584, unlisted, refs=none)
+00b0f6f0	small	_global	NParticleEngine_CDecal_SetRandomAcceleration	128	OVERLONG	len	65	overlong: next body at 00b0f740 (+80, unlisted, refs=none)
+00bfe94c	small	_global	wcscmp	112	OVERLONG	skip	112	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00bfedd0	small	_global	vsprintf	18	OVERLONG	skip	18	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00bfeea9	gapscan	_gapscan	sub_00bfeea9	47	OK	skip	47	scanner unsure: gap_nonfill
+00bfef38	small	type_info	~type_info	108	OVERLONG	skip	108	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00c003ec	small	_global	__WSAFDIsSet	532	OVERLONG	skip	532	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00c064d0	small	_global	inflate_table	1280	OK	skip	1280	scanner unsure: gap_nonfill
+00c069d0	small	_global	LZSS_Decompress	448	OK	skip	448	scanner unsure: gap_nonfill
+00c088b0	gapscan	_gapscan	sub_00c088b0	32	OVERLONG	len	7	overlong: next body at 00c088c0 (+16, unlisted, refs=data_.rdata:1)
+00c0bf9b	small	_global	CCharString_CopyRange_FromOffset	69	MIDSTART	skip	69	not a function start: inside 00c0bf90 (CCharString_AllocFromSize, extent 78, reaches 00c0bf9b by fallthrough)
+00c0d1b0	small	_global	CCharString_FormatVarArgs	1424	OVERLONG	len	1346	overlong: next body at 00c0d700 (+1360, unlisted, refs=none)
+00c1d500	small	_global	Jenkins_HashBuffer	640	OVERLONG	len	532	overlong: next body at 00c1d720 (+544, unlisted, refs=none)
+00c20f60	small	_global	Weapon_IncrementSlotCounter	224	OVERLONG	len	100	overlong: next body at 00c20fd0 (+112, unlisted, refs=data_.rdata:1)
+00c21040	small	_global	Thiscall_CombatActionDebugFormat	752	OVERLONG	len	684	overlong: next body at 00c212f0 (+688, unlisted, refs=data_.rdata:1)
+00c28dc0	small	_global	std_vector_RaiseOverflowException	144	OVERLONG	len	112	overlong: next body at 00c28e40 (+128, unlisted, refs=none)
+00c28e50	small	_global	std_vector_RaiseOverflowException	133	OVERLONG	len	112	overlong: next body at 00c28ed0 (+128, unlisted, refs=none)
+00c298d0	small	_global	std_vector_InsertRange	352	TRUNCATED	keep	352	row ends at its own catch/SEH funclet (funclet convention)
+00c29a3c	funclet	_global	Catch@00c29a3c	180	MIDSTART	skip	180	not a function start: inside 00c29a30 (Catch@00c29a30, extent 21, reaches 00c29a3c by fallthrough)
+00c29dc0	gapscan	_gapscan	sub_00c29dc0	240	OVERLONG	len	8	overlong: next body at 00c29dd0 (+16, unlisted, refs=data_.rdata:1)
+00c35460	gapscan	_gapscan	sub_00c35460	64	OVERLONG	len	5	overlong: next body at 00c35470 (+16, unlisted, refs=data_.rdata:1)
+00c3c4b0	gapscan	_gapscan	sub_00c3c4b0	48	OVERLONG	len	18	overlong: next body at 00c3c4d0 (+32, unlisted, refs=data_.rdata:2)
+00c51a20	small	_global	PropertySerializer_WriteProperty	1248	OVERLONG	len	1164	overlong: next body at 00c51eb0 (+1168, unlisted, refs=none)
+00c57490	gapscan	_gapscan	sub_00c57490	32	OVERLONG	len	5	overlong: next body at 00c574a0 (+16, unlisted, refs=data_.rdata:2)
+00c5c980	small	_global	Direction_MapBitmaskToIndex	224	OVERLONG	len	124	overlong: next body at 00c5ca00 (+128, unlisted, refs=data_.rdata:1)
+00c5ee20	gapscan	_gapscan	sub_00c5ee20	48	OVERLONG	len	5	overlong: next body at 00c5ee30 (+16, unlisted, refs=data_.rdata:1)
+00c5fa50	small	_global	Audio_EncodeAdpcmWithBestStepIndex	1280	OVERLONG	len	1244	overlong: next body at 00c5ff30 (+1248, unlisted, refs=none)
+00c60ff0	small	_global	CTCHeroStats_ProcessEventData	1568	OVERLONG	len	1417	overlong: next body at 00c61580 (+1424, unlisted, refs=none)
+00c68f90	small	_global	CDrawGuildSeal_SetPropertyEx	1744	OVERLONG	len	1552	overlong: next body at 00c695a0 (+1552, unlisted, refs=none)
+00c6b5d0	small	_global	Math_ConvertFloatsToIntegers	219	OK	skip	219	scanner unsure: gap_nonfill
+00ca5200	gapscan	_gapscan	sub_00ca5200	160	OVERLONG	len	14	overlong: next body at 00ca5210 (+16, unlisted, refs=data_.rdata:1)
+00ca5610	small	_global	Audio_UpdateFrameTimings	208	OVERLONG	len	127	overlong: next body at 00ca5690 (+128, unlisted, refs=data_.rdata:2)
+00ca62d0	gapscan	_gapscan	sub_00ca62d0	160	OVERLONG	len	15	overlong: next body at 00ca62e0 (+16, unlisted, refs=data_.rdata:1,jmp:1)
+00ca7d60	gapscan	_gapscan	sub_00ca7d60	96	OVERLONG	len	20	overlong: next body at 00ca7d80 (+32, unlisted, refs=data_.rdata:2)
+00ca9710	small	_global	Thunk_VirtualMethod_2	272	OVERLONG	len	16	overlong: next body at 00ca9720 (+16, unlisted, refs=none)
+00caa470	gapscan	_gapscan	sub_00caa470	48	OVERLONG	len	15	overlong: next body at 00caa480 (+16, unlisted, refs=data_.rdata:1)
+00caf430	gapscan	_gapscan	sub_00caf430	80	OVERLONG	len	15	overlong: next body at 00caf440 (+16, unlisted, refs=data_.rdata:1)
+00cafc40	gapscan	_gapscan	sub_00cafc40	128	OVERLONG	len	15	overlong: next body at 00cafc50 (+16, unlisted, refs=data_.rdata:2,jmp:1)
+00cb0c10	small	_global	timeSetEvent	144	OVERLONG	skip	144	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00cb5564	small	_global	ImmAssociateContext	30	OVERLONG	skip	30	row is a 6-byte import thunk (jmp [IAT]) plus an unlisted body
+00cbfb7d	small	_global	RunCutsceneMacro_Func	1968	TRUNCATED	skip	1968	extent unreliable (runaway or tailcall chain): xrefs=call:357; code=74778 tab=0 gap=0/0
+00cdf120	gapscan	_gapscan	sub_00cdf120	64	OVERLONG	len	11	overlong: next body at 00cdf130 (+16, unlisted, refs=data_.rdata:1)
+00ce1090	gapscan	_gapscan	sub_00ce1090	32	OVERLONG	len	13	overlong: next body at 00ce10a0 (+16, unlisted, refs=data_.rdata:121)
+00d6bb91	small	_global	Quest_EnemyGuard_Monitor	655	MIDSTART	skip	655	not a function start: inside 00d6bb80 (SpawnEnemies, extent 662, reaches 00d6bb91 by fallthrough)
+00f29f60	gapscan	_gapscan	sub_00f29f60	64	OVERLONG	len	5	overlong: next body at 00f29f70 (+16, unlisted, refs=jmp:1)
+00f29ff0	gapscan	_gapscan	sub_00f29ff0	224	OVERLONG	len	5	overlong: next body at 00f2a000 (+16, unlisted, refs=jmp:1)
+00f3fb96	small	_global	`eh_vector_constructor_iterator'	74	TRUNCATED	keep	74	row ends at its own catch/SEH funclet (funclet convention)

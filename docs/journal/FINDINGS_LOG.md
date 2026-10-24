@@ -461,3 +461,12 @@ Symbol collision (open): `?AddActionOnLeftClicked@CFrontEndScreen@NUISystem@@...
 Chunk 342: pool row 0x00644263 (75 B) is three back-to-back 25-byte functions, CDrawMoney / CDrawRenown / CDrawMorality::ClearPrimitivesIfNecessary at 0x00644263 / 0x0064427C / 0x00644295 (vtables 0x0125A544/50/5C slot 0); re-cut to 25 and add the other two starts via boundary-starts.tsv when worked.
 Chunk 345: pool row 0x00462FAC (56 B) is a 5-byte `jmp 0x00462FB1` thunk plus an unlisted 51-byte CUILocaleGraphicsDef::operator= at 0x00462FB1 (same split as landed CBrainDef 0x00462B10/15). Landed-name errors: 0x0042ABCA is `list<CComponent*>::~list` (landed as CActiveFile::OnReadFinished); 0x0042B687 is `list<long>::push_back` (landed as LinkedList_PushFront); landed 0x00C4AA40 writes `.\\PKCBufferedReader.cpp` with two backslashes where retail has one (the grader masks string literals).
 Chunk 348: landed CIME_Initialise_00405650.cpp declares 0x004051C0 as `NativeCIME::Reset()`; that body is `CIME::Shutdown()` (now landed under its PDB name) -- rename the declaration.
+
+## 2026-10-24 -- uncut-pool bounds audit (13,011 uncut rows)
+Extent scanner over every row not landed and not yet cut: small pool 17-240 B is 4,598 OK, 19 OVERLONG, 7 MIDSTART, 4 TRUNCATED; 241-2048 B adds 15/5/6. The bad rows fall into four patterns:
+overlong rows that run past a `ret`/noreturn throw call into an unlisted next function (StdVector_Throw*, CCharString_AllocStringData, switch functions whose table is followed by another body);
+6-byte `jmp [IAT]` import thunks labelled with a CRT/Win32 name plus an unrelated body (wcscmp 00bfe94c, vsprintf, __WSAFDIsSet, timeSetEvent, ImmAssociateContext, ~type_info);
+truncated rows whose cold `je` arm sits after the `ret` and got its own bogus label (007fac80/007fae34, 0080bd30/0080bfec, 00927740/009277cb "_Tree", 00a46530/00a46594, 00a0f4b0/00a0f6ea+00a0f98b);
+fallthrough entries inside another function (005239cd, 0074b77c, 00c0bf9b, 00d6bb91, 00537e70).
+89 rows recorded in rebuild/candidates/manual/BOUNDS_FIX.tsv (skip / len); mkchunk.py now applies it. Open: the unlisted next bodies (~40) are real functions without manifest starts; RunCutsceneMacro_Func 00cbfb7d (scanner runaway, 74 KB) and the ThreadEntry/RunThread/Idle tailcall chain 00a446a0 need a manual bounds look.
+Chunk 347: 0x009D3750 reuses the local CBankFile model of 0x009D2FC0 (engine/CBankFile.h disagrees with the bytes); the sound-bank record's three out-of-line members are landed under unrelated names (0x009922F0, 0x00992630, 0x00992510).

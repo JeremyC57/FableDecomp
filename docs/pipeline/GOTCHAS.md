@@ -1071,3 +1071,11 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport `_Construct` instances are `void __fastcall _Construct(T* p, const T& v) { if (p) new (p) T(v); }`, each wrapped in `namespace N<addr>` so identical instances keep one symbol per address (chunk 348).
 - VC7.1 /O2 calls an implicit copy ctor out of line once a record has ~3 non-trivial members or a long scalar run; a `__forceinline` memberwise copy ctor restores retail's inline body (a plain user copy ctor is still not inlined). A trivially copyable 0x30-byte record copies with `rep movsd`; retail's unrolled mov chain needs a non-trivial memberwise copy (chunk 348).
 - Retail STLport vector/CArray members are 12 bytes, not the PDB's 16; CVectorMap = vector base + empty Compare at +0xC + bool Dirty at +0xD (00a85360).
+- `_Cons_val<allocator<pair<...>>>` rows are usually STLport `_Construct`: `new (p) T(v)` in a /Gr TU gives retail's `test reg,reg ; je` null test (chunk 349).
+- `(long)(x * 65535.0f * 0.0001f)` folds the two literals into one fmul even under /Op; a named local for the first product keeps two (00c1ba20).
+- A greater-than float comparator compiles to `test ah,41h ; jne`, a less-than one to `test ah,5 ; jp` (chunk 349).
+- `pair<long, 40-byte POD>` copied as `mov [eax],ecx ; lea edi,[eax+4] ; rep movsd` reproduces via STLport's explicit pair copy ctor inside `__uninitialized_copy` (00673d30, plain MATCH).
+- A copy ctor whose base ctor + vtable store come before the dword copies and Get/SetPItem after them is `T(const T& o) { *this = o; }` (006c5460).
+- `push N ; call malloc ; lea r,[eax+8] ; test r,r` with the caller linking node+0/+4 is STLport `list::_M_create_node` (chunk 347).
+- Placement `operator new(unsigned, void*)` must stay at global scope; a namespaced one fails C2660 (chunk 347).
+- Uncut-pool rows are bounds-checked before cutting: `mkchunk.py` applies `rebuild/candidates/manual/BOUNDS_FIX.tsv` (skip mid-starts, import thunks and runaway extents; cut overlong/truncated rows to the scanner extent). Regenerate it with the scanner when the pool changes.

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0088ca20	RELOCATION_MATCH	106v106	PASS	long key, GREATER comparator (label float wrong)
+00593e3e	RELOCATION_MATCH	125v125	PASS	/Os TU, out-of-line pair copy/assign/dtor + comparator
+006a3300	RELOCATION_MATCH	218v218	PASS	pair<long,CIntelligentPointer<CThing>>
+00992b80	RELOCATION_MATCH	184v184	PASS	36-byte pair<long,CSoundBankRecord> (label EHeroAbility wrong)
+00ae5fb0	RELOCATION_MATCH	122v122	PASS	pair<long,ulong> lexicographic operator<
+00a7f0f0	RELOCATION_MATCH	172v172	PASS	(unsigned __int64 key, bool) (label CEngineTextureDecal wrong)
+00a7f1a0	RELOCATION_MATCH	172v172	PASS	(unsigned __int64 key, dword) (label wrong)
+00769d50	RELOCATION_MATCH	169v169	PASS	16-byte (ulong, C3DVector w/ user copy ctor) (label 20-byte pair wrong)
+00a32440	RELOCATION_MATCH	187v187	PASS	pair<ulong,C3DHelperPoint>
+004c2c70	RELOCATION_MATCH	150v150	PASS	NGraphicAppearance::CMeshInfo + CSortPrimaryMeshesFirst (label wrong)
+004c2d10	RELOCATION_MATCH	152v152	PASS	CMeshInfo + CSortPrimaryMeshesLast (label wrong)
+0076a4e0	RELOCATION_MATCH	169v169	PASS	pair<ulong,CParticleUpdateParamDesc> (label CTextureMorph wrong)
+006fbd60	RELOCATION_MATCH	209v209	PASS	pair<ulong,CSmallVector<CEvent,32>>
+0073d7c0	RELOCATION_MATCH	106v106	PASS	8-byte (ulong,dword) unsigned less
+009b2ff0	RELOCATION_MATCH	106v106	PASS	8-byte (ulong,dword) unsigned less
+009b3060	RELOCATION_MATCH	106v106	PASS	8-byte (ulong,dword) unsigned less
+00b852f0	RELOCATION_MATCH	98v98	PASS	8-byte POD pair (no copy ctor) pushed by dwords
+00a6b4f0	RELOCATION_MATCH	122v122	PASS	pair<ulong,ulong> lexicographic operator<
+009d3750	RELOCATION_MATCH	186v186	PASS	CBankFile::CompareDataOffset, retail bank model of landed 0x009D2FC0
+004aa030	RELOCATION_MATCH	39v39	PASS	placement copy of CIntelligentPointer
+00511f50	RELOCATION_MATCH	39v39	PASS	placement copy of CIntelligentPointer (vt 0x0123E7E0)
+005bac52	RELOCATION_MATCH	33v33	PASS	really list::_M_create_node (CDefPointer), /Os
+006c5460	RELOCATION_MATCH	77v77	PASS	really CWitnessesSearchingDeed copy ctor (default ptr + *this = other)
+0074cc90	RELOCATION_MATCH	39v39	PASS	placement copy of CIntelligentPointer (vt 0x0123E7D8)
+00769040	RELOCATION_MATCH	79v79	PASS	really AttackParticleAndEndPoints copy ctor
+007696a0	RELOCATION_MATCH	49v49	PASS	placement copy of ParticleAndEndPoints
+00786d60	RELOCATION_MATCH	35v35	PASS	placement copy of {long,CCharString,long} (label CNavRegion wrong)
+009bde00	RELOCATION_MATCH	74v74	PASS	really CSubTitle copy ctor
+009c6640	RELOCATION_MATCH	33v33	PASS	really a counted-pointer deleter (two CWideStrings)
+009ea2e0	RELOCATION_MATCH	50v50	PASS	really CConsoleCommandLine copy ctor
+009edfe0	RELOCATION_MATCH	61v61	PASS	placement copy of polymorphic CGenericVar
+009ee180	RELOCATION_MATCH	48v48	PASS	placement copy of CConsoleCommandLine
+00a31e70	RELOCATION_MATCH	52v52	PASS	placement copy of C3DGeneratorObject (rep movsd block)
+00a31f20	RELOCATION_MATCH	82v82	PASS	really std::__uninitialized_fill_n<C3DGeneratorObject>
+00a49b70	RELOCATION_MATCH	43v43	PASS	placement copy of CLipSyncPhonemeSample
+00a53520	RELOCATION_MATCH	39v39	PASS	placement copy of CIntelligentPointer (vt 0x0129D50C)
+00c969b0	DIFFER	23v17	-	KISS-FFT-style factor step; LTCG custom eax/edx/ecx args -- lane gap
+00ca1750	RELOCATION_MATCH	30v30	PASS	really zero-and-free of a 0x460 block (label wrong)
+00578f1a	RELOCATION_MATCH	31v31	PASS	really list::_M_create_node (28-byte POD), /Os
+00673d30	MATCH	57v57	PASS	really std::__uninitialized_copy of pair<long,40-byte POD>

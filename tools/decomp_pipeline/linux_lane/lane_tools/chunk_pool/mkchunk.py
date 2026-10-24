@@ -20,10 +20,31 @@ if os.path.exists(HIST): used|={l.split('\t')[1] for l in open(HIST).read().spli
 for i in range(N):
     p=f'{S}/w22/chunk{i:02d}.tsv'
     if os.path.exists(p): used|={l.split('\t')[0] for l in open(p).read().splitlines()[1:]}
+# rows the bounds scanner found cut wrong (rebuild/candidates/manual/BOUNDS_FIX.tsv, from $S/bounds/uncut.py):
+# skip = not a real start (mid-function arm, fallthrough entry, import thunk, unreliable extent);
+# len = cut to the scanner extent (overlong rows that run into the next function, truncated rows whose cold arms sit after the ret)
+FIX='rebuild/candidates/manual/BOUNDS_FIX.tsv'
+fix={}
+if os.path.exists(FIX):
+    for l in open(FIX).read().splitlines()[1:]:
+        q=l.split('\t'); fix[q[0].lower()]=(q[6],int(q[7]))
+EXE=os.environ.get('FABLE_EXE') or f'{S}/dl/game/Fable The Lost Chapters/Fable.exe'
+def retail(va,n):
+    import struct
+    x=open(EXE,'rb').read(); e=struct.unpack_from('<I',x,0x3C)[0]; c=e+4
+    ns=struct.unpack_from('<H',x,c+2)[0]; opt=struct.unpack_from('<H',x,c+16)[0]
+    for i in range(ns):
+        s=c+20+opt+40*i; vs,v,rs,rp=struct.unpack_from('<IIII',x,s+8); rva=va-0x400000
+        if v<=rva<v+max(vs,rs): return x[rp+rva-v:rp+rva-v+n]
+    raise SystemExit(f'{va:08x} not in a section')
 rows=[]
 for shape,fam in d:
     if len(fam)>2: continue
     for a,m,n,l,h in fam:
+        act,nl=fix.get(a.lower(),('ok',l))
+        if act=='skip': continue
+        if act=='len' and nl!=l:
+            h=bytes.fromhex(h)[:nl].hex() if nl<l else retail(int(a,16),nl).hex(); l=nl
         if not wanted(m,n) or not (LO<=l<=HI): continue
         if a.lower() in cat or a in used: continue
         rows.append((m,a,n,l,h))
