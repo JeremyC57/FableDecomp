@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00946ae0	RELOCATION_MATCH	101v101	PASS	CAIStateGroup_LightHomeCandle::GetCandleInBuildingNeedingChanging; same-TU LowerBound + find_if stand-ins
+0094b840	RELOCATION_MATCH	100v100	PASS	CAIStateGroup_SitInPub::GetBenchWithOnePersonSittingThere; const LowerBound stand-in
+0094bf60	RELOCATION_MATCH	88v88	PASS	CAIStateGroup_SellToBuyer::RefuseCustom; manager named local before the args
+00954220	DIFFER	140v142	-	CAIStateGroup_MazeRangedCombat::IsStillRunnable; register allocation (this edi/&PTarget esi/target ebx in retail)
+0095cfe0	RELOCATION_MATCH	135v135	PASS	_STL::__adjust_heap<CThingCompare_Nearest> (fire-point sort, raw Nearest predicate)
+0095db30	RELOCATION_MATCH	89v89	PASS	_STL::sort_heap<CThingCompare_Nearest>
+0095de60	RELOCATION_MATCH	172v172	PASS	_STL::__partial_sort<CThingCompare_Nearest>
+0095e010	RELOCATION_MATCH	111v111	PASS	_STL::sort<CThingCompare_Nearest>
+0095f830	RELOCATION_MATCH	101v101	PASS	CAIStateGroup_OpinionReactionRoot::SetGreetedThingReactingTo; byte-array layout, no pack
+00961ab0	RELOCATION_MATCH	221v221	PASS	anon GetPredictedTargetPosForThing; position += velocity * time
+00961b90	RELOCATION_MATCH	177v177	PASS	anon IsThingInRangeOfPound; predicted position as a named local
+0096d590	RELOCATION_MATCH	66v66	PASS	_STL::__unguarded_linear_insert<CAdapt<Nearest>>
+0096d5e0	RELOCATION_MATCH	119v119	PASS	_STL::__push_heap<CAdapt<Nearest>>
+0096d660	RELOCATION_MATCH	144v144	PASS	_STL::__median<CAdapt<Nearest>>
+0096d6f0	RELOCATION_MATCH	141v141	PASS	_STL::__unguarded_partition<CAdapt<Nearest>>
+0096d780	RELOCATION_MATCH	96v96	PASS	_STL::__unguarded_insertion_sort_aux<CAdapt<Nearest>>
+0096d7e0	RELOCATION_MATCH	121v121	PASS	_STL::__adjust_heap<CAdapt<Nearest>>
+0096d980	RELOCATION_MATCH	115v115	PASS	_STL::__insertion_sort<CAdapt<Nearest>> (linear insert inlined)
+0096daf0	RELOCATION_MATCH	112v112	PASS	_STL::__partial_sort<CAdapt<Nearest>>
+0096eb40	DIFFER	208v203	-	CAIStateGroup_MeleeCombatNearby::AlertAlliesInVicinity; early exit gets its own return tail
+00978a80	RELOCATION_MATCH	126v126	PASS	_STL::__unguarded_partition<HeuristicBitch> (AdvanceInCover TU)
+00978b00	RELOCATION_MATCH	130v130	PASS	_STL::__unguarded_insertion_sort_aux<HeuristicBitch>; operator() declaration-only
+00978c50	RELOCATION_MATCH	107v107	PASS	_STL::__linear_insert<HeuristicBitch>
+00978d00	RELOCATION_MATCH	91v91	PASS	_STL::__make_heap<HeuristicBitch>
+00978da0	RELOCATION_MATCH	75v75	PASS	_STL::__insertion_sort<HeuristicBitch>
+009792f0	RELOCATION_MATCH	118v118	PASS	_STL::__final_insertion_sort<HeuristicBitch>
+00979370	RELOCATION_MATCH	96v96	PASS	_STL::sort_heap<HeuristicBitch>
+00979650	RELOCATION_MATCH	194v194	PASS	_STL::__partial_sort<HeuristicBitch>
+00979870	RELOCATION_MATCH	125v125	PASS	_STL::sort<HeuristicBitch>
+00979910	RELOCATION_MATCH	119v119	PASS	anon IsInMeleeWithCombatWheelAttackers (TakeCover TU)
+0097ae60	RELOCATION_MATCH	126v126	PASS	_STL::__unguarded_partition<HeuristicBitch> (TakeCover TU copy)
+0097aee0	RELOCATION_MATCH	130v130	PASS	_STL::__unguarded_insertion_sort_aux<HeuristicBitch> (TakeCover TU copy)
+0097b030	RELOCATION_MATCH	107v107	PASS	_STL::__linear_insert<HeuristicBitch> (TakeCover TU copy)
+0097b0e0	RELOCATION_MATCH	91v91	PASS	_STL::__make_heap<HeuristicBitch> (TakeCover TU copy)
+0097b180	RELOCATION_MATCH	75v75	PASS	_STL::__insertion_sort<HeuristicBitch> (TakeCover TU copy)
+0097b240	RELOCATION_MATCH	118v118	PASS	_STL::__final_insertion_sort<HeuristicBitch> (TakeCover TU copy)
+0097b2c0	RELOCATION_MATCH	96v96	PASS	_STL::sort_heap<HeuristicBitch> (TakeCover TU copy)
+0097b320	RELOCATION_MATCH	194v194	PASS	_STL::__partial_sort<HeuristicBitch> (TakeCover TU copy; row 208 = 194 + padding)
+0097b660	RELOCATION_MATCH	125v125	PASS	_STL::sort<HeuristicBitch> (TakeCover TU copy)
+0097c580	RELOCATION_MATCH	81v81	PASS	CAIStateGroup_ScorpionKing::SpawnBabies

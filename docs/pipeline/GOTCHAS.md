@@ -1325,3 +1325,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Under /Gr a fastcall function-pointer comparator takes edx when the value argument is a class, the stack when it is a pointer (0x9265C0 vs 0x932330).
 - A single-copy retry loop needs `do { if (!ok) { Terminate(); return; } ... } while (r == 4);`; `while`/`for(;;)+break` get rotated or duplicated (0x93C7B0, 0x939DD0).
 - Anonymous-namespace functions/functors need a caller wrapper in the TU or VC drops the body (0x905600, 0x945DE0); g.sh ignores `// Leaf:` (gall.sh/p.sh honour it).
+- STLport sorts with a by-value comparator: compile operator() as a same-TU noinline stand-in, except in `__unguarded_insertion_sort_aux` where it must stay declaration-only (0x978C50, 0x978B00).
+- `position += v * t; return position;` reuses the position's slot for the result; `return position + v * t` gives the sum its own slot (0x961AB0). Only declare an anonymous-namespace sibling to keep the call out of line (0x961B90).
+- A PDB-packed class can be modelled with byte arrays instead of `#pragma pack` (0x95F830); retail CCombatantInfo has Attackers at +0x34 and UsingCombatWheel at +0x20 (0x979910).
