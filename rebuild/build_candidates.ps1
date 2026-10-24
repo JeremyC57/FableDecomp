@@ -304582,6 +304582,242 @@ $catalog = @(
         TestSource = '00/be/CEngineStaticMapFileBlockManager_DeleteUnusedBlocks_00be04f0_test.cpp'
         PassPattern = '00be04f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00be05d0'
+        Module = 'CEngineStaticMapFileBlockManager'
+        Source = '00/be/CEngineStaticMapFileBlockManager_Reset_00be05d0.cpp'
+        TestSource = '00/be/CEngineStaticMapFileBlockManager_Reset_00be05d0_test.cpp'
+        PassPattern = '00be05d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be0a50'
+        Module = '_STL::_Rb_tree'
+        Source = '00/be/STLRbtree_erase_00be0a50.cpp'
+        TestSource = '00/be/STLRbtree_erase_00be0a50_test.cpp'
+        PassPattern = '00be0a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be0b20'
+        Module = '_STL::_Rb_tree'
+        Source = '00/be/STLRbtree_Minsert_00be0b20.cpp'
+        TestSource = '00/be/STLRbtree_Minsert_00be0b20_test.cpp'
+        PassPattern = '00be0b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be4f90'
+        Module = 'CArray<CTVertexWaterBackground>'
+        Source = '00/be/CArrayCTVertexWaterBackground_pushback_00be4f90.cpp'
+        TestSource = '00/be/CArrayCTVertexWaterBackground_pushback_00be4f90_test.cpp'
+        PassPattern = '00be4f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be5950'
+        Module = 'CArray<CTVertexSeaBackground>'
+        Source = '00/be/CArrayCTVertexSeaBackground_pushback_00be5950.cpp'
+        TestSource = '00/be/CArrayCTVertexSeaBackground_pushback_00be5950_test.cpp'
+        PassPattern = '00be5950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be66f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_SetTargetVertexNormal_00be66f0.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_SetTargetVertexNormal_00be66f0_test.cpp'
+        PassPattern = '00be66f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beb660'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/be/CEngineInternalPrimitiveMeshBase_GetMaxDrawDistance_00beb660.cpp'
+        TestSource = '00/be/CEngineInternalPrimitiveMeshBase_GetMaxDrawDistance_00beb660_test.cpp'
+        PassPattern = '00beb660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bebbe0'
+        Module = 'CEnginePrimitiveManagerMeshBase'
+        Source = '00/be/CEnginePrimitiveManagerMeshBase_GetAcceptablePreloadMipmap_00bebbe0.cpp'
+        TestSource = '00/be/CEnginePrimitiveManagerMeshBase_GetAcceptablePreloadMipmap_00bebbe0_test.cpp'
+        PassPattern = '00bebbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bed790'
+        Module = '_STL'
+        Source = '00/be/STL_unguardedlinearinsert_00bed790.cpp'
+        TestSource = '00/be/STL_unguardedlinearinsert_00bed790_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bed790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bedd20'
+        Module = '_STL'
+        Source = '00/be/STL_unguardedinsertionsortaux_00bedd20.cpp'
+        TestSource = '00/be/STL_unguardedinsertionsortaux_00bedd20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bedd20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bedfe0'
+        Module = '_STL'
+        Source = '00/be/STL_unguardedpartition_00bedfe0.cpp'
+        TestSource = '00/be/STL_unguardedpartition_00bedfe0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bedfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee140'
+        Module = '_STL'
+        Source = '00/be/STL_makeheap_00bee140.cpp'
+        TestSource = '00/be/STL_makeheap_00bee140_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bee140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee280'
+        Module = '_STL'
+        Source = '00/be/STL_iterswap_00bee280.cpp'
+        TestSource = '00/be/STL_iterswap_00bee280_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bee280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee320'
+        Module = '_STL'
+        Source = '00/be/STL_unguardedlinearinsert_00bee320.cpp'
+        TestSource = '00/be/STL_unguardedlinearinsert_00bee320_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bee320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee660'
+        Module = '_STL'
+        Source = '00/be/STL_uninitializedcopy_00bee660.cpp'
+        TestSource = '00/be/STL_uninitializedcopy_00bee660_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bee660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee840'
+        Module = '_STL'
+        Source = '00/be/STL_unguardedinsertionsortaux_00bee840.cpp'
+        TestSource = '00/be/STL_unguardedinsertionsortaux_00bee840_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bee840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee8f0'
+        Module = '_STL'
+        Source = '00/be/STL_linearinsert_00bee8f0.cpp'
+        TestSource = '00/be/STL_linearinsert_00bee8f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bee8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beeb80'
+        Module = '_STL::vector'
+        Source = '00/be/STLvector_reserve_00beeb80.cpp'
+        TestSource = '00/be/STLvector_reserve_00beeb80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00beeb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beec60'
+        Module = '_STL'
+        Source = '00/be/STL_unguardedpartition_00beec60.cpp'
+        TestSource = '00/be/STL_unguardedpartition_00beec60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00beec60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beecd0'
+        Module = '_STL'
+        Source = '00/be/STL_insertionsort_00beecd0.cpp'
+        TestSource = '00/be/STL_insertionsort_00beecd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00beecd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beed30'
+        Module = '_STL'
+        Source = '00/be/STL_partialsort_00beed30.cpp'
+        TestSource = '00/be/STL_partialsort_00beed30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00beed30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beee40'
+        Module = '_STL'
+        Source = '00/be/STL_makeheap_00beee40.cpp'
+        TestSource = '00/be/STL_makeheap_00beee40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00beee40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beef90'
+        Module = '_STL::vector'
+        Source = '00/be/STLvector_Minsertoverflow_00beef90.cpp'
+        TestSource = '00/be/STLvector_Minsertoverflow_00beef90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00beef90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bef1d0'
+        Module = '_STL'
+        Source = '00/be/STL_introsortloop_00bef1d0.cpp'
+        TestSource = '00/be/STL_introsortloop_00bef1d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bef1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bef440'
+        Module = 'CVectorMap'
+        Source = '00/be/CVectorMap_Add_00bef440.cpp'
+        TestSource = '00/be/CVectorMap_Add_00bef440_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bef440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bef640'
+        Module = '_STL'
+        Source = '00/be/STL_insertionsort_00bef640.cpp'
+        TestSource = '00/be/STL_insertionsort_00bef640_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bef640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bef830'
+        Module = '_STL::vector'
+        Source = '00/be/STLvector_Minsertoverflow_00bef830.cpp'
+        TestSource = '00/be/STLvector_Minsertoverflow_00bef830_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bef830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf3a10'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/bf/CEngineLandscapePatch_CEngineLandscapePatch_00bf3a10.cpp'
+        TestSource = '00/bf/CEngineLandscapePatch_CEngineLandscapePatch_00bf3a10_test.cpp'
+        PassPattern = '00bf3a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf5bb0'
+        Module = '_global'
+        Source = '00/bf/global_UninitFillNRecord2800bf5bb0_00bf5bb0.cpp'
+        TestSource = '00/bf/global_UninitFillNRecord2800bf5bb0_00bf5bb0_test.cpp'
+        PassPattern = '00bf5bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfb750'
+        Module = '_global'
+        Source = '00/bf/global_GFDataIsInsideBlockC4DVector_00bfb750.cpp'
+        TestSource = '00/bf/global_GFDataIsInsideBlockC4DVector_00bfb750_test.cpp'
+        PassPattern = '00bfb750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfdec0'
+        Module = 'CLandscapeLayerMesh'
+        Source = '00/bf/CLandscapeLayerMesh_SetTargetVertexNormal_00bfdec0.cpp'
+        TestSource = '00/bf/CLandscapeLayerMesh_SetTargetVertexNormal_00bfdec0_test.cpp'
+        PassPattern = '00bfdec0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
