@@ -300776,6 +300776,244 @@ $catalog = @(
         TestSource = '00/a4/STL_partialsort_00a41cd0_test.cpp'
         PassPattern = '00a41cd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a41d50'
+        Module = '_STL'
+        Source = '00/a4/STL_introsortloop_00a41d50.cpp'
+        TestSource = '00/a4/STL_introsortloop_00a41d50_test.cpp'
+        PassPattern = '00a41d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a43500'
+        Module = '_STL'
+        Source = '00/a4/STL_uninitializedfilln_00a43500.cpp'
+        TestSource = '00/a4/STL_uninitializedfilln_00a43500_test.cpp'
+        PassPattern = '00a43500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a43670'
+        Module = '_STL'
+        Source = '00/a4/STL_uninitializedfilln_00a43670.cpp'
+        TestSource = '00/a4/STL_uninitializedfilln_00a43670_test.cpp'
+        PassPattern = '00a43670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a43b20'
+        Module = '_STL::vector'
+        Source = '00/a4/STLvector_Minsertoverflow_00a43b20.cpp'
+        TestSource = '00/a4/STLvector_Minsertoverflow_00a43b20_test.cpp'
+        PassPattern = '00a43b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a443a0'
+        Module = '_global'
+        Source = '00/a4/global_GFGetDistanceSquaredFromPointToLine2D_00a443a0.cpp'
+        TestSource = '00/a4/global_GFGetDistanceSquaredFromPointToLine2D_00a443a0_test.cpp'
+        PassPattern = '00a443a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a44660'
+        Module = 'CSuspendableProcessMicrothread'
+        Source = '00/a4/CSuspendableProcessMicrothread_InternalSwitchToProcess_00a44660.cpp'
+        TestSource = '00/a4/CSuspendableProcessMicrothread_InternalSwitchToProcess_00a44660_test.cpp'
+        PassPattern = '00a44660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a44df0'
+        Module = 'C3DSkeletalBoneMorph'
+        Source = '00/a4/C3DSkeletalBoneMorph_C3DSkeletalBoneMorph_00a44df0.cpp'
+        TestSource = '00/a4/C3DSkeletalBoneMorph_C3DSkeletalBoneMorph_00a44df0_test.cpp'
+        PassPattern = '00a44df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45470'
+        Module = 'C3DSkeletalMorph'
+        Source = '00/a4/C3DSkeletalMorph_AddMorphParameter_00a45470.cpp'
+        TestSource = '00/a4/C3DSkeletalMorph_AddMorphParameter_00a45470_test.cpp'
+        PassPattern = '00a45470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45a70'
+        Module = '_STL'
+        Source = '00/a4/STL_swap_00a45a70.cpp'
+        TestSource = '00/a4/STL_swap_00a45a70_test.cpp'
+        PassPattern = '00a45a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45b00'
+        Module = '_STL'
+        Source = '00/a4/STL_unguardedlinearinsert_00a45b00.cpp'
+        TestSource = '00/a4/STL_unguardedlinearinsert_00a45b00_test.cpp'
+        PassPattern = '00a45b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45bc0'
+        Module = '_STL'
+        Source = '00/a4/STL_pushheap_00a45bc0.cpp'
+        TestSource = '00/a4/STL_pushheap_00a45bc0_test.cpp'
+        PassPattern = '00a45bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a461d0'
+        Module = '_STL'
+        Source = '00/a4/STL_unguardedpartition_00a461d0.cpp'
+        TestSource = '00/a4/STL_unguardedpartition_00a461d0_test.cpp'
+        PassPattern = '00a461d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a46350'
+        Module = '_STL'
+        Source = '00/a4/STL_makeheap_00a46350.cpp'
+        TestSource = '00/a4/STL_makeheap_00a46350_test.cpp'
+        PassPattern = '00a46350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a46530'
+        Module = '_STL'
+        Source = '00/a4/STL_linearinsert_00a46530.cpp'
+        TestSource = '00/a4/STL_linearinsert_00a46530_test.cpp'
+        PassPattern = '00a46530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a46940'
+        Module = '_STL'
+        Source = '00/a4/STL_partialsort_00a46940.cpp'
+        TestSource = '00/a4/STL_partialsort_00a46940_test.cpp'
+        PassPattern = '00a46940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a47d80'
+        Module = 'CNavigatorExternalInterface'
+        Source = '00/a4/CNavigatorExternalInterface_RemoveAgentListFromLists_00a47d80.cpp'
+        TestSource = '00/a4/CNavigatorExternalInterface_RemoveAgentListFromLists_00a47d80_test.cpp'
+        PassPattern = '00a47d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a484b0'
+        Module = '_STL'
+        Source = '00/a4/STL_copy_00a484b0.cpp'
+        TestSource = '00/a4/STL_copy_00a484b0_test.cpp'
+        PassPattern = '00a484b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a48670'
+        Module = '_STL'
+        Source = '00/a4/STL_uninitializedcopy_00a48670.cpp'
+        TestSource = '00/a4/STL_uninitializedcopy_00a48670_test.cpp'
+        PassPattern = '00a48670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a48870'
+        Module = '_STL'
+        Source = '00/a4/STL_copy_00a48870.cpp'
+        TestSource = '00/a4/STL_copy_00a48870_test.cpp'
+        PassPattern = '00a48870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a488c0'
+        Module = '_STL'
+        Source = '00/a4/STL_uninitializedcopy_00a488c0.cpp'
+        TestSource = '00/a4/STL_uninitializedcopy_00a488c0_test.cpp'
+        PassPattern = '00a488c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4a670'
+        Module = '_STL::map<unsigned long, CCharString>'
+        Source = '00/a4/STLmapunsignedlongCCharString_operator_00a4a670.cpp'
+        TestSource = '00/a4/STLmapunsignedlongCCharString_operator_00a4a670_test.cpp'
+        PassPattern = '00a4a670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4a8c0'
+        Module = '_STL::vector<CLipSyncPhoneme>'
+        Source = '00/a4/STLvectorCLipSyncPhoneme_pushback_00a4a8c0.cpp'
+        TestSource = '00/a4/STLvectorCLipSyncPhoneme_pushback_00a4a8c0_test.cpp'
+        PassPattern = '00a4a8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4a910'
+        Module = 'CCountedPointer<CSpeechFrame>'
+        Source = '00/a4/CCountedPointerCSpeechFrame_DeleteData_00a4a910.cpp'
+        TestSource = '00/a4/CCountedPointerCSpeechFrame_DeleteData_00a4a910_test.cpp'
+        PassPattern = '00a4a910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4ab10'
+        Module = '_STL::vector<CLipSyncPhoneme>'
+        Source = '00/a4/STLvectorCLipSyncPhoneme_pushback_00a4ab10.cpp'
+        TestSource = '00/a4/STLvectorCLipSyncPhoneme_pushback_00a4ab10_test.cpp'
+        PassPattern = '00a4ab10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4ae00'
+        Module = '_STL::vector<CLipSyncPhonemeSample>'
+        Source = '00/a4/STLvectorCLipSyncPhonemeSample_pushback_00a4ae00.cpp'
+        TestSource = '00/a4/STLvectorCLipSyncPhonemeSample_pushback_00a4ae00_test.cpp'
+        PassPattern = '00a4ae00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4b7b0'
+        Module = '_global'
+        Source = '00/a4/global_GFWorld3DDistanceSmallerThan_00a4b7b0.cpp'
+        TestSource = '00/a4/global_GFWorld3DDistanceSmallerThan_00a4b7b0_test.cpp'
+        PassPattern = '00a4b7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a52080'
+        Module = '_STL'
+        Source = '00/a5/STL_fill_00a52080.cpp'
+        TestSource = '00/a5/STL_fill_00a52080_test.cpp'
+        PassPattern = '00a52080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a520b0'
+        Module = '_STL'
+        Source = '00/a5/STL_uninitializedfilln_00a520b0.cpp'
+        TestSource = '00/a5/STL_uninitializedfilln_00a520b0_test.cpp'
+        PassPattern = '00a520b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a53650'
+        Module = '_STL::vector<C3DTriangle2>'
+        Source = '00/a5/STLvectorC3DTriangle2_Mallocateandcopy_00a53650.cpp'
+        TestSource = '00/a5/STLvectorC3DTriangle2_Mallocateandcopy_00a53650_test.cpp'
+        PassPattern = '00a53650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a537f0'
+        Module = 'C3DAnimFile'
+        Source = '00/a5/C3DAnimFile_GetRoot_00a537f0.cpp'
+        TestSource = '00/a5/C3DAnimFile_GetRoot_00a537f0_test.cpp'
+        PassPattern = '00a537f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a54580'
+        Module = '_STL::vector<C3DKeyframe>'
+        Source = '00/a5/STLvectorC3DKeyframe_vector_00a54580.cpp'
+        TestSource = '00/a5/STLvectorC3DKeyframe_vector_00a54580_test.cpp'
+        PassPattern = '00a54580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a547c0'
+        Module = '_STL::_Rb_tree'
+        Source = '00/a5/STLRbtree_Mcopy_00a547c0.cpp'
+        TestSource = '00/a5/STLRbtree_Mcopy_00a547c0_test.cpp'
+        PassPattern = '00a547c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a54fa0'
+        Module = '_STL::vector<C2DLineF>'
+        Source = '00/a5/STLvectorC2DLineF_Minsertoverflow_00a54fa0.cpp'
+        TestSource = '00/a5/STLvectorC2DLineF_Minsertoverflow_00a54fa0_test.cpp'
+        PassPattern = '00a54fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a55500'
+        Module = '_STL::vector<pair<CCharString, long> >'
+        Source = '00/a5/STLvectorpairCCharStringlong_reserve_00a55500.cpp'
+        TestSource = '00/a5/STLvectorpairCCharStringlong_reserve_00a55500_test.cpp'
+        PassPattern = '00a55500_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
