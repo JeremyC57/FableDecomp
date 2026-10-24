@@ -31475,3 +31475,12 @@ __imp__LocalFree@4	0143fe78	00a5ed60
 ?LowerBound@CComponentMap@NParticleEngine@@QAEPAUCComponentEntry@2@ABW4EPSCType@2@@Z	00af60c0	00af4360
 ?UpperBound@CComponentMap@NParticleEngine@@QAEPAUCComponentEntry@2@ABW4EPSCType@2@@Z	00af6120	00af4360
 ??_7?$CDynamicObjectHeap@$0BI@$0DFF@@@6B@	0129f638	00af8700
+_z_deflateInit2_	00c01f90	00c021c0
+_z_inflateReset	00c021f0	00c02240
+_zcalloc	00c06030	00c02240
+_zcfree	00c06050	00c02240
+_z_inflateInit2_	00c02240	00c02310
+_z_deflate	00c006a0	00c03de0
+_z_deflateEnd	00c00ae0	00c03de0
+_z_deflateInit_	00c021c0	00c03de0
+_lzo1x_999_compress_internal	00c07af0	00c08130

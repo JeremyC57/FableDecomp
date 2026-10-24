@@ -303533,6 +303533,83 @@ $catalog = @(
         TestSource = '00/af/CDynamicObjectHeap24853_CDynamicObjectHeap_00af8700_test.cpp'
         PassPattern = '00af8700_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c00ae0'
+        Module = '_global'
+        Source = '00/c0/global_zdeflateEnd_00c00ae0.cpp'
+        TestSource = '00/c0/global_zdeflateEnd_00c00ae0_test.cpp'
+        PassPattern = '00c00ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c021c0'
+        Module = '_global'
+        Source = '00/c0/global_zdeflateInit_00c021c0.cpp'
+        TestSource = '00/c0/global_zdeflateInit_00c021c0_test.cpp'
+        PassPattern = '00c021c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c021f0'
+        Module = '_global'
+        Source = '00/c0/global_zinflateReset_00c021f0.cpp'
+        TestSource = '00/c0/global_zinflateReset_00c021f0_test.cpp'
+        PassPattern = '00c021f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c02240'
+        Module = '_global'
+        Source = '00/c0/global_zinflateInit2_00c02240.cpp'
+        TestSource = '00/c0/global_zinflateInit2_00c02240_test.cpp'
+        PassPattern = '00c02240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c02310'
+        Module = '_global'
+        Source = '00/c0/global_zinflateInit_00c02310.cpp'
+        TestSource = '00/c0/global_zinflateInit_00c02310_test.cpp'
+        PassPattern = '00c02310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c038d0'
+        Module = '_global'
+        Source = '00/c0/global_zinflateEnd_00c038d0.cpp'
+        TestSource = '00/c0/global_zinflateEnd_00c038d0_test.cpp'
+        PassPattern = '00c038d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c03de0'
+        Module = '_global'
+        Source = '00/c0/global_zcompress2_00c03de0.cpp'
+        TestSource = '00/c0/global_zcompress2_00c03de0_test.cpp'
+        PassPattern = '00c03de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c04f90'
+        Module = '_global'
+        Source = '00/c0/global_setdatatype_00c04f90.cpp'
+        TestSource = '00/c0/global_setdatatype_00c04f90_test.cpp'
+        PassPattern = '00c04f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c06030'
+        Module = '_global'
+        Source = '00/c0/global_zcalloc_00c06030.cpp'
+        TestSource = '00/c0/global_zcalloc_00c06030_test.cpp'
+        PassPattern = '00c06030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c07140'
+        Module = '_global'
+        Source = '00/c0/global_swdremovenode_00c07140.cpp'
+        TestSource = '00/c0/global_swdremovenode_00c07140_test.cpp'
+        PassPattern = '00c07140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c08130'
+        Module = '_global'
+        Source = '00/c0/global_lzo1x999compress_00c08130.cpp'
+        TestSource = '00/c0/global_lzo1x999compress_00c08130_test.cpp'
+        PassPattern = '00c08130_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

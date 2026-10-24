@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bfec30	DIFFER	-v178	-	CRT hand-written asm (not ours), not authored; grades 0
+00bfecf0	DIFFER	-v31	-	CRT hand-written asm (not ours), not authored; grades 0
+00bfee00	DIFFER	-v104	-	CRT hand-written asm (not ours), not authored; grades 0
+00c00600	DIFFER	47v39	-	LTCG custom register convention (only the convention: retail takes s in eax and b in ecx (LTCG)); grades 1
+00c00630	DIFFER	104v100	-	LTCG custom register convention (only the convention: retail takes strm in eax (LTCG)); grades 1
+00c00ae0	MATCH	178v178	PASS	zlib 1.2.1 deflateEnd; plain C body; grades 1
+00c00d50	DIFFER	130v119	-	LTCG custom register convention (only the convention: retail takes strm in ebx and size in ecx, buf on the stack (LTCG)); grades 1
+00c00dd0	RELOCATION_MATCH	135v135	PASS	zlib lm_init; LTCG edx-only arg modelled as __fastcall(unused ecx, s) -- review dummy param; grades 3
+00c00fd0	DIFFER	203v192	-	LTCG custom register convention (only the convention: retail takes s in esi (LTCG), cur_match on the stack); grades 1
+00c01b60	DIFFER	144v145	-	LTCG callee convention: lm_init called with s in edx and no ecx load (cdecl/fastcall both differ); grades 1
+00c021c0	RELOCATION_MATCH	37v37	PASS	zlib deflateInit_ forwarder; grades 1
+00c021f0	MATCH	73v73	PASS	zlib 1.2.1 inflateReset (pre-1.2.2 body); grades 1
+00c02240	RELOCATION_MATCH	199v199	PASS	zlib inflateInit2_ (GUNZIP windowBits decode); grades 1
+00c02310	RELOCATION_MATCH	26v26	PASS	zlib inflateInit_; catalog label ConstructString is wrong; grades 1
+00c038d0	MATCH	72v72	PASS	zlib inflateEnd; grades 1
+00c03de0	RELOCATION_MATCH	169v169	PASS	zlib compress2; grades 1
+00c03ee0	MATCH	100v100	PASS	zlib init_block; LTCG edx-only arg modelled as __fastcall(unused ecx, s) -- review dummy param; grades 2
+00c03f50	DIFFER	203v196	-	LTCG custom register convention (only the convention: retail takes s in eax and tree in edi, k on the stack (LTCG)); grades 1
+00c04260	DIFFER	224v216	-	LTCG custom register convention (only the convention: retail takes tree in eax and max_code in ecx, s on the stack (LTCG)); grades 1
+00c04f90	MATCH	129v129	PASS	zlib 1.2.1 set_data_type; LTCG ecx arg = __fastcall; grades 1
+00c05040	DIFFER	131v127	-	LTCG custom register convention (only the convention: retail takes s in eax (LTCG)); grades 1
+00c050c0	DIFFER	113v109	-	LTCG custom register convention (only the convention: retail takes s in eax (LTCG)); grades 1
+00c05130	DIFFER	138v130	-	LTCG custom register convention: s in eax, len in ecx, buf in edx, header on stack; bi_windup called with s in eax; grades 1
+00c05230	DIFFER	156v138	-	LTCG custom register convention (convention: retail takes bl_count in edx, tree in edi, max_code in ebx (LTCG)); grades 1
+00c054c0	DIFFER	124v108	-	LTCG custom register convention: s in eax; scan_tree/build_tree called with LTCG register args; grades 1
+00c05530	DIFFER	160v160	-	LTCG callee convention: copy_block called with s in eax, len in ecx, buf in edx + push 1; grades 1
+00c05fd0	DIFFER	18v24	-	LTCG callee convention: tail jump to crc32_little with crc in eax, buf in ecx, len in edx; grades 1
+00c06030	RELOCATION_MATCH	20v20	PASS	zlib zcalloc -> malloc import 0x01440158; grades 2
+00c06de0	DIFFER	108v98	-	LTCG custom register convention (only the convention: retail takes s in eax, dict in ecx, dict_len in edx (LTCG)); grades 1
+00c06e50	DIFFER	208v211	-	LTCG custom register convention: s in ecx, node in edx, len on stack, caller-cleaned ret (not fastcall); grades 1
+00c07090	DIFFER	173v169	-	LTCG custom register convention (only the convention: retail takes s in eax (LTCG)); grades 1
+00c07140	MATCH	107v107	PASS	LZO swd_remove_node; LTCG ecx/edx args = __fastcall; grades 1
+00c072d0	DIFFER	231v232	-	LTCG custom register convention (only the convention: retail takes s in eax and node in ecx, cnt on the stack (LTCG)); grades 1
+00c073c0	DIFFER	85v81	-	LTCG custom register convention (only the convention: retail takes s in eax (LTCG)); grades 1
+00c075c0	DIFFER	89v79	-	LTCG custom register convention: c in eax, flags in ecx, s on stack; swd_init called with LTCG args; grades 1
+00c07610	DIFFER	198v166	-	LTCG custom register convention: c in ebx, s in ecx, this_len in eax; swd_* called with LTCG args; grades 1
+00c07890	DIFFER	179v191	-	LTCG custom register convention: op in ecx, rest on stack, caller-cleaned ret; grades 1
+00c07980	DIFFER	160v139	-	LTCG custom register convention (only the convention: retail takes m_len in ecx, m_off in edx, lit in esi (LTCG)); grades 1
+00c07a60	DIFFER	160v140	-	LTCG custom register convention (only the convention: retail takes swd in ecx, m_len in ebx, m_off in edi (LTCG)); grades 1
+00c08130	RELOCATION_MATCH	58v58	PASS	LZO lzo1x_999_compress: level-8 table row folded into the internal call; grades 1
