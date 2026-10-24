@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c123b0	RELOCATION_MATCH	171v171	PASS	3 grades; CSoundEventManager::Shutdown (inline GetNumEvents/GetEvent accessors fix the register assignment)
+00c12680	RELOCATION_MATCH	159v159	PASS	4 grades; CSoundEventManager::CountPlayingEvents (inline accessors)
+00c12720	RELOCATION_MATCH	152v152	PASS	1 grade; CSoundEventManager::TraceEvents
+00c127c0	RELOCATION_MATCH	186v186	PASS	1 grade; CSoundEventManager::TracePlaybacks
+00c13840	DIFFER	113v112	PASS	1 grade; int3-after-noreturn: std::vector<PKCRequest*>::_Xlen, every instruction matches; land against the 113-byte span (differ/00c13840.test.cpp PASS)
+00c138f0	DIFFER	113v112	PASS	1 grade; int3-after-noreturn: twin std::vector<PKCRequest*>::_Xlen; land against the 113-byte span (differ/00c138f0.test.cpp PASS)
+00c13d40	RELOCATION_MATCH	33v33	PASS	1 grade (+1 probe of the tag form); std::copy_backward Dinkumware scalar
+00c13d70	RELOCATION_MATCH	33v33	PASS	1 grade; std::copy_backward twin
+00c14560	RELOCATION_MATCH	204v204	PASS	2 grades; PKCWorkerQueue dtor (operator delete throw())
+00c14630	RELOCATION_MATCH	204v204	PASS	2 grades; PKCWorkerQueue twin dtor
+00c14a50	RELOCATION_MATCH	44v44	PASS	1 grade; CDataOwner::DeleteData
+00c14ad0	RELOCATION_MATCH	67v67	PASS	1 grade; CEntryOwner::ReleaseTarget (inline by-value FindEntry)
+00c15cd0	RELOCATION_MATCH	114v114	PASS	1 grade; CSoundInstance::SetPlaybackValue
+00c16760	RELOCATION_MATCH	73v73	PASS	1 grade; WideToMultiByte fastcall
+00c16820	RELOCATION_MATCH	108v108	PASS	1 grade; PKCWideString::Assign
+00c16c10	DIFFER	207v203	-	1 grade; HasBankSegments: LTCG register arg (segment file in esi) - lane gap
+00c16ce0	DIFFER	173v166	-	1 grade; RunProcessor: LTCG register arg (settings record in esi) - lane gap
+00c16d90	DIFFER	129v122	-	1 grade; SProcessorSettings::ProcessEntry: LTCG register args (edi file, esi to callee) - lane gap
+00c16e10	DIFFER	225v225	-	4 grades; ReadBankInfoCount: merged return -1 block at last test (ours) vs first test (retail); frame needs name[0x104+1]
+00c17640	DIFFER	203v203	-	1 grade; OpenBankFile: LTCG register args to 0xC174A0 (ebx bankId, esi path) - lane gap
+00c17740	RELOCATION_MATCH	186v186	PASS	1 grade; CAutoDeletePointer::GetChecked (twin of landed 0x00C09920)
+00c17b70	MATCH	103v103	PASS	1 grade; MoveAllItems fastcall
+00c18a80	MATCH	73v73	PASS	1 grade; PKCTRRedblackTree::RotateLeft
+00c18ad0	MATCH	75v75	PASS	1 grade; PKCTRRedblackTree::RotateRight
+00c18d50	RELOCATION_MATCH	56v56	PASS	1 grade; PKCTRRedblackTree::VisitInOrder
+00c18d90	RELOCATION_MATCH	86v86	PASS	2 grades; PKCTRRedblackTree::FindNth (tail-recursive form)
+00c18df0	RELOCATION_MATCH	48v48	PASS	1 grade; PKCTRRedblackTree::CountNodes
+00c196a0	RELOCATION_MATCH	186v186	PASS	2 grades; CObjectMap::Find (single result=0 variable; per-path returns gave a 4th epilogue)
+00c1a070	RELOCATION_MATCH	158v158	PASS	2 grades; CFileManager::GetFileSize (same-TU Find body drops the state-0 store)
+00c1ae50	MATCH	67v67	PASS	1 grade; PKCTRRedblackMap::Find
+00c1b200	MATCH	73v73	PASS	1 grade; PKCTRRedblackMap::RotateLeft
+00c1b250	MATCH	75v75	PASS	1 grade; PKCTRRedblackMap::RotateRight
+00c1b340	RELOCATION_MATCH	45v45	PASS	2 grades (rename regrade); PKCStaticQueue ctor (PKCStaticQueue.h trace in Pop)
+00c1b720	RELOCATION_MATCH	167v167	PASS	1 grade; PKCTRRedblackMap::Insert
+00c1b7d0	DIFFER	213v213	-	4 grades; PKCTRRedblackMap::Remove: ecx/edx swap only (retail keeps z in edx)
+00c1b9a0	RELOCATION_MATCH	22v22	PASS	1 grade; SetDefaultRange stdcall global pair
+00c1b9c0	RELOCATION_MATCH	18v18	PASS	1 grade; CChickenSign::GetLevel byte*1/127
+00c1ba40	RELOCATION_MATCH	28v28	PASS	1 grade; DecodeFixed16 stdcall
+00c1bda0	RELOCATION_MATCH	89v89	PASS	1 grade; CDistanceFalloff::GetAttenuation
+00c1bf00	DIFFER	194v174	-	1 grade; BuildViewMatrix: LTCG register args (esi matrix, edi up, ebx forward) - lane gap
