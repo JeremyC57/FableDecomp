@@ -278846,6 +278846,272 @@ $catalog = @(
         TestSource = '00/e9/CSpawnedFuncNScriptCVExposeMayorScript_CSpawnedFunc_00e95f10_test.cpp'
         PassPattern = '00e95f10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0042d1a3'
+        Module = 'std::map<unsigned long, CAllocationNode*>'
+        Source = '00/42/stdmapunsignedlongCAllocationNode_insert_0042d1a3.cpp'
+        TestSource = '00/42/stdmapunsignedlongCAllocationNode_insert_0042d1a3_test.cpp'
+        PassPattern = '0042d1a3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043151d'
+        Module = '_global'
+        Source = '00/43/global_GFSerialiseMapBinaryIn_0043151d.cpp'
+        TestSource = '00/43/global_GFSerialiseMapBinaryIn_0043151d_test.cpp'
+        PassPattern = '0043151d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045df5e'
+        Module = '_global'
+        Source = '00/45/global_GFSerialiseMapBinaryIn_0045df5e.cpp'
+        TestSource = '00/45/global_GFSerialiseMapBinaryIn_0045df5e_test.cpp'
+        PassPattern = '0045df5e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045e37f'
+        Module = '_global'
+        Source = '00/45/global_GFSerialiseMapBinaryIn_0045e37f.cpp'
+        TestSource = '00/45/global_GFSerialiseMapBinaryIn_0045e37f_test.cpp'
+        PassPattern = '0045e37f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045ec72'
+        Module = '_global'
+        Source = '00/45/global_GFSerialiseMapBinaryIn_0045ec72.cpp'
+        TestSource = '00/45/global_GFSerialiseMapBinaryIn_0045ec72_test.cpp'
+        PassPattern = '0045ec72_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00463732'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseMultiMapBinaryIn_00463732.cpp'
+        TestSource = '00/46/global_GFSerialiseMultiMapBinaryIn_00463732_test.cpp'
+        PassPattern = '00463732_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00469381'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseMapBinaryIn_00469381.cpp'
+        TestSource = '00/46/global_GFSerialiseMapBinaryIn_00469381_test.cpp'
+        PassPattern = '00469381_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00472896'
+        Module = '_global'
+        Source = '00/47/global_GFSerialiseMapBinaryIn_00472896.cpp'
+        TestSource = '00/47/global_GFSerialiseMapBinaryIn_00472896_test.cpp'
+        PassPattern = '00472896_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00475aa6'
+        Module = '_global'
+        Source = '00/47/global_GFSerialiseMapBinaryIn_00475aa6.cpp'
+        TestSource = '00/47/global_GFSerialiseMapBinaryIn_00475aa6_test.cpp'
+        PassPattern = '00475aa6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec66c'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseMapBinaryIn_004ec66c.cpp'
+        TestSource = '00/4e/global_GFSerialiseMapBinaryIn_004ec66c_test.cpp'
+        PassPattern = '004ec66c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00513a00'
+        Module = 'std'
+        Source = '00/51/std_uninitializedfilln_00513a00.cpp'
+        TestSource = '00/51/std_uninitializedfilln_00513a00_test.cpp'
+        PassPattern = '00513a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00543870'
+        Module = 'std'
+        Source = '00/54/std_uninitializedfilln_00543870.cpp'
+        TestSource = '00/54/std_uninitializedfilln_00543870_test.cpp'
+        PassPattern = '00543870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c12a1'
+        Module = '_global'
+        Source = '00/5c/global_GFSerialiseVectorBinaryOut_005c12a1.cpp'
+        TestSource = '00/5c/global_GFSerialiseVectorBinaryOut_005c12a1_test.cpp'
+        PassPattern = '005c12a1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c2ad8'
+        Module = '_global'
+        Source = '00/5c/global_GFSerialiseVectorBinaryIn_005c2ad8.cpp'
+        TestSource = '00/5c/global_GFSerialiseVectorBinaryIn_005c2ad8_test.cpp'
+        PassPattern = '005c2ad8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00614620'
+        Module = '_global'
+        Source = '00/61/global_GFSerialiseVectorBinaryOut_00614620.cpp'
+        TestSource = '00/61/global_GFSerialiseVectorBinaryOut_00614620_test.cpp'
+        PassPattern = '00614620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006186f0'
+        Module = 'CThingSearchTools'
+        Source = '00/61/CThingSearchTools_GetAllLeafThings_006186f0.cpp'
+        TestSource = '00/61/CThingSearchTools_GetAllLeafThings_006186f0_test.cpp'
+        PassPattern = '006186f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00618790'
+        Module = 'CThingSearchTools'
+        Source = '00/61/CThingSearchTools_GetAllLeafThings_00618790.cpp'
+        TestSource = '00/61/CThingSearchTools_GetAllLeafThings_00618790_test.cpp'
+        PassPattern = '00618790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006194a0'
+        Module = '_global'
+        Source = '00/61/global_GFSerialiseVectorBinaryIn_006194a0.cpp'
+        TestSource = '00/61/global_GFSerialiseVectorBinaryIn_006194a0_test.cpp'
+        PassPattern = '006194a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ae830'
+        Module = 'CThingSearchTools'
+        Source = '00/6a/CThingSearchTools_GetAllLeafThings_006ae830.cpp'
+        TestSource = '00/6a/CThingSearchTools_GetAllLeafThings_006ae830_test.cpp'
+        PassPattern = '006ae830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c7ba0'
+        Module = '_global'
+        Source = '00/6c/global_GFSerialiseVectorBinaryOut_006c7ba0.cpp'
+        TestSource = '00/6c/global_GFSerialiseVectorBinaryOut_006c7ba0_test.cpp'
+        PassPattern = '006c7ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d3a30'
+        Module = '_global'
+        Source = '00/6d/global_GFSerialiseVectorBinaryOut_006d3a30.cpp'
+        TestSource = '00/6d/global_GFSerialiseVectorBinaryOut_006d3a30_test.cpp'
+        PassPattern = '006d3a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00720310'
+        Module = 'std'
+        Source = '00/72/std_uninitializedfilln_00720310.cpp'
+        TestSource = '00/72/std_uninitializedfilln_00720310_test.cpp'
+        PassPattern = '00720310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769000'
+        Module = 'std'
+        Source = '00/76/std_uninitializedfilln_00769000.cpp'
+        TestSource = '00/76/std_uninitializedfilln_00769000_test.cpp'
+        PassPattern = '00769000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076f7d0'
+        Module = 'std'
+        Source = '00/76/std_uninitializedfilln_0076f7d0.cpp'
+        TestSource = '00/76/std_uninitializedfilln_0076f7d0_test.cpp'
+        PassPattern = '0076f7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00776bc0'
+        Module = 'std'
+        Source = '00/77/std_uninitializedfilln_00776bc0.cpp'
+        TestSource = '00/77/std_uninitializedfilln_00776bc0_test.cpp'
+        PassPattern = '00776bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077e2e0'
+        Module = 'std'
+        Source = '00/77/std_uninitializedfilln_0077e2e0.cpp'
+        TestSource = '00/77/std_uninitializedfilln_0077e2e0_test.cpp'
+        PassPattern = '0077e2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086b210'
+        Module = '_global'
+        Source = '00/86/global_GFWriteVectorMapMemDump_0086b210.cpp'
+        TestSource = '00/86/global_GFWriteVectorMapMemDump_0086b210_test.cpp'
+        PassPattern = '0086b210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ac20'
+        Module = 'std'
+        Source = '00/88/std_uninitializedfilln_0088ac20.cpp'
+        TestSource = '00/88/std_uninitializedfilln_0088ac20_test.cpp'
+        PassPattern = '0088ac20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c2ed0'
+        Module = 'std'
+        Source = '00/8c/std_removecopyif_008c2ed0.cpp'
+        TestSource = '00/8c/std_removecopyif_008c2ed0_test.cpp'
+        PassPattern = '008c2ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00964ef0'
+        Module = 'CThingSearchTools'
+        Source = '00/96/CThingSearchTools_GetAllLeafThings_00964ef0.cpp'
+        TestSource = '00/96/CThingSearchTools_GetAllLeafThings_00964ef0_test.cpp'
+        PassPattern = '00964ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009922f0'
+        Module = 'SRecord'
+        Source = '00/99/SRecord_SRecord_009922f0.cpp'
+        TestSource = '00/99/SRecord_SRecord_009922f0_test.cpp'
+        PassPattern = '009922f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e62e0'
+        Module = 'std'
+        Source = '00/9e/std_uninitializedfilln_009e62e0.cpp'
+        TestSource = '00/9e/std_uninitializedfilln_009e62e0_test.cpp'
+        PassPattern = '009e62e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f6c90'
+        Module = 'std'
+        Source = '00/9f/std_uninitializedfilln_009f6c90.cpp'
+        TestSource = '00/9f/std_uninitializedfilln_009f6c90_test.cpp'
+        PassPattern = '009f6c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a94150'
+        Module = '_global'
+        Source = '00/a9/global_GFExplicitNew_00a94150.cpp'
+        TestSource = '00/a9/global_GFExplicitNew_00a94150_test.cpp'
+        PassPattern = '00a94150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2c00'
+        Module = 'std'
+        Source = '00/af/std_uninitializedfilln_00af2c00.cpp'
+        TestSource = '00/af/std_uninitializedfilln_00af2c00_test.cpp'
+        PassPattern = '00af2c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0f6b0'
+        Module = 'std'
+        Source = '00/b0/std_uninitializedfilln_00b0f6b0.cpp'
+        TestSource = '00/b0/std_uninitializedfilln_00b0f6b0_test.cpp'
+        PassPattern = '00b0f6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b28f60'
+        Module = 'std'
+        Source = '00/b2/std_uninitializedfilln_00b28f60.cpp'
+        TestSource = '00/b2/std_uninitializedfilln_00b28f60_test.cpp'
+        PassPattern = '00b28f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b32f70'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_AddRepeatedStaticMesh_00b32f70.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_AddRepeatedStaticMesh_00b32f70_test.cpp'
+        PassPattern = '00b32f70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

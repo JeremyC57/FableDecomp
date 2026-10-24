@@ -1016,3 +1016,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - CVectorMap<CCharString> bounds with inline compare: `if (count > 0) { K k = key; do {...} while (count > 0); }`, count computed before `first = First` (chunk 333).
 - CSmallVector: resize uses `Min(n, GetSize())` with a by-value `long GetSize()`; erase is `int size = Size; delete[] Start; Size = size - 1;`; keep CSmallVector<CCharString>::Clear declared only (out of line at 0x009D2110).
 - A call result passed as a temporary string argument that shares a frame word goes in a named local first (frame 8 -> 4 bytes, 0x0073A9F0).
+- `__uninitialized_fill_n` gets retail's second induction register (`lea esi,[eax+N]`) only when the element has a memberwise user copy ctor AND a member with its own user copy ctor (00769000, 00720310).
+- Map readers: call the stream's slot-6 `ReadNullTerminatedString` directly in the string traits (an inline wrapper adds a `lea`); build DefaultVal by implicit conversion `DefaultVal("", 0)`; a named `secondTraits` local shares the outer slot (chunk 335).
+- `remove_copy_if` length goes through an inline `float sqrtf(float)` over the `sqrt` intrinsic; a double expression reorders the x87 stack (008c2ed0).
+- A filter inlined into a template loop needs `__forceinline` on LowerBound, GetTC and the filter's operator(); plain `inline` is not enough (0080e5d0).

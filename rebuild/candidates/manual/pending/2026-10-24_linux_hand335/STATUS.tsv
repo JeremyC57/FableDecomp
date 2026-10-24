@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0080e5d0	DIFFER	158v158	-	ForEachIf<CThing**,IsThrownByExplosion,ApplyImpulse>: parked, one eax->esi copy in the inlined lower_bound
+00513a00	MATCH	56v56	PASS	really STLport __uninitialized_fill_n (label propagated)
+00543870	MATCH	74v74	PASS	really STLport __uninitialized_fill_n (label propagated)
+00720310	MATCH	144v144	PASS	really STLport __uninitialized_fill_n (label propagated)
+00769000	MATCH	55v55	PASS	really STLport __uninitialized_fill_n (label propagated)
+0076f7d0	MATCH	68v68	PASS	really STLport __uninitialized_fill_n (label propagated)
+00776bc0	MATCH	86v86	PASS	really STLport __uninitialized_fill_n (label propagated)
+0077e2e0	RELOCATION_MATCH	66v66	PASS	really STLport __uninitialized_fill_n (label propagated)
+0088ac20	RELOCATION_MATCH	72v72	PASS	really STLport __uninitialized_fill_n (label propagated)
+009e62e0	RELOCATION_MATCH	90v90	PASS	really STLport __uninitialized_fill_n (label propagated)
+009f6c90	RELOCATION_MATCH	106v106	PASS	really STLport __uninitialized_fill_n (label propagated)
+00a94150	MATCH	61v61	PASS	GFExplicitNew<CStaticBlock> (label genuine)
+00af2c00	RELOCATION_MATCH	72v72	PASS	really STLport __uninitialized_fill_n (label propagated)
+00b0f6b0	RELOCATION_MATCH	56v56	PASS	really STLport __uninitialized_fill_n (label propagated)
+00b28f60	MATCH	122v122	PASS	really STLport __uninitialized_fill_n (label propagated)
+009922f0	RELOCATION_MATCH	97v97	PASS	really a 0x20-byte record copy ctor {2 CCountedPointer, 4 CCharString}
+0042d1a3	RELOCATION_MATCH	20v20	PASS	really std::map<ulong,CAllocationNode*>::insert
+00b32f70	RELOCATION_MATCH	28v28	PASS	really CEnginePrimitiveRenderer::AddRepeatedStaticMesh (local model: header 4 bytes high)
+00469381	RELOCATION_MATCH	180v180	PASS	really map<long,CBlendedParticleEffectSet>
+004ec66c	RELOCATION_MATCH	171v171	PASS	map<EObjectAugmentationType,CDefString>
+0045df5e	RELOCATION_MATCH	179v179	PASS	really map<EOpinionReactionType,bool>
+0045e37f	RELOCATION_MATCH	175v175	PASS	really map<EOpinionDeedType,bool>
+0045ec72	RELOCATION_MATCH	179v179	PASS	map<EOpinionAttitudeType,bool>
+0043151d	RELOCATION_MATCH	233v233	PASS	really map<CCharString,long>
+00463732	RELOCATION_MATCH	233v233	PASS	really multimap<CCharString,long> (GFSerialiseMultiMapBinaryIn)
+00472896	RELOCATION_MATCH	233v233	PASS	really map<long,CCharString>
+00475aa6	RELOCATION_MATCH	237v237	PASS	really map<CCharString,EGameAction>
+006194a0	RELOCATION_MATCH	184v184	PASS	vector<CUIMiniMapMarker> in
+005c2ad8	RELOCATION_MATCH	164v164	PASS	vector<NInventory::CItem> in (local CItem next to engine/CItem.h)
+00614620	RELOCATION_MATCH	209v209	PASS	vector<CUIMiniMapMarker> out
+005c12a1	RELOCATION_MATCH	89v89	PASS	vector<NInventory::CItem> out (local CItem)
+006c7ba0	RELOCATION_MATCH	80v80	PASS	vector<pair<long,COpinionDeed*>> out
+006d3a30	RELOCATION_MATCH	132v132	PASS	vector<CNamedLong> out
+0086b210	RELOCATION_MATCH	134v134	PASS	CVectorMap mem dump
+008c2ed0	MATCH	116v116	PASS	really std::remove_copy_if<C3DVector*,C3DVector*,CIsOutsideRadius>
+006186f0	RELOCATION_MATCH	155v155	PASS	GetAllLeafThings<AICreature,vector,Bind2<HasTC,InMap>>
+00618790	RELOCATION_MATCH	155v155	PASS	GetAllLeafThings<AICreature,vector,Bind2<EnemyCreature,InMap>>
+00964ef0	RELOCATION_MATCH	136v136	PASS	really GetAllLeafThings<CThingMarker,vector,MarkerHasProperty>
+006ae830	RELOCATION_MATCH	115v115	PASS	really GetAllLeafThings<AICreature,list,None>
+004ad700	DIFFER	121v121	-	GetAllLeafThings<const CThingBuilding,vector,None>: parked, thing in edx not ecx (register naming only)
