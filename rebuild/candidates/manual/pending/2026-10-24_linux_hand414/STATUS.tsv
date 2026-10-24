@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009f2870	RELOCATION_MATCH	95v95	PASS	CMemoryAllocator::Create; inline class operator new over VirtualAlloc
+009f2b20	RELOCATION_MATCH	108v108	PASS	CMemoryAllocator::DeallocateAligned; __forceinline Deallocate/Destroy, delete through class operator delete
+009f2be0	RELOCATION_MATCH	79v79	PASS	CMemoryAllocator::AllocateAligned; __forceinline Allocate
+009f5600	RELOCATION_MATCH	77v77	PASS	CInputManager::AddEventToStore (label was CInputEventVector_PushBackAt0x14)
+009f63b0	MATCH	60v60	PASS	STLport __copy_ptrs<CInputEvent*>; __forceinline __copy
+009f65e0	RELOCATION_MATCH	77v77	PASS	vector<CInputEvent>::_M_allocate_and_copy
+009f66a0	RELOCATION_MATCH	121v121	PASS	vector<CInputEvent> copy constructor
+009f67e0	RELOCATION_MATCH	108v108	PASS	vector<CInputEvent>::erase(first,last)
+009f6ed0	RELOCATION_MATCH	228v228	PASS	vector<CInputEventPackage>::_M_insert_overflow; same-TU auto_inline(off) stand-ins home tags on __atend
+009f7250	RELOCATION_MATCH	211v211	PASS	CVsyncCallbackTimer::ClearAllQueries (/Od TU; label was FlushPendingQueries)
+009f73a0	RELOCATION_MATCH	19v19	PASS	CVsyncCallbackTimer::OnPreDeviceReset (/Od; label was operator_new)
+009f76f0	RELOCATION_MATCH	57v57	PASS	allocator<_List_node<CPendingQuery>>::allocate (/Od)
+009f77b0	MATCH	24v24	PASS	_STLP_alloc_proxy ctor (/Od; label was __EH_epilog3)
+009f7830	RELOCATION_MATCH	92v92	PASS	_List_base<CPendingQuery>::clear (/Od)
+009f79d0	RELOCATION_MATCH	88v88	PASS	list<CPendingQuery>::erase (/Od)
+009f7a30	RELOCATION_MATCH	102v102	PASS	_List_base<CPendingQuery> ctor (/Od)
+009f7ad0	RELOCATION_MATCH	137v137	PASS	list<CPendingQuery>::_M_create_node (/Od; label was CFourierAnalysis_CreateHeapInstance)
+009f7b60	RELOCATION_MATCH	66v66	PASS	__distance over list const_iterator (/Od)
+009f7bb0	RELOCATION_MATCH	102v102	PASS	_List_base<16-byte element> ctor (/Od), element unidentified
+009f7c50	RELOCATION_MATCH	129v129	PASS	list<CPendingQuery>::pop_back (/Od)
+009f7d70	RELOCATION_MATCH	66v66	PASS	distance over list const_iterator (/Od)
+009f7dc0	RELOCATION_MATCH	115v115	PASS	list<CPendingQuery>::size (/Od; label was OnPostSwapScreens_UpdateNUIListCount)
+009f7e40	RELOCATION_MATCH	119v119	PASS	list<CPendingQuery>::push_front (/Od; label was Link_FourierAnalysisNode)
+009f7ec0	RELOCATION_MATCH	117v117	PASS	list<CPendingQuery>::push_back (/Od)
+009f8a20	RELOCATION_MATCH	71v71	PASS	graphic-bank list Sizeof (descriptive; out-of-line copy of the CGraphicBankManager::Sizeof body)
+009f8fc0	RELOCATION_MATCH	52v52	PASS	CProfileManager::AddProfile (PDB name)
+009f9930	RELOCATION_MATCH	95v95	PASS	vector<CProfileTreeEntry*> copy ctor (memmove __copy_trivial)
+009f9ba0	RELOCATION_MATCH	87v87	PASS	list<CProfileTreeEntry>::insert(pos,x)
+009f9c40	RELOCATION_MATCH	98v98	PASS	list<CProfileTreeEntry>::insert(pos); iterator user copy ctor
+009fc210	RELOCATION_MATCH	64v64	PASS	CResourceList::ShrinkResources (PDB; label named its caller MakeFreeSpace)
+00a004d0	RELOCATION_MATCH	69v69	PASS	__uninitialized_fill_n<CGraphicInfoFrame*>
+00a00750	RELOCATION_MATCH	74v74	PASS	__uninitialized_copy<CGraphicInfoFrame*> (label _Copy_impl<CGameMapCell*> wrong)
+00a00840	MATCH	116v116	PASS	__copy_backward<CGraphicInfoFrame*> (label element wrong)
+00a00950	RELOCATION_MATCH	69v69	PASS	CCRC::Calc (stack args, modelled __stdcall)
+00a00a90	MATCH	91v91	PASS	fill<CGraphicInfoFrame*> (label _Copy_backward<CDefPointer> wrong)
+00a00b20	MATCH	105v105	PASS	__copy<CGraphicInfoFrame*>
+00a01650	RELOCATION_MATCH	153v153	PASS	vector<CGraphicInfo>::push_back() anachronism
+00a016f0	RELOCATION_MATCH	149v149	PASS	vector<CGraphicInfoFrame>::resize(n)
+00a03870	RELOCATION_MATCH	33v33	PASS	CScopedMemoryHandle::Clear (PDB; label DiscardAsyncData)
+00a039f0	RELOCATION_MATCH	65v65	PASS	CScopedMemoryHandle::Initialise (PDB; label CHandleBuffer_Reset)
