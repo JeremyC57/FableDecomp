@@ -1102,3 +1102,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Leaf mangling is exact (struct `U`, class `V`, enum `W4`); on no match q.py silently grades the largest function (00a326d0).
 - No vtable store in a polymorphic class's destructor means no class in the chain declares a destructor (NPlayerGui::CDrawBase, 004420d0).
 - An inline accessor on the pointee gives `lea ecx,[eax+N]`; chaining `->Member.GetPItem()` gives `add eax,N ; mov ecx,eax` (006c1c70).
+- STLport `__equal_range` that calls upper_bound before lower_bound is `return pair(__lower_bound(..), __upper_bound(..))`: VC evaluates arguments right to left (00817e30).
+- The element's copy-ctor form decides a fill_n loop: trivial = one block; STLport pair user ctor = key then `lea` block; flat user ctor = all words through esi; nested user ctors = a second induction register (chunk 354).
+- Retail CParentDefClassBase is 0x39 bytes (CVectorMap 16, not the PDB's 20): the first derived member is at +0x3C, not +0x40 (engine/CParentDefClassBase.h uses the PDB 0x3D).
+- `find_if` with a by-value predicate and no tag keeps the value in a stack slot with edx unused; a `ret 8` find with no edx argument has `__find` inlined (chunk 354).

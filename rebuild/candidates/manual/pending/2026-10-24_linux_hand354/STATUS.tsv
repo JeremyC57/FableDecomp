@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a4a2a0	RELOCATION_MATCH	84v84	PASS	_Destroy_range over a 16-byte {CCharString, .., CCountedPointer} record (catalog pair<long,CCompositeSurfaceInfo> propagated)
+00a70ee0	RELOCATION_MATCH	92v92	PASS	_Destroy_range over pair<CCharString, C3DMeshVolume>: second (release + ~Name) before first
+00a80e40	RELOCATION_MATCH	77v77	PASS	_Destroy_range over pair<long, CCountedPointer<CRegionConnectionNode>>: inlined release only
+00a96810	MATCH	47v47	PASS	not _Destroy_range: DestructArray<CAnimatedBlock> (null guard, unsigned count, CIVCountedPointer release)
+00af6f90	RELOCATION_MATCH	85v85	PASS	_Destroy_range over pair<EPSCType, CComponentInstance> (catalog pair<long,CCompositeSurfaceInfo> propagated)
+00cbb1b0	RELOCATION_MATCH	77v77	PASS	_Destroy_range over a 16-byte record with a CCountedPointer at +8
+00cbb200	RELOCATION_MATCH	84v84	PASS	_Destroy_range over a 12-byte {CCharString, CCountedPointer} element
+00817e30	RELOCATION_MATCH	147v147	PASS	STLport __equal_range; pair(lower_bound(..), upper_bound(..)) for the RTL call order (2 grades)
+00470d77	MATCH	69v69	PASS	not _Fill: __unguarded_insertion_sort_aux<pair<ulong,CSoundPair>>; optimize y off + s on, forceinline insert, pair copy ctor (3 grades)
+009a0020	MATCH	29v29	PASS	not _Fill: MemCopy (inline memcpy rep movsd/movsb)
+00613180	RELOCATION_MATCH	96v96	PASS	fill over CUIMiniMapMarker: memberwise (CCharString op=), second IV at Position
+00a43890	MATCH	72v72	PASS	fill over CDataBankTextEntry: CIVCountedPointer op= then the index
+00af1c70	MATCH	78v78	PASS	fill over CParticleEmitterInfo (12 bytes; catalog name from the 8-byte twin 0x00A43890)
+00cb6160	RELOCATION_MATCH	84v84	PASS	__uninitialized_fill_n over pair<CCharString, CScriptInfo> (catalog _Fill)
+005664b0	RELOCATION_MATCH	89v89	PASS	fill over a 16-byte {3 CCharString, 2 bytes} record (catalog pair<CCharString,CPersistInfo> propagated)
+00a85810	RELOCATION_MATCH	83v83	PASS	fill over a 40-byte {3 vectors, Dirty} record (catalog pair<CCharString,CPersistInfo> propagated)
+007183e0	MATCH	70v70	PASS	__uninitialized_fill_n over a 24-byte POD morph record, block copy (catalog _Fill)
+00819230	MATCH	67v67	PASS	fill over pair<EHeroMorphType, CTextureMorphEntry>: trivial block copy
+0081a200	MATCH	70v70	PASS	__uninitialized_fill_n over pair<EHeroMorphType, CTextureMorphEntry>: STLport pair copy ctor (catalog _Fill)
+008ebae0	RELOCATION_MATCH	76v76	PASS	__uninitialized_fill_n over CHoverState (catalog pair<EHeroMorphType,..> propagated)
+00f3b220	MATCH	70v70	PASS	__uninitialized_fill_n over a 24-byte POD morph record, block copy (catalog _Fill)
+0040eac0	MATCH	70v70	PASS	__uninitialized_fill_n over a flat 7-scalar record with a user copy ctor (catalog _Fill)
+004cfa70	MATCH	76v76	PASS	__uninitialized_fill_n over pair<float, CCameraTag>: pair copy ctor + 24-byte block (catalog _Fill)
+00613e30	RELOCATION_MATCH	80v80	PASS	__uninitialized_fill_n over CUIMiniMapMarker; C2DVector user copy ctor removes the 2nd IV
+007d1420	MATCH	130v130	PASS	fill over CShoveHaPennyRegionDef: vptr skipped, flag bits per bit (catalog pair<float,CCameraTag> propagated)
+00b8e930	MATCH	70v70	PASS	__uninitialized_fill_n over a flat 7-scalar record (twin of 0x0040EAC0; catalog _Fill)
+00f37ad0	MATCH	94v94	PASS	__uninitialized_fill_n over a flat 44-byte record (catalog pair<float,CCameraTag> propagated)
+00a335e0	RELOCATION_MATCH	135v135	PASS	fill over pair<long, C3DMeshVolume>: CCharString op= + inlined CCountedPointer op=
+00af6d90	RELOCATION_MATCH	122v122	PASS	fill over pair<EPSCType, CComponentInstance>: vptr skipped (catalog pair<long,CCountedPointer> propagated)
+006be770	RELOCATION_MATCH	99v99	PASS	__uninitialized_fill_n over pair<long, CRegisteredMusicEntry>: nested user copy ctors keep the 2nd IV (catalog _Fill)
+0067c720	RELOCATION_MATCH	177v177	PASS	fill over CBlurredAttitudesDef: retail CParentDefClassBase 0x39, Attitudes +0x3C (catalog pair<__int64,..> propagated)
+008895f0	RELOCATION_MATCH	82v82	PASS	fill over CEnvironmentThemePriorityStackEntry (48 bytes retail; catalog pair<__int64,..> propagated)
+005e1820	MATCH	97v97	PASS	fill over pair<unsigned long, CAnimationEntry>: CIVCountedPointer op=, 2nd IV at Components
+009d1bb0	MATCH	49v49	PASS	fill over pair<unsigned long, CSoundPair>: trivial 12-byte block copy
+00806d80	RELOCATION_MATCH	140v140	PASS	not _Find: remove_copy over CTargetPoint (operator== and assignment inlined)
+004b91f0	RELOCATION_MATCH	91v91	PASS	__find_if with a CCharString-holding predicate + input_iterator_tag (catalog _Find<.., CCharString>)
+0069caf0	RELOCATION_MATCH	60v60	PASS	__find over a list of CIntelligentPointer<const CThing> (value is the intelligent pointer, not CThing*)
+0076d810	RELOCATION_MATCH	51v51	PASS	find_if (no tag) with a by-value one-pointer predicate (catalog _Find propagated)
+00535f38	MATCH	34v34	PASS	__find over list<CComponent*> with the input_iterator_tag
+006c4fc0	MATCH	34v34	PASS	find over list<CComponent*> (__find inlined, ret 8)

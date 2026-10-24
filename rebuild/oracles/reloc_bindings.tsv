@@ -29004,3 +29004,11 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?DestroyRange@@YIXPAU?$CCountedPointer@UCBindingTarget@@@@0ABUSNonscalarPtrIteratorTag@@@Z	00ab2bd0	00ab34c0
 ??1CStringKeyedTable_006fd040@@QAE@XZ	006fd040	00aecb80
 ?DestroyRange@@YIXPAUSNodeEntry@@0ABUSNonscalarPtrIteratorTag@@@Z	00ae9d50	00aecb80
+??4?$vector@U?$pair@KUCSubDefInfo@CDefClassBase@@@std@@@std@@QAEAAU01@ABU01@@Z	00431f90	0067c720
+??4?$vector@W4EOpinionAttitudeType@@@std@@QAEAAU01@ABU01@@Z	00471e44	0067c720
+??$__lower_bound@PBUTHitLocationIntersectionElement@?A0x48191a0b@@JUTHitLocationIntersectionElementPred@2@H@std@@YIPBUTHitLocationIntersectionElement@?A0x48191a0b@@PBU12@0ABJUTHitLocationIntersectionElementPred@2@PAH@Z	008174b0	00817e30
+??$__upper_bound@PBUTHitLocationIntersectionElement@?A0x48191a0b@@JUTHitLocationIntersectionElementPred@2@H@std@@YIPBUTHitLocationIntersectionElement@?A0x48191a0b@@PBU12@0ABJUTHitLocationIntersectionElementPred@2@PAH@Z	008174f0	00817e30
+??4?$CArray@UCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@NEnvironmentInternal@@QAEAAU01@ABU01@@Z	00888ee0	008895f0
+??4?$vector@J@std@@QAEAAU01@ABU01@@Z	00a80ee0	00a85810
+??4?$vector@K@std@@QAEAAU01@ABU01@@Z	00a83d70	00a85810
+??4?$vector@U?$pair@JUSMapValue12@@@std@@@std@@QAEAAU01@ABU01@@Z	00a84940	00a85810
