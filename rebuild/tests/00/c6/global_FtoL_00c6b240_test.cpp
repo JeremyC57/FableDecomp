@@ -1,41 +1,20 @@
-
-#include <stdio.h>
-
-long FtoL_model(float f)
+// Behaviour test for 0x00C6B240 FtoL(float): fld + fistp dword, current FPU rounding mode (default round-to-nearest-even).
+#include <cstdio>
+#ifdef _MSC_VER
+static long __cdecl FtoL(float f) 
 {
-    // x87 fistp uses round-to-nearest (banker's) by default
-    // model: round half to even
-    double d = (double)f;
-    double fl = (d < 0.0) ? -(double)((long)(-d)) : (double)((long)d);
-    double frac = d - fl;
-    long base = (long)fl;
-    if (frac > 0.5) base += (d < 0.0) ? -1 : 1;
-    else if (frac < -0.5) base += 1;
-    // simplification: just use nearbyint-like behavior for test values chosen to be exact/.0 or clearly rounding
-    return base;
+    long result;
+    __asm fld f
+    __asm fistp result
+    return result;
 }
-
+#else
+static long FtoL(float f) { long result; int r; __asm__("fistpl %0" : "=m"(r) : "t"(f) : "st"); result = r; return result; }
+#endif
 int main()
 {
-    struct { float in; long expect; } cases[] = {
-        {3.0f, 3},
-        {-3.0f, -3},
-        {0.0f, 0},
-        {100.0f, 100},
-        {-100.0f, -100},
-        {12345.0f, 12345},
-    };
-    int ok = 1;
-    for (int i = 0; i < 6; ++i)
-    {
-        long r = FtoL_model(cases[i].in);
-        if (r != cases[i].expect)
-        {
-            printf("FAIL idx=%d got=%ld expect=%ld\n", i, r, cases[i].expect);
-            ok = 0;
-        }
-    }
-    if (ok) printf("OK_00c6b240\n");
-    else printf("BAD\n");
-    return ok ? 0 : 1;
+    if (FtoL(1.4f) != 1 || FtoL(1.6f) != 2 || FtoL(2.5f) != 2 || FtoL(3.5f) != 4 || FtoL(-1.6f) != -2
+        || FtoL(-2.5f) != -2 || FtoL(123456.0f) != 123456 || FtoL(0.0f) != 0) { std::printf("00c6b240_TEST FAIL\n"); return 1; }
+    std::printf("00c6b240_TEST PASS\n");
+    return 0;
 }

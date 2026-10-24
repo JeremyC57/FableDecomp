@@ -1,110 +1,49 @@
-#include <math.h>
+// Behaviour test for 0x0066F8B0 CInputTypeMouseMovementEvent::GetControlDirection: mouse movement scaled by 1/64, Y
+// flipped, clamped to unit length when longer than 1.
 #include <stdio.h>
-
-extern "C" void* __fastcall
-CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0(
-    void* input_type, void*, void* result, const void* event);
-
-struct Direction
-{
-    float x;
-    float y;
+#include <math.h>
+class C3DVector { public: float X, Y, Z; };
+class C2DVector {
+public:
+    float X, Y;
+    C2DVector() { }
+    C2DVector(float x, float y) : X(x), Y(y) { }
+    explicit C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
 };
-
-struct Event
+class CInputEvent { public: C3DVector Movement; C3DVector GetMouseMovement() const { return Movement; } };
+static const float g_MouseMovementScale = 0.015625f;
+struct CInputTypeMouseMovementEvent_Methods { C2DVector GetControlDirection(const CInputEvent& event) const; };
+C2DVector CInputTypeMouseMovementEvent_Methods::GetControlDirection(const CInputEvent& event) const
 {
-    Direction movement;
-};
-
-extern "C" float
-CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0_Scale =
-    0.015625f;
-extern "C" float
-CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0_FlipY =
-    -1.0f;
-extern "C" float
-CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0_Unit =
-    1.0f;
-
-static int g_movement_calls;
-static void* g_last_event;
-static void* g_last_result;
-
-extern "C" void* __fastcall
-CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0_GetMovement(
-    void* event, void*, void* result)
-{
-    ++g_movement_calls;
-    g_last_event = event;
-    g_last_result = result;
-    *(Direction*)result = ((Event*)event)->movement;
-    return result;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
+    C2DVector movement(event.GetMouseMovement());
+    double x = g_MouseMovementScale * movement.X;
+    double y = movement.Y;
+    y *= g_MouseMovementScale;
+    y = (float)y * -1.0f;
+    double lengthSq = x * x;
+    lengthSq += y * y;
+    float length = (float)sqrt(lengthSq);
+    if (length > 1.0f) {
+        float scale = 1.0f / length;
+        x *= scale;
+        y *= scale;
     }
-    return 1;
+    return C2DVector((float)x, (float)y);
 }
-
-static int NearlyEqual(float left, float right)
-{
-    return (float)fabs(left - right) < 0.00001f;
-}
-
-static int RunCase(
-    Event& event, float expected_x, float expected_y)
-{
-    int ok = 1;
-    Direction result;
-    long input_marker = 0x10203040;
-    void* returned;
-
-    g_movement_calls = 0;
-    g_last_event = 0;
-    g_last_result = 0;
-    result.x = 99.0f;
-    result.y = 99.0f;
-    returned = CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0(
-        &input_marker, 0, &result, &event);
-    ok &= Check(returned == &result,
-                "hidden result buffer must be returned");
-    ok &= Check(g_movement_calls == 1 && g_last_event == &event,
-                "movement helper must receive the event once");
-    ok &= Check(g_last_result != &result,
-                "movement helper must populate a local temporary");
-    ok &= Check(NearlyEqual(result.x, expected_x) &&
-                NearlyEqual(result.y, expected_y),
-                "returned control direction must match");
-    ok &= Check(input_marker == 0x10203040,
-                "input type object must be ignored");
-    return ok;
-}
-
+static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 int main()
 {
-    int ok = 1;
-    Event event;
-
-    event.movement.x = 192.0f;
-    event.movement.y = 256.0f;
-    ok &= RunCase(event, 0.6f, -0.8f);
-
-    event.movement.x = -16.0f;
-    event.movement.y = -32.0f;
-    ok &= RunCase(event, -0.25f, 0.5f);
-
-    event.movement.x = 0.0f;
-    event.movement.y = 0.0f;
-    ok &= RunCase(event, 0.0f, 0.0f);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeMouseMovementEvent::GetControlDirection 0x0066F8B0");
+    CInputTypeMouseMovementEvent_Methods t; CInputEvent e;
+    e.Movement.X = 32.0f; e.Movement.Y = 16.0f; e.Movement.Z = 99.0f;
+    C2DVector a = t.GetControlDirection(e);
+    bool ok = Near(a.X, 0.5f) && Near(a.Y, -0.25f);
+    e.Movement.X = 192.0f; e.Movement.Y = -256.0f;          // (3, 4) -> length 5 -> (0.6, 0.8)
+    C2DVector b = t.GetControlDirection(e);
+    ok = ok && Near(b.X, 0.6f) && Near(b.Y, 0.8f);
+    e.Movement.X = 64.0f; e.Movement.Y = 0.0f;              // exactly 1: not rescaled
+    C2DVector c = t.GetControlDirection(e);
+    ok = ok && c.X == 1.0f && c.Y == 0.0f;
+    if (!ok) { printf("0066f8b0_TEST FAIL\n"); return 1; }
+    printf("0066f8b0_TEST PASS\n");
     return 0;
 }

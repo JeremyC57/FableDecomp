@@ -1,15 +1,8 @@
-// GFROR13 @ 0x00497890 -- rotate-right-by-13 of the __fastcall ecx argument.
-// Retail: push ecx; mov [esp],ecx; ror [esp],0xd; mov eax,[esp]; pop ecx; ret
-__declspec(naked) unsigned int __fastcall GFROR13(unsigned int value)
+// GFROR13(unsigned long) -- rotate-right-by-13 hash step (__fastcall)
+// Leaf: GFROR13
+// Retail-asm: 0x00497891 `mov [esp],ecx` + 0x00497894 `ror dword ptr [esp],0Dh` rotates the fastcall argument's stack home in memory; VC7.1 C++ (_lrotr or (v>>13)|(v<<19)) rotates in a register (`mov eax,ecx; ror eax,0Dh`), so the original was `__asm ror value, 13` on the parameter.
+unsigned long __fastcall GFROR13(unsigned long value)
 {
-    (void)value;
-    __asm
-    {
-        push ecx
-        mov  dword ptr [esp], ecx
-        ror  dword ptr [esp], 0x0d
-        mov  eax, dword ptr [esp]
-        pop  ecx
-        ret
-    }
+    __asm ror value, 13
+    return value;
 }

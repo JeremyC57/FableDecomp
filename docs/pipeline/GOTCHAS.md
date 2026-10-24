@@ -1001,3 +1001,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - GFSerialiseMapBinaryIn rows need same-TU `auto_inline(off)` traits stand-ins so the empty traits temporaries sit on the pair's first word (chunk 332).
 - An explicit specialisation declaration of a member template ICEs VC7.1 (C1001); declare non-template overloads (008269a0).
 - VC7.1 /Od (the test lane) can hang on a `main` with several sibling `for (int i ...)` loops in one block; hoist the counter. A hang shows as TCC_FAIL after the cl TIMEOUT.
+- When retail keeps a local unaliased (dead-arg-slot homing, a register cached across calls, hoisted loop-invariant stores), the original had the address-taking callee in the same TU: a same-TU noinline stand-in that never stores the address reproduces it (de-bake B2: 0041d8a8, 0066eab7, 0066e985, 008a89d0, 00597006). Only the target is graded; the stand-in is not landed at the callee's address.
+- `retail_asm` rows landed 2026-10-24: GFROR13 (`ror` of the fastcall stack copy), FtoL float/double (bare dword `fistp`), SetViewport (one `__forceinline` FtoL inlined 4x), CPUAheadCounterCallback x2 (`rdtsc`; VC7.1 has no `__rdtsc`).
+- A `/GS` row needs `CompilerFlags = '/O2 /Oy /W3 /GS'` in the catalog block, or recheck only finds it in its flag sweep (005eaf30).

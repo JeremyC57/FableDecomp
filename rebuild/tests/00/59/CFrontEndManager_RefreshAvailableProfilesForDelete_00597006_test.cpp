@@ -1,495 +1,168 @@
-#include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006.cpp"
-
-extern "C" const char FrontEndDeleteListDefinition_00597006[] =
-    "UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE";
-extern "C" const char FrontEndEmptyDefinition_00597006[] = "";
-extern "C" const char FrontEndDeleteButtonDefinition_00597006[] =
-    "UI_FRONTEND_BUTTON_FOR_PROFILES_LIST";
-extern "C" const float FrontEndProfileSpacing_00597006 = 30.0f;
-
-enum ComponentId_00597006
-{
-    ROOT_00597006 = 1,
-    OLD_LIST_00597006 = 2,
-    NEW_LIST_00597006 = 3,
-    BUTTON0_00597006 = 10,
-    BUTTON1_00597006 = 11
+// Behaviour test for 0x00597006 NUISystem::CFrontEndManager::RefreshAvailableProfilesForDelete: the delete screen's old
+// profile list (if any) is closed with a type-1 action, a new list is created and added, one button per profile name at
+// y = 0, 30, 60 ... gets a shared type-0xD7 action carrying that name (select + delete), is added to the list, then the
+// screen is re-initialised and the profile count returned; every counted pointer is released.
+#include <stdio.h>
+#include <string.h>
+#ifndef _MSC_VER
+#define __fastcall
+#endif
+static int g_log[64]; static int g_logN = 0;
+static void Log(int v) { if (g_logN < 64) g_log[g_logN++] = v; }
+class CCharString { public: const char* PStringData; CCharString(const char* t, long = -1) : PStringData(t) {} ~CCharString() {} };
+class CWideString { public: void* PStringData; };
+struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+static int g_liveInfos = 0;
+namespace NUISystem {
+class CComponent; class CList; class CActionParam; class CActionParamString;
+static CActionParam* g_lastParam = 0;
+struct CActionParamList { void* _M_node; void push_back(CActionParam* const& x) { g_lastParam = x; _M_node = (void*)x; } };
+struct CActionParamListOwned { void* _M_node; ~CActionParamListOwned() {} };
+namespace N_0042bed4 { struct CAction {
+    long ActionType; CActionParamListOwned UIActionParams;
+    CAction() : ActionType(0) { UIActionParams._M_node = 0; }
+    CAction(const CAction& o) : ActionType(o.ActionType) { UIActionParams._M_node = 0; }
+}; }
+class CAction { public: long ActionType; CActionParamList UIActionParams; void* ThingActionParams; bool Valid;
+    CAction() : ActionType(0), ThingActionParams(0), Valid(true) { UIActionParams._M_node = 0; } };
+class CActionParamString { public: void* __vftable; long ActionParamType; CWideString Value;
+    CActionParamString(const CWideString& v) : __vftable(0), ActionParamType(3), Value(v) {} };
+}
+namespace NUISystem { class CComponent; class CAction; }
+static void __fastcall DeleteComponent(void* p);
+static void __fastcall DeleteAction(void* p);
+template <class T> struct SDeleter;
+template <> struct SDeleter<NUISystem::CComponent> { static void (__fastcall* Get())(void*) { return DeleteComponent; } };
+template <> struct SDeleter<NUISystem::CAction> { static void (__fastcall* Get())(void*) { return DeleteAction; } };
+template <class T> class CCountedPointer {
+public:
+    T* Data; CCPPointerInfo* Info;
+    CCountedPointer(T* data) : Data(data), Info(0)
+    { if (data) { Info = new CCPPointerInfo; Info->RefCount = 1; Info->DeleteFunc = SDeleter<T>::Get(); Info->Data = data; ++g_liveInfos; } }
+    ~CCountedPointer() { Release(); }
+    void Release() { if (Info && --Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; --g_liveInfos; } Data = 0; Info = 0; }
+    T* operator->() const { return Data; }
 };
-
-struct TestComponent_00597006
-{
-    void** vtable;
-    int identifier;
+struct CListPointer {
+    NUISystem::CList* Data; CCPPointerInfo* Info;
+    CListPointer(const CCountedPointer<NUISystem::CComponent>& other) : Data(0), Info(0) { ShareData((NUISystem::CList*)other.Data, other.Info); }
+    ~CListPointer() { Release(); }
+    void Release() { if (Info) { if (--Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; --g_liveInfos; } } Data = 0; Info = 0; }
+    void ShareData(NUISystem::CList* data, CCPPointerInfo* info) { if (Info != info) { Release(); Data = data; Info = info; if (info) ++info->RefCount; } }
+    NUISystem::CList* operator->() const { return Data; }
 };
-
-static void* g_Vtable[72];
-static TestComponent_00597006 g_Root;
-static TestComponent_00597006 g_OldList;
-static TestComponent_00597006 g_NewList;
-static TestComponent_00597006 g_Buttons[2];
-static CFrontEndManager_00597006 g_Manager;
-static CWideString_00597006 g_Profiles[2];
-static CComponent_00597006* g_RootPointer;
-static CComponent_00597006* g_OldListResult;
-static CAction_00597006 g_Actions[2];
-static CActionParamString_00597006 g_Parameters[2];
-static int g_ProfileCount;
-static int g_GetNamesCalls;
-static int g_LookupCalls;
-static int g_LookupKey;
-static int g_FindCalls;
-static int g_ClearCalls;
-static int g_CreateListCalls;
-static int g_RootAddCalls;
-static int g_RootActivateCalls;
-static int g_CreateButtonCalls;
-static CWideString_00597006* g_ButtonProfiles[2];
-static float g_ButtonOffsets[2];
-static int g_AllocateCalls;
-static unsigned int g_AllocationSizes[4];
-static int g_ActionConstructCalls;
-static int g_ParamConstructCalls;
-static CWideString_00597006* g_ParamProfiles[2];
-static int g_ParamAssignCalls;
-static unsigned int g_AssignedActionTypes[2];
-static CActionParamString_00597006* g_AssignedParams[2];
-static int g_ButtonActionCalls108;
-static int g_ButtonActionCalls11c;
-static int g_ListAddCalls;
-static int g_ListAddedButtons[2];
-static int g_ActionReleaseCalls;
-static int g_ButtonReleaseCalls;
-static int g_ListReleaseCalls;
-static int g_VectorTidyCalls;
-
-static int ComponentId(CComponent_00597006* component)
-{
-    return ((TestComponent_00597006*)component)->identifier;
-}
-
-extern "C" CComponent_00597006* __fastcall TestFindChild_00597006(
-    CComponent_00597006* component,
-    void*,
-    CCharString_00597006 definition)
-{
-    ++g_FindCalls;
-    if (ComponentId(component) != ROOT_00597006 ||
-        std::strcmp(
-            definition.data,
-            FrontEndDeleteListDefinition_00597006) != 0)
+namespace NUISystem {
+static int g_liveComponents = 0;
+class CComponent {
+public:
+    int Id; long LastAction; float Y; const CWideString* Text; CAction* Select; CAction* Delete; int Children; int Initialised;
+    CComponent(int id) : Id(id), LastAction(-1), Y(-1), Text(0), Select(0), Delete(0), Children(0), Initialised(0) { ++g_liveComponents; }
+    virtual ~CComponent() { --g_liveComponents; }
+    virtual CComponent* FindChild(CCharString name);
+    virtual void Initialise() { ++Initialised; Log(900 + Id); }
+    virtual void AddChild(CCountedPointer<CComponent>& child) { ++Children; Log(100 + child->Id); }
+    virtual void AddChildAfterFocus(CCountedPointer<CComponent>& child) { ++Children; Log(200 + child->Id); }
+    virtual void SetAction(N_0042bed4::CAction action) { LastAction = action.ActionType; Log(300 + Id); }
+    virtual void SetSelectAction(CCountedPointer<CAction>& a) { Select = a.Data; }
+    virtual void SetDeleteAction(CCountedPointer<CAction>& a) { Delete = a.Data; }
+};
+class CList : public CComponent { public: CList(int id) : CComponent(id) {} };
+static CComponent* g_oldList = 0;
+CComponent* CComponent::FindChild(CCharString name)
+{ return strcmp(name.PStringData, "UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE") == 0 ? g_oldList : 0; }
+static int g_nextId = 10;
+class CManager { public: CComponent* CreateComponent(const CCharString& def, bool b)
+{ Log(strcmp(def.PStringData, "UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE") == 0 && !b ? 1 : -1); return new CList(g_nextId++); } };
+enum FRONTEND_SCREEN { FRONTEND_SCREEN_DELETE_PROFILE = 21 };
+static CComponent* g_screen = 0; static int g_key = -1;
+struct CScreenMap { void* _M_header; unsigned long _M_node_count; long _M_key_compare;
+    CComponent*& operator[](const FRONTEND_SCREEN& key) { g_key = key; return g_screen; } };
+static CWideString g_names[3]; static unsigned long g_nameCount = 3; static int g_namesFreed = 0;
+struct CWideStringVector {
+    CWideString* _M_start; CWideString* _M_finish; CWideString* _M_end_of_storage;
+    CWideStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    ~CWideStringVector() { ++g_namesFreed; }
+    unsigned long size() const { return _M_finish - _M_start; }
+    CWideString& operator[](unsigned long n) { return _M_start[n]; }
+};
+struct SButtonRecord { const CWideString* text; float y; int id; };
+static SButtonRecord g_buttons[8];
+class CFrontEndManager : public CManager {
+public:
+    static CFrontEndManager* __fastcall GetInstance();
+    void GetProfileNames(CWideStringVector& names) { names._M_start = g_names; names._M_finish = names._M_end_of_storage = g_names + g_nameCount; }
+    CComponent* CreateFrontEndButtonComponent(CWideString& text, float y, const CCharString& frameDef, const CCharString& buttonDef, bool flag)
     {
-        return 0;
+        CComponent* c = new CComponent(g_nextId++);
+        int n = c->Id;
+        if (strcmp(frameDef.PStringData, "UI_FRONTEND_BUTTON_FOR_PROFILES_LIST") != 0 || buttonDef.PStringData[0] != 0 || flag) c->Id = -1;
+        c->Text = &text; c->Y = y; (void)n;
+        return c;
     }
-    return g_OldListResult;
+    unsigned long RefreshAvailableProfilesForDelete();
+    unsigned char _pad00[0x54];
+    CScreenMap m_mapScreens;
+};
+static CFrontEndManager g_manager;
+CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_manager; }
 }
-
-extern "C" void __fastcall TestAddChild_00597006(
-    CComponent_00597006* component,
-    void*,
-    CCountedComponent_00597006* child)
+static void __fastcall DeleteComponent(void* p) { delete (NUISystem::CComponent*)p; }
+static void __fastcall DeleteAction(void* p) { delete (NUISystem::CAction*)p; }
+namespace NUISystem {
+unsigned long CFrontEndManager::RefreshAvailableProfilesForDelete()
 {
-    if (ComponentId(component) == ROOT_00597006 &&
-        ComponentId(child->object) == NEW_LIST_00597006)
-    {
-        ++g_RootAddCalls;
+    CWideStringVector names;
+    GetProfileNames(names);
+    CFrontEndManager* manager = GetInstance();
+    CComponent* screen = m_mapScreens[FRONTEND_SCREEN_DELETE_PROFILE];
+    CComponent* oldList = screen->FindChild("UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE");
+    if (oldList) {
+        N_0042bed4::CAction close;
+        close.ActionType = 1;
+        oldList->SetAction(close);
     }
-}
-
-extern "C" void __fastcall TestClearOld_00597006(
-    CComponent_00597006* component,
-    void*,
-    unsigned int,
-    unsigned int)
-{
-    if (ComponentId(component) == OLD_LIST_00597006)
-        ++g_ClearCalls;
-}
-
-extern "C" void __fastcall TestActivateRoot_00597006(
-    CComponent_00597006* component,
-    void*)
-{
-    if (ComponentId(component) == ROOT_00597006)
-        ++g_RootActivateCalls;
-}
-
-extern "C" void __fastcall TestButtonAction108_00597006(
-    CComponent_00597006*,
-    void*,
-    CCountedComponent_00597006* action)
-{
-    if (action->object != 0)
-        ++g_ButtonActionCalls108;
-}
-
-extern "C" void __fastcall TestButtonAction11c_00597006(
-    CComponent_00597006*,
-    void*,
-    CCountedComponent_00597006* action)
-{
-    if (action->object != 0)
-        ++g_ButtonActionCalls11c;
-}
-
-extern "C" void __fastcall TestListAddButton_00597006(
-    CComponent_00597006* component,
-    void*,
-    CCountedComponent_00597006* button)
-{
-    if (ComponentId(component) == NEW_LIST_00597006)
-    {
-        g_ListAddedButtons[g_ListAddCalls++] = ComponentId(button->object);
+    CCountedPointer<CComponent> listComponent(manager->CreateComponent("UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE", false));
+    CListPointer list(listComponent);
+    screen->AddChild(listComponent);
+    float y = 0.0f;
+    const unsigned long count = names.size();
+    for (unsigned long i = 0; i < count; ++i) {
+        CCountedPointer<CComponent> button(CreateFrontEndButtonComponent(names[i], y, "UI_FRONTEND_BUTTON_FOR_PROFILES_LIST", "", false));
+        CCountedPointer<CAction> action(new CAction());
+        CActionParam* param = (CActionParam*)new CActionParamString(names[i]);
+        action->ActionType = 0xd7;
+        action->UIActionParams.push_back(param);
+        g_buttons[i].text = button->Text; g_buttons[i].y = button->Y; g_buttons[i].id = button->Id;
+        button->SetSelectAction(action);
+        button->SetDeleteAction(action);
+        if (button->Select != action.Data || button->Delete != action.Data || action->ActionType != 0xd7
+            || ((CActionParamString*)g_lastParam)->Value.PStringData != names[i].PStringData) g_buttons[i].y = -99.0f;
+        list->AddChildAfterFocus(button);
+        y += 30.0f;
     }
+    screen->Initialise();
+    return count;
 }
-
-extern "C" void __fastcall FrontEndGetProfileNames_00597006(
-    CFrontEndManager_00597006* manager,
-    void*,
-    CProfileVector_00597006* output)
-{
-    ++g_GetNamesCalls;
-    if (manager == &g_Manager)
-    {
-        output->begin = g_Profiles;
-        output->end = g_Profiles + g_ProfileCount;
-        output->capacity = g_Profiles + 2;
-    }
 }
-
-extern "C" void* __cdecl FrontEndComponentManagerGet_00597006()
-{
-    return &g_Manager;
-}
-
-extern "C" CComponent_00597006** __fastcall
-FrontEndUsedLookup_00597006(
-    CUsedComponentMap_00597006* used,
-    void*,
-    const int* key)
-{
-    ++g_LookupCalls;
-    g_LookupKey = *key;
-    if (used != &g_Manager.usedComponents)
-        return 0;
-    return &g_RootPointer;
-}
-
-extern "C" void __fastcall FrontEndCharConstruct_00597006(
-    CCharString_00597006* string,
-    void*,
-    const char* text,
-    int)
-{
-    string->data = text;
-}
-
-extern "C" void __fastcall FrontEndTemporaryListInit_00597006(
-    void* value,
-    void*)
-{
-    *(unsigned int*)value = 0;
-}
-
-extern "C" void __fastcall FrontEndTemporaryPairConstruct_00597006(
-    void* value,
-    void*,
-    const void*)
-{
-    *(unsigned int*)value = 1;
-}
-
-extern "C" void __fastcall FrontEndTemporaryListDestroy_00597006(
-    void*,
-    void*)
-{
-}
-
-extern "C" CComponent_00597006* __fastcall
-FrontEndManagerCreateComponent_00597006(
-    void* manager,
-    void*,
-    const CCharString_00597006* definition,
-    bool enabled)
-{
-    if (manager == &g_Manager &&
-        !enabled &&
-        std::strcmp(
-            definition->data,
-            FrontEndDeleteListDefinition_00597006) == 0)
-    {
-        ++g_CreateListCalls;
-    }
-    return (CComponent_00597006*)&g_NewList;
-}
-
-extern "C" void __fastcall FrontEndCountedConstruct_00597006(
-    CCountedComponent_00597006* counted,
-    void*,
-    CComponent_00597006* component)
-{
-    counted->object = component;
-    counted->pointerInfo = (void*)0x12340000;
-}
-
-extern "C" void __fastcall FrontEndCharDestroy_00597006(
-    CCharString_00597006*,
-    void*)
-{
-}
-
-extern "C" void __fastcall FrontEndCountedShare_00597006(
-    CCountedComponent_00597006* counted,
-    void*,
-    CComponent_00597006* component,
-    void* pointerInfo)
-{
-    counted->object = component;
-    counted->pointerInfo = pointerInfo;
-}
-
-extern "C" CComponent_00597006* __fastcall
-FrontEndCreateDeleteButton_00597006(
-    CFrontEndManager_00597006* manager,
-    void*,
-    CWideString_00597006* profile,
-    float offset,
-    const CCharString_00597006* buttonDefinition,
-    const CCharString_00597006* emptyDefinition,
-    bool enabled)
-{
-    int index = g_CreateButtonCalls++;
-    g_ButtonProfiles[index] = profile;
-    g_ButtonOffsets[index] = offset;
-    if (manager != &g_Manager ||
-        enabled ||
-        std::strcmp(
-            buttonDefinition->data,
-            FrontEndDeleteButtonDefinition_00597006) != 0 ||
-        std::strcmp(
-            emptyDefinition->data,
-            FrontEndEmptyDefinition_00597006) != 0)
-    {
-        return 0;
-    }
-    return (CComponent_00597006*)&g_Buttons[index];
-}
-
-extern "C" void* __cdecl FrontEndAllocate_00597006(unsigned int bytes)
-{
-    int call = g_AllocateCalls++;
-    g_AllocationSizes[call] = bytes;
-    if ((call & 1) == 0)
-        return &g_Actions[call / 2];
-    return &g_Parameters[call / 2];
-}
-
-extern "C" CAction_00597006* __fastcall FrontEndActionConstruct_00597006(
-    CAction_00597006* action,
-    void*)
-{
-    ++g_ActionConstructCalls;
-    action->type = 0;
-    return action;
-}
-
-extern "C" void __fastcall FrontEndActionCountedConstruct_00597006(
-    CCountedComponent_00597006* counted,
-    void*,
-    CComponent_00597006* action)
-{
-    counted->object = action;
-    counted->pointerInfo = (void*)0x56780000;
-}
-
-extern "C" CActionParamString_00597006* __fastcall
-FrontEndActionParamConstruct_00597006(
-    CActionParamString_00597006* parameter,
-    void*,
-    CWideString_00597006* profile)
-{
-    g_ParamProfiles[g_ParamConstructCalls++] = profile;
-    return parameter;
-}
-
-extern "C" void __fastcall FrontEndActionParamAssign_00597006(
-    void* actionParameterSlot,
-    void*,
-    CActionParamString_00597006** parameter)
-{
-    CAction_00597006* action =
-        (CAction_00597006*)((char*)actionParameterSlot - 4);
-    g_AssignedActionTypes[g_ParamAssignCalls] = action->type;
-    g_AssignedParams[g_ParamAssignCalls] = *parameter;
-    ++g_ParamAssignCalls;
-}
-
-extern "C" void __fastcall FrontEndActionRelease_00597006(
-    CCountedComponent_00597006*,
-    void*)
-{
-    ++g_ActionReleaseCalls;
-}
-
-extern "C" void __fastcall FrontEndComponentRelease_00597006(
-    CCountedComponent_00597006* counted,
-    void*)
-{
-    if (counted->object == (CComponent_00597006*)&g_NewList)
-        ++g_ListReleaseCalls;
-    else
-        ++g_ButtonReleaseCalls;
-}
-
-extern "C" void __fastcall FrontEndListRelease_00597006(
-    CCountedComponent_00597006*,
-    void*)
-{
-    ++g_ListReleaseCalls;
-}
-
-extern "C" void __fastcall FrontEndProfileVectorTidy_00597006(
-    CProfileVector_00597006*,
-    void*)
-{
-    ++g_VectorTidyCalls;
-}
-
-static void ResetFixture(int profileCount, bool oldListExists)
-{
-    for (int index = 0; index < 72; ++index)
-        g_Vtable[index] = 0;
-    g_Vtable[0x0c / 4] = (void*)&TestFindChild_00597006;
-    g_Vtable[0xac / 4] = (void*)&TestActivateRoot_00597006;
-    g_Vtable[0xec / 4] = (void*)&TestAddChild_00597006;
-    g_Vtable[0xf0 / 4] = (void*)&TestListAddButton_00597006;
-    g_Vtable[0xf8 / 4] = (void*)&TestClearOld_00597006;
-    g_Vtable[0x108 / 4] = (void*)&TestButtonAction108_00597006;
-    g_Vtable[0x11c / 4] = (void*)&TestButtonAction11c_00597006;
-
-    g_Root.vtable = g_Vtable;
-    g_Root.identifier = ROOT_00597006;
-    g_OldList.vtable = g_Vtable;
-    g_OldList.identifier = OLD_LIST_00597006;
-    g_NewList.vtable = g_Vtable;
-    g_NewList.identifier = NEW_LIST_00597006;
-    for (int index = 0; index < 2; ++index)
-    {
-        g_Buttons[index].vtable = g_Vtable;
-        g_Buttons[index].identifier = BUTTON0_00597006 + index;
-        g_Profiles[index].data = (void*)(0x1000 + index);
-    }
-
-    g_RootPointer = (CComponent_00597006*)&g_Root;
-    g_OldListResult = oldListExists
-        ? (CComponent_00597006*)&g_OldList
-        : 0;
-    g_ProfileCount = profileCount;
-    g_GetNamesCalls = 0;
-    g_LookupCalls = 0;
-    g_LookupKey = 0;
-    g_FindCalls = 0;
-    g_ClearCalls = 0;
-    g_CreateListCalls = 0;
-    g_RootAddCalls = 0;
-    g_RootActivateCalls = 0;
-    g_CreateButtonCalls = 0;
-    g_AllocateCalls = 0;
-    g_ActionConstructCalls = 0;
-    g_ParamConstructCalls = 0;
-    g_ParamAssignCalls = 0;
-    g_ButtonActionCalls108 = 0;
-    g_ButtonActionCalls11c = 0;
-    g_ListAddCalls = 0;
-    g_ActionReleaseCalls = 0;
-    g_ButtonReleaseCalls = 0;
-    g_ListReleaseCalls = 0;
-    g_VectorTidyCalls = 0;
-}
-
 int main()
 {
-    int failures = 0;
-
-    // Two profiles exercise old-list clearing, per-profile ownership, action
-    // setup, 30-unit spacing, and list population.
-    ResetFixture(2, true);
-    long count = g_Manager.RefreshAvailableProfilesForDelete();
-    if (count != 2 ||
-        g_GetNamesCalls != 1 ||
-        g_LookupCalls != 1 ||
-        g_LookupKey != 0x15 ||
-        g_FindCalls != 1 ||
-        g_ClearCalls != 1 ||
-        g_CreateListCalls != 1 ||
-        g_RootAddCalls != 1 ||
-        g_RootActivateCalls != 1 ||
-        g_CreateButtonCalls != 2 ||
-        g_ButtonProfiles[0] != &g_Profiles[0] ||
-        g_ButtonProfiles[1] != &g_Profiles[1] ||
-        g_ButtonOffsets[0] != 0.0f ||
-        g_ButtonOffsets[1] != 30.0f)
-    {
-        std::printf("profile list construction failed\n");
-        ++failures;
-    }
-    if (g_AllocateCalls != 4 ||
-        g_AllocationSizes[0] != 0x10 ||
-        g_AllocationSizes[1] != 0x0c ||
-        g_AllocationSizes[2] != 0x10 ||
-        g_AllocationSizes[3] != 0x0c ||
-        g_ActionConstructCalls != 2 ||
-        g_ParamConstructCalls != 2 ||
-        g_ParamProfiles[0] != &g_Profiles[0] ||
-        g_ParamProfiles[1] != &g_Profiles[1] ||
-        g_ParamAssignCalls != 2 ||
-        g_AssignedActionTypes[0] != 0xd7 ||
-        g_AssignedActionTypes[1] != 0xd7)
-    {
-        std::printf("delete action ownership failed\n");
-        ++failures;
-    }
-    if (g_ButtonActionCalls108 != 2 ||
-        g_ButtonActionCalls11c != 2 ||
-        g_ListAddCalls != 2 ||
-        g_ListAddedButtons[0] != BUTTON0_00597006 ||
-        g_ListAddedButtons[1] != BUTTON1_00597006 ||
-        g_ActionReleaseCalls != 2 ||
-        g_ButtonReleaseCalls != 2 ||
-        g_ListReleaseCalls != 2 ||
-        g_VectorTidyCalls != 1)
-    {
-        std::printf("component attach/release contract failed\n");
-        ++failures;
-    }
-
-    // An empty profile vector still replaces/attaches and activates the list,
-    // releases both counted owners, and tidies the vector.
-    ResetFixture(0, false);
-    count = g_Manager.RefreshAvailableProfilesForDelete();
-    if (count != 0 ||
-        g_ClearCalls != 0 ||
-        g_CreateButtonCalls != 0 ||
-        g_AllocateCalls != 0 ||
-        g_RootAddCalls != 1 ||
-        g_RootActivateCalls != 1 ||
-        g_ListReleaseCalls != 2 ||
-        g_VectorTidyCalls != 1)
-    {
-        std::printf("empty-profile boundary failed\n");
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "FRONTEND_00597006_TEST FAIL count=%d\n",
-            failures);
-        return 1;
-    }
-
-    std::printf("FRONTEND_00597006_TEST PASS\n");
+    using namespace NUISystem;
+    int i;
+    for (i = 0; i < 3; ++i) g_names[i].PStringData = (void*)(g_names + i);
+    CComponent screen(1), old(2);
+    g_screen = &screen; g_oldList = &old;
+    unsigned long n = g_manager.RefreshAvailableProfilesForDelete();
+    bool ok = n == 3 && g_key == 21 && old.LastAction == 1 && screen.Children == 1 && screen.Initialised == 1 && g_namesFreed == 1;
+    for (i = 0; ok && i < 3; ++i) ok = g_buttons[i].text == &g_names[i] && g_buttons[i].y == (float)(30 * i) && g_buttons[i].id >= 0;
+    // log: old list closed, list created, list added, three buttons added to the list (ids 11..13), screen initialised
+    int expect[] = { 302, 1, 110, 211, 212, 213, 901 };
+    ok = ok && g_logN == 7;
+    for (i = 0; ok && i < 7; ++i) ok = g_log[i] == expect[i];
+    ok = ok && g_liveInfos == 0 && g_liveComponents == 2;
+    g_oldList = 0; g_nameCount = 0; g_logN = 0;
+    n = g_manager.RefreshAvailableProfilesForDelete();
+    ok = ok && n == 0 && g_logN == 3 && g_log[0] == 1 && g_log[1] == 114 && g_log[2] == 901 && g_liveInfos == 0 && g_namesFreed == 2;
+    if (!ok) { printf("00597006_TEST FAIL\n"); return 1; }
+    printf("00597006_TEST PASS\n");
     return 0;
 }

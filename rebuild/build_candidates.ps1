@@ -2830,8 +2830,7 @@ $catalog = @(
         Module = 'CTCBoastingCrowdControl'
         Source = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d8a8.cpp'
         TestSource = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d8a8_test.cpp'
-        PassPattern = 'PASS_0041d8a8'
-        Grade = 'asm_bake'
+        PassPattern = '0041d8a8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00429950'
@@ -6822,8 +6821,7 @@ $catalog = @(
         Module = 'CFrontEndList'
         Source = '00/54/CFrontEndList_ScrollUp_0054c4c0.cpp'
         TestSource = '00/54/CFrontEndList_ScrollUp_0054c4c0_test.cpp'
-        PassPattern = 'FSE2_0054c4c0_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '0054c4c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0054c810'
@@ -6872,8 +6870,7 @@ $catalog = @(
         Module = 'CFrontEndManager'
         Source = '00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006.cpp'
         TestSource = '00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006_test.cpp'
-        PassPattern = 'FRONTEND_00597006_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '00597006_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00599d5c'
@@ -28989,8 +28986,7 @@ $catalog = @(
         Module = 'CDisplayManager'
         Source = '00/9b/CDisplayManager_SetViewport_009bf490.cpp'
         TestSource = '00/9b/CDisplayManager_SetViewport_009bf490_test.cpp'
-        PassPattern = 'FABLETLC_DISPLAY_FLOAT_VIEWPORT_BEHAVIOR PASS'
-        Grade = 'asm_bake'
+        PassPattern = '009bf490_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a05840'
@@ -30166,16 +30162,14 @@ $catalog = @(
         Module = 'NHeroInformationScreens::CManager'
         Source = '00/66/CManager_RemoveAllPlayerModes_0066e985.cpp'
         TestSource = '00/66/CManager_RemoveAllPlayerModes_0066e985_test.cpp'
-        PassPattern = 'PASS CManager::RemoveAllPlayerModes'
-        Grade = 'asm_bake'
+        PassPattern = '0066e985_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066eab7'
         Module = 'NHeroInformationScreens::CManager'
         Source = '00/66/CManager_CManager_0066eab7.cpp'
         TestSource = '00/66/CManager_CManager_0066eab7_test.cpp'
-        PassPattern = 'PASS CManager::CManager'
-        Grade = 'asm_bake'
+        PassPattern = '0066eab7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004944c0'
@@ -30319,8 +30313,7 @@ $catalog = @(
         Address = '0066f8b0'; Module = 'CInputTypeMouseMovementEvent'
         Source = '00/66/CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0.cpp'
         TestSource = '00/66/CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0_test.cpp'
-        PassPattern = 'PASS CInputTypeMouseMovementEvent::GetControlDirection 0x0066F8B0'
-        Grade = 'asm_bake'
+        PassPattern = '0066f8b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066f990'; Module = 'C2DVector'
@@ -30410,8 +30403,7 @@ $catalog = @(
         Address = '0089a510'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetNearestWithScriptName_0089a510.cpp'
         TestSource = '00/89/CGameScriptInterface_GetNearestWithScriptName_0089a510_test.cpp'
-        PassPattern = 'CGameScriptInterface_0089a510_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '0089a510_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066fab0'; Module = 'math'
@@ -30732,8 +30724,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/49/global_GFROR13_00497890.cpp'
         TestSource = '00/49/global_GFROR13_00497890_test.cpp'
-        PassPattern = 'OK_0x00497890'
-        Grade = 'asm_bake'
+        PassPattern = '00497890_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0049c770'
@@ -42297,8 +42288,8 @@ $catalog = @(
         Module = 'CTCTavernGame'
         Source = '00/5e/CTCTavernGame_SetStateAfterYesNo_005eaf30.cpp'
         TestSource = '00/5e/CTCTavernGame_SetStateAfterYesNo_005eaf30_test.cpp'
-        PassPattern = 'OK_005eaf30'
-        Grade = 'asm_bake'
+        PassPattern = '005eaf30_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
     }
     [pscustomobject]@{
         Address = '0066a670'
@@ -42691,8 +42682,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/c6/global_FtoL_00c6b240.cpp'
         TestSource = '00/c6/global_FtoL_00c6b240_test.cpp'
-        PassPattern = 'OK_00c6b240'
-        Grade = 'asm_bake'
+        PassPattern = '00c6b240_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cb2860'
@@ -43632,7 +43622,6 @@ $catalog = @(
         Source = '00/c5/global_CPUAheadCounterCallback_00c52a80.cpp'
         TestSource = '00/c5/global_CPUAheadCounterCallback_00c52a80_test.cpp'
         PassPattern = '00c52a80_TEST PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00cd3211'
@@ -48066,8 +48055,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/9e/global_CPUAheadCounterCallback_009e2540.cpp'
         TestSource = '00/9e/global_CPUAheadCounterCallback_009e2540_test.cpp'
-        PassPattern = 'RDTSC_OK'
-        Grade = 'asm_bake'
+        PassPattern = '009e2540_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009ea210'
@@ -92557,8 +92545,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/c8/global_FtoL_00c89be0.cpp'
         TestSource = '00/c8/global_FtoL_00c89be0_test.cpp'
-        PassPattern = 'PASS_00c89be0'
-        Grade = 'asm_bake'
+        PassPattern = '00c89be0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e1cac0'
@@ -125859,8 +125846,7 @@ $catalog = @(
         Module = 'CGameScriptInterface'
         Source = '00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0.cpp'
         TestSource = '00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0_test.cpp'
-        PassPattern = 'GET_ALL_CREATURES_EXCLUDING_HERO_PASS'
-        Grade = 'asm_bake'
+        PassPattern = '008a89d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004368e0'

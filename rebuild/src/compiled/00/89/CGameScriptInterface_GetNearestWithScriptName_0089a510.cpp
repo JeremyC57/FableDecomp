@@ -1,230 +1,131 @@
-struct CScriptThingRecord
-{
-    void*         m_pVTable;
-    void*         m_pData;
-    unsigned long* m_pReference;
+// CGameScriptInterface::GetNearestWithScriptName(const CScriptThing& from, const CCharString& scriptName) const -- of all things with the script name, return the one nearest (2D) to `from` other than `from` itself, the first one when none qualifies, or an empty handle when there is none
+// Leaf: GetNearestWithScriptName
+// Retail: Fable.exe @ 0x0089A510, 460 bytes, `ret 0xc` (hidden CScriptThing result); Ego_r.pdb
+// ?GetNearestWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z.
+// Callees: own slot 75 GetAllThingsWithScriptName (+0x12C, into a local vector), CBaseClass::CBaseClass 0x0099A2D0 /
+//   ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, free 0x00BFEA14, _ftol 0x00BFEA70; CScriptThing slot 0 (virtual
+//   destructor, in place), slot 6 GetPos (zero vector 0x0143E8E0 without an implementation) and the implementation's
+//   slot 78 IsSameThing.
+// Layout / shape: the model of the landed sibling GetNearestWithDefName 0x0089A880. Here the same-thing test comes
+//   first, the best squared distance starts at -1 ("none yet": `cmp ebp,-1 ; je`), is a `long` homed in the dead
+//   scriptName slot for the `fild`, and there is no size() > 1 guard. As in the sibling, `from`'s implementation is a
+//   named `CScriptThing* fromItem = from.PImp.Data;` before the same-thing call: it picks retail's eax/edx for the two
+//   GetPos vtable loads and eax for the counted-pointer release (the inline `from.PImp.Data` argument swaps them, 460v460).
+extern "C" void free(void* p);                           // 0x00BFEA14
+void operator delete(void* p);                           // 0x00BFE9BC
+struct CCharString { void* PStringData; };
+struct C3DVector { float X, Y, Z; };
+extern C3DVector g_ZeroVector;                           // 0x0143E8E0
+
+struct CCPPointerInfo {
+    long RefCount;
+    void (__fastcall* DeleteFunc)(void* data);
+    void* Data;
 };
-
-struct CScriptThingVector
-{
-    CScriptThingRecord* m_pBegin;
-    CScriptThingRecord* m_pEnd;
-    CScriptThingRecord* m_pCapacity;
-};
-
-struct CGameScriptInterface
-{
-    void** m_pVTable;
-};
-
-extern "C" unsigned long g_ScriptThingVTable;
-extern "C" float g_DefaultPosition[2];
-extern "C" void* __fastcall Sub_InitScriptThing(void* self);
-extern "C" void __fastcall Sub_DestroyScriptThing(void* self);
-extern "C" void __cdecl Sub_Free(void* pMemory);
-extern "C" long __cdecl Sub_RoundFloat();
-extern "C" void __cdecl Sub_DeleteReference(void* pReference);
-
-__declspec(naked)
-CScriptThingRecord* __fastcall
-CGameScriptInterface_GetNearestWithScriptName(
-    CGameScriptInterface* self,
-    int edxUnused,
-    CScriptThingRecord* pResult,
-    CScriptThingRecord* pOrigin,
-    const void* pScriptName)
-{
-    __asm
+template <class T> struct CCountedPointer {
+    T*              Data;
+    CCPPointerInfo* Info;
+    CCountedPointer() : Data(0), Info(0) { }
+    CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedPointer()
     {
-        sub esp, 1Ch
-        mov eax, dword ptr [ecx]
-        push ebx
-        push ebp
-        push esi
-        push edi
-        lea edx, [esp + 14h]
-        push edx
-        mov edx, dword ptr [esp + 3Ch]
-        xor ebp, ebp
-        push edx
-        mov dword ptr [esp + 1Ch], ebp
-        mov dword ptr [esp + 20h], ebp
-        mov dword ptr [esp + 24h], ebp
-        call dword ptr [eax + 12Ch]
-        mov edi, dword ptr [esp + 14h]
-        cmp edi, dword ptr [esp + 18h]
-        jne have_candidates
-
-        mov edi, dword ptr [esp + 30h]
-        mov ecx, edi
-        call Sub_InitScriptThing
-        mov ebx, dword ptr [esp + 18h]
-        mov esi, dword ptr [esp + 14h]
-        cmp esi, ebx
-        mov dword ptr [edi], offset g_ScriptThingVTable
-        mov dword ptr [edi + 4], ebp
-        mov dword ptr [edi + 8], ebp
-        je empty_destroyed
-empty_destroy_loop:
-        mov eax, dword ptr [esi]
-        push ebp
-        mov ecx, esi
-        call dword ptr [eax]
-        add esi, 0Ch
-        cmp esi, ebx
-        jne empty_destroy_loop
-        mov esi, dword ptr [esp + 14h]
-empty_destroyed:
-        cmp esi, ebp
-        je empty_freed
-        push esi
-        call Sub_Free
-        add esp, 4
-empty_freed:
-        mov eax, edi
-        pop edi
-        pop esi
-        pop ebp
-        pop ebx
-        add esp, 1Ch
-        ret 0Ch
-
-have_candidates:
-        mov ebx, dword ptr [esp + 34h]
-        or ebp, -1
-        mov dword ptr [esp + 38h], ebp
-        mov dword ptr [esp + 10h], edi
-        mov edi, edi
-candidate_loop:
-        mov eax, dword ptr [edi + 8]
-        test eax, eax
-        mov ecx, dword ptr [edi + 4]
-        mov dword ptr [esp + 20h], offset g_ScriptThingVTable
-        mov dword ptr [esp + 24h], ecx
-        mov dword ptr [esp + 28h], eax
-        je reference_copied
-        inc dword ptr [eax]
-        mov ecx, dword ptr [esp + 24h]
-reference_copied:
-        mov eax, dword ptr [ebx + 4]
-        mov edx, dword ptr [ecx]
-        push eax
-        call dword ptr [edx + 138h]
-        test al, al
-        jne release_local
-
-        mov ecx, dword ptr [esp + 24h]
-        test ecx, ecx
-        jne candidate_position
-        mov esi, offset g_DefaultPosition
-        jmp have_candidate_position
-candidate_position:
-        mov eax, dword ptr [ecx]
-        call dword ptr [eax + 18h]
-        mov esi, eax
-have_candidate_position:
-        mov edx, dword ptr [ebx]
-        mov ecx, ebx
-        call dword ptr [edx + 18h]
-        fld dword ptr [esi]
-        cmp ebp, -1
-        fsub dword ptr [eax]
-        fld dword ptr [esi + 4]
-        fsub dword ptr [eax + 4]
-        fld st(0)
-        fmul st(0), st(1)
-        fld st(2)
-        fmul st(0), st(3)
-        faddp st(1), st(0)
-        fstp st(2)
-        fstp st(0)
-        je select_candidate
-        fild dword ptr [esp + 38h]
-        fld st(1)
-        fcompp
-        fnstsw ax
-        test ah, 5
-        jp discard_distance
-select_candidate:
-        call Sub_RoundFloat
-        mov ebp, eax
-        mov dword ptr [esp + 38h], ebp
-        mov dword ptr [esp + 10h], edi
-        jmp release_local
-discard_distance:
-        fstp st(0)
-
-release_local:
-        mov eax, dword ptr [esp + 28h]
-        xor esi, esi
-        cmp eax, esi
-        mov dword ptr [esp + 20h], offset g_ScriptThingVTable
-        je local_released
-        dec dword ptr [eax]
-        mov eax, dword ptr [esp + 28h]
-        cmp dword ptr [eax], esi
-        jne local_released
-        mov ecx, dword ptr [eax + 8]
-        call dword ptr [eax + 4]
-        mov eax, dword ptr [esp + 28h]
-        push eax
-        call Sub_DeleteReference
-        add esp, 4
-local_released:
-        lea ecx, [esp + 20h]
-        mov dword ptr [esp + 24h], esi
-        mov dword ptr [esp + 28h], esi
-        call Sub_DestroyScriptThing
-        mov ecx, dword ptr [esp + 18h]
-        add edi, 0Ch
-        cmp edi, ecx
-        jne candidate_loop
-
-        mov ebx, dword ptr [esp + 30h]
-        mov eax, dword ptr [esp + 10h]
-        mov dword ptr [ebx], offset g_ScriptThingVTable
-        mov edx, dword ptr [eax + 4]
-        mov dword ptr [ebx + 4], edx
-        mov eax, dword ptr [eax + 8]
-        cmp eax, esi
-        mov dword ptr [ebx + 8], eax
-        je result_copied
-        inc dword ptr [eax]
-        mov ecx, dword ptr [esp + 18h]
-result_copied:
-        mov esi, dword ptr [esp + 14h]
-        cmp esi, ecx
-        mov edi, ecx
-        je vector_destroyed
-        _emit 08Dh
-        _emit 0A4h
-        _emit 024h
-        _emit 000h
-        _emit 000h
-        _emit 000h
-        _emit 000h
-vector_destroy_loop:
-        mov eax, dword ptr [esi]
-        push 0
-        mov ecx, esi
-        call dword ptr [eax]
-        add esi, 0Ch
-        cmp esi, edi
-        jne vector_destroy_loop
-        mov esi, dword ptr [esp + 14h]
-vector_destroyed:
-        test esi, esi
-        je vector_freed
-        push esi
-        call Sub_Free
-        add esp, 4
-vector_freed:
-        pop edi
-        pop esi
-        pop ebp
-        mov eax, ebx
-        pop ebx
-        add esp, 1Ch
-        ret 0Ch
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
     }
+};
+struct CBaseClass {
+    CBaseClass();                                        // 0x0099A2D0
+    virtual ~CBaseClass();                               // 0x0099A2E0
+};
+struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+    CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
+    CScriptThing() { }
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+    ~CScriptThing() { }
+    virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
+    virtual const C3DVector& GetPos() const { if (PImp.Data == 0) return g_ZeroVector; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    virtual void v07() const; virtual void v08() const; virtual void v09() const; virtual void v10() const; virtual void v11() const; virtual void v12() const;
+    virtual void v13() const; virtual void v14() const; virtual void v15() const; virtual void v16() const; virtual void v17() const; virtual void v18() const;
+    virtual void v19() const; virtual void v20() const; virtual void v21() const; virtual void v22() const; virtual void v23() const; virtual void v24() const;
+    virtual void v25() const; virtual void v26() const; virtual void v27() const; virtual void v28() const; virtual void v29() const; virtual void v30() const;
+    virtual void v31() const; virtual void v32() const; virtual void v33() const; virtual void v34() const; virtual void v35() const; virtual void v36() const;
+    virtual void v37() const; virtual void v38() const; virtual void v39() const; virtual void v40() const; virtual void v41() const; virtual void v42() const;
+    virtual void v43() const; virtual void v44() const; virtual void v45() const; virtual void v46() const; virtual void v47() const; virtual void v48() const;
+    virtual void v49() const; virtual void v50() const; virtual void v51() const; virtual void v52() const; virtual void v53() const; virtual void v54() const;
+    virtual void v55() const; virtual void v56() const; virtual void v57() const; virtual void v58() const; virtual void v59() const; virtual void v60() const;
+    virtual void v61() const; virtual void v62() const; virtual void v63() const; virtual void v64() const; virtual void v65() const; virtual void v66() const;
+    virtual void v67() const; virtual void v68() const; virtual void v69() const; virtual void v70() const; virtual void v71() const; virtual void v72() const;
+    virtual void v73() const; virtual void v74() const; virtual void v75() const; virtual void v76() const; virtual void v77() const;
+    virtual bool IsSameThing(const CScriptThing* other) const;   // slot 78 (+0x138), on the implementation objects
+    bool operator==(const CScriptThing& other) const { return PImp.Data->IsSameThing(other.PImp.Data); }
+};
+template <class T> __forceinline void _Destroy(T* first, T* last)
+{
+    for (; first != last; ++first)
+        first->~T();
+}
+template <class T> struct vector {                       // STLport vector (retail 12 bytes)
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    __forceinline ~vector()
+    {
+        _Destroy(_M_start, _M_finish);
+        if (_M_start)
+            free(_M_start);
+    }
+    T* begin() { return _M_start; }
+    T* end() { return _M_finish; }
+    bool empty() const { return _M_start == _M_finish; }
+    unsigned int size() const { return _M_finish - _M_start; }
+};
+
+struct CGameScriptInterface {                            // retail vtable 0x01260F0C
+    virtual void v000();   // slot 0 (+0x0)
+    virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
+    virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();
+    virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
+    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032();
+    virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040();
+    virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048();
+    virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054(); virtual void v055(); virtual void v056();
+    virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064();
+    virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072();
+    virtual void v073(); virtual void v074();
+    virtual long GetAllThingsWithScriptName(const CCharString& scriptName, vector<CScriptThing>& things) const;   // slot 75 (+0x12C)
+    CScriptThing GetNearestWithScriptName(const CScriptThing& from, const CCharString& scriptName) const;
+};
+
+CScriptThing CGameScriptInterface::GetNearestWithScriptName(const CScriptThing& from, const CCharString& scriptName) const
+{
+    vector<CScriptThing> things;
+    GetAllThingsWithScriptName(scriptName, things);
+    if (things.empty())
+        return CScriptThing();
+    long nearestDistance = -1;
+    CScriptThing* nearest = things.begin();
+    for (CScriptThing* it = things.begin(); it != things.end(); ++it) {
+        CScriptThing thing = *it;
+        CScriptThing* fromItem = from.PImp.Data;
+        if (!thing.PImp.Data->IsSameThing(fromItem)) {
+            const C3DVector& pos = thing.GetPos();
+            const C3DVector& fromPos = from.GetPos();
+            float dx = pos.X - fromPos.X;
+            float dy = pos.Y - fromPos.Y;
+            float distance = dx * dx + dy * dy;
+            if (nearestDistance == -1 || distance < nearestDistance) {
+                nearestDistance = (long)distance;
+                nearest = it;
+            }
+        }
+    }
+    return *nearest;
 }

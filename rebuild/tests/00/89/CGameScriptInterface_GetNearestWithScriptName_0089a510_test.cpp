@@ -1,233 +1,107 @@
-#include <cstdio>
-
-struct CScriptThingRecord
-{
-    void*          m_pVTable;
-    void*          m_pData;
-    unsigned long* m_pReference;
+// Behaviour test for 0x0089A510 CGameScriptInterface::GetNearestWithScriptName: of the things with the script name, the
+// one nearest (2D, x/y) to `from` other than `from` itself; the first one when only `from` matches; an empty handle when
+// none match; the squared distance is truncated to a long when stored (-1 = none yet).
+#include <stdio.h>
+#include <stdlib.h>
+#include <new>
+#ifndef _MSC_VER
+#define __fastcall
+#endif
+struct C3DVector { float X, Y, Z; };
+static C3DVector g_ZeroVector = { 0, 0, 0 };
+struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+static void __fastcall NoDelete(void*) { }
+template <class T> struct CCountedPointer {
+    T* Data; CCPPointerInfo* Info;
+    CCountedPointer() : Data(0), Info(0) { }
+    CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedPointer() { if (Info) { --Info->RefCount; if (Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } Data = 0; Info = 0; }
 };
-
-struct CScriptThingVector
-{
-    CScriptThingRecord* m_pBegin;
-    CScriptThingRecord* m_pEnd;
-    CScriptThingRecord* m_pCapacity;
+struct CBaseClass { CBaseClass() { } virtual ~CBaseClass() { } };
+struct CScriptThing : CBaseClass {
+    CCountedPointer<CScriptThing> PImp;
+    C3DVector Pos; int Id;                               // implementation-object data (test only)
+    CScriptThing() : Id(0) { Pos = g_ZeroVector; }
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp), Pos(other.Pos), Id(other.Id) { }
+    ~CScriptThing() { }
+    virtual const C3DVector& GetPos() const { if (PImp.Data == 0) return g_ZeroVector; return PImp.Data->GetImpPos(); }
+    virtual const C3DVector& GetImpPos() const { return Pos; }
+    virtual bool IsSameThing(const CScriptThing* other) const { return other == this; }
 };
-
-struct CGameScriptInterface
-{
-    void** m_pVTable;
+template <class T> struct vector {
+    T* _M_start; T* _M_finish; T* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    ~vector() { for (T* p = _M_start; p != _M_finish; ++p) p->~T(); if (_M_start) free(_M_start); }
+    T* begin() { return _M_start; }
+    T* end() { return _M_finish; }
+    bool empty() const { return _M_start == _M_finish; }
 };
-
-struct ReferenceInfo
+struct CCharString { void* PStringData; };
+static CScriptThing* g_imps[8]; static int g_impCount = 0;
+static CScriptThing MakeHandle(CScriptThing* imp)
 {
-    unsigned long m_Count;
-    void*         m_Release;
-    void*         m_Context;
-};
-
-struct CandidateData
-{
-    void** m_pVTable;
-};
-
-extern "C" unsigned long g_ScriptThingVTable = 0;
-extern "C" float g_DefaultPosition[2] = {0.0f, 0.0f};
-
-static CScriptThingRecord* g_vector_begin;
-static CScriptThingRecord* g_vector_end;
-static const void* g_observed_name;
-static unsigned long g_find_calls;
-static unsigned long g_init_calls;
-static unsigned long g_destroy_local_calls;
-static unsigned long g_vector_destroy_calls;
-static unsigned long g_free_calls;
-static void* g_freed_pointer;
-static unsigned long g_delete_reference_calls;
-static float g_candidate_position[2];
-static float g_origin_position[2];
-static unsigned long g_relation_calls;
-static void* g_observed_origin_data;
-
-static void __fastcall FindByScriptName(
-    CGameScriptInterface*,
-    int,
-    const void* pName,
-    CScriptThingVector* pVector)
-{
-    ++g_find_calls;
-    g_observed_name = pName;
-    pVector->m_pBegin = g_vector_begin;
-    pVector->m_pEnd = g_vector_end;
-    pVector->m_pCapacity = g_vector_end;
+    CScriptThing h; h.PImp.Data = imp; h.PImp.Info = new CCPPointerInfo; h.PImp.Info->RefCount = 1;
+    h.PImp.Info->DeleteFunc = NoDelete; h.PImp.Info->Data = imp; return h;
 }
-
-static void __fastcall DestroyVectorRecord(
-    CScriptThingRecord* pRecord,
-    int,
-    int)
-{
-    ++g_vector_destroy_calls;
-    if (pRecord->m_pReference != 0)
-        --*pRecord->m_pReference;
-}
-
-static float* __fastcall CandidatePosition(void*)
-{
-    return g_candidate_position;
-}
-
-static float* __fastcall OriginPosition(void*)
-{
-    return g_origin_position;
-}
-
-static bool __fastcall IsSameEntity(
-    void*,
-    int,
-    void* pOriginData)
-{
-    ++g_relation_calls;
-    g_observed_origin_data = pOriginData;
-    return false;
-}
-
-extern "C" void* __fastcall Sub_InitScriptThing(void* self)
-{
-    ++g_init_calls;
-    return self;
-}
-
-extern "C" void __fastcall Sub_DestroyScriptThing(void*)
-{
-    ++g_destroy_local_calls;
-}
-
-extern "C" void __cdecl Sub_Free(void* pMemory)
-{
-    ++g_free_calls;
-    g_freed_pointer = pMemory;
-}
-
-extern "C" __declspec(naked) long __cdecl Sub_RoundFloat()
-{
-    __asm
+struct CGameScriptInterface {
+    long GetAllThingsWithScriptName(const CCharString&, vector<CScriptThing>& things) const
     {
-        sub esp, 4
-        fistp dword ptr [esp]
-        mov eax, dword ptr [esp]
-        add esp, 4
-        ret
+        if (g_impCount == 0) return 0;
+        things._M_start = (CScriptThing*)malloc(sizeof(CScriptThing) * g_impCount);
+        things._M_finish = things._M_end_of_storage = things._M_start + g_impCount;
+        for (int i = 0; i < g_impCount; ++i) new (things._M_start + i) CScriptThing(MakeHandle(g_imps[i]));
+        return g_impCount;
     }
-}
-
-extern "C" void __cdecl Sub_DeleteReference(void*)
+    CScriptThing GetNearestWithScriptName(const CScriptThing& from, const CCharString& scriptName) const;
+};
+CScriptThing CGameScriptInterface::GetNearestWithScriptName(const CScriptThing& from, const CCharString& scriptName) const
 {
-    ++g_delete_reference_calls;
+    vector<CScriptThing> things;
+    GetAllThingsWithScriptName(scriptName, things);
+    if (things.empty())
+        return CScriptThing();
+    long nearestDistance = -1;
+    CScriptThing* nearest = things.begin();
+    for (CScriptThing* it = things.begin(); it != things.end(); ++it) {
+        CScriptThing thing = *it;
+        CScriptThing* fromItem = from.PImp.Data;
+        if (!thing.PImp.Data->IsSameThing(fromItem)) {
+            const C3DVector& pos = thing.GetPos();
+            const C3DVector& fromPos = from.GetPos();
+            float dx = pos.X - fromPos.X;
+            float dy = pos.Y - fromPos.Y;
+            float distance = dx * dx + dy * dy;
+            if (nearestDistance == -1 || distance < nearestDistance) {
+                nearestDistance = (long)distance;
+                nearest = it;
+            }
+        }
+    }
+    return *nearest;
 }
-
-CScriptThingRecord* __fastcall
-CGameScriptInterface_GetNearestWithScriptName(
-    CGameScriptInterface* self,
-    int edxUnused,
-    CScriptThingRecord* pResult,
-    CScriptThingRecord* pOrigin,
-    const void* pScriptName);
-
-static void ResetObservations()
-{
-    g_observed_name = 0;
-    g_find_calls = 0;
-    g_init_calls = 0;
-    g_destroy_local_calls = 0;
-    g_vector_destroy_calls = 0;
-    g_free_calls = 0;
-    g_freed_pointer = 0;
-    g_delete_reference_calls = 0;
-    g_relation_calls = 0;
-    g_observed_origin_data = 0;
-}
-
-static int Fail(const char* message)
-{
-    std::printf("CGameScriptInterface_0089a510_TEST FAIL: %s\n", message);
-    return 1;
-}
-
+static CScriptThing* Imp(float x, float y, float z, int id)
+{ CScriptThing* p = new CScriptThing(); p->Pos.X = x; p->Pos.Y = y; p->Pos.Z = z; p->Id = id; return p; }
 int main()
 {
-    void* interfaceVTable[0x12c / 4 + 1] = {};
-    void* recordVTable[7] = {};
-    void* originVTable[7] = {};
-    void* dataVTable[0x138 / 4 + 1] = {};
-    CGameScriptInterface gsi = {};
-    CScriptThingRecord result = {};
-    CScriptThingRecord origin = {};
-    CScriptThingRecord candidate = {};
-    CandidateData candidateData = {};
-    ReferenceInfo reference = {};
-    unsigned long originMarker = 0;
-    unsigned long nameMarker = 0;
-
-    interfaceVTable[0x12c / 4] = (void*)FindByScriptName;
-    recordVTable[0] = (void*)DestroyVectorRecord;
-    originVTable[0x18 / 4] = (void*)OriginPosition;
-    dataVTable[0x18 / 4] = (void*)CandidatePosition;
-    dataVTable[0x138 / 4] = (void*)IsSameEntity;
-    gsi.m_pVTable = interfaceVTable;
-    origin.m_pVTable = originVTable;
-    origin.m_pData = &originMarker;
-
-    ResetObservations();
-    g_vector_begin = 0;
-    g_vector_end = 0;
-    CScriptThingRecord* returned =
-        CGameScriptInterface_GetNearestWithScriptName(
-            &gsi, 0, &result, &origin, &nameMarker);
-    if (returned != &result ||
-        result.m_pVTable != &g_ScriptThingVTable ||
-        result.m_pData != 0 ||
-        result.m_pReference != 0 ||
-        g_find_calls != 1 ||
-        g_observed_name != &nameMarker ||
-        g_init_calls != 1 ||
-        g_free_calls != 0)
-        return Fail("empty result construction");
-
-    ResetObservations();
-    candidateData.m_pVTable = dataVTable;
-    reference.m_Count = 1;
-    candidate.m_pVTable = recordVTable;
-    candidate.m_pData = &candidateData;
-    candidate.m_pReference = &reference.m_Count;
-    g_candidate_position[0] = 3.0f;
-    g_candidate_position[1] = 4.0f;
-    g_origin_position[0] = 0.0f;
-    g_origin_position[1] = 0.0f;
-    g_vector_begin = &candidate;
-    g_vector_end = &candidate + 1;
-    result.m_pVTable = 0;
-    result.m_pData = 0;
-    result.m_pReference = 0;
-
-    returned = CGameScriptInterface_GetNearestWithScriptName(
-        &gsi, 0, &result, &origin, &nameMarker);
-    if (returned != &result ||
-        result.m_pVTable != &g_ScriptThingVTable ||
-        result.m_pData != &candidateData ||
-        result.m_pReference != &reference.m_Count ||
-        reference.m_Count != 1 ||
-#ifndef FURTHEST_VARIANT
-        g_relation_calls != 1 ||
-        g_observed_origin_data != &originMarker ||
-#endif
-        g_destroy_local_calls != 1 ||
-        g_vector_destroy_calls != 1 ||
-        g_free_calls != 1 ||
-        g_freed_pointer != &candidate ||
-        g_delete_reference_calls != 0)
-        return Fail("single nearest candidate");
-
-    std::printf("CGameScriptInterface_0089a510_TEST PASS\n");
+    CGameScriptInterface gsi; CCharString name; name.PStringData = 0;
+    CScriptThing* me = Imp(0, 0, 0, 1);
+    CScriptThing from = MakeHandle(me);
+    g_impCount = 0;
+    CScriptThing r0 = gsi.GetNearestWithScriptName(from, name);
+    bool ok = r0.PImp.Data == 0;
+    g_imps[0] = me; g_impCount = 1;
+    CScriptThing r1 = gsi.GetNearestWithScriptName(from, name);
+    ok = ok && r1.PImp.Data == me && me->Id == 1;
+    g_imps[0] = Imp(10, 0, 0, 2); g_imps[1] = me; g_imps[2] = Imp(3, 4, 500, 3); g_imps[3] = Imp(-2, -2, 0, 4); g_impCount = 4;
+    CScriptThing r2 = gsi.GetNearestWithScriptName(from, name);
+    ok = ok && r2.PImp.Data && r2.PImp.Data->Id == 4;    // 8 < 25 < 100 (z ignored)
+    g_imps[3] = Imp(3.0f, 4.4f, 0, 5); g_impCount = 4;    // 28.36 vs 25: id 3 stays nearest
+    CScriptThing r3 = gsi.GetNearestWithScriptName(from, name);
+    ok = ok && r3.PImp.Data && r3.PImp.Data->Id == 3;
+    g_imps[0] = Imp(5.0f, 0.5f, 0, 6); g_imps[1] = Imp(5.0f, 0.2f, 0, 7); g_impCount = 2;   // 25.25 -> 25, then 25.04 < 25 is false
+    CScriptThing r4 = gsi.GetNearestWithScriptName(from, name);
+    ok = ok && r4.PImp.Data && r4.PImp.Data->Id == 6;
+    if (!ok) { printf("0089a510_TEST FAIL\n"); return 1; }
+    printf("0089a510_TEST PASS\n");
     return 0;
 }

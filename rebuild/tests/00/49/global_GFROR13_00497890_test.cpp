@@ -1,37 +1,18 @@
+// Behaviour test for 0x00497890 GFROR13 (rotate right by 13).
 #include <cstdio>
-
-__declspec(naked) unsigned int __fastcall GFROR13(unsigned int value)
+#ifdef _MSC_VER
+static unsigned long __fastcall GFROR13(unsigned long value) 
 {
-    (void)value;
-    __asm
-    {
-        push ecx
-        mov  dword ptr [esp], ecx
-        ror  dword ptr [esp], 0x0d
-        mov  eax, dword ptr [esp]
-        pop  ecx
-        ret
-    }
+    __asm ror value, 13
+    return value;
 }
-
-static unsigned int ref_ror13(unsigned int v)
-{
-    return (v >> 13) | (v << (32 - 13));
-}
-
+#else
+static unsigned long GFROR13(unsigned long value) { unsigned int v = (unsigned int)value; __asm__("rorl $13, %0" : "+r"(v)); return v; }
+#endif
 int main()
 {
-    unsigned int cases[] = { 0u, 1u, 0xFFFFFFFFu, 0xDEADBEEFu, 0x12345678u, 0x00002000u, 0x80000000u };
-    for (int i = 0; i < 7; ++i)
-    {
-        unsigned int got = GFROR13(cases[i]);
-        unsigned int want = ref_ror13(cases[i]);
-        if (got != want)
-        {
-            std::printf("FAIL in=%08X got=%08X want=%08X\n", cases[i], got, want);
-            return 1;
-        }
-    }
-    std::printf("OK_0x00497890\n");
+    if (GFROR13(0x00002000UL) != 1UL || GFROR13(1UL) != 0x00080000UL || GFROR13(0x12345678UL) != 0xB3C091A2UL
+        || GFROR13(0) != 0 || GFROR13(0xFFFFFFFFUL) != 0xFFFFFFFFUL) { std::printf("00497890_TEST FAIL\n"); return 1; }
+    std::printf("00497890_TEST PASS\n");
     return 0;
 }

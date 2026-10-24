@@ -1,0 +1,23 @@
+addr	status	leaf	flags	oracle_len	note
+00497890	MATCH	GFROR13	-	13 catalog	retail_asm: `__asm ror value, 13` on the fastcall parameter (retail push ecx/mov [esp],ecx/ror dword [esp],0Dh); _lrotr and (v>>13)|(v<<19) give register forms (6v13, 11v13)
+00c6b240	MATCH	FtoL	-	13 catalog	retail_asm: fld f / fistp result (bare dword fistp through the push-ecx slot); (long)f calls _ftol2, /QIfist gives fistp qword
+00c89be0	MATCH	FtoL	-	15 catalog	retail_asm: __stdcall FtoL(double), fld d / fistp result; /QIfist gives fistp qword in the arg slot
+009bf490	RELOCATION_MATCH	?SetViewport@CDisplayManager@@QAEXABVC2DBoxF@@@Z	-	112 catalog	retail_asm: one __forceinline FtoL helper (2 asm instructions, inlined 4x, float homed in the dead box slot) + SetViewport(C2DBoxI(FtoL(TLX),FtoL(TLY),FtoL(BRX),FtoL(BRY))); a named rounded box + copy gave 118v112
+00c52a80	MATCH	CPUAheadCounterCallback	-	23 catalog	retail_asm: rdtsc + two movs into a uint64 local (VC7.1 has no __rdtsc / intrin.h)
+009e2540	MATCH	CPUAheadCounterCallback	-	27 catalog	retail_asm: xor eax/xor edx/rdtsc + two movs into a uint64 local
+0041d8a8	RELOCATION_MATCH	RemoveThingActionParam	#pragma optimize("y",off)+("s")	63 catalog	same-TU noinline find/__find template bodies (landed twin 0x0041D1C8 model) let VC7.1 home erase()'s result in the dead param slot
+0066eab7	RELOCATION_MATCH	??0CManager@NHeroInformationScreens	#pragma optimize("y",off)+("s")	90 catalog	same-TU noinline stand-in for the vector(n, const T&, alloc) ctor 0x0066ECBE (landed 0x005F3BCF model): null value temp homed in the dead world slot
+0066e985	RELOCATION_MATCH	RemoveAllPlayerModes	#pragma optimize("y",off)+("s")	100 catalog	same-TU noinline stand-in for GetAllRegisteredScreens that never stores &screens: _M_start stays in ebx into the vector dtor
+008a89d0	RELOCATION_MATCH	GetAllCreaturesExcludingHero	-	276 full body (catalog row 273, truncated)	stand-in GetAllThings no longer passes &filter to an extern: the empty filter temp is homed in the dead things slot
+00597006	RELOCATION_MATCH	?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@	#pragma optimize("y",off)+("s")	546 catalog	same-TU read-only stand-ins for GetProfileNames 0x005955AB, ~vector<CWideString> 0x00412130 and the screen map operator[] 0x0059B5D7 (pointer + down-counter loop, key/child word sharing)
+0089a510	RELOCATION_MATCH	GetNearestWithScriptName	-	460 catalog	named `CScriptThing* fromItem = from.PImp.Data;` before the IsSameThing call (sibling 0x0089A880 shape) fixes the eax/edx picks
+0066f8b0	RELOCATION_MATCH	GetControlDirection	-	120 catalog	sequenced double Y (load; *= scale; y = (float)y * -1.0f) and lengthSq = x*x; lengthSq += y*y
+0054c4c0	RELOCATION_MATCH	?ScrollUp@CFrontEndList@NUISystem@@	-	834 catalog	two deny blocks each with its own PlaySound + return (landed ScrollDown 0x0054C810 shape); VC merges them into retail's single first tail
+005eaf30	RELOCATION_MATCH	?SetStateAfterYesNo@CTCTavernGame@@	/GS	326 full body (catalog row 22, truncated)	if/else with the skip handling written in both places + inline by-value SetData(T value) for the event payload
+00551340	DIFFER	?GetDataFromDef@CTable@NUISystem@@	-	431 full body (catalog row 428, truncated)	DIFFER(431v431) frame only (sub esp,10h vs 0Ch); iterator ++ as `_M_node = _S_next(_M_node)` fixed all registers
+009bef80	DIFFER	?SetViewport@CDisplayManager@@QAEXABVC2DBoxI@@@Z	-	479 catalog	DIFFER(478v479): by-const-ref Clamp homes right in the dead box slot; W/H not cached in edi/ebx, no ebp zero register
+0053c332	DIFFER	?DoRecomputeOffsets@CList@NUISystem@@	#pragma optimize("s")+("y",off)	1111 catalog	DIFFER(1119v1111): key-hoisting residue fixed (keys in body + read-only map operator[] stand-in); left: lea-materialised PDefPositionOffset copy, Y add operand order
+005dacf0	DIFFER	IsAbleToBeUsedToBlock	-	22 catalog	DIFFER(18v22) setne vs two-exit; 6 more forms inert
+005bd993	DIFFER	GetMaxItemsPerSlot	#pragma optimize("s")	31 catalog	DIFFER(25v31) base+offset folded into one lea; 6 more forms inert (only optimize("g",off) shows retail's un-CSEd addressing, 62v31)
+0042f722	DIFFER	InitialiseDefs	#pragma optimize("y",off)+("s")	60 catalog	DIFFER(60v60) lea/push 1 scheduling; 6 more forms inert
+0066ff20	DIFFER	SwapToHero	-	175 catalog	DIFFER(175v175) register picks; 6 more forms inert (identical diff each time)

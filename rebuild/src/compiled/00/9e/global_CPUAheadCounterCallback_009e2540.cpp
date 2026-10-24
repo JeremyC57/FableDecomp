@@ -1,18 +1,16 @@
-// CPUAheadCounterCallback @ 009e2540
-// Reads the CPU timestamp counter (rdtsc) and returns it as a 64-bit value.
-// VC7.1 has no rdtsc intrinsic. The retail codegen zeroes the __int64 into the
-// return registers (xor eax; xor edx), runs rdtsc, then spills/reloads the
-// value through an 8-byte stack slot before returning it in edx:eax.
-
+// CEngineDebug::CPUAheadCounterCallback() -- read the CPU time-stamp counter (zeroes edx:eax first)
+// Leaf: CPUAheadCounterCallback
+// Retail-asm: 0x009E2543 `xor eax,eax` / 0x009E2545 `xor edx,edx` / 0x009E2547 `rdtsc` with edx:eax stored to an 8-byte local and reloaded; VC7.1 (13.10.3077/4035) has no rdtsc intrinsic (__rdtsc/<intrin.h> arrived with VC8), so the original read the counter with inline asm.
 typedef unsigned __int64 uint64;
-
-extern "C" unsigned __int64 __cdecl CPUAheadCounterCallback(unsigned long unused)
+extern "C" uint64 __cdecl CPUAheadCounterCallback()
 {
-    uint64 t;
-    __asm xor eax, eax;
-    __asm xor edx, edx;
-    __asm rdtsc;
-    __asm mov dword ptr t, eax;
-    __asm mov dword ptr t+4, edx;
-    return t;
+    uint64 counter;
+    __asm {
+        xor eax, eax
+        xor edx, edx
+        rdtsc
+        mov dword ptr counter, eax
+        mov dword ptr counter+4, edx
+    }
+    return counter;
 }

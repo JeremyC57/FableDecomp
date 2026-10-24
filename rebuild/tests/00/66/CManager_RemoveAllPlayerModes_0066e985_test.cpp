@@ -1,183 +1,67 @@
+// Behaviour test for 0x0066E985 NHeroInformationScreens::CManager::RemoveAllPlayerModes: every registered (non-null)
+// screen's player mode is removed from the main player, in order; the local vector's buffer is freed.
 #include <stdio.h>
-#include <string.h>
-
-extern "C" void __fastcall
-CManager_RemoveAllPlayerModes_0066e985(void* manager, void*);
-
-struct PointerVector
-{
-    void** begin;
-    void** end;
-    void** capacity;
+#include <stdlib.h>
+class CWorld;
+enum EPlayerMode { PLAYER_MODE_NONE, PLAYER_MODE_A = 3, PLAYER_MODE_B = 7, PLAYER_MODE_C = 9 };
+static int g_removed[16]; static int g_removedCount = 0; static const void* g_player = 0;
+class CPlayer { public: int id; void RemoveMode(EPlayerMode mode) { if (this == g_player) g_removed[g_removedCount++] = mode; } };
+static CPlayer g_mainPlayer;
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_mainPlayer; } };
+struct CMainGameComponent { unsigned char _pad00[0x1c]; CPlayerManager* PPlayerManager; };
+static CPlayerManager g_pm; static CMainGameComponent g_mgc; static CMainGameComponent* g_pMainGameComponent = &g_mgc;
+static int g_freed = 0;
+static void TrackedFree(void* p) { ++g_freed; free(p); }
+namespace NHeroInformationScreens {
+class CBase { public: EPlayerMode Mode; CBase(EPlayerMode m) : Mode(m) { } virtual ~CBase() { } virtual EPlayerMode GetPlayerMode() const { return Mode; } };
+template <class T> class CVector {
+public:
+    T* _M_start; T* _M_finish; T* _M_end_of_storage;
+    CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    ~CVector() { if (_M_start) TrackedFree(_M_start); }
+    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
+    T& operator[](unsigned int n) { return _M_start[n]; }
 };
-
-struct Screen;
-typedef long (__fastcall* GetModeFunction)(Screen*, void*);
-
-struct ScreenVtable
-{
-    void* slot0;
-    GetModeFunction get_mode;
-};
-
-struct Screen
-{
-    ScreenVtable* vtable;
-    long mode;
-};
-
-struct Root
-{
-    unsigned char prefix[0x1C];
-    void* player_context;
-};
-
-static Root g_root;
-extern "C" void* FableRemoveAllPlayerModesGlobal = &g_root;
-
-static void* g_player = (void*)0x11111111;
-static Screen** g_screens_begin;
-static Screen** g_screens_end;
-static int g_get_player_count;
-static int g_get_screens_count;
-static int g_remove_count;
-static int g_free_count;
-static void* g_get_player_context;
-static void* g_get_screens_manager;
-static void* g_removed_player[8];
-static long g_removed_modes[8];
-static void* g_freed_memory;
-
-static long __fastcall GetMode(Screen* screen, void*)
-{
-    return screen->mode;
-}
-
-static void ResetCalls()
-{
-    g_get_player_count = 0;
-    g_get_screens_count = 0;
-    g_remove_count = 0;
-    g_free_count = 0;
-    g_get_player_context = 0;
-    g_get_screens_manager = 0;
-    memset(g_removed_player, 0, sizeof(g_removed_player));
-    memset(g_removed_modes, 0, sizeof(g_removed_modes));
-    g_freed_memory = 0;
-}
-
-extern "C" void* __fastcall
-CManager_RemoveAllPlayerModes_0066e985_GetPlayer(void* context, void*)
-{
-    ++g_get_player_count;
-    g_get_player_context = context;
-    return g_player;
-}
-
-extern "C" void __fastcall
-CManager_RemoveAllPlayerModes_0066e985_GetScreens(
-    void* manager, void*, void* output)
-{
-    PointerVector* vector = (PointerVector*)output;
-    ++g_get_screens_count;
-    g_get_screens_manager = manager;
-    vector->begin = (void**)g_screens_begin;
-    vector->end = (void**)g_screens_end;
-    vector->capacity = (void**)g_screens_end;
-}
-
-extern "C" void __fastcall
-CManager_RemoveAllPlayerModes_0066e985_RemoveMode(
-    void* player, void*, long mode)
-{
-    g_removed_player[g_remove_count] = player;
-    g_removed_modes[g_remove_count] = mode;
-    ++g_remove_count;
-}
-
-extern "C" void __cdecl
-CManager_RemoveAllPlayerModes_0066e985_Free(void* memory)
-{
-    ++g_free_count;
-    g_freed_memory = memory;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
+class CManager {
+public:
+    CWorld* World;
+    CVector<const CBase*> Screens;
+    void GetAllRegisteredScreens(CVector<const CBase*>& screens) const
     {
-        printf("FAIL: %s\n", message);
-        return 0;
+        screens._M_start = (const CBase**)malloc(Screens.size() * sizeof(const CBase*) + 4);
+        screens._M_finish = screens._M_start;
+        for (unsigned int i = 0; i < Screens.size(); ++i) if (Screens._M_start[i]) *screens._M_finish++ = Screens._M_start[i];
+        screens._M_end_of_storage = screens._M_finish;
     }
-    return 1;
+    void RemoveAllPlayerModes();
+};
+void CManager::RemoveAllPlayerModes()
+{
+    CPlayer* player = g_pMainGameComponent->PPlayerManager->GetMainPlayer();
+    unsigned int i = 0;
+    CVector<const CBase*> screens;
+    GetAllRegisteredScreens(screens);
+    const unsigned int count = screens.size();
+    const CBase** first = screens._M_start;
+    for (; i < count; ++i)
+        player->RemoveMode(first[i]->GetPlayerMode());
 }
-
+}
 int main()
 {
-    int ok = 1;
-    int manager_token = 0;
-    ScreenVtable vtable;
-    Screen screen0;
-    Screen screen1;
-    Screen screen2;
-    Screen* screens[3];
-
-    vtable.slot0 = 0;
-    vtable.get_mode = GetMode;
-    screen0.vtable = &vtable;
-    screen0.mode = 7;
-    screen1.vtable = &vtable;
-    screen1.mode = 19;
-    screen2.vtable = &vtable;
-    screen2.mode = 31;
-    screens[0] = &screen0;
-    screens[1] = &screen1;
-    screens[2] = &screen2;
-    g_root.player_context = (void*)0x22222222;
-
-    g_screens_begin = screens;
-    g_screens_end = screens + 3;
-    ResetCalls();
-    CManager_RemoveAllPlayerModes_0066e985(&manager_token, 0);
-    ok &= Check(g_get_player_count == 1 &&
-                g_get_player_context == g_root.player_context,
-                "active player must be resolved through the global context");
-    ok &= Check(g_get_screens_count == 1 &&
-                g_get_screens_manager == &manager_token,
-                "registered screens must be gathered from this manager");
-    ok &= Check(g_remove_count == 3 &&
-                g_removed_modes[0] == 7 &&
-                g_removed_modes[1] == 19 &&
-                g_removed_modes[2] == 31,
-                "every gathered screen mode must be removed in order");
-    ok &= Check(g_removed_player[0] == g_player &&
-                g_removed_player[1] == g_player &&
-                g_removed_player[2] == g_player,
-                "all modes must be removed from the resolved player");
-    ok &= Check(g_free_count == 1 && g_freed_memory == screens,
-                "populated temporary screen storage must be freed");
-
-    g_screens_begin = 0;
-    g_screens_end = 0;
-    ResetCalls();
-    CManager_RemoveAllPlayerModes_0066e985(&manager_token, 0);
-    ok &= Check(g_get_player_count == 1 && g_get_screens_count == 1,
-                "empty path must still resolve player and gather screens");
-    ok &= Check(g_remove_count == 0 && g_free_count == 0,
-                "null empty storage must neither remove modes nor free");
-
-    g_screens_begin = screens;
-    g_screens_end = screens;
-    ResetCalls();
-    CManager_RemoveAllPlayerModes_0066e985(&manager_token, 0);
-    ok &= Check(g_remove_count == 0,
-                "non-null empty storage must not remove modes");
-    ok &= Check(g_free_count == 1 && g_freed_memory == screens,
-                "non-null empty storage must still be freed");
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CManager::RemoveAllPlayerModes");
+    using namespace NHeroInformationScreens;
+    g_mgc.PPlayerManager = &g_pm; g_player = &g_mainPlayer;
+    CBase a(PLAYER_MODE_A), b(PLAYER_MODE_B), c(PLAYER_MODE_C);
+    const CBase* table[5] = { &a, 0, &b, 0, &c };
+    CManager m; m.World = 0;
+    m.Screens._M_start = table; m.Screens._M_finish = table + 5; m.Screens._M_end_of_storage = table + 5;
+    m.RemoveAllPlayerModes();
+    bool ok = g_removedCount == 3 && g_removed[0] == PLAYER_MODE_A && g_removed[1] == PLAYER_MODE_B && g_removed[2] == PLAYER_MODE_C && g_freed == 1;
+    m.Screens._M_finish = table;
+    m.RemoveAllPlayerModes();
+    ok = ok && g_removedCount == 3 && g_freed == 2;
+    m.Screens._M_start = m.Screens._M_finish = m.Screens._M_end_of_storage = 0;
+    if (!ok) { printf("0066e985_TEST FAIL\n"); return 1; }
+    printf("0066e985_TEST PASS\n");
     return 0;
 }

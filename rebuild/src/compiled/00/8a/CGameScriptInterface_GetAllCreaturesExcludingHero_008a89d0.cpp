@@ -1,126 +1,122 @@
-// CGameScriptInterface::GetAllCreaturesExcludingHero @ 0x008a89d0
-// Exact byte-led vector bridge; the specialized search policy remains opaque.
-
-extern "C" void Script_GetCreaturesExcludingHero_0052b270();
-extern "C" void ScriptThingVector_Reserve_008acd30();
-extern "C" void ScriptThing_FromCreature_004c7e50();
-extern "C" void ScriptThingVector_Insert_008ad5f0();
-extern "C" void ScriptThing_Reset_0099a2e0();
-extern "C" void ScriptThingRef_Free_00bfe9bc();
-extern "C" void CreaturePointerArray_Free_00bfea14();
-extern "C" unsigned long ScriptThing_Vftable_01238c8c;
-
-extern "C" __declspec(naked) long __fastcall
-CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0(void* self, void*, void* out)
-{
-    __asm {
-        sub esp, 0ch
-        push ebx
-        push ebp
-        push esi
-        push edi
-        lea eax, [esp+10h]
-        push eax
-        mov eax, [ecx+4]
-        mov ecx, [eax+20h]
-        xor ebx, ebx
-        lea edx, [esp+24h]
-        push edx
-        mov [esp+18h], ebx
-        mov [esp+1ch], ebx
-        mov [esp+20h], ebx
-        call Script_GetCreaturesExcludingHero_0052b270
-        mov edi, [esp+14h]
-        mov ebp, [esp+10h]
-        mov esi, [esp+20h]
-        sub edi, ebp
-        sar edi, 2
-        push edi
-        mov ecx, esi
-        call ScriptThingVector_Reserve_008acd30
-        test edi, edi
-        jbe loop_done
-        jmp loop_body
-        // Retail's three-byte loop-alignment NOP: lea ecx,[ecx+0].
-        _emit 08dh
-        _emit 049h
-        _emit 000h
-loop_body:
-        mov ecx, [ebp+ebx*4]
-        lea edx, [esp+10h]
-        push edx
-        call ScriptThing_FromCreature_004c7e50
-        mov ecx, [esi+4]
-        cmp ecx, [esi+8]
-        je grow_output
-        test ecx, ecx
-        je append_done
-        mov dword ptr [ecx], offset ScriptThing_Vftable_01238c8c
-        mov edx, [eax+4]
-        mov [ecx+4], edx
-        mov eax, [eax+8]
-        test eax, eax
-        mov [ecx+8], eax
-        je append_done
-        inc dword ptr [eax]
-append_done:
-        add dword ptr [esi+4], 0ch
-        jmp release_temporary
-grow_output:
-        push 1
-        push 1
-        lea edx, [esp+28h]
-        push edx
-        push eax
-        push ecx
-        mov ecx, esi
-        call ScriptThingVector_Insert_008ad5f0
-release_temporary:
-        mov eax, [esp+18h]
-        test eax, eax
-        mov dword ptr [esp+10h], offset ScriptThing_Vftable_01238c8c
-        je reset_temporary
-        dec dword ptr [eax]
-        mov eax, [esp+18h]
-        cmp dword ptr [eax], 0
-        jne reset_temporary
-        mov ecx, [eax+8]
-        call dword ptr [eax+4]
-        mov eax, [esp+18h]
-        push eax
-        call ScriptThingRef_Free_00bfe9bc
-        add esp, 4
-reset_temporary:
-        xor eax, eax
-        lea ecx, [esp+10h]
-        mov [esp+14h], eax
-        mov [esp+18h], eax
-        call ScriptThing_Reset_0099a2e0
-        inc ebx
-        cmp ebx, edi
-        jb loop_body
-loop_done:
-        mov eax, [esi]
-        mov ecx, [esi+4]
-        sub ecx, eax
-        mov eax, 2aaaaaabh
-        imul ecx
-        sar edx, 1
-        mov esi, edx
-        shr esi, 1fh
-        add esi, edx
-        test ebp, ebp
-        je free_done
-        push ebp
-        call CreaturePointerArray_Free_00bfea14
-        add esp, 4
-free_done:
-        pop edi
-        mov eax, esi
-        pop esi
-        pop ebp
-        pop ebx
-        add esp, 0ch
-        ret 4
+// CGameScriptInterface::GetAllCreaturesExcludingHero(std::vector<CScriptThing>& things) const -- script: append the script thing of every AI creature (the hero is not one); returns the output vector's size
+// Leaf: GetAllCreaturesExcludingHero
+// Retail: Fable.exe @ 0x008A89D0, 276 bytes, `ret 4`. Catalog row: only the first 273 bytes (it stops before the final
+// `ret 4`), so no compiled body can equal the catalog oracle; this source is a RELOCATION_MATCH against the full 276-byte body.
+// Body: CThingSearchTools::GetAllThings<CThingAICreature, vector<CThingAICreature*>, CFilter_Bind2<CThingFilter_None,
+// CThingFilter_HasTC>> (0x0052B270) on World->ThingSearchTools (+0x20) into a local vector (empty filter temporary in the
+// dead `things` slot); things.reserve(count) (0x008ACD30, no early-out); then an index loop pushing back
+// creature->GetScriptThing() (0x004C7E50; push_back inlined, overflow 0x008AD5F0; the temporary destroyed inline);
+// return things.size(); the found vector is freed (0x00BFEA14).
+// Layout / shape: the models of the landed siblings GetAllThingsWithScriptName 0x008A8570 and
+// GetAllCreaturesInAreaWithScriptName 0x008A86C0 (write-only same-TU stand-in for the search template so the found
+// vector stays unescaped and its start pointer lives in ebp across the loop).
+void __cdecl operator delete(void* p);                  // 0x00BFE9BC
+inline void* operator new(unsigned int, void* where) { return where; }
+extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
+struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
+};
+struct CCPPointerInfo {
+    unsigned long RefCount;
+    void (__fastcall* DeleteFunc)(void*);
+    void* Data;
+};
+struct CCountedScriptImp {                              // CCountedPointer<CScriptThingImp>
+    void* Data;
+    CCPPointerInfo* Info;
+    CCountedScriptImp() : Data(0), Info(0) {}
+    CCountedScriptImp(const CCountedScriptImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedScriptImp()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
     }
+};
+struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+    CCountedScriptImp PImp;                             // +0x04
+    CScriptThing() {}
+    virtual ~CScriptThing() {}
+};
+struct __false_type { __false_type() {} };
+struct CScriptThingVector {                             // STLport vector<CScriptThing> (12-byte elements)
+    CScriptThing* _M_start;
+    CScriptThing* _M_finish;
+    CScriptThing* _M_end_of_storage;
+    long size() const { return _M_finish - _M_start; }
+    void reserve(unsigned long n);                      // 0x008ACD30
+    void _M_insert_overflow(CScriptThing* position, const CScriptThing& x, const __false_type&,
+                            unsigned long fill_len, bool atend);   // 0x008AD5F0
+    void push_back(const CScriptThing& x)
+    {
+        if (_M_finish != _M_end_of_storage) {
+            new (_M_finish) CScriptThing(x);
+            ++_M_finish;
+        }
+        else
+            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
+    }
+};
+struct CThing_Retail;
+struct CThingVector {                                   // STLport vector<CThingAICreature*> (malloc allocator)
+    CThing_Retail** _M_start;
+    CThing_Retail** _M_finish;
+    CThing_Retail** _M_end_of_storage;
+    CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    ~CThingVector() { if (_M_start) free(_M_start); }
+    unsigned long size() const { return _M_finish - _M_start; }
+    CThing_Retail* operator[](unsigned long n) const { return _M_start[n]; }
+};
+struct CThingFilter_None {
+    CThingFilter_None() {}
+};
+struct CThingFilter_HasTC {
+    CThingFilter_HasTC() {}
+};
+template <class F1, class F2> struct CFilter_Bind2 : public F1, public F2 {   // empty: both filters are stateless
+    CFilter_Bind2() {}
+};
+typedef CFilter_Bind2<CThingFilter_None, CThingFilter_HasTC> CCreatureFilter;
+struct CThing_Retail {
+    CScriptThing GetScriptThing();                      // 0x004C7E50
+};
+CThing_Retail** FindThings_AICreatures(CThing_Retail** capacity);
+struct CThingSearchTools {
+    void GetAllThings(const CCreatureFilter& filter, CThingVector& out);   // 0x0052B270
+};
+// Same-TU stand-in (see the siblings): only writes the output vector's words and never takes the filter's address, so
+// the empty filter temporary is homed in the dead `things` argument slot as in retail.
+#pragma auto_inline(off)
+void CThingSearchTools::GetAllThings(const CCreatureFilter& filter, CThingVector& out)
+{
+    CThing_Retail** p = FindThings_AICreatures(out._M_end_of_storage);
+    out._M_start = p;
+    out._M_finish = p;
+}
+#pragma auto_inline(on)
+struct CWorld_Retail {
+    unsigned char      _pad00[0x20];
+    CThingSearchTools* ThingSearchTools;                // +0x20
+};
+struct CGameScriptInterface {
+    virtual long GetAllCreaturesExcludingHero(CScriptThingVector& things) const;
+    CWorld_Retail*   World;                             // +0x04 (engine/CGameScriptInterface.h)
+};
+
+long CGameScriptInterface::GetAllCreaturesExcludingHero(CScriptThingVector& things) const
+{
+    CThingVector found;
+    World->ThingSearchTools->GetAllThings(CCreatureFilter(), found);
+    const unsigned long count = found.size();
+    things.reserve(count);
+    for (unsigned long i = 0; i < count; ++i)
+        things.push_back(found[i]->GetScriptThing());
+    return things.size();
 }

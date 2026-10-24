@@ -11,3 +11,5 @@ address	old_length	new_length	date	evidence
 0098b5e0	624	633	2026-10-24	bounds audit: body runs to ret at +0x276 (catalog cut 9 B short); landed source RELOCATION_MATCH on 633
 00449d20	108	111	2026-10-24	bounds audit: body runs to ret at +0x6C (catalog cut 3 B short); landed source RELOCATION_MATCH on 111
 00401c00	744	808	2026-10-24	bounds audit: adds the 16-entry jump table at 0x401EE8 read by the switch; landed source RELOCATION_MATCH on 808
+008a89d0	273	276	2026-10-24	de-bake B2 + bounds audit: body runs to its ret 3 B past the catalog end; source RELOCATION_MATCH on 276
+005eaf30	22	326	2026-10-24	de-bake B2 + bounds audit: the 22-B row was only the /GS prologue; full body ends at 0x5EB076; source RELOCATION_MATCH on 326

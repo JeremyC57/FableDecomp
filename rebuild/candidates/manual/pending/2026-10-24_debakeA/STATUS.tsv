@@ -1,0 +1,39 @@
+addr	status	leaf	flags	note
+00a0aac0	MATCH	OnViewportChanged		CRenderManager::OnViewportChanged empty body
+00c8db10	IMPOSSIBLE	ogg_stream_packetout		libogg ogg_stream_packetout LTCG: _packetout takes os in eax
+0066f9e0	MATCH	SetValueB4		CInputTypeDataRecord value store
+00bfe9f9	IMPOSSIBLE	__security_check_cookie		CRT secchk.c hand asm: VC always makes the tail call the fall-through
+00ca3b10	IMPOSSIBLE		/QIfist	vorbis_ftoi inline-asm fistp dword (/QIfist gives qword)
+004013c7	IMPOSSIBLE	SehEpilogModel		CRT sehprolg.asm __SEH_epilog (push ecx; ret after caller leave)
+00c43370	DIFFER	?IsNewDestinationGoingToResetNavigation@CTCCreatureNavigation		VC sibling-jmp forwarder vs retail push/push/call/ret (F148 family)
+005eadc0	IMPOSSIBLE	?SetStateAfterYesNo@CTCTavernGame		22-byte /GS prologue prefix of a 354-byte CTCTavernGame function (ret 1Ch at 0x005EAF1F); re-cut
+007022c0	DIFFER	IsOptional		exit block order (mov al,1 exit first in retail)
+0041c800	DIFFER	_S_maximum		code exact vs 26 exe bytes; catalog row truncated at 23 (re-cut to 26); really _Rb_tree_node_base::_S_maximum
+0066fa30	MATCH	ClearState		CInputTypeStateRecord::ClearState, stores in retail order
+00a5b850	IMPOSSIBLE	?GFInitVectorMath@NVectorMath		inline cpuid; no __cpuid in VC7.1
+0066f9f0	MATCH	GFExp		double __stdcall GFExp via #pragma intrinsic(exp)
+009ea060	RELOCATION_MATCH	?GetProgressDisplay@NProgressDisplay@@YI		returns the PProgressDisplay CCountedPointer (0x013CAA38)
+004167a7	DIFFER	?GetFrameDifferenceFromCurrent@CMainGameComponent		x87 dead-operand pop placement (fstp st1 after fdivr vs fstp st0 before ret)
+0088f8d0	IMPOSSIBLE	StartCountdownTimer	/QIfist	inline-asm ROUND fistp dword via dead arg slot
+006818a0	DIFFER	IsWillingToStartFollowingHero		RELOCATION_MATCH vs 71 exe bytes; catalog 47 omits jump/index tables (re-cut to 71)
+009e3830	RELOCATION_MATCH	?Initialise@CPixelFormat		inline FindFormatIndex do/while over g_D3DFormatInfo
+0040138c	IMPOSSIBLE	SehPrologModel		CRT sehprolg.asm __SEH_prolog (builds caller frame, moves esp)
+0041d1c8	RELOCATION_MATCH	?RemoveUIActionParam@CManager@NUISystem		really NUISystem::CManager::RemoveUIActionParam; noinline find/__find template bodies; size+y-off
+00bfeed8	DIFFER	__ehvec_dtor		RELOCATION_MATCH vs 96 exe bytes; catalog 72 omits the __finally block (re-cut to 96)
+00494710	RELOCATION_MATCH	?ChooseWorldNumber@CFrontendGameComponent		CFrontendGameComponent::ChooseWorldNumber
+0042d131	RELOCATION_MATCH	??A?$map		noinline less<CCharString>::operator() body
+0066f7d0	DIFFER	?GetControlDirection@CInputTypeXboxPadLeftStickEvent		unit-length scaling fmulp order (X then Y); cap hit with X-first statements untried
+00999230	RELOCATION_MATCH	?PathExists@CAFile		!= 0xFFFFFFFF return true order
+00994700	RELOCATION_MATCH	??0CFileDataInputStream		novtable CDataInputStream, inline ResetSource
+0089df70	RELOCATION_MATCH	?EntityGetShotStrikePos@CGameScriptInterface		GetTCOut + LowerBound/GetEvent stand-ins
+00899ef0	IMPOSSIBLE	GiveHeroMorality	/QIfist	inline-asm ROUND fistp dword via dead arg slot
+00485f3a	RELOCATION_MATCH	?_M_fill_insert@?$vector@E		really vector<uchar>::_M_fill_insert; _M_insert_overflow stand-in
+00599d5c	RELOCATION_MATCH	?DoPressStart@CFrontEndManager@NUISystem		GetProfileNames + ~vector<CWideString> stand-ins
+00536b4f	DIFFER	?InitialiseOffsets@CList@NUISystem		fsubr [1.0] vs fld1/fsub; vtable CSE tradeoff
+00c8c730	IMPOSSIBLE	_ov_d_seek_lap		libvorbisfile _ov_d_seek_lap LTCG eax argument
+0042e204	DIFFER	?InitialiseEngine@CNewFrontendGameComponent		one lea/push 1 swap in GetDef argument pushes
+0042df9e	IMPOSSIBLE	?Draw@CNewFrontendGameComponent		inline fnstcw/fldcw rounding-mode switch
+00597bf2	DIFFER	?GotoPreviousScreen@CFrontEndManager@NUISystem		first-test deref timing + map results spilled to [ebp-8] not [ebp+8]; map::operator[] stand-in untried (cap)
+00596cce	RELOCATION_MATCH	?RefreshAvailableProfiles@CFrontEndManager@NUISystem		GetProfileNames, ~vector<CWideString>, map::operator[] stand-ins; y before count
+0054c810	RELOCATION_MATCH	?ScrollDown@CFrontEndList@NUISystem		x != -1 ? x : 0 update time; R,G,B,A body-assign ctor; extern C abs intrinsic
+0059a238	RELOCATION_MATCH	?Action@CFrontEndManager@NUISystem		map::operator[] stand-in shares [ebp+8]; forward-tail case first; forceinline operator==; 0xD7 param pointer
