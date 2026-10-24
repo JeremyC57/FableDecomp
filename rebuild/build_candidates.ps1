@@ -301945,6 +301945,255 @@ $catalog = @(
         TestSource = '00/a7/STL_insertionsort_00a732b0_test.cpp'
         PassPattern = '00a732b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a55880'
+        Module = '_STL'
+        Source = '00/a5/STL_copy_00a55880.cpp'
+        TestSource = '00/a5/STL_copy_00a55880_test.cpp'
+        PassPattern = '00a55880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a55a80'
+        Module = 'C3DBoxF'
+        Source = '00/a5/C3DBoxF_ToC3DBoxI_00a55a80.cpp'
+        TestSource = '00/a5/C3DBoxF_ToC3DBoxI_00a55a80_test.cpp'
+        PassPattern = '00a55a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a565c0'
+        Module = '_global'
+        Source = '00/a5/global_GFDXGetHermiteSplinePosition_00a565c0.cpp'
+        TestSource = '00/a5/global_GFDXGetHermiteSplinePosition_00a565c0_test.cpp'
+        PassPattern = '00a565c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a57770'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_GetSquaredDist_00a57770.cpp'
+        TestSource = '00/a5/C2DLineF_GetSquaredDist_00a57770_test.cpp'
+        PassPattern = '00a57770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a57ef0'
+        Module = 'NBBBMaths::CLinearSpline'
+        Source = '00/a5/NBBBMathsCLinearSpline_GetLength_00a57ef0.cpp'
+        TestSource = '00/a5/NBBBMathsCLinearSpline_GetLength_00a57ef0_test.cpp'
+        PassPattern = '00a57ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a58720'
+        Module = 'CProjectOntoPlane'
+        Source = '00/a5/CProjectOntoPlane_operator_00a58720.cpp'
+        TestSource = '00/a5/CProjectOntoPlane_operator_00a58720_test.cpp'
+        PassPattern = '00a58720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a58a60'
+        Module = 'NBBBMaths'
+        Source = '00/a5/NBBBMaths_IsPointInsideTriangleInThePlane_00a58a60.cpp'
+        TestSource = '00/a5/NBBBMaths_IsPointInsideTriangleInThePlane_00a58a60_test.cpp'
+        PassPattern = '00a58a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5a540'
+        Module = '_STL'
+        Source = '00/a5/STL_unguardedinsertionsortaux_00a5a540.cpp'
+        TestSource = '00/a5/STL_unguardedinsertionsortaux_00a5a540_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a5a540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5a770'
+        Module = '_STL'
+        Source = '00/a5/STL_linearinsert_00a5a770.cpp'
+        TestSource = '00/a5/STL_linearinsert_00a5a770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a5a770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5a860'
+        Module = '_STL'
+        Source = '00/a5/STL_insertionsort_00a5a860.cpp'
+        TestSource = '00/a5/STL_insertionsort_00a5a860_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a5a860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5a8a0'
+        Module = '_STL'
+        Source = '00/a5/STL_partialsort_00a5a8a0.cpp'
+        TestSource = '00/a5/STL_partialsort_00a5a8a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a5a8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5a910'
+        Module = '_STL::back_insert_iterator'
+        Source = '00/a5/STLbackinsertiterator_operator_00a5a910.cpp'
+        TestSource = '00/a5/STLbackinsertiterator_operator_00a5a910_test.cpp'
+        PassPattern = '00a5a910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5d7c0'
+        Module = 'CShaderResource'
+        Source = '00/a5/CShaderResource_OpenShaderBank_00a5d7c0.cpp'
+        TestSource = '00/a5/CShaderResource_OpenShaderBank_00a5d7c0_test.cpp'
+        PassPattern = '00a5d7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5dff0'
+        Module = '_STL::vector'
+        Source = '00/a5/STLvector_Mallocateandcopy_00a5dff0.cpp'
+        TestSource = '00/a5/STLvector_Mallocateandcopy_00a5dff0_test.cpp'
+        PassPattern = '00a5dff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5e4d0'
+        Module = '_STL::vector'
+        Source = '00/a5/STLvector_operator_00a5e4d0.cpp'
+        TestSource = '00/a5/STLvector_operator_00a5e4d0_test.cpp'
+        PassPattern = '00a5e4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5ed60'
+        Module = '_global'
+        Source = '00/a5/global_GFGetLastWindowsError_00a5ed60.cpp'
+        TestSource = '00/a5/global_GFGetLastWindowsError_00a5ed60_test.cpp'
+        PassPattern = '00a5ed60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a60390'
+        Module = '_global'
+        Source = '00/a6/global_GFGetSubString_00a60390.cpp'
+        TestSource = '00/a6/global_GFGetSubString_00a60390_test.cpp'
+        PassPattern = '00a60390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a608f0'
+        Module = '_STL::_Rb_tree'
+        Source = '00/a6/STLRbtree_Mfind_00a608f0.cpp'
+        TestSource = '00/a6/STLRbtree_Mfind_00a608f0_test.cpp'
+        PassPattern = '00a608f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a609c0'
+        Module = '_STL::_Rb_tree'
+        Source = '00/a6/STLRbtree_Mlowerbound_00a609c0.cpp'
+        TestSource = '00/a6/STLRbtree_Mlowerbound_00a609c0_test.cpp'
+        PassPattern = '00a609c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a60c30'
+        Module = 'CChecksumCacheFile'
+        Source = '00/a6/CChecksumCacheFile_Close_00a60c30.cpp'
+        TestSource = '00/a6/CChecksumCacheFile_Close_00a60c30_test.cpp'
+        PassPattern = '00a60c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a60c90'
+        Module = 'CChecksumCacheFile'
+        Source = '00/a6/CChecksumCacheFile_CChecksumCacheFile_00a60c90.cpp'
+        TestSource = '00/a6/CChecksumCacheFile_CChecksumCacheFile_00a60c90_test.cpp'
+        PassPattern = '00a60c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a61270'
+        Module = '_STL::_Rb_tree'
+        Source = '00/a6/STLRbtree_Minsert_00a61270.cpp'
+        TestSource = '00/a6/STLRbtree_Minsert_00a61270_test.cpp'
+        PassPattern = '00a61270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a61360'
+        Module = '_STL::_Rb_tree'
+        Source = '00/a6/STLRbtree_insertunique_00a61360.cpp'
+        TestSource = '00/a6/STLRbtree_insertunique_00a61360_test.cpp'
+        PassPattern = '00a61360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a617e0'
+        Module = '_STL::map'
+        Source = '00/a6/STLmap_operator_00a617e0.cpp'
+        TestSource = '00/a6/STLmap_operator_00a617e0_test.cpp'
+        PassPattern = '00a617e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a61880'
+        Module = 'CDirectInputDeviceLists_00a61b10'
+        Source = '00/a6/CDirectInputDeviceLists00a61b10_CDirectInputDeviceLists00a61b10_00a61880.cpp'
+        TestSource = '00/a6/CDirectInputDeviceLists00a61b10_CDirectInputDeviceLists00a61b10_00a61880_test.cpp'
+        PassPattern = '00a61880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a61a80'
+        Module = 'CDirectInputDeviceLists_00a61b10'
+        Source = '00/a6/CDirectInputDeviceLists00a61b10_ReleaseAll_00a61a80.cpp'
+        TestSource = '00/a6/CDirectInputDeviceLists00a61b10_ReleaseAll_00a61a80_test.cpp'
+        PassPattern = '00a61a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a644c0'
+        Module = '_global'
+        Source = '00/a6/global_GFCheckTreeNodes_00a644c0.cpp'
+        TestSource = '00/a6/global_GFCheckTreeNodes_00a644c0_test.cpp'
+        PassPattern = '00a644c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65390'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_DeleteChunk_00a65390.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_DeleteChunk_00a65390_test.cpp'
+        PassPattern = '00a65390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a656e0'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_AllocateMemoryFromExistingChunks_00a656e0.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_AllocateMemoryFromExistingChunks_00a656e0_test.cpp'
+        PassPattern = '00a656e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a663d0'
+        Module = 'CMemoryAllocatorFixedSize'
+        Source = '00/a6/CMemoryAllocatorFixedSize_NewChunk_00a663d0.cpp'
+        TestSource = '00/a6/CMemoryAllocatorFixedSize_NewChunk_00a663d0_test.cpp'
+        PassPattern = '00a663d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66930'
+        Module = 'CKeyboard'
+        Source = '00/a6/CKeyboard_CKeyboard_00a66930.cpp'
+        TestSource = '00/a6/CKeyboard_CKeyboard_00a66930_test.cpp'
+        PassPattern = '00a66930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66f20'
+        Module = 'CMouse'
+        Source = '00/a6/CMouse_CMouse_00a66f20.cpp'
+        TestSource = '00/a6/CMouse_CMouse_00a66f20_test.cpp'
+        PassPattern = '00a66f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a698f0'
+        Module = 'CTextureManager'
+        Source = '00/a6/CTextureManager_CalculateTextureSize_00a698f0.cpp'
+        TestSource = '00/a6/CTextureManager_CalculateTextureSize_00a698f0_test.cpp'
+        PassPattern = '00a698f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6abe0'
+        Module = 'CTextureManager'
+        Source = '00/a6/CTextureManager_ResizePoolTextureCount_00a6abe0.cpp'
+        TestSource = '00/a6/CTextureManager_ResizePoolTextureCount_00a6abe0_test.cpp'
+        PassPattern = '00a6abe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6b000'
+        Module = '_STL'
+        Source = '00/a6/STL_fill_00a6b000.cpp'
+        TestSource = '00/a6/STL_fill_00a6b000_test.cpp'
+        PassPattern = '00a6b000_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

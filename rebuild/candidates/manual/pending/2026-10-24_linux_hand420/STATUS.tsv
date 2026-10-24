@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a55880	RELOCATION_MATCH	220v220	PASS	1 grade; _STL::__copy map<CCharString,int> iterators -> back_insert_iterator<vector<pair<CCharString,int> > >
+00a55a80	RELOCATION_MATCH	111v111	PASS	1 grade; C3DBoxF::ToC3DBoxI
+00a565c0	RELOCATION_MATCH	172v172	PASS	1 grade; GFDXGetHermiteSplinePosition
+00a56aa0	DIFFER	167v167	-	2 grades; CCardinalSpline ctor; register swap (ecx/edx) in the first inline push_back
+00a57730	DIFFER	63v63	-	4 grades; C2DLineF::GetDist; x87 stack lifetime of the squares/root
+00a57770	RELOCATION_MATCH	59v59	PASS	1 grade; C2DLineF::GetSquaredDist
+00a57ef0	RELOCATION_MATCH	128v128	PASS	2 grades; NBBBMaths::CLinearSpline::GetLength
+00a58720	MATCH	100v100	PASS	1 grade; CProjectOntoPlane::operator() (descriptive functor)
+00a58a60	RELOCATION_MATCH	228v228	PASS	2 grades; NBBBMaths::IsPointInsideTriangleInThePlane
+00a5a540	MATCH	50v50	PASS	1 grade; /Gr; _STL::__unguarded_insertion_sort_aux<float>
+00a5a770	RELOCATION_MATCH	87v87	PASS	1 grade; /Gr; _STL::__linear_insert<float>
+00a5a860	RELOCATION_MATCH	50v50	PASS	1 grade; /Gr; _STL::__insertion_sort<float>
+00a5a8a0	RELOCATION_MATCH	102v102	PASS	1 grade; /Gr; _STL::__partial_sort<float>
+00a5a910	RELOCATION_MATCH	69v69	PASS	1 grade; back_insert_iterator<vector<C2DVector> >::operator=
+00a5a9d0	DIFFER	211v203	-	4 grades; _STL::transform with CProjectOntoPlane inlined; X stored via a named local
+00a5c2b0	DIFFER	98v67	-	1 grade; NVectorMath::GFFinishPartialSlerp; retail_asm candidate (hand SSE)
+00a5c300	DIFFER	95v89	-	1 grade; NVectorMath::GFClear4DVectors; retail_asm candidate (hand SSE arm)
+00a5d7c0	RELOCATION_MATCH	60v60	PASS	2 grades; CShaderResource::OpenShaderBank (manifest CResourceIndex_InitializeFromBank)
+00a5dff0	RELOCATION_MATCH	78v78	PASS	1 grade; vector<_D3DVERTEXELEMENT9>::_M_allocate_and_copy
+00a5e4d0	RELOCATION_MATCH	198v198	PASS	1 grade; vector<SElement8>::operator= (8-byte element, descriptive)
+00a5ed60	RELOCATION_MATCH	136v136	PASS	2 grades; GFGetLastWindowsError
+00a60390	MATCH	83v83	PASS	1 grade; GFGetSubString
+00a608f0	RELOCATION_MATCH	83v83	PASS	1 grade; map<CWideString,CEntry> _Rb_tree::_M_find
+00a609c0	RELOCATION_MATCH	51v51	PASS	1 grade; map<CWideString,CEntry> _Rb_tree::_M_lower_bound
+00a60c30	RELOCATION_MATCH	84v84	PASS	1 grade; CChecksumCacheFile::Close
+00a60c90	RELOCATION_MATCH	73v73	PASS	1 grade; CChecksumCacheFile::CChecksumCacheFile(long)
+00a61270	RELOCATION_MATCH	233v233	PASS	1 grade; map<CWideString,CEntry> _Rb_tree::_M_insert
+00a61360	RELOCATION_MATCH	155v155	PASS	4 grades; map<CWideString,CEntry> _Rb_tree::insert_unique (same-TU noinline operator--/_M_insert bodies)
+00a617e0	RELOCATION_MATCH	136v136	PASS	1 grade; map<CWideString,CEntry>::operator[]
+00a61880	RELOCATION_MATCH	66v66	PASS	1 grade; CDirectInputDeviceLists_00a61b10 ctor (descriptive)
+00a61a80	RELOCATION_MATCH	131v131	PASS	1 grade; CDirectInputDeviceLists_00a61b10::ReleaseAll (descriptive)
+00a644c0	RELOCATION_MATCH	35v35	PASS	1 grade; GFCheckTreeNodes
+00a65390	RELOCATION_MATCH	126v126	PASS	2 grades; CMemoryAllocatorVariableSize::DeleteChunk (v2 derives from engine CMemoryAllocatorBase.h)
+00a656e0	RELOCATION_MATCH	59v59	PASS	1 grade; CMemoryAllocatorVariableSize::AllocateMemoryFromExistingChunks
+00a663d0	RELOCATION_MATCH	122v122	PASS	1 grade; CMemoryAllocatorFixedSize::NewChunk
+00a66930	RELOCATION_MATCH	96v96	PASS	1 grade; CKeyboard::CKeyboard(CInputManager&, bool)
+00a66f20	RELOCATION_MATCH	96v96	PASS	1 grade; CMouse::CMouse(CInputManager&, bool)
+00a698f0	RELOCATION_MATCH	136v136	PASS	2 grades (+1 no-op regrade of an unchanged source); CTextureManager::CalculateTextureSize
+00a6abe0	RELOCATION_MATCH	62v62	PASS	1 grade; CTextureManager::ResizePoolTextureCount
+00a6b000	MATCH	66v66	PASS	1 grade; _STL::fill<CIVCountedPointer<CLocalDetailPlacementGrid>*>
