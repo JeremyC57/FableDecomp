@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009e23f0	RELOCATION_MATCH	64v64	PASS	GFXToY(float): two named display-manager locals hoist both GFGetSystemManager calls
+009e2430	MATCH	33v33	PASS	GFGet2DDistance(C2DCoordI) with intrinsic sqrt on the int sum
+009e2460	MATCH	27v27	PASS	GFGet2DDistance(C2DVector) float overload; catalog Calc_Distance2D is wrong
+009e24b0	DIFFER	122v139	-	GFRecalibrateFastSubFrameTimer: retail_asm candidate (inline rdtsc); C++ reference body only
+009e3f60	DIFFER	179v189	-	CPixelFormat::ConvertRGBToPFDData: retail re-reads the format table per channel, ours CSEs
+009e4420	RELOCATION_MATCH	65v65	PASS	CJoystick::~CJoystick: local model (header carries a 12-byte list); event list dtor inline
+009e47e0	RELOCATION_MATCH	45v45	PASS	STLport list<CMaintainedEvent>::erase(iterator)
+009e4a20	RELOCATION_MATCH	120v120	PASS	STLport list<CMaintainedEvent>::insert(iterator) = insert(pos, _Tp())
+009e5170	RELOCATION_MATCH	76v76	PASS	CSymbolMap::FindSymbol(name, long&) with the landed inline Find
+009e5290	RELOCATION_MATCH	185v185	PASS	CSymbolMap::GetSymbolsFromGroupName: inline CCharString operator== + push_back
+009e6c80	RELOCATION_MATCH	133v133	PASS	STLport __unguarded_partition (__fastcall) with CCompareString
+009e7100	RELOCATION_MATCH	122v122	PASS	STLport __make_heap(first, last, comp, _Tp*, _Distance*)
+009e72c0	RELOCATION_MATCH	186v186	PASS	vector<pair<CCharString,CSymbolInfo>>::reserve; same-TU noinline __uninitialized_copy stand-in
+009e7680	RELOCATION_MATCH	111v111	PASS	CArray<SSymbolEntry>::DeallocateMemory (landed 0x6FC620 template form)
+009e7ab0	RELOCATION_MATCH	105v105	PASS	vector<pair<CCharString,CSymbolInfo>>::push_back
+009e7b40	RELOCATION_MATCH	134v134	PASS	STLport __partial_sort with inline make_heap
+009e93c0	RELOCATION_MATCH	93v93	PASS	CMemoryFile::Open(void*, long): direct member stores, resize + memcpy
+009e98c0	RELOCATION_MATCH	60v60	PASS	back_insert_iterator<vector<unsigned char>>::operator=
+009e9900	RELOCATION_MATCH	93v93	PASS	STLport __copy(random_access) into a back_insert_iterator
+009e9e30	RELOCATION_MATCH	125v125	PASS	CDateAndTime::ToString: RAII text buffer freed after the result copy
+009e9ef0	RELOCATION_MATCH	45v45	PASS	NProgressDisplay::StartProgress (__fastcall, null-tested counted pointer)
+009e9f40	RELOCATION_MATCH	35v35	PASS	NProgressDisplay::DisplayProgress (slot 3)
+009ea6c0	RELOCATION_MATCH	124v124	PASS	CConsoleCommandParameters::GetCorrectlyTypedParameter: default CGenericVar typed and returned by value
+009eac80	MATCH	143v143	PASS	CConsole::ScrollToHistoryBeginning (best PDB fit): STLport size()/advance inline
+009eb220	RELOCATION_MATCH	59v59	PASS	CConsole::GetRegisteredConsoleInput: inline FindInput wrapper over the map find
+009eb690	RELOCATION_MATCH	196v196	PASS	CConsole::ConsoleCommandList: in-order map walk, inline operator==(const char*) "command"
+009eb8e0	RELOCATION_MATCH	196v196	PASS	CConsole::ConsoleVariableList: twin of 0x9EB690 with "variable"
+009ebb30	RELOCATION_MATCH	70v70	PASS	CConsoleCommandParameters(type): _Vector_base+alloc_proxy, tag on a live slot -> same-TU overflow stand-in
+009ebcb0	RELOCATION_MATCH	221v221	PASS	CConsoleCommandParameters(type x4): same model, four inline push_backs
+009ee0a0	RELOCATION_MATCH	86v86	PASS	STLport __uninitialized_copy<const CGenericVar*> (__fastcall); catalog _Copy_backward is propagated
+009eeb00	RELOCATION_MATCH	92v92	PASS	list<CConsoleCommandLine>::insert(pos, x): user copy ctor calls CBase() default ctor
+009efcf0	RELOCATION_MATCH	147v147	PASS	map<char,CCharString>::operator[]: inline __default_constructed + inline insert wrapper
+009efdf0	RELOCATION_MATCH	113v113	PASS	vector<CGenericVar>::push_back
+009f0320	RELOCATION_MATCH	131v131	PASS	CCodeSectionManager::CCodeSectionManager: three STLport maps via _Rb_tree_base
+009f0c90	RELOCATION_MATCH	78v78	PASS	_Rb_tree<ulong, pair<CSectionDesc>>::erase(iterator)
+009f0de0	RELOCATION_MATCH	76v76	PASS	_Rb_tree<ulong, pair<CSectionDesc>>::_M_create_node
+009f0fa0	RELOCATION_MATCH	153v153	PASS	_Rb_tree<ulong, pair<CSectionDesc>>::_M_insert
+009f1470	RELOCATION_MATCH	208v208	PASS	map<ulong,CSectionDesc>::operator[] (twin of 0x9EFCF0)
+009f18f0	DIFFER	166v166	-	CGameEventDataPackage::GetData: register permutation only (this ebx/size ebp/StartPos edx)
+009f1c80	RELOCATION_MATCH	147v147	PASS	anonymous-namespace GetSizeVal(begin, end): digits, spaces, k/m suffix

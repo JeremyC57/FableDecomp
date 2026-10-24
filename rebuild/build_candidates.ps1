@@ -299738,6 +299738,265 @@ $catalog = @(
         TestSource = '00/a0/CScopedMemoryHandle_Initialise_00a039f0_test.cpp'
         PassPattern = '00a039f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009e23f0'
+        Module = '_global'
+        Source = '00/9e/global_GFXToY_009e23f0.cpp'
+        TestSource = '00/9e/global_GFXToY_009e23f0_test.cpp'
+        PassPattern = '009e23f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2430'
+        Module = '_global'
+        Source = '00/9e/global_GFGet2DDistance_009e2430.cpp'
+        TestSource = '00/9e/global_GFGet2DDistance_009e2430_test.cpp'
+        PassPattern = '009e2430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2460'
+        Module = '_global'
+        Source = '00/9e/global_GFGet2DDistance_009e2460.cpp'
+        TestSource = '00/9e/global_GFGet2DDistance_009e2460_test.cpp'
+        PassPattern = '009e2460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e4420'
+        Module = 'CJoystick'
+        Source = '00/9e/CJoystick_CJoystick_009e4420.cpp'
+        TestSource = '00/9e/CJoystick_CJoystick_009e4420_test.cpp'
+        PassPattern = '009e4420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e47e0'
+        Module = '_STL::list<CMaintainedEvent>'
+        Source = '00/9e/STLlistCMaintainedEvent_erase_009e47e0.cpp'
+        TestSource = '00/9e/STLlistCMaintainedEvent_erase_009e47e0_test.cpp'
+        PassPattern = '009e47e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e4a20'
+        Module = '_STL::list<CMaintainedEvent>'
+        Source = '00/9e/STLlistCMaintainedEvent_insert_009e4a20.cpp'
+        TestSource = '00/9e/STLlistCMaintainedEvent_insert_009e4a20_test.cpp'
+        PassPattern = '009e4a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e5170'
+        Module = 'CSymbolMap'
+        Source = '00/9e/CSymbolMap_FindSymbol_009e5170.cpp'
+        TestSource = '00/9e/CSymbolMap_FindSymbol_009e5170_test.cpp'
+        PassPattern = '009e5170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e5290'
+        Module = 'CSymbolMap'
+        Source = '00/9e/CSymbolMap_GetSymbolsFromGroupName_009e5290.cpp'
+        TestSource = '00/9e/CSymbolMap_GetSymbolsFromGroupName_009e5290_test.cpp'
+        PassPattern = '009e5290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e6c80'
+        Module = '_STL'
+        Source = '00/9e/STL_unguardedpartition_009e6c80.cpp'
+        TestSource = '00/9e/STL_unguardedpartition_009e6c80_test.cpp'
+        PassPattern = '009e6c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7100'
+        Module = '_STL'
+        Source = '00/9e/STL_makeheap_009e7100.cpp'
+        TestSource = '00/9e/STL_makeheap_009e7100_test.cpp'
+        PassPattern = '009e7100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e72c0'
+        Module = '_STL::vector<pair<CCharString,CSymbolInfo>>'
+        Source = '00/9e/STLvectorpairCCharStringCSymbolInfo_reserve_009e72c0.cpp'
+        TestSource = '00/9e/STLvectorpairCCharStringCSymbolInfo_reserve_009e72c0_test.cpp'
+        PassPattern = '009e72c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7680'
+        Module = 'CArray<pair<CCharString,CSymbolInfo>>'
+        Source = '00/9e/CArraypairCCharStringCSymbolInfo_DeallocateMemory_009e7680.cpp'
+        TestSource = '00/9e/CArraypairCCharStringCSymbolInfo_DeallocateMemory_009e7680_test.cpp'
+        PassPattern = '009e7680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7ab0'
+        Module = '_STL::vector<pair<CCharString,CSymbolInfo>>'
+        Source = '00/9e/STLvectorpairCCharStringCSymbolInfo_pushback_009e7ab0.cpp'
+        TestSource = '00/9e/STLvectorpairCCharStringCSymbolInfo_pushback_009e7ab0_test.cpp'
+        PassPattern = '009e7ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7b40'
+        Module = '_STL'
+        Source = '00/9e/STL_partialsort_009e7b40.cpp'
+        TestSource = '00/9e/STL_partialsort_009e7b40_test.cpp'
+        PassPattern = '009e7b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e93c0'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_Open_009e93c0.cpp'
+        TestSource = '00/9e/CMemoryFile_Open_009e93c0_test.cpp'
+        PassPattern = '009e93c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e98c0'
+        Module = '_STL::back_insert_iterator<vector<unsigned char>>'
+        Source = '00/9e/STLbackinsertiteratorvectorunsignedchar_operator_009e98c0.cpp'
+        TestSource = '00/9e/STLbackinsertiteratorvectorunsignedchar_operator_009e98c0_test.cpp'
+        PassPattern = '009e98c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9900'
+        Module = '_STL'
+        Source = '00/9e/STL_copy_009e9900.cpp'
+        TestSource = '00/9e/STL_copy_009e9900_test.cpp'
+        PassPattern = '009e9900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9e30'
+        Module = 'CDateAndTime'
+        Source = '00/9e/CDateAndTime_ToString_009e9e30.cpp'
+        TestSource = '00/9e/CDateAndTime_ToString_009e9e30_test.cpp'
+        PassPattern = '009e9e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9ef0'
+        Module = 'NProgressDisplay'
+        Source = '00/9e/NProgressDisplay_StartProgress_009e9ef0.cpp'
+        TestSource = '00/9e/NProgressDisplay_StartProgress_009e9ef0_test.cpp'
+        PassPattern = '009e9ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9f40'
+        Module = 'NProgressDisplay'
+        Source = '00/9e/NProgressDisplay_DisplayProgress_009e9f40.cpp'
+        TestSource = '00/9e/NProgressDisplay_DisplayProgress_009e9f40_test.cpp'
+        PassPattern = '009e9f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ea6c0'
+        Module = 'CConsoleCommandParameters'
+        Source = '00/9e/CConsoleCommandParameters_GetCorrectlyTypedParameter_009ea6c0.cpp'
+        TestSource = '00/9e/CConsoleCommandParameters_GetCorrectlyTypedParameter_009ea6c0_test.cpp'
+        PassPattern = '009ea6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eac80'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_ScrollToHistoryBeginning_009eac80.cpp'
+        TestSource = '00/9e/CConsole_ScrollToHistoryBeginning_009eac80_test.cpp'
+        PassPattern = '009eac80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eb220'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_GetRegisteredConsoleInput_009eb220.cpp'
+        TestSource = '00/9e/CConsole_GetRegisteredConsoleInput_009eb220_test.cpp'
+        PassPattern = '009eb220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eb690'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_ConsoleCommandList_009eb690.cpp'
+        TestSource = '00/9e/CConsole_ConsoleCommandList_009eb690_test.cpp'
+        PassPattern = '009eb690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eb8e0'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_ConsoleVariableList_009eb8e0.cpp'
+        TestSource = '00/9e/CConsole_ConsoleVariableList_009eb8e0_test.cpp'
+        PassPattern = '009eb8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ebb30'
+        Module = 'CConsoleCommandParameters'
+        Source = '00/9e/CConsoleCommandParameters_CConsoleCommandParameters_009ebb30.cpp'
+        TestSource = '00/9e/CConsoleCommandParameters_CConsoleCommandParameters_009ebb30_test.cpp'
+        PassPattern = '009ebb30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ebcb0'
+        Module = 'CConsoleCommandParameters'
+        Source = '00/9e/CConsoleCommandParameters_CConsoleCommandParameters_009ebcb0.cpp'
+        TestSource = '00/9e/CConsoleCommandParameters_CConsoleCommandParameters_009ebcb0_test.cpp'
+        PassPattern = '009ebcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ee0a0'
+        Module = '_STL'
+        Source = '00/9e/STL_uninitializedcopy_009ee0a0.cpp'
+        TestSource = '00/9e/STL_uninitializedcopy_009ee0a0_test.cpp'
+        PassPattern = '009ee0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eeb00'
+        Module = '_STL::list<CConsoleCommandLine>'
+        Source = '00/9e/STLlistCConsoleCommandLine_insert_009eeb00.cpp'
+        TestSource = '00/9e/STLlistCConsoleCommandLine_insert_009eeb00_test.cpp'
+        PassPattern = '009eeb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009efcf0'
+        Module = '_STL::map<char, CCharString>'
+        Source = '00/9e/STLmapcharCCharString_operator_009efcf0.cpp'
+        TestSource = '00/9e/STLmapcharCCharString_operator_009efcf0_test.cpp'
+        PassPattern = '009efcf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009efdf0'
+        Module = '_STL::vector<CGenericVar>'
+        Source = '00/9e/STLvectorCGenericVar_pushback_009efdf0.cpp'
+        TestSource = '00/9e/STLvectorCGenericVar_pushback_009efdf0_test.cpp'
+        PassPattern = '009efdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f0320'
+        Module = 'CCodeSectionManager'
+        Source = '00/9f/CCodeSectionManager_CCodeSectionManager_009f0320.cpp'
+        TestSource = '00/9f/CCodeSectionManager_CCodeSectionManager_009f0320_test.cpp'
+        PassPattern = '009f0320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f0c90'
+        Module = '_STL::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>'
+        Source = '00/9f/STLRbtreeunsignedlongpairconstunsignedlongCSectionDesc_erase_009f0c90.cpp'
+        TestSource = '00/9f/STLRbtreeunsignedlongpairconstunsignedlongCSectionDesc_erase_009f0c90_test.cpp'
+        PassPattern = '009f0c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f0de0'
+        Module = '_STL::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>'
+        Source = '00/9f/STLRbtreeunsignedlongpairconstunsignedlongCSectionDesc_Mcreatenode_009f0de0.cpp'
+        TestSource = '00/9f/STLRbtreeunsignedlongpairconstunsignedlongCSectionDesc_Mcreatenode_009f0de0_test.cpp'
+        PassPattern = '009f0de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f0fa0'
+        Module = '_STL::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>'
+        Source = '00/9f/STLRbtreeunsignedlongpairconstunsignedlongCSectionDesc_Minsert_009f0fa0.cpp'
+        TestSource = '00/9f/STLRbtreeunsignedlongpairconstunsignedlongCSectionDesc_Minsert_009f0fa0_test.cpp'
+        PassPattern = '009f0fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f1470'
+        Module = '_STL::map<unsigned long, CSectionDesc>'
+        Source = '00/9f/STLmapunsignedlongCSectionDesc_operator_009f1470.cpp'
+        TestSource = '00/9f/STLmapunsignedlongCSectionDesc_operator_009f1470_test.cpp'
+        PassPattern = '009f1470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f1c80'
+        Module = '_global'
+        Source = '00/9f/global_GetSizeVal_009f1c80.cpp'
+        TestSource = '00/9f/global_GetSizeVal_009f1c80_test.cpp'
+        PassPattern = '009f1c80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
