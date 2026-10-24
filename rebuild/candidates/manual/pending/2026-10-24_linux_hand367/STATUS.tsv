@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00415350	RELOCATION_MATCH	227v227	PASS	NLocalisation::GetFontBankName: switch over GetLanguage, byte index table + jump table
+00415440	RELOCATION_MATCH	227v227	PASS	NLocalisation::GetStreamingFontBankName: same switch shape
+00415550	RELOCATION_MATCH	227v227	PASS	NLocalisation::GetSoundDefName (catalog GetFontBankName propagated)
+0041641f	RELOCATION_MATCH	125v125	PASS	CMainGameComponent::SetDisplayMode: frame-pointer size TU
+00417568	RELOCATION_MATCH	114v114	PASS	CMainGameComponent::ConsoleSetResolution: frame-pointer size TU
+00419d90	RELOCATION_MATCH	218v218	PASS	NGlobalConsole::Initialise (catalog StatRegisterClass propagated): implicit string conversion first
+0041a220	RELOCATION_MATCH	99v99	PASS	NResourceDirectoryNames::GetWriteableEngineCacheDir: /GS cookie, SHGetFolderPathW
+0041a7e0	MATCH	39v39	PASS	C2DBoxF::C2DBoxF(C2DVector, C2DExtentsF) (catalog operator+ propagated)
+0041c090	RELOCATION_MATCH	78v78	PASS	CGraphicFrameData::Release: forceinline dtor chain for delete this
+0041c850	RELOCATION_MATCH	38v38	PASS	CPixelFormat::CPixelFormat(long x4) (catalog ConstructString propagated)
+0041ceb3	RELOCATION_MATCH	108v108	PASS	NUISystem::CManager::PlaySample (vtable slot 41)
+0041cfb2	DIFFER	139v138	-	JustGetTheFrikkingText2: LTCG custom convention (result in edi); lane gap
+0041d0a8	RELOCATION_MATCH	122v122	PASS	NUISystem::CManager::PlaySoundW (slot 40)
+0042cb90	RELOCATION_MATCH	115v115	PASS	_Rb_tree<ulong,pair<,CUIState>>::_M_copy: frame-pointer size TU
+0042ce7a	RELOCATION_MATCH	105v105	PASS	_Rb_tree<ulong,pair<,CUIState>>::operator=
+0042d45d	RELOCATION_MATCH	118v118	PASS	map<CCharString,CCountedPointer<CComponent>>::operator[]
+0042d604	RELOCATION_MATCH	87v87	PASS	NUISystem::CYesNo::ChangeState: size TU, AddObserver/RemoveObserver
+0042d65b	RELOCATION_MATCH	87v87	PASS	NUISystem::COk::ChangeState: size TU, exclusive observer
+0042ded5	RELOCATION_MATCH	201v201	PASS	GPlayMusic(float) (catalog CFrontEnd_PlayAutoSaveSound is a label)
+0042e17c	RELOCATION_MATCH	136v136	PASS	CNewFrontendGameComponent::InitialiseSounds
+0042e3ce	RELOCATION_MATCH	32v32	PASS	InstallationComplete: int-width return under size TU (PDB _N)
+00431606	DIFFER	201v201	-	map<CCharString,long> insert_unique: comparator block layout only (same length)
+004316cf	RELOCATION_MATCH	164v164	PASS	map<CCharString,long> _Rb_tree::_M_insert, inlined CCharString::operator<
+00431e80	RELOCATION_MATCH	69v69	PASS	CControlsDef::operator= (implicit, via helper)
+0043212b	RELOCATION_MATCH	80v80	PASS	vector<pair<ulong,CSubDefInfo>>::_M_allocate_and_copy
+00432bab	RELOCATION_MATCH	144v144	PASS	map<CCharString,long> _Rb_tree::_M_copy, inline clone
+00432ff0	RELOCATION_MATCH	71v71	PASS	vector<CCharString>::_M_allocate_and_copy
+00433273	RELOCATION_MATCH	185v185	PASS	GFSerialiseVectorBinaryIn<CCharString>
+0043336a	RELOCATION_MATCH	73v73	PASS	vector<CCharString>::erase(first,last)
+00434370	RELOCATION_MATCH	123v123	PASS	CEngineDef::operator= (implicit, via helper)
+00434b50	RELOCATION_MATCH	50v50	PASS	CDisplayEngine::GetMainWindow (catalog GetDefaultVal<CEngineGraphic> is a label): C2DBoxF user copy ctor
+004350d0	RELOCATION_MATCH	180v180	PASS	CDisplayEngine::Init: CBaseClass root keeps members at +4 with a double member
+00436ba0	RELOCATION_MATCH	66v66	PASS	CCountedPointer<CDisplayViewManager>::DeleteData
+00436fb0	RELOCATION_MATCH	105v105	PASS	CTBaseSingleton<CEngineManager>::Get: real STLport list/vector bases
+0043a2a0	RELOCATION_MATCH	218v218	PASS	CPlayerGui::AddScriptScreenText (catalog ShowOnScreenMessage_FormatDisplay is a label)
+0043e060	MATCH	30v30	PASS	std::fill_n<ulong*,uint,ulong> (STLport, returns first)
+00440100	MATCH	113v113	PASS	std::fill<CEnginePrimitiveHandle*>: Clear via pointee NotifyIfLastHandle
+00440260	MATCH	129v129	PASS	std::__copy<CEnginePrimitiveHandle*,int> (catalog _Move is a label)
+00440390	MATCH	137v137	PASS	std::__copy_backward<CEnginePrimitiveHandle*,int> (catalog _Move is a label)
+00440b40	RELOCATION_MATCH	82v82	PASS	std::__destroy_aux<_Deque_iterator<CSubtitleRenderer::CSetTextInfo>> (sibling of landed 0x440C00)

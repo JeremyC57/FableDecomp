@@ -1176,3 +1176,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport pair copies memberwise when constructed (floats via fld/fstp) but bitwise (`movsd`) when assigned; STLport does not treat enums as POD (placement-new loop) (chunk 369).
 - A leaf `uninitialized_fill_n` also matches `__uninitialized_fill_n`: use `??$uninitialized_fill_n` (likewise `?erase@`, `??0?$vector@`) (chunk 369).
 - STLport `_M_find` byte-matches as `if (y == header || comp(k, key(y))) y = header; return y;`; `distance` at 0x4753B1 is `__cdecl` while the free algorithms are `__fastcall` (chunk 369).
+- Handle `Clear()` in a loop: `if (Data.Object) Data.Object->NotifyIfLastHandle(this);` keeps the pointer in ecx; GetRefCount/IsUnique forms add `mov ecx,eax` (chunk 367, 0x440100).
+- STLport `__destroy_aux` over deque iterators is `__fastcall`, `__false_type&` in ecx, `ret 20h`; block size 128/sizeof(T) (chunk 367).
+- PDB `bool` but retail `xor eax,eax; inc eax`: model an `int` return under pragma "s" (0x42E3CE).
+- A double member plus an own vptr pads the vptr to 8: a vptr-only root base keeps members at +4 (0x4350D0).
+- /O2 duplicates a base call into the first of two branches; retail calling it once means pragma "s" (0x42D604).
+- Implicit `const char*` to CCharString temporaries are built before explicit argument temporaries (0x419D90); `L""` in a lane TU needs `<stddef.h>`.

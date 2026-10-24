@@ -47,3 +47,5 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - Global_GFFreeConfigDetection_00401b20.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - Global_CCRC_Calc_004014a0.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CFileInstallerSingleton_Get_00404440_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetStreamingFontBankName_00415440.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetStreamingFontBankName_00415440_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
