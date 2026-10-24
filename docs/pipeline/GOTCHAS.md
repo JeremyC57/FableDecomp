@@ -1239,3 +1239,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A loop over a small table with `unsigned int i` gives retail's indexed walk with `jb`; `int i` gives a pointer walk with `jl` (0x63B750).
 - A class temporary inside an `&&` chain gets a conditional-destruction flag: move it into a `__forceinline` helper with a named local (0x63F150).
 - `if (a||b||c||d) return true; return false;` gives retail's 8-bit `al` exits (0x637F40); STLport `equal_range` runs the upper_bound walk first (right-to-left pair args) (0x639250).
+- Purity greps must match whole tokens: a test variable `g_emitter` contains `_emit` (chunk 383 was skipped once by the lane script's substring grep). `crawl/purity.py` also tests `"_emit" in text`, so a source naming such an identifier would be misclassified emit_bake.
+- `CFilter_BindN` `operator()`s must be `__forceinline`; an inlined `GFRandom` takes the seed pointer by value (0x669040, 0x669850).
+- An enum vector is non-POD to STLport: its copy helpers need `__forceinline` (0x6714B0); STLport `less`/`equal_to` need `less() {}` or each by-value temporary stores a zero byte (0x6720B0).
+- Three named float deltas give retail's Z,Y,X square order; a `C3DVector operator-` temporary gives X,Z,Y (0x6614F0).

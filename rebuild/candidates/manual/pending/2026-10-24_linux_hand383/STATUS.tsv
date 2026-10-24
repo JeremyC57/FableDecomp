@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00654e67	MATCH	30v30	PASS	std::fill<C2DCoordI*,C2DCoordI> (catalog _Fill<CObjectFamilyEntry*> propagated); __fastcall STLport loop
+00655516	RELOCATION_MATCH	150v150	PASS	_Deque_base<C2DVector>::_M_initialize_map; /Os ebp frame, max(8,n+2) map size via stack locals
+00655a52	RELOCATION_MATCH	44v44	PASS	list<NPlayerGui::CStatBar::CChangeText>::erase: unlink, ~CChangeText, __node_alloc deallocate
+006566c3	RELOCATION_MATCH	172v172	PASS	vector<CIntelligentPointer<CParticleEmitter>>::_M_insert_overflow (__false_type)
+006568f2	RELOCATION_MATCH	232v232	PASS	vector<CIntelligentPointer<CParticleEmitter>>::_M_fill_insert; copy of x in a local, ~CIntelligentPointer at end
+006569da	RELOCATION_MATCH	102v102	PASS	deque<pair<CCharString,long>>::_M_push_back_aux_v; _M_reserve_map_at_back 0x0065676F
+00656a40	RELOCATION_MATCH	219v219	PASS	vector<C2DCoordI>::_M_fill_insert (catalog said CObjectFamilyEntry range insert)
+00656e0c	RELOCATION_MATCH	50v50	PASS	deque<pair<CCharString,long>>::push_back; copy ctor 0x0050B7B0 inline-null-tested
+00658e38	RELOCATION_MATCH	59v59	PASS	CTCVillage::GetNearestBuildingWithProperty: by-value CIntelligentPointer args built in their slots
+0065c2d0	RELOCATION_MATCH	158v158	PASS	CTCVillage::ClearCrimes: /Os ebp frame; GetTCIfPresent idiom + crime list walk
+0065e8b8	MATCH	41v41	PASS	std::__advance<_List_iterator<CIntelligentPointer<CThingBuilding>>,int> (bidirectional)
+0065ea75	RELOCATION_MATCH	97v97	PASS	std::__find_if<list<CCountedPointer<CVillageTaskTorch>>::iterator,CIsThingInvolvedWithTask>; conditional temp flag
+0065fba4	RELOCATION_MATCH	61v61	PASS	CSoundMap::GetPSoundPair: same-TU lower_bound, != branch order
+0065ff5e	RELOCATION_MATCH	48v48	PASS	CTCVillage::IsThingInTaskList<CVillageTaskTorch>: find_if != end
+00660213	RELOCATION_MATCH	45v45	PASS	vector<long>::_M_allocate_and_copy<long*>
+00660684	RELOCATION_MATCH	108v108	PASS	vector<long>::reserve
+006611f7	RELOCATION_MATCH	51v51	PASS	std::__copy(set<long>::iterator, back_insert_iterator<vector<long>>): by-value iterator returned via hidden ptr
+006614f0	MATCH	68v68	PASS	GFWorld3DDistanceSmallerThan: explicit float deltas, Z,Y,X square order
+00661540	RELOCATION_MATCH	91v91	PASS	GFGetAngleXYTo: atan2 * 1/2pi wrapped into [0,1) by the landed __forceinline WrapAngle
+00661cd0	MATCH	46v46	PASS	CThingCreatureBase::GetCurrentSpeed: |velocity| via PhysicsTC
+00664490	RELOCATION_MATCH	85v85	PASS	CThingCreatureBase::AddQueuedAction: push_back empty CCountedPointer, back().Reset(action.Clone())
+00669040	RELOCATION_MATCH	183v183	PASS	CFilter_Bind3<SolidToThing,PhysicsFlagsSolidToThing,OverlappingCircle>::operator()<CThingPhysical>; __forceinline filter ops
+00669110	RELOCATION_MATCH	134v134	PASS	CFilter_Bind2<OverlappingSphere,PosInContainmentVolume>::operator()<CThingBuilding>; sphere op __forceinline
+00669850	RELOCATION_MATCH	113v113	PASS	std::random_shuffle<CThing**,RandFunc>: __forceinline GFRandom(range, seed ptr by value)
+0066a920	RELOCATION_MATCH	169v169	PASS	CTCSoundPlayer::InternalPlaySoundEventAtPos: CSoundInit default + GainFaderBits 0x8010
+0066ace0	RELOCATION_MATCH	176v176	PASS	CTCSoundPlayer::PlayUnattachedSample: named thing/physics locals give lea ecx,[eax+0Ch]
+0066b080	RELOCATION_MATCH	148v148	PASS	CTCSoundPlayer::InternalPlayAttachedSample: CreatePAttachedEmitter + copy-and-0x8010 when GainFaderBits==0
+0066b120	RELOCATION_MATCH	163v163	PASS	CTCSoundPlayer::InternalPlaySoundEvent: as 0066a920 with attached emitter + OverrideID
+0066b280	RELOCATION_MATCH	116v116	PASS	CTCSoundPlayer::PlayAttachedSample(const CSoundPair&,...): random sample in [First,Last], bank as named ref first
+0066bc10	DIFFER	199v232	-	CTCSoundPlayer::GetPotentialCriteriaStrings: first push_back not inlined; slot zeroed by immediate (parked differ/)
+0066bdf0	DIFFER	227v223	-	CTCSoundPlayer::PlayUnattachedCriteria: zero-register CSE live range (same gap as landed 0x0066BD00) (parked differ/)
+0066e742	RELOCATION_MATCH	87v87	PASS	NHeroInformationScreens::CManager::PlayScreenUpdateSound: /Os switch, ebp frame, CSoundInit temp
+00670470	DIFFER	222v228	-	CTCCoopSpirit::UpdateHeightAboveGround: x87 fst/fild scheduling + dword clamp constants (parked differ/)
+006714b0	RELOCATION_MATCH	233v233	PASS	vector<ENavigatorType>::operator=: enum is non-POD to STLport, __forceinline copy helpers
+006715a0	RELOCATION_MATCH	72v72	PASS	vector<ENavigatorType>::_M_allocate_and_copy<const ENavigatorType*>: placement-new null test loop
+00671bb0	MATCH	41v41	PASS	std::adjacent_find<ENavigatorType*,equal_to<ENavigatorType>> (catalog _Unique)
+00672070	MATCH	52v52	PASS	vector<ENavigatorType>::erase(first,last): counted __copy loop
+006720b0	RELOCATION_MATCH	77v77	PASS	std::sort<ENavigatorType*>: __lg inline, less() user ctor kills zero byte stores
+00672100	RELOCATION_MATCH	123v123	PASS	std::__final_insertion_sort<ENavigatorType*,less>: __forceinline __insertion_sort
+00672180	MATCH	50v50	PASS	std::__unguarded_insertion_sort<ENavigatorType*,less> (catalog _Copy_impl<CComplexNumber*>)
