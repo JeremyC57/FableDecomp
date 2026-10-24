@@ -1,0 +1,7 @@
+address	name	evidence
+007a5420	CTCForcePushPower::CancelMove	switch arm of CTCSpecialAbilities::CancelCurrentMutexAbility 0x72B420 for the force-push ability (chunk 326)
+007a44c0	CTCWillEnflame::CancelMove	switch arm of 0x72B420 for the enflame ability (chunk 326)
+007c6a40	CTCTurncoatSpell::CancelMove	switch arm of 0x72B420 for the turncoat ability; the landed row is named CTCWillEnflame::CancelMove (chunk 326)
+007a7d10	CTCBattleCharge::CancelMove	PDB name; landed as CancelCharge (chunk 326)
+007a03b0	CTCWillLightning::CancelMove	switch arm of 0x72B420 for the lightning ability (chunk 326)
+00626e40	CTCQuickAccessMenu::ConstructItemCategoryList	callee of the item-list UI rows 0x6276F0/0x628000 (chunk 326)

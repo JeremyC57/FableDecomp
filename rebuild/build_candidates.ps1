@@ -276859,6 +276859,13 @@ $catalog = @(
         TestSource = '00/68/global_CParticleMorphsTransferEntry_00681ba0_test.cpp'
         PassPattern = '00681ba0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0072b420'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_CancelCurrentMutexAbility_0072b420.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_CancelCurrentMutexAbility_0072b420_test.cpp'
+        PassPattern = '0072b420_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
