@@ -55,3 +55,5 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - CAFile_SetCurrentPath_009974f0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CWideString_AddLiteralAndWideString_0099bff0.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CWideString_AddLiteralAndWideString_0099bff0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CBankFileAsync_SetEnableFailureHandling_009d5240_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CBankFileAsync_SetEnableFailureHandling_009d5240.cpp moved here 2026-10-24 when the address landed as genuine C++.

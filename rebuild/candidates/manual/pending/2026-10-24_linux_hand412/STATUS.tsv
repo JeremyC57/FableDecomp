@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009c87c0	RELOCATION_MATCH	202v202	PASS	NGameText::CDataBank::~CDataBank (label CGameDataBank_DestructorHelper)
+009ca500	MATCH	47v47	PASS	_STL::__uninitialized_fill_n over {counted pointer, long} (label _Fill_n)
+009cbe90	MATCH	67v67	PASS	CBankFileEntryUpdateData::ReadInfo (label BankData_CopyRange)
+009cd620	RELOCATION_MATCH	239v239	PASS	CBankFile::AddEntry -> virtual AddEntryMultipleFiles (label Map_InsertOrReplacePair)
+009d2160	RELOCATION_MATCH	99v99	PASS	CSmallVector<CCharString,8>::Allocate (label CSmallVector_AllocateHeap)
+009d2a40	RELOCATION_MATCH	101v101	PASS	_STL::vector<unsigned char> fill ctor; needed the _STLP_alloc_proxy end-of-storage (grade 2)
+009d2d00	RELOCATION_MATCH	207v207	PASS	_STL::_Rb_tree::_M_copy, map<CCharString, 4-byte> nodes (label BankEntry_CloneTree)
+009d2ed0	RELOCATION_MATCH	234v234	PASS	_STL::__unguarded_partition for CBankFile::CompareDataOffset (label CBankFile_QuicksortPartition)
+009d3ed0	RELOCATION_MATCH	75v75	PASS	_STL::__final_insertion_sort for CBankFile::CompareDataOffset (label CBankFile_IntroSort)
+009d4e90	RELOCATION_MATCH	114v114	PASS	CDefStringTable::~CDefStringTable (atexit dtor of g_DefStringTable; label LTextTreeWalkThrough_Destructor)
+009d5240	RELOCATION_MATCH	17v17	PASS	CBankFileAsync::SetEnableFailureHandling
+009d6060	RELOCATION_MATCH	160v160	PASS	CBankFileAsyncEntry::BeginReadData (label CBankFileAsyncEntry_SetupReadRequest; grade 2 after SRC_FAIL)
+009d8650	DIFFER	12v36	-	MicroThread::MicroThreadSleep: retail_asm candidate (esp stack switch)
+009d86b0	RELOCATION_MATCH	27v27	PASS	MicroThread::SetStack
+009d8710	RELOCATION_MATCH	125v125	PASS	MicroThread::CreateMicroThread (STLport vector range insert)
+009d87f0	DIFFER	124v124	-	MicroThread::SwitchToMicroThread: scheduling of the active-thread store around the first memmove
+009d8b40	RELOCATION_MATCH	66v66	PASS	CScopedShadersEnable::~CScopedShadersEnable (label CShaderRenderManager_ApplyShaderStates)
+009d8c30	MATCH	32v32	PASS	CompareQuickDrawTriDepth descriptive name: qsort comparator, descending depth
+009d8cb0	RELOCATION_MATCH	58v58	PASS	CompareTriangleAverageDepth descriptive name: qsort comparator, descending average z
+009de3f0	RELOCATION_MATCH	25v25	PASS	CRenderManager2D::Draw2DBox (label ConstructString)
+009e18b0	RELOCATION_MATCH	176v176	PASS	GFStringToFloat(const char*)
+009e1960	DIFFER	74v74	-	GFStringToInt(const char*): jump threading of the zero-length guard (lane gap)
+009e19b0	RELOCATION_MATCH	198v198	PASS	GFStringToFloat(const wchar_t*) (label GFParseFloat)
+009e1a80	DIFFER	75v75	-	GFStringToInt(const wchar_t*): jump threading of the zero-length guard (lane gap)
+009e1ad0	MATCH	35v35	PASS	GFGet2DBoxDistance (label Math_MaxAbsDelta)
+009e1b30	MATCH	68v68	PASS	GFGet3DBoxDistance (label Vector3_MaxComponentAbsDifference)
+009e1bc0	RELOCATION_MATCH	168v168	PASS	GFGetTime
+009e1c70	DIFFER	40v58	-	GFGetFastSubFrameTimer: retail_asm candidate (inline rdtsc)
+009e1dd0	DIFFER	49v49	-	GFAYToVY(float): x87 operand order of g * y (lane gap)
+009e1e10	RELOCATION_MATCH	40v40	PASS	GFVXToAX (label GFAXToVX)
+009e1e40	RELOCATION_MATCH	41v41	PASS	GFVYToAY (label GFAYToVY)
+009e1e70	RELOCATION_MATCH	209v209	PASS	GFVBoxToABox(C2DBoxF)
+009e1f50	RELOCATION_MATCH	203v203	PASS	GFVBoxToABox(C2DBoxI) (label GFABoxToVBox)
+009e2020	DIFFER	199v199	-	GFABoxToVBox(C2DBoxF): x87 operand order only (lane gap)
+009e20f0	DIFFER	219v219	-	GFABoxToVBox(C2DBoxI): x87 operand order only (lane gap)
+009e21d0	DIFFER	106v106	-	GFACoordToVCoord(C2DVector): x87 operand order only (lane gap)
+009e2240	DIFFER	116v116	-	GFACoordToVCoord(C2DCoordI) (label GFABoxToVBox): x87 operand order only (lane gap)
+009e22c0	RELOCATION_MATCH	98v98	PASS	GFVCoordToACoord(C2DVector)
+009e2330	RELOCATION_MATCH	108v108	PASS	GFVCoordToACoord(C2DCoordI) (label GFABoxToVBox)
+009e23a0	RELOCATION_MATCH	70v70	PASS	GFXToY

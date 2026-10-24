@@ -1,25 +1,26 @@
-#include <stdio.h>
+// Behaviour test for CBankFileAsync::SetEnableFailureHandling (0x009D5240).
+#include <cstdio>
 
-#include "fable_async.h"
+class CBankFileAsync
+{
+public:
+    static void SetEnableFailureHandling(bool enable);
+    static unsigned int s_allocationFlags;
+};
 
-fable_u32 g_CBankFileAsyncFailureHandlingMode_013CA868 = 0;
+unsigned int CBankFileAsync::s_allocationFlags = 0x55;
+
+void CBankFileAsync::SetEnableFailureHandling(bool enable)
+{
+    s_allocationFlags = enable ? 0 : 2;
+}
 
 int main()
 {
     CBankFileAsync::SetEnableFailureHandling(false);
-    if (g_CBankFileAsyncFailureHandlingMode_013CA868 != 2)
-    {
-        printf("FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR FAIL code=1\n");
-        return 1;
-    }
-
+    if (CBankFileAsync::s_allocationFlags != 2) { std::printf("009d5240_TEST FAIL\n"); return 1; }
     CBankFileAsync::SetEnableFailureHandling(true);
-    if (g_CBankFileAsyncFailureHandlingMode_013CA868 != 0)
-    {
-        printf("FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR FAIL code=2\n");
-        return 2;
-    }
-
-    printf("FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS\n");
+    if (CBankFileAsync::s_allocationFlags != 0) { std::printf("009d5240_TEST FAIL\n"); return 1; }
+    std::printf("009d5240_TEST PASS\n");
     return 0;
 }

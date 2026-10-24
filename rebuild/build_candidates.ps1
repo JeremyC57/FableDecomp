@@ -298977,6 +298977,216 @@ $catalog = @(
         TestSource = '00/9a/CBankFileManager_GetRetailBankFilePath_009a7d40_test.cpp'
         PassPattern = '009a7d40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009c87c0'
+        Module = 'NGameText::CDataBank'
+        Source = '00/9c/NGameTextCDataBank_CDataBank_009c87c0.cpp'
+        TestSource = '00/9c/NGameTextCDataBank_CDataBank_009c87c0_test.cpp'
+        PassPattern = '009c87c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ca500'
+        Module = '_STL'
+        Source = '00/9c/STL_uninitializedfilln_009ca500.cpp'
+        TestSource = '00/9c/STL_uninitializedfilln_009ca500_test.cpp'
+        PassPattern = '009ca500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cbe90'
+        Module = 'CBankFileEntryUpdateData'
+        Source = '00/9c/CBankFileEntryUpdateData_ReadInfo_009cbe90.cpp'
+        TestSource = '00/9c/CBankFileEntryUpdateData_ReadInfo_009cbe90_test.cpp'
+        PassPattern = '009cbe90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cd620'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_AddEntry_009cd620.cpp'
+        TestSource = '00/9c/CBankFile_AddEntry_009cd620_test.cpp'
+        PassPattern = '009cd620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d2160'
+        Module = 'CSmallVector<CCharString,8>'
+        Source = '00/9d/CSmallVectorCCharString8_Allocate_009d2160.cpp'
+        TestSource = '00/9d/CSmallVectorCCharString8_Allocate_009d2160_test.cpp'
+        PassPattern = '009d2160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d2a40'
+        Module = '_STL::vector<unsigned char>'
+        Source = '00/9d/STLvectorunsignedchar_vector_009d2a40.cpp'
+        TestSource = '00/9d/STLvectorunsignedchar_vector_009d2a40_test.cpp'
+        PassPattern = '009d2a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d2d00'
+        Module = '_STL::_Rb_tree'
+        Source = '00/9d/STLRbtree_Mcopy_009d2d00.cpp'
+        TestSource = '00/9d/STLRbtree_Mcopy_009d2d00_test.cpp'
+        PassPattern = '009d2d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d2ed0'
+        Module = '_STL'
+        Source = '00/9d/STL_unguardedpartition_009d2ed0.cpp'
+        TestSource = '00/9d/STL_unguardedpartition_009d2ed0_test.cpp'
+        PassPattern = '009d2ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d3ed0'
+        Module = '_STL'
+        Source = '00/9d/STL_finalinsertionsort_009d3ed0.cpp'
+        TestSource = '00/9d/STL_finalinsertionsort_009d3ed0_test.cpp'
+        PassPattern = '009d3ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d4e90'
+        Module = 'CDefStringTable'
+        Source = '00/9d/CDefStringTable_CDefStringTable_009d4e90.cpp'
+        TestSource = '00/9d/CDefStringTable_CDefStringTable_009d4e90_test.cpp'
+        PassPattern = '009d4e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d5240'
+        Module = 'CBankFileAsync'
+        Source = '00/9d/CBankFileAsync_SetEnableFailureHandling_009d5240.cpp'
+        TestSource = '00/9d/CBankFileAsync_SetEnableFailureHandling_009d5240_test.cpp'
+        PassPattern = '009d5240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d6060'
+        Module = 'CBankFileAsyncEntry'
+        Source = '00/9d/CBankFileAsyncEntry_BeginReadData_009d6060.cpp'
+        TestSource = '00/9d/CBankFileAsyncEntry_BeginReadData_009d6060_test.cpp'
+        PassPattern = '009d6060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d86b0'
+        Module = 'MicroThread'
+        Source = '00/9d/MicroThread_SetStack_009d86b0.cpp'
+        TestSource = '00/9d/MicroThread_SetStack_009d86b0_test.cpp'
+        PassPattern = '009d86b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d8710'
+        Module = 'MicroThread'
+        Source = '00/9d/MicroThread_CreateMicroThread_009d8710.cpp'
+        TestSource = '00/9d/MicroThread_CreateMicroThread_009d8710_test.cpp'
+        PassPattern = '009d8710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d8b40'
+        Module = 'CScopedShadersEnable'
+        Source = '00/9d/CScopedShadersEnable_CScopedShadersEnable_009d8b40.cpp'
+        TestSource = '00/9d/CScopedShadersEnable_CScopedShadersEnable_009d8b40_test.cpp'
+        PassPattern = '009d8b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d8c30'
+        Module = '_global'
+        Source = '00/9d/global_CompareQuickDrawTriDepth_009d8c30.cpp'
+        TestSource = '00/9d/global_CompareQuickDrawTriDepth_009d8c30_test.cpp'
+        PassPattern = '009d8c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d8cb0'
+        Module = '_global'
+        Source = '00/9d/global_CompareTriangleAverageDepth_009d8cb0.cpp'
+        TestSource = '00/9d/global_CompareTriangleAverageDepth_009d8cb0_test.cpp'
+        PassPattern = '009d8cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009de3f0'
+        Module = 'CRenderManager2D'
+        Source = '00/9d/CRenderManager2D_Draw2DBox_009de3f0.cpp'
+        TestSource = '00/9d/CRenderManager2D_Draw2DBox_009de3f0_test.cpp'
+        PassPattern = '009de3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e18b0'
+        Module = '_global'
+        Source = '00/9e/global_GFStringToFloat_009e18b0.cpp'
+        TestSource = '00/9e/global_GFStringToFloat_009e18b0_test.cpp'
+        PassPattern = '009e18b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e19b0'
+        Module = '_global'
+        Source = '00/9e/global_GFStringToFloat_009e19b0.cpp'
+        TestSource = '00/9e/global_GFStringToFloat_009e19b0_test.cpp'
+        PassPattern = '009e19b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1ad0'
+        Module = '_global'
+        Source = '00/9e/global_GFGet2DBoxDistance_009e1ad0.cpp'
+        TestSource = '00/9e/global_GFGet2DBoxDistance_009e1ad0_test.cpp'
+        PassPattern = '009e1ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1b30'
+        Module = '_global'
+        Source = '00/9e/global_GFGet3DBoxDistance_009e1b30.cpp'
+        TestSource = '00/9e/global_GFGet3DBoxDistance_009e1b30_test.cpp'
+        PassPattern = '009e1b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1bc0'
+        Module = '_global'
+        Source = '00/9e/global_GFGetTime_009e1bc0.cpp'
+        TestSource = '00/9e/global_GFGetTime_009e1bc0_test.cpp'
+        PassPattern = '009e1bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1e10'
+        Module = '_global'
+        Source = '00/9e/global_GFVXToAX_009e1e10.cpp'
+        TestSource = '00/9e/global_GFVXToAX_009e1e10_test.cpp'
+        PassPattern = '009e1e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1e40'
+        Module = '_global'
+        Source = '00/9e/global_GFVYToAY_009e1e40.cpp'
+        TestSource = '00/9e/global_GFVYToAY_009e1e40_test.cpp'
+        PassPattern = '009e1e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1e70'
+        Module = '_global'
+        Source = '00/9e/global_GFVBoxToABox_009e1e70.cpp'
+        TestSource = '00/9e/global_GFVBoxToABox_009e1e70_test.cpp'
+        PassPattern = '009e1e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1f50'
+        Module = '_global'
+        Source = '00/9e/global_GFVBoxToABox_009e1f50.cpp'
+        TestSource = '00/9e/global_GFVBoxToABox_009e1f50_test.cpp'
+        PassPattern = '009e1f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e22c0'
+        Module = '_global'
+        Source = '00/9e/global_GFVCoordToACoord_009e22c0.cpp'
+        TestSource = '00/9e/global_GFVCoordToACoord_009e22c0_test.cpp'
+        PassPattern = '009e22c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2330'
+        Module = '_global'
+        Source = '00/9e/global_GFVCoordToACoord_009e2330.cpp'
+        TestSource = '00/9e/global_GFVCoordToACoord_009e2330_test.cpp'
+        PassPattern = '009e2330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e23a0'
+        Module = '_global'
+        Source = '00/9e/global_GFXToY_009e23a0.cpp'
+        TestSource = '00/9e/global_GFXToY_009e23a0_test.cpp'
+        PassPattern = '009e23a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
