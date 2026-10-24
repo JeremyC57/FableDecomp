@@ -1043,3 +1043,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Lookup shapes: out-param GetInterface -> `mov eax,[eax+4] ; mov ecx,eax`; HasTC + returned ternary GetTC -> `mov ecx,[eax+4]`; `T* p = 0; if (HasTC) p = GetTC;` -> `xor ecx,ecx` preload (chunk 340).
 - The world random step `seed = GFROR13(seed*0x24A1+0x24DF)` is an inline two-statement helper; open-coded it schedules before `_ftol` and spills (008d6580).
 - A free `__fastcall` returning a class by value takes the return slot in ecx, the first arg in edx, and ends `ret 4*n` (008e9110).
+- Empty TRAITS objects: give the callee that receives them (`CPersistTraits<T>::TransferIn/TransferBinaryIn`) its real shape in the TU as `__declspec(noinline)` and VC7.1 aliases the traits `this` onto retail's live slot (007ae3d0, 0046c3b9); no `#pragma auto_inline(off)`. With the body visible VC also deletes dead stores through the traits, so use it only where retail shows the same elimination (00632830).
+- A forwarding or empty same-TU noinline stand-in is worse than a declaration: VC7.1 elides the call to a known-empty function (0095d4c0, 00a98760).
+- /G3-/G7, /Ob1, /Ox and the QFE 4035 compiler do not change VC7.1's load-vs-push scheduling or EH-frame decisions; don't spend grades on flag sweeps for those residues (0072a970, 00c14b50).
+- Parked-row history and residue classes for all 2,755 parked addresses: `rebuild/candidates/manual/PARKED_INDEX.tsv` + `PARKED_CLASSES.md` (2026-10-24; regenerate with `tools/decomp_pipeline/linux_lane/lane_tools/parked_index.py`).

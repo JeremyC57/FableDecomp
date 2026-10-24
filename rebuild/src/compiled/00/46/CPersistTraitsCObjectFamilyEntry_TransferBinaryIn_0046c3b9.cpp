@@ -1,6 +1,10 @@
-// Grade: DIFFER(ours v retail) -- the long-traits temporary: retail forms `this` at [ebp+0Ch] (the value-argument slot); a 4-byte traits lands at [ebp+8], a 1-byte empty one at [ebp+0Bh], a named local at [ebp-4]/[ebp-1]
+// Grade: RELOCATION_MATCH (119/119). Fix (2026-10-24 diag): the long traits reader 0x0040FE60 gets its REAL body in the TU
+//   (`__declspec(noinline)`, no auto_inline pragma -- the pragma also pushes the in-class traits constructor out of line);
+//   VC7.1 then forms the empty traits `this` on the live value-argument slot ([ebp+0Ch]) exactly as retail. Previous grade:
+//   DIFFER(126v119) -- ours homed the traits at [ebp+8] / its own slot.
+// Leaf: ?TransferBinaryIn@?$CPersistTraits@UCObjectFamilyEntry
 // CPersistTraits<CObjectFamilyEntry>::TransferBinaryIn(CDataInputStream*, CObjectFamilyEntry*) -- read the Object index through the long traits, then the Probability (stored as a float, truncated to long)
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0046C3B9, 119 bytes, `ret 8` (__thiscall, the empty traits `this` is unused).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0046C3B9, 119 bytes, `ret 8` (__fastcall, the empty traits `this` is unused).
 // Callees: CPersistTraits<long>::TransferBinaryIn @ 0x0040FE60 (manifest "CPersistTraits<float>": it moves 4 raw bytes,
 //   the member is a long), CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (the inline Read's slow path),
 //   _ftol @ 0x00BFEA70 (the float -> long conversion).
@@ -43,8 +47,17 @@ template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<long> {
     long DefaultVal;                                                    // never initialised here
     CPersistTraits() {}
-    void TransferBinaryIn(CDataInputStream* stream, long* value);      // 0x0040FE60
+    void TransferBinaryIn(CDataInputStream* stream, long* value);      // 0x0040FE60, real body below
 };
+// The long traits reader 0x0040FE60 with its REAL body in the TU (GOTCHAS 24l recipe: auto_inline(off) + noinline): a 4-byte
+// stream Read. With the body visible VC7.1 forms the empty traits `this` on the live value-argument slot as retail does.
+// Not landed at 0x0040FE60.
+
+__declspec(noinline) void CPersistTraits<long>::TransferBinaryIn(CDataInputStream* stream, long* value)
+{
+    ((CDataInputStreamReader*)stream)->Read(value, sizeof(long));
+}
+
 template<> struct CPersistTraits<CObjectFamilyEntry> {
     void TransferBinaryIn(CDataInputStream* stream, CObjectFamilyEntry* value);
 };

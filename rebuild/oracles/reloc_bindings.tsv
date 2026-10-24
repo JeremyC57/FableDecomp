@@ -28689,3 +28689,11 @@ __imp__accept@12	01440524	008f8ea0
 ?GetAnimMovementDistance@CThingCreatureBase@@QBEMJ@Z	006627a0	008e9110
 ?GetDuration@C3DAnimationInfo@@QBEMXZ	00a23ce0	008e9110
 ?GetStrafeAnimationName@@YI?AUCCharString@@ABUC3DVector@@0W4EMovementType@@@Z	008e8e50	008e9110
+??ECMapIterator@@QAEAAU0@XZ	007ab8a0	007ae3d0
+?TransferMapIn_007adbf0@@YIXPAUCMemoryDataInputStream@@AAUCStringBoolMap@@@Z	007adbf0	007ae3d0
+?TransferMapOut_007ad270@@YIXPAUCDataOutputStream@@AAUCStringBoolMap@@@Z	007ad270	007ae3d0
+?clear@CStringBoolMap@@QAEXXZ	007adaf0	007ae3d0
+?erase@CStringBoolMap@@QAEKABVCCharString@@@Z	007ade60	007ae3d0
+?insert@CStringBoolMap@@QAE?AUCMapInsertResult@@ABUCMapValue@@@Z	007ad060	007ae3d0
+?lower_bound@CStringBoolMap@@QAEPAUSMapNode@@ABVCCharString@@@Z	007acc90	007ae3d0
+?TransferBinaryIn@?$CPersistTraits@J@@QAEXPAUCDataInputStream@@PAJ@Z	0040fe60	0046c3b9

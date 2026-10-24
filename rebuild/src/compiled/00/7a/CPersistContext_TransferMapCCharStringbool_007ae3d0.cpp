@@ -1,4 +1,9 @@
-// Grade: DIFFER(1104v1104 frame 0x74v0x70) -- retail passes the empty CPersistTraits<bool> TransferIn `this` as &start (esp+0x44, aliased); ours gives the traits its own 4-byte slot, every later offset +4 (tried: block local, temporary (zeroed / own slot), loop/case/function-scope declarations in 6 positions)
+// Grade: RELOCATION_MATCH (1104/1104 on the exe span; the catalog row is OVERLONG at 1184 bytes: it runs past the `ret 0Ch` into
+//   the 80 bytes of mode jump table + the next body -- re-cut the row to 1104 before landing, $S/bounds/AUDIT.tsv agrees).
+//   Fix (2026-10-24 diag): the empty CPersistTraits<bool>::TransferIn gets its REAL body in the TU under auto_inline(off) +
+//   noinline (GOTCHAS 24l recipe); VC7.1 then aliases the empty traits `this` onto the live `start` slot (frame 0x70) exactly
+//   as retail. Previous grade: DIFFER(1104v1104 frame 0x74v0x70) -- ours gave the traits its own 4-byte slot.
+// Leaf: TransferMap
 // CPersistContext::TransferMap<CCharString, bool>(const char* name, map<CCharString, bool>& map, const bool& defaultValue) -- transfer a string-keyed bool map in the context's mode: text save (one "name[key] TRUE|FALSE;\r\n" line per entry), binary load/save through the stream helpers, clear, or text load ("name[key] value;" entries parsed from a copy of the parser, the old entry's value as the default, erased and re-inserted, the consumed text cleaned)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AE3D0, length 1084 bytes (+ the mode jump table 0x007AE810), `ret 0Ch`.
 //   Catalog label "TransferMap<CObjectAugmentationParticleSet,EObjectAugmentationType>" is a propagated mislabel: the
@@ -37,6 +42,7 @@ public:
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator+=(const char* text);         // 0x0099F100
+    const char* GetString() const { return PStringData != 0 ? PStringData->Data.PData : ""; }
     __forceinline bool operator==(const char* text) const
     {
         if (PStringData == 0) {
@@ -68,6 +74,7 @@ struct CStringParser : CBase {                         // retail 0x28 bytes
     CStringParser(const CStringParser& other);         // 0x0046381B
     bool SkipToItem(const CCharString& name);          // 0x009B9C00
     CCharString ReadAsSymbol();                        // 0x009BA790
+    CCharString ReadAsString();                        // 0x009BA6F0
 };
 struct CPersistContext;
 template <class T> struct CPersistTraits {
@@ -76,7 +83,7 @@ template <class T> struct CPersistTraits {
     void TransferOut(CPersistContext* context, CCharString* out, T* value);       // 0x0040E630
 };
 template <> struct CPersistTraits<bool> {              // empty traits (retail `this` aliases an unrelated stack slot)
-    void TransferIn(CPersistContext* context, CStringParser* parser, bool* value);   // 0x00403FF0
+    void TransferIn(CPersistContext* context, CStringParser* parser, bool* value);   // 0x00403FF0, real body below
     void TransferOut(CPersistContext* context, CCharString* out, bool* value)
     {
         if (*value)
@@ -85,6 +92,22 @@ template <> struct CPersistTraits<bool> {              // empty traits (retail `
             *out += "FALSE";
     }
 };
+extern "C" int __cdecl _stricmp(const char* a, const char* b);   // 0x00BFEBA8
+// CPersistTraits<bool>::TransferIn 0x00403FF0 with its real shape in the TU (GOTCHAS 24l recipe: auto_inline(off) +
+// noinline): the parsed token is compared case-insensitively with the TRUE/FALSE spellings. With the body visible VC7.1
+// aliases the empty traits `this` onto the live `start` slot as retail does. Not landed at 0x00403FF0.
+#pragma auto_inline(off)
+__declspec(noinline) void CPersistTraits<bool>::TransferIn(CPersistContext* context, CStringParser* parser, bool* value)
+{
+    CCharString token = parser->ReadAsString();
+    if (_stricmp(token.GetString(), CCharString("TRUE").GetString()) == 0 ||
+        _stricmp(token.GetString(), CCharString("YES").GetString()) == 0)
+        *value = true;
+    else if (_stricmp(token.GetString(), CCharString("FALSE").GetString()) == 0 ||
+             _stricmp(token.GetString(), CCharString("NO").GetString()) == 0)
+        *value = false;
+}
+#pragma auto_inline(on)
 struct SMapNode {                                      // STLport _Rb_tree_node<pair<const CCharString, bool> >
     long        _M_color;                              // +0x00
     SMapNode*   _M_parent;                             // +0x04

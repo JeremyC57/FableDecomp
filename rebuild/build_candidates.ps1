@@ -280458,6 +280458,20 @@ $catalog = @(
         TestSource = '00/8e/NCreatureModeCModeStrafe_GetMovementSpeed_008e9110_test.cpp'
         PassPattern = '008e9110_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007ae3d0'
+        Module = 'CPersistContext'
+        Source = '00/7a/CPersistContext_TransferMapCCharStringbool_007ae3d0.cpp'
+        TestSource = '00/7a/CPersistContext_TransferMapCCharStringbool_007ae3d0_test.cpp'
+        PassPattern = '007ae3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046c3b9'
+        Module = 'CPersistTraits<CObjectFamilyEntry>'
+        Source = '00/46/CPersistTraitsCObjectFamilyEntry_TransferBinaryIn_0046c3b9.cpp'
+        TestSource = '00/46/CPersistTraitsCObjectFamilyEntry_TransferBinaryIn_0046c3b9_test.cpp'
+        PassPattern = '0046c3b9_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
