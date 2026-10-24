@@ -983,3 +983,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `x != c ? x : 0.0f` gives retail's `fucompp ; jnp` arm order; the `==` form inverts the arms.
 - Assigning R,G,B,A in a ctor body gives retail's +2,+1,+0,+3 store order; an init list follows member order.
 - Asm-only retail (not reconstructible in VC7.1 C++, use `retail_asm` only with byte proof): `__security_check_cookie`, `__SEH_prolog/epilog`, libogg/libvorbis LTCG eax-arg rows, inline `cpuid` (no `__cpuid` before VC8), dword `fistp` ROUND helpers, `fnstcw`/`fldcw` rounding switches.
+- A const component lookup used in a later call or `if` is `const T* p; if (GetConstInterface(&p, type)) ...`; `if (HasTC) f(GetConstTC())` rotates the register and sinks the load below the branch (0x663F50).
+- Arguments retail loads before a virtual call in the same argument list are locals read in that order; VC7.1 does not move field loads across a call. Likewise `CWorld* world = PeekWorld();` before the pushes, and a named entity-events local before `new` (0x663F50).
+- Retail keeping `p->q` in a register across the inner call of `p->q->Virtual(arg)` means an inline accessor; a direct field access gets reloaded (0x663F50).
+- Inline STLport `vector<CCountedPointer<T>>::push_back`: give `_M_insert_overflow` a same-TU `__declspec(noinline)` body that only reads the value, and `__true_type` a user default ctor (0x549B20).
+- In a behaviour test, a by-value `GetDef()` must copy from an object that is never destroyed: VC7.1 /Od `return local;` copies then destroys, releasing the def twice.
+- CThingCreatureBase.h / CThingAICreature.h are PDB-offset (PDef +0xFC vs retail +0xE0); chunk 327 rows use local models -- review when the headers are rebased.

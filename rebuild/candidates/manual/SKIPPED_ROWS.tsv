@@ -12,7 +12,11 @@ address	row_len	batch	label	kind	status	pieces	note
 004a1c8e	34	2026-10-15_linux_hand104	CTCTrophy::OnShowTrophyInitialise	single	open	004a1c8e:27	catch-continuation fragment of an EH function, not an entry
 004ab710	256	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	004ab710:27,004ab72b:20,004ab73f:28,004ab75b:26,004ab775:37,004ab79a:52,004ab7ce:23,004ab7f0:32	row holds the Transfer jump-table body plus following function(s) after int3 padding
 004c0240	496	2026-10-21_linux_hand270	CTCGraphicAppearance::SetPMeshEffect	single	open	004c0240:485	lane gap: no-frame speed TU with bool temps homed in dead argument slots (SetPMeshEffect, recursive)
+004c84b0	1072	2026-10-24_linux_hand327	CThing::CThing::Serialise	single	open	004c84b0:1070	CThing::Serialise not attempted (inline stream reads)
+004c9120	1088	2026-10-24_linux_hand327	CThing::Save	single	open	004c9120:1083	CThing::Save decoded only (conditional CCharString temporaries); not graded
 004ca019	439	2026-10-22_linux_hand273	CThing::ConstructFromParams	single	open	004ca019:428	mis-cut row: real entry 0x004CA010 (row starts 9 bytes in)
+004ca390	1440	2026-10-24_linux_hand327	CThing::CThing::vfunc_16	single	open	004ca390:1430	CThing vfunc_16 (load from stream) not attempted
+004caa00	1744	2026-10-24_linux_hand327	CThing::ConstructFromLevelScript	single	open	004caa00:1730	CThing::ConstructFromLevelScript not attempted
 004cc3f0	304	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	004cc3f0:27,004cc40b:22,004cc421:24,004cc439:26,004cc453:37,004cc478:54,004cc4ae:23,004cc4d0:66	row holds the Transfer jump-table body plus following function(s) after int3 padding
 004cd1e0	336	2026-10-21_linux_hand254	CThing::CThing::vfunc_30	multi	open	004cd1e0:5,004cd1f0:3,004cd200:3,004cd210:3,004cd220:5,004cd230:5,004cd240:3,004cd250:3,004cd260:3,004cd270:3,004cd280:1,004cd290:1,004cd2a0:16,004cd2b0:27,004cd2d0:25,004cd2f0:58	int3 padding then another function inside the catalog row
 004debf7	37	2026-10-15_linux_hand102	CTCTargetingSpirit::CTCTargetingSpirit::vfunc_10	multi	done	004debf7:5,004debfc:3,004debff:5,004dec04:5,004dec09:16,004dec19:3	row holds six tiny functions back to back (jmp [eax+24h]; xor eax,eax ret; ret 0Ch; ret 4; a call forwarder; mov al,1 ret)
@@ -21,6 +25,7 @@ address	row_len	batch	label	kind	status	pieces	note
 005271b0	80	2026-10-15_linux_hand110	CThingFilter_IsValid::operator()	multi	done	005271b0:8,005271c0:62	row holds two functions (jmp thunk + ctor)
 0052f1b0	560	2026-10-23_linux_hand307	CThingFilter_IsValid::operator()	multi	open	0052f1b0:8,0052f1c0:15,0052f1d0:12,0052f1e0:14,0052f1f0:7,0052f200:1,0052f210:21,0052f230:24,0052f250:24,0052f270:24,0052f290:24,0052f2b0:23,0052f2d0:40,0052f300:13,0052f310:7,0052f320:3,0052f330:13,0052f340:14,0052f350:72,0052f3a0:15,0052f3b0:11,0052f3c0:25	CThingFilter_IsValid::operator(): catalog row holds ~20 small CThingFilter/accessor functions separated by int3 padding
 00548b50	1616	2026-10-23_linux_hand323	CSlider::AdjustValueToProfile	multi	open	00548b50:682,00548dfa:315,00548f40:599	row holds two functions; first body (CTextSlider::AdjustValueToProfile) byte-exact
+00550dc0	1408	2026-10-24_linux_hand327	CTable::Draw	single	open	00550dc0:1399	NUISystem::CTable::Draw not attempted (aligned frame, x87 colour math)
 0055a5d0	704	2026-10-22_linux_hand284	CDraggable::OnLeftClicked	multi	open	0055a5d0:82,0055a630:39,0055a660:5787	multi-function row (6 int3-separated bodies to 0x55a890); first piece OnLeftClicked 82 bytes matched in probe/dg3.cpp
 00567d60	301	2026-10-20_linux_hand230	CTCElectrocutedEffect::CTCElectrocutedEffect::ReplaceString	multi	done	00567d60:280,00567e80:13	two functions: append copy (0x567D60) + 13-byte thunk after int3 padding
 00581ab3	78	2026-10-15_linux_hand91	CTCInventory::CTCInventory::vfunc_59	multi	done	00581ab3:46,00581ae1:32	two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging)
@@ -37,6 +42,9 @@ address	row_len	batch	label	kind	status	pieces	note
 0061b530	96	2026-10-15_linux_hand95	CTCInventoryQuests::CTCInventoryQuests::vfunc_38	multi	done	0061b530:40,0061b560:40	row holds two functions (0x0061B530 + 0x0061B560)
 006420f0	256	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	006420f0:27,0064210b:20,0064211f:21,00642134:29,00642151:37,00642176:52,006421aa:68	row holds the Transfer jump-table body plus following function(s) after int3 padding
 0064dd9a	321	2026-10-21_linux_hand250	CTCActionUseScriptedHook::CTCActionUseScriptedHook::PopulateRegionExits	prefix	open	0064dd9a:580	catalog row truncates the function (jmp 0x64dfbe past the row end)
+00659800	1074	2026-10-24_linux_hand327	CTCVillage::CalculateSecuritySweepTasks	single	open	00659800:1074	CTCVillage::CalculateSecuritySweepTasks not attempted (x87)
+0065b854	1502	2026-10-24_linux_hand327	CTCVillage::AddThingToVillage	single	open	0065b854:1502	CTCVillage::AddThingToVillage not attempted
+00665860	1405	2026-10-24_linux_hand327	CThingCreatureBase::UpdateAnimation	single	open	00665860:1405	CThingCreatureBase::UpdateAnimation not attempted
 006823d0	976	2026-10-23_linux_hand300	CTCCreatureOpinionOfHero::FrameUpdate	single	open	006823d0:962	SKIP: opaque +0x344 layout, transient list, __aullrem
 00685f80	320	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	00685f80:27,00685f9b:50,00685fcd:23,00685fe4:21,00685ff9:37,0068601e:86,00686074:21,00686090:41	row holds the Transfer jump-table body plus following function(s) after int3 padding
 00691d70	624	2026-10-22_linux_hand289	CInputProcessCreatureMovement::?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	multi	open	00691d70:492,00691f5c:106,00691fd0:3	row holds ProcessInput + jump table + the next function (0x00691F80 GetInterface helper, ret 4) + a ret 8 stub
@@ -47,7 +55,12 @@ address	row_len	batch	label	kind	status	pieces	note
 006ca5a0	288	2026-10-20_linux_hand231	CTCHero::OnCreate	multi	open	006ca5a0:171,006ca650:11,006ca660:3,006ca670:3,006ca680:54	row holds OnCreate (0x006CA5A0..0x006CA64A, 171 bytes) plus four small bodies at 0x006CA650..
 006cbac0	880	2026-10-23_linux_hand300	CTCCreatureNavigation::GetNextNavPosOnRoute	multi	open	006cbac0:827,006cbdfc:46	SKIP: 11-case jump table over creature speed vslots + 3 navigator vcalls with 10-12 args; retail CTCCreatureNavigation layout differs from Ego_r by 4
 006cbe80	752	2026-10-23_linux_hand300	CTCCreatureNavigation::GetNearestFleePositionBehindCover	single	open	006cbe80:741	SKIP: bind2nd/ptr_fun cover search (0x6CD3B0 with predicate 0x6CCF50), inline fast rsqrt, map-bounds clamps
+006d1250	1616	2026-10-24_linux_hand327	CTCWife::CheckAppearanceChanges	single	open	006d1250:1608	CTCWife::CheckAppearanceChanges not attempted (inline list/set iteration)
+006d18a0	1344	2026-10-24_linux_hand327	CTCWife::Marry	single	open	006d18a0:1330	CTCWife::Marry decoded only (GetTC bool-local pattern); not graded
 006d4c00	272	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	006d4c00:27,006d4c1b:24,006d4c33:20,006d4c47:20,006d4c5b:37,006d4c80:37,006d4ca8:21,006d4cc0:9,006d4cd0:14,006d4ce0:21,006d4d00:5	row holds the Transfer jump-table body plus following function(s) after int3 padding
+006de280	1584	2026-10-24_linux_hand327	CTCTrophy::TerminateMinigame	single	open	006de280:1581	CTCTrophy::TerminateMinigame not attempted (session budget spent on cheaper rows)
+006de8c0	1472	2026-10-24_linux_hand327	CTCTrophy::OnShowTrophyPerformAction	single	open	006de8c0:1460	CTCTrophy::OnShowTrophyPerformAction not attempted
+006deee0	1440	2026-10-24_linux_hand327	CTCTrophy::CTCTrophy::vfunc_26	single	open	006deee0:1437	CTCTrophy vfunc_26 not attempted
 00716b30	688	2026-10-22_linux_hand280	CActionTalkBase::SetUpTextAndSpeech	single	open	00716b30:681	known lane gap: two inline-asm fistp rounding helpers (fld/fadd 0.5/fistp [ebp-4]/fild/fsub 1.0, ebp frame) for the frame counts; not attempted per the brief
 0072cf40	1008	2026-10-23_linux_hand305	CTCSpecialAbilities::UseSpecialAbility	multi	open	0072cf40:488,0072d128:76,0072d180:3,0072d190:1,0072d1a0:6,0072d1b0:9,0072d1c0:6,0072d1d0:9,0072d1e0:11,0072d1f0:11,0072d200:1,0072d210:28,0072d230:18,0072d250:5,0072d260:5,0072d270:26,0072d290:8,0072d2a0:3,0072d2b0:3,0072d2c0:3,0072d2d0:13,0072d2e0:13,0072d2f0:11,0072d300:11,0072d310:1,0072d320:11	row holds the function, its jump table and ~20 following small functions
 007312f0	32	2026-10-15_linux_hand86	CTCDoor::CTCDoor::vfunc_10	multi	done	007312f0:5,00731300:3	CTCDoor::vfunc_10 row holds two functions (chunk 86, paused before staging)
@@ -61,12 +74,18 @@ address	row_len	batch	label	kind	status	pieces	note
 00750960	32	2026-10-15_linux_hand84	CTCChest::CTCChest::vfunc_10	multi	done	00750960:5,00750970:3	two functions: jmp [eax+24h], int3 padding, then mov al,1 ; ret (chunk 84, paused before staging)
 00750e30	512	2026-10-21_linux_hand270	CTCExplodingObject::FrameUpdate	single	open	00750e30:501	lane gap: inline fistp rounding helper (fadd 0.5 ; fistp ; fild ; fsub 1.0 compare)
 0075d580	816	2026-10-23_linux_hand300	CTCCameraPointScriptedSpline::UpdateCameraParams	single	open	0075d580:809	SKIP: spline camera params, 16 callees incl. inline spline/interpolator math with no model
+0076eb00	1088	2026-10-24_linux_hand327	CTCWeaponTrail::InitialiseTrails	single	open	0076eb00:1080	CTCWeaponTrail::InitialiseTrails not attempted (inline vector<CCharString> + strcmp)
+0076efa0	1312	2026-10-24_linux_hand327	CTCWeaponTrail::UpdateWeaponTrails	single	open	0076efa0:1312	CTCWeaponTrail::UpdateWeaponTrails not attempted
+00785620	1312	2026-10-24_linux_hand327	CTCVolumeContainmentTracker::Update	single	open	00785620:1301	CTCVolumeContainmentTracker::Update not attempted
 0078c210	602	2026-10-23_linux_hand299	CTCBerserk::CTCBerserk	single	open	0078c210:602	lane gap: inline-asm fistp rounding helper
+007a0d90	1520	2026-10-24_linux_hand327	CTCWillLightning::GetTargets	single	open	007a0d90:1517	CTCWillLightning::GetTargets not attempted
 007ad6d0	288	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	007ad6d0:35,007ad6f3:20,007ad707:23,007ad71e:26,007ad738:37,007ad75d:52,007ad794:20,007ad7b0:32,007ad7d0:30	row holds the Transfer jump-table body plus following function(s) after int3 padding
 007b45a0	224	2026-10-19_linux_hand200	CPersistContext::Transfer<signed_char>	multi	open	007b45a0:27,007b45bb:20,007b45cf:23,007b45e6:26,007b4600:37,007b4625:52,007b465c:23	two functions in the row (3-byte ret 4 stub after the jump table); Transfer body itself graded identical (208 bytes)
 007b5470	384	2026-10-21_linux_hand248	CPersistContext::Transfer<signed_char>	multi	open	007b5470:27,007b548b:17,007b549c:20,007b54b0:20,007b54c4:37,007b54e9:37,007b550e:7,007b5515:15,007b5530:33,007b5560:33,007b5590:19,007b55b0:13,007b55c0:11,007b55d0:3,007b55e0:3	row holds the switch body, its jump table and a further function body (two functions in one row)
 007b57c0	776	2026-10-23_linux_hand300	CTCCarriedActionUseActivateQuest::CTCCarriedActionUseActivateQuest::vfunc_28	single	open	007b57c0:776	SKIP: vfunc_28 with 23 distinct callees (quest activation, CCharString, inventory) unmodelled
+007b5e50	1104	2026-10-24_linux_hand327	CTCWaterWader::FrameUpdate	single	open	007b5e50:1099	CTCWaterWader::FrameUpdate decoded only (inline float floor/ceil, vector temporary); not graded
 007c36a0	606	2026-10-23_linux_hand300	CTCDrainLife::FrameUpdate	single	open	007c36a0:606	SKIP: inline list + filter object + search, 13 callees unmodelled
+007c6e50	1808	2026-10-24_linux_hand327	CTCTurncoatSpell::FrameUpdate	single	open	007c6e50:1806	CTCTurncoatSpell::FrameUpdate not attempted (x87-heavy)
 007c977c	292	2026-10-20_linux_hand230	CTCCreatureGeneratorCreator::OnSerialise	single	open	007c977c:288	row starts mid-function: the body begins at 0x007C9770 (mov al,[esp+8]; sub esp,10h; push ebx; xor ebx,ebx; cmp al,bl)
 007cd390	832	2026-10-23_linux_hand304	CTCMultiStrike::CTCMultiStrike	multi	open	007cd390:779,007cd69c:16,007cd6b0:11,007cd6c0:3	row covers ctor + jump table + 3 more functions (0x7cd6b0, 0x7cd6c0, 0x7cd6d0)
 007da360	160	2026-10-15_linux_hand170	CTCTavernGameCardBlackjack::FrameUpdate	multi	done	007da360:50,007da3a0:92	two functions in the row (FrameUpdate tail jumps, second body at +0x40)
@@ -85,6 +104,7 @@ address	row_len	batch	label	kind	status	pieces	note
 0080cd40	880	2026-10-23_linux_hand300	CTCDExplosion::UpdateHitThings	single	open	0080cd40:876	SKIP: same filter machinery as 0080c6d0
 00837040	32	2026-10-15_linux_hand113	CThingTrackNode::CThingTrackNode::vfunc_27	multi	done	00837040:12,00837050:12	two functions in the row (0x837040 tail-jump + 0x837050 getter)
 0083cd70	288	2026-10-20_linux_hand237	CThingSwitch::CThingSwitch::vfunc_19	multi	open	0083cd70:200,0083ce38:21,0083ce50:11,0083ce60:20,0083ce80:3	row holds the switch body, its jump table and two more functions after int3 padding
+008637d0	1232	2026-10-24_linux_hand327	CThingBodyReorienter::CheckForNewBodyReorientationAngle	single	open	008637d0:1223	CThingBodyReorienter::CheckForNewBodyReorientationAngle not attempted (x87)
 00875690	768	2026-10-22_linux_hand288	CGeneralCircle::CGeneralCircle	single	open	00875690:762	SKIP: 768-byte x87 circumcircle geometry (two Normalise calls, cross products); x87 scheduling residue expected
 0088b7e0	48	2026-10-15_linux_hand74	CScriptThing::GetCurrentScriptPriority	multi	done	0088b7e0:17,0088b800:4	row spans two functions (0x88b7e0 + 0x88b800)
 0089e190	816	2026-10-22_linux_hand288	CGameScriptInterface::?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@PBVC3DVector@@PBVCRightHandedSet@@MJJ@Z	single	open	0089e190:803	SKIP: 803-byte camera-point x87/RHS-set body, not reached in budget
@@ -207,6 +227,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00d2988b	1317	2026-10-23_linux_hand318	CHookCoastTeleporter::Main	single	open	00d2988b:1308	bogus mid-function row: CHookCoastTeleporter::Main starts at 0x00D29880 (row begins 0xb bytes in; edx/ebx used undefined)
 00d80ae0	288	2026-10-20_linux_hand227	CQ_HeroSoulsArenaScript::GetJackSpeech	multi	open	00d80ae0:159,00d80b80:124	row holds GetJackSpeech (0x00D80AE0..0x00D80B7C), its jump table and the factory 0x00D80BA0
 00d9f1b0	160	2026-10-15_linux_hand145	CMC_Minion::OnPredicateFail	multi	done	00d9f1b0:75,00d9f200:69	row holds two CQ_MinionCampScript members under a propagated CMC_Minion label (0x00D9F1A0 is the real CMC_Minion::OnPredicateFail thunk: mov ecx,[ecx+14h] ; jmp): the minion-died handler and the spawn-timer restart it tail-calls
+00dcd350	1840	2026-10-24_linux_hand327	CTeamSpawn::Main	single	open	00dcd350:1833	CTeamSpawn::Main partly decoded (parent offsets in NOTES); not graded
 00dfca90	373	2026-10-21_linux_hand241	CBanditExtra::Main	single	open	00dfca90:373	lane gap: inline-asm dword fistp rounding (GOTCHAS wave 25) in the shout-count Round; not authored
 00e621f0	1392	2026-10-23_linux_hand314	CBodyGuard::SetHenchmanAsHired	multi	open	00e621f0:1306,00e6270a:34,00e62730:40	row covers two functions: SetHenchmanAsHired ends at 0x00E6272C (jump tables + int3) and another body starts at 0x00E62730 inside the row
 00ed14e0	720	2026-10-22_linux_hand298	CSingingStone::Init	multi	open	00ed14e0:494,00ed16ce:163,00ed1780:4,00ed1790:20	row holds two functions (int3 pad at +0x291, next body follows)

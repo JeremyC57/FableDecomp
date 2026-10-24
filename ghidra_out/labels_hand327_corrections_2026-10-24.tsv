@@ -1,0 +1,9 @@
+address	name	evidence
+00edfa00	NScript::CV_TravellingHeroesScript::CTH_ThunderGirl::Main	script Main landed RELOCATION_MATCH (chunk 327)
+00d43db0	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::Main	parked script Main (chunk 327)
+00d50c60	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main	script Main landed RELOCATION_MATCH (chunk 327)
+0049cf80	CRightHandedSet::CRightHandedSet(const CRightHandedSet&)	copy constructor called from OnDie (chunk 327)
+00669230	CThingDeadCreature::SetKiller	stores PKiller at +0xD8 (chunk 327)
+006a1620	IsThingCarryingRangedWeapon	callee of CThingCreatureBase::OnDie (chunk 327)
+006a4cf0	CThingPhysical::OnDie	base call from CThingCreatureBase::OnDie (chunk 327)
+004c73d0	CThing::GetPosition	callee in chunk 327 rows

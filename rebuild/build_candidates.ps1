@@ -276891,6 +276891,104 @@ $catalog = @(
         TestSource = '00/5b/CTCInventoryClothing_ConstructClothingList_005b70b8_test.cpp'
         PassPattern = '005b70b8_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ed472'
+        Module = 'CTavernGameDef'
+        Source = '00/4e/CTavernGameDef_Transfer_004ed472.cpp'
+        TestSource = '00/4e/CTavernGameDef_Transfer_004ed472_test.cpp'
+        PassPattern = '004ed472_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00549b20'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_Initialize_00549b20.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_Initialize_00549b20_test.cpp'
+        PassPattern = '00549b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00663f50'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_OnDie_00663f50.cpp'
+        TestSource = '00/66/CThingCreatureBase_OnDie_00663f50_test.cpp'
+        PassPattern = '00663f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00676be0'
+        Module = 'CThingBaseDef'
+        Source = '00/67/CThingBaseDef_Transfer_00676be0.cpp'
+        TestSource = '00/67/CThingBaseDef_Transfer_00676be0_test.cpp'
+        PassPattern = '00676be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d0a40'
+        Module = 'CTavernGameShoveHaPennyDef'
+        Source = '00/7d/CTavernGameShoveHaPennyDef_Transfer_007d0a40.cpp'
+        TestSource = '00/7d/CTavernGameShoveHaPennyDef_Transfer_007d0a40_test.cpp'
+        PassPattern = '007d0a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d50c60'
+        Module = 'NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Main_00d50c60.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Main_00d50c60_test.cpp'
+        PassPattern = '00d50c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df80b0'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_Main_00df80b0.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_Main_00df80b0_test.cpp'
+        PassPattern = '00df80b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df8970'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCTCBanditFighter_Main_00df8970.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCTCBanditFighter_Main_00df8970_test.cpp'
+        PassPattern = '00df8970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df9180'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CTC_Villager'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCTCVillager_Main_00df9180.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCTCVillager_Main_00df9180_test.cpp'
+        PassPattern = '00df9180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfb320'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Main_00dfb320.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Main_00dfb320_test.cpp'
+        PassPattern = '00dfb320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edf3a0'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_ThunderBoy'
+        Source = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_Main_00edf3a0.cpp'
+        TestSource = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_Main_00edf3a0_test.cpp'
+        PassPattern = '00edf3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edfa00'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_ThunderGirl'
+        Source = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_Main_00edfa00.cpp'
+        TestSource = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_Main_00edfa00_test.cpp'
+        PassPattern = '00edfa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee1500'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_MagicBarrier'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Main_00ee1500.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Main_00ee1500_test.cpp'
+        PassPattern = '00ee1500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee1e40'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Maze'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHMaze_Main_00ee1e40.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHMaze_Main_00ee1e40_test.cpp'
+        PassPattern = '00ee1e40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

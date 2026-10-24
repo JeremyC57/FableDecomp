@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006de280	SKIP	-v1581	-	CTCTrophy::TerminateMinigame not attempted (session budget spent on cheaper rows)
+006de8c0	SKIP	-v1460	-	CTCTrophy::OnShowTrophyPerformAction not attempted
+006deee0	SKIP	-v1437	-	CTCTrophy vfunc_26 not attempted
+007c6e50	SKIP	-v1806	-	CTCTurncoatSpell::FrameUpdate not attempted (x87-heavy)
+00659800	SKIP	-v1074	-	CTCVillage::CalculateSecuritySweepTasks not attempted (x87)
+0065b854	SKIP	-v1502	-	CTCVillage::AddThingToVillage not attempted
+00785620	SKIP	-v1301	-	CTCVolumeContainmentTracker::Update not attempted
+007b5e50	SKIP	-v1099	-	CTCWaterWader::FrameUpdate decoded only (inline float floor/ceil, vector temporary); not graded
+0076eb00	SKIP	-v1080	-	CTCWeaponTrail::InitialiseTrails not attempted (inline vector<CCharString> + strcmp)
+0076efa0	SKIP	-v1312	-	CTCWeaponTrail::UpdateWeaponTrails not attempted
+006d1250	SKIP	-v1608	-	CTCWife::CheckAppearanceChanges not attempted (inline list/set iteration)
+006d18a0	SKIP	-v1330	-	CTCWife::Marry decoded only (GetTC bool-local pattern); not graded
+007a0d90	SKIP	-v1517	-	CTCWillLightning::GetTargets not attempted
+00df8970	RELOCATION_MATCH	1852v1852	PASS	CTC_BanditFighter::Main
+00df80b0	RELOCATION_MATCH	2004v2004	PASS	CTC_BanditFollower::Main
+00dfb320	RELOCATION_MATCH	1637v1637	PASS	CTC_BanditGuard::Main; `if (x < 1) ++x; else x = 0;`
+00df9180	RELOCATION_MATCH	1215v1215	PASS	CTC_Villager::Main; CTimer SetTime/GetTime __forceinline
+00ee1500	RELOCATION_MATCH	1519v1519	PASS	CTH_MagicBarrier::Main; non-const ref bound to CreateEffect result
+00d43db0	DIFFER	1665v1799	-	label is CQ_GuildTrainingScript::CPreMeleeMaze::Main; loop-exit dtors out of line (inline budget)
+00ee1e40	RELOCATION_MATCH	1603v1603	PASS	CTH_Maze::Main
+00ee2490	DIFFER	1334v1334	-	CTH_Thunder::Main; one mov/lea vs mov/add coalescing
+00edf3a0	RELOCATION_MATCH	1387v1387	PASS	CTH_ThunderBoy::Main; GetMasterData accessor
+00edfa00	RELOCATION_MATCH	1387v1387	PASS	label is CTH_ThunderGirl::Main
+00550dc0	SKIP	-v1399	-	NUISystem::CTable::Draw not attempted (aligned frame, x87 colour math)
+004ed472	RELOCATION_MATCH	1249v1249	PASS	CTavernGameDef::Transfer
+007d0a40	RELOCATION_MATCH	1159v1159	PASS	CTavernGameShoveHaPennyDef::Transfer
+00dcd350	SKIP	-v1833	-	CTeamSpawn::Main partly decoded (parent offsets in NOTES); not graded
+00549b20	RELOCATION_MATCH	1079v1079	PASS	NUISystem::CTextSlider::Initialize; same-TU _M_insert_overflow body
+00d50c60	RELOCATION_MATCH	1882v1882	PASS	label is CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main; CRGBColour user copy ctor
+004c84b0	SKIP	-v1070	-	CThing::Serialise not attempted (inline stream reads)
+004c9120	SKIP	-v1083	-	CThing::Save decoded only (conditional CCharString temporaries); not graded
+004ca390	SKIP	-v1430	-	CThing vfunc_16 (load from stream) not attempted
+004caa00	SKIP	-v1730	-	CThing::ConstructFromLevelScript not attempted
+00830fe0	DIFFER	1505v1504	-	CThingAICreature::SerialiseGameState; empty traits temp slot + bit-7 write-back order
+00832260	DIFFER	1052v1076	-	CThingAICreature::InitialActivate; family pointer spill / register allocation
+008329b0	DIFFER	1208v1187	-	CThingAICreature::OnHit; frame slot packing, deed-call tail merge, def release form
+00676be0	RELOCATION_MATCH	1772v1772	PASS	CThingBaseDef::Transfer; block-scoped flag bools
+008637d0	SKIP	-v1223	-	CThingBodyReorienter::CheckForNewBodyReorientationAngle not attempted (x87)
+00663f50	RELOCATION_MATCH	1052v1052	PASS	CThingCreatureBase::OnDie; const GetInterface out-param, locals before Create
+00665860	SKIP	-v1405	-	CThingCreatureBase::UpdateAnimation not attempted
