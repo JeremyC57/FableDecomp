@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00672330	RELOCATION_MATCH	89v89	PASS	std::__partial_sort<ENavigatorType*> (make_heap/sort_heap out of line, __pop_heap inline)
+00672390	MATCH	124v124	PASS	std::__adjust_heap<ENavigatorType*> (__forceinline __push_heap)
+00672410	RELOCATION_MATCH	77v77	PASS	std::make_heap<ENavigatorType*> (__forceinline __make_heap)
+006724f0	RELOCATION_MATCH	55v55	PASS	GFSerialiseVectorBinaryOut<ENavigatorType> (label <float> propagated)
+00672530	RELOCATION_MATCH	148v148	PASS	GFSerialiseVectorBinaryIn<ENavigatorType> (label <CRGBColour> propagated)
+006727f0	MATCH	34v34	PASS	std::uninitialized_fill_n<ENavigatorType*> (enum -> __false_type, __forceinline helper)
+00673f90	RELOCATION_MATCH	86v86	PASS	vector<pair<ulong,CRandomAppearanceMorph::CTextureMorph>>::_M_allocate_and_copy
+00674030	RELOCATION_MATCH	86v86	PASS	vector<pair<EExpressionType,CExpressionSet::CEntry>>::_M_allocate_and_copy
+00674d80	RELOCATION_MATCH	87v87	PASS	std::__copy<CRandomAppearanceMorph::CBodyPartMesh*>
+00674e80	RELOCATION_MATCH	33v33	PASS	CCountedPointer<CExpressionSet>::DeleteData
+00677760	RELOCATION_MATCH	116v116	PASS	CReactionMatch_MoralityRenownBlob ctor (MRPyramid ctor inlined)
+0067b5b0	RELOCATION_MATCH	53v53	PASS	std::list<CReactionMatch*>::insert
+0067bcc0	RELOCATION_MATCH	45v45	PASS	std::list<CReactionMatch*>::push_back
+0067c7e0	RELOCATION_MATCH	194v194	PASS	std::__copy<CBlurredAttitudesDef*> (implicit def operator=)
+0067c8b0	RELOCATION_MATCH	205v205	PASS	std::__copy_backward<CBlurredAttitudesDef*>
+0067e720	RELOCATION_MATCH	139v139	PASS	GFSerialiseVectorBinaryOut<CDegradableInfo>
+0067e7f0	MATCH	86v86	PASS	std::__unguarded_insertion_sort_aux<CDegradableInfo*>
+0067e8f0	RELOCATION_MATCH	151v151	PASS	std::__adjust_heap<CDegradableInfo*>
+0067eb70	RELOCATION_MATCH	101v101	PASS	std::__pop_heap_aux<CDegradableInfo*>
+0067f150	RELOCATION_MATCH	168v168	PASS	std::__partial_sort<CDegradableInfo*>
+0067f430	DIFFER	173v173	-	GFSerialiseVectorBinaryIn<CDegradableInfo>: frame 24h v 20h (traits/temporary slot sharing)
+00680700	MATCH	73v73	PASS	std::__unguarded_insertion_sort_aux<pair<EReactionSpeechType,long>*>
+00682140	RELOCATION_MATCH	156v156	PASS	CTCCreatureOpinionOfHero::ApplyOpinionTransientOffset (named first offset, def ptr assigned in the condition)
+00685430	MATCH	29v29	PASS	std::fill<bool*,bool> (label fill<char*> wrong: byte loop, not memset)
+006864c0	RELOCATION_MATCH	28v28	PASS	descriptive StdList_InitEmpty (unreferenced)
+00686dc0	RELOCATION_MATCH	46v46	PASS	CTCBase::UpdateGlobalTCs
+00686f60	RELOCATION_MATCH	62v62	PASS	CTCBase::GetPTCInfo (label CVectorMap_FindMeshVolume propagated)
+00687e10	RELOCATION_MATCH	89v89	PASS	CInputProcessMain::AddManualCameraEvent, /GS
+00687e70	RELOCATION_MATCH	89v89	PASS	AddFreeCameraEvent (descriptive twin, event 0x0C), /GS
+00689270	RELOCATION_MATCH	19v19	PASS	operator!=<const CThing>(const CIntelligentPointer<const CThing>&, const CBaseObject*)
+00689370	RELOCATION_MATCH	19v19	PASS	float ceil(float) <math.h> overload
+00692e50	RELOCATION_MATCH	105v105	PASS	CCreatureActionBase::GetPActionFromEnum
+00697a50	RELOCATION_MATCH	95v95	PASS	anon IsCameraModeInterruptable(CCountedPointer by value, ret 8)
+006989d0	RELOCATION_MATCH	83v83	PASS	NCameraModes::GetPBuildingThingOccupying
+00698a30	DIFFER	239v230	-	anon PlayCameraSoundThroughObservedThing: CDefPointer release reloads the escaped holder after the dec
+006991f0	DIFFER	170v170	-	CGameCameraManager::AddCameraPoint: find result not homed in the dead arg slot (frame 0Ch v 8)
+0069c8f0	MATCH	113v113	PASS	std::__uninitialized_copy<CGameCameraManager::CQuake*>
+0069c970	MATCH	104v104	PASS	std::__uninitialized_fill_n<CQuake*,uint,CQuake>
+0069d090	RELOCATION_MATCH	98v98	PASS	CSoundMap::GetPCriteriaString
+0069d300	RELOCATION_MATCH	208v208	PASS	vector<CGameCameraManager::CQuake>::_M_insert_overflow

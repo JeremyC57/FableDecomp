@@ -1246,3 +1246,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A function template's leaf is `??$name@`, not `?name@std@@`; it only grades right by luck when the file defines one function (0x6B5A50).
 - Two locals share one dead argument slot only if every same-TU stand-in keeps their addresses from escaping: a stand-in must take the value, not `&value` (0x6A22D0).
 - A float-compared call result must be a named local to get retail's `fxch; fcompp; test ah,5` (0x6A7050); two PeekTC lookups share one key slot via the conversion temporary `LowerBound((ETCInterfaceType)type)` (0x6A15A0).
+- STLport has no type traits for enums or pairs: they take the `__false_type` path with the placement-new null test (0x6727F0); a byte loop in `fill` means `bool` (char overloads are memset) (0x685430).
+- A class passed by value in a /Gr TU goes on the stack, callee-cleaned, with its dtor duplicated at every return (0x697A50); `float ceil(float)` out of line is the `<math.h>` overload calling CRT `ceil(double)` (0x689370).
+- A graded source that `#include`s a file missing from the work dir hangs cl under Wine with no error: keep sources self-contained. VC7.1 ICEs deducing a member template through `CDefPointer<const T>*`: pass the template argument explicitly (chunk 384).
+- If a `find` temporary is destroyed before the `end()` compare, the result is a named iterator in its own statement (0x6991F0).
