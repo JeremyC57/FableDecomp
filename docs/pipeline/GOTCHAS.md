@@ -1294,3 +1294,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport `copy_backward`/`__pop_heap` over elements with a non-trivial copy ctor must be `__forceinline` (0x818240, 0x818450); a comparator copied twice calls its copy ctor out of line, copied once it is inlined (0x80C020/0x80BCB0).
 - `_Rb_tree::_M_lower_bound` helpers must return a node pointer, not an iterator (0x813530); a `result` local in Create factories keeps the zero in ebx (0x80C460).
 - A temporary built inside `||` gets a conditional-destruction flag; retail's unconditional destroy means the call was its own statement (0x814C70). Retail evaluating a call's object before its arguments is still unsolved (0x814C70, 0x80FFB0).
+- `it = remove(..); erase(it);` as two statements lets both empty tags share the dead argument slot; `erase(remove(..))` adds `sub esp,0Ch` (0x7FFDB0).
+- Nested `if (..) return true;` with one shared `return false;` gives retail's `mov al,1`/`xor al,al` tail; `return a && b` gives `mov eax,1` (0x809270).
+- Name both float compare values in an inlined comparator to get `fld; fcomp st(1); fstp st(0); test ah,41h` (0x808AA0); a comparator copied three times calls the out-of-line copy ctor 0x7F9730 (0x80B5A0).
+- Two-call float comparators where retail loads the second argument before the first result's `fstp` are a lane gap under RTM, QFE and /G7 alike: park after 2 grades (0x807170, 0x807250).

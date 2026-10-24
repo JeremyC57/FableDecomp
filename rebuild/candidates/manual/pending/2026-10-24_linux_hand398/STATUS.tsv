@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007ff7d0	RELOCATION_MATCH	61v61	PASS	CTCDHeroSuit::Create
+007ff8a0	RELOCATION_MATCH	178v178	PASS	CTCDHeroSuit::OnCreate (4 grades; same-TU _M_insert_overflow stand-in)
+007ffdb0	RELOCATION_MATCH	136v136	PASS	CTCGatherPointBase::RemoveAsUser; remove + erase as separate statements
+00800020	MATCH	90v90	PASS	CTCHaste::UpdateActionSpeedMultiplier
+00800380	RELOCATION_MATCH	89v89	PASS	vector<pair<C2DVector,uchar>>::_M_allocate_and_copy
+00800ca0	RELOCATION_MATCH	141v141	PASS	vector<pair<C2DVector,uchar>>::reserve
+008018b0	RELOCATION_MATCH	97v97	PASS	CTCIdleScheduler::Clear
+00802110	DIFFER	115v115	-	map<EIdleStateGroup,CAIStateGroupBase*>::operator[]; scheduling only (zero word after push edx)
+008025d0	RELOCATION_MATCH	49v49	PASS	CTCTargetingPlayer::GetFOVToBeInToBeTargetable
+00802890	RELOCATION_MATCH	56v56	PASS	anon GetTargetingRange
+00802d10	DIFFER	231v231	-	NPlayerTargeting::IsThingInTargetingRangeForTargetType; register allocation only
+008060c0	RELOCATION_MATCH	227v227	PASS	__find_if<CTargetPoint*,IsInFOV>
+00806640	RELOCATION_MATCH	86v86	PASS	find_if<CTargetPoint*,IsInFOV>; __find_if noinline in TU
+00806c80	DIFFER	98v98	-	__uninitialized_fill_n<CTargetPoint>; register allocation only (ebx/edi swapped)
+00806cf0	RELOCATION_MATCH	132v132	PASS	remove_copy_if<IsInFOV>
+00807170	DIFFER	216v216	-	__median<pair<C3DVector,long>>; scheduling only (c load before fstp)
+00807250	DIFFER	199v199	-	__unguarded_partition<pair<C3DVector,long>>; scheduling only (pivot lea before fstp)
+00807370	RELOCATION_MATCH	90v90	PASS	swap<CIntelligentPointer<CThing>>
+008078a0	RELOCATION_MATCH	165v165	PASS	remove_if<IsInFOV>
+00807a90	DIFFER	214v222	-	remove_copy_if<Bind3<..>>; locked-target read order and slot
+00808120	RELOCATION_MATCH	140v140	PASS	__unguarded_insertion_sort_aux<pair<C3DVector,long>>
+00808230	RELOCATION_MATCH	102v102	PASS	__make_heap<ThingPointer,CDoNotUse>
+00808470	RELOCATION_MATCH	104v104	PASS	vector<CTargetPoint> copy ctor
+00808950	RELOCATION_MATCH	217v217	PASS	__unguarded_partition<ThingPointer,CDoNotUse>
+00808aa0	DIFFER	229v229	-	__linear_insert<pair<C3DVector,long>>; scheduling only (pipelined copies in else arm)
+00808cf0	RELOCATION_MATCH	183v183	PASS	__make_heap<pair<C3DVector,long>>
+00809270	RELOCATION_MATCH	89v89	PASS	CTargetPointFilter_IsStealableStockItem::operator(); nested ifs
+00809700	RELOCATION_MATCH	174v174	PASS	sort_heap<ThingPointer,CDoNotUse>
+008097d0	RELOCATION_MATCH	99v99	PASS	make_heap<pair<C3DVector,long>>
+00809e40	RELOCATION_MATCH	225v225	PASS	__final_insertion_sort<pair>
+0080a1b0	RELOCATION_MATCH	136v136	PASS	__unguarded_partition<CTargetPoint,BT2>
+0080a340	RELOCATION_MATCH	176v176	PASS	__unguarded_linear_insert<CTargetPoint,BT2>
+0080a850	RELOCATION_MATCH	146v146	PASS	remove_copy_if<Bind2<IsInFOV,not IsTargetableBehind>>
+0080af70	RELOCATION_MATCH	183v183	PASS	__introsort_loop<ThingPointer,CDoNotUse>
+0080b050	RELOCATION_MATCH	223v223	PASS	__insertion_sort<CTargetPoint,BT2>
+0080b1a0	RELOCATION_MATCH	102v102	PASS	partial_sort<pair<C3DVector,long>>
+0080b430	RELOCATION_MATCH	184v184	PASS	__pop_heap_aux<CTargetPoint,BT2>
+0080b5a0	RELOCATION_MATCH	115v115	PASS	__final_insertion_sort<CTargetPoint,BT2>; out-of-line comparator copy 0x7F9730
+0080b810	RELOCATION_MATCH	113v113	PASS	make_heap<CTargetPoint,BT2>
+0080b900	RELOCATION_MATCH	227v227	PASS	sort<pair<C3DVector,long>>
