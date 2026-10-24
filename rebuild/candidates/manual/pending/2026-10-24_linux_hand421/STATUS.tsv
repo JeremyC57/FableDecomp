@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a6b0e0	MATCH	88v88	PASS	_STL::__copy_backward<CIVCountedPointer<CLocalDetailPlacementGrid>*> (catalog CDefPointer<CThingBaseDef> label is propagated from byte twin 0x00769210); pointee RemoveRef on the pointee; 1 grade
+00a6b1a0	MATCH	56v56	PASS	_STL::__unguarded_linear_insert, pair<ulong,ulong> + less; 1 grade
+00a6b420	MATCH	87v87	PASS	_STL::__unguarded_partition, pair<ulong,ulong>; iter_swap -> __iter_swap(a,b,__value_type(a)) inline; 1 grade
+00a6b480	MATCH	67v67	PASS	_STL::__unguarded_insertion_sort_aux, pair<ulong,ulong>; 1 grade
+00a6b820	RELOCATION_MATCH	109v109	PASS	_STL::__linear_insert, pair<ulong,ulong>; copy_backward chain inlined, unguarded insert declared; 1 grade
+00a6bbb0	RELOCATION_MATCH	119v119	PASS	_STL::__partial_sort, pair<ulong,ulong>; __make_heap/__adjust_heap/sort_heap declared, __pop_heap inline; 1 grade
+00a6bfc0	DIFFER	30v64	-	CPreallocTexturePool scalar deleting dtor (catalog CDataBankGroupEntry_Destructor wrong); implicit ~CPreallocTexturePool stays out of line once the vector chain is forceinlined; 4 grades, parked
+00a6c9c0	RELOCATION_MATCH	49v49	PASS	CPhysicsMesh::GetHelperPointPositionStatic; C3DVector pack(1) + user memberwise copy ctor for the by-value return; 4 grades
+00a6ca20	RELOCATION_MATCH	87v87	PASS	CPhysicsMesh::IsInContainmentVolume; UpperBound then LowerBound loop; 1 grade
+00a6ca80	RELOCATION_MATCH	149v149	PASS	CPhysicsMesh::PeekRoughProportionOfSphereContained; sum then clamp to [0,1]; 1 grade
+00a6cbc0	RELOCATION_MATCH	75v75	PASS	CPhysicsMesh::HasContainmentVolume; inline CVectorMap::Find + named iterator; 1 grade
+00a6e470	RELOCATION_MATCH	83v83	PASS	vector<C3DTriangle2>::_M_allocate_and_copy<const C3DTriangle2*>; needs __forceinline __uninitialized_copy; 2 grades
+00a6e5e0	RELOCATION_MATCH	141v141	PASS	_STL::swap<pair<CCharString,C3DHelperPoint>> (catalog swap<C3DSkeletalBoneMorph> propagated); 1 grade
+00a6e840	RELOCATION_MATCH	134v134	PASS	_STL::__copy_backward<pair<CCharString,C3DDummyObject>*> (catalog C3DGeneratorObject propagated); 1 grade
+00a6ece0	MATCH	64v64	PASS	_STL::for_each<C3DVector*,CAddElements<C3DVector>>; functor with a user ctor returns through the hidden pointer; 1 grade
+00a6ede0	RELOCATION_MATCH	72v72	PASS	_STL::__uninitialized_fill_n<pair<CCharString,C3DHelperPoint>*,uint> (catalog fill<C3DAnimationStateAlpha> propagated); 1 grade
+00a6ee30	RELOCATION_MATCH	89v89	PASS	_STL::__uninitialized_copy<pair<CCharString,C3DDummyObject>*>; 1 grade
+00a6efd0	RELOCATION_MATCH	146v146	PASS	_STL::__unguarded_linear_insert, pair<CCharString,C3DHelperPoint> + CCompareString (FastCompare); 1 grade
+00a6f070	RELOCATION_MATCH	116v116	PASS	_STL::__unguarded_linear_insert, pair<CCharString,C3DDummyObject> + CCompareString; 1 grade
+00a6f610	RELOCATION_MATCH	115v115	PASS	_STL::__unguarded_partition, 20-byte helper-point pair; swap 0x00A6E5E0 declared (out of line in retail); 1 grade
+00a6f6f0	RELOCATION_MATCH	198v198	PASS	_STL::__unguarded_partition, 56-byte dummy-object pair; swap inlined (retail inlines it here); 1 grade
+00a703c0	RELOCATION_MATCH	200v200	PASS	_STL::__unguarded_linear_insert, pair<long,C3DMeshVolume> (signed twin of landed 0x00A33250); 1 grade
+00a70540	RELOCATION_MATCH	239v239	PASS	_STL::__unguarded_linear_insert, pair<CCharString,C3DMeshVolume> + CKeyPairCompareLess (inline CCharString::operator<); 1 grade
+00a70630	RELOCATION_MATCH	124v124	PASS	_STL::__make_heap, pair<CCharString,C3DHelperPoint>; __adjust_heap 0x00A6FA20 declared; 1 grade
+00a706b0	RELOCATION_MATCH	131v131	PASS	_STL::__make_heap, pair<CCharString,C3DDummyObject>; __adjust_heap 0x00A6FB40 declared; 1 grade
+00a70bc0	RELOCATION_MATCH	142v142	PASS	_STL::vector<C3DTriangle2>::reserve; member-template _M_allocate_and_copy declared; 1 grade
+00a70f40	RELOCATION_MATCH	167v167	PASS	_STL::__linear_insert, pair<CCharString,C3DHelperPoint>; __copy_backward 0x00A6E7C0 + unguarded insert declared; 1 grade
+00a71090	RELOCATION_MATCH	79v79	PASS	_STL::__unguarded_insertion_sort_aux, pair<long,C3DMeshVolume> (catalog _Copy_impl<CComplexNumber> wrong); 1 grade
+00a71880	RELOCATION_MATCH	127v127	PASS	_STL::__unguarded_partition, pair<long,C3DMeshVolume>; swap 0x00A70320 declared; 1 grade
+00a71910	RELOCATION_MATCH	110v110	PASS	_STL::__unguarded_partition, pair<CCharString,C3DMeshVolume>; declared ~pair (0x00A6F390) + same-TU CBasicString::operator< under auto_inline(off); 3 grades
+00a71be0	RELOCATION_MATCH	178v178	PASS	_STL::__pop_heap, pair<CCharString,C3DMeshVolume>; __adjust_heap 0x00A71370 declared (catalog std_Adjust_Heap_Pair); 1 grade
+00a71ca0	RELOCATION_MATCH	116v116	PASS	_STL::__make_heap, pair<long,C3DMeshVolume>; __adjust_heap 0x00A71220 declared; 1 grade
+00a71d40	RELOCATION_MATCH	122v122	PASS	_STL::__make_heap, pair<CCharString,C3DMeshVolume>; __adjust_heap 0x00A71370 declared; 1 grade
+00a72300	RELOCATION_MATCH	126v126	PASS	_STL::__partial_sort, pair<CCharString,C3DHelperPoint>; __pop_heap 0x00A701D0 + sort_heap 0x00A719A0 out of line; 1 grade
+00a72380	RELOCATION_MATCH	125v125	PASS	_STL::__partial_sort, pair<CCharString,C3DDummyObject>; __pop_heap 0x00A70280 + sort_heap 0x00A71A40 out of line; 1 grade
+00a72700	RELOCATION_MATCH	86v86	PASS	_STL::vector<pair<CCharString,C3DDummyObject>>::push_back (catalog Vector_PushBack_CCharString); _M_insert_overflow 0x00A720E0 declared; 1 grade
+00a728f0	RELOCATION_MATCH	179v179	PASS	_STL::__linear_insert, pair<long,C3DMeshVolume>; __copy_backward 0x00A70A10 declared; 1 grade
+00a729b0	RELOCATION_MATCH	226v226	PASS	_STL::__linear_insert, pair<CCharString,C3DMeshVolume>; __copy_backward 0x00A70AB0 declared; 1 grade
+00a73240	RELOCATION_MATCH	109v109	PASS	_STL::__insertion_sort, pair<long,C3DMeshVolume> (catalog Vector_ReserveLog2_ComplexNumber_Impl wrong); 1 grade
+00a732b0	RELOCATION_MATCH	113v113	PASS	_STL::__insertion_sort, pair<CCharString,C3DMeshVolume> (catalog Vector_ReserveLog2_StringPair_Impl wrong); 1 grade
