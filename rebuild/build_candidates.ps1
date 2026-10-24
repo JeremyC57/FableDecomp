@@ -284871,6 +284871,286 @@ $catalog = @(
         TestSource = '00/cd/global_DestroyAuxSStringListRecord1C00cdc000_00cdc000_test.cpp'
         PassPattern = '00cdc000_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004aa580'
+        Module = '_global'
+        Source = '00/4a/global_CopyRecord28004aa580_004aa580.cpp'
+        TestSource = '00/4a/global_CopyRecord28004aa580_004aa580_test.cpp'
+        PassPattern = '004aa580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b84f0'
+        Module = '_global'
+        Source = '00/4b/global_CopyPairCharStringPersistInfo004b84f0_004b84f0.cpp'
+        TestSource = '00/4b/global_CopyPairCharStringPersistInfo004b84f0_004b84f0_test.cpp'
+        PassPattern = '004b84f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d1530'
+        Module = '_global'
+        Source = '00/4d/global_InsertionSort004d1530_004d1530.cpp'
+        TestSource = '00/4d/global_InsertionSort004d1530_004d1530_test.cpp'
+        PassPattern = '004d1530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00566780'
+        Module = '_global'
+        Source = '00/56/global_CopyRecord1600566780_00566780.cpp'
+        TestSource = '00/56/global_CopyRecord1600566780_00566780_test.cpp'
+        PassPattern = '00566780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00612f70'
+        Module = '_global'
+        Source = '00/61/global_CopyUIMiniMapMarker00612f70_00612f70.cpp'
+        TestSource = '00/61/global_CopyUIMiniMapMarker00612f70_00612f70_test.cpp'
+        PassPattern = '00612f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006237c0'
+        Module = '_global'
+        Source = '00/62/global_CopyRecord28006237c0_006237c0.cpp'
+        TestSource = '00/62/global_CopyRecord28006237c0_006237c0_test.cpp'
+        PassPattern = '006237c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf2c0'
+        Module = '_global'
+        Source = '00/6b/global_InsertionSort006bf2c0_006bf2c0.cpp'
+        TestSource = '00/6b/global_InsertionSort006bf2c0_006bf2c0_test.cpp'
+        PassPattern = '006bf2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00708c20'
+        Module = '_global'
+        Source = '00/70/global_CopyModifierGraphic00708c20_00708c20.cpp'
+        TestSource = '00/70/global_CopyModifierGraphic00708c20_00708c20_test.cpp'
+        PassPattern = '00708c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00721360'
+        Module = '_global'
+        Source = '00/72/global_InsertionSort00721360_00721360.cpp'
+        TestSource = '00/72/global_InsertionSort00721360_00721360_test.cpp'
+        PassPattern = '00721360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076aec0'
+        Module = '_global'
+        Source = '00/76/global_InsertionSort0076aec0_0076aec0.cpp'
+        TestSource = '00/76/global_InsertionSort0076aec0_0076aec0_test.cpp'
+        PassPattern = '0076aec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00776b60'
+        Module = '_global'
+        Source = '00/77/global_UninitCopyKeyCameraRecord3600776b60_00776b60.cpp'
+        TestSource = '00/77/global_UninitCopyKeyCameraRecord3600776b60_00776b60_test.cpp'
+        PassPattern = '00776b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007770c0'
+        Module = '_global'
+        Source = '00/77/global_UninitCopyKeyCameraRecord36007770c0_007770c0.cpp'
+        TestSource = '00/77/global_UninitCopyKeyCameraRecord36007770c0_007770c0_test.cpp'
+        PassPattern = '007770c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080dff0'
+        Module = '_global'
+        Source = '00/80/global_CopyBackwardPairIntelligentPointerInt0080dff0_0080dff0.cpp'
+        TestSource = '00/80/global_CopyBackwardPairIntelligentPointerInt0080dff0_0080dff0_test.cpp'
+        PassPattern = '0080dff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008183e0'
+        Module = '_global'
+        Source = '00/81/global_InsertionSort008183e0_008183e0.cpp'
+        TestSource = '00/81/global_InsertionSort008183e0_008183e0_test.cpp'
+        PassPattern = '008183e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081a650'
+        Module = '_global'
+        Source = '00/81/global_UninitCopyRecord200081a650_0081a650.cpp'
+        TestSource = '00/81/global_UninitCopyRecord200081a650_0081a650_test.cpp'
+        PassPattern = '0081a650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081c490'
+        Module = '_global'
+        Source = '00/81/global_InsertionSort0081c490_0081c490.cpp'
+        TestSource = '00/81/global_InsertionSort0081c490_0081c490_test.cpp'
+        PassPattern = '0081c490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008247e0'
+        Module = '_global'
+        Source = '00/82/global_UninitCopyRecord20008247e0_008247e0.cpp'
+        TestSource = '00/82/global_UninitCopyRecord20008247e0_008247e0_test.cpp'
+        PassPattern = '008247e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00828cd0'
+        Module = '_global'
+        Source = '00/82/global_CopyPairLongCountedPointer00828cd0_00828cd0.cpp'
+        TestSource = '00/82/global_CopyPairLongCountedPointer00828cd0_00828cd0_test.cpp'
+        PassPattern = '00828cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00841de0'
+        Module = '_global'
+        Source = '00/84/global_CopyRetailString00841de0_00841de0.cpp'
+        TestSource = '00/84/global_CopyRetailString00841de0_00841de0_test.cpp'
+        PassPattern = '00841de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085db50'
+        Module = '_global'
+        Source = '00/85/global_UninitCopyRecord200085db50_0085db50.cpp'
+        TestSource = '00/85/global_UninitCopyRecord200085db50_0085db50_test.cpp'
+        PassPattern = '0085db50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086c830'
+        Module = '_global'
+        Source = '00/86/global_InsertionSort0086c830_0086c830.cpp'
+        TestSource = '00/86/global_InsertionSort0086c830_0086c830_test.cpp'
+        PassPattern = '0086c830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e34c0'
+        Module = '_global'
+        Source = '00/8e/global_CopyIcicleData008e34c0_008e34c0.cpp'
+        TestSource = '00/8e/global_CopyIcicleData008e34c0_008e34c0_test.cpp'
+        PassPattern = '008e34c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ca660'
+        Module = '_global'
+        Source = '00/9c/global_CopyDataBankTextEntry009ca660_009ca660.cpp'
+        TestSource = '00/9c/global_CopyDataBankTextEntry009ca660_009ca660_test.cpp'
+        PassPattern = '009ca660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e6270'
+        Module = '_global'
+        Source = '00/9e/global_UninitCopyPairCharStringSymbolInfo009e6270_009e6270.cpp'
+        TestSource = '00/9e/global_UninitCopyPairCharStringSymbolInfo009e6270_009e6270_test.cpp'
+        PassPattern = '009e6270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e6600'
+        Module = '_global'
+        Source = '00/9e/global_CopyPairCharStringSymbolInfo009e6600_009e6600.cpp'
+        TestSource = '00/9e/global_CopyPairCharStringSymbolInfo009e6600_009e6600_test.cpp'
+        PassPattern = '009e6600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f6c00'
+        Module = '_global'
+        Source = '00/9f/global_UninitCopyRecord48009f6c00_009f6c00.cpp'
+        TestSource = '00/9f/global_UninitCopyRecord48009f6c00_009f6c00_test.cpp'
+        PassPattern = '009f6c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2af20'
+        Module = '_global'
+        Source = '00/a2/global_UninitCopyC3DAnimationInfo00a2af20_00a2af20.cpp'
+        TestSource = '00/a2/global_UninitCopyC3DAnimationInfo00a2af20_00a2af20_test.cpp'
+        PassPattern = '00a2af20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a340f0'
+        Module = '_global'
+        Source = '00/a3/global_InsertionSort00a340f0_00a340f0.cpp'
+        TestSource = '00/a3/global_InsertionSort00a340f0_00a340f0_test.cpp'
+        PassPattern = '00a340f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a438e0'
+        Module = '_global'
+        Source = '00/a4/global_CopyDataBankTextEntry00a438e0_00a438e0.cpp'
+        TestSource = '00/a4/global_CopyDataBankTextEntry00a438e0_00a438e0_test.cpp'
+        PassPattern = '00a438e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45990'
+        Module = '_global'
+        Source = '00/a4/global_CopyNamedRecord2000a45990_00a45990.cpp'
+        TestSource = '00/a4/global_CopyNamedRecord2000a45990_00a45990_test.cpp'
+        PassPattern = '00a45990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a72ee0'
+        Module = '_global'
+        Source = '00/a7/global_ForEachAddHelperPointName00a72ee0_00a72ee0.cpp'
+        TestSource = '00/a7/global_ForEachAddHelperPointName00a72ee0_00a72ee0_test.cpp'
+        PassPattern = '00a72ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a72f40'
+        Module = '_global'
+        Source = '00/a7/global_ForEachAddDummyObjectName00a72f40_00a72f40.cpp'
+        TestSource = '00/a7/global_ForEachAddDummyObjectName00a72f40_00a72f40_test.cpp'
+        PassPattern = '00a72f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85870'
+        Module = '_global'
+        Source = '00/a8/global_CopyRecord4000a85870_00a85870.cpp'
+        TestSource = '00/a8/global_CopyRecord4000a85870_00a85870_test.cpp'
+        PassPattern = '00a85870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a95a10'
+        Module = '_global'
+        Source = '00/a9/global_UninitCopyRecord3200a95a10_00a95a10.cpp'
+        TestSource = '00/a9/global_UninitCopyRecord3200a95a10_00a95a10_test.cpp'
+        PassPattern = '00a95a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1ce0'
+        Module = '_global'
+        Source = '00/af/global_CopyParticleEmitterInfo00af1ce0_00af1ce0.cpp'
+        TestSource = '00/af/global_CopyParticleEmitterInfo00af1ce0_00af1ce0_test.cpp'
+        PassPattern = '00af1ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af6ed0'
+        Module = '_global'
+        Source = '00/af/global_CopyPairPSCTypeComponentInstance00af6ed0_00af6ed0.cpp'
+        TestSource = '00/af/global_CopyPairPSCTypeComponentInstance00af6ed0_00af6ed0_test.cpp'
+        PassPattern = '00af6ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b28ed0'
+        Module = '_global'
+        Source = '00/b2/global_UninitCopyRecord5600b28ed0_00b28ed0.cpp'
+        TestSource = '00/b2/global_UninitCopyRecord5600b28ed0_00b28ed0_test.cpp'
+        PassPattern = '00b28ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31a30'
+        Module = '_global'
+        Source = '00/b3/global_UninitCopyRecord3200b31a30_00b31a30.cpp'
+        TestSource = '00/b3/global_UninitCopyRecord3200b31a30_00b31a30_test.cpp'
+        PassPattern = '00b31a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3e340'
+        Module = '_global'
+        Source = '00/b3/global_UninitCopyRecord2000b3e340_00b3e340.cpp'
+        TestSource = '00/b3/global_UninitCopyRecord2000b3e340_00b3e340_test.cpp'
+        PassPattern = '00b3e340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf5b50'
+        Module = '_global'
+        Source = '00/bf/global_UninitCopyRecord2800bf5b50_00bf5b50.cpp'
+        TestSource = '00/bf/global_UninitCopyRecord2800bf5b50_00bf5b50_test.cpp'
+        PassPattern = '00bf5b50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

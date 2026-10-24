@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00841de0	RELOCATION_MATCH	81v81	PASS	Copy_RetailString_00841de0: SGI __copy (counted); catalog `_Move` label propagated
+00776b60	MATCH	93v93	PASS	UninitCopy_KeyCameraRecord36_00776b60: STLport __uninitialized_copy; catalog `_Move` label propagated
+007770c0	MATCH	93v93	PASS	UninitCopy_KeyCameraRecord36_007770c0: STLport __uninitialized_copy; catalog `_Move` label propagated
+009f6c00	RELOCATION_MATCH	130v130	PASS	UninitCopy_Record48_009f6c00: STLport __uninitialized_copy; catalog `_Move` label propagated
+00a2af20	RELOCATION_MATCH	114v114	PASS	UninitCopy_C3DAnimationInfo_00a2af20: STLport __uninitialized_copy; catalog `_Move` label propagated
+00a95a10	MATCH	87v87	PASS	UninitCopy_Record32_00a95a10: STLport __uninitialized_copy; catalog `_Move` label propagated
+00b28ed0	MATCH	131v131	PASS	UninitCopy_Record56_00b28ed0: STLport __uninitialized_copy; catalog `_Move` label propagated
+00b31a30	MATCH	87v87	PASS	UninitCopy_Record32_00b31a30: STLport __uninitialized_copy; catalog `_Move` label propagated
+00708c20	MATCH	107v107	PASS	Copy_ModifierGraphic_00708c20: SGI __copy (counted); catalog `_Move` label propagated
+00af1ce0	MATCH	107v107	PASS	Copy_ParticleEmitterInfo_00af1ce0: SGI __copy (counted); catalog `_Move` label propagated
+004d1530	RELOCATION_MATCH	101v101	PASS	InsertionSort_004d1530: SGI __insertion_sort; catalog `_Move` label propagated
+00612f70	RELOCATION_MATCH	133v133	PASS	Copy_UIMiniMapMarker_00612f70: SGI __copy (counted); catalog `_Move` label propagated
+00721360	RELOCATION_MATCH	158v158	PASS	InsertionSort_00721360: SGI __insertion_sort; catalog `_Move` label propagated
+0076aec0	RELOCATION_MATCH	79v79	PASS	InsertionSort_0076aec0: SGI __insertion_sort; catalog `_Move` label propagated
+008183e0	RELOCATION_MATCH	103v103	PASS	InsertionSort_008183e0: SGI __insertion_sort; catalog `_Move` label propagated
+0081c490	RELOCATION_MATCH	95v95	PASS	InsertionSort_0081c490: SGI __insertion_sort; catalog `_Move` label propagated
+0086c830	RELOCATION_MATCH	83v83	PASS	InsertionSort_0086c830: SGI __insertion_sort; catalog `_Move` label propagated
+00a340f0	RELOCATION_MATCH	85v85	PASS	InsertionSort_00a340f0: SGI __insertion_sort; catalog `_Move` label propagated
+00a45990	RELOCATION_MATCH	122v122	PASS	Copy_NamedRecord20_00a45990: SGI __copy (counted); catalog `_Move` label propagated
+00bf5b50	MATCH	81v81	PASS	UninitCopy_Record28_00bf5b50: STLport __uninitialized_copy; catalog `_Move` label propagated
+009ca660	MATCH	88v88	PASS	Copy_DataBankTextEntry_009ca660: SGI __copy (counted); catalog `_Move` label propagated
+00a438e0	MATCH	88v88	PASS	Copy_DataBankTextEntry_00a438e0: SGI __copy (counted); catalog `_Move` label propagated
+0081a650	MATCH	68v68	PASS	UninitCopy_Record20_0081a650: STLport __uninitialized_copy; catalog `_Move` label propagated
+008247e0	MATCH	68v68	PASS	UninitCopy_Record20_008247e0: STLport __uninitialized_copy; catalog `_Move` label propagated
+0085db50	MATCH	62v62	PASS	UninitCopy_Record20_0085db50: STLport __uninitialized_copy; catalog `_Move` label propagated
+00b3e340	MATCH	68v68	PASS	UninitCopy_Record20_00b3e340: STLport __uninitialized_copy; catalog `_Move` label propagated
+00a72ee0	RELOCATION_MATCH	96v96	PASS	ForEach_AddHelperPointName_00a72ee0: SGI for_each (push_back functor); catalog `_Move` label propagated
+00a72f40	RELOCATION_MATCH	96v96	PASS	ForEach_AddDummyObjectName_00a72f40: SGI for_each (push_back functor); catalog `_Move` label propagated
+006bf2c0	RELOCATION_MATCH	118v118	PASS	InsertionSort_006bf2c0: SGI __insertion_sort; catalog `_Move` label propagated
+009e6270	RELOCATION_MATCH	102v102	PASS	UninitCopy_PairCharStringSymbolInfo_009e6270: STLport __uninitialized_copy; catalog `_Move` label propagated
+009e6600	RELOCATION_MATCH	108v108	PASS	Copy_PairCharStringSymbolInfo_009e6600: SGI __copy (counted); catalog `_Move` label propagated
+004aa580	RELOCATION_MATCH	137v137	PASS	Copy_Record28_004aa580: SGI __copy (counted); catalog `_Move` label propagated
+004b84f0	RELOCATION_MATCH	90v90	PASS	Copy_PairCharStringPersistInfo_004b84f0: SGI __copy (counted); catalog `_Move` label propagated
+00566780	RELOCATION_MATCH	89v89	PASS	Copy_Record16_00566780: SGI __copy (counted); catalog `_Move` label propagated
+006237c0	RELOCATION_MATCH	137v137	PASS	Copy_Record28_006237c0: SGI __copy (counted); catalog `_Move` label propagated
+00a85870	RELOCATION_MATCH	97v97	PASS	Copy_Record40_00a85870: SGI __copy (counted); catalog `_Move` label propagated
+0080dff0	RELOCATION_MATCH	79v79	PASS	CopyBackward_PairIntelligentPointerInt_0080dff0: SGI __copy_backward; catalog `_Move` label propagated
+008e34c0	RELOCATION_MATCH	125v125	PASS	Copy_IcicleData_008e34c0: SGI __copy (counted); catalog `_Move` label propagated
+00af6ed0	RELOCATION_MATCH	181v181	PASS	Copy_PairPSCTypeComponentInstance_00af6ed0: SGI __copy (counted); catalog `_Move` label propagated
+00828cd0	RELOCATION_MATCH	145v145	PASS	Copy_PairLongCountedPointer_00828cd0: SGI __copy (counted); catalog `_Move` label propagated

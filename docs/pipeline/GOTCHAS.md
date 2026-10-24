@@ -1117,3 +1117,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - pair<u64, X> is 8-aligned: a never-copied word after the key/record is alignment padding (00cb9c80); one skipped byte then one copied byte after a 12-byte member is a CVectorMap (empty Compare, Dirty) (00a85740).
 - Intrusive counted-pointer assignment `if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++count; }` with Release storing 0 inside its non-null branch gives retail's `mov ecx,[dst] ; cmp ecx,[src]` (005e0e70).
 - Retail CEngineTextureDecal is 20 bytes (00bee4e0).
+- In `__uninitialized_copy` calling an out-of-line copy ctor, write `T* cur = result;`: retail keeps `result` in ebp from before the empty test and returns it from the shared epilogue (009f6c00, 009e6270).
+- STLport `__insertion_sort` passes `*i` by value to `__linear_insert`: `push comp ; sub esp,N ; mov eax,esp` (chunk 357).
+- A memberwise user copy ctor holding a nested 3-long record with its own user copy ctor keeps a second pointer at `&record + 8` (`lea edi,[eax+N]`): the record sits at N-8 (00776b60).
