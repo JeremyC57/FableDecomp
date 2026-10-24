@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005dc2e0	RELOCATION_MATCH	81v81	PASS	CAnimationSet::AnimExists: filtered walk of the CRC run from FindFirstAnimWithName
+005dc340	DIFFER	56v66	-	CAnimationSet::GetAnim: retail keeps the dead this in edi (4 pushes), lane saves 3 registers
+005e0380	DIFFER	120v125	-	CAnimationEntry::GetComponent<CAnimComponentFlags>: one hoisted key word + folded compares not reproduced together (family F88)
+005e0650	RELOCATION_MATCH	141v141	PASS	STLport __unguarded_partition<CCharString>: comparator body above the caller (callee clobber knowledge)
+005e0710	RELOCATION_MATCH	76v76	PASS	STLport __unguarded_linear_insert<CCharString>
+005e0760	MATCH	131v131	PASS	STLport swap of pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >
+005e08c0	RELOCATION_MATCH	124v124	PASS	STLport __push_heap<CCharString>
+005e0d80	MATCH	91v91	PASS	STLport __copy of the 8-byte anim-component pairs
+005e0f00	MATCH	52v52	PASS	STLport __destroy_aux of the 8-byte anim-component pairs
+005e0fa0	RELOCATION_MATCH	59v59	PASS	STLport __unguarded_insertion_sort_aux of the 8-byte pairs
+005e0fe0	RELOCATION_MATCH	49v49	PASS	STLport copy_backward<CCharString*> (forceinline __copy_backward)
+005e1020	RELOCATION_MATCH	132v132	PASS	STLport swap of pair<unsigned long, CAnimationEntry>
+005e10b0	MATCH	186v186	PASS	STLport __unguarded_linear_insert of the 20-byte entry pairs
+005e1170	RELOCATION_MATCH	151v151	PASS	STLport __adjust_heap<CCharString>
+005e19d0	RELOCATION_MATCH	94v94	PASS	STLport __unguarded_partition of the 8-byte pairs
+005e1a40	RELOCATION_MATCH	112v112	PASS	STLport __linear_insert<CCharString>
+005e1be0	RELOCATION_MATCH	73v73	PASS	STLport __make_heap<CCharString>
+005e1c30	RELOCATION_MATCH	81v81	PASS	STLport __make_heap of the 8-byte pairs
+005e1f30	RELOCATION_MATCH	86v86	PASS	STLport _Rb_tree::_M_erase of map<CCharString, CIVCountedPointer<CAnimComponentBase> >
+005e20c0	RELOCATION_MATCH	56v56	PASS	STLport __insertion_sort<CCharString>
+005e2100	RELOCATION_MATCH	94v94	PASS	STLport __unguarded_partition of the 20-byte entry pairs
+005e2320	RELOCATION_MATCH	120v120	PASS	STLport __make_heap of the 20-byte entry pairs
+005e2770	RELOCATION_MATCH	121v121	PASS	STLport __linear_insert of the 20-byte entry pairs
+005e2b30	DIFFER	230v226	-	STLport vector<pair<unsigned long, CAnimationEntry> >::reserve: tag temporaries over a live argument slot (lane gap)
+005e2e50	RELOCATION_MATCH	92v92	PASS	STLport __insertion_sort of the 20-byte entry pairs
+005e2eb0	RELOCATION_MATCH	144v144	PASS	STLport __partial_sort<CCharString>
+005e2f40	RELOCATION_MATCH	99v99	PASS	STLport __partial_sort of the 8-byte pairs
+005e3110	RELOCATION_MATCH	65v65	PASS	STLport vector<anim-component pair>::push_back
+005e3550	RELOCATION_MATCH	117v117	PASS	STLport __partial_sort of the 20-byte entry pairs
+005e36b0	RELOCATION_MATCH	83v83	PASS	STLport vector<anim-entry pair>::push_back
+005e3740	RELOCATION_MATCH	142v142	PASS	STLport __introsort_loop<CCharString>
+005e37d0	RELOCATION_MATCH	203v203	PASS	STLport __introsort_loop of the 8-byte pairs
+005e3a50	RELOCATION_MATCH	115v115	PASS	STLport sort<CCharString*> (less() user ctor)
+005e90b0	RELOCATION_MATCH	79v79	PASS	STLport list<CQuestManager::CBoast>::erase(first, last)
+005e9280	RELOCATION_MATCH	146v146	PASS	STLport list<CBoast>::_M_insert_dispatch (4.6 link order)
+005e9630	RELOCATION_MATCH	224v224	PASS	STLport list<CBoast>::operator= (const_iterator has a trivial copy)
+005ee365	RELOCATION_MATCH	78v78	PASS	CTCInventoryAbilities::GetSpecialAbilityPDefSetToButton (y-off + s TU)
+005eed4c	RELOCATION_MATCH	64v64	PASS	CTCInventoryAbilities::OnSpecialAbilityButtonPressed (s TU)
+005f6423	RELOCATION_MATCH	186v186	PASS	CTCInventoryAbilities::SetAbilityToButton (y-off + s TU, forceinline Insert)
+005f66d9	RELOCATION_MATCH	186v186	PASS	CTCInventoryAbilities::SetExpressionToButton (twin of 0x005F6423)

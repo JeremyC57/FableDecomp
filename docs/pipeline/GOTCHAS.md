@@ -1227,3 +1227,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `CDefPointer::operator->` at both uses gives retail's double field load; a plain local merges them (0x5D95C0).
 - Write `CWideString == L""` as two caller tests that `goto` the empty arm (0x5BDA1D); early returns stop a later local sharing a frame word with an inlined GetInterface key, nested ifs pack them (0x5B425B).
 - A found flag plus a cached `end()` places retail's match block after the epilogue (0x5CD6B7).
+- STLport-over-CCharString sort family: define the real `CBasicString<char>::operator<` (0x429950) body above its callers under `auto_inline(off)` so VC7.1 keeps the pivot pointer in esi; `sort` needs a user `less() {}` (chunk 380).
+- STLport list: `_List_iterator(const iterator&)` is iterator's user copy ctor but a converting ctor for const_iterator, so by-value iterators build in place at esp and const_iterators are a plain push (0x5E9630); `tmp->prev` stored before `tmp->next` is the 4.6 insert with named `n`, `p` (0x5E9280).
+- Const and non-const `CVectorMap::LowerBound` are separate retail copies (0x5F7F89 / 0x5F7F4C): a const member must call the const overload.
+- `return Callee();` of the same by-value CDefPointer passes the hidden result straight through; the empty `return T();` in a size TU is `and dword ptr [eax],0` (0x5EE365).
