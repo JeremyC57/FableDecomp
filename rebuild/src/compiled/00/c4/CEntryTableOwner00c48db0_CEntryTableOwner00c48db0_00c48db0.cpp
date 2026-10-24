@@ -5,6 +5,8 @@
 // delete[] @ 0x00BFEB1C (the block starting at the count word). Vtable 0x012B8024 is not in rtti-vtables.tsv; the chunk label "CEngineComponent::~CEngineComponent"
 // is propagated. Shape: the plain `??1` of a polymorphic class (the vtable store, no deleting tail): a virtual function plus a NON-virtual destructor;
 // the `eh vector destructor iterator` form of `delete[]` needs `/EHsc` (the lane otherwise unrolls the loop inline).
+void operator delete[](void*);                     // retail binds 0x00BFEB1C; without this VC7.1 emits scalar ??3
+
 struct SEntry_00c48740 {                           // 0x40 bytes with a destructor @ 0x00C48740
     unsigned char _body[0x40];
     ~SEntry_00c48740();
