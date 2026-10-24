@@ -296134,6 +296134,258 @@ $catalog = @(
         TestSource = '00/83/CThingAICreature_Create_00833800_test.cpp'
         PassPattern = '00833800_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007e3610'
+        Module = 'CTCAtmosPlayer'
+        Source = '00/7e/CTCAtmosPlayer_SetAtmosDefIndex_007e3610.cpp'
+        TestSource = '00/7e/CTCAtmosPlayer_SetAtmosDefIndex_007e3610_test.cpp'
+        PassPattern = '007e3610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e4040'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_SetThingAsNotBloodyWillableAtAll_007e4040.cpp'
+        TestSource = '00/7e/CTCWillResponse_SetThingAsNotBloodyWillableAtAll_007e4040_test.cpp'
+        PassPattern = '007e4040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e4430'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_IsThingForcePushable_007e4430.cpp'
+        TestSource = '00/7e/CTCWillResponse_IsThingForcePushable_007e4430_test.cpp'
+        PassPattern = '007e4430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e44e0'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_IsThingLifeDrainable_007e44e0.cpp'
+        TestSource = '00/7e/CTCWillResponse_IsThingLifeDrainable_007e44e0_test.cpp'
+        PassPattern = '007e44e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e45d0'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_IsThingNotBloodyWillableAtAll_007e45d0.cpp'
+        TestSource = '00/7e/CTCWillResponse_IsThingNotBloodyWillableAtAll_007e45d0_test.cpp'
+        PassPattern = '007e45d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e4680'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_IsThingEpicPowerExplodable_007e4680.cpp'
+        TestSource = '00/7e/CTCWillResponse_IsThingEpicPowerExplodable_007e4680_test.cpp'
+        PassPattern = '007e4680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e46d0'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_IsThingEpicSpellable_007e46d0.cpp'
+        TestSource = '00/7e/CTCWillResponse_IsThingEpicSpellable_007e46d0_test.cpp'
+        PassPattern = '007e46d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e5b40'
+        Module = 'CTCFireRangedWeaponOnLeavingStateGroup'
+        Source = '00/7e/CTCFireRangedWeaponOnLeavingStateGroup_Cleanup_007e5b40.cpp'
+        TestSource = '00/7e/CTCFireRangedWeaponOnLeavingStateGroup_Cleanup_007e5b40_test.cpp'
+        PassPattern = '007e5b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e5f70'
+        Module = 'CTCOracleMinigame'
+        Source = '00/7e/CTCOracleMinigame_ProcessInput_007e5f70.cpp'
+        TestSource = '00/7e/CTCOracleMinigame_ProcessInput_007e5f70_test.cpp'
+        PassPattern = '007e5f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e9250'
+        Module = 'CTCAvoidRegionExit'
+        Source = '00/7e/CTCAvoidRegionExit_UpdateBestDist_007e9250.cpp'
+        TestSource = '00/7e/CTCAvoidRegionExit_UpdateBestDist_007e9250_test.cpp'
+        PassPattern = '007e9250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ebc20'
+        Module = 'CTCActionUseStartExtrapolationMorph'
+        Source = '00/7e/CTCActionUseStartExtrapolationMorph_OnActionUse_007ebc20.cpp'
+        TestSource = '00/7e/CTCActionUseStartExtrapolationMorph_OnActionUse_007ebc20_test.cpp'
+        PassPattern = '007ebc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ee540'
+        Module = 'CTCVillageMember'
+        Source = '00/7e/CTCVillageMember_GetPVillage_007ee540.cpp'
+        TestSource = '00/7e/CTCVillageMember_GetPVillage_007ee540_test.cpp'
+        PassPattern = '007ee540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f0300'
+        Module = 'CTCCarriedActionUseSpade'
+        Source = '00/7f/CTCCarriedActionUseSpade_IsThingAbleToDig_007f0300.cpp'
+        TestSource = '00/7f/CTCCarriedActionUseSpade_IsThingAbleToDig_007f0300_test.cpp'
+        PassPattern = '007f0300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f1840'
+        Module = 'NRumble'
+        Source = '00/7f/NRumble_GetRumbleDistanceAttenuationAtPos_007f1840.cpp'
+        TestSource = '00/7f/NRumble_GetRumbleDistanceAttenuationAtPos_007f1840_test.cpp'
+        PassPattern = '007f1840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f1ac0'
+        Module = 'CTCDRumble'
+        Source = '00/7f/CTCDRumble_Create_007f1ac0.cpp'
+        TestSource = '00/7f/CTCDRumble_Create_007f1ac0_test.cpp'
+        PassPattern = '007f1ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f3fb0'
+        Module = 'CCountedPointer<NBBBMaths::CLinearSpline>'
+        Source = '00/7f/CCountedPointerNBBBMathsCLinearSpline_DeleteData_007f3fb0.cpp'
+        TestSource = '00/7f/CCountedPointerNBBBMathsCLinearSpline_DeleteData_007f3fb0_test.cpp'
+        PassPattern = '007f3fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f59f0'
+        Module = 'NTargeting'
+        Source = '00/7f/NTargeting_IsThingVulnerableToMeleeStrikesFromThing_007f59f0.cpp'
+        TestSource = '00/7f/NTargeting_IsThingVulnerableToMeleeStrikesFromThing_007f59f0_test.cpp'
+        PassPattern = '007f59f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f7750'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/7f/CTCActivationReceptorBase_RemoveTrigger_007f7750.cpp'
+        TestSource = '00/7f/CTCActivationReceptorBase_RemoveTrigger_007f7750_test.cpp'
+        PassPattern = '007f7750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f7b70'
+        Module = 'std'
+        Source = '00/7f/std_ForeachCThingCInformTriggerOfReceptorDeath_007f7b70.cpp'
+        TestSource = '00/7f/std_ForeachCThingCInformTriggerOfReceptorDeath_007f7b70_test.cpp'
+        PassPattern = '007f7b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f7e70'
+        Module = 'std::unary_negate<CIsTriggerActivated>'
+        Source = '00/7f/stdunarynegateCIsTriggerActivated_operator_007f7e70.cpp'
+        TestSource = '00/7f/stdunarynegateCIsTriggerActivated_operator_007f7e70_test.cpp'
+        PassPattern = '007f7e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f8160'
+        Module = 'CTCActivationReceptorRelay'
+        Source = '00/7f/CTCActivationReceptorRelay_SetTriggerState_007f8160.cpp'
+        TestSource = '00/7f/CTCActivationReceptorRelay_SetTriggerState_007f8160_test.cpp'
+        PassPattern = '007f8160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f8220'
+        Module = '_global'
+        Source = '00/7f/global_GetRelativePosition_007f8220.cpp'
+        TestSource = '00/7f/global_GetRelativePosition_007f8220_test.cpp'
+        PassPattern = '007f8220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f9480'
+        Module = 'CVectorCompare_BestForTargeting'
+        Source = '00/7f/CVectorCompareBestForTargeting_GetCompareValue_007f9480.cpp'
+        TestSource = '00/7f/CVectorCompareBestForTargeting_GetCompareValue_007f9480_test.cpp'
+        PassPattern = '007f9480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f9ff0'
+        Module = 'std'
+        Source = '00/7f/std_unguardedpartition_007f9ff0.cpp'
+        TestSource = '00/7f/std_unguardedpartition_007f9ff0_test.cpp'
+        PassPattern = '007f9ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa0e0'
+        Module = 'std'
+        Source = '00/7f/std_unguardedlinearinsert_007fa0e0.cpp'
+        TestSource = '00/7f/std_unguardedlinearinsert_007fa0e0_test.cpp'
+        PassPattern = '007fa0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa710'
+        Module = 'std'
+        Source = '00/7f/std_makeheap_007fa710.cpp'
+        TestSource = '00/7f/std_makeheap_007fa710_test.cpp'
+        PassPattern = '007fa710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa7b0'
+        Module = 'std'
+        Source = '00/7f/std_popheapaux_007fa7b0.cpp'
+        TestSource = '00/7f/std_popheapaux_007fa7b0_test.cpp'
+        PassPattern = '007fa7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa830'
+        Module = 'std'
+        Source = '00/7f/std_finalinsertionsort_007fa830.cpp'
+        TestSource = '00/7f/std_finalinsertionsort_007fa830_test.cpp'
+        PassPattern = '007fa830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa890'
+        Module = 'std'
+        Source = '00/7f/std_makeheap_007fa890.cpp'
+        TestSource = '00/7f/std_makeheap_007fa890_test.cpp'
+        PassPattern = '007fa890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fac00'
+        Module = 'std'
+        Source = '00/7f/std_partialsort_007fac00.cpp'
+        TestSource = '00/7f/std_partialsort_007fac00_test.cpp'
+        PassPattern = '007fac00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fae60'
+        Module = 'std'
+        Source = '00/7f/std_sort_007fae60.cpp'
+        TestSource = '00/7f/std_sort_007fae60_test.cpp'
+        PassPattern = '007fae60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fb240'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_HaveAllTentaclesBeenHit_007fb240.cpp'
+        TestSource = '00/7f/CTCKraken_HaveAllTentaclesBeenHit_007fb240_test.cpp'
+        PassPattern = '007fb240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fd4b0'
+        Module = 'CTCDPhysicalObstruction'
+        Source = '00/7f/CTCDPhysicalObstruction_Create_007fd4b0.cpp'
+        TestSource = '00/7f/CTCDPhysicalObstruction_Create_007fd4b0_test.cpp'
+        PassPattern = '007fd4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fda80'
+        Module = 'std'
+        Source = '00/7f/std_ForeachCThingCreatureBaseCKeepOutOffSmearedOutLi_007fda80.cpp'
+        TestSource = '00/7f/std_ForeachCThingCreatureBaseCKeepOutOffSmearedOutLi_007fda80_test.cpp'
+        PassPattern = '007fda80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fdeb0'
+        Module = 'CTCAISummon'
+        Source = '00/7f/CTCAISummon_GetAllSummonedCreatures_007fdeb0.cpp'
+        TestSource = '00/7f/CTCAISummon_GetAllSummonedCreatures_007fdeb0_test.cpp'
+        PassPattern = '007fdeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fdf60'
+        Module = 'CTCAISummon'
+        Source = '00/7f/CTCAISummon_GetNumberCanSummon_007fdf60.cpp'
+        TestSource = '00/7f/CTCAISummon_GetNumberCanSummon_007fdf60_test.cpp'
+        PassPattern = '007fdf60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

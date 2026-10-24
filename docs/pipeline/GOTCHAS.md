@@ -1302,3 +1302,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `_STLP_DEFAULT_CONSTRUCTED(_Tp)` is an out-of-line `__fastcall __default_constructed` with ecx=0 and a hidden return pointer (0x82F5C0).
 - Non-POD `vector::operator=` needs `__forceinline` on `__copy`/`__copy_ptrs` (0x82C980); `__pop_heap` inlining depends on the instantiation (forceinline for 40-byte pairs 0x81BC90, a call for 24-byte 0x81D450).
 - An explicit-specialisation declaration keeps one inline callee out of line (0x82CB70); in Create factories declare `result = 0` after the allocation and give the CTCParamsPhysicsBase ctor a same-TU noinline body (0x82D920, 0x833800).
+- An inline getter used as a call's object (`w->GetDefinitionManager().GetDef(args)`) is evaluated before the arguments; a raw member is loaded after them (0x7F0300).
+- `if (cond) { ...; return x; } return 0;` gives retail's shared trailing `xor` exit; `if (n<min) return 0; return n;` becomes branchless `setl/dec/and` (chunk 397).
+- A by-value functor returned under /Gr needs a user constructor; a POD result moves the hidden pointer to the stack (0x7FDA80).
+- Compare floats in lane tests with a tolerance: exact `==` on a symmetric expression passed g++ and failed VC7.1 (chunk 397).

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007e3610	RELOCATION_MATCH	122v122	PASS	CTCAtmosPlayer::SetAtmosDefIndex (catalog Def_GetDetailsForDisplay); named CCharString via GetString(long)
+007e4040	RELOCATION_MATCH	237v237	PASS	CTCWillResponse::SetThingAsNotBloodyWillableAtAll (static fastcall; AddTC when missing, inline Cleanup)
+007e4430	RELOCATION_MATCH	165v165	PASS	CTCWillResponse::IsThingForcePushable; const bool& temp of the inline getter
+007e44e0	RELOCATION_MATCH	76v76	PASS	CTCWillResponse::IsThingLifeDrainable; PeekTC with the map in a named local
+007e4530	DIFFER	159v159	-	CTCWillResponse::IsThingLightningable; merged return-true block placement + byte vs dword flag read
+007e45d0	RELOCATION_MATCH	69v69	PASS	CTCWillResponse::IsThingNotBloodyWillableAtAll
+007e4680	RELOCATION_MATCH	69v69	PASS	CTCWillResponse::IsThingEpicPowerExplodable (catalog IsInterfaceVisibleWithBit)
+007e46d0	RELOCATION_MATCH	69v69	PASS	CTCWillResponse::IsThingEpicSpellable (catalog ETCInterfaceType_GetVisibility)
+007e5b40	RELOCATION_MATCH	78v78	PASS	CTCFireRangedWeaponOnLeavingStateGroup::Cleanup (static fastcall)
+007e5f70	RELOCATION_MATCH	120v120	PASS	CTCOracleMinigame::ProcessInput (catalog CInputProcessOracleMinigame_PushSymbolToQueue); STLport list push_back
+007e9250	RELOCATION_MATCH	124v124	PASS	CTCAvoidRegionExit::UpdateBestDist (catalog TreeWalk_FindMaxValue); static by-value _M_increment
+007ea1a0	DIFFER	115v115	-	map<CThing*,float>::operator[] on CTCAvoidRegionExit::DistMap (catalog RBTree_LowerBound); one store scheduled early
+007ebc20	RELOCATION_MATCH	145v145	PASS	CTCActionUseStartExtrapolationMorph::OnActionUse (catalog CTCAppearance_SetFacing)
+007ee540	RELOCATION_MATCH	84v84	PASS	CTCVillageMember::GetPVillage (catalog IS_THING_ALIVE<...>); trailing return 0
+007f0300	RELOCATION_MATCH	199v199	PASS	CTCCarriedActionUseSpade::IsThingAbleToDig; GetDef stand-ins + inline GetDefinitionManager getter
+007f1840	RELOCATION_MATCH	67v67	PASS	NRumble::GetRumbleDistanceAttenuationAtPos (catalog Math_Distance3DExp); named distSq
+007f1ac0	RELOCATION_MATCH	165v165	PASS	CTCDRumble::Create; named CCharString in its own block
+007f3fb0	RELOCATION_MATCH	49v49	PASS	CCountedPointer<NBBBMaths::CLinearSpline>::DeleteData (catalog operator_delete_array)
+007f59f0	RELOCATION_MATCH	125v125	PASS	NTargeting::IsThingVulnerableToMeleeStrikesFromThing; one-ternary PeekTC pick
+007f7750	RELOCATION_MATCH	112v112	PASS	CTCActivationReceptorBase::RemoveTrigger (catalog vector_Erase_RemoveElement); template noinline __find + SGI remove
+007f7b70	RELOCATION_MATCH	156v156	PASS	std::_For_each<CThing**,CInformTriggerOfReceptorDeath>; __forceinline functor
+007f7e70	RELOCATION_MATCH	88v88	PASS	std::unary_negate<CIsTriggerActivated>::operator() (catalog CTrigger_IsActivated)
+007f8160	RELOCATION_MATCH	88v88	PASS	CTCActivationReceptorRelay::SetTriggerState (catalog TCInterface_HandleEndCutFade)
+007f8220	RELOCATION_MATCH	221v221	PASS	anonymous GetRelativePosition (catalog Ellipsoid_ComputePoint); angle product written inside sin and cos
+007f9480	RELOCATION_MATCH	109v109	PASS	CVectorCompare_BestForTargeting::GetCompareValue; hand-declared double exp
+007f9ff0	RELOCATION_MATCH	231v231	PASS	std::__unguarded_partition<CThing**,CThing*,CThingCompare_BestForTargeting2> (catalog std_Partition_Quicksort_Things)
+007fa0e0	RELOCATION_MATCH	116v116	PASS	std::__unguarded_linear_insert (catalog Vector_InsertionSort)
+007fa160	DIFFER	197v197	-	std::__push_heap (catalog _Push_heap<...>); x87 store vs spill-reload scheduling
+007fa710	RELOCATION_MATCH	151v151	PASS	std::__make_heap (catalog std_MakeHeap_CThingCompare)
+007fa7b0	RELOCATION_MATCH	118v118	PASS	std::__pop_heap_aux (catalog std_sort_Wrapper)
+007fa830	RELOCATION_MATCH	96v96	PASS	std::__final_insertion_sort (catalog std_IntroSort_Things)
+007fa890	RELOCATION_MATCH	113v113	PASS	std::make_heap (catalog std_MakeHeap_Wrapper)
+007fac00	RELOCATION_MATCH	116v116	PASS	std::partial_sort (catalog Resize_PassToImpl)
+007fae60	RELOCATION_MATCH	100v100	PASS	std::sort (catalog UpdateTargetList_SortInit)
+007fb1c0	DIFFER	106v106	-	CTCKraken::KillTentacles (catalog LinkedList_KillAllThings); add-vs-lea register choice
+007fb240	MATCH	36v36	PASS	CTCKraken::HaveAllTentaclesBeenHit (catalog CAIStateGroup_KrakenAttack_IsQueueEmpty)
+007fd4b0	RELOCATION_MATCH	205v205	PASS	CTCDPhysicalObstruction::Create (catalog Create); Rumble/ExperienceOrb pattern + inline SetParams
+007fda80	RELOCATION_MATCH	65v65	PASS	std::_For_each<CThingCreatureBase**,CKeepOutOffSmearedOutLine> (catalog functor name propagated); functor needs a user ctor
+007fdeb0	RELOCATION_MATCH	61v61	PASS	CTCAISummon::GetAllSummonedCreatures; remove(CIntelligentPointer<CThing>(0))
+007fdf60	RELOCATION_MATCH	210v210	PASS	CTCAISummon::GetNumberCanSummon (catalog CTCAISummon_GetMaxCreatureCount); CDefPointer operator-> keeps the def in ebp
