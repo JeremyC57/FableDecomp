@@ -1318,3 +1318,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - CBaseClass must be polymorphic, otherwise the base lands at +4 and callers get `lea ecx,[x+4]` (0x8F7E70); a named-result `operator-` stores X first, `return C3DVector(...)` computes Z first (0x8F5B50).
 - A same-TU `__find_if` body lets VC cache `end()` across the call (0x8ED040); the CAIStateGroup ctors need `#pragma optimize("s")` (0x8FCF10 family).
 - The double 2π pool constant comes from `angle * (double)TWO_PI` with `static const float TWO_PI = 6.2831855f` (0x8EA3F0).
+- `C3DVector v(x, y, 0.0f)` with Z never read: the Z store is eliminated but its frame word stays; an implicit copy keeps the dead Z load and store (0x875A30).
+- `float sign = 1.0f; if (c < 0) sign = -1.0f; return angle * sign;` is tail-duplicated in the lane where retail joins at one `fmulp` (lane gap, 0x875A30).
+- A 4-byte CDefString returned through the hidden pointer needs a user copy ctor and no dtor; the result lands in the dead argument slot (0x877110). Member-template operator leaves are `??$?R...@`; `?swap@_STL@@` silently fell back to the largest function (0x8E2DB0, 0x8D45A0).
