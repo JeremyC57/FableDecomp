@@ -1243,3 +1243,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `CFilter_BindN` `operator()`s must be `__forceinline`; an inlined `GFRandom` takes the seed pointer by value (0x669040, 0x669850).
 - An enum vector is non-POD to STLport: its copy helpers need `__forceinline` (0x6714B0); STLport `less`/`equal_to` need `less() {}` or each by-value temporary stores a zero byte (0x6720B0).
 - Three named float deltas give retail's Z,Y,X square order; a `C3DVector operator-` temporary gives X,Z,Y (0x6614F0).
+- A function template's leaf is `??$name@`, not `?name@std@@`; it only grades right by luck when the file defines one function (0x6B5A50).
+- Two locals share one dead argument slot only if every same-TU stand-in keeps their addresses from escaping: a stand-in must take the value, not `&value` (0x6A22D0).
+- A float-compared call result must be a named local to get retail's `fxch; fcompp; test ah,5` (0x6A7050); two PeekTC lookups share one key slot via the conversion temporary `LowerBound((ETCInterfaceType)type)` (0x6A15A0).
