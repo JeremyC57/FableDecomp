@@ -25,3 +25,5 @@ means pointing the fixture at the genuine sources and providing their real calle
 
 0x00401FE0 `EULA::DoEULAThings` joined them 2026-10-24 when chunk 334 landed it as genuine C++ at the
 catalog path; the fixture's naked asm body moved here unchanged.
+0x009AC4D0 `NBankFileManager::CRetailBank` ctor and 0x009AC530 `map<CCharString,CContainedBank>::operator[]`
+joined them 2026-10-24 when chunk 339 landed both as genuine C++.

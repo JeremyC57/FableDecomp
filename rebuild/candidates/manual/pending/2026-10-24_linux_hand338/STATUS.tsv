@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004ae810	RELOCATION_MATCH	79v79	PASS	boost::checked_delete<CScriptConversationManager>
+004c6080	RELOCATION_MATCH	57v57	PASS	CBulletTimeManager::PrepareForLoad
+0051ac70	RELOCATION_MATCH	114v114	PASS	DestroyRange_Tree_0051ac70
+0056d440	RELOCATION_MATCH	75v75	PASS	CRetailTree_erase0056d440::Erase
+0056de50	RELOCATION_MATCH	67v67	PASS	CRetailTree_erase0056de50::Erase
+006e77f0	DIFFER	42v40	-	CGameScriptInterface::GetTextIDFromSymbol; mov esi,eax; add esi,934h vs retail lea esi,[eax+934h]
+0070adb0	RELOCATION_MATCH	67v67	PASS	CRetailTree_erase0070adb0::Erase
+0083ea10	RELOCATION_MATCH	33v33	PASS	LHNetworkLib::LHHttpDocumentParts::~LHHttpDocumentParts
+0083ea70	MATCH	37v37	PASS	LHNetworkLib::LHHttp2::GetDocumentSize
+0083eaa0	MATCH	96v96	PASS	LHNetworkLib::LHHttp2::GetDocument
+0083eb00	RELOCATION_MATCH	130v130	PASS	LHNetworkLib::LHHttp2::ResetDocumentParts
+0083f980	RELOCATION_MATCH	43v43	PASS	LHNetworkLib::LHHttp2::ResetRequest
+00840070	RELOCATION_MATCH	55v55	PASS	LHNetworkLib::LHHttp2::Close
+00841f60	RELOCATION_MATCH	64v64	PASS	LAddress::operator=
+00864f80	RELOCATION_MATCH	71v71	PASS	CWeaponTrailListRecord::CWeaponTrailListRecord
+008eea30	MATCH	67v67	PASS	Mass::GetVel
+008eea80	DIFFER	85v85	-	Mass::ApplyImpulse; x87 schedule of the dot-product X term (fmul [impulse.X] from memory)
+008eeb40	DIFFER	144v146	-	Mass::ForceToVel; x87 schedule: retail forms both lever arms before the dot product
+008f8210	RELOCATION_MATCH	197v197	PASS	LSocket::IsReadable
+008f82e0	RELOCATION_MATCH	137v137	PASS	LSocket::IsWriteable
+008f8370	RELOCATION_MATCH	33v33	PASS	LSocket::CheckReadSize
+008f8440	RELOCATION_MATCH	92v92	PASS	LSocket::TryToSendDataFromQueue
+008f8870	RELOCATION_MATCH	160v160	PASS	LSocket::SetNonBlocking
+008f8910	RELOCATION_MATCH	38v38	PASS	LSocket::Bind
+008f8c70	RELOCATION_MATCH	74v74	PASS	LSocket::Close
+008f8ea0	RELOCATION_MATCH	176v176	PASS	LSocket::Accept
+008f96e0	RELOCATION_MATCH	76v76	PASS	LSocket::GetClientInformation
+0090b080	RELOCATION_MATCH	155v155	PASS	LSocketServer::RequestListener
+0090b450	RELOCATION_MATCH	35v35	PASS	LSocketServer::CheckForAcceptedConnectionsOnSocket
+0098d120	RELOCATION_MATCH	70v70	PASS	CRetailTree_erase0098d120::Erase
+009a0190	RELOCATION_MATCH	44v44	PASS	CBasicString<char>::~CBasicString
+009a0430	RELOCATION_MATCH	44v44	PASS	CCharStringData::~CCharStringData
+009aa7c0	RELOCATION_MATCH	100v100	PASS	CRetailTree_erase009aa7c0::Erase
+009ad3b0	RELOCATION_MATCH	33v33	PASS	CDefinitionManager::GetNumberOfDefsOfType
+009bf5a0	DIFFER	57v59	-	CDisplayManager::RemoveDeviceResetCallback; esi save shrink-wrapped to the find loop (retail saves at entry)
+009d3e80	RELOCATION_MATCH	78v78	PASS	CRetailTree_erase009d3e80::Erase
+00b2ef20	RELOCATION_MATCH	67v67	PASS	CRetailTree_erase00b2ef20::Erase
+00bd8a10	RELOCATION_MATCH	67v67	PASS	CRetailTree_erase00bd8a10::Erase
+00bd9250	RELOCATION_MATCH	113v113	PASS	CEngineInternalPrimitiveAnimatedMesh::~CEngineInternalPrimitiveAnimatedMesh
+00c38cd0	RELOCATION_MATCH	135v135	PASS	CSlotRequest_00c38cd0::Setup

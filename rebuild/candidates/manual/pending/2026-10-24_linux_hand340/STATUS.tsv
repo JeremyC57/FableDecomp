@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00695480	RELOCATION_MATCH	71v71	PASS	Alloc: new + inline novtable CActionEventBase ctor; Global=false in the body
+00695710	RELOCATION_MATCH	75v75	PASS	Alloc: new + inline base ctor + CCharString Hand()
+00870de0	RELOCATION_MATCH	23v23	PASS	SetDataFromString: `? true : false` gives test al,al/setne
+00871a10	RELOCATION_MATCH	112v112	PASS	Dispatch: GetInterface 70 CTCCarrying, hand slot by def name, RemoveThingInCarrySlot + Kill(true)
+00695560	RELOCATION_MATCH	67v67	PASS	Alloc: new + inline novtable base ctor
+006954f0	RELOCATION_MATCH	67v67	PASS	Alloc: new + inline novtable base ctor
+008d6d70	RELOCATION_MATCH	38v38	PASS	OnDeactivate: inline Active=false then a resume for a live state-1 thing
+008d8ea0	RELOCATION_MATCH	129v129	PASS	FrameUpdate: named combatManager local; Attacked re-read per use
+008e8760	RELOCATION_MATCH	203v203	PASS	FrameUpdate: action temporary 0x11c; fall-through removes mode 0x3f
+008e8940	RELOCATION_MATCH	137v137	PASS	FrameUpdate: && chain with the action temporary; pack(1) only on the pointer classes
+008d6540	RELOCATION_MATCH	51v51	PASS	GetHoldingAnimIndex: named creature local
+008d8960	RELOCATION_MATCH	90v90	PASS	OnDeactivate: untested GetInterface 0x5a; named CAnimateThing& reference
+008d87c0	RELOCATION_MATCH	211v211	PASS	OnActivate: forceinline SetGroup copy + same-TU const LowerBound stand-in
+008dff50	RELOCATION_MATCH	121v121	PASS	FrameUpdate: named action local with inline ctor + SetOnlyHitEnemies
+008d9350	RELOCATION_MATCH	99v99	PASS	FrameUpdate: GetInterface 15; attitude change resets the filter group
+008d93c0	RELOCATION_MATCH	69v69	PASS	OnDeactivate: restore InitialAttitude; Active=false
+008d89c0	RELOCATION_MATCH	228v228	PASS	OnActivate: named weaponTC; SetGroups("CROUCH", group); GetInterface 0x36
+008d8ab0	RELOCATION_MATCH	79v79	PASS	OnDeactivate: clear +0xf/+0x10; Active=false
+008de620	RELOCATION_MATCH	45v45	PASS	Recover: SetCurrentAction(RecoverFromDazed temporary)
+008e0780	RELOCATION_MATCH	112v112	PASS	FrameUpdate: hover update, HasPerformedAction, beam start/update, out-of action
+008e06e0	RELOCATION_MATCH	76v76	PASS	FrameUpdate: --Timer <= 0 then SnapDragonOutOf temporary
+008d6ff0	RELOCATION_MATCH	176v176	PASS	AnimUpdate: ST_IDLE_SUBTLE random idle; inline CAnimInit argument
+008e0730	RELOCATION_MATCH	75v75	PASS	FrameUpdate: timer counts only while idle; DragonRearUpOutOf
+008dc600	RELOCATION_MATCH	85v85	PASS	OnActivate: suspend with (long)this; bitfield flag clear for 0x3a
+008dc660	RELOCATION_MATCH	84v84	PASS	OnDeactivate: resume; Active=false; bitfield flag set for 0x3a
+008e07f0	RELOCATION_MATCH	193v193	PASS	FrameUpdate: named position local (frame 0x13c)
+008dc6c0	RELOCATION_MATCH	85v85	PASS	OnActivate: flying activate; LegAnimAlpha=0; untested GetInterface 9
+008dcb00	RELOCATION_MATCH	94v94	PASS	OnDeactivate: untested GetInterface 9; EndBeamEffect if flame active
+008dffd0	RELOCATION_MATCH	140v140	PASS	FrameUpdate: `long remaining = --Timer`; untested GetInterface 0xad
+008e7600	RELOCATION_MATCH	177v177	PASS	FrameUpdate: HasTC/GetTC boss phase; untested GetInterface 0x31 RemoveMode(0x51)
+008d78e0	RELOCATION_MATCH	68v68	PASS	OnDeactivate: block-scoped thing local; IS_ALIVE emitter Kill
+008d9480	RELOCATION_MATCH	166v166	PASS	OnActivate: emote icon, ability timers, suspend, base activate
+008de6a0	RELOCATION_MATCH	90v90	PASS	OnActivate: RecoveryCount = fps*5; suspend; TrollVulnerableInto
+008e0990	RELOCATION_MATCH	118v118	PASS	FrameUpdate: GetTCIfPresent unset-local accessor; Recover
+008da3b0	RELOCATION_MATCH	94v94	PASS	OnDeactivate: `T* p = 0; if (HasTC) p = GetTC` preload; physics Wake
+008e10e0	RELOCATION_MATCH	110v110	PASS	FrameUpdate: preload GetTC 0x5a; if/else count-down vs recover
+008da610	RELOCATION_MATCH	121v121	PASS	FrameUpdate: IS_ALIVE && GetInterface 0x43 LookAtPos(0x67)
+008d6580	RELOCATION_MATCH	144v144	PASS	real name CModeSitBase::OnActivate; inline GFRandom helper
+008e9110	RELOCATION_MATCH	123v123	PASS	GetMovementSpeed: __fastcall by-value CCharString helper; inline PeekWorld
+008d8fe0	RELOCATION_MATCH	126v126	PASS	real name LeafInit; out-param GetInterface 9 then HasTC/GetTC 0x30

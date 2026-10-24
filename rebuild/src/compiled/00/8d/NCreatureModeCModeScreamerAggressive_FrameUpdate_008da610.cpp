@@ -1,0 +1,79 @@
+// NCreatureMode::CModeScreamerAggressive::FrameUpdate() -- while its target is alive, a screamer with a look component looks at the target; then the base frame update
+// Leaf: ?FrameUpdate@CModeScreamerAggressive
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008DA610, 121 bytes (+ int3 padding), `ret`; vtable slot 3.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type
+//   0x43 = bit 3 of the bitset dword at +0x28 = CTCLook), CThing::GetPosition @ 0x004C73D0,
+//   CTCLook::LookAtPos(const C3DVector*, long priority) @ 0x00753E90, CModeBase::FrameUpdate @ 0x0073AC50 (qualified).
+// Name: FableWin.pdb `?FrameUpdate@CModeScreamerAggressive@NCreatureMode@@UAEXXZ` (slot 3).
+// Layout: Ego_r.pdb CModeScreamerAggressive: CModeStandBase 0x68, Filter +0x68, PEffect +0x74, PTarget +0x7c.
+// Shape: IS_ALIVE (GetPItem twice, dead bit +0x91) then the out-parameter GetInterface with the ternary entry pick (the
+//   CModeBlock::FrameUpdate 0x008D8EA0 model); the component stays in esi across the GetPItem / GetPosition calls.
+struct CTCBase;
+
+struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);  // 0x0040F020
+};
+
+struct C3DVector { float X, Y, Z; };
+
+struct CThing {
+    unsigned char _pad00[0x20];
+    unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char m_flags91;               // +0x91 bit 0: dead
+    const C3DVector& GetPosition() const;  // 0x004C73D0
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+};
+
+struct CTCLook {                           // interface 0x43
+    void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
+};
+
+struct CBaseIntelligentPointer {           // vtable + PData (8 bytes)
+    virtual void v00();
+    void* PData;
+    CThing* GetPItem() const;              // 0x00A01B50
+};
+
+struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
+    virtual void v00();
+    CThing*       ParentThing;             // +0x04
+    unsigned char _body[0x14];
+    void FrameUpdate();                    // 0x0073AC50
+};
+struct CModeStandBase : CModeBase {        // retail sizeof 0x68
+    unsigned char _stand[0x4c];
+};
+
+namespace NCreatureMode {
+struct CModeScreamerAggressive : CModeStandBase {
+    unsigned char           Filter[0x0c];  // +0x68 CAnimFilterOfGroup
+    CBaseIntelligentPointer PEffect;       // +0x74
+    CBaseIntelligentPointer PTarget;       // +0x7c
+    void FrameUpdate();
+};
+}
+
+void NCreatureMode::CModeScreamerAggressive::FrameUpdate()
+{
+    CTCLook* look;
+    if (PTarget.GetPItem() != 0 && !(PTarget.GetPItem()->m_flags91 & 1) && ParentThing->GetInterface(&look, 0x43))
+        look->LookAtPos(&PTarget.GetPItem()->GetPosition(), 0x67);
+    CModeBase::FrameUpdate();
+}

@@ -1035,3 +1035,11 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Before re-deriving a parked row, scan for a landed retail twin with immediates masked (`$S/w22/retry12/twins.py`); three parks ported this way (004ad700 <- 006d4600, 0080e5d0 <- 0080e530).
 - A this/hash esi-edi tie in a CVectorMap find: same-TU `__declspec(noinline)` LowerBound stand-in + STLport `Find(const K&)` with no key copy; never `#pragma auto_inline(off)`, which also pushes TU-end template instantiations out of line (006b93d0).
 - Callee-saved register ties follow use weight (esi, edi, ebx, ebp preference): a tie is a use-count problem. VC7.1 folds a plain member load into `cmp` on either side; retail's two-register compare of two plain members has no known source form (00698b50).
+- A directly recursive inline function is expanded exactly once by VC7.1: retail's one-level unrolled tree erase (0051ac70). `boost::checked_delete` is `__fastcall` (YI); instantiate it explicitly (004ae810).
+- `return x != -1 ? true : false;` drops the extra xor/setne/mov; `return f() ? true : false;` gives `test al,al ; setne al` (`!= false` / `!!` give neg/sbb) (008f8910, 00870de0).
+- A chained `a = c = b = -1;` emits the stores rightmost first (00c38cd0). Under `optimize("s")` ctor stores follow body assignment order (0057a5dd).
+- STLport `map::operator[]`: `insert` must be an inline forwarder to the out-of-line `insert_unique` so the result is re-read from its slot (009ac530); the `_Rb_tree_base` ctor (header malloc) runs as a base ctor before the node-count init (009ac4d0).
+- A catalog leaf `vfunc_N` matches no symbol: add `// Leaf: ?Method@Class`, naming the method from FableWin.pdb plus the vtable slot (chunk 340).
+- Lookup shapes: out-param GetInterface -> `mov eax,[eax+4] ; mov ecx,eax`; HasTC + returned ternary GetTC -> `mov ecx,[eax+4]`; `T* p = 0; if (HasTC) p = GetTC;` -> `xor ecx,ecx` preload (chunk 340).
+- The world random step `seed = GFROR13(seed*0x24A1+0x24DF)` is an inline two-statement helper; open-coded it schedules before `_ftol` and spills (008d6580).
+- A free `__fastcall` returning a class by value takes the return slot in ecx, the first arg in edx, and ends `ret 4*n` (008e9110).

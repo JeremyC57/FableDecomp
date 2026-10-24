@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0056e2b0	MATCH	21v21	PASS	CCameraPointModeBase::GetLookDirection (vtable slot); returns (1,0,0)
+0057a5dd	MATCH	45v45	PASS	CTCHeroStats::MirroredCriminalStatus ctor; pragma optimize("s"); body store order
+0069ddc0	MATCH	26v26	PASS	CStringAndCageBase::SetSACPosition (slot 30)
+006f2bd0	RELOCATION_MATCH	46v46	PASS	label wrong: unreferenced 0x2c-byte named zero record (CCharString +0x10, memset)
+0075f4e0	RELOCATION_MATCH	42v42	PASS	label wrong: _STL::vector<C3DVector>::erase (caller NShape::CShape::UpdateDeletePoint 0x00762010)
+008506e0	MATCH	29v29	PASS	CSnapToPoint::UpdateDesiredPos (slot 27)
+00850700	RELOCATION_MATCH	128v128	PASS	CSnapToPoint::OnInitLeaf; inline PeekTC + GetPointType, pack(1) layout
+00851dd0	RELOCATION_MATCH	35v35	PASS	CScriptModuleBase::GetModuleFOV (slot 5)
+00852040	MATCH	68v68	PASS	CScriptModuleTransitionBetweenPoints::OnInitLeaf (slot 8)
+008520c0	RELOCATION_MATCH	44v44	PASS	CScriptModuleFOVZoom::OnInitLeaf (slot 8)
+008521e0	MATCH	53v53	PASS	CScriptModuleFullTransition::OnInitLeaf (slot 8)
+00853fb0	RELOCATION_MATCH	123v123	PASS	CScriptModuleBase::ResetCameraOnEnd (slot 7)
+00854030	DIFFER	180v178	-	CScriptModuleBase::IsStretchAroundHero: component pointer lands in eax not ecx before slot-30 call
+008540f0	RELOCATION_MATCH	143v143	PASS	CScriptModuleSpline::OnInitLeaf (slot 8); inline non-const GetTC
+00854340	MATCH	17v17	PASS	CScriptModuleTransitionBetweenPoints::GetModuleFOV (slot 5)
+00871e40	RELOCATION_MATCH	18v18	PASS	CStringAndCage::SetSACPosition -> AddAttractorGoTo(pos, 1.0f)
+00871e60	RELOCATION_MATCH	18v18	PASS	CSACCombat::SetSACPosition -> AddAttractorGoTo(pos, 1.0f)
+00873160	RELOCATION_MATCH	75v75	PASS	CStringAndCageInit::Alloc (slot 0)
+008731b0	RELOCATION_MATCH	75v75	PASS	CSACCombatInit::Alloc (slot 0)
+00873200	RELOCATION_MATCH	76v76	PASS	CZTargetNewInit::Alloc (slot 0)
+00873250	RELOCATION_MATCH	124v124	PASS	CStringAndCage::SetUpPhysics (slot 26); CCountedPointer T* ctor inline
+008732d0	RELOCATION_MATCH	124v124	PASS	CSACCombat::SetUpPhysics (slot 26)
+008734f0	MATCH	53v53	PASS	CSimplePointBase::OnInit (slot 21); inline SetSingleCut helper
+00873530	MATCH	53v53	PASS	CSimplePointBase::Update (slot 1)
+00873570	MATCH	53v53	PASS	CSimplePointBase::OnDie (slot 22); inline SetSingleCut helper
+008738f0	RELOCATION_MATCH	55v55	PASS	CFirstPersonInit::Alloc (slot 0)
+00874770	RELOCATION_MATCH	29v29	PASS	CPCMouseLookInit::Alloc (slot 0)
+0087b770	RELOCATION_MATCH	108v108	PASS	CFixedDolly::GetPhysicsMode (slot 26)
+0087ba30	RELOCATION_MATCH	45v45	PASS	CScriptedControl::GetDefaultFOV (slot 18)
+0087ba60	RELOCATION_MATCH	33v33	PASS	CScriptedControl::GetDefaultRollAngle (slot 19)
+0087c070	DIFFER	214v214	-	COrbitGame::OnInit: eax/edx swap in the last ObservedPositionZOffset copy
+008eebe0	DIFFER	129v131	-	Mass::BackplaneFriction: fstp st(1) vs fxch st(1);fstp st(0) in the angular arm
+008fce10	MATCH	35v35	PASS	CPhysicsForceModelRigid::DoAttractToPoint (slot 6); user C3DVector copy ctor
+00991840	RELOCATION_MATCH	54v54	PASS	label wrong: CSoundBankRegistry::GetBank(long)
+009ac4d0	RELOCATION_MATCH	84v84	PASS	CRetailBank ctor; supersedes landed asm-bake
+009ac530	RELOCATION_MATCH	156v156	PASS	map<CCharString,CContainedBank>::operator[]; insert -> out-of-line insert_unique; supersedes landed asm-bake
+009d8890	RELOCATION_MATCH	18v18	PASS	MicroThreadDetails::MicroThreadStackSize (slot 1)
+00af8ab0	RELOCATION_MATCH	21v21	PASS	label wrong: NParticleEngine::CDecal::GetInterpolatedLifetimerInSeconds
+00c1bd80	RELOCATION_MATCH	26v26	PASS	label wrong: SetAlphaFalloffSharpness (__stdcall setter of 0x0139C974)
+00c38570	RELOCATION_MATCH	137v137	PASS	label wrong: CConstraintRepeat ctor (twin of landed dtor 0x00C38470); /EHsc
