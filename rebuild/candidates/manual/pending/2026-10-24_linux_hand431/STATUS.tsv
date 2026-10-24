@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c08ae0	RELOCATION_MATCH	133v133	PASS	CAudioOwner::WaitForSprite; 1 grade(s); manifest 'EventQueue_ProcessBlockParrySuccessesWithTimeout' is propagated
+00c0acc0	DIFFER	74v74	-	_global::MultiplyMaskedFactors; 4 grade(s); register allocation: factor pointer ecx/esi swapped vs retail; differ/00c0acc0.cpp
+00c0ae70	MATCH	50v50	PASS	_global::SetMaskBit; 1 grade(s); manifest 'ConstructString_SetCharMask' is propagated
+00c0aee0	RELOCATION_MATCH	20v20	PASS	_global::SetMaskBit16; 1 grade(s); manifest 'ConstructString' is propagated
+00c0af00	RELOCATION_MATCH	20v20	PASS	_global::SetMaskBit8; 1 grade(s); manifest 'ConstructString' is propagated
+00c0af20	RELOCATION_MATCH	108v108	PASS	CAudioParamBlock::Update; 2 grade(s); manifest 'NUISystem_CComponent_UpdateAnimation' is propagated
+00c0b130	DIFFER	71v71	-	CAudioParamBlock::GetPitch; 1 grade(s); scheduling: add ecx,0x344 after the pushes; differ/00c0b130.cpp
+00c0b180	RELOCATION_MATCH	123v123	PASS	_global::MultiplyMaskedParams; 1 grade(s); manifest 'Render_ApplyAlphaValueMask' is propagated
+00c0b420	DIFFER	68v68	-	CAudioParamBlock::GetGain; 4 grade(s); scheduling: add ecx,4 after the pushes; differ/00c0b420.cpp
+00c0b4c0	RELOCATION_MATCH	63v63	PASS	_global::WrapAngle; 1 grade(s); manifest 'FloatThreshold_Clamp' is propagated
+00c0b510	RELOCATION_MATCH	91v91	PASS	CRampedParam::SetImmediate; 1 grade(s); manifest 'Matrix_SetIdentityRotation' is propagated
+00c0b7b0	DIFFER	171v167	-	CRampedParam::Update; 4 grade(s); x87 sum canonicalisation (lane gap); differ/00c0b7b0.cpp
+00c0b8c0	RELOCATION_MATCH	42v42	PASS	CString::GetData; 1 grade(s); manifest 'CCharStringData_GetOffset' is propagated
+00c0b910	RELOCATION_MATCH	213v213	PASS	CString::Release; 1 grade(s); manifest 'CCharString_ReleaseRefcount' is propagated
+00c0b9f0	RELOCATION_MATCH	66v66	PASS	CString::Release; 1 grade(s); manifest 'CCharStringData_ReleaseWithRefcount' is propagated
+00c0bc20	RELOCATION_MATCH	38v38	PASS	CString::ReverseFind; 2 grade(s); manifest "CCharString_ReverseFind" names the wrong class (library CString)
+00c0bd60	RELOCATION_MATCH	55v55	PASS	CString::CompareNoCase; 1 grade(s); manifest 'MessageEvent_Validate' is propagated
+00c0bda0	RELOCATION_MATCH	125v125	PASS	CString::AllocBuffer; 1 grade(s); manifest 'CCharString_AllocFromSize' is propagated
+00c0be20	RELOCATION_MATCH	187v187	PASS	CString::CopyBeforeWrite; 1 grade(s); manifest 'RefcountedData_Copy' is propagated
+00c0bfe0	RELOCATION_MATCH	62v62	PASS	CString::CString; 1 grade(s); manifest 'Std_Allocator_Construct' is propagated
+00c0c060	RELOCATION_MATCH	86v86	PASS	CString::AssignCopy; 1 grade(s); manifest 'CCharString_SetData' is propagated
+00c0c970	RELOCATION_MATCH	120v120	PASS	CString::SetAt; 1 grade(s); manifest 'CCharString_SetCharAt' is propagated
+00c0d740	RELOCATION_MATCH	128v128	PASS	CString::TrimRight; 2 grade(s); manifest "CCharString_TrimRight" names the wrong class (library CString)
+00c0dcf0	RELOCATION_MATCH	57v57	PASS	CString::Append; 1 grade(s); manifest 'CCharString_InsertDataWrapper' is propagated
+00c0e440	RELOCATION_MATCH	80v80	PASS	CString::Mid; 1 grade(s); manifest 'CCharString_SubstringRange' is propagated
+00c0e9e0	RELOCATION_MATCH	46v46	PASS	CScriptHost::QueueEvent; 2 grade(s); manifest 'CEngineVSConstantLayout_QueueEventWithData' is propagated
+00c0ea10	RELOCATION_MATCH	52v52	PASS	CScriptHost::ClearEvents; 1 grade(s); manifest 'CEngineVSConstantLayout_ClearAllEvents' is propagated
+00c0eaf0	RELOCATION_MATCH	41v41	PASS	CScriptHost::DeleteAllScripts; 1 grade(s); manifest 'CTCMapwho_ClearAllMappedActorsFromUI' is propagated
+00c0eb40	RELOCATION_MATCH	41v41	PASS	CScriptHost::DeleteAllWatchers; 1 grade(s); manifest 'CTCMapwho_ClearAllInventoryItemsFromUI' is propagated
+00c0ec10	RELOCATION_MATCH	67v67	PASS	CScriptHost::DestroyOwner; 1 grade(s); manifest 'CTCMapwho_ClearMessageQueue' is propagated
+00c0ec90	RELOCATION_MATCH	78v78	PASS	CScriptHost::PurgeUnreferencedOwners; 2 grade(s); manifest 'UISystem_ProcessInputEventLoop' is propagated
+00c10150	RELOCATION_MATCH	55v55	PASS	CCollectFreeMatchesA::Visit; 1 grade(s); manifest 'Inventory_CheckAllItems' is propagated
+00c10190	RELOCATION_MATCH	55v55	PASS	CCollectFreeMatchesB::Visit; 1 grade(s); manifest 'Inventory_IterateAndValidate' is propagated
+00c101d0	RELOCATION_MATCH	214v214	PASS	CNamedSet::Find; 3 grade(s); manifest 'CAnimationSet_FindAnimation' is propagated
+00c10400	RELOCATION_MATCH	228v228	PASS	CItemDispatcher::RunAllItems; 1 grade(s); manifest 'Combat_InitializeStrafeDef' is propagated
+00c10cd0	RELOCATION_MATCH	112v112	PASS	CPanel::AssignPendingItems; 4 grade(s); manifest 'NUISystem_CSpellContainerList_PopulateSpells' is propagated
+00c11520	DIFFER	163v163	-	CPanel::DispatchNavigation; 3 grade(s); scheduling: direction word store after push eax; differ/00c11520.cpp
+00c11cb0	RELOCATION_MATCH	72v72	PASS	CPanel::UpdateItems; 1 grade(s); manifest 'CTCInventory_ProcessKeyPress' is propagated
+00c11f00	RELOCATION_MATCH	72v72	PASS	CPanel::OnKey; 1 grade(s); manifest 'CTCHero_OnInventoryKeyPressed' is propagated
+00c12300	DIFFER	165v165	-	CPanel::GetItemStatistics; 4 grade(s); register colouring ebx/edi swapped; differ/00c12300.cpp
