@@ -1,4 +1,5 @@
 // <unattributed> destructor: vtable 0x012B8364, frees the buffer at +0x08 with operator delete
+// Leaf: ??1CEngineLandscapeLODMap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4BB00, oracle length 17 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.

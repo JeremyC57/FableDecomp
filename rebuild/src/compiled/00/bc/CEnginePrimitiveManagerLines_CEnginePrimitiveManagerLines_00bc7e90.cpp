@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerLines::CEnginePrimitiveManagerLines -- constructs line manager, registers EnableLines, and acquires VSHADER_TRANSFORM_COL_TEX0; retail00bc7e90 210bytes. Shader header is a flat record with no constructors/destructor, so this polymorphic method model follows its same8byte layout and existing landed destructor00bc9a00. Calls base00bacdb0, shader null ctor00a62fb0, string ctor/dtor0099ebf0/0099eae0, enable hook00bacd80, shader resource getter00a5d5f0. Global01436e98 resource+2a28. Getter uses explicit hidden-result ABI: it placement-constructs the shader in caller storage and returns its address; caller destroys that result after assignment.
+// Leaf: CEnginePrimitiveManagerLines
 #ifdef _MSC_VER
 #include "engine/CVertexShader.h"
 #include "fable_string.h"

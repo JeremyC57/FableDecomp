@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // Retail 0x0059ab5f CRegion::SetMiniMapRegionExitTextOffsetX
 // Body: this->f0 = helper(this->f0); return this;
 // helper @0x4292c0 is a cdecl free function taking one arg (pop ecx cleanup).

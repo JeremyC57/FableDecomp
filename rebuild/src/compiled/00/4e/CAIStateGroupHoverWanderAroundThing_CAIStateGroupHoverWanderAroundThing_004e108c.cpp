@@ -1,4 +1,5 @@
 // Retail 0x004e108c : CAIStateGroup_HoverWanderAroundThing::~CAIStateGroup_HoverWanderAroundThing
+// Leaf: ??1CAIStateGroup_HoverWanderAroundThing@
 //
 //   push esi; mov esi,ecx
 //   lea ecx,[esi+0x174]; call 0x4df9cc     ; CActiveFile::OnReadFinished on member @ +0x174

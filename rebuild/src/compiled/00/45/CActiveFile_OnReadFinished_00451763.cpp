@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile { void* p; };
 extern "C" void __fastcall CActiveFile_BaseNotify(CActiveFile* self);
 extern "C" void FreeBuffer(void* p);

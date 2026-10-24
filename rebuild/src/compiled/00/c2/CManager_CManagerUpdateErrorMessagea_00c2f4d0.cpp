@@ -1,4 +1,5 @@
 struct CManagerFwd;
+// Leaf: UpdateErrorMessage
 
 struct IErrorMessageSink
 {

@@ -1,4 +1,5 @@
 extern float g_maxDrawDistance;
+// Leaf: GetMaxDrawDistance
 
 float __fastcall GetMaxDrawDistance()
 {

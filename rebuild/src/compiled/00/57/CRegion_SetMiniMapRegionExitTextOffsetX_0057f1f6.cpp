@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // Rewrites this->p through a cdecl helper (cleaned with `pop ecx`) and returns this.
 // __fastcall this=ecx, no args.
 struct T { void* p; T* Fixup(); };

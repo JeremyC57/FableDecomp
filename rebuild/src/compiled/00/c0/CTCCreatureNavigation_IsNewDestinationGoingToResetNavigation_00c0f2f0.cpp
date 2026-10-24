@@ -1,4 +1,5 @@
 struct C3DVector { float x,y,z; };
+// Leaf: IsNewDestinationGoingToResetNavigation
 
 struct CTCCreatureNavigation;
 

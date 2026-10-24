@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnKill
 extern void __stdcall freefn(void* p);
 
 struct Node {

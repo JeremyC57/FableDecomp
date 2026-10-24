@@ -1,4 +1,5 @@
 // CBankFileAsyncData::StartRead @ 0065914b
+// Leaf: StartRead
 // push esi; lea esi,[ecx+0x64]; lea eax,[esp+8]; push eax;
 // mov ecx,esi; call 0x614a10; cmp eax,[esi]; pop esi; setne al; ret 4
 #pragma optimize("s",on)

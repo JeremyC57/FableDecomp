@@ -1,4 +1,5 @@
 struct CTCMapwho;
+// Leaf: OnDie
 extern "C" void __fastcall Mapwho_Cleanup(CTCMapwho* self);
 extern "C" void __cdecl Mapwho_Release(CTCMapwho* self);
 

@@ -1,4 +1,5 @@
 // CLayer::SetAllPolys() -- reset all 256 polygons of the layer (0x84 bytes each): the trailing count (+0x80) cleared, then the 0x80-byte vertex block zeroed; returns `this`
+// Leaf: SetAllPolys
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0050EE40, length 52 bytes.
 // Shape: `this` in ebp, the polygon pointer in edx, a count-down in esi, the block zeroed with `rep stosd` (the intrinsic memset of 0x80 bytes), `ret`.
 extern "C" void* __cdecl memset(void* block, int value, unsigned int size);

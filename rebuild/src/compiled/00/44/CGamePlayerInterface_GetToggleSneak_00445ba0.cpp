@@ -1,4 +1,5 @@
 // CGamePlayerInterface::GetToggleSneak() const -- returns the controls definition's ToggleSneak flag (CControlsDef +0x4a through PControlsDef +0x7a0)
+// Leaf: CanBeHitByMeleeStrike
 // Retail: Fable.exe @ 0x00445BA0, 10 bytes. Catalog label NThingShot::CTCShotDefinitionBase::CanBeHitByMeleeStrike is wrong
 // (three byte-near siblings 0x00445BA0/BB0/BC0 share it). Evidence: callers CTCStealth::FrameUpdate 0x00747F1B and CInputProcessCreatureMovement::ProcessInput 0x00691EDA load `this` from their
 // +0x24 player interface; Ego_r.pdb CGamePlayerInterface::PControlsDef (CDefPointer<CControlsDef const>) is at +0x7a0

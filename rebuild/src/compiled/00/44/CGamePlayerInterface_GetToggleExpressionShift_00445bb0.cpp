@@ -1,4 +1,5 @@
 // CGamePlayerInterface::GetToggleExpressionShift() const -- returns the controls definition's ToggleExpressionShift flag (CControlsDef +0x4c through PControlsDef +0x7a0)
+// Leaf: CanBeHitByMeleeStrike
 // Retail: Fable.exe @ 0x00445BB0, 10 bytes. Catalog label NThingShot::CTCShotDefinitionBase::CanBeHitByMeleeStrike is wrong
 // (three byte-near siblings 0x00445BA0/BB0/BC0 share it). Evidence: callers CInputProcessControlCreature::Update / ProcessInput (0x00688221, 0x00688857) load `this` from their
 // +0x24 player interface; Ego_r.pdb CGamePlayerInterface::PControlsDef (CDefPointer<CControlsDef const>) is at +0x7a0

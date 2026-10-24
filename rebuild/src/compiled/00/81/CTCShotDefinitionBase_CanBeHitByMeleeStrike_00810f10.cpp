@@ -1,4 +1,5 @@
 struct Inner {
+// Leaf: CanBeHitByMeleeStrike
     char pad[0x1b];
     bool flag;
 };

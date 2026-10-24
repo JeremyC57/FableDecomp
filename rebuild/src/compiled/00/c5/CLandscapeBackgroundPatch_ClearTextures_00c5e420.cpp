@@ -1,4 +1,5 @@
 // CLandscapeBackgroundPatch::ClearTextures @ 0x00c5e420
+// Leaf: ClearTextures
 
 struct Tex;
 

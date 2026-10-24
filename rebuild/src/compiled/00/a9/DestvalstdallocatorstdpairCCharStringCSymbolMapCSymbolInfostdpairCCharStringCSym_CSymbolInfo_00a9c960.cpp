@@ -1,4 +1,5 @@
 // Retail 0x00a9c960:
+// Leaf: CSymbolInfo>_>
 //   _Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo>>,
 //             pair<CCharString,CSymbolMap::CSymbolInfo> >
 // This is the std allocator destroy-in-place helper; the pair destructor is

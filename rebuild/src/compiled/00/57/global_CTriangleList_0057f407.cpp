@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 // Reconstruction of _Dest_val destructor for CIVCountedPointer<N3DPrimitive::CTriangleList>
 // @ 0x0057f407 -- releases a counted pointer, calling vtable[1] when refcount hits 0.
 

@@ -1,4 +1,5 @@
 // Native virtual destructor, identified by deleting-dtor slot0 RTTI.
+// Leaf: ??1CPatchTesselationEdgeStrip@
 // Actual quarantined donor retained. Native packed parent39 vs donor3d;
 // native vectors12 vs donor16. novtable views emit no production vtable.
 #pragma optimize("s",on)

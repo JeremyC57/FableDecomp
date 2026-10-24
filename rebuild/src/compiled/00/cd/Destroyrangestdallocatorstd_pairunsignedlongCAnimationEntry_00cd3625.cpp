@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
 // Reconstruction of std::_Destroy_range<allocator<pair<unsigned long, CAnimationEntry>>>
 // retail 0x00cd3625, __fastcall(first /*ecx*/, last /*edx*/, allocator* /*stack, ret 4*/)
 

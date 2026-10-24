@@ -1,4 +1,5 @@
 struct CConsoleVariable {
+// Leaf: `scalar_deleting_destructor'
     void* vftable;
 };
 

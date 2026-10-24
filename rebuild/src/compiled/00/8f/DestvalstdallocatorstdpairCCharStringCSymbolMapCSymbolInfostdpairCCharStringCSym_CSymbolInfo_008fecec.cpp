@@ -1,4 +1,5 @@
 // _Dest_val< allocator< pair<CCharString,CSymbolMap::CSymbolInfo> >, pair<...> >
+// Leaf: CSymbolInfo>_>
 // Retail 0x008fecec. The empty stateless allocator collapses _Dest_val to
 // _Ptr->~pair(); the pair pointer arrives in ecx. The pair destructor:
 //   - destroys the two CCharStrings inside 'second' (CSymbolInfo) at +0x14/+0x1c

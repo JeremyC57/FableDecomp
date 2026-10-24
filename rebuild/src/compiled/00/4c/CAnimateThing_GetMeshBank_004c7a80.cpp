@@ -1,4 +1,5 @@
 struct CMeshDataBank;
+// Leaf: GetMeshBank
 struct SubObj { char pad0[0x10]; CMeshDataBank* bank; };
 struct RootObj { char pad0[0x1c]; SubObj* sub; };
 extern RootObj* g_animRoot;

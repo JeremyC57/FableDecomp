@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: GetContextSensitivePreferredItemButtonIndex
 struct Entry { int key; int pad; int value; };
 extern Entry* g_itemButtonTable_first;
 extern Entry* g_itemButtonTable_last;

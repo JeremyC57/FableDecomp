@@ -1,4 +1,5 @@
 struct CInputProcessManager {
+// Leaf: ??1CInputProcessManager@
   void* vtbl;
 };
 extern "C" void __fastcall sub_A5C600(CInputProcessManager* self);

@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 0062e8e0
+// Leaf: OnReadFinished
 struct CActiveFile;
 
 void __fastcall base_0x62e2b0(CActiveFile* self);   // 0x62e2b0

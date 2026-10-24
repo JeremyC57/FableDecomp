@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCVillage::OnInitialActivate @ 0x00a73ca0
+// Leaf: OnInitialActivate
 // __fastcall (this in ecx). Modeled as __fastcall free fn with self in ecx.
 //
 // Retail body:

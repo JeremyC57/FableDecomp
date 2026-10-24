@@ -1,4 +1,5 @@
 // CModeBriarRoseTeleportIntangible::OnDeactivate -- resume AI, re-enable mapwho/targeting/drawability, restore environment themes.
+// Leaf: OnDeactivate
 // Native008E7CF0 length273. SetAsDrawable slot28 nativeCThingVT1239ABC->4C8E50; GetBriar8E7790 uses CBriarRoseDef.
 #ifndef _MSC_VER
 #define __int64 long long

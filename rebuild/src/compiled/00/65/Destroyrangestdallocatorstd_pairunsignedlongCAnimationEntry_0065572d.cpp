@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of _Destroy_range<allocator<pair<unsigned_long,CAnimationEntry>>>
+// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
 // retail 0x0065572d (31 bytes). __fastcall(first /*ecx*/, last /*edx*/, allocator /*stack*/).
 // Element size 8. The element-destroy helper (retail 0x4a9760) is __fastcall: this=pair* in ecx,
 // allocator pushed on the stack -> modelled as a real member taking the allocator by value.

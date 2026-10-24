@@ -1,4 +1,5 @@
 // CPhysicsMeshInfo_Derived_008abaa0::~CPhysicsMeshInfo_Derived_008abaa0() -- releases the CCountedPointer member at +0xa8 (count block destroy + delete at zero, fields nulled), then CPhysicsMeshInfo::~CPhysicsMeshInfo by tail call
+// Leaf: ??1CPhysicsMeshInfo_Derived_008abaa0@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ABAA0, oracle length 75 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

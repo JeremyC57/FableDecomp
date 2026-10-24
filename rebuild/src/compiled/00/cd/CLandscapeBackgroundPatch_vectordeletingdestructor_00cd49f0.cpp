@@ -1,4 +1,5 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CD49F0, 56 bytes. Catalog name: CLandscapeBackgroundPatch::`vector_deleting_destructor'
+// Leaf: `vector_deleting_destructor'
 // (propagated label). Body: a scalar deleting destructor (`??_G` shape, flags in the stack slot) of a record whose
 // non-trivial members are four CCharStrings: +0x14, +0x10, +0xc and finally +0x0, each destroyed with
 // CCharString::~CCharString @ 0x0099EAE0, then the block is freed with operator delete (MSVCR71 thunk 0x00BFE9BC)

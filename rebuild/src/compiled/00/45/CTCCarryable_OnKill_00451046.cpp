@@ -1,4 +1,5 @@
 struct Node { void* p0; void* p4; void* p8; void* pc; };
+// Leaf: OnKill
 struct CTCCarryable { Node* node; int slot; };
 void __stdcall FreeThing(void* p);
 #pragma optimize("s",on)

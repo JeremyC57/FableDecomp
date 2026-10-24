@@ -1,4 +1,5 @@
 // CClass_008d6890::vfunc_6() -- calls the method @ 0x004C9B80 of the object at +0x4 with the constant 1
+// Leaf: vfunc_6
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D6890, oracle length 11 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

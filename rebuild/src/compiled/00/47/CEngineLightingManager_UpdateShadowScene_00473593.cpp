@@ -1,4 +1,5 @@
 #pragma optimize("y", off)
+// Leaf: UpdateShadowScene
 #pragma optimize("s", on)
 
 // CEngineLightingManager::UpdateShadowScene @ 0x00473593  (__fastcall, ret 4)

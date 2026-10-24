@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 0x0075f7a0
+// Leaf: OnReadFinished
 extern "C" void __cdecl free(void*);
 
 struct CActiveFile {

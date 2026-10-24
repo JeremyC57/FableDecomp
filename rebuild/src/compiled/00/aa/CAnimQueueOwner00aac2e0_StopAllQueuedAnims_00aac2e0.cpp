@@ -1,4 +1,5 @@
 // CAnimQueueOwner00aac2e0::StopAllQueuedAnims() -- when the parent thing has an animation owner, stop every queued animation through it, reset the handles, drop the inactive entries and clear the queue
+// Leaf: StopAllQueuedAnims
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAC2E0, length 90 bytes (+ int3 padding).
 // Callees: the parent's animation owner (`[ParentThing+40h]`, virtual slot 6 = GetAnimationPlayer), its slot 0x16 (StopAnim(handle)), RemoveInactiveEntries @ 0x00AABCA0
 // (manifest "CModeHoverBase::RemoveInactiveHoverAnims"), list<CCountedPointer<CEntry>>::clear() @ 0x00AACC60 (a void member tail-jumped with

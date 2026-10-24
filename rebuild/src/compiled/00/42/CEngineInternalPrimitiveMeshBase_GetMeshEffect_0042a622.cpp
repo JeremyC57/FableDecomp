@@ -1,4 +1,5 @@
 struct RCObj {
+// Leaf: GetMeshEffect
     void* vtbl;
     long refs;
 };

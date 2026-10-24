@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
 // std::_Destroy_range<allocator<pair<unsigned long, CAnimationEntry> > >
 // __fastcall(first /*ecx*/, last /*edx*/, allocator* /*stack, unused*/) -> void
 // Loops [first,last) in stride-8 steps, destroying each element.

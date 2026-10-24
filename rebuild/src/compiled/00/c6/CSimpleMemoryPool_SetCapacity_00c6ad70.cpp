@@ -1,4 +1,5 @@
 struct CSimpleMemoryPool {
+// Leaf: SetCapacity
     void* vtbl;
     char pad[0x21c - 4];
     unsigned long capacity;

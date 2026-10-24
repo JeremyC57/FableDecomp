@@ -1,4 +1,5 @@
 struct IErrorNotifierVtbl
+// Leaf: UpdateErrorMessage
 {
     void* slot0;
     void* slot1;

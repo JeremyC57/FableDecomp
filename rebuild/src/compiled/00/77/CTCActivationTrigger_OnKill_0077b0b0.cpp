@@ -1,4 +1,5 @@
 struct CTCActivationTrigger;
+// Leaf: OnKill
 
 // helper at 0x7f7750: called with ecx = this->fc, one stack arg = this (__fastcall)
 struct Sub {

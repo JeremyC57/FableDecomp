@@ -1,4 +1,5 @@
 
+// Leaf: CEntry>_const&>
 // _Cons_val forwarding thunk: MSVC folded this pair-construction helper
 // into a tail call to an identical-shape helper (linker/codegen ICF-style
 // fold of two _Cons_val<...> instantiations with the same layout as the

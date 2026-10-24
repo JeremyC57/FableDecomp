@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile;
 extern "C" void __fastcall CActiveFile_helper_004511a6(CActiveFile* self);
 extern "C" void __cdecl CActiveFile_release(void* p);

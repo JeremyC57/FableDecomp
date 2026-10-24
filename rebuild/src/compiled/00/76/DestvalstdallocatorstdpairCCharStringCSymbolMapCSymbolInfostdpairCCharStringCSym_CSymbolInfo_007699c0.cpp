@@ -1,4 +1,5 @@
 // Faithful VC7.1 reconstruction of std::_Dest_val for
+// Leaf: CSymbolInfo>_>
 //   std::pair<CCharString, CSymbolMap::CSymbolInfo>
 // Retail 0x007699c0. Pair + CSymbolInfo destructors inline; leaf CCharString /
 // CBaseIntelligentPointer destructors are out-of-line -> call/jmp.

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: `vector_deleting_destructor'
 // Byte-exact reconstruction of CLandscapeBackgroundPatch::`vector_deleting_destructor'
 // retail 0x00656e8e, __fastcall(void*)(CLandscapeBackgroundPatch* this, unsigned int flags)
 //

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile { CActiveFile* f0; };
 
 // thiscall helper (this in ecx)

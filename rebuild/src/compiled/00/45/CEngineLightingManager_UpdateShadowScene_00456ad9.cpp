@@ -1,4 +1,5 @@
 struct LM_Local { void build(void* obj24, void* arg); };
+// Leaf: UpdateShadowScene
 struct LM_Obj28 { void apply(int arg); };
 
 struct CEngineLightingManager {

@@ -1,4 +1,5 @@
 // CGamePlayerInterface::GetFlourishNeedsAttackButtonHeld() const -- returns the controls definition's FlourishNeedsAttackButtonHeld flag (CControlsDef +0x4d through PControlsDef +0x7a0)
+// Leaf: CanBeHitByMeleeStrike
 // Retail: Fable.exe @ 0x00445BC0, 10 bytes. Catalog label NThingShot::CTCShotDefinitionBase::CanBeHitByMeleeStrike is wrong
 // (three byte-near siblings 0x00445BA0/BB0/BC0 share it). Evidence: callers CInputProcessCombat::ProcessCombatInput 0x0068F6FD load `this` from their
 // +0x24 player interface; Ego_r.pdb CGamePlayerInterface::PControlsDef (CDefPointer<CControlsDef const>) is at +0x7a0

@@ -1,4 +1,5 @@
 // Retail 0x008fd56a: _Dest_val<pair<long,CRegisteredMusicEntry>> style destroy helper.
+// Leaf: CRegisteredMusicEntry>_>
 // push esi; mov esi,ecx; lea ecx,[esi+0x34]; call 0xa01c10; mov ecx,esi; pop esi; jmp 0x8fd544
 // VOID member: destroy the sub-object at this+0x34, then tail-call the base/other destroy on this.
 

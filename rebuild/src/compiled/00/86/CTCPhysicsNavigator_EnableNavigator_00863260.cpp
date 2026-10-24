@@ -1,4 +1,5 @@
 struct CTCPhysicsNavigator {
+// Leaf: EnableNavigator
     char pad0[8];
     bool enabled;
     void EnableNavigator(bool enable);

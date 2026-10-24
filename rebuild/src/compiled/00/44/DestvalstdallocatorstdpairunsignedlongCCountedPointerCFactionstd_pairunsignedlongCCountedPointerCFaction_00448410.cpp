@@ -1,4 +1,5 @@
 extern "C" void __cdecl fable_op_delete(void* p);
+// Leaf: ??0?$pair@
 
 struct CtrlBlock {
     long refcount;      /* +0x0 */

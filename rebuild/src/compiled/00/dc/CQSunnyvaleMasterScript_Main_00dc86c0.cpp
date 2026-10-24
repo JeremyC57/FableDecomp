@@ -1,4 +1,5 @@
 // CQ_SunnyvaleMasterScript::Main @ 0x00dc86c0
+// Leaf: Main
 // __fastcall(void) modeled as __fastcall(self)
 
 struct CObjWithVtbl;

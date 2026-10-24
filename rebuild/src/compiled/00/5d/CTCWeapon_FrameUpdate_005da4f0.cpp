@@ -1,4 +1,5 @@
 // CTCWeapon::FrameUpdate() -- count the frames the weapon has been wielded and, while aiming, the frames spent aiming
+// Leaf: FrameUpdate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DA4F0, length 23 bytes (+ int3 padding).
 // CTCWeapon vtable 0x012554FC slot 9 (rtti-vtables.tsv; chunk label "CTCWeapon::vfunc_9"); slot 9 of the CTCBase-derived
 // vtables is FrameUpdate.

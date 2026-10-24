@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x004e3e0b
 // __fastcall(void)  -> modeled as __fastcall free fn (this in ecx)
 

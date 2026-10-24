@@ -1,4 +1,5 @@
 struct Member;
+// Leaf: ??1CAIStateGroup_HoverWanderAroundThing@
 extern "C" void __fastcall Member_dtor_00453e1a(Member* m);
 struct Base;
 extern "C" void __fastcall Base_dtor(Base* b);

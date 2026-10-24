@@ -1,4 +1,5 @@
 struct Sink {
+// Leaf: UpdateShadowScene
     void Take(int v);
 };
 

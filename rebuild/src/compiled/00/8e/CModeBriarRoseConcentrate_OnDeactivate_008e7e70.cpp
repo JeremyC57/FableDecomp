@@ -1,4 +1,5 @@
 // CModeBriarRoseConcentrate::OnDeactivate -- resume AI, hit surviving creature imposters, kill effect objects and deactivate.
+// Leaf: OnDeactivate
 // Native008E7E70 length269. Genuine CHitParameters ctor7A3BC0/dtor789358; Creature OnHit slot65 nativeVT125AC0C->667D30.
 #ifndef _MSC_VER
 #define __int64 long long

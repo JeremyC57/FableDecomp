@@ -1,4 +1,5 @@
 // CLandscapeBackgroundPatch::ClearTextures  0x00c739a0
+// Leaf: ClearTextures
 struct Texture;
 
 // __stdcall import via IAT: push arg, call [__imp_], callee cleans (no add esp).

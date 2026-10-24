@@ -1,4 +1,5 @@
 enum EHeroMorphType { MORPH_A_DUMMY };
+// Leaf: CEntry>_const&>
 
 class CParticleMorphs
 {

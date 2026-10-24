@@ -1,4 +1,5 @@
 struct Counted { void* vtbl; long refs; };
+// Leaf: CTriangleList>_>
 struct CIVCountedPointer { Counted* p; };
 
 void __fastcall Dest_val(CIVCountedPointer* self)

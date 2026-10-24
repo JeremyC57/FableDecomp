@@ -1,4 +1,5 @@
 // CClass_008543c0::vfunc_6(void**) -- stores the member at +0x54 through the out-pointer and returns true
+// Leaf: vfunc_6
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008543C0, oracle length 14 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

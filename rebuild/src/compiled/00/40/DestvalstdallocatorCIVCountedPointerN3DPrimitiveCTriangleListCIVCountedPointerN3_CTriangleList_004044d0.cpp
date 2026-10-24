@@ -1,4 +1,5 @@
 // CIVCountedPointer<T>::Release() -- drop our reference to the intrusively counted object and empty the pointer
+// Leaf: CTriangleList>_>
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004044D0, 27 bytes. Callees: vtable slot 1 of the pointee (its self-delete), indirect.
 //
 // CIVCountedPointer holds a single word: an object that carries its own reference count right after

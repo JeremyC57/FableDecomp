@@ -1,4 +1,5 @@
 #pragma optimize("s", on)
+// Leaf: GetMeshEffect
 struct RefObj {
     void (__fastcall **vtbl)(RefObj*);
     long refcount;

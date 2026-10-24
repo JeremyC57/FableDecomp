@@ -1,4 +1,5 @@
 // vfunc_2(void*) -- deletes the argument (free @ 0x00BFEA14 (MSVCR71 free thunk, not operator delete)); stdcall
+// Leaf: vfunc_2
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3F970, oracle length 14 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

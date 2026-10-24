@@ -1,4 +1,5 @@
 // CActionTalkToThing::CActionTalkToThing(CThing&, const char*, const char*, const CCharStringValue&, const CCharStringValue&, const CCharStringValue&, bool, bool) -- initialize a question-talk action, retain its three button strings, and load its subtitle messages
+// Leaf: ??0CActionTalkToThing@
 // Retail: Fable.exe 0x00717d40, length 267; `ret 20h`.
 // Callees: CActionTalkBase::CActionTalkBase @ 0x00717950; CCharString copy construction @ 0x0099ec30; GetMessagesFromTextName @ 0x004cebb0; CArray<CSubtitledMessage>::operator= @ 0x0071a160; CSubtitledMessage copy construction @ 0x004cdb70; CSubtitledMessage destruction @ 0x004d1db0; global CPlayerGui @ 0x013b8790.
 // Native vtable slots are base [dtor, Update, OnActivate, OnAdd, pure GetActionName() const, OnCleanup] and derived [dtor, Update, OnActivate, OnAdd, GetActionName() const, OnCleanup, DisplayText]. Retail CSubtitledMessage is 0x44 bytes: the three donor 0x14-byte vector maps are 0x10-byte native maps. The base message array is at +0x30; button strings are at +0x94/+0x98/+0x9c.

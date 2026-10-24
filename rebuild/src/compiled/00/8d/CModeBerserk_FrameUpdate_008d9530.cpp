@@ -1,4 +1,5 @@
 // CModeBerserk::FrameUpdate -- select berserk animation group, restart changed mode, then update base frame.
+// Leaf: FrameUpdate
 // Native008D9530 length278. Genuine mode slots5/6 from VT1267F00=8621A0/8D6830; typed PMF table retains native4/full-host width.
 #ifndef _MSC_VER
 #define __int64 long long

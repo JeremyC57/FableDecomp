@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // CRegion::SetMiniMapRegionExitTextOffsetX @ 0x005ba51f
 // Retail: swaps a pointer-sized member (offset 0) through a cdecl helper,
 // writing the OLD value out through the first stack argument.

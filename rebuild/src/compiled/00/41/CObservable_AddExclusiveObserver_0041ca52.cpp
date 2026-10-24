@@ -1,4 +1,5 @@
 struct CObservable { void* pad[0x50]; void* exclusiveObserver; };
+// Leaf: AddExclusiveObserver
 
 void __fastcall CObservable_AddExclusiveObserver(CObservable* self, void* /*edx*/, void* observer)
 {

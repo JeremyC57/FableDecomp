@@ -1,4 +1,5 @@
 // CHeroMarriageDef::~CHeroMarriageDef() -- destroy the five CCharString members (+0xc4, +0xb8, +0xa8, +0xa4, +0x7c; 0x0099EAE0) then the inlined CDefPointeeBase destructor: its vtable (0x01230BA0) and the base destructor (0x009FC550, a tail jump)
+// Leaf: ??1CHeroMarriageDef@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044F81A, length 69 bytes.
 // Shape: `this` in esi, the strings last-to-first, `mov dword ptr [esi],vtable ; mov ecx,esi ; pop esi ; jmp`.
 struct CCharString {

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 // CEngineLightingManager::UpdateShadowScene @ 00451e59  __fastcall void (this, void* arg)
 
 struct Local4 { int v; void Fill_0046c8e9(void* obj24, void* arg); };

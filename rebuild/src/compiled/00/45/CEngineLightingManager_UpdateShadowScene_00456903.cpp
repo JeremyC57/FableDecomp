@@ -1,4 +1,5 @@
 #pragma optimize("s", on)
+// Leaf: UpdateShadowScene
 #pragma optimize("y", off)
 struct Vec12 { int a, b, c; };
 

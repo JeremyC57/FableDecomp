@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 // Byte-parity reconstruction of
 // std::vector<CIntelligentPointer<CThing const*>,...>::_Destroy at 0x004774b9
 //

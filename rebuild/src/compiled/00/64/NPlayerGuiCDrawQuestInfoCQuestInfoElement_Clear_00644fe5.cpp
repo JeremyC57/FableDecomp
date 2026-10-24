@@ -1,4 +1,5 @@
 // NPlayerGui::CDrawQuestInfo::CQuestInfoElement::Clear() -- release the element's primitives: clear every handle it owns (`for_each(PrimitiveHandles, mem_fun_ref(&CEnginePrimitiveHandle::Clear))`)
+// Leaf: Clear
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00644FE5, 23 bytes. Virtual slot 2 of NPlayerGui::CDrawQuestInfo::CQuestInfoElement's vtable
 // 0x0125A2B4 and of six derived element vtables (0x0125A44C..0x0125A520 reference it); slot 2 is the landed rows' Clear.
 // Callees: SGI for_each<CEnginePrimitiveHandle*, mem_fun_ref_t<void, CEnginePrimitiveHandle> > @ 0x0043F360 (/Gr `__fastcall`:

@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerSpriteTrails::CEnginePrimitiveManagerSpriteTrails(CArray<CEngineScene*>&) -- initializes scene, shader and vertex-buffer pool; retail 00BCA770, 271 bytes. RTTI COL/CHD for VT 012A6A10 proves the zero-offset chain SpriteTrails -> Manager -> RenderUtil -> NonCopyable -> BaseClass; PDB signatures and retail constructor bodies establish each base constructor/dtor. The Manager vtable 012A53E8 has 13 real slots and the derived table overrides slots 0,1,2,5,7. Donor CEngine/CVertexShader/CShaderDataBank headers are included under aliases; retail engine resource is at +0x2A28, unlike donor engine extent. Pool vptrs 012A69DC/012A69EC are documented ABI views with three untyped native entries, not invented methods. Calls: 00BACDB0 manager ctor, 00A62FB0 shader ctor, 00BF2880 CBase ctor, 00BF3180 tree Initialise(3), 00BACD80 enable hook, 0099EBF0/0099EAE0 CCharString ctor/dtor, 00A5D5F0 by-value GetVertexShader(const CCharString&). Strings are retail literals.
+// Leaf: CEnginePrimitiveManagerSpriteTrails
 #define CEngine CEngine_PDB
 #include "engine/CEngine.h"
 #undef CEngine

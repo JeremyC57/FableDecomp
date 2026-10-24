@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CHTG_Executioner::OnPredicateFail @ 0x00d732a0
+// Leaf: OnPredicateFail
 
 // The pushed arg is the ADDRESS 0x12d29d4 (a global). Model as extern global,
 // pass its address.

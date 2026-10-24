@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile { void* payload; };
 void __fastcall CActiveFile_Prep(CActiveFile* self);
 void CActiveFile_FreePayload(void* p);

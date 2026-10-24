@@ -1,4 +1,5 @@
 #pragma optimize("t", on)
+// Leaf: `scalar_deleting_destructor'
 extern void __fastcall DestructMember(void* member);
 extern void __fastcall CCreatureAction_SummonerFlameSlice_Destruct(void* action);
 extern void __cdecl OperatorDelete(void* object);

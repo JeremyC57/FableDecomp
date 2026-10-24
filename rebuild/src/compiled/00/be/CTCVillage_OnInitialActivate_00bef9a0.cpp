@@ -1,4 +1,5 @@
 // CTCVillage::OnInitialActivate  0x00bef9a0
+// Leaf: OnInitialActivate
 struct CObj;
 
 // callee at 0xbef5c0: __fastcall (ecx=obj, edx=edxarg, stack=byteval)

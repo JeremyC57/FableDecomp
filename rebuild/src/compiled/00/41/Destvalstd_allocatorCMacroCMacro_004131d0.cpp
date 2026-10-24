@@ -1,4 +1,5 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004131D0, 35 bytes. Catalog name: std::_Dest_val<std::allocator<CMacro>,CMacro>
+// Leaf: allocator<CMacro>,CMacro>
 // (propagated: the PDB CMacro is {CCharString, CCharString, CArray<CCharString>, ...}, which this body is not).
 //
 // Body: the reverse-order destruction of a 16-byte record of four one-word string members:

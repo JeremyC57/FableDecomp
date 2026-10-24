@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCKraken::InitTentaclesAndHead @ 0x007fc6f0
+// Leaf: InitTentaclesAndHead
 
 struct ListNode {
     ListNode* next;

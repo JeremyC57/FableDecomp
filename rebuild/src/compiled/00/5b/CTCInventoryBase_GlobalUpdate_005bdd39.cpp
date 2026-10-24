@@ -1,4 +1,5 @@
 // CTCInventoryBase::GlobalUpdate(float deltaTime) -- while the inventory is open: refreshes the UI background capture, finishes a category slide that reached 1.0 by selecting the category, then updates the item animation
+// Leaf: GlobalUpdate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDD39, length 83 bytes; size TU; NInventory::CTCInventoryBase vtable 0x01253DBC slot 26.
 // Callees: CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0 (`__fastcall`, no arguments),
 // CUserProfileManager::CaptureBackBufferForUIBackgroundIfNonExistant @ 0x004075B0, CCategory::SetAsSelected(bool) @ 0x005BC934,

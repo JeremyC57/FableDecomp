@@ -1,4 +1,5 @@
 // CRumbleEffect_005b33f4::Initialise(a, b, c, d, e, f, g) -- zero two floats, forward the seven arguments to the base Initialise, return *this
+// Leaf: Initialise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005B33F4, length 49 bytes.
 // Callees: the base Initialise @ 0x0070C050 (seven dword arguments, `ret 1Ch`; the manifest labels
 // it the CInitRumble constructor, a propagated name).

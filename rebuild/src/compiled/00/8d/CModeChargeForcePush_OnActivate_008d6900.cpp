@@ -1,4 +1,5 @@
 // CModeChargeForcePush::OnActivate  @ 008d6900
+// Leaf: OnActivate
 // __fastcall void OnActivate(CModeChargeForcePush* this)
 
 struct CMember {

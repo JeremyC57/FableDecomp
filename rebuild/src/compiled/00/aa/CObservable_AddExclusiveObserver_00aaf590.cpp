@@ -1,4 +1,5 @@
 // CObservable::AddExclusiveObserver  retail 0x00aaf590
+// Leaf: AddExclusiveObserver
 // __fastcall void(CObservable*, CObserver*)
 // mov eax,[esp+4]; mov [ecx+0x30],eax; ret 4
 

@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 004ba590
+// Leaf: OnReadFinished
 struct CActiveFile;
 
 // base-class read-complete handler (thiscall, this in ecx), base 0x4b8c00

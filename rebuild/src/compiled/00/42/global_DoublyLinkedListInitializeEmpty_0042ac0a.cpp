@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: DoublyLinkedList_InitializeEmpty
 #include <stdlib.h>
 
 struct DoublyLinkedListSentinel

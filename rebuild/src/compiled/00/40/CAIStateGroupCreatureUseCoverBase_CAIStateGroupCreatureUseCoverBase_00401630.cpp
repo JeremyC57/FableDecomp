@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureUseCoverBase::~CAIStateGroup_CreatureUseCoverBase() -- destructor: tear down the member at +0x18, then the base
+// Leaf: ??1CAIStateGroup_CreatureUseCoverBase@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00401630, 30 bytes. Callees: sub_5992f0, sub_599ee0, base destructor.
 //
 // Ordinary compiler-shaped destructor for a small polymorphic object. The vtable is pointed back at this

@@ -1,4 +1,5 @@
 // CEntryListBuffer_00a96da0::~CEntryListBuffer_00a96da0() -- the entry list at +0xc cleared (erase from the head's first link, re-link the head, zero the count) and its head node freed, then the buffer at +0 freed
+// Leaf: ??1CEntryListBuffer_00a96da0@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A96DA0, length 84 bytes.
 // Callees: the list's erase @ 0x004507A1 (the manifest label "LTextTreeWalkThrough::BuildTreeArray" is propagated), free @ 0x00BFEA14 twice. Shape: the list's
 // inline destructor (from a speed header: `add esp,4` after its free) inside a size-optimised class destructor (`pop ecx` after the last free): inlined code

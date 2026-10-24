@@ -1,4 +1,5 @@
 struct CTCPhysicsNavigator {
+// Leaf: EnableNavigator
     char pad[0x48];
     unsigned char enabled;
 };

@@ -1,4 +1,5 @@
 // Retail 0x0084F1B0. Manifest/BSim labels this row `_Cons_val<std::allocator<...>>`;
+// Leaf: CEntry__const&_
 // the body reads the object held at +0x40, steps to the CBaseIntelligentPointer
 // subobject at +0x100 inside it, and tail-calls
 // CBaseIntelligentPointer::GetPItem (0x00A01B50).

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: `vector_deleting_destructor'
 // Byte-exact reconstruction of CLandscapeBackgroundPatch::`vector_deleting_destructor'
 // retail 0x004da6a9, __fastcall(self /*ecx*/, uint flags /*stack*/)
 // Harness rewrites __fastcall->__fastcall, so model this in ecx, a dummy in edx,

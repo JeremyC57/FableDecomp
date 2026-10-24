@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x007d9ef0
+// Leaf: OnDie
 struct CTCInventoryItem;
 
 // cdecl helper @ 0xbfea14  (add esp,4 after call => __cdecl, one ptr arg)

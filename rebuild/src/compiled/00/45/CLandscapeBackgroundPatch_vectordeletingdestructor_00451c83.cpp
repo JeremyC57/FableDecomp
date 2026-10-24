@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: `vector_deleting_destructor'
 extern "C" void __fastcall inner_dtor(void* p);
 extern void __cdecl op_delete(void* p);
 

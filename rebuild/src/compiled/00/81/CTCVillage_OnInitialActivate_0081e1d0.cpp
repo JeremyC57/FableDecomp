@@ -1,4 +1,5 @@
 // CTCVillage::OnInitialActivate @ 0x0081e1d0
+// Leaf: OnInitialActivate
 struct Target;
 
 struct CTCVillage {

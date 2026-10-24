@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: CRegisteredMusicEntry>_>
 
 // _Dest_val<std::allocator<...>,...> @ 0x00a9c9a0
 // Destructor forwarder: destroys the embedded member at +0x40, then

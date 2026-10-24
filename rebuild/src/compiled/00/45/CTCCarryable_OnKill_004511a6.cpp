@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnKill
 struct Node {
     Node* v0;     // +0
     int   v4;     // +4

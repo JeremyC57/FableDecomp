@@ -1,4 +1,5 @@
 // CGameScriptThing::SetToKillOnLevelUnload_0066add0(long kill) -- while the global game state (0x013B8394) exists, when the intelligent pointer at +0xc holds a live thing (not dead: +0x91 bit 0), forward the flag to it (KillOnLevelUnload_008368d0 @ 0x008368D0)
+// Leaf: SetToKillOnLevelUnload_0066add0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066ADD0, length 64 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 three times (on +0xc; the pointer re-fetched for every access), KillOnLevelUnload_008368d0 @ 0x008368D0 (on the thing, the flag).
 // Shape: the intelligent pointer's address kept in esi, `ret 4`. The chunk label "CGameScriptThing::SetToKillOnLevelUnload" is propagated: 0x0066ADD0 is a twin in another module.

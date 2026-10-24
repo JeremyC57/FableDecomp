@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CWorldMap::GetNextRegionOnRouteTo @ 0x00c24020
+// Leaf: GetNextRegionOnRouteTo
 // __fastcall(self); harness rewrites __fastcall->__fastcall.
 // Layout: +0x08 = count (long), +0x14 = long* array base.
 

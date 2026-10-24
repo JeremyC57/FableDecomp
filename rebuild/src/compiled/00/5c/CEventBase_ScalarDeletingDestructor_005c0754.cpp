@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ScalarDeletingDestructor
 // CEventBase::`scalar deleting destructor'(unsigned int) -- empty virtual destructor, this copy from one translation unit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C0754, oracle length 29 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK

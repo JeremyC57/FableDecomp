@@ -1,4 +1,5 @@
 // CIVPointerRecord::~CIVPointerRecord() -- destructor of a record whose only non-trivial member is a CIVCountedPointer at +0x0c
+// Leaf: ??0?$pair@
 // Retail: Fable.exe @ 0x00450BBA, 26 bytes; catalog label "_Dest_val<allocator<pair<EAnimComponent,CIVCountedPointer<..>>>>" is
 // wrong (that helper takes the allocator and pointer as arguments; this is a thiscall with `ret`). Callers: 0x00451504
 // (`add ecx,4 ; jmp` -- an owner's dtor destroying its member at +4) and the folded vector-deleting dtor 0x00451C83.

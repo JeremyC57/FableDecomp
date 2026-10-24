@@ -1,4 +1,5 @@
 struct Sub { char b; };
+// Leaf: CRegisteredMusicEntry>_>
 
 // call target at 0xa01c10: __fastcall method (ecx = this+0x114)
 void __fastcall Sub_Method(Sub* s);

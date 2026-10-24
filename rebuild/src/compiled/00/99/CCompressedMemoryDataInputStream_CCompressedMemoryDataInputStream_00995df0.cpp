@@ -1,4 +1,5 @@
 // CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream() -- own vtable, delete[] the buffer, delete the owned compressor, then the inlined empty ~CDataStream and the ~CBaseClassNonCopyable tail
+// Leaf: ??1CCompressedMemoryDataInputStream@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00995DF0, length 52 bytes.
 // Callees: operator delete[] @ 0x00BFEB1C (the Buffer, under an explicit null test), the compressor's
 // scalar deleting destructor through its vtable slot 0 with flag 1 (`delete ptr`, null-checked),

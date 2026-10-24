@@ -1,4 +1,5 @@
 struct C3DMesh2 {
+// Leaf: `scalar_deleting_destructor'
     void* vftable;
 };
 

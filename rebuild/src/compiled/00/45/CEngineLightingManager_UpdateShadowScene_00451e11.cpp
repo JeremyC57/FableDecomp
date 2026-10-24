@@ -1,4 +1,5 @@
 // source_cpp
+// Leaf: UpdateShadowScene
 struct LocalObj {
     char pad[16];
     LocalObj();

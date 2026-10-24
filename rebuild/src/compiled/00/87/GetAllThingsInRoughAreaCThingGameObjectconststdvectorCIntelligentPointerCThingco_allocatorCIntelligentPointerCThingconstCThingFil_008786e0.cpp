@@ -1,4 +1,5 @@
 // 008786e0 CThingSearchTools::GetAllThingsInRoughArea, 652 retail bytes.
+// Leaf: allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>
 // Layout: shared CThingSearchTools donor has a 16-byte debug vector at +0xc;
 // retail uses the first three words (12-byte STLport vector). No trailing
 // donor member is accessed. CThing's retail type flags are +0x6c (PDB +0x7c).

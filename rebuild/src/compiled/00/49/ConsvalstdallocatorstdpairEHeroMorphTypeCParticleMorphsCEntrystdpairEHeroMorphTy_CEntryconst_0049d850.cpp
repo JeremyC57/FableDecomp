@@ -1,4 +1,5 @@
 // 0049d850 _Cons_val_pair_EHeroMorphType_CEntry
+// Leaf: CEntry>_const&>
 // mov ecx,[ecx+0xc]; jmp 0x4498c0  -> tail forwarder
 
 extern void __fastcall sub_4498c0(void* p);

@@ -1,4 +1,5 @@
 // CSymbolMap::FindFirstSymbolWithVal() -- return the value word (+0x0c) of the first 0x24-byte record in the vector at +0x30/+0x34 whose value is set (non-zero), or 0 when every record is empty
+// Leaf: FindFirstSymbolWithVal
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00991720, length 37 bytes.
 // Callees: none. Shape: no argument (`ret`), begin/end into eax/ecx, the top test, the six-byte
 // `lea ebx,[ebx]` loop-alignment filler, `mov edx,[eax+0Ch] ; test edx,edx ; jne` and a SECOND load of

@@ -1,4 +1,5 @@
 // CTCVillage::OnInitialActivate @ 0x00a420c0
+// Leaf: OnInitialActivate
 
 struct CTCVillage {
     void*         f0;     // +0x00  -> ecx to callee

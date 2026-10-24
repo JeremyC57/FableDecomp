@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??4?$CCountedPointer@
 // CCountedPointer<CTexture>::operator= -> forwards to ShareData(0x4190e2), returns this.
 // family len23 x4 (template 00419463). Authored as AssignFrom so the .obj symbol carries a
 // matchable leaf ("operator=" mangles to ??4 which obj_text can't leaf-match); bytes identical.

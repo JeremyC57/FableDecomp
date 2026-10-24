@@ -1,4 +1,5 @@
 // std::_Dest_val<allocator<CIVCountedPointer<T>>, CIVCountedPointer<T>>(CIVCountedPointer<T>*) -- release one intrusively counted pointer slot
+// Leaf: CTriangleList>_>
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00403E20, 27 bytes. Callees: vtable slot 1 of the pointee (its self-delete), indirect.
 //
 // CIVCountedPointer is our intrusive flavour of counted pointer: the object itself carries the

@@ -1,4 +1,5 @@
 #pragma optimize("s", on)
+// Leaf: OnKill
 struct AutoTinyListNode
 {
     void* reserved;

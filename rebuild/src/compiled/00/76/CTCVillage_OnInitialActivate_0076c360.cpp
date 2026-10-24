@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCVillage::OnInitialActivate @ 0x0076c360
+// Leaf: OnInitialActivate
 
 struct Callee;
 

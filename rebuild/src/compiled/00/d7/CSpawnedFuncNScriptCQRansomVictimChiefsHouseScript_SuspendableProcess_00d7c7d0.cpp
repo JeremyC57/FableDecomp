@@ -1,4 +1,5 @@
 typedef void (__fastcall *AutoTinySuspendCallback)(void*);
+// Leaf: SuspendableProcess
 struct AutoTinySuspendableProcess
 {
     unsigned char unknown00[5];

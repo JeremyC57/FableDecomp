@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: GetActionName
 
 // CActionDoCreatureAction::GetActionName @ 0x008fd9b4
 // One switch-case body of the retail action-name factory. Each case constructs

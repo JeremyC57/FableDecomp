@@ -1,4 +1,5 @@
 // CExitWardensOffice::Main. Native alive predicate VT12C32F0, operators0/4/dtor8.
+// Leaf: Main
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"

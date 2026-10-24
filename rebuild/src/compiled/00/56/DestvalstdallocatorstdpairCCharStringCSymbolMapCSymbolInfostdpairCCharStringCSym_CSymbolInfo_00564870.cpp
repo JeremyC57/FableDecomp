@@ -1,4 +1,5 @@
 // Member subobject types whose destructors are the two external dtors.
+// Leaf: CSymbolInfo>_>
 // B = CCharString (dtor at 0x99b510), A = CSymbolInfo's other member (dtor 0x99eae0)
 struct B {
     char* p;

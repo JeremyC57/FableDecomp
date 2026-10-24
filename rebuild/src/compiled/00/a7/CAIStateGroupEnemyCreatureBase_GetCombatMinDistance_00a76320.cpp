@@ -1,4 +1,5 @@
 // CAIStateGroup_EnemyCreatureBase::GetCombatMinDistance
+// Leaf: GetCombatMinDistance
 // retail: fld dword ptr [0x122f59c]; ret  -> return a float global
 struct CAIStateGroup_EnemyCreatureBase;
 

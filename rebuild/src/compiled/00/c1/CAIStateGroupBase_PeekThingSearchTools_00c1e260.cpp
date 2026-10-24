@@ -1,4 +1,5 @@
 // CAIStateGroupBase::PeekThingSearchTools  @ 0x00c1e260
+// Leaf: PeekThingSearchTools
 // __fastcall, returns CThingSearchTools*
 
 struct CThingSearchTools;

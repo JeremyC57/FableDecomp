@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of ~CMemoryBlock @ 0x009fc550 (VC7.1 /O2)
+// Leaf: ??1CMemoryBlock@
 //
 // Modeled as a __fastcall free function taking `self` in ecx (the this-call
 // destructor).  The two raw vtable-pointer stores reproduce the compiler's

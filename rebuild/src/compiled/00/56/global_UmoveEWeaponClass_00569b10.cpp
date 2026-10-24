@@ -1,4 +1,5 @@
 struct EWeaponClass;
+// Leaf: _Umove<EWeaponClass*>
 
 struct Dest {
     EWeaponClass* copy(EWeaponClass* first, int* local);

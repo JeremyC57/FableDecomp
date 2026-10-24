@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveBase::AddChildPrimitive() -- trivial member that always reports 0 / false
+// Leaf: AddChildPrimitive
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00401377, 3 bytes. Callees: none.
 //
 // A three-byte member (`xor eax,eax; ret`) that returns zero whatever the object. Bodies this small are

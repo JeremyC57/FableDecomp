@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x004e2b2c
 struct CTCInventoryItem {
     void* vtbl;      // +0x00

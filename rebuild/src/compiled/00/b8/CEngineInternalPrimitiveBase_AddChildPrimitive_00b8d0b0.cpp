@@ -1,4 +1,5 @@
 struct CEnginePrimitive;
+// Leaf: AddChildPrimitive
 struct CEngineInternalPrimitiveBase {
     unsigned long __fastcall AddChildPrimitive(int /*edx*/, CEnginePrimitive* prim, unsigned long flags);
 };

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // Byte-exact reconstruction of SetMiniMapRegionExitTextOffsetX @ 0x00578e02
 // __fastcall void CRegion::SetMiniMapRegionExitTextOffsetX(CCharString* out, float unused)
 // (rewritten as __fastcall; this in ecx)

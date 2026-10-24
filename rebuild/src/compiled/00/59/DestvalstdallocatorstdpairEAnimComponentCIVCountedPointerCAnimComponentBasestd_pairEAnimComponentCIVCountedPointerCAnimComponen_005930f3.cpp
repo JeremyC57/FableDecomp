@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??0?$pair@
 // _Dest_val for std::allocator<std::pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase>>>
 // Destroys the pair. first member (EAnimComponent enum) is trivial; the second member is a
 // CIVCountedPointer whose held CAnimComponentBase sits at +4. Releasing it: if inner != 0,

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile { void* p0; };
 
 // 0x4db99f : base OnReadFinished, __fastcall (ecx=this)

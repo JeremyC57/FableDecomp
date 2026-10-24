@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 // Counted object with vtable at +0 and refcount at +4.
 struct CountedObj {
     virtual void slot0();   // vtable slot 0

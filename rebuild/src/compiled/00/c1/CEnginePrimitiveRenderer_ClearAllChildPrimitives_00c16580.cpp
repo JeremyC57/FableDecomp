@@ -1,4 +1,5 @@
 // CEnginePrimitiveRenderer::ClearAllChildPrimitives  @ 0x00c16580
+// Leaf: ClearAllChildPrimitives
 // void __fastcall(this)  -- ends in plain 'ret' (no stack cleanup)
 
 struct IChild {

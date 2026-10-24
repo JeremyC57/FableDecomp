@@ -1,4 +1,5 @@
 // CElement8bVector::operator=(const CElement8bVector&) -- STLport vector of a 8-byte non-POD element: copy assignment
+// Leaf: ??4CElement8bVector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00719B30, 256 bytes (incl. int3 padding); callers 0x00719CE8, 0x00719D09, 0x00719ECF.
 // The catalog label "CCombatWheel::Assign" is propagated; byte twin (modulo callees) of 0x00568D40, 8-byte element type unconfirmed.
 // Callees (LTCG register conventions, so declared __fastcall): __uninitialized_copy 0x004CF9D0,

@@ -1,4 +1,5 @@
 struct RefCounted {
+// Leaf: CTriangleList>_>
     void** vtbl;
     int refcount;
 };

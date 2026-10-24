@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: Reset
 
 // CCountedPointer<CIPhysicsFacesSegmentBase const>::Reset(
 //     CIPhysicsFacesSegmentBase const*) @ 0x00413590.

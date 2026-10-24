@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished  @ 0x00850310  (__fastcall, void)
+// Leaf: OnReadFinished
 // push esi; mov esi,ecx; call 0x850280; mov esi,[esi]; test/je;
 // push esi; call 0xbfea14 (free); add esp,4; pop esi; ret
 

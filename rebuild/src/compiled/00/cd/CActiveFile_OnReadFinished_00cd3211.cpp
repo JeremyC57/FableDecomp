@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 // CActiveFile::OnReadFinished @ 00cd3211
 // push esi; mov esi,ecx; call base(this); esi=*this; if(esi) free(esi); ret
 

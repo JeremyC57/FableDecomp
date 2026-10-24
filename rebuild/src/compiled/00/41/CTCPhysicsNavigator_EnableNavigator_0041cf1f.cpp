@@ -1,4 +1,5 @@
 // Byte-member setter at this+0xc8 from a stack arg. __fastcall this=ecx (ret 4).
+// Leaf: EnableNavigator
 #pragma pack(push,1)
 struct T {
     char pad[0xc8];

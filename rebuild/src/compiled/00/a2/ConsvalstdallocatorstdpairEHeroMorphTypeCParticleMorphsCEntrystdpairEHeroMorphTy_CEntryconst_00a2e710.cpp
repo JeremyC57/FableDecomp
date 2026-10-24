@@ -1,4 +1,5 @@
 // Retail 00a2e710: mov ecx,[ecx+4]; jmp 0xa75430
+// Leaf: CEntry>_const&>
 // VOID tail-jmp forwarder: forwards *(void**)(self+4) to an extern __fastcall target.
 
 struct SelfT {

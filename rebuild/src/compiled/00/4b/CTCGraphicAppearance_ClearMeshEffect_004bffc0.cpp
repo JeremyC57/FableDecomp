@@ -1,3 +1,4 @@
 // Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
+// Leaf: ClearMeshEffect
 extern "C" void ForwardTarget_004bfe20();
 extern "C" void Forward() { ForwardTarget_004bfe20(); }

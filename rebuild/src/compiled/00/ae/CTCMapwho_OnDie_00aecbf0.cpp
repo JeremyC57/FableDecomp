@@ -1,4 +1,5 @@
 // CTCMapwho::OnDie  @ 0x00aecbf0
+// Leaf: OnDie
 // push esi; mov esi,ecx; test esi,esi; je end
 // call 0xaeca80 (thiscall on esi); push esi; call 0xbfe9bc (cdecl free); add esp,4; pop esi; ret
 

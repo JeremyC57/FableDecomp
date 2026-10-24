@@ -1,4 +1,5 @@
 // CCombatAbilityStrafeDef_00c0a6d0::CCombatAbilityStrafeDef_00c0a6d0() -- EH-framed constructor: two container members constructed inline, at +0 (vtable 0x012B1C40) and +0x10 (vtable 0x012B1B78); each root keeps a pointer to its 8-byte node at +8, built out of line with 1 (@ 0x00C185B0); states 0..2 as the parts come alive
+// Leaf: ??0CCombatAbilityStrafeDef@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0A6D0, oracle length 115 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; lea ecx,[esi+8] ; mov [esp+4],esi ; mov [esi+4],ecx ; push 1 ; mov dword ptr [esp+18h],0 ; mov dword ptr [esi],offset vtable ; call CNode::CNode ; lea eax,[esi+10h] ; lea ecx,[eax+8] ; mov dword ptr [esp+14h],1 ; mov [esp+8],eax ; mov [eax+4],ecx ; push 1 ; mov byte ptr [esp+18h],2 ; mov dword ptr [eax],offset vtable2 ; call CNode::CNode ; mov ecx,[esp+0Ch] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret
 // The same root/container shape as the landed CTypedContainer constructors (0x00C306D0 ...): the

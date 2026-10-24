@@ -1,3 +1,4 @@
 #pragma optimize("s",on)
+// Leaf: DoublyLinkedList_InitializeEmpty
 #include <stdlib.h>
 struct CircularNode_0065f1ad{CircularNode_0065f1ad* next;CircularNode_0065f1ad* previous;};void** __fastcall DoublyLinkedList_InitializeEmpty(void** out,void* unusedRegister,void* unusedStack){(void)unusedRegister;(void)unusedStack;*(unsigned long*)out&=0;CircularNode_0065f1ad* node=(CircularNode_0065f1ad*)malloc(0x10);node->next=node;node->previous=node;*out=node;return out;}

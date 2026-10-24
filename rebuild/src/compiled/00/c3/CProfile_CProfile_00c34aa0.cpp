@@ -1,4 +1,5 @@
 // CProfile::CProfile() -- EH-framed constructor: novtable destructible root (EH state 0), own vtable (0x012B4FBC), the member at +4 built out of line (@ 0x00C42A60)
+// Leaf: ??0CProfile@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C34AA0, oracle length 69 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; lea ecx,[esi+4] ; mov dword ptr [esp+10h],0 ; mov dword ptr [esi],offset vtable ; call CMember::CMember ; mov ecx,[esp+8] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
 // EH state 0 is entered before the first member exists, so the root base is already destructible:

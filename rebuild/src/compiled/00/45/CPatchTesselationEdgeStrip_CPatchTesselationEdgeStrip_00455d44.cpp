@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CPatchTesselationEdgeStrip@
 struct CMember { void dtor(); };
 extern void __fastcall CMember_dtor_0045185f(CMember* self);
 

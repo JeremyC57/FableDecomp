@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 0x004ba460
+// Leaf: OnReadFinished
 struct CActiveFile;
 
 extern "C" void __cdecl fable_free(void* p);

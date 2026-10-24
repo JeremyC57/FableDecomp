@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??4?$CCountedPointer@
 // CCountedPointer<CTexture>::operator=
 // Retail 0x005c07e4. Assigns from another counted pointer by forwarding the
 // rhs's two members (m0, m4) to an internal assign helper, returns this.

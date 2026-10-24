@@ -1,4 +1,5 @@
 struct AutoTinyVirtualObject
+// Leaf: DeleteData
 {
     virtual ~AutoTinyVirtualObject();
 };

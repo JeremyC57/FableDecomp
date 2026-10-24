@@ -1,4 +1,5 @@
 struct C_00c1dd50 {
+// Leaf: InitStateGroup
   unsigned long f0;
   unsigned char f4;
   char pad_8[0x3];

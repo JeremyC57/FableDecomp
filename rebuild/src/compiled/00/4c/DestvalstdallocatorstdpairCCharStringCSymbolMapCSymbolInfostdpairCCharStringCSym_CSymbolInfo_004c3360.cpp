@@ -1,4 +1,5 @@
 // Retail 0x004c3360
+// Leaf: CSymbolInfo>_>
 // _Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo> >, pair<...> >
 //
 // Body:

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // CRegion::SetMiniMapRegionExitTextOffsetX @ 005ba222
 struct CRegion {
     void* f0;

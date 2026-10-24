@@ -1,4 +1,5 @@
 struct Sub { char pad[4]; };
+// Leaf: CRegisteredMusicEntry>_>
 struct Outer { char pad[0x114]; Sub member; };
 
 extern "C" void __fastcall sub_dtor(void* self);

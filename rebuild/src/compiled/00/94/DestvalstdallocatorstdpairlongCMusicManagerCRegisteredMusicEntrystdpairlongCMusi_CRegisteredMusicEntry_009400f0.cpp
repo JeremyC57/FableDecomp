@@ -1,4 +1,5 @@
 struct Sub {
+// Leaf: CRegisteredMusicEntry>_>
     void Dtor();
 };
 struct Obj {

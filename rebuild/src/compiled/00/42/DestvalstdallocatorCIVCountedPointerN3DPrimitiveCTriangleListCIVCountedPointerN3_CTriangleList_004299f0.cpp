@@ -1,4 +1,5 @@
 // CIVCountedPointer<T>::Release — drop the held ref, then clear the slot.
+// Leaf: CTriangleList>_>
 // __fastcall this=ecx, no args. this+0 = ctl block; block [0]=vptr, [4]=refcount.
 struct Obj {
     virtual void v0();

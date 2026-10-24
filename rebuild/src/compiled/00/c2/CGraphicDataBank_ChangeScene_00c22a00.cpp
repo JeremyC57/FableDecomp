@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CGraphicDataBank::ChangeScene @ 0x00c22a00
+// Leaf: ChangeScene
 // this-call (self in ecx) modeled as __fastcall free fn (leading ptr -> ecx).
 
 struct CGraphicDataBank {

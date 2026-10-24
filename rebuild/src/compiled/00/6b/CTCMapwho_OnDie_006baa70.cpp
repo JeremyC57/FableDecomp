@@ -1,4 +1,5 @@
 #pragma optimize("t",on)
+// Leaf: OnDie
 
 struct CTCMapwho { int dummy; };
 

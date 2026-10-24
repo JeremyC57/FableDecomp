@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CPatchTesselationEdgeStrip@
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 struct CPatchTesselationEdgeStrip {
     char pad0[0x3c];

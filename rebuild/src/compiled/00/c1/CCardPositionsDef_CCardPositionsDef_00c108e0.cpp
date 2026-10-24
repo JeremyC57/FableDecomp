@@ -1,4 +1,5 @@
 // CCardPositionsDef::CCardPositionsDef(void*) -- EH-framed constructor: imported base constructor, own vtable (0x012B263C), the imported member at +0xc built from the argument
+// Leaf: ??0CCardPositionsDef@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C108E0, oracle length 83 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; call [__imp_CBase::CBase] ; mov eax,[argument] ; push eax ; lea ecx,[esi+0Ch] ; mov dword ptr [esp+14h],0 ; mov dword ptr [esi],offset vtable ; call [__imp_CMember::CMember] ; mov ecx,[esp+8] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret 4
 // Both the base and the member type live in a DLL (`__declspec(dllimport)`: the constructors are

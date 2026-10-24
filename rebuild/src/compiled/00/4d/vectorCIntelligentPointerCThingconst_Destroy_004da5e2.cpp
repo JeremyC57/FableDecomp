@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 // std::vector<CIntelligentPointer<CThing const> >::_Destroy
 // Iterates [first,last) destroying each 0x30-byte element via virtual slot 0.
 

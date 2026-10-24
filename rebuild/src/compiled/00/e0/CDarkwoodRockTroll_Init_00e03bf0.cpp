@@ -1,4 +1,5 @@
 // CDarkwoodRockTroll::Init -- reveal troll, update objective and install health bar and map marker.
+// Leaf: Init
 // Retail00E03BF0 length278. Corrected full845 Game interface from root142 signature audit.
 // No generated leaf/parent/colour headers. PDB parent ShownEarthTroll+85 is native+55 (script base smaller30).
 // Native colour order B,G,R,A; red opaque. All called Game slot signatures retained.

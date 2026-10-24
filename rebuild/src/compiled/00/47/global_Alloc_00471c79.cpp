@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: Alloc
 // Reconstruction of Alloc @ 0x00471c79
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);   // MSVCR71 import thunk 0x00BFEA0E

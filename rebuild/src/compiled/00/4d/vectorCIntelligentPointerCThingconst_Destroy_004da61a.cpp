@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 // vector<CIntelligentPointer<CThing const*>,...>::_Destroy
 // Range destroy helper: for each element in [first,last) step sizeof(elem)=0x48,
 // call virtual slot 0 with arg 0 (scalar deleting destructor style).

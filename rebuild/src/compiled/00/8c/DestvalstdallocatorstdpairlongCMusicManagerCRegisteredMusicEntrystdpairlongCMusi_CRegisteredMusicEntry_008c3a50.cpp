@@ -1,4 +1,5 @@
 struct Sub { int x; };
+// Leaf: CRegisteredMusicEntry>_>
 struct Self {
     char pad[0x114];
     Sub m114;

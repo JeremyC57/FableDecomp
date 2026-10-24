@@ -1,4 +1,5 @@
 struct CTCInventoryBase {
+// Leaf: GetCanItemBeQuickAssigned
     char pad[8];
     bool canQuickAssign;
 };

@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: SortTreeRecursively
 
 // Target: 0x00436900  CGuiControlTreePane::SortTreeRecursively
 // __fastcall (modeled as __fastcall this-only), void return.

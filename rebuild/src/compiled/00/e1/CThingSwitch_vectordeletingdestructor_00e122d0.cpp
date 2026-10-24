@@ -1,4 +1,5 @@
 #pragma optimize("t", on)
+// Leaf: `vector_deleting_destructor'
 extern void __fastcall AutoTinyFirstMemberDestructor(void* member);
 extern void __fastcall AutoTinySecondMemberDestructor(void* member);
 extern void __fastcall AutoTinyCompositeDestructor(void* self);

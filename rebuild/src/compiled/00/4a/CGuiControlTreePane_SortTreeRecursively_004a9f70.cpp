@@ -1,4 +1,5 @@
 // Circular doubly-linked list clear (mislabelled `SortTreeRecursively` in the manifest).
+// Leaf: SortTreeRecursively
 // __fastcall this=ecx. this+0 = sentinel node; node[0]=next, node[4]=prev.
 // The head re-reads are faithful: the free helper may alias, so the loop test reloads it.
 struct Node { Node* next; Node* prev; };

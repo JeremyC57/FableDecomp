@@ -1,4 +1,5 @@
 // CPlayer::IsFirstPersonTargeting(long unused) -- false when the object's long at +0x48 (getter 0x00C20EE0) is zero, else byte +0xC of the 16-byte record copied out of the member at +0x38 (getter 0x00C34600)
+// Leaf: IsFirstPersonTargeting
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C21330, length 42 bytes.
 // Identity: the catalog label is doubtful: Ego_r.pdb `?IsFirstPersonTargeting@CPlayer@@QBE_NXZ` takes
 // no argument while this body ends in `ret 4`, and its callees belong to the 0x00C2xxxx module

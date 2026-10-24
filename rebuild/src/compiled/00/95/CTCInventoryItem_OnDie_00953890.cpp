@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x00953890
+// Leaf: OnDie
 // __fastcall void OnDie(CTCInventoryItem* self)
 
 struct CTCInventoryItem {

@@ -1,4 +1,5 @@
 #pragma optimize("gsy",on)
+// Leaf: GetMeshEffect
 
 struct IRefCounted {
     void** vtbl;   // +0x0

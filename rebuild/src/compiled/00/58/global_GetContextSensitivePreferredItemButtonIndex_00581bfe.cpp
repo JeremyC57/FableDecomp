@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of 0x00581bfe
+// Leaf: GetContextSensitivePreferredItemButtonIndex
 // GetContextSensitivePreferredItemButtonIndex(long action) -> long
 // Linear search over an array of 12-byte {long key; long value; long pad}
 // entries; returns value for matching key, else -1.

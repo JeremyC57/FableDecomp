@@ -1,4 +1,5 @@
 #pragma optimize("g,s",on)
+// Leaf: IsAnalogueLoading
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 struct Inner;

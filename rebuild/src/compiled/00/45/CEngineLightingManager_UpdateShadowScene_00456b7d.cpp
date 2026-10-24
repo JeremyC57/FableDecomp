@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 struct CTarget2 { void Draw(void* a, void* b); };
 struct CTarget3 { void Draw(void* a); };
 

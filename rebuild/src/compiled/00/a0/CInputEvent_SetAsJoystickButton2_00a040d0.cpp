@@ -1,4 +1,5 @@
 // CInputEvent::SetAsJoystickButton2(bool pressed, long button, const C2DVector& position, double time) -- a joystick (device 1) event of kind 20: the pressed flag at +8, the stick position copied into +0, both times from one double, the button at +0xc
+// Leaf: SetAsJoystickButton2
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A040D0, length 64 bytes.
 // Shape: the doubles narrowed with `fst`/`fstp`, no frame.
 struct C2DVector { float X, Y; };

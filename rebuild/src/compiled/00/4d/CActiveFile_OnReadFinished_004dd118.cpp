@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile;
 void __fastcall Helper_4db748(CActiveFile* self);
 void __cdecl Free_bfea14(void* p);

@@ -1,4 +1,5 @@
 // Cons_val_pair_morph_b (retail 0x006a73f0)
+// Leaf: CEntry>_const&>
 // Thiscall-forwarding thunk: takes a single pointer argument off the stack
 // (as pushed by the caller), moves it into ECX, and tail-calls the real
 // pair-value constructor helper at retail 0x0085f0c0 (this-in-ecx), then

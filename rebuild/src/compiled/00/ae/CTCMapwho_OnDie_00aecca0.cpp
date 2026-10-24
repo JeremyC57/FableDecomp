@@ -1,4 +1,5 @@
 struct CTCMapwho;
+// Leaf: OnDie
 
 void __fastcall CTCMapwho_Method(CTCMapwho* self);   // 0xaecb80, thiscall
 void CTCMapwho_FreeFn(CTCMapwho* p);                 // 0xbfe9bc, cdecl

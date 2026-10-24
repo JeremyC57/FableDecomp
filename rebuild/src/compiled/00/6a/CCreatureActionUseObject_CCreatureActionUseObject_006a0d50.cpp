@@ -1,4 +1,5 @@
 // CCreatureAction_UseObject::CCreatureAction_UseObject(const CCreatureAction_UseObject&) -- copies the action base, counted used-item pointer and trailing state
+// Leaf: CCreatureAction_UseObject
 // Retail: Fable.exe (TLC, VC7.1), @ 0x006A0D50, 247 bytes, ret 4.
 // Callees: CCreatureActionBase copy ctor @ 0x0062EBC0; CBaseIntelligentPointer ctor/GetPItem/SetPItem @ 0x00A01B10/0x00A01B50/0x00A01B90.
 // The production PDB headers are included under aliases for names and donor layout. Retail native CCreatureActionBase is 0xA8

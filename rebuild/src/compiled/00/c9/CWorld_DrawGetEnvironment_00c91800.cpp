@@ -1,4 +1,5 @@
 struct CIDrawEnvironment;
+// Leaf: DrawGetEnvironment
 struct CWorld {
     void* pad0;
     void* pad4;

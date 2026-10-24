@@ -1,4 +1,5 @@
 // forward-declared external targets (relocation-masked)
+// Leaf: CRegisteredMusicEntry>_>
 struct Sub { char pad[4]; };
 struct Base { char pad[4]; };
 

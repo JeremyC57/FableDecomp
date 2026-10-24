@@ -1,4 +1,5 @@
 // _Dest_val for std::allocator<std::pair<CCharString, CSymbolMap::CSymbolInfo> >
+// Leaf: CSymbolInfo>_>
 // Retail 0x00566530. Destroys a pair<CWideString, CSymbolInfo> in place.
 //   [esi+0xc] dtor 0x99eae0 ; [esi+8] dtor 0x99b510 (CWideString) ; [esi+0] dtor 0x99b510 (tail)
 

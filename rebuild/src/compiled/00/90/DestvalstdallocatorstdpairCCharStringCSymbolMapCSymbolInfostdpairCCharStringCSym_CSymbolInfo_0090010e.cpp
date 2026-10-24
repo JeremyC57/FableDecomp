@@ -1,4 +1,5 @@
 // Faithful VC7.1 reconstruction of
+// Leaf: CSymbolInfo>_>
 // _Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo> >, pair<...> >
 // retail 0x0090010e
 //

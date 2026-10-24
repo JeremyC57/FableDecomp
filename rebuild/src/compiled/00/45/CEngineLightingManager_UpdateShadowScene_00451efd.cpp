@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 // CEngineLightingManager::UpdateShadowScene @ 00451efd
 struct GuardT { void Do(int handler, int arg); };
 struct HandlerB { void Do(int arg); };

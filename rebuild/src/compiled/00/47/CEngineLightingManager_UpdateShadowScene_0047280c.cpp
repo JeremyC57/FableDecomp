@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 extern "C" void __stdcall Profile_Enter(int marker);
 
 extern void __fastcall LM_ShadowApply24_00472896(void* self24, void* arg);

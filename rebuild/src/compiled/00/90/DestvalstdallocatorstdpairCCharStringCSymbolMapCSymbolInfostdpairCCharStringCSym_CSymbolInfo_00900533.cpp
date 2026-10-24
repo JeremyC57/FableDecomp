@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of _Dest_val for
+// Leaf: CSymbolInfo>_>
 // std::pair<CCharString, CSymbolMap::CSymbolInfo>.
 //
 // Retail 0x00900533:

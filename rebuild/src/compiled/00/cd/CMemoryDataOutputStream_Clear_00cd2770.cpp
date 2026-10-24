@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: Clear
 // CMemoryDataOutputStream::Clear @ 0x00cd2770
 // push esi; lea esi,[ecx+8]; mov ecx,esi; call 0x7e70e0; and dword[esi],0; pop esi; ret
 

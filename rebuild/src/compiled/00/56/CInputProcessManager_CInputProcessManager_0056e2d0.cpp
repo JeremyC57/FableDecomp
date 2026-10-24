@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CInputProcessManager@
 // CInputProcessManager::~CInputProcessManager  @ 0x0056e2d0
 // Pattern: set own vtable, destruct member subobject at +0xa4, tail-call base dtor.
 

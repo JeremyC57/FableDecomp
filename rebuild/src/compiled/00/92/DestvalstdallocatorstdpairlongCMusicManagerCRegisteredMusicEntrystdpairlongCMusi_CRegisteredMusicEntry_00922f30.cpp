@@ -1,4 +1,5 @@
 struct Sub { int x; };
+// Leaf: CRegisteredMusicEntry>_>
 struct T { char pad[0xa8]; Sub sub; };
 
 extern "C" void __fastcall SubCall(Sub* s);

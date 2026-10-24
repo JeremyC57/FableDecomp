@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 // vector<CIntelligentPointer<CThing const> >::_Destroy
 // Range-destroy: for each 8-byte element in [first,last), call virtual slot 0 with arg 0.
 // Compiled __fastcall: ecx = first, edx = last, plus one (ignored) stack arg (ret 4).

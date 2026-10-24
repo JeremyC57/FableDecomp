@@ -1,4 +1,5 @@
 struct CCharString {
+// Leaf: GetActionName
     // real member => __fastcall: this in ECX, (lit,-1) pushed and cleaned by callee.
     void ctor(const char* lit, int len);
 };

@@ -1,4 +1,5 @@
 // CQ_SunnyvaleMasterScript::Main @ 00e192a0
+// Leaf: Main
 struct IVObj {
     struct VT { void (__fastcall *slot0)(IVObj*); void (__fastcall *slot1)(IVObj*);
         void (__fastcall *slot2)(IVObj*); void (__fastcall *slot3)(IVObj*);

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile;
 
 // helper called with this in ecx (thiscall modelled as fastcall + dummy edx-less: no stack args)

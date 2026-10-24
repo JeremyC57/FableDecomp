@@ -1,4 +1,5 @@
 // CIntelligentPointer_01238c6c::CIntelligentPointer_01238c6c(long tag) -- tagged constructor: base CBaseIntelligentPointer, own vtable, SetPItem(0), clear the flag byte at +8
+// Leaf: ??0CIntelligentPointer_01238c6c@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00883A30, length 33 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CBaseIntelligentPointer::SetPItem
 // @ 0x00A01B90 (pushed literal 0; the stack argument is never read, it only selects the overload: ret 4).

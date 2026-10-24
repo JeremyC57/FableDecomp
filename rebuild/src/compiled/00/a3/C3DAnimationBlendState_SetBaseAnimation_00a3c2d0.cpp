@@ -1,4 +1,5 @@
 // C3DAnimationBlendState::SetBaseAnimation(const CIVCountedPointer<C3DAnimationStateBase>&) -- unshares the data block, then replaces its BaseAnimation (+8)
+// Leaf: SetBaseAnimation
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3C2D0, length 64 bytes.
 // Callees: C3DAnimationBlendState::MakeOwnCopyOfData @ 0x00A3C1A0; CIVCountedPointeeBase slot 1 (Delete) at zero count.
 // C3DAnimationBlendState is {vptr, CIVCountedPointer<CSharedData> Data} (PDB layout, 8 bytes);

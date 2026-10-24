@@ -1,4 +1,5 @@
 // Forward to vtable slot 8 of the sub-object pointer at this+0x4, passing
+// Leaf: IsNewDestinationGoingToResetNavigation
 // `this` and the stack argument. __fastcall this=ecx (ret 4).
 #pragma pack(push,1)
 struct T;

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 // vector<CIntelligentPointer<CThing const> >::_Destroy(first, last)
 // Iterates [first,last) with element stride 0x48, invoking a slot-0 virtual
 // (one stack arg = 0, scalar-deleting-destructor pattern) on each element.

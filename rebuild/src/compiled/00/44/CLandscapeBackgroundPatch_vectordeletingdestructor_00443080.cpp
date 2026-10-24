@@ -1,4 +1,5 @@
 struct CLandscapeBackgroundPatch {
+// Leaf: `vector_deleting_destructor'
     void* vftable;
     void* CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags);
 };

@@ -1,4 +1,5 @@
 // CClass_0052e9b0::vfunc_30(const long&) -- stores the referenced value into the member at +0x94
+// Leaf: vfunc_30
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052E9B0, oracle length 15 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

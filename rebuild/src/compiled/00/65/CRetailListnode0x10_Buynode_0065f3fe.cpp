@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: Buynode
 // CRetailList_node0x10::Buynode(const T&) -- malloc a 0x10-byte node and copy-construct the 8-byte value at +0x8 in place
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065F3FE, oracle length 33 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK

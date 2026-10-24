@@ -1,4 +1,5 @@
 class CDisplayEngine;
+// Leaf: GetPlayerManager
 struct CViewBase {};
 struct GlobalHolder { char pad[0x30]; CDisplayEngine* engine; };
 extern GlobalHolder* g_displayHolder;

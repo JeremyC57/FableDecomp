@@ -1,4 +1,5 @@
 // Element count of the vector reached through the member pointer at this+0x4
+// Leaf: vfunc_0
 // (`(last - first) >> 2`). __fastcall this=ecx.
 #pragma pack(push,1)
 struct Vec { int* first; int* last; };

@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 0x00567f80
+// Leaf: OnReadFinished
 struct CActiveFile { void* m0; };
 
 extern void __fastcall CActiveFile_FrameUpdate_566dc0(CActiveFile* self); // thiscall this->ecx, void

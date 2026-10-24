@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CSystemRegistry@
 extern "C" void __cdecl free_block(void* p);
 
 struct CSystemRegistry {

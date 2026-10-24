@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CPatchTesselationEdgeStrip@
 extern "C" void __cdecl free_mem(void* p);
 struct CBase { int base_pad; };
 extern void __fastcall CBase_dtor(CBase* self);

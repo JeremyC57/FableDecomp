@@ -1,4 +1,5 @@
 // CRetailTree_ulongkey_ins005808a0::insert(const value_type&) -- unique-key insert: descend on `key < node.key`, step back unless at begin(), then _Insert @ 0x005808A0
+// Leaf: insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00580D21, oracle length 134 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

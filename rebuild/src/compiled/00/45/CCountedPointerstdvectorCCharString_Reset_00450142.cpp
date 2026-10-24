@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: Reset
 #include <new>
 struct RefBlock { int count; int vtbl; void* ptr; };
 struct CCountedPtr { void* obj; RefBlock* blk; };

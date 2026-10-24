@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: TreeNode_AllocData_Byte
 #include <cstdlib>
 struct TreeNodeBytePayload
 {

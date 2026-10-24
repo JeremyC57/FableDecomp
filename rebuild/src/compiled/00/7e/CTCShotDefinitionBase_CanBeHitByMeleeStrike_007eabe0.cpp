@@ -1,4 +1,5 @@
 struct CTCShotDefinitionBase {
+// Leaf: CanBeHitByMeleeStrike
     char pad0[0xC];
     bool* pShot; // +0x0C
 };

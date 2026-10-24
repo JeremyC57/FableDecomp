@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 struct Elem {
     virtual void* scalar_dtor(int flag);
     char pad[0x4c - 4];

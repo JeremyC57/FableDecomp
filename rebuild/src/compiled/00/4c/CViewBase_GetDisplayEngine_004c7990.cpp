@@ -1,4 +1,5 @@
 // NDisplayView::CViewBase::GetDisplayEngine @ 0x004c7990
+// Leaf: GetDisplayEngine
 // Retail (9 bytes):
 //   a1 1c 8a 3b 01   mov eax, ds:0x13b8a1c   ; load global singleton pointer
 //   8b 40 20         mov eax, [eax+0x20]     ; return singleton->field_0x20

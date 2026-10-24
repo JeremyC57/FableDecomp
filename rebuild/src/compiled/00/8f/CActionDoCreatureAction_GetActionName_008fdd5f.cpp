@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: GetActionName
 
 // CActionDoCreatureAction::GetActionName @ 0x008fdd5f
 // One switch-case body of the retail action-name factory. Constructs the hidden

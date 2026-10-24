@@ -1,4 +1,5 @@
 // CGuiVarTransferBool::TransferToGui  @ 0x00bef810
+// Leaf: TransferToGui
 // __fastcall void TransferToGui(CGuiVarTransferBool* this)
 
 struct CGuiTarget;

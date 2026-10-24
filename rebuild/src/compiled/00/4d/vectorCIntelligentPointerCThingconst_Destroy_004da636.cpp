@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 // Byte-exact reconstruction of vector<CIntelligentPointer<CThing const*>>::_Destroy
 // retail 0x004da636
 //

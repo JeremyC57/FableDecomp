@@ -1,4 +1,5 @@
 // CGraphicInfoFrame::InitialiseFrame -- initialise resource frame, replace shared graphic and managed texture
+// Leaf: InitialiseFrame
 // Retail 009FE550, 208 bytes. CFrameData ctor 009FE380; managed texture assignment A69B20 and ClearHandle A69AD0.
 // No CGraphicInfoFrame/CManagedTexture headers exist. CResource header retained at native size 1C.
 #include "engine/CTexture.h"

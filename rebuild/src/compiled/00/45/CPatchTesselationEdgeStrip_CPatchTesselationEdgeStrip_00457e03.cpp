@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CPatchTesselationEdgeStrip@
 // ~CPatchTesselationEdgeStrip
 struct CMember { void* v; void __fastcall dtor(); };
 

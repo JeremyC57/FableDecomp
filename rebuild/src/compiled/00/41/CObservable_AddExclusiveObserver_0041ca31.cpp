@@ -1,4 +1,5 @@
 struct CObservable {
+// Leaf: AddExclusiveObserver
     char pad[0x134];
     void* exclusiveObserver;
 };

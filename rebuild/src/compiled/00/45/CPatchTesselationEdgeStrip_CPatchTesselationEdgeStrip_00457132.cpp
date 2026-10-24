@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CPatchTesselationEdgeStrip@
 extern void __cdecl eng_free(void*);
 
 struct CPatchTesselationEdgeStripBase {

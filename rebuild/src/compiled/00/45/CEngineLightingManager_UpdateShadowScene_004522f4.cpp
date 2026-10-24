@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 // CEngineLightingManager::UpdateShadowScene @ 004522f4
 struct CShadowArg;
 

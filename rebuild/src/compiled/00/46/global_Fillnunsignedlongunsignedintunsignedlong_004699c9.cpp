@@ -1,4 +1,5 @@
 // std::_Fill_n<unsigned long*, unsigned int, unsigned long>
+// Leaf: _Fill_n<unsigned_long*,unsigned_int,unsigned_long>
 // __fastcall(dest in ecx, count in edx, const val& on stack); ret 4.
 // Writes _Val into _Count consecutive slots starting at _First, skipping a
 // store when the slot address is null. VC7.1 /O2 with size-favoring reaches

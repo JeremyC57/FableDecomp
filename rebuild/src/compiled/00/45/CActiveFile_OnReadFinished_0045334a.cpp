@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CInner;
 extern void __fastcall Inner_Process_00450a90(CInner* self, int arg, char* out);
 extern void __cdecl Free_Buf(void* p);

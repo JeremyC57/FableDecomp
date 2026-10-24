@@ -1,4 +1,5 @@
 struct CTCMapwho;
+// Leaf: OnDie
 
 // thiscall method on self (ecx=this, no other args)
 void __fastcall CTCMapwho_inner(CTCMapwho *self);

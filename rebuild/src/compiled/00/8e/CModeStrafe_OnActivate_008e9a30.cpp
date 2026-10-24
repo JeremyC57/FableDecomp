@@ -1,4 +1,5 @@
 // CModeStrafe::OnActivate -- initialise strafing group, animation timing and clear combination layers23,24,25,1F.
+// Leaf: OnActivate
 // Native008E9A30 length297. Genuine Strafe VT1268588 slot3=8EA220; ego90F530 supplies animation-distance/index signature.
 #ifndef _MSC_VER
 #define __int64 long long

@@ -1,4 +1,5 @@
 // NInventory::CTCInventoryBase::GetPrerequisitesString(CTCQuestCard*) -- per renown prerequisite of the card's def, "Renown: <n> (Current level <hero renown>)"
+// Leaf: GetPrerequisitesString
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>

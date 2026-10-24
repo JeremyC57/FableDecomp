@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CPatchTesselationEdgeStrip@
 struct CSub { };
 extern void __fastcall CSub_dtor(CSub* self);
 void __cdecl free(void*);

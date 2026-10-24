@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 extern void __cdecl engine_free(void* p);
 extern void __fastcall CTCInventoryItem_base(void* self);
 

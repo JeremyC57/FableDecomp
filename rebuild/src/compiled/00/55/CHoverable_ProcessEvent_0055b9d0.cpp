@@ -1,4 +1,5 @@
 typedef void (__fastcall *pfn_t)(void* self);
+// Leaf: ProcessEvent
 
 struct Base { void** vtbl; };
 

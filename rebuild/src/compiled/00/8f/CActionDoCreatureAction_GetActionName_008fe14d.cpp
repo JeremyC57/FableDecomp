@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CActionDoCreatureAction::GetActionName @ 0x008fe14d
+// Leaf: GetActionName
 //
 // Retail:
 //   push esi; push -1; push 0x128a268; mov esi,ecx; call 0x99ebf0;

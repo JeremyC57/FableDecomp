@@ -1,4 +1,5 @@
 // CGuiWindowManager_00ca4bf0::ReleaseForegroundWindow() -- EH-framed: holds the critical section at +0x94, releases the COM window at +0x6c and clears it when present, returns 0
+// Leaf: ReleaseForegroundWindow_00ca4bf0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA4BF0, oracle length 97 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; push edi ; mov esi,ecx ; lea edi,[esi+94h] ; push edi ; mov [esp+0Ch],edi ; call [__imp_EnterCriticalSection] ; mov eax,[esi+6Ch] ; test eax,eax ; mov dword ptr [esp+14h],0 ; je skip ; mov ecx,[eax] ; push eax ; call [ecx+8] ; mov dword ptr [esi+6Ch],0 ; skip: push edi ; call [__imp_LeaveCriticalSection] ; mov ecx,[esp+0Ch] ; pop edi ; xor eax,eax ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
 // The scoped critical-section lock of 0x00CAF890 around a COM `Release`. The manifest label is

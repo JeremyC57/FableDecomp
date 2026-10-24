@@ -1,3 +1,4 @@
 #include <stdlib.h>
+// Leaf: StdList_Initialize
 struct ListSentinel_0052d5a0 { ListSentinel_0052d5a0* next; ListSentinel_0052d5a0* previous; unsigned long reserved; };
 void** __fastcall StdList_Initialize(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_0052d5a0* node = (ListSentinel_0052d5a0*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

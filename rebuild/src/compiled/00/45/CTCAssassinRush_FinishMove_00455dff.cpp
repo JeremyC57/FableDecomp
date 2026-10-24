@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: FinishMove
 struct SubA { void FinishA(); };
 struct SubB { void FinishB(); };
 struct CTCMoveBase { void FinishMove(); };

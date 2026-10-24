@@ -1,4 +1,5 @@
 struct CSpawnedFunc {
+// Leaf: SuspendableProcess
     char pad0[5];
     unsigned char suspended;
     char pad6[0x2e];

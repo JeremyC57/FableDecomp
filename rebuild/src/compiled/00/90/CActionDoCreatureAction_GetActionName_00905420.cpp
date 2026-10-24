@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: GetActionName
 
 // CActionDoCreatureAction::GetActionName @ 0x00905420
 // Retail: __fastcall member of CActionDoCreatureAction returning a CCharString

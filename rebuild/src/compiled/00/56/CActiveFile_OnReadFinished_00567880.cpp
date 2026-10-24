@@ -1,4 +1,5 @@
 struct CActiveFile;
+// Leaf: OnReadFinished
 
 // __fastcall helper on self, returns nothing we use
 void __fastcall CActiveFile_base_00566e10(CActiveFile* self);

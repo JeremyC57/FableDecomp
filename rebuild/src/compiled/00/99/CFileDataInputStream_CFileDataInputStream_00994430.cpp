@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CFileDataInputStream::~CFileDataInputStream @ 0x00994430
+// Leaf: ??1CFileDataInputStream@
 
 struct Member { void* vp; };
 struct Base { void* vp; };

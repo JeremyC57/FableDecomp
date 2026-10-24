@@ -1,4 +1,5 @@
 // Forwarder to a member of the sub-object pointer at this+0xc. VC7.1 tail-calls
+// Leaf: CEntry>_const&>
 // a void member->void member forward, so retail is `mov ecx,[ecx+d]; jmp rel32`.
 #pragma pack(push,1)
 struct Sub { void Run_00434c90(); };

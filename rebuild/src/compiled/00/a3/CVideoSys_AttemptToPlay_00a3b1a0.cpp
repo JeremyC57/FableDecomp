@@ -1,4 +1,5 @@
 // CVideoSys::AttemptToPlay  0x00a3b1a0
+// Leaf: AttemptToPlay
 struct IPlayer;
 struct IPlayerVtbl {
     // slots 0..6 unknown

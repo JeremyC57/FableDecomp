@@ -1,4 +1,5 @@
 // CBrainBehaviourSet_00887330::Init(long name) -- one default behaviour, named, priority 1.0, then the set's state cleared
+// Leaf: Init
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00887330, length 73 bytes (+ int3 padding).
 // Callees: vector<CBrainBehaviour>::resize(unsigned long, const CBrainBehaviour&) @ 0x00889440 on
 // the retail vector at +0x08 (first/last/end).

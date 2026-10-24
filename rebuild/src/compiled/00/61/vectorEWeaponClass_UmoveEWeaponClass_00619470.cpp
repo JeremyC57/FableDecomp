@@ -1,4 +1,5 @@
 // _Umove for vector<EWeaponClass> â€” STL uninitialized-move helper.
+// Leaf: _Umove<EWeaponClass*>
 // Retail 0x00569af0. Forwards to inner copy/move at 0x5697c0.
 typedef int EWeaponClass;
 

@@ -1,4 +1,5 @@
 // CTwoLayerPolyMap::operator=(const CTwoLayerPolyMap& other) -- copy the settings and both 256-row poly layers of a packed two-layer map, leaving the 5-byte header alone and resetting the trailing cache word
+// Leaf: ??4CTwoLayerPolyMap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004FA860, length 109 bytes.
 // NOT CRigidBodyConfig::operator= (that class is 0xB8 bytes with a vector member, PDB): this body copies a
 // #pragma pack(1) object of 0x10822 bytes, which its only caller (0x0051C3A9, inside the factory at 0x0051C2F0 that

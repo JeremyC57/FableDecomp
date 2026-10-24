@@ -1,4 +1,5 @@
 struct CShadowTarget28 {
+// Leaf: UpdateShadowScene
     void Do(int v);
 };
 struct CLocalScene {

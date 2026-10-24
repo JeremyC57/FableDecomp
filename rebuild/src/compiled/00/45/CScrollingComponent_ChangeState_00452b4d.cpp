@@ -1,4 +1,5 @@
 #pragma optimize("gs",on)
+// Leaf: ChangeState
 
 struct IVisitor {
     virtual void f00();

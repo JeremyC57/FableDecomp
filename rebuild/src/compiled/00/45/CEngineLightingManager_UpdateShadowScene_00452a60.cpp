@@ -1,4 +1,5 @@
 // source_cpp
+// Leaf: UpdateShadowScene
 #pragma optimize("s",on)
 
 struct CLocalSink {

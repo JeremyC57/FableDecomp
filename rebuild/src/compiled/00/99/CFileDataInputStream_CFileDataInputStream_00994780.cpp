@@ -1,4 +1,5 @@
 // CFileDataInputStream::~CFileDataInputStream() -- closes the file, then unwinds to CDataStream/CBaseClass
+// Leaf: ??1CFileDataInputStream@
 // Retail: Fable.exe @ 0x00994780, 28 bytes. Stores the CFileDataInputStream vptr (0x0129A728), calls Close() directly
 // (slot 3, 0x00994300), stores the CDataStream vptr (0x0129A69C; the intermediate CDataInputStream has an implicit dtor,
 // so no store of its own), then tail-jumps to the out-of-line ~CBaseClass (0x0099A300, vptr 0x01231710).

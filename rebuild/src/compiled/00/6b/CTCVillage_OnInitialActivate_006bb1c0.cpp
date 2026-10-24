@@ -1,4 +1,5 @@
 struct Inner;
+// Leaf: OnInitialActivate
 
 // callee at 0x6bb140: receives ecx=self, edx=arg2, stack=byte arg
 void __fastcall Inner_Do(Inner* self, int edx, unsigned char v);

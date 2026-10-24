@@ -1,4 +1,5 @@
 // Forward the ADDRESS of the stack argument to a member of the sub-object at
+// Leaf: AddLearnedExpression
 // this+0x20c. __fastcall this=ecx, value=stack (ret 4).
 #pragma pack(push,1)
 struct Sub { void Add(int* value); };

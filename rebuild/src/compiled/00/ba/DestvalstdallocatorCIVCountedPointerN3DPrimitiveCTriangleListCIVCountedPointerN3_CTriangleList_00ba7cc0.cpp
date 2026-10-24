@@ -1,4 +1,5 @@
 // CIVCountedPointer<T>::Adopt — release the current ref, then take a raw pointer
+// Leaf: CTriangleList>_>
 // WITHOUT adding a reference. __fastcall this=ecx, np=stack (ret 4).
 struct Obj {
     virtual void v0();

@@ -1,4 +1,5 @@
 struct CInner {
+// Leaf: CountReferences
     char pad[0x124];
     unsigned long refCount;
 };

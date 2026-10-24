@@ -1,4 +1,5 @@
 // CModeDrained::FrameUpdate -- release drainer and remove this mode when the living drainer changes mode.
+// Leaf: FrameUpdate
 // Native008DA890 length256. Genuine unsigned long GetType() const virtual slot1; CBaseIntelligentPointer ctor/get/set/dtor A01B10/A01B50/A01B90/A01C10.
 #ifndef _MSC_VER
 #define __int64 long long

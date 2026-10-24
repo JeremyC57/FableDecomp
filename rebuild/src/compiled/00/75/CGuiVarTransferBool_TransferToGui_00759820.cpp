@@ -1,4 +1,5 @@
 // CGuiVarTransferBool::TransferToGui @ 0x00759820
+// Leaf: TransferToGui
 struct CGuiVarTransferBool {
     void*         gui;    // +0x00 -> ecx
     int           edxv;   // +0x04 -> edx

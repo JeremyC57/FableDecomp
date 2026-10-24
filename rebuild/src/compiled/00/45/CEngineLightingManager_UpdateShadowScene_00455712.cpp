@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 struct CObjA { void Do(int v); };
 struct CFreeTgt { void Do(void* a24, void* arg); };
 

@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of SetStaticCast<NUISystem::CComponent> @ 0x00cb80f0
+// Leaf: CComponent>
 // Disasm shape:
 //   push esi; mov esi,ecx
 //   mov eax,[esi+4]; mov ecx,[esi]

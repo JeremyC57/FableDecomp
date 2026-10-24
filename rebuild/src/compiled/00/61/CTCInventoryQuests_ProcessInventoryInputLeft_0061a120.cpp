@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCInventoryQuests::ProcessInventoryInputLeft @ 0x0061a120
+// Leaf: ProcessInventoryInputLeft
 // __fastcall (self in ecx), void return.
 
 struct CTCInventoryQuests {

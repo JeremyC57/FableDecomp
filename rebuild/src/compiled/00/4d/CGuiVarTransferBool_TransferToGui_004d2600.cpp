@@ -1,4 +1,5 @@
 struct CGuiVarTransferBool {
+// Leaf: TransferToGui
     void* target;        // +0x00
     void* context;       // +0x04
     char  pad8[4];       // +0x08

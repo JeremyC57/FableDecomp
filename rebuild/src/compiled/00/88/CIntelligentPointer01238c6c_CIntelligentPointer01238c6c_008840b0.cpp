@@ -1,4 +1,5 @@
 // CIntelligentPointer_01238c6c::CIntelligentPointer_01238c6c() -- default constructor: base CBaseIntelligentPointer, own vtable, SetPItem(0), clear the flag byte at +8
+// Leaf: ??0CIntelligentPointer_01238c6c@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008840B0, length 32 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CBaseIntelligentPointer::SetPItem
 // @ 0x00A01B90 (literal 0). Vtable 0x01238C6C (rtti-vtables.tsv: CIntelligentPointer, a propagated template

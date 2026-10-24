@@ -1,4 +1,5 @@
 // GetCombatMinDistance @ 0x0040e250
+// Leaf: GetCombatMinDistance
 // Disassembly:
 //   fld dword ptr ds:[0x122dedc]
 //   ret

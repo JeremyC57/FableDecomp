@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 0x004ba720
+// Leaf: OnReadFinished
 // push esi; mov esi,ecx; call base(this); mov esi,[esi]; test esi,esi; jz end;
 // push esi; call free; add esp,4; pop esi; ret
 

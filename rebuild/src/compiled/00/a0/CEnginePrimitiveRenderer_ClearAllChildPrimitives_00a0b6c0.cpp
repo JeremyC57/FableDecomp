@@ -1,4 +1,5 @@
 // CEnginePrimitiveRenderer::ClearAllChildPrimitives @ 0x00a0b6c0
+// Leaf: ClearAllChildPrimitives
 
 struct Child;
 struct ChildVtbl { void (__fastcall *slot0)(Child* self); };

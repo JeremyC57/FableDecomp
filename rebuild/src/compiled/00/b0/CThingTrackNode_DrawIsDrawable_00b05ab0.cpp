@@ -1,4 +1,5 @@
 // CThingTrackNode::DrawIsDrawable @ 00b05ab0
+// Leaf: DrawIsDrawable
 struct CThingTrackNode;
 
 struct Obj {

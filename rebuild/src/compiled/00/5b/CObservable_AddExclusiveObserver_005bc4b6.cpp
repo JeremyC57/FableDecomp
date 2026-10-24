@@ -1,4 +1,5 @@
 // Member setter at this+0x70: one stack arg, `ret 4`. __fastcall this=ecx.
+// Leaf: AddExclusiveObserver
 #pragma pack(push,1)
 struct T {
     char pad[0x70];

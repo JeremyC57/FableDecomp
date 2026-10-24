@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x004e0deb
 // thiscall(void) modeled as __fastcall(self) so this arrives in ecx.
 

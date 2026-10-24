@@ -1,4 +1,5 @@
 struct F4;
+// Leaf: Main
 struct F4Vtbl { void (__fastcall *slot[8])(F4*); };
 struct F4 { F4Vtbl* vtbl; };
 struct CQ_SunnyvaleMasterScript { void* f0; F4* f4; };

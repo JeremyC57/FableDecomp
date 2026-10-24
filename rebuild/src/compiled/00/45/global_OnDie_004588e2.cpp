@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 #include "rebuild_abi.h"
 
 struct CTCInventoryItem

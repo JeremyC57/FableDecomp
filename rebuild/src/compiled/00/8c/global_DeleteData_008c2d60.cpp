@@ -1,4 +1,5 @@
 struct IData {
+// Leaf: DeleteData
     virtual void Release(int flag) = 0;
 };
 

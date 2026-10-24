@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: IS_THING_DEAD<CThing*>
 // IS_THING_DEAD(CThing*) @ 0x005cbdbd
 struct CThing { char pad[0x91]; unsigned char m_flags; };
 struct Wrap { CThing *m_p; };

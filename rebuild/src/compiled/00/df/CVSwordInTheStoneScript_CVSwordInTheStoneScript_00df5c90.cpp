@@ -1,4 +1,5 @@
 // CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(CScriptDataBase* data, CGameScriptInterfaceBase* iface) -- quest-script constructor: CScriptBase(), the data/interface pair at +0x44/+0x40, own vtable, three cleared words and a timer registered with the game script interface
+// Leaf: ??0CV_SwordInTheStoneScript@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF5C90, length 62 bytes.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110 (the manifest's "CHeroMorphDef" label is propagated),
 // CGameScriptInterface::RegisterTimer (slot 87, +0x15c) through the interface global @ 0x0143E8F8 (the landed

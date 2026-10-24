@@ -1,4 +1,5 @@
 // CIntelligentPointer<CThingCreatureBase>::operator=
+// Leaf: ??4?$CIntelligentPointer@
 // Smart-pointer copy assignment: this->Assign( rhs->GetTarget() ); return this;
 
 class CThingCreatureBase;

@@ -1,4 +1,5 @@
 // Retail 0x005ba4f1:  jmp 0x5ba0f8  (5-byte tail-call thunk)
+// Leaf: COptimisedPrimitive>_>
 //
 // std::_Dest_val<allocator<CCountedPointer<...>>, CCountedPointer<...>>(al, p)
 // forwards to the out-of-line destroy target; VC7.1 /O2 tail-calls it,

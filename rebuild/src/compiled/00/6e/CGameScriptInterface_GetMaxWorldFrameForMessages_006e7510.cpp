@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CGameScriptInterface::GetMaxWorldFrameForMessages @ 0x006e7510
+// Leaf: GetMaxWorldFrameForMessages
 // this-call member; body ignores this and reads a global chain.
 
 struct L3 { char pad18[0x18]; long value; };          // +0x18

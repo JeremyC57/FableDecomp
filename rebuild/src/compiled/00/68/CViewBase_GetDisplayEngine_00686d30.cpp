@@ -1,4 +1,5 @@
 // NDisplayView::CViewBase::GetDisplayEngine @ retail 0x004c79d0
+// Leaf: GetDisplayEngine
 // Retail bytes: a1 1c8a3b01 8b4028 c3
 //   mov eax, ds:[0x13b8a1c]   ; load global singleton pointer
 //   mov eax, [eax+0x28]       ; return CDisplayEngine* at +0x28

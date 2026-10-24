@@ -1,4 +1,5 @@
 // CTCKraken::InitTentaclesAndHead @ 0x007fc710
+// Leaf: InitTentaclesAndHead
 struct ListNode { ListNode* next; };
 struct CTCKraken {
     char pad[0x44];

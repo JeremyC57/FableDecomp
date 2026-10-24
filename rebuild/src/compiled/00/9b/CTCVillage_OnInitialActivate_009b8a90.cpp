@@ -1,4 +1,5 @@
 void __fastcall Sub_9b84c0(void* ecx, void* edx, unsigned char arg);
+// Leaf: OnInitialActivate
 
 struct CTCVillage {
     void*         field_0;   // +0x00  -> ecx

@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: TransferToGui
 
 struct CGuiVarTransferBool {
     void*        field_0;   // +0x00 -> ecx for callee

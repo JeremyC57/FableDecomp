@@ -1,4 +1,5 @@
 // Counted object: vtable ptr at +0, refcount at +4
+// Leaf: ??0?$pair@
 struct CAnimComponentBase {
     virtual void v0() = 0;
     virtual void v1() = 0;  // slot 1 = [vtbl+4]

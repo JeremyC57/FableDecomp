@@ -1,4 +1,5 @@
 // Retail 0x00c33670:
+// Leaf: CEntry>_const&>
 //   mov ecx, 0x143bb58
 //   jmp  0xc3d3e0
 // A tiny forwarder: replaces the incoming allocator pointer (ecx) with a fixed

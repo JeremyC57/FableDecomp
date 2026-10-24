@@ -1,4 +1,5 @@
 // NCreatureMode::CModeSitFloor::CModeSitFloor(CThing*, const CCharString&) -- CModeSitBase(thing), own vtable, the CAnimFilterOfGroup member built from the group name
+// Leaf: ??0CModeSitFloor@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC3C0, length 36 bytes (+ int3 padding).
 // Callees: NCreatureMode::CModeSitBase::CModeSitBase(CThing*) @ 0x008D7CA0, CAnimFilterOfGroup::
 // CAnimFilterOfGroup(const CCharString&) @ 0x0073E8F0 (out of line here; the manifest calls it

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 // Reconstruction of CTCInventoryItem::OnDie @ 0x004e0b7d
 typedef unsigned long DWORD;
 

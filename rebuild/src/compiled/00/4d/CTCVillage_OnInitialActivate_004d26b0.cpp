@@ -1,4 +1,5 @@
 // CTCVillage::OnInitialActivate  0x004d26b0
+// Leaf: OnInitialActivate
 
 struct SubObj;
 

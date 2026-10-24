@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 struct SVec2 { int a; int b; };
 
 struct CEngineLightingManager {

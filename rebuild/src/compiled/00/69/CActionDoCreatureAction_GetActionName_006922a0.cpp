@@ -1,4 +1,5 @@
 // CActionDoCreatureAction::GetActionName @ 0x006922a0
+// Leaf: GetActionName
 // Stack-return-pointer variant of the action-name factory. The hidden
 // CCharString result pointer arrives as the single stdcall stack argument,
 // the body constructs it from a relocated string constant with the length

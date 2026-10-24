@@ -1,4 +1,5 @@
 #include <new>
+// Leaf: OnDie
 
 extern void sink(void*);
 

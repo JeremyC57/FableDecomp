@@ -1,4 +1,5 @@
 // NGameText::CDataBank::GetPGroupEntry -- load/materialise a group and retain it.
+// Leaf: GetPGroupEntry
 // Retail009C8890,247 bytes. Native Entries1E0 vs donor254; two native3C resource lists at168/1A4.
 #define CDataBank CDataBankLegacy
 #define CIVCountedPointer CIVCountedPointerLegacy

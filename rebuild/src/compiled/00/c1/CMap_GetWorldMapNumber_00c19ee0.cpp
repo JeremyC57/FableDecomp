@@ -1,4 +1,5 @@
 struct A {
+// Leaf: GetWorldMapNumber
     virtual long convert(long v);
 };
 

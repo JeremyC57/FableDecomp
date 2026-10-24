@@ -1,4 +1,5 @@
 // NUISystem::CClickable::OnLeftUnclicked() -- restore the state saved at left-click, stop observing event 0x1c, run the on-left-unclicked actions
+// Leaf: OnLeftUnclicked
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055ACF0, length 50 bytes.
 // Callees: primary vtable slot 48 ChangeState(long) (+0xc0, CChangingStateComponent::ChangeState @
 // 0x0052CF40), CObserver vtable slot 4 StopObservingEvent(long) (+0x10 on the +4 subobject), primary

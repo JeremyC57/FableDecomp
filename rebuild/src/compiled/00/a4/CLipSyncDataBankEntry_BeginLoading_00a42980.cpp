@@ -1,4 +1,5 @@
 // CLipSyncDataBankEntry::BeginLoading(unsigned long,CLipSyncDataBank&). Leaf: BeginLoading
+// Leaf: BeginLoading
 #include "engine/CLipSyncDataBank.h"
 #include "engine/CBankFile.h"
 #include "engine/CResource.h"

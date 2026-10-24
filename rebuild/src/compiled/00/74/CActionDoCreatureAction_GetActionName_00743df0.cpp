@@ -1,4 +1,5 @@
 struct CCharString {
+// Leaf: GetActionName
     CCharString(const char* lit, int len);
     int dummy;
 };

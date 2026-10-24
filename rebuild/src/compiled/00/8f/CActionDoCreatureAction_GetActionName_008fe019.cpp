@@ -1,4 +1,5 @@
 // CActionDoCreatureAction::GetActionName  @ 008fe019
+// Leaf: GetActionName
 // Returns CCharString by value; the hidden return buffer arrives in ECX.
 //
 // Retail shape (19 bytes):

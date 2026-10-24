@@ -1,4 +1,5 @@
 // CCoverListOwner_00786580::RemoveThingFromCoverList(CThing*) -- erase every entry for the thing, mark the list dirty
+// Leaf: RemoveThingFromCoverList
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00786580, length 88 bytes (+ int3 padding).
 // Callees: the VC6-era Dinkumware copy helper @ 0x00786EC0 (`_Copy_impl(first, last, dest,
 // const Tag&, 0)`, __fastcall: first in ecx, last in edx; dest, the empty iterator-tag temporary

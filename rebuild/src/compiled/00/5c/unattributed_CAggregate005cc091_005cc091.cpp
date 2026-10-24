@@ -1,4 +1,5 @@
 // CAggregate_005cc091::~CAggregate_005cc091() -- implicit destructor: members at +0xb0, +0xa8 destroyed out of line, the +0 member by tail call
+// Leaf: ??1CAggregate_005cc091@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CC091, oracle length 33 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

@@ -1,4 +1,5 @@
 // CUserProfileManager::CaptureBackBufferForUIBackgroundIfNonExistant  @ 0x00c32b80
+// Leaf: CaptureBackBufferForUIBackgroundIfNonExistant
 // Retail is a tiny __fastcall(this, unsigned int pos) that subtracts a member
 // span at [this+8] and tail-jumps to a sibling routine at 0x00c32950.
 

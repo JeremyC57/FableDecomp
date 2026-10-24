@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CSymbolInfo>_>
 // _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo> >,
 //           std::pair<CCharString,CSymbolMap::CSymbolInfo> >  @ 0x0047b880
 //

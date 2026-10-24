@@ -1,4 +1,5 @@
 // CTCKraken::EndAttackBeam @ 0045c5f6
+// Leaf: EndAttackBeam
 // push esi; mov esi,ecx; lea ecx,[esi+0x70]; mov [ecx],vtbl(0x1230ba0);
 // call 0x9fc550(ecx); mov ecx,esi; pop esi; jmp 0x454b4c(this)
 

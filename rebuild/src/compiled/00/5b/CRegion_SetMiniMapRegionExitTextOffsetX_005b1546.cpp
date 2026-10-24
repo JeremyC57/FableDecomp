@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 #include "rebuild_abi.h"
 // CRegion::SetMiniMapRegionExitTextOffsetX @ 0x005b1546
 // push esi; mov esi,ecx; push [esi]; call helper; mov [esi],eax; pop ecx; mov eax,esi; pop esi; ret

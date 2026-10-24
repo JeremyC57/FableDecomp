@@ -1,4 +1,5 @@
 // Reconstruction of 00c4b040 _Dest_val_pair_CCharString_CSymbolInfo
+// Leaf: CSymbolInfo>_>
 // push esi; mov esi,ecx; call A(esi); mov ecx,esi; call B(esi); mov ecx,esi; pop esi; jmp A
 // = A(this); B(this); return A(this);  (last is tail -> jmp)
 

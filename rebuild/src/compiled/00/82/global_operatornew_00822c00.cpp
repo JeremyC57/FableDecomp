@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: operator_new
 // operator_new @ 004c73b0
 // push ecx ; call helper_bfeb1c ; pop ecx ; ret
 // __fastcall(size in ecx) -> restack as cdecl stack arg, cdecl cleanup via pop ecx

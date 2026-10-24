@@ -1,4 +1,5 @@
 // CQuestObjectiveDescVector::operator=(const CQuestObjectiveDescVector&) -- STLport vector of a 12-byte non-POD element: copy assignment
+// Leaf: ??4CQuestObjectiveDescVector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047BE50, 320 bytes (incl. int3 padding); callers 0x0047C3B5,
 // 0x0047C63F. The catalog label "CCombatWheel::operator=" is propagated (0x0047BD70, called here as the
 // vector's _M_clear, carries the same propagated CCombatWheel name); the element is 12 bytes with a

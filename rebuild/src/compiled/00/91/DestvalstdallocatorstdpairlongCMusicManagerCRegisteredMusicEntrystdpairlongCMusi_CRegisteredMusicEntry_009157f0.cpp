@@ -1,4 +1,5 @@
 struct Sub { int a; };
+// Leaf: CRegisteredMusicEntry>_>
 
 void __fastcall SubDtor(Sub* p);
 void __fastcall BaseDtor(void* self);

@@ -1,4 +1,5 @@
 // NUISystem::CMouseCursor::TurnToPointer() -- show the default pointer: the sprite's default graphic index (CSprite::GetDefaultGraphicIndex @ 0x0041AB00) handed to the virtual SetGraphicIndex (slot 145, +0x244)
+// Leaf: TurnToPointer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055C5B0, length 23 bytes.
 // Callees: CSprite::GetDefaultGraphicIndex @ 0x0041AB00, then `call [vt+244h]` on `this`. Vtable slot 151 of NUISystem::CMouseCursor is this function. Shape: the vptr read into edi before the index call, `ret`.
 struct CSprite {

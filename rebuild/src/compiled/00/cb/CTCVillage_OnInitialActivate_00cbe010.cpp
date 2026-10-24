@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCVillage::OnInitialActivate @ 0x00cbe010
+// Leaf: OnInitialActivate
 
 struct Sub;
 

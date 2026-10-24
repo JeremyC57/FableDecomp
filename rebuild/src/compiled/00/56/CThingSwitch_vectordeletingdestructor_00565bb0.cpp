@@ -1,4 +1,5 @@
 // CThingSwitch::`vector_deleting_destructor' @ 0x00565BB0 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
+// Leaf: `vector_deleting_destructor'
 // stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
 // +0x8 CCharString (~ @ 0x0099EAE0), +0x4 CCharString (~ @ 0x0099EAE0), then +0x0 CCharString (~ @ 0x0099EAE0), and frees the block with operator delete
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /

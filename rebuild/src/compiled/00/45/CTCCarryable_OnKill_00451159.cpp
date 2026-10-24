@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnKill
 struct ListHead {
     void* pad0;    /* +0 */
     void* next;    /* +4 */

@@ -1,4 +1,5 @@
 struct MA { char pad[0x4c]; char a; };
+// Leaf: allocator<CMacro>,CMacro>
 struct MB { char pad[0x54-0x4c]; char b; };
 struct MC { char pad[0x64-0x54]; char c; };
 struct Obj {

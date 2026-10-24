@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CWorldMap::GetNextRegionOnRouteTo @ 0x00c23be0
+// Leaf: GetNextRegionOnRouteTo
 struct CWorldMap {
     char pad0[8];
     long count;   // +0x08

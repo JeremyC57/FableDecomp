@@ -1,4 +1,5 @@
 // CTCBuyableHouse::CountMoneyBags() -- catalog label; `this` is the thing: true when its interface-0x21 component's thing list holds at least one live thing that carries interface 0x26
+// Leaf: CountMoneyBags
 //
 // Retail 0x0082DD90, 132 bytes (plain `ret`). Callees: CVectorMap<ETCInterfaceType, CTCBase*>::
 // LowerBound @ 0x004365B0, CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 (three times per

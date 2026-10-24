@@ -1,4 +1,5 @@
 // CChangingStateComponent::InternalChanged() -- notify the virtual OnStateChanged(TargetState) and report
+// Leaf: InternalChanged
 // whether all three (progress, end) float pairs of the component have reached their end value
 // (progress >= end: the ordered `test ah,1 ; jne` compare). Returns a long (mov eax,1 / xor eax,eax).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052C780, length 88 bytes.

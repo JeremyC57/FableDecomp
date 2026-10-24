@@ -1,4 +1,5 @@
 // NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::Main -- lock the arena door and display its blocked message when used by hero.
+// Leaf: Main
 // Native00D7F250,260 bytes. PDB nestedowner Main00D9F530; native resource TEXT_QST_B04_BLOCKED_ARENA_DOOR_10 confirms quest.
 #include "fable_string.h"
 #include "engine/CGameScriptInterface.h"

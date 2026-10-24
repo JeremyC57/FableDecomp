@@ -1,4 +1,5 @@
 struct IErrTargetB {
+// Leaf: UpdateErrorMessage
     virtual void Slot0();
     virtual void Slot1();
     virtual void Slot2();

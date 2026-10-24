@@ -1,4 +1,5 @@
 // CFireEffectCreationSet::CFireEffectCreationSet() -- this class's vtable, then the critical section at +4 initialised
+// Leaf: ??0CFireEffectCreationSet@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5D550, length 32 bytes.
 // Callees: KERNEL32 InitializeCriticalSection (IAT 0x0143FEE4). Vtable 0x012B8FC8 (not in rtti-vtables.tsv; the chunk label names the class). Shape: the section
 // address pushed before the vtable store, `this` returned.

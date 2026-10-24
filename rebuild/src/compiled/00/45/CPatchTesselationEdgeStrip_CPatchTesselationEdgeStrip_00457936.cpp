@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CPatchTesselationEdgeStrip@
 
 struct CSub60 { void dtor(); };
 struct CBase { void dtor(); };

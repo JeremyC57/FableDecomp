@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // CRegion::SetMiniMapRegionExitTextOffsetX @ 005b1890
 // Body per retail disasm: swaps a pointer-sized member through a cdecl helper.
 //   edi = self->m0; self->m0 = helper(edi); *out = edi;

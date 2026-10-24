@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCVillage::OnInitialActivate @ 0x004bbbe0
+// Leaf: OnInitialActivate
 
 struct CInner;
 

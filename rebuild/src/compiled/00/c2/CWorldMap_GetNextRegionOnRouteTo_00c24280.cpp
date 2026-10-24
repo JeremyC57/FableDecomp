@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CWorldMap::GetNextRegionOnRouteTo @ 0x00c24280
+// Leaf: GetNextRegionOnRouteTo
 // __fastcall (this in ecx). Params (long,long) are unused -> epilogue is plain `ret`,
 // so model with only the this pointer (ecx) to avoid ret N cleanup.
 

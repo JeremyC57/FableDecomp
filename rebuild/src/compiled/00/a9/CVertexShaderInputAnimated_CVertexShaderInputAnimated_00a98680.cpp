@@ -1,4 +1,5 @@
 // N3DPrimitive::CVertexShaderInputAnimated::CVertexShaderInputAnimated(unsigned long, bool) -- base CVertexShaderInput(), own vtable, then Initialise(flags, flag)
+// Leaf: ??0CVertexShaderInputAnimated@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A98680, length 35 bytes.
 // Callees: CVertexShaderInput::CVertexShaderInput @ 0x00AB3B10 (manifest label "CAIStateGroup_HoverHornetQueen"
 // is propagated; the body stores vtable 0x0129EA08 = CVertexShaderInput per rtti-vtables.tsv),

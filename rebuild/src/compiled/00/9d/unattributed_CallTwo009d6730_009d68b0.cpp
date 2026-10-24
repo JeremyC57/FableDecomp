@@ -1,4 +1,5 @@
 // <unattributed>::CallTwo_009d6730() -- Method_009d6730(); Method_009d5a90() (tail)
+// Leaf: CRegisteredMusicEntry___
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D68B0, oracle length 16 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.

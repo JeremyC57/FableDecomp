@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: COptimisedPrimitive>_>
 struct Ctrl { int refcount; void (__fastcall *destroy)(void*); void* arg; };
 struct CCP { void* val; Ctrl* ctrl; };
 

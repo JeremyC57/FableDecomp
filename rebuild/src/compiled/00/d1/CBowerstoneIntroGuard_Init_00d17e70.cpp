@@ -1,4 +1,5 @@
 // CBowerstoneIntroGuard::Init() -- two script-interface calls around a flag clear
+// Leaf: Init
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D17E70, length 40 bytes (+ int3 padding).
 // Callees: the script interface at +0x40, virtual slots 321 (+0x504, one zero argument) and 338
 // (+0x548, the long at +0x7c as argument); the byte at +0x84 is cleared between the two calls.

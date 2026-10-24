@@ -1,4 +1,5 @@
 struct CCharString;
+// Leaf: GetPixelShader
 struct CPixelShader { int a, b, c, d; };
 // 0x9ccdc0 : native __fastcall member (ecx=this, name on stack, no edx dummy)
 struct CSubResource {

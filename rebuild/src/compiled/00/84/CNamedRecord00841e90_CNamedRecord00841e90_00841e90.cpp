@@ -1,4 +1,5 @@
 // CNamedRecord_00841e90::CNamedRecord_00841e90() -- an STLport string (default-constructed inline:
+// Leaf: ??0CNamedRecord_00841e90@
 // the three pointers nulled by the _String_base part, then an 8-byte malloc block, empty and
 // terminated) that is then assigned the empty literal in the body, followed by four scalar
 // members cleared in the body (init-list zeros would be stored before the assign call)

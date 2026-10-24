@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 0070ba70
+// Leaf: OnReadFinished
 struct CActiveFile;
 
 extern "C" void __fastcall CActiveFile_base_0x70ba00(CActiveFile* self);

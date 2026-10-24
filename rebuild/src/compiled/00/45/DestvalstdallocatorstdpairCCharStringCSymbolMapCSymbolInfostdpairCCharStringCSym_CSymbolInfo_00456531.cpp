@@ -1,4 +1,5 @@
 
+// Leaf: CSymbolInfo>_>
 struct Sub { char pad[32]; };
 struct Owner { char pad[0x50]; };
 

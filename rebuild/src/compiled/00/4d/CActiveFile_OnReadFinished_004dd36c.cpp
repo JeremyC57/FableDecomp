@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile { void* m0; };
 
 // 0x4db9ec - this-in-ecx cleanup on the CActiveFile

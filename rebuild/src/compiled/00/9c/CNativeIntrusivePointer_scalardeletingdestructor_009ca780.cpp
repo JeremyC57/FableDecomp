@@ -1,4 +1,5 @@
 // Native intrusive-pointer scalar deleting destructor @009CA780, corrected47-byte boundary.
+// Leaf: `scalar_deleting_destructor'
 // Original308-byte oracle spans unrelated functions. See boundary audit and preserved original.
 // No code/data xrefs identify the concrete template argument; CHeroAbilityDef is a propagated label.
 // Wrapper is one pointee pointer at0 with NO vptr. Pointee has genuine deletingdtor slot0, Delete slot1, refs4.

@@ -1,4 +1,5 @@
 // NUISystem::CObservable::AddExclusiveObserver @ 0x00556570
+// Leaf: AddExclusiveObserver
 // mov eax,[esp+4]; mov [ecx+0x18c],eax; ret 4
 // __fastcall: store observer pointer into field at +0x18C.
 struct CObservable {

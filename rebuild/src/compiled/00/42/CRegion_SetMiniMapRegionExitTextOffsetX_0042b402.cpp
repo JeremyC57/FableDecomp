@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // Byte-exact reconstruction of 0x005937e1 CRegion::SetMiniMapRegionExitTextOffsetX
 // Disasm:
 //   push [esp+8]      ; forward stack arg2 (the float)

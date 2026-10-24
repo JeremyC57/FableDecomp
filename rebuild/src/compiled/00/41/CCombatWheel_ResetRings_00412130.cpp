@@ -1,4 +1,5 @@
 struct Ring { int x; };
+// Leaf: ResetRings
 extern "C" void __fastcall Ring_dtor(Ring* r);
 extern "C" void engine_free(void* p);
 

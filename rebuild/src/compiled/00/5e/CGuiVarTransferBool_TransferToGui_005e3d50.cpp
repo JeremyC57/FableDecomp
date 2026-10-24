@@ -1,4 +1,5 @@
 // CGuiVarTransferBool::TransferToGui @ 005e3d50
+// Leaf: TransferToGui
 
 struct GuiTarget;
 

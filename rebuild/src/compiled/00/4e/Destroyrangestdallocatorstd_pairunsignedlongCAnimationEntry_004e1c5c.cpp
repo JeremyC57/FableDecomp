@@ -1,4 +1,5 @@
 // _Destroy_range<allocator<pair<unsigned long, CAnimationEntry> > >
+// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
 // retail 0x004dbe58 : __fastcall(first, last, allocator*), stride 0x1c, ret 4
 // element = pair<unsigned long, CAnimationEntry>, sizeof == 28 (0x1c).
 // The loop invokes the element's destructor once per element: a __fastcall call

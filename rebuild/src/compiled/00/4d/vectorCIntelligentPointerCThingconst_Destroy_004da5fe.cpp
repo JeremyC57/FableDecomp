@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 // vector<CIntelligentPointer<CThing const>>::_Destroy(first, last, alloc)
 // STL range-destroy helper. __fastcall: ecx=first iterator, edx=last iterator,
 // one stack allocator arg (cleaned by ret 4). For each element in [first,last)

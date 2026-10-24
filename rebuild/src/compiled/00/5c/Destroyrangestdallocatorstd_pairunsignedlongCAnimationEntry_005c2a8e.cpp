@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
 // _Destroy_range<allocator<pair<unsigned long, CAnimationEntry>>>
 // retail 0x005c2a8e: loop over [first,last) stride 0x2c calling ~pair() (thiscall),
 // pop edi/esi, ret 4. The element (std::pair<unsigned long, CAnimationEntry>) is 44

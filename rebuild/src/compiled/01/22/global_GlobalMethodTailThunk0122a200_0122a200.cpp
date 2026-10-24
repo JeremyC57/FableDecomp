@@ -1,4 +1,5 @@
 struct AutoTinyThunkTarget
+// Leaf: CEntry>_const&>
 {
     void Invoke_008f9f50();
 };

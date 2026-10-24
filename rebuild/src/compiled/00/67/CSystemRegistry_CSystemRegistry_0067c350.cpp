@@ -1,4 +1,5 @@
 // CSystemRegistry destructor @ 0067c350
+// Leaf: ??1CSystemRegistry@
 // push esi; mov esi,ecx; mov eax,[esi+8]; test eax; je; push eax; call free; add esp,4
 // mov [esi], 0x125b6d0 (vtable); pop esi; ret
 //

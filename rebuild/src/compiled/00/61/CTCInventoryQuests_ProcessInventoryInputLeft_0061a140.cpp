@@ -1,4 +1,5 @@
 // CTCInventoryQuests::ProcessInventoryInputLeft() -- outside the test-quest list mode, with at least one category, the base inventory's left-input handling runs
+// Leaf: ProcessInventoryInputLeft
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0061A140, 32 bytes. rtti-vtables: CTCInventoryQuests 0x012585B4 slot 41.
 // Callees: CTCInventoryBase category count @ 0x005BCE2F (`(Categories.last - first) / 0x2C`; Categories at retail +0x20,
 //          manifest label "CWorldMap::DrawGetNoMaps" is propagated), the base slot-41 handler @ 0x005BC649 (tail jump;

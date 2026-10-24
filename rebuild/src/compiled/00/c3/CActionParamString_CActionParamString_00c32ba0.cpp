@@ -1,4 +1,5 @@
 // CActionParamString::CActionParamString(const char*) -- EH-framed constructor: destructible polymorphic base (EH state 0), three members zeroed inline, the derived vtable (0x012B4E80) stored and the string set out of line (@ 0x00C32B80)
+// Leaf: ??0CActionParamString@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C32BA0, oracle length 80 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; xor eax,eax ; mov [esp+10h],eax ; mov [esi+4],eax ; mov [esi+8],eax ; mov [esi+0Ch],eax ; mov eax,[text] ; push eax ; mov dword ptr [esi],offset vtable ; call Set ; mov ecx,[esp+8] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret 4
 // EH state 0 is entered before the three members are zeroed, so it marks the base: a polymorphic

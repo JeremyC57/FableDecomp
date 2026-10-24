@@ -1,4 +1,5 @@
 // CRetailVector_dword::push_back(const long&) -- store at `last` when there is room, else InsertGrow @ 0x00BF5DB0 for one element
+// Leaf: PushBack_dword_00bf5ea0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF5EA0, oracle length 50 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

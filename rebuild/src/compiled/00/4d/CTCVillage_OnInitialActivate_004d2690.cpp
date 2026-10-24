@@ -1,4 +1,5 @@
 // CTCVillage::OnInitialActivate @ 0x004d2690
+// Leaf: OnInitialActivate
 // __fastcall (self in ecx) modeled as __fastcall free fn with self in ecx.
 
 struct CInner;

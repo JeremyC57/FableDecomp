@@ -1,4 +1,5 @@
 struct RefTarget {
+// Leaf: CountReferences
     char pad0[0x74];
     unsigned long refs; // +0x74
 };

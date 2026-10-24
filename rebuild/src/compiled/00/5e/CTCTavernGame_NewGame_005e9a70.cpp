@@ -1,4 +1,5 @@
 struct CTCTavernGame {
+// Leaf: NewGame
     char pad0[0x34];
     int  field_34;   // 0x34
     char pad1[0x08];

@@ -1,4 +1,5 @@
 // CModeScreamerAggressive::OnDeactivate -- kill a live effect, clear target, disable melee readiness and deactivate stand state.
+// Leaf: OnDeactivate
 // Native008DA690 length258. Pointer template evidence same as Drained; Combat donor ReadyForMelee90 ->retail80 after3 vector and1map shrink.
 #ifndef _MSC_VER
 #define __int64 long long

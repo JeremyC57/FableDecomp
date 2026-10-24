@@ -1,4 +1,5 @@
 // Faithful VC7.1 reconstruction of the _Dest_val destroy helper at 004e74f8.
+// Leaf: CSymbolInfo>_>
 // Disasm:
 //   push esi; mov esi,ecx
 //   lea ecx,[esi+0x24]; call 0x4b8940     ; dtor of member at +0x24

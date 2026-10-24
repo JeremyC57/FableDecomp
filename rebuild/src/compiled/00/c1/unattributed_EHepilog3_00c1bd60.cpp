@@ -1,4 +1,5 @@
 // CClass_00c1bd60::__EH_epilog3(long) -- stores the argument into the member at +0
+// Leaf: __EH_epilog3
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1BD60, oracle length 9 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

@@ -1,4 +1,5 @@
 // _Destroy_range<std::allocator<CSpeechFrame> >  @ retail 0x0047bca0
+// Leaf: allocator<CSpeechFrame>_>
 //
 // This is the MSVC7.1 std::_Destroy_range helper specialised for a 12-byte
 // element type (CSpeechFrame) whose only non-trivial sub-object is a CCharString

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: `vector_deleting_destructor'
 // CLandscapeBackgroundPatch::`vector_deleting_destructor' @ 0x005799de
 struct Inner { void dtor(); };
 struct CLandscapeBackgroundPatch { void* pad0; Inner inner; };

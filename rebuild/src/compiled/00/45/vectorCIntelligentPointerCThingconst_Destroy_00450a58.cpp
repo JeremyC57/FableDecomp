@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 struct Elem { virtual void dtor(int); };
 
 void __fastcall vec_Destroy(Elem* first, Elem* last, void* al)

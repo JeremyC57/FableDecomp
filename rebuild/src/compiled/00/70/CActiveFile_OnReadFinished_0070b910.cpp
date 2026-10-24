@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 0x0070b910
+// Leaf: OnReadFinished
 // shape: base thiscall call, then reload this->f0, if nonzero pass to cdecl free fn.
 
 struct CActiveFile {

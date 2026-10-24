@@ -1,3 +1,4 @@
 // Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
+// Leaf: GetNextRegionOnRouteTo
 extern "C" void ForwardTarget_00c167e0();
 extern "C" void Forward() { ForwardTarget_00c167e0(); }

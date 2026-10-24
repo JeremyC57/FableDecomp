@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 // CActiveFile::OnReadFinished @ 0x00477bfc
 // __fastcall void OnReadFinished(CActiveFile* this)

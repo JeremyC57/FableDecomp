@@ -1,4 +1,5 @@
 struct CObserver;
+// Leaf: AddExclusiveObserver
 
 struct CObservable_0066fa50
 {

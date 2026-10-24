@@ -1,4 +1,5 @@
 // NInventory::CCategory::GetCategoryIdentifier() const -- returns the category definition's CategoryIdentifier
+// Leaf: GetCategoryIdentifier
 // Retail: Fable.exe @ 0x005BD1B3, 28 bytes. Body: a CDefPointer copy of PDef (add-ref `inc [ecx+4]` when non-null), read
 // CategoryIdentifier (+0x50), then release the copy (`dec [ecx+4]`, slot 1 Delete on zero).
 // Layout: retail CCategory PDef at +0x14 (engine/CCategory.h has the Ego_r.pdb +0x18; the STLport vector ahead of it is

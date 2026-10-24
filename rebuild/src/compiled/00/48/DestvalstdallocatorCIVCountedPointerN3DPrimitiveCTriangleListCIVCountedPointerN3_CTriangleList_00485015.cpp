@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 // Retail 0x00485015
 // std::_Dest_val<allocator<CIVCountedPointer<...>>, CIVCountedPointer<...>>
 // Destroys a CIVCountedPointer: decrement the referenced object's refcount;

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 struct CTCInventoryItem {
     void* vptr;
     unsigned char _pad4[0x94];

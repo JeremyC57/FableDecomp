@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 // Byte-exact reconstruction of _Dest_val<allocator<CIVCountedPointer<CTriangleList>>, CIVCountedPointer<CTriangleList>*>
 // retail 0x0057ed0b
 //

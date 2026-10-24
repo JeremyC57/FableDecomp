@@ -1,4 +1,5 @@
 // std::_Destroy_range<std::allocator<std::pair<unsigned long, CAnimationEntry> > >
+// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
 // Retail 0x004dfc27 (__fastcall, ret 4):
 //   push esi; push edi; edi=last(edx); esi=first(ecx); jmp cond
 //   body: ecx=esi(element); call pair::~pair(0x4d799a); esi+=8

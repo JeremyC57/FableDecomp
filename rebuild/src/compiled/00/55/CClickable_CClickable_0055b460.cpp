@@ -1,4 +1,5 @@
 // NUISystem::CClickable::CClickable(long) -- base CHoverable(owner), the three vtables, the click state/flags/action lists zeroed, then InitialiseInputDelay()
+// Leaf: ??0CClickable@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055B460, length 93 bytes.
 // Callees: CHoverable::CHoverable(long) @ 0x0055BA20, CClickable::InitialiseInputDelay @ 0x0055B040 (reads
 // the owner's input delay into +0x18c). Vtables 0x0124BD2C / 0x0124BD08 / 0x0124BD00 = NUISystem::CClickable

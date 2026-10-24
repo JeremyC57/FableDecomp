@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: EndAttackBeam
 
 struct CTCKraken {
     char pad[0x64];

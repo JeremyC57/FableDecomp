@@ -1,4 +1,5 @@
 // CElement34Vector::operator=(const CElement34Vector&) -- STLport vector of a 52-byte non-POD element: copy assignment
+// Leaf: ??4CElement34Vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F6890, 288 bytes (incl. int3 padding); callers 0x009F54EF.
 // The catalog label "CCombatWheel::operator=" is propagated; 0x34-byte element type unconfirmed. _M_allocate_and_copy (0x009F65E0) and __copy_ptrs (0x009F63B0) stay out of line here.
 // Callees (LTCG register conventions, so declared __fastcall): __uninitialized_copy 0x009F65B0,

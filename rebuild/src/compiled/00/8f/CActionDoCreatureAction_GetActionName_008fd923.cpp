@@ -1,4 +1,5 @@
 #pragma optimize("g",on)
+// Leaf: GetActionName
 
 // CCharString ctor at 0x99ebf0: __fastcall member, this in ECX, two stack args
 // (const char* lit, int len) cleaned by callee (ret 8). Model as a real member so

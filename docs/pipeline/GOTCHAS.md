@@ -1129,3 +1129,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - The `ret N` of a /Gr heap helper is 4 + sizeof(T) + sizeof(Compare): it gives the comparator size (chunk 360).
 - A coin-flip predicate `if (Random() & 1) return false; return true;` gives `test al,1 ; jne`; `(x & 1) == 0` gives `not al ; test al,1` (00806990).
 - Wrapping both calls of `f(a) > f(b)` in an inline helper makes VC7.1 evaluate the right-hand call first (00807620).
+- Renaming a landed row's catalog label changes what re-grades select (recheck.py falls back to the catalog name for the object symbol): pin the old selector with a `// Leaf:` line first (`tools/decomp_pipeline/naming/apply_names.py` does this).
+- 1,705 of 2,055 vtable-member rows in the duplicate-label worklist sit in NON-RTTI vtables (entity scripts 0x00CDxxxx, creature AI 0x00C0xxxx built /GR-): find them as `mov [reg], imm` vptr-store targets; RTTI scans never see them.
+- VC7.1 destructors often store a BASE vtable (CHitLocationsDef::~ stores CDefPointeeBase): take a dtor's class from the RTTI class whose slot-0 scalar deleting destructor calls it; constructors store their own vtable last; stores through `lea reg,[this+N]` are member vtables.
+- crawl/rtti.demangle_class drops template args, collapsing every CIntelligentPointer<T>/CTBaseSingleton<T> onto one class: demangle with template args before slot naming.
+- `mov ecx,<global> ; jmp X::~X` bodies are dynamic-atexit destructors of statics (255 landed rows).
+- ~3,000 landed rows have no call and no data reference (unreferenced COMDAT instantiations kept without /OPT:REF): their template names were guesses from body shape.

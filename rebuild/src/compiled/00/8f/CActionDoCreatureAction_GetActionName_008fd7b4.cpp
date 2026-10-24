@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: GetActionName
 // CActionDoCreatureAction::GetActionName @ 0x008fd7b4
 struct FableCharStringResult_008fd7b4
 { void* build(const char* text, int length); };

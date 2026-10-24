@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of the compiler-generated pair destructor at 008fd2ca.
+// Leaf: CSymbolInfo>_>
 // Layout: member A at +0 (CCharString first of the pair), member B at +0x14,
 // member C at +0x30.  Compiler destroys in reverse declared order:
 //   ~C (+0x30), ~B (+0x14), then tail-call ~A (+0).

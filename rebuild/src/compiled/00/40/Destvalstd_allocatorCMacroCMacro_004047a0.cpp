@@ -1,4 +1,5 @@
 // std::_Dest_val<std::allocator<CMacro>, CMacro>(CMacro*) -- destroy one element in place: three owned members, then the base
+// Leaf: allocator<CMacro>,CMacro>
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004047A0, 35 bytes. Callees: member destructor A (+0x14), member destructor B 0x0059A340 (+0x10, +0x0C), base destructor 0x00595B40 (tail).
 //
 // STLport's allocator "destroy" hook: a vector shrinking or dying calls this on each element, and it is

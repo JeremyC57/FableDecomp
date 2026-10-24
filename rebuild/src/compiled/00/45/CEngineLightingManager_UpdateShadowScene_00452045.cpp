@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 
 extern "C" void __stdcall LogShadowScene(int tag);
 

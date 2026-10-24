@@ -1,4 +1,5 @@
 struct Sub;
+// Leaf: CRegisteredMusicEntry>_>
 struct Obj;
 
 // call 0xa01c10 : method on subobject at this+0x114 (ecx = &sub)

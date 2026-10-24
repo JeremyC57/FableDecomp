@@ -1,4 +1,5 @@
 // std::_Cons_val: placement-copy-constructs a std::pair<EHeroMorphType, CParticleMorphs::CEntry>
+// Leaf: CEntry>_const&>
 // value into raw storage, forwarding through the pair's own copy constructor. The allocator
 // argument (ecx on entry) is stateless and unused; edx carries the source pair pointer straight
 // through untouched, and the destination pointer (the sole stack argument) is loaded into ecx to

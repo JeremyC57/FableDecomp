@@ -1,4 +1,5 @@
 // NUISystem::CComponent::ExecuteActions(std::list<CCountedPointer<CAction>>*) -- hand every action of the list to the front-end manager
+// Leaf: ExecuteActions
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005309B0, length 43 bytes (+ int3 padding).
 // Callees: CFrontEndManager::GetInstance @ 0x0041E5F2 (lazy singleton), its vslot 14 (`call [edx+38h]`)
 // with the node's counted pointer (+8) by reference.

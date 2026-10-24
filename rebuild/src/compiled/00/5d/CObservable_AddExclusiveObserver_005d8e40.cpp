@@ -1,4 +1,5 @@
 // NUISystem::CObservable::AddExclusiveObserver  @ 0x005d8e40
+// Leaf: AddExclusiveObserver
 // mov eax,[esp+4]; mov [ecx+0x10],eax; ret 4
 // __fastcall setter: this->exclusiveObserver (offset 0x10) = observer
 

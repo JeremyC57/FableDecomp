@@ -1,4 +1,5 @@
 // _Dest_val<std::allocator<CMacro>,CMacro> : destroy chain forwarder.
+// Leaf: allocator<CMacro>,CMacro>
 extern "C" void __fastcall sub_A_00739030(void* self);
 extern "C" void __fastcall sub_B_00739140(void* self);
 extern "C" void __fastcall sub_C_00739250(void* self);

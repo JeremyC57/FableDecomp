@@ -1,4 +1,5 @@
 // NInventory::CTCInventoryBase::GetCanItemBeQuickAssigned @ 0x0041cf2c
+// Leaf: GetCanItemBeQuickAssigned
 // Retail: 8a 81 c8 00 00 00 c3  ->  mov al,BYTE PTR [ecx+0xc8]; ret
 //
 // This is a this-only byte accessor. Modeled as __fastcall so the object

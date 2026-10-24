@@ -1,4 +1,5 @@
 // CModeIceTrollGroundSmashIcicleAssault::OnActivate -- retain snow-troll definition, suspend AI, and collect viable positions.
+// Leaf: OnActivate
 // Native008D7630 length242. Subdef8C7A70 identifies CSnowTrollDef by native123565C; SuspendAI833A10 is genuine CThingAICreature API.
 #ifndef _MSC_VER
 #define __int64 long long

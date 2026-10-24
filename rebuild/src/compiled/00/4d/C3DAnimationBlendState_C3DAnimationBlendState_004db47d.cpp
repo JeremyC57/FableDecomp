@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1C3DAnimationBlendState@
 // Byte-exact reconstruction of C3DAnimationBlendState::~C3DAnimationBlendState @ 0x004db47d
 
 // Refcounted control block: vtable at +0, refcount at +4.

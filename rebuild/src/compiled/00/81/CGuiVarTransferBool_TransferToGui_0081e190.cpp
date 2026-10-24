@@ -1,4 +1,5 @@
 // CGuiVarTransferBool::TransferToGui  @ 0x0081e190
+// Leaf: TransferToGui
 // __fastcall void TransferToGui(CGuiVarTransferBool* this)
 //
 // Retail:

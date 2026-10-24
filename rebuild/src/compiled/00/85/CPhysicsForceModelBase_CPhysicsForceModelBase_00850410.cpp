@@ -1,4 +1,5 @@
 // CPhysicsForceModelBase::CPhysicsForceModelBase(CBase*, CGameCameraManager*, CPhysicsState*) -- initialize linked state and three 0x24-byte force submodels; retail @ 0x00850410, 199 bytes.
+// Leaf: ??0CPhysicsForceModelBase@
 // The landed GetVelocity model confirms the vptr +0 and LinkedState +4 base layout. Each submodel constructor call is the external helper at 0x008FB170, with six scalar parameters stored at subobject offsets +0xc..+0x20. The trailing state, float, flags, owner and camera-manager fields follow the retail stores at +0x74..+0xa8.
 struct CBase;
 struct CGameCameraManager;

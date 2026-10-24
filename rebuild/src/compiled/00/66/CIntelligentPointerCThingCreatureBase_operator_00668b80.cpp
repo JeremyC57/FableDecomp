@@ -1,4 +1,5 @@
 // CIntelligentPointer<CThingCreatureBase>::operator=
+// Leaf: ??4?$CIntelligentPointer@
 // retail 0x00668b80
 
 class CThingCreatureBase;

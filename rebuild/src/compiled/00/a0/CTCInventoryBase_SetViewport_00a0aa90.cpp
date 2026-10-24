@@ -1,4 +1,5 @@
 struct C2DBoxI;
+// Leaf: CEntry>_const&>
 
 struct CDisplayManager
 {

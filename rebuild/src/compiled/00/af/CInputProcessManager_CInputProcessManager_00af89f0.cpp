@@ -1,4 +1,5 @@
 struct CInputProcessManager {
+// Leaf: ??1CInputProcessManager@
     void* vptr;
 };
 

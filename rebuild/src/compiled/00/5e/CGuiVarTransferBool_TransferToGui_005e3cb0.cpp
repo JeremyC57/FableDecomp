@@ -1,4 +1,5 @@
 // CGuiVarTransferBool::TransferToGui @ 005e3cb0
+// Leaf: TransferToGui
 // helper(ecx=[esi], edx=[esi+4], (u8)this->f0c); this->f0d=0
 
 struct CGuiVarTransferBool {

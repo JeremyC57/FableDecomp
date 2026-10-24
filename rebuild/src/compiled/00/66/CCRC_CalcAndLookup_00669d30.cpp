@@ -1,4 +1,5 @@
 // CCRC::CalcAndLookup(const CCharString& name, long* value) -- hash a name with the engine CRC and look the hash up in the owner's CRC -> value map; on a hit store the mapped value and return true
+// Leaf: CalcAndLookup
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00669D30, length 100 bytes (ret 8; 178 call sites, e.g. 0x0066385F).
 // Callees: Calc @ 0x004014A0 (`__fastcall(seed, data, length)`, the engine's CRC-32 kernel, seed 0), the STLport
 // map's find @ 0x006699C0 (manifest "BinaryTree_FindNode": `find(iterator* result, const unsigned long& key)`,

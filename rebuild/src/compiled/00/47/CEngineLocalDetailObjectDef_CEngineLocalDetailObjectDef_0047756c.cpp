@@ -1,4 +1,5 @@
 // CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(const CEngineLocalDetailObjectDef&) -- copy the native parent state, install this object's vptr, and copy values and flags
+// Leaf: CEngineLocalDetailObjectDef
 // Retail: Fable.exe function 0x0047756C, 300 bytes.
 // Callee: CParentDefClassBase copy constructor @ 0x0046EE98; native vtable 0x0123634C (RTTI slot evidence).
 // The real PDB headers are included below under aliases. Their donor sizes (0x3d parent, 0x8c detail object) conflict with retail: native derived members begin at +0x3c and the object ends at +0x88. This constructor-only native projection uses an explicit vptr data member and a 0x3c parent extent; no synthetic virtual slot is declared. PDB flag order: CastShadows, ReceiveShadows, IsRepeatedMesh, IsZSprite, AlphaIsBoolean, HasLandscapeNormalLighting, TiltToSlope, HasWindSkew.

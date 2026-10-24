@@ -1,4 +1,5 @@
 // NScript::CQ_SecretPassageScript::CTortureDoorCourtyard::Main -- lock the torture courtyard door and display its blocked message when used by hero.
+// Leaf: Main
 // Native00DEEFC0,260 bytes. PDB nestedowner Main00E2C4F0; native RegisterMain00DECA10 binds TortureDoorCourtyard atDECE4C toAllocDEEF00, which installs vtable12DDED0 MainDEEFC0.
 #include "fable_string.h"
 #include "engine/CGameScriptInterface.h"

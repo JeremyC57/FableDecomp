@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // Retail 0x005b1876 CRegion::SetMiniMapRegionExitTextOffsetX
 // Despite the manifest name, the body swaps this->p through a cdecl transform,
 // returning the old pointer via an out-param. arg1 (CCharString*) is unused.

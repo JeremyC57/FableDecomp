@@ -1,4 +1,5 @@
 class CAnimFilterBase
+// Leaf: GetAnimFilter
 {
 public:
     int filterData[1];

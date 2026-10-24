@@ -1,4 +1,5 @@
 // CTCCombat::AddMeleeFlourishAbility() -- catalog label; the body is a CGameCameraManager member: drop the main player's mode 0x2f, switch the camera manager def to the camera set's melee entry and mark the observed thing as in melee
+// Leaf: AddMeleeFlourishAbility
 //
 // Retail 0x0069A8B0, 100 bytes (plain `ret`). Callees: CPlayerManager::GetMainPlayer @ 0x00449970
 // (labelled "Catch@0040d959", propagated), CPlayer::RemoveMode(long) @ 0x00634190,

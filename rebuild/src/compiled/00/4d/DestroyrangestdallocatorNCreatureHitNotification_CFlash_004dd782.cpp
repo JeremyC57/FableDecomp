@@ -1,4 +1,5 @@
 // _Destroy_range<allocator<NCreatureHitNotification::CFlash> >
+// Leaf: CFlash>_>
 // retail 0x004dd782 : __fastcall(first, last, allocator*, tag), stride 8, ret 4
 //
 // The loop walks [first,last) stride 8, invoking each element's scalar-deleting

@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: CRegisteredMusicEntry>_>
 
 // std::_Dest_val<...> @ 0x004e0a1f
 // push esi; mov esi,ecx; lea ecx,[esi+0x08]; call inner;

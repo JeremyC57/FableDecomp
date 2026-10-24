@@ -1,4 +1,5 @@
 // CActionDoCreatureAction::GetActionName @ 008fd7d9
+// Leaf: GetActionName
 // Retail: push esi; push -1; push offset "literal"; mov esi,ecx;
 //         call ??0CCharString; mov eax,esi; pop esi; ret
 // A no-arg fastcall value factory: hidden CCharString return slot arrives in

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 struct Counted {
     void** vtable;
     int    refcount;

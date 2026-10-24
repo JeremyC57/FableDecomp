@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 struct SubA { char x; };
 struct SubB { char x; };
 #pragma pack(1)

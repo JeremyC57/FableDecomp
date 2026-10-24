@@ -1,4 +1,5 @@
 // _Dest_val for std::allocator<std::pair<CCharString, CSymbolMap::CSymbolInfo>>
+// Leaf: CSymbolInfo>_>
 // Retail 0x00918150. The pair pointer arrives in ecx (this-in-ecx); allocator arg unused.
 //   push esi; mov esi,ecx
 //   lea ecx,[esi+0x14]; call 0xa01c10   (dtor of sub-object at +0x14)

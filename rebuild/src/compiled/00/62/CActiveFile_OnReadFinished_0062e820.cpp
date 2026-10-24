@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 0062e820
+// Leaf: OnReadFinished
 struct CActiveFile;
 
 void __fastcall base_helper(CActiveFile* self);       // 0x62e2b0, ecx=this

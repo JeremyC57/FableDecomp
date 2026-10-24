@@ -1,4 +1,5 @@
 // CMainGameComponent::GetSmoothedFrameTime() const -- forwards to the frame-rate smoother's CFrameRateSmoother::GetSmoothedTime (member at +0x16178)
+// Leaf: CEntry>_const&>
 // Retail: Fable.exe @ 0x00416219, 12 bytes: `add ecx,16178h ; call 0x0049B990 ; ret` (catalog label "_Cons_val<...>" is wrong).
 // Evidence: the only caller 0x004167CD (CMainGameComponent::GetCurrentFrameFinishTimeApproximation) calls it on
 // its own `this` and adds the double at +0x58; PDB CMainGameComponent::FrameRateSmoother (CFrameRateSmoother) is at

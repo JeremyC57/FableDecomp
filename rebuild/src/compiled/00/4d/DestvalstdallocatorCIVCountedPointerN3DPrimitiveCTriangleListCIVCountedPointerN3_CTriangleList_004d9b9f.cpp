@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 // Counted-body: has a vtable and a refcount at +4.
 struct CountedBody {
     virtual void slot0();          // vtable+0

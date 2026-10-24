@@ -1,4 +1,5 @@
 // Destructor of a polymorphic class with no members to release: MSVC still
+// Leaf: ??0CBase@
 // re-installs the vptr (`mov dword ptr [ecx], offset vftable`). The vtable
 // address is a data relocation. __fastcall this=ecx.
 struct T {

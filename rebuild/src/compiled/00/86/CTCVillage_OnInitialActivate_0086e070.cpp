@@ -1,4 +1,5 @@
 // CTCVillage::OnInitialActivate @ 0x0086e070
+// Leaf: OnInitialActivate
 // __fastcall void(CTCVillage*)
 
 struct SomeTarget;

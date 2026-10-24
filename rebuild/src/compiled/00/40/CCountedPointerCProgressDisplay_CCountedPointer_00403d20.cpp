@@ -1,4 +1,5 @@
 #include <new>
+// Leaf: CFileInfo_const_>
 
 // CCountedPointer<T>::CCountedPointer(T* object) -- take shared ownership of a freshly created object
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00403D20, 78 bytes. Callees: operator new, deleter 0x00403600 (stored, not called).

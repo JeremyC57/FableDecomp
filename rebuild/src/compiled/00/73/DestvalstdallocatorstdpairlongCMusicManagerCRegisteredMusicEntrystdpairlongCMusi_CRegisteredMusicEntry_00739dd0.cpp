@@ -1,4 +1,5 @@
 // _Dest_val for std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>>
+// Leaf: CRegisteredMusicEntry>_>
 // retail 0x00739dd0: destroys two sub-objects (each dtor @0x99eae0) then stores a ptr at +0.
 
 struct Sub {

@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: FinishMove
 #include "rebuild_abi.h"
 
 // Retail 0x00458c66 CTCAssassinRush::FinishMove (__fastcall, void, 33 bytes)

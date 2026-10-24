@@ -1,4 +1,5 @@
 struct CTCMapwho;
+// Leaf: OnDie
 extern "C" void __fastcall CTCMapwho_Cleanup(CTCMapwho* self);
 void __cdecl operator delete(void* block);   // MSVCR71 import thunk 0x00BFE9BC
 

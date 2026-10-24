@@ -1,4 +1,5 @@
 struct CInner;
+// Leaf: `scalar_deleting_destructor'
 void __fastcall CConsoleVariable_dtor_inner(CInner* variable);
 extern void __cdecl engine_operator_delete(void* p);
 

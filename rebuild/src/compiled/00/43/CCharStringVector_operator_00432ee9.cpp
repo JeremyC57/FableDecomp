@@ -1,4 +1,5 @@
 // CCharStringVector::operator=(const CCharStringVector&) -- STLport vector<CCharString> copy assignment (size-optimised TU)
+// Leaf: ??4CCharStringVector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00432EE9, 263 bytes; 52 callers (def Copy bodies 0x45C315..,
 // script 0xCBFDBE.., 0xE54C6B..). The catalog label "CCombatWheel::operator=" is a propagated name.
 // Callees: _M_allocate_and_copy 0x00432FF0, _M_clear 0x00433040, CCharString::operator= 0x0099EFB0,

@@ -1,4 +1,5 @@
 // _unattributed::PopValue_0059aee5 -- pops one dword from a block stack: when the cursor sits at the block start the previous block is restored, otherwise the cursor steps back
+// Leaf: PopValue
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059AEE5, length 20 bytes (unaligned, no padding: the 0x595000.. module is
 // built without function alignment; seven callers, e.g. 0x00595268, 0x005967E9).
 // Callees: the block-restore @ 0x0059AD35 (frees the current block, re-reads the previous one from the block table at +0x1c,

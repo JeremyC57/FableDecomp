@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CCompressedMemoryDataInputStream@
 struct CCompressedMemoryDataInputStream {
     void* vtbl;
     char pad[0xa4];

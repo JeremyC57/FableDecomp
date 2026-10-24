@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: ChangeCameraAngle
 // CEngine::ChangeCameraAngle @ 0x00c54170
 struct Sub584;
 extern "C" void FABLE_FASTCALL FableSub_c54170(Sub584 *s);

@@ -1,4 +1,5 @@
 // CTCInventoryItem::OnDie  0x004e0fce  __fastcall(void)
+// Leaf: OnDie
 typedef unsigned int uintptr_t32;
 
 struct CTCInventoryItem {

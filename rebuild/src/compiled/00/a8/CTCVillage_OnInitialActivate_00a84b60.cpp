@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCVillage::OnInitialActivate @ 0x00a84b60
+// Leaf: OnInitialActivate
 // __fastcall(void) -> modeled as __fastcall free fn with self in ecx.
 
 struct Inner;

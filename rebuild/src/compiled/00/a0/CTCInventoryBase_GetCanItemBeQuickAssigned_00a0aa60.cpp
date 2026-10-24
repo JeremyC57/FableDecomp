@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: GetCanItemBeQuickAssigned
 
 struct CTCInventoryBaseQuickAssignView
 {

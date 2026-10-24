@@ -1,4 +1,5 @@
 // NScript::CQ_EndGameFocalSitesScript::CBattleGuard::Main() -- guard stays villager while near hero, then fades out unless terminating.
+// Leaf: Main
 // Native00D2C530,273 bytes. RegistrationD2B006 stores allocatorD2C430 for BattleGuard; allocation stores VT12CC320 whose Main is D2C530.
 // Parent ctorD2A820 is CQ_EndGameFocalSitesScript; PDB nestedMainD36CB0. Predicate12C32F0 is genuine CIsThingAlive (operator()/Clone/dtor).
 #include "fable_string.h"

@@ -1,4 +1,5 @@
 // CInitRumble::Set(bool a, long b, long c, long d, bool e, long f, long g) -- fill the rumble record: the three scales at +0xc..+0x14 = 1.0f, the two words at +0x18/+0x1c cleared, then the arguments into +0 (d), +4 (a), +8 (c), +5 (e), +0x20 (f), +0x24 (b), +0x28 (g)
+// Leaf: Set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070C050, length 80 bytes.
 // The chunk label "CInitRumble::CInitRumble" names a constructor, but eax is not `this` on return: a setter. Shape: one `mov eax,3F800000h` for three stores, `ret 1Ch`.
 struct CInitRumble {

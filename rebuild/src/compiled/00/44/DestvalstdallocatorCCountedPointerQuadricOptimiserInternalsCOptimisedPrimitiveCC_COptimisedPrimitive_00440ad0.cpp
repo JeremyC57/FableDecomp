@@ -1,4 +1,5 @@
 void operator delete(void*);
+// Leaf: COptimisedPrimitive>_>
 
 struct Counter {
     long refcount;

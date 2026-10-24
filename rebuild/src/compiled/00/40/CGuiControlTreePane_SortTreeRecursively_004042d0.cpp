@@ -1,4 +1,5 @@
 // List::Clear() -- free every node of a circular doubly-linked list and leave the sentinel empty
+// Leaf: SortTreeRecursively
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004042D0, 47 bytes. Callees: node free 0x00BFEA14.
 //
 // This is the STL-style list clear we use everywhere: the list is a single word pointing at a sentinel

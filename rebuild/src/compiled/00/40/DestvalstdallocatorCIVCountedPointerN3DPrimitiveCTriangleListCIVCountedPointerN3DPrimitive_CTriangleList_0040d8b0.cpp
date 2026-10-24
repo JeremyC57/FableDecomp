@@ -1,4 +1,5 @@
 struct CCountedObj {
+// Leaf: CTriangleList>_>
     void (__fastcall** vtbl)(CCountedObj*);
     long refcount;
 };

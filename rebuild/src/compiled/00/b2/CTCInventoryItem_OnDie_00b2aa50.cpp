@@ -1,4 +1,5 @@
 // CTCInventoryItem::OnDie @ 0x00b2aa50
+// Leaf: OnDie
 // void __fastcall OnDie(CTCInventoryItem* this)
 //   eax = this->field_0x208;
 //   if (eax) { cdecl_free(eax); }   // add esp,4 cleanup

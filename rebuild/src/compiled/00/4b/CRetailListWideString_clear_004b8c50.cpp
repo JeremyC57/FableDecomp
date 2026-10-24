@@ -1,4 +1,5 @@
 // CRetailList_WideString::clear() -- destroy every node's CWideString (+8), free the node, re-link the head to itself
+// Leaf: clear
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B8C50, length 56 bytes.
 // Callees: ~CWideString @ 0x0099B510, free @ 0x00BFEA14. Shape: the landed list clear @ 0x00A80A20 with a one-word value (`lea ecx,[edi+8]`). The chunk label
 // "CGuiControlTreePane::SortTreeRecursively" is a propagated STL label.

@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerFlareSprites::CEnginePrimitiveManagerFlareSprites -- constructs flare buffer map, loads VSHADER_STATIC_UNLIT and sets fade-in speed0.75; retail00bce070 232bytes. RTTI012a6c18 and adjacent destructor00bce160 prove propagated Lines label wrong. Shared flare header has donor16byte map and wrong shader/speed offsets1c/24; retail map12 shifts shader18/speed20. Shader method model and hidden result ABI follow proven00bc7e90. Callees base00bacf70,malloc00bfea0e,shaderctor00a62fb0,string0099ebf0/0099eae0,getter00a5d5f0; global01436e98 shader resource29c0.
+// Leaf: CEnginePrimitiveManagerLines
 #ifdef _MSC_VER
 #include "engine/CVertexShader.h"
 #include "fable_string.h"

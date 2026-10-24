@@ -1,4 +1,5 @@
 struct CThing { char pad[0x91]; unsigned char flags; };
+// Leaf: IS_THING_ALIVE<CThingBuilding*>
 struct ThingRef { CThing* p; };
 
 bool __fastcall IS_THING_ALIVE(const ThingRef* self)

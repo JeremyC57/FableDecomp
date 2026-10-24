@@ -1,4 +1,5 @@
 struct Sub;
+// Leaf: OnInitialActivate
 
 extern void __fastcall Sub_Do(Sub* self, int a, unsigned char b);
 

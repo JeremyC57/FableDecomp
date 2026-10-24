@@ -1,4 +1,5 @@
 // CRetailList_StringRecord::clear() -- destroy every node's record (two CWideStrings and a CCharString after three plain words), free the node, re-link the head to itself
+// Leaf: clear
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B8C00, length 80 bytes.
 // Callees: ~CWideString @ 0x0099B510 (twice: +0x1c then +0x18), ~CCharString @ 0x0099EAE0 (+0x14), free @ 0x00BFEA14. Shape: the landed CRetailList_CountedPointer::clear @ 0x00A80A20
 // (cursor advanced before the old node is destroyed, the head re-read from `this` every iteration, `push esi` inside the non-empty path). The chunk label

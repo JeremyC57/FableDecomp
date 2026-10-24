@@ -1,4 +1,5 @@
 // CTCCarryable::OnKill @ 0047c880  (51 bytes)
+// Leaf: OnKill
 // __fastcall, void, modeled as __fastcall(this in ecx).
 //
 // Retail idiom:

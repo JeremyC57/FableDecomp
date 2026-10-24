@@ -1,4 +1,5 @@
 struct CLandscapeBackgroundPatch {
+// Leaf: ClearTextures
   void* vtable;   // +0
   void* tex;      // +4
 };

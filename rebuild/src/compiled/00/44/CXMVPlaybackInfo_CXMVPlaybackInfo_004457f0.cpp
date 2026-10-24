@@ -1,4 +1,5 @@
 // 0x004457f0 CXMVPlaybackInfo
+// Leaf: ??0CXMVPlaybackInfo@
 // mov byte ptr [ecx+0x894], 0 ; ret  -> __fastcall writing a byte field
 struct CXMVPlaybackInfoObj {
     char pad[0x894];

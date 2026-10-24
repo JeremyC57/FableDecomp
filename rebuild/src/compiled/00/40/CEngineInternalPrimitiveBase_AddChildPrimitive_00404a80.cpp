@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveBase::AddChildPrimitive() -- accessor returning the address of the engine root object at 0x013B7CD8
+// Leaf: AddChildPrimitive
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00404A80, 6 bytes. Callees: none.
 //
 // `mov eax, offset g_engineRoot; ret`. This is the "get the engine" accessor that GFInitialise and the

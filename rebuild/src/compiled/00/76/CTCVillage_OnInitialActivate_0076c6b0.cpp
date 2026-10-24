@@ -1,4 +1,5 @@
 struct Inner;
+// Leaf: OnInitialActivate
 
 void __fastcall Inner_Do(Inner* self, void* edx, unsigned char arg);
 

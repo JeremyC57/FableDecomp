@@ -1,4 +1,5 @@
 // GFGetPreMainMemoryUsed @ 00aeaab0
+// Leaf: GFGetPreMainMemoryUsed
 // mov eax, dword ptr [0x13d2e0c]; ret
 extern "C" long g_GFPreMainMemoryUsed;
 

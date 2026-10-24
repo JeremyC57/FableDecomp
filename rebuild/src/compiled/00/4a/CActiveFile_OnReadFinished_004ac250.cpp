@@ -1,4 +1,5 @@
 // CActiveFile::OnReadFinished @ 004ac250
+// Leaf: OnReadFinished
 // push esi; mov esi,ecx; call base(this); esi=*this; if(esi) free(esi); ret
 
 struct CActiveFile;

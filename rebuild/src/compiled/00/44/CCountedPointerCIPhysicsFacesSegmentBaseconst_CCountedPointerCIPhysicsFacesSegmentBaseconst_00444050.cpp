@@ -1,4 +1,5 @@
 #include <new>
+// Leaf: Reset
 
 // CCountedPointer<CIPhysicsFacesSegmentBase const>::Reset(
 //     CIPhysicsFacesSegmentBase const*) @ 0x00444050.

@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: IsFinished
 // CScriptModuleSelfTerminate::IsFinished @ 0x00c49620
 // push esi; esi=ecx; lea ecx,[esi+0x1c]; call helper; ecx=[esi+0x3c]; sub ecx,eax; eax=ecx; ret
 struct Sub1c;

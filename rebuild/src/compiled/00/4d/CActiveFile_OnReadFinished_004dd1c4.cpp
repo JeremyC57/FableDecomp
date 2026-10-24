@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile { void* member0; };
 
 // helper at 0x4db806, __fastcall(this) -> void  (single ptr arg -> ecx only)

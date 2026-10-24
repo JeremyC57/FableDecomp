@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CBaseClass::`vector deleting destructor'
+// Leaf: `scalar_deleting_destructor'
 // retail 0x0047b300, __fastcall(self, uint flags) -> void*
 //
 // Pattern:

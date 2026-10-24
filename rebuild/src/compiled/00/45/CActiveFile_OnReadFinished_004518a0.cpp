@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnReadFinished
 struct CActiveFile { void* buf; void Close(); };
 extern void FreeBuffer(void* p);
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)

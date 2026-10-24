@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: GetMeshEffect
 // CIVCountedPointer<T>::Assign (GetMeshEffect family, 47B x7, template 0042a6c3).
 // __fastcall this=ecx, other=stack (ret 4). #pragma optimize("s") (retail size peephole).
 // The `this->p = 0` lives INSIDE the release branch (retail's je skips `and [esi],0`

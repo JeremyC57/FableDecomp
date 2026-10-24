@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??0?$pair@
 // _Dest_val for std::pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase>>
 // Body only touches the counted pointer at pair+4: decref, release on zero, null out.
 // __fastcall: ecx = self (the pair), edx = unused allocator/formal. No stack params (ret 0).

@@ -1,4 +1,5 @@
 // CPairedIntelligentPointerRecord::DeletingDestructor -- destroys two intelligent pointers then optionally frees record.
+// Leaf: `scalar_deleting_destructor'
 // Retail0078e1f0 corrected45bytes. Concrete template owner remains unknown;
 // CEngineSubPrimitiveText label is contradicted by two A01C10 base-intelligent-pointer destructors.
 // Native pointers at+4 and+16, each base vptr+0/PData+4. Middle dword+12 is untouched.

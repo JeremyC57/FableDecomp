@@ -1,4 +1,5 @@
 // CGameScriptInterface::EntitySetAsOpinionSource(long) -- EH-framed: when virtual slot 15 reports an entity, a 4-byte polymorphic visitor (vtable 0x012B4C28) is built on the stack and handed to virtual slot 10; the argument is not read
+// Leaf: EntitySetAsOpinionSource
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C308A0, oracle length 80 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov eax,[esi] ; call [eax+3Ch] ; test eax,eax ; je done ; mov dword ptr [esp+4],offset visitor vtable ; mov edx,[esi] ; lea eax,[esp+4] ; push eax ; mov ecx,esi ; mov dword ptr [esp+14h],0 ; call [edx+28h] ; done: mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret 4
 // The stack visitor has an inline constructor (vtable only) and an inline empty destructor, which

@@ -1,4 +1,5 @@
 // CActiveDialogueInfo::CActiveDialogueInfo() -- default constructor: ThingSpeaking (CIntelligentPointer<CThing> at +0) set to null, SoundID 0, Layer 3, IsLayerHead false, OutputGain 0
+// Leaf: ??0CActiveDialogueInfo@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E2AF0, length 64 bytes.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
 // Layout from the PDB (struct_layouts_egor.tsv): ThingSpeaking +0, ulong SoundID +8, EDialogueLayer

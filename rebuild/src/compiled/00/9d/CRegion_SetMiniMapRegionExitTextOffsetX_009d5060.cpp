@@ -1,4 +1,5 @@
 // CRegion::SetMiniMapRegionExitTextOffsetX @ 009d5060
+// Leaf: SetMiniMapRegionExitTextOffsetX
 struct CRegion;
 
 struct Singleton {

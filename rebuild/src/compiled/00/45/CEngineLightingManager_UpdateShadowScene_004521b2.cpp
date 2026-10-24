@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: UpdateShadowScene
 struct LMLocal { int v; void Fill(void* a, int arg); };
 struct LMTarget {
     void Handle(int val);

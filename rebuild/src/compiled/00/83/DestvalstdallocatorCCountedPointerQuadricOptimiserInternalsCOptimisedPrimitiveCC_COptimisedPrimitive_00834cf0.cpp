@@ -1,4 +1,5 @@
 // _Dest_val<allocator<CCountedPointer<...>>> — destroy one counted-pointer slot.
+// Leaf: COptimisedPrimitive>_>
 // __fastcall this=ecx (no args). this+0 = object ptr, this+4 = refcount block.
 // Block layout: [0]=refcount, [4]=releaser member-fn ptr, [8]=releaser `this`.
 struct Owner;

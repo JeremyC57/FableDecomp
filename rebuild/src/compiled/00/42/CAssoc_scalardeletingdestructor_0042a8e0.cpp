@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: `scalar_deleting_destructor'
 #include "rebuild_abi.h"
 
 // CAssoc::`scalar deleting destructor' @ 0x0042a8e0

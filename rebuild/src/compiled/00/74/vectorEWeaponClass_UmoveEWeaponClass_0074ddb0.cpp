@@ -1,4 +1,5 @@
 // std::vector<EWeaponClass>::_Umove-ish reconstruction @ 0x0074ddb0
+// Leaf: _Umove<EWeaponClass*>
 struct EWeaponClass { int v; };
 
 // The move helper at 0x4e8a87 is a __fastcall member on the element pointer

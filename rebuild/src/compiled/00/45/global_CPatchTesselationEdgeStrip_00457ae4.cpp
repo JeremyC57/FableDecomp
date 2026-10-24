@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??1CPatchTesselationEdgeStrip@
 #include "rebuild_abi.h"
 
 // operator delete (retail 0x7a6f30) — relocation-masked call target

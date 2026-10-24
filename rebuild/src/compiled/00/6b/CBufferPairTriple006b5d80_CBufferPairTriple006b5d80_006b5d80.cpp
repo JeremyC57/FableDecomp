@@ -1,4 +1,5 @@
 // CBufferPairTriple_006b5d80::~CBufferPairTriple_006b5d80() -- destructor of a class whose only destructible member is an array of three buffer pairs at +0x1ac: the pairs are destroyed last to first, each freeing its second buffer then its first
+// Leaf: ??1CBufferPairTriple_006b5d80@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B5D80, length 56 bytes.
 // Callees: free @ 0x00BFEA14 (x2 per element). Shape: VC7.1 destroys a member array in reverse: esi starts one element past the end
 // (`lea esi,[ecx+1F4h]` = +0x1ac + 3*0x18), the loop reads the second buffer pointer through `[esi-0Ch]`, steps the pointer down by 0x18,

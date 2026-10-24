@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CFlash>_>
 // _Destroy_range<std::allocator<NCreatureHitNotification::CFlash>>
 // Retail 0x005b26e9: __fastcall(first, last, alloc*, tag)
 // Loops [first,last) stride 4 calling first->Dtor(0) via __fastcall.

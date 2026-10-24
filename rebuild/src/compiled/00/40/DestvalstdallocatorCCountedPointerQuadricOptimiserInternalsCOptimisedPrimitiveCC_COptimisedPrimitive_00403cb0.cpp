@@ -1,4 +1,5 @@
 // std::_Dest_val<allocator<CCountedPointer<T>>, CCountedPointer<T>>(CCountedPointer<T>*) -- release one counted-pointer slot
+// Leaf: COptimisedPrimitive>_>
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00403CB0, 53 bytes. Callees: the control block's releaser (indirect), engine free 0x00BFE9BC.
 //
 // STLport's allocator "destroy" hook over a CCountedPointer element, which inlines the counted-pointer

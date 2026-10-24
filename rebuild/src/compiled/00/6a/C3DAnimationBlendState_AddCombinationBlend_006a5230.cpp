@@ -1,4 +1,5 @@
 struct C3DAnimationBlendState;
+// Leaf: AddCombinationBlend
 
 struct BlendMgr {
     void Add(C3DAnimationBlendState* s);

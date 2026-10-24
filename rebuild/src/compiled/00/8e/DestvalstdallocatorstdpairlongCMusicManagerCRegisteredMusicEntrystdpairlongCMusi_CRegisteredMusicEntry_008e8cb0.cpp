@@ -1,4 +1,5 @@
 struct Sub114 { void teardown(); };
+// Leaf: CRegisteredMusicEntry>_>
 struct Owner { char pad[0x114]; Sub114 sub; };
 extern "C" void __fastcall NextTeardown(Owner* self);
 

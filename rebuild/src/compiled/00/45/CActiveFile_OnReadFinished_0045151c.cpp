@@ -1,4 +1,5 @@
 struct CActiveFile {
+// Leaf: OnReadFinished
     void* p;
     void* q;
 };

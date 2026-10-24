@@ -1,4 +1,5 @@
 // Retail 0x00cd4600:
+// Leaf: CSymbolInfo>_>
 //   std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo> >::_Dest_val
 // Destroys a pair<CCharString,CSymbolInfo> in reverse member order. The pair
 // holds three CCharString-destructible members at +0,+4,+8; each is torn down

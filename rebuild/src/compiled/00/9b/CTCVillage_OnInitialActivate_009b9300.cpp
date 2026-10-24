@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCVillage::OnInitialActivate @ 0x009b9300
+// Leaf: OnInitialActivate
 
 struct CTCVillage {
     void* field0;   // +0x00

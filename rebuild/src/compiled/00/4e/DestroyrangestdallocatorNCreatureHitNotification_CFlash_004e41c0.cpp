@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CFlash>_>
 // Reconstruction of STL _Destroy_range for NCreatureHitNotification::CFlash
 // retail 0x004e41c0, __fastcall(first, last, allocator*, _Nonscalar_ptr_iterator_tag)
 // Loop calls CFlash scalar-deleting destructor (0x4e1cfc) with flag 0, stride 0x10.

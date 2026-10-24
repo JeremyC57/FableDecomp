@@ -1,4 +1,5 @@
 
+// Leaf: OnInitialActivate
 struct Sub {
     int  SetActive(int on);   // 0x4c7590  (thiscall)
     void Refresh();           // 0x4c7c40  (thiscall)

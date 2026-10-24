@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: AddLearnedExpression
 
 // CTCInventoryAbilities::AddLearnedExpression @ 0x005eedcf
 struct FableAddLearned_005eedcf_sub

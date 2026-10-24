@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 // Byte-exact reconstruction of _Dest_val<...CIVCountedPointer<CTriangleList>...> at 0x005b1710
 // Effectively CIVCountedPointer::Release: decrement refcount, virtual-destroy at zero, null out.
 

@@ -1,4 +1,5 @@
 namespace NPlayerGui
+// Leaf: CEntry>_const&>
 {
 class CDrawDamage
 {

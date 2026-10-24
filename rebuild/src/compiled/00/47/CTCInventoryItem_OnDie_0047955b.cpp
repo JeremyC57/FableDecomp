@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: OnDie
 struct CTCInventoryItem
 {
     char pad[0x3c];

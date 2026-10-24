@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ConstructString
 // Byte-exact reconstruction of ConstructString @ 0x0066124b
 // Retail is __fastcall (ecx=this, all 3 args on stack, ret 0xc). The harness
 // rewrites __fastcall->__fastcall, so model as a __fastcall free fn whose first

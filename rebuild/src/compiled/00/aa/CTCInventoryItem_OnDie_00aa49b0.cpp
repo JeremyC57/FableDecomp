@@ -1,4 +1,5 @@
 // CTCInventoryItem::OnDie  @ 0x00aa49b0  __fastcall void(CTCInventoryItem*)
+// Leaf: OnDie
 // Frees a heap pointer held at +0x10 (operator delete), then tail-calls base OnDie.
 
 void __cdecl free_target(void* p);        // 0xbfea14  operator delete(void*)

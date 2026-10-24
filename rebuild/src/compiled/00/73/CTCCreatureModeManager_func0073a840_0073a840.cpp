@@ -1,4 +1,5 @@
 // CTCCreatureModeManager::func_0073a840() -- if a mode is queued, run the front mode's slots 6, 11 and 5 in turn
+// Leaf: func_0073a840
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073A840, length 49 bytes (64 with padding). 17 callers (0x0069F632,
 // 0x0069F6F0, 0x0078C4A9, 0x008B7C96 ...). The catalogue row 0073a840 (manifest label CNavQuadTreeNode::RemoveNeighbours,
 // propagated) held this body and the vtable slot 9 at 0x0073A880 (skipped ledger, chunk 901).

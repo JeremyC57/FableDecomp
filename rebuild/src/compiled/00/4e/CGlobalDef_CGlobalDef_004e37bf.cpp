@@ -1,4 +1,5 @@
 // CGlobalDef::~CGlobalDef() -- the four intelligent pointers at +0xec..+0xd4, the two 12-byte members at +0x74 and +0x68 (0x004E1AAF), the intelligent pointer at +0x4c, then the def base (0x004DA8B7, a tail jump)
+// Leaf: ??1CGlobalDef@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E37BF, length 79 bytes.
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 five times, the member destructor @ 0x004E1AAF twice (labelled "CActiveFile::OnReadFinished",
 // propagated), the base destructor @ 0x004DA8B7 (labelled "~CTCTargetingBase", propagated). Shape: members in reverse declaration order, the size-optimised module.

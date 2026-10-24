@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 struct CRefCounted {
     void** vtbl;   // +0x0
     long   refs;   // +0x4

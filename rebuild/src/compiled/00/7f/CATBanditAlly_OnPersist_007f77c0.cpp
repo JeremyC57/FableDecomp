@@ -1,4 +1,5 @@
 // CAT_BanditAlly::OnPersist(CPersistContext*, long) -- persists DeactivateAfterSetTime (+0x20, signed char) and FramesAfterActivationToDeactivate (+0x24, long) through two typed context transfers with zero defaults
+// Leaf: OnPersist
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F77C0, oracle length 70 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

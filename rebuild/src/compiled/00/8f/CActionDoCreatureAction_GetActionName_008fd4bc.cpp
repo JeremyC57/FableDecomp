@@ -1,4 +1,5 @@
 #pragma optimize("g",on)
+// Leaf: GetActionName
 struct CCharString {
     int dummy;
     // ctor at 0x99ebf0: this in ECX, two stack args (lit, len), callee cleanup (native thiscall).

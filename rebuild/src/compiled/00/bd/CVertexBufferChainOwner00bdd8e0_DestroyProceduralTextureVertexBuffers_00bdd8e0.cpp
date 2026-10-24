@@ -1,4 +1,5 @@
 // CVertexBufferChainOwner_00bdd8e0::DestroyProceduralTextureVertexBuffers() -- hands every node of the singly linked chain at +8 (next at +4) to the engine's landscape memory manager together with `this`
+// Leaf: DestroyProceduralTextureVertexBuffers
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDD8E0, length 43 bytes (48 with padding).
 // Callees: the memory manager's dispose member @ 0x00BD9AB0 (`this`-call (ecx), two arguments: node, owner; an empty `ret 8` in retail). Globals: the engine
 // @ 0x01436EA8 with its landscape memory manager at +0x6b0 (see CEngineResourceManager::ChangeScene @ 0x00B3B4A0, landed). Shape: the manager is read into

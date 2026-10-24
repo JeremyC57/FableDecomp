@@ -1,4 +1,5 @@
 struct Inner { char pad[0xF0]; int refs; };
+// Leaf: CountReferences
 struct Outer { char pad[0xE0]; Inner* inner; };
 int __fastcall CountReferences(Outer* self)
 {

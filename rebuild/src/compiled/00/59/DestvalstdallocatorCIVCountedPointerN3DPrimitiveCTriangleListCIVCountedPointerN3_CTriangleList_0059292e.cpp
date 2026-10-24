@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CTriangleList>_>
 // _Dest_val for std::allocator<CIVCountedPointer<CTriangleList> >
 // Intrusive counted-pointer teardown: decrement refcount, virtual-destroy on zero, null the slot.
 

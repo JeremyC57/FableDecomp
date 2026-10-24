@@ -1,4 +1,5 @@
 extern "C" long g_charStringRefTrace; // 0x013bca20
+// Leaf: SetSubstring
 extern "C" unsigned short g_emptyWideStringData; // 0x00129a8e0 (empty wide-string storage code unit)
 extern "C" void __cdecl free_00bfea14(void* p);      // 0x00bfea14 (free thunk)
 extern "C" void __cdecl operator_delete_00bfe9bc(void* p); // 0x00bfe9bc (operator delete)

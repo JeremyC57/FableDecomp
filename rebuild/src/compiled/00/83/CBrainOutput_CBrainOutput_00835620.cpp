@@ -1,4 +1,5 @@
 // CBrainOutput::CBrainOutput() -- navigation input and action pointer zeroed, look-at pointer built, then types/flags cleared and the action reset
+// Leaf: ??0CBrainOutput@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00835620, length 89 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (LookAtThing +0x40, then
 // the CIntelligentPointer vtable 0x01237F1C is stored by the inlined derived constructor), the

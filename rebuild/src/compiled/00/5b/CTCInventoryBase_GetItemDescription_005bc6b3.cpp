@@ -1,4 +1,5 @@
 // CTCInventoryBase::GetItemDescription(CWideString*, long, bool) -- base version: the item def's description text into `out` (the bool is unused here)
+// Leaf: GetItemDescription
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BC6B3, length 35 bytes.

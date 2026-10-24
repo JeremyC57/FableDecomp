@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: `vector_deleting_destructor'
 // Byte-exact reconstruction of CLandscapeBackgroundPatch::`vector deleting destructor'
 // retail 0x004dd7ea (28 bytes)
 //

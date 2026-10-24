@@ -1,4 +1,5 @@
 struct EWeaponClass { int v; };
+// Leaf: _Umove<EWeaponClass*>
 struct worker_t {
     // __fastcall member at 0x464931: takes (arg, &temp) on the stack; this in ecx.
     EWeaponClass* m(EWeaponClass* arg, void* pTemp);

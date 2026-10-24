@@ -1,4 +1,5 @@
 extern void __fastcall AutoTinyMemberDestructor_0099eae0(void* member);
+// Leaf: `scalar_deleting_destructor'
 extern void __fastcall AutoTinyCompositeDestructor_0099b510(void* self);
 extern void __cdecl AutoTinyCompositeDelete(void* object);
 void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)

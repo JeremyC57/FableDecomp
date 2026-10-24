@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: CFlash>_>
 // _Destroy_range<std::allocator<NCreatureHitNotification::CFlash>>
 // Retail 0x005bbf80: loop over [first,last) stride 0x14, call element
 // dtor helper(this, 0), ret 4.

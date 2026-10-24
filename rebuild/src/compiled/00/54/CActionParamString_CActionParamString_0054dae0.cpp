@@ -1,4 +1,5 @@
 // NUISystem::CActionParamString::CActionParamString(const CWideString&) -- constructor: type tag 4 at +4, own vtable, the CWideString value copy-constructed at +8
+// Leaf: ??0CActionParamString@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054DAE0, length 48 bytes.
 // Callees: CWideString::CWideString(const CWideString&) @ 0x0099B720.
 // Vtable 0x01249520 = NUISystem::CActionParamString (rtti-vtables.tsv); the PDB layout is

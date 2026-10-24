@@ -1,4 +1,5 @@
 #include <new>
+// Leaf: CFileInfo_const_>
 
 // CCountedPointer<CFileInfo>::CCountedPointer(CFileInfo const*) @ 0x009A9D10.
 //

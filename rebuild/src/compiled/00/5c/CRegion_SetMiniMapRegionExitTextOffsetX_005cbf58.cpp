@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: SetMiniMapRegionExitTextOffsetX
 // CRegion::SetMiniMapRegionExitTextOffsetX  @ 0x005cbf58
 // __fastcall void(CRegion*, CCharString*, float)
 //

@@ -1,4 +1,5 @@
 // CQ_SunnyvaleMasterScript::Main @ 0x00dec570
+// Leaf: Main
 // __fastcall void Main(This*)
 
 struct Sub;

@@ -1,4 +1,5 @@
 // CVectorQuad_0051d530::~CVectorQuad_0051d530() -- free the POD vectors at +0x24, +0x18 and +0xc, then destroy the object vector at +0 (its range destroy, then the block freed)
+// Leaf: ??1CVectorQuad_0051d530@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051D530, length 85 bytes.
 // Callees: free @ 0x00BFEA14 four times, the range destroy @ 0x0051CD80 (`__fastcall`: first, last, the allocator tag by reference, its temporary homed in a dead frame byte `lea eax,[esp+7]`).
 // Shape: a one-word frame (`push ecx`) for the tag; members destroyed in reverse declaration order; the last block pointer is loaded into esi. The chunk label

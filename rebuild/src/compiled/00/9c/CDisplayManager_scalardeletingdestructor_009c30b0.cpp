@@ -1,4 +1,5 @@
 // __fastcall this=ecx, flags=stack. base /O2 /Oy (no pragma). family len30 x22 (template 00412b00)
+// Leaf: `scalar_deleting_destructor'
 struct CDisplayManager { void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
 void __cdecl operator delete(void* p);
 void* CDisplayManager::ScalarDeletingDestructor(unsigned flags) {

@@ -1,4 +1,5 @@
 struct Sub;
+// Leaf: CRegisteredMusicEntry>_>
 struct Obj;
 extern "C" void __fastcall Sub_Method(Sub* self);
 extern "C" void __fastcall Obj_Other(Obj* self);

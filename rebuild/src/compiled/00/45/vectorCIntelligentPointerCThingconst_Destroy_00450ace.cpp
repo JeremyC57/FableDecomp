@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: _Destroy
 struct Elem {
     virtual void destroy(int flag);
 };

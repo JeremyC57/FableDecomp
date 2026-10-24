@@ -1,4 +1,5 @@
 // Third uncataloged CFrontendGameComponent false-return input callback
+// Leaf: DefaultInputActionResult
 // @ 0x004944A0.
 
 class CFrontendGameComponent_004944a0

@@ -1,4 +1,5 @@
 // CVolume::ReleaseVolume  0x007e35d0
+// Leaf: ReleaseVolume
 struct IVolumeManager {
     virtual void v0();
     virtual void v1();

@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+// Leaf: operator_new
 extern int g_vt_c1eb10;
 struct Sub { void M_00c1ebf0(void* p); };
 struct C { void* vt; Sub* f4; void Op(); };

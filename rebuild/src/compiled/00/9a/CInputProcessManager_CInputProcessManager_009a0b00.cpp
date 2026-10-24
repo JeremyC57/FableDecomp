@@ -1,4 +1,5 @@
 // Retail ~CInputProcessManager @ 009a0b00
+// Leaf: ??1CInputProcessManager@
 // Derived-class destructor: set vtable, destroy member at +8, tail-call base dtor.
 
 struct MemberAt8 {

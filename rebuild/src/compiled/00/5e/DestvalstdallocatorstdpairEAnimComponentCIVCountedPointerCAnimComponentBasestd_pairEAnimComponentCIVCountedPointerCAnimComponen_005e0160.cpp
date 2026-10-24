@@ -1,4 +1,5 @@
 // Retail 0x009b20b0: destroy helper for
+// Leaf: ??0?$pair@
 // pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase>>.
 // ecx = self; [self+4] holds a counted-pointer. On non-null: decrement
 // the pointee's refcount at [p+4]; if it reaches zero, virtual-call

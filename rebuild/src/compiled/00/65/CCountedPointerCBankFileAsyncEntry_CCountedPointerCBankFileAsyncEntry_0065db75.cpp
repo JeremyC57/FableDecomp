@@ -1,4 +1,5 @@
 // Intelligent-pointer copy: take the target and the refcount block from the
+// Leaf: ??0?$CCountedPointer@
 // source, then bump the count when the block exists. VC7.1 schedules the
 // second store ahead of the branch. __fastcall this=ecx (ret 4).
 struct RefCount { int count; };
