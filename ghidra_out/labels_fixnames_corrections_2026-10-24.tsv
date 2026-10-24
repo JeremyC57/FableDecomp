@@ -1,0 +1,15 @@
+address	name	evidence
+00992470	CLipSyncDataBank::SetResourceBank	not in any vtable; sole caller 0x00991B32 builds a CLipSyncDataBank (vtable 0x0129D3D4); PDB ResourceBank maps to retail +0x170 (was NUISystem::CFrontEndScreen::AddActionOnLeftClicked)
+00669280	CCreatureActionBase::SetPreceedingPAnimEntry	caller CThingCreatureBase::SetCurrentAction 0x006644F0; Ego_r.pdb PPreceedingPAnimEntry +0x7C (was AddActionOnLeftClicked)
+009fd870	CGraphicDataBank::SetTextureManager	PDB symbol; TextureManager retail +0x280 (was AddActionOnLeftClicked)
+00557bd0	NUISystem::CKeyRedefiner::CancelSelection	module fix; callees 0x0041E5F2 CManager::GetInstance, CObservable slot 4 RemoveExclusiveObserver
+00a42b80	CLipSyncDataBank::CLipSyncDataBank	stores vtable 0x0129D3D4 (RTTI CLipSyncDataBank) (was CTCSkeletalMorph::CTCSkeletalMorph)
+0042abca	std::list<NUISystem::CComponent*>::~list	STLport _List_base dtor: clear 0x0042A18F + free sentinel (was CFileInstaller::CActiveFile::OnReadFinished)
+0042a18f	std::list<NUISystem::CComponent*>::clear	called by the ~list at 0x0042ABCA (was CGuiControlTreePane::SortTreeRecursively)
+0042b687	std::list<long>::push_back	insert(end(), x) at 0x0042AB33 (was LinkedList_PushFront)
+0042ab33	std::list<long>::insert	links before the sentinel (was LinkedList_Insert_Before)
+00c4aa40	PKCBufferedReader::CBufferedReader::Seek	literal `.\PKCBufferedReader.cpp` (one backslash, .rdata 0xEB8200) (was PKCBufferedReader_ConvertByteOffset)
+007726b0	CTCShop::GetStockQuantity	reads Quantity +0x14; 0x00772720 is GetMaxStock (+0x1C)
+00a526d0	C3DAnimationSequenceData::ConvertTimeToFrames	FableWin.pdb (was C3DAnimation2)
+006c3b70	CTCFadeOutAndIn::FadeOut	sets FadingOut and Alpha 1.0 (was FadeIn; 0x006C3BD0 is FadeIn)
+00a4c1f0	C3DAnimationSequenceData::GetKeyframeInterpolate	const member, this in ecx

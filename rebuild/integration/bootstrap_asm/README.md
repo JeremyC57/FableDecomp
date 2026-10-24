@@ -31,3 +31,5 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - NResourceDirectoryNames_GetSaveDir_0041a540_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - NResourceDirectoryNames_GetMyDocumentsDir_0041a430.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - NResourceDirectoryNames_GetMyDocumentsDir_0041a430_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CPersistContext_TextConstructor_009badd0.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CPersistContext_TextConstructor_009badd0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.

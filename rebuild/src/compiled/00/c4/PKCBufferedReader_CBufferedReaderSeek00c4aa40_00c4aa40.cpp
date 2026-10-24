@@ -1,4 +1,7 @@
 // CBufferedReader_00c4aa40::Seek(offset) -- EH-framed repositioning (the manifest's "ConvertByteOffset" is propagated): false past the size at +0x20; the block index is offset / block size (+8) and the residue offset - index * block size; inside the resident window (+0x24 first block, +0x2c block count) an offset below the window start raises the warning at PKCBufferedReader.cpp line 414 (MFC-style string in a nested block, log sink at 0x0143BB2C, the trace temporary in the dead argument slot; state 0) and +0x30 becomes the offset relative to the window; outside it the window is reset (+0x28 / +0x2c cleared, +0x24 the block, +0x30 the residue) and pulled back by up to +0x10 blocks (`min` as a compare-and-move) so +0x24 drops and +0x30 grows by the pulled bytes; the buffer is refilled (@ 0x00C4A3B0) and true returned
+// Literal correction (chunk 345 report): the warning file name is `.\PKCBufferedReader.cpp` (retail .rdata file offset 0xEB8200, one backslash); the earlier landing wrote `.\\PKCBufferedReader.cpp`, which the grader cannot see because string literals are relocation-masked.
+// Leaf: ?Seek@CBufferedReader_00c4aa40@@QAE_NK@Z
+// Flags: /O2 /Oy /W3 /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4AA40, oracle length 325 bytes. Built under /EHsc.
 // Retail bytes:  ... mov ebx,[esp+18h] ; push esi ; mov esi,ecx ; cmp ebx,[esi+20h] ; jbe ok ; ... xor al,al ; ... ret 4 ; ok: mov ecx,[esi+8] ; xor edx,edx ; mov eax,ebx ; div ecx ; push ebp ; push edi ; mov edi,ecx ; mov edx,ebx ; imul edi,eax ; sub edx,edi ; mov edi,[esi+24h] ; cmp eax,edi ; jb outside ; mov ebp,[esi+2Ch] ; add ebp,edi ; cmp eax,ebp ; jae outside ; imul edi,ecx ; cmp ebx,edi ; jae inside ; mov eax,[g_pchNil] ; mov [esp+10h],eax ; xor ebp,ebp ; mov edx,offset "PKCBufferedReader.cpp" ; lea ecx,[esp+10h] ; mov [esp+1Ch],ebp ; call Append ; ... mov edx,19Eh ; ... call AppendNumber ; ... call Append ("Error: Byte offset out of scope???|!!???") ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; cmp eax,ebp ; je skip ; mov ecx,[esp+10h] ; call eax ; skip: lea ecx,[esp+10h] ; mov dword ptr [esp+1Ch],-1 ; call ~CString ; lea ecx,[esp+24h] ; call CTrace::CTrace ; inside: mov ecx,[esi+24h] ; imul ecx,[esi+8] ; sub ebx,ecx ; mov [esi+30h],ebx ; jmp refill ; outside: mov edi,[esi+10h] ; xor ebp,ebp ; cmp edi,eax ; mov [esi+28h],ebp ; mov [esi+2Ch],ebp ; mov [esi+24h],eax ; mov [esi+30h],edx ; jbe a ; mov edi,eax ; a: cmp edi,ebp ; je refill ; imul ecx,edi ; sub eax,edi ; add ecx,edx ; mov [esi+24h],eax ; mov [esi+30h],ecx ; refill: mov ecx,esi ; call Refill ; ... mov al,1 ; ... ret 4
 // The classes are named by address.
@@ -44,7 +47,7 @@ bool CBufferedReader_00c4aa40::Seek(unsigned long offset)
         if (!(offset >= m_firstBlock * m_blockSize)) {
             {
                 CString_00c4aa40 line;
-                line.Append(".\\\\PKCBufferedReader.cpp")->Append("(")->AppendNumber(414)->Append(") : ")->Append("Error: Byte offset out of scope???|!!???")->Append("\n");
+                line.Append(".\\PKCBufferedReader.cpp")->Append("(")->AppendNumber(414)->Append(") : ")->Append("Error: Byte offset out of scope???|!!???")->Append("\n");
                 if (g_pfnLogSink_0143bb2c)
                     g_pfnLogSink_0143bb2c(line.m_pchData);
             }

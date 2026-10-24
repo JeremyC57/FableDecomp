@@ -1087,3 +1087,10 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - An element copy that skips the word at +4 is a pair whose second member is polymorphic (vptr never assigned) (00769ea0, 00af6e10, 00a5e830).
 - A byte then a C3DVector at +1 is a `#pragma pack(1)` {bool, C3DVector} with a memberwise user operator=; the implicit one copies all 13 bytes as a block (006f0640).
 - `_Copy_backward` labels on `ret 0Ch`/`ret 3Ch` bodies with a `while (comp(val, *next))` loop are `__unguarded_linear_insert` (005e07f0, 008074a0).
+- A `CCountedPointer` setter body carrying a class-method label at an address in no vtable belongs to the caller's object: the real NUISystem::CFrontEndScreen::AddActionOnLeftClicked is 0x0054E4F0 only (0x00992470/0x00669280/0x009FD870 were renamed).
+- The ~45 byte-identical 23-byte functions labelled CFileInstaller::CActiveFile::OnReadFinished are STLport `list<T>::~list`; the "ListPushFront*" wrappers are `list<T>::push_back` (insert(end(), x)).
+- The grader masks string literals: a `\\` vs `\` mistake in a path literal is invisible to parity; check literals against .rdata (0x00C4AA40).
+- VC7.1 expands a `__forceinline` function containing `__asm` in place: `__forceinline long ROUND(float v) { long r; __asm fld v __asm fistp r return r; }` reproduces the engine's `fstp [slot] ; fld [slot] ; fistp dword` idiom (retail_asm, 006c3bd0/006c3b70/00af9000/00b102c0).
+- `size` is a MASM operator: an `__asm fistp size` operand fails C2400; rename the local.
+- `pow` must be `extern "C"` (or from <math.h>) for `#pragma intrinsic(pow)` to emit `_CIpow`.
+- Register ties: writing the zero store first (`Mode = 0;`) keeps eax as the zero register so pointer copies go through edx (009ba9d0/009badd0).

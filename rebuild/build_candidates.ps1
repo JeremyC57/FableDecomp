@@ -31698,8 +31698,7 @@ $catalog = @(
         Module = 'CGameScriptInterface'
         Source = '00/88/CGameScriptInterface_StartCountdownTimer_0088f8d0.cpp'
         TestSource = '00/88/CGameScriptInterface_StartCountdownTimer_0088f8d0_test.cpp'
-        PassPattern = 'ROUND_OK'
-        Grade = 'asm_bake'
+        PassPattern = '0088f8d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0088f910'
@@ -41206,8 +41205,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/ca/global_FtoL_00ca3b10.cpp'
         TestSource = '00/ca/global_FtoL_00ca3b10_test.cpp'
-        PassPattern = 'RB_ca3b10_OK'
-        Grade = 'asm_bake'
+        PassPattern = '00ca3b10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00922fa0'
@@ -69630,10 +69628,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042abca'
-        Module = 'CActiveFile'
-        Source = '00/42/CActiveFile_OnReadFinished_0042abca.cpp'
-        TestSource = '00/42/CActiveFile_OnReadFinished_0042abca_test.cpp'
-        PassPattern = 'PASS_0042abca'
+        Module = 'std::list<NUISystem::CComponent*>'
+        Source = '00/42/stdlistNUISystemCComponent_list_0042abca.cpp'
+        TestSource = '00/42/stdlistNUISystemCComponent_list_0042abca_test.cpp'
+        PassPattern = '0042abca_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042b755'
@@ -123258,10 +123256,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042b687'
-        Module = '_global'
-        Source = '00/42/global_LinkedListPushFront_0042b687.cpp'
-        TestSource = '00/42/global_LinkedListPushFront_0042b687_test.cpp'
-        PassPattern = 'LINKED_LIST_PUSH_FRONT_PASS'
+        Module = 'std::list<long>'
+        Source = '00/42/stdlistlong_pushback_0042b687.cpp'
+        TestSource = '00/42/stdlistlong_pushback_0042b687_test.cpp'
+        PassPattern = '0042b687_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042b6b8'
@@ -204536,9 +204534,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00557bd0'
-        Module = 'CKeyRedefiner'
-        Source = '00/55/CKeyRedefiner_CancelSelection_00557bd0.cpp'
-        TestSource = '00/55/CKeyRedefiner_CancelSelection_00557bd0_test.cpp'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_CancelSelection_00557bd0.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_CancelSelection_00557bd0_test.cpp'
         PassPattern = '00557bd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -261307,9 +261305,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00669280'
-        Module = 'NUISystem::CFrontEndScreen'
-        Source = '00/66/NUISystemCFrontEndScreen_AddActionOnLeftClicked_00669280.cpp'
-        TestSource = '00/66/NUISystemCFrontEndScreen_AddActionOnLeftClicked_00669280_test.cpp'
+        Module = 'CCreatureActionBase'
+        Source = '00/66/CCreatureActionBase_SetPreceedingPAnimEntry_00669280.cpp'
+        TestSource = '00/66/CCreatureActionBase_SetPreceedingPAnimEntry_00669280_test.cpp'
         PassPattern = '00669280_TEST PASS'
     }
     [pscustomobject]@{
@@ -262252,9 +262250,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00992470'
-        Module = 'NUISystem::CFrontEndScreen'
-        Source = '00/99/NUISystemCFrontEndScreen_AddActionOnLeftClicked_00992470.cpp'
-        TestSource = '00/99/NUISystemCFrontEndScreen_AddActionOnLeftClicked_00992470_test.cpp'
+        Module = 'CLipSyncDataBank'
+        Source = '00/99/CLipSyncDataBank_SetResourceBank_00992470.cpp'
+        TestSource = '00/99/CLipSyncDataBank_SetResourceBank_00992470_test.cpp'
         PassPattern = '00992470_TEST PASS'
     }
     [pscustomobject]@{
@@ -262329,9 +262327,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009fd870'
-        Module = 'NUISystem::CFrontEndScreen'
-        Source = '00/9f/NUISystemCFrontEndScreen_AddActionOnLeftClicked_009fd870.cpp'
-        TestSource = '00/9f/NUISystemCFrontEndScreen_AddActionOnLeftClicked_009fd870_test.cpp'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_SetTextureManager_009fd870.cpp'
+        TestSource = '00/9f/CGraphicDataBank_SetTextureManager_009fd870_test.cpp'
         PassPattern = '009fd870_TEST PASS'
     }
     [pscustomobject]@{
@@ -283171,6 +283169,62 @@ $catalog = @(
         Source = '00/cb/global_CopyBackwardPairCharStringBinding00cbae30_00cbae30.cpp'
         TestSource = '00/cb/global_CopyBackwardPairCharStringBinding00cbae30_00cbae30_test.cpp'
         PassPattern = '00cbae30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fa9a0'
+        Module = 'CTCBulletTime'
+        Source = '00/4f/CTCBulletTime_GetBulletTimeTicksFromAbilityLevel_004fa9a0.cpp'
+        TestSource = '00/4f/CTCBulletTime_GetBulletTimeTicksFromAbilityLevel_004fa9a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '004fa9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af9000'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/af/NParticleEngineCPSCLight_SmoothFadeValue_00af9000.cpp'
+        TestSource = '00/af/NParticleEngineCPSCLight_SmoothFadeValue_00af9000_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '00af9000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c3bd0'
+        Module = 'CTCFadeOutAndIn'
+        Source = '00/6c/CTCFadeOutAndIn_FadeIn_006c3bd0.cpp'
+        TestSource = '00/6c/CTCFadeOutAndIn_FadeIn_006c3bd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '006c3bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c3b70'
+        Module = 'CTCFadeOutAndIn'
+        Source = '00/6c/CTCFadeOutAndIn_FadeOut_006c3b70.cpp'
+        TestSource = '00/6c/CTCFadeOutAndIn_FadeOut_006c3b70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '006c3b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b102c0'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_GetRandomRadius_00b102c0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_GetRandomRadius_00b102c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '00b102c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ba9d0'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_Init_009ba9d0.cpp'
+        TestSource = '00/9b/CPersistContext_Init_009ba9d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '009ba9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009badd0'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_CPersistContext_009badd0.cpp'
+        TestSource = '00/9b/CPersistContext_CPersistContext_009badd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
+        PassPattern = '009badd0_TEST PASS'
     }
 )
 
