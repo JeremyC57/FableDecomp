@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00460eb5	RELOCATION_MATCH	273v273	PASS	std::vector<CMusicSetEntry>::operator= (manifest CActiveFile::CopyAssign_12)
+00462b4e	RELOCATION_MATCH	273v273	PASS	std::vector<CBrainBehaviour>::operator= (manifest CActiveFile::CopyAssign_12)
+0058a0c7	DIFFER	1626v1629	-	operator[] store vs defIndex reload order + key copy; best source in differ/
+0058a763	DIFFER	-v1965	-	not graded (time box): decode only, no source
+0058e208	DIFFER	-v1943	-	not graded (time box): decode only, no source
+0058f016	DIFFER	1588v1587	-	merge-loop register choice (start/count); best source in differ/
+0058f9bc	DIFFER	-v2012	-	not graded (time box): decode only, no source
+00590235	DIFFER	1382v1393	-	reg/slot permutation + jump threading of the def releases; best source in differ/
+005907ab	RELOCATION_MATCH	1415v1415	PASS	CTCInventory::ConstructItemCategoryListPC (manifest ConstructPCExpressionCategoryList)
+005f077f	DIFFER	1239v1248	-	ebx/edi swap, == operand order, shared temp slot; best source in differ/
+005f1526	DIFFER	-v1514	-	not graded (time box): decode only, no source
+005f3f7b	DIFFER	1438v1438	-	frame slots of two temporaries (ConstructExpressionCategoryList); best source in differ/
+005f45b5	DIFFER	1232v1233	-	regalloc: items kept in ebx; best source in differ/
+005f4c8f	DIFFER	1296v1296	-	loop index/def pointer reg vs memory; def release shape; best source in differ/
+005f6e40	DIFFER	-v1746	-	not graded (time box): decode only, no source
+005b5cf8	RELOCATION_MATCH	1542v1542	PASS	CTCInventoryClothing::GetItemDescription
+005b62fe	RELOCATION_MATCH	1129v1129	PASS	CTCInventoryClothing::GetItemDescriptionNoArmourRating
+005b6a66	DIFFER	1511v1507	-	frame layout (0x78 vs 0x7C); best source in differ/
+005b70b8	RELOCATION_MATCH	1561v1561	PASS	CTCInventoryClothing::ConstructClothingList
+005b9641	DIFFER	-v1455	-	not graded (time box): decode only, no source
+00577216	DIFFER	-v1268	-	not graded (time box): decode only, no source
+005fe090	DIFFER	-v1937	-	not graded (time box): decode only, no source
+00600b60	DIFFER	-v1963	-	not graded (time box): decode only, no source
+00605570	DIFFER	-v1890	-	not graded (time box): decode only, no source
+00605ce0	DIFFER	-v1226	-	not graded (time box): decode only, no source
+0061ad60	DIFFER	-v1631	-	not graded (time box): decode only, no source
+00621f70	DIFFER	-v1098	-	not graded (time box): decode only, no source
+006224c0	DIFFER	-v1338	-	not graded (time box): decode only, no source
+0059bb1b	DIFFER	-v1451	-	not graded (time box): decode only, no source
+0059ed42	RELOCATION_MATCH	1474v1474	PASS	CTCInventoryTrade::AddSellItemToList
+0059f51e	RELOCATION_MATCH	1504v1504	PASS	CTCInventoryTrade::AddSellItemToListPC (manifest AddSellItemToList)
+0059fee3	DIFFER	1553v1556	-	regalloc: this spilled / hero tab in ebx; best source in differ/
+005a29f4	DIFFER	-v1709	-	not graded (time box): decode only, no source
+005a3734	DIFFER	-v1811	-	not graded (time box): decode only, no source
+005a3e47	DIFFER	1967v1967	-	store through operator[] result scheduled before parent/vtable loads; best source in differ/
+005a45f6	DIFFER	1767v1767	-	store through operator[] result scheduled before parent/vtable loads; best source in differ/
+005a6769	DIFFER	1336v1336	-	wanted-total add operand order; best source in differ/
+005a6ca1	DIFFER	1681v1662	-	regalloc: this spilled / hero tab in ebx (as 0059fee3); best source in differ/
+005a731f	DIFFER	1735v1735	-	store through operator[] result scheduled before parent/vtable loads (ConstructSellActionsListPC); best source in differ/
+005a79e6	DIFFER	1935v1935	-	store through operator[] result scheduled before parent/vtable loads (ConstructBuyActionsListPC); best source in differ/

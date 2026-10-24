@@ -1,0 +1,70 @@
+// Behaviour test for 0x005B62FE CTCInventoryClothing::GetItemDescriptionNoArmourRating: builds the stat block text from the
+// ArgPasser values (suit parts, attractiveness / scariness / alignment with their signed changes) plus the description.
+#include <cstdio>
+#include <cstring>
+
+struct Text {
+    char buf[512];
+    Text() { buf[0] = 0; }
+    Text& operator+=(const char* s) { std::strcat(buf, s); return *this; }
+};
+static const char* Lookup(const char* symbol)
+{
+    if (std::strcmp(symbol, "TEXT_GUI_MENU_PARTS_ACQUIRED") == 0) return "Parts:";
+    if (std::strcmp(symbol, "TEXT_GUI_MENU_ATTRACTIVENESS") == 0) return "Attr";
+    if (std::strcmp(symbol, "TEXT_GUI_MENU_SCARINESS") == 0) return "Scar";
+    return "Align";
+}
+static const char* IntText(long v) { static char b[8][16]; static int n; char* p = b[n++ & 7]; std::sprintf(p, "%ld", v); return p; }
+struct ArgPasser {
+    bool is_suit; long num_suit_parts, max_suit_parts, total_item_armor_value_final, total_cur_armor_value_final;
+    float total_item_attractiveness_value_final, total_cur_attractiveness_value_final;
+    float total_item_scariness_value_final, total_cur_scariness_value_final;
+    float total_item_goodstrength_value_final, total_cur_goodstrength_value_final;
+    long total_price;
+};
+struct Clothing {
+    ArgPasser values;
+    void GetItemDescriptionNoArmourRating(Text& out, long defIndex)
+    {
+        ArgPasser v = values;
+        if (v.is_suit) {
+            out += Lookup("TEXT_GUI_MENU_PARTS_ACQUIRED");
+            out += IntText(v.num_suit_parts); out += "/"; out += IntText(v.max_suit_parts); out += "\n";
+        }
+        long change = (long)(v.total_item_attractiveness_value_final - v.total_cur_attractiveness_value_final);
+        out += Lookup("TEXT_GUI_MENU_ATTRACTIVENESS"); out += " ";
+        if (v.total_item_attractiveness_value_final > 0.0f) out += "+";
+        out += IntText((long)v.total_item_attractiveness_value_final); out += " (";
+        if (change > 0) out += "+";
+        out += IntText(change); out += ")\n";
+        change = (long)(v.total_item_scariness_value_final - v.total_cur_scariness_value_final);
+        out += Lookup("TEXT_GUI_MENU_SCARINESS"); out += " ";
+        if (v.total_item_scariness_value_final > 0.0f) out += "+";
+        out += IntText((long)v.total_item_scariness_value_final); out += " (";
+        if (change > 0) out += "+";
+        out += IntText(change); out += ")\n";
+        change = (long)(v.total_item_goodstrength_value_final - v.total_cur_goodstrength_value_final);
+        out += Lookup("TEXT_GUI_MENU_ALIGNMENT_MODIFIER"); out += " ";
+        if (v.total_item_goodstrength_value_final > 0.0f) out += "+";
+        out += IntText((long)v.total_item_goodstrength_value_final); out += " (";
+        if (change > 0) out += "+";
+        out += IntText(change); out += ")\n";
+        out += defIndex == 5 ? "Hat" : "?";
+    }
+};
+
+int main()
+{
+    Clothing c; std::memset(&c, 0, sizeof(c));
+    c.values.is_suit = true; c.values.num_suit_parts = 2; c.values.max_suit_parts = 4;
+    c.values.total_item_attractiveness_value_final = 3.0f; c.values.total_cur_attractiveness_value_final = 1.0f;
+    c.values.total_item_scariness_value_final = -2.0f; c.values.total_cur_scariness_value_final = 0.0f;
+    c.values.total_item_goodstrength_value_final = 0.0f; c.values.total_cur_goodstrength_value_final = 1.0f;
+    Text out;
+    c.GetItemDescriptionNoArmourRating(out, 5);
+    const char* want = "Parts:2/4\nAttr +3 (+2)\nScar -2 (-2)\nAlign 0 (-1)\nHat";
+    if (std::strcmp(out.buf, want) != 0) { std::printf("005b62fe_TEST FAIL\n"); return 1; }
+    std::printf("005b62fe_TEST PASS\n");
+    return 0;
+}

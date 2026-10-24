@@ -1,0 +1,10 @@
+address	name	evidence
+00460eb5	std::vector<CMusicSetEntry>::operator=	STLport vector assignment, byte-exact landed (chunk 325); manifest CActiveFile::CopyAssign_12 is propagated
+00462b4e	std::vector<CBrainBehaviour>::operator=	STLport vector assignment, byte-exact landed (chunk 325); manifest CActiveFile::CopyAssign_12 is propagated
+005907ab	CTCInventory::ConstructItemCategoryListPC	FableWin.pdb name; byte-exact landed (chunk 325)
+005d9830	IsExpression	callee of the inventory list rows; manifest IsAugmentation is propagated (chunk 325)
+005d9970	IsBook	callee of the inventory list rows; manifest IsAugmentation is propagated (chunk 325)
+005d96f0	GetUIInventoryCategory	callee of the inventory list rows; landed code also binds it as GetInventoryCategory/GetInventoryTabState (chunk 325)
+007723d0	CTCShop::HasDefaultStockItem	called from the shop list rows; manifest _atexit is wrong (chunk 325)
+005bc4c4	GetTradingThing	callee of the trade rows (chunk 325)
+0048524c	CCountedPointer<CMenuEntry>::ShareData	callee of the menu list rows (chunk 325)

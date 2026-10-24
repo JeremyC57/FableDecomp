@@ -276859,6 +276859,62 @@ $catalog = @(
         TestSource = '00/72/CTCSpecialAbilities_CancelCurrentMutexAbility_0072b420_test.cpp'
         PassPattern = '0072b420_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00460eb5'
+        Module = 'std::vector<CMusicSetEntry>'
+        Source = '00/46/stdvectorCMusicSetEntry_operator_00460eb5.cpp'
+        TestSource = '00/46/stdvectorCMusicSetEntry_operator_00460eb5_test.cpp'
+        PassPattern = '00460eb5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00462b4e'
+        Module = 'std::vector<CBrainBehaviour>'
+        Source = '00/46/stdvectorCBrainBehaviour_operator_00462b4e.cpp'
+        TestSource = '00/46/stdvectorCBrainBehaviour_operator_00462b4e_test.cpp'
+        PassPattern = '00462b4e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005907ab'
+        Module = 'CTCInventory'
+        Source = '00/59/CTCInventory_ConstructItemCategoryListPC_005907ab.cpp'
+        TestSource = '00/59/CTCInventory_ConstructItemCategoryListPC_005907ab_test.cpp'
+        PassPattern = '005907ab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059ed42'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_AddSellItemToList_0059ed42.cpp'
+        TestSource = '00/59/CTCInventoryTrade_AddSellItemToList_0059ed42_test.cpp'
+        PassPattern = '0059ed42_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059f51e'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_AddSellItemToListPC_0059f51e.cpp'
+        TestSource = '00/59/CTCInventoryTrade_AddSellItemToListPC_0059f51e_test.cpp'
+        PassPattern = '0059f51e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b5cf8'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_GetItemDescription_005b5cf8.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_GetItemDescription_005b5cf8_test.cpp'
+        PassPattern = '005b5cf8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b62fe'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_GetItemDescriptionNoArmourRating_005b62fe.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_GetItemDescriptionNoArmourRating_005b62fe_test.cpp'
+        PassPattern = '005b62fe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b70b8'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_ConstructClothingList_005b70b8.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_ConstructClothingList_005b70b8_test.cpp'
+        PassPattern = '005b70b8_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
