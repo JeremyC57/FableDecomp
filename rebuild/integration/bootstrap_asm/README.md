@@ -10,6 +10,14 @@ catalog rows. The landed, byte-exact reconstructions of the same addresses are g
 | 0x0099A920 | `src/CDiskFileWin32_Close_0099A920.cpp` | `rebuild/src/compiled/00/99/CDiskFileWin32_Close_0099a920.cpp` |
 | 0x0099AD80 | `src/CDiskFileWin32_Constructor_0099AD80.cpp` | `rebuild/src/compiled/00/99/CDiskFileWin32_CDiskFileWin32_0099ad80.cpp` |
 | 0x009C9070 | `src/NGameText_CDataBank_GetPGroupEntry_009c9070.cpp` | `rebuild/src/compiled/00/9c/NGameTextCDataBank_GetPGroupEntry_009c9070.cpp` |
+| 0x0042DEC5 | `src/CNewFrontendGameComponent_InitialiseInput_0042dec5.cpp` | same name under `rebuild/src/compiled/00/42/` |
+| 0x00499CE0 | `src/CProgressDisplay_Constructor_00499ce0.cpp` | same name under `rebuild/src/compiled/00/49/` |
+| 0x0059A9E0 | `src/FrontEndHistoryDequeMapAllocator_Allocate_0059a9e0.cpp` | same name under `rebuild/src/compiled/00/59/` |
+| 0x00988290 | `src/CShaderRenderManager_ResetWorldTransform_00988290.cpp` | same name under `rebuild/src/compiled/00/98/` |
+| 0x0098DFD0 | `src/CThreadedFile_Constructor_0098dfd0.cpp` | same name under `rebuild/src/compiled/00/98/` |
+
+The second group were the catalog rows themselves until the 2026-10-24 de-bake replaced them with genuine C++
+at the same paths; the bootstrap keeps compiling these asm copies.
 
 Moved here 2026-10-24 out of `rebuild/src/compiled` and `rebuild/tests`, where the 0x0099A920 pair
 differed from the landed files only by letter case and collided on a Windows checkout. Retiring them

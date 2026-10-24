@@ -1,44 +1,37 @@
-// CShaderRenderManager::ResetWorldTransform  (retail 0x00988290)
-// If not already initialized, writes a 4x4 identity matrix (row-major floats at
-// +0x1f0..+0x22c), sets a dirty-flag bitfield (|= 0xc990 at +0x3d8) and marks the
-// object initialized (+0x1e8 = 1).  Emitted as __declspec(naked) so VC7.1 reproduces
-// the retail register allocation (0 in eax, 1.0f in edx, memory-form OR) byte-for-byte.
-struct CShaderRenderManager {
-    char pad_0[0x1e8];
-    unsigned char inited;            // 0x1e8
-    char pad_1e9[0x1f0 - 0x1e9];
-    float m[16];                     // 0x1f0 .. 0x22c
-    char pad_230[0x3d8 - 0x230];
-    unsigned int dirtyFlags;         // 0x3d8
+// CShaderRenderManager::ResetWorldTransform() -- make the world matrix the identity (once) and mark the transforms dirty
+// Retail: Fable.exe @ 0x00988290, 131 bytes, `ret`. Unless WorldMatrixIsIdentity is already set, the 4x4 WorldMatrix
+// is set to the identity inline (the twelve off-diagonal zeros from one zeroed register, then the four 1.0f stores as
+// immediates; written row by row, one statement per element, VC hoists 1.0f into edx and sinks the diagonal stores), UpdateFlags gains 0xC990 and WorldMatrixIsIdentity is set.
+// Layout: retail offsets (Ego_r.pdb names): WorldMatrixIsIdentity +0x1E8, WorldMatrix +0x1F0, UpdateFlags +0x3D8 (the
+// PDB has them 0x10 / 0x10 / 0x20 higher), as the landed UpdateWorldTransform 0x00988E30; local model.
+struct CMatrix4x4 {
+    float m[4][4];
+    void SetIdentity()
+    {
+        m[0][0] = 1.0f; m[0][1] = 0.0f; m[0][2] = 0.0f; m[0][3] = 0.0f;
+        m[1][0] = 0.0f; m[1][1] = 1.0f; m[1][2] = 0.0f; m[1][3] = 0.0f;
+        m[2][0] = 0.0f; m[2][1] = 0.0f; m[2][2] = 1.0f; m[2][3] = 0.0f;
+        m[3][0] = 0.0f; m[3][1] = 0.0f; m[3][2] = 0.0f; m[3][3] = 1.0f;
+    }
 };
-
-__declspec(naked) void __fastcall CShaderRenderManager_ResetWorldTransform(CShaderRenderManager* self)
+enum {
+    SRM_UPDATE_WORLD_TRANSFORM_FLAGS = 0xC990
+};
+struct CShaderRenderManager {
+    void*         __vftable;                    // +0x000
+    unsigned char _pad004[0x1e4];
+    bool          WorldMatrixIsIdentity;        // +0x1e8
+    unsigned char _pad1e9[0x7];
+    CMatrix4x4    WorldMatrix;                  // +0x1f0
+    unsigned char _pad230[0x1a8];
+    unsigned long UpdateFlags;                  // +0x3d8
+    void ResetWorldTransform();
+};
+void CShaderRenderManager::ResetWorldTransform()
 {
-    __asm {
-        mov  dl, byte ptr [ecx+0x1e8]
-        xor  eax, eax
-        cmp  dl, al
-        jne  skip
-        mov  edx, 0x3f800000
-        mov  dword ptr [ecx+0x1f4], eax
-        mov  dword ptr [ecx+0x1f8], eax
-        mov  dword ptr [ecx+0x1fc], eax
-        mov  dword ptr [ecx+0x200], eax
-        mov  dword ptr [ecx+0x208], eax
-        mov  dword ptr [ecx+0x20c], eax
-        mov  dword ptr [ecx+0x210], eax
-        mov  dword ptr [ecx+0x214], eax
-        mov  dword ptr [ecx+0x21c], eax
-        mov  dword ptr [ecx+0x220], eax
-        mov  dword ptr [ecx+0x224], eax
-        mov  dword ptr [ecx+0x228], eax
-        mov  dword ptr [ecx+0x1f0], edx
-        mov  dword ptr [ecx+0x204], edx
-        mov  dword ptr [ecx+0x218], edx
-        mov  dword ptr [ecx+0x22c], edx
-        or   dword ptr [ecx+0x3d8], 0xc990
-        mov  byte  ptr [ecx+0x1e8], 1
-      skip:
-        ret
+    if (!WorldMatrixIsIdentity) {
+        WorldMatrix.SetIdentity();
+        UpdateFlags |= SRM_UPDATE_WORLD_TRANSFORM_FLAGS;
+        WorldMatrixIsIdentity = true;
     }
 }

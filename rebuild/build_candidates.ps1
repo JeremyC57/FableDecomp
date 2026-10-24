@@ -1717,8 +1717,7 @@ $catalog = @(
         Module = 'CShaderRenderManager'
         Source = '00/98/CShaderRenderManager_ResetWorldTransform_00988290.cpp'
         TestSource = '00/98/CShaderRenderManager_ResetWorldTransform_00988290_test.cpp'
-        PassPattern = 'CShaderRenderManager_00988290_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '00988290_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009ad950'
@@ -2859,8 +2858,7 @@ $catalog = @(
         Module = 'CNewFrontendGameComponent'
         Source = '00/42/CNewFrontendGameComponent_InitialiseInput_0042dec5.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_InitialiseInput_0042dec5_test.cpp'
-        PassPattern = 'PASS_0042dec5'
-        Grade = 'asm_bake'
+        PassPattern = '0042dec5_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042f722'
@@ -6907,7 +6905,7 @@ $catalog = @(
         Module = 'CFrontEndManager'
         Source = '00/59/FrontEndHistoryDequeMapAllocator_Allocate_0059a9e0.cpp'
         TestSource = '00/59/FrontEndHistoryDequeMapAllocator_Allocate_0059a9e0_test.cpp'
-        PassPattern = 'FRONTEND_0059a9e0_TEST PASS'
+        PassPattern = '0059a9e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0059a9f9'
@@ -6991,7 +6989,7 @@ $catalog = @(
         Module = 'CFrontEndManager'
         Source = '00/59/FrontEndHistoryDequeIterator_DistanceThunk_0059aae3.cpp'
         TestSource = '00/59/FrontEndHistoryDequeIterator_DistanceThunk_0059aae3_test.cpp'
-        PassPattern = 'FRONTEND_0059aae3_TEST PASS'
+        PassPattern = '0059aae3_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00597bf2'
@@ -25375,8 +25373,7 @@ $catalog = @(
         Module = 'CProgressDisplay'
         Source = '00/49/CProgressDisplay_Constructor_00499ce0.cpp'
         TestSource = '00/49/CProgressDisplay_Constructor_00499ce0_test.cpp'
-        PassPattern = 'FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS'
-        Grade = 'asm_bake'
+        PassPattern = '00499ce0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009e9fd0'
@@ -30283,8 +30280,7 @@ $catalog = @(
         Address = '0066f5c0'; Module = 'CInputTypeMouseWheelMovementDownEvent'
         Source = '00/66/CInputTypeMouseWheelMovementDownEvent_IsEventOfThisType_0066f5c0.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementDownEvent_IsEventOfThisType_0066f5c0_test.cpp'
-        PassPattern = 'PASS CInputTypeMouseWheelMovementDownEvent::IsEventOfThisType 0x0066F5C0'
-        Grade = 'asm_bake'
+        PassPattern = '0066f5c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00899c90'; Module = 'CGameScriptInterface'
@@ -30315,8 +30311,7 @@ $catalog = @(
         Address = '0066f840'; Module = 'CInputTypeXboxPadRightStickEvent'
         Source = '00/66/CInputTypeXboxPadRightStickEvent_GetControlDirection_0066f840.cpp'
         TestSource = '00/66/CInputTypeXboxPadRightStickEvent_GetControlDirection_0066f840_test.cpp'
-        PassPattern = 'PASS CInputTypeXboxPadRightStickEvent::GetControlDirection 0x0066F840'
-        Grade = 'asm_bake'
+        PassPattern = '0066f840_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00899ef0'; Module = 'CGameScriptInterface'
@@ -30348,8 +30343,7 @@ $catalog = @(
         Address = '0066f990'; Module = 'C2DVector'
         Source = '00/66/C2DVector_DivideByScalar_0066f990.cpp'
         TestSource = '00/66/C2DVector_DivideByScalar_0066f990_test.cpp'
-        PassPattern = 'PASS C2DVector divide-by-scalar helper 0x0066F990'
-        Grade = 'asm_bake'
+        PassPattern = '0066f990_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066f9e0'; Module = 'physics'
@@ -30382,8 +30376,7 @@ $catalog = @(
         Address = '0066fa10'; Module = 'CCharString'
         Source = '00/66/CCharString_ConstructCCoopSpiritDef_0066fa10.cpp'
         TestSource = '00/66/CCharString_ConstructCCoopSpiritDef_0066fa10_test.cpp'
-        PassPattern = 'PASS CCoopSpiritDef CCharString wrapper 0x0066FA10'
-        Grade = 'asm_bake'
+        PassPattern = '0066fa10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066fa30'; Module = 'runtime'
@@ -32369,7 +32362,7 @@ $catalog = @(
         Module = 'CThreadedFile'
         Source = '00/98/CThreadedFile_Constructor_0098dfd0.cpp'
         TestSource = '00/98/CThreadedFile_Constructor_0098dfd0_test.cpp'
-        PassPattern = 'FABLETLC_CTHREADEDFILE_CTOR_0098DFD0 PASS'
+        PassPattern = '0098dfd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004df3eb'

@@ -1,40 +1,23 @@
-// Front-end history deque map-slot allocator @ 0x0059A9E0.
-//
-// The map is an array of pointers to 32-element history blocks.  Allocation is
-// therefore count * sizeof(void*) on the 32-bit retail target.  The standard
-// allocator hint parameter is accepted but unused.
-
-extern "C" void* __cdecl
-FrontEndHistoryDequeMapAllocate_0059a9e0(unsigned long size);
-
-class FrontEndHistoryDequeMapAllocator_0059a9e0
-{
-public:
-    void** Allocate(unsigned long count, const void* hint);
-};
-
+// std::allocator<NUISystem::CComponent**>::allocate(size_type n, const void* hint) -- deque map allocation
+// Leaf: allocate
+// Retail: Fable.exe @ 0x0059A9E0, 25 bytes, __thiscall `ret 8` (the allocator `this` is unused, the hint ignored).
+// STLport 4.6 allocator::allocate: `n != 0 ? (T*)allocate(n * sizeof(T)) : 0`, the raw allocation being the CRT
+// malloc import thunk (0x00BFEA0E). n * sizeof(T*) is `shl eax,2`. This is the map allocator of the CFrontEndManager
+// screen-history deque (blocks of 32 CComponent* at 0x0059A929 use the sizeof 24 sibling).
+// Opt: size TU (`pop ecx` after the cdecl call), as the deque code around it.
 #pragma optimize("s", on)
-__declspec(naked)
-void** FrontEndHistoryDequeMapAllocator_0059a9e0::Allocate(
-    unsigned long,
-    const void*)
-{
-    __asm
+#include <stddef.h>
+extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E (import thunk)
+namespace NUISystem { class CComponent; }
+namespace std {
+template <class T> class allocator {
+public:
+    typedef T* pointer;
+    typedef size_t size_type;
+    pointer allocate(size_type n, const void* = 0)
     {
-        mov eax, dword ptr [esp + 4]
-        test eax, eax
-        je empty_map
-        shl eax, 2
-        push eax
-        call FrontEndHistoryDequeMapAllocate_0059a9e0
-        pop ecx
-        jmp done
-
-    empty_map:
-        xor eax, eax
-
-    done:
-        ret 8
+        return n != 0 ? (pointer)malloc(n * sizeof(T)) : 0;
     }
+};
+template class allocator<NUISystem::CComponent**>;
 }
-#pragma optimize("s", off)

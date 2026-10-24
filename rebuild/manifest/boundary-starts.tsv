@@ -164,3 +164,7 @@ address	module	name	length	evidence
 00f35380	CPersistContext_TransferableVector	vfunc_2	24	code 24 B; slot 2 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0
 00f353a0	CPersistContext_TransferableVector	vfunc_3	38	code 38 B; slot 3 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0
 00f353d0	CPersistContext_TransferableVector	vfunc_4	28	code 28 B; slot 4 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0
+0059a9e0	_STL::allocator<NUISystem::CComponent**>	allocate	25	follows the ret at 0x59A9DF; n ? malloc(n*4) : 0; landed catalog row (de-baked 2026-10-24); no direct callers (folded/inlined elsewhere)
+0059aae3	_STL::_Deque_iterator<NUISystem::CComponent*>	operator-	5	follows the ret at 0x59AAE2; one `jmp` to _M_subtract 0x59A8F3; landed catalog row (de-baked 2026-10-24)
+0066f990	C2DVector	operator/=	27	follows int3 padding after 0x66F970; X,Y times the reciprocal; landed catalog row (de-baked 2026-10-24)
+0066fa10	CCoopSpiritDef	StatGetTypeName	19	follows ret 8 + int3 padding at 0x66FA08; __fastcall static returning CCharString into ecx; landed catalog row (de-baked 2026-10-24)

@@ -1,29 +1,37 @@
-#include "fable_threaded_file.h"
-
-extern "C" fable_u8 g_FableThreadedFileVTable_0129A158;
-
-extern "C" void FABLE_FASTCALL
-FableThreadedFileBaseConstruct_0098DFD0(void* file, void*);
-extern "C" void FABLE_FASTCALL
-FableThreadedFilePathConstruct_0098DFD0(void* pathname, void*);
-
-// CThreadedFile::CThreadedFile() @ 0x0098DFD0.
-__declspec(naked) CThreadedFile::CThreadedFile()
+// CThreadedFile::CThreadedFile() -- default-construct a threaded file: no handle, empty name, not open
+// Leaf: ??0CThreadedFile
+// Retail: Fable.exe @ 0x0098DFD0, 41 bytes. CBase base ctor (0x0099A2F0), CThreadedFile vtable 0x0129A158 (RTTI),
+// CWideString default ctor (0x0099AED0) for Filename at +0x0C, then the two flags (+0x18, +0x19, one `xor al,al`)
+// and FileHandle = INVALID_HANDLE_VALUE (+0x08) last -- the flags are mem-initialisers, the handle is assigned in
+// the body. DeviceID (+4), Length (+0x10) and PhysicalSortKey (+0x14) are left unset. Layout from Ego_r.pdb
+// (sizeof 0x1C); no engine header exists. The catalog label NPlayerGui::CMultiStatBar::CMultiStatBar is propagated.
+class CBase {
+public:
+    CBase();                                   // 0x0099A2F0
+    virtual ~CBase();
+};
+class CWideString {
+public:
+    CWideString();                             // 0x0099AED0
+    ~CWideString();
+private:
+    unsigned short* m_pData;
+};
+enum EThreadedFileDeviceID { THREADED_FILE_DEVICE_DEFAULT };
+class CThreadedFile : public CBase {
+public:
+    CThreadedFile();
+    virtual ~CThreadedFile();
+    EThreadedFileDeviceID DeviceID;            // +0x04
+    void*                 FileHandle;          // +0x08
+    CWideString           Filename;            // +0x0C
+    unsigned long         Length;              // +0x10
+    unsigned long         PhysicalSortKey;     // +0x14
+    bool                  OpenedForWrite;      // +0x18
+    bool                  OpenFlag;            // +0x19
+};
+CThreadedFile::CThreadedFile()
+    : OpenedForWrite(false), OpenFlag(false)
 {
-    __asm
-    {
-        push esi
-        mov esi, ecx
-        call FableThreadedFileBaseConstruct_0098DFD0
-        lea ecx, dword ptr [esi + 0Ch]
-        mov dword ptr [esi], offset g_FableThreadedFileVTable_0129A158
-        call FableThreadedFilePathConstruct_0098DFD0
-        xor al, al
-        mov byte ptr [esi + 18h], al
-        mov byte ptr [esi + 19h], al
-        mov dword ptr [esi + 8], -1
-        mov eax, esi
-        pop esi
-        ret
-    }
+    FileHandle = (void*)-1;                    // INVALID_HANDLE_VALUE
 }
