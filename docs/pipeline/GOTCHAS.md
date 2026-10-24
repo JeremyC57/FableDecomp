@@ -1079,3 +1079,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `push N ; call malloc ; lea r,[eax+8] ; test r,r` with the caller linking node+0/+4 is STLport `list::_M_create_node` (chunk 347).
 - Placement `operator new(unsigned, void*)` must stay at global scope; a namespaced one fails C2660 (chunk 347).
 - Uncut-pool rows are bounds-checked before cutting: `mkchunk.py` applies `rebuild/candidates/manual/BOUNDS_FIX.tsv` (skip mid-starts, import thunks and runaway extents; cut overlong/truncated rows to the scanner extent). Regenerate it with the scanner when the pool changes.
+- Dinkumware `_Adjust_heap`: write the bottom case as `first[hole] = first[idx-1]; hole = idx-1;`; the `bottom-1` spelling swaps eax/esi (chunk 346).
+- STLport `map::operator[]` with retail's duplicated return tail is `It inserted = insert_unique(i, v); i = inserted;` (004c6e00); an early return or `i = insert_unique(...)` reorders it.
+- A predicate result spilled to a frame dword comes from a const-ref-bound temporary: `const unsigned long& bit = Random() & 1; return bit == 0;` (chunk 346).
+- `wchar_t` is not a keyword under the lane flags: include `<string.h>` for `_wcsicmp` instead of declaring it (chunk 346).

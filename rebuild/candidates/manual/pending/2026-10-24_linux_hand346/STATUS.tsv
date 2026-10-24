@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004c6e00	RELOCATION_MATCH	123v123	PASS	STLport map<void*,CBulletTimeInfo>::operator[] (label SplineDataList placeholder)
+009cbee0	RELOCATION_MATCH	35v35	PASS	buffer dtor: delete[] + null inside the test, count after
+00742fd0	RELOCATION_MATCH	42v42	PASS	~CModeDragonFlyingBase (novtable, implicit filter dtor)
+009fc5c0	RELOCATION_MATCH	47v47	PASS	~CResourceList (local polymorphic model; headers are flat PODs)
+00c14490	RELOCATION_MATCH	42v42	PASS	CBuffer twin of landed 0x00C14460
+00c27e60	RELOCATION_MATCH	42v42	PASS	CHandleBasedMemoryPool::ReleaseBuffer (engine header)
+00c27f50	MATCH	41v41	PASS	CHandleBasedMemoryPool::RemoveFreeArea
+00c29af0	RELOCATION_MATCH	42v42	PASS	CBuffer twin of landed 0x00C29CA0
+00cb19c0	RELOCATION_MATCH	32v32	PASS	strmbase CMediaType::ResetFormatBuffer
+00c426f0	MATCH	35v35	PASS	offset += m_position form
+00af3430	RELOCATION_MATCH	131v131	PASS	SGI __pop_heap<pair<CCharString,CRegisteredPSCInfo>> (label TeleportData propagated)
+00d15170	RELOCATION_MATCH	69v69	PASS	TeleportData implicit operator= via a=b helper
+00d18c50	RELOCATION_MATCH	69v69	PASS	TeleportData implicit copy ctor via placement new (label said operator=)
+00f0ca60	RELOCATION_MATCH	57v57	PASS	32-byte TeleportData implicit copy ctor
+00472a8d	RELOCATION_MATCH	214v214	PASS	landed 0x007D2740 model under y-off/s pragmas
+004eda32	RELOCATION_MATCH	58v58	PASS	vector<CPrizeScoreDef>::resize(n) (label ~WaypointData propagated)
+004edf0a	RELOCATION_MATCH	58v58	PASS	vector<CMultiStaticMeshEntryDef>::resize(n) (label ~WaypointData propagated)
+0087de50	RELOCATION_MATCH	161v161	PASS	comparator calls GetRotationInAnimation twice on the same entry (retail bug)
+00807520	RELOCATION_MATCH	217v217	PASS	coin bit bound to a const reference (frame dword)
+00a20750	RELOCATION_MATCH	90v90	PASS	CAStarState TotalCost greater-than
+00a5a580	RELOCATION_MATCH	82v82	PASS	float array, less (label CAStarState propagated)
+00ad1dd0	RELOCATION_MATCH	128v128	PASS	function-pointer predicate
+00978b90	DIFFER	142v142	-	register rotation in the comparator copy
+0097af70	DIFFER	142v142	-	byte twin of 00978b90, same residue
+00497160	RELOCATION_MATCH	160v160	PASS	_wcsicmp via <string.h>
+00a6fb40	RELOCATION_MATCH	224v224	PASS	FastCompare out of line, rep movsd payload
+004dfdbb	RELOCATION_MATCH	167v167	PASS	SGI /Os, forceinline comparator
+009b5c70	RELOCATION_MATCH	184v184	PASS	inline CCharString operator<
+00a408e0	RELOCATION_MATCH	184v184	PASS	twin of 009b5c70
+0071f650	RELOCATION_MATCH	152v152	PASS	user copy ctor on the pair
+005e1210	DIFFER	221v221	-	esi/edi swapped throughout
+0086f450	RELOCATION_MATCH	149v149	PASS	user copy ctor on the pair
+00adb000	RELOCATION_MATCH	150v150	PASS	CBlockInfo by Cost (label EExpressionType propagated)
+0071ff00	RELOCATION_MATCH	199v199	PASS	SGI; same-TU CCompositeBlendDesc copy ctor (landed 0x00720610 model)
+0081aa50	RELOCATION_MATCH	208v208	PASS	entry copy ctor written as *this = other
+0086b070	RELOCATION_MATCH	171v171	PASS	pair<long,CRandomAppearanceMorph::CSkeletalMorph> (label propagated)
+004d0590	RELOCATION_MATCH	163v163	PASS	pair<float,CCharString>
+004cbed0	RELOCATION_MATCH	106v106	PASS	signed long key (label pair<float,...> wrong)
+004d04f0	RELOCATION_MATCH	111v111	PASS	float key
+00680750	RELOCATION_MATCH	106v106	PASS	signed long key (label pair<float,...> wrong)

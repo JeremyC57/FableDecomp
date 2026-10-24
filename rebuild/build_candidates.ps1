@@ -282627,6 +282627,285 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00ca1750_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00472a8d'
+        Module = 'CPersistContext::TransferVectorOfSubComponents<NSpeechGainManager'
+        Source = '00/47/CPersistContextTransferVectorOfSubComponentsNSpeechGainManager_CDialogueLayerDef_00472a8d.cpp'
+        TestSource = '00/47/CPersistContextTransferVectorOfSubComponentsNSpeechGainManager_CDialogueLayerDef_00472a8d_test.cpp'
+        PassPattern = '00472a8d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00497160'
+        Module = '_global'
+        Source = '00/49/global_Adjustheap_00497160.cpp'
+        TestSource = '00/49/global_Adjustheap_00497160_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00497160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c6e00'
+        Module = 'std::map<void*, CBulletTimeManager::CBulletTimeInfo>'
+        Source = '00/4c/stdmapvoidCBulletTimeManagerCBulletTimeInfo_operator_004c6e00.cpp'
+        TestSource = '00/4c/stdmapvoidCBulletTimeManagerCBulletTimeInfo_operator_004c6e00_test.cpp'
+        PassPattern = '004c6e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cbed0'
+        Module = '_global'
+        Source = '00/4c/global_Adjustheap_004cbed0.cpp'
+        TestSource = '00/4c/global_Adjustheap_004cbed0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '004cbed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d04f0'
+        Module = '_global'
+        Source = '00/4d/global_Adjustheap_004d04f0.cpp'
+        TestSource = '00/4d/global_Adjustheap_004d04f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '004d04f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d0590'
+        Module = '_global'
+        Source = '00/4d/global_Adjustheap_004d0590.cpp'
+        TestSource = '00/4d/global_Adjustheap_004d0590_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '004d0590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dfdbb'
+        Module = '_global'
+        Source = '00/4d/global_adjustheap_004dfdbb.cpp'
+        TestSource = '00/4d/global_adjustheap_004dfdbb_test.cpp'
+        PassPattern = '004dfdbb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004eda32'
+        Module = 'std::vector<CPrizeScoreDef>'
+        Source = '00/4e/stdvectorCPrizeScoreDef_resize_004eda32.cpp'
+        TestSource = '00/4e/stdvectorCPrizeScoreDef_resize_004eda32_test.cpp'
+        PassPattern = '004eda32_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004edf0a'
+        Module = 'std::vector<CMultiStaticMeshEntryDef>'
+        Source = '00/4e/stdvectorCMultiStaticMeshEntryDef_resize_004edf0a.cpp'
+        TestSource = '00/4e/stdvectorCMultiStaticMeshEntryDef_resize_004edf0a_test.cpp'
+        PassPattern = '004edf0a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00680750'
+        Module = '_global'
+        Source = '00/68/global_Adjustheap_00680750.cpp'
+        TestSource = '00/68/global_Adjustheap_00680750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00680750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071f650'
+        Module = '_global'
+        Source = '00/71/global_Adjustheap_0071f650.cpp'
+        TestSource = '00/71/global_Adjustheap_0071f650_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0071f650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071ff00'
+        Module = '_global'
+        Source = '00/71/global_adjustheap_0071ff00.cpp'
+        TestSource = '00/71/global_adjustheap_0071ff00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0071ff00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00742fd0'
+        Module = 'NCreatureMode::CModeDragonFlyingBase'
+        Source = '00/74/NCreatureModeCModeDragonFlyingBase_CModeDragonFlyingBase_00742fd0.cpp'
+        TestSource = '00/74/NCreatureModeCModeDragonFlyingBase_CModeDragonFlyingBase_00742fd0_test.cpp'
+        PassPattern = '00742fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00807520'
+        Module = '_global'
+        Source = '00/80/global_Adjustheap_00807520.cpp'
+        TestSource = '00/80/global_Adjustheap_00807520_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00807520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081aa50'
+        Module = '_global'
+        Source = '00/81/global_Adjustheap_0081aa50.cpp'
+        TestSource = '00/81/global_Adjustheap_0081aa50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0081aa50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086b070'
+        Module = '_global'
+        Source = '00/86/global_Adjustheap_0086b070.cpp'
+        TestSource = '00/86/global_Adjustheap_0086b070_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0086b070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086f450'
+        Module = '_global'
+        Source = '00/86/global_Adjustheap_0086f450.cpp'
+        TestSource = '00/86/global_Adjustheap_0086f450_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0086f450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087de50'
+        Module = '_global'
+        Source = '00/87/global_Adjustheap_0087de50.cpp'
+        TestSource = '00/87/global_Adjustheap_0087de50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0087de50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b5c70'
+        Module = '_global'
+        Source = '00/9b/global_Adjustheap_009b5c70.cpp'
+        TestSource = '00/9b/global_Adjustheap_009b5c70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009b5c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cbee0'
+        Module = 'CArrayBuffer_009cbee0'
+        Source = '00/9c/CArrayBuffer009cbee0_CArrayBuffer009cbee0_009cbee0.cpp'
+        TestSource = '00/9c/CArrayBuffer009cbee0_CArrayBuffer009cbee0_009cbee0_test.cpp'
+        PassPattern = '009cbee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fc5c0'
+        Module = 'CResourceList'
+        Source = '00/9f/CResourceList_CResourceList_009fc5c0.cpp'
+        TestSource = '00/9f/CResourceList_CResourceList_009fc5c0_test.cpp'
+        PassPattern = '009fc5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a20750'
+        Module = '_global'
+        Source = '00/a2/global_Adjustheap_00a20750.cpp'
+        TestSource = '00/a2/global_Adjustheap_00a20750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a20750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a408e0'
+        Module = '_global'
+        Source = '00/a4/global_Adjustheap_00a408e0.cpp'
+        TestSource = '00/a4/global_Adjustheap_00a408e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a408e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5a580'
+        Module = '_global'
+        Source = '00/a5/global_Adjustheap_00a5a580.cpp'
+        TestSource = '00/a5/global_Adjustheap_00a5a580_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a5a580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6fb40'
+        Module = '_global'
+        Source = '00/a6/global_Adjustheap_00a6fb40.cpp'
+        TestSource = '00/a6/global_Adjustheap_00a6fb40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a6fb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad1dd0'
+        Module = '_global'
+        Source = '00/ad/global_Adjustheap_00ad1dd0.cpp'
+        TestSource = '00/ad/global_Adjustheap_00ad1dd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ad1dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adb000'
+        Module = '_global'
+        Source = '00/ad/global_Adjustheap_00adb000.cpp'
+        TestSource = '00/ad/global_Adjustheap_00adb000_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adb000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af3430'
+        Module = 'std'
+        Source = '00/af/std_popheap_00af3430.cpp'
+        TestSource = '00/af/std_popheap_00af3430_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00af3430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c14490'
+        Module = 'CBuffer_00c14490'
+        Source = '00/c1/CBuffer00c14490_CBuffer00c14490_00c14490.cpp'
+        TestSource = '00/c1/CBuffer00c14490_CBuffer00c14490_00c14490_test.cpp'
+        PassPattern = '00c14490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c27e60'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/c2/CHandleBasedMemoryPool_ReleaseBuffer_00c27e60.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool_ReleaseBuffer_00c27e60_test.cpp'
+        PassPattern = '00c27e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c27f50'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/c2/CHandleBasedMemoryPool_RemoveFreeArea_00c27f50.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool_RemoveFreeArea_00c27f50_test.cpp'
+        PassPattern = '00c27f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c29af0'
+        Module = 'CBuffer_00c29af0'
+        Source = '00/c2/CBuffer00c29af0_CBuffer00c29af0_00c29af0.cpp'
+        TestSource = '00/c2/CBuffer00c29af0_CBuffer00c29af0_00c29af0_test.cpp'
+        PassPattern = '00c29af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c426f0'
+        Module = 'StreamReader'
+        Source = '00/c4/StreamReader_AdvancePositionRelative_00c426f0.cpp'
+        TestSource = '00/c4/StreamReader_AdvancePositionRelative_00c426f0_test.cpp'
+        PassPattern = '00c426f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb19c0'
+        Module = 'CMediaType'
+        Source = '00/cb/CMediaType_ResetFormatBuffer_00cb19c0.cpp'
+        TestSource = '00/cb/CMediaType_ResetFormatBuffer_00cb19c0_test.cpp'
+        PassPattern = '00cb19c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d15170'
+        Module = 'TeleportData'
+        Source = '00/d1/TeleportData_operator_00d15170.cpp'
+        TestSource = '00/d1/TeleportData_operator_00d15170_test.cpp'
+        PassPattern = '00d15170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d18c50'
+        Module = 'TeleportData'
+        Source = '00/d1/TeleportData_TeleportData_00d18c50.cpp'
+        TestSource = '00/d1/TeleportData_TeleportData_00d18c50_test.cpp'
+        PassPattern = '00d18c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f0ca60'
+        Module = 'TeleportData'
+        Source = '00/f0/TeleportData_TeleportData_00f0ca60.cpp'
+        TestSource = '00/f0/TeleportData_TeleportData_00f0ca60_test.cpp'
+        PassPattern = '00f0ca60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
