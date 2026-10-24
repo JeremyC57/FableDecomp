@@ -1291,3 +1291,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - GetInterface written as one ternary store `*ppOut = (T*)((it==last || t<it->type) ? last : it)->component` loads the component straight into ecx; the if/assign form goes through eax (chunk 395).
 - STLport sort_heap with a 12-byte comparator: a C3DVector user copy ctor stops VC hoisting the comparator loads out of the loop (0x7A3B60); push_back of records holding CIntelligentPointer needs both copy ctors `__forceinline`.
 - An `and esp,-8` frame comes from `__declspec(align(8))` on a loop-local copy (0x78F820/0x794D90); `vector(n)` needs `_STLP_alloc_proxy` as the end-of-storage member.
+- STLport `copy_backward`/`__pop_heap` over elements with a non-trivial copy ctor must be `__forceinline` (0x818240, 0x818450); a comparator copied twice calls its copy ctor out of line, copied once it is inlined (0x80C020/0x80BCB0).
+- `_Rb_tree::_M_lower_bound` helpers must return a node pointer, not an iterator (0x813530); a `result` local in Create factories keeps the zero in ebx (0x80C460).
+- A temporary built inside `||` gets a conditional-destruction flag; retail's unconditional destroy means the call was its own statement (0x814C70). Retail evaluating a call's object before its arguments is still unsolved (0x814C70, 0x80FFB0).

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0080bcb0	RELOCATION_MATCH	116v116	PASS	partial_sort<CTargetPoint,CThingCompare_BestForTargeting2> (was Resize_TargetPointVector); comparator copy ctor inline when copied once
+0080c020	RELOCATION_MATCH	116v116	PASS	sort<CTargetPoint,CThingCompare_BestForTargeting2> (was IntroSort_TargetPoint_Setup); implicit comparator copy ctor called out of line (0x7F9730)
+0080c190	DIFFER	128v122	-	anon GetExplosionEffectInterpolate; x87 clamp keeps the radius on the stack in retail, ours reloads it
+0080c460	RELOCATION_MATCH	154v154	PASS	CTCDExplosion::Create(long,const C3DVector&); result local keeps the null in ebx
+0080c500	RELOCATION_MATCH	141v141	PASS	CTCDExplosion::Create(long,const C3DVector&,const C3DVector&); result local
+0080dd90	RELOCATION_MATCH	32v32	PASS	member CIntelligentPointer<CThingBuilding>::operator==
+0080def0	RELOCATION_MATCH	46v46	PASS	pair<CIntelligentPointer<CThing>,int> ctor (was make_pair)
+0080df20	RELOCATION_MATCH	46v46	PASS	pair<CIntelligentPointer<CThing>,long> ctor (was make_pair)
+0080e200	RELOCATION_MATCH	48v48	PASS	make_pair<CIntelligentPointer<CThing>,int>
+0080e2f0	DIFFER	182v182	-	remove_if<...,CIsFirstElementEqualTo>; find_if iterator-tag temporary slot (GOTCHA 222 lane gap)
+0080eb40	RELOCATION_MATCH	61v61	PASS	back_insert_iterator<vector<CThing*>>::operator=; same-TU noinline _M_insert_overflow homes the tag
+0080ebe0	RELOCATION_MATCH	107v107	PASS	transform into back_inserter(vector<CThing*>) via CGetThingFromIntelligentPointer
+0080ec50	RELOCATION_MATCH	107v107	PASS	transform into back_inserter(vector<const CThing*>) via CGetThingFromIntelligentPointer
+0080f240	RELOCATION_MATCH	46v46	PASS	CTCNymph::MakeSummonedCreaturesImmuneToTrap static
+0080ffb0	DIFFER	229v229	-	NExplosiveTrailHelpers::RandomiseThingOrientationAroundDirection; final 24-byte set copy order + physics-pointer load scheduling
+00810d40	RELOCATION_MATCH	25v25	PASS	list<pair<CIntelligentPointer<CThing>,long>>::push_back
+008111f0	RELOCATION_MATCH	213v213	PASS	NEntityEvents::CEventPerformedSpecialAbility ctor (vtable 0x012723C0)
+00813460	RELOCATION_MATCH	198v198	PASS	_Rb_tree<u64,CGroupMemberData>::erase(first,last); full mangled leaf (TU also emits erase(position))
+00813530	RELOCATION_MATCH	70v70	PASS	_Rb_tree::equal_range; _M_lower_bound/_M_upper_bound return node pointers
+00813580	RELOCATION_MATCH	192v192	PASS	_Rb_tree::_M_insert
+008137e0	MATCH	118v118	PASS	CTCCreatureGroupTag::FindNewTagger
+00814c70	DIFFER	156v156	-	NHitLocations::CPhysicalPrimitiveSphere::GetSphereBase; appearance-pointer load scheduled before the argument pushes in retail
+00817010	MATCH	90v90	PASS	swap<THitLocationIntersectionElement> (was swap<CDebugSphere>)
+008174b0	MATCH	64v64	PASS	STLport __lower_bound over THitLocationIntersectionElement
+008174f0	MATCH	64v64	PASS	STLport __upper_bound over THitLocationIntersectionElement
+008175d0	RELOCATION_MATCH	186v186	PASS	__adjust_heap<THitLocationIntersectionElement> (was _Adjust_heap<CDebugBox*>)
+00817840	MATCH	144v144	PASS	__unguarded_partition<THitLocationIntersectionElement>
+00818180	MATCH	89v89	PASS	__uninitialized_copy of the 28-byte particle-morph record (was _Move<CTVertexLandscapeBackground*>)
+00818240	RELOCATION_MATCH	147v147	PASS	__linear_insert; __forceinline copy_backward
+00818450	RELOCATION_MATCH	235v235	PASS	__partial_sort; __forceinline __pop_heap
+00818b00	RELOCATION_MATCH	234v234	PASS	__introsort_loop<THitLocationIntersectionElement>
+00819320	MATCH	61v61	PASS	fill<CTextureManagerPoolInfo>
+00819940	MATCH	106v106	PASS	__unguarded_linear_insert<SKeyedRecord>
+00819a60	MATCH	67v67	PASS	__unguarded_linear_insert<pair<unsigned long,CSoundPair>>
+0081a590	MATCH	46v46	PASS	uninitialized_fill_n<pair<unsigned long,CSoundPair>> (was _Fill_n<unsigned long*>)
+0081a8b0	RELOCATION_MATCH	80v80	PASS	__unguarded_insertion_sort_aux<SKeyedRecord> (was _Copy_impl<CNavigationPosition*>)
+0081a940	MATCH	98v98	PASS	__unguarded_insertion_sort_aux<SKeyedBlock40> (was _Fill<CHeroMarriageInfo*>)
+0081a9e0	MATCH	103v103	PASS	__unguarded_insertion_sort_aux<pair<unsigned long,CSoundPair>> (was _Copy_impl<CNavigationPosition*>)
+0081ab40	RELOCATION_MATCH	154v154	PASS	__adjust_heap over the (long, 36-byte) pair (was _Adjust_heap<CDebugCone*>)
+0081b220	RELOCATION_MATCH	116v116	PASS	CVectorMap<unsigned long,CSoundPair>::Insert (key by value); inline push_back + same-TU overflow, then Sort
