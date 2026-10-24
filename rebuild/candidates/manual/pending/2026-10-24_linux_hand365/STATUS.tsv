@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00440180	RELOCATION_MATCH	49v49	PASS	3-arg uninitialized_fill_n<CEnginePrimitiveHandle> (ret 4) with __forceinline inner __uninitialized_fill_n
+00513570	MATCH	92v92	PASS	fill_n of flat {long, 3 x CCountedPointer} (implicit copy); 4 grades
+005b149f	MATCH	36v36	PASS	fill_n<CIVCountedPointer> in an unaligned optimize("s") TU
+005e0ca0	MATCH	47v47	PASS	fill_n<pair<long, CIVCountedPointer>>
+005e1740	MATCH	69v69	PASS	fill_n<pair<ulong, CAnimationEntry>>
+005f7a1d	MATCH	36v36	PASS	fill_n<CIVCountedPointer> in an unaligned optimize("s") TU (twin of 005b149f)
+006b8de0	MATCH	52v52	PASS	fill_n<pair<long, CCountedPointer>>
+007688b0	MATCH	41v41	PASS	3-arg uninitialized_fill_n<CIVCountedPointer> (ret 4) with __forceinline inner
+00769810	RELOCATION_MATCH	72v72	PASS	fill_n of {CCharString x2, long x3} (CCharString copy 0x99EC30)
+00786e40	RELOCATION_MATCH	60v60	PASS	uninit copy of {long, CCharString, long}; T* cur form
+008002f0	MATCH	50v50	PASS	uninit copy pair<C2DVector(packed), uchar> 9-byte stride
+008181e0	MATCH	84v84	PASS	fill_n of 28-byte {long, 2 x CIVCountedPointer, long, long, bool, long}
+0081a1b0	MATCH	77v77	PASS	uninit copy pair<EHeroMorphType, CTextureMorphEntry>; T* cur form
+0082c420	MATCH	38v38	PASS	STLport __uninitialized_copy of a dword
+0082c690	MATCH	74v74	PASS	uninit copy CRGBColour (Set over B,G,R,A)
+00865650	RELOCATION_MATCH	93v93	PASS	uninit copy {list (node 0x24, dispatch 0x76FD40), long}
+0086abf0	MATCH	65v65	PASS	uninit copy pair<long, 12-byte record>; T* cur form
+0086d870	RELOCATION_MATCH	66v66	PASS	uninit copy {long, long, CVectorMap} (vector copy 0x673E10); T* cur form
+00889230	RELOCATION_MATCH	86v86	PASS	fill_n<CEnvironmentThemePriorityStackEntry> (label said CCamera)
+008ac180	RELOCATION_MATCH	54v54	PASS	fill_n<CScriptThing> (local CBase model)
+009ca4c0	MATCH	51v51	PASS	uninit copy pair<long, CCountedPointer>
+009ee100	RELOCATION_MATCH	82v82	PASS	fill_n<CGenericVar> (label said pair<CCharString,CScriptInfo>)
+009f6e00	RELOCATION_MATCH	75v75	PASS	__destroy_aux<CInputEventPackage> (inlined ~vector<CInputEvent>)
+00a31fd0	MATCH	69v69	PASS	uninit copy of 20-byte {long, 12-byte record, long}
+00a43630	MATCH	51v51	PASS	uninit copy NGameText::CDataBankTextEntry
+00a43f80	RELOCATION_MATCH	75v75	PASS	__destroy_aux<vector<{CCharString, long, long}>> (ICF-folded, 12 callers)
+00a51c60	MATCH	52v52	PASS	uninit copy C3DTriangle2
+00a52040	MATCH	52v52	PASS	uninit copy C3DVectorWord
+00a5e7f0	RELOCATION_MATCH	61v61	PASS	uninit copy CVertexShaderInput::CStreamInfo; T* cur + __forceinline ctors
+00a6e350	MATCH	52v52	PASS	uninit copy C3DTriangle2 (twin of 00a51c60)
+00a7e5c0	MATCH	50v50	PASS	uninit copy pair<u64, bool> 16-byte stride
+00a7e630	MATCH	50v50	PASS	uninit copy pair<u64, long> 16-byte stride
+00a7e990	MATCH	50v50	PASS	uninit copy 12-byte record with memberwise user copy ctor
+00a82730	RELOCATION_MATCH	87v87	PASS	uninit copy list<16-byte T> (node 0x18, dispatch 0x5152C0)
+00a831d0	RELOCATION_MATCH	87v87	PASS	uninit copy list<16-byte T> (twin of 00a82730)
+00ab4450	RELOCATION_MATCH	61v61	PASS	uninit copy CVertexShaderInput::CStreamInfo (twin of 00a5e7f0)
+00ad6ae0	RELOCATION_MATCH	69v69	PASS	uninit copy {uchar, set, set} (set copy 0xAD3A10); T* cur form
+00b0f670	RELOCATION_MATCH	64v64	PASS	uninit copy pair<ulong, CParticleUpdateParamDesc>
+00bbd520	MATCH	44v44	PASS	uninit copy pair<uchar, long>
+00c29340	MATCH	38v38	PASS	Dinkumware _Uninit_copy(first,last,dest,_Alloc&,tag) ret 0Ch

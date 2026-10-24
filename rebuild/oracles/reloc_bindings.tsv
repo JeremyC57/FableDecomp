@@ -29254,3 +29254,9 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?RotateRight@PKCTRRedblackTree_00c18b20@@QAEXPAUPKCTRRedblackNode_00c18b20@@@Z	00c18ad0	00c18b20
 ?RotateLeft@PKCTRRedblackMap_00c1b470@@QAEXPAUPKCTRRedblackNode_00c1b470@@@Z	00c1b200	00c1b470
 ?RotateRight@PKCTRRedblackMap_00c1b470@@QAEXPAUPKCTRRedblackNode_00c1b470@@@Z	00c1b250	00c1b470
+?_M_insert_dispatch@SList1C_00865650@@QAEXU_List_iterator_00865650@@U_List_const_iterator_00865650@@1ABU__false_type@@@Z	0076fd40	00865650
+??0SVector_0086d870@@QAE@ABU0@@Z	00673e10	0086d870
+??0CThemeWeightVector@@QAE@ABU0@@Z	006b58f0	00889230
+?_M_insert_dispatch@SList16_00a82730@@QAEXU_List_iterator_00a82730@@U_List_const_iterator_00a82730@@1ABU__false_type@@@Z	005152c0	00a82730
+?_M_insert_dispatch@SList16_00a831d0@@QAEXU_List_iterator_00a831d0@@U_List_const_iterator_00a831d0@@1ABU__false_type@@@Z	005152c0	00a831d0
+??0SRetailSet_00ad6ae0@@QAE@ABU0@@Z	00ad3a10	00ad6ae0

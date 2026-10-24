@@ -1162,3 +1162,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `back_insert_iterator` needs a user ctor, else `_Transform` returns the inserter in eax (007896af).
 - A zero default from POD `T()` schedules the value load after the zero stores; a user zeroing ctor gives retail's order (006861c0).
 - Callees defined earlier in the TU under `auto_inline(off)` let VC skip reloading ecx after the call; declared-only callees keep `this` in edi (00c18b20 vs 00c1b470).
+- The 3-argument `uninitialized_fill_n` front end (`ret 4`) needs a `__forceinline` inner `__uninitialized_fill_n` (00440180, 007688b0).
+- Dinkumware `_Uninit_copy` takes its tag by value (`ret 0Ch`) vs STLport `__uninitialized_copy` (`ret 8`) (00c29340 vs 0082c420).
+- A 9-byte stride is pair<packed C2DVector, uchar>; a 16-byte stride copying 12 or 9 bytes is pair<u64, long> / pair<u64, bool> (008002f0, 00a7e630).
