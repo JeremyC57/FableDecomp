@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005e16f0	MATCH	76v76	PASS	STLport __uninitialized_copy<pair<unsigned long,CAnimationEntry>> (intrusive add-ref)
+006f10f0	RELOCATION_MATCH	131v131	PASS	__uninitialized_copy<CDefendingCombatantInfo::CProng> (pack-1 C3DVector at +1); twin of 006f14a0
+006f14a0	RELOCATION_MATCH	131v131	PASS	__uninitialized_copy<CProng> called by landed vector<CProng>::operator= 006f3c20
+00748af0	RELOCATION_MATCH	97v97	PASS	STLport __copy {CIntelligentPointer, 8-byte POD sub-record}; attempt 2 (nested record)
+0077e280	RELOCATION_MATCH	90v90	PASS	__uninitialized_copy {CCharString, 12-byte record with user copy ctor}
+00806c00	RELOCATION_MATCH	122v122	PASS	__uninitialized_copy<NPlayerTargeting::CTargetPoint> (label right)
+00806e10	RELOCATION_MATCH	135v135	PASS	STLport __copy<CTargetPoint> (label right)
+00806ea0	RELOCATION_MATCH	135v135	PASS	STLport __copy<CTargetPoint>; twin of 00806e10
+00807980	RELOCATION_MATCH	122v122	PASS	__uninitialized_copy<CTargetPoint>; twin of 00806c00
+0088abc0	RELOCATION_MATCH	96v96	PASS	__uninitialized_copy {CCharString, long, 12-byte record}
+00a458b0	RELOCATION_MATCH	96v96	PASS	__uninitialized_copy {CCharString, long, 12-byte record}; twin of 0088abc0
+00a46680	RELOCATION_MATCH	102v102	PASS	__insertion_sort with __fastcall function-pointer comparator, by-value element in arg area
+00a6ed80	RELOCATION_MATCH	96v96	PASS	__uninitialized_copy {CCharString, 12-byte record, long}
+00a717a0	RELOCATION_MATCH	102v102	PASS	__insertion_sort with an empty name comparator
+00471be9	RELOCATION_MATCH	48v48	PASS	STLport list<24-byte POD>::erase(first,last) (size TU), not a copy
+005810ae	RELOCATION_MATCH	44v44	PASS	STLport __copy list<CHeroMarriageInfo> -> back_inserter(vector) (size TU), hidden result in ecx, tag ref in edx
+00517200	RELOCATION_MATCH	65v65	PASS	STLport __copy {CCharString, 12-byte vector}
+0051cae0	RELOCATION_MATCH	79v79	PASS	STLport __copy {vector, vector} pairs
+006314c0	RELOCATION_MATCH	71v71	PASS	STLport __copy<CConfigOptionsDefaultsDef>
+006b65c0	RELOCATION_MATCH	77v77	PASS	STLport __copy<CThemeChannel>
+00719f00	RELOCATION_MATCH	67v67	PASS	STLport __copy<CSubtitledMessage>
+0075f130	RELOCATION_MATCH	71v71	PASS	STLport __copy<CKeyCamera>
+00770230	RELOCATION_MATCH	53v53	PASS	STLport __copy of 4-byte records (op= 0x0076FF90)
+00889830	RELOCATION_MATCH	73v73	PASS	STLport __copy<CBlendedEnvironmentTheme>
+00a2bbb0	RELOCATION_MATCH	67v67	PASS	STLport __copy<C3DMeshInfo>
+00a40040	RELOCATION_MATCH	84v84	PASS	STLport __copy {CCharString, CCharString, long}
+00a82650	RELOCATION_MATCH	53v53	PASS	STLport __copy of 4-byte records (op= 0x00517720)
+00adc0d0	RELOCATION_MATCH	79v79	PASS	STLport __copy {vector, CRetailTree} pairs
+00adc120	RELOCATION_MATCH	79v79	PASS	STLport __copy {vector, CRetailTree}; twin of 00adc0d0
+00471239	MATCH	65v65	PASS	__unguarded_insertion_sort_aux, unsigned key (size TU, forceinline step)
+004d03c0	MATCH	87v87	PASS	__unguarded_insertion_sort_aux, float key; attempt 2 (pair user copy ctor)
+0040fc50	MATCH	74v74	PASS	__uninitialized_copy 28-byte POD (memberwise user copy ctor)
+0040ff80	MATCH	74v74	PASS	__uninitialized_copy 28-byte POD; twin of 0040fc50
+00b8eed0	MATCH	74v74	PASS	__uninitialized_copy 28-byte POD
+00c88cd0	DIFFER	49v62	-	SSE DSP add kernel (dst += src); 4 attempts, register/scheduling diff
+00f37cc0	MATCH	98v98	PASS	__uninitialized_copy 44-byte POD
+00672210	MATCH	36v36	PASS	__copy_backward_ptrs<long> (inner __copy_backward inlined)
+007108a0	MATCH	36v36	PASS	copy_backward over pointers (one-argument entry, ret 4)
+004e9bda	RELOCATION_MATCH	95v95	PASS	__copy_ptrs<CShopItemDef> (size TU, y off; forceinline op=/__copy); attempt 2
+004ed102	RELOCATION_MATCH	95v95	PASS	__copy_ptrs<CShopItemDef>; twin of 004e9bda

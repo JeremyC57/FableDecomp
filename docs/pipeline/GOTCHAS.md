@@ -1094,3 +1094,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `size` is a MASM operator: an `__asm fistp size` operand fails C2400; rename the local.
 - `pow` must be `extern "C"` (or from <math.h>) for `#pragma intrinsic(pow)` to emit `_CIpow`.
 - Register ties: writing the zero store first (`Mode = 0;`) keeps eax as the zero register so pointer copies go through edx (009ba9d0/009badd0).
+- Propagated `_Copy_impl<...>` labels are STLport helpers; the `ret` tells which: `__uninitialized_copy` = `ret 8` + placement null test, `__copy` = `ret 0Ch`, `__copy_ptrs`/`__copy_backward_ptrs` = `ret 8`, top-level `copy_backward` = `ret 4` (chunk 351).
+- A second strength-reduced src+N/dst+N pointer pair in a copy loop means a nested record member; its offset gives the member order (00748af0, 0088abc0).
+- `__fastcall` returning a class by value: hidden result pointer in ecx, class-type iterators stay on the stack, first pointer/reference argument in edx (005810ae).
+- The lane link does not fold byte-identical functions: grade each twin separately (0040fc50 / 00b8eed0).
