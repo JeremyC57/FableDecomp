@@ -285151,6 +285151,279 @@ $catalog = @(
         TestSource = '00/bf/global_UninitCopyRecord2800bf5b50_00bf5b50_test.cpp'
         PassPattern = '00bf5b50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00497060'
+        Module = '_global'
+        Source = '00/49/global_Pushheap_00497060.cpp'
+        TestSource = '00/49/global_Pushheap_00497060_test.cpp'
+        PassPattern = '00497060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b9540'
+        Module = '_global'
+        Source = '00/4b/global_Pushheap_004b9540.cpp'
+        TestSource = '00/4b/global_Pushheap_004b9540_test.cpp'
+        PassPattern = '004b9540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c1f80'
+        Module = '_global'
+        Source = '00/4c/global_Pushheap_004c1f80.cpp'
+        TestSource = '00/4c/global_Pushheap_004c1f80_test.cpp'
+        PassPattern = '004c1f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c2000'
+        Module = '_global'
+        Source = '00/4c/global_Pushheap_004c2000.cpp'
+        TestSource = '00/4c/global_Pushheap_004c2000_test.cpp'
+        PassPattern = '004c2000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cb640'
+        Module = '_global'
+        Source = '00/4c/global_Pushheap_004cb640.cpp'
+        TestSource = '00/4c/global_Pushheap_004cb640_test.cpp'
+        PassPattern = '004cb640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cfd80'
+        Module = '_global'
+        Source = '00/4c/global_Pushheap_004cfd80.cpp'
+        TestSource = '00/4c/global_Pushheap_004cfd80_test.cpp'
+        PassPattern = '004cfd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cfe10'
+        Module = '_global'
+        Source = '00/4c/global_Pushheap_004cfe10.cpp'
+        TestSource = '00/4c/global_Pushheap_004cfe10_test.cpp'
+        PassPattern = '004cfe10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cfeb0'
+        Module = '_global'
+        Source = '00/4c/global_Pushheap_004cfeb0.cpp'
+        TestSource = '00/4c/global_Pushheap_004cfeb0_test.cpp'
+        PassPattern = '004cfeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd875'
+        Module = '_global'
+        Source = '00/4d/global_pushheap_004dd875.cpp'
+        TestSource = '00/4d/global_pushheap_004dd875_test.cpp'
+        PassPattern = '004dd875_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005140a0'
+        Module = '_global'
+        Source = '00/51/global_Pushheap_005140a0.cpp'
+        TestSource = '00/51/global_Pushheap_005140a0_test.cpp'
+        PassPattern = '005140a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e0940'
+        Module = '_global'
+        Source = '00/5e/global_Pushheap_005e0940.cpp'
+        TestSource = '00/5e/global_Pushheap_005e0940_test.cpp'
+        PassPattern = '005e0940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067e650'
+        Module = '_global'
+        Source = '00/67/global_Pushheap_0067e650.cpp'
+        TestSource = '00/67/global_Pushheap_0067e650_test.cpp'
+        PassPattern = '0067e650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00680460'
+        Module = '_global'
+        Source = '00/68/global_Pushheap_00680460.cpp'
+        TestSource = '00/68/global_Pushheap_00680460_test.cpp'
+        PassPattern = '00680460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071ecf0'
+        Module = '_global'
+        Source = '00/71/global_Pushheap_0071ecf0.cpp'
+        TestSource = '00/71/global_Pushheap_0071ecf0_test.cpp'
+        PassPattern = '0071ecf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071f710'
+        Module = '_global'
+        Source = '00/71/global_pushheap_0071f710.cpp'
+        TestSource = '00/71/global_pushheap_0071f710_test.cpp'
+        PassPattern = '0071f710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007583f0'
+        Module = '_global'
+        Source = '00/75/global_Pushheap_007583f0.cpp'
+        TestSource = '00/75/global_Pushheap_007583f0_test.cpp'
+        PassPattern = '007583f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00776750'
+        Module = '_global'
+        Source = '00/77/global_Pushheap_00776750.cpp'
+        TestSource = '00/77/global_Pushheap_00776750_test.cpp'
+        PassPattern = '00776750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077e730'
+        Module = '_global'
+        Source = '00/77/global_Pushheap_0077e730.cpp'
+        TestSource = '00/77/global_Pushheap_0077e730_test.cpp'
+        PassPattern = '0077e730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00806910'
+        Module = 'std'
+        Source = '00/80/std_unguardedlinearinsert_00806910.cpp'
+        TestSource = '00/80/std_unguardedlinearinsert_00806910_test.cpp'
+        PassPattern = '00806910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00806990'
+        Module = '_global'
+        Source = '00/80/global_Pushheap_00806990.cpp'
+        TestSource = '00/80/global_Pushheap_00806990_test.cpp'
+        PassPattern = '00806990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080a480'
+        Module = '_global'
+        Source = '00/80/global_Pushheap_0080a480.cpp'
+        TestSource = '00/80/global_Pushheap_0080a480_test.cpp'
+        PassPattern = '0080a480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008170d0'
+        Module = '_global'
+        Source = '00/81/global_Pushheap_008170d0.cpp'
+        TestSource = '00/81/global_Pushheap_008170d0_test.cpp'
+        PassPattern = '008170d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00819b10'
+        Module = '_global'
+        Source = '00/81/global_Pushheap_00819b10.cpp'
+        TestSource = '00/81/global_Pushheap_00819b10_test.cpp'
+        PassPattern = '00819b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00819bc0'
+        Module = '_global'
+        Source = '00/81/global_Pushheap_00819bc0.cpp'
+        TestSource = '00/81/global_Pushheap_00819bc0_test.cpp'
+        PassPattern = '00819bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088c7c0'
+        Module = '_global'
+        Source = '00/88/global_Pushheap_0088c7c0.cpp'
+        TestSource = '00/88/global_Pushheap_0088c7c0_test.cpp'
+        PassPattern = '0088c7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00932370'
+        Module = '_global'
+        Source = '00/93/global_Pushheap_00932370.cpp'
+        TestSource = '00/93/global_Pushheap_00932370_test.cpp'
+        PassPattern = '00932370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097adf0'
+        Module = '_global'
+        Source = '00/97/global_Pushheap_0097adf0.cpp'
+        TestSource = '00/97/global_Pushheap_0097adf0_test.cpp'
+        PassPattern = '0097adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b4940'
+        Module = '_global'
+        Source = '00/9b/global_Pushheap_009b4940.cpp'
+        TestSource = '00/9b/global_Pushheap_009b4940_test.cpp'
+        PassPattern = '009b4940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e67c0'
+        Module = '_global'
+        Source = '00/9e/global_Pushheap_009e67c0.cpp'
+        TestSource = '00/9e/global_Pushheap_009e67c0_test.cpp'
+        PassPattern = '009e67c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a206f0'
+        Module = '_global'
+        Source = '00/a2/global_Pushheap_00a206f0.cpp'
+        TestSource = '00/a2/global_Pushheap_00a206f0_test.cpp'
+        PassPattern = '00a206f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a31410'
+        Module = '_global'
+        Source = '00/a3/global_Pushheap_00a31410.cpp'
+        TestSource = '00/a3/global_Pushheap_00a31410_test.cpp'
+        PassPattern = '00a31410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a403f0'
+        Module = '_global'
+        Source = '00/a4/global_Pushheap_00a403f0.cpp'
+        TestSource = '00/a4/global_Pushheap_00a403f0_test.cpp'
+        PassPattern = '00a403f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a586d0'
+        Module = '_global'
+        Source = '00/a5/global_Pushheap_00a586d0.cpp'
+        TestSource = '00/a5/global_Pushheap_00a586d0_test.cpp'
+        PassPattern = '00a586d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6f0f0'
+        Module = '_global'
+        Source = '00/a6/global_Pushheap_00a6f0f0.cpp'
+        TestSource = '00/a6/global_Pushheap_00a6f0f0_test.cpp'
+        PassPattern = '00a6f0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6f1d0'
+        Module = '_global'
+        Source = '00/a6/global_Pushheap_00a6f1d0.cpp'
+        TestSource = '00/a6/global_Pushheap_00a6f1d0_test.cpp'
+        PassPattern = '00a6f1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad0920'
+        Module = '_global'
+        Source = '00/ad/global_Pushheap_00ad0920.cpp'
+        TestSource = '00/ad/global_Pushheap_00ad0920_test.cpp'
+        PassPattern = '00ad0920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adaaa0'
+        Module = '_global'
+        Source = '00/ad/global_Pushheap_00adaaa0.cpp'
+        TestSource = '00/ad/global_Pushheap_00adaaa0_test.cpp'
+        PassPattern = '00adaaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2f10'
+        Module = '_global'
+        Source = '00/af/global_Pushheap_00af2f10.cpp'
+        TestSource = '00/af/global_Pushheap_00af2f10_test.cpp'
+        PassPattern = '00af2f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb64d0'
+        Module = '_global'
+        Source = '00/cb/global_Pushheap_00cb64d0.cpp'
+        TestSource = '00/cb/global_Pushheap_00cb64d0_test.cpp'
+        PassPattern = '00cb64d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

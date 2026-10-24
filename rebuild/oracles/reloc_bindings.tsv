@@ -29069,3 +29069,5 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ??4SVectorA@@QAEAAU0@ABU0@@Z	00a80ee0	00a85870
 ??4SVectorB@@QAEAAU0@ABU0@@Z	00a83d70	00a85870
 ??4SVectorC@@QAEAAU0@ABU0@@Z	00a84940	00a85870
+??RCIsHouseLargerThan@@QBE_NPAVCThingBuilding@@0@Z	00512410	005140a0
+??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@@QBE_NPAVCThing@@0@Z	0097abf0	0097adf0

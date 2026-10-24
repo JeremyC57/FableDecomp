@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004cfeb0	MATCH	105v105	PASS	28-byte float-keyed record, `<` (label CDegradableInfo propagated)
+0067e650	MATCH	105v105	PASS	CDegradableInfo / CIsHealth1GTHealth2 (`>` on HealthPercentage)
+007583f0	MATCH	95v95	PASS	44-byte long-keyed record, `<` (wound TU; label propagated)
+008170d0	MATCH	95v95	PASS	THitLocationIntersectionElement / THitLocationIntersectionElementPred (label propagated)
+00819bc0	MATCH	95v95	PASS	40-byte long-keyed record, `<` (label propagated)
+00a31410	MATCH	95v95	PASS	56-byte unsigned-keyed record, `<` (label propagated)
+00806910	RELOCATION_MATCH	113v113	PASS	really __unguarded_linear_insert<CIntelligentPointer<CThing>, CDoNotUseBinaryPredicate>
+00806990	RELOCATION_MATCH	147v147	PASS	coin-flip predicate as `if (Random() & 1) return false; return true;`
+00adaaa0	MATCH	109v109	PASS	CBlockInfo by Cost (model of landed 0x00ADB000)
+00497060	RELOCATION_MATCH	124v124	PASS	CWideString / _wcsicmp < 0
+004c1f80	MATCH	100v100	PASS	CMeshInfo / CSortPrimaryMeshesFirst (a.PrimaryMesh)
+004c2000	MATCH	105v105	PASS	CMeshInfo / CSortPrimaryMeshesLast (!a.PrimaryMesh)
+0080a480	RELOCATION_MATCH	206v206	PASS	CTargetPoint / CThingCompare_BestForTargeting2 (0x34-byte comparator by value)
+00ad0920	MATCH	104v104	PASS	COptimisedVertex::CGroup / __fastcall function-pointer predicate
+005140a0	RELOCATION_MATCH	97v97	PASS	CThingBuilding* / CIsHouseLargerThan (label float propagated)
+00776750	MATCH	75v75	PASS	long / less<long> (label float propagated)
+00932370	MATCH	92v92	PASS	CThing* / bool(__fastcall*)(CThing*,CThing*) (label float propagated)
+0097adf0	RELOCATION_MATCH	97v97	PASS	CThing* / CThingCompare_InDirectionOfAndNearestToHeuristicBitch (label float propagated)
+00a206f0	MATCH	89v89	PASS	CAStarState* / CAStarStateTotalGreaterThan (label float propagated)
+00807620	DIFFER	164v164	-	pair<C3DVector,long>: `lea ecx ; push ecx` scheduled before the first fstp in retail
+00a6f1d0	RELOCATION_MATCH	147v147	PASS	pair<CCharString,C3DDummyObject> / CCompareString (FastCompare)
+00a6f0f0	RELOCATION_MATCH	181v181	PASS	pair<CCharString,C3DHelperPoint> / CCompareString (FastCompare)
+0077e730	RELOCATION_MATCH	178v178	PASS	pair<CCharString,C3DVector> / CKeyPairCompareLess (inline CCharString operator<)
+00cb64d0	RELOCATION_MATCH	223v223	PASS	pair<CCharString,CScriptInfo> / CKeyPairCompareLess
+009e67c0	RELOCATION_MATCH	205v205	PASS	pair<CCharString,CSymbolInfo> / CCompareString
+004dd875	RELOCATION_MATCH	138v138	PASS	/Os TU: __push_heap under optimize("s",on), out-of-line pair operator=
+00af2f10	RELOCATION_MATCH	193v193	PASS	pair<CCharString,CRegisteredPSCInfo> / CKeyPairCompareLess
+004b9540	RELOCATION_MATCH	209v209	PASS	pair<CCharString,CPersistInfo> / CKeyPairCompareLess
+009b4940	RELOCATION_MATCH	141v141	PASS	pair<CCharString,unsigned long> / CKeyPairCompareLess
+00a403f0	RELOCATION_MATCH	141v141	PASS	pair<CCharString,unsigned long> / CKeyPairCompareLess (twin of 0x009B4940)
+0071ecf0	MATCH	108v108	PASS	pair<CSkeletalMorphs::CEntry,float> / CIsSkeletalMorphLowerPriorityThan
+005e0940	MATCH	184v184	PASS	pair<EAnimComponent,CIVCountedPointer> / CKeyPairCompareLess
+0071f710	MATCH	145v145	PASS	pair<EHeroMorphType,CTextureMorphEntry> (model of landed 0x0071FF00)
+00819b10	MATCH	145v145	PASS	pair<EHeroMorphType,CTextureMorphEntry> (model of landed 0x0081AA50)
+004cfe10	RELOCATION_MATCH	119v119	PASS	pair<float,CCharString> / CKeyPairCompareLess<float>
+00a586d0	MATCH	72v72	PASS	float / less<float> (label pair<float,CCharString> propagated)
+004cb640	MATCH	79v79	PASS	pair<long,dword> less (label pair<float,EConversationAttitude> propagated)
+004cfd80	MATCH	86v86	PASS	pair<float,EConversationAttitude> / CKeyPairCompareLess
+00680460	MATCH	79v79	PASS	pair<long,dword> less (twin of 0x004CB640; label propagated)
+0088c7c0	MATCH	79v79	PASS	pair<long,dword> GREATER (label propagated)

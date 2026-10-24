@@ -1125,3 +1125,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A `mov [this], imm` vtable store names a ctor/dtor's class only if that class is polymorphic: non-polymorphic wrappers store their first member's vtable at this+0.
 - Landed callers model callees with stand-in classes (`CString_00c0ad10`, `FableCharStringResult_004d2d26`): count only the method leaf as naming evidence, never the class.
 - `tools/decomp_pipeline/naming/msvc_demangle.py` demangles VC7.1 symbols (templates with back-references, operators, deleting dtors, stdcall/fastcall decorations) for naming audits.
+- A `_Push_heap` row is SGI `__push_heap` (`hole > top`); Dinkumware's `_Top < _Hole` flips the test to `cmp ebp,edi ; jge` (004cfeb0).
+- The `ret N` of a /Gr heap helper is 4 + sizeof(T) + sizeof(Compare): it gives the comparator size (chunk 360).
+- A coin-flip predicate `if (Random() & 1) return false; return true;` gives `test al,1 ; jne`; `(x & 1) == 0` gives `not al ; test al,1` (00806990).
+- Wrapping both calls of `f(a) > f(b)` in an inline helper makes VC7.1 evaluate the right-hand call first (00807620).
