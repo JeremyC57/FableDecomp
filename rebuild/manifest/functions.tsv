@@ -47,7 +47,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004038c0	`vector_constructor_iterator'	_global	__stdcall	void	4	void *,uint,int,_func_void_ptr_void_ptr *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\global_vectorconstructoriterator_004038c0.cpp
 00403a00	GetLength	CCharString	__thiscall	long	1	CCharString *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CCharString_GetLength_00403a00.cpp
 00403a10	operator_char_const*	CCharString	__thiscall	char *	1	CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CCharString_operatorcharconst_00403a10.cpp
-00403b10	CSystemManagerInit	CSystemManagerInit	__thiscall	undefined	1	CSystemManagerInit *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CSystemManagerInit_Constructor_00403b10.cpp
+00403b10	CSystemManagerInit	CSystemManagerInit	__thiscall	undefined	1	CSystemManagerInit *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CSystemManagerInit_CSystemManagerInit_00403b10.cpp
 00403c20	Init	CStringParser	__thiscall	void	5	CStringParser *,CCharString *,_func_void_CCharString_ptr *,CCharString *,long	1	yes	accepted									
 00403c60	MemCmp_Unsigned16	_global	__cdecl	int	3	ushort const *,ushort const *,ulong	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x00403C60_global_MemCmp_Unsigned16.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\Global_MemCmpUnsigned16_00403c60.cpp
 00403cb0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403cb0.cpp
@@ -33383,13 +33383,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0099a560	?SetLength@CDiskFileWin32@@UAEXJ@Z	CDiskFileWin32	__thiscall	void	2	CDiskFileWin32 *,long	1	yes	accepted									
 0099a5a0	?GetFileInformation@CDiskFileWin32@@UAE?AVCFileInformation@@XZ	CDiskFileWin32	__thiscall	CFileInformation	1	CDiskFileWin32 *	1	yes	accepted									
 0099a6a0	?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z	CDiskFileWin32	__thiscall	void	4	CDiskFileWin32 *,CWideString *,FileAccessType,ulong	1	yes	accepted									
-0099a920	?Close@CDiskFileWin32@@UAEXXZ	CDiskFileWin32	__thiscall	void	1	CDiskFileWin32 *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDiskFileWin32_Close_0099A920.cpp
+0099a920	?Close@CDiskFileWin32@@UAEXXZ	CDiskFileWin32	__thiscall	void	1	CDiskFileWin32 *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDiskFileWin32_Close_0099a920.cpp
 0099a960	?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z	CDiskFileWin32	__thiscall	void	4	CDiskFileWin32 *,void *,long,CASuspendableProcess *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDiskFileWin32_Read_0099a960.cpp
 0099aa90	?Write@CDiskFileWin32@@UAEXPBXJPAVCASuspendableProcess@@@Z	CDiskFileWin32	__thiscall	void	4	CDiskFileWin32 *,void *,long,CASuspendableProcess *	1	yes	accepted									
 0099abd0	CDiskFileWin32::GetPosition	CDiskFileWin32	__thiscall	long	1	CDiskFileWin32 *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDiskFileWin32_GetPosition_0099abd0.cpp
 0099abf0	?SetPosition@CDiskFileWin32@@UAEXJ@Z	CDiskFileWin32	__thiscall	void	2	CDiskFileWin32 *,long	1	yes	accepted									
 0099ac90	CDiskFileWin32::MovePosition	CDiskFileWin32	__thiscall	void	2	CDiskFileWin32 *,long	1	yes	accepted									
-0099ad80	CDiskFileWin32	CDiskFileWin32	__thiscall	undefined	4	CDiskFileWin32 *,CWideString *,FileAccessType,ulong	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDiskFileWin32_Constructor_0099AD80.cpp
+0099ad80	CDiskFileWin32	CDiskFileWin32	__thiscall	undefined	4	CDiskFileWin32 *,CWideString *,FileAccessType,ulong	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDiskFileWin32_CDiskFileWin32_0099ad80.cpp
 0099adc0	CDiskFileWin32	CDiskFileWin32	__thiscall	undefined	2	CDiskFileWin32 *,CDiskFileWin32 *	0	yes	accepted									
 0099ae00	?Clone@CDiskFileWin32@@UBEPAVCAFile@@XZ	CDiskFileWin32	__thiscall	CAFile *	1	CDiskFileWin32 *	1	yes	accepted									
 0099ae50	CAIStateGroupBase	CAIStateGroupBase	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
@@ -34316,7 +34316,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009c8c00	NGameText::CDataBank::vfunc_12	NGameText::CDataBank	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 009c8de0	ReadFromDataStream	CTextEntry	__thiscall	void	2	CTextEntry *,CDataInputStream *	1	yes	accepted									
 009c8fb0	BuildGroup	CDataBankGroupEntry	__thiscall	void	1	CDataBankGroupEntry *	1	yes	accepted									
-009c9070	NGameText::CDataBank::GetPGroupEntry	NGameText::CDataBank	__thiscall	CIVCountedPointer<NGameText::CGroupEntry const>	3	NGameText::CDataBank const *,unsigned long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\NGameText_CDataBank_GetPGroupEntry_009c9070.cpp
+009c9070	NGameText::CDataBank::GetPGroupEntry	NGameText::CDataBank	__thiscall	CIVCountedPointer<NGameText::CGroupEntry const>	3	NGameText::CDataBank const *,unsigned long,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\NGameTextCDataBank_GetPGroupEntry_009c9070.cpp
 009c9170	Validate	CDataBank	__thiscall	void	1	CDataBank *	1	yes	accepted									
 009c9280	GetTextEntryFromGroup	CDataBank	__thiscall	CTextEntry *	6	CDataBank *,ulong,CCharString *,bool *,long *,bool	1	yes	accepted									
 009c95e0	GetTextBySymbol	CDataBank	__thiscall	CWideString	2	CDataBank *,CCharString *	1	yes	accepted									

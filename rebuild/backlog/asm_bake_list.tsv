@@ -6,7 +6,6 @@ address	module	name	kind	retail_parity	file
 00401fe0	EULA	EULA::DoEULAThings	naked_asm	RELOCATION_MATCH	EULA_DoEULAThings_00401fe0.cpp
 00402130	_global	FableCheckMyDocumentsWritePermissions_00402130	naked_asm	RELOCATION_MATCH	Global_MyDocuments_CheckWritePermissions_00402130.cpp
 004023f0	_global	GetWindowTitle	naked_asm	RELOCATION_MATCH	Global_GetWindowTitle_004023f0.cpp
-00403b10	CSystemManagerInit	CSystemManagerInit	naked_asm	RELOCATION_MATCH	CSystemManagerInit_Constructor_00403b10.cpp
 00403e40	CCountedPointer<CIPhysicsFacesSegmentBase const>	CCountedPointer<CIPhysicsFacesSegmentBase const>::Reset	naked_asm	RELOCATION_MATCH	CCountedPointer_PhysicsFacesSegment_Reset_00403e40.cpp
 00404310	_global	CCharString_ComputeCRC32	naked_asm	RELOCATION_MATCH	Global_CCharStringComputeCRC32_00404310.cpp
 004045c0	CPersistContext	CPersistContext::Transfer<signed char>	naked_asm	RELOCATION_MATCH	CPersistContext_TransferSignedChar_004045c0.cpp
@@ -539,9 +538,7 @@ address	module	name	kind	retail_parity	file
 00994780	CFileDataInputStream	~CFileDataInputStream	naked_asm	RELOCATION_MATCH	CFileDataInputStream_dtor_00994780.cpp
 00996230	CDataInputStream	?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z	naked_asm	RELOCATION_MATCH	CDataInputStream_ReadZlibCompressed_00996230.cpp
 0099a2d0	CBase	CBase	naked_asm	RELOCATION_MATCH	CBase_CBase_0099a2d0.cpp
-0099a920	CDiskFileWin32	?Close@CDiskFileWin32@@UAEXXZ	naked_asm	RELOCATION_MATCH	CDiskFileWin32_Close_0099A920.cpp
 0099a960	CDiskFileWin32	?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z	naked_asm	RELOCATION_MATCH	CDiskFileWin32_Read_0099a960.cpp
-0099ad80	CDiskFileWin32	CDiskFileWin32	naked_asm	RELOCATION_MATCH	CDiskFileWin32_Constructor_0099AD80.cpp
 0099be70	_global	operator+(CWideString const&,CWideString const&)	naked_asm	RELOCATION_MATCH	CWideString_AddWideStrings_0099be70.cpp
 0099bf30	_global	operator+(CWideString const &,wchar_t const *)	naked_asm	RELOCATION_MATCH	CWideString_AddWideStringAndLiteral_0099bf30.cpp
 0099bff0	_global	operator+(wchar_t const *,CWideString const &)	naked_asm	RELOCATION_MATCH	CWideString_AddLiteralAndWideString_0099bff0.cpp
@@ -556,7 +553,6 @@ address	module	name	kind	retail_parity	file
 009bef80	CDisplayManager	SetViewport	naked_asm	RELOCATION_MATCH	CDisplayManager_SetViewportInteger_009bef80.cpp
 009bf490	CDisplayManager	SetViewport	naked_asm	RELOCATION_MATCH	CDisplayManager_SetViewport_009bf490.cpp
 009c85a0	NGameText::CDataBank	NGameText::CDataBank::CDataBank	naked_asm	RELOCATION_MATCH	NGameText_CDataBank_Constructor_009c85a0.cpp
-009c9070	NGameText::CDataBank	NGameText::CDataBank::GetPGroupEntry	naked_asm	RELOCATION_MATCH	NGameText_CDataBank_GetPGroupEntry_009c9070.cpp
 009d4c30	CDefStringTable	CDefStringTable::LoadTable	naked_asm	RELOCATION_MATCH	CDefStringTable_LoadTable_009d4c30.cpp
 009e2540	_global	CPUAheadCounterCallback	naked_asm	MATCH	global_CPUAheadCounterCallback_009e2540.cpp
 009e3830	CPixelFormat	Initialise	naked_asm	RELOCATION_MATCH	CPixelFormat_InitialiseD3DFormat_009e3830.cpp
