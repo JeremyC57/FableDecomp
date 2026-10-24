@@ -1268,3 +1268,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `__merge_backward`: write the full STLport `copy_backward` chain (two early-out copies inline, two in-loop copies stay calls) (0x710D00).
 - Keep an uncalled anonymous-namespace function emitted: declare it, add a `_Use` caller, then define it (chunk 390).
 - A grade run without the lane env leaves an empty `D:\Documents\FableTLC/...` tree in the working directory (the Windows default path); harmless, delete it.
+- A CDefPointer refcount decrement must live in a pointee `RemoveRef()`; written inline in `operator=` the pointer is reloaded and re-tested (+7 bytes) (0x738720).
+- Walk one multimap key as `last = upper_bound(k); for (it = lower_bound(k); ...)`; `equal_range` stays an out-of-line call (0x733F70).
+- When retail reuses eax for an interface fetch, use the out-pointer `GetInterface(T**, long)`; a pointer-returning `GetTC` puts the component in ecx (0x72B3B0).
+- STLport vector ctor needs `explicit vector(const allocator_type& = allocator_type())` with `_STLP_alloc_proxy` (0x72C6E0); declare placement new `throw()` to keep retail's null test (0x739670).
+- `"STF_" + name` goes through `__fastcall operator+(const char*, const CCharString&)` (0x7329E0).

@@ -293915,6 +293915,244 @@ $catalog = @(
         TestSource = '00/71/std_swap_0071ec20_test.cpp'
         PassPattern = '0071ec20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0071ec60'
+        Module = '_global'
+        Source = '00/71/global_unguardedlinearinsert_0071ec60.cpp'
+        TestSource = '00/71/global_unguardedlinearinsert_0071ec60_test.cpp'
+        PassPattern = '0071ec60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071f2e0'
+        Module = 'vector<CDefPointer<const CThingBaseDef> >'
+        Source = '00/71/vectorCDefPointerconstCThingBaseDef_Mallocateandcopy_0071f2e0.cpp'
+        TestSource = '00/71/vectorCDefPointerconstCThingBaseDef_Mallocateandcopy_0071f2e0_test.cpp'
+        PassPattern = '0071f2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071f530'
+        Module = '_global'
+        Source = '00/71/global_swap_0071f530.cpp'
+        TestSource = '00/71/global_swap_0071f530_test.cpp'
+        PassPattern = '0071f530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071f570'
+        Module = '_global'
+        Source = '00/71/global_unguardedinsertionsortaux_0071f570.cpp'
+        TestSource = '00/71/global_unguardedinsertionsortaux_0071f570_test.cpp'
+        PassPattern = '0071f570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071f5e0'
+        Module = '_global'
+        Source = '00/71/global_unguardedlinearinsert_0071f5e0.cpp'
+        TestSource = '00/71/global_unguardedlinearinsert_0071f5e0_test.cpp'
+        PassPattern = '0071f5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071fc20'
+        Module = '_global'
+        Source = '00/71/global_unguardedpartition_0071fc20.cpp'
+        TestSource = '00/71/global_unguardedpartition_0071fc20_test.cpp'
+        PassPattern = '0071fc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071fe70'
+        Module = '_global'
+        Source = '00/71/global_makeheap_0071fe70.cpp'
+        TestSource = '00/71/global_makeheap_0071fe70_test.cpp'
+        PassPattern = '0071fe70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00720c00'
+        Module = '_global'
+        Source = '00/72/global_unguardedpartition_00720c00.cpp'
+        TestSource = '00/72/global_unguardedpartition_00720c00_test.cpp'
+        PassPattern = '00720c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00721150'
+        Module = 'vector<CDefPointer<const CThingBaseDef> >'
+        Source = '00/72/vectorCDefPointerconstCThingBaseDef_operator_00721150.cpp'
+        TestSource = '00/72/vectorCDefPointerconstCThingBaseDef_operator_00721150_test.cpp'
+        PassPattern = '00721150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00721400'
+        Module = '_global'
+        Source = '00/72/global_partialsort_00721400.cpp'
+        TestSource = '00/72/global_partialsort_00721400_test.cpp'
+        PassPattern = '00721400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00721600'
+        Module = 'vector<CDefPointer<const CThingBaseDef> >'
+        Source = '00/72/vectorCDefPointerconstCThingBaseDef_clear_00721600.cpp'
+        TestSource = '00/72/vectorCDefPointerconstCThingBaseDef_clear_00721600_test.cpp'
+        PassPattern = '00721600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00721960'
+        Module = '_global'
+        Source = '00/72/global_partialsort_00721960.cpp'
+        TestSource = '00/72/global_partialsort_00721960_test.cpp'
+        PassPattern = '00721960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00721d30'
+        Module = 'back_insert_iterator<vector<CDefPointer<const CThingBaseDef> > >'
+        Source = '00/72/backinsertiteratorvectorCDefPointerconstCThingBaseDef_operator_00721d30.cpp'
+        TestSource = '00/72/backinsertiteratorvectorCDefPointerconstCThingBaseDef_operator_00721d30_test.cpp'
+        PassPattern = '00721d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00721f70'
+        Module = '_global'
+        Source = '00/72/global_copy_00721f70.cpp'
+        TestSource = '00/72/global_copy_00721f70_test.cpp'
+        PassPattern = '00721f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00724240'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_RemoveIntersectingCreaturesFromList_00724240.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_RemoveIntersectingCreaturesFromList_00724240_test.cpp'
+        PassPattern = '00724240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007249c0'
+        Module = 'CIsCreatureIsIntersecting'
+        Source = '00/72/CIsCreatureIsIntersecting_operator_007249c0.cpp'
+        TestSource = '00/72/CIsCreatureIsIntersecting_operator_007249c0_test.cpp'
+        PassPattern = '007249c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00724a50'
+        Module = '_global'
+        Source = '00/72/global_removecopyif_00724a50.cpp'
+        TestSource = '00/72/global_removecopyif_00724a50_test.cpp'
+        PassPattern = '00724a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00724a90'
+        Module = '_global'
+        Source = '00/72/global_findif_00724a90.cpp'
+        TestSource = '00/72/global_findif_00724a90_test.cpp'
+        PassPattern = '00724a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00726610'
+        Module = '_global'
+        Source = '00/72/global_foreach_00726610.cpp'
+        TestSource = '00/72/global_foreach_00726610_test.cpp'
+        PassPattern = '00726610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00727500'
+        Module = '_global'
+        Source = '00/72/global_foreach_00727500.cpp'
+        TestSource = '00/72/global_foreach_00727500_test.cpp'
+        PassPattern = '00727500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072b3b0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_ReclaimUndeadFollower_0072b3b0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_ReclaimUndeadFollower_0072b3b0_test.cpp'
+        PassPattern = '0072b3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072c6e0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_CTCSpecialAbilities_0072c6e0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_CTCSpecialAbilities_0072c6e0_test.cpp'
+        PassPattern = '0072c6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007329e0'
+        Module = 'CTCClock'
+        Source = '00/73/CTCClock_PlaySoundW_007329e0.cpp'
+        TestSource = '00/73/CTCClock_PlaySoundW_007329e0_test.cpp'
+        PassPattern = '007329e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007334f0'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_ClearCombatVariables_007334f0.cpp'
+        TestSource = '00/73/CTCCombat_ClearCombatVariables_007334f0_test.cpp'
+        PassPattern = '007334f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00733620'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_GetCombatAbilityData_00733620.cpp'
+        TestSource = '00/73/CTCCombat_GetCombatAbilityData_00733620_test.cpp'
+        PassPattern = '00733620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00733f70'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_SetBlockBroken_00733f70.cpp'
+        TestSource = '00/73/CTCCombat_SetBlockBroken_00733f70_test.cpp'
+        PassPattern = '00733f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007340b0'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_OnKnockDown_007340b0.cpp'
+        TestSource = '00/73/CTCCombat_OnKnockDown_007340b0_test.cpp'
+        PassPattern = '007340b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00734340'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_GetBlockAbilityIterator_00734340.cpp'
+        TestSource = '00/73/CTCCombat_GetBlockAbilityIterator_00734340_test.cpp'
+        PassPattern = '00734340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007352d0'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_AddThingToAlwaysBlock_007352d0.cpp'
+        TestSource = '00/73/CTCCombat_AddThingToAlwaysBlock_007352d0_test.cpp'
+        PassPattern = '007352d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00738720'
+        Module = '_global'
+        Source = '00/73/global_removecopy_00738720.cpp'
+        TestSource = '00/73/global_removecopy_00738720_test.cpp'
+        PassPattern = '00738720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00738c90'
+        Module = 'CGetMaxComboStage'
+        Source = '00/73/CGetMaxComboStage_operator_00738c90.cpp'
+        TestSource = '00/73/CGetMaxComboStage_operator_00738c90_test.cpp'
+        PassPattern = '00738c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00738d10'
+        Module = 'multimap<ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> >'
+        Source = '00/73/multimapECombatAbilityDataTypepairCCountedPointerCCombatAbilityDataCCombatAbilit_lowerbound_00738d10.cpp'
+        TestSource = '00/73/multimapECombatAbilityDataTypepairCCountedPointerCCombatAbilityDataCCombatAbilit_lowerbound_00738d10_test.cpp'
+        PassPattern = '00738d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00739670'
+        Module = '_Rb_tree<ECombatAbilityDataType, pair<const ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> > >'
+        Source = '00/73/RbtreeECombatAbilityDataTypepairconstECombatAbilityDataTypepairCCountedPointerCC_Minsert_00739670.cpp'
+        TestSource = '00/73/RbtreeECombatAbilityDataTypepairconstECombatAbilityDataTypepairCCountedPointerCC_Minsert_00739670_test.cpp'
+        PassPattern = '00739670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00739b00'
+        Module = '_Rb_tree<ECombatAbilityDataType, pair<const ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> > >'
+        Source = '00/73/RbtreeECombatAbilityDataTypepairconstECombatAbilityDataTypepairCCountedPointerCC_insertequal_00739b00.cpp'
+        TestSource = '00/73/RbtreeECombatAbilityDataTypepairconstECombatAbilityDataTypepairCCountedPointerCC_insertequal_00739b00_test.cpp'
+        PassPattern = '00739b00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

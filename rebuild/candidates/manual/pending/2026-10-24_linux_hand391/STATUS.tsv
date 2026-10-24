@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0071ec60	MATCH	66v66	PASS	STLport __unguarded_linear_insert, pair<CSkeletalMorphs::CEntry,float>
+0071f2e0	RELOCATION_MATCH	79v79	PASS	vector<CDefPointer<const CThingBaseDef> >::_M_allocate_and_copy
+0071f530	MATCH	55v55	PASS	STLport swap of pair<CEntry,float> (manifest GFToScreen is propagated)
+0071f570	MATCH	101v101	PASS	STLport __unguarded_insertion_sort_aux, pair<CEntry,float>
+0071f5e0	MATCH	106v106	PASS	STLport __unguarded_linear_insert, pair<EHeroMorphType,CTextureMorphEntry>
+0071fc20	MATCH	127v127	PASS	STLport __unguarded_partition, pair<CEntry,float>
+0071fe70	RELOCATION_MATCH	101v101	PASS	STLport __make_heap, pair<CEntry,float>
+00720c00	RELOCATION_MATCH	76v76	PASS	STLport __unguarded_partition, texture-morph pair
+00721150	RELOCATION_MATCH	230v230	PASS	vector<CDefPointer<const CThingBaseDef> >::operator=
+00721400	RELOCATION_MATCH	158v158	PASS	STLport __partial_sort, pair<CEntry,float> (inline __pop_heap)
+00721600	RELOCATION_MATCH	49v49	PASS	vector<CDefPointer<const CThingBaseDef> >::clear
+00721960	RELOCATION_MATCH	227v227	PASS	STLport __partial_sort, texture-morph pair (out-of-line __pop_heap)
+00721a50	DIFFER	125v125	-	CVectorMap<long,CTextureLayer>::Add; placement-copy load/store order
+00721d30	RELOCATION_MATCH	68v68	PASS	back_insert_iterator<vector<CDefPointer> >::operator=
+00721f70	RELOCATION_MATCH	111v111	PASS	STLport __copy into a back_insert_iterator
+00722bd0	DIFFER	86v86	-	__uninitialized_fill_n<SThingRecord>; ebx/edi register swap
+00724240	RELOCATION_MATCH	75v75	PASS	CTCPhysicsStandard::RemoveIntersectingCreaturesFromList
+007249c0	RELOCATION_MATCH	140v140	PASS	CIsCreatureIsIntersecting::operator()
+00724a50	RELOCATION_MATCH	63v63	PASS	STLport remove_copy_if, CIsCreatureIsIntersecting
+00724a90	RELOCATION_MATCH	198v198	PASS	STLport unrolled __find_if, CIsCreatureIsIntersecting
+00726610	RELOCATION_MATCH	77v77	PASS	for_each, CApplyAdditionalPlayerImpulseIfTooClose (label propagated from 0x727500)
+00727500	RELOCATION_MATCH	84v84	PASS	for_each, CApplyAdditionalImpulseIfInCombatAndTooClose
+00729960	DIFFER	73v73	-	list<CExpressionState>::push_front; edi shrink-wrap
+0072aaf0	DIFFER	66v66	-	CTCSpecialAbilities::SetupMultiStrike; ecx loaded before the AddTC pushes
+0072ab70	DIFFER	90v88	-	CTCSpecialAbilities::CreateParticleEffect; emitter held in eax not ecx (+2)
+0072b3b0	RELOCATION_MATCH	99v99	PASS	CTCSpecialAbilities::ReclaimUndeadFollower
+0072c6e0	RELOCATION_MATCH	161v161	PASS	CTCSpecialAbilities ctor (list + vector<bool>.resize(20,true))
+007329e0	RELOCATION_MATCH	235v235	PASS	CTCClock::PlaySoundW (STF_/STL_ sound pair)
+00732d40	DIFFER	185v185	-	CTCWeatherVane::FrameUpdate; vcall setup, square order, fxch
+007334f0	MATCH	140v140	PASS	CTCCombat::ClearCombatVariables
+00733620	MATCH	106v106	PASS	CTCCombat::GetCombatAbilityData
+00733f70	RELOCATION_MATCH	219v219	PASS	CTCCombat::SetBlockBroken
+007340b0	RELOCATION_MATCH	221v221	PASS	CTCCombat::OnKnockDown
+00734340	MATCH	204v204	PASS	CTCCombat::GetBlockAbilityIterator
+007352d0	RELOCATION_MATCH	97v97	PASS	CTCCombat::AddThingToAlwaysBlock
+00738720	MATCH	92v92	PASS	STLport remove_copy over CDefPointer<const CMeleeCombatAbilityDef>
+00738c90	RELOCATION_MATCH	45v45	PASS	CGetMaxComboStage::operator()
+00738d10	MATCH	44v44	PASS	CombatAbilities multimap::lower_bound
+00739670	RELOCATION_MATCH	235v235	PASS	CombatAbilities _Rb_tree::_M_insert
+00739b00	RELOCATION_MATCH	58v58	PASS	CombatAbilities _Rb_tree::insert_equal
