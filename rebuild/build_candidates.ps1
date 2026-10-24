@@ -304337,6 +304337,251 @@ $catalog = @(
         TestSource = '00/b8/STL_stablesortaux_00b86710_test.cpp'
         PassPattern = '00b86710_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b867a0'
+        Module = '_STL'
+        Source = '00/b8/STL_introsortloop_00b867a0.cpp'
+        TestSource = '00/b8/STL_introsortloop_00b867a0_test.cpp'
+        PassPattern = '00b867a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8d3c0'
+        Module = 'CEngineOcclusionManager'
+        Source = '00/b8/CEngineOcclusionManager_GetPrevFrameFlareTestResultFromRetrivalID_00b8d3c0.cpp'
+        TestSource = '00/b8/CEngineOcclusionManager_GetPrevFrameFlareTestResultFromRetrivalID_00b8d3c0_test.cpp'
+        PassPattern = '00b8d3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8eb00'
+        Module = 'CShaderRenderManager'
+        Source = '00/b8/CShaderRenderManager_DrawBuffersIndexed_00b8eb00.cpp'
+        TestSource = '00/b8/CShaderRenderManager_DrawBuffersIndexed_00b8eb00_test.cpp'
+        PassPattern = '00b8eb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8f1c0'
+        Module = '_STL'
+        Source = '00/b8/STL_lowerbound_00b8f1c0.cpp'
+        TestSource = '00/b8/STL_lowerbound_00b8f1c0_test.cpp'
+        PassPattern = '00b8f1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8f650'
+        Module = '_STL::vector'
+        Source = '00/b8/STLvector_insert_00b8f650.cpp'
+        TestSource = '00/b8/STLvector_insert_00b8f650_test.cpp'
+        PassPattern = '00b8f650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b91840'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_UpdatePosition_00b91840.cpp'
+        TestSource = '00/b9/CEngineScene_UpdatePosition_00b91840_test.cpp'
+        PassPattern = '00b91840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b91f00'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_MovePrimitivesUp_00b91f00.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_MovePrimitivesUp_00b91f00_test.cpp'
+        PassPattern = '00b91f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b93290'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_EnumerateScene_00b93290.cpp'
+        TestSource = '00/b9/CEngineScene_EnumerateScene_00b93290_test.cpp'
+        PassPattern = '00b93290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b93500'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_InvalidateBoundingBoxesAndDrawDistances_00b93500.cpp'
+        TestSource = '00/b9/CEngineScene_InvalidateBoundingBoxesAndDrawDistances_00b93500_test.cpp'
+        PassPattern = '00b93500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b93cc0'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_CheckVisibility_00b93cc0.cpp'
+        TestSource = '00/b9/CEngineScene_CheckVisibility_00b93cc0_test.cpp'
+        PassPattern = '00b93cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b96d70'
+        Module = '_STL::_Rb_tree'
+        Source = '00/b9/STLRbtree_Minsert_00b96d70.cpp'
+        TestSource = '00/b9/STLRbtree_Minsert_00b96d70_test.cpp'
+        PassPattern = '00b96d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b97980'
+        Module = '_STL::_Rb_tree'
+        Source = '00/b9/STLRbtree_Mcopy_00b97980.cpp'
+        TestSource = '00/b9/STLRbtree_Mcopy_00b97980_test.cpp'
+        PassPattern = '00b97980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b98350'
+        Module = '_STL::_Rb_tree'
+        Source = '00/b9/STLRbtree_Merase_00b98350.cpp'
+        TestSource = '00/b9/STLRbtree_Merase_00b98350_test.cpp'
+        PassPattern = '00b98350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba1110'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_RenderMeshPrimitiveBlocks_00ba1110.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_RenderMeshPrimitiveBlocks_00ba1110_test.cpp'
+        PassPattern = '00ba1110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba7db0'
+        Module = 'CShaderRenderManager'
+        Source = '00/ba/CShaderRenderManager_DrawBuffersIndexed_00ba7db0.cpp'
+        TestSource = '00/ba/CShaderRenderManager_DrawBuffersIndexed_00ba7db0_test.cpp'
+        PassPattern = '00ba7db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00baa460'
+        Module = 'CEngineInternalPrimitiveRepeatedZSprite'
+        Source = '00/ba/CEngineInternalPrimitiveRepeatedZSprite_GetTransitionFade_00baa460.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitiveRepeatedZSprite_GetTransitionFade_00baa460_test.cpp'
+        PassPattern = '00baa460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb1e30'
+        Module = 'CEngineClothRenderer'
+        Source = '00/bb/CEngineClothRenderer_GetPositionBuffer_00bb1e30.cpp'
+        TestSource = '00/bb/CEngineClothRenderer_GetPositionBuffer_00bb1e30_test.cpp'
+        PassPattern = '00bb1e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb1e90'
+        Module = 'CEngineClothRenderer'
+        Source = '00/bb/CEngineClothRenderer_GetNormalBuffer_00bb1e90.cpp'
+        TestSource = '00/bb/CEngineClothRenderer_GetNormalBuffer_00bb1e90_test.cpp'
+        PassPattern = '00bb1e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb6450'
+        Module = 'CEnginePrimitiveRenderUtil'
+        Source = '00/bb/CEnginePrimitiveRenderUtil_CalcDistanceFromCamera_00bb6450.cpp'
+        TestSource = '00/bb/CEnginePrimitiveRenderUtil_CalcDistanceFromCamera_00bb6450_test.cpp'
+        PassPattern = '00bb6450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb9fd0'
+        Module = '_STL::vector<CTVertexNormTex1>'
+        Source = '00/bb/STLvectorCTVertexNormTex1_vector_00bb9fd0.cpp'
+        TestSource = '00/bb/STLvectorCTVertexNormTex1_vector_00bb9fd0_test.cpp'
+        PassPattern = '00bb9fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbd580'
+        Module = '_STL'
+        Source = '00/bb/STL_uninitializedfilln_00bbd580.cpp'
+        TestSource = '00/bb/STL_uninitializedfilln_00bbd580_test.cpp'
+        PassPattern = '00bbd580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbd6b0'
+        Module = '_STL::list<CEnginePrimitiveHandle>'
+        Source = '00/bb/STLlistCEnginePrimitiveHandle_erase_00bbd6b0.cpp'
+        TestSource = '00/bb/STLlistCEnginePrimitiveHandle_erase_00bbd6b0_test.cpp'
+        PassPattern = '00bbd6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbd770'
+        Module = '_STL::list<long>'
+        Source = '00/bb/STLlistlong_Mfillinsert_00bbd770.cpp'
+        TestSource = '00/bb/STLlistlong_Mfillinsert_00bbd770_test.cpp'
+        PassPattern = '00bbd770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbda70'
+        Module = '_STL::list<long>'
+        Source = '00/bb/STLlistlong_resize_00bbda70.cpp'
+        TestSource = '00/bb/STLlistlong_resize_00bbda70_test.cpp'
+        PassPattern = '00bbda70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbdad0'
+        Module = '_STL::list<CEnginePrimitiveHandle>'
+        Source = '00/bb/STLlistCEnginePrimitiveHandle_Mfillinsert_00bbdad0.cpp'
+        TestSource = '00/bb/STLlistCEnginePrimitiveHandle_Mfillinsert_00bbdad0_test.cpp'
+        PassPattern = '00bbdad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbdc60'
+        Module = '_STL::list<CEnginePrimitiveHandle>'
+        Source = '00/bb/STLlistCEnginePrimitiveHandle_resize_00bbdc60.cpp'
+        TestSource = '00/bb/STLlistCEnginePrimitiveHandle_resize_00bbdc60_test.cpp'
+        PassPattern = '00bbdc60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc5e90'
+        Module = '_STL::vector<CEnginePrimitiveHandle>'
+        Source = '00/bc/STLvectorCEnginePrimitiveHandle_reserve_00bc5e90.cpp'
+        TestSource = '00/bc/STLvectorCEnginePrimitiveHandle_reserve_00bc5e90_test.cpp'
+        PassPattern = '00bc5e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd8480'
+        Module = 'CVectorMap'
+        Source = '00/bd/CVectorMap_LowerBound_00bd8480.cpp'
+        TestSource = '00/bd/CVectorMap_LowerBound_00bd8480_test.cpp'
+        PassPattern = '00bd8480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd8730'
+        Module = '_STL::vector<CMatrix3x4>'
+        Source = '00/bd/STLvectorCMatrix3x4_vector_00bd8730.cpp'
+        TestSource = '00/bd/STLvectorCMatrix3x4_vector_00bd8730_test.cpp'
+        PassPattern = '00bd8730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd8800'
+        Module = 'CEngineInternalPrimitiveMorphInfo'
+        Source = '00/bd/CEngineInternalPrimitiveMorphInfo_GetTextureDecal_00bd8800.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitiveMorphInfo_GetTextureDecal_00bd8800_test.cpp'
+        PassPattern = '00bd8800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd8b30'
+        Module = '_STL::_Rb_tree'
+        Source = '00/bd/STLRbtree_Mcopy_00bd8b30.cpp'
+        TestSource = '00/bd/STLRbtree_Mcopy_00bd8b30_test.cpp'
+        PassPattern = '00bd8b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd9110'
+        Module = '_STL::map<unsigned long, CArray<C3DVector> >'
+        Source = '00/bd/STLmapunsignedlongCArrayC3DVector_operator_00bd9110.cpp'
+        TestSource = '00/bd/STLmapunsignedlongCArrayC3DVector_operator_00bd9110_test.cpp'
+        PassPattern = '00bd9110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd9fd0'
+        Module = 'CEngineLandscapeMemoryManager'
+        Source = '00/bd/CEngineLandscapeMemoryManager_CEngineLandscapeMemoryManager_00bd9fd0.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_CEngineLandscapeMemoryManager_00bd9fd0_test.cpp'
+        PassPattern = '00bd9fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdb750'
+        Module = '_STL'
+        Source = '00/bd/STL_uninitializedcopy_00bdb750.cpp'
+        TestSource = '00/bd/STL_uninitializedcopy_00bdb750_test.cpp'
+        PassPattern = '00bdb750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be04f0'
+        Module = 'CEngineStaticMapFileBlockManager'
+        Source = '00/be/CEngineStaticMapFileBlockManager_DeleteUnusedBlocks_00be04f0.cpp'
+        TestSource = '00/be/CEngineStaticMapFileBlockManager_DeleteUnusedBlocks_00be04f0_test.cpp'
+        PassPattern = '00be04f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
