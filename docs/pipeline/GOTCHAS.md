@@ -1188,3 +1188,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport `insert_unique(v)` passes `__y` twice on the begin() path; deque `_M_initialize_map` writes `max(8, n+2)` via two by-ref temporaries (0x485E5C, 0x493875).
 - COMDATs of one container come from different TUs: choose pragmas per row, not per address range (0x475BF6 /Os frame vs 0x475D07 speed).
 - finish.py's line-1 parser splits on `::` before the first `(`: keep `::`-bearing template args out of line 1.
+- `rtti-vtables.tsv` class names drop template arguments: demangle the full `.?AV?$...` type descriptor (msvc_demangle.py) before naming a ctor from its vtable.
