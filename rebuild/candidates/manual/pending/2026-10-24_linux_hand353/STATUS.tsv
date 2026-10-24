@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0099a3c0	RELOCATION_MATCH	44v44	PASS	CBaseObject::ClearIntelligentPointers (Ego_r name); engine/CBaseObject.h carrier
+009b31a0	MATCH	29v29	PASS	__fastcall record dtor: CIVCountedPointer at +0xc released (class unidentified)
+00bc5f50	RELOCATION_MATCH	80v80	PASS	CEngineInternalPrimitiveChanger dtor; novtable classes, STLport vector of polymorphic handles
+00633670	RELOCATION_MATCH	29v29	PASS	CPlayer::UninitModeClickPastText (mode table 0x121B169); engine/CPlayer.h carrier
+00633bb0	RELOCATION_MATCH	29v29	PASS	CPlayer::UninitModeOracleMinigame (pairs with Init 0x6367C0; name inferred)
+00768310	RELOCATION_MATCH	19v19	PASS	CTCObjectAugmentations::OnSetInLimbo (vtable 0x126A3A4 slot 16)
+008f8030	RELOCATION_MATCH	73v73	PASS	LHNetworkLib::LTimer::MSeconds (Ego_r name + LTimer layout); GetTickCount, __ftol2 tail
+009439d0	RELOCATION_MATCH	27v27	PASS	CAIFilter_ShouldStillBeWorkingInWarehouse dtor; novtable derived, empty user dtor
+00a3a180	RELOCATION_MATCH	87v87	PASS	C2DBoxI::GetDistance (Ego_r name); clamp tests the local copy
+00ae15d0	RELOCATION_MATCH	33v33	PASS	CParticleProgram::GetUsedBones const; same-TU auto_inline(off) stand-in of 0xAE1210 for the ecx reuse
+00ae3a30	RELOCATION_MATCH	39v39	PASS	CParticleProgram::RemapBoneIndices; retail-offset local model (+0xfc/+0x108)
+00996b60	RELOCATION_MATCH	83v83	PASS	CMemoryDataOutputStream::Clear (Ego_r name); retail opt-in engine header
+00a2cfe0	RELOCATION_MATCH	100v100	PASS	CLODStateBlock dtor; STLport map clear + counted pointer
+00a45410	RELOCATION_MATCH	93v93	PASS	C3DSkeletalMorph::Reset (Ego_r name); VC6 erase(begin,end) + Info-then-Data reset
+00add330	RELOCATION_MATCH	67v67	PASS	CLHFile::Close (vtable 0x129F094 slot 3; name inferred); Reset then delete this
+00c91320	RELOCATION_MATCH	34v34	PASS	FreeBufferHeader: free(+8) then memset 20 (C library at 0xC8xxxx)
+004b9f10	RELOCATION_MATCH	49v49	PASS	_Rb_tree<CCharString>::insert_unique(first,last) (set<CCharString> range ctor helper)
+004ba100	RELOCATION_MATCH	81v81	PASS	__unguarded_insertion_sort_aux over pair<CCharString, pair<CCharString,CCharString>>
+004e3686	RELOCATION_MATCH	53v53	PASS	__insertion_sort over {CCharString, 12-byte value}; optimize("s")
+00515250	RELOCATION_MATCH	101v101	PASS	_Destroy_range over CMapInfo (PDB layout, inline ~CMapInfo)
+00518b80	RELOCATION_MATCH	33v33	PASS	_Destroy over CLevelFiles (out-of-line ~CLevelFiles 0x50F980)
+005684a0	RELOCATION_MATCH	34v34	PASS	_Destroy over pair<long, CWideString>
+00594b59	RELOCATION_MATCH	52v52	PASS	__insertion_sort over pair<long, CDefPointer<const CHeroAbilityDef>>; optimize("s")
+006b6ff0	RELOCATION_MATCH	59v59	PASS	__destroy_aux over vector<SThemeBlock> (named tag local)
+006c3510	RELOCATION_MATCH	33v33	PASS	_Destroy over 20-byte {CCharString, 4 longs}
+006e5360	RELOCATION_MATCH	33v33	PASS	_Destroy over 12-byte {CCharString, 2 longs}
+007f8760	RELOCATION_MATCH	58v58	PASS	std::for_each(ParticleList, SKillThing) of CTCParticleAttacher; /Gr fastcall, hidden functor result
+007fa290	RELOCATION_MATCH	130v130	PASS	__unguarded_insertion_sort_aux over CThing* with CThingCompare_BestForTargeting2 (C3DVector copy ctor)
+00807320	RELOCATION_MATCH	71v71	PASS	__unguarded_insertion_sort_aux over CIntelligentPointer<CThing>
+009267a0	RELOCATION_MATCH	72v72	PASS	__unguarded_insertion_sort_aux over CIntelligentPointer<const CThing>, function-pointer comparator
+009b8070	RELOCATION_MATCH	55v55	PASS	__destroy_aux over pair<unsigned long, CDefinitionManager::CDefClassInfo> (STLport vector model)
+009e6d10	RELOCATION_MATCH	83v83	PASS	__unguarded_insertion_sort_aux over pair<CCharString, CSymbolMap::CSymbolInfo>
+009f6720	RELOCATION_MATCH	33v33	PASS	_Destroy over 52-byte records (ICF-folded empty dtor 0xA03B30)
+00a37af0	RELOCATION_MATCH	88v88	PASS	__destroy_aux over {list<long>, 3 longs, CCharString}
+00a5e900	RELOCATION_MATCH	55v55	PASS	__destroy_aux over pair<unsigned long, CBaseClass-derived CArray holder>
+00b2efb0	RELOCATION_MATCH	104v104	PASS	__destroy_aux over CGraphicFrame (landed forceinline dtors)
+00cbb2d0	RELOCATION_MATCH	69v69	PASS	__unguarded_insertion_sort_aux over pair<CCharString, CCountedPointer<T>>
+009c6d60	RELOCATION_MATCH	123v123	PASS	__destroy_aux over CFileInstaller::CBufferChunk (inline GFFreeFromGlobalAllocator)
+005f85ab	RELOCATION_MATCH	45v45	PASS	__unguarded_insertion_sort_aux over pair<long,long> (A); optimize("s")
+005f85f1	RELOCATION_MATCH	45v45	PASS	__unguarded_insertion_sort_aux over pair<long,long> (B); optimize("s")

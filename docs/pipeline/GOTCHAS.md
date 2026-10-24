@@ -1110,3 +1110,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A 7-dword functor's scheduled copy-out needs a memberwise user copy ctor (implicit = `rep movsd`, 008065c0); an 8-dword implicit copy is retail's `rep movsd` (006f3530).
 - A predicate's HasTC must return the masked word, not bool, to get `test ch,20h`; one trailing `return false` avoids esi shrink-wrap and `neg/sbb/inc` (0092e540, 00946c60).
 - `CThing* t = p.GetPItem(); t->F(arg)` loads the object before pushing the argument (0071b590).
+- Check the Ego_r PDB names (egor_pdb_names.tsv) before byte-RE: they named most propagated `_Dest_val` / `_Destroy_range` rows in chunk 353.
+- STLport `CArray::Clear()` is `if (capacity()) { clear(); swap(empty); }` (00996b60).
+- On the 64-bit g++ test host `unsigned long` is 64-bit: 32-bit wrap tests need a 32-bit typedef (chunk 353).
