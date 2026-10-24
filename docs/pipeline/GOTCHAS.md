@@ -1285,3 +1285,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A CDefPointer dtor needs `Release()` as an inline member of the def; a free helper reloads PDef (+14 bytes) (chunk 392).
 - On an STLport list `mov eax,[ecx]; mov esi,[eax]` means begin(), so the row is push_front (0x7421C0); a functor inside an inlined for_each needs `__forceinline operator()`.
 - `(x*k1)*k2` with literal constants is folded into one `fmul` even through an inline getter; retail's two multiplies need a separate statement (0x752510).
+- A CCharString passed by const& must be a named local in its own block to re-take its address with `lea`; a temporary passes the ctor's eax (0x7C53F0).
+- The same call written in both else arms gives VC7.1's shrink-wrapped prologue with one epilogue per exit; GetInterface/GetCheckedInterface templates must be `__forceinline` (0x7CABD0).
+- A counted iterator-advance loop compiles to `if (n > 0) { a += n; b += n; }` (0x7DB5C0); `float invBase = 1.0f / base` is `fild; fdivr; fst [frame]` (0x7D7A90).

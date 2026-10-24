@@ -294916,6 +294916,258 @@ $catalog = @(
         TestSource = '00/75/STL_partialsort_00759420_test.cpp'
         PassPattern = '00759420_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007a4260'
+        Module = '_STL'
+        Source = '00/7a/STL_sort_007a4260.cpp'
+        TestSource = '00/7a/STL_sort_007a4260_test.cpp'
+        PassPattern = '007a4260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a44c0'
+        Module = 'CTCWillEnflame'
+        Source = '00/7a/CTCWillEnflame_CancelMove_007a44c0.cpp'
+        TestSource = '00/7a/CTCWillEnflame_CancelMove_007a44c0_test.cpp'
+        PassPattern = '007a44c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007aa4d0'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_FinalCleanup_007aa4d0.cpp'
+        TestSource = '00/7a/CTCAssassinRush_FinalCleanup_007aa4d0_test.cpp'
+        PassPattern = '007aa4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007acea0'
+        Module = '_STL::vector<CCharString>'
+        Source = '00/7a/STLvectorCCharString_vector_007acea0.cpp'
+        TestSource = '00/7a/STLvectorCCharString_vector_007acea0_test.cpp'
+        PassPattern = '007acea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ad180'
+        Module = '_STL::_Rb_tree<CCharString, pair<const CCharString,bool>, ...>'
+        Source = '00/7a/STLRbtreeCCharStringpairconstCCharStringbool_erase_007ad180.cpp'
+        TestSource = '00/7a/STLRbtreeCCharStringpairconstCCharStringbool_erase_007ad180_test.cpp'
+        PassPattern = '007ad180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ad270'
+        Module = '_global'
+        Source = '00/7a/global_GFSerialiseMapBinaryOut_007ad270.cpp'
+        TestSource = '00/7a/global_GFSerialiseMapBinaryOut_007ad270_test.cpp'
+        PassPattern = '007ad270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ae0e0'
+        Module = '_STL::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>'
+        Source = '00/7a/STLRbtreeCCharStringpairconstCCharStringvectorCCharString_Merase_007ae0e0.cpp'
+        TestSource = '00/7a/STLRbtreeCCharStringpairconstCCharStringvectorCCharString_Merase_007ae0e0_test.cpp'
+        PassPattern = '007ae0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007afa10'
+        Module = '_STL'
+        Source = '00/7a/STL_copy_007afa10.cpp'
+        TestSource = '00/7a/STL_copy_007afa10_test.cpp'
+        PassPattern = '007afa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007afa50'
+        Module = '_STL'
+        Source = '00/7a/STL_copybackward_007afa50.cpp'
+        TestSource = '00/7a/STL_copybackward_007afa50_test.cpp'
+        PassPattern = '007afa50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b3b80'
+        Module = '_global'
+        Source = '00/7b/global_GFSerialiseVectorBinaryOutCCrimeWaitingForBribe_007b3b80.cpp'
+        TestSource = '00/7b/global_GFSerialiseVectorBinaryOutCCrimeWaitingForBribe_007b3b80_test.cpp'
+        PassPattern = '007b3b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b4b00'
+        Module = '_STL::deque<CCrimeWaitingForBribe>'
+        Source = '00/7b/STLdequeCCrimeWaitingForBribe_clear_007b4b00.cpp'
+        TestSource = '00/7b/STLdequeCCrimeWaitingForBribe_clear_007b4b00_test.cpp'
+        PassPattern = '007b4b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b4f20'
+        Module = '_STL::back_insert_iterator<vector<CCrimeWaitingForBribe> >'
+        Source = '00/7b/STLbackinsertiteratorvectorCCrimeWaitingForBribe_operator_007b4f20.cpp'
+        TestSource = '00/7b/STLbackinsertiteratorvectorCCrimeWaitingForBribe_operator_007b4f20_test.cpp'
+        PassPattern = '007b4f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b4f70'
+        Module = '_STL::deque<CCrimeWaitingForBribe>'
+        Source = '00/7b/STLdequeCCrimeWaitingForBribe_Mpushbackauxv_007b4f70.cpp'
+        TestSource = '00/7b/STLdequeCCrimeWaitingForBribe_Mpushbackauxv_007b4f70_test.cpp'
+        PassPattern = '007b4f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b5030'
+        Module = '_STL'
+        Source = '00/7b/STL_copy_007b5030.cpp'
+        TestSource = '00/7b/STL_copy_007b5030_test.cpp'
+        PassPattern = '007b5030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b51b0'
+        Module = '_STL'
+        Source = '00/7b/STL_copyaux_007b51b0.cpp'
+        TestSource = '00/7b/STL_copyaux_007b51b0_test.cpp'
+        PassPattern = '007b51b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b5270'
+        Module = '_STL::back_insert_iterator<deque<CCrimeWaitingForBribe> >'
+        Source = '00/7b/STLbackinsertiteratordequeCCrimeWaitingForBribe_operator_007b5270.cpp'
+        TestSource = '00/7b/STLbackinsertiteratordequeCCrimeWaitingForBribe_operator_007b5270_test.cpp'
+        PassPattern = '007b5270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b5370'
+        Module = '_global'
+        Source = '00/7b/global_GFSerialiseVectorBinaryInCCrimeWaitingForBribe_007b5370.cpp'
+        TestSource = '00/7b/global_GFSerialiseVectorBinaryInCCrimeWaitingForBribe_007b5370_test.cpp'
+        PassPattern = '007b5370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b5400'
+        Module = '_STL'
+        Source = '00/7b/STL_copy_007b5400.cpp'
+        TestSource = '00/7b/STL_copy_007b5400_test.cpp'
+        PassPattern = '007b5400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b84c0'
+        Module = '_STL'
+        Source = '00/7b/STL_copybackward_007b84c0.cpp'
+        TestSource = '00/7b/STL_copybackward_007b84c0_test.cpp'
+        PassPattern = '007b84c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c2800'
+        Module = 'CFilter_Bind3'
+        Source = '00/7c/CFilterBind3_operator_007c2800.cpp'
+        TestSource = '00/7c/CFilterBind3_operator_007c2800_test.cpp'
+        PassPattern = '007c2800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c3eb0'
+        Module = 'CTCHealLife'
+        Source = '00/7c/CTCHealLife_GetLevelEffectName_007c3eb0.cpp'
+        TestSource = '00/7c/CTCHealLife_GetLevelEffectName_007c3eb0_test.cpp'
+        PassPattern = '007c3eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c53f0'
+        Module = 'CTCGhostSword'
+        Source = '00/7c/CTCGhostSword_IsThingGhostSword_007c53f0.cpp'
+        TestSource = '00/7c/CTCGhostSword_IsThingGhostSword_007c53f0_test.cpp'
+        PassPattern = '007c53f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ca350'
+        Module = '_STL::vector<CDefPointer<const CDefClassBase> >'
+        Source = '00/7c/STLvectorCDefPointerconstCDefClassBase_pushback_007ca350.cpp'
+        TestSource = '00/7c/STLvectorCDefPointerconstCDefClassBase_pushback_007ca350_test.cpp'
+        PassPattern = '007ca350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cab30'
+        Module = 'CTCHeroReceiveItems'
+        Source = '00/7c/CTCHeroReceiveItems_GiveItem_007cab30.cpp'
+        TestSource = '00/7c/CTCHeroReceiveItems_GiveItem_007cab30_test.cpp'
+        PassPattern = '007cab30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cabd0'
+        Module = 'CTCHeroReceiveItems'
+        Source = '00/7c/CTCHeroReceiveItems_AddItemToInventory_007cabd0.cpp'
+        TestSource = '00/7c/CTCHeroReceiveItems_AddItemToInventory_007cabd0_test.cpp'
+        PassPattern = '007cabd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cb850'
+        Module = 'CTCHeroReceiveItems'
+        Source = '00/7c/CTCHeroReceiveItems_SetItemAsPickedUp_007cb850.cpp'
+        TestSource = '00/7c/CTCHeroReceiveItems_SetItemAsPickedUp_007cb850_test.cpp'
+        PassPattern = '007cb850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ce1f0'
+        Module = '_STL'
+        Source = '00/7c/STL_copy_007ce1f0.cpp'
+        TestSource = '00/7c/STL_copy_007ce1f0_test.cpp'
+        PassPattern = '007ce1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d22f0'
+        Module = '_STL'
+        Source = '00/7d/STL_uninitializedcopy_007d22f0.cpp'
+        TestSource = '00/7d/STL_uninitializedcopy_007d22f0_test.cpp'
+        PassPattern = '007d22f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d78a0'
+        Module = '_STL::vector<CCard*>'
+        Source = '00/7d/STLvectorCCard_insert_007d78a0.cpp'
+        TestSource = '00/7d/STLvectorCCard_insert_007d78a0_test.cpp'
+        PassPattern = '007d78a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d7a90'
+        Module = '_global'
+        Source = '00/7d/global_GetHaltonSequenceNumber_007d7a90.cpp'
+        TestSource = '00/7d/global_GetHaltonSequenceNumber_007d7a90_test.cpp'
+        PassPattern = '007d7a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d7ae0'
+        Module = '_global'
+        Source = '00/7d/global_GetNextHaltonSequenceNumber_007d7ae0.cpp'
+        TestSource = '00/7d/global_GetNextHaltonSequenceNumber_007d7ae0_test.cpp'
+        PassPattern = '007d7ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d9b40'
+        Module = '_STL'
+        Source = '00/7d/STL_randomshuffle_007d9b40.cpp'
+        TestSource = '00/7d/STL_randomshuffle_007d9b40_test.cpp'
+        PassPattern = '007d9b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dc500'
+        Module = '_STL'
+        Source = '00/7d/STL_uninitializedcopy_007dc500.cpp'
+        TestSource = '00/7d/STL_uninitializedcopy_007dc500_test.cpp'
+        PassPattern = '007dc500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dc580'
+        Module = '_STL'
+        Source = '00/7d/STL_uninitializedfilln_007dc580.cpp'
+        TestSource = '00/7d/STL_uninitializedfilln_007dc580_test.cpp'
+        PassPattern = '007dc580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dc750'
+        Module = '_STL::vector<long>'
+        Source = '00/7d/STLvectorlong_insert_007dc750.cpp'
+        TestSource = '00/7d/STLvectorlong_insert_007dc750_test.cpp'
+        PassPattern = '007dc750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dcb10'
+        Module = '_STL::vector<vector<CCard*> >'
+        Source = '00/7d/STLvectorvectorCCard_insert_007dcb10.cpp'
+        TestSource = '00/7d/STLvectorvectorCCard_insert_007dcb10_test.cpp'
+        PassPattern = '007dcb10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

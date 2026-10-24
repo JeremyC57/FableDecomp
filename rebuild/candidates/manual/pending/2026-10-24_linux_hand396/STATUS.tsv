@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007a4260	RELOCATION_MATCH	111v111	PASS	_STL::sort<CThing**, CThingCompare_NearestToPos>; C3DVector memberwise copy ctor
+007a44c0	RELOCATION_MATCH	86v86	PASS	CTCWillEnflame::CancelMove
+007aa4d0	RELOCATION_MATCH	231v231	PASS	CTCAssassinRush::FinalCleanup; inline IsDead() keeps 1 in ebx
+007acea0	RELOCATION_MATCH	106v106	PASS	vector<CCharString> copy ctor
+007ad180	RELOCATION_MATCH	198v198	PASS	_Rb_tree<CCharString,pair<const CCharString,bool>>::erase(first,last)
+007ad270	RELOCATION_MATCH	136v136	PASS	GFSerialiseMapBinaryOut<bool,CCharString>
+007ae0e0	RELOCATION_MATCH	112v112	PASS	_Rb_tree<CCharString,pair<const CCharString,vector<CCharString>>>::_M_erase
+007af940	DIFFER	62v62	-	__uninitialized_fill_n<CIntelligentPointer<CThingAICreature>*>; register tie x/n (edi/ebx swapped)
+007afa10	RELOCATION_MATCH	60v60	PASS	__copy<CIntelligentPointer<CThingAICreature>*>
+007afa50	RELOCATION_MATCH	62v62	PASS	__copy_backward<CIntelligentPointer<CThingAICreature>*>
+007b3b80	RELOCATION_MATCH	77v77	PASS	GFSerialiseVectorBinaryOut<CCrimeWaitingForBribe>
+007b4b00	RELOCATION_MATCH	94v94	PASS	deque<CCrimeWaitingForBribe>::clear
+007b4f20	RELOCATION_MATCH	69v69	PASS	back_insert_iterator<vector<CCrimeWaitingForBribe>>::operator=; noinline _M_insert_overflow stand-in
+007b4f70	RELOCATION_MATCH	111v111	PASS	deque<CCrimeWaitingForBribe>::_M_push_back_aux_v
+007b5030	RELOCATION_MATCH	172v172	PASS	__copy(deque iterator range -> back_inserter(vector))
+007b51b0	RELOCATION_MATCH	91v91	PASS	__copy_aux(deque range -> back_inserter(vector))
+007b5270	RELOCATION_MATCH	64v64	PASS	back_insert_iterator<deque<CCrimeWaitingForBribe>>::operator=
+007b5370	RELOCATION_MATCH	133v133	PASS	GFSerialiseVectorBinaryIn<CCrimeWaitingForBribe>; noinline traits TransferBinaryIn
+007b5400	RELOCATION_MATCH	107v107	PASS	__copy(const T* range -> back_inserter(deque))
+007b84c0	RELOCATION_MATCH	62v62	PASS	__copy_backward<CIntelligentPointer<CThingObject>*>
+007b8530	DIFFER	57v57	-	CTCTavernTable::SetSeatState; seat/size register swap in the size check only
+007b8aa0	DIFFER	112v111	-	CTCTavernTable::FreeSeat; esi not pushed in prologue / seat-vector start not kept in esi
+007c2800	RELOCATION_MATCH	128v128	PASS	CFilter_Bind3<IsNot, ShotsToCheckForCollisionWith, SolidToThing>::operator()<CThing>; first grade
+007c3eb0	RELOCATION_MATCH	92v92	PASS	CTCHealLife::GetLevelEffectName; first grade
+007c53f0	RELOCATION_MATCH	76v76	PASS	CTCGhostSword::IsThingGhostSword; name is a block-scoped named local
+007ca350	RELOCATION_MATCH	57v57	PASS	vector<CDefPointer<const CDefClassBase>>::push_back (pointee def class unresolved); noinline overflow stand-in
+007cab30	RELOCATION_MATCH	158v158	PASS	CTCHeroReceiveItems::GiveItem; first grade
+007cabd0	RELOCATION_MATCH	217v217	PASS	CTCHeroReceiveItems::AddItemToInventory; __forceinline lookups, Kill in both else arms
+007cb850	RELOCATION_MATCH	90v90	PASS	CTCHeroReceiveItems::SetItemAsPickedUp; noinline find + overflow stand-ins
+007ce1f0	RELOCATION_MATCH	201v201	PASS	__copy<CThing**, back_insert_iterator<vector<CIntelligentPointer<CThing>>>, int>; first grade
+007d22f0	RELOCATION_MATCH	64v64	PASS	__uninitialized_copy<const CShoveHaPennyRegionDef*>; local CDefClassBase (polymorphic)
+007d78a0	RELOCATION_MATCH	167v167	PASS	vector<CCard*>::insert(pos, x); first grade
+007d7a90	RELOCATION_MATCH	66v66	PASS	GetHaltonSequenceNumber(int,int) __fastcall; first grade
+007d7ae0	RELOCATION_MATCH	94v94	PASS	GetNextHaltonSequenceNumber(float&,int) __fastcall; first grade
+007d9b40	RELOCATION_MATCH	159v159	PASS	random_shuffle<KnickKnack*>; C3DVector memberwise copy ctor
+007db5c0	DIFFER	237v224	-	CTCTavernGameCardBlackjack::Split; retail elides the empty-hand temporary's destructor
+007dc500	RELOCATION_MATCH	115v115	PASS	__uninitialized_copy<const vector<CCard*>*, vector<CCard*>*>; first grade
+007dc580	RELOCATION_MATCH	127v127	PASS	__uninitialized_fill_n<vector<CCard*>*, unsigned, vector<CCard*>>; first grade
+007dc750	RELOCATION_MATCH	167v167	PASS	vector<long>::insert(pos, x); first grade
+007dcb10	RELOCATION_MATCH	232v232	PASS	vector<vector<CCard*>>::insert(pos, x); first grade
