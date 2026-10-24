@@ -28504,3 +28504,17 @@ _lzo1x_999_compress	00c08130	00a99840
 ?_M_insert_overflow@?$CResultVector@PAUCThingCreatureBase@@@@QAEXPAPAUCThingCreatureBase@@ABQAU2@ABU__true_type@@K_N@Z	006f2680	00943830
 ?GetAttacker@CEventHitByMethods@NEntityEvents@@QBEPAUCThing@2@XZ	00810fc0	0094e480
 ?WasKnockedDown@CEventHitByMethods@NEntityEvents@@QBE_NXZ	00810f00	0094e480
+?Allocate@?$CSmallVector@UCEntry@CThingComponentSet@@$07@@QAEXK@Z	00463b30	00463ae0
+?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@SIXPAX@Z	0051c890	0051cbb0
+?GetMaxSize@COldFileFormatMapHeader7@@SIJJJ@Z	00519630	0051cbb0
+??0CEvent@NAnimationEvents@@QAE@XZ	006f8aa0	006fade0
+?resize@?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@QAEXJABVCEvent@NAnimationEvents@@@Z	006fade0	006faec0
+?GetThingInCarrySlot@CTCCarrying@@QBEPAUCThing@@J@Z	006a11f0	0073a9f0
+?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatEditMapBrushHeader@@VCOldFileFormatEditMapBrushHeader@@@@SIXPAX@Z	00825d40	00826a00
+?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z	008273d0	008275b0
+?GetMaxSize@COldFileFormatHeightMapCell6@@SIJJJ@Z	00826560	008275b0
+?_M_insert_overflow@?$vector@J@std@@QAEXPAJABJABUSScalarTag@@K_N@Z	00440990	0086d240
+?Allocate@?$CSmallVector@VCCharString@@$07@@QAEXK@Z	009d2160	009d21d0
+?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ	009d2110	009d2660
+??0CScriptProcessBase@@QAE@_NJM@Z	00a44740	00cdd450
+??_7?$CSpawnedFunc@VCV_ExposeMayorScript@NScript@@@@6B@	012ecba8	00e95f10

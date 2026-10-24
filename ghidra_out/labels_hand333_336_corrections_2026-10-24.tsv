@@ -1,0 +1,12 @@
+address	name	evidence
+009d2660	CSmallVector<CCharString,8>::resize	landed (chunk 333)
+009d21d0	CSmallVector<CCharString,8>::Copy	landed (chunk 333)
+006fb110	CSmallVector<CEvent,32>::Allocate	not Clear (chunk 333)
+00cdd450	CSpawnedFuncBase::CSpawnedFuncBase	ctor (chunk 333)
+00e95f10	CSpawnedFunc<CV_ExposeMayorScript>::CSpawnedFunc	ctor (chunk 333)
+0073a9f0	CModeBase::IsHoldWeaponWithBothHands	FableWin.pdb, vtable slot 10 (chunk 333)
+006a11f0	CTCCarrying::GetThingInCarrySlot	callee (chunk 333)
+00825d40	ConvertToThisVersion	callee (chunk 333)
+0051c890	ConvertToThisVersion	callee (chunk 333)
+004aedf0	CQuestCard::CQuestCard	ctor; GetDefaultVal label propagated (chunk 336)
+004aee30	CQuestCard::CQuestCard	ctor; GetDefaultVal label propagated (chunk 336)

@@ -1012,3 +1012,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - GetAllThings filters take the thing by reference (`filter(*(T*)thing)`, proven by `const_mem_fun_ref_t`); CFilter_Bind5::operator() needs `__forceinline` (0x006DFA50).
 - A GetEvent instance's event id is the constant returned by slot 1 of that event class's RTTI vtable.
 - Identical-byte retail pairs (0x00617860/0x00617970, 0x004ACD70/0x00617CA0) are modelled as distinct template arguments (const-element list) so each address keeps its own symbol; the real distinguishing argument is unproven.
+- CReplaceSerialise::GetMaxSize is a static `__fastcall` template: `long maxSize = version == GetClassVersionNumber() ? size : TOld::GetMaxSize(version, size); return MAX(maxSize, sizeof(T));`; the named local keeps one call per inlined level, sizeof gives the unsigned ja/jbe, and the folded chain leaves ReadFromFile's dead `movzx`/`mov` frame store (chunk 333, 0x0051A240).
+- CVectorMap<CCharString> bounds with inline compare: `if (count > 0) { K k = key; do {...} while (count > 0); }`, count computed before `first = First` (chunk 333).
+- CSmallVector: resize uses `Min(n, GetSize())` with a by-value `long GetSize()`; erase is `int size = Size; delete[] Start; Size = size - 1;`; keep CSmallVector<CCharString>::Clear declared only (out of line at 0x009D2110).
+- A call result passed as a temporary string argument that shares a frame word goes in a named local first (frame 8 -> 4 bytes, 0x0073A9F0).

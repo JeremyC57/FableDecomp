@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00826a00	RELOCATION_MATCH	164v164	PASS	CReplaceSerialise<CFileFormatEditMapBrushHeader,COldFileFormatEditMapBrushHeader>::ReadFromFile
+008275b0	RELOCATION_MATCH	215v215	PASS	CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>::ReadFromFile
+0051cbb0	RELOCATION_MATCH	204v204	PASS	CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>::ReadFromFile
+009d2660	RELOCATION_MATCH	210v210	PASS	CSmallVector<CCharString,8>::resize
+00a7db10	RELOCATION_MATCH	179v179	PASS	CSmallVector<const CANavQuadTreeNode*,8>::resize
+00a7dbf0	RELOCATION_MATCH	51v51	PASS	CSmallVector<const CANavQuadTreeNode*,8>::push_back
+009d2110	RELOCATION_MATCH	69v69	PASS	CSmallVector<CCharString,8>::Clear
+00463ae0	RELOCATION_MATCH	75v75	PASS	CSmallVector<CThingComponentSet::CEntry,8>::Copy
+00463b30	RELOCATION_MATCH	109v109	PASS	CSmallVector<CThingComponentSet::CEntry,8>::Allocate
+009d21d0	RELOCATION_MATCH	68v68	PASS	CSmallVector<CCharString,8>::Copy
+006fad50	RELOCATION_MATCH	134v134	PASS	CSmallVector<NAnimationEvents::CEvent,32>::erase
+006fade0	RELOCATION_MATCH	219v219	PASS	CSmallVector<NAnimationEvents::CEvent,32>::resize
+006faec0	RELOCATION_MATCH	52v52	PASS	CSmallVector<NAnimationEvents::CEvent,32>::push_back
+006fb110	RELOCATION_MATCH	55v55	PASS	CSmallVector<NAnimationEvents::CEvent,32>::Allocate
+006fb5c0	RELOCATION_MATCH	96v96	PASS	CSmallVector<NAnimationEvents::CEvent,32>::Copy
+00ce3d70	RELOCATION_MATCH	27v27	PASS	CSpawnedFunc1<NScript::CHeroBoastsScript,CCharString>::SuspendableProcess
+00ce1c70	RELOCATION_MATCH	31v31	PASS	CSpawnedFunc2<NScript::CHeroBoastsScript,long,CCharString>::SuspendableProcess
+00cdd450	RELOCATION_MATCH	80v80	PASS	CSpawnedFuncBase::CSpawnedFuncBase
+00e95f10	RELOCATION_MATCH	100v100	PASS	CSpawnedFunc<NScript::CV_ExposeMayorScript>::CSpawnedFunc
+0073a9f0	RELOCATION_MATCH	203v203	PASS	CTCCreatureModeManager::CModeBase::IsHoldWeaponWithBothHands
+004b9750	RELOCATION_MATCH	121v121	PASS	CVectorMap<CCharString,CQuestMapValue,CKeyPairCompareLess<CCharString,CQuestMapValue> >::LowerBound
+004b97d0	RELOCATION_MATCH	121v121	PASS	CVectorMap<CCharString,CQuestMapValue,CKeyPairCompareLess<CCharString,CQuestMapValue> >::LowerBound
+004b9850	RELOCATION_MATCH	121v121	PASS	CVectorMap<CCharString,CQuestMapValue,CKeyPairCompareLess<CCharString,CQuestMapValue> >::UpperBound
+006870c0	RELOCATION_MATCH	104v104	PASS	CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >::LowerBound
+009e6910	RELOCATION_MATCH	77v77	PASS	CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> >::LowerBound
+00a404d0	RELOCATION_MATCH	86v86	PASS	CVectorMap<CCharString,CMapValue4,CKeyPairCompareLess<CCharString,CMapValue4> >::LowerBound
+00a6f290	RELOCATION_MATCH	91v91	PASS	CVectorMap<CCharString,CNavLineMapValue,CCompareString<CNavLineMapValue> >::LowerBound
+00a6fc40	RELOCATION_MATCH	104v104	PASS	CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >::LowerBound
+00a6fcb0	RELOCATION_MATCH	104v104	PASS	CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >::UpperBound
+00a747b0	RELOCATION_MATCH	91v91	PASS	CVectorMap<CCharString,CNavLineMapValue,CCompareString<CNavLineMapValue> >::LowerBound
+00af3000	RELOCATION_MATCH	104v104	PASS	CVectorMap<CCharString,CRegisteredPSCInfo,CKeyPairCompareLess<CCharString,CRegisteredPSCInfo> >::LowerBound
+00cb65d0	RELOCATION_MATCH	121v121	PASS	CVectorMap<CCharString,CScriptInfo,CKeyPairCompareLess<CCharString,CScriptInfo> >::LowerBound
+00cba190	RELOCATION_MATCH	91v91	PASS	CVectorMap<CCharString,CScriptBindingPtr,CCompareString<CScriptBindingPtr> >::LowerBound
+00cba1f0	RELOCATION_MATCH	91v91	PASS	CVectorMap<CCharString,CScriptBindingPtr,CCompareString<CScriptBindingPtr> >::LowerBound
+00758470	MATCH	84v84	PASS	CVectorMap<EBodyLocation,CWoundMorphs::CEntry,CKeyPairCompareLess<EBodyLocation,CWoundMorphs::CEntry> >::LowerBound
+00758570	MATCH	84v84	PASS	CVectorMap<EBodyLocation,CWoundMorphs::CEntry,CKeyPairCompareLess<EBodyLocation,CWoundMorphs::CEntry> >::UpperBound
+006804c0	MATCH	60v60	PASS	CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound
+0086a930	MATCH	70v70	PASS	CVectorMap<long,CRandomAppearanceMorph::CSkeletalMorph,CKeyPairCompareLess<long,CRandomAppearanceMorph::CSkeletalMorph> >::LowerBound
+0086a980	MATCH	70v70	PASS	CVectorMap<long,CRandomAppearanceMorph::CSkeletalMorph,CKeyPairCompareLess<long,CRandomAppearanceMorph::CSkeletalMorph> >::UpperBound
+0086d240	RELOCATION_MATCH	90v90	PASS	CVectorMap<long,CRandomAppearanceMorph::CSkeletalMorph,CKeyPairCompareLess<long,CRandomAppearanceMorph::CSkeletalMorph> >::GetKeyList
