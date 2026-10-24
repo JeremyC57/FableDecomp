@@ -303610,6 +303610,239 @@ $catalog = @(
         TestSource = '00/c0/global_lzo1x999compress_00c08130_test.cpp'
         PassPattern = '00c08130_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00afe4b0'
+        Module = '_STL'
+        Source = '00/af/STL_uninitializedfilln_00afe4b0.cpp'
+        TestSource = '00/af/STL_uninitializedfilln_00afe4b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00afe4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afe5c0'
+        Module = '_STL'
+        Source = '00/af/STL_uninitializedcopy_00afe5c0.cpp'
+        TestSource = '00/af/STL_uninitializedcopy_00afe5c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00afe5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b059f0'
+        Module = 'NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>'
+        Source = '00/b0/NParticleEngineCParticleUpdateParametersunsignedlongunsignedlong_GetVectorParam_00b059f0.cpp'
+        TestSource = '00/b0/NParticleEngineCParticleUpdateParametersunsignedlongunsignedlong_GetVectorParam_00b059f0_test.cpp'
+        PassPattern = '00b059f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b081a0'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_AddTrailPosition_00b081a0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_AddTrailPosition_00b081a0_test.cpp'
+        PassPattern = '00b081a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b09b90'
+        Module = 'CRGBFloatColour'
+        Source = '00/b0/CRGBFloatColour_Interpolate_00b09b90.cpp'
+        TestSource = '00/b0/CRGBFloatColour_Interpolate_00b09b90_test.cpp'
+        PassPattern = '00b09b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0f210'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_CollectUpdateParameters_00b0f210.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_CollectUpdateParameters_00b0f210_test.cpp'
+        PassPattern = '00b0f210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0f6f0'
+        Module = 'NParticleEngine::CParticle'
+        Source = '00/b0/NParticleEngineCParticle_CreateRandomAccelerationData_00b0f6f0.cpp'
+        TestSource = '00/b0/NParticleEngineCParticle_CreateRandomAccelerationData_00b0f6f0_test.cpp'
+        PassPattern = '00b0f6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0fb40'
+        Module = 'CVectorMap'
+        Source = '00/b0/CVectorMap_Insert_00b0fb40.cpp'
+        TestSource = '00/b0/CVectorMap_Insert_00b0fb40_test.cpp'
+        PassPattern = '00b0fb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b10360'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_ChangeOrientation_00b10360.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_ChangeOrientation_00b10360_test.cpp'
+        PassPattern = '00b10360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b158a0'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_CollectUpdateParameters_00b158a0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_CollectUpdateParameters_00b158a0_test.cpp'
+        PassPattern = '00b158a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b15b50'
+        Module = 'NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>'
+        Source = '00/b1/NParticleEngineCParticleUpdateParametersunsignedlongunsignedlong_GetUpdateParamDesc_00b15b50.cpp'
+        TestSource = '00/b1/NParticleEngineCParticleUpdateParametersunsignedlongunsignedlong_GetUpdateParamDesc_00b15b50_test.cpp'
+        PassPattern = '00b15b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1b380'
+        Module = 'NParticleEngine::CPSCSpline'
+        Source = '00/b1/NParticleEngineCPSCSpline_CollectUpdateParameters_00b1b380.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCSpline_CollectUpdateParameters_00b1b380_test.cpp'
+        PassPattern = '00b1b380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b215e0'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b2/NParticleEngineCPSCSplineBase_StartUpdate_00b215e0.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBase_StartUpdate_00b215e0_test.cpp'
+        PassPattern = '00b215e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b216f0'
+        Module = 'NParticleEngine::CPSCSplineBase::CSplinePosParamData'
+        Source = '00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_GetScaleFactor_00b216f0.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_GetScaleFactor_00b216f0_test.cpp'
+        PassPattern = '00b216f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b262c0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddRenderLayer_00b262c0.cpp'
+        TestSource = '00/b2/CEngine_AddRenderLayer_00b262c0_test.cpp'
+        PassPattern = '00b262c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29840'
+        Module = '_STL::vector<CCamera>'
+        Source = '00/b2/STLvectorCCamera_Minsertoverflow_00b29840.cpp'
+        TestSource = '00/b2/STLvectorCCamera_Minsertoverflow_00b29840_test.cpp'
+        PassPattern = '00b29840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2ac80'
+        Module = 'CEngineLayerRenderer'
+        Source = '00/b2/CEngineLayerRenderer_AddComponent_00b2ac80.cpp'
+        TestSource = '00/b2/CEngineLayerRenderer_AddComponent_00b2ac80_test.cpp'
+        PassPattern = '00b2ac80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2af50'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_CalcColourDifference_00b2af50.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_CalcColourDifference_00b2af50_test.cpp'
+        PassPattern = '00b2af50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2c460'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_AddSurface_00b2c460.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_AddSurface_00b2c460_test.cpp'
+        PassPattern = '00b2c460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2e630'
+        Module = '_STL::_Rb_tree'
+        Source = '00/b2/STLRbtree_Mfind_00b2e630.cpp'
+        TestSource = '00/b2/STLRbtree_Mfind_00b2e630_test.cpp'
+        PassPattern = '00b2e630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2e830'
+        Module = '_STL::_Rb_tree'
+        Source = '00/b2/STLRbtree_Mlowerbound_00b2e830.cpp'
+        TestSource = '00/b2/STLRbtree_Mlowerbound_00b2e830_test.cpp'
+        PassPattern = '00b2e830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2f060'
+        Module = '_STL::_Rb_tree'
+        Source = '00/b2/STLRbtree_Minsert_00b2f060.cpp'
+        TestSource = '00/b2/STLRbtree_Minsert_00b2f060_test.cpp'
+        PassPattern = '00b2f060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2f130'
+        Module = '_STL::_Rb_tree'
+        Source = '00/b2/STLRbtree_insertunique_00b2f130.cpp'
+        TestSource = '00/b2/STLRbtree_insertunique_00b2f130_test.cpp'
+        PassPattern = '00b2f130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2fc10'
+        Module = 'CEngineCamera'
+        Source = '00/b2/CEngineCamera_ConsoleRunDebugScript_00b2fc10.cpp'
+        TestSource = '00/b2/CEngineCamera_ConsoleRunDebugScript_00b2fc10_test.cpp'
+        PassPattern = '00b2fc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31a90'
+        Module = '_STL'
+        Source = '00/b3/STL_uninitializedfilln_00b31a90.cpp'
+        TestSource = '00/b3/STL_uninitializedfilln_00b31a90_test.cpp'
+        PassPattern = '00b31a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31b10'
+        Module = '_STL::vector'
+        Source = '00/b3/STLvector_Minsertoverflow_00b31b10.cpp'
+        TestSource = '00/b3/STLvector_Minsertoverflow_00b31b10_test.cpp'
+        PassPattern = '00b31b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31e90'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_SetPrimitiveAnimation_00b31e90.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_SetPrimitiveAnimation_00b31e90_test.cpp'
+        PassPattern = '00b31e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31ec0'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_SetPrimitivePosition_00b31ec0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_SetPrimitivePosition_00b31ec0_test.cpp'
+        PassPattern = '00b31ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31ef0'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_AddChildPrimitive_00b31ef0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_AddChildPrimitive_00b31ef0_test.cpp'
+        PassPattern = '00b31ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31f20'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_SetChildPrimitive_00b31f20.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_SetChildPrimitive_00b31f20_test.cpp'
+        PassPattern = '00b31f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31f50'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_GetChildPrimitiveHandle_00b31f50.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_GetChildPrimitiveHandle_00b31f50_test.cpp'
+        PassPattern = '00b31f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31f70'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_SetChildPrimitive_00b31f70.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_SetChildPrimitive_00b31f70_test.cpp'
+        PassPattern = '00b31f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b31fa0'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_ClearChildPrimitive_00b31fa0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_ClearChildPrimitive_00b31fa0_test.cpp'
+        PassPattern = '00b31fa0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

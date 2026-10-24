@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00af87c0	DIFFER	115v111	-	CDynamicObjectHeap<156,2100> ctor; unrolled-loop store addressing; grades 4
+00af8d50	DIFFER	135v110	-	GFPackFloat; retail_asm candidate (inline fld/fistp); grades 1
+00afe380	DIFFER	161v178	-	CParticle::GetRecordedPos; retail_asm candidate (inline ceil fistp, ebp frame); grades 1
+00afe4b0	RELOCATION_MATCH	127v127	PASS	__uninitialized_fill_n<CArray<long>*> /Gr; grades 2 (first hung on an #include)
+00afe5c0	RELOCATION_MATCH	115v115	PASS	__uninitialized_copy<CArray<long>*> /Gr; grades 2 (first hung on an #include)
+00b059f0	RELOCATION_MATCH	82v82	PASS	CParticleUpdateParameters::GetVectorParam; same-TU LowerBound stand-in; grades 1
+00b05c20	DIFFER	61v55	-	NParticleEngine::GFInterpolate(long,long,float); retail_asm candidate (inline fistp); grades 1
+00b081a0	RELOCATION_MATCH	164v164	PASS	CPSCSingleSprite::AddTrailPosition; C3DVector user copy ctor; grades 2
+00b09aa0	DIFFER	252v233	-	CRGBFloatColour::GetRGBColourClamped; retail_asm candidate (4 inline fistp); grades 1
+00b09b90	RELOCATION_MATCH	132v132	PASS	CRGBFloatColour::Interpolate; grades 1
+00b0a420	DIFFER	45v46	-	CParticle::SetAngleChange; retail_asm candidate (inline fistp [edx]); grades 1
+00b0a4a0	DIFFER	45v46	-	CParticle::SetCreationTime; retail_asm candidate (inline fistp [edx]); grades 1
+00b0f210	RELOCATION_MATCH	165v165	PASS	CPSCUpdateNormal::CollectUpdateParameters; forceinline Insert, named CRC key; grades 1
+00b0f6f0	RELOCATION_MATCH	65v65	PASS	CParticle::CreateRandomAccelerationData; boost scoped_ptr reset; grades 1
+00b0fb40	RELOCATION_MATCH	126v126	PASS	CVectorMap::Insert (param-desc map); grades 1
+00b10360	MATCH	136v136	PASS	CPSCEmitterGeneric::ChangeOrientation; C3DVector user copy ctor; grades 2
+00b158a0	RELOCATION_MATCH	169v169	PASS	CPSCEmitterGeneric::CollectUpdateParameters; grades 1
+00b15b50	RELOCATION_MATCH	86v86	PASS	CParticleUpdateParameters::GetUpdateParamDesc; same-TU LowerBound stand-in; grades 1 (+1 evidence probe)
+00b1b380	RELOCATION_MATCH	159v159	PASS	CPSCSpline::CollectUpdateParameters; forceinline Insert; grades 2
+00b215e0	RELOCATION_MATCH	66v66	PASS	CPSCSplineBase::StartUpdate; grades 1
+00b216f0	RELOCATION_MATCH	177v177	PASS	CSplinePosParamData::GetScaleFactor; grades 1
+00b262c0	RELOCATION_MATCH	116v116	PASS	CEngine::AddRenderLayer; local CEngine model (RenderLayers +0x15C); grades 1
+00b29840	RELOCATION_MATCH	211v211	PASS	vector<CCamera>::_M_insert_overflow; grades 2
+00b2ac80	RELOCATION_MATCH	55v55	PASS	CEngineLayerRenderer::AddComponent; same-TU _M_insert_overflow; grades 2
+00b2af50	MATCH	115v115	PASS	CEngineSurfaceCompositionManager::CalcColourDifference; grades 1
+00b2c460	RELOCATION_MATCH	121v121	PASS	CEngineSurfaceCompositionManager::AddSurface; list iterator copy ctor; grades 4
+00b2e630	MATCH	82v82	PASS	_Rb_tree::_M_find (texture-morph map); grades 1
+00b2e830	MATCH	53v53	PASS	_Rb_tree::_M_lower_bound (texture-morph map); grades 1
+00b2f060	RELOCATION_MATCH	206v206	PASS	_Rb_tree::_M_insert (texture-morph map); grades 1
+00b2f130	RELOCATION_MATCH	175v175	PASS	_Rb_tree::insert_unique; out-pointer _M_insert; grades 3
+00b2fc10	RELOCATION_MATCH	33v33	PASS	CEngineCamera::ConsoleRunDebugScript; local model; grades 1
+00b31a90	MATCH	80v80	PASS	__uninitialized_fill_n<CDebugScriptElement*>; grades 1
+00b31b10	RELOCATION_MATCH	233v233	PASS	vector<CDebugScriptElement>::_M_insert_overflow; grades 1
+00b31e90	RELOCATION_MATCH	45v45	PASS	CEnginePrimitiveRenderer::SetPrimitiveAnimation; grades 1
+00b31ec0	RELOCATION_MATCH	45v45	PASS	CEnginePrimitiveRenderer::SetPrimitivePosition; grades 1
+00b31ef0	MATCH	34v34	PASS	CEnginePrimitiveRenderer::AddChildPrimitive; grades 1
+00b31f20	MATCH	39v39	PASS	CEnginePrimitiveRenderer::SetChildPrimitive (5 args); reverse-order overloads; grades 2
+00b31f50	MATCH	29v29	PASS	CEnginePrimitiveRenderer::GetChildPrimitiveHandle; grades 1
+00b31f70	MATCH	34v34	PASS	CEnginePrimitiveRenderer::SetChildPrimitive (4 args); reverse-order overloads; grades 2
+00b31fa0	MATCH	24v24	PASS	CEnginePrimitiveRenderer::ClearChildPrimitive; grades 1
