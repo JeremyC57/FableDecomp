@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00440c00	RELOCATION_MATCH	61v61	PASS	std::__destroy_aux over deque<pair<CCharString,long>> iterators; out-of-line __fastcall, tag in ecx
+00441870	RELOCATION_MATCH	147v147	PASS	NPlayerGui::CDrawStamina::~CDrawStamina (implicit dtor, delete-helper model)
+00441c20	RELOCATION_MATCH	75v75	PASS	NPlayerGui::CDrawPerceivers::~CDrawPerceivers (implicit dtor; list clear 0x0043F230)
+00443350	RELOCATION_MATCH	66v66	PASS	DeleteRecordWithThreeVectors: __fastcall `delete p` of CRecordWithThreeVectors
+00443d70	RELOCATION_MATCH	147v147	PASS	NPlayerGui::CDrawQuestInfo::~CDrawQuestInfo (_List_base<long> dtor declared as explicit specialisation)
+00444ed0	RELOCATION_MATCH	74v74	PASS	NPlayerGui::CDrawGuildSeal::~CDrawGuildSeal (deque dtor out of line 0x004432B0)
+00446b40	RELOCATION_MATCH	72v72	PASS	CGamePlayerInterface::IsButtonForGameEvent (Controls find + input-type slot 6)
+00446b90	RELOCATION_MATCH	72v72	PASS	CGamePlayerInterface::IsMouseButtonForGameEvent (Controls find + input-type slot 7)
+0044c26d	MATCH	47v47	PASS	COpinionPersonalityTraits ctor (0.0f then eight 1.0f), size TU
+00450ccc	RELOCATION_MATCH	46v46	PASS	std::_Vector_base<bool>(n, a); forceinline allocate/proxy in the size TU
+00451583	RELOCATION_MATCH	49v49	PASS	std::vector<bool>(n, value, a) fill ctor; y-off + s
+0045370a	RELOCATION_MATCH	150v150	PASS	CInventoryItemDef::operator= (vtable 0x01231DBC slot 19 thunk); 14-byte CEngineGraphic block copy
+00458833	DIFFER	79v76	-	CPersistContext::Transfer<CPhysicalPrimitiveInit>: traits lea ecx hoisted above the mode branch in retail (scheduling)
+00459af3	DIFFER	96v96	-	CPlayerInventoryDef ctor: 4th allocator temporary at [ebp-2] vs retail overlay on [ebp-1]
+0045baaa	RELOCATION_MATCH	229v229	PASS	std::vector<CRGBColour>::operator=; y-off + s
+0045bb8f	MATCH	40v40	PASS	std::_Construct<CRGBColour,CRGBColour> __fastcall, Set-based copy ctor
+0045bbc5	RELOCATION_MATCH	68v68	PASS	vector<CRGBColour>::_M_allocate_and_copy; out-of-line _Construct
+0045c8d3	RELOCATION_MATCH	74v74	PASS	CPersistContext::Transfer<CSpecialEffectsStringMap>; traits local holds the default map
+0045cd9b	RELOCATION_MATCH	71v71	PASS	vector<CAppearanceModifierGraphics::CEntry>::_M_allocate_and_copy (24-byte elements)
+0045d125	RELOCATION_MATCH	80v80	PASS	vector<pair<unsigned long,CSoundPair>>::_M_allocate_and_copy (12-byte elements)
+0045e808	RELOCATION_MATCH	91v91	PASS	CPersistContext::Transfer<COpinionPersonalityTraits*>; 5-entry loop, unsigned index (jb)
+00460bec	RELOCATION_MATCH	71v71	PASS	vector<CSoundBankEntry>::_M_allocate_and_copy (20-byte elements)
+00461136	RELOCATION_MATCH	68v68	PASS	vector<CReverbEnvironmentEntry>::_M_allocate_and_copy (84-byte elements)
+00462e78	DIFFER	169v167	-	vector<bool>::operator=: tail-copy argument register choice (finish in ecx vs edx)
+004636cf	RELOCATION_MATCH	99v99	PASS	_Rb_tree<CCharString,pair<const CCharString,long>>::insert_equal; Compare body visible -> key hoisted
+00463871	RELOCATION_MATCH	48v48	PASS	list<CStringParserCommentBoundaries> copy ctor; allocator with user ctors
+004638c8	RELOCATION_MATCH	57v57	PASS	list<CStringParserCommentBoundaries>::_M_insert_dispatch; forceinline insert(pos,x)
+0046496f	RELOCATION_MATCH	52v52	PASS	vector<unsigned long>::erase(first,last); y-off + s
+00464ace	RELOCATION_MATCH	188v188	PASS	vector<unsigned long>::_M_insert_overflow (POD __true_type); y-off + s
+00464ced	RELOCATION_MATCH	54v54	PASS	GFSerialiseVectorBinaryOut<float>; landed 0x005C12A1 template
+00464d23	DIFFER	146v146	-	GFSerialiseVectorBinaryIn<float>: traits gets its own frame word, retail shares the homed out slot
+00465852	RELOCATION_MATCH	141v141	PASS	GFSerialiseVectorBinaryIn<CDefString>; forceinline resize(n) + traits transfer
+00465e44	RELOCATION_MATCH	106v106	PASS	vector<EWeaponClass>::_M_range_initialize over set iterators
+0046656f	RELOCATION_MATCH	71v71	PASS	vector<NSpeechGainManager::CDialogueLayerDef>::_M_allocate_and_copy (64-byte elements)
+00466b93	RELOCATION_MATCH	88v88	PASS	GFSerialiseVectorBinaryOut<CBrainUpdateZone>; forceinline traits transfer
+00466beb	RELOCATION_MATCH	163v163	PASS	GFSerialiseVectorBinaryIn<CBrainUpdateZone>; inline zeroed traits
+00467090	RELOCATION_MATCH	101v101	PASS	GFSerialiseVectorBinaryOut<CBrainBehaviour>; traits ctor 0x004670F5 first
+0046712b	RELOCATION_MATCH	159v159	PASS	GFSerialiseVectorBinaryIn<CBrainBehaviour>; traits ctor first, resize temp {-1,0,0}
+004675c5	RELOCATION_MATCH	49v49	PASS	GFSerialiseVectorBinaryOut<bool>; WriteBool per byte
+004675f6	DIFFER	144v144	-	GFSerialiseVectorBinaryIn<bool>: same frame-slot gap as 0x00464D23

@@ -1168,3 +1168,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Relocation masking cannot check which string goes with which jump-table case: the earlier GetFontBankName (0x00415260) graded RELOCATION_MATCH with French and Italian swapped (0x0C = FRENCH, 0x10 = ITALIAN in retail). Check case-to-literal pairings against the retail table by hand.
 - VC7.1 has no NRVO: a named local returned by value is copied (0040e1e0).
 - A test that needs an SEH fault calls `RaiseException(0xE0000001, 0, 0, 0)` (declared extern "C" __stdcall dllimport); never `volatile` (banned) and avoid <windows.h> in lane tests (cl hangs).
+- VC7.1 hoists a load across a call only when the callee's body is in the TU (pasting the landed Compare 0x411570 body matched 0x4636CF).
+- STLport `resize(n)` is `resize(n, T())` with the value temporary in the frame; the STLport allocator needs user-declared ctors or `allocator_type()` emits `stosb` (chunk 368).
+- PDB def types are `class` (mangled `V`); a `struct` model mangles `U` and a PDB-derived leaf matches no symbol (chunk 368). Def vtable slot 19 is a `jmp` thunk to the def's operator=.
+- Packed defs without `#pragma pack`: CDefClassBase is 0x25 bytes and CEngineGraphic 14 bytes, both alignment 1 (chunk 368).
