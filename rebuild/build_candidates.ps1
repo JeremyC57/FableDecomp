@@ -285994,6 +285994,286 @@ $catalog = @(
         TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_CQOpeningGraveyardSecretPassageScript_00dc2570_test.cpp'
         PassPattern = '00dc2570_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004bb570'
+        Module = 'std'
+        Source = '00/4b/std_sortheap_004bb570.cpp'
+        TestSource = '00/4b/std_sortheap_004bb570_test.cpp'
+        PassPattern = '004bb570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e18b0'
+        Module = 'std'
+        Source = '00/5e/std_copy_005e18b0.cpp'
+        TestSource = '00/5e/std_copy_005e18b0_test.cpp'
+        PassPattern = '005e18b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e2860'
+        Module = 'std'
+        Source = '00/5e/std_sortheap_005e2860.cpp'
+        TestSource = '00/5e/std_sortheap_005e2860_test.cpp'
+        PassPattern = '005e2860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e2fb0'
+        Module = 'std'
+        Source = '00/5e/std_sortheap_005e2fb0.cpp'
+        TestSource = '00/5e/std_sortheap_005e2fb0_test.cpp'
+        PassPattern = '005e2fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00624fc0'
+        Module = 'std'
+        Source = '00/62/std_sortheap_00624fc0.cpp'
+        TestSource = '00/62/std_sortheap_00624fc0_test.cpp'
+        PassPattern = '00624fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a38c0'
+        Module = 'std'
+        Source = '00/6a/std_sortheap_006a38c0.cpp'
+        TestSource = '00/6a/std_sortheap_006a38c0_test.cpp'
+        PassPattern = '006a38c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ba830'
+        Module = 'std'
+        Source = '00/6b/std_sortheap_006ba830.cpp'
+        TestSource = '00/6b/std_sortheap_006ba830_test.cpp'
+        PassPattern = '006ba830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf0e0'
+        Module = 'std'
+        Source = '00/6b/std_sortheap_006bf0e0.cpp'
+        TestSource = '00/6b/std_sortheap_006bf0e0_test.cpp'
+        PassPattern = '006bf0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fcb90'
+        Module = 'std'
+        Source = '00/6f/std_Sortheap_006fcb90.cpp'
+        TestSource = '00/6f/std_Sortheap_006fcb90_test.cpp'
+        PassPattern = '006fcb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00720d30'
+        Module = 'std'
+        Source = '00/72/std_Sortheap_00720d30.cpp'
+        TestSource = '00/72/std_Sortheap_00720d30_test.cpp'
+        PassPattern = '00720d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007590c0'
+        Module = 'std'
+        Source = '00/75/std_Sortheap_007590c0.cpp'
+        TestSource = '00/75/std_Sortheap_007590c0_test.cpp'
+        PassPattern = '007590c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076af10'
+        Module = 'std'
+        Source = '00/76/std_Sortheap_0076af10.cpp'
+        TestSource = '00/76/std_Sortheap_0076af10_test.cpp'
+        PassPattern = '0076af10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077f190'
+        Module = 'std'
+        Source = '00/77/std_Sortheap_0077f190.cpp'
+        TestSource = '00/77/std_Sortheap_0077f190_test.cpp'
+        PassPattern = '0077f190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa980'
+        Module = 'std'
+        Source = '00/7f/std_sortheap_007fa980.cpp'
+        TestSource = '00/7f/std_sortheap_007fa980_test.cpp'
+        PassPattern = '007fa980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080a3f0'
+        Module = 'std'
+        Source = '00/80/std_sortheap_0080a3f0.cpp'
+        TestSource = '00/80/std_sortheap_0080a3f0_test.cpp'
+        PassPattern = '0080a3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081c670'
+        Module = 'std'
+        Source = '00/81/std_sortheap_0081c670.cpp'
+        TestSource = '00/81/std_sortheap_0081c670_test.cpp'
+        PassPattern = '0081c670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081c700'
+        Module = 'std'
+        Source = '00/81/std_Sortheap_0081c700.cpp'
+        TestSource = '00/81/std_Sortheap_0081c700_test.cpp'
+        PassPattern = '0081c700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086c950'
+        Module = 'std'
+        Source = '00/86/std_Sortheap_0086c950.cpp'
+        TestSource = '00/86/std_Sortheap_0086c950_test.cpp'
+        PassPattern = '0086c950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b8170'
+        Module = 'std'
+        Source = '00/9b/std_Sortheap_009b8170.cpp'
+        TestSource = '00/9b/std_Sortheap_009b8170_test.cpp'
+        PassPattern = '009b8170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b8ca0'
+        Module = 'std'
+        Source = '00/9b/std_sortheap_009b8ca0.cpp'
+        TestSource = '00/9b/std_sortheap_009b8ca0_test.cpp'
+        PassPattern = '009b8ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7950'
+        Module = 'std'
+        Source = '00/9e/std_sortheap_009e7950.cpp'
+        TestSource = '00/9e/std_sortheap_009e7950_test.cpp'
+        PassPattern = '009e7950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a338c0'
+        Module = 'std'
+        Source = '00/a3/std_Sortheap_00a338c0.cpp'
+        TestSource = '00/a3/std_Sortheap_00a338c0_test.cpp'
+        PassPattern = '00a338c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a339a0'
+        Module = 'std'
+        Source = '00/a3/std_Sortheap_00a339a0.cpp'
+        TestSource = '00/a3/std_Sortheap_00a339a0_test.cpp'
+        PassPattern = '00a339a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a34d80'
+        Module = 'std'
+        Source = '00/a3/std_sortheap_00a34d80.cpp'
+        TestSource = '00/a3/std_sortheap_00a34d80_test.cpp'
+        PassPattern = '00a34d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a41960'
+        Module = 'std'
+        Source = '00/a4/std_Sortheap_00a41960.cpp'
+        TestSource = '00/a4/std_Sortheap_00a41960_test.cpp'
+        PassPattern = '00a41960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a41c20'
+        Module = 'std'
+        Source = '00/a4/std_sortheap_00a41c20.cpp'
+        TestSource = '00/a4/std_sortheap_00a41c20_test.cpp'
+        PassPattern = '00a41c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a466f0'
+        Module = 'std'
+        Source = '00/a4/std_sortheap_00a466f0.cpp'
+        TestSource = '00/a4/std_sortheap_00a466f0_test.cpp'
+        PassPattern = '00a466f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a719a0'
+        Module = 'std'
+        Source = '00/a7/std_sortheap_00a719a0.cpp'
+        TestSource = '00/a7/std_sortheap_00a719a0_test.cpp'
+        PassPattern = '00a719a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a72aa0'
+        Module = 'std'
+        Source = '00/a7/std_sortheap_00a72aa0.cpp'
+        TestSource = '00/a7/std_sortheap_00a72aa0_test.cpp'
+        PassPattern = '00a72aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a72b10'
+        Module = 'std'
+        Source = '00/a7/std_sortheap_00a72b10.cpp'
+        TestSource = '00/a7/std_sortheap_00a72b10_test.cpp'
+        PassPattern = '00a72b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a81d90'
+        Module = 'std'
+        Source = '00/a8/std_Sortheap_00a81d90.cpp'
+        TestSource = '00/a8/std_Sortheap_00a81d90_test.cpp'
+        PassPattern = '00a81d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a81e80'
+        Module = 'std'
+        Source = '00/a8/std_Sortheap_00a81e80.cpp'
+        TestSource = '00/a8/std_Sortheap_00a81e80_test.cpp'
+        PassPattern = '00a81e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a83600'
+        Module = 'std'
+        Source = '00/a8/std_sortheap_00a83600.cpp'
+        TestSource = '00/a8/std_sortheap_00a83600_test.cpp'
+        PassPattern = '00a83600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a84470'
+        Module = 'std'
+        Source = '00/a8/std_sortheap_00a84470.cpp'
+        TestSource = '00/a8/std_sortheap_00a84470_test.cpp'
+        PassPattern = '00a84470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af3770'
+        Module = 'std'
+        Source = '00/af/std_sortheap_00af3770.cpp'
+        TestSource = '00/af/std_sortheap_00af3770_test.cpp'
+        PassPattern = '00af3770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee990'
+        Module = 'std'
+        Source = '00/be/std_sortheap_00bee990.cpp'
+        TestSource = '00/be/std_sortheap_00bee990_test.cpp'
+        PassPattern = '00bee990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bef350'
+        Module = 'std'
+        Source = '00/be/std_sortheap_00bef350.cpp'
+        TestSource = '00/be/std_sortheap_00bef350_test.cpp'
+        PassPattern = '00bef350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb6f10'
+        Module = 'std'
+        Source = '00/cb/std_sortheap_00cb6f10.cpp'
+        TestSource = '00/cb/std_sortheap_00cb6f10_test.cpp'
+        PassPattern = '00cb6f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbb9d0'
+        Module = 'std'
+        Source = '00/cb/std_sortheap_00cbb9d0.cpp'
+        TestSource = '00/cb/std_sortheap_00cbb9d0_test.cpp'
+        PassPattern = '00cbb9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbc580'
+        Module = 'std'
+        Source = '00/cb/std_sortheap_00cbc580.cpp'
+        TestSource = '00/cb/std_sortheap_00cbc580_test.cpp'
+        PassPattern = '00cbc580_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

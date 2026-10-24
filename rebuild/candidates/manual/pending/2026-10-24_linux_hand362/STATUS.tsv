@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005e18b0	MATCH	148v148	PASS	not a sort_heap: STLport __copy(random_access) of pair<ulong,CAnimationEntry>; label corrected
+005e2860	RELOCATION_MATCH	88v88	PASS	SGI sort_heap, pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>>; label corrected
+005e2fb0	RELOCATION_MATCH	137v137	PASS	SGI sort_heap, pair<ulong,CAnimationEntry>; label corrected
+00624fc0	RELOCATION_MATCH	199v199	PASS	SGI sort_heap, CTestQuest* / CTestQuestNameCompare; label corrected
+006a38c0	RELOCATION_MATCH	140v140	PASS	SGI sort_heap, pair<long,CIntelligentPointer<CThing>>; label corrected
+006ba830	RELOCATION_MATCH	122v122	PASS	SGI sort_heap, pair<ulong,CCountedPointer<T>> (twin 00a83600); label corrected
+007590c0	RELOCATION_MATCH	201v201	PASS	Dinkumware _Sort_heap, pair<long,40-byte POD>; no pop_heap guard (attempt 2); label corrected
+0076af10	RELOCATION_MATCH	144v144	PASS	Dinkumware _Sort_heap, pair<ulong,C3DVector>; label corrected
+0077f190	RELOCATION_MATCH	209v209	PASS	Dinkumware _Sort_heap, pair<CCharString,C3DVector>; catalog label right
+007fa980	RELOCATION_MATCH	157v157	PASS	SGI sort_heap, CThing** / CThingCompare_BestForTargeting2 (out-of-line __pop_heap_aux); label corrected
+0080a3f0	RELOCATION_MATCH	143v143	PASS	SGI sort_heap, pair<C3DVector,long> / CCompareTargetedPositionsForFirstPersonTargeting; label corrected
+0081c670	RELOCATION_MATCH	139v139	PASS	SGI sort_heap, pair<EHeroMorphType,CTextureMorphEntry>; label corrected
+0081c700	RELOCATION_MATCH	201v201	PASS	Dinkumware _Sort_heap, pair<long,36-byte POD>; label corrected
+009b8170	RELOCATION_MATCH	169v169	PASS	Dinkumware _Sort_heap, pair<CCharString,ulong>; catalog label right
+009b8ca0	RELOCATION_MATCH	233v233	PASS	SGI sort_heap, pair<ulong,CDefinitionManager::CDefClassInfo>; label corrected
+009e7950	RELOCATION_MATCH	115v115	PASS	SGI sort_heap, pair<CCharString,CSymbolMap::CSymbolInfo>; label corrected
+00a338c0	RELOCATION_MATCH	217v217	PASS	Dinkumware _Sort_heap, pair<ulong,C3DHelperPoint>; __forceinline _Pop_heap (attempt 2)
+00a339a0	RELOCATION_MATCH	205v205	PASS	Dinkumware _Sort_heap, pair<ulong,C3DDummyObject>; catalog label right
+00a34d80	RELOCATION_MATCH	111v111	PASS	SGI sort_heap, pair<ulong,{CCharString,CCountedPointer<CFaction>}> (twin 00a72aa0); label corrected
+00a41960	RELOCATION_MATCH	169v169	PASS	Dinkumware _Sort_heap, pair<CCharString,ulong>; catalog label right
+00a72aa0	RELOCATION_MATCH	111v111	PASS	SGI sort_heap, pair<ulong,{CCharString,CCountedPointer<CFaction>}> (twin 00a34d80); label corrected
+00a72b10	RELOCATION_MATCH	115v115	PASS	SGI sort_heap, pair<CCharString,{CCharString,CCountedPointer<CFaction>}>; label corrected
+00a83600	RELOCATION_MATCH	122v122	PASS	SGI sort_heap, pair<ulong,CCountedPointer<T>> (twin 006ba830); label corrected
+00a84470	RELOCATION_MATCH	142v142	PASS	SGI sort_heap, pair<u64,list<16-byte rec>>; same-TU noinline _M_insert_dispatch (attempt 3); label corrected
+00af3770	RELOCATION_MATCH	107v107	PASS	SGI sort_heap, pair<CCharString,NParticleEngine::CRegisteredPSCInfo>; label corrected
+00bee990	RELOCATION_MATCH	100v100	PASS	SGI sort_heap, pair<long,CCompositeSurfaceInfo>; label corrected
+00bef350	RELOCATION_MATCH	231v231	PASS	SGI sort_heap, pair<pair<long,long>,CEngineTextureDecal>; pair user copy ctor (attempt 2); label corrected
+00cbb9d0	RELOCATION_MATCH	135v135	PASS	SGI sort_heap, pair<u64,CRuntimeScriptedEntityPersist::CPersistInfo>; label corrected
+0086c950	RELOCATION_MATCH	162v162	PASS	Dinkumware _Sort_heap, pair<long,CSkeletalMorph>; catalog label right
+00a81d90	RELOCATION_MATCH	141v141	PASS	Dinkumware _Sort_heap, pair<u64,bool>; label corrected
+00a81e80	RELOCATION_MATCH	141v141	PASS	Dinkumware _Sort_heap, pair<u64,ulong>; label corrected
+00720d30	RELOCATION_MATCH	169v169	PASS	Dinkumware _Sort_heap, pair<CSkeletalMorphs::CEntry,float>; label corrected
+00a41c20	RELOCATION_MATCH	130v130	PASS	SGI sort_heap, CSymbolMap::CSymbolInfo* by name; label corrected
+00a466f0	RELOCATION_MATCH	145v145	PASS	SGI sort_heap, C3DSkeletalBoneMorph* / fastcall function-pointer compare; label corrected
+00a719a0	RELOCATION_MATCH	145v145	PASS	SGI sort_heap, pair<CCharString,C3DHelperPoint>; label corrected
+00cb6f10	RELOCATION_MATCH	155v155	PASS	SGI sort_heap, pair<CCharString,CScriptInfo>; label corrected
+004bb570	RELOCATION_MATCH	143v143	PASS	SGI sort_heap, pair<CCharString,CRuntimeQuestPersistence::CPersistInfo>; label corrected
+006bf0e0	RELOCATION_MATCH	162v162	PASS	SGI sort_heap, pair<long,CMusicManager::CRegisteredMusicEntry>; label corrected
+006fcb90	RELOCATION_MATCH	238v238	PASS	Dinkumware _Sort_heap, pair<ulong,CSmallVector<CEvent,32>>; __forceinline _Pop_heap (attempt 2)
+00cbc580	RELOCATION_MATCH	130v130	PASS	SGI sort_heap, pair<CCharString,CCountedPointer<CEntityScriptBindingBase>>; label corrected

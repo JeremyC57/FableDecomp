@@ -1148,3 +1148,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - PC STLport `list` is one 4-byte pointer: `pair<unsigned __int64, list>` is 16 bytes with the list at +8 (Ego_r's Dinkumware list makes it 24) (00519ef0).
 - `cmp edi(other),ebx(this)` before a guarded Copy comes from `if (&other != this)`; `if (this != &other)` swaps the operands (chunk 359).
 - `fxch st(1) ; fxch st(1)` before `fcompp` comes from `float d = (float)fabs(...)` locals, not from comparing the double fabs values (chunk 359).
+- Dinkumware `_Sort_heap`: call `_Pop_heap_0` straight from the loop; a pop_heap `if (1 < last-first)` guard is not folded (+6 bytes, 007590c0). `_Pop_heap` with a non-trivial temporary needs `__forceinline` (00a338c0).
+- An empty `__false_type` tag passed by const& needs a user ctor `__false_type() {}`, else VC adds a zero-byte store (00a84470).
+- STLport list copy ctor = `_List_base` (malloc'd sentinel) + `insert(begin(), x.begin(), x.end())`; `_List_const_iterator` needs a converting ctor and no copy ctor (00a84470).
