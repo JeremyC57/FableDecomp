@@ -1281,3 +1281,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - VC7.1 folds `x / 8.0f * 0.5f` into one multiply inside one expression: put the division in its own statement; in `a + b` the right operand is evaluated first (0x771C70).
 - An inlined two-arm accessor must use `f(i >= 0 ? A[i] : A[0])` (0x76EA60); `return a && b;` gives `mov eax,1` / `xor eax,eax` (0x76D4F0).
 - A call retail treats as never returning (`_M_throw_length_error`) needs `__declspec(noreturn)` (0x777DB0).
+- `find(...) == end()` evaluates end() first and compares the stale pre-call value: name the find result in a local (chunk 392).
+- A CDefPointer dtor needs `Release()` as an inline member of the def; a free helper reloads PDef (+14 bytes) (chunk 392).
+- On an STLport list `mov eax,[ecx]; mov esi,[eax]` means begin(), so the row is push_front (0x7421C0); a functor inside an inlined for_each needs `__forceinline operator()`.
+- `(x*k1)*k2` with literal constants is folded into one `fmul` even through an inline getter; retail's two multiplies need a separate statement (0x752510).

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0073af00	RELOCATION_MATCH	87v87	PASS	CTCCreatureModeManager ctor (list alloc-proxy + vector zero stores, frame count as a body assignment)
+0073d720	MATCH	73v73	PASS	STLport __unguarded_insertion_sort_aux, 8-byte mode-registry pair
+0073da50	RELOCATION_MATCH	38v38	PASS	CVectorMap::Count = UpperBound - LowerBound
+0073dff0	RELOCATION_MATCH	77v77	PASS	CAnimFilterOfGroup::SetCurrentGroupName (name + CRC)
+0073e040	RELOCATION_MATCH	129v129	PASS	CAnimFilterOf2Groups::SetCurrentGroupNames
+0073e0d0	RELOCATION_MATCH	178v178	PASS	CAnimFilterOf3Groups ctor (CRCs from the parameters)
+007421c0	RELOCATION_MATCH	61v61	PASS	list::push_front (catalog said push_back; insert at begin())
+00742360	RELOCATION_MATCH	99v99	PASS	STLport __linear_insert, mode-registry pair (__copy_backward count loop)
+00742930	RELOCATION_MATCH	234v234	PASS	~CModeThunderLightningStorm, novtable + inline CDefPointer Release
+00743470	RELOCATION_MATCH	107v107	PASS	STLport __partial_sort, mode-registry pair
+00743d40	RELOCATION_MATCH	111v111	PASS	~CModeHoverBase, novtable + inline ~CModeBase
+00743ec0	RELOCATION_MATCH	196v196	PASS	STLport __introsort_loop, mode-registry pair
+007447a0	RELOCATION_MATCH	55v55	PASS	CTCPerceiveThing::SetThingToPerceive
+007485f0	RELOCATION_MATCH	159v159	PASS	STLport __find_if (CFindDangerThing), unrolled x4 + switch tail
+00748690	RELOCATION_MATCH	159v159	PASS	STLport __find_if, const twin of 0x007485F0
+00748a40	RELOCATION_MATCH	84v84	PASS	STLport __uninitialized_copy, danger pair
+00748aa0	RELOCATION_MATCH	74v74	PASS	STLport __uninitialized_fill_n, danger pair
+00748c10	RELOCATION_MATCH	96v96	PASS	STLport __unguarded_insertion_sort_aux, CThing* (same-TU comparator body)
+00748c90	RELOCATION_MATCH	115v115	PASS	STLport __adjust_heap, CThing* CCompare_FurthestFromInitPos2D
+00749170	RELOCATION_MATCH	113v113	PASS	STLport __insertion_sort, CThing* (memmove copy_backward)
+00749530	RELOCATION_MATCH	104v104	PASS	STLport __partial_sort, CThing* (same-TU comparator body)
+00749620	DIFFER	98v105	-	danger-pair vector push_back: this/x register swap (ebx/edi), RMW ++finish
+00749d20	RELOCATION_MATCH	55v55	PASS	NCreatureHiding::IsThemeHidable (__fastcall)
+0074a4e0	DIFFER	233v234	-	CTCCreatureGenerator::DoNavCheck: creature-in-ebx scheduling, test edi / sub edi,0Ch order
+0074ac80	RELOCATION_MATCH	96v96	PASS	CTCShop::AddShopper (named find result, empty iterator tag ctor)
+0074fbb0	DIFFER	185v185	-	for_each CAddObjectsNotSolidTo: Last kept in edi vs reloaded in the inlined interface lookup
+00752510	DIFFER	159v165	-	CTCLook::GetHeadCreatureAnimFrame: VC folds (range*1/360)*0.5 in the XY arm
+00754e70	RELOCATION_MATCH	117v117	PASS	GFGetAngleYZTo, YZ twin of landed GFGetAngleXYTo 0x00661540
+007555f0	RELOCATION_MATCH	71v71	PASS	CTCHeroRememberCrimes ctor (inlined _Rb_tree ctor)
+00756420	RELOCATION_MATCH	198v198	PASS	STLport _Rb_tree::erase(first, last), crime map
+00756540	RELOCATION_MATCH	149v149	PASS	GFSerialiseMapBinaryOut<pair<long,long>,CCharString>
+00756c60	DIFFER	92v92	-	_Rb_tree::erase(key): frame slots of the two distance() iterator copies swapped
+007577f0	RELOCATION_MATCH	118v118	PASS	CWoundMorphs::Add (vector-map push_back + Dirty)
+00757870	RELOCATION_MATCH	182v182	PASS	CWoundMorphs::GetPRandomWoundForLocation
+00758220	MATCH	40v40	PASS	STLport fill, 0x2C wound pair
+007588a0	MATCH	98v98	PASS	STLport __unguarded_insertion_sort_aux, 0x2C wound pair
+00758910	RELOCATION_MATCH	151v151	PASS	STLport __adjust_heap, 0x2C wound pair
+00758b70	MATCH	109v109	PASS	STLport __unguarded_partition, 0x2C wound pair
+00758c90	RELOCATION_MATCH	127v127	PASS	STLport __make_heap, 0x2C wound pair
+00759420	RELOCATION_MATCH	175v175	PASS	STLport __partial_sort, 0x2C wound pair
