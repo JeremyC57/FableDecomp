@@ -281783,6 +281783,279 @@ $catalog = @(
         TestSource = '00/c4/PKCBufferedReader_ConvertOffsetToAbsolute_00c4afd0_test.cpp'
         PassPattern = '00c4afd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004051c0'
+        Module = 'NUISystem::CIME'
+        Source = '00/40/NUISystemCIME_Shutdown_004051c0.cpp'
+        TestSource = '00/40/NUISystemCIME_Shutdown_004051c0_test.cpp'
+        PassPattern = '004051c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047b590'
+        Module = 'std'
+        Source = '00/47/std_Construct_0047b590.cpp'
+        TestSource = '00/47/std_Construct_0047b590_test.cpp'
+        PassPattern = '0047b590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047b5c0'
+        Module = 'std'
+        Source = '00/47/std_Construct_0047b5c0.cpp'
+        TestSource = '00/47/std_Construct_0047b5c0_test.cpp'
+        PassPattern = '0047b5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b8130'
+        Module = 'std'
+        Source = '00/4b/std_Construct_004b8130.cpp'
+        TestSource = '00/4b/std_Construct_004b8130_test.cpp'
+        PassPattern = '004b8130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b8160'
+        Module = 'std'
+        Source = '00/4b/std_Construct_004b8160.cpp'
+        TestSource = '00/4b/std_Construct_004b8160_test.cpp'
+        PassPattern = '004b8160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b82f0'
+        Module = 'std'
+        Source = '00/4b/std_Construct_004b82f0.cpp'
+        TestSource = '00/4b/std_Construct_004b82f0_test.cpp'
+        PassPattern = '004b82f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ebdf1'
+        Module = 'std'
+        Source = '00/4e/std_Construct_004ebdf1.cpp'
+        TestSource = '00/4e/std_Construct_004ebdf1_test.cpp'
+        PassPattern = '004ebdf1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052b4e0'
+        Module = 'std'
+        Source = '00/52/std_Construct_0052b4e0.cpp'
+        TestSource = '00/52/std_Construct_0052b4e0_test.cpp'
+        PassPattern = '0052b4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00565780'
+        Module = 'std'
+        Source = '00/56/std_Construct_00565780.cpp'
+        TestSource = '00/56/std_Construct_00565780_test.cpp'
+        PassPattern = '00565780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00566180'
+        Module = 'std'
+        Source = '00/56/std_Construct_00566180.cpp'
+        TestSource = '00/56/std_Construct_00566180_test.cpp'
+        PassPattern = '00566180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005661c0'
+        Module = 'std'
+        Source = '00/56/std_Construct_005661c0.cpp'
+        TestSource = '00/56/std_Construct_005661c0_test.cpp'
+        PassPattern = '005661c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00613d20'
+        Module = 'std'
+        Source = '00/61/std_Construct_00613d20.cpp'
+        TestSource = '00/61/std_Construct_00613d20_test.cpp'
+        PassPattern = '00613d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069c860'
+        Module = 'std'
+        Source = '00/69/std_Construct_0069c860.cpp'
+        TestSource = '00/69/std_Construct_0069c860_test.cpp'
+        PassPattern = '0069c860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b6670'
+        Module = 'std'
+        Source = '00/6b/std_Construct_006b6670.cpp'
+        TestSource = '00/6b/std_Construct_006b6670_test.cpp'
+        PassPattern = '006b6670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c3170'
+        Module = 'std'
+        Source = '00/6c/std_Construct_006c3170.cpp'
+        TestSource = '00/6c/std_Construct_006c3170_test.cpp'
+        PassPattern = '006c3170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e4bd0'
+        Module = 'std'
+        Source = '00/6e/std_Construct_006e4bd0.cpp'
+        TestSource = '00/6e/std_Construct_006e4bd0_test.cpp'
+        PassPattern = '006e4bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e6570'
+        Module = 'std'
+        Source = '00/6e/std_Construct_006e6570.cpp'
+        TestSource = '00/6e/std_Construct_006e6570_test.cpp'
+        PassPattern = '006e6570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006eff60'
+        Module = 'CDefendingCombatantInfo::CProng'
+        Source = '00/6e/CDefendingCombatantInfoCProng_CProng_006eff60.cpp'
+        TestSource = '00/6e/CDefendingCombatantInfoCProng_CProng_006eff60_test.cpp'
+        PassPattern = '006eff60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077e250'
+        Module = 'std'
+        Source = '00/77/std_Construct_0077e250.cpp'
+        TestSource = '00/77/std_Construct_0077e250_test.cpp'
+        PassPattern = '0077e250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082c5e0'
+        Module = 'std'
+        Source = '00/82/std_Construct_0082c5e0.cpp'
+        TestSource = '00/82/std_Construct_0082c5e0_test.cpp'
+        PassPattern = '0082c5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ab90'
+        Module = 'std'
+        Source = '00/88/std_Construct_0088ab90.cpp'
+        TestSource = '00/88/std_Construct_0088ab90_test.cpp'
+        PassPattern = '0088ab90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00913590'
+        Module = 'std'
+        Source = '00/91/std_Construct_00913590.cpp'
+        TestSource = '00/91/std_Construct_00913590_test.cpp'
+        PassPattern = '00913590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e5f60'
+        Module = 'std'
+        Source = '00/9e/std_Construct_009e5f60.cpp'
+        TestSource = '00/9e/std_Construct_009e5f60_test.cpp'
+        PassPattern = '009e5f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eee50'
+        Module = 'std'
+        Source = '00/9e/std_Construct_009eee50.cpp'
+        TestSource = '00/9e/std_Construct_009eee50_test.cpp'
+        PassPattern = '009eee50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f8780'
+        Module = 'std'
+        Source = '00/9f/std_Construct_009f8780.cpp'
+        TestSource = '00/9f/std_Construct_009f8780_test.cpp'
+        PassPattern = '009f8780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9a90'
+        Module = 'std'
+        Source = '00/9f/std_Construct_009f9a90.cpp'
+        TestSource = '00/9f/std_Construct_009f9a90_test.cpp'
+        PassPattern = '009f9a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fffc0'
+        Module = 'std'
+        Source = '00/9f/std_uninitializedfilln_009fffc0.cpp'
+        TestSource = '00/9f/std_uninitializedfilln_009fffc0_test.cpp'
+        PassPattern = '009fffc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3fb60'
+        Module = 'std'
+        Source = '00/a3/std_Construct_00a3fb60.cpp'
+        TestSource = '00/a3/std_Construct_00a3fb60_test.cpp'
+        PassPattern = '00a3fb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6ed30'
+        Module = 'std'
+        Source = '00/a6/std_Construct_00a6ed30.cpp'
+        TestSource = '00/a6/std_Construct_00a6ed30_test.cpp'
+        PassPattern = '00a6ed30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6fdc0'
+        Module = 'std'
+        Source = '00/a6/std_Construct_00a6fdc0.cpp'
+        TestSource = '00/a6/std_Construct_00a6fdc0_test.cpp'
+        PassPattern = '00a6fdc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85360'
+        Module = 'std'
+        Source = '00/a8/std_Construct_00a85360.cpp'
+        TestSource = '00/a8/std_Construct_00a85360_test.cpp'
+        PassPattern = '00a85360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad15c0'
+        Module = 'std'
+        Source = '00/ad/std_Construct_00ad15c0.cpp'
+        TestSource = '00/ad/std_Construct_00ad15c0_test.cpp'
+        PassPattern = '00ad15c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad62b0'
+        Module = 'std'
+        Source = '00/ad/std_Construct_00ad62b0.cpp'
+        TestSource = '00/ad/std_Construct_00ad62b0_test.cpp'
+        PassPattern = '00ad62b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2b70'
+        Module = 'std'
+        Source = '00/af/std_Construct_00af2b70.cpp'
+        TestSource = '00/af/std_Construct_00af2b70_test.cpp'
+        PassPattern = '00af2b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6bba0'
+        Module = 'std'
+        Source = '00/b6/std_uninitializedfilln_00b6bba0.cpp'
+        TestSource = '00/b6/std_uninitializedfilln_00b6bba0_test.cpp'
+        PassPattern = '00b6bba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd9ca0'
+        Module = 'CEngineLandscapeMemoryManager'
+        Source = '00/bd/CEngineLandscapeMemoryManager_FreeVirtualAligned_00bd9ca0.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_FreeVirtualAligned_00bd9ca0_test.cpp'
+        PassPattern = '00bd9ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb60b0'
+        Module = 'std'
+        Source = '00/cb/std_Construct_00cb60b0.cpp'
+        TestSource = '00/cb/std_Construct_00cb60b0_test.cpp'
+        PassPattern = '00cb60b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd4e30'
+        Module = 'std'
+        Source = '00/cd/std_Construct_00cd4e30.cpp'
+        TestSource = '00/cd/std_Construct_00cd4e30_test.cpp'
+        PassPattern = '00cd4e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f38410'
+        Module = 'std'
+        Source = '00/f3/std_Construct_00f38410.cpp'
+        TestSource = '00/f3/std_Construct_00f38410_test.cpp'
+        PassPattern = '00f38410_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
