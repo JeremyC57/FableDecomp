@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008d9060	RELOCATION_MATCH	72v72	PASS	CModeStunned::OnDeactivate: targeted interface (type 9) back to default flags, then the out-of-action base
+008de650	RELOCATION_MATCH	70v70	PASS	CModeStunned::Recover: RecoverFromStunned combat action when the creature can recover
+008dfef0	RELOCATION_MATCH	94v94	PASS	CModeSummonerDie::FrameUpdate: countdown, then the SummonerDead action (code 250) for a state-1 creature
+008d9410	RELOCATION_MATCH	109v109	PASS	CModeUnderground::FrameUpdate: kill the thing when its linked thing is gone or dead (const out-param GetConstInterface)
+008d75d0	RELOCATION_MATCH	81v81	PASS	CModeWading::FrameUpdate: WADING_WITH_WEAPON / WADING_NO_WEAPON filter group, then the base update
+008ea9b0	RELOCATION_MATCH	53v53	PASS	label fix: CModeHoverBase::OnDeactivate (inherited by CModeWalkInAllDirections slot 6)
+0069edc0	MATCH	32v32	PASS	CView3DBase::SetVWindow: window copy at +8
+0069e8f0	RELOCATION_MATCH	29v29	PASS	CView3DThirdPerson::GetCamera: forwards to the display engine camera source slot 5
+009c79e0	RELOCATION_MATCH	82v82	PASS	CDataBank::GetEnumerationType: EGameText / ETextGroup / empty
+009c82c0	RELOCATION_MATCH	122v122	PASS	CDataBank::NotifyBankSize: read-only bank sizes entries, reserves text/group buffers from type counts
+009c85a0	RELOCATION_MATCH	141v141	PASS	CDataBank ctor: CBankFileAsync + CResourceBank bases, empty arrays, 64KB resident budget, no unload delay
+009c8660	RELOCATION_MATCH	154v154	PASS	label fix: CDataBank::CloseTextAndGroups (catalog CommitChanges autoname); three Dinkumware erase(begin,end)
+004bfc50	DIFFER	144v144	-	CTCGraphicAppearance::OnCreate: component load in ecx vs retail eax (parked)
+004c01e0	RELOCATION_MATCH	86v86	PASS	CTCGraphicAppearance::HandleMessage: clear-primitives -> inline SetAsChanged(8); set-thing-owner -> CatchMessage
+007e1570	RELOCATION_MATCH	22v22	PASS	CTCGraphicAppearanceMultipleStaticMeshes::OnCreate: fetch the sub-def from the owner def
+007a6740	RELOCATION_MATCH	22v22	PASS	CTCGraphicAppearanceReplaceableMesh::OnCreate: fetch the sub-def from the owner def
+0077c740	RELOCATION_MATCH	79v79	PASS	CTCGraphicAppearanceSprite::FrameUpdate: advance rotation and anim stage, mark changed (statement order load-bearing)
+00a373b0	RELOCATION_MATCH	80v80	PASS	label fix: CClassFactory::CClassFactory(unsigned char) (catalog NHeroInformationScreens::CBase::CBase)
+00b94a80	RELOCATION_MATCH	196v196	PASS	label fix: CEngineScene::CEngineScene(float,ulong,float,float,const CCharString&) (catalog CBase::Init)
+00cac400	RELOCATION_MATCH	149v149	PASS	label fix: CAudioThreadOwner_00cab870::AttachAndWait (create event, Attach, wait, HRESULT); bounds correct
+0067fdd0	RELOCATION_MATCH	31v31	PASS	CPhysicalPrimitiveCylinder::Alloc: new cylinder (BaseName -1)
+008156a0	RELOCATION_MATCH	203v203	PASS	CPhysicalPrimitiveCylinder::TransferBinaryIn: base name, radius, height (one shared float local)
+0067f790	RELOCATION_MATCH	24v24	PASS	CPhysicalPrimitiveMesh::Alloc: new mesh primitive
+00814bc0	MATCH	27v27	PASS	CPhysicalPrimitiveMesh::GetClosestPointToPos2D: returns pos (user copy ctor)
+00815200	RELOCATION_MATCH	25v25	PASS	CPhysicalPrimitiveMesh::GetBoundingSphere: the physics TC bounding info
+0067fdb0	RELOCATION_MATCH	31v31	PASS	CPhysicalPrimitiveSphere::Alloc: new sphere (BaseName -1)
+00814d90	RELOCATION_MATCH	122v122	PASS	CPhysicalPrimitiveSphere::GetFirstIntersectionWithTriangle: twin of the landed FiniteLine 0x00814D10
+00415cf0	MATCH	17v17	PASS	CAEnvironmentInteraction::GetVectorParam: zero vector
+00b187d0	RELOCATION_MATCH	80v80	PASS	CPSCLight::GetComponentCost: one light, max render radius scaled by the system
+00b19c20	MATCH	58v58	PASS	CPSCLight::Kill: release the primitive handle (inline Clear)
+00b163a0	MATCH	58v58	PASS	CPSCOrbit::DatabaseCopy: centre param and three orbit settings
+00b1af50	RELOCATION_MATCH	111v111	PASS	CPSCSpline::InterpolateTo: lerp the anim speed, flags switch at t > 0.5
+00b1afc0	RELOCATION_MATCH	37v37	PASS	CPSCSpline::DatabaseCopy: base copy, then speed/bounce settings
+00b1b0c0	RELOCATION_MATCH	234v234	PASS	CPSCSpline::StartUpdate: advance the spline position with bounce/wrap (counted-pointer operator->)
+00b1b2e0	RELOCATION_MATCH	105v105	PASS	CPSCSpline::DatabaseSerialise: base, then ScaleSplineSpeed / SplineBounce / SplineAnimSpeed
+00b0a6d0	MATCH	62v62	PASS	CPSCUpdateNormal::GetUpdateParam: param 0 = zero initially, else the system offset
+00b0a710	MATCH	60v60	PASS	CPSCUpdateNormal::Initialise: copy two flags into the system, mark initialised
+00b0c830	RELOCATION_MATCH	97v97	PASS	CPSCUpdateNormal::GetParticleCount: sum over live initialised decal emitters
+00b0c8a0	RELOCATION_MATCH	97v97	PASS	CPSCUpdateNormal::GetDecalCount: sum over live initialised decal emitters
+00b0c910	RELOCATION_MATCH	174v174	PASS	CPSCUpdateNormal::PreparePrimitives: erase dead decal emitters, initialise/start/prepare the rest

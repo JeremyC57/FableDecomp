@@ -1047,3 +1047,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A forwarding or empty same-TU noinline stand-in is worse than a declaration: VC7.1 elides the call to a known-empty function (0095d4c0, 00a98760).
 - /G3-/G7, /Ob1, /Ox and the QFE 4035 compiler do not change VC7.1's load-vs-push scheduling or EH-frame decisions; don't spend grades on flag sweeps for those residues (0072a970, 00c14b50).
 - Parked-row history and residue classes for all 2,755 parked addresses: `rebuild/candidates/manual/PARKED_INDEX.tsv` + `PARKED_CLASSES.md` (2026-10-24; regenerate with `tools/decomp_pipeline/linux_lane/lane_tools/parked_index.py`).
+- A class with virtuals must not also declare a `void* __vftable` member: VC adds its own vptr and every offset shifts by 4 (004c01e0).
+- An if-chain of `return CCharString(lit, -1)` hoists the shared `push -1` above the first branch (009c79e0).
+- `switch` on WaitForSingleObject with a shared CloseHandle tail: VC7.1 duplicates the tail plus `setge/dec/and` into each arm (00cac400).
+- STLport `_List_base` (proxy zeroed, header malloc'd, self-linked) matches CClassFactory's ctor first try (00a373b0); scalar assignments in a ctor body keep source store order (00b94a80).
