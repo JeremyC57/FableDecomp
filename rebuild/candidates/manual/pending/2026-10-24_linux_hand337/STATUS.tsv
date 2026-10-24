@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007de2e0	RELOCATION_MATCH	169v169	PASS	CTCEntityEvents::GetEvent <CFilter_Bind2<NEntityEvents::CIsHitEventHitBy, NEntityEvents::CIsHitEventHitByShot>>
+008d4840	RELOCATION_MATCH	166v166	PASS	CTCEntityEvents::GetEvent <CFilter_Bind3<NEntityEvents::CIsEventCreatedAfter, NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsHitEventHitByThingWithScriptName>>
+0096bac0	RELOCATION_MATCH	172v172	PASS	CTCEntityEvents::GetEvent <CFilter_Bind3<NEntityEvents::CIsHitEventHitByShot, std::unary_negate<NEntityEvents::CIsHitEventBlocked>, NEntityEvents::CIsEventCreatedAfter>>
+0096bb70	RELOCATION_MATCH	172v172	PASS	CTCEntityEvents::GetEvent <CFilter_Bind3<NEntityEvents::CIsHitEventHitByMelee, std::unary_negate<NEntityEvents::CIsHitEventBlocked>, NEntityEvents::CIsEventCreatedAfter>>
+008d4cd0	RELOCATION_MATCH	179v179	PASS	CTCEntityEvents::GetEvent <CFilter_Bind4<NEntityEvents::CIsHitEventHitByShot, NEntityEvents::CIsHitEventHitByThingWithScriptName, NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsEventCreatedAfter>>
+008d48f0	RELOCATION_MATCH	186v186	PASS	CTCEntityEvents::GetEvent <CFilter_Bind4<NEntityEvents::CIsHitEventHitByThingWithScriptName, CEventFilter_HitEventWithNoWeapon, NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsEventCreatedAfter>>
+008d49b0	RELOCATION_MATCH	216v216	PASS	CTCEntityEvents::GetEvent <CFilter_Bind4<NEntityEvents::CIsHitEventHitByThingWithScriptName, CEventFilter_HitEventWithWeapon, NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsEventCreatedAfter>>
+008d4b50	RELOCATION_MATCH	177v177	PASS	CTCEntityEvents::GetEvent <CFilter_Bind4<NEntityEvents::CIsHitEventHitByThingWithScriptName, CEventFilter_HitWithDecapitate, NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsEventCreatedAfter>>
+008d4c10	RELOCATION_MATCH	177v177	PASS	CTCEntityEvents::GetEvent <CFilter_Bind4<NEntityEvents::CIsHitEventHitByThingWithScriptName, CEventFilter_HitWithDecapitate, NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsEventCreatedAfter>>
+008d4a90	RELOCATION_MATCH	177v177	PASS	CTCEntityEvents::GetEvent <CFilter_Bind4<NEntityEvents::CIsHitEventHitByThingWithScriptName, CEventFilter_HitWithFlourish, NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsEventCreatedAfter>>
+007fce10	RELOCATION_MATCH	141v141	PASS	CTCEntityEvents::GetEvent <NEntityEvents::CIsHitEventHitBy>
+00970190	RELOCATION_MATCH	152v152	PASS	CTCEntityEvents::GetEvent <NEntityEvents::CIsHitEventHitAndKnockedDownBy>
+007afb90	RELOCATION_MATCH	164v164	PASS	CTCEntityEvents::GetEvent <CFilter_Bind2<NEntityEvents::CIsHitEventHitByMelee, NEntityEvents::CIsHitEventHitBy>>
+0094f890	RELOCATION_MATCH	159v159	PASS	CTCEntityEvents::GetEvent <CFilter_Bind2<NEntityEvents::CIsHitEventHitByMelee, NEntityEvents::CIsHitEventBlocked>>
+0095c680	RELOCATION_MATCH	156v156	PASS	CTCEntityEvents::GetEvent <CFilter_Bind2<NEntityEvents::CIsHitEventHitByShot, NEntityEvents::CIsEventCreatedAfter>>
+0095c720	RELOCATION_MATCH	156v156	PASS	CTCEntityEvents::GetEvent <CFilter_Bind2<NEntityEvents::CIsHitEventHitByMelee, NEntityEvents::CIsEventCreatedAfter>>
+008d4ed0	RELOCATION_MATCH	166v166	PASS	CTCEntityEvents::GetEvent <CFilter_Bind3<NEntityEvents::CIsHitEventHasHitByThing, NEntityEvents::CIsEventCreatedAfter, NEntityEvents::CIsEventCreatedBeforeOrOn>>
+00738a80	DIFFER	177v177	-	register swap only (count block edi / event esi in retail)
+005ed5a0	RELOCATION_MATCH	126v126	PASS	CTCEntityEvents::GetEvent <NEntityEvents::CEventFilter_None>
+008ac7a0	RELOCATION_MATCH	126v126	PASS	CTCEntityEvents::GetEvent <NEntityEvents::CEventFilter_None>
+00953000	RELOCATION_MATCH	140v140	PASS	CTCEntityEvents::GetEvent <NEntityEvents::CIsHitEventHitByShot>
+00953090	RELOCATION_MATCH	140v140	PASS	CTCEntityEvents::GetEvent <NEntityEvents::CIsHitEventHitByMelee>
+008d4e30	RELOCATION_MATCH	160v160	PASS	CTCEntityEvents::GetEvent <CFilter_Bind3<CEventFilter_HitThingWithFlourish, NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsEventCreatedAfter>>
+007f7040	RELOCATION_MATCH	135v135	PASS	CThingSearchTools::GetPBestLeafThing <CFilter_Bind2<CThingFilter_In2DRange, anonymous-namespace CThingFilter_IsValidAttackTargetForCreature>, TCompare = CThingCompare_BestCreatureToAttack, TThing = CThingAICreature>
+00936070	RELOCATION_MATCH	135v135	PASS	CThingSearchTools::GetPBestLeafThing <CFilter_Bind2<CThingFilter_OnFire, CThingFilter_In2DRange>, TCompare = CThingCompare_Nearest, TThing = CThingBuilding>
+00982450	RELOCATION_MATCH	135v135	PASS	CThingSearchTools::GetPBestLeafThing <CFilter_Bind2<std::unary_negate<CThingFilter_HasScriptedControl>, CThingFilter_AICreatureHasProperty>, TCompare = CThingCompare_Nearest, TThing = CThingAICreature>
+0048cb50	RELOCATION_MATCH	118v118	PASS	CThingSearchTools::GetPBestLeafThing <std::binder2nd<std::const_mem_fun1_ref_t<bool, CThing, ETCInterfaceType> >, TCompare = CThingCompare_Nearest, TThing = CThingVillage>
+0048cbd0	RELOCATION_MATCH	118v118	PASS	CThingSearchTools::GetPBestLeafThing <std::binder2nd<std::const_mem_fun1_ref_t<bool, CThing, ETCInterfaceType> >, TCompare = CThingCompare_Nearest, TThing = const CThingVillage>
+006cd3b0	RELOCATION_MATCH	147v147	PASS	CThingSearchTools::GetPBestThing <CFilter_Bind2<std::const_mem_fun_ref_t<bool, CThingGameObject>, CFilter_Not<CThingFilter_In2DRange> >, TCompare = CThingCompare_Nearest, TThing = CThingGameObject>
+004ac2c0	RELOCATION_MATCH	180v180	PASS	CThingSearchTools::GetPBestThing <CFilter_Bind2<std::binary_compose<std::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC>, CThingFilter_In2DRange>, TCompare = CThingCompare_Nearest, TThing = CThing>
+009650c0	RELOCATION_MATCH	178v178	PASS	CThingSearchTools::GetPBestThing <CFilter_Bind4<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint, CThingFilter_HasTC, std::unary_negate<CThingFilter_In3DRange> >, TCompare = CThingCompare_Nearest, TThing = CThingObject>
+0065f6da	RELOCATION_MATCH	106v106	PASS	CThingSearchTools::GetPBestThing <std::binary_compose<std::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC>, TCompare = CThingCompare_Nearest, TThing = CThing>
+0065fbe1	DIFFER	76v74	-	add eax,168h ; mov ecx,eax vs retail lea ecx,[eax+168h]
+008d4f80	MATCH	91v91	PASS	CTCEntityEvents::HasEvent <CFilter_Bind3<NEntityEvents::CIsEventOfType, NEntityEvents::CIsEventCreatedAfter, NEntityEvents::CIsEventCreatedBeforeOrOn>>
+008e89d0	MATCH	57v57	PASS	CTCEntityEvents::HasEvent <NEntityEvents::CIsEventOfType>
+00956650	MATCH	70v70	PASS	CTCEntityEvents::HasEvent <NEntityEvents::CIsEventOfTypeCreatedAfter>
+0065f152	RELOCATION_MATCH	41v41	PASS	HasGuardProperty::operator()
+0079dc20	RELOCATION_MATCH	37v37	PASS	IS_THING_ALIVE <CIntelligentPointer<NParticleEngine::CParticleEmitter>>
+00a98760	DIFFER	30v80	-	??_G leaves the inline CVertexShaderInput dtor as a call
+00a987b0	DIFFER	30v80	-	twin of 00a98760, same residue

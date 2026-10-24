@@ -279370,6 +279370,258 @@ $catalog = @(
         TestSource = '00/51/CReplaceSerialiseCFileFormatLevelCOldFileFormatLevel3_ReadFromFile_0051a240_test.cpp'
         PassPattern = '0051a240_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0048cb50'
+        Module = 'CThingSearchTools'
+        Source = '00/48/CThingSearchTools_GetPBestLeafThing_0048cb50.cpp'
+        TestSource = '00/48/CThingSearchTools_GetPBestLeafThing_0048cb50_test.cpp'
+        PassPattern = '0048cb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048cbd0'
+        Module = 'CThingSearchTools'
+        Source = '00/48/CThingSearchTools_GetPBestLeafThing_0048cbd0.cpp'
+        TestSource = '00/48/CThingSearchTools_GetPBestLeafThing_0048cbd0_test.cpp'
+        PassPattern = '0048cbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ac2c0'
+        Module = 'CThingSearchTools'
+        Source = '00/4a/CThingSearchTools_GetPBestThing_004ac2c0.cpp'
+        TestSource = '00/4a/CThingSearchTools_GetPBestThing_004ac2c0_test.cpp'
+        PassPattern = '004ac2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ed5a0'
+        Module = 'CTCEntityEvents'
+        Source = '00/5e/CTCEntityEvents_GetEvent_005ed5a0.cpp'
+        TestSource = '00/5e/CTCEntityEvents_GetEvent_005ed5a0_test.cpp'
+        PassPattern = '005ed5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f152'
+        Module = 'HasGuardProperty'
+        Source = '00/65/HasGuardProperty_operator_0065f152.cpp'
+        TestSource = '00/65/HasGuardProperty_operator_0065f152_test.cpp'
+        PassPattern = '0065f152_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f6da'
+        Module = 'CThingSearchTools'
+        Source = '00/65/CThingSearchTools_GetPBestThing_0065f6da.cpp'
+        TestSource = '00/65/CThingSearchTools_GetPBestThing_0065f6da_test.cpp'
+        PassPattern = '0065f6da_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cd3b0'
+        Module = 'CThingSearchTools'
+        Source = '00/6c/CThingSearchTools_GetPBestThing_006cd3b0.cpp'
+        TestSource = '00/6c/CThingSearchTools_GetPBestThing_006cd3b0_test.cpp'
+        PassPattern = '006cd3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079dc20'
+        Module = '_global'
+        Source = '00/79/global_ISTHINGALIVE_0079dc20.cpp'
+        TestSource = '00/79/global_ISTHINGALIVE_0079dc20_test.cpp'
+        PassPattern = '0079dc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007afb90'
+        Module = 'CTCEntityEvents'
+        Source = '00/7a/CTCEntityEvents_GetEvent_007afb90.cpp'
+        TestSource = '00/7a/CTCEntityEvents_GetEvent_007afb90_test.cpp'
+        PassPattern = '007afb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007de2e0'
+        Module = 'CTCEntityEvents'
+        Source = '00/7d/CTCEntityEvents_GetEvent_007de2e0.cpp'
+        TestSource = '00/7d/CTCEntityEvents_GetEvent_007de2e0_test.cpp'
+        PassPattern = '007de2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f7040'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetPBestLeafThing_007f7040.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetPBestLeafThing_007f7040_test.cpp'
+        PassPattern = '007f7040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fce10'
+        Module = 'CTCEntityEvents'
+        Source = '00/7f/CTCEntityEvents_GetEvent_007fce10.cpp'
+        TestSource = '00/7f/CTCEntityEvents_GetEvent_007fce10_test.cpp'
+        PassPattern = '007fce10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ac7a0'
+        Module = 'CTCEntityEvents'
+        Source = '00/8a/CTCEntityEvents_GetEvent_008ac7a0.cpp'
+        TestSource = '00/8a/CTCEntityEvents_GetEvent_008ac7a0_test.cpp'
+        PassPattern = '008ac7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4840'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d4840.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d4840_test.cpp'
+        PassPattern = '008d4840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d48f0'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d48f0.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d48f0_test.cpp'
+        PassPattern = '008d48f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d49b0'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d49b0.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d49b0_test.cpp'
+        PassPattern = '008d49b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4a90'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d4a90.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d4a90_test.cpp'
+        PassPattern = '008d4a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4b50'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d4b50.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d4b50_test.cpp'
+        PassPattern = '008d4b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4c10'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d4c10.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d4c10_test.cpp'
+        PassPattern = '008d4c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4cd0'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d4cd0.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d4cd0_test.cpp'
+        PassPattern = '008d4cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4e30'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d4e30.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d4e30_test.cpp'
+        PassPattern = '008d4e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4ed0'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_GetEvent_008d4ed0.cpp'
+        TestSource = '00/8d/CTCEntityEvents_GetEvent_008d4ed0_test.cpp'
+        PassPattern = '008d4ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4f80'
+        Module = 'CTCEntityEvents'
+        Source = '00/8d/CTCEntityEvents_HasEvent_008d4f80.cpp'
+        TestSource = '00/8d/CTCEntityEvents_HasEvent_008d4f80_test.cpp'
+        PassPattern = '008d4f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e89d0'
+        Module = 'CTCEntityEvents'
+        Source = '00/8e/CTCEntityEvents_HasEvent_008e89d0.cpp'
+        TestSource = '00/8e/CTCEntityEvents_HasEvent_008e89d0_test.cpp'
+        PassPattern = '008e89d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00936070'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestLeafThing_00936070.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestLeafThing_00936070_test.cpp'
+        PassPattern = '00936070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094f890'
+        Module = 'CTCEntityEvents'
+        Source = '00/94/CTCEntityEvents_GetEvent_0094f890.cpp'
+        TestSource = '00/94/CTCEntityEvents_GetEvent_0094f890_test.cpp'
+        PassPattern = '0094f890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00953000'
+        Module = 'CTCEntityEvents'
+        Source = '00/95/CTCEntityEvents_GetEvent_00953000.cpp'
+        TestSource = '00/95/CTCEntityEvents_GetEvent_00953000_test.cpp'
+        PassPattern = '00953000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00953090'
+        Module = 'CTCEntityEvents'
+        Source = '00/95/CTCEntityEvents_GetEvent_00953090.cpp'
+        TestSource = '00/95/CTCEntityEvents_GetEvent_00953090_test.cpp'
+        PassPattern = '00953090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00956650'
+        Module = 'CTCEntityEvents'
+        Source = '00/95/CTCEntityEvents_HasEvent_00956650.cpp'
+        TestSource = '00/95/CTCEntityEvents_HasEvent_00956650_test.cpp'
+        PassPattern = '00956650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095c680'
+        Module = 'CTCEntityEvents'
+        Source = '00/95/CTCEntityEvents_GetEvent_0095c680.cpp'
+        TestSource = '00/95/CTCEntityEvents_GetEvent_0095c680_test.cpp'
+        PassPattern = '0095c680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095c720'
+        Module = 'CTCEntityEvents'
+        Source = '00/95/CTCEntityEvents_GetEvent_0095c720.cpp'
+        TestSource = '00/95/CTCEntityEvents_GetEvent_0095c720_test.cpp'
+        PassPattern = '0095c720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009650c0'
+        Module = 'CThingSearchTools'
+        Source = '00/96/CThingSearchTools_GetPBestThing_009650c0.cpp'
+        TestSource = '00/96/CThingSearchTools_GetPBestThing_009650c0_test.cpp'
+        PassPattern = '009650c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096bac0'
+        Module = 'CTCEntityEvents'
+        Source = '00/96/CTCEntityEvents_GetEvent_0096bac0.cpp'
+        TestSource = '00/96/CTCEntityEvents_GetEvent_0096bac0_test.cpp'
+        PassPattern = '0096bac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096bb70'
+        Module = 'CTCEntityEvents'
+        Source = '00/96/CTCEntityEvents_GetEvent_0096bb70.cpp'
+        TestSource = '00/96/CTCEntityEvents_GetEvent_0096bb70_test.cpp'
+        PassPattern = '0096bb70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00970190'
+        Module = 'CTCEntityEvents'
+        Source = '00/97/CTCEntityEvents_GetEvent_00970190.cpp'
+        TestSource = '00/97/CTCEntityEvents_GetEvent_00970190_test.cpp'
+        PassPattern = '00970190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00982450'
+        Module = 'CThingSearchTools'
+        Source = '00/98/CThingSearchTools_GetPBestLeafThing_00982450.cpp'
+        TestSource = '00/98/CThingSearchTools_GetPBestLeafThing_00982450_test.cpp'
+        PassPattern = '00982450_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

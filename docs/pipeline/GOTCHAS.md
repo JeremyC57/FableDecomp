@@ -1028,3 +1028,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - VC7.1 elides same-type temporary copies even through a template converting ctor; only a defaulted `const T&` parameter keeps retail's unelided temporary-plus-copy (006c5110).
 - VC7.1 reassociates x87 four-term sums depending on the operands' memory class; match retail's per-column order by the source form (00988a50).
 - `delete[]` on a virtual-dtor class expands to the count-zero free / vector-deleting-dtor(3) split; `new(memory) T[n]` stores n at memory and ctor-iterates from +4 (00bdc510).
+- GetEvent/HasEvent: model the walk with the real STLport `reverse_iterator` (copy the base list iterator, decrement the copy, compare `base()`), not a hand-folded `current->_M_prev`; it turns the esi/edi/ebx register-tie parks into matches (chunk 337; 0x0095D920, 0x0096BC20, 0x0094E530).
+- GetEvent filters take `const CEventHitBase*`; 0x00810F70 is the shot test, 0x00810F80 the melee test. Retail CHitParameters: KnockDown +0x1A, Decapitate +0x1B, Flourish +0x1D, Blocked +0x26, PThingHitting +0x50, PWeapon +0x58; CEventHitBase slot 5 is IsFlourish.
+- GetPBestThing: `CFilter_Bind2/Bind4::operator()` and `binary_compose::operator()` need `__forceinline` (chunk 337).
+- An `unsigned short` 1-bit field read through an inline `bool IsDead()` gives `mov al ; shr al,5 ; test al,1`; a direct read folds to `test byte ptr` (chunk 337).

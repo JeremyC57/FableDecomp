@@ -28,3 +28,8 @@ address	name	evidence
 006b93d0	CFactionManager::GetPFaction	(chunk 334)
 006af1c0	IsOfType	not HasExtraData (chunk 334)
 004167c8	CWorld::GetFrameNumber	callee (chunk 334)
+008d4c10	GetEvent<CEventHitBySpecialAbility,...>	event type 0x1B, not CEventHitBy (chunk 337)
+008ac7a0	GetEvent<CEventShotStruck,...>	event type 0x27 (chunk 337)
+00936070	GetPBestLeafThing<Bind2<OnFire,In2DRange>,Nearest,CThingBuilding>	(chunk 337)
+00a98760	N3DPrimitive::CVertexShaderInputStatic::`scalar deleting destructor'	not Image8::ReleaseAll (chunk 337)
+00a987b0	N3DPrimitive::CVertexShaderInputAnimated::`scalar deleting destructor'	not Image8::ReleaseAll (chunk 337)
