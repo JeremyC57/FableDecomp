@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004edd13	RELOCATION_MATCH	230v230	PASS	vector<CPrizeScoreDef>::_M_insert_overflow (out-of-line __fastcall _Construct, inline _M_clear call)
+004f932c	DIFFER	214v220	-	vector<CAttackHistoryCombo>::operator=; tail placement copy calls the copy ctor out of line (retail inlines it)
+004f9408	RELOCATION_MATCH	72v72	PASS	vector<pair<EAttackHistoryType,EDamageAttribute>> copy ctor (size TU, frame pointer)
+004f9484	RELOCATION_MATCH	78v78	PASS	vector<CAttackHistoryCombo>::_M_allocate_and_copy (size TU, forceinline helpers)
+004f94d2	RELOCATION_MATCH	54v54	PASS	__copy_ptrs<CAttackHistoryCombo*> (forceinline memberwise operator=)
+004f9db7	RELOCATION_MATCH	65v65	PASS	__copy_ptrs<CCardPositionsDef*> (forceinline operator=: base 0x431ED0 + Offset 0x46EABD)
+004f9f62	RELOCATION_MATCH	65v65	PASS	__copy_backward_ptrs<CCardPositionsDef*>
+004f9fa3	RELOCATION_MATCH	228v228	PASS	vector<CCardPositionsDef>::_M_insert_overflow (catalog CActiveFile_OnReadFinished)
+004fa3e3	RELOCATION_MATCH	81v81	PASS	__copy_backward_ptrs<CCardDef*> (frame-pointer size TU)
+004fa434	RELOCATION_MATCH	226v226	PASS	vector<CCardDef>::_M_insert_overflow (catalog ShoveHaPennyRegionDef_OnReadFinished)
+004faff0	RELOCATION_MATCH	176v176	PASS	CWorldMap::GetThingFilenameFromLevelFilename (L"tng")
+004fb0a0	RELOCATION_MATCH	176v176	PASS	CWorldMap::GetThingFilenameFromWorldFilename (L"gtng"; catalog name propagated from the twin)
+004fb370	RELOCATION_MATCH	112v112	PASS	BuildingHasVolume: physics mesh BUILDING_BOUNDRY containment volume
+004fe550	RELOCATION_MATCH	61v61	PASS	CWorldMap::ApplyScriptedMapBrush (inline map find)
+004fe5b0	RELOCATION_MATCH	82v82	PASS	CWorldMap::DeregisterScriptedMapBrush (inline find + STLport erase(iterator))
+005003e0	RELOCATION_MATCH	166v166	PASS	AddToWorkBuildingList; attempt 2 (same-TU map::find/erase bodies, STLport list shape)
+0050e500	MATCH	33v33	PASS	std::fill<short*,short>
+0050fa40	RELOCATION_MATCH	56v56	PASS	_Vector_base<void*>(n, a)
+005114f0	RELOCATION_MATCH	169v169	PASS	_Rb_tree<long>::_M_copy
+00512120	RELOCATION_MATCH	54v54	PASS	list<C2DLineF>::erase(first, last)
+00512630	RELOCATION_MATCH	91v91	PASS	vector<unsigned long>(n, value, a)
+00513210	RELOCATION_MATCH	96v96	PASS	random_shuffle<CThingBuilding**,RandFunc>
+00513270	RELOCATION_MATCH	88v88	PASS	random_shuffle<CThingAICreature**,RandFunc>
+00513300	RELOCATION_MATCH	182v182	PASS	_Rb_tree<CCharString>::_M_copy
+005135d0	RELOCATION_MATCH	224v224	PASS	vector<unsigned short>::_M_insert_overflow (__true_type); attempt 2 (__copy_trivial ternary)
+005136b0	RELOCATION_MATCH	80v80	PASS	vector<unsigned char>(n): inline memset fill
+00513b00	MATCH	70v70	PASS	__uninitialized_fill_n<CRGBColour*> (catalog _Fill_n propagated)
+00513b60	RELOCATION_MATCH	80v80	PASS	list<long>::_M_insert_dispatch (range insert)
+005148d0	DIFFER	214v209	-	CReplaceSerialise<H2,H1>::ConvertPreviousUnknownVersionUp; register allocation only
+005151d0	RELOCATION_MATCH	79v79	PASS	list<CIntelligentPointer<CThingAICreature>>::insert
+005152c0	RELOCATION_MATCH	96v96	PASS	list<C2DLineF>::_M_insert_dispatch (range insert)
+00515420	RELOCATION_MATCH	73v73	PASS	CLineList::AddFront (descriptive owner; push_front of a C2DLineF list)
+005154c0	DIFFER	98v96	-	__unguarded_insertion_sort_aux<CThingBuilding**>; empty comparator copy not homed over the live last slot
+00515570	RELOCATION_MATCH	128v128	PASS	__adjust_heap<CThingBuilding**,int,CThingBuilding*,CIsHouseLargerThan>; first grade
+005155f0	RELOCATION_MATCH	32v32	PASS	CNavigationAreaUpdate::CSwitchableBlockage ctor (list sentinel)
+00515720	RELOCATION_MATCH	105v105	PASS	vector<CWorldMap::CPlayerPositionInfo>(n)
+005158b0	RELOCATION_MATCH	128v128	PASS	vector<CLevelLoader::CObject::CLevelFiles>(n)
+00515ad0	RELOCATION_MATCH	213v213	PASS	vector<CMapInfo>(n) (catalog CWorldMap_Constructor)
+00515fa0	MATCH	112v112	PASS	CReplaceSerialise<H5,H4>::GetMaxSize; attempt 4 (if-form, MAX over the recursive call)
+00516010	DIFFER	214v208	-	CReplaceSerialise<H3,H2>::ConvertPreviousUnknownVersionUp; register allocation only

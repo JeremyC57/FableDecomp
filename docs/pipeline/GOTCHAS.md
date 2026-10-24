@@ -1202,3 +1202,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `_M_insert` may inline `_M_create_node` at the left site and call it out of line at the right: a `__forceinline` copy plus the declared member (0x4C4890).
 - Split the map ctor into `_Rb_tree_base` (allocates the header) and `_Rb_tree` (`_M_node_count(0)`, `_M_empty_initialize`) (0x4C60F0).
 - Without /Zc:wchar_t an `L""` parameter is `const unsigned short*`; a forward-declared parameter type must be `class` to mangle V (0x4CDB10, 0x4BE4E0).
+- A `// Leaf:` that names no symbol in the object silently grades the largest function: member templates need `??$_M_allocate_and_copy@` / `??$_M_insert_dispatch@` (chunk 374).
+- `_M_insert_overflow(__false_type)`: frame-pointer size TU, `__forceinline` uninitialized helpers, out-of-line `__fastcall _Construct`; `__copy_trivial` is `(last == first) ? result : (char*)memmove(..) + n` (chunk 374).
+- Inline rb-tree `erase(iterator)` is a `__cdecl` rebalance, `_Destroy`, `if (p) free(p)`, `--count`; same-TU `auto_inline(off)` map::find/erase bodies keep a one-word frame (005003e0).

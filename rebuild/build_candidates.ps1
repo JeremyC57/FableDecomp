@@ -289523,6 +289523,258 @@ $catalog = @(
         TestSource = '00/4c/CThing_Create_004ca1d0_test.cpp'
         PassPattern = '004ca1d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004edd13'
+        Module = 'std::vector<CPrizeScoreDef,std::allocator<CPrizeScoreDef> >'
+        Source = '00/4e/stdvectorCPrizeScoreDefstdallocatorCPrizeScoreDef_Minsertoverflow_004edd13.cpp'
+        TestSource = '00/4e/stdvectorCPrizeScoreDefstdallocatorCPrizeScoreDef_Minsertoverflow_004edd13_test.cpp'
+        PassPattern = '004edd13_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f9408'
+        Module = 'std::vector<std::pair<EAttackHistoryType,EDamageAttribute>,std::allocator<std::pair<EAttackHistoryType,EDamageAttribute> > >'
+        Source = '00/4f/stdvectorstdpairEAttackHistoryTypeEDamageAttributestdallocatorstdpairEAttackHist_vector_004f9408.cpp'
+        TestSource = '00/4f/stdvectorstdpairEAttackHistoryTypeEDamageAttributestdallocatorstdpairEAttackHist_vector_004f9408_test.cpp'
+        PassPattern = '004f9408_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f9484'
+        Module = 'std::vector<CAttackHistoryCombo,std::allocator<CAttackHistoryCombo> >'
+        Source = '00/4f/stdvectorCAttackHistoryCombostdallocatorCAttackHistoryCombo_MallocateandcopyconstCAttackHistoryCombo_004f9484.cpp'
+        TestSource = '00/4f/stdvectorCAttackHistoryCombostdallocatorCAttackHistoryCombo_MallocateandcopyconstCAttackHistoryCombo_004f9484_test.cpp'
+        PassPattern = '004f9484_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f94d2'
+        Module = 'std'
+        Source = '00/4f/std_copyptrsCAttackHistoryComboCAttackHistoryCombo_004f94d2.cpp'
+        TestSource = '00/4f/std_copyptrsCAttackHistoryComboCAttackHistoryCombo_004f94d2_test.cpp'
+        PassPattern = '004f94d2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f9db7'
+        Module = 'std'
+        Source = '00/4f/std_copyptrsCCardPositionsDefCCardPositionsDef_004f9db7.cpp'
+        TestSource = '00/4f/std_copyptrsCCardPositionsDefCCardPositionsDef_004f9db7_test.cpp'
+        PassPattern = '004f9db7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f9f62'
+        Module = 'std'
+        Source = '00/4f/std_copybackwardptrsCCardPositionsDefCCardPositionsD_004f9f62.cpp'
+        TestSource = '00/4f/std_copybackwardptrsCCardPositionsDefCCardPositionsD_004f9f62_test.cpp'
+        PassPattern = '004f9f62_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f9fa3'
+        Module = 'std::vector<CCardPositionsDef,std::allocator<CCardPositionsDef> >'
+        Source = '00/4f/stdvectorCCardPositionsDefstdallocatorCCardPositionsDef_Minsertoverflow_004f9fa3.cpp'
+        TestSource = '00/4f/stdvectorCCardPositionsDefstdallocatorCCardPositionsDef_Minsertoverflow_004f9fa3_test.cpp'
+        PassPattern = '004f9fa3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fa3e3'
+        Module = 'std'
+        Source = '00/4f/std_copybackwardptrsCCardDefCCardDef_004fa3e3.cpp'
+        TestSource = '00/4f/std_copybackwardptrsCCardDefCCardDef_004fa3e3_test.cpp'
+        PassPattern = '004fa3e3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fa434'
+        Module = 'std::vector<CCardDef,std::allocator<CCardDef> >'
+        Source = '00/4f/stdvectorCCardDefstdallocatorCCardDef_Minsertoverflow_004fa434.cpp'
+        TestSource = '00/4f/stdvectorCCardDefstdallocatorCCardDef_Minsertoverflow_004fa434_test.cpp'
+        PassPattern = '004fa434_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004faff0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetThingFilenameFromLevelFilename_004faff0.cpp'
+        TestSource = '00/4f/CWorldMap_GetThingFilenameFromLevelFilename_004faff0_test.cpp'
+        PassPattern = '004faff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fb0a0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetThingFilenameFromWorldFilename_004fb0a0.cpp'
+        TestSource = '00/4f/CWorldMap_GetThingFilenameFromWorldFilename_004fb0a0_test.cpp'
+        PassPattern = '004fb0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fb370'
+        Module = '_global'
+        Source = '00/4f/global_BuildingHasVolume_004fb370.cpp'
+        TestSource = '00/4f/global_BuildingHasVolume_004fb370_test.cpp'
+        PassPattern = '004fb370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fe550'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ApplyScriptedMapBrush_004fe550.cpp'
+        TestSource = '00/4f/CWorldMap_ApplyScriptedMapBrush_004fe550_test.cpp'
+        PassPattern = '004fe550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fe5b0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_DeregisterScriptedMapBrush_004fe5b0.cpp'
+        TestSource = '00/4f/CWorldMap_DeregisterScriptedMapBrush_004fe5b0_test.cpp'
+        PassPattern = '004fe5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005003e0'
+        Module = '_global'
+        Source = '00/50/global_AddToWorkBuildingList_005003e0.cpp'
+        TestSource = '00/50/global_AddToWorkBuildingList_005003e0_test.cpp'
+        PassPattern = '005003e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050e500'
+        Module = 'std'
+        Source = '00/50/std_fillshortshort_0050e500.cpp'
+        TestSource = '00/50/std_fillshortshort_0050e500_test.cpp'
+        PassPattern = '0050e500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050fa40'
+        Module = 'std::_Vector_base<void*,std::allocator<void*> >'
+        Source = '00/50/stdVectorbasevoidstdallocatorvoid_Vectorbase_0050fa40.cpp'
+        TestSource = '00/50/stdVectorbasevoidstdallocatorvoid_Vectorbase_0050fa40_test.cpp'
+        PassPattern = '0050fa40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005114f0'
+        Module = 'std::_Rb_tree<long,long,std::_Identity<long>,std::less<long>,std::allocator<long> >'
+        Source = '00/51/stdRbtreelonglongstdIdentitylongstdlesslongstdallocatorlong_Mcopy_005114f0.cpp'
+        TestSource = '00/51/stdRbtreelonglongstdIdentitylongstdlesslongstdallocatorlong_Mcopy_005114f0_test.cpp'
+        PassPattern = '005114f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00512120'
+        Module = 'std::list<C2DLineF,std::allocator<C2DLineF> >'
+        Source = '00/51/stdlistC2DLineFstdallocatorC2DLineF_erase_00512120.cpp'
+        TestSource = '00/51/stdlistC2DLineFstdallocatorC2DLineF_erase_00512120_test.cpp'
+        PassPattern = '00512120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00512630'
+        Module = 'std::vector<unsigned long,std::allocator<unsigned long> >'
+        Source = '00/51/stdvectorunsignedlongstdallocatorunsignedlong_vector_00512630.cpp'
+        TestSource = '00/51/stdvectorunsignedlongstdallocatorunsignedlong_vector_00512630_test.cpp'
+        PassPattern = '00512630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00513210'
+        Module = 'std'
+        Source = '00/51/std_randomshuffleCThingBuildingRandFunc_00513210.cpp'
+        TestSource = '00/51/std_randomshuffleCThingBuildingRandFunc_00513210_test.cpp'
+        PassPattern = '00513210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00513270'
+        Module = 'std'
+        Source = '00/51/std_randomshuffleCThingAICreatureRandFunc_00513270.cpp'
+        TestSource = '00/51/std_randomshuffleCThingAICreatureRandFunc_00513270_test.cpp'
+        PassPattern = '00513270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00513300'
+        Module = 'std::_Rb_tree<CCharString,CCharString,std::_Identity<CCharString>,std::less<CCharString>,std::allocator<CCharString> >'
+        Source = '00/51/stdRbtreeCCharStringCCharStringstdIdentityCCharStringstdlessCCharStringstdalloca_Mcopy_00513300.cpp'
+        TestSource = '00/51/stdRbtreeCCharStringCCharStringstdIdentityCCharStringstdlessCCharStringstdalloca_Mcopy_00513300_test.cpp'
+        PassPattern = '00513300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005135d0'
+        Module = 'std::vector<unsigned short,std::allocator<unsigned short> >'
+        Source = '00/51/stdvectorunsignedshortstdallocatorunsignedshort_Minsertoverflow_005135d0.cpp'
+        TestSource = '00/51/stdvectorunsignedshortstdallocatorunsignedshort_Minsertoverflow_005135d0_test.cpp'
+        PassPattern = '005135d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005136b0'
+        Module = 'std::vector<unsigned char,std::allocator<unsigned char> >'
+        Source = '00/51/stdvectorunsignedcharstdallocatorunsignedchar_vector_005136b0.cpp'
+        TestSource = '00/51/stdvectorunsignedcharstdallocatorunsignedchar_vector_005136b0_test.cpp'
+        PassPattern = '005136b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00513b00'
+        Module = 'std'
+        Source = '00/51/std_uninitializedfillnCRGBColourunsignedintCRGBColou_00513b00.cpp'
+        TestSource = '00/51/std_uninitializedfillnCRGBColourunsignedintCRGBColou_00513b00_test.cpp'
+        PassPattern = '00513b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00513b60'
+        Module = 'std::list<long,std::allocator<long> >'
+        Source = '00/51/stdlistlongstdallocatorlong_MinsertdispatchListiteratorlongConsttraitslong_00513b60.cpp'
+        TestSource = '00/51/stdlistlongstdallocatorlong_MinsertdispatchListiteratorlongConsttraitslong_00513b60_test.cpp'
+        PassPattern = '00513b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005151d0'
+        Module = 'std::list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature> > >'
+        Source = '00/51/stdlistCIntelligentPointerCThingAICreaturestdallocatorCIntelligentPointerCThingA_insert_005151d0.cpp'
+        TestSource = '00/51/stdlistCIntelligentPointerCThingAICreaturestdallocatorCIntelligentPointerCThingA_insert_005151d0_test.cpp'
+        PassPattern = '005151d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005152c0'
+        Module = 'std::list<C2DLineF,std::allocator<C2DLineF> >'
+        Source = '00/51/stdlistC2DLineFstdallocatorC2DLineF_MinsertdispatchListiteratorC2DLineFConsttraitsC2_005152c0.cpp'
+        TestSource = '00/51/stdlistC2DLineFstdallocatorC2DLineF_MinsertdispatchListiteratorC2DLineFConsttraitsC2_005152c0_test.cpp'
+        PassPattern = '005152c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00515420'
+        Module = 'CLineList'
+        Source = '00/51/CLineList_AddFront_00515420.cpp'
+        TestSource = '00/51/CLineList_AddFront_00515420_test.cpp'
+        PassPattern = '00515420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00515570'
+        Module = 'std'
+        Source = '00/51/std_adjustheapCThingBuildingintCThingBuildingCIsHous_00515570.cpp'
+        TestSource = '00/51/std_adjustheapCThingBuildingintCThingBuildingCIsHous_00515570_test.cpp'
+        PassPattern = '00515570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005155f0'
+        Module = 'CNavigationAreaUpdate::CSwitchableBlockage'
+        Source = '00/51/CNavigationAreaUpdateCSwitchableBlockage_CSwitchableBlockage_005155f0.cpp'
+        TestSource = '00/51/CNavigationAreaUpdateCSwitchableBlockage_CSwitchableBlockage_005155f0_test.cpp'
+        PassPattern = '005155f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00515720'
+        Module = 'std::vector<CWorldMap::CPlayerPositionInfo,std::allocator<CWorldMap::CPlayerPositionInfo> >'
+        Source = '00/51/stdvectorCWorldMapCPlayerPositionInfostdallocatorCWorldMapCPlayerPositionInfo_vector_00515720.cpp'
+        TestSource = '00/51/stdvectorCWorldMapCPlayerPositionInfostdallocatorCWorldMapCPlayerPositionInfo_vector_00515720_test.cpp'
+        PassPattern = '00515720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005158b0'
+        Module = 'std::vector<CLevelLoader::CObject::CLevelFiles,std::allocator<CLevelLoader::CObject::CLevelFiles> >'
+        Source = '00/51/stdvectorCLevelLoaderCObjectCLevelFilesstdallocatorCLevelLoaderCObjectCLevelFile_vector_005158b0.cpp'
+        TestSource = '00/51/stdvectorCLevelLoaderCObjectCLevelFilesstdallocatorCLevelLoaderCObjectCLevelFile_vector_005158b0_test.cpp'
+        PassPattern = '005158b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00515ad0'
+        Module = 'std::vector<CMapInfo,std::allocator<CMapInfo> >'
+        Source = '00/51/stdvectorCMapInfostdallocatorCMapInfo_vector_00515ad0.cpp'
+        TestSource = '00/51/stdvectorCMapInfostdallocatorCMapInfo_vector_00515ad0_test.cpp'
+        PassPattern = '00515ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00515fa0'
+        Module = 'CReplaceSerialise<COldFileFormatMapHeader5,COldFileFormatMapHeader4>'
+        Source = '00/51/CReplaceSerialiseCOldFileFormatMapHeader5COldFileFormatMapHeader4_GetMaxSize_00515fa0.cpp'
+        TestSource = '00/51/CReplaceSerialiseCOldFileFormatMapHeader5COldFileFormatMapHeader4_GetMaxSize_00515fa0_test.cpp'
+        PassPattern = '00515fa0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
