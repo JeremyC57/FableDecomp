@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0077e6a0	RELOCATION_MATCH	133v133	PASS	STLport __unguarded_linear_insert<pair<CCharString,C3DVector>>
+0077e8f0	RELOCATION_MATCH	110v110	PASS	STLport __unguarded_partition (same family)
+0077e960	RELOCATION_MATCH	167v167	PASS	STLport __linear_insert (same family)
+0077eda0	RELOCATION_MATCH	108v108	PASS	STLport __make_heap (same family)
+0077f2c0	RELOCATION_MATCH	135v135	PASS	STLport __partial_sort (same family)
+0077f370	RELOCATION_MATCH	202v202	PASS	STLport __introsort_loop (same family)
+0077f510	RELOCATION_MATCH	81v81	PASS	GetDoorTypeSymbolMap: static-once LoadFromFile
+007817f0	RELOCATION_MATCH	118v118	PASS	map<CDefString,long> linear find by name
+00783240	RELOCATION_MATCH	99v99	PASS	CTCBoastingCrowdControl::OnKillCrowd
+007832b0	RELOCATION_MATCH	196v196	PASS	CTCBoastingCrowdControl::Shutdown
+00783680	RELOCATION_MATCH	168v168	PASS	CTCBoastingCrowdControl::OnNoBoastsRemain
+007837c0	RELOCATION_MATCH	112v112	PASS	CTCBoastingCrowdControl ctor
+00786670	RELOCATION_MATCH	131v131	PASS	CTCSkeletalMorph::AddSkeletalMorph
+00786de0	RELOCATION_MATCH	56v56	PASS	__uninitialized_fill_n<CSkeletalMorph>
+00787500	RELOCATION_MATCH	80v80	PASS	CArray<CSkeletalMorph>::push_back
+00787c35	RELOCATION_MATCH	45v45	PASS	CTCTrapBase::SetTransitionParams
+00787c62	RELOCATION_MATCH	67v67	PASS	GetUpdateTimeForThing
+007881ad	DIFFER	124v124	-	CTCTrapBase::UpdateTriggerThings; one ftol store slot
+00789a10	RELOCATION_MATCH	64v64	PASS	CTCHeroRangedAttacks::SetProjectileTargetingZoomDelta
+00789ce0	DIFFER	175v175	-	refcount store scheduling vs x87
+00789d90	RELOCATION_MATCH	202v202	PASS	anon-ns GetAccuracyPercentageFromThingAtBuildUpTime
+0078c000	DIFFER	125v116	-	CTCBerserk; nested-scope def release expands
+0078f820	RELOCATION_MATCH	203v203	PASS	CTCDivineWrath::CancelMove
+00792550	DIFFER	86v86	-	__uninitialized_fill_n<PerEffectInfo>; ebx/edi swap
+007934f0	RELOCATION_MATCH	211v211	PASS	map<CThingCreatureBase*,PerCreatureInfo>::operator[]
+007935d0	RELOCATION_MATCH	105v105	PASS	vector<PerEffectInfo>::push_back (DivineWrath)
+00794d90	RELOCATION_MATCH	203v203	PASS	CTCUnholyPower::CancelMove
+007979b0	DIFFER	86v86	-	__uninitialized_fill_n<PerEffectInfo>; ebx/edi swap
+00798330	RELOCATION_MATCH	211v211	PASS	map operator[] (UnholyPower)
+00798410	RELOCATION_MATCH	105v105	PASS	vector<PerEffectInfo>::push_back (UnholyPower)
+00799cd0	RELOCATION_MATCH	110v110	PASS	vector<CIntelligentPointer<CThingCreatureBase>>(n)
+0079d2d0	DIFFER	144v144	-	CTCBulletTime::FinalCleanup; caster reg edi v eax
+0079e580	RELOCATION_MATCH	106v106	PASS	CTCPhysicalShieldSpell::AllowReactionsOnHitFromAttacker
+0079eaa0	DIFFER	138v138	-	CTCPhysicalShieldSpell::FinalCleanup; caster reg edi v eax
+007a03b0	RELOCATION_MATCH	75v75	PASS	CTCWillLightning::CancelMove
+007a0490	RELOCATION_MATCH	96v96	PASS	CTCWillLightning::StopLoopingSound
+007a34a0	DIFFER	135v135	-	__adjust_heap<CThing**,NearestToPos>; comp copy schedule
+007a3b60	RELOCATION_MATCH	89v89	PASS	sort_heap<CThing**,NearestToPos>
+007a3bc0	RELOCATION_MATCH	154v154	PASS	CHitParameters default ctor
+007a3fa0	DIFFER	172v172	-	__partial_sort<CThing**,NearestToPos>; regalloc

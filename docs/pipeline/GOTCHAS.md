@@ -1288,3 +1288,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A CCharString passed by const& must be a named local in its own block to re-take its address with `lea`; a temporary passes the ctor's eax (0x7C53F0).
 - The same call written in both else arms gives VC7.1's shrink-wrapped prologue with one epilogue per exit; GetInterface/GetCheckedInterface templates must be `__forceinline` (0x7CABD0).
 - A counted iterator-advance loop compiles to `if (n > 0) { a += n; b += n; }` (0x7DB5C0); `float invBase = 1.0f / base` is `fild; fdivr; fst [frame]` (0x7D7A90).
+- GetInterface written as one ternary store `*ppOut = (T*)((it==last || t<it->type) ? last : it)->component` loads the component straight into ecx; the if/assign form goes through eax (chunk 395).
+- STLport sort_heap with a 12-byte comparator: a C3DVector user copy ctor stops VC hoisting the comparator loads out of the loop (0x7A3B60); push_back of records holding CIntelligentPointer needs both copy ctors `__forceinline`.
+- An `and esp,-8` frame comes from `__declspec(align(8))` on a loop-local copy (0x78F820/0x794D90); `vector(n)` needs `_STLP_alloc_proxy` as the end-of-storage member.
