@@ -1,0 +1,32 @@
+addr	batch	status	grade	note
+0057f70f	linux_hand330	DIFFER	36v36	index load vs first deref order; 7 forms (ptr arith, ref, local index, named first, traits inline, const-ref arg) all identical
+007022c0	debakeA	DIFFER	22v22	exit order; 7 more forms (!(a&&b), named bool, a>-1 early, !b nested, a&&b, goto, named core) all put xor al,al first
+004167a7	debakeA	DIFFER	33v33	x87 pop placement; 6 more forms (named gt, free static helpers, named locals, /= param, float-return (31v33 fdivp), two-level inline) inert
+009b5db0	linux_hand328	DIFFER	129v129	old-start load vs temp load order; plain assign, const-ref Exchange, named bool, dtor hand-back inert; if/else split gives retail order but duplicates stores (154)
+0066f7d0	debakeA	MATCH	RELOCATION_MATCH	replaces landed asm body; X/=length,Y/=length folds to reciprocal with X-first multiply
+009350c0	linux_hand328	DIFFER	159v159	slot swap: scale-first declaration gives retail slots but sinks the variation copy; 6 forms inert
+00924b90	linux_hand328	DIFFER	219v219	inc-before-def forms fold the compare (215); copy-compare (mov eax,esi;cmp eax,edx) not reproduced in 6 forms
+006c5110	linux_hand329	MATCH	RELOCATION_MATCH	default ctor of an owner whose holder member takes a defaulted const CIntelligentPointer<CThing>& (unelided copy); label is descriptive (xref 0)
+0046c3b9	linux_hand331	DIFFER	119v119	traits temp slot [ebp+8] vs retail [ebp+0Ch]; 4 forms (float declared first, named traits -> real local 120; entry ref, forceinline helper -> inert)
+0042f722	debakeB2	DIFFER	60v60	lea-before-push-1 residue persists with a named const CCharString local and with the 0047d5a3-style noinline GetDef stand-in
+00632830	linux_hand332	DIFFER	196v196	frame hole at L+0x10 (retail) vs L+0x2C (ours); 7 declaration/temporary/stand-in orders inert (stand-ins drop the entry zero store, 194)
+00b687d0	bounds_landed_differ	DIFFER	1486v1483	base kept; 7 more forms (def-> direct, no-ctor def, named type string, plain pointer out-param -> 1523 reloads; dtor release 1505): block-4 def rematerialisation not reproduced
+00988a50	bounds_landed_differ	DIFFER	996v978	SSE blocks byte-exact as __asm (retail_asm pending owner: 2x68 instr); x87 fallback term order reassociated by VC7.1, this-register; see differ/
+00bdc510	bounds_landed_differ	DIFFER	1118v1134	fresh reconstruction with __asm AABB block (retail_asm pending owner); 3 residues left (count operand order, zero-count alloc arm shape, loop index schedule); see differ/
+00bf4570	bounds_landed_differ	NOT_ATTEMPTED	316v4880	4.9 KB render body with the same AABB asm block: needs a full fresh reconstruction, out of this session's budget
+0051a240	linux_hand332	MATCH	RELOCATION_MATCH	chunk-333 GetMaxSize model re-graded with q.py; new behaviour test (current + upgraded record)
+00ee2490	linux_hand327	DIFFER	1334v1334	lea-vs-add of &seh_Rival: named reference / parent local lose 16 bytes (1318), pointer helper inert
+0066ff20	debakeB2	DIFFER	175v175	baseline re-graded only: ParentThing load hoisted above the position stores
+0072a970	linux_hand101	DIFFER	63v63	(+5 siblings 0072a9b0/aa00/aa50/aaa0/abd0) creature load before pushes appears only under /Os, which adds an ebp frame and a byte test; named local, temp argument, bitset helper inert
+005bc58f	linux_hand92	DIFFER	35v35	memberwise / user operator= copies give 42 (no lea)
+0046313e	linux_hand75	DIFFER	43v43	implicit map operator= inert (dirty store still sunk below pops)
+00c462e0	linux_hand98	DIFFER	51v51	float locals 40, top-first 56; c1 load position open
+00cbe583	linux_hand72	DIFFER	61v61	named position refs, named difference, member operator- all inert
+006817f0	linux_hand85	DIFFER	84v84	switch(x-2) with renumbered cases still emits add eax,-2
+005e9b20	linux_hand102	DIFFER	74v74	47-test-first relays out the arms; if/else ChangeState drops the tail duplication (68)
+0076e290	linux_hand105	DIFFER	84v84	C3DVector user operator= / six scalar assignments lose the add esi,0Ch (80)
+0056ef2d	linux_hand94	DIFFER	66v66	baseline only (setcc register allocation)
+00be1e20	linux_hand84	DIFFER	77v77	baseline only (copy register alternation)
+0072c680	linux_hand101	DIFFER	83v83	baseline only; same AddTC creature-load residue as 0072a970
+00771d50	linux_hand90	DIFFER	85v85	baseline only (frame 10h vs 0Ch)
+00551340	debakeB2	DIFFER	431v431	key local gives 435; frame dword residue open (graded on the 431-byte exe span)

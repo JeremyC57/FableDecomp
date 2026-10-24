@@ -30282,8 +30282,7 @@ $catalog = @(
         Address = '0066f7d0'; Module = 'CInputTypeXboxPadLeftStickEvent'
         Source = '00/66/CInputTypeXboxPadLeftStickEvent_GetControlDirection_0066f7d0.cpp'
         TestSource = '00/66/CInputTypeXboxPadLeftStickEvent_GetControlDirection_0066f7d0_test.cpp'
-        PassPattern = 'PASS CInputTypeXboxPadLeftStickEvent::GetControlDirection 0x0066F7D0'
-        Grade = 'asm_bake'
+        PassPattern = '0066f7d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066f840'; Module = 'CInputTypeXboxPadRightStickEvent'
@@ -279356,6 +279355,20 @@ $catalog = @(
         Source = '00/cb/CVectorMapunsignedint64_UpperBound_00cb98a0.cpp'
         TestSource = '00/cb/CVectorMapunsignedint64_UpperBound_00cb98a0_test.cpp'
         PassPattern = '00cb98a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c5110'
+        Module = 'COwner_006c5110'
+        Source = '00/6c/COwner006c5110_COwner006c5110_006c5110.cpp'
+        TestSource = '00/6c/COwner006c5110_COwner006c5110_006c5110_test.cpp'
+        PassPattern = '006c5110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051a240'
+        Module = 'CReplaceSerialise<CFileFormatLevel,COldFileFormatLevel3>'
+        Source = '00/51/CReplaceSerialiseCFileFormatLevelCOldFileFormatLevel3_ReadFromFile_0051a240.cpp'
+        TestSource = '00/51/CReplaceSerialiseCFileFormatLevelCOldFileFormatLevel3_ReadFromFile_0051a240_test.cpp'
+        PassPattern = '0051a240_TEST PASS'
     }
 )
 

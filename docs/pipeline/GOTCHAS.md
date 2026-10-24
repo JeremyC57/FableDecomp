@@ -1024,3 +1024,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A CRGBColour copy ctor built on `Set(R,G,B,A)` gives retail's word load plus byte stores; the implicit copy is one dword move (004c5890).
 - In the lane, `#include` of a header local to the probe folder hangs q.py; inline the model into each source. VC7.1 needs `> >` in nested template arguments and `unsigned short` wide strings (wchar_t is not built in).
 - A bootstrap fixture body (rebuild/build_bootstrap.ps1) can sit at the same `src/compiled` path the lander writes for a new landing: move the fixture copy to `integration/bootstrap_asm/` first (0x00401FE0).
+- Two `/= length` statements fold to one reciprocal with X-then-Y multiplies (0066f7d0).
+- VC7.1 elides same-type temporary copies even through a template converting ctor; only a defaulted `const T&` parameter keeps retail's unelided temporary-plus-copy (006c5110).
+- VC7.1 reassociates x87 four-term sums depending on the operands' memory class; match retail's per-column order by the source form (00988a50).
+- `delete[]` on a virtual-dtor class expands to the count-zero free / vector-deleting-dtor(3) split; `new(memory) T[n]` stores n at memory and ctor-iterates from +4 (00bdc510).

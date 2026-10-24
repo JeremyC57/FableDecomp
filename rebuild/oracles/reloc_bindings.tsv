@@ -28587,3 +28587,4 @@ __imp__LoadLibraryW@4	0143fe38	00401fe0
 ??RCMessageEventFilter_IsOriginatorAlive@@QBE_NABUCMessageEvent@@@Z	006af2d0	00959040
 ??ACPackedUIntArray@@QAEKK@Z	00a629f0	009cc640
 ?Release@CItem@@QAEXXZ	00c3c5f0	00c44270
+?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@SIXPAX@Z	00519510	0051a240
