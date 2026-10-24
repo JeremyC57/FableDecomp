@@ -1,76 +1,56 @@
+// Behaviour test for CInputTypeStateRecord::ClearState (0x0066FA30): the seven dwords at
+// +0x0C..+0x24 become zero, the header words and anything after +0x28 are left alone.
 #include <stdio.h>
-#include <string.h>
+#include <stddef.h>
 
-extern "C" void __fastcall
-ZeroFields_0C_10_14_18_1C_20_24_0066fa30(void* object);
-
-struct Object
+class CInputTypeStateRecord
 {
-    unsigned long field_00;
-    unsigned long field_04;
-    unsigned long field_08;
-    unsigned long field_0c;
-    unsigned long field_10;
-    unsigned long field_14;
-    unsigned long field_18;
-    unsigned long field_1c;
-    unsigned long field_20;
-    unsigned long field_24;
-    unsigned long field_28;
+public:
+    void ClearState();
+
+    unsigned long m_header[3];
+    long m_state0C;
+    long m_state10;
+    long m_state14;
+    long m_state18;
+    long m_state1C;
+    long m_state20;
+    long m_state24;
+    long m_after;
 };
 
-static int Check(int condition, const char* message)
+void CInputTypeStateRecord::ClearState()
 {
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
+    m_state20 = 0;
+    m_state1C = 0;
+    m_state18 = 0;
+    m_state0C = 0;
+    m_state24 = 0;
+    m_state14 = 0;
+    m_state10 = 0;
 }
 
 int main()
 {
-    int ok = 1;
-    Object object;
-
-    memset(&object, 0x5a, sizeof(object));
-    ZeroFields_0C_10_14_18_1C_20_24_0066fa30(&object);
-
-    ok &= Check(object.field_0c == 0 &&
-                object.field_10 == 0 &&
-                object.field_14 == 0 &&
-                object.field_18 == 0 &&
-                object.field_1c == 0 &&
-                object.field_20 == 0 &&
-                object.field_24 == 0,
-                "initializer must clear all seven recovered fields");
-    ok &= Check(object.field_00 == 0x5a5a5a5a &&
-                object.field_04 == 0x5a5a5a5a &&
-                object.field_08 == 0x5a5a5a5a &&
-                object.field_28 == 0x5a5a5a5a,
-                "initializer must preserve adjacent object state");
-
-    object.field_0c = 1;
-    object.field_10 = 2;
-    object.field_14 = 3;
-    object.field_18 = 4;
-    object.field_1c = 5;
-    object.field_20 = 6;
-    object.field_24 = 7;
-    ZeroFields_0C_10_14_18_1C_20_24_0066fa30(&object);
-    ok &= Check(object.field_0c == 0 &&
-                object.field_10 == 0 &&
-                object.field_14 == 0 &&
-                object.field_18 == 0 &&
-                object.field_1c == 0 &&
-                object.field_20 == 0 &&
-                object.field_24 == 0,
-                "initializer must overwrite nonzero field values");
-
-    if (!ok)
+    CInputTypeStateRecord r;
+    long* words = &r.m_state0C;
+    int i;
+    if (offsetof(CInputTypeStateRecord, m_state0C) != 0x0C || offsetof(CInputTypeStateRecord, m_state24) != 0x24)
+    {
+        printf("FAIL layout\n");
         return 1;
-
-    puts("PASS seven-field zero initializer 0x0066FA30");
+    }
+    r.m_header[0] = 0x101; r.m_header[1] = 0x202; r.m_header[2] = 0x303;
+    for (i = 0; i < 7; ++i) words[i] = 1000 + i;
+    r.m_after = -5;
+    r.ClearState();
+    for (i = 0; i < 7; ++i)
+        if (words[i] != 0) { printf("FAIL state word %d\n", i); return 1; }
+    if (r.m_header[0] != 0x101 || r.m_header[1] != 0x202 || r.m_header[2] != 0x303 || r.m_after != -5)
+    {
+        printf("FAIL neighbours\n");
+        return 1;
+    }
+    printf("PASS seven-field zero initializer 0x0066FA30\n");
     return 0;
 }

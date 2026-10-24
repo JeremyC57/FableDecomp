@@ -1,41 +1,118 @@
-// CTCCreatureOpinionOfHero::IsWillingToStartFollowingHero @ 0x006818a0
-// __fastcall, returns bool. Reconstructed to VC7.1 byte parity.
-//
-// Behaviour: loads member ptr [this+4] as the argument, fetches a manager
-// object via a global accessor, calls a state getter on that manager, then
-// dispatches a switch on the returned state code (a jump table over cases
-// 1..15) to decide whether the creature will start following the hero.
+// Grade: DIFFER(71v47) -- oracle short, not a code difference: RELOCATION_MATCH against the full 71 retail bytes 0x006818A0..0x006818E6 (code + 2-entry jump table + 15-entry byte index table, checked with qx.py); the catalog row stops at the last `ret` (47) while the twin 0x006818F0 is catalogued with its tables (73). Re-cut the row to 71 and this source lands; test in probe/006818a0_test.cpp (PASS).
+// CTCCreatureOpinionOfHero::IsWillingToStartFollowingHero() const -- decided by the creature's attitude to the player
+// Retail 0x006818A0, 47 bytes of code + an embedded two-entry jump table (0x006818D0) and a 15-entry byte index
+// table (0x006818D8). Ego_r.pdb: ?IsWillingToStartFollowingHero@CTCCreatureOpinionOfHero@@QBE_NXZ (declared right
+// before IsWillingToContinueFollowingHero, whose landed body 0x006818F0 is the twin of this one).
+// Callees: the CTCBase world accessor @ 0x00686A80, COpinionReactionManager::GetThingAttitudeToPlayer(const CThing*)
+// @ 0x00701840 (the world's opinion-reaction manager at +0x74).
+// Shape: the switch over attitudes 1..15 is `dec eax ; cmp eax,0Eh ; ja` + the byte-indexed table read from the
+// retail bytes: attitudes 1, 2, 5, 6, 9 and 11..15 start following; 3, 4, 7, 8, 10, 0 and anything above 15 do not
+// (the default). As in the twin, ParentThing is read into a local before the accessor call and the manager is a
+// local too, so the call precedes the argument push. The model is the twin's (retail offsets; see its notes on
+// engine/CTCCreatureOpinionOfHero.h, whose PDB layout does not fit retail past +0x24). Attitude values are the
+// numeric EOpinionAttitudeType values (the enumerator names are not in the PDB dumps).
+// Leaf: IsWillingToStartFollowingHero
 
-extern "C" void* CTCCreatureOpinionOfHero_GetManagerOwner(void);   // call at +0x04
-// __fastcall state getter (this in ecx, one stack arg, callee-cleans). Modelled
-// as __stdcall so the pushed argument is cleaned by the callee.
-int __stdcall CTCCreatureOpinionOfHero_GetCreatureState(void* arg);  // call at +0x0f
+struct CThing;
 
-extern unsigned char kIsWillingCaseIndex[15];  // byte index table @ 0x6818d8
-extern void*         kIsWillingJumpTable[];     // dword jump table  @ 0x6818d0
+struct COpinionReactionManager {
+    long GetThingAttitudeToPlayer(const CThing* thing) const;       // 0x00701840
+    float GetToleranceToBeingHit(const CThing* thing) const;        // 0x00701940
+};
 
-__declspec(naked) bool __fastcall
-CTCCreatureOpinionOfHero_IsWillingToStartFollowingHero(void* self)
+struct CWorld {
+    unsigned char _pad00[0x10];
+    void* DefinitionManager;                // +0x10
+    unsigned char _pad14[0x74 - 0x14];
+    COpinionReactionManager* POpinionReactionManager;   // +0x74 CCountedPointer<COpinionReactionManager> data
+};
+
+// Model: CTCCreatureOpinionOfHero with its PDB member names at the RETAIL offsets. engine/CTCCreatureOpinionOfHero.h (PDB,
+// sizeof 0x65c) does not fit the bytes past +0x24: the retail STLport lists are 4 bytes (PDB 12), so PendingDeeds sits at
+// +0x54, KnownDeeds[92] at +0x1c8, HeroOpinionEnemy at +0x342 and PUnknownThreatOpinionSource at +0x344 (as the landed
+// SetHeroOpinionEnemy 0x006815D0 also shows), hence a local model.
+struct CThing;
+
+struct CBaseIntelligentPointer {
+    void* __vftable;                        // +0x00
+    void* PData;                            // +0x04
+};
+
+struct SLongNode {                          // STLport _List_node<long>
+    SLongNode* Next;                        // +0x00
+    SLongNode* Prev;                        // +0x04
+    long Data;                              // +0x08
+};
+
+struct CLongList {                          // STLport list<long> (4 bytes)
+    SLongNode* Header;                      // +0x00
+};
+
+struct COpinionPersonalityTraits {          // 36 bytes
+    float BaseOffset;                       // +0x00
+    float HeroStatScaling;                  // +0x04
+    float VillageOpinionScaling;            // +0x08
+    float TimeScalingRunIn;                 // +0x0c
+    float TimeScalingRunOut;                // +0x10
+    float PeakScalingIfPos;                 // +0x14
+    float PeakScalingIfNeg;                 // +0x18
+    float PersistScalingIfPos;              // +0x1c
+    float PersistScalingIfNeg;              // +0x20
+};
+
+struct COpinionPersonalityDef {             // retail offsets (the def root is 4 bytes shorter than the PDB's)
+    unsigned char _pad00[0x3c];
+    COpinionPersonalityTraits* PersonalityTraits;   // +0x3c
+    unsigned char _pad40[0x10];
+    float ToleranceToBeingHit;              // +0x50
+};
+
+struct CDefPointeeBase;
+
+struct CTCCreatureOpinionOfHero {
+    void* __vftable;                        // +0x00 (CTCBase)
+    CThing* ParentThing;                    // +0x04
+    bool ToBeRemoved;                       // +0x08
+    bool IsInGlobalUpdateTCs;               // +0x09
+    long LastOpinionReactionFrame;          // +0x0c
+    float NumberOfTimesHit;                 // +0x10
+    float ToleranceToBeingHitOverride;      // +0x14
+    long FrameToDecayNumberOfTimesHit;      // +0x18
+    CDefPointeeBase* PDef;                  // +0x1c CDefPointer<COpinionOfHeroDef const>
+    COpinionPersonalityDef* PPersonalityDef;        // +0x20 CDefPointer<COpinionPersonalityDef const>
+    unsigned char Masks[0x30];              // +0x24 AttitudeMask, ReactionMask, DeedMask, RelativeOpinion (retail sizes)
+    CLongList PendingDeeds;                 // +0x54
+    long LastFrameAppliedDeedEffect[92];    // +0x58
+    CLongList KnownDeeds[92];               // +0x1c8
+    CLongList TransientOffsets;             // +0x338
+    long ForcedAttitude;                    // +0x33c
+    bool InteractedFlag;                    // +0x340
+    bool GreetedFlag;                       // +0x341
+    bool HeroOpinionEnemy;                  // +0x342
+    bool InFindAGuardAndYellForHelp;        // +0x343
+    CBaseIntelligentPointer PUnknownThreatOpinionSource;   // +0x344
+    long FrameLastUpdatedUnknownThreat;     // +0x34c
+    CWorld* GetWorld() const;               // 0x00686A80
+    bool IsWillingToStartFollowingHero() const;
+};
+
+bool CTCCreatureOpinionOfHero::IsWillingToStartFollowingHero() const
 {
-    __asm {
-        push esi
-        mov  esi, dword ptr [ecx+4]
-        call CTCCreatureOpinionOfHero_GetManagerOwner
-        mov  eax, dword ptr [eax+0x74]
-        push esi
-        mov  ecx, eax
-        call CTCCreatureOpinionOfHero_GetCreatureState
-        dec  eax
-        cmp  eax, 0x0e
-        pop  esi
-        ja   short lfalse
-        movzx eax, byte ptr [eax + kIsWillingCaseIndex]
-        jmp  dword ptr [eax*4 + kIsWillingJumpTable]
-    ltrue:
-        mov  al, 1
-        ret
-    lfalse:
-        xor  al, al
-        ret
+    CThing* thing = ParentThing;
+    COpinionReactionManager* manager = GetWorld()->POpinionReactionManager;
+    switch (manager->GetThingAttitudeToPlayer(thing)) {
+    case 1:
+    case 2:
+    case 5:
+    case 6:
+    case 9:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+        return true;
+    default:
+        return false;
     }
 }

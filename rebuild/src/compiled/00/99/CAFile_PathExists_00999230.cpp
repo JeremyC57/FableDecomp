@@ -1,92 +1,43 @@
-#include "rebuild_abi.h"
+// CAFile::PathExists(const CWideString& path) -- true when the expanded path names an existing file or directory
+// Retail 0x00999230, 111 bytes (Ego_r.pdb ?PathExists@CAFile@@SI_NABVCWideString@@@Z: static __fastcall, path in ecx).
+// Body: full = ExpandPath(path, GetCurrentPath()) assigned into a default-constructed local, then
+// GetFileAttributesW(full) != INVALID_FILE_ATTRIBUTES (0xFFFFFFFF) through the dllimport thunk 0x0143FDBC.
+// Callees: CWideString() @ 0x0099AED0, CAFile::GetCurrentPath() @ 0x00997F80 and CAFile::ExpandPath(const
+// CWideString&, const CWideString&) @ 0x00998C90 (static __fastcall, hidden result in ecx, first argument in edx),
+// CWideString::operator= @ 0x0099B7D0, ~CWideString @ 0x0099B510, operator const wchar_t* @ 0x0099AF00.
+// Shape: the two by-value temporaries die at the end of the assignment statement (expand result first);
+// the local's out-of-line destructor is called once per return path, so each `return` carries its own
+// `call ~CWideString` before the `mov al,1` / `xor al,al` (the `!= INVALID` test returning true first
+// lays the true exit first; `== INVALID ... return false` swaps the two exits).
+// Leaf: ?PathExists@CAFile
 
-#include <stddef.h>
+typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
-struct FableWideString_00999230
+extern "C" __declspec(dllimport) unsigned long __stdcall GetFileAttributesW(const wchar16* fileName);   // IAT 0x0143FDBC
+
+class CWideString
 {
-    void* storage;
+public:
+    void* PData;
+    CWideString();                                      // 0x0099AED0
+    ~CWideString();                                     // 0x0099B510
+    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    operator const wchar16*() const;                    // 0x0099AF00
 };
 
-extern "C" void FABLE_FASTCALL
-FableWideStringConstruct_0099AED0(
-    FableWideString_00999230* self,
-    void*);
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableGetCurrentPath_00997F80(
-    FableWideString_00999230* result,
-    void*);
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableExpandPath_00998C90(
-    FableWideString_00999230* result,
-    const FableWideString_00999230* pathname,
-    const FableWideString_00999230* context);
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableWideStringAssign_0099B7D0(
-    FableWideString_00999230* self,
-    void*,
-    const FableWideString_00999230* other);
-extern "C" void FABLE_FASTCALL
-FableWideStringDestroy_0099B510(
-    FableWideString_00999230* self,
-    void*);
-extern "C" const wchar_t* FABLE_FASTCALL
-FableWideStringGetBuffer_0099AF00(
-    FableWideString_00999230* self,
-    void*);
-
-typedef unsigned long (__stdcall *FableGetFileAttributesWProc)(
-    const wchar_t*);
-extern "C" FableGetFileAttributesWProc
-g_FableGetFileAttributesW_0143FDBC;
-
-// CAFile::PathExists(CWideString const&) @ 0x00999230.
-//
-// Retail builds an expanded, process-relative pathname and regards every
-// GetFileAttributesW value except INVALID_FILE_ATTRIBUTES as an existing
-// path.  The explicit body preserves the VC7.1 temporary lifetime and cleanup
-// order.
-extern "C" __declspec(naked) bool FABLE_FASTCALL
-FablePathExists_00999230(
-    const FableWideString_00999230&,
-    void*)
+class CAFile
 {
-    __asm
-    {
-        sub esp, 0Ch
-        push esi
-        mov esi, ecx
-        lea ecx, [esp + 4]
-        call FableWideStringConstruct_0099AED0
-        lea ecx, [esp + 0Ch]
-        call FableGetCurrentPath_00997F80
-        push eax
-        mov edx, esi
-        lea ecx, [esp + 0Ch]
-        call FableExpandPath_00998C90
-        push eax
-        lea ecx, [esp + 8]
-        call FableWideStringAssign_0099B7D0
-        lea ecx, [esp + 8]
-        call FableWideStringDestroy_0099B510
-        lea ecx, [esp + 0Ch]
-        call FableWideStringDestroy_0099B510
-        lea ecx, [esp + 4]
-        call FableWideStringGetBuffer_0099AF00
-        push eax
-        call dword ptr [g_FableGetFileAttributesW_0143FDBC]
-        cmp eax, -1
-        pop esi
-        lea ecx, [esp]
-        je missing
-        call FableWideStringDestroy_0099B510
-        mov al, 1
-        add esp, 0Ch
-        ret
+public:
+    static CWideString __fastcall GetCurrentPath();                                             // 0x00997F80
+    static CWideString __fastcall ExpandPath(const CWideString& path, const CWideString& base);  // 0x00998C90
+    static bool __fastcall PathExists(const CWideString& path);
+};
 
-missing:
-        call FableWideStringDestroy_0099B510
-        xor al, al
-        add esp, 0Ch
-        ret
-    }
+bool __fastcall CAFile::PathExists(const CWideString& path)
+{
+    CWideString fullPath;
+    fullPath = ExpandPath(path, GetCurrentPath());
+    if (GetFileAttributesW(fullPath) != 0xFFFFFFFF)
+        return true;
+    return false;
 }

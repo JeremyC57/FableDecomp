@@ -1,0 +1,7 @@
+address	name	evidence
+0041d1c8	NUISystem::CManager::RemoveUIActionParam	find + erase of the param on the manager's action-param list; RELOCATION_MATCH (de-bake A); catalog label CTCBoastingCrowdControl::OnKillCrowd is propagated
+00485f3a	_STL::vector<unsigned char>::_M_fill_insert	byte vector fill-insert calling __copy_trivial and _M_insert_overflow; RELOCATION_MATCH (de-bake A); not deque::insert
+00c8db10	ogg_stream_packetout	libogg packet-out wrapper over _packetout (0x00C8D9D0, os in eax, LTCG); not _Dest_val<CFlash>
+0041c800	_STL::_Rb_tree_node_base::_S_maximum	walks the right links to the rightmost node; byte-exact MATCH over 26 B (de-bake A); catalog label GetNoAllocatedAreas is propagated
+0042dbee	CNewFrontendGameComponent::RestartAttractModeTimer	forwards to the member timer at +0x100 (m_attractModeTimer); called from CFrontEndManager::Action (de-bake A)
+0059b5d7	_STL::map<FRONTEND_SCREEN,NUISystem::CComponent*>::operator[]	COMDAT folded with map<EUsedKeys,long>::operator[]; called from CFrontEndManager::Action/RefreshAvailableProfiles (de-bake A)

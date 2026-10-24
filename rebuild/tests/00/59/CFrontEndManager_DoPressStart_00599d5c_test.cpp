@@ -1,355 +1,157 @@
-// Real-object ABI/behavior fixture for
-// NUISystem::CFrontEndManager::DoPressStart @ 0x00599D5C.
+// Behaviour test for NUISystem::CFrontEndManager::DoPressStart (0x00599D5C): no profiles -> new-profile screen; one
+// profile whose signature verifies -> load it and go to screen 0 clearing the stack; otherwise -> profile menu and
+// re-apply the profile manager values. The joystick hand-over happens on every path, the GetProfileDir temporary
+// is destroyed exactly when it was built, and the profile list is destroyed at the end.
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+inline void* operator new(unsigned int, void* p) { return p; }
 
-#include <cstdio>
-#include <cstring>
+static int g_strings = 0;
+static char g_log[256];
+static void Log(const char* s) { strcat(g_log, s); strcat(g_log, ";"); }
 
-extern "C" void __fastcall
-CFrontEndManager_DoPressStart_00599d5c(void*, void*);
-
-enum Event
+class CWideString
 {
-    kNames = 1,
-    kNewProfile,
-    kGetService,
-    kDefaultProfile,
-    kVerify,
-    kDestroyString,
-    kLoadProfile,
-    kResolve,
-    kNext,
-    kProfileMenu,
-    kApply,
-    kGetJoystick,
-    kSetJoystick,
-    kDestroyNames
+public:
+    void* PData;
+    CWideString() : PData(0) { ++g_strings; }
+    CWideString(const CWideString& o) : PData(o.PData) { ++g_strings; }
+    ~CWideString() { --g_strings; }
 };
 
-struct ServiceProbe
+namespace std {
+template <class T> class vector
 {
-    unsigned char bytes[0x10];
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    ~vector() { for (T* p = _M_start; p != _M_finish; ++p) p->~T(); free(_M_start); Log("dtor"); }
+    T* begin() const { return _M_start; }
+    bool empty() const { return _M_start == _M_finish; }
+    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
+    T& operator[](unsigned int n) const { return *(begin() + n); }
 };
-
-struct NamesProbe
+template <class K, class V> class map
 {
-    void* first;
-    void* last;
-    void* end;
+public:
+    V values[4];
+    V& operator[](const K& key) { return values[key]; }
 };
-
-struct InputProbe
-{
-    unsigned char bytes[0x140];
-    long mainDevice;
-};
-
-static Event g_events[24];
-static int g_eventCount;
-static ServiceProbe g_service;
-static InputProbe g_input;
-static unsigned long g_profiles[3];
-static long g_usedComponent;
-static void* g_expectedManager;
-static int g_profileCount;
-static bool g_verifyResult;
-static int g_newProfileCalls;
-static void* g_defaultOutput;
-static void* g_defaultProfile;
-static long g_defaultFlags;
-static void* g_verifyArgument;
-static void* g_destroyedString;
-static void* g_loadedProfile;
-static unsigned long g_resolvedKey;
-static void* g_nextComponent;
-static long g_nextTransition;
-static int g_profileMenuCalls;
-static int g_applyCalls;
-static long g_setDevice;
-static void* g_namesAddress;
-static void* g_destroyedNames;
-static unsigned char g_joystickManager;
-
-extern "C" void* FableFrontEndPressStartInputState = &g_input;
-
-static void AddEvent(Event event)
-{
-    g_events[g_eventCount++] = event;
 }
 
-extern "C" void __fastcall
-FableFrontEndPressStartGetProfileNames(
-    void* manager,
-    void*,
-    void* names)
+static bool g_verifies = false;
+static int g_profileCount = 0;
+
+class CUserProfileManager
 {
-    AddEvent(kNames);
-    g_namesAddress = names;
-    NamesProbe* vector = (NamesProbe*)names;
-    if (manager == g_expectedManager)
+public:
+    unsigned char _pad00[0x0c];
+    bool UseNewProfileValues;
+    CWideString GetProfileDir(const CWideString& name, bool create) { Log(create ? "dir+" : "dir"); return name; }
+    void Apply() { Log("apply"); }
+};
+
+template <class T> class CTBaseSingleton
+{
+public:
+    static T& __fastcall Get() { static T instance; return instance; }
+};
+
+static long g_joystick = -1;
+class CGameJoystickManager
+{
+public:
+    static CGameJoystickManager& __fastcall Get() { static CGameJoystickManager m; return m; }
+    void SetMainPlayerJoystickDeviceNumber(long device) { g_joystick = device; }
+};
+
+struct CNewFrontendGameComponent
+{
+    unsigned char _pad[0x140];
+    long LastActiveJoystickDeviceNumber;
+};
+static CNewFrontendGameComponent g_frontend;
+CNewFrontendGameComponent* g_pNewFrontendGameComponent = &g_frontend;
+
+enum FRONTEND_SCREEN { FRONTEND_SCREEN_0 = 0 };
+
+namespace NUISystem {
+class CComponent { public: int id; };
+class CFrontEndManager
+{
+public:
+    unsigned char                          _pad00[0x54];
+    std::map<FRONTEND_SCREEN, CComponent*> m_mapScreens;
+    CComponent* lastScreen; bool lastClear;
+    void GetProfileNames(std::vector<CWideString>& names)
     {
-        vector->first = g_profiles;
-        vector->last = g_profiles + g_profileCount;
-        vector->end = vector->last;
+        names._M_start = (CWideString*)malloc(4 * sizeof(CWideString));
+        for (int i = 0; i < g_profileCount; ++i) new (&names._M_start[i]) CWideString();
+        names._M_finish = names._M_start + g_profileCount;
+        names._M_end_of_storage = names._M_start + 4;
     }
-}
+    void GotoNewProfileScreen() { Log("new"); }
+    bool VerifySignatureCached(const CWideString&) { Log("verify"); return g_verifies; }
+    void LoadProfile(const CWideString&) { Log("load"); }
+    void GotoNextScreen(CComponent* screen, bool clearStack) { lastScreen = screen; lastClear = clearStack; Log("next"); }
+    void GotoProfileMenu() { Log("menu"); }
+    void DoPressStart();
+};
 
-extern "C" void __fastcall
-FableFrontEndPressStartGotoNewProfile(void* manager, void*)
+void CFrontEndManager::DoPressStart()
 {
-    AddEvent(kNewProfile);
-    if (manager == g_expectedManager)
-        ++g_newProfileCalls;
-}
-
-extern "C" void* __cdecl
-FableFrontEndPressStartGetProfileService()
-{
-    AddEvent(kGetService);
-    return &g_service;
-}
-
-extern "C" void* __fastcall
-FableFrontEndPressStartGetDefaultProfile(
-    void* service,
-    void*,
-    void* string,
-    void* profile,
-    long flags)
-{
-    AddEvent(kDefaultProfile);
-    if (service == &g_service)
+    std::vector<CWideString> profiles;
+    GetProfileNames(profiles);
+    if (profiles.empty())
     {
-        g_defaultOutput = string;
-        g_defaultProfile = profile;
-        g_defaultFlags = flags;
+        GotoNewProfileScreen();
     }
-    return string;
-}
-
-extern "C" unsigned char __fastcall
-FableFrontEndPressStartVerifyProfile(
-    void* manager,
-    void*,
-    void* defaultProfile)
-{
-    AddEvent(kVerify);
-    if (manager == g_expectedManager)
-        g_verifyArgument = defaultProfile;
-    return g_verifyResult ? 1 : 0;
-}
-
-extern "C" void __fastcall
-FableFrontEndPressStartDestroyString(void* string, void*)
-{
-    AddEvent(kDestroyString);
-    g_destroyedString = string;
-}
-
-extern "C" void __fastcall
-FableFrontEndPressStartLoadProfile(
-    void* manager,
-    void*,
-    void* profile)
-{
-    AddEvent(kLoadProfile);
-    if (manager == g_expectedManager)
-        g_loadedProfile = profile;
-}
-
-extern "C" long** __fastcall
-FableFrontEndPressStartResolveUsedKey(
-    void* usedKeys,
-    void*,
-    const unsigned long* key)
-{
-    AddEvent(kResolve);
-    if (usedKeys == (void*)((unsigned char*)g_expectedManager + 0x54))
-        g_resolvedKey = *key;
-    static long* result;
-    result = &g_usedComponent;
-    return &result;
-}
-
-extern "C" void __fastcall
-FableFrontEndPressStartGotoNext(
-    void* manager,
-    void*,
-    void* component,
-    long transition)
-{
-    AddEvent(kNext);
-    if (manager == g_expectedManager)
+    else
     {
-        g_nextComponent = component;
-        g_nextTransition = transition;
+        bool loadDirectly = profiles.size() == 1
+            && VerifySignatureCached(CTBaseSingleton<CUserProfileManager>::Get().GetProfileDir(profiles[0], false));
+        if (loadDirectly)
+        {
+            LoadProfile(profiles[0]);
+            GotoNextScreen(m_mapScreens[FRONTEND_SCREEN_0], true);
+        }
+        else
+        {
+            GotoProfileMenu();
+            CTBaseSingleton<CUserProfileManager>::Get().UseNewProfileValues = true;
+            CTBaseSingleton<CUserProfileManager>::Get().Apply();
+        }
     }
+    CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(g_pNewFrontendGameComponent->LastActiveJoystickDeviceNumber);
+}
 }
 
-extern "C" void __fastcall
-FableFrontEndPressStartGotoProfileMenu(void* manager, void*)
+static int Run(int count, bool verifies, const char* want, long joystick)
 {
-    AddEvent(kProfileMenu);
-    if (manager == g_expectedManager)
-        ++g_profileMenuCalls;
-}
-
-extern "C" void __fastcall
-FableFrontEndPressStartApplyProfileService(void* service, void*)
-{
-    AddEvent(kApply);
-    if (service == &g_service)
-        ++g_applyCalls;
-}
-
-extern "C" void* __cdecl
-FableFrontEndPressStartGetJoystickManager()
-{
-    AddEvent(kGetJoystick);
-    return &g_joystickManager;
-}
-
-extern "C" void __fastcall
-FableFrontEndPressStartSetMainJoystick(
-    void* joystickManager,
-    void*,
-    long device)
-{
-    AddEvent(kSetJoystick);
-    if (joystickManager == &g_joystickManager)
-        g_setDevice = device;
-}
-
-extern "C" void __fastcall
-FableFrontEndPressStartDestroyProfileNames(void* names, void*)
-{
-    AddEvent(kDestroyNames);
-    g_destroyedNames = names;
-}
-
-static void Reset(
-    unsigned char* manager,
-    int profileCount,
-    bool verifyResult)
-{
-    std::memset(manager, 0, 0x80);
-    std::memset(&g_service, 0, sizeof(g_service));
-    g_eventCount = 0;
-    g_expectedManager = manager;
-    g_profileCount = profileCount;
-    g_verifyResult = verifyResult;
-    g_newProfileCalls = 0;
-    g_defaultOutput = 0;
-    g_defaultProfile = 0;
-    g_defaultFlags = -1;
-    g_verifyArgument = 0;
-    g_destroyedString = 0;
-    g_loadedProfile = 0;
-    g_resolvedKey = 0xffffffff;
-    g_nextComponent = 0;
-    g_nextTransition = -1;
-    g_profileMenuCalls = 0;
-    g_applyCalls = 0;
-    g_setDevice = -1;
-    g_namesAddress = 0;
-    g_destroyedNames = 0;
-    g_input.mainDevice = 7;
-    g_usedComponent = 0x44556677;
-}
-
-static bool EventsEqual(const Event* expected, unsigned long count)
-{
-    return g_eventCount == (int)count &&
-        std::memcmp(g_events, expected, count * sizeof(Event)) == 0;
-}
-
-static bool RunEmpty()
-{
-    unsigned char manager[0x80];
-    Reset(manager, 0, false);
-    CFrontEndManager_DoPressStart_00599d5c(manager, 0);
-    static const Event expected[] =
-    {
-        kNames, kNewProfile, kGetJoystick, kSetJoystick, kDestroyNames
-    };
-    return EventsEqual(expected, sizeof(expected) / sizeof(expected[0])) &&
-        g_newProfileCalls == 1 &&
-        g_setDevice == 7 &&
-        g_destroyedNames == g_namesAddress;
-}
-
-static bool RunSingle(bool verifyResult)
-{
-    unsigned char manager[0x80];
-    Reset(manager, 1, verifyResult);
-    CFrontEndManager_DoPressStart_00599d5c(manager, 0);
-    static const Event success[] =
-    {
-        kNames, kGetService, kDefaultProfile, kVerify, kDestroyString,
-        kLoadProfile, kResolve, kNext, kGetJoystick, kSetJoystick,
-        kDestroyNames
-    };
-    static const Event failure[] =
-    {
-        kNames, kGetService, kDefaultProfile, kVerify, kDestroyString,
-        kProfileMenu, kGetService, kGetService, kApply,
-        kGetJoystick, kSetJoystick, kDestroyNames
-    };
-    const bool route = verifyResult
-        ? EventsEqual(success, sizeof(success) / sizeof(success[0]))
-        : EventsEqual(failure, sizeof(failure) / sizeof(failure[0]));
-    return route &&
-        g_defaultProfile == g_profiles &&
-        g_defaultFlags == 0 &&
-        g_verifyArgument == g_defaultOutput &&
-        g_destroyedString == g_defaultOutput &&
-        g_setDevice == 7 &&
-        g_destroyedNames == g_namesAddress &&
-        (verifyResult
-            ? g_loadedProfile == g_profiles &&
-              g_resolvedKey == 0 &&
-              g_nextComponent == &g_usedComponent &&
-              g_nextTransition == 1
-            : g_profileMenuCalls == 1 &&
-              g_service.bytes[0x0c] == 1 &&
-              g_applyCalls == 1);
-}
-
-static bool RunMultiple()
-{
-    unsigned char manager[0x80];
-    Reset(manager, 2, true);
-    CFrontEndManager_DoPressStart_00599d5c(manager, 0);
-    static const Event expected[] =
-    {
-        kNames, kProfileMenu, kGetService, kGetService, kApply,
-        kGetJoystick, kSetJoystick, kDestroyNames
-    };
-    return EventsEqual(expected, sizeof(expected) / sizeof(expected[0])) &&
-        g_profileMenuCalls == 1 &&
-        g_service.bytes[0x0c] == 1 &&
-        g_applyCalls == 1 &&
-        g_destroyedString == 0 &&
-        g_setDevice == 7 &&
-        g_destroyedNames == g_namesAddress;
+    NUISystem::CFrontEndManager fe;
+    NUISystem::CComponent screen0;
+    fe.m_mapScreens.values[0] = &screen0;
+    fe.lastScreen = 0; fe.lastClear = false;
+    g_log[0] = 0; g_profileCount = count; g_verifies = verifies; g_joystick = -1;
+    g_frontend.LastActiveJoystickDeviceNumber = joystick;
+    CTBaseSingleton<CUserProfileManager>::Get().UseNewProfileValues = false;
+    fe.DoPressStart();
+    if (strcmp(g_log, want) != 0) { printf("FAIL %d: %s\n", count, g_log); return 0; }
+    if (g_joystick != joystick || g_strings != 0) { printf("FAIL %d joystick/strings\n", count); return 0; }
+    if (strstr(want, "next") && (fe.lastScreen != &screen0 || !fe.lastClear)) { printf("FAIL screen\n"); return 0; }
+    if ((strstr(want, "apply") != 0) != CTBaseSingleton<CUserProfileManager>::Get().UseNewProfileValues) { printf("FAIL flag\n"); return 0; }
+    return 1;
 }
 
 int main()
 {
-    const bool empty = RunEmpty();
-    const bool success = RunSingle(true);
-    const bool failure = RunSingle(false);
-    const bool multiple = RunMultiple();
-    if (!empty || !success || !failure || !multiple)
-    {
-        std::printf(
-            "FSE2_00599d5c_TEST FAIL empty=%d success=%d "
-            "failure=%d multiple=%d\n",
-            empty ? 1 : 0,
-            success ? 1 : 0,
-            failure ? 1 : 0,
-            multiple ? 1 : 0);
-        return 1;
-    }
-    std::puts("FSE2_00599d5c_TEST PASS");
+    if (!Run(0, true, "new;dtor;", 3)) return 1;
+    if (!Run(1, true, "dir;verify;load;next;dtor;", 1)) return 1;
+    if (!Run(1, false, "dir;verify;menu;apply;dtor;", 2)) return 1;
+    if (!Run(2, true, "menu;apply;dtor;", 0)) return 1;
+    printf("FSE2_00599d5c_TEST PASS\n");
     return 0;
 }

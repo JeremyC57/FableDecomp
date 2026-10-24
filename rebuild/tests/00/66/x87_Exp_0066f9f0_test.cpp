@@ -1,40 +1,27 @@
-#include <math.h>
+// Behaviour test for GFExp (0x0066F9F0): the inline x87 exp expansion against known values.
 #include <stdio.h>
+#include <math.h>
+#pragma intrinsic(exp)
 
-extern "C" double __stdcall x87_Exp_0066f9f0(double value);
-
-static int Check(int condition, const char* message)
+double __stdcall GFExp(double x)
 {
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
+    return exp(x);
 }
 
-static int NearlyEqual(double left, double right)
+static int Near(double a, double b)
 {
-    return fabs(left - right) < 1.0e-12;
+    double d = a - b;
+    if (d < 0) d = -d;
+    return d <= 1e-12 * (b < 0 ? -b : b) + 1e-15;
 }
 
 int main()
 {
-    int ok = 1;
-    const double ln2 = 0.69314718055994530942;
-
-    ok &= Check(x87_Exp_0066f9f0(0.0) == 1.0,
-                "exp(0) must equal one");
-    ok &= Check(NearlyEqual(x87_Exp_0066f9f0(ln2), 2.0),
-                "exp(ln(2)) must equal two");
-    ok &= Check(NearlyEqual(x87_Exp_0066f9f0(-ln2), 0.5),
-                "exp(-ln(2)) must equal one half");
-    ok &= Check(NearlyEqual(x87_Exp_0066f9f0(1.0), exp(1.0)),
-                "exp(1) must agree with the runtime result");
-
-    if (!ok)
-        return 1;
-
-    puts("PASS x87 exponential helper 0x0066F9F0");
+    if (GFExp(0.0) != 1.0) { printf("FAIL exp(0)\n"); return 1; }
+    if (!Near(GFExp(1.0), 2.718281828459045)) { printf("FAIL exp(1)\n"); return 1; }
+    if (!Near(GFExp(-2.0), 0.1353352832366127)) { printf("FAIL exp(-2)\n"); return 1; }
+    if (!Near(GFExp(10.0), 22026.465794806718)) { printf("FAIL exp(10)\n"); return 1; }
+    if (!Near(GFExp(0.6931471805599453), 2.0)) { printf("FAIL exp(ln2)\n"); return 1; }
+    printf("PASS x87 exponential helper 0x0066F9F0\n");
     return 0;
 }

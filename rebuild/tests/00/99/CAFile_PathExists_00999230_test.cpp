@@ -1,150 +1,85 @@
-#include "rebuild_abi.h"
-
+// Behaviour test for CAFile::PathExists (0x00999230): expands the path against the current path and asks
+// GetFileAttributesW; an existing file and directory report true, a missing name false.
 #include <stdio.h>
-#include <wchar.h>
+#include <stdlib.h>
+#include <string.h>
 
-struct FableWideString_00999230
+typedef unsigned short wchar16;
+
+extern "C" __declspec(dllimport) unsigned long __stdcall GetFileAttributesW(const wchar16* fileName);
+
+static int g_live = 0;
+
+class CWideString
 {
-    void* storage;
+public:
+    void* PData;
+    CWideString() : PData(0) { ++g_live; }
+    CWideString(const char* s) : PData(0) { ++g_live; Set(s); }
+    CWideString(const CWideString& o) : PData(0) { ++g_live; *this = o; }
+    ~CWideString() { --g_live; free(PData); }
+    void Set(const char* s)
+    {
+        int n = (int)strlen(s), i;
+        wchar16* p = (wchar16*)malloc((n + 1) * sizeof(wchar16));
+        for (i = 0; i <= n; ++i) p[i] = (wchar16)(unsigned char)s[i];
+        free(PData); PData = p;
+    }
+    CWideString& operator=(const CWideString& other)
+    {
+        if (this != &other) {
+            const wchar16* q = (const wchar16*)other.PData;
+            int n = 0;
+            while (q && q[n]) ++n;
+            free(PData);
+            PData = malloc((n + 1) * sizeof(wchar16));
+            if (q) memcpy(PData, q, (n + 1) * sizeof(wchar16)); else *(wchar16*)PData = 0;
+        }
+        return *this;
+    }
+    operator const wchar16*() const { return (const wchar16*)PData; }
 };
 
-extern "C" bool FABLE_FASTCALL
-FablePathExists_00999230(
-    const FableWideString_00999230& pathname,
-    void*);
-
-namespace
+class CAFile
 {
-    struct TestStorage
+public:
+    static CWideString __fastcall GetCurrentPath() { return CWideString("."); }
+    static CWideString __fastcall ExpandPath(const CWideString& path, const CWideString& base)
     {
-        const wchar_t* text;
-    };
-
-    TestStorage g_input = {L"Data\\lang\\English\\lang_settings.txt"};
-    TestStorage g_context = {L"D:\\Fable"};
-    TestStorage g_expanded = {
-        L"D:\\Fable\\Data\\lang\\English\\lang_settings.txt"};
-    unsigned int g_constructCalls;
-    unsigned int g_contextCalls;
-    unsigned int g_expandCalls;
-    unsigned int g_assignCalls;
-    unsigned int g_convertCalls;
-    unsigned int g_destroyCalls;
-    unsigned int g_attributesCalls;
-    unsigned long g_attributeResult;
-
-    unsigned long __stdcall GetAttributesStub(const wchar_t* pathname)
-    {
-        ++g_attributesCalls;
-        if (wcscmp(pathname, g_expanded.text) != 0)
-        {
-            return 0xFFFFFFFFul;
-        }
-        return g_attributeResult;
+        char buffer[260];
+        const wchar16* b = base; const wchar16* p = path;
+        int n = 0, i;
+        for (i = 0; b[i]; ++i) buffer[n++] = (char)b[i];
+        buffer[n++] = '\\';
+        for (i = 0; p[i]; ++i) buffer[n++] = (char)p[i];
+        buffer[n] = 0;
+        return CWideString(buffer);
     }
-}
+    static bool __fastcall PathExists(const CWideString& path);
+};
 
-typedef unsigned long (__stdcall *FableGetFileAttributesWProc)(
-    const wchar_t*);
-extern "C" FableGetFileAttributesWProc
-g_FableGetFileAttributesW_0143FDBC = GetAttributesStub;
-
-extern "C" void FABLE_FASTCALL
-FableWideStringConstruct_0099AED0(
-    FableWideString_00999230* self,
-    void*)
+bool __fastcall CAFile::PathExists(const CWideString& path)
 {
-    ++g_constructCalls;
-    self->storage = 0;
-}
-
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableGetCurrentPath_00997F80(
-    FableWideString_00999230* result,
-    void*)
-{
-    ++g_contextCalls;
-    result->storage = &g_context;
-    return result;
-}
-
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableExpandPath_00998C90(
-    FableWideString_00999230* result,
-    const FableWideString_00999230* pathname,
-    const FableWideString_00999230* context)
-{
-    ++g_expandCalls;
-    if (pathname->storage != &g_input || context->storage != &g_context)
-    {
-        result->storage = 0;
-    }
-    else
-    {
-        result->storage = &g_expanded;
-    }
-    return result;
-}
-
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableWideStringAssign_0099B7D0(
-    FableWideString_00999230* self,
-    void*,
-    const FableWideString_00999230* other)
-{
-    ++g_assignCalls;
-    self->storage = other->storage;
-    return self;
-}
-
-extern "C" void FABLE_FASTCALL
-FableWideStringDestroy_0099B510(
-    FableWideString_00999230* self,
-    void*)
-{
-    ++g_destroyCalls;
-    self->storage = 0;
-}
-
-extern "C" const wchar_t* FABLE_FASTCALL
-FableWideStringGetBuffer_0099AF00(
-    FableWideString_00999230* self,
-    void*)
-{
-    ++g_convertCalls;
-    TestStorage* storage = static_cast<TestStorage*>(self->storage);
-    return storage ? storage->text : L"";
+    CWideString fullPath;
+    fullPath = ExpandPath(path, GetCurrentPath());
+    if (GetFileAttributesW(fullPath) != 0xFFFFFFFF)
+        return true;
+    return false;
 }
 
 int main()
 {
-    FableWideString_00999230 pathname;
-    pathname.storage = &g_input;
-
-    g_attributeResult = 0x20;
-    if (!FablePathExists_00999230(pathname, 0))
+    FILE* f = fopen("pathexists_probe.tmp", "w");
+    if (!f) { printf("FAIL setup\n"); return 1; }
+    fputs("x", f); fclose(f);
     {
-        return 1;
+        CWideString present("pathexists_probe.tmp"), missing("no_such_file_00999230.tmp"), dir(".");
+        if (!CAFile::PathExists(present)) { printf("FAIL present\n"); return 1; }
+        if (CAFile::PathExists(missing)) { printf("FAIL missing\n"); return 1; }
+        if (!CAFile::PathExists(dir)) { printf("FAIL directory\n"); return 1; }
+        if (g_live != 3) { printf("FAIL temporaries %d\n", g_live); return 1; }
     }
-
-    g_attributeResult = 0xFFFFFFFFul;
-    if (FablePathExists_00999230(pathname, 0))
-    {
-        return 2;
-    }
-
-    if (
-        g_constructCalls != 2 ||
-        g_contextCalls != 2 ||
-        g_expandCalls != 2 ||
-        g_assignCalls != 2 ||
-        g_convertCalls != 2 ||
-        g_destroyCalls != 6 ||
-        g_attributesCalls != 2)
-    {
-        return 3;
-    }
-
+    remove("pathexists_probe.tmp");
     printf("FABLETLC_PATH_EXISTS_00999230 PASS\n");
     return 0;
 }

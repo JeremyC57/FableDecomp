@@ -1,115 +1,89 @@
-// std::vector<unsigned char>::insert(position, count, value) @ 0x00485F3A.
-//
-// LoadGameStateInternal uses this helper to grow its byte vector to the
-// combined size of the two compressed save chunks.  The inserted value is
-// zero, so newly reserved payload storage is deterministically initialized.
+// std::vector<unsigned char>::_M_fill_insert(unsigned char* position, size_t n, const unsigned char& x) -- STLport fill-insert of n copies of x
+// Retail 0x00485F3A, 174 bytes, `ret 0Ch` (catalog label "std::deque::insert" / "ByteVector_InsertFill" is a
+// propagated placeholder; the body is STLport 4.x vector::_M_fill_insert for a POD element). Used by
+// LoadGameStateInternal to grow its byte buffer.
+// Body (STLport verbatim, POD flavour): with room for n more bytes, copy x, then either slide the tail up
+// (uninitialized copy of the last n bytes, _M_finish += n, backward copy, fill the hole) or fill past the end
+// first (uninitialized_fill_n, then copy the old tail after it, fill the old range); without room hand over to
+// _M_insert_overflow(position, x, __true_type(), n) (0x00485B6C).
+// Callees (all `__fastcall` STLport helpers: first in ecx, second in edx): __copy_trivial @ 0x00405BA0 (the POD
+// __uninitialized_copy), __copy_trivial_backward @ 0x00405BC0 (the POD __copy_backward_ptrs), fill(unsigned
+// char*, unsigned char*, const unsigned char&) @ 0x0047CE40 (memset; also the POD uninitialized_fill_n).
+// Shape: frame-pointer size TU; x_copy lives in the high byte of the `x` slot, elems_after / old_finish - n in
+// the dead `n` slot, and the __true_type temporary for _M_insert_overflow overlays the high byte of the still-live
+// `position` slot (`lea eax,[ebp+0Bh]`). That last homing needs _M_insert_overflow as a same-TU noinline
+// template body with the tag parameter unnamed (GOTCHAS empty-tag rule; the stand-in reads x through its
+// reference and never touches the tag).
+// Leaf: ?_M_fill_insert@?$vector@E
 
-extern "C" void __fastcall
-ByteVector_MoveConstructTail_00485f3a(void*, void*, void*);
-extern "C" void __fastcall
-ByteVector_MoveTailBackward_00485f3a(void*, void*, void*);
-extern "C" void __fastcall
-ByteVector_FillRange_00485f3a(void*, void*, const unsigned char*);
-extern "C" void __fastcall
-ByteVector_ReallocateAndInsert_00485f3a(
-    void*,
-    void*,
-    unsigned char*,
-    const unsigned char*,
-    void*,
-    unsigned long,
-    int);
+#pragma optimize("s", on)
 
-extern "C" __declspec(naked) void __fastcall
-ByteVector_InsertFill_00485f3a(
-    void*,
-    void*,
-    unsigned char*,
-    unsigned long,
-    const unsigned char*)
+extern "C" void* __cdecl malloc(unsigned int size);
+extern "C" void __cdecl free(void* block);
+
+namespace std {
+
+struct __true_type { __true_type() {} };
+
+void* __fastcall __copy_trivial(const void* first, const void* last, void* result);            // 0x00405BA0
+void* __fastcall __copy_trivial_backward(const void* first, const void* last, void* result);   // 0x00405BC0
+void __fastcall fill(unsigned char* first, unsigned char* last, const unsigned char& value);    // 0x0047CE40
+
+template <class _Tp> class vector
 {
-    __asm
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+
+    template <class _Tag> __declspec(noinline) void _M_insert_overflow(_Tp* position, const _Tp& x, const _Tag&,
+                                                                       unsigned int fill_len, bool atend = false)
     {
-        push ebp
-        mov ebp, esp
-        push ebx
-        push esi
-        push edi
-        mov edi, dword ptr [ebp + 0Ch]
-        test edi, edi
-        mov esi, ecx
-        jz insert_done
-
-        mov eax, dword ptr [esi + 4]
-        mov ecx, dword ptr [esi + 8]
-        sub ecx, eax
-        cmp ecx, edi
-        jb reallocate
-
-        mov ecx, dword ptr [ebp + 10h]
-        sub eax, dword ptr [ebp + 8]
-        mov cl, byte ptr [ecx]
-        cmp eax, edi
-        mov ebx, dword ptr [esi + 4]
-        mov byte ptr [ebp + 13h], cl
-        mov dword ptr [ebp + 0Ch], eax
-        mov edx, ebx
-        jbe insertion_reaches_end
-
-        mov ecx, ebx
-        sub ecx, edi
-        push ebx
-        mov dword ptr [ebp + 0Ch], ecx
-        call ByteVector_MoveConstructTail_00485f3a
-        add dword ptr [esi + 4], edi
-        mov esi, dword ptr [ebp + 8]
-        mov edx, dword ptr [ebp + 0Ch]
-        push ebx
-        mov ecx, esi
-        call ByteVector_MoveTailBackward_00485f3a
-        lea edx, dword ptr [esi + edi]
-        mov ecx, esi
-
-    fill_inserted_range:
-        lea eax, dword ptr [ebp + 13h]
-        push eax
-        call ByteVector_FillRange_00485f3a
-        jmp insert_done
-
-    insertion_reaches_end:
-        lea ecx, dword ptr [ebp + 13h]
-        sub edx, eax
-        push ecx
-        add edx, edi
-        mov ecx, ebx
-        call ByteVector_FillRange_00485f3a
-        sub edi, dword ptr [ebp + 0Ch]
-        mov ecx, dword ptr [ebp + 8]
-        add dword ptr [esi + 4], edi
-        push dword ptr [esi + 4]
-        mov edx, ebx
-        call ByteVector_MoveConstructTail_00485f3a
-        mov eax, dword ptr [ebp + 0Ch]
-        add dword ptr [esi + 4], eax
-        mov ecx, dword ptr [ebp + 8]
-        mov edx, ebx
-        jmp fill_inserted_range
-
-    reallocate:
-        push 0
-        push edi
-        lea eax, dword ptr [ebp + 0Bh]
-        push eax
-        push dword ptr [ebp + 10h]
-        mov ecx, esi
-        push dword ptr [ebp + 8]
-        call ByteVector_ReallocateAndInsert_00485f3a
-
-    insert_done:
-        pop edi
-        pop esi
-        pop ebx
-        pop ebp
-        ret 0Ch
+        // Same-TU stand-in for 0x00485B6C: grow, copy the head, fill, copy the tail (reads x, never the tag).
+        unsigned int old_size = (unsigned int)(_M_finish - _M_start);
+        unsigned int len = old_size + (old_size > fill_len ? old_size : fill_len);
+        _Tp* new_start = (_Tp*)malloc(len);
+        _Tp* new_finish = (_Tp*)__copy_trivial(_M_start, position, new_start);
+        for (unsigned int i = 0; i < fill_len; ++i)
+            *new_finish++ = x;
+        if (!atend)
+            new_finish = (_Tp*)__copy_trivial(position, _M_finish, new_finish);
+        free(_M_start);
+        _M_start = new_start;
+        _M_finish = new_finish;
+        _M_end_of_storage = new_start + len;
     }
+
+    void _M_fill_insert(_Tp* position, unsigned int n, const _Tp& x);
+};
+
+template <class _Tp>
+void vector<_Tp>::_M_fill_insert(_Tp* position, unsigned int n, const _Tp& x)
+{
+    if (n != 0) {
+        if ((unsigned int)(_M_end_of_storage - _M_finish) >= n) {
+            _Tp x_copy = x;
+            const unsigned int elems_after = _M_finish - position;
+            _Tp* old_finish = _M_finish;
+            if (elems_after > n) {
+                __copy_trivial(_M_finish - n, _M_finish, _M_finish);
+                _M_finish += n;
+                __copy_trivial_backward(position, old_finish - n, old_finish);
+                fill(position, position + n, x_copy);
+            }
+            else {
+                fill(_M_finish, _M_finish + (n - elems_after), x_copy);
+                _M_finish += n - elems_after;
+                __copy_trivial(position, old_finish, _M_finish);
+                _M_finish += elems_after;
+                fill(position, old_finish, x_copy);
+            }
+        }
+        else
+            _M_insert_overflow(position, x, __true_type(), n);
+    }
+}
+
+template void vector<unsigned char>::_M_fill_insert(unsigned char*, unsigned int, const unsigned char&);
+
 }

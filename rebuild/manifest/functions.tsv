@@ -14838,7 +14838,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0066f970	CInputTypeMouseWheelMovementDownEvent::GetControlDirection	CInputTypeMouseWheelMovementDownEvent	__thiscall	C2DVector	2	CInputTypeMouseWheelMovementDownEvent *,CInputEvent const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CInputTypeMouseWheelMovementDownEvent_GetControlDirection_0066f970.cpp
 0066f990	operator/=	C2DVector	unknown	undefined	0		0			discovered	boundary							
 0066f9b0	SetFacingAnglesFromRHSet	CTCPhysicsRigidBody	__thiscall	void	2	CTCPhysicsRigidBody *,CRightHandedSet *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CTCPhysicsRigidBody_SetFacingAnglesFromRHSet_0066f9b0.cpp
+0066f9e0	StoreFieldB4	_global	unknown	undefined	0		0			discovered	boundary							
+0066f9f0	x87_Exp	_global	unknown	undefined	0		0			discovered	boundary							
 0066fa10	StatGetTypeName	CCoopSpiritDef	unknown	undefined	0		0			discovered	boundary							
+0066fa30	ZeroFields_0C_10_14_18_1C_20_24	_global	unknown	undefined	0		0			discovered	boundary							
 0066fa50	AddExclusiveObserver	CObservable	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CObservable_AddExclusiveObserver_0066fa50.cpp
 0066fae0	ApplyMovementVector	CTCCoopSpirit	__thiscall	void	2	CTCCoopSpirit *,C3DVector *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CTCCoopSpirit_ApplyMovementVector_0066fae0.cpp
 0066fb00	AddExperience	CTCCoopSpirit	__thiscall	void	2	CTCCoopSpirit *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CTCCoopSpirit_AddExperience_0066fb00.cpp

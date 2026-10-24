@@ -168,3 +168,6 @@ address	module	name	length	evidence
 0059aae3	_STL::_Deque_iterator<NUISystem::CComponent*>	operator-	5	follows the ret at 0x59AAE2; one `jmp` to _M_subtract 0x59A8F3; landed catalog row (de-baked 2026-10-24)
 0066f990	C2DVector	operator/=	27	follows int3 padding after 0x66F970; X,Y times the reciprocal; landed catalog row (de-baked 2026-10-24)
 0066fa10	CCoopSpiritDef	StatGetTypeName	19	follows ret 8 + int3 padding at 0x66FA08; __fastcall static returning CCharString into ecx; landed catalog row (de-baked 2026-10-24)
+0066f9e0	_global	StoreFieldB4	13	follows int3 padding after SetFacingAnglesFromRHSet (0x66F9B0+38); stores the arg at this+0xB4, ret 4; landed catalog row (de-baked 2026-10-24)
+0066f9f0	_global	x87_Exp	27	follows the ret 4 at 0x66F9EA + int3 padding; fldl2e/f2xm1/fscale exp(x), ret 8; landed catalog row (de-baked 2026-10-24)
+0066fa30	_global	ZeroFields_0C_10_14_18_1C_20_24	24	follows int3 padding after StatGetTypeName 0x66FA10 (19 B); zeroes seven dwords then ret; landed catalog row (de-baked 2026-10-24)

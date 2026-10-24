@@ -1,64 +1,73 @@
+// Behaviour test for NProgressDisplay::GetProgressDisplay (0x009EA060): the returned counted
+// pointer carries the global's object and count block and holds one extra reference; a global
+// with no count block comes back as a plain copy.
 #include <stdio.h>
 
-#if defined(_MSC_VER)
-#define FABLE_FASTCALL __fastcall
-#else
-#define FABLE_FASTCALL
-#endif
+class CAProgressDisplay { public: int marker; };
 
-struct CProgressDisplay
-{
-    int marker;
-};
+typedef void (__fastcall *FableDestroyReferencedObject)(void* object);
 
 struct FableReferenceCount
 {
     long owners;
-    void* destroy;
+    FableDestroyReferencedObject destroy;
     void* object;
 };
 
-struct CCountedProgressDisplay
+static int g_destroyed = 0;
+static void __fastcall DestroyDisplay(void*) { ++g_destroyed; }
+
+template <class T>
+class CCountedPointer
 {
-    CProgressDisplay* object;
-    FableReferenceCount* reference;
+public:
+    T* Data;
+    FableReferenceCount* Info;
+
+    CCountedPointer(const CCountedPointer& other)
+        : Data(other.Data), Info(other.Info)
+    {
+        if (Info)
+            ++Info->owners;
+    }
+    CCountedPointer(T* data, FableReferenceCount* info) : Data(data), Info(info) {}
+    ~CCountedPointer()
+    {
+        if (Info && --Info->owners == 0)
+            Info->destroy(Info->object);
+    }
 };
 
-CProgressDisplay* g_FableProgressDisplayObject_013CAA38 = 0;
-FableReferenceCount* g_FableProgressDisplayReference_013CAA3C = 0;
+static CAProgressDisplay g_display;
+static FableReferenceCount g_block = { 1, DestroyDisplay, &g_display };
 
-CCountedProgressDisplay* FABLE_FASTCALL GetProgressDisplay(
-    CCountedProgressDisplay* result);
+namespace NProgressDisplay
+{
+    CCountedPointer<CAProgressDisplay> PProgressDisplay(&g_display, &g_block);
+
+    CCountedPointer<CAProgressDisplay> __fastcall GetProgressDisplay();
+
+    CCountedPointer<CAProgressDisplay> __fastcall GetProgressDisplay()
+    {
+        return PProgressDisplay;
+    }
+}
 
 int main()
 {
-    CProgressDisplay display = {0x12345678};
-    FableReferenceCount reference = {2, 0, &display};
-    g_FableProgressDisplayObject_013CAA38 = &display;
-    g_FableProgressDisplayReference_013CAA3C = &reference;
-
-    CCountedProgressDisplay result = {};
-    if (
-        GetProgressDisplay(&result) != &result ||
-        result.object != &display ||
-        result.reference != &reference ||
-        reference.owners != 3)
     {
-        return 1;
+        CCountedPointer<CAProgressDisplay> got = NProgressDisplay::GetProgressDisplay();
+        if (got.Data != &g_display || got.Info != &g_block) { printf("FAIL copy\n"); return 1; }
+        if (g_block.owners != 2) { printf("FAIL addref %ld\n", g_block.owners); return 1; }
     }
+    if (g_block.owners != 1 || g_destroyed != 0) { printf("FAIL release\n"); return 1; }
 
-    g_FableProgressDisplayObject_013CAA38 = 0;
-    g_FableProgressDisplayReference_013CAA3C = 0;
-    CCountedProgressDisplay empty = {};
-    if (
-        GetProgressDisplay(&empty) != &empty ||
-        empty.object != 0 ||
-        empty.reference != 0 ||
-        reference.owners != 3)
+    NProgressDisplay::PProgressDisplay.Info = 0;
     {
-        return 2;
+        CCountedPointer<CAProgressDisplay> plain = NProgressDisplay::GetProgressDisplay();
+        if (plain.Data != &g_display || plain.Info != 0) { printf("FAIL null block\n"); return 1; }
     }
-
+    if (g_block.owners != 1) { printf("FAIL untouched block\n"); return 1; }
     printf("FABLETLC_GET_PROGRESS_DISPLAY_BEHAVIOR PASS\n");
     return 0;
 }

@@ -1,179 +1,102 @@
-#include <cstdio>
-
-#include "../../../src/compiled/00/99/CFileDataInputStream_CFileDataInputStream_00994700.cpp"
-
-struct TestFile_00994700
+// Behaviour test for CFileDataInputStream::CFileDataInputStream(CAFile&, unsigned long) (0x00994700): the stream
+// words start at zero and File is kept; with a buffer the window covers the new buffer with the file's length
+// and the stream is moved to the file position; with size 0 nothing is allocated or positioned.
+#include <stdio.h>
+#include <string.h>
+inline void* operator new(unsigned int, void* p) { return p; }
+static int g_bases = 0;
+static int g_setPositions = 0;
+static unsigned long g_lastPosition = 0;
+class CAFile
 {
-    void** vtable;
+public:
+    long Position, Length;
+    virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
+    virtual void v04() {} virtual void v05() {} virtual void v06() {}
+    virtual long GetPosition() const { return Position; }
+    virtual void v08() {}
+    virtual long GetLength() const { return Length; }
 };
 
-struct TestFileDataInputStream_00994700
+class CBaseClassNonCopyable
 {
-    void* vtable;
-    unsigned long field04;
-    unsigned long field08;
-    void* field0c;
-    unsigned long field10;
-    unsigned long field14;
-    void* file;
-    void* buffer;
-    unsigned long capacity;
+public:
+    CBaseClassNonCopyable() { ++g_bases; }
+    virtual ~CBaseClassNonCopyable() {}
 };
 
-extern "C" void* CFileDataInputStream_VTable_00994700[1] = {
-    (void*)0x24681357
+class __declspec(novtable) CDataInputStream : public CBaseClassNonCopyable
+{
+public:
+    unsigned long StreamPos;                              // +0x04
+    long StreamSize;                                      // +0x08
+    const unsigned char* CurrentSourcePtr;                // +0x0c
+    unsigned long SourceChunkStreamPos;                   // +0x10
+    long SourceChunkBytesRemaining;                       // +0x14
+
+    CDataInputStream()
+        : StreamPos(0), StreamSize(0), CurrentSourcePtr(0), SourceChunkStreamPos(0), SourceChunkBytesRemaining(0)
+    {
+    }
+    void ResetSource(const unsigned char* source, long size)
+    {
+        CurrentSourcePtr = source;
+        StreamPos = 0;
+        SourceChunkStreamPos = 0;
+        StreamSize = size;
+        SourceChunkBytesRemaining = 0;
+    }
+    virtual void SetPosition(unsigned long position)      // 0x00993BC0 (test: record the request)
+    {
+        ++g_setPositions;
+        g_lastPosition = position;
+        StreamPos = position;
+    }
 };
 
-static unsigned char g_Buffer[64];
-static volatile int g_Sequence;
-static volatile int g_BaseSequence;
-static volatile int g_AllocateSequence;
-static volatile int g_GetPositionSequence;
-static volatile int g_GetSizeSequence;
-static volatile int g_SetPositionSequence;
-static volatile unsigned long g_AllocatedSize;
-static volatile unsigned long g_PositionSeen;
-static volatile int g_FieldsReadyAtSetPosition;
-static TestFileDataInputStream_00994700* volatile g_Stream;
-static TestFile_00994700* volatile g_File;
-
-extern "C" void* __fastcall
-CFileDataInputStream_ConstructBase_00994700(void* stream, void*)
+class CFileDataInputStream : public CDataInputStream
 {
-    g_BaseSequence = ++g_Sequence;
-    return stream;
-}
+public:
+    CAFile* File;                                         // +0x18
+    unsigned char* Buffer;                                // +0x1c
+    long BufferSize;                                      // +0x20
 
-extern "C" void* __cdecl
-CFileDataInputStream_AllocateBuffer_00994700(unsigned long size)
-{
-    g_AllocateSequence = ++g_Sequence;
-    g_AllocatedSize = size;
-    return g_Buffer;
-}
+    CFileDataInputStream(CAFile& file, unsigned long bufferSize);
+    virtual ~CFileDataInputStream() { if (BufferSize > 0) delete[] Buffer; }
+};
 
-extern "C" unsigned long __fastcall
-TestFileGetPosition_00994700(void* file, void*)
+CFileDataInputStream::CFileDataInputStream(CAFile& file, unsigned long bufferSize)
+    : File(&file)
 {
-    g_GetPositionSequence = ++g_Sequence;
-    return file == g_File ? 7 : 0;
-}
-
-extern "C" unsigned long __fastcall
-TestFileGetSize_00994700(void* file, void*)
-{
-    g_GetSizeSequence = ++g_Sequence;
-    return file == g_File ? 41 : 0;
-}
-
-extern "C" void __fastcall
-CFileDataInputStream_SetPosition_00994700(
-    void* stream,
-    void*,
-    unsigned long position)
-{
-    g_SetPositionSequence = ++g_Sequence;
-    TestFileDataInputStream_00994700* value =
-        (TestFileDataInputStream_00994700*)stream;
-    g_PositionSeen = position;
-    g_FieldsReadyAtSetPosition =
-        value == g_Stream &&
-        value->vtable == CFileDataInputStream_VTable_00994700 &&
-        value->file == g_File &&
-        value->buffer == g_Buffer &&
-        value->capacity == 32 &&
-        value->field04 == 0 &&
-        value->field08 == 41 &&
-        value->field0c == g_Buffer &&
-        value->field10 == 0 &&
-        value->field14 == 0;
-}
-
-static void ResetProbe()
-{
-    g_Sequence = 0;
-    g_BaseSequence = 0;
-    g_AllocateSequence = 0;
-    g_GetPositionSequence = 0;
-    g_GetSizeSequence = 0;
-    g_SetPositionSequence = 0;
-    g_AllocatedSize = 0;
-    g_PositionSeen = 0;
-    g_FieldsReadyAtSetPosition = 0;
+    if (bufferSize > 0)
+    {
+        Buffer = new unsigned char[bufferSize];
+        BufferSize = bufferSize;
+        ResetSource(Buffer, file.GetLength());
+        SetPosition(file.GetPosition());
+    }
 }
 
 int main()
 {
-    void* fileVtable[10] = { 0 };
-    fileVtable[7] = (void*)&TestFileGetPosition_00994700;
-    fileVtable[9] = (void*)&TestFileGetSize_00994700;
-    TestFile_00994700 file;
-    file.vtable = fileVtable;
-    g_File = &file;
-
-    typedef void* (__fastcall *ConstructorFunction)(
-        void*,
-        void*,
-        void*,
-        unsigned long);
-    ConstructorFunction volatile construct =
-        &CFileDataInputStream_CFileDataInputStream_00994700;
-
-    TestFileDataInputStream_00994700 stream;
-    stream.buffer = (void*)0xaaaaaaaa;
-    stream.capacity = 0xbbbbbbbb;
-    g_Stream = &stream;
-    ResetProbe();
-    void* result = construct(&stream, 0, &file, 32);
-
-    int failures = 0;
-    if (result != &stream ||
-        g_BaseSequence != 1 ||
-        g_AllocateSequence != 2 ||
-        g_GetSizeSequence != 3 ||
-        g_GetPositionSequence != 4 ||
-        g_SetPositionSequence != 5 ||
-        g_AllocatedSize != 32 ||
-        g_PositionSeen != 7 ||
-        g_FieldsReadyAtSetPosition != 1)
+    CAFile file;
+    file.Position = 40; file.Length = 1000;
     {
-        ++failures;
+        CFileDataInputStream s(file, 256);
+        if (g_bases != 1 || s.File != &file || s.BufferSize != 256 || s.Buffer == 0) { printf("FAIL buffer\n"); return 1; }
+        if (s.CurrentSourcePtr != s.Buffer || s.StreamSize != 1000 || s.SourceChunkStreamPos != 0 || s.SourceChunkBytesRemaining != 0)
+        { printf("FAIL window\n"); return 1; }
+        if (g_setPositions != 1 || g_lastPosition != 40 || s.StreamPos != 40) { printf("FAIL position\n"); return 1; }
+        memset(s.Buffer, 0x5a, 256);
     }
-
-    stream.buffer = (void*)0xaaaaaaaa;
-    stream.capacity = 0xbbbbbbbb;
-    g_Stream = &stream;
-    ResetProbe();
-    result = construct(&stream, 0, &file, 0);
-
-    if (result != &stream ||
-        g_BaseSequence != 1 ||
-        g_AllocateSequence != 0 ||
-        g_GetPositionSequence != 0 ||
-        g_GetSizeSequence != 0 ||
-        g_SetPositionSequence != 0 ||
-        stream.vtable != CFileDataInputStream_VTable_00994700 ||
-        stream.file != &file ||
-        stream.field04 != 0 ||
-        stream.field08 != 0 ||
-        stream.field0c != 0 ||
-        stream.field10 != 0 ||
-        stream.field14 != 0 ||
-        stream.buffer != (void*)0xaaaaaaaa ||
-        stream.capacity != 0xbbbbbbbb)
     {
-        ++failures;
+        unsigned char raw[sizeof(CFileDataInputStream)];
+        memset(raw, 0xcd, sizeof(raw));
+        CFileDataInputStream* p = new (raw) CFileDataInputStream(file, 0);
+        if (p->File != &file || p->StreamPos != 0 || p->StreamSize != 0 || p->CurrentSourcePtr != 0 || p->SourceChunkStreamPos != 0
+            || p->SourceChunkBytesRemaining != 0 || g_setPositions != 1) { printf("FAIL empty\n"); return 1; }
+        if (p->BufferSize != (long)0xcdcdcdcd) { printf("FAIL untouched size\n"); return 1; }
     }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "FILE_DATA_STREAM_00994700_TEST FAIL count=%d sequence=%d\n",
-            failures,
-            g_Sequence);
-        return 1;
-    }
-
-    std::printf("FILE_DATA_STREAM_00994700_TEST PASS\n");
+    printf("FILE_DATA_STREAM_00994700_TEST PASS\n");
     return 0;
 }

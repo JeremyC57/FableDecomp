@@ -1478,8 +1478,7 @@ $catalog = @(
         Module = 'CTCCreatureOpinionOfHero'
         Source = '00/68/CTCCreatureOpinionOfHero_IsWillingToStartFollowingHero_006818a0.cpp'
         TestSource = '00/68/CTCCreatureOpinionOfHero_IsWillingToStartFollowingHero_006818a0_test.cpp'
-        PassPattern = 'CTCCreatureOpinionOfHero_006818a0_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '006818a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00412130'
@@ -2810,7 +2809,6 @@ $catalog = @(
         Source = '00/41/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c800.cpp'
         TestSource = '00/41/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c800_test.cpp'
         PassPattern = 'PASS_0041c800'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004167a7'
@@ -2826,7 +2824,6 @@ $catalog = @(
         Source = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d1c8.cpp'
         TestSource = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d1c8_test.cpp'
         PassPattern = 'PASS_0041d1c8'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041d8a8'
@@ -2849,7 +2846,6 @@ $catalog = @(
         Source = '00/42/mapCCharString_operator_0042d131.cpp'
         TestSource = '00/42/mapCCharString_operator_0042d131_test.cpp'
         PassPattern = 'PASS_0042d131'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042dec5'
@@ -6834,8 +6830,7 @@ $catalog = @(
         Module = 'CFrontEndList'
         Source = '00/54/CFrontEndList_ScrollDown_0054c810.cpp'
         TestSource = '00/54/CFrontEndList_ScrollDown_0054c810_test.cpp'
-        PassPattern = 'FRONTEND_0054c810_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '0054c810_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005952c3'
@@ -6864,7 +6859,6 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce.cpp'
         TestSource = '00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce_test.cpp'
         PassPattern = 'FSE2_00596CCE_TEST PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059a238'
@@ -6872,7 +6866,6 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_Action_0059a238.cpp'
         TestSource = '00/59/CFrontEndManager_Action_0059a238_test.cpp'
         PassPattern = 'FRONTEND_ACTION_0059A238_TEST PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00597006'
@@ -6887,8 +6880,7 @@ $catalog = @(
         Module = 'CFrontEndManager'
         Source = '00/59/CFrontEndManager_DoPressStart_00599d5c.cpp'
         TestSource = '00/59/CFrontEndManager_DoPressStart_00599d5c_test.cpp'
-        PassPattern = 'FSE2_00599d5c_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '00599d5c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0059aa64'
@@ -26001,7 +25993,6 @@ $catalog = @(
         Source = '00/9e/Global_GetProgressDisplay_009ea060.cpp'
         TestSource = '00/9e/Global_GetProgressDisplay_009ea060_test.cpp'
         PassPattern = 'FABLETLC_GET_PROGRESS_DISPLAY_BEHAVIOR PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00595a03'
@@ -28992,7 +28983,6 @@ $catalog = @(
         Source = '00/a0/Global_FableViewportE2_00a0aac0.cpp'
         TestSource = '00/a0/Global_FableViewportE2_00a0aac0_test.cpp'
         PassPattern = 'FABLETLC_VIEWPORT_E2_BEHAVIOR PASS'
-        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '009bf490'
@@ -29225,7 +29215,6 @@ $catalog = @(
         Source = '00/9e/CPixelFormat_InitialiseD3DFormat_009e3830.cpp'
         TestSource = '00/9e/CPixelFormat_InitialiseD3DFormat_009e3830_test.cpp'
         PassPattern = 'FABLETLC_PIXEL_FORMAT_INITIALISE PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009df060'
@@ -30142,16 +30131,14 @@ $catalog = @(
         Module = 'CFrontendGameComponent'
         Source = '00/49/CFrontendGameComponent_ChooseWorldNumber_00494710.cpp'
         TestSource = '00/49/CFrontendGameComponent_ChooseWorldNumber_00494710_test.cpp'
-        PassPattern = 'FRONTEND_00494710_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '00494710_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0089df70'
         Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_EntityGetShotStrikePos_0089df70.cpp'
         TestSource = '00/89/CGameScriptInterface_EntityGetShotStrikePos_0089df70_test.cpp'
-        PassPattern = 'FSE2_0089df70_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '0089df70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00495610'
@@ -30346,21 +30333,18 @@ $catalog = @(
         Source = '00/66/StoreFieldB4_0066f9e0.cpp'
         TestSource = '00/66/StoreFieldB4_0066f9e0_test.cpp'
         PassPattern = 'PASS field-0xB4 setter 0x0066F9E0'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f9f0'; Module = 'math'
         Source = '00/66/x87_Exp_0066f9f0.cpp'
         TestSource = '00/66/x87_Exp_0066f9f0_test.cpp'
         PassPattern = 'PASS x87 exponential helper 0x0066F9F0'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00994700'; Module = 'CFileDataInputStream'
         Source = '00/99/CFileDataInputStream_CFileDataInputStream_00994700.cpp'
         TestSource = '00/99/CFileDataInputStream_CFileDataInputStream_00994700_test.cpp'
-        PassPattern = 'FILE_DATA_STREAM_00994700_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '00994700_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0089a2d0'; Module = 'CGameScriptInterface'
@@ -30379,7 +30363,6 @@ $catalog = @(
         Source = '00/66/ZeroFields_0C_10_14_18_1C_20_24_0066fa30.cpp'
         TestSource = '00/66/ZeroFields_0C_10_14_18_1C_20_24_0066fa30_test.cpp'
         PassPattern = 'PASS seven-field zero initializer 0x0066FA30'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fa50'; Module = 'CObservable'
@@ -30421,8 +30404,7 @@ $catalog = @(
         Address = '00485f3a'; Module = 'byte-vector'
         Source = '00/48/ByteVector_InsertFill_00485f3a.cpp'
         TestSource = '00/48/ByteVector_InsertFill_00485f3a_test.cpp'
-        PassPattern = 'BYTE_VECTOR_INSERT_00485f3a_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '00485f3a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0089a510'; Module = 'CGameScriptInterface'
@@ -32182,7 +32164,6 @@ $catalog = @(
         Source = '00/bf/global_ehvectordestructoriterator_00bfeed8.cpp'
         TestSource = '00/bf/global_ehvectordestructoriterator_00bfeed8_test.cpp'
         PassPattern = 'PASS_00BFEED8_OK'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009a0590'

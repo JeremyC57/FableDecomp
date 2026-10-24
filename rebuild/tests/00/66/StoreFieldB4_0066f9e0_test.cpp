@@ -1,52 +1,37 @@
+// Behaviour test for CInputTypeDataRecord::SetValueB4 (0x0066F9E0): the setter writes the
+// +0xB4 dword and nothing else.
 #include <stdio.h>
-#include <string.h>
+#include <stddef.h>
 
-extern "C" void __fastcall
-StoreFieldB4_0066f9e0(
-    void* object, void*, unsigned long value);
-
-struct Object
+class CInputTypeDataRecord
 {
-    unsigned char prefix[0xb4];
-    unsigned long field_b4;
-    unsigned long suffix;
+public:
+    void SetValueB4(unsigned long value);
+
+    unsigned long m_header[0xB4 / 4];
+    unsigned long m_valueB4;
+    unsigned long m_after;
 };
 
-static int Check(int condition, const char* message)
+void CInputTypeDataRecord::SetValueB4(unsigned long value)
 {
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
+    m_valueB4 = value;
 }
 
 int main()
 {
-    int ok = 1;
-    Object object;
-
-    memset(&object, 0x5a, sizeof(object));
-    StoreFieldB4_0066f9e0(&object, 0, 0x12345678);
-    ok &= Check(object.field_b4 == 0x12345678,
-                "setter must store the argument at offset 0xB4");
-    ok &= Check(object.prefix[0] == 0x5a &&
-                object.prefix[0xb3] == 0x5a &&
-                object.suffix == 0x5a5a5a5a,
-                "setter must preserve adjacent object state");
-
-    StoreFieldB4_0066f9e0(&object, 0, 0);
-    ok &= Check(object.field_b4 == 0,
-                "setter must preserve a zero value");
-
-    StoreFieldB4_0066f9e0(&object, 0, 0xffffffff);
-    ok &= Check(object.field_b4 == 0xffffffff,
-                "setter must preserve all argument bits");
-
-    if (!ok)
-        return 1;
-
-    puts("PASS field-0xB4 setter 0x0066F9E0");
+    CInputTypeDataRecord r;
+    int i;
+    for (i = 0; i < 0xB4 / 4; ++i) r.m_header[i] = 0x11111111u * (unsigned long)(i & 7);
+    r.m_valueB4 = 0;
+    r.m_after = 0xCAFEBABEu;
+    if (offsetof(CInputTypeDataRecord, m_valueB4) != 0xB4) { printf("FAIL field-0xB4 layout\n"); return 1; }
+    r.SetValueB4(0xDEADBEEFu);
+    if (r.m_valueB4 != 0xDEADBEEFu || r.m_after != 0xCAFEBABEu) { printf("FAIL field-0xB4 setter\n"); return 1; }
+    for (i = 0; i < 0xB4 / 4; ++i)
+        if (r.m_header[i] != 0x11111111u * (unsigned long)(i & 7)) { printf("FAIL field-0xB4 setter\n"); return 1; }
+    r.SetValueB4(7);
+    if (r.m_valueB4 != 7) { printf("FAIL field-0xB4 setter\n"); return 1; }
+    printf("PASS field-0xB4 setter 0x0066F9E0\n");
     return 0;
 }

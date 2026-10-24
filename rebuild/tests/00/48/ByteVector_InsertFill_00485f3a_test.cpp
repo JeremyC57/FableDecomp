@@ -1,191 +1,111 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for std::vector<unsigned char>::_M_fill_insert (0x00485F3A): inserting n copies of x before
+// position, through the slide-tail branch (elems_after > n), the fill-past-end branch and the grow branch.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-#include "../../../src/compiled/00/48/ByteVector_InsertFill_00485f3a.cpp"
+namespace std {
 
-struct TestByteVector_00485f3a
+struct __true_type { __true_type() {} };
+
+void* __fastcall __copy_trivial(const void* first, const void* last, void* result)
 {
-    unsigned char* begin;
-    unsigned char* end;
-    unsigned char* capacityEnd;
+    unsigned int n = (unsigned int)((const char*)last - (const char*)first);
+    return (char*)memmove(result, first, n) + n;
+}
+void* __fastcall __copy_trivial_backward(const void* first, const void* last, void* result)
+{
+    int n = (int)((const char*)last - (const char*)first);
+    if (n > 0) memmove((char*)result - n, first, n);
+    return (char*)result - n;
+}
+void __fastcall fill(unsigned char* first, unsigned char* last, const unsigned char& value)
+{
+    memset(first, value, last - first);
+}
+
+template <class _Tp> class vector
+{
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+
+    template <class _Tag> __declspec(noinline) void _M_insert_overflow(_Tp* position, const _Tp& x, const _Tag&,
+                                                                       unsigned int fill_len, bool atend = false)
+    {
+        // Same-TU stand-in for 0x00485B6C: grow, copy the head, fill, copy the tail (reads x, never the tag).
+        unsigned int old_size = (unsigned int)(_M_finish - _M_start);
+        unsigned int len = old_size + (old_size > fill_len ? old_size : fill_len);
+        _Tp* new_start = (_Tp*)malloc(len);
+        _Tp* new_finish = (_Tp*)__copy_trivial(_M_start, position, new_start);
+        for (unsigned int i = 0; i < fill_len; ++i)
+            *new_finish++ = x;
+        if (!atend)
+            new_finish = (_Tp*)__copy_trivial(position, _M_finish, new_finish);
+        free(_M_start);
+        _M_start = new_start;
+        _M_finish = new_finish;
+        _M_end_of_storage = new_start + len;
+    }
+
+    void _M_fill_insert(_Tp* position, unsigned int n, const _Tp& x);
 };
 
-static int g_MoveConstructCalls;
-static int g_MoveBackwardCalls;
-static int g_FillCalls;
-static int g_ReallocateCalls;
-static void* g_VectorSeen;
-static unsigned char* g_PositionSeen;
-static const unsigned char* g_ValueSeen;
-static void* g_AuxSeen;
-static unsigned long g_CountSeen;
-static int g_ZeroSeen;
-
-extern "C" void __fastcall
-ByteVector_MoveConstructTail_00485f3a(
-    void* beginValue,
-    void* endValue,
-    void* destinationEndValue)
+template <class _Tp>
+void vector<_Tp>::_M_fill_insert(_Tp* position, unsigned int n, const _Tp& x)
 {
-    ++g_MoveConstructCalls;
-    unsigned char* begin = (unsigned char*)beginValue;
-    unsigned char* end = (unsigned char*)endValue;
-    unsigned char* destinationEnd = (unsigned char*)destinationEndValue;
-    while (end != begin)
-    {
-        --end;
-        --destinationEnd;
-        *destinationEnd = *end;
+    if (n != 0) {
+        if ((unsigned int)(_M_end_of_storage - _M_finish) >= n) {
+            _Tp x_copy = x;
+            const unsigned int elems_after = _M_finish - position;
+            _Tp* old_finish = _M_finish;
+            if (elems_after > n) {
+                __copy_trivial(_M_finish - n, _M_finish, _M_finish);
+                _M_finish += n;
+                __copy_trivial_backward(position, old_finish - n, old_finish);
+                fill(position, position + n, x_copy);
+            }
+            else {
+                fill(_M_finish, _M_finish + (n - elems_after), x_copy);
+                _M_finish += n - elems_after;
+                __copy_trivial(position, old_finish, _M_finish);
+                _M_finish += elems_after;
+                fill(position, old_finish, x_copy);
+            }
+        }
+        else
+            _M_insert_overflow(position, x, __true_type(), n);
     }
 }
 
-extern "C" void __fastcall
-ByteVector_MoveTailBackward_00485f3a(
-    void* beginValue,
-    void* endValue,
-    void* destinationEndValue)
-{
-    ++g_MoveBackwardCalls;
-    unsigned char* begin = (unsigned char*)beginValue;
-    unsigned char* end = (unsigned char*)endValue;
-    unsigned char* destinationEnd = (unsigned char*)destinationEndValue;
-    while (end != begin)
-    {
-        --end;
-        --destinationEnd;
-        *destinationEnd = *end;
-    }
+
 }
 
-extern "C" void __fastcall
-ByteVector_FillRange_00485f3a(
-    void* beginValue,
-    void* endValue,
-    const unsigned char* value)
+static int Same(const std::vector<unsigned char>& v, const char* want)
 {
-    ++g_FillCalls;
-    unsigned char* begin = (unsigned char*)beginValue;
-    unsigned char* end = (unsigned char*)endValue;
-    while (begin != end)
-    {
-        *begin++ = *value;
-    }
-}
-
-extern "C" void __fastcall
-ByteVector_ReallocateAndInsert_00485f3a(
-    void* vector,
-    void*,
-    unsigned char* position,
-    const unsigned char* value,
-    void* auxiliary,
-    unsigned long count,
-    int zero)
-{
-    ++g_ReallocateCalls;
-    g_VectorSeen = vector;
-    g_PositionSeen = position;
-    g_ValueSeen = value;
-    g_AuxSeen = auxiliary;
-    g_CountSeen = count;
-    g_ZeroSeen = zero;
-}
-
-static void ResetProbes()
-{
-    g_MoveConstructCalls = 0;
-    g_MoveBackwardCalls = 0;
-    g_FillCalls = 0;
-    g_ReallocateCalls = 0;
-    g_VectorSeen = 0;
-    g_PositionSeen = 0;
-    g_ValueSeen = 0;
-    g_AuxSeen = 0;
-    g_CountSeen = 0;
-    g_ZeroSeen = -1;
+    unsigned int n = (unsigned int)strlen(want);
+    return (unsigned int)(v._M_finish - v._M_start) == n && memcmp(v._M_start, want, n) == 0;
 }
 
 int main()
 {
-    typedef void (__fastcall *InsertFunction)(
-        void*,
-        void*,
-        unsigned char*,
-        unsigned long,
-        const unsigned char*);
-    InsertFunction volatile insert = &ByteVector_InsertFill_00485f3a;
+    std::vector<unsigned char> v;
+    unsigned char x;
+    v._M_start = (unsigned char*)malloc(16);
+    memcpy(v._M_start, "abcdef", 6);
+    v._M_finish = v._M_start + 6;
+    v._M_end_of_storage = v._M_start + 16;
 
-    int failures = 0;
-    unsigned char fillValue = 0;
-    TestByteVector_00485f3a empty;
-    empty.begin = 0;
-    empty.end = 0;
-    empty.capacityEnd = 0;
-
-    ResetProbes();
-    insert(&empty, 0, empty.end, 12, &fillValue);
-    if (g_ReallocateCalls != 1 ||
-        g_VectorSeen != &empty ||
-        g_PositionSeen != empty.end ||
-        g_ValueSeen != &fillValue ||
-        g_AuxSeen == 0 ||
-        g_CountSeen != 12 ||
-        g_ZeroSeen != 0 ||
-        g_MoveConstructCalls != 0 ||
-        g_MoveBackwardCalls != 0 ||
-        g_FillCalls != 0)
-    {
-        ++failures;
-    }
-
-    unsigned char storage[12];
-    std::memset(storage, 0xCC, sizeof(storage));
-    storage[0] = 0x11;
-    storage[1] = 0x22;
-    TestByteVector_00485f3a reserved;
-    reserved.begin = storage;
-    reserved.end = storage + 2;
-    reserved.capacityEnd = storage + sizeof(storage);
-    fillValue = 0x7A;
-
-    ResetProbes();
-    insert(&reserved, 0, reserved.end, 3, &fillValue);
-    if (g_ReallocateCalls != 0 ||
-        g_MoveConstructCalls != 1 ||
-        g_MoveBackwardCalls != 0 ||
-        g_FillCalls != 2 ||
-        reserved.end != storage + 5 ||
-        storage[0] != 0x11 ||
-        storage[1] != 0x22 ||
-        storage[2] != 0x7A ||
-        storage[3] != 0x7A ||
-        storage[4] != 0x7A)
-    {
-        ++failures;
-    }
-
-    ResetProbes();
-    insert(&reserved, 0, reserved.end, 0, &fillValue);
-    if (g_ReallocateCalls != 0 ||
-        g_MoveConstructCalls != 0 ||
-        g_MoveBackwardCalls != 0 ||
-        g_FillCalls != 0 ||
-        reserved.end != storage + 5)
-    {
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "BYTE_VECTOR_INSERT_00485f3a_TEST FAIL count=%d realloc=%d fill=%d move=%d\n",
-            failures,
-            g_ReallocateCalls,
-            g_FillCalls,
-            g_MoveConstructCalls);
-        return 1;
-    }
-
-    std::printf("BYTE_VECTOR_INSERT_00485f3a_TEST PASS\n");
+    x = 'X'; v._M_fill_insert(v._M_start + 1, 2, x);          // after = 5 > 2
+    if (!Same(v, "aXXbcdef")) { printf("FAIL slide\n"); return 1; }
+    x = 'Y'; v._M_fill_insert(v._M_start + 6, 3, x);          // after = 2 <= 3
+    if (!Same(v, "aXXbcdYYYef")) { printf("FAIL fill past end\n"); return 1; }
+    x = 'Z'; v._M_fill_insert(v._M_start + 2, 0, x);          // n == 0: nothing
+    if (!Same(v, "aXXbcdYYYef")) { printf("FAIL zero\n"); return 1; }
+    x = 'W'; v._M_fill_insert(v._M_start + 11, 7, x);         // 5 free: grow
+    if (!Same(v, "aXXbcdYYYefWWWWWWW") || v._M_end_of_storage - v._M_start < 18) { printf("FAIL grow\n"); return 1; }
+    free(v._M_start);
+    printf("BYTE_VECTOR_INSERT_00485f3a_TEST PASS\n");
     return 0;
 }

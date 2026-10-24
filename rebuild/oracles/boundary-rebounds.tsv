@@ -4,3 +4,6 @@ address	old_length	new_length	date	evidence
 0059aa64	34	33	2026-10-24	ret 8 at +0x1e; byte +0x21 (0x59AA85) is a separate 1-byte ret function (de-bake B)
 0066f060	280	424	2026-10-24	280 code bytes plus the three inline jump tables (0x66F178-0x66F208) before the int3 padding (de-bake B)
 00bfee7a	47	94	2026-10-24	CRT __ArrayUnwind: SEH prolog, filter, handler and the noreturn terminate call with its trailing int3 (0x5E bytes; the row had the first 47) (de-bake B)
+0041c800	23	26	2026-10-24	de-bake A: retail body runs to the jne;ret at +0x19 (catalog cut it at 23)
+006818a0	47	71	2026-10-24	de-bake A: includes the jump table at 0x6818D0 and byte index table that the switch reads
+00bfeed8	72	96	2026-10-24	de-bake A: includes the __finally block ending ret at 0xBFEF37

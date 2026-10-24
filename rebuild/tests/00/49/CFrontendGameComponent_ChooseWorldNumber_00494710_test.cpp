@@ -1,152 +1,120 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for CFrontendGameComponent::ChooseWorldNumber (0x00494710): number is 1-based within the
+// page starting at WorldNamesOffset; an in-range pick stores "<name>.wld" in WorldToLoad and calls SetQuit,
+// an out-of-range pick (0, too large, before the list) changes nothing.
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#include "../../../src/compiled/00/49/CFrontendGameComponent_ChooseWorldNumber_00494710.cpp"
+typedef unsigned short wchar16;
 
-extern "C" unsigned short FrontEndWorldSuffix_00494710[] =
+static int WLen(const wchar16* s) { int n = 0; while (s[n]) ++n; return n; }
+
+class CWideString
 {
-    '.', 'w', 'l', 'd', 0
+public:
+    void* PData;
+    CWideString() : PData(0) {}
+    CWideString(const CWideString& o) : PData(0) { *this = o; }
+    CWideString& operator=(const CWideString& other)
+    {
+        if (this == &other) return *this;
+        free(PData); PData = 0;
+        if (other.PData) {
+            int n = WLen((const wchar16*)other.PData);
+            PData = malloc((n + 1) * sizeof(wchar16));
+            memcpy(PData, other.PData, (n + 1) * sizeof(wchar16));
+        }
+        return *this;
+    }
+    ~CWideString() { free(PData); }
 };
 
-static int g_Sequence;
-static int g_ConcatSequence;
-static int g_AssignSequence;
-static int g_DestroySequence;
-static int g_CommitSequence;
-static const FrontEndWideString_00494710* g_ConcatSource;
-static const unsigned short* g_ConcatSuffix;
-static FrontEndWideString_00494710* g_Temporary;
-static FrontEndWideString_00494710* g_AssignDestination;
-static const FrontEndWideString_00494710* g_AssignSource;
-static CFrontendGameComponent_00494710* g_CommitThis;
-
-extern "C" FrontEndWideString_00494710* __fastcall
-FrontEndWideStringConcat_00494710(
-    FrontEndWideString_00494710* result,
-    const FrontEndWideString_00494710* source,
-    const unsigned short* suffix)
+static CWideString Make(const char* a)
 {
-    g_ConcatSequence = ++g_Sequence;
-    g_ConcatSource = source;
-    g_ConcatSuffix = suffix;
-    g_Temporary = result;
-    result->data = source->data;
-    return result;
+    CWideString s;
+    int n = (int)strlen(a), i;
+    wchar16* p = (wchar16*)malloc((n + 1) * sizeof(wchar16));
+    for (i = 0; i <= n; ++i) p[i] = (wchar16)(unsigned char)a[i];
+    s.PData = p;
+    return s;
 }
 
-extern "C" FrontEndWideString_00494710* __fastcall
-FrontEndWideStringAssign_00494710(
-    FrontEndWideString_00494710* destination,
-    void*,
-    const FrontEndWideString_00494710* source)
+CWideString __fastcall operator+(const CWideString& left, const wchar16* right)
 {
-    g_AssignSequence = ++g_Sequence;
-    g_AssignDestination = destination;
-    g_AssignSource = source;
-    destination->data = source->data;
-    return destination;
+    CWideString r;
+    int a = left.PData ? WLen((const wchar16*)left.PData) : 0, b = WLen(right);
+    wchar16* p = (wchar16*)malloc((a + b + 1) * sizeof(wchar16));
+    if (a) memcpy(p, left.PData, a * sizeof(wchar16));
+    memcpy(p + a, right, (b + 1) * sizeof(wchar16));
+    r.PData = p;
+    return r;
 }
 
-extern "C" void __fastcall
-FrontEndWideStringDestroy_00494710(
-    FrontEndWideString_00494710* value,
-    void*)
+struct CWideStringVector
 {
-    g_DestroySequence = ++g_Sequence;
-    if (value != g_Temporary)
+    CWideString* _M_start;
+    CWideString* _M_finish;
+    CWideString* _M_end_of_storage;
+    CWideString* begin() const { return _M_start; }
+    unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
+    CWideString& operator[](unsigned long n) const { return *(begin() + n); }
+};
+
+static int g_quits = 0;
+
+class CFrontendGameComponent
+{
+public:
+    virtual void v00() {}
+    virtual void v01() {}
+    virtual void v02() {}
+    virtual void v03() {}
+    virtual void SetQuit() { ++g_quits; }
+    void ChooseWorldNumber(long number);
+
+    unsigned char _members[16];
+    CWideStringVector WorldNames;
+    long WorldNamesOffset;
+    CWideString WorldToLoad;
+};
+
+void CFrontendGameComponent::ChooseWorldNumber(long number)
+{
+    unsigned long index = WorldNamesOffset + number - 1;
+    if (index < WorldNames.size())
     {
-        g_DestroySequence = -1;
+        WorldToLoad = WorldNames[index] + (const wchar16*)L".wld";
+        SetQuit();
     }
 }
 
-extern "C" void __fastcall
-FrontEndWorldCommit_00494710(
-    CFrontendGameComponent_00494710* component,
-    void*)
+static int Is(const CWideString& s, const char* want)
 {
-    g_CommitSequence = ++g_Sequence;
-    g_CommitThis = component;
-}
-
-static void ResetProbe()
-{
-    g_Sequence = 0;
-    g_ConcatSequence = 0;
-    g_AssignSequence = 0;
-    g_DestroySequence = 0;
-    g_CommitSequence = 0;
-    g_ConcatSource = 0;
-    g_ConcatSuffix = 0;
-    g_Temporary = 0;
-    g_AssignDestination = 0;
-    g_AssignSource = 0;
-    g_CommitThis = 0;
+    const wchar16* p = (const wchar16*)s.PData;
+    int i, n = (int)strlen(want);
+    if (!p) return n == 0;
+    for (i = 0; i <= n; ++i) if (p[i] != (wchar16)(unsigned char)want[i]) return 0;
+    return 1;
 }
 
 int main()
 {
-    int failures = 0;
-    void* vtable[5] = { 0, 0, 0, 0, (void*)&FrontEndWorldCommit_00494710 };
-    FrontEndWideString_00494710 entries[5];
-    CFrontendGameComponent_00494710 component;
-    int unchanged_value = 0;
+    CWideString names[4];
+    CFrontendGameComponent fe;
+    names[0] = Make("Albion"); names[1] = Make("Oakvale"); names[2] = Make("Bowerstone"); names[3] = Make("Arena");
+    fe.WorldNames._M_start = names; fe.WorldNames._M_finish = names + 4; fe.WorldNames._M_end_of_storage = names + 4;
+    fe.WorldNamesOffset = 1;
 
-    std::memset(&component, 0, sizeof(component));
-    component.vtable = vtable;
-    component.entries_begin = entries;
-    component.entries_end = entries + 5;
-    component.entries_capacity = entries + 5;
-    component.first_visible_entry = 2;
-    entries[2].data = (void*)"world_three";
-    component.selected_world.data = (void*)"old";
-    ResetProbe();
-
-    component.ChooseWorldNumber(1);
-    if (g_ConcatSequence != 1 ||
-        g_AssignSequence != 2 ||
-        g_DestroySequence != 3 ||
-        g_CommitSequence != 4 ||
-        g_ConcatSource != entries + 2 ||
-        g_ConcatSuffix != FrontEndWorldSuffix_00494710 ||
-        g_AssignDestination != &component.selected_world ||
-        g_AssignSource != g_Temporary ||
-        g_CommitThis != &component ||
-        component.selected_world.data != entries[2].data)
-    {
-        std::printf("valid world selection/order failed\n");
-        ++failures;
-    }
-
-    ResetProbe();
-    component.selected_world.data = &unchanged_value;
-    component.ChooseWorldNumber(4);
-    if (g_Sequence != 0 ||
-        component.selected_world.data != &unchanged_value)
-    {
-        std::printf(
-            "out-of-range selection failed sequence=%d first=%lu\n",
-            g_Sequence,
-            component.first_visible_entry);
-        ++failures;
-    }
-
-    component.first_visible_entry = 0;
-    ResetProbe();
-    component.ChooseWorldNumber(0);
-    if (g_Sequence != 0)
-    {
-        std::printf("unsigned one-based underflow guard failed\n");
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "FRONTEND_00494710_TEST FAIL count=%d\n",
-            failures);
-        return 1;
-    }
-
-    std::printf("FRONTEND_00494710_TEST PASS\n");
+    fe.ChooseWorldNumber(2);                       // index 2 -> Bowerstone
+    if (!Is(fe.WorldToLoad, "Bowerstone.wld") || g_quits != 1) { printf("FAIL pick\n"); return 1; }
+    fe.ChooseWorldNumber(4);                       // index 4: past the end
+    fe.ChooseWorldNumber(0);                       // index 0 -> Albion (offset 1, number 0)
+    if (!Is(fe.WorldToLoad, "Albion.wld") || g_quits != 2) { printf("FAIL zero\n"); return 1; }
+    fe.WorldNamesOffset = 0;
+    fe.ChooseWorldNumber(0);                       // index -1 -> unsigned wrap, rejected
+    if (!Is(fe.WorldToLoad, "Albion.wld") || g_quits != 2) { printf("FAIL wrap\n"); return 1; }
+    fe.ChooseWorldNumber(4);                       // index 3 -> Arena
+    if (!Is(fe.WorldToLoad, "Arena.wld") || g_quits != 3) { printf("FAIL last\n"); return 1; }
+    printf("FRONTEND_00494710_TEST PASS\n");
     return 0;
 }
