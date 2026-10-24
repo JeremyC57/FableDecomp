@@ -1055,3 +1055,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A virtual living only in the CObserver vtable (ProcessEvent, slot 1) compiles with `this` = the +4 subobject: model `struct X : CComponent, CObserver`; retail CObserver is 0x14 bytes (chunk 343).
 - A CCountedPointer setter ending `call ShareData ; ret 4` needs `void operator=`; returning `T&` adds `mov eax,esi` (chunk 343).
 - A definition-pointer temporary lives to the end of the full expression, so `ChangeState(Def()->State)` runs before the inline release (chunk 343).
+- Lazy-create-then-push_back setters (0x0053DCD0 family, ~24 siblings at 0x0053E180.., 0x005498E0.., 0x0055AA80..): retail opens a `push ecx` frame word and stores a dead `mov [esp+8],0` before the null test; no source form found yet -- solving it fixes the family (chunk 344).
+- Keep a `std::find` result in a named iterator so `end()` is re-read for the test; comparing the temporary compares against a cached end (0x55CA40). A bool tail `mov al,1 ; ret ; xor al,al` is two sequential `if (...) return true;` then `return false;` (0x55CAE0).
+- A manager member loaded straight into ecx needs an inline accessor (`GetMouseCursor()`); a raw member read loads into eax (0x55A5B0). A float spilling into a dead argument slot rather than its own frame word is written as one statement (0x545DF0).
+- In a secondary-base override touching primary-class members, put them in an inline helper on the primary class so `this` is converted once (0x55BD50).
+- Retail CComponent members sit 8 below the Ego_r.pdb layout and CSprite-derived members 0x30 below (chunk 344).

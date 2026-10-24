@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0053dcd0	DIFFER	112v122	-	dead push ecx frame word + mov [esp+8],0 (shared by ~24 siblings)
+0053dd50	DIFFER	112v122	-	same dead frame-word zero store as 0053dcd0 (+0x19c twin)
+0055bbf0	RELOCATION_MATCH	52v52	PASS	NUISystem::CHoverable::RemoveFromHoveredList
+0055bd50	RELOCATION_MATCH	135v135	PASS	NUISystem::CHoverable::IgnoreEvent
+00550070	RELOCATION_MATCH	49v49	PASS	NUISystem::CMesh::Update
+00550be0	MATCH	47v47	PASS	NUISystem::CMesh::SetOrientation
+00554150	RELOCATION_MATCH	136v136	PASS	NUISystem::CMorphingSprite::Update
+0055c580	RELOCATION_MATCH	35v35	PASS	NUISystem::CMouseCursor::Update
+0055c810	MATCH	68v68	PASS	NUISystem::CMouseCursor::TurnToHand
+0055c860	MATCH	71v71	PASS	NUISystem::CMouseCursor::TurnToClosedHand
+0055c9c0	RELOCATION_MATCH	63v63	PASS	NUISystem::CObservable::RemoveObserver
+0055ca00	RELOCATION_MATCH	63v63	PASS	NUISystem::CObservable::RemoveConcurrentExclusiveObserver
+0055ca40	RELOCATION_MATCH	69v69	PASS	NUISystem::CObservable::AddObserver
+0055ca90	RELOCATION_MATCH	69v69	PASS	NUISystem::CObservable::AddConcurrentExclusiveObserver
+0055cae0	MATCH	35v35	PASS	NUISystem::CObservable::IsExclusivelyObserved
+0055cb10	DIFFER	204v195	-	copied-list sentinel via eax->ebx and a loop alignment pad
+0041cb9d	MATCH	58v58	PASS	NUISystem::COk::ProcessEvent
+00557080	RELOCATION_MATCH	101v101	PASS	NUISystem::CRedefinerList::Update
+0055a5b0	RELOCATION_MATCH	29v29	PASS	NUISystem::CScrollBar::OnHovered
+005562a0	RELOCATION_MATCH	37v37	PASS	NUISystem::CScrollableList::OnDeactivate
+00546fc0	RELOCATION_MATCH	72v72	PASS	NUISystem::CScrollingComponent::Update
+00547010	RELOCATION_MATCH	56v56	PASS	NUISystem::CScrollingComponent::ChangeState
+0053fc90	MATCH	64v64	PASS	NUISystem::CViewport::ClearHandle
+00545670	RELOCATION_MATCH	163v163	PASS	NUISystem::CSpellContainer::AcceptAssignments
+00545df0	RELOCATION_MATCH	106v106	PASS	NUISystem::CSpellContainer::AddChildAndSetOffsets
+00545e60	RELOCATION_MATCH	147v147	PASS	NUISystem::CSpellContainer::Initialise
+00544110	MATCH	113v113	PASS	NUISystem::CSpellContainerList::ShowSpellSelectionChild
+00544190	MATCH	113v113	PASS	NUISystem::CSpellContainerList::HideSpellSelectionChild
+0041c5a0	MATCH	26v26	PASS	NUISystem::CChangingStateComponent::ChangeState
+0041c5c0	MATCH	22v22	PASS	NUISystem::CChangingStateComponent::HasState
+0052c8f0	MATCH	37v37	PASS	NUISystem::CChangingStateComponent::ChangedState
+0052ceb0	RELOCATION_MATCH	44v44	PASS	NUISystem::CChangingStateComponent::GetState
+0052cee0	RELOCATION_MATCH	44v44	PASS	NUISystem::CChangingStateComponent::GetState
+0052cf10	RELOCATION_MATCH	44v44	PASS	NUISystem::CChangingStateComponent::GetCurrentState
+0052d900	RELOCATION_MATCH	57v57	PASS	NUISystem::CObserver::IsObservingEvent
+0052d940	RELOCATION_MATCH	81v81	PASS	NUISystem::CObserver::IgnoreEvent
+0052e750	MATCH	38v38	PASS	NUISystem::CComponent::SetZoom
+0052e7a0	MATCH	27v27	PASS	NUISystem::CComponent::SetColour
+0052e860	MATCH	38v38	PASS	NUISystem::CComponent::SetPosition
+0052e990	MATCH	21v21	PASS	NUISystem::CComponent::SetRenderZoom

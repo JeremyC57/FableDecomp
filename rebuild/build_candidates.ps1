@@ -281004,6 +281004,265 @@ $catalog = @(
         TestSource = '00/55/NUISystemCClickable_OnRightClicked_0055afd0_test.cpp'
         PassPattern = '0055afd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041c5a0'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/41/NUISystemCChangingStateComponent_ChangeState_0041c5a0.cpp'
+        TestSource = '00/41/NUISystemCChangingStateComponent_ChangeState_0041c5a0_test.cpp'
+        PassPattern = '0041c5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041c5c0'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/41/NUISystemCChangingStateComponent_HasState_0041c5c0.cpp'
+        TestSource = '00/41/NUISystemCChangingStateComponent_HasState_0041c5c0_test.cpp'
+        PassPattern = '0041c5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041cb9d'
+        Module = 'NUISystem::COk'
+        Source = '00/41/NUISystemCOk_ProcessEvent_0041cb9d.cpp'
+        TestSource = '00/41/NUISystemCOk_ProcessEvent_0041cb9d_test.cpp'
+        PassPattern = '0041cb9d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052c8f0'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_ChangedState_0052c8f0.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_ChangedState_0052c8f0_test.cpp'
+        PassPattern = '0052c8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ceb0'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_GetState_0052ceb0.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_GetState_0052ceb0_test.cpp'
+        PassPattern = '0052ceb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052cee0'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_GetState_0052cee0.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_GetState_0052cee0_test.cpp'
+        PassPattern = '0052cee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052cf10'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_GetCurrentState_0052cf10.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_GetCurrentState_0052cf10_test.cpp'
+        PassPattern = '0052cf10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052d900'
+        Module = 'NUISystem::CObserver'
+        Source = '00/52/NUISystemCObserver_IsObservingEvent_0052d900.cpp'
+        TestSource = '00/52/NUISystemCObserver_IsObservingEvent_0052d900_test.cpp'
+        PassPattern = '0052d900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052d940'
+        Module = 'NUISystem::CObserver'
+        Source = '00/52/NUISystemCObserver_IgnoreEvent_0052d940.cpp'
+        TestSource = '00/52/NUISystemCObserver_IgnoreEvent_0052d940_test.cpp'
+        PassPattern = '0052d940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052e750'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_SetZoom_0052e750.cpp'
+        TestSource = '00/52/NUISystemCComponent_SetZoom_0052e750_test.cpp'
+        PassPattern = '0052e750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052e7a0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_SetColour_0052e7a0.cpp'
+        TestSource = '00/52/NUISystemCComponent_SetColour_0052e7a0_test.cpp'
+        PassPattern = '0052e7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052e860'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_SetPosition_0052e860.cpp'
+        TestSource = '00/52/NUISystemCComponent_SetPosition_0052e860_test.cpp'
+        PassPattern = '0052e860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052e990'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_SetRenderZoom_0052e990.cpp'
+        TestSource = '00/52/NUISystemCComponent_SetRenderZoom_0052e990_test.cpp'
+        PassPattern = '0052e990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053fc90'
+        Module = 'NUISystem::CViewport'
+        Source = '00/53/NUISystemCViewport_ClearHandle_0053fc90.cpp'
+        TestSource = '00/53/NUISystemCViewport_ClearHandle_0053fc90_test.cpp'
+        PassPattern = '0053fc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00544110'
+        Module = 'NUISystem::CSpellContainerList'
+        Source = '00/54/NUISystemCSpellContainerList_ShowSpellSelectionChild_00544110.cpp'
+        TestSource = '00/54/NUISystemCSpellContainerList_ShowSpellSelectionChild_00544110_test.cpp'
+        PassPattern = '00544110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00544190'
+        Module = 'NUISystem::CSpellContainerList'
+        Source = '00/54/NUISystemCSpellContainerList_HideSpellSelectionChild_00544190.cpp'
+        TestSource = '00/54/NUISystemCSpellContainerList_HideSpellSelectionChild_00544190_test.cpp'
+        PassPattern = '00544190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00545670'
+        Module = 'NUISystem::CSpellContainer'
+        Source = '00/54/NUISystemCSpellContainer_AcceptAssignments_00545670.cpp'
+        TestSource = '00/54/NUISystemCSpellContainer_AcceptAssignments_00545670_test.cpp'
+        PassPattern = '00545670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00545df0'
+        Module = 'NUISystem::CSpellContainer'
+        Source = '00/54/NUISystemCSpellContainer_AddChildAndSetOffsets_00545df0.cpp'
+        TestSource = '00/54/NUISystemCSpellContainer_AddChildAndSetOffsets_00545df0_test.cpp'
+        PassPattern = '00545df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00545e60'
+        Module = 'NUISystem::CSpellContainer'
+        Source = '00/54/NUISystemCSpellContainer_Initialise_00545e60.cpp'
+        TestSource = '00/54/NUISystemCSpellContainer_Initialise_00545e60_test.cpp'
+        PassPattern = '00545e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546fc0'
+        Module = 'NUISystem::CScrollingComponent'
+        Source = '00/54/NUISystemCScrollingComponent_Update_00546fc0.cpp'
+        TestSource = '00/54/NUISystemCScrollingComponent_Update_00546fc0_test.cpp'
+        PassPattern = '00546fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547010'
+        Module = 'NUISystem::CScrollingComponent'
+        Source = '00/54/NUISystemCScrollingComponent_ChangeState_00547010.cpp'
+        TestSource = '00/54/NUISystemCScrollingComponent_ChangeState_00547010_test.cpp'
+        PassPattern = '00547010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550070'
+        Module = 'NUISystem::CMesh'
+        Source = '00/55/NUISystemCMesh_Update_00550070.cpp'
+        TestSource = '00/55/NUISystemCMesh_Update_00550070_test.cpp'
+        PassPattern = '00550070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550be0'
+        Module = 'NUISystem::CMesh'
+        Source = '00/55/NUISystemCMesh_SetOrientation_00550be0.cpp'
+        TestSource = '00/55/NUISystemCMesh_SetOrientation_00550be0_test.cpp'
+        PassPattern = '00550be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00554150'
+        Module = 'NUISystem::CMorphingSprite'
+        Source = '00/55/NUISystemCMorphingSprite_Update_00554150.cpp'
+        TestSource = '00/55/NUISystemCMorphingSprite_Update_00554150_test.cpp'
+        PassPattern = '00554150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005562a0'
+        Module = 'NUISystem::CScrollableList'
+        Source = '00/55/NUISystemCScrollableList_OnDeactivate_005562a0.cpp'
+        TestSource = '00/55/NUISystemCScrollableList_OnDeactivate_005562a0_test.cpp'
+        PassPattern = '005562a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557080'
+        Module = 'NUISystem::CRedefinerList'
+        Source = '00/55/NUISystemCRedefinerList_Update_00557080.cpp'
+        TestSource = '00/55/NUISystemCRedefinerList_Update_00557080_test.cpp'
+        PassPattern = '00557080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055a5b0'
+        Module = 'NUISystem::CScrollBar'
+        Source = '00/55/NUISystemCScrollBar_OnHovered_0055a5b0.cpp'
+        TestSource = '00/55/NUISystemCScrollBar_OnHovered_0055a5b0_test.cpp'
+        PassPattern = '0055a5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055bbf0'
+        Module = 'NUISystem::CHoverable'
+        Source = '00/55/NUISystemCHoverable_RemoveFromHoveredList_0055bbf0.cpp'
+        TestSource = '00/55/NUISystemCHoverable_RemoveFromHoveredList_0055bbf0_test.cpp'
+        PassPattern = '0055bbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055bd50'
+        Module = 'NUISystem::CHoverable'
+        Source = '00/55/NUISystemCHoverable_IgnoreEvent_0055bd50.cpp'
+        TestSource = '00/55/NUISystemCHoverable_IgnoreEvent_0055bd50_test.cpp'
+        PassPattern = '0055bd50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c580'
+        Module = 'NUISystem::CMouseCursor'
+        Source = '00/55/NUISystemCMouseCursor_Update_0055c580.cpp'
+        TestSource = '00/55/NUISystemCMouseCursor_Update_0055c580_test.cpp'
+        PassPattern = '0055c580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c810'
+        Module = 'NUISystem::CMouseCursor'
+        Source = '00/55/NUISystemCMouseCursor_TurnToHand_0055c810.cpp'
+        TestSource = '00/55/NUISystemCMouseCursor_TurnToHand_0055c810_test.cpp'
+        PassPattern = '0055c810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c860'
+        Module = 'NUISystem::CMouseCursor'
+        Source = '00/55/NUISystemCMouseCursor_TurnToClosedHand_0055c860.cpp'
+        TestSource = '00/55/NUISystemCMouseCursor_TurnToClosedHand_0055c860_test.cpp'
+        PassPattern = '0055c860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c9c0'
+        Module = 'NUISystem::CObservable'
+        Source = '00/55/NUISystemCObservable_RemoveObserver_0055c9c0.cpp'
+        TestSource = '00/55/NUISystemCObservable_RemoveObserver_0055c9c0_test.cpp'
+        PassPattern = '0055c9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ca00'
+        Module = 'NUISystem::CObservable'
+        Source = '00/55/NUISystemCObservable_RemoveConcurrentExclusiveObserver_0055ca00.cpp'
+        TestSource = '00/55/NUISystemCObservable_RemoveConcurrentExclusiveObserver_0055ca00_test.cpp'
+        PassPattern = '0055ca00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ca40'
+        Module = 'NUISystem::CObservable'
+        Source = '00/55/NUISystemCObservable_AddObserver_0055ca40.cpp'
+        TestSource = '00/55/NUISystemCObservable_AddObserver_0055ca40_test.cpp'
+        PassPattern = '0055ca40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ca90'
+        Module = 'NUISystem::CObservable'
+        Source = '00/55/NUISystemCObservable_AddConcurrentExclusiveObserver_0055ca90.cpp'
+        TestSource = '00/55/NUISystemCObservable_AddConcurrentExclusiveObserver_0055ca90_test.cpp'
+        PassPattern = '0055ca90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055cae0'
+        Module = 'NUISystem::CObservable'
+        Source = '00/55/NUISystemCObservable_IsExclusivelyObserved_0055cae0.cpp'
+        TestSource = '00/55/NUISystemCObservable_IsExclusivelyObserved_0055cae0_test.cpp'
+        PassPattern = '0055cae0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -28749,3 +28749,13 @@ __imp__accept@12	01440524	008f8ea0
 ?g_pSelectedKeyRedefiner@NUISystem@@3PAUCKeyRedefiner@1@A	013b8ac8	00557af0
 ?GetActionText@CKeyRedefiner@NUISystem@@QBEXAAVCWideString@@ABVCCharString@@@Z	00558170	005586a0
 ?GetSubTypeForAction@CKeyRedefiner@NUISystem@@QBEJABUCActionInputControl@@@Z	00557ca0	005586a0
+?find@CStateMap@NUISystem@@QAE?AUiterator@12@ABK@Z	0042b402	0052ceb0
+?find@CStateMap@NUISystem@@QBE?AUiterator@12@ABK@Z	0052d6b0	0052cee0
+??$__find@U?$_Rb_tree_iterator@W4EEvent@NUISystem@@@std@@W4EEvent@NUISystem@@@std@@YI?AU?$_Rb_tree_iterator@W4EEvent@NUISystem@@@0@U10@0ABW4EEvent@NUISystem@@ABUinput_iterator_tag@0@@Z	0052dec0	0052d900
+?_Rb_tree_rebalance_for_erase@std@@YAPAU_Rb_tree_node_base@1@PAU21@AAPAU21@11@Z	0042a34e	0052d940
+??ACStateMap@NUISystem@@QAEAAVCUIState@1@ABK@Z	0042d5b1	00545df0
+?_M_insert_overflow@?$CCountedVector@VCChangingStateComponent@NUISystem@@@@QAEXPAV?$CCountedPointer@VCChangingStateComponent@NUISystem@@@@ABV2@ABU__false_type@@K_N@Z	005359d0	00545e60
+?Update@CScrollableList@NUISystem@@UAEXM@Z	00555220	00557080
+?OnHovered@CClickable@NUISystem@@QAEXXZ	0055aeb0	0055a5b0
+?GHoveredComponents@CHoverable@NUISystem@@2V?$list@PAVCComponent@NUISystem@@@std@@A	013b8ad4	0055bbf0
+?GCursorPosition@CMouseCursor@NUISystem@@2UC2DVector@@A	013b8ad8	0055c580
