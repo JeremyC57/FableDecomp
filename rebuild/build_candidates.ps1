@@ -294153,6 +294153,258 @@ $catalog = @(
         TestSource = '00/73/RbtreeECombatAbilityDataTypepairconstECombatAbilityDataTypepairCCountedPointerCC_insertequal_00739b00_test.cpp'
         PassPattern = '00739b00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00759570'
+        Module = 'CVectorMap_WoundMorphs'
+        Source = '00/75/CVectorMapWoundMorphs_Add_00759570.cpp'
+        TestSource = '00/75/CVectorMapWoundMorphs_Add_00759570_test.cpp'
+        PassPattern = '00759570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075b600'
+        Module = 'CMatrix3x4'
+        Source = '00/75/CMatrix3x4_operator_0075b600.cpp'
+        TestSource = '00/75/CMatrix3x4_operator_0075b600_test.cpp'
+        PassPattern = '0075b600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075b800'
+        Module = 'std::vector<C3DVector>'
+        Source = '00/75/stdvectorC3DVector_MallocateandcopyconstC3DVector_0075b800.cpp'
+        TestSource = '00/75/stdvectorC3DVector_MallocateandcopyconstC3DVector_0075b800_test.cpp'
+        PassPattern = '0075b800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075db90'
+        Module = 'CTCCameraPointFixedDolly'
+        Source = '00/75/CTCCameraPointFixedDolly_GetFixedDollyVector_0075db90.cpp'
+        TestSource = '00/75/CTCCameraPointFixedDolly_GetFixedDollyVector_0075db90_test.cpp'
+        PassPattern = '0075db90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075dc60'
+        Module = 'CTCCameraPointTrack'
+        Source = '00/75/CTCCameraPointTrack_GetActiveCameraPosition_0075dc60.cpp'
+        TestSource = '00/75/CTCCameraPointTrack_GetActiveCameraPosition_0075dc60_test.cpp'
+        PassPattern = '0075dc60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075f660'
+        Module = 'std::list<CCharString>'
+        Source = '00/75/stdlistCCharString_pushback_0075f660.cpp'
+        TestSource = '00/75/stdlistCCharString_pushback_0075f660_test.cpp'
+        PassPattern = '0075f660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075f980'
+        Module = 'CCardinalSpline'
+        Source = '00/75/CCardinalSpline_AppendControlPoint_0075f980.cpp'
+        TestSource = '00/75/CCardinalSpline_AppendControlPoint_0075f980_test.cpp'
+        PassPattern = '0075f980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075fae0'
+        Module = 'std::vector<CKeyCamera>'
+        Source = '00/75/stdvectorCKeyCamera_insert_0075fae0.cpp'
+        TestSource = '00/75/stdvectorCKeyCamera_insert_0075fae0_test.cpp'
+        PassPattern = '0075fae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00761b50'
+        Module = 'CTCShapeManager'
+        Source = '00/76/CTCShapeManager_GetBestTrack_00761b50.cpp'
+        TestSource = '00/76/CTCShapeManager_GetBestTrack_00761b50_test.cpp'
+        PassPattern = '00761b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00762090'
+        Module = 'CTCShapeManager'
+        Source = '00/76/CTCShapeManager_CTCShapeManager_00762090.cpp'
+        TestSource = '00/76/CTCShapeManager_CTCShapeManager_00762090_test.cpp'
+        PassPattern = '00762090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00762110'
+        Module = 'CTCShapeManager'
+        Source = '00/76/CTCShapeManager_CTCShapeManager_00762110.cpp'
+        TestSource = '00/76/CTCShapeManager_CTCShapeManager_00762110_test.cpp'
+        PassPattern = '00762110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00763f50'
+        Module = '_STL'
+        Source = '00/76/STL_findif_00763f50.cpp'
+        TestSource = '00/76/STL_findif_00763f50_test.cpp'
+        PassPattern = '00763f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00765f90'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_GetAugmentationName_00765f90.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_GetAugmentationName_00765f90_test.cpp'
+        PassPattern = '00765f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00766d70'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_AddNewSlot_00766d70.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_AddNewSlot_00766d70_test.cpp'
+        PassPattern = '00766d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007691a0'
+        Module = '_STL'
+        Source = '00/76/STL_fill_007691a0.cpp'
+        TestSource = '00/76/STL_fill_007691a0_test.cpp'
+        PassPattern = '007691a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769210'
+        Module = '_STL'
+        Source = '00/76/STL_copybackward_00769210.cpp'
+        TestSource = '00/76/STL_copybackward_00769210_test.cpp'
+        PassPattern = '00769210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769420'
+        Module = '_STL'
+        Source = '00/76/STL_unguardedlinearinsert_00769420.cpp'
+        TestSource = '00/76/STL_unguardedlinearinsert_00769420_test.cpp'
+        PassPattern = '00769420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007696e0'
+        Module = '_STL'
+        Source = '00/76/STL_uninitializedcopy_007696e0.cpp'
+        TestSource = '00/76/STL_uninitializedcopy_007696e0_test.cpp'
+        PassPattern = '007696e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769750'
+        Module = '_STL'
+        Source = '00/76/STL_uninitializedfilln_00769750.cpp'
+        TestSource = '00/76/STL_uninitializedfilln_00769750_test.cpp'
+        PassPattern = '00769750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007697c0'
+        Module = '_STL'
+        Source = '00/76/STL_uninitializedcopy_007697c0.cpp'
+        TestSource = '00/76/STL_uninitializedcopy_007697c0_test.cpp'
+        PassPattern = '007697c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007698c0'
+        Module = '_STL'
+        Source = '00/76/STL_uninitializedcopy_007698c0.cpp'
+        TestSource = '00/76/STL_uninitializedcopy_007698c0_test.cpp'
+        PassPattern = '007698c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769930'
+        Module = '_STL'
+        Source = '00/76/STL_uninitializedcopy_00769930.cpp'
+        TestSource = '00/76/STL_uninitializedcopy_00769930_test.cpp'
+        PassPattern = '00769930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769980'
+        Module = '_STL::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >'
+        Source = '00/76/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCObjectAugmentat_Mcreatenode_00769980.cpp'
+        TestSource = '00/76/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCObjectAugmentat_Mcreatenode_00769980_test.cpp'
+        PassPattern = '00769980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769ac0'
+        Module = '_STL'
+        Source = '00/76/STL_unguardedpartition_00769ac0.cpp'
+        TestSource = '00/76/STL_unguardedpartition_00769ac0_test.cpp'
+        PassPattern = '00769ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769c70'
+        Module = '_STL'
+        Source = '00/76/STL_unguardedinsertionsortaux_00769c70.cpp'
+        TestSource = '00/76/STL_unguardedinsertionsortaux_00769c70_test.cpp'
+        PassPattern = '00769c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00769d00'
+        Module = '_STL'
+        Source = '00/76/STL_unguardedlinearinsert_00769d00.cpp'
+        TestSource = '00/76/STL_unguardedlinearinsert_00769d00_test.cpp'
+        PassPattern = '00769d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076a110'
+        Module = '_STL::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >'
+        Source = '00/76/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCObjectAugmentat_Minsert_0076a110.cpp'
+        TestSource = '00/76/STLRbtreeEObjectAugmentationTypepairconstEObjectAugmentationTypeCObjectAugmentat_Minsert_0076a110_test.cpp'
+        PassPattern = '0076a110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076a3b0'
+        Module = '_STL'
+        Source = '00/76/STL_unguardedinsertionsortaux_0076a3b0.cpp'
+        TestSource = '00/76/STL_unguardedinsertionsortaux_0076a3b0_test.cpp'
+        PassPattern = '0076a3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076a480'
+        Module = '_STL'
+        Source = '00/76/STL_makeheap_0076a480.cpp'
+        TestSource = '00/76/STL_makeheap_0076a480_test.cpp'
+        PassPattern = '0076a480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076aa30'
+        Module = '_STL'
+        Source = '00/76/STL_unguardedpartition_0076aa30.cpp'
+        TestSource = '00/76/STL_unguardedpartition_0076aa30_test.cpp'
+        PassPattern = '0076aa30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076abe0'
+        Module = '_STL'
+        Source = '00/76/STL_makeheap_0076abe0.cpp'
+        TestSource = '00/76/STL_makeheap_0076abe0_test.cpp'
+        PassPattern = '0076abe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076aff0'
+        Module = '_STL::map<EObjectAugmentationType, CObjectAugmentationSoundSet>'
+        Source = '00/76/STLmapEObjectAugmentationTypeCObjectAugmentationSoundSet_operator_0076aff0.cpp'
+        TestSource = '00/76/STLmapEObjectAugmentationTypeCObjectAugmentationSoundSet_operator_0076aff0_test.cpp'
+        PassPattern = '0076aff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076b530'
+        Module = '_STL'
+        Source = '00/76/STL_partialsort_0076b530.cpp'
+        TestSource = '00/76/STL_partialsort_0076b530_test.cpp'
+        PassPattern = '0076b530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076b5d0'
+        Module = '_STL'
+        Source = '00/76/STL_linearinsert_0076b5d0.cpp'
+        TestSource = '00/76/STL_linearinsert_0076b5d0_test.cpp'
+        PassPattern = '0076b5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076b700'
+        Module = 'CVectorMap<unsigned long, C3DVector, CKeyPairCompareLess<unsigned long, C3DVector> >'
+        Source = '00/76/CVectorMapunsignedlongC3DVectorCKeyPairCompareLessunsignedlongC3DVector_Add_0076b700.cpp'
+        TestSource = '00/76/CVectorMapunsignedlongC3DVectorCKeyPairCompareLessunsignedlongC3DVector_Add_0076b700_test.cpp'
+        PassPattern = '0076b700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076b760'
+        Module = 'std::vector<AttackParticleAndEndPoints>'
+        Source = '00/76/stdvectorAttackParticleAndEndPoints_Minsertoverflow_0076b760.cpp'
+        TestSource = '00/76/stdvectorAttackParticleAndEndPoints_Minsertoverflow_0076b760_test.cpp'
+        PassPattern = '0076b760_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

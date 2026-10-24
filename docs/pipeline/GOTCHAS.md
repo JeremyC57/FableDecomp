@@ -1273,3 +1273,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - When retail reuses eax for an interface fetch, use the out-pointer `GetInterface(T**, long)`; a pointer-returning `GetTC` puts the component in ecx (0x72B3B0).
 - STLport vector ctor needs `explicit vector(const allocator_type& = allocator_type())` with `_STLP_alloc_proxy` (0x72C6E0); declare placement new `throw()` to keep retail's null test (0x739670).
 - `"STF_" + name` goes through `__fastcall operator+(const char*, const CCharString&)` (0x7329E0).
+- Same-TU `auto_inline(off)` + `noinline` `_M_insert_overflow` reading x only through its reference and never touching the tag puts both the `push_back(this)` temporary and the `__true_type` tag on one dead argument slot (0x762090; fixes the chunk 203-204 gap). Model iterator tags as STLport's inheritance chain.
+- `erase(remove(begin(), end(), this))` gives retail's destructor shape exactly (0x762110); `x.Dot(y) > ab` gives `fcomp st(1)`, `ab < x.Dot(y)` gives `fld st(1); fcompp` (0x75FF00).
+- Over `engine/CTCBase.h` do not declare a derived override `virtual`: the header models the vptr as a data member, so the layout shifts by 4 (chunk 393).
+- VC7.1 has no NRVO: a test helper returning a named counted local double-releases; return a temporary (chunk 393).

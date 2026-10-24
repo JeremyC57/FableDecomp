@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00759570	RELOCATION_MATCH	122v122	PASS	CVectorMap<EBodyLocation,CWoundMorphs::CEntry>::Add (label _Pop_heap_0<CDebugSphere*>); pair needs a user copy ctor
+0075b600	MATCH	178v178	PASS	CMatrix3x4::operator+ (label swap<CDebugSphere>); copy then forceinline in-memory Add
+0075b800	RELOCATION_MATCH	88v88	PASS	vector<C3DVector>::_M_allocate_and_copy (label Vector_AllocateAndCopy); landed 0x6E4950 model
+0075db90	RELOCATION_MATCH	104v104	PASS	CTCCameraPointFixedDolly::GetFixedDollyVector (label CTCShape_InitializeFromInterface); inline out-param PeekTC 0x44
+0075dc60	RELOCATION_MATCH	129v129	PASS	CTCCameraPointTrack::GetActiveCameraPosition, vtable 0x0123B0E4 slot 35 (label CTCObject_GetTrackPosition)
+0075f660	RELOCATION_MATCH	51v51	PASS	list<CCharString>::push_back (label DoublyLinkedList_InsertBack); landed 0x567FC0 model
+0075f980	RELOCATION_MATCH	92v92	PASS	CCardinalSpline::AppendControlPoint (label Vector_PushBackOrInsert); inline push_back
+0075fae0	RELOCATION_MATCH	230v230	PASS	vector<CKeyCamera>::insert (label CKeyCamera_Vector_Insert); STLport insert verbatim
+0075fe30	DIFFER	193v189	-	NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation::operator(); Cross().Dot() x87 order + B/A register swap; 4 grades
+0075ff00	DIFFER	221v221	-	NShape::IsVectorBetween2OthersInThePlane; register-only diff in the third copy; 4 grades
+00761b50	RELOCATION_MATCH	56v56	PASS	CTCShapeManager::GetBestTrack (label Map_FindByKey); same-TU __find_if body homes the tag in the out slot
+00762090	RELOCATION_MATCH	124v124	PASS	CTCShapeManager::CTCShapeManager (label CEngineSubPrimitive2DClockSprite_Vector_PushBack); same-TU overflow body
+00762110	RELOCATION_MATCH	174v174	PASS	CTCShapeManager::~CTCShapeManager (label CEngineSubPrimitive2DClockSprite_Destructor); remove+erase inline
+00763f50	RELOCATION_MATCH	212v212	PASS	STLport __find_if<C3DVector*,CIsPointFinalLinkInTriangleWithMatchingCirculation> (label Polygon_FindFirstPointInside)
+00765f90	RELOCATION_MATCH	186v186	PASS	CTCObjectAugmentations::GetAugmentationName; text bank block local before the pushes
+007661c0	DIFFER	156v158	-	CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet; esi/edi swap + element via ecx->eax; 4 grades
+00766d70	RELOCATION_MATCH	86v86	PASS	CTCObjectAugmentations::AddNewSlot (label CCreateInventoryObjectBatch_EnsureCapacity); inline push_back
+00768010	DIFFER	146v146	-	CTCObjectAugmentations::OnInitialActivate, vtable 0x0126A3A4 slot 6 (label InitializeDrunkenness); loop-end scheduling; 4 grades
+007691a0	MATCH	66v66	PASS	STLport fill over CIVCountedPointer<CLocalDetailPlacementGrid>; release reads pointee into a local
+00769210	MATCH	88v88	PASS	STLport __copy_backward over CDefPointer<const CThingBaseDef>; mutable count
+00769420	MATCH	80v80	PASS	STLport __unguarded_linear_insert, pair<ulong,C3DVector> (label Vector_InsertBefore_MoveRange)
+007696e0	RELOCATION_MATCH	106v106	PASS	STLport __uninitialized_copy<AttackParticleAndEndPoints*> (label _Move_backward<C3DSkeletalBoneMorph*>)
+00769750	RELOCATION_MATCH	102v102	PASS	STLport __uninitialized_fill_n<AttackParticleAndEndPoints> (label Vector_Insert_StringPtrPair_Init)
+007697c0	RELOCATION_MATCH	76v76	PASS	STLport __uninitialized_copy<ParticleAndEndPoints*> (label _Copy_backward<CBrainUpdateZone*>)
+007698c0	RELOCATION_MATCH	106v106	PASS	STLport __uninitialized_copy<const AttackParticleAndEndPoints*> (label _Move_backward<C3DSkeletalBoneMorph*>)
+00769930	RELOCATION_MATCH	76v76	PASS	STLport __uninitialized_copy<const ParticleAndEndPoints*> (label _Copy_backward<CBrainUpdateZone*>)
+00769980	RELOCATION_MATCH	62v62	PASS	_Rb_tree<EObjectAugmentationType,CObjectAugmentationSoundSet>::_M_create_node (label RBTree_Node_Allocate_And_Construct)
+00769ac0	MATCH	140v140	PASS	STLport __unguarded_partition, pair<ulong,C3DVector> (label Quicksort_Partition_Uint4Elem)
+00769c70	RELOCATION_MATCH	64v64	PASS	STLport __unguarded_insertion_sort_aux, pair<ulong,C3DVector> (label _Copy_impl<CNavigationPosition*>)
+00769d00	RELOCATION_MATCH	77v77	PASS	STLport __unguarded_linear_insert, pair<ulong,CParticleUpdateParamDesc> (label Vector_InsertBefore_MoveRange_Init)
+0076a110	RELOCATION_MATCH	199v199	PASS	_Rb_tree<EObjectAugmentationType,...>::_M_insert (label RBTree_Insert); inline/out-of-line create_node split
+0076a3b0	RELOCATION_MATCH	65v65	PASS	STLport __unguarded_insertion_sort_aux, pair<ulong,CParticleUpdateParamDesc> (label _Copy_impl<CNavigationPosition*>)
+0076a480	RELOCATION_MATCH	96v96	PASS	STLport __make_heap, pair<ulong,C3DVector> (label Heapify_BuildHeap_Pair16)
+0076aa30	RELOCATION_MATCH	148v148	PASS	STLport __unguarded_partition, pair<ulong,CParticleUpdateParamDesc> (label Quicksort_Partition_Uint4Elem_Swap)
+0076abe0	RELOCATION_MATCH	97v97	PASS	STLport __make_heap, pair<ulong,CParticleUpdateParamDesc> (label Heapify_BuildHeap_Pair16_TextureMorph)
+0076aff0	RELOCATION_MATCH	183v183	PASS	map<EObjectAugmentationType,CObjectAugmentationSoundSet>::operator[] (label RBTree_FindAndInsert); insert forwarder
+0076b530	RELOCATION_MATCH	153v153	PASS	STLport __partial_sort, pair<ulong,C3DVector> (label Partial_Sort_4Uint)
+0076b5d0	RELOCATION_MATCH	115v115	PASS	STLport __linear_insert, pair<ulong,CParticleUpdateParamDesc> (label Vector_Insert_ParticleUpdateParam_Backward)
+0076b700	RELOCATION_MATCH	83v83	PASS	CVectorMap<ulong,C3DVector>::Add (label Vector_PushBack_16bytes)
+0076b760	RELOCATION_MATCH	227v227	PASS	vector<AttackParticleAndEndPoints>::_M_insert_overflow (label Vector_InsertRange_MoveAndFill); noinline same-TU stand-ins
