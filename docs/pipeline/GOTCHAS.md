@@ -1210,3 +1210,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `resize(MAX(index+1, size()))` gives two divides; a `count = size()` local gives one (0x523790 vs 0x5237F0).
 - strstr replace loop: first strstr before the loop, the next at its bottom after `hit += strlen(key)`; `while ((hit = strstr(...)))` differs (0x527200).
 - STLport list/pair/allocator are `class`: with `struct` the leaf misses and the grader silently takes the largest function (chunk 375).
+- int3-after-noreturn rows: VC7.1 emits a 0xCC after a final noreturn call and it belongs to the function; the chunk cutter strips it as padding, so grade/land against the N+1 retail span (0x568E70, 0x568F10).
+- `map::operator[]`: same-file noinline copies of the vector copy ctor and `insert_unique`; `auto_inline(off)` also un-inlines the pair ctor (0x56A680).
+- For tree `erase`, instantiate only `_Rb_tree` and use leaf `?erase@?$_Rb_tree@`; an implicit non-trivial pair dtor is called through its `??_G` with 0 (0x579D18, 0x579D55).
+- /Os turns `1.0f` stores into `fld1; fstp`; `ceil(float)` is a speed TU; `f /= max` is `fdiv st,st(1)` but `a / max` is `fidivr` (chunk 377).
+- Returning CWideString by value needs its user copy ctor and dtor or VC7.1 returns it in eax (0x57AD4C); test models returning counted pointers need a ref-adding copy ctor (no NRVO at /Od).

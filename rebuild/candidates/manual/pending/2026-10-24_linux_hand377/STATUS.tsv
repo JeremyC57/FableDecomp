@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00566e60	RELOCATION_MATCH	51v51	PASS	std::basic_string default ctor (STLport 4.5 verbatim)
+00566ea0	MATCH	79v79	PASS	std::operator!=(string, const char*); label String_Compare
+00567120	MATCH	160v160	PASS	std::search with _Eq_traits pred, __fastcall
+005671c0	RELOCATION_MATCH	113v113	PASS	std::__reverse over pair<long,CWideString>
+00567240	RELOCATION_MATCH	91v91	PASS	std::__find over list<CWideString>, landed CWideString::operator==
+00567560	RELOCATION_MATCH	101v101	PASS	vector<unsigned char> fill ctor (memset intrinsic)
+00567790	RELOCATION_MATCH	99v99	PASS	list<CClanInfo>::insert
+00567fc0	RELOCATION_MATCH	75v75	PASS	list<CClanMember>::push_back
+00568e70	DIFFER	149v148	PASS	__uninitialized_copy<string>: int3-after-noreturn; RELOCATION_MATCH vs N+1 row
+00568f10	DIFFER	143v142	PASS	__uninitialized_fill_n<string>: int3-after-noreturn; RELOCATION_MATCH vs N+1 row
+005693b0	RELOCATION_MATCH	151v151	PASS	basic_string::assign(const char*,const char*)
+00569690	RELOCATION_MATCH	202v202	PASS	std::operator+(string,string)
+00569a80	RELOCATION_MATCH	102v102	PASS	_Rb_tree::_M_erase (kept landed CRetailTree_erase symbol)
+00569b30	RELOCATION_MATCH	140v140	PASS	GFSerialiseVectorBinaryIn<CQuestActivityRecord>
+00569c50	RELOCATION_MATCH	218v218	PASS	LHNetworkLib::LHHttpHeaderStatus ctor (retail 0x48 layout)
+00569e30	RELOCATION_MATCH	225v225	PASS	vector<string>::_M_insert_overflow
+0056a2d0	RELOCATION_MATCH	80v80	PASS	vector<string>::push_back
+0056a680	RELOCATION_MATCH	188v188	PASS	map<long,vector<pair<long,CWideString>>>::operator[]
+0056d490	RELOCATION_MATCH	95v95	PASS	vector<T*> copy ctor
+0056ed74	RELOCATION_MATCH	94v94	PASS	CTCInventoryExperience::GetExperienceStatColour (size TU)
+0056fbed	DIFFER	114v112	PASS	YesCloseInventory: final merged pointer in eax vs ecx
+00578c50	MATCH	45v45	PASS	STLport __copy<ExperienceSpendInfo*>
+00578c8d	MATCH	32v32	PASS	STLport __uninitialized_fill_n<ExperienceSpendInfo*>
+00578cf7	MATCH	49v49	PASS	STLport __copy_backward<ExperienceSpendInfo*>
+005796d1	RELOCATION_MATCH	45v45	PASS	vector<CComponent*>::_M_allocate_and_copy
+00579a4b	RELOCATION_MATCH	191v191	PASS	vector<ExperienceSpendInfo>::_M_insert_overflow
+00579b3c	RELOCATION_MATCH	233v233	PASS	vector<ExperienceSpendInfo>::_M_fill_insert
+00579d18	RELOCATION_MATCH	61v61	PASS	_Rb_tree<EHeroTrainableStatType,..SExpSpendUndo>::erase(iterator)
+00579d55	RELOCATION_MATCH	61v61	PASS	_Rb_tree<EHeroAbility,..SExpSpendUndo>::erase(iterator)
+0057a2d0	RELOCATION_MATCH	19v19	PASS	float ceil(float) <math.h> inline (speed TU)
+0057a57a	RELOCATION_MATCH	33v33	PASS	CTCHeroStats::GetStaminaPercentage
+0057ad4c	RELOCATION_MATCH	108v108	PASS	JustGetTheFrikkingText2 (__fastcall)
+0057ef86	DIFFER	37v37	PASS	GFLimitReturn<float>: hi load order + exit register
+0057f109	RELOCATION_MATCH	67v67	PASS	GFSerialiseVectorBinaryOut<CHeroMarriageInfo>
+0057f188	MATCH	41v41	PASS	STLport __copy<pair<const CRegion*,C3DVector>*>
+0057f279	MATCH	31v31	PASS	STLport fill<CHeroMarriageInfo*>
+0057f29e	MATCH	51v51	PASS	STLport __copy<CHeroMarriageInfo*>
+0057f338	MATCH	51v51	PASS	STLport __copy_backward<CHeroMarriageInfo*>
+0057f78f	RELOCATION_MATCH	178v178	PASS	CPersistTraits<CHeroMarriageInfo>::TransferOut (TRUE/FALSE pairing hand-checked)
+0058044a	RELOCATION_MATCH	182v182	PASS	vector<CHeroMarriageInfo>::_M_insert_overflow
