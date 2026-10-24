@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00706800	RELOCATION_MATCH	86v86	PASS	CTCHeroAttachableAppearanceModifiers::GetAppearanceModifierList (label CArray_InsertNode wrong); STLport list iterator copy ctor + prev local
+00708600	MATCH	63v63	PASS	std::vector<CModifierEntry>::erase(iterator)
+00708b60	MATCH	57v57	PASS	std::__uninitialized_copy<CModifierGraphic*> (label _Copy_impl<CNavigationPosition*> wrong)
+00708ba0	MATCH	53v53	PASS	std::__uninitialized_fill_n<CModifierGraphic*> (label _Fill_n<unsigned long*> wrong)
+007093c0	RELOCATION_MATCH	117v117	PASS	vector<vector<CModifierEntry>>::vector(size_type n): _Vector_base(n, alloc)
+00709c90	RELOCATION_MATCH	70v70	PASS	std::__uninitialized_copy<pair<CMeshInfo,CEngineTextureMorphSet>*> (label _Move<CMusicSetEntry*> wrong)
+00709e60	RELOCATION_MATCH	89v89	PASS	vector<pair<CMeshInfo,CEngineTextureMorphSet>>::push_back
+0070a490	DIFFER	131v131	-	CTCTextureDecal::AddDecal: one load/store schedule in the node copy; parked
+0070aaf0	RELOCATION_MATCH	135v135	PASS	std::__uninitialized_fill_n<CEngineTextureDecal*> with the inlined vector copy ctor
+0070aea0	RELOCATION_MATCH	226v226	PASS	_Rb_tree<long,pair<const long,CEngineTextureDecal>>::_M_insert
+0070b240	RELOCATION_MATCH	218v218	PASS	vector<CEngineTextureDecal>::_M_insert_overflow; same-TU stand-in algorithm bodies
+0070b9b0	RELOCATION_MATCH	45v45	PASS	list<CAnimSet> scalar deleting dtor via a delete helper
+0070bd80	RELOCATION_MATCH	149v149	PASS	GFGetInterpolatedLoopingValue (Ego_r PDB name; manifest AnimationInterpolation_CalcValue); fmod intrinsic
+0070be40	RELOCATION_MATCH	60v60	PASS	CAnimateThing::GetProgressFromAlpha (label SafeDivideFloat)
+0070bf50	DIFFER	104v104	-	anon IsAnimationStateBaseValid: block layout of the type 0/1 test; parked
+0070bfc0	RELOCATION_MATCH	70v70	PASS	CAnimSet::SetAlpha (label Animation_ClampAlpha)
+0070c770	RELOCATION_MATCH	131v131	PASS	anon IsAnimStateBlendValid; two separate return false
+0070d0a0	RELOCATION_MATCH	94v94	PASS	CAnimateThing::GetAllCombinationAnimsFromType; stand-in overflow body
+0070d2f0	RELOCATION_MATCH	155v155	PASS	CAnimSet::AddAnim; stand-in overflow body
+0070ec30	RELOCATION_MATCH	224v224	PASS	CAnimateThing::ClearAllAnims (label Navigator_UpdateBuildingTreeUI wrong); stand-in list clear bodies
+0070f410	RELOCATION_MATCH	75v75	PASS	std::_Temporary_buffer::_M_allocate_buffer (stable_sort buffer)
+0070fdc0	MATCH	39v39	PASS	std::swap_ranges<list<CAnimSet>::const_iterator*> (label _Copy_impl<CRGBColour*> wrong)
+007107d0	RELOCATION_MATCH	197v197	PASS	std::__merge_sort_loop (stable_sort of anim-set iterators by priority)
+00710980	RELOCATION_MATCH	209v209	PASS	vector<short>::_M_insert_overflow (__true_type: memmove + fill_n)
+00710d00	RELOCATION_MATCH	182v182	PASS	std::__merge_backward (copy_backward inlined twice, out of line twice)
+007114c0	RELOCATION_MATCH	83v83	PASS	std::__chunk_insertion_sort
+007116b0	RELOCATION_MATCH	89v89	PASS	std::__merge_sort_with_buffer (__stl_chunk_size 7)
+00711920	RELOCATION_MATCH	145v145	PASS	std::__stable_sort_adaptive (label CAnimSet_IntrosortRecursive wrong)
+007119c0	RELOCATION_MATCH	74v74	PASS	list<CAnimSet>::_M_insert_dispatch<const_iterator> (range insert)
+00711b80	RELOCATION_MATCH	133v133	PASS	std::__stable_sort_aux; stand-in callee bodies
+00711d50	RELOCATION_MATCH	30v30	PASS	CAnimateThing::CDelayedAnimation::CDelayedAnimation() (FableWin.pdb ctor name)
+00711e30	RELOCATION_MATCH	82v82	PASS	list<CDelayedAnimation>::_M_create_node; tag types need user ctors
+00718390	MATCH	74v74	PASS	std::__uninitialized_copy<CSubtitledMessage::CCameraTag*> (label _Move<CTVertexLandscapeBackground*> wrong)
+00718fb0	RELOCATION_MATCH	79v79	PASS	vector<pair<float,EConversationAttitude>>::_M_allocate_and_copy; STLport pair explicit copy ctor
+007196d0	RELOCATION_MATCH	238v238	PASS	vector<CCameraTag>::_M_insert_overflow (label Vector_ReallocateAndCopyMorphs wrong)
+00719fa0	RELOCATION_MATCH	77v77	PASS	vector<CSubtitledMessage>::_M_allocate_and_copy
+0071c120	MATCH	195v195	PASS	anon AdjustMorphsOfLowerPriority (x4 unrolled loop)
+0071cf70	RELOCATION_MATCH	174v174	PASS	anon AddMorph; stand-in overflow body
+0071de20	RELOCATION_MATCH	96v96	PASS	CTCHeroMorph::GetTattooThings (label Tattoo_ApplyChanges wrong); stand-in __copy body
+0071ec20	MATCH	55v55	PASS	std::swap<12-byte T> unreferenced COMDAT (label GFToScreen wrong)

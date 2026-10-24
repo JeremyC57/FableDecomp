@@ -1263,3 +1263,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - The GetInterface key and a caller's CCharString in sibling `if` scopes share one frame word (0x6D7640); `!= 7 ? true : false` gives `setne al` (0x6D5AF0); CHitParameters needs pack(1) (0x6D8D00).
 - HasTC: `if (bits & mask) return true; return false;` gives `test reg,mask`; the `!= 0` form gives `shr; test al,1` (0x7034D0). Interface type numbers come from GetInterfaceType (vtable slot 21): CTCHeroStats 4, CTCCarryable 0x47, CTCWeapon 0x48, CTCWeaponTrail 0x4C, CTCQuestCard 0x6C.
 - Retail's vector end/finish/start store order comes from building through a local data pointer (`data = malloc; ...; finish; start`) (0x701750); `_Vector_base(n,a)` zeroing in the init list then allocating in the body puts zero stores before the size computation (0x6F43C0).
+- VC7.1 drops `if (p) free(p)`'s null test when p was dereferenced earlier in the function (0x70EC30); in STLport `_List_base` ctor build the sentinel in a local and store it last (0x711D50).
+- `(min)`/`(max)` take const references: the operand goes into a dead argument slot and its address is selected (0x7107D0); a plain counted loop is unrolled 4x plus a remainder loop (0x71C120).
+- `__merge_backward`: write the full STLport `copy_backward` chain (two early-out copies inline, two in-loop copies stay calls) (0x710D00).
+- Keep an uncalled anonymous-namespace function emitted: declare it, add a `_Use` caller, then define it (chunk 390).
+- A grade run without the lane env leaves an empty `D:\Documents\FableTLC/...` tree in the working directory (the Windows default path); harmless, delete it.

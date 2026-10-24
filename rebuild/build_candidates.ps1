@@ -293649,6 +293649,272 @@ $catalog = @(
         TestSource = '00/70/CThingObject_WorldUpdateWeaponTrails_007034d0_test.cpp'
         PassPattern = '007034d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00706800'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_GetAppearanceModifierList_00706800.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_GetAppearanceModifierList_00706800_test.cpp'
+        PassPattern = '00706800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00708600'
+        Module = 'std::vector<CModifierEntry>'
+        Source = '00/70/stdvectorCModifierEntry_erase_00708600.cpp'
+        TestSource = '00/70/stdvectorCModifierEntry_erase_00708600_test.cpp'
+        PassPattern = '00708600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00708b60'
+        Module = 'std'
+        Source = '00/70/std_uninitializedcopyCModifierGraphicCModifierGraphi_00708b60.cpp'
+        TestSource = '00/70/std_uninitializedcopyCModifierGraphicCModifierGraphi_00708b60_test.cpp'
+        PassPattern = '00708b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00708ba0'
+        Module = 'std'
+        Source = '00/70/std_uninitializedfillnCModifierGraphicunsignedintCMo_00708ba0.cpp'
+        TestSource = '00/70/std_uninitializedfillnCModifierGraphicunsignedintCMo_00708ba0_test.cpp'
+        PassPattern = '00708ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007093c0'
+        Module = 'std::vector<CModifierEntryList>'
+        Source = '00/70/stdvectorCModifierEntryList_vector_007093c0.cpp'
+        TestSource = '00/70/stdvectorCModifierEntryList_vector_007093c0_test.cpp'
+        PassPattern = '007093c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00709c90'
+        Module = 'std'
+        Source = '00/70/std_uninitializedcopySMeshMorphPairSMeshMorphPair_00709c90.cpp'
+        TestSource = '00/70/std_uninitializedcopySMeshMorphPairSMeshMorphPair_00709c90_test.cpp'
+        PassPattern = '00709c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00709e60'
+        Module = 'std::vector<SMeshMorphPair>'
+        Source = '00/70/stdvectorSMeshMorphPair_pushback_00709e60.cpp'
+        TestSource = '00/70/stdvectorSMeshMorphPair_pushback_00709e60_test.cpp'
+        PassPattern = '00709e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070aaf0'
+        Module = 'std'
+        Source = '00/70/std_uninitializedfillnCEngineTextureDecalunsignedint_0070aaf0.cpp'
+        TestSource = '00/70/std_uninitializedfillnCEngineTextureDecalunsignedint_0070aaf0_test.cpp'
+        PassPattern = '0070aaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070aea0'
+        Module = 'CEngineTextureDecalMap'
+        Source = '00/70/CEngineTextureDecalMap_Minsert_0070aea0.cpp'
+        TestSource = '00/70/CEngineTextureDecalMap_Minsert_0070aea0_test.cpp'
+        PassPattern = '0070aea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070b240'
+        Module = 'std::vector<CEngineTextureDecal>'
+        Source = '00/70/stdvectorCEngineTextureDecal_Minsertoverflow_0070b240.cpp'
+        TestSource = '00/70/stdvectorCEngineTextureDecal_Minsertoverflow_0070b240_test.cpp'
+        PassPattern = '0070b240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070b9b0'
+        Module = 'std::list<CAnimSet>'
+        Source = '00/70/stdlistCAnimSet_scalardeletingdestructor_0070b9b0.cpp'
+        TestSource = '00/70/stdlistCAnimSet_scalardeletingdestructor_0070b9b0_test.cpp'
+        PassPattern = '0070b9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070bd80'
+        Module = '_global'
+        Source = '00/70/global_GFGetInterpolatedLoopingValue_0070bd80.cpp'
+        TestSource = '00/70/global_GFGetInterpolatedLoopingValue_0070bd80_test.cpp'
+        PassPattern = '0070bd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070be40'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_GetProgressFromAlpha_0070be40.cpp'
+        TestSource = '00/70/CAnimateThing_GetProgressFromAlpha_0070be40_test.cpp'
+        PassPattern = '0070be40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070bfc0'
+        Module = 'CAnimSet'
+        Source = '00/70/CAnimSet_SetAlpha_0070bfc0.cpp'
+        TestSource = '00/70/CAnimSet_SetAlpha_0070bfc0_test.cpp'
+        PassPattern = '0070bfc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070c770'
+        Module = '`anonymous namespace''
+        Source = '00/70/anonymousnamespace_IsAnimStateBlendValid_0070c770.cpp'
+        TestSource = '00/70/anonymousnamespace_IsAnimStateBlendValid_0070c770_test.cpp'
+        PassPattern = '0070c770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070d0a0'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_GetAllCombinationAnimsFromType_0070d0a0.cpp'
+        TestSource = '00/70/CAnimateThing_GetAllCombinationAnimsFromType_0070d0a0_test.cpp'
+        PassPattern = '0070d0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070d2f0'
+        Module = 'CAnimSet'
+        Source = '00/70/CAnimSet_AddAnim_0070d2f0.cpp'
+        TestSource = '00/70/CAnimSet_AddAnim_0070d2f0_test.cpp'
+        PassPattern = '0070d2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070ec30'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_ClearAllAnims_0070ec30.cpp'
+        TestSource = '00/70/CAnimateThing_ClearAllAnims_0070ec30_test.cpp'
+        PassPattern = '0070ec30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070f410'
+        Module = 'std::_Temporary_buffer'
+        Source = '00/70/stdTemporarybuffer_Mallocatebuffer_0070f410.cpp'
+        TestSource = '00/70/stdTemporarybuffer_Mallocatebuffer_0070f410_test.cpp'
+        PassPattern = '0070f410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070fdc0'
+        Module = 'std'
+        Source = '00/70/std_swapranges_0070fdc0.cpp'
+        TestSource = '00/70/std_swapranges_0070fdc0_test.cpp'
+        PassPattern = '0070fdc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007107d0'
+        Module = 'std'
+        Source = '00/71/std_mergesortloop_007107d0.cpp'
+        TestSource = '00/71/std_mergesortloop_007107d0_test.cpp'
+        PassPattern = '007107d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00710980'
+        Module = 'std::vector<short>'
+        Source = '00/71/stdvectorshort_Minsertoverflow_00710980.cpp'
+        TestSource = '00/71/stdvectorshort_Minsertoverflow_00710980_test.cpp'
+        PassPattern = '00710980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00710d00'
+        Module = 'std'
+        Source = '00/71/std_mergebackward_00710d00.cpp'
+        TestSource = '00/71/std_mergebackward_00710d00_test.cpp'
+        PassPattern = '00710d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007114c0'
+        Module = 'std'
+        Source = '00/71/std_chunkinsertionsort_007114c0.cpp'
+        TestSource = '00/71/std_chunkinsertionsort_007114c0_test.cpp'
+        PassPattern = '007114c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007116b0'
+        Module = 'std'
+        Source = '00/71/std_mergesortwithbuffer_007116b0.cpp'
+        TestSource = '00/71/std_mergesortwithbuffer_007116b0_test.cpp'
+        PassPattern = '007116b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00711920'
+        Module = 'std'
+        Source = '00/71/std_stablesortadaptive_00711920.cpp'
+        TestSource = '00/71/std_stablesortadaptive_00711920_test.cpp'
+        PassPattern = '00711920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007119c0'
+        Module = 'std::list<CAnimSet>'
+        Source = '00/71/stdlistCAnimSet_Minsertdispatch_007119c0.cpp'
+        TestSource = '00/71/stdlistCAnimSet_Minsertdispatch_007119c0_test.cpp'
+        PassPattern = '007119c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00711b80'
+        Module = 'std'
+        Source = '00/71/std_stablesortaux_00711b80.cpp'
+        TestSource = '00/71/std_stablesortaux_00711b80_test.cpp'
+        PassPattern = '00711b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00711d50'
+        Module = 'CAnimateThing::CDelayedAnimation'
+        Source = '00/71/CAnimateThingCDelayedAnimation_CDelayedAnimation_00711d50.cpp'
+        TestSource = '00/71/CAnimateThingCDelayedAnimation_CDelayedAnimation_00711d50_test.cpp'
+        PassPattern = '00711d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00711e30'
+        Module = 'std::list<CDelayedAnimation>'
+        Source = '00/71/stdlistCDelayedAnimation_Mcreatenode_00711e30.cpp'
+        TestSource = '00/71/stdlistCDelayedAnimation_Mcreatenode_00711e30_test.cpp'
+        PassPattern = '00711e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00718390'
+        Module = 'std'
+        Source = '00/71/std_uninitializedcopy_00718390.cpp'
+        TestSource = '00/71/std_uninitializedcopy_00718390_test.cpp'
+        PassPattern = '00718390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00718fb0'
+        Module = 'std::vector<pair<float,EConversationAttitude>>'
+        Source = '00/71/stdvectorpairfloatEConversationAttitude_Mallocateandcopy_00718fb0.cpp'
+        TestSource = '00/71/stdvectorpairfloatEConversationAttitude_Mallocateandcopy_00718fb0_test.cpp'
+        PassPattern = '00718fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007196d0'
+        Module = 'std::vector<CCameraTag>'
+        Source = '00/71/stdvectorCCameraTag_Minsertoverflow_007196d0.cpp'
+        TestSource = '00/71/stdvectorCCameraTag_Minsertoverflow_007196d0_test.cpp'
+        PassPattern = '007196d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00719fa0'
+        Module = 'std::vector<CSubtitledMessage>'
+        Source = '00/71/stdvectorCSubtitledMessage_Mallocateandcopy_00719fa0.cpp'
+        TestSource = '00/71/stdvectorCSubtitledMessage_Mallocateandcopy_00719fa0_test.cpp'
+        PassPattern = '00719fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071c120'
+        Module = '`anonymous namespace''
+        Source = '00/71/anonymousnamespace_AdjustMorphsOfLowerPriority_0071c120.cpp'
+        TestSource = '00/71/anonymousnamespace_AdjustMorphsOfLowerPriority_0071c120_test.cpp'
+        PassPattern = '0071c120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071cf70'
+        Module = '`anonymous namespace''
+        Source = '00/71/anonymousnamespace_AddMorph_0071cf70.cpp'
+        TestSource = '00/71/anonymousnamespace_AddMorph_0071cf70_test.cpp'
+        PassPattern = '0071cf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071de20'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_GetTattooThings_0071de20.cpp'
+        TestSource = '00/71/CTCHeroMorph_GetTattooThings_0071de20_test.cpp'
+        PassPattern = '0071de20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071ec20'
+        Module = 'std'
+        Source = '00/71/std_swap_0071ec20.cpp'
+        TestSource = '00/71/std_swap_0071ec20_test.cpp'
+        PassPattern = '0071ec20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
