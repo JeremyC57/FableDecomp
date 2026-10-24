@@ -35,7 +35,7 @@ def main() -> int:
         if not p.exists():
             continue
         kind = label_trust.classify(p)
-        if kind != "genuine":
+        if not label_trust.purity.is_genuine_kind(kind):
             bakes.append((r["address"].lower().zfill(8), r["module"], r["name"], kind,
                           r.get("retail_parity", ""), p.name))
     text = CATALOG.read_text(encoding="utf-8")
@@ -65,7 +65,7 @@ def main() -> int:
         if "Grade = 'asm_bake'" not in blk or not src:
             return blk
         p = ROOT / "rebuild" / "src" / "compiled" / src.group(1)
-        if not p.exists() or label_trust.classify(p) != "genuine":
+        if not p.exists() or not label_trust.purity.is_genuine_kind(label_trust.classify(p)):
             return blk
         untagged += 1
         return re.sub(r"\n\s*Grade = 'asm_bake'", "", blk)

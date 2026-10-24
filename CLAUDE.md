@@ -33,6 +33,9 @@ reconstruction that must compile under VC7.1 to the retail bytes.
 - **Evidence, not assumption** — cross-check every claim against ≥2 sources; verify before asserting.
 - **Byte purity** — coverage is compiler-emitted C++ that byte-matches retail. `__asm` / `naked` /
   `_emit` is grade `asm_bake`: an oracle, never reconstruction. `verify_and_land.py` rejects it.
+  Exception (owner, 2026-10-24): where retail itself ran inline asm (an instruction VC7.1 cannot emit
+  from C++: `rdtsc`, bare `fistp dword`, `fnstcw`/`fldcw`), a C++ body with that minimal `__asm` and a
+  `// Retail-asm: <evidence>` line is grade `retail_asm` and lands (`crawl/purity.py`).
 - **Shared headers** — model `this` with `#include "engine/<Class>.h"`, never a local
   `struct T { char pad[0x1a8]; ... }` when a header exists (the verifier warns; strict mode rejects).
 - **Trust the manifest carefully** — module labels are propagated across byte-identical bodies;

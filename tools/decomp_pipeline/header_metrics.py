@@ -72,13 +72,13 @@ def main() -> int:
         if why.startswith("MISLABELLED_FAMILY"):
             m["mislabelled_family_files"] += 1
         if r.get("retail_parity", "") in ("MATCH", "RELOCATION_MATCH"):
-            if kind != "genuine":
+            if not purity.is_genuine_kind(kind):
                 m["asm_bake_verified"] += 1
                 if r["retail_parity"] == "MATCH":
                     m["asm_bake_matching"] += 1
             n = oracle_len.get(r["address"].lower().zfill(8), 0)
             matched_bytes += n
-            if kind == "genuine":
+            if purity.is_genuine_kind(kind):
                 matched_bytes_genuine += n
     # files on disk that the manifest does not know as landed (gapscan rows and strays)
     manifest_files = {Path(r["compiled_source"]).resolve() for r in mf.landed()}
@@ -96,7 +96,7 @@ def main() -> int:
     eng = ROOT / "rebuild" / "include" / "engine"
     out = {k: m.get(k, 0) for k in ("landed_total", "files_on_disk", "files_not_in_manifest",
                                     "unmanifested_genuine", "unmanifested_naked_asm", "unmanifested_emit_bake",
-                                    "genuine", "naked_asm", "emit_bake",
+                                    "genuine", "retail_asm", "naked_asm", "emit_bake",
                                     "includes_engine_header", "includes_any_header",
                                     "generic_struct_decls", "files_with_generic_struct", "gapscan",
                                     "mislabelled_family_files", "missing_file",
