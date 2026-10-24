@@ -1355,3 +1355,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A 13-dword `rep movsd` prefix in an implicit copy is a trivial base class; VC7.1 does not merge separate POD members into one block copy. A PDB layout with `_padding_` rows from +0 hints at a base (0xA31EC0).
 - Chunk-file counted-pointer getters are `SetStaticCast` + `ShareData` (0xA32620); STLport `CVectorMap::Insert` is `push_back(x); Dirty = true;` with Dirty at +0xD retail (+0x11 PDB) (0xA34950).
 - An inline record `operator=` is inlined in an STLport loop body but called as its COMDAT for the final `*last = val` (0xA32960); `__partial_sort` inlines `__pop_heap` only for a POD pair (0xA34360).
+- `vector::erase` puts `copy()`'s iterator tag in the live `first` slot, so `__copy` needs a same-TU noinline body (0xA40C10). The pair `operator<` at 0xA40250 is `__cdecl` even inside /Gr code.
+- `CVectorMap::LowerBound`: compute `count = _M_finish - _M_start` before `first = _M_start` and halve with `count / 2`, not `>> 1` (0xA40AF0); `CVectorMap::Find` holds `Data.end()` in a local.
+- `??_G` of a polymorphic class: define the dtor out of line in the TU; an in-class `{}` makes every member dtor an out-of-line call (0xA38080). GUID helpers are guiddef.h bodies, `__fastcall`, with `#pragma intrinsic(memcmp)` (0xA3AEF0).

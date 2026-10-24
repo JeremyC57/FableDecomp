@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a37c40	RELOCATION_MATCH	103v103	PASS	_STL::__copy<CClassTypeInfo*,CClassTypeInfo*,int> (catalog _Move<CLipSyncPhoneme*> wrong); 1 grade
+00a38080	RELOCATION_MATCH	78v78	PASS	CClassFactory scalar deleting dtor; needed the out-of-line ~CClassFactory() in the TU; 3 grades
+00a38150	RELOCATION_MATCH	100v100	PASS	vector<CClassTypeInfo>::resize(n) = resize(n, _Tp()); 1 grade
+00a38420	RELOCATION_MATCH	106v106	PASS	CCRCSymbolMap::FindSymbol; same-TU noinline LowerBound stand-in; 2 grades
+00a385a0	DIFFER	203v195	-	CCRCSymbolMap::AddSymbolDirty; register allocation around the CRC literal select and the pair value word; 4 grades
+00a3ad20	RELOCATION_MATCH	166v166	PASS	CCompressorZlib::Compress(.., CArray<unsigned char>&); inline size expressions; 2 grades
+00a3aef0	MATCH	21v21	PASS	IsEqualGUID (guiddef.h); 1 grade
+00a3af10	MATCH	21v21	PASS	operator==(GUID) (guiddef.h); 1 grade
+00a3af30	MATCH	21v21	PASS	operator!=(GUID) (guiddef.h); 1 grade
+00a3b000	MATCH	225v225	PASS	RenderOutputPins (DirectShow SDK dshowutil verbatim); 1 grade
+00a3cb90	RELOCATION_MATCH	76v76	PASS	__uninitialized_copy<C3DAnimationStateAlpha*>; 1 grade
+00a3cbe0	RELOCATION_MATCH	72v72	PASS	__uninitialized_fill_n<C3DAnimationStateAlpha*,unsigned int>; 1 grade
+00a3cc30	RELOCATION_MATCH	76v76	PASS	__uninitialized_copy<const C3DAnimationStateAlpha*>; 1 grade
+00a3cd00	MATCH	203v203	PASS	__copy_backward<C3DAnimationStateAlpha*>; 1 grade
+00a3cee0	MATCH	51v51	PASS	_STL::fill<C3DAnimationStateAlpha*>; 1 grade
+00a3cf20	MATCH	203v203	PASS	__copy<C3DAnimationStateAlpha*>; 1 grade
+00a3d380	RELOCATION_MATCH	90v90	PASS	vector<C3DAnimationStateAlpha>::push_back; same-TU _M_insert_overflow stand-in; 1 grade
+00a3df30	DIFFER	209v209	-	md5_append; scheduling only (lea ecx before push ebx), LTCG custom convention for md5_process; 2 grades
+00a3e010	RELOCATION_MATCH	172v172	PASS	md5_finish (Deutsch md5.c), /GS; 1 grade
+00a3ecb0	RELOCATION_MATCH	119v119	PASS	CSoundManagerLH::vfunc_4; STLport list iterator model, inverted condition; 2 grades
+00a3ed30	RELOCATION_MATCH	82v82	PASS	CSoundManagerLH::FindByName; CVectorMap::Find with a local end(); 2 grades
+00a3ee50	RELOCATION_MATCH	126v126	PASS	CSoundManagerLH::FindByNamePair; pair operator< __cdecl out of line; 2 grades
+00a3f340	DIFFER	183v184	-	CSoundManagerLH::vfunc_41; edi/ebp swap in the inline NameMap erase; 4 grades
+00a3f860	MATCH	40v40	PASS	FindFirstSetBit (descriptive name); 1 grade
+00a40370	RELOCATION_MATCH	89v89	PASS	__unguarded_linear_insert<SNameEntry*>; 1 grade
+00a40660	RELOCATION_MATCH	170v170	PASS	__unguarded_partition<SNameEntry*>; 1 grade
+00a40730	RELOCATION_MATCH	137v137	PASS	__linear_insert<SNameEntry*>; 1 grade
+00a40820	RELOCATION_MATCH	189v189	PASS	__unguarded_linear_insert<SNamePairEntry*>; pair operator< inline; 1 grade
+00a40af0	RELOCATION_MATCH	217v217	PASS	CVectorMap<SNamePair,CSoundBankLH*>::LowerBound; count computed before first; 2 grades
+00a40c10	RELOCATION_MATCH	84v84	PASS	vector<SNamePairEntry>::erase(first,last); same-TU noinline __copy (tag in live first slot); 1 grade
+00a40d80	RELOCATION_MATCH	106v106	PASS	__median<SNamePairEntry>; 1 grade
+00a40ef0	RELOCATION_MATCH	66v66	PASS	__insertion_sort<SNameEntry*>; 1 grade
+00a40f50	RELOCATION_MATCH	150v150	PASS	__linear_insert<SNamePairEntry*>; 1 grade
+00a41200	RELOCATION_MATCH	88v88	PASS	__make_heap<SNameEntry*>; 1 grade
+00a41630	RELOCATION_MATCH	131v131	PASS	__pop_heap<SNamePairEntry*> (catalog _Pop_heap<CTestQuest*> wrong); 1 grade
+00a416e0	RELOCATION_MATCH	117v117	PASS	__make_heap<SNamePairEntry*>; 1 grade
+00a418a0	RELOCATION_MATCH	72v72	PASS	vector<SNameEntry>::push_back; same-TU _M_insert_overflow stand-in; 1 grade
+00a41ad0	RELOCATION_MATCH	135v135	PASS	CVectorMap<CCharString,CSoundBankLH*>::Insert; 1 grade
+00a41b60	RELOCATION_MATCH	189v189	PASS	__partial_sort<SNameEntry*> (__pop_heap inline); 1 grade
+00a41cd0	RELOCATION_MATCH	122v122	PASS	__partial_sort<SNamePairEntry*> (__pop_heap out of line); 1 grade
