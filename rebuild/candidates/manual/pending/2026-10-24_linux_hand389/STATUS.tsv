@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006f2760	RELOCATION_MATCH	70v70	PASS	_Rb_tree<u64,pair<const u64,CThingCreatureBase*>>::equal_range (catalog BinaryTree_LowerBoundPair)
+006f27b0	RELOCATION_MATCH	70v70	PASS	_Rb_tree<u64,pair<const u64,CCombatantInfo>>::equal_range
+006f2870	RELOCATION_MATCH	193v193	PASS	_Rb_tree::_M_copy (STLport verbatim)
+006f2b30	RELOCATION_MATCH	104v104	PASS	std::__partition<CProng*,CIsProngUsable> (two-loop STLport form)
+006f3260	RELOCATION_MATCH	223v223	PASS	vector<pair<C3DVector,bool>>::_M_insert_overflow; same-TU noinline copy/fill bodies
+006f34b0	RELOCATION_MATCH	127v127	PASS	for_each<map iterator,CGetBestAttackerForProng>; static _Rb_global::_M_increment
+006f40a0	RELOCATION_MATCH	72v72	PASS	__uninitialized_copy<CCombatRing*> (catalog _Move<CMusicEntry*>)
+006f40f0	RELOCATION_MATCH	68v68	PASS	__uninitialized_fill_n<CCombatRing*>
+006f4140	RELOCATION_MATCH	72v72	PASS	__uninitialized_copy<const CCombatRing*>
+006f43c0	RELOCATION_MATCH	104v104	PASS	vector<CCombatRing> copy ctor; _Vector_base(n,a) zero init list then allocate
+006f4930	RELOCATION_MATCH	87v87	PASS	vector<CCombatRing>::push_back; stand-in _M_insert_overflow body
+006f4af0	RELOCATION_MATCH	65v65	PASS	pair<const u64,CCombatantInfo> scalar deleting dtor
+006f4bc0	RELOCATION_MATCH	94v94	PASS	_Rb_tree::erase(iterator)
+006f4c20	RELOCATION_MATCH	91v91	PASS	_Rb_tree::_M_erase
+006f5000	RELOCATION_MATCH	57v57	PASS	_Rb_tree() ctor; _M_header(0) in init list
+006f9640	DIFFER	128v126	-	CManager::AnimHasExtraEvent; extra frame word for the Find key copy
+006f96c0	DIFFER	94v94	-	CManager::GetExtraEventTime; xor ebx scheduled before a store (scheduling only)
+006f9ac0	RELOCATION_MATCH	90v90	PASS	CManager::GetExtraEventNames (catalog Game_ApplyAdditionalImpulseIfInCombat)
+006f9b50	RELOCATION_MATCH	90v90	PASS	CManager::GetExtraEvents (catalog Game_GetBestTargetInDirection)
+006f9ee0	RELOCATION_MATCH	161v161	PASS	NAnimationEvents::SaveAnimationEvents; wchar_t literal ctor takes const unsigned short*
+006fafe0	RELOCATION_MATCH	87v87	PASS	CSmallVector<CEvent,32>::Allocate; end-pointer fill loop
+006fb8a0	RELOCATION_MATCH	47v47	PASS	__destroy_aux<SKeyedEvents*>
+006fbb30	RELOCATION_MATCH	63v63	PASS	__uninitialized_fill_n<SKeyedEvents*>
+006fbee0	RELOCATION_MATCH	190v190	PASS	__unguarded_partition (SGI)
+006fbfd0	RELOCATION_MATCH	118v118	PASS	__pop_heap (SGI)
+006fc070	RELOCATION_MATCH	114v114	PASS	__make_heap (SGI)
+006fc3e0	DIFFER	139v137	-	__linear_insert; key loaded via ecx then copied to ebx (2 bytes)
+006fc8e0	RELOCATION_MATCH	112v112	PASS	for_each<const CEvent*,CFillEventNames>; stand-in _M_insert_overflow
+006fcb30	RELOCATION_MATCH	81v81	PASS	__insertion_sort (SGI)
+006fcc80	RELOCATION_MATCH	145v145	PASS	CFillEvents::operator(); named pair local; stand-in _M_insert_overflow
+006fcd90	RELOCATION_MATCH	82v82	PASS	vector<SKeyedEvents>::push_back; stand-in _M_insert_overflow
+006fcea0	RELOCATION_MATCH	111v111	PASS	__partial_sort (SGI)
+006fd330	RELOCATION_MATCH	65v65	PASS	CManager scalar deleting dtor; compiler-generated dtor (no vtable reset)
+006fd4f0	RELOCATION_MATCH	227v227	PASS	CGameCameraBase::GetRotationAngle; result=0.0f declared first
+006fed30	RELOCATION_MATCH	92v92	PASS	CReactionFrequencyTraits_PeriodicFrequency ctor (catalog ConsoleSetViewPort)
+006ff930	RELOCATION_MATCH	102v102	PASS	CReactionFrequencyTraits::CreateFromType factory switch
+00701750	DIFFER	229v227	-	GetThingOpinionOfPlayer; FillN cursor copy (2 bytes)
+00702810	RELOCATION_MATCH	213v213	PASS	CTCQuestCard::IsActivatable (catalog CViewBase_FindParticleMorph)
+00703210	DIFFER	217v217	-	CThingObject::Create; ebx/edi register swap only
+007034d0	RELOCATION_MATCH	189v189	PASS	CThingObject::WorldUpdateWeaponTrails; same-TU LowerBound stand-in
