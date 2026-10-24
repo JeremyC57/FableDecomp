@@ -301427,6 +301427,251 @@ $catalog = @(
         TestSource = '00/98/CPendingObjectTree0098fe70_Mfind_0098fe70_test.cpp'
         PassPattern = '0098fe70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a11760'
+        Module = 'CPhysicsMeshObject'
+        Source = '00/a1/CPhysicsMeshObject_GetHelperPointPositionStatic_00a11760.cpp'
+        TestSource = '00/a1/CPhysicsMeshObject_GetHelperPointPositionStatic_00a11760_test.cpp'
+        PassPattern = '00a11760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a13440'
+        Module = '_global'
+        Source = '00/a1/global_foreachC3DVectorCRescaleBy_00a13440.cpp'
+        TestSource = '00/a1/global_foreachC3DVectorCRescaleBy_00a13440_test.cpp'
+        PassPattern = '00a13440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a13650'
+        Module = 'vector<C2DLineF>'
+        Source = '00/a1/vectorC2DLineF_reserve_00a13650.cpp'
+        TestSource = '00/a1/vectorC2DLineF_reserve_00a13650_test.cpp'
+        PassPattern = '00a13650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a141d0'
+        Module = 'C2DVector'
+        Source = '00/a1/C2DVector_Rotate_00a141d0.cpp'
+        TestSource = '00/a1/C2DVector_Rotate_00a141d0_test.cpp'
+        PassPattern = '00a141d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14900'
+        Module = 'CAsyncLoadingMemoryPool'
+        Source = '00/a1/CAsyncLoadingMemoryPool_ProcessLoading_00a14900.cpp'
+        TestSource = '00/a1/CAsyncLoadingMemoryPool_ProcessLoading_00a14900_test.cpp'
+        PassPattern = '00a14900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14930'
+        Module = 'CAsyncLoadingMemoryPool'
+        Source = '00/a1/CAsyncLoadingMemoryPool_RemoveLoadingCallback_00a14930.cpp'
+        TestSource = '00/a1/CAsyncLoadingMemoryPool_RemoveLoadingCallback_00a14930_test.cpp'
+        PassPattern = '00a14930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14990'
+        Module = 'CAsyncLoadingMemoryPool'
+        Source = '00/a1/CAsyncLoadingMemoryPool_AddLoadingCallback_00a14990.cpp'
+        TestSource = '00/a1/CAsyncLoadingMemoryPool_AddLoadingCallback_00a14990_test.cpp'
+        PassPattern = '00a14990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a154d0'
+        Module = 'CNavigatorQueueManager'
+        Source = '00/a1/CNavigatorQueueManager_AddNavigatorToQueue_00a154d0.cpp'
+        TestSource = '00/a1/CNavigatorQueueManager_AddNavigatorToQueue_00a154d0_test.cpp'
+        PassPattern = '00a154d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a16550'
+        Module = '_global'
+        Source = '00/a1/global_findif_00a16550.cpp'
+        TestSource = '00/a1/global_findif_00a16550_test.cpp'
+        PassPattern = '00a16550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a17600'
+        Module = 'CPhysicsMesh'
+        Source = '00/a1/CPhysicsMesh_ResetStartInformationCount_00a17600.cpp'
+        TestSource = '00/a1/CPhysicsMesh_ResetStartInformationCount_00a17600_test.cpp'
+        PassPattern = '00a17600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a18f70'
+        Module = 'CNavigatorFlyer'
+        Source = '00/a1/CNavigatorFlyer_Create_00a18f70.cpp'
+        TestSource = '00/a1/CNavigatorFlyer_Create_00a18f70_test.cpp'
+        PassPattern = '00a18f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1b470'
+        Module = 'CSteeringAgent'
+        Source = '00/a1/CSteeringAgent_CreateLineList_00a1b470.cpp'
+        TestSource = '00/a1/CSteeringAgent_CreateLineList_00a1b470_test.cpp'
+        PassPattern = '00a1b470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1ca70'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_CNavigatorAStar_00a1ca70.cpp'
+        TestSource = '00/a1/CNavigatorAStar_CNavigatorAStar_00a1ca70_test.cpp'
+        PassPattern = '00a1ca70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1cbf0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_Create_00a1cbf0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_Create_00a1cbf0_test.cpp'
+        PassPattern = '00a1cbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21640'
+        Module = '_Rb_tree<long, pair<const long, CAStarState>>'
+        Source = '00/a2/RbtreelongpairconstlongCAStarState_Merase_00a21640.cpp'
+        TestSource = '00/a2/RbtreelongpairconstlongCAStarState_Merase_00a21640_test.cpp'
+        PassPattern = '00a21640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21730'
+        Module = '_global'
+        Source = '00/a2/global_findif_00a21730.cpp'
+        TestSource = '00/a2/global_findif_00a21730_test.cpp'
+        PassPattern = '00a21730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21d90'
+        Module = '_Rb_tree<long, pair<const long, CAStarState>>'
+        Source = '00/a2/RbtreelongpairconstlongCAStarState_Minsert_00a21d90.cpp'
+        TestSource = '00/a2/RbtreelongpairconstlongCAStarState_Minsert_00a21d90_test.cpp'
+        PassPattern = '00a21d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21e80'
+        Module = '_Rb_tree<float, pair<const float, const CANavQuadTreeNode*>>'
+        Source = '00/a2/RbtreefloatpairconstfloatconstCANavQuadTreeNode_Minsert_00a21e80.cpp'
+        TestSource = '00/a2/RbtreefloatpairconstfloatconstCANavQuadTreeNode_Minsert_00a21e80_test.cpp'
+        PassPattern = '00a21e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21fc0'
+        Module = 'list<CNavWayPoint>'
+        Source = '00/a2/listCNavWayPoint_pushfront_00a21fc0.cpp'
+        TestSource = '00/a2/listCNavWayPoint_pushfront_00a21fc0_test.cpp'
+        PassPattern = '00a21fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a22010'
+        Module = 'list<CNavWayPoint>'
+        Source = '00/a2/listCNavWayPoint_pushback_00a22010.cpp'
+        TestSource = '00/a2/listCNavWayPoint_pushback_00a22010_test.cpp'
+        PassPattern = '00a22010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a22460'
+        Module = 'CPriorityQueue<CAStarState*>'
+        Source = '00/a2/CPriorityQueueCAStarState_Push_00a22460.cpp'
+        TestSource = '00/a2/CPriorityQueueCAStarState_Push_00a22460_test.cpp'
+        PassPattern = '00a22460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a25970'
+        Module = 'C3DAnimationInfo'
+        Source = '00/a2/C3DAnimationInfo_C3DAnimationInfo_00a25970.cpp'
+        TestSource = '00/a2/C3DAnimationInfo_C3DAnimationInfo_00a25970_test.cpp'
+        PassPattern = '00a25970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a25b20'
+        Module = 'C3DAnimationInfo::CAnimationData'
+        Source = '00/a2/C3DAnimationInfoCAnimationData_Sizeof_00a25b20.cpp'
+        TestSource = '00/a2/C3DAnimationInfoCAnimationData_Sizeof_00a25b20_test.cpp'
+        PassPattern = '00a25b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26410'
+        Module = 'CMeshBankStateBlock::CLODStateBlock'
+        Source = '00/a2/CMeshBankStateBlockCLODStateBlock_GetBoneLODs_00a26410.cpp'
+        TestSource = '00/a2/CMeshBankStateBlockCLODStateBlock_GetBoneLODs_00a26410_test.cpp'
+        PassPattern = '00a26410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26530'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_FindLipSyncAnimation_00a26530.cpp'
+        TestSource = '00/a2/CMeshDataBank_FindLipSyncAnimation_00a26530_test.cpp'
+        PassPattern = '00a26530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26900'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_CloseMeshes_00a26900.cpp'
+        TestSource = '00/a2/CMeshDataBank_CloseMeshes_00a26900_test.cpp'
+        PassPattern = '00a26900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2afa0'
+        Module = '_global'
+        Source = '00/a2/global_uninitializedfilln_00a2afa0.cpp'
+        TestSource = '00/a2/global_uninitializedfilln_00a2afa0_test.cpp'
+        PassPattern = '00a2afa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2bc00'
+        Module = '_global'
+        Source = '00/a2/global_copy_00a2bc00.cpp'
+        TestSource = '00/a2/global_copy_00a2bc00_test.cpp'
+        PassPattern = '00a2bc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2c210'
+        Module = 'vector<C3DMeshInfo>'
+        Source = '00/a2/vectorC3DMeshInfo_reserve_00a2c210.cpp'
+        TestSource = '00/a2/vectorC3DMeshInfo_reserve_00a2c210_test.cpp'
+        PassPattern = '00a2c210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2c2b0'
+        Module = 'vector<CPhysicsMeshInfo>'
+        Source = '00/a2/vectorCPhysicsMeshInfo_reserve_00a2c2b0.cpp'
+        TestSource = '00/a2/vectorCPhysicsMeshInfo_reserve_00a2c2b0_test.cpp'
+        PassPattern = '00a2c2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2c360'
+        Module = 'vector<C3DAnimationInfo>'
+        Source = '00/a2/vectorC3DAnimationInfo_reserve_00a2c360.cpp'
+        TestSource = '00/a2/vectorC3DAnimationInfo_reserve_00a2c360_test.cpp'
+        PassPattern = '00a2c360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2c4e0'
+        Module = '_Rb_tree<unsigned long, pair<const unsigned long, CCountedPointer<C3DAnimation2>>>'
+        Source = '00/a2/RbtreeunsignedlongpairconstunsignedlongCCountedPointerC3DAnimation2_Minsert_00a2c4e0.cpp'
+        TestSource = '00/a2/RbtreeunsignedlongpairconstunsignedlongCCountedPointerC3DAnimation2_Minsert_00a2c4e0_test.cpp'
+        PassPattern = '00a2c4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2cfa0'
+        Module = 'CMeshBankStateBlock::CLODStateBlock'
+        Source = '00/a2/CMeshBankStateBlockCLODStateBlock_CLODStateBlock_00a2cfa0.cpp'
+        TestSource = '00/a2/CMeshBankStateBlockCLODStateBlock_CLODStateBlock_00a2cfa0_test.cpp'
+        PassPattern = '00a2cfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2d190'
+        Module = 'vector<CPhysicsMeshInfo>'
+        Source = '00/a2/vectorCPhysicsMeshInfo_pushback_00a2d190.cpp'
+        TestSource = '00/a2/vectorCPhysicsMeshInfo_pushback_00a2d190_test.cpp'
+        PassPattern = '00a2d190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2d650'
+        Module = 'CMeshBankStateBlock'
+        Source = '00/a2/CMeshBankStateBlock_CMeshBankStateBlock_00a2d650.cpp'
+        TestSource = '00/a2/CMeshBankStateBlock_CMeshBankStateBlock_00a2d650_test.cpp'
+        PassPattern = '00a2d650_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

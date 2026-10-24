@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a11760	RELOCATION_MATCH	150v150	PASS	CPhysicsMeshObject::GetHelperPointPositionStatic
+00a13440	MATCH	73v73	PASS	for_each<C3DVector*, CRescaleBy>
+00a13650	RELOCATION_MATCH	171v171	PASS	vector<C2DLineF>::reserve
+00a13eb0	DIFFER	165v191	-	C2DVector::GetRandomUnitVector: retail_asm candidate: two inlined bare fld/fistp dword roundings (ours calls __ftol2)
+00a141d0	RELOCATION_MATCH	142v142	PASS	C2DVector::Rotate
+00a147e0	DIFFER	70v86	-	GFFastSin: retail_asm candidate: bare fld/fistp dword rounding (ours calls __ftol2)
+00a14840	DIFFER	65v81	-	GFFastCos: retail_asm candidate: bare fld/fistp dword rounding (ours calls __ftol2)
+00a14900	RELOCATION_MATCH	36v36	PASS	CAsyncLoadingMemoryPool::ProcessLoading
+00a14930	RELOCATION_MATCH	81v81	PASS	CAsyncLoadingMemoryPool::RemoveLoadingCallback
+00a14990	RELOCATION_MATCH	72v72	PASS	CAsyncLoadingMemoryPool::AddLoadingCallback
+00a154d0	RELOCATION_MATCH	239v239	PASS	CNavigatorQueueManager::AddNavigatorToQueue
+00a16550	RELOCATION_MATCH	187v187	PASS	__find_if
+00a17600	RELOCATION_MATCH	17v17	PASS	CPhysicsMesh::ResetStartInformationCount
+00a18f70	RELOCATION_MATCH	70v70	PASS	CNavigatorFlyer::Create
+00a1b470	MATCH	102v102	PASS	CSteeringAgent::CreateLineList
+00a1ca70	RELOCATION_MATCH	194v194	PASS	CNavigatorAStar::CNavigatorAStar
+00a1cbf0	RELOCATION_MATCH	62v62	PASS	CNavigatorAStar::Create
+00a1e030	DIFFER	216v217	-	CNavigatorAStar::UpdateGoal: one instruction short: retail copies the cached agent (mov eax,edi) before the interface load
+00a21640	RELOCATION_MATCH	90v90	PASS	_Rb_tree<long, pair<const long, CAStarState>>::_M_erase
+00a21730	MATCH	100v100	PASS	__find_if
+00a21d90	RELOCATION_MATCH	180v180	PASS	_Rb_tree<long, pair<const long, CAStarState>>::_M_insert
+00a21e80	RELOCATION_MATCH	196v196	PASS	_Rb_tree<float, pair<const float, const CANavQuadTreeNode*>>::_M_insert
+00a21fc0	RELOCATION_MATCH	67v67	PASS	list<CNavWayPoint>::push_front
+00a22010	RELOCATION_MATCH	65v65	PASS	list<CNavWayPoint>::push_back
+00a22460	RELOCATION_MATCH	92v92	PASS	CPriorityQueue<CAStarState*>::Push
+00a22530	DIFFER	72v88	-	GFFastArcCos: retail_asm candidate: bare fld/fistp dword rounding (ours calls __ftol2)
+00a25970	RELOCATION_MATCH	120v120	PASS	C3DAnimationInfo::~C3DAnimationInfo
+00a25b20	RELOCATION_MATCH	161v161	PASS	C3DAnimationInfo::CAnimationData::Sizeof
+00a26410	RELOCATION_MATCH	164v164	PASS	CMeshBankStateBlock::CLODStateBlock::GetBoneLODs
+00a26530	RELOCATION_MATCH	117v117	PASS	CMeshDataBank::FindLipSyncAnimation
+00a26900	RELOCATION_MATCH	185v185	PASS	CMeshDataBank::CloseMeshes
+00a2afa0	RELOCATION_MATCH	107v107	PASS	__uninitialized_fill_n
+00a2bc00	MATCH	97v97	PASS	__copy
+00a2c210	RELOCATION_MATCH	145v145	PASS	vector<C3DMeshInfo>::reserve
+00a2c2b0	RELOCATION_MATCH	163v163	PASS	vector<CPhysicsMeshInfo>::reserve
+00a2c360	RELOCATION_MATCH	203v203	PASS	vector<C3DAnimationInfo>::reserve
+00a2c4e0	RELOCATION_MATCH	211v211	PASS	_Rb_tree<unsigned long, pair<const unsigned long, CCountedPointer<C3DAnimation2>>>::_M_insert
+00a2cfa0	RELOCATION_MATCH	51v51	PASS	CMeshBankStateBlock::CLODStateBlock::CLODStateBlock
+00a2d190	RELOCATION_MATCH	85v85	PASS	vector<CPhysicsMeshInfo>::push_back
+00a2d650	RELOCATION_MATCH	98v98	PASS	CMeshBankStateBlock::CMeshBankStateBlock
