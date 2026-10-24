@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0067ee30	RELOCATION_MATCH	204v204	PASS	STLport __insertion_sort, CDegradableInfo by health desc; __copy_backward/copy_backward/__linear_insert all __forceinline (attempt 4)
+004c5100	DIFFER	135v135	-	parked: copy_backward tag homed in own frame dword vs over the live comparator slot (fix found later on 004c5190)
+00809590	RELOCATION_MATCH	159v159	PASS	STLport __insertion_sort, pair<C3DVector,long>, 0x2C-byte by-value targeting comparator
+00a82870	RELOCATION_MATCH	68v68	PASS	STLport __insertion_sort, pair<unsigned __int64,long> with memberwise pair copy
+00cbbe50	RELOCATION_MATCH	86v86	PASS	STLport __insertion_sort, flat {u64,long,long,CCharString} record with memberwise copy ctor
+004c5190	RELOCATION_MATCH	139v139	PASS	STLport __insertion_sort, CMeshInfo primary-last; real __copy_backward body under auto_inline(off)+noinline (GOTCHAS 24l)
+00817540	MATCH	133v133	PASS	SGI __unguarded_insertion_sort_aux, THitLocationIntersectionElement by key, linear insert inlined
+00711190	MATCH	153v153	PASS	STLport __insertion_sort, list<CAnimSet> iterators by Priority (+0x4C retail), all helpers __forceinline
+00a71810	RELOCATION_MATCH	97v97	PASS	STLport __insertion_sort, pair<CCharString,{long[13]}>
+009e7590	RELOCATION_MATCH	110v110	PASS	STLport __insertion_sort, pair<CCharString,CSymbolInfo>
+00af3700	RELOCATION_MATCH	100v100	PASS	STLport __insertion_sort, pair<CCharString,{long,long,CCharString}> (nested pair second)
+00cb6ea0	RELOCATION_MATCH	112v112	PASS	STLport __insertion_sort, pair<CCharString,CScriptInfo>
+007212d0	DIFFER	136v141	-	parked: register assignment (first edi vs ebp) + retail loop-head alignment
+00adbe70	RELOCATION_MATCH	135v135	PASS	STLport __insertion_sort, 12-byte POD keyed at +4; real __copy_backward body (24l)
+005e2e00	RELOCATION_MATCH	69v69	PASS	STLport __insertion_sort, pair<long,CDefPointer>; engine/CIVCountedPointeeBase.h
+00470dbc	RELOCATION_MATCH	76v76	PASS	STLport __insertion_sort, pair<ulong,{long,long}>; frame-pointer TU pragmas y off + s on
+0076bb70	RELOCATION_MATCH	80v80	PASS	STLport __insertion_sort, pair<ulong,CParticleUpdateParamDesc> (polymorphic second)
+0086fac0	DIFFER	122v122	-	parked: copy_backward tag homed in own frame dword vs over the live comparator slot (fix found later on 004c5190)
+00a82820	RELOCATION_MATCH	68v68	PASS	STLport __insertion_sort, pair<unsigned __int64,bool>
+00ad5b50	RELOCATION_MATCH	54v54	PASS	STLport __insertion_sort, SKeyPair8 with a function-pointer comparator
+00b85b30	RELOCATION_MATCH	54v54	PASS	STLport __insertion_sort, CEngineSubPrimitiveRenderer::CSortElement
+009d3b90	RELOCATION_MATCH	217v217	PASS	STLport __insertion_sort, bank entry indices by CBankFile::CompareDataOffset; byte-counted trivial copy_backward (memmove)
+00808a30	RELOCATION_MATCH	97v97	PASS	SGI __unguarded_insertion_sort front end -> __unguarded_insertion_sort_aux 0x808120
+00809840	RELOCATION_MATCH	97v97	PASS	SGI pop_heap front end -> __pop_heap_aux 0x808DB0
+005355c0	RELOCATION_MATCH	67v67	PASS	STLport list<CCountedPointer<CSpawnedFuncBase>>::insert (malloc node, counted copy, link before pos)
+00aec6f0	RELOCATION_MATCH	67v67	PASS	byte twin of 005355c0 (list::insert)
+006b5890	DIFFER	76v76	-	parked: x87 allocation (retail hoists fld [val+4] above the loop)
+00817950	RELOCATION_MATCH	120v120	PASS	SGI __make_heap, THitLocationIntersectionElement, value built memberwise in the arg area
+00720710	RELOCATION_MATCH	184v184	PASS	SGI __make_heap, pair<long,CTextureLayer>; CCompositeBlendDesc implicit copy inlined (CRGBColour Set)
+00a32c20	RELOCATION_MATCH	113v113	PASS	SGI __make_heap, pair<ulong,C3DHelperPoint> (stride 20)
+00805fe0	RELOCATION_MATCH	220v220	PASS	SGI __median, CDoNotUseBinaryPredicate coin flip: `if (seed & 1) return false; return true;` (attempt 3)
+00496fd0	RELOCATION_MATCH	106v106	PASS	SGI __unguarded_linear_insert<CWideString>, _wcsicmp compare
+004dfc42	RELOCATION_MATCH	168v168	PASS	SGI __median, pair<CCharString,CCharString> by first; /Oa + pragmas y off / s on + __forceinline compares (attempt 2)
+00a40250	RELOCATION_MATCH	110v110	PASS	STLport pair<CCharString,CCharString> operator< (cdecl, out of line); /Oa; leaf ??$?M
+00a70020	RELOCATION_MATCH	193v193	PASS	SGI __median, pair<CCharString,CCharString> by first; /Oa
+00b85510	MATCH	127v127	PASS	SGI merge of CSortElement runs (unsigned key), counted __copy tails inlined
+00710310	MATCH	114v114	PASS	SGI merge of list<CAnimSet> iterator runs by Priority
+0086d5a0	RELOCATION_MATCH	61v61	PASS	SGI __copy_backward over 16-byte CVectorMap records (vector op= 0x6741E0, dirty byte)
+00513500	MATCH	99v99	PASS	STLport __uninitialized_copy of CLevelFiles (3 counted pointers), placement new
+006c2aa0	MATCH	99v99	PASS	byte twin of 00513500 (__uninitialized_copy)

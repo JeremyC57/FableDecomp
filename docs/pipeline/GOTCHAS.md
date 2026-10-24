@@ -1135,3 +1135,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - crawl/rtti.demangle_class drops template args, collapsing every CIntelligentPointer<T>/CTBaseSingleton<T> onto one class: demangle with template args before slot naming.
 - `mov ecx,<global> ; jmp X::~X` bodies are dynamic-atexit destructors of statics (255 landed rows).
 - ~3,000 landed rows have no call and no data reference (unreferenced COMDAT instantiations kept without /OPT:REF): their template names were guesses from body shape.
+- String-pair compares that keep data pointers in registers across `CBasicString::operator<` calls are `/Oa` TUs (00a40250, 00a70020, 004dfc42).
+- A templated `operator<` leaf must be the mangled prefix `??$?M`; "operator<" makes the grader silently take the largest function (00a40250).
+- STLport `list::insert` returns its iterator through the hidden pointer (user ctors); the null test is on `&node->_M_data` (005355c0).
