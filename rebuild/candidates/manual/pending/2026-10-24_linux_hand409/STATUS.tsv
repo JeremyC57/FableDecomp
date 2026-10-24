@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00997e90	RELOCATION_MATCH	236v236	PASS	CAFile::ParserIsSeparatorNext; __forceinline CCharString/CBasicString operator==(char)
+00997f80	DIFFER	132v132	-	CAFile::GetCurrentPath; scheduling only (mov ecx,esi before push offset CurrentPath in both return copies); 4 grades
+00998170	RELOCATION_MATCH	96v96	PASS	CAFile::ParserReadPastDriveLabel; && chain with __forceinline operator==(const char*)
+00998210	RELOCATION_MATCH	59v59	PASS	CAFile::ParserIsDriveLabelNext; local retail CStringParser model (0x28 bytes)
+00998c30	RELOCATION_MATCH	92v92	PASS	CAFile::GetAbsoluteFilePath(wide,wide); narrow both, widen the result
+00998e70	RELOCATION_MATCH	226v226	PASS	CAFile::CopyFileW; STLport vector<unsigned char> buffer gives the 0x18 frame
+009990b0	RELOCATION_MATCH	85v85	PASS	CAFile::ConvertPathToFullPath(const CCharString&); named ToWideString local
+00999140	RELOCATION_MATCH	64v64	PASS	CAFile::ConvertPathToFullPath(const CWideString&, CWideString&)
+00999180	RELOCATION_MATCH	161v161	PASS	CAFile::GetDiskSectorSize; /GS, split buffers in an inner block
+009992a0	RELOCATION_MATCH	119v119	PASS	CAFile::GetFileModifiedTime
+00999320	RELOCATION_MATCH	137v137	PASS	CAFile::GetFileModifiedTimeAsSomeWackyWin32BigNumber; label correction
+009993b0	RELOCATION_MATCH	103v103	PASS	CAFile::IsFileReadOnly
+00999420	RELOCATION_MATCH	126v126	PASS	CAFile::SetFileReadOnly
+00999760	RELOCATION_MATCH	237v237	PASS	CAFile::StartFileScan(..., wchar_t*); /GS; positive != -1 test; label correction
+00999970	RELOCATION_MATCH	192v192	PASS	CAFile::ValidatePathnameIsOnWriteableDrive; /GS
+00999a30	RELOCATION_MATCH	123v123	PASS	CAFile::IsPathFile
+00999c50	RELOCATION_MATCH	93v93	PASS	CAFile::StartFileScan(..., CWideString&); /GS; label correction
+00999cb0	RELOCATION_MATCH	93v93	PASS	CAFile::ScanNextFile(..., CWideString&); /GS
+0099b770	RELOCATION_MATCH	93v93	PASS	CWideString::SetAsSubString; UnassignString through a local copy of the block pointer; label correction
+0099bb80	DIFFER	199v197	-	CWideString::SprintfDynamic; one instruction (lea vs mov+add for the size); 4 grades; label correction
+0099bff0	RELOCATION_MATCH	134v134	PASS	operator+(const wchar_t*, const CWideString&); same-TU noinline callee bodies; replaces the asm-bake
+0099c670	DIFFER	98v97	PASS	basic_string<unsigned short>::_M_range_initialize; int3-after-noreturn; RELOCATION_MATCH vs N+1 row; label correction
+0099c990	RELOCATION_MATCH	152v152	PASS	basic_string<unsigned short>::reserve; label correction
+0099ca70	DIFFER	118v117	PASS	basic_string<unsigned short>(n, c, alloc); int3-after-noreturn; RELOCATION_MATCH vs N+1 row; label correction
+0099cb00	DIFFER	145v144	PASS	basic_string<unsigned short>::append(n, c); int3-after-noreturn; RELOCATION_MATCH vs N+1 row; label correction
+0099cc80	DIFFER	141v140	PASS	basic_string<unsigned short>::push_back; int3-after-noreturn; RELOCATION_MATCH vs N+1 row; label correction
+0099d3a0	RELOCATION_MATCH	142v142	PASS	RetrieveStringByLanguage
+0099d470	RELOCATION_MATCH	84v84	PASS	RetrieveString (extern C fastcall); label correction
+0099d4d0	RELOCATION_MATCH	76v76	PASS	LocalizedDialogBoxByLanguage; separate early return -1 exits
+0099d520	RELOCATION_MATCH	130v130	PASS	LocalizedDialogBox (extern C fastcall); first by-language call inlined by VC itself
+0099d7d0	RELOCATION_MATCH	231v231	PASS	ConvertStaticToHyperlink; /GS
+0099dbe0	RELOCATION_MATCH	106v106	PASS	SetDirtyExitFlag; /GS; retail body only reads ExitFlag and returns 0
+0099dc50	RELOCATION_MATCH	86v86	PASS	ClearDirtyExitFlag
+0099e620	RELOCATION_MATCH	104v104	PASS	GFIsCharStringNumber; fetch-ahead loop
+0099e690	DIFFER	180v180	-	GFCharStringToFloat; x87 allocation (divisor enregistered vs frame word); 4 grades
+0099e7f0	RELOCATION_MATCH	122v122	PASS	GFCharStringToInt; fetch-ahead loop, unsigned index
+0099e870	RELOCATION_MATCH	140v140	PASS	GFCharStringToUHUGE; label correction (ParseLongLong)
+0099f690	RELOCATION_MATCH	160v160	PASS	operator+(const char*, const CCharString&); label correction
+0099f830	RELOCATION_MATCH	116v116	PASS	GFIntToCharString; label correction
+0099f8b0	RELOCATION_MATCH	116v116	PASS	GFUIntToCharString; label correction (CCharString_Format)

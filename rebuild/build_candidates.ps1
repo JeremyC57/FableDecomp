@@ -298431,6 +298431,272 @@ $catalog = @(
         TestSource = '00/99/CAFile_ParserIsSeparatorNext_00997da0_test.cpp'
         PassPattern = '00997da0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00997e90'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ParserIsSeparatorNext_00997e90.cpp'
+        TestSource = '00/99/CAFile_ParserIsSeparatorNext_00997e90_test.cpp'
+        PassPattern = '00997e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998170'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ParserReadPastDriveLabel_00998170.cpp'
+        TestSource = '00/99/CAFile_ParserReadPastDriveLabel_00998170_test.cpp'
+        PassPattern = '00998170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998210'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ParserIsDriveLabelNext_00998210.cpp'
+        TestSource = '00/99/CAFile_ParserIsDriveLabelNext_00998210_test.cpp'
+        PassPattern = '00998210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998c30'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_GetAbsoluteFilePath_00998c30.cpp'
+        TestSource = '00/99/CAFile_GetAbsoluteFilePath_00998c30_test.cpp'
+        PassPattern = '00998c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998e70'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_CopyFileW_00998e70.cpp'
+        TestSource = '00/99/CAFile_CopyFileW_00998e70_test.cpp'
+        PassPattern = '00998e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009990b0'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ConvertPathToFullPath_009990b0.cpp'
+        TestSource = '00/99/CAFile_ConvertPathToFullPath_009990b0_test.cpp'
+        PassPattern = '009990b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999140'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ConvertPathToFullPath_00999140.cpp'
+        TestSource = '00/99/CAFile_ConvertPathToFullPath_00999140_test.cpp'
+        PassPattern = '00999140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999180'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_GetDiskSectorSize_00999180.cpp'
+        TestSource = '00/99/CAFile_GetDiskSectorSize_00999180_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00999180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009992a0'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_GetFileModifiedTime_009992a0.cpp'
+        TestSource = '00/99/CAFile_GetFileModifiedTime_009992a0_test.cpp'
+        PassPattern = '009992a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999320'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_GetFileModifiedTimeAsSomeWackyWin32BigNumber_00999320.cpp'
+        TestSource = '00/99/CAFile_GetFileModifiedTimeAsSomeWackyWin32BigNumber_00999320_test.cpp'
+        PassPattern = '00999320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009993b0'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_IsFileReadOnly_009993b0.cpp'
+        TestSource = '00/99/CAFile_IsFileReadOnly_009993b0_test.cpp'
+        PassPattern = '009993b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999420'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_SetFileReadOnly_00999420.cpp'
+        TestSource = '00/99/CAFile_SetFileReadOnly_00999420_test.cpp'
+        PassPattern = '00999420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999760'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_StartFileScan_00999760.cpp'
+        TestSource = '00/99/CAFile_StartFileScan_00999760_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00999760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999970'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ValidatePathnameIsOnWriteableDrive_00999970.cpp'
+        TestSource = '00/99/CAFile_ValidatePathnameIsOnWriteableDrive_00999970_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00999970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999a30'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_IsPathFile_00999a30.cpp'
+        TestSource = '00/99/CAFile_IsPathFile_00999a30_test.cpp'
+        PassPattern = '00999a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999c50'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_StartFileScan_00999c50.cpp'
+        TestSource = '00/99/CAFile_StartFileScan_00999c50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00999c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999cb0'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ScanNextFile_00999cb0.cpp'
+        TestSource = '00/99/CAFile_ScanNextFile_00999cb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00999cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b770'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_SetAsSubString_0099b770.cpp'
+        TestSource = '00/99/CWideString_SetAsSubString_0099b770_test.cpp'
+        PassPattern = '0099b770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099bff0'
+        Module = '_global'
+        Source = '00/99/global_operator_0099bff0.cpp'
+        TestSource = '00/99/global_operator_0099bff0_test.cpp'
+        PassPattern = '0099bff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099c990'
+        Module = '_STL::basic_string<unsigned short>'
+        Source = '00/99/STLbasicstringunsignedshort_reserve_0099c990.cpp'
+        TestSource = '00/99/STLbasicstringunsignedshort_reserve_0099c990_test.cpp'
+        PassPattern = '0099c990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099d3a0'
+        Module = '_global'
+        Source = '00/99/global_RetrieveStringByLanguage_0099d3a0.cpp'
+        TestSource = '00/99/global_RetrieveStringByLanguage_0099d3a0_test.cpp'
+        PassPattern = '0099d3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099d470'
+        Module = '_global'
+        Source = '00/99/global_RetrieveString_0099d470.cpp'
+        TestSource = '00/99/global_RetrieveString_0099d470_test.cpp'
+        PassPattern = '0099d470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099d4d0'
+        Module = '_global'
+        Source = '00/99/global_LocalizedDialogBoxByLanguage_0099d4d0.cpp'
+        TestSource = '00/99/global_LocalizedDialogBoxByLanguage_0099d4d0_test.cpp'
+        PassPattern = '0099d4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099d520'
+        Module = '_global'
+        Source = '00/99/global_LocalizedDialogBox_0099d520.cpp'
+        TestSource = '00/99/global_LocalizedDialogBox_0099d520_test.cpp'
+        PassPattern = '0099d520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099d7d0'
+        Module = '_global'
+        Source = '00/99/global_ConvertStaticToHyperlink_0099d7d0.cpp'
+        TestSource = '00/99/global_ConvertStaticToHyperlink_0099d7d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0099d7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099dbe0'
+        Module = '_global'
+        Source = '00/99/global_SetDirtyExitFlag_0099dbe0.cpp'
+        TestSource = '00/99/global_SetDirtyExitFlag_0099dbe0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0099dbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099dc50'
+        Module = '_global'
+        Source = '00/99/global_ClearDirtyExitFlag_0099dc50.cpp'
+        TestSource = '00/99/global_ClearDirtyExitFlag_0099dc50_test.cpp'
+        PassPattern = '0099dc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099e620'
+        Module = '_global'
+        Source = '00/99/global_GFIsCharStringNumber_0099e620.cpp'
+        TestSource = '00/99/global_GFIsCharStringNumber_0099e620_test.cpp'
+        PassPattern = '0099e620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099e7f0'
+        Module = '_global'
+        Source = '00/99/global_GFCharStringToInt_0099e7f0.cpp'
+        TestSource = '00/99/global_GFCharStringToInt_0099e7f0_test.cpp'
+        PassPattern = '0099e7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099e870'
+        Module = '_global'
+        Source = '00/99/global_GFCharStringToUHUGE_0099e870.cpp'
+        TestSource = '00/99/global_GFCharStringToUHUGE_0099e870_test.cpp'
+        PassPattern = '0099e870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f690'
+        Module = '_global'
+        Source = '00/99/global_operator_0099f690.cpp'
+        TestSource = '00/99/global_operator_0099f690_test.cpp'
+        PassPattern = '0099f690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f830'
+        Module = '_global'
+        Source = '00/99/global_GFIntToCharString_0099f830.cpp'
+        TestSource = '00/99/global_GFIntToCharString_0099f830_test.cpp'
+        PassPattern = '0099f830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f8b0'
+        Module = '_global'
+        Source = '00/99/global_GFUIntToCharString_0099f8b0.cpp'
+        TestSource = '00/99/global_GFUIntToCharString_0099f8b0_test.cpp'
+        PassPattern = '0099f8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099c670'
+        Module = '_STL::basic_string<unsigned short>'
+        Source = '00/99/STLbasicstringunsignedshort_Mrangeinitialize_0099c670.cpp'
+        TestSource = '00/99/STLbasicstringunsignedshort_Mrangeinitialize_0099c670_test.cpp'
+        PassPattern = '0099c670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099ca70'
+        Module = '_STL::basic_string<unsigned short>'
+        Source = '00/99/STLbasicstringunsignedshort_basicstring_0099ca70.cpp'
+        TestSource = '00/99/STLbasicstringunsignedshort_basicstring_0099ca70_test.cpp'
+        PassPattern = '0099ca70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099cb00'
+        Module = '_STL::basic_string<unsigned short>'
+        Source = '00/99/STLbasicstringunsignedshort_append_0099cb00.cpp'
+        TestSource = '00/99/STLbasicstringunsignedshort_append_0099cb00_test.cpp'
+        PassPattern = '0099cb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099cc80'
+        Module = '_STL::basic_string<unsigned short>'
+        Source = '00/99/STLbasicstringunsignedshort_pushback_0099cc80.cpp'
+        TestSource = '00/99/STLbasicstringunsignedshort_pushback_0099cc80_test.cpp'
+        PassPattern = '0099cc80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

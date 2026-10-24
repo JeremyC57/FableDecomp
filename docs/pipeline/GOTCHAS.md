@@ -1331,3 +1331,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport map walks need the static `_Rb_global::_M_increment(node)` form (0x98F2A0 is 172 vs 176 bytes without it); an STLport iterator passed by value needs a user copy ctor.
 - `bool flag = false; ... { flag = true; break; } return flag;` keeps retail's `bl` flag where an early `return true` drops it (0x9975E0); retail inlines CAFile::SplitPath into GetFilenameFromPathname (define it in the class body).
 - VC7.1 `<cwchar>` has no `std::wcsrchr`; a source naming `wchar_t` needs `<stddef.h>` (chunk 408).
+- Counted release `mov edx,[eax+0xc]; dec edx; mov ecx,edx; test ecx,ecx; mov [eax+0xc],edx` is a decrement through a LOCAL copy of PStringData with the member re-read for delete; through the member it is `dec dword ptr [eax+0xc]` (0x99B770).
+- FableWin.pdb `@Name@N` names are extern "C" `__fastcall` and work as exact leaves; model STLport char_traits/allocator as `class` (a `struct` mangles `U`, so a mangled leaf names nothing) (chunk 409).
+- A `// Flags:`-prefixed comment line is parsed as flags by gall.sh and finish.py: keep exactly one real `// Flags:` line. The STLport wide-string members ending in `_M_throw_length_error` are int3-after-noreturn rows (0x99C670..0x99CC80).

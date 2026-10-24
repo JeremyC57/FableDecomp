@@ -1,0 +1,80 @@
+// CAFile::GetCurrentPath() -- the cached current path; on first use (or while it is empty) it is filled from the process working directory
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00997F80, 132 bytes. FableWin.pdb ?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ:
+// a static `__fastcall` returning CWideString by value (hidden result pointer in ecx), plain `ret`.
+// Label: the manifest's "CInputProcessMain_GetCameraPath" is propagated; the landed callers (PathExists 0x00999230,
+// ScanNextFile 0x00999850) name it GetCurrentPath / GetCurrentWorkingDirectory.
+// Callees: wcscmp @ 0x00BFE94C, char_traits<wchar_t>::compare @ 0x00403C60 (cdecl, manifest "MemCmp_Unsigned16"),
+// the working-directory reader @ 0x009974A0 (static `__fastcall`, `_wgetcwd` into a MAX_PATH buffer -> CWideString;
+// descriptive name GetWorkingDirectory), CWideString::operator=(const CWideString&) @ 0x0099B7D0, ~CWideString @
+// 0x0099B510, CWideString(const CWideString&) @ 0x0099B720.
+// Globals: CAFile::CurrentPath (CWideString) @ 0x013BCA10; literal L"" @ 0x0122D70C.
+// Shape: CWideString's inline `== L""` written as two separate tests that `goto` the empty arm (the landed
+// 0x005BDA1D form; an inline bool operator== materialises neg/sbb/inc): no data block -> wcscmp(L"", L"") (the
+// literal pushed twice); otherwise the forced-inline STLport `wstring == const wchar_t*` (traits::length of the
+// literal folds to 0, so the size test is `(finish - start) & ~1`, then the out-of-line traits compare over 0
+// characters). Each exit keeps its own `return CurrentPath;` copy.
+// Grade: DIFFER(ours v retail) -- 132v132, scheduling only: both `return CurrentPath;` copies emit `mov ecx,esi` before `push offset CurrentPath` (retail pushes first)
+// Leaf: ?GetCurrentPath@CAFile
+#include <stddef.h>
+typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
+
+extern "C" int __cdecl wcscmp(const wchar16* a, const wchar16* b);   // 0x00BFE94C
+
+struct char_traits_w {
+    static unsigned long length(const wchar16* s)
+    {
+        const wchar16* p = s;
+        while (*p != 0)
+            ++p;
+        return p - s;
+    }
+    static int __cdecl compare(const wchar16* a, const wchar16* b, unsigned long n);   // 0x00403C60
+};
+
+struct CBasicStringW {                                  // STLport basic_string<wchar_t>, 12 bytes
+    wchar16* _M_start;                                  // +0x00
+    wchar16* _M_finish;                                 // +0x04
+    wchar16* _M_end_of_storage;                         // +0x08
+    unsigned long size() const { return _M_finish - _M_start; }
+    const wchar16* data() const { return _M_start; }
+};
+__forceinline bool operator==(const CBasicStringW& s, const wchar16* text)
+{
+    unsigned long n = char_traits_w::length(text);
+    return s.size() == n && char_traits_w::compare(s.data(), text, n) == 0;
+}
+
+struct CWideStringData {                                // 16 bytes
+    CBasicStringW Data;                                 // +0x00
+    long          NoRefs;                               // +0x0c
+};
+
+class CWideString
+{
+public:
+    CWideStringData* PStringData;                       // +0x00
+    CWideString(const CWideString& other);              // 0x0099B720
+    ~CWideString();                                     // 0x0099B510
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+};
+
+class CAFile
+{
+public:
+    static CWideString CurrentPath;                                                             // 0x013BCA10
+    static CWideString __fastcall GetWorkingDirectory();                                        // 0x009974A0
+    static CWideString __fastcall GetCurrentPath();
+};
+
+CWideString __fastcall CAFile::GetCurrentPath()
+{
+    if (CurrentPath.PStringData == 0) {
+        if (wcscmp(L"", L"") == 0)
+            goto empty;
+    } else if (CurrentPath.PStringData->Data == L"")
+        goto empty;
+    return CurrentPath;
+empty:
+    CurrentPath = GetWorkingDirectory();
+    return CurrentPath;
+}
