@@ -299997,6 +299997,259 @@ $catalog = @(
         TestSource = '00/9f/global_GetSizeVal_009f1c80_test.cpp'
         PassPattern = '009f1c80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a03af0'
+        Module = 'CArray'
+        Source = '00/a0/CArray_pushback_00a03af0.cpp'
+        TestSource = '00/a0/CArray_pushback_00a03af0_test.cpp'
+        PassPattern = '00a03af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a043a0'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_GetJoystickPosition_00a043a0.cpp'
+        TestSource = '00/a0/CInputEvent_GetJoystickPosition_00a043a0_test.cpp'
+        PassPattern = '00a043a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b630'
+        Module = 'CSoundBankLH'
+        Source = '00/a0/CSoundBankLH_Load_00a0b630.cpp'
+        TestSource = '00/a0/CSoundBankLH_Load_00a0b630_test.cpp'
+        PassPattern = '00a0b630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b790'
+        Module = 'CSoundBankLH'
+        Source = '00/a0/CSoundBankLH_GetSampleInfo_00a0b790.cpp'
+        TestSource = '00/a0/CSoundBankLH_GetSampleInfo_00a0b790_test.cpp'
+        PassPattern = '00a0b790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b850'
+        Module = 'CSoundBankLH'
+        Source = '00/a0/CSoundBankLH_GetSampleValue_00a0b850.cpp'
+        TestSource = '00/a0/CSoundBankLH_GetSampleValue_00a0b850_test.cpp'
+        PassPattern = '00a0b850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b900'
+        Module = 'CSoundBankLH'
+        Source = '00/a0/CSoundBankLH_GetSampleLength_00a0b900.cpp'
+        TestSource = '00/a0/CSoundBankLH_GetSampleLength_00a0b900_test.cpp'
+        PassPattern = '00a0b900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ba40'
+        Module = 'CSoundBankLH'
+        Source = '00/a0/CSoundBankLH_IsSoundEventValid_00a0ba40.cpp'
+        TestSource = '00/a0/CSoundBankLH_IsSoundEventValid_00a0ba40_test.cpp'
+        PassPattern = '00a0ba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d980'
+        Module = '_global'
+        Source = '00/a0/global_FormatDateTime_00a0d980.cpp'
+        TestSource = '00/a0/global_FormatDateTime_00a0d980_test.cpp'
+        PassPattern = '00a0d980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0da70'
+        Module = '_global'
+        Source = '00/a0/global_GetThousandsSeparator_00a0da70.cpp'
+        TestSource = '00/a0/global_GetThousandsSeparator_00a0da70_test.cpp'
+        PassPattern = '00a0da70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0dac0'
+        Module = '_global'
+        Source = '00/a0/global_FormatNumberWithSeparators_00a0dac0.cpp'
+        TestSource = '00/a0/global_FormatNumberWithSeparators_00a0dac0_test.cpp'
+        PassPattern = '00a0dac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0dfc0'
+        Module = 'CJoystickPositionTracker'
+        Source = '00/a0/CJoystickPositionTracker_Push_00a0dfc0.cpp'
+        TestSource = '00/a0/CJoystickPositionTracker_Push_00a0dfc0_test.cpp'
+        PassPattern = '00a0dfc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0e2a0'
+        Module = '_STL::_Deque_iterator_base<C2DVector>'
+        Source = '00/a0/STLDequeiteratorbaseC2DVector_Madvance_00a0e2a0.cpp'
+        TestSource = '00/a0/STLDequeiteratorbaseC2DVector_Madvance_00a0e2a0_test.cpp'
+        PassPattern = '00a0e2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0e3d0'
+        Module = '_STL'
+        Source = '00/a0/STL_uninitializedcopy_00a0e3d0.cpp'
+        TestSource = '00/a0/STL_uninitializedcopy_00a0e3d0_test.cpp'
+        PassPattern = '00a0e3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0e460'
+        Module = '_STL'
+        Source = '00/a0/STL_copy_00a0e460.cpp'
+        TestSource = '00/a0/STL_copy_00a0e460_test.cpp'
+        PassPattern = '00a0e460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0e700'
+        Module = '_STL'
+        Source = '00/a0/STL_fill_00a0e700.cpp'
+        TestSource = '00/a0/STL_fill_00a0e700_test.cpp'
+        PassPattern = '00a0e700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0e740'
+        Module = '_STL'
+        Source = '00/a0/STL_uninitializedfill_00a0e740.cpp'
+        TestSource = '00/a0/STL_uninitializedfill_00a0e740_test.cpp'
+        PassPattern = '00a0e740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0e850'
+        Module = '_STL'
+        Source = '00/a0/STL_copybackward_00a0e850.cpp'
+        TestSource = '00/a0/STL_copybackward_00a0e850_test.cpp'
+        PassPattern = '00a0e850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0e940'
+        Module = '_STL::deque<C2DVector>'
+        Source = '00/a0/STLdequeC2DVector_popback_00a0e940.cpp'
+        TestSource = '00/a0/STLdequeC2DVector_popback_00a0e940_test.cpp'
+        PassPattern = '00a0e940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0e9e0'
+        Module = '_STL::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> >'
+        Source = '00/a0/STLDequeiteratorC2DVectorNonconsttraitsC2DVector_operator_00a0e9e0.cpp'
+        TestSource = '00/a0/STLDequeiteratorC2DVectorNonconsttraitsC2DVector_operator_00a0e9e0_test.cpp'
+        PassPattern = '00a0e9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ea30'
+        Module = '_STL::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> >'
+        Source = '00/a0/STLDequeiteratorC2DVectorNonconsttraitsC2DVector_operator_00a0ea30.cpp'
+        TestSource = '00/a0/STLDequeiteratorC2DVectorNonconsttraitsC2DVector_operator_00a0ea30_test.cpp'
+        PassPattern = '00a0ea30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ea90'
+        Module = '_STL::deque<C2DVector>'
+        Source = '00/a0/STLdequeC2DVector_clear_00a0ea90.cpp'
+        TestSource = '00/a0/STLdequeC2DVector_clear_00a0ea90_test.cpp'
+        PassPattern = '00a0ea90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ebc0'
+        Module = '_STL'
+        Source = '00/a0/STL_uninitializedcopyfill_00a0ebc0.cpp'
+        TestSource = '00/a0/STL_uninitializedcopyfill_00a0ebc0_test.cpp'
+        PassPattern = '00a0ebc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ec80'
+        Module = '_STL'
+        Source = '00/a0/STL_uninitializedfillcopy_00a0ec80.cpp'
+        TestSource = '00/a0/STL_uninitializedfillcopy_00a0ec80_test.cpp'
+        PassPattern = '00a0ec80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ee00'
+        Module = '_STL::_Deque_iterator<C2DVector, _Const_traits<C2DVector> >'
+        Source = '00/a0/STLDequeiteratorC2DVectorConsttraitsC2DVector_operator_00a0ee00.cpp'
+        TestSource = '00/a0/STLDequeiteratorC2DVectorConsttraitsC2DVector_operator_00a0ee00_test.cpp'
+        PassPattern = '00a0ee00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0f300'
+        Module = '_STL::deque<C2DVector>'
+        Source = '00/a0/STLdequeC2DVector_Mnewelementsatfront_00a0f300.cpp'
+        TestSource = '00/a0/STLdequeC2DVector_Mnewelementsatfront_00a0f300_test.cpp'
+        PassPattern = '00a0f300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0f350'
+        Module = '_STL::deque<C2DVector>'
+        Source = '00/a0/STLdequeC2DVector_Mnewelementsatback_00a0f350.cpp'
+        TestSource = '00/a0/STLdequeC2DVector_Mnewelementsatback_00a0f350_test.cpp'
+        PassPattern = '00a0f350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0f3b0'
+        Module = '_STL::deque<C2DVector>'
+        Source = '00/a0/STLdequeC2DVector_Mpushfrontauxv_00a0f3b0.cpp'
+        TestSource = '00/a0/STLdequeC2DVector_Mpushfrontauxv_00a0f3b0_test.cpp'
+        PassPattern = '00a0f3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0f430'
+        Module = '_STL::deque<C2DVector>'
+        Source = '00/a0/STLdequeC2DVector_Mreserveelementsatfront_00a0f430.cpp'
+        TestSource = '00/a0/STLdequeC2DVector_Mreserveelementsatfront_00a0f430_test.cpp'
+        PassPattern = '00a0f430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0fc80'
+        Module = '_STL::deque<C2DVector>'
+        Source = '00/a0/STLdequeC2DVector_resize_00a0fc80.cpp'
+        TestSource = '00/a0/STLdequeC2DVector_resize_00a0fc80_test.cpp'
+        PassPattern = '00a0fc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0fdb0'
+        Module = '_global'
+        Source = '00/a0/global_WordWrapSetOption_00a0fdb0.cpp'
+        TestSource = '00/a0/global_WordWrapSetOption_00a0fdb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00a0fdb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10310'
+        Module = '_global'
+        Source = '00/a1/global_WordWrapFindNonWhiteSpaceForward_00a10310.cpp'
+        TestSource = '00/a1/global_WordWrapFindNonWhiteSpaceForward_00a10310_test.cpp'
+        PassPattern = '00a10310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10350'
+        Module = '_global'
+        Source = '00/a1/global_WordWrapFindNonWhiteSpaceBackward_00a10350.cpp'
+        TestSource = '00/a1/global_WordWrapFindNonWhiteSpaceBackward_00a10350_test.cpp'
+        PassPattern = '00a10350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10960'
+        Module = '_global'
+        Source = '00/a1/global_WordWrapFreeTokenArrayW_00a10960.cpp'
+        TestSource = '00/a1/global_WordWrapFreeTokenArrayW_00a10960_test.cpp'
+        PassPattern = '00a10960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10990'
+        Module = '_global'
+        Source = '00/a1/global_WordWrapFreeTokenArrayA_00a10990.cpp'
+        TestSource = '00/a1/global_WordWrapFreeTokenArrayA_00a10990_test.cpp'
+        PassPattern = '00a10990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a109c0'
+        Module = '_global'
+        Source = '00/a1/global_WordWrapAllocTokenArrayW_00a109c0.cpp'
+        TestSource = '00/a1/global_WordWrapAllocTokenArrayW_00a109c0_test.cpp'
+        PassPattern = '00a109c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a109f0'
+        Module = '_global'
+        Source = '00/a1/global_WordWrapAllocTokenArrayA_00a109f0.cpp'
+        TestSource = '00/a1/global_WordWrapAllocTokenArrayA_00a109f0_test.cpp'
+        PassPattern = '00a109f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

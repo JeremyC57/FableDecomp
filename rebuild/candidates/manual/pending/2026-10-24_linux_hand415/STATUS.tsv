@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a03af0	RELOCATION_MATCH	61v61	PASS	CArray<CHandleBasedMemoryPool::CHandleInfo>::push_back() (exact PDB leaf); push_back(T()) over the inline grow path
+00a043a0	RELOCATION_MATCH	35v35	PASS	CInputEvent::GetJoystickPosition; __fastcall callee 0x00A04200, named local + C2DVector user copy ctor
+00a0b630	RELOCATION_MATCH	130v130	PASS	CSoundBankLH::Load(const CWideString&); engine slot 10 LoadBank
+00a0b790	RELOCATION_MATCH	179v179	PASS	CSoundBankLH::GetSampleInfo; named CSoundSystemLH* local picks eax for the vtable
+00a0b850	RELOCATION_MATCH	119v119	PASS	CSoundBankLH::GetSampleValue; named local + unsigned char result
+00a0b900	RELOCATION_MATCH	116v116	PASS	CSoundBankLH::GetSampleLength; float result, same named-local form
+00a0ba40	RELOCATION_MATCH	114v114	PASS	CSoundBankLH::IsSoundEventValid; CCharString query ctor 0x00C08720
+00a0d980	RELOCATION_MATCH	141v141	PASS	FormatDateTime (descriptive); __fastcall, KERNEL32 imports
+00a0da70	RELOCATION_MATCH	76v76	PASS	GetThousandsSeparator (descriptive); switch on PRIMARYLANGID, tables checked by hand
+00a0dac0	RELOCATION_MATCH	124v124	PASS	FormatNumberWithSeparators (descriptive); for-header step order
+00a0dfc0	RELOCATION_MATCH	215v215	PASS	CJoystickPositionTracker::Push (descriptive); deque push_front + pop_back to 30
+00a0e2a0	MATCH	105v105	PASS	STLport _Deque_iterator_base<C2DVector>::_M_advance
+00a0e3d0	MATCH	141v141	PASS	STLport __uninitialized_copy over deque iterators
+00a0e460	MATCH	178v178	PASS	STLport __copy (random-access) over deque iterators
+00a0e700	MATCH	62v62	PASS	STLport fill over deque iterators
+00a0e740	MATCH	80v80	PASS	STLport __uninitialized_fill over deque iterators
+00a0e850	MATCH	178v178	PASS	STLport __copy_backward over deque iterators
+00a0e940	RELOCATION_MATCH	64v64	PASS	STLport deque<C2DVector>::pop_back (_M_pop_back_aux inlined)
+00a0e9e0	RELOCATION_MATCH	76v76	PASS	STLport _Deque_iterator<_Nonconst_traits>::operator[]
+00a0ea30	RELOCATION_MATCH	83v83	PASS	STLport _Deque_iterator::operator-(int)
+00a0ea90	RELOCATION_MATCH	94v94	PASS	STLport deque<C2DVector>::clear
+00a0ebc0	RELOCATION_MATCH	191v191	PASS	STLport __uninitialized_copy_fill; direct __false_type() calls keep the tag lea edx
+00a0ec80	RELOCATION_MATCH	191v191	PASS	STLport __uninitialized_fill_copy; direct __false_type() calls
+00a0ee00	RELOCATION_MATCH	76v76	PASS	STLport _Deque_iterator<_Const_traits>::operator[]
+00a0f300	RELOCATION_MATCH	80v80	PASS	STLport deque::_M_new_elements_at_front
+00a0f350	RELOCATION_MATCH	94v94	PASS	STLport deque::_M_new_elements_at_back
+00a0f3b0	RELOCATION_MATCH	115v115	PASS	STLport deque::_M_push_front_aux_v
+00a0f430	RELOCATION_MATCH	52v52	PASS	STLport deque::_M_reserve_elements_at_front
+00a0fc80	RELOCATION_MATCH	177v177	PASS	STLport deque::resize; operator+ declared bodiless (retail calls 0x00A0E980)
+00a0fdb0	RELOCATION_MATCH	196v196	PASS	WordWrap_SetOption (descriptive); /GS
+00a10170	DIFFER	202v197	-	IsNonEndingChar: char in ax (LTCG); ours = retail + one mov ax,[esp+4] (lane gap: LTCG)
+00a10240	DIFFER	110v105	-	IsEastAsianChar: char in ax (LTCG); ours = retail + one mov ax,[esp+4] (lane gap: LTCG)
+00a102b0	DIFFER	118v92	-	WordWrap_CanBreakLineAt: helpers called with the char in ax (LTCG) (lane gap: LTCG)
+00a10310	MATCH	52v52	PASS	WordWrap_FindNonWhiteSpaceForward (descriptive)
+00a10350	MATCH	53v53	PASS	WordWrap_FindNonWhiteSpaceBackward (descriptive)
+00a10720	DIFFER	149v222	-	WordWrap_TokenizeW: LTCG cross-module inline of CanBreakLineAt + ax convention (lane gap: LTCG)
+00a10960	RELOCATION_MATCH	47v47	PASS	WordWrap_FreeTokenArrayW (descriptive)
+00a10990	RELOCATION_MATCH	47v47	PASS	WordWrap_FreeTokenArrayA (descriptive)
+00a109c0	RELOCATION_MATCH	39v39	PASS	WordWrap_AllocTokenArrayW (descriptive); array new binds to scalar new
+00a109f0	RELOCATION_MATCH	39v39	PASS	WordWrap_AllocTokenArrayA (descriptive)
