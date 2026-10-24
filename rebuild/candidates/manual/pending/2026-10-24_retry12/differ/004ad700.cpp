@@ -81,9 +81,9 @@ void CThingSearchToolsMethods::GetAllLeafThings(const TFilter& filter, TContaine
     CThingList* list = PeekTypeList(TThing::ThingListType);
     for (CThingList::iterator it = list->begin(); it != list->end(); ++it)
     {
-        CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
-            things.push_back((TThing*)thing);
+        TThing* thing = (TThing*)*it;
+        if (thing->IsIncludedInThingScans())
+            things.push_back(thing);
     }
 }
 template void CThingSearchToolsMethods::GetAllLeafThings<const CThingBuilding, std::vector<const CThingBuilding*>, CThingFilter_None >(const CThingFilter_None&, std::vector<const CThingBuilding*>&);

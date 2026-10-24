@@ -1,0 +1,100 @@
+// Behaviour test for 0x0094e530 CTCEntityEvents::GetEvent<CEventHitBy, ...>: the NEWEST event of type 0x1 that passes the filter is returned
+// (walking the STLport list in reverse); nothing when no event of that type passes; the counted-pointer copies leave the counts unchanged.
+#include <cstdio>
+#include <cstdlib>
+struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+static int g_deleted = 0;
+void __fastcall KillEvent(void*) { ++g_deleted; }
+template <class T> struct CCountedPointer {
+    T* Data; CCPPointerInfo* Info;
+    CCountedPointer() : Data(0), Info(0) {}
+    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedPointer() { if (Info && --Info->RefCount == 0) { Info->DeleteFunc(Info->Data); std::free(Info); } }
+    T* operator->() const { return Data; }
+};
+struct CEventBase { long Type; virtual ~CEventBase() {} virtual long GetType() const { return Type; } long WorldFrame; };
+struct CEventList {
+    struct SNode { SNode* _M_next; SNode* _M_prev; CCountedPointer<CEventBase> _M_data; };
+    SNode* _M_node;
+    struct const_iterator {
+        SNode* _M_node;
+        const_iterator(SNode* node) : _M_node(node) {}
+        const CCountedPointer<CEventBase>& operator*() const { return _M_node->_M_data; }
+        const_iterator& operator--() { _M_node = _M_node->_M_prev; return *this; }
+        bool operator!=(const const_iterator& o) const { return _M_node != o._M_node; }
+    };
+    struct reverse_iterator {
+        const_iterator current;
+        reverse_iterator(const_iterator it) : current(it) {}
+        const CCountedPointer<CEventBase>& operator*() const { const_iterator tmp = current; return *--tmp; }
+        reverse_iterator& operator++() { --current; return *this; }
+        const_iterator base() const { return current; }
+        bool operator!=(const reverse_iterator& o) const { return base() != o.base(); }
+    };
+    const_iterator begin() const { return const_iterator(_M_node->_M_next); }
+    const_iterator end() const { return const_iterator(_M_node); }
+    reverse_iterator rbegin() const { return reverse_iterator(end()); }
+    reverse_iterator rend() const { return reverse_iterator(begin()); }
+};
+namespace NEntityEvents {
+struct CIsEventCreatedAfter { long WorldFrame; bool operator()(const CEventBase& event) const { return event.WorldFrame > WorldFrame; } };
+struct CEventHitBy : CEventBase { enum { EventType = 0x1 }; bool Explosion; };
+struct CIsHitEventHitByExplosion { long Data; bool operator()(const CEventBase& event) const; };
+bool CIsHitEventHitByExplosion::operator()(const CEventBase& event) const { return ((const CEventHitBy&)event).Explosion; }
+}
+template <class A, class B> struct CFilter_Bind2 {
+    const A& First; const B& Second;
+    template <class T> bool operator()(const T& event) const { return First(event) && Second(event); }
+};
+struct CTCEntityEvents { unsigned char pad[0xc]; void* Events; };
+struct CTCEntityEventsMethods : CTCEntityEvents {
+    const CEventList& GetEvents() const { return *(const CEventList*)Events; }
+    template <class TEvent, class TFilter> bool GetEvent(TEvent** out, const TFilter& filter) const
+    {
+        for (CEventList::reverse_iterator it = GetEvents().rbegin(); it != GetEvents().rend(); ++it)
+        {
+            CCountedPointer<CEventBase> event = *it;
+            if (event->GetType() == TEvent::EventType && filter(*(TEvent*)event.Data))
+            {
+                *out = (TEvent*)event.Data;
+                return true;
+            }
+        }
+        return false;
+    }
+};
+using namespace NEntityEvents;
+static CEventHitBy g_ev[5];
+static CEventList::SNode g_nodes[6];      // g_nodes[5] = list header
+static CEventList g_list;
+static void Link(int i, long type, long frame, bool expl)
+{
+    g_ev[i].Type = type; g_ev[i].WorldFrame = frame; g_ev[i].Explosion = expl;
+    CCPPointerInfo* info = (CCPPointerInfo*)std::malloc(sizeof(CCPPointerInfo));
+    info->RefCount = 1; info->DeleteFunc = KillEvent; info->Data = &g_ev[i];
+    g_nodes[i]._M_data.Data = &g_ev[i]; g_nodes[i]._M_data.Info = info;
+}
+int main()
+{
+    int i = 0;
+    for (; i < 6; ++i) { g_nodes[i]._M_next = &g_nodes[(i + 1) % 6]; g_nodes[i]._M_prev = &g_nodes[(i + 5) % 6]; }
+    // oldest .. newest: [0] right type frame 5 (explosion), [1] other type frame 50, [2] right type frame 20 (no explosion), [3] right type frame 30 (explosion), [4] other type frame 99
+    Link(0, 0x1, 5, true); Link(1, 0x1 + 1, 50, false); Link(2, 0x1, 20, false); Link(3, 0x1, 30, true); Link(4, 0x1 + 2, 99, true);
+    g_list._M_node = &g_nodes[5];
+    CTCEntityEventsMethods tc; tc.Events = &g_list;
+    CIsEventCreatedAfter after; after.WorldFrame = 10; CIsHitEventHitByExplosion byExplosion; byExplosion.Data = 0;
+    CFilter_Bind2<CIsEventCreatedAfter, CIsHitEventHitByExplosion> filter = { after, byExplosion };
+    CEventHitBy* out = 0;
+    bool ok = true;
+    ok = ok && tc.GetEvent(&out, filter) && out == &g_ev[3];              // newest hit-by after frame 10 that was an explosion
+    after.WorldFrame = 30; out = 0; ok = ok && !tc.GetEvent(&out, filter) && out == 0;
+    after.WorldFrame = 0; g_ev[3].Explosion = false; out = 0; ok = ok && tc.GetEvent(&out, filter) && out == &g_ev[0];   // [2] is no explosion, [0] is
+    g_ev[0].Explosion = false; out = 0; ok = ok && !tc.GetEvent(&out, filter);
+    ok = ok && g_deleted == 0 && g_nodes[3]._M_data.Info->RefCount == 1 && g_nodes[0]._M_data.Info->RefCount == 1;
+    CEventList emptyList; CEventList::SNode lone; lone._M_next = lone._M_prev = &lone; emptyList._M_node = &lone;
+    tc.Events = &emptyList; out = 0;
+    ok = ok && !tc.GetEvent(&out, filter) && out == 0;
+    if (!ok) { std::printf("0094e530_TEST FAIL\n"); return 1; }
+    std::printf("0094e530_TEST PASS\n");
+    return 0;
+}

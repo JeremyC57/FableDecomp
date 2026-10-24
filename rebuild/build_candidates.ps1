@@ -279622,6 +279622,48 @@ $catalog = @(
         TestSource = '00/98/CThingSearchTools_GetPBestLeafThing_00982450_test.cpp'
         PassPattern = '00982450_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ad700'
+        Module = 'CThingSearchTools'
+        Source = '00/4a/CThingSearchTools_GetAllLeafThings_004ad700.cpp'
+        TestSource = '00/4a/CThingSearchTools_GetAllLeafThings_004ad700_test.cpp'
+        PassPattern = '004ad700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b93d0'
+        Module = 'CFactionManager'
+        Source = '00/6b/CFactionManager_GetPFaction_006b93d0.cpp'
+        TestSource = '00/6b/CFactionManager_GetPFaction_006b93d0_test.cpp'
+        PassPattern = '006b93d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080e5d0'
+        Module = 'ForEachIf<std::_Vector_iterator<std::_Vector_val<CThing*,std::allocator<CThing*>_>_>,_anon_41ACE303'
+        Source = '00/80/ForEachIfstdVectoriteratorstdVectorvalCThingstdallocatorCThinganon41ACE303_CThingFilterIsThrownByExplosionCApplyAdditionalE_0080e5d0.cpp'
+        TestSource = '00/80/ForEachIfstdVectoriteratorstdVectorvalCThingstdallocatorCThinganon41ACE303_CThingFilterIsThrownByExplosionCApplyAdditionalE_0080e5d0_test.cpp'
+        PassPattern = '0080e5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094e530'
+        Module = 'CTCEntityEvents'
+        Source = '00/94/CTCEntityEvents_GetEvent_0094e530.cpp'
+        TestSource = '00/94/CTCEntityEvents_GetEvent_0094e530_test.cpp'
+        PassPattern = '0094e530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095d920'
+        Module = 'CTCEntityEvents'
+        Source = '00/95/CTCEntityEvents_GetEvent_0095d920.cpp'
+        TestSource = '00/95/CTCEntityEvents_GetEvent_0095d920_test.cpp'
+        PassPattern = '0095d920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096bc20'
+        Module = 'CTCEntityEvents'
+        Source = '00/96/CTCEntityEvents_GetEvent_0096bc20.cpp'
+        TestSource = '00/96/CTCEntityEvents_GetEvent_0096bc20_test.cpp'
+        PassPattern = '0096bc20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

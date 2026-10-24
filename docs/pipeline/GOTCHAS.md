@@ -1032,3 +1032,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - GetEvent filters take `const CEventHitBase*`; 0x00810F70 is the shot test, 0x00810F80 the melee test. Retail CHitParameters: KnockDown +0x1A, Decapitate +0x1B, Flourish +0x1D, Blocked +0x26, PThingHitting +0x50, PWeapon +0x58; CEventHitBase slot 5 is IsFlourish.
 - GetPBestThing: `CFilter_Bind2/Bind4::operator()` and `binary_compose::operator()` need `__forceinline` (chunk 337).
 - An `unsigned short` 1-bit field read through an inline `bool IsDead()` gives `mov al ; shr al,5 ; test al,1`; a direct read folds to `test byte ptr` (chunk 337).
+- Before re-deriving a parked row, scan for a landed retail twin with immediates masked (`$S/w22/retry12/twins.py`); three parks ported this way (004ad700 <- 006d4600, 0080e5d0 <- 0080e530).
+- A this/hash esi-edi tie in a CVectorMap find: same-TU `__declspec(noinline)` LowerBound stand-in + STLport `Find(const K&)` with no key copy; never `#pragma auto_inline(off)`, which also pushes TU-end template instantiations out of line (006b93d0).
+- Callee-saved register ties follow use weight (esi, edi, ebx, ebp preference): a tie is a use-count problem. VC7.1 folds a plain member load into `cmp` on either side; retail's two-register compare of two plain members has no known source form (00698b50).

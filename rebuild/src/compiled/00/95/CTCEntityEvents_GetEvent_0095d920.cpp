@@ -1,9 +1,9 @@
-// CTCEntityEvents::GetEvent(TEvent** out, const TFilter& filter) const [TEvent = NEntityEvents::CEventHitBySpecialAbility, TFilter = NEntityEvents::CIsEventCreatedAfter] -- the newest event of type 0x1b (CEventHitBySpecialAbility) created after the filter's frame
-// Grade: DIFFER(137v137) -- register swap only: retail keeps the reverse iterator in edi and the event in ebx (ours ebx/edi), and pushes edi after `mov ebp,ecx`; same template as 0x0095D920
+// CTCEntityEvents::GetEvent(TEvent** out, const TFilter& filter) const [TEvent = NEntityEvents::CEventFiredShot, TFilter = NEntityEvents::CIsEventCreatedAfter] -- the newest event of type 0x26 (CEventFiredShot) created after the filter's frame
+// Grade: RELOCATION_MATCH (137v137) -- retry12, model from chunk 337: the walk uses the real STLport reverse_iterator (a copied base const_iterator, decremented for *rit, compared through base()); the hand-folded reverse walk left the iterator/event registers swapped (ebx/edi)
 // Leaf: GetEvent
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0096BC20, 137 bytes (+ int3 padding to 144) (`ret 8`, bool in al).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0095D920, 137 bytes (`ret 8`, bool in al).
 // Callees: GetType (vtable slot 1), the count block DeleteFunc, operator delete 0x00BFE9BC.
-// Identity: event type 0x1b is the constant GetType of CEventHitBySpecialAbility (its RTTI vtable slot 1).
+// Identity: event type 0x26 is the constant GetType of CEventFiredShot (its RTTI vtable slot 1).
 // Model: `this` is engine/CTCEntityEvents.h (Events +0x0c, opaque there: read through the local STLport list model);
 // the counted pointer, the event base and the filters are local models (CEventBase from Ego_r.pdb).
 // Shape: the loop copies each counted pointer (count ++ / -- with the DeleteFunc + operator delete release on
@@ -48,15 +48,25 @@ struct CEventBase {
 struct CEventList {
     struct SNode { SNode* _M_next; SNode* _M_prev; CCountedPointer<CEventBase> _M_data; };
     SNode* _M_node;
-    struct reverse_iterator {
-        SNode* current;
-        reverse_iterator(SNode* node) : current(node) {}
-        const CCountedPointer<CEventBase>& operator*() const { SNode* tmp = current->_M_prev; return tmp->_M_data; }
-        reverse_iterator& operator++() { current = current->_M_prev; return *this; }
-        bool operator!=(const reverse_iterator& o) const { return current != o.current; }
+    struct const_iterator {
+        SNode* _M_node;
+        const_iterator(SNode* node) : _M_node(node) {}
+        const CCountedPointer<CEventBase>& operator*() const { return _M_node->_M_data; }
+        const_iterator& operator--() { _M_node = _M_node->_M_prev; return *this; }
+        bool operator!=(const const_iterator& o) const { return _M_node != o._M_node; }
     };
-    reverse_iterator rbegin() const { return reverse_iterator(_M_node); }
-    reverse_iterator rend() const { return reverse_iterator(_M_node->_M_next); }
+    struct reverse_iterator {
+        const_iterator current;
+        reverse_iterator(const_iterator it) : current(it) {}
+        const CCountedPointer<CEventBase>& operator*() const { const_iterator tmp = current; return *--tmp; }
+        reverse_iterator& operator++() { --current; return *this; }
+        const_iterator base() const { return current; }
+        bool operator!=(const reverse_iterator& o) const { return base() != o.base(); }
+    };
+    const_iterator begin() const { return const_iterator(_M_node->_M_next); }
+    const_iterator end() const { return const_iterator(_M_node); }
+    reverse_iterator rbegin() const { return reverse_iterator(end()); }
+    reverse_iterator rend() const { return reverse_iterator(begin()); }
 };
 
 namespace NEntityEvents {
@@ -79,7 +89,7 @@ template <class A, class B> struct CFilter_Bind2 {     // both filters, held by 
     template <class T> bool operator()(const T& event) const { return First(event) && Second(event); }
 };
 namespace NEntityEvents {
-struct CEventHitBySpecialAbility : CEventBase { enum { EventType = 0x1b }; };
+struct CEventFiredShot : CEventBase { enum { EventType = 0x26 }; };
 }
 
 struct CTCEntityEventsMethods : CTCEntityEvents {
@@ -103,4 +113,4 @@ bool CTCEntityEventsMethods::GetEvent(TEvent** out, const TFilter& filter) const
     return false;
 }
 
-template bool CTCEntityEventsMethods::GetEvent<NEntityEvents::CEventHitBySpecialAbility, NEntityEvents::CIsEventCreatedAfter >(NEntityEvents::CEventHitBySpecialAbility**, const NEntityEvents::CIsEventCreatedAfter&) const;
+template bool CTCEntityEventsMethods::GetEvent<NEntityEvents::CEventFiredShot, NEntityEvents::CIsEventCreatedAfter >(NEntityEvents::CEventFiredShot**, const NEntityEvents::CIsEventCreatedAfter&) const;

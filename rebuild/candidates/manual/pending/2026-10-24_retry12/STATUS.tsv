@@ -1,0 +1,13 @@
+addr	batch	status	grade	note
+006b93d0	linux_hand334	MATCH	RELOCATION_MATCH	same-TU noinline CVectorMap::LowerBound stand-in + STLport Find(const K&) with no key copy: this->esi, hash->edi as retail; test PASS
+008af6e0	linux_hand334	DIFFER	145v150	first fail block (pop esi;xor al,al;pop ebp;ret) sits inline after the IsSpeechAllowed test in retail, ours sinks it past the 4-pop block in every form; nested positive ifs 138, && tail 154 (mov eax,1), ?: tail 144, ||-guard 145 (6 grades)
+007eac70	linux_hand79	DIFFER	63v63	early mov ecx,[esi+4] before the pushes: thing local/reference before the string keeps it in esi (62), reference after the string and AddTC on a +0 sub-object inert (4 grades)
+009bb0d0	linux_hand65	DIFFER	50v50	SIB base/index order [eax+ecx]: *(i+text), char* c=&text[i], continue form, integer base (long)text, unsigned index all give [ecx+eax] (5 grades)
+007b2d50	linux_hand89	DIFFER	89v89	mov eax,ecx this-copy + member zero in ecx: CTCBase* out-param cast, GetTC<T>() returning 0/ptr, CTCBase base accessor all identical to baseline (3 grades)
+004ad700	linux_hand335	MATCH	RELOCATION_MATCH	ported the byte-identical landed twin 006d4600 (by-value ThingCast<T> temporary, filter on T&, template noinline overflow stand-in); list id 3, const element; test PASS
+0080e5d0	linux_hand335	MATCH	RELOCATION_MATCH	ported the byte-identical landed twin 0080e530 (GetTC walk: last, first, count, then it = first gives the entry copy); 7-float functor, callee 0x0080DA50
+00698b50	linux_hand193	DIFFER	216v218	ported near-twin 00698c30 (PushDown, matches): only the list-start compare differs -- retail mov ecx,[First];mov eax,[Index];cmp eax,ecx, ours folds First into the cmp in every form (First==Index, named locals, Begin() accessor, pointer difference 230) (6 grades); test PASS on the logic
+0095d920	linux_hand336	MATCH	RELOCATION_MATCH	chunk-337 model (real STLport reverse_iterator: copy base, --copy, compare base()) re-graded; test PASS
+0096bc20	linux_hand336	MATCH	RELOCATION_MATCH	same model, CEventHitBySpecialAbility 0x1b; test PASS
+0094e530	linux_hand336	MATCH	RELOCATION_MATCH	same model, this stays in ebp, filter re-read from its slot; test PASS
+00738a80	linux_hand337	DIFFER	177v177	Info/Data esi-edi tie: named const CEventHitBase* local, Bind3 pointer members, filters by reference with *event, Bind3/unary_negate const T& params all identical (5 grades incl. baseline)

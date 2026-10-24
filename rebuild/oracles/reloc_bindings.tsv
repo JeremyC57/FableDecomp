@@ -28607,3 +28607,6 @@ __imp__LoadLibraryW@4	0143fe38	00401fe0
 ??RCThingFilter_ObjectHasProperty@@QBE_NABUCThing@@@Z	006a7590	009650c0
 ?IsKnockDown@CEventHitBase@NEntityEvents@@QBE_NXZ	00810f00	00970190
 ??RCThingFilter_HasScriptedControl@@QBE_NABUCThing@@@Z	006a8560	00982450
+?_M_insert_overflow@?$CResultVector@PBUCThingBuilding@@@@QAEXPAPBUCThingBuilding@@ABQBU2@ABU__true_type@@K_N@Z	004ac530	004ad700
+?LowerBound@CFactionMap@@QAEPAU?$pair@KU?$CCountedPointer@VCFaction@@@@@@ABK@Z	006b8ae0	006b93d0
+??RCIsHitEventHitByExplosion@NEntityEvents@@QBE_NABUCEventBase@@@Z	00810f60	0094e530
