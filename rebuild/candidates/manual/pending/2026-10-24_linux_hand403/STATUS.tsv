@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00863200	RELOCATION_MATCH	76v76	PASS	CCreatureInteraction ctor (label CreatureInteraction_InitializeList is propagated)
+00864170	RELOCATION_MATCH	212v212	PASS	NCreatureAI::IsThingRunningAwayFromThing
+008644e0	RELOCATION_MATCH	155v155	PASS	NCreatureAI::IsSpeaking
+00864580	RELOCATION_MATCH	92v92	PASS	NCreatureAI::StopSpeaking
+00864620	RELOCATION_MATCH	224v224	PASS	NCreatureAI::IsAwareOfPosition
+00864840	RELOCATION_MATCH	86v86	PASS	NCreatureAI::IsBestTargetForAttack
+00864cb0	RELOCATION_MATCH	67v67	PASS	NCreatureAI::IsThingRunningAwayFromCombat
+00864f60	RELOCATION_MATCH	30v30	PASS	STLport list<T> default ctor, 0x1C-byte element (not LinkedList_Init)
+00864ff0	DIFFER	227v227	-	CTCCreatureHitNotification::DrawHitNotification; register allocation only (this edi/ebx swap, split end() compare); 4 grades
+008650e0	RELOCATION_MATCH	196v196	PASS	CTCCreatureHitNotification::UpdateHitNotification (not NDisplayView lipsync cleanup); 1 grade
+00865ac0	RELOCATION_MATCH	80v80	PASS	anon IsKnockdownToStun (fastcall, local CThingCreatureBase model)
+00865e40	RELOCATION_MATCH	47v47	PASS	anon IsHitToDaze (fastcall)
+00867fe0	DIFFER	120v125	-	CAnimationEntry::GetComponent<CAnimComponentFollowingOnAnim>; key re-read/store not hoisted; 5 grades
+00868690	RELOCATION_MATCH	78v78	PASS	CHitParameters::GetDamageToThing (not Health_ComputeWithEffects)
+008686e0	RELOCATION_MATCH	185v185	PASS	anon GetArmourThresholdValueFromArmourWeights (STLport multimap walk)
+008687a0	RELOCATION_MATCH	189v189	PASS	anon GetArmourResponseDamageAttributeDamageMultiplier
+00868a80	RELOCATION_MATCH	189v189	PASS	anon GetArmourResponseAugmentationDamageMultiplier
+0086a9d0	RELOCATION_MATCH	38v38	PASS	CVectorMap<long,CSkeletalMorph>::Count
+0086ac40	MATCH	58v58	PASS	__uninitialized_fill_n<pair<long,CSkeletalMorph>> (ICF-shared with C3DClothQuad fill)
+0086aea0	MATCH	103v103	PASS	__unguarded_insertion_sort_aux<pair<ulong,CTextureMorph>>
+0086af60	RELOCATION_MATCH	68v68	PASS	__unguarded_insertion_sort_aux<pair<long,CSkeletalMorph>>
+0086b2a0	RELOCATION_MATCH	118v118	PASS	vector<CMorphSetTextureMorph> copy ctor
+0086b900	RELOCATION_MATCH	200v200	PASS	CRandomAppearanceMorph::AddSkeletalMorphToMorphSet
+0086bb60	RELOCATION_MATCH	166v166	PASS	CRandomAppearanceMorph::AddSkeletalMorph (not CRegion_AddNavigationExit)
+0086bc10	RELOCATION_MATCH	118v118	PASS	CRandomAppearanceMorph::AddTextureToTextureMorph; 5 grades
+0086bc90	RELOCATION_MATCH	43v43	PASS	CRandomAppearanceMorph::AddTextureMorphToAll
+0086c5c0	RELOCATION_MATCH	91v91	PASS	__linear_insert<pair<ulong,CTextureMorph>>
+0086cc50	RELOCATION_MATCH	213v213	PASS	vector<pair<long,CSkeletalMorph>>::_M_insert_overflow (ICF-shared)
+0086d740	RELOCATION_MATCH	129v129	PASS	CVectorMap<long,CSkeletalMorph>::Insert; 5 grades
+0086dc50	RELOCATION_MATCH	87v87	PASS	__copy<CBodyPartMesh*>
+0086f3e0	MATCH	103v103	PASS	__unguarded_insertion_sort_aux<pair<long,CLongMapValue8>> (descriptive value type)
+0086f600	RELOCATION_MATCH	114v114	PASS	CVectorMap<long,CLongMapValue8>::Add (descriptive name)
+0086fa00	RELOCATION_MATCH	91v91	PASS	__linear_insert<pair<long,CLongMapValue8>>
+00870930	RELOCATION_MATCH	72v72	PASS	CThingComponentSet::Remove
+008709c0	RELOCATION_MATCH	40v40	PASS	CThingComponentSet::GetDriverInfo
+00870bb0	RELOCATION_MATCH	78v78	PASS	CTCDInternalMarker::Create
+00870c90	RELOCATION_MATCH	212v212	PASS	GetDataFromEventString
+00871d50	DIFFER	227v227	-	NCameraModes::CStringAndCageBase::UpdateCageRadius; x87 operand order of the 2D length only; 4 grades
+00874e00	RELOCATION_MATCH	73v73	PASS	NCameraModes::CPCMouseLook ctor (not CActionParam_Constructor)
+00874ee0	RELOCATION_MATCH	42v42	PASS	NCameraModes::IsThemeToBlockCameraBetween; 4 grades

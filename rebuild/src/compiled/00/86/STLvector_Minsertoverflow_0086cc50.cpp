@@ -1,0 +1,136 @@
+// _STL::vector::_M_insert_overflow(pair<long, CRandomAppearanceMorph::CSkeletalMorph>*, const pair<long, CRandomAppearanceMorph::CSkeletalMorph>&, const __false_type&, unsigned int, bool) -- STLport growth path of the skeletal-morph map's vector: allocate old_size + max(old_size, fill_len), copy the head, place the new entries, copy the tail unless appending, free the old block
+// Leaf: ?_M_insert_overflow@?$vector@U?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@
+// Retail 0x0086CC50, 0xD5 bytes, thiscall `ret 14h`. Callers: 0x0086BBD8 (CRandomAppearanceMorph::AddSkeletalMorph),
+// 0x0086D7AE (CVectorMap<long, CSkeletalMorph>::Insert 0x0086D740), 0x0086CE83, 0x0086D362 (the vector's insert paths).
+// Callees: malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (the CRT import thunks STLport's allocator reaches),
+// __uninitialized_copy<pair<long, CSkeletalMorph> > @ 0x0086ABF0 (x2: head, then the tail when !atend) and
+// __uninitialized_fill_n<...> @ 0x0086AC40 (fill_len != 1), both /Gr with the __false_type tag pushed.
+// Element: pair<long, CRandomAppearanceMorph::CSkeletalMorph> (0x10; the catalog's "C3DClothQuad" is a byte-identical
+// 16-byte instantiation /OPT:ICF can fold here). Its trivial destructor makes _M_clear's _Destroy loop vanish.
+// Shape: STLport 4 _vector.c with exceptions off (_STLP_TRY/_STLP_UNWIND empty): `len = old_size + (max)(old_size,
+// fill_len)` through max's reference (`lea ecx,[esp+24h]` / `lea ecx,[esp+10h]`), `len != 0 ? malloc(len * 16) : 0`,
+// the fill_len == 1 arm placement-copies x inline (pair copy constructor: key, then the POD second struct-copied through
+// `lea ecx,[esi+4]`), then _M_clear (free when non-null) and _M_set.
+// The three __false_type() tags are homed on argument slots (`lea ecx,[esp+28h]`) only with same-TU auto_inline(off) +
+// noinline helper bodies that never touch the tag (declarations alone give a 1-byte frame temporary and `sub esp,8`).
+// Manifest label "Vector_Reallocate" is a descriptive auto label.
+extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
+extern "C" void __cdecl free(void* block);           // 0x00BFEA14
+
+inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
+
+class CDefString
+{
+public:
+    long TablePos;                                   // +0x00
+};
+
+class CRandomAppearanceMorph
+{
+public:
+    class CSkeletalMorph                             // 12 bytes of POD
+    {
+    public:
+        long       GroupID;                          // +0x00
+        CDefString Name;                             // +0x04
+        bool       AllowVariation;                   // +0x08
+    };
+};
+
+namespace _STL {
+struct __false_type { __false_type() { } };          // user constructor: the tag temporary is not zero-stored
+
+template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+
+template <class _T1, class _T2> struct pair
+{
+    _T1 first;                                       // +0x00
+    _T2 second;                                      // +0x04
+    pair(const pair& __o) : first(__o.first), second(__o.second) { }   // STLport's explicit pair copy constructor
+};
+
+template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+template <class _ForwardIter> inline void _Destroy(_ForwardIter __first, _ForwardIter __last)
+{
+    for (; __first != __last; ++__first)
+        _Destroy(&*__first);
+}
+
+// Same-TU stand-ins for the out-of-line /Gr helpers (they never touch their tag, so the caller homes each __false_type
+// temporary on an argument slot as retail does).
+#pragma auto_inline(off)
+template <class _InputIter, class _ForwardIter>
+__declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)   // 0x0086ABF0
+{
+    _ForwardIter __cur = __result;
+    for (; __first != __last; ++__first, ++__cur)
+        _Construct(&*__cur, *__first);
+    return __cur;
+}
+template <class _ForwardIter, class _Size, class _Tp>
+__declspec(noinline) _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)   // 0x0086AC40
+{
+    _ForwardIter __cur = __first;
+    for (; __n > 0; --__n, ++__cur)
+        _Construct(&*__cur, __x);
+    return __cur;
+}
+#pragma auto_inline()
+
+template <class _Tp> class allocator
+{
+public:
+    _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+};
+
+template <class _Tp> class vector                    // STLport vector<_Tp, allocator<_Tp> >, 12 bytes
+{
+public:
+    _Tp* _M_start;                                   // +0x00
+    _Tp* _M_finish;                                  // +0x04
+    _Tp* _M_end_of_storage;                          // +0x08
+
+    unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
+    void _M_clear()
+    {
+        _Destroy(this->_M_start, this->_M_finish);
+        allocator<_Tp>().deallocate(this->_M_start, (unsigned int)(this->_M_end_of_storage - this->_M_start));
+    }
+    void _M_set(_Tp* __s, _Tp* __f, _Tp* __e)
+    {
+        this->_M_start = __s;
+        this->_M_finish = __f;
+        this->_M_end_of_storage = __e;
+    }
+    void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);
+};
+
+template <class _Tp>
+void vector<_Tp>::_M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend)
+{
+    const unsigned int __old_size = size();
+    const unsigned int __len = __old_size + (max)(__old_size, __fill_len);
+
+    _Tp* __new_start = allocator<_Tp>().allocate(__len);
+    _Tp* __new_finish = __new_start;
+    __new_finish = __uninitialized_copy(this->_M_start, __position, __new_start, __false_type());
+    // handle insertion
+    if (__fill_len == 1) {
+        _Construct(__new_finish, __x);
+        ++__new_finish;
+    } else
+        __new_finish = __uninitialized_fill_n(__new_finish, __fill_len, __x, __false_type());
+    if (!__atend)
+        // copy remainder
+        __new_finish = __uninitialized_copy(__position, this->_M_finish, __new_finish, __false_type());
+    _M_clear();
+    _M_set(__new_start, __new_finish, __new_start + __len);
+}
+}
+
+typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+
+template void _STL::vector<TSkeletalMorphPair>::_M_insert_overflow(TSkeletalMorphPair*, const TSkeletalMorphPair&,
+    const _STL::__false_type&, unsigned int, bool);

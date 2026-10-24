@@ -1312,3 +1312,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Two identical early returns (`if (a) return X; if (b) return X;`) keep the merged block on the fall-through; one `||` moves it to the function end (0x857430).
 - `v.GetLength()` read in place loads Z,Y,X; a C3DVector built from three floats loads X,Y,Z (0x861950). A named `__false_type isPOD;` tag costs no store; the temporary `__false_type()` adds a byte store (0x85DFD0).
 - Define anonymous-namespace functions inside `namespace { }`; a global definition after the declaration emits a different, global symbol (0x8619C0). Anonymous-namespace leaves end in `?A0x` and match by prefix.
+- `__false_type` and the STLport iterator tags need a user constructor, or VC zero-stores the tag (0x86B900); with /OPT:ICF name a shared body after its callers' element type (0x86AC40, 0x86CC50).
+- A template CDefPointer `operator->` gives `add eax,0D0h; mov eax,[eax]`; a plain pointer member gives `mov eax,[eax+0D0h]` (0x864FF0).
+- `while (--i != -1)` gives `dec; cmp -1`; `while (i--)` swaps registers (0x870C90); a `C3DVector offset(dx,dy,0)` local, not two floats, fixes frame size and slot reuse (0x871D50).

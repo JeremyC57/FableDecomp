@@ -296897,6 +296897,265 @@ $catalog = @(
         TestSource = '00/86/CCreatureInteraction_AddParticipant_008631d0_test.cpp'
         PassPattern = '008631d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00863200'
+        Module = 'CCreatureInteraction'
+        Source = '00/86/CCreatureInteraction_CCreatureInteraction_00863200.cpp'
+        TestSource = '00/86/CCreatureInteraction_CCreatureInteraction_00863200_test.cpp'
+        PassPattern = '00863200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00864170'
+        Module = 'NCreatureAI'
+        Source = '00/86/NCreatureAI_IsThingRunningAwayFromThing_00864170.cpp'
+        TestSource = '00/86/NCreatureAI_IsThingRunningAwayFromThing_00864170_test.cpp'
+        PassPattern = '00864170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008644e0'
+        Module = 'NCreatureAI'
+        Source = '00/86/NCreatureAI_IsSpeaking_008644e0.cpp'
+        TestSource = '00/86/NCreatureAI_IsSpeaking_008644e0_test.cpp'
+        PassPattern = '008644e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00864580'
+        Module = 'NCreatureAI'
+        Source = '00/86/NCreatureAI_StopSpeaking_00864580.cpp'
+        TestSource = '00/86/NCreatureAI_StopSpeaking_00864580_test.cpp'
+        PassPattern = '00864580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00864620'
+        Module = 'NCreatureAI'
+        Source = '00/86/NCreatureAI_IsAwareOfPosition_00864620.cpp'
+        TestSource = '00/86/NCreatureAI_IsAwareOfPosition_00864620_test.cpp'
+        PassPattern = '00864620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00864840'
+        Module = 'NCreatureAI'
+        Source = '00/86/NCreatureAI_IsBestTargetForAttack_00864840.cpp'
+        TestSource = '00/86/NCreatureAI_IsBestTargetForAttack_00864840_test.cpp'
+        PassPattern = '00864840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00864cb0'
+        Module = 'NCreatureAI'
+        Source = '00/86/NCreatureAI_IsThingRunningAwayFromCombat_00864cb0.cpp'
+        TestSource = '00/86/NCreatureAI_IsThingRunningAwayFromCombat_00864cb0_test.cpp'
+        PassPattern = '00864cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00864f60'
+        Module = 'CList24Node00864f60'
+        Source = '00/86/CList24Node00864f60_CList24Node00864f60_00864f60.cpp'
+        TestSource = '00/86/CList24Node00864f60_CList24Node00864f60_00864f60_test.cpp'
+        PassPattern = '00864f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008650e0'
+        Module = 'CTCCreatureHitNotification'
+        Source = '00/86/CTCCreatureHitNotification_UpdateHitNotification_008650e0.cpp'
+        TestSource = '00/86/CTCCreatureHitNotification_UpdateHitNotification_008650e0_test.cpp'
+        PassPattern = '008650e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00865ac0'
+        Module = '_global'
+        Source = '00/86/global_IsKnockdownToStun_00865ac0.cpp'
+        TestSource = '00/86/global_IsKnockdownToStun_00865ac0_test.cpp'
+        PassPattern = '00865ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00865e40'
+        Module = '_global'
+        Source = '00/86/global_IsHitToDaze_00865e40.cpp'
+        TestSource = '00/86/global_IsHitToDaze_00865e40_test.cpp'
+        PassPattern = '00865e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00868690'
+        Module = 'CHitParameters'
+        Source = '00/86/CHitParameters_GetDamageToThing_00868690.cpp'
+        TestSource = '00/86/CHitParameters_GetDamageToThing_00868690_test.cpp'
+        PassPattern = '00868690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008686e0'
+        Module = '_global'
+        Source = '00/86/global_GetArmourThresholdValueFromArmourWeights_008686e0.cpp'
+        TestSource = '00/86/global_GetArmourThresholdValueFromArmourWeights_008686e0_test.cpp'
+        PassPattern = '008686e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008687a0'
+        Module = '_global'
+        Source = '00/86/global_GetArmourResponseDamageAttributeDamageMultiplier_008687a0.cpp'
+        TestSource = '00/86/global_GetArmourResponseDamageAttributeDamageMultiplier_008687a0_test.cpp'
+        PassPattern = '008687a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00868a80'
+        Module = '_global'
+        Source = '00/86/global_GetArmourResponseAugmentationDamageMultiplier_00868a80.cpp'
+        TestSource = '00/86/global_GetArmourResponseAugmentationDamageMultiplier_00868a80_test.cpp'
+        PassPattern = '00868a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086a9d0'
+        Module = 'CVectorMap'
+        Source = '00/86/CVectorMap_Count_0086a9d0.cpp'
+        TestSource = '00/86/CVectorMap_Count_0086a9d0_test.cpp'
+        PassPattern = '0086a9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086ac40'
+        Module = '_STL'
+        Source = '00/86/STL_uninitializedfilln_0086ac40.cpp'
+        TestSource = '00/86/STL_uninitializedfilln_0086ac40_test.cpp'
+        PassPattern = '0086ac40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086aea0'
+        Module = '_STL'
+        Source = '00/86/STL_unguardedinsertionsortaux_0086aea0.cpp'
+        TestSource = '00/86/STL_unguardedinsertionsortaux_0086aea0_test.cpp'
+        PassPattern = '0086aea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086af60'
+        Module = '_STL'
+        Source = '00/86/STL_unguardedinsertionsortaux_0086af60.cpp'
+        TestSource = '00/86/STL_unguardedinsertionsortaux_0086af60_test.cpp'
+        PassPattern = '0086af60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086b2a0'
+        Module = '_STL::vector'
+        Source = '00/86/STLvector_vector_0086b2a0.cpp'
+        TestSource = '00/86/STLvector_vector_0086b2a0_test.cpp'
+        PassPattern = '0086b2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086b900'
+        Module = 'CRandomAppearanceMorph'
+        Source = '00/86/CRandomAppearanceMorph_AddSkeletalMorphToMorphSet_0086b900.cpp'
+        TestSource = '00/86/CRandomAppearanceMorph_AddSkeletalMorphToMorphSet_0086b900_test.cpp'
+        PassPattern = '0086b900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086bb60'
+        Module = 'CRandomAppearanceMorph'
+        Source = '00/86/CRandomAppearanceMorph_AddSkeletalMorph_0086bb60.cpp'
+        TestSource = '00/86/CRandomAppearanceMorph_AddSkeletalMorph_0086bb60_test.cpp'
+        PassPattern = '0086bb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086bc10'
+        Module = 'CRandomAppearanceMorph'
+        Source = '00/86/CRandomAppearanceMorph_AddTextureToTextureMorph_0086bc10.cpp'
+        TestSource = '00/86/CRandomAppearanceMorph_AddTextureToTextureMorph_0086bc10_test.cpp'
+        PassPattern = '0086bc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086bc90'
+        Module = 'CRandomAppearanceMorph'
+        Source = '00/86/CRandomAppearanceMorph_AddTextureMorphToAll_0086bc90.cpp'
+        TestSource = '00/86/CRandomAppearanceMorph_AddTextureMorphToAll_0086bc90_test.cpp'
+        PassPattern = '0086bc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086c5c0'
+        Module = '_STL'
+        Source = '00/86/STL_linearinsert_0086c5c0.cpp'
+        TestSource = '00/86/STL_linearinsert_0086c5c0_test.cpp'
+        PassPattern = '0086c5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086cc50'
+        Module = '_STL::vector'
+        Source = '00/86/STLvector_Minsertoverflow_0086cc50.cpp'
+        TestSource = '00/86/STLvector_Minsertoverflow_0086cc50_test.cpp'
+        PassPattern = '0086cc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086d740'
+        Module = 'CVectorMap'
+        Source = '00/86/CVectorMap_Insert_0086d740.cpp'
+        TestSource = '00/86/CVectorMap_Insert_0086d740_test.cpp'
+        PassPattern = '0086d740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086dc50'
+        Module = '_STL'
+        Source = '00/86/STL_copy_0086dc50.cpp'
+        TestSource = '00/86/STL_copy_0086dc50_test.cpp'
+        PassPattern = '0086dc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086f3e0'
+        Module = '_STL'
+        Source = '00/86/STL_unguardedinsertionsortaux_0086f3e0.cpp'
+        TestSource = '00/86/STL_unguardedinsertionsortaux_0086f3e0_test.cpp'
+        PassPattern = '0086f3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086f600'
+        Module = 'CVectorMap'
+        Source = '00/86/CVectorMap_Add_0086f600.cpp'
+        TestSource = '00/86/CVectorMap_Add_0086f600_test.cpp'
+        PassPattern = '0086f600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086fa00'
+        Module = '_STL'
+        Source = '00/86/STL_linearinsert_0086fa00.cpp'
+        TestSource = '00/86/STL_linearinsert_0086fa00_test.cpp'
+        PassPattern = '0086fa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00870930'
+        Module = 'CThingComponentSet'
+        Source = '00/87/CThingComponentSet_Remove_00870930.cpp'
+        TestSource = '00/87/CThingComponentSet_Remove_00870930_test.cpp'
+        PassPattern = '00870930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008709c0'
+        Module = 'CThingComponentSet'
+        Source = '00/87/CThingComponentSet_GetDriverInfo_008709c0.cpp'
+        TestSource = '00/87/CThingComponentSet_GetDriverInfo_008709c0_test.cpp'
+        PassPattern = '008709c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00870bb0'
+        Module = 'CTCDInternalMarker'
+        Source = '00/87/CTCDInternalMarker_Create_00870bb0.cpp'
+        TestSource = '00/87/CTCDInternalMarker_Create_00870bb0_test.cpp'
+        PassPattern = '00870bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00870c90'
+        Module = '_global'
+        Source = '00/87/global_GetDataFromEventString_00870c90.cpp'
+        TestSource = '00/87/global_GetDataFromEventString_00870c90_test.cpp'
+        PassPattern = '00870c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00874e00'
+        Module = 'NCameraModes::CPCMouseLook'
+        Source = '00/87/NCameraModesCPCMouseLook_CPCMouseLook_00874e00.cpp'
+        TestSource = '00/87/NCameraModesCPCMouseLook_CPCMouseLook_00874e00_test.cpp'
+        PassPattern = '00874e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00874ee0'
+        Module = 'NCameraModes'
+        Source = '00/87/NCameraModes_IsThemeToBlockCameraBetween_00874ee0.cpp'
+        TestSource = '00/87/NCameraModes_IsThemeToBlockCameraBetween_00874ee0_test.cpp'
+        PassPattern = '00874ee0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
