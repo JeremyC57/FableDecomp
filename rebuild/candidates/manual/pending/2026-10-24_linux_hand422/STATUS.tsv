@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a73330	RELOCATION_MATCH	123v123	PASS	1 grade; _STL::__partial_sort (long-keyed chunk pairs); make_heap/__pop_heap/sort_heap out of line
+00a733b0	RELOCATION_MATCH	149v149	PASS	1 grade; _STL::__partial_sort (CCharString-keyed chunk pairs); same-TU noinline CBasicString<char>::operator<
+00a734d0	RELOCATION_MATCH	93v93	PASS	1 grade; _STL::vector::push_back (pair<long,SNamedChunk>); same-TU noinline _M_insert_overflow stand-in
+00a73530	RELOCATION_MATCH	105v105	PASS	1 grade; _STL::vector::push_back (string-keyed chunk pairs); same-TU noinline _M_insert_overflow stand-in
+00a73910	RELOCATION_MATCH	234v234	PASS	1 grade; _STL::__introsort_loop (long keys), inline __median
+00a73a00	RELOCATION_MATCH	216v216	PASS	1 grade; _STL::__introsort_loop (string keys), out-of-line __median 0xA70020
+00a74940	RELOCATION_MATCH	171v171	PASS	1 grade; _STL::vector<C2DLineF>::reserve; same-TU noinline __uninitialized_copy
+00a74a20	RELOCATION_MATCH	159v159	PASS	2 grades; _STL::__uninitialized_fill_n of vector<C2DLineF>; C2DVector memberwise copy ctor
+00a74ca0	RELOCATION_MATCH	148v148	PASS	2 grades; _STL::__uninitialized_copy of vector<C2DLineF>; C2DVector memberwise copy ctor
+00a74ea0	RELOCATION_MATCH	173v173	PASS	3 grades; CArray<C2DLineF>::DeallocateUnusedMemory; swap form + same-TU noinline reserve/_M_range_insert/erase
+00a762a0	RELOCATION_MATCH	56v56	PASS	1 grade; GFProcessBreath(CASuspendableProcess&, double&)
+00a78680	RELOCATION_MATCH	62v62	PASS	3 grades; CNavRegion::CNavRegion(long,long); list sentinel built in a local, published last
+00a79240	DIFFER	80v77	-	4 grades + 1 SRC_FAIL (cast typo); CNavQuadTree::SetSwitchableNodesAsBlocked; register allocation of the 64-bit ID
+00a79290	RELOCATION_MATCH	74v74	PASS	1 grade; CNavQuadTree::OnNavMapUnload; named bounds + same-TU noinline __copy/__destroy_aux
+00a7cb50	RELOCATION_MATCH	51v51	PASS	1 grade; _STL::for_each (CDeleteNavNode); functor returned via hidden pointer
+00a7d570	MATCH	83v83	PASS	1 grade; _STL::__unguarded_linear_insert pair<u64,bool>
+00a7d610	MATCH	83v83	PASS	1 grade; _STL::__unguarded_linear_insert pair<u64,CANavQuadTreeNode*>
+00a7e440	MATCH	105v105	PASS	1 grade; _STL::for_each (CSaveNavigationPositionToFile)
+00a7e9d0	RELOCATION_MATCH	88v88	PASS	1 grade; _STL::vector::_M_allocate_and_copy<CNavigationPosition*>
+00a7efe0	RELOCATION_MATCH	58v58	PASS	1 grade; _STL::__unguarded_insertion_sort_aux pair<u64,bool>
+00a7f060	RELOCATION_MATCH	58v58	PASS	1 grade; _STL::__unguarded_insertion_sort_aux pair<u64,ptr>
+00a7f9f0	RELOCATION_MATCH	88v88	PASS	1 grade; _STL::vector::_M_allocate_and_copy<const CNavigationPosition*>
+00a7fba0	MATCH	131v131	PASS	1 grade; _STL::__unguarded_partition pair<u64,bool>
+00a7fcb0	MATCH	131v131	PASS	1 grade; _STL::__unguarded_partition pair<u64,ptr>
+00a80000	RELOCATION_MATCH	88v88	PASS	1 grade; _STL::__make_heap pair<u64,bool>
+00a80080	RELOCATION_MATCH	88v88	PASS	1 grade; _STL::__make_heap pair<u64,ptr>
+00a80980	RELOCATION_MATCH	147v147	PASS	1 grade; _STL::vector<CNavigationPosition>::reserve
+00a80e90	RELOCATION_MATCH	78v78	PASS	1 grade; _STL::list<CCountedPointer<CNavRegionConnection>>::_M_insert_dispatch
+00a81c50	RELOCATION_MATCH	104v104	PASS	1 grade; _STL::__linear_insert pair<u64,bool>; copy_backward chain to out-of-line __copy_backward
+00a81cc0	RELOCATION_MATCH	104v104	PASS	1 grade; _STL::__linear_insert pair<u64,ptr>
+00a81e20	RELOCATION_MATCH	88v88	PASS	4 grades; _STL::__unguarded_linear_insert pair<u64,list<C2DLineF>>; same-TU noinline list operator=/dtor/insert bodies
+00a82000	RELOCATION_MATCH	67v67	PASS	1 grade; _STL::__copy pair<u64,list<C2DLineF>>
+00a825d0	RELOCATION_MATCH	79v79	PASS	1 grade; _STL::pair<u64,list<C2DLineF>> copy ctor
+00a826d0	RELOCATION_MATCH	83v83	PASS	1 grade; _STL::__uninitialized_fill_n list<C2DLineF>
+00a827d0	RELOCATION_MATCH	80v80	PASS	1 grade; _STL::__destroy_aux list<C2DLineF>
+00a828c0	RELOCATION_MATCH	160v160	PASS	1 grade; _STL::__partial_sort pair<u64,bool>; __pop_heap inline
+00a82960	RELOCATION_MATCH	109v109	PASS	2 grades; _STL::__unguarded_insertion_sort_aux pair<u64,list>; same-TU noinline _M_insert_dispatch homes the tag on the comp slot
+00a829e0	RELOCATION_MATCH	160v160	PASS	1 grade; _STL::__partial_sort pair<u64,ptr>; __pop_heap inline
+00a82ac0	RELOCATION_MATCH	47v47	PASS	2 grades; _STL::__copy_ptrs list<C2DLineF>; __forceinline __copy
+00a82b10	RELOCATION_MATCH	138v138	PASS	3 grades; _STL::iter_swap pair<u64,list>; __forceinline __iter_swap + same-TU noinline list bodies
