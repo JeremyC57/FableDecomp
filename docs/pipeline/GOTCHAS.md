@@ -1120,3 +1120,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - In `__uninitialized_copy` calling an out-of-line copy ctor, write `T* cur = result;`: retail keeps `result` in ebp from before the empty test and returns it from the shared epilogue (009f6c00, 009e6270).
 - STLport `__insertion_sort` passes `*i` by value to `__linear_insert`: `push comp ; sub esp,N ; mov eax,esp` (chunk 357).
 - A memberwise user copy ctor holding a nested 3-long record with its own user copy ctor keeps a second pointer at `&record + 8` (`lea edi,[eax+N]`): the record sits at N-8 (00776b60).
+- `egor_pdb_names.tsv` / `fablewin_pdb_names.tsv` are keyed by donor (Ego_r / FableWin) addresses, not retail: use them as name sets (Class::Method exists, N overloads), never by address.
+- A label shared by more addresses than the PDB has overloads of it is a propagated label (e.g. `_Dest_val<...>` x1,677); ctor/dtor labels on <=4 addresses can be real overloads.
+- A `mov [this], imm` vtable store names a ctor/dtor's class only if that class is polymorphic: non-polymorphic wrappers store their first member's vtable at this+0.
+- Landed callers model callees with stand-in classes (`CString_00c0ad10`, `FableCharStringResult_004d2d26`): count only the method leaf as naming evidence, never the class.
+- `tools/decomp_pipeline/naming/msvc_demangle.py` demangles VC7.1 symbols (templates with back-references, operators, deleting dtors, stdcall/fastcall decorations) for naming audits.
