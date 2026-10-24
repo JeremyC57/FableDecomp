@@ -1189,3 +1189,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - COMDATs of one container come from different TUs: choose pragmas per row, not per address range (0x475BF6 /Os frame vs 0x475D07 speed).
 - finish.py's line-1 parser splits on `::` before the first `(`: keep `::`-bearing template args out of line 1.
 - `rtti-vtables.tsv` class names drop template arguments: demangle the full `.?AV?$...` type descriptor (msvc_demangle.py) before naming a ctor from its vtable.
+- `_M_insert_overflow` whose tag temporaries sit on the live `__atend` slot: give its tag-taking callees same-TU `auto_inline(off)` bodies that never touch the tag (0x4ADB50).
+- VC7.1 hoists a loop-invariant load across a call only when the callee's read-only body is in the same TU (0x4AF610).
+- A scoped_ptr dtor `mov ecx,[ecx]; jmp F` means F is `boost::checked_delete<T>` (/Gr + explicit instantiation); the function `Reset` stores into a count block is `CCountedPointer<T>::DeleteData` (chunk 371).
+- `push 0; call [eax]` inside list::erase is the element's explicit virtual `~T()`; a fill keeping its count in a frame slot over three strings means a nested pair (0x4B8260).

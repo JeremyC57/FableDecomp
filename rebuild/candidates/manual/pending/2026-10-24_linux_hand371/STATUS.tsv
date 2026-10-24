@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00493ff8	DIFFER	181v180	-	vector<CSubtitleRenderer::CEmbeddedGraphic>::_M_insert_overflow; tag temporaries in their own frame word (retail: atend slot padding)
+00494106	RELOCATION_MATCH	98v98	PASS	deque<CSetTextInfo>::_M_push_back_aux_v (size TU)
+004941c0	RELOCATION_MATCH	50v50	PASS	deque<CSetTextInfo>::push_back (size TU)
+00496ee0	RELOCATION_MATCH	175v175	PASS	__median<CWideString, CCaseInsensitiveStringCompare>
+00497200	RELOCATION_MATCH	215v215	PASS	__unguarded_partition<CWideString>
+00497350	RELOCATION_MATCH	73v73	PASS	__make_heap<CWideString>
+00497500	RELOCATION_MATCH	112v112	PASS	__linear_insert<CWideString>
+004975e0	RELOCATION_MATCH	56v56	PASS	__insertion_sort<CWideString>
+00497620	RELOCATION_MATCH	146v146	PASS	__partial_sort<CWideString>
+00497740	RELOCATION_MATCH	142v142	PASS	__introsort_loop<CWideString>
+004977d0	RELOCATION_MATCH	110v110	PASS	sort<CWideString*, CCaseInsensitiveStringCompare>
+004978a0	DIFFER	113v113	-	GFFloatRandom; x87 scheduling only (fmul/fstp placement)
+0049b1e0	RELOCATION_MATCH	88v88	PASS	random_shuffle<long*, RandFunc>
+0049b240	RELOCATION_MATCH	133v133	PASS	random_shuffle<CCharString*, RandFunc>
+0049b3b0	RELOCATION_MATCH	104v104	PASS	vector<CTexture>::erase(first, last)
+0049b760	RELOCATION_MATCH	101v101	PASS	vector<CCharString>::resize(n)
+0049bb90	RELOCATION_MATCH	88v88	PASS	CGameJoystickManager::Get (CTBaseSingleton)
+0049d610	RELOCATION_MATCH	145v145	PASS	CWorld::ConvertWorldToLevelWADPath
+0049d770	RELOCATION_MATCH	143v143	PASS	CWorld::ConvertWorldToQuestPath
+0049ddd0	RELOCATION_MATCH	232v232	PASS	CWorld::ConvertWorldToStaticMapPath (1-arg overload)
+0049dec0	RELOCATION_MATCH	232v232	PASS	CWorld::ConvertWorldToISMThingyPath (1-arg overload)
+0049e740	RELOCATION_MATCH	114v114	PASS	CWorld::DeleteCheckPointSave
+0049ed30	RELOCATION_MATCH	65v65	PASS	CWorld::ConsoleSetFreeCameraPos
+004a08d0	RELOCATION_MATCH	112v112	PASS	CWorld::ClearRegisteredQuests
+004aa0d0	RELOCATION_MATCH	108v108	PASS	__uninitialized_fill_n<CTestQuest*>
+004aa610	RELOCATION_MATCH	60v60	PASS	__copy<CIntelligentPointer<CThing>*>
+004abc70	RELOCATION_MATCH	206v206	PASS	set<CCharString> _Rb_tree::_M_insert
+004ad3d0	RELOCATION_MATCH	129v129	PASS	CInsertNameInSet::operator()(const CThing*) const
+004adb50	RELOCATION_MATCH	226v226	PASS	vector<CTestQuest>::_M_insert_overflow (same-TU tag-free callee stand-ins)
+004adcb0	RELOCATION_MATCH	122v122	PASS	list<CThing*> -> back_inserter<vector<CThing*>> flag filter (name descriptive)
+004add30	RELOCATION_MATCH	84v84	PASS	boost::checked_delete<CGameTimeManager>
+004ae080	RELOCATION_MATCH	79v79	PASS	boost::checked_delete<CBulletTimeManager>
+004ae2a0	RELOCATION_MATCH	65v65	PASS	CSkeletalMorphResourceManager ctor
+004ae510	RELOCATION_MATCH	50v50	PASS	CCountedPointer<CMusicManager>::DeleteData
+004af610	RELOCATION_MATCH	85v85	PASS	CQuestManager::IsQuestActive (same-TU Compare stand-in)
+004b0a30	RELOCATION_MATCH	102v102	PASS	CQuestManager::AddPendingQuestToDeactivate
+004b3760	RELOCATION_MATCH	173v173	PASS	CQuestManager::LoadMasterScriptDataFromGameState
+004b4a10	RELOCATION_MATCH	137v137	PASS	CQuestManager::ActivateQuest (same-TU ActivateMultipleQuests stand-in)
+004b7ca0	RELOCATION_MATCH	45v45	PASS	list<CIntelligentPointer<CThing>>::erase(iterator)
+004b8260	RELOCATION_MATCH	81v81	PASS	__uninitialized_fill_n<pair<CCharString, pair<CCharString, CCharString>>*>
