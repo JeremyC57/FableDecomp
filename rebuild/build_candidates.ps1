@@ -199439,8 +199439,6 @@ $catalog = @(
         Source = '00/c4/CEntryTableOwner00c48db0_CEntryTableOwner00c48db0_00c48db0.cpp'
         TestSource = '00/c4/CEntryTableOwner00c48db0_CEntryTableOwner00c48db0_00c48db0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
-        Grade = 'asm_bake'
-        Grade = 'asm_bake'
         PassPattern = '00c48db0_TEST PASS'
     }
     [pscustomobject]@{
@@ -249469,7 +249467,6 @@ $catalog = @(
         Source = '00/9a/CSystemManager_InitApplicationName_009a5340.cpp'
         TestSource = '00/9a/CSystemManager_InitApplicationName_009a5340_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
-        Grade = 'asm_bake'
         PassPattern = '009a5340_TEST PASS'
     }
     [pscustomobject]@{

@@ -54,9 +54,25 @@ def main() -> int:
         new_blk = blk + f"\n{ind}Grade = 'asm_bake'"
         text = text[:m.start(1)] + new_blk + text[m.end(1):]
         tagged += 1
+    # A row re-authored as genuine C++ after it was tagged keeps a stale grade: drop it, judging
+    # the block's own Source file (only when it exists, so a missing tree never untags anything).
+    untagged = 0
+
+    def untag(m):
+        nonlocal untagged
+        blk = m.group(0)
+        src = re.search(r"\n\s*Source = '([^']+)'", blk)
+        if "Grade = 'asm_bake'" not in blk or not src:
+            return blk
+        p = ROOT / "rebuild" / "src" / "compiled" / src.group(1)
+        if not p.exists() or label_trust.classify(p) != "genuine":
+            return blk
+        untagged += 1
+        return re.sub(r"\n\s*Grade = 'asm_bake'", "", blk)
+    text = re.sub(r"\[pscustomobject\]@\{\s*Address = '([0-9a-fA-F]+)'.*?\n\s*\}", untag, text, flags=re.S)
     print(f"asm bakes: {len(bakes)} (naked_asm {sum(1 for b in bakes if b[3]=='naked_asm')}, "
           f"emit_bake {sum(1 for b in bakes if b[3]=='emit_bake')}); catalog tagged now={tagged} "
-          f"already={already} no_catalog_block={missing}")
+          f"already={already} no_catalog_block={missing} untagged_genuine={untagged}")
     if apply:
         CATALOG.write_text(text, encoding="utf-8")
         LIST.write_text("address\tmodule\tname\tkind\tretail_parity\tfile\n" +
