@@ -1,0 +1,6 @@
+address	old_length	new_length	date	evidence
+0041c7e0	23	26	2026-10-24	ret at +0x19 then int3 padding; the 23-byte row stopped before the last three instructions (de-bake B)
+00429950	85	88	2026-10-24	ret 4 at +0x55; the 85-byte row cut it off (de-bake B)
+0059aa64	34	33	2026-10-24	ret 8 at +0x1e; byte +0x21 (0x59AA85) is a separate 1-byte ret function (de-bake B)
+0066f060	280	424	2026-10-24	280 code bytes plus the three inline jump tables (0x66F178-0x66F208) before the int3 padding (de-bake B)
+00bfee7a	47	94	2026-10-24	CRT __ArrayUnwind: SEH prolog, filter, handler and the noreturn terminate call with its trailing int3 (0x5E bytes; the row had the first 47) (de-bake B)

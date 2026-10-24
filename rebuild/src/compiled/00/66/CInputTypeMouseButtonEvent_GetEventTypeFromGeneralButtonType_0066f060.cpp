@@ -1,118 +1,59 @@
-extern "C" void* CInputTypeMouseButtonEvent_0066f060_Table3[12];
-extern "C" void* CInputTypeMouseButtonEvent_0066f060_Table2[12];
-extern "C" void* CInputTypeMouseButtonEvent_0066f060_Table1[12];
-
-extern "C" __declspec(naked) long __fastcall
-CInputTypeMouseButtonEvent_GetEventTypeFromGeneralButtonType_0066f060(
-    void* input_type, void*, long general_type)
+// Grade: DIFFER(424v280) -- the catalog row holds only the 280 code bytes; the compiled symbol also carries its three inline jump tables (144 bytes). Against the full 0x1A8-byte retail range (code + tables, qx.py, default and raw-COFF extractors) this source is a RELOCATION_MATCH. Re-bound the row to 424 bytes, then land.
+// CInputTypeMouseButtonEvent::GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const -- map (button, pressed/held/released) to the mouse input event type
+// Leaf: ?GetEventTypeFromGeneralButtonType@CInputTypeMouseButtonEvent@@
+// Retail: Fable.exe @ 0x0066F060, 280 bytes of code (`ret 4`) followed by its three 12-entry jump tables (0x0066F178,
+// 0x0066F1A8, 0x0066F1D8). Called by IsEventOfThisTypeInQueue (0x0066F6D0, landed). The general type (1..3) picks one
+// inner switch on Button (+0x04, EMouseButtonControl 1..12; 4..7 and anything else give 0): the left / middle / right
+// buttons map to 4/7/10 (type 1), 5/8/11 (type 2), 6/9/12 (type 3); buttons 8..12 to 22..26, 27..31, 32..36.
+// Case order left, middle, right lays the return blocks out as retail (VC emits them in source order).
+// Layout: engine/CInputTypeMouseButtonEvent.h (Button +0x04).
+#include "engine/CInputTypeMouseButtonEvent.h"
+enum EInputButtonEventType { EINPUTBUTTONEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EInputEventType { EINPUTEVENTTYPE_NONE = 0, EINPUTEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+struct CInputTypeMouseButtonEvent_Methods : CInputTypeMouseButtonEvent {
+    EInputEventType GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const;
+    long GetButton() const { return *reinterpret_cast<const long*>(Button); }
+};
+EInputEventType CInputTypeMouseButtonEvent_Methods::GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const
 {
-    __asm
-    {
-        mov eax, [esp + 4]
-        dec eax
-        je general_one
-        dec eax
-        je general_two
-        dec eax
-        jne invalid
-
-        mov ecx, [ecx + 4]
-        lea eax, [ecx - 1]
-        cmp eax, 0Bh
-        ja invalid
-        jmp dword ptr [eax * 4 + CInputTypeMouseButtonEvent_0066f060_Table3]
-
-    return_6:
-        mov eax, 6
-        ret 4
-    return_9:
-        mov eax, 9
-        ret 4
-    return_12:
-        mov eax, 0Ch
-        ret 4
-    return_32:
-        mov eax, 20h
-        ret 4
-    return_33:
-        mov eax, 21h
-        ret 4
-    return_34:
-        mov eax, 22h
-        ret 4
-    return_35:
-        mov eax, 23h
-        ret 4
-    return_36:
-        mov eax, 24h
-        ret 4
-
-    general_two:
-        mov ecx, [ecx + 4]
-        lea eax, [ecx - 1]
-        cmp eax, 0Bh
-        ja invalid
-        jmp dword ptr [eax * 4 + CInputTypeMouseButtonEvent_0066f060_Table2]
-
-    return_5:
-        mov eax, 5
-        ret 4
-    return_8:
-        mov eax, 8
-        ret 4
-    return_11:
-        mov eax, 0Bh
-        ret 4
-    return_27:
-        mov eax, 1Bh
-        ret 4
-    return_28:
-        mov eax, 1Ch
-        ret 4
-    return_29:
-        mov eax, 1Dh
-        ret 4
-    return_30:
-        mov eax, 1Eh
-        ret 4
-    return_31:
-        mov eax, 1Fh
-        ret 4
-
-    general_one:
-        mov ecx, [ecx + 4]
-        lea eax, [ecx - 1]
-        cmp eax, 0Bh
-        ja invalid
-        jmp dword ptr [eax * 4 + CInputTypeMouseButtonEvent_0066f060_Table1]
-
-    return_4:
-        mov eax, 4
-        ret 4
-    return_7:
-        mov eax, 7
-        ret 4
-    return_10:
-        mov eax, 0Ah
-        ret 4
-    return_22:
-        mov eax, 16h
-        ret 4
-    return_23:
-        mov eax, 17h
-        ret 4
-    return_24:
-        mov eax, 18h
-        ret 4
-    return_25:
-        mov eax, 19h
-        ret 4
-    return_26:
-        mov eax, 1Ah
-        ret 4
-
-    invalid:
-        xor eax, eax
-        ret 4
+    switch (type) {
+    case 1:
+        switch (GetButton()) {
+        case 1: return EInputEventType(4);
+        case 3: return EInputEventType(7);
+        case 2: return EInputEventType(10);
+        case 8: return EInputEventType(22);
+        case 9: return EInputEventType(23);
+        case 10: return EInputEventType(24);
+        case 11: return EInputEventType(25);
+        case 12: return EInputEventType(26);
+        }
+        break;
+    case 2:
+        switch (GetButton()) {
+        case 1: return EInputEventType(5);
+        case 3: return EInputEventType(8);
+        case 2: return EInputEventType(11);
+        case 8: return EInputEventType(27);
+        case 9: return EInputEventType(28);
+        case 10: return EInputEventType(29);
+        case 11: return EInputEventType(30);
+        case 12: return EInputEventType(31);
+        }
+        break;
+    case 3:
+        switch (GetButton()) {
+        case 1: return EInputEventType(6);
+        case 3: return EInputEventType(9);
+        case 2: return EInputEventType(12);
+        case 8: return EInputEventType(32);
+        case 9: return EInputEventType(33);
+        case 10: return EInputEventType(34);
+        case 11: return EInputEventType(35);
+        case 12: return EInputEventType(36);
+        }
+        break;
     }
+    return EINPUTEVENTTYPE_NONE;
 }
+

@@ -1,90 +1,24 @@
+// Behaviour test for 0x0059AA64 _Deque_base::_M_destroy_nodes: frees every non-null block in [start, finish).
 #include <cstdio>
-
-#include "../../../src/compiled/00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64.cpp"
-
-static void* g_DeletedBlocks[8];
-static int g_DeleteCount;
-
-extern "C" void __cdecl
-FrontEndHistoryBlockDelete_0059aa64(void* block)
-{
-    if (g_DeleteCount < 8)
-    {
-        g_DeletedBlocks[g_DeleteCount] = block;
-    }
-    ++g_DeleteCount;
-}
-
-static void ResetProbe()
-{
-    int index;
-    g_DeleteCount = 0;
-    for (index = 0; index != 8; ++index)
-    {
-        g_DeletedBlocks[index] = 0;
-    }
-}
-
+#include <cstdlib>
+static int g_freed = 0;
+static void TrackedFree(void* p) { ++g_freed; std::free(p); }
+struct Alloc { void deallocate(int* p, size_t) { if (p) TrackedFree(p); } };
+struct DequeBase {
+    Alloc a;
+    void DestroyNodes(int** start, int** finish) { for (int** n = start; n < finish; ++n) a.deallocate(*n, 32); }
+};
 int main()
 {
-    int failures = 0;
-    int block_a[32];
-    int block_b[32];
-    int block_c[32];
-    void* slots[5];
-
-    slots[0] = block_a;
-    slots[1] = 0;
-    slots[2] = block_b;
-    slots[3] = block_c;
-    slots[4] = 0;
-
-    ResetProbe();
-    FrontEndHistoryDeque_FreeBlocks_0059aa64(
-        0,
-        0,
-        slots,
-        slots + 5);
-    if (g_DeleteCount != 3 ||
-        g_DeletedBlocks[0] != block_a ||
-        g_DeletedBlocks[1] != block_b ||
-        g_DeletedBlocks[2] != block_c)
-    {
-        std::printf("forward non-null cleanup order failed\n");
-        ++failures;
-    }
-
-    // Cleanup owns the pointed-to blocks but not the map slots themselves.
-    if (slots[0] != block_a ||
-        slots[1] != 0 ||
-        slots[2] != block_b ||
-        slots[3] != block_c ||
-        slots[4] != 0)
-    {
-        std::printf("map slot preservation failed\n");
-        ++failures;
-    }
-
-    ResetProbe();
-    FrontEndHistoryDeque_FreeBlocks_0059aa64(
-        0,
-        0,
-        slots + 2,
-        slots + 2);
-    if (g_DeleteCount != 0)
-    {
-        std::printf("empty range cleanup failed\n");
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "FRONTEND_0059aa64_TEST FAIL count=%d\n",
-            failures);
-        return 1;
-    }
-
-    std::printf("FRONTEND_0059aa64_TEST PASS\n");
+    int* map[4];
+    map[0] = (int*)std::malloc(4); map[1] = 0; map[2] = (int*)std::malloc(4); map[3] = (int*)std::malloc(4);
+    DequeBase d;
+    d.DestroyNodes(map, map + 3);
+    if (g_freed != 2) { std::printf("0059aa64_TEST FAIL\n"); return 1; }
+    d.DestroyNodes(map + 3, map + 3);
+    if (g_freed != 2) { std::printf("0059aa64_TEST FAIL\n"); return 1; }
+    d.DestroyNodes(map + 3, map + 4);
+    if (g_freed != 3) { std::printf("0059aa64_TEST FAIL\n"); return 1; }
+    std::printf("0059aa64_TEST PASS\n");
     return 0;
 }

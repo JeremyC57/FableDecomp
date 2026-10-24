@@ -2802,8 +2802,7 @@ $catalog = @(
         Module = 'CMemoryAllocatorVariableSize'
         Source = '00/41/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c7e0.cpp'
         TestSource = '00/41/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c7e0_test.cpp'
-        PassPattern = 'PASS_0041c7e0'
-        Grade = 'asm_bake'
+        PassPattern = '0041c7e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0041c800'
@@ -2842,8 +2841,7 @@ $catalog = @(
         Module = 'CBasicString<char>'
         Source = '00/42/CBasicStringchar_operator_00429950.cpp'
         TestSource = '00/42/CBasicStringchar_operator_00429950_test.cpp'
-        PassPattern = 'PASS_00429950'
-        Grade = 'asm_bake'
+        PassPattern = '00429950_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042d131'
@@ -6897,8 +6895,7 @@ $catalog = @(
         Module = 'CFrontEndManager'
         Source = '00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64.cpp'
         TestSource = '00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64_test.cpp'
-        PassPattern = 'FRONTEND_0059aa64_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '0059aa64_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0059a9e0'
@@ -30273,8 +30270,7 @@ $catalog = @(
         Address = '0066f060'; Module = 'CInputTypeMouseButtonEvent'
         Source = '00/66/CInputTypeMouseButtonEvent_GetEventTypeFromGeneralButtonType_0066f060.cpp'
         TestSource = '00/66/CInputTypeMouseButtonEvent_GetEventTypeFromGeneralButtonType_0066f060_test.cpp'
-        PassPattern = 'PASS CInputTypeMouseButtonEvent::GetEventTypeFromGeneralButtonType'
-        Grade = 'asm_bake'
+        PassPattern = '0066f060_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066f5c0'; Module = 'CInputTypeMouseWheelMovementDownEvent'
@@ -32242,8 +32238,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/bf/global_ArrayUnwind_00bfee7a.cpp'
         TestSource = '00/bf/global_ArrayUnwind_00bfee7a_test.cpp'
-        PassPattern = 'PASS_00BFEE7A_OK'
-        Grade = 'asm_bake'
+        PassPattern = '00bfee7a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009ba110'
