@@ -280745,6 +280745,265 @@ $catalog = @(
         TestSource = '00/ca/CAudioThreadOwner00cab870_AttachAndWait_00cac400_test.cpp'
         PassPattern = '00cac400_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00404950'
+        Module = 'NUISystem::CIMEFont'
+        Source = '00/40/NUISystemCIMEFont_SetPosition_00404950.cpp'
+        TestSource = '00/40/NUISystemCIMEFont_SetPosition_00404950_test.cpp'
+        PassPattern = '00404950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00404f60'
+        Module = 'NUISystem::CIMEFont'
+        Source = '00/40/NUISystemCIMEFont_GetTextExtent_00404f60.cpp'
+        TestSource = '00/40/NUISystemCIMEFont_GetTextExtent_00404f60_test.cpp'
+        PassPattern = '00404f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041ded2'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_ClearBastardChild_0041ded2.cpp'
+        TestSource = '00/41/NUISystemCManager_ClearBastardChild_0041ded2_test.cpp'
+        PassPattern = '0041ded2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042d592'
+        Module = 'NUISystem::CManager'
+        Source = '00/42/NUISystemCManager_SetRightStickForce_0042d592.cpp'
+        TestSource = '00/42/NUISystemCManager_SetRightStickForce_0042d592_test.cpp'
+        PassPattern = '0042d592_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053605f'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollUp_0053605f.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollUp_0053605f_test.cpp'
+        PassPattern = '0053605f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00536088'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollDown_00536088.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollDown_00536088_test.cpp'
+        PassPattern = '00536088_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005362ad'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_SetDefaultChild_005362ad.cpp'
+        TestSource = '00/53/NUISystemCList_SetDefaultChild_005362ad_test.cpp'
+        PassPattern = '005362ad_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053cdca'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_GetPositionOffset_0053cdca.cpp'
+        TestSource = '00/53/NUISystemCList_GetPositionOffset_0053cdca_test.cpp'
+        PassPattern = '0053cdca_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053cdff'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_SetNextScrollingChildPosition_0053cdff.cpp'
+        TestSource = '00/53/NUISystemCList_SetNextScrollingChildPosition_0053cdff_test.cpp'
+        PassPattern = '0053cdff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053ce97'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_SetActionOnScrollUp_0053ce97.cpp'
+        TestSource = '00/53/NUISystemCList_SetActionOnScrollUp_0053ce97_test.cpp'
+        PassPattern = '0053ce97_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053ced4'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_SetActionOnScrollDown_0053ced4.cpp'
+        TestSource = '00/53/NUISystemCList_SetActionOnScrollDown_0053ced4_test.cpp'
+        PassPattern = '0053ced4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d150'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_AddChild_0053d150.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_AddChild_0053d150_test.cpp'
+        PassPattern = '0053d150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d170'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_AddChildDynamically_0053d170.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_AddChildDynamically_0053d170_test.cpp'
+        PassPattern = '0053d170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d190'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_Initialise_0053d190.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_Initialise_0053d190_test.cpp'
+        PassPattern = '0053d190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d540'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_OnHovered_0053d540.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_OnHovered_0053d540_test.cpp'
+        PassPattern = '0053d540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d600'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_OnLeftUnclicked_0053d600.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_OnLeftUnclicked_0053d600_test.cpp'
+        PassPattern = '0053d600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d660'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_OnRightClicked_0053d660.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_OnRightClicked_0053d660_test.cpp'
+        PassPattern = '0053d660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d6c0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_OnObserverRemove_0053d6c0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_OnObserverRemove_0053d6c0_test.cpp'
+        PassPattern = '0053d6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d970'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_OnUnhovered_0053d970.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_OnUnhovered_0053d970_test.cpp'
+        PassPattern = '0053d970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00541e60'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_SetValue_00541e60.cpp'
+        TestSource = '00/54/NUISystemCIconText_SetValue_00541e60_test.cpp'
+        PassPattern = '00541e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00541f20'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_SetValue_00541f20.cpp'
+        TestSource = '00/54/NUISystemCIconText_SetValue_00541f20_test.cpp'
+        PassPattern = '00541f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00543ae0'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_SetTextWindow_00543ae0.cpp'
+        TestSource = '00/54/NUISystemCIconText_SetTextWindow_00543ae0_test.cpp'
+        PassPattern = '00543ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054c2a0'
+        Module = 'NUISystem::CListArrow'
+        Source = '00/54/NUISystemCListArrow_Update_0054c2a0.cpp'
+        TestSource = '00/54/NUISystemCListArrow_Update_0054c2a0_test.cpp'
+        PassPattern = '0054c2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054c430'
+        Module = 'NUISystem::CFrontEndList'
+        Source = '00/54/NUISystemCFrontEndList_Update_0054c430.cpp'
+        TestSource = '00/54/NUISystemCFrontEndList_Update_0054c430_test.cpp'
+        PassPattern = '0054c430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054db50'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_Initialise_0054db50.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_Initialise_0054db50_test.cpp'
+        PassPattern = '0054db50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054dbc0'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_ProcessEvent_0054dbc0.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_ProcessEvent_0054dbc0_test.cpp'
+        PassPattern = '0054dbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054dc30'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_OnHovered_0054dc30.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_OnHovered_0054dc30_test.cpp'
+        PassPattern = '0054dc30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054dcc0'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_OnUnhovered_0054dcc0.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_OnUnhovered_0054dcc0_test.cpp'
+        PassPattern = '0054dcc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054de70'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_OnObserverRemove_0054de70.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_OnObserverRemove_0054de70_test.cpp'
+        PassPattern = '0054de70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e280'
+        Module = 'NUISystem::CFrontEndScreen'
+        Source = '00/54/NUISystemCFrontEndScreen_ProcessEvent_0054e280.cpp'
+        TestSource = '00/54/NUISystemCFrontEndScreen_ProcessEvent_0054e280_test.cpp'
+        PassPattern = '0054e280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e4f0'
+        Module = 'NUISystem::CFrontEndScreen'
+        Source = '00/54/NUISystemCFrontEndScreen_AddActionOnLeftClicked_0054e4f0.cpp'
+        TestSource = '00/54/NUISystemCFrontEndScreen_AddActionOnLeftClicked_0054e4f0_test.cpp'
+        PassPattern = '0054e4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557860'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_OnHovered_00557860.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_OnHovered_00557860_test.cpp'
+        PassPattern = '00557860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557880'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_OnUnhovered_00557880.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_OnUnhovered_00557880_test.cpp'
+        PassPattern = '00557880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557af0'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_OnLeftUnclicked_00557af0.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_OnLeftUnclicked_00557af0_test.cpp'
+        PassPattern = '00557af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557c10'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_ChangeState_00557c10.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_ChangeState_00557c10_test.cpp'
+        PassPattern = '00557c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005586a0'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_SetAction_005586a0.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_SetAction_005586a0_test.cpp'
+        PassPattern = '005586a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055afd0'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_OnRightClicked_0055afd0.cpp'
+        TestSource = '00/55/NUISystemCClickable_OnRightClicked_0055afd0_test.cpp'
+        PassPattern = '0055afd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

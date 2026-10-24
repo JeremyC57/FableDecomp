@@ -1,0 +1,77 @@
+// NUISystem::CIconText::GetTextAlignment() -- 1 when the centred flag is set, else 2 when right-aligned, else 0
+// Grade: DIFFER(ours v retail) 23v26 -- retail re-widens the flag byte with `movzx eax,al` before `shr eax,4 ; and eax,2`; the lane drops it (tried: bitfield ternary, plain mask `(f >> 4) & 2`, unsigned long bitfields at +0x12c, `RightAligned * 2`)
+// Retail 0x00543B10, 26 bytes (vtable 0x012470CC slot 151; no Ego_r.pdb name for this slot: an inline header accessor, name
+// descriptive). Two unsigned char bitfields at +0x12e (bits 4 and 5).
+// Local models: CWideString / CCharString as retail calls them (fable_string.h lacks the CWideString compare and the
+// CWideString -> CCharString conversion); Game/System text banks at +0x14 / +0x60 as the landed SetValue(ulong) 0x00542140.
+class CWideString;
+class CCharString {
+public:
+ void* PStringData;
+ ~CCharString();                                     // 0x0099EAE0
+ CWideString ToWideString() const;                   // 0x0099E480
+};
+class CWideString {
+public:
+ void* PStringData;
+ CWideString(const CWideString&);
+ ~CWideString();                                     // 0x0099B510
+ CWideString& operator=(const CWideString&);         // 0x0099B7D0
+ bool operator!=(const CWideString&) const;          // 0x0099B0F0
+ CCharString ConvertToCharString() const;            // 0x0099B2C0
+};
+struct CDataBank { CWideString GetTextBySymbol(const CCharString& symbol) const; };   // 0x009C95E0
+struct Game { unsigned char Pad[0x14]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
+struct System { unsigned char Pad[0x60]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
+extern Game* Game_013b86a0;                          // 0x013B86A0
+extern System* System_013b871c;                      // 0x013B871C
+extern CWideString Empty_013bca24;                   // 0x013BCA24
+struct C2DBoxF { float Left, Top, Right, Bottom; };
+namespace NUISystem {
+struct CIconText {
+ virtual void Slot000()=0; virtual void Slot001()=0; virtual void Slot002()=0; virtual void Slot003()=0; virtual void Slot004()=0; virtual void Slot005()=0;
+ virtual void Slot006()=0; virtual void Slot007()=0; virtual void Slot008()=0; virtual void Slot009()=0; virtual void Slot010()=0; virtual void Slot011()=0;
+ virtual void Slot012()=0; virtual void Slot013()=0; virtual void Slot014()=0; virtual void Slot015()=0; virtual void Slot016()=0; virtual void Slot017()=0;
+ virtual void Slot018()=0; virtual void Slot019()=0; virtual void Slot020()=0; virtual void Slot021()=0; virtual void Slot022()=0; virtual void Slot023()=0;
+ virtual void Slot024()=0; virtual void Slot025()=0; virtual void Slot026()=0; virtual void Slot027()=0; virtual void Slot028()=0; virtual void Slot029()=0;
+ virtual void Slot030()=0; virtual void Slot031()=0; virtual void Slot032()=0; virtual void Slot033()=0; virtual void Slot034()=0; virtual void Slot035()=0;
+ virtual void Slot036()=0; virtual void Slot037()=0; virtual void Slot038()=0; virtual void Slot039()=0; virtual void Slot040()=0; virtual void Slot041()=0;
+ virtual void Slot042()=0; virtual void Slot043()=0; virtual void Slot044()=0; virtual void Slot045()=0; virtual void Slot046()=0; virtual void Slot047()=0;
+ virtual void Slot048()=0; virtual void Slot049()=0; virtual void Slot050()=0; virtual void Slot051()=0; virtual void Slot052()=0; virtual void Slot053()=0;
+ virtual void Slot054()=0; virtual void Slot055()=0; virtual void Slot056()=0; virtual void Slot057()=0; virtual void Slot058()=0; virtual void Slot059()=0;
+ virtual void Slot060()=0; virtual void Slot061()=0; virtual void Slot062()=0; virtual void Slot063()=0; virtual void Slot064()=0; virtual void Slot065()=0;
+ virtual void Slot066()=0; virtual void Slot067()=0; virtual void Slot068()=0; virtual void Slot069()=0; virtual void Slot070()=0; virtual void Slot071()=0;
+ virtual void Slot072()=0; virtual void Slot073()=0; virtual void Slot074()=0; virtual void Slot075()=0; virtual void Slot076()=0; virtual void Slot077()=0;
+ virtual void Slot078()=0; virtual void Slot079()=0; virtual void Slot080()=0; virtual void Slot081()=0; virtual void Slot082()=0; virtual void Slot083()=0;
+ virtual void Slot084()=0; virtual void Slot085()=0; virtual void Slot086()=0; virtual void Slot087()=0; virtual void Slot088()=0; virtual void Slot089()=0;
+ virtual void Slot090()=0; virtual void Slot091()=0; virtual void Slot092()=0; virtual void Slot093()=0; virtual void Slot094()=0; virtual void Slot095()=0;
+ virtual void Slot096()=0; virtual void Slot097()=0; virtual void Slot098()=0; virtual void Slot099()=0; virtual void Slot100()=0; virtual void Slot101()=0;
+ virtual void Slot102()=0; virtual void Slot103()=0; virtual void Slot104()=0; virtual void Slot105()=0; virtual void Slot106()=0; virtual void Slot107()=0;
+ virtual void Slot108()=0; virtual void Slot109()=0; virtual void Slot110()=0; virtual void Slot111()=0; virtual void Slot112()=0; virtual void Slot113()=0;
+ virtual void Slot114()=0; virtual void Slot115()=0; virtual void Slot116()=0; virtual void Slot117()=0; virtual void Slot118()=0; virtual void Slot119()=0;
+ virtual void Slot120()=0; virtual void Slot121()=0; virtual void Slot122()=0; virtual void Slot123()=0; virtual void Slot124()=0; virtual void Slot125()=0;
+ virtual void Slot126()=0; virtual void Slot127()=0; virtual void Slot128()=0; virtual void Slot129()=0; virtual void Slot130()=0; virtual void Slot131()=0;
+ virtual void Slot132()=0; virtual void Slot133()=0; virtual void Slot134()=0; virtual void Slot135()=0; virtual void Slot136()=0; virtual void Slot137()=0;
+ virtual void Slot138()=0; virtual void Slot139()=0; virtual void Slot140()=0; virtual void Slot141()=0; virtual void Slot142()=0; virtual void Slot143()=0;
+ virtual void SetValue(const CCharString&); virtual void SetValue(const CWideString&); // overloads, reversed by MSVC: (CWideString) 144, (CCharString) 145 // slot 144 (+0x240)
+ virtual void Slot146()=0;
+ virtual void SetTextWindow(C2DBoxF&); // slot 147 (+0x24c)
+ virtual void Slot148()=0; virtual void Slot149()=0;
+ virtual void UpdateText(); // slot 150 (+0x258)
+ virtual long GetTextAlignment(); // slot 151 (+0x25c)
+ unsigned char _pad04[0x12e - 4];
+ unsigned char FlagBits12e : 4;          // +0x12e bits 0-3
+ unsigned char Centred : 1;               // +0x12e bit 4
+ unsigned char RightAligned : 1;          // +0x12e bit 5
+ unsigned char _pad12f[0x15c - 0x12f];
+ CWideString Text;                        // +0x15c
+ unsigned char _pad160[0x198 - 0x160];
+ C2DBoxF TextWindow;                      // +0x198
+};
+long CIconText::GetTextAlignment()
+{
+ if (Centred)
+  return 1;
+ return RightAligned ? 2 : 0;
+}
+}

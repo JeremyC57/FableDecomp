@@ -1051,3 +1051,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - An if-chain of `return CCharString(lit, -1)` hoists the shared `push -1` above the first branch (009c79e0).
 - `switch` on WaitForSingleObject with a shared CloseHandle tail: VC7.1 duplicates the tail plus `setge/dec/and` into each arm (00cac400).
 - STLport `_List_base` (proxy zeroed, header malloc'd, self-linked) matches CClassFactory's ctor first try (00a373b0); scalar assignments in a ctor body keep source store order (00b94a80).
+- MSVC lays out overloaded virtuals in the vtable in REVERSE declaration order (CText::SetText 145/144, CIconText::SetValue, CList ScrollUp/ScrollDown) (chunk 343).
+- A virtual living only in the CObserver vtable (ProcessEvent, slot 1) compiles with `this` = the +4 subobject: model `struct X : CComponent, CObserver`; retail CObserver is 0x14 bytes (chunk 343).
+- A CCountedPointer setter ending `call ShareData ; ret 4` needs `void operator=`; returning `T&` adds `mov eax,esi` (chunk 343).
+- A definition-pointer temporary lives to the end of the full expression, so `ChangeState(Def()->State)` runs before the inline release (chunk 343).
