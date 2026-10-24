@@ -1321,3 +1321,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `C3DVector v(x, y, 0.0f)` with Z never read: the Z store is eliminated but its frame word stays; an implicit copy keeps the dead Z load and store (0x875A30).
 - `float sign = 1.0f; if (c < 0) sign = -1.0f; return angle * sign;` is tail-duplicated in the lane where retail joins at one `fmulp` (lane gap, 0x875A30).
 - A 4-byte CDefString returned through the hidden pointer needs a user copy ctor and no dtor; the result lands in the dead argument slot (0x877110). Member-template operator leaves are `??$?R...@`; `?swap@_STL@@` silently fell back to the largest function (0x8E2DB0, 0x8D45A0).
+- STLport list emptiness: `begin()==end()` gives retail's register compare, `empty()` does not (0x90AC50); copy_backward over `T**` is `__copy_trivial_backward` (memmove) (0x932660).
+- Under /Gr a fastcall function-pointer comparator takes edx when the value argument is a class, the stack when it is a pointer (0x9265C0 vs 0x932330).
+- A single-copy retry loop needs `do { if (!ok) { Terminate(); return; } ... } while (r == 4);`; `while`/`for(;;)+break` get rotated or duplicated (0x93C7B0, 0x939DD0).
+- Anonymous-namespace functions/functors need a caller wrapper in the TU or VC drops the body (0x905600, 0x945DE0); g.sh ignores `// Leaf:` (gall.sh/p.sh honour it).

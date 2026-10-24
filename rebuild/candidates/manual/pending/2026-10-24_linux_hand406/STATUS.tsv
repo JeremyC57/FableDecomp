@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00905550	RELOCATION_MATCH	140v140	PASS	NBalverineCombat::CanLungeThisFrame; same-TU GetSubDef stand-in, fps read into a long before the frame call
+00905600	RELOCATION_MATCH	138v138	PASS	anon GetPRangedWeaponFromCreature (__fastcall); twin of landed 0x006A1620
+0090ac50	RELOCATION_MATCH	73v73	PASS	LSocketServer::GetAcceptedConnectionsOnSocket; begin()==end() iterator form (label LinkedList_PopFront wrong)
+0090aec0	RELOCATION_MATCH	181v181	PASS	LSocketServer::LSocketServer; inline list/LAddress ctors, body stores (label Manager_ConstructAndRegister wrong)
+0090bc60	DIFFER	211v211	-	CAIStateGroup_MinionWorkInInn::GetFreeBench; scheduling: vector zero stores vs functor push/end load
+0090df60	DIFFER	69v69	-	CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>::operator(); block layout (call block after false exit)
+0090dfb0	DIFFER	69v69	-	CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineOfSightToThing>::operator(); same template as 0090df60
+009137f0	RELOCATION_MATCH	183v183	PASS	_STL::_Deque_base<CBezierCurve>::_M_initialize_map; STLport verbatim
+00913930	MATCH	45v45	PASS	_STL::__destroy_aux<deque<CBezierCurve>::iterator>; /Gr, empty tag in ecx
+00913a20	RELOCATION_MATCH	94v94	PASS	_STL::deque<CBezierCurve>::clear; STLport verbatim
+00913e70	RELOCATION_MATCH	49v49	PASS	_STL::deque<CBezierCurve>::push_back (label CGPUScratchBuffer..AddResourceEntry propagated)
+0091a630	DIFFER	50v51	-	CAIStateGroup_WorkBase::HasSeller (descriptive); retail `add eax,12Ch ; mov eax,[eax]` address form not reproduced
+0091fa00	RELOCATION_MATCH	132v132	PASS	_STL::__median<CThing*, CThingCompare_Nearest>
+0091fb30	DIFFER	135v135	-	_STL::__adjust_heap<CThing**, int, CThing*, CThingCompare_Nearest>; scheduling of the comparator copy loads
+00920160	RELOCATION_MATCH	89v89	PASS	_STL::sort_heap<CThing**, CThingCompare_Nearest> (landed 0x007A3B60 form)
+009204f0	DIFFER	174v172	-	_STL::__partial_sort<CThing**, CThing*, CThingCompare_Nearest>; comparator Y/Z floats copied via the FPU
+009206a0	RELOCATION_MATCH	111v111	PASS	_STL::sort<CThing**, CThingCompare_Nearest> (landed 0x007A4260 form)
+00920f90	RELOCATION_MATCH	88v88	PASS	_STL::vector<C3DVector>::_M_allocate_and_copy; STLport verbatim (COMDAT-folded 12-byte element)
+00920ff0	RELOCATION_MATCH	147v147	PASS	_STL::vector<C3DVector>::reserve; STLport verbatim
+009215e0	RELOCATION_MATCH	72v72	PASS	CAIStateGroup_MinionFollowThing::SetThingToNotAvoid; bool out-param GetInterface
+009265c0	RELOCATION_MATCH	145v145	PASS	_STL::__unguarded_linear_insert<CIntelligentPointer<const CThing>*, fn-ptr comparator>
+00926690	DIFFER	192v198	-	_STL::__push_heap<CIntelligentPointer<const CThing>*, ..>; register swap first/holeIndex (ebp vs frame slot)
+00926760	RELOCATION_MATCH	62v62	PASS	_STL::__copy_backward<CIntelligentPointer<const CThing>*> (label Median_GetByIndex wrong)
+009267f0	RELOCATION_MATCH	90v90	PASS	_STL::swap<CIntelligentPointer<const CThing>>
+009274b0	RELOCATION_MATCH	102v102	PASS	_STL::__make_heap<CIntelligentPointer<const CThing>*, fn-ptr comparator>
+00927740	RELOCATION_MATCH	199v199	PASS	_STL::__linear_insert<..>; copy_backward body out of line, tag homed over the live comparator slot
+00927810	RELOCATION_MATCH	174v174	PASS	_STL::sort_heap<CIntelligentPointer<const CThing>*, fn-ptr comparator>; and esp,-8 frame
+009278c0	RELOCATION_MATCH	80v80	PASS	_STL::__insertion_sort<CIntelligentPointer<const CThing>*, fn-ptr comparator>
+00927aa0	RELOCATION_MATCH	183v183	PASS	_STL::__introsort_loop<CIntelligentPointer<const CThing>*, ..>
+00932330	MATCH	61v61	PASS	_STL::__unguarded_linear_insert<CThing**, CThing*, bool(__fastcall*)(CThing*,CThing*)>
+00932420	RELOCATION_MATCH	108v108	PASS	_STL::__adjust_heap<CThing**, int, CThing*, fn-ptr comparator> (CThingBuilding label propagated)
+00932490	MATCH	104v104	PASS	_STL::__unguarded_partition<CThing**, CThing*, fn-ptr comparator>
+00932660	RELOCATION_MATCH	110v110	PASS	_STL::__insertion_sort<CThing**, fn-ptr comparator>; __copy_trivial_backward memmove
+00932770	RELOCATION_MATCH	95v95	PASS	_STL::__partial_sort<CThing**, CThing*, fn-ptr comparator>
+009327f0	RELOCATION_MATCH	217v217	PASS	_STL::__introsort_loop<CThing**, ..>; inline __median selected through a pointer
+00939dd0	DIFFER	155v150	-	CAIStateGroup_MinionGuardReactToPlayerWithWeapon::RemoveMessageEventsAdded; retail hoists the Bind2 first-pointer store
+0093c7b0	RELOCATION_MATCH	118v118	PASS	CAIStateGroup_StealthSeekEnemy::MoveTowardsEnemy; do/while, shared Terminate tail
+0093dfc0	DIFFER	208v203	-	CAIStateGroup_MeleeCombatNearby2::AlertAlliesInVicinity; early-exit tail duplicated (block layout)
+00942b30	RELOCATION_MATCH	223v223	PASS	GetDummyObjectRecursive (__fastcall); same-TU const LowerBound stand-in packs key+owner
+00945de0	RELOCATION_MATCH	142v142	PASS	anon CIsCookingPot::operator() (SitForMeal find_if predicate; label CVillageTaskTorch_FindInvolvedTask wrong)

@@ -297661,6 +297661,223 @@ $catalog = @(
         TestSource = '00/8e/STL_partition_008e3430_test.cpp'
         PassPattern = '008e3430_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00905550'
+        Module = 'NBalverineCombat'
+        Source = '00/90/NBalverineCombat_CanLungeThisFrame_00905550.cpp'
+        TestSource = '00/90/NBalverineCombat_CanLungeThisFrame_00905550_test.cpp'
+        PassPattern = '00905550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00905600'
+        Module = '_global'
+        Source = '00/90/global_GetPRangedWeaponFromCreature_00905600.cpp'
+        TestSource = '00/90/global_GetPRangedWeaponFromCreature_00905600_test.cpp'
+        PassPattern = '00905600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090ac50'
+        Module = 'LSocketServer'
+        Source = '00/90/LSocketServer_GetAcceptedConnectionsOnSocket_0090ac50.cpp'
+        TestSource = '00/90/LSocketServer_GetAcceptedConnectionsOnSocket_0090ac50_test.cpp'
+        PassPattern = '0090ac50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090aec0'
+        Module = 'LSocketServer'
+        Source = '00/90/LSocketServer_LSocketServer_0090aec0.cpp'
+        TestSource = '00/90/LSocketServer_LSocketServer_0090aec0_test.cpp'
+        PassPattern = '0090aec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009137f0'
+        Module = '_STL::_Deque_base'
+        Source = '00/91/STLDequebase_Minitializemap_009137f0.cpp'
+        TestSource = '00/91/STLDequebase_Minitializemap_009137f0_test.cpp'
+        PassPattern = '009137f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00913930'
+        Module = '_STL'
+        Source = '00/91/STL_destroyaux_00913930.cpp'
+        TestSource = '00/91/STL_destroyaux_00913930_test.cpp'
+        PassPattern = '00913930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00913a20'
+        Module = '_STL::deque'
+        Source = '00/91/STLdeque_clear_00913a20.cpp'
+        TestSource = '00/91/STLdeque_clear_00913a20_test.cpp'
+        PassPattern = '00913a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00913e70'
+        Module = '_STL::deque'
+        Source = '00/91/STLdeque_pushback_00913e70.cpp'
+        TestSource = '00/91/STLdeque_pushback_00913e70_test.cpp'
+        PassPattern = '00913e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091fa00'
+        Module = '_STL'
+        Source = '00/91/STL_median_0091fa00.cpp'
+        TestSource = '00/91/STL_median_0091fa00_test.cpp'
+        PassPattern = '0091fa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00920160'
+        Module = '_STL'
+        Source = '00/92/STL_sortheap_00920160.cpp'
+        TestSource = '00/92/STL_sortheap_00920160_test.cpp'
+        PassPattern = '00920160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009206a0'
+        Module = '_STL'
+        Source = '00/92/STL_sort_009206a0.cpp'
+        TestSource = '00/92/STL_sort_009206a0_test.cpp'
+        PassPattern = '009206a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00920f90'
+        Module = '_STL::vector'
+        Source = '00/92/STLvector_Mallocateandcopy_00920f90.cpp'
+        TestSource = '00/92/STLvector_Mallocateandcopy_00920f90_test.cpp'
+        PassPattern = '00920f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00920ff0'
+        Module = '_STL::vector'
+        Source = '00/92/STLvector_reserve_00920ff0.cpp'
+        TestSource = '00/92/STLvector_reserve_00920ff0_test.cpp'
+        PassPattern = '00920ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009215e0'
+        Module = 'CAIStateGroup_MinionFollowThing'
+        Source = '00/92/CAIStateGroupMinionFollowThing_SetThingToNotAvoid_009215e0.cpp'
+        TestSource = '00/92/CAIStateGroupMinionFollowThing_SetThingToNotAvoid_009215e0_test.cpp'
+        PassPattern = '009215e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009265c0'
+        Module = '_STL'
+        Source = '00/92/STL_unguardedlinearinsert_009265c0.cpp'
+        TestSource = '00/92/STL_unguardedlinearinsert_009265c0_test.cpp'
+        PassPattern = '009265c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00926760'
+        Module = '_STL'
+        Source = '00/92/STL_copybackward_00926760.cpp'
+        TestSource = '00/92/STL_copybackward_00926760_test.cpp'
+        PassPattern = '00926760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009267f0'
+        Module = '_STL'
+        Source = '00/92/STL_swap_009267f0.cpp'
+        TestSource = '00/92/STL_swap_009267f0_test.cpp'
+        PassPattern = '009267f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009274b0'
+        Module = '_STL'
+        Source = '00/92/STL_makeheap_009274b0.cpp'
+        TestSource = '00/92/STL_makeheap_009274b0_test.cpp'
+        PassPattern = '009274b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00927740'
+        Module = '_STL'
+        Source = '00/92/STL_linearinsert_00927740.cpp'
+        TestSource = '00/92/STL_linearinsert_00927740_test.cpp'
+        PassPattern = '00927740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00927810'
+        Module = '_STL'
+        Source = '00/92/STL_sortheap_00927810.cpp'
+        TestSource = '00/92/STL_sortheap_00927810_test.cpp'
+        PassPattern = '00927810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009278c0'
+        Module = '_STL'
+        Source = '00/92/STL_insertionsort_009278c0.cpp'
+        TestSource = '00/92/STL_insertionsort_009278c0_test.cpp'
+        PassPattern = '009278c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00927aa0'
+        Module = '_STL'
+        Source = '00/92/STL_introsortloop_00927aa0.cpp'
+        TestSource = '00/92/STL_introsortloop_00927aa0_test.cpp'
+        PassPattern = '00927aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00932330'
+        Module = '_STL'
+        Source = '00/93/STL_unguardedlinearinsert_00932330.cpp'
+        TestSource = '00/93/STL_unguardedlinearinsert_00932330_test.cpp'
+        PassPattern = '00932330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00932420'
+        Module = '_STL'
+        Source = '00/93/STL_adjustheap_00932420.cpp'
+        TestSource = '00/93/STL_adjustheap_00932420_test.cpp'
+        PassPattern = '00932420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00932490'
+        Module = '_STL'
+        Source = '00/93/STL_unguardedpartition_00932490.cpp'
+        TestSource = '00/93/STL_unguardedpartition_00932490_test.cpp'
+        PassPattern = '00932490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00932660'
+        Module = '_STL'
+        Source = '00/93/STL_insertionsort_00932660.cpp'
+        TestSource = '00/93/STL_insertionsort_00932660_test.cpp'
+        PassPattern = '00932660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00932770'
+        Module = '_STL'
+        Source = '00/93/STL_partialsort_00932770.cpp'
+        TestSource = '00/93/STL_partialsort_00932770_test.cpp'
+        PassPattern = '00932770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009327f0'
+        Module = '_STL'
+        Source = '00/93/STL_introsortloop_009327f0.cpp'
+        TestSource = '00/93/STL_introsortloop_009327f0_test.cpp'
+        PassPattern = '009327f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093c7b0'
+        Module = 'CAIStateGroup_StealthSeekEnemy'
+        Source = '00/93/CAIStateGroupStealthSeekEnemy_MoveTowardsEnemy_0093c7b0.cpp'
+        TestSource = '00/93/CAIStateGroupStealthSeekEnemy_MoveTowardsEnemy_0093c7b0_test.cpp'
+        PassPattern = '0093c7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00942b30'
+        Module = '_global'
+        Source = '00/94/global_GetDummyObjectRecursive_00942b30.cpp'
+        TestSource = '00/94/global_GetDummyObjectRecursive_00942b30_test.cpp'
+        PassPattern = '00942b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00945de0'
+        Module = 'CIsCookingPot'
+        Source = '00/94/CIsCookingPot_operator_00945de0.cpp'
+        TestSource = '00/94/CIsCookingPot_operator_00945de0_test.cpp'
+        PassPattern = '00945de0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
