@@ -296638,6 +296638,265 @@ $catalog = @(
         TestSource = '00/85/CCombatActionBase_GetPActiveStrikeEvent_00856e50_test.cpp'
         PassPattern = '00856e50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00857430'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_GetPCombatActionFromEnum_00857430.cpp'
+        TestSource = '00/85/CCombatActionBase_GetPCombatActionFromEnum_00857430_test.cpp'
+        PassPattern = '00857430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085ae90'
+        Module = 'CCombatActionBase::CStrikeEvent'
+        Source = '00/85/CCombatActionBaseCStrikeEvent_scalardeletingdestructor_0085ae90.cpp'
+        TestSource = '00/85/CCombatActionBaseCStrikeEvent_scalardeletingdestructor_0085ae90_test.cpp'
+        PassPattern = '0085ae90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085b160'
+        Module = 'CFilter_Bind4'
+        Source = '00/85/CFilterBind4_operator_0085b160.cpp'
+        TestSource = '00/85/CFilterBind4_operator_0085b160_test.cpp'
+        PassPattern = '0085b160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085d680'
+        Module = 'std'
+        Source = '00/85/std_fill_0085d680.cpp'
+        TestSource = '00/85/std_fill_0085d680_test.cpp'
+        PassPattern = '0085d680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085d7a0'
+        Module = 'std'
+        Source = '00/85/std_uninitializedfilln_0085d7a0.cpp'
+        TestSource = '00/85/std_uninitializedfilln_0085d7a0_test.cpp'
+        PassPattern = '0085d7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085dfd0'
+        Module = 'std::vector<CThingMapCell>'
+        Source = '00/85/stdvectorCThingMapCell_operator_0085dfd0.cpp'
+        TestSource = '00/85/stdvectorCThingMapCell_operator_0085dfd0_test.cpp'
+        PassPattern = '0085dfd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085ee50'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_GetStunnedEffectCreationPos_0085ee50.cpp'
+        TestSource = '00/85/NCreatureMode_GetStunnedEffectCreationPos_0085ee50_test.cpp'
+        PassPattern = '0085ee50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085eeb0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsRolling_0085eeb0.cpp'
+        TestSource = '00/85/NCreatureMode_IsRolling_0085eeb0_test.cpp'
+        PassPattern = '0085eeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085ef00'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsToDeflectAllHits_0085ef00.cpp'
+        TestSource = '00/85/NCreatureMode_IsToDeflectAllHits_0085ef00_test.cpp'
+        PassPattern = '0085ef00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085ef70'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsCarryingTooHeavyWeapon_0085ef70.cpp'
+        TestSource = '00/85/NCreatureMode_IsCarryingTooHeavyWeapon_0085ef70_test.cpp'
+        PassPattern = '0085ef70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f010'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsKnockedDown_0085f010.cpp'
+        TestSource = '00/85/NCreatureMode_IsKnockedDown_0085f010_test.cpp'
+        PassPattern = '0085f010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f070'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsStabbableByHero_0085f070.cpp'
+        TestSource = '00/85/NCreatureMode_IsStabbableByHero_0085f070_test.cpp'
+        PassPattern = '0085f070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f0c0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsIncapacitated_0085f0c0.cpp'
+        TestSource = '00/85/NCreatureMode_IsIncapacitated_0085f0c0_test.cpp'
+        PassPattern = '0085f0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f120'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsUnderground_0085f120.cpp'
+        TestSource = '00/85/NCreatureMode_IsUnderground_0085f120_test.cpp'
+        PassPattern = '0085f120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f180'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsAbleToUseConversationAnimations_0085f180.cpp'
+        TestSource = '00/85/NCreatureMode_IsAbleToUseConversationAnimations_0085f180_test.cpp'
+        PassPattern = '0085f180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f200'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsLookTurningOverridenByParent_0085f200.cpp'
+        TestSource = '00/85/NCreatureMode_IsLookTurningOverridenByParent_0085f200_test.cpp'
+        PassPattern = '0085f200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f2b0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsLyingDown_0085f2b0.cpp'
+        TestSource = '00/85/NCreatureMode_IsLyingDown_0085f2b0_test.cpp'
+        PassPattern = '0085f2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f310'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsSitting_0085f310.cpp'
+        TestSource = '00/85/NCreatureMode_IsSitting_0085f310_test.cpp'
+        PassPattern = '0085f310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f370'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsFaceHitterOnHit_0085f370.cpp'
+        TestSource = '00/85/NCreatureMode_IsFaceHitterOnHit_0085f370_test.cpp'
+        PassPattern = '0085f370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f3e0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsAbleToMove_0085f3e0.cpp'
+        TestSource = '00/85/NCreatureMode_IsAbleToMove_0085f3e0_test.cpp'
+        PassPattern = '0085f3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f470'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsAvailableForHeroSprint_0085f470.cpp'
+        TestSource = '00/85/NCreatureMode_IsAvailableForHeroSprint_0085f470_test.cpp'
+        PassPattern = '0085f470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f560'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsAvailableForHeroRun_0085f560.cpp'
+        TestSource = '00/85/NCreatureMode_IsAvailableForHeroRun_0085f560_test.cpp'
+        PassPattern = '0085f560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f600'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_RemoveMovementBlockingModes_0085f600.cpp'
+        TestSource = '00/85/NCreatureMode_RemoveMovementBlockingModes_0085f600_test.cpp'
+        PassPattern = '0085f600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f6a0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_RemoveAnimationBlockingModes_0085f6a0.cpp'
+        TestSource = '00/85/NCreatureMode_RemoveAnimationBlockingModes_0085f6a0_test.cpp'
+        PassPattern = '0085f6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f830'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_GetOldTargetFlagsAndReplaceWith_0085f830.cpp'
+        TestSource = '00/85/NCreatureMode_GetOldTargetFlagsAndReplaceWith_0085f830_test.cpp'
+        PassPattern = '0085f830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f880'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_RevertOldTargetFlags_0085f880.cpp'
+        TestSource = '00/85/NCreatureMode_RevertOldTargetFlags_0085f880_test.cpp'
+        PassPattern = '0085f880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085faa0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsLightningable_0085faa0.cpp'
+        TestSource = '00/85/NCreatureMode_IsLightningable_0085faa0_test.cpp'
+        PassPattern = '0085faa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085fc50'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsAbleToBlock_0085fc50.cpp'
+        TestSource = '00/85/NCreatureMode_IsAbleToBlock_0085fc50_test.cpp'
+        PassPattern = '0085fc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085fcd0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsAbleToUseTurningAnimations_0085fcd0.cpp'
+        TestSource = '00/85/NCreatureMode_IsAbleToUseTurningAnimations_0085fcd0_test.cpp'
+        PassPattern = '0085fcd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085fd70'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsPhysicsPushableByHero_0085fd70.cpp'
+        TestSource = '00/85/NCreatureMode_IsPhysicsPushableByHero_0085fd70_test.cpp'
+        PassPattern = '0085fd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085fe60'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsPhysicsPushableBySelfAvoidance_0085fe60.cpp'
+        TestSource = '00/85/NCreatureMode_IsPhysicsPushableBySelfAvoidance_0085fe60_test.cpp'
+        PassPattern = '0085fe60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008618b0'
+        Module = 'NCreatureMode'
+        Source = '00/86/NCreatureMode_GetAnimationFromCreature_008618b0.cpp'
+        TestSource = '00/86/NCreatureMode_GetAnimationFromCreature_008618b0_test.cpp'
+        PassPattern = '008618b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00861950'
+        Module = 'NCreatureMode'
+        Source = '00/86/NCreatureMode_GetMovementSpeedFromAnimation_00861950.cpp'
+        TestSource = '00/86/NCreatureMode_GetMovementSpeedFromAnimation_00861950_test.cpp'
+        PassPattern = '00861950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008619c0'
+        Module = '_global'
+        Source = '00/86/global_AddCombinationIdles_008619c0.cpp'
+        TestSource = '00/86/global_AddCombinationIdles_008619c0_test.cpp'
+        PassPattern = '008619c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00861c90'
+        Module = 'NCreatureMode'
+        Source = '00/86/NCreatureMode_GetMovementSpeedFromAnimation_00861c90.cpp'
+        TestSource = '00/86/NCreatureMode_GetMovementSpeedFromAnimation_00861c90_test.cpp'
+        PassPattern = '00861c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00863170'
+        Module = 'CCreatureInteraction'
+        Source = '00/86/CCreatureInteraction_CCreatureInteraction_00863170.cpp'
+        TestSource = '00/86/CCreatureInteraction_CCreatureInteraction_00863170_test.cpp'
+        PassPattern = '00863170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008631d0'
+        Module = 'CCreatureInteraction'
+        Source = '00/86/CCreatureInteraction_AddParticipant_008631d0.cpp'
+        TestSource = '00/86/CCreatureInteraction_AddParticipant_008631d0_test.cpp'
+        PassPattern = '008631d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

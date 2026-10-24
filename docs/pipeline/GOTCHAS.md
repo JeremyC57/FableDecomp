@@ -1309,3 +1309,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - When retail homes an STLport `__false_type` tag on a LIVE argument slot, give the tag-taking callee a same-TU `__declspec(noinline)` body that never touches the tag; a bare declaration homes it on the dead slot (0x841EE0, 0x83F870, 0x83FB20).
 - Under /Gr STLport's free inline operators are `__fastcall` and VC7.1 evaluates the left operand of `string == string` first (0x83EE10); `vector::resize(n)` passes `_Tp()` as a temporary at byte 3 of its slot (0x83F8B0).
 - A named `extern const float` epsilon keeps an empty-container path a literal folds away (0x851BD0); a `fabsf` overload through `fabs((double)x)` gives retail's `fxch st(1); fxch st(1)` pair (0x84CD10).
+- Two identical early returns (`if (a) return X; if (b) return X;`) keep the merged block on the fall-through; one `||` moves it to the function end (0x857430).
+- `v.GetLength()` read in place loads Z,Y,X; a C3DVector built from three floats loads X,Y,Z (0x861950). A named `__false_type isPOD;` tag costs no store; the temporary `__false_type()` adds a byte store (0x85DFD0).
+- Define anonymous-namespace functions inside `namespace { }`; a global definition after the declaration emits a different, global symbol (0x8619C0). Anonymous-namespace leaves end in `?A0x` and match by prefix.

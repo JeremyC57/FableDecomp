@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00857430	RELOCATION_MATCH	148v148	PASS	CCombatActionBase::GetPCombatActionFromEnum (Ego_r.pdb symbol); two separate early returns
+0085ae90	RELOCATION_MATCH	57v57	PASS	CCombatActionBase::CStrikeEvent scalar deleting destructor (non-virtual ??_G; members match Ego_r.pdb); label was CParticleMorphs_Destroy
+0085b160	RELOCATION_MATCH	221v221	PASS	CFilter_Bind4<IsNot,CombatIsStrikeToStrike,CombatOverlappingSphere,CombatCanCollideOrInteractWithThing>::operator()<CThingGameObject>; same-TU LowerBound stand-in; label was CThingFilter_CombatStrikeToStrike_Apply
+0085d680	MATCH	61v61	PASS	std::fill<CTextureManagerPoolInfo*,CTextureManagerPoolInfo>
+0085d7a0	MATCH	58v58	PASS	std::__uninitialized_fill_n<CTextureManagerPoolInfo*,unsigned int,...>; label was fill
+0085dfd0	RELOCATION_MATCH	222v222	PASS	std::vector<NThingMap::CThingMapCell>::operator=; label was Vector_Reallocate
+0085ee50	RELOCATION_MATCH	53v53	PASS	NCreatureMode::GetStunnedEffectCreationPos; label was GetHeadPosWithOffset
+0085eeb0	RELOCATION_MATCH	77v77	PASS	NCreatureMode::IsRolling
+0085ef00	RELOCATION_MATCH	104v104	PASS	NCreatureMode::IsToDeflectAllHits
+0085ef70	RELOCATION_MATCH	151v151	PASS	NCreatureMode::IsCarryingTooHeavyWeapon
+0085f010	RELOCATION_MATCH	92v92	PASS	NCreatureMode::IsKnockedDown
+0085f070	RELOCATION_MATCH	78v78	PASS	NCreatureMode::IsStabbableByHero
+0085f0c0	RELOCATION_MATCH	89v89	PASS	NCreatureMode::IsIncapacitated
+0085f120	RELOCATION_MATCH	94v94	PASS	NCreatureMode::IsUnderground
+0085f180	RELOCATION_MATCH	122v122	PASS	NCreatureMode::IsAbleToUseConversationAnimations
+0085f200	RELOCATION_MATCH	175v175	PASS	NCreatureMode::IsLookTurningOverridenByParent
+0085f2b0	RELOCATION_MATCH	87v87	PASS	NCreatureMode::IsLyingDown
+0085f310	RELOCATION_MATCH	92v92	PASS	NCreatureMode::IsSitting; label was IsKnockedDown
+0085f370	RELOCATION_MATCH	100v100	PASS	NCreatureMode::IsFaceHitterOnHit
+0085f3e0	RELOCATION_MATCH	136v136	PASS	NCreatureMode::IsAbleToMove
+0085f470	RELOCATION_MATCH	236v236	PASS	NCreatureMode::IsAvailableForHeroSprint
+0085f560	RELOCATION_MATCH	154v154	PASS	NCreatureMode::IsAvailableForHeroRun
+0085f600	RELOCATION_MATCH	148v148	PASS	NCreatureMode::RemoveMovementBlockingModes
+0085f6a0	RELOCATION_MATCH	72v72	PASS	NCreatureMode::RemoveAnimationBlockingModes; label was RemoveInterfaceMode_impl
+0085f830	RELOCATION_MATCH	73v73	PASS	NCreatureMode::GetOldTargetFlagsAndReplaceWith
+0085f880	RELOCATION_MATCH	78v78	PASS	NCreatureMode::RevertOldTargetFlags
+0085fa00	DIFFER	154v154	-	NCreatureMode::IsToEvadeAllHits: return tails swapped (block order); 4 grades
+0085faa0	RELOCATION_MATCH	131v131	PASS	NCreatureMode::IsLightningable
+0085fb30	DIFFER	135v135	-	NCreatureMode::IsAbleToBeAttacked: return tails swapped (block order); 4 grades
+0085fbc0	DIFFER	142v142	-	NCreatureMode::IsAbleToBeEngagedInCombat: shared false block placement; 4 grades
+0085fc50	RELOCATION_MATCH	116v116	PASS	NCreatureMode::IsAbleToBlock
+0085fcd0	RELOCATION_MATCH	151v151	PASS	NCreatureMode::IsAbleToUseTurningAnimations
+0085fd70	RELOCATION_MATCH	227v227	PASS	NCreatureMode::IsPhysicsPushableByHero
+0085fe60	RELOCATION_MATCH	167v167	PASS	NCreatureMode::IsPhysicsPushableBySelfAvoidance
+008618b0	RELOCATION_MATCH	74v74	PASS	NCreatureMode::GetAnimationFromCreature
+00861950	RELOCATION_MATCH	110v110	PASS	NCreatureMode::GetMovementSpeedFromAnimation(long,...); label was GetMovementSpeedModifier
+008619c0	RELOCATION_MATCH	187v187	PASS	anonymous-namespace AddCombinationIdles (leaf is a prefix: per-TU namespace hash)
+00861c90	RELOCATION_MATCH	101v101	PASS	NCreatureMode::GetMovementSpeedFromAnimation(const CCharString&,...)
+00863170	RELOCATION_MATCH	37v37	PASS	CCreatureInteraction::CCreatureInteraction(); label was LinkedList_Init
+008631d0	RELOCATION_MATCH	43v43	PASS	CCreatureInteraction::AddParticipant; label was CreatureInteraction_InsertAfter
