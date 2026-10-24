@@ -1145,3 +1145,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A power-of-ten loop is `do scale *= 10; while (--i);` (retail `fld1 ; dec ; fmul ; jne`); a `for` loop gets an aligned head (00b10220).
 - `CRGBColour(r,g,b,a)` assigns `R = r; G = g; B = b; A = a;` in the body; an init list in member order swaps the r/b frame slots (0052f440).
 - Ceil/floor helpers: with a C++ fix-up VC7.1 always homes `value` above half/one (retail below); only the 10-instruction asm block reproduces (owner decision pending, 27 rows).
+- PC STLport `list` is one 4-byte pointer: `pair<unsigned __int64, list>` is 16 bytes with the list at +8 (Ego_r's Dinkumware list makes it 24) (00519ef0).
+- `cmp edi(other),ebx(this)` before a guarded Copy comes from `if (&other != this)`; `if (this != &other)` swaps the operands (chunk 359).
+- `fxch st(1) ; fxch st(1)` before `fcompp` comes from `float d = (float)fabs(...)` locals, not from comparing the double fabs values (chunk 359).

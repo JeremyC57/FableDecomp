@@ -285742,6 +285742,258 @@ $catalog = @(
         TestSource = '00/b3/CEngineResourceManager_AllocatePools_00b3b240_test.cpp'
         PassPattern = '00b3b240_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00471150'
+        Module = '_global'
+        Source = '00/47/global_popheapaux_00471150.cpp'
+        TestSource = '00/47/global_popheapaux_00471150_test.cpp'
+        PassPattern = '00471150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00471576'
+        Module = '_global'
+        Source = '00/47/global_popheapaux_00471576.cpp'
+        TestSource = '00/47/global_popheapaux_00471576_test.cpp'
+        PassPattern = '00471576_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004babf0'
+        Module = '_global'
+        Source = '00/4b/global_popheap_004babf0.cpp'
+        TestSource = '00/4b/global_popheap_004babf0_test.cpp'
+        PassPattern = '004babf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d0b50'
+        Module = '_global'
+        Source = '00/4d/global_popheap_004d0b50.cpp'
+        TestSource = '00/4d/global_popheap_004d0b50_test.cpp'
+        PassPattern = '004d0b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d0d60'
+        Module = '_global'
+        Source = '00/4d/global_popheapaux_004d0d60.cpp'
+        TestSource = '00/4d/global_popheapaux_004d0d60_test.cpp'
+        PassPattern = '004d0d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00519ef0'
+        Module = '_global'
+        Source = '00/51/global_destroyaux_00519ef0.cpp'
+        TestSource = '00/51/global_destroyaux_00519ef0_test.cpp'
+        PassPattern = '00519ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056cb40'
+        Module = 'std'
+        Source = '00/56/std_makepairunsignedlongCAnimationEntry_0056cb40.cpp'
+        TestSource = '00/56/std_makepairunsignedlongCAnimationEntry_0056cb40_test.cpp'
+        PassPattern = '0056cb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005921a4'
+        Module = 'std::pair<const CDateAndTime,CWideString>'
+        Source = '00/59/stdpairconstCDateAndTimeCWideString_pair_005921a4.cpp'
+        TestSource = '00/59/stdpairconstCDateAndTimeCWideString_pair_005921a4_test.cpp'
+        PassPattern = '005921a4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005927f4'
+        Module = 'std::pair<const CDateAndTime,CWideString>'
+        Source = '00/59/stdpairconstCDateAndTimeCWideString_pair_005927f4.cpp'
+        TestSource = '00/59/stdpairconstCDateAndTimeCWideString_pair_005927f4_test.cpp'
+        PassPattern = '005927f4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00592962'
+        Module = 'std::pair<long,CDefPointer<const CContextSensitiveItemDef> >'
+        Source = '00/59/stdpairlongCDefPointerconstCContextSensitiveItemDef_pair_00592962.cpp'
+        TestSource = '00/59/stdpairlongCDefPointerconstCContextSensitiveItemDef_pair_00592962_test.cpp'
+        PassPattern = '00592962_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00592dfb'
+        Module = 'std::pair<long,CDefPointer<const CHeroAbilityDef> >'
+        Source = '00/59/stdpairlongCDefPointerconstCHeroAbilityDef_pair_00592dfb.cpp'
+        TestSource = '00/59/stdpairlongCDefPointerconstCHeroAbilityDef_pair_00592dfb_test.cpp'
+        PassPattern = '00592dfb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8578'
+        Module = 'std::pair<long,CDefPointer<const CHeroAbilityDef> >'
+        Source = '00/5f/stdpairlongCDefPointerconstCHeroAbilityDef_pair_005f8578.cpp'
+        TestSource = '00/5f/stdpairlongCDefPointerconstCHeroAbilityDef_pair_005f8578_test.cpp'
+        PassPattern = '005f8578_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8d4d'
+        Module = '_global'
+        Source = '00/5f/global_popheap_005f8d4d.cpp'
+        TestSource = '00/5f/global_popheap_005f8d4d_test.cpp'
+        PassPattern = '005f8d4d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8d82'
+        Module = '_global'
+        Source = '00/5f/global_popheap_005f8d82.cpp'
+        TestSource = '00/5f/global_popheap_005f8d82_test.cpp'
+        PassPattern = '005f8d82_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064a4e9'
+        Module = 'NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer'
+        Source = '00/64/NPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_CQuestInfoElementTimer_0064a4e9.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfoCQuestInfoElementTimer_CQuestInfoElementTimer_0064a4e9_test.cpp'
+        PassPattern = '0064a4e9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065470c'
+        Module = 'std::pair<C3DVector,CCharString>'
+        Source = '00/65/stdpairC3DVectorCCharString_pair_0065470c.cpp'
+        TestSource = '00/65/stdpairC3DVectorCCharString_pair_0065470c_test.cpp'
+        PassPattern = '0065470c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00695250'
+        Module = 'std::pair<long,CCharString>'
+        Source = '00/69/stdpairlongCCharString_pair_00695250.cpp'
+        TestSource = '00/69/stdpairlongCCharString_pair_00695250_test.cpp'
+        PassPattern = '00695250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00695b70'
+        Module = 'std'
+        Source = '00/69/std_makepairlongCCharString_00695b70.cpp'
+        TestSource = '00/69/std_makepairlongCCharString_00695b70_test.cpp'
+        PassPattern = '00695b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fb830'
+        Module = '_global'
+        Source = '00/6f/global_copybackward_006fb830.cpp'
+        TestSource = '00/6f/global_copybackward_006fb830_test.cpp'
+        PassPattern = '006fb830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076ac70'
+        Module = '_global'
+        Source = '00/76/global_popheapaux_0076ac70.cpp'
+        TestSource = '00/76/global_popheapaux_0076ac70_test.cpp'
+        PassPattern = '0076ac70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077ecb0'
+        Module = '_global'
+        Source = '00/77/global_insertionsort_0077ecb0.cpp'
+        TestSource = '00/77/global_insertionsort_0077ecb0_test.cpp'
+        PassPattern = '0077ecb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00808bd0'
+        Module = '_global'
+        Source = '00/80/global_popheap_00808bd0.cpp'
+        TestSource = '00/80/global_popheap_00808bd0_test.cpp'
+        PassPattern = '00808bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00808db0'
+        Module = '_global'
+        Source = '00/80/global_popheapaux_00808db0.cpp'
+        TestSource = '00/80/global_popheapaux_00808db0_test.cpp'
+        PassPattern = '00808db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081b910'
+        Module = '_global'
+        Source = '00/81/global_popheap_0081b910.cpp'
+        TestSource = '00/81/global_popheap_0081b910_test.cpp'
+        PassPattern = '0081b910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087dca0'
+        Module = '_global'
+        Source = '00/87/global_pushheap_0087dca0.cpp'
+        TestSource = '00/87/global_pushheap_0087dca0_test.cpp'
+        PassPattern = '0087dca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b6d80'
+        Module = '_global'
+        Source = '00/9b/global_popheapaux_009b6d80.cpp'
+        TestSource = '00/9b/global_popheapaux_009b6d80_test.cpp'
+        PassPattern = '009b6d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b7870'
+        Module = '_global'
+        Source = '00/9b/global_copybackward_009b7870.cpp'
+        TestSource = '00/9b/global_copybackward_009b7870_test.cpp'
+        PassPattern = '009b7870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7060'
+        Module = '_global'
+        Source = '00/9e/global_popheap_009e7060.cpp'
+        TestSource = '00/9e/global_popheap_009e7060_test.cpp'
+        PassPattern = '009e7060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a32b50'
+        Module = '_global'
+        Source = '00/a3/global_popheap_00a32b50.cpp'
+        TestSource = '00/a3/global_popheap_00a32b50_test.cpp'
+        PassPattern = '00a32b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a331b0'
+        Module = 'std'
+        Source = '00/a3/std_swap_00a331b0.cpp'
+        TestSource = '00/a3/std_swap_00a331b0_test.cpp'
+        PassPattern = '00a331b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a41260'
+        Module = '_global'
+        Source = '00/a4/global_popheapaux_00a41260.cpp'
+        TestSource = '00/a4/global_popheapaux_00a41260_test.cpp'
+        PassPattern = '00a41260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a70320'
+        Module = 'std'
+        Source = '00/a7/std_swap_00a70320.cpp'
+        TestSource = '00/a7/std_swap_00a70320_test.cpp'
+        PassPattern = '00a70320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a70490'
+        Module = 'std'
+        Source = '00/a7/std_swap_00a70490.cpp'
+        TestSource = '00/a7/std_swap_00a70490_test.cpp'
+        PassPattern = '00a70490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a83420'
+        Module = '_global'
+        Source = '00/a8/global_destroyaux_00a83420.cpp'
+        TestSource = '00/a8/global_destroyaux_00a83420_test.cpp'
+        PassPattern = '00a83420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb6b00'
+        Module = '_global'
+        Source = '00/cb/global_popheap_00cb6b00.cpp'
+        TestSource = '00/cb/global_popheap_00cb6b00_test.cpp'
+        PassPattern = '00cb6b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc2570'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_CQOpeningGraveyardSecretPassageScript_00dc2570.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_CQOpeningGraveyardSecretPassageScript_00dc2570_test.cpp'
+        PassPattern = '00dc2570_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

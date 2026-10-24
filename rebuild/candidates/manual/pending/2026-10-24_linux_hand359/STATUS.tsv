@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0077ecb0	RELOCATION_MATCH	96v96	PASS	__insertion_sort over pair<CCharString,C3DVector>; label was _Move_backward<pair<ulong,CDefClassInfo>> (propagated)
+009b7870	RELOCATION_MATCH	115v115	PASS	__copy_backward over pair<ulong,CDefClassInfo>; CArray operator= out of line 0x0045BC09
+006fb830	RELOCATION_MATCH	101v101	PASS	__copy_backward over pair<ulong,CSmallVector<CEvent,32>>; inline operator= `if (&other != this) Copy(other)`
+00519ef0	RELOCATION_MATCH	92v92	PASS	__destroy_aux over pair<unsigned __int64,std::list<C2DLineF>> (STLport list destructor inlined); twin 0x00A83420
+00a83420	RELOCATION_MATCH	92v92	PASS	__destroy_aux; byte twin of 0x00519EF0
+0065470c	RELOCATION_MATCH	41v41	PASS	pair<C3DVector,CCharString>(const&,const&); /Os + C3DVector memberwise copy ctor
+0064a4e9	RELOCATION_MATCH	44v44	PASS	NPlayerGui::CQuestInfoElementTimer ctor (label was _Pair_base<CCharString>); /Os
+00dc2570	RELOCATION_MATCH	59v59	PASS	NScript::CQ_OpeningGraveyardSecretPassageScript ctor (label was _Pair_base<CCharString>)
+004d0b50	RELOCATION_MATCH	117v117	PASS	out-of-line __pop_heap of a 28-byte keyed record (label was _Pair_base<CDateAndTime>)
+005921a4	RELOCATION_MATCH	36v36	PASS	pair<const CDateAndTime,CWideString>(const T1&,const T2&); /Os
+005927f4	RELOCATION_MATCH	38v38	PASS	pair<const CDateAndTime,CWideString> copy ctor; /Os
+0056cb40	RELOCATION_MATCH	30v30	PASS	std::make_pair<unsigned long,CAnimationEntry> (label was _Pair_base<CComponent*>)
+00695250	RELOCATION_MATCH	30v30	PASS	pair<long,CCharString>(const long&,const CCharString&)
+00695b70	RELOCATION_MATCH	30v30	PASS	std::make_pair<long,CCharString>
+00592962	MATCH	29v29	PASS	pair<long,CDefPointer<const CContextSensitiveItemDef>>(const&,const&); /Os
+00592dfb	MATCH	26v26	PASS	pair<long,CDefPointer<const CHeroAbilityDef>> copy ctor; twin 0x005F8578
+005f8578	MATCH	26v26	PASS	pair<long,CDefPointer<const CHeroAbilityDef>> copy ctor; twin 0x00592DFB
+005f8d4d	RELOCATION_MATCH	53v53	PASS	out-of-line __pop_heap of pair<long,4-byte>; /Os
+005f8d82	RELOCATION_MATCH	53v53	PASS	out-of-line __pop_heap of pair<long,4-byte>; /Os
+00808bd0	RELOCATION_MATCH	165v165	PASS	out-of-line __pop_heap of pair<C3DVector,long> with the 0x2C-byte targeting comparator
+0081b910	RELOCATION_MATCH	127v127	PASS	out-of-line __pop_heap of a 24-byte keyed record (record copy ctor `{ *this = other; }`)
+00a32b50	RELOCATION_MATCH	112v112	PASS	out-of-line __pop_heap of pair<ulong,C3DHelperPoint>
+009b6d80	RELOCATION_MATCH	109v109	PASS	__pop_heap_aux of pair<CCharString,ulong>; twin 0x00A41260
+00a41260	RELOCATION_MATCH	109v109	PASS	__pop_heap_aux of pair<CCharString,ulong>; twin 0x009B6D80
+00a70490	RELOCATION_MATCH	174v174	PASS	std::swap<pair<CCharString,C3DMeshVolume>> (label was _Pop_heap_0)
+00cb6b00	RELOCATION_MATCH	171v171	PASS	out-of-line __pop_heap of pair<CCharString,CScriptInfo>
+009e7060	RELOCATION_MATCH	158v158	PASS	out-of-line __pop_heap of pair<CCharString,CSymbolInfo> (CCompareString)
+004babf0	RELOCATION_MATCH	158v158	PASS	out-of-line __pop_heap of pair<CCharString,CPersistInfo>
+00471150	RELOCATION_MATCH	74v74	PASS	__pop_heap_aux of pair<ulong,CTextureMorph>; /Os + frame pointer (optimize "y" off), __forceinline __pop_heap
+004c3bf0	DIFFER	103v103	-	__pop_heap_aux, 12-byte record with a flag bit at +8; parked: push ebp scheduled one slot early
+004c3c60	DIFFER	103v103	-	__pop_heap_aux of pair<ulong,CTextureMorph>; parked: push ebp scheduled one slot early
+00adb4d0	DIFFER	103v103	-	__pop_heap_aux, 12-byte record keyed by signed +4; parked: push ebp scheduled one slot early
+00a331b0	RELOCATION_MATCH	152v152	PASS	std::swap<pair<long,C3DMeshVolume>>; twin 0x00A70320
+00a70320	RELOCATION_MATCH	152v152	PASS	std::swap<pair<long,C3DMeshVolume>>; twin 0x00A331B0
+004d0d60	RELOCATION_MATCH	110v110	PASS	__pop_heap_aux of pair<float,CCharString>
+00471576	RELOCATION_MATCH	53v53	PASS	__pop_heap_aux of pair<long,EHeroAbility>; /Os + __forceinline __pop_heap
+0076a590	DIFFER	85v97	-	__pop_heap_aux of pair<ulong,{float,float,dword}>; parked: retail spills the 3rd member to a 16-byte frame, ours enregisters it
+0076ac70	RELOCATION_MATCH	115v115	PASS	__pop_heap_aux of pair<ulong,CParticleUpdateParamDesc<ul,ul>> (polymorphic, base dtor 0x0099A2E0)
+00808db0	RELOCATION_MATCH	129v129	PASS	__pop_heap_aux of pair<C3DVector,long> calling out-of-line __pop_heap 0x00808BD0
+0087dca0	RELOCATION_MATCH	166v166	PASS	__push_heap<const CAnimationEntry**,int,...,CTurningAnimCompare>; retail functor reads the left operand twice
