@@ -29240,3 +29240,17 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ??4?$CRetailVector@UCCompositeBlendDesc@N00bee420@@@N00bee420@@QAEAAU01@ABU01@@Z	006cade0	00bee420
 ??1CCharString@N00cb93e0@@QAE@XZ	0099eae0	00cb93e0
 ??4CCharString@N00cb93e0@@QAEAAU01@ABU01@@Z	0099efb0	00cb93e0
+??0CEntryVector@@QAE@ABU0@@Z	00673e10	00674ce0
+?Transfer@CPersistContext@@QAEXPBDAAUCOpinionTransientOffset@@ABU2@@Z	00685f80	006861c0
+?__adjust_heap@@YIXPAUPairULongParamDesc@@JJU1@UCParticleUpdateCCompareParamDesc@@@Z	0076a4e0	0076b650
+?push_back@?$vector@PBVCThing@@@std@@QAEXABQBVCThing@@@Z	0049c450	007896af
+?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@@std@@QAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@@K_N@Z	004ac940	008099b0
+??$__find_if@PAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@UCIsFirstElementEqualTo@?A0x549d458e@@@std@@YIPAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@0@PAU10@0UCIsFirstElementEqualTo@?A0x549d458e@@ABUrandom_access_iterator_tag@0@@Z	0080e060	0080e2a0
+??0CElement1F4@@QAE@ABU0@@Z	008894a0	00889880
+?_M_insert@CCharStringMultimap_009d34e0@@QAE?AUiterator@1@PAU_Rb_tree_node_base@@0ABU?$pair@$$CBVCCharString@@J@std@@0@Z	0042bcb5	009d34e0
+?_M_insert@CTimingEventMap_00a54b50@@QAE?AUiterator@1@PAU_Rb_tree_node_base@@0ABU?$pair@$$CBVCCharString@@M@std@@0@Z	00a546d0	00a54b50
+??0COptimisedVertex@QuadricOptimiserInternals@@QAE@ABV01@@Z	00ad77f0	00ad7b50
+?RotateLeft@PKCTRRedblackTree_00c18b20@@QAEXPAUPKCTRRedblackNode_00c18b20@@@Z	00c18a80	00c18b20
+?RotateRight@PKCTRRedblackTree_00c18b20@@QAEXPAUPKCTRRedblackNode_00c18b20@@@Z	00c18ad0	00c18b20
+?RotateLeft@PKCTRRedblackMap_00c1b470@@QAEXPAUPKCTRRedblackNode_00c1b470@@@Z	00c1b200	00c1b470
+?RotateRight@PKCTRRedblackMap_00c1b470@@QAEXPAUPKCTRRedblackNode_00c1b470@@@Z	00c1b250	00c1b470

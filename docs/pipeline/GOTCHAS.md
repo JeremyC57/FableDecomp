@@ -1157,3 +1157,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Retail heap/remove algorithms are STLport (0x0080B430 takes first, last, `_Tp*`, comp): `hole > top` in `__push_heap`, `secondChild - 1` in the lone-child step, a pop_heap with no count test; a Dinkumware-style test gives `sar ; cmp 1` instead of `and -4 ; cmp 4` (00777ee0). The `_Push_heap`/`_Sort_heap`/`_Remove_if` catalog names are Ego_r spellings.
 - An out-of-line `__pop_heap_aux` shows as `push 0` after the by-value comparator copy (0080b9f0); an 8-byte pair local gives an `and esp,-8` frame (004d1600).
 - HasTC as `if (bits[t>>5] & (1UL<<(t&31))) return true; return false;` gives `test dword [eax+28h],100000h` (00809d60).
+- A direct `new (result)` copy loop that keeps a second destination pointer needs STLport's `cur` + `_Construct` form (004cfa10).
+- A CCharString-keyed tree loop hoists the key pointer only when the CBasicString `operator<` body is in the TU (007acd30).
+- `back_insert_iterator` needs a user ctor, else `_Transform` returns the inserter in eax (007896af).
+- A zero default from POD `T()` schedules the value load after the zero stores; a user zeroing ctor gives retail's order (006861c0).
+- Callees defined earlier in the TU under `auto_inline(off)` let VC skip reloading ecx after the call; declared-only callees keep `this` in edi (00c18b20 vs 00c1b470).

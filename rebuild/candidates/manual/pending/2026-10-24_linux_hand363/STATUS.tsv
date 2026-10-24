@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0076b650	RELOCATION_MATCH	171v171	PASS	STLport sort_heap, pop_heap/__pop_heap_aux/__pop_heap inline; element model of landed 0x0076AC70
+008099b0	RELOCATION_MATCH	181v181	PASS	_Transform CThing** -> back_inserter(vector<CIntelligentPointer<CThing>>), inline STLport push_back
+007896af	RELOCATION_MATCH	55v55	PASS	_Transform pair<CIntelligentPointer,long>* -> back_inserter(vector<const CThing*>); size TU (y off, s on)
+007896e6	RELOCATION_MATCH	55v55	PASS	_Transform CIntelligentPointer<CThing>* (8-byte stride) twin of 007896af
+007acd30	RELOCATION_MATCH	67v67	PASS	STLport _M_upper_bound (CCharString key); label _Ubound is the Dinkumware name
+008abd80	RELOCATION_MATCH	67v67	PASS	byte-identical twin of 007acd30
+009d34e0	RELOCATION_MATCH	93v93	PASS	STLport insert_equal multimap<CCharString,long> (label _Ubound wrong)
+00a54b50	RELOCATION_MATCH	93v93	PASS	STLport insert_equal multimap<CCharString,float> (C3DAnimationStats TimingEvents)
+0098fca0	MATCH	89v89	PASS	STLport _M_upper_bound, CPendingObjectSortKey (label _Lbound wrong)
+0098fe70	DIFFER	150v150	-	STLport _M_find, CPendingObjectSortKey; register swap in the post-loop k<key(y) check
+009901d0	MATCH	89v89	PASS	STLport _M_lower_bound, CPendingObjectSortKey
+00c18b20	RELOCATION_MATCH	223v223	PASS	libpk PKCTRRedblackTree InsertFixup (Niemann); rotations same-TU (auto_inline off) so ecx not reloaded
+00c1b470	RELOCATION_MATCH	230v230	PASS	libpk second red-black container InsertFixup; rotations declared only (this kept in edi)
+0080e2a0	RELOCATION_MATCH	75v75	PASS	std::find_if + CIsFirstElementEqualTo; same-TU noinline __find_if body; Leaf ??$find_if@ (label _Tree<long,long> wrong)
+006861c0	RELOCATION_MATCH	53v53	PASS	CPersistContext::Transfer(name, COpinionTransientOffset&) with zeroing default ctor (label _Ucopy wrong)
+006b8550	DIFFER	123v123	-	CEnvironmentSpellEffectInterpolator::RadialBlurFadeTo(C3DVector overload); Length/Fade register swap
+00c13ec0	RELOCATION_MATCH	43v43	PASS	VC7 Dinkumware vector<4-byte>::_Ucopy = memmove + count (label _Umove is the VC8 name)
+00c13ef0	RELOCATION_MATCH	43v43	PASS	byte-identical twin of 00c13ec0
+00c29480	RELOCATION_MATCH	43v43	PASS	byte-identical twin of 00c13ec0
+00674ce0	RELOCATION_MATCH	52v52	PASS	__uninitialized_copy over 16-byte CVectorMap (out-of-line vector copy ctor 0x673E10); not CFeatDef
+00889880	RELOCATION_MATCH	52v52	PASS	__uninitialized_copy over 0x1F4-byte records (copy ctor 0x8894A0); not CFeatDef
+00ad7b50	RELOCATION_MATCH	52v52	PASS	__uninitialized_copy over COptimisedVertex 0xB8 (copy ctor 0xAD77F0); not CFeatDef
+008ac140	RELOCATION_MATCH	58v58	PASS	__uninitialized_copy over CScriptThing (vptr + CCountedPointer PImp)
+00a2ae80	RELOCATION_MATCH	71v71	PASS	__uninitialized_copy over CPhysicsMeshInfo : CMeshDataBankEntry (two vptrs, CIVCountedPointer)
+00a6fed0	RELOCATION_MATCH	102v102	PASS	__uninitialized_copy over pair<CCharString,C3DMeshVolume>
+00b6bab0	RELOCATION_MATCH	53v53	PASS	__uninitialized_copy over CVertexShader (vptr + CVertexShaderData count at +0x10)
+00cba4a0	RELOCATION_MATCH	64v64	PASS	__uninitialized_copy over pair<CCharString,CCountedPointer> (not CScriptThing)
+005e0c60	MATCH	51v51	PASS	__uninitialized_copy over pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>>
+0071ea10	MATCH	45v45	PASS	__uninitialized_copy over 4-byte CIVCountedPointer
+00a32f40	RELOCATION_MATCH	99v99	PASS	__uninitialized_copy over pair<unsigned long,C3DMeshVolume>
+00a49bc0	RELOCATION_MATCH	70v70	PASS	__uninitialized_copy over {CCharString,long,CCountedPointer}
+00a6afd0	MATCH	45v45	PASS	byte-identical twin of 0071ea10
+00a6fe00	RELOCATION_MATCH	99v99	PASS	byte-identical twin of 00a32f40
+00bedb60	RELOCATION_MATCH	66v66	PASS	__uninitialized_copy over pair<long,CCompositeSurfaceInfo>
+00cba3e0	MATCH	62v62	PASS	__uninitialized_copy over pair<u64,CCountedPointer<CActiveEntityScriptBase>> (direct new form)
+00cba460	MATCH	62v62	PASS	byte-identical twin of 00cba3e0
+004aa060	RELOCATION_MATCH	112v112	PASS	__uninitialized_copy over CTestQuest (6 CCharString + long), _Construct form
+004b8210	RELOCATION_MATCH	73v73	PASS	__uninitialized_copy over pair<CCharString,CRuntimeQuestPersistence::CPersistInfo>
+004cfa10	MATCH	83v83	PASS	__uninitialized_copy over pair<float,CSubtitledMessage::CCameraTag>, cur + _Construct form
+004cfac0	MATCH	83v83	PASS	byte-identical twin of 004cfa10 (ICF-folded with the CActionInputControl vector TU)
