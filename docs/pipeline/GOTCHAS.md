@@ -1219,3 +1219,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - In a size TU an inline copy ctor stays an out-of-line call even inside a `__forceinline` `_Copy_Construct`: mark the copy ctor `__forceinline` (0x5B3275).
 - A `/Gr` iterator returned by value travels in ecx only if it is non-POD (STLport user ctors + implicit copy give the `movsd` result copy) (0x59AFD7).
 - Empty tags land in dead argument slots only when the callees' bodies are visible in the TU (`auto_inline(off)` stand-ins) (chunk 378).
+- Two locals sharing one frame slot with their pointers in registers means VC proved no address escapes: give every `this`-taking callee a same-TU stand-in, even a noreturn `_M_throw_length_error() const` (0x55F090).
+- Anonymous-namespace functions: leaf by prefix (`?MD5@`), our namespace hash differs; line 1 starts with the bare name (chunk 376).
+- `x / g1 * g2` over two globals is reassociated: write `r = x / g1; r *= g2;`; `a() >= b()` calls b first and emits `cmp a,b` (chunk 376).
+- An explicit instantiation emits only that member, and an `optimize("s")` TU leaves it unaligned (0x53CFC2); a bitfield cleared in a ctor body is scheduled before the derived vtable store.

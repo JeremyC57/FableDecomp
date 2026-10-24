@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00529150	RELOCATION_MATCH	210v210	PASS	_Rb_tree<UID, CPersistedDeadEntity>::_M_insert (was CRedBlackTree_Insert_With_Clone)
+00529230	RELOCATION_MATCH	180v180	PASS	_Rb_tree<UID, CPersistedDeadEntity>::_M_copy (was CCreatureAction_TreeClone)
+005292f0	RELOCATION_MATCH	215v215	PASS	_Rb_tree<UID, CThing*>::_M_insert of UIDToThingMap; twin of landed 0x6F1280
+005293d0	RELOCATION_MATCH	214v214	PASS	_Rb_tree<UID, pair<CCharString,CWideString>>::_M_insert of NPCNameMap (was ListNode_InsertSpline)
+0052a010	RELOCATION_MATCH	70v70	PASS	_Rb_tree<UID, CThing*>::equal_range; inlined upper bound evaluated first
+0052ac10	RELOCATION_MATCH	86v86	PASS	CThingBuilding::Alloc; bitfield clear in the ctor body
+0052ac90	RELOCATION_MATCH	79v79	PASS	CThingHolySite::Alloc
+0052ad50	RELOCATION_MATCH	80v80	PASS	CThingPhysicalSwitch::Alloc
+0052ada0	RELOCATION_MATCH	33v33	PASS	CCompressorZlib ctor (was ConvertPathToFullPath)
+0052b5e0	RELOCATION_MATCH	91v91	PASS	__copy<const CEntityScriptInfo*> (was _Move<CRegister*>)
+0052b8b0	RELOCATION_MATCH	178v178	PASS	NPCNameMap map::operator[] (was CParticleMorphs_Load)
+0052bbe0	RELOCATION_MATCH	145v145	PASS	__uninitialized_copy<CEntityScriptInfo> (was CCharStringVector_CopyAssign)
+0052bd10	RELOCATION_MATCH	91v91	PASS	__copy<CEntityScriptInfo*> (was _Move<CRegister*>)
+0052bd70	RELOCATION_MATCH	51v51	PASS	__destroy_aux<CEntityScriptInfo*> (was _Copy_backward<CPixelFormat*>)
+0052dec0	MATCH	95v95	PASS	STLport __find over set<EEvent>; static _M_increment(node)
+0052e0e0	RELOCATION_MATCH	179v179	PASS	set<EEvent>::_M_insert of CObserver::EventsToObserve
+0052e530	RELOCATION_MATCH	80v80	PASS	CUIScreenUnitConverter::UnConvertVector (was ConvertX); split statements
+0052e580	RELOCATION_MATCH	80v80	PASS	CUIScreenUnitConverter::ConvertVector (was ConvertX); split statements
+00530f30	RELOCATION_MATCH	198v198	PASS	CComponent::FindAllChildren (was ParticleMorphs_Find)
+00533cc0	RELOCATION_MATCH	98v98	PASS	CComponent::AddChild (was Vector_PushBack_Or_Reallocate)
+005359a0	RELOCATION_MATCH	45v45	PASS	list<CCountedPointer<CAction>> ??_G (was EventList_RemoveAndCleanup)
+0053cfc2	RELOCATION_MATCH	56v56	PASS	vector<map<ulong,CUIState>>::push_back, /Os explicit instantiation (was UIScrollList_AddChild)
+00542730	RELOCATION_MATCH	71v71	PASS	CIconText::ClearIcons (was GetPackedNormalFromTargetVertex)
+005472a0	RELOCATION_MATCH	134v134	PASS	GFRandomNoRepeat; while (range > 1 && result == previous)
+0054e350	RELOCATION_MATCH	119v119	PASS	SetPAcceptButtonRecursive (CFrontEndScreen helper)
+0054f4b0	RELOCATION_MATCH	200v200	PASS	CText::GetCharWidthW; pointer accessor GetFontManager(); ~10 grades
+00556470	RELOCATION_MATCH	126v126	PASS	CRedefinerList::Cancel
+005565c0	RELOCATION_MATCH	217v217	PASS	CRedefinerList::ResetKeysToDefaults
+005578a0	RELOCATION_MATCH	147v147	PASS	AreAllowedToCoexist; jump table pairings checked by hand
+00559040	RELOCATION_MATCH	95v95	PASS	CDraggableInto ??_G (was CHoverable_Destructor)
+0055aba0	RELOCATION_MATCH	115v115	PASS	CDraggable::~CDraggable (was CHoverable_VectorDeleting_Destructor)
+0055bb40	RELOCATION_MATCH	164v164	PASS	CHoverable::GIsAnyAlreadyHovered; a() >= b() calls b first
+0055cbe0	RELOCATION_MATCH	141v141	PASS	CObservable::SetOwnedEvent (was LinkedList_FilterByPredicate); same-TU _M_insert_dispatch
+0055cfb0	RELOCATION_MATCH	178v178	PASS	CTCPhotojournalCapture::AddDescription (static fastcall)
+0055de40	RELOCATION_MATCH	75v75	PASS	CTCPhotojournalCapture ??_G (was CTCBase_Destructor)
+0055e5f0	RELOCATION_MATCH	185v185	PASS	(anon)::MD5 over md5_init/append/finish, /GS
+0055e7f0	MATCH	94v94	PASS	CTCHeroOnlineScoreboard::IsScoreboardEmpty (was GUI_FindNonEmptyNode)
+0055f090	RELOCATION_MATCH	170v170	PASS	(anon)::StdDecryptString (was CryptoDecrypt_ToStruct); same-TU stand-ins; 6 grades
+0055f140	RELOCATION_MATCH	170v170	PASS	(anon)::StdEncryptString (was CryptoEncrypt_ToStruct); same-TU stand-ins
+00566cd0	RELOCATION_MATCH	87v87	PASS	vector<pair<float,CWideString>> copy ctor (was Vector_Copy_Uint)

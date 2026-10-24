@@ -290580,6 +290580,287 @@ $catalog = @(
         TestSource = '00/5b/stdvectorCDefPointerconstCTattooDef_Minsertoverflow_005b3275_test.cpp'
         PassPattern = '005b3275_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00529150'
+        Module = '_STL::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CPersistedDeadEntity>, _Select1st, less<unsigned __int64> >'
+        Source = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntitySelect1stlessuns_Minsert_00529150.cpp'
+        TestSource = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntitySelect1stlessuns_Minsert_00529150_test.cpp'
+        PassPattern = '00529150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00529230'
+        Module = '_STL::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CPersistedDeadEntity>, _Select1st, less<unsigned __int64> >'
+        Source = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntitySelect1stlessuns_Mcopy_00529230.cpp'
+        TestSource = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntitySelect1stlessuns_Mcopy_00529230_test.cpp'
+        PassPattern = '00529230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005292f0'
+        Module = '_STL::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing*>, _Select1st, less<unsigned __int64> >'
+        Source = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CThingSelect1stlessunsignedint64_Minsert_005292f0.cpp'
+        TestSource = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CThingSelect1stlessunsignedint64_Minsert_005292f0_test.cpp'
+        PassPattern = '005292f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005293d0'
+        Module = '_STL::_Rb_tree<unsigned __int64, pair<const unsigned __int64, pair<CCharString, CWideString> >, _Select1st, less<unsigned __int64> >'
+        Source = '00/52/STLRbtreeunsignedint64pairconstunsignedint64pairCCharStringCWideStringSelect1stl_Minsert_005293d0.cpp'
+        TestSource = '00/52/STLRbtreeunsignedint64pairconstunsignedint64pairCCharStringCWideStringSelect1stl_Minsert_005293d0_test.cpp'
+        PassPattern = '005293d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052a010'
+        Module = '_STL::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing*>, _Select1st, less<unsigned __int64> >'
+        Source = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CThingSelect1stlessunsignedint64_equalrange_0052a010.cpp'
+        TestSource = '00/52/STLRbtreeunsignedint64pairconstunsignedint64CThingSelect1stlessunsignedint64_equalrange_0052a010_test.cpp'
+        PassPattern = '0052a010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ac10'
+        Module = 'CThingBuilding'
+        Source = '00/52/CThingBuilding_Alloc_0052ac10.cpp'
+        TestSource = '00/52/CThingBuilding_Alloc_0052ac10_test.cpp'
+        PassPattern = '0052ac10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ac90'
+        Module = 'CThingHolySite'
+        Source = '00/52/CThingHolySite_Alloc_0052ac90.cpp'
+        TestSource = '00/52/CThingHolySite_Alloc_0052ac90_test.cpp'
+        PassPattern = '0052ac90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ad50'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/52/CThingPhysicalSwitch_Alloc_0052ad50.cpp'
+        TestSource = '00/52/CThingPhysicalSwitch_Alloc_0052ad50_test.cpp'
+        PassPattern = '0052ad50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ada0'
+        Module = 'CCompressorZlib'
+        Source = '00/52/CCompressorZlib_CCompressorZlib_0052ada0.cpp'
+        TestSource = '00/52/CCompressorZlib_CCompressorZlib_0052ada0_test.cpp'
+        PassPattern = '0052ada0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052b5e0'
+        Module = '_STL'
+        Source = '00/52/STL_copyconstCEntityScriptInfoCEntityScriptInfoint_0052b5e0.cpp'
+        TestSource = '00/52/STL_copyconstCEntityScriptInfoCEntityScriptInfoint_0052b5e0_test.cpp'
+        PassPattern = '0052b5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052b8b0'
+        Module = '_STL::map<unsigned __int64, pair<CCharString, CWideString> >'
+        Source = '00/52/STLmapunsignedint64pairCCharStringCWideString_operator_0052b8b0.cpp'
+        TestSource = '00/52/STLmapunsignedint64pairCCharStringCWideString_operator_0052b8b0_test.cpp'
+        PassPattern = '0052b8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052bbe0'
+        Module = '_STL'
+        Source = '00/52/STL_uninitializedcopyconstCEntityScriptInfoCEntitySc_0052bbe0.cpp'
+        TestSource = '00/52/STL_uninitializedcopyconstCEntityScriptInfoCEntitySc_0052bbe0_test.cpp'
+        PassPattern = '0052bbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052bd10'
+        Module = '_STL'
+        Source = '00/52/STL_copyCEntityScriptInfoCEntityScriptInfoint_0052bd10.cpp'
+        TestSource = '00/52/STL_copyCEntityScriptInfoCEntityScriptInfoint_0052bd10_test.cpp'
+        PassPattern = '0052bd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052bd70'
+        Module = '_STL'
+        Source = '00/52/STL_destroyauxCEntityScriptInfo_0052bd70.cpp'
+        TestSource = '00/52/STL_destroyauxCEntityScriptInfo_0052bd70_test.cpp'
+        PassPattern = '0052bd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052dec0'
+        Module = '_STL'
+        Source = '00/52/STL_find_0052dec0.cpp'
+        TestSource = '00/52/STL_find_0052dec0_test.cpp'
+        PassPattern = '0052dec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052e0e0'
+        Module = '_STL::_Rb_tree<EEvent, EEvent, _Identity, less<EEvent> >'
+        Source = '00/52/STLRbtreeEEventEEventIdentitylessEEvent_Minsert_0052e0e0.cpp'
+        TestSource = '00/52/STLRbtreeEEventEEventIdentitylessEEvent_Minsert_0052e0e0_test.cpp'
+        PassPattern = '0052e0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052e530'
+        Module = 'NUISystem::CUIScreenUnitConverter'
+        Source = '00/52/NUISystemCUIScreenUnitConverter_UnConvertVector_0052e530.cpp'
+        TestSource = '00/52/NUISystemCUIScreenUnitConverter_UnConvertVector_0052e530_test.cpp'
+        PassPattern = '0052e530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052e580'
+        Module = 'NUISystem::CUIScreenUnitConverter'
+        Source = '00/52/NUISystemCUIScreenUnitConverter_ConvertVector_0052e580.cpp'
+        TestSource = '00/52/NUISystemCUIScreenUnitConverter_ConvertVector_0052e580_test.cpp'
+        PassPattern = '0052e580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530f30'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_FindAllChildren_00530f30.cpp'
+        TestSource = '00/53/NUISystemCComponent_FindAllChildren_00530f30_test.cpp'
+        PassPattern = '00530f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00533cc0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_AddChild_00533cc0.cpp'
+        TestSource = '00/53/NUISystemCComponent_AddChild_00533cc0_test.cpp'
+        PassPattern = '00533cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005359a0'
+        Module = '_STL::list<CCountedPointer<CAction> >'
+        Source = '00/53/STLlistCCountedPointerCAction_scalardeletingdestructor_005359a0.cpp'
+        TestSource = '00/53/STLlistCCountedPointerCAction_scalardeletingdestructor_005359a0_test.cpp'
+        PassPattern = '005359a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053cfc2'
+        Module = '_STL::vector<CUIStateMap>'
+        Source = '00/53/STLvectorCUIStateMap_pushback_0053cfc2.cpp'
+        TestSource = '00/53/STLvectorCUIStateMap_pushback_0053cfc2_test.cpp'
+        PassPattern = '0053cfc2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00542730'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_ClearIcons_00542730.cpp'
+        TestSource = '00/54/NUISystemCIconText_ClearIcons_00542730_test.cpp'
+        PassPattern = '00542730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005472a0'
+        Module = '_global'
+        Source = '00/54/global_GFRandomNoRepeat_005472a0.cpp'
+        TestSource = '00/54/global_GFRandomNoRepeat_005472a0_test.cpp'
+        PassPattern = '005472a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e350'
+        Module = '_global'
+        Source = '00/54/global_SetPAcceptButtonRecursive_0054e350.cpp'
+        TestSource = '00/54/global_SetPAcceptButtonRecursive_0054e350_test.cpp'
+        PassPattern = '0054e350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054f4b0'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_GetCharWidthW_0054f4b0.cpp'
+        TestSource = '00/54/NUISystemCText_GetCharWidthW_0054f4b0_test.cpp'
+        PassPattern = '0054f4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00556470'
+        Module = 'NUISystem::CRedefinerList'
+        Source = '00/55/NUISystemCRedefinerList_Cancel_00556470.cpp'
+        TestSource = '00/55/NUISystemCRedefinerList_Cancel_00556470_test.cpp'
+        PassPattern = '00556470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005565c0'
+        Module = 'NUISystem::CRedefinerList'
+        Source = '00/55/NUISystemCRedefinerList_ResetKeysToDefaults_005565c0.cpp'
+        TestSource = '00/55/NUISystemCRedefinerList_ResetKeysToDefaults_005565c0_test.cpp'
+        PassPattern = '005565c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005578a0'
+        Module = '_global'
+        Source = '00/55/global_AreAllowedToCoexist_005578a0.cpp'
+        TestSource = '00/55/global_AreAllowedToCoexist_005578a0_test.cpp'
+        PassPattern = '005578a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00559040'
+        Module = 'NUISystem::CDraggableInto'
+        Source = '00/55/NUISystemCDraggableInto_scalardeletingdestructor_00559040.cpp'
+        TestSource = '00/55/NUISystemCDraggableInto_scalardeletingdestructor_00559040_test.cpp'
+        PassPattern = '00559040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055aba0'
+        Module = 'NUISystem::CDraggable'
+        Source = '00/55/NUISystemCDraggable_CDraggable_0055aba0.cpp'
+        TestSource = '00/55/NUISystemCDraggable_CDraggable_0055aba0_test.cpp'
+        PassPattern = '0055aba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055bb40'
+        Module = 'NUISystem::CHoverable'
+        Source = '00/55/NUISystemCHoverable_GIsAnyAlreadyHovered_0055bb40.cpp'
+        TestSource = '00/55/NUISystemCHoverable_GIsAnyAlreadyHovered_0055bb40_test.cpp'
+        PassPattern = '0055bb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055cbe0'
+        Module = 'NUISystem::CObservable'
+        Source = '00/55/NUISystemCObservable_SetOwnedEvent_0055cbe0.cpp'
+        TestSource = '00/55/NUISystemCObservable_SetOwnedEvent_0055cbe0_test.cpp'
+        PassPattern = '0055cbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055cfb0'
+        Module = 'CTCPhotojournalCapture'
+        Source = '00/55/CTCPhotojournalCapture_AddDescription_0055cfb0.cpp'
+        TestSource = '00/55/CTCPhotojournalCapture_AddDescription_0055cfb0_test.cpp'
+        PassPattern = '0055cfb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055de40'
+        Module = 'CTCPhotojournalCapture'
+        Source = '00/55/CTCPhotojournalCapture_scalardeletingdestructor_0055de40.cpp'
+        TestSource = '00/55/CTCPhotojournalCapture_scalardeletingdestructor_0055de40_test.cpp'
+        PassPattern = '0055de40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055e5f0'
+        Module = '_global'
+        Source = '00/55/global_MD5_0055e5f0.cpp'
+        TestSource = '00/55/global_MD5_0055e5f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0055e5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055e7f0'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/55/CTCHeroOnlineScoreboard_IsScoreboardEmpty_0055e7f0.cpp'
+        TestSource = '00/55/CTCHeroOnlineScoreboard_IsScoreboardEmpty_0055e7f0_test.cpp'
+        PassPattern = '0055e7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055f090'
+        Module = '_global'
+        Source = '00/55/global_StdDecryptString_0055f090.cpp'
+        TestSource = '00/55/global_StdDecryptString_0055f090_test.cpp'
+        PassPattern = '0055f090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055f140'
+        Module = '_global'
+        Source = '00/55/global_StdEncryptString_0055f140.cpp'
+        TestSource = '00/55/global_StdEncryptString_0055f140_test.cpp'
+        PassPattern = '0055f140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00566cd0'
+        Module = '_STL::vector<pair<float, CWideString> >'
+        Source = '00/56/STLvectorpairfloatCWideString_vector_00566cd0.cpp'
+        TestSource = '00/56/STLvectorpairfloatCWideString_vector_00566cd0_test.cpp'
+        PassPattern = '00566cd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
