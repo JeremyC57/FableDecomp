@@ -94,7 +94,7 @@ $catalog = @(
     },
     [pscustomobject]@{
         Address = '0040bb90'; Module = '_global'; Source = '00/40/Global_CUserProfileManagerSaveAndCleanup_0040bb90.cpp'
-        TestSource = '00/40/Global_CUserProfileManagerSaveAndCleanup_0040bb90_test.cpp'; PassPattern = 'USER_PROFILE_SAVE_CLEANUP_TEST PASS'
+        TestSource = '00/40/Global_CUserProfileManagerSaveAndCleanup_0040bb90_test.cpp'; PassPattern = '0040bb90_TEST PASS'
     },
     [pscustomobject]@{
         Address = '0040138c'; Module = '_global'; Source = '00/40/Global_SEHProlog_0040138c.cpp'
@@ -127,6 +127,7 @@ $catalog = @(
         Source = '00/40/Global_RTCInitialize_004012ce.cpp'
         TestSource = '00/40/Global_RTCInitialize_004012ce_test.cpp'
         PassPattern = 'RTC_INITIALIZE_TEST PASS'
+        CompilerFlags = '/O1'
     },
     [pscustomobject]@{
         Address = '0040e130'
@@ -92222,8 +92223,8 @@ $catalog = @(
         Module = 'CTCTavernGame'
         Source = '00/5e/CTCTavernGame_SetStateAfterYesNoAlt_005eadc0.cpp'
         TestSource = '00/5e/CTCTavernGame_SetStateAfterYesNoAlt_005eadc0_test.cpp'
-        PassPattern = 'PASS_005eadc0'
-        Grade = 'asm_bake'
+        PassPattern = '005eadc0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
     }
     [pscustomobject]@{
         Address = '006313a0'
@@ -278263,6 +278264,48 @@ $catalog = @(
         Source = '00/ef/NScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCIsThingAlive_scalardeletingdestructor_00ef6e40.cpp'
         TestSource = '00/ef/NScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCIsThingAlive_scalardeletingdestructor_00ef6e40_test.cpp'
         PassPattern = '00ef6e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00412e80'
+        Module = 'CPersistContext'
+        Source = '00/41/CPersistContext_TransferETutorialCategory_00412e80.cpp'
+        TestSource = '00/41/CPersistContext_TransferETutorialCategory_00412e80_test.cpp'
+        PassPattern = '00412e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548b50'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_AdjustValueToProfile_00548b50.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_AdjustValueToProfile_00548b50_test.cpp'
+        PassPattern = '00548b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b45a0'
+        Module = 'CPersistContext'
+        Source = '00/7b/CPersistContext_TransferECrimeSeverity_007b45a0.cpp'
+        TestSource = '00/7b/CPersistContext_TransferECrimeSeverity_007b45a0_test.cpp'
+        PassPattern = '007b45a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095c1f0'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/95/CAIStateGroupHoverHornetQueen_Update_0095c1f0.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueen_Update_0095c1f0_test.cpp'
+        PassPattern = '0095c1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d043a0'
+        Module = 'CQ_BanditCampScript'
+        Source = '00/d0/CQBanditCampScript_CheckForSecondAreaDoorHelp_00d043a0.cpp'
+        TestSource = '00/d0/CQBanditCampScript_CheckForSecondAreaDoorHelp_00d043a0_test.cpp'
+        PassPattern = '00d043a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea4de0'
+        Module = 'CLostTraderTrader'
+        Source = '00/ea/CLostTraderTrader_MakeRandomComment_00ea4de0.cpp'
+        TestSource = '00/ea/CLostTraderTrader_MakeRandomComment_00ea4de0_test.cpp'
+        PassPattern = '00ea4de0_TEST PASS'
     }
 )
 

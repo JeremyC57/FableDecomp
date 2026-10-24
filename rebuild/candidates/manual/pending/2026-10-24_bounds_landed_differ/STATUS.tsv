@@ -1,0 +1,15 @@
+addr	status	real_length	flags	pass_pattern	note
+00412e80	RELOCATION_MATCH	180	-	00412e80_TEST PASS	bounds-audit match: CPersistContext::Transfer<ETutorialCategory> code 158 + 5-entry jump table; catalog row 224 also held two 9-byte stubs
+00548b50	RELOCATION_MATCH	996	-	00548b50_TEST PASS	bounds-audit match; label correction CSlider -> NUISystem::CTextSlider::AdjustValueToProfile; catalog row 1616 held a second function at 0x00548F40
+007b45a0	RELOCATION_MATCH	208	-	007b45a0_TEST PASS	bounds-audit match: CPersistContext::Transfer<ECrimeSeverity> code 185 + jump table; catalog row 224 held the ret-4 stub 0x007B4670
+0095c1f0	RELOCATION_MATCH	572	-	0095c1f0_TEST PASS	bounds-audit match: CAIStateGroup_HoverHornetQueen::Update code 540 + 8-entry jump table
+00d043a0	RELOCATION_MATCH	948	-	00d043a0_TEST PASS	bounds-audit match; label correction EndMission (propagated) -> CQ_BanditCampScript::CheckForSecondAreaDoorHelp; Leaf line added
+00ea4de0	RELOCATION_MATCH	528	-	00ea4de0_TEST PASS	bounds-audit match: CLostTraderTrader::MakeRandomComment code 507 + jump table
+0040bb90	RELOCATION_MATCH	191	-	0040bb90_TEST PASS	landed source was a wrong paraphrase (144 B); re-authored as CUserProfileManager::ResetTutorials (probable PDB name): STLport vector::clear + Save + queue drain (deque::pop_front); new test (landed test drove the old free-function symbol)
+004012ce	RELOCATION_MATCH	68	/O1	RTC_INITIALIZE_TEST PASS	landed C source was right, flags were not: VC7.1 CRT is size-optimised (/O1 -> __SEH_prolog/__SEH_epilog helpers); renamed to the CRT's _RTC_Initialize/__rtc_iaa/__rtc_izz; test keeps the landed PassPattern, now self-contained and checks a faulting initializer is swallowed
+0098b5e0	RELOCATION_MATCH	633	-	FABLETLC_SET_VS_LAYOUT_BEHAVIOR PASS	source copied unchanged (no Leaf line: grade with leaf SetVertexShaderConstantLayout); test rewritten: scenarios split into small functions with one-condition checks (compiles in <1 s at /Od), same PassPattern
+005eadc0	RELOCATION_MATCH	354	/GS	005eadc0_TEST PASS	re-authored genuine C++ (landed was an asm_bake of the 22-byte prologue): CTCTavernGame::SetStateAfterYesNoAlt (Ego_r.pdb name/signature), five-string SetText overload 0x00492973, state 0x2E, ret 1Ch
+00bdc510	DIFFER	1134	-	-	parked: retail inline-asm SSE AABB distance block (19 instr > RETAIL_ASM_MAX 8) + landed C++ is a paraphrase (1044 B); owner decision
+00b687d0	DIFFER	1483	-	-	parked: fresh reconstruction of CEngineLandscapeRenderer::BuildThemes reaches 1486v1483 (88 of ~480 instructions differ: stack-slot order + block-4 register choice); landed source was a 327-byte paraphrase
+00bf4570	DIFFER	4880	-	-	parked: 4.9 KB render function, landed source is a 316-byte paraphrase; contains the same 19-instr inline-asm AABB block as 00bdc510
+00988a50	DIFFER	978	-	-	parked: retail ran two inline-asm SSE 4x4 matrix multiplies (~68 instr each, > RETAIL_ASM_MAX 8); intrinsics version 1048 B; owner decision

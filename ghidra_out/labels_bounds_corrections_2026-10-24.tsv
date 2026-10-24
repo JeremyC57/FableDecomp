@@ -1,0 +1,9 @@
+address	name	evidence
+00548b50	NUISystem::CTextSlider::AdjustValueToProfile	RELOCATION_MATCH on the corrected 996-B span (bounds audit); catalog CSlider label propagated
+00d043a0	CQ_BanditCampScript::CheckForSecondAreaDoorHelp	RELOCATION_MATCH on 948 B (bounds audit); EndMission label is propagated
+0040bb90	CUserProfileManager::ResetTutorials	clears GivenTutorialCategories, Save(), drains PendingTutorialCategories; name likely, no direct caller (bounds follow-up)
+004012ce	_RTC_Initialize	CRT walk over __rtc_iaa..__rtc_izz, /O1 SEH prolog/epilog (bounds follow-up)
+005eadc0	CTCTavernGame::SetStateAfterYesNoAlt	Ego_r.pdb name, 7 args ret 1Ch, /GS; RELOCATION_MATCH on 354 B
+009ad3b0	CDefinitionManager::GetNoInstantiatedDefsOfType	not LTextSystem::GetIDFromSymbol (bounds follow-up)
+00b6bd40	GetDef<CEngineThemeDef>	callee of BuildThemes (bounds follow-up)
+00b6cb20	_STL::vector<CLandscapeTheme>::resize	callee of BuildThemes (bounds follow-up)
