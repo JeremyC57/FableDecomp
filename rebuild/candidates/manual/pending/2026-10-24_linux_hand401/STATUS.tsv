@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00835a20	RELOCATION_MATCH	77v77	PASS	CTCDNone::Create; ?: map argument, zero result declared after the create call
+008365f0	DIFFER	119v119	-	register choice: strcmp zero in eax / BankIndex in ecx (lane edx/eax)
+00836740	RELOCATION_MATCH	52v52	PASS	CThingSoundEmitter::OnCreate; store before null test, one xor al,al exit
+008368d0	RELOCATION_MATCH	32v32	PASS	CThingSoundEmitter::StopSpecificSample; one inline `g && !Dead` guard
+00836910	RELOCATION_MATCH	219v219	PASS	CThingSoundEmitter::ConstructFromParams; `if (base) {..; return true;} return false;`
+008369f0	RELOCATION_MATCH	94v94	PASS	CThingSoundEmitter::Create; landed CThingDeadCreature::Create form
+00837c70	RELOCATION_MATCH	108v108	PASS	CThingTrackNode ctor; members cleared in the body after the TrackName ctor
+0083b340	RELOCATION_MATCH	75v75	PASS	CThingVillage::ConstructFromParams; empty name as a named block local
+0083b7f0	RELOCATION_MATCH	164v164	PASS	CThingVillage::Create; new(false) select, zero result declared after it
+0083bbf0	RELOCATION_MATCH	147v147	PASS	CThingHolySite::Create; class Alloc(), Village::Create body
+0083c5d0	RELOCATION_MATCH	186v186	PASS	CThingSwitch::Create; by-value CCharString destroyed at the shared exit
+0083dbe0	RELOCATION_MATCH	160v160	PASS	CThingPhysicalSwitch::Create; inline ConstructFromParams
+0083ee10	RELOCATION_MATCH	194v194	PASS	LHNetworkLib::StartsWith; __fastcall inline ==, (s, n) ctor puts the add after the tag push; 4 grades
+0083f870	RELOCATION_MATCH	64v64	PASS	LHHttp2::SetProxySettings; same-TU noinline _M_assign_dispatch homes the tag on the live port slot
+0083f8b0	RELOCATION_MATCH	202v202	PASS	LHHttp2::SendRawData; resize(n) through a const _Tp& resize (zero char temp at byte 3)
+0083fb20	RELOCATION_MATCH	51v51	PASS	LHHttp2::SetConnectionDetails; same-TU noinline _M_assign_dispatch (live port slot)
+0083fb60	RELOCATION_MATCH	86v86	PASS	LHHttpHeaderStatus::Reset; header-line vector cleared only
+0083fc00	RELOCATION_MATCH	219v219	PASS	LHHttpHeaders::AddHeader; non-template same-TU noinline callees keep header unaliased; 4 grades
+0083ff80	RELOCATION_MATCH	236v236	PASS	LHHttp2::Reset; delete Host with the null store inside the test, rep stosd memset
+00841790	RELOCATION_MATCH	86v86	PASS	basic_string::find(const char*, size_type) const; same-TU noinline search template
+00841b70	RELOCATION_MATCH	210v210	PASS	std::operator+(const string&, const char*); __forceinline _Reserve_t ctor, no NRVO; ends jmp abort (no int3 in row)
+00841c50	RELOCATION_MATCH	210v210	PASS	std::operator+(const char*, const string&); mirror of 0x00841B70
+00841ee0	RELOCATION_MATCH	126v126	PASS	LAddress(const string&, unsigned short); same-TU noinline _M_assign_dispatch (live port slot)
+00842db0	RELOCATION_MATCH	59v59	PASS	PlayAnimationWithLookTurning ctor (CCharString, CSoundPair); args straight through
+00842df0	RELOCATION_MATCH	77v77	PASS	PlayAnimationWithLookTurning ctor (CAnimationEntry, bools); args straight through
+00842e40	RELOCATION_MATCH	59v59	PASS	PlayAnimationWithLookTurning ctor (CAnimationEntry, CSoundPair); args straight through
+0084ccc0	MATCH	77v77	PASS	GetNewCameraPosFromOcclusionParams; named C3DVector result, no NRVO
+0084cd10	DIFFER	194v194	-	forward Z load scheduled with the X/Y loads (retail after the first fmul)
+0084d7e0	DIFFER	194v193	-	focal Z read from the frame (`fld [esp+14h]`) not through GetFocalPos result (`fld [eax+8]`)
+0084e2c0	RELOCATION_MATCH	151v151	PASS	CBase::AddIncidentalAttractorLookAt; manager pointer local first, list insert(end(), x)
+0084e390	DIFFER	111v111	-	in-place weight copy from the temporary and tag in the point slot (retail: weight argument slot)
+0084f010	MATCH	162v162	PASS	std::__find_if<CCountedPointer<CSubComponentBase>*, CIsOfType>; STLport 4x unrolled body
+0084f490	RELOCATION_MATCH	58v58	PASS	CPhysicsState ctor; STLport list sentinel ctors then the bool
+00850530	RELOCATION_MATCH	25v25	PASS	boost::scoped_ptr<CPhysicsForceModelBase> dtor; inline checked_delete
+00851b50	RELOCATION_MATCH	121v121	PASS	CHeroAbilityStatPackage::IsValid; threshold local before the call
+00851bd0	RELOCATION_MATCH	237v237	PASS	CHeroAbilityStatWeight::GetParameter; extern epsilon global keeps the empty path
+00856250	RELOCATION_MATCH	61v61	PASS	CCombatActionBase::GetLastTimeThroughCurrentAnimation; fps global read into a local
+00856290	RELOCATION_MATCH	61v61	PASS	CCombatActionBase::GetTimeThroughCurrentAnimation; fps global read into a local
+00856570	RELOCATION_MATCH	50v50	PASS	anon IsThingWithHelperPoints; do-while, `? true : false` bare sete
+00856e50	RELOCATION_MATCH	70v70	PASS	CCombatActionBase::GetPActiveStrikeEvent; for_each functor result

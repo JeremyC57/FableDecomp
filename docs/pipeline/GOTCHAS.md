@@ -1306,3 +1306,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `if (cond) { ...; return x; } return 0;` gives retail's shared trailing `xor` exit; `if (n<min) return 0; return n;` becomes branchless `setl/dec/and` (chunk 397).
 - A by-value functor returned under /Gr needs a user constructor; a POD result moves the hidden pointer to the stack (0x7FDA80).
 - Compare floats in lane tests with a tolerance: exact `==` on a symmetric expression passed g++ and failed VC7.1 (chunk 397).
+- When retail homes an STLport `__false_type` tag on a LIVE argument slot, give the tag-taking callee a same-TU `__declspec(noinline)` body that never touches the tag; a bare declaration homes it on the dead slot (0x841EE0, 0x83F870, 0x83FB20).
+- Under /Gr STLport's free inline operators are `__fastcall` and VC7.1 evaluates the left operand of `string == string` first (0x83EE10); `vector::resize(n)` passes `_Tp()` as a temporary at byte 3 of its slot (0x83F8B0).
+- A named `extern const float` epsilon keeps an empty-container path a literal folds away (0x851BD0); a `fabsf` overload through `fabs((double)x)` gives retail's `fxch st(1); fxch st(1)` pair (0x84CD10).
