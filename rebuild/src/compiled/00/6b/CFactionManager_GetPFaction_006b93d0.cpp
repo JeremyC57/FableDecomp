@@ -1,5 +1,5 @@
 // CFactionManager::GetPFaction(const CCharString& name) -- CRC the faction name and look it up in the hash-keyed faction map; null when absent
-// Grade: DIFFER(ours v retail) -- 92v92: register swap only (retail keeps `this` in esi and the hash in edi, ours the reverse)
+// Grade: RELOCATION_MATCH (lane re-grade 2026-10-24; an earlier draft differed only by an esi/edi swap, notes below kept for history)
 // Leaf: ?GetPFaction@CFactionManager@@QAEPAVCFaction@@ABUCCharString@@@Z
 // Retail: Fable.exe @ 0x006B93D0, 92 bytes, `__fastcall`, `ret 4`. Label correction: the manifest's "Faction::FindFactionByHash"
 // is Ego_r.pdb ?GetPFaction@CFactionManager@@QBEPAVCFaction@@ABVCCharString@@@Z (11 callers); CFactionManager::Factions is

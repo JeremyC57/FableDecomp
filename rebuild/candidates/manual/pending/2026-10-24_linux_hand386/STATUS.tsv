@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006b6560	RELOCATION_MATCH	40v40	PASS	std::fill<CThemeChannel*> (0x1F0 element, op= 0x6B6180)
+006b6590	RELOCATION_MATCH	45v45	PASS	uninitialized_fill_n<CThemeChannel*>; __forceinline inner __uninitialized_fill_n
+006b6610	RELOCATION_MATCH	86v86	PASS	__destroy_aux<CThemeChannel*>
+006b6710	RELOCATION_MATCH	90v90	PASS	__uninitialized_copy<CEnvironmentThemePriorityStackEntry*>
+006b67a0	RELOCATION_MATCH	86v86	PASS	__destroy_aux<CBlendedEnvironmentTheme*>
+006b78e0	MATCH	51v51	PASS	fill<CGameMapCell*>
+006b7920	MATCH	81v81	PASS	__copy<const CGameMapCell*,CGameMapCell*,int> (random-access)
+006b79a0	MATCH	81v81	PASS	__copy<const CGameMapCell*,CGameMapCell*,int> twin
+006b7c10	MATCH	54v54	PASS	__uninitialized_fill_n<CGameMapCell*>
+006b7cc0	MATCH	54v54	PASS	uninitialized_fill_n<CGameMapCell*>; __forceinline inner
+006b7d60	RELOCATION_MATCH	81v81	PASS	vector<CGameMapCell>::vector(n)
+006b7f70	RELOCATION_MATCH	221v221	PASS	vector<CGameMapCell>::_M_insert_overflow; same-TU auto_inline(off) helpers
+006b8f40	RELOCATION_MATCH	186v186	PASS	__unguarded_linear_insert<pair<ulong,CCountedPointer<CFaction>>*>
+006b93a0	RELOCATION_MATCH	46v46	PASS	CFactionManager::GetPFaction
+006b9460	RELOCATION_MATCH	81v81	PASS	CFaction::IsAlliedWithFaction; 5 grades
+006ba100	RELOCATION_MATCH	103v103	PASS	__unguarded_partition<faction pair>
+006ba3b0	RELOCATION_MATCH	98v98	PASS	CFaction::CFaction(const CCharString&)
+006ba7b0	RELOCATION_MATCH	113v113	PASS	__linear_insert<faction pair>; same-TU noinline pair op=
+006badb0	RELOCATION_MATCH	104v104	PASS	__partial_sort<faction pair>
+006bb300	RELOCATION_MATCH	76v76	PASS	CGameTimeManager::GetTimeAs24HourClock; float floor overload
+006bc290	RELOCATION_MATCH	184v184	PASS	CRegion::TransferGameState; local retail CRegion model
+006bc350	RELOCATION_MATCH	46v46	PASS	CRegion::GetMiniMapRegionExitTextOffset
+006bd8a0	RELOCATION_MATCH	91v91	PASS	CMusicManager::UpdateCurrentMusicOffset
+006bd900	DIFFER	170v169	-	CMusicManager::PlayMusic; register permutation only (parked, differ/)
+006be870	RELOCATION_MATCH	185v185	PASS	iter_swap<music pair*>; __forceinline __iter_swap
+006be930	RELOCATION_MATCH	159v159	PASS	__unguarded_linear_insert<music pair*>
+006bed50	RELOCATION_MATCH	89v89	PASS	__unguarded_partition<music pair*>
+006bee80	RELOCATION_MATCH	138v138	PASS	__make_heap<music pair*>
+006bf020	RELOCATION_MATCH	180v180	PASS	__linear_insert<music pair*>
+006bf340	RELOCATION_MATCH	183v183	PASS	__partial_sort<music pair*>
+006bf410	RELOCATION_MATCH	105v105	PASS	CArray<pair<long,CRegisteredMusicEntry>>::push_back
+006c1e70	RELOCATION_MATCH	82v82	PASS	back_insert_iterator<list<CIntelligentPointer<CThingAICreature>>>::operator=; typed GetPItem/SetPItem wrappers
+006c2120	RELOCATION_MATCH	70v70	PASS	CLevelLoader::Add(const CCountedPointer<CObject>&)
+006c2940	RELOCATION_MATCH	194v194	PASS	CLevelLoader::CObject::CLevelFiles::operator= (implicit)
+006c3df0	RELOCATION_MATCH	142v142	PASS	CTCFadeOutAndIn::AddThingToFade
+006c3e80	RELOCATION_MATCH	184v184	PASS	CTCFadeOutAndIn::UpdateFadingThings; same-TU vector copy ctor bodies
+006c4210	RELOCATION_MATCH	85v85	PASS	STLport remove_copy_if<CIntelligentPointer<CThing>*,CIsThingDead>
+006c5710	MATCH	103v103	PASS	CTCHeroOpinionDeedLog::FindWitnessDeed
+006c5780	RELOCATION_MATCH	126v126	PASS	CTCHeroOpinionDeedLog::FindDeed; named end local
+006c5800	RELOCATION_MATCH	142v142	PASS	CTCHeroOpinionDeedLog::FindCriminalDeed; named end local

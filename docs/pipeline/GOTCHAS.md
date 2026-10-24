@@ -1250,3 +1250,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A class passed by value in a /Gr TU goes on the stack, callee-cleaned, with its dtor duplicated at every return (0x697A50); `float ceil(float)` out of line is the `<math.h>` overload calling CRT `ceil(double)` (0x689370).
 - A graded source that `#include`s a file missing from the work dir hangs cl under Wine with no error: keep sources self-contained. VC7.1 ICEs deducing a member template through `CDefPointer<const T>*`: pass the template argument explicitly (chunk 384).
 - If a `find` temporary is destroyed before the `end()` compare, the result is a named iterator in its own statement (0x6991F0).
+- A `CArray<T>::push_back` calling the in-class STLport `vector::push_back` is not inlined (5-byte `jmp`): put the STLport body in the CArray member (0x6BF410).
+- Write the `CIntelligentPointer<T>` copy ctor through typed inline `GetPItem()`/`SetPItem()` wrappers; the extra inline layer fixes an ebp/ebx this/data swap (0x6C1E70).
+- To emit an implicit `operator=` out of line, take its address in a non-const global member pointer (a const one has internal linkage and is discarded) (0x6C2940).
+- STLport 4.5 map loops whose body calls out need `end()` as a named local, or the header is re-read after every call (0x6C5780).

@@ -292669,6 +292669,279 @@ $catalog = @(
         TestSource = '00/69/vectorCQuake_Minsertoverflow_0069d300_test.cpp'
         PassPattern = '0069d300_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b6560'
+        Module = 'std'
+        Source = '00/6b/std_fill_006b6560.cpp'
+        TestSource = '00/6b/std_fill_006b6560_test.cpp'
+        PassPattern = '006b6560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b6590'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedfilln_006b6590.cpp'
+        TestSource = '00/6b/std_uninitializedfilln_006b6590_test.cpp'
+        PassPattern = '006b6590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b6610'
+        Module = 'std'
+        Source = '00/6b/std_destroyaux_006b6610.cpp'
+        TestSource = '00/6b/std_destroyaux_006b6610_test.cpp'
+        PassPattern = '006b6610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b6710'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedcopy_006b6710.cpp'
+        TestSource = '00/6b/std_uninitializedcopy_006b6710_test.cpp'
+        PassPattern = '006b6710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b67a0'
+        Module = 'std'
+        Source = '00/6b/std_destroyaux_006b67a0.cpp'
+        TestSource = '00/6b/std_destroyaux_006b67a0_test.cpp'
+        PassPattern = '006b67a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b78e0'
+        Module = 'std'
+        Source = '00/6b/std_fill_006b78e0.cpp'
+        TestSource = '00/6b/std_fill_006b78e0_test.cpp'
+        PassPattern = '006b78e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7920'
+        Module = 'std'
+        Source = '00/6b/std_copy_006b7920.cpp'
+        TestSource = '00/6b/std_copy_006b7920_test.cpp'
+        PassPattern = '006b7920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b79a0'
+        Module = 'std'
+        Source = '00/6b/std_copy_006b79a0.cpp'
+        TestSource = '00/6b/std_copy_006b79a0_test.cpp'
+        PassPattern = '006b79a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7c10'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedfilln_006b7c10.cpp'
+        TestSource = '00/6b/std_uninitializedfilln_006b7c10_test.cpp'
+        PassPattern = '006b7c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7cc0'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedfilln_006b7cc0.cpp'
+        TestSource = '00/6b/std_uninitializedfilln_006b7cc0_test.cpp'
+        PassPattern = '006b7cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7d60'
+        Module = 'std::vector<CGameMapCell>'
+        Source = '00/6b/stdvectorCGameMapCell_vector_006b7d60.cpp'
+        TestSource = '00/6b/stdvectorCGameMapCell_vector_006b7d60_test.cpp'
+        PassPattern = '006b7d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7f70'
+        Module = 'std::vector<CGameMapCell>'
+        Source = '00/6b/stdvectorCGameMapCell_Minsertoverflow_006b7f70.cpp'
+        TestSource = '00/6b/stdvectorCGameMapCell_Minsertoverflow_006b7f70_test.cpp'
+        PassPattern = '006b7f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b8f40'
+        Module = 'std'
+        Source = '00/6b/std_unguardedlinearinsert_006b8f40.cpp'
+        TestSource = '00/6b/std_unguardedlinearinsert_006b8f40_test.cpp'
+        PassPattern = '006b8f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b93a0'
+        Module = 'CFactionManager'
+        Source = '00/6b/CFactionManager_GetPFaction_006b93a0.cpp'
+        TestSource = '00/6b/CFactionManager_GetPFaction_006b93a0_test.cpp'
+        PassPattern = '006b93a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b9460'
+        Module = 'CFaction'
+        Source = '00/6b/CFaction_IsAlliedWithFaction_006b9460.cpp'
+        TestSource = '00/6b/CFaction_IsAlliedWithFaction_006b9460_test.cpp'
+        PassPattern = '006b9460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ba100'
+        Module = 'std'
+        Source = '00/6b/std_unguardedpartition_006ba100.cpp'
+        TestSource = '00/6b/std_unguardedpartition_006ba100_test.cpp'
+        PassPattern = '006ba100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ba3b0'
+        Module = 'CFaction'
+        Source = '00/6b/CFaction_CFaction_006ba3b0.cpp'
+        TestSource = '00/6b/CFaction_CFaction_006ba3b0_test.cpp'
+        PassPattern = '006ba3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ba7b0'
+        Module = 'std'
+        Source = '00/6b/std_linearinsert_006ba7b0.cpp'
+        TestSource = '00/6b/std_linearinsert_006ba7b0_test.cpp'
+        PassPattern = '006ba7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006badb0'
+        Module = 'std'
+        Source = '00/6b/std_partialsort_006badb0.cpp'
+        TestSource = '00/6b/std_partialsort_006badb0_test.cpp'
+        PassPattern = '006badb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bb300'
+        Module = 'CGameTimeManager'
+        Source = '00/6b/CGameTimeManager_GetTimeAs24HourClock_006bb300.cpp'
+        TestSource = '00/6b/CGameTimeManager_GetTimeAs24HourClock_006bb300_test.cpp'
+        PassPattern = '006bb300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bc290'
+        Module = 'CRegion'
+        Source = '00/6b/CRegion_TransferGameState_006bc290.cpp'
+        TestSource = '00/6b/CRegion_TransferGameState_006bc290_test.cpp'
+        PassPattern = '006bc290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bc350'
+        Module = 'CRegion'
+        Source = '00/6b/CRegion_GetMiniMapRegionExitTextOffset_006bc350.cpp'
+        TestSource = '00/6b/CRegion_GetMiniMapRegionExitTextOffset_006bc350_test.cpp'
+        PassPattern = '006bc350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bd8a0'
+        Module = 'CMusicManager'
+        Source = '00/6b/CMusicManager_UpdateCurrentMusicOffset_006bd8a0.cpp'
+        TestSource = '00/6b/CMusicManager_UpdateCurrentMusicOffset_006bd8a0_test.cpp'
+        PassPattern = '006bd8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006be870'
+        Module = 'std'
+        Source = '00/6b/std_iterswap_006be870.cpp'
+        TestSource = '00/6b/std_iterswap_006be870_test.cpp'
+        PassPattern = '006be870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006be930'
+        Module = 'std'
+        Source = '00/6b/std_unguardedlinearinsert_006be930.cpp'
+        TestSource = '00/6b/std_unguardedlinearinsert_006be930_test.cpp'
+        PassPattern = '006be930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bed50'
+        Module = 'std'
+        Source = '00/6b/std_unguardedpartition_006bed50.cpp'
+        TestSource = '00/6b/std_unguardedpartition_006bed50_test.cpp'
+        PassPattern = '006bed50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bee80'
+        Module = 'std'
+        Source = '00/6b/std_makeheap_006bee80.cpp'
+        TestSource = '00/6b/std_makeheap_006bee80_test.cpp'
+        PassPattern = '006bee80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf020'
+        Module = 'std'
+        Source = '00/6b/std_linearinsert_006bf020.cpp'
+        TestSource = '00/6b/std_linearinsert_006bf020_test.cpp'
+        PassPattern = '006bf020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf340'
+        Module = 'std'
+        Source = '00/6b/std_partialsort_006bf340.cpp'
+        TestSource = '00/6b/std_partialsort_006bf340_test.cpp'
+        PassPattern = '006bf340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf410'
+        Module = 'CArray<pair<long,CRegisteredMusicEntry>>'
+        Source = '00/6b/CArraypairlongCRegisteredMusicEntry_pushback_006bf410.cpp'
+        TestSource = '00/6b/CArraypairlongCRegisteredMusicEntry_pushback_006bf410_test.cpp'
+        PassPattern = '006bf410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c1e70'
+        Module = 'back_insert_iterator<list<CIntelligentPointer<CThingAICreature>>>'
+        Source = '00/6c/backinsertiteratorlistCIntelligentPointerCThingAICreature_operator_006c1e70.cpp'
+        TestSource = '00/6c/backinsertiteratorlistCIntelligentPointerCThingAICreature_operator_006c1e70_test.cpp'
+        PassPattern = '006c1e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c2120'
+        Module = 'CLevelLoader'
+        Source = '00/6c/CLevelLoader_Add_006c2120.cpp'
+        TestSource = '00/6c/CLevelLoader_Add_006c2120_test.cpp'
+        PassPattern = '006c2120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c2940'
+        Module = 'CLevelLoader::CObject::CLevelFiles'
+        Source = '00/6c/CLevelLoaderCObjectCLevelFiles_operator_006c2940.cpp'
+        TestSource = '00/6c/CLevelLoaderCObjectCLevelFiles_operator_006c2940_test.cpp'
+        PassPattern = '006c2940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c3df0'
+        Module = 'CTCFadeOutAndIn'
+        Source = '00/6c/CTCFadeOutAndIn_AddThingToFade_006c3df0.cpp'
+        TestSource = '00/6c/CTCFadeOutAndIn_AddThingToFade_006c3df0_test.cpp'
+        PassPattern = '006c3df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c3e80'
+        Module = 'CTCFadeOutAndIn'
+        Source = '00/6c/CTCFadeOutAndIn_UpdateFadingThings_006c3e80.cpp'
+        TestSource = '00/6c/CTCFadeOutAndIn_UpdateFadingThings_006c3e80_test.cpp'
+        PassPattern = '006c3e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c4210'
+        Module = 'std'
+        Source = '00/6c/std_removecopyif_006c4210.cpp'
+        TestSource = '00/6c/std_removecopyif_006c4210_test.cpp'
+        PassPattern = '006c4210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c5710'
+        Module = 'CTCHeroOpinionDeedLog'
+        Source = '00/6c/CTCHeroOpinionDeedLog_FindWitnessDeed_006c5710.cpp'
+        TestSource = '00/6c/CTCHeroOpinionDeedLog_FindWitnessDeed_006c5710_test.cpp'
+        PassPattern = '006c5710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c5780'
+        Module = 'CTCHeroOpinionDeedLog'
+        Source = '00/6c/CTCHeroOpinionDeedLog_FindDeed_006c5780.cpp'
+        TestSource = '00/6c/CTCHeroOpinionDeedLog_FindDeed_006c5780_test.cpp'
+        PassPattern = '006c5780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c5800'
+        Module = 'CTCHeroOpinionDeedLog'
+        Source = '00/6c/CTCHeroOpinionDeedLog_FindCriminalDeed_006c5800.cpp'
+        TestSource = '00/6c/CTCHeroOpinionDeedLog_FindCriminalDeed_006c5800_test.cpp'
+        PassPattern = '006c5800_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
