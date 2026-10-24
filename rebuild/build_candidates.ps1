@@ -294405,6 +294405,272 @@ $catalog = @(
         TestSource = '00/76/stdvectorAttackParticleAndEndPoints_Minsertoverflow_0076b760_test.cpp'
         PassPattern = '0076b760_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0076bbc0'
+        Module = 'std'
+        Source = '00/76/std_partialsort_0076bbc0.cpp'
+        TestSource = '00/76/std_partialsort_0076bbc0_test.cpp'
+        PassPattern = '0076bbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076bcb0'
+        Module = 'std::vector<ParticleAndEndPoints>'
+        Source = '00/76/stdvectorParticleAndEndPoints_pushback_0076bcb0.cpp'
+        TestSource = '00/76/stdvectorParticleAndEndPoints_pushback_0076bcb0_test.cpp'
+        PassPattern = '0076bcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076be30'
+        Module = 'std'
+        Source = '00/76/std_introsortloop_0076be30.cpp'
+        TestSource = '00/76/std_introsortloop_0076be30_test.cpp'
+        PassPattern = '0076be30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076c080'
+        Module = 'std'
+        Source = '00/76/std_introsortloop_0076c080.cpp'
+        TestSource = '00/76/std_introsortloop_0076c080_test.cpp'
+        PassPattern = '0076c080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076d4f0'
+        Module = 'CTCEnemy'
+        Source = '00/76/CTCEnemy_AreThingsAllies_0076d4f0.cpp'
+        TestSource = '00/76/CTCEnemy_AreThingsAllies_0076d4f0_test.cpp'
+        PassPattern = '0076d4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076deb0'
+        Module = '_global'
+        Source = '00/76/global_GetProjectileTrailElementFromPoint_0076deb0.cpp'
+        TestSource = '00/76/global_GetProjectileTrailElementFromPoint_0076deb0_test.cpp'
+        PassPattern = '0076deb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076ea60'
+        Module = 'CTCWeaponTrail'
+        Source = '00/76/CTCWeaponTrail_GetAllTrailsLastWeaponTrailPoints_0076ea60.cpp'
+        TestSource = '00/76/CTCWeaponTrail_GetAllTrailsLastWeaponTrailPoints_0076ea60_test.cpp'
+        PassPattern = '0076ea60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076f740'
+        Module = 'std'
+        Source = '00/76/std_uninitializedfilln_0076f740.cpp'
+        TestSource = '00/76/std_uninitializedfilln_0076f740_test.cpp'
+        PassPattern = '0076f740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076fc60'
+        Module = 'std::list<CWeaponTrailEntry>'
+        Source = '00/76/stdlistCWeaponTrailEntry_insert_0076fc60.cpp'
+        TestSource = '00/76/stdlistCWeaponTrailEntry_insert_0076fc60_test.cpp'
+        PassPattern = '0076fc60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076fd40'
+        Module = 'std::list<CWeaponTrailEntry>'
+        Source = '00/76/stdlistCWeaponTrailEntry_Minsertdispatch_0076fd40.cpp'
+        TestSource = '00/76/stdlistCWeaponTrailEntry_Minsertdispatch_0076fd40_test.cpp'
+        PassPattern = '0076fd40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076fe10'
+        Module = 'std::list<CWeaponTrailEntry>'
+        Source = '00/76/stdlistCWeaponTrailEntry_pushback_0076fe10.cpp'
+        TestSource = '00/76/stdlistCWeaponTrailEntry_pushback_0076fe10_test.cpp'
+        PassPattern = '0076fe10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007700d0'
+        Module = 'std::vector<pair<C3DVector,C3DVector> >'
+        Source = '00/77/stdvectorpairC3DVectorC3DVector_Minsertoverflow_007700d0.cpp'
+        TestSource = '00/77/stdvectorpairC3DVectorC3DVector_Minsertoverflow_007700d0_test.cpp'
+        PassPattern = '007700d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007702b0'
+        Module = 'std'
+        Source = '00/77/std_uninitializedfilln_007702b0.cpp'
+        TestSource = '00/77/std_uninitializedfilln_007702b0_test.cpp'
+        PassPattern = '007702b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00770350'
+        Module = 'std'
+        Source = '00/77/std_destroyaux_00770350.cpp'
+        TestSource = '00/77/std_destroyaux_00770350_test.cpp'
+        PassPattern = '00770350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007704a0'
+        Module = 'std::vector<pair<CCharString,CCharString> >'
+        Source = '00/77/stdvectorpairCCharStringCCharString_Minsertoverflow_007704a0.cpp'
+        TestSource = '00/77/stdvectorpairCCharStringCCharString_Minsertoverflow_007704a0_test.cpp'
+        PassPattern = '007704a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007706a0'
+        Module = 'std::vector<pair<CCharString,CCharString> >'
+        Source = '00/77/stdvectorpairCCharStringCCharString_pushback_007706a0.cpp'
+        TestSource = '00/77/stdvectorpairCCharStringCCharString_pushback_007706a0_test.cpp'
+        PassPattern = '007706a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00770d60'
+        Module = 'std::vector<list<CWeaponTrailEntry> >'
+        Source = '00/77/stdvectorlistCWeaponTrailEntry_resize_00770d60.cpp'
+        TestSource = '00/77/stdvectorlistCWeaponTrailEntry_resize_00770d60_test.cpp'
+        PassPattern = '00770d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00770de0'
+        Module = 'CTCSolidToThing'
+        Source = '00/77/CTCSolidToThing_IsSolidToThing_00770de0.cpp'
+        TestSource = '00/77/CTCSolidToThing_IsSolidToThing_00770de0_test.cpp'
+        PassPattern = '00770de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771c70'
+        Module = 'CTCHeroPodium'
+        Source = '00/77/CTCHeroPodium_GetPositionForMember_00771c70.cpp'
+        TestSource = '00/77/CTCHeroPodium_GetPositionForMember_00771c70_test.cpp'
+        PassPattern = '00771c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007720d0'
+        Module = '_global'
+        Source = '00/77/global_MoveTowards_007720d0.cpp'
+        TestSource = '00/77/global_MoveTowards_007720d0_test.cpp'
+        PassPattern = '007720d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00776d40'
+        Module = 'std'
+        Source = '00/77/std_unguardedpartition_00776d40.cpp'
+        TestSource = '00/77/std_unguardedpartition_00776d40_test.cpp'
+        PassPattern = '00776d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00776df0'
+        Module = 'std'
+        Source = '00/77/std_unguardedinsertionsortaux_00776df0.cpp'
+        TestSource = '00/77/std_unguardedinsertionsortaux_00776df0_test.cpp'
+        PassPattern = '00776df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00776e50'
+        Module = 'std'
+        Source = '00/77/std_adjustheap_00776e50.cpp'
+        TestSource = '00/77/std_adjustheap_00776e50_test.cpp'
+        PassPattern = '00776e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007772f0'
+        Module = 'std'
+        Source = '00/77/std_makeheap_007772f0.cpp'
+        TestSource = '00/77/std_makeheap_007772f0_test.cpp'
+        PassPattern = '007772f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007773a0'
+        Module = 'CShopDef'
+        Source = '00/77/CShopDef_Test_007773a0.cpp'
+        TestSource = '00/77/CShopDef_Test_007773a0_test.cpp'
+        PassPattern = '007773a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00777790'
+        Module = 'std::_Rb_tree<long, pair<const long,CShopItem>, _Select1st<pair<const long,CShopItem> >, less<long> >'
+        Source = '00/77/stdRbtreelongpairconstlongCShopItemSelect1stpairconstlongCShopItemlesslong_Minsert_00777790.cpp'
+        TestSource = '00/77/stdRbtreelongpairconstlongCShopItemSelect1stpairconstlongCShopItemlesslong_Minsert_00777790_test.cpp'
+        PassPattern = '00777790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00777920'
+        Module = 'std'
+        Source = '00/77/std_insertionsort_00777920.cpp'
+        TestSource = '00/77/std_insertionsort_00777920_test.cpp'
+        PassPattern = '00777920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00777db0'
+        Module = 'std::basic_string<char>'
+        Source = '00/77/stdbasicstringchar_reserve_00777db0.cpp'
+        TestSource = '00/77/stdbasicstringchar_reserve_00777db0_test.cpp'
+        PassPattern = '00777db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00777f80'
+        Module = 'std::basic_string<char>'
+        Source = '00/77/stdbasicstringchar_pushback_00777f80.cpp'
+        TestSource = '00/77/stdbasicstringchar_pushback_00777f80_test.cpp'
+        PassPattern = '00777f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007781b0'
+        Module = 'std'
+        Source = '00/77/std_partialsort_007781b0.cpp'
+        TestSource = '00/77/std_partialsort_007781b0_test.cpp'
+        PassPattern = '007781b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00778490'
+        Module = 'std'
+        Source = '00/77/std_introsortloop_00778490.cpp'
+        TestSource = '00/77/std_introsortloop_00778490_test.cpp'
+        PassPattern = '00778490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00778610'
+        Module = '_global'
+        Source = '00/77/global_GFGetValPositionInLimitsLooping_00778610.cpp'
+        TestSource = '00/77/global_GFGetValPositionInLimitsLooping_00778610_test.cpp'
+        PassPattern = '00778610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00779e10'
+        Module = 'CTCDExperienceOrb'
+        Source = '00/77/CTCDExperienceOrb_SetExperiencePoints_00779e10.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_SetExperiencePoints_00779e10_test.cpp'
+        PassPattern = '00779e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00779e90'
+        Module = 'CTCDExperienceOrb'
+        Source = '00/77/CTCDExperienceOrb_Create_00779e90.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_Create_00779e90_test.cpp'
+        PassPattern = '00779e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077a350'
+        Module = 'CTCDExperienceOrb'
+        Source = '00/77/CTCDExperienceOrb_GetExperienceOrbsToCreateForTotalExperience_0077a350.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_GetExperienceOrbsToCreateForTotalExperience_0077a350_test.cpp'
+        PassPattern = '0077a350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077c360'
+        Module = 'CLoopedRange'
+        Source = '00/77/CLoopedRange_GetFraction_0077c360.cpp'
+        TestSource = '00/77/CLoopedRange_GetFraction_0077c360_test.cpp'
+        PassPattern = '0077c360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077e0c0'
+        Module = 'std'
+        Source = '00/77/std_swap_0077e0c0.cpp'
+        TestSource = '00/77/std_swap_0077e0c0_test.cpp'
+        PassPattern = '0077e0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077e580'
+        Module = 'std::vector<CIntelligentPointer<CThing> >'
+        Source = '00/77/stdvectorCIntelligentPointerCThing_reserve_0077e580.cpp'
+        TestSource = '00/77/stdvectorCIntelligentPointerCThing_reserve_0077e580_test.cpp'
+        PassPattern = '0077e580_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

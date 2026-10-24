@@ -1277,3 +1277,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `erase(remove(begin(), end(), this))` gives retail's destructor shape exactly (0x762110); `x.Dot(y) > ab` gives `fcomp st(1)`, `ab < x.Dot(y)` gives `fld st(1); fcompp` (0x75FF00).
 - Over `engine/CTCBase.h` do not declare a derived override `virtual`: the header models the vptr as a data member, so the layout shifts by 4 (chunk 393).
 - VC7.1 has no NRVO: a test helper returning a named counted local double-releases; return a temporary (chunk 393).
+- Two textually identical sums are CSE'd into two spill slots with a copy through eax (0x778610); `fld st(0)` plus scattered spills means the subexpression appears twice in the source (0x76DEB0).
+- VC7.1 folds `x / 8.0f * 0.5f` into one multiply inside one expression: put the division in its own statement; in `a + b` the right operand is evaluated first (0x771C70).
+- An inlined two-arm accessor must use `f(i >= 0 ? A[i] : A[0])` (0x76EA60); `return a && b;` gives `mov eax,1` / `xor eax,eax` (0x76D4F0).
+- A call retail treats as never returning (`_M_throw_length_error`) needs `__declspec(noreturn)` (0x777DB0).

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0076bbc0	RELOCATION_MATCH	167v167	PASS	std::__partial_sort<pair<ulong,CParticleUpdateParamDesc<ulong,ulong> >> (was Partial_Sort_Pair16_TextureMorph); inline __pop_heap by-value _Tp
+0076bcb0	RELOCATION_MATCH	103v103	PASS	vector<ParticleAndEndPoints>::push_back (was CCombatWheel_InsertBrainUpdateZone)
+0076be30	RELOCATION_MATCH	210v210	PASS	std::__introsort_loop<pair<ulong,C3DVector>>; inline __median; C3DVector user copy ctor
+0076c080	RELOCATION_MATCH	213v213	PASS	std::__introsort_loop<pair<ulong,CParticleUpdateParamDesc>>
+0076d1b0	DIFFER	177v179	-	CTCEnemy::AddEnemyThing (was CCreature_AddEnemyToList); parked after 4 grades: opinion-call tail only
+0076d4f0	RELOCATION_MATCH	176v176	PASS	CTCEnemy::AreThingsAllies; same-TU CalculateEnemyTC stand-in that leaks no address
+0076deb0	RELOCATION_MATCH	216v216	PASS	anon-ns GetProjectileTrailElementFromPoint; offset*0.5f in both pair args (CSE) + C3DVector copy ctor (4th grade)
+0076ea60	RELOCATION_MATCH	160v160	PASS	CTCWeaponTrail::GetAllTrailsLastWeaponTrailPoints (was WeaponTrail_ProcessCollisionPoints); inlined public overload as ?: select
+0076f740	RELOCATION_MATCH	54v54	PASS	std::__uninitialized_fill_n<pair<CCharString,CCharString>*> (was _Fill_n)
+0076fc60	RELOCATION_MATCH	91v91	PASS	std::list<CWeaponTrailEntry>::insert (was WeaponTrail_CreateNode)
+0076fd40	RELOCATION_MATCH	102v102	PASS	std::list<CWeaponTrailEntry>::_M_insert_dispatch (was LinkedList_InsertAll); C3DVector user copy ctor
+0076fe10	RELOCATION_MATCH	25v25	PASS	std::list<CWeaponTrailEntry>::push_back (was WeaponTrail_Callback); byte twin of 004cd2d0
+007700d0	RELOCATION_MATCH	238v238	PASS	vector<pair<C3DVector,C3DVector>>::_M_insert_overflow (was Vector_Insert_CAnimatedBlock_MoveAndRealloc)
+007702b0	RELOCATION_MATCH	83v83	PASS	std::__uninitialized_fill_n<list<CWeaponTrailEntry>*> (was _Fill_n)
+00770350	RELOCATION_MATCH	80v80	PASS	std::__destroy_aux<list<CWeaponTrailEntry>*> (was LinkedList_DestroyRange)
+007704a0	RELOCATION_MATCH	203v203	PASS	vector<pair<CCharString,CCharString>>::_M_insert_overflow; same-TU tag-taking stand-ins
+007706a0	RELOCATION_MATCH	78v78	PASS	vector<pair<CCharString,CCharString>>::push_back (was Vector_PushBack_String)
+00770790	DIFFER	78v78	-	vector<list<CWeaponTrailEntry>>::erase (was LinkedList_RemoveAll_WithShift); parked: __destroy_aux tag slot only
+00770d60	RELOCATION_MATCH	112v112	PASS	vector<list<CWeaponTrailEntry>>::resize(n) (was LinkedList_Phoneme_Insert); list default ctor without proxy zero
+00770de0	RELOCATION_MATCH	105v105	PASS	CTCSolidToThing::IsSolidToThing (was ContainerFindElement)
+00771c70	RELOCATION_MATCH	187v187	PASS	CTCHeroPodium::GetPositionForMember (was CVertexBufferWin32_ComputeTransformedPosition); fraction local blocks /8*0.5 fold
+007720d0	RELOCATION_MATCH	63v63	PASS	MoveTowards (descriptive; was Math_LerpFloat)
+00776d40	MATCH	68v68	PASS	std::__unguarded_partition<long*,long,less<long>> (was Quicksort_Partition_IntElem)
+00776df0	MATCH	50v50	PASS	std::__unguarded_insertion_sort_aux<long*> (was _Copy_impl<CComplexNumber*>)
+00776e50	RELOCATION_MATCH	77v77	PASS	std::__adjust_heap<long*,int,long,less<long>> (was _Adjust_heap<CThing**...>)
+007772f0	RELOCATION_MATCH	124v124	PASS	std::__make_heap<long*> (was MakeHeap); __forceinline __adjust_heap
+007773a0	MATCH	140v140	PASS	CShopDef::Test() const (was CTCShop_ClearLists); two empty map walks
+00777790	RELOCATION_MATCH	201v201	PASS	_Rb_tree<long,pair<const long,CShopItem>>::_M_insert (was RBTree_Insert)
+00777920	RELOCATION_MATCH	115v115	PASS	std::__insertion_sort<long*> (was _Insertion_sort1<ENavigatorType*>)
+00777db0	RELOCATION_MATCH	140v140	PASS	basic_string<char>::reserve (was CString_Reserve); noreturn _M_throw_length_error
+00777f80	RELOCATION_MATCH	84v84	PASS	basic_string<char>::push_back (was CCharString_PushBack_Char)
+007781b0	RELOCATION_MATCH	89v89	PASS	std::__partial_sort<long*> (was Sort_PartialHeap_ThingNearest)
+00778490	RELOCATION_MATCH	173v173	PASS	std::__introsort_loop<long*> (was Sort_IntrosortPhase_IntElem)
+00778610	MATCH	221v221	PASS	GFGetValPositionInLimitsLooping (PDB); two identical sums CSE into two slots
+00779e10	RELOCATION_MATCH	128v128	PASS	CTCDExperienceOrb::SetExperiencePoints (was CExperienceOrb_SetScale)
+00779e90	RELOCATION_MATCH	93v93	PASS	CTCDExperienceOrb::Create(long,const C3DVector&); result local keeps null in ebx (4th grade)
+0077a350	RELOCATION_MATCH	223v223	PASS	CTCDExperienceOrb::GetExperienceOrbsToCreateForTotalExperience (was SortedMap_FillFromSortedTree); same-TU _M_insert_overflow stand-in
+0077c360	RELOCATION_MATCH	108v108	PASS	looped-range fraction getter (descriptive CLoopedRange::GetFraction; was Interpolate_Clamped)
+0077e0c0	RELOCATION_MATCH	121v121	PASS	std::swap<pair<CCharString,C3DVector>> (was swap<C3DSkeletalBoneMorph>)
+0077e580	RELOCATION_MATCH	151v151	PASS	vector<CIntelligentPointer<CThing>>::reserve (was vector_reserve_CConversation); twin of 006d4680
