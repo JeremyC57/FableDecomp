@@ -1258,3 +1258,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Z-first dot product: `a.Z*b.Z + (a.X*b.X + a.Y*b.Y)`; `(float)fabs(x) > eps` gives `fcomp dword; test ah,41h`; a byte `neg/sbb/inc` result means an `unsigned char` return (chunk 388).
 - A single if-block with one final `return false` pushes all saved registers up front; early returns shrink-wrap them (chunk 388).
 - Lane script: a purity grep over an empty or missing `src/` passes vacuously; the lander now refuses a chunk with no src files.
+- STLport fresh `__false_type()` tags home over a live/dead argument slot only with a user ctor AND same-TU noinline bodies of the out-of-line copy/fill loops; the POD `__true_type` tag of an out-of-line push_back has no user ctor (retail's zero byte store) (chunk 387).
+- In `_M_insert_overflow`, `(max)(old_size, fill_len)` takes references, so the constant 1 and the old size get frame words; `__uninitialized_copy<const T*>` and `<T*>` are distinct COMDATs (chunk 387).
+- The GetInterface key and a caller's CCharString in sibling `if` scopes share one frame word (0x6D7640); `!= 7 ? true : false` gives `setne al` (0x6D5AF0); CHitParameters needs pack(1) (0x6D8D00).

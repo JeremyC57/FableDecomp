@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006c59e0	RELOCATION_MATCH	102v102	PASS	CTCHeroOpinionDeedLog::RemoveDeed (manifest AIState_DestroyWithPointerCleanup)
+006c8350	MATCH	83v83	PASS	_Rb_tree<long,pair<const long,COpinionDeed*>>::equal_range
+006c8d40	RELOCATION_MATCH	156v156	PASS	CThingFilter_IsDeedTypeEnabled::operator()
+006c9b70	DIFFER	190v187	-	STLport __copy(deed map -> back_inserter); push_back scheduling
+006c9e40	DIFFER	156v156	-	GFSerialiseVectorBinaryIn<pair<long,COpinionDeed*>>; traits slot sharing
+006ca8c0	DIFFER	128v138	-	CTextureMorphs::AddMorph (push_back(CEngineTextureMorph(i,0)); &back()); in-place arm dtor elision
+006cb010	RELOCATION_MATCH	179v179	PASS	vector<CCompositeBlendDesc>::push_back (overflow inlined)
+006cb170	RELOCATION_MATCH	135v135	PASS	STLport __uninitialized_fill_n<CEngineTextureMorph*>
+006cb390	RELOCATION_MATCH	218v218	PASS	vector<CEngineTextureMorph>::_M_insert_overflow
+006ce230	RELOCATION_MATCH	106v106	PASS	vector<const CThingCreatureBase*>::reserve
+006ce2b0	RELOCATION_MATCH	65v65	PASS	vector<const CThingCreatureBase*>::_M_allocate_and_copy
+006ce530	RELOCATION_MATCH	58v58	PASS	vector<const CThingCreatureBase*>::push_back
+006ce730	DIFFER	196v193	-	(anon)::FrameUpdateThing::operator(); slot homing
+006d4680	RELOCATION_MATCH	151v151	PASS	vector<pair<CCharString,long>>::reserve
+006d4b40	RELOCATION_MATCH	187v187	PASS	GFSerialiseVectorBinaryIn<pair<CCharString,long>>
+006d4e10	RELOCATION_MATCH	74v74	PASS	CTCFollowed::CTCFollowed
+006d5050	RELOCATION_MATCH	108v108	PASS	CTCFollowed::RemoveEmoteIcon
+006d5af0	RELOCATION_MATCH	91v91	PASS	IsFacingCorrectDirectionForMovementToPos
+006d6210	RELOCATION_MATCH	75v75	PASS	CCountedPointer<CBrainOutput>::DeleteData
+006d63f0	DIFFER	64v68	-	CTCHeroExperience::GetExperiencePickupMultiplierCurrentLevelFractionComplete; x87 scheduling
+006d6fa0	DIFFER	243v220	-	CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount; loop hoist/strength reduction
+006d73d0	DIFFER	84v82	-	CTCHeroExperience::GetExperienceFallbackMultiplierForMultiplier; stack packing
+006d7430	RELOCATION_MATCH	84v84	PASS	CTCHeroExperience::GetNextExperienceFallbackMultiplier
+006d75c0	RELOCATION_MATCH	117v117	PASS	(anon)::GetSoundCriteriaStringFromMap
+006d7640	RELOCATION_MATCH	118v118	PASS	(anon)::PlayCombatMultiplierSound
+006d7ec0	DIFFER	91v89	-	CTCHeroExperience::AddAttackOfTypeToAttackHistory; register allocation
+006d80e0	RELOCATION_MATCH	134v134	PASS	CTCHeroExperience::SetAsHit
+006d86d0	RELOCATION_MATCH	153v153	PASS	CTCHeroExperience::GetOnHitSoundIntensity
+006d8790	DIFFER	124v124	-	CTCHeroExperience::AddSuccessfulStrikeOfType; register allocation
+006d8bf0	DIFFER	150v172	-	CTCHeroExperience::GetOnHitSound; register/tail sharing
+006d8d00	RELOCATION_MATCH	131v131	PASS	CTCHeroExperience::AddSuccessfulStrikeWithHitParams
+006d9ee0	RELOCATION_MATCH	82v82	PASS	CPersistTraits<CAttackHistoryCombo>::TransferBinaryOut
+006dadd0	MATCH	102v102	PASS	STLport __find_if<const long*, binder2nd<greater<long>>>
+006db060	RELOCATION_MATCH	144v144	PASS	CPersistTraits<CComboMultiplierData>::TransferBinaryOut
+006db0f0	RELOCATION_MATCH	125v125	PASS	CPersistTraits<CHeroStatIncreaseData>::TransferBinaryOut
+006db340	RELOCATION_MATCH	70v70	PASS	list<pair<EDamageAttribute,long>>::_M_fill_insert
+006db9d0	RELOCATION_MATCH	90v90	PASS	list<pair<EDamageAttribute,long>>::resize
+006dbc00	RELOCATION_MATCH	65v65	PASS	{long, _Rb_tree} pair default ctor
+006dbc50	RELOCATION_MATCH	65v65	PASS	{long, _Rb_tree} pair default ctor
+006dbdc0	RELOCATION_MATCH	61v61	PASS	STLport __copy_backward<CAttackHistoryCombo*>
