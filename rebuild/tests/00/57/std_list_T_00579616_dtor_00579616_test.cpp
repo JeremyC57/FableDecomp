@@ -1,0 +1,6 @@
+#include <cstdio>
+#include <cstdlib>
+static int g_cleared = 0; static void* g_freed = 0;
+static void MyFree(void* p) { g_freed = p; std::free(p); }
+namespace std { struct list_T_00579616 { void* _M_node; void clear() { ++g_cleared; } ~list_T_00579616() { clear(); if (_M_node) MyFree(_M_node); } }; }
+int main() { void* n = std::malloc(8); { std::list_T_00579616 l; l._M_node = n; } bool ok = g_cleared == 1 && g_freed == n; { std::list_T_00579616 l; l._M_node = 0; } ok = ok && g_cleared == 2 && g_freed == n; std::printf(ok ? "00579616_TEST PASS\n" : "00579616_TEST FAIL\n"); return ok ? 0 : 1; }

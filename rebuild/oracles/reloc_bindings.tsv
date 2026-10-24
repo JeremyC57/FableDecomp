@@ -29096,3 +29096,14 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?__linear_insert@@YIXPAUCSortElement@@0U1@UCSortLess@@@Z	00b85870	00b85b30
 ?__linear_insert@@YIXPAUPairCharStringScriptInfo@@0U1@UCCompareScriptName@@@Z	00cb6ce0	00cb6ea0
 ?__linear_insert@@YIXPAUSKeyedNameRecord@@0U1@UCKeyPairCompareLess@@@Z	00cbb920	00cbbe50
+?GetParticleClock_00aea9f0@@YAJXZ	00aea9f0	00b10220
+?GetParticleClock@@YAMXZ	00aeaa00	00b0a750
+?g_cosTable@@3QBMB	013cd550	00b0a750
+?g_cosTableScale@@3MB	0122f59c	00b0a750
+?g_fadeScale@@3MB	01266300	00b0a750
+??0CMemoryPool@@QAE@XZ	00a62e20	00b3b240
+??0CPoolAllocator@@QAE@XZ	009d5eb0	00b3b240
+?Initialise@CMemoryPool@@QAEXJ_N0@Z	00a02570	00b3b240
+?Reset@CAllocatorPointer@@QAEXPAUCPoolAllocator@@@Z	00b3e510	00b3b240
+?Reset@CMemoryPoolPointer@@QAEXPAUCMemoryPool@@@Z	00b3e4a0	00b3b240
+?Set@CDeviceBudget@@QAEXJ@Z	009fc520	00b3b240

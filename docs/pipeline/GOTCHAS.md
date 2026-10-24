@@ -1138,3 +1138,10 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - String-pair compares that keep data pointers in registers across `CBasicString::operator<` calls are `/Oa` TUs (00a40250, 00a70020, 004dfc42).
 - A templated `operator<` leaf must be the mangled prefix `??$?M`; "operator<" makes the grader silently take the largest function (00a40250).
 - STLport `list::insert` returns its iterator through the hidden pointer (user ctors); the null test is on `&node->_M_data` (005355c0).
+- A helper containing `__asm` is expanded in place only when `__forceinline`; plain/static `inline` stays a call (00511a10, 00a88d10).
+- An `__asm` statement is a barrier: FPU values live across it are spilled to the frame -- an "unexplained" spill around a retail fistp is this (00b10220).
+- Pointer-out rounding is `__forceinline void FloatToLong(long* r, float v) { __asm fld v __asm mov edx, r __asm fistp dword ptr [edx] }` (3 instr, 00b1b5e0).
+- `(GetParticleClock() * Frame) / Lifetime` parenthesised gives `fimul [mem]`; unparenthesised gives `fild ; fmulp` (00b0a750).
+- A power-of-ten loop is `do scale *= 10; while (--i);` (retail `fld1 ; dec ; fmul ; jne`); a `for` loop gets an aligned head (00b10220).
+- `CRGBColour(r,g,b,a)` assigns `R = r; G = g; B = b; A = a;` in the body; an init list in member order swaps the r/b frame slots (0052f440).
+- Ceil/floor helpers: with a C++ fix-up VC7.1 always homes `value` above half/one (retail below); only the 10-instruction asm block reproduces (owner decision pending, 27 rows).
