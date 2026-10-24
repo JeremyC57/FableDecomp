@@ -22,3 +22,6 @@ at the same paths; the bootstrap keeps compiling these asm copies.
 Moved here 2026-10-24 out of `rebuild/src/compiled` and `rebuild/tests`, where the 0x0099A920 pair
 differed from the landed files only by letter case and collided on a Windows checkout. Retiring them
 means pointing the fixture at the genuine sources and providing their real callees instead of the shims.
+
+0x00401FE0 `EULA::DoEULAThings` joined them 2026-10-24 when chunk 334 landed it as genuine C++ at the
+catalog path; the fixture's naked asm body moved here unchanged.

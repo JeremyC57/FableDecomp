@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bed2a0	MATCH	70v70	PASS	CVectorMap<long::LowerBound(const long& key) const
+00a7dcc0	MATCH	87v87	PASS	CVectorMap<unsigned___int64::UpperBound(const unsigned __int64& key)
+00a7df60	MATCH	89v89	PASS	CVectorMap<unsigned___int64::LowerBound(const unsigned __int64& key)
+00cb9740	MATCH	104v104	PASS	CVectorMap<unsigned___int64::LowerBound(const unsigned __int64& key)
+00cb97b0	MATCH	104v104	PASS	CVectorMap<unsigned___int64::LowerBound(const unsigned __int64& key)
+00cb98a0	MATCH	87v87	PASS	CVectorMap<unsigned___int64::UpperBound(const unsigned __int64& key)
+0065e412	MATCH	71v71	PASS	CVectorMap<unsigned_long::LowerBound(const unsigned long& key)
+0069c740	MATCH	60v60	PASS	CVectorMap<unsigned_long::LowerBound(const unsigned long& key) const
+0073d0e0	MATCH	60v60	PASS	CVectorMap<unsigned_long::LowerBound(const unsigned long& key) const
+0073d250	MATCH	60v60	PASS	CVectorMap<unsigned_long::UpperBound(const unsigned long& key) const
+00819fd0	MATCH	82v82	PASS	CVectorMap<unsigned_long::UpperBound(const unsigned long& key) const
+00863030	MATCH	83v83	PASS	CVectorMap<unsigned_long::UpperBound(const unsigned long& key) const
+0086a8d0	MATCH	82v82	PASS	CVectorMap<unsigned_long::UpperBound(const unsigned long& key) const
+009b1ff0	MATCH	60v60	PASS	CVectorMap<unsigned_long::UpperBound(const unsigned long& key) const
+009b2190	MATCH	82v82	PASS	CVectorMap<unsigned_long::UpperBound(const unsigned long& key) const
+009b2230	MATCH	83v83	PASS	CVectorMap<unsigned_long::LowerBound(const unsigned long& key)
+00af2c50	MATCH	70v70	PASS	CVectorMap<unsigned_long::LowerBound(const unsigned long& key) const
+00b05890	MATCH	70v70	PASS	CVectorMap<unsigned_long::LowerBound(const unsigned long& key) const
+00abc440	MATCH	35v35	PASS	C3DMeshFileTrianglesChunk::GetList() const
+00c44270	RELOCATION_MATCH	73v73	PASS	CircularQueue::DequeueItem(unsigned long index)
+00c44430	MATCH	39v39	PASS	CircularQueue::GetItemAtIndex(unsigned long index)
+008ef200	DIFFER	223v231	-	parked: Coin ctor: x87 radius^2 CSE vs retail reload
+008eff40	RELOCATION_MATCH	133v133	PASS	Coin::Coin(const Coin& other)
+008f0080	RELOCATION_MATCH	104v104	PASS	Coin::operator=(const Coin& other)
+004c5890	DIFFER	130v132	-	parked: map<void*,CRGBColour>::operator[]: B/G byte-store scheduling and iterator re-read from slot
+008af1e0	RELOCATION_MATCH	51v51	PASS	CombatDialogueManager::IsSpeechGroupAllowed(unsigned long group) const
+008af500	DIFFER	235v235	-	parked: AttemptToSpeak: esi/edi swap + load scheduling
+008af5f0	RELOCATION_MATCH	239v239	PASS	CombatDialogueManager::IsSpeechAllowed(const CThingCreatureBase& creature) const
+008af6e0	DIFFER	145v150	-	parked: CanSaySpeech: shared fail block + trailing setne
+008af780	RELOCATION_MATCH	204v204	PASS	CombatDialogueManager::Update()
+008afc40	RELOCATION_MATCH	113v113	PASS	CombatDialogueManager::SaySpeech(CThingCreatureBase& creature, unsigned long textGroup)
+009cc640	RELOCATION_MATCH	94v94	PASS	CompareDataOffset::operator()(unsigned long a, unsigned long b)
+00530a40	RELOCATION_MATCH	188v188	PASS	NUISystem::CComponent::MakeUnavailable()
+00530ce0	RELOCATION_MATCH	188v188	PASS	NUISystem::CComponent::MakeAvailable()
+00401fe0	RELOCATION_MATCH	136v136	PASS	EULA::DoEULAThings()
+006b93d0	DIFFER	92v92	-	parked: CFactionManager::GetPFaction: esi/edi swap only
+00959040	RELOCATION_MATCH	98v98	PASS	CMessageEventManager::FindMostRecentMessage<CFilter_Bind4<CMessageEventFilter_IsOfType, CMessageEventFilter_Is
+0062f650	RELOCATION_MATCH	56v56	PASS	std::list<CCountedPointer<C3DSkeletalMorphParameter> >::insert(iterator position, const_iterator first, const_
+0067cff0	RELOCATION_MATCH	56v56	PASS	std::list<CReactionMatch_*>::insert(iterator position, const_iterator first, const_iterator last)
+0080e530	RELOCATION_MATCH	158v158	PASS	ForEachIf<CThing**, CThingFilter_IsThrownByExplosion, CApplyAdditionalExplosiveImpulseIfInsideRing>(first, las

@@ -1,97 +1,58 @@
-#include "fable_eula.h"
+// EULA::DoEULAThings() -- load eula.dll, run its EBUEula export with the registry-key location and the EULA / warranty file names; 1 when accepted (the library is then freed), else 0
+// Leaf: DoEULAThings
+// Retail: Fable.exe @ 0x00401FE0, 136 bytes, `__fastcall` with no arguments, plain `ret` (FableWin.pdb ?DoEULAThings@EULA@@YIHXZ:
+// a namespace function returning int). Replaces the landed asm_bake oracle rebuild/src/compiled/00/40/EULA_DoEULAThings_00401fe0.cpp.
+// Callees: imports LoadLibraryW 0x0143FE38, GetProcAddress 0x0143FE44, FreeLibrary 0x0143FE3C; CWideString::ConvertToCharString
+// 0x0099B2C0 (by-value CCharString through a hidden pointer) on the global 0x013BCA28, ~CCharString 0x0099EAE0; the export
+// is `__stdcall` (it pops its four arguments). Data: L"eula.dll" 0x0122D680, "EBUEula" 0x0122D678, "" 0x0129AAF4, the two
+// file-name pointers 0x01374F54 / 0x01374F58. wchar_t is not a VC7.1 built-in here: the wide literal is `unsigned short`.
+// Shape: the load failure returns the zero already in eax; the export call and the acceptance test nest inside positive
+// `if`s so both failures share the `xor eax,eax` tail; `== 1` as a named bool (`dec ; neg ; sbb ; inc`) computed before the
+// converted string's temporary is destroyed; FreeLibrary only on success (as retail).
+extern "C" __declspec(dllimport) void* __stdcall LoadLibraryW(const unsigned short* fileName);                 // import 0x0143FE38
+extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* procName);   // import 0x0143FE44
+extern "C" __declspec(dllimport) int __stdcall FreeLibrary(void* module);                               // import 0x0143FE3C
 
-namespace
+struct CCharStringData {
+    const char*   Text;                     // +0x00
+    unsigned long Length;                   // +0x04
+};
+class CCharString {
+public:
+    CCharStringData* PStringData;           // +0x00
+    ~CCharString();                         // 0x0099EAE0
+    const char* GetString() const { return PStringData == 0 ? "" : PStringData->Text; }
+};
+class CWideString {
+public:
+    void* PStringData;
+    CCharString ConvertToCharString() const;   // 0x0099B2C0
+};
+
+extern CWideString g_RegistryKeyLocation;  // 0x013BCA28
+extern const char* g_EULAFileName;          // 0x01374F54
+extern const char* g_WarrantyFileName;      // 0x01374F58
+
+typedef int (__stdcall* EBUEulaProc)(const char* regKeyLocation, const char* eulaFileName, const char* warrantyFileName, int checkForFirstRun);
+
+namespace EULA {
+
+int __fastcall DoEULAThings()
 {
-    const unsigned short kEulaLibraryName[] = L"eula.dll";
-    const char kEulaExportName[] = "EBUEula";
+    void* library = LoadLibraryW(L"eula.dll");
+    if (library == 0)
+        return 0;
+    EBUEulaProc eula = (EBUEulaProc)GetProcAddress(library, "EBUEula");
+    if (eula != 0)
+    {
+        bool accepted = eula(g_RegistryKeyLocation.ConvertToCharString().GetString(), g_EULAFileName, g_WarrantyFileName, 1) == 1;
+        if (accepted)
+        {
+            FreeLibrary(library);
+            return 1;
+        }
+    }
+    return 0;
 }
 
-extern "C" void* (FABLE_STDCALL* g_FableEulaLoadLibraryW_00401fe0)(
-    const unsigned short*);
-extern "C" void* (FABLE_STDCALL* g_FableEulaGetProcAddress_00401fe0)(
-    void*,
-    const char*);
-extern "C" int (FABLE_STDCALL* g_FableEulaFreeLibrary_00401fe0)(void*);
-
-extern "C" fable_u8 g_FableEulaLanguage_013BCA28;
-extern "C" fable_u8 g_FableEulaEmptyText_0129AAF4;
-extern "C" const char* g_FableEulaDocument_01374F54;
-extern "C" const char* g_FableWarrantyDocument_01374F58;
-
-extern "C" void* __fastcall FableEulaConvertLanguage_00401fe0(
-    void*,
-    void*,
-    void*);
-extern "C" void __fastcall FableEulaDestroyLanguage_00401fe0(void*, void*);
-
-__declspec(naked) int FABLE_FASTCALL EULA::DoEULAThings()
-{
-    __asm
-    {
-        push ecx
-        push edi
-        push offset kEulaLibraryName
-        call dword ptr [g_FableEulaLoadLibraryW_00401fe0]
-        mov edi, eax
-        test edi, edi
-        jnz library_loaded
-        pop edi
-        pop ecx
-        ret
-
-    library_loaded:
-        push esi
-        push offset kEulaExportName
-        push edi
-        call dword ptr [g_FableEulaGetProcAddress_00401fe0]
-        mov esi, eax
-        test esi, esi
-        jz failure
-        lea eax, dword ptr [esp + 8]
-        push eax
-        mov ecx, offset g_FableEulaLanguage_013BCA28
-        call FableEulaConvertLanguage_00401fe0
-        mov eax, dword ptr [eax]
-        test eax, eax
-        jnz language_present
-        mov eax, offset g_FableEulaEmptyText_0129AAF4
-        jmp language_ready
-
-    language_present:
-        mov eax, dword ptr [eax]
-
-    language_ready:
-        mov ecx, dword ptr [g_FableWarrantyDocument_01374F58]
-        mov edx, dword ptr [g_FableEulaDocument_01374F54]
-        push ebx
-        push 1
-        push ecx
-        push edx
-        push eax
-        call esi
-        mov ebx, eax
-        dec ebx
-        neg ebx
-        sbb bl, bl
-        lea ecx, dword ptr [esp + 0Ch]
-        inc bl
-        call FableEulaDestroyLanguage_00401fe0
-        test bl, bl
-        pop ebx
-        jz failure
-        push edi
-        call dword ptr [g_FableEulaFreeLibrary_00401fe0]
-        pop esi
-        mov eax, 1
-        pop edi
-        pop ecx
-        ret
-
-    failure:
-        pop esi
-        xor eax, eax
-        pop edi
-        pop ecx
-        ret
-    }
 }

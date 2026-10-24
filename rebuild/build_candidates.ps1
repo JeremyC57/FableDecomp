@@ -279112,6 +279112,251 @@ $catalog = @(
         TestSource = '00/b3/CEnginePrimitiveRenderer_AddRepeatedStaticMesh_00b32f70_test.cpp'
         PassPattern = '00b32f70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00401fe0'
+        Module = 'EULA'
+        Source = '00/40/EULA_DoEULAThings_00401fe0.cpp'
+        TestSource = '00/40/EULA_DoEULAThings_00401fe0_test.cpp'
+        PassPattern = '00401fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530a40'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_MakeUnavailable_00530a40.cpp'
+        TestSource = '00/53/NUISystemCComponent_MakeUnavailable_00530a40_test.cpp'
+        PassPattern = '00530a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530ce0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_MakeAvailable_00530ce0.cpp'
+        TestSource = '00/53/NUISystemCComponent_MakeAvailable_00530ce0_test.cpp'
+        PassPattern = '00530ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062f650'
+        Module = 'std::list<CCountedPointer<C3DSkeletalMorphParameter> >'
+        Source = '00/62/stdlistCCountedPointerC3DSkeletalMorphParameter_insert_0062f650.cpp'
+        TestSource = '00/62/stdlistCCountedPointerC3DSkeletalMorphParameter_insert_0062f650_test.cpp'
+        PassPattern = '0062f650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065e412'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/65/CVectorMapunsignedlong_LowerBound_0065e412.cpp'
+        TestSource = '00/65/CVectorMapunsignedlong_LowerBound_0065e412_test.cpp'
+        PassPattern = '0065e412_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067cff0'
+        Module = 'std::list<CReactionMatch_*>'
+        Source = '00/67/stdlistCReactionMatch_insert_0067cff0.cpp'
+        TestSource = '00/67/stdlistCReactionMatch_insert_0067cff0_test.cpp'
+        PassPattern = '0067cff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069c740'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/69/CVectorMapunsignedlong_LowerBound_0069c740.cpp'
+        TestSource = '00/69/CVectorMapunsignedlong_LowerBound_0069c740_test.cpp'
+        PassPattern = '0069c740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073d0e0'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/73/CVectorMapunsignedlong_LowerBound_0073d0e0.cpp'
+        TestSource = '00/73/CVectorMapunsignedlong_LowerBound_0073d0e0_test.cpp'
+        PassPattern = '0073d0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073d250'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/73/CVectorMapunsignedlong_UpperBound_0073d250.cpp'
+        TestSource = '00/73/CVectorMapunsignedlong_UpperBound_0073d250_test.cpp'
+        PassPattern = '0073d250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080e530'
+        Module = '_global'
+        Source = '00/80/global_ForEachIfCThingCThingFilterIsThrownByExplosionCA_0080e530.cpp'
+        TestSource = '00/80/global_ForEachIfCThingCThingFilterIsThrownByExplosionCA_0080e530_test.cpp'
+        PassPattern = '0080e530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00819fd0'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/81/CVectorMapunsignedlong_UpperBound_00819fd0.cpp'
+        TestSource = '00/81/CVectorMapunsignedlong_UpperBound_00819fd0_test.cpp'
+        PassPattern = '00819fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00863030'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/86/CVectorMapunsignedlong_UpperBound_00863030.cpp'
+        TestSource = '00/86/CVectorMapunsignedlong_UpperBound_00863030_test.cpp'
+        PassPattern = '00863030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086a8d0'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/86/CVectorMapunsignedlong_UpperBound_0086a8d0.cpp'
+        TestSource = '00/86/CVectorMapunsignedlong_UpperBound_0086a8d0_test.cpp'
+        PassPattern = '0086a8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008af1e0'
+        Module = 'CombatDialogueManager'
+        Source = '00/8a/CombatDialogueManager_IsSpeechGroupAllowed_008af1e0.cpp'
+        TestSource = '00/8a/CombatDialogueManager_IsSpeechGroupAllowed_008af1e0_test.cpp'
+        PassPattern = '008af1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008af5f0'
+        Module = 'CombatDialogueManager'
+        Source = '00/8a/CombatDialogueManager_IsSpeechAllowed_008af5f0.cpp'
+        TestSource = '00/8a/CombatDialogueManager_IsSpeechAllowed_008af5f0_test.cpp'
+        PassPattern = '008af5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008af780'
+        Module = 'CombatDialogueManager'
+        Source = '00/8a/CombatDialogueManager_Update_008af780.cpp'
+        TestSource = '00/8a/CombatDialogueManager_Update_008af780_test.cpp'
+        PassPattern = '008af780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008afc40'
+        Module = 'CombatDialogueManager'
+        Source = '00/8a/CombatDialogueManager_SaySpeech_008afc40.cpp'
+        TestSource = '00/8a/CombatDialogueManager_SaySpeech_008afc40_test.cpp'
+        PassPattern = '008afc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008eff40'
+        Module = 'Coin'
+        Source = '00/8e/Coin_Coin_008eff40.cpp'
+        TestSource = '00/8e/Coin_Coin_008eff40_test.cpp'
+        PassPattern = '008eff40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f0080'
+        Module = 'Coin'
+        Source = '00/8f/Coin_operator_008f0080.cpp'
+        TestSource = '00/8f/Coin_operator_008f0080_test.cpp'
+        PassPattern = '008f0080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00959040'
+        Module = 'CMessageEventManager'
+        Source = '00/95/CMessageEventManager_FindMostRecentMessageCFilterBind4CMessageEventFi_00959040.cpp'
+        TestSource = '00/95/CMessageEventManager_FindMostRecentMessageCFilterBind4CMessageEventFi_00959040_test.cpp'
+        PassPattern = '00959040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b1ff0'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/9b/CVectorMapunsignedlong_UpperBound_009b1ff0.cpp'
+        TestSource = '00/9b/CVectorMapunsignedlong_UpperBound_009b1ff0_test.cpp'
+        PassPattern = '009b1ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2190'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/9b/CVectorMapunsignedlong_UpperBound_009b2190.cpp'
+        TestSource = '00/9b/CVectorMapunsignedlong_UpperBound_009b2190_test.cpp'
+        PassPattern = '009b2190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2230'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/9b/CVectorMapunsignedlong_LowerBound_009b2230.cpp'
+        TestSource = '00/9b/CVectorMapunsignedlong_LowerBound_009b2230_test.cpp'
+        PassPattern = '009b2230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cc640'
+        Module = 'CompareDataOffset'
+        Source = '00/9c/CompareDataOffset_operator_009cc640.cpp'
+        TestSource = '00/9c/CompareDataOffset_operator_009cc640_test.cpp'
+        PassPattern = '009cc640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7dcc0'
+        Module = 'CVectorMap<unsigned___int64'
+        Source = '00/a7/CVectorMapunsignedint64_UpperBound_00a7dcc0.cpp'
+        TestSource = '00/a7/CVectorMapunsignedint64_UpperBound_00a7dcc0_test.cpp'
+        PassPattern = '00a7dcc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7df60'
+        Module = 'CVectorMap<unsigned___int64'
+        Source = '00/a7/CVectorMapunsignedint64_LowerBound_00a7df60.cpp'
+        TestSource = '00/a7/CVectorMapunsignedint64_LowerBound_00a7df60_test.cpp'
+        PassPattern = '00a7df60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abc440'
+        Module = 'C3DMeshFileTrianglesChunk'
+        Source = '00/ab/C3DMeshFileTrianglesChunk_GetList_00abc440.cpp'
+        TestSource = '00/ab/C3DMeshFileTrianglesChunk_GetList_00abc440_test.cpp'
+        PassPattern = '00abc440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2c50'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/af/CVectorMapunsignedlong_LowerBound_00af2c50.cpp'
+        TestSource = '00/af/CVectorMapunsignedlong_LowerBound_00af2c50_test.cpp'
+        PassPattern = '00af2c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b05890'
+        Module = 'CVectorMap<unsigned_long'
+        Source = '00/b0/CVectorMapunsignedlong_LowerBound_00b05890.cpp'
+        TestSource = '00/b0/CVectorMapunsignedlong_LowerBound_00b05890_test.cpp'
+        PassPattern = '00b05890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bed2a0'
+        Module = 'CVectorMap<long'
+        Source = '00/be/CVectorMaplong_LowerBound_00bed2a0.cpp'
+        TestSource = '00/be/CVectorMaplong_LowerBound_00bed2a0_test.cpp'
+        PassPattern = '00bed2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c44270'
+        Module = 'CircularQueue'
+        Source = '00/c4/CircularQueue_DequeueItem_00c44270.cpp'
+        TestSource = '00/c4/CircularQueue_DequeueItem_00c44270_test.cpp'
+        PassPattern = '00c44270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c44430'
+        Module = 'CircularQueue'
+        Source = '00/c4/CircularQueue_GetItemAtIndex_00c44430.cpp'
+        TestSource = '00/c4/CircularQueue_GetItemAtIndex_00c44430_test.cpp'
+        PassPattern = '00c44430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb9740'
+        Module = 'CVectorMap<unsigned___int64'
+        Source = '00/cb/CVectorMapunsignedint64_LowerBound_00cb9740.cpp'
+        TestSource = '00/cb/CVectorMapunsignedint64_LowerBound_00cb9740_test.cpp'
+        PassPattern = '00cb9740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb97b0'
+        Module = 'CVectorMap<unsigned___int64'
+        Source = '00/cb/CVectorMapunsignedint64_LowerBound_00cb97b0.cpp'
+        TestSource = '00/cb/CVectorMapunsignedint64_LowerBound_00cb97b0_test.cpp'
+        PassPattern = '00cb97b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb98a0'
+        Module = 'CVectorMap<unsigned___int64'
+        Source = '00/cb/CVectorMapunsignedint64_UpperBound_00cb98a0.cpp'
+        TestSource = '00/cb/CVectorMapunsignedint64_UpperBound_00cb98a0_test.cpp'
+        PassPattern = '00cb98a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1020,3 +1020,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Map readers: call the stream's slot-6 `ReadNullTerminatedString` directly in the string traits (an inline wrapper adds a `lea`); build DefaultVal by implicit conversion `DefaultVal("", 0)`; a named `secondTraits` local shares the outer slot (chunk 335).
 - `remove_copy_if` length goes through an inline `float sqrtf(float)` over the `sqrt` intrinsic; a double expression reorders the x87 stack (008c2ed0).
 - A filter inlined into a template loop needs `__forceinline` on LowerBound, GetTC and the filter's operator(); plain `inline` is not enough (0080e5d0).
+- Positive nested ifs share one fail tail; early returns duplicate it (008afc40, 00401fe0). A guard written `!(a<x) && !(b<y)` gives retail's two forward jumps; a float divisor local turns two divides into one reciprocal multiply, so write `(float)g_framesPerSecond` at each use (008af5f0).
+- A CRGBColour copy ctor built on `Set(R,G,B,A)` gives retail's word load plus byte stores; the implicit copy is one dword move (004c5890).
+- In the lane, `#include` of a header local to the probe folder hangs q.py; inline the model into each source. VC7.1 needs `> >` in nested template arguments and `unsigned short` wide strings (wchar_t is not built in).
+- A bootstrap fixture body (rebuild/build_bootstrap.ps1) can sit at the same `src/compiled` path the lander writes for a new landing: move the fixture copy to `integration/bootstrap_asm/` first (0x00401FE0).
