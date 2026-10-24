@@ -1334,3 +1334,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Counted release `mov edx,[eax+0xc]; dec edx; mov ecx,edx; test ecx,ecx; mov [eax+0xc],edx` is a decrement through a LOCAL copy of PStringData with the member re-read for delete; through the member it is `dec dword ptr [eax+0xc]` (0x99B770).
 - FableWin.pdb `@Name@N` names are extern "C" `__fastcall` and work as exact leaves; model STLport char_traits/allocator as `class` (a `struct` mangles `U`, so a mangled leaf names nothing) (chunk 409).
 - A `// Flags:`-prefixed comment line is parsed as flags by gall.sh and finish.py: keep exactly one real `// Flags:` line. The STLport wide-string members ending in `_M_throw_length_error` are int3-after-noreturn rows (0x99C670..0x99CC80).
+- A pair with a user constructor returns through a hidden pointer; a POD 8-byte pair comes back in edx:eax (0x9A7A20). A named find-result local compares with end() after the call; inline `find(k) != end()` loads end() first (0x9A80B0).
+- A plain byte loop gives VC's `rep stos` fill idiom where an explicit memset does not (0x9A0460); `value == true` on a bool is `cmp dl,1`, `if (value)` is `test dl,dl` (0x99F9B0).
+- VC7.1 tests cannot use local structs as template arguments; hoist them to global scope (chunk 410).

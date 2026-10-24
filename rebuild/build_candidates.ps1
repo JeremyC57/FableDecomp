@@ -298697,6 +298697,286 @@ $catalog = @(
         TestSource = '00/99/STLbasicstringunsignedshort_pushback_0099cc80_test.cpp'
         PassPattern = '0099cc80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0099f9b0'
+        Module = '_global'
+        Source = '00/99/global_GFBoolToCharString_0099f9b0.cpp'
+        TestSource = '00/99/global_GFBoolToCharString_0099f9b0_test.cpp'
+        PassPattern = '0099f9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099fa90'
+        Module = '_global'
+        Source = '00/99/global_GFByteSizeToCharString_0099fa90.cpp'
+        TestSource = '00/99/global_GFByteSizeToCharString_0099fa90_test.cpp'
+        PassPattern = '0099fa90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a0460'
+        Module = 'CBasicString<char>'
+        Source = '00/9a/CBasicStringchar_Append_009a0460.cpp'
+        TestSource = '00/9a/CBasicStringchar_Append_009a0460_test.cpp'
+        PassPattern = '009a0460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a0ec0'
+        Module = 'CStreamingFontBank'
+        Source = '00/9a/CStreamingFontBank_SetAlphaMaskUVs_009a0ec0.cpp'
+        TestSource = '00/9a/CStreamingFontBank_SetAlphaMaskUVs_009a0ec0_test.cpp'
+        PassPattern = '009a0ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a0f00'
+        Module = '_global'
+        Source = '00/9a/global_InitializeStreamingFontCacheEntries_009a0f00.cpp'
+        TestSource = '00/9a/global_InitializeStreamingFontCacheEntries_009a0f00_test.cpp'
+        PassPattern = '009a0f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a0f90'
+        Module = '_global'
+        Source = '00/9a/global_UpdateUseStreamingFontCacheEntry_009a0f90.cpp'
+        TestSource = '00/9a/global_UpdateUseStreamingFontCacheEntry_009a0f90_test.cpp'
+        PassPattern = '009a0f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a1020'
+        Module = '_global'
+        Source = '00/9a/global_InsertNewStreamingFontCacheEntry_009a1020.cpp'
+        TestSource = '00/9a/global_InsertNewStreamingFontCacheEntry_009a1020_test.cpp'
+        PassPattern = '009a1020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a1660'
+        Module = '_global'
+        Source = '00/9a/global_UninitializeStreamingFontTextureCache_009a1660.cpp'
+        TestSource = '00/9a/global_UninitializeStreamingFontTextureCache_009a1660_test.cpp'
+        PassPattern = '009a1660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a7a20'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_GetAllRetailPaths_009a7a20.cpp'
+        TestSource = '00/9a/CBankFileManager_GetAllRetailPaths_009a7a20_test.cpp'
+        PassPattern = '009a7a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a7ac0'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_CBankFileManager_009a7ac0.cpp'
+        TestSource = '00/9a/CBankFileManager_CBankFileManager_009a7ac0_test.cpp'
+        PassPattern = '009a7ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a80b0'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_BankExists_009a80b0.cpp'
+        TestSource = '00/9a/CBankFileManager_BankExists_009a80b0_test.cpp'
+        PassPattern = '009a80b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aa4c0'
+        Module = '_STL::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >'
+        Source = '00/9a/STLRbtreeCWideStringCWideStringIdentityCWideStringlessCWideString_Mfind_009aa4c0.cpp'
+        TestSource = '00/9a/STLRbtreeCWideStringCWideStringIdentityCWideStringlessCWideString_Mfind_009aa4c0_test.cpp'
+        PassPattern = '009aa4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aa900'
+        Module = '_STL::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >'
+        Source = '00/9a/STLRbtreeCWideStringCWideStringIdentityCWideStringlessCWideString_Minsert_009aa900.cpp'
+        TestSource = '00/9a/STLRbtreeCWideStringCWideStringIdentityCWideStringlessCWideString_Minsert_009aa900_test.cpp'
+        PassPattern = '009aa900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aaeb0'
+        Module = '_STL::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >'
+        Source = '00/9a/STLRbtreeCWideStringCWideStringIdentityCWideStringlessCWideString_insertunique_009aaeb0.cpp'
+        TestSource = '00/9a/STLRbtreeCWideStringCWideStringIdentityCWideStringlessCWideString_insertunique_009aaeb0_test.cpp'
+        PassPattern = '009aaeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aaf70'
+        Module = '_STL::_Rb_tree<CCharString, pair<const CCharString, SRecord20>, _Select1st<...>, less<CCharString> >'
+        Source = '00/9a/STLRbtreeCCharStringpairconstCCharStringSRecord20Select1stlessCCharString_Minsert_009aaf70.cpp'
+        TestSource = '00/9a/STLRbtreeCCharStringpairconstCCharStringSRecord20Select1stlessCCharString_Minsert_009aaf70_test.cpp'
+        PassPattern = '009aaf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ab120'
+        Module = '_STL::_Rb_tree<CCharString, pair<const CCharString, SBankRecord>, _Select1st<...>, less<CCharString> >'
+        Source = '00/9a/STLRbtreeCCharStringpairconstCCharStringSBankRecordSelect1stlessCCharString_Minsert_009ab120.cpp'
+        TestSource = '00/9a/STLRbtreeCCharStringpairconstCCharStringSBankRecordSelect1stlessCCharString_Minsert_009ab120_test.cpp'
+        PassPattern = '009ab120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ad580'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_GetPDefClassInfo_009ad580.cpp'
+        TestSource = '00/9a/CDefinitionManager_GetPDefClassInfo_009ad580_test.cpp'
+        PassPattern = '009ad580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b1870'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedlinearinsert_009b1870.cpp'
+        TestSource = '00/9b/STL_unguardedlinearinsert_009b1870_test.cpp'
+        PassPattern = '009b1870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b1a30'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedlinearinsert_009b1a30.cpp'
+        TestSource = '00/9b/STL_unguardedlinearinsert_009b1a30_test.cpp'
+        PassPattern = '009b1a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b1b00'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedlinearinsert_009b1b00.cpp'
+        TestSource = '00/9b/STL_unguardedlinearinsert_009b1b00_test.cpp'
+        PassPattern = '009b1b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b1c30'
+        Module = '_STL'
+        Source = '00/9b/STL_pushheap_009b1c30.cpp'
+        TestSource = '00/9b/STL_pushheap_009b1c30_test.cpp'
+        PassPattern = '009b1c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2780'
+        Module = '_STL::vector<SRecord12>'
+        Source = '00/9b/STLvectorSRecord12_Mallocateandcopy_009b2780.cpp'
+        TestSource = '00/9b/STLvectorSRecord12_Mallocateandcopy_009b2780_test.cpp'
+        PassPattern = '009b2780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2cb0'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedinsertionsortaux_009b2cb0.cpp'
+        TestSource = '00/9b/STL_unguardedinsertionsortaux_009b2cb0_test.cpp'
+        PassPattern = '009b2cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2d40'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedinsertionsortaux_009b2d40.cpp'
+        TestSource = '00/9b/STL_unguardedinsertionsortaux_009b2d40_test.cpp'
+        PassPattern = '009b2d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2db0'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedinsertionsortaux_009b2db0.cpp'
+        TestSource = '00/9b/STL_unguardedinsertionsortaux_009b2db0_test.cpp'
+        PassPattern = '009b2db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2ea0'
+        Module = '_STL'
+        Source = '00/9b/STL_adjustheap_009b2ea0.cpp'
+        TestSource = '00/9b/STL_adjustheap_009b2ea0_test.cpp'
+        PassPattern = '009b2ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b3580'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedpartition_009b3580.cpp'
+        TestSource = '00/9b/STL_unguardedpartition_009b3580_test.cpp'
+        PassPattern = '009b3580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b3bb0'
+        Module = '_STL'
+        Source = '00/9b/STL_makeheap_009b3bb0.cpp'
+        TestSource = '00/9b/STL_makeheap_009b3bb0_test.cpp'
+        PassPattern = '009b3bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b4650'
+        Module = '_STL'
+        Source = '00/9b/STL_linearinsert_009b4650.cpp'
+        TestSource = '00/9b/STL_linearinsert_009b4650_test.cpp'
+        PassPattern = '009b4650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b46b0'
+        Module = '_STL'
+        Source = '00/9b/STL_linearinsert_009b46b0.cpp'
+        TestSource = '00/9b/STL_linearinsert_009b46b0_test.cpp'
+        PassPattern = '009b46b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b47f0'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedlinearinsert_009b47f0.cpp'
+        TestSource = '00/9b/STL_unguardedlinearinsert_009b47f0_test.cpp'
+        PassPattern = '009b47f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b4a20'
+        Module = '_STL::vector<unsigned short>'
+        Source = '00/9b/STLvectorunsignedshort_pushback_009b4a20.cpp'
+        TestSource = '00/9b/STLvectorunsignedshort_pushback_009b4a20_test.cpp'
+        PassPattern = '009b4a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b4d80'
+        Module = '_STL::vector<SRecord12>'
+        Source = '00/9b/STLvectorSRecord12_reserve_009b4d80.cpp'
+        TestSource = '00/9b/STLvectorSRecord12_reserve_009b4d80_test.cpp'
+        PassPattern = '009b4d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b4e20'
+        Module = '_STL::vector<unsigned char>'
+        Source = '00/9b/STLvectorunsignedchar_reserve_009b4e20.cpp'
+        TestSource = '00/9b/STLvectorunsignedchar_reserve_009b4e20_test.cpp'
+        PassPattern = '009b4e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b5160'
+        Module = '_STL::_Rb_tree<unsigned long, pair<const unsigned long, CIVCountedPointer<T> >, _Select1st<...>, less<unsigned long> >'
+        Source = '00/9b/STLRbtreeunsignedlongpairconstunsignedlongCIVCountedPointerTSelect1stlessunsigne_Minsert_009b5160.cpp'
+        TestSource = '00/9b/STLRbtreeunsignedlongpairconstunsignedlongCIVCountedPointerTSelect1stlessunsigne_Minsert_009b5160_test.cpp'
+        PassPattern = '009b5160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b5800'
+        Module = '_STL'
+        Source = '00/9b/STL_unguardedpartition_009b5800.cpp'
+        TestSource = '00/9b/STL_unguardedpartition_009b5800_test.cpp'
+        PassPattern = '009b5800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b5920'
+        Module = '_STL'
+        Source = '00/9b/STL_linearinsert_009b5920.cpp'
+        TestSource = '00/9b/STL_linearinsert_009b5920_test.cpp'
+        PassPattern = '009b5920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b5990'
+        Module = '_STL'
+        Source = '00/9b/STL_linearinsert_009b5990.cpp'
+        TestSource = '00/9b/STL_linearinsert_009b5990_test.cpp'
+        PassPattern = '009b5990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b68d0'
+        Module = '_STL'
+        Source = '00/9b/STL_insertionsort_009b68d0.cpp'
+        TestSource = '00/9b/STL_insertionsort_009b68d0_test.cpp'
+        PassPattern = '009b68d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a7d40'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_GetRetailBankFilePath_009a7d40.cpp'
+        TestSource = '00/9a/CBankFileManager_GetRetailBankFilePath_009a7d40_test.cpp'
+        PassPattern = '009a7d40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
