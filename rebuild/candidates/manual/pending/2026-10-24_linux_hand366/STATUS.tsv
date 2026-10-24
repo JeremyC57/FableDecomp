@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a2aed0	RELOCATION_MATCH	67v67	PASS	CPhysicsMeshInfo fill (CMeshDataBankEntry base + CIVCountedPointer); propagated pair<__int64> label wrong
+00a32fb0	RELOCATION_MATCH	87v87	PASS	{long,{CCharString,CCountedPointer}} fill; label wrong
+00a49c10	RELOCATION_MATCH	66v66	PASS	{CCharString,long,CCountedPointer} fill; label wrong
+00a6b340	MATCH	41v41	PASS	CIVCountedPointer fill, no allocator (ret 4); label wrong
+00a6fe70	RELOCATION_MATCH	87v87	PASS	{long,{CCharString,CCountedPointer}} fill (twin of 00a32fb0); label wrong
+00a6ff40	RELOCATION_MATCH	90v90	PASS	{CCharString,{CCharString,CCountedPointer}} fill; label wrong
+00ae98a0	MATCH	52v52	PASS	{long,CCountedPointer} fill; label wrong
+00af6980	RELOCATION_MATCH	75v75	PASS	pair<NParticleEngine::EPSCType,CComponentInstance> fill; label wrong
+00b6b700	RELOCATION_MATCH	49v49	PASS	CVertexShader fill with allocator (ret 8); label wrong
+00b6bb10	RELOCATION_MATCH	49v49	PASS	CVertexShader fill without allocator (ret 4); label wrong
+00bedbb0	RELOCATION_MATCH	63v63	PASS	{long,CCompositeSurfaceInfo} fill; label wrong
+00cba420	MATCH	58v58	PASS	{unsigned __int64,CCountedPointer} fill (the label's own instantiation)
+00cba4e0	RELOCATION_MATCH	60v60	PASS	{CCharString,CCountedPointer} fill; label wrong
+00a0e980	RELOCATION_MATCH	81v81	PASS	STLport deque iterator (8-byte elem) operator+; label _Vb_iterator wrong
+00401312	RELOCATION_MATCH	68v68	PASS	CRT _RTC_Terminate (__try/__except under optimize(s)); label Init_CallFunctionPointers wrong
+00401400	MATCH	49v49	PASS	`vector destructor iterator' (label says constructor)
+004014a0	RELOCATION_MATCH	56v56	PASS	CCRC::Calc; already landed as Global_CCRC_Calc_004014a0.cpp
+00401b20	RELOCATION_MATCH	49v49	PASS	GFFreeConfigDetection; already landed (Global_*)
+00401b80	RELOCATION_MATCH	64v64	PASS	GFUninitialise; already landed (Global_*)
+00403480	RELOCATION_MATCH	141v141	PASS	WinMain (/GS, mutex guard, micro-thread stack); already landed (Global_*)
+00404440	RELOCATION_MATCH	69v69	PASS	CFileInstallerSingleton::Get; already landed
+00404e10	RELOCATION_MATCH	225v225	PASS	NUISystem::CIME::Callback_DrawFans; 3rd attempt (point array, shr chain, display-manager local)
+00405bc0	RELOCATION_MATCH	26v26	PASS	STLport __copy_trivial_backward (byte twin of 00410d60); label make_heap wrong
+00405d60	RELOCATION_MATCH	78v78	PASS	CActionInputControl::TransferBinaryOut; label WriteToFile wrong
+00406780	RELOCATION_MATCH	44v44	PASS	CUserProfileManager::GetDebugSaveDir (inferred); label ConvertPathToFullPath wrong
+004082d0	RELOCATION_MATCH	110v110	PASS	CUserProfileManager::GetProfileDir; label GetDefaultVal<CSpecialEffectsStringMap> wrong
+00409090	RELOCATION_MATCH	174v174	PASS	CUserProfileManager::GetMaxAntialiasing; 2nd attempt; label Engine_FindPrimitiveInArray wrong
+0040bb30	RELOCATION_MATCH	89v89	PASS	CUserProfileManager::ProcessPendingTutorials; label Tutorial_CheckDivineWrathStrike wrong
+0040e1e0	RELOCATION_MATCH	39v39	PASS	GetDefaultVal<CCharString> (no NRVO copy)
+0040e350	MATCH	72v72	PASS	STLport __copy<CActionInputControl*> with tag + int*
+0040f6b0	RELOCATION_MATCH	218v218	PASS	_STL::vector<char>::_M_insert_overflow (speed TU, inline memmove/memset); label CString_FillRange wrong
+0040fca0	RELOCATION_MATCH	145v145	PASS	GFSerialiseVectorBinaryOut<CActionInputControl>
+00412450	RELOCATION_MATCH	104v104	PASS	vector<CWideString>::erase(first,last); __forceinline copy/destroy helpers
+004127e0	RELOCATION_MATCH	101v101	PASS	deque<ETutorialCategory>::_M_push_back_aux_v
+00412b70	RELOCATION_MATCH	101v101	PASS	vector<CWideString>::resize(n); exact mangled leaf
+00412c70	RELOCATION_MATCH	171v171	PASS	GFSerialiseVectorBinaryIn<CActionInputControl>; label <CBrainUpdateZone> wrong
+00412d20	RELOCATION_MATCH	140v140	PASS	GFSerialiseVectorBinaryIn<unsigned long> (ICF-ambiguous 4-byte T); label <CRGBColour> wrong
+00413120	RELOCATION_MATCH	128v128	PASS	CGameInitialiser::SetupProgressDisplay; already landed (Global_*)
+00414ce0	RELOCATION_MATCH	66v66	PASS	CCodeSectionManagerSingleton::Get
+00415260	RELOCATION_MATCH	227v227	PASS	GetFontBankName (jump table); landed Global_GetFontBankName swaps FRENCH/ITALIAN

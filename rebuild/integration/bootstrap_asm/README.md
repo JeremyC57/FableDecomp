@@ -33,3 +33,17 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - NResourceDirectoryNames_GetMyDocumentsDir_0041a430_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CPersistContext_TextConstructor_009badd0.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CPersistContext_TextConstructor_009badd0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CFileInstallerSingleton_Get_00404440.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_CCRC_Calc_004014a0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_WinMain_00403480.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GFFreeConfigDetection_00401b20_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetFontBankName_00415260.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GFInitialiseSetupProgressDisplay_00413120.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GFUninitialise_00401b80.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GFUninitialise_00401b80_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GFInitialiseSetupProgressDisplay_00413120_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_WinMain_00403480_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetFontBankName_00415260_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GFFreeConfigDetection_00401b20.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_CCRC_Calc_004014a0.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CFileInstallerSingleton_Get_00404440_test.cpp moved here 2026-10-24 when the address landed as genuine C++.

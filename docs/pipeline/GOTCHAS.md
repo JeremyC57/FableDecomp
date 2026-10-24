@@ -1165,3 +1165,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - The 3-argument `uninitialized_fill_n` front end (`ret 4`) needs a `__forceinline` inner `__uninitialized_fill_n` (00440180, 007688b0).
 - Dinkumware `_Uninit_copy` takes its tag by value (`ret 0Ch`) vs STLport `__uninitialized_copy` (`ret 8`) (00c29340 vs 0082c420).
 - A 9-byte stride is pair<packed C2DVector, uchar>; a 16-byte stride copying 12 or 9 bytes is pair<u64, long> / pair<u64, bool> (008002f0, 00a7e630).
+- Relocation masking cannot check which string goes with which jump-table case: the earlier GetFontBankName (0x00415260) graded RELOCATION_MATCH with French and Italian swapped (0x0C = FRENCH, 0x10 = ITALIAN in retail). Check case-to-literal pairings against the retail table by hand.
+- VC7.1 has no NRVO: a named local returned by value is copied (0040e1e0).
+- A test that needs an SEH fault calls `RaiseException(0xE0000001, 0, 0, 0)` (declared extern "C" __stdcall dllimport); never `volatile` (banned) and avoid <windows.h> in lane tests (cl hangs).
