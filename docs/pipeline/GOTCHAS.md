@@ -1205,3 +1205,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A `// Leaf:` that names no symbol in the object silently grades the largest function: member templates need `??$_M_allocate_and_copy@` / `??$_M_insert_dispatch@` (chunk 374).
 - `_M_insert_overflow(__false_type)`: frame-pointer size TU, `__forceinline` uninitialized helpers, out-of-line `__fastcall _Construct`; `__copy_trivial` is `(last == first) ? result : (char*)memmove(..) + n` (chunk 374).
 - Inline rb-tree `erase(iterator)` is a `__cdecl` rebalance, `_Destroy`, `if (p) free(p)`, `--count`; same-TU `auto_inline(off)` map::find/erase bodies keep a one-word frame (005003e0).
+- STLport 4.5 tree iterator steps are the static `_Rb_global<bool>::_M_increment(node)` inlined as `_M_node = _M_increment(_M_node)`; `advance` over it needs `__forceinline __advance` (0x527FC0, 0x528090).
+- Same-TU noinline comparator bodies keep the comparator in a register in `__partial_sort` / `__insertion_sort` (chunk 375).
+- `resize(MAX(index+1, size()))` gives two divides; a `count = size()` local gives one (0x523790 vs 0x5237F0).
+- strstr replace loop: first strstr before the loop, the next at its bottom after `hit += strlen(key)`; `while ((hit = strstr(...)))` differs (0x527200).
+- STLport list/pair/allocator are `class`: with `struct` the leaf misses and the grader silently takes the largest function (chunk 375).

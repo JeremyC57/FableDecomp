@@ -289775,6 +289775,279 @@ $catalog = @(
         TestSource = '00/51/CReplaceSerialiseCOldFileFormatMapHeader5COldFileFormatMapHeader4_GetMaxSize_00515fa0_test.cpp'
         PassPattern = '00515fa0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00516f80'
+        Module = 'CExitTextOffsetTree'
+        Source = '00/51/CExitTextOffsetTree_Mcopy_00516f80.cpp'
+        TestSource = '00/51/CExitTextOffsetTree_Mcopy_00516f80_test.cpp'
+        PassPattern = '00516f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00517130'
+        Module = 'list<CIntelligentPointer<CThingAICreature> >'
+        Source = '00/51/listCIntelligentPointerCThingAICreature_Minsertdispatch_00517130.cpp'
+        TestSource = '00/51/listCIntelligentPointerCThingAICreature_Minsertdispatch_00517130_test.cpp'
+        PassPattern = '00517130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00517480'
+        Module = '_global'
+        Source = '00/51/global_copy_00517480.cpp'
+        TestSource = '00/51/global_copy_00517480_test.cpp'
+        PassPattern = '00517480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00517500'
+        Module = '_global'
+        Source = '00/51/global_insertionsort_00517500.cpp'
+        TestSource = '00/51/global_insertionsort_00517500_test.cpp'
+        PassPattern = '00517500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00517590'
+        Module = 'pair<CThingBuilding* const, list<CThingAICreature*> >'
+        Source = '00/51/pairCThingBuildingconstlistCThingAICreature_pair_00517590.cpp'
+        TestSource = '00/51/pairCThingBuildingconstlistCThingAICreature_pair_00517590_test.cpp'
+        PassPattern = '00517590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005176d0'
+        Module = '_global'
+        Source = '00/51/global_makeheap_005176d0.cpp'
+        TestSource = '00/51/global_makeheap_005176d0_test.cpp'
+        PassPattern = '005176d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005179c0'
+        Module = 'vector<CRGBColour>'
+        Source = '00/51/vectorCRGBColour_vector_005179c0.cpp'
+        TestSource = '00/51/vectorCRGBColour_vector_005179c0_test.cpp'
+        PassPattern = '005179c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00518040'
+        Module = 'CReplaceSerialise<COldFileFormatMapHeader4,COldFileFormatMapHeader3>'
+        Source = '00/51/CReplaceSerialiseCOldFileFormatMapHeader4COldFileFormatMapHeader3_ConvertPreviousUnknownVersionUp_00518040.cpp'
+        TestSource = '00/51/CReplaceSerialiseCOldFileFormatMapHeader4COldFileFormatMapHeader3_ConvertPreviousUnknownVersionUp_00518040_test.cpp'
+        PassPattern = '00518040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00518c00'
+        Module = '_global'
+        Source = '00/51/global_uninitializedcopy_00518c00.cpp'
+        TestSource = '00/51/global_uninitializedcopy_00518c00_test.cpp'
+        PassPattern = '00518c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00518c90'
+        Module = '_global'
+        Source = '00/51/global_uninitializedfilln_00518c90.cpp'
+        TestSource = '00/51/global_uninitializedfilln_00518c90_test.cpp'
+        PassPattern = '00518c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00519510'
+        Module = 'CReplaceSerialise<CFileFormatLevel,COldFileFormatLevel3>'
+        Source = '00/51/CReplaceSerialiseCFileFormatLevelCOldFileFormatLevel3_ConvertToThisVersion_00519510.cpp'
+        TestSource = '00/51/CReplaceSerialiseCFileFormatLevelCOldFileFormatLevel3_ConvertToThisVersion_00519510_test.cpp'
+        PassPattern = '00519510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00519630'
+        Module = 'CReplaceSerialise<COldFileFormatMapHeader7,COldFileFormatMapHeader6>'
+        Source = '00/51/CReplaceSerialiseCOldFileFormatMapHeader7COldFileFormatMapHeader6_GetMaxSize_00519630.cpp'
+        TestSource = '00/51/CReplaceSerialiseCOldFileFormatMapHeader7COldFileFormatMapHeader6_GetMaxSize_00519630_test.cpp'
+        PassPattern = '00519630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00519800'
+        Module = 'vector<CMapInfo>'
+        Source = '00/51/vectorCMapInfo_reserve_00519800.cpp'
+        TestSource = '00/51/vectorCMapInfo_reserve_00519800_test.cpp'
+        PassPattern = '00519800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00519970'
+        Module = 'CBuildingCreatureMapTree'
+        Source = '00/51/CBuildingCreatureMapTree_Merase_00519970.cpp'
+        TestSource = '00/51/CBuildingCreatureMapTree_Merase_00519970_test.cpp'
+        PassPattern = '00519970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005199e0'
+        Module = 'pair<unsigned __int64, list<C2DLineF> >'
+        Source = '00/51/pairunsignedint64listC2DLineF_pair_005199e0.cpp'
+        TestSource = '00/51/pairunsignedint64listC2DLineF_pair_005199e0_test.cpp'
+        PassPattern = '005199e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00519eb0'
+        Module = '_global'
+        Source = '00/51/global_destroyaux_00519eb0.cpp'
+        TestSource = '00/51/global_destroyaux_00519eb0_test.cpp'
+        PassPattern = '00519eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00519ff0'
+        Module = '_global'
+        Source = '00/51/global_copy_00519ff0.cpp'
+        TestSource = '00/51/global_copy_00519ff0_test.cpp'
+        PassPattern = '00519ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051a040'
+        Module = 'CSetAndArray_0051a040'
+        Source = '00/51/CSetAndArray0051a040_CSetAndArray0051a040_0051a040.cpp'
+        TestSource = '00/51/CSetAndArray0051a040_CSetAndArray0051a040_0051a040_test.cpp'
+        PassPattern = '0051a040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051aa00'
+        Module = 'CBuildingCreatureMapTree'
+        Source = '00/51/CBuildingCreatureMapTree_Minsert_0051aa00.cpp'
+        TestSource = '00/51/CBuildingCreatureMapTree_Minsert_0051aa00_test.cpp'
+        PassPattern = '0051aa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051acf0'
+        Module = '_global'
+        Source = '00/51/global_partialsort_0051acf0.cpp'
+        TestSource = '00/51/global_partialsort_0051acf0_test.cpp'
+        PassPattern = '0051acf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051adf0'
+        Module = 'CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>'
+        Source = '00/51/CReplaceSerialiseCFileFormatMapHeaderCOldFileFormatMapHeader8_GetMaxSize_0051adf0.cpp'
+        TestSource = '00/51/CReplaceSerialiseCFileFormatMapHeaderCOldFileFormatMapHeader8_GetMaxSize_0051adf0_test.cpp'
+        PassPattern = '0051adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051bec0'
+        Module = 'vector<CRegion>'
+        Source = '00/51/vectorCRegion_vector_0051bec0.cpp'
+        TestSource = '00/51/vectorCRegion_vector_0051bec0_test.cpp'
+        PassPattern = '0051bec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051c110'
+        Module = 'vector<CSeaBodyDesc>'
+        Source = '00/51/vectorCSeaBodyDesc_Minsertoverflow_0051c110.cpp'
+        TestSource = '00/51/vectorCSeaBodyDesc_Minsertoverflow_0051c110_test.cpp'
+        PassPattern = '0051c110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051c1f0'
+        Module = 'vector<pair<unsigned __int64, list<C2DLineF> > >'
+        Source = '00/51/vectorpairunsignedint64listC2DLineF_Minsertoverflow_0051c1f0.cpp'
+        TestSource = '00/51/vectorpairunsignedint64listC2DLineF_Minsertoverflow_0051c1f0_test.cpp'
+        PassPattern = '0051c1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051c890'
+        Module = 'CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>'
+        Source = '00/51/CReplaceSerialiseCFileFormatMapHeaderCOldFileFormatMapHeader8_ConvertToThisVersion_0051c890.cpp'
+        TestSource = '00/51/CReplaceSerialiseCFileFormatMapHeaderCOldFileFormatMapHeader8_ConvertToThisVersion_0051c890_test.cpp'
+        PassPattern = '0051c890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051d990'
+        Module = '_global'
+        Source = '00/51/global_GFCalcThingUID_0051d990.cpp'
+        TestSource = '00/51/global_GFCalcThingUID_0051d990_test.cpp'
+        PassPattern = '0051d990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051f980'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_SetSuspendAllAI_0051f980.cpp'
+        TestSource = '00/51/CThingManager_SetSuspendAllAI_0051f980_test.cpp'
+        PassPattern = '0051f980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051fa00'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_SetAllBossesToBossPhase_0051fa00.cpp'
+        TestSource = '00/51/CThingManager_SetAllBossesToBossPhase_0051fa00_test.cpp'
+        PassPattern = '0051fa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00523790'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/52/NThingManagerCEntityRuntimePersistence_SetLevelPersistentScript_00523790.cpp'
+        TestSource = '00/52/NThingManagerCEntityRuntimePersistence_SetLevelPersistentScript_00523790_test.cpp'
+        PassPattern = '00523790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005237f0'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/52/NThingManagerCEntityRuntimePersistence_SetGamePersistentScript_005237f0.cpp'
+        TestSource = '00/52/NThingManagerCEntityRuntimePersistence_SetGamePersistentScript_005237f0_test.cpp'
+        PassPattern = '005237f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00523910'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/52/NThingManagerCEntityRuntimePersistence_SetGamePersistentSaveDataCompressed_00523910.cpp'
+        TestSource = '00/52/NThingManagerCEntityRuntimePersistence_SetGamePersistentSaveDataCompressed_00523910_test.cpp'
+        PassPattern = '00523910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527200'
+        Module = 'CCharString'
+        Source = '00/52/CCharString_ReplaceAll_00527200.cpp'
+        TestSource = '00/52/CCharString_ReplaceAll_00527200_test.cpp'
+        PassPattern = '00527200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527320'
+        Module = 'CThingObject'
+        Source = '00/52/CThingObject_Alloc_00527320.cpp'
+        TestSource = '00/52/CThingObject_Alloc_00527320_test.cpp'
+        PassPattern = '00527320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527fc0'
+        Module = '_global'
+        Source = '00/52/global_uninitializedcopy_00527fc0.cpp'
+        TestSource = '00/52/global_uninitializedcopy_00527fc0_test.cpp'
+        PassPattern = '00527fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528090'
+        Module = '_global'
+        Source = '00/52/global_advance_00528090.cpp'
+        TestSource = '00/52/global_advance_00528090_test.cpp'
+        PassPattern = '00528090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528140'
+        Module = '_global'
+        Source = '00/52/global_copy_00528140.cpp'
+        TestSource = '00/52/global_copy_00528140_test.cpp'
+        PassPattern = '00528140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528610'
+        Module = 'CNPCNameMapTree'
+        Source = '00/52/CNPCNameMapTree_Mlowerbound_00528610.cpp'
+        TestSource = '00/52/CNPCNameMapTree_Mlowerbound_00528610_test.cpp'
+        PassPattern = '00528610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005289c0'
+        Module = 'CNPCNameMapTree'
+        Source = '00/52/CNPCNameMapTree_Mcreatenode_005289c0.cpp'
+        TestSource = '00/52/CNPCNameMapTree_Mcreatenode_005289c0_test.cpp'
+        PassPattern = '005289c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005290e0'
+        Module = 'vector<unsigned char>'
+        Source = '00/52/vectorunsignedchar_vector_005290e0.cpp'
+        TestSource = '00/52/vectorunsignedchar_vector_005290e0_test.cpp'
+        PassPattern = '005290e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

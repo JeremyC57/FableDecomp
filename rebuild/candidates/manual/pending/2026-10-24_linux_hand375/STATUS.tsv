@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00516f80	RELOCATION_MATCH	224v224	PASS	STLport _Rb_tree::_M_copy, map<CCharString,C2DVector> (CRegion exit-text offsets)
+00517130	RELOCATION_MATCH	98v98	PASS	list<CIntelligentPointer<CThingAICreature>>::_M_insert_dispatch; cached-neighbour insert
+00517480	RELOCATION_MATCH	122v122	PASS	__copy into back_insert_iterator<list<C2DLineF>>; C2DVector user copy ctor
+00517500	RELOCATION_MATCH	113v113	PASS	__insertion_sort<CThingBuilding**,CIsHouseLargerThan>; same-TU noinline comparator body
+00517590	RELOCATION_MATCH	73v73	PASS	pair<CThingBuilding* const,list<CThingAICreature*>> copy ctor; list is a class (V)
+005176d0	RELOCATION_MATCH	77v77	PASS	__make_heap<CThingBuilding**,CIsHouseLargerThan> (__fastcall)
+005179c0	RELOCATION_MATCH	78v78	PASS	vector<CRGBColour>(n); same-TU noinline __uninitialized_fill_n
+00518040	RELOCATION_MATCH	225v225	PASS	CReplaceSerialise<Header4,Header3>::ConvertPreviousUnknownVersionUp; empty inline ConvertFromOld
+00518c00	RELOCATION_MATCH	142v142	PASS	__uninitialized_copy<CSeaBodyDesc*>; vector<long> copy ctor inline
+00518c90	RELOCATION_MATCH	140v140	PASS	__uninitialized_fill_n<CSeaBodyDesc*>
+00518dc0	DIFFER	189v181	-	CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::operator(); GetTC key not homed in the dead thing slot (8- v 4-byte frame)
+00519510	RELOCATION_MATCH	80v80	PASS	CReplaceSerialise<CFileFormatLevel,COldFileFormatLevel3>::ConvertToThisVersion; temporary form
+00519630	RELOCATION_MATCH	110v110	PASS	CReplaceSerialise<Header7,Header6>::GetMaxSize; early-return form + full same-TU chain
+00519800	RELOCATION_MATCH	164v164	PASS	vector<CMapInfo>::reserve; Ego_r CMapInfo (72 bytes)
+00519970	RELOCATION_MATCH	108v108	PASS	_Rb_tree::_M_erase of map<CThingBuilding*,list<CThingAICreature*>>
+005199e0	RELOCATION_MATCH	79v79	PASS	pair<unsigned __int64,list<C2DLineF>> copy ctor
+00519eb0	RELOCATION_MATCH	51v51	PASS	__destroy_aux<CSeaBodyDesc*> (__fastcall)
+00519ff0	RELOCATION_MATCH	67v67	PASS	__copy over pair<u64,list<C2DLineF>>; list::operator= declared
+0051a040	RELOCATION_MATCH	57v57	PASS	unidentified set+array default ctor (no xrefs); descriptive local class
+0051aa00	RELOCATION_MATCH	180v180	PASS	_Rb_tree::_M_insert of map<CThingBuilding*,list<CThingAICreature*>>
+0051acf0	RELOCATION_MATCH	104v104	PASS	__partial_sort<CThingBuilding**,CIsHouseLargerThan>; same-TU noinline comparator body
+0051adf0	RELOCATION_MATCH	110v110	PASS	CReplaceSerialise<CFileFormatMapHeader,Header8>::GetMaxSize; full chain
+0051bec0	RELOCATION_MATCH	122v122	PASS	vector<CRegion>(n); inline fill, CRegion temporary
+0051c110	RELOCATION_MATCH	224v224	PASS	vector<CSeaBodyDesc>::_M_insert_overflow; same-TU noinline callee bodies
+0051c1f0	RELOCATION_MATCH	208v208	PASS	vector<pair<u64,list<C2DLineF>>>::_M_insert_overflow
+0051c890	RELOCATION_MATCH	79v79	PASS	CReplaceSerialise<CFileFormatMapHeader,Header8>::ConvertToThisVersion
+0051d990	RELOCATION_MATCH	33v33	PASS	GFCalcThingUID (FableWin name)
+0051f980	RELOCATION_MATCH	120v120	PASS	CThingManager::SetSuspendAllAI; GetAllThings/push_back/_M_insert_overflow bodies in the TU
+0051fa00	RELOCATION_MATCH	193v193	PASS	CThingManager::SetAllBossesToBossPhase; GetTCIfPresent unset-local idiom
+00523790	RELOCATION_MATCH	81v81	PASS	CEntityRuntimePersistence::SetLevelPersistentScript; size read once into a local
+005237f0	RELOCATION_MATCH	111v111	PASS	CEntityRuntimePersistence::SetGamePersistentScript; MAX macro (two divides)
+00523910	RELOCATION_MATCH	163v163	PASS	CEntityRuntimePersistence::SetGamePersistentSaveDataCompressed; resize(n) + memcpy intrinsic
+00527200	RELOCATION_MATCH	224v224	PASS	CCharString::ReplaceAll (name unproven); strstr ahead of the loop and at its bottom
+00527320	RELOCATION_MATCH	26v26	PASS	CThingObject::Alloc
+00527fc0	RELOCATION_MATCH	103v103	PASS	__uninitialized_copy over set<CCharString> iterators; STLport 4.5 _Rb_global::_M_increment inline
+00528090	MATCH	167v167	PASS	advance(set<CCharString> iterator&, unsigned); __forceinline __advance
+00528140	RELOCATION_MATCH	99v99	PASS	__copy over set<CCharString> iterators (input_iterator_tag)
+00528610	MATCH	55v55	PASS	NPCNameMap _Rb_tree::_M_lower_bound
+005289c0	RELOCATION_MATCH	70v70	PASS	NPCNameMap _Rb_tree::_M_create_node
+005290e0	RELOCATION_MATCH	86v86	PASS	vector<unsigned char> copy ctor
