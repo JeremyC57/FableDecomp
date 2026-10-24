@@ -1,0 +1,131 @@
+#include <cstdio>
+#ifndef _MSC_VER
+#define __fastcall
+#define __forceinline inline
+#endif
+struct CTCBase { int m_dummy; };
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* end;
+    SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+    SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+};
+struct CThing {
+    unsigned long m_stateFlags;
+    unsigned char m_thingType;
+    unsigned long m_presentBits[9];
+    CInterfaceMap m_interfaces;
+    unsigned char m_flags91;
+    CInterfaceMap::SEntry m_entries[6];
+    CThing() : m_stateFlags(0), m_thingType(5), m_flags91(0)
+    {
+        for (int i = 0; i < 9; ++i) m_presentBits[i] = 0;
+        for (int i = 0; i < 6; ++i) { m_entries[i].type = 0x7fffffff; m_entries[i].component = 0; }
+        m_interfaces.first = m_interfaces.last = m_interfaces.end = m_entries;
+    }
+    virtual ~CThing() {}
+    virtual unsigned long GetStateFlags() { return m_stateFlags; }
+    void AddTC(long type, CTCBase* component)     // test helper: add in ascending type order
+    {
+        m_presentBits[type >> 5] |= 1UL << (type & 31);
+        m_interfaces.last->type = type; m_interfaces.last->component = component;
+        ++m_interfaces.last; m_interfaces.end = m_interfaces.last;
+    }
+    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> __forceinline bool GetInterface(long type, T** out)
+    {
+        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
+            long key = type;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&key);
+            if (it == map->last || type < it->type)
+                it = map->last;
+            *out = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+    template <class T> __forceinline bool GetInterfaceConst(long type, T** out) const
+    {
+        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
+            long key = type;
+            const CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&key);
+            if (it == map->last || type < it->type)
+                it = map->last;
+            *out = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+};
+class CBaseIntelligentPointer {
+public:
+    CThing* m_pItem;
+    CBaseIntelligentPointer() : m_pItem(0) {}
+    virtual ~CBaseIntelligentPointer() {}
+    CThing* GetPItem() const { return m_pItem; }
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    CIntelligentPointer() {}
+    CIntelligentPointer(CThing* thing) { m_pItem = thing; }
+    CIntelligentPointer(const CIntelligentPointer& o) : CBaseIntelligentPointer() { m_pItem = o.m_pItem; }
+};
+struct CTCUserActionPointBase : CTCBase {
+    bool m_free;
+    long m_inUse;
+    bool IsActionPointFree() { return m_free; }
+    long GetNumberOfActionPointsInUse() { return m_inUse; }
+};
+struct CTCBed : CTCBase {
+    bool m_taken;
+};
+class CThingFilter_BedOccupant {                  // test stand-in: a thing whose state-flag bit 0 is set is occupied
+public:
+    bool operator()(CThing* thing) const { return (thing->m_stateFlags & 1) != 0; }
+};
+class CIsFreeBed {
+public:
+    CThingFilter_BedOccupant m_occupied;
+    bool operator()(const CIntelligentPointer<CThing>& thing) const;
+};
+bool CIsFreeBed::operator()(const CIntelligentPointer<CThing>& thing) const
+{
+    if (thing.GetPItem() && thing.GetPItem()->HasTC(0x35) && !(thing.GetPItem()->m_flags91 & 0x20)) {
+        CTCBed* bed;
+        if (!thing.GetPItem()->GetInterface(0xd, &bed) || !bed->m_taken) {
+            CTCUserActionPointBase* actionPoint;
+            if (thing.GetPItem()->GetInterfaceConst(0x2d, &actionPoint))
+                return actionPoint->IsActionPointFree();
+            if (!m_occupied(thing.GetPItem()))
+                return true;
+        }
+    }
+    return false;
+}
+int main()
+{
+    CIsFreeBed pred;
+    CTCBase bedTc;
+    CTCBed tc; tc.m_taken = false;
+    CTCUserActionPointBase ap; ap.m_free = true; ap.m_inUse = 0;
+    CThing a; a.AddTC(0xd, &tc); a.AddTC(0x2d, &ap); a.AddTC(0x35, &bedTc);    // bed with an action point
+    if (!pred(CIntelligentPointer<CThing>(&a))) { std::printf("0092e540_TEST FAIL\n"); return 1; }
+    ap.m_free = false;
+    if (pred(CIntelligentPointer<CThing>(&a))) { std::printf("0092e540_TEST FAIL\n"); return 1; }
+    ap.m_free = true; tc.m_taken = true;
+    if (pred(CIntelligentPointer<CThing>(&a))) { std::printf("0092e540_TEST FAIL\n"); return 1; }
+    tc.m_taken = false; a.m_flags91 = 0x20;
+    if (pred(CIntelligentPointer<CThing>(&a))) { std::printf("0092e540_TEST FAIL\n"); return 1; }
+    CThing b; b.AddTC(0x35, &bedTc);                                        // bare bed: the occupant filter decides
+    if (!pred(CIntelligentPointer<CThing>(&b))) { std::printf("0092e540_TEST FAIL\n"); return 1; }
+    b.m_stateFlags = 1;
+    if (pred(CIntelligentPointer<CThing>(&b))) { std::printf("0092e540_TEST FAIL\n"); return 1; }
+    CThing c;                                                               // not a bed
+    if (pred(CIntelligentPointer<CThing>(&c)) || pred(CIntelligentPointer<CThing>(0))) { std::printf("0092e540_TEST FAIL\n"); return 1; }
+    std::printf("0092e540_TEST PASS\n");
+    return 0;
+}

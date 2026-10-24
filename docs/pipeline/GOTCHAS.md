@@ -1106,3 +1106,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - The element's copy-ctor form decides a fill_n loop: trivial = one block; STLport pair user ctor = key then `lea` block; flat user ctor = all words through esi; nested user ctors = a second induction register (chunk 354).
 - Retail CParentDefClassBase is 0x39 bytes (CVectorMap 16, not the PDB's 20): the first derived member is at +0x3C, not +0x40 (engine/CParentDefClassBase.h uses the PDB 0x3D).
 - `find_if` with a by-value predicate and no tag keeps the value in a stack slot with edx unused; a `ret 8` find with no edx argument has `__find` inlined (chunk 354).
+- /Gr algorithm templates need an explicit `__fastcall`; an empty POD functor returned by value comes back in al (0084f280).
+- A 7-dword functor's scheduled copy-out needs a memberwise user copy ctor (implicit = `rep movsd`, 008065c0); an 8-dword implicit copy is retail's `rep movsd` (006f3530).
+- A predicate's HasTC must return the masked word, not bool, to get `test ch,20h`; one trailing `return false` avoids esi shrink-wrap and `neg/sbb/inc` (0092e540, 00946c60).
+- `CThing* t = p.GetPItem(); t->F(arg)` loads the object before pushing the argument (0071b590).

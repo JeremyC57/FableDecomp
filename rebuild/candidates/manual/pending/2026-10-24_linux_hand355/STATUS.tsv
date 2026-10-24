@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008ab710	DIFFER	102v102	-	parked: x87 operand order of dx*dx+dy*dy only (remove_copy_if, not _Find_if)
+0084f280	RELOCATION_MATCH	72v72	PASS	for_each (not _Find_if) with an empty POD functor returned in al; CCountedPointer by-value copy/dtor inline
+008e8a90	RELOCATION_MATCH	46v46	PASS	count_if (not _Find_if) over CIntelligentPointer<CThing>, out-of-line filter 0x8E8A10
+008e8b80	RELOCATION_MATCH	46v46	PASS	count_if with unary_negate of the same filter
+00811e20	MATCH	73v73	PASS	find_if CIsEventOfTypeAfterFrame; cmp operand order follows source (m_frame < ev->m_frame)
+0092e540	RELOCATION_MATCH	227v227	PASS	CIsFreeBed::operator() (not _Find_if); masked-word HasTC, single nested if
+00946c60	RELOCATION_MATCH	224v224	PASS	CIsCandleNeedingChanging::operator(); __forceinline IsCandle helper, one && chain
+0094b9b0	RELOCATION_MATCH	147v147	PASS	CIsBenchWithOnePerson::operator()
+0091b890	MATCH	60v60	PASS	for_each mem_fun_t over list<CTCPerceiveThing*> (not find_if CIsIntelligentPointerToThing)
+0065f96d	RELOCATION_MATCH	62v62	PASS	__find_if CIsHornTaskWithThisHorn (op 0x65F116) over list<CCountedPointer<CVillageTaskHorn>>, /Os TU
+0065f9ab	RELOCATION_MATCH	53v53	PASS	__find_if HasGuardProperty, tag ref in edx, /Os TU
+0082c720	RELOCATION_MATCH	71v71	PASS	find_if CIsMarkerBoundToThing; engine header CMarkerInfo.h
+008e2f10	RELOCATION_MATCH	158v158	PASS	for_each CGetBestIciclePointForTarget; C3DVector user copy ctor keeps the best point in memory
+00695b20	MATCH	69v69	PASS	for_each CDispatchActionEventIfActivationFrame
+006fb640	RELOCATION_MATCH	117v117	PASS	for_each CGetEventsFilteredByTime; same-TU noinline CSmallVector::resize stand-in
+00528720	MATCH	61v61	PASS	for_each binder2nd<mem_fun1_t<void,CThing,bool>> (SetInLimbo), not CGetBestTargetInDirection
+006fce00	RELOCATION_MATCH	54v54	PASS	for_each 8-byte functor, out-of-line operator() 0x6FCC80
+008065c0	RELOCATION_MATCH	89v89	PASS	for_each 7-dword functor; memberwise user copy ctor for the scheduled copy-out
+0085b840	RELOCATION_MATCH	61v61	PASS	for_each 12-byte functor, out-of-line operator() 0x85B720
+0043f310	MATCH	58v58	PASS	for_each mem_fun_t (vcall thunk 0x43E420), not CAddDefNamesToComboBox
+0043f360	MATCH	58v58	PASS	for_each mem_fun_ref_t CEnginePrimitiveHandle::Clear
+004ad890	RELOCATION_MATCH	63v63	PASS	for_each 4-byte functor, out-of-line operator()(CThing*) 0x4AD3D0
+00726660	RELOCATION_MATCH	63v63	PASS	for_each 4-byte functor, out-of-line operator()(CThing*) 0x726160
+00738f30	RELOCATION_MATCH	81v81	PASS	for_each CGetMaxComboStage over pair<unsigned long,CAnimationEntry>
+0084ad60	MATCH	58v58	PASS	for_each mem_fun_t CTCPerceiveThing::SetAsIndirectlyAwareOfPerceivedThing (vector range)
+0085a960	MATCH	82v82	PASS	for_each CGetActiveStrikeEventThatIsFirstToFinish; inline IsActiveOnFrame member picks edx/esi
+0085a9c0	MATCH	82v82	PASS	byte-identical twin of 0085a960
+0090c060	RELOCATION_MATCH	150v150	PASS	CAddFreeBenchToList::operator() (not _For_each)
+00938db0	DIFFER	163v159	-	parked: seat register/slot homing (CAddFreeSeatToList::operator())
+009438f0	DIFFER	163v159	-	parked: seat register/slot homing (CAddOccupiedSeatToList::operator())
+00946520	RELOCATION_MATCH	123v123	PASS	CIsFreeCookingPot::operator() (not _For_each CAddFreeBenchToList)
+007100a0	RELOCATION_MATCH	106v106	PASS	for_each CMultiplyAnimSetAlphaBy, clamp [0,1], inline SetAlpha
+006f3530	RELOCATION_MATCH	54v54	PASS	for_each 8-dword functor (implicit copy = rep movsd)
+0071b590	RELOCATION_MATCH	85v85	PASS	for_each CKillThing; named target local orders object before arg push
+0071b690	RELOCATION_MATCH	101v101	PASS	for_each CSetThingInLimbo; named target local
+0071b700	RELOCATION_MATCH	101v101	PASS	for_each CSetThingAsDrawable (virtual slot 28)
+0065f5d2	RELOCATION_MATCH	50v50	PASS	for_each CNearestBuildingWithProperty, out-of-line copy ctor/op, /Os TU
+00754d80	DIFFER	88v92	-	parked: retail keeps m_bestAngle on the x87 stack across the loop
+0053caa0	RELOCATION_MATCH	48v48	PASS	list::_Insert member template, by-value input_iterator_tag, /Os TU
+005794c3	RELOCATION_MATCH	48v48	PASS	byte-identical twin of 0053caa0 (insert 0x42AB33)

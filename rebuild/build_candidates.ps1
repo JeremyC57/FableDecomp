@@ -284059,6 +284059,258 @@ $catalog = @(
         TestSource = '00/f3/std_uninitializedfilln_00f3b220_test.cpp'
         PassPattern = '00f3b220_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0043f310'
+        Module = 'std'
+        Source = '00/43/std_foreach_0043f310.cpp'
+        TestSource = '00/43/std_foreach_0043f310_test.cpp'
+        PassPattern = '0043f310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043f360'
+        Module = 'std'
+        Source = '00/43/std_foreach_0043f360.cpp'
+        TestSource = '00/43/std_foreach_0043f360_test.cpp'
+        PassPattern = '0043f360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ad890'
+        Module = 'std'
+        Source = '00/4a/std_foreach_004ad890.cpp'
+        TestSource = '00/4a/std_foreach_004ad890_test.cpp'
+        PassPattern = '004ad890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528720'
+        Module = 'std'
+        Source = '00/52/std_foreach_00528720.cpp'
+        TestSource = '00/52/std_foreach_00528720_test.cpp'
+        PassPattern = '00528720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053caa0'
+        Module = 'std::list<CClass*>'
+        Source = '00/53/stdlistCClass_Insert_0053caa0.cpp'
+        TestSource = '00/53/stdlistCClass_Insert_0053caa0_test.cpp'
+        PassPattern = '0053caa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005794c3'
+        Module = 'std::list<CClass*>'
+        Source = '00/57/stdlistCClass_Insert_005794c3.cpp'
+        TestSource = '00/57/stdlistCClass_Insert_005794c3_test.cpp'
+        PassPattern = '005794c3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f5d2'
+        Module = 'std'
+        Source = '00/65/std_foreach_0065f5d2.cpp'
+        TestSource = '00/65/std_foreach_0065f5d2_test.cpp'
+        PassPattern = '0065f5d2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f96d'
+        Module = 'std'
+        Source = '00/65/std_findif_0065f96d.cpp'
+        TestSource = '00/65/std_findif_0065f96d_test.cpp'
+        PassPattern = '0065f96d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f9ab'
+        Module = 'std'
+        Source = '00/65/std_findif_0065f9ab.cpp'
+        TestSource = '00/65/std_findif_0065f9ab_test.cpp'
+        PassPattern = '0065f9ab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00695b20'
+        Module = 'std'
+        Source = '00/69/std_foreach_00695b20.cpp'
+        TestSource = '00/69/std_foreach_00695b20_test.cpp'
+        PassPattern = '00695b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f3530'
+        Module = 'std'
+        Source = '00/6f/std_foreach_006f3530.cpp'
+        TestSource = '00/6f/std_foreach_006f3530_test.cpp'
+        PassPattern = '006f3530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fb640'
+        Module = 'std'
+        Source = '00/6f/std_foreach_006fb640.cpp'
+        TestSource = '00/6f/std_foreach_006fb640_test.cpp'
+        PassPattern = '006fb640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fce00'
+        Module = 'std'
+        Source = '00/6f/std_foreach_006fce00.cpp'
+        TestSource = '00/6f/std_foreach_006fce00_test.cpp'
+        PassPattern = '006fce00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007100a0'
+        Module = 'std'
+        Source = '00/71/std_foreach_007100a0.cpp'
+        TestSource = '00/71/std_foreach_007100a0_test.cpp'
+        PassPattern = '007100a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071b590'
+        Module = 'std'
+        Source = '00/71/std_foreach_0071b590.cpp'
+        TestSource = '00/71/std_foreach_0071b590_test.cpp'
+        PassPattern = '0071b590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071b690'
+        Module = 'std'
+        Source = '00/71/std_foreach_0071b690.cpp'
+        TestSource = '00/71/std_foreach_0071b690_test.cpp'
+        PassPattern = '0071b690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071b700'
+        Module = 'std'
+        Source = '00/71/std_foreach_0071b700.cpp'
+        TestSource = '00/71/std_foreach_0071b700_test.cpp'
+        PassPattern = '0071b700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00726660'
+        Module = 'std'
+        Source = '00/72/std_foreach_00726660.cpp'
+        TestSource = '00/72/std_foreach_00726660_test.cpp'
+        PassPattern = '00726660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00738f30'
+        Module = 'std'
+        Source = '00/73/std_foreach_00738f30.cpp'
+        TestSource = '00/73/std_foreach_00738f30_test.cpp'
+        PassPattern = '00738f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008065c0'
+        Module = 'std'
+        Source = '00/80/std_foreach_008065c0.cpp'
+        TestSource = '00/80/std_foreach_008065c0_test.cpp'
+        PassPattern = '008065c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00811e20'
+        Module = 'std'
+        Source = '00/81/std_findif_00811e20.cpp'
+        TestSource = '00/81/std_findif_00811e20_test.cpp'
+        PassPattern = '00811e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082c720'
+        Module = 'std'
+        Source = '00/82/std_findif_0082c720.cpp'
+        TestSource = '00/82/std_findif_0082c720_test.cpp'
+        PassPattern = '0082c720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084ad60'
+        Module = 'std'
+        Source = '00/84/std_foreach_0084ad60.cpp'
+        TestSource = '00/84/std_foreach_0084ad60_test.cpp'
+        PassPattern = '0084ad60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084f280'
+        Module = 'std'
+        Source = '00/84/std_foreach_0084f280.cpp'
+        TestSource = '00/84/std_foreach_0084f280_test.cpp'
+        PassPattern = '0084f280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085a960'
+        Module = 'std'
+        Source = '00/85/std_foreach_0085a960.cpp'
+        TestSource = '00/85/std_foreach_0085a960_test.cpp'
+        PassPattern = '0085a960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085a9c0'
+        Module = 'std'
+        Source = '00/85/std_foreach_0085a9c0.cpp'
+        TestSource = '00/85/std_foreach_0085a9c0_test.cpp'
+        PassPattern = '0085a9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085b840'
+        Module = 'std'
+        Source = '00/85/std_foreach_0085b840.cpp'
+        TestSource = '00/85/std_foreach_0085b840_test.cpp'
+        PassPattern = '0085b840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e2f10'
+        Module = 'std'
+        Source = '00/8e/std_foreach_008e2f10.cpp'
+        TestSource = '00/8e/std_foreach_008e2f10_test.cpp'
+        PassPattern = '008e2f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e8a90'
+        Module = 'std'
+        Source = '00/8e/std_countif_008e8a90.cpp'
+        TestSource = '00/8e/std_countif_008e8a90_test.cpp'
+        PassPattern = '008e8a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e8b80'
+        Module = 'std'
+        Source = '00/8e/std_countif_008e8b80.cpp'
+        TestSource = '00/8e/std_countif_008e8b80_test.cpp'
+        PassPattern = '008e8b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090c060'
+        Module = 'CAddFreeBenchToList'
+        Source = '00/90/CAddFreeBenchToList_operator_0090c060.cpp'
+        TestSource = '00/90/CAddFreeBenchToList_operator_0090c060_test.cpp'
+        PassPattern = '0090c060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091b890'
+        Module = 'std'
+        Source = '00/91/std_foreach_0091b890.cpp'
+        TestSource = '00/91/std_foreach_0091b890_test.cpp'
+        PassPattern = '0091b890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092e540'
+        Module = 'CIsFreeBed'
+        Source = '00/92/CIsFreeBed_operator_0092e540.cpp'
+        TestSource = '00/92/CIsFreeBed_operator_0092e540_test.cpp'
+        PassPattern = '0092e540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00946520'
+        Module = 'CIsFreeCookingPot'
+        Source = '00/94/CIsFreeCookingPot_operator_00946520.cpp'
+        TestSource = '00/94/CIsFreeCookingPot_operator_00946520_test.cpp'
+        PassPattern = '00946520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00946c60'
+        Module = 'CIsCandleNeedingChanging'
+        Source = '00/94/CIsCandleNeedingChanging_operator_00946c60.cpp'
+        TestSource = '00/94/CIsCandleNeedingChanging_operator_00946c60_test.cpp'
+        PassPattern = '00946c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094b9b0'
+        Module = 'CIsBenchWithOnePerson'
+        Source = '00/94/CIsBenchWithOnePerson_operator_0094b9b0.cpp'
+        TestSource = '00/94/CIsBenchWithOnePerson_operator_0094b9b0_test.cpp'
+        PassPattern = '0094b9b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
