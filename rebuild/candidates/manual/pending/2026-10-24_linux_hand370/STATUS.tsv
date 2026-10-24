@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00475bf6	RELOCATION_MATCH	69v69	PASS	STLport _Rb_tree<CCharString,long>::erase(key): equal_range + distance + erase(range); y-off+s TU
+00475d07	DIFFER	73v73	-	_Rb_tree<CCharString,long>::_M_lower_bound: register swap only (y edi/key ebx in retail)
+00475d50	DIFFER	73v73	-	_Rb_tree<CCharString,long>::_M_upper_bound: same register swap as 00475d07
+00475dfa	DIFFER	152v152	-	GFSerialiseVectorBinaryIn<C2DVector>: index/base esi<->edi swap in the read loop only
+004761aa	RELOCATION_MATCH	104v104	PASS	STLport __copy_ptrs<CQuickAccessItemButtonGuiDef*>: __copy + member operator= __forceinline in the /Os TU
+00476497	RELOCATION_MATCH	110v110	PASS	STLport __copy_backward_ptrs<CQuickAccessItemButtonGuiDef*>: same model as 004761aa
+00477428	RELOCATION_MATCH	56v56	PASS	STLport vector<T*> copy ctor (3-arg uninitialized_copy wrapper); y-off+s
+004774d6	RELOCATION_MATCH	90v90	PASS	STLport vector<CEngineLocalDetailObjectDef> copy ctor; y-off+s
+00477530	RELOCATION_MATCH	60v60	PASS	STLport _Vector_base<CEngineLocalDetailObjectDef>(n, a); /Os
+0047876b	RELOCATION_MATCH	83v83	PASS	STLport vector<CAbilityTrackLevelDef> copy ctor; y-off+s
+004787be	RELOCATION_MATCH	56v56	PASS	STLport _Vector_base<CAbilityTrackLevelDef>(n, a); /Os
+00478dd6	RELOCATION_MATCH	230v230	PASS	STLport vector<CAbilityTrackLevelDef>::_M_insert_overflow (non-POD) verbatim; y-off+s
+004792cf	DIFFER	82v79	-	CPersistContext::Transfer<list<COpinionTransientOffset>>: retail hoists lea ecx,[traits] above the mode switch (+3 bytes)
+00479449	RELOCATION_MATCH	29v29	PASS	STLport list<COpinionTransientOffset>::push_back = insert(end(), x); /Os, forceinline insert/end
+0047a1e9	RELOCATION_MATCH	230v230	PASS	STLport vector<CAppearanceModifierScalingDef>::_M_insert_overflow (non-POD); y-off+s
+0047c2e0	RELOCATION_MATCH	68v68	PASS	STLport __uninitialized_fill_n<CHeroLogBook::CQuestDesc*>; speed TU
+0047c350	RELOCATION_MATCH	57v57	PASS	pair<const ECategory, vector<CHeroLogBookEntry>> ??_G (delete p); same-TU __destroy_aux homes the tag over flags
+0047c420	RELOCATION_MATCH	80v80	PASS	STLport vector<CHeroLogBook::CQuestObjectiveDesc>::push_back; speed TU
+0047c470	RELOCATION_MATCH	90v90	PASS	STLport vector<CHeroLogBook::CHeroLogBookEntry>::push_back; speed TU
+0047c500	RELOCATION_MATCH	202v202	PASS	STLport _Rb_tree<ECategory, ..vector<CHeroLogBookEntry>>::_M_insert; iterator needs a user ctor (hidden result)
+0047c6a0	RELOCATION_MATCH	128v128	PASS	STLport _Rb_tree<ECategory, ..>::_M_erase with the pair/vector dtors inlined; speed TU
+0047cb50	RELOCATION_MATCH	207v207	PASS	STLport map<ECategory, vector<CHeroLogBookEntry>>::operator[]; same-TU out-of-line callees (escape knowledge)
+0047cde0	RELOCATION_MATCH	96v96	PASS	STLport vector<CHeroLogBook::CQuestDesc>::push_back; speed TU
+0047ce40	MATCH	46v46	PASS	STLport fill(uchar*, uchar*, const uchar&) memset overload
+0047d9e3	RELOCATION_MATCH	109v109	PASS	VideoOptionsChangedConfirmed (Ego_r name); /Os, GetInterface stand-ins
+0047e941	RELOCATION_MATCH	109v109	PASS	VideoOptionsNotAcceptedConfirmed (Ego_r name; catalog duplicates ...ChangedConfirmed); /Os
+004856cd	RELOCATION_MATCH	73v73	PASS	STLport _Rb_tree<CWideString,bool>::_M_find; /Os, forceinline less
+00485b6c	RELOCATION_MATCH	132v132	PASS	STLport vector<uchar>::_M_insert_overflow (POD); y-off+s
+00485bf0	RELOCATION_MATCH	160v160	PASS	STLport _Rb_tree<CWideString,bool>::_M_insert; y-off+s
+00485e5c	RELOCATION_MATCH	146v146	PASS	STLport _Rb_tree<CWideString,bool>::insert_unique(v); y-off+s
+0048608c	RELOCATION_MATCH	224v224	PASS	STLport vector<CHeroMarriageInfo>::_M_fill_insert; same-TU edx-clobbering stand-ins (5 grades)
+00486c40	RELOCATION_MATCH	224v224	PASS	GFFloatToWideString(double) (Ego_r name)
+0048d5c0	RELOCATION_MATCH	122v122	PASS	filtering copy of a list<CThing*> into back_inserter(vector<CThing*>); same-TU noinline _M_insert_overflow
+0048d940	DIFFER	45v58	-	GFFloatToLongFloor: retail inline asm (bare dword fistp); retail_asm candidate, brief forbids __asm
+0048dae0	MATCH	40v40	PASS	GFLimit<float>(T&, const T&, const T&) __fastcall template
+0048dbf9	RELOCATION_MATCH	67v67	PASS	GetNumberOfCharactersOfTypeInString (Ego_r name); /Os
+0048e012	RELOCATION_MATCH	80v80	PASS	CSubtitleRenderer::GetCharWidthW (static __fastcall, Ego_r name); y-off+s
+0048e072	RELOCATION_MATCH	48v48	PASS	CSubtitleRenderer::IsTextReadyForClickPast (Ego_r name, inferred); /Os
+004936ba	MATCH	41v41	PASS	STLport __copy<16-byte POD> (random_access tag); /Os
+00493875	RELOCATION_MATCH	156v156	PASS	STLport _Deque_base<CSubtitleRenderer::CSetTextInfo>::_M_initialize_map (element inferred by size); y-off+s

@@ -1182,3 +1182,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A double member plus an own vptr pads the vptr to 8: a vptr-only root base keeps members at +4 (0x4350D0).
 - /O2 duplicates a base call into the first of two branches; retail calling it once means pragma "s" (0x42D604).
 - Implicit `const char*` to CCharString temporaries are built before explicit argument temporaries (0x419D90); `L""` in a lane TU needs `<stddef.h>`.
+- `auto_inline(off)` does not stop a speed TU inlining a template member called with constant args: put `__declspec(noinline)` on the in-class declaration (0x48D5C0).
+- An STLport `_Rb_tree_iterator` needs a user ctor or `_M_insert` returns it in eax (`ret 10h` vs `ret 14h`, 0x47C500).
+- A /Os TU calls the generated def-class `operator=` out of line: spell a `__forceinline` memberwise operator= (0x4761AA).
+- STLport `insert_unique(v)` passes `__y` twice on the begin() path; deque `_M_initialize_map` writes `max(8, n+2)` via two by-ref temporaries (0x485E5C, 0x493875).
+- COMDATs of one container come from different TUs: choose pragmas per row, not per address range (0x475BF6 /Os frame vs 0x475D07 speed).
+- finish.py's line-1 parser splits on `::` before the first `(`: keep `::`-bearing template args out of line 1.
