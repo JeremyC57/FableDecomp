@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005f7b76	MATCH	37v37	PASS	STLport __copy<EHeroAbility*> (size TU); label _Copy_impl<CRGBColour*> propagated
+005f7c13	MATCH	39v39	PASS	STLport __copy_backward<EHeroAbility*> (size TU)
+005f7cd0	MATCH	44v44	PASS	__unguarded_linear_insert<pair<long,EHeroAbility>> (AbilityButtons sort chain)
+005f7d15	MATCH	44v44	PASS	__unguarded_linear_insert<pair<long,long>> (ExpressionButtons sort chain)
+005f847f	MATCH	71v71	PASS	__copy<CDefPointer<const CHeroAbilityDef>*>, forceinline counted operator=
+005f84c6	MATCH	45v45	PASS	__median<pair<long,EHeroAbility>> (size TU shared epilogue)
+005f84f3	MATCH	45v45	PASS	__median<pair<long,long>>
+005f8648	RELOCATION_MATCH	98v98	PASS	__adjust_heap<pair<long,EHeroAbility>>, __push_heap 0x5F7D85 declared; y-off+s
+005f86aa	RELOCATION_MATCH	98v98	PASS	__adjust_heap<pair<long,long>>, __push_heap 0x5F7DD4 declared; y-off+s
+005f8c9b	MATCH	57v57	PASS	__unguarded_partition<pair<long,EHeroAbility>>, forceinline iter_swap
+005f8ce2	MATCH	57v57	PASS	__unguarded_partition<pair<long,long>>, forceinline iter_swap
+005f8ec0	RELOCATION_MATCH	47v47	PASS	vector<EHeroAbility>(n); same-TU auto_inline(off) _Vector_base(n,a) body homes the allocator temp
+005f9495	RELOCATION_MATCH	180v180	PASS	vector<EHeroAbility>::_M_insert_overflow (__false_type), same-TU __uninitialized_copy 0x5F79BD body
+005f9633	RELOCATION_MATCH	225v225	PASS	vector<EHeroAbility>::_M_fill_insert; same-TU stand-in bodies (edx-clobbering __uninitialized_copy)
+005f9a98	RELOCATION_MATCH	67v67	PASS	__linear_insert<pair<long,EHeroAbility>>, forceinline copy_backward
+005f9adb	RELOCATION_MATCH	67v67	PASS	__linear_insert<pair<long,long>>, forceinline copy_backward
+005f9bfe	RELOCATION_MATCH	44v44	PASS	vector<pair<long,CDefPointer>>(n, value, a); same-TU _Vector_base body
+005f9d4e	RELOCATION_MATCH	85v85	PASS	__partial_sort<pair<long,EHeroAbility>> (make_heap/__pop_heap/sort_heap declared)
+005f9da3	RELOCATION_MATCH	85v85	PASS	__partial_sort<pair<long,long>>
+005f9f5a	RELOCATION_MATCH	177v177	PASS	vector<CDefPointer<const CHeroAbilityDef>>::operator= (STLport verbatim)
+005fa10a	RELOCATION_MATCH	176v176	PASS	vector<CDefPointer<const CHeroAbilityDef>>::_M_insert_overflow (0x5B3275 model)
+005fa1ba	RELOCATION_MATCH	177v177	PASS	vector<pair<long,CDefPointer>>::operator= (CTCInventoryAbilities::Abilities)
+005fa26b	RELOCATION_MATCH	139v139	PASS	__introsort_loop<pair<long,EHeroAbility>>, partial_sort 0x5FA0C3 declared
+005fa2f6	RELOCATION_MATCH	139v139	PASS	__introsort_loop<pair<long,long>>, partial_sort 0x5FA0D5 declared
+005fa3a5	RELOCATION_MATCH	56v56	PASS	vector<CDefPointer>::push_back; tag homed in x slot high byte
+005fc510	RELOCATION_MATCH	197v197	PASS	CTCInventoryMap::ResetPrimitiveHandles (FableWin.pdb name); label ComboBox_ClearAllLists
+00612d30	RELOCATION_MATCH	60v60	PASS	GFSerialiseVectorBinaryOut<unsigned __int64> (persist transfer 0x6192F0)
+00613dd0	RELOCATION_MATCH	84v84	PASS	__uninitialized_copy<CUIMiniMapMarker>; C2DVector needs its user copy ctor
+00614700	RELOCATION_MATCH	78v78	PASS	GFSerialiseVectorBinaryOut<CUIRegionInfo>; traits hold T DefaultVal (40-byte frame)
+00614a10	MATCH	56v56	PASS	STLport set<long> _Rb_tree::_M_find (CTCVillage::PlayersCrimes +0x64)
+00616f90	RELOCATION_MATCH	203v203	PASS	_Rb_tree<long, pair<const long, pair<long,long>>>::_M_insert (0x4ABC70 model)
+00617230	RELOCATION_MATCH	53v53	PASS	list<pair<const CRegion*, const CRegion*>>::push_back (RegionsCorrespondances)
+00617370	RELOCATION_MATCH	222v222	PASS	vector<unsigned __int64>::_M_insert_overflow (__true_type, memmove), first try
+00618100	RELOCATION_MATCH	98v98	PASS	list<CIntelligentPointer<CThing>>::_M_insert_dispatch (0x517130 twin)
+006181a0	RELOCATION_MATCH	58v58	PASS	vector<unsigned __int64>::push_back (0x4CD2F0 model)
+00618de0	DIFFER	123v123	-	map<long, pair<long,long>>::operator[]; scheduling only (pair() zero stores before the pushes)
+00619130	RELOCATION_MATCH	148v148	PASS	GFSerialiseVectorBinaryIn<unsigned __int64> (0x412D20 model)
+00619560	DIFFER	180v180	-	GFSerialiseVectorBinaryIn<CUIRegionInfo>; traits slot [esp+18h] v [esp+1Ch]
+00619620	RELOCATION_MATCH	140v140	PASS	GFSerialiseVectorBinaryIn<long> (0x412D20 model)
+006236c0	RELOCATION_MATCH	50v50	PASS	uninitialized_fill_n<CQuestCardItem*> (CTCInventoryQuests::QuestCardItemList)

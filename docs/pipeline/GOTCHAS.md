@@ -1231,3 +1231,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport list: `_List_iterator(const iterator&)` is iterator's user copy ctor but a converting ctor for const_iterator, so by-value iterators build in place at esp and const_iterators are a plain push (0x5E9630); `tmp->prev` stored before `tmp->next` is the 4.6 insert with named `n`, `p` (0x5E9280).
 - Const and non-const `CVectorMap::LowerBound` are separate retail copies (0x5F7F89 / 0x5F7F4C): a const member must call the const overload.
 - `return Callee();` of the same by-value CDefPointer passes the hidden result straight through; the empty `return T();` in a size TU is `and dword ptr [eax],0` (0x5EE365).
+- VC7.1 uses the clobber set of callee bodies earlier in the same TU: a `_Vector_base(n, a)` body under `auto_inline(off)` homes the allocator temporary in the live n slot (0x5F8EC0); a stand-in must clobber what the real callee clobbers (0x5F9633).
+- Give C2DVector a user copy ctor inside implicitly copied records; a POD C2DVector merges tail words into one block copy (0x613DD0).
+- STLport 4.5 out-of-line set/map find is `_M_find(k)`: node in eax, `ret 4` (0x614A10); record `CPersistTraits<T>` holds an uninitialised `T DefaultVal` (0x614700).
+- Retail STLport lists are 4 bytes and vectors 12, so PDB member offsets run high in STL-bearing classes (CTCVillage::PlayersCrimes +0x64) (chunk 381).
