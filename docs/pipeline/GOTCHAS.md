@@ -1254,3 +1254,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Write the `CIntelligentPointer<T>` copy ctor through typed inline `GetPItem()`/`SetPItem()` wrappers; the extra inline layer fixes an ebp/ebx this/data swap (0x6C1E70).
 - To emit an implicit `operator=` out of line, take its address in a non-const global member pointer (a const one has internal linkage and is discarded) (0x6C2940).
 - STLport 4.5 map loops whose body calls out need `end()` as a named local, or the header is re-read after every call (0x6C5780).
+- C3DVector is 1-aligned in retail (pack(1)): `pair<C3DVector,bool>` is 13 bytes and CProng::Prong sits at +1 (chunk 388); an opaque member modelled as `char[]` loses 4-byte alignment, use `unsigned long[]`.
+- Z-first dot product: `a.Z*b.Z + (a.X*b.X + a.Y*b.Y)`; `(float)fabs(x) > eps` gives `fcomp dword; test ah,41h`; a byte `neg/sbb/inc` result means an `unsigned char` return (chunk 388).
+- A single if-block with one final `return false` pushes all saved registers up front; early returns shrink-wrap them (chunk 388).
+- Lane script: a purity grep over an empty or missing `src/` passes vacuously; the lander now refuses a chunk with no src files.

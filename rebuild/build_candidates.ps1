@@ -292942,6 +292942,258 @@ $catalog = @(
         TestSource = '00/6c/CTCHeroOpinionDeedLog_FindCriminalDeed_006c5800_test.cpp'
         PassPattern = '006c5800_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006dc550'
+        Module = '_global'
+        Source = '00/6d/global_GFSerialiseVectorBinaryOutCAttackHistoryCombo_006dc550.cpp'
+        TestSource = '00/6d/global_GFSerialiseVectorBinaryOutCAttackHistoryCombo_006dc550_test.cpp'
+        PassPattern = '006dc550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dca50'
+        Module = 'std::vector<CAttackHistoryCombo>'
+        Source = '00/6d/stdvectorCAttackHistoryCombo_Minsertoverflow_006dca50.cpp'
+        TestSource = '00/6d/stdvectorCAttackHistoryCombo_Minsertoverflow_006dca50_test.cpp'
+        PassPattern = '006dca50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dd580'
+        Module = '_global'
+        Source = '00/6d/global_GFSerialiseVectorBinaryInCAttackHistoryCombo_006dd580.cpp'
+        TestSource = '00/6d/global_GFSerialiseVectorBinaryInCAttackHistoryCombo_006dd580_test.cpp'
+        PassPattern = '006dd580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dfda0'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/6d/NParticleEngineCParticleEmitter_SetParticleCreationDisabled_006dfda0.cpp'
+        TestSource = '00/6d/NParticleEngineCParticleEmitter_SetParticleCreationDisabled_006dfda0_test.cpp'
+        PassPattern = '006dfda0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e0970'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6e/CTCDParticleEmitter_Create_006e0970.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_Create_006e0970_test.cpp'
+        PassPattern = '006e0970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e0e80'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6e/CTCDParticleEmitter_SendCreationCriteriaSound_006e0e80.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_SendCreationCriteriaSound_006e0e80_test.cpp'
+        PassPattern = '006e0e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e0f10'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6e/CTCDParticleEmitter_SendDestructionCriteriaSound_006e0f10.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_SendDestructionCriteriaSound_006e0f10_test.cpp'
+        PassPattern = '006e0f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e1f40'
+        Module = 'std'
+        Source = '00/6e/std_copyptrsSParamDescEntrySParamDescEntry_006e1f40.cpp'
+        TestSource = '00/6e/std_copyptrsSParamDescEntrySParamDescEntry_006e1f40_test.cpp'
+        PassPattern = '006e1f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2860'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_GetPLipSyncBank_006e2860.cpp'
+        TestSource = '00/6e/CTCTalk_GetPLipSyncBank_006e2860_test.cpp'
+        PassPattern = '006e2860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2940'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_GetSpeechDurationInFrames_006e2940.cpp'
+        TestSource = '00/6e/CTCTalk_GetSpeechDurationInFrames_006e2940_test.cpp'
+        PassPattern = '006e2940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e29a0'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_PlayLipMovement_006e29a0.cpp'
+        TestSource = '00/6e/CTCTalk_PlayLipMovement_006e29a0_test.cpp'
+        PassPattern = '006e29a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2b70'
+        Module = 'NSpeechGainManager'
+        Source = '00/6e/NSpeechGainManager_GetTargetGain_006e2b70.cpp'
+        TestSource = '00/6e/NSpeechGainManager_GetTargetGain_006e2b70_test.cpp'
+        PassPattern = '006e2b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2d30'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_IsSpeechSamplePlaying_006e2d30.cpp'
+        TestSource = '00/6e/CTCTalk_IsSpeechSamplePlaying_006e2d30_test.cpp'
+        PassPattern = '006e2d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e37d0'
+        Module = 'NSpeechGainManager'
+        Source = '00/6e/NSpeechGainManager_Update_006e37d0.cpp'
+        TestSource = '00/6e/NSpeechGainManager_Update_006e37d0_test.cpp'
+        PassPattern = '006e37d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e4950'
+        Module = 'std::vector<SPhonemeAnimRecord>'
+        Source = '00/6e/stdvectorSPhonemeAnimRecord_MallocateandcopyconstSPhonemeAnimRecord_006e4950.cpp'
+        TestSource = '00/6e/stdvectorSPhonemeAnimRecord_MallocateandcopyconstSPhonemeAnimRecord_006e4950_test.cpp'
+        PassPattern = '006e4950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e4f30'
+        Module = 'std::vector<SPhonemeAnimRecord>'
+        Source = '00/6e/stdvectorSPhonemeAnimRecord_reserve_006e4f30.cpp'
+        TestSource = '00/6e/stdvectorSPhonemeAnimRecord_reserve_006e4f30_test.cpp'
+        PassPattern = '006e4f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e58a0'
+        Module = 'CScriptConversation'
+        Source = '00/6e/CScriptConversation_AddLineToConversation_006e58a0.cpp'
+        TestSource = '00/6e/CScriptConversation_AddLineToConversation_006e58a0_test.cpp'
+        PassPattern = '006e58a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e60f0'
+        Module = 'CScriptConversationManager'
+        Source = '00/6e/CScriptConversationManager_FrameUpdate_006e60f0.cpp'
+        TestSource = '00/6e/CScriptConversationManager_FrameUpdate_006e60f0_test.cpp'
+        PassPattern = '006e60f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e6150'
+        Module = 'CScriptConversationManager'
+        Source = '00/6e/CScriptConversationManager_CScriptConversationManager_006e6150.cpp'
+        TestSource = '00/6e/CScriptConversationManager_CScriptConversationManager_006e6150_test.cpp'
+        PassPattern = '006e6150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e66e0'
+        Module = 'std'
+        Source = '00/6e/std_findCIntelligentPointerCThingCThing_006e66e0.cpp'
+        TestSource = '00/6e/std_findCIntelligentPointerCThingCThing_006e66e0_test.cpp'
+        PassPattern = '006e66e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e6d30'
+        Module = 'std::vector<CScriptConversation::CConversationLine>'
+        Source = '00/6e/stdvectorCScriptConversationCConversationLine_pushback_006e6d30.cpp'
+        TestSource = '00/6e/stdvectorCScriptConversationCConversationLine_pushback_006e6d30_test.cpp'
+        PassPattern = '006e6d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e7370'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_StartFadeScreen_006e7370.cpp'
+        TestSource = '00/6e/CGameScriptInterface_StartFadeScreen_006e7370_test.cpp'
+        PassPattern = '006e7370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e75c0'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_WorldUpdate_006e75c0.cpp'
+        TestSource = '00/6e/CGameScriptInterface_WorldUpdate_006e75c0_test.cpp'
+        PassPattern = '006e75c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e8e10'
+        Module = '_global'
+        Source = '00/6e/global_GetFirstAttackerAlignedWithPlacementVector_006e8e10.cpp'
+        TestSource = '00/6e/global_GetFirstAttackerAlignedWithPlacementVector_006e8e10_test.cpp'
+        PassPattern = '006e8e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e9200'
+        Module = 'CDefendingCombatantInfo::CCombatWheel'
+        Source = '00/6e/CDefendingCombatantInfoCCombatWheel_SetAttackerProngAsBlocked_006e9200.cpp'
+        TestSource = '00/6e/CDefendingCombatantInfoCCombatWheel_SetAttackerProngAsBlocked_006e9200_test.cpp'
+        PassPattern = '006e9200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e93c0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_IsCreatureOnRotatingCombatRing_006e93c0.cpp'
+        TestSource = '00/6e/CCombatManager_IsCreatureOnRotatingCombatRing_006e93c0_test.cpp'
+        PassPattern = '006e93c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e9680'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_GetCombatWheelRadiusForAttacker_006e9680.cpp'
+        TestSource = '00/6e/CCombatManager_GetCombatWheelRadiusForAttacker_006e9680_test.cpp'
+        PassPattern = '006e9680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e9700'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_IsCreatureOnOuterRing_006e9700.cpp'
+        TestSource = '00/6e/CCombatManager_IsCreatureOnOuterRing_006e9700_test.cpp'
+        PassPattern = '006e9700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e97a0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_IsCreaturePerformingNonInterruptableSequence_006e97a0.cpp'
+        TestSource = '00/6e/CCombatManager_IsCreaturePerformingNonInterruptableSequence_006e97a0_test.cpp'
+        PassPattern = '006e97a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e9d10'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_SetAttackerProngAsInvalid_006e9d10.cpp'
+        TestSource = '00/6e/CCombatManager_SetAttackerProngAsInvalid_006e9d10_test.cpp'
+        PassPattern = '006e9d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ed3f0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_CCombatManager_006ed3f0.cpp'
+        TestSource = '00/6e/CCombatManager_CCombatManager_006ed3f0_test.cpp'
+        PassPattern = '006ed3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006eff00'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedfilln_006eff00.cpp'
+        TestSource = '00/6e/std_uninitializedfilln_006eff00_test.cpp'
+        PassPattern = '006eff00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0810'
+        Module = '_STL::vector<C3DVector>'
+        Source = '00/6f/STLvectorC3DVector_vector_006f0810.cpp'
+        TestSource = '00/6f/STLvectorC3DVector_vector_006f0810_test.cpp'
+        PassPattern = '006f0810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f1180'
+        Module = 'std'
+        Source = '00/6f/std_uninitializedfilln_006f1180.cpp'
+        TestSource = '00/6f/std_uninitializedfilln_006f1180_test.cpp'
+        PassPattern = '006f1180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f1ae0'
+        Module = 'std::_Rb_tree'
+        Source = '00/6f/stdRbtree_Rbtree_006f1ae0.cpp'
+        TestSource = '00/6f/stdRbtree_Rbtree_006f1ae0_test.cpp'
+        PassPattern = '006f1ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f20a0'
+        Module = '_STL::vector<CProng>'
+        Source = '00/6f/STLvectorCProng_vector_006f20a0.cpp'
+        TestSource = '00/6f/STLvectorCProng_vector_006f20a0_test.cpp'
+        PassPattern = '006f20a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

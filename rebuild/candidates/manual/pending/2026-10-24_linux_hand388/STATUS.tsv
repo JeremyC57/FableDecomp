@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006dc550	RELOCATION_MATCH	61v61	PASS	GFSerialiseVectorBinaryOut<CAttackHistoryCombo> (catalog <CMusicEntry> propagated)
+006dca50	RELOCATION_MATCH	197v197	PASS	vector<CAttackHistoryCombo>::_M_insert_overflow (catalog CFeatDef_Vector_Resize)
+006dd580	RELOCATION_MATCH	133v133	PASS	GFSerialiseVectorBinaryIn<CAttackHistoryCombo> (catalog <CBrainUpdateZone> propagated)
+006dfda0	MATCH	33v33	PASS	NParticleEngine::CParticleEmitter::SetParticleCreationDisabled
+006e0880	DIFFER	218v228	-	CTCDParticleEmitter::Create(long,...): retail NULL result in edi / map in esi, ours swapped (register allocation)
+006e0970	RELOCATION_MATCH	53v53	PASS	CTCDParticleEmitter::Create(const CCharString&,...) by-name overload
+006e0e80	RELOCATION_MATCH	141v141	PASS	CTCDParticleEmitter::SendCreationCriteriaSound
+006e0f10	RELOCATION_MATCH	130v130	PASS	CTCDParticleEmitter::SendDestructionCriteriaSound
+006e1f40	MATCH	54v54	PASS	std::__copy_ptrs over 16-byte param-desc pairs (catalog _Move<C3DAnimationStateAlpha*> propagated)
+006e2860	RELOCATION_MATCH	52v52	PASS	CTCTalk::GetPLipSyncBank
+006e2940	RELOCATION_MATCH	93v93	PASS	CTCTalk::GetSpeechDurationInFrames
+006e29a0	RELOCATION_MATCH	105v105	PASS	CTCTalk::PlayLipMovement
+006e2b70	RELOCATION_MATCH	137v137	PASS	NSpeechGainManager::GetTargetGain
+006e2d30	RELOCATION_MATCH	137v137	PASS	CTCTalk::IsSpeechSamplePlaying
+006e37d0	RELOCATION_MATCH	184v184	PASS	NSpeechGainManager::Update
+006e4950	RELOCATION_MATCH	78v78	PASS	vector<SPhonemeAnimRecord>::_M_allocate_and_copy (0x2C record)
+006e4f30	RELOCATION_MATCH	144v144	PASS	vector<SPhonemeAnimRecord>::reserve
+006e58a0	RELOCATION_MATCH	163v163	PASS	CScriptConversation::AddLineToConversation (catalog class wrong)
+006e5990	DIFFER	102v98	-	CScriptConversationManager::RemoveConversation: retail keeps the found node in esi across OnCleanup, ours reloads the iterator slot
+006e60f0	RELOCATION_MATCH	83v83	PASS	CScriptConversationManager::FrameUpdate
+006e6150	RELOCATION_MATCH	65v65	PASS	CScriptConversationManager ctor (catalog List_Initialize_Empty)
+006e66e0	RELOCATION_MATCH	192v192	PASS	std::__find over CIntelligentPointer<CThing> (catalog BinarySearch_LinearArray wrong)
+006e6d30	RELOCATION_MATCH	86v86	PASS	vector<CScriptConversation::CConversationLine>::push_back
+006e7370	RELOCATION_MATCH	53v53	PASS	CGameScriptInterface::StartFadeScreen (catalog ConstructString wrong)
+006e75c0	RELOCATION_MATCH	104v104	PASS	CGameScriptInterface::WorldUpdate
+006e7f00	DIFFER	205v207	-	GetAttackerProngSelectionCompareValue: first normalise x87 stack order (fld st(0);fmul st(2) vs fxch;fmul st(1))
+006e8e10	RELOCATION_MATCH	197v197	PASS	GetFirstAttackerAlignedWithPlacementVector (file-static fastcall)
+006e9200	RELOCATION_MATCH	101v101	PASS	CDefendingCombatantInfo::CCombatWheel::SetAttackerProngAsBlocked
+006e93c0	RELOCATION_MATCH	139v139	PASS	CCombatManager::IsCreatureOnRotatingCombatRing
+006e9680	RELOCATION_MATCH	113v113	PASS	CCombatManager::GetCombatWheelRadiusForAttacker
+006e9700	RELOCATION_MATCH	145v145	PASS	CCombatManager::IsCreatureOnOuterRing
+006e97a0	RELOCATION_MATCH	80v80	PASS	CCombatManager::IsCreaturePerformingNonInterruptableSequence (unsigned char return)
+006e9d10	RELOCATION_MATCH	115v115	PASS	CCombatManager::SetAttackerProngAsInvalid
+006e9f60	DIFFER	236v236	-	GetAttackerProngSelectionCurrentWeaponBaseCompareValue: result arms swapped in layout + eax/ecx register choice
+006ed3f0	RELOCATION_MATCH	144v144	PASS	CCombatManager::CCombatManager(CWorld&)
+006eff00	MATCH	52v52	PASS	std::__uninitialized_fill_n<pair<C3DVector,bool>*> (catalog _Fill_n<unsigned long*> propagated)
+006f0810	RELOCATION_MATCH	137v137	PASS	vector<C3DVector> copy ctor (76 callers)
+006f1180	RELOCATION_MATCH	113v113	PASS	std::__uninitialized_fill_n<CProng*> (catalog fill<C3DAnimationStateAlpha*> propagated)
+006f1ae0	RELOCATION_MATCH	59v59	PASS	_Rb_tree<uint64,pair<const uint64,CCombatantInfo>> ctor(comp,a); no caller in the image
+006f20a0	RELOCATION_MATCH	104v104	PASS	vector<CDefendingCombatantInfo::CProng> copy ctor (catalog CTargetPoint propagated)
