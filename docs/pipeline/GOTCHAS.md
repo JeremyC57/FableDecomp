@@ -1151,3 +1151,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Dinkumware `_Sort_heap`: call `_Pop_heap_0` straight from the loop; a pop_heap `if (1 < last-first)` guard is not folded (+6 bytes, 007590c0). `_Pop_heap` with a non-trivial temporary needs `__forceinline` (00a338c0).
 - An empty `__false_type` tag passed by const& needs a user ctor `__false_type() {}`, else VC adds a zero-byte store (00a84470).
 - STLport list copy ctor = `_List_base` (malloc'd sentinel) + `insert(begin(), x.begin(), x.end())`; `_List_const_iterator` needs a converting ctor and no copy ctor (00a84470).
+- C3DVector is byte-packed: pair<C3DVector,bool> is 13 bytes and steps `add ecx,0Dh` (006efec0).
+- An out-of-line STLport `_Destroy(first,last)` is `__fastcall` with a plain `ret` calling an inline `__destroy_aux(first,last,__false_type())` (00675310).
+- An unaligned `__uninitialized_copy` with no loop-head padding, or a 12-byte POD copied with `movsd` x3, needs `optimize("s")` (005ba146, 005924d0).

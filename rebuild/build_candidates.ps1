@@ -286274,6 +286274,286 @@ $catalog = @(
         TestSource = '00/cb/std_sortheap_00cbc580_test.cpp'
         PassPattern = '00cbc580_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0051cd80'
+        Module = 'std'
+        Source = '00/51/std_destroyaux_0051cd80.cpp'
+        TestSource = '00/51/std_destroyaux_0051cd80_test.cpp'
+        PassPattern = '0051cd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527bb0'
+        Module = 'std'
+        Source = '00/52/std_uninitializedcopy_00527bb0.cpp'
+        TestSource = '00/52/std_uninitializedcopy_00527bb0_test.cpp'
+        PassPattern = '00527bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00543810'
+        Module = 'std'
+        Source = '00/54/std_uninitializedcopy_00543810.cpp'
+        TestSource = '00/54/std_uninitializedcopy_00543810_test.cpp'
+        PassPattern = '00543810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00566430'
+        Module = 'std'
+        Source = '00/56/std_uninitializedcopy_00566430.cpp'
+        TestSource = '00/56/std_uninitializedcopy_00566430_test.cpp'
+        PassPattern = '00566430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005790c3'
+        Module = 'std'
+        Source = '00/57/std_uninitializedcopy_005790c3.cpp'
+        TestSource = '00/57/std_uninitializedcopy_005790c3_test.cpp'
+        PassPattern = '005790c3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005924d0'
+        Module = 'std'
+        Source = '00/59/std_uninitializedcopy_005924d0.cpp'
+        TestSource = '00/59/std_uninitializedcopy_005924d0_test.cpp'
+        PassPattern = '005924d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba146'
+        Module = 'std'
+        Source = '00/5b/std_uninitializedcopy_005ba146.cpp'
+        TestSource = '00/5b/std_uninitializedcopy_005ba146_test.cpp'
+        PassPattern = '005ba146_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f79bd'
+        Module = 'std'
+        Source = '00/5f/std_uninitializedcopy_005f79bd.cpp'
+        TestSource = '00/5f/std_uninitializedcopy_005f79bd_test.cpp'
+        PassPattern = '005f79bd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00623700'
+        Module = 'std'
+        Source = '00/62/std_uninitializedcopy_00623700.cpp'
+        TestSource = '00/62/std_uninitializedcopy_00623700_test.cpp'
+        PassPattern = '00623700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00673c60'
+        Module = 'std'
+        Source = '00/67/std_uninitializedcopy_00673c60.cpp'
+        TestSource = '00/67/std_uninitializedcopy_00673c60_test.cpp'
+        PassPattern = '00673c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00673ca0'
+        Module = 'std'
+        Source = '00/67/std_uninitializedcopy_00673ca0.cpp'
+        TestSource = '00/67/std_uninitializedcopy_00673ca0_test.cpp'
+        PassPattern = '00673ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00673cf0'
+        Module = 'std'
+        Source = '00/67/std_uninitializedcopy_00673cf0.cpp'
+        TestSource = '00/67/std_uninitializedcopy_00673cf0_test.cpp'
+        PassPattern = '00673cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00674fa0'
+        Module = 'std'
+        Source = '00/67/std_uninitializedcopy_00674fa0.cpp'
+        TestSource = '00/67/std_uninitializedcopy_00674fa0_test.cpp'
+        PassPattern = '00674fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00675310'
+        Module = 'std'
+        Source = '00/67/std_Destroy_00675310.cpp'
+        TestSource = '00/67/std_Destroy_00675310_test.cpp'
+        PassPattern = '00675310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00675850'
+        Module = 'std'
+        Source = '00/67/std_destroyaux_00675850.cpp'
+        TestSource = '00/67/std_destroyaux_00675850_test.cpp'
+        PassPattern = '00675850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067c9f0'
+        Module = 'std'
+        Source = '00/67/std_uninitializedcopy_0067c9f0.cpp'
+        TestSource = '00/67/std_uninitializedcopy_0067c9f0_test.cpp'
+        PassPattern = '0067c9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a3130'
+        Module = 'std'
+        Source = '00/6a/std_uninitializedcopy_006a3130.cpp'
+        TestSource = '00/6a/std_uninitializedcopy_006a3130_test.cpp'
+        PassPattern = '006a3130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a31d0'
+        Module = 'std'
+        Source = '00/6a/std_uninitializedcopy_006a31d0.cpp'
+        TestSource = '00/6a/std_uninitializedcopy_006a31d0_test.cpp'
+        PassPattern = '006a31d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b6f50'
+        Module = 'std'
+        Source = '00/6b/std_destroyaux_006b6f50.cpp'
+        TestSource = '00/6b/std_destroyaux_006b6f50_test.cpp'
+        PassPattern = '006b6f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7b70'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedcopy_006b7b70.cpp'
+        TestSource = '00/6b/std_uninitializedcopy_006b7b70_test.cpp'
+        PassPattern = '006b7b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7bb0'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedcopy_006b7bb0.cpp'
+        TestSource = '00/6b/std_uninitializedcopy_006b7bb0_test.cpp'
+        PassPattern = '006b7bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006be700'
+        Module = 'std'
+        Source = '00/6b/std_uninitializedcopy_006be700.cpp'
+        TestSource = '00/6b/std_uninitializedcopy_006be700_test.cpp'
+        PassPattern = '006be700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cac20'
+        Module = 'std'
+        Source = '00/6c/std_uninitializedcopy_006cac20.cpp'
+        TestSource = '00/6c/std_uninitializedcopy_006cac20_test.cpp'
+        PassPattern = '006cac20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e1d80'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedcopy_006e1d80.cpp'
+        TestSource = '00/6e/std_uninitializedcopy_006e1d80_test.cpp'
+        PassPattern = '006e1d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e1f80'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedcopy_006e1f80.cpp'
+        TestSource = '00/6e/std_uninitializedcopy_006e1f80_test.cpp'
+        PassPattern = '006e1f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e65a0'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedcopy_006e65a0.cpp'
+        TestSource = '00/6e/std_uninitializedcopy_006e65a0_test.cpp'
+        PassPattern = '006e65a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e68a0'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedcopy_006e68a0.cpp'
+        TestSource = '00/6e/std_uninitializedcopy_006e68a0_test.cpp'
+        PassPattern = '006e68a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006efec0'
+        Module = 'std'
+        Source = '00/6e/std_uninitializedcopy_006efec0.cpp'
+        TestSource = '00/6e/std_uninitializedcopy_006efec0_test.cpp'
+        PassPattern = '006efec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fbae0'
+        Module = 'std'
+        Source = '00/6f/std_uninitializedcopy_006fbae0.cpp'
+        TestSource = '00/6f/std_uninitializedcopy_006fbae0_test.cpp'
+        PassPattern = '006fbae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007094d0'
+        Module = 'std'
+        Source = '00/70/std_Destroy_007094d0.cpp'
+        TestSource = '00/70/std_Destroy_007094d0_test.cpp'
+        PassPattern = '007094d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00720270'
+        Module = 'std'
+        Source = '00/72/std_uninitializedcopy_00720270.cpp'
+        TestSource = '00/72/std_uninitializedcopy_00720270_test.cpp'
+        PassPattern = '00720270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00768fc0'
+        Module = 'std'
+        Source = '00/76/std_uninitializedcopy_00768fc0.cpp'
+        TestSource = '00/76/std_uninitializedcopy_00768fc0_test.cpp'
+        PassPattern = '00768fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076bd70'
+        Module = 'std'
+        Source = '00/76/std_destroyaux_0076bd70.cpp'
+        TestSource = '00/76/std_destroyaux_0076bd70_test.cpp'
+        PassPattern = '0076bd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076bdd0'
+        Module = 'std'
+        Source = '00/76/std_destroyaux_0076bdd0.cpp'
+        TestSource = '00/76/std_destroyaux_0076bdd0_test.cpp'
+        PassPattern = '0076bdd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076f700'
+        Module = 'std'
+        Source = '00/76/std_uninitializedcopy_0076f700.cpp'
+        TestSource = '00/76/std_uninitializedcopy_0076f700_test.cpp'
+        PassPattern = '0076f700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076f780'
+        Module = 'std'
+        Source = '00/76/std_uninitializedcopy_0076f780.cpp'
+        TestSource = '00/76/std_uninitializedcopy_0076f780_test.cpp'
+        PassPattern = '0076f780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076f8e0'
+        Module = 'std'
+        Source = '00/76/std_uninitializedcopy_0076f8e0.cpp'
+        TestSource = '00/76/std_uninitializedcopy_0076f8e0_test.cpp'
+        PassPattern = '0076f8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007705a0'
+        Module = 'std'
+        Source = '00/77/std_uninitializedcopy_007705a0.cpp'
+        TestSource = '00/77/std_uninitializedcopy_007705a0_test.cpp'
+        PassPattern = '007705a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00770670'
+        Module = 'std'
+        Source = '00/77/std_destroyaux_00770670.cpp'
+        TestSource = '00/77/std_destroyaux_00770670_test.cpp'
+        PassPattern = '00770670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00786da0'
+        Module = 'std'
+        Source = '00/78/std_uninitializedcopy_00786da0.cpp'
+        TestSource = '00/78/std_uninitializedcopy_00786da0_test.cpp'
+        PassPattern = '00786da0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

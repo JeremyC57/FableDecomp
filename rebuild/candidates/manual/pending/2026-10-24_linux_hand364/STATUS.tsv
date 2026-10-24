@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0051cd80	RELOCATION_MATCH	76v76	PASS	__destroy_aux<CNavigationLayerUpdate>; nested out-of-line __destroy_aux<CSwitchableBlockage> @0x519EF0
+00527bb0	RELOCATION_MATCH	60v60	PASS	__uninitialized_copy, 12-byte {2 words, CCharString}
+00543810	MATCH	81v81	PASS	__uninitialized_copy, 28-byte {key, 3 words + memberwise C3DVector} (2nd pointer pair at &vec+8)
+00566430	RELOCATION_MATCH	82v82	PASS	__uninitialized_copy, 16-byte {3 CCharStrings, 2 flag bytes}
+005790c3	MATCH	36v36	PASS	__uninitialized_copy, 12-byte POD (movsd x3); optimize("s"); twin of 005924d0
+005924d0	MATCH	36v36	PASS	__uninitialized_copy, 12-byte POD (movsd x3); optimize("s"); twin of 005790c3
+005ba146	MATCH	31v31	PASS	__uninitialized_copy, 4-byte value; optimize("s") (unaligned TU); twin of 005f79bd
+005f79bd	MATCH	31v31	PASS	__uninitialized_copy, 4-byte value; optimize("s"); twin of 005ba146
+00623700	RELOCATION_MATCH	112v112	PASS	__uninitialized_copy<CTestQuest> (six strings + colour index)
+00673c60	MATCH	53v53	PASS	__uninitialized_copy<pair<ulong,CRandomAppearanceMorph::CTextureMorph>>; twin of 00673cf0
+00673ca0	MATCH	65v65	PASS	__uninitialized_copy<pair<long,CRandomAppearanceMorph::CSkeletalMorph>>
+00673cf0	MATCH	53v53	PASS	__uninitialized_copy<pair<ulong,CRandomAppearanceMorph::CTextureMorph>>; twin of 00673c60
+00674fa0	RELOCATION_MATCH	66v66	PASS	__uninitialized_copy<CRandomAppearanceMorph::CBodyPartMesh> (CVectorMap copy via vector copy ctor 0x673E10)
+00675310	RELOCATION_MATCH	41v41	PASS	_Destroy<CVectorMap<ulong,CTextureMorph>> (plain ret, inlined __destroy_aux)
+00675850	RELOCATION_MATCH	84v84	PASS	__destroy_aux<CArray<CRandomAppearanceMorph::CBodyPartMesh>>
+0067c9f0	RELOCATION_MATCH	94v94	PASS	__uninitialized_copy<CBlurredAttitudesDef> (0x48-byte inline copy-ctor chain)
+006a3130	RELOCATION_MATCH	72v72	PASS	__uninitialized_copy<CScreenEffectPriorityStack::CThingGraphicArgPasser> (pack 1)
+006a31d0	RELOCATION_MATCH	78v78	PASS	__uninitialized_copy<pair<long,CIntelligentPointer<CThing>>>
+006b6f50	RELOCATION_MATCH	84v84	PASS	__destroy_aux<vector<SRecord30>> (inner block at +8)
+006b7b70	MATCH	58v58	PASS	__uninitialized_copy<CGameMapCell> (7-byte POD); twin of 006b7bb0
+006b7bb0	MATCH	58v58	PASS	__uninitialized_copy<CGameMapCell> (7-byte POD); twin of 006b7b70
+006be700	RELOCATION_MATCH	111v111	PASS	__uninitialized_copy<pair<long,CMusicManager::CRegisteredMusicEntry>> (CWideString copy 0x99B720)
+006cac20	MATCH	139v139	PASS	__uninitialized_copy<CCompositeBlendDesc> (CRGBColour::Set byte shuffles)
+006e1d80	MATCH	63v63	PASS	__uninitialized_copy<pair<ulong,C3DVector>>; twin of 00768fc0
+006e1f80	RELOCATION_MATCH	64v64	PASS	__uninitialized_copy<pair<ulong,CParticleUpdateParamDesc<ulong,ulong>>>
+006e65a0	RELOCATION_MATCH	66v66	PASS	__uninitialized_copy<CConversationLine>; twin of 006e68a0
+006e68a0	RELOCATION_MATCH	66v66	PASS	__uninitialized_copy<CConversationLine>; twin of 006e65a0
+006efec0	MATCH	56v56	PASS	__uninitialized_copy<pair<C3DVector,bool>> (13 bytes, packed C3DVector)
+006fbae0	RELOCATION_MATCH	67v67	PASS	__uninitialized_copy<pair<ulong,CSmallVector<NAnimationEvents::CEvent,32>>>
+007094d0	RELOCATION_MATCH	41v41	PASS	_Destroy<vector<POD>> (plain ret, inlined __destroy_aux)
+00720270	MATCH	151v151	PASS	__uninitialized_copy, 24-byte {4 words, 2 CRGBColours} (Set byte shuffles)
+00768fc0	MATCH	63v63	PASS	__uninitialized_copy<pair<ulong,C3DVector>>; twin of 006e1d80
+0076bd70	RELOCATION_MATCH	83v83	PASS	__destroy_aux<vector<CTCObjectAugmentations::ParticleAndEndPoints>>
+0076bdd0	RELOCATION_MATCH	91v91	PASS	__destroy_aux<vector<AttackParticleAndEndPoints>> (intelligent pointer + 2 strings)
+0076f700	RELOCATION_MATCH	58v58	PASS	__uninitialized_copy<pair<CCharString,CCharString>>
+0076f780	MATCH	75v75	PASS	__uninitialized_copy, 24-byte {key, 2 words + memberwise C3DVector}; twin of 0076f8e0
+0076f8e0	MATCH	75v75	PASS	__uninitialized_copy, 24-byte {key, 2 words + memberwise C3DVector}; twin of 0076f780
+007705a0	RELOCATION_MATCH	87v87	PASS	__uninitialized_copy<list<CWeaponTrailEntry>> (STLport list copy ctor inline)
+00770670	RELOCATION_MATCH	43v43	PASS	__destroy_aux<vector<POD>>
+00786da0	RELOCATION_MATCH	60v60	PASS	__uninitialized_copy, 12-byte {word, CCharString, word}
