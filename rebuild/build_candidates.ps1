@@ -281263,6 +281263,273 @@ $catalog = @(
         TestSource = '00/55/NUISystemCObservable_IsExclusivelyObserved_0055cae0_test.cpp'
         PassPattern = '0055cae0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041a430'
+        Module = 'NResourceDirectoryNames'
+        Source = '00/41/NResourceDirectoryNames_GetMyDocumentsDir_0041a430.cpp'
+        TestSource = '00/41/NResourceDirectoryNames_GetMyDocumentsDir_0041a430_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0041a430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a540'
+        Module = 'NResourceDirectoryNames'
+        Source = '00/41/NResourceDirectoryNames_GetSaveDir_0041a540.cpp'
+        TestSource = '00/41/NResourceDirectoryNames_GetSaveDir_0041a540_test.cpp'
+        PassPattern = '0041a540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00533b30'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_GetCurrentState_00533b30.cpp'
+        TestSource = '00/53/NUISystemCComponent_GetCurrentState_00533b30_test.cpp'
+        PassPattern = '00533b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540180'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_SetText_00540180.cpp'
+        TestSource = '00/54/NUISystemCEditBox_SetText_00540180_test.cpp'
+        PassPattern = '00540180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540d70'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_AddActionOnEnter_00540d70.cpp'
+        TestSource = '00/54/NUISystemCEditBox_AddActionOnEnter_00540d70_test.cpp'
+        PassPattern = '00540d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540da0'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_AddActionOnEscape_00540da0.cpp'
+        TestSource = '00/54/NUISystemCEditBox_AddActionOnEscape_00540da0_test.cpp'
+        PassPattern = '00540da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558d90'
+        Module = 'NUISystem::CDraggableInto'
+        Source = '00/55/NUISystemCDraggableInto_ProcessEvent_00558d90.cpp'
+        TestSource = '00/55/NUISystemCDraggableInto_ProcessEvent_00558d90_test.cpp'
+        PassPattern = '00558d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00643fc8'
+        Module = 'NPlayerGui::CDrawAbilityButtons'
+        Source = '00/64/NPlayerGuiCDrawAbilityButtons_GetSpecialMoveIndexForButton_00643fc8.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawAbilityButtons_GetSpecialMoveIndexForButton_00643fc8_test.cpp'
+        PassPattern = '00643fc8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00644660'
+        Module = 'NPlayerGui::CDrawMiniMap'
+        Source = '00/64/NPlayerGuiCDrawMiniMap_ClearPrimitives_00644660.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawMiniMap_ClearPrimitives_00644660_test.cpp'
+        PassPattern = '00644660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00644d0e'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_ClearPrimitivesIfNecessary_00644d0e.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_ClearPrimitivesIfNecessary_00644d0e_test.cpp'
+        PassPattern = '00644d0e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00644fe5'
+        Module = 'NPlayerGui::CDrawQuestInfo::CQuestInfoElement'
+        Source = '00/64/NPlayerGuiCDrawQuestInfoCQuestInfoElement_Clear_00644fe5.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfoCQuestInfoElement_Clear_00644fe5_test.cpp'
+        PassPattern = '00644fe5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00644ffc'
+        Module = 'NPlayerGui::CDrawAbilityButtons'
+        Source = '00/64/NPlayerGuiCDrawAbilityButtons_ClearPrimitivesIfNecessary_00644ffc.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawAbilityButtons_ClearPrimitivesIfNecessary_00644ffc_test.cpp'
+        PassPattern = '00644ffc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00657550'
+        Module = 'NPlayerGui::CDrawQuickAccessIconsPC'
+        Source = '00/65/NPlayerGuiCDrawQuickAccessIconsPC_ClearPrimitivesIfNecessary_00657550.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawQuickAccessIconsPC_ClearPrimitivesIfNecessary_00657550_test.cpp'
+        PassPattern = '00657550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00712240'
+        Module = 'NTCScriptedControl::CActionWait'
+        Source = '00/71/NTCScriptedControlCActionWait_Update_00712240.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionWait_Update_00712240_test.cpp'
+        PassPattern = '00712240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00713660'
+        Module = 'NTCScriptedControl::CActionStopScripting'
+        Source = '00/71/NTCScriptedControlCActionStopScripting_Update_00713660.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionStopScripting_Update_00713660_test.cpp'
+        PassPattern = '00713660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00713cd0'
+        Module = 'NTCScriptedControl::CActionWaitForThingToFinishPerformingTasks'
+        Source = '00/71/NTCScriptedControlCActionWaitForThingToFinishPerformingTasks_Update_00713cd0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionWaitForThingToFinishPerformingTasks_Update_00713cd0_test.cpp'
+        PassPattern = '00713cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00714cc0'
+        Module = 'NTCScriptedControl::CActionTurnToFacePosition'
+        Source = '00/71/NTCScriptedControlCActionTurnToFacePosition_Update_00714cc0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTurnToFacePosition_Update_00714cc0_test.cpp'
+        PassPattern = '00714cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00714d30'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_OnAdd_00714d30.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_OnAdd_00714d30_test.cpp'
+        PassPattern = '00714d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00714f60'
+        Module = 'NTCScriptedControl::CActionOverheadTalkToThing'
+        Source = '00/71/NTCScriptedControlCActionOverheadTalkToThing_DisplayText_00714f60.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionOverheadTalkToThing_DisplayText_00714f60_test.cpp'
+        PassPattern = '00714f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007152f0'
+        Module = 'NTCScriptedControl::CActionFireProjectileWeapon'
+        Source = '00/71/NTCScriptedControlCActionFireProjectileWeapon_Update_007152f0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionFireProjectileWeapon_Update_007152f0_test.cpp'
+        PassPattern = '007152f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007173d0'
+        Module = 'NTCScriptedControl::CActionTalkToThing'
+        Source = '00/71/NTCScriptedControlCActionTalkToThing_Update_007173d0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkToThing_Update_007173d0_test.cpp'
+        PassPattern = '007173d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00717920'
+        Module = 'NTCScriptedControl::CActionTalkToThing'
+        Source = '00/71/NTCScriptedControlCActionTalkToThing_OnActivate_00717920.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkToThing_OnActivate_00717920_test.cpp'
+        PassPattern = '00717920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00761740'
+        Module = 'NShape::CTrack'
+        Source = '00/76/NShapeCTrack_IsPosInShape_00761740.cpp'
+        TestSource = '00/76/NShapeCTrack_IsPosInShape_00761740_test.cpp'
+        PassPattern = '00761740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bf350'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/7b/NThingShotCTCShotDefinitionBase_OnRemove_007bf350.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionBase_OnRemove_007bf350_test.cpp'
+        PassPattern = '007bf350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008809f0'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack::CDisplacementProcess'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStackCDisplacementProcess_ResetToDefault_008809f0.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStackCDisplacementProcess_ResetToDefault_008809f0_test.cpp'
+        PassPattern = '008809f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00880a10'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack::CScreenFilterProcess'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStackCScreenFilterProcess_ResetToDefault_00880a10.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStackCScreenFilterProcess_ResetToDefault_00880a10_test.cpp'
+        PassPattern = '00880a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00880e00'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack::CScreenFilterProcess'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStackCScreenFilterProcess_Process_00880e00.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStackCScreenFilterProcess_Process_00880e00_test.cpp'
+        PassPattern = '00880e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00880ec0'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack::CRadialBlurProcess'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStackCRadialBlurProcess_ResetToDefault_00880ec0.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStackCRadialBlurProcess_ResetToDefault_00880ec0_test.cpp'
+        PassPattern = '00880ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008826f0'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack::CRadialBlurProcess'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStackCRadialBlurProcess_ScalarDeletingDestructor_008826f0.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStackCRadialBlurProcess_ScalarDeletingDestructor_008826f0_test.cpp'
+        PassPattern = '008826f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00882720'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack::CDisplacementProcess'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStackCDisplacementProcess_ScalarDeletingDestructor_00882720.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStackCDisplacementProcess_ScalarDeletingDestructor_00882720_test.cpp'
+        PassPattern = '00882720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00882750'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack::CScreenFilterProcess'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStackCScreenFilterProcess_ScalarDeletingDestructor_00882750.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStackCScreenFilterProcess_ScalarDeletingDestructor_00882750_test.cpp'
+        PassPattern = '00882750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f0500'
+        Module = 'CCodeSectionManager'
+        Source = '00/9f/CCodeSectionManager_GetHandleFromLongName_009f0500.cpp'
+        TestSource = '00/9f/CCodeSectionManager_GetHandleFromLongName_009f0500_test.cpp'
+        PassPattern = '009f0500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac7a90'
+        Module = 'QuadricOptimiserInternals::CVertexPairContraction'
+        Source = '00/ac/QuadricOptimiserInternalsCVertexPairContraction_ContainsAllVertices_00ac7a90.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCVertexPairContraction_ContainsAllVertices_00ac7a90_test.cpp'
+        PassPattern = '00ac7a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af15b0'
+        Module = 'NParticleEngine::CParticleDataBank'
+        Source = '00/af/NParticleEngineCParticleDataBank_Close_00af15b0.cpp'
+        TestSource = '00/af/NParticleEngineCParticleDataBank_Close_00af15b0_test.cpp'
+        PassPattern = '00af15b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0f8e0'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_GetParticleLifeSecs_00b0f8e0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_GetParticleLifeSecs_00b0f8e0_test.cpp'
+        PassPattern = '00b0f8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3a9e0'
+        Module = 'CReaderBase_00c4b300'
+        Source = '00/c3/CReaderBase00c4b300_Read_00c3a9e0.cpp'
+        TestSource = '00/c3/CReaderBase00c4b300_Read_00c3a9e0_test.cpp'
+        PassPattern = '00c3a9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c69fb0'
+        Module = 'CReverbProcessor_00c6a460'
+        Source = '00/c6/CReverbProcessor00c6a460_ProcessCombs_00c69fb0.cpp'
+        TestSource = '00/c6/CReverbProcessor00c6a460_ProcessCombs_00c69fb0_test.cpp'
+        PassPattern = '00c69fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a610'
+        Module = 'NStreamingFontBankGlobals'
+        Source = '01/22/NStreamingFontBankGlobals_DestroyPendingLoadedGlyphs_0122a610.cpp'
+        TestSource = '01/22/NStreamingFontBankGlobals_DestroyPendingLoadedGlyphs_0122a610_test.cpp'
+        PassPattern = '0122a610_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

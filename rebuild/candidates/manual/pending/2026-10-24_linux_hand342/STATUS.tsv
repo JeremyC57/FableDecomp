@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b0f8e0	RELOCATION_MATCH	62v62	PASS	GetParticleLifeSecs: nested float ternary through the reference
+00af15b0	RELOCATION_MATCH	69v69	PASS	Close: port of landed CLipSyncDataBank::Close 0x00A42DA0
+00643fc8	RELOCATION_MATCH	28v28	PASS	GetSpecialMoveIndexForButton: named interface local orders the call before the push
+00644ffc	RELOCATION_MATCH	157v157	PASS	ClearPrimitivesIfNecessary: two inline handle clears + for_each
+00644660	RELOCATION_MATCH	23v23	PASS	ClearPrimitives: for_each(mem_fun_ref(&CEnginePrimitiveHandle::Clear)), /Os pragma
+00644263	SKIP	-v75	-	catalog row holds 3 x 25-byte functions (CDrawMoney/CDrawRenown/CDrawMorality::ClearPrimitivesIfNecessary)
+00644d0e	RELOCATION_MATCH	70v70	PASS	ClearPrimitivesIfNecessary: element list walk + for_each + base call
+00644fe5	RELOCATION_MATCH	23v23	PASS	CQuestInfoElement::Clear: for_each, /Os pragma
+00657550	RELOCATION_MATCH	48v48	PASS	CDrawQuickAccessIconsPC::ClearPrimitivesIfNecessary: Clear declared only
+009f0500	RELOCATION_MATCH	50v50	PASS	really CCodeSectionManager::GetHandleFromLongName (label NQuestManager::GetAnimationEntry wrong)
+0041a430	RELOCATION_MATCH	141v141	PASS	GetMyDocumentsDir: /GS, SHGetFolderPathW
+0041a540	RELOCATION_MATCH	99v99	PASS	GetSaveDir: same-TU helpers for temporary order
+008809f0	MATCH	22v22	PASS	CDisplacementProcess::ResetToDefault: component stores through a reference
+00882720	RELOCATION_MATCH	38v38	PASS	CDisplacementProcess ??_G: user dtor { TheStack = 0; }
+00880ec0	MATCH	138v138	PASS	CRadialBlurProcess::ResetToDefault: inline Initialise forms
+008826f0	RELOCATION_MATCH	38v38	PASS	CRadialBlurProcess ??_G
+00880a10	MATCH	39v39	PASS	CScreenFilterProcess::ResetToDefault: chained = right to left
+00880e00	RELOCATION_MATCH	65v65	PASS	CScreenFilterProcess::Process: Interpolate assignment
+00882750	RELOCATION_MATCH	38v38	PASS	CScreenFilterProcess ??_G
+00c69a70	DIFFER	240v236	-	reverb AllocateMemory: mov ecx,ebx;shl ecx,2 vs lea ecx,[ebx*4]; 4 grades used
+00c69fb0	RELOCATION_MATCH	197v197	PASS	really the reverb ProcessCombs (label CQ_GuildTrainingSkillScript wrong)
+00c3a9e0	RELOCATION_MATCH	75v75	PASS	really a reader Read (label CV_MurderTwistScript wrong)
+00761740	RELOCATION_MATCH	54v54	PASS	IsPosInShape: if/else keeps the separate xor al,al exit
+0122a610	RELOCATION_MATCH	71v71	PASS	_$E2 atexit thunk: global glyph array, inline reverse loop
+007152f0	RELOCATION_MATCH	181v181	PASS	CActionFireProjectileWeapon::Update: STLport pop_front() = erase(begin()) into erase(const_iterator)
+00714f60	RELOCATION_MATCH	195v195	PASS	CActionOverheadTalkToThing::DisplayText (slot 6)
+00713660	RELOCATION_MATCH	75v75	PASS	CActionStopScripting::Update: inline ClearActions() member, signed GetNoActions()
+00714d30	RELOCATION_MATCH	205v205	PASS	CActionTalkBase::OnAdd (slot 3): inline Get() accessor, parent local
+007173d0	RELOCATION_MATCH	126v126	PASS	CActionTalkToThing::Update: message manager in a named local
+00717920	RELOCATION_MATCH	35v35	PASS	CActionTalkToThing::OnActivate (slot 2)
+00714cc0	RELOCATION_MATCH	100v100	PASS	CActionTurnToFacePosition::Update
+00712240	MATCH	25v25	PASS	CActionWait::Update
+00713cd0	RELOCATION_MATCH	123v123	PASS	CActionWaitForThingToFinishPerformingTasks::Update
+007bf350	RELOCATION_MATCH	113v113	PASS	really CTCShotDefinitionBase::OnRemove (slot 2 of every shot vtable)
+00ac7a90	RELOCATION_MATCH	104v104	PASS	really CVertexPairContraction::ContainsAllVertices; same-TU HasVertex body (LTCG ecx)
+00533b30	RELOCATION_MATCH	23v23	PASS	CComponent::GetCurrentState = &States[0]
+00558d90	RELOCATION_MATCH	70v70	PASS	CDraggableInto::ProcessEvent (CObserver subobject at +4)
+00540180	RELOCATION_MATCH	48v48	PASS	CEditBox::SetText
+00540d70	RELOCATION_MATCH	35v35	PASS	CEditBox::AddActionOnEnter: push_back, iterator copy ctor
+00540da0	RELOCATION_MATCH	35v35	PASS	CEditBox::AddActionOnEscape: push_back, iterator copy ctor

@@ -41,6 +41,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00619890	320	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	00619890:27,006198ab:17,006198bc:20,006198d0:20,006198e4:37,00619909:37,0061992e:23,00619950:67,006199a0:46	row holds the Transfer jump-table body plus following function(s) after int3 padding
 0061b530	96	2026-10-15_linux_hand95	CTCInventoryQuests::CTCInventoryQuests::vfunc_38	multi	done	0061b530:40,0061b560:40	row holds two functions (0x0061B530 + 0x0061B560)
 006420f0	256	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	006420f0:27,0064210b:20,0064211f:21,00642134:29,00642151:37,00642176:52,006421aa:68	row holds the Transfer jump-table body plus following function(s) after int3 padding
+00644263	75	2026-10-24_linux_hand342	NPlayerGui::CDrawMoney::NPlayerGui::CDrawMoney::vfunc_0	multi	open	00644263:25,0064427c:25,00644295:25	catalog row holds 3 x 25-byte functions (CDrawMoney/CDrawRenown/CDrawMorality::ClearPrimitivesIfNecessary)
 0064dd9a	321	2026-10-21_linux_hand250	CTCActionUseScriptedHook::CTCActionUseScriptedHook::PopulateRegionExits	prefix	open	0064dd9a:580	catalog row truncates the function (jmp 0x64dfbe past the row end)
 00659800	1074	2026-10-24_linux_hand327	CTCVillage::CalculateSecuritySweepTasks	single	open	00659800:1074	CTCVillage::CalculateSecuritySweepTasks not attempted (x87)
 0065b854	1502	2026-10-24_linux_hand327	CTCVillage::AddThingToVillage	single	open	0065b854:1502	CTCVillage::AddThingToVillage not attempted

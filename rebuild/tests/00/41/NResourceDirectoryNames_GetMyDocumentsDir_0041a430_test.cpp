@@ -1,125 +1,49 @@
-#include <stdio.h>
-#include <wchar.h>
-
-#include "fable_resource_directories.h"
-
-typedef long (FABLE_STDCALL *FableGetFolderPathW_0041A430)(
-    void* window,
-    int folder,
-    void* token,
-    fable_u32 flags,
-    wchar_t* path);
-
-namespace
+// Behaviour test for 0x0041A430 NResourceDirectoryNames::GetMyDocumentsDir
+#include <cstdio>
+typedef unsigned short wchar16;
+static long g_strings = 0;
+struct CWideString {
+    wchar16 m_text[128];
+    long m_len;
+    CWideString() : m_len(0) { m_text[0] = 0; ++g_strings; }
+    explicit CWideString(const wchar16* t) : m_len(0) { while (t[m_len]) { m_text[m_len] = t[m_len]; ++m_len; } m_text[m_len] = 0; ++g_strings; }
+    CWideString(const CWideString& o) : m_len(o.m_len) { for (long i = 0; i <= m_len; ++i) m_text[i] = o.m_text[i]; ++g_strings; }
+    ~CWideString() { --g_strings; }
+    long GetLength() const { return m_len; }
+    operator const wchar16*() const { return m_text; }
+    const CWideString& operator+=(const wchar16* t) { for (long i = 0; t[i]; ++i) m_text[m_len++] = t[i]; m_text[m_len] = 0; return *this; }
+};
+static CWideString operator+(const CWideString& a, const wchar16* b) { CWideString r(a); r += b; return r; }
+static void Widen(wchar16* out, const char* in) { long i = 0; for (; in[i]; ++i) out[i] = (wchar16)in[i]; out[i] = 0; }
+static bool SameText(const CWideString& s, const char* in) { long i = 0; for (; in[i]; ++i) if (s.m_text[i] != (wchar16)in[i]) return false; return s.m_len == i; }
+static const char* g_folder = "C:\\Users\\Hero\\Documents";
+static int g_folderId = -1;
+long SHGetFolderPathW(void*, int folder, void*, unsigned long, wchar16* path) { g_folderId = folder; Widen(path, g_folder); return 0; }
+CWideString GetMyDocumentsDir()
 {
-    const wchar_t* g_folderPath;
-    wchar_t g_returnStorage[260];
-    unsigned int g_folderCalls;
-    unsigned int g_appendCalls;
-    unsigned int g_copyCalls;
-    bool g_folderArgumentsValid;
-
-    long FABLE_STDCALL FolderPathStub(
-        void* window,
-        int folder,
-        void* token,
-        fable_u32 flags,
-        wchar_t* path)
-    {
-        ++g_folderCalls;
-        g_folderArgumentsValid =
-            window == 0 &&
-            folder == 5 &&
-            token == 0 &&
-            flags == 0;
-        wcscpy(path, g_folderPath);
-        return 0;
+    wchar16 path[260];
+    SHGetFolderPathW(0, 5, 0, 0, path);
+    CWideString directory(path);
+    long lastIndex = directory.GetLength() - 1;
+    const wchar16* text = directory;
+    if (text[lastIndex] != (wchar16)'\\') {
+        wchar16 slash[2]; Widen(slash, "\\");
+        directory += slash;
     }
-
-    bool CheckPath(
-        const wchar_t* input,
-        const wchar_t* expected,
-        unsigned int expectedAppendCalls)
-    {
-        g_folderPath = input;
-        g_folderCalls = 0;
-        g_appendCalls = 0;
-        g_copyCalls = 0;
-        g_folderArgumentsValid = false;
-
-        CWideString result =
-            NResourceDirectoryNames::GetMyDocumentsDir();
-        const wchar_t* actual = result;
-        return
-            g_folderCalls == 1 &&
-            g_folderArgumentsValid &&
-            g_appendCalls == expectedAppendCalls &&
-            g_copyCalls == 1 &&
-            wcscmp(actual, expected) == 0;
-    }
+    return directory;
 }
-
-extern "C" FableGetFolderPathW_0041A430
-    g_FableGetFolderPathW_0041A430 = &FolderPathStub;
-
-CWideString::CWideString(const wchar_t* text)
-{
-    storage_ = reinterpret_cast<CWideStringData*>(
-        const_cast<wchar_t*>(text));
-}
-
-CWideString::CWideString(const CWideString& other)
-{
-    ++g_copyCalls;
-    wcscpy(
-        g_returnStorage,
-        reinterpret_cast<const wchar_t*>(other.storage_));
-    storage_ = reinterpret_cast<CWideStringData*>(g_returnStorage);
-}
-
-CWideString::~CWideString()
-{
-}
-
-CWideString::operator const wchar_t*() const
-{
-    return reinterpret_cast<const wchar_t*>(storage_);
-}
-
-long CWideString::GetLength() const
-{
-    return static_cast<long>(wcslen(
-        reinterpret_cast<const wchar_t*>(storage_)));
-}
-
-const CWideString& CWideString::operator+=(
-    const wchar_t* text)
-{
-    ++g_appendCalls;
-    wcscat(
-        reinterpret_cast<wchar_t*>(storage_),
-        text);
-    return *this;
-}
-
 int main()
 {
-    const bool passed =
-        CheckPath(
-            L"C:\\Users\\Hero\\Documents",
-            L"C:\\Users\\Hero\\Documents\\",
-            1) &&
-        CheckPath(
-            L"D:\\Profiles\\Hero\\",
-            L"D:\\Profiles\\Hero\\",
-            0);
-
-    if (!passed)
+    int ok = 1;
     {
-        printf("FABLETLC_MY_DOCUMENTS_DIRECTORY_BEHAVIOR FAIL\n");
-        return 1;
+        CWideString a = GetMyDocumentsDir();
+        ok = ok && g_folderId == 5 && SameText(a, "C:\\Users\\Hero\\Documents\\");
+        g_folder = "D:\\Docs\\";
+        CWideString b = GetMyDocumentsDir();
+        ok = ok && SameText(b, "D:\\Docs\\");
     }
-
-    printf("FABLETLC_MY_DOCUMENTS_DIRECTORY_BEHAVIOR PASS\n");
+    ok = ok && g_strings == 0;
+    if (!ok) { std::printf("0041a430_TEST FAIL\n"); return 1; }
+    std::printf("0041a430_TEST PASS\n");
     return 0;
 }

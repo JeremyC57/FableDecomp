@@ -1060,3 +1060,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A manager member loaded straight into ecx needs an inline accessor (`GetMouseCursor()`); a raw member read loads into eax (0x55A5B0). A float spilling into a dead argument slot rather than its own frame word is written as one statement (0x545DF0).
 - In a secondary-base override touching primary-class members, put them in an inline helper on the primary class so `this` is converted once (0x55BD50).
 - Retail CComponent members sit 8 below the Ego_r.pdb layout and CSprite-derived members 0x30 below (chunk 344).
+- When retail calls a same-class member without reloading ecx (LTCG-like), put the callee's real body in the same TU under `#pragma auto_inline(off)`; VC7.1 then drops the reload too (0xAC7A90). A static `_M_increment(node)` returning the next node gives STLport's eax->esi tree-walk pairing.
+- STLport `pop_front()` as inline `erase(begin())` into `erase(const_iterator)` keeps the preceding member store in place; `push_back(x)` is `insert(end(), x)` with an iterator that has a user copy ctor (0x7152F0, 0x540D70).
+- Retail CActionTalkBase is 0x90 bytes (PDB 0x98); CThingCreatureBase::PCurrentAction is at retail +0x100 (header +0x11C) (chunk 342).
+- The landing script moves bootstrap fixture copies for a batch's addresses into `integration/bootstrap_asm/` before landing (`$S/fixmove.py`), so a new landing never overwrites a fixture's asm body (0x0041A540, 0x0041A430).
