@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ad4960	RELOCATION_MATCH	92v92	PASS	_STL::sort_heap<COptimisedVertex::CGroup*, __fastcall comparator> (/Gr); 2 grades
+00ad4c40	RELOCATION_MATCH	86v86	PASS	QuadricOptimiserInternals::CUniqueVertex::CUniqueVertex() (two inline set ctors); 2 grades
+00ad4ca0	RELOCATION_MATCH	103v103	PASS	_Rb_tree::erase(iterator), multimap<float, CCountedPointer<CVertexPairContraction>>; 1 grade
+00ad54b0	RELOCATION_MATCH	64v64	PASS	_Rb_tree::insert_equal, same multimap (float key); 1 grade
+00ad6420	DIFFER	115v115	-	map<unsigned long,float>::operator[]; lane gap: late zero store after the result push; 4 grades
+00ad64c0	DIFFER	163v158	-	map<unsigned long,CContractionReference>::operator[]; same late-store gap + release form; 3 grades
+00ad6f10	RELOCATION_MATCH	217v217	PASS	_STL::__introsort_loop<CGroup*> (/Gr, function-pointer comparator); 2 grades
+00ad71b0	RELOCATION_MATCH	106v106	PASS	COptimisedVertex::Remove() (descriptive; Exists=false + two clear()); 1 grade
+00ad75f0	RELOCATION_MATCH	235v235	PASS	__uninitialized_copy<const COptimisedSubMesh*> (/Gr; bones copy forced out of line by a specialisation decl); 1 grade
+00ad76e0	RELOCATION_MATCH	235v235	PASS	__uninitialized_fill_n<COptimisedSubMesh*> (/Gr); 1 grade
+00ad7a00	RELOCATION_MATCH	183v183	PASS	COptimisedVertex::COptimisedVertex() : Exists(true); 1 grade
+00ad7dc0	RELOCATION_MATCH	107v107	PASS	__destroy_aux<COptimisedSubMesh*> (/Gr); 1 grade
+00ad8af0	DIFFER	188v188	-	CVertexGroupBlock::SharesGroupWith; register swap only; 4 grades
+00ad8fe0	RELOCATION_MATCH	67v67	PASS	CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResultNewBlock(); 1 grade
+00ad9030	RELOCATION_MATCH	58v58	PASS	CVertexGroupBlock::CVertexGroupBlock(); 1 grade
+00ad9120	RELOCATION_MATCH	207v207	PASS	CVertexGroupBlockOptimiser::CountRemainingCurrentBlockSegments() const; 2 grades
+00ad91f0	RELOCATION_MATCH	98v98	PASS	CVertexGroupBlock::AddGroup (same-TU noinline _M_insert_overflow homes the tag on the live arg slot); 2 grades
+00ad9d10	RELOCATION_MATCH	82v82	PASS	CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResultNewBlock2(); 1 grade
+00adaa30	MATCH	67v67	PASS	__unguarded_linear_insert<CBlockInfo*> (/Gr); 1 grade
+00adaf90	MATCH	111v111	PASS	__unguarded_insertion_sort_aux<CBlockInfo*> (/Gr); 1 grade
+00adb320	MATCH	130v130	PASS	__unguarded_partition<CBlockInfo*> (/Gr); 1 grade
+00adb670	RELOCATION_MATCH	203v203	PASS	_Rb_tree::_M_insert, map<unsigned long, CGroupInfo>; 1 grade
+00adbc50	RELOCATION_MATCH	92v92	PASS	__linear_insert<CBlockInfo*> (/Gr; same-TU noinline __copy_backward); 1 grade
+00adbf00	RELOCATION_MATCH	166v166	PASS	__partial_sort<CBlockInfo*> (/Gr); 1 grade
+00adbff0	DIFFER	120v120	PASS	map<unsigned long,CGroupInfo>::operator[]; same late-store gap as 00ad6420; 2 grades
+00adc190	RELOCATION_MATCH	141v141	PASS	__destroy_aux<CVertexGroupBlock*> (/Gr; top level of _M_erase inlined); 1 grade
+00adc250	RELOCATION_MATCH	183v183	PASS	_List_base<CVertexGroupBlock>::clear(); 1 grade
+00adc330	RELOCATION_MATCH	127v127	PASS	__uninitialized_copy<CVertexGroupBlock*, CVertexGroupBlock*> (/Gr; reserve/_M_insert_overflow); 1 grade
+00adc3b0	RELOCATION_MATCH	139v139	PASS	__uninitialized_fill_n<CVertexGroupBlock*> (/Gr); 1 grade
+00adc440	RELOCATION_MATCH	127v127	PASS	__uninitialized_copy<const CVertexGroupBlock*, CVertexGroupBlock*> (/Gr; operator=; byte twin of 00adc330); 1 grade
+00adc4e0	RELOCATION_MATCH	193v193	PASS	list<CVertexGroupBlock>::erase(first, last); 2 grades
+00adc890	RELOCATION_MATCH	83v83	PASS	sort<CBlockInfo*>(first, last) (/Gr; less<> needs a user ctor); 2 grades
+00adcb90	RELOCATION_MATCH	226v226	PASS	vector<CVertexGroupBlock>::reserve (/Gr TU; same-TU noinline copy/destroy helpers); 2 grades
+00adcc80	RELOCATION_MATCH	168v168	PASS	list<CVertexGroupBlock>::_M_insert_dispatch (range insert); 2 grades
+00adce10	RELOCATION_MATCH	69v69	PASS	list<CVertexGroupBlock>::push_back (vector copy ctor out of line here); 1 grade
+00add020	RELOCATION_MATCH	171v171	PASS	list<CVertexGroupBlock>::operator= (const_iterator has an implicit copy ctor); 2 grades
+00add130	MATCH	36v36	PASS	CLHFileCompletionCallback::OnFileReadCompletion(bool); 1 grade
+00add240	RELOCATION_MATCH	237v237	PASS	CLHFile::Read (vtable slot 1; name inferred); 2 grades
+00add650	RELOCATION_MATCH	63v63	PASS	C3DBone2::SetName(const CCharString&); 2 grades
+00ae0600	RELOCATION_MATCH	36v36	PASS	CParticleSimulation::CParticleSimulation(); 1 grade

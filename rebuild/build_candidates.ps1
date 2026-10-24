@@ -302719,6 +302719,274 @@ $catalog = @(
         TestSource = '00/aa/CSoundEmitterLH_vfunc15_00aabbb0_test.cpp'
         PassPattern = '00aabbb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ad4960'
+        Module = '_STL'
+        Source = '00/ad/STL_sortheap_00ad4960.cpp'
+        TestSource = '00/ad/STL_sortheap_00ad4960_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ad4960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad4c40'
+        Module = 'QuadricOptimiserInternals::CUniqueVertex'
+        Source = '00/ad/QuadricOptimiserInternalsCUniqueVertex_CUniqueVertex_00ad4c40.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCUniqueVertex_CUniqueVertex_00ad4c40_test.cpp'
+        PassPattern = '00ad4c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad4ca0'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_erase_00ad4ca0.cpp'
+        TestSource = '00/ad/STLRbtree_erase_00ad4ca0_test.cpp'
+        PassPattern = '00ad4ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad54b0'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_insertequal_00ad54b0.cpp'
+        TestSource = '00/ad/STLRbtree_insertequal_00ad54b0_test.cpp'
+        PassPattern = '00ad54b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad6f10'
+        Module = '_STL'
+        Source = '00/ad/STL_introsortloop_00ad6f10.cpp'
+        TestSource = '00/ad/STL_introsortloop_00ad6f10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ad6f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad71b0'
+        Module = 'QuadricOptimiserInternals::COptimisedVertex'
+        Source = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_Remove_00ad71b0.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_Remove_00ad71b0_test.cpp'
+        PassPattern = '00ad71b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad75f0'
+        Module = '_STL'
+        Source = '00/ad/STL_uninitializedcopy_00ad75f0.cpp'
+        TestSource = '00/ad/STL_uninitializedcopy_00ad75f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ad75f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad76e0'
+        Module = '_STL'
+        Source = '00/ad/STL_uninitializedfilln_00ad76e0.cpp'
+        TestSource = '00/ad/STL_uninitializedfilln_00ad76e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ad76e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad7a00'
+        Module = 'QuadricOptimiserInternals::COptimisedVertex'
+        Source = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_COptimisedVertex_00ad7a00.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_COptimisedVertex_00ad7a00_test.cpp'
+        PassPattern = '00ad7a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad7dc0'
+        Module = '_STL'
+        Source = '00/ad/STL_destroyaux_00ad7dc0.cpp'
+        TestSource = '00/ad/STL_destroyaux_00ad7dc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ad7dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad8fe0'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_CalcCurrentBestTheoreticalResultNewBlock_00ad8fe0.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_CalcCurrentBestTheoreticalResultNewBlock_00ad8fe0_test.cpp'
+        PassPattern = '00ad8fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9030'
+        Module = 'CVertexGroupBlock'
+        Source = '00/ad/CVertexGroupBlock_CVertexGroupBlock_00ad9030.cpp'
+        TestSource = '00/ad/CVertexGroupBlock_CVertexGroupBlock_00ad9030_test.cpp'
+        PassPattern = '00ad9030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9120'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_CountRemainingCurrentBlockSegments_00ad9120.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_CountRemainingCurrentBlockSegments_00ad9120_test.cpp'
+        PassPattern = '00ad9120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad91f0'
+        Module = 'CVertexGroupBlock'
+        Source = '00/ad/CVertexGroupBlock_AddGroup_00ad91f0.cpp'
+        TestSource = '00/ad/CVertexGroupBlock_AddGroup_00ad91f0_test.cpp'
+        PassPattern = '00ad91f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9d10'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_CalcCurrentBestTheoreticalResultNewBlock2_00ad9d10.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_CalcCurrentBestTheoreticalResultNewBlock2_00ad9d10_test.cpp'
+        PassPattern = '00ad9d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adaa30'
+        Module = '_STL'
+        Source = '00/ad/STL_unguardedlinearinsert_00adaa30.cpp'
+        TestSource = '00/ad/STL_unguardedlinearinsert_00adaa30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adaa30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adaf90'
+        Module = '_STL'
+        Source = '00/ad/STL_unguardedinsertionsortaux_00adaf90.cpp'
+        TestSource = '00/ad/STL_unguardedinsertionsortaux_00adaf90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adaf90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adb320'
+        Module = '_STL'
+        Source = '00/ad/STL_unguardedpartition_00adb320.cpp'
+        TestSource = '00/ad/STL_unguardedpartition_00adb320_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adb320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adb670'
+        Module = '_STL::_Rb_tree'
+        Source = '00/ad/STLRbtree_Minsert_00adb670.cpp'
+        TestSource = '00/ad/STLRbtree_Minsert_00adb670_test.cpp'
+        PassPattern = '00adb670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adbc50'
+        Module = '_STL'
+        Source = '00/ad/STL_linearinsert_00adbc50.cpp'
+        TestSource = '00/ad/STL_linearinsert_00adbc50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adbc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adbf00'
+        Module = '_STL'
+        Source = '00/ad/STL_partialsort_00adbf00.cpp'
+        TestSource = '00/ad/STL_partialsort_00adbf00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adbf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adc190'
+        Module = '_STL'
+        Source = '00/ad/STL_destroyaux_00adc190.cpp'
+        TestSource = '00/ad/STL_destroyaux_00adc190_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adc190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adc250'
+        Module = '_STL::_List_base<CVertexGroupBlock>'
+        Source = '00/ad/STLListbaseCVertexGroupBlock_clear_00adc250.cpp'
+        TestSource = '00/ad/STLListbaseCVertexGroupBlock_clear_00adc250_test.cpp'
+        PassPattern = '00adc250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adc330'
+        Module = '_STL'
+        Source = '00/ad/STL_uninitializedcopy_00adc330.cpp'
+        TestSource = '00/ad/STL_uninitializedcopy_00adc330_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adc330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adc3b0'
+        Module = '_STL'
+        Source = '00/ad/STL_uninitializedfilln_00adc3b0.cpp'
+        TestSource = '00/ad/STL_uninitializedfilln_00adc3b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adc3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adc440'
+        Module = '_STL'
+        Source = '00/ad/STL_uninitializedcopy_00adc440.cpp'
+        TestSource = '00/ad/STL_uninitializedcopy_00adc440_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adc440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adc4e0'
+        Module = '_STL::list<CVertexGroupBlock>'
+        Source = '00/ad/STLlistCVertexGroupBlock_erase_00adc4e0.cpp'
+        TestSource = '00/ad/STLlistCVertexGroupBlock_erase_00adc4e0_test.cpp'
+        PassPattern = '00adc4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adc890'
+        Module = '_STL'
+        Source = '00/ad/STL_sort_00adc890.cpp'
+        TestSource = '00/ad/STL_sort_00adc890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adc890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adcb90'
+        Module = '_STL::vector<CVertexGroupBlock>'
+        Source = '00/ad/STLvectorCVertexGroupBlock_reserve_00adcb90.cpp'
+        TestSource = '00/ad/STLvectorCVertexGroupBlock_reserve_00adcb90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adcb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adcc80'
+        Module = '_STL::list<CVertexGroupBlock>'
+        Source = '00/ad/STLlistCVertexGroupBlock_Minsertdispatch_00adcc80.cpp'
+        TestSource = '00/ad/STLlistCVertexGroupBlock_Minsertdispatch_00adcc80_test.cpp'
+        PassPattern = '00adcc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adce10'
+        Module = '_STL::list<CVertexGroupBlock>'
+        Source = '00/ad/STLlistCVertexGroupBlock_pushback_00adce10.cpp'
+        TestSource = '00/ad/STLlistCVertexGroupBlock_pushback_00adce10_test.cpp'
+        PassPattern = '00adce10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00add020'
+        Module = '_STL::list<CVertexGroupBlock>'
+        Source = '00/ad/STLlistCVertexGroupBlock_operator_00add020.cpp'
+        TestSource = '00/ad/STLlistCVertexGroupBlock_operator_00add020_test.cpp'
+        PassPattern = '00add020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00add130'
+        Module = 'CLHFileCompletionCallback'
+        Source = '00/ad/CLHFileCompletionCallback_OnFileReadCompletion_00add130.cpp'
+        TestSource = '00/ad/CLHFileCompletionCallback_OnFileReadCompletion_00add130_test.cpp'
+        PassPattern = '00add130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00add240'
+        Module = 'CLHFile'
+        Source = '00/ad/CLHFile_Read_00add240.cpp'
+        TestSource = '00/ad/CLHFile_Read_00add240_test.cpp'
+        PassPattern = '00add240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00add650'
+        Module = 'C3DBone2'
+        Source = '00/ad/C3DBone2_SetName_00add650.cpp'
+        TestSource = '00/ad/C3DBone2_SetName_00add650_test.cpp'
+        PassPattern = '00add650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae0600'
+        Module = 'CParticleSimulation'
+        Source = '00/ae/CParticleSimulation_CParticleSimulation_00ae0600.cpp'
+        TestSource = '00/ae/CParticleSimulation_CParticleSimulation_00ae0600_test.cpp'
+        PassPattern = '00ae0600_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
