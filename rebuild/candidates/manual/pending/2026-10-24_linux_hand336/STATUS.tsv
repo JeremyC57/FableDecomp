@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00617860	RELOCATION_MATCH	129v129	PASS	CThingMarker / std::list<CThingMarker*> / CThingFilter_HasTC
+00617970	RELOCATION_MATCH	129v129	PASS	CThingMarker / std::list<const CThingMarker*> / CThingFilter_HasTC
+006d4600	RELOCATION_MATCH	121v121	PASS	CThingBuilding / std::vector<CThingBuilding*> / CThingFilter_None
+004acd70	RELOCATION_MATCH	133v133	PASS	CThing / std::list<CThing*> / CThingFilter_HasTC
+004baa50	RELOCATION_MATCH	133v133	PASS	CThing / std::list<CThing*> / CThingFilter_HasAnyScriptName
+00617ca0	RELOCATION_MATCH	133v133	PASS	CThing / std::list<const CThing*> / CThingFilter_HasTC
+00618e60	RELOCATION_MATCH	133v133	PASS	CThing / std::list<CThing*> / CThingFilter_HasTCOfLeafType_CTCActionUseScriptedHook
+007ea040	RELOCATION_MATCH	159v159	PASS	CThing / std::list<CIntelligentPointer<CThing> > / CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InRegion>
+007ea0e0	RELOCATION_MATCH	143v143	PASS	CThing / std::list<CIntelligentPointer<CThing> > / CThingFilter_HasTC
+005198b0	RELOCATION_MATCH	140v140	PASS	CThing / std::vector<CThing*> / CThingFilter_HasTCOfLeafType_CTCActionUseScriptedHook
+005ed860	RELOCATION_MATCH	140v140	PASS	CThing / std::vector<CThing*> / CThingFilter_HasScriptName
+006c1dd0	RELOCATION_MATCH	158v158	PASS	CThing / std::vector<CThing*> / CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>
+006dfa50	RELOCATION_MATCH	233v233	PASS	CThingAICreature / std::list<CIntelligentPointer<CThingAICreature> > / CFilter_Bind5<CThingFilter_HasTC, CThingFilter_HasTC, CThingFilter_HasScriptSupervision, CFilter_Not<CThingFilter_AICreatureHasProperty>, CFilter_Not<CThingFilter_IsLyingDown> >
+007bb660	RELOCATION_MATCH	179v179	PASS	CThingAICreature / std::list<CIntelligentPointer<CThingAICreature> > / CThingFilter_HasBuildingAsHomeOrWork
+004acf90	RELOCATION_MATCH	140v140	PASS	CThingAICreature / std::list<CThingAICreature*> / CThingFilter_HasTC
+0052b270	RELOCATION_MATCH	131v131	PASS	CThingAICreature / std::vector<CThingAICreature*> / CThingFilter_None
+0066e5a0	RELOCATION_MATCH	131v131	PASS	CThingMask47 / std::vector<CThingMask47*> / CThingFilter_None
+008ac5d0	RELOCATION_MATCH	129v129	PASS	CThingDeadCreature / std::list<CThingDeadCreature*> / CThingFilter_None
+00617b20	RELOCATION_MATCH	138v138	PASS	CThingCreatureBase / std::list<const CThingCreatureBase*> / std::const_mem_fun_ref_t<bool, CThingCreatureBase>
+00518850	RELOCATION_MATCH	175v175	PASS	CThing / std::vector<CThing*> / CFilter_Bind3<CThingFilter_IsInQuestOrNullQuest, CThingFilter_HasTC, CThingFilter_InArea>
+008266e0	RELOCATION_MATCH	165v165	PASS	CThingPhysical / std::vector<CThingPhysical*> / CFilter_Bind2<CThingFilter_BoundingBoxOverlapsMap, CThingFilter_HasNavigationInformation>
+00943830	RELOCATION_MATCH	182v182	PASS	CThingCreatureBase / std::vector<CThingCreatureBase*> / CFilter_Bind3<CThingFilter_IsHuman, CThingFilter_IsNot, CThingFilter_In2DRange>
+0062e840	RELOCATION_MATCH	153v153	PASS	CThingMarker / std::vector<CThingMarker*> / CThingFilter_HasScriptName
+00799fb0	RELOCATION_MATCH	153v153	PASS	CThingMarker / std::vector<CThingMarker*> / CThingFilter_HasTC
+0052b300	RELOCATION_MATCH	150v150	PASS	CThingAICreature / std::vector<CThingAICreature*> / CFilter_Bind2<CThingFilter_None, CThingFilter_HasTC>
+00617bb0	RELOCATION_MATCH	155v155	PASS	CThingCreatureBase / std::list<CThingCreatureBase*> / CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>
+008e3bb0	RELOCATION_MATCH	147v147	PASS	CThingAICreature / std::vector<CThingAICreature*> / CThingFilter_IsNot
+0091e660	RELOCATION_MATCH	147v147	PASS	CThing / std::vector<CThing*> / CThingFilter_HasEitherTC
+004aedf0	RELOCATION_MATCH	64v64	PASS	CQuestCard ctor (catalog label GetDefaultVal is propagated)
+004aee30	RELOCATION_MATCH	61v61	PASS	CQuestCard ctor (catalog label GetDefaultVal is propagated)
+008d4d90	RELOCATION_MATCH	153v153	PASS	NEntityEvents::CEventAttackedWithFlourishWithoutHittingAnything / CFilter_Bind2<NEntityEvents::CIsEventCreatedBeforeOrOn, NEntityEvents::CIsEventCreatedAfter>
+006c7f30	RELOCATION_MATCH	141v141	PASS	NEntityEvents::CEventHeroHasBeenSpottedStealing / NEntityEvents::CIsEventOfType
+00915760	RELOCATION_MATCH	141v141	PASS	NEntityEvents::CEventChildHurtGoToMother / NEntityEvents::CIsEventOfType
+00922440	RELOCATION_MATCH	141v141	PASS	NEntityEvents::CEventExpressionPerformedTo / NEntityEvents::CIsEventOfType
+00982610	RELOCATION_MATCH	141v141	PASS	NEntityEvents::CEventVillagerInteraction / NEntityEvents::CIsEventOfType
+0095d920	DIFFER	137v137	-	ebx/edi swap: iterator vs event
+0096bc20	DIFFER	137v137	-	ebx/edi swap: iterator vs event
+008d47a0	RELOCATION_MATCH	153v153	PASS	NEntityEvents::CEventHitBy / CFilter_Bind2<NEntityEvents::CIsEventCreatedAfter, NEntityEvents::CIsEventCreatedBeforeOrOn>
+0094e480	RELOCATION_MATCH	173v173	PASS	NEntityEvents::CEventHitBy / CFilter_Bind2<NEntityEvents::CIsEventCreatedAfter, NEntityEvents::CIsHitEventHitAndKnockedDownBy>
+0094e530	DIFFER	159v152	-	filter kept in ebp, this spilled (retail: this in ebp)

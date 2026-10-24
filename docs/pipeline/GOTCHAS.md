@@ -1007,3 +1007,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - The VC7.1 CRT is size-optimised: CRT rows like `_RTC_Initialize` need `/O1` (it emits the `__SEH_prolog`/`__SEH_epilog` calls) (004012ce).
 - VC7.1 cl can hang (not error) on unbalanced braces, e.g. a `//` comment that swallowed a `}`; a hang during a test compile shows as TCC_FAIL after the cl TIMEOUT.
 - Old Windows-era landings can be byte-wrong although the lander passed them: a re-grade in this lane found 5 paraphrases (0040bb90, 00bdc510, 00b687d0, 00bf4570, 00988a50). Re-grade before trusting an old landed body as a model.
+- `#pragma auto_inline(off)` does not stop a TEMPLATE member stand-in from inlining; add `__declspec(noinline)` (0x005198B0).
+- vector<CThing*> push_back of an address-taken loop local stores it at the loop top; pass a by-value temporary (`ThingCast<T>(thing)`) so the value lands in the dead argument slot (chunk 336).
+- GetAllThings filters take the thing by reference (`filter(*(T*)thing)`, proven by `const_mem_fun_ref_t`); CFilter_Bind5::operator() needs `__forceinline` (0x006DFA50).
+- A GetEvent instance's event id is the constant returned by slot 1 of that event class's RTTI vtable.
+- Identical-byte retail pairs (0x00617860/0x00617970, 0x004ACD70/0x00617CA0) are modelled as distinct template arguments (const-element list) so each address keeps its own symbol; the real distinguishing argument is unproven.
