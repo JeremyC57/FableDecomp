@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00924a90	RELOCATION_MATCH	175v175	PASS	CCreatureAction_KrakenHighAttackInto::FinishAction()
+00924260	RELOCATION_MATCH	100v100	PASS	CCreatureAction_KrakenHighAttackLoop::Initialise()
+009242d0	RELOCATION_MATCH	117v117	PASS	CCreatureAction_KrakenHighAttackLoop::FrameUpdate()
+009243b0	RELOCATION_MATCH	101v101	PASS	CCreatureAction_KrakenHighAttackOutOf::Initialise()
+00924120	RELOCATION_MATCH	91v91	PASS	CCreatureAction_KrakenLowAttackInto::PerformAction()
+00924670	RELOCATION_MATCH	175v175	PASS	CCreatureAction_KrakenLowAttackInto::FinishAction()
+00923fd0	RELOCATION_MATCH	105v105	PASS	CCreatureAction_KrakenLowAttackLoop::Initialise()
+00924040	RELOCATION_MATCH	117v117	PASS	CCreatureAction_KrakenLowAttackLoop::FrameUpdate()
+00923f60	RELOCATION_MATCH	101v101	PASS	CCreatureAction_KrakenLowAttackOutOf::Initialise()
+00924180	RELOCATION_MATCH	126v126	PASS	CCreatureAction_KrakenLowChargeLoop::FrameUpdate()
+00924880	DIFFER	173v172	-	register tie: &PTarget edi + lazy ebx push in retail
+00923e10	RELOCATION_MATCH	175v175	PASS	CCreatureAction_KrakenReturnToWater::Initialise()
+00923ec0	RELOCATION_MATCH	160v160	PASS	CCreatureAction_KrakenReturnToWater::FinishAction()
+00923cf0	RELOCATION_MATCH	166v166	PASS	CCreatureAction_KrakenRiseUp::Initialise()
+00923da0	RELOCATION_MATCH	100v100	PASS	CCreatureAction_KrakenRiseUp::FinishAction()
+00924b40	RELOCATION_MATCH	72v72	PASS	CCreatureAction_KrakenRoarInto::FinishAction()
+00924b90	DIFFER	219v219	-	LoopNum/def load order + esi/edi swap
+009703d0	RELOCATION_MATCH	51v51	PASS	CCreatureAction_SummonerChargeSuccess::Initialise()
+00bfbc80	RELOCATION_MATCH	145v145	PASS	CEngineLandscapeMemoryManager::AllocArrayOfObjects(long count, void* owner)
+005b336a	MATCH	52v52	PASS	ArgPasser::ArgPasser()
+00a259f0	RELOCATION_MATCH	126v126	PASS	C3DAnimationInfo::CAnimationData::OnResourceLoaded()
+009350c0	DIFFER	159v159	-	frame-slot swap of two float locals
+0069dfe0	RELOCATION_MATCH	83v83	PASS	NCameraModes::CScriptedControl::CScriptedControl(CGameCameraManager& manager, const CDefPointer<const CCameraModeDef>& def, CCountedPointer<CScriptModuleBase>& module)
+009b6eb0	DIFFER	135v135	-	scheduling: free null-compare hoisted
+009e7c70	RELOCATION_MATCH	152v152	PASS	CArray<std::pair<CCharString, CSymbolInfo> >::DeallocateUnusedMemory()
+0051a350	RELOCATION_MATCH	123v123	PASS	CArray<CMapInfo>::DeallocateMemory()
+0051b560	RELOCATION_MATCH	180v180	PASS	CArray<CMapInfo>::DeallocateUnusedMemory()
+0052c580	RELOCATION_MATCH	123v123	PASS	CArray<NThingManager::CEntityScriptInfo>::DeallocateMemory()
+005e3170	RELOCATION_MATCH	123v123	PASS	CArray<std::pair<unsigned long, CAnimationEntry> >::DeallocateMemory()
+005e3920	RELOCATION_MATCH	180v180	PASS	CArray<std::pair<unsigned long, CAnimationEntry> >::DeallocateUnusedMemory()
+006fc620	RELOCATION_MATCH	122v122	PASS	CArray<std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> > >::DeallocateMemory()
+006fd0b0	RELOCATION_MATCH	178v178	PASS	CArray<std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> > >::DeallocateUnusedMemory()
+009b79b0	DIFFER	153v153	-	scheduling: free null-compare hoisted
+00a725d0	DIFFER	153v153	-	scheduling: free null-compare hoisted
+009b5db0	DIFFER	129v129	-	scheduling: free null-compare hoisted
+009a06b0	RELOCATION_MATCH	196v196	PASS	CBasicString<char>::Insert(unsigned long position, const char* text)
+00ca53c0	SKIP	-v39	-	two functions: 15-byte thunk + int3 + a second body at 0x00CA53D0
+00ad1fc0	RELOCATION_MATCH	80v80	PASS	QuadricOptimiserInternals::CContractionReference::operator=(const CContractionReference& other)
+009bdf10	RELOCATION_MATCH	63v63	PASS	CSubTitle::`scalar deleting destructor'(unsigned int flags)
+00af88f0	RELOCATION_MATCH	176v176	PASS	CDynamicObjectHeap<156,2100>::CreateMoreBlocks()

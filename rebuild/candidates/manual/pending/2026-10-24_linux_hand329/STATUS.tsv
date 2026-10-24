@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00af88a0	RELOCATION_MATCH	69v69	PASS	CDynamicObjectHeap<24,853>::CreateMoreBlocks; pointer-walk loop
+00af8c00	RELOCATION_MATCH	69v69	PASS	label <24 wrong: <116,529>::CreateMoreBlocks
+00c5e3f0	RELOCATION_MATCH	47v47	PASS	label wrong: handle owner (vtable 0x12B90D4) Reset(handle)
+00b48f20	RELOCATION_MATCH	112v112	PASS	label <56 wrong: <12,16>::CreateMoreBlocks (4x unrolled)
+00b48f90	RELOCATION_MATCH	122v122	PASS	label <56 wrong: <72,16>::CreateMoreBlocks
+00b49010	RELOCATION_MATCH	114v114	PASS	CDynamicObjectHeap<56,16>::CreateMoreBlocks
+00bfc140	RELOCATION_MATCH	185v185	PASS	label wrong: CWaterFanBaseVertex (56-byte) instantiation
+00e95390	RELOCATION_MATCH	53v53	PASS	__single_inheritance forward decl for the 4-byte PMF
+00c2ee80	RELOCATION_MATCH	76v76	PASS	label wrong: libpk serialiser record Transfer, not Bind4
+009fd7f0	RELOCATION_MATCH	20v20	PASS	slot 4 IsResourceLoaded; if-form for the al tail
+009fea00	RELOCATION_MATCH	24v24	PASS	slot 10 ReleaseTexture
+0099cd60	RELOCATION_MATCH	95v95	PASS	label wrong: STLport basic_string<unsigned short>::resize
+0044c503	RELOCATION_MATCH	32v32	PASS	label wrong: CCombatAbilityAttackBase(type) ctor; /Os
+006a2f00	RELOCATION_MATCH	39v39	PASS	label wrong: CThingGraphicArgPasser(CThing*,bool) ctor
+006c5110	DIFFER	67v69	-	missing only `mov eax,esi`: best form is a ??_F default-ctor closure (void); plain member(T()) init elides the copy (18v69)
+007ca5a0	RELOCATION_MATCH	46v46	PASS	label wrong: STLport pair<CIntelligentPointer<CThingObject>,bool> ctor
+0082c4c0	RELOCATION_MATCH	46v46	PASS	label wrong: CMiniMapDisplay::CMarkerInfo ctor
+00a67da0	RELOCATION_MATCH	39v39	PASS	label wrong: CVolume(IDirect3DVolume9*) ctor
+00a42a80	MATCH	60v60	PASS	slot 2 UnloadResource; value-returning GetRefCount
+00bddee0	RELOCATION_MATCH	78v78	PASS	slot 1 RelocateData
+00bddde0	MATCH	78v78	PASS	slot 1 RelocateData; in-place integer re-base
+00bddd10	MATCH	17v17	PASS	slot 2 CanRelocateData
+00bde0c0	RELOCATION_MATCH	155v155	PASS	slot 1 RelocateData (children + groups)
+00c3d310	RELOCATION_MATCH	69v69	PASS	label wrong: CVtable_012B5870 sign setter
+00454f7c	RELOCATION_MATCH	65v65	PASS	label wrong: CThingPhysicalSwitchDef ctor; /Os
+006e24d0	RELOCATION_MATCH	44v44	PASS	CParticleUpdateParameters<ulong,ulong> ctor
+0076c750	RELOCATION_MATCH	61v61	PASS	CParticleUpdateParameters::Update
+009e5200	RELOCATION_MATCH	76v76	PASS	label wrong: CSymbolMap ctor
+00a38500	RELOCATION_MATCH	76v76	PASS	label wrong: CCRCSymbolMap ctor
+00af3080	RELOCATION_MATCH	97v97	PASS	GetUpdateParam; same-TU LowerBound body under auto_inline(off)
+0052bf50	RELOCATION_MATCH	48v48	PASS	label wrong: vector<CThingTypeInfo>::resize(n)
+006bad20	RELOCATION_MATCH	54v54	PASS	label wrong: CFaction component TransferOut (slot 0)
+006c7b00	RELOCATION_MATCH	71v71	PASS	label wrong: CPersistTraits<IP<CThing>>::TransferOut
+006c7c30	RELOCATION_MATCH	104v104	PASS	IP<CThing> component TransferOut (traits inlined)
+006c9b30	RELOCATION_MATCH	62v62	PASS	IP<CThing> component TransferIn
+0067b820	RELOCATION_MATCH	140v140	PASS	label wrong: CPersistContext binary Transfer of the traits array
+00abcf10	RELOCATION_MATCH	40v40	PASS	label wrong: C3DMeshFilePrimitiveChunk::SetMaterialIndex
+0048531e	RELOCATION_MATCH	42v42	PASS	label type wrong: C3DVector component TransferIn; /Os, y off
+00485348	RELOCATION_MATCH	42v42	PASS	label wrong: C3DVector component TransferOut; /Os, y off
+006421f0	RELOCATION_MATCH	46v46	PASS	label wrong: CRGBColour component TransferOut (slot 0)

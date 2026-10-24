@@ -7,3 +7,7 @@ address	old_length	new_length	date	evidence
 0041c800	23	26	2026-10-24	de-bake A: retail body runs to the jne;ret at +0x19 (catalog cut it at 23)
 006818a0	47	71	2026-10-24	de-bake A: includes the jump table at 0x6818D0 and byte index table that the switch reads
 00bfeed8	72	96	2026-10-24	de-bake A: includes the __finally block ending ret at 0xBFEF37
+00404280	64	67	2026-10-24	bounds audit: body runs to ret at +0x40 (catalog cut 3 B short); landed source RELOCATION_MATCH on 67
+0098b5e0	624	633	2026-10-24	bounds audit: body runs to ret at +0x276 (catalog cut 9 B short); landed source RELOCATION_MATCH on 633
+00449d20	108	111	2026-10-24	bounds audit: body runs to ret at +0x6C (catalog cut 3 B short); landed source RELOCATION_MATCH on 111
+00401c00	744	808	2026-10-24	bounds audit: adds the 16-entry jump table at 0x401EE8 read by the switch; landed source RELOCATION_MATCH on 808

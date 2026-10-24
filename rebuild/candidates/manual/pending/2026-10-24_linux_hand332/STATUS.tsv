@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004aa360	RELOCATION_MATCH	109v109	PASS	CPersistTraits<double> binary read: 4-byte long via fild
+0040efb0	RELOCATION_MATCH	109v109	PASS	CPersistTraits<float> binary read
+0040f7e0	RELOCATION_MATCH	135v135	PASS	CPersistTraits<float>::TransferIn; inline GetSymbolMap accessor
+0044fc00	RELOCATION_MATCH	128v128	PASS	really CDefString::TransferBinaryIn (FableWin.pdb)
+00b6daf0	RELOCATION_MATCH	130v130	PASS	really CEngineWaterRenderer::LoadNonPatchData
+005cc6c0	RELOCATION_MATCH	31v31	PASS	CPersistTraits<long>::TransferOut wrapper of 0x9E2560
+005d8185	RELOCATION_MATCH	30v30	PASS	CPersistTraits<EInputKey>::TransferOut, /Os ebp frame
+005f9e36	RELOCATION_MATCH	42v42	PASS	really CVectorMap<long,long>::Add, y-off+s
+005f9eea	RELOCATION_MATCH	42v42	PASS	really CVectorMap<long,long>::Add, y-off+s
+004cbc70	RELOCATION_MATCH	136v136	PASS	CPersistTraits<short> binary read (4-byte long narrowed)
+00479369	RELOCATION_MATCH	143v143	PASS	list<COpinionTransientOffset> reader; count via inline long traits
+004e9156	RELOCATION_MATCH	189v189	PASS	really GFSerialiseMapBinaryIn<CWeaponTrailGraphicSet,EObjectAugmentationType>, y-off+s
+00632830	DIFFER	196v196	-	GFSerialiseMapBinaryIn<long,ETableSprites>: frame slots 4 low
+0067c020	RELOCATION_MATCH	226v226	PASS	really GFSerialiseMapBinaryIn<EOpinionAttitudeType,EOpinionReactionType>; traits stand-ins
+0067c110	RELOCATION_MATCH	226v226	PASS	really GFSerialiseMapBinaryIn<EOpinionTargetingConditionType,EOpinionReactionType>
+0067c200	RELOCATION_MATCH	230v230	PASS	really GFSerialiseMapBinaryIn<float,EOpinionReactionType>
+006dba50	RELOCATION_MATCH	228v228	PASS	really GFSerialiseMapBinaryIn<CDefString,long>
+00678250	RELOCATION_MATCH	88v88	PASS	list<CReactionMatch*> TransferBinaryOut
+006d3880	RELOCATION_MATCH	110v110	PASS	pair<CCharString,long> TransferOut
+006d3b90	RELOCATION_MATCH	170v170	PASS	pair<CCharString,long> TransferBinaryIn; element reads without traits temps
+006c78f0	RELOCATION_MATCH	102v102	PASS	really pair<long,COpinionDeed*> TransferOut
+00755a30	RELOCATION_MATCH	98v98	PASS	pair<long,long> TransferOut
+0044b890	RELOCATION_MATCH	121v121	PASS	CPersistTraits<unsigned __int64> binary read
+00405940	RELOCATION_MATCH	144v144	PASS	CPersistTraits<unsigned char> binary read
+004cbd50	RELOCATION_MATCH	144v144	PASS	CPersistTraits<unsigned char> binary read (twin)
+00850580	RELOCATION_MATCH	172v172	PASS	CPhysicsLeaf<GoTo,GotoOutsideSimple,Cartesian> ctor
+0085c950	RELOCATION_MATCH	172v172	PASS	really CPhysicsLeaf<GoTo,Rigid,Rigid> ctor
+00a24fc0	MATCH	58v58	PASS	CMeshData::UnloadResource (slot 2)
+00a316b0	MATCH	65v65	PASS	CPreAllocVectorMap<ulong,C3DHelperPoint>::LowerBound
+00a31700	MATCH	65v65	PASS	CPreAllocVectorMap<ulong,C3DHelperPoint>::UpperBound
+00a31790	MATCH	66v66	PASS	CPreAllocVectorMap<ulong,C3DDummyObject>::LowerBound
+00a317e0	MATCH	66v66	PASS	CPreAllocVectorMap<ulong,C3DDummyObject>::UpperBound
+00be0ac0	RELOCATION_MATCH	64v64	PASS	really _Rb_tree<long,...>::_M_create_node
+009322d0	MATCH	96v96	PASS	really std::__median (fn-pointer comparator, by value)
+00a45a10	MATCH	89v89	PASS	really std::__median (by-ref comparator)
+00ad0750	MATCH	89v89	PASS	really std::__median (twin)
+00ef6e40	RELOCATION_MATCH	90v90	PASS	??_G of a 3-level CPredicate_And of CIsThingAlive
+00a21c30	RELOCATION_MATCH	73v73	PASS	CPriorityQueue<CAStarState*>::UpdateElement
+0051a240	DIFFER	164v175	-	CReplaceSerialise<CFileFormatLevel,..>::ReadFromFile: dead version frame word
+008269a0	RELOCATION_MATCH	88v88	PASS	really CBaseSerialise<CFileFormatBrushHeader,1>::ReadFromFile

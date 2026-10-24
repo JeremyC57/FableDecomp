@@ -989,3 +989,15 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Inline STLport `vector<CCountedPointer<T>>::push_back`: give `_M_insert_overflow` a same-TU `__declspec(noinline)` body that only reads the value, and `__true_type` a user default ctor (0x549B20).
 - In a behaviour test, a by-value `GetDef()` must copy from an object that is never destroyed: VC7.1 /Od `return local;` copies then destroys, releasing the def twice.
 - CThingCreatureBase.h / CThingAICreature.h are PDB-offset (PDef +0xFC vs retail +0xE0); chunk 327 rows use local models -- review when the headers are rebased.
+- Writing a bool bit-field through a temporary pointer (`f()->bit = x`) adds an `add eax,N` byte round trip; a named local pointer gives retail's direct `and/or byte ptr [eax+N]` (0x923DA0).
+- CArray::DeallocateUnusedMemory is `temp.reserve(size()); temp.insert(temp.begin(), begin(), end()); DeallocateMemory();` then Exchange of `_M_start`/`_M_finish`; a real swap keeps dead stores (chunk 328).
+- `CDynamicObjectHeap::CreateMoreBlocks` needs a pointer-walk loop (`++entry`); `&Blocks[i]` reorders the unrolled leas (chunk 329).
+- A forward-declared class needs `struct __single_inheritance X;` for a 4-byte member-function pointer (00e95390).
+- In `CPersistContext_TransferableComponent` vtables slot 0 is TransferOut and slot 1 TransferIn; many "TransferIn" labels are slot 0 (chunk 329).
+- A member pointer that retail loads into ecx before the argument pushes needs a named local (`CDefinitionManager* manager = context->PDefinitionManager;`) (00a3e0d0).
+- `push 0Eh ; pop ecx ; idiv` is a packed 14-byte element (CEngineGraphic); size()/data() must be `__forceinline` in a size TU (004ea26b).
+- STLport vector Resize with the default temporary's zero stores after the size computation: `resize(n) { resize(n, T()); }`, both overloads `__forceinline` (0x007B5310).
+- A by-value iterator from a `__fastcall` STL helper uses the hidden pointer only when the class has a user ctor (0x00661287).
+- GFSerialiseMapBinaryIn rows need same-TU `auto_inline(off)` traits stand-ins so the empty traits temporaries sit on the pair's first word (chunk 332).
+- An explicit specialisation declaration of a member template ICEs VC7.1 (C1001); declare non-template overloads (008269a0).
+- VC7.1 /Od (the test lane) can hang on a `main` with several sibling `for (int i ...)` loops in one block; hoist the counter. A hang shows as TCC_FAIL after the cl TIMEOUT.
