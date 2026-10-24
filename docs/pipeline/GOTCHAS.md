@@ -1197,3 +1197,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - The same template source at a different element stride (0x44 vs 0x48) changes VC's register/frame choice with no source change (0x4EBF32).
 - GFSerialiseVectorBinaryIn: one pushed arg to `resize` means out-of-line `resize(n)`; an inline `T()` means `__forceinline` (0x4E9D71 vs 0x4EB219).
 - g++ test models checking `sizeof`: `unsigned long` is 8 bytes on x64, use `unsigned int` (chunk 373).
+- RELOC_IDENTITY on `??2@YAPAXI@Z -> 0x00BFEB22`: that thunk is MSVCR71 `operator new[]` (scalar new is 0x00BFEA1A); call `::operator new[]` (CThing::operator new 0x4C7380).
+- Declare STLport's user `pair(const pair&)`: without it for_each copies the wrong member and sort shrink-wraps its pushes (0x4CB9F0, 0x4CBE80).
+- `_M_insert` may inline `_M_create_node` at the left site and call it out of line at the right: a `__forceinline` copy plus the declared member (0x4C4890).
+- Split the map ctor into `_Rb_tree_base` (allocates the header) and `_Rb_tree` (`_M_node_count(0)`, `_M_empty_initialize`) (0x4C60F0).
+- Without /Zc:wchar_t an `L""` parameter is `const unsigned short*`; a forward-declared parameter type must be `class` to mangle V (0x4CDB10, 0x4BE4E0).

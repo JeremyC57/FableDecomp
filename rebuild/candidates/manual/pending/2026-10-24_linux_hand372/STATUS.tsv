@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004b83e0	RELOCATION_MATCH	77v77	PASS	vector<CCharString>::_M_allocate_and_copy
+004b8770	RELOCATION_MATCH	72v72	PASS	vector<CCharString>::erase(pos)
+004b9c10	RELOCATION_MATCH	198v198	PASS	_Rb_tree<CCharString,long>::erase(first,last)
+004ba420	DIFFER	63v63	-	list<pair<CCharString,long>>::push_back; ebp push shrink-wrapped
+004ba7a0	RELOCATION_MATCH	106v106	PASS	vector<CCharString>::reserve
+004baf10	RELOCATION_MATCH	42v42	PASS	_Rb_tree<CCharString,long>::equal_range
+004bbf00	RELOCATION_MATCH	180v180	PASS	GetRenderPositionForThing; value-ctor C3DVector operators
+004bcf50	DIFFER	141v141	-	GetPMeshEffect; esi/edi register swap
+004be4e0	RELOCATION_MATCH	163v163	PASS	CTCGraphicAppearance::Draw(info); class/V leaf
+004c0050	RELOCATION_MATCH	87v87	PASS	AddPersistentPrimitive; declared _List_iterator copy ctor
+004c10e0	DIFFER	227v227	-	GetStaticFocalPos; zero-offset path schedule
+004c1ec0	MATCH	66v66	PASS	__unguarded_linear_insert<CMeshInfo,CSortPrimaryMeshesFirst>
+004c1f10	MATCH	68v68	PASS	__unguarded_linear_insert<CMeshInfo,CSortPrimaryMeshesLast>
+004c2b90	MATCH	105v105	PASS	__unguarded_insertion_sort_aux<CMeshInfo>
+004c43b0	RELOCATION_MATCH	78v78	PASS	_Rb_tree<long,CIVCountedPointer>::erase(it)
+004c46c0	RELOCATION_MATCH	209v209	PASS	vector<CMeshInfo>::reserve
+004c4890	RELOCATION_MATCH	194v194	PASS	TintColours _Rb_tree::_M_insert; CRGBColour Set-copy
+004c4a20	RELOCATION_MATCH	73v73	PASS	MeshEffects _Rb_tree::_M_create_node
+004c4c70	RELOCATION_MATCH	78v78	PASS	MeshEffects _Rb_tree::erase(it)
+004c4f70	RELOCATION_MATCH	201v201	PASS	MeshEffects _Rb_tree::_M_insert
+004c5690	RELOCATION_MATCH	136v136	PASS	_List_base<CPrimitive>::clear
+004c5f10	RELOCATION_MATCH	138v138	PASS	CBulletTimeManager::RecalculateSoundPitch; static _M_increment
+004c5fa0	RELOCATION_MATCH	99v99	PASS	CBulletTimeManager::GetBulletTimeSlowdownMultiplier
+004c60f0	RELOCATION_MATCH	71v71	PASS	CBulletTimeManager ctor; _Rb_tree_base/_Rb_tree split
+004c6960	RELOCATION_MATCH	203v203	PASS	BulletTimeInfo _Rb_tree::_M_insert
+004c7380	RELOCATION_MATCH	34v34	PASS	CThing::operator new(size,bool)
+004c81f0	RELOCATION_MATCH	137v137	PASS	CThing::SerialiseThingInfo
+004ca1d0	RELOCATION_MATCH	95v95	PASS	CThing::Create
+004cb9f0	MATCH	49v49	PASS	for_each<..,CCallOnKill>; pair user copy ctor
+004cba30	MATCH	49v49	PASS	for_each<..,CCallOnDie>; pair user copy ctor
+004cbb80	RELOCATION_MATCH	46v46	PASS	pair<CIntelligentPointer<CThing>,int> ctor
+004cbe80	MATCH	73v73	PASS	__unguarded_insertion_sort_aux<component pair>
+004cc520	RELOCATION_MATCH	78v78	PASS	CPersistContext::TransferBinary<unsigned __int64>
+004cc820	RELOCATION_MATCH	45v45	PASS	list<CTCBase*>::push_back
+004cca80	RELOCATION_MATCH	78v78	PASS	CPersistContext::Transfer<unsigned __int64>(name,v) (inferred)
+004cdae0	RELOCATION_MATCH	47v47	PASS	GFRandom; if (range != 0) layout
+004cdb10	RELOCATION_MATCH	89v89	PASS	CSubtitledMessage::Initialise; wchar_t as unsigned short
+004cf450	MATCH	85v85	PASS	swap<pair<float,CCameraTag>>
+004cf990	RELOCATION_MATCH	50v50	PASS	__uninitialized_fill_n<pair<float,CCharString>>
+004cfc50	MATCH	85v85	PASS	iter_swap<pair<float,CCameraTag>*> (bytes = 0x4CF450)
