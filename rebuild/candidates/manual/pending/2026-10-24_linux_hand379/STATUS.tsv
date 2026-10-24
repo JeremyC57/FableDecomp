@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005b3325	RELOCATION_MATCH	56v56	PASS	vector<CDefPointer<const CTattooDef>>::push_back (catalog Vector_PushBack)
+005b425b	RELOCATION_MATCH	209v209	PASS	CTCInventoryClothing::ResetMannequin (name inferred; catalog Appearance_UpdateModifiers)
+005ba23a	MATCH	105v105	PASS	STLport __find_if over 12-byte keyed records (catalog LinearSearch_12ByteStride)
+005ba2a3	MATCH	105v105	PASS	STLport __find_if over 24-byte keyed records (catalog LinearSearch_24ByteStride)
+005ba5ad	RELOCATION_MATCH	51v51	PASS	_Vector_base<20-byte>(n, a) (catalog Vector_Initialize_20Bytes)
+005baa6b	RELOCATION_MATCH	54v54	PASS	_Vector_base<16-byte>(n, a), allocate inlined (catalog Vector_Initialize_16Bytes)
+005bb4e6	RELOCATION_MATCH	180v180	PASS	vector<4-byte class>::_M_insert_overflow (catalog Vector_ReserveAndShift_Uint)
+005bc3ed	DIFFER	66v67	-	GFGetGraphicFrame: retail inline-asm fld/fistp dword rounding vs __ftol2
+005bd33c	RELOCATION_MATCH	100v100	PASS	CTCInventoryBase::PlayInventoryMovementSound (catalog PlaySoundForMeshAnimation)
+005bd3a0	RELOCATION_MATCH	100v100	PASS	CTCInventoryBase::PlayInventoryNoMovementSound (catalog CAnimateThing_PlaySoundAtMeshBank)
+005bda1d	RELOCATION_MATCH	168v168	PASS	CCategory::GetHighlightedItemText (catalog NParticleMorphs_GetDisplayText)
+005bf4a3	RELOCATION_MATCH	74v74	PASS	CTCInventoryBase::AddItem (catalog Inventory_AddItem)
+005c0653	MATCH	112v112	PASS	__find_if<const CCategory*, CIsCategoryWithDefIndex> (catalog std_find_Unrolled_EWeaponClass)
+005c06c3	MATCH	112v112	PASS	__find_if<CCategory*, CIsCategoryWithDefIndex> (catalog std_find_EWeaponClass_Dup)
+005c0932	RELOCATION_MATCH	51v51	PASS	_Vector_base<CItem>(n, a) (catalog Vector_Initialize)
+005c0965	MATCH	145v145	PASS	__find_if<const CItem*, const_mem_fun_ref_t> (catalog BinarySearch_FindWithPredicate_Stride_0x14)
+005c1153	MATCH	167v167	PASS	__find_if<const CItem*, binder2nd<const_mem_fun1_ref_t>>
+005c11fa	MATCH	167v167	PASS	__find_if<CItem*, binder2nd<const_mem_fun1_ref_t>> (catalog std_find_Unrolled_Pair)
+005c135e	RELOCATION_MATCH	50v50	PASS	__copy_backward<CItem*> (catalog _Copy_backward<CArray<unsigned short>*>)
+005c176a	RELOCATION_MATCH	174v174	PASS	__find_if<CItem*, CIsSameItemType>
+005c1818	RELOCATION_MATCH	174v174	PASS	__find_if<const CItem*, CIsSameItemType>
+005c1f42	RELOCATION_MATCH	209v209	PASS	vector<CItem>::operator= (catalog CActiveFile_CopyAssign)
+005c2831	RELOCATION_MATCH	237v237	PASS	vector<CItem>::_M_fill_insert (catalog STL_VectorInsertRange)
+005cc530	DIFFER	47v59	-	RoundToDecimalPlaces: retail inline-asm fld/fistp dword + fild vs __ftol2
+005cc772	RELOCATION_MATCH	240v240	PASS	CTCInventoryStats::GetXString (static fastcall)
+005cd6b7	RELOCATION_MATCH	176v176	PASS	CTCInventoryStats::ConvertMap (catalog CTCInventoryStats_AggregateCreatureGroupStats)
+005cdbbe	DIFFER	95v94	-	CTCInventoryStats::GetStatsPersonalityValueRenown: one extra frame word (sub esp,0Ch vs push ecx;push ecx)
+005cdc1c	RELOCATION_MATCH	175v175	PASS	CTCInventoryStats::Copy (catalog CTCInventoryBase_CopyAndSyncInterface)
+005d85de	RELOCATION_MATCH	52v52	PASS	vector<long> copy ctor (catalog lua_stackspace)
+005d9320	RELOCATION_MATCH	81v81	PASS	CTCInventoryItem::ClearCachedDefs
+005d95c0	RELOCATION_MATCH	110v110	PASS	CTCInventoryItem::GetDescription
+005d9630	RELOCATION_MATCH	110v110	PASS	CTCInventoryItem::GetDetails (catalog GetDescription)
+005d96a0	RELOCATION_MATCH	72v72	PASS	CTCInventoryItem::GetEngineGraphic
+005d9730	RELOCATION_MATCH	88v88	PASS	CTCInventoryItem::GetStartingRightHandedSet
+005d9a10	RELOCATION_MATCH	137v137	PASS	CTCInventoryItem::GetHairCardDef
+005d9aa0	RELOCATION_MATCH	137v137	PASS	CTCInventoryItem::GetTattooCardDef (catalog GetHairCardDef)
+005d9b90	RELOCATION_MATCH	81v81	PASS	CTCInventoryItem::GetContextSensitiveType
+005d9c60	RELOCATION_MATCH	41v41	PASS	CTCInventoryItem::IsClothing
+005dc020	RELOCATION_MATCH	80v80	PASS	CAnimationSet::FindFirstAnimWithName (catalog CVectorMap_LookupOrGetEnd)
+005dc290	RELOCATION_MATCH	74v74	PASS	CAnimationSet::GetNoAnims (catalog AnimationDef_CountMatchingPreloads)

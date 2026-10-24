@@ -290861,6 +290861,265 @@ $catalog = @(
         TestSource = '00/56/STLvectorpairfloatCWideString_vector_00566cd0_test.cpp'
         PassPattern = '00566cd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005b3325'
+        Module = 'std::vector<CDefPointer<const CTattooDef> >'
+        Source = '00/5b/stdvectorCDefPointerconstCTattooDef_pushback_005b3325.cpp'
+        TestSource = '00/5b/stdvectorCDefPointerconstCTattooDef_pushback_005b3325_test.cpp'
+        PassPattern = '005b3325_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b425b'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_ResetMannequin_005b425b.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_ResetMannequin_005b425b_test.cpp'
+        PassPattern = '005b425b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba23a'
+        Module = 'std'
+        Source = '00/5b/std_findif_005ba23a.cpp'
+        TestSource = '00/5b/std_findif_005ba23a_test.cpp'
+        PassPattern = '005ba23a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba2a3'
+        Module = 'std'
+        Source = '00/5b/std_findif_005ba2a3.cpp'
+        TestSource = '00/5b/std_findif_005ba2a3_test.cpp'
+        PassPattern = '005ba2a3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba5ad'
+        Module = 'std::_Vector_base<SRecord20, std::allocator<SRecord20> >'
+        Source = '00/5b/stdVectorbaseSRecord20stdallocatorSRecord20_Vectorbase_005ba5ad.cpp'
+        TestSource = '00/5b/stdVectorbaseSRecord20stdallocatorSRecord20_Vectorbase_005ba5ad_test.cpp'
+        PassPattern = '005ba5ad_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005baa6b'
+        Module = 'std::_Vector_base<SRecord16, std::allocator<SRecord16> >'
+        Source = '00/5b/stdVectorbaseSRecord16stdallocatorSRecord16_Vectorbase_005baa6b.cpp'
+        TestSource = '00/5b/stdVectorbaseSRecord16stdallocatorSRecord16_Vectorbase_005baa6b_test.cpp'
+        PassPattern = '005baa6b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bb4e6'
+        Module = 'std::vector<SValue04>'
+        Source = '00/5b/stdvectorSValue04_Minsertoverflow_005bb4e6.cpp'
+        TestSource = '00/5b/stdvectorSValue04_Minsertoverflow_005bb4e6_test.cpp'
+        PassPattern = '005bb4e6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bd33c'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_PlayInventoryMovementSound_005bd33c.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_PlayInventoryMovementSound_005bd33c_test.cpp'
+        PassPattern = '005bd33c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bd3a0'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_PlayInventoryNoMovementSound_005bd3a0.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_PlayInventoryNoMovementSound_005bd3a0_test.cpp'
+        PassPattern = '005bd3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bda1d'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_GetHighlightedItemText_005bda1d.cpp'
+        TestSource = '00/5b/NInventoryCCategory_GetHighlightedItemText_005bda1d_test.cpp'
+        PassPattern = '005bda1d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bf4a3'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_AddItem_005bf4a3.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_AddItem_005bf4a3_test.cpp'
+        PassPattern = '005bf4a3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c0653'
+        Module = 'std'
+        Source = '00/5c/std_findif_005c0653.cpp'
+        TestSource = '00/5c/std_findif_005c0653_test.cpp'
+        PassPattern = '005c0653_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c06c3'
+        Module = 'std'
+        Source = '00/5c/std_findif_005c06c3.cpp'
+        TestSource = '00/5c/std_findif_005c06c3_test.cpp'
+        PassPattern = '005c06c3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c0932'
+        Module = 'std::_Vector_base<NInventory::CItem, std::allocator<NInventory::CItem> >'
+        Source = '00/5c/stdVectorbaseNInventoryCItemstdallocatorNInventoryCItem_Vectorbase_005c0932.cpp'
+        TestSource = '00/5c/stdVectorbaseNInventoryCItemstdallocatorNInventoryCItem_Vectorbase_005c0932_test.cpp'
+        PassPattern = '005c0932_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c0965'
+        Module = 'std'
+        Source = '00/5c/std_findif_005c0965.cpp'
+        TestSource = '00/5c/std_findif_005c0965_test.cpp'
+        PassPattern = '005c0965_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c1153'
+        Module = 'std'
+        Source = '00/5c/std_findif_005c1153.cpp'
+        TestSource = '00/5c/std_findif_005c1153_test.cpp'
+        PassPattern = '005c1153_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c11fa'
+        Module = 'std'
+        Source = '00/5c/std_findif_005c11fa.cpp'
+        TestSource = '00/5c/std_findif_005c11fa_test.cpp'
+        PassPattern = '005c11fa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c135e'
+        Module = 'std'
+        Source = '00/5c/std_copybackward_005c135e.cpp'
+        TestSource = '00/5c/std_copybackward_005c135e_test.cpp'
+        PassPattern = '005c135e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c176a'
+        Module = 'std'
+        Source = '00/5c/std_findif_005c176a.cpp'
+        TestSource = '00/5c/std_findif_005c176a_test.cpp'
+        PassPattern = '005c176a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c1818'
+        Module = 'std'
+        Source = '00/5c/std_findif_005c1818.cpp'
+        TestSource = '00/5c/std_findif_005c1818_test.cpp'
+        PassPattern = '005c1818_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c1f42'
+        Module = 'std::vector<NInventory::CItem>'
+        Source = '00/5c/stdvectorNInventoryCItem_operator_005c1f42.cpp'
+        TestSource = '00/5c/stdvectorNInventoryCItem_operator_005c1f42_test.cpp'
+        PassPattern = '005c1f42_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c2831'
+        Module = 'std::vector<NInventory::CItem>'
+        Source = '00/5c/stdvectorNInventoryCItem_Mfillinsert_005c2831.cpp'
+        TestSource = '00/5c/stdvectorNInventoryCItem_Mfillinsert_005c2831_test.cpp'
+        PassPattern = '005c2831_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cc772'
+        Module = 'CTCInventoryStats'
+        Source = '00/5c/CTCInventoryStats_GetXString_005cc772.cpp'
+        TestSource = '00/5c/CTCInventoryStats_GetXString_005cc772_test.cpp'
+        PassPattern = '005cc772_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cd6b7'
+        Module = 'CTCInventoryStats'
+        Source = '00/5c/CTCInventoryStats_ConvertMap_005cd6b7.cpp'
+        TestSource = '00/5c/CTCInventoryStats_ConvertMap_005cd6b7_test.cpp'
+        PassPattern = '005cd6b7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cdc1c'
+        Module = 'CTCInventoryStats'
+        Source = '00/5c/CTCInventoryStats_Copy_005cdc1c.cpp'
+        TestSource = '00/5c/CTCInventoryStats_Copy_005cdc1c_test.cpp'
+        PassPattern = '005cdc1c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d85de'
+        Module = 'std::vector<long>'
+        Source = '00/5d/stdvectorlong_vector_005d85de.cpp'
+        TestSource = '00/5d/stdvectorlong_vector_005d85de_test.cpp'
+        PassPattern = '005d85de_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9320'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_ClearCachedDefs_005d9320.cpp'
+        TestSource = '00/5d/CTCInventoryItem_ClearCachedDefs_005d9320_test.cpp'
+        PassPattern = '005d9320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d95c0'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetDescription_005d95c0.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetDescription_005d95c0_test.cpp'
+        PassPattern = '005d95c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9630'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetDetails_005d9630.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetDetails_005d9630_test.cpp'
+        PassPattern = '005d9630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d96a0'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetEngineGraphic_005d96a0.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetEngineGraphic_005d96a0_test.cpp'
+        PassPattern = '005d96a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9730'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetStartingRightHandedSet_005d9730.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetStartingRightHandedSet_005d9730_test.cpp'
+        PassPattern = '005d9730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9a10'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetHairCardDef_005d9a10.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetHairCardDef_005d9a10_test.cpp'
+        PassPattern = '005d9a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9aa0'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetTattooCardDef_005d9aa0.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetTattooCardDef_005d9aa0_test.cpp'
+        PassPattern = '005d9aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9b90'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetContextSensitiveType_005d9b90.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetContextSensitiveType_005d9b90_test.cpp'
+        PassPattern = '005d9b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9c60'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_IsClothing_005d9c60.cpp'
+        TestSource = '00/5d/CTCInventoryItem_IsClothing_005d9c60_test.cpp'
+        PassPattern = '005d9c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dc020'
+        Module = 'CAnimationSet'
+        Source = '00/5d/CAnimationSet_FindFirstAnimWithName_005dc020.cpp'
+        TestSource = '00/5d/CAnimationSet_FindFirstAnimWithName_005dc020_test.cpp'
+        PassPattern = '005dc020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dc290'
+        Module = 'CAnimationSet'
+        Source = '00/5d/CAnimationSet_GetNoAnims_005dc290.cpp'
+        TestSource = '00/5d/CAnimationSet_GetNoAnims_005dc290_test.cpp'
+        PassPattern = '005dc290_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

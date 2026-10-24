@@ -1,0 +1,41 @@
+# Chunk 379 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- Fastcall hidden result pointer: a class result with user ctors (non-POD) passes its hidden pointer in ecx. A POD result goes on the stack: 146v88 at 0x005D9730 CTCInventoryItem::GetStartingRightHandedSet.
+- Nested copy ctors: an inline user copy ctor on a member class (C3DVector) makes the outer class's implicit copy non-trivial, and that copy inlines with the destination in esi. A trivially copyable member graded 87v88; a user outer copy ctor graded 91v88 (0x005D9730).
+- Same-TU template bodies (GetDef<T>/GetSubDef<T>, LowerBound, list ctor) under `auto_inline(off)` + `noinline` let VC7.1 see that the callee keeps no pointer to the out slot:
+  - it reuses the slot, or keeps the value in a register;
+  - `return out` folds the add-ref with the release;
+  - declared only, 0x005D9A10/0x005D9AA0 graded 166v137 and 0x005DC020 re-read its key from the slot.
+- `CDefPointer::operator->` at both uses loads the def field twice (retail). A plain local CSEs it into one load: 107v110 at 0x005D95C0/0x005D9630.
+- Implicit vs explicit temporaries: an implicit conversion temporary (const char* → CCharString, const wchar_t* → CWideString) is built first, then pushed with a fresh `lea`. An explicit `CWideString(L"_")` pushes the ctor's eax interleaved and reorders the frame: 225v240 at 0x005CC772.
+- An explicit `CCharString("...")` temporary does push the ctor's eax directly (0x005BDA1D GetCRC on TXT_OBJT_EMPTY).
+- `wchar_t` is not a built-in type in the lane's cl flags: add `typedef unsigned short wchar_t;` before using `L"..."` (0x005CC772).
+- In /Os TUs a plain `inline` member stays a call (STLport pair ctor, `_Construct`, CWideString::operator==). `__forceinline` it: 167v176 at 0x005CD6B7, 55v56 at 0x005B3325.
+- Inline `CWideString == L""`: write it as two caller tests that `goto` the empty arm (null data → `wcscmp(L"",L"")`, else the out-of-line wstring compare). A forced-inline operator== materialises the bool (170v168); a plain inline one is a call (140v168) (0x005BDA1D).
+- Frame-slot packing follows block scope: early returns keep a later local (the CLongList) in the function block, so it does NOT share a word with the inlined GetInterface key. Nested ifs pack them: frame 0Ch v 10h at 0x005B425B.
+- Search loop with a found flag and a cached `end()` (`for (li = begin(); li != end; ++li) if (match) { ...; found = true; break; }`) gives retail's threaded match block placed after the epilogue. A break + `li != out.end()` re-test keeps the container in a register instead (0x005CD6B7).
+- STLport random-access `__find_if` instantiations are `__fastcall` (/Gr template TU) with the predicate BY VALUE (0x005BA23A, 0x005C0653, 0x005C176A):
+  - a one-member predicate keeps its key in a register (`cmp [ecx],esi`);
+  - an out-of-line `operator()` is called on its own argument slot (`lea ecx,[ebp+8]`).
+- `_Vector_base(n, a)` with the allocate call out of line uses `lea edi,[esi+8] ; mov ecx,edi` (the `_STLP_alloc_proxy`). With `n ? malloc(n*16) : 0` inlined, the zero register doubles as the null result and the end-of-storage store sinks first (0x005BAA6B).
+- STLport tag temporaries (`__false_type()`, `random_access_iterator_tag()`) are homed in the dead high byte of an argument slot (`lea eax,[ebp+0Bh]`) when the helper's body is in the same TU (0x005C1F42, 0x005C2831, 0x005D85DE).
+- Retail inline-asm rounding (`fld [x] ; fistp dword [slot]`) cannot come from C++. `(long)f` gives `__ftol2`, and /QIfist gives `fistp qword`. Park such rows as lane gap / `retail_asm` candidates (0x005BC3ED, 0x005CC530).
+- With no NRVO, a test that returns a named local with a dtor double-releases a hand-modelled refcount under VC7.1. Return an unnamed temporary (copy ctor + AddRef) in tests (0x005D95C0 test).
+
+Review at landing:
+- Rows that needed more than 4 grades: none. Parked after 4 tries: 0x005CDBBE (95v94, one extra frame word). 0x005BC3ED / 0x005CC530 are lane gaps: decide whether they land as `retail_asm` with a minimal `fistp dword` `__asm` and a `// Retail-asm:` line.
+- Local models next to an existing engine header (retail layout differs from the PDB header):
+  - NInventory::CCategory: retail 0x2C vs engine/CCategory.h 0x30 (find_if rows, 0x005BDA1D).
+  - CTCInventoryClothing PMannequin: retail +0x158 vs header +0x17C (0x005B425B).
+  - CTCHeroStats RenownLevel/RenownMaxLevel: retail +0x70/+0x74 vs header +0x78/+0x7C (0x005CDBBE).
+  - CTCInventoryStats pTCHeroExperience/pTCHeroStats: retail +0x14C/+0x150, PDB minus 0x1C (0x005CDC1C, 0x005CDBBE).
+  - The CTCInventoryBase PDef / CInventoryDef sound offsets (0x005BD33C/0x005BD3A0).
+  - The CItem local with a CCountedPointer member (0x005C2831; the header flattens it).
+- Local models where the header is a POD flattening without virtuals: CIVCountedPointeeBase, CDefClassBase, CDefinitionManager. Local models where the header has methods only: CTCHeroAttachableAppearanceModifiers.
+- CTCInventoryItem is declared locally as a static-only class (engine/CTCInventoryItem.h is the instance layout).
+- CEngineGraphic (0x005D96A0) is a real 14-byte PDB size, modelled with `#pragma pack(1)`. Check that this is acceptable and is not a layout-hiding trick.
+- Errors in already-landed sources:
+  - rebuild/src/compiled/00/5d/CTCInventoryItem_GetTattooDef_005d93b0.cpp is named `GetTattooDef()`, but Ego_r.pdb has only `?GetTattooCardDef@CTCInventoryItem@@QBE?AV?$CDefPointer@$$CBVCTattooDef@@@@XZ` (the const instance method). The static `(long)` overload is this chunk's 0x005D9AA0.
+  - The landed callers declare the static's result inconsistently. CTCInventoryTrade_ProcessTradeAction_005aebfe.cpp uses `CDefPointer<CTattooCardDef>`, but Ego_r returns `CDefPointer<const CTattooDef>`.
+- Name inferred, not from PDB: 0x005B425B `CTCInventoryClothing::ResetMannequin` (no Ego_r symbol for this body); 0x005BF4A3 AddItem (inlined in Ego_r).
+- Catalog rows that hold several functions: none.

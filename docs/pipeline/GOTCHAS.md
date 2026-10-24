@@ -1223,3 +1223,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Anonymous-namespace functions: leaf by prefix (`?MD5@`), our namespace hash differs; line 1 starts with the bare name (chunk 376).
 - `x / g1 * g2` over two globals is reassociated: write `r = x / g1; r *= g2;`; `a() >= b()` calls b first and emits `cmp a,b` (chunk 376).
 - An explicit instantiation emits only that member, and an `optimize("s")` TU leaves it unaligned (0x53CFC2); a bitfield cleared in a ctor body is scheduled before the derived vtable store.
+- A `__fastcall` function returning a class with user ctors passes the hidden result pointer in ecx; a POD result goes on the stack (0x5D9730).
+- `CDefPointer::operator->` at both uses gives retail's double field load; a plain local merges them (0x5D95C0).
+- Write `CWideString == L""` as two caller tests that `goto` the empty arm (0x5BDA1D); early returns stop a later local sharing a frame word with an inlined GetInterface key, nested ifs pack them (0x5B425B).
+- A found flag plus a cached `end()` places retail's match block after the epilogue (0x5CD6B7).

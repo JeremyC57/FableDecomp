@@ -1,0 +1,76 @@
+// CTCInventoryItem::GetDescription(long defIndex) -- static: cache the item def for defIndex and return its description text (ItemDescription looked up in the main component's text bank), or the empty wide string when the def is missing or has no description
+// Leaf: ?GetDescription@CTCInventoryItem@@SI
+// Retail: Fable.exe @ 0x005D95C0, 112 bytes (+2 int3). Ego_r.pdb `?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z`
+// (static __fastcall: the hidden CWideString result in ecx, defIndex in edx; `ret`). Twin: GetDetails 0x005D9630 (+0x38).
+// Callees: CTCInventoryItem::CacheDef(long) @ 0x005D94B0 (static `__fastcall` bool: loads the thing def and its
+// CInventoryItemDef into the static cache), NGameText::CDataBank::GetPGroupEntry(unsigned long, bool) const @ 0x009C9070 on
+// g_pMainGameComponent (0x013B86A0)->TextBank (+0x14) (a CIVCountedPointer<const CGroupEntry> by hidden pointer, in the
+// `push ecx` frame word), NGameText::CGroupEntry::GetText() const @ 0x009C7A40 (straight into this function's result),
+// CWideString::CWideString(const CWideString&) @ 0x0099B720 on the empty wide string 0x013BCA24, the entry's slot 1 on release.
+// Globals: 0x013B8C18 the cached CInventoryItemDef (engine/CInventoryItemDef.h: ItemDescription +0x34, ItemDetails +0x38).
+// Shape: speed TU; the cached def is reached through CDefPointer::operator-> at both uses, so the global load is shared
+// (eax) but the ItemDescription field is loaded twice (`test ecx,ecx`/`jbe`, then `mov edx,[eax+34h]`) -- a plain
+// `def` local or a bool flag CSEs the field into one load (107v110). The entry temporary's release is the
+// DecRef()/GetRefCount() pair (load/dec/store, `test edx,edx`), its dead null store dropped.
+#include "engine/CInventoryItemDef.h"
+struct CWideString {
+    void* PStringData;
+    CWideString(const CWideString& other);              // 0x0099B720
+};
+extern CWideString g_emptyWideString;                   // 0x013BCA24
+struct CIVCountedPointeeBase {
+    virtual void Destroy(int flags);                    // slot 0
+    virtual void Delete();                              // slot 1
+    unsigned long IVRefCount;                           // +0x04
+    void DecRef() { --IVRefCount; }
+    unsigned long GetRefCount() const { return IVRefCount; }
+    void Release()
+    {
+        DecRef();
+        if (GetRefCount() == 0)
+            Delete();
+    }
+};
+template <class T> struct CIVCountedPointer {           // 4 bytes
+    T* Object;
+    ~CIVCountedPointer()
+    {
+        if (Object) {
+            Object->Release();
+            Object = 0;
+        }
+    }
+};
+struct CGroupEntry : CIVCountedPointeeBase {            // NGameText::CGroupEntry
+    CWideString GetText() const;                        // 0x009C7A40
+};
+struct CDataBank {                                      // NGameText::CDataBank
+    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+};
+struct CMainGameComponent {
+    unsigned char _pad00[0x14];
+    CDataBank*    TextBank;                             // +0x14
+};
+extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
+struct CDefPointeeBase;
+template <class T> struct CDefPointer {
+    T* Object;
+    T* operator->() const { return Object; }
+};
+class CTCInventoryItem {                                // static API only (instance layout: engine/CTCInventoryItem.h)
+public:
+    static bool __fastcall CacheDef(long defIndex);                     // 0x005D94B0
+    static CWideString __fastcall GetDescription(long defIndex);
+    static CDefPointer<const CInventoryItemDef> s_CachedItemDef;      // 0x013B8C18
+};
+CWideString __fastcall CTCInventoryItem::GetDescription(long defIndex)
+{
+    if (CacheDef(defIndex)) {
+        if (s_CachedItemDef->ItemDescription > 0) {
+            CDataBank* bank = g_pMainGameComponent->TextBank;
+            const unsigned long& textIndex = s_CachedItemDef->ItemDescription;
+            return bank->GetPGroupEntry(textIndex, true).Object->GetText();
+        }
+    }
+    return g_emptyWideString;
+}
