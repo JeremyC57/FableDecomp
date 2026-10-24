@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0052ebb0	RELOCATION_MATCH	98v98	PASS	NUISystem::CComponent::ChangeZoom (CSprite vfunc_35 = CComponent slot 35)
+0052ec60	RELOCATION_MATCH	95v95	PASS	NUISystem::CComponent::ChangeColour (slot 38)
+005305a0	DIFFER	105v104	-	NUISystem::CComponent::ChangeColourDelta (slot 39): operator+ result copied once more
+00530690	MATCH	130v130	PASS	NUISystem::CComponent::CanScroll (slot 88): (float)fabs compares
+00530740	MATCH	56v56	PASS	NUISystem::CComponent::IsPCStyle (slot 113)
+00531b40	RELOCATION_MATCH	92v92	PASS	NUISystem::CComponent::PositionChildDying (slot 127): same-TU fastcall SGI __find
+00531e50	RELOCATION_MATCH	63v63	PASS	NUISystem::CComponent::AddActionIAmParamOf (slot 96): inline STLport list push_back
+00531e90	RELOCATION_MATCH	38v38	PASS	NUISystem::CComponent::SetDeletion (slot 62): by-value CDeletion
+00533ba0	RELOCATION_MATCH	26v26	PASS	NUISystem::CComponent::AddChildFront (slot 61)
+0054f370	RELOCATION_MATCH	158v158	PASS	NUISystem::CText::SetValue(const CCharString&, bool, bool) (slot 145)
+0054f410	RELOCATION_MATCH	160v160	PASS	NUISystem::CText::SetValue(const CWideString&, bool, bool) (slot 144)
+0054ffb0	MATCH	35v35	PASS	NUISystem::CText::SetTextWindow (slot 147)
+0054fff0	MATCH	26v26	PASS	NUISystem::CText::GetAlignment (slot 150): inline bool accessors
+00546c90	RELOCATION_MATCH	53v53	PASS	NUISystem::CTextContainer::AddChild (slot 59): text children only
+00548760	RELOCATION_MATCH	29v29	PASS	NUISystem::CTextSlider::OnActivate (slot 140)
+00462fac	SKIP	-v56	-	wrong bounds: 5-byte thunk (jmp 0x00462FB1) + 51-byte CUILocaleGraphicsDef::operator= body at 0x00462FB1
+00720050	RELOCATION_MATCH	28v28	PASS	CCompositeBlendEntry ctor (label CUIStateDef::vfunc_25 is from a bogus vtable)
+0041cb10	DIFFER	67v70	-	NUISystem::CYesNo::ProcessEvent: vptr load order + callback calls cross-jumped
+00546a50	RELOCATION_MATCH	66v66	PASS	NUISystem::CZoomingComponent::Update(float) (slot 1)
+00c4afd0	RELOCATION_MATCH	58v58	PASS	PKCBufferedReader::ConvertOffsetToAbsolute: 3-case switch then the absolute seek
+00c31a70	RELOCATION_MATCH	189v189	PASS	PKSerialiseCParser::ValidateWriter: assertion macro; // Flags: /EHsc
+0049cfe0	RELOCATION_MATCH	19v19	PASS	CNamedValue_0049cfe0 ctor {CCharString, 0} (label PerEffectInfo wrong)
+005b1a7b	RELOCATION_MATCH	18v18	PASS	CWideNamedValue_005b1a7b(long unused) {CWideString, 0}; #pragma optimize("s", on)
+0078e3a0	RELOCATION_MATCH	25v25	PASS	CTCDivineWrath::PerEffectInfo::PerEffectInfo() (Ego_r.pdb)
+007939d0	RELOCATION_MATCH	25v25	PASS	CTCUnholyPower::PerEffectInfo::PerEffectInfo() (Ego_r.pdb)
+0050f090	RELOCATION_MATCH	26v26	PASS	CTwoLayerPolyMap_0050f090 ctor: two CLayer members (label QuestData wrong)
+005102f0	RELOCATION_MATCH	26v26	PASS	CTwoLayerPolyMap_005102f0 ctor: byte twin of 0x0050F090
+00527de0	RELOCATION_MATCH	22v22	PASS	CNarrowWideStringPair_00527de0(long unused) {CCharString, CWideString}
+009f0900	RELOCATION_MATCH	22v22	PASS	CStringPair_009f0900(long unused) {CCharString, CCharString}
+004294e2	MATCH	57v57	PASS	std::_Rb_global<bool>::_M_decrement (label RBTree::GetMaxNode wrong); #pragma optimize("s", on)
+0056e93d	RELOCATION_MATCH	55v55	PASS	SExpSpendUndo::SaveBefore; #pragma optimize("s", on)
+0056f4ba	RELOCATION_MATCH	221v221	PASS	SExpSpendUndo::RevertExperiencePoints; #pragma optimize("y", off) + ("s", on)
+0056f597	RELOCATION_MATCH	126v126	PASS	SExpSpendUndo::SaveAfter; #pragma optimize("s", on)
+00579c35	RELOCATION_MATCH	111v111	PASS	SExpSpendUndo copy constructor; #pragma optimize("s", on)
+009a7670	RELOCATION_MATCH	43v43	PASS	CBankInfo::CBankInfo() (Ego_r.pdb layout; label SExpSpendUndo wrong)
+009a9900	RELOCATION_MATCH	45v45	PASS	CBankInfo_009a9900(long unused): CBankInfo-shaped
+009aa210	RELOCATION_MATCH	43v43	PASS	CBankInfo_009aa210(): byte twin of 0x009A7670
+00bfd0b0	RELOCATION_MATCH	135v135	PASS	CPatchTesselationEdgeStrip::SaveVerts<CFanBaseVertex>: named data local
+0084e810	DIFFER	192v176	-	NCameraModes::CBase::AddSubComponent (label ScriptEventList::InsertEvent wrong): by-value pointer words re-read
+0083fbc0	RELOCATION_MATCH	37v37	PASS	LHNetworkLib::LHHttpHeaders::Reset (label SetStaticCast wrong)

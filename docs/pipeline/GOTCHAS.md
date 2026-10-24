@@ -1064,3 +1064,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - STLport `pop_front()` as inline `erase(begin())` into `erase(const_iterator)` keeps the preceding member store in place; `push_back(x)` is `insert(end(), x)` with an iterator that has a user copy ctor (0x7152F0, 0x540D70).
 - Retail CActionTalkBase is 0x90 bytes (PDB 0x98); CThingCreatureBase::PCurrentAction is at retail +0x100 (header +0x11C) (chunk 342).
 - The landing script moves bootstrap fixture copies for a batch's addresses into `integration/bootstrap_asm/` before landing (`$S/fixmove.py`), so a new landing never overwrites a fixture's asm body (0x0041A540, 0x0041A430).
+- `(float)fabs(a) > (float)fabs(b)` gives retail's `fxch st(1) ; fxch st(1)` pair (0x00530690); inline bool accessors written `(flags & mask) != 0` keep the `movzx eax,al` before the folded `shr ; and` (0x0054FFF0).
+- STLport `back()` is `iterator tmp = end(); --tmp; return *tmp;` so the last node is fixed before a following call (0x0056F4BA); a size TU with an ebp frame spilling into `[ebp+8]` is `optimize("y", off)` + `("s", on)`.
+- `and dword ptr [mem],0` in an unaligned ctor means `#pragma optimize("s", on)` (0x005B1A7B); a CDefVirtual model needs a slot-0 filler so Destroy is `call [edx+4]` (0x00530740).
+- Same-shape byte twins with no unique PDB owner take descriptive address-suffixed names (`CStringRecord_<addr>`), keeping one symbol per address (chunk 345).

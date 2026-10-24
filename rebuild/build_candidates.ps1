@@ -281530,6 +281530,259 @@ $catalog = @(
         TestSource = '01/22/NStreamingFontBankGlobals_DestroyPendingLoadedGlyphs_0122a610_test.cpp'
         PassPattern = '0122a610_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004294e2'
+        Module = 'std::_Rb_global<bool>'
+        Source = '00/42/stdRbglobalbool_Mdecrement_004294e2.cpp'
+        TestSource = '00/42/stdRbglobalbool_Mdecrement_004294e2_test.cpp'
+        PassPattern = '004294e2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049cfe0'
+        Module = 'CNamedValue_0049cfe0'
+        Source = '00/49/CNamedValue0049cfe0_CNamedValue0049cfe0_0049cfe0.cpp'
+        TestSource = '00/49/CNamedValue0049cfe0_CNamedValue0049cfe0_0049cfe0_test.cpp'
+        PassPattern = '0049cfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050f090'
+        Module = 'CTwoLayerPolyMap_0050f090'
+        Source = '00/50/CTwoLayerPolyMap0050f090_CTwoLayerPolyMap0050f090_0050f090.cpp'
+        TestSource = '00/50/CTwoLayerPolyMap0050f090_CTwoLayerPolyMap0050f090_0050f090_test.cpp'
+        PassPattern = '0050f090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005102f0'
+        Module = 'CTwoLayerPolyMap_005102f0'
+        Source = '00/51/CTwoLayerPolyMap005102f0_CTwoLayerPolyMap005102f0_005102f0.cpp'
+        TestSource = '00/51/CTwoLayerPolyMap005102f0_CTwoLayerPolyMap005102f0_005102f0_test.cpp'
+        PassPattern = '005102f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527de0'
+        Module = 'CNarrowWideStringPair_00527de0'
+        Source = '00/52/CNarrowWideStringPair00527de0_CNarrowWideStringPair00527de0_00527de0.cpp'
+        TestSource = '00/52/CNarrowWideStringPair00527de0_CNarrowWideStringPair00527de0_00527de0_test.cpp'
+        PassPattern = '00527de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ebb0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_ChangeZoom_0052ebb0.cpp'
+        TestSource = '00/52/NUISystemCComponent_ChangeZoom_0052ebb0_test.cpp'
+        PassPattern = '0052ebb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ec60'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_ChangeColour_0052ec60.cpp'
+        TestSource = '00/52/NUISystemCComponent_ChangeColour_0052ec60_test.cpp'
+        PassPattern = '0052ec60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530690'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_CanScroll_00530690.cpp'
+        TestSource = '00/53/NUISystemCComponent_CanScroll_00530690_test.cpp'
+        PassPattern = '00530690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530740'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_IsPCStyle_00530740.cpp'
+        TestSource = '00/53/NUISystemCComponent_IsPCStyle_00530740_test.cpp'
+        PassPattern = '00530740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00531b40'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_PositionChildDying_00531b40.cpp'
+        TestSource = '00/53/NUISystemCComponent_PositionChildDying_00531b40_test.cpp'
+        PassPattern = '00531b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00531e50'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_AddActionIAmParamOf_00531e50.cpp'
+        TestSource = '00/53/NUISystemCComponent_AddActionIAmParamOf_00531e50_test.cpp'
+        PassPattern = '00531e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00531e90'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_SetDeletion_00531e90.cpp'
+        TestSource = '00/53/NUISystemCComponent_SetDeletion_00531e90_test.cpp'
+        PassPattern = '00531e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00533ba0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_AddChildFront_00533ba0.cpp'
+        TestSource = '00/53/NUISystemCComponent_AddChildFront_00533ba0_test.cpp'
+        PassPattern = '00533ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546a50'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_Update_00546a50.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_Update_00546a50_test.cpp'
+        PassPattern = '00546a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546c90'
+        Module = 'NUISystem::CTextContainer'
+        Source = '00/54/NUISystemCTextContainer_AddChild_00546c90.cpp'
+        TestSource = '00/54/NUISystemCTextContainer_AddChild_00546c90_test.cpp'
+        PassPattern = '00546c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548760'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_OnActivate_00548760.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_OnActivate_00548760_test.cpp'
+        PassPattern = '00548760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054f370'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_SetValue_0054f370.cpp'
+        TestSource = '00/54/NUISystemCText_SetValue_0054f370_test.cpp'
+        PassPattern = '0054f370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054f410'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_SetValue_0054f410.cpp'
+        TestSource = '00/54/NUISystemCText_SetValue_0054f410_test.cpp'
+        PassPattern = '0054f410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054ffb0'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_SetTextWindow_0054ffb0.cpp'
+        TestSource = '00/54/NUISystemCText_SetTextWindow_0054ffb0_test.cpp'
+        PassPattern = '0054ffb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054fff0'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_GetAlignment_0054fff0.cpp'
+        TestSource = '00/54/NUISystemCText_GetAlignment_0054fff0_test.cpp'
+        PassPattern = '0054fff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056e93d'
+        Module = 'SExpSpendUndo'
+        Source = '00/56/SExpSpendUndo_SaveBefore_0056e93d.cpp'
+        TestSource = '00/56/SExpSpendUndo_SaveBefore_0056e93d_test.cpp'
+        PassPattern = '0056e93d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056f4ba'
+        Module = 'SExpSpendUndo'
+        Source = '00/56/SExpSpendUndo_RevertExperiencePoints_0056f4ba.cpp'
+        TestSource = '00/56/SExpSpendUndo_RevertExperiencePoints_0056f4ba_test.cpp'
+        PassPattern = '0056f4ba_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056f597'
+        Module = 'SExpSpendUndo'
+        Source = '00/56/SExpSpendUndo_SaveAfter_0056f597.cpp'
+        TestSource = '00/56/SExpSpendUndo_SaveAfter_0056f597_test.cpp'
+        PassPattern = '0056f597_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579c35'
+        Module = 'SExpSpendUndo'
+        Source = '00/57/SExpSpendUndo_SExpSpendUndo_00579c35.cpp'
+        TestSource = '00/57/SExpSpendUndo_SExpSpendUndo_00579c35_test.cpp'
+        PassPattern = '00579c35_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1a7b'
+        Module = 'CWideNamedValue_005b1a7b'
+        Source = '00/5b/CWideNamedValue005b1a7b_CWideNamedValue005b1a7b_005b1a7b.cpp'
+        TestSource = '00/5b/CWideNamedValue005b1a7b_CWideNamedValue005b1a7b_005b1a7b_test.cpp'
+        PassPattern = '005b1a7b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00720050'
+        Module = 'CCompositeBlendEntry'
+        Source = '00/72/CCompositeBlendEntry_CCompositeBlendEntry_00720050.cpp'
+        TestSource = '00/72/CCompositeBlendEntry_CCompositeBlendEntry_00720050_test.cpp'
+        PassPattern = '00720050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078e3a0'
+        Module = 'CTCDivineWrath::PerEffectInfo'
+        Source = '00/78/CTCDivineWrathPerEffectInfo_PerEffectInfo_0078e3a0.cpp'
+        TestSource = '00/78/CTCDivineWrathPerEffectInfo_PerEffectInfo_0078e3a0_test.cpp'
+        PassPattern = '0078e3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007939d0'
+        Module = 'CTCUnholyPower::PerEffectInfo'
+        Source = '00/79/CTCUnholyPowerPerEffectInfo_PerEffectInfo_007939d0.cpp'
+        TestSource = '00/79/CTCUnholyPowerPerEffectInfo_PerEffectInfo_007939d0_test.cpp'
+        PassPattern = '007939d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083fbc0'
+        Module = 'LHNetworkLib::LHHttpHeaders'
+        Source = '00/83/LHNetworkLibLHHttpHeaders_Reset_0083fbc0.cpp'
+        TestSource = '00/83/LHNetworkLibLHHttpHeaders_Reset_0083fbc0_test.cpp'
+        PassPattern = '0083fbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a7670'
+        Module = 'CBankInfo'
+        Source = '00/9a/CBankInfo_CBankInfo_009a7670.cpp'
+        TestSource = '00/9a/CBankInfo_CBankInfo_009a7670_test.cpp'
+        PassPattern = '009a7670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a9900'
+        Module = 'CBankInfo_009a9900'
+        Source = '00/9a/CBankInfo009a9900_CBankInfo009a9900_009a9900.cpp'
+        TestSource = '00/9a/CBankInfo009a9900_CBankInfo009a9900_009a9900_test.cpp'
+        PassPattern = '009a9900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aa210'
+        Module = 'CBankInfo_009aa210'
+        Source = '00/9a/CBankInfo009aa210_CBankInfo009aa210_009aa210.cpp'
+        TestSource = '00/9a/CBankInfo009aa210_CBankInfo009aa210_009aa210_test.cpp'
+        PassPattern = '009aa210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f0900'
+        Module = 'CStringPair_009f0900'
+        Source = '00/9f/CStringPair009f0900_CStringPair009f0900_009f0900.cpp'
+        TestSource = '00/9f/CStringPair009f0900_CStringPair009f0900_009f0900_test.cpp'
+        PassPattern = '009f0900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfd0b0'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/bf/CPatchTesselationEdgeStrip_SaveVertsCFanBaseVertex_00bfd0b0.cpp'
+        TestSource = '00/bf/CPatchTesselationEdgeStrip_SaveVertsCFanBaseVertex_00bfd0b0_test.cpp'
+        PassPattern = '00bfd0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c31a70'
+        Module = 'PKSerialiseCParser'
+        Source = '00/c3/PKSerialiseCParser_ValidateWriter_00c31a70.cpp'
+        TestSource = '00/c3/PKSerialiseCParser_ValidateWriter_00c31a70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c31a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4afd0'
+        Module = 'PKCBufferedReader'
+        Source = '00/c4/PKCBufferedReader_ConvertOffsetToAbsolute_00c4afd0.cpp'
+        TestSource = '00/c4/PKCBufferedReader_ConvertOffsetToAbsolute_00c4afd0_test.cpp'
+        PassPattern = '00c4afd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
