@@ -72,6 +72,9 @@ def obj_text(path, leaf):
         if e and cur is not None: cur["bytes"].extend(bytes.fromhex(e.group(1)))
     if not fns: raise RuntimeError("no funcs")
     named=[f for f in fns if leaf and leaf in str(f["symbol"])]
+    # A leaf that names no symbol (e.g. `class` V vs `struct` U in a mangled leaf) falls back to
+    # the largest function: the bytes still gate the grade, but say so, as the symbol is a guess.
+    if leaf and not named: print(f"  WARN leaf {leaf!r} matches no symbol in {Path(path).name}; graded the largest function", file=sys.stderr)
     sel=max(named or fns,key=lambda f:len(f["bytes"]))
     return bytes(sel["bytes"]),int(sel["section"]),str(sel["symbol"])
 
