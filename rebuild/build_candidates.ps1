@@ -303253,6 +303253,286 @@ $catalog = @(
         TestSource = '00/ad/STL_copy_00ad48f0_test.cpp'
         PassPattern = '00ad48f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ae0680'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_WriteGroups_00ae0680.cpp'
+        TestSource = '00/ae/CParticleProgram_WriteGroups_00ae0680_test.cpp'
+        PassPattern = '00ae0680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae1210'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_GetUsedBones_00ae1210.cpp'
+        TestSource = '00/ae/CParticleProgram_GetUsedBones_00ae1210_test.cpp'
+        PassPattern = '00ae1210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae2510'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_ApplyConstraints_00ae2510.cpp'
+        TestSource = '00/ae/CParticleProgram_ApplyConstraints_00ae2510_test.cpp'
+        PassPattern = '00ae2510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae2d90'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_AddExportParticle_00ae2d90.cpp'
+        TestSource = '00/ae/CParticleProgram_AddExportParticle_00ae2d90_test.cpp'
+        PassPattern = '00ae2d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae5ab0'
+        Module = '_STL'
+        Source = '00/ae/STL_unguardedlinearinsert_00ae5ab0.cpp'
+        TestSource = '00/ae/STL_unguardedlinearinsert_00ae5ab0_test.cpp'
+        PassPattern = '00ae5ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae5f00'
+        Module = '_STL'
+        Source = '00/ae/STL_unguardedpartition_00ae5f00.cpp'
+        TestSource = '00/ae/STL_unguardedpartition_00ae5f00_test.cpp'
+        PassPattern = '00ae5f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae5f60'
+        Module = '_STL'
+        Source = '00/ae/STL_unguardedinsertionsortaux_00ae5f60.cpp'
+        TestSource = '00/ae/STL_unguardedinsertionsortaux_00ae5f60_test.cpp'
+        PassPattern = '00ae5f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae6760'
+        Module = '_STL'
+        Source = '00/ae/STL_linearinsert_00ae6760.cpp'
+        TestSource = '00/ae/STL_linearinsert_00ae6760_test.cpp'
+        PassPattern = '00ae6760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae76e0'
+        Module = '_STL'
+        Source = '00/ae/STL_destroyaux_00ae76e0.cpp'
+        TestSource = '00/ae/STL_destroyaux_00ae76e0_test.cpp'
+        PassPattern = '00ae76e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae7760'
+        Module = '_STL'
+        Source = '00/ae/STL_partialsort_00ae7760.cpp'
+        TestSource = '00/ae/STL_partialsort_00ae7760_test.cpp'
+        PassPattern = '00ae7760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae7880'
+        Module = '_STL::vector'
+        Source = '00/ae/STLvector_vector_00ae7880.cpp'
+        TestSource = '00/ae/STLvector_vector_00ae7880_test.cpp'
+        PassPattern = '00ae7880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae80f0'
+        Module = '_STL::vector<C3DGroup2>'
+        Source = '00/ae/STLvectorC3DGroup2_reserve_00ae80f0.cpp'
+        TestSource = '00/ae/STLvectorC3DGroup2_reserve_00ae80f0_test.cpp'
+        PassPattern = '00ae80f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae81f0'
+        Module = '_STL::vector<C3DGroup2>'
+        Source = '00/ae/STLvectorC3DGroup2_Minsertoverflow_00ae81f0.cpp'
+        TestSource = '00/ae/STLvectorC3DGroup2_Minsertoverflow_00ae81f0_test.cpp'
+        PassPattern = '00ae81f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae83d0'
+        Module = '_STL::vector<C3DGroup2>'
+        Source = '00/ae/STLvectorC3DGroup2_pushback_00ae83d0.cpp'
+        TestSource = '00/ae/STLvectorC3DGroup2_pushback_00ae83d0_test.cpp'
+        PassPattern = '00ae83d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae8540'
+        Module = '_STL::vector<C3DGroup2>'
+        Source = '00/ae/STLvectorC3DGroup2_resize_00ae8540.cpp'
+        TestSource = '00/ae/STLvectorC3DGroup2_resize_00ae8540_test.cpp'
+        PassPattern = '00ae8540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae8b50'
+        Module = 'NParticleEngine::CParticleEmitterDatabase'
+        Source = '00/ae/NParticleEngineCParticleEmitterDatabase_DeleteEmitterTemplate_00ae8b50.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterDatabase_DeleteEmitterTemplate_00ae8b50_test.cpp'
+        PassPattern = '00ae8b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeab20'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_SetEnvironmentInteraction_00aeab20.cpp'
+        TestSource = '00/ae/NParticleEngine_SetEnvironmentInteraction_00aeab20_test.cpp'
+        PassPattern = '00aeab20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb940'
+        Module = 'NParticleEngine::CParticleEmitterList'
+        Source = '00/ae/NParticleEngineCParticleEmitterList_CParticleEmitterList_00aeb940.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterList_CParticleEmitterList_00aeb940_test.cpp'
+        PassPattern = '00aeb940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeba90'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_CParticleEmitterManager_00aeba90.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_CParticleEmitterManager_00aeba90_test.cpp'
+        PassPattern = '00aeba90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aebe20'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_Initialise_00aebe20.cpp'
+        TestSource = '00/ae/NParticleEngine_Initialise_00aebe20_test.cpp'
+        PassPattern = '00aebe20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aebea0'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_Uninitialise_00aebea0.cpp'
+        TestSource = '00/ae/NParticleEngine_Uninitialise_00aebea0_test.cpp'
+        PassPattern = '00aebea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aec740'
+        Module = '_STL::list'
+        Source = '00/ae/STLlist_pushfront_00aec740.cpp'
+        TestSource = '00/ae/STLlist_pushfront_00aec740_test.cpp'
+        PassPattern = '00aec740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aec9f0'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_scalardeletingdestructor_00aec9f0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_scalardeletingdestructor_00aec9f0_test.cpp'
+        PassPattern = '00aec9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeca50'
+        Module = 'CCountedPointer'
+        Source = '00/ae/CCountedPointer_DeleteData_00aeca50.cpp'
+        TestSource = '00/ae/CCountedPointer_DeleteData_00aeca50_test.cpp'
+        PassPattern = '00aeca50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aecd70'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_GetFadeAlpha_00aecd70.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_GetFadeAlpha_00aecd70_test.cpp'
+        PassPattern = '00aecd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1aa0'
+        Module = '_STL'
+        Source = '00/af/STL_uninitializedfilln_00af1aa0.cpp'
+        TestSource = '00/af/STL_uninitializedfilln_00af1aa0_test.cpp'
+        PassPattern = '00af1aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1c10'
+        Module = '_STL'
+        Source = '00/af/STL_uninitializedcopy_00af1c10.cpp'
+        TestSource = '00/af/STL_uninitializedcopy_00af1c10_test.cpp'
+        PassPattern = '00af1c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af28c0'
+        Module = 'NParticleEngine::CPSCManager'
+        Source = '00/af/NParticleEngineCPSCManager_AllocatePSC_00af28c0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCManager_AllocatePSC_00af28c0_test.cpp'
+        PassPattern = '00af28c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2e70'
+        Module = '_STL'
+        Source = '00/af/STL_unguardedlinearinsert_00af2e70.cpp'
+        TestSource = '00/af/STL_unguardedlinearinsert_00af2e70_test.cpp'
+        PassPattern = '00af2e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af31c0'
+        Module = '_STL'
+        Source = '00/af/STL_unguardedpartition_00af31c0.cpp'
+        TestSource = '00/af/STL_unguardedpartition_00af31c0_test.cpp'
+        PassPattern = '00af31c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af34e0'
+        Module = '_STL'
+        Source = '00/af/STL_makeheap_00af34e0.cpp'
+        TestSource = '00/af/STL_makeheap_00af34e0_test.cpp'
+        PassPattern = '00af34e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af35a0'
+        Module = '_STL'
+        Source = '00/af/STL_linearinsert_00af35a0.cpp'
+        TestSource = '00/af/STL_linearinsert_00af35a0_test.cpp'
+        PassPattern = '00af35a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af37f0'
+        Module = '_STL::vector'
+        Source = '00/af/STLvector_Minsertoverflow_00af37f0.cpp'
+        TestSource = '00/af/STLvector_Minsertoverflow_00af37f0_test.cpp'
+        PassPattern = '00af37f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af3920'
+        Module = '_STL'
+        Source = '00/af/STL_partialsort_00af3920.cpp'
+        TestSource = '00/af/STL_partialsort_00af3920_test.cpp'
+        PassPattern = '00af3920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af39c0'
+        Module = '_STL::vector'
+        Source = '00/af/STLvector_pushback_00af39c0.cpp'
+        TestSource = '00/af/STLvector_pushback_00af39c0_test.cpp'
+        PassPattern = '00af39c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af3aa0'
+        Module = '_STL'
+        Source = '00/af/STL_introsortloop_00af3aa0.cpp'
+        TestSource = '00/af/STL_introsortloop_00af3aa0_test.cpp'
+        PassPattern = '00af3aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af3cf0'
+        Module = 'NParticleEngine'
+        Source = '00/af/NParticleEngine_GFInterpolate_00af3cf0.cpp'
+        TestSource = '00/af/NParticleEngine_GFInterpolate_00af3cf0_test.cpp'
+        PassPattern = '00af3cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af4360'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_GetComponentOfType_00af4360.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_GetComponentOfType_00af4360_test.cpp'
+        PassPattern = '00af4360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af6920'
+        Module = '_STL'
+        Source = '00/af/STL_uninitializedcopy_00af6920.cpp'
+        TestSource = '00/af/STL_uninitializedcopy_00af6920_test.cpp'
+        PassPattern = '00af6920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af8700'
+        Module = 'CDynamicObjectHeap<24,853>'
+        Source = '00/af/CDynamicObjectHeap24853_CDynamicObjectHeap_00af8700.cpp'
+        TestSource = '00/af/CDynamicObjectHeap24853_CDynamicObjectHeap_00af8700_test.cpp'
+        PassPattern = '00af8700_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

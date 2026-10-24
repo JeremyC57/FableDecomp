@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ae0680	RELOCATION_MATCH	133v133	PASS	CParticleProgram::WriteGroups (static fastcall; Ego_r PDB name); grades: 1
+00ae1210	MATCH	79v79	PASS	CParticleProgram::GetUsedBones (static fastcall overload); leaf = exact PDB mangling (class CArray/C3DGroup2); grades: 1 (+1 same-body mangling re-check)
+00ae2510	RELOCATION_MATCH	61v61	PASS	CParticleProgram::ApplyConstraints(sim&, long, float); catalog ExecuteLooped wrong; grades: 1
+00ae2d90	RELOCATION_MATCH	137v137	PASS	CParticleProgram::AddExportParticle; __forceinline CVectorMap::Add; grades: 2
+00ae5ab0	MATCH	56v56	PASS	STLport __unguarded_linear_insert<pair<long,ulong>>; grades: 1
+00ae5f00	MATCH	87v87	PASS	STLport __unguarded_partition<pair<long,ulong>>; grades: 1
+00ae5f60	MATCH	67v67	PASS	STLport __unguarded_insertion_sort_aux<pair<long,ulong>>; grades: 1
+00ae6760	RELOCATION_MATCH	109v109	PASS	STLport __linear_insert<pair<long,ulong>>; grades: 1
+00ae76e0	RELOCATION_MATCH	114v114	PASS	STLport __destroy_aux<set<long>*>; _M_erase body in TU; grades: 1
+00ae7760	RELOCATION_MATCH	119v119	PASS	STLport __partial_sort<pair<long,ulong>>; grades: 1
+00ae7880	RELOCATION_MATCH	214v214	PASS	STLport vector<set<long>>::vector(n); grades: 1
+00ae80f0	RELOCATION_MATCH	163v163	PASS	STLport vector<C3DGroup2>::reserve; grades: 1
+00ae81f0	RELOCATION_MATCH	195v195	PASS	STLport vector<C3DGroup2>::_M_insert_overflow; grades: 1
+00ae83d0	RELOCATION_MATCH	187v187	PASS	STLport vector<C3DGroup2>::push_back (overflow body auto-inlined); grades: 1
+00ae8540	RELOCATION_MATCH	101v101	PASS	STLport vector<C3DGroup2>::resize(n); grades: 1
+00ae8b50	RELOCATION_MATCH	82v82	PASS	CParticleEmitterDatabase::DeleteEmitterTemplate; noinline LowerBound/UpperBound; grades: 1
+00aeab20	RELOCATION_MATCH	99v99	PASS	NParticleEngine::SetEnvironmentInteraction (fastcall, by-value counted ptr); grades: 2
+00aeb940	RELOCATION_MATCH	39v39	PASS	CParticleEmitterList::CParticleEmitterList(long); grades: 1
+00aeba90	RELOCATION_MATCH	93v93	PASS	CParticleEmitterManager::CParticleEmitterManager(); grades: 1
+00aebe20	RELOCATION_MATCH	122v122	PASS	NParticleEngine::Initialise (three Reset(new T)); grades: 1
+00aebea0	RELOCATION_MATCH	163v163	PASS	NParticleEngine::Uninitialise (three inline ReleaseData); grades: 1
+00aec740	RELOCATION_MATCH	61v61	PASS	STLport list<CCountedPointer<CParticleEmitter>>::push_front; grades: 1
+00aec9f0	RELOCATION_MATCH	45v45	PASS	CParticleEmitterManager ??_G (FableWin PDB QAE ??_G); grades: 1
+00aeca50	RELOCATION_MATCH	38v38	PASS	CCountedPointer<CParticleEmitterManager>::DeleteData (static fastcall); grades: 1
+00aecd70	RELOCATION_MATCH	142v142	PASS	CParticleEmitter::GetFadeAlpha (FableWin PDB name); landed caller calls it CalcFadeAlpha; grades: 1
+00af1aa0	MATCH	53v53	PASS	STLport __uninitialized_fill_n<CParticleEmitterInfo*>; grades: 1
+00af1c10	MATCH	57v57	PASS	STLport __uninitialized_copy<CParticleEmitterInfo*>; grades: 2 (the 2nd only switched const->non-const iterators)
+00af28c0	RELOCATION_MATCH	73v73	PASS	CPSCManager::AllocatePSC; noinline CBasicString operator< + positive return test; leaf = exact PDB mangling (NParticleEngine::CPSCBase); grades: 3 (+2 same-body mangling re-checks)
+00af2e70	RELOCATION_MATCH	146v146	PASS	STLport __unguarded_linear_insert<CPSCPair>; grades: 1
+00af31c0	RELOCATION_MATCH	119v119	PASS	STLport __unguarded_partition<CPSCPair>; grades: 1
+00af34e0	RELOCATION_MATCH	112v112	PASS	STLport __make_heap<CPSCPair>; grades: 1
+00af35a0	RELOCATION_MATCH	174v174	PASS	STLport __linear_insert<CPSCPair>; grades: 1
+00af37f0	RELOCATION_MATCH	215v215	PASS	STLport vector<CPSCPair>::_M_insert_overflow; catalog CCombatWheel_ResizeRings wrong; grades: 1
+00af3920	RELOCATION_MATCH	141v141	PASS	STLport __partial_sort<CPSCPair>; grades: 1
+00af39c0	RELOCATION_MATCH	90v90	PASS	STLport vector<CPSCPair>::push_back; grades: 1
+00af3aa0	RELOCATION_MATCH	205v205	PASS	STLport __introsort_loop<CPSCPair>; grades: 1
+00af3cf0	RELOCATION_MATCH	99v99	PASS	NParticleEngine::GFInterpolate(C3DVector) (FableWin PDB name); grades: 1
+00af4360	RELOCATION_MATCH	79v79	PASS	CParticleSystem::GetComponentOfType (FableWin PDB name); positive final test; grades: 2
+00af6920	RELOCATION_MATCH	94v94	PASS	STLport __uninitialized_copy<pair<EPSCType,CComponentInstance>*>; grades: 1
+00af8700	RELOCATION_MATCH	68v68	PASS	CDynamicObjectHeap<24,853>::CDynamicObjectHeap(bool) (FableWin PDB name); grades: 1
