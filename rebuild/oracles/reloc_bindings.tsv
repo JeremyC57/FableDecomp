@@ -32156,3 +32156,10 @@ __alloca_probe	00bfea30	00c8dc90
 @oggpack_read@8	00c915a0	00c8eef0
 @oggpack_readinit@12	00c91360	00c8eef0
 @oggpack_writeclear@4	00c91320	00c8f1b0
+?mask@@3QBKB	0139ddb8	00c910c0
+__imp__qsort	01440060	00c94750
+_apsort	00c945b0	00c94750
+__imp__ldexp	01440014	00c94f90
+__imp__floor	01440100	00c95140
+@_best@12	00c95a10	00c96170
+_decode_packed_entry_number@8	00c96320	00c96700

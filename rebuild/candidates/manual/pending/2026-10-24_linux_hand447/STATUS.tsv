@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c908e0	MATCH	80v80	PASS	libvorbis vorbis_synthesis_pcmout (block.c); 1 grade
+00c90930	MATCH	30v30	PASS	libvorbis vorbis_synthesis_read (block.c); 1 grade
+00c910c0	RELOCATION_MATCH	240v240	PASS	libogg oggpackB_write; 1 grade
+00c913a0	RELOCATION_MATCH	148v148	PASS	libogg oggpack_look; 1 grade
+00c91530	MATCH	41v41	PASS	libogg oggpack_adv; 1 grade
+00c917b0	MATCH	20v20	PASS	libogg oggpack_bytes; 1 grade
+00c91820	RELOCATION_MATCH	44v44	PASS	libvorbis _vp_global_look (psy.c); 1 grade
+00c918c0	DIFFER	180v183	-	libvorbis min_curve (psy.c); LTCG register argument; 1 grade(s)
+00c91980	DIFFER	180v183	-	libvorbis max_curve (psy.c); LTCG register argument; 1 grade(s)
+00c91a40	DIFFER	97v97	-	libvorbis attenuate_curve (psy.c); LTCG register argument; 1 grade(s)
+00c92640	MATCH	25v25	PASS	libvorbis unitnorm (scales.h, psy.c copy); 1 grade
+00c92bf0	RELOCATION_MATCH	174v174	PASS	libvorbis _vp_psy_clear; 1 grade
+00c92e20	DIFFER	235v237	-	libvorbis seed_loop (psy.c); LTCG register argument; 1 grade(s)
+00c94190	RELOCATION_MATCH	68v68	PASS	libvorbis _vp_ampmax_decay; 1 grade
+00c941e0	DIFFER	202v202	-	libvorbis couple_lossless (psy.c); LTCG register argument; 2 grade(s)
+00c942b0	DIFFER	99v91	-	libvorbis precomputed_couple_point (psy.c); LTCG register argument; 1 grade(s)
+00c94310	RELOCATION_MATCH	213v213	PASS	libvorbis dipole_hypot; 1 grade
+00c943f0	RELOCATION_MATCH	146v146	PASS	libvorbis round_hypot; 1 grade
+00c945b0	MATCH	70v70	PASS	libvorbis apsort (qsort cmp); 1 grade
+00c94750	RELOCATION_MATCH	185v185	PASS	libvorbis _vp_noise_normalize_sort; 1 grade
+00c94f90	RELOCATION_MATCH	52v52	PASS	libvorbis _float32_unpack (sharedbook.c); 1 grade
+00c95140	RELOCATION_MATCH	103v103	PASS	libvorbis _book_maptype1_quantvals; 1 grade
+00c95370	RELOCATION_MATCH	175v175	PASS	libvorbis vorbis_staticbook_clear; 1 grade
+00c954f0	DIFFER	99v99	-	libvorbis bitreverse (sharedbook.c); LTCG register argument; 1 grade(s)
+00c95560	MATCH	31v31	PASS	libvorbis sort32a (qsort cmp); 1 grade
+00c96170	RELOCATION_MATCH	158v158	PASS	libvorbis vorbis_book_errorv (codebook.c); 1 grade
+00c962b0	DIFFER	99v99	-	libvorbis bitreverse (codebook.c twin); LTCG register argument; 1 grade(s)
+00c96700	RELOCATION_MATCH	92v92	PASS	libvorbis vorbis_book_decodev_set; 1 grade
+00c96760	RELOCATION_MATCH	149v149	PASS	libvorbis vorbis_book_decodevv_add; 1 grade
+00c9bc10	DIFFER	29v30	-	libvorbis drft_forward (smallft.c); LTCG callee convention; 1 grade(s)
+00c9bc90	RELOCATION_MATCH	53v53	PASS	libvorbis drft_clear; 1 grade
+00c9beb0	DIFFER	125v125	-	libvorbis mdct_butterfly_8 (mdct.c); LTCG register argument; 1 grade(s)
+00c9c400	DIFFER	174v185	-	libvorbis mdct_butterflies (mdct.c); LTCG register arguments; 1 grade(s)
+00c9c4c0	RELOCATION_MATCH	59v59	PASS	libvorbis mdct_clear; 1 grade
+00c9cb80	DIFFER	215v211	-	libvorbis floater_interpolate (bitrate.c); LTCG register argument; 1 grade(s)
+00c9cc60	DIFFER	170v178	-	libvorbis limit_sum (bitrate.c); LTCG register argument; 1 grade(s)
+00c9cf10	RELOCATION_MATCH	185v185	PASS	libvorbis vorbis_bitrate_clear; 1 grade
+00c9e4a0	MATCH	177v177	PASS	libvorbis _ve_envelope_mark (envelope.c); 1 grade
+00c9e560	RELOCATION_MATCH	109v109	PASS	libvorbis _ve_envelope_shift; 1 grade
+00c9fdf0	RELOCATION_MATCH	113v113	PASS	libvorbis res0_free_look (res0.c); 1 grade
