@@ -1,8 +1,8 @@
-// CSpawnedFunc<NScript::CV_ExposeMayorScript>::CSpawnedFunc(const CCharString& name, unsigned long id, NScript::CV_ExposeMayorScript* pclass, void (NScript::CV_ExposeMayorScript::*func)()) -- build a spawned script function bound to a script object and its member callback
+// CSpawnedFunc<NScript::CV_HauntedHouseScript>::CSpawnedFunc(const CCharString& name, unsigned long id, NScript::CV_HauntedHouseScript* pclass, void (NScript::CV_HauntedHouseScript::*func)()) -- build a spawned script function bound to a script object and its member callback
 // Leaf: ??0?$CSpawnedFunc@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E95F10, 112 bytes, `__fastcall`, `ret 10h`; vtable 0x012ECBA8. FableWin.pdb has the shape
 //   ??0?$CSpawnedFunc@V...@@@@QAE@ABVCCharString@@KPAV...@P8...@AEXXZ@Z for every script T; the only caller 0x00E94C0B passes
-//   CV_ExposeMayorScript::DoMission 0x00E953E0, so T is CV_ExposeMayorScript (the manifest's CExpression_FollowScript is propagated).
+//   CV_HauntedHouseScript::DoMission 0x00E953E0 (caller 0x00E94C0B; the vtable 0x012ECBA8 it stores is the one CV_HauntedHouseScript's RegisterMain 0x00E93DA0 uses), so T is CV_HauntedHouseScript; the manifest's CV_ExposeMayorScript and CExpression_FollowScript labels are propagated.
 // Callees: the inlined CSpawnedFuncBase ctor (0x00CDD450 out of line): process base ctor 0x00A44740 (1, 0x40, 0.1f),
 //   CCharString(const CCharString&) 0x0099EC30, CCharString() 0x0099E4B0.
 // Layout: Ego_r.pdb CSpawnedFunc<T> 0x3C = CSpawnedFuncBase (0x34) + Func (+0x34, single-inheritance member pointer) + PClass (+0x38).
@@ -67,5 +67,5 @@ template <class T> CSpawnedFunc<T>::CSpawnedFunc(const CCharString& name, unsign
     : CSpawnedFuncBase(name, id), Func(func), PClass(pclass)
 {
 }
-namespace NScript { class CV_ExposeMayorScript { public: void DoMission(); }; }
-template CSpawnedFunc<NScript::CV_ExposeMayorScript>::CSpawnedFunc(const CCharString& name, unsigned long id, NScript::CV_ExposeMayorScript* pclass, void (NScript::CV_ExposeMayorScript::*func)());
+namespace NScript { class CV_HauntedHouseScript { public: void DoMission(); }; }
+template CSpawnedFunc<NScript::CV_HauntedHouseScript>::CSpawnedFunc(const CCharString& name, unsigned long id, NScript::CV_HauntedHouseScript* pclass, void (NScript::CV_HauntedHouseScript::*func)());

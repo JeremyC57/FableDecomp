@@ -278838,9 +278838,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e95f10'
-        Module = 'CSpawnedFunc<NScript::CV_ExposeMayorScript>'
-        Source = '00/e9/CSpawnedFuncNScriptCVExposeMayorScript_CSpawnedFunc_00e95f10.cpp'
-        TestSource = '00/e9/CSpawnedFuncNScriptCVExposeMayorScript_CSpawnedFunc_00e95f10_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_HauntedHouseScript>'
+        Source = '00/e9/CSpawnedFuncNScriptCVHauntedHouseScript_CSpawnedFunc_00e95f10.cpp'
+        TestSource = '00/e9/CSpawnedFuncNScriptCVHauntedHouseScript_CSpawnedFunc_00e95f10_test.cpp'
         PassPattern = '00e95f10_TEST PASS'
     }
     [pscustomobject]@{
