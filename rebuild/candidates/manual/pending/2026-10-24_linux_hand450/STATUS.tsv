@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00cb0310	DIFFER	73v81	-	strmbase memmoveInternal (wxutil.cpp); retail_asm candidate (std/cld rep movs inline asm); C++ reference body in differ/; 1 grade
+00cb0940	RELOCATION_MATCH	85v85	PASS	strmbase AMGetWideString (extern C __stdcall); 1 grade
+00cb0bc0	RELOCATION_MATCH	29v29	PASS	strmbase AmGetLastErrorToHResult; 1 grade
+00cb0fc0	RELOCATION_MATCH	109v109	PASS	CMsgThread::DefaultThreadProc (msgthrd.cpp); 1 grade
+00cb1340	RELOCATION_MATCH	57v57	PASS	CBaseList::RemoveAll (wxlist.cpp); 1 grade
+00cb13c0	MATCH	41v41	PASS	CBaseList::FindI; 1 grade
+00cb1460	RELOCATION_MATCH	104v104	PASS	CBaseList::AddTailI; 1 grade
+00cb14d0	RELOCATION_MATCH	100v100	PASS	CBaseList::AddHeadI; 1 grade
+00cb1540	RELOCATION_MATCH	55v55	PASS	CBaseList::AddTail(CBaseList*); 1 grade
+00cb16a0	RELOCATION_MATCH	122v122	PASS	CBaseList::AddBeforeI; 1 grade
+00cb1920	RELOCATION_MATCH	24v24	PASS	CMediaType::IsValid (mtype.cpp); 1 grade
+00cb19e0	RELOCATION_MATCH	87v87	PASS	CMediaType::AllocFormatBuffer; 1 grade
+00cb1a40	RELOCATION_MATCH	121v121	PASS	CMediaType::ReallocFormatBuffer; 1 grade
+00cb1ae0	RELOCATION_MATCH	52v52	PASS	CMediaType::IsPartiallySpecified; 1 grade
+00cb1b20	RELOCATION_MATCH	170v170	PASS	CMediaType::MatchesPartial; 1 grade
+00cb1bd0	RELOCATION_MATCH	103v103	PASS	strmbase CopyMediaType (C++ __stdcall); 1 grade
+00cb1d60	RELOCATION_MATCH	34v34	PASS	CMediaType::CMediaType(const AM_MEDIA_TYPE&, HRESULT*); 1 grade
+00cb1f70	RELOCATION_MATCH	49v49	PASS	strmbase CreateMediaType; 1 grade
+00cb21a0	DIFFER	148v143	-	ImeUi _strtoul; LTCG custom convention (psz in EDX); lane gap; 1 grade
+00cb2590	DIFFER	105v87	-	ImeUi ComposeCandidateLine; LTCG custom convention (eax/ecx/edx precomputed by caller); lane gap; 1 grade
+00cb2670	RELOCATION_MATCH	63v63	PASS	ImeUi GetCandidateList (__fastcall, address-taken); 1 grade
+00cb26b0	DIFFER	84v83	-	ImeUi SendControlKeys; LTCG custom convention (num EAX, vk EDI); lane gap; 1 grade
+00cb2710	DIFFER	210v215	-	ImeUi CancelCompString; its SendControlKeys calls use the LTCG eax/edi convention; lane gap; 1 grade
+00cb2820	DIFFER	63v50	-	ImeUi DrawCaret; LTCG custom convention (x ECX, y ESI, height EBX); lane gap; 1 grade
+00cb2880	RELOCATION_MATCH	96v96	PASS	ImeUi_SetCompStringAppearance; 1 grade
+00cb2b90	RELOCATION_MATCH	208v208	PASS	ImeUi_IgnoreHotKey; 1 grade
+00cb2c60	RELOCATION_MATCH	187v187	PASS	ImeUi_FinalizeString; InitCompStringData inline in DXUT order (counters first); 2 grades
+00cb2d20	RELOCATION_MATCH	97v97	PASS	ImeUi SetCompStringColor; 1 grade
+00cb2d90	DIFFER	49v50	-	ImeUi SetSupportLevel; LTCG custom convention (dwImeLevel in EAX); lane gap; 1 grade
+00cb2e20	RELOCATION_MATCH	81v81	PASS	ImeUi_SetAppearance; 1 grade
+00cb2f00	RELOCATION_MATCH	127v127	PASS	ImeUi _PumpMessage; 1 grade
+00cb36e0	DIFFER	178v179	-	ImeUi SetImeApi (/GS); cookie-store vs g_hklCurrent load scheduling in the /GS prologue; 5 grades (over budget: RTM, kl-first, QFE 4035, /G7, /G5)
+00cb47c0	RELOCATION_MATCH	216v216	PASS	ImeUi CheckToggleState; 1 grade
+00cb5130	RELOCATION_MATCH	80v80	PASS	ImeUi_EnableIme; 1 grade
+00cb5ad0	RELOCATION_MATCH	82v82	PASS	CScriptInfoManager::GetPScriptInfo; 1 grade
+00cb5c90	RELOCATION_MATCH	228v228	PASS	CScriptInfoManager::AddScript; __forceinline CVectorMap::Add + same-TU noinline _M_insert_overflow stand-in (tag homed on the section slot); 3 grades
+00cb6420	RELOCATION_MATCH	172v172	PASS	_STL::__unguarded_linear_insert<pair<CCharString,CScriptInfo>>; 1 grade
+00cb67b0	RELOCATION_MATCH	119v119	PASS	_STL::__unguarded_partition; same-TU CBasicString::operator< stand-in; 2 grades
+00cb6bd0	RELOCATION_MATCH	134v134	PASS	_STL::__make_heap; 1 grade
+00cb6ce0	RELOCATION_MATCH	202v202	PASS	_STL::__linear_insert; 1 grade

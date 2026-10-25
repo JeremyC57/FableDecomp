@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ca7c30	RELOCATION_MATCH	42v42	PASS	CEnumMediaTypes::Release; manifest 'InterlockedDecrement_WithCleanup_AtOffset4' is wrong/descriptive; 1 grade
+00ca7ce0	RELOCATION_MATCH	125v125	PASS	CBasePin::NonDelegatingQueryInterface; manifest 'MovableResourceMemoryPool_CheckGUID' is wrong/descriptive; 1 grade
+00ca7dc0	MATCH	174v174	PASS	CBasePin::AttemptConnection; manifest 'VirtualFileSystem_TransactionExecute' is wrong/descriptive; 1 grade
+00ca7e90	RELOCATION_MATCH	219v219	PASS	CBasePin::TryMediaTypes; manifest 'AudioBank_ExecuteAsyncTransaction' is wrong/descriptive; 1 grade
+00ca7fb0	RELOCATION_MATCH	218v218	PASS	CBasePin::AgreeMediaType; manifest 'AudioBank_LoadAsyncWithRetry' is wrong/descriptive; 1 grade
+00ca8420	RELOCATION_MATCH	111v111	PASS	CBasePin::QueryPinInfo; manifest 'GetWideStringData_CopyToOutput' is wrong/descriptive; 1 grade
+00ca8610	RELOCATION_MATCH	70v70	PASS	CBaseOutputPin::CheckConnect; manifest 'COM_QueryInterface_012a9a24' is wrong/descriptive; 1 grade
+00ca86d0	MATCH	240v240	PASS	CBaseOutputPin::DecideAllocator; manifest 'Com_CreateWithFallback' is wrong/descriptive; 1 grade
+00ca8cf0	MATCH	82v82	PASS	CBaseInputPin::ReceiveMultiple; manifest 'FindMatchingElement_InArray' is wrong/descriptive; 1 grade
+00ca8d50	RELOCATION_MATCH	182v182	PASS	CBaseInputPin::ReceiveCanBlock; manifest 'Enumerate_QueryInterface_012a9a24' is wrong/descriptive; 1 grade
+00ca8e40	RELOCATION_MATCH	41v41	PASS	CBaseInputPin::EndFlush; manifest 'Audio_ResetFlaggedState' is wrong/descriptive; 1 grade
+00ca9080	RELOCATION_MATCH	91v91	PASS	CMediaSample::Release; manifest 'DecrementRefcount_AndCleanup' is wrong/descriptive; 1 grade
+00ca93f0	RELOCATION_MATCH	86v86	PASS	CMediaSample::SetMediaType; manifest 'CBankFileAsyncData_SetImmContext' is wrong/descriptive; 1 grade
+00ca9860	RELOCATION_MATCH	127v127	PASS	CDynamicOutputPin::UnblockOutputPin; manifest 'Audio_SignalShutdown' is wrong/descriptive; 1 grade
+00ca9a00	RELOCATION_MATCH	52v52	PASS	CDynamicOutputPin::StopUsingOutputPin; manifest 'NHitLocations_TransferBinaryOut_WithRefcount' is wrong/descriptive; 1 grade
+00ca9b70	MATCH	207v207	PASS	CDynamicOutputPin::ChangeMediaTypeHelper; manifest 'CAudioBank_ExecuteCommand' is wrong/descriptive; 1 grade
+00ca9c80	MATCH	58v58	PASS	CDynamicOutputPin::CompleteConnect; manifest 'Object_AcquireField26' is wrong/descriptive; 1 grade
+00ca9ec0	RELOCATION_MATCH	83v83	PASS	CBaseAllocator::GetProperties; manifest 'GetVectorFields_Locked' is wrong/descriptive; 1 grade
+00caa040	RELOCATION_MATCH	60v60	PASS	CBaseAllocator::GetFreeCount; manifest 'GetBufferOffset_Locked' is wrong/descriptive; 1 grade
+00caa160	RELOCATION_MATCH	188v188	PASS	CBaseAllocator::Decommit; manifest 'CScriptDefinitionManager_SignalCompletion' is wrong/descriptive; 1 grade; /EHsc
+00caadb0	RELOCATION_MATCH	234v234	PASS	CBaseFilter::FindPin; manifest 'FindEntryByString_InList' is wrong/descriptive; 1 grade; /EHsc
+00cab0e0	MATCH	63v63	PASS	CEnumPins::Skip; manifest 'SkipNodes_InList_ByCount' is wrong/descriptive; 1 grade
+00cab2b0	RELOCATION_MATCH	169v169	PASS	CEnumMediaTypes::Skip; manifest 'CParticleMorphs_SkipEntries_ByCount' is wrong/descriptive; 1 grade; /EHsc /GS
+00cabf70	RELOCATION_MATCH	82v82	PASS	CEnumMediaTypes::CEnumMediaTypes; manifest 'CAudioIterator_Initialize' is wrong/descriptive; 1 grade
+00cac920	RELOCATION_MATCH	162v162	PASS	CDynamicOutputPin::Block; manifest 'AsyncOp_ValidateAndReset' is wrong/descriptive; 1 grade
+00cacaf0	RELOCATION_MATCH	42v42	PASS	CBaseObject::~CBaseObject; manifest 'Refcount_DecrementUnloadDLL' is wrong/descriptive; 1 grade
+00cacb20	RELOCATION_MATCH	26v26	PASS	LoadOLEAut32; manifest 'OleAut32_LoadLibrary' is wrong/descriptive; 1 grade
+00cacc80	RELOCATION_MATCH	40v40	PASS	CUnknown::CUnknown(const WCHAR*, IUnknown*); manifest 'CThingMap_ctor' is wrong/descriptive; 2 grades (first DIFFER 46v40: interfaces need __declspec(novtable))
+00caccb0	RELOCATION_MATCH	71v71	PASS	CUnknown::NonDelegatingQueryInterface; manifest 'GUID_CompareAndCallback' is wrong/descriptive; 1 grade
+00cacd90	RELOCATION_MATCH	221v221	PASS	CBaseDispatch::GetTypeInfo; manifest 'COM_LoadTypeLibrary' is wrong/descriptive; 1 grade
+00cad400	RELOCATION_MATCH	90v90	PASS	CPosPassThru::GetPeer; manifest 'COM_QueryInterface_Wrapper2' is wrong/descriptive; 1 grade
+00cad460	RELOCATION_MATCH	90v90	PASS	CPosPassThru::GetPeerSeeking; manifest 'COM_QueryInterface_Wrapper' is wrong/descriptive; 1 grade
+00cadcc0	RELOCATION_MATCH	63v63	PASS	CRendererPosPassThru::RegisterMediaTime(LONGLONG, LONGLONG); manifest 'SetTargetVertexNormal' is wrong/descriptive; 1 grade
+00caddf0	RELOCATION_MATCH	87v87	PASS	CRendererPosPassThru::EOS; manifest 'CSurface_GetRefCountAndLock' is wrong/descriptive; 1 grade
+00cae170	MATCH	120v120	PASS	CCmdQueue::CheckTime; manifest 'StackCheck_ValidateFrame' is wrong/descriptive; 1 grade
+00caebb0	RELOCATION_MATCH	104v104	PASS	CDispParams::~CDispParams; manifest 'Unwind_Cleanup' is wrong/descriptive; 2 grades (operator delete[] must not be declared: retail binds delete[] to scalar 0x00BFE9BC)
+00caf090	RELOCATION_MATCH	75v75	PASS	CPosPassThru::GetCurrentPosition; manifest 'CThingFilter_CheckThing' is wrong/descriptive; 4 grades + 1 regrade after a file-assembly slip; same-TU noinline GetPeerSeeking stand-in
+00caf750	RELOCATION_MATCH	199v199	PASS	CCmdQueue::SetTimeAdvise; manifest 'CModifierGraphic_UpdatePosition' is wrong/descriptive; 1 grade
+00cb0160	DIFFER	53v34	-	EnlargedUnsignedDivide (manifest label correct); retail-asm candidate (wxutil.h x86 inline 64/32 div); C++ reference body in differ/; 1 grade
+00cb01c0	RELOCATION_MATCH	118v118	PASS	CAMMsgEvent::WaitMsg; manifest 'WaitForObjectWithMessagePump' is wrong/descriptive; 1 grade
