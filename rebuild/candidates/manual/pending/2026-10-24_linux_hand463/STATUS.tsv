@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00cdb820	MATCH	34v34	PASS	_STL::_Destroy<CHeroSoulsRoundDef*> (virtual dtor loop, /Gr __fastcall); grades 1
+00f28f20	MATCH	34v34	PASS	_STL::_Destroy<CFeatDef*> (100-byte, /Gr __fastcall); grades 1
+0051ae60	RELOCATION_MATCH	106v106	PASS	vector<CLevelLoader::CObject::CLevelFiles>::push_back (__forceinline _Construct); grades 3
+0043cac0	MATCH	29v29	PASS	vector<CAbilityButtonGuiDef>::size (92-byte, catalog CScriptThing propagated); grades 2
+0075ee70	MATCH	29v29	PASS	vector<CTCCameraPointScriptedSpline::CKeyCamera>::size (56-byte); grades 1
+006b6d90	RELOCATION_MATCH	112v112	PASS	vector<CIDrawEnvironmentParams::CThemeChannel>::resize(n,x), inline erase + tag ctors; grades 2
+0088a520	RELOCATION_MATCH	110v110	PASS	vector<NEnvironmentInternal::CBlendedEnvironmentTheme>::resize(n,x), inline erase; grades 1
+0051d350	RELOCATION_MATCH	99v99	PASS	vector<CRegion>::resize(n,x) (88-byte); grades 1
+0052bea0	RELOCATION_MATCH	98v98	PASS	vector<CThingTypeInfo>::resize(n,x) (12-byte); grades 2
+007d2670	RELOCATION_MATCH	102v102	PASS	vector<CShoveHaPennyRegionDef>::resize(n,x) (48-byte); grades 1
+0088a390	RELOCATION_MATCH	102v102	PASS	vector<CEnvironmentThemePriorityStackEntry>::resize(n,x) (48-byte); grades 1
+00ad8090	RELOCATION_MATCH	105v105	PASS	vector<QuadricOptimiserInternals::CUniqueVertex>::resize(n,x) (28-byte); grades 1
+00ad87a0	RELOCATION_MATCH	108v108	PASS	vector<QuadricOptimiserInternals::COptimisedVertex>::resize(n,x) (184-byte); grades 1
+00b7edf0	RELOCATION_MATCH	102v102	PASS	vector<CPreTransposedBoneMatrix>::resize(n,x) (struct U); grades 2
+00f385a0	RELOCATION_MATCH	99v99	PASS	vector<CGPUScratchBufferTextureManager::CResourceEntry>::resize(n,x) (struct U); grades 1
+004433f0	RELOCATION_MATCH	27v27	PASS	vector<long>::resize(n); grades 2
+0046aca8	RELOCATION_MATCH	38v38	PASS	vector<CSoundBankEntry>::resize(n); pragma s on / y off; grades 2
+0046b65a	RELOCATION_MATCH	39v39	PASS	vector<CMusicEntry>::resize(n); pragma s on / y off; grades 2
+004ac860	RELOCATION_MATCH	40v40	PASS	set<CCharString>::insert(const value_type&); grades 1
+004e9f20	RELOCATION_MATCH	39v39	PASS	vector<CMusicEntry>::resize(n), twin of 0046b65a; pragma s on / y off; grades 1
+004ea398	RELOCATION_MATCH	43v43	PASS	vector<CEngineGraphic>::resize(n), pack(2) 14-byte record; pragma s on / y off; grades 2
+00514230	RELOCATION_MATCH	40v40	PASS	set<long>::insert(const value_type&) (ICF-shared); grades 1
+00581284	RELOCATION_MATCH	42v42	PASS	vector<CHeroMarriageInfo>::resize(n); pragma s on / y off; local model (header is POD struct); grades 2
+005813d7	RELOCATION_MATCH	45v45	PASS	CPersistContext_TransferableVector<CHeroMarriageInfo>::Resize; __forceinline resize(n); pragma s on; grades 3
+00618fd0	RELOCATION_MATCH	35v35	PASS	CPersistContext_TransferableVector<unsigned __int64>::Resize; grades 2
+00619290	RELOCATION_MATCH	64v64	PASS	vector<CTCInventoryMap::CUIRegionInfo>::resize(n); grades 2
+00619420	RELOCATION_MATCH	67v67	PASS	CPersistContext_TransferableVector<CTCInventoryMap::CUIRegionInfo>::Resize; grades 2
+00657069	RELOCATION_MATCH	21v21	PASS	vector<C2DCoordI>::resize(n); pragma s on / y off; grades 2
+0067f3a0	RELOCATION_MATCH	45v45	PASS	vector<CDegradableInfo>::resize(n); grades 1
+006bdea0	RELOCATION_MATCH	74v74	PASS	CMusicManager::SetOverridingMusicSet(long, bool) (PDB name); grades 1
+00759770	RELOCATION_MATCH	68v68	PASS	vector<pair<EBodyLocation, CWoundMorphs::CEntry> >::resize(n); grades 1
+0076e5d0	RELOCATION_MATCH	17v17	PASS	CTCWeaponTrail::GetLastProjectileWeaponTrailPoints (PDB name); grades 1
+0081de90	RELOCATION_MATCH	64v64	PASS	vector<pair<EHeroMorphType, CTextureMorphEntry> >::resize(n); grades 1
+0081ded0	RELOCATION_MATCH	77v77	PASS	vector<pair<EHeroMorphType, CParticleMorphs::CEntry> >::resize(n), memset ctor; grades 1
+0081df20	RELOCATION_MATCH	39v39	PASS	vector<pair<unsigned long, CSkeletalMorphs::CEntry> >::resize(n); grades 1
+0081dfb0	RELOCATION_MATCH	44v44	PASS	vector<CTextureMorphEntry>::resize(n) (POD zero); grades 1
+0081dfe0	RELOCATION_MATCH	68v68	PASS	vector<CParticleMorphs::CEntry>::resize(n), memset ctor (grade 1 DIFFER 31v68 without ctor); grades 2
+008701a0	RELOCATION_MATCH	41v41	PASS	vector<pair<EExpressionType, CExpressionSet::CEntry> >::resize(n); grades 1
+0088a4e0	RELOCATION_MATCH	53v53	PASS	vector<CEnvironmentThemePriorityStackEntry>::resize(n); Themes modelled without dtor (review); grades 1
+009d4300	RELOCATION_MATCH	40v40	PASS	vector<CBankFile::CRuntimeData>::resize(n); grades 1
