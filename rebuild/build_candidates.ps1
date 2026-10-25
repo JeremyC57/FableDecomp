@@ -316223,6 +316223,4297 @@ $catalog = @(
         TestSource = '00/75/stdvector_Minsertoverflow_0075f860_test.cpp'
         PassPattern = '0075f860_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00436ac0'
+        Module = 'std::vector'
+        Source = '00/43/stdvector_Minsertoverflow_00436ac0.cpp'
+        TestSource = '00/43/stdvector_Minsertoverflow_00436ac0_test.cpp'
+        PassPattern = '00436ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004408a0'
+        Module = 'std::vector'
+        Source = '00/44/stdvector_Minsertoverflow_004408a0.cpp'
+        TestSource = '00/44/stdvector_Minsertoverflow_004408a0_test.cpp'
+        PassPattern = '004408a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00440990'
+        Module = 'std::vector'
+        Source = '00/44/stdvector_Minsertoverflow_00440990.cpp'
+        TestSource = '00/44/stdvector_Minsertoverflow_00440990_test.cpp'
+        PassPattern = '00440990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00449050'
+        Module = 'std::vector'
+        Source = '00/44/stdvector_Minsertoverflow_00449050.cpp'
+        TestSource = '00/44/stdvector_Minsertoverflow_00449050_test.cpp'
+        PassPattern = '00449050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044be80'
+        Module = 'std::vector'
+        Source = '00/44/stdvector_Minsertoverflow_0044be80.cpp'
+        TestSource = '00/44/stdvector_Minsertoverflow_0044be80_test.cpp'
+        PassPattern = '0044be80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048d0d0'
+        Module = 'std::vector'
+        Source = '00/48/stdvector_Minsertoverflow_0048d0d0.cpp'
+        TestSource = '00/48/stdvector_Minsertoverflow_0048d0d0_test.cpp'
+        PassPattern = '0048d0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049c370'
+        Module = 'std::vector'
+        Source = '00/49/stdvector_Minsertoverflow_0049c370.cpp'
+        TestSource = '00/49/stdvector_Minsertoverflow_0049c370_test.cpp'
+        PassPattern = '0049c370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ac530'
+        Module = 'std::vector'
+        Source = '00/4a/stdvector_Minsertoverflow_004ac530.cpp'
+        TestSource = '00/4a/stdvector_Minsertoverflow_004ac530_test.cpp'
+        PassPattern = '004ac530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ac610'
+        Module = 'std::vector'
+        Source = '00/4a/stdvector_Minsertoverflow_004ac610.cpp'
+        TestSource = '00/4a/stdvector_Minsertoverflow_004ac610_test.cpp'
+        PassPattern = '004ac610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b9370'
+        Module = 'std::_Rb_tree'
+        Source = '00/4b/stdRbtree_Mfind_004b9370.cpp'
+        TestSource = '00/4b/stdRbtree_Mfind_004b9370_test.cpp'
+        PassPattern = '004b9370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ba640'
+        Module = 'std::vector'
+        Source = '00/4b/stdvector_Minsertoverflow_004ba640.cpp'
+        TestSource = '00/4b/stdvector_Minsertoverflow_004ba640_test.cpp'
+        PassPattern = '004ba640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d1250'
+        Module = 'std::vector'
+        Source = '00/4d/stdvector_Minsertoverflow_004d1250.cpp'
+        TestSource = '00/4d/stdvector_Minsertoverflow_004d1250_test.cpp'
+        PassPattern = '004d1250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00514f40'
+        Module = 'std::vector'
+        Source = '00/51/stdvector_Minsertoverflow_00514f40.cpp'
+        TestSource = '00/51/stdvector_Minsertoverflow_00514f40_test.cpp'
+        PassPattern = '00514f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00515cc0'
+        Module = 'std::vector'
+        Source = '00/51/stdvector_Minsertoverflow_00515cc0.cpp'
+        TestSource = '00/51/stdvector_Minsertoverflow_00515cc0_test.cpp'
+        PassPattern = '00515cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527ca0'
+        Module = 'std'
+        Source = '00/52/std_copybackwardptrs_00527ca0.cpp'
+        TestSource = '00/52/std_copybackwardptrs_00527ca0_test.cpp'
+        PassPattern = '00527ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00532d00'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_AddActionOnDesctruction_00532d00.cpp'
+        TestSource = '00/53/NUISystemCComponent_AddActionOnDesctruction_00532d00_test.cpp'
+        PassPattern = '00532d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005359d0'
+        Module = 'std::vector'
+        Source = '00/53/stdvector_Minsertoverflow_005359d0.cpp'
+        TestSource = '00/53/stdvector_Minsertoverflow_005359d0_test.cpp'
+        PassPattern = '005359d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e180'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_AddAction_0053e180.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_AddAction_0053e180_test.cpp'
+        PassPattern = '0053e180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e210'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_AddActionOnSelected_0053e210.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_AddActionOnSelected_0053e210_test.cpp'
+        PassPattern = '0053e210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e2a0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_AddActionOnUnselected_0053e2a0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_AddActionOnUnselected_0053e2a0_test.cpp'
+        PassPattern = '0053e2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e330'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_AddActionOnBack_0053e330.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_AddActionOnBack_0053e330_test.cpp'
+        PassPattern = '0053e330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e3c0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_AddActionOnVisible_0053e3c0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_AddActionOnVisible_0053e3c0_test.cpp'
+        PassPattern = '0053e3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e450'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_AddPreAction_0053e450.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_AddPreAction_0053e450_test.cpp'
+        PassPattern = '0053e450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005479a0'
+        Module = 'std::vector'
+        Source = '00/54/stdvector_Minsertoverflow_005479a0.cpp'
+        TestSource = '00/54/stdvector_Minsertoverflow_005479a0_test.cpp'
+        PassPattern = '005479a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054a2a0'
+        Module = 'std::vector'
+        Source = '00/54/stdvector_Minsertoverflow_0054a2a0.cpp'
+        TestSource = '00/54/stdvector_Minsertoverflow_0054a2a0_test.cpp'
+        PassPattern = '0054a2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558f40'
+        Module = 'NUISystem::CDraggableInto'
+        Source = '00/55/NUISystemCDraggableInto_AddAction_00558f40.cpp'
+        TestSource = '00/55/NUISystemCDraggableInto_AddAction_00558f40_test.cpp'
+        PassPattern = '00558f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00559400'
+        Module = 'NUISystem::CScrollBarOutside'
+        Source = '00/55/NUISystemCScrollBarOutside_AddActionOnLeftClickedAbove_00559400.cpp'
+        TestSource = '00/55/NUISystemCScrollBarOutside_AddActionOnLeftClickedAbove_00559400_test.cpp'
+        PassPattern = '00559400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00559490'
+        Module = 'NUISystem::CScrollBarOutside'
+        Source = '00/55/NUISystemCScrollBarOutside_AddActionOnLeftClickedUnder_00559490.cpp'
+        TestSource = '00/55/NUISystemCScrollBarOutside_AddActionOnLeftClickedUnder_00559490_test.cpp'
+        PassPattern = '00559490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005598f0'
+        Module = 'NUISystem::CScrollBar'
+        Source = '00/55/NUISystemCScrollBar_AddActionOnDraggedUp_005598f0.cpp'
+        TestSource = '00/55/NUISystemCScrollBar_AddActionOnDraggedUp_005598f0_test.cpp'
+        PassPattern = '005598f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00559980'
+        Module = 'NUISystem::CScrollBar'
+        Source = '00/55/NUISystemCScrollBar_AddActionOnDraggedDown_00559980.cpp'
+        TestSource = '00/55/NUISystemCScrollBar_AddActionOnDraggedDown_00559980_test.cpp'
+        PassPattern = '00559980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055aa80'
+        Module = 'NUISystem::CDraggable'
+        Source = '00/55/NUISystemCDraggable_AddActionOnDropped_0055aa80.cpp'
+        TestSource = '00/55/NUISystemCDraggable_AddActionOnDropped_0055aa80_test.cpp'
+        PassPattern = '0055aa80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ab10'
+        Module = 'NUISystem::CDraggable'
+        Source = '00/55/NUISystemCDraggable_AddActionOnDroppedNowhere_0055ab10.cpp'
+        TestSource = '00/55/NUISystemCDraggable_AddActionOnDroppedNowhere_0055ab10_test.cpp'
+        PassPattern = '0055ab10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055b520'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_AddActionOnLeftClicked_0055b520.cpp'
+        TestSource = '00/55/NUISystemCClickable_AddActionOnLeftClicked_0055b520_test.cpp'
+        PassPattern = '0055b520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055b5b0'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_AddActionOnLeftUnclicked_0055b5b0.cpp'
+        TestSource = '00/55/NUISystemCClickable_AddActionOnLeftUnclicked_0055b5b0_test.cpp'
+        PassPattern = '0055b5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055b640'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_AddActionOnLeftHeld_0055b640.cpp'
+        TestSource = '00/55/NUISystemCClickable_AddActionOnLeftHeld_0055b640_test.cpp'
+        PassPattern = '0055b640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055b6d0'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_AddActionOnRightClicked_0055b6d0.cpp'
+        TestSource = '00/55/NUISystemCClickable_AddActionOnRightClicked_0055b6d0_test.cpp'
+        PassPattern = '0055b6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00568150'
+        Module = 'std::vector'
+        Source = '00/56/stdvector_Minsertoverflow_00568150.cpp'
+        TestSource = '00/56/stdvector_Minsertoverflow_00568150_test.cpp'
+        PassPattern = '00568150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056d850'
+        Module = 'std::vector'
+        Source = '00/56/stdvector_Minsertoverflow_0056d850.cpp'
+        TestSource = '00/56/stdvector_Minsertoverflow_0056d850_test.cpp'
+        PassPattern = '0056d850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e04b0'
+        Module = 'std::_Rb_tree'
+        Source = '00/5e/stdRbtree_Mfind_005e04b0.cpp'
+        TestSource = '00/5e/stdRbtree_Mfind_005e04b0_test.cpp'
+        PassPattern = '005e04b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e1420'
+        Module = 'std::vector'
+        Source = '00/5e/stdvector_Minsertoverflow_005e1420.cpp'
+        TestSource = '00/5e/stdvector_Minsertoverflow_005e1420_test.cpp'
+        PassPattern = '005e1420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e1500'
+        Module = 'std::vector'
+        Source = '00/5e/stdvector_Minsertoverflow_005e1500.cpp'
+        TestSource = '00/5e/stdvector_Minsertoverflow_005e1500_test.cpp'
+        PassPattern = '005e1500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00618550'
+        Module = 'std::vector'
+        Source = '00/61/stdvector_Minsertoverflow_00618550.cpp'
+        TestSource = '00/61/stdvector_Minsertoverflow_00618550_test.cpp'
+        PassPattern = '00618550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062e190'
+        Module = 'std::vector'
+        Source = '00/62/stdvector_Minsertoverflow_0062e190.cpp'
+        TestSource = '00/62/stdvector_Minsertoverflow_0062e190_test.cpp'
+        PassPattern = '0062e190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00638bb0'
+        Module = 'std'
+        Source = '00/63/std_copybackwardptrs_00638bb0.cpp'
+        TestSource = '00/63/std_copybackwardptrs_00638bb0_test.cpp'
+        PassPattern = '00638bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00639090'
+        Module = 'std::vector'
+        Source = '00/63/stdvector_Minsertoverflow_00639090.cpp'
+        TestSource = '00/63/stdvector_Minsertoverflow_00639090_test.cpp'
+        PassPattern = '00639090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00639170'
+        Module = 'std::vector'
+        Source = '00/63/stdvector_Minsertoverflow_00639170.cpp'
+        TestSource = '00/63/stdvector_Minsertoverflow_00639170_test.cpp'
+        PassPattern = '00639170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006422b0'
+        Module = 'std::vector'
+        Source = '00/64/stdvector_Minsertoverflow_006422b0.cpp'
+        TestSource = '00/64/stdvector_Minsertoverflow_006422b0_test.cpp'
+        PassPattern = '006422b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066c3f0'
+        Module = 'std::vector'
+        Source = '00/66/stdvector_Minsertoverflow_0066c3f0.cpp'
+        TestSource = '00/66/stdvector_Minsertoverflow_0066c3f0_test.cpp'
+        PassPattern = '0066c3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066e100'
+        Module = 'std'
+        Source = '00/66/std_copybackwardptrs_0066e100.cpp'
+        TestSource = '00/66/std_copybackwardptrs_0066e100_test.cpp'
+        PassPattern = '0066e100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066e260'
+        Module = 'std::vector'
+        Source = '00/66/stdvector_Minsertoverflow_0066e260.cpp'
+        TestSource = '00/66/stdvector_Minsertoverflow_0066e260_test.cpp'
+        PassPattern = '0066e260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00680640'
+        Module = 'std'
+        Source = '00/68/std_copybackwardptrs_00680640.cpp'
+        TestSource = '00/68/std_copybackwardptrs_00680640_test.cpp'
+        PassPattern = '00680640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00680e60'
+        Module = 'std::vector'
+        Source = '00/68/stdvector_Minsertoverflow_00680e60.cpp'
+        TestSource = '00/68/stdvector_Minsertoverflow_00680e60_test.cpp'
+        PassPattern = '00680e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00696340'
+        Module = 'std::_Rb_tree'
+        Source = '00/69/stdRbtree_Mfind_00696340.cpp'
+        TestSource = '00/69/stdRbtree_Mfind_00696340_test.cpp'
+        PassPattern = '00696340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00696f00'
+        Module = 'std::vector'
+        Source = '00/69/stdvector_Minsertoverflow_00696f00.cpp'
+        TestSource = '00/69/stdvector_Minsertoverflow_00696f00_test.cpp'
+        PassPattern = '00696f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bcf50'
+        Module = 'std::_Rb_tree'
+        Source = '00/6b/stdRbtree_Mfind_006bcf50.cpp'
+        TestSource = '00/6b/stdRbtree_Mfind_006bcf50_test.cpp'
+        PassPattern = '006bcf50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c31b0'
+        Module = 'std::_Rb_tree'
+        Source = '00/6c/stdRbtree_Mfind_006c31b0.cpp'
+        TestSource = '00/6c/stdRbtree_Mfind_006c31b0_test.cpp'
+        PassPattern = '006c31b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c5250'
+        Module = 'std'
+        Source = '00/6c/std_copybackwardptrs_006c5250.cpp'
+        TestSource = '00/6c/std_copybackwardptrs_006c5250_test.cpp'
+        PassPattern = '006c5250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cd5a0'
+        Module = 'std::vector'
+        Source = '00/6c/stdvector_Minsertoverflow_006cd5a0.cpp'
+        TestSource = '00/6c/stdvector_Minsertoverflow_006cd5a0_test.cpp'
+        PassPattern = '006cd5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cd680'
+        Module = 'std::vector'
+        Source = '00/6c/stdvector_Minsertoverflow_006cd680.cpp'
+        TestSource = '00/6c/stdvector_Minsertoverflow_006cd680_test.cpp'
+        PassPattern = '006cd680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ce570'
+        Module = 'std::vector'
+        Source = '00/6c/stdvector_Minsertoverflow_006ce570.cpp'
+        TestSource = '00/6c/stdvector_Minsertoverflow_006ce570_test.cpp'
+        PassPattern = '006ce570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d4320'
+        Module = 'std::vector'
+        Source = '00/6d/stdvector_Minsertoverflow_006d4320.cpp'
+        TestSource = '00/6d/stdvector_Minsertoverflow_006d4320_test.cpp'
+        PassPattern = '006d4320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006db8c0'
+        Module = 'std::vector'
+        Source = '00/6d/stdvector_Minsertoverflow_006db8c0.cpp'
+        TestSource = '00/6d/stdvector_Minsertoverflow_006db8c0_test.cpp'
+        PassPattern = '006db8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e49d0'
+        Module = 'std'
+        Source = '00/6e/std_copybackwardptrs_006e49d0.cpp'
+        TestSource = '00/6e/std_copybackwardptrs_006e49d0_test.cpp'
+        PassPattern = '006e49d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f1360'
+        Module = 'std::_Rb_tree'
+        Source = '00/6f/stdRbtree_Mfind_006f1360.cpp'
+        TestSource = '00/6f/stdRbtree_Mfind_006f1360_test.cpp'
+        PassPattern = '006f1360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f25a0'
+        Module = 'std::vector'
+        Source = '00/6f/stdvector_Minsertoverflow_006f25a0.cpp'
+        TestSource = '00/6f/stdvector_Minsertoverflow_006f25a0_test.cpp'
+        PassPattern = '006f25a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f2680'
+        Module = 'std::vector'
+        Source = '00/6f/stdvector_Minsertoverflow_006f2680.cpp'
+        TestSource = '00/6f/stdvector_Minsertoverflow_006f2680_test.cpp'
+        PassPattern = '006f2680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f42e0'
+        Module = 'std::vector'
+        Source = '00/6f/stdvector_Minsertoverflow_006f42e0.cpp'
+        TestSource = '00/6f/stdvector_Minsertoverflow_006f42e0_test.cpp'
+        PassPattern = '006f42e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00708e40'
+        Module = 'std::vector'
+        Source = '00/70/stdvector_Minsertoverflow_00708e40.cpp'
+        TestSource = '00/70/stdvector_Minsertoverflow_00708e40_test.cpp'
+        PassPattern = '00708e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00710f70'
+        Module = 'std::vector'
+        Source = '00/71/stdvector_Minsertoverflow_00710f70.cpp'
+        TestSource = '00/71/stdvector_Minsertoverflow_00710f70_test.cpp'
+        PassPattern = '00710f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071fac0'
+        Module = 'std::_Rb_tree'
+        Source = '00/71/stdRbtree_Mfind_0071fac0.cpp'
+        TestSource = '00/71/stdRbtree_Mfind_0071fac0_test.cpp'
+        PassPattern = '0071fac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f900'
+        Module = 'std::vector'
+        Source = '00/74/stdvector_Minsertoverflow_0074f900.cpp'
+        TestSource = '00/74/stdvector_Minsertoverflow_0074f900_test.cpp'
+        PassPattern = '0074f900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00755350'
+        Module = 'std::vector'
+        Source = '00/75/stdvector_Minsertoverflow_00755350.cpp'
+        TestSource = '00/75/stdvector_Minsertoverflow_00755350_test.cpp'
+        PassPattern = '00755350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00756350'
+        Module = 'std::_Rb_tree'
+        Source = '00/75/stdRbtree_Mfind_00756350.cpp'
+        TestSource = '00/75/stdRbtree_Mfind_00756350_test.cpp'
+        PassPattern = '00756350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00765130'
+        Module = 'std::vector'
+        Source = '00/76/stdvector_Minsertoverflow_00765130.cpp'
+        TestSource = '00/76/stdvector_Minsertoverflow_00765130_test.cpp'
+        PassPattern = '00765130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00765210'
+        Module = 'std::vector'
+        Source = '00/76/stdvector_Minsertoverflow_00765210.cpp'
+        TestSource = '00/76/stdvector_Minsertoverflow_00765210_test.cpp'
+        PassPattern = '00765210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007659f0'
+        Module = 'std::vector'
+        Source = '00/76/stdvector_Minsertoverflow_007659f0.cpp'
+        TestSource = '00/76/stdvector_Minsertoverflow_007659f0_test.cpp'
+        PassPattern = '007659f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078b300'
+        Module = 'std::vector'
+        Source = '00/78/stdvector_Minsertoverflow_0078b300.cpp'
+        TestSource = '00/78/stdvector_Minsertoverflow_0078b300_test.cpp'
+        PassPattern = '0078b300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a91a0'
+        Module = 'std::vector'
+        Source = '00/7a/stdvector_Minsertoverflow_007a91a0.cpp'
+        TestSource = '00/7a/stdvector_Minsertoverflow_007a91a0_test.cpp'
+        PassPattern = '007a91a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007acc90'
+        Module = 'std::_Rb_tree'
+        Source = '00/7a/stdRbtree_Mfind_007acc90.cpp'
+        TestSource = '00/7a/stdRbtree_Mfind_007acc90_test.cpp'
+        PassPattern = '007acc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b41f0'
+        Module = 'std'
+        Source = '00/7b/std_copybackwardptrs_007b41f0.cpp'
+        TestSource = '00/7b/std_copybackwardptrs_007b41f0_test.cpp'
+        PassPattern = '007b41f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d5d60'
+        Module = 'std::vector'
+        Source = '00/7d/stdvector_Minsertoverflow_007d5d60.cpp'
+        TestSource = '00/7d/stdvector_Minsertoverflow_007d5d60_test.cpp'
+        PassPattern = '007d5d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f47f0'
+        Module = 'std::vector'
+        Source = '00/7f/stdvector_Minsertoverflow_007f47f0.cpp'
+        TestSource = '00/7f/stdvector_Minsertoverflow_007f47f0_test.cpp'
+        PassPattern = '007f47f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081a5f0'
+        Module = 'std'
+        Source = '00/81/std_copybackwardptrs_0081a5f0.cpp'
+        TestSource = '00/81/std_copybackwardptrs_0081a5f0_test.cpp'
+        PassPattern = '0081a5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081c160'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Minsertoverflow_0081c160.cpp'
+        TestSource = '00/81/stdvector_Minsertoverflow_0081c160_test.cpp'
+        PassPattern = '0081c160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008258d0'
+        Module = 'std::vector'
+        Source = '00/82/stdvector_Minsertoverflow_008258d0.cpp'
+        TestSource = '00/82/stdvector_Minsertoverflow_008258d0_test.cpp'
+        PassPattern = '008258d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00841820'
+        Module = 'std::vector'
+        Source = '00/84/stdvector_Minsertoverflow_00841820.cpp'
+        TestSource = '00/84/stdvector_Minsertoverflow_00841820_test.cpp'
+        PassPattern = '00841820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b6e0'
+        Module = 'std::vector'
+        Source = '00/84/stdvector_Minsertoverflow_0084b6e0.cpp'
+        TestSource = '00/84/stdvector_Minsertoverflow_0084b6e0_test.cpp'
+        PassPattern = '0084b6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086ca20'
+        Module = 'std::vector'
+        Source = '00/86/stdvector_Minsertoverflow_0086ca20.cpp'
+        TestSource = '00/86/stdvector_Minsertoverflow_0086ca20_test.cpp'
+        PassPattern = '0086ca20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088cc20'
+        Module = 'std::vector'
+        Source = '00/88/stdvector_Minsertoverflow_0088cc20.cpp'
+        TestSource = '00/88/stdvector_Minsertoverflow_0088cc20_test.cpp'
+        PassPattern = '0088cc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ac200'
+        Module = 'std::_Rb_tree'
+        Source = '00/8a/stdRbtree_Mfind_008ac200.cpp'
+        TestSource = '00/8a/stdRbtree_Mfind_008ac200_test.cpp'
+        PassPattern = '008ac200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b3350'
+        Module = 'std::vector'
+        Source = '00/8b/stdvector_Minsertoverflow_008b3350.cpp'
+        TestSource = '00/8b/stdvector_Minsertoverflow_008b3350_test.cpp'
+        PassPattern = '008b3350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d61a0'
+        Module = 'std::vector'
+        Source = '00/8d/stdvector_Minsertoverflow_008d61a0.cpp'
+        TestSource = '00/8d/stdvector_Minsertoverflow_008d61a0_test.cpp'
+        PassPattern = '008d61a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00916d50'
+        Module = 'std::vector'
+        Source = '00/91/stdvector_Minsertoverflow_00916d50.cpp'
+        TestSource = '00/91/stdvector_Minsertoverflow_00916d50_test.cpp'
+        PassPattern = '00916d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091ffe0'
+        Module = 'std::vector'
+        Source = '00/91/stdvector_Minsertoverflow_0091ffe0.cpp'
+        TestSource = '00/91/stdvector_Minsertoverflow_0091ffe0_test.cpp'
+        PassPattern = '0091ffe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00959260'
+        Module = 'std::vector'
+        Source = '00/95/stdvector_Minsertoverflow_00959260.cpp'
+        TestSource = '00/95/stdvector_Minsertoverflow_00959260_test.cpp'
+        PassPattern = '00959260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098cde0'
+        Module = 'std::vector'
+        Source = '00/98/stdvector_Minsertoverflow_0098cde0.cpp'
+        TestSource = '00/98/stdvector_Minsertoverflow_0098cde0_test.cpp'
+        PassPattern = '0098cde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098dc30'
+        Module = 'std::vector'
+        Source = '00/98/stdvector_Minsertoverflow_0098dc30.cpp'
+        TestSource = '00/98/stdvector_Minsertoverflow_0098dc30_test.cpp'
+        PassPattern = '0098dc30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ab4f0'
+        Module = 'std::_Rb_tree'
+        Source = '00/9a/stdRbtree_Mfind_009ab4f0.cpp'
+        TestSource = '00/9a/stdRbtree_Mfind_009ab4f0_test.cpp'
+        PassPattern = '009ab4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ab560'
+        Module = 'std::_Rb_tree'
+        Source = '00/9a/stdRbtree_Mfind_009ab560.cpp'
+        TestSource = '00/9a/stdRbtree_Mfind_009ab560_test.cpp'
+        PassPattern = '009ab560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ab5d0'
+        Module = 'std::_Rb_tree'
+        Source = '00/9a/stdRbtree_Mfind_009ab5d0.cpp'
+        TestSource = '00/9a/stdRbtree_Mfind_009ab5d0_test.cpp'
+        PassPattern = '009ab5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2830'
+        Module = 'std'
+        Source = '00/9b/std_copybackwardptrs_009b2830.cpp'
+        TestSource = '00/9b/std_copybackwardptrs_009b2830_test.cpp'
+        PassPattern = '009b2830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b4bd0'
+        Module = 'std::vector'
+        Source = '00/9b/stdvector_Minsertoverflow_009b4bd0.cpp'
+        TestSource = '00/9b/stdvector_Minsertoverflow_009b4bd0_test.cpp'
+        PassPattern = '009b4bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b61f0'
+        Module = 'std::vector'
+        Source = '00/9b/stdvector_Minsertoverflow_009b61f0.cpp'
+        TestSource = '00/9b/stdvector_Minsertoverflow_009b61f0_test.cpp'
+        PassPattern = '009b61f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c6540'
+        Module = 'std'
+        Source = '00/9c/std_copybackwardptrs_009c6540.cpp'
+        TestSource = '00/9c/std_copybackwardptrs_009c6540_test.cpp'
+        PassPattern = '009c6540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ca950'
+        Module = 'std::vector'
+        Source = '00/9c/stdvector_Minsertoverflow_009ca950.cpp'
+        TestSource = '00/9c/stdvector_Minsertoverflow_009ca950_test.cpp'
+        PassPattern = '009ca950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d2c10'
+        Module = 'std::vector'
+        Source = '00/9d/stdvector_Minsertoverflow_009d2c10.cpp'
+        TestSource = '00/9d/stdvector_Minsertoverflow_009d2c10_test.cpp'
+        PassPattern = '009d2c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d2dd0'
+        Module = 'std::_Rb_tree'
+        Source = '00/9d/stdRbtree_Mfind_009d2dd0.cpp'
+        TestSource = '00/9d/stdRbtree_Mfind_009d2dd0_test.cpp'
+        PassPattern = '009d2dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d7fc0'
+        Module = 'std::vector'
+        Source = '00/9d/stdvector_Minsertoverflow_009d7fc0.cpp'
+        TestSource = '00/9d/stdvector_Minsertoverflow_009d7fc0_test.cpp'
+        PassPattern = '009d7fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e3330'
+        Module = 'std::vector'
+        Source = '00/9e/stdvector_Minsertoverflow_009e3330.cpp'
+        TestSource = '00/9e/stdvector_Minsertoverflow_009e3330_test.cpp'
+        PassPattern = '009e3330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eed20'
+        Module = 'std::_Rb_tree'
+        Source = '00/9e/stdRbtree_Mfind_009eed20.cpp'
+        TestSource = '00/9e/stdRbtree_Mfind_009eed20_test.cpp'
+        PassPattern = '009eed20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a03780'
+        Module = 'std::vector'
+        Source = '00/a0/stdvector_Minsertoverflow_00a03780.cpp'
+        TestSource = '00/a0/stdvector_Minsertoverflow_00a03780_test.cpp'
+        PassPattern = '00a03780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14cb0'
+        Module = 'std::vector'
+        Source = '00/a1/stdvector_Minsertoverflow_00a14cb0.cpp'
+        TestSource = '00/a1/stdvector_Minsertoverflow_00a14cb0_test.cpp'
+        PassPattern = '00a14cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a17190'
+        Module = 'std::vector'
+        Source = '00/a1/stdvector_Minsertoverflow_00a17190.cpp'
+        TestSource = '00/a1/stdvector_Minsertoverflow_00a17190_test.cpp'
+        PassPattern = '00a17190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a17270'
+        Module = 'std::vector'
+        Source = '00/a1/stdvector_Minsertoverflow_00a17270.cpp'
+        TestSource = '00/a1/stdvector_Minsertoverflow_00a17270_test.cpp'
+        PassPattern = '00a17270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21cb0'
+        Module = 'std::vector'
+        Source = '00/a2/stdvector_Minsertoverflow_00a21cb0.cpp'
+        TestSource = '00/a2/stdvector_Minsertoverflow_00a21cb0_test.cpp'
+        PassPattern = '00a21cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2b240'
+        Module = 'std::_Rb_tree'
+        Source = '00/a2/stdRbtree_Mfind_00a2b240.cpp'
+        TestSource = '00/a2/stdRbtree_Mfind_00a2b240_test.cpp'
+        PassPattern = '00a2b240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2be00'
+        Module = 'std::vector'
+        Source = '00/a2/stdvector_Minsertoverflow_00a2be00.cpp'
+        TestSource = '00/a2/stdvector_Minsertoverflow_00a2be00_test.cpp'
+        PassPattern = '00a2be00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a44b40'
+        Module = 'std::vector'
+        Source = '00/a4/stdvector_Minsertoverflow_00a44b40.cpp'
+        TestSource = '00/a4/stdvector_Minsertoverflow_00a44b40_test.cpp'
+        PassPattern = '00a44b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a46cb0'
+        Module = 'std::vector'
+        Source = '00/a4/stdvector_Minsertoverflow_00a46cb0.cpp'
+        TestSource = '00/a4/stdvector_Minsertoverflow_00a46cb0_test.cpp'
+        PassPattern = '00a46cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a48810'
+        Module = 'std'
+        Source = '00/a4/std_copybackwardptrs_00a48810.cpp'
+        TestSource = '00/a4/std_copybackwardptrs_00a48810_test.cpp'
+        PassPattern = '00a48810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4a190'
+        Module = 'std::vector'
+        Source = '00/a4/stdvector_Minsertoverflow_00a4a190.cpp'
+        TestSource = '00/a4/stdvector_Minsertoverflow_00a4a190_test.cpp'
+        PassPattern = '00a4a190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a54310'
+        Module = 'std::_Rb_tree'
+        Source = '00/a5/stdRbtree_Mfind_00a54310.cpp'
+        TestSource = '00/a5/stdRbtree_Mfind_00a54310_test.cpp'
+        PassPattern = '00a54310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5e1b0'
+        Module = 'std::vector'
+        Source = '00/a5/stdvector_Minsertoverflow_00a5e1b0.cpp'
+        TestSource = '00/a5/stdvector_Minsertoverflow_00a5e1b0_test.cpp'
+        PassPattern = '00a5e1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5f8e0'
+        Module = 'std::vector'
+        Source = '00/a5/stdvector_Minsertoverflow_00a5f8e0.cpp'
+        TestSource = '00/a5/stdvector_Minsertoverflow_00a5f8e0_test.cpp'
+        PassPattern = '00a5f8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5fef0'
+        Module = 'std::vector'
+        Source = '00/a5/stdvector_Minsertoverflow_00a5fef0.cpp'
+        TestSource = '00/a5/stdvector_Minsertoverflow_00a5fef0_test.cpp'
+        PassPattern = '00a5fef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62740'
+        Module = 'std::vector'
+        Source = '00/a6/stdvector_Minsertoverflow_00a62740.cpp'
+        TestSource = '00/a6/stdvector_Minsertoverflow_00a62740_test.cpp'
+        PassPattern = '00a62740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a639e0'
+        Module = 'std::vector'
+        Source = '00/a6/stdvector_Minsertoverflow_00a639e0.cpp'
+        TestSource = '00/a6/stdvector_Minsertoverflow_00a639e0_test.cpp'
+        PassPattern = '00a639e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a80aa0'
+        Module = 'std::vector'
+        Source = '00/a8/stdvector_Minsertoverflow_00a80aa0.cpp'
+        TestSource = '00/a8/stdvector_Minsertoverflow_00a80aa0_test.cpp'
+        PassPattern = '00a80aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a814b0'
+        Module = 'std::vector'
+        Source = '00/a8/stdvector_Minsertoverflow_00a814b0.cpp'
+        TestSource = '00/a8/stdvector_Minsertoverflow_00a814b0_test.cpp'
+        PassPattern = '00a814b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a81590'
+        Module = 'std::vector'
+        Source = '00/a8/stdvector_Minsertoverflow_00a81590.cpp'
+        TestSource = '00/a8/stdvector_Minsertoverflow_00a81590_test.cpp'
+        PassPattern = '00a81590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a95b90'
+        Module = 'std'
+        Source = '00/a9/std_copybackwardptrs_00a95b90.cpp'
+        TestSource = '00/a9/std_copybackwardptrs_00a95b90_test.cpp'
+        PassPattern = '00a95b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a98fa0'
+        Module = 'C3DAnimFileRootChunk'
+        Source = '00/a9/C3DAnimFileRootChunk_FindFirstObject_00a98fa0.cpp'
+        TestSource = '00/a9/C3DAnimFileRootChunk_FindFirstObject_00a98fa0_test.cpp'
+        PassPattern = '00a98fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a99030'
+        Module = 'C3DAnimFileRootChunk'
+        Source = '00/a9/C3DAnimFileRootChunk_FindNextObject_00a99030.cpp'
+        TestSource = '00/a9/C3DAnimFileRootChunk_FindNextObject_00a99030_test.cpp'
+        PassPattern = '00a99030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a99110'
+        Module = 'C3DAnimFileRootChunk'
+        Source = '00/a9/C3DAnimFileRootChunk_FindFirstObject_00a99110.cpp'
+        TestSource = '00/a9/C3DAnimFileRootChunk_FindFirstObject_00a99110_test.cpp'
+        PassPattern = '00a99110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a991a0'
+        Module = 'C3DAnimFileRootChunk'
+        Source = '00/a9/C3DAnimFileRootChunk_FindNextObject_00a991a0.cpp'
+        TestSource = '00/a9/C3DAnimFileRootChunk_FindNextObject_00a991a0_test.cpp'
+        PassPattern = '00a991a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a99300'
+        Module = 'C3DAnimFileRootChunk'
+        Source = '00/a9/C3DAnimFileRootChunk_GetHelpers_00a99300.cpp'
+        TestSource = '00/a9/C3DAnimFileRootChunk_GetHelpers_00a99300_test.cpp'
+        PassPattern = '00a99300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a99390'
+        Module = 'C3DAnimFileRootChunk'
+        Source = '00/a9/C3DAnimFileRootChunk_GetHelpers_00a99390.cpp'
+        TestSource = '00/a9/C3DAnimFileRootChunk_GetHelpers_00a99390_test.cpp'
+        PassPattern = '00a99390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9aec0'
+        Module = 'C3DMeshFileRootChunk'
+        Source = '00/a9/C3DMeshFileRootChunk_FindFirstSubMesh_00a9aec0.cpp'
+        TestSource = '00/a9/C3DMeshFileRootChunk_FindFirstSubMesh_00a9aec0_test.cpp'
+        PassPattern = '00a9aec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9af50'
+        Module = 'C3DMeshFileRootChunk'
+        Source = '00/a9/C3DMeshFileRootChunk_FindNextSubMesh_00a9af50.cpp'
+        TestSource = '00/a9/C3DMeshFileRootChunk_FindNextSubMesh_00a9af50_test.cpp'
+        PassPattern = '00a9af50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9b030'
+        Module = 'C3DMeshFileRootChunk'
+        Source = '00/a9/C3DMeshFileRootChunk_FindFirstSubMesh_00a9b030.cpp'
+        TestSource = '00/a9/C3DMeshFileRootChunk_FindFirstSubMesh_00a9b030_test.cpp'
+        PassPattern = '00a9b030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9b0c0'
+        Module = 'C3DMeshFileRootChunk'
+        Source = '00/a9/C3DMeshFileRootChunk_FindNextSubMesh_00a9b0c0.cpp'
+        TestSource = '00/a9/C3DMeshFileRootChunk_FindNextSubMesh_00a9b0c0_test.cpp'
+        PassPattern = '00a9b0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9b1a0'
+        Module = 'C3DMeshFileRootChunk'
+        Source = '00/a9/C3DMeshFileRootChunk_GetMaterialList_00a9b1a0.cpp'
+        TestSource = '00/a9/C3DMeshFileRootChunk_GetMaterialList_00a9b1a0_test.cpp'
+        PassPattern = '00a9b1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9b230'
+        Module = 'C3DMeshFileRootChunk'
+        Source = '00/a9/C3DMeshFileRootChunk_GetMaterialList_00a9b230.cpp'
+        TestSource = '00/a9/C3DMeshFileRootChunk_GetMaterialList_00a9b230_test.cpp'
+        PassPattern = '00a9b230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9b340'
+        Module = 'C3DMeshFileRootChunk'
+        Source = '00/a9/C3DMeshFileRootChunk_GetHelpers_00a9b340.cpp'
+        TestSource = '00/a9/C3DMeshFileRootChunk_GetHelpers_00a9b340_test.cpp'
+        PassPattern = '00a9b340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9b3d0'
+        Module = 'C3DMeshFileRootChunk'
+        Source = '00/a9/C3DMeshFileRootChunk_GetHelpers_00a9b3d0.cpp'
+        TestSource = '00/a9/C3DMeshFileRootChunk_GetHelpers_00a9b3d0_test.cpp'
+        PassPattern = '00a9b3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa100'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindFirstPoint_00aaa100.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindFirstPoint_00aaa100_test.cpp'
+        PassPattern = '00aaa100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa190'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindNextPoint_00aaa190.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindNextPoint_00aaa190_test.cpp'
+        PassPattern = '00aaa190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa270'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindFirstPoint_00aaa270.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindFirstPoint_00aaa270_test.cpp'
+        PassPattern = '00aaa270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa300'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindNextPoint_00aaa300.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindNextPoint_00aaa300_test.cpp'
+        PassPattern = '00aaa300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa3e0'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindFirstDummy_00aaa3e0.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindFirstDummy_00aaa3e0_test.cpp'
+        PassPattern = '00aaa3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa470'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindNextDummy_00aaa470.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindNextDummy_00aaa470_test.cpp'
+        PassPattern = '00aaa470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa550'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindFirstDummy_00aaa550.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindFirstDummy_00aaa550_test.cpp'
+        PassPattern = '00aaa550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa5e0'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindNextDummy_00aaa5e0.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindNextDummy_00aaa5e0_test.cpp'
+        PassPattern = '00aaa5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa6c0'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindFirstVolumeW_00aaa6c0.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindFirstVolumeW_00aaa6c0_test.cpp'
+        PassPattern = '00aaa6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa750'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindNextVolumeW_00aaa750.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindNextVolumeW_00aaa750_test.cpp'
+        PassPattern = '00aaa750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa830'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindFirstVolumeW_00aaa830.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindFirstVolumeW_00aaa830_test.cpp'
+        PassPattern = '00aaa830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaa8c0'
+        Module = 'C3DMeshFileHelpersChunk'
+        Source = '00/aa/C3DMeshFileHelpersChunk_FindNextVolumeW_00aaa8c0.cpp'
+        TestSource = '00/aa/C3DMeshFileHelpersChunk_FindNextVolumeW_00aaa8c0_test.cpp'
+        PassPattern = '00aaa8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae520'
+        Module = 'C3DAnimFileHelpersChunk'
+        Source = '00/aa/C3DAnimFileHelpersChunk_GetMovementVector_00aae520.cpp'
+        TestSource = '00/aa/C3DAnimFileHelpersChunk_GetMovementVector_00aae520_test.cpp'
+        PassPattern = '00aae520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae5b0'
+        Module = 'C3DAnimFileHelpersChunk'
+        Source = '00/aa/C3DAnimFileHelpersChunk_GetMovementVector_00aae5b0.cpp'
+        TestSource = '00/aa/C3DAnimFileHelpersChunk_GetMovementVector_00aae5b0_test.cpp'
+        PassPattern = '00aae5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae640'
+        Module = 'C3DAnimFileHelpersChunk'
+        Source = '00/aa/C3DAnimFileHelpersChunk_FindFirstEvent_00aae640.cpp'
+        TestSource = '00/aa/C3DAnimFileHelpersChunk_FindFirstEvent_00aae640_test.cpp'
+        PassPattern = '00aae640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae6d0'
+        Module = 'C3DAnimFileHelpersChunk'
+        Source = '00/aa/C3DAnimFileHelpersChunk_FindNextEvent_00aae6d0.cpp'
+        TestSource = '00/aa/C3DAnimFileHelpersChunk_FindNextEvent_00aae6d0_test.cpp'
+        PassPattern = '00aae6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae7b0'
+        Module = 'C3DAnimFileHelpersChunk'
+        Source = '00/aa/C3DAnimFileHelpersChunk_FindFirstEvent_00aae7b0.cpp'
+        TestSource = '00/aa/C3DAnimFileHelpersChunk_FindFirstEvent_00aae7b0_test.cpp'
+        PassPattern = '00aae7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae840'
+        Module = 'C3DAnimFileHelpersChunk'
+        Source = '00/aa/C3DAnimFileHelpersChunk_FindNextEvent_00aae840.cpp'
+        TestSource = '00/aa/C3DAnimFileHelpersChunk_FindNextEvent_00aae840_test.cpp'
+        PassPattern = '00aae840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae970'
+        Module = 'C3DAnimFileMovementVectorChunk'
+        Source = '00/aa/C3DAnimFileMovementVectorChunk_GetMovementTrack_00aae970.cpp'
+        TestSource = '00/aa/C3DAnimFileMovementVectorChunk_GetMovementTrack_00aae970_test.cpp'
+        PassPattern = '00aae970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaea00'
+        Module = 'C3DAnimFileMovementVectorChunk'
+        Source = '00/aa/C3DAnimFileMovementVectorChunk_GetMovementTrack_00aaea00.cpp'
+        TestSource = '00/aa/C3DAnimFileMovementVectorChunk_GetMovementTrack_00aaea00_test.cpp'
+        PassPattern = '00aaea00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab0260'
+        Module = 'C3DAnimFileObjectChunk'
+        Source = '00/ab/C3DAnimFileObjectChunk_FindFirstSequence_00ab0260.cpp'
+        TestSource = '00/ab/C3DAnimFileObjectChunk_FindFirstSequence_00ab0260_test.cpp'
+        PassPattern = '00ab0260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab02f0'
+        Module = 'C3DAnimFileObjectChunk'
+        Source = '00/ab/C3DAnimFileObjectChunk_FindNextSequence_00ab02f0.cpp'
+        TestSource = '00/ab/C3DAnimFileObjectChunk_FindNextSequence_00ab02f0_test.cpp'
+        PassPattern = '00ab02f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab03d0'
+        Module = 'C3DAnimFileObjectChunk'
+        Source = '00/ab/C3DAnimFileObjectChunk_FindFirstSequence_00ab03d0.cpp'
+        TestSource = '00/ab/C3DAnimFileObjectChunk_FindFirstSequence_00ab03d0_test.cpp'
+        PassPattern = '00ab03d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab0460'
+        Module = 'C3DAnimFileObjectChunk'
+        Source = '00/ab/C3DAnimFileObjectChunk_FindNextSequence_00ab0460.cpp'
+        TestSource = '00/ab/C3DAnimFileObjectChunk_FindNextSequence_00ab0460_test.cpp'
+        PassPattern = '00ab0460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab0590'
+        Module = 'C3DAnimFileObjectChunk'
+        Source = '00/ab/C3DAnimFileObjectChunk_GetBoneMask_00ab0590.cpp'
+        TestSource = '00/ab/C3DAnimFileObjectChunk_GetBoneMask_00ab0590_test.cpp'
+        PassPattern = '00ab0590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab0620'
+        Module = 'C3DAnimFileObjectChunk'
+        Source = '00/ab/C3DAnimFileObjectChunk_PeekBoneMask_00ab0620.cpp'
+        TestSource = '00/ab/C3DAnimFileObjectChunk_PeekBoneMask_00ab0620_test.cpp'
+        PassPattern = '00ab0620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab3300'
+        Module = 'std::vector'
+        Source = '00/ab/stdvector_Minsertoverflow_00ab3300.cpp'
+        TestSource = '00/ab/stdvector_Minsertoverflow_00ab3300_test.cpp'
+        PassPattern = '00ab3300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab33e0'
+        Module = 'std::vector'
+        Source = '00/ab/stdvector_Minsertoverflow_00ab33e0.cpp'
+        TestSource = '00/ab/stdvector_Minsertoverflow_00ab33e0_test.cpp'
+        PassPattern = '00ab33e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab4150'
+        Module = 'std::vector'
+        Source = '00/ab/stdvector_Minsertoverflow_00ab4150.cpp'
+        TestSource = '00/ab/stdvector_Minsertoverflow_00ab4150_test.cpp'
+        PassPattern = '00ab4150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba410'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindTransformation_00aba410.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindTransformation_00aba410_test.cpp'
+        PassPattern = '00aba410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba4a0'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindTransformation_00aba4a0.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindTransformation_00aba4a0_test.cpp'
+        PassPattern = '00aba4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba530'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindFirstBone_00aba530.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindFirstBone_00aba530_test.cpp'
+        PassPattern = '00aba530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba5c0'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindNextBone_00aba5c0.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindNextBone_00aba5c0_test.cpp'
+        PassPattern = '00aba5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba6a0'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindFirstBone_00aba6a0.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindFirstBone_00aba6a0_test.cpp'
+        PassPattern = '00aba6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba730'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindNextBone_00aba730.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindNextBone_00aba730_test.cpp'
+        PassPattern = '00aba730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba810'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindFirstPrimitive_00aba810.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindFirstPrimitive_00aba810_test.cpp'
+        PassPattern = '00aba810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba8a0'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindNextPrimitive_00aba8a0.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindNextPrimitive_00aba8a0_test.cpp'
+        PassPattern = '00aba8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba980'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindFirstPrimitive_00aba980.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindFirstPrimitive_00aba980_test.cpp'
+        PassPattern = '00aba980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abaa10'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindNextPrimitive_00abaa10.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindNextPrimitive_00abaa10_test.cpp'
+        PassPattern = '00abaa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abaaf0'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindFirstCloth_00abaaf0.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindFirstCloth_00abaaf0_test.cpp'
+        PassPattern = '00abaaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abab80'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindNextCloth_00abab80.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindNextCloth_00abab80_test.cpp'
+        PassPattern = '00abab80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abac60'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindFirstCloth_00abac60.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindFirstCloth_00abac60_test.cpp'
+        PassPattern = '00abac60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abacf0'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_FindNextCloth_00abacf0.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_FindNextCloth_00abacf0_test.cpp'
+        PassPattern = '00abacf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abafe0'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_PeekVertices_00abafe0.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_PeekVertices_00abafe0_test.cpp'
+        PassPattern = '00abafe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb070'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_GetTriangles_00abb070.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_GetTriangles_00abb070_test.cpp'
+        PassPattern = '00abb070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb100'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_PeekTriangles_00abb100.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_PeekTriangles_00abb100_test.cpp'
+        PassPattern = '00abb100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb190'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstTriangles_00abb190.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstTriangles_00abb190_test.cpp'
+        PassPattern = '00abb190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb220'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindNextTriangles_00abb220.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindNextTriangles_00abb220_test.cpp'
+        PassPattern = '00abb220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb300'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstTriangles_00abb300.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstTriangles_00abb300_test.cpp'
+        PassPattern = '00abb300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb390'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindNextTriangles_00abb390.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindNextTriangles_00abb390_test.cpp'
+        PassPattern = '00abb390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb4f0'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_GetSmoothingGroups_00abb4f0.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_GetSmoothingGroups_00abb4f0_test.cpp'
+        PassPattern = '00abb4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb580'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_PeekSmoothingGroups_00abb580.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_PeekSmoothingGroups_00abb580_test.cpp'
+        PassPattern = '00abb580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb690'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_GetUniqueVertices_00abb690.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_GetUniqueVertices_00abb690_test.cpp'
+        PassPattern = '00abb690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb720'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_PeekUniqueVertices_00abb720.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_PeekUniqueVertices_00abb720_test.cpp'
+        PassPattern = '00abb720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb7b0'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstGroup_00abb7b0.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstGroup_00abb7b0_test.cpp'
+        PassPattern = '00abb7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb840'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindNextGroup_00abb840.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindNextGroup_00abb840_test.cpp'
+        PassPattern = '00abb840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb920'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstGroup_00abb920.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstGroup_00abb920_test.cpp'
+        PassPattern = '00abb920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abb9b0'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindNextGroup_00abb9b0.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindNextGroup_00abb9b0_test.cpp'
+        PassPattern = '00abb9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abba90'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstCloth_00abba90.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstCloth_00abba90_test.cpp'
+        PassPattern = '00abba90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abbb20'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindNextCloth_00abbb20.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindNextCloth_00abbb20_test.cpp'
+        PassPattern = '00abbb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abbc00'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstCloth_00abbc00.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindFirstCloth_00abbc00_test.cpp'
+        PassPattern = '00abbc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abbc90'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/ab/C3DMeshFilePrimitiveChunk_FindNextCloth_00abbc90.cpp'
+        TestSource = '00/ab/C3DMeshFilePrimitiveChunk_FindNextCloth_00abbc90_test.cpp'
+        PassPattern = '00abbc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abeb40'
+        Module = 'std::vector'
+        Source = '00/ab/stdvector_Minsertoverflow_00abeb40.cpp'
+        TestSource = '00/ab/stdvector_Minsertoverflow_00abeb40_test.cpp'
+        PassPattern = '00abeb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac04c0'
+        Module = 'C3DMeshFileMaterialListChunk'
+        Source = '00/ac/C3DMeshFileMaterialListChunk_FindFirstMaterial_00ac04c0.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialListChunk_FindFirstMaterial_00ac04c0_test.cpp'
+        PassPattern = '00ac04c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0550'
+        Module = 'C3DMeshFileMaterialListChunk'
+        Source = '00/ac/C3DMeshFileMaterialListChunk_FindNextMaterial_00ac0550.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialListChunk_FindNextMaterial_00ac0550_test.cpp'
+        PassPattern = '00ac0550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0630'
+        Module = 'C3DMeshFileMaterialListChunk'
+        Source = '00/ac/C3DMeshFileMaterialListChunk_FindFirstMaterial_00ac0630.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialListChunk_FindFirstMaterial_00ac0630_test.cpp'
+        PassPattern = '00ac0630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac06c0'
+        Module = 'C3DMeshFileMaterialListChunk'
+        Source = '00/ac/C3DMeshFileMaterialListChunk_FindNextMaterial_00ac06c0.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialListChunk_FindNextMaterial_00ac06c0_test.cpp'
+        PassPattern = '00ac06c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac07a0'
+        Module = 'C3DMeshFileMaterialListChunk'
+        Source = '00/ac/C3DMeshFileMaterialListChunk_FindFirstEngineMaterial_00ac07a0.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialListChunk_FindFirstEngineMaterial_00ac07a0_test.cpp'
+        PassPattern = '00ac07a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0830'
+        Module = 'C3DMeshFileMaterialListChunk'
+        Source = '00/ac/C3DMeshFileMaterialListChunk_FindNextEngineMaterial_00ac0830.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialListChunk_FindNextEngineMaterial_00ac0830_test.cpp'
+        PassPattern = '00ac0830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0910'
+        Module = 'C3DMeshFileMaterialListChunk'
+        Source = '00/ac/C3DMeshFileMaterialListChunk_FindFirstEngineMaterial_00ac0910.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialListChunk_FindFirstEngineMaterial_00ac0910_test.cpp'
+        PassPattern = '00ac0910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0ae0'
+        Module = 'C3DMeshFileMaterialChunk'
+        Source = '00/ac/C3DMeshFileMaterialChunk_GetExtendedProperties_00ac0ae0.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_GetExtendedProperties_00ac0ae0_test.cpp'
+        PassPattern = '00ac0ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0b70'
+        Module = 'C3DMeshFileMaterialChunk'
+        Source = '00/ac/C3DMeshFileMaterialChunk_GetExtendedProperties_00ac0b70.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_GetExtendedProperties_00ac0b70_test.cpp'
+        PassPattern = '00ac0b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0ce0'
+        Module = 'C3DMeshFileMaterialChunk'
+        Source = '00/ac/C3DMeshFileMaterialChunk_FindFirstMap_00ac0ce0.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_FindFirstMap_00ac0ce0_test.cpp'
+        PassPattern = '00ac0ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0d70'
+        Module = 'C3DMeshFileMaterialChunk'
+        Source = '00/ac/C3DMeshFileMaterialChunk_FindNextMap_00ac0d70.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_FindNextMap_00ac0d70_test.cpp'
+        PassPattern = '00ac0d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0e50'
+        Module = 'C3DMeshFileMaterialChunk'
+        Source = '00/ac/C3DMeshFileMaterialChunk_FindFirstMap_00ac0e50.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_FindFirstMap_00ac0e50_test.cpp'
+        PassPattern = '00ac0e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac0ee0'
+        Module = 'C3DMeshFileMaterialChunk'
+        Source = '00/ac/C3DMeshFileMaterialChunk_FindNextMap_00ac0ee0.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_FindNextMap_00ac0ee0_test.cpp'
+        PassPattern = '00ac0ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac4290'
+        Module = 'std'
+        Source = '00/ac/std_copybackwardptrs_00ac4290.cpp'
+        TestSource = '00/ac/std_copybackwardptrs_00ac4290_test.cpp'
+        PassPattern = '00ac4290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac6320'
+        Module = 'C3DMeshFileClothChunk'
+        Source = '00/ac/C3DMeshFileClothChunk_FindFirstGroup_00ac6320.cpp'
+        TestSource = '00/ac/C3DMeshFileClothChunk_FindFirstGroup_00ac6320_test.cpp'
+        PassPattern = '00ac6320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac63b0'
+        Module = 'C3DMeshFileClothChunk'
+        Source = '00/ac/C3DMeshFileClothChunk_FindNextGroup_00ac63b0.cpp'
+        TestSource = '00/ac/C3DMeshFileClothChunk_FindNextGroup_00ac63b0_test.cpp'
+        PassPattern = '00ac63b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac6490'
+        Module = 'C3DMeshFileClothChunk'
+        Source = '00/ac/C3DMeshFileClothChunk_FindFirstGroup_00ac6490.cpp'
+        TestSource = '00/ac/C3DMeshFileClothChunk_FindFirstGroup_00ac6490_test.cpp'
+        PassPattern = '00ac6490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac6520'
+        Module = 'C3DMeshFileClothChunk'
+        Source = '00/ac/C3DMeshFileClothChunk_FindNextGroup_00ac6520.cpp'
+        TestSource = '00/ac/C3DMeshFileClothChunk_FindNextGroup_00ac6520_test.cpp'
+        PassPattern = '00ac6520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad3b20'
+        Module = 'std::vector'
+        Source = '00/ad/stdvector_Minsertoverflow_00ad3b20.cpp'
+        TestSource = '00/ad/stdvector_Minsertoverflow_00ad3b20_test.cpp'
+        PassPattern = '00ad3b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad4e20'
+        Module = 'std::vector'
+        Source = '00/ad/stdvector_Minsertoverflow_00ad4e20.cpp'
+        TestSource = '00/ad/stdvector_Minsertoverflow_00ad4e20_test.cpp'
+        PassPattern = '00ad4e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad68d0'
+        Module = 'std::vector'
+        Source = '00/ad/stdvector_Minsertoverflow_00ad68d0.cpp'
+        TestSource = '00/ad/stdvector_Minsertoverflow_00ad68d0_test.cpp'
+        PassPattern = '00ad68d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae6a70'
+        Module = 'std::vector'
+        Source = '00/ae/stdvector_Minsertoverflow_00ae6a70.cpp'
+        TestSource = '00/ae/stdvector_Minsertoverflow_00ae6a70_test.cpp'
+        PassPattern = '00ae6a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae6d50'
+        Module = 'std::vector'
+        Source = '00/ae/stdvector_Minsertoverflow_00ae6d50.cpp'
+        TestSource = '00/ae/stdvector_Minsertoverflow_00ae6d50_test.cpp'
+        PassPattern = '00ae6d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b291a0'
+        Module = 'std::vector'
+        Source = '00/b2/stdvector_Minsertoverflow_00b291a0.cpp'
+        TestSource = '00/b2/stdvector_Minsertoverflow_00b291a0_test.cpp'
+        PassPattern = '00b291a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b292b0'
+        Module = 'std::vector'
+        Source = '00/b2/stdvector_Minsertoverflow_00b292b0.cpp'
+        TestSource = '00/b2/stdvector_Minsertoverflow_00b292b0_test.cpp'
+        PassPattern = '00b292b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29470'
+        Module = 'std::vector'
+        Source = '00/b2/stdvector_Minsertoverflow_00b29470.cpp'
+        TestSource = '00/b2/stdvector_Minsertoverflow_00b29470_test.cpp'
+        PassPattern = '00b29470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29930'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b29930.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b29930_test.cpp'
+        PassPattern = '00b29930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b299d0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b299d0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b299d0_test.cpp'
+        PassPattern = '00b299d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29a70'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b29a70.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b29a70_test.cpp'
+        PassPattern = '00b29a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29b10'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b29b10.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b29b10_test.cpp'
+        PassPattern = '00b29b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29bb0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b29bb0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b29bb0_test.cpp'
+        PassPattern = '00b29bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29c50'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b29c50.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b29c50_test.cpp'
+        PassPattern = '00b29c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29cf0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b29cf0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b29cf0_test.cpp'
+        PassPattern = '00b29cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29e30'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b29e30.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b29e30_test.cpp'
+        PassPattern = '00b29e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29ed0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b29ed0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b29ed0_test.cpp'
+        PassPattern = '00b29ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a0c0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a0c0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a0c0_test.cpp'
+        PassPattern = '00b2a0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a3e0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a3e0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a3e0_test.cpp'
+        PassPattern = '00b2a3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a480'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a480.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a480_test.cpp'
+        PassPattern = '00b2a480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a520'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a520.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a520_test.cpp'
+        PassPattern = '00b2a520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a5c0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a5c0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a5c0_test.cpp'
+        PassPattern = '00b2a5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a660'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a660.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a660_test.cpp'
+        PassPattern = '00b2a660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a700'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a700.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a700_test.cpp'
+        PassPattern = '00b2a700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a7a0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a7a0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a7a0_test.cpp'
+        PassPattern = '00b2a7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a840'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a840.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a840_test.cpp'
+        PassPattern = '00b2a840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a8e0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a8e0.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a8e0_test.cpp'
+        PassPattern = '00b2a8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2a980'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_AddEngineComponent_00b2a980.cpp'
+        TestSource = '00/b2/CEngine_AddEngineComponent_00b2a980_test.cpp'
+        PassPattern = '00b2a980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b389d0'
+        Module = 'std::vector'
+        Source = '00/b3/stdvector_Minsertoverflow_00b389d0.cpp'
+        TestSource = '00/b3/stdvector_Minsertoverflow_00b389d0_test.cpp'
+        PassPattern = '00b389d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b38bb0'
+        Module = 'std::vector'
+        Source = '00/b3/stdvector_Minsertoverflow_00b38bb0.cpp'
+        TestSource = '00/b3/stdvector_Minsertoverflow_00b38bb0_test.cpp'
+        PassPattern = '00b38bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3abc0'
+        Module = 'std::vector'
+        Source = '00/b3/stdvector_Minsertoverflow_00b3abc0.cpp'
+        TestSource = '00/b3/stdvector_Minsertoverflow_00b3abc0_test.cpp'
+        PassPattern = '00b3abc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b43e10'
+        Module = 'std::vector'
+        Source = '00/b4/stdvector_Minsertoverflow_00b43e10.cpp'
+        TestSource = '00/b4/stdvector_Minsertoverflow_00b43e10_test.cpp'
+        PassPattern = '00b43e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b49df0'
+        Module = 'std::vector'
+        Source = '00/b4/stdvector_Minsertoverflow_00b49df0.cpp'
+        TestSource = '00/b4/stdvector_Minsertoverflow_00b49df0_test.cpp'
+        PassPattern = '00b49df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b49ed0'
+        Module = 'std::vector'
+        Source = '00/b4/stdvector_Minsertoverflow_00b49ed0.cpp'
+        TestSource = '00/b4/stdvector_Minsertoverflow_00b49ed0_test.cpp'
+        PassPattern = '00b49ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b59f60'
+        Module = 'std::vector'
+        Source = '00/b5/stdvector_Minsertoverflow_00b59f60.cpp'
+        TestSource = '00/b5/stdvector_Minsertoverflow_00b59f60_test.cpp'
+        PassPattern = '00b59f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6c4c0'
+        Module = 'std::vector'
+        Source = '00/b6/stdvector_Minsertoverflow_00b6c4c0.cpp'
+        TestSource = '00/b6/stdvector_Minsertoverflow_00b6c4c0_test.cpp'
+        PassPattern = '00b6c4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b83c30'
+        Module = 'std::vector'
+        Source = '00/b8/stdvector_Minsertoverflow_00b83c30.cpp'
+        TestSource = '00/b8/stdvector_Minsertoverflow_00b83c30_test.cpp'
+        PassPattern = '00b83c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b855c0'
+        Module = 'std'
+        Source = '00/b8/std_copybackward_00b855c0.cpp'
+        TestSource = '00/b8/std_copybackward_00b855c0_test.cpp'
+        PassPattern = '00b855c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b85ec0'
+        Module = 'std::vector'
+        Source = '00/b8/stdvector_Minsertoverflow_00b85ec0.cpp'
+        TestSource = '00/b8/stdvector_Minsertoverflow_00b85ec0_test.cpp'
+        PassPattern = '00b85ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b96c60'
+        Module = 'std::vector'
+        Source = '00/b9/stdvector_Minsertoverflow_00b96c60.cpp'
+        TestSource = '00/b9/stdvector_Minsertoverflow_00b96c60_test.cpp'
+        PassPattern = '00b96c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b97cb0'
+        Module = 'std::vector'
+        Source = '00/b9/stdvector_Minsertoverflow_00b97cb0.cpp'
+        TestSource = '00/b9/stdvector_Minsertoverflow_00b97cb0_test.cpp'
+        PassPattern = '00b97cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bac720'
+        Module = 'std::vector'
+        Source = '00/ba/stdvector_Minsertoverflow_00bac720.cpp'
+        TestSource = '00/ba/stdvector_Minsertoverflow_00bac720_test.cpp'
+        PassPattern = '00bac720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbd550'
+        Module = 'std'
+        Source = '00/bb/std_copybackwardptrs_00bbd550.cpp'
+        TestSource = '00/bb/std_copybackwardptrs_00bbd550_test.cpp'
+        PassPattern = '00bbd550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdfc00'
+        Module = 'std::vector'
+        Source = '00/bd/stdvector_Minsertoverflow_00bdfc00.cpp'
+        TestSource = '00/bd/stdvector_Minsertoverflow_00bdfc00_test.cpp'
+        PassPattern = '00bdfc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be8f10'
+        Module = 'std::vector'
+        Source = '00/be/stdvector_Minsertoverflow_00be8f10.cpp'
+        TestSource = '00/be/stdvector_Minsertoverflow_00be8f10_test.cpp'
+        PassPattern = '00be8f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bedbf0'
+        Module = 'std::vector'
+        Source = '00/be/stdvector_Minsertoverflow_00bedbf0.cpp'
+        TestSource = '00/be/stdvector_Minsertoverflow_00bedbf0_test.cpp'
+        PassPattern = '00bedbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf5db0'
+        Module = 'std::vector'
+        Source = '00/bf/stdvector_Minsertoverflow_00bf5db0.cpp'
+        TestSource = '00/bf/stdvector_Minsertoverflow_00bf5db0_test.cpp'
+        PassPattern = '00bf5db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdd330'
+        Module = 'NScript::CQ_SunnyvaleMasterScript'
+        Source = '00/cd/NScriptCQSunnyvaleMasterScript_CQSunnyvaleMasterScript_00cdd330.cpp'
+        TestSource = '00/cd/NScriptCQSunnyvaleMasterScript_CQSunnyvaleMasterScript_00cdd330_test.cpp'
+        PassPattern = '00cdd330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdd380'
+        Module = 'NScript::CQ_SunnyvaleMasterScript'
+        Source = '00/cd/NScriptCQSunnyvaleMasterScript_RegisterMain_00cdd380.cpp'
+        TestSource = '00/cd/NScriptCQSunnyvaleMasterScript_RegisterMain_00cdd380_test.cpp'
+        PassPattern = '00cdd380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdd5b0'
+        Module = 'NScript::CGlobal_TeleportToHeroGuildScript'
+        Source = '00/cd/NScriptCGlobalTeleportToHeroGuildScript_CGlobalTeleportToHeroGuildScript_00cdd5b0.cpp'
+        TestSource = '00/cd/NScriptCGlobalTeleportToHeroGuildScript_CGlobalTeleportToHeroGuildScript_00cdd5b0_test.cpp'
+        PassPattern = '00cdd5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdd5f0'
+        Module = 'NScript::CGlobal_TeleportToHeroGuildScript'
+        Source = '00/cd/NScriptCGlobalTeleportToHeroGuildScript_RegisterMain_00cdd5f0.cpp'
+        TestSource = '00/cd/NScriptCGlobalTeleportToHeroGuildScript_RegisterMain_00cdd5f0_test.cpp'
+        PassPattern = '00cdd5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cddbc0'
+        Module = 'NScript::CPersonalScriptMainScript'
+        Source = '00/cd/NScriptCPersonalScriptMainScript_CPersonalScriptMainScript_00cddbc0.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptMainScript_CPersonalScriptMainScript_00cddbc0_test.cpp'
+        PassPattern = '00cddbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cddbf0'
+        Module = 'NScript::CPersonalScriptMainScript'
+        Source = '00/cd/NScriptCPersonalScriptMainScript_RegisterMain_00cddbf0.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptMainScript_RegisterMain_00cddbf0_test.cpp'
+        PassPattern = '00cddbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cde350'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScript_CPersonalScriptGlobalThingsScript_00cde350.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScript_CPersonalScriptGlobalThingsScript_00cde350_test.cpp'
+        PassPattern = '00cde350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cde380'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScript_RegisterMain_00cde380.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScript_RegisterMain_00cde380_test.cpp'
+        PassPattern = '00cde380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce1a30'
+        Module = 'NScript::CHeroBoastsScript'
+        Source = '00/ce/NScriptCHeroBoastsScript_RegisterMain_00ce1a30.cpp'
+        TestSource = '00/ce/NScriptCHeroBoastsScript_RegisterMain_00ce1a30_test.cpp'
+        PassPattern = '00ce1a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce75b0'
+        Module = 'NScript::CGameflowScript'
+        Source = '00/ce/NScriptCGameflowScript_RegisterMain_00ce75b0.cpp'
+        TestSource = '00/ce/NScriptCGameflowScript_RegisterMain_00ce75b0_test.cpp'
+        PassPattern = '00ce75b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cef9d0'
+        Module = 'NScript::CGameflowAssistanceScript'
+        Source = '00/ce/NScriptCGameflowAssistanceScript_CGameflowAssistanceScript_00cef9d0.cpp'
+        TestSource = '00/ce/NScriptCGameflowAssistanceScript_CGameflowAssistanceScript_00cef9d0_test.cpp'
+        PassPattern = '00cef9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cefa20'
+        Module = 'NScript::CGameflowAssistanceScript'
+        Source = '00/ce/NScriptCGameflowAssistanceScript_RegisterMain_00cefa20.cpp'
+        TestSource = '00/ce/NScriptCGameflowAssistanceScript_RegisterMain_00cefa20_test.cpp'
+        PassPattern = '00cefa20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf06a0'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScript_CQArenaHoldingScriptScript_00cf06a0.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScript_CQArenaHoldingScriptScript_00cf06a0_test.cpp'
+        PassPattern = '00cf06a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf06f0'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScript_RegisterMain_00cf06f0.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScript_RegisterMain_00cf06f0_test.cpp'
+        PassPattern = '00cf06f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf66e0'
+        Module = 'CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>'
+        Source = '00/cf/CEntityScriptBindingNScriptCQArenaHoldingScriptScript_CreateActiveEntityScript_00cf66e0.cpp'
+        TestSource = '00/cf/CEntityScriptBindingNScriptCQArenaHoldingScriptScript_CreateActiveEntityScript_00cf66e0_test.cpp'
+        PassPattern = '00cf66e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf9100'
+        Module = 'NScript::CLadyGreyWifeManagerScript'
+        Source = '00/cf/NScriptCLadyGreyWifeManagerScript_RegisterMain_00cf9100.cpp'
+        TestSource = '00/cf/NScriptCLadyGreyWifeManagerScript_RegisterMain_00cf9100_test.cpp'
+        PassPattern = '00cf9100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf9550'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/cf/NScriptCQAmbushTradersScript_RegisterMain_00cf9550.cpp'
+        TestSource = '00/cf/NScriptCQAmbushTradersScript_RegisterMain_00cf9550_test.cpp'
+        PassPattern = '00cf9550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfaa50'
+        Module = 'NScript::CQ_ArenaScript'
+        Source = '00/cf/NScriptCQArenaScript_RegisterMain_00cfaa50.cpp'
+        TestSource = '00/cf/NScriptCQArenaScript_RegisterMain_00cfaa50_test.cpp'
+        PassPattern = '00cfaa50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfaeb0'
+        Module = 'NScript::CQ_AwakeningTheOracleScript'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScript_RegisterMain_00cfaeb0.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScript_RegisterMain_00cfaeb0_test.cpp'
+        PassPattern = '00cfaeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfde40'
+        Module = 'CEntityScriptBinding<NScript::CQ_AwakeningTheOracleScript>'
+        Source = '00/cf/CEntityScriptBindingNScriptCQAwakeningTheOracleScript_CreateActiveEntityScript_00cfde40.cpp'
+        TestSource = '00/cf/CEntityScriptBindingNScriptCQAwakeningTheOracleScript_CreateActiveEntityScript_00cfde40_test.cpp'
+        PassPattern = '00cfde40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d006a0'
+        Module = 'NScript::CQ_BanditCampScript'
+        Source = '00/d0/NScriptCQBanditCampScript_CQBanditCampScript_00d006a0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampScript_CQBanditCampScript_00d006a0_test.cpp'
+        PassPattern = '00d006a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d009d0'
+        Module = 'NScript::CQ_BanditCampScript'
+        Source = '00/d0/NScriptCQBanditCampScript_RegisterMain_00d009d0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampScript_RegisterMain_00d009d0_test.cpp'
+        PassPattern = '00d009d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d03160'
+        Module = 'CEntityScriptBinding<NScript::CQ_BanditCampScript>'
+        Source = '00/d0/CEntityScriptBindingNScriptCQBanditCampScript_CreateActiveEntityScript_00d03160.cpp'
+        TestSource = '00/d0/CEntityScriptBindingNScriptCQBanditCampScript_CreateActiveEntityScript_00d03160_test.cpp'
+        PassPattern = '00d03160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d035e0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScript_CQBanditCampBossBattleScript_00d035e0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScript_CQBanditCampBossBattleScript_00d035e0_test.cpp'
+        PassPattern = '00d035e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d03820'
+        Module = 'NScript::CQ_BanditCampBossBattleScript'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScript_RegisterMain_00d03820.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScript_RegisterMain_00d03820_test.cpp'
+        PassPattern = '00d03820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d0ec50'
+        Module = 'CEntityScriptBinding<NScript::CQ_BanditCampBossBattleScript>'
+        Source = '00/d0/CEntityScriptBindingNScriptCQBanditCampBossBattleScript_CreateActiveEntityScript_00d0ec50.cpp'
+        TestSource = '00/d0/CEntityScriptBindingNScriptCQBanditCampBossBattleScript_CreateActiveEntityScript_00d0ec50_test.cpp'
+        PassPattern = '00d0ec50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d12980'
+        Module = 'NScript::CQ_BanditCampHoldingScriptScript'
+        Source = '00/d1/NScriptCQBanditCampHoldingScriptScript_CQBanditCampHoldingScriptScript_00d12980.cpp'
+        TestSource = '00/d1/NScriptCQBanditCampHoldingScriptScript_CQBanditCampHoldingScriptScript_00d12980_test.cpp'
+        PassPattern = '00d12980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d12b60'
+        Module = 'NScript::CQ_BanditCampHoldingScriptScript'
+        Source = '00/d1/NScriptCQBanditCampHoldingScriptScript_RegisterMain_00d12b60.cpp'
+        TestSource = '00/d1/NScriptCQBanditCampHoldingScriptScript_RegisterMain_00d12b60_test.cpp'
+        PassPattern = '00d12b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d13070'
+        Module = 'NScript::CQ_BountyHuntScript'
+        Source = '00/d1/NScriptCQBountyHuntScript_RegisterMain_00d13070.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScript_RegisterMain_00d13070_test.cpp'
+        PassPattern = '00d13070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d17180'
+        Module = 'CEntityScriptBinding<NScript::CQ_BountyHuntScript>'
+        Source = '00/d1/CEntityScriptBindingNScriptCQBountyHuntScript_CreateActiveEntityScript_00d17180.cpp'
+        TestSource = '00/d1/CEntityScriptBindingNScriptCQBountyHuntScript_CreateActiveEntityScript_00d17180_test.cpp'
+        PassPattern = '00d17180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1cc10'
+        Module = 'NScript::CQ_BreakSiegeScript'
+        Source = '00/d1/NScriptCQBreakSiegeScript_CQBreakSiegeScript_00d1cc10.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScript_CQBreakSiegeScript_00d1cc10_test.cpp'
+        PassPattern = '00d1cc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1cf00'
+        Module = 'NScript::CQ_BreakSiegeScript'
+        Source = '00/d1/NScriptCQBreakSiegeScript_RegisterMain_00d1cf00.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScript_RegisterMain_00d1cf00_test.cpp'
+        PassPattern = '00d1cf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1fc30'
+        Module = 'NScript::CQ_BreakSiegeScript::CDisplacedTrader'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Alloc_00d1fc30.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Alloc_00d1fc30_test.cpp'
+        PassPattern = '00d1fc30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d20600'
+        Module = 'CEntityScriptBinding<NScript::CQ_BreakSiegeScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQBreakSiegeScript_CreateActiveEntityScript_00d20600.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQBreakSiegeScript_CreateActiveEntityScript_00d20600_test.cpp'
+        PassPattern = '00d20600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d23ce0'
+        Module = 'NScript::CQ_BowerstoneTownLifeIntroScript'
+        Source = '00/d2/NScriptCQBowerstoneTownLifeIntroScript_CQBowerstoneTownLifeIntroScript_00d23ce0.cpp'
+        TestSource = '00/d2/NScriptCQBowerstoneTownLifeIntroScript_CQBowerstoneTownLifeIntroScript_00d23ce0_test.cpp'
+        PassPattern = '00d23ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d23d20'
+        Module = 'NScript::CQ_BowerstoneTownLifeIntroScript'
+        Source = '00/d2/NScriptCQBowerstoneTownLifeIntroScript_RegisterMain_00d23d20.cpp'
+        TestSource = '00/d2/NScriptCQBowerstoneTownLifeIntroScript_RegisterMain_00d23d20_test.cpp'
+        PassPattern = '00d23d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d244b0'
+        Module = 'CEntityScriptBinding<NScript::CQ_BowerstoneTownLifeIntroScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQBowerstoneTownLifeIntroScript_CreateActiveEntityScript_00d244b0.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQBowerstoneTownLifeIntroScript_CreateActiveEntityScript_00d244b0_test.cpp'
+        PassPattern = '00d244b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d25520'
+        Module = 'NScript::CQ_DragonBossFightScript'
+        Source = '00/d2/NScriptCQDragonBossFightScript_RegisterMain_00d25520.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScript_RegisterMain_00d25520_test.cpp'
+        PassPattern = '00d25520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d26000'
+        Module = 'CEntityScriptBinding<NScript::CQ_DragonBossFightScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQDragonBossFightScript_CreateActiveEntityScript_00d26000.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQDragonBossFightScript_CreateActiveEntityScript_00d26000_test.cpp'
+        PassPattern = '00d26000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d27370'
+        Module = 'NScript::CQ_EndGameScript'
+        Source = '00/d2/NScriptCQEndGameScript_CQEndGameScript_00d27370.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScript_CQEndGameScript_00d27370_test.cpp'
+        PassPattern = '00d27370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d273c0'
+        Module = 'NScript::CQ_EndGameScript'
+        Source = '00/d2/NScriptCQEndGameScript_RegisterMain_00d273c0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScript_RegisterMain_00d273c0_test.cpp'
+        PassPattern = '00d273c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d29680'
+        Module = 'CEntityScriptBinding<NScript::CQ_EndGameScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQEndGameScript_CreateActiveEntityScript_00d29680.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQEndGameScript_CreateActiveEntityScript_00d29680_test.cpp'
+        PassPattern = '00d29680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2a950'
+        Module = 'NScript::CQ_EndGameFocalSitesScript'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScript_RegisterMain_00d2a950.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScript_RegisterMain_00d2a950_test.cpp'
+        PassPattern = '00d2a950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2d570'
+        Module = 'CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQEndGameFocalSitesScript_CreateActiveEntityScript_00d2d570.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQEndGameFocalSitesScript_CreateActiveEntityScript_00d2d570_test.cpp'
+        PassPattern = '00d2d570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2f730'
+        Module = 'NScript::CQ_EndGameBossBattleScript'
+        Source = '00/d2/NScriptCQEndGameBossBattleScript_RegisterMain_00d2f730.cpp'
+        TestSource = '00/d2/NScriptCQEndGameBossBattleScript_RegisterMain_00d2f730_test.cpp'
+        PassPattern = '00d2f730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2fea0'
+        Module = 'CEntityScriptBinding<NScript::CQ_EndGameBossBattleScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQEndGameBossBattleScript_CreateActiveEntityScript_00d2fea0.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQEndGameBossBattleScript_CreateActiveEntityScript_00d2fea0_test.cpp'
+        PassPattern = '00d2fea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d34660'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_RegisterMain_00d34660.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_RegisterMain_00d34660_test.cpp'
+        PassPattern = '00d34660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d38b90'
+        Module = 'CEntityScriptBinding<NScript::CQ_FireHeartScript>'
+        Source = '00/d3/CEntityScriptBindingNScriptCQFireHeartScript_CreateActiveEntityScript_00d38b90.cpp'
+        TestSource = '00/d3/CEntityScriptBindingNScriptCQFireHeartScript_CreateActiveEntityScript_00d38b90_test.cpp'
+        PassPattern = '00d38b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3bb50'
+        Module = 'NScript::CQ_GuildTrainingScript'
+        Source = '00/d3/NScriptCQGuildTrainingScript_RegisterMain_00d3bb50.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScript_RegisterMain_00d3bb50_test.cpp'
+        PassPattern = '00d3bb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d444c0'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingScript>'
+        Source = '00/d4/CEntityScriptBindingNScriptCQGuildTrainingScript_CreateActiveEntityScript_00d444c0.cpp'
+        TestSource = '00/d4/CEntityScriptBindingNScriptCQGuildTrainingScript_CreateActiveEntityScript_00d444c0_test.cpp'
+        PassPattern = '00d444c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d50680'
+        Module = 'NScript::CQ_GuildTrainingDepartureScript'
+        Source = '00/d5/NScriptCQGuildTrainingDepartureScript_CQGuildTrainingDepartureScript_00d50680.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingDepartureScript_CQGuildTrainingDepartureScript_00d50680_test.cpp'
+        PassPattern = '00d50680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d50760'
+        Module = 'NScript::CQ_GuildTrainingDepartureScript'
+        Source = '00/d5/NScriptCQGuildTrainingDepartureScript_RegisterMain_00d50760.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingDepartureScript_RegisterMain_00d50760_test.cpp'
+        PassPattern = '00d50760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d50ab0'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingDepartureScript_CreateActiveEntityScript_00d50ab0.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingDepartureScript_CreateActiveEntityScript_00d50ab0_test.cpp'
+        PassPattern = '00d50ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d51420'
+        Module = 'NScript::CQ_GuildTrainingPreMeleeScript'
+        Source = '00/d5/NScriptCQGuildTrainingPreMeleeScript_CQGuildTrainingPreMeleeScript_00d51420.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingPreMeleeScript_CQGuildTrainingPreMeleeScript_00d51420_test.cpp'
+        PassPattern = '00d51420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d51460'
+        Module = 'NScript::CQ_GuildTrainingPreMeleeScript'
+        Source = '00/d5/NScriptCQGuildTrainingPreMeleeScript_RegisterMain_00d51460.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingPreMeleeScript_RegisterMain_00d51460_test.cpp'
+        PassPattern = '00d51460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d52310'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingPreMeleeScript_CreateActiveEntityScript_00d52310.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingPreMeleeScript_CreateActiveEntityScript_00d52310_test.cpp'
+        PassPattern = '00d52310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d55d70'
+        Module = 'NScript::CQ_GuildTrainingMeleeScript'
+        Source = '00/d5/NScriptCQGuildTrainingMeleeScript_CQGuildTrainingMeleeScript_00d55d70.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingMeleeScript_CQGuildTrainingMeleeScript_00d55d70_test.cpp'
+        PassPattern = '00d55d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d55dd0'
+        Module = 'NScript::CQ_GuildTrainingMeleeScript'
+        Source = '00/d5/NScriptCQGuildTrainingMeleeScript_RegisterMain_00d55dd0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingMeleeScript_RegisterMain_00d55dd0_test.cpp'
+        PassPattern = '00d55dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d58300'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingMeleeScript_CreateActiveEntityScript_00d58300.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingMeleeScript_CreateActiveEntityScript_00d58300_test.cpp'
+        PassPattern = '00d58300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d5aa50'
+        Module = 'NScript::CQ_GuildTrainingSkillScript'
+        Source = '00/d5/NScriptCQGuildTrainingSkillScript_CQGuildTrainingSkillScript_00d5aa50.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingSkillScript_CQGuildTrainingSkillScript_00d5aa50_test.cpp'
+        PassPattern = '00d5aa50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d5aaa0'
+        Module = 'NScript::CQ_GuildTrainingSkillScript'
+        Source = '00/d5/NScriptCQGuildTrainingSkillScript_RegisterMain_00d5aaa0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingSkillScript_RegisterMain_00d5aaa0_test.cpp'
+        PassPattern = '00d5aaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d5acc0'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingSkillScript_CreateActiveEntityScript_00d5acc0.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingSkillScript_CreateActiveEntityScript_00d5acc0_test.cpp'
+        PassPattern = '00d5acc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d5dca0'
+        Module = 'NScript::CQ_GuildTrainingWillScript'
+        Source = '00/d5/NScriptCQGuildTrainingWillScript_RegisterMain_00d5dca0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingWillScript_RegisterMain_00d5dca0_test.cpp'
+        PassPattern = '00d5dca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d5dec0'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingWillScript_CreateActiveEntityScript_00d5dec0.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingWillScript_CreateActiveEntityScript_00d5dec0_test.cpp'
+        PassPattern = '00d5dec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d61c30'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScript_CQGuildTrainingWoodsDepartureScript_00d61c30.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScript_CQGuildTrainingWoodsDepartureScript_00d61c30_test.cpp'
+        PassPattern = '00d61c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d61c60'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScript_RegisterMain_00d61c60.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScript_RegisterMain_00d61c60_test.cpp'
+        PassPattern = '00d61c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d64210'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsDepartureScript_CreateActiveEntityScript_00d64210.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsDepartureScript_CreateActiveEntityScript_00d64210_test.cpp'
+        PassPattern = '00d64210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d66530'
+        Module = 'NScript::CQ_GuildTrainingWoodsMeleeScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsMeleeScript_CQGuildTrainingWoodsMeleeScript_00d66530.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsMeleeScript_CQGuildTrainingWoodsMeleeScript_00d66530_test.cpp'
+        PassPattern = '00d66530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d66560'
+        Module = 'NScript::CQ_GuildTrainingWoodsMeleeScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsMeleeScript_RegisterMain_00d66560.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsMeleeScript_RegisterMain_00d66560_test.cpp'
+        PassPattern = '00d66560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d670e0'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsMeleeScript_CreateActiveEntityScript_00d670e0.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsMeleeScript_CreateActiveEntityScript_00d670e0_test.cpp'
+        PassPattern = '00d670e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d677a0'
+        Module = 'NScript::CQ_GuildTrainingWoodsWillScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsWillScript_CQGuildTrainingWoodsWillScript_00d677a0.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsWillScript_CQGuildTrainingWoodsWillScript_00d677a0_test.cpp'
+        PassPattern = '00d677a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d677d0'
+        Module = 'NScript::CQ_GuildTrainingWoodsWillScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsWillScript_RegisterMain_00d677d0.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsWillScript_RegisterMain_00d677d0_test.cpp'
+        PassPattern = '00d677d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d68d10'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsWillScript_CreateActiveEntityScript_00d68d10.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsWillScript_CreateActiveEntityScript_00d68d10_test.cpp'
+        PassPattern = '00d68d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d69390'
+        Module = 'NScript::CQ_HangingTreeEvilScript'
+        Source = '00/d6/NScriptCQHangingTreeEvilScript_RegisterMain_00d69390.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScript_RegisterMain_00d69390_test.cpp'
+        PassPattern = '00d69390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6b590'
+        Module = 'CEntityScriptBinding<NScript::CQ_HangingTreeEvilScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQHangingTreeEvilScript_CreateActiveEntityScript_00d6b590.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQHangingTreeEvilScript_CreateActiveEntityScript_00d6b590_test.cpp'
+        PassPattern = '00d6b590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6f3c0'
+        Module = 'NScript::CQ_HangingTreeGoodScript'
+        Source = '00/d6/NScriptCQHangingTreeGoodScript_RegisterMain_00d6f3c0.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeGoodScript_RegisterMain_00d6f3c0_test.cpp'
+        PassPattern = '00d6f3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d729e0'
+        Module = 'CEntityScriptBinding<NScript::CQ_HangingTreeGoodScript>'
+        Source = '00/d7/CEntityScriptBindingNScriptCQHangingTreeGoodScript_CreateActiveEntityScript_00d729e0.cpp'
+        TestSource = '00/d7/CEntityScriptBindingNScriptCQHangingTreeGoodScript_CreateActiveEntityScript_00d729e0_test.cpp'
+        PassPattern = '00d729e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d784d0'
+        Module = 'NScript::CQ_HeroSoulsScript'
+        Source = '00/d7/NScriptCQHeroSoulsScript_CQHeroSoulsScript_00d784d0.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsScript_CQHeroSoulsScript_00d784d0_test.cpp'
+        PassPattern = '00d784d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d78520'
+        Module = 'NScript::CQ_HeroSoulsScript'
+        Source = '00/d7/NScriptCQHeroSoulsScript_RegisterMain_00d78520.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsScript_RegisterMain_00d78520_test.cpp'
+        PassPattern = '00d78520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7a8a0'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsScript>'
+        Source = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsScript_CreateActiveEntityScript_00d7a8a0.cpp'
+        TestSource = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsScript_CreateActiveEntityScript_00d7a8a0_test.cpp'
+        PassPattern = '00d7a8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7ad70'
+        Module = 'NScript::CQ_HeroSoulsThunderScript'
+        Source = '00/d7/NScriptCQHeroSoulsThunderScript_RegisterMain_00d7ad70.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsThunderScript_RegisterMain_00d7ad70_test.cpp'
+        PassPattern = '00d7ad70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7c740'
+        Module = 'NScript::CQ_HeroSoulsArenaScript'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScript_RegisterMain_00d7c740.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScript_RegisterMain_00d7c740_test.cpp'
+        PassPattern = '00d7c740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d80d50'
+        Module = 'NScript::CQ_HeroSoulsBriarScript'
+        Source = '00/d8/NScriptCQHeroSoulsBriarScript_RegisterMain_00d80d50.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsBriarScript_RegisterMain_00d80d50_test.cpp'
+        PassPattern = '00d80d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d834e0'
+        Module = 'NScript::CQ_HeroSoulsMotherScript'
+        Source = '00/d8/NScriptCQHeroSoulsMotherScript_RegisterMain_00d834e0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsMotherScript_RegisterMain_00d834e0_test.cpp'
+        PassPattern = '00d834e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d83e60'
+        Module = 'NScript::CQ_HeroSoulsMotherScript::CHS_Screamer'
+        Source = '00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_Alloc_00d83e60.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_Alloc_00d83e60_test.cpp'
+        PassPattern = '00d83e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d84c20'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScript_RegisterMain_00d84c20.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScript_RegisterMain_00d84c20_test.cpp'
+        PassPattern = '00d84c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d87140'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsGuildmasterScript>'
+        Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsGuildmasterScript_CreateActiveEntityScript_00d87140.cpp'
+        TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsGuildmasterScript_CreateActiveEntityScript_00d87140_test.cpp'
+        PassPattern = '00d87140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d87ba0'
+        Module = 'NScript::CQ_HeroSoulsNostroScript'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScript_RegisterMain_00d87ba0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScript_RegisterMain_00d87ba0_test.cpp'
+        PassPattern = '00d87ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d89d70'
+        Module = 'NScript::CQ_HerosOldHouseScript'
+        Source = '00/d8/NScriptCQHerosOldHouseScript_CQHerosOldHouseScript_00d89d70.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScript_CQHerosOldHouseScript_00d89d70_test.cpp'
+        PassPattern = '00d89d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d89dc0'
+        Module = 'NScript::CQ_HerosOldHouseScript'
+        Source = '00/d8/NScriptCQHerosOldHouseScript_RegisterMain_00d89dc0.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScript_RegisterMain_00d89dc0_test.cpp'
+        PassPattern = '00d89dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8dc00'
+        Module = 'NScript::CQ_HobbeCaveScript'
+        Source = '00/d8/NScriptCQHobbeCaveScript_RegisterMain_00d8dc00.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScript_RegisterMain_00d8dc00_test.cpp'
+        PassPattern = '00d8dc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8ffa0'
+        Module = 'NScript::CQ_HobbeCaveScript::CJames'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCJames_Alloc_00d8ffa0.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCJames_Alloc_00d8ffa0_test.cpp'
+        PassPattern = '00d8ffa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d90e90'
+        Module = 'NScript::CQ_HobbeCaveScript::CBanditSacrifice'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Alloc_00d90e90.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Alloc_00d90e90_test.cpp'
+        PassPattern = '00d90e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9a0a0'
+        Module = 'NScript::CQ_HobbeToothContestScript'
+        Source = '00/d9/NScriptCQHobbeToothContestScript_RegisterMain_00d9a0a0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScript_RegisterMain_00d9a0a0_test.cpp'
+        PassPattern = '00d9a0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9e520'
+        Module = 'NScript::CQ_MinionCampScript'
+        Source = '00/d9/NScriptCQMinionCampScript_RegisterMain_00d9e520.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScript_RegisterMain_00d9e520_test.cpp'
+        PassPattern = '00d9e520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da33a0'
+        Module = 'NScript::CQ_MinionClifftopChaseScript'
+        Source = '00/da/NScriptCQMinionClifftopChaseScript_RegisterMain_00da33a0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScript_RegisterMain_00da33a0_test.cpp'
+        PassPattern = '00da33a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da4250'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMapKeeper'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Alloc_00da4250.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Alloc_00da4250_test.cpp'
+        PassPattern = '00da4250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daace0'
+        Module = 'NScript::CQ_NewOakValeIntroScript'
+        Source = '00/da/NScriptCQNewOakValeIntroScript_RegisterMain_00daace0.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScript_RegisterMain_00daace0_test.cpp'
+        PassPattern = '00daace0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dbf210'
+        Module = 'NScript::CQ_OakValeBanditRaidScript'
+        Source = '00/db/NScriptCQOakValeBanditRaidScript_RegisterMain_00dbf210.cpp'
+        TestSource = '00/db/NScriptCQOakValeBanditRaidScript_RegisterMain_00dbf210_test.cpp'
+        PassPattern = '00dbf210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc26b0'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_RegisterMain_00dc26b0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_RegisterMain_00dc26b0_test.cpp'
+        PassPattern = '00dc26b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcc660'
+        Module = 'NScript::CQ_OrchardFarmRaidScript'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScript_RegisterMain_00dcc660.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScript_RegisterMain_00dcc660_test.cpp'
+        PassPattern = '00dcc660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcde20'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CGuardTeamMember'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCGuardTeamMember_Alloc_00dcde20.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCGuardTeamMember_Alloc_00dcde20_test.cpp'
+        PassPattern = '00dcde20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd1fe0'
+        Module = 'NScript::CQ_OrchardFarmRaidEvilScript'
+        Source = '00/dd/NScriptCQOrchardFarmRaidEvilScript_CQOrchardFarmRaidEvilScript_00dd1fe0.cpp'
+        TestSource = '00/dd/NScriptCQOrchardFarmRaidEvilScript_CQOrchardFarmRaidEvilScript_00dd1fe0_test.cpp'
+        PassPattern = '00dd1fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd2240'
+        Module = 'NScript::CQ_OrchardFarmRaidEvilScript'
+        Source = '00/dd/NScriptCQOrchardFarmRaidEvilScript_RegisterMain_00dd2240.cpp'
+        TestSource = '00/dd/NScriptCQOrchardFarmRaidEvilScript_RegisterMain_00dd2240_test.cpp'
+        PassPattern = '00dd2240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd2360'
+        Module = 'NScript::CQ_OrchardFarmRaidGoodScript'
+        Source = '00/dd/NScriptCQOrchardFarmRaidGoodScript_CQOrchardFarmRaidGoodScript_00dd2360.cpp'
+        TestSource = '00/dd/NScriptCQOrchardFarmRaidGoodScript_CQOrchardFarmRaidGoodScript_00dd2360_test.cpp'
+        PassPattern = '00dd2360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd25c0'
+        Module = 'NScript::CQ_OrchardFarmRaidGoodScript'
+        Source = '00/dd/NScriptCQOrchardFarmRaidGoodScript_RegisterMain_00dd25c0.cpp'
+        TestSource = '00/dd/NScriptCQOrchardFarmRaidGoodScript_RegisterMain_00dd25c0_test.cpp'
+        PassPattern = '00dd25c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd2bc0'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_RegisterMain_00dd2bc0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_RegisterMain_00dd2bc0_test.cpp'
+        PassPattern = '00dd2bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddad30'
+        Module = 'NScript::CQ_PrisonRaceScript'
+        Source = '00/dd/NScriptCQPrisonRaceScript_CQPrisonRaceScript_00ddad30.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScript_CQPrisonRaceScript_00ddad30_test.cpp'
+        PassPattern = '00ddad30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddada0'
+        Module = 'NScript::CQ_PrisonRaceScript'
+        Source = '00/dd/NScriptCQPrisonRaceScript_RegisterMain_00ddada0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScript_RegisterMain_00ddada0_test.cpp'
+        PassPattern = '00ddada0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dddd80'
+        Module = 'NScript::CQ_PrisonWardenGameScript'
+        Source = '00/dd/NScriptCQPrisonWardenGameScript_RegisterMain_00dddd80.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScript_RegisterMain_00dddd80_test.cpp'
+        PassPattern = '00dddd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de0790'
+        Module = 'NScript::CQ_RansomVictimScript'
+        Source = '00/de/NScriptCQRansomVictimScript_RegisterMain_00de0790.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScript_RegisterMain_00de0790_test.cpp'
+        PassPattern = '00de0790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de4480'
+        Module = 'CEntityScriptBinding<NScript::CQ_RansomVictimScript>'
+        Source = '00/de/CEntityScriptBindingNScriptCQRansomVictimScript_CreateActiveEntityScript_00de4480.cpp'
+        TestSource = '00/de/CEntityScriptBindingNScriptCQRansomVictimScript_CreateActiveEntityScript_00de4480_test.cpp'
+        PassPattern = '00de4480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00debe10'
+        Module = 'NScript::CQ_RansomVictimChiefsHouseScript'
+        Source = '00/de/NScriptCQRansomVictimChiefsHouseScript_CQRansomVictimChiefsHouseScript_00debe10.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimChiefsHouseScript_CQRansomVictimChiefsHouseScript_00debe10_test.cpp'
+        PassPattern = '00debe10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00debe50'
+        Module = 'NScript::CQ_RansomVictimChiefsHouseScript'
+        Source = '00/de/NScriptCQRansomVictimChiefsHouseScript_RegisterMain_00debe50.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimChiefsHouseScript_RegisterMain_00debe50_test.cpp'
+        PassPattern = '00debe50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00deca10'
+        Module = 'NScript::CQ_SecretPassageScript'
+        Source = '00/de/NScriptCQSecretPassageScript_RegisterMain_00deca10.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScript_RegisterMain_00deca10_test.cpp'
+        PassPattern = '00deca10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df12e0'
+        Module = 'NScript::CQ_SummoningTheShipScript'
+        Source = '00/df/NScriptCQSummoningTheShipScript_RegisterMain_00df12e0.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScript_RegisterMain_00df12e0_test.cpp'
+        PassPattern = '00df12e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df4150'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScript_RegisterMain_00df4150.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScript_RegisterMain_00df4150_test.cpp'
+        PassPattern = '00df4150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df5f50'
+        Module = 'NScript::CQ_TraderConflictEvilScript'
+        Source = '00/df/NScriptCQTraderConflictEvilScript_RegisterMain_00df5f50.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScript_RegisterMain_00df5f50_test.cpp'
+        PassPattern = '00df5f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfa390'
+        Module = 'NScript::CQ_TraderConflictGoodScript'
+        Source = '00/df/NScriptCQTraderConflictGoodScript_RegisterMain_00dfa390.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScript_RegisterMain_00dfa390_test.cpp'
+        PassPattern = '00dfa390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e00c20'
+        Module = 'NScript::CQ_TraderEscortScript'
+        Source = '00/e0/NScriptCQTraderEscortScript_RegisterMain_00e00c20.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScript_RegisterMain_00e00c20_test.cpp'
+        PassPattern = '00e00c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0b0a0'
+        Module = 'NScript::CQ_UndeadRisingScript'
+        Source = '00/e0/NScriptCQUndeadRisingScript_RegisterMain_00e0b0a0.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScript_RegisterMain_00e0b0a0_test.cpp'
+        PassPattern = '00e0b0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0e5a0'
+        Module = 'CEntityScriptBinding<NScript::CQ_UndeadRisingScript>'
+        Source = '00/e0/CEntityScriptBindingNScriptCQUndeadRisingScript_CreateActiveEntityScript_00e0e5a0.cpp'
+        TestSource = '00/e0/CEntityScriptBindingNScriptCQUndeadRisingScript_CreateActiveEntityScript_00e0e5a0_test.cpp'
+        PassPattern = '00e0e5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0e8e0'
+        Module = 'NScript::CQ_WaspBossScript'
+        Source = '00/e0/NScriptCQWaspBossScript_RegisterMain_00e0e8e0.cpp'
+        TestSource = '00/e0/NScriptCQWaspBossScript_RegisterMain_00e0e8e0_test.cpp'
+        PassPattern = '00e0e8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e12170'
+        Module = 'CEntityScriptBinding<NScript::CQ_WaspBossScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQWaspBossScript_CreateActiveEntityScript_00e12170.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQWaspBossScript_CreateActiveEntityScript_00e12170_test.cpp'
+        PassPattern = '00e12170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e13e20'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_RegisterMain_00e13e20.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_RegisterMain_00e13e20_test.cpp'
+        PassPattern = '00e13e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e18220'
+        Module = 'CEntityScriptBinding<NScript::CQ_WhiteBalverineKnotholeGladeScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineKnotholeGladeScript_CreateActiveEntityScript_00e18220.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineKnotholeGladeScript_CreateActiveEntityScript_00e18220_test.cpp'
+        PassPattern = '00e18220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e18570'
+        Module = 'NScript::CQ_WhiteBalverineWWScript'
+        Source = '00/e1/NScriptCQWhiteBalverineWWScript_RegisterMain_00e18570.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineWWScript_RegisterMain_00e18570_test.cpp'
+        PassPattern = '00e18570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e193d0'
+        Module = 'CEntityScriptBinding<NScript::CQ_WhiteBalverineWWScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineWWScript_CreateActiveEntityScript_00e193d0.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineWWScript_CreateActiveEntityScript_00e193d0_test.cpp'
+        PassPattern = '00e193d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1a8d0'
+        Module = 'NScript::CQ_WizardBattleScript'
+        Source = '00/e1/NScriptCQWizardBattleScript_RegisterMain_00e1a8d0.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScript_RegisterMain_00e1a8d0_test.cpp'
+        PassPattern = '00e1a8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1bf60'
+        Module = 'CEntityScriptBinding<NScript::CQ_WizardBattleScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQWizardBattleScript_CreateActiveEntityScript_00e1bf60.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQWizardBattleScript_CreateActiveEntityScript_00e1bf60_test.cpp'
+        PassPattern = '00e1bf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1dc30'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e1/NScriptCQREscortTraderScript_RegisterMain_00e1dc30.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScript_RegisterMain_00e1dc30_test.cpp'
+        PassPattern = '00e1dc30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1f620'
+        Module = 'CEntityScriptBinding<NScript::CQR_EscortTraderScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQREscortTraderScript_CreateActiveEntityScript_00e1f620.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQREscortTraderScript_CreateActiveEntityScript_00e1f620_test.cpp'
+        PassPattern = '00e1f620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e24dd0'
+        Module = 'NScript::CQR_EscortTrader_ManagerScript'
+        Source = '00/e2/NScriptCQREscortTraderManagerScript_CQREscortTraderManagerScript_00e24dd0.cpp'
+        TestSource = '00/e2/NScriptCQREscortTraderManagerScript_CQREscortTraderManagerScript_00e24dd0_test.cpp'
+        PassPattern = '00e24dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e25690'
+        Module = 'NScript::CQR_EscortTrader_ManagerScript'
+        Source = '00/e2/NScriptCQREscortTraderManagerScript_RegisterMain_00e25690.cpp'
+        TestSource = '00/e2/NScriptCQREscortTraderManagerScript_RegisterMain_00e25690_test.cpp'
+        PassPattern = '00e25690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e259d0'
+        Module = 'NScript::CQS_GuardianSisterInfoScript'
+        Source = '00/e2/NScriptCQSGuardianSisterInfoScript_CQSGuardianSisterInfoScript_00e259d0.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfoScript_CQSGuardianSisterInfoScript_00e259d0_test.cpp'
+        PassPattern = '00e259d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e25a10'
+        Module = 'NScript::CQS_GuardianSisterInfoScript'
+        Source = '00/e2/NScriptCQSGuardianSisterInfoScript_RegisterMain_00e25a10.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfoScript_RegisterMain_00e25a10_test.cpp'
+        PassPattern = '00e25a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e25d90'
+        Module = 'CEntityScriptBinding<NScript::CQS_GuardianSisterInfoScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfoScript_CreateActiveEntityScript_00e25d90.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfoScript_CreateActiveEntityScript_00e25d90_test.cpp'
+        PassPattern = '00e25d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e267e0'
+        Module = 'NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript'
+        Source = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_CQSGuardianSisterInfo2SisterInBanditCampScript_00e267e0.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_CQSGuardianSisterInfo2SisterInBanditCampScript_00e267e0_test.cpp'
+        PassPattern = '00e267e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e26820'
+        Module = 'NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript'
+        Source = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_RegisterMain_00e26820.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_RegisterMain_00e26820_test.cpp'
+        PassPattern = '00e26820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e26c50'
+        Module = 'CEntityScriptBinding<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_CreateActiveEntityScript_00e26c50.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_CreateActiveEntityScript_00e26c50_test.cpp'
+        PassPattern = '00e26c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e27840'
+        Module = 'NScript::CQS_GuardianTrophyDealerInfoScript'
+        Source = '00/e2/NScriptCQSGuardianTrophyDealerInfoScript_CQSGuardianTrophyDealerInfoScript_00e27840.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianTrophyDealerInfoScript_CQSGuardianTrophyDealerInfoScript_00e27840_test.cpp'
+        PassPattern = '00e27840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e27880'
+        Module = 'NScript::CQS_GuardianTrophyDealerInfoScript'
+        Source = '00/e2/NScriptCQSGuardianTrophyDealerInfoScript_RegisterMain_00e27880.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianTrophyDealerInfoScript_RegisterMain_00e27880_test.cpp'
+        PassPattern = '00e27880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e27cb0'
+        Module = 'CEntityScriptBinding<NScript::CQS_GuardianTrophyDealerInfoScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianTrophyDealerInfoScript_CreateActiveEntityScript_00e27cb0.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianTrophyDealerInfoScript_CreateActiveEntityScript_00e27cb0_test.cpp'
+        PassPattern = '00e27cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e28d00'
+        Module = 'NScript::CQS_MeetSisterScript'
+        Source = '00/e2/NScriptCQSMeetSisterScript_CQSMeetSisterScript_00e28d00.cpp'
+        TestSource = '00/e2/NScriptCQSMeetSisterScript_CQSMeetSisterScript_00e28d00_test.cpp'
+        PassPattern = '00e28d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e28d40'
+        Module = 'NScript::CQS_MeetSisterScript'
+        Source = '00/e2/NScriptCQSMeetSisterScript_RegisterMain_00e28d40.cpp'
+        TestSource = '00/e2/NScriptCQSMeetSisterScript_RegisterMain_00e28d40_test.cpp'
+        PassPattern = '00e28d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e29110'
+        Module = 'CEntityScriptBinding<NScript::CQS_MeetSisterScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSMeetSisterScript_CreateActiveEntityScript_00e29110.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSMeetSisterScript_CreateActiveEntityScript_00e29110_test.cpp'
+        PassPattern = '00e29110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e29a80'
+        Module = 'NScript::CQS_ScytheInfoScript'
+        Source = '00/e2/NScriptCQSScytheInfoScript_RegisterMain_00e29a80.cpp'
+        TestSource = '00/e2/NScriptCQSScytheInfoScript_RegisterMain_00e29a80_test.cpp'
+        PassPattern = '00e29a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2a170'
+        Module = 'CEntityScriptBinding<NScript::CQS_ScytheInfoScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSScytheInfoScript_CreateActiveEntityScript_00e2a170.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSScytheInfoScript_CreateActiveEntityScript_00e2a170_test.cpp'
+        PassPattern = '00e2a170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2ac90'
+        Module = 'NScript::CV_AmbushScamScript'
+        Source = '00/e2/NScriptCVAmbushScamScript_RegisterMain_00e2ac90.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScript_RegisterMain_00e2ac90_test.cpp'
+        PassPattern = '00e2ac90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2e900'
+        Module = 'CEntityScriptBinding<NScript::CV_AmbushScamScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCVAmbushScamScript_CreateActiveEntityScript_00e2e900.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCVAmbushScamScript_CreateActiveEntityScript_00e2e900_test.cpp'
+        PassPattern = '00e2e900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e324a0'
+        Module = 'NScript::CV_ArcheryCompetitionScript'
+        Source = '00/e3/NScriptCVArcheryCompetitionScript_RegisterMain_00e324a0.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScript_RegisterMain_00e324a0_test.cpp'
+        PassPattern = '00e324a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e37340'
+        Module = 'CEntityScriptBinding<NScript::CV_ArcheryCompetitionScript>'
+        Source = '00/e3/CEntityScriptBindingNScriptCVArcheryCompetitionScript_CreateActiveEntityScript_00e37340.cpp'
+        TestSource = '00/e3/CEntityScriptBindingNScriptCVArcheryCompetitionScript_CreateActiveEntityScript_00e37340_test.cpp'
+        PassPattern = '00e37340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e37730'
+        Module = 'NScript::CV_AssassinAttacksScript'
+        Source = '00/e3/NScriptCVAssassinAttacksScript_RegisterMain_00e37730.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScript_RegisterMain_00e37730_test.cpp'
+        PassPattern = '00e37730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e38bd0'
+        Module = 'CEntityScriptBinding<NScript::CV_AssassinAttacksScript>'
+        Source = '00/e3/CEntityScriptBindingNScriptCVAssassinAttacksScript_CreateActiveEntityScript_00e38bd0.cpp'
+        TestSource = '00/e3/CEntityScriptBindingNScriptCVAssassinAttacksScript_CreateActiveEntityScript_00e38bd0_test.cpp'
+        PassPattern = '00e38bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e39aa0'
+        Module = 'NScript::CV_BordelloScript'
+        Source = '00/e3/NScriptCVBordelloScript_RegisterMain_00e39aa0.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScript_RegisterMain_00e39aa0_test.cpp'
+        PassPattern = '00e39aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3ab90'
+        Module = 'NScript::CV_BordelloScript::CBordelloLady'
+        Source = '00/e3/NScriptCVBordelloScriptCBordelloLady_Alloc_00e3ab90.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCBordelloLady_Alloc_00e3ab90_test.cpp'
+        PassPattern = '00e3ab90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3b740'
+        Module = 'CEntityScriptBinding<NScript::CV_BordelloScript>'
+        Source = '00/e3/CEntityScriptBindingNScriptCVBordelloScript_CreateActiveEntityScript_00e3b740.cpp'
+        TestSource = '00/e3/CEntityScriptBindingNScriptCVBordelloScript_CreateActiveEntityScript_00e3b740_test.cpp'
+        PassPattern = '00e3b740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e46c40'
+        Module = 'NScript::CV_BanditCampPathScript'
+        Source = '00/e4/NScriptCVBanditCampPathScript_RegisterMain_00e46c40.cpp'
+        TestSource = '00/e4/NScriptCVBanditCampPathScript_RegisterMain_00e46c40_test.cpp'
+        PassPattern = '00e46c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e47610'
+        Module = 'CEntityScriptBinding<NScript::CV_BanditCampPathScript>'
+        Source = '00/e4/CEntityScriptBindingNScriptCVBanditCampPathScript_CreateActiveEntityScript_00e47610.cpp'
+        TestSource = '00/e4/CEntityScriptBindingNScriptCVBanditCampPathScript_CreateActiveEntityScript_00e47610_test.cpp'
+        PassPattern = '00e47610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e478a0'
+        Module = 'NScript::CV_BanditTollScript'
+        Source = '00/e4/NScriptCVBanditTollScript_CVBanditTollScript_00e478a0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScript_CVBanditTollScript_00e478a0_test.cpp'
+        PassPattern = '00e478a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e47910'
+        Module = 'NScript::CV_BanditTollScript'
+        Source = '00/e4/NScriptCVBanditTollScript_RegisterMain_00e47910.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScript_RegisterMain_00e47910_test.cpp'
+        PassPattern = '00e47910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e48b40'
+        Module = 'NScript::CV_BanditTollScript::CTollBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCTollBandit_Alloc_00e48b40.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCTollBandit_Alloc_00e48b40_test.cpp'
+        PassPattern = '00e48b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4a890'
+        Module = 'NScript::CV_BanditTollScript::CBanditLeader'
+        Source = '00/e4/NScriptCVBanditTollScriptCBanditLeader_Alloc_00e4a890.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCBanditLeader_Alloc_00e4a890_test.cpp'
+        PassPattern = '00e4a890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4b1d0'
+        Module = 'CEntityScriptBinding<NScript::CV_BanditTollScript>'
+        Source = '00/e4/CEntityScriptBindingNScriptCVBanditTollScript_CreateActiveEntityScript_00e4b1d0.cpp'
+        TestSource = '00/e4/CEntityScriptBindingNScriptCVBanditTollScript_CreateActiveEntityScript_00e4b1d0_test.cpp'
+        PassPattern = '00e4b1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4f730'
+        Module = 'NScript::CV_BeardyBaldyScript'
+        Source = '00/e4/NScriptCVBeardyBaldyScript_RegisterMain_00e4f730.cpp'
+        TestSource = '00/e4/NScriptCVBeardyBaldyScript_RegisterMain_00e4f730_test.cpp'
+        PassPattern = '00e4f730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e540a0'
+        Module = 'CEntityScriptBinding<NScript::CV_BeardyBaldyScript>'
+        Source = '00/e5/CEntityScriptBindingNScriptCVBeardyBaldyScript_CreateActiveEntityScript_00e540a0.cpp'
+        TestSource = '00/e5/CEntityScriptBindingNScriptCVBeardyBaldyScript_CreateActiveEntityScript_00e540a0_test.cpp'
+        PassPattern = '00e540a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e543b0'
+        Module = 'NScript::CV_BookCollectingScript'
+        Source = '00/e5/NScriptCVBookCollectingScript_RegisterMain_00e543b0.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScript_RegisterMain_00e543b0_test.cpp'
+        PassPattern = '00e543b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e54580'
+        Module = 'NScript::CV_BookCollectingScript::CBS_Teacher'
+        Source = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_Alloc_00e54580.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_Alloc_00e54580_test.cpp'
+        PassPattern = '00e54580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e546d0'
+        Module = 'CEntityScriptBinding<NScript::CV_BookCollectingScript>'
+        Source = '00/e5/CEntityScriptBindingNScriptCVBookCollectingScript_CreateActiveEntityScript_00e546d0.cpp'
+        TestSource = '00/e5/CEntityScriptBindingNScriptCVBookCollectingScript_CreateActiveEntityScript_00e546d0_test.cpp'
+        PassPattern = '00e546d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e57c60'
+        Module = 'NScript::CV_BeggarAndChildScript'
+        Source = '00/e5/NScriptCVBeggarAndChildScript_RegisterMain_00e57c60.cpp'
+        TestSource = '00/e5/NScriptCVBeggarAndChildScript_RegisterMain_00e57c60_test.cpp'
+        PassPattern = '00e57c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5cf20'
+        Module = 'CEntityScriptBinding<NScript::CV_BeggarAndChildScript>'
+        Source = '00/e5/CEntityScriptBindingNScriptCVBeggarAndChildScript_CreateActiveEntityScript_00e5cf20.cpp'
+        TestSource = '00/e5/CEntityScriptBindingNScriptCVBeggarAndChildScript_CreateActiveEntityScript_00e5cf20_test.cpp'
+        PassPattern = '00e5cf20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5d240'
+        Module = 'NScript::CV_BodyGuardScript'
+        Source = '00/e5/NScriptCVBodyGuardScript_RegisterMain_00e5d240.cpp'
+        TestSource = '00/e5/NScriptCVBodyGuardScript_RegisterMain_00e5d240_test.cpp'
+        PassPattern = '00e5d240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5f000'
+        Module = 'CEntityScriptBinding<NScript::CV_BodyGuardScript>'
+        Source = '00/e5/CEntityScriptBindingNScriptCVBodyGuardScript_CreateActiveEntityScript_00e5f000.cpp'
+        TestSource = '00/e5/CEntityScriptBindingNScriptCVBodyGuardScript_CreateActiveEntityScript_00e5f000_test.cpp'
+        PassPattern = '00e5f000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e628e0'
+        Module = 'NScript::CV_ChickenKickingScript'
+        Source = '00/e6/NScriptCVChickenKickingScript_RegisterMain_00e628e0.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScript_RegisterMain_00e628e0_test.cpp'
+        PassPattern = '00e628e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e64020'
+        Module = 'CEntityScriptBinding<NScript::CV_ChickenKickingScript>'
+        Source = '00/e6/CEntityScriptBindingNScriptCVChickenKickingScript_CreateActiveEntityScript_00e64020.cpp'
+        TestSource = '00/e6/CEntityScriptBindingNScriptCVChickenKickingScript_CreateActiveEntityScript_00e64020_test.cpp'
+        PassPattern = '00e64020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e69030'
+        Module = 'NScript::CV_ChapelOfEvilScript'
+        Source = '00/e6/NScriptCVChapelOfEvilScript_RegisterMain_00e69030.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScript_RegisterMain_00e69030_test.cpp'
+        PassPattern = '00e69030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6b240'
+        Module = 'CEntityScriptBinding<NScript::CV_ChapelOfEvilScript>'
+        Source = '00/e6/CEntityScriptBindingNScriptCVChapelOfEvilScript_CreateActiveEntityScript_00e6b240.cpp'
+        TestSource = '00/e6/CEntityScriptBindingNScriptCVChapelOfEvilScript_CreateActiveEntityScript_00e6b240_test.cpp'
+        PassPattern = '00e6b240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6e2b0'
+        Module = 'NScript::CV_DemonDoorsScript'
+        Source = '00/e6/NScriptCVDemonDoorsScript_CVDemonDoorsScript_00e6e2b0.cpp'
+        TestSource = '00/e6/NScriptCVDemonDoorsScript_CVDemonDoorsScript_00e6e2b0_test.cpp'
+        PassPattern = '00e6e2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6e2e0'
+        Module = 'NScript::CV_DemonDoorsScript'
+        Source = '00/e6/NScriptCVDemonDoorsScript_RegisterMain_00e6e2e0.cpp'
+        TestSource = '00/e6/NScriptCVDemonDoorsScript_RegisterMain_00e6e2e0_test.cpp'
+        PassPattern = '00e6e2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e74bc0'
+        Module = 'CEntityScriptBinding<NScript::CV_DemonDoorsScript>'
+        Source = '00/e7/CEntityScriptBindingNScriptCVDemonDoorsScript_CreateActiveEntityScript_00e74bc0.cpp'
+        TestSource = '00/e7/CEntityScriptBindingNScriptCVDemonDoorsScript_CreateActiveEntityScript_00e74bc0_test.cpp'
+        PassPattern = '00e74bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e756d0'
+        Module = 'NScript::CV_ExposeMayorScript'
+        Source = '00/e7/NScriptCVExposeMayorScript_RegisterMain_00e756d0.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScript_RegisterMain_00e756d0_test.cpp'
+        PassPattern = '00e756d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e774e0'
+        Module = 'CEntityScriptBinding<NScript::CV_ExposeMayorScript>'
+        Source = '00/e7/CEntityScriptBindingNScriptCVExposeMayorScript_CreateActiveEntityScript_00e774e0.cpp'
+        TestSource = '00/e7/CEntityScriptBindingNScriptCVExposeMayorScript_CreateActiveEntityScript_00e774e0_test.cpp'
+        PassPattern = '00e774e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7b3f0'
+        Module = 'NScript::CV_FishermanScript'
+        Source = '00/e7/NScriptCVFishermanScript_CVFishermanScript_00e7b3f0.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScript_CVFishermanScript_00e7b3f0_test.cpp'
+        PassPattern = '00e7b3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7b440'
+        Module = 'NScript::CV_FishermanScript'
+        Source = '00/e7/NScriptCVFishermanScript_RegisterMain_00e7b440.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScript_RegisterMain_00e7b440_test.cpp'
+        PassPattern = '00e7b440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7c6b0'
+        Module = 'CEntityScriptBinding<NScript::CV_FishermanScript>'
+        Source = '00/e7/CEntityScriptBindingNScriptCVFishermanScript_CreateActiveEntityScript_00e7c6b0.cpp'
+        TestSource = '00/e7/CEntityScriptBindingNScriptCVFishermanScript_CreateActiveEntityScript_00e7c6b0_test.cpp'
+        PassPattern = '00e7c6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7e150'
+        Module = 'NScript::CV_FishingCompetitionScript'
+        Source = '00/e7/NScriptCVFishingCompetitionScript_RegisterMain_00e7e150.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScript_RegisterMain_00e7e150_test.cpp'
+        PassPattern = '00e7e150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7ed60'
+        Module = 'CEntityScriptBinding<NScript::CV_FishingCompetitionScript>'
+        Source = '00/e7/CEntityScriptBindingNScriptCVFishingCompetitionScript_CreateActiveEntityScript_00e7ed60.cpp'
+        TestSource = '00/e7/CEntityScriptBindingNScriptCVFishingCompetitionScript_CreateActiveEntityScript_00e7ed60_test.cpp'
+        PassPattern = '00e7ed60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e820d0'
+        Module = 'NScript::CV_FisticuffsClubScript'
+        Source = '00/e8/NScriptCVFisticuffsClubScript_RegisterMain_00e820d0.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScript_RegisterMain_00e820d0_test.cpp'
+        PassPattern = '00e820d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e83570'
+        Module = 'NScript::CV_FisticuffsClubScript::CTyler'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCTyler_Alloc_00e83570.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCTyler_Alloc_00e83570_test.cpp'
+        PassPattern = '00e83570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e83bc0'
+        Module = 'CEntityScriptBinding<NScript::CV_FisticuffsClubScript>'
+        Source = '00/e8/CEntityScriptBindingNScriptCVFisticuffsClubScript_CreateActiveEntityScript_00e83bc0.cpp'
+        TestSource = '00/e8/CEntityScriptBindingNScriptCVFisticuffsClubScript_CreateActiveEntityScript_00e83bc0_test.cpp'
+        PassPattern = '00e83bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8b850'
+        Module = 'NScript::CV_GhostGrannyNecklaceScript'
+        Source = '00/e8/NScriptCVGhostGrannyNecklaceScript_CVGhostGrannyNecklaceScript_00e8b850.cpp'
+        TestSource = '00/e8/NScriptCVGhostGrannyNecklaceScript_CVGhostGrannyNecklaceScript_00e8b850_test.cpp'
+        PassPattern = '00e8b850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8b8a0'
+        Module = 'NScript::CV_GhostGrannyNecklaceScript'
+        Source = '00/e8/NScriptCVGhostGrannyNecklaceScript_RegisterMain_00e8b8a0.cpp'
+        TestSource = '00/e8/NScriptCVGhostGrannyNecklaceScript_RegisterMain_00e8b8a0_test.cpp'
+        PassPattern = '00e8b8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8d0e0'
+        Module = 'CEntityScriptBinding<NScript::CV_GhostGrannyNecklaceScript>'
+        Source = '00/e8/CEntityScriptBindingNScriptCVGhostGrannyNecklaceScript_CreateActiveEntityScript_00e8d0e0.cpp'
+        TestSource = '00/e8/CEntityScriptBindingNScriptCVGhostGrannyNecklaceScript_CreateActiveEntityScript_00e8d0e0_test.cpp'
+        PassPattern = '00e8d0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e90790'
+        Module = 'NScript::CV_GuildMasterScript'
+        Source = '00/e9/NScriptCVGuildMasterScript_RegisterMain_00e90790.cpp'
+        TestSource = '00/e9/NScriptCVGuildMasterScript_RegisterMain_00e90790_test.cpp'
+        PassPattern = '00e90790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e90a30'
+        Module = 'CEntityScriptBinding<NScript::CV_GuildMasterScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVGuildMasterScript_CreateActiveEntityScript_00e90a30.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVGuildMasterScript_CreateActiveEntityScript_00e90a30_test.cpp'
+        PassPattern = '00e90a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e92970'
+        Module = 'NScript::CV_HiddenBootyScript'
+        Source = '00/e9/NScriptCVHiddenBootyScript_CVHiddenBootyScript_00e92970.cpp'
+        TestSource = '00/e9/NScriptCVHiddenBootyScript_CVHiddenBootyScript_00e92970_test.cpp'
+        PassPattern = '00e92970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e929b0'
+        Module = 'NScript::CV_HiddenBootyScript'
+        Source = '00/e9/NScriptCVHiddenBootyScript_RegisterMain_00e929b0.cpp'
+        TestSource = '00/e9/NScriptCVHiddenBootyScript_RegisterMain_00e929b0_test.cpp'
+        PassPattern = '00e929b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e92f70'
+        Module = 'NScript::CV_HiddenBootyScript::CM_HiddenBooty'
+        Source = '00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_Alloc_00e92f70.cpp'
+        TestSource = '00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_Alloc_00e92f70_test.cpp'
+        PassPattern = '00e92f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e93a60'
+        Module = 'CEntityScriptBinding<NScript::CV_HiddenBootyScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVHiddenBootyScript_CreateActiveEntityScript_00e93a60.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVHiddenBootyScript_CreateActiveEntityScript_00e93a60_test.cpp'
+        PassPattern = '00e93a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e93d50'
+        Module = 'NScript::CV_HauntedHouseScript'
+        Source = '00/e9/NScriptCVHauntedHouseScript_CVHauntedHouseScript_00e93d50.cpp'
+        TestSource = '00/e9/NScriptCVHauntedHouseScript_CVHauntedHouseScript_00e93d50_test.cpp'
+        PassPattern = '00e93d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e93da0'
+        Module = 'NScript::CV_HauntedHouseScript'
+        Source = '00/e9/NScriptCVHauntedHouseScript_RegisterMain_00e93da0.cpp'
+        TestSource = '00/e9/NScriptCVHauntedHouseScript_RegisterMain_00e93da0_test.cpp'
+        PassPattern = '00e93da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e95f80'
+        Module = 'CEntityScriptBinding<NScript::CV_HauntedHouseScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVHauntedHouseScript_CreateActiveEntityScript_00e95f80.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVHauntedHouseScript_CreateActiveEntityScript_00e95f80_test.cpp'
+        PassPattern = '00e95f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e96e30'
+        Module = 'NScript::CV_HeroDollsScript'
+        Source = '00/e9/NScriptCVHeroDollsScript_CVHeroDollsScript_00e96e30.cpp'
+        TestSource = '00/e9/NScriptCVHeroDollsScript_CVHeroDollsScript_00e96e30_test.cpp'
+        PassPattern = '00e96e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e96e70'
+        Module = 'NScript::CV_HeroDollsScript'
+        Source = '00/e9/NScriptCVHeroDollsScript_RegisterMain_00e96e70.cpp'
+        TestSource = '00/e9/NScriptCVHeroDollsScript_RegisterMain_00e96e70_test.cpp'
+        PassPattern = '00e96e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e98460'
+        Module = 'CEntityScriptBinding<NScript::CV_HeroDollsScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVHeroDollsScript_CreateActiveEntityScript_00e98460.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVHeroDollsScript_CreateActiveEntityScript_00e98460_test.cpp'
+        PassPattern = '00e98460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e986a0'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_CVHeroDuelScript_00e986a0.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_CVHeroDuelScript_00e986a0_test.cpp'
+        PassPattern = '00e986a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e98700'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_RegisterMain_00e98700.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_RegisterMain_00e98700_test.cpp'
+        PassPattern = '00e98700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9a0e0'
+        Module = 'CEntityScriptBinding<NScript::CV_HeroDuelScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVHeroDuelScript_CreateActiveEntityScript_00e9a0e0.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVHeroDuelScript_CreateActiveEntityScript_00e9a0e0_test.cpp'
+        PassPattern = '00e9a0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9c410'
+        Module = 'NScript::CV_IntroductionToTrophiesScript'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScript_RegisterMain_00e9c410.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScript_RegisterMain_00e9c410_test.cpp'
+        PassPattern = '00e9c410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9df30'
+        Module = 'CEntityScriptBinding<NScript::CV_IntroductionToTrophiesScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVIntroductionToTrophiesScript_CreateActiveEntityScript_00e9df30.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVIntroductionToTrophiesScript_CreateActiveEntityScript_00e9df30_test.cpp'
+        PassPattern = '00e9df30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9fc10'
+        Module = 'NScript::CV_KnotholeGladeGatesScript'
+        Source = '00/e9/NScriptCVKnotholeGladeGatesScript_RegisterMain_00e9fc10.cpp'
+        TestSource = '00/e9/NScriptCVKnotholeGladeGatesScript_RegisterMain_00e9fc10_test.cpp'
+        PassPattern = '00e9fc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea0f00'
+        Module = 'CEntityScriptBinding<NScript::CV_KnotholeGladeGatesScript>'
+        Source = '00/ea/CEntityScriptBindingNScriptCVKnotholeGladeGatesScript_CreateActiveEntityScript_00ea0f00.cpp'
+        TestSource = '00/ea/CEntityScriptBindingNScriptCVKnotholeGladeGatesScript_CreateActiveEntityScript_00ea0f00_test.cpp'
+        PassPattern = '00ea0f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea2cf0'
+        Module = 'NScript::CV_LostTraderScript'
+        Source = '00/ea/NScriptCVLostTraderScript_CVLostTraderScript_00ea2cf0.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScript_CVLostTraderScript_00ea2cf0_test.cpp'
+        PassPattern = '00ea2cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea2de0'
+        Module = 'NScript::CV_LostTraderScript'
+        Source = '00/ea/NScriptCVLostTraderScript_RegisterMain_00ea2de0.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScript_RegisterMain_00ea2de0_test.cpp'
+        PassPattern = '00ea2de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea5780'
+        Module = 'CEntityScriptBinding<NScript::CV_LostTraderScript>'
+        Source = '00/ea/CEntityScriptBindingNScriptCVLostTraderScript_CreateActiveEntityScript_00ea5780.cpp'
+        TestSource = '00/ea/CEntityScriptBindingNScriptCVLostTraderScript_CreateActiveEntityScript_00ea5780_test.cpp'
+        PassPattern = '00ea5780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7760'
+        Module = 'NScript::CV_MazeResearchScript'
+        Source = '00/ea/NScriptCVMazeResearchScript_RegisterMain_00ea7760.cpp'
+        TestSource = '00/ea/NScriptCVMazeResearchScript_RegisterMain_00ea7760_test.cpp'
+        PassPattern = '00ea7760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7ef0'
+        Module = 'CEntityScriptBinding<NScript::CV_MazeResearchScript>'
+        Source = '00/ea/CEntityScriptBindingNScriptCVMazeResearchScript_CreateActiveEntityScript_00ea7ef0.cpp'
+        TestSource = '00/ea/CEntityScriptBindingNScriptCVMazeResearchScript_CreateActiveEntityScript_00ea7ef0_test.cpp'
+        PassPattern = '00ea7ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea8740'
+        Module = 'NScript::CV_MurderTwistScript'
+        Source = '00/ea/NScriptCVMurderTwistScript_RegisterMain_00ea8740.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScript_RegisterMain_00ea8740_test.cpp'
+        PassPattern = '00ea8740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ead860'
+        Module = 'CEntityScriptBinding<NScript::CV_MurderTwistScript>'
+        Source = '00/ea/CEntityScriptBindingNScriptCVMurderTwistScript_CreateActiveEntityScript_00ead860.cpp'
+        TestSource = '00/ea/CEntityScriptBindingNScriptCVMurderTwistScript_CreateActiveEntityScript_00ead860_test.cpp'
+        PassPattern = '00ead860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eae980'
+        Module = 'NScript::CV_MurderTwistFinalScript'
+        Source = '00/ea/NScriptCVMurderTwistFinalScript_RegisterMain_00eae980.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistFinalScript_RegisterMain_00eae980_test.cpp'
+        PassPattern = '00eae980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6370'
+        Module = 'CEntityScriptBinding<NScript::CV_MurderTwistFinalScript>'
+        Source = '00/eb/CEntityScriptBindingNScriptCVMurderTwistFinalScript_CreateActiveEntityScript_00eb6370.cpp'
+        TestSource = '00/eb/CEntityScriptBindingNScriptCVMurderTwistFinalScript_CreateActiveEntityScript_00eb6370_test.cpp'
+        PassPattern = '00eb6370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6cb0'
+        Module = 'NScript::CV_MayorsInvitationScript'
+        Source = '00/eb/NScriptCVMayorsInvitationScript_RegisterMain_00eb6cb0.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScript_RegisterMain_00eb6cb0_test.cpp'
+        PassPattern = '00eb6cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb9710'
+        Module = 'CEntityScriptBinding<NScript::CV_MayorsInvitationScript>'
+        Source = '00/eb/CEntityScriptBindingNScriptCVMayorsInvitationScript_CreateActiveEntityScript_00eb9710.cpp'
+        TestSource = '00/eb/CEntityScriptBindingNScriptCVMayorsInvitationScript_CreateActiveEntityScript_00eb9710_test.cpp'
+        PassPattern = '00eb9710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebcca0'
+        Module = 'NScript::CV_OracleScript'
+        Source = '00/eb/NScriptCVOracleScript_CVOracleScript_00ebcca0.cpp'
+        TestSource = '00/eb/NScriptCVOracleScript_CVOracleScript_00ebcca0_test.cpp'
+        PassPattern = '00ebcca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebccd0'
+        Module = 'NScript::CV_OracleScript'
+        Source = '00/eb/NScriptCVOracleScript_RegisterMain_00ebccd0.cpp'
+        TestSource = '00/eb/NScriptCVOracleScript_RegisterMain_00ebccd0_test.cpp'
+        PassPattern = '00ebccd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebebf0'
+        Module = 'CEntityScriptBinding<NScript::CV_OracleScript>'
+        Source = '00/eb/CEntityScriptBindingNScriptCVOracleScript_CreateActiveEntityScript_00ebebf0.cpp'
+        TestSource = '00/eb/CEntityScriptBindingNScriptCVOracleScript_CreateActiveEntityScript_00ebebf0_test.cpp'
+        PassPattern = '00ebebf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebee90'
+        Module = 'NScript::CV_ParanoidWhispersScript'
+        Source = '00/eb/NScriptCVParanoidWhispersScript_CVParanoidWhispersScript_00ebee90.cpp'
+        TestSource = '00/eb/NScriptCVParanoidWhispersScript_CVParanoidWhispersScript_00ebee90_test.cpp'
+        PassPattern = '00ebee90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebeee0'
+        Module = 'NScript::CV_ParanoidWhispersScript'
+        Source = '00/eb/NScriptCVParanoidWhispersScript_RegisterMain_00ebeee0.cpp'
+        TestSource = '00/eb/NScriptCVParanoidWhispersScript_RegisterMain_00ebeee0_test.cpp'
+        PassPattern = '00ebeee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1000'
+        Module = 'CEntityScriptBinding<NScript::CV_ParanoidWhispersScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVParanoidWhispersScript_CreateActiveEntityScript_00ec1000.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVParanoidWhispersScript_CreateActiveEntityScript_00ec1000_test.cpp'
+        PassPattern = '00ec1000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1210'
+        Module = 'NScript::CV_PicnicAreaAfterWaspBossScript'
+        Source = '00/ec/NScriptCVPicnicAreaAfterWaspBossScript_CVPicnicAreaAfterWaspBossScript_00ec1210.cpp'
+        TestSource = '00/ec/NScriptCVPicnicAreaAfterWaspBossScript_CVPicnicAreaAfterWaspBossScript_00ec1210_test.cpp'
+        PassPattern = '00ec1210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1240'
+        Module = 'NScript::CV_PicnicAreaAfterWaspBossScript'
+        Source = '00/ec/NScriptCVPicnicAreaAfterWaspBossScript_RegisterMain_00ec1240.cpp'
+        TestSource = '00/ec/NScriptCVPicnicAreaAfterWaspBossScript_RegisterMain_00ec1240_test.cpp'
+        PassPattern = '00ec1240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec15d0'
+        Module = 'CEntityScriptBinding<NScript::CV_PicnicAreaAfterWaspBossScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVPicnicAreaAfterWaspBossScript_CreateActiveEntityScript_00ec15d0.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVPicnicAreaAfterWaspBossScript_CreateActiveEntityScript_00ec15d0_test.cpp'
+        PassPattern = '00ec15d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec17e0'
+        Module = 'NScript::CV_RandomPopulationSimScript'
+        Source = '00/ec/NScriptCVRandomPopulationSimScript_CVRandomPopulationSimScript_00ec17e0.cpp'
+        TestSource = '00/ec/NScriptCVRandomPopulationSimScript_CVRandomPopulationSimScript_00ec17e0_test.cpp'
+        PassPattern = '00ec17e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1850'
+        Module = 'NScript::CV_RandomPopulationSimScript'
+        Source = '00/ec/NScriptCVRandomPopulationSimScript_RegisterMain_00ec1850.cpp'
+        TestSource = '00/ec/NScriptCVRandomPopulationSimScript_RegisterMain_00ec1850_test.cpp'
+        PassPattern = '00ec1850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec2860'
+        Module = 'CEntityScriptBinding<NScript::CV_RandomPopulationSimScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVRandomPopulationSimScript_CreateActiveEntityScript_00ec2860.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVRandomPopulationSimScript_CreateActiveEntityScript_00ec2860_test.cpp'
+        PassPattern = '00ec2860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec3c20'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScript_CVRockTrollFirstEncounterScript_00ec3c20.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScript_CVRockTrollFirstEncounterScript_00ec3c20_test.cpp'
+        PassPattern = '00ec3c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec3ca0'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScript_RegisterMain_00ec3ca0.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScript_RegisterMain_00ec3ca0_test.cpp'
+        PassPattern = '00ec3ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec47c0'
+        Module = 'CEntityScriptBinding<NScript::CV_RockTrollFirstEncounterScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVRockTrollFirstEncounterScript_CreateActiveEntityScript_00ec47c0.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVRockTrollFirstEncounterScript_CreateActiveEntityScript_00ec47c0_test.cpp'
+        PassPattern = '00ec47c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec5440'
+        Module = 'NScript::CV_SickChildScript'
+        Source = '00/ec/NScriptCVSickChildScript_RegisterMain_00ec5440.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScript_RegisterMain_00ec5440_test.cpp'
+        PassPattern = '00ec5440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecd2d0'
+        Module = 'NScript::CV_SickChildScript::CWomanToAttract'
+        Source = '00/ec/NScriptCVSickChildScriptCWomanToAttract_Alloc_00ecd2d0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCWomanToAttract_Alloc_00ecd2d0_test.cpp'
+        PassPattern = '00ecd2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecd600'
+        Module = 'CEntityScriptBinding<NScript::CV_SickChildScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVSickChildScript_CreateActiveEntityScript_00ecd600.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVSickChildScript_CreateActiveEntityScript_00ecd600_test.cpp'
+        PassPattern = '00ecd600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed0f50'
+        Module = 'NScript::CV_SingingStonesScript'
+        Source = '00/ed/NScriptCVSingingStonesScript_RegisterMain_00ed0f50.cpp'
+        TestSource = '00/ed/NScriptCVSingingStonesScript_RegisterMain_00ed0f50_test.cpp'
+        PassPattern = '00ed0f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed1420'
+        Module = 'NScript::CV_SingingStonesScript::CSingingStone'
+        Source = '00/ed/NScriptCVSingingStonesScriptCSingingStone_Alloc_00ed1420.cpp'
+        TestSource = '00/ed/NScriptCVSingingStonesScriptCSingingStone_Alloc_00ed1420_test.cpp'
+        PassPattern = '00ed1420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed28c0'
+        Module = 'CEntityScriptBinding<NScript::CV_SingingStonesScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVSingingStonesScript_CreateActiveEntityScript_00ed28c0.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVSingingStonesScript_CreateActiveEntityScript_00ed28c0_test.cpp'
+        PassPattern = '00ed28c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed3a50'
+        Module = 'NScript::CV_StatueMasterScript'
+        Source = '00/ed/NScriptCVStatueMasterScript_CVStatueMasterScript_00ed3a50.cpp'
+        TestSource = '00/ed/NScriptCVStatueMasterScript_CVStatueMasterScript_00ed3a50_test.cpp'
+        PassPattern = '00ed3a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed3a90'
+        Module = 'NScript::CV_StatueMasterScript'
+        Source = '00/ed/NScriptCVStatueMasterScript_RegisterMain_00ed3a90.cpp'
+        TestSource = '00/ed/NScriptCVStatueMasterScript_RegisterMain_00ed3a90_test.cpp'
+        PassPattern = '00ed3a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4890'
+        Module = 'CEntityScriptBinding<NScript::CV_StatueMasterScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVStatueMasterScript_CreateActiveEntityScript_00ed4890.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVStatueMasterScript_CreateActiveEntityScript_00ed4890_test.cpp'
+        PassPattern = '00ed4890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4b90'
+        Module = 'NScript::CV_SwordInTheStoneScript'
+        Source = '00/ed/NScriptCVSwordInTheStoneScript_RegisterMain_00ed4b90.cpp'
+        TestSource = '00/ed/NScriptCVSwordInTheStoneScript_RegisterMain_00ed4b90_test.cpp'
+        PassPattern = '00ed4b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed5340'
+        Module = 'CEntityScriptBinding<NScript::CV_SwordInTheStoneScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVSwordInTheStoneScript_CreateActiveEntityScript_00ed5340.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVSwordInTheStoneScript_CreateActiveEntityScript_00ed5340_test.cpp'
+        PassPattern = '00ed5340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7790'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_RegisterMain_00ed7790.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_RegisterMain_00ed7790_test.cpp'
+        PassPattern = '00ed7790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed8210'
+        Module = 'CEntityScriptBinding<NScript::CV_TalentlessBardScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVTalentlessBardScript_CreateActiveEntityScript_00ed8210.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVTalentlessBardScript_CreateActiveEntityScript_00ed8210_test.cpp'
+        PassPattern = '00ed8210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edadf0'
+        Module = 'NScript::CV_TempleOfLightScript'
+        Source = '00/ed/NScriptCVTempleOfLightScript_CVTempleOfLightScript_00edadf0.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScript_CVTempleOfLightScript_00edadf0_test.cpp'
+        PassPattern = '00edadf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edae70'
+        Module = 'NScript::CV_TempleOfLightScript'
+        Source = '00/ed/NScriptCVTempleOfLightScript_RegisterMain_00edae70.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScript_RegisterMain_00edae70_test.cpp'
+        PassPattern = '00edae70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edcea0'
+        Module = 'CEntityScriptBinding<NScript::CV_TempleOfLightScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVTempleOfLightScript_CreateActiveEntityScript_00edcea0.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVTempleOfLightScript_CreateActiveEntityScript_00edcea0_test.cpp'
+        PassPattern = '00edcea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edec70'
+        Module = 'NScript::CV_TravellingHeroesScript'
+        Source = '00/ed/NScriptCVTravellingHeroesScript_RegisterMain_00edec70.cpp'
+        TestSource = '00/ed/NScriptCVTravellingHeroesScript_RegisterMain_00edec70_test.cpp'
+        PassPattern = '00edec70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee1c10'
+        Module = 'CEntityScriptBinding<NScript::CV_TravellingHeroesScript>'
+        Source = '00/ee/CEntityScriptBindingNScriptCVTravellingHeroesScript_CreateActiveEntityScript_00ee1c10.cpp'
+        TestSource = '00/ee/CEntityScriptBindingNScriptCVTravellingHeroesScript_CreateActiveEntityScript_00ee1c10_test.cpp'
+        PassPattern = '00ee1c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee4710'
+        Module = 'NScript::CV_TourGuideScript'
+        Source = '00/ee/NScriptCVTourGuideScript_RegisterMain_00ee4710.cpp'
+        TestSource = '00/ee/NScriptCVTourGuideScript_RegisterMain_00ee4710_test.cpp'
+        PassPattern = '00ee4710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee5570'
+        Module = 'CEntityScriptBinding<NScript::CV_TourGuideScript>'
+        Source = '00/ee/CEntityScriptBindingNScriptCVTourGuideScript_CreateActiveEntityScript_00ee5570.cpp'
+        TestSource = '00/ee/CEntityScriptBindingNScriptCVTourGuideScript_CreateActiveEntityScript_00ee5570_test.cpp'
+        PassPattern = '00ee5570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee6d30'
+        Module = 'NScript::CV_TrophyDealerScript'
+        Source = '00/ee/NScriptCVTrophyDealerScript_CVTrophyDealerScript_00ee6d30.cpp'
+        TestSource = '00/ee/NScriptCVTrophyDealerScript_CVTrophyDealerScript_00ee6d30_test.cpp'
+        PassPattern = '00ee6d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee6df0'
+        Module = 'NScript::CV_TrophyDealerScript'
+        Source = '00/ee/NScriptCVTrophyDealerScript_RegisterMain_00ee6df0.cpp'
+        TestSource = '00/ee/NScriptCVTrophyDealerScript_RegisterMain_00ee6df0_test.cpp'
+        PassPattern = '00ee6df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee7540'
+        Module = 'CEntityScriptBinding<NScript::CV_TrophyDealerScript>'
+        Source = '00/ee/CEntityScriptBindingNScriptCVTrophyDealerScript_CreateActiveEntityScript_00ee7540.cpp'
+        TestSource = '00/ee/CEntityScriptBindingNScriptCVTrophyDealerScript_CreateActiveEntityScript_00ee7540_test.cpp'
+        PassPattern = '00ee7540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee8210'
+        Module = 'NScript::CCS_OakValeRevisitedScript'
+        Source = '00/ee/NScriptCCSOakValeRevisitedScript_RegisterMain_00ee8210.cpp'
+        TestSource = '00/ee/NScriptCCSOakValeRevisitedScript_RegisterMain_00ee8210_test.cpp'
+        PassPattern = '00ee8210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee8eb0'
+        Module = 'NScript::CGlobal_WatchForHeroDeathScript'
+        Source = '00/ee/NScriptCGlobalWatchForHeroDeathScript_RegisterMain_00ee8eb0.cpp'
+        TestSource = '00/ee/NScriptCGlobalWatchForHeroDeathScript_RegisterMain_00ee8eb0_test.cpp'
+        PassPattern = '00ee8eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee8f50'
+        Module = 'NScript::CGlobal_WatchForHeroDeathScript'
+        Source = '00/ee/NScriptCGlobalWatchForHeroDeathScript_Main_00ee8f50.cpp'
+        TestSource = '00/ee/NScriptCGlobalWatchForHeroDeathScript_Main_00ee8f50_test.cpp'
+        PassPattern = '00ee8f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee9120'
+        Module = 'NScript::CGlobal_DebugCycleThroughSpeechScript'
+        Source = '00/ee/NScriptCGlobalDebugCycleThroughSpeechScript_RegisterMain_00ee9120.cpp'
+        TestSource = '00/ee/NScriptCGlobalDebugCycleThroughSpeechScript_RegisterMain_00ee9120_test.cpp'
+        PassPattern = '00ee9120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee94d0'
+        Module = 'NScript::CExpression_FishScript'
+        Source = '00/ee/NScriptCExpressionFishScript_RegisterMain_00ee94d0.cpp'
+        TestSource = '00/ee/NScriptCExpressionFishScript_RegisterMain_00ee94d0_test.cpp'
+        PassPattern = '00ee94d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee9f80'
+        Module = 'NScript::CExpression_FollowScript'
+        Source = '00/ee/NScriptCExpressionFollowScript_RegisterMain_00ee9f80.cpp'
+        TestSource = '00/ee/NScriptCExpressionFollowScript_RegisterMain_00ee9f80_test.cpp'
+        PassPattern = '00ee9f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eea680'
+        Module = 'NScript::CExpression_WaitScript'
+        Source = '00/ee/NScriptCExpressionWaitScript_RegisterMain_00eea680.cpp'
+        TestSource = '00/ee/NScriptCExpressionWaitScript_RegisterMain_00eea680_test.cpp'
+        PassPattern = '00eea680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeadb0'
+        Module = 'NScript::CExpression_DigScript'
+        Source = '00/ee/NScriptCExpressionDigScript_RegisterMain_00eeadb0.cpp'
+        TestSource = '00/ee/NScriptCExpressionDigScript_RegisterMain_00eeadb0_test.cpp'
+        PassPattern = '00eeadb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeb670'
+        Module = 'NScript::CExpression_PickpocketScript'
+        Source = '00/ee/NScriptCExpressionPickpocketScript_RegisterMain_00eeb670.cpp'
+        TestSource = '00/ee/NScriptCExpressionPickpocketScript_RegisterMain_00eeb670_test.cpp'
+        PassPattern = '00eeb670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eebcb0'
+        Module = 'NScript::CExpression_PicklockScript'
+        Source = '00/ee/NScriptCExpressionPicklockScript_RegisterMain_00eebcb0.cpp'
+        TestSource = '00/ee/NScriptCExpressionPicklockScript_RegisterMain_00eebcb0_test.cpp'
+        PassPattern = '00eebcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eec2d0'
+        Module = 'NScript::CExpression_StealScript'
+        Source = '00/ee/NScriptCExpressionStealScript_RegisterMain_00eec2d0.cpp'
+        TestSource = '00/ee/NScriptCExpressionStealScript_RegisterMain_00eec2d0_test.cpp'
+        PassPattern = '00eec2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eec690'
+        Module = 'NScript::CGlobal_GiveHeroItemsFromRewardChestScript'
+        Source = '00/ee/NScriptCGlobalGiveHeroItemsFromRewardChestScript_RegisterMain_00eec690.cpp'
+        TestSource = '00/ee/NScriptCGlobalGiveHeroItemsFromRewardChestScript_RegisterMain_00eec690_test.cpp'
+        PassPattern = '00eec690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eec7d0'
+        Module = 'NScript::CGlobal_OpenChestScript'
+        Source = '00/ee/NScriptCGlobalOpenChestScript_RegisterMain_00eec7d0.cpp'
+        TestSource = '00/ee/NScriptCGlobalOpenChestScript_RegisterMain_00eec7d0_test.cpp'
+        PassPattern = '00eec7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eecf70'
+        Module = 'NScript::CGlobal_ToggleTimeDisplayScript'
+        Source = '00/ee/NScriptCGlobalToggleTimeDisplayScript_RegisterMain_00eecf70.cpp'
+        TestSource = '00/ee/NScriptCGlobalToggleTimeDisplayScript_RegisterMain_00eecf70_test.cpp'
+        PassPattern = '00eecf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed0b0'
+        Module = 'NScript::CalextestScript'
+        Source = '00/ee/NScriptCalextestScript_CalextestScript_00eed0b0.cpp'
+        TestSource = '00/ee/NScriptCalextestScript_CalextestScript_00eed0b0_test.cpp'
+        PassPattern = '00eed0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed160'
+        Module = 'NScript::CalextestScript'
+        Source = '00/ee/NScriptCalextestScript_RegisterMain_00eed160.cpp'
+        TestSource = '00/ee/NScriptCalextestScript_RegisterMain_00eed160_test.cpp'
+        PassPattern = '00eed160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed280'
+        Module = 'NScript::CPersonalScript_alextestScript'
+        Source = '00/ee/NScriptCPersonalScriptalextestScript_CPersonalScriptalextestScript_00eed280.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptalextestScript_CPersonalScriptalextestScript_00eed280_test.cpp'
+        PassPattern = '00eed280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed2c0'
+        Module = 'NScript::CPersonalScript_alextestScript'
+        Source = '00/ee/NScriptCPersonalScriptalextestScript_RegisterMain_00eed2c0.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptalextestScript_RegisterMain_00eed2c0_test.cpp'
+        PassPattern = '00eed2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeda40'
+        Module = 'CEntityScriptBinding<NScript::CPersonalScript_alextestScript>'
+        Source = '00/ee/CEntityScriptBindingNScriptCPersonalScriptalextestScript_CreateActiveEntityScript_00eeda40.cpp'
+        TestSource = '00/ee/CEntityScriptBindingNScriptCPersonalScriptalextestScript_CreateActiveEntityScript_00eeda40_test.cpp'
+        PassPattern = '00eeda40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eee730'
+        Module = 'NScript::CEmptyScript'
+        Source = '00/ee/NScriptCEmptyScript_CEmptyScript_00eee730.cpp'
+        TestSource = '00/ee/NScriptCEmptyScript_CEmptyScript_00eee730_test.cpp'
+        PassPattern = '00eee730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eee760'
+        Module = 'NScript::CEmptyScript'
+        Source = '00/ee/NScriptCEmptyScript_RegisterMain_00eee760.cpp'
+        TestSource = '00/ee/NScriptCEmptyScript_RegisterMain_00eee760_test.cpp'
+        PassPattern = '00eee760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eee9a0'
+        Module = 'NScript::CTestTheInventoryScript'
+        Source = '00/ee/NScriptCTestTheInventoryScript_CTestTheInventoryScript_00eee9a0.cpp'
+        TestSource = '00/ee/NScriptCTestTheInventoryScript_CTestTheInventoryScript_00eee9a0_test.cpp'
+        PassPattern = '00eee9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eee9d0'
+        Module = 'NScript::CTestTheInventoryScript'
+        Source = '00/ee/NScriptCTestTheInventoryScript_RegisterMain_00eee9d0.cpp'
+        TestSource = '00/ee/NScriptCTestTheInventoryScript_RegisterMain_00eee9d0_test.cpp'
+        PassPattern = '00eee9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeeea0'
+        Module = 'NScript::CTestQuestCard1Script'
+        Source = '00/ee/NScriptCTestQuestCard1Script_CTestQuestCard1Script_00eeeea0.cpp'
+        TestSource = '00/ee/NScriptCTestQuestCard1Script_CTestQuestCard1Script_00eeeea0_test.cpp'
+        PassPattern = '00eeeea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeeed0'
+        Module = 'NScript::CTestQuestCard1Script'
+        Source = '00/ee/NScriptCTestQuestCard1Script_RegisterMain_00eeeed0.cpp'
+        TestSource = '00/ee/NScriptCTestQuestCard1Script_RegisterMain_00eeeed0_test.cpp'
+        PassPattern = '00eeeed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef5a0'
+        Module = 'NScript::CTestQuestCard2Script'
+        Source = '00/ee/NScriptCTestQuestCard2Script_CTestQuestCard2Script_00eef5a0.cpp'
+        TestSource = '00/ee/NScriptCTestQuestCard2Script_CTestQuestCard2Script_00eef5a0_test.cpp'
+        PassPattern = '00eef5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef610'
+        Module = 'NScript::CTestQuestCard2Script'
+        Source = '00/ee/NScriptCTestQuestCard2Script_RegisterMain_00eef610.cpp'
+        TestSource = '00/ee/NScriptCTestQuestCard2Script_RegisterMain_00eef610_test.cpp'
+        PassPattern = '00eef610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef730'
+        Module = 'NScript::CTestQuestCard3Script'
+        Source = '00/ee/NScriptCTestQuestCard3Script_CTestQuestCard3Script_00eef730.cpp'
+        TestSource = '00/ee/NScriptCTestQuestCard3Script_CTestQuestCard3Script_00eef730_test.cpp'
+        PassPattern = '00eef730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef7a0'
+        Module = 'NScript::CTestQuestCard3Script'
+        Source = '00/ee/NScriptCTestQuestCard3Script_RegisterMain_00eef7a0.cpp'
+        TestSource = '00/ee/NScriptCTestQuestCard3Script_RegisterMain_00eef7a0_test.cpp'
+        PassPattern = '00eef7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef8c0'
+        Module = 'NScript::CTestNewNav1Script'
+        Source = '00/ee/NScriptCTestNewNav1Script_CTestNewNav1Script_00eef8c0.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav1Script_CTestNewNav1Script_00eef8c0_test.cpp'
+        PassPattern = '00eef8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef900'
+        Module = 'NScript::CTestNewNav1Script'
+        Source = '00/ee/NScriptCTestNewNav1Script_RegisterMain_00eef900.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav1Script_RegisterMain_00eef900_test.cpp'
+        PassPattern = '00eef900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefa20'
+        Module = 'NScript::CTestNewNav2Script'
+        Source = '00/ee/NScriptCTestNewNav2Script_CTestNewNav2Script_00eefa20.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav2Script_CTestNewNav2Script_00eefa20_test.cpp'
+        PassPattern = '00eefa20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefa60'
+        Module = 'NScript::CTestNewNav2Script'
+        Source = '00/ee/NScriptCTestNewNav2Script_RegisterMain_00eefa60.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav2Script_RegisterMain_00eefa60_test.cpp'
+        PassPattern = '00eefa60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefb80'
+        Module = 'NScript::CTestNewNav3Script'
+        Source = '00/ee/NScriptCTestNewNav3Script_CTestNewNav3Script_00eefb80.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav3Script_CTestNewNav3Script_00eefb80_test.cpp'
+        PassPattern = '00eefb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefbc0'
+        Module = 'NScript::CTestNewNav3Script'
+        Source = '00/ee/NScriptCTestNewNav3Script_RegisterMain_00eefbc0.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav3Script_RegisterMain_00eefbc0_test.cpp'
+        PassPattern = '00eefbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefce0'
+        Module = 'NScript::CTestNewNav4Script'
+        Source = '00/ee/NScriptCTestNewNav4Script_CTestNewNav4Script_00eefce0.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav4Script_CTestNewNav4Script_00eefce0_test.cpp'
+        PassPattern = '00eefce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefd20'
+        Module = 'NScript::CTestNewNav4Script'
+        Source = '00/ee/NScriptCTestNewNav4Script_RegisterMain_00eefd20.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav4Script_RegisterMain_00eefd20_test.cpp'
+        PassPattern = '00eefd20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefe40'
+        Module = 'NScript::CTestNewNav5Script'
+        Source = '00/ee/NScriptCTestNewNav5Script_CTestNewNav5Script_00eefe40.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav5Script_CTestNewNav5Script_00eefe40_test.cpp'
+        PassPattern = '00eefe40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefe80'
+        Module = 'NScript::CTestNewNav5Script'
+        Source = '00/ee/NScriptCTestNewNav5Script_RegisterMain_00eefe80.cpp'
+        TestSource = '00/ee/NScriptCTestNewNav5Script_RegisterMain_00eefe80_test.cpp'
+        PassPattern = '00eefe80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeffa0'
+        Module = 'NScript::CPersonalScript_EmptyScript'
+        Source = '00/ee/NScriptCPersonalScriptEmptyScript_CPersonalScriptEmptyScript_00eeffa0.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptEmptyScript_CPersonalScriptEmptyScript_00eeffa0_test.cpp'
+        PassPattern = '00eeffa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeffd0'
+        Module = 'NScript::CPersonalScript_EmptyScript'
+        Source = '00/ee/NScriptCPersonalScriptEmptyScript_RegisterMain_00eeffd0.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptEmptyScript_RegisterMain_00eeffd0_test.cpp'
+        PassPattern = '00eeffd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef5070'
+        Module = 'CEntityScriptBinding<NScript::CPersonalScript_EmptyScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCPersonalScriptEmptyScript_CreateActiveEntityScript_00ef5070.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCPersonalScriptEmptyScript_CreateActiveEntityScript_00ef5070_test.cpp'
+        PassPattern = '00ef5070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef9190'
+        Module = 'NScript::Cjoss_test_scriptsScript'
+        Source = '00/ef/NScriptCjosstestscriptsScript_CjosstestscriptsScript_00ef9190.cpp'
+        TestSource = '00/ef/NScriptCjosstestscriptsScript_CjosstestscriptsScript_00ef9190_test.cpp'
+        PassPattern = '00ef9190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef91c0'
+        Module = 'NScript::Cjoss_test_scriptsScript'
+        Source = '00/ef/NScriptCjosstestscriptsScript_RegisterMain_00ef91c0.cpp'
+        TestSource = '00/ef/NScriptCjosstestscriptsScript_RegisterMain_00ef91c0_test.cpp'
+        PassPattern = '00ef91c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef9f40'
+        Module = 'NScript::Cguy_scriptScript'
+        Source = '00/ef/NScriptCguyscriptScript_CguyscriptScript_00ef9f40.cpp'
+        TestSource = '00/ef/NScriptCguyscriptScript_CguyscriptScript_00ef9f40_test.cpp'
+        PassPattern = '00ef9f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef9f70'
+        Module = 'NScript::Cguy_scriptScript'
+        Source = '00/ef/NScriptCguyscriptScript_RegisterMain_00ef9f70.cpp'
+        TestSource = '00/ef/NScriptCguyscriptScript_RegisterMain_00ef9f70_test.cpp'
+        PassPattern = '00ef9f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efa420'
+        Module = 'NScript::Cbandit_level_cutsceneScript'
+        Source = '00/ef/NScriptCbanditlevelcutsceneScript_CbanditlevelcutsceneScript_00efa420.cpp'
+        TestSource = '00/ef/NScriptCbanditlevelcutsceneScript_CbanditlevelcutsceneScript_00efa420_test.cpp'
+        PassPattern = '00efa420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efa450'
+        Module = 'NScript::Cbandit_level_cutsceneScript'
+        Source = '00/ef/NScriptCbanditlevelcutsceneScript_RegisterMain_00efa450.cpp'
+        TestSource = '00/ef/NScriptCbanditlevelcutsceneScript_RegisterMain_00efa450_test.cpp'
+        PassPattern = '00efa450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efaf90'
+        Module = 'NScript::CDanyalTestScriptsScript'
+        Source = '00/ef/NScriptCDanyalTestScriptsScript_CDanyalTestScriptsScript_00efaf90.cpp'
+        TestSource = '00/ef/NScriptCDanyalTestScriptsScript_CDanyalTestScriptsScript_00efaf90_test.cpp'
+        PassPattern = '00efaf90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efaff0'
+        Module = 'NScript::CDanyalTestScriptsScript'
+        Source = '00/ef/NScriptCDanyalTestScriptsScript_RegisterMain_00efaff0.cpp'
+        TestSource = '00/ef/NScriptCDanyalTestScriptsScript_RegisterMain_00efaff0_test.cpp'
+        PassPattern = '00efaff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb110'
+        Module = 'NScript::CProximityPodiumTestScript'
+        Source = '00/ef/NScriptCProximityPodiumTestScript_CProximityPodiumTestScript_00efb110.cpp'
+        TestSource = '00/ef/NScriptCProximityPodiumTestScript_CProximityPodiumTestScript_00efb110_test.cpp'
+        PassPattern = '00efb110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb140'
+        Module = 'NScript::CProximityPodiumTestScript'
+        Source = '00/ef/NScriptCProximityPodiumTestScript_RegisterMain_00efb140.cpp'
+        TestSource = '00/ef/NScriptCProximityPodiumTestScript_RegisterMain_00efb140_test.cpp'
+        PassPattern = '00efb140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb460'
+        Module = 'CEntityScriptBinding<NScript::CProximityPodiumTestScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCProximityPodiumTestScript_CreateActiveEntityScript_00efb460.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCProximityPodiumTestScript_CreateActiveEntityScript_00efb460_test.cpp'
+        PassPattern = '00efb460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb670'
+        Module = 'NScript::CHitSwitchTestScript'
+        Source = '00/ef/NScriptCHitSwitchTestScript_CHitSwitchTestScript_00efb670.cpp'
+        TestSource = '00/ef/NScriptCHitSwitchTestScript_CHitSwitchTestScript_00efb670_test.cpp'
+        PassPattern = '00efb670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb6a0'
+        Module = 'NScript::CHitSwitchTestScript'
+        Source = '00/ef/NScriptCHitSwitchTestScript_RegisterMain_00efb6a0.cpp'
+        TestSource = '00/ef/NScriptCHitSwitchTestScript_RegisterMain_00efb6a0_test.cpp'
+        PassPattern = '00efb6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efbbd0'
+        Module = 'NScript::CGuildSealTriggerTestScript'
+        Source = '00/ef/NScriptCGuildSealTriggerTestScript_CGuildSealTriggerTestScript_00efbbd0.cpp'
+        TestSource = '00/ef/NScriptCGuildSealTriggerTestScript_CGuildSealTriggerTestScript_00efbbd0_test.cpp'
+        PassPattern = '00efbbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efbc00'
+        Module = 'NScript::CGuildSealTriggerTestScript'
+        Source = '00/ef/NScriptCGuildSealTriggerTestScript_RegisterMain_00efbc00.cpp'
+        TestSource = '00/ef/NScriptCGuildSealTriggerTestScript_RegisterMain_00efbc00_test.cpp'
+        PassPattern = '00efbc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc190'
+        Module = 'NScript::CHeroTurningDebuggerScript'
+        Source = '00/ef/NScriptCHeroTurningDebuggerScript_CHeroTurningDebuggerScript_00efc190.cpp'
+        TestSource = '00/ef/NScriptCHeroTurningDebuggerScript_CHeroTurningDebuggerScript_00efc190_test.cpp'
+        PassPattern = '00efc190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc1c0'
+        Module = 'NScript::CHeroTurningDebuggerScript'
+        Source = '00/ef/NScriptCHeroTurningDebuggerScript_RegisterMain_00efc1c0.cpp'
+        TestSource = '00/ef/NScriptCHeroTurningDebuggerScript_RegisterMain_00efc1c0_test.cpp'
+        PassPattern = '00efc1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc4c0'
+        Module = 'NScript::CPersonalScript_AardvarkScript'
+        Source = '00/ef/NScriptCPersonalScriptAardvarkScript_CPersonalScriptAardvarkScript_00efc4c0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptAardvarkScript_CPersonalScriptAardvarkScript_00efc4c0_test.cpp'
+        PassPattern = '00efc4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc7e0'
+        Module = 'NScript::CPersonalScript_AardvarkScript'
+        Source = '00/ef/NScriptCPersonalScriptAardvarkScript_RegisterMain_00efc7e0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptAardvarkScript_RegisterMain_00efc7e0_test.cpp'
+        PassPattern = '00efc7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc930'
+        Module = 'NScript::CMarkTestScriptsScript'
+        Source = '00/ef/NScriptCMarkTestScriptsScript_CMarkTestScriptsScript_00efc930.cpp'
+        TestSource = '00/ef/NScriptCMarkTestScriptsScript_CMarkTestScriptsScript_00efc930_test.cpp'
+        PassPattern = '00efc930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc960'
+        Module = 'NScript::CMarkTestScriptsScript'
+        Source = '00/ef/NScriptCMarkTestScriptsScript_RegisterMain_00efc960.cpp'
+        TestSource = '00/ef/NScriptCMarkTestScriptsScript_RegisterMain_00efc960_test.cpp'
+        PassPattern = '00efc960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efe3e0'
+        Module = 'NScript::CBenTestScriptsScript'
+        Source = '00/ef/NScriptCBenTestScriptsScript_CBenTestScriptsScript_00efe3e0.cpp'
+        TestSource = '00/ef/NScriptCBenTestScriptsScript_CBenTestScriptsScript_00efe3e0_test.cpp'
+        PassPattern = '00efe3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efe410'
+        Module = 'NScript::CBenTestScriptsScript'
+        Source = '00/ef/NScriptCBenTestScriptsScript_RegisterMain_00efe410.cpp'
+        TestSource = '00/ef/NScriptCBenTestScriptsScript_RegisterMain_00efe410_test.cpp'
+        PassPattern = '00efe410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efee50'
+        Module = 'CEntityScriptBinding<NScript::CBenTestScriptsScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCBenTestScriptsScript_CreateActiveEntityScript_00efee50.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCBenTestScriptsScript_CreateActiveEntityScript_00efee50_test.cpp'
+        PassPattern = '00efee50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff060'
+        Module = 'NScript::CTonyTestScriptsScript'
+        Source = '00/ef/NScriptCTonyTestScriptsScript_CTonyTestScriptsScript_00eff060.cpp'
+        TestSource = '00/ef/NScriptCTonyTestScriptsScript_CTonyTestScriptsScript_00eff060_test.cpp'
+        PassPattern = '00eff060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff090'
+        Module = 'NScript::CTonyTestScriptsScript'
+        Source = '00/ef/NScriptCTonyTestScriptsScript_RegisterMain_00eff090.cpp'
+        TestSource = '00/ef/NScriptCTonyTestScriptsScript_RegisterMain_00eff090_test.cpp'
+        PassPattern = '00eff090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff7d0'
+        Module = 'NScript::CShowTargetedThingHealthScript'
+        Source = '00/ef/NScriptCShowTargetedThingHealthScript_CShowTargetedThingHealthScript_00eff7d0.cpp'
+        TestSource = '00/ef/NScriptCShowTargetedThingHealthScript_CShowTargetedThingHealthScript_00eff7d0_test.cpp'
+        PassPattern = '00eff7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff800'
+        Module = 'NScript::CShowTargetedThingHealthScript'
+        Source = '00/ef/NScriptCShowTargetedThingHealthScript_RegisterMain_00eff800.cpp'
+        TestSource = '00/ef/NScriptCShowTargetedThingHealthScript_RegisterMain_00eff800_test.cpp'
+        PassPattern = '00eff800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff8a0'
+        Module = 'NScript::CShowTargetedThingHealthScript'
+        Source = '00/ef/NScriptCShowTargetedThingHealthScript_Main_00eff8a0.cpp'
+        TestSource = '00/ef/NScriptCShowTargetedThingHealthScript_Main_00eff8a0_test.cpp'
+        PassPattern = '00eff8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00effd30'
+        Module = 'NScript::COracleMinigameTestScript'
+        Source = '00/ef/NScriptCOracleMinigameTestScript_COracleMinigameTestScript_00effd30.cpp'
+        TestSource = '00/ef/NScriptCOracleMinigameTestScript_COracleMinigameTestScript_00effd30_test.cpp'
+        PassPattern = '00effd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00effd70'
+        Module = 'NScript::COracleMinigameTestScript'
+        Source = '00/ef/NScriptCOracleMinigameTestScript_RegisterMain_00effd70.cpp'
+        TestSource = '00/ef/NScriptCOracleMinigameTestScript_RegisterMain_00effd70_test.cpp'
+        PassPattern = '00effd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01390'
+        Module = 'NScript::CCS_PlayCutsceneScript'
+        Source = '00/f0/NScriptCCSPlayCutsceneScript_CCSPlayCutsceneScript_00f01390.cpp'
+        TestSource = '00/f0/NScriptCCSPlayCutsceneScript_CCSPlayCutsceneScript_00f01390_test.cpp'
+        PassPattern = '00f01390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f013c0'
+        Module = 'NScript::CCS_PlayCutsceneScript'
+        Source = '00/f0/NScriptCCSPlayCutsceneScript_RegisterMain_00f013c0.cpp'
+        TestSource = '00/f0/NScriptCCSPlayCutsceneScript_RegisterMain_00f013c0_test.cpp'
+        PassPattern = '00f013c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f017c0'
+        Module = 'NScript::CQ_CinemaTestScript'
+        Source = '00/f0/NScriptCQCinemaTestScript_CQCinemaTestScript_00f017c0.cpp'
+        TestSource = '00/f0/NScriptCQCinemaTestScript_CQCinemaTestScript_00f017c0_test.cpp'
+        PassPattern = '00f017c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f017f0'
+        Module = 'NScript::CQ_CinemaTestScript'
+        Source = '00/f0/NScriptCQCinemaTestScript_RegisterMain_00f017f0.cpp'
+        TestSource = '00/f0/NScriptCQCinemaTestScript_RegisterMain_00f017f0_test.cpp'
+        PassPattern = '00f017f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f037a0'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditAlly'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Alloc_00f037a0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Alloc_00f037a0_test.cpp'
+        PassPattern = '00f037a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f380e0'
+        Module = 'std::vector'
+        Source = '00/f3/stdvector_Minsertoverflow_00f380e0.cpp'
+        TestSource = '00/f3/stdvector_Minsertoverflow_00f380e0_test.cpp'
+        PassPattern = '00f380e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

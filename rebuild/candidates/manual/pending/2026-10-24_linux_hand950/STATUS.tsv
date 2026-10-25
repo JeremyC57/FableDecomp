@@ -1,0 +1,614 @@
+address	status	bytes	test	note	family
+00cdd380	RELOCATION_MATCH	144v144	PASS	grades 4 (family representative); NScript::CQ_SunnyvaleMasterScript::RegisterMain; proven	F001
+00cdd5f0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGlobal_TeleportToHeroGuildScript::RegisterMain; proven	F001
+00cddbf0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CPersonalScriptMainScript::RegisterMain; proven	F001
+00cde380	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CPersonalScript_GlobalThingsScript::RegisterMain; proven	F001
+00ce1a30	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CHeroBoastsScript::RegisterMain; proven	F001
+00ce75b0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGameflowScript::RegisterMain; proven	F001
+00cefa20	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGameflowAssistanceScript::RegisterMain; proven	F001
+00cf06f0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_ArenaHoldingScriptScript::RegisterMain; proven	F001
+00cf9100	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CLadyGreyWifeManagerScript::RegisterMain; proven	F001
+00cf9550	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_AmbushTradersScript::RegisterMain; proven	F001
+00cfaa50	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_ArenaScript::RegisterMain; proven	F001
+00cfaeb0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_AwakeningTheOracleScript::RegisterMain; proven	F001
+00d009d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_BanditCampScript::RegisterMain; proven	F001
+00d03820	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_BanditCampBossBattleScript::RegisterMain; proven	F001
+00d12b60	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_BanditCampHoldingScriptScript::RegisterMain; proven	F001
+00d13070	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_BountyHuntScript::RegisterMain; proven	F001
+00d1cf00	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_BreakSiegeScript::RegisterMain; proven	F001
+00d23d20	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_BowerstoneTownLifeIntroScript::RegisterMain; proven	F001
+00d25520	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_DragonBossFightScript::RegisterMain; proven	F001
+00d273c0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_EndGameScript::RegisterMain; proven	F001
+00d2a950	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_EndGameFocalSitesScript::RegisterMain; proven	F001
+00d2f730	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_EndGameBossBattleScript::RegisterMain; proven	F001
+00d34660	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_FireHeartScript::RegisterMain; proven	F001
+00d3bb50	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingScript::RegisterMain; proven	F001
+00d50760	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingDepartureScript::RegisterMain; proven	F001
+00d51460	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingPreMeleeScript::RegisterMain; proven	F001
+00d55dd0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingMeleeScript::RegisterMain; proven	F001
+00d5aaa0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingSkillScript::RegisterMain; proven	F001
+00d5dca0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingWillScript::RegisterMain; proven	F001
+00d61c60	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingWoodsDepartureScript::RegisterMain; proven	F001
+00d66560	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingWoodsMeleeScript::RegisterMain; proven	F001
+00d677d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_GuildTrainingWoodsWillScript::RegisterMain; proven	F001
+00d69390	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HangingTreeEvilScript::RegisterMain; proven	F001
+00d6f3c0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HangingTreeGoodScript::RegisterMain; proven	F001
+00d78520	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HeroSoulsScript::RegisterMain; proven	F001
+00d7ad70	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HeroSoulsThunderScript::RegisterMain; proven	F001
+00d7c740	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HeroSoulsArenaScript::RegisterMain; proven	F001
+00d80d50	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HeroSoulsBriarScript::RegisterMain; proven	F001
+00d834e0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HeroSoulsMotherScript::RegisterMain; proven	F001
+00d84c20	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HeroSoulsGuildmasterScript::RegisterMain; proven	F001
+00d87ba0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HeroSoulsNostroScript::RegisterMain; proven	F001
+00d89dc0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HerosOldHouseScript::RegisterMain; proven	F001
+00d8dc00	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HobbeCaveScript::RegisterMain; proven	F001
+00d9a0a0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_HobbeToothContestScript::RegisterMain; proven	F001
+00d9e520	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_MinionCampScript::RegisterMain; proven	F001
+00da33a0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_MinionClifftopChaseScript::RegisterMain; proven	F001
+00daace0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_NewOakValeIntroScript::RegisterMain; proven	F001
+00dbf210	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_OakValeBanditRaidScript::RegisterMain; proven	F001
+00dc26b0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_OpeningGraveyardSecretPassageScript::RegisterMain; proven	F001
+00dcc660	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_OrchardFarmRaidScript::RegisterMain; proven	F001
+00dd2240	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_OrchardFarmRaidEvilScript::RegisterMain; proven	F001
+00dd25c0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_OrchardFarmRaidGoodScript::RegisterMain; proven	F001
+00dd2bc0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_PrisonEscapeRescueMotherScript::RegisterMain; proven	F001
+00ddada0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_PrisonRaceScript::RegisterMain; proven	F001
+00dddd80	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_PrisonWardenGameScript::RegisterMain; proven	F001
+00de0790	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_RansomVictimScript::RegisterMain; proven	F001
+00debe50	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_RansomVictimChiefsHouseScript::RegisterMain; proven	F001
+00deca10	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_SecretPassageScript::RegisterMain; proven	F001
+00df12e0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_SummoningTheShipScript::RegisterMain; proven	F001
+00df4150	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_TentacleKrakenBossFightScript::RegisterMain; proven	F001
+00df5f50	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_TraderConflictEvilScript::RegisterMain; proven	F001
+00dfa390	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_TraderConflictGoodScript::RegisterMain; proven	F001
+00e00c20	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_TraderEscortScript::RegisterMain; proven	F001
+00e0b0a0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_UndeadRisingScript::RegisterMain; proven	F001
+00e0e8e0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_WaspBossScript::RegisterMain; proven	F001
+00e13e20	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_WhiteBalverineKnotholeGladeScript::RegisterMain; proven	F001
+00e18570	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_WhiteBalverineWWScript::RegisterMain; proven	F001
+00e1a8d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_WizardBattleScript::RegisterMain; proven	F001
+00e1dc30	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQR_EscortTraderScript::RegisterMain; proven	F001
+00e25690	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQR_EscortTrader_ManagerScript::RegisterMain; proven	F001
+00e25a10	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQS_GuardianSisterInfoScript::RegisterMain; proven	F001
+00e26820	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::RegisterMain; proven	F001
+00e27880	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQS_GuardianTrophyDealerInfoScript::RegisterMain; proven	F001
+00e28d40	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQS_MeetSisterScript::RegisterMain; proven	F001
+00e29a80	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQS_ScytheInfoScript::RegisterMain; proven	F001
+00e2ac90	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_AmbushScamScript::RegisterMain; proven	F001
+00e324a0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_ArcheryCompetitionScript::RegisterMain; proven	F001
+00e37730	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_AssassinAttacksScript::RegisterMain; proven	F001
+00e39aa0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_BordelloScript::RegisterMain; proven	F001
+00e46c40	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_BanditCampPathScript::RegisterMain; proven	F001
+00e47910	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_BanditTollScript::RegisterMain; proven	F001
+00e4f730	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_BeardyBaldyScript::RegisterMain; proven	F001
+00e543b0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_BookCollectingScript::RegisterMain; proven	F001
+00e57c60	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_BeggarAndChildScript::RegisterMain; proven	F001
+00e5d240	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_BodyGuardScript::RegisterMain; proven	F001
+00e628e0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_ChickenKickingScript::RegisterMain; proven	F001
+00e69030	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_ChapelOfEvilScript::RegisterMain; proven	F001
+00e6e2e0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_DemonDoorsScript::RegisterMain; proven	F001
+00e756d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_ExposeMayorScript::RegisterMain; proven	F001
+00e7b440	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_FishermanScript::RegisterMain; proven	F001
+00e7e150	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_FishingCompetitionScript::RegisterMain; proven	F001
+00e820d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_FisticuffsClubScript::RegisterMain; proven	F001
+00e8b8a0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_GhostGrannyNecklaceScript::RegisterMain; proven	F001
+00e90790	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_GuildMasterScript::RegisterMain; proven	F001
+00e929b0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_HiddenBootyScript::RegisterMain; proven	F001
+00e93da0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_HauntedHouseScript::RegisterMain; proven	F001
+00e96e70	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_HeroDollsScript::RegisterMain; proven	F001
+00e98700	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_HeroDuelScript::RegisterMain; proven	F001
+00e9c410	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_IntroductionToTrophiesScript::RegisterMain; proven	F001
+00e9fc10	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_KnotholeGladeGatesScript::RegisterMain; proven	F001
+00ea2de0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_LostTraderScript::RegisterMain; proven	F001
+00ea7760	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_MazeResearchScript::RegisterMain; proven	F001
+00ea8740	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_MurderTwistScript::RegisterMain; proven	F001
+00eae980	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_MurderTwistFinalScript::RegisterMain; proven	F001
+00eb6cb0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_MayorsInvitationScript::RegisterMain; proven	F001
+00ebccd0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_OracleScript::RegisterMain; proven	F001
+00ebeee0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_ParanoidWhispersScript::RegisterMain; proven	F001
+00ec1240	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_PicnicAreaAfterWaspBossScript::RegisterMain; proven	F001
+00ec1850	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_RandomPopulationSimScript::RegisterMain; proven	F001
+00ec3ca0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_RockTrollFirstEncounterScript::RegisterMain; proven	F001
+00ec5440	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_SickChildScript::RegisterMain; proven	F001
+00ed0f50	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_SingingStonesScript::RegisterMain; proven	F001
+00ed3a90	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_StatueMasterScript::RegisterMain; proven	F001
+00ed4b90	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_SwordInTheStoneScript::RegisterMain; proven	F001
+00ed7790	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_TalentlessBardScript::RegisterMain; proven	F001
+00edae70	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_TempleOfLightScript::RegisterMain; proven	F001
+00edec70	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_TravellingHeroesScript::RegisterMain; proven	F001
+00ee4710	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_TourGuideScript::RegisterMain; proven	F001
+00ee6df0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CV_TrophyDealerScript::RegisterMain; proven	F001
+00ee8210	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CCS_OakValeRevisitedScript::RegisterMain; proven	F001
+00ee8eb0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGlobal_WatchForHeroDeathScript::RegisterMain; proven	F001
+00ee8f50	RELOCATION_MATCH	144v144	PASS	grades 2; NScript::CGlobal_WatchForHeroDeathScript::Main; proven	F001
+00ee9120	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGlobal_DebugCycleThroughSpeechScript::RegisterMain; proven	F001
+00ee94d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CExpression_FishScript::RegisterMain; proven	F001
+00ee9f80	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CExpression_FollowScript::RegisterMain; proven	F001
+00eea680	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CExpression_WaitScript::RegisterMain; proven	F001
+00eeadb0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CExpression_DigScript::RegisterMain; proven	F001
+00eeb670	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CExpression_PickpocketScript::RegisterMain; proven	F001
+00eebcb0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CExpression_PicklockScript::RegisterMain; proven	F001
+00eec2d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CExpression_StealScript::RegisterMain; proven	F001
+00eec690	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGlobal_GiveHeroItemsFromRewardChestScript::RegisterMain; proven	F001
+00eec7d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGlobal_OpenChestScript::RegisterMain; proven	F001
+00eecf70	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGlobal_ToggleTimeDisplayScript::RegisterMain; proven	F001
+00eed160	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CalextestScript::RegisterMain; proven	F001
+00eed2c0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CPersonalScript_alextestScript::RegisterMain; proven	F001
+00eee760	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CEmptyScript::RegisterMain; proven	F001
+00eee9d0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestTheInventoryScript::RegisterMain; proven	F001
+00eeeed0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestQuestCard1Script::RegisterMain; proven	F001
+00eef610	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestQuestCard2Script::RegisterMain; proven	F001
+00eef7a0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestQuestCard3Script::RegisterMain; proven	F001
+00eef900	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestNewNav1Script::RegisterMain; proven	F001
+00eefa60	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestNewNav2Script::RegisterMain; proven	F001
+00eefbc0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestNewNav3Script::RegisterMain; proven	F001
+00eefd20	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestNewNav4Script::RegisterMain; proven	F001
+00eefe80	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTestNewNav5Script::RegisterMain; proven	F001
+00eeffd0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CPersonalScript_EmptyScript::RegisterMain; proven	F001
+00ef91c0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::Cjoss_test_scriptsScript::RegisterMain; proven	F001
+00ef9f70	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::Cguy_scriptScript::RegisterMain; proven	F001
+00efa450	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::Cbandit_level_cutsceneScript::RegisterMain; proven	F001
+00efaff0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CDanyalTestScriptsScript::RegisterMain; proven	F001
+00efb140	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CProximityPodiumTestScript::RegisterMain; proven	F001
+00efb6a0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CHitSwitchTestScript::RegisterMain; proven	F001
+00efbc00	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CGuildSealTriggerTestScript::RegisterMain; proven	F001
+00efc1c0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CHeroTurningDebuggerScript::RegisterMain; proven	F001
+00efc7e0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CPersonalScript_AardvarkScript::RegisterMain; proven	F001
+00efc960	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CMarkTestScriptsScript::RegisterMain; proven	F001
+00efe410	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CBenTestScriptsScript::RegisterMain; proven	F001
+00eff090	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CTonyTestScriptsScript::RegisterMain; proven	F001
+00eff800	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CShowTargetedThingHealthScript::RegisterMain; proven	F001
+00eff8a0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CShowTargetedThingHealthScript::Main; proven	F001
+00effd70	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::COracleMinigameTestScript::RegisterMain; proven	F001
+00f013c0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CCS_PlayCutsceneScript::RegisterMain; proven	F001
+00f017f0	RELOCATION_MATCH	144v144	PASS	grades 1; NScript::CQ_CinemaTestScript::RegisterMain; proven	F001
+00cf66e0	RELOCATION_MATCH	272v272	PASS	grades 4 (family representative); CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>::CreateActiveEntityScript; proven	F002
+00cfde40	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_AwakeningTheOracleScript>::CreateActiveEntityScript; proven	F002
+00d03160	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_BanditCampScript>::CreateActiveEntityScript; proven	F002
+00d0ec50	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_BanditCampBossBattleScript>::CreateActiveEntityScript; proven	F002
+00d17180	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_BountyHuntScript>::CreateActiveEntityScript; proven	F002
+00d20600	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_BreakSiegeScript>::CreateActiveEntityScript; proven	F002
+00d244b0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_BowerstoneTownLifeIntroScript>::CreateActiveEntityScript; proven	F002
+00d26000	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_DragonBossFightScript>::CreateActiveEntityScript; proven	F002
+00d29680	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_EndGameScript>::CreateActiveEntityScript; proven	F002
+00d2d570	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript>::CreateActiveEntityScript; proven	F002
+00d2fea0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_EndGameBossBattleScript>::CreateActiveEntityScript; proven	F002
+00d38b90	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_FireHeartScript>::CreateActiveEntityScript; proven	F002
+00d444c0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingScript>::CreateActiveEntityScript; proven	F002
+00d50ab0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>::CreateActiveEntityScript; proven	F002
+00d52310	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>::CreateActiveEntityScript; proven	F002
+00d58300	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>::CreateActiveEntityScript; proven	F002
+00d5acc0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>::CreateActiveEntityScript; proven	F002
+00d5dec0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>::CreateActiveEntityScript; proven	F002
+00d64210	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>::CreateActiveEntityScript; proven	F002
+00d670e0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>::CreateActiveEntityScript; proven	F002
+00d68d10	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>::CreateActiveEntityScript; proven	F002
+00d6b590	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_HangingTreeEvilScript>::CreateActiveEntityScript; proven	F002
+00d729e0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_HangingTreeGoodScript>::CreateActiveEntityScript; proven	F002
+00d7a8a0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_HeroSoulsScript>::CreateActiveEntityScript; proven	F002
+00d87140	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_HeroSoulsGuildmasterScript>::CreateActiveEntityScript; proven	F002
+00de4480	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_RansomVictimScript>::CreateActiveEntityScript; proven	F002
+00e0e5a0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_UndeadRisingScript>::CreateActiveEntityScript; proven	F002
+00e12170	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_WaspBossScript>::CreateActiveEntityScript; proven	F002
+00e18220	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_WhiteBalverineKnotholeGladeScript>::CreateActiveEntityScript; proven	F002
+00e193d0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_WhiteBalverineWWScript>::CreateActiveEntityScript; proven	F002
+00e1bf60	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQ_WizardBattleScript>::CreateActiveEntityScript; proven	F002
+00e1f620	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQR_EscortTraderScript>::CreateActiveEntityScript; proven	F002
+00e25d90	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQS_GuardianSisterInfoScript>::CreateActiveEntityScript; proven	F002
+00e26c50	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::CreateActiveEntityScript; proven	F002
+00e27cb0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQS_GuardianTrophyDealerInfoScript>::CreateActiveEntityScript; proven	F002
+00e29110	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQS_MeetSisterScript>::CreateActiveEntityScript; proven	F002
+00e2a170	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CQS_ScytheInfoScript>::CreateActiveEntityScript; proven	F002
+00e2e900	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_AmbushScamScript>::CreateActiveEntityScript; proven	F002
+00e37340	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_ArcheryCompetitionScript>::CreateActiveEntityScript; proven	F002
+00e38bd0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_AssassinAttacksScript>::CreateActiveEntityScript; proven	F002
+00e3b740	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_BordelloScript>::CreateActiveEntityScript; proven	F002
+00e47610	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_BanditCampPathScript>::CreateActiveEntityScript; proven	F002
+00e4b1d0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_BanditTollScript>::CreateActiveEntityScript; proven	F002
+00e540a0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_BeardyBaldyScript>::CreateActiveEntityScript; proven	F002
+00e546d0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_BookCollectingScript>::CreateActiveEntityScript; proven	F002
+00e5cf20	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_BeggarAndChildScript>::CreateActiveEntityScript; proven	F002
+00e5f000	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_BodyGuardScript>::CreateActiveEntityScript; proven	F002
+00e64020	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_ChickenKickingScript>::CreateActiveEntityScript; proven	F002
+00e6b240	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_ChapelOfEvilScript>::CreateActiveEntityScript; proven	F002
+00e74bc0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_DemonDoorsScript>::CreateActiveEntityScript; proven	F002
+00e774e0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_ExposeMayorScript>::CreateActiveEntityScript; proven	F002
+00e7c6b0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_FishermanScript>::CreateActiveEntityScript; proven	F002
+00e7ed60	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_FishingCompetitionScript>::CreateActiveEntityScript; proven	F002
+00e83bc0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_FisticuffsClubScript>::CreateActiveEntityScript; proven	F002
+00e8d0e0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_GhostGrannyNecklaceScript>::CreateActiveEntityScript; proven	F002
+00e90a30	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_GuildMasterScript>::CreateActiveEntityScript; proven	F002
+00e93a60	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_HiddenBootyScript>::CreateActiveEntityScript; proven	F002
+00e95f80	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_HauntedHouseScript>::CreateActiveEntityScript; proven	F002
+00e98460	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_HeroDollsScript>::CreateActiveEntityScript; proven	F002
+00e9a0e0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_HeroDuelScript>::CreateActiveEntityScript; proven	F002
+00e9df30	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_IntroductionToTrophiesScript>::CreateActiveEntityScript; proven	F002
+00ea0f00	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_KnotholeGladeGatesScript>::CreateActiveEntityScript; proven	F002
+00ea5780	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_LostTraderScript>::CreateActiveEntityScript; proven	F002
+00ea7ef0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_MazeResearchScript>::CreateActiveEntityScript; proven	F002
+00ead860	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_MurderTwistScript>::CreateActiveEntityScript; proven	F002
+00eb6370	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_MurderTwistFinalScript>::CreateActiveEntityScript; proven	F002
+00eb9710	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_MayorsInvitationScript>::CreateActiveEntityScript; proven	F002
+00ebebf0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_OracleScript>::CreateActiveEntityScript; proven	F002
+00ec1000	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_ParanoidWhispersScript>::CreateActiveEntityScript; proven	F002
+00ec15d0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_PicnicAreaAfterWaspBossScript>::CreateActiveEntityScript; proven	F002
+00ec2860	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_RandomPopulationSimScript>::CreateActiveEntityScript; proven	F002
+00ec47c0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_RockTrollFirstEncounterScript>::CreateActiveEntityScript; proven	F002
+00ecd600	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_SickChildScript>::CreateActiveEntityScript; proven	F002
+00ed28c0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_SingingStonesScript>::CreateActiveEntityScript; proven	F002
+00ed4890	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_StatueMasterScript>::CreateActiveEntityScript; proven	F002
+00ed5340	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_SwordInTheStoneScript>::CreateActiveEntityScript; proven	F002
+00ed8210	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_TalentlessBardScript>::CreateActiveEntityScript; proven	F002
+00edcea0	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_TempleOfLightScript>::CreateActiveEntityScript; proven	F002
+00ee1c10	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_TravellingHeroesScript>::CreateActiveEntityScript; proven	F002
+00ee5570	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_TourGuideScript>::CreateActiveEntityScript; proven	F002
+00ee7540	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CV_TrophyDealerScript>::CreateActiveEntityScript; proven	F002
+00eeda40	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CPersonalScript_alextestScript>::CreateActiveEntityScript; proven	F002
+00ef5070	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CPersonalScript_EmptyScript>::CreateActiveEntityScript; proven	F002
+00efb460	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CProximityPodiumTestScript>::CreateActiveEntityScript; proven	F002
+00efee50	RELOCATION_MATCH	272v272	PASS	grades 1; CEntityScriptBinding<NScript::CBenTestScriptsScript>::CreateActiveEntityScript; proven	F002
+00cdd330	RELOCATION_MATCH	48v48	PASS	grades 2 (family representative); NScript::CQ_SunnyvaleMasterScript::CQ_SunnyvaleMasterScript; proven	F003
+00cdd5b0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CGlobal_TeleportToHeroGuildScript::CGlobal_TeleportToHeroGuildScript; proven	F003
+00cddbc0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CPersonalScriptMainScript::CPersonalScriptMainScript; proven	F003
+00cde350	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CPersonalScript_GlobalThingsScript::CPersonalScript_GlobalThingsScript; proven	F003
+00cef9d0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CGameflowAssistanceScript::CGameflowAssistanceScript; proven	F003
+00cf06a0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_ArenaHoldingScriptScript::CQ_ArenaHoldingScriptScript; proven	F003
+00d006a0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_BanditCampScript::CQ_BanditCampScript; proven	F003
+00d035e0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_BanditCampBossBattleScript::CQ_BanditCampBossBattleScript; proven	F003
+00d12980	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_BanditCampHoldingScriptScript::CQ_BanditCampHoldingScriptScript; proven	F003
+00d1cc10	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_BreakSiegeScript::CQ_BreakSiegeScript; proven	F003
+00d23ce0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_BowerstoneTownLifeIntroScript::CQ_BowerstoneTownLifeIntroScript; proven	F003
+00d27370	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_EndGameScript::CQ_EndGameScript; proven	F003
+00d50680	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_GuildTrainingDepartureScript::CQ_GuildTrainingDepartureScript; proven	F003
+00d51420	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_GuildTrainingPreMeleeScript::CQ_GuildTrainingPreMeleeScript; proven	F003
+00d55d70	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_GuildTrainingMeleeScript::CQ_GuildTrainingMeleeScript; proven	F003
+00d5aa50	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_GuildTrainingSkillScript::CQ_GuildTrainingSkillScript; proven	F003
+00d61c30	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_GuildTrainingWoodsDepartureScript::CQ_GuildTrainingWoodsDepartureScript; proven	F003
+00d66530	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_GuildTrainingWoodsMeleeScript::CQ_GuildTrainingWoodsMeleeScript; proven	F003
+00d677a0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_GuildTrainingWoodsWillScript::CQ_GuildTrainingWoodsWillScript; proven	F003
+00d784d0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_HeroSoulsScript::CQ_HeroSoulsScript; proven	F003
+00d89d70	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_HerosOldHouseScript::CQ_HerosOldHouseScript; proven	F003
+00dd1fe0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_OrchardFarmRaidEvilScript::CQ_OrchardFarmRaidEvilScript; proven	F003
+00dd2360	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_OrchardFarmRaidGoodScript::CQ_OrchardFarmRaidGoodScript; proven	F003
+00ddad30	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_PrisonRaceScript::CQ_PrisonRaceScript; proven	F003
+00debe10	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_RansomVictimChiefsHouseScript::CQ_RansomVictimChiefsHouseScript; proven	F003
+00e24dd0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQR_EscortTrader_ManagerScript::CQR_EscortTrader_ManagerScript; proven	F003
+00e259d0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQS_GuardianSisterInfoScript::CQS_GuardianSisterInfoScript; proven	F003
+00e267e0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript; proven	F003
+00e27840	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQS_GuardianTrophyDealerInfoScript::CQS_GuardianTrophyDealerInfoScript; proven	F003
+00e28d00	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQS_MeetSisterScript::CQS_MeetSisterScript; proven	F003
+00e478a0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_BanditTollScript::CV_BanditTollScript; proven	F003
+00e6e2b0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_DemonDoorsScript::CV_DemonDoorsScript; proven	F003
+00e7b3f0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_FishermanScript::CV_FishermanScript; proven	F003
+00e8b850	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_GhostGrannyNecklaceScript::CV_GhostGrannyNecklaceScript; proven	F003
+00e92970	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_HiddenBootyScript::CV_HiddenBootyScript; proven	F003
+00e93d50	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_HauntedHouseScript::CV_HauntedHouseScript; proven	F003
+00e96e30	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_HeroDollsScript::CV_HeroDollsScript; proven	F003
+00e986a0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_HeroDuelScript::CV_HeroDuelScript; proven	F003
+00ea2cf0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_LostTraderScript::CV_LostTraderScript; proven	F003
+00ebcca0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_OracleScript::CV_OracleScript; proven	F003
+00ebee90	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_ParanoidWhispersScript::CV_ParanoidWhispersScript; proven	F003
+00ec1210	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_PicnicAreaAfterWaspBossScript::CV_PicnicAreaAfterWaspBossScript; proven	F003
+00ec17e0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_RandomPopulationSimScript::CV_RandomPopulationSimScript; proven	F003
+00ec3c20	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_RockTrollFirstEncounterScript::CV_RockTrollFirstEncounterScript; proven	F003
+00ed3a50	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_StatueMasterScript::CV_StatueMasterScript; proven	F003
+00edadf0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_TempleOfLightScript::CV_TempleOfLightScript; proven	F003
+00ee6d30	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CV_TrophyDealerScript::CV_TrophyDealerScript; proven	F003
+00eed0b0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CalextestScript::CalextestScript; proven	F003
+00eed280	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CPersonalScript_alextestScript::CPersonalScript_alextestScript; proven	F003
+00eee730	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CEmptyScript::CEmptyScript; proven	F003
+00eee9a0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestTheInventoryScript::CTestTheInventoryScript; proven	F003
+00eeeea0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestQuestCard1Script::CTestQuestCard1Script; proven	F003
+00eef5a0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestQuestCard2Script::CTestQuestCard2Script; proven	F003
+00eef730	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestQuestCard3Script::CTestQuestCard3Script; proven	F003
+00eef8c0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestNewNav1Script::CTestNewNav1Script; proven	F003
+00eefa20	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestNewNav2Script::CTestNewNav2Script; proven	F003
+00eefb80	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestNewNav3Script::CTestNewNav3Script; proven	F003
+00eefce0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestNewNav4Script::CTestNewNav4Script; proven	F003
+00eefe40	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTestNewNav5Script::CTestNewNav5Script; proven	F003
+00eeffa0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CPersonalScript_EmptyScript::CPersonalScript_EmptyScript; proven	F003
+00ef9190	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::Cjoss_test_scriptsScript::Cjoss_test_scriptsScript; proven	F003
+00ef9f40	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::Cguy_scriptScript::Cguy_scriptScript; proven	F003
+00efa420	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::Cbandit_level_cutsceneScript::Cbandit_level_cutsceneScript; proven	F003
+00efaf90	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CDanyalTestScriptsScript::CDanyalTestScriptsScript; proven	F003
+00efb110	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CProximityPodiumTestScript::CProximityPodiumTestScript; proven	F003
+00efb670	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CHitSwitchTestScript::CHitSwitchTestScript; proven	F003
+00efbbd0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CGuildSealTriggerTestScript::CGuildSealTriggerTestScript; proven	F003
+00efc190	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CHeroTurningDebuggerScript::CHeroTurningDebuggerScript; proven	F003
+00efc4c0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CPersonalScript_AardvarkScript::CPersonalScript_AardvarkScript; proven	F003
+00efc930	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CMarkTestScriptsScript::CMarkTestScriptsScript; proven	F003
+00efe3e0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CBenTestScriptsScript::CBenTestScriptsScript; proven	F003
+00eff060	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CTonyTestScriptsScript::CTonyTestScriptsScript; proven	F003
+00eff7d0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CShowTargetedThingHealthScript::CShowTargetedThingHealthScript; proven	F003
+00effd30	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::COracleMinigameTestScript::COracleMinigameTestScript; proven	F003
+00f01390	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CCS_PlayCutsceneScript::CCS_PlayCutsceneScript; proven	F003
+00f017c0	RELOCATION_MATCH	48v48	PASS	grades 1; NScript::CQ_CinemaTestScript::CQ_CinemaTestScript; proven	F003
+00a98fa0	RELOCATION_MATCH	144v144	PASS	grades 3 (family representative); C3DAnimFileRootChunk::FindFirstObject; proven	F004
+00a99110	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileRootChunk::FindFirstObject; proven	F004
+00a99300	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileRootChunk::GetHelpers; proven	F004
+00a99390	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileRootChunk::GetHelpers; proven	F004
+00a9aec0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileRootChunk::FindFirstSubMesh; proven	F004
+00a9b030	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileRootChunk::FindFirstSubMesh; proven	F004
+00a9b1a0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileRootChunk::GetMaterialList; proven	F004
+00a9b230	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileRootChunk::GetMaterialList; proven	F004
+00a9b340	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileRootChunk::GetHelpers; proven	F004
+00a9b3d0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileRootChunk::GetHelpers; proven	F004
+00aaa100	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileHelpersChunk::FindFirstPoint; proven	F004
+00aaa270	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileHelpersChunk::FindFirstPoint; proven	F004
+00aaa3e0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileHelpersChunk::FindFirstDummy; proven	F004
+00aaa550	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileHelpersChunk::FindFirstDummy; proven	F004
+00aaa6c0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileHelpersChunk::FindFirstVolumeW; proven	F004
+00aaa830	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileHelpersChunk::FindFirstVolumeW; proven	F004
+00aae520	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileHelpersChunk::GetMovementVector; proven	F004
+00aae5b0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileHelpersChunk::GetMovementVector; proven	F004
+00aae640	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileHelpersChunk::FindFirstEvent; proven	F004
+00aae7b0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileHelpersChunk::FindFirstEvent; proven	F004
+00aae970	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileMovementVectorChunk::GetMovementTrack; proven	F004
+00aaea00	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileMovementVectorChunk::GetMovementTrack; proven	F004
+00ab0260	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileObjectChunk::FindFirstSequence; proven	F004
+00ab03d0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileObjectChunk::FindFirstSequence; proven	F004
+00ab0590	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileObjectChunk::GetBoneMask; proven	F004
+00ab0620	RELOCATION_MATCH	144v144	PASS	grades 1; C3DAnimFileObjectChunk::PeekBoneMask; proven	F004
+00aba410	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileSubMeshChunk::FindTransformation; proven	F004
+00aba4a0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileSubMeshChunk::FindTransformation; proven	F004
+00aba530	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileSubMeshChunk::FindFirstBone; proven	F004
+00aba6a0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileSubMeshChunk::FindFirstBone; proven	F004
+00aba810	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileSubMeshChunk::FindFirstPrimitive; proven	F004
+00aba980	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileSubMeshChunk::FindFirstPrimitive; proven	F004
+00abaaf0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileSubMeshChunk::FindFirstCloth; proven	F004
+00abac60	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileSubMeshChunk::FindFirstCloth; proven	F004
+00abafe0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::PeekVertices; proven	F004
+00abb070	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::GetTriangles; proven	F004
+00abb100	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::PeekTriangles; proven	F004
+00abb190	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindFirstTriangles; proven	F004
+00abb300	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindFirstTriangles; proven	F004
+00abb4f0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::GetSmoothingGroups; proven	F004
+00abb580	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::PeekSmoothingGroups; proven	F004
+00abb690	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::GetUniqueVertices; proven	F004
+00abb720	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::PeekUniqueVertices; proven	F004
+00abb7b0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindFirstGroup; proven	F004
+00abb920	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindFirstGroup; proven	F004
+00abba90	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindFirstCloth; proven	F004
+00abbc00	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindFirstCloth; proven	F004
+00ac04c0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileMaterialListChunk::FindFirstMaterial; proven	F004
+00ac0630	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileMaterialListChunk::FindFirstMaterial; proven	F004
+00ac07a0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileMaterialListChunk::FindFirstEngineMaterial; proven	F004
+00ac0910	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileMaterialListChunk::FindFirstEngineMaterial; proven	F004
+00ac0ae0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileMaterialChunk::GetExtendedProperties; proven	F004
+00ac0b70	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileMaterialChunk::GetExtendedProperties; proven	F004
+00ac0ce0	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileMaterialChunk::FindFirstMap; proven	F004
+00ac0e50	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileMaterialChunk::FindFirstMap; proven	F004
+00ac6320	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileClothChunk::FindFirstGroup; proven	F004
+00ac6490	RELOCATION_MATCH	144v144	PASS	grades 1; C3DMeshFileClothChunk::FindFirstGroup; proven	F004
+00436ac0	RELOCATION_MATCH	224v224	PASS	grades 2 (family representative); std::vector::_M_insert_overflow [CThing*]; proven	F005
+00440990	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [long]; proven	F005
+0049c370	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [const CThing*]; proven	F005
+004ac530	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [const CThingBuilding*]; proven	F005
+004ba640	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [const CRegion*]; proven	F005
+00514f40	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00514f40*]; descriptive	F005
+00568150	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CTCHeroOnlineScoreboard::EOnlineScoreboardActivity]; proven	F005
+0056d850	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0056d850*]; descriptive	F005
+005e1420	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [const CAnimationEntry*]; proven	F005
+005e1500	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_005e1500*]; descriptive	F005
+0062e190	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CThingMarker*]; proven	F005
+00639090	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [NThingMap::CThingMapManager::CThingMapInfo*]; proven	F005
+00639170	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [NThingMap::CThingMap*]; proven	F005
+006422b0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_006422b0*]; descriptive	F005
+0066c3f0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CAnimSet*]; proven	F005
+006cd5a0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CNavigatorBase*]; proven	F005
+006ce570	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [const CThingCreatureBase*]; proven	F005
+006f25a0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_006f25a0*]; descriptive	F005
+006f2680	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CThingCreatureBase*]; proven	F005
+00765130	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00765130*]; descriptive	F005
+007a91a0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_007a91a0*]; descriptive	F005
+00841820	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00841820*]; descriptive	F005
+0084b6e0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0084b6e0*]; descriptive	F005
+00916d50	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [const CCharString*]; proven	F005
+0091ffe0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0091ffe0*]; descriptive	F005
+0098cde0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0098cde0*]; descriptive	F005
+009ca950	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_009ca950*]; descriptive	F005
+009d7fc0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CBankFileAsync*]; proven	F005
+00a17190	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00a17190*]; descriptive	F005
+00a21cb0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CNavigatorAStar::CAStarState*]; proven	F005
+00a44b40	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00a44b40*]; descriptive	F005
+00a5f8e0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CStreamingFontDataBankEntry*]; proven	F005
+00a639e0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CFontDataBankEntry*]; proven	F005
+00a80aa0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00a80aa0*]; descriptive	F005
+00a814b0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CNavRegion*]; proven	F005
+00b43e10	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00b43e10*]; descriptive	F005
+00b49df0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CEngineLightingManager::CManagerLocalLight*]; proven	F005
+00b59f60	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CLocalDetailObjectCollectionType*]; proven	F005
+00bac720	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CEngineInternalPrimitiveBase*]; proven	F005
+00be8f10	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00be8f10*]; descriptive	F005
+00a99030	RELOCATION_MATCH	224v224	PASS	grades 2 (family representative); C3DAnimFileRootChunk::FindNextObject; proven	F006
+00a991a0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DAnimFileRootChunk::FindNextObject; proven	F006
+00a9af50	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileRootChunk::FindNextSubMesh; proven	F006
+00a9b0c0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileRootChunk::FindNextSubMesh; proven	F006
+00aaa190	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileHelpersChunk::FindNextPoint; proven	F006
+00aaa300	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileHelpersChunk::FindNextPoint; proven	F006
+00aaa470	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileHelpersChunk::FindNextDummy; proven	F006
+00aaa5e0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileHelpersChunk::FindNextDummy; proven	F006
+00aaa750	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileHelpersChunk::FindNextVolumeW; proven	F006
+00aaa8c0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileHelpersChunk::FindNextVolumeW; proven	F006
+00aae6d0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DAnimFileHelpersChunk::FindNextEvent; proven	F006
+00aae840	RELOCATION_MATCH	224v224	PASS	grades 1; C3DAnimFileHelpersChunk::FindNextEvent; proven	F006
+00ab02f0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DAnimFileObjectChunk::FindNextSequence; proven	F006
+00ab0460	RELOCATION_MATCH	224v224	PASS	grades 1; C3DAnimFileObjectChunk::FindNextSequence; proven	F006
+00aba5c0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileSubMeshChunk::FindNextBone; proven	F006
+00aba730	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileSubMeshChunk::FindNextBone; proven	F006
+00aba8a0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileSubMeshChunk::FindNextPrimitive; proven	F006
+00abaa10	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileSubMeshChunk::FindNextPrimitive; proven	F006
+00abab80	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileSubMeshChunk::FindNextCloth; proven	F006
+00abacf0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileSubMeshChunk::FindNextCloth; proven	F006
+00abb220	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindNextTriangles; proven	F006
+00abb390	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindNextTriangles; proven	F006
+00abb840	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindNextGroup; proven	F006
+00abb9b0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindNextGroup; proven	F006
+00abbb20	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindNextCloth; proven	F006
+00abbc90	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFilePrimitiveChunk::FindNextCloth; proven	F006
+00ac0550	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileMaterialListChunk::FindNextMaterial; proven	F006
+00ac06c0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileMaterialListChunk::FindNextMaterial; proven	F006
+00ac0830	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileMaterialListChunk::FindNextEngineMaterial; proven	F006
+00ac0d70	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileMaterialChunk::FindNextMap; proven	F006
+00ac0ee0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileMaterialChunk::FindNextMap; proven	F006
+00ac63b0	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileClothChunk::FindNextGroup; proven	F006
+00ac6520	RELOCATION_MATCH	224v224	PASS	grades 1; C3DMeshFileClothChunk::FindNextGroup; proven	F006
+004408a0	RELOCATION_MATCH	216v216	PASS	grades 2 (family representative); std::vector::_M_insert_overflow [float]; proven	F007
+0044be80	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0044be80*]; descriptive	F007
+0048d0d0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0048d0d0*]; descriptive	F007
+004ac610	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_004ac610*]; descriptive	F007
+00515cc0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CThingAICreature*]; proven	F007
+006cd680	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [const CSteeringAgent*]; proven	F007
+006d4320	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CThingBuilding*]; proven	F007
+0074f900	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CThingObject*]; proven	F007
+00765210	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CTCShapeManager*]; proven	F007
+007d5d60	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CCard*]; proven	F007
+008258d0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CThingPhysical*]; proven	F007
+00959260	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CThingDeadCreature*]; proven	F007
+009b4bd0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_009b4bd0*]; descriptive	F007
+009d2c10	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_009d2c10*]; descriptive	F007
+009e3330	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_009e3330*]; descriptive	F007
+00a03780	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00a03780*]; descriptive	F007
+00a14cb0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CAsyncLoadingProcessCallback*]; proven	F007
+00a17270	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00a17270*]; descriptive	F007
+00a2be00	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CMeshDataBankEntry*]; proven	F007
+00a5e1b0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00a5e1b0*]; descriptive	F007
+00a62740	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CShaderBankEntry*]; proven	F007
+00a81590	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00a81590*]; descriptive	F007
+00b291a0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00b291a0*]; descriptive	F007
+00b292b0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CEngineComponent*]; proven	F007
+00b29470	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CEngineLayerRenderer*]; proven	F007
+00b389d0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00b389d0*]; descriptive	F007
+00b3abc0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CEngineCamera*]; proven	F007
+00b49ed0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CEngineLightingManager::CManagerShadowedSpotLight*]; proven	F007
+00b96c60	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00b96c60*]; descriptive	F007
+00bdfc00	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [const CLocalDetailObjectCollectionType*]; proven	F007
+00bedbf0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00bedbf0*]; descriptive	F007
+00bf5db0	RELOCATION_MATCH	216v216	PASS	grades 1; std::vector::_M_insert_overflow [CWaterPatchMesh*]; proven	F007
+004d1250	RELOCATION_MATCH	272v272	PASS	grades 2 (family representative); std::vector::_M_insert_overflow [pair<float, EConversationAttitude>]; proven	F008
+005479a0	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [pair<unsigned long, float>]; proven	F008
+00618550	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [C2DCoordI]; proven	F008
+0066e260	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0066e260]; descriptive	F008
+00680e60	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [pair<EReactionSpeechType, long>]; proven	F008
+006db8c0	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [pair<EAttackHistoryType, EDamageAttribute>]; proven	F008
+00708e40	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CTCHeroAttachableAppearanceModifiers::CModifierEntry]; proven	F008
+00710f70	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CTransitionBlendAlpha]; proven	F008
+00755350	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00755350]; descriptive	F008
+0078b300	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0078b300]; descriptive	F008
+0081c160	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0081c160]; descriptive	F008
+0086ca20	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CRandomAppearanceMorph::CMorphSet::CMorphSetTextureMorph]; proven	F008
+0088cc20	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_0088cc20]; descriptive	F008
+008d61a0	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_008d61a0]; descriptive	F008
+009b61f0	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [pair<unsigned long, long>]; proven	F008
+00a4a190	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CComplexNumber]; proven	F008
+00ab4150	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CVertexStreamFormat::CDataElement]; proven	F008
+00abeb40	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [C3DVertexBlend2]; proven	F008
+00ad3b20	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00ad3b20]; descriptive	F008
+00ad4e20	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00ad4e20]; descriptive	F008
+00ae6a70	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00ae6a70]; descriptive	F008
+00ae6d50	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00ae6d50]; descriptive	F008
+00b6c4c0	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00b6c4c0]; descriptive	F008
+00b85ec0	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CUnprovenElement_00b85ec0]; descriptive	F008
+00f380e0	RELOCATION_MATCH	272v272	PASS	grades 1; std::vector::_M_insert_overflow [CGPUScratchBufferTextureManager::CScratchPool]; proven	F008
+00b29930	RELOCATION_MATCH	160v160	PASS	grades 3 (family representative); CEngine::AddEngineComponent; proven	F009
+00b299d0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b29a70	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b29b10	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b29bb0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b29c50	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b29cf0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b29e30	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b29ed0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a0c0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a3e0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a480	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a520	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a5c0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a660	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a700	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a7a0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a840	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a8e0	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00b2a980	RELOCATION_MATCH	160v160	PASS	grades 1; CEngine::AddEngineComponent; proven	F009
+00532d00	RELOCATION_MATCH	144v144	PASS	grades 3 (family representative); NUISystem::CComponent::AddActionOnDesctruction; proven	F010
+0053e180	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CMenuEntry::AddAction; proven	F010
+0053e210	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CMenuEntry::AddActionOnSelected; proven	F010
+0053e2a0	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CMenuEntry::AddActionOnUnselected; proven	F010
+0053e330	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CMenuEntry::AddActionOnBack; proven	F010
+0053e3c0	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CMenuEntry::AddActionOnVisible; proven	F010
+0053e450	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CMenuEntry::AddPreAction; proven	F010
+00558f40	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CDraggableInto::AddAction; proven	F010
+00559400	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CScrollBarOutside::AddActionOnLeftClickedAbove; proven	F010
+00559490	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CScrollBarOutside::AddActionOnLeftClickedUnder; proven	F010
+005598f0	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CScrollBar::AddActionOnDraggedUp; proven	F010
+00559980	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CScrollBar::AddActionOnDraggedDown; proven	F010
+0055aa80	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CDraggable::AddActionOnDropped; proven	F010
+0055ab10	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CDraggable::AddActionOnDroppedNowhere; proven	F010
+0055b520	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CClickable::AddActionOnLeftClicked; proven	F010
+0055b5b0	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CClickable::AddActionOnLeftUnclicked; proven	F010
+0055b640	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CClickable::AddActionOnLeftHeld; proven	F010
+0055b6d0	RELOCATION_MATCH	144v144	PASS	grades 1; NUISystem::CClickable::AddActionOnRightClicked; proven	F010
+00449050	RELOCATION_MATCH	224v224	PASS	grades 3 (family representative); std::vector::_M_insert_overflow [CCountedPointer<const CInputTypeBase>]; proven	F011
+005359d0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<NUISystem::CComponent>]; proven	F011
+0054a2a0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<NUISystem::CAction>]; proven	F011
+00696f00	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<NCreatureAction::CActionEventBase>]; proven	F011
+006f42e0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<CCombatSequenceBase>]; proven	F011
+007659f0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<NShape::CSubdivisionTriangle>]; proven	F011
+007f47f0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<CTCLightningNode::CLightningBranch>]; proven	F011
+008b3350	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCombatAction]; proven	F011
+0098dc30	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<CShaderResource>]; proven	F011
+00a46cb0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<C3DSkeletalMorphParameter>]; proven	F011
+00a5fef0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<CJoystick>]; proven	F011
+00ab3300	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<C3DAnimationBuilder::CBoneInfo>]; proven	F011
+00ab33e0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<C3DAnimFileSequenceChunk>]; proven	F011
+00ad68d0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<CUnprovenPointee_00ad68d0>]; descriptive	F011
+00b38bb0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<CEnginePrimitiveManager>]; proven	F011
+00b83c30	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<CUnprovenPointee_00b83c30>]; descriptive	F011
+00b97cb0	RELOCATION_MATCH	224v224	PASS	grades 1; std::vector::_M_insert_overflow [CCountedPointer<CUnprovenPointee_00b97cb0>]; descriptive	F011
+004b9370	RELOCATION_MATCH	112v112	PASS	grades 2 (family representative); std::_Rb_tree::_M_find [set<CCharString>]; proven	F012
+005e04b0	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, CIVCountedPointer<CAnimComponentBase> >]; proven	F012
+00696340	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase> >]; proven	F012
+006bcf50	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, C2DVector>]; proven	F012
+006c31b0	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >]; proven	F012
+006f1360	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, CCombatSequenceBase* (__fastcall*)(CThingCreatureBase&, CThingCreatureBase&)>]; proven	F012
+0071fac0	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, pair<long, CDateAndTime> >]; proven	F012
+00756350	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, pair<long, long> >]; proven	F012
+007acc90	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, bool>]; proven	F012
+008ac200	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, vector<CCharString> >]; proven	F012
+009ab4f0	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, NBankFileManager::CContainedBank>]; proven	F012
+009ab560	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, CBankFileManager::CBankInfo>]; proven	F012
+009ab5d0	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, CCharString>]; proven	F012
+009d2dd0	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, unsigned long>]; proven	F012
+009eed20	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, CCountedPointer<CConsoleInputBase> >]; proven	F012
+00a2b240	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> >]; proven	F012
+00a54310	RELOCATION_MATCH	112v112	PASS	grades 1; std::_Rb_tree::_M_find [multimap<CCharString, float>]; proven	F012
+00527ca0	MATCH	48v48	PASS	grades 3 (family representative); std::__copy_backward_ptrs [ThingLList]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+00638bb0	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [NThingMap::CThingMapManager::CThingMapInfo]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+0066e100	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [CRegionMinimap::RegionMinimapCellData]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+00680640	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [std::pair<EReactionSpeechType, long>]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+006c5250	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [std::pair<long, COpinionDeed*>]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+006e49d0	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [CUnprovenElement_006e49d0]; descriptive; grade count includes 1 regrade after a comment-only regeneration	F013
+007b41f0	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [CCrimeWaitingForBribe]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+0081a5f0	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [CSkeletalMorphs::CEntry]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+009b2830	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [std::pair<unsigned long, unsigned long>]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+009c6540	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [CFileInstaller::CBufferChunk]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+00a48810	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [CComplexNumber]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+00a95b90	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [C3DIndexedBoneWeight]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+00ac4290	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [CUnprovenElement_00ac4290]; descriptive; grade count includes 1 regrade after a comment-only regeneration	F013
+00b855c0	MATCH	48v48	PASS	grades 3 (ret-4 copy_backward variant, solved separately); std::copy_backward [CEngineSubPrimitiveRenderer::CSortElement]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+00bbd550	MATCH	48v48	PASS	grades 2; std::__copy_backward_ptrs [CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator]; proven; grade count includes 1 regrade after a comment-only regeneration	F013
+00d1fc30	RELOCATION_MATCH	160v160	PASS	grades 2 (family representative); NScript::CQ_BreakSiegeScript::CDisplacedTrader::Alloc; proven	F014
+00d83e60	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CQ_HeroSoulsMotherScript::CHS_Screamer::Alloc; proven	F014
+00d8ffa0	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CQ_HobbeCaveScript::CJames::Alloc; proven	F014
+00d90e90	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CQ_HobbeCaveScript::CBanditSacrifice::Alloc; proven	F014
+00da4250	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CQ_MinionClifftopChaseScript::CMapKeeper::Alloc; proven	F014
+00dcde20	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CQ_OrchardFarmRaidScript::CGuardTeamMember::Alloc; descriptive	F014
+00e3ab90	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CV_BordelloScript::CBordelloLady::Alloc; proven	F014
+00e48b40	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CV_BanditTollScript::CTollBandit::Alloc; proven	F014
+00e4a890	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CV_BanditTollScript::CBanditLeader::Alloc; proven	F014
+00e54580	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CV_BookCollectingScript::CBS_Teacher::Alloc; proven	F014
+00e83570	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CV_FisticuffsClubScript::CTyler::Alloc; proven	F014
+00e92f70	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CV_HiddenBootyScript::CM_HiddenBooty::Alloc; proven	F014
+00ecd2d0	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CV_SickChildScript::CWomanToAttract::Alloc; proven	F014
+00ed1420	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CV_SingingStonesScript::CSingingStone::Alloc; proven	F014
+00f037a0	RELOCATION_MATCH	160v160	PASS	grades 1; NScript::CQ_AmbushTradersScript::CAT_BanditAlly::Alloc; proven	F014
