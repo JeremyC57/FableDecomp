@@ -314604,6 +314604,209 @@ $catalog = @(
         TestSource = '00/97/CThingSearchTools_GetAllThingsInRoughArea_009793d0_test.cpp'
         PassPattern = '009793d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00403ff0'
+        Module = 'CPersistTraits<bool>'
+        Source = '00/40/CPersistTraitsbool_TransferIn_00403ff0.cpp'
+        TestSource = '00/40/CPersistTraitsbool_TransferIn_00403ff0_test.cpp'
+        PassPattern = '00403ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0040fa20'
+        Module = 'CPersistTraits<CActionInputControl>'
+        Source = '00/40/CPersistTraitsCActionInputControl_TransferOut_0040fa20.cpp'
+        TestSource = '00/40/CPersistTraitsCActionInputControl_TransferOut_0040fa20_test.cpp'
+        PassPattern = '0040fa20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00466c8e'
+        Module = 'CPersistTraits<CBrainUpdateZone>'
+        Source = '00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_00466c8e.cpp'
+        TestSource = '00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_00466c8e_test.cpp'
+        PassPattern = '00466c8e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046b545'
+        Module = 'CPersistTraits<CMusicEntry>'
+        Source = '00/46/CPersistTraitsCMusicEntry_TransferBinaryIn_0046b545.cpp'
+        TestSource = '00/46/CPersistTraitsCMusicEntry_TransferBinaryIn_0046b545_test.cpp'
+        PassPattern = '0046b545_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046ba4b'
+        Module = 'CPersistTraits<CBrainUpdateZone>'
+        Source = '00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_0046ba4b.cpp'
+        TestSource = '00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_0046ba4b_test.cpp'
+        PassPattern = '0046ba4b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9642'
+        Module = 'CPersistTraits<CObjectAugmentationParticleSet>'
+        Source = '00/4e/CPersistTraitsCObjectAugmentationParticleSet_TransferBinaryIn_004e9642.cpp'
+        TestSource = '00/4e/CPersistTraitsCObjectAugmentationParticleSet_TransferBinaryIn_004e9642_test.cpp'
+        PassPattern = '004e9642_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9e0b'
+        Module = 'CPersistTraits<CMusicEntry>'
+        Source = '00/4e/CPersistTraitsCMusicEntry_TransferBinaryIn_004e9e0b.cpp'
+        TestSource = '00/4e/CPersistTraitsCMusicEntry_TransferBinaryIn_004e9e0b_test.cpp'
+        PassPattern = '004e9e0b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530b00'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_MakeUnavailableDynamically_00530b00.cpp'
+        TestSource = '00/53/NUISystemCComponent_MakeUnavailableDynamically_00530b00_test.cpp'
+        PassPattern = '00530b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530da0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_MakeAvailableDynamically_00530da0.cpp'
+        TestSource = '00/53/NUISystemCComponent_MakeAvailableDynamically_00530da0_test.cpp'
+        PassPattern = '00530da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00580194'
+        Module = 'CPersistTraits<CHeroMarriageInfo>'
+        Source = '00/58/CPersistTraitsCHeroMarriageInfo_TransferIn_00580194.cpp'
+        TestSource = '00/58/CPersistTraitsCHeroMarriageInfo_TransferIn_00580194_test.cpp'
+        PassPattern = '00580194_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00614080'
+        Module = 'CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>'
+        Source = '00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferOut_00614080.cpp'
+        TestSource = '00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferOut_00614080_test.cpp'
+        PassPattern = '00614080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00614290'
+        Module = 'CPersistTraits<CTCInventoryMap::CUIRegionInfo>'
+        Source = '00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferOut_00614290.cpp'
+        TestSource = '00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferOut_00614290_test.cpp'
+        PassPattern = '00614290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00614af0'
+        Module = 'CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>'
+        Source = '00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferBinaryIn_00614af0.cpp'
+        TestSource = '00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferBinaryIn_00614af0_test.cpp'
+        PassPattern = '00614af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00614da0'
+        Module = 'CPersistTraits<CTCInventoryMap::CUIRegionInfo>'
+        Source = '00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferBinaryIn_00614da0.cpp'
+        TestSource = '00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferBinaryIn_00614da0_test.cpp'
+        PassPattern = '00614da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006782b0'
+        Module = 'CPersistTraits<list<CReactionMatch*>>'
+        Source = '00/67/CPersistTraitslistCReactionMatch_TransferBinaryIn_006782b0.cpp'
+        TestSource = '00/67/CPersistTraitslistCReactionMatch_TransferBinaryIn_006782b0_test.cpp'
+        PassPattern = '006782b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067d830'
+        Module = 'CPersistTraits<CEngineGraphic>'
+        Source = '00/67/CPersistTraitsCEngineGraphic_TransferBinaryIn_0067d830.cpp'
+        TestSource = '00/67/CPersistTraitsCEngineGraphic_TransferBinaryIn_0067d830_test.cpp'
+        PassPattern = '0067d830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067df60'
+        Module = 'CPersistTraits<CDegradableInfo>'
+        Source = '00/67/CPersistTraitsCDegradableInfo_TransferBinaryIn_0067df60.cpp'
+        TestSource = '00/67/CPersistTraitsCDegradableInfo_TransferBinaryIn_0067df60_test.cpp'
+        PassPattern = '0067df60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00686240'
+        Module = 'CPersistTraits<CAppearanceModifierGraphics::CEntry>'
+        Source = '00/68/CPersistTraitsCAppearanceModifierGraphicsCEntry_TransferIn_00686240.cpp'
+        TestSource = '00/68/CPersistTraitsCAppearanceModifierGraphicsCEntry_TransferIn_00686240_test.cpp'
+        PassPattern = '00686240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ba480'
+        Module = 'CPersistTraits<CFaction>'
+        Source = '00/6b/CPersistTraitsCFaction_TransferIn_006ba480.cpp'
+        TestSource = '00/6b/CPersistTraitsCFaction_TransferIn_006ba480_test.cpp'
+        PassPattern = '006ba480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ba8b0'
+        Module = 'CPersistTraits<CFaction>'
+        Source = '00/6b/CPersistTraitsCFaction_TransferBinaryIn_006ba8b0.cpp'
+        TestSource = '00/6b/CPersistTraitsCFaction_TransferBinaryIn_006ba8b0_test.cpp'
+        PassPattern = '006ba8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c7960'
+        Module = 'CPersistTraits<COpinionDeed*>'
+        Source = '00/6c/CPersistTraitsCOpinionDeed_TransferOut_006c7960.cpp'
+        TestSource = '00/6c/CPersistTraitsCOpinionDeed_TransferOut_006c7960_test.cpp'
+        PassPattern = '006c7960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c88d0'
+        Module = 'CPersistTraits<COpinionDeed*>'
+        Source = '00/6c/CPersistTraitsCOpinionDeed_TransferBinaryIn_006c88d0.cpp'
+        TestSource = '00/6c/CPersistTraitsCOpinionDeed_TransferBinaryIn_006c88d0_test.cpp'
+        PassPattern = '006c88d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dbe00'
+        Module = 'CPersistTraits<CComboMultiplierData>'
+        Source = '00/6d/CPersistTraitsCComboMultiplierData_TransferBinaryIn_006dbe00.cpp'
+        TestSource = '00/6d/CPersistTraitsCComboMultiplierData_TransferBinaryIn_006dbe00_test.cpp'
+        PassPattern = '006dbe00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008af2b0'
+        Module = 'CombatDialogueManager'
+        Source = '00/8a/CombatDialogueManager_Init_008af2b0.cpp'
+        TestSource = '00/8a/CombatDialogueManager_Init_008af2b0_test.cpp'
+        PassPattern = '008af2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ef400'
+        Module = 'Coin'
+        Source = '00/8e/Coin_UpdateSound_008ef400.cpp'
+        TestSource = '00/8e/Coin_UpdateSound_008ef400_test.cpp'
+        PassPattern = '008ef400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091a9b0'
+        Module = 'CAIStateGroup_WorkBase<CAIStateGroupBase>'
+        Source = '00/91/CAIStateGroupWorkBaseCAIStateGroupBase_AcquireSeller_0091a9b0.cpp'
+        TestSource = '00/91/CAIStateGroupWorkBaseCAIStateGroupBase_AcquireSeller_0091a9b0_test.cpp'
+        PassPattern = '0091a9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00924720'
+        Module = 'CCreatureAction_KrakenLowChargeLoop'
+        Source = '00/92/CCreatureActionKrakenLowChargeLoop_FinishAction_00924720.cpp'
+        TestSource = '00/92/CCreatureActionKrakenLowChargeLoop_FinishAction_00924720_test.cpp'
+        PassPattern = '00924720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009950f0'
+        Module = 'CDataInputStream'
+        Source = '00/99/CDataInputStream_Read3DVector_009950f0.cpp'
+        TestSource = '00/99/CDataInputStream_Read3DVector_009950f0_test.cpp'
+        PassPattern = '009950f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efab40'
+        Module = 'Cwelcome_guy'
+        Source = '00/ef/Cwelcomeguy_Main_00efab40.cpp'
+        TestSource = '00/ef/Cwelcomeguy_Main_00efab40_test.cpp'
+        PassPattern = '00efab40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

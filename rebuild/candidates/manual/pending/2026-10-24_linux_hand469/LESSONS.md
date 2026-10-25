@@ -1,0 +1,44 @@
+# Chunk 469 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- `token == "TRUE"` (an implicit converting-ctor temporary bound to a case-insensitive `operator==(const CCharString&)`) -> retail re-reads the temporary from its frame slot, and each `||` arm builds it conditionally (flags 1/2/4/8). An explicit `CCharString("TRUE")` cast dereferences the ctor's eax instead and keeps the flags in ebx (498v521). (0x00403FF0)
+- A block-scoped empty traits object plus a same-TU noinline stand-in for its out-of-line callee -> VC7.1 shares the dead parser slot between the closing symbol temporary and the traits `this`. A `CPersistTraits<bool>()` temporary would zero its byte with stosb. (0x00580194)
+- A `long itemType = value->Type;` local read before the stream calls -> fixes retail's load order on the tail. (0x005C0E81)
+- Fetching the action's target into a named local before the `SetCurrentAction(CAction(...))` call -> retail's argument fetch order. (0x00924720)
+- A qualified `CComponent::MakeAvailable()` call marked `__forceinline` -> the loop inline with its alignment padding; VC7.1 will not auto-inline it (97v284). (0x00530DA0 / 0x00530B00)
+- CBaseIntelligentPointer laid out packed (11 bytes) inside Coin -> the retail member offsets; the unpacked form shifts everything by +0x39. (0x008EF400)
+- An early-return condition (`if (sym == ".") return;`) -> gets its own frame word, as retail. (0x009E81E0)
+- Lane gap: CCharString::operator== -> CBasicString::operator== -> Compare. Retail expands it at three call sites (jump-threaded null test); VC7.1 in this lane expands at most two and then calls it out of line. No source form found in 4 grades. (0x004112A0 / 0x009E81E0 / 0x009E84D0)
+- An inline by-pointer long-read helper with its own local -> keeps the length in a register across the buffer allocation. (0x006BA8B0)
+- STLport `uninitialized_fill_n` returning `first + n` -> retail's begin spill over the `rep stos` and the end pointer. (0x006BA8B0)
+- Implicit CCharString temporaries (`parser.NextItemIs("Name")`, lea-passed) -> retail; explicit `CCharString("Name")` arguments go through eax with a larger frame. Each count + loop pair in its own block -> the count's frame word is reused by later temporaries. (0x006BA480)
+- A block-local float traits object whose real TransferIn body is in the TU (with DefaultVal) -> VC7.1 homes its `this` on the value slot; a function-scope object gets its own slot. (0x00686240)
+- `pos + C3DVector(0, 0, 0.25f)` -> only the Z add is emitted; VC7.1 folds the `+ 0.0f` X/Y adds, as retail does. (0x007EA2F0)
+- A callee taking its argument in eax (no ecx/stack) inside libpk/libvorbis -> LTCG custom convention, a lane gap. Park with a verbatim reference body after one grade. (0x00C95580 bitreverse 0x00C954F0)
+- AcquireSeller schedule (0x0091A9B0), five details:
+  - A same-TU `__declspec(noinline)` FindThingsInRoughArea stand-in that only reads its args -> the list's address does not escape, so the header stays in esi.
+  - A user copy ctor on C3DVector -> the filter copy reloads the position from its frame copy instead of caching it in callee-saved registers.
+  - The search box as a named local built before the `&&` filter temporaries -> retail's store order.
+  - The list ctor self-linking a local node pointer before storing `_M_node` -> retail's header init order.
+  - `if (range) index = r % range; else index = 0;` -> retail's `mov ecx,edx ; jmp` / `xor ecx,ecx` select (the ternary differs).
+- Wait loops whose bodies end in an explicit `continue` (no "proper" loop) -> VC7.1 expands a plain-inline implicit handle dtor at EVERY exit. In-body `#pragma inline_depth(0)` around chosen `return`s then outlines those (retail's shared dtor-call block). (0x00EFAB40)
+- An inline `GetDistanceSquared2D(const C3DVector&, const C3DVector&)` with dx/dy locals -> keeps the hero position as a reference (no frame copy) and gives retail's inverted loop test with the duplicated bottom condition. C2DVector temporaries copy the position to the frame. (0x00EFAB40)
+- An inline-expanded by-value parameter whose address is taken (`find(const unsigned long&)` inside the landed IsSpeechGroupAllowed) -> copied to a frame word before the call (retail). VC7.1 expands only the first of three call sites, so that is what retail shows. A hand-inlined `find(PDialogueDef->X)` passes the member address directly instead. (0x008AF990)
+- A same-TU noinline body for `GetEvent(const T** out, const TFilter& filter)` -> VC7.1 lets the address-taken empty filter overlap a LIVE argument slot (retail puts it on `creature`), but it also stops sharing the other address-taken locals (frame 0Ch -> 10h/14h). The full picture probably needs every same-TU callee (find 0x008AEF20 too) modelled. (0x008AF990)
+
+Review at landing:
+- Same-TU stand-ins that are oracles, not landings:
+  - 0x0091A750 FindThingsInRoughArea in src/0091a9b0.cpp;
+  - 0x00403FF0 in src/00580194.cpp;
+  - the float-traits TransferIn body in src/00686240.cpp;
+  - _M_insert_overflow 0x006DB8C0 in differ/006dc6a0.cpp;
+  - IsSpeechGroupAllowed / GetEvent bodies in the 008af990 probes.
+- Local models next to an existing engine header (the verifier warns):
+  - CThingCreatureBase / CAIStateGroupBase in 0091a9b0;
+  - CScriptThing / CScriptGameResourceObjectScriptedThingBase in 00efab40;
+  - CWorld / CTCEntityEvents / CThingCreatureBase in differ/008af990;
+  - CStringParser in the CPersistTraits text rows.
+  - Retype with engine/<Class>.h when landing.
+- Byte-identical twin bodies at two addresses (propagated labels, check label_trust.py): 00466c8e = 0046ba4b, 0046b545 = 004e9e0b.
+- 009950f0's symbol is `?Read3DVector@CDataInputStreamReader@@` (the landed Read2DVector 0x00995030 convention: a reader struct derived from CDataInputStream).
+- 00580194 used the full 4 grades. No row needed more than 4.
+- Catalog rows with wrong (propagated) names: 009950f0, 009e81e0, 004112a0, 006dc6a0, 00686240, 00530da0/00530b00, 00924720/00924930, 007ea2f0, 00c95580 (see NOTES.md "Label corrections").

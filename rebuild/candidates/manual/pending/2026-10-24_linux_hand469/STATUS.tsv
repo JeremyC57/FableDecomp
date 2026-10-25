@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00924930	DIFFER	346v344	-	KrakenHighAttackLoop FinishAction: kraken gets its own frame word (sub esp,124h vs 120h); 3 grades
+00924720	RELOCATION_MATCH	347v347	PASS	KrakenLowChargeLoop FinishAction (catalog vfunc_4); target fetched into a local first; 3 grades
+0091a9b0	RELOCATION_MATCH	471v471	PASS	AcquireSeller; same-TU FindThingsInRoughArea stand-in, C3DVector user copy ctor, named box, two-arm index; 3 grades
+009e84d0	DIFFER	867v917	-	C3DVector TransferIn: member-name null tests not jump-threaded (inline budget); 3 grades
+0040fa20	RELOCATION_MATCH	287v287	PASS	text writer; inline long traits in the dead out slot, dec/je controller chain; 1 grade
+00686240	RELOCATION_MATCH	639v639	PASS	CAppearanceModifierGraphics::CEntry (catalog: the container); block-local float traits with in-TU body; 3 grades
+009e81e0	DIFFER	701v750	-	CPersistTraits<C2DVector>::TransferIn (catalog CBrainBehaviour): name tests not jump-threaded; 4 grades
+00466c8e	RELOCATION_MATCH	270v270	PASS	size-TU reader, three inline long reads homed in [ebp+8]; 1 grade
+0046ba4b	RELOCATION_MATCH	270v270	PASS	byte-identical twin of 00466c8e; 1 grade
+009950f0	RELOCATION_MATCH	273v273	PASS	CDataInputStream::Read3DVector (catalog CBrainUpdateZone label is propagated); 1 grade
+006dbe00	RELOCATION_MATCH	478v478	PASS	!= 0 down-counter, key/multiplier in the dead argument slots; 2 grades
+0067df60	RELOCATION_MATCH	452v452	PASS	14-byte raw engine-graphic read, discarded check word; 2 grades
+0067d830	RELOCATION_MATCH	457v457	PASS	speed-TU reader, Type long truncated to its byte; 1 grade
+006ba480	RELOCATION_MATCH	584v584	PASS	NextItemIs early returns via implicit temporaries, block-scoped count loops; 3 grades
+006ba8b0	RELOCATION_MATCH	394v394	PASS	inline long-read helper with own local, STLport fill_n buffer; 3 grades
+0057f9e9	DIFFER	409v413	-	two chunk-length compares: cmp mem,imm vs mov ecx + cmp ecx; 3 grades
+00580194	RELOCATION_MATCH	440v440	PASS	zeroed temporary rep movsd, block-scoped bool traits + noinline 0x403FF0 stand-in; 4 grades
+006dc6a0	DIFFER	437v447	-	CPersistTraits<CAttackHistoryCombo> (catalog CHeroStatIncreaseData): value/element register caching; 4 grades
+0046b545	RELOCATION_MATCH	277v277	PASS	size-TU reader, def string + memcpy float + byte bool; 1 grade
+004e9e0b	RELOCATION_MATCH	277v277	PASS	byte-identical twin of 0046b545; 1 grade
+004e9642	RELOCATION_MATCH	460v460	PASS	size-TU reader, five inline reads + two def-string arrays; 1 grade
+006c7960	RELOCATION_MATCH	404v404	PASS	text writer with two frame traits objects, bool as TRUE/FALSE append; 2 grades
+006c88d0	RELOCATION_MATCH	697v697	PASS	value-returning reads assigned through (*value)->X; 2 grades
+004112a0	DIFFER	584v705	-	CPersistTraits<CActionInputControl>::TransferIn (catalog CSimVoice): CCharString== inline budget; 4 grades
+00614080	RELOCATION_MATCH	361v361	PASS	text writer, float traits temp in the dead out slot; 1 grade
+00614af0	RELOCATION_MATCH	682v682	PASS	default-temporary assignment then six inline reads; 1 grade
+00614290	RELOCATION_MATCH	362v362	PASS	text writer, ten longs; 1 grade
+00614da0	RELOCATION_MATCH	990v990	PASS	zeroed-record rep movsd then ten inline reads; 1 grade
+005c0a98	DIFFER	365v369	-	register allocation only (value/index/stream); 3 grades
+005c0e81	DIFFER	585v587	-	loop element address CSE (byte offset vs full address); 3 grades
+00403ff0	RELOCATION_MATCH	521v521	PASS	token == "TRUE" implicit temporaries under ||; 3 grades
+006782b0	RELOCATION_MATCH	428v428	PASS	inline STLport clear/push_back, factory switch; 1 grade
+00c95580	DIFFER	923v910	-	libvorbis vorbis_book_init_decode (catalog CTCWound::CWound::Initialize): lane gap, LTCG eax-argument bitreverse 0xC954F0; 1 grade
+008ef400	RELOCATION_MATCH	279v279	PASS	unchecked GetTC out pointer, packed 11-byte CBaseIntelligentPointer; 2 grades
+008af2b0	RELOCATION_MATCH	588v588	PASS	implicit def-name temporary, pair built in one 8-byte slot (and esp,-8); 1 grade
+008af990	DIFFER	687v688	-	GetEvent out/filter slot packing, target events pointer register, message-block registers; 1 grade
+007ea2f0	DIFFER	351v411	-	NTargeting::GetTargetingPositionOnThing (catalog Creature::GetTargetFirePoint): return-block layout; 4 grades
+00efab40	RELOCATION_MATCH	571v571	PASS	continue-ended wait loops + inline_depth(0) returns, inline squared-distance helper; 1 grade
+00530b00	RELOCATION_MATCH	476v476	PASS	NUISystem::CComponent::MakeUnavailableDynamically (catalog DynamicListEntry); forceinline qualified MakeUnavailable; 1 grade
+00530da0	RELOCATION_MATCH	284v284	PASS	NUISystem::CComponent::MakeAvailableDynamically (catalog DynamicListEntry); forceinline qualified MakeAvailable; 2 grades
