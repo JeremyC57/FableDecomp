@@ -325314,6 +325314,197 @@ $catalog = @(
         TestSource = '00/f3/stdvector_erase_00f3f7c0_test.cpp'
         PassPattern = '00f3f7c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008f6c90'
+        Module = 'std::vector'
+        Source = '00/8f/stdvector_Mfillinsert_008f6c90.cpp'
+        TestSource = '00/8f/stdvector_Mfillinsert_008f6c90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '008f6c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fa120'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '00/8f/LHNetworkLibLSocket_ClearData_008fa120.cpp'
+        TestSource = '00/8f/LHNetworkLibLSocket_ClearData_008fa120_test.cpp'
+        PassPattern = '008fa120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fbb90'
+        Module = 'NCameraModes::CPhysicsForceModelBase'
+        Source = '00/8f/NCameraModesCPhysicsForceModelBase_PotentialFieldBufferPoints_008fbb90.cpp'
+        TestSource = '00/8f/NCameraModesCPhysicsForceModelBase_PotentialFieldBufferPoints_008fbb90_test.cpp'
+        PassPattern = '008fbb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090aa40'
+        Module = 'LHNetworkLib::LSocketServer'
+        Source = '00/90/LHNetworkLibLSocketServer_LSocketServer_0090aa40.cpp'
+        TestSource = '00/90/LHNetworkLibLSocketServer_LSocketServer_0090aa40_test.cpp'
+        PassPattern = '0090aa40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090b160'
+        Module = 'LHNetworkLib::LSocketServer'
+        Source = '00/90/LHNetworkLibLSocketServer_Think_0090b160.cpp'
+        TestSource = '00/90/LHNetworkLibLSocketServer_Think_0090b160_test.cpp'
+        PassPattern = '0090b160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00910570'
+        Module = 'CAIStateGroup_MinionListenToStory'
+        Source = '00/91/CAIStateGroupMinionListenToStory_StandUp_00910570.cpp'
+        TestSource = '00/91/CAIStateGroupMinionListenToStory_StandUp_00910570_test.cpp'
+        PassPattern = '00910570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00913d60'
+        Module = 'std::deque'
+        Source = '00/91/stddeque_Mpushbackauxv_00913d60.cpp'
+        TestSource = '00/91/stddeque_Mpushbackauxv_00913d60_test.cpp'
+        PassPattern = '00913d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00927590'
+        Module = 'std'
+        Source = '00/92/std_unguardedpartition_00927590.cpp'
+        TestSource = '00/92/std_unguardedpartition_00927590_test.cpp'
+        PassPattern = '00927590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00979760'
+        Module = 'std'
+        Source = '00/97/std_introsortloop_00979760.cpp'
+        TestSource = '00/97/std_introsortloop_00979760_test.cpp'
+        PassPattern = '00979760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097b4e0'
+        Module = 'std'
+        Source = '00/97/std_introsortloop_0097b4e0.cpp'
+        TestSource = '00/97/std_introsortloop_0097b4e0_test.cpp'
+        PassPattern = '0097b4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098d360'
+        Module = 'std::vector'
+        Source = '00/98/stdvector_Mfillinsert_0098d360.cpp'
+        TestSource = '00/98/stdvector_Mfillinsert_0098d360_test.cpp'
+        PassPattern = '0098d360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00990900'
+        Module = 'std::_Rb_tree'
+        Source = '00/99/stdRbtree_insertunique_00990900.cpp'
+        TestSource = '00/99/stdRbtree_insertunique_00990900_test.cpp'
+        PassPattern = '00990900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00990dc0'
+        Module = 'std::_Rb_tree'
+        Source = '00/99/stdRbtree_insertunique_00990dc0.cpp'
+        TestSource = '00/99/stdRbtree_insertunique_00990dc0_test.cpp'
+        PassPattern = '00990dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993310'
+        Module = 'std::vector'
+        Source = '00/99/stdvector_Minsertoverflow_00993310.cpp'
+        TestSource = '00/99/stdvector_Minsertoverflow_00993310_test.cpp'
+        PassPattern = '00993310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009934c0'
+        Module = 'std'
+        Source = '00/99/std_partialsort_009934c0.cpp'
+        TestSource = '00/99/std_partialsort_009934c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009934c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993860'
+        Module = 'std'
+        Source = '00/99/std_introsortloop_00993860.cpp'
+        TestSource = '00/99/std_introsortloop_00993860_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00993860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00997bb0'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_GetCopyFilename_00997bb0.cpp'
+        TestSource = '00/99/CAFile_GetCopyFilename_00997bb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        PassPattern = '00997bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998010'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ParserReadPastComponent_00998010.cpp'
+        TestSource = '00/99/CAFile_ParserReadPastComponent_00998010_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        PassPattern = '00998010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998250'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_GetAbsoluteFilePath_00998250.cpp'
+        TestSource = '00/99/CAFile_GetAbsoluteFilePath_00998250_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        PassPattern = '00998250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998a30'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_IsFilePathSyntaxValid_00998a30.cpp'
+        TestSource = '00/99/CAFile_IsFilePathSyntaxValid_00998a30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        PassPattern = '00998a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998c90'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_ExpandPath_00998c90.cpp'
+        TestSource = '00/99/CAFile_ExpandPath_00998c90_test.cpp'
+        PassPattern = '00998c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00998f60'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_CompareFiles_00998f60.cpp'
+        TestSource = '00/99/CAFile_CompareFiles_00998f60_test.cpp'
+        PassPattern = '00998f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999ab0'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_IsRoomForFile_00999ab0.cpp'
+        TestSource = '00/99/CAFile_IsRoomForFile_00999ab0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00999ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099e260'
+        Module = '_global'
+        Source = '00/99/global_InitExternalStrings_0099e260.cpp'
+        TestSource = '00/99/global_InitExternalStrings_0099e260_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0099e260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a5020'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_ExceptionHandler_009a5020.cpp'
+        TestSource = '00/9a/CSystemManager_ExceptionHandler_009a5020_test.cpp'
+        PassPattern = '009a5020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009af1e0'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_CompileString_009af1e0.cpp'
+        TestSource = '00/9a/CDefinitionManager_CompileString_009af1e0_test.cpp'
+        PassPattern = '009af1e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
