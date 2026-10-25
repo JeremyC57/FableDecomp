@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0085ff10	RELOCATION_MATCH	332v332	PASS	NCreatureMode::GetUpFromSitting; block-scoped action, forceinline 2-arg ctor, Clone via base-ref helper; 1 grade
+00861e60	RELOCATION_MATCH	818v818	PASS	NCreatureMode::GetRandomAnimationFromCreature; /Oa TU, same-TU _M_insert_overflow/GetSubDef bodies; 1 grade
+00864250	RELOCATION_MATCH	332v332	PASS	NCreatureAI::IsAwareOfThingImplementation; forceinline HasTC, thing==GetPerceivedThing order; 2 grades
+008643a0	RELOCATION_MATCH	305v305	PASS	NCreatureAI::Talk; function-scope def + same-TU GetSubDef stand-in; 1 grade
+00864700	RELOCATION_MATCH	315v315	PASS	NCreatureAI::IsAwareOfThingIndirectly (label propagated); 1 grade
+008648a0	RELOCATION_MATCH	645v645	PASS	IsWillingToAttackTarget; state!=3 {..} else return true for block order; 1 grade
+00864b30	RELOCATION_MATCH	374v374	PASS	IsOverridingFactionEnemyOnTarget; same-TU GetSubDef keeps def in ebx; 1 grade
+00864d00	RELOCATION_MATCH	254v254	PASS	IsToAttackTarget; out-pointer GetTC/PeekTC forceinline, one shared false; 4 grades
+00868e50	DIFFER	456v456	-	GetArmourWeightsFromThing; one x87 commutation in total += weighting; 1 grade
+00870530	RELOCATION_MATCH	539v539	PASS	std::__find_if<CEntry, CPred_EntryIsDriver> (label CWorldDriver wrong); 2 grades
+008722d0	DIFFER	417v419	-	NCameraModes::CStringAndCageBase::UpdateStringLength; x87 fst/fstp scheduling; 1 grade
+00873690	DIFFER	603v603	-	NCameraModes::CFirstPerson::Update; frame 0x40 v 0x48 + x87 order; 1 grade
+00876e10	RELOCATION_MATCH	303v303	PASS	CTools::PotentialFieldBufferPoints; /step per component -> reciprocal multiply; 4 grades
+00878db0	RELOCATION_MATCH	408v408	PASS	NCameraModes::CProjectileWeapon::GetLookDirectionFromParams; float xy local for the fxch pair; 1 grade
+00879680	DIFFER	535v573	-	NCameraModes::CProjectileWeapon::GetPhiForPosition; frame 0x54 v 0x48; 1 grade
+008814c0	RELOCATION_MATCH	464v464	PASS	NScreenEffect::CScreenEffectPriorityStack dtor; 1 grade
+008818a0	DIFFER	366v410	-	DeleteScreenFilterEntry; zero-store order + rep movsd vs memberwise copy; 4 grades
+00881c90	DIFFER	874v874	-	InsertScreenFilterEntry; register allocation + zero-store order; 1 grade
+00882fe0	RELOCATION_MATCH	316v316	PASS	CScreenFilterParams::LerpTo; 1 grade
+008854a0	RELOCATION_MATCH	470v470	PASS	InterpolateRadialBlurParams; user default ctor -> hidden ptr in ecx; 3 grades
+00885680	RELOCATION_MATCH	349v349	PASS	InterpolateRadialBlurPositionParams; 1 grade
+00888a60	DIFFER	273v289	-	CEnvironmentThemeResourcePallette::Build; def-loop slot/register choice; 4 grades
+00888ee0	RELOCATION_MATCH	281v281	PASS	vector<SElement12>::operator=; 1 grade
+008894a0	RELOCATION_MATCH	301v301	PASS	CBlendedEnvironmentTheme implicit copy ctor; 1 grade
+00889f00	RELOCATION_MATCH	323v323	PASS	vector<CBlendedEnvironmentTheme>::operator=; same-TU noinline stand-ins; 2 grades
+0088ac90	DIFFER	409v417	-	GFSaveSkeletalMorphTargetToFile; register allocation only; 1 grade
+0088ae40	DIFFER	433v431	-	GFSerialisePointer; register allocation only; 1 grade
+0088b0c0	DIFFER	970v971	-	GFLoadSkeletalMorphTargetFromFile; parser-dtor inline-site choice at exits; 1 grade
+0088b4f0	RELOCATION_MATCH	283v283	PASS	vector<C3DSkeletalBoneMorph>::_M_insert_overflow; 1 grade
+008b7cf0	RELOCATION_MATCH	468v468	PASS	ShouldPlayUnsheatheWeaponAction; named CCharString blocks, case 5 before case 4; 2 grades
+008df510	RELOCATION_MATCH	300v300	PASS	CModeScorpionKingTailPlunge::Recover (label CTCLightningOrb_OnUpdate wrong); 1 grade
+008e8e50	DIFFER	409v405	-	NCreatureMode::GetStrafingAnimationName; x87 speed store/reload (3 instr); 1 grade
+008ebb50	RELOCATION_MATCH	316v316	PASS	std::__find_if<CHoverState, CIsValidHoverStateForMovementType>; 2 grades
+008ebc90	RELOCATION_MATCH	256v256	PASS	std::__find_if<CHoverState, CIsValidHoverStateForVelocity>; 1 grade
+008ec070	RELOCATION_MATCH	290v290	PASS	vector<CHoverState>::_M_insert_overflow (label CExplosionRing wrong); 1 grade
+008f0450	RELOCATION_MATCH	283v283	PASS	vector<Coin>::_M_insert_overflow; inline __fastcall helpers; 2 grades
+008f06f0	RELOCATION_MATCH	553v553	PASS	CCard::FrameUpdate (label UpdateCardTilt); (double)TWO_PI float constant; 3 grades
+008f2280	RELOCATION_MATCH	766v766	PASS	CTCTavernGameCardBase::CardsMoving; per-branch returns, 53 - i counter; 1 grade
+008f4990	RELOCATION_MATCH	269v269	PASS	GetActionAnimSetList; HasTC then GetTC into an unset pointer; 2 grades
+008f5970	DIFFER	465v465	-	NPhysicsHelpers::GetClosestPointOnFiniteLineToPoint; x87 t kept vs reloaded (4 instr); 1 grade
