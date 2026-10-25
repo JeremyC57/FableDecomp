@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c1c030	RELOCATION_MATCH	54v54	PASS	CAudioDevice::GetDefaultRate (descriptive; libpk); 1 grade
+00c1c0b0	RELOCATION_MATCH	90v90	PASS	CAudioDevice::GetDefaultRateRatio (descriptive; libpk); 1 grade
+00c1c280	RELOCATION_MATCH	171v171	PASS	CAudioListener::Update; assign-not-init of the SwapYZ temporaries; 2 grades
+00c1c700	RELOCATION_MATCH	157v157	PASS	CAudioResources ctor; 1 grade
+00c1c900	MATCH	143v143	PASS	CMatrix3x4::RotateB (Y/Z rotation; catalog RotateYaw propagated); 1 grade
+00c1c990	MATCH	142v142	PASS	CMatrix3x4::RotateA (X/Z rotation); 1 grade
+00c1cab0	RELOCATION_MATCH	200v200	PASS	Atan2 __stdcall, intrinsic atan; 1 grade
+00c1d820	RELOCATION_MATCH	33v33	PASS	CScriptModuleTimer::GetRemainingTimeSeconds; 1 grade
+00c1d8c0	RELOCATION_MATCH	101v101	PASS	CScriptModuleTimer::UpdateState; named bool result; 2 grades
+00c1df50	RELOCATION_MATCH	23v23	PASS	CScriptRequest ctor; 1 grade
+00c1e780	RELOCATION_MATCH	66v66	PASS	CBlendOwner::AddBlend; if/else merges the two inline Adds; 2 grades
+00c1e800	RELOCATION_MATCH	72v72	PASS	CBlendOwner::RemoveAllBlends; 1 grade
+00c1e900	MATCH	75v75	PASS	CPtrArray<CBlendEntry*>::Remove (template instantiation); 1 grade
+00c1e990	RELOCATION_MATCH	44v44	PASS	CombatSequence_AlignDuration __fastcall (manifest name kept); 1 grade
+00c1eaa0	RELOCATION_MATCH	102v102	PASS	CUIComponentBase ctor; 1 grade
+00c1ebf0	MATCH	75v75	PASS	CPtrArray<CDisplayElement*>::Remove; 1 grade
+00c1ec70	MATCH	113v113	PASS	CVisitedItem::MatchesKey; 1 grade
+00c1ecf0	MATCH	133v133	PASS	CVisitedItem::ContainsValue; value == call() operand order; 2 grades
+00c1ee60	RELOCATION_MATCH	128v128	PASS	CItemAction(dispatcher, key) /EHsc; 1 grade
+00c1eee0	RELOCATION_MATCH	217v217	PASS	CItemAction(dispatcher, CString, bool) /EHsc; 1 grade
+00c1f320	RELOCATION_MATCH	81v81	PASS	CItemAction::SetTypeBits; 1 grade
+00c1f480	RELOCATION_MATCH	89v89	PASS	CItemAction::Run; 1 grade
+00c1f4e0	RELOCATION_MATCH	76v76	PASS	CItemAction::Handle; 1 grade
+00c20720	DIFFER	3v43	-	CSoundEvent::CheckState: lane gap, all-empty switch folds to ret 4 (retail keeps an all-zero byte table; LTCG candidate); 2 grades of the same body (the second re-checks the class rename), parked
+00c20750	RELOCATION_MATCH	68v68	PASS	CSoundEvent::GetActivePlayer; jump table checked by hand; 1 grade
+00c207c0	RELOCATION_MATCH	38v38	PASS	CSoundEvent::IsWaitingOrPlayingPhysical; 1 grade
+00c20850	RELOCATION_MATCH	43v43	PASS	CSoundEvent::WaitForData; 1 grade
+00c20880	RELOCATION_MATCH	83v83	PASS	CSoundEvent::WaitForMemory; 1 grade
+00c20920	RELOCATION_MATCH	43v43	PASS	CSoundEvent::StopWaitingForData; 1 grade
+00c20950	RELOCATION_MATCH	109v109	PASS	CSoundEvent::WaitForPhysicalPlayer; 1 grade
+00c209c0	RELOCATION_MATCH	91v91	PASS	CSoundEvent::StopWaitingForPhysicalPlayer; 1 grade
+00c20a20	RELOCATION_MATCH	218v218	PASS	CSoundEvent::PlayPhysical; float 0.0f members, swapped store order; 3 grades
+00c20b00	RELOCATION_MATCH	65v65	PASS	CSoundEvent::PlayVirtual; 1 grade
+00c20b50	RELOCATION_MATCH	95v95	PASS	CSoundEvent::StopPhysical; 1 grade
+00c20bb0	RELOCATION_MATCH	41v41	PASS	CSoundEvent::StopVirtual; 1 grade
+00c20be0	RELOCATION_MATCH	41v41	PASS	CSoundEvent::GetLevel; same-TU stand-ins keep this in ecx; 1 grade
+00c20c10	RELOCATION_MATCH	60v60	PASS	CSoundEvent::IsAudible; 1 grade
+00c20df0	RELOCATION_MATCH	83v83	PASS	CSoundEvent::ResetLevel; 1 grade
+00c20e80	RELOCATION_MATCH	43v43	PASS	CSoundEvent::MarkIfMatches; 1 grade
+00c20ef0	RELOCATION_MATCH	41v41	PASS	CSoundEvent::IsWaiting; 1 grade
