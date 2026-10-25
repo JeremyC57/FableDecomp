@@ -307454,6 +307454,13 @@ $catalog = @(
         TestSource = '00/c6/CEaxContext_SetHFReference_00c646e0_test.cpp'
         PassPattern = '00c646e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c61b90'
+        Module = 'CPKArray'
+        Source = '00/c6/CPKArray_CPKArray_00c61b90.cpp'
+        TestSource = '00/c6/CPKArray_CPKArray_00c61b90_test.cpp'
+        PassPattern = '00c61b90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
