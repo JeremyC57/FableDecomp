@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c649c0	MATCH	62v62	PASS	CEAXSource::SetDirect; 1 grade
+00c64a00	MATCH	59v59	PASS	CEAXSource::SetDirectHF; 1 grade
+00c64a40	MATCH	59v59	PASS	CEAXSource::SetRoom (current copy only); 1 grade
+00c64ac0	MATCH	62v62	PASS	CEAXSource::SetObstruction; 1 grade
+00c64d70	MATCH	62v62	PASS	CEAXSource::SetOutsideVolumeHF; 1 grade
+00c64f70	MATCH	58v58	PASS	CEAXSource::SetFlags (`flags & ~7UL`); 1 grade
+00c67430	RELOCATION_MATCH	64v64	PASS	CEAXContext::SetSlotFlags (`long result = 0` first); 1 grade
+00c67720	RELOCATION_MATCH	146v146	PASS	CEAXContext::SetSlotVolume; 1 grade
+00c67a10	RELOCATION_MATCH	204v204	PASS	CEAXContext::SetReverbFlags (8 same-TU noinline flag setters); 1 grade
+00c6a180	RELOCATION_MATCH	128v128	PASS	CReverbProcessor::ProcessStage94 (stage-pointer local first); 2 grades
+00c6a200	RELOCATION_MATCH	128v128	PASS	CReverbProcessor::ProcessStage144; 1 grade
+00c6ad10	DIFFER	92v89	-	CSoundMixer::MixBlocksRamped; LTCG register argument (start gain in ecx to 0x00C6AAE0, caller pops); 1 grade; lane gap
+00c6aef0	DIFFER	108v92	-	CVoiceEffect::Configure; retail_asm candidate (bare fistp dword truncation helper); 1 grade (+1 SRC_FAIL from a placeholder line)
+00c6b3a0	DIFFER	265v237	-	ConvertLongToFloat; retail_asm candidate (SSE2 cvtdq2ps / SSE cvtpi2ps+emms inline-asm blocks); 1 grade (+1 SRC_FAIL)
+00c6b8c0	DIFFER	237v219	-	CStateVariableFilter::FilterRamped; retail_asm candidate (bare fistp dword); 1 grade (+1 SRC_FAIL)
+00c6bae0	DIFFER	252v235	-	CStateVariableFilter::Filter; retail_asm candidate (bare fistp dword); 1 grade (+1 SRC_FAIL)
+00c6bbd0	RELOCATION_MATCH	161v161	PASS	CStateVariableFilter::SetCutoff (#pragma intrinsic(sin)); 1 grade
+00c6bc80	RELOCATION_MATCH	113v113	PASS	CStateVariableFilter::SetParameters (same-TU noinline SetCutoff, `0.0f == m_band`); 2 grades
+00c6bd00	RELOCATION_MATCH	155v155	PASS	CStateVariableFilter::SetParametersWithGain (named float gain local); 2 grades
+00c6bdc0	DIFFER	165v146	-	LookupDirectionIndex; retail_asm candidate (3x bare fistp dword); 1 grade (+1 SRC_FAIL)
+00c6be60	DIFFER	250v226	-	ComputeDirectionalGains; retail_asm candidate (bare fistp dword) + LTCG edx live across a call; 1 grade (+1 SRC_FAIL)
+00c6c000	DIFFER	199v240	-	COnePoleLowPass::SetLevel; retail_asm candidate (inline-asm 10^x frndint/f2xm1/fscale/fwait block + bare fistp); 1 grade (+1 SRC_FAIL)
+00c6caf0	MATCH	139v139	PASS	MixDelayTapRampUp (mixed index/pointer loop forms); 4 grades
+00c6cb80	MATCH	143v143	PASS	MixDelayTapRampDown; 3 grades
+00c6cc10	MATCH	76v76	PASS	MixDelayTap (early named `out` local); 3 grades
+00c6cef0	DIFFER	82v66	-	CVtable_012bed7c::ComputeTapGain; retail_asm candidate (bare fistp dword); 1 grade
+00c6d370	DIFFER	318v156	-	MixSamplesSSE2; retail_asm candidate (SSE2 inline-asm loop, aligned /GS frame); 1 grade
+00c6d410	DIFFER	520v240	-	MixSamplesRampSSE2; retail_asm candidate (SSE2 inline-asm loop) + LTCG ecx argument; 1 grade
+00c6da40	DIFFER	139v139	-	MixGainRampUp; scheduling only (two pointer increments swapped); 4 grades; lane gap
+00c6dad0	DIFFER	139v139	-	MixGainRampDown; scheduling only (two pointer increments swapped); 4 grades; lane gap
+00c6de60	DIFFER	75v59	-	CVtable_012bed90::ComputeGainRamp; retail_asm candidate (bare fistp dword); 1 grade
+00c6e760	RELOCATION_MATCH	30v30	PASS	CVtable_012bedb8::CVtable_012bedb8; 1 grade
+00c6e790	DIFFER	139v139	-	MixGainRampUp (copy in the 0x012BEDB8 TU); scheduling only; 3 grades; lane gap
+00c6e820	DIFFER	139v139	-	MixGainRampDown (copy in the 0x012BEDB8 TU); scheduling only; 2 grades; lane gap
+00c6eba0	DIFFER	74v62	-	CVtable_012bedb8::ComputeGainRamp; retail_asm candidate (bare fistp dword); 1 grade
+00c6ebe0	DIFFER	123v106	-	CVtable_012bedb8::SetAlternate; retail_asm candidate (bare fistp dword in both arms); 1 grade
+00c6f0f0	DIFFER	296v173	-	MixSamplesMMX; retail_asm candidate (MMX inline-asm loop + emms, aligned /GS frame); 1 grade
+00c70240	RELOCATION_MATCH	160v160	PASS	MixVoiceFadeIn (hoisted common constant pushes); 1 grade
+00c702e0	RELOCATION_MATCH	163v163	PASS	MixVoiceFadeOut; 1 grade
+00c70390	RELOCATION_MATCH	228v228	PASS	MixVoice (slot-rewrite tail call); 1 grade
