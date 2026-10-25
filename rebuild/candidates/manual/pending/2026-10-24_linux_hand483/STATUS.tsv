@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009b3630	RELOCATION_MATCH	458v458	PASS	std::vector<unsigned char>::_M_range_insert (catalog Vector_InsertGap); grades 1
+009b5310	RELOCATION_MATCH	461v461	PASS	std::vector::_M_range_insert (catalog Vector_InsertRange_12byte); grades 1
+009b54e0	RELOCATION_MATCH	389v389	PASS	std::vector::_M_range_insert (catalog Vector_InsertRange_8byte_Pair); grades 1
+009b8dd0	RELOCATION_MATCH	285v285	PASS	std::vector::_M_insert_overflow (catalog Vector_InsertRange_24byte_CSpeechFrame); grades 1
+009b9030	RELOCATION_MATCH	244v244	PASS	std::__partial_sort (catalog PartialSort_Heap_Pair24byte); grades 1
+009bd910	RELOCATION_MATCH	490v490	PASS	CMovieSubtitles::Play (catalog CEngineInternalPrimitiveBase_UpdateSubtitleDisplay); grades 4
+009c02d0	RELOCATION_MATCH	739v739	PASS	CDisplayManager::EnumerateDisplayModes (catalog BuildVideoCapabilityTree); grades 4
+009c05c0	DIFFER	699v699	-	CDisplayManager::EnumerateAntiAliasingModes: register/scheduling in the CheckDeviceMultiSampleType argument setup; grades 2
+009c33a0	DIFFER	314v315	-	GetMarkerFileName: lane gap: hidden CWideString result in esi (LTCG custom convention); grades 1
+009c4120	RELOCATION_MATCH	258v258	PASS	CFileInstaller::PostFileReadCompletion (catalog FileReadCompletion_ProcessData); grades 2
+009c71a0	RELOCATION_MATCH	264v264	PASS	std::_List_base::clear (catalog DataItemList_DestroyAll); grades 1
+009e14b0	RELOCATION_MATCH	294v294	PASS	std::vector<CTVertexRHWColSpecTex1>::_M_insert_overflow (catalog VectorInsertRange); grades 2
+009e2590	RELOCATION_MATCH	513v513	PASS	TransferIn (catalog TransferIn); grades 4
+009e6a70	RELOCATION_MATCH	427v427	PASS	std::__find_if (catalog ParticleMorphs_FindEntryByKey); grades 3
+009e73f0	RELOCATION_MATCH	412v412	PASS	std::vector::_M_range_insert (catalog Vector_InsertRange); grades 1
+009e77e0	RELOCATION_MATCH	258v258	PASS	std::vector::_M_insert_overflow (catalog Vector_PushBack); grades 1
+009ecf30	RELOCATION_MATCH	606v606	PASS	CConsole::~CConsole (catalog ParticleMorphs_Destructor); grades 1
+009f1d20	RELOCATION_MATCH	347v347	PASS	InitializeMemorySystem (catalog InitializeMemorySystem); grades 2
+009f70e0	RELOCATION_MATCH	354v354	PASS	CVsyncCallbackTimer::CVsyncCallbackTimer (catalog Init_ListHeads); grades 3
+009f9020	RELOCATION_MATCH	308v308	PASS	CProfileManager::~CProfileManager (catalog CNavigableTextUIManager_Destructor); grades 1
+009f9160	RELOCATION_MATCH	242v242	PASS	CProfileManager::CProfileManager (catalog CEnginePrimitive_Initialize); grades 3
+009fa620	DIFFER	336v351	-	CTexture::GetNextValidDimensions: caps bit-test folds to test byte ptr; zero-side store elided; grades 4
+00a00c80	RELOCATION_MATCH	268v268	PASS	std::vector<CGraphicInfoFrame>::_M_insert_overflow (catalog CGameMapCellArray_InsertElements); grades 1
+00a00f50	RELOCATION_MATCH	329v329	PASS	std::vector<CGraphicInfoFrame>::_M_fill_insert (catalog CGameMapCellArray_ResizeAndInsert); grades 1
+00a01120	RELOCATION_MATCH	337v337	PASS	std::vector<CGraphicInfo>::_M_insert_overflow (catalog std_vector_expand); grades 1
+00a01290	RELOCATION_MATCH	296v296	PASS	std::vector<CGraphicInfo>::_M_fill_insert (catalog Vector_InsertElements); grades 1
+00a04200	DIFFER	386v382	-	(anonymous)::TransformControllerInputFromRadiallyToRectangularlyLimited: length spill (retail fst+keep, ours fstp+reload) and frame slot; grades 4
+00a0c450	DIFFER	288v288	-	CCamera::GetAngleXZ: x87 product stack shuffle (fld st(2);fmulp v fmul st(2)); grades 4
+00a0c570	DIFFER	380v373	-	CCamera::SetAngleXY: &RHSet.Forward CSE in edi + x87 products (SetAngleYZ family); grades 1
+00a0c6f0	DIFFER	318v315	-	CCamera::SetAngleYZ: &RHSet.Forward CSE in edi + x87 product shuffle (QFE same); grades 4
+00a0db60	DIFFER	288v290	-	GFInitMaths: frame slot packing of tempi/tempf (push ecx v sub esp,8); grades 4
+00a0dcd0	DIFFER	256v256	-	CJoystickPositionTracker::HasPerformed360ClockwiseMove: dot-product term order (ours forms Y first); grades 4
+00a0ee50	RELOCATION_MATCH	318v318	PASS	std::deque<C2DVector>::_M_reallocate_map (catalog Deque_Reallocate); grades 2
+00a0f040	RELOCATION_MATCH	663v663	PASS	std::deque<C2DVector>::erase (catalog RenderList_ProcessIteration); grades 2
+00a0faa0	RELOCATION_MATCH	409v409	PASS	std::deque<C2DVector>::_M_fill_insert (catalog RenderList_InsertElement); grades 1
+00a0fe80	DIFFER	814v737	-	IsNonBeginningChar: lane gap: wchar_t argument in ax (LTCG custom convention); grades 1
+00a10390	DIFFER	396v458	-	WordWrap_FindNextLineW: lane gap: ax-argument callees (LTCG custom convention); grades 1
+00a10560	DIFFER	433v433	-	WordWrap_FindNextLineA: cmp eax,esi (retail) v test eax,eax on the MultiByteToWideChar result; grades 4
+00a10800	RELOCATION_MATCH	338v338	PASS	WordWrap_TokenizeA (catalog WordWrap_TokenizeA); grades 2
+00a112f0	DIFFER	316v316	-	CMatrix3x4::TransformPlane: x87 stack allocation / spill slots and frame (0x24 v 0x1c); grades 4

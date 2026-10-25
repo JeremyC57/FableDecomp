@@ -325505,6 +325505,196 @@ $catalog = @(
         TestSource = '00/9a/CDefinitionManager_CompileString_009af1e0_test.cpp'
         PassPattern = '009af1e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009b3630'
+        Module = 'std::vector<unsigned char>'
+        Source = '00/9b/stdvectorunsignedchar_Mrangeinsert_009b3630.cpp'
+        TestSource = '00/9b/stdvectorunsignedchar_Mrangeinsert_009b3630_test.cpp'
+        PassPattern = '009b3630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b5310'
+        Module = 'std::vector'
+        Source = '00/9b/stdvector_Mrangeinsert_009b5310.cpp'
+        TestSource = '00/9b/stdvector_Mrangeinsert_009b5310_test.cpp'
+        PassPattern = '009b5310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b54e0'
+        Module = 'std::vector'
+        Source = '00/9b/stdvector_Mrangeinsert_009b54e0.cpp'
+        TestSource = '00/9b/stdvector_Mrangeinsert_009b54e0_test.cpp'
+        PassPattern = '009b54e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b8dd0'
+        Module = 'std::vector'
+        Source = '00/9b/stdvector_Minsertoverflow_009b8dd0.cpp'
+        TestSource = '00/9b/stdvector_Minsertoverflow_009b8dd0_test.cpp'
+        PassPattern = '009b8dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b9030'
+        Module = 'std'
+        Source = '00/9b/std_partialsort_009b9030.cpp'
+        TestSource = '00/9b/std_partialsort_009b9030_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009b9030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bd910'
+        Module = 'CMovieSubtitles'
+        Source = '00/9b/CMovieSubtitles_Play_009bd910.cpp'
+        TestSource = '00/9b/CMovieSubtitles_Play_009bd910_test.cpp'
+        PassPattern = '009bd910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c02d0'
+        Module = 'CDisplayManager'
+        Source = '00/9c/CDisplayManager_EnumerateDisplayModes_009c02d0.cpp'
+        TestSource = '00/9c/CDisplayManager_EnumerateDisplayModes_009c02d0_test.cpp'
+        PassPattern = '009c02d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c4120'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_PostFileReadCompletion_009c4120.cpp'
+        TestSource = '00/9c/CFileInstaller_PostFileReadCompletion_009c4120_test.cpp'
+        PassPattern = '009c4120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c71a0'
+        Module = 'std::_List_base'
+        Source = '00/9c/stdListbase_clear_009c71a0.cpp'
+        TestSource = '00/9c/stdListbase_clear_009c71a0_test.cpp'
+        PassPattern = '009c71a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e14b0'
+        Module = 'std::vector<CTVertexRHWColSpecTex1>'
+        Source = '00/9e/stdvectorCTVertexRHWColSpecTex1_Minsertoverflow_009e14b0.cpp'
+        TestSource = '00/9e/stdvectorCTVertexRHWColSpecTex1_Minsertoverflow_009e14b0_test.cpp'
+        PassPattern = '009e14b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2590'
+        Module = '_global'
+        Source = '00/9e/global_TransferIn_009e2590.cpp'
+        TestSource = '00/9e/global_TransferIn_009e2590_test.cpp'
+        PassPattern = '009e2590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e6a70'
+        Module = 'std'
+        Source = '00/9e/std_findif_009e6a70.cpp'
+        TestSource = '00/9e/std_findif_009e6a70_test.cpp'
+        PassPattern = '009e6a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e73f0'
+        Module = 'std::vector'
+        Source = '00/9e/stdvector_Mrangeinsert_009e73f0.cpp'
+        TestSource = '00/9e/stdvector_Mrangeinsert_009e73f0_test.cpp'
+        PassPattern = '009e73f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e77e0'
+        Module = 'std::vector'
+        Source = '00/9e/stdvector_Minsertoverflow_009e77e0.cpp'
+        TestSource = '00/9e/stdvector_Minsertoverflow_009e77e0_test.cpp'
+        PassPattern = '009e77e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ecf30'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_CConsole_009ecf30.cpp'
+        TestSource = '00/9e/CConsole_CConsole_009ecf30_test.cpp'
+        PassPattern = '009ecf30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f1d20'
+        Module = '_global'
+        Source = '00/9f/global_InitializeMemorySystem_009f1d20.cpp'
+        TestSource = '00/9f/global_InitializeMemorySystem_009f1d20_test.cpp'
+        PassPattern = '009f1d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f70e0'
+        Module = 'CVsyncCallbackTimer'
+        Source = '00/9f/CVsyncCallbackTimer_CVsyncCallbackTimer_009f70e0.cpp'
+        TestSource = '00/9f/CVsyncCallbackTimer_CVsyncCallbackTimer_009f70e0_test.cpp'
+        PassPattern = '009f70e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9020'
+        Module = 'CProfileManager'
+        Source = '00/9f/CProfileManager_CProfileManager_009f9020.cpp'
+        TestSource = '00/9f/CProfileManager_CProfileManager_009f9020_test.cpp'
+        PassPattern = '009f9020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9160'
+        Module = 'CProfileManager'
+        Source = '00/9f/CProfileManager_CProfileManager_009f9160.cpp'
+        TestSource = '00/9f/CProfileManager_CProfileManager_009f9160_test.cpp'
+        PassPattern = '009f9160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a00c80'
+        Module = 'std::vector<CGraphicInfoFrame>'
+        Source = '00/a0/stdvectorCGraphicInfoFrame_Minsertoverflow_00a00c80.cpp'
+        TestSource = '00/a0/stdvectorCGraphicInfoFrame_Minsertoverflow_00a00c80_test.cpp'
+        PassPattern = '00a00c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a00f50'
+        Module = 'std::vector<CGraphicInfoFrame>'
+        Source = '00/a0/stdvectorCGraphicInfoFrame_Mfillinsert_00a00f50.cpp'
+        TestSource = '00/a0/stdvectorCGraphicInfoFrame_Mfillinsert_00a00f50_test.cpp'
+        PassPattern = '00a00f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a01120'
+        Module = 'std::vector<CGraphicInfo>'
+        Source = '00/a0/stdvectorCGraphicInfo_Minsertoverflow_00a01120.cpp'
+        TestSource = '00/a0/stdvectorCGraphicInfo_Minsertoverflow_00a01120_test.cpp'
+        PassPattern = '00a01120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a01290'
+        Module = 'std::vector<CGraphicInfo>'
+        Source = '00/a0/stdvectorCGraphicInfo_Mfillinsert_00a01290.cpp'
+        TestSource = '00/a0/stdvectorCGraphicInfo_Mfillinsert_00a01290_test.cpp'
+        PassPattern = '00a01290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ee50'
+        Module = 'std::deque<C2DVector>'
+        Source = '00/a0/stddequeC2DVector_Mreallocatemap_00a0ee50.cpp'
+        TestSource = '00/a0/stddequeC2DVector_Mreallocatemap_00a0ee50_test.cpp'
+        PassPattern = '00a0ee50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0f040'
+        Module = 'std::deque<C2DVector>'
+        Source = '00/a0/stddequeC2DVector_erase_00a0f040.cpp'
+        TestSource = '00/a0/stddequeC2DVector_erase_00a0f040_test.cpp'
+        PassPattern = '00a0f040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0faa0'
+        Module = 'std::deque<C2DVector>'
+        Source = '00/a0/stddequeC2DVector_Mfillinsert_00a0faa0.cpp'
+        TestSource = '00/a0/stddequeC2DVector_Mfillinsert_00a0faa0_test.cpp'
+        PassPattern = '00a0faa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10800'
+        Module = '_global'
+        Source = '00/a1/global_WordWrapTokenizeA_00a10800.cpp'
+        TestSource = '00/a1/global_WordWrapTokenizeA_00a10800_test.cpp'
+        PassPattern = '00a10800_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
