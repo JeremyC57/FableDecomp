@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c9fe80	MATCH	20v20	PASS	libvorbis res0.c icount (__fastcall); 1 grade
+00ca1310	DIFFER	59v66	-	libvorbis res2_class; lane gap: static callee _2class 0x00CA0890 takes vb in eax (LTCG); 1 grade
+00ca1bc0	MATCH	21v21	PASS	libvorbis floor1.c icomp (qsort comparator, __cdecl); 1 grade
+00ca1e00	DIFFER	73v71	-	libvorbis floor1.c static render_point; lane gap: LTCG custom regs (y1 eax, y0 edx, x ecx); 1 grade
+00ca1e50	DIFFER	43v43	-	libvorbis floor1.c static vorbis_dBquant; lane gap: x in eax (only fld [eax] v [ecx] differs); 1 grade
+00ca2010	DIFFER	146v138	-	libvorbis floor1.c static render_line0; lane gap: LTCG custom regs (y1 eax, y0 ecx); 1 grade
+00ca26a0	DIFFER	34v23	-	libvorbis floor1.c static post_Y; lane gap: A eax, B edx, pos ecx; 1 grade
+00ca2b00	RELOCATION_MATCH	166v166	PASS	libvorbis floor1_interpolate_fit (__fastcall; _vorbis_block_alloc 0x00C8F0D0); 1 grade
+00ca35a0	RELOCATION_MATCH	94v94	PASS	libvorbis floor0_free_look (dllimport free, memset intrinsic); 1 grade
+00ca39c0	DIFFER	114v114	-	libvorbis floor0_inverse2; lane gap: static floor0_map_lazy_init 0x00CA36E0 takes vb eax / look edi; 1 grade
+00ca3a40	DIFFER	200v196	-	libvorbis lsp.c static cheby; lane gap: g in esi, ord in edi; 1 grade
+00ca3b30	MATCH	59v59	PASS	libvorbis lsp.c comp (float qsort comparator, __cdecl); 1 grade
+00ca3e50	RELOCATION_MATCH	71v71	PASS	libvorbis lookup.c vorbis_coslook; 1 grade
+00ca3ea0	RELOCATION_MATCH	77v77	PASS	libvorbis lookup.c vorbis_invsqlook; 1 grade
+00ca3f00	RELOCATION_MATCH	81v81	PASS	libvorbis lookup.c vorbis_fromdBlook; 1 grade
+00ca4780	RELOCATION_MATCH	73v73	PASS	strmbase CBaseRenderer::NonDelegatingQueryInterface; 2 grades (1st SRC_FAIL: missing IQualityControl decl)
+00ca47d0	RELOCATION_MATCH	102v102	PASS	strmbase CBaseRenderer::WaitForReceiveToComplete; 1 grade
+00ca4910	RELOCATION_MATCH	104v104	PASS	strmbase CBaseRenderer::FindPin; 1 grade
+00ca4aa0	RELOCATION_MATCH	124v124	PASS	strmbase CBaseRenderer::ScheduleSample; 2 grades (CRefTime class with operator REFERENCE_TIME fixed the m_tStart loads)
+00ca4f90	RELOCATION_MATCH	159v159	PASS	strmbase CRendererInputPin::EndOfStream (/EHsc); 1 grade
+00ca51c0	RELOCATION_MATCH	59v59	PASS	strmbase CRendererInputPin::QueryId; 1 grade
+00ca5610	RELOCATION_MATCH	127v127	PASS	strmbase CBaseVideoRenderer::OnRenderEnd + same-TU ThrottleWait; 1 grade
+00ca5d50	RELOCATION_MATCH	54v54	PASS	strmbase CBaseVideoRenderer::get_FramesDroppedInRenderer (/EHsc); 1 grade
+00ca5da0	RELOCATION_MATCH	54v54	PASS	strmbase CBaseVideoRenderer::get_FramesDrawn (/EHsc); 1 grade
+00ca5df0	RELOCATION_MATCH	113v113	PASS	strmbase CBaseVideoRenderer::get_AvgFrameRate (/EHsc); 1 grade
+00ca5e70	RELOCATION_MATCH	107v107	PASS	strmbase CBaseVideoRenderer::get_AvgSyncOffset (/EHsc); 1 grade
+00ca5ee0	MATCH	101v101	PASS	strmbase renbase.cpp isqrt (__stdcall /Gz); 1 grade
+00ca5f50	RELOCATION_MATCH	196v196	PASS	strmbase CBaseVideoRenderer::GetStdDev (/EHsc); 4 grades: single-expression isqrt(llMulDiv...) form drops a dead high-word store
+00ca6110	RELOCATION_MATCH	80v80	PASS	strmbase CBaseVideoRenderer::JoinFilterGraph; 2 grades (1st SRC_FAIL: ambiguous QueryInterface until DECLARE_IUNKNOWN)
+00ca65b0	RELOCATION_MATCH	99v99	PASS	strmbase CBaseRenderer::WaitForRenderTime; 1 grade
+00ca6620	RELOCATION_MATCH	77v77	PASS	strmbase CBaseRenderer::GetState; 1 grade
+00ca6670	RELOCATION_MATCH	93v93	PASS	strmbase CBaseRenderer::CompleteStateChange; 1 grade
+00ca6b00	RELOCATION_MATCH	52v52	PASS	strmbase CBaseRenderer::EndOfStream; 1 grade
+00ca6b40	RELOCATION_MATCH	53v53	PASS	strmbase CBaseRenderer::BeginFlush; 1 grade
+00ca6b80	RELOCATION_MATCH	53v53	PASS	strmbase CBaseRenderer::CompleteConnect; 1 grade
+00ca6bc0	RELOCATION_MATCH	117v117	PASS	strmbase CBaseRenderer::BreakConnect; 1 grade
+00ca6f90	RELOCATION_MATCH	154v154	PASS	strmbase CBaseRenderer::SendEndOfStream (CompatibleTimeSetEvent 0x00CB0C10); 1 grade
+00ca7500	RELOCATION_MATCH	161v161	PASS	strmbase CBaseFilter::NonDelegatingQueryInterface; 1 grade
+00ca7850	RELOCATION_MATCH	205v205	PASS	strmbase CBaseFilter::JoinFilterGraph (/EHsc; scalar new 0x00BFEA1A / delete 0x00BFE9BC as retail); 1 grade
+00ca7b00	RELOCATION_MATCH	42v42	PASS	strmbase CEnumPins::Release; 1 grade

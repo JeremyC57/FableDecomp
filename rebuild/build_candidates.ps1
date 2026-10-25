@@ -308646,6 +308646,244 @@ $catalog = @(
         TestSource = '00/c8/global_ovpcmtotal_00c8aa80_test.cpp'
         PassPattern = '00c8aa80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c9fe80'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_icount_00c9fe80.cpp'
+        TestSource = '00/c9/libvorbis_icount_00c9fe80_test.cpp'
+        PassPattern = '00c9fe80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca1bc0'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_icomp_00ca1bc0.cpp'
+        TestSource = '00/ca/libvorbis_icomp_00ca1bc0_test.cpp'
+        PassPattern = '00ca1bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca2b00'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_floor1interpolatefit_00ca2b00.cpp'
+        TestSource = '00/ca/libvorbis_floor1interpolatefit_00ca2b00_test.cpp'
+        PassPattern = '00ca2b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca35a0'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_floor0freelook_00ca35a0.cpp'
+        TestSource = '00/ca/libvorbis_floor0freelook_00ca35a0_test.cpp'
+        PassPattern = '00ca35a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3b30'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_comp_00ca3b30.cpp'
+        TestSource = '00/ca/libvorbis_comp_00ca3b30_test.cpp'
+        PassPattern = '00ca3b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3e50'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_vorbiscoslook_00ca3e50.cpp'
+        TestSource = '00/ca/libvorbis_vorbiscoslook_00ca3e50_test.cpp'
+        PassPattern = '00ca3e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3ea0'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_vorbisinvsqlook_00ca3ea0.cpp'
+        TestSource = '00/ca/libvorbis_vorbisinvsqlook_00ca3ea0_test.cpp'
+        PassPattern = '00ca3ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3f00'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_vorbisfromdBlook_00ca3f00.cpp'
+        TestSource = '00/ca/libvorbis_vorbisfromdBlook_00ca3f00_test.cpp'
+        PassPattern = '00ca3f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca4780'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_NonDelegatingQueryInterface_00ca4780.cpp'
+        TestSource = '00/ca/CBaseRenderer_NonDelegatingQueryInterface_00ca4780_test.cpp'
+        PassPattern = '00ca4780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca47d0'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_WaitForReceiveToComplete_00ca47d0.cpp'
+        TestSource = '00/ca/CBaseRenderer_WaitForReceiveToComplete_00ca47d0_test.cpp'
+        PassPattern = '00ca47d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca4910'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_FindPin_00ca4910.cpp'
+        TestSource = '00/ca/CBaseRenderer_FindPin_00ca4910_test.cpp'
+        PassPattern = '00ca4910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca4aa0'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_ScheduleSample_00ca4aa0.cpp'
+        TestSource = '00/ca/CBaseRenderer_ScheduleSample_00ca4aa0_test.cpp'
+        PassPattern = '00ca4aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca4f90'
+        Module = 'CRendererInputPin'
+        Source = '00/ca/CRendererInputPin_EndOfStream_00ca4f90.cpp'
+        TestSource = '00/ca/CRendererInputPin_EndOfStream_00ca4f90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca4f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca51c0'
+        Module = 'CRendererInputPin'
+        Source = '00/ca/CRendererInputPin_QueryId_00ca51c0.cpp'
+        TestSource = '00/ca/CRendererInputPin_QueryId_00ca51c0_test.cpp'
+        PassPattern = '00ca51c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5610'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_OnRenderEnd_00ca5610.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_OnRenderEnd_00ca5610_test.cpp'
+        PassPattern = '00ca5610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5d50'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_getFramesDroppedInRenderer_00ca5d50.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_getFramesDroppedInRenderer_00ca5d50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca5d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5da0'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_getFramesDrawn_00ca5da0.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_getFramesDrawn_00ca5da0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca5da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5df0'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_getAvgFrameRate_00ca5df0.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_getAvgFrameRate_00ca5df0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca5df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5e70'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_getAvgSyncOffset_00ca5e70.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_getAvgSyncOffset_00ca5e70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca5e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5ee0'
+        Module = '_global'
+        Source = '00/ca/global_isqrt_00ca5ee0.cpp'
+        TestSource = '00/ca/global_isqrt_00ca5ee0_test.cpp'
+        PassPattern = '00ca5ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5f50'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_GetStdDev_00ca5f50.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_GetStdDev_00ca5f50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca5f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6110'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_JoinFilterGraph_00ca6110.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_JoinFilterGraph_00ca6110_test.cpp'
+        PassPattern = '00ca6110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca65b0'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_WaitForRenderTime_00ca65b0.cpp'
+        TestSource = '00/ca/CBaseRenderer_WaitForRenderTime_00ca65b0_test.cpp'
+        PassPattern = '00ca65b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6620'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_GetState_00ca6620.cpp'
+        TestSource = '00/ca/CBaseRenderer_GetState_00ca6620_test.cpp'
+        PassPattern = '00ca6620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6670'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_CompleteStateChange_00ca6670.cpp'
+        TestSource = '00/ca/CBaseRenderer_CompleteStateChange_00ca6670_test.cpp'
+        PassPattern = '00ca6670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6b00'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_EndOfStream_00ca6b00.cpp'
+        TestSource = '00/ca/CBaseRenderer_EndOfStream_00ca6b00_test.cpp'
+        PassPattern = '00ca6b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6b40'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_BeginFlush_00ca6b40.cpp'
+        TestSource = '00/ca/CBaseRenderer_BeginFlush_00ca6b40_test.cpp'
+        PassPattern = '00ca6b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6b80'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_CompleteConnect_00ca6b80.cpp'
+        TestSource = '00/ca/CBaseRenderer_CompleteConnect_00ca6b80_test.cpp'
+        PassPattern = '00ca6b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6bc0'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_BreakConnect_00ca6bc0.cpp'
+        TestSource = '00/ca/CBaseRenderer_BreakConnect_00ca6bc0_test.cpp'
+        PassPattern = '00ca6bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6f90'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_SendEndOfStream_00ca6f90.cpp'
+        TestSource = '00/ca/CBaseRenderer_SendEndOfStream_00ca6f90_test.cpp'
+        PassPattern = '00ca6f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca7500'
+        Module = 'CBaseFilter'
+        Source = '00/ca/CBaseFilter_NonDelegatingQueryInterface_00ca7500.cpp'
+        TestSource = '00/ca/CBaseFilter_NonDelegatingQueryInterface_00ca7500_test.cpp'
+        PassPattern = '00ca7500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca7850'
+        Module = 'CBaseFilter'
+        Source = '00/ca/CBaseFilter_JoinFilterGraph_00ca7850.cpp'
+        TestSource = '00/ca/CBaseFilter_JoinFilterGraph_00ca7850_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca7850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca7b00'
+        Module = 'CEnumPins'
+        Source = '00/ca/CEnumPins_Release_00ca7b00.cpp'
+        TestSource = '00/ca/CEnumPins_Release_00ca7b00_test.cpp'
+        PassPattern = '00ca7b00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
