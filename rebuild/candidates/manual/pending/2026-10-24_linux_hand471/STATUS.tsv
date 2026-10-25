@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b84470	DIFFER	270v270	-	2 grades (RTM 1 + QFE 1); store scheduling of the RenderPass=2 stores; real class CEngineSubPrimitiveRenderer ctor
+00b17bd0	DIFFER	930v926	-	1 grade; retail_asm candidate (bare fistp float-to-long helper); CPSCAttractor::InterpolateTo
+00b1bc80	DIFFER	261v280	-	1 grade; retail_asm candidate (bare fld/fistp/fild rounding); CPSCDecalRenderer::GetComponentCost
+00b131e0	DIFFER	850v839	-	2 grades; lane gap: store-to-load forwarding of bit-field words; CPSCEmitterGeneric::DatabaseCopy
+00b17410	DIFFER	459v459	-	3 grades; frame-slot packing (descriptor temporary slot reuse); CPSCOrbit::CollectUpdateParameters
+00b094b0	DIFFER	729v732	-	1 grade; lane gap: loop-invariant hoisting of the zero C3DVector; CPSCSingleSprite::Initialise
+00650e98	DIFFER	987v987	-	1 grade (120+ compile-only scorer variants); two schedule spots; CQuestInfoElementTick::DrawAt
+00c69c60	RELOCATION_MATCH	837v837	PASS	1 grade; libpk CReverbProcessor::ProcessInput (descriptive name; manifest label propagated)
+00714900	RELOCATION_MATCH	960v960	PASS	3 grades; CActionMoveTo::Update; float-local proximity ternary
+007153b0	RELOCATION_MATCH	424v424	PASS	3 grades; CActionPickUpGenericBox::Update; same-TU GetSubDef/LowerBound stand-ins
+00712900	DIFFER	362v362	-	4 grades; one register choice; CActionPlayAnimation::Update
+007175d0	DIFFER	318v318	-	4 grades; register allocation (ebx shrink-wrap); CActionSummonerLightningAttackTarget::Update
+00714e00	RELOCATION_MATCH	340v340	PASS	1 grade; CActionTalkBase::OnCleanup
+00717710	DIFFER	522v522	-	4 grades; register allocation (RTM and QFE); CActionTalkBase::OnActivate
+007bcc40	DIFFER	807v807	-	1 grade (compile-only scorer variants); frame slots + x87 operand order; CTCShotDefinitionDragonFireball::InitMovement
+007bee40	DIFFER	344v344	-	4 grades (+1 QFE); x87 operand order; CTCShotDefinitionThrow::UpdateOrientation
+0055c6f0	DIFFER	276v276	-	4 grades (+1 QFE); frame-slot packing only; CMouseCursor::ProcessEvent
+0053e9a0	DIFFER	587v578	-	2 grades; evaluation order + frame layout; CScrollingViewport::ProcessEvent
+0054e6f0	DIFFER	690v644	-	4 grades; far-corner x87 form, slot split, primitive store order; CViewport::Draw (inherited slot 2)
+00545f00	RELOCATION_MATCH	334v334	PASS	1 grade; CSpellContainer::AddChildDynamically
+00547380	RELOCATION_MATCH	311v311	PASS	2 grades; CSwappingStateComponent::Update; user-ctor iterator tag
+00c4a1a0	RELOCATION_MATCH	525v525	PASS	1 grade; /EHsc; libpk assert macro
+00c4ac70	RELOCATION_MATCH	568v568	PASS	2 grades; /EHsc
+00c32950	RELOCATION_MATCH	559v559	PASS	1 grade; /EHsc; inlined memcpy
+00a10a60	DIFFER	301v281	-	1 grade; lane gap: LTCG ax-argument callees
+00a10b80	DIFFER	476v450	-	1 grade; lane gap: LTCG ax-argument callees
+0080ad90	RELOCATION_MATCH	429v429	PASS	4 grades; same-TU noinline operator() stand-in restores pipelined comparator copy
+00a71370	RELOCATION_MATCH	377v377	PASS	1 grade; STLport __adjust_heap
+009e6db0	RELOCATION_MATCH	287v287	PASS	1 grade; STLport __adjust_heap
+00af3290	RELOCATION_MATCH	280v280	PASS	1 grade; STLport __adjust_heap
+004ba180	RELOCATION_MATCH	282v282	PASS	1 grade; STLport __adjust_heap
+00a71220	RELOCATION_MATCH	335v335	PASS	1 grade; STLport __adjust_heap; real element pair<long,C3DMeshVolume>
+00cbb3b0	RELOCATION_MATCH	283v283	PASS	1 grade; STLport __adjust_heap
+00a33a70	RELOCATION_MATCH	335v335	PASS	1 grade; STLport __adjust_heap; real element pair<unsigned long,C3DMeshVolume>
+009b8220	RELOCATION_MATCH	272v272	PASS	1 grade; STLport __adjust_heap (unsigned key)
+007b7140	RELOCATION_MATCH	343v343	PASS	6 compiles (5 graded + 1 SRC_FAIL; over budget, see Review at landing); STLport copy_if; stand-in bodies
+007f7ef0	DIFFER	430v432	-	3 grades; register swap (ebp/edi); STLport __find_if
+0080b210	RELOCATION_MATCH	287v287	PASS	1 grade; STLport __pop_heap
+00a708e0	RELOCATION_MATCH	292v292	PASS	1 grade; STLport __push_heap
+00bed880	RELOCATION_MATCH	280v280	PASS	1 grade; STLport __push_heap; real element pair<long,CCompositeSurfaceInfo>

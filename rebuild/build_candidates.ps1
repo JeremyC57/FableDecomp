@@ -314807,6 +314807,163 @@ $catalog = @(
         TestSource = '00/ef/Cwelcomeguy_Main_00efab40_test.cpp'
         PassPattern = '00efab40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ba180'
+        Module = '_STL'
+        Source = '00/4b/STL_adjustheap_004ba180.cpp'
+        TestSource = '00/4b/STL_adjustheap_004ba180_test.cpp'
+        PassPattern = '004ba180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00545f00'
+        Module = 'NUISystem::CSpellContainer'
+        Source = '00/54/NUISystemCSpellContainer_AddChildDynamically_00545f00.cpp'
+        TestSource = '00/54/NUISystemCSpellContainer_AddChildDynamically_00545f00_test.cpp'
+        PassPattern = '00545f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547380'
+        Module = 'NUISystem::CSwappingStateComponent'
+        Source = '00/54/NUISystemCSwappingStateComponent_Update_00547380.cpp'
+        TestSource = '00/54/NUISystemCSwappingStateComponent_Update_00547380_test.cpp'
+        PassPattern = '00547380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00714900'
+        Module = 'NTCScriptedControl::CActionMoveTo'
+        Source = '00/71/NTCScriptedControlCActionMoveTo_Update_00714900.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionMoveTo_Update_00714900_test.cpp'
+        PassPattern = '00714900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00714e00'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_OnCleanup_00714e00.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_OnCleanup_00714e00_test.cpp'
+        PassPattern = '00714e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007153b0'
+        Module = 'NTCScriptedControl::CActionPickUpGenericBox'
+        Source = '00/71/NTCScriptedControlCActionPickUpGenericBox_Update_007153b0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionPickUpGenericBox_Update_007153b0_test.cpp'
+        PassPattern = '007153b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b7140'
+        Module = '_STL'
+        Source = '00/7b/STL_copyif_007b7140.cpp'
+        TestSource = '00/7b/STL_copyif_007b7140_test.cpp'
+        PassPattern = '007b7140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080ad90'
+        Module = '_STL'
+        Source = '00/80/STL_adjustheap_0080ad90.cpp'
+        TestSource = '00/80/STL_adjustheap_0080ad90_test.cpp'
+        PassPattern = '0080ad90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080b210'
+        Module = '_STL'
+        Source = '00/80/STL_popheap_0080b210.cpp'
+        TestSource = '00/80/STL_popheap_0080b210_test.cpp'
+        PassPattern = '0080b210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b8220'
+        Module = '_STL'
+        Source = '00/9b/STL_adjustheap_009b8220.cpp'
+        TestSource = '00/9b/STL_adjustheap_009b8220_test.cpp'
+        PassPattern = '009b8220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e6db0'
+        Module = '_STL'
+        Source = '00/9e/STL_adjustheap_009e6db0.cpp'
+        TestSource = '00/9e/STL_adjustheap_009e6db0_test.cpp'
+        PassPattern = '009e6db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a33a70'
+        Module = '_STL'
+        Source = '00/a3/STL_adjustheap_00a33a70.cpp'
+        TestSource = '00/a3/STL_adjustheap_00a33a70_test.cpp'
+        PassPattern = '00a33a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a708e0'
+        Module = '_STL'
+        Source = '00/a7/STL_pushheap_00a708e0.cpp'
+        TestSource = '00/a7/STL_pushheap_00a708e0_test.cpp'
+        PassPattern = '00a708e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a71220'
+        Module = '_STL'
+        Source = '00/a7/STL_adjustheap_00a71220.cpp'
+        TestSource = '00/a7/STL_adjustheap_00a71220_test.cpp'
+        PassPattern = '00a71220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a71370'
+        Module = '_STL'
+        Source = '00/a7/STL_adjustheap_00a71370.cpp'
+        TestSource = '00/a7/STL_adjustheap_00a71370_test.cpp'
+        PassPattern = '00a71370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af3290'
+        Module = '_STL'
+        Source = '00/af/STL_adjustheap_00af3290.cpp'
+        TestSource = '00/af/STL_adjustheap_00af3290_test.cpp'
+        PassPattern = '00af3290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bed880'
+        Module = '_STL'
+        Source = '00/be/STL_pushheap_00bed880.cpp'
+        TestSource = '00/be/STL_pushheap_00bed880_test.cpp'
+        PassPattern = '00bed880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c32950'
+        Module = 'PKCTRArray'
+        Source = '00/c3/PKCTRArray_ResizeAllocation_00c32950.cpp'
+        TestSource = '00/c3/PKCTRArray_ResizeAllocation_00c32950_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c32950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4a1a0'
+        Module = 'PKCBufferedReader'
+        Source = '00/c4/PKCBufferedReader_GetAvailableReadSize_00c4a1a0.cpp'
+        TestSource = '00/c4/PKCBufferedReader_GetAvailableReadSize_00c4a1a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4a1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4ac70'
+        Module = 'PKCBufferedReader'
+        Source = '00/c4/PKCBufferedReader_ReturnBuffer_00c4ac70.cpp'
+        TestSource = '00/c4/PKCBufferedReader_ReturnBuffer_00c4ac70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4ac70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c69c60'
+        Module = 'CReverbProcessor'
+        Source = '00/c6/CReverbProcessor_ProcessInput_00c69c60.cpp'
+        TestSource = '00/c6/CReverbProcessor_ProcessInput_00c69c60_test.cpp'
+        PassPattern = '00c69c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbb3b0'
+        Module = '_STL'
+        Source = '00/cb/STL_adjustheap_00cbb3b0.cpp'
+        TestSource = '00/cb/STL_adjustheap_00cbb3b0_test.cpp'
+        PassPattern = '00cbb3b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
