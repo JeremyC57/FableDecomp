@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005e32f0	RELOCATION_MATCH	339v339	PASS	1 grade; STLport vector<pair<ulong,CAnimationEntry>>::_M_fill_insert
+005e3b50	RELOCATION_MATCH	265v265	PASS	1 grade; STLport __introsort_loop over pair<ulong,CAnimationEntry> (/Gr TU)
+005e4860	RELOCATION_MATCH	375v375	PASS	2 grades; CTCQuestCompletionUI::SaveInitialValues (same-TU LowerBound stand-in)
+005eabc0	DIFFER	495v511	-	1 grade; CTCTavernGame::PositionMesh: x87 temp allocation + setter branch head-merge
+005fd9c0	RELOCATION_MATCH	271v271	PASS	1 grade; CTCInventoryMap::AddLogBookSaveInfo
+005fddd0	SKIP	-v691	-	0 grades; not attempted (704-byte quests-screen GUI builder, ~12 unidentified callees); one function
+00617fd0	RELOCATION_MATCH	299v299	PASS	2 grades; STLport vector<unsigned __int64>::_M_fill_insert
+006182f0	RELOCATION_MATCH	299v299	PASS	1 grade; STLport vector<CUIMiniMapMarker>::_M_insert_overflow
+00618860	RELOCATION_MATCH	303v303	PASS	1 grade; STLport vector<CUIMiniMapMarker>::_M_fill_insert
+00618990	RELOCATION_MATCH	314v314	PASS	1 grade; STLport vector<CUIRegionInfo>::_M_fill_insert
+00619a10	DIFFER	301v299	-	4 grades; _Rb_tree::_M_copy (log-book map): frame only (__top homed in x slot)
+00623c80	RELOCATION_MATCH	474v474	PASS	1 grade; STLport __unguarded_partition<CTestQuest*> (/Gr TU)
+006243d0	RELOCATION_MATCH	283v283	PASS	1 grade; STLport __adjust_heap<CTestQuest*> (/Gr TU)
+00629de0	RELOCATION_MATCH	324v324	PASS	1 grade; CWorld::EAAnswerQuestion (/GS)
+0062ce60	RELOCATION_MATCH	290v290	PASS	1 grade; CWorld::EALoadGameFromInGameMenu (/GS)
+0062fe60	SKIP	-v817	-	0 grades; not attempted (832-byte ctor, interleaved dead temp stores); one function
+00658716	RELOCATION_MATCH	441v441	PASS	1 grade; CTCVillage::GetTimes (/Os frame-pointer TU)
+0065ce9b	RELOCATION_MATCH	372v372	PASS	1 grade; CTCVillage::OnSerialise (/Os frame-pointer TU)
+00661d70	RELOCATION_MATCH	250v250	PASS	1 grade; CThingCreatureBase::IsThingInFrontCone (descriptive name)
+00664e50	RELOCATION_MATCH	641v641	PASS	1 grade; CThingCreatureBase::IsThingInViewAngle
+006668a0	DIFFER	686v673	-	1 grade; CThingCreatureBase::GetPossibleCombatAnimations: def slot not packed with modeFilter (+4 frame), def release form
+00669bb0	RELOCATION_MATCH	243v243	PASS	1 grade; STLport vector<const CAnimationEntry*>::operator=
+0066ba80	RELOCATION_MATCH	353v353	PASS	1 grade; CTCSoundPlayer::PlayAttachedDialogue
+0066e370	RELOCATION_MATCH	270v270	PASS	3 grades; STLport vector<C3DVector>::_M_insert_overflow
+006726b0	DIFFER	311v307	-	4 grades; STLport vector<CRGBColour>::_M_fill_insert: inlining/register choices
+00674520	RELOCATION_MATCH	313v313	PASS	1 grade; STLport vector<pair<EBodyLocation,CWoundMorphs::CEntry>>::operator=
+006753f0	RELOCATION_MATCH	257v257	PASS	1 grade; STLport vector<CVectorMap<ulong,CTextureMorph>>::operator=
+00675980	RELOCATION_MATCH	312v312	PASS	1 grade; STLport vector<CArray<CBodyPartMesh>>::operator=
+00676740	RELOCATION_MATCH	247v247	PASS	2 grades; CPersistContext::Transfer<CRandomAppearanceMorph>
+006768f0	RELOCATION_MATCH	352v352	PASS	1 grade; CCreatureDef::~CCreatureDef
+0067f9b0	RELOCATION_MATCH	520v520	PASS	2 grades; CPhysicalPrimitiveInit::StatRegisterClass
+00681e60	DIFFER	626v626	-	1 grade; CTCCreatureOpinionOfHero::SetPersonalityOverride: one SIB byte
+006821e0	RELOCATION_MATCH	243v243	PASS	1 grade; CTCCreatureOpinionOfHero::SetOpinionDeedMask
+0068d5f0	RELOCATION_MATCH	266v266	PASS	1 grade; PreProcessStickVector (anon-namespace __fastcall)
+0068eb20	RELOCATION_MATCH	380v380	PASS	1 grade; NInputProcess::IsThingToKeepStrafing
+00693140	DIFFER	269v269	-	1 grade; GetActionAnimSetList (anon ns): one frame slot
+006969d0	RELOCATION_MATCH	259v259	PASS	1 grade; STLport _Rb_tree<CCharString,CCountedPointer<CActionEventBase>>::_M_insert
+00698540	DIFFER	597v603	-	1 grade; CGameCameraManager::UpdateEarthquake: x87 stack/frame allocation (hoisted fps temp, falloff on fp stack)
+00699bf0	RELOCATION_MATCH	610v610	PASS	3 grades; CGameCameraManager::~CGameCameraManager
+0069a010	RELOCATION_MATCH	389v389	PASS	1 grade; CGameCameraManager::InitManualCameraList
