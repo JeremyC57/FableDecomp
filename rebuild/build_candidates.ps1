@@ -314511,6 +314511,99 @@ $catalog = @(
         TestSource = '01/21/global_EInventoryOrientationRHSet5_0121acd0_test.cpp'
         PassPattern = '0121acd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0044a3b0'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_CPlayerManager_0044a3b0.cpp'
+        TestSource = '00/44/CPlayerManager_CPlayerManager_0044a3b0_test.cpp'
+        PassPattern = '0044a3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007adbf0'
+        Module = '_global'
+        Source = '00/7a/global_GFSerialiseMapBinaryIn_007adbf0.cpp'
+        TestSource = '00/7a/global_GFSerialiseMapBinaryIn_007adbf0_test.cpp'
+        PassPattern = '007adbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00840f50'
+        Module = 'LHNetworkLib::LHHttp2'
+        Source = '00/84/LHNetworkLibLHHttp2_LHHttp2_00840f50.cpp'
+        TestSource = '00/84/LHNetworkLibLHHttp2_LHHttp2_00840f50_test.cpp'
+        PassPattern = '00840f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086deb0'
+        Module = '_global'
+        Source = '00/86/global_GFReadVectorMapMemDump_0086deb0.cpp'
+        TestSource = '00/86/global_GFReadVectorMapMemDump_0086deb0_test.cpp'
+        PassPattern = '0086deb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c2f70'
+        Module = '_STL'
+        Source = '00/8c/STL_findif_008c2f70.cpp'
+        TestSource = '00/8c/STL_findif_008c2f70_test.cpp'
+        PassPattern = '008c2f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d6ac0'
+        Module = 'NCreatureMode::CModeSitBase'
+        Source = '00/8d/NCreatureModeCModeSitBase_AnimUpdate_008d6ac0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeSitBase_AnimUpdate_008d6ac0_test.cpp'
+        PassPattern = '008d6ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d8b00'
+        Module = 'NCreatureMode::CModeCrouch'
+        Source = '00/8d/NCreatureModeCModeCrouch_AnimUpdate_008d8b00.cpp'
+        TestSource = '00/8d/NCreatureModeCModeCrouch_AnimUpdate_008d8b00_test.cpp'
+        PassPattern = '008d8b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e7390'
+        Module = 'NCreatureMode::CModeIntangible'
+        Source = '00/8e/NCreatureModeCModeIntangible_OnActivate_008e7390.cpp'
+        TestSource = '00/8e/NCreatureModeCModeIntangible_OnActivate_008e7390_test.cpp'
+        PassPattern = '008e7390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e74f0'
+        Module = 'NCreatureMode::CModeIntangible'
+        Source = '00/8e/NCreatureModeCModeIntangible_OnDeactivate_008e74f0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeIntangible_OnDeactivate_008e74f0_test.cpp'
+        PassPattern = '008e74f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f8cc0'
+        Module = 'LSocket'
+        Source = '00/8f/LSocket_Listen_008f8cc0.cpp'
+        TestSource = '00/8f/LSocket_Listen_008f8cc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '008f8cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f9820'
+        Module = 'LSocket'
+        Source = '00/8f/LSocket_Open_008f9820.cpp'
+        TestSource = '00/8f/LSocket_Open_008f9820_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '008f9820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fa3b0'
+        Module = 'NCameraModes::CPhysicsCoordCartesian'
+        Source = '00/8f/NCameraModesCPhysicsCoordCartesian_FrameUpdate_008fa3b0.cpp'
+        TestSource = '00/8f/NCameraModesCPhysicsCoordCartesian_FrameUpdate_008fa3b0_test.cpp'
+        PassPattern = '008fa3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009793d0'
+        Module = 'CThingSearchTools'
+        Source = '00/97/CThingSearchTools_GetAllThingsInRoughArea_009793d0.cpp'
+        TestSource = '00/97/CThingSearchTools_GetAllThingsInRoughArea_009793d0_test.cpp'
+        PassPattern = '009793d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

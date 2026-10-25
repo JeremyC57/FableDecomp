@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006ce800	DIFFER	535v535	-	ForEachInRoughArea: level-loop exit reload pair (lane gap E-18); 3 grades
+0063fd40	DIFFER	661v661	-	GetAllThingsInRoughArea list<CThing*> (catalog ForEachInRoughArea is wrong): node-loop exit reload order; 2 grades
+0066a1e0	DIFFER	725v725	-	ForEachInRoughArea Bind3: SIB operand order + exit reload order; 4 grades
+0086deb0	RELOCATION_MATCH	433v433	PASS	GFReadVectorMapMemDump<CTextureMorph>; 3 grades
+007adbf0	RELOCATION_MATCH	286v286	PASS	GFSerialiseMapBinaryIn over map<CCharString,bool>; 2 grades
+008c2f70	MATCH	518v518	PASS	_STL::__find_if<C3DVector*,CIsOutsideRadius> (/Gr TU); 1 grade
+00516830	DIFFER	372v370	-	GetAllLeafThings: retail_asm candidate (inline-asm ceil); 1 grade
+00518340	DIFFER	686v686	-	GetAllTCsInRoughArea<iface 0x3D,IsInQuestOrNullQuest,vector>: level-loop exit reload pair; 3 grades
+0084ba50	DIFFER	702v702	-	GetAllTCsInRoughArea vector instance: loop-exit reload order; 1 grade
+0085b5b0	DIFFER	365v365	-	GetAllThings Bind4 combat filters: register choice around GetBoundingSphere; 4 grades
+00516200	DIFFER	440v423	-	GetAllThings Bind3: retail_asm candidate (inline-asm ceil); 1 grade
+007c2d10	DIFFER	704v704	-	GetAllThingsInRoughArea Bind3 shot filters: level-loop exit reload pair; 2 grades
+007c5110	DIFFER	697v697	-	GetAllThingsInRoughArea list<CIntelligentPointer>: node-loop exit reload order; 3 grades
+00920200	DIFFER	640v640	-	GetAllThingsInRoughArea<CThingObject,vector,Bind2 cover/NotInList>: node-loop exit reload order; 4 grades
+009793d0	RELOCATION_MATCH	635v635	PASS	GetAllThingsInRoughArea<CThing,vector,Bind4 cover filters> (catalog GetPBestThingInRoughArea is wrong); 1 grade
+0044a3b0	RELOCATION_MATCH	384v384	PASS	CPlayerManager::CPlayerManager (catalog HeroSwapState::Initialize is wrong); 1 grade
+00840f50	RELOCATION_MATCH	374v374	PASS	LHHttp2::LHHttp2; 1 grade
+008f8cc0	RELOCATION_MATCH	468v468	PASS	LSocket::Listen, /GS; 1 grade
+008f8f50	SKIP	-v927	-	LSocket::Send not attempted (try/catch(...) + /GS, inlined vector<char> appends with try-scope dead stores)
+008f9320	DIFFER	674v674	-	LSocket::Receive, /GS: register choice for the recv socket argument; 4 grades
+008f9820	RELOCATION_MATCH	374v374	PASS	LSocket::Open, /GS; 3 grades
+008fa3b0	RELOCATION_MATCH	460v460	PASS	CPhysicsCoordCartesian::FrameUpdate; 1 grade
+00854180	DIFFER	364v364	-	CScriptModuleSpline::Update: frame slot sharing (0x30 v 0x2c); 4 grades
+008d8b00	RELOCATION_MATCH	480v480	PASS	CModeCrouch::AnimUpdate; 4 grades
+008e20f0	SKIP	-v1019	-	CModeGuildmasterPowerUpShield vfunc_3 not attempted (x87 + intelligent-pointer loops; 008e24f0 is its twin)
+008e24f0	SKIP	-v1023	-	CModeGuildmasterPowerUpSpeed vfunc_3 not attempted (twin of 008e20f0)
+008e7390	RELOCATION_MATCH	344v344	PASS	CModeIntangible::OnActivate; 1 grade
+008e74f0	RELOCATION_MATCH	258v258	PASS	CModeIntangible::OnDeactivate; 1 grade
+008d9ca0	DIFFER	393v394	-	CModeScorpionKingVulnerable::OnDeactivate: lea v add in the kill re-index; 4 grades
+008e0a10	SKIP	-v776	-	CModeScorpionKingVulnerable vfunc_3 (FrameUpdate) not attempted (five GetInterface lookups, action temporaries)
+008d6ac0	RELOCATION_MATCH	446v446	PASS	CModeSitBase::AnimUpdate (catalog CModeSitChair vfunc_2); 4 grades
+008dfb00	SKIP	-v1001	-	CModeSummonerLightningOrb vfunc_3 not attempted (x87, intelligent pointers)
+008e28f0	DIFFER	369v375	-	CModeThunderLightningStorm::FrameUpdate: x87 subtraction sunk below the compare; 4 grades
+009c8c00	DIFFER	469v469	-	CDataBank::NotifyEntryAdded: register choice for pushed addresses; 4 grades
+0077b350	SKIP	-v767	-	CTCGraphicAppearanceAnimatedMesh::OnAppearanceDraw not attempted (the 0077ba40 model applies)
+007e15c0	SKIP	-v963	-	CTCGraphicAppearanceMultipleStaticMeshes::OnAppearanceDraw not attempted (the 0077ba40 model applies)
+007a6760	SKIP	-v645	-	CTCGraphicAppearanceReplaceableMesh::OnAppearanceDraw not attempted (mesh-group primitive + child meshes)
+0077c4d0	SKIP	-v611	-	CTCGraphicAppearanceSprite::OnAppearanceDraw not attempted
+0077ba40	DIFFER	559v563	-	CTCGraphicAppearanceStaticMesh::OnAppearanceDraw: frame + x87 interpolation order; 4 grades
+0077bec0	SKIP	-v658	-	CTCGraphicAppearanceStaticMeshFadeOutOnProximity::OnAppearanceDraw not attempted (0077ba40 model + GetSubDef + fade mesh effect)
