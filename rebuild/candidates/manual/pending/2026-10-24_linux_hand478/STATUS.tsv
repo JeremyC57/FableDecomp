@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00760190	DIFFER	324v340	-	NShape::IsTriangleWithPointsInside: integer register allocation (x87 part matches); 2 grades
+00760760	RELOCATION_MATCH	271v271	PASS	NShape::GetFirstPointThatBreaksConvexity; 3 grades
+00761280	DIFFER	-v733	-	NShape::DrawPrimitiveLineOverLandscape: not attempted (large x87 body, budget); 0 grades
+007649d0	RELOCATION_MATCH	496v496	PASS	std::__find_if<const CCountedPointer<NShape::CShape>*, NShape::CIsShapeTrack>; 1 grade
+007658b0	RELOCATION_MATCH	247v247	PASS	vector<CCountedPointer<NShape::CShape> >::insert; 2 grades
+00765b70	RELOCATION_MATCH	272v272	PASS	vector<vector<C3DVector> >::_M_insert_overflow; 1 grade
+00766550	RELOCATION_MATCH	272v272	PASS	CTCObjectAugmentations::ClearAllSounds; 2 grades
+00766c00	RELOCATION_MATCH	368v368	PASS	CTCObjectAugmentations::SetupAugmentationSounds; 2 grades
+007676a0	RELOCATION_MATCH	320v320	PASS	CTCObjectAugmentations::~CTCObjectAugmentations; 2 grades
+00767da0	DIFFER	-v622	-	CTCObjectAugmentations::UpdateParticleAttachment: not attempted (budget); 0 grades
+00768210	RELOCATION_MATCH	256v256	PASS	CTCObjectAugmentations::CopyAugmentationDataFromThing; 4 grades (1 compile error, 1 regrade after the callee rename)
+0076b1e0	RELOCATION_MATCH	320v320	PASS	vector<ParticleAndEndPoints>::operator=; 1 grade
+0076b850	RELOCATION_MATCH	256v256	PASS	vector<ParticleAndEndPoints>::_M_insert_overflow; 1 grade
+0076b950	RELOCATION_MATCH	288v288	PASS	vector<CDefPointer<const CThingBaseDef> >::_M_fill_insert; 1 grade
+0076e4d0	DIFFER	253v253	-	CTCWeaponTrail::GetLastWeaponTrailPoints: pair copy scheduling only; 4 grades
+00770810	RELOCATION_MATCH	272v272	PASS	vector<list<CWeaponTrailEntry> >::_M_insert_overflow; 1 grade
+00770990	RELOCATION_MATCH	272v272	PASS	vector<list<CWeaponTrailEntry> >::_M_fill_insert; 1 grade
+00770bb0	RELOCATION_MATCH	263v263	PASS	vector<vector<pair<C3DVector,C3DVector> > >::_M_insert_overflow; 1 grade
+00774610	DIFFER	348v282	-	CTCShop::GetStockList: retail_asm candidate (inline-asm ceil, ebp frame); 1 grade
+007748e0	DIFFER	-v596	-	CTCShop::AddSaleItemPlacesFromThing (likely): not attempted (recursive string body, budget); 0 grades
+00777fe0	RELOCATION_MATCH	256v256	PASS	vector<CTCShop::GoodsPlace>::_M_insert_overflow; 1 grade
+00778c00	RELOCATION_MATCH	256v256	PASS	vector<const CThing*>::operator=; 1 grade
+00779ef0	DIFFER	-v567	-	CTCDExperienceOrb::OnInitialActivate: retail_asm candidate (inline-asm ceil, ebp frame), not attempted; 0 grades
+0077a890	DIFFER	-v707	-	CTCDExperienceOrb::Create(CThing&): not attempted (budget); 0 grades
+0077b860	RELOCATION_MATCH	320v320	PASS	vector<CEngineTextureDecal>::operator=; 1 grade
+0077ef30	RELOCATION_MATCH	256v256	PASS	vector<pair<CCharString,C3DVector> >::_M_insert_overflow; 1 grade
+007808b0	DIFFER	-v923	-	CTCFlammable::InitFirePoints (likely): not attempted (aligned-stack frame, budget); 0 grades
+00781a80	RELOCATION_MATCH	272v272	PASS	vector<NFire::CFirePoint>::_M_insert_overflow; 1 grade
+00787380	RELOCATION_MATCH	272v272	PASS	vector<CTCSkeletalMorph::CSkeletalMorph>::_M_insert_overflow; 1 grade
+00793370	DIFFER	300v300	-	vector<CTCDivineWrath::PerEffectInfo>::_M_insert_overflow: esi/edi swap only; 4 grades
+007981b0	DIFFER	300v300	-	vector<CTCUnholyPower::PerEffectInfo>::_M_insert_overflow: esi/edi swap only (twin of 00793370); 4 grades
+0079aa90	DIFFER	557v557	-	CTCSummonSpell::GetValidTeleportPos: x87 slot allocation only; 3 grades
+007aa880	DIFFER	350v346	-	CTCAssassinRush::IsValidTeleportPos: register allocation only; 2 grades
+007afe20	DIFFER	302v302	-	vector<CIntelligentPointer<CThingAICreature> >::_M_fill_insert: ebx/ebp swap only; 4 grades
+007b2e20	RELOCATION_MATCH	432v432	PASS	CTCGuard::ReportAllPendingCrimes; 1 grade
+007b3760	RELOCATION_MATCH	367v367	PASS	CTCGuard::OnSerialise; 4 grades (1 compile error, 1 regrade after the deque buffer-size fix)
+007b6b10	DIFFER	343v333	-	CTCCrateStack::FillStacks: physics pointer spilled (retail ebx); 3 grades
+007b6ef0	RELOCATION_MATCH	265v265	PASS	vector<CIntelligentPointer<CThingMarker> >::_M_insert_overflow; 1 grade
+007b9b40	DIFFER	302v302	-	vector<CIntelligentPointer<CThingObject> >::_M_fill_insert: ebx/ebp swap only (twin of 007afe20); 4 grades
+007bbc9f	DIFFER	299v299	-	NThingShot::CTCShotDefinitionThrow::InitMovement: x87 stack/frame allocation; 4 grades

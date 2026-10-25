@@ -320514,6 +320514,167 @@ $catalog = @(
         TestSource = '00/f3/stdvector_Minsertoverflow_00f380e0_test.cpp'
         PassPattern = '00f380e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00760760'
+        Module = 'NShape'
+        Source = '00/76/NShape_GetFirstPointThatBreaksConvexity_00760760.cpp'
+        TestSource = '00/76/NShape_GetFirstPointThatBreaksConvexity_00760760_test.cpp'
+        PassPattern = '00760760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007649d0'
+        Module = 'std'
+        Source = '00/76/std_findif_007649d0.cpp'
+        TestSource = '00/76/std_findif_007649d0_test.cpp'
+        PassPattern = '007649d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007658b0'
+        Module = 'std::vector'
+        Source = '00/76/stdvector_insert_007658b0.cpp'
+        TestSource = '00/76/stdvector_insert_007658b0_test.cpp'
+        PassPattern = '007658b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00765b70'
+        Module = 'std::vector'
+        Source = '00/76/stdvector_Minsertoverflow_00765b70.cpp'
+        TestSource = '00/76/stdvector_Minsertoverflow_00765b70_test.cpp'
+        PassPattern = '00765b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00766550'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_ClearAllSounds_00766550.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_ClearAllSounds_00766550_test.cpp'
+        PassPattern = '00766550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00766c00'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_SetupAugmentationSounds_00766c00.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_SetupAugmentationSounds_00766c00_test.cpp'
+        PassPattern = '00766c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007676a0'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_CTCObjectAugmentations_007676a0.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_CTCObjectAugmentations_007676a0_test.cpp'
+        PassPattern = '007676a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00768210'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_CopyAugmentationDataFromThing_00768210.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_CopyAugmentationDataFromThing_00768210_test.cpp'
+        PassPattern = '00768210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076b1e0'
+        Module = 'std::vector'
+        Source = '00/76/stdvector_operator_0076b1e0.cpp'
+        TestSource = '00/76/stdvector_operator_0076b1e0_test.cpp'
+        PassPattern = '0076b1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076b850'
+        Module = 'std::vector'
+        Source = '00/76/stdvector_Minsertoverflow_0076b850.cpp'
+        TestSource = '00/76/stdvector_Minsertoverflow_0076b850_test.cpp'
+        PassPattern = '0076b850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076b950'
+        Module = 'std::vector'
+        Source = '00/76/stdvector_Mfillinsert_0076b950.cpp'
+        TestSource = '00/76/stdvector_Mfillinsert_0076b950_test.cpp'
+        PassPattern = '0076b950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00770810'
+        Module = 'std::vector'
+        Source = '00/77/stdvector_Minsertoverflow_00770810.cpp'
+        TestSource = '00/77/stdvector_Minsertoverflow_00770810_test.cpp'
+        PassPattern = '00770810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00770990'
+        Module = 'std::vector'
+        Source = '00/77/stdvector_Mfillinsert_00770990.cpp'
+        TestSource = '00/77/stdvector_Mfillinsert_00770990_test.cpp'
+        PassPattern = '00770990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00770bb0'
+        Module = 'std::vector'
+        Source = '00/77/stdvector_Minsertoverflow_00770bb0.cpp'
+        TestSource = '00/77/stdvector_Minsertoverflow_00770bb0_test.cpp'
+        PassPattern = '00770bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00777fe0'
+        Module = 'std::vector'
+        Source = '00/77/stdvector_Minsertoverflow_00777fe0.cpp'
+        TestSource = '00/77/stdvector_Minsertoverflow_00777fe0_test.cpp'
+        PassPattern = '00777fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00778c00'
+        Module = 'std::vector'
+        Source = '00/77/stdvector_operator_00778c00.cpp'
+        TestSource = '00/77/stdvector_operator_00778c00_test.cpp'
+        PassPattern = '00778c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077b860'
+        Module = 'std::vector'
+        Source = '00/77/stdvector_operator_0077b860.cpp'
+        TestSource = '00/77/stdvector_operator_0077b860_test.cpp'
+        PassPattern = '0077b860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077ef30'
+        Module = 'std::vector'
+        Source = '00/77/stdvector_Minsertoverflow_0077ef30.cpp'
+        TestSource = '00/77/stdvector_Minsertoverflow_0077ef30_test.cpp'
+        PassPattern = '0077ef30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00781a80'
+        Module = 'std::vector'
+        Source = '00/78/stdvector_Minsertoverflow_00781a80.cpp'
+        TestSource = '00/78/stdvector_Minsertoverflow_00781a80_test.cpp'
+        PassPattern = '00781a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787380'
+        Module = 'std::vector'
+        Source = '00/78/stdvector_Minsertoverflow_00787380.cpp'
+        TestSource = '00/78/stdvector_Minsertoverflow_00787380_test.cpp'
+        PassPattern = '00787380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2e20'
+        Module = 'CTCGuard'
+        Source = '00/7b/CTCGuard_ReportAllPendingCrimes_007b2e20.cpp'
+        TestSource = '00/7b/CTCGuard_ReportAllPendingCrimes_007b2e20_test.cpp'
+        PassPattern = '007b2e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b3760'
+        Module = 'CTCGuard'
+        Source = '00/7b/CTCGuard_OnSerialise_007b3760.cpp'
+        TestSource = '00/7b/CTCGuard_OnSerialise_007b3760_test.cpp'
+        PassPattern = '007b3760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b6ef0'
+        Module = 'std::vector'
+        Source = '00/7b/stdvector_Minsertoverflow_007b6ef0.cpp'
+        TestSource = '00/7b/stdvector_Minsertoverflow_007b6ef0_test.cpp'
+        PassPattern = '007b6ef0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
