@@ -1,0 +1,55 @@
+// CPersistContext::Transfer(ECreatureInteractionType& value) -- binary-only, unnamed enum transfer: CRC-check the empty key, then binary load through CPersistTraits<ECreatureInteractionType> or binary save as a long; the other modes do nothing
+// Leaf: ??$Transfer@
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00671DD0, 80 bytes (body 0x4C + int3 padding), thiscall `ret 4`.
+// Identity: T = `ECreatureInteractionType`; evidence: its only caller CThingCreatureDef::Transfer 0x00671600 (vtable 0x0125B2DC slot 18, RTTI .?AVCThingCreatureDef@@) passes +0xEC = Ego_r CThingCreatureDef::CreatureInteractionType (PDB +0xF4; NavigatorTypes is a 12-byte vector)
+//   Family G002 (12 byte-identical bodies, one COMDAT per enum: no ICF in retail, so each address is one T; the bodies sit
+//   next to the def class whose Transfer first instantiated them). The manifest labels "CPersistContext_TransferFloat" /
+//   "CPersistTraits<float>::Transfer" are propagated: a float would be saved through WriteFloat, not this long writer, and
+//   the PDB types of the transferred members are enums. No Ego_r symbol takes only the value (TLC's def transfers are
+//   binary-only and unnamed); the parameter list follows the landed Transfer<unsigned long> 0x00431020.
+// Callees: CPersistContext::CheckCRC 0x00404500 (the pooled empty literal 0x0122D70E), CDataOutputStream::WriteSLONG
+//   0x00993EB0 (the 4-byte writer), CPersistTraits<ECreatureInteractionType>::TransferBinaryIn 0x00671E20.
+// Layout: Ego_r.pdb CPersistContext -- Mode +0x18, PLoadStream +0x24, PSaveStream +0x28.
+// Shape: speed TU. The traits object is constructed before the switch (DefaultVal zeroed: `mov [esp+4],0` scheduled
+//   between `sub eax,2` and its `je`); the switch keeps only cases 2 and 3, binary save laid out first. VC7.1 rejects
+//   `Value()` for an enum declared in a namespace (C2065), so the zero is spelt `Value((T)0)` (same code).
+enum ECreatureInteractionType { CREATURE_INTERACTION_TYPE_0 };
+class CMemoryDataInputStream;
+class CDataOutputStream {
+public:
+    void WriteSLONG(long value);                         // 0x00993EB0
+};
+template <class T> class CPersistTraits {
+public:
+    T Value;                                             // PDB: DefaultVal
+    CPersistTraits() : Value((T)0) {}
+    void TransferBinaryIn(CMemoryDataInputStream& stream, T& value);   // 0x00671E20
+};
+class CPersistContext {
+public:
+    enum EMode { MODE_0, MODE_1, MODE_BINARY_LOAD, MODE_BINARY_SAVE };
+    unsigned char           _pad00[0x18];
+    EMode                   Mode;                        // +0x18
+    bool                    Binary;                      // +0x1c
+    unsigned char           _pad1d[3];
+    void*                   PStringToSaveTo;             // +0x20
+    CMemoryDataInputStream* PLoadStream;                 // +0x24
+    CDataOutputStream*      PSaveStream;                 // +0x28
+    void CheckCRC(const char* name);                     // 0x00404500
+    template <class T> void Transfer(T& value);
+};
+template <class T> void CPersistContext::Transfer(T& value)
+{
+    CheckCRC("");
+    CPersistTraits<T> traits;
+    switch (Mode)
+    {
+    case MODE_BINARY_LOAD:
+        traits.TransferBinaryIn(*PLoadStream, value);
+        break;
+    case MODE_BINARY_SAVE:
+        PSaveStream->WriteSLONG(value);
+        break;
+    }
+}
+template void CPersistContext::Transfer<ECreatureInteractionType >(ECreatureInteractionType& value);

@@ -1,0 +1,605 @@
+address	status	bytes	test	note	family
+00440f00	RELOCATION_MATCH	276v276	PASS	grades 4 (family representative); std::vector::_M_fill_insert [vector<long>]; proven	G001
+006392b0	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<NThingMap::CThingMap*>]; proven	G001
+007b98c0	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CThingAICreature*>]; proven	G001
+0098d000	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CUnprovenElement_0098cde0*>]; descriptive	G001
+009d3300	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CUnprovenElement_009d2c10*>]; descriptive	G001
+00a2c0f0	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CMeshDataBankEntry*>]; proven	G001
+00a5e3b0	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CUnprovenElement_00a5e1b0*>]; descriptive	G001
+00a81890	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CUnprovenElement_00a80aa0*>]; descriptive	G001
+00b29560	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CUnprovenElement_00b291a0*>]; descriptive	G001
+00b43f80	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CEngineMap*>]; proven	G001
+00b97250	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CUnprovenElement_00b96c60*>]; descriptive	G001
+00bedec0	RELOCATION_MATCH	276v276	PASS	grades 3; std::vector::_M_fill_insert [vector<CUnprovenElement_00bedbf0*>]; descriptive	G001
+006256e0	RELOCATION_MATCH	76v76	PASS	grades 3 (family representative); CPersistContext::Transfer [NUISystem::EStateChangeType]; proven	G002
+00632260	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [NUISystem::EType]; proven	G002
+00632340	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [NUISystem::ETableExpansionTypes]; proven	G002
+00632420	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [EEngineGraphicType]; proven	G002
+00632500	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [NUISystem::EActionType]; proven	G002
+006325e0	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [NUISystem::ETextAlignement]; proven	G002
+006326c0	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [EEngineSprite2DFlag]; proven	G002
+00671c10	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [ESex]; proven	G002
+00671cf0	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [ECreatureType]; proven	G002
+00671dd0	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [ECreatureInteractionType]; proven	G002
+00671eb0	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [EThingCreatureProperty]; proven	G002
+00671f90	RELOCATION_MATCH	76v76	PASS	grades 1; CPersistContext::Transfer [EControlledMovementType]; proven	G002
+00956c00	RELOCATION_MATCH	111v111	PASS	grades 2 (family representative); CAIStateGroup_BriarRose::OnActivate; proven	G003
+00956c70	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_BriarRose::Cleanup; proven	G003
+00956d90	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_BriarRoseWillUse::OnActivate; proven	G003
+00956e00	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_BriarRoseWillUse::Cleanup; proven	G003
+00961e10	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_IceTrollIcicleAttack::Cleanup; proven	G003
+00961f40	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_IceTrollPoundGroundAttack::Cleanup; proven	G003
+00962180	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_IceTrollIcicleAssault::Cleanup; proven	G003
+0096a350	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_WhisperRetreat::Cleanup; proven	G003
+0096a730	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_WhisperPotionCombat::Cleanup; proven	G003
+0096c1e0	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_Thunder::Cleanup; proven	G003
+0096fa20	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_SummonerLightningAttack::Cleanup; proven	G003
+0096fc60	RELOCATION_MATCH	111v111	PASS	grades 1; CAIStateGroup_SummonerCharge::Cleanup; proven	G003
+0042c1c1	DIFFER	294v319	-	grades 4 (family representative); std::_Rb_tree::insert_unique [map<NUISystem::CManager::EUsedKeys, long>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+0042c300	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<long, EEngine2DLayer>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+005940ec	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<long, NUISystem::CComponent*>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+0059b35c	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<FRONTEND_SCREEN, NUISystem::CComponent*>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+005b2a37	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<long, long>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+005bb5ef	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<EClothingSuitPart, long>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+005bb85a	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<EClothingSuitPart, bool>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+005bbe32	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<long, CEnginePrimitiveHandle>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+005f9714	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<CTCInventoryAbilities::EUISpellCategory, NUISystem::CComponent*>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+005f9853	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<EHeroAbility, NUISystem::CComponent*>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+00cd34c5	DIFFER	294v319	-	grades 1; std::_Rb_tree::insert_unique [map<long, CCharString>]; parked in differ/: register allocation: retail keeps `this` in ebx and the key value in edi across the _M_decrement/_M_increment calls (v pointer in edi on the begin() path); VC7.1 here keeps this in edi and &v in ebx, and lays the ...	G004
+004c4430	DIFFER	83v83	-	grades 4 (family representative); std::_Rb_tree::erase [map<void*, CRGBColour>]; parked in differ/: scheduling only: building erase's by-value iterator arguments, retail loads p.first (`mov ecx,[esp+10h]`) before storing p.second into the leftover distance slot (`mov [eax],edx`); VC7.1 here stores first. Same with the ...	G005
+004c6b60	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): map<CThing*, float> (the bullet-time request map; the landed 0x004C6140 reaches it under a descriptive name) -- probable	G005
+006c9220	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): map<long, COpinionDeed*> CTCHeroOpinionDeedLog::OpinionDeedMap (reached from PostDeed 0x006C6990) -- unverified	G005
+006f3200	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): the defender -> attacker map that CCombatManager::DeregisterAttackingCombatant erases from -- unverified	G005
+006f3340	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): a map erased by CCombatRing::AssignAttackersToRing -- unverified	G005
+007e9d80	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): unknown: its only reference is an unreferenced `jmp` thunk 0x007EA170	G005
+00813640	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): map<unsigned __int64, CGroupMemberData> CTCCreatureGroup::Members (the landed RemoveMember erases from it)	G005
+00835960	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): set<void*> CThingAICreature::Suspenders	G005
+00884710	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): set<CScreenEffectPriorityStack::CStackEntry*> (RadialBlurKeys / DisplacementKeys)	G005
+00990d60	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): map<unsigned long, CThreadedFileManager::CFileObject*> CThreadedFileManager::Objects	G005
+009d7f40	SKIP	-v83	-	grades 0; not_attempted -- family G005 is parked on its representative 0x004C4430 (scheduling-only DIFFER 83v83), so this instance was not stamped; identity hint (unverified unless stated): set<CBankFileAsyncData*> (CBankFile::AsyncDataInstances per its landed callers)	G005
+00514c10	RELOCATION_MATCH	180v180	PASS	grades 2 (family representative); std::_Rb_tree::insert_unique [set<unsigned long>]; proven	G006
+0051aac0	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [map<CThingBuilding*, list<CThingAICreature*> >]; proven	G006
+00535240	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [set<NUISystem::CComponent*>]; proven	G006
+00624620	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [map<CThing*, NUISystem::CComponent*>]; proven	G006
+0079f330	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [set<CThing*>]; proven	G006
+00883fd0	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [set<NScreenEffect::CScreenEffectPriorityStack::CStackEntry*>]; proven	G006
+008afd00	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [map<unsigned long, CombatDialogueManager::TSpeechGroupInfo>]; proven	G006
+009b5230	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [map<unsigned long, CDefPointer<CDefClassBase> >]; proven	G006
+009f1040	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [map<unsigned long, CSectionDesc>]; proven	G006
+00a2c5c0	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [map<unsigned long, CCountedPointer<C3DAnimation2> >]; proven	G006
+00adb740	RELOCATION_MATCH	180v180	PASS	grades 1; std::_Rb_tree::insert_unique [map<unsigned long, CVertexGroupBlockOptimiser::CGroupInfo>]; proven	G006
+0067ff30	RELOCATION_MATCH	218v218	PASS	grades 2 (family representative); std::vector::_M_insert_overflow [vector<CCountedPointer<NHitLocations::CPhysicalPrimitiveBase> >]; proven	G007
+007656d0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<NShape::CShape> >]; proven	G007
+0084fab0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<NCameraModes::CSubComponentBase> >]; proven	G007
+00a2d4d0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<CMeshDataBankEntry> >]; proven	G007
+00a8ddc0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<CUnprovenPointee_00a8ddc0> >]; descriptive	G007
+00a97ab0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<C3DClothPrimitive> >]; proven	G007
+00a97ce0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<C3DGroup2> >]; proven	G007
+00aa94e0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<CChunkedFileChunk> >]; proven	G007
+00ad69b0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<CUnprovenPointee_00ad69b0> >]; descriptive	G007
+00af0fa0	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<CGuiVarTransferBase> >]; proven	G007
+00b83970	RELOCATION_MATCH	218v218	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCountedPointer<CParticleSimulation> >]; proven	G007
+0042a879	MATCH	56v56	PASS	grades 2 (family representative); std::_Rb_tree::_M_find [map<long, EEngine2DLayer >]; proven	G008
+00579114	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<EHeroTrainableStatType, SExpSpendUndo >]; proven	G008
+0057914c	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<EHeroAbility, SExpSpendUndo >]; proven	G008
+00592f92	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<long, long >]; proven	G008
+005ba986	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<EClothingSuitPart, long >]; proven	G008
+005ba9be	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<EDamageAttribute, float >]; proven	G008
+005cc04a	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<EObjectAugmentationType, long >]; proven	G008
+005f840c	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<CTCInventoryAbilities::EUISpellCategory, NUISystem::CComponent* >]; proven	G008
+005f8444	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<EHeroAbility, NUISystem::CComponent* >]; proven	G008
+00cd26ea	MATCH	56v56	PASS	grades 1; std::_Rb_tree::_M_find [map<int, CCharString >]; proven	G008
+004416e0	RELOCATION_MATCH	259v259	PASS	grades 2 (family representative); std::vector::_M_insert_overflow [vector<C2DVector >]; proven	G009
+006b5be0	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<long, float> >]; proven	G009
+006e4fc0	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<NSpeechGainManager::CResponseTimes >]; proven	G009
+00743270	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> >]; proven	G009
+007b4be0	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<CCrimeWaitingForBribe >]; proven	G009
+008f7390	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<CThemePaletteEntry >]; proven	G009
+009b6300	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<unsigned long, unsigned long> >]; proven	G009
+00a96c20	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<C3DIndexedBoneWeight >]; proven	G009
+00ab3ff0	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<_D3DVERTEXELEMENT9 >]; proven	G009
+00ae64c0	RELOCATION_MATCH	259v259	PASS	grades 1; std::vector::_M_insert_overflow [vector<CParticleProgram::CLoopBegin >]; proven	G009
+00450e3a	RELOCATION_MATCH	52v52	PASS	grades 2 (family representative); std::_Vector_base::_Vector_base [_Vector_base<float >]; proven	G010
+00471fd9	RELOCATION_MATCH	52v52	PASS	grades 1; std::_Vector_base::_Vector_base [_Vector_base<EOpinionAttitudeType >]; proven	G010
+00485779	RELOCATION_MATCH	52v52	PASS	grades 1; std::_Vector_base::_Vector_base [_Vector_base<CEnginePrimitiveHandle >]; proven	G010
+004ebe62	RELOCATION_MATCH	52v52	PASS	grades 1; std::_Vector_base::_Vector_base [_Vector_base<C2DVector >]; proven	G010
+004ec4f2	RELOCATION_MATCH	52v52	PASS	grades 1; std::_Vector_base::_Vector_base [_Vector_base<CDefString >]; proven	G010
+004f9450	RELOCATION_MATCH	52v52	PASS	grades 1; std::_Vector_base::_Vector_base [_Vector_base<pair<EAttackHistoryType, EDamageAttribute> >]; proven	G010
+0059ab7c	RELOCATION_MATCH	52v52	PASS	grades 1; std::_Vector_base::_Vector_base [_Vector_base<CUnprovenElement_0059ab7c >]; descriptive	G010
+005d82f3	RELOCATION_MATCH	52v52	PASS	grades 2; std::_Vector_base::_Vector_base [_Vector_base<NUISystem::CComponent* >]; proven	G010
+005f8828	RELOCATION_MATCH	52v52	PASS	grades 1; std::_Vector_base::_Vector_base [_Vector_base<EHeroAbility >]; proven	G010
+005f885c	RELOCATION_MATCH	52v52	PASS	grades 1; std::_Vector_base::_Vector_base [_Vector_base<pair<long, CDefPointer<const CHeroAbilityDef> > >]; proven	G010
+0052b150	RELOCATION_MATCH	280v280	PASS	grades 2 (family representative); std::vector::_M_fill_insert [vector<ThingLList >]; proven	G011
+0066e480	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<CRegionMinimap::RegionMinimapCellData >]; proven	G011
+006c8610	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<pair<long, COpinionDeed*> >]; proven	G011
+006e5240	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<NSpeechGainManager::CResponseTimes >]; proven	G011
+00786020	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<pair<long, float> >]; proven	G011
+007b4e00	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<CCrimeWaitingForBribe >]; proven	G011
+0081cf90	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<CSkeletalMorphs::CEntry >]; proven	G011
+009b6460	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<pair<unsigned long, unsigned long> >]; proven	G011
+00a97180	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<C3DIndexedBoneWeight >]; proven	G011
+00ac42f0	RELOCATION_MATCH	280v280	PASS	grades 1; std::vector::_M_fill_insert [vector<C3DVertexBlend2 >]; proven	G011
+005e0280	RELOCATION_MATCH	125v125	PASS	grades 2 (family representative); CAnimationEntry::GetComponent; proven	G012
+005e0300	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven	G012
+00669cb0	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven (constness inferred)	G012
+00738980	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven	G012
+00738a00	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven	G012
+0085ad30	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven	G012
+00867f60	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven	G012
+0087e150	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven	G012
+0087e1d0	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven	G012
+008c7b30	RELOCATION_MATCH	125v125	PASS	grades 1; CAnimationEntry::GetComponent; proven (constness inferred)	G012
+0062dad0	RELOCATION_MATCH	135v135	PASS	grades 3 (family representative); CCreatureAction_PlayerInteractionGreet::CCreatureAction_PlayerInteractionGreet; proven	G013
+0062dbc0	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_PlayerInteractionInsult::CCreatureAction_PlayerInteractionInsult; proven	G013
+0062dca0	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_PlayerInteractionThreaten::CCreatureAction_PlayerInteractionThreaten; proven	G013
+0062dd80	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_PlayerInteractionBribe::CCreatureAction_PlayerInteractionBribe; proven	G013
+0062de60	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_PlayerInteractionFlirt::CCreatureAction_PlayerInteractionFlirt; proven	G013
+0062df40	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_TavernGameMasterInteraction::CCreatureAction_TavernGameMasterInteraction; proven	G013
+0062e020	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_Talk::CCreatureAction_Talk; proven	G013
+007eb490	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_PlayerInteractionViewQuests::CCreatureAction_PlayerInteractionViewQuests; proven	G013
+00843700	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_PickUpGenericBox::CCreatureAction_PickUpGenericBox; proven	G013
+00844140	RELOCATION_MATCH	135v135	PASS	grades 1; CCreatureAction_PickUpJugToFill::CCreatureAction_PickUpJugToFill; proven	G013
+0042b854	RELOCATION_MATCH	68v68	PASS	grades 3 (family representative); std::_Rb_tree::erase [map<NUISystem::CComponent*, NUISystem::CComponent*>]; proven	G014
+004753d4	RELOCATION_MATCH	68v68	PASS	grades 1; std::_Rb_tree::erase [map<CCharString, long>]; proven	G014
+00475c5e	RELOCATION_MATCH	68v68	PASS	grades 1; std::_Rb_tree::erase [map<CCharString, EGameAction>]; proven	G014
+00580658	RELOCATION_MATCH	68v68	PASS	grades 1; std::_Rb_tree::erase [map<void*, float>]; proven	G014
+005b220b	RELOCATION_MATCH	68v68	PASS	grades 1; std::_Rb_tree::erase [map<NUISystem::CComponent*, pair<long, long> >]; proven	G014
+005b228d	RELOCATION_MATCH	68v68	PASS	grades 1; std::_Rb_tree::erase [map<NUISystem::CComponent*, NUISystem::CList*>]; proven	G014
+005bb102	RELOCATION_MATCH	68v68	PASS	grades 1; std::_Rb_tree::erase [set<EClothingSuitPart>]; proven	G014
+005cc292	RELOCATION_MATCH	68v68	PASS	grades 1; std::_Rb_tree::erase [map<NUISystem::CComponent*, long>]; proven	G014
+005d8561	RELOCATION_MATCH	68v68	PASS	grades 1; std::_Rb_tree::erase [map<unsigned long, long>]; proven	G014
+0048b220	RELOCATION_MATCH	177v177	PASS	grades 2 (family representative); CThingCompare_Nearest::operator()<T> [T = const CThingVillage]; proven	G015
+004a8d80	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThing]; proven	G015
+006cce00	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThingGameObject]; proven	G015
+006ef290	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = const CThingCreatureBase]; proven	G015
+007f5730	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThingPhysical]; proven	G015
+00916b10	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThingObject]; proven	G015
+0091f740	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = const CThingObject]; proven	G015
+00964160	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = const CThingMarker]; proven	G015
+00986c30	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = const CThingAICreature]; proven	G015
+004ac380	RELOCATION_MATCH	254v254	PASS	grades 2 (family representative); std::_Rb_tree::insert_unique [set<CCharString>]; proven	G016
+006c3410	RELOCATION_MATCH	254v254	PASS	grades 1; std::_Rb_tree::insert_unique [map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >]; proven	G016
+006f2940	RELOCATION_MATCH	254v254	PASS	grades 1; std::_Rb_tree::insert_unique [map<CCharString, CCombatSequenceBase* (__fastcall*]; proven	G016
+007ae2d0	RELOCATION_MATCH	254v254	PASS	grades 1; std::_Rb_tree::insert_unique [map<CCharString, vector<CCharString> >]; proven	G016
+009ab020	RELOCATION_MATCH	254v254	PASS	grades 1; std::_Rb_tree::insert_unique [map<CCharString, NBankFileManager::CContainedBank>]; proven	G016
+009ab1f0	RELOCATION_MATCH	254v254	PASS	grades 1; std::_Rb_tree::insert_unique [map<CCharString, CBankFileManager::CBankInfo>]; proven	G016
+009ab3f0	RELOCATION_MATCH	254v254	PASS	grades 1; std::_Rb_tree::insert_unique [map<CCharString, CCharString>]; proven	G016
+009d41b0	RELOCATION_MATCH	254v254	PASS	grades 1; std::_Rb_tree::insert_unique [map<CCharString, vector<unsigned long> >]; proven	G016
+00a2dd90	RELOCATION_MATCH	254v254	PASS	grades 1; std::_Rb_tree::insert_unique [map<CCharString, vector<CMeshDataBank::CLipSyncEntry> >]; proven	G016
+004b9620	RELOCATION_MATCH	95v95	PASS	grades 2 (family representative); std::vector::vector [vector<CUnprovenElement_004b9620 >]; descriptive	G017
+00514160	RELOCATION_MATCH	95v95	PASS	grades 1; std::vector::vector [vector<long >]; proven	G017
+00514350	RELOCATION_MATCH	95v95	PASS	grades 1; std::vector::vector [vector<CUnprovenElement_00514350 >]; descriptive	G017
+00535470	RELOCATION_MATCH	95v95	PASS	grades 1; std::vector::vector [vector<unsigned long >]; proven	G017
+007dc350	RELOCATION_MATCH	95v95	PASS	grades 1; std::vector::vector [vector<CCard* >]; proven	G017
+00807830	RELOCATION_MATCH	95v95	PASS	grades 1; std::vector::vector [vector<CUnprovenElement_00807830 >]; descriptive	G017
+00916ce0	RELOCATION_MATCH	95v95	PASS	grades 1; std::vector::vector [vector<const CCharString* >]; proven	G017
+0091fe50	RELOCATION_MATCH	95v95	PASS	grades 1; std::vector::vector [vector<CUnprovenElement_0091fe50 >]; descriptive	G017
+00a80b80	RELOCATION_MATCH	95v95	PASS	grades 1; std::vector::vector [vector<CANavQuadTreeNode* >]; proven	G017
+00c3d360	MATCH	42v42	PASS	grades 3 (family representative); CLibpkStateA4::SetFloat90; descriptive	G018
+00c3d3e0	MATCH	42v42	PASS	grades 1; CLibpkStateA4::SetFloat9C; descriptive	G018
+00c3d410	MATCH	42v42	PASS	grades 1; CLibpkStateA4::SetFloatA0; descriptive	G018
+00c41440	MATCH	42v42	PASS	grades 1; CLibpkObject1D8::SetFloat17C; descriptive	G018
+00c41470	MATCH	42v42	PASS	grades 1; CLibpkObject1D8::SetFloat180; descriptive	G018
+00c414a0	MATCH	42v42	PASS	grades 1; CLibpkObject1D8::SetFloat184; descriptive	G018
+00c414d0	MATCH	42v42	PASS	grades 1; CLibpkObject1D8::SetFloat188; descriptive	G018
+00c41500	MATCH	42v42	PASS	grades 1; CLibpkObject1D8::SetFloat18C; descriptive	G018
+00c41570	MATCH	42v42	PASS	grades 1; CLibpkObject1D8::SetFloat198; descriptive	G018
+00c40940	MATCH	33v33	PASS	grades 1 (family representative); CLibpkObject78::SetFloat40; descriptive	G019
+00c40a40	MATCH	33v33	PASS	grades 1; CLibpkObject78::SetFloat48; descriptive	G019
+00c40b20	MATCH	33v33	PASS	grades 1; CLibpkObject78::SetFloat4C; descriptive	G019
+00c40b50	MATCH	33v33	PASS	grades 1; CLibpkObject78::SetFloat50; descriptive	G019
+00c40b80	MATCH	33v33	PASS	grades 1; CLibpkObject78::SetFloat54; descriptive	G019
+00c40bb0	MATCH	33v33	PASS	grades 1; CLibpkObject78::SetFloat58; descriptive	G019
+00c40be0	MATCH	33v33	PASS	grades 1; CLibpkObject78::SetFloat5C; descriptive	G019
+00c40c10	MATCH	33v33	PASS	grades 1; CLibpkObject78::SetFloat60; descriptive	G019
+00c40c40	MATCH	33v33	PASS	grades 1; CLibpkObject78::SetFloat64; descriptive	G019
+0040b2d0	RELOCATION_MATCH	53v53	PASS	grades 1 (family representative); CUserProfileManager::SetGamma; proven	G020
+0040b350	RELOCATION_MATCH	53v53	PASS	grades 1; CUserProfileManager::SetMusicVolume; proven	G020
+0040b390	RELOCATION_MATCH	53v53	PASS	grades 1; CUserProfileManager::SetSoundVolume; proven	G020
+0040b550	RELOCATION_MATCH	53v53	PASS	grades 1; CUserProfileManager::SetCameraSensitivity; proven	G020
+0040b590	RELOCATION_MATCH	53v53	PASS	grades 1; CUserProfileManager::SetShadowDetail; proven	G020
+0040b5d0	RELOCATION_MATCH	53v53	PASS	grades 1; CUserProfileManager::SetTextureDetail; proven	G020
+0040b610	RELOCATION_MATCH	53v53	PASS	grades 1; CUserProfileManager::SetMeshDetail; proven	G020
+0040b650	RELOCATION_MATCH	53v53	PASS	grades 1; CUserProfileManager::SetEffectsDetail; proven	G020
+00440d70	RELOCATION_MATCH	77v77	PASS	grades 3 (family representative); std::vector::erase [vector<CEnginePrimitiveHandle >]; proven	G021
+0074d3e0	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CIntelligentPointer<CThingCreatureBase> >]; proven	G021
+007afc40	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CIntelligentPointer<CThingAICreature> >]; proven	G021
+007d2260	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CShoveHaPennyRegionDef >]; proven	G021
+008f03b0	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<Coin >]; proven	G021
+00a00ed0	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CGraphicInfoFrame >]; proven	G021
+00a3d3e0	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<C3DAnimationStateAlpha >]; proven	G021
+00b6c050	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CVertexShader >]; proven	G021
+0046296e	RELOCATION_MATCH	39v39	PASS	grades 4 (family representative); CSimBuildingDef::operator=; proven	G022
+0047848c	RELOCATION_MATCH	39v39	PASS	grades 1; CAppearanceModifierScalingDef::operator=; proven	G022
+00478876	RELOCATION_MATCH	39v39	PASS	grades 1; CAbilityTrackLevelDef::operator=; proven	G022
+004e0ebc	RELOCATION_MATCH	39v39	PASS	grades 1; COverheadDisplayDef::operator=; proven	G022
+004e128c	RELOCATION_MATCH	39v39	PASS	grades 1; CWallMountEffectsDef::operator=; proven	G022
+004e131a	RELOCATION_MATCH	39v39	PASS	grades 1; CTeleporterDef::operator=; proven	G022
+004e1a5e	RELOCATION_MATCH	39v39	PASS	grades 1; CHasNameDef::operator=; proven	G022
+004e485c	RELOCATION_MATCH	39v39	PASS	grades 1; CBalverineBattleDef::operator=; proven	G022
+004640d1	MATCH	47v47	PASS	grades 3 (family representative); std::vector::erase [vector<EWeaponClass >]; proven	G023
+0046591d	MATCH	47v47	PASS	grades 1; std::vector::erase [vector<CDefString >]; proven	G023
+00468fe3	MATCH	47v47	PASS	grades 1; std::vector::erase [vector<CRGBColour >]; proven	G023
+0046988f	MATCH	47v47	PASS	grades 1; std::vector::erase [vector<ECreatureGeneratorGenerateType >]; proven	G023
+0046cbc2	MATCH	47v47	PASS	grades 1; std::vector::erase [vector<EActionRegisteredType >]; proven	G023
+004721f1	MATCH	47v47	PASS	grades 1; std::vector::erase [vector<EOpinionAttitudeType >]; proven	G023
+004e8743	MATCH	47v47	PASS	grades 1; std::vector::erase [vector<EVillageTaskType >]; proven	G023
+004e8ac5	MATCH	47v47	PASS	grades 1; std::vector::erase [vector<CDefIndex >]; proven	G023
+00475453	RELOCATION_MATCH	42v42	PASS	grades 2 (family representative); std::_Rb_tree::equal_range [map<CCharString, long>]; proven	G024
+00475cdd	RELOCATION_MATCH	42v42	PASS	grades 1; std::_Rb_tree::equal_range [map<CCharString, EGameAction>]; proven	G024
+00580b2f	RELOCATION_MATCH	42v42	PASS	grades 1; std::_Rb_tree::equal_range [map<void*, float>]; proven	G024
+005b2263	RELOCATION_MATCH	42v42	PASS	grades 1; std::_Rb_tree::equal_range [map<NUISystem::CComponent*, pair<long, long> >]; proven	G024
+005b22e5	RELOCATION_MATCH	42v42	PASS	grades 1; std::_Rb_tree::equal_range [map<NUISystem::CComponent*, NUISystem::CList*>]; proven	G024
+005bb5c5	RELOCATION_MATCH	42v42	PASS	grades 1; std::_Rb_tree::equal_range [set<EClothingSuitPart>]; proven	G024
+005cc2d6	RELOCATION_MATCH	42v42	PASS	grades 1; std::_Rb_tree::equal_range [map<NUISystem::CComponent*, long>]; proven	G024
+005d8676	RELOCATION_MATCH	42v42	PASS	grades 1; std::_Rb_tree::equal_range [map<unsigned long, long>]; proven	G024
+0048d390	RELOCATION_MATCH	48v48	PASS	grades 3 (family representative); CInputProcessJumpingAndRolling::`scalar deleting destructor'; proven	G025
+006df8c0	RELOCATION_MATCH	54v54	PASS	grades 4; CCreatureAction_ShowToSheatheTrophy::`scalar deleting destructor'; proven	G025
+006e4690	RELOCATION_MATCH	48v48	PASS	grades 2; CTCTalk::`scalar deleting destructor'; proven	G025
+006e7d50	RELOCATION_MATCH	48v48	PASS	grades 2; CGameScriptInterface::`scalar deleting destructor'; proven	G025
+00855100	RELOCATION_MATCH	54v54	PASS	grades 2; CCreatureAction_SpiritAttack::`scalar deleting destructor'; proven	G025
+008c37c0	RELOCATION_MATCH	48v48	PASS	grades 2; NCreatureMode::CModeBriarRoseTeleportIntangible::`scalar deleting destructor'; proven	G025
+00a175a0	RELOCATION_MATCH	48v48	PASS	grades 2; CNavigatorManager::`scalar deleting destructor'; proven	G025
+00cdbd70	RELOCATION_MATCH	51v51	PASS	grades 2; CNoRttiObject_012C2748::`scalar deleting destructor'; descriptive	G025
+004ac0f0	RELOCATION_MATCH	77v77	PASS	grades 1 (family representative); std::vector::erase [vector<CIntelligentPointer<CThing> >]; proven	G026
+0067cad0	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CBlurredAttitudesDef >]; proven	G026
+00738d70	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CIntelligentPointer<const CThing> >]; proven	G026
+007b9870	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CIntelligentPointer<CThingObject> >]; proven	G026
+008ac9d0	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CScriptThing >]; proven	G026
+00a2c910	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<C3DMeshInfo >]; proven	G026
+00a2ca70	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<CPhysicsMeshInfo >]; proven	G026
+00a2cbd0	RELOCATION_MATCH	77v77	PASS	grades 1; std::vector::erase [vector<C3DAnimationInfo >]; proven	G026
+004badc0	RELOCATION_MATCH	63v63	PASS	grades 1 (family representative); std::list::list [list<CCountedPointer<CQuestManager::CActiveQuest> >]; proven	G027
+00515e50	RELOCATION_MATCH	63v63	PASS	grades 1; std::list::list [list<CThingAICreature* >]; proven	G027
+00518d80	RELOCATION_MATCH	63v63	PASS	grades 1; std::list::list [list<C2DLineF >]; proven	G027
+00618da0	RELOCATION_MATCH	63v63	PASS	grades 1; std::list::list [list<CIntelligentPointer<CThing> >]; proven	G027
+00711cb0	RELOCATION_MATCH	63v63	PASS	grades 1; std::list::list [list<CAnimSet >]; proven	G027
+00770050	RELOCATION_MATCH	63v63	PASS	grades 1; std::list::list [list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry >]; proven	G027
+009c6f70	RELOCATION_MATCH	63v63	PASS	grades 1; std::list::list [list<CFileInstaller::CPendingWrite >]; proven	G027
+00a82590	RELOCATION_MATCH	63v63	PASS	grades 1; std::list::list [list<CCountedPointer<CNavRegionConnection> >]; proven	G027
+004c4d50	RELOCATION_MATCH	518v518	PASS	grades 1 (family representative); std::_Rb_tree::insert_unique [_Rb_tree<void*, pair<void* const, CRGBColour >, ...>]; proven	G028
+004c6bc0	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<void*, pair<void* const, CBulletTimeManager::CBulletTimeInfo >, ...>]; proven	G028
+0051b1e0	RELOCATION_MATCH	518v518	PASS	grades 2; std::_Rb_tree::insert_unique [_Rb_tree<CThingBuilding*, pair<CThingBuilding* const, std::list<CThingAICreature*> >, ...>]; proven	G028
+007e9de0	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<CThing*, pair<CThing* const, float >, ...>]; proven	G028
+009b6580	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<unsigned long, pair<unsigned long const, CDefPointer<CDefClassBase> >, ...>]; proven	G028
+009f1180	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<unsigned long, pair<unsigned long const, CCodeSectionManager::CSectionDesc >, ...>]; proven	G028
+00a2ccf0	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<unsigned long, pair<unsigned long const, CCountedPointer<C3DAnimation2> >, ...>]; proven	G028
+00bd8dc0	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<unsigned long, pair<unsigned long const, CArray<C3DVector> >, ...>]; proven	G028
+004cc740	RELOCATION_MATCH	74v74	PASS	grades 1 (family representative); std::__make_heap [std::pair<ETCInterfaceType, CTCBase*>, CKeyPairCompareLess<ETCInterfaceType, CTCBase*>]; proven	G029
+00680c20	RELOCATION_MATCH	74v74	PASS	grades 1; std::__make_heap [std::pair<EReactionSpeechType, long>, CKeyPairCompareLess<EReactionSpeechType, long>]; proven	G029
+0073df30	RELOCATION_MATCH	74v74	PASS	grades 1; std::__make_heap [std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo>, CKeyPairCompareLess<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo>]; proven	G029
+0088cb70	RELOCATION_MATCH	74v74	PASS	grades 1; std::__make_heap [std::pair<long, CAIStateGroupBase*>, CKeyPairCompareGreater<long, CAIStateGroupBase*>]; proven	G029
+009b3c70	RELOCATION_MATCH	74v74	PASS	grades 1; std::__make_heap [std::pair<unsigned long, long>, CKeyPairCompareLess<unsigned long, long>]; proven	G029
+009b3cf0	RELOCATION_MATCH	74v74	PASS	grades 1; std::__make_heap [std::pair<unsigned long, unsigned long>, CKeyPairCompareLess<unsigned long, unsigned long>]; proven	G029
+00a6b780	RELOCATION_MATCH	74v74	PASS	grades 1; std::__make_heap [std::pair<unsigned long, unsigned long>, std::less<std::pair<unsigned long, unsigned long> >]; proven	G029
+00ae62f0	RELOCATION_MATCH	74v74	PASS	grades 1; std::__make_heap [std::pair<long, unsigned long>, std::less<std::pair<long, unsigned long> >]; proven	G029
+004e2de7	RELOCATION_MATCH	33v33	PASS	grades 2 (family representative); CTavernGameCardBaseDef::~CTavernGameCardBaseDef; proven	G030
+004e32c2	RELOCATION_MATCH	33v33	PASS	grades 2; CRumbleDef::~CRumbleDef; proven	G030
+0065ed59	RELOCATION_MATCH	33v33	PASS	grades 2; CVillageTaskTorch::~CVillageTaskTorch; proven	G030
+0065ee0c	RELOCATION_MATCH	33v33	PASS	grades 2; CVillageTaskHorn::~CVillageTaskHorn; proven	G030
+0065eebc	RELOCATION_MATCH	33v33	PASS	grades 2; CVillageTaskPatrol::~CVillageTaskPatrol; proven	G030
+0065ef51	RELOCATION_MATCH	33v33	PASS	grades 2; CVillageTaskPickCrops::~CVillageTaskPickCrops; proven	G030
+0065eff4	RELOCATION_MATCH	33v33	PASS	grades 2; CVillageTaskCarryCrate::~CVillageTaskCarryCrate; proven	G030
+00903383	RELOCATION_MATCH	33v33	PASS	grades 3; CAIStateGroup_HoverHornetQueen::~CAIStateGroup_HoverHornetQueen; proven	G030
+00513700	RELOCATION_MATCH	161v161	PASS	grades 3 (family representative); std::set::set [set<long>]; proven	G031
+00514400	RELOCATION_MATCH	161v161	PASS	grades 1; std::set::set [set<CCharString>]; proven	G031
+00738dc0	RELOCATION_MATCH	161v161	PASS	grades 1; std::set::set [set<EWeaponClass>]; proven	G031
+00826000	RELOCATION_MATCH	161v161	PASS	grades 1; std::set::set [set<unsigned __int64>]; proven	G031
+008267c0	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>]; proven	G031
+00884a40	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<CThing*, NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState>]; proven	G031
+00a96e40	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<unsigned long, long>]; proven	G031
+00ad3a10	RELOCATION_MATCH	161v161	PASS	grades 1; std::set::set [set<unsigned long>]; proven	G031
+00517620	RELOCATION_MATCH	48v48	PASS	grades 1 (family representative); CStaticMapGenerationVisibiilityInfo::CSeaBodyDesc::`scalar deleting destructor'; proven	G032
+0052aad0	RELOCATION_MATCH	48v48	PASS	grades 2; NThingManager::CEntityRuntimePersistence::CEntityScriptInfo::`scalar deleting destructor'; proven	G032
+009c6f40	RELOCATION_MATCH	48v48	PASS	grades 6 -- over the 4-grade cap: the KillOne explicit-destructor variants of the polymorphic ??_G were graded in one parallel batch, which overran the budget; review at landing; CACompressor::`scalar deleting destructor'; proven	G032
+009d3670	RELOCATION_MATCH	48v48	PASS	grades 2; std::pair::`scalar deleting destructor' [std::pair<const CCharString, CArray<unsigned long> >]; probable	G032
+00a5e670	RELOCATION_MATCH	48v48	PASS	grades 2; CVertexStreamFormat::`scalar deleting destructor'; proven	G032
+00aa49f0	RELOCATION_MATCH	48v48	PASS	grades 2; C3DAnimFileXSequenceChunk::`scalar deleting destructor'; proven	G032
+00aa7250	RELOCATION_MATCH	48v48	PASS	grades 2; C3DMeshFileXVertexDataChunk::`scalar deleting destructor'; proven	G032
+00aa72a0	RELOCATION_MATCH	48v48	PASS	grades 2; C3DMeshFileXTriangleStripChunk::`scalar deleting destructor'; proven	G032
+00518e80	RELOCATION_MATCH	161v161	PASS	grades 1 (family representative); std::map::map [map<CCharString, C2DVector>]; proven	G033
+00619c50	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<CHeroLogBook::CHeroLogBookEntry::ECategory, std::vector<CHeroLogBook::CHeroLogBookEntry> >]; proven	G033
+0062ee80	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<long, CCharString>]; proven	G033
+006f33a0	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<unsigned __int64, CThingCreatureBase*>]; proven	G033
+00778100	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<long, long>]; proven	G033
+00ad4210	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<unsigned long, float>]; proven	G033
+00ad5920	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<unsigned long, QuadricOptimiserInternals::CContractionReference>]; proven	G033
+00b97de0	RELOCATION_MATCH	161v161	PASS	grades 1; std::map::map [map<long, CCountedPointer<CEngineSceneMap> >]; proven	G033
+00614970	MATCH	62v62	PASS	grades 2 (family representative); std::__copy_backward_ptrs [CTCInventoryMap::CUIRegionInfo]; proven	G034
+007587a0	MATCH	62v62	PASS	grades 1; std::__copy_backward_ptrs [std::pair<EBodyLocation, CWoundMorphs::CEntry>]; proven	G034
+00758c50	MATCH	62v62	PASS	grades 1; std::copy_backward [std::pair<EBodyLocation, CWoundMorphs::CEntry>]; probable	G034
+0081a4f0	MATCH	62v62	PASS	grades 1; std::__copy_backward_ptrs [std::pair<EExpressionType, CExpressionSet::CEntry>]; proven	G034
+0081a710	MATCH	62v62	PASS	grades 1; std::__copy_backward_ptrs [CParticleMorphs::CEntry]; proven	G034
+00ab13d0	MATCH	62v62	PASS	grades 1; std::__copy_backward_ptrs [N3DAnimationBuilder::CSequenceInfo]; proven	G034
+00ad19c0	MATCH	62v62	PASS	grades 1; std::__copy_backward_ptrs [QuadricOptimiserInternals::COptimisedFace]; proven	G034
+00b7af60	MATCH	62v62	PASS	grades 2; std::__copy_backward_ptrs [CPreTransposedBoneMatrix]; proven	G034
+00673700	MATCH	57v57	PASS	grades 1 (family representative); std::__copy_ptrs [std::pair<long, CRandomAppearanceMorph::CSkeletalMorph>]; proven	G035
+006e1c10	MATCH	57v57	PASS	grades 1; std::__copy_ptrs [std::pair<unsigned long, C3DVector>]; proven	G035
+00a535f0	MATCH	57v57	PASS	grades 1; std::__copy_ptrs [CQuaternion]; probable	G035
+00a74840	MATCH	57v57	PASS	grades 1; std::copy [C2DLineF]; proven	G035
+00a759e0	MATCH	57v57	PASS	grades 1; std::copy [CPlane]; proven	G035
+00a7e930	MATCH	57v57	PASS	grades 1; std::__copy_ptrs [CNavigationTransitionPoint]; proven	G035
+00ae61e0	MATCH	57v57	PASS	grades 1; std::copy [C4DVector]; proven	G035
+00bdb670	MATCH	57v57	PASS	grades 1; std::__copy_ptrs [CVertexShaderConstant]; proven	G035
+006755a0	RELOCATION_MATCH	58v58	PASS	grades 3 (family representative); std::vector::~vector [vector<CRandomAppearanceMorph::CBodyPartMesh >]; proven	G036
+006b6af0	RELOCATION_MATCH	58v58	PASS	grades 1; std::vector::~vector [vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry >]; probable	G036
+0070b1c0	RELOCATION_MATCH	58v58	PASS	grades 1; std::vector::_M_clear [vector<CEngineTextureDecal >]; proven	G036
+0086e110	RELOCATION_MATCH	58v58	PASS	grades 1; std::vector::_M_clear [vector<CRandomAppearanceMorph::CMorphSet::CMeshTextureSet >]; proven	G036
+00ae7ef0	RELOCATION_MATCH	58v58	PASS	grades 1; std::vector::~vector [vector<C3DGroup2 >]; proven	G036
+00ae7fa0	RELOCATION_MATCH	58v58	PASS	grades 1; std::vector::_M_clear [vector<C3DGroup2 >]; proven	G036
+00bef580	RELOCATION_MATCH	58v58	PASS	grades 1; std::vector::_M_clear [vector<std::pair<std::pair<long, long>, CEngineTextureDecal> >]; proven	G036
+00f386d0	RELOCATION_MATCH	58v58	PASS	grades 1; std::vector::~vector [vector<CGPUScratchBufferTextureManager::CResourcePage >]; probable	G036
+00689da0	RELOCATION_MATCH	69v69	PASS	grades 2 (family representative); CInputProcessInventory::Init; proven	G037
+0068acf0	RELOCATION_MATCH	69v69	PASS	grades 2; CInputProcessInventoryClothing::Init; proven	G037
+0068ad40	RELOCATION_MATCH	69v69	PASS	grades 2; CInputProcessInventoryWeapons::Init; proven	G037
+0068ade0	RELOCATION_MATCH	69v69	PASS	grades 2; CInputProcessInventoryMapScreen::Init; proven	G037
+0068b290	RELOCATION_MATCH	69v69	PASS	grades 2; CInputProcessInventoryExperienceScreen::Init; proven	G037
+0068b770	RELOCATION_MATCH	69v69	PASS	grades 2; CInputProcessInventoryTradeScreen::Init; proven	G037
+0068c630	RELOCATION_MATCH	69v69	PASS	grades 2; CInputProcessInventoryMagicScreen::Init; proven	G037
+0068c680	RELOCATION_MATCH	69v69	PASS	grades 2; CInputProcessInventoryStatsScreen::Init; proven	G037
+006a0750	RELOCATION_MATCH	52v52	PASS	grades 1 (family representative); NEntityEvents::CEventItemUsed::CEventItemUsed; proven	G038
+0083cf20	RELOCATION_MATCH	52v52	PASS	grades 1; NEntityEvents::CEventTriggered::CEventTriggered; proven	G038
+0084af90	RELOCATION_MATCH	52v52	PASS	grades 1; NEntityEvents::CEventTalkedTo::CEventTalkedTo; proven	G038
+0084b080	RELOCATION_MATCH	52v52	PASS	grades 1; NEntityEvents::CEventOpenedChest::CEventOpenedChest; proven	G038
+0084b100	RELOCATION_MATCH	52v52	PASS	grades 1; NEntityEvents::CEventTalkedToAnyone::CEventTalkedToAnyone; proven	G038
+0087fed0	RELOCATION_MATCH	52v52	PASS	grades 1; NEntityEvents::CEventKillLocked::CEventKillLocked; proven	G038
+008bfe20	RELOCATION_MATCH	52v52	PASS	grades 1; NEntityEvents::CEventFiredShot::CEventFiredShot; proven	G038
+009156c0	RELOCATION_MATCH	52v52	PASS	grades 1; NEntityEvents::CEventChildHurtGoToMother::CEventChildHurtGoToMother; proven	G038
+006aeba0	RELOCATION_MATCH	66v66	PASS	grades 1 (family representative); CTCRegionFollower::RemoveFollower; proven	G039
+0071a8f0	RELOCATION_MATCH	66v66	PASS	grades 1; CTCParticleAttachmentTracker::SetParticleAsDetached; proven	G039
+0071b1b0	RELOCATION_MATCH	66v66	PASS	grades 1; CTCThingOwner::RemoveOwnedObject; proven	G039
+0076c850	RELOCATION_MATCH	66v66	PASS	grades 1; CTCEnemy::RemoveAllyThing; proven	G039
+007c0fb0	RELOCATION_MATCH	66v66	PASS	grades 1; CTCShotDefinitionBase::AddHitThing; descriptive	G039
+0080cbf0	RELOCATION_MATCH	66v66	PASS	grades 1; CTCDExplosion::SetThingAsImmune; proven	G039
+0080ccf0	RELOCATION_MATCH	66v66	PASS	grades 1; CTCDExplosion::SetSpecificThingToHit; proven	G039
+008e6d90	RELOCATION_MATCH	66v66	PASS	grades 1; CTCBerserk::AddDependentThing; probable	G039
+006cad70	MATCH	81v81	PASS	grades 2 (family representative); std::vector::erase [vector<CCompositeBlendDesc >]; proven	G040
+007d9c20	MATCH	81v81	PASS	grades 1; std::vector::erase [vector<KnickKnack >]; proven	G040
+0086c720	MATCH	81v81	PASS	grades 1; std::vector::erase [vector<std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> >]; proven	G040
+0098cf70	MATCH	81v81	PASS	grades 1; std::vector::erase [vector<C4DVector >]; proven	G040
+00a549d0	MATCH	81v81	PASS	grades 1; std::vector::erase [vector<CQuaternion >]; probable	G040
+00aab500	MATCH	81v81	PASS	grades 1; std::vector::erase [vector<CPlane >]; proven	G040
+00ad3cc0	MATCH	81v81	PASS	grades 1; std::vector::erase [vector<QuadricOptimiserInternals::COptimisedEdge >]; proven	G040
+00bdfcf0	MATCH	81v81	PASS	grades 1; std::vector::erase [vector<C3DBoundingSphere >]; proven	G040
+006dc9f0	RELOCATION_MATCH	84v84	PASS	grades 1 (family representative); std::vector::erase [vector<CAttackHistoryCombo >]; proven	G041
+007dc8d0	RELOCATION_MATCH	84v84	PASS	grades 2; std::vector::erase [vector<std::vector<CCard*> >]; proven	G041
+0085ea40	RELOCATION_MATCH	84v84	PASS	grades 1; std::vector::erase [vector<std::vector<NThingMap::CThingMapCell> >]; proven	G041
+0086e0b0	RELOCATION_MATCH	84v84	PASS	grades 1; std::vector::erase [vector<CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph, CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph> > >]; proven	G041
+00a74fb0	RELOCATION_MATCH	84v84	PASS	grades 1; std::vector::erase [vector<CArray<C2DLineF> >]; proven	G041
+00af7910	RELOCATION_MATCH	84v84	PASS	grades 1; std::vector::erase [vector<CArray<long> >]; proven	G041
+00bcdb10	RELOCATION_MATCH	84v84	PASS	grades 1; std::vector::erase [vector<CArray<C3DVector> >]; proven	G041
+00f3f7c0	RELOCATION_MATCH	84v84	PASS	grades 1; std::vector::erase [vector<CArray<unsigned short> >]; probable	G041
+006e26c0	RELOCATION_MATCH	33v33	PASS	grades 1 (family representative); CTCDParticleEmitter::CParticleCreationParameters::`scalar deleting destructor'; proven	G042
+00722930	RELOCATION_MATCH	33v33	PASS	grades 1; CTCSmokeGenerator::CGenerationPos::`scalar deleting destructor'; proven	G042
+0075f0b0	RELOCATION_MATCH	33v33	PASS	grades 1; CTCCameraPointScriptedSpline::CKeyCamera::`scalar deleting destructor'; proven	G042
+0078e370	RELOCATION_MATCH	33v33	PASS	grades 1; CTCDivineWrath::PerEffectInfo::`scalar deleting destructor'; proven	G042
+007939a0	RELOCATION_MATCH	33v33	PASS	grades 1; CTCUnholyPower::PerEffectInfo::`scalar deleting destructor'; proven	G042
+009d83e0	RELOCATION_MATCH	33v33	PASS	grades 1; std::pair<C3DVector, CCharString>::`scalar deleting destructor'; probable	G042
+00a81d60	RELOCATION_MATCH	33v33	PASS	grades 1; std::pair::`scalar deleting destructor' [std::pair<unsigned __int64, std::list<C2DLineF> >]; probable	G042
+00cb9200	SKIP	-v33	-	grades 0; SKIP: unidentified class: a dead ??_G whose only destructible member is a CCharString at +0x10; no class in the PDB ??_G name sets has that layout and its module neighbours do not name it (the body itself is a 1-grade-ready stamp of the G042 generator)	G042
+0071be20	RELOCATION_MATCH	93v93	PASS	grades 1 (family representative); CTCHeroMorph::SetStrength; proven	G043
+0071be80	RELOCATION_MATCH	93v93	PASS	grades 1; CTCHeroMorph::SetWill; proven	G043
+0071bee0	RELOCATION_MATCH	93v93	PASS	grades 1; CTCHeroMorph::SetBerserkSkin; proven	G043
+0071bf40	RELOCATION_MATCH	93v93	PASS	grades 1; CTCHeroMorph::SetSkill; proven	G043
+0071bfa0	RELOCATION_MATCH	93v93	PASS	grades 2; CTCHeroMorph::SetAge; proven	G043
+0071c000	RELOCATION_MATCH	93v93	PASS	grades 1; CTCHeroMorph::SetMorality; proven	G043
+0071c060	RELOCATION_MATCH	93v93	PASS	grades 1; CTCHeroMorph::SetFatness; proven	G043
+0071c0c0	RELOCATION_MATCH	93v93	PASS	grades 1; CTCHeroMorph::SetTan; proven	G043
+008421e0	RELOCATION_MATCH	104v104	PASS	grades 1 (family representative); CCreatureAction_YellOverHere::CCreatureAction_YellOverHere; proven	G044
+00842270	RELOCATION_MATCH	104v104	PASS	grades 2; CCreatureAction_ShowFear::CCreatureAction_ShowFear; proven	G044
+00842300	RELOCATION_MATCH	104v104	PASS	grades 1; CCreatureAction_AlertToPlayer::CCreatureAction_AlertToPlayer; proven	G044
+00842a80	RELOCATION_MATCH	104v104	PASS	grades 1; CCreatureAction_StartFillingTankard::CCreatureAction_StartFillingTankard; proven	G044
+00842af0	RELOCATION_MATCH	104v104	PASS	grades 1; CCreatureAction_StopFillingTankard::CCreatureAction_StopFillingTankard; proven	G044
+00865a00	RELOCATION_MATCH	104v104	PASS	grades 1; CCreatureAction_BeDazed::CCreatureAction_BeDazed; proven	G044
+009110f0	RELOCATION_MATCH	104v104	PASS	grades 2; CCreatureAction_OrderSecuritySweep::CCreatureAction_OrderSecuritySweep; proven	G044
+00941b20	RELOCATION_MATCH	104v104	PASS	grades 1; CCreatureAction_PlayHopscotch::CCreatureAction_PlayHopscotch; proven	G044
+0089d160	RELOCATION_MATCH	91v91	PASS	grades 1 (family representative); CGameScriptInterface::EntitySetSoundRadius; proven	G045
+0089d1c0	RELOCATION_MATCH	91v91	PASS	grades 1; CGameScriptInterface::EntitySetSmellRadius; proven	G045
+0089d220	RELOCATION_MATCH	91v91	PASS	grades 1; CGameScriptInterface::EntitySetSightRadius; proven	G045
+0089d280	RELOCATION_MATCH	91v91	PASS	grades 1; CGameScriptInterface::EntitySetExtendedSightRadius; proven	G045
+0089d2e0	RELOCATION_MATCH	91v91	PASS	grades 1; CGameScriptInterface::EntitySetGiveUpChaseRadius; proven	G045
+0089dc10	RELOCATION_MATCH	91v91	PASS	grades 1; CGameScriptInterface::EntitySetAsLocked; proven	G045
+0089ed20	RELOCATION_MATCH	91v91	PASS	grades 1; CGameScriptInterface::SetCreatureGeneratorEnabled; proven	G045
+008a0140	RELOCATION_MATCH	91v91	PASS	grades 1; CGameScriptInterface::EntitySetStockItemPrice; proven	G045
+008c3930	RELOCATION_MATCH	82v82	PASS	grades 1 (family representative); CCombatAction_WillHealRelease::CCombatAction_WillHealRelease; proven	G046
+008e4860	RELOCATION_MATCH	82v82	PASS	grades 1; CCombatAction_Guildmaster_HealFollowersRelease::CCombatAction_Guildmaster_HealFollowersRelease; proven	G046
+008e48d0	RELOCATION_MATCH	82v82	PASS	grades 1; CCombatAction_Guildmaster_ShieldFollowersRelease::CCombatAction_Guildmaster_ShieldFollowersRelease; proven	G046
+008e4940	RELOCATION_MATCH	82v82	PASS	grades 1; CCombatAction_Guildmaster_SpeedUpFollowersRelease::CCombatAction_Guildmaster_SpeedUpFollowersRelease; proven	G046
+008e4a60	RELOCATION_MATCH	82v82	PASS	grades 1; CCreatureAction_DragonFireBeamOutOf::CCreatureAction_DragonFireBeamOutOf; proven	G046
+009784a0	RELOCATION_MATCH	82v82	PASS	grades 1; CCombatAction_Guildmaster_HealFollowersInto::CCombatAction_Guildmaster_HealFollowersInto; proven	G046
+00978510	RELOCATION_MATCH	82v82	PASS	grades 1; CCombatAction_Guildmaster_ShieldFollowersInto::CCombatAction_Guildmaster_ShieldFollowersInto; proven	G046
+00978580	RELOCATION_MATCH	82v82	PASS	grades 1; CCombatAction_Guildmaster_SpeedUpFollowersInto::CCombatAction_Guildmaster_SpeedUpFollowersInto; proven	G046
+0091cf40	RELOCATION_MATCH	83v83	PASS	grades 1 (family representative); CAIStateGroup_MinionReactToNoise::OnActivate; proven	G047
+00922540	RELOCATION_MATCH	83v83	PASS	grades 1; CAIStateGroup_Drunk::OnActivate; proven	G047
+009225a0	RELOCATION_MATCH	83v83	PASS	grades 1; CAIStateGroup_Drunk::OnReplace; proven	G047
+00936c10	RELOCATION_MATCH	83v83	PASS	grades 1; CAIStateGroup_MinionReactToCorpse::Cleanup; proven	G047
+0093d7a0	RELOCATION_MATCH	83v83	PASS	grades 1; CAIStateGroup_MeleeCombatNearbyBase::AddStrafeMode; proven	G047
+00958210	RELOCATION_MATCH	83v83	PASS	grades 1; CAIStateGroup_MinionReactToTrespassing::OnActivate; proven	G047
+00958270	RELOCATION_MATCH	83v83	PASS	grades 1; CAIStateGroup_MinionReactToTrespassing::Cleanup; proven	G047
+0096f510	RELOCATION_MATCH	83v83	PASS	grades 1; CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::CleanupLeaf; proven	G047
+00a98ab0	RELOCATION_MATCH	62v62	PASS	grades 1 (family representative); C3DAnimFileRootChunk::CreateNewInstance; proven	G048
+00a9a8c0	RELOCATION_MATCH	62v62	PASS	grades 1; C3DMeshFileRootChunk::CreateNewInstance; proven	G048
+00aa4530	RELOCATION_MATCH	62v62	PASS	grades 1; C3DAnimFileXAllocationSizeChunk::CreateNewInstance; proven	G048
+00aa9670	RELOCATION_MATCH	62v62	PASS	grades 1; C3DMeshFileHelpersChunk::CreateNewInstance; proven	G048
+00aae0b0	RELOCATION_MATCH	62v62	PASS	grades 1; C3DAnimFileHelpersChunk::CreateNewInstance; proven	G048
+00aae400	RELOCATION_MATCH	62v62	PASS	grades 1; C3DAnimFileMovementVectorChunk::CreateNewInstance; proven	G048
+00abfbb0	RELOCATION_MATCH	62v62	PASS	grades 1; C3DMeshFileMaterialListChunk::CreateNewInstance; proven	G048
+00ac03b0	RELOCATION_MATCH	62v62	PASS	grades 1; C3DMeshFileMaterialExtChunk::CreateNewInstance; proven	G048
+00cad4c0	RELOCATION_MATCH	50v50	PASS	grades 2 (family representative); CPosPassThru::GetCapabilities; proven	G049
+00cad500	RELOCATION_MATCH	50v50	PASS	grades 1; CPosPassThru::CheckCapabilities; proven	G049
+00cad540	RELOCATION_MATCH	50v50	PASS	grades 1; CPosPassThru::IsFormatSupported; proven	G049
+00cad580	RELOCATION_MATCH	50v50	PASS	grades 1; CPosPassThru::QueryPreferredFormat; proven	G049
+00cad5c0	RELOCATION_MATCH	50v50	PASS	grades 1; CPosPassThru::SetTimeFormat; proven	G049
+00cad600	RELOCATION_MATCH	50v50	PASS	grades 1; CPosPassThru::GetTimeFormat; proven	G049
+00cad640	RELOCATION_MATCH	50v50	PASS	grades 1; CPosPassThru::IsUsingTimeFormat; proven	G049
+00cad7d0	RELOCATION_MATCH	50v50	PASS	grades 1; CPosPassThru::GetRate; proven	G049
+00d00a90	RELOCATION_MATCH	93v93	PASS	grades 1 (family representative); CQ_BanditCampScript::OnPersist; proven	G050
+00d24660	RELOCATION_MATCH	93v93	PASS	grades 1; CQ_BowerstoneTownLifeIntroScript::OnPersist; proven	G050
+00d8ab10	RELOCATION_MATCH	93v93	PASS	grades 1; CQ_HerosOldHouseScript::OnPersist; proven	G050
+00de4660	RELOCATION_MATCH	93v93	PASS	grades 1; CQ_RansomVictimScript::CVictim::OnPersist; proven	G050
+00e2fea0	RELOCATION_MATCH	93v93	PASS	grades 1; CV_AmbushScamScript::CAS_Buddy::OnPersist; proven	G050
+00e641b0	RELOCATION_MATCH	93v93	PASS	grades 1; CV_ChickenKickingScript::CChickenMaster::OnPersist; proven	G050
+00e8b960	RELOCATION_MATCH	93v93	PASS	grades 1; CV_GhostGrannyNecklaceScript::OnPersist; proven	G050
+00e93c90	RELOCATION_MATCH	93v93	PASS	grades 1; CV_HiddenBootyScript::CM_HiddenBooty::OnPersist; proven	G050
+00e23f00	MATCH	38v38	PASS	grades 1 (family representative); NScript::CPredicate_And::operator() [CPredicate_And<CIsThingAlive, CIsThingAlive >]; proven	G051
+00e7de30	MATCH	38v38	PASS	grades 1; NScript::CPredicate_And::operator() [CPredicate_And<CIsThingAlive, CIsVariableFalse >]; proven	G051
+00ef5b20	MATCH	38v38	PASS	grades 1; NScript::CPredicate_And::operator() [CPredicate_And<CPredicate_And<CIsThingAlive, CIsThingAlive >, CIsThingAlive >]; proven	G051
+00ef6cc0	MATCH	38v38	PASS	grades 1; NScript::CPredicate_And::operator() [CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive, CIsThingAlive >, CIsThingAlive >, CIsThingAlive >]; proven	G051
+00ef6cf0	MATCH	38v38	PASS	grades 1; NScript::CPredicate_And::operator() [CPredicate_And<CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive, CIsThingAlive >, CIsThingAlive >, CIsThingAlive >, CIsThingAlive >]; proven	G051
+00ef6d20	MATCH	38v38	PASS	grades 1; NScript::CPredicate_And::operator() [CPredicate_And<CPredicate_And<CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive, CIsThingAlive >, CIsThingAlive >, CIsThingAlive >, CIsThingAlive >, CIsThingAlive >]; proven	G051
+00ef7a80	MATCH	38v38	PASS	grades 1; NScript::CPredicate_And::operator() [CPredicate_And<CIsThingConscious, CIsThingAlive >]; proven	G051
+00ef86d0	MATCH	38v38	PASS	grades 1; NScript::CPredicate_And::operator() [CPredicate_And<CIsThingConscious, CIsThingConscious >]; proven	G051
+00410460	RELOCATION_MATCH	87v87	PASS	grades 1 (family representative); std::vector::vector [vector<CDisplayModeDesc >]; proven	G052
+00514eb0	SKIP	-v87	-	grades 0; SKIP: element type unproven: a 16-byte-class vector copy constructor (G052 shape, 1-grade-ready) whose users are the 24-byte {vector, vector} element helpers 0x0051BA50/0x0051BB80/0x0051D400/0x0051D630 and the bare CArray-style copy 0x00A749F0 / construct 0x00A74A10 near the nav code; its copy helper 0x00513BB0 is shared only with 0x00515320 (landed as vector<C2DLineF>::operator= on a catalogue label). C2DLineF is plausible but not proven	G052
+0051b4c0	SKIP	-v87	-	grades 0; SKIP: element type unproven: the second vector of the same 24-byte {vector, vector} element as 0x00514EB0 (users 0x0051BA50/0x0051BB80/0x0051D400/0x0051D630 only; copy helper 0x0051AC00); the catalogue's "CMusicSetEntry" / landed "CArray<unsigned long>" guesses disagree with each other and with the 16-byte element	G052
+006e6a30	RELOCATION_MATCH	87v87	PASS	grades 1; std::vector::vector [vector<CScriptConversation::CConversationLine >]; proven	G052
+00a83a30	RELOCATION_MATCH	87v87	PASS	grades 1; std::vector::vector [vector<std::pair<unsigned __int64, std::list<C2DLineF> > >]; proven	G052
+00ae5c60	SKIP	-v87	-	grades 0; SKIP: element type unproven: the only user is the unreferenced copy-construct wrapper 0x00AE69D0 (catalogue "CLandscapeBackgroundLoadTask::`scalar_deleting_destructor'"); copy helper 0x00AE5730 copies 16 plain bytes	G052
+00cbb020	RELOCATION_MATCH	87v87	PASS	grades 1; std::vector::vector [vector<std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > >]; proven	G052
+0042cde0	RELOCATION_MATCH	73v73	PASS	grades 1 (family representative); std::_Rb_tree::erase [map<NUISystem::CComponent*, NUISystem::CComponent*>]; proven	G053
+0058119b	RELOCATION_MATCH	73v73	PASS	grades 1; std::_Rb_tree::erase [map<void*, float>]; proven	G053
+005b2779	RELOCATION_MATCH	73v73	PASS	grades 1; std::_Rb_tree::erase [map<NUISystem::CComponent*, pair<long, long> >]; proven	G053
+005b27d6	RELOCATION_MATCH	73v73	PASS	grades 1; std::_Rb_tree::erase [map<NUISystem::CComponent*, NUISystem::CList*>]; proven	G053
+005bbb34	RELOCATION_MATCH	73v73	PASS	grades 1; std::_Rb_tree::erase [set<EClothingSuitPart>]; proven	G053
+005cc31b	RELOCATION_MATCH	73v73	PASS	grades 1; std::_Rb_tree::erase [map<NUISystem::CComponent*, long>]; proven	G053
+005d8730	RELOCATION_MATCH	73v73	PASS	grades 1; std::_Rb_tree::erase [map<unsigned long, long>]; proven	G053
+0042fc86	SKIP	-v59	-	grades 0 (family representative); SKIP: pointee unidentified (family representative; G054 was solved on 0x0042FD04 instead): a polymorphic T (DeleteData 0x00428AE7 deletes through the virtual destructor) whose only user is the tail-jump wrapper 0x00A0A430 (probably CCountedPointer<T>::reset(T*)); the catalogue's vector<CCharString> is wrong for it (vector is not polymorphic)	G054
+0042fd04	RELOCATION_MATCH	59v59	PASS	grades 2; CCountedPointer::Reset [CCountedPointer<CIEngine >]; proven	G054
+0042fd6f	RELOCATION_MATCH	59v59	PASS	grades 1; CCountedPointer::Reset [CCountedPointer<CASoundBank >]; probable	G054
+005791e5	SKIP	-v59	-	grades 0; SKIP: pointee unidentified: a 16-byte non-polymorphic object (ctor 0x0042BE50 catalogued "CRumbleDef::CRumbleDef", dtor 0x0053FD00 catalogued "CAction::~CAction") held in function-local pointers of the inventory page builders (CTCInventoryExperience::ConstructCategoryStrength 0x00574885, ...StrengthPC 0x005759BF, CTCInventory::AssignThingPC 0x00584B86, CTCInventoryAbilities::ConstructPCMagicList 0x005F1B10)	G054
+005c1946	RELOCATION_MATCH	59v59	PASS	grades 1; CCountedPointer::Reset [CCountedPointer<NInventory::CPerItemData >]; proven	G054
+005c1e91	RELOCATION_MATCH	59v59	PASS	grades 1; CCountedPointer::Reset [CCountedPointer<std::vector<CCharString> >]; proven	G054
+005c29ce	RELOCATION_MATCH	59v59	PASS	grades 1; CCountedPointer::Reset [CCountedPointer<std::vector<NInventory::CItem> >]; proven	G054
+00449130	RELOCATION_MATCH	240v240	PASS	grades 3 (family representative); std::vector::_M_insert_overflow [vector<pair<EGameAction, CCountedPointer<const CInputTypeBase> > >]; proven	G055
+006baa90	RELOCATION_MATCH	240v240	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<unsigned long, CCountedPointer<CFaction> > >]; proven	G055
+008294f0	RELOCATION_MATCH	240v240	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<long, CCountedPointer<CRegionConnectionNode> > >]; proven	G055
+00a139b0	RELOCATION_MATCH	240v240	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<long, CCountedPointer<CContainmentVolume> > >]; proven	G055
+00a838f0	RELOCATION_MATCH	240v240	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<long, CCountedPointer<CNavConnectorNode> > >]; proven	G055
+00aea440	RELOCATION_MATCH	240v240	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> > >]; proven	G055
+00b8f840	RELOCATION_MATCH	240v240	PASS	grades 1; std::vector::_M_insert_overflow [vector<pair<unsigned long, CCountedPointer<CVertexBufferWin32> > >]; proven	G055
+0044c4ab	RELOCATION_MATCH	31v31	PASS	grades 1 (family representative); CCombatAbilityStrafingData::CCombatAbilityStrafingData; proven	G056
+004d369b	RELOCATION_MATCH	28v28	PASS	grades 1; CTCCupboard::CTCCupboard; proven	G056
+004d3a73	RELOCATION_MATCH	28v28	PASS	grades 1; CTCCameraPointFixedPoint::CTCCameraPointFixedPoint; proven	G056
+004d42b2	RELOCATION_MATCH	28v28	PASS	grades 1; CTCDRegionEntrance::CTCDRegionEntrance; proven	G056
+004d45c7	RELOCATION_MATCH	28v28	PASS	grades 1; CTCCreatureHive::CTCCreatureHive; proven	G056
+004d656f	RELOCATION_MATCH	28v28	PASS	grades 1; CTCFireRangedWeaponOnLeavingStateGroup::CTCFireRangedWeaponOnLeavingStateGroup; proven	G056
+004dca62	RELOCATION_MATCH	31v31	PASS	grades 1; NThingShot::CTCShotDefinitionNymphFun::CTCShotDefinitionNymphFun; proven	G056
+00452cdd	RELOCATION_MATCH	112v112	PASS	grades 1 (family representative); CAugmentationDef::Transfer; proven	G057
+00455588	RELOCATION_MATCH	112v112	PASS	grades 1; CInventoryCategoryDef::Transfer; proven	G057
+0046c6f0	RELOCATION_MATCH	112v112	PASS	grades 1; CCombatSequenceDef::Transfer; proven	G057
+004df264	RELOCATION_MATCH	112v112	PASS	grades 1; CSummonDef::Transfer; proven	G057
+004e3842	RELOCATION_MATCH	112v112	PASS	grades 1; CMazeBattleDef::Transfer; proven	G057
+004e3ae0	RELOCATION_MATCH	112v112	PASS	grades 1; CScorpionKingBattleDef::Transfer; proven	G057
+004e3b82	RELOCATION_MATCH	112v112	PASS	grades 1; CTrollBattleDef::Transfer; proven	G057
+004537a5	RELOCATION_MATCH	63v63	PASS	grades 1 (family representative); CPhysicsDef::operator=; proven	G058
+00461ed8	RELOCATION_MATCH	63v63	PASS	grades 1; CLightningDef::operator=; proven	G058
+004e01de	RELOCATION_MATCH	63v63	PASS	grades 1; CDoorDef::operator=; proven	G058
+004e02f2	RELOCATION_MATCH	63v63	PASS	grades 1; CSpotLightDef::operator=; proven	G058
+004e070c	RELOCATION_MATCH	63v63	PASS	grades 1; CStockItemDef::operator=; proven	G058
+004e0a6c	RELOCATION_MATCH	63v63	PASS	grades 1; CShipDef::operator=; proven	G058
+004e10c6	RELOCATION_MATCH	63v63	PASS	grades 1; CTavernGameCoinBaseDef::operator=; proven	G058
+00454088	RELOCATION_MATCH	75v75	PASS	grades 1 (family representative); CAugmentationDef::operator=; proven	G059
+004542d4	RELOCATION_MATCH	75v75	PASS	grades 1; CExplosiveTrailDef::operator=; proven	G059
+0045bd42	RELOCATION_MATCH	75v75	PASS	grades 1; CInventoryCategoryDef::operator=; proven	G059
+004e17d2	RELOCATION_MATCH	75v75	PASS	grades 1; CSummonDef::operator=; proven	G059
+004e4583	RELOCATION_MATCH	75v75	PASS	grades 1; CMazeBattleDef::operator=; proven	G059
+004e4774	RELOCATION_MATCH	75v75	PASS	grades 1; CScorpionKingBattleDef::operator=; proven	G059
+004e47e8	RELOCATION_MATCH	75v75	PASS	grades 1; CTrollBattleDef::operator=; proven	G059
+00456263	RELOCATION_MATCH	225v225	PASS	grades 2 (family representative); std::vector::operator= [vector<CTextureReplacementDef::CEntry >]; proven	G060
+0045d183	RELOCATION_MATCH	225v225	PASS	grades 1; std::vector::operator= [vector<std::pair<unsigned long, CDefString> >]; proven	G060
+00460c41	RELOCATION_MATCH	225v225	PASS	grades 1; std::vector::operator= [vector<CAtmosBankEntry >]; proven	G060
+004611f5	RELOCATION_MATCH	225v225	PASS	grades 1; std::vector::operator= [vector<CObjectFamilyEntry >]; proven	G060
+00463169	RELOCATION_MATCH	225v225	PASS	grades 1; std::vector::operator= [vector<std::pair<EReactionSpeechType, long> >]; proven	G060
+0046eabd	RELOCATION_MATCH	225v225	PASS	grades 1; std::vector::operator= [vector<C2DVector >]; proven	G060
+004f9508	RELOCATION_MATCH	225v225	PASS	grades 1; std::vector::operator= [vector<std::pair<EAttackHistoryType, EDamageAttribute> >]; proven	G060
+00457a0d	RELOCATION_MATCH	90v90	PASS	grades 1 (family representative); CSpecialAbilitiesGhostSwordDef::Transfer; proven	G061
+00458911	RELOCATION_MATCH	90v90	PASS	grades 1; CLightningDef::Transfer; proven	G061
+004ddb76	RELOCATION_MATCH	90v90	PASS	grades 1; CDoorDef::Transfer; proven	G061
+004dde50	RELOCATION_MATCH	90v90	PASS	grades 1; CSpotLightDef::Transfer; proven	G061
+004de4b2	RELOCATION_MATCH	90v90	PASS	grades 1; CStockItemDef::Transfer; proven	G061
+004de782	RELOCATION_MATCH	90v90	PASS	grades 1; CShipDef::Transfer; proven	G061
+004dec2c	RELOCATION_MATCH	90v90	PASS	grades 1; CTavernGameCoinBaseDef::Transfer; proven	G061
+0045c64d	RELOCATION_MATCH	207v207	PASS	grades 1 (family representative); std::vector::operator= [vector<ECreatureGeneratorGenerateType >]; proven	G062
+0046078c	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::operator= [vector<CDefString >]; proven	G062
+00461da1	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::operator= [vector<EActionRegisteredType >]; proven	G062
+004624c6	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::operator= [vector<EWeaponClass >]; proven	G062
+00471e44	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::operator= [vector<EOpinionAttitudeType >]; proven	G062
+004e201f	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::operator= [vector<EVillageTaskType >]; proven	G062
+004e24ba	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::operator= [vector<CDefIndex >]; proven	G062
+0045c71c	RELOCATION_MATCH	63v63	PASS	grades 2 (family representative); std::vector::_M_allocate_and_copy [vector<ECreatureGeneratorGenerateType >]; proven	G063
+0046085b	RELOCATION_MATCH	63v63	PASS	grades 1; std::vector::_M_allocate_and_copy [vector<CDefString >]; proven	G063
+00461e70	RELOCATION_MATCH	63v63	PASS	grades 1; std::vector::_M_allocate_and_copy [vector<EActionRegisteredType >]; proven	G063
+004625a3	RELOCATION_MATCH	63v63	PASS	grades 1; std::vector::_M_allocate_and_copy [vector<EWeaponClass >]; proven	G063
+00471f13	RELOCATION_MATCH	63v63	PASS	grades 1; std::vector::_M_allocate_and_copy [vector<EOpinionAttitudeType >]; proven	G063
+004e20ee	RELOCATION_MATCH	63v63	PASS	grades 1; std::vector::_M_allocate_and_copy [vector<EVillageTaskType >]; proven	G063
+004e2589	RELOCATION_MATCH	63v63	PASS	grades 1; std::vector::_M_allocate_and_copy [vector<CDefIndex >]; proven	G063
+00464100	RELOCATION_MATCH	267v267	PASS	grades 2 (family representative); std::vector::_M_fill_insert [vector<EWeaponClass >]; proven	G064
+0046594c	RELOCATION_MATCH	267v267	PASS	grades 2; std::vector::_M_fill_insert [vector<CDefString >]; proven	G064
+004698be	RELOCATION_MATCH	267v267	PASS	grades 2; std::vector::_M_fill_insert [vector<ECreatureGeneratorGenerateType >]; proven	G064
+0046cbf1	RELOCATION_MATCH	267v267	PASS	grades 2; std::vector::_M_fill_insert [vector<EActionRegisteredType >]; proven	G064
+00472220	RELOCATION_MATCH	267v267	PASS	grades 2; std::vector::_M_fill_insert [vector<EOpinionAttitudeType >]; proven	G064
+004e8772	RELOCATION_MATCH	267v267	PASS	grades 2; std::vector::_M_fill_insert [vector<EVillageTaskType >]; proven	G064
+004e8af4	RELOCATION_MATCH	267v267	PASS	grades 2; std::vector::_M_fill_insert [vector<CDefIndex >]; proven	G064
+00464226	RELOCATION_MATCH	207v207	PASS	grades 1 (family representative); std::vector::_M_insert_overflow [vector<EWeaponClass >]; proven	G065
+00465a72	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::_M_insert_overflow [vector<CDefString >]; proven	G065
+004699e4	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::_M_insert_overflow [vector<ECreatureGeneratorGenerateType >]; proven	G065
+0046cd17	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::_M_insert_overflow [vector<EActionRegisteredType >]; proven	G065
+00472346	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::_M_insert_overflow [vector<EOpinionAttitudeType >]; proven	G065
+004e8898	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::_M_insert_overflow [vector<EVillageTaskType >]; proven	G065
+004e8c1a	RELOCATION_MATCH	207v207	PASS	grades 1; std::vector::_M_insert_overflow [vector<CDefIndex >]; proven	G065
+00464b9a	RELOCATION_MATCH	74v74	PASS	grades 1 (family representative); CPersistContext::Transfer; proven	G066
+0046fe40	RELOCATION_MATCH	74v74	PASS	grades 1; CPersistContext::Transfer; proven	G066
+00470301	RELOCATION_MATCH	74v74	PASS	grades 1; CPersistContext::Transfer; proven	G066
+0047367a	RELOCATION_MATCH	74v74	PASS	grades 1; CPersistContext::Transfer; proven	G066
+004e7822	RELOCATION_MATCH	74v74	PASS	grades 1; CPersistContext::Transfer; proven	G066
+004e788a	RELOCATION_MATCH	74v74	PASS	grades 1; CPersistContext::Transfer; proven	G066
+004e78f2	RELOCATION_MATCH	74v74	PASS	grades 1; CPersistContext::Transfer; proven	G066
+00476672	RELOCATION_MATCH	80v80	PASS	grades 1 (family representative); std::vector::erase [vector<CAbilityButtonGuiDef >]; proven	G067
+00476b17	RELOCATION_MATCH	80v80	PASS	grades 1; std::vector::erase [vector<CLensFlareElementDef >]; proven	G067
+004795e0	RELOCATION_MATCH	80v80	PASS	grades 1; std::vector::erase [vector<COpinionDeedReactionDef >]; proven	G067
+00479a0e	RELOCATION_MATCH	80v80	PASS	grades 1; std::vector::erase [vector<CEngineLocalDetailLayerDef >]; proven	G067
+0047a03c	RELOCATION_MATCH	80v80	PASS	grades 1; std::vector::erase [vector<CAppearanceModifierScalingDef >]; proven	G067
+0047a452	RELOCATION_MATCH	80v80	PASS	grades 1; std::vector::erase [vector<CAbilityTrackDef >]; proven	G067
+004edf8c	RELOCATION_MATCH	80v80	PASS	grades 1; std::vector::erase [vector<CMultiStaticMeshEntryDef >]; proven	G067
+0047ba50	RELOCATION_MATCH	103v103	PASS	grades 1 (family representative); std::vector::vector [vector<CHeroLogBook::CQuestObjectiveDesc >]; proven	G068
+0047bb90	RELOCATION_MATCH	103v103	PASS	grades 1; std::vector::vector [vector<CHeroLogBook::CHeroLogBookEntry >]; proven	G068
+00675230	RELOCATION_MATCH	104v104	PASS	grades 1; std::vector::vector [vector<CRandomAppearanceMorph::CBodyPartMesh >]; proven	G068
+006b58f0	RELOCATION_MATCH	103v103	PASS	grades 1; std::vector::vector [vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight >]; proven	G068
+0076fb00	RELOCATION_MATCH	104v104	PASS	grades 1; std::vector::vector [vector<std::pair<C3DVector, C3DVector> >]; proven	G068
+00a3cdd0	RELOCATION_MATCH	104v104	PASS	grades 1; std::vector::vector [vector<C3DAnimationStateAlpha >]; proven	G068
+00a49c60	RELOCATION_MATCH	103v103	PASS	grades 1; std::vector::vector [vector<CLipSyncPhoneme >]; proven	G068
+0047c8c0	RELOCATION_MATCH	518v518	PASS	grades 1 (family representative); std::_Rb_tree::insert_unique [_Rb_tree<CHeroLogBook::CHeroLogBookEntry::ECategory, pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, std::vector<CHeroLogBook::CHeroLogBookEntry> >, ...>]; proven	G069
+005e93e0	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<long, pair<long const, unsigned long >, ...>]; proven	G069
+00617520	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<CHeroLogBook::CHeroLogBookEntry::ECategory, pair<CHeroLogBook::CHeroLogBookEntry::ECategory const, NUISystem::CComponent* >, ...>]; proven	G069
+00617d50	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<long, pair<long const, std::pair<long, long> >, ...>]; probable	G069
+0076a700	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<EObjectAugmentationType, pair<EObjectAugmentationType const, CObjectAugmentationSoundSet >, ...>]; proven	G069
+00b975e0	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<long, pair<long const, CCountedPointer<CEngineSceneMap> >, ...>]; proven	G069
+00b985d0	RELOCATION_MATCH	518v518	PASS	grades 1; std::_Rb_tree::insert_unique [_Rb_tree<long, pair<long const, std::map<long, CCountedPointer<CEngineSceneMap> > >, ...>]; proven	G069
+0048b160	RELOCATION_MATCH	177v177	PASS	grades 1 (family representative); CThingCompare_Nearest::operator()<T> [T = CThingVillage]; proven	G070
+00782560	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThingCreatureBase]; proven	G070
+00914130	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThingDeadCreature]; proven	G070
+009141f0	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThingMarker]; proven	G070
+0092be70	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThingBuilding]; proven	G070
+0093c9a0	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = CThingTrackNode]; proven	G070
+0095fda0	RELOCATION_MATCH	177v177	PASS	grades 1; CThingCompare_Nearest::operator()<T> [T = const CThing]; proven	G070
+004937cb	RELOCATION_MATCH	43v43	PASS	grades 2 (family representative); std::list::erase [list<CMessageEvent >]; proven	G071
+006550e2	RELOCATION_MATCH	43v43	PASS	grades 1; std::list::erase [list<CIntelligentPointer<const CThing> >]; proven	G071
+0065ddb0	RELOCATION_MATCH	43v43	PASS	grades 1; std::list::erase [list<CIntelligentPointer<CThingBuilding> >]; proven	G071
+0065de1d	RELOCATION_MATCH	43v43	PASS	grades 1; std::list::erase [list<CIntelligentPointer<CThingAICreature> >]; proven	G071
+0065dee4	RELOCATION_MATCH	43v43	PASS	grades 1; std::list::erase [list<CIntelligentPointer<CThingObject> >]; proven	G071
+0065df69	RELOCATION_MATCH	43v43	PASS	grades 1; std::list::erase [list<CIntelligentPointer<CThingTrackNode> >]; proven	G071
+0065e073	RELOCATION_MATCH	43v43	PASS	grades 1; std::list::erase [list<CIntelligentPointer<CThingMarker> >]; proven	G071
+004940ac	RELOCATION_MATCH	55v55	PASS	grades 1 (family representative); std::vector::erase [vector<CSubtitleRenderer::CEmbeddedHighlight >]; proven	G072
+004e1b5d	RELOCATION_MATCH	55v55	PASS	grades 1; std::vector::erase [vector<std::pair<CCharString, CTCBase::CRegisteredTCInfo> >]; proven	G072
+0053cd69	RELOCATION_MATCH	55v55	PASS	grades 1; std::vector::erase [vector<std::map<unsigned long, NUISystem::CUIState> >]; proven	G072
+005c1ecc	RELOCATION_MATCH	55v55	PASS	grades 1; std::vector::erase [vector<NInventory::CItem >]; proven	G072
+00656202	RELOCATION_MATCH	55v55	PASS	grades 1; std::vector::erase [vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >]; proven	G072
+00656837	RELOCATION_MATCH	55v55	PASS	grades 1; std::vector::erase [vector<std::pair<C3DVector, CCharString> >]; proven	G072
+00cd3228	RELOCATION_MATCH	55v55	PASS	grades 1; std::vector::erase [vector<CScriptGameResourceObjectScriptedThingBase >]; proven	G072
+004a9cf0	RELOCATION_MATCH	58v58	PASS	grades 1 (family representative); std::_List_base::clear [_List_base<CMessageEvent, allocator<CMessageEvent> >]; proven	G073
+00824580	RELOCATION_MATCH	58v58	PASS	grades 1; std::_List_base::clear [_List_base<CScriptedMapBrush, allocator<CScriptedMapBrush> >]; proven	G073
+00834f90	RELOCATION_MATCH	58v58	PASS	grades 1; std::_List_base::clear [_List_base<CEnginePrimitiveHandle, allocator<CEnginePrimitiveHandle> >]; proven	G073
+00882b80	RELOCATION_MATCH	58v58	PASS	grades 1; std::_List_base::clear [_List_base<NScreenEffect::CScreenEffectPriorityStack::CRadialBlurEntry, allocator<NScreenEffect::CScreenEffectPriorityStack::CRadialBlurEntry> >]; proven	G073
+00882c00	RELOCATION_MATCH	58v58	PASS	grades 1; std::_List_base::clear [_List_base<NScreenEffect::CScreenEffectPriorityStack::CDisplacementMonochromeEffectColourEntry, allocator<NScreenEffect::CScreenEffectPriorityStack::CDisplacementMonochromeEffectColourEntry> >]; proven	G073
+00b0f630	RELOCATION_MATCH	58v58	PASS	grades 1; std::_List_base::clear [_List_base<CIntelligentPointer<NParticleEngine::CParticleEmitter>, allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>> >]; proven	G073
+00cd4df0	RELOCATION_MATCH	58v58	PASS	grades 1; std::_List_base::clear [_List_base<CScriptThing, allocator<CScriptThing> >]; proven	G073
