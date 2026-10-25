@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00453659	RELOCATION_MATCH	38v38	PASS	grades=1; STLport vector<long>::vector<int>(int,int,alloc): integral dispatch to _M_initialize_aux; frame-pointer size TU
+004abd90	RELOCATION_MATCH	75v75	PASS	grades=2; __destroy_aux<CTestQuest*> (/Gr): six CCharString dtors per 28-byte record; label was vector<pair<CCharString>>::_Destroy
+004d0420	RELOCATION_MATCH	58v58	PASS	grades=1; __unguarded_insertion_sort_aux over pair<float,CCharString> (subtitle times), callee 0x4CFCF0
+0051f040	RELOCATION_MATCH	38v38	PASS	grades=1; CThingManager::GetNameForThing_OnlyCalledFromTCHasName(uint64): NPCNameMap._M_find 0x527E00 + CWideString copy; label was vector<bool>::push_back
+00568ce0	RELOCATION_MATCH	42v42	PASS	grades=1; STLport basic_string<char> copy ctor (network module, namespace std as landed 0x567D00)
+005e0f60	RELOCATION_MATCH	46v46	PASS	grades=1; __unguarded_insertion_sort_aux<CCharString*, less<CCharString>>, callee 0x5E0710
+00639810	RELOCATION_MATCH	85v85	PASS	grades=3; vector<CThingMapInfo>::resize(n): user zero ctor gives retail store order; exact one-arg leaf
+0066e6d0	RELOCATION_MATCH	85v85	PASS	grades=1; vector<CRegionMinimap::RegionMinimapCellData>::resize(n): POD value-init
+006c9d50	RELOCATION_MATCH	85v85	PASS	grades=1; vector<pair<long,COpinionDeed*>>::resize(n)
+006dd4a0	RELOCATION_MATCH	91v91	PASS	grades=3; vector<CAttackHistoryCombo>::resize(n): real vector dtor + same-TU noinline erase/_M_fill_insert stand-ins (incl. 1 dtor probe)
+006fbd10	RELOCATION_MATCH	71v71	PASS	grades=1; __unguarded_insertion_sort_aux over pair<ulong,CSmallVector<CEvent,32>>, callee 0x6FB960
+0076ae90	RELOCATION_MATCH	41v41	PASS	grades=1; _Destroy<ParticleAndEndPoints*> (/Gr): two CCharString dtors per 20-byte record
+0077ea10	RELOCATION_MATCH	69v69	PASS	grades=2; __unguarded_insertion_sort_aux over pair<CCharString,C3DVector>: memberwise C3DVector copy ctor
+007817b0	RELOCATION_MATCH	51v51	PASS	grades=1; __destroy_aux<NFire::CFirePoint*> (/Gr): two intelligent pointers + helper name
+00786410	RELOCATION_MATCH	91v91	PASS	grades=1; vector<pair<long,float>>::resize(n) (element inferred from shared erase COMDAT 0x6B5AA0)
+007d9fc0	RELOCATION_MATCH	77v77	PASS	grades=1; vector<KnickKnack>::resize(n): empty ctors
+0081df50	RELOCATION_MATCH	83v83	PASS	grades=1; vector<CSkeletalMorphs::CEntry>::resize(n): CDefString -1
+0086dcb0	RELOCATION_MATCH	99v99	PASS	grades=1; vector<pair<long,CRandomAppearanceMorph::CSkeletalMorph>>::resize(n)
+0086ea80	RELOCATION_MATCH	95v95	PASS	grades=3; vector<CVectorMap<ulong,CTextureMorph,...>>::resize(n): real vector dtor + same-TU stand-ins (incl. 1 probe)
+008883c0	RELOCATION_MATCH	70v70	PASS	grades=4; CEnvironmentThemePriorityStack(long): Ents.resize(count); BaseWeightLocked in ctor body; no-dtor entry model (dtor+RTM and dtor+QFE probes both re-test)
+0098da90	RELOCATION_MATCH	68v68	PASS	grades=1; vector<C4DVector>::resize(n, const C4DVector&) out of line
+0099ca40	RELOCATION_MATCH	44v44	PASS	grades=1; STLport basic_string<unsigned short>(const unsigned short*, n, alloc) -> _M_range_initialize 0x99C670
+0099cc40	RELOCATION_MATCH	51v51	PASS	grades=1; CWideStringData(const wchar_t*, long): inline basic_string(s,n) + NoRefs=1; label was vector<bool>
+009b2ac0	RELOCATION_MATCH	111v111	PASS	grades=1; __unguarded_insertion_sort_aux<CWideString*>: __unguarded_linear_insert defined in TU (inlined)
+009b5a20	RELOCATION_MATCH	57v57	PASS	grades=1; __unguarded_insertion_sort_aux over pair<CCharString,long>, callee 0x9B47F0
+00a01820	RELOCATION_MATCH	107v107	PASS	grades=1; vector<CGraphicInfo>::resize(n) wrapper over out-of-line resize(n,x) 0xA01790
+00a0c830	RELOCATION_MATCH	51v51	PASS	grades=1; CCamera::SetAngleXZ(float): rotates a local (0,0,1) about RHSet.Forward and drops it
+00a21f50	RELOCATION_MATCH	52v52	PASS	grades=1; CSBCCorridor::CSBCCorridor(): vtable 0x129CCB0, STLport list sentinel via malloc, end point zero
+00a3d570	RELOCATION_MATCH	55v55	PASS	grades=2; vector<C3DAnimationStateAlpha>::resize(n): inline virtual dtor + same-TU resize(n,x) stand-in
+00a407c0	RELOCATION_MATCH	57v57	PASS	grades=1; __unguarded_insertion_sort_aux over pair<CCharString,CSoundBankLH*>, callee 0xA40370
+00a40ff0	RELOCATION_MATCH	69v69	PASS	grades=1; __unguarded_insertion_sort_aux over pair<pair<CCharString,CCharString>,CSoundBankLH*>, callee 0xA40820
+00a43a00	MATCH	50v50	PASS	grades=2; __destroy_aux<NGameText::CDataBankTextEntry*> (/Gr): CIVCountedPointer release via local copy
+00a43ff0	RELOCATION_MATCH	39v39	PASS	grades=3; vector<CLipSyncDataBankEntry>::resize(n): real CIVCountedPointer dtor + same-TU resize(n,x) stand-in (incl. 1 dtor probe)
+00a710f0	RELOCATION_MATCH	83v83	PASS	grades=1; __unguarded_insertion_sort_aux over pair<CCharString,C3DMeshVolume>, callee 0xA70540
+00ad62e0	RELOCATION_MATCH	65v65	PASS	grades=1; __uninitialized_fill_n<CUniqueVertex*, uint> (fastcall): implicit copy = byte + two set copies 0xAD3A10
+00ad7350	RELOCATION_MATCH	47v47	PASS	grades=1; vector<COptimisedFace>::resize(n): chained Edges = -1 stores right to left
+00af1d90	MATCH	50v50	PASS	grades=2; __destroy_aux<NParticleEngine::CParticleEmitterInfo*> (/Gr): CIVCountedPointer release via local copy
+00b6cc50	RELOCATION_MATCH	56v56	PASS	grades=2; vector<CLandscapeTheme>::resize(n): WaterType assigned in ctor body
+00cdd0a0	DIFFER	28v27	-	grades=4; PARKED CPersistContext_TransferableVector<bool>::Resize: bool() temp at [esp+3] vs retail [esp]; tried resize(n), resize(n,T()), named T, __default_constructed
+00f38640	RELOCATION_MATCH	47v47	PASS	grades=1; vector<CGPUScratchBufferTextureManager::CResourceEntry>::resize(n)
