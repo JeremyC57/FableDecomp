@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0049e5e0	RELOCATION_MATCH	61v61	PASS	CWorld::PrepareAtmosBanksForLoadedRegion (protected; PDB IAE); PeekWorldMap slot 13 twice; grades 2
+0049ea10	RELOCATION_MATCH	46v46	PASS	CWorld::SetMiniMapEnabled; IsMiniMapActive 0x437860; grades 1
+006292d0	RELOCATION_MATCH	91v91	PASS	CWorld::EASetPauseMode /GS; engine/CWorld.h donor; SetAsPaused(paused == true); grades 3
+00629330	RELOCATION_MATCH	90v90	PASS	CWorld::EASetSlowMotion /GS; engine/CWorld.h donor; bool read into the dead event slot; grades 3
+004fc050	MATCH	47v47	PASS	CWorldMap::IsMapLoaded slot 10; grades 1
+004fc080	MATCH	64v64	PASS	CWorldMap::GetMapNumberAt(C2DCoordI) slot 17; grades 1
+004fc2a0	MATCH	45v45	PASS	ConvertWorldMapCoordsToLocalCoords(long, C3DVector); grades 1
+004fc2d0	RELOCATION_MATCH	89v89	PASS	ConvertWorldMapCoordsToLocalCoords(C3DVector) via GetMapNumberAt; grades 1
+004fc330	MATCH	40v40	PASS	ConvertWorldMapCoordsToLocalCoords(long, C2DVector); grades 1
+004fc360	RELOCATION_MATCH	83v83	PASS	ConvertWorldMapCoordsToLocalCoords(C2DVector); grades 1
+004fc3c0	MATCH	43v43	PASS	ConvertWorldMapCoordsToLocalCoords(long, C2DCoordI); grades 1
+004fc3f0	MATCH	77v77	PASS	ConvertWorldMapCoordsToLocalCoords(C2DCoordI); grades 1
+004fc470	MATCH	40v40	PASS	ConvertLocalCoordsToWorldMapCoords(long, C2DVector); grades 1
+004fc4a0	MATCH	45v45	PASS	ConvertLocalCoordsToWorldMapCoords(long, C3DVector); grades 1
+004fc560	MATCH	65v65	PASS	ConvertLocalMapAreaToWorldArea; area ref first, memberwise copy-ctor named local; grades 3
+004fc5b0	MATCH	66v66	PASS	IsPosInMap(C2DCoordI); grades 1
+004fc760	DIFFER	87v85	-	DrawGetMyPlayerMapNumber; lane gap: lea+cmp byte [reg],0 materialisation; differ/; grades 4
+004fc930	RELOCATION_MATCH	56v56	PASS	LoadScriptBrushesFromFile slot 29; by-value CCountedPointer released inline; grades 1
+004fc970	RELOCATION_MATCH	77v77	PASS	SetRegionsAsConnectedInGraph; 0x4378C0 is UpdateMiniMapMarkers(bool); grades 1
+004fda60	RELOCATION_MATCH	65v65	PASS	SaveToFile slot 4; CCharString local; grades 1
+004ff440	RELOCATION_MATCH	75v75	PASS	PostLoadTopology slot 7; *(begin()+n) operator[] fixes SIB order; grades 2
+004ff8b0	RELOCATION_MATCH	71v71	PASS	RemoveLevel slot 5; record reference first, Used=false last; grades 1
+00507610	RELOCATION_MATCH	54v54	PASS	DeleteAllRegions slot 2; _STL::vector<CRegion> clear()+resize(1); grades 1
+0051ce60	MATCH	45v45	PASS	DrawConvertWorldMapCoordsToLocalCoords (CIDrawWorldMap slot 6); grades 1
+0063a910	RELOCATION_MATCH	96v96	PASS	SetGroundSizeZAtBlock; grades 1
+0063ae70	RELOCATION_MATCH	95v95	PASS	GetStrongestEngineThemeAtBlock; grades 1
+006e8460	RELOCATION_MATCH	51v51	PASS	relabel: CDefendingCombatantInfo::CCombatRing::GetProngSeparationHalfAngle; grades 2
+0082a1d0	RELOCATION_MATCH	49v49	PASS	relabel: CMiniMapDisplay::ClearPrimitiveHandles; __fastcall SGI for_each 0x43F360; grades 1
+00a3f900	RELOCATION_MATCH	67v67	PASS	relabel: CGameMapInterface::GetFlagsAt slot 1 (descriptive); grades 1
+00a6c560	MATCH	23v23	PASS	relabel: CPhysicsMesh::GetNoTriangles; grades 1
+00bbd600	MATCH	34v34	PASS	relabel: CEngineInternalPrimitiveParticleGroup::ClearChildIterator; grades 1
+00bbd630	MATCH	38v38	PASS	relabel: CEngineInternalPrimitiveParticleGroup::SetChildIterator (STLport U iterator leaf); grades 2
+00c0dd60	RELOCATION_MATCH	72v72	PASS	relabel: libpk CString::Append(double) /GS (descriptive); grades 1
+00c1e9c0	RELOCATION_MATCH	38v38	PASS	relabel: CSequenceClient00c1e9f0::GetSequencePhase (descriptive); grades 1
+00c216d0	RELOCATION_MATCH	35v35	PASS	relabel: libpk CSoundEvent::YieldPhysicalPlayer; same-TU CheckState stand-in (descriptive); grades 1
+00f35b10	RELOCATION_MATCH	20v20	PASS	relabel: CEntityScriptBase::SetPredicate; GetParentScript slot 3; grades 1
+0070b930	RELOCATION_MATCH	89v89	PASS	relabel: CAnimateThing::CCompleteAnimation::~CCompleteAnimation; grades 1
+007573c0	RELOCATION_MATCH	89v89	PASS	CTCWound::CWound::Kill (label right; class key V fixed for the leaf); grades 2
+00b22ee0	RELOCATION_MATCH	69v69	PASS	relabel: NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::~CSplineRandomOffsetData; grades 1
+00b23110	RELOCATION_MATCH	89v89	PASS	relabel: CSplineRandomOffsetData scalar deleting dtor (PDB ??_G, non-virtual); grades 1

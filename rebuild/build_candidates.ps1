@@ -314037,6 +314037,282 @@ $catalog = @(
         TestSource = '00/a0/CWStringParser_ReadAsFloat_00a0d140_test.cpp'
         PassPattern = '00a0d140_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049e5e0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_PrepareAtmosBanksForLoadedRegion_0049e5e0.cpp'
+        TestSource = '00/49/CWorld_PrepareAtmosBanksForLoadedRegion_0049e5e0_test.cpp'
+        PassPattern = '0049e5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049ea10'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_SetMiniMapEnabled_0049ea10.cpp'
+        TestSource = '00/49/CWorld_SetMiniMapEnabled_0049ea10_test.cpp'
+        PassPattern = '0049ea10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc050'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsMapLoaded_004fc050.cpp'
+        TestSource = '00/4f/CWorldMap_IsMapLoaded_004fc050_test.cpp'
+        PassPattern = '004fc050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc080'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetMapNumberAt_004fc080.cpp'
+        TestSource = '00/4f/CWorldMap_GetMapNumberAt_004fc080_test.cpp'
+        PassPattern = '004fc080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc2a0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc2a0.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc2a0_test.cpp'
+        PassPattern = '004fc2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc2d0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc2d0.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc2d0_test.cpp'
+        PassPattern = '004fc2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc330'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc330.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc330_test.cpp'
+        PassPattern = '004fc330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc360'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc360.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc360_test.cpp'
+        PassPattern = '004fc360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc3c0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc3c0.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc3c0_test.cpp'
+        PassPattern = '004fc3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc3f0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc3f0.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertWorldMapCoordsToLocalCoords_004fc3f0_test.cpp'
+        PassPattern = '004fc3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc470'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertLocalCoordsToWorldMapCoords_004fc470.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertLocalCoordsToWorldMapCoords_004fc470_test.cpp'
+        PassPattern = '004fc470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc4a0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertLocalCoordsToWorldMapCoords_004fc4a0.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertLocalCoordsToWorldMapCoords_004fc4a0_test.cpp'
+        PassPattern = '004fc4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc560'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ConvertLocalMapAreaToWorldArea_004fc560.cpp'
+        TestSource = '00/4f/CWorldMap_ConvertLocalMapAreaToWorldArea_004fc560_test.cpp'
+        PassPattern = '004fc560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc5b0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsPosInMap_004fc5b0.cpp'
+        TestSource = '00/4f/CWorldMap_IsPosInMap_004fc5b0_test.cpp'
+        PassPattern = '004fc5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc930'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_LoadScriptBrushesFromFile_004fc930.cpp'
+        TestSource = '00/4f/CWorldMap_LoadScriptBrushesFromFile_004fc930_test.cpp'
+        PassPattern = '004fc930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc970'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_SetRegionsAsConnectedInGraph_004fc970.cpp'
+        TestSource = '00/4f/CWorldMap_SetRegionsAsConnectedInGraph_004fc970_test.cpp'
+        PassPattern = '004fc970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fda60'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_SaveToFile_004fda60.cpp'
+        TestSource = '00/4f/CWorldMap_SaveToFile_004fda60_test.cpp'
+        PassPattern = '004fda60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ff440'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_PostLoadTopology_004ff440.cpp'
+        TestSource = '00/4f/CWorldMap_PostLoadTopology_004ff440_test.cpp'
+        PassPattern = '004ff440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ff8b0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_RemoveLevel_004ff8b0.cpp'
+        TestSource = '00/4f/CWorldMap_RemoveLevel_004ff8b0_test.cpp'
+        PassPattern = '004ff8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00507610'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_DeleteAllRegions_00507610.cpp'
+        TestSource = '00/50/CWorldMap_DeleteAllRegions_00507610_test.cpp'
+        PassPattern = '00507610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051ce60'
+        Module = 'CWorldMap'
+        Source = '00/51/CWorldMap_DrawConvertWorldMapCoordsToLocalCoords_0051ce60.cpp'
+        TestSource = '00/51/CWorldMap_DrawConvertWorldMapCoordsToLocalCoords_0051ce60_test.cpp'
+        PassPattern = '0051ce60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006292d0'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EASetPauseMode_006292d0.cpp'
+        TestSource = '00/62/CWorld_EASetPauseMode_006292d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '006292d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00629330'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EASetSlowMotion_00629330.cpp'
+        TestSource = '00/62/CWorld_EASetSlowMotion_00629330_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00629330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a910'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_SetGroundSizeZAtBlock_0063a910.cpp'
+        TestSource = '00/63/CWorldMap_SetGroundSizeZAtBlock_0063a910_test.cpp'
+        PassPattern = '0063a910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063ae70'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetStrongestEngineThemeAtBlock_0063ae70.cpp'
+        TestSource = '00/63/CWorldMap_GetStrongestEngineThemeAtBlock_0063ae70_test.cpp'
+        PassPattern = '0063ae70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e8460'
+        Module = 'CDefendingCombatantInfo::CCombatRing'
+        Source = '00/6e/CDefendingCombatantInfoCCombatRing_GetProngSeparationHalfAngle_006e8460.cpp'
+        TestSource = '00/6e/CDefendingCombatantInfoCCombatRing_GetProngSeparationHalfAngle_006e8460_test.cpp'
+        PassPattern = '006e8460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070b930'
+        Module = 'CAnimateThing::CCompleteAnimation'
+        Source = '00/70/CAnimateThingCCompleteAnimation_CCompleteAnimation_0070b930.cpp'
+        TestSource = '00/70/CAnimateThingCCompleteAnimation_CCompleteAnimation_0070b930_test.cpp'
+        PassPattern = '0070b930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007573c0'
+        Module = 'CTCWound::CWound'
+        Source = '00/75/CTCWoundCWound_Kill_007573c0.cpp'
+        TestSource = '00/75/CTCWoundCWound_Kill_007573c0_test.cpp'
+        PassPattern = '007573c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082a1d0'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_ClearPrimitiveHandles_0082a1d0.cpp'
+        TestSource = '00/82/CMiniMapDisplay_ClearPrimitiveHandles_0082a1d0_test.cpp'
+        PassPattern = '0082a1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3f900'
+        Module = 'CGameMapInterface'
+        Source = '00/a3/CGameMapInterface_GetFlagsAt_00a3f900.cpp'
+        TestSource = '00/a3/CGameMapInterface_GetFlagsAt_00a3f900_test.cpp'
+        PassPattern = '00a3f900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6c560'
+        Module = 'CPhysicsMesh'
+        Source = '00/a6/CPhysicsMesh_GetNoTriangles_00a6c560.cpp'
+        TestSource = '00/a6/CPhysicsMesh_GetNoTriangles_00a6c560_test.cpp'
+        PassPattern = '00a6c560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b22ee0'
+        Module = 'NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData'
+        Source = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_CSplineRandomOffsetData_00b22ee0.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_CSplineRandomOffsetData_00b22ee0_test.cpp'
+        PassPattern = '00b22ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b23110'
+        Module = 'NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData'
+        Source = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_scalardeletingdestructor_00b23110.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_scalardeletingdestructor_00b23110_test.cpp'
+        PassPattern = '00b23110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbd600'
+        Module = 'CEngineInternalPrimitiveParticleGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleGroup_ClearChildIterator_00bbd600.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_ClearChildIterator_00bbd600_test.cpp'
+        PassPattern = '00bbd600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbd630'
+        Module = 'CEngineInternalPrimitiveParticleGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleGroup_SetChildIterator_00bbd630.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_SetChildIterator_00bbd630_test.cpp'
+        PassPattern = '00bbd630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0dd60'
+        Module = 'CString'
+        Source = '00/c0/CString_Append_00c0dd60.cpp'
+        TestSource = '00/c0/CString_Append_00c0dd60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c0dd60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1e9c0'
+        Module = 'CSequenceClient00c1e9f0'
+        Source = '00/c1/CSequenceClient00c1e9f0_GetSequencePhase_00c1e9c0.cpp'
+        TestSource = '00/c1/CSequenceClient00c1e9f0_GetSequencePhase_00c1e9c0_test.cpp'
+        PassPattern = '00c1e9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c216d0'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_YieldPhysicalPlayer_00c216d0.cpp'
+        TestSource = '00/c2/CSoundEvent_YieldPhysicalPlayer_00c216d0_test.cpp'
+        PassPattern = '00c216d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f35b10'
+        Module = 'CEntityScriptBase'
+        Source = '00/f3/CEntityScriptBase_SetPredicate_00f35b10.cpp'
+        TestSource = '00/f3/CEntityScriptBase_SetPredicate_00f35b10_test.cpp'
+        PassPattern = '00f35b10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

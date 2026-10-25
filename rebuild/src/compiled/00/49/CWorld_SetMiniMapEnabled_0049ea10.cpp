@@ -1,0 +1,30 @@
+// CWorld::SetMiniMapEnabled(bool) -- enable/disable the mini map, remembering whether it was open when disabled
+// Leaf: ?SetMiniMapEnabled@CWorld@@QAEX_N@Z
+// Retail: Fable.exe @ 0x0049EA10, 46 bytes. PDB ?SetMiniMapEnabled@CWorld@@QAEX_N@Z
+// Callee: CPlayerGui::IsMiniMapActive() const 0x00437860 (forwards to the CDrawMiniMap at +0x160; manifest label
+// "_Cons_val<...>" is a propagation) on the player GUI singleton g_pPlayerGui 0x013B8790.
+// Retail CWorld: MiniMapEnabled +0xDD, MiniMapActiveBeforeDisabled +0xDE (PDB +0xE9/+0xEA: the three 16-byte
+// containers InitialActiveQuests / RegisteredQuests / ActiveTestQuests ahead of them are 12 bytes in retail), so
+// engine/CWorld.h (PDB layout) is not used and a local model is.
+// Shape: a change test on the byte, the store, then on a disable the mini map's open state is captured.
+struct CPlayerGui {
+    bool IsMiniMapActive() const;               // 0x00437860
+};
+extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
+
+struct CWorld {
+    unsigned char _pad00[0xdd];
+    bool          MiniMapEnabled;               // +0xDD (PDB +0xE9)
+    bool          MiniMapActiveBeforeDisabled;  // +0xDE (PDB +0xEA)
+    void SetMiniMapEnabled(bool enabled);
+};
+
+void CWorld::SetMiniMapEnabled(bool enabled)
+{
+    if (enabled != MiniMapEnabled)
+    {
+        MiniMapEnabled = enabled;
+        if (!enabled)
+            MiniMapActiveBeforeDisabled = g_pPlayerGui->IsMiniMapActive();
+    }
+}
