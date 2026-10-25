@@ -309853,6 +309853,286 @@ $catalog = @(
         TestSource = '00/cb/global_FadeOutThing_00cbe814_test.cpp'
         PassPattern = '00cbe814_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cbeb1a'
+        Module = '_global'
+        Source = '00/cb/global_InitializeMusicTypes_00cbeb1a.cpp'
+        TestSource = '00/cb/global_InitializeMusicTypes_00cbeb1a_test.cpp'
+        PassPattern = '00cbeb1a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbeb7e'
+        Module = '_global'
+        Source = '00/cb/global_IsCutsceneSkipped_00cbeb7e.cpp'
+        TestSource = '00/cb/global_IsCutsceneSkipped_00cbeb7e_test.cpp'
+        PassPattern = '00cbeb7e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbed00'
+        Module = '_global'
+        Source = '00/cb/global_AreAllThingsInVectorDead_00cbed00.cpp'
+        TestSource = '00/cb/global_AreAllThingsInVectorDead_00cbed00_test.cpp'
+        PassPattern = '00cbed00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbed48'
+        Module = '_global'
+        Source = '00/cb/global_AreAllThingsInVectorAlive_00cbed48.cpp'
+        TestSource = '00/cb/global_AreAllThingsInVectorAlive_00cbed48_test.cpp'
+        PassPattern = '00cbed48_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbed82'
+        Module = '_global'
+        Source = '00/cb/global_KillAllThingsInVector_00cbed82.cpp'
+        TestSource = '00/cb/global_KillAllThingsInVector_00cbed82_test.cpp'
+        PassPattern = '00cbed82_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbeeb0'
+        Module = '_global'
+        Source = '00/cb/global_ResetGlobalScriptDef_00cbeeb0.cpp'
+        TestSource = '00/cb/global_ResetGlobalScriptDef_00cbeeb0_test.cpp'
+        PassPattern = '00cbeeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbeed2'
+        Module = '_global'
+        Source = '00/cb/global_IsPlayerThreateningEntity_00cbeed2.cpp'
+        TestSource = '00/cb/global_IsPlayerThreateningEntity_00cbeed2_test.cpp'
+        PassPattern = '00cbeed2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbef30'
+        Module = '_global'
+        Source = '00/cb/global_CreateAndFadeInCreature_00cbef30.cpp'
+        TestSource = '00/cb/global_CreateAndFadeInCreature_00cbef30_test.cpp'
+        PassPattern = '00cbef30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbefc1'
+        Module = '_global'
+        Source = '00/cb/global_CreateAndFadeInObject_00cbefc1.cpp'
+        TestSource = '00/cb/global_CreateAndFadeInObject_00cbefc1_test.cpp'
+        PassPattern = '00cbefc1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbf050'
+        Module = '_global'
+        Source = '00/cb/global_CutsceneMacroReadLightScene_00cbf050.cpp'
+        TestSource = '00/cb/global_CutsceneMacroReadLightScene_00cbf050_test.cpp'
+        PassPattern = '00cbf050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbf679'
+        Module = '_global'
+        Source = '00/cb/global_MoveAllThingsInVectorToPosition_00cbf679.cpp'
+        TestSource = '00/cb/global_MoveAllThingsInVectorToPosition_00cbf679_test.cpp'
+        PassPattern = '00cbf679_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbf9de'
+        Module = '_global'
+        Source = '00/cb/global_CSFindThing_00cbf9de.cpp'
+        TestSource = '00/cb/global_CSFindThing_00cbf9de_test.cpp'
+        PassPattern = '00cbf9de_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbfaca'
+        Module = '_global'
+        Source = '00/cb/global_CSExtractParameterList_00cbfaca.cpp'
+        TestSource = '00/cb/global_CSExtractParameterList_00cbfaca_test.cpp'
+        PassPattern = '00cbfaca_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2919'
+        Module = '_Rb_tree'
+        Source = '00/cd/Rbtree_Merase_00cd2919.cpp'
+        TestSource = '00/cd/Rbtree_Merase_00cd2919_test.cpp'
+        PassPattern = '00cd2919_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd29f0'
+        Module = '_Rb_tree'
+        Source = '00/cd/Rbtree_Merase_00cd29f0.cpp'
+        TestSource = '00/cd/Rbtree_Merase_00cd29f0_test.cpp'
+        PassPattern = '00cd29f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd344a'
+        Module = '_Rb_tree'
+        Source = '00/cd/Rbtree_Merase_00cd344a.cpp'
+        TestSource = '00/cd/Rbtree_Merase_00cd344a_test.cpp'
+        PassPattern = '00cd344a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd378d'
+        Module = 'vector<CScriptGameResourceObjectScriptedThingBase>'
+        Source = '00/cd/vectorCScriptGameResourceObjectScriptedThingBase_Mfillinsert_00cd378d.cpp'
+        TestSource = '00/cd/vectorCScriptGameResourceObjectScriptedThingBase_Mfillinsert_00cd378d_test.cpp'
+        PassPattern = '00cd378d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd3a16'
+        Module = 'map<long, CCharString>'
+        Source = '00/cd/maplongCCharString_operator_00cd3a16.cpp'
+        TestSource = '00/cd/maplongCCharString_operator_00cd3a16_test.cpp'
+        PassPattern = '00cd3a16_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd3e7b'
+        Module = 'vector<CScreenFilterSThingByPass>'
+        Source = '00/cd/vectorCScreenFilterSThingByPass_pushback_00cd3e7b.cpp'
+        TestSource = '00/cd/vectorCScreenFilterSThingByPass_pushback_00cd3e7b_test.cpp'
+        PassPattern = '00cd3e7b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd4ff0'
+        Module = '_global'
+        Source = '00/cd/global_GetStringFromDataMarker_00cd4ff0.cpp'
+        TestSource = '00/cd/global_GetStringFromDataMarker_00cd4ff0_test.cpp'
+        PassPattern = '00cd4ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd5090'
+        Module = '_global'
+        Source = '00/cd/global_GetNumberFromDataMarker_00cd5090.cpp'
+        TestSource = '00/cd/global_GetNumberFromDataMarker_00cd5090_test.cpp'
+        PassPattern = '00cd5090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdbd20'
+        Module = '_global'
+        Source = '00/cd/global_pSunnyvaleDataAllocfunc_00cdbd20.cpp'
+        TestSource = '00/cd/global_pSunnyvaleDataAllocfunc_00cdbd20_test.cpp'
+        PassPattern = '00cdbd20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdeb40'
+        Module = '_global'
+        Source = '00/cd/global_CreateArcheryCompetitionSignpost_00cdeb40.cpp'
+        TestSource = '00/cd/global_CreateArcheryCompetitionSignpost_00cdeb40_test.cpp'
+        PassPattern = '00cdeb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cef950'
+        Module = 'NScript::CGameflowScript'
+        Source = '00/ce/NScriptCGameflowScript_Alloc_00cef950.cpp'
+        TestSource = '00/ce/NScriptCGameflowScript_Alloc_00cef950_test.cpp'
+        PassPattern = '00cef950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfad30'
+        Module = 'NScript::CQ_AwakeningTheOracleScript'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScript_CQAwakeningTheOracleScript_00cfad30.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScript_CQAwakeningTheOracleScript_00cfad30_test.cpp'
+        PassPattern = '00cfad30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d18c00'
+        Module = 'vector<TeleportData>'
+        Source = '00/d1/vectorTeleportData_pushback_00d18c00.cpp'
+        TestSource = '00/d1/vectorTeleportData_pushback_00d18c00_test.cpp'
+        PassPattern = '00d18c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d258c0'
+        Module = 'NScript::CQ_DragonBossFightScript'
+        Source = '00/d2/NScriptCQDragonBossFightScript_SetDragonState_00d258c0.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScript_SetDragonState_00d258c0_test.cpp'
+        PassPattern = '00d258c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d34f00'
+        Module = '_STL::vector<bool>'
+        Source = '00/d3/STLvectorbool_vector_00d34f00.cpp'
+        TestSource = '00/d3/STLvectorbool_vector_00d34f00_test.cpp'
+        PassPattern = '00d34f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d34f40'
+        Module = '_global'
+        Source = '00/d3/global_uninitializedcopy_00d34f40.cpp'
+        TestSource = '00/d3/global_uninitializedcopy_00d34f40_test.cpp'
+        PassPattern = '00d34f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d34fd0'
+        Module = '_global'
+        Source = '00/d3/global_copyptrs_00d34fd0.cpp'
+        TestSource = '00/d3/global_copyptrs_00d34fd0_test.cpp'
+        PassPattern = '00d34fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d38400'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_TriggerProphetComment_00d38400.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_TriggerProphetComment_00d38400_test.cpp'
+        PassPattern = '00d38400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d38f30'
+        Module = '_STL::vector<long>'
+        Source = '00/d3/STLvectorlong_vector_00d38f30.cpp'
+        TestSource = '00/d3/STLvectorlong_vector_00d38f30_test.cpp'
+        PassPattern = '00d38f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7acb0'
+        Module = 'NScript::CQ_HeroSoulsThunderScript'
+        Source = '00/d7/NScriptCQHeroSoulsThunderScript_CQHeroSoulsThunderScript_00d7acb0.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsThunderScript_CQHeroSoulsThunderScript_00d7acb0_test.cpp'
+        PassPattern = '00d7acb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d84b50'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScript_CQHeroSoulsGuildmasterScript_00d84b50.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScript_CQHeroSoulsGuildmasterScript_00d84b50_test.cpp'
+        PassPattern = '00d84b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9f070'
+        Module = 'NScript::CQ_MinionCampScript'
+        Source = '00/d9/NScriptCQMinionCampScript_ShouldSpawnPointSpawn_00d9f070.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScript_ShouldSpawnPointSpawn_00d9f070_test.cpp'
+        PassPattern = '00d9f070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da01e0'
+        Module = '_STL::list<CScriptThing>'
+        Source = '00/da/STLlistCScriptThing_pushback_00da01e0.cpp'
+        TestSource = '00/da/STLlistCScriptThing_pushback_00da01e0_test.cpp'
+        PassPattern = '00da01e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da0200'
+        Module = '_STL::list<CScriptThing>'
+        Source = '00/da/STLlistCScriptThing_Mcreatenode_00da0200.cpp'
+        TestSource = '00/da/STLlistCScriptThing_Mcreatenode_00da0200_test.cpp'
+        PassPattern = '00da0200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da0d90'
+        Module = 'NScript::CQ_MinionCampScript'
+        Source = '00/da/NScriptCQMinionCampScript_FindFurthestSpawnPoint_00da0d90.cpp'
+        TestSource = '00/da/NScriptCQMinionCampScript_FindFurthestSpawnPoint_00da0d90_test.cpp'
+        PassPattern = '00da0d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc0830'
+        Module = 'NScript::CQ_OakValeBanditRaidScript'
+        Source = '00/dc/NScriptCQOakValeBanditRaidScript_DepopulateLevel_00dc0830.cpp'
+        TestSource = '00/dc/NScriptCQOakValeBanditRaidScript_DepopulateLevel_00dc0830_test.cpp'
+        PassPattern = '00dc0830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc24e0'
+        Module = 'NScript::CQ_OakValeBanditRaidScript'
+        Source = '00/dc/NScriptCQOakValeBanditRaidScript_Alloc_00dc24e0.cpp'
+        TestSource = '00/dc/NScriptCQOakValeBanditRaidScript_Alloc_00dc24e0_test.cpp'
+        PassPattern = '00dc24e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

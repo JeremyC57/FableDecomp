@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00cbeb1a	RELOCATION_MATCH	100v100	PASS	InitializeMusicTypes; size TU (y off, s on), new + LoadFromFile(GetDefsDirectory() + L"atmos_types.h"); grades 1
+00cbeb7e	RELOCATION_MATCH	41v41	PASS	IsCutsceneSkipped; if/else with `if (call()) return true;` per arm; grades 2
+00cbed00	MATCH	72v72	PASS	AreAllThingsInVectorDead; counted loop, end re-read, sete vs size(); grades 1
+00cbed48	MATCH	58v58	PASS	AreAllThingsInVectorAlive; twin of 00cbed00; grades 1
+00cbed82	MATCH	56v56	PASS	KillAllThingsInVector; bool re-read from its slot per call; grades 2
+00cbeeb0	RELOCATION_MATCH	34v34	PASS	ResetGlobalScriptDef; CDefPointer-family counted release; grades 1
+00cbeed2	RELOCATION_MATCH	94v94	PASS	IsPlayerThreateningEntity; && with conditional temporary flag word; grades 1
+00cbef30	RELOCATION_MATCH	145v145	PASS	CreateAndFadeInCreature; fade loop, floats homed in dead arg slots; grades 1
+00cbefc1	RELOCATION_MATCH	143v143	PASS	CreateAndFadeInObject (catalog: CreateAndFadeInCreature, propagated); grades 1
+00cbf050	RELOCATION_MATCH	236v236	PASS	CutsceneMacro_ReadLightScene; zero-reusing GetLength, own for index; grades 3
+00cbf679	RELOCATION_MATCH	99v99	PASS	MoveAllThingsInVectorToPosition (catalog: KillAllThingsInVector, propagated); grades 1
+00cbf9de	RELOCATION_MATCH	218v218	PASS	CSFindThing (catalog: GetCutsceneActorScriptThing); forceinline operator==, IsScriptingActor helper; grades 3
+00cbfaca	RELOCATION_MATCH	179v179	PASS	CSExtractParameterList; "" hoisted, sum temporary assigned and destroyed; grades 1
+00cd2919	RELOCATION_MATCH	123v123	PASS	_Rb_tree<CCharString>::_M_erase (catalog: Particle_DestroyRecursiveTree); inline_recursion(on) + full allocator chain; grades 1
+00cd29f0	RELOCATION_MATCH	129v129	PASS	_Rb_tree<long,CCharString>::_M_erase (catalog: CLandscapeBackgroundPatch_DestroyRecursiveTree); pair ??_G; grades 1
+00cd344a	RELOCATION_MATCH	123v123	PASS	_Rb_tree<CCharString,ScriptedThingBase>::_M_erase (catalog: StdMap_DestroyNode); needed all 4 grades; grades 4
+00cd378d	RELOCATION_MATCH	218v218	PASS	vector<ScriptedThingBase>::_M_fill_insert (catalog: CActiveFile_LoadAndInsertMeshArray); same-TU noinline tag helpers; grades 2
+00cd3a16	RELOCATION_MATCH	99v99	PASS	map<long,CCharString>::operator[] (catalog: CPersistTraits_TransferInHelper); grades 1
+00cd3e7b	RELOCATION_MATCH	56v56	PASS	vector<CScreenFilterSThingByPass>::push_back (catalog: Vector_EmplaceBackWithCapacityCheck); grades 1
+00cd4ff0	RELOCATION_MATCH	149v149	PASS	GetStringFromDataMarker; element-reference local; grades 3
+00cd5090	RELOCATION_MATCH	145v145	PASS	GetNumberFromDataMarker; element-reference local; grades 3
+00cdbd20	RELOCATION_MATCH	79v79	PASS	pSunnyvaleDataAlloc_func; new CQ_SunnyvaleMasterData, base ctor out of line; grades 2
+00cdeb40	RELOCATION_MATCH	98v98	PASS	CreateArcheryCompetitionSignpost (catalog: CFileInstaller_CFileInfo_CreateInstance); 2nd grade only fixed the Leaf to its mangled prefix; grades 2
+00cef950	RELOCATION_MATCH	77v77	PASS	NScript::CGameflowScript::Alloc; novtable CLevelScriptBase model; grades 1
+00cfad30	RELOCATION_MATCH	158v158	PASS	CQ_AwakeningTheOracleScript ctor (catalog: CHeroMorphDef_Create, propagated from 0xCB8110); grades 1
+00d18c00	RELOCATION_MATCH	67v67	PASS	vector<TeleportData>::push_back (catalog: CQ_BountyHuntScript_EnqueueTeleport); copy ctor declared out of line; grades 2
+00d258c0	RELOCATION_MATCH	212v212	PASS	CQ_DragonBossFightScript::SetDragonState (catalog: CScriptBase_InitCheckThread); grades 1
+00d34f00	RELOCATION_MATCH	59v59	PASS	vector<bool> copy ctor (catalog: Map_InsertOrUpdatePair); explicit __fastcall helper; grades 2
+00d34f40	RELOCATION_MATCH	30v30	PASS	__uninitialized_copy<bool> (catalog: Map_MoveOrCopyValue); ??$ leaf, last==first form; grades 3
+00d34fd0	RELOCATION_MATCH	74v74	PASS	__copy_ptrs<CFireHeartPatternDef> (catalog: std_vector_CConversation_CopyElements); __forceinline __copy; grades 2
+00d38400	RELOCATION_MATCH	145v145	PASS	CQ_FireHeartScript::TriggerProphetComment (catalog: CTCGameModeController_UpdateSunCount); grades 1
+00d38f30	RELOCATION_MATCH	58v58	PASS	vector<long>(n) (catalog: std_vector_AllocatePointers); fill_n -> rep stosd; grades 1
+00d7acb0	RELOCATION_MATCH	86v86	PASS	CQ_HeroSoulsThunderScript ctor (catalog: CHeroMorphDef_Create_2); grades 1
+00d84b50	RELOCATION_MATCH	86v86	PASS	CQ_HeroSoulsGuildmasterScript ctor (catalog: CHeroMorphDef_Create_3); grades 1
+00d9f070	RELOCATION_MATCH	62v62	PASS	CQ_MinionCampScript::ShouldSpawnPointSpawn (catalog: CScriptBase_CheckThreadTerminated); translator guard form; grades 2
+00da01e0	RELOCATION_MATCH	30v30	PASS	list<CScriptThing>::push_back (catalog: NScript_CDanyalTestScriptsData_InsertHead); 2nd grade after the malloc allocator fix; grades 2
+00da0200	RELOCATION_MATCH	36v36	PASS	list<CScriptThing>::_M_create_node (catalog: Alloc); 2nd grade fixed the call target to malloc 0xBFEA0E (was ::operator new); grades 2
+00da0d90	RELOCATION_MATCH	165v165	PASS	CQ_MinionCampScript::FindFurthestSpawnPoint (catalog: CScriptBase_RunActiveSpawnPoints); grades 1
+00dc0830	RELOCATION_MATCH	141v141	PASS	CQ_OakValeBanditRaidScript::DepopulateLevel (catalog: CQ_OakValeBanditRaid_CleanupBandits); grades 1
+00dc24e0	RELOCATION_MATCH	90v90	PASS	NScript::CQ_OakValeBanditRaidScript::Alloc; inline CScriptThing member ctor; grades 1
