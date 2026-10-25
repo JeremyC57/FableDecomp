@@ -315591,6 +315591,202 @@ $catalog = @(
         TestSource = '00/6e/stdvector_Minsertoverflow_006e6bc0_test.cpp'
         PassPattern = '006e6bc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0051b0a0'
+        Module = 'CReplaceSerialise<COldFileFormatMapHeader7,COldFileFormatMapHeader6>'
+        Source = '00/51/CReplaceSerialiseCOldFileFormatMapHeader7COldFileFormatMapHeader6_ConvertPreviousUnknownVersionUp_0051b0a0.cpp'
+        TestSource = '00/51/CReplaceSerialiseCOldFileFormatMapHeader7COldFileFormatMapHeader6_ConvertPreviousUnknownVersionUp_0051b0a0_test.cpp'
+        PassPattern = '0051b0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051bba0'
+        Module = 'std'
+        Source = '00/51/std_uninitializedfilln_0051bba0.cpp'
+        TestSource = '00/51/std_uninitializedfilln_0051bba0_test.cpp'
+        PassPattern = '0051bba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051bcd0'
+        Module = 'std::vector'
+        Source = '00/51/stdvector_operator_0051bcd0.cpp'
+        TestSource = '00/51/stdvector_operator_0051bcd0_test.cpp'
+        PassPattern = '0051bcd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051cf10'
+        Module = 'std::vector'
+        Source = '00/51/stdvector_Minsertoverflow_0051cf10.cpp'
+        TestSource = '00/51/stdvector_Minsertoverflow_0051cf10_test.cpp'
+        PassPattern = '0051cf10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00521eb0'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_SaveEntitiesToScript_00521eb0.cpp'
+        TestSource = '00/52/CThingManager_SaveEntitiesToScript_00521eb0_test.cpp'
+        PassPattern = '00521eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00522160'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_SaveEntitiesBinary_00522160.cpp'
+        TestSource = '00/52/CThingManager_SaveEntitiesBinary_00522160_test.cpp'
+        PassPattern = '00522160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00523540'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_CThingManager_00523540.cpp'
+        TestSource = '00/52/CThingManager_CThingManager_00523540_test.cpp'
+        PassPattern = '00523540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00523b40'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_RuntimeSaveGameHero_00523b40.cpp'
+        TestSource = '00/52/CThingManager_RuntimeSaveGameHero_00523b40_test.cpp'
+        PassPattern = '00523b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00545b10'
+        Module = 'NUISystem::CSpellContainer'
+        Source = '00/54/NUISystemCSpellContainer_UnAssignSpell_00545b10.cpp'
+        TestSource = '00/54/NUISystemCSpellContainer_UnAssignSpell_00545b10_test.cpp'
+        PassPattern = '00545b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546320'
+        Module = 'NUISystem::CComponentContainer'
+        Source = '00/54/NUISystemCComponentContainer_AddTextLine_00546320.cpp'
+        TestSource = '00/54/NUISystemCComponentContainer_AddTextLine_00546320_test.cpp'
+        PassPattern = '00546320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548790'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_GetValueFromProfile_00548790.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_GetValueFromProfile_00548790_test.cpp'
+        PassPattern = '00548790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558170'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_GetActionText_00558170.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_GetActionText_00558170_test.cpp'
+        PassPattern = '00558170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055d070'
+        Module = 'CTCPhotojournalCapture'
+        Source = '00/55/CTCPhotojournalCapture_GetDescription_0055d070.cpp'
+        TestSource = '00/55/CTCPhotojournalCapture_GetDescription_0055d070_test.cpp'
+        PassPattern = '0055d070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055e040'
+        Module = '_global'
+        Source = '00/55/global_EncipherMorsel_0055e040.cpp'
+        TestSource = '00/55/global_EncipherMorsel_0055e040_test.cpp'
+        PassPattern = '0055e040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055e180'
+        Module = '_global'
+        Source = '00/55/global_DecipherMorsel_0055e180.cpp'
+        TestSource = '00/55/global_DecipherMorsel_0055e180_test.cpp'
+        PassPattern = '0055e180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ecb0'
+        Module = '_global'
+        Source = '00/55/global_ReplaceDoubleApostrophes_0055ecb0.cpp'
+        TestSource = '00/55/global_ReplaceDoubleApostrophes_0055ecb0_test.cpp'
+        PassPattern = '0055ecb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00560720'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_OnSerialise_00560720.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_OnSerialise_00560720_test.cpp'
+        PassPattern = '00560720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00560920'
+        Module = '_global'
+        Source = '00/56/global_Explode_00560920.cpp'
+        TestSource = '00/56/global_Explode_00560920_test.cpp'
+        PassPattern = '00560920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00570009'
+        Module = '_global'
+        Source = '00/57/global_EnsureUndoAbility_00570009.cpp'
+        TestSource = '00/57/global_EnsureUndoAbility_00570009_test.cpp'
+        PassPattern = '00570009_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005701da'
+        Module = '_global'
+        Source = '00/57/global_EnsureUndoStat_005701da.cpp'
+        TestSource = '00/57/global_EnsureUndoStat_005701da_test.cpp'
+        PassPattern = '005701da_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ae6af'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_RefreshDescriptions_005ae6af.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_RefreshDescriptions_005ae6af_test.cpp'
+        PassPattern = '005ae6af_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ae9de'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_RefreshBuyDescriptionsPC_005ae9de.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_RefreshBuyDescriptionsPC_005ae9de_test.cpp'
+        PassPattern = '005ae9de_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005aeaee'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_RefreshSellDescriptionsPC_005aeaee.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_RefreshSellDescriptionsPC_005aeaee_test.cpp'
+        PassPattern = '005aeaee_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bcafe'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_Draw2DText_005bcafe.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_Draw2DText_005bcafe_test.cpp'
+        PassPattern = '005bcafe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ccc91'
+        Module = 'CTCInventoryStats'
+        Source = '00/5c/CTCInventoryStats_GetTimeSpentInGame_005ccc91.cpp'
+        TestSource = '00/5c/CTCInventoryStats_GetTimeSpentInGame_005ccc91_test.cpp'
+        PassPattern = '005ccc91_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db6b0'
+        Module = '_global'
+        Source = '00/5d/global_GetRotationInAnimationBetweenTimes_005db6b0.cpp'
+        TestSource = '00/5d/global_GetRotationInAnimationBetweenTimes_005db6b0_test.cpp'
+        PassPattern = '005db6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e1fc0'
+        Module = 'std::_Rb_tree'
+        Source = '00/5e/stdRbtree_Minsert_005e1fc0.cpp'
+        TestSource = '00/5e/stdRbtree_Minsert_005e1fc0_test.cpp'
+        PassPattern = '005e1fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e2c20'
+        Module = 'std::vector'
+        Source = '00/5e/stdvector_Mrangeinsert_005e2c20.cpp'
+        TestSource = '00/5e/stdvector_Mrangeinsert_005e2c20_test.cpp'
+        PassPattern = '005e2c20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

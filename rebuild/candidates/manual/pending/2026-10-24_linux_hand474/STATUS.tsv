@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0051b0a0	RELOCATION_MATCH	307v307	PASS	CReplaceSerialise<COldFileFormatMapHeader7,6>::ConvertPreviousUnknownVersionUp; 1 grade
+0051bba0	RELOCATION_MATCH	241v241	PASS	std::__uninitialized_fill_n<CNavigationLayerUpdate>; 2 grades (1 + std-namespace re-grade)
+0051bcd0	RELOCATION_MATCH	285v285	PASS	std::vector<CSwitchableBlockage>::operator=; 2 grades (1 + std re-grade)
+0051cf10	RELOCATION_MATCH	282v282	PASS	std::vector<CRegion>::_M_insert_overflow; 3 grades (2 + std re-grade)
+0051f0e0	RELOCATION_MATCH	595v595	PASS	CThingManager::CopyHeroToHero; 1 grade
+00521cf0	DIFFER	448v446	-	CThingManager::LoadMainPlayerCreatureState; 4 grades; frame-slot/register swap (hero vs loaded creature)
+00521eb0	RELOCATION_MATCH	682v682	PASS	CThingManager::SaveEntitiesToScript; 1 grade
+00522160	RELOCATION_MATCH	653v653	PASS	CThingManager::SaveEntitiesBinary; 1 grade
+005223f0	DIFFER	306v306	-	CThingManager::LoadLoadableGlobalThingsFromFile; 4 grades; frame 0x24 v 0x1C (insert result slot not overlaid)
+00523540	RELOCATION_MATCH	426v426	PASS	CThingManager::CThingManager; 2 grades (1 + std re-grade)
+00523b40	RELOCATION_MATCH	425v425	PASS	CThingManager::RuntimeSaveGameHero; 4 grades
+00524ec0	DIFFER	1006v1006	-	NThingManager::CEntityRuntimePersistence::LoadFromGameStateBinary; 1 grade (+30 free cmp.py variants); map-UID/compressed-size register colouring
+00545b10	RELOCATION_MATCH	730v730	PASS	NUISystem::CSpellContainer::UnAssignSpell; 1 grade
+00546320	RELOCATION_MATCH	648v648	PASS	NUISystem::CComponentContainer::AddTextLine; 2 grades
+00548790	RELOCATION_MATCH	852v852	PASS	NUISystem::CTextSlider::GetValueFromProfile; 2 grades
+00558170	RELOCATION_MATCH	964v964	PASS	NUISystem::CKeyRedefiner::GetActionText; 2 grades
+0055d070	RELOCATION_MATCH	269v269	PASS	CTCPhotojournalCapture::GetDescription; 2 grades
+0055e040	MATCH	312v312	PASS	EncipherMorsel (XTEA); 1 grade
+0055e180	MATCH	312v312	PASS	DecipherMorsel (XTEA); 1 grade
+0055ecb0	RELOCATION_MATCH	353v353	PASS	ReplaceDoubleApostrophes; 2 grades (1 + std re-grade)
+00560720	RELOCATION_MATCH	508v508	PASS	CTCHeroOnlineScoreboard::OnSerialise; 4 grades (3 + std re-grade)
+00560920	RELOCATION_MATCH	653v653	PASS	(anon)::Explode; 3 grades (2 + std re-grade)
+00560bb0	DIFFER	322v321	-	CTCHeroOnlineScoreboard::GetDecryptedDocument; 4 grades; this spilled vs kept in ebp
+00570009	RELOCATION_MATCH	344v344	PASS	EnsureUndoAbility; 1 grade
+005701da	RELOCATION_MATCH	344v344	PASS	EnsureUndoStat (catalog label EnsureUndoAbility is propagated); 1 grade
+0057d23b	DIFFER	876v869	-	CTCHeroStats::UpdateAppearanceStats; 1 grade; escaped CDefPointer release form + one key-temp slot
+00594481	DIFFER	423v423	-	std::_Rb_tree<CDateAndTime,...>::insert_unique(hint); 4 grades; one register choice (ecx+add vs eax+lea)
+005a887d	DIFFER	480v480	-	CTCInventoryTrade::RefreshBuyPossibilityPC; 5 grades (one over budget); Method=3 store scheduling
+005a9a87	DIFFER	565v567	-	CTCInventoryTrade::RefreshBuyPossibility; 2 grades (+8 free variants); this register + Method=3 store scheduling
+005ae6af	RELOCATION_MATCH	444v444	PASS	CTCInventoryTrade::RefreshDescriptions; 3 grades
+005ae9de	RELOCATION_MATCH	272v272	PASS	CTCInventoryTrade::RefreshBuyDescriptionsPC; 1 grade
+005aeaee	RELOCATION_MATCH	272v272	PASS	CTCInventoryTrade::RefreshSellDescriptionsPC; 1 grade
+005bcafe	RELOCATION_MATCH	499v499	PASS	NInventory::CTCInventoryBase::Draw2DText; 3 grades
+005c36c2	DIFFER	641v645	-	(anon)::PutSheatheObjectInCarrySlot; 2 grades; register/slot allocation
+005c552c	DIFFER	551v546	-	CTCInventoryWeapons::RemoveWeaponsFromSheathes; 3 grades; loop inversion (cross-jump vs rotated loop)
+005ccc91	RELOCATION_MATCH	538v538	PASS	CTCInventoryStats::GetTimeSpentInGame; 4 grades
+005db6b0	RELOCATION_MATCH	529v529	PASS	(anon)::GetRotationInAnimationBetweenTimes; 1 grade
+005dcd10	DIFFER	659v608	-	CAnimationSet::GetRandomLoadedAnim; 1 grade; register allocation (extra this spill)
+005e1fc0	RELOCATION_MATCH	252v252	PASS	std::_Rb_tree<CCharString,...>::_M_insert; 2 grades (1 + std re-grade)
+005e2c20	RELOCATION_MATCH	480v480	PASS	std::vector<pair<unsigned long,CAnimationEntry> >::_M_range_insert; 2 grades (1 + std re-grade)
