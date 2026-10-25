@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c5f000	MATCH	48v48	PASS	CImaAdpcmCodec::CalculateEncodeAlignment; grades: 1
+00c5f030	MATCH	59v59	PASS	CImaAdpcmCodec::CreatePcmFormat; grades: 1
+00c5f070	RELOCATION_MATCH	74v74	PASS	CImaAdpcmCodec::CreateImaAdpcmFormat; grades: 1
+00c5f110	RELOCATION_MATCH	64v64	PASS	CImaAdpcmCodec::IsValidImaAdpcmFormat; grades: 1
+00c5f2d0	MATCH	120v120	PASS	CImaAdpcmCodec::EncodeSample; grades: 1
+00c5f350	MATCH	85v85	PASS	CImaAdpcmCodec::DecodeSample; grades: 1
+00c5f9e0	RELOCATION_MATCH	103v103	PASS	CImaAdpcmCodec::Initialize; grades: 1
+00c5ff60	MATCH	78v78	PASS	CEaxContext::RemoveSource; grades: 1
+00c60450	RELOCATION_MATCH	138v138	PASS	CEaxContext::ClampFloatProperty (positive >=/<= tolerance tests give jp/jnp); grades: 2
+00c60930	RELOCATION_MATCH	98v98	PASS	CEaxContext::~CEaxContext (/EHsc; loop tests the member, node re-read at the bottom); grades: 1
+00c609a0	RELOCATION_MATCH	81v81	PASS	CEaxContext::AddSource; grades: 1
+00c60a30	RELOCATION_MATCH	154v154	PASS	CEaxContext::InvalidateAll (failure exit is `return result` inside the loop); grades: 2
+00c60b30	RELOCATION_MATCH	76v76	PASS	IsAnyNaN; grades: 1
+00c61b40	RELOCATION_MATCH	70v70	PASS	CEaxSource::Set; grades: 1
+00c61b90	RELOCATION_MATCH	37v37	PASS	CPKArray::CPKArray; grades: 1
+00c61c00	RELOCATION_MATCH	78v78	PASS	CPKArray::GetRandom; grades: 1
+00c61f60	RELOCATION_MATCH	80v80	PASS	CPKVoiceHandle::UpdateScaledParameter; grades: 1
+00c62090	MATCH	28v28	PASS	CPKIntVector2::Length; grades: 1
+00c62370	DIFFER	126v118	PASS	RandomVectorInSphere: LTCG lane gap (result pointer in esi, x87 live across calls); parked in differ/ with test; grades: 1
+00c626a0	RELOCATION_MATCH	164v164	PASS	CPKDecompressedStream::Seek (jump table pairing checked by hand); grades: 1
+00c62750	RELOCATION_MATCH	41v41	PASS	CPKDecompressedStream::~CPKDecompressedStream; grades: 1
+00c62e60	RELOCATION_MATCH	195v195	PASS	PKRASlaveObject::PassToSlave (/EHsc; chunk 436 PK_REPORT_ERROR macro); grades: 1
+00c62fb0	RELOCATION_MATCH	53v53	PASS	GainToMillibels (clamp in a float local through ?:); grades: 1
+00c62ff0	RELOCATION_MATCH	224v224	PASS	CEaxContext::GetPropertyHandler (/GS); grades: 1
+00c633c0	RELOCATION_MATCH	183v183	PASS	CEaxContext::SetDecayTime; grades: 1
+00c635c0	MATCH	198v198	PASS	CEaxContext::SetReflections; grades: 1
+00c63690	RELOCATION_MATCH	182v182	PASS	CEaxContext::SetReflectionsDelay; grades: 1
+00c63750	RELOCATION_MATCH	192v192	PASS	CEaxContext::SetReflectionsPan; grades: 1
+00c63810	MATCH	198v198	PASS	CEaxContext::SetReverb; grades: 1
+00c638e0	RELOCATION_MATCH	182v182	PASS	CEaxContext::SetReverbDelay; grades: 1
+00c639a0	RELOCATION_MATCH	192v192	PASS	CEaxContext::SetReverbPan; grades: 1
+00c63a60	RELOCATION_MATCH	185v185	PASS	CEaxContext::SetEchoTime; grades: 1
+00c63bc0	RELOCATION_MATCH	185v185	PASS	CEaxContext::SetModulationTime; grades: 1
+00c63d20	RELOCATION_MATCH	139v139	PASS	CEaxContext::SetSlotAirAbsorptionHF (direct member access, no reference local); grades: 2
+00c63f90	MATCH	135v135	PASS	CEaxContext::SetDecayTimeScale; grades: 1
+00c64020	MATCH	137v137	PASS	CEaxContext::SetReflectionsScale; grades: 1
+00c64380	MATCH	148v148	PASS	CEaxContext::SetModulationTimeScale; grades: 1
+00c645d0	RELOCATION_MATCH	96v96	PASS	CEaxContext::SetDistanceFactor; grades: 1
+00c64630	RELOCATION_MATCH	169v169	PASS	CEaxContext::SetAirAbsorptionHF; grades: 1
+00c646e0	RELOCATION_MATCH	169v169	PASS	CEaxContext::SetHFReference; grades: 1

@@ -307185,6 +307185,275 @@ $catalog = @(
         TestSource = '00/c5/CAudioContext_SourceQueueBuffers_00c57690_test.cpp'
         PassPattern = '00c57690_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c5f000'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_CalculateEncodeAlignment_00c5f000.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_CalculateEncodeAlignment_00c5f000_test.cpp'
+        PassPattern = '00c5f000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f030'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_CreatePcmFormat_00c5f030.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_CreatePcmFormat_00c5f030_test.cpp'
+        PassPattern = '00c5f030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f070'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_CreateImaAdpcmFormat_00c5f070.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_CreateImaAdpcmFormat_00c5f070_test.cpp'
+        PassPattern = '00c5f070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f110'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_IsValidImaAdpcmFormat_00c5f110.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_IsValidImaAdpcmFormat_00c5f110_test.cpp'
+        PassPattern = '00c5f110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f2d0'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_EncodeSample_00c5f2d0.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_EncodeSample_00c5f2d0_test.cpp'
+        PassPattern = '00c5f2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f350'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_DecodeSample_00c5f350.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_DecodeSample_00c5f350_test.cpp'
+        PassPattern = '00c5f350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f9e0'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_Initialize_00c5f9e0.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_Initialize_00c5f9e0_test.cpp'
+        PassPattern = '00c5f9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5ff60'
+        Module = 'CEaxContext'
+        Source = '00/c5/CEaxContext_RemoveSource_00c5ff60.cpp'
+        TestSource = '00/c5/CEaxContext_RemoveSource_00c5ff60_test.cpp'
+        PassPattern = '00c5ff60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c60450'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_ClampFloatProperty_00c60450.cpp'
+        TestSource = '00/c6/CEaxContext_ClampFloatProperty_00c60450_test.cpp'
+        PassPattern = '00c60450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c60930'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_CEaxContext_00c60930.cpp'
+        TestSource = '00/c6/CEaxContext_CEaxContext_00c60930_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c60930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c609a0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_AddSource_00c609a0.cpp'
+        TestSource = '00/c6/CEaxContext_AddSource_00c609a0_test.cpp'
+        PassPattern = '00c609a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c60a30'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_InvalidateAll_00c60a30.cpp'
+        TestSource = '00/c6/CEaxContext_InvalidateAll_00c60a30_test.cpp'
+        PassPattern = '00c60a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c60b30'
+        Module = '_global'
+        Source = '00/c6/global_IsAnyNaN_00c60b30.cpp'
+        TestSource = '00/c6/global_IsAnyNaN_00c60b30_test.cpp'
+        PassPattern = '00c60b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c61b40'
+        Module = 'CEaxSource'
+        Source = '00/c6/CEaxSource_Set_00c61b40.cpp'
+        TestSource = '00/c6/CEaxSource_Set_00c61b40_test.cpp'
+        PassPattern = '00c61b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c61c00'
+        Module = 'CPKArray'
+        Source = '00/c6/CPKArray_GetRandom_00c61c00.cpp'
+        TestSource = '00/c6/CPKArray_GetRandom_00c61c00_test.cpp'
+        PassPattern = '00c61c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c61f60'
+        Module = 'CPKVoiceHandle'
+        Source = '00/c6/CPKVoiceHandle_UpdateScaledParameter_00c61f60.cpp'
+        TestSource = '00/c6/CPKVoiceHandle_UpdateScaledParameter_00c61f60_test.cpp'
+        PassPattern = '00c61f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62090'
+        Module = 'CPKIntVector2'
+        Source = '00/c6/CPKIntVector2_Length_00c62090.cpp'
+        TestSource = '00/c6/CPKIntVector2_Length_00c62090_test.cpp'
+        PassPattern = '00c62090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c626a0'
+        Module = 'CPKDecompressedStream'
+        Source = '00/c6/CPKDecompressedStream_Seek_00c626a0.cpp'
+        TestSource = '00/c6/CPKDecompressedStream_Seek_00c626a0_test.cpp'
+        PassPattern = '00c626a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62750'
+        Module = 'CPKDecompressedStream'
+        Source = '00/c6/CPKDecompressedStream_CPKDecompressedStream_00c62750.cpp'
+        TestSource = '00/c6/CPKDecompressedStream_CPKDecompressedStream_00c62750_test.cpp'
+        PassPattern = '00c62750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62e60'
+        Module = 'PKRASlaveObject'
+        Source = '00/c6/PKRASlaveObject_PassToSlave_00c62e60.cpp'
+        TestSource = '00/c6/PKRASlaveObject_PassToSlave_00c62e60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c62e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62fb0'
+        Module = '_global'
+        Source = '00/c6/global_GainToMillibels_00c62fb0.cpp'
+        TestSource = '00/c6/global_GainToMillibels_00c62fb0_test.cpp'
+        PassPattern = '00c62fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62ff0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_GetPropertyHandler_00c62ff0.cpp'
+        TestSource = '00/c6/CEaxContext_GetPropertyHandler_00c62ff0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c62ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c633c0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetDecayTime_00c633c0.cpp'
+        TestSource = '00/c6/CEaxContext_SetDecayTime_00c633c0_test.cpp'
+        PassPattern = '00c633c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c635c0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetReflections_00c635c0.cpp'
+        TestSource = '00/c6/CEaxContext_SetReflections_00c635c0_test.cpp'
+        PassPattern = '00c635c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63690'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetReflectionsDelay_00c63690.cpp'
+        TestSource = '00/c6/CEaxContext_SetReflectionsDelay_00c63690_test.cpp'
+        PassPattern = '00c63690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63750'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetReflectionsPan_00c63750.cpp'
+        TestSource = '00/c6/CEaxContext_SetReflectionsPan_00c63750_test.cpp'
+        PassPattern = '00c63750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63810'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetReverb_00c63810.cpp'
+        TestSource = '00/c6/CEaxContext_SetReverb_00c63810_test.cpp'
+        PassPattern = '00c63810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c638e0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetReverbDelay_00c638e0.cpp'
+        TestSource = '00/c6/CEaxContext_SetReverbDelay_00c638e0_test.cpp'
+        PassPattern = '00c638e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c639a0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetReverbPan_00c639a0.cpp'
+        TestSource = '00/c6/CEaxContext_SetReverbPan_00c639a0_test.cpp'
+        PassPattern = '00c639a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63a60'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetEchoTime_00c63a60.cpp'
+        TestSource = '00/c6/CEaxContext_SetEchoTime_00c63a60_test.cpp'
+        PassPattern = '00c63a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63bc0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetModulationTime_00c63bc0.cpp'
+        TestSource = '00/c6/CEaxContext_SetModulationTime_00c63bc0_test.cpp'
+        PassPattern = '00c63bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63d20'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetSlotAirAbsorptionHF_00c63d20.cpp'
+        TestSource = '00/c6/CEaxContext_SetSlotAirAbsorptionHF_00c63d20_test.cpp'
+        PassPattern = '00c63d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63f90'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetDecayTimeScale_00c63f90.cpp'
+        TestSource = '00/c6/CEaxContext_SetDecayTimeScale_00c63f90_test.cpp'
+        PassPattern = '00c63f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c64020'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetReflectionsScale_00c64020.cpp'
+        TestSource = '00/c6/CEaxContext_SetReflectionsScale_00c64020_test.cpp'
+        PassPattern = '00c64020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c64380'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetModulationTimeScale_00c64380.cpp'
+        TestSource = '00/c6/CEaxContext_SetModulationTimeScale_00c64380_test.cpp'
+        PassPattern = '00c64380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c645d0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetDistanceFactor_00c645d0.cpp'
+        TestSource = '00/c6/CEaxContext_SetDistanceFactor_00c645d0_test.cpp'
+        PassPattern = '00c645d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c64630'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetAirAbsorptionHF_00c64630.cpp'
+        TestSource = '00/c6/CEaxContext_SetAirAbsorptionHF_00c64630_test.cpp'
+        PassPattern = '00c64630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c646e0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetHFReference_00c646e0.cpp'
+        TestSource = '00/c6/CEaxContext_SetHFReference_00c646e0_test.cpp'
+        PassPattern = '00c646e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
