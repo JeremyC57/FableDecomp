@@ -6,8 +6,8 @@
 //   operator!=(const CCharString&) 0x0099E900, CBasicString<char>::operator==(const char*) 0x004115A0 (the inline
 //   CCharString == const char*), CStringParser::ReadNextItem 0x009BA080 / SkipUntilString 0x009B9A20,
 //   CParsedItem::GetString 0x009B9880 / GetSymbol 0x009B9870, CPersistContext(parser, callback, bool, defs, symbols,
-//   text) 0x009BADD0 (no destructor), the long TransferIn 0x009E2590 (`__fastcall`), CCRCSymbolMap::AddEnumValue
-//   0x00A385A0, CCRCSymbolMap::Error 0x00A381D0 (member varargs, `this` on the stack) with the global file name 0x013D27E8.
+//   text) 0x009BADD0 (no destructor), the long TransferIn 0x009E2590 (`__fastcall`), CCRCSymbolMap::AddSymbolDirty
+//   0x00A385A0 (FableWin.pdb / Ego_r.pdb ?AddSymbolDirty@CCRCSymbolMap@@QAEXABVCCharString@@J@Z), CCRCSymbolMap::Error 0x00A381D0 (member varargs, `this` on the stack) with the global file name 0x013D27E8.
 // Layout: CStringParser retail 0x28 bytes (the landed ParseBuffer 0x00A38E50 model; the engine header carries the
 //   12-byte PDB list): the error line is the dword at +0x24. CPersistContext per Ego_r.pdb (0x2c bytes).
 #include <string.h>
@@ -88,7 +88,7 @@ struct CPersistContext {                               // 0x2c bytes
 void __fastcall TransferInLong_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 struct CCRCSymbolMap {
     void Error(const CRetailWideString& file, long line, const char* format, ...);   // 0x00A381D0
-    void AddEnumValue(const CCharString& name, long value);                         // 0x00A385A0
+    void AddSymbolDirty(const CCharString& name, long value);                       // 0x00A385A0
     bool ParseEnum(CStringParser* parser, const CCharString& wantedName);
 };
 
@@ -132,9 +132,9 @@ bool CCRCSymbolMap::ParseEnum(CStringParser* parser, const CCharString& wantedNa
             return false;
         }
         if (item.Type == 1 && item.GetSymbol() == ",") {
-            AddEnumValue(valueName, value);
+            AddSymbolDirty(valueName, value);
         } else if (item.Type == 1 && item.GetSymbol() == "}") {
-            AddEnumValue(valueName, value);
+            AddSymbolDirty(valueName, value);
             if (!parser->ReadNextItem(item)) {
                 Error(g_CRCSymbolFileName, parser->CursorLine, "Unexpected EOF in enum");
                 return false;
@@ -147,7 +147,7 @@ bool CCRCSymbolMap::ParseEnum(CStringParser* parser, const CCharString& wantedNa
             long read;
             TransferInLong_009e2590(&context, parser, &read);
             value = read;
-            AddEnumValue(valueName, read);
+            AddSymbolDirty(valueName, read);
             if (!parser->ReadNextItem(item)) {
                 Error(g_CRCSymbolFileName, parser->CursorLine, "Unexpected EOF in enum");
                 return false;

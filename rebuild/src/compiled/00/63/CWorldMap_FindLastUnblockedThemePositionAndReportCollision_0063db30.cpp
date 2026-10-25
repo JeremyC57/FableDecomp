@@ -1,15 +1,20 @@
 // CWorldMap::FindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& result) -- steps along the ground from `from` towards `to` one map cell at a time; where the ground rises above the segment's lower end it looks for a collision point inside the cell and, if found, reports it in `result`; succeeds only when the result lies inside the world area on a map
-// Leaf: FindLastUnblockedThemePositionAndReportCollision
+// Leaf: ?FindLastUnblockedThemePositionAndReportCollision@CWorldMap@@QBE_NABVC3DVector@@0AAV2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063DB30, 461 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: CWorldMap::CreateLineSegment 0x0063B3F0 (bool; start, end, next cell point, cell exit), CWorldMap::
-//   FindMaxGroundZ 0x0063B7F0 (float), CWorldMap::FindThemeCollisionPointWithinCell 0x0063D4A0 (bool), __ftol2
+//   FindMaxThemeZInCell 0x0063B7F0 (float), CWorldMap::FindThemeCollisionPointWithinCell 0x0063D4A0 (bool), __ftol2
 //   0x00BFEA70 (x2), virtual slot 17 GetMapNumberAt(const C2DCoordI&) (+0x44); 1e-4f @ 0x0129BA3C.
 // Layout: the retail CWorldMap model of the landed CWorldMap::IsPosPassable 0x004FCBD0 (Area C2DBoxI at +0x5C; the PDB
 //   header rebuild/include/engine/CWorldMap.h has 16-byte STL containers, retail 12, so Area there is +0x6C).
 // Shape: `found` lives in the dead `from` argument slot, the lower Z in the dead `to` slot.
+// Names (rename1): the cell-height callee is Ego_r.pdb ?FindMaxThemeZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z (landed 0x0063B7F0
+//   under that name); the PDB has no FindMaxThemeMinCameraZInCell. The three helpers are protected members (IBE) and this
+//   function is the public const ?FindLastUnblockedThemePositionAndReportCollision@CWorldMap@@QBE_NABVC3DVector@@0AAV2@@Z
+//   (its virtual Draw* wrapper 0x004FB2A0 jumps here; the ground twin is 0x0063D960).
 #include <math.h>
 
-struct C3DVector {
+class C3DVector {                                       // a class in the PDB (mangled V)
+public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -64,10 +69,12 @@ public:
     long            MapPlacementPitch;     // +0x58
     C2DBoxI         Area;                  // +0x5C
 
+protected:   // Ego_r.pdb: CreateLineSegment / FindMaxThemeZInCell / FindThemeCollisionPointWithinCell are protected (IBE)
     bool CreateLineSegment(const C3DVector* start, const C3DVector* end, C3DVector* next, C3DVector* cell) const;   // 0x0063B3F0
-    float FindMaxThemeMinCameraZInCell(const C3DVector* cell) const;                                                        // 0x0063B7F0
+    float FindMaxThemeZInCell(const C3DVector* cell) const;                                                                 // 0x0063B7F0
     bool FindThemeCollisionPointWithinCell(const C3DVector* start, const C3DVector* end, const C3DVector* cell,
                                             C3DVector* direction, C3DVector* collision) const;                     // 0x0063D4A0
+public:
     bool FindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& result) const;
 };
 
@@ -95,7 +102,7 @@ bool CWorldMap::FindLastUnblockedThemePositionAndReportCollision(const C3DVector
             C3DVector cell;
             more = CreateLineSegment(&pos, &to, &next, &cell);
             float lowZ = pos.Z < next.Z ? pos.Z : next.Z;
-            if (FindMaxThemeMinCameraZInCell(&cell) > lowZ) {
+            if (FindMaxThemeZInCell(&cell) > lowZ) {
                 C3DVector collision;
                 if (FindThemeCollisionPointWithinCell(&pos, &next, &cell, &direction, &collision) == true) {
                     result = collision;

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// CPersistContext::TransferBinary(T*) -- CheckCRC(\"\"), then GFSerialiseVectorBinaryOut_float @ 0x004720F1 on the save stream in mode 2, else GFSerialiseVectorBinaryIn_CRGBColour @ 0x00472123 on the load stream
+// CPersistContext::TransferBinary(T*) -- CheckCRC(""), then in mode 2 (binary load) GFSerialiseVectorBinaryIn_CRGBColour @ 0x00472123 on the load stream (+0x24), else GFSerialiseVectorBinaryOut_float @ 0x004720F1 on the save stream (+0x28)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004720C3, oracle length 46 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -20,7 +20,7 @@ void __fastcall GFSerialiseVectorBinaryIn_CRGBColour_00472123(CMemoryDataInputSt
 
 struct CPersistContext {
     unsigned char _pad0[0x18];
-    long m_mode;                           // +0x18 (EMode: 2 = save)
+    long m_mode;                           // +0x18 (EMode: 2 = binary load, 3 = binary save)
     unsigned char _pad1[8];
     CMemoryDataInputStream* m_pLoadStream; // +0x24
     CDataOutputStream* m_pSaveStream;      // +0x28

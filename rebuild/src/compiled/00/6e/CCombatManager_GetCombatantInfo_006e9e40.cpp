@@ -2,14 +2,18 @@
 // Leaf: BlockAttackerProngOnVictim
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E9E40, 124 bytes of code (`ret 4`). The manifest names the body after the inlined
 // GetCombatantInfo lookups it is made of; the method is named descriptively.
-// Callees: the combatant map's find @ 0x006F0250 (three times), CCombatWheel::BlockAttackerProng(attacker, attacker info)
-//          @ 0x006E9200 (thiscall on the victim's wheel at value +0x40; label "CDefendingCombatantInfo_BlockAttackerProng").
+// Callees: the combatant map's find @ 0x006F0250 (three times), CDefendingCombatantInfo::CCombatWheel::
+//          SetAttackerProngAsBlocked(const CThingCreatureBase& attacker, CAttackingCombatantInfo& attacker_info) @ 0x006E9200
+//          (thiscall on the victim's wheel at value +0x40; Ego_r.pdb ?SetAttackerProngAsBlocked@CCombatWheel@
+//          CDefendingCombatantInfo@@QAEXABVCThingCreatureBase@@AAVCAttackingCombatantInfo@@@Z, landed under that name;
+//          the manifest label "CDefendingCombatantInfo_BlockAttackerProng" is descriptive).
 // Shape: the creature's UniqueID is read ONCE into a local (ebx/ebp) and handed BY VALUE to the inline helpers, whose
 //          parameter copies share the 8-byte frame slot whose address goes to find (helpers taking the creature by
 //          reference re-read the id each time); an inline IsCreatureAttacking (find, `!= end()`, Attacked != 0) guards;
 //          the attacker's info is looked up again and the call's arguments are pushed before the victim's lookup that
 //          yields `this` (an inline object expression).
-struct CThingCreatureBase_Retail {
+class CThingCreatureBase {                      // a class in Ego_r.pdb (mangled V)
+public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                  // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
@@ -39,14 +43,21 @@ struct CWorld;
 struct C3DVector;
 struct CCombatantInfo;
 
-struct CCombatWheel {                           // CDefendingCombatantInfo::CCombatWheel
-    unsigned char CombatRings[12];              // +0x00 vector<CCombatRing>
-    void BlockAttackerProng(const CThingCreatureBase_Retail& attacker, const void* attackerInfo);   // 0x006E9200
-    void ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCombatantInfo* defender, const C3DVector* position);   // 0x006E80F0
+class CAttackingCombatantInfo;
+
+class CDefendingCombatantInfo {
+public:
+    class CCombatWheel {
+    public:
+        unsigned char CombatRings[12];              // +0x00 vector<CCombatRing>
+        void SetAttackerProngAsBlocked(const CThingCreatureBase& attacker, CAttackingCombatantInfo& attacker_info);   // 0x006E9200
+        void ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCombatantInfo* defender, const C3DVector* position);   // 0x006E80F0
+    };
 };
 
-struct CAttackingCombatantInfo {                // retail 0x30 bytes (PDB 0x34)
-    CThingCreatureBase_Retail* Attacked;        // +0x00
+class CAttackingCombatantInfo {                 // retail 0x30 bytes (PDB 0x34)
+public:
+    CThingCreatureBase* Attacked;        // +0x00
     long AttackerNumber;                        // +0x04
     long CombatWheelRingIndex;                  // +0x08
     bool PreferredAttackDollySet;               // +0x0c
@@ -58,10 +69,10 @@ struct CAttackingCombatantInfo {                // retail 0x30 bytes (PDB 0x34)
 };
 
 struct CCombatantInfo {                         // retail layout (Ego_r.pdb names; 12-byte vectors/maps)
-    CThingCreatureBase_Retail* Parent;          // +0x00
+    CThingCreatureBase* Parent;          // +0x00
     CAttackingCombatantInfo AttackerInfo;       // +0x04
     unsigned char Attackers[0x0c];              // +0x34 DefenderInfo.Attackers (map)
-    CCombatWheel CombatWheel;                   // +0x40 DefenderInfo.CombatWheel
+    CDefendingCombatantInfo::CCombatWheel CombatWheel;   // +0x40 DefenderInfo.CombatWheel
     unsigned char _rest[0x70 - 0x4c];
 };
 
@@ -91,14 +102,14 @@ struct CCombatManager_Retail {
         CRetailRbMap_UID_CombatantInfo::node* it = Combatants.find(uid);
         return it != Combatants.end() && it->value.AttackerInfo.Attacked != 0;
     }
-    void BlockAttackerProngOnVictim(const CThingCreatureBase_Retail& creature);
+    void BlockAttackerProngOnVictim(const CThingCreatureBase& creature);
 };
 
-void CCombatManager_Retail::BlockAttackerProngOnVictim(const CThingCreatureBase_Retail& creature)
+void CCombatManager_Retail::BlockAttackerProngOnVictim(const CThingCreatureBase& creature)
 {
     unsigned __int64 uid = creature.GetUID();
     if (IsCreatureAttacking(uid)) {
         CAttackingCombatantInfo& attackerInfo = GetCombatantInfo(uid).AttackerInfo;
-        GetCombatantInfo(attackerInfo.Attacked->GetUID()).CombatWheel.BlockAttackerProng(creature, &attackerInfo);
+        GetCombatantInfo(attackerInfo.Attacked->GetUID()).CombatWheel.SetAttackerProngAsBlocked(creature, attackerInfo);
     }
 }

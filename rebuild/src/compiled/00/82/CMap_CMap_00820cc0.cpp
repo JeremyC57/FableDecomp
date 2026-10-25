@@ -5,7 +5,7 @@
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0 (the base at +4), malloc @ 0x00BFEA0E (the brush list's
 //          0x5c-byte sentinel node), __ftol2 @ 0x00BFEA70, list<CScriptedMapBrush>::clear() @ 0x00824580,
 //          vector<CScriptedMapBrushUpdateArea>::erase(first, last) @ 0x00825CF0, CMap::InitHeightMap @ 0x0081ED90,
-//          CMap::InitGameMap @ 0x0081EE00, CMap::InitialisePalette @ 0x008F71A0, CHeightMap::Clear @ 0x008F6050 (inline CMap::Clear,
+//          CMap::InitGameMap @ 0x0081EE00, CMap::InitThemePalette @ 0x008F71A0 (protected, FableWin/Ego_r.pdb ?InitThemePalette@CMap@@IAEXXZ), CHeightMap::Clear @ 0x008F6050 (inline CMap::Clear,
 //          landed 0x0081E7E0).
 // Vtables: CIDrawMap 0x01272494 (stored by its inline ctor), CMap 0x0127252C, CMap's CBaseClassNonCopyable part 0x01272524.
 // Layout: PDB CMap (0x1d50) less the debug container words: CachedVolumes +8, ScriptedMapBrushes (sentinel pointer) +0xc,
@@ -112,9 +112,11 @@ public:
     virtual long DrawGetHeightMapSizeX() const;
     virtual long DrawGetHeightMapSizeY() const;
 
+protected:
     void InitHeightMap();                               // 0x0081ED90
     void InitGameMap();                                 // 0x0081EE00
-    void InitialisePalette();                           // 0x008F71A0
+    void InitThemePalette();                            // 0x008F71A0
+public:
     void Clear()
     {
         HeightMap->Clear();
@@ -167,7 +169,7 @@ CMap::CMap(const CGameDefinitionManager& defs, CWorld& world, unsigned long* wor
     WorldPos = worldPos;
     InitHeightMap();
     InitGameMap();
-    InitialisePalette();
+    InitThemePalette();
     Clear();
     MapUID = 0;
     ThingUIDCount = 1;

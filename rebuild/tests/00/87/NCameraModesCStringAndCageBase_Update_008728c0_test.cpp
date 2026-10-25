@@ -5,8 +5,8 @@ static int g_log[16]; static int g_n = 0;
 struct Cam {
     V3 LookAt, GoTo; float CurrentHeightOffset; bool NoSmoothing; bool autoEnabled; float autoTime, idle;
     V3 focal, thingPos; bool velocityHandled;
-    bool UpdatePositionWithVelocity(V3& p) { g_log[g_n++] = 1; if (velocityHandled) p.X += 1.0f; return velocityHandled; }
-    void UpdatePosition(V3& p) { g_log[g_n++] = 2; p.X += 2.0f; }
+    bool UpdateStringLength(V3& p) const { g_log[g_n++] = 1; if (velocityHandled) p.X += 1.0f; return velocityHandled; }
+    bool UpdateCageRadius(V3& p) const { g_log[g_n++] = 2; p.X += 2.0f; return true; }
     void UpdateAutoGoBehind(V3& p) { g_log[g_n++] = 3; p.Y += 5.0f; }
     void UpdateXYVars() { g_log[g_n++] = 4; }
     void UpdateZVars() { g_log[g_n++] = 5; }
@@ -15,7 +15,7 @@ struct Cam {
     {
         V3 goTo = GoTo;
         V3 lookAt = focal;
-        if (!UpdatePositionWithVelocity(goTo)) UpdatePosition(goTo);
+        if (!UpdateStringLength(goTo)) UpdateCageRadius(goTo);
         if (autoEnabled) { float t = idle; if (autoTime < t) UpdateAutoGoBehind(goTo); }
         UpdateXYVars(); UpdateZVars();
         goTo.Z = thingPos.Z + CurrentHeightOffset;

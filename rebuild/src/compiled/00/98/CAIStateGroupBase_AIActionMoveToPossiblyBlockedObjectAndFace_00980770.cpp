@@ -2,8 +2,8 @@
 // Grade: RELOCATION_MATCH (1117v1117)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00980770, 1120 bytes, ret 0x24.
 // Shape: alive + filter guard, user-action-point interface 0x2d, optional pre-calculated route, approach the thing,
-//   then poll GetFreeActionPoint (minion wander while waiting, timeout = fps * seconds frames), require an unclaimed
-//   interface 0x47, walk to the point and turn to face along its orientation; the point is freed on every failure.
+//   then poll GetFreeActionPoint (minion wander while waiting, timeout = fps * seconds frames), require that nobody carries
+//   the thing (its CTCCarryable, interface 0x47, has no PCarryingTC), walk to the point and turn to face along its orientation; the point is freed on every failure.
 // Notes: each `bool reached` lives in its own scope (retail packs it into the dead `route` argument slot); the
 //   final branch is written inverted (`result != 2 || !filter()` first) so the route-failure return cross-jumps to
 //   the same tail retail picks; retry loops use `if (r == 4) continue; break;`.
@@ -61,9 +61,11 @@ struct CTCUserActionPointBase {                 // interface 0x2d
     bool GetFreeActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
     void FreeActionPoint(long index);           // 0x007FEF40
 };
-struct CTCClaim {                               // interface 0x47
+class CTCCarrying;
+class CTCCarryable {                            // interface 0x47 (vtable 0x0123B35C slot 21: `push 47h ; pop eax`)
+public:
     unsigned char _pad[0x10];
-    void* Owner;                                // +0x10
+    CTCCarrying* PCarryingTC;                   // +0x10 (Ego_r.pdb CTCCarryable; the carrier, null when not carried)
 };
 struct CAIFilterBase {
     virtual bool operator()() const;            // slot 0
@@ -132,9 +134,9 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
         if (!IS_THING_ALIVE(thing) || !filter())
             return 3;
     }
-    CThing* claimed = thing.GetPItem();
-    bool hasClaim = claimed->TestTC(0x47);
-    if (!hasClaim || ((CTCClaim*)claimed->GetTC(0x47))->Owner != 0) {
+    CThing* carried = thing.GetPItem();
+    bool isCarryable = carried->TestTC(0x47);
+    if (!isCarryable || ((CTCCarryable*)carried->GetTC(0x47))->PCarryingTC != 0) {
         point->FreeActionPoint(index);
         return 3;
     }

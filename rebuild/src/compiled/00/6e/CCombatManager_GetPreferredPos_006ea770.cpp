@@ -7,17 +7,19 @@
 // ring) walked in from the wheel's attack vector in 0.25 steps until a navigable spot on the attacked's navigation layer is
 // found; otherwise the prong is blocked and the extrapolated position returned.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA770, 799 bytes, `ret 8` (hidden C3DVector result + creature).
-// Callees: CThingCreatureBase::IsRegisteredCombatant 0x00662410, combatant map find 0x006F0250 (twice, unchecked),
+// Callees: CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 (FINDINGS chunk 407; was "IsRegisteredCombatant"), combatant map find 0x006F0250 (twice, unchecked),
 //   CThing::GetPosition 0x004C73D0, CCombatWheel::ComputeAttackVector 0x006E89B0, CInterfaceMap::LowerBound (const) 0x004365B0,
-//   CThing::GetThingStandingOn (vtable +0x98), CThingCreatureBase::GetRegionAtPosition 0x00661D20,
+//   CThing::GetThingStandingOn (vtable +0x98), CThingCreatureBase::GetNavigationLevelAt 0x00661D20,
 //   CThingFindNavigationLayerAt::operator() 0x0063EFB0, CTCCreatureNavigation::IsAbleToNavigateFromPosToPos 0x006CB620,
-//   CCombatWheel::BlockAttackerProng 0x006E9200. Globals: 7.0f 0x01254D80, 1.0f 0x0122DED8, g_Epsilon 0x0129BA3C.
+//   CDefendingCombatantInfo::CCombatWheel::SetAttackerProngAsBlocked 0x006E9200 (Ego_r.pdb ?SetAttackerProngAsBlocked@
+//   CCombatWheel@CDefendingCombatantInfo@@QAEXABVCThingCreatureBase@@AAVCAttackingCombatantInfo@@@Z: non-const, so the const
+//   method casts the wheel and the info; the manifest label BlockAttackerProng is descriptive). Globals: 7.0f 0x01254D80, 1.0f 0x0122DED8, g_Epsilon 0x0129BA3C.
 // Shape notes: the normalise goes through an inline GetLength() (keeps 1/len on the x87 stack to the end: `fld Z; fmul st(1);
 //   fstp Z; fstp st(0)`); extern const g_Epsilon stops the clamp-then-test fold; user C3DVector copy ctor gives the return copy;
 //   pack(4) keeps the __int64 UID at +0x18 in the polymorphic CThing.
 // Frame: the combatant map find has a same-TU noinline body (below) so VC7.1 knows its node result is not derived from the key
 //   it was handed; with the extern declaration alone the first key's slot stays alive while &info.AttackerInfo (spilled for
-//   BlockAttackerProng) lives, and the frame grows to 60h (key spellings, pointer/reference info, block scopes, /Oa, QFE do not help).
+//   SetAttackerProngAsBlocked) lives, and the frame grows to 60h (key spellings, pointer/reference info, block scopes, /Oa, QFE do not help).
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 struct C3DVector {
@@ -81,9 +83,10 @@ struct CThing {
     }
 };
 #pragma pack(pop)
-struct CThingCreatureBase : CThing {
-    bool IsRegisteredCombatant() const;               // 0x00662410
-    long GetRegionAtPosition(const C3DVector& pos) const;   // 0x00661D20
+class CThingCreatureBase : public CThing {          // a class in Ego_r.pdb (mangled V)
+public:
+    bool IsInMeleeAsAttacker() const;                 // 0x00662410
+    long GetNavigationLevelAt(const C3DVector& pos) const;   // 0x00661D20 (Ego_r.pdb, landed under this name)
 };
 extern const float g_Epsilon;                        // 0x0129BA3C (1e-4f)
 struct CThingFindNavigationLayerAt {
@@ -92,17 +95,23 @@ struct CThingFindNavigationLayerAt {
     CThingFindNavigationLayerAt(const C3DVector& pos) : Pos(pos), Layer(0) {}
     bool operator()(CThing* thing);                   // 0x0063EFB0
 };
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo {                     // a class in Ego_r.pdb (mangled V)
+public:
     CThingCreatureBase* Attacked;                     // +0x00
     long AttackerNumber;                              // +0x04
     long CombatWheelRingIndex;                        // +0x08
     unsigned char _rest[0x30 - 0x0c];
 };
-struct CCombatWheel {
-    unsigned char CombatRings[12];
-    C3DVector ComputeAttackVector(const CThingCreatureBase& attacker, const CThingCreatureBase& defender, long ring) const;   // 0x006E89B0
-    void BlockAttackerProng(const CThingCreatureBase& attacker, const CAttackingCombatantInfo* attackerInfo) const;   // 0x006E9200
+class CDefendingCombatantInfo {
+public:
+    class CCombatWheel {
+    public:
+        unsigned char CombatRings[12];
+        C3DVector ComputeAttackVector(const CThingCreatureBase& attacker, const CThingCreatureBase& defender, long ring) const;   // 0x006E89B0
+        void SetAttackerProngAsBlocked(const CThingCreatureBase& attacker, CAttackingCombatantInfo& attacker_info);   // 0x006E9200
+    };
 };
+typedef CDefendingCombatantInfo::CCombatWheel CCombatWheel;
 struct CCombatantInfo {
     CThingCreatureBase* Parent;                       // +0x00
     CAttackingCombatantInfo AttackerInfo;             // +0x04
@@ -145,7 +154,7 @@ struct CCombatManager {
 
 C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) const
 {
-    if (creature.IsRegisteredCombatant()) {
+    if (creature.IsInMeleeAsAttacker()) {
         const CCombatantInfo& info = GetCombatantInfo(creature.GetUID());
         const CThingCreatureBase* attacked = info.AttackerInfo.Attacked;
         const CCombatantInfo& attackedInfo = GetCombatantInfo(attacked->GetUID());
@@ -160,7 +169,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
             CThing* standingOn = 0;
             if (attacked->GetThingStandingOn() && (attacked->GetThingStandingOn()->m_flags6c & 2))
                 standingOn = attacked->GetThingStandingOn();
-            long region = attacked->GetRegionAtPosition(attacked->GetPosition());
+            long region = attacked->GetNavigationLevelAt(attacked->GetPosition());
             C3DVector candidate;
             do {
                 candidate = predicted + direction * distance;
@@ -176,7 +185,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
                 if (distance < 0.0f)
                     distance = 0.0f;
             } while (distance > g_Epsilon);
-            wheel.BlockAttackerProng(creature, &info.AttackerInfo);
+            const_cast<CCombatWheel&>(wheel).SetAttackerProngAsBlocked(creature, const_cast<CAttackingCombatantInfo&>(info.AttackerInfo));
             return predicted;
         }
         return creature.GetPosition();

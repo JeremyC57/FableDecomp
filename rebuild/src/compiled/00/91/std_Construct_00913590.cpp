@@ -1,40 +1,36 @@
-// std::_Construct(CGPUScratchBufferTextureManager::CResourceEntry*, const CGPUScratchBufferTextureManager::CResourceEntry&) -- placement copy of a scratch-buffer resource entry: twelve scalar words copied member by member (no block copy)
-// Retail: Fable.exe @ 0x00913590, 75 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
-// Callees: none (inline memberwise copy); caller CGPUScratchBufferTextureManager AddResourceEntry 0x00913E70.
-// Leaf: _Construct
+// std::_Construct<CBezierCurve, CBezierCurve>(CBezierCurve*, const CBezierCurve&) -- STLport placement copy of one flight-path
+//   Bezier curve: null-checked placement new, then the implicit memberwise copy (four C3DVectors = twelve single moves)
+// Retail: Fable.exe @ 0x00913590, 75 bytes; __fastcall (ecx = element slot, edx = source element).
+// Identity: the element is CBezierCurve (Ego_r.pdb, 48 bytes = Point1..Point4), not CGPUScratchBufferTextureManager::
+//   CResourceEntry (a propagated byte-twin label): the only caller is deque<CBezierCurve>::push_back 0x00913E70, whose TU
+//   (0x009137F0 _M_initialize_map, 0x00913930 __destroy_aux, 0x00913A20 clear, 0x00913D60 _M_push_back_aux_v) serves the
+//   CAIStateGroup_FlyingThingBase flight-path deque (Ego_r.pdb AddRandomBezierCurveToPath / CalculatePrettyPath take
+//   deque<CBezierCurve>&); the neighbouring allocator 0x009135E0 allocates n * 0x30. FINDINGS chunk 406.
+// Callees: none (inline memberwise copy).
+// Leaf: ??$_Construct@VCBezierCurve@@V1@@std@@YIXPAVCBezierCurve@@ABV1@@Z
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
-namespace N00913590 {
-struct CTexture; struct CSurface;
-enum EResourceType { RESOURCE_TYPE_NONE };
-enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE };
-enum ESurfacePool { SURFACE_POOL_NONE };
-struct C2DExtentsI {
-    long X, Y;
-    C2DExtentsI(const C2DExtentsI& o) : X(o.X), Y(o.Y) { }
-};
-struct CPixelFormat { long FormatIndex; };
-struct CResourceEntry {                          // retail stride 0x30 (AddResourceEntry 0x00913E70 steps 0x30); Ego_r.pdb lists 0x2C
-    EResourceType           ResourceType;        // +0x00
-    CTexture*               Texture;             // +0x04
-    CSurface*               Surface;             // +0x08
-    long                    PageIndex;           // +0x0C
-    C2DExtentsI             Dimensions;          // +0x10
-    long                    NoLevels;            // +0x18
-    CPixelFormat            PixelFormat;         // +0x1C
-    ESurfaceMultisampleType MultiSampleType;     // +0x20
-    unsigned long           UseageFlags;         // +0x24
-    ESurfacePool            MemoryPool;          // +0x28
-    unsigned long           RetailExtra;         // +0x2C word the TLC build adds past the PDB layout (copied, meaning unknown)
-    __forceinline CResourceEntry(const CResourceEntry& o)   // memberwise copy, spelled out so VC7.1 inlines it as single moves
-        : ResourceType(o.ResourceType), Texture(o.Texture), Surface(o.Surface), PageIndex(o.PageIndex), Dimensions(o.Dimensions),
-          NoLevels(o.NoLevels), PixelFormat(o.PixelFormat), MultiSampleType(o.MultiSampleType), UseageFlags(o.UseageFlags),
-          MemoryPool(o.MemoryPool), RetailExtra(o.RetailExtra) { }
+
+class C3DVector {
+public:
+    float X;
+    float Y;
+    float Z;
+    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-// STLport _Construct: placement-copy one element (null-checked placement new, then the implicit copy constructor)
-void __fastcall _Construct(CResourceEntry* p, const CResourceEntry& value)
+class CBezierCurve {                            // Ego_r.pdb, 48 bytes
+public:
+    C3DVector Point1;                           // +0x00
+    C3DVector Point2;                           // +0x0C
+    C3DVector Point3;                           // +0x18
+    C3DVector Point4;                           // +0x24
+};
+
+namespace std {
+template <class _T1, class _T2>
+void __fastcall _Construct(_T1* __p, const _T2& __val)
 {
-    if (p != 0)
-        new (p) CResourceEntry(value);
+    new (__p) _T1(__val);
 }
+template void __fastcall _Construct<CBezierCurve, CBezierCurve>(CBezierCurve* __p, const CBezierCurve& __val);
 }

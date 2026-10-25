@@ -57,9 +57,6 @@ struct CThingVector {
     CThing_Retail* operator[](unsigned long n) const { return _M_start[n]; }
 };
 struct CThingFilter_None { CThingFilter_None() {} };
-struct CThingFilter_HasTC { CThingFilter_HasTC() {} };
-template <class F1, class F2> struct CFilter_Bind2 : public F1, public F2 { CFilter_Bind2() {} };
-typedef CFilter_Bind2<CThingFilter_None, CThingFilter_HasTC> CCreatureFilter;
 struct CThing_Retail {
     int Id;
     CScriptThing GetScriptThing()
@@ -74,7 +71,7 @@ struct CThing_Retail {
 static CThing_Retail g_creatures[3];
 static int g_creatureCount = 3;
 struct CThingSearchTools {
-    void GetAllThings(const CCreatureFilter& filter, CThingVector& out)
+    void GetAllThings(const CThingFilter_None& filter, CThingVector& out)
     {
         out._M_start = (CThing_Retail**)malloc(sizeof(CThing_Retail*) * 4);
         out._M_finish = out._M_start;
@@ -91,7 +88,7 @@ struct CGameScriptInterface {
 long CGameScriptInterface::GetAllCreaturesExcludingHero(CScriptThingVector& things) const
 {
     CThingVector found;
-    World->ThingSearchTools->GetAllThings(CCreatureFilter(), found);
+    World->ThingSearchTools->GetAllThings(CThingFilter_None(), found);
     const unsigned long count = found.size();
     things.reserve(count);
     for (unsigned long i = 0; i < count; ++i)

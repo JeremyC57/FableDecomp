@@ -36,9 +36,9 @@ public:
 };
 extern const CFontBank* g_pWordWrapFont;                     // 0x013B87AC
 
-long __cdecl WordWrapCharWidth(wchar c);                     // 0x0048E012
 void __fastcall WordWrap_SetOption(long option, long value); // 0x00A0FDB0
-void __fastcall WordWrap_SetCallback(long (__cdecl* charWidth)(wchar), void* other);   // 0x00A0FD90
+void __fastcall WordWrap_SetCallback(unsigned int (__fastcall* charWidth)(wchar),
+                                     unsigned int (__fastcall* lineHeight)());   // 0x00A0FD90
 
 struct CBase_0099a2d0 {
     virtual void v00();
@@ -71,6 +71,9 @@ public:
     void*          __vftable;                                // +0x00
     unsigned char  _pad04[0x7c - 0x04];
     unsigned long  DisplayFlags;                             // +0x7C
+    // Ego_r.pdb ?GetCharWidthW@CSubtitleRenderer@@CII_W@Z: a static __fastcall (private in the PDB; declared as the
+    // landed 0x0048E012 declares it so both files bind the same symbol). Only its address is taken here.
+    static unsigned int __fastcall GetCharWidthW(wchar character);   // 0x0048E012
     CWideString WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const;   // 0x0048DC8B
     void FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText,
                               C2DBoxF& outBox) const;
@@ -91,7 +94,7 @@ void CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank
 {
     g_pWordWrapFont = &font;
     WordWrap_SetOption(0, 1);
-    WordWrap_SetCallback(WordWrapCharWidth, 0);
+    WordWrap_SetCallback(GetCharWidthW, 0);
     outText = WordWrapText(box, font, text);
     float maxWidth = 0.0f;
     long lines = 0;

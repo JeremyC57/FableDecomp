@@ -1,10 +1,16 @@
-// CTCSoundPlayer::PlayAttachedSoundEvent(const CCharString& eventName, CSoundInit* init, long a, long b) -- play the attached sound named "<entity sound identifier>;<event>" (just the event when the thing has no entity sound def)
+// CTCSoundPlayer::PlayAttachedSoundEvent(const CCharString& eventName, bool flag, bool loop, bool attached) -- play the attached sound named "<entity sound identifier>;<event>" (just the event when the thing has no entity sound def)
+// Leaf: ?PlayAttachedSoundEvent@CTCSoundPlayer@@QAEKABVCCharString@@_N11@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066B1D0, 163 bytes (`ret 10h`).
+// Signature: Ego_r.pdb `?PlayAttachedSoundEvent@CTCSoundPlayer@@QAEKABVCCharString@@_N11@Z` (three bools; the earlier
+// `CSoundInit*, long, long` parameter list was wrong -- FINDINGS chunk 383); the bools are forwarded as whole argument slots
+// to the landed private CTCSoundPlayer::InternalPlaySoundEvent(CASoundBank&, const CCharString&, bool, bool, bool, long)
+// @ 0x0066B120 (Ego_r.pdb `...AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z`) with -1, after CThing::GetSampleBank() const
+// @ 0x004C7A80 (PDB name, as the landed 0x0066B120 / 0x0066BD00 declare it).
 // Callees: CCharString() @ 0x0099E4B0 / ~CCharString @ 0x0099EAE0, CDefClassBase::GetSubDef_0065f604(CDefPointer&) @ 0x0065F604
 // (the 'CEntitySoundDef' instantiation), CCharString::operator+=(const CCharString&) @ 0x0099F0A0, operator+=(const char*)
-// @ 0x0099F100 (";" @ 0x0123542C), the thing's sound-bank getter @ 0x004C7A80 (`this` unused: [[0x013B8A1C]+0x1c]+0x10;
-// manifest "CAnimateThing::GetMeshBank" is propagated), the by-name attached-sample player @ 0x0066B120 (bank, name, then the
-// three forwarded arguments and -1; manifest name propagated) -- both named descriptively; the def's virtual slot 1.
+// @ 0x0099F100 (";" @ 0x0123542C), CThing::GetSampleBank() const @ 0x004C7A80 (`this` unused: [[0x013B8A1C]+0x1c]+0x10;
+// manifest "CAnimateThing::GetMeshBank" is propagated), InternalPlaySoundEvent @ 0x0066B120 (bank, name, then the three
+// forwarded bools and -1); the def's virtual slot 1.
 // Layout: CThing PDef +0x70; CEntitySoundDef SoundIdentifier (CCharString) +0x48 (Ego_r.pdb +0x50 less the 8 bytes of the
 // sound map's retail containers).
 // Shape: the thing def is read into a local before the out slot is declared (its zero store sinks below the push); the
@@ -42,22 +48,24 @@ struct CEntitySoundDef : CDefBase {
 struct CDefClassBase : CDefBase {
     bool GetSubDef_0065f604(CDefOut<CEntitySoundDef>& out);   // 0x0065F604
 };
-struct CASoundBank;
-struct CSoundInit;
-struct CThing {
+class CASoundBank;
+class CThing {
+public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
-    CASoundBank* GetSoundBank_004c7a80();               // 0x004C7A80
+    CASoundBank& GetSampleBank() const;                 // 0x004C7A80
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer {
+public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    unsigned long PlayAttachedSampleByName_0066b120(CASoundBank* bank, const CCharString& name, CSoundInit* init, long a, long b,
-                                                     long index);   // 0x0066B120
-    unsigned long PlayAttachedSoundEvent(const CCharString& eventName, CSoundInit* init, long a, long b);
+    unsigned long PlayAttachedSoundEvent(const CCharString& eventName, bool flag, bool loop, bool attached);
+private:
+    unsigned long InternalPlaySoundEvent(CASoundBank& bank, const CCharString& name, bool flag, bool loop, bool attached,
+                                         long overrideID);   // 0x0066B120
 };
 
-unsigned long CTCSoundPlayer::PlayAttachedSoundEvent(const CCharString& eventName, CSoundInit* init, long a, long b)
+unsigned long CTCSoundPlayer::PlayAttachedSoundEvent(const CCharString& eventName, bool flag, bool loop, bool attached)
 {
     CCharString name;
     CDefClassBase* thingDef = ParentThing->PDef;
@@ -70,5 +78,5 @@ unsigned long CTCSoundPlayer::PlayAttachedSoundEvent(const CCharString& eventNam
     }
     name += eventName;
     CThing* thing = ParentThing;
-    return PlayAttachedSampleByName_0066b120(thing->GetSoundBank_004c7a80(), name, init, a, b, -1);
+    return InternalPlaySoundEvent(thing->GetSampleBank(), name, flag, loop, attached, -1);
 }

@@ -18,7 +18,7 @@ struct CMap {
     unsigned long MapUID; unsigned long ThingUIDCount; bool InitialisePassabilityFromThemes;
     void InitHeightMap() { logc('H'); }
     void InitGameMap() { logc('G'); }
-    void InitialisePalette() { logc('P'); }
+    void InitThemePalette() { logc('P'); }
     void ClearBrushes() { logc('b'); }
     void ClearAreas() { logc('a'); }
     void LoadFromFile(CAFile&, CASuspendableProcess*) { logc('L'); }
@@ -42,7 +42,7 @@ CMap::CMap(const void* defs, void* world, unsigned long* seed, const C2DCoordI& 
     WorldPos = worldPos;
     InitHeightMap();
     InitGameMap();
-    InitialisePalette();
+    InitThemePalette();
     Clear();
     MapUID = 0;
     ThingUIDCount = 1;
@@ -65,7 +65,7 @@ CMap::CMap(const void* defs, void* world, unsigned long* seed, long, const C2DBo
     WorldPos = C2DCoordI(area.Min.X, area.Min.Y);
     InitHeightMap();
     InitGameMap();
-    InitialisePalette();
+    InitThemePalette();
     LoadFromFile(file, p);
 }
 

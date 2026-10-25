@@ -42,7 +42,7 @@ public:
     float Alpha;
     long  FramesLeftForFade;
     CRetailVector<CBaseIntelligentPointer> FadingThings;
-    void RemoveDeadFadingThings() { ++g_removeDeadCalls; }
+    void UpdateFadingThings() { ++g_removeDeadCalls; }
     void FrameUpdate();
 };
 
@@ -54,7 +54,7 @@ void CTCFadeOutAndIn::FrameUpdate()
         ParentThing->RemoveTC(0xf9);
         return;
     }
-    RemoveDeadFadingThings();
+    UpdateFadingThings();
     if (!FadingOut && !FadingIn)
         return;
     long frames = FramesLeftForFade;

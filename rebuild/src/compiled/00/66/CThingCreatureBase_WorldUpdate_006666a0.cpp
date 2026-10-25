@@ -6,8 +6,10 @@
 //   @ 0x00838BA0, CThingCreatureBase::UpdateBodyReorientation @ 0x006622D0, CBaseIntelligentPointer::GetPItem
 //   @ 0x00A01B50 / SetPItem @ 0x00A01B90 / ctor @ 0x00A01B10 / dtor @ 0x00A01C10 (CIntelligentPointer<CThing> vtable
 //   0x01238C6C), CThing::PeekWorld @ 0x004C7AB0, CWorld::GetWorldFrame @ 0x0049D870, CThingCreatureBase::
-//   ClearLastAttackedByCreature @ 0x006691C0, LowerBound @ 0x0040F020, component 0x77's update @ 0x007C21A0 (engine_api
-//   CTCShotDefinitionBase::Update) and component 0xCD's update @ 0x008650E0 (names unproven),
+//   ClearLastAttackedByCreature @ 0x006691C0, LowerBound @ 0x0040F020, NThingShot::CTCShotDefinitionBase::Update
+//   @ 0x007C21A0 (component 0x77: its GetInterfaceType 0x004D5472 returns 0x77; Ego_r.pdb
+//   ?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ) and CTCCreatureHitNotification::UpdateHitNotification @ 0x008650E0
+//   (component 0xCD: GetInterfaceType 0x004E7FC2 returns 0xCD; Ego_r.pdb ?UpdateHitNotification@CTCCreatureHitNotification@@QAEXXZ),
 //   CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase*, CThing*, CCreatureActionBase*, long) @ 0x006A0150 and
 //   its folded destructor @ 0x005CC091, CThingCreatureBase::SetCurrentAction(const CCreatureActionBase&) @ 0x006644F0.
 // Globals: g_framesPerSecond @ 0x01375550, g_pThingManager @ 0x013B8A1C (NonScriptedEntitesPauseMode +0x54,
@@ -39,8 +41,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
 struct CTCPhysicsBase {
     float GetTurnSpeed();                               // 0x006AFF40
 };
-struct CTCInterface77 { void Update(); };               // 0x007C21A0
-struct CTCInterfaceCD { void Update(); };               // 0x008650E0
+namespace NThingShot {
+class CTCShotDefinitionBase { public: void Update(); };            // 0x007C21A0, interface 0x77
+}
+class CTCCreatureHitNotification { public: void UpdateHitNotification(); };   // 0x008650E0, interface 0xCD
 
 struct CWorld {
     static unsigned long GetWorldFrame();               // 0x0049D870 (reads the global frame; called through the world)
@@ -128,9 +132,9 @@ bool CThingCreatureBase::WorldUpdate()
             ClearLastAttackedByCreature();
     }
     if (HasTC(0x77))
-        ((CTCInterface77*)GetTC(0x77))->Update();
+        ((NThingShot::CTCShotDefinitionBase*)GetTC(0x77))->Update();
     if (HasTC(0xcd))
-        ((CTCInterfaceCD*)GetTC(0xcd))->Update();
+        ((CTCCreatureHitNotification*)GetTC(0xcd))->UpdateHitNotification();
     if (PItemToUnsheatheAfterCutscene.GetPItem() && !PItemToUnsheatheAfterCutscene.GetPItem()->Dead
         && !g_pThingManager->NonScriptedEntitesPauseMode && !g_pThingManager->AllEntitesPauseMode) {
         SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(this, PItemToUnsheatheAfterCutscene.GetPItem(), 0, 150));

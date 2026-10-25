@@ -16,8 +16,10 @@
 //   @ 0x00838BA0, CThingCreatureBase::UpdateBodyReorientation @ 0x006622D0, CBaseIntelligentPointer::GetPItem
 //   @ 0x00A01B50 / SetPItem @ 0x00A01B90 / ctor @ 0x00A01B10 / dtor @ 0x00A01C10 (CIntelligentPointer<CThing> vtable
 //   0x01238C6C), CThing::PeekWorld @ 0x004C7AB0, CWorld::GetWorldFrame @ 0x0049D870, CThingCreatureBase::
-//   ClearLastAttackedByCreature @ 0x006691C0, LowerBound @ 0x0040F020, component 0x77's update @ 0x007C21A0 (engine_api
-//   CTCShotDefinitionBase::Update) and component 0xCD's update @ 0x008650E0 (names unproven),
+//   ClearLastAttackedByCreature @ 0x006691C0, LowerBound @ 0x0040F020, NThingShot::CTCShotDefinitionBase::Update
+//   @ 0x007C21A0 (component 0x77: its GetInterfaceType 0x004D5472 returns 0x77; Ego_r.pdb
+//   ?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ) and CTCCreatureHitNotification::UpdateHitNotification @ 0x008650E0
+//   (component 0xCD: GetInterfaceType 0x004E7FC2 returns 0xCD; Ego_r.pdb ?UpdateHitNotification@CTCCreatureHitNotification@@QAEXXZ),
 //   CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase*, CThing*, CCreatureActionBase*, long) @ 0x006A0150 and
 //   its folded destructor @ 0x005CC091, CThingCreatureBase::SetCurrentAction(const CCreatureActionBase&) @ 0x006644F0.
 // Globals: g_framesPerSecond @ 0x01375550, g_pThingManager @ 0x013B8A1C (NonScriptedEntitesPauseMode +0x54,
@@ -49,8 +51,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
 struct CTCPhysicsBase {
     float GetTurnSpeed();                               // 0x006AFF40
 };
-struct CTCInterface77 { void Update(); };               // 0x007C21A0
-struct CTCInterfaceCD { void Update(); };               // 0x008650E0
+namespace NThingShot {
+class CTCShotDefinitionBase { public: void Update(); };            // 0x007C21A0, interface 0x77
+}
+class CTCCreatureHitNotification { public: void UpdateHitNotification(); };   // 0x008650E0, interface 0xCD
 
 struct CWorld {
     static unsigned long GetWorldFrame();               // 0x0049D870 (reads the global frame; called through the world)
@@ -138,9 +142,9 @@ bool CThingCreatureBase::WorldUpdate()
             ClearLastAttackedByCreature();
     }
     if (HasTC(0x77))
-        ((CTCInterface77*)GetTC(0x77))->Update();
+        ((NThingShot::CTCShotDefinitionBase*)GetTC(0x77))->Update();
     if (HasTC(0xcd))
-        ((CTCInterfaceCD*)GetTC(0xcd))->Update();
+        ((CTCCreatureHitNotification*)GetTC(0xcd))->UpdateHitNotification();
     if (PItemToUnsheatheAfterCutscene.GetPItem() && !PItemToUnsheatheAfterCutscene.GetPItem()->Dead
         && !g_pThingManager->NonScriptedEntitesPauseMode && !g_pThingManager->AllEntitesPauseMode) {
         SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(this, PItemToUnsheatheAfterCutscene.GetPItem(), 0, 150));
@@ -158,8 +162,8 @@ CThing* CBaseIntelligentPointer::GetPItem() const { return PItem; }
 void CBaseIntelligentPointer::SetPItem(CThing* item) { PItem = item; }
 float CTCPhysicsBase::GetTurnSpeed() { return 2.5f; }
 static int g_up77 = 0, g_upCD = 0, g_reorients = 0, g_clears = 0, g_sets = 0; static bool g_baseStops = false;
-void CTCInterface77::Update() { ++g_up77; }
-void CTCInterfaceCD::Update() { ++g_upCD; }
+void NThingShot::CTCShotDefinitionBase::Update() { ++g_up77; }
+void CTCCreatureHitNotification::UpdateHitNotification() { ++g_upCD; }
 static unsigned long g_frame = 0;
 unsigned long CWorld::GetWorldFrame() { return g_frame; }
 static CWorld g_world;
@@ -181,7 +185,7 @@ void CThingCreatureBase::ClearLastAttackedByCreature() { ++g_clears; PLastAttack
 int main()
 {
     static double buf[sizeof(CThingCreatureBase) / 8 + 1]; CThingCreatureBase& c = *(CThingCreatureBase*)buf;
-    static CTCPhysicsBase phys; static CTCInterface77 i77; static CTCInterfaceCD icd; static CInterfaceMap::SEntry e[3];
+    static CTCPhysicsBase phys; static NThingShot::CTCShotDefinitionBase i77; static CTCCreatureHitNotification icd; static CInterfaceMap::SEntry e[3];
     static CThing attacker, item;
     e[0].type = 0x77; e[0].component = (CTCBase*)&i77; e[1].type = 0xcd; e[1].component = (CTCBase*)&icd; e[2].type = 0x7fffffff; e[2].component = 0;
     c.m_interfaces.first = e; c.m_interfaces.last = e + 2; c.PhysicsTC = &phys;

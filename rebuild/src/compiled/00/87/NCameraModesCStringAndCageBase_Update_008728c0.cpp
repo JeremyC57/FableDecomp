@@ -1,9 +1,11 @@
 // NCameraModes::CStringAndCageBase::Update() -- step the string-and-cage camera: move the go-to point, ease both Z heights and commit go-to and look-at
-// Leaf: Update
+// Leaf: ?Update@CStringAndCageBase@NCameraModes@@
 // Retail 0x008728C0, 352 bytes, `ret`. Callees: NCameraModes::CBase::GetObservedThing 0x0084F1B0,
-// CTCGraphicAppearance::GetCameraFocalPos 0x004C12D0 (hidden C3DVector result, float), the class's private
-// UpdatePositionWithVelocity 0x008722D0 / UpdatePosition 0x00871D50 / UpdateAutoGoBehind 0x00872110 (all C3DVector&),
-// UpdateXYVars 0x00871FD0, UpdateZVars 0x00872050, CGameCameraManager::GetNoControlMovementTime 0x00697710,
+// CTCGraphicAppearance::GetCameraFocalPos 0x004C12D0 (hidden C3DVector result, float), the class's private const
+// UpdateStringLength 0x008722D0 / UpdateCageRadius 0x00871D50 (both bool: `mov al,1` / `xor al,al`; Update ignores the
+// second result) / UpdateAutoGoBehind 0x00872110 (all C3DVector&; Ego_r.pdb ?UpdateStringLength@ / ?UpdateCageRadius@
+// CStringAndCageBase@NCameraModes@@ABE_NAAVC3DVector@@@Z, ?UpdateAutoGoBehind@...@@ABEXAAVC3DVector@@@Z, in the TU order
+// UpdateAutoGoBehind, UpdateStringLength, UpdateCageRadius), private UpdateXYVars 0x00871FD0, UpdateZVars 0x00872050, CGameCameraManager::GetNoControlMovementTime 0x00697710,
 // CThing::GetPosition 0x004C73D0, NCameraModes::CBase::GetCamTools 0x0084D080 (result unused), virtual slots 28
 // (+0x70, auto-go-behind enabled), 29 (+0x74, auto-go-behind time) and 30 (+0x78, SetGoToPosition).
 // Pools: 0.0f 0x0122DEDC, 10.0f 0x01237F0C, 2.0f 0x01277538, 1.0f 0x0122DED8.
@@ -66,20 +68,21 @@ public:
     float DesiredStringLength;                                     // +0xa8
     float DesiredCageRadius;                                       // +0xac
     float CurrentHeightOffset;                                     // +0xb0
-    bool UpdatePositionWithVelocity(C3DVector& pos);               // 0x008722D0
-    void UpdatePosition(C3DVector& pos);                           // 0x00871D50
-    void UpdateAutoGoBehind(C3DVector& pos);                       // 0x00872110
+    void Update();
+private:
     void UpdateXYVars();                                           // 0x00871FD0
     void UpdateZVars();                                            // 0x00872050
-    void Update();
+    void UpdateAutoGoBehind(C3DVector& goTo) const;                // 0x00872110
+    bool UpdateStringLength(C3DVector& goTo) const;                // 0x008722D0
+    bool UpdateCageRadius(C3DVector& goTo) const;                  // 0x00871D50
 };
 void CStringAndCageBase::Update()
 {
     C3DVector goTo = GoToPosition;
     const CThingGameObject* thing = GetObservedThing();
     C3DVector lookAt = thing->Appearance->GetCameraFocalPos(1.0f);
-    if (!UpdatePositionWithVelocity(goTo))
-        UpdatePosition(goTo);
+    if (!UpdateStringLength(goTo))
+        UpdateCageRadius(goTo);
     if (IsAutoGoBehindEnabled()) {
         float idle = CameraManager->GetNoControlMovementTime();
         if (GetAutoGoBehindTime() < idle)

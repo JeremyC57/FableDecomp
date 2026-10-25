@@ -1,7 +1,13 @@
-// CTCInventoryAbilities::GetSpecialAbilityGraphicSetToButton(long) -- the icon graphic of the ability assigned to a button, 0 when the button has none
+// CTCInventoryAbilities::GetSpecialAbilityGraphicSetToButton(long) const -- the icon graphic of the ability assigned to a button, 0 when the button has none
+// Leaf: ?GetSpecialAbilityGraphicSetToButton@CTCInventoryAbilities@@QBEJJ@Z
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE31D, length 72 bytes.
-// Callees: CVectorMap<long, EHeroAbility>::LowerBound(const long&) @ 0x005F7F89 (on AbilityButtons).
+// Signature: Ego_r.pdb / FableWin.pdb ?GetSpecialAbilityGraphicSetToButton@CTCInventoryAbilities@@QBEJJ@Z (a const member).
+// Callees: CVectorMap<long, EHeroAbility, CKeyPairCompareLess<long, EHeroAbility> >::LowerBound(const long&) const @ 0x005F7F89
+//          (on AbilityButtons). Retail keeps both LowerBound instances: the const one 0x5F7F89 is called only from this const
+//          getter, the const GetSpecialAbilityPDefSetToButton 0x5EE365 and the out-of-line const Find 0x5F879E; the non-const byte twin 0x5F7F4C is called
+//          from the non-const SetAbilityToButton 0x5F6423, OnSpecialAbilityButtonPressed 0x5EED4C, SetAbilityAsAvailable and
+//          OnSerialise (FableWin.pdb has both QAE and QBE LowerBound for this map; FINDINGS chunk 380).
 // Layout: engine/CTCInventoryAbilities.h is the Ego_r.pdb layout (16-byte vectors); in the shipped class Abilities
 //         (vector<pair<long level, CDefPointer<const CHeroAbilityDef>>>) is at +0x160 and AbilityButtons
 //         (CVectorMap<long button, EHeroAbility>: {first, last, end_of_storage} of 8-byte pairs) at +0x16C.
@@ -11,6 +17,13 @@
 // Shape: CVectorMap::Find inlined as `it = LowerBound(key); return (it == end() || key < it->key) ? end() : it;`
 //        (the map pointer held in esi, then overwritten by end()), and the caller compares the result with
 //        end() re-read from the member.
+namespace std {
+template <class A, class B> struct pair {
+    A first;
+    B second;
+};
+}
+enum EHeroAbility { HERO_ABILITY_NULL };
 
 struct CHeroAbilityDef {
     unsigned char _pad_0x00[0x44];
@@ -26,39 +39,42 @@ struct CAbilityEntryVector {
     SAbilityEntry* first;                         // +0x00
     SAbilityEntry* last;                          // +0x04
     SAbilityEntry* end_of_storage;                // +0x08
-    SAbilityEntry& operator[](unsigned long n) { return first[n]; }
+    const SAbilityEntry& operator[](unsigned long n) const { return first[n]; }
 };
 
-struct SButtonEntry {                             // pair<long, EHeroAbility>
-    long Button;                                  // +0x00
-    long Ability;                                 // +0x04
+template <class K, class V> class CKeyPairCompareLess {
+public:
+    bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
 };
 
-struct CButtonMap {                               // CVectorMap<long, EHeroAbility>
-    SButtonEntry* first;                          // +0x00
-    SButtonEntry* last;                           // +0x04
-    SButtonEntry* end_of_storage;                 // +0x08
-    SButtonEntry* end() { return last; }
-    SButtonEntry* LowerBound(const long& key);    // 0x005F7F89
-    __forceinline SButtonEntry* Find(const long& key)
+template <class K, class V, class C> class CVectorMap {
+public:
+    typedef std::pair<K, V> value_type;
+    value_type* First;                            // +0x00
+    value_type* Last;                             // +0x04
+    value_type* EndOfStorage;                     // +0x08
+    const value_type* end() const { return Last; }
+    const value_type* LowerBound(const K& key) const;   // 0x005F7F89
+    __forceinline const value_type* Find(const K& key) const
     {
-        SButtonEntry* it = LowerBound(key);
-        return (it == end() || key < it->Button) ? end() : it;
+        const value_type* it = LowerBound(key);
+        return (it == end() || key < it->first) ? end() : it;
     }
 };
 
-struct CTCInventoryAbilities_Retail {
+class CTCInventoryAbilities {
+public:
     unsigned char       _pad_0x000[0x160];
     CAbilityEntryVector Abilities;                // +0x160 (PDB +0x180)
-    CButtonMap          AbilityButtons;           // +0x16C (PDB +0x190)
+    CVectorMap<long, EHeroAbility, CKeyPairCompareLess<long, EHeroAbility> > AbilityButtons;   // +0x16C (PDB +0x190)
 
-    long GetSpecialAbilityGraphicSetToButton(long button);
+    long GetSpecialAbilityGraphicSetToButton(long button) const;
 };
 
-long CTCInventoryAbilities_Retail::GetSpecialAbilityGraphicSetToButton(long button)
+long CTCInventoryAbilities::GetSpecialAbilityGraphicSetToButton(long button) const
 {
-    SButtonEntry* it = AbilityButtons.Find(button);
+    const std::pair<long, EHeroAbility>* it = AbilityButtons.Find(button);
     if (it != AbilityButtons.end())
-        return Abilities[it->Ability].PDef->IconGraphicIndex;
+        return Abilities[it->second].PDef->IconGraphicIndex;
     return 0;
 }

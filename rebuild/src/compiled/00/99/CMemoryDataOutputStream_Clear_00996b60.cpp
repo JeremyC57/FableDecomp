@@ -1,20 +1,20 @@
 // CMemoryDataOutputStream::Clear() -- empty the byte buffer and release its storage (only when it has any capacity), then rewind the write position to 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00996B60, length 83 bytes (padded to 96).
-// Leaf: Clear
-// Label correction: the catalog "_Dest_val<..., std::pair<std::pair<long,long>, CEngineTextureDecal>>" is propagated.
+// Leaf: ?Clear@CMemoryDataOutputStream@@QAEXXZ
+// Label correction: the catalog "CMemoryDataOutputStream::Reset" and the manifest "_Dest_val<..., std::pair<std::pair<long,long>,
+// CEngineTextureDecal>>" are wrong: the PDBs name no Reset on this class.
 // Ego_r.pdb lists ?Clear@CMemoryDataOutputStream@@QAEXXZ; the body works on Data (retail CArray<char>, three words at
 // +8/+0xc/+0x10) and CurrentPosition (+0x14) -- the retail layout the landed constructor 0x00996AF0 stores and
 // engine/CMemoryDataOutputStream.h already cites this row for. Callers: CWorld::SaveGameStateInternal 0x0049FDB6,
 // 0x009AE592, 0x00ADFF95, 0x00AE0005, 0x00AE3409, 0x00AE3C91, and the thunk 0x00996BD0 (`mov [ecx+18h],0 ; jmp`).
 // Callees: memmove @ 0x00BFEAE6, free @ 0x00BFEA14 (statically linked CRT).
-// Layout: the engine header with its FABLE_RETAIL_MEMORY_OUTPUT_STREAM opt-in (24 bytes); the opaque Data bytes are
-// viewed as the STLport vector model through a method-only carrier.
+// Layout: engine/CMemoryDataOutputStream.h (FABLE_RETAIL_MEMORY_OUTPUT_STREAM, 24 bytes) declares no member functions, and a
+// method-only carrier struct mangles the body as ?Clear@CMemoryDataOutputStream_Methods@@, so the class is modelled locally
+// with the header's retail offsets (Data +0x08 as the STLport vector model, CurrentPosition +0x14).
 // Shape: CArray::Clear = `if (capacity()) { clear(); swap with an empty array; }`: the STLport `erase(begin(), end())`
 // keeps __copy_trivial's unfolded `last == first` test (`cmp ecx,ecx ; je`, else memmove of 0 bytes), the swap with
 // the empty temporary zeroes the three words through one zero register, and the temporary's `_Vector_base`
 // destructor frees the old block on a null test. The zero-capacity path is a separate `mov [esi+14h],0 ; ret` exit.
-#define FABLE_RETAIL_MEMORY_OUTPUT_STREAM
-#include "engine/CMemoryDataOutputStream.h"
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 namespace std {
@@ -68,12 +68,16 @@ template <class T> struct CArray : std::vector<T> {
         }
     }
 };
-struct CMemoryDataOutputStream_Methods : ::CMemoryDataOutputStream {
-    CArray<char>& DataArray() { return *reinterpret_cast<CArray<char>*>(Data); }
+class CMemoryDataOutputStream {
+public:
+    void*         _vftable;                     // +0x00 (CDataOutputStream vptr)
+    void*         NewLine;                      // +0x04 CDataOutputStream::NewLine (CCharString)
+    CArray<char>  Data;                         // +0x08
+    unsigned long CurrentPosition;              // +0x14
     void Clear();
 };
-void CMemoryDataOutputStream_Methods::Clear()
+void CMemoryDataOutputStream::Clear()
 {
-    DataArray().Clear();
+    Data.Clear();
     CurrentPosition = 0;
 }

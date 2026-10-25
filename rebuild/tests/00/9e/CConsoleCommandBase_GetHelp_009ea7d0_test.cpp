@@ -1,4 +1,5 @@
-// Behaviour test for 0x009EA7D0 CConsoleCommandBase::GetHelp: the help text for 0, 1 and 3 parameters.
+// Behaviour test for 0x009EA7D0 CConsoleCommandBase::GetHelp: the help text for 0, 1 and 3 parameters (slot 3 is
+// GetTypeAsString, "command").
 #include <cstdio>
 #include <cstring>
 
@@ -27,15 +28,14 @@ struct CConsoleCommandParameters {
     }
 };
 struct CConsoleCommandBase {
-    const char* name;
     CConsoleCommandParameters ParamTypes;
     virtual ~CConsoleCommandBase() { }
-    virtual CCharString GetName() { return CCharString(name); }
+    virtual CCharString GetTypeAsString() const { return CCharString("command"); }
     CCharString GetHelp();
 };
 CCharString CConsoleCommandBase::GetHelp()
 {
-    CCharString help = GetName() + " with ";
+    CCharString help = GetTypeAsString() + " with ";
     if (ParamTypes.GetNumParameters() == 0) {
         help += "no parameters";
     } else {
@@ -52,13 +52,12 @@ int main()
 {
     long types[3] = { 4, 3, 5 };
     CConsoleCommandBase c;
-    c.name = "spawn";
     c.ParamTypes.m_pTypesStart = types; c.ParamTypes.m_pTypesFinish = types; c.ParamTypes.m_pTypesEnd = types + 3;
-    int ok = std::strcmp(c.GetHelp().text, "spawn with no parameters") == 0;
+    int ok = std::strcmp(c.GetHelp().text, "command with no parameters") == 0;
     c.ParamTypes.m_pTypesFinish = types + 1;
-    ok = ok && std::strcmp(c.GetHelp().text, "spawn with 1 parameter: bool ") == 0;
+    ok = ok && std::strcmp(c.GetHelp().text, "command with 1 parameter: bool ") == 0;
     c.ParamTypes.m_pTypesFinish = types + 3;
-    ok = ok && std::strcmp(c.GetHelp().text, "spawn with 3 parameters: bool float string ") == 0;
+    ok = ok && std::strcmp(c.GetHelp().text, "command with 3 parameters: bool float string ") == 0;
     if (!ok) { std::printf("009ea7d0_TEST FAIL\n"); return 1; }
     std::printf("009ea7d0_TEST PASS\n");
     return 0;

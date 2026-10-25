@@ -35,10 +35,9 @@ public:
     float GetVFontMaxHeight() const { return GFAYToVY_009e1dd0(GetMaxHeight()); }
 };
 static const CFontBank* g_pWordWrapFont = 0;
-static long WordWrapCharWidth(wchar) { return 1; }
 static int g_opt = 0; static void* g_cb = 0;
 static void WordWrap_SetOption(long, long value) { g_opt = (int)value; }
-static void WordWrap_SetCallback(long (*charWidth)(wchar), void*) { g_cb = (void*)charWidth; }
+static void WordWrap_SetCallback(unsigned int (__fastcall* charWidth)(wchar), unsigned int (__fastcall*)()) { g_cb = (void*)charWidth; }
 
 struct CWStringParser {
     const wchar* String; unsigned long StringPos;
@@ -58,13 +57,14 @@ static wstr g_wrapped;
 class CSubtitleRenderer {
 public:
     unsigned long DisplayFlags;
+    static unsigned int __fastcall GetCharWidthW(wchar) { return 1; }
     CWideString WordWrapText(const C2DBoxF&, const CFontBank&, const CWideString&) const { return CWideString(g_wrapped); }
     void FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText,
                               C2DBoxF& outBox) const
     {
         g_pWordWrapFont = &font;
         WordWrap_SetOption(0, 1);
-        WordWrap_SetCallback(WordWrapCharWidth, 0);
+        WordWrap_SetCallback(GetCharWidthW, 0);
         outText = WordWrapText(box, font, text);
         float maxWidth = 0.0f;
         long lines = 0;

@@ -57,7 +57,11 @@ struct CList : CListBase {                                  // list<CClass*>
     CList() : CListBase(CAllocator<SListNode>()) { }
 };
 
-struct CClassTypeInfo { unsigned char _body[0x20]; };
+// CClassTypeInfo is 0x14 bytes in retail: TypeList (4-byte STLport list<CClass*>) +0, NoAllocated +4, Used +8, Local +9,
+// AllocFunc +0xc, Name (CCharString) +0x10 -- Ego_r.pdb has 28 with its 12-byte list. Retail strides: __copy<CClassTypeInfo*>
+// 0x00A37C40 divides by 0x14 (0x66666667, sar 3) and steps 0x14; vector<CClassTypeInfo>::resize 0x00A38150 builds its
+// default element in a 0x14-byte frame.
+struct CClassTypeInfo { unsigned char _body[0x14]; };
 
 class CClassFactory : public CBaseClassNonCopyable {
 protected:

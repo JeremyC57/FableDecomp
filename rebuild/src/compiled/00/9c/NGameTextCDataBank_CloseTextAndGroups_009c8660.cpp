@@ -1,18 +1,22 @@
-// NGameText::CDataBank::CloseTextAndGroups() -- empty the entry table and the text and group entry buffers (VC7.1 Dinkumware erase(begin(), end()) on each: move the empty tail down, destroy the rest, rewrite the last pointer)
+// NGameText::CDataBank::CloseTextAndGroups() -- empty the entry table and the text and group entry buffers (STLport erase(begin(), end()) on each: move the empty tail down, destroy the rest, rewrite the last pointer)
 // Leaf: ?CloseTextAndGroups@CDataBank@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8660, 154 bytes (+6 int3 padding), plain `ret`.
 // Name: FableWin.pdb ?CloseTextAndGroups@CDataBank@NGameText@@IAEXXZ (protected, non-virtual). The catalog label
 // "CommitChanges" is an autoname (labels_forge_autoname2); the only callers are CDataBank::Close 0x009C8BF0 (vtable slot 5:
 // `CloseTextAndGroups(); CBankFile::Close();`) and 0x009C87DA -- see NOTES label corrections.
-// Callees: memmove @ 0x00BFEAE6 (the scalar pointer table's inline move), `__fastcall _Move(first, last, dest, tag, bool)`
+// Callees: memmove @ 0x00BFEAE6 (the scalar pointer table's inline move), `__fastcall __copy(first, last, result, const random_access_iterator_tag&, int*)`
 // @ 0x009CA660 / 0x009CA6C0 and `__fastcall _Destroy(first, last, allocator tag)` @ 0x009CABC0 / 0x009CAC00 for the two
 // 8-byte counted-pointer entry buffers.
 // Layout: Entries +0x1E0, TextEntryBuffer +0x1EC, GroupEntryBuffer +0x1F8 (retail 12-byte CArrays; see the ctor 0x009C85A0).
-// Shape: the two entry buffers go through an inline Dinkumware `erase(first, last)` called as `clear() { erase(First, Last); }`
-// (`_Move(last, Last, first, tag, false)`, `_Destroy(kept, Last, alloc)`, `Last = kept`; both empty tags homed in the high byte
+// Shape: the two entry buffers go through an inline STLport `erase(first, last)` called as `clear() { erase(First, Last); }`
+// (`__copy(last, Last, first, tag, (int*)0)`, `_Destroy(kept, Last, alloc)`, `Last = kept`; both empty tags homed in the high byte
 // of the one frame slot, as the landed CLipSyncDataBank::Close 0x00A42DA0) -- explicit locals hoist the loads above the `push 0`;
 // the pointer table's scalar move is inlined with its member operands read in place: `if (first != last)` on the two
 // identical end pointers is kept as `cmp ecx,ecx ; je` (one local for both folds the test away), then memmove + n.
+// Fixed (rename1, 2026-10-24): the out-of-line copy 0x009CA660 / 0x009CA6C0 was declared as `_Move(first, last, dest, tag&, bool)`
+//   (the Dinkumware spelling); it is STLport's counted `__copy(first, last, result, const random_access_iterator_tag&,
+//   int*)` (the landed callee body has that signature; the trailing word is the null distance pointer, pushed as 0
+//   either way), and the erase(begin(), end()) around it is STLport's, not VC6/VC7.1 Dinkumware. Bytes unchanged.
 typedef unsigned int size_t;
 extern "C" void* __cdecl memmove(void* dest, const void* src, size_t count);
 
@@ -22,7 +26,7 @@ struct CDataBankTextEntry { unsigned char m_body[8]; };
 struct CDataBankGroupEntry { unsigned char m_body[8]; };
 }
 
-struct _Nonscalar_ptr_iterator_tag { _Nonscalar_ptr_iterator_tag() { } };
+struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct _Allocator_tag { _Allocator_tag() { } };
 
 template<class T> inline T* _Move_scalar(T* first, T* last, T* dest)
@@ -34,10 +38,10 @@ template<class T> inline T* _Move_scalar(T* first, T* last, T* dest)
     return dest;
 }
 
-NGameText::CDataBankTextEntry* __fastcall _Move(NGameText::CDataBankTextEntry* first, NGameText::CDataBankTextEntry* last,
-    NGameText::CDataBankTextEntry* dest, const _Nonscalar_ptr_iterator_tag& tag, bool overlap);                       // 0x009CA660
-NGameText::CDataBankGroupEntry* __fastcall _Move(NGameText::CDataBankGroupEntry* first, NGameText::CDataBankGroupEntry* last,
-    NGameText::CDataBankGroupEntry* dest, const _Nonscalar_ptr_iterator_tag& tag, bool overlap);                      // 0x009CA6C0
+NGameText::CDataBankTextEntry* __fastcall __copy(const NGameText::CDataBankTextEntry* first, const NGameText::CDataBankTextEntry* last,
+    NGameText::CDataBankTextEntry* result, const random_access_iterator_tag&, int*);                                  // 0x009CA660
+NGameText::CDataBankGroupEntry* __fastcall __copy(const NGameText::CDataBankGroupEntry* first, const NGameText::CDataBankGroupEntry* last,
+    NGameText::CDataBankGroupEntry* result, const random_access_iterator_tag&, int*);                                 // 0x009CA6C0
 void __fastcall _Destroy(NGameText::CDataBankTextEntry* first, NGameText::CDataBankTextEntry* last, const _Allocator_tag& allocator);   // 0x009CABC0
 void __fastcall _Destroy(NGameText::CDataBankGroupEntry* first, NGameText::CDataBankGroupEntry* last, const _Allocator_tag& allocator); // 0x009CAC00
 
@@ -47,7 +51,7 @@ template<class T> struct CArray {                       // retail CArray: 12 byt
     T* End;
     T* erase(T* first, T* last)
     {
-        T* kept = _Move(last, Last, first, _Nonscalar_ptr_iterator_tag(), false);
+        T* kept = __copy(last, Last, first, random_access_iterator_tag(), (int*)0);
         _Destroy(kept, Last, _Allocator_tag());
         Last = kept;
         return first;

@@ -17,12 +17,12 @@ static int fails = 0;
 // ---- source (verbatim) ----
 // NParticleEngine::CParticleEmitter::IsVisible(float distance, const CEnginePrimitivePrepareInfo* info) -- decide whether the emitter draws this frame: work out the distance fade (2D emitters use distance 0), clear Visible, and unless sleeping either show a 2D emitter outright, or (within the draw range, past the fade-in start, with some alpha left) test the cached bounding sphere against the engine when it is valid, else rebuild it from every active system's world-space sphere (the emitter position with radius 0.1 when a system has none), test each one, and keep the new sphere when every system supplied one; each system gets the fade alpha and its own Visible flag
 // Leaf: IsVisible
-// Register plan: the 2D flag lives in bl (ebx pushed in the prologue) across the CalcFadeAlpha call. The same-TU stand-in
+// Register plan: the 2D flag lives in bl (ebx pushed in the prologue) across the GetFadeAlpha call. The same-TU stand-in
 //   must keep its MEMORY knowledge (writes no emitter flag, so the flag word stays in edi across the call) without being
 //   register-transparent: a pure x87 body preserves edx and VC7.1 then parks the flag in dl; the integer divide by a
 //   constant in the stand-in (a mul that clobbers edx, no memory writes) restores retail's bl.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AED2F0, 778 bytes (+ int3 padding), `ret 8`.
-// Callees: CParticleEmitter::CalcFadeAlpha(float) 0x00AECD70 (label "IsVisible_CalcFadeAlpha"; same TU, its body is
+// Callees: CParticleEmitter::GetFadeAlpha(float) const 0x00AECD70 (landed under that name, Ego_r/FableWin.pdb ?GetFadeAlpha@CParticleEmitter@NParticleEngine@@QBEMM@Z; catalog label was "IsVisible_CalcFadeAlpha"; same TU, its body is
 //   compiled above as the stand-in so VC7.1 knows it writes no emitter flags and keeps the flag word in edi across the
 //   call, as retail does), CParticleSystem::GetBoundingSphereWorldSpace 0x00AF3FB0, CParticleEmitter::GetPosition 0x006E1B10
 //   (ICF-shared with CTCCameraPointScripted's getter; Transform translation +0xd4), C3DBoundingSphere::AddToBounds
@@ -131,7 +131,7 @@ public:
     float                       FadeOutStart;          // +0x160
     float                       FadeInStart;           // +0x164
     float                       FadeInEnd;             // +0x168
-    float CalcFadeAlpha(float distance) const;         // 0x00AECD70
+    float GetFadeAlpha(float distance) const;         // 0x00AECD70
     bool IsSleeping() const { return Sleeping; }
     __forceinline void UpdateSystemsVisibility(float alpha)
     {
@@ -171,7 +171,7 @@ public:
 // The stand-in body is given integer work (an unsigned divide by a constant = a mul that clobbers edx) so VC7.1 keeps
 // its memory knowledge (no emitter flag is written) but not register transparency: retail's caller kept the 2D flag in
 // bl, not in dl.
-__declspec(noinline) float CParticleEmitter::CalcFadeAlpha(float distance) const
+__declspec(noinline) float CParticleEmitter::GetFadeAlpha(float distance) const
 {
     unsigned long bits = *(const unsigned long*)&distance;
     if ((bits / 7u) & 1)
@@ -189,7 +189,7 @@ __declspec(noinline) float CParticleEmitter::CalcFadeAlpha(float distance) const
 bool CParticleEmitter::IsVisible(float distance, const CEnginePrimitivePrepareInfo* info)
 {
     bool is2D = Emitter2D;
-    float alpha = CalcFadeAlpha(is2D ? 0.0f : DistanceToCam);
+    float alpha = GetFadeAlpha(is2D ? 0.0f : DistanceToCam);
     Visible = false;
     if (IsSleeping())
         return Visible;

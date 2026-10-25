@@ -1,4 +1,4 @@
-// _global::__pop_heap_aux(PairULongParamDesc* first, PairULongParamDesc* last, PairULongParamDesc*, CKeyPairCompareLess comp) -- SGI pop_heap front end for a heap of (unsigned long, particle update-parameter descriptor) pairs: move the back element out, put the root there and sift the old back element down
+// _global::__pop_heap_aux(PairULongParamDesc* first, PairULongParamDesc* last, PairULongParamDesc*, CParticleUpdateCCompareParamDesc comp) -- SGI pop_heap front end for a heap of (unsigned long, particle update-parameter descriptor) pairs: move the back element out, put the root there and sift the old back element down
 // Leaf: __pop_heap_aux
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076AC70, length 115 bytes, `ret 8` (the unused T* and the empty comparator on
 //   the stack; first/last in ecx/edx -- the SGI algorithm TUs are /Gr).
@@ -9,6 +9,11 @@
 //   __adjust_heap (16-byte stride, UNSIGNED compare of the first word). The row's `_Pop_heap_0<pair<long,EHeroAbility>*,...>`
 //   label (an 8-byte element) is propagated.
 // Callees: __adjust_heap @ 0x0076A4E0, CBaseClass::~CBaseClass @ 0x0099A2E0.
+// Fixed (rename1, 2026-10-24): the callee 0x0076A4E0 was declared as a plain `__adjust_heap(PairULongParamDesc*, long, long,
+//   PairULongParamDesc, CKeyPairCompareLess)` while that row itself defined a Dinkumware `_Adjust_heap` over another comparator;
+//   both now name the one STLport template instance std::__adjust_heap<pair<unsigned long, CParticleUpdateParamDesc<ul,ul> >*,
+//   int, pair<..>, CParticleUpdateParameters<ul,ul>::CParticleUpdateCCompareParamDesc<ul> > (the PDB comparator of this heap
+//   family; the element pair is std::pair). Bytes unchanged.
 // Shape: STLport __pop_heap_aux with __pop_heap inlined: the T(*(last - 1)) temporary is the 16-byte frame local (its
 //   implicit copy constructor stores the vptr), the pair's implicit assignment writes the root into the back slot (key,
 //   Callback, Index -- an implicit operator= never copies the vptr), the copy for __adjust_heap is built in the argument area
@@ -18,6 +23,14 @@ public:
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
 
+namespace std {
+template <class T1, class T2> struct pair {             // STLport pair: explicit copy constructor
+    T1 first;
+    T2 second;
+    pair(const pair& other) : first(other.first), second(other.second) { }
+};
+}
+
 namespace NParticleEngine {
 template <class TOwner, class TValue> class CParticleUpdateParamCallback;
 
@@ -26,31 +39,36 @@ public:
     CParticleUpdateParamCallback<TOwner, TValue>* Callback;   // +0x04
     unsigned long                                 Index;      // +0x08
 };
+
+template <class TOwner, class TValue> class CParticleUpdateParameters {
+public:
+    template <class TKey> class CParticleUpdateCCompareParamDesc {   // empty comparator (by value)
+    public:
+        bool operator()(const std::pair<TKey, CParticleUpdateParamDesc<TOwner, TValue> >& a,
+                        const std::pair<TKey, CParticleUpdateParamDesc<TOwner, TValue> >& b) const
+        {
+            return a.first < b.first;
+        }
+    };
+};
 }
 
-typedef NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> CULongParamDesc;
+typedef std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> > PairULongParamDesc;
+typedef NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareParamDesc<unsigned long> CParamDescCompare;
 
-struct PairULongParamDesc {                             // std::pair<unsigned long, CParticleUpdateParamDesc<ul,ul> >, 16 bytes
-    unsigned long   first;                              // +0x00
-    CULongParamDesc second;                             // +0x04
-    PairULongParamDesc(const PairULongParamDesc& other) : first(other.first), second(other.second) { }
-};
-
-struct CKeyPairCompareLess {                            // CKeyPairCompareLess<unsigned long, CParticleUpdateParamDesc<ul,ul> >, empty
-    CKeyPairCompareLess() { }
-};
-
-void __fastcall __adjust_heap(PairULongParamDesc* first, long holeIndex, long len, PairULongParamDesc value,
-                              CKeyPairCompareLess comp);   // 0x0076A4E0
+namespace std {
+template <class RandomAccessIter, class Distance, class T, class Compare>
+void __fastcall __adjust_heap(RandomAccessIter first, Distance holeIndex, Distance len, T value, Compare comp);   // 0x0076A4E0
+}
 
 inline void __fastcall __pop_heap(PairULongParamDesc* first, PairULongParamDesc* last, PairULongParamDesc* result,
-                                  PairULongParamDesc value, CKeyPairCompareLess comp, long*)
+                                  PairULongParamDesc value, CParamDescCompare comp, int*)
 {
     *result = *first;
-    __adjust_heap(first, 0, long(last - first), value, comp);
+    std::__adjust_heap(first, 0, int(last - first), value, comp);
 }
 
-void __fastcall __pop_heap_aux(PairULongParamDesc* first, PairULongParamDesc* last, PairULongParamDesc*, CKeyPairCompareLess comp)
+void __fastcall __pop_heap_aux(PairULongParamDesc* first, PairULongParamDesc* last, PairULongParamDesc*, CParamDescCompare comp)
 {
-    __pop_heap(first, last - 1, last - 1, PairULongParamDesc(*(last - 1)), comp, (long*)0);
+    __pop_heap(first, last - 1, last - 1, PairULongParamDesc(*(last - 1)), comp, (int*)0);
 }

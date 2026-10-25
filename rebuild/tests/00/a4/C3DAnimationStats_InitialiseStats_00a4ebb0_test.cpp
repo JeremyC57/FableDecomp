@@ -101,7 +101,7 @@ public:
 };
 class C3DAnimFile {
 public:
-    CCountedPointer<C3DAnimFileRootChunk> GetRootChunk() const;
+    CCountedPointer<C3DAnimFileRootChunk> GetRoot() const;
 };
 namespace std {
 template <class A, class B> struct pair {
@@ -142,7 +142,7 @@ public:
 // ---- body verbatim (final.cpp) ----
 void C3DAnimationStats::InitialiseStats(const C3DAnimFile& file, EAnimationType type)
 {
-    C3DAnimFileRootChunk* root = file.GetRootChunk().Object;
+    C3DAnimFileRootChunk* root = file.GetRoot().Object;
     C3DAnimationStats* const& self = this;
     AnimType = type;
     LoopFlag = root->LoopFlag;
@@ -184,7 +184,7 @@ template <class T> static CCountedPointer<T> Share(T* object)
     p.Info->m_pObject = object;
     return p;
 }
-CCountedPointer<C3DAnimFileRootChunk> C3DAnimFile::GetRootChunk() const { return Share(&g_root); }
+CCountedPointer<C3DAnimFileRootChunk> C3DAnimFile::GetRoot() const { return Share(&g_root); }
 bool C3DAnimFileRootChunk::HasHelpers() const { return g_hasHelpers != 0; }
 CCountedPointer<C3DAnimFileHelpersChunk> C3DAnimFileRootChunk::GetHelpers() { return Share(&g_helpers); }
 bool C3DAnimFileHelpersChunk::HasMovementVector() const { return g_hasMovement != 0; }

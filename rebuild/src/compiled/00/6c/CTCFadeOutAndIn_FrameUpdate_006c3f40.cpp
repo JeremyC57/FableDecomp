@@ -3,8 +3,9 @@
 //
 // Retail 0x006C3F40, 265 bytes (CTCFadeOutAndIn vtable 0x0125DA0C slot 9; the catalog calls it vfunc_9, the landed
 // FinalCleanup 0x006C3B50 calls the same slot as FrameUpdate). Callees: CThing::RemoveTC(long) @ 0x004C9840 (label
-// "CBaseObject::OnPropertyChanged" is propagated), CTCFadeOutAndIn::RemoveDeadFadingThings @ 0x006C3E80 (label
-// "Region_RemoveDeadThings", name descriptive), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, __ftol2 @ 0x00BFEA70,
+// "CBaseObject::OnPropertyChanged" is propagated), CTCFadeOutAndIn::UpdateFadingThings() @ 0x006C3E80 (Ego_r.pdb
+// `?UpdateFadingThings@CTCFadeOutAndIn@@AAEXXZ`, private; landed under that name -- the earlier descriptive
+// "RemoveDeadFadingThings" declaration bound a symbol nothing defines, FINDINGS chunk 386), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, __ftol2 @ 0x00BFEA70,
 // CTCGraphicAppearance::SetAlpha(unsigned char) @ 0x004BFAC0, CThing::SetAsDrawable(bool) (virtual slot 28, +0x70).
 // Floats: 0x0122DED8 = 1.0f, 0x0122DEE0 = -1.0f, 0x01230014 = 255.0f, 0x0129BA3C = 1e-4f (an extern variable).
 // Layout = Ego_r.pdb CTCFadeOutAndIn (0x28): FadingOut +0xc, FadingIn +0xd, Alpha +0x10, FramesLeftForFade +0x14,
@@ -71,8 +72,9 @@ public:
     float Alpha;                                            // +0x10
     long  FramesLeftForFade;                                // +0x14
     CRetailVector<CBaseIntelligentPointer> FadingThings;    // +0x18
-    void RemoveDeadFadingThings();                          // 0x006C3E80
     virtual void FrameUpdate();
+private:
+    void UpdateFadingThings();                              // 0x006C3E80
 };
 
 void CTCFadeOutAndIn::FrameUpdate()
@@ -83,7 +85,7 @@ void CTCFadeOutAndIn::FrameUpdate()
         ParentThing->RemoveTC(0xf9);
         return;
     }
-    RemoveDeadFadingThings();
+    UpdateFadingThings();
     if (!FadingOut && !FadingIn)
         return;
     long frames = FramesLeftForFade;

@@ -2,12 +2,14 @@
 // non-zero awareness), finish the current action if allowed, then, while still runnable, move to the perceived
 // position, put the enemy's stealth component in danger and play the what's-that reactions; then terminate.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093C830, length 318 bytes.
+// Leaf: ?Update@CAIStateGroup_StealthSeekEnemy@@UAEXXZ
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface 0x34 = CTCPerceiveThing, bit 20 of +0x24,
 // result pre-zeroed) and non-const @ 0x0040F020 (0x36 = CTCStealth on the enemy, bit 22 of +0x24), CBaseIntelligentPointer
 // ::GetPItem @ 0x00A01B50 (PEnemy x3), CThingCreatureBase::IsFreeToFinishAction @ 0x006621C0 / FinishCurrentAction
-// @ 0x00662650, IsStillRunnable(CTCPerceiveThing*) @ 0x0093C4E0, CTCStealth::SetAsInDanger(CThing*, EDangerStatus)
-// @ 0x00747B80, SetWhatsThatSound @ 0x0093C600, MoveOrQuit @ 0x0093C7B0, SetWhatsThatAnimation @ 0x0093C6D0,
-// Terminate @ 0x008FCF40. Constant 0.0f @ 0x0122DEDC.
+// @ 0x00662650, IsStillRunnable(const CTCPerceiveThing&) const @ 0x0093C4E0, CTCStealth::SetAsInDanger(CThing*,
+// EDangerStatus) @ 0x00747B80, SetWhatsThatSound @ 0x0093C600, MoveTowardsEnemy(const CTCPerceiveThing*) @ 0x0093C7B0,
+// SetWhatsThatAnimation(const CTCPerceiveThing*) @ 0x0093C6D0, CAIStateGroupBase::Terminate @ 0x008FCF40 (the four helpers
+// are private, signatures as Ego_r.pdb / FableWin.pdb). Constant 0.0f @ 0x0122DEDC.
 // Shape: a rotated `while (IsStillRunnable(p))` loop with &perceive->Position hoisted (ebp); DetectedPos copied
 // dword by dword (the memberwise C3DVector assignment). Engine header names (flattened base, modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
@@ -228,6 +230,7 @@ struct CAIStateGroupBase {
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+    void Terminate();                           // 0x008FCF40 (Ego_r.pdb ?Terminate@CAIStateGroupBase@@QAEXXZ)
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
     unsigned long Random(unsigned long range)
@@ -267,12 +270,12 @@ struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThing>
     C3DVector DetectedPos;                      // +0x1c
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    bool IsStillRunnable(CTCPerceiveThing* perceive);       // 0x0093C4E0
-    void SetWhatsThatSound();                   // 0x0093C600
-    void MoveOrQuit(CTCPerceiveThing* perceive);            // 0x0093C7B0
-    void SetWhatsThatAnimation(CTCPerceiveThing* perceive); // 0x0093C6D0
-    void Terminate();                           // 0x008FCF40
     virtual void Update();
+private:
+    bool IsStillRunnable(const CTCPerceiveThing& perceive) const;   // 0x0093C4E0
+    void SetWhatsThatSound();                   // 0x0093C600
+    void MoveTowardsEnemy(const CTCPerceiveThing* perceive);        // 0x0093C7B0
+    void SetWhatsThatAnimation(const CTCPerceiveThing* perceive);   // 0x0093C6D0
 };
 
 void CAIStateGroup_StealthSeekEnemy::Update()
@@ -282,13 +285,13 @@ void CAIStateGroup_StealthSeekEnemy::Update()
     if (IS_THING_ALIVE(PEnemy) && (perceive->m_heardSound || perceive->m_awareness != 0.0f)) {
         if (GetCreature()->IsFreeToFinishAction())
             GetCreature()->FinishCurrentAction();
-        while (IsStillRunnable(perceive)) {
+        while (IsStillRunnable(*perceive)) {
             DetectedPos = perceive->m_perceivedPos;
             CTCStealth* stealth;
             if (PEnemy.GetPItem()->GetInterfaceX(&stealth, 0x36))
                 stealth->SetAsInDanger(PBrain->PCreature, 1);
             SetWhatsThatSound();
-            MoveOrQuit(perceive);
+            MoveTowardsEnemy(perceive);
             SetWhatsThatAnimation(perceive);
         }
     }

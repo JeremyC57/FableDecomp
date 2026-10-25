@@ -1,44 +1,24 @@
 #include <cstdio>
-#include <cstring>
-#ifndef _MSC_VER
-#define __fastcall
-#define __stdcall
-#define __fastcall
-#define __forceinline inline
-#define __declspec(x)
-#define __int64 long long
-#endif
-typedef int LONG32;   // the retail 4-byte long (the g++ host is LP64)
-#define TEST_ADDR "009322d0"
-#define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", TEST_ADDR, __LINE__); return 1; } } while (0)
-
-static int g_compares = 0;
-struct CSortItem { int key; };
-typedef CSortItem* T;
-bool __fastcall Less(T a, T b) { ++g_compares; return a->key < b->key; }   // by-value pointer elements
-#define VALUE(p) ((p)->key)
-template <class T, class Compare>
-const T* __median(const T& a, const T& b, const T& c, Compare comp)
-{
-    if (comp(a, b)) {
-        if (comp(b, c)) return &b;
-        else if (comp(a, c)) return &c;
-        else return &a;
-    }
-    else if (comp(a, c)) return &a;
-    else if (comp(b, c)) return &c;
-    else return &b;
+// Behaviour test for 0x009322D0 std::__median<CThing*, bool (__fastcall*)(CThing*, CThing*)>: links against the source
+// object's instantiation; every permutation of three keyed things returns a reference to the median element.
+class CThing { public: int Z; };
+typedef bool (__fastcall* ThingCompare)(CThing* a, CThing* b);
+namespace std {
+template <class _Tp, class _Compare>
+const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp);
 }
+static int g_compares = 0;
+static bool __fastcall Lower(CThing* a, CThing* b) { ++g_compares; return a->Z < b->Z; }
 int main()
 {
-    CSortItem items[3]; T x[3];
+    CThing items[3]; CThing* x[3];
     int perms[6][3] = { {1,2,3}, {1,3,2}, {2,1,3}, {2,3,1}, {3,1,2}, {3,2,1} };
     for (int i = 0; i < 6; ++i) {
-        for (int j = 0; j < 3; ++j) { items[j].key = perms[i][j]; x[j] = &items[j]; }
-        const T* m = __median(x[0], x[1], x[2], Less);
-        CHECK(VALUE(*m) == 2);
+        for (int j = 0; j < 3; ++j) { items[j].Z = perms[i][j]; x[j] = &items[j]; }
+        CThing* const& m = std::__median<CThing*, ThingCompare>(x[0], x[1], x[2], &Lower);
+        if (m->Z != 2 || (&m != &x[0] && &m != &x[1] && &m != &x[2])) { std::printf("009322d0_TEST FAIL perm %d\n", i); return 1; }
     }
-    CHECK(g_compares >= 12);
+    if (g_compares < 12) { std::printf("009322d0_TEST FAIL compares\n"); return 1; }
     std::printf("009322d0_TEST PASS\n");
     return 0;
 }

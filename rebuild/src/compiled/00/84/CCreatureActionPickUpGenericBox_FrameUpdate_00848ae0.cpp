@@ -1,4 +1,4 @@
-// CCreatureAction_PickUpGenericBox::FrameUpdate() -- base FrameUpdate; finish the action when the box is gone or dead, or when its type-0x47 component holds something and the creature cannot quick-assign it
+// CCreatureAction_PickUpGenericBox::FrameUpdate() -- base FrameUpdate; finish the action when the box is gone or dead, or when its CTCCarryable (type 0x47) component has a carrier and the creature cannot quick-assign it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00848AE0, length 143 bytes.
 // Model: rebuild/include/engine/CCreatureAction_PickUpGenericBox.h is the flattened PDB layout and sits high against the bytes (CCreatureActionBase is 0xb4 bytes in the PDB, 0xa8 in retail: retail containers are 12 bytes), so `this` is a local model with the retail offsets.
 // Callees: CCreatureActionBase::FrameUpdate @ 0x00694020 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the box
@@ -49,9 +49,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCBoxContents {                     // interface type 0x47
+class CTCCarrying;
+class CTCCarryable {                        // interface type 0x47 (vtable 0x0123B35C slot 21: `push 47h ; pop eax`)
+public:
     unsigned char _pad00[0x10];
-    void* m_pContents;                      // +0x10 what the box holds (null when empty)
+    CTCCarrying* PCarryingTC;               // +0x10 (Ego_r.pdb CTCCarryable; the carrier, null when not carried)
 };
 
 struct CCreatureActionBase {                // retail sizeof 0xa8
@@ -70,9 +72,9 @@ void CCreatureAction_PickUpGenericBox::FrameUpdate()
 {
     CCreatureActionBase::FrameUpdate();
     if (IS_THING_ALIVE(PBox)) {
-        CTCBoxContents* contents;
-        PBox.GetPItem()->GetInterface(&contents, 0x47);
-        if (contents->m_pContents && !GetCanItemBeQuickAssigned())
+        CTCCarryable* carryable;
+        PBox.GetPItem()->GetInterface(&carryable, 0x47);
+        if (carryable->PCarryingTC && !GetCanItemBeQuickAssigned())
             FinishAction();
     } else {
         FinishAction();

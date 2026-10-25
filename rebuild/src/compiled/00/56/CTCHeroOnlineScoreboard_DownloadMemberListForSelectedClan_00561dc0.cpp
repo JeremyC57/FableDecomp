@@ -7,8 +7,8 @@
 // ~ 0x0099B510 / operator= 0x0099B7D0, ConvertToCharString 0x0099B2C0, CCharString(const char*, long) 0x0099EBF0 / ()
 // 0x0099E4B0 / ~ 0x0099EAE0, ToWideString 0x0099E480, operator+ 0x0099F570 / 0x0099F600 (__fastcall), the std::string range
 // init 0x005672D0 (malloc-backed; freed through the CRT free thunk 0x00BFEA14), ResetAndOpenHTTPAndPrepareRequest 0x0055F710,
-// UpdateTransaction 0x0055FB80, GetDecryptedDocument 0x00560BB0, operator==(const std::string&, const char*) 0x00566EA0 (as
-// named by the landed UploadPlayerScores; it returns true on a mismatch), ~vector<std::string> 0x00569940,
+// UpdateTransaction 0x0055FB80, GetDecryptedDocument 0x00560BB0, operator!=(const std::string&, const char*) 0x00566EA0 (the
+// landed std::operator!= row: true on a mismatch), ~vector<std::string> 0x00569940,
 // ReplaceDoubleApostrophes 0x0055ECB0 (__fastcall, std::string by value), GFCharStringToInt 0x0099E7F0,
 // list<CClanMember>::push_back 0x00567FC0, LHHttp2::~LHHttp2 0x008410D0, operator delete 0x00BFE9BC.
 // Layout: as the landed UploadPlayerScores 0x00561450 (PHttp +0x0c, TaskState +0x54), SessionID +0x34, SelectedClan +0x3c, ClanMembers +0x40.
@@ -17,7 +17,7 @@
 // "\r\n" + SelectedClan.ConvertToCharString() + "\r\n" (the two inline by-value getters are hoisted before the pushes);
 // the reply lines are consumed with `lines[i++]` three times per member, the id through an implicit const char* ->
 // CCharString conversion. Same-TU noinline stand-ins (GetDecryptedDocument, ~vector<std::string>,
-// ReplaceDoubleApostrophes, operator==, and std::string's range init with the allocator parameter unnamed, which lets the
+// ReplaceDoubleApostrophes, operator!=, and std::string's range init with the allocator parameter unnamed, which lets the
 // allocator temporary share the busy flag's byte) keep the locals from escaping as in retail.
 extern "C" void __cdecl free(void* block);
 extern "C" unsigned int __cdecl strlen(const char* text);
@@ -67,7 +67,7 @@ struct LHString {                                    // PDB std::basic_string<ch
     const char* c_str() const { return m_pStart; }
     void Initialise(const char* first, const char* last, const CStringAllocator& a);   // 0x005672D0
 };
-bool operator==(const LHString& left, const char* right);    // 0x00566EA0
+bool operator!=(const LHString& left, const char* right);    // 0x00566EA0
 LHString __fastcall ReplaceDoubleApostrophes(const LHString& text);   // 0x0055ECB0
 
 struct LHStringVector {                              // vector<std::string>
@@ -152,7 +152,7 @@ __declspec(noinline) LHString __fastcall ReplaceDoubleApostrophes(const LHString
 {
     return LHString(text.m_pStart, text.m_pFinish, text.m_pEndOfStorage);
 }
-__declspec(noinline) bool operator==(const LHString& left, const char* right)
+__declspec(noinline) bool operator!=(const LHString& left, const char* right)
 {
     return strcmp(left.c_str(), right) != 0;
 }
@@ -181,7 +181,7 @@ CTCHeroOnlineScoreboard::ENetworkSuccess CTCHeroOnlineScoreboard::DownloadMember
             count = GetDecryptedDocument(lines, key);
         }
         if (count > 0) {
-            if (lines[0] == "SID:OK")
+            if (lines[0] != "SID:OK")
                 return NETWORK_BUSY;
             for (int i = 1; i < count; ) {
                 LHString name = ReplaceDoubleApostrophes(lines[i++]);
@@ -190,7 +190,7 @@ CTCHeroOnlineScoreboard::ENetworkSuccess CTCHeroOnlineScoreboard::DownloadMember
                 CClanMember member;
                 member.Name = CCharString(name.c_str(), -1).ToWideString();
                 member.MemberID = id;
-                if (description == "NO_DESCRIPTION")
+                if (description != "NO_DESCRIPTION")
                     member.Description = CCharString(description.c_str(), -1).ToWideString();
                 ClanMembers.push_back(member);
             }

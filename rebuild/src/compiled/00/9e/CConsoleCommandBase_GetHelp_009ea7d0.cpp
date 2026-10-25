@@ -1,7 +1,8 @@
-// CConsoleCommandBase::GetHelp() -- "<name> with no parameters" / "<name> with N parameter[s]: <type> <type> ..."
+// CConsoleCommandBase::GetHelp() -- "command with no parameters" / "command with N parameter[s]: <type> <type> ..."
 // Leaf: ?GetHelp@CConsoleCommandBase
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EA7D0, 313 bytes, `?GetHelp@CConsoleCommandBase@@MAE?AVCCharString@@XZ`.
-// Callees: virtual slot 3 (+0xc, the command name by value), operator+(const CCharString&, const char*) 0x0099F600
+// Callees: virtual slot 3 (+0xc) GetTypeAsString() const (0x00414F70, returns "command" by value; vtable 0x0122E638:
+//   0 deleting dtor, 1 ProcessCommandLine, 2 GetFormattedName, 3 GetTypeAsString, 4 GetHelp), operator+(const CCharString&, const char*) 0x0099F600
 //   (__fastcall, hidden result in ecx), GFIntToCharString(long) 0x0099F830 (__fastcall), CCharString::operator+=
 //   (const char*) 0x0099F100 / (const CCharString&) 0x0099F0A0, CConsoleCommandParameters::GetParameterTypeAsString
 //   (long) 0x009EA740 (landed), CCharString copy ctor 0x0099EC30, ~CCharString 0x0099EAE0.
@@ -11,7 +12,7 @@
 //   array, so `this` is modelled locally: the parameter types are an STLport vector<long> at +0x08 whose count
 //   is read through an inline `long GetNumParameters()` (signed compares: `jle`/`jl`, `and ~3 ; cmp 4`).
 // Shape: same family as the landed CConsoleVariable::GetHelp 0x009EA3C0: copy-initialised from
-//   `GetName() + " with "`, `help += a + b` temporaries destroyed in reverse order, and the return copies
+//   `GetTypeAsString() + " with "`, `help += a + b` temporaries destroyed in reverse order, and the return copies
 //   the named local (no NRVO).
 struct CCharStringData;
 
@@ -34,10 +35,10 @@ struct CConsoleCommandParameters {
 };
 
 struct CConsoleCommandBase {
-    virtual void v00();
-    virtual void v01();
-    virtual void v02();
-    virtual CCharString GetName();                               // slot 3 (+0xc)
+    virtual void v00();                                          // slot 0 scalar deleting destructor
+    virtual void v01();                                          // slot 1 ProcessCommandLine
+    virtual void v02();                                          // slot 2 GetFormattedName
+    virtual CCharString GetTypeAsString() const;                 // slot 3 (+0xc) 0x00414F70
     unsigned char m_field4;                                      // +0x04
     unsigned char _pad05[3];
     CConsoleCommandParameters ParamTypes;                        // +0x08
@@ -46,7 +47,7 @@ struct CConsoleCommandBase {
 
 CCharString CConsoleCommandBase::GetHelp()
 {
-    CCharString help = GetName() + " with ";
+    CCharString help = GetTypeAsString() + " with ";
     if (ParamTypes.GetNumParameters() == 0) {
         help += "no parameters";
     } else {

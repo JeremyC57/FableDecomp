@@ -27,7 +27,7 @@ struct CTCCreatureOpinionOfHero {
     void SetOpinionDeedMask(const CCharString& n) { strcpy(Deed, n.Text); }
     void SetPersonalityOverride(const CCharString& n, bool f) { strcpy(Personality, n.Text); Force = f; }
     void ClearAllKnownDeeds() { ++Cleared; }
-    void ApplyOpinionTransientOffset(long type, float amount, long, long frames, float decay, long)
+    void ApplyOpinionTransientOffset(long type, float amount, long, long frames, float decay, bool)
     { Offsets[type] = amount; Frames[type] = frames; Decay[type] = decay; ++NumOffsets; }
 };
 struct CTCHeroStats {

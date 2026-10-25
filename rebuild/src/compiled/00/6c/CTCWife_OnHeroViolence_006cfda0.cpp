@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CFDA0, 209 bytes (+15 int3). __fastcall, `ret`.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCWife::SetAttractionIcon(bool, float, unsigned char) 0x006CFC90;
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020; __ftol2 0x00BFEA70;
-//          CTCCreatureOpinionOfHero::ApplyOpinionTransientOffset(long, float, long, long, float, long) 0x00682140 (manifest
+//          CTCCreatureOpinionOfHero::ApplyOpinionTransientOffset(long, float, long, long, float, bool) 0x00682140 (manifest
 //          label, module unattributed; called on interface 0x4f). Globals: g_framesPerSecond 0x01375550.
 // Shape: the unmarried arm stores CourtingBlocked (+0x15) and LoveAttitudeValue (+0x8c, PDB +0x90: the retail map at +0x78
 //        is 12 bytes) between the pushes and the SetAttractionIcon(false, 1.0f, 0xff) call. The married arm uses the
@@ -50,7 +50,7 @@ struct CHeroMarriageDef {
     float PersistEffectWifeOnViolenceHateSpike; // +0x98
 };
 struct CTCCreatureOpinionOfHero {
-    void ApplyOpinionTransientOffset(long attitude, float peak, long unused, long runOutFrames, float persist, long flag);   // 0x00682140
+    void ApplyOpinionTransientOffset(long attitude, float peak, long unused, long runOutFrames, float persist, bool ignorePersonality);   // 0x00682140 (6th parameter bool: retail tests it as a byte)
 };
 struct CTCWife {
     virtual void v00();

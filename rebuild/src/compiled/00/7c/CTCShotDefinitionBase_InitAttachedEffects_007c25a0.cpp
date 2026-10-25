@@ -17,9 +17,9 @@ struct C3DVector {
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
-struct CBaseClass {                                     // vtable 0x01231710
-    virtual void v00();
+struct CBaseClass {                                     // vtable 0x01231710 (RTTI .?AVCBaseClass@@)
     CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // slot 0: Ego_r.pdb ??1CBaseClass@@UAE@XZ (scalar deleting dtor 0x004371F0)
 };
 namespace NParticleEngine {
 struct SVectorParam {                                   // pair<unsigned long, C3DVector>

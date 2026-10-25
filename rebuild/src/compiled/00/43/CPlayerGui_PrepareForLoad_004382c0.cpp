@@ -1,19 +1,26 @@
-// CPlayerGui::PrepareForLoad() -- tells every GUI illustrator (CDrawBase) to prepare for a load
+// CPlayerGui::PrepareForLoad() -- tells every GUI illustrator (CDrawBase) to clear its primitives before a load
 // Leaf: PrepareForLoad@CPlayerGui
 // Retail: Fable.exe @ 0x004382C0, 30 bytes. Catalog label CWorldMap::PrepareForLoad is wrong: CWorldMap is 0xfc bytes, and the
 // only caller CQuestManager::UpdateUI_QuestMenu 0x0056AEAD calls it on [0x013B8790], the same object it hands to
 // CPlayerGui 0x00438400 just before. Ego_r.pdb ?PrepareForLoad@CPlayerGui@@QAEXXZ.
-// Body: std::for_each(Illustrators.begin(), Illustrators.end(), std::mem_fun(&NPlayerGui::CDrawBase::PrepareForLoad)) --
+// Body: std::for_each(Illustrators.begin(), Illustrators.end(), std::mem_fun(&NPlayerGui::CDrawBase::ClearPrimitives)) --
 // STLport for_each 0x0043F310 is __fastcall (hidden return slot in ecx, first in edx, last and the functor on the stack);
 // 0x0043E430 is the compiler's vcall thunk for CDrawBase slot 1 (`mov eax,[ecx] ; jmp [eax+4]`; base body is a bare `ret`).
-// The slot-1 name PrepareForLoad is inferred (Ego_r.pdb gives no name for it).
+// Corrected (rename1, 2026-10-24): CDrawBase has no virtual destructor -- its vtables are two slots long (e.g.
+//   CDrawMoney 0x0125A544, CDrawMiniMap 0x0125A634): slot 0 = ClearPrimitivesIfNecessary (landed per-class overrides
+//   0x00646567, 0x00645829, 0x00643DE5; PDB ?ClearPrimitivesIfNecessary@CDrawBase@NPlayerGui@@UAEXXZ) and slot 1 =
+//   ClearPrimitives (landed CDrawMiniMap override 0x00644660, the empty base 0x00442760; PDB
+//   ?ClearPrimitives@CDrawBase@NPlayerGui@@UAEXXZ). The earlier comments called slot 0 a virtual destructor and
+//   slot 1 an inferred "PrepareForLoad"; bytes are unchanged (no vtable is emitted here).
+// Renamed (rename1, 2026-10-24) from the catalog name CWorldMap::PrepareForLoad (this source, its symbol and the ps1
+//   Module already said CPlayerGui).
 // Layout: Illustrators (STLport vector<NPlayerGui::CDrawBase*>) at retail +0x2c0 (Ego_r.pdb +0x2d0); engine/CPlayerGui.h has
 // the PDB offsets, so the class is modelled locally as in ForceOpen 0x004374D0.
 namespace NPlayerGui {
 class CDrawBase {
 public:
-    virtual ~CDrawBase();                                // slot 0
-    virtual void PrepareForLoad();                       // slot 1
+    virtual void ClearPrimitivesIfNecessary();           // slot 0
+    virtual void ClearPrimitives();                      // slot 1
 };
 }
 namespace std {
@@ -45,5 +52,5 @@ public:
 };
 void CPlayerGui::PrepareForLoad()
 {
-    std::for_each(Illustrators.begin(), Illustrators.end(), std::mem_fun(&NPlayerGui::CDrawBase::PrepareForLoad));
+    std::for_each(Illustrators.begin(), Illustrators.end(), std::mem_fun(&NPlayerGui::CDrawBase::ClearPrimitives));
 }

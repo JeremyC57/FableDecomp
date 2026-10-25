@@ -5,8 +5,9 @@
 // CCharString) gets SActionParamPair{1} through SetActionParameter (slot 62; pair ctor 0x0042BED4, copy 0x0042CD84, list
 // dtor 0x0042ABCA); a fresh list of that definition is created (CManager::GetInstance 0x0041E5F2 -> CreateComponent
 // 0x0041DB1D), viewed as a CList (CCountedPointer ShareData 0x0059AA86, dtor 0x0059A994) and added to the menu (AddChild,
-// slot 59). A "new profile" button (text JustGetTheFrikkingText2("TEXT_GUI_MENU_NEW_PROFILE") 0x0099B6A0, the PDB's
-// __fastcall text lookup; CreateFrontEndButtonComponent 0x00596A68 with "UI_FRONTEND_BUTTON_FOR_PROFILES_LIST" at y 0)
+// slot 59). A "new profile" button (text CWideString::CreateFromCharString("TEXT_GUI_MENU_NEW_PROFILE") 0x0099B6A0, the
+// PDB's static __fastcall widening of the tag itself -- not the JustGetTheFrikkingText2 0x0057AD4C text lookup;
+// CreateFrontEndButtonComponent 0x00596A68 with "UI_FRONTEND_BUTTON_FOR_PROFILES_LIST" at y 0)
 // carries a CAction of type 0x125 (operator new 0x00BFEA1A, CAction 0x0042BE50, CCountedPointer<CAction> 0x0042AA29 / dtor
 // 0x00429160) as its action and left-click action (slots 66 / 71) and is added to the list (AddChildDynamically, slot
 // 60). Each profile then gets a button at y = 50 + 30 * i whose action is 0x124 when the profile's save passes the
@@ -38,9 +39,8 @@ class CWideString
 public:
     void* PStringData;
     ~CWideString();                                       // 0x0099B510
+    static CWideString __fastcall CreateFromCharString(const CCharString& text);   // 0x0099B6A0
 };
-
-CWideString __fastcall JustGetTheFrikkingText2(const CCharString& textId);   // 0x0099B6A0
 extern "C" void __cdecl free(void* block);
 
 namespace std {
@@ -229,7 +229,7 @@ long CFrontEndManager::RefreshAvailableProfiles()
     CCountedPointer<CList> list(newList);
     menu->AddChild(newList);
 
-    CWideString newProfileText = JustGetTheFrikkingText2("TEXT_GUI_MENU_NEW_PROFILE");
+    CWideString newProfileText = CWideString::CreateFromCharString("TEXT_GUI_MENU_NEW_PROFILE");
     CCountedPointer<CComponent> newProfileButton(
         CreateFrontEndButtonComponent(newProfileText, 0.0f, "UI_FRONTEND_BUTTON_FOR_PROFILES_LIST", "", true));
     CCountedPointer<CAction> newProfileAction(new CAction);

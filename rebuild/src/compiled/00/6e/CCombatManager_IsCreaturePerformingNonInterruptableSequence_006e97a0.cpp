@@ -11,9 +11,9 @@
 //   CCombatSequenceBase Running +4.
 // Shape: the inline GetCombatantInfo (the key temporary in the frame, no end() test); the sequence index is only tested
 //   for >= 0; the sequence is read as a raw pointer (`mov ecx,[eax+ecx*8]`; a reference to the counted pointer adds a
-//   `lea`); `return !sequence->IsInterruptable();` gives `neg al ; sbb al,al ; inc al` only with a byte-sized
-//   (`unsigned char`) result -- a `bool` return widens it to `sbb eax,eax ; inc eax` in this lane (the brief's "bool
-//   result with no xor eax,eax is unsigned char"; the PDB type is bool, the leaf is matched by prefix).
+//   `lea`); the PDB return type is bool (QBE_N): `return sequence->IsInterruptable() ? false : true;` gives retail's
+//   byte-wide `neg al ; sbb al,al ; inc al` (as does `(bool)!x`), while a plain `return !x;` from a bool function widens
+//   it to `sbb eax,eax ; inc eax` in this lane (the earlier landing used an `unsigned char` result for that reason).
 class CThingCreatureBase {
 public:
     unsigned char    _pad[0x18];
@@ -79,16 +79,16 @@ public:
     {
         return Combatants.find(creature.GetUID())->value;
     }
-    unsigned char IsCreaturePerformingNonInterruptableSequence(const CThingCreatureBase& creature) const;   // PDB: bool
+    bool IsCreaturePerformingNonInterruptableSequence(const CThingCreatureBase& creature) const;
 };
 
-unsigned char CCombatManager::IsCreaturePerformingNonInterruptableSequence(const CThingCreatureBase& creature) const
+bool CCombatManager::IsCreaturePerformingNonInterruptableSequence(const CThingCreatureBase& creature) const
 {
     const CCombatantInfo& info = GetCombatantInfo(creature);
     if (info.AttackerInfo.CurrentSequence >= 0) {
         const CCombatSequenceBase* sequence = info.AttackerInfo.CombatSequences[info.AttackerInfo.CurrentSequence].Data;
         if (sequence->Running)
-            return !sequence->IsInterruptable();
+            return sequence->IsInterruptable() ? false : true;
     }
     return false;
 }

@@ -84,7 +84,7 @@ struct CTCCreatureOpinionOfHero {
     void SetOpinionDeedMask(const CCharString& name);       // 0x006822E0
     void SetPersonalityOverride(const CCharString& name, bool force);   // 0x006820E0
     void ClearAllKnownDeeds();                  // 0x00681A70
-    void ApplyOpinionTransientOffset(long type, float amount, long a, long frames, float decay, long b);   // 0x00682140
+    void ApplyOpinionTransientOffset(long type, float amount, long a, long frames, float decay, bool ignorePersonality);   // 0x00682140 (6th parameter bool: retail tests it as a byte)
 };
 struct CTCHeroStats {
     unsigned char _pad00[0x28];

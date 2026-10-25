@@ -5,7 +5,7 @@
 //   argument is unused (MapUID is cleared, not taken from it).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0, malloc @ 0x00BFEA0E (brush-list sentinel), __ftol2 @ 0x00BFEA70,
 //          list<CScriptedMapBrush>::clear() @ 0x00824580, vector<CScriptedMapBrushUpdateArea>::erase @ 0x00825CF0,
-//          CMap::InitHeightMap @ 0x0081ED90, CMap::InitGameMap @ 0x0081EE00, CMap::InitialisePalette @ 0x008F71A0,
+//          CMap::InitHeightMap @ 0x0081ED90, CMap::InitGameMap @ 0x0081EE00, CMap::InitThemePalette @ 0x008F71A0 (protected, FableWin/Ego_r.pdb ?InitThemePalette@CMap@@IAEXXZ),
 //          CMap::LoadFromFile(CAFile&, CASuspendableProcess*) @ 0x00821A80.
 // Vtables / layout: as the sibling constructor 0x00820CC0 (same TU): CIDrawMap 0x01272494, CMap 0x0127252C / 0x01272524.
 // Shape: the UID counters and the passability flag are set first; world size = area extents, game-map size = world size / 4,
@@ -113,9 +113,11 @@ public:
     virtual long DrawGetHeightMapSizeX() const;
     virtual long DrawGetHeightMapSizeY() const;
 
+protected:
     void InitHeightMap();                               // 0x0081ED90
     void InitGameMap();                                 // 0x0081EE00
-    void InitialisePalette();                           // 0x008F71A0
+    void InitThemePalette();                            // 0x008F71A0
+public:
     void LoadFromFile(CAFile& file, CASuspendableProcess* process);   // 0x00821A80
     void Clear()
     {
@@ -172,6 +174,6 @@ CMap::CMap(const CGameDefinitionManager& defs, CWorld& world, unsigned long* wor
     WorldPos = C2DCoordI(area.Min.X, area.Min.Y);
     InitHeightMap();
     InitGameMap();
-    InitialisePalette();
+    InitThemePalette();
     LoadFromFile(file, process);
 }

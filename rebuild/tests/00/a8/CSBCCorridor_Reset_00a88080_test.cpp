@@ -1,40 +1,45 @@
+// Link test for 0x00A88080: the source object's CSBCCorridor::Reset (and its vtable) clears a three-wall STLport list of
+// 24-byte CWall nodes and re-links the sentinel; the members behind the one-word list are untouched.
 #include <cstdio>
 #include <cstdlib>
-// Behaviour model of 0x00A88080: CSBCCorridor::Reset frees every wall node and re-links the sentinel.
-static int g_freed = 0;
-static void FreeNode(void* p) { ++g_freed; std::free(p); }
-struct CWall { float m_start[2]; float m_end[2]; };
+class C2DVector { public: float X, Y; };
+class CWall { public: C2DVector Point1; C2DVector Point2; C2DVector ToInternal; };
 struct CRetailWallList {
     struct node { node* next; node* prev; CWall value; };
     node* m_pNode;
-    void clear()
-    {
-        node* n = m_pNode->next;
-        while (n != m_pNode) { node* victim = n; n = n->next; FreeNode(victim); }
-        m_pNode->next = m_pNode; m_pNode->prev = m_pNode;
-    }
-    void push_back()
+    void push_back(float x)
     {
         node* n = (node*)std::malloc(sizeof(node));
+        n->value.Point1.X = x;
         n->next = m_pNode; n->prev = m_pNode->prev; m_pNode->prev->next = n; m_pNode->prev = n;
     }
 };
-struct CSBCCorridor {
-    virtual ~CSBCCorridor() {}
+class CSBCCorridor {
+public:
+    virtual void Reset();                      // from the source object (with the vtable)
+    unsigned char   _base[0x14];
     CRetailWallList Walls;
-    virtual void Reset() { Walls.clear(); }
+    C2DVector       CurrentEndPoint;
+    float           BestLeft;
+    float           BestRight;
 };
 int main()
 {
-    CSBCCorridor c; c.Walls.m_pNode = (CRetailWallList::node*)std::malloc(sizeof(CRetailWallList::node));
-    c.Walls.m_pNode->next = c.Walls.m_pNode; c.Walls.m_pNode->prev = c.Walls.m_pNode;
-    c.Walls.push_back(); c.Walls.push_back(); c.Walls.push_back();
-    c.Reset();
-    if (g_freed != 3 || c.Walls.m_pNode->next != c.Walls.m_pNode || c.Walls.m_pNode->prev != c.Walls.m_pNode)
-        { std::printf("00a88080_TEST FAIL\n"); return 1; }
-    c.Reset();                                 // empty list: nothing freed
-    if (g_freed != 3) { std::printf("00a88080_TEST FAIL\n"); return 1; }
-    std::free(c.Walls.m_pNode);
+    int ok = sizeof(CWall) == 24 && sizeof(CRetailWallList::node) == 0x20 && sizeof(CSBCCorridor) == 0x2C;
+    CSBCCorridor* c = new CSBCCorridor;
+    c->Walls.m_pNode = (CRetailWallList::node*)std::malloc(sizeof(CRetailWallList::node));
+    c->Walls.m_pNode->next = c->Walls.m_pNode; c->Walls.m_pNode->prev = c->Walls.m_pNode;
+    c->BestLeft = 1.5f; c->BestRight = 2.5f;
+    c->Walls.push_back(1.0f); c->Walls.push_back(2.0f); c->Walls.push_back(3.0f);
+    ok = ok && c->Walls.m_pNode->next->next->next->value.Point1.X == 3.0f;
+    c->Reset();
+    ok = ok && c->Walls.m_pNode->next == c->Walls.m_pNode && c->Walls.m_pNode->prev == c->Walls.m_pNode;
+    ok = ok && c->BestLeft == 1.5f && c->BestRight == 2.5f;
+    c->Reset();                                // empty list: nothing to free
+    ok = ok && c->Walls.m_pNode->next == c->Walls.m_pNode;
+    std::free(c->Walls.m_pNode);
+    delete c;
+    if (!ok) { std::printf("00a88080_TEST FAIL\n"); return 1; }
     std::printf("00a88080_TEST PASS\n");
     return 0;
 }

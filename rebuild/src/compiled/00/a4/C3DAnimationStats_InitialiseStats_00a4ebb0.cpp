@@ -1,7 +1,7 @@
 // C3DAnimationStats::InitialiseStats(const C3DAnimFile&, EAnimationType) -- type, loop flag and duration from the root chunk, the movement vector and every timing event from its helpers chunk
 // Leaf: InitialiseStats
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4EBB0, 604 bytes (`ret 8`, ebp frame aligned to 8).
-// Callees: C3DAnimFile::GetRootChunk @ 0x00A537F0, C3DAnimFileRootChunk::HasHelpers @ 0x00A99280 / GetHelpers @ 0x00A99390,
+// Callees: C3DAnimFile::GetRoot @ 0x00A537F0 (Ego_r.pdb / FableWin.pdb ?GetRoot@C3DAnimFile@@; no C3DAnimFile symbol is named GetRootChunk), C3DAnimFileRootChunk::HasHelpers @ 0x00A99280 / GetHelpers @ 0x00A99390,
 //          C3DAnimFileHelpersChunk::HasMovementVector @ 0x00AAE4D0 / GetMovementVector @ 0x00AAE5B0 / FindFirstEvent
 //          @ 0x00AAE7B0 / FindNextEvent @ 0x00AAE840, CCharString copy ctor @ 0x0099EC30 / dtor @ 0x0099EAE0,
 //          CEventMap::insert @ 0x00A54B50, operator delete @ 0x00BFE9BC (the inline CCountedPointer releases).
@@ -97,7 +97,7 @@ public:
 };
 class C3DAnimFile {
 public:
-    CCountedPointer<C3DAnimFileRootChunk> GetRootChunk() const;     // 0x00A537F0
+    CCountedPointer<C3DAnimFileRootChunk> GetRoot() const;          // 0x00A537F0
 };
 namespace std {
 template <class A, class B> struct pair {
@@ -137,7 +137,7 @@ public:
 
 void C3DAnimationStats::InitialiseStats(const C3DAnimFile& file, EAnimationType type)
 {
-    C3DAnimFileRootChunk* root = file.GetRootChunk().Object;
+    C3DAnimFileRootChunk* root = file.GetRoot().Object;
     C3DAnimationStats* const& self = this;
     AnimType = type;
     LoopFlag = root->LoopFlag;

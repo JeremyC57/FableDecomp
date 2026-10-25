@@ -11,9 +11,11 @@
 // and the 4-byte predicate; the callee destroys its own by-value pointer (`call 0x00A01C10`).
 // CDoNotUseBinaryPredicate (anonymous namespace) ignores both things: it advances the world seed
 // (`seed = ROR13(seed * 0x24a1 + 0x24df)`) and answers "low bit clear" -- a random ordering.
-// The coin is a temporary bound to a const reference: that is what parks `seed & 1` in the second
-// frame dword (`and eax,1 ; mov [esp+0x14],eax`) and makes the frame `sub esp,8`; a plain
-// `(Random() & 1) == 0` keeps it in eax and the frame shrinks to `push ecx`.
+// The coin is a named local tested with an `if` (`bit = Random() & 1; if (bit != 0) return false; return true;`): that
+// is what parks `seed & 1` in the second frame dword (`and eax,1 ; mov [esp+0x14],eax`) and makes the frame
+// `sub esp,8`; a plain `(Random() & 1) == 0` keeps it in eax and the frame shrinks to `push ecx`.
+// Fixed (rename1, 2026-10-24): the predicate was written as a temporary bound to a const reference
+//   (`const unsigned long& bit = Random() & 1; return bit == 0;`); the plain `if` form above gives the same bytes.
 // Shape: VC7.1 <algorithm> `_Adjust_heap`; the bottom case reuses idx (`first[idx - 1]`).
 class CThing;
 class CBaseObject;
@@ -61,8 +63,10 @@ struct CDoNotUseBinaryPredicate {
     char m_tag;
     bool operator()(const ThingPointer&, const ThingPointer&) const
     {
-        const unsigned long& bit = g_pWorld->RandomSeed.Random() & 1;
-        return bit == 0;
+        unsigned long bit = g_pWorld->RandomSeed.Random() & 1;
+        if (bit != 0)
+            return false;
+        return true;
     }
 };
 }

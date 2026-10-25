@@ -10,11 +10,11 @@ static int g_frame = 0;
 struct CThing {
     bool Dead;
     bool CombatMode;
-    int CombatantFrames;                        // IsCombatant() true while g_frame < this
+    int CombatantFrames;                        // IsInMeleeAsAttacker() true while g_frame < this
     bool Movable;
     bool IsDead() const { return Dead; }
     bool IsInCombatMode() { return CombatMode; }
-    bool IsCombatant() { return g_frame < CombatantFrames; }
+    bool IsInMeleeAsAttacker() const { return g_frame < CombatantFrames; }
 };
 static bool IsAbleToMove(CThing* thing) { return thing->Movable; }
 static void RemoveMovementBlockingModes(CThing* thing) { thing->Movable = true; logs("unblock"); }
@@ -61,7 +61,7 @@ struct CAIStateGroup_MeleeCombatNearby {
     void AddStrafeMode() { ++Strafes; logs("strafe"); }
     bool IsStillRunnable(bool flag) { (void)flag; return g_frame < g_runnableUntil; }
     void OnReadyToAttack() { logs("ready"); }
-    void Combat_ProcessMeleeAttackMessage() { logs("msg"); }
+    bool AlertAlliesInVicinity() { logs("msg"); return false; }
     bool MoveToEnemyCreatureCombatPosition() { logs("move"); return g_frame != g_moveFailAt; }
     void AttackEnemy() { ++Attacks; logs("attack"); ++g_frame; if (g_frame == g_enemyDiesAt) PEnemy.GetPItem()->Dead = true; }
     void Update();
@@ -73,7 +73,7 @@ void CAIStateGroup_MeleeCombatNearby::Update()
     if (IsStopping())
         goto stop;
     {
-        Combat_ProcessMeleeAttackMessage();
+        AlertAlliesInVicinity();
         if (!IsAbleToMove(GetCreature()))
             RemoveMovementBlockingModes(GetCreature());
         if (IS_THING_ALIVE(PEnemy)) {
@@ -104,7 +104,7 @@ void CAIStateGroup_MeleeCombatNearby::Update()
                 Terminate();
                 return;
             }
-        } while (GetCreature()->IsCombatant());
+        } while (GetCreature()->IsInMeleeAsAttacker());
     }
     goto done;
 stop:

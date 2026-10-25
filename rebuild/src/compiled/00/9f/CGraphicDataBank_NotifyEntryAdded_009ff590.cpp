@@ -53,7 +53,7 @@ struct PixelFormatValue:CPixelFormat {PixelFormatValue(){FormatIndex=-1;}};
 struct GraphicHeader {void Load(InputStream&);unsigned short Width,Height,Depth,FrameWidth,FrameHeight,FrameCount;PixelFormatValue PixelFormat;unsigned char TransparencyType,MipmapLevels;unsigned char IsFlatAnimatedGraphic:1;unsigned long FrameDataSize,CompressedMipmapSizes;GraphicHeader():Width(0),Height(0),Depth(0),FrameWidth(0),FrameHeight(0),FrameCount(1),TransparencyType(0),MipmapLevels(0),IsFlatAnimatedGraphic(false),FrameDataSize(0),CompressedMipmapSizes(0){}}; // genuine ctorPDBB57C50; byte18 remaining bits untouched
 struct CGraphicDataBank;
 struct GraphicInfo {GraphicInfo(); /* genuine default PDB00B57D00 */ GraphicInfo(unsigned long,CGraphicDataBank*,const GraphicHeader&);GraphicHeader Header;long TextureType;CGraphicDataBank*Bank;long Index;void*Frames;}; // ctor9FD700/PDBB57C80
-struct GraphicArray {GraphicInfo*First,*Last,*End;unsigned long size()const{return Last-First;}void Add();}; //native A01650 appends one default GraphicInfo
+struct GraphicArray {GraphicInfo*First,*Last,*End;unsigned long size()const{return Last-First;}void push_back();}; // CArray<CGraphicInfo> (Ego_r.pdb GraphicList): push_back() is STLport's no-argument vector<CGraphicInfo>::push_back @ 0x00A01650 (builds a default CGraphicInfo, copies it to _M_finish or calls _M_insert_overflow 0x00A01120 when full)
 struct BankMethods {void NotifyEntryAdded(unsigned long,unsigned long,const CharArray&);}; //CBankFile qualified nonvirtual call9CBC20, PDBB19970
 struct CGraphicDataBank:CBankFileAsync,CResourceBank {CGraphicDataBank(); virtual ~CGraphicDataBank();
  virtual void Close();virtual unsigned long GetDataFormatVersion();virtual void NotifyBankSize(unsigned long,const BankArrayView<BankTypeCount>&);virtual void NotifyBankOpened();
@@ -67,7 +67,7 @@ struct CGraphicDataBank:CBankFileAsync,CResourceBank {CGraphicDataBank(); virtua
  virtual bool IsUsingSurfaces()const;
 GraphicArray GraphicList;unsigned char UntouchedTail[0x120];};
 void CGraphicDataBank::NotifyEntryAdded(unsigned long type,unsigned long index,const CharArray&data){
- while(index>=GraphicList.size())GraphicList.Add();
+ while(index>=GraphicList.size())GraphicList.push_back();
  MemoryInput input(data.data(),data.size());
  GraphicHeader header;header.Load(input);
  GraphicInfo* entries=GraphicList.First;entries[index]=GraphicInfo(index,this,header);

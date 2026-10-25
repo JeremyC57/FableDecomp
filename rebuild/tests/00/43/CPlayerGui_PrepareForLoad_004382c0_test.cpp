@@ -5,8 +5,8 @@ class CDrawBase {
 public:
     int Prepared;
     CDrawBase() : Prepared(0) {}
-    virtual ~CDrawBase() {}
-    virtual void PrepareForLoad() { ++Prepared; }
+    virtual void ClearPrimitivesIfNecessary() {}
+    virtual void ClearPrimitives() { ++Prepared; }
 };
 }
 namespace std {
@@ -38,10 +38,10 @@ public:
 };
 void CPlayerGui::PrepareForLoad()
 {
-    std::for_each(Illustrators.begin(), Illustrators.end(), std::mem_fun(&NPlayerGui::CDrawBase::PrepareForLoad));
+    std::for_each(Illustrators.begin(), Illustrators.end(), std::mem_fun(&NPlayerGui::CDrawBase::ClearPrimitives));
 }
 
-struct CDrawDerived : NPlayerGui::CDrawBase { virtual void PrepareForLoad() { Prepared += 10; } };
+struct CDrawDerived : NPlayerGui::CDrawBase { virtual void ClearPrimitives() { Prepared += 10; } };
 int main()
 {
     NPlayerGui::CDrawBase a; CDrawDerived b; NPlayerGui::CDrawBase* arr[2] = { &a, &b };

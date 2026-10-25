@@ -22,9 +22,9 @@ public:
         _M_finish = i;
         return first;
     }
-    void _M_fill_insert(iterator pos, unsigned int n, T x);   // 0x00441020
-    void insert(iterator pos, unsigned int n, T x) { _M_fill_insert(pos, n, x); }
-    void resize(unsigned int new_size, T x)
+    void _M_fill_insert(iterator pos, unsigned int n, const T& x);   // 0x00441020
+    void insert(iterator pos, unsigned int n, const T& x) { _M_fill_insert(pos, n, x); }
+    void resize(unsigned int new_size, const T& x)
     {
         if (new_size < size())
             erase(begin() + new_size, end());
@@ -32,12 +32,12 @@ public:
             insert(end(), new_size - size(), x);
     }
 };
-template void vector<unsigned int>::resize(unsigned int, unsigned int);
+template void vector<unsigned int>::resize(unsigned int, const unsigned int&);
 }
 
 
 static unsigned int g_pos_off, g_n; static unsigned int g_x = 12345;
-template <> void std::vector<unsigned int>::_M_fill_insert(iterator pos, unsigned int n, unsigned int x)
+template <> void std::vector<unsigned int>::_M_fill_insert(iterator pos, unsigned int n, const unsigned int& x)
 { g_pos_off = unsigned int(pos - _M_start); g_n = n; g_x = x; for (unsigned int i = 0; i < n; ++i) *_M_finish++ = x; }
 int main()
 {

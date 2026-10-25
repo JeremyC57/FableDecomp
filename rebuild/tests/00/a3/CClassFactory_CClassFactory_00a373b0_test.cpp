@@ -71,7 +71,7 @@ struct CList : CListBase {                                  // list<CClass*>
     CList() : CListBase(CAllocator<SListNode>()) { }
 };
 
-struct CClassTypeInfo { unsigned char _body[0x20]; };
+struct CClassTypeInfo { unsigned char _body[0x14]; };   // retail 0x14 (4-byte STLport list)
 
 class CClassFactory : public CBaseClassNonCopyable {
 protected:

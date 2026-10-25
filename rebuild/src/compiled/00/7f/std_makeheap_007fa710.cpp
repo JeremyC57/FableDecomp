@@ -1,5 +1,8 @@
 // std::__make_heap(CThing** first, CThing** last, CThingCompare_BestForTargeting2 comp, CThing**, int*) -- build a heap of targeting candidates: adjust every parent from the last one down to the root
-// Leaf: ?__make_heap@std@@
+// Leaf: ??$__make_heap@PAPAVCThing@@VCThingCompare_BestForTargeting2@@PAV1@H@std@@YIXPAPAVCThing@@0VCThingCompare_BestForTargeting2@@0PAH@Z
+// Fix (rename1): written as the STLport function template and its explicit instantiation, so the graded symbol
+//   mangles as retail's template instance (it was a plain `__fastcall` function in namespace std); the comparator
+//   and C3DVector are classes as in every PDB symbol. Bytes unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FA710, 151 bytes (`ret 3Ch` + int3 padding); called by make_heap 0x007FA890.
 //   Catalog label `std_MakeHeap_CThingCompare`.
 // Callees: std::__adjust_heap<CThing**, int, CThing*, CThingCompare_BestForTargeting2> @ 0x007FA320 (first in ecx,
@@ -12,7 +15,7 @@
 //   value on the stack). Comparator model = the landed siblings 0x007FA290 / 0x007FA980 (C3DVector's user copy ctor
 //   makes the implicit comparator copy memberwise) with the landed operator() 0x007F9F00 body inlined.
 class CThing;
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
 
 class CThing {
 public:
@@ -30,7 +33,8 @@ struct CVectorCompare_BestForTargeting {                        // Ego_r.pdb, 44
     float GetCompareValueForPoint(const C3DVector& point);      // 0x007F9660
 };
 
-struct CThingCompare_BestForTargeting2 {                        // Ego_r.pdb, 52 bytes
+class CThingCompare_BestForTargeting2 {                         // Ego_r.pdb, 52 bytes (a class: V in every PDB symbol)
+public:
     CThing* Hero;                                               // +0x00
     CVectorCompare_BestForTargeting VectorCompare;              // +0x04
     float EnemyPreferenceFactor;                                // +0x30
@@ -50,19 +54,23 @@ struct CThingCompare_BestForTargeting2 {                        // Ego_r.pdb, 52
 };
 
 namespace std {
-void __fastcall __adjust_heap(CThing** first, int holeIndex, int len, CThing* value, CThingCompare_BestForTargeting2 comp);   // 0x007FA320
+template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
+void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value, _Compare __comp);   // 0x007FA320
 
-void __fastcall __make_heap(CThing** first, CThing** last, CThingCompare_BestForTargeting2 comp, CThing**, int*)
+template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
+void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*)
 {
-    if (last - first < 2)
+    if (__last - __first < 2)
         return;
-    int len = last - first;
-    int parent = (len - 2) / 2;
+    _Distance __len = __last - __first;
+    _Distance __parent = (__len - 2) / 2;
     while (true) {
-        __adjust_heap(first, parent, len, *(first + parent), comp);
-        if (parent == 0)
+        __adjust_heap(__first, __parent, __len, _Tp(*(__first + __parent)), __comp);
+        if (__parent == 0)
             return;
-        parent--;
+        __parent--;
     }
 }
+
+template void __fastcall __make_heap<CThing**, CThingCompare_BestForTargeting2, CThing*, int>(CThing**, CThing**, CThingCompare_BestForTargeting2, CThing**, int*);
 }

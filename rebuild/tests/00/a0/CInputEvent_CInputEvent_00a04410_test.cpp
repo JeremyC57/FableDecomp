@@ -1,15 +1,30 @@
+// Link test for 0x00A04410: the source object's CInputEvent::CInputEvent zeroes Data, DeviceNumber and Type only.
 #include <cstdio>
 #include <string.h>
 #include <new>
-struct CDefaultEngineMemoryInit_00a04410 {
-    long m_block[8]; long m_unset; long m_a; long m_b;
-    CDefaultEngineMemoryInit_00a04410() { m_b = 0; m_a = 0; memset(m_block, 0, sizeof(m_block)); }
+enum EInputDeviceType { };
+enum EInputEventType { };
+union UInputEventData { unsigned char Raw[0x20]; };
+class CInputEvent {
+public:
+    UInputEventData  Data;
+    EInputDeviceType DeviceType;
+    long             DeviceNumber;
+    EInputEventType  Type;
+    float            CurrentTime;
+    float            StartTime;
+    CInputEvent();                                 // from the source object
 };
 int main()
 {
-    unsigned char raw[sizeof(CDefaultEngineMemoryInit_00a04410)]; memset(raw, 0xee, sizeof(raw));
-    CDefaultEngineMemoryInit_00a04410* o = new (raw) CDefaultEngineMemoryInit_00a04410;
-    for (int i = 0; i < 8; ++i) if (o->m_block[i] != 0) { std::printf("00a04410_TEST FAIL\n"); return 1; }
-    if (o->m_a != 0 || o->m_b != 0 || o->m_unset != (long)0xeeeeeeee || sizeof(*o) != 0x2c) { std::printf("00a04410_TEST FAIL\n"); return 1; }
-    std::printf("00a04410_TEST PASS\n"); return 0;
+    unsigned char raw[sizeof(CInputEvent)];
+    memset(raw, 0xee, sizeof(raw));
+    CInputEvent* e = new (raw) CInputEvent;
+    int ok = sizeof(CInputEvent) == 0x34 && e->DeviceNumber == 0 && (int)e->Type == 0;
+    for (int i = 0; i < 0x20; ++i) ok = ok && e->Data.Raw[i] == 0;
+    for (int j = 0x20; j < 0x24; ++j) ok = ok && raw[j] == 0xee;
+    for (int k = 0x2c; k < 0x34; ++k) ok = ok && raw[k] == 0xee;
+    if (!ok) { std::printf("00a04410_TEST FAIL\n"); return 1; }
+    std::printf("00a04410_TEST PASS\n");
+    return 0;
 }

@@ -5,7 +5,7 @@
 //   dtor 0x0099EAE0 / operator+=(const char*) 0x0099F100, CStringParser copy 0x0046381B / dtor 0x004047A0 / SkipToItem
 //   0x009B9C00 / ReadAsSymbol 0x009BA790, the CBasicString compare 0x00411570 (__fastcall), CPersistTraits<CCharString>
 //   TransferIn 0x0040E510 / TransferOut 0x0040E630, the long transfer helpers 0x009E2590 / 0x009E2560 (__fastcall),
-//   map<CCharString,long> find 0x0042B467 / insert 0x004636CF / clear 0x0043027A, the tree increment 0x004292C0,
+//   map<CCharString,long> find 0x0042B467 / _Rb_tree::insert_equal 0x004636CF / clear 0x0043027A, the tree increment 0x004292C0,
 //   the binary map writer 0x0046367A (mode 2, save stream) and reader 0x00463732 (mode 3, load stream) (__fastcall stream, map), CPersistContext::Error 0x009BAA90 and
 //   the two context helpers 0x009BAB40 (after an entry) / 0x009BB0D0 (clean the consumed text, start..end).
 // Layout: CPersistContext per Ego_r.pdb (landed 0x00757160 / 0x009BBA40 models); CStringParser retail 0x28 bytes (landed
@@ -16,6 +16,9 @@
 //   referenced once per exit and its slot outranks the conditional-temp flag ([ebp-8], as retail); the binary cases are
 //   mode 2 = TransferMapIn(PLoadStream) and mode 3 = TransferMapOut(PSaveStream) (the parked source had them swapped,
 //   which the masked jump-target diff hid).
+// Fixed (rename1, 2026-10-24): the tree insert 0x004636CF was declared as `insert` (find-or-insert); it is the landed
+//   STLport _Rb_tree<..>::insert_equal(const value_type&) (walk to a leaf with no uniqueness test, then _M_insert), so the
+//   declaration now says insert_equal. Bytes unchanged.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -101,7 +104,7 @@ struct CStringLongIterator {                           // STLport _Rb_tree_itera
 struct CStringLongMap {                                // STLport map<CCharString, long>
     SMapNode* _M_header;                               // +0x00
     SMapNode* find(const CCharString& key);            // 0x0042B467
-    CStringLongIterator insert(const CStringLongPair& value);       // 0x004636CF (the find-or-insert walk; iterator result)
+    CStringLongIterator insert_equal(const CStringLongPair& value); // 0x004636CF (_Rb_tree::insert_equal; iterator result)
     void clear();                                      // 0x0043027A
 };
 struct CMemoryDataInputStream;
@@ -171,7 +174,7 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
                     map.find(key);
                     long value;
                     TransferInLong_009e2590(this, &parser, &value);
-                    map.insert(CStringLongPair(key, value));
+                    map.insert_equal(CStringLongPair(key, value));
                     EntryTransferred();
                     if (parser.ReadAsSymbol() == ";")
                         CleanText(start, parser.CursorPos.StringPos);

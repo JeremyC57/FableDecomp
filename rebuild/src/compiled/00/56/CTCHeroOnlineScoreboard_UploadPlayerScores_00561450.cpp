@@ -6,7 +6,7 @@
 // the reply string's range init @ 0x005672D0 (malloc-backed 12-byte std::basic_string<char>), CCharString(const char*, long)
 // @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, ResetAndOpenHTTPAndPrepareRequest(const std::string&, const CCharString&, bool)
 // @ 0x0055F710, UpdateTransaction @ 0x0055FB80, GetDecryptedDocument(vector<std::string>&, const CCharString&) @ 0x00560BB0,
-// operator==(const std::string&, const char*) @ 0x00566EA0, ~vector<std::string> @ 0x00569940, LHHttp2::~LHHttp2 @
+// operator!=(const std::string&, const char*) @ 0x00566EA0 (the landed std::operator!= row), ~vector<std::string> @ 0x00569940, LHHttp2::~LHHttp2 @
 // 0x008410D0, operator delete @ 0x00BFE9BC; the string's inline dtor frees through the CRT free thunk @ 0x00BFEA14.
 // Layout: PHttp (scoped_ptr<LHHttp2>) +0x0c, TaskState +0x54, as in the landed UpdateTransaction 0x0055FB80.
 // Shape: the request is opened through a force-inlined helper taking the score string by const reference (descriptive name,
@@ -40,7 +40,7 @@ struct LHString {                                    // PDB std::basic_string<ch
     ~LHString() { if (m_pStart) free(m_pStart); }
     void Initialise(const char* first, const char* last, const CStringAllocator& a);   // 0x005672D0
 };
-bool operator==(const LHString& left, const char* right);    // 0x00566EA0
+bool operator!=(const LHString& left, const char* right);    // 0x00566EA0
 
 struct LHStringVector {                              // vector<std::string>
     LHString* m_pStart;
@@ -103,7 +103,7 @@ CTCHeroOnlineScoreboard::ENetworkSuccess CTCHeroOnlineScoreboard::UploadPlayerSc
             CCharString key("THIS-ISMY-VALI-DCDK-EYOH-YESI-TISM", -1);
             count = GetDecryptedDocument(lines, key);
         }
-        if (count > 0 && lines[0] == "SID:OK")
+        if (count > 0 && lines[0] != "SID:OK")
             return NETWORK_BUSY;
         PHttp.reset();
     }

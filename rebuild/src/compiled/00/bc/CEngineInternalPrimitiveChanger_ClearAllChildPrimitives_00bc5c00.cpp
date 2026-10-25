@@ -3,6 +3,10 @@
 // Callees: vector<CEnginePrimitiveHandle>::erase(first, last) @ 0x00440D70 (on the vector at +0x48), UpdatePosition @ 0x00B91840 (`__fastcall`: the primitive in
 // ecx, the flags in edx; a sibling jump). Shape: the mask starts as `xor ecx,ecx`, the current-index path (`cmp eax,-1`, unsigned range test, null test) reads
 // the child's mask at +0x30; `cmp [edi+30h],ecx ; je` skips the store and the call when unchanged.
+// Fixed (rename1, 2026-10-24): CEnginePrimitiveHandle was modelled as a plain {long id; primitive*} pair; it is
+//   polymorphic -- PDB (Ego_r) 8 bytes with the vptr slot at +0 and Data at +4, RTTI vtable 0x0122F598 (slot 0
+//   0x0041C500). Same size and the primitive still at +4, so the bytes are unchanged; the handle vector comment said
+//   VC6 Dinkumware, retail is STLport.
 struct CEngineInternalPrimitiveBase;
 struct C3DBoundingBox { float Min[3]; float Max[3]; };
 
@@ -27,12 +31,12 @@ struct CEngineInternalPrimitiveBase : CEngineInternalPrimitiveVtable {   // engi
     unsigned char  _pad35[0x13];                   // +0x35 .. +0x48
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: the handle id and the primitive
-    long                          m_id;
+struct CEnginePrimitiveHandle {                    // 8 bytes: vptr + the primitive (PDB: _padding_ +0, Data +4; RTTI vtable 0x0122F598)
+    virtual ~CEnginePrimitiveHandle();             // slot 0 (0x0041C500)
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };
 
-struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>
+struct CRetailHandleVector {                       // STLport vector<CEnginePrimitiveHandle> (12 bytes)
     CEnginePrimitiveHandle* m_pFirst;
     CEnginePrimitiveHandle* m_pLast;
     CEnginePrimitiveHandle* m_pEnd;

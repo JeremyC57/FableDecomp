@@ -65,7 +65,7 @@ struct LHString {                                    // PDB std::basic_string<ch
     const char* c_str() const { return m_pStart; }
     void Initialise(const char* first, const char* last, const CStringAllocator& a);   // 0x005672D0
 };
-bool operator==(const LHString& left, const char* right);    // 0x00566EA0
+bool operator!=(const LHString& left, const char* right);    // 0x00566EA0
 
 struct LHStringVector {                              // vector<std::string>
     LHString* m_pStart;
@@ -159,7 +159,7 @@ __declspec(noinline) LHStringVector::~LHStringVector()
     if (m_pStart)
         free(m_pStart);
 }
-__declspec(noinline) bool operator==(const LHString& left, const char* right)
+__declspec(noinline) bool operator!=(const LHString& left, const char* right)
 {
     return strcmp(left.c_str(), right) != 0;
 }
@@ -188,7 +188,7 @@ CTCHeroOnlineScoreboard::ENetworkSuccess CTCHeroOnlineScoreboard::DownloadMyClan
             count = GetDecryptedDocument(lines, key);
         }
         if (count > 0) {
-            if (lines[0] == "SID:OK")
+            if (lines[0] != "SID:OK")
                 return NETWORK_BUSY;
             for (int i = 1; i < count; ) {
                 long clanId = GFCharStringToInt(lines[i++].c_str());

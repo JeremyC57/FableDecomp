@@ -1,4 +1,4 @@
-// CDefinitionManager::GetDef<T>(long, CDefPointer&) -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
+// CDefinitionManager::GetDef<CCreatureGenerationFamilyDef>(long, CDefPointer<const CCreatureGenerationFamilyDef>*) const -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074D220, oracle length 108 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -15,6 +15,12 @@
 // pointer is materialised once for both (`add eax,4`), the stored value is forwarded to the
 // test and the def is kept in ecx for the virtual call. The manifest
 // label names one instantiation; the def type is opaque. One of 14 bodies of this shape.
+// Naming: Ego_r.pdb / FableWin.pdb define ??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z
+//   (the long-index overload; the out pointer is a CDefPointer<const T>*).
+//   The catalog / label name GetDef<CCreatureGenerationFamilyDef> was right (labels_retry10o + labels_naming_review);
+//   the source declared a generic GetDef_0074d220(long, CDefPointer&) member, now the PDB template.
+//   The def classes are opaque here; CDefPointer<T> keeps the landed counted-pointer model.
+// Leaf: ??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr
     long m_count;
     void DecRef() { --m_count; }
@@ -40,7 +46,8 @@ struct CDefBase : CDefVirtual, CRefCounted {
     }
 };
 
-struct CDefPointer {
+template <class T> class CDefPointer {
+public:
     CDefBase* m_p;
     CDefPointer() { }
     ~CDefPointer()
@@ -48,7 +55,7 @@ struct CDefPointer {
         if (m_p)
             m_p->ReleaseTemporary();
     }
-    CDefPointer& operator=(const CDefPointer& other)   // inlined by the speed TU
+    template <class U> void SetDynamicCast(const CDefPointer<U>& other)   // retail: the plain counted assignment
     {
         if (m_p != other.m_p) {
             if (m_p) {
@@ -59,23 +66,26 @@ struct CDefPointer {
             if (m_p)
                 ++m_p->m_count;
         }
-        return *this;
     }
 };
 
-struct CDefinitionManager {
-    CDefPointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0 (hidden result pointer)
-    bool GetDef_0074d220(long index, CDefPointer& out);
-};
+class CDefClassBase;
+class CCreatureGenerationFamilyDef;
 
-bool CDefinitionManager::GetDef_0074d220(long index, CDefPointer& out)
-{
-    if (index <= 0)
+class CDefinitionManager {
+public:
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (hidden result pointer)
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        if (index <= 0)
+            return false;
+        CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
+        if (def.m_p) {
+            out->SetDynamicCast(def);
+            return true;
+        }
         return false;
-    CDefPointer def = GetPDefFromGlobalIndex(index);
-    if (def.m_p) {
-        out = def;
-        return true;
     }
-    return false;
-}
+};
+
+template bool CDefinitionManager::GetDef<CCreatureGenerationFamilyDef>(long, CDefPointer<const CCreatureGenerationFamilyDef>*) const;

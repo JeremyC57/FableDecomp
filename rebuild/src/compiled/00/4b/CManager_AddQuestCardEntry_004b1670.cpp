@@ -5,11 +5,15 @@
 // Identity: the catalog files the row under CGameScriptInterface, but `this` holds the 16-byte-entry list at +0x58
 // and the changed flag at +0x8F of the class of the adjacent landed 0x004B14F0 (same TU); the class name is kept as
 // that row's descriptive CManager.
-// Callees: STLport `__find` over list<entry> by name @ 0x004B91F0 (`__fastcall`, iterator by hidden pointer, the
-// empty input_iterator_tag by reference), CCharString::CCharString() @ 0x0099E4B0 (x2), CCharString::operator= @
+// Callees: STLport `__find_if(first, last, pred, const input_iterator_tag&)` over list<entry> @ 0x004B91F0 (`__fastcall`,
+// iterator by hidden pointer, the 4-byte name predicate by value on the stack, the empty tag by reference in edx;
+// landed as std::__find_if), CCharString::CCharString() @ 0x0099E4B0 (x2), CCharString::operator= @
 // 0x0099EFB0 (x2), the list insert(iterator, const T&) @ 0x004B99E0, ~CCharString @ 0x0099EAE0 (x2).
-// Shape: the landed 0x004B14F0 entry/list model; find(begin(), end(), name) through the out-of-line STLport __find with
-// both iterators built in their argument slots (user copy ctor); push_back = insert(end(), x).
+// Shape: the landed 0x004B14F0 entry/list model; find_if(begin(), end(), name-is) through the out-of-line STLport
+// __find_if with both iterators built in their argument slots (user copy ctor); push_back = insert(end(), x).
+// Fixed (rename1, 2026-10-24): the callee was declared as `__find(first, last, const input_iterator_tag&, const
+//   CCharString&)`; 0x004B91F0 is the landed std::__find_if whose third argument is a predicate class (its other caller,
+//   STLport find_if 0x004B9E70, passes its own predicate word on the stack with edx unused). Bytes unchanged.
 
 struct CCharString {
     void* m_pStringData;
@@ -34,19 +38,27 @@ struct SEntryIterator {
     SEntryIterator(const SEntryIterator& o) : _M_node(o._M_node) { }
 };
 struct input_iterator_tag { input_iterator_tag() {} };
-SEntryIterator __fastcall __find(SEntryIterator first, SEntryIterator last, const input_iterator_tag& tag, const CCharString& name);   // 0x004B91F0
 bool __fastcall SameString_s7(const void* a, const void* b);   // stand-in: CCharString equality on the string data
+// "is this entry's name the wanted one?" -- the 4-byte predicate (a pointer to the wanted name, passed by value)
+struct CEntryNameIs {
+    const CCharString* m_pWanted;                   // +0x00
+    CEntryNameIs(const CCharString& wanted) : m_pWanted(&wanted) { }
+    bool operator()(const SEntry& e) const { return SameString_s7(e.m_name.m_pStringData, m_pWanted->m_pStringData); }
+};
+namespace std {
 #pragma auto_inline(off)
-// Same-TU body of STLport's input-iterator __find instantiation 0x004B91F0: walks the list comparing each entry name with
-// the one read through its const reference; the empty tag is never touched.
-__declspec(noinline) SEntryIterator __fastcall __find(SEntryIterator first, SEntryIterator last, const input_iterator_tag& tag, const CCharString& name)
+// Same-TU body of STLport's input-iterator __find_if instantiation 0x004B91F0: walks the list asking the predicate
+// about each entry; the empty tag (by reference, edx) is never touched.
+template <class InputIter, class Predicate>
+__declspec(noinline) InputIter __fastcall __find_if(InputIter first, InputIter last, Predicate pred, const input_iterator_tag&)
 {
     for (; first._M_node != last._M_node; first._M_node = first._M_node->_M_next)
-        if (SameString_s7(first._M_node->_M_data.m_name.m_pStringData, name.m_pStringData))
+        if (pred(first._M_node->_M_data))
             return first;
     return last;
 }
 #pragma auto_inline(on)
+}
 
 struct CEntryList {
     SEntryNode* _M_node;
@@ -58,7 +70,7 @@ struct CEntryList {
     {
         SEntryNode* end = _M_node;
         SEntryNode* first = end->_M_next;
-        SEntryIterator it = __find(SEntryIterator(first), SEntryIterator(end), input_iterator_tag(), name);
+        SEntryIterator it = std::__find_if(SEntryIterator(first), SEntryIterator(end), CEntryNameIs(name), input_iterator_tag());
         return it._M_node != end;
     }
 };

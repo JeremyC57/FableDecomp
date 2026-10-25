@@ -1,7 +1,9 @@
 // CAnimSet::GetInterpolatedTime(float alpha, long animIndex) const -- the time into one of the set's animations between the last and current completion fractions: looping sets wrap through the interpolation helper, others lerp linearly, both scaled by the animation's duration
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070C800, length 168 bytes, ret 8, returns float
 // (?GetInterpolatedTime@CAnimSet@@ABEMMJ@Z: private const).
-// Callees: AnimationInterpolation_CalcValue(bool forwards, float last, float current, float alpha, float range) @ 0x0070BD80
+// Callees: GFGetInterpolatedLoopingValue(float last, float current, float alpha, float range, bool forwards) @ 0x0070BD80
+//   (Ego_r.pdb ?GFGetInterpolatedLoopingValue@@YIMMMMM_N@Z, landed under that name; `__fastcall`: the bool in cl, the four
+//   floats on the stack -- the manifest label AnimationInterpolation_CalcValue is descriptive)
 // (static __fastcall: the bool in cl, four floats on the stack, ret 0x10); CMeshDataBank::PeekAnimation(unsigned long) const
 // @ 0x00A242C0 (catalog "CTCInventoryAbilities::GetAbilityLevel", propagated; body `return Animations[index]` at +0x380, Ego_r
 // 0x00B60570); C3DAnimationInfo::GetNonLoopingDuration() const @ 0x00A23CE0 (catalog "CMap::DrawGetSeaLevel", propagated;
@@ -33,7 +35,7 @@ struct CMainGameComponent {
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-float __fastcall AnimationInterpolation_CalcValue(bool forwards, float last, float current, float alpha, float range);   // 0x0070BD80
+float __fastcall GFGetInterpolatedLoopingValue(float last, float current, float alpha, float range, bool forwards);   // 0x0070BD80
 
 struct CVectorShort {
     short* _M_start; short* _M_finish; short* _M_end_of_storage;
@@ -71,7 +73,7 @@ float CAnimSet::GetInterpolatedTime(float alpha, long animIndex) const
     if (Looping) {
         const C3DAnimationInfo& info = PeekAnimInfo(Anims[animIndex]);
         bool forwards = Forwards;
-        return AnimationInterpolation_CalcValue(forwards, last, current, alpha, 1.0f) * info.Duration;
+        return GFGetInterpolatedLoopingValue(last, current, alpha, 1.0f, forwards) * info.Duration;
     }
     return PeekAnimInfo(Anims[animIndex]).GetNonLoopingDuration() * ((current - last) * alpha + last);
 }

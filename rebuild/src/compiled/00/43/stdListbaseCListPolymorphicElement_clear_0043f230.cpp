@@ -1,5 +1,7 @@
 // std::_List_base<CListPolymorphicElement>::clear() -- destroy (virtually) and free every node, leave the sentinel linked to itself
 // Leaf: ?clear@?$_List_base@
+// Renamed (rename1, 2026-10-24) from CGuiControlTreePane::SortTreeRecursively (catalog name only; this source and its
+//   ps1 Module already say std::_List_base<CListPolymorphicElement>::clear).
 // Retail: Fable.exe @ 0x0043F230, 58 bytes, plain `ret`; callers 0x0043FCD3, 0x004406A3, 0x00441C29, 0x004AC817.
 // Catalog label CGuiControlTreePane::SortTreeRecursively is wrong: STLport _List_base::clear (as 0x0043FE40) over
 // elements with a virtual destructor -- _Destroy's `p->~T()` on each node value (+8) is the vtable slot-0 deleting

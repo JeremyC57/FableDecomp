@@ -1,13 +1,14 @@
 // CAIStateGroup_MeleeCombatNearby::Update() -- melee combat loop: finish the current action, process melee attack messages, unblock movement, register with the combat manager and look at a live enemy, then move to the combat position and attack until the enemy dies, the group stops or is no longer runnable; terminate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096EE90, length 349 bytes (vtable 0x0128D05C slot 12; both exits are
 //          `jmp Terminate` tail calls).
+// Leaf: ?Update@CAIStateGroup_MeleeCombatNearby@@MAEXXZ
 // Callees: CAIStateGroup_MeleeCombatNearbyBase::UpdateCurrentAction @ 0x0093D140 / ShouldGoStraightIntoStrafe @ 0x0093D180
-//          / AddStrafeMode @ 0x0093D7A0, CAIStateGroupBase::IsStopping @ 0x008FD010, Combat_ProcessMeleeAttackMessage
-//          @ 0x0096EB40 (a member of this class), IsAbleToMove / RemoveMovementBlockingModes @ 0x0085F3E0 / 0x0085F600
+//          / AddStrafeMode @ 0x0093D7A0, CAIStateGroupBase::IsStopping @ 0x008FD010, AlertAlliesInVicinity
+//          @ 0x0096EB40 (private bool member of this class, result unused), IsAbleToMove / RemoveMovementBlockingModes @ 0x0085F3E0 / 0x0085F600
 //          (__fastcall on the creature), CBaseIntelligentPointer ctor/GetPItem/SetPItem, CAIStateGroupBase::GetPWorld
 //          @ 0x008FCFC0, CCombatManager::RegisterCombatant @ 0x006EDC50 (world +0x4c), AIAction_LookAtThing @ 0x0097D6F0
 //          (CIntelligentPointer<const CThing> by value, vtable 0x01237F1C), CThingCreatureBase::IsInCombatMode
-//          @ 0x006621A0 / IsCombatant @ 0x00662410, MoveToEnemyCreatureCombatPosition @ 0x0096EC10, AttackEnemy
+//          @ 0x006621A0 / IsInMeleeAsAttacker @ 0x00662410, MoveToEnemyCreatureCombatPosition @ 0x0096EC10, AttackEnemy
 //          @ 0x0096EA50, virtual IsStillRunnable(bool) (slot 14, 0x0093D800) / OnReadyToAttack (slot 15, 0x0093D720),
 //          CAIStateGroupBase::Terminate @ 0x008FCF40.
 // Shape: the strafe flag is a bool in bl reset after each AddStrafeMode; the combat manager is fetched through a named
@@ -19,7 +20,9 @@ struct CThing {
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
     bool IsInCombatMode();                      // 0x006621A0
-    bool IsCombatant();                         // 0x00662410
+};
+struct CThingCreatureBase : CThing {
+    bool IsInMeleeAsAttacker() const;           // 0x00662410 (Ego_r.pdb ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ)
 };
 bool __fastcall IsAbleToMove(CThing* thing);                  // 0x0085F3E0
 void __fastcall RemoveMovementBlockingModes(CThing* thing);   // 0x0085F600
@@ -55,7 +58,7 @@ struct CWorld {
 };
 struct CAIBrain {
     unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
+    CThingCreatureBase* PCreature;                          // +0x18
 };
 
 struct CAIStateGroupBase {
@@ -74,7 +77,7 @@ struct CAIStateGroupBase {
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CThing* GetCreature() const { return PBrain->PCreature; }
+    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
     bool IsStopping();                          // 0x008FD010
     long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
@@ -90,10 +93,12 @@ struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
 
 struct CAIStateGroup_MeleeCombatNearby : CAIStateGroup_MeleeCombatNearbyBase {
     bool Archer;                                // +0x1c
-    void Combat_ProcessMeleeAttackMessage();    // 0x0096EB40
+protected:
+    virtual void Update();
+private:
+    bool AlertAlliesInVicinity();               // 0x0096EB40 (Ego_r.pdb ?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby@@AAE_NXZ)
     bool MoveToEnemyCreatureCombatPosition();   // 0x0096EC10
     void AttackEnemy();                         // 0x0096EA50
-    virtual void Update();
 };
 
 void CAIStateGroup_MeleeCombatNearby::Update()
@@ -102,7 +107,7 @@ void CAIStateGroup_MeleeCombatNearby::Update()
     if (IsStopping())
         goto stop;
     {
-        Combat_ProcessMeleeAttackMessage();
+        AlertAlliesInVicinity();
         if (!IsAbleToMove(GetCreature()))
             RemoveMovementBlockingModes(GetCreature());
         if (IS_THING_ALIVE(PEnemy)) {
@@ -133,7 +138,7 @@ void CAIStateGroup_MeleeCombatNearby::Update()
                 Terminate();
                 return;
             }
-        } while (GetCreature()->IsCombatant());
+        } while (GetCreature()->IsInMeleeAsAttacker());
     }
     goto done;
 stop:

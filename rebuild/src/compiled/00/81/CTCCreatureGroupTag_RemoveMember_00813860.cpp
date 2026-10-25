@@ -2,7 +2,7 @@
 // Leaf: RemoveMember
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00813860, length 55 bytes (+9 int3). CTCCreatureGroupTag vtable 0x012432F4
 // slot 29 (CTCCreatureGroup slot 29 = RemoveMember 0x00813100, called here non-virtually).
-// Callees: CTCCreatureGroup::RemoveMember @ 0x00813100, CTCCreatureGroupTag::ChooseNewTagger @ 0x008137E0 (first active
+// Callees: CTCCreatureGroup::RemoveMember @ 0x00813100, CTCCreatureGroupTag::FindNewTagger @ 0x008137E0 (private, Ego_r.pdb `?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ`; FINDINGS chunk 399, was "ChooseNewTagger") (first active
 // member becomes the tagger, else TaggerUID = 0; its bool result is dropped).
 // Shape: two separate exits (`mov al,1` / `xor al,al`); the 64-bit equality compares the low then the high dword with the
 // member's word on the right (`TaggerUID == member->UniqueID`).
@@ -63,7 +63,9 @@ long GetWorldFrame();                       // 0x0049D870 (returns the global fr
 struct CTCCreatureGroupTag : CTCCreatureGroup {
     unsigned __int64 TaggerUID;             // +0x28
     unsigned long TaggedFrame;              // +0x30
-    bool ChooseNewTagger();                 // 0x008137E0
+private:
+    bool FindNewTagger();                   // 0x008137E0
+public:
     bool SetTagger(const CThing* tagger);
     bool RemoveMember(const CThing* member);
     bool DeactivateMember(const CThing* member);
@@ -74,7 +76,7 @@ bool CTCCreatureGroupTag::RemoveMember(const CThing* member)
 {
     if (CTCCreatureGroup::RemoveMember(member)) {
         if (TaggerUID == member->UniqueID)
-            ChooseNewTagger();
+            FindNewTagger();
         return true;
     }
     return false;

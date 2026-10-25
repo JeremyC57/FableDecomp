@@ -1,0 +1,36 @@
+// Behaviour test for std::vector<NThingManager::CEntityRuntimePersistence::CEntityScriptInfo>::resize(size_type) (0x0052C6A0)
+#include <cstdio>
+#include <cstdlib>
+static int g_names = 0, g_namesDead = 0;
+struct CCharString {
+    void* m_pData;
+    CCharString() : m_pData(0) { ++g_names; }
+    ~CCharString() { ++g_namesDead; }
+};
+struct CByteArray {
+    void* m_start; void* m_finish; void* m_endOfStorage;
+    CByteArray() : m_start(0), m_finish(0), m_endOfStorage(0) { }
+    ~CByteArray() { if (m_start) std::free(m_start); }
+};
+struct CEntityScriptInfo {
+    CCharString Script; CByteArray SaveData; long UncompressedSize; bool Valid;
+    CEntityScriptInfo() : UncompressedSize(0), Valid(false) { }
+};
+static unsigned int g_n = 0; static bool g_valueOk = false;
+struct CEntityScriptVector {
+    void resize(unsigned int n, const CEntityScriptInfo& value)
+    {
+        g_n = n;
+        g_valueOk = value.UncompressedSize == 0 && !value.Valid && value.SaveData.m_start == 0 && value.Script.m_pData == 0;
+    }
+    void resize(unsigned int n) { resize(n, CEntityScriptInfo()); }
+};
+#define CHECK(c) if (!(c)) { std::printf("0052c6a0_TEST FAIL\n"); return 1; }
+int main()
+{
+    CEntityScriptVector v;
+    v.resize(7);
+    CHECK(g_n == 7 && g_valueOk && g_names == 1 && g_namesDead == 1);
+    std::printf("0052c6a0_TEST PASS\n");
+    return 0;
+}

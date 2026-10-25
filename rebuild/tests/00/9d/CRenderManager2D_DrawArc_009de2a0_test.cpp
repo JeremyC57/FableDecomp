@@ -6,10 +6,10 @@ struct C2DVector {
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
 struct CRGBColour { unsigned char B, G, R, A; };
-float GFAXToVX(float x) { return x * 2.0f; }
-float GFAYToVY(float y) { return y * 2.0f; }
-float GFVXToAX(float x) { return x * 0.5f; }
-float GFVYToAY(float y) { return y * 0.5f; }
+float GFVXToAX(float x) { return x * 2.0f; }   // virtual -> screen stand-ins (0x009E1E10 / 0x009E1E40)
+float GFVYToAY(float y) { return y * 2.0f; }
+float GFAXToVX(float x) { return x * 0.5f; }   // screen -> virtual stand-ins (0x009E1DA0 / 0x009E1DD0)
+float GFAYToVY(float y) { return y * 0.5f; }
 
 struct CRenderManager2D {
     int lines; float maxErr; C2DVector first, last; unsigned long gotFlags;
@@ -28,16 +28,16 @@ struct CRenderManager2D {
 
 bool CRenderManager2D::DrawArc(const C2DVector& centre, float radius, const CRGBColour& colour, unsigned long flags)
 {
-    float cx = GFAXToVX(centre.X);
-    float cy = GFAYToVY(centre.Y);
-    float r = GFAXToVX(radius);
+    float cx = GFVXToAX(centre.X);
+    float cy = GFVYToAY(centre.Y);
+    float r = GFVXToAX(radius);
     float pi = (float)(asin(1.0) * 2);
     long segments = (long)(pi * r * 0.6666667f);
     for (long i = 0; i < segments; ++i) {
         float a0 = i * pi * 2 / segments;
         float a1 = (i + 1) * pi * 2 / segments;
-        Draw2DLine(C2DVector(GFVXToAX(sin(a0) * r + cx), GFVYToAY(cos(a0) * r + cy)),
-                   C2DVector(GFVXToAX(sin(a1) * r + cx), GFVYToAY(cos(a1) * r + cy)), colour, flags);
+        Draw2DLine(C2DVector(GFAXToVX(sin(a0) * r + cx), GFAYToVY(cos(a0) * r + cy)),
+                   C2DVector(GFAXToVX(sin(a1) * r + cx), GFAYToVY(cos(a1) * r + cy)), colour, flags);
     }
     return true;
 }

@@ -12,7 +12,7 @@ struct SCall { long attitude; float peak; long unused; long frames; float persis
 static SCall g_calls[4]; static int g_nCalls = 0;
 static int g_iconCalls = 0; static bool g_iconShow = true; static float g_iconScale = 0; static unsigned char g_iconAlpha = 0;
 struct CTCCreatureOpinionOfHero {
-    void ApplyOpinionTransientOffset(long attitude, float peak, long unused, long runOutFrames, float persist, long flag)
+    void ApplyOpinionTransientOffset(long attitude, float peak, long unused, long runOutFrames, float persist, bool flag)
     { SCall c = { attitude, peak, unused, runOutFrames, persist, flag }; g_calls[g_nCalls++] = c; }
 };
 class CTCBase;

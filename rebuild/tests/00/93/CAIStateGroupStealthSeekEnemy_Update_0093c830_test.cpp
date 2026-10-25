@@ -91,6 +91,7 @@ struct CAIStateGroupBase {
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
+    void Terminate();
 };
 struct C3DVector { float x, y, z; };
 struct CTCPerceiveThing : CTCBase {
@@ -115,13 +116,14 @@ struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;
     C3DVector DetectedPos;
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    bool IsStillRunnable(CTCPerceiveThing* perceive) { g_log[g_logN++] = "runnable"; return g_runnableLeft-- > 0; }
-    void SetWhatsThatSound() { ++g_sound; g_log[g_logN++] = "sound"; }
-    void MoveOrQuit(CTCPerceiveThing* perceive) { ++g_move; g_log[g_logN++] = "move"; }
-    void SetWhatsThatAnimation(CTCPerceiveThing* perceive) { ++g_anim; g_log[g_logN++] = "anim"; }
-    void Terminate() { ++g_terminate; g_log[g_logN++] = "terminate"; }
     virtual void Update();
+private:
+    bool IsStillRunnable(const CTCPerceiveThing& perceive) const { g_log[g_logN++] = "runnable"; return g_runnableLeft-- > 0; }
+    void SetWhatsThatSound() { ++g_sound; g_log[g_logN++] = "sound"; }
+    void MoveTowardsEnemy(const CTCPerceiveThing* perceive) { ++g_move; g_log[g_logN++] = "move"; }
+    void SetWhatsThatAnimation(const CTCPerceiveThing* perceive) { ++g_anim; g_log[g_logN++] = "anim"; }
 };
+void CAIStateGroupBase::Terminate() { ++g_terminate; g_log[g_logN++] = "terminate"; }
 
 void CAIStateGroup_StealthSeekEnemy::Update()
 {
@@ -130,13 +132,13 @@ void CAIStateGroup_StealthSeekEnemy::Update()
     if (IS_THING_ALIVE(PEnemy) && (perceive->m_heardSound || perceive->m_awareness != 0.0f)) {
         if (GetCreature()->IsFreeToFinishAction())
             GetCreature()->FinishCurrentAction();
-        while (IsStillRunnable(perceive)) {
+        while (IsStillRunnable(*perceive)) {
             DetectedPos = perceive->m_perceivedPos;
             CTCStealth* stealth;
             if (PEnemy.GetPItem()->GetInterfaceX(&stealth, 0x36))
                 stealth->SetAsInDanger(PBrain->PCreature, 1);
             SetWhatsThatSound();
-            MoveOrQuit(perceive);
+            MoveTowardsEnemy(perceive);
             SetWhatsThatAnimation(perceive);
         }
     }

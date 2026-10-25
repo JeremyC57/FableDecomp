@@ -1,10 +1,10 @@
 // C3DAnimFile::AddStringKeyedChunk(const CCharString&, const SNamedChunk&) -- append a {key string, name, chunk} record and mark the file changed
 // Leaf: AddStringKeyedChunk
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A73840, 151 bytes. Callees: CCharString copy constructor
-// 0x0099EC30, the record vector's insert-at-end 0x00A73530 (20-byte records, `this` = the vector at +0),
+// 0x0099EC30, the record vector's insert-at-end 0x00A73530 (16-byte records: CCharString key +0, SNamedChunk {Name +4, Chunk +8}; `this` = the vector at +0),
 // operator delete 0x00BFE9BC, CCharString destructor 0x0099EAE0.
 // The catalog name "C3DAnimFile::C3DAnimFile" is propagated: no constructor (ends by setting the byte at
-// +0xD). Twin of 0x00A737B0 with a CCharString key: the 20-byte pair temporary copies the key string,
+// +0xD). Twin of 0x00A737B0 with a CCharString key: the 16-byte pair temporary copies the key string,
 // then the {CCharString, CCountedPointer} value through its implicit copy, is pushed by address and
 // destroyed (inline counted release, value string, key string).
 void __cdecl operator delete(void* block);          // 0x00BFE9BC

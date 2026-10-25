@@ -4,7 +4,7 @@
 // Callees: CThingCreatureBase::IsPerformingAnyAction() @ 0x006622A0, the current action's virtual slot 50 (+0xC8, a
 // "blocks body turning" query; name descriptive), the physics TC's GetFacingAngleXY (slot 63, +0xFC), _CIfmod @ 0x00BFEB28,
 // AngleBetweenPositions @ 0x00661540 (`__fastcall` (from, to): the position compare's own ecx/edx bases are reused),
-// AngleDifference @ 0x00A441E0 (`__stdcall`). Constants: 1/(2pi) 0x01237F08, 0.0f 0x0122DEDC, 1.0f 0x0122DED8, the double
+// GFGetSignedAngleDifference @ 0x00A441E0 (`__fastcall`; its two floats still go on the stack, `ret 8`). Constants: 1/(2pi) 0x01237F08, 0.0f 0x0122DEDC, 1.0f 0x0122DED8, the double
 // 1.0 0x01237F00, 1e-4f 0x0129BA3C.
 // Shape: nested ifs with the single `return false` last; IS_THING_ALIVE is the `T* const&` template helper (eax test, ecx
 // copy); the direction arm is `WrapAngle(atan2(X, Y) * 1/(2pi))` (fpatan; __forceinline wrap into [0, 1)); the position arm
@@ -63,7 +63,7 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
 }
 
 float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00661540
-float __stdcall AngleDifference(float a, float b);                                    // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);                        // 0x00A441E0 (Ego_r.pdb ?GFGetSignedAngleDifference@@YIMMM@Z)
 extern float g_epsilon_0129ba3c;                                                      // 0x0129BA3C (1e-4f)
 
 __forceinline float WrapAngle(float angle)
@@ -106,7 +106,7 @@ bool CTCLook::GetTurningAngles(float& targetAngle, float& turnAngle)
             } else if (physics->Position != PosToLookAt) {
                 targetAngle = AngleBetweenPositions(physics->Position, PosToLookAt);
             }
-            turnAngle = AngleDifference(bodyXY, targetAngle);
+            turnAngle = GFGetSignedAngleDifference(bodyXY, targetAngle);
             return true;
         }
     }

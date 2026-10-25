@@ -2,9 +2,9 @@
 // Leaf: GetAllCreaturesExcludingHero
 // Retail: Fable.exe @ 0x008A89D0, 276 bytes, `ret 4`. Catalog row: only the first 273 bytes (it stops before the final
 // `ret 4`), so no compiled body can equal the catalog oracle; this source is a RELOCATION_MATCH against the full 276-byte body.
-// Body: CThingSearchTools::GetAllThings<CThingAICreature, vector<CThingAICreature*>, CFilter_Bind2<CThingFilter_None,
-// CThingFilter_HasTC>> (0x0052B270) on World->ThingSearchTools (+0x20) into a local vector (empty filter temporary in the
-// dead `things` slot); things.reserve(count) (0x008ACD30, no early-out); then an index loop pushing back
+// Body: CThingSearchTools::GetAllThings<CThingAICreature, vector<CThingAICreature*>, CThingFilter_None> (0x0052B270, the
+// landed None-filter instance: no CThingFilter_HasTC::operator() 0x006A80A0 call; the Bind2<None,HasTC> instance is
+// 0x0052B300) on World->ThingSearchTools (+0x20) into a local vector (empty filter temporary in the dead `things` slot); things.reserve(count) (0x008ACD30, no early-out); then an index loop pushing back
 // creature->GetScriptThing() (0x004C7E50; push_back inlined, overflow 0x008AD5F0; the temporary destroyed inline);
 // return things.size(); the found vector is freed (0x00BFEA14).
 // Layout / shape: the models of the landed siblings GetAllThingsWithScriptName 0x008A8570 and
@@ -77,24 +77,17 @@ struct CThingVector {                                   // STLport vector<CThing
 struct CThingFilter_None {
     CThingFilter_None() {}
 };
-struct CThingFilter_HasTC {
-    CThingFilter_HasTC() {}
-};
-template <class F1, class F2> struct CFilter_Bind2 : public F1, public F2 {   // empty: both filters are stateless
-    CFilter_Bind2() {}
-};
-typedef CFilter_Bind2<CThingFilter_None, CThingFilter_HasTC> CCreatureFilter;
 struct CThing_Retail {
     CScriptThing GetScriptThing();                      // 0x004C7E50
 };
 CThing_Retail** FindThings_AICreatures(CThing_Retail** capacity);
 struct CThingSearchTools {
-    void GetAllThings(const CCreatureFilter& filter, CThingVector& out);   // 0x0052B270
+    void GetAllThings(const CThingFilter_None& filter, CThingVector& out);   // 0x0052B270
 };
 // Same-TU stand-in (see the siblings): only writes the output vector's words and never takes the filter's address, so
 // the empty filter temporary is homed in the dead `things` argument slot as in retail.
 #pragma auto_inline(off)
-void CThingSearchTools::GetAllThings(const CCreatureFilter& filter, CThingVector& out)
+void CThingSearchTools::GetAllThings(const CThingFilter_None& filter, CThingVector& out)
 {
     CThing_Retail** p = FindThings_AICreatures(out._M_end_of_storage);
     out._M_start = p;
@@ -113,7 +106,7 @@ struct CGameScriptInterface {
 long CGameScriptInterface::GetAllCreaturesExcludingHero(CScriptThingVector& things) const
 {
     CThingVector found;
-    World->ThingSearchTools->GetAllThings(CCreatureFilter(), found);
+    World->ThingSearchTools->GetAllThings(CThingFilter_None(), found);
     const unsigned long count = found.size();
     things.reserve(count);
     for (unsigned long i = 0; i < count; ++i)

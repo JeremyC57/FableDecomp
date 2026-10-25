@@ -1,9 +1,9 @@
-// CAIStateGroup_WorkAtSchool::IsRunnable() -- a villager kid with a school (and a village) works at school when the school building's material is a school (def flag bit 2) and the school's own village says it is time to go to school
+// CAIStateGroup_WorkAtSchool::IsRunnable() -- a villager kid with a school (and a village) works at school when the school building's sim-building def has Property bit 2 set and the school's own village says it is time to go to school
 // Leaf: ?IsRunnable@CAIStateGroup_WorkAtSchool
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942A00, length 304 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the kid's +0x170 school pointer), CVectorMap::LowerBound
 //          @ 0x004365B0 (const, the kid) / @ 0x0040F020 (the school) for the inlined interface-0x23 (CTCVillager) lookups,
-//          GFGetPVillageInterface @ 0x007EE540 (x3), CThingBuilding::PeekPMaterial @ 0x0082D2D0 (CDefPointer by hidden
+//          GFGetPVillageInterface @ 0x007EE540 (x3), CThingBuilding::PeekPSimDefinition() const @ 0x0082D2D0 (Ego_r.pdb; CDefPointer by hidden
 //          pointer, long-form inline release through the def's slot 1), GetPThingWorld @ 0x008FCFA0,
 //          CTCVillage::IsTimeToGoToSchool(CThingAICreature*, CWorld*, bool) @ 0x0065A8EE.
 // Model: the landed sibling CAIStateGroup_StayNearSchool::IsRunnable (0x009167F0) shared AI state-group model
@@ -221,12 +221,12 @@ struct CRefCounted {                            // reference count base at +4 of
     void DecRef() { --Count; }
     long GetRefCount() const { return Count; }
 };
-struct CMaterialDef {
+struct CSimBuildingDef {                        // the def the landed PeekPSimDefinition 0x0082D2D0 resolves
     virtual void v00();
     virtual void Destroy();                     // slot 1 (+0x04)
     CRefCounted Ref;                            // +0x04
     unsigned char _pad08[0x3c - 0x08];
-    unsigned long Flags;                        // +0x3c (bit 2: a school building)
+    unsigned long Property;                     // +0x3c (Ego_r.pdb CSimBuildingDef::Property +0x40; bit 2 tested here)
     __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T>
@@ -236,7 +236,7 @@ struct CDefPointer {
     T* operator->() const { return Object; }
 };
 struct CThingBuilding : CThing {
-    CDefPointer<CMaterialDef> PeekPMaterial();  // 0x0082D2D0
+    CDefPointer<CSimBuildingDef> PeekPSimDefinition() const;   // 0x0082D2D0
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CThingPos : CThing {
@@ -265,9 +265,9 @@ bool CAIStateGroup_WorkAtSchool::IsRunnable()
     if (school && GetCreature()->HasTC(0x23)) {
         CTCVillager* villager = (CTCVillager*)GetCreature()->FindEntryC(0x23)->component;
         if (GFGetPVillageInterface(villager)) {
-            CDefPointer<CMaterialDef> material = school->PeekPMaterial();
-            if (material.Object) {
-                if ((material->Flags & 4) && school->HasTC(0x23)) {
+            CDefPointer<CSimBuildingDef> simDef = school->PeekPSimDefinition();
+            if (simDef.Object) {
+                if ((simDef->Property & 4) && school->HasTC(0x23)) {
                     CTCVillager* schoolVillager = (CTCVillager*)school->FindEntry(0x23)->component;
                     if (GFGetPVillageInterface(schoolVillager)) {
                         CThingAICreature* creature = (CThingAICreature*)PBrain->PCreature;

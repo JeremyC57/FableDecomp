@@ -1,7 +1,8 @@
 // vector<CCharString>::_M_range_insert(iterator pos, set<CCharString>::const_iterator first, last, const
-// forward_iterator_tag&) -- (manifest: "CCombatWheel::Insert") STLport range insert from a tree range: insert in place
-// when capacity allows (two layouts by the elements after pos), else reallocate to old size + max(old size, n)
-// Leaf: CCombatWheel::Insert
+// forward_iterator_tag&) -- STLport range insert from a tree range: insert in place when capacity allows (two layouts by
+// the elements after pos), else reallocate to old size + max(old size, n). The manifest label "CCombatWheel::Insert" is
+// wrong (FINDINGS chunk 375); the Leaf pins the local CStringVector stand-in for vector<CCharString>.
+// Leaf: ?_M_range_insert@CStringVector@@
 // Callees (STLport helpers instantiated out of line): __distance 0x00528040 (cdecl), __advance 0x00528090 (cdecl),
 //   __uninitialized_copy ptr 0x0044B120 / tree 0x00527FC0 (__fastcall), __copy_backward_ptrs 0x0049B180, __copy tree
 //   0x00528140, malloc 0x00BFEA0E, the vector's clear-and-free 0x00433040.
