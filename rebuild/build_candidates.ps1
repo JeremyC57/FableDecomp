@@ -306933,6 +306933,258 @@ $catalog = @(
         TestSource = '00/c4/PKCReadRequestQueue_PKCReadRequestQueue_00c4be80_test.cpp'
         PassPattern = '00c4be80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c4c050'
+        Module = 'CRACBuffer'
+        Source = '00/c4/CRACBuffer_IsRangeAligned_00c4c050.cpp'
+        TestSource = '00/c4/CRACBuffer_IsRangeAligned_00c4c050_test.cpp'
+        PassPattern = '00c4c050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d1f0'
+        Module = 'CAudioPlatform'
+        Source = '00/c4/CAudioPlatform_Shutdown_00c4d1f0.cpp'
+        TestSource = '00/c4/CAudioPlatform_Shutdown_00c4d1f0_test.cpp'
+        PassPattern = '00c4d1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d520'
+        Module = 'CAudioPlatform'
+        Source = '00/c4/CAudioPlatform_AcquireVoiceA_00c4d520.cpp'
+        TestSource = '00/c4/CAudioPlatform_AcquireVoiceA_00c4d520_test.cpp'
+        PassPattern = '00c4d520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d5f0'
+        Module = 'CAudioPlatform'
+        Source = '00/c4/CAudioPlatform_AcquireVoiceB_00c4d5f0.cpp'
+        TestSource = '00/c4/CAudioPlatform_AcquireVoiceB_00c4d5f0_test.cpp'
+        PassPattern = '00c4d5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d790'
+        Module = 'CAudioContext'
+        Source = '00/c4/CAudioContext_Suspend_00c4d790.cpp'
+        TestSource = '00/c4/CAudioContext_Suspend_00c4d790_test.cpp'
+        PassPattern = '00c4d790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d7d0'
+        Module = 'CAudioContext'
+        Source = '00/c4/CAudioContext_Process_00c4d7d0.cpp'
+        TestSource = '00/c4/CAudioContext_Process_00c4d7d0_test.cpp'
+        PassPattern = '00c4d7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d910'
+        Module = 'CAudioContext'
+        Source = '00/c4/CAudioContext_BufferData_00c4d910.cpp'
+        TestSource = '00/c4/CAudioContext_BufferData_00c4d910_test.cpp'
+        PassPattern = '00c4d910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d960'
+        Module = 'CAudioContext'
+        Source = '00/c4/CAudioContext_GetError_00c4d960.cpp'
+        TestSource = '00/c4/CAudioContext_GetError_00c4d960_test.cpp'
+        PassPattern = '00c4d960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4dbe0'
+        Module = 'CAudioContext'
+        Source = '00/c4/CAudioContext_CheckError_00c4dbe0.cpp'
+        TestSource = '00/c4/CAudioContext_CheckError_00c4dbe0_test.cpp'
+        PassPattern = '00c4dbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4e1b0'
+        Module = 'CAudioSoundBuffer'
+        Source = '00/c4/CAudioSoundBuffer_SetData_00c4e1b0.cpp'
+        TestSource = '00/c4/CAudioSoundBuffer_SetData_00c4e1b0_test.cpp'
+        PassPattern = '00c4e1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4e380'
+        Module = 'CEAXManager'
+        Source = '00/c4/CEAXManager_GetVoiceProperty_00c4e380.cpp'
+        TestSource = '00/c4/CEAXManager_GetVoiceProperty_00c4e380_test.cpp'
+        PassPattern = '00c4e380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c51f00'
+        Module = 'CEAXManager'
+        Source = '00/c5/CEAXManager_SetVoiceProperty_00c51f00.cpp'
+        TestSource = '00/c5/CEAXManager_SetVoiceProperty_00c51f00_test.cpp'
+        PassPattern = '00c51f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c52980'
+        Module = 'CEAXManager'
+        Source = '00/c5/CEAXManager_SetListenerProperty_00c52980.cpp'
+        TestSource = '00/c5/CEAXManager_SetListenerProperty_00c52980_test.cpp'
+        PassPattern = '00c52980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c52ad0'
+        Module = 'CCpuInfo'
+        Source = '00/c5/CCpuInfo_GetIntelModelName_00c52ad0.cpp'
+        TestSource = '00/c5/CCpuInfo_GetIntelModelName_00c52ad0_test.cpp'
+        PassPattern = '00c52ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c52da0'
+        Module = '_global'
+        Source = '00/c5/global_RoundCpuSpeed_00c52da0.cpp'
+        TestSource = '00/c5/global_RoundCpuSpeed_00c52da0_test.cpp'
+        PassPattern = '00c52da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53260'
+        Module = 'CDirectSoundDevice'
+        Source = '00/c5/CDirectSoundDevice_Initialise_00c53260.cpp'
+        TestSource = '00/c5/CDirectSoundDevice_Initialise_00c53260_test.cpp'
+        PassPattern = '00c53260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c546e0'
+        Module = 'CDecodedStream'
+        Source = '00/c5/CDecodedStream_PumpBlock_00c546e0.cpp'
+        TestSource = '00/c5/CDecodedStream_PumpBlock_00c546e0_test.cpp'
+        PassPattern = '00c546e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c54ea0'
+        Module = 'CAudioSource'
+        Source = '00/c5/CAudioSource_ApplyVolume_00c54ea0.cpp'
+        TestSource = '00/c5/CAudioSource_ApplyVolume_00c54ea0_test.cpp'
+        PassPattern = '00c54ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c551d0'
+        Module = 'CAudioSource'
+        Source = '00/c5/CAudioSource_Start_00c551d0.cpp'
+        TestSource = '00/c5/CAudioSource_Start_00c551d0_test.cpp'
+        PassPattern = '00c551d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55680'
+        Module = 'CAudioSource'
+        Source = '00/c5/CAudioSource_Open_00c55680.cpp'
+        TestSource = '00/c5/CAudioSource_Open_00c55680_test.cpp'
+        PassPattern = '00c55680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55750'
+        Module = '_global'
+        Source = '00/c5/global_StringCopyWorkerA_00c55750.cpp'
+        TestSource = '00/c5/global_StringCopyWorkerA_00c55750_test.cpp'
+        PassPattern = '00c55750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55980'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_LoadEntryPoints_00c55980.cpp'
+        TestSource = '00/c5/CAudioContext_LoadEntryPoints_00c55980_test.cpp'
+        PassPattern = '00c55980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c559c0'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_DestroyContext_00c559c0.cpp'
+        TestSource = '00/c5/CAudioContext_DestroyContext_00c559c0_test.cpp'
+        PassPattern = '00c559c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55a10'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_IsDeviceExtensionPresent_00c55a10.cpp'
+        TestSource = '00/c5/CAudioContext_IsDeviceExtensionPresent_00c55a10_test.cpp'
+        PassPattern = '00c55a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55a60'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_GetDeviceString_00c55a60.cpp'
+        TestSource = '00/c5/CAudioContext_GetDeviceString_00c55a60_test.cpp'
+        PassPattern = '00c55a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55aa0'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_OpenDevice_00c55aa0.cpp'
+        TestSource = '00/c5/CAudioContext_OpenDevice_00c55aa0_test.cpp'
+        PassPattern = '00c55aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55b00'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_CreateContext_00c55b00.cpp'
+        TestSource = '00/c5/CAudioContext_CreateContext_00c55b00_test.cpp'
+        PassPattern = '00c55b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55f60'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_GetEAXGlobalProperty_00c55f60.cpp'
+        TestSource = '00/c5/CAudioContext_GetEAXGlobalProperty_00c55f60_test.cpp'
+        PassPattern = '00c55f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55fe0'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_SuspendContext_00c55fe0.cpp'
+        TestSource = '00/c5/CAudioContext_SuspendContext_00c55fe0_test.cpp'
+        PassPattern = '00c55fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c56090'
+        Module = '_global'
+        Source = '00/c5/global_StringCatWorkerA_00c56090.cpp'
+        TestSource = '00/c5/global_StringCatWorkerA_00c56090_test.cpp'
+        PassPattern = '00c56090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c561f0'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_IsExtensionPresent_00c561f0.cpp'
+        TestSource = '00/c5/CAudioContext_IsExtensionPresent_00c561f0_test.cpp'
+        PassPattern = '00c561f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c562f0'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_SupportsEAX3_00c562f0.cpp'
+        TestSource = '00/c5/CAudioContext_SupportsEAX3_00c562f0_test.cpp'
+        PassPattern = '00c562f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c56420'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_Release_00c56420.cpp'
+        TestSource = '00/c5/CAudioContext_Release_00c56420_test.cpp'
+        PassPattern = '00c56420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c56ec0'
+        Module = 'CWaveFormatExtensible'
+        Source = '00/c5/CWaveFormatExtensible_CWaveFormatExtensible_00c56ec0.cpp'
+        TestSource = '00/c5/CWaveFormatExtensible_CWaveFormatExtensible_00c56ec0_test.cpp'
+        PassPattern = '00c56ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c57070'
+        Module = 'CDSoundStreamBuffer'
+        Source = '00/c5/CDSoundStreamBuffer_IsChunkReady_00c57070.cpp'
+        TestSource = '00/c5/CDSoundStreamBuffer_IsChunkReady_00c57070_test.cpp'
+        PassPattern = '00c57070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c57690'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_SourceQueueBuffers_00c57690.cpp'
+        TestSource = '00/c5/CAudioContext_SourceQueueBuffers_00c57690_test.cpp'
+        PassPattern = '00c57690_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

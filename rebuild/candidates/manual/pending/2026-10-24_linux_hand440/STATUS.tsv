@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c4c050	MATCH	35v35	PASS	1 grade; CRACBuffer::IsRangeAligned; descriptive
+00c4d1f0	RELOCATION_MATCH	66v66	PASS	1 grade; CAudioPlatform::Shutdown (vtable 0x012B5B80 slot 3); struct-copy record restore
+00c4d520	RELOCATION_MATCH	197v197	PASS	1 grade; CAudioPlatform::AcquireVoiceA; pool address in a local (edi)
+00c4d5f0	RELOCATION_MATCH	197v197	PASS	1 grade; CAudioPlatform::AcquireVoiceB; pool address in a local (edi)
+00c4d790	RELOCATION_MATCH	50v50	PASS	1 grade; CAudioContext::Suspend; lazy-resolve ternary
+00c4d7d0	RELOCATION_MATCH	50v50	PASS	1 grade; CAudioContext::Process; lazy-resolve ternary
+00c4d910	RELOCATION_MATCH	80v80	PASS	1 grade; CAudioContext::BufferData
+00c4d960	RELOCATION_MATCH	67v67	PASS	1 grade; CAudioContext::GetError
+00c4dbe0	RELOCATION_MATCH	85v85	PASS	1 grade; CAudioContext::CheckError; inline GetError + ConvertALError
+00c4e1b0	RELOCATION_MATCH	158v158	PASS	1 grade; CAudioSoundBuffer::SetData; wave fields read before the format switch
+00c4e380	RELOCATION_MATCH	51v51	PASS	1 grade; CEAXManager::GetVoiceProperty; result accumulator
+00c51f00	RELOCATION_MATCH	76v76	PASS	1 grade; CEAXManager::SetVoiceProperty; result accumulator
+00c52980	RELOCATION_MATCH	134v134	PASS	1 grade; CEAXManager::SetListenerProperty; result accumulator + tail jmp
+00c52aa0	DIFFER	49v47	-	1 grade; retail_asm candidate (pushfd/popfd); C++ reference in differ/
+00c52ad0	RELOCATION_MATCH	220v220	PASS	1 grade; CCpuInfo::GetIntelModelName; jump-table pairings verified by hand
+00c52bb0	DIFFER	140v140	-	1 grade; register choice only (Model in ecx v eax); differ/
+00c52ce0	DIFFER	172v186	-	1 grade; retail_asm candidate (rdtsc); C++ reference in differ/
+00c52da0	MATCH	148v148	PASS	1 grade; RoundCpuSpeed; abs as if-negate
+00c53260	RELOCATION_MATCH	171v171	PASS	1 grade; CDirectSoundDevice::Initialise; COM init/create
+00c53b10	DIFFER	96v75	-	1 grade; retail_asm candidate (frndint/fscale/f2xm1, base 10); C++ reference in differ/
+00c546e0	RELOCATION_MATCH	152v152	PASS	1 grade; CDecodedStream::PumpBlock; align(16) local array
+00c54ea0	RELOCATION_MATCH	129v129	PASS	1 grade; CAudioSource::ApplyVolume
+00c551d0	RELOCATION_MATCH	153v153	PASS	1 grade; CAudioSource::Start (slot 10); inline Reset
+00c55680	RELOCATION_MATCH	96v96	PASS	1 grade; CAudioSource::Open
+00c55750	MATCH	77v77	PASS	1 grade; strsafe StringCopyWorkerA (extern C stdcall)
+00c55980	RELOCATION_MATCH	53v53	PASS	1 grade; CAudioContext::LoadEntryPoints
+00c559c0	RELOCATION_MATCH	71v71	PASS	1 grade; CAudioContext::DestroyContext
+00c55a10	RELOCATION_MATCH	67v67	PASS	1 grade; CAudioContext::IsDeviceExtensionPresent
+00c55a60	RELOCATION_MATCH	50v50	PASS	1 grade; CAudioContext::GetDeviceString
+00c55aa0	RELOCATION_MATCH	82v82	PASS	1 grade; CAudioContext::OpenDevice
+00c55b00	RELOCATION_MATCH	107v107	PASS	1 grade; CAudioContext::CreateContext
+00c55f60	RELOCATION_MATCH	127v127	PASS	2 grades; CAudioContext::GetEAXGlobalProperty (slot 9)
+00c55fe0	RELOCATION_MATCH	50v50	PASS	1 grade; CAudioContext::SuspendContext (slot 10)
+00c56090	RELOCATION_MATCH	84v84	PASS	1 grade; strsafe StringCatWorkerA, inline StringLengthWorkerA
+00c561f0	RELOCATION_MATCH	86v86	PASS	1 grade; CAudioContext::IsExtensionPresent
+00c562f0	RELOCATION_MATCH	126v126	PASS	1 grade; CAudioContext::SupportsEAX3; strncmp via 0x00BFEAF8
+00c56420	RELOCATION_MATCH	112v112	PASS	1 grade; CAudioContext::Release
+00c56ec0	RELOCATION_MATCH	159v159	PASS	2 grades; CWaveFormatExtensible ctor; WAVEFORMATEX store order
+00c57070	MATCH	86v86	PASS	1 grade; CDSoundStreamBuffer::IsChunkReady; byte bool via if/return
+00c57690	RELOCATION_MATCH	79v79	PASS	1 grade; CAudioContext::SourceQueueBuffers
