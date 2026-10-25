@@ -1,0 +1,84 @@
+// Behaviour test for 00cbe2ff: IsDistanceBetweenThingsUnder compares the squared 3D distance of two live things
+#include <cstdio>
+#include <cstring>
+#include <math.h>
+class CCharString {
+public:
+    const char* m_pStringData;
+};
+class C3DVector {
+public:
+    float X, Y, Z;
+    C3DVector() { }
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
+    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
+    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
+};
+class C2DVector {
+public:
+    float X, Y;
+    C2DVector(float x, float y) : X(x), Y(y) { }
+    C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
+    C2DVector operator-(const C2DVector& v) const { return C2DVector(X - v.X, Y - v.Y); }
+    float GetLengthSquared() const { return X * X + Y * Y; }
+};
+// the slots the helpers use (retail vtable 0x01238C8C order kept)
+class CScriptThing {
+public:
+    virtual ~CScriptThing() { }
+    virtual const CCharString& GetName() const = 0;
+    virtual const C3DVector& GetPos() const = 0;
+    virtual bool MsgIsTriggeredBy(const CCharString& by) const = 0;
+    virtual bool MsgIsHitBy(const CCharString& by) const = 0;
+    virtual bool MsgIsKnockedOutBy(const CCharString& by) const = 0;
+    virtual bool IsAlive() const = 0;
+    virtual bool IsNull() const = 0;
+};
+class CTestThing : public CScriptThing {
+public:
+    CCharString Name;
+    C3DVector   Pos;
+    bool        Alive;
+    bool        Null;
+    int         AliveFor;              // >= 0: IsAlive() answers true only this many more times
+    mutable int AliveCalls;
+    const char* HitBy;
+    const char* KnockedOutBy;
+    const char* TriggeredBy;
+    CTestThing(const char* name, float x, float y, float z)
+        : Pos(x, y, z), Alive(true), Null(false), AliveFor(-1), AliveCalls(0), HitBy(0), KnockedOutBy(0), TriggeredBy(0)
+    {
+        Name.m_pStringData = name;
+    }
+    static bool Same(const char* a, const CCharString& b) { return a && std::strcmp(a, b.m_pStringData) == 0; }
+    const CCharString& GetName() const { return Name; }
+    const C3DVector& GetPos() const { return Pos; }
+    bool MsgIsTriggeredBy(const CCharString& by) const { return Same(TriggeredBy, by); }
+    bool MsgIsHitBy(const CCharString& by) const { return Same(HitBy, by); }
+    bool MsgIsKnockedOutBy(const CCharString& by) const { return Same(KnockedOutBy, by); }
+    bool IsAlive() const
+    {
+        ++AliveCalls;
+        if (AliveFor >= 0) return AliveCalls <= AliveFor;
+        return Alive;
+    }
+    bool IsNull() const { return Null; }
+};
+static bool Near(float a, float b) { return fabs(a - b) < 1e-4f; }
+// ---- the function under test, copied from src/00cbe2ff.cpp (calling convention dropped) ----
+bool IsDistanceBetweenThingsUnder(const CScriptThing& thing1, const CScriptThing& thing2, float distance)
+{
+    return (thing1.IsAlive() && thing2.IsAlive() && (thing1.GetPos() - thing2.GetPos()).GetLengthSquared() < distance * distance) ? true : false;
+}
+static int Fail() { std::printf("00cbe2ff_TEST FAIL\n"); return 1; }
+int main()
+{
+    CTestThing a("a", 0, 0, 0), b("b", 3, 4, 12);      // distance 13
+    if (!IsDistanceBetweenThingsUnder(a, b, 13.5f) || IsDistanceBetweenThingsUnder(a, b, 12.5f)) return Fail();
+    if (IsDistanceBetweenThingsUnder(a, b, 13.0f)) return Fail();          // strict
+    b.Alive = false;
+    if (IsDistanceBetweenThingsUnder(a, b, 100.0f)) return Fail();
+    std::printf("00cbe2ff_TEST PASS\n");
+    return 0;
+}

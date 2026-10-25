@@ -309594,6 +309594,265 @@ $catalog = @(
         TestSource = '00/bf/CLandscapeLayerMesh_GetPackedNormalFromTargetVertex_00bfdfd0_test.cpp'
         PassPattern = '00bfdfd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cb7140'
+        Module = '_STL'
+        Source = '00/cb/STL_partialsort_00cb7140.cpp'
+        TestSource = '00/cb/STL_partialsort_00cb7140_test.cpp'
+        PassPattern = '00cb7140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb7bc0'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_OnScriptedEntityInterrupted_00cb7bc0.cpp'
+        TestSource = '00/cb/CScriptBase_OnScriptedEntityInterrupted_00cb7bc0_test.cpp'
+        PassPattern = '00cb7bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb82f0'
+        Module = 'NScript::CRuntimeScriptedEntityPersist'
+        Source = '00/cb/NScriptCRuntimeScriptedEntityPersist_SetEntityPersistScript_00cb82f0.cpp'
+        TestSource = '00/cb/NScriptCRuntimeScriptedEntityPersist_SetEntityPersistScript_00cb82f0_test.cpp'
+        PassPattern = '00cb82f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb92c0'
+        Module = '_STL'
+        Source = '00/cb/STL_unguardedlinearinsert_00cb92c0.cpp'
+        TestSource = '00/cb/STL_unguardedlinearinsert_00cb92c0_test.cpp'
+        PassPattern = '00cb92c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb9b00'
+        Module = '_STL'
+        Source = '00/cb/STL_uninitializedcopy_00cb9b00.cpp'
+        TestSource = '00/cb/STL_uninitializedcopy_00cb9b00_test.cpp'
+        PassPattern = '00cb9b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb9b50'
+        Module = '_STL'
+        Source = '00/cb/STL_uninitializedfilln_00cb9b50.cpp'
+        TestSource = '00/cb/STL_uninitializedfilln_00cb9b50_test.cpp'
+        PassPattern = '00cb9b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb9d30'
+        Module = '_STL'
+        Source = '00/cb/STL_median_00cb9d30.cpp'
+        TestSource = '00/cb/STL_median_00cb9d30_test.cpp'
+        PassPattern = '00cb9d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb9da0'
+        Module = '_STL'
+        Source = '00/cb/STL_median_00cb9da0.cpp'
+        TestSource = '00/cb/STL_median_00cb9da0_test.cpp'
+        PassPattern = '00cb9da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb9e40'
+        Module = '_STL'
+        Source = '00/cb/STL_unguardedinsertionsortaux_00cb9e40.cpp'
+        TestSource = '00/cb/STL_unguardedinsertionsortaux_00cb9e40_test.cpp'
+        PassPattern = '00cb9e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cba580'
+        Module = '_STL'
+        Source = '00/cb/STL_unguardedpartition_00cba580.cpp'
+        TestSource = '00/cb/STL_unguardedpartition_00cba580_test.cpp'
+        PassPattern = '00cba580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cba840'
+        Module = '_STL'
+        Source = '00/cb/STL_unguardedlinearinsert_00cba840.cpp'
+        TestSource = '00/cb/STL_unguardedlinearinsert_00cba840_test.cpp'
+        PassPattern = '00cba840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cba8e0'
+        Module = '_STL'
+        Source = '00/cb/STL_swap_00cba8e0.cpp'
+        TestSource = '00/cb/STL_swap_00cba8e0_test.cpp'
+        PassPattern = '00cba8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbaab0'
+        Module = '_STL'
+        Source = '00/cb/STL_makeheap_00cbaab0.cpp'
+        TestSource = '00/cb/STL_makeheap_00cbaab0_test.cpp'
+        PassPattern = '00cbaab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbb270'
+        Module = '_STL'
+        Source = '00/cb/STL_unguardedinsertionsortaux_00cbb270.cpp'
+        TestSource = '00/cb/STL_unguardedinsertionsortaux_00cbb270_test.cpp'
+        PassPattern = '00cbb270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbb860'
+        Module = '_STL'
+        Source = '00/cb/STL_unguardedpartition_00cbb860.cpp'
+        TestSource = '00/cb/STL_unguardedpartition_00cbb860_test.cpp'
+        PassPattern = '00cbb860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbb920'
+        Module = '_STL'
+        Source = '00/cb/STL_linearinsert_00cbb920.cpp'
+        TestSource = '00/cb/STL_linearinsert_00cbb920_test.cpp'
+        PassPattern = '00cbb920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbbb70'
+        Module = '_STL'
+        Source = '00/cb/STL_makeheap_00cbbb70.cpp'
+        TestSource = '00/cb/STL_makeheap_00cbbb70_test.cpp'
+        PassPattern = '00cbbb70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbbc00'
+        Module = '_STL'
+        Source = '00/cb/STL_makeheap_00cbbc00.cpp'
+        TestSource = '00/cb/STL_makeheap_00cbbc00_test.cpp'
+        PassPattern = '00cbbc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbc330'
+        Module = '_STL'
+        Source = '00/cb/STL_linearinsert_00cbc330.cpp'
+        TestSource = '00/cb/STL_linearinsert_00cbc330_test.cpp'
+        PassPattern = '00cbc330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbc3c0'
+        Module = '_STL'
+        Source = '00/cb/STL_linearinsert_00cbc3c0.cpp'
+        TestSource = '00/cb/STL_linearinsert_00cbc3c0_test.cpp'
+        PassPattern = '00cbc3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbc7b0'
+        Module = '_STL::vector'
+        Source = '00/cb/STLvector_pushback_00cbc7b0.cpp'
+        TestSource = '00/cb/STLvector_pushback_00cbc7b0_test.cpp'
+        PassPattern = '00cbc7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbcf20'
+        Module = '_STL'
+        Source = '00/cb/STL_insertionsort_00cbcf20.cpp'
+        TestSource = '00/cb/STL_insertionsort_00cbcf20_test.cpp'
+        PassPattern = '00cbcf20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbcf70'
+        Module = '_STL'
+        Source = '00/cb/STL_insertionsort_00cbcf70.cpp'
+        TestSource = '00/cb/STL_insertionsort_00cbcf70_test.cpp'
+        PassPattern = '00cbcf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbd0f0'
+        Module = '_STL'
+        Source = '00/cb/STL_partialsort_00cbd0f0.cpp'
+        TestSource = '00/cb/STL_partialsort_00cbd0f0_test.cpp'
+        PassPattern = '00cbd0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe0c7'
+        Module = '_global'
+        Source = '00/cb/global_FoundMessageIsThingHitBy_00cbe0c7.cpp'
+        TestSource = '00/cb/global_FoundMessageIsThingHitBy_00cbe0c7_test.cpp'
+        PassPattern = '00cbe0c7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe10f'
+        Module = '_global'
+        Source = '00/cb/global_FoundMessageIsThingKnockedOutBy_00cbe10f.cpp'
+        TestSource = '00/cb/global_FoundMessageIsThingKnockedOutBy_00cbe10f_test.cpp'
+        PassPattern = '00cbe10f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe150'
+        Module = '_global'
+        Source = '00/cb/global_FoundMessageIsThingTriggeredBy_00cbe150.cpp'
+        TestSource = '00/cb/global_FoundMessageIsThingTriggeredBy_00cbe150_test.cpp'
+        PassPattern = '00cbe150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe2ff'
+        Module = '_global'
+        Source = '00/cb/global_IsDistanceBetweenThingsUnder_00cbe2ff.cpp'
+        TestSource = '00/cb/global_IsDistanceBetweenThingsUnder_00cbe2ff_test.cpp'
+        PassPattern = '00cbe2ff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe371'
+        Module = '_global'
+        Source = '00/cb/global_Is2DDistanceBetweenThingsUnder_00cbe371.cpp'
+        TestSource = '00/cb/global_Is2DDistanceBetweenThingsUnder_00cbe371_test.cpp'
+        PassPattern = '00cbe371_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe3ea'
+        Module = '_global'
+        Source = '00/cb/global_IsDistanceBetweenThingsOver_00cbe3ea.cpp'
+        TestSource = '00/cb/global_IsDistanceBetweenThingsOver_00cbe3ea_test.cpp'
+        PassPattern = '00cbe3ea_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe45c'
+        Module = '_global'
+        Source = '00/cb/global_IsDistanceFromThingToPositionOver_00cbe45c.cpp'
+        TestSource = '00/cb/global_IsDistanceFromThingToPositionOver_00cbe45c_test.cpp'
+        PassPattern = '00cbe45c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe4b7'
+        Module = '_global'
+        Source = '00/cb/global_IsDistanceFromThingToPositionUnder_00cbe4b7.cpp'
+        TestSource = '00/cb/global_IsDistanceFromThingToPositionUnder_00cbe4b7_test.cpp'
+        PassPattern = '00cbe4b7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe512'
+        Module = '_global'
+        Source = '00/cb/global_GetDistanceBetweenThings_00cbe512.cpp'
+        TestSource = '00/cb/global_GetDistanceBetweenThings_00cbe512_test.cpp'
+        PassPattern = '00cbe512_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe551'
+        Module = '_global'
+        Source = '00/cb/global_GetDistanceBetweenThingAndPosition_00cbe551.cpp'
+        TestSource = '00/cb/global_GetDistanceBetweenThingAndPosition_00cbe551_test.cpp'
+        PassPattern = '00cbe551_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe716'
+        Module = '_global'
+        Source = '00/cb/global_FadeOutAndKillEntity_00cbe716.cpp'
+        TestSource = '00/cb/global_FadeOutAndKillEntity_00cbe716_test.cpp'
+        PassPattern = '00cbe716_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe7aa'
+        Module = '_global'
+        Source = '00/cb/global_FadeInThing_00cbe7aa.cpp'
+        TestSource = '00/cb/global_FadeInThing_00cbe7aa_test.cpp'
+        PassPattern = '00cbe7aa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe814'
+        Module = '_global'
+        Source = '00/cb/global_FadeOutThing_00cbe814.cpp'
+        TestSource = '00/cb/global_FadeOutThing_00cbe814_test.cpp'
+        PassPattern = '00cbe814_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
