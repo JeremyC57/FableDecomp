@@ -600,7 +600,6 @@ _Profile_Enter@4	00404500	00431242
 ?g_progressText@@3UCWideString@@A	013b89dc	00434f60
 ?g_progressTitle@@3UCWideString@@A	013b89d8	00434f60
 ?GetControlledCreature@CPlayer@@QAEPAUCThing@@XZ	00487dd0	00435000
-?GetMainPlayer@CPlayerManager@@QAEPAUCPlayer@@XZ	00449960	00435000
 ?GiveGold@CTCHeroMoney@@QAEXJ@Z	00639e40	00435000
 ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z	004365b0	00435000
 ??1CDisplayEngineBase@@UAE@XZ	0099a300	004354c0
