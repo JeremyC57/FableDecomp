@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004e7d97	RELOCATION_MATCH	101v101	PASS	2 grades; CBuyableHouseDef::Transfer (class-key V leaf fix)
+004dd924	RELOCATION_MATCH	101v101	PASS	1 grade; CCarryableDef::Transfer (local model: header vptr-as-data)
+0049bae0	RELOCATION_MATCH	41v41	PASS	1 grade; STLport vector<float>::clear (catalog CComponent::SetParentColour propagated)
+008f9e90	RELOCATION_MATCH	41v41	PASS	1 grade; STLport vector<char>::clear (catalog CComponent::SetParentColour propagated)
+008effd0	RELOCATION_MATCH	39v39	PASS	1 grade; Coin::scalar deleting dtor (catalog CLandscapeBackgroundSubNodeSplitBranch propagated)
+0046f727	RELOCATION_MATCH	57v57	PASS	1 grade; CLensFlareElementDef::Transfer
+004656a6	RELOCATION_MATCH	57v57	PASS	1 grade; CSpecialAbilitiesFireballSpellDef::Transfer
+00a39d20	RELOCATION_MATCH	85v85	PASS	1 grade; CWADFile::GetFileInformation (local model: header vptr-as-data)
+00a39d80	RELOCATION_MATCH	57v57	PASS	1 grade; CWADFile ctor (local model)
+00a0c910	RELOCATION_MATCH	61v61	PASS	1 grade; CWStringParser::SkipWhitespace
+00a0c950	RELOCATION_MATCH	70v70	PASS	1 grade; CWStringParser::NextItemExists
+00a0cf10	RELOCATION_MATCH	44v44	PASS	1 grade; CWStringParser::ReadNextSymbol (private)
+00a0d0a0	RELOCATION_MATCH	60v60	PASS	1 grade; CWStringParser::ReadNextChunkAsString
+00a0d0e0	DIFFER	82v81	PASS	1 grade; int3-after-noreturn; CWStringParser::ReadAsInteger, byte-identical through the final _CxxThrowException call
+00a0d140	DIFFER	88v87	PASS	1 grade; int3-after-noreturn; CWStringParser::ReadAsFloat (catalog says ReadAsInteger), byte-identical through the final call
+00c37770	MATCH	46v46	PASS	1 grade; CSharedEntry ctor, libpk descriptive name (catalog CWStringParser::Init propagated)
+00414fc0	RELOCATION_MATCH	61v61	PASS	1 grade; CConsoleCommandBase::scalar deleting dtor (catalog CWaterPatchMesh propagated)
+009973c0	RELOCATION_MATCH	68v68	PASS	1 grade; CMemoryDataOutputStream::scalar deleting dtor (catalog CWaterPatchMesh propagated)
+009d8140	RELOCATION_MATCH	63v63	PASS	1 grade; CLoadingMemoryFailureHandler::scalar deleting dtor (catalog CWaterPatchMesh propagated)
+009fc700	RELOCATION_MATCH	67v67	PASS	1 grade; CResourceList::scalar deleting dtor (catalog CWaterPatchMesh propagated)
+00beab20	MATCH	27v27	PASS	1 grade; CWaterPatchMesh::RelocateData (local model)
+00beb490	RELOCATION_MATCH	57v57	PASS	3 grades; CWaterPatchMesh ctor (C2DCoordI memberwise user copy ctor; class key V per Ego_r.pdb)
+00c5ec00	RELOCATION_MATCH	53v53	PASS	1 grade; no-RTTI handle class (vtable 0x012B90D4) scalar deleting dtor (catalog CWaterPatchMesh propagated)
+00b7ec40	MATCH	30v30	PASS	2 grades; CWaterPatchTesselatorBase<CTVertexWaterBackground>::GetBridgeVertexBufferSize (catalog vfunc_1)
+00b7ec60	MATCH	40v40	PASS	2 grades; CWaterPatchTesselatorBase<CTVertexWaterBackground>::GetBridgeVertexBufferAsCArray (catalog vfunc_2)
+00b7ecf0	MATCH	25v25	PASS	2 grades; CWaterPatchTesselatorBase<CTVertexSeaBackground>::GetBridgeVertexBufferSize (catalog vfunc_1)
+00b7ed10	MATCH	37v37	PASS	2 grades; CWaterPatchTesselatorBase<CTVertexSeaBackground>::GetBridgeVertexBufferAsCArray (catalog vfunc_2)
+00b7fce0	RELOCATION_MATCH	26v26	PASS	2 grades; CWaterPatchTesselatorBase<CTVertexWaterBackground>::SetBridgeVertexBufferSize (catalog vfunc_4)
+00b80100	RELOCATION_MATCH	26v26	PASS	2 grades; CWaterPatchTesselatorBase<CTVertexSeaBackground>::SetBridgeVertexBufferSize (catalog vfunc_4)
+00c2d840	RELOCATION_MATCH	65v65	PASS	1 grade; CAudioFormat::GetBytesPerSecond, libpk descriptive name (catalog CWeaponDrawState::CalcBlockDamageReduction)
+0076de20	MATCH	53v53	PASS	2 grades; CEnginePrimitiveWeaponTrail::CWeaponTrailEntry ctor (C3DVector memberwise user copy ctor)
+00a7d520	MATCH	68v68	PASS	1 grade; STLport swap<pair<unsigned __int64,bool>> (catalog CWeaponTrailEntry propagated)
+00a7ef90	MATCH	68v68	PASS	1 grade; STLport swap<pair<unsigned __int64,bool>> twin (catalog CWeaponTrailEntry propagated)
+00cbe09a	MATCH	25v25	PASS	1 grade; CWideScreenMagicPauseEntities ctor (GameCalls slot 379 PauseAllNonScriptedEntities)
+006c5410	RELOCATION_MATCH	73v73	PASS	1 grade; CWitnessesSearchingDeed ctor (inline CIntelligentPointer<T>(T*) ctor)
+0049d930	MATCH	52v52	PASS	1 grade; CWorld::SetCreatureGenerationGroupAsEnabled (local model: retail mask +0xD0, header +0xDC)
+0049d980	RELOCATION_MATCH	35v35	PASS	1 grade; CWorld::ProcessEvent (engine/CWorld.h via CWorld_Methods)
+0049da00	RELOCATION_MATCH	95v95	PASS	1 grade; CWorld::GetCurrentRenderCamera(const CInterpolationInfo&) (local model: header vptr-as-data)
+0049da60	RELOCATION_MATCH	63v63	PASS	1 grade; CWorld::GetCurrentRenderCamera() (local model: header vptr-as-data)
+0049e590	RELOCATION_MATCH	78v78	PASS	3 grades; CWorld::SetSaveGameMarkerPos (local model: retail +0x141/+0x150, header +0x151/+0x160)

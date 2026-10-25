@@ -32893,3 +32893,14 @@ _wcsstr	00bfeb2e	0099af20
 ?resize@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@V?$allocator@VCOptimisedFace@QuadricOptimiserInternals@@@_STL@@@_STL@@QAEXIABVCOptimisedFace@QuadricOptimiserInternals@@@Z	00ad6860	00ad7350
 ?resize@?$vector@UCLandscapeTheme@@V?$allocator@UCLandscapeTheme@@@_STL@@@_STL@@QAEXIABUCLandscapeTheme@@@Z	00b6cb20	00b6cc50
 ?resize@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@_STL@@@_STL@@QAEXIABUCResourceEntry@CGPUScratchBufferTextureManager@@@Z	00f385a0	00f38640
+?Transfer@CPersistContext@@QAEXAAUC3DVector@@@Z	00456903	004dd924
+?RemoveResource@CResourceList@@QAEXAAVCResource@@@Z	009fc020	009fc700
+?ReadAsStringUntilNonWhitespace@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	00a0cc50	00a0d0a0
+?ReadAsStringUntilWhitespace@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	00a0cd40	00a0d0a0
+?ReadInfo@CBankFileEntryUpdateData@@QBEXKPAXK@Z	009cbe90	00a39d20
+?Open@CWADFile@@QAEXABVCWideString@@W4FileAccessType@@K@Z	00a39cc0	00a39d80
+?resize@?$CArray@VCTVertexWaterBackground@@@@QAEXIABVCTVertexWaterBackground@@@Z	00b7fd00	00b7fce0
+?resize@?$CArray@VCTVertexSeaBackground@@@@QAEXIABVCTVertexSeaBackground@@@Z	00b80120	00b80100
+??_7CWaterPatchMesh@@6B@	012a8134	00beb490
+?Load@CWaterPatchMesh@@QAE_NPAVCDataInputStream@@@Z	00beae50	00beb490
+?ReadNextItem@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	00a0cfc0	00a0d0e0
