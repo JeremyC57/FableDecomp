@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c8aaf0	RELOCATION_MATCH	128v128	PASS	ov_time_total; 1 grade
+00c8b9d0	RELOCATION_MATCH	212v212	PASS	ov_time_tell; 2 grades; same-TU noinline ov_time_total body hoists the pcmlengths base
+00c8bab0	MATCH	43v43	PASS	ov_info; 1 grade
+00c8bae0	MATCH	43v43	PASS	ov_comment; 1 grade
+00c8c1d0	DIFFER	48v37	-	_ov_initset; 1 grade; lane gap: LTCG custom register arguments
+00c8c200	DIFFER	65v54	-	_ov_initprime; 1 grade; lane gap: LTCG custom register arguments
+00c8c8c0	DIFFER	224v217	-	_open_seekable2; 1 grade; lane gap: LTCG custom register arguments
+00c8c9a0	DIFFER	241v233	-	_ov_open1; 1 grade; lane gap: LTCG custom register arguments
+00c8ca90	DIFFER	73v71	-	_ov_open2; 1 grade; lane gap: LTCG custom register arguments
+00c8cae0	DIFFER	35v33	-	ov_open_callbacks; 1 grade; lane gap: LTCG custom register arguments (callee)
+00c8cd30	MATCH	132v132	PASS	ogg_page_granulepos; 1 grade
+00c8cde0	MATCH	29v29	PASS	ogg_page_pageno; 1 grade
+00c8ce20	RELOCATION_MATCH	94v94	PASS	ogg_stream_init; 1 grade
+00c8ce80	RELOCATION_MATCH	66v66	PASS	ogg_stream_clear; 1 grade
+00c8cef0	DIFFER	42v38	-	_os_body_expand; 1 grade; lane gap: LTCG custom register arguments
+00c8cf20	DIFFER	68v60	-	_os_lacing_expand; 1 grade; lane gap: LTCG custom register arguments
+00c8cf60	RELOCATION_MATCH	162v162	PASS	ogg_page_checksum_set; 1 grade
+00c8d420	RELOCATION_MATCH	34v34	PASS	ogg_sync_clear; 1 grade
+00c8d470	RELOCATION_MATCH	121v121	PASS	ogg_sync_buffer; 2 grades; memmove must be the dllimport IAT call
+00c8db80	DIFFER	38v35	-	_v_writestring; 1 grade; lane gap: LTCG custom register arguments
+00c8dbb0	DIFFER	40v37	-	_v_readstring; 1 grade; lane gap: LTCG custom register arguments
+00c8dbf0	RELOCATION_MATCH	147v147	PASS	vorbis_comment_add; 1 grade
+00c8dc90	RELOCATION_MATCH	156v156	PASS	vorbis_comment_add_tag; 1 grade
+00c8dd30	DIFFER	88v88	-	tagcompare; 1 grade; lane gap: LTCG custom register arguments
+00c8dd90	DIFFER	185v185	-	vorbis_comment_query; 1 grade; lane gap: LTCG custom register arguments (callee)
+00c8de50	DIFFER	156v156	-	vorbis_comment_query_count; 1 grade; lane gap: LTCG custom register arguments (callee)
+00c8def0	RELOCATION_MATCH	102v102	PASS	vorbis_comment_clear; 1 grade
+00c8e120	DIFFER	234v220	-	_vorbis_unpack_info; 1 grade; lane gap: LTCG custom register arguments
+00c8e200	DIFFER	218v221	-	_vorbis_unpack_comment; 1 grade; lane gap: LTCG custom register arguments
+00c8e790	DIFFER	239v230	-	oggpack_buffer::_vorbis_pack_comment; 1 grade; lane gap: LTCG custom register arguments (callee)
+00c8ea70	RELOCATION_MATCH	127v127	PASS	vorbis_commentheader_out; 1 grade
+00c8eef0	RELOCATION_MATCH	207v207	PASS	vorbis_synthesis_trackonly; 1 grade
+00c8efc0	RELOCATION_MATCH	110v110	PASS	vorbis_packet_blocksize; 1 grade
+00c8f0d0	RELOCATION_MATCH	104v104	PASS	_vorbis_block_alloc; 1 grade
+00c8f140	RELOCATION_MATCH	104v104	PASS	_vorbis_block_ripcord; 1 grade
+00c8f1b0	RELOCATION_MATCH	75v75	PASS	vorbis_block_clear; 1 grade
+00c8f5f0	DIFFER	80v83	-	vorbis_analysis_init; 1 grade; lane gap: LTCG custom register arguments (callee)
+00c8f880	RELOCATION_MATCH	210v210	PASS	vorbis_analysis_buffer; 1 grade
+00c8fea0	MATCH	96v96	PASS	vorbis_synthesis_restart; 1 grade
+00c8ff00	DIFFER	32v33	-	vorbis_synthesis_init; 1 grade; lane gap: LTCG custom register arguments (callee)

@@ -32143,3 +32143,16 @@ _StringCopyWorkerA@12	00c55750	00c56090
 ?g_isWindows98@@3_NA	0143ccc3	00c5da70
 ?g_isWindows98SE@@3_NA	0143ccc4	00c5da70
 ?g_isWindowsMe@@3_NA	0143ccc5	00c5da70
+@ov_time_total@8	00c8aaf0	00c8aaf0
+@ov_pcm_total@8	00c8aa80	00c8b9d0
+?crc_lookup@@3QBIB	0139d9b0	00c8cf60
+@ogg_sync_init@4	00c8d400	00c8d420
+@vorbis_comment_add@8	00c8dbf0	00c8dc90
+__alloca_probe	00bfea30	00c8dc90
+?_vorbis_pack_comment@oggpack_buffer@@QAEHPAUvorbis_comment@@@Z	00c8e790	00c8ea70
+@oggpack_bytes@4	00c917b0	00c8ea70
+@oggpack_writeinit@4	00c90f10	00c8ea70
+@_vorbis_block_ripcord@4	00c8f140	00c8eef0
+@oggpack_read@8	00c915a0	00c8eef0
+@oggpack_readinit@12	00c91360	00c8eef0
+@oggpack_writeclear@4	00c91320	00c8f1b0

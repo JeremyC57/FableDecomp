@@ -307832,6 +307832,160 @@ $catalog = @(
         TestSource = '00/c5/CThread_Create_00c5e180_test.cpp'
         PassPattern = '00c5e180_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c8aaf0'
+        Module = '_global'
+        Source = '00/c8/global_ovtimetotal_00c8aaf0.cpp'
+        TestSource = '00/c8/global_ovtimetotal_00c8aaf0_test.cpp'
+        PassPattern = '00c8aaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8b9d0'
+        Module = '_global'
+        Source = '00/c8/global_ovtimetell_00c8b9d0.cpp'
+        TestSource = '00/c8/global_ovtimetell_00c8b9d0_test.cpp'
+        PassPattern = '00c8b9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8bab0'
+        Module = '_global'
+        Source = '00/c8/global_ovinfo_00c8bab0.cpp'
+        TestSource = '00/c8/global_ovinfo_00c8bab0_test.cpp'
+        PassPattern = '00c8bab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8bae0'
+        Module = '_global'
+        Source = '00/c8/global_ovcomment_00c8bae0.cpp'
+        TestSource = '00/c8/global_ovcomment_00c8bae0_test.cpp'
+        PassPattern = '00c8bae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8cd30'
+        Module = '_global'
+        Source = '00/c8/global_oggpagegranulepos_00c8cd30.cpp'
+        TestSource = '00/c8/global_oggpagegranulepos_00c8cd30_test.cpp'
+        PassPattern = '00c8cd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8cde0'
+        Module = '_global'
+        Source = '00/c8/global_oggpagepageno_00c8cde0.cpp'
+        TestSource = '00/c8/global_oggpagepageno_00c8cde0_test.cpp'
+        PassPattern = '00c8cde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8ce20'
+        Module = '_global'
+        Source = '00/c8/global_oggstreaminit_00c8ce20.cpp'
+        TestSource = '00/c8/global_oggstreaminit_00c8ce20_test.cpp'
+        PassPattern = '00c8ce20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8ce80'
+        Module = '_global'
+        Source = '00/c8/global_oggstreamclear_00c8ce80.cpp'
+        TestSource = '00/c8/global_oggstreamclear_00c8ce80_test.cpp'
+        PassPattern = '00c8ce80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8cf60'
+        Module = '_global'
+        Source = '00/c8/global_oggpagechecksumset_00c8cf60.cpp'
+        TestSource = '00/c8/global_oggpagechecksumset_00c8cf60_test.cpp'
+        PassPattern = '00c8cf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8d420'
+        Module = '_global'
+        Source = '00/c8/global_oggsyncclear_00c8d420.cpp'
+        TestSource = '00/c8/global_oggsyncclear_00c8d420_test.cpp'
+        PassPattern = '00c8d420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8d470'
+        Module = '_global'
+        Source = '00/c8/global_oggsyncbuffer_00c8d470.cpp'
+        TestSource = '00/c8/global_oggsyncbuffer_00c8d470_test.cpp'
+        PassPattern = '00c8d470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8dbf0'
+        Module = '_global'
+        Source = '00/c8/global_vorbiscommentadd_00c8dbf0.cpp'
+        TestSource = '00/c8/global_vorbiscommentadd_00c8dbf0_test.cpp'
+        PassPattern = '00c8dbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8dc90'
+        Module = '_global'
+        Source = '00/c8/global_vorbiscommentaddtag_00c8dc90.cpp'
+        TestSource = '00/c8/global_vorbiscommentaddtag_00c8dc90_test.cpp'
+        PassPattern = '00c8dc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8def0'
+        Module = '_global'
+        Source = '00/c8/global_vorbiscommentclear_00c8def0.cpp'
+        TestSource = '00/c8/global_vorbiscommentclear_00c8def0_test.cpp'
+        PassPattern = '00c8def0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8ea70'
+        Module = '_global'
+        Source = '00/c8/global_vorbiscommentheaderout_00c8ea70.cpp'
+        TestSource = '00/c8/global_vorbiscommentheaderout_00c8ea70_test.cpp'
+        PassPattern = '00c8ea70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8eef0'
+        Module = '_global'
+        Source = '00/c8/global_vorbissynthesistrackonly_00c8eef0.cpp'
+        TestSource = '00/c8/global_vorbissynthesistrackonly_00c8eef0_test.cpp'
+        PassPattern = '00c8eef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8efc0'
+        Module = '_global'
+        Source = '00/c8/global_vorbispacketblocksize_00c8efc0.cpp'
+        TestSource = '00/c8/global_vorbispacketblocksize_00c8efc0_test.cpp'
+        PassPattern = '00c8efc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8f0d0'
+        Module = '_global'
+        Source = '00/c8/global_vorbisblockalloc_00c8f0d0.cpp'
+        TestSource = '00/c8/global_vorbisblockalloc_00c8f0d0_test.cpp'
+        PassPattern = '00c8f0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8f140'
+        Module = '_global'
+        Source = '00/c8/global_vorbisblockripcord_00c8f140.cpp'
+        TestSource = '00/c8/global_vorbisblockripcord_00c8f140_test.cpp'
+        PassPattern = '00c8f140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8f1b0'
+        Module = '_global'
+        Source = '00/c8/global_vorbisblockclear_00c8f1b0.cpp'
+        TestSource = '00/c8/global_vorbisblockclear_00c8f1b0_test.cpp'
+        PassPattern = '00c8f1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8f880'
+        Module = '_global'
+        Source = '00/c8/global_vorbisanalysisbuffer_00c8f880.cpp'
+        TestSource = '00/c8/global_vorbisanalysisbuffer_00c8f880_test.cpp'
+        PassPattern = '00c8f880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8fea0'
+        Module = '_global'
+        Source = '00/c8/global_vorbissynthesisrestart_00c8fea0.cpp'
+        TestSource = '00/c8/global_vorbissynthesisrestart_00c8fea0_test.cpp'
+        PassPattern = '00c8fea0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
