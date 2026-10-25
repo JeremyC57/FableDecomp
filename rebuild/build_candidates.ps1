@@ -306181,6 +306181,246 @@ $catalog = @(
         TestSource = '00/c2/CHandleBasedMemoryPool_MoveArea_00c28580_test.cpp'
         PassPattern = '00c28580_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c372c0'
+        Module = 'CResourceMap_00c372c0'
+        Source = '00/c3/CResourceMap00c372c0_CResourceMap00c372c0_00c372c0.cpp'
+        TestSource = '00/c3/CResourceMap00c372c0_CResourceMap00c372c0_00c372c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c372c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c377f0'
+        Module = 'CSoundLoop_00c377f0'
+        Source = '00/c3/CSoundLoop00c377f0_DropFinishedVoice_00c377f0.cpp'
+        TestSource = '00/c3/CSoundLoop00c377f0_DropFinishedVoice_00c377f0_test.cpp'
+        PassPattern = '00c377f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c37930'
+        Module = 'CSoundLoop_00c37930'
+        Source = '00/c3/CSoundLoop00c37930_CSoundLoop00c37930_00c37930.cpp'
+        TestSource = '00/c3/CSoundLoop00c37930_CSoundLoop00c37930_00c37930_test.cpp'
+        PassPattern = '00c37930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c37990'
+        Module = 'CEntryHost_00c37990'
+        Source = '00/c3/CEntryHost00c37990_CreateEntry_00c37990.cpp'
+        TestSource = '00/c3/CEntryHost00c37990_CreateEntry_00c37990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c37990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c37ad0'
+        Module = 'CSoundEmitter_00c37ad0'
+        Source = '00/c3/CSoundEmitter00c37ad0_SyncVoice3D_00c37ad0.cpp'
+        TestSource = '00/c3/CSoundEmitter00c37ad0_SyncVoice3D_00c37ad0_test.cpp'
+        PassPattern = '00c37ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c37b90'
+        Module = 'CEntryHost_00c37b90'
+        Source = '00/c3/CEntryHost00c37b90_DestroyEntry_00c37b90.cpp'
+        TestSource = '00/c3/CEntryHost00c37b90_DestroyEntry_00c37b90_test.cpp'
+        PassPattern = '00c37b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c383d0'
+        Module = 'CRegistryLayer_00c383d0'
+        Source = '00/c3/CRegistryLayer00c383d0_Add_00c383d0.cpp'
+        TestSource = '00/c3/CRegistryLayer00c383d0_Add_00c383d0_test.cpp'
+        PassPattern = '00c383d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38510'
+        Module = 'CRampedParamOwner_00c38510'
+        Source = '00/c3/CRampedParamOwner00c38510_GetValue_00c38510.cpp'
+        TestSource = '00/c3/CRampedParamOwner00c38510_GetValue_00c38510_test.cpp'
+        PassPattern = '00c38510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38a40'
+        Module = 'CStreamPlayer_00c38a40'
+        Source = '00/c3/CStreamPlayer00c38a40_ReceiveStatus_00c38a40.cpp'
+        TestSource = '00/c3/CStreamPlayer00c38a40_ReceiveStatus_00c38a40_test.cpp'
+        PassPattern = '00c38a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3a8f0'
+        Module = 'CRampedParam_00c3a8f0'
+        Source = '00/c3/CRampedParam00c3a8f0_IsSettledAtZero_00c3a8f0.cpp'
+        TestSource = '00/c3/CRampedParam00c3a8f0_IsSettledAtZero_00c3a8f0_test.cpp'
+        PassPattern = '00c3a8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3a950'
+        Module = 'CInterpolatedFloat_00c3a950'
+        Source = '00/c3/CInterpolatedFloat00c3a950_SetTarget_00c3a950.cpp'
+        TestSource = '00/c3/CInterpolatedFloat00c3a950_SetTarget_00c3a950_test.cpp'
+        PassPattern = '00c3a950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ab50'
+        Module = 'CIndexMap_00c3ab50'
+        Source = '00/c3/CIndexMap00c3ab50_Add_00c3ab50.cpp'
+        TestSource = '00/c3/CIndexMap00c3ab50_Add_00c3ab50_test.cpp'
+        PassPattern = '00c3ab50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3abd0'
+        Module = 'CIndexMap_00c3abd0'
+        Source = '00/c3/CIndexMap00c3abd0_Get_00c3abd0.cpp'
+        TestSource = '00/c3/CIndexMap00c3abd0_Get_00c3abd0_test.cpp'
+        PassPattern = '00c3abd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b0e0'
+        Module = 'CIndexMap_00c3b0e0'
+        Source = '00/c3/CIndexMap00c3b0e0_Add_00c3b0e0.cpp'
+        TestSource = '00/c3/CIndexMap00c3b0e0_Add_00c3b0e0_test.cpp'
+        PassPattern = '00c3b0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b160'
+        Module = 'CIndexMap_00c3b160'
+        Source = '00/c3/CIndexMap00c3b160_Get_00c3b160.cpp'
+        TestSource = '00/c3/CIndexMap00c3b160_Get_00c3b160_test.cpp'
+        PassPattern = '00c3b160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b7a0'
+        Module = 'CBankCriteria_00c3b7a0'
+        Source = '00/c3/CBankCriteria00c3b7a0_Serialise_00c3b7a0.cpp'
+        TestSource = '00/c3/CBankCriteria00c3b7a0_Serialise_00c3b7a0_test.cpp'
+        PassPattern = '00c3b7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b850'
+        Module = 'CBankSampleInfo_00c3b850'
+        Source = '00/c3/CBankSampleInfo00c3b850_Serialise_00c3b850.cpp'
+        TestSource = '00/c3/CBankSampleInfo00c3b850_Serialise_00c3b850_test.cpp'
+        PassPattern = '00c3b850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3c750'
+        Module = 'CSoundBuffer_00c3c750'
+        Source = '00/c3/CSoundBuffer00c3c750_CreateHardwareBuffer_00c3c750.cpp'
+        TestSource = '00/c3/CSoundBuffer00c3c750_CreateHardwareBuffer_00c3c750_test.cpp'
+        PassPattern = '00c3c750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3c7a0'
+        Module = 'CSoundBuffer_00c3c7a0'
+        Source = '00/c3/CSoundBuffer00c3c7a0_SetupEventNotification_00c3c7a0.cpp'
+        TestSource = '00/c3/CSoundBuffer00c3c7a0_SetupEventNotification_00c3c7a0_test.cpp'
+        PassPattern = '00c3c7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3c8c0'
+        Module = 'CNodePool_00c3c8c0'
+        Source = '00/c3/CNodePool00c3c8c0_Init_00c3c8c0.cpp'
+        TestSource = '00/c3/CNodePool00c3c8c0_Init_00c3c8c0_test.cpp'
+        PassPattern = '00c3c8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3c930'
+        Module = 'CNodePool_00c3c930'
+        Source = '00/c3/CNodePool00c3c930_Clear_00c3c930.cpp'
+        TestSource = '00/c3/CNodePool00c3c930_Clear_00c3c930_test.cpp'
+        PassPattern = '00c3c930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3c9e0'
+        Module = 'CNodePool_00c3c9e0'
+        Source = '00/c3/CNodePool00c3c9e0_RemoveActive_00c3c9e0.cpp'
+        TestSource = '00/c3/CNodePool00c3c9e0_RemoveActive_00c3c9e0_test.cpp'
+        PassPattern = '00c3c9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ca50'
+        Module = 'CNodePool_00c3ca50'
+        Source = '00/c3/CNodePool00c3ca50_RemoveFree_00c3ca50.cpp'
+        TestSource = '00/c3/CNodePool00c3ca50_RemoveFree_00c3ca50_test.cpp'
+        PassPattern = '00c3ca50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3cde0'
+        Module = '_global'
+        Source = '00/c3/global_RecycleGlobalNode00c3cde0_00c3cde0.cpp'
+        TestSource = '00/c3/global_RecycleGlobalNode00c3cde0_00c3cde0_test.cpp'
+        PassPattern = '00c3cde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3cfe0'
+        Module = 'CAudioTimer_00c3cfe0'
+        Source = '00/c3/CAudioTimer00c3cfe0_GetElapsedTicks_00c3cfe0.cpp'
+        TestSource = '00/c3/CAudioTimer00c3cfe0_GetElapsedTicks_00c3cfe0_test.cpp'
+        PassPattern = '00c3cfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3d660'
+        Module = 'CAudioEventManager_00c3d660'
+        Source = '00/c3/CAudioEventManager00c3d660_DiscardMorphEvent_00c3d660.cpp'
+        TestSource = '00/c3/CAudioEventManager00c3d660_DiscardMorphEvent_00c3d660_test.cpp'
+        PassPattern = '00c3d660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3d6a0'
+        Module = 'CAudioEventManager_00c3d6a0'
+        Source = '00/c3/CAudioEventManager00c3d6a0_DiscardScreenEvent_00c3d6a0.cpp'
+        TestSource = '00/c3/CAudioEventManager00c3d6a0_DiscardScreenEvent_00c3d6a0_test.cpp'
+        PassPattern = '00c3d6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3d710'
+        Module = 'CAudioOutput_00c3d710'
+        Source = '00/c3/CAudioOutput00c3d710_ApplySpeakerMode_00c3d710.cpp'
+        TestSource = '00/c3/CAudioOutput00c3d710_ApplySpeakerMode_00c3d710_test.cpp'
+        PassPattern = '00c3d710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3e760'
+        Module = 'CAudioDevice_00c3e760'
+        Source = '00/c3/CAudioDevice00c3e760_BeginFrame_00c3e760.cpp'
+        TestSource = '00/c3/CAudioDevice00c3e760_BeginFrame_00c3e760_test.cpp'
+        PassPattern = '00c3e760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3e800'
+        Module = 'CAudioDevice_00c3e800'
+        Source = '00/c3/CAudioDevice00c3e800_UpdateMeters_00c3e800.cpp'
+        TestSource = '00/c3/CAudioDevice00c3e800_UpdateMeters_00c3e800_test.cpp'
+        PassPattern = '00c3e800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3f280'
+        Module = 'CAudioOutput_00c3f280'
+        Source = '00/c3/CAudioOutput00c3f280_GetFallbackSpeakerMode_00c3f280.cpp'
+        TestSource = '00/c3/CAudioOutput00c3f280_GetFallbackSpeakerMode_00c3f280_test.cpp'
+        PassPattern = '00c3f280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c402e0'
+        Module = 'CPKVector3_00c402e0'
+        Source = '00/c4/CPKVector300c402e0_Normalise_00c402e0.cpp'
+        TestSource = '00/c4/CPKVector300c402e0_Normalise_00c402e0_test.cpp'
+        PassPattern = '00c402e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c427d0'
+        Module = 'CPKRiffReader_00c427d0'
+        Source = '00/c4/CPKRiffReader00c427d0_FindChunk_00c427d0.cpp'
+        TestSource = '00/c4/CPKRiffReader00c427d0_FindChunk_00c427d0_test.cpp'
+        PassPattern = '00c427d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c42a70'
+        Module = 'CShuffleBag_00c42a70'
+        Source = '00/c4/CShuffleBag00c42a70_PickNext_00c42a70.cpp'
+        TestSource = '00/c4/CShuffleBag00c42a70_PickNext_00c42a70_test.cpp'
+        PassPattern = '00c42a70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

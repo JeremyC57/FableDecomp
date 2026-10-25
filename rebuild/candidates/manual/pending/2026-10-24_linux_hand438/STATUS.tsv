@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c372c0	RELOCATION_MATCH	134v134	PASS	3 grades; CResourceMap ctor (/EHsc), counterpart of landed dtor 0xC37130; the +0x40 zero words are a sub-object with an inline zeroing ctor
+00c377f0	RELOCATION_MATCH	69v69	PASS	1 grade; CSoundLoop::DropFinishedVoice
+00c37930	RELOCATION_MATCH	53v53	PASS	1 grade; ~CSoundLoop
+00c37990	RELOCATION_MATCH	82v82	PASS	4 grades; CEntryHost::CreateEntry (/EHsc): a void function discarding `new T(this,key)` (return new adds an xor-eax epilogue, 102v82)
+00c37ad0	MATCH	192v192	PASS	2 grades; CSoundEmitter::SyncVoice3D; vector needs a memberwise inline operator=
+00c37b90	RELOCATION_MATCH	49v49	PASS	1 grade; CEntryHost::DestroyEntry
+00c37c40	DIFFER	78v75	-	2 grades; parked: LTCG keeps `this` in edx across the out-of-line visitor ctor call (lane gap)
+00c383d0	RELOCATION_MATCH	43v43	PASS	1 grade; CRegistryLayer::Add, the 0xC2C7B0 shape one level up
+00c38510	RELOCATION_MATCH	50v50	PASS	1 grade; CRampedParamOwner::GetValue
+00c38a40	RELOCATION_MATCH	126v126	PASS	1 grade; CStreamPlayer::ReceiveStatus (two PKCMailbox reads)
+00c3a8f0	RELOCATION_MATCH	90v90	PASS	2 grades; CRampedParam::IsSettledAtZero
+00c3a950	RELOCATION_MATCH	20v20	PASS	1 grade; CInterpolatedFloat::SetTarget(target,time)
+00c3ab50	RELOCATION_MATCH	124v124	PASS	1 grade; CIndexMap::Add ("Index n already exists!")
+00c3abd0	MATCH	22v22	PASS	2 grades; CIndexMap::Get, early `if (!node) return 0;`
+00c3b0e0	RELOCATION_MATCH	124v124	PASS	1 grade; CIndexMap::Add (second instantiation)
+00c3b160	MATCH	22v22	PASS	2 grades; CIndexMap::Get (second instantiation)
+00c3b7a0	RELOCATION_MATCH	149v149	PASS	1 grade; CBankCriteria::Serialise (PKSerialiseCParser + PKCAutoDeleteArray)
+00c3b850	RELOCATION_MATCH	161v161	PASS	1 grade; CBankSampleInfo::Serialise, one && chain
+00c3c750	RELOCATION_MATCH	69v69	PASS	1 grade; CSoundBuffer::CreateHardwareBuffer
+00c3c7a0	RELOCATION_MATCH	109v109	PASS	1 grade; CSoundBuffer::SetupEventNotification
+00c3c8c0	RELOCATION_MATCH	103v103	PASS	1 grade; CNodePool::Init, `while (--n)`
+00c3c930	MATCH	79v79	PASS	2 grades; CNodePool::Clear, advance through the member
+00c3c9e0	RELOCATION_MATCH	32v32	PASS	1 grade; CNodePool::RemoveActive
+00c3ca50	RELOCATION_MATCH	32v32	PASS	1 grade; CNodePool::RemoveFree
+00c3cde0	RELOCATION_MATCH	59v59	PASS	1 grade; RecycleGlobalNode (global pool 0x0143BC00)
+00c3cfe0	RELOCATION_MATCH	46v46	PASS	1 grade; CAudioTimer::GetElapsedTicks (the audio device; QueryPerformanceCounter)
+00c3d660	RELOCATION_MATCH	62v62	PASS	1 grade; CAudioEventManager::DiscardMorphEvent
+00c3d6a0	RELOCATION_MATCH	66v66	PASS	1 grade; CAudioEventManager::DiscardScreenEvent
+00c3d710	RELOCATION_MATCH	150v150	PASS	1 grade; CAudioOutput::ApplySpeakerMode (compare chain, no table; global store pairs checked by hand)
+00c3e760	RELOCATION_MATCH	157v157	PASS	4 grades (incl. an extern-flag probe); CAudioDevice::BeginFrame: file-static flag, nested if, inline Clear()
+00c3e800	RELOCATION_MATCH	142v142	PASS	1 grade; CAudioDevice::UpdateMeters
+00c3f280	RELOCATION_MATCH	212v212	PASS	1 grade; CAudioOutput::GetFallbackSpeakerMode (jump table, case pairings checked by hand)
+00c3ff70	DIFFER	21v32	-	1 grade; parked: retail_asm candidate (bare fld/fistp)
+00c402e0	RELOCATION_MATCH	138v138	PASS	2 grades; CPKVector3::Normalise, `1.0f != length`
+00c40ee0	DIFFER	38v109	-	1 grade; parked: retail_asm candidate (frndint/f2xm1/fscale + fwait)
+00c40f50	DIFFER	61v64	-	1 grade; parked: retail_asm candidate (bare fld/fistp after log10*2000)
+00c418f0	DIFFER	160v160	-	3 grades + QFE probe; parked: x87 spill order of the length (lane gap)
+00c425e0	DIFFER	221v217	-	4 grades; parked: esi/edi/ebx colouring of DecodeImaAdpcm
+00c427d0	RELOCATION_MATCH	120v120	PASS	1 grade; CPKRiffReader::FindChunk
+00c42a70	RELOCATION_MATCH	49v49	PASS	2 grades; CShuffleBag::PickNext, `index = Random(n-1) + 1`
