@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0080e060	RELOCATION_MATCH	291v291	PASS	1 grade; STLport __find_if<pair<CIntelligentPointer<CThing>,long>*,CIsFirstElementEqualTo> (/Gr)
+0080ef50	RELOCATION_MATCH	333v333	PASS	1 grade; vector<pair<CIntelligentPointer<CThing>,long> >::insert(pos, x)
+008158d0	RELOCATION_MATCH	460v460	PASS	1 grade; NHitLocations::CPhysicalPrimitiveCylinder::GetCylinderBaseAndTop (catalog GetDummyObjectOriginTransformed)
+00815f00	RELOCATION_MATCH	255v255	PASS	2 grades; GetPBestHitLocationFromList (anon namespace)
+00818ca0	RELOCATION_MATCH	286v286	PASS	1 grade; vector<pair<CHitLocation,long> >::_M_insert_overflow
+0081c360	RELOCATION_MATCH	303v303	PASS	1 grade; vector<CParticleMorphs::CEntry>::_M_insert_overflow
+0081c890	RELOCATION_MATCH	242v242	PASS	1 grade; vector<pair<EHeroMorphType,CTextureMorphEntry> >::_M_insert_overflow
+0081c990	RELOCATION_MATCH	251v251	PASS	1 grade; vector<pair<EHeroMorphType,CParticleMorphs::CEntry> >::_M_insert_overflow
+0081cbb0	RELOCATION_MATCH	332v332	PASS	1 grade; vector<pair<EHeroMorphType,CTextureMorphEntry> >::_M_fill_insert
+0081cd00	RELOCATION_MATCH	323v323	PASS	3 grades; vector<pair<EHeroMorphType,CParticleMorphs::CEntry> >::_M_fill_insert
+0081d0b0	RELOCATION_MATCH	323v323	PASS	1 grade; vector<CTextureMorphEntry>::_M_fill_insert
+0081d200	RELOCATION_MATCH	314v314	PASS	4 grades; vector<CParticleMorphs::CEntry>::_M_fill_insert
+0081db70	RELOCATION_MATCH	268v268	PASS	2 grades; __introsort_loop<pair<EHeroMorphType,CTextureMorphEntry>*>
+0081dc80	RELOCATION_MATCH	258v258	PASS	2 grades; __introsort_loop<pair<EHeroMorphType,CParticleMorphs::CEntry>*>
+0081dd90	RELOCATION_MATCH	242v242	PASS	2 grades; __introsort_loop<pair<unsigned long,CSkeletalMorphs::CEntry>*>
+0081ea50	DIFFER	345v391	-	1 grade; retail_asm candidate (inline-asm fistp rounding helper); CMap::GetGroundSizeZAt
+00826450	RELOCATION_MATCH	249v249	PASS	1 grade; vector<CMap::CScriptedMapBrushUpdateArea>::_M_insert_overflow
+00828360	RELOCATION_MATCH	555v555	PASS	3 grades; CRegionConnectionNode::GetNextNodeOnWayToRegion
+0082cd80	RELOCATION_MATCH	256v256	PASS	1 grade; vector<CMinimapData>::_M_insert_overflow
+0082f930	RELOCATION_MATCH	575v575	PASS	1 grade; _Rb_tree<unsigned __int64,...CThingPosAndOrientation>::insert_unique(hint, v)
+00836ad0	RELOCATION_MATCH	245v245	PASS	4 grades; CThingSoundEmitter::RenderUpdate
+0083d800	RELOCATION_MATCH	243v243	PASS	1 grade; CThingPhysicalSwitch::Save
+0083ecf0	DIFFER	307v281	-	4 grades; LHNetworkLib::toUpperCase: string fields kept in memory, retail edi/esi; the reserve-stand-in TU model now in differ/ matches in scratch (not graded, budget spent)
+0083f420	DIFFER	427v403	-	4 grades (+1 re-grade of the parked copy, 5 q.py runs logged); LHHttpHeaderStatus::ParseLocationData: string temp zero stores/esi; the stand-in TU model now in differ/ matches in scratch (not graded, budget spent)
+0083f650	DIFFER	497v442	-	2 grades; LHHttpHeaders::GetHeader: inline-budget lane gap (0x567D00 site choice)
+0083f9b0	RELOCATION_MATCH	360v360	PASS	1 grade; LHHttp2::Open()
+0083fce0	DIFFER	661v660	PASS	2 grades + 1 qn1 N+1 check; int3-after-noreturn: RELOCATION_MATCH against the N+1 span; LHHttpHeaders::GetHeaderString; test differ/0083fce0.test.cpp PASS (g++ and VC)
+008405f0	RELOCATION_MATCH	322v322	PASS	1 grade; LHHttp2::SendRequestAsync
+00840b60	RELOCATION_MATCH	1000v1000	PASS	1 grade; LHHttp2::GetHeader(LHHttpHeaderStatus&) (catalog LHHttp2_ParseResponseLine)
+008410d0	RELOCATION_MATCH	250v250	PASS	1 grade; LHHttp2::~LHHttp2
+008411d0	DIFFER	510v510	-	1 grade; LHHttp2::HelperGetDocument: one bool frame byte (+0xa v +0xb)
+00841900	RELOCATION_MATCH	354v354	PASS	1 grade; STLport __find_if<const char*,_Not_within_traits<char_traits<char> > > (/Gr)
+00845ce0	RELOCATION_MATCH	763v763	PASS	1 grade; CCreatureAction_DropWeapon::DropWeapon (static __fastcall)
+0084d0e0	RELOCATION_MATCH	393v393	PASS	1 grade; C3DFrustrum::UpdateFrustrum
+00856040	RELOCATION_MATCH	266v266	PASS	1 grade; ProcessFramesRunningForOnHitWithParams (anon namespace)
+00856310	DIFFER	594v600	-	1 grade; x87 stackifier lane gap (retail keeps dying operands; ICE C1001 on C2DVector forms)
+00858e00	DIFFER	575v575	-	1 grade; dead-arg-slot assignment swap only (name vs + temporary)
+00859040	RELOCATION_MATCH	411v411	PASS	1 grade; GetThingDoingDamageFromCreatureAndEventName (anon namespace)
+0085f6f0	RELOCATION_MATCH	308v308	PASS	1 grade; NCreatureMode::GetUpFromSleeping
+0085f8d0	RELOCATION_MATCH	303v303	PASS	2 grades; NCreatureMode::IsValidRangedWeaponTargetForShooter

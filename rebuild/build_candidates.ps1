@@ -320843,6 +320843,237 @@ $catalog = @(
         TestSource = '00/80/CApplyAdditionalExplosiveImpulseIfInsideSmearedLine_operator_0080da50_test.cpp'
         PassPattern = '0080da50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0080e060'
+        Module = 'std'
+        Source = '00/80/std_findif_0080e060.cpp'
+        TestSource = '00/80/std_findif_0080e060_test.cpp'
+        PassPattern = '0080e060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080ef50'
+        Module = 'std::vector'
+        Source = '00/80/stdvector_insert_0080ef50.cpp'
+        TestSource = '00/80/stdvector_insert_0080ef50_test.cpp'
+        PassPattern = '0080ef50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008158d0'
+        Module = 'NHitLocations::CPhysicalPrimitiveCylinder'
+        Source = '00/81/NHitLocationsCPhysicalPrimitiveCylinder_GetCylinderBaseAndTop_008158d0.cpp'
+        TestSource = '00/81/NHitLocationsCPhysicalPrimitiveCylinder_GetCylinderBaseAndTop_008158d0_test.cpp'
+        PassPattern = '008158d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00815f00'
+        Module = '_global'
+        Source = '00/81/global_GetPBestHitLocationFromList_00815f00.cpp'
+        TestSource = '00/81/global_GetPBestHitLocationFromList_00815f00_test.cpp'
+        PassPattern = '00815f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00818ca0'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Minsertoverflow_00818ca0.cpp'
+        TestSource = '00/81/stdvector_Minsertoverflow_00818ca0_test.cpp'
+        PassPattern = '00818ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081c360'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Minsertoverflow_0081c360.cpp'
+        TestSource = '00/81/stdvector_Minsertoverflow_0081c360_test.cpp'
+        PassPattern = '0081c360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081c890'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Minsertoverflow_0081c890.cpp'
+        TestSource = '00/81/stdvector_Minsertoverflow_0081c890_test.cpp'
+        PassPattern = '0081c890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081c990'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Minsertoverflow_0081c990.cpp'
+        TestSource = '00/81/stdvector_Minsertoverflow_0081c990_test.cpp'
+        PassPattern = '0081c990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081cbb0'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Mfillinsert_0081cbb0.cpp'
+        TestSource = '00/81/stdvector_Mfillinsert_0081cbb0_test.cpp'
+        PassPattern = '0081cbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081cd00'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Mfillinsert_0081cd00.cpp'
+        TestSource = '00/81/stdvector_Mfillinsert_0081cd00_test.cpp'
+        PassPattern = '0081cd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081d0b0'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Mfillinsert_0081d0b0.cpp'
+        TestSource = '00/81/stdvector_Mfillinsert_0081d0b0_test.cpp'
+        PassPattern = '0081d0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081d200'
+        Module = 'std::vector'
+        Source = '00/81/stdvector_Mfillinsert_0081d200.cpp'
+        TestSource = '00/81/stdvector_Mfillinsert_0081d200_test.cpp'
+        PassPattern = '0081d200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081db70'
+        Module = 'std'
+        Source = '00/81/std_introsortloop_0081db70.cpp'
+        TestSource = '00/81/std_introsortloop_0081db70_test.cpp'
+        PassPattern = '0081db70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081dc80'
+        Module = 'std'
+        Source = '00/81/std_introsortloop_0081dc80.cpp'
+        TestSource = '00/81/std_introsortloop_0081dc80_test.cpp'
+        PassPattern = '0081dc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081dd90'
+        Module = 'std'
+        Source = '00/81/std_introsortloop_0081dd90.cpp'
+        TestSource = '00/81/std_introsortloop_0081dd90_test.cpp'
+        PassPattern = '0081dd90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00826450'
+        Module = 'std::vector'
+        Source = '00/82/stdvector_Minsertoverflow_00826450.cpp'
+        TestSource = '00/82/stdvector_Minsertoverflow_00826450_test.cpp'
+        PassPattern = '00826450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00828360'
+        Module = 'CRegionConnectionNode'
+        Source = '00/82/CRegionConnectionNode_GetNextNodeOnWayToRegion_00828360.cpp'
+        TestSource = '00/82/CRegionConnectionNode_GetNextNodeOnWayToRegion_00828360_test.cpp'
+        PassPattern = '00828360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082cd80'
+        Module = 'std::vector'
+        Source = '00/82/stdvector_Minsertoverflow_0082cd80.cpp'
+        TestSource = '00/82/stdvector_Minsertoverflow_0082cd80_test.cpp'
+        PassPattern = '0082cd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082f930'
+        Module = 'std::_Rb_tree'
+        Source = '00/82/stdRbtree_insertunique_0082f930.cpp'
+        TestSource = '00/82/stdRbtree_insertunique_0082f930_test.cpp'
+        PassPattern = '0082f930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00836ad0'
+        Module = 'CThingSoundEmitter'
+        Source = '00/83/CThingSoundEmitter_RenderUpdate_00836ad0.cpp'
+        TestSource = '00/83/CThingSoundEmitter_RenderUpdate_00836ad0_test.cpp'
+        PassPattern = '00836ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083d800'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/83/CThingPhysicalSwitch_Save_0083d800.cpp'
+        TestSource = '00/83/CThingPhysicalSwitch_Save_0083d800_test.cpp'
+        PassPattern = '0083d800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083f9b0'
+        Module = 'LHNetworkLib::LHHttp2'
+        Source = '00/83/LHNetworkLibLHHttp2_Open_0083f9b0.cpp'
+        TestSource = '00/83/LHNetworkLibLHHttp2_Open_0083f9b0_test.cpp'
+        PassPattern = '0083f9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008405f0'
+        Module = 'LHNetworkLib::LHHttp2'
+        Source = '00/84/LHNetworkLibLHHttp2_SendRequestAsync_008405f0.cpp'
+        TestSource = '00/84/LHNetworkLibLHHttp2_SendRequestAsync_008405f0_test.cpp'
+        PassPattern = '008405f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00840b60'
+        Module = 'LHNetworkLib::LHHttp2'
+        Source = '00/84/LHNetworkLibLHHttp2_GetHeader_00840b60.cpp'
+        TestSource = '00/84/LHNetworkLibLHHttp2_GetHeader_00840b60_test.cpp'
+        PassPattern = '00840b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008410d0'
+        Module = 'LHNetworkLib::LHHttp2'
+        Source = '00/84/LHNetworkLibLHHttp2_LHHttp2_008410d0.cpp'
+        TestSource = '00/84/LHNetworkLibLHHttp2_LHHttp2_008410d0_test.cpp'
+        PassPattern = '008410d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00841900'
+        Module = 'std'
+        Source = '00/84/std_findif_00841900.cpp'
+        TestSource = '00/84/std_findif_00841900_test.cpp'
+        PassPattern = '00841900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00845ce0'
+        Module = 'CCreatureAction_DropWeapon'
+        Source = '00/84/CCreatureActionDropWeapon_DropWeapon_00845ce0.cpp'
+        TestSource = '00/84/CCreatureActionDropWeapon_DropWeapon_00845ce0_test.cpp'
+        PassPattern = '00845ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084d0e0'
+        Module = 'C3DFrustrum'
+        Source = '00/84/C3DFrustrum_UpdateFrustrum_0084d0e0.cpp'
+        TestSource = '00/84/C3DFrustrum_UpdateFrustrum_0084d0e0_test.cpp'
+        PassPattern = '0084d0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00856040'
+        Module = '_global'
+        Source = '00/85/global_ProcessFramesRunningForOnHitWithParams_00856040.cpp'
+        TestSource = '00/85/global_ProcessFramesRunningForOnHitWithParams_00856040_test.cpp'
+        PassPattern = '00856040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00859040'
+        Module = '_global'
+        Source = '00/85/global_GetThingDoingDamageFromCreatureAndEventName_00859040.cpp'
+        TestSource = '00/85/global_GetThingDoingDamageFromCreatureAndEventName_00859040_test.cpp'
+        PassPattern = '00859040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f6f0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_GetUpFromSleeping_0085f6f0.cpp'
+        TestSource = '00/85/NCreatureMode_GetUpFromSleeping_0085f6f0_test.cpp'
+        PassPattern = '0085f6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085f8d0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsValidRangedWeaponTargetForShooter_0085f8d0.cpp'
+        TestSource = '00/85/NCreatureMode_IsValidRangedWeaponTargetForShooter_0085f8d0_test.cpp'
+        PassPattern = '0085f8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083fce0'
+        Module = 'LHNetworkLib::LHHttpHeaders'
+        Source = '00/83/LHNetworkLibLHHttpHeaders_GetHeaderString_0083fce0.cpp'
+        TestSource = '00/83/LHNetworkLibLHHttpHeaders_GetHeaderString_0083fce0_test.cpp'
+        PassPattern = '0083fce0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
