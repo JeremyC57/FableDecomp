@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004bafb0	RELOCATION_MATCH	86v86	PASS	_STL::__insertion_sort<pair<CCharString, CPersistInfo>*> (quest persistence map); grades 3/4
+004bb6b0	RELOCATION_MATCH	103v103	PASS	CVectorMap<CCharString, CPersistInfo>::DeallocateMemory: clear + swap with an empty vector; grades 3/4
+004bb780	RELOCATION_MATCH	99v99	PASS	vector<pair<CCharString, CPersistInfo> >::push_back (_M_insert_overflow 0x4BB400 out of line); grades 3/4
+004bb810	RELOCATION_MATCH	152v152	PASS	_STL::__partial_sort<pair<CCharString, CPersistInfo>*>: __pop_heap 0x4BABF0 out of line, noinline CBasicString<char>::operator<; grades 3/4
+004c3860	MATCH	124v124	PASS	_STL::__unguarded_partition<CMeshInfo*, CSortPrimaryMeshesFirst>: left-operand-only comparator -> jmp $ loop; grades 3/4
+004c38f0	MATCH	125v125	PASS	_STL::__unguarded_partition<CMeshInfo*, CSortPrimaryMeshesLast>; grades 3/4
+004c3ab0	RELOCATION_MATCH	140v140	PASS	_STL::__make_heap<CMeshInfo*, CSortPrimaryMeshesFirst>; grades 3/4
+004c3b60	RELOCATION_MATCH	140v140	PASS	_STL::__make_heap<CMeshInfo*, CSortPrimaryMeshesLast>; grades 3/4
+004c5220	RELOCATION_MATCH	164v164	PASS	_STL::__partial_sort<CMeshInfo*, CSortPrimaryMeshesFirst> (make_heap and __pop_heap inline); grades 3/4
+004c52d0	RELOCATION_MATCH	167v167	PASS	_STL::__partial_sort<CMeshInfo*, CSortPrimaryMeshesLast>; grades 3/4
+004c59b0	RELOCATION_MATCH	231v231	PASS	_STL::__introsort_loop<CMeshInfo*, CSortPrimaryMeshesFirst>; grades 3/4
+004c5aa0	RELOCATION_MATCH	239v239	PASS	_STL::__introsort_loop<CMeshInfo*, CSortPrimaryMeshesLast>; grades 3/4
+004cb5e0	MATCH	51v51	PASS	_STL::__unguarded_linear_insert<pair<ETCInterfaceType, CTCBase*>*> (component map); grades 3/4
+004cbbf0	RELOCATION_MATCH	79v79	PASS	vector<pair<ETCInterfaceType, CTCBase*> >::_M_allocate_and_copy<const pair*>; grades 3/4
+004cc090	RELOCATION_MATCH	62v62	PASS	_STL::bitset<274>::set (puts + noreturn abort); grades 3/4
+004cc0d0	RELOCATION_MATCH	64v64	PASS	_STL::bitset<274>::reset (puts + noreturn abort); grades 3/4
+004cc690	MATCH	85v85	PASS	_STL::__unguarded_partition<pair<ETCInterfaceType, CTCBase*>*>; grades 3/4
+004cc9b0	RELOCATION_MATCH	114v114	PASS	vector<pair<ETCInterfaceType, CTCBase*> >::reserve; grades 3/4
+004cd0c0	RELOCATION_MATCH	99v99	PASS	_STL::__linear_insert<pair<ETCInterfaceType, CTCBase*>*> (copy_backward inline); grades 3/4
+004cd370	RELOCATION_MATCH	107v107	PASS	_STL::__partial_sort<pair<ETCInterfaceType, CTCBase*>*> (signed enum key, not Float); grades 3/4
+004cd500	RELOCATION_MATCH	196v196	PASS	_STL::__introsort_loop<pair<ETCInterfaceType, CTCBase*>*>; grades 3/4
+004cd9d0	RELOCATION_MATCH	56v56	PASS	_STL::_Vector_base<unsigned long>::_Vector_base(n, a); grades 3/4
+004cfcf0	RELOCATION_MATCH	72v72	PASS	_STL::__unguarded_linear_insert<pair<float, CCharString>*> (subtitle text); grades 3/4
+004d0170	MATCH	84v84	PASS	_STL::__unguarded_partition<pair<float, EConversationAttitude>*>; grades 3/4
+004d0220	RELOCATION_MATCH	138v138	PASS	_STL::__unguarded_partition<pair<float, CCharString>*>; grades 3/4
+004d0330	MATCH	136v136	PASS	_STL::__unguarded_partition<pair<float, CSubtitledMessage::CCameraTag>*> (28-byte pair); grades 3/4
+004d0bf0	RELOCATION_MATCH	74v74	PASS	_STL::__make_heap<pair<float, EConversationAttitude>*>; grades 3/4
+004d0c40	RELOCATION_MATCH	80v80	PASS	_STL::__make_heap<pair<float, CCharString>*>; grades 3/4
+004d0c90	RELOCATION_MATCH	132v132	PASS	_STL::__make_heap<pair<float, CCameraTag>*> (catalog CDebugBox is propagated); grades 3/4
+004d14e0	RELOCATION_MATCH	68v68	PASS	_STL::__insertion_sort<pair<float, CCharString>*>; grades 3/4
+004d1b40	RELOCATION_MATCH	114v114	PASS	_STL::__partial_sort<pair<float, EConversationAttitude>*> (__pop_heap inline); grades 3/4
+004d1bc0	RELOCATION_MATCH	177v177	PASS	_STL::__partial_sort<pair<float, CCharString>*> (__pop_heap inline, and-esp-8 frame); grades 3/4
+004d1c80	RELOCATION_MATCH	133v133	PASS	_STL::__partial_sort<pair<float, CCameraTag>*> (__pop_heap 0x4D0B50 out of line); grades 3/4
+004d2160	RELOCATION_MATCH	224v224	PASS	_STL::__introsort_loop<pair<float, EConversationAttitude>*>; grades 3/4
+004d2240	RELOCATION_MATCH	230v230	PASS	_STL::__introsort_loop<pair<float, CCharString>*>; grades 3/4
+004dd80b	RELOCATION_MATCH	85v85	PASS	_STL::__unguarded_linear_insert<pair<CCharString, CTCBase::CRegisteredTCInfo>*>: #pragma optimize("s") + __forceinline compare; grades 4/4
+0051d240	RELOCATION_MATCH	144v144	PASS	vector<set<unsigned long> >::resize(n) = resize(n, set()) with the temporary set inline; grades 3/4
+005295b0	RELOCATION_MATCH	218v218	PASS	vector<unsigned char>::operator= (STLport, memmove paths); grades 3/4
+0052b510	RELOCATION_MATCH	153v153	PASS	_STL::__uninitialized_fill_n<CEntityScriptInfo*, unsigned int, CEntityScriptInfo>; grades 3/4
+0052bb40	RELOCATION_MATCH	145v145	PASS	_STL::__uninitialized_copy<const CEntityScriptInfo*, CEntityScriptInfo*> (twin of landed 0x52BBE0); grades 3/4
