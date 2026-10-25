@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008e3890	RELOCATION_MATCH	64v64	PASS	vector<CIcicleData>::erase(pos); catalog std_list_remove<..CDangerStatus> propagated; grades 1
+006f15e0	RELOCATION_MATCH	199v199	PASS	swap<CDefendingCombatantInfo::CProng>; pack(1) C3DVector + CIntelligentPointer<CThingCreatureBase> copy/assign inline; grades 1
+00cb6230	RELOCATION_MATCH	181v181	PASS	swap<pair<CCharString,CScriptInfo>>; catalog CMusicManager entry propagated; grades 1
+009e6480	RELOCATION_MATCH	168v168	PASS	swap<pair<CCharString,CSymbolMap::CSymbolInfo>>; grades 1
+00a3fdc0	RELOCATION_MATCH	123v123	PASS	swap<CSymbolMap::CSymbolInfo>; grades 1
+00af2cd0	RELOCATION_MATCH	141v141	PASS	swap<pair<CCharString,NParticleEngine::CRegisteredPSCInfo>>; catalog CSymbolInfo propagated; grades 1
+00497310	RELOCATION_MATCH	63v63	PASS	__pop_heap<CWideString*,..,CCaseInsensitiveStringCompare>; catalog swap<CTCBase..> propagated; grades 1
+004da6fc	RELOCATION_MATCH	60v60	PASS	swap<pair<CCharString,CTCBase::CRegisteredTCInfo>>; /Os, pair copy+assign out of line; grades 2
+005938f1	RELOCATION_MATCH	51v51	PASS	swap<pair<long,CDefPointer<const CContextSensitiveItemDef>>>; /Os; __forceinline ~CDefPointer keeps ~pair out of line; grades 2
+005946b2	RELOCATION_MATCH	63v63	PASS	__pop_heap<pair<long,CDefPointer<..>>*,..,CContextSensitivePriorityCompare>; /Os; grades 1
+005bd183	RELOCATION_MATCH	43v43	PASS	NInventory::CCategory::SetCategoryThingAssociation; /Os; named pointer local (unnamed temp 40v43); grades 2
+005e1b20	RELOCATION_MATCH	63v63	PASS	__pop_heap<CCharString*,..,less<CCharString>>; grades 1
+006232f0	RELOCATION_MATCH	99v99	PASS	swap<CTestQuest>; copy ctor/operator= out of line; grades 1
+009b3a40	RELOCATION_MATCH	63v63	PASS	__pop_heap<CWideString*,..,less<CWideString>>; grades 1
+0071fdf0	RELOCATION_MATCH	118v118	PASS	swap<pair<EHeroMorphType,CTextureMorphEntry>>; CCompositeBlendDesc copy ctor out of line; grades 1
+004cfbf0	RELOCATION_MATCH	78v78	PASS	swap<pair<float,CCharString>>; grades 1
+00566870	RELOCATION_MATCH	78v78	PASS	swap<pair<float,CWideString>>; grades 1
+00cb9230	RELOCATION_MATCH	138v138	PASS	swap<pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>>; grades 1
+008073d0	RELOCATION_MATCH	195v195	PASS	swap<NPlayerTargeting::CTargetPoint>; grades 1
+004b7800	RELOCATION_MATCH	148v148	PASS	swap<pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>>; grades 1
+0070fd30	MATCH	60v60	PASS	STLport __upper_bound over list<CAnimSet> iterators (twin of landed 0x70FCF0 lower_bound); grades 1
+0067f220	RELOCATION_MATCH	92v92	PASS	vector<CDegradableInfo>::resize(n,x); catalog CBrainBehaviour propagated; grades 1
+00a55670	RELOCATION_MATCH	85v85	PASS	vector<C3DAnimationSequenceData::C3DVectorWord>::resize(n,x); catalog CBrainBehaviour propagated; grades 1
+00a97a50	RELOCATION_MATCH	85v85	PASS	vector<C3DTriangle2>::resize(n,x) (caller landed C3DMeshFileTrianglesChunk::ReadFromFile); catalog CBrainBehaviour propagated; grades 1
+004122d0	RELOCATION_MATCH	85v85	PASS	vector<char>::resize(n,x): __copy_trivial memmove (plain rel32 to 0xBFEAE6); catalog CEditRegion propagated; grades 1
+005e1ac0	RELOCATION_MATCH	81v81	PASS	__unguarded_insertion_sort_aux<pair<unsigned long,CAnimationEntry>*>; catalog _Destroy propagated; grades 1
+006beb80	RELOCATION_MATCH	101v101	PASS	__unguarded_insertion_sort_aux<pair<long,CMusicManager::CRegisteredMusicEntry>*>; catalog _Destroy propagated; grades 1
+00a00e60	MATCH	109v109	PASS	vector<CGraphicInfo>::erase(first,last); grades 1
+004da655	MATCH	28v28	PASS	__destroy_aux<CMultiStaticMeshEntryDef*>; /Os; local polymorphic model (engine header has vptr as data); grades 1
+00cd2725	MATCH	28v28	PASS	__destroy_aux over a 16-byte polymorphic record (descriptive name CScriptRecord16); /Os; grades 1
+0043f850	MATCH	36v36	PASS	__destroy_aux<CIntelligentPointer<NParticleEngine::CParticleEmitter>*>; grades 1
+0049b7f0	RELOCATION_MATCH	103v103	PASS	vector<CTexture>::resize(n); full-symbol leaf (2-arg resize COMDAT also emitted); grades 2
+006253d0	RELOCATION_MATCH	108v108	PASS	vector<CQuestCardItem>::resize(n); full-symbol leaf; grades 2
+006a32b0	RELOCATION_MATCH	79v79	PASS	__unguarded_insertion_sort_aux<pair<long,CIntelligentPointer<CThing>>*>; catalog _Destroy propagated; grades 1
+007b9ec0	RELOCATION_MATCH	116v116	PASS	vector<CIntelligentPointer<CThingObject>>::resize(n); 1 SRC_FAIL (>> in instantiation); full-symbol leaf; grades 3
+009323d0	MATCH	80v80	PASS	__unguarded_insertion_sort_aux<CThing**,CThing*,bool(__fastcall*)(CThing*,CThing*)>; catalog _Destroy propagated; grades 1
+009c7850	RELOCATION_MATCH	103v103	PASS	vector<CFileInstaller::CBufferChunk>::resize(n); full-symbol leaf; grades 2
+009cb7d0	RELOCATION_MATCH	108v108	PASS	vector<NGameText::CTextTag>::resize(n); full-symbol leaf; grades 2
+00ae7d10	RELOCATION_MATCH	116v116	PASS	vector<pair<CCharString,unsigned long>>::resize(n); 1 SRC_FAIL (>> in instantiation); full-symbol leaf; grades 3
+00bf97a0	RELOCATION_MATCH	108v108	PASS	vector<CEngineTexturePalette::CPaletteEntry>::resize(n); full-symbol leaf; grades 2
