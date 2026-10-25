@@ -32817,3 +32817,11 @@ _wcsstr	00bfeb2e	0099af20
 ?erase@?$vector@UCPreTransposedBoneMatrix@@V?$allocator@UCPreTransposedBoneMatrix@@@_STL@@@_STL@@QAEPAUCPreTransposedBoneMatrix@@PAU3@0@Z	00b7c120	00b7edf0
 ?_M_fill_insert@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@_STL@@@_STL@@QAEXPAUCResourceEntry@CGPUScratchBufferTextureManager@@IABU34@@Z	00f381f0	00f385a0
 ?erase@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@_STL@@@_STL@@QAEPAUCResourceEntry@CGPUScratchBufferTextureManager@@PAU34@0@Z	00f37ee0	00f385a0
+?erase@?$list@JV?$allocator@J@_STL@@@_STL@@QAE?AU?$_List_iterator@JU?$_Nonconst_traits@J@_STL@@@2@U32@@Z	00429b02	005791b5
+??$_M_allocate_and_copy@PBQAVCComponent@NUISystem@@@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@_STL@@@_STL@@QAEPAPAVCComponent@NUISystem@@IPBQAV23@0@Z	005796d1	005798c8
+?__copy_trivial@_STL@@YIPAXPBX0PAX@Z	00405ba0	005798c8
+??1?$list@VC3DVector@@V?$allocator@VC3DVector@@@_STL@@@_STL@@QAE@XZ	0048ca60	006fd9f0
+??_7?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@6B@	012e1b70	00ef5b50
+??_7?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f6628	00ef6d50
+??_7?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f6780	00ef6d90
+??_7?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f678c	00ef6de0

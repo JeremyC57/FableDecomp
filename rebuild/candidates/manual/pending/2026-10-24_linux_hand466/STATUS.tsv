@@ -1,0 +1,14 @@
+address	status	bytes	test	note
+005798c8	RELOCATION_MATCH	144v144	PASS	_STL::vector<NUISystem::CComponent*>::operator=; 1 grade(s); /Os pragma; label 'vector<unsigned long>::operator=' is a folded instantiation
+005123a0	MATCH	32v32	PASS	_STL::uninitialized_fill_n<unsigned short*,unsigned int,unsigned short> (__fastcall); 1 grade(s); label 'vector<unsigned short>::_Ufill' is a Dinkumware spelling
+00b564e0	RELOCATION_MATCH	22v22	PASS	CIndexBuffer::~CIndexBuffer; 1 grade(s); label '~CActionParamCCountedPointer<NUISystem::CComponent>' is propagated
+00ef6d90	RELOCATION_MATCH	70v70	PASS	NScript::CPredicate_And (four terms)::~CPredicate_And; 1 grade(s); label right
+00ef6de0	RELOCATION_MATCH	88v88	PASS	NScript::CPredicate_And (five terms)::~CPredicate_And; 1 grade(s); label names the four-term And (propagated)
+006fd9f0	RELOCATION_MATCH	39v39	PASS	CGameCameraBase::~CGameCameraBase; 2 grade(s) (both matched; model refined to _STL::list); label '~CPredicate_And<...>' is propagated
+00ef5b50	RELOCATION_MATCH	33v33	PASS	NScript::CPredicate_And<CIsThingAlive,CIsThingAlive>::~CPredicate_And; 1 grade(s); label names the four-term And (propagated)
+00ef6d50	RELOCATION_MATCH	55v55	PASS	NScript::CPredicate_And (three terms)::~CPredicate_And; 1 grade(s); label names the five-term And (propagated)
+00bf32b0	DIFFER	192v196	-	CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32,3>>::ReleaseResources; 4 grade(s); inlined FirstKey's null exits threaded vs retail's merged xor/test + loop-top key test, this/key register swap; differ/00bf32b0.cpp (+ differ/00bf32b0.test.cpp PASS g++)
+009f7890	RELOCATION_MATCH	82v82	PASS	_STL::_Construct<CVsyncCallbackTimer::CPendingQuery> (unoptimised TU); 2 grade(s); optimize("",off) + inline_depth(0); label '_Cons_val<...>' is a Dinkumware spelling
+009e6220	RELOCATION_MATCH	51v51	PASS	_STL::_Construct<pair<const CCharString,CShaderParserSymbol>> (__fastcall); 1 grade(s); label '_Cons_val<...>' is a Dinkumware spelling
+00ca48a0	RELOCATION_MATCH	22v22	PASS	CAutoLock::CAutoLock(CCritSec*) (DirectShow strmbase); 1 grade(s); label '_List_unchecked_const_iterator<...CPendingQuery...>' is propagated
+005791b5	RELOCATION_MATCH	23v23	PASS	_STL::list<long>::pop_back (folded POD-list COMDAT, SExpSpendUndo lists); 1 grade(s); /Os pragma; label element type CPendingQuery is one folded instantiation

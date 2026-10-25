@@ -313129,6 +313129,90 @@ $catalog = @(
         TestSource = '00/f3/STLvector_resize_00f385a0_test.cpp'
         PassPattern = '00f385a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005123a0'
+        Module = '_STL'
+        Source = '00/51/STL_uninitializedfilln_005123a0.cpp'
+        TestSource = '00/51/STL_uninitializedfilln_005123a0_test.cpp'
+        PassPattern = '005123a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005791b5'
+        Module = '_STL::list<long>'
+        Source = '00/57/STLlistlong_popback_005791b5.cpp'
+        TestSource = '00/57/STLlistlong_popback_005791b5_test.cpp'
+        PassPattern = '005791b5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005798c8'
+        Module = '_STL::vector'
+        Source = '00/57/STLvector_operator_005798c8.cpp'
+        TestSource = '00/57/STLvector_operator_005798c8_test.cpp'
+        PassPattern = '005798c8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fd9f0'
+        Module = 'CGameCameraBase'
+        Source = '00/6f/CGameCameraBase_CGameCameraBase_006fd9f0.cpp'
+        TestSource = '00/6f/CGameCameraBase_CGameCameraBase_006fd9f0_test.cpp'
+        PassPattern = '006fd9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e6220'
+        Module = '_STL'
+        Source = '00/9e/STL_Construct_009e6220.cpp'
+        TestSource = '00/9e/STL_Construct_009e6220_test.cpp'
+        PassPattern = '009e6220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f7890'
+        Module = '_STL'
+        Source = '00/9f/STL_Construct_009f7890.cpp'
+        TestSource = '00/9f/STL_Construct_009f7890_test.cpp'
+        PassPattern = '009f7890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b564e0'
+        Module = 'CIndexBuffer'
+        Source = '00/b5/CIndexBuffer_CIndexBuffer_00b564e0.cpp'
+        TestSource = '00/b5/CIndexBuffer_CIndexBuffer_00b564e0_test.cpp'
+        PassPattern = '00b564e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca48a0'
+        Module = 'CAutoLock'
+        Source = '00/ca/CAutoLock_CAutoLock_00ca48a0.cpp'
+        TestSource = '00/ca/CAutoLock_CAutoLock_00ca48a0_test.cpp'
+        PassPattern = '00ca48a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef5b50'
+        Module = 'NScript::CPredicate_And<CIsThingAlive,CIsThingAlive>'
+        Source = '00/ef/NScriptCPredicateAndCIsThingAliveCIsThingAlive_CPredicateAnd_00ef5b50.cpp'
+        TestSource = '00/ef/NScriptCPredicateAndCIsThingAliveCIsThingAlive_CPredicateAnd_00ef5b50_test.cpp'
+        PassPattern = '00ef5b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef6d50'
+        Module = 'NScript::CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>'
+        Source = '00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_CPredicateAnd_00ef6d50.cpp'
+        TestSource = '00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_CPredicateAnd_00ef6d50_test.cpp'
+        PassPattern = '00ef6d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef6d90'
+        Module = 'NScript::CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>,CIsThingAlive>'
+        Source = '00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6d90.cpp'
+        TestSource = '00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6d90_test.cpp'
+        PassPattern = '00ef6d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef6de0'
+        Module = 'NScript::CPredicate_And<CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>,CIsThingAlive>,CIsThingAlive>'
+        Source = '00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThing_CPredicateAnd_00ef6de0.cpp'
+        TestSource = '00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThing_CPredicateAnd_00ef6de0_test.cpp'
+        PassPattern = '00ef6de0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
