@@ -315450,6 +315450,147 @@ $catalog = @(
         TestSource = '00/51/stdRbtreelongpairconstlonglistlong_erase_0051af80_test.cpp'
         PassPattern = '0051af80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0069a1a0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_InitSpecialCameraList_0069a1a0.cpp'
+        TestSource = '00/69/CGameCameraManager_InitSpecialCameraList_0069a1a0_test.cpp'
+        PassPattern = '0069a1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b6010'
+        Module = 'CIDrawEnvironmentParams::CThemeChannel'
+        Source = '00/6b/CIDrawEnvironmentParamsCThemeChannel_CThemeChannel_006b6010.cpp'
+        TestSource = '00/6b/CIDrawEnvironmentParamsCThemeChannel_CThemeChannel_006b6010_test.cpp'
+        PassPattern = '006b6010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b6990'
+        Module = 'std::vector'
+        Source = '00/6b/stdvector_Minsertoverflow_006b6990.cpp'
+        TestSource = '00/6b/stdvector_Minsertoverflow_006b6990_test.cpp'
+        PassPattern = '006b6990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b6b30'
+        Module = 'std::vector'
+        Source = '00/6b/stdvector_Mfillinsert_006b6b30.cpp'
+        TestSource = '00/6b/stdvector_Mfillinsert_006b6b30_test.cpp'
+        PassPattern = '006b6b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7380'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_CEnvironment_006b7380.cpp'
+        TestSource = '00/6b/CEnvironment_CEnvironment_006b7380_test.cpp'
+        PassPattern = '006b7380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7e20'
+        Module = 'std::vector'
+        Source = '00/6b/stdvector_operator_006b7e20.cpp'
+        TestSource = '00/6b/stdvector_operator_006b7e20_test.cpp'
+        PassPattern = '006b7e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b8050'
+        Module = 'std::vector'
+        Source = '00/6b/stdvector_Mfillinsert_006b8050.cpp'
+        TestSource = '00/6b/stdvector_Mfillinsert_006b8050_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '006b8050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b91a0'
+        Module = 'CPersistTraits<CFaction>'
+        Source = '00/6b/CPersistTraitsCFaction_TransferOut_006b91a0.cpp'
+        TestSource = '00/6b/CPersistTraitsCFaction_TransferOut_006b91a0_test.cpp'
+        PassPattern = '006b91a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bb040'
+        Module = 'std'
+        Source = '00/6b/std_introsortloop_006bb040.cpp'
+        TestSource = '00/6b/std_introsortloop_006bb040_test.cpp'
+        PassPattern = '006bb040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bd140'
+        Module = 'std::_Rb_tree'
+        Source = '00/6b/stdRbtree_Minsert_006bd140.cpp'
+        TestSource = '00/6b/stdRbtree_Minsert_006bd140_test.cpp'
+        PassPattern = '006bd140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf570'
+        Module = 'std'
+        Source = '00/6b/std_introsortloop_006bf570.cpp'
+        TestSource = '00/6b/std_introsortloop_006bf570_test.cpp'
+        PassPattern = '006bf570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c32b0'
+        Module = 'std::_Rb_tree'
+        Source = '00/6c/stdRbtree_Minsert_006c32b0.cpp'
+        TestSource = '00/6c/stdRbtree_Minsert_006c32b0_test.cpp'
+        PassPattern = '006c32b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c4270'
+        Module = 'std'
+        Source = '00/6c/std_findif_006c4270.cpp'
+        TestSource = '00/6c/std_findif_006c4270_test.cpp'
+        PassPattern = '006c4270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d76c0'
+        Module = 'NHeroExperience'
+        Source = '00/6d/NHeroExperience_GetWeaponModifiedExperienceMultiplierForThing_006d76c0.cpp'
+        TestSource = '00/6d/NHeroExperience_GetWeaponModifiedExperienceMultiplierForThing_006d76c0_test.cpp'
+        PassPattern = '006d76c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dc350'
+        Module = '_global'
+        Source = '00/6d/global_GFSerialiseMapBinaryOut_006dc350.cpp'
+        TestSource = '00/6d/global_GFSerialiseMapBinaryOut_006dc350_test.cpp'
+        PassPattern = '006dc350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dccc0'
+        Module = 'std::vector'
+        Source = '00/6d/stdvector_Mfillinsert_006dccc0.cpp'
+        TestSource = '00/6d/stdvector_Mfillinsert_006dccc0_test.cpp'
+        PassPattern = '006dccc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dcfa0'
+        Module = '_global'
+        Source = '00/6d/global_GFSerialiseMapBinaryIn_006dcfa0.cpp'
+        TestSource = '00/6d/global_GFSerialiseMapBinaryIn_006dcfa0_test.cpp'
+        PassPattern = '006dcfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e3440'
+        Module = 'NSpeechGainManager'
+        Source = '00/6e/NSpeechGainManager_UpdateDialogueElement_006e3440.cpp'
+        TestSource = '00/6e/NSpeechGainManager_UpdateDialogueElement_006e3440_test.cpp'
+        PassPattern = '006e3440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e5100'
+        Module = 'std::vector'
+        Source = '00/6e/stdvector_Minsertoverflow_006e5100.cpp'
+        TestSource = '00/6e/stdvector_Minsertoverflow_006e5100_test.cpp'
+        PassPattern = '006e5100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e6bc0'
+        Module = 'std::vector'
+        Source = '00/6e/stdvector_Minsertoverflow_006e6bc0.cpp'
+        TestSource = '00/6e/stdvector_Minsertoverflow_006e6bc0_test.cpp'
+        PassPattern = '006e6bc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

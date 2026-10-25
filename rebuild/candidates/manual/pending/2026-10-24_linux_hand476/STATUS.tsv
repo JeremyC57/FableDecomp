@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0069a1a0	RELOCATION_MATCH	242v242	PASS	CGameCameraManager::InitSpecialCameraList; same-TU GetDef/_M_insert_overflow stand-ins + id local; 4 grades (+1 compile-error run)
+006a3a70	DIFFER	285v285	-	std::vector::_M_insert_overflow; register swap ebx/edi only; 4 grades
+006a3e00	DIFFER	277v277	-	std::__introsort_loop; register swap first/last ebx<->edi only; 4 grades
+006b0020	DIFFER	271v258	-	CTCPhysicsBase::GetTurnSpeedAngleYZ; retail keeps the second WrapAngle on the x87 stack; 4 grades
+006b16b0	SKIP	-v581	-	not attempted (sound-theme def load: CCharString temporaries with construction flags, def lookups, 6 virtual calls)
+006b1a20	SKIP	-v769	-	not attempted (script SetSoundTheme: 44 calls, CCharString temporaries, music-manager state helpers)
+006b1d30	SKIP	-v507	-	not attempted (sound theme by name: CCharString temporaries, def lookups, calls 0x006B1A20)
+006b2260	SKIP	-v671	-	not attempted (atmosphere update: intelligent-pointer temporaries, interface lookups, 40 calls)
+006b2ca0	SKIP	-v910	-	not attempted (camera/view matrix: 205 x87 instructions, inline normalise/cross products; x87 term-order lane gap risk)
+006b3b80	SKIP	-v734	-	not attempted (environment thunder: x87 + hero/world lookups, CCharString temporary)
+006b3e60	SKIP	-v393	-	not attempted (function-local static CVectorMap with guard 0x013BA8F8 + atexit, weighted accumulate loop)
+006b6010	RELOCATION_MATCH	291v291	PASS	CIDrawEnvironmentParams::CThemeChannel copy ctor (implicit memberwise); 2 grades
+006b6990	RELOCATION_MATCH	257v257	PASS	std::vector<CThemeChannel>::_M_insert_overflow; __forceinline __uninitialized_fill_n; 2 grades
+006b6b30	RELOCATION_MATCH	325v325	PASS	std::vector<CThemeChannel>::_M_fill_insert; 1 grade
+006b7380	RELOCATION_MATCH	263v263	PASS	CEnvironment::~CEnvironment (novtable, retail layout); 2 grades
+006b7e20	RELOCATION_MATCH	323v323	PASS	std::vector<CGameMapCell>::operator=; 1 grade
+006b8050	RELOCATION_MATCH	325v325	PASS	std::vector<CGameMapCell>::_M_fill_insert; /GS; 1 grade
+006b91a0	RELOCATION_MATCH	511v511	PASS	CPersistTraits<CFaction>::TransferOut; 1 grade
+006b9610	SKIP	-v451	-	not attempted (CFactionManager::LoadGameState: inline CRC-32 key hash, vector-map LowerBound, set assignments, CFaction local)
+006bb040	RELOCATION_MATCH	250v250	PASS	std::__introsort_loop (faction vector map); 2 grades
+006bb390	DIFFER	254v265	-	CGameTimeManager::IsTimeBetween; VC7.1 folds/factors the 1/60 * 1/24 constants; 4 grades
+006bd140	RELOCATION_MATCH	250v250	PASS	std::_Rb_tree::_M_insert (map<CCharString, C2DVector>); 1 grade
+006bd9b0	SKIP	-v676	-	not attempted (CMusicManager state assignment: chains of inline pointer-field null tests, two state compares, bool force arg)
+006bdc60	SKIP	-v492	-	not attempted (region music update: CCharString temporary with a construction flag, def release, two virtual calls)
+006bf570	RELOCATION_MATCH	289v289	PASS	std::__introsort_loop (registered-music vector map); 1 grade
+006c32b0	RELOCATION_MATCH	259v259	PASS	std::_Rb_tree::_M_insert (map<CCharString, CCountedPointer>); 1 grade
+006c4270	RELOCATION_MATCH	303v303	PASS	std::__find_if (CIntelligentPointer<CThing>, CIsThingDead); 1 grade
+006d76c0	RELOCATION_MATCH	256v256	PASS	NHeroExperience::GetWeaponModifiedExperienceMultiplierForThing; 1 grade
+006d8830	DIFFER	321v321	-	CTCHeroExperience::AddSuccessfulMultistrikeHit; scheduling only (fst of |amount| vs push 1); 4 grades
+006dc350	RELOCATION_MATCH	244v244	PASS	GFSerialiseMapBinaryOut<CComboMultiplierData,long>; _Rb_tree_base split; 2 grades
+006dccc0	RELOCATION_MATCH	268v268	PASS	std::vector<CAttackHistoryCombo>::_M_fill_insert; 1 grade
+006dcfa0	RELOCATION_MATCH	536v536	PASS	GFSerialiseMapBinaryIn<CComboMultiplierData,long>; CPersistTraits<long> DefaultVal; 3 grades
+006e2ed0	SKIP	-v673	-	not attempted (lip-sync processing: x87, phoneme vectors, 31 calls incl. virtual slots +0x5C/+0x60/+0x62C)
+006e31e0	DIFFER	596v596	-	NSpeechGainManager::OnDialogueStart; x87 term order of one in-memory magnitude (y,z,x v z,y,x) only; 4 grades
+006e3440	RELOCATION_MATCH	316v316	PASS	NSpeechGainManager::UpdateDialogueElement; one ternary into OutputGain; 3 grades
+006e3b90	SKIP	-v816	-	not attempted (phoneme animation update: list erase loop, CCharString copies, 21 calls)
+006e3ec0	SKIP	-v526	-	not attempted (GUI tree pane init: x87-heavy layout arithmetic, 4 calls)
+006e5100	RELOCATION_MATCH	310v310	PASS	std::vector<CAnimInit>::_M_insert_overflow; 2 grades
+006e6bc0	RELOCATION_MATCH	259v259	PASS	std::vector<CConversationLine>::_M_insert_overflow; 1 grade
+006e8ce0	DIFFER	298v294	-	GetBestAttackerForPlacementVector (anonymous namespace); x87 schedule of the first inlined Normalise; 4 grades
