@@ -1,4 +1,5 @@
 // CCompressorZlib::CCompressorZlib(const CCompressorZlib&) -- memberwise copy: the CACompressor base (vtable, workspace pointer/size, compression flag, the owned-workspace vector copied out of line), own vtable, the z_stream block copied as 14 dwords, the three state flags
+// Leaf: ??0CCompressorZlib_Retail@@QAE@ABU0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C7060, length 92 bytes.
 // Callees: std::vector<unsigned char>::vector(const vector&) @ 0x005290E0 (OwnWorkspace; the manifest
 // calls it "Vector_CopyAssignFrom"). Vtables: 0x0129B424 = CACompressor (the inlined base copy
@@ -13,7 +14,7 @@
 #include "engine/CCompressorZlib.h"
 #include "engine/CACompressor.h"
 
-struct z_stream_s {                                             // zlib 1.1.4 stream (56 bytes)
+struct z_stream_s {                                             // zlib 1.2.1 stream (56 bytes)
     unsigned char* next_in;  unsigned int avail_in;  unsigned long total_in;
     unsigned char* next_out; unsigned int avail_out; unsigned long total_out;
     char* msg; void* state;

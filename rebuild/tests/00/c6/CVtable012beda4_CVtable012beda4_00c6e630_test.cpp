@@ -2,7 +2,7 @@
 struct _RTL_CRITICAL_SECTION;
 static _RTL_CRITICAL_SECTION* g_deleted = 0;
 extern "C" void __stdcall DeleteCriticalSection(_RTL_CRITICAL_SECTION* section) { g_deleted = section; }
-struct CBase_012b5868 { virtual void v00() { } ~CBase_012b5868() { } };
+struct CPKObject { virtual ~CPKObject() { } };
 struct CCriticalSectionOwner_012B8FC8 {
     virtual void v00() { }
     unsigned char CriticalSection[0x18];
@@ -11,9 +11,9 @@ struct CCriticalSectionOwner_012B8FC8 {
         DeleteCriticalSection(reinterpret_cast<_RTL_CRITICAL_SECTION*>(&this->CriticalSection[0]));
     }
 };
-struct CVtable_012beda4 : CBase_012b5868 {
+struct CVtable_012beda4 : CPKObject {
     CCriticalSectionOwner_012B8FC8 m_lock;
-    long          m_count;
+    float         m_volume;
     unsigned char m_flag;
     virtual void v00() { }
     ~CVtable_012beda4();

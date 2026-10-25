@@ -5,16 +5,16 @@
 
 struct z_stream_s { unsigned char* next_out; unsigned int avail_out; };
 static int g_result = 0, g_produce = 0, g_ends = 0;
-static int deflate(z_stream_s* s, int flush) { if (flush != 4) return -99; s->avail_out -= g_produce; return g_result; }
-static int deflateEnd(z_stream_s*) { ++g_ends; return 0; }
+static int z_deflate(z_stream_s* s, int flush) { if (flush != 4) return -99; s->avail_out -= g_produce; return g_result; }
+static int z_deflateEnd(z_stream_s*) { ++g_ends; return 0; }
 
 struct CCompressorZlib {
     z_stream_s Stream; bool ZlibInitialised, Compressing, ErrorFlag;
     unsigned long FinishCompressStream(void* dest, unsigned long destSize, bool* finished)
     {
         Stream.next_out = (unsigned char*)dest; Stream.avail_out = destSize;
-        int r = deflate(&Stream, 4);
-        if (r == 1) { *finished = true; deflateEnd(&Stream); ZlibInitialised = false; Compressing = false; *finished = true; return destSize - Stream.avail_out; }
+        int r = z_deflate(&Stream, 4);
+        if (r == 1) { *finished = true; z_deflateEnd(&Stream); ZlibInitialised = false; Compressing = false; *finished = true; return destSize - Stream.avail_out; }
         if (r != 0) ErrorFlag = true;
         *finished = false;
         return destSize - Stream.avail_out;

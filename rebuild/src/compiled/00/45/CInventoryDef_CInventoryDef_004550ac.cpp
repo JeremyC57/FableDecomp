@@ -1,8 +1,10 @@
 // CInventoryDef::CInventoryDef() -- construct the inventory screen definition: the def base, then the member constructors (the item lists and colour tables empty, the font string reference unset, every engine graphic cleared)
-// Leaf: CInventoryDef
+// Leaf: ??0CInventoryDef@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004550AC, 1016 bytes (`ret`; unaligned entry, size-optimised def module).
 // Identity: stores vtable 0x01233404 (CInventoryDef); the catalog's CPSCOrbit label is wrong.
-// Callees: the def base ctor 0x00430370 (CDefClassBase, 0x3c bytes).
+// Callees: the def base ctor 0x00430370 (CParentDefClassBase, 0x3c bytes: the landed CParentDefClassBase::CParentDefClassBase
+//   row; Ego_r.pdb ??0CParentDefClassBase@@QAE@XZ; the base was named CDefClassBase here until sweep1 2026-10-25, which bound
+//   ??0CDefClassBase@@QAE@XZ to 0x00430370 against the real CDefClassBase ctor 0x0042D9E0).
 // Layout: Ego_r.pdb CInventoryDef member list in order; the retail STLport vectors are 12 bytes (PDB 16), CDefString a
 //   long, and C2DVector / CEngineGraphic (long, two floats, two bools: 14 bytes) are 2-byte aligned (the PDB offsets
 //   0x264, 0x272, 0xa4a, the retail inline stride 0xe). No engine header.
@@ -32,12 +34,12 @@ struct CRetailVector {                                 // STLport vector (12 byt
     void* _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CDefClassBase {
+struct CParentDefClassBase {
     unsigned char _body[0x3c - 4];
-    CDefClassBase();                                    // 0x00430370
-    virtual ~CDefClassBase();
+    CParentDefClassBase();                                    // 0x00430370
+    virtual ~CParentDefClassBase();
 };
-struct CInventoryDef : CDefClassBase {
+struct CInventoryDef : CParentDefClassBase {
     float                  InitialCategoryMovementRepeatDelay;   // PDB +0x40
     float                  ContinuedCategoryMovementRepeatDelay;   // PDB +0x44
     float                  InitialItemMovementRepeatDelay;   // PDB +0x48

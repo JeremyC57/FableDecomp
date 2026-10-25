@@ -32,10 +32,10 @@ vorbis_info* ov_info(OggVorbis_File*, int link)
 
 struct SStreamSegment { unsigned long m_word0, m_word4, m_word8; };
 static int g_readerBuilt;
-class CStreamReader {
+class PKCBufferedReader {
 public:
-    CStreamReader(void* source, const SStreamSegment& segment) { m_source = source; m_size = segment.m_word4; ++g_readerBuilt; }
-    ~CStreamReader() {}
+    PKCBufferedReader(void* source, const SStreamSegment& segment) { m_source = source; m_size = segment.m_word4; ++g_readerBuilt; }
+    ~PKCBufferedReader() {}
     void* m_source;
     unsigned long m_size;
 };
@@ -48,7 +48,7 @@ public:
 class COggVorbisStream : public IAudioStream {
 public:
     COggVorbisStream(void* source, const SStreamSegment& segment);
-    CStreamReader m_reader;
+    PKCBufferedReader m_reader;
     long m_valid;
     long m_opened;
     OggVorbis_File m_vf;

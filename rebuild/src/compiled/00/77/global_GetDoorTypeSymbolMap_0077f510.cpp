@@ -1,10 +1,11 @@
 // _global::GetDoorTypeSymbolMap() -- the hero-centre door-type symbol map, loaded once from "Data\Defs\" + "thing_def.h" on first use
-// Leaf: GetDoorTypeSymbolMap
+// Callee name (sweep1, 2026-10-25): 0x0041A080 is ?GetDefDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ (Ego_r.pdb / FableWin.pdb, landed under that name); the earlier GetDefsDirectory spelling had no PDB source.
+// Leaf: ?GetDoorTypeSymbolMap@@YIPAVCSymbolMap@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077F510, 81 bytes (+ int3 padding to 96), static __fastcall with no
 //   arguments, plain `ret`.
 // Caller: CTCHeroCentreDoorMarker::OnSerialise @ 0x0077F650 (landed; translates an old save's door-type name through the
 //   map with CSymbolMap::Lookup 0x009E5170).
-// Callees: GetDefsDirectory() @ 0x0041A080 (L"Data\Defs\", __fastcall with the hidden result in ecx; catalogued as the
+// Callees: NResourceDirectoryNames::GetDefDir() @ 0x0041A080 (L"Data\Defs\", __fastcall with the hidden result in ecx; catalogued as the
 //   propagated CUserProfileManager::GetAutoSaveFileName), operator+(const CWideString&, const unsigned short*) @
 //   0x0099BF30 (__fastcall, hidden result in ecx, left operand in edx, the literal on the stack), CSymbolMap::
 //   LoadFromFile(const CWideString&) @ 0x009E5C90, ~CWideString @ 0x0099B510 (x2).
@@ -19,7 +20,7 @@ public:
     ~CWideString();                                     // 0x0099B510
 };
 
-CWideString __fastcall GetDefsDirectory();             // 0x0041A080
+namespace NResourceDirectoryNames { CWideString __fastcall GetDefDir(); }             // 0x0041A080
 CWideString __fastcall operator+(const CWideString& left, const unsigned short* right);   // 0x0099BF30
 
 class CSymbolMap {
@@ -32,7 +33,7 @@ CSymbolMap* __fastcall GetDoorTypeSymbolMap()
 {
     static bool s_loaded = false;                       // 0x013BADB0
     if (!s_loaded) {
-        g_DoorTypeSymbolMap.LoadFromFile(GetDefsDirectory() + L"thing_def.h");
+        g_DoorTypeSymbolMap.LoadFromFile(NResourceDirectoryNames::GetDefDir() + L"thing_def.h");
         s_loaded = true;
     }
     return &g_DoorTypeSymbolMap;

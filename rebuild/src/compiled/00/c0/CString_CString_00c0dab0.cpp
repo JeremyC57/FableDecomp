@@ -13,7 +13,7 @@
 typedef void (__fastcall* PFNASSERTHOOK)(const char* message);
 extern PFNASSERTHOOK g_pfnAssertHook;           // 0x0143BB2C
 
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile* addend);   // 0x0143FD34
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long* addend);   // 0x0143FD34 (same _InterlockedIncrement@4 import)
 
 struct CDebugBreak {                            // empty temporary whose constructor calls DebugBreak
     CDebugBreak();                              // 0x00C16750

@@ -8,8 +8,8 @@ static struct { z_stream_s Stream; bool Initialised; } g_state;
 static int g_inits = 0, g_resets = 0, g_inflates = 0;
 static int s_allocTag, s_freeTag;
 static int inflateInit(z_stream_s*) { ++g_inits; return 0; }
-static int inflateReset(z_stream_s* s) { ++g_resets; s->total_out = 0; return 0; }
-static int inflate(z_stream_s* s, int flush) { ++g_inflates; if (flush == 4) s->total_out += s->avail_in * 2; return 1; }
+static int z_inflateReset(z_stream_s* s) { ++g_resets; s->total_out = 0; return 0; }
+static int z_inflate(z_stream_s* s, int flush) { ++g_inflates; if (flush == 4) s->total_out += s->avail_in * 2; return 1; }
 
 static unsigned long InternalDecompress(const void* src, unsigned long srcSize, void* dest, unsigned long destSize)
 {
@@ -17,8 +17,8 @@ static unsigned long InternalDecompress(const void* src, unsigned long srcSize, 
     g_state.Stream.next_in = (const unsigned char*)src; g_state.Stream.avail_in = srcSize;
     g_state.Stream.next_out = (unsigned char*)dest; g_state.Stream.avail_out = destSize;
     if (!g_state.Initialised) { g_state.Stream.zalloc = &s_allocTag; g_state.Stream.zfree = &s_freeTag; inflateInit(&g_state.Stream); g_state.Initialised = true; }
-    else inflateReset(&g_state.Stream);
-    inflate(&g_state.Stream, 4);
+    else z_inflateReset(&g_state.Stream);
+    z_inflate(&g_state.Stream, 4);
     return g_state.Stream.total_out;
 }
 

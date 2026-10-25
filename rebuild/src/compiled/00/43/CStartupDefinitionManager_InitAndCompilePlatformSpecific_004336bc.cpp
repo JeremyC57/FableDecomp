@@ -1,5 +1,6 @@
 // CStartupDefinitionManager::InitAndCompilePlatformSpecific(bool) -- build the PC front-end header list (bank-directory headers, Data\Defs front-end defs; the test front-end def or the PC front-end/config/controller set) and the def list to compile, register the five startup definition types with their creators, hand both lists to the definition manager and run the base InitAndCompile
-// Leaf: InitAndCompilePlatformSpecific
+// Callee name (sweep1, 2026-10-25): 0x0041A080 is ?GetDefDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ (Ego_r.pdb / FableWin.pdb, landed under that name); the earlier GetDefsDirectory spelling had no PDB source.
+// Leaf: ?InitAndCompilePlatformSpecific@CStartupDefinitionManager@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004336BC, 1505 bytes, `ret 4`; size-optimised TU with an ebp frame (#pragma optimize("s", on) + ("y", off)).
 // Callees: CWideString(const unsigned short*) 0x0099B6B0 / dtor 0x0099B510, the bank directory 0x009A76A0 and defs directory "Data\Defs\" 0x0041A080
 //   (__fastcall, hidden result in ecx), operator+(const CWideString&, const CWideString&) 0x0099BE70 / (const CWideString&, const unsigned short*)
@@ -18,7 +19,7 @@ public:
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& left, const unsigned short* right);       // 0x0099BF30
 CWideString __fastcall GetBankDirectory();             // 0x009A76A0
-CWideString __fastcall GetDefsDirectory();             // 0x0041A080
+namespace NResourceDirectoryNames { CWideString __fastcall GetDefDir(); }             // 0x0041A080
 
 class CCharString {
 public:
@@ -74,30 +75,30 @@ void CStartupDefinitionManager::InitAndCompilePlatformSpecific(bool testFrontEnd
     headers.push_back(GetBankDirectory() + L"fonts.h");
     headers.push_back(GetBankDirectory() + platform + L"front_end_bank.h");
     headers.push_back(GetBankDirectory() + platform + L"particles_frontend.h");
-    headers.push_back(GetDefsDirectory() + L"FrontEndDefs\\engine.def");
-    headers.push_back(GetDefsDirectory() + L"FrontEndDefs\\engine_video_options.def");
-    headers.push_back(GetDefsDirectory() + L"FrontEndDefs\\front_end.def");
-    headers.push_back(GetDefsDirectory() + L"ui_types.h");
-    headers.push_back(GetDefsDirectory() + L"ui_dialogs.def");
+    headers.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\engine.def");
+    headers.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\engine_video_options.def");
+    headers.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\front_end.def");
+    headers.push_back(NResourceDirectoryNames::GetDefDir() + L"ui_types.h");
+    headers.push_back(NResourceDirectoryNames::GetDefDir() + L"ui_dialogs.def");
     if (testFrontEnd) {
-        headers.push_back(GetDefsDirectory() + L"FrontEndDefs\\frontend_test.def");
+        headers.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\frontend_test.def");
     } else {
-        headers.push_back(GetDefsDirectory() + L"FrontEndDefs\\pc_frontend.def");
-        headers.push_back(GetDefsDirectory() + L"config_options_defaults.def");
-        headers.push_back(GetDefsDirectory() + L"controller_def.h");
-        headers.push_back(GetDefsDirectory() + L"keyboard_keys.h");
-        headers.push_back(GetDefsDirectory() + L"pc_controls.def");
+        headers.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\pc_frontend.def");
+        headers.push_back(NResourceDirectoryNames::GetDefDir() + L"config_options_defaults.def");
+        headers.push_back(NResourceDirectoryNames::GetDefDir() + L"controller_def.h");
+        headers.push_back(NResourceDirectoryNames::GetDefDir() + L"keyboard_keys.h");
+        headers.push_back(NResourceDirectoryNames::GetDefDir() + L"pc_controls.def");
     }
-    defs.push_back(GetDefsDirectory() + L"FrontEndDefs\\engine.def");
-    defs.push_back(GetDefsDirectory() + L"FrontEndDefs\\engine_video_options.def");
-    defs.push_back(GetDefsDirectory() + L"FrontEndDefs\\front_end.def");
-    defs.push_back(GetDefsDirectory() + L"ui_dialogs.def");
+    defs.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\engine.def");
+    defs.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\engine_video_options.def");
+    defs.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\front_end.def");
+    defs.push_back(NResourceDirectoryNames::GetDefDir() + L"ui_dialogs.def");
     if (testFrontEnd) {
-        defs.push_back(GetDefsDirectory() + L"FrontEndDefs\\frontend_test.def");
+        defs.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\frontend_test.def");
     } else {
-        defs.push_back(GetDefsDirectory() + L"FrontEndDefs\\pc_frontend.def");
-        defs.push_back(GetDefsDirectory() + L"pc_controls.def");
-        defs.push_back(GetDefsDirectory() + L"config_options_defaults.def");
+        defs.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\pc_frontend.def");
+        defs.push_back(NResourceDirectoryNames::GetDefDir() + L"pc_controls.def");
+        defs.push_back(NResourceDirectoryNames::GetDefDir() + L"config_options_defaults.def");
     }
     AddDefinitionType(SDefinitionType("ENGINE_VIDEO_OPTIONS", CreateEngineVideoOptionsDef));
     AddDefinitionType(SDefinitionType("ENGINE", CreateEngineDef));

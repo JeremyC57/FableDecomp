@@ -1,0 +1,68 @@
+// Behaviour test for 00471239: std::__unguarded_insertion_sort_aux over pair<unsigned long,CDefString> -- with a minimum sentinel in front every entry sinks into order, payloads stay with keys
+#include <cstdio>
+class CDefString { public: long TablePos; };
+namespace std {
+template <class _T1, class _T2> struct pair {
+    _T1 first; _T2 second;
+    pair() { }
+    pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+};
+}
+template <class Key, class Value> class CKeyPairCompareLess {
+public:
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
+};
+typedef std::pair<unsigned long, CDefString> Entry;
+typedef CKeyPairCompareLess<unsigned long, CDefString> Less;
+static void unguarded_linear_insert(Entry* last, Entry val, Less comp)
+{
+    Entry* next = last; --next;
+    while (comp(val, *next)) { *last = *next; last = next; --next; }
+    *last = val;
+}
+static void unguarded_insertion_sort_aux(Entry* first, Entry* last, Entry*, Less comp)
+{
+    for (Entry* i = first; i != last; ++i) unguarded_linear_insert(i, Entry(*i), comp);
+}
+static void insertion_sort(Entry* first, Entry* last, Less comp)
+{
+    if (first == last) return;
+    for (Entry* i = first + 1; i != last; ++i) {
+        Entry val(*i);
+        if (comp(val, *first)) { for (Entry* p = i; p != first; --p) *p = *(p - 1); *first = val; }
+        else unguarded_linear_insert(i, val, comp);
+    }
+}
+static Entry* copy_backward_ptrs(Entry* first, Entry* last, Entry* result)
+{
+    for (int n = int(last - first); n > 0; --n) *--result = *--last;
+    return result;
+}
+static void final_insertion_sort(Entry* first, Entry* last, Less comp)
+{
+    if (last - first > 16) { insertion_sort(first, first + 16, comp); unguarded_insertion_sort_aux(first + 16, last, (Entry*)0, comp); }
+    else insertion_sort(first, last, comp);
+}
+static void fill(Entry* e, int n, unsigned long seed)
+{
+    for (int i = 0; i < n; ++i) { e[i].first = (unsigned long)((i * 7 + seed) % n); e[i].second.TablePos = 1000 + (long)e[i].first; }
+}
+static int sorted(const Entry* e, int n)
+{
+    int ok = 1;
+    for (int i = 0; i < n; ++i) ok &= e[i].first == (unsigned long)i && e[i].second.TablePos == 1000 + i;
+    return ok;
+}
+
+int main()
+{
+    Entry e[12]; fill(e, 12, 3);
+    // put the minimum key first as the unguarded sentinel, then sort the rest unguarded
+    int m = 0; for (int i = 1; i < 12; ++i) if (e[i].first < e[m].first) m = i;
+    Entry t(e[0]); e[0] = e[m]; e[m] = t;
+    Less comp;
+    unguarded_insertion_sort_aux(e + 1, e + 12, (Entry*)0, comp);
+    int ok = sorted(e, 12);
+    std::printf(ok ? "00471239_TEST PASS\n" : "00471239_TEST FAIL\n");
+    return ok ? 0 : 1;
+}

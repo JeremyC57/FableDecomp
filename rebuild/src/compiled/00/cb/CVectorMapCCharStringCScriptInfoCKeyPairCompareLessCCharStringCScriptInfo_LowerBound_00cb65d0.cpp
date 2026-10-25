@@ -1,9 +1,12 @@
 // CVectorMap<CCharString,CScriptInfo,CKeyPairCompareLess<CCharString,CScriptInfo> >::LowerBound(const CCharString& key) -- binary search of the sorted 24-byte entries for the first entry whose key does not sort before the key
+// Leaf: ?LowerBound@?$CVectorMap@VCCharString@@UCScriptInfo@@U?$CKeyPairCompareLess@VCCharString@@UCScriptInfo@@@@@@QAEPAU?$pair@VCCharString@@UCScriptInfo@@@std@@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB65D0, 128 bytes, `__fastcall`, `ret 4`, the entry pointer (STLport iterator) in eax.
 // Instance: the CCharString -> CScriptInfo map (callers 0x00CB5AD0 quest-persist lookup, the pair<CCharString,CScriptInfo> _Adjust_heap 0x00CB68C0). The manifest's value types are propagated across byte-identical bodies (the
 //   entry stride here is 24 bytes), so the payload after the CCharString key is modelled opaque (20 bytes).
+// Library (fix, sweep1 2026-10-25, FINDINGS chunk 450): this TU links STLport 4.6, not Dinkumware; the loop is not STLport's
+//   __lower_bound either (that halves with `>> 1`, a bare `sar`), so it is CVectorMap's own search over the STLport vector.
 // Callees: CBasicString<char>::operator< @ 0x00429950 (the string data compare behind the inline CCharString::operator<).
-// Body: Dinkumware-style lower/upper bound -- count = (last - first) / sizeof(entry); halve, compare the middle entry,
+// Body: a signed `count / 2` binary search (`cdq ; sub ; sar 1`) -- count = (last - first) / sizeof(entry); halve, compare the middle entry,
 //   step past it (`count -= half + 1`, emitted `or -1 ; sub ; add`) or keep the lower half.
 // Shape: the key's string-data pointer is read ONCE after the empty-map test (the call could alias a re-read), so the
 //   key is copied into a local inside `if (count > 0) { ...; do { } while (count > 0); }` -- a copy before the test

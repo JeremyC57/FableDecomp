@@ -1,14 +1,16 @@
 // COggVorbisStream::COggVorbisStream(void* source, const SStreamSegment& segment) -- build the stream reader over the source segment, open it as an Ogg Vorbis file, and mark the stream valid only when it is seekable and every logical link is stereo
 // Flags: /EHsc
-// Leaf: ??0COggVorbisStream@@
+// Leaf: ??0COggVorbisStream@@QAE@PAXABUSStreamSegment@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C88780, length 237 bytes (+ int3 padding), ret 8. EH frame (handler
 //   0x01216870, unwind map 0x01370EA0: state 0 = the interface base, state 1 = the reader member).
-// Callees: CStreamReader ctor 0x00C4B300 (dtor 0x00C4B270), libpk's vorbisfile ov_open 0x00C8CAE0, ov_seekable
+// Callees: PKCBufferedReader ctor 0x00C4B300 (dtor 0x00C4B270), libpk's vorbisfile ov_open 0x00C8CAE0, ov_seekable
 //   0x00C8A950, ov_comment 0x00C8BAE0, ov_info 0x00C8BAB0 (all __fastcall).
 // Layout (descriptive; libpk Ogg decoder, no PDB/RTTI): vtable 0x012BF1C4 (deleting dtor 0x00C88870, then GetLength
 //   0x00C88620 = ov_pcm_total(-1), Seek 0x00C88640, Read 0x00C886B0, GetRate 0x00C88740, GetState 0x00C88770);
 //   interface base vtable 0x012BEFFC (inline dtor 0x00C88890). Reader +4 (vtable 0x012B8458, 0x70 bytes), valid
 //   flag +0x74, opened flag +0x78 (the dtor 0x00C885C0 calls ov_clear when set), OggVorbis_File +0x80 (0x2C0 bytes).
+// Fix (sweep1, 2026-10-25): the reader class is libpk's PKCBufferedReader (the file name its constructor 0x00C4B300 and
+//   seek 0x00C4AA40 log), not a descriptive CStreamReader; its destructor 0x00C4B270 is renamed to match.
 // Shape: the vorbisfile entry points are declared with C++ linkage: under /EHsc an extern "C" callee is nothrow, which
 //   drops the state-1 store before ov_open. `vc` / `vi` are named locals (the header info read is otherwise unused)
 //   and the comment walk is an empty `for`: this is what gives retail's ebp (reader, then comment cursor, then link
@@ -156,10 +158,10 @@ struct SStreamSegment {
     unsigned long m_word8;
 };
 
-class CStreamReader {                      // vtable 0x012B8458
+class PKCBufferedReader {                  // vtable 0x012B8458 (.\PKCBufferedReader.cpp: the constructor's and seek's messages)
 public:
-    CStreamReader(void* source, const SStreamSegment& segment);   // 0x00C4B300
-    ~CStreamReader();                                            // 0x00C4B270
+    PKCBufferedReader(void* source, const SStreamSegment& segment);   // 0x00C4B300
+    ~PKCBufferedReader();                                        // 0x00C4B270
     virtual void v00();
 private:
     unsigned char _body04[0x6c];
@@ -185,7 +187,7 @@ public:
     virtual long GetRate();                       // 0x00C88740
     virtual long GetState();                      // 0x00C88770
 private:
-    CStreamReader m_reader;                       // +0x04
+    PKCBufferedReader m_reader;                   // +0x04
     long m_valid;                                 // +0x74
     long m_opened;                                // +0x78
     OggVorbis_File m_vf;                          // +0x80

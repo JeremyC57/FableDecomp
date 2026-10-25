@@ -1,7 +1,8 @@
 // CCompressorZlib::InternalDecompress(const void* source, unsigned long sourceSize, void* dest, unsigned long destSize) -- one-shot inflate of a whole block through the shared static stream (initialised once with the engine's allocators, reset afterwards); returns total_out
+// Leaf: ?InternalDecompress@CCompressorZlib_Retail@@QAEKPBXKPAXK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3AB00, 139 bytes (144 with padding).
-// Callees: inflateInit_ 0x00C02310 (version "1.1.4" at 0x0129CFE0, sizeof(z_stream) = 0x38),
-//          inflateReset 0x00C021F0, inflate 0x00C02470 (flush = Z_FINISH).
+// Callees: z_inflateInit_ 0x00C02310 (version "1.2.1" at 0x0129CFE0, sizeof(z_stream) = 0x38),
+//          z_inflateReset 0x00C021F0, z_inflate 0x00C02470 (flush = Z_FINISH).
 // Globals: the static decompression state at 0x013D27EC: a z_stream (total_out 0x013D2800, zalloc
 //          0x013D280C, zfree 0x013D2810) followed by its "initialised" byte at +0x38 (0x013D2824);
 //          the allocator hooks 0x00A3A9C0 (overflow-checked malloc) and 0x00A3AA00.
@@ -12,7 +13,7 @@
 // calls inflateReset(); the single inflate(Z_FINISH) result is ignored and total_out returned.
 #include "engine/CCompressorZlib.h"
 
-struct z_stream_s {                                             // zlib 1.1.4 stream (56 bytes)
+struct z_stream_s {                                             // zlib 1.2.1 stream (56 bytes)
     unsigned char* next_in;  unsigned int avail_in;  unsigned long total_in;
     unsigned char* next_out; unsigned int avail_out; unsigned long total_out;
     char* msg; void* state;
@@ -21,15 +22,15 @@ struct z_stream_s {                                             // zlib 1.1.4 st
     void* opaque; int data_type; unsigned long adler; unsigned long reserved;
 };
 
-#define ZLIB_VERSION "1.1.4"
+#define ZLIB_VERSION "1.2.1"
 #define Z_OK 0
 #define Z_STREAM_END 1
 #define Z_SYNC_FLUSH 2
 #define Z_FINISH 4
-extern "C" int __cdecl inflateInit_(z_stream_s* strm, const char* version, int stream_size);   // 0x00C02310
-extern "C" int __cdecl inflateReset(z_stream_s* strm);                                             // 0x00C021F0
-extern "C" int __cdecl inflate(z_stream_s* strm, int flush);                                       // 0x00C02470
-#define inflateInit(strm) inflateInit_((strm), ZLIB_VERSION, sizeof(z_stream_s))
+extern "C" int __cdecl z_inflateInit_(z_stream_s* strm, const char* version, int stream_size);   // 0x00C02310
+extern "C" int __cdecl z_inflateReset(z_stream_s* strm);                                             // 0x00C021F0
+extern "C" int __cdecl z_inflate(z_stream_s* strm, int flush);                                       // 0x00C02470
+#define inflateInit(strm) z_inflateInit_((strm), ZLIB_VERSION, sizeof(z_stream_s))
 
 void* __cdecl ZlibAlloc(void* opaque, unsigned int items, unsigned int size);   // 0x00A3A9C0
 void __cdecl ZlibFree(void* opaque, void* address);                             // 0x00A3AA00
@@ -62,8 +63,8 @@ unsigned long CCompressorZlib_Retail::InternalDecompress(const void* source, uns
         inflateInit(&g_staticInflate.Stream);
         g_staticInflate.Initialised = true;
     } else {
-        inflateReset(&g_staticInflate.Stream);
+        z_inflateReset(&g_staticInflate.Stream);
     }
-    inflate(&g_staticInflate.Stream, Z_FINISH);
+    z_inflate(&g_staticInflate.Stream, Z_FINISH);
     return g_staticInflate.Stream.total_out;
 }

@@ -1,50 +1,46 @@
-// Behaviour test for 0x00470DBC std::__insertion_sort over pair<unsigned long, {long, long}> records.
+// Behaviour test for 00470dbc: std::__insertion_sort over pair<unsigned long,CSoundPair> -- the sound entries end in key order with their sound pairs; empty and one-entry ranges are left alone
 #include <cstdio>
-
-struct SPayload8 { long m_value0; long m_value1; };
-struct SULongKeyedRecord {
-    unsigned long first; SPayload8 second;
-    SULongKeyedRecord() : first(0) { second.m_value0 = second.m_value1 = 0; }
-    SULongKeyedRecord(const SULongKeyedRecord& o) : first(o.first), second(o.second) { }
+class CSoundPair { public: long FirstSound; long LastSound; };
+namespace std {
+template <class _T1, class _T2> struct pair {
+    _T1 first; _T2 second;
+    pair() { }
+    pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
-struct SULongKeyLess {
-    void* m_context;
-    bool operator()(const SULongKeyedRecord& a, const SULongKeyedRecord& b) const { return a.first < b.first; }
+}
+template <class Key, class Value> class CKeyPairCompareLess {
+public:
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
-
-static int g_calls = 0;
-static void __linear_insert(SULongKeyedRecord* first, SULongKeyedRecord* last, SULongKeyedRecord value, SULongKeyLess comp)
+typedef std::pair<unsigned long, CSoundPair> Entry;
+typedef CKeyPairCompareLess<unsigned long, CSoundPair> Less;
+// __linear_insert 0x00470E08 (STLport): front shift when below the first entry, else the unguarded walk
+static void linear_insert(Entry* first, Entry* last, Entry val, Less comp)
 {
-    ++g_calls;
-    if (comp(value, *first)) {
-        for (SULongKeyedRecord* p = last; p != first; --p) *p = *(p - 1);
-        *first = value;
-    } else {
-        SULongKeyedRecord* next = last - 1;
-        while (comp(value, *next)) { *last = *next; last = next; --next; }
-        *last = value;
-    }
+    if (comp(val, *first)) { for (Entry* p = last; p != first; --p) *p = *(p - 1); *first = val; }
+    else { Entry* next = last; --next; while (comp(val, *next)) { *last = *next; last = next; --next; } *last = val; }
 }
-static void __insertion_sort(SULongKeyedRecord* first, SULongKeyedRecord* last, SULongKeyLess comp)
+// the row
+static void insertion_sort(Entry* first, Entry* last, Less comp)
 {
-    if (first == last)
-        return;
-    for (SULongKeyedRecord* i = first + 1; i != last; ++i)
-        __linear_insert(first, i, *i, comp);
+    if (first == last) return;
+    for (Entry* i = first + 1; i != last; ++i) linear_insert(first, i, *i, comp);
 }
-
 int main()
 {
-    SULongKeyedRecord a[5];
-    unsigned long keys[5] = { 9, 0xFFFFFFF0ul, 2, 9, 1 };
-    for (int k = 0; k < 5; ++k) { a[k].first = keys[k]; a[k].second.m_value0 = k; a[k].second.m_value1 = -k; }
-    SULongKeyLess comp = { 0 };
-    __insertion_sort(a, a + 5, comp);
-    unsigned long sorted[5] = { 1, 2, 9, 9, 0xFFFFFFF0ul };
-    long origin[5] = { 4, 2, 0, 3, 1 };      // stable among equal keys
-    for (int k = 0; k < 5; ++k)
-        if (a[k].first != sorted[k] || a[k].second.m_value0 != origin[k] || a[k].second.m_value1 != -origin[k]) { std::printf("00470dbc_TEST FAIL\n"); return 1; }
-    if (g_calls != 4) { std::printf("00470dbc_TEST FAIL\n"); return 1; }
-    std::printf("00470dbc_TEST PASS\n");
-    return 0;
+    static const unsigned long keys[10] = { 9, 4, 0x80000001UL, 7, 1, 8, 0, 3, 2, 5 };
+    Entry e[10];
+    for (int i = 0; i < 10; ++i) { e[i].first = keys[i]; e[i].second.FirstSound = (long)(keys[i] & 0xFF) * 2; e[i].second.LastSound = (long)(keys[i] & 0xFF) * 2 + 1; }
+    Less comp;
+    insertion_sort(e, e, comp);
+    insertion_sort(e, e + 1, comp);
+    int ok = e[0].first == 9;
+    insertion_sort(e, e + 10, comp);
+    for (int i = 0; i < 10; ++i) {
+        ok &= e[i].second.FirstSound == (long)(e[i].first & 0xFF) * 2 && e[i].second.LastSound == (long)(e[i].first & 0xFF) * 2 + 1;
+        if (i) ok &= e[i - 1].first < e[i].first;
+    }
+    ok &= e[9].first == 0x80000001UL;                      // the key compares unsigned
+    std::printf(ok ? "00470dbc_TEST PASS\n" : "00470dbc_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

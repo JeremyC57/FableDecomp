@@ -1,6 +1,7 @@
 // CCompressorZlib::DecompressStream(void* dest, unsigned long destSize, bool* endOfStream) -- lazily inflateInit the stream, inflate into the caller's buffer with Z_SYNC_FLUSH, flag errors and end of stream, and return the bytes produced
+// Leaf: ?DecompressStream@CCompressorZlib_Retail@@QAEKPAXKPA_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3A840, 117 bytes (128 with padding).
-// Callees: inflateInit_ 0x00C02310 (version "1.1.4" at 0x0129CFE0, sizeof(z_stream) = 0x38), inflate 0x00C02470.
+// Callees: z_inflateInit_ 0x00C02310 (version "1.2.1" at 0x0129CFE0, sizeof(z_stream) = 0x38), z_inflate 0x00C02470.
 // Retail layout (as the landed CompressStream 0x00A3A7F0): engine/CCompressorZlib.h minus 4 bytes (the
 // base's vector is 12 bytes in the shipped binary): z_stream at +0x1c (next_out +0x28, avail_out +0x2c),
 // ZlibInitialised +0x54, Compressing +0x55, ErrorFlag +0x56.
@@ -9,7 +10,7 @@
 // both exits recompute destSize - avail_out (destSize kept in edi).
 #include "engine/CCompressorZlib.h"
 
-struct z_stream_s {                                             // zlib 1.1.4 stream (56 bytes)
+struct z_stream_s {                                             // zlib 1.2.1 stream (56 bytes)
     unsigned char* next_in;  unsigned int avail_in;  unsigned long total_in;
     unsigned char* next_out; unsigned int avail_out; unsigned long total_out;
     char* msg; void* state;
@@ -18,14 +19,14 @@ struct z_stream_s {                                             // zlib 1.1.4 st
     void* opaque; int data_type; unsigned long adler; unsigned long reserved;
 };
 
-#define ZLIB_VERSION "1.1.4"
+#define ZLIB_VERSION "1.2.1"
 #define Z_OK 0
 #define Z_STREAM_END 1
 #define Z_SYNC_FLUSH 2
 #define Z_FINISH 4
-extern "C" int __cdecl inflateInit_(z_stream_s* strm, const char* version, int stream_size);   // 0x00C02310
-extern "C" int __cdecl inflate(z_stream_s* strm, int flush);                                       // 0x00C02470
-#define inflateInit(strm) inflateInit_((strm), ZLIB_VERSION, sizeof(z_stream_s))
+extern "C" int __cdecl z_inflateInit_(z_stream_s* strm, const char* version, int stream_size);   // 0x00C02310
+extern "C" int __cdecl z_inflate(z_stream_s* strm, int flush);                                       // 0x00C02470
+#define inflateInit(strm) z_inflateInit_((strm), ZLIB_VERSION, sizeof(z_stream_s))
 
 struct CCompressorZlib_Retail {
     virtual void v00();
@@ -48,7 +49,7 @@ unsigned long CCompressorZlib_Retail::DecompressStream(void* dest, unsigned long
     }
     Stream.next_out = (unsigned char*)dest;
     Stream.avail_out = destSize;
-    int result = inflate(&Stream, Z_SYNC_FLUSH);
+    int result = z_inflate(&Stream, Z_SYNC_FLUSH);
     if (result == Z_STREAM_END) {
         *endOfStream = true;
         return destSize - Stream.avail_out;

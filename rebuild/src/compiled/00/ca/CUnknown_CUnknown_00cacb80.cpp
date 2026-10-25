@@ -1,5 +1,5 @@
 // CUnknown::CUnknown(const char* pName, IUnknown* pUnk) -- DirectShow base-class constructor: counts the live object (CBaseObject), owner = pUnk or the object's own non-delegating interface, reference count 0
-// Leaf: ??0CUnknown
+// Leaf: ??0CUnknown@@QAE@PBDPAUIUnknown@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACB80, 40 bytes (`ret 8`).
 // Callees: InterlockedIncrement (import thunk 0x0143FD34, resolved from the IAT) on CBaseObject::m_cObjects
 // (0x0143CCF4).
@@ -10,7 +10,9 @@
 // Shape: AM_NOVTABLE (`__declspec(novtable)`) CUnknown over the novtable INonDelegatingUnknown interface: no
 // vtable store; the empty CBaseObject base takes no room, so m_pUnknown is +4 and m_cRef +8; the import is
 // called through its IAT slot (`__declspec(dllimport)`) before the member initialisers.
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile* addend);   // IAT 0x0143FD34
+// Fix (sweep1, 2026-10-25; FINDINGS chunk 449): the landed row spelled the Interlocked prototype and m_cRef with a cv-qualifier,
+// which the purity grep rejects; neither qualifier changes this constructor's bytes (one store of 0).
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long* addend);   // IAT 0x0143FD34 (same _InterlockedIncrement@4 import)
 
 struct GUID;
 
@@ -35,7 +37,7 @@ public:
 class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CBaseObject {
     IUnknown* const m_pUnknown;                      // +0x04
 protected:
-    volatile long m_cRef;                            // +0x08
+    long m_cRef;                                     // +0x08 (combase.h cv-qualifier dropped for purity)
 public:
     CUnknown(const char* pName, IUnknown* pUnk);
 };

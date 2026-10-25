@@ -1,0 +1,74 @@
+// CShaderRenderManager::DrawBuffersNonIndexed(CVertexBufferWin32& vertexBuffer, unsigned long startVertex, unsigned long primitiveCount, EPrimitiveType primitiveType) -- bind the vertex buffer, realise the render state and draw a non-indexed primitive
+// Leaf: ?DrawBuffersNonIndexed@CShaderRenderManager@@QAEXAAVCVertexBufferWin32@@KKW4EPrimitiveType@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC9F50, length 82 bytes, thiscall, `ret 0x10`.
+// Identity: Ego_d.pdb / FableWin.pdb name set ?DrawBuffersNonIndexed@CShaderRenderManager@@QAEXAAVCVertexBufferWin32@@KKW4EPrimitiveType@@@Z
+//   (four stack arguments = ret 0x10); `this` holds the CRenderManager* at +0x1D0 and the IDirect3DDevice9* at +0x1D4,
+//   the same retail offsets as the landed sibling CShaderRenderManager::DrawBuffersIndexed 0x00B8EB00 (Ego_r.pdb
+//   RenderManager +0x1E0 / D3DDevice +0x1E4 less 0x10 for four 12-byte retail CArrays). Renamed (sweep1, 2026-10-25) from
+//   CRenderDevice_00bc9f50::DrawVertexBuffer (descriptive; manifest label CBowerstoneIntroGuard::Init was propagated).
+// Callees: IDirect3DDevice9::SetStreamSource (COM slot 100, +0x190) and IDirect3DDevice9::DrawPrimitive
+//   (COM slot 81, +0x144) on the device (`__stdcall` virtuals: `this` goes on the stack),
+//   CRenderStateManager::RealiseRenderState @ 0x00A058C0 on the render manager.
+// Layout: CVertexBufferWin32 PVertexBuffer +4, Stride +0x10 (a byte); engine/CVertexBufferWin32.h is flattened and
+//   data-only, so the retail fields are modelled locally as in 0x00B8EB00.
+// Shape: SelectVertexBuffer(vertexBuffer) inlined: SetStreamSource(0, PVertexBuffer, 0, Stride zero-extended into edi);
+//   the device is re-read from `this` for the second call (the realise call may change it); DrawPrimitive(type, start,
+//   count) with the arguments pulled from their slots right to left.
+#define COM_SLOT(n) virtual void __stdcall slot##n()
+
+struct IDirect3DVertexBuffer9;
+
+struct IDirect3DDevice9 {                       // only the two slots used are typed
+    COM_SLOT(0); COM_SLOT(1); COM_SLOT(2); COM_SLOT(3); COM_SLOT(4); COM_SLOT(5); COM_SLOT(6); COM_SLOT(7); COM_SLOT(8); COM_SLOT(9);
+    COM_SLOT(10); COM_SLOT(11); COM_SLOT(12); COM_SLOT(13); COM_SLOT(14); COM_SLOT(15); COM_SLOT(16); COM_SLOT(17); COM_SLOT(18); COM_SLOT(19);
+    COM_SLOT(20); COM_SLOT(21); COM_SLOT(22); COM_SLOT(23); COM_SLOT(24); COM_SLOT(25); COM_SLOT(26); COM_SLOT(27); COM_SLOT(28); COM_SLOT(29);
+    COM_SLOT(30); COM_SLOT(31); COM_SLOT(32); COM_SLOT(33); COM_SLOT(34); COM_SLOT(35); COM_SLOT(36); COM_SLOT(37); COM_SLOT(38); COM_SLOT(39);
+    COM_SLOT(40); COM_SLOT(41); COM_SLOT(42); COM_SLOT(43); COM_SLOT(44); COM_SLOT(45); COM_SLOT(46); COM_SLOT(47); COM_SLOT(48); COM_SLOT(49);
+    COM_SLOT(50); COM_SLOT(51); COM_SLOT(52); COM_SLOT(53); COM_SLOT(54); COM_SLOT(55); COM_SLOT(56); COM_SLOT(57); COM_SLOT(58); COM_SLOT(59);
+    COM_SLOT(60); COM_SLOT(61); COM_SLOT(62); COM_SLOT(63); COM_SLOT(64); COM_SLOT(65); COM_SLOT(66); COM_SLOT(67); COM_SLOT(68); COM_SLOT(69);
+    COM_SLOT(70); COM_SLOT(71); COM_SLOT(72); COM_SLOT(73); COM_SLOT(74); COM_SLOT(75); COM_SLOT(76); COM_SLOT(77); COM_SLOT(78); COM_SLOT(79);
+    COM_SLOT(80);
+    virtual long __stdcall DrawPrimitive(unsigned long primitiveType, unsigned long startVertex, unsigned long primitiveCount);   // slot 81 (+0x144)
+    COM_SLOT(82); COM_SLOT(83); COM_SLOT(84); COM_SLOT(85); COM_SLOT(86); COM_SLOT(87); COM_SLOT(88); COM_SLOT(89);
+    COM_SLOT(90); COM_SLOT(91); COM_SLOT(92); COM_SLOT(93); COM_SLOT(94); COM_SLOT(95); COM_SLOT(96); COM_SLOT(97); COM_SLOT(98); COM_SLOT(99);
+    virtual long __stdcall SetStreamSource(unsigned long streamNumber, IDirect3DVertexBuffer9* streamData, unsigned long offsetInBytes, unsigned long stride);   // slot 100 (+0x190)
+};
+
+enum EPrimitiveType { PRIMITIVE_TYPE_DEFAULT = -1, PrimitiveTriangleList = 4 };
+
+class CRenderStateManager {
+public:
+    void RealiseRenderState();                  // 0x00A058C0
+};
+
+class CRenderManager : public CRenderStateManager { };
+
+class CVertexBufferWin32 {                      // retail layout (engine/CVertexBufferWin32.h keeps the body opaque)
+public:
+    void*                   __vftable;          // +0x00
+    IDirect3DVertexBuffer9* PVertexBuffer;      // +0x04
+    unsigned long           Length;             // +0x08
+    long                    Type;               // +0x0c EVertexType
+    unsigned char           Stride;             // +0x10
+};
+
+class CShaderRenderManager {
+public:
+    unsigned char     _pad000[0x1d0];           // +0x000..+0x1cf
+    CRenderManager*   RenderManager;            // +0x1d0
+    IDirect3DDevice9* D3DDevice;                // +0x1d4
+    void SelectVertexBuffer(CVertexBufferWin32& vertexBuffer)
+    {
+        D3DDevice->SetStreamSource(0, vertexBuffer.PVertexBuffer, 0, vertexBuffer.Stride);
+    }
+    void DrawBuffersNonIndexed(CVertexBufferWin32& vertexBuffer, unsigned long startVertex, unsigned long primitiveCount,
+                               EPrimitiveType primitiveType);
+};
+
+void CShaderRenderManager::DrawBuffersNonIndexed(CVertexBufferWin32& vertexBuffer, unsigned long startVertex,
+                                                 unsigned long primitiveCount, EPrimitiveType primitiveType)
+{
+    SelectVertexBuffer(vertexBuffer);
+    RenderManager->RealiseRenderState();
+    D3DDevice->DrawPrimitive(primitiveType, startVertex, primitiveCount);
+}

@@ -6,8 +6,8 @@ struct z_stream {
     void* zalloc; void* zfree; void* opaque;
 };
 static int g_inits = 0, g_ends = 0, g_finishCalls = 0;
-static int deflateInit_(z_stream* s, int level, const char*, int) { s->total_in = s->total_out = 0; ++g_inits; return level == 1 ? 0 : -1; }
-static int deflate(z_stream* s, int flush)
+static int z_deflateInit_(z_stream* s, int level, const char*, int) { s->total_in = s->total_out = 0; ++g_inits; return level == 1 ? 0 : -1; }
+static int z_deflate(z_stream* s, int flush)
 {
     if (flush == 0) {
         if (s->avail_in && s->avail_out) { *s->next_out++ = (unsigned char)(*s->next_in++ ^ 0x5a); --s->avail_in; --s->avail_out; ++s->total_in; ++s->total_out; }
@@ -17,16 +17,16 @@ static int deflate(z_stream* s, int flush)
     if (g_finishCalls < 3) return 0;   // pretend two partial flushes
     *s->next_out++ = 0xff; ++s->total_out; return 1;
 }
-static void deflateEnd(z_stream*) { ++g_ends; }
+static void z_deflateEnd(z_stream*) { ++g_ends; }
 static unsigned long InternalCompress(const void* source, unsigned long sourceSize, void* dest, unsigned long destSize)
 {
     if (sourceSize == 0) return 0;
     z_stream stream; stream.zalloc = 0; stream.zfree = 0; stream.opaque = 0;
-    deflateInit_(&stream, 1, "1.1.4", (int)sizeof(z_stream));
+    z_deflateInit_(&stream, 1, "1.2.1", (int)sizeof(z_stream));
     stream.next_in = (unsigned char*)source; stream.next_out = (unsigned char*)dest;
-    while (stream.total_in != sourceSize && stream.total_out < destSize) { stream.avail_in = stream.avail_out = 1; deflate(&stream, 0); }
-    for (;;) { stream.avail_out = 1; if (deflate(&stream, 4) == 1) break; }
-    deflateEnd(&stream);
+    while (stream.total_in != sourceSize && stream.total_out < destSize) { stream.avail_in = stream.avail_out = 1; z_deflate(&stream, 0); }
+    for (;;) { stream.avail_out = 1; if (z_deflate(&stream, 4) == 1) break; }
+    z_deflateEnd(&stream);
     return stream.total_out;
 }
 static int Fail() { std::printf("00a3aa40_TEST FAIL\n"); return 1; }

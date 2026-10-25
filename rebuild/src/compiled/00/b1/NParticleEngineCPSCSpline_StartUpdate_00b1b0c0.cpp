@@ -1,11 +1,14 @@
-// NParticleEngine::CPSCSpline::StartUpdate(const CParticleUpdateParameters& params) -- vtable slot 8: per-frame spline set-up: refresh the spline data, mark the update started and advance the current spline position (bouncing between 0 and 1, or wrapping/clamping past the end)
-// Leaf: ?StartUpdate@CPSCSpline@
+// NParticleEngine::CPSCSpline::StartUpdate(const CParticleUpdateParameters& params) -- vtable slot 8: per-frame spline set-up: run the base StartUpdate (refresh the spline data), mark the update started and advance the current spline position (bouncing between 0 and 1, or wrapping/clamping past the end)
+// Leaf: ?StartUpdate@CPSCSpline@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1B0C0, 232 bytes (+8 int3 padding).
 // Name: FableWin.pdb ?StartUpdate@CPSCSpline@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z; slot 8 of the
 // vtable 0x012A0934 (rtti-vtables.tsv; slot 8 of CPSCOrbit is the landed StartUpdate 0x00B16D50; the landed
 // CPSCSpline::GetUpdateParam 0x00B1B030 calls this slot when UpdateStarted is clear).
-// Callees: CPSCSplineBase::UpdateSplineData(const CParticleUpdateParameters&) @ 0x00B215E0, the particle frame time
-// getter @ 0x00AEAA00 (as in GetUpdateParam), CSplinePosParamData::CalcDistanceAlpha(params, float) @ 0x00B216F0.
+// Callees: the base CPSCSplineBase::StartUpdate(const CParticleUpdateParameters&) @ 0x00B215E0 (Ego_r.pdb
+// ?StartUpdate@CPSCSplineBase@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z, slot 8 of the CPSCSplineBase
+// vtables; called directly, i.e. `CPSCSplineBase::StartUpdate(params)`), the particle frame time getter @ 0x00AEAA00
+// (as in GetUpdateParam), CSplinePosParamData::GetScaleFactor(params, float) @ 0x00B216F0 (Ego_r.pdb
+// ?GetScaleFactor@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEMABV?$CParticleUpdateParameters@KK@3@M@Z).
 // Constants: 1.0f @ 0x0122DED8, 0.0f @ 0x0122DEDC (compiler literals).
 // Layout: as the landed GetUpdateParam: UpdateStarted bit 0 of +8; the control points vector +0x10/+0x14
 // (12-byte C3DVector, the `imul 2AAAAAABh ; sar edx,1` divide by 12); Spline.EndPointsConnected +0x20;
@@ -23,11 +26,19 @@ float GetParticleFrameTime_00aeaa00();      // 0x00AEAA00
 
 namespace NParticleEngine {
 
-template <class A, class B> struct CParticleUpdateParameters;
+template <class A, class B> class CParticleUpdateParameters;
 struct CParticleSystem;
 
 struct CPSCBase {
     virtual void v00();
+    virtual void v01();
+    virtual void v02();
+    virtual void v03();
+    virtual void v04();
+    virtual void v05();
+    virtual void v06();
+    virtual void v07();
+    virtual void StartUpdate(const CParticleUpdateParameters<unsigned long, unsigned long>& params);   // slot 8 (+0x20)
     CParticleSystem* ParticleSystem;        // +0x04
     bool             UpdateStarted : 1;     // +0x08 bit 0
     bool             Initialised : 1;       // +0x08 bit 1
@@ -35,7 +46,7 @@ struct CPSCBase {
 
 struct CPSCSplineBase : CPSCBase {
     struct CSplinePosParamData {
-        float CalcDistanceAlpha(const CParticleUpdateParameters<unsigned long, unsigned long>& params, float pos);   // 0x00B216F0
+        float GetScaleFactor(const CParticleUpdateParameters<unsigned long, unsigned long>& params, float pos);   // 0x00B216F0
     };
     float      SplineAnimSpeedBase;         // +0x0c
     C3DVector* m_controlFirst;              // +0x10 Spline.ControlPoints
@@ -51,7 +62,7 @@ struct CPSCSplineBase : CPSCBase {
     };
     CPosParamPointer SplinePosParamData;    // +0x2c
     long GetControlPointCount() const { return m_controlLast - m_controlFirst; }
-    void UpdateSplineData(const CParticleUpdateParameters<unsigned long, unsigned long>& params);   // 0x00B215E0
+    virtual void StartUpdate(const CParticleUpdateParameters<unsigned long, unsigned long>& params);   // 0x00B215E0
 };
 
 struct CPSCSpline : CPSCSplineBase {        // vtable 0x012A0934
@@ -65,12 +76,12 @@ struct CPSCSpline : CPSCSplineBase {        // vtable 0x012A0934
 
 void CPSCSpline::StartUpdate(const CParticleUpdateParameters<unsigned long, unsigned long>& params)
 {
-    UpdateSplineData(params);
+    CPSCSplineBase::StartUpdate(params);
     UpdateStarted = true;
     float frameTime = GetParticleFrameTime_00aeaa00();
     float step = frameTime * (SplineAnimSpeed / GetControlPointCount());
     if (ScaleSplineSpeed)
-        step = SplinePosParamData->CalcDistanceAlpha(params, SplineCurrentPosition) * step;
+        step = SplinePosParamData->GetScaleFactor(params, SplineCurrentPosition) * step;
     if (SplineBounce) {
         if (ReverseSpline)
             step = -step;

@@ -1,4 +1,9 @@
-// RenderType: bookmark render state, update alpha comparison, dispatch sorted list.
+// CEngineSubPrimitiveRenderer::RenderType(int type, bool clear) -- bookmark the render state, update the alpha comparison, dispatch the type's sorted list (bounding-volume pass through each primitive's manager, else the one- or two-pass list render), optionally clear it
+// Leaf: ?RenderType@CEngineSubPrimitiveRenderer@@QAEXH_N@Z
+// Callees (bounding-volume pass): the virtual CEnginePrimitiveManager::RenderBoundingVolume(CEngineSubPrimitiveBase&), vtable
+//   slot 6 (+0x18) (Ego_r.pdb ?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@@Z), called
+//   through the primitive's manager pointer (+0x14) as an ordinary virtual call (the landed source read the slot through a
+//   memcpy'd pointer to member).
 // Actual headers retained; native list24 vs donor28 from CArray12 vs16.
 #define CEngineSubPrimitiveRenderer CSubRendererDonor
 #define CRenderStateManager CRenderStateManagerDonor
@@ -9,7 +14,6 @@
 #undef CRenderManagerCore
 #undef CRenderStateManager
 #undef CEngineSubPrimitiveRenderer
-#include <string.h>
 struct CSubState {unsigned Current,Desired,BookmarkMask,Index;bool Dirty;unsigned char Type,Stage,Pad;};
 struct CSubStateStack {CSubState* State;unsigned OldValue;};
 struct CSubRenderStateManager {
@@ -19,9 +23,12 @@ struct CSubRenderStateManager {
  void PushBookmark(){Stack[StackSize].State=&BookmarkDummy;++StackSize;BookmarkMask<<=1;}
  __forceinline void Set(CSubState& state,unsigned value){if(state.Desired!=value){if(!(state.BookmarkMask&BookmarkMask)){state.BookmarkMask|=BookmarkMask;Stack[StackSize].State=&state;Stack[StackSize].OldValue=state.Desired;++StackSize;}state.Desired=value;if(!state.Dirty){state.Dirty=true;Updates[UpdateSize]=&state;++UpdateSize;}}}
 };
-struct CSubPrimitiveManager {void* Vtable;void* Scenes;bool Enable;};
-struct CSubPrimitive {void* Vtable;unsigned RenderFlags;unsigned char Alpha;void* Parent;CSubPrimitive* Next;CSubPrimitiveManager* Manager;};
-struct CSubSortElement {unsigned SortValue;CSubPrimitive* Primitive;};
+class CEngineSubPrimitiveBase;
+struct CEnginePrimitiveManager {virtual void v0();virtual void v1();virtual void v2();virtual void v3();virtual void v4();virtual void v5();
+ virtual void RenderBoundingVolume(CEngineSubPrimitiveBase&); // slot 6 (+0x18)
+ void* Scenes;bool Enable;};
+class CEngineSubPrimitiveBase {public:void* Vtable;unsigned RenderFlags;unsigned char Alpha;void* Parent;CEngineSubPrimitiveBase* Next;CEnginePrimitiveManager* Manager;};
+struct CSubSortElement {unsigned SortValue;CEngineSubPrimitiveBase* Primitive;};
 struct CSubList {CSubSortElement* Begin;CSubSortElement* End;CSubSortElement* Capacity;int RenderPass,PreRenderPass;bool BoundingVolumePass,Stable,Sorted,Enable;unsigned Size()const{return unsigned(End-Begin);}};
 struct CEngineSubPrimitiveRenderer {
  unsigned char Prefix[0x18];CSubList Lists[15];
@@ -31,19 +38,16 @@ struct CEngineSubPrimitiveRenderer {
 extern CSubRenderStateManager* gSubBookmarkManager; //13CB508
 extern CSubRenderStateManager* gSubRenderManager; //1436E18
 extern unsigned gSubAlphaTestFunc; //1396DE8
-// Real virtual thiscall slot6 RenderBoundingVolume; full host PMF representation.
-typedef void(CSubPrimitiveManager::*CSubRenderVolumeCall)(CSubPrimitive&);
 #ifdef _MSC_VER
 typedef char State20[sizeof(CSubState)==20?1:-1];
 typedef char List24[sizeof(CSubList)==24?1:-1];
 typedef char Stack2808[offsetof(CSubRenderStateManager,StackSize)==0x2808?1:-1];
 typedef char Dummy3A24[offsetof(CSubRenderStateManager,BookmarkDummy)==0x3a24?1:-1];
-typedef char PMF4[sizeof(CSubRenderVolumeCall)==4?1:-1];
 #endif
 void CEngineSubPrimitiveRenderer::RenderType(int type,bool clear){
  gSubBookmarkManager->PushBookmark();gSubRenderManager->Set(gSubRenderManager->DeviceStates[7],gSubAlphaTestFunc);
  CSubList& list=Lists[type];if(list.Enable){if(list.Sorted)SortList(list,list.Stable);
- if(list.BoundingVolumePass){unsigned size=list.Size();for(unsigned i=0;i<size;++i){CSubPrimitive* p=list.Begin[i].Primitive;CSubPrimitiveManager* manager=p->Manager;CSubRenderVolumeCall call=0;memcpy(&call,static_cast<const CSubRenderVolumeCall*>(manager->Vtable)+6,sizeof(call));(manager->*call)(*p);}}
+ if(list.BoundingVolumePass){unsigned size=list.Size();for(unsigned i=0;i<size;++i){CEngineSubPrimitiveBase* p=list.Begin[i].Primitive;p->Manager->RenderBoundingVolume(*p);}}
  else if(list.PreRenderPass)RenderListTwoPass(list,list.PreRenderPass,list.RenderPass);else RenderList(list,list.RenderPass);}
  if(clear)DeleteList(list);gSubBookmarkManager->PopBookmark();
 }

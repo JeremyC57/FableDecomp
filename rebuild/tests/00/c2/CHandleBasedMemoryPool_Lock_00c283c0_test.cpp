@@ -1,55 +1,19 @@
 #include <stdio.h>
-#if !defined(_MSC_VER)
-#  define __fastcall
-#  define __stdcall
-#endif
-
-struct Entry {
-    char pad[0xf];
-    unsigned char flag;
-};
-
+struct CHeader { unsigned char _pad00[0xf]; unsigned char Locked; };
 struct CHandleBasedMemoryPool {
-    char pad0[0x18];
-    unsigned long lockCount;
-    char pad1[0x440 - 0x18 - 4];
-    Entry** table;
+    unsigned char _pad00[0x18]; long LockCount; unsigned char _pad1c[0x440 - 0x1c]; CHeader** Handles;
+    void Lock(long handle) { CHeader** slot = &Handles[handle]; if ((*slot)->Locked == 0) { (*slot)->Locked = 1; LockCount++; } }
 };
-
-void __fastcall Lock(CHandleBasedMemoryPool* self, int, long index)
-{
-    Entry** slot = &self->table[index];
-    if ((*slot)->flag == 0) {
-        (*slot)->flag = 1;
-        self->lockCount++;
-    }
-}
-
 int main()
 {
     CHandleBasedMemoryPool pool;
     for (int i = 0; i < (int)sizeof(pool); ++i) ((char*)&pool)[i] = 0;
-
-    Entry e0, e1;
-    e0.flag = 0;
-    e1.flag = 0;
-    Entry* tbl[4];
-    tbl[0] = &e0;
-    tbl[1] = &e1;
-    tbl[2] = &e0;
-    tbl[3] = &e1;
-    pool.table = tbl;
-    pool.lockCount = 0;
-
-    Lock(&pool, 0, 0);
-    if (!(e0.flag == 1 && pool.lockCount == 1)) { printf("BAD1\n"); return 1; }
-
-    Lock(&pool, 0, 0);
-    if (!(e0.flag == 1 && pool.lockCount == 1)) { printf("BAD2\n"); return 1; }
-
-    Lock(&pool, 0, 1);
-    if (!(e1.flag == 1 && pool.lockCount == 2)) { printf("BAD3\n"); return 1; }
-
+    CHeader e0, e1; e0.Locked = 0; e1.Locked = 0;
+    CHeader* tbl[4] = { &e0, &e1, &e0, &e1 };
+    pool.Handles = tbl; pool.LockCount = 0;
+    pool.Lock(0); if (!(e0.Locked == 1 && pool.LockCount == 1)) { printf("BAD\n"); return 1; }
+    pool.Lock(2); if (!(e0.Locked == 1 && pool.LockCount == 1)) { printf("BAD\n"); return 1; }
+    pool.Lock(1); if (!(e1.Locked == 1 && pool.LockCount == 2)) { printf("BAD\n"); return 1; }
     printf("LOCK_OK\n");
     return 0;
 }

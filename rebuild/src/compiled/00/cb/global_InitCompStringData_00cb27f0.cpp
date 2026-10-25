@@ -1,6 +1,6 @@
 // InitCompStringData() -- IME UI: clears the composition string, its attribute string and the two composition cursor positions
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB27F0, length 39 bytes.
-// Leaf: InitCompStringData
+// Leaf: ?InitCompStringData@@YAXXZ
 // No callees: two intrinsic memsets (`rep stosd`, 0x80 and 0x40 dwords) and two dword stores sharing the eax zero.
 // Identity: the manifest label "CPSCOrbit::DatabaseCopy" is propagated and rejected (no `this`, ecx is
 // clobbered as the stosd count). The body sits among the DXUT ImeUi.cpp functions (manifest
@@ -11,6 +11,9 @@
 // TCHAR g_szCompositionString[256] (0x200 bytes @ 0x0143CF10), BYTE g_szCompAttrString[256] (@ 0x0143E518),
 // DWORD g_IMECursorBytes / g_IMECursorChars (@ 0x0143E894 / 0x0143E898).
 // The original is file-static in ImeUi.cpp; it is external here so the TU emits it.
+// Fix (sweep1, 2026-10-25; FINDINGS chunk 450 "0xCB27F0 InitCompStringData store order differs from the DXUT source"): the
+//   body is now ImeUi.cpp's order, counters first (the order agent450 needed for the copy inlined into ImeUi_FinalizeString
+//   0x00CB2C60); VC7.1 still sinks the two zero stores below both `rep stosd` here (same bytes as the memset-first order).
 #include <string.h>
 
 extern unsigned short g_szCompositionString[256];  // 0x0143CF10 (TCHAR, UNICODE)
@@ -20,8 +23,8 @@ extern unsigned long  g_IMECursorChars;            // 0x0143E898
 
 void InitCompStringData()
 {
-    memset(g_szCompositionString, 0, sizeof(g_szCompositionString));
-    memset(g_szCompAttrString, 0, sizeof(g_szCompAttrString));
     g_IMECursorBytes = 0;
     g_IMECursorChars = 0;
+    memset(&g_szCompositionString, 0, sizeof(g_szCompositionString));
+    memset(&g_szCompAttrString, 0, sizeof(g_szCompAttrString));
 }

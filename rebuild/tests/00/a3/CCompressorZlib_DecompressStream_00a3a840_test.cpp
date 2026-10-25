@@ -6,7 +6,7 @@
 struct z_stream_s { unsigned char* next_out; unsigned int avail_out; };
 static int g_inits = 0, g_result = 0, g_produce = 0;
 static int inflateInit(z_stream_s*) { ++g_inits; return 0; }
-static int inflate(z_stream_s* s, int flush) { if (flush != 2) return -99; s->avail_out -= g_produce; return g_result; }
+static int z_inflate(z_stream_s* s, int flush) { if (flush != 2) return -99; s->avail_out -= g_produce; return g_result; }
 
 struct CCompressorZlib {
     z_stream_s Stream; bool ZlibInitialised, Compressing, ErrorFlag;
@@ -14,7 +14,7 @@ struct CCompressorZlib {
     {
         if (!ZlibInitialised) { inflateInit(&Stream); ZlibInitialised = true; Compressing = false; }
         Stream.next_out = (unsigned char*)dest; Stream.avail_out = destSize;
-        int r = inflate(&Stream, 2);
+        int r = z_inflate(&Stream, 2);
         if (r == 1) { *end = true; return destSize - Stream.avail_out; }
         if (r != 0) ErrorFlag = true;
         *end = false;

@@ -1,6 +1,9 @@
-// CGPUScratchBufferTextureManager::FreeMemoryPage(long page) -- mark the memory page's resource as none (-1), free every texture slot still listed on the page (each FreeTextureSlot call removes the page's first slot), then push the page index onto FreeTexturePageSlots
+// CGPUScratchBufferTextureManager::FreeMemoryPage(long page) -- mark the memory page's resource as none (-1), free every resource entry still listed on the page (each FreeResourceEntry call removes the page's first slot), then push the page index onto FreeTexturePageSlots
+// Leaf: ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F37030, length 140 bytes (+ int3 padding). `ret 4`.
-// Callees: CGPUScratchBufferTextureManager::FreeTextureSlot(long) @ 0x00F36F40 (on `this`; catalog name "TexturePool_FreeSlot",
+// Callees: CGPUScratchBufferTextureManager::FreeResourceEntry(long) @ 0x00F36F40 (on `this`; Ego_r.pdb
+// ?FreeResourceEntry@CGPUScratchBufferTextureManager@@AAEXJ@Z, private, the landed row's Leaf; catalog name "TexturePool_FreeSlot";
+// called FreeTextureSlot here until sweep1 2026-10-25, FINDINGS chunk 453;
 // it pushes onto FreeTextureSlots +0x34), the retail vector insert-and-grow @ 0x00440990 (InsertGrow(where, value, tag, 1, true)).
 // Layout: Ego_r.pdb CGPUScratchBufferTextureManager with retail 12-byte CArrays: Resources +0x04, MemoryPages +0x10, ScratchPools +0x1c,
 // FreeTexturePageSlots +0x28, FreeTextureSlots +0x34, ShutdownFlag +0x40 (the landed constructor 0x00F37520 clears exactly +4..+0x40).
@@ -66,14 +69,15 @@ struct CGPUScratchBufferTextureManager {
     CLongVector         FreeTexturePageSlots;    // +0x28
     CLongVector         FreeTextureSlots;        // +0x34
     bool                ShutdownFlag;            // +0x40
-    void FreeTextureSlot(long slot);             // 0x00F36F40
     void FreeMemoryPage(long page);
+private:
+    void FreeResourceEntry(long index);          // 0x00F36F40
 };
 
 void CGPUScratchBufferTextureManager::FreeMemoryPage(long page)
 {
     MemoryPages[page].ResourceIndex = -1;
     while (MemoryPages[page].Slots.size() > 0)
-        FreeTextureSlot(MemoryPages[page].Slots[0]);
+        FreeResourceEntry(MemoryPages[page].Slots[0]);
     FreeTexturePageSlots.push_back(page);
 }

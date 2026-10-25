@@ -1,0 +1,28 @@
+#include <cstdio>
+static int g_locks = 0, g_unlocks = 0, g_calls = 0, g_lockedDuringCall = 0;
+static void* g_source = 0; static float g_value = 0.0f;
+struct CProfileLock {
+    void* m_pSection; long m_entryTick;
+    CProfileLock(void* section) : m_pSection(section), m_entryTick(0) { ++g_locks; }
+    ~CProfileLock() { ++g_unlocks; }
+};
+static unsigned char g_CodaProfileSection[8];
+static void CODA_SetSourceVolume(void* source, float value) { ++g_calls; g_source = source; g_value = value; g_lockedDuringCall = g_locks - g_unlocks; }
+struct CCodaPlayback_00c49420 {
+    long  m_reserved00;                            // +0x00
+    void* m_pSource;                               // +0x04 (the CODA source)
+    void SetSourceVolume(float value)
+    {
+        CProfileLock lock(g_CodaProfileSection);
+        CODA_SetSourceVolume(m_pSource, value);
+    }
+};
+int main()
+{
+    int source = 0;
+    CCodaPlayback_00c49420 p; p.m_pSource = &source;
+    p.SetSourceVolume(0.5f);
+    if (g_calls != 1 || g_source != &source || g_value != 0.5f || g_lockedDuringCall != 1 || g_locks != 1 || g_unlocks != 1) { std::printf("00c49420_TEST FAIL\n"); return 1; }
+    std::printf("00c49420_TEST PASS\n");
+    return 0;
+}
