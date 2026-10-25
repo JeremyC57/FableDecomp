@@ -305336,6 +305336,301 @@ $catalog = @(
         TestSource = '00/c2/CSoundEvent_IsWaiting_00c20ef0_test.cpp'
         PassPattern = '00c20ef0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004bcf50'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetPMeshEffect_004bcf50.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetPMeshEffect_004bcf50_test.cpp'
+        PassPattern = '004bcf50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dfcea'
+        Module = '_STL'
+        Source = '00/4d/STL_unguardedpartition_004dfcea.cpp'
+        TestSource = '00/4d/STL_unguardedpartition_004dfcea_test.cpp'
+        PassPattern = '004dfcea_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005305a0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_ChangeColourDelta_005305a0.cpp'
+        TestSource = '00/53/NUISystemCComponent_ChangeColourDelta_005305a0_test.cpp'
+        PassPattern = '005305a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00594a08'
+        Module = 'map'
+        Source = '00/59/map_operator_00594a08.cpp'
+        TestSource = '00/59/map_operator_00594a08_test.cpp'
+        PassPattern = '00594a08_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006384b0'
+        Module = 'NThingMap::CThingMapManager'
+        Source = '00/63/NThingMapCThingMapManager_GetAllActiveThingMapsInArea_006384b0.cpp'
+        TestSource = '00/63/NThingMapCThingMapManager_GetAllActiveThingMapsInArea_006384b0_test.cpp'
+        PassPattern = '006384b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066bdf0'
+        Module = 'CTCSoundPlayer'
+        Source = '00/66/CTCSoundPlayer_PlayUnattachedCriteria_0066bdf0.cpp'
+        TestSource = '00/66/CTCSoundPlayer_PlayUnattachedCriteria_0066bdf0_test.cpp'
+        PassPattern = '0066bdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00670470'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_UpdateHeightAboveGround_00670470.cpp'
+        TestSource = '00/67/CTCCoopSpirit_UpdateHeightAboveGround_00670470_test.cpp'
+        PassPattern = '00670470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067f430'
+        Module = '_global'
+        Source = '00/67/global_GFSerialiseVectorBinaryInCDegradableInfo_0067f430.cpp'
+        TestSource = '00/67/global_GFSerialiseVectorBinaryInCDegradableInfo_0067f430_test.cpp'
+        PassPattern = '0067f430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ce730'
+        Module = 'FrameUpdateThing'
+        Source = '00/6c/FrameUpdateThing_operator_006ce730.cpp'
+        TestSource = '00/6c/FrameUpdateThing_operator_006ce730_test.cpp'
+        PassPattern = '006ce730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d7ec0'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_AddAttackOfTypeToAttackHistory_006d7ec0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_AddAttackOfTypeToAttackHistory_006d7ec0_test.cpp'
+        PassPattern = '006d7ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e5990'
+        Module = 'CScriptConversationManager'
+        Source = '00/6e/CScriptConversationManager_RemoveConversation_006e5990.cpp'
+        TestSource = '00/6e/CScriptConversationManager_RemoveConversation_006e5990_test.cpp'
+        PassPattern = '006e5990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e9f60'
+        Module = '_global'
+        Source = '00/6e/global_GetAttackerProngSelectionCurrentWeaponBaseCompar_006e9f60.cpp'
+        TestSource = '00/6e/global_GetAttackerProngSelectionCurrentWeaponBaseCompar_006e9f60_test.cpp'
+        PassPattern = '006e9f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fc3e0'
+        Module = '_STL'
+        Source = '00/6f/STL_linearinsert_006fc3e0.cpp'
+        TestSource = '00/6f/STL_linearinsert_006fc3e0_test.cpp'
+        PassPattern = '006fc3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070a490'
+        Module = 'CTCTextureDecal'
+        Source = '00/70/CTCTextureDecal_AddDecal_0070a490.cpp'
+        TestSource = '00/70/CTCTextureDecal_AddDecal_0070a490_test.cpp'
+        PassPattern = '0070a490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00721a50'
+        Module = 'CVectorMap'
+        Source = '00/72/CVectorMap_Add_00721a50.cpp'
+        TestSource = '00/72/CVectorMap_Add_00721a50_test.cpp'
+        PassPattern = '00721a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00729960'
+        Module = '_STL::list'
+        Source = '00/72/STLlist_pushfront_00729960.cpp'
+        TestSource = '00/72/STLlist_pushfront_00729960_test.cpp'
+        PassPattern = '00729960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076d1b0'
+        Module = 'CTCEnemy'
+        Source = '00/76/CTCEnemy_AddEnemyThing_0076d1b0.cpp'
+        TestSource = '00/76/CTCEnemy_AddEnemyThing_0076d1b0_test.cpp'
+        PassPattern = '0076d1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ea1a0'
+        Module = '_STL::map<CThing*, float>'
+        Source = '00/7e/STLmapCThingfloat_operator_007ea1a0.cpp'
+        TestSource = '00/7e/STLmapCThingfloat_operator_007ea1a0_test.cpp'
+        PassPattern = '007ea1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00802110'
+        Module = '_STL::map'
+        Source = '00/80/STLmap_operator_00802110.cpp'
+        TestSource = '00/80/STLmap_operator_00802110_test.cpp'
+        PassPattern = '00802110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080c190'
+        Module = '_global'
+        Source = '00/80/global_GetExplosionEffectInterpolate_0080c190.cpp'
+        TestSource = '00/80/global_GetExplosionEffectInterpolate_0080c190_test.cpp'
+        PassPattern = '0080c190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082fb90'
+        Module = 'map'
+        Source = '00/82/map_operator_0082fb90.cpp'
+        TestSource = '00/82/map_operator_0082fb90_test.cpp'
+        PassPattern = '0082fb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00867fe0'
+        Module = 'CAnimationEntry'
+        Source = '00/86/CAnimationEntry_GetComponent_00867fe0.cpp'
+        TestSource = '00/86/CAnimationEntry_GetComponent_00867fe0_test.cpp'
+        PassPattern = '00867fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00875a30'
+        Module = 'NCameraModes::CTools'
+        Source = '00/87/NCameraModesCTools_Get2DRotationAngle_00875a30.cpp'
+        TestSource = '00/87/NCameraModesCTools_Get2DRotationAngle_00875a30_test.cpp'
+        PassPattern = '00875a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087c070'
+        Module = 'NCameraModes::COrbitGame'
+        Source = '00/87/NCameraModesCOrbitGame_OnInit_0087c070.cpp'
+        TestSource = '00/87/NCameraModesCOrbitGame_OnInit_0087c070_test.cpp'
+        PassPattern = '0087c070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00938db0'
+        Module = 'CAddFreeSeatToList'
+        Source = '00/93/CAddFreeSeatToList_operator_00938db0.cpp'
+        TestSource = '00/93/CAddFreeSeatToList_operator_00938db0_test.cpp'
+        PassPattern = '00938db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009438f0'
+        Module = 'CAddOccupiedSeatToList'
+        Source = '00/94/CAddOccupiedSeatToList_operator_009438f0.cpp'
+        TestSource = '00/94/CAddOccupiedSeatToList_operator_009438f0_test.cpp'
+        PassPattern = '009438f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009913d0'
+        Module = '_STL::map<unsigned long, CFileObject*>'
+        Source = '00/99/STLmapunsignedlongCFileObject_operator_009913d0.cpp'
+        TestSource = '00/99/STLmapunsignedlongCFileObject_operator_009913d0_test.cpp'
+        PassPattern = '009913d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00997f80'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_GetCurrentPath_00997f80.cpp'
+        TestSource = '00/99/CAFile_GetCurrentPath_00997f80_test.cpp'
+        PassPattern = '00997f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b5db0'
+        Module = 'CArray<unsigned char>'
+        Source = '00/9b/CArrayunsignedchar_DeallocateUnusedMemory_009b5db0.cpp'
+        TestSource = '00/9b/CArrayunsignedchar_DeallocateUnusedMemory_009b5db0_test.cpp'
+        PassPattern = '009b5db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b6eb0'
+        Module = 'CArray<CInstantiatedDefInfo*>'
+        Source = '00/9b/CArrayCInstantiatedDefInfo_DeallocateUnusedMemory_009b6eb0.cpp'
+        TestSource = '00/9b/CArrayCInstantiatedDefInfo_DeallocateUnusedMemory_009b6eb0_test.cpp'
+        PassPattern = '009b6eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b79b0'
+        Module = 'CArray'
+        Source = '00/9b/CArray_DeallocateUnusedMemory_009b79b0.cpp'
+        TestSource = '00/9b/CArray_DeallocateUnusedMemory_009b79b0_test.cpp'
+        PassPattern = '009b79b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b7bc0'
+        Module = '_STL::map'
+        Source = '00/9b/STLmap_operator_009b7bc0.cpp'
+        TestSource = '00/9b/STLmap_operator_009b7bc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009b7bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e20f0'
+        Module = '_global'
+        Source = '00/9e/global_GFABoxToVBox_009e20f0.cpp'
+        TestSource = '00/9e/global_GFABoxToVBox_009e20f0_test.cpp'
+        PassPattern = '009e20f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2240'
+        Module = '_global'
+        Source = '00/9e/global_GFACoordToVCoord_009e2240.cpp'
+        TestSource = '00/9e/global_GFACoordToVCoord_009e2240_test.cpp'
+        PassPattern = '009e2240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2d810'
+        Module = '_STL::map<unsigned long, CCountedPointer<C3DAnimation2> >'
+        Source = '00/a2/STLmapunsignedlongCCountedPointerC3DAnimation2_operator_00a2d810.cpp'
+        TestSource = '00/a2/STLmapunsignedlongCCountedPointerC3DAnimation2_operator_00a2d810_test.cpp'
+        PassPattern = '00a2d810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a385a0'
+        Module = 'CCRCSymbolMap'
+        Source = '00/a3/CCRCSymbolMap_AddSymbolDirty_00a385a0.cpp'
+        TestSource = '00/a3/CCRCSymbolMap_AddSymbolDirty_00a385a0_test.cpp'
+        PassPattern = '00a385a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a441e0'
+        Module = '_global'
+        Source = '00/a4/global_GFGetSignedAngleDifference_00a441e0.cpp'
+        TestSource = '00/a4/global_GFGetSignedAngleDifference_00a441e0_test.cpp'
+        PassPattern = '00a441e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a442e0'
+        Module = '_global'
+        Source = '00/a4/global_GFGetDistanceSquaredFromPointToLine_00a442e0.cpp'
+        TestSource = '00/a4/global_GFGetDistanceSquaredFromPointToLine_00a442e0_test.cpp'
+        PassPattern = '00a442e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a557e0'
+        Module = '_STL'
+        Source = '00/a5/STL_copy_00a557e0.cpp'
+        TestSource = '00/a5/STL_copy_00a557e0_test.cpp'
+        PassPattern = '00a557e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a56aa0'
+        Module = 'CCardinalSpline'
+        Source = '00/a5/CCardinalSpline_CCardinalSpline_00a56aa0.cpp'
+        TestSource = '00/a5/CCardinalSpline_CCardinalSpline_00a56aa0_test.cpp'
+        PassPattern = '00a56aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a57730'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_GetDist_00a57730.cpp'
+        TestSource = '00/a5/C2DLineF_GetDist_00a57730_test.cpp'
+        PassPattern = '00a57730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a725d0'
+        Module = 'CArray'
+        Source = '00/a7/CArray_DeallocateUnusedMemory_00a725d0.cpp'
+        TestSource = '00/a7/CArray_DeallocateUnusedMemory_00a725d0_test.cpp'
+        PassPattern = '00a725d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
