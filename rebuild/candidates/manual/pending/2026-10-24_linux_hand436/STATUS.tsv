@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c28b80	DIFFER	145v147	-	CHandleBasedMemoryPool::InternalAllocate; handle-slot store lea+mov vs folded mov (GOTCHAS wave-24l RTM slot-address gap); grades: 4
+00c28c20	RELOCATION_MATCH	219v219	PASS	CHandleBasedMemoryPool::Allocate; if/else Defragment form moves the return-0 block; grades: 2
+00c28dc0	DIFFER	113v112	PASS	std::vector<CHandleInfo>::_Xlen; int3-after-noreturn (all instructions match); differ/ + .test.cpp; grades: 1
+00c28e50	DIFFER	113v112	PASS	std::vector<CHeader*>::_Xlen; int3-after-noreturn (all instructions match); differ/ + .test.cpp; grades: 1
+00c29250	MATCH	35v35	PASS	std::copy_backward (non-scalar CHandleInfo loop); grades: 1
+00c29290	RELOCATION_MATCH	33v33	PASS	std::copy_backward (scalar CHeader** memmove); grades: 1
+00c294b0	MATCH	34v34	PASS	std::_Uninit_fill_n (non-scalar tag, try/catch, /EHsc); grades: 1
+00c29ee0	RELOCATION_MATCH	101v101	PASS	CSteeringGroup::RemoveAgent; grades: 1
+00c29f50	RELOCATION_MATCH	23v23	PASS	CSteeringGroup::CSteeringGroup; grades: 1
+00c29fc0	RELOCATION_MATCH	203v203	PASS	PKCSemaphore::PKCSemaphore (/EHsc, libpk error-report macro); grades: 1
+00c2a090	RELOCATION_MATCH	192v192	PASS	PKCSemaphore::Wait (/EHsc); grades: 1
+00c2a150	RELOCATION_MATCH	189v189	PASS	PKCSemaphore::Release (/EHsc); grades: 1
+00c2a210	RELOCATION_MATCH	30v30	PASS	AsyncThreadProc (__stdcall thread entry); grades: 1
+00c2a300	MATCH	31v31	PASS	CResourceRegistry::SetEntryValue; grades: 2
+00c2a320	MATCH	23v23	PASS	CResourceRegistry::HasEntry (neg/sbb/neg); grades: 2
+00c2a390	RELOCATION_MATCH	55v55	PASS	CHeightSource::Evaluate; grades: 1
+00c2a3d0	RELOCATION_MATCH	113v113	PASS	CSharedEntryTable::Acquire (/EHsc new); grades: 2
+00c2a640	RELOCATION_MATCH	73v73	PASS	CResourceRegistry::ReleaseOwnerEntries (key temp in the dead arg slot); grades: 2
+00c2a7a0	RELOCATION_MATCH	77v77	PASS	CNavigatorSwitch::SendState (/EHsc; same-TU message ctor keeps this in edx; unsigned char args); grades: 3
+00c2bc10	RELOCATION_MATCH	67v67	PASS	CInstanceRegistry::DestroyOwnerInstances; grades: 1
+00c2c670	RELOCATION_MATCH	57v57	PASS	CFlagOverride::ApplyTo (unsigned short args pushed xor/mov ax); grades: 2 (+ comment-only regrades)
+00c2cbd0	DIFFER	132v132	-	CEventScript::CEventScript; scheduling only (owner argument load before/after `push esi ; mov esi,ecx ; mov [esp+4],esi`); grades: 2
+00c2d160	RELOCATION_MATCH	62v62	PASS	CInstanceManager::StartIdleInstances; grades: 1
+00c2d210	RELOCATION_MATCH	72v72	PASS	CInstanceManager::FadeOutAll; grades: 1
+00c2d420	RELOCATION_MATCH	102v102	PASS	CInstanceManager::GetCurrentInfo (same-TU GetCurrentInstance; if/else keeps the branch); grades: 2
+00c2d490	RELOCATION_MATCH	130v130	PASS	CInstanceManager::Update; grades: 1
+00c2d520	RELOCATION_MATCH	181v181	PASS	CInstanceManager::FindQuietestInstance (inline angle-wrap GetValue); grades: 1
+00c2d790	MATCH	31v31	PASS	CAudioFormat::GetSamplesPerBlock; grades: 1
+00c2d7d0	MATCH	36v36	PASS	CAudioFormat::GetBlockAlign; grades: 1
+00c2d890	RELOCATION_MATCH	66v66	PASS	CAudioFormat::BytesToSeconds (same-TU callees keep ecx/edx); grades: 1
+00c2d970	RELOCATION_MATCH	47v47	PASS	CAudioFormat::GetBytesPerSample (same-TU callees keep ecx and x87); grades: 1
+00c2d9c0	RELOCATION_MATCH	62v62	PASS	CSegmentFile::OpenSegment; grades: 1
+00c2e190	RELOCATION_MATCH	219v219	PASS	CBankProcessor::AddSample (ctor stores codec before channels; named sample local); grades: 2
+00c2e480	RELOCATION_MATCH	70v70	PASS	CBankProcessor::AddDrivers; grades: 1
+00c2e4d0	RELOCATION_MATCH	204v204	PASS	CBankProcessor::AddNumberTriggers (8-byte loop-local -> and esp,-8 frame); grades: 1
+00c2e5a0	RELOCATION_MATCH	106v106	PASS	CBankProcessor::AddDriverToGroup; grades: 1
+00c2e8d0	RELOCATION_MATCH	129v129	PASS	CBankProcessor::AddEvent (/EHsc; same-TU nothrow IsSubEventName, external linkage); grades: 2
+00c2e960	RELOCATION_MATCH	207v207	PASS	CBankProcessor::AddSubEvent (/EHsc); grades: 1
+00c2ea30	RELOCATION_MATCH	58v58	PASS	CBankProcessor::AddEvents; grades: 1
+00c2ea70	RELOCATION_MATCH	58v58	PASS	CBankProcessor::AddSubEvents; grades: 1

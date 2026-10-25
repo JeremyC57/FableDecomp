@@ -305631,6 +305631,282 @@ $catalog = @(
         TestSource = '00/a7/CArray_DeallocateUnusedMemory_00a725d0_test.cpp'
         PassPattern = '00a725d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c28c20'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/c2/CHandleBasedMemoryPool_Allocate_00c28c20.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool_Allocate_00c28c20_test.cpp'
+        PassPattern = '00c28c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c29250'
+        Module = 'std'
+        Source = '00/c2/std_copybackward_00c29250.cpp'
+        TestSource = '00/c2/std_copybackward_00c29250_test.cpp'
+        PassPattern = '00c29250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c29290'
+        Module = 'std'
+        Source = '00/c2/std_copybackward_00c29290.cpp'
+        TestSource = '00/c2/std_copybackward_00c29290_test.cpp'
+        PassPattern = '00c29290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c294b0'
+        Module = 'std'
+        Source = '00/c2/std_Uninitfilln_00c294b0.cpp'
+        TestSource = '00/c2/std_Uninitfilln_00c294b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c294b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c29ee0'
+        Module = 'CSteeringGroup'
+        Source = '00/c2/CSteeringGroup_RemoveAgent_00c29ee0.cpp'
+        TestSource = '00/c2/CSteeringGroup_RemoveAgent_00c29ee0_test.cpp'
+        PassPattern = '00c29ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c29f50'
+        Module = 'CSteeringGroup'
+        Source = '00/c2/CSteeringGroup_CSteeringGroup_00c29f50.cpp'
+        TestSource = '00/c2/CSteeringGroup_CSteeringGroup_00c29f50_test.cpp'
+        PassPattern = '00c29f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c29fc0'
+        Module = 'PKCSemaphore'
+        Source = '00/c2/PKCSemaphore_PKCSemaphore_00c29fc0.cpp'
+        TestSource = '00/c2/PKCSemaphore_PKCSemaphore_00c29fc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c29fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a090'
+        Module = 'PKCSemaphore'
+        Source = '00/c2/PKCSemaphore_Wait_00c2a090.cpp'
+        TestSource = '00/c2/PKCSemaphore_Wait_00c2a090_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2a090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a150'
+        Module = 'PKCSemaphore'
+        Source = '00/c2/PKCSemaphore_Release_00c2a150.cpp'
+        TestSource = '00/c2/PKCSemaphore_Release_00c2a150_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2a150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a210'
+        Module = '_global'
+        Source = '00/c2/global_AsyncThreadProc_00c2a210.cpp'
+        TestSource = '00/c2/global_AsyncThreadProc_00c2a210_test.cpp'
+        PassPattern = '00c2a210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a300'
+        Module = 'CResourceRegistry'
+        Source = '00/c2/CResourceRegistry_SetEntryValue_00c2a300.cpp'
+        TestSource = '00/c2/CResourceRegistry_SetEntryValue_00c2a300_test.cpp'
+        PassPattern = '00c2a300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a320'
+        Module = 'CResourceRegistry'
+        Source = '00/c2/CResourceRegistry_HasEntry_00c2a320.cpp'
+        TestSource = '00/c2/CResourceRegistry_HasEntry_00c2a320_test.cpp'
+        PassPattern = '00c2a320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a390'
+        Module = 'CHeightSource'
+        Source = '00/c2/CHeightSource_Evaluate_00c2a390.cpp'
+        TestSource = '00/c2/CHeightSource_Evaluate_00c2a390_test.cpp'
+        PassPattern = '00c2a390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a3d0'
+        Module = 'CSharedEntryTable'
+        Source = '00/c2/CSharedEntryTable_Acquire_00c2a3d0.cpp'
+        TestSource = '00/c2/CSharedEntryTable_Acquire_00c2a3d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2a3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a640'
+        Module = 'CResourceRegistry'
+        Source = '00/c2/CResourceRegistry_ReleaseOwnerEntries_00c2a640.cpp'
+        TestSource = '00/c2/CResourceRegistry_ReleaseOwnerEntries_00c2a640_test.cpp'
+        PassPattern = '00c2a640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a7a0'
+        Module = 'CNavigatorSwitch'
+        Source = '00/c2/CNavigatorSwitch_SendState_00c2a7a0.cpp'
+        TestSource = '00/c2/CNavigatorSwitch_SendState_00c2a7a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2a7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2bc10'
+        Module = 'CInstanceRegistry'
+        Source = '00/c2/CInstanceRegistry_DestroyOwnerInstances_00c2bc10.cpp'
+        TestSource = '00/c2/CInstanceRegistry_DestroyOwnerInstances_00c2bc10_test.cpp'
+        PassPattern = '00c2bc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2c670'
+        Module = 'CFlagOverride'
+        Source = '00/c2/CFlagOverride_ApplyTo_00c2c670.cpp'
+        TestSource = '00/c2/CFlagOverride_ApplyTo_00c2c670_test.cpp'
+        PassPattern = '00c2c670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d160'
+        Module = 'CInstanceManager'
+        Source = '00/c2/CInstanceManager_StartIdleInstances_00c2d160.cpp'
+        TestSource = '00/c2/CInstanceManager_StartIdleInstances_00c2d160_test.cpp'
+        PassPattern = '00c2d160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d210'
+        Module = 'CInstanceManager'
+        Source = '00/c2/CInstanceManager_FadeOutAll_00c2d210.cpp'
+        TestSource = '00/c2/CInstanceManager_FadeOutAll_00c2d210_test.cpp'
+        PassPattern = '00c2d210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d420'
+        Module = 'CInstanceManager'
+        Source = '00/c2/CInstanceManager_GetCurrentInfo_00c2d420.cpp'
+        TestSource = '00/c2/CInstanceManager_GetCurrentInfo_00c2d420_test.cpp'
+        PassPattern = '00c2d420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d490'
+        Module = 'CInstanceManager'
+        Source = '00/c2/CInstanceManager_Update_00c2d490.cpp'
+        TestSource = '00/c2/CInstanceManager_Update_00c2d490_test.cpp'
+        PassPattern = '00c2d490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d520'
+        Module = 'CInstanceManager'
+        Source = '00/c2/CInstanceManager_FindQuietestInstance_00c2d520.cpp'
+        TestSource = '00/c2/CInstanceManager_FindQuietestInstance_00c2d520_test.cpp'
+        PassPattern = '00c2d520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d790'
+        Module = 'CAudioFormat'
+        Source = '00/c2/CAudioFormat_GetSamplesPerBlock_00c2d790.cpp'
+        TestSource = '00/c2/CAudioFormat_GetSamplesPerBlock_00c2d790_test.cpp'
+        PassPattern = '00c2d790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d7d0'
+        Module = 'CAudioFormat'
+        Source = '00/c2/CAudioFormat_GetBlockAlign_00c2d7d0.cpp'
+        TestSource = '00/c2/CAudioFormat_GetBlockAlign_00c2d7d0_test.cpp'
+        PassPattern = '00c2d7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d890'
+        Module = 'CAudioFormat'
+        Source = '00/c2/CAudioFormat_BytesToSeconds_00c2d890.cpp'
+        TestSource = '00/c2/CAudioFormat_BytesToSeconds_00c2d890_test.cpp'
+        PassPattern = '00c2d890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d970'
+        Module = 'CAudioFormat'
+        Source = '00/c2/CAudioFormat_GetBytesPerSample_00c2d970.cpp'
+        TestSource = '00/c2/CAudioFormat_GetBytesPerSample_00c2d970_test.cpp'
+        PassPattern = '00c2d970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d9c0'
+        Module = 'CSegmentFile'
+        Source = '00/c2/CSegmentFile_OpenSegment_00c2d9c0.cpp'
+        TestSource = '00/c2/CSegmentFile_OpenSegment_00c2d9c0_test.cpp'
+        PassPattern = '00c2d9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2e190'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddSample_00c2e190.cpp'
+        TestSource = '00/c2/CBankProcessor_AddSample_00c2e190_test.cpp'
+        PassPattern = '00c2e190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2e480'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddDrivers_00c2e480.cpp'
+        TestSource = '00/c2/CBankProcessor_AddDrivers_00c2e480_test.cpp'
+        PassPattern = '00c2e480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2e4d0'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddNumberTriggers_00c2e4d0.cpp'
+        TestSource = '00/c2/CBankProcessor_AddNumberTriggers_00c2e4d0_test.cpp'
+        PassPattern = '00c2e4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2e5a0'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddDriverToGroup_00c2e5a0.cpp'
+        TestSource = '00/c2/CBankProcessor_AddDriverToGroup_00c2e5a0_test.cpp'
+        PassPattern = '00c2e5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2e8d0'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddEvent_00c2e8d0.cpp'
+        TestSource = '00/c2/CBankProcessor_AddEvent_00c2e8d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2e8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2e960'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddSubEvent_00c2e960.cpp'
+        TestSource = '00/c2/CBankProcessor_AddSubEvent_00c2e960_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2e960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2ea30'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddEvents_00c2ea30.cpp'
+        TestSource = '00/c2/CBankProcessor_AddEvents_00c2ea30_test.cpp'
+        PassPattern = '00c2ea30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2ea70'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddSubEvents_00c2ea70.cpp'
+        TestSource = '00/c2/CBankProcessor_AddSubEvents_00c2ea70_test.cpp'
+        PassPattern = '00c2ea70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28dc0'
+        Module = 'std::vector'
+        Source = '00/c2/stdvector_Xlen_00c28dc0.cpp'
+        TestSource = '00/c2/stdvector_Xlen_00c28dc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c28dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28e50'
+        Module = 'std::vector'
+        Source = '00/c2/stdvector_Xlen_00c28e50.cpp'
+        TestSource = '00/c2/stdvector_Xlen_00c28e50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c28e50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
