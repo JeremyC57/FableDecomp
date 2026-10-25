@@ -1,5 +1,5 @@
 // CRampedParam::Update(float dt) -- advance a ramped audio parameter: while the ramp runs, evaluate the value and its rate from the Taylor coefficients at the new time; at the end snap to the target (first time) or re-anchor the target on the value
-// Grade: DIFFER(171v167) -- x87 sum canonicalisation: retail sums the rate as (h*c3 + t*c2) + c*c4 + c1 and the value by accumulating into the q slot (fxch st3 ; faddp st3: q*c4 + t*c1, c*c3, h*c2); VC7.1 here emits t*c2 first and folds the value top-down (c, h, t) whatever the source term order (3 orders tried); the finished-path temporaries also swap eax/edx
+// Grade: DIFFER(175v167) -- statement-sequenced sums (`rate = c3*h; rate += c2*t; ...`) stop VC7.1's reassociation: the rate block and the value's term order (q, t, c, h, then c0) now match retail instruction for instruction; left: at `value += c3*c` the lane copies c (`fld st0 ; fmul [ecx+28h] ; faddp st3`) and pops it at the end (`fstp st0`) where retail multiplies it in place (`fmul [ecx+28h] ; faddp st2`); tried c as a repeated expression and `c * m_coef[3]`; the one-expression value reorders to (q, c, h, t) (171 bytes, the parked form)
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0B7B0, 167 bytes (`ret 4`). Descriptive names: the manifest's
 //   "AnimationCurve_UpdateWithDelta" is propagated. Caller: the parameter block's Update 0x00C0AF20 (dt = 1000 / rate).
@@ -43,6 +43,15 @@ void CRampedParam::Update(float dt)
     float h = m_time * m_time * 0.5f;
     float c = m_time * h * 0.333333343f;
     float q = h * h * 0.166666672f;
-    m_rate = m_coef[1] + m_coef[2] * m_time + m_coef[3] * h + m_coef[4] * c;
-    m_value = m_coef[0] + m_coef[1] * m_time + m_coef[2] * h + m_coef[3] * c + m_coef[4] * q;
+    float rate = m_coef[3] * h;
+    rate += m_coef[2] * m_time;
+    rate += m_coef[4] * c;
+    rate += m_coef[1];
+    m_rate = rate;
+    float value = m_coef[4] * q;
+    value += m_coef[1] * m_time;
+    value += m_coef[3] * c;
+    value += m_coef[2] * h;
+    value += m_coef[0];
+    m_value = value;
 }

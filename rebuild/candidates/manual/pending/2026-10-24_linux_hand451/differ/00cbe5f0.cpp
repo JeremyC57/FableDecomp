@@ -1,5 +1,5 @@
 // GetPositionInFrontOfThing(const CScriptThing& thing, float distance) -- the point distance ahead of the thing along its XY facing
-// Grade: DIFFER(107v114) -- the polar helper: retail computes cos(0) first and parks it as a float in [ebp-4], keeps angle*2pi and cos*length on the x87 stack (fld st(1) copies, two late fstp st(0)); ours homes angle*2pi as a double ([ebp-8], frame 0x14) and multiplies with fmul st(1)
+// Grade: DIFFER(113v114) -- the PDB helper C3DVector::InitialiseFromAngles(angleXY, angleYZ, length) as a __forceinline member (cos(angleYZ) a float local first, then X/Y/Z) gets within one byte: ours spills the GetAngleXY result to [ebp-4] and keeps cos(0) on the x87 stack where retail homes cos(0) in [ebp-4] and keeps the angle; ours multiplies `* cos * length` per component where retail forms `cos * length` once (`fld [ebp-4] ; fmul len`, then `fld st(1) ; fmulp`). Tried: a named flat local (110), named bearing + flat locals (104, both late `fstp st0` pops as retail), `sin(xy) * (cos * length)` (110, cos homed but hoisted above the call), the parked nested helper on float params (104)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBE5F0, 114 bytes (`ret 4`, hidden C3DVector result in ecx).
 // Identity: Ego_r.pdb `?GetPositionInFrontOfThing@@YI?AVC3DVector@@ABVCScriptThing@@M@Z`. The manifest label
 //   "Particle_CalcTargetPosition" is propagated and wrong.
@@ -24,20 +24,16 @@ public:
     __forceinline C3DVector() { }
     __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     __forceinline C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
+    // Ego_r.pdb ?InitialiseFromAngles@C3DVector@@QAEABV1@MMM@Z: angles in turns, length
+    __forceinline const C3DVector& InitialiseFromAngles(float angleXY, float angleYZ, float length)
+    {
+        float cosYZ = (float)cos(angleYZ * (double)TWO_PI);
+        X = (float)(sin(angleXY * (double)TWO_PI) * cosYZ * length);
+        Y = (float)(cos(angleXY * (double)TWO_PI) * cosYZ * length);
+        Z = (float)(sin(angleYZ * (double)TWO_PI) * length);
+        return *this;
+    }
 };
-// the XY part: a bearing in radians and the horizontal length factor cos(pitch), scaled by length
-__forceinline void SetFromBearing(C3DVector& v, double xy, float cosZ, float length)
-{
-    float flat = cosZ * length;
-    v.X = (float)sin(xy) * flat;
-    v.Y = (float)cos(xy) * flat;
-}
-// angles are fractions of a full turn (as GetAngleXY returns them); fills the vector in place
-__forceinline void SetFromAngles(C3DVector& v, float angleXY, float angleZ, float length)
-{
-    SetFromBearing(v, angleXY * (double)TWO_PI, (float)cos(angleZ * (double)TWO_PI), length);
-    v.Z = (float)sin(angleZ * (double)TWO_PI) * length;
-}
 class CScriptThing {                                   // vtable 0x01238C8C
 public:
     virtual void v00();
@@ -71,6 +67,6 @@ public:
 C3DVector __fastcall GetPositionInFrontOfThing(const CScriptThing& thing, float distance)
 {
     C3DVector offset;
-    SetFromAngles(offset, thing.GetAngleXY(), 0.0f, distance);
+    offset.InitialiseFromAngles(thing.GetAngleXY(), 0.0f, distance);
     return offset + thing.GetPos();
 }

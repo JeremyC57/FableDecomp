@@ -1,5 +1,5 @@
 // CPanel::GetItemStatistics(CPanelItemStats* stats) -- under the library lock, zero the five per-state counters, let every active item of the item array count itself into them, and copy the panel's +0x370 value into the sixth field
-// Grade: DIFFER(165v165) -- register colouring only: retail keeps the zero/loop index in edi and the item in ebx (ebx pushed late, around the loop; the +0x370 value read into the dead ebp), VC7.1 here picks ebx for the index and edi for the item (edi pushed late) and reads the value into eax; same instructions otherwise
+// Grade: DIFFER(165v165) -- pass 3: the walk through inline owner accessors GetNumItems()/GetItem(i) (the landed 0x00C123B0/0x00C12720 recipe) gives retail's edi index / late ebx item; left: retail reads the +0x370 value into the dead `this` register ebp (`mov ebp,[ebp+370h] ; mov [esi+14h],ebp`), the lane into eax (float type tried, same)
 // Flags: /EHsc
 // Leaf: GetItemStatistics
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C12300, 165 bytes (`ret 4`). Built under /EHsc. Descriptive names (no PDB
@@ -33,26 +33,23 @@ struct CPanelItemStats {                        // 0x18 bytes
 };
 
 struct CPanelItem {                             // 0xb4-byte element (state word at +0xac)
-    long IsActive() const;                      // 0x00C20840
+    long IsActive();                            // 0x00C20840
     void CountInto(CPanelItemStats* stats);     // 0x00C20F60
 };
-
-struct CPanelItemArray {                        // polymorphic array: count at +4, elements at +0x10
-    void* m_vtable;                             // +0x00
-    unsigned long m_count;                      // +0x04
-    unsigned char _pad08[0x10 - 0x08];
-    CPanelItem* m_pItems;                       // +0x10
-    CPanelItem& operator[](unsigned long index);   // 0x00C13620 (bounds-checked, EH-framed)
+struct CPanelItemArray {                        // +0x5c: the item pool, count at +4
+    long m_0;
+    unsigned long m_count;                      // +4 (= +0x60)
+    CPanelItem* Get(unsigned long index);       // 0x00C13620 (bounds-checked, EH-framed)
 };
-
 struct CPanel {
     unsigned char _pad00[0x5c];
     CPanelItemArray m_items;                    // +0x5c
-    unsigned char _pad70[0x370 - 0x70];
+    unsigned char _pad64[0x370 - 0x64];
     long m_total;                               // +0x370
+    unsigned long GetNumItems() { return m_items.m_count; }
+    CPanelItem* GetItem(unsigned long index) { return m_items.Get(index); }
     void GetItemStatistics(CPanelItemStats* stats);
 };
-
 void CPanel::GetItemStatistics(CPanelItemStats* stats)
 {
     CScopedLock lock(&g_lock_0143bb14);
@@ -61,10 +58,10 @@ void CPanel::GetItemStatistics(CPanelItemStats* stats)
     stats->m_count1 = 0;
     stats->m_count2 = 0;
     stats->m_count0 = 0;
-    for (unsigned long i = 0; i < m_items.m_count; ++i) {
-        CPanelItem& item = m_items[i];
-        if (item.IsActive())
-            item.CountInto(stats);
+    for (unsigned long i = 0; i < GetNumItems(); ++i) {
+        CPanelItem* item = GetItem(i);
+        if (item->IsActive())
+            item->CountInto(stats);
     }
     stats->m_total = m_total;
 }

@@ -1,5 +1,5 @@
 // CEngineDynamic3DResourceManager::ReleaseResources() -- walk every leaf of the resource mapping tree; for each list header delete its pooled vertex buffers (taking their size off the free-pool and allocated totals), free the header and clear the leaf's entry
-// Grade: DIFFER(192v196) -- the inlined FirstKey's null exits are threaded straight to the epilogue; retail merges them into one `xor eax,eax`, then `test eax,eax ; mov ebp,eax ; je` before the esi/edi pushes plus a second key test at the loop top; this/key sit in ebp/ebx where retail has ebx/ebp
+// Grade: DIFFER(194v196) -- FirstKey as the forwarder `return NextKey((unsigned long)BaseNode);` (both __forceinline) reproduces retail's merged `xor eax,eax` null exit and the `test eax,eax ; mov <key>,eax ; je` before the esi/edi pushes (the parked own-walk FirstKey threads the exits); left: retail re-tests the key at the loop top (`test ebp,ebp ; je`, reached by the NextKey success `mov ebp,eax ; jmp`) where the lane threads the back edge straight into the body, and this/key sit in ebp/ebx vs retail ebx/ebp. Tried while / for(;;)+break loops, plain out-of-line FirstKey/NextKey (called, 147 bytes), QFE-4035
 // Leaf: ?ReleaseResources@?$CEngineDynamic3DResourceManager@V?$CEngineDynamic3DResource@VCVertexBufferWin32@@$02@@@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF32B0, 196 bytes (+12 int3), __thiscall, `ret`.
 // Identity: FableWin.pdb ?ReleaseResources@?$CEngineDynamic3DResourceManager@V?$CEngineDynamic3DResource@VCVertexBufferWin32@@$02@@@@QAEXXZ
@@ -80,24 +80,7 @@ __forceinline unsigned long CEngineTreeFilerBase::NextKey(unsigned long key)
 
 __forceinline unsigned long CEngineTreeFilerBase::FirstKey()
 {
-    CNodeHeader* node = BaseNode;
-    if (node == 0)
-        return 0;
-    do {
-        if (node->ChildListHead)
-            node = node->ChildListHead;
-        else if (node->NextSibling)
-            node = node->NextSibling;
-        else {
-            node = node->Parent;
-            if (node == 0)
-                return 0;
-            node = node->NextSibling;
-            if (node == 0)
-                return 0;
-        }
-    } while (!node->IsLeaf);
-    return (unsigned long)node;
+    return NextKey((unsigned long)BaseNode);
 }
 
 template <class T> class CEngineTreeFiler : public CEngineTreeFilerBase {

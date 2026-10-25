@@ -314313,6 +314313,204 @@ $catalog = @(
         TestSource = '00/f3/CEntityScriptBase_SetPredicate_00f35b10_test.cpp'
         PassPattern = '00f35b10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00476f9b'
+        Module = 'std::vector<CEnvironmentThemeDef>'
+        Source = '00/47/stdvectorCEnvironmentThemeDef_erase_00476f9b.cpp'
+        TestSource = '00/47/stdvectorCEnvironmentThemeDef_erase_00476f9b_test.cpp'
+        PassPattern = '00476f9b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c2900'
+        Module = '_STL::vector'
+        Source = '00/9c/STLvector_reserve_009c2900.cpp'
+        TestSource = '00/9c/STLvector_reserve_009c2900_test.cpp'
+        PassPattern = '009c2900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a79240'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_SetSwitchableNodesAsBlocked_00a79240.cpp'
+        TestSource = '00/a7/CNavQuadTree_SetSwitchableNodesAsBlocked_00a79240_test.cpp'
+        PassPattern = '00a79240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a834b0'
+        Module = '_STL'
+        Source = '00/a8/STL_linearinsert_00a834b0.cpp'
+        TestSource = '00/a8/STL_linearinsert_00a834b0_test.cpp'
+        PassPattern = '00a834b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a83770'
+        Module = 'CVectorMap'
+        Source = '00/a8/CVectorMap_Insert_00a83770.cpp'
+        TestSource = '00/a8/CVectorMap_Insert_00a83770_test.cpp'
+        PassPattern = '00a83770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85930'
+        Module = '_STL'
+        Source = '00/a8/STL_destroyaux_00a85930.cpp'
+        TestSource = '00/a8/STL_destroyaux_00a85930_test.cpp'
+        PassPattern = '00a85930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab44d0'
+        Module = '_STL::vector'
+        Source = '00/ab/STLvector_resize_00ab44d0.cpp'
+        TestSource = '00/ab/STLvector_resize_00ab44d0_test.cpp'
+        PassPattern = '00ab44d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad6420'
+        Module = '_STL::map'
+        Source = '00/ad/STLmap_operator_00ad6420.cpp'
+        TestSource = '00/ad/STLmap_operator_00ad6420_test.cpp'
+        PassPattern = '00ad6420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad64c0'
+        Module = '_STL::map'
+        Source = '00/ad/STLmap_operator_00ad64c0.cpp'
+        TestSource = '00/ad/STLmap_operator_00ad64c0_test.cpp'
+        PassPattern = '00ad64c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adbff0'
+        Module = '_STL::map'
+        Source = '00/ad/STLmap_operator_00adbff0.cpp'
+        TestSource = '00/ad/STLmap_operator_00adbff0_test.cpp'
+        PassPattern = '00adbff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af87c0'
+        Module = 'CDynamicObjectHeap<156,2100>'
+        Source = '00/af/CDynamicObjectHeap1562100_CDynamicObjectHeap_00af87c0.cpp'
+        TestSource = '00/af/CDynamicObjectHeap1562100_CDynamicObjectHeap_00af87c0_test.cpp'
+        PassPattern = '00af87c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6cc90'
+        Module = '_STL::vector'
+        Source = '00/b6/STLvector_resize_00b6cc90.cpp'
+        TestSource = '00/b6/STLvector_resize_00b6cc90_test.cpp'
+        PassPattern = '00b6cc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b806e0'
+        Module = 'CEngineClothSimulationMeshBase'
+        Source = '00/b8/CEngineClothSimulationMeshBase_CalculateFadeOut_00b806e0.cpp'
+        TestSource = '00/b8/CEngineClothSimulationMeshBase_CalculateFadeOut_00b806e0_test.cpp'
+        PassPattern = '00b806e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b96350'
+        Module = 'CShadowClipVolume'
+        Source = '00/b9/CShadowClipVolume_ClipSphere_00b96350.cpp'
+        TestSource = '00/b9/CShadowClipVolume_ClipSphere_00b96350_test.cpp'
+        PassPattern = '00b96350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9d670'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/b9/CEnginePrimitiveManagerStaticMeshesBase_SetupFirstTextures_00b9d670.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerStaticMeshesBase_SetupFirstTextures_00b9d670_test.cpp'
+        PassPattern = '00b9d670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc9b80'
+        Module = 'CEngineTreeFilerBase'
+        Source = '00/bc/CEngineTreeFilerBase_FindID_00bc9b80.cpp'
+        TestSource = '00/bc/CEngineTreeFilerBase_FindID_00bc9b80_test.cpp'
+        PassPattern = '00bc9b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bec8d0'
+        Module = 'CEngineInternalPrimitiveMorphInfo'
+        Source = '00/be/CEngineInternalPrimitiveMorphInfo_InitialiseHiddenMaterials_00bec8d0.cpp'
+        TestSource = '00/be/CEngineInternalPrimitiveMorphInfo_InitialiseHiddenMaterials_00bec8d0_test.cpp'
+        PassPattern = '00bec8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bef2b0'
+        Module = '_STL'
+        Source = '00/be/STL_linearinsert_00bef2b0.cpp'
+        TestSource = '00/be/STL_linearinsert_00bef2b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bef2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c22080'
+        Module = 'CPanelFailedAllocationHandler'
+        Source = '00/c2/CPanelFailedAllocationHandler_OnAllocationFailed_00c22080.cpp'
+        TestSource = '00/c2/CPanelFailedAllocationHandler_OnAllocationFailed_00c22080_test.cpp'
+        PassPattern = '00c22080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28b80'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/c2/CHandleBasedMemoryPool_InternalAllocate_00c28b80.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool_InternalAllocate_00c28b80_test.cpp'
+        PassPattern = '00c28b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c34440'
+        Module = 'CVoiceParams'
+        Source = '00/c3/CVoiceParams_GetGain_00c34440.cpp'
+        TestSource = '00/c3/CVoiceParams_GetGain_00c34440_test.cpp'
+        PassPattern = '00c34440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c35990'
+        Module = '_global'
+        Source = '00/c3/global_AudioObjectSetSource_00c35990.cpp'
+        TestSource = '00/c3/global_AudioObjectSetSource_00c35990_test.cpp'
+        PassPattern = '00c35990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb36e0'
+        Module = '_global'
+        Source = '00/cb/global_SetImeApi_00cb36e0.cpp'
+        TestSource = '00/cb/global_SetImeApi_00cb36e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00cb36e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb8170'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_RunEntityThreads_00cb8170.cpp'
+        TestSource = '00/cb/CScriptBase_RunEntityThreads_00cb8170_test.cpp'
+        PassPattern = '00cb8170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe693'
+        Module = '_global'
+        Source = '00/cb/global_GetRandomPositionInsideRadius_00cbe693.cpp'
+        TestSource = '00/cb/global_GetRandomPositionInsideRadius_00cbe693_test.cpp'
+        PassPattern = '00cbe693_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36f40'
+        Module = 'CGPUScratchBufferTextureManager'
+        Source = '00/f3/CGPUScratchBufferTextureManager_FreeResourceEntry_00f36f40.cpp'
+        TestSource = '00/f3/CGPUScratchBufferTextureManager_FreeResourceEntry_00f36f40_test.cpp'
+        PassPattern = '00f36f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121ac30'
+        Module = '_global'
+        Source = '01/21/global_EInventoryOrientationRHSet1_0121ac30.cpp'
+        TestSource = '01/21/global_EInventoryOrientationRHSet1_0121ac30_test.cpp'
+        PassPattern = '0121ac30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121acd0'
+        Module = '_global'
+        Source = '01/21/global_EInventoryOrientationRHSet5_0121acd0.cpp'
+        TestSource = '01/21/global_EInventoryOrientationRHSet5_0121acd0_test.cpp'
+        PassPattern = '0121acd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

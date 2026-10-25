@@ -1,5 +1,5 @@
 // _global::DecodeImaAdpcm(const void* pSource, unsigned long sourceBytes, int channels, void* pDest, unsigned long destCapacity) -- decode whole 36-byte-per-channel IMA ADPCM blocks (64 samples each) at 44100 Hz into 16-bit PCM through a stack CImaAdpcmCodec; returns the decoded byte count, or -1 when the destination is too small or the codec fails
-// Grade: DIFFER(221v217) -- register colouring only: retail keeps channels/blocks/size in esi/edi/ebx (edi pushed after the div, `cmp ebx,[esp+60h]` straight from the frame), ours edi/ebx/esi with the capacity loaded into eax first. 4 grades: `channels * 128 * blocks` and `blocks * (channels * 128)` reassociate to imul-then-shl; int channels the same; `(channels << 7) * blocks` (this file) restores retail's shl-then-imul. Next: a named `bytesPerBlock` local, or the decode size from a same-TU noinline helper.
+// Grade: DIFFER(221v217) -- the named `bytesPerBlock = channels << 7` local fixes the parked register colouring (channels/blocks/size in esi/edi/ebx, edi pushed after the div, `cmp ebx,[esp+60h]` as retail: the first 0x49 bytes match); left: retail computes the codec `this` for Convert before its pushes and hoists it above the Initialize branch (`test eax,eax ; lea ecx,[esp+24h] ; jne`), so the Initialize-failure path has no lea and the pDest temp is edx; ours re-forms it per path (`lea ecx,[esp+30h]` after the pushes); also `lea eax` vs our `lea edx` for &format. Tried a codec pointer local, QFE-4035, /Gr
 // Leaf: ?DecodeImaAdpcm@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C425E0, 217 bytes (+ int3 padding), __fastcall (source in ecx, byte count
@@ -41,7 +41,8 @@ long __fastcall DecodeImaAdpcm(const void* pSource, unsigned long sourceBytes, i
                                unsigned long destCapacity)
 {
     unsigned long blocks = sourceBytes / (channels * 36);
-    unsigned long decodedBytes = (channels << 7) * blocks;
+    unsigned long bytesPerBlock = channels << 7;
+    unsigned long decodedBytes = bytesPerBlock * blocks;
     if (decodedBytes > destCapacity)
         return -1;
     CImaAdpcmCodec_00c425e0 codec;
