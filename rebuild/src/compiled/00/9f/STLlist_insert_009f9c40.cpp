@@ -1,4 +1,4 @@
-// _STL::list::insert(iterator) -- STLport single-argument insert for CProfileManager::ProfileTree: insert a default-constructed CProfileTreeEntry before the position through insert(position, x) and destroy the temporary
+// std::list::insert(iterator) -- STLport single-argument insert for CProfileManager::ProfileTree: insert a default-constructed CProfileTreeEntry before the position through insert(position, x) and destroy the temporary
 // Leaf: ?insert@?$list@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F9C40, 98 bytes, thiscall, `ret 8` (hidden iterator result, position).
 // Identity: the 0x60-byte local is a CProfileManager::CProfileTreeEntry (Ego_r.pdb; retail 0x60 with STLport's 12-byte
@@ -10,7 +10,7 @@
 //   The by-value position is built in place (`push ecx ; mov eax,esp ; mov [eax],ecx`) by the iterator's user copy constructor.
 extern "C" void __cdecl free(void* block);                          // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -112,10 +112,10 @@ public:
     struct CProfileTreeEntry {                      // 0x60 bytes
         CProfile Profile;                           // +0x00
         long ID;                                    // +0x48
-        _STL::vector<CProfileTreeEntry*> Children;  // +0x4C
+        std::vector<CProfileTreeEntry*> Children;  // +0x4C
         CProfileTreeEntry* Parent;                  // +0x58
     };
 };
 
-template _STL::list<CProfileManager::CProfileTreeEntry>::iterator
-    _STL::list<CProfileManager::CProfileTreeEntry>::insert(_STL::list<CProfileManager::CProfileTreeEntry>::iterator);
+template std::list<CProfileManager::CProfileTreeEntry>::iterator
+    std::list<CProfileManager::CProfileTreeEntry>::insert(std::list<CProfileManager::CProfileTreeEntry>::iterator);

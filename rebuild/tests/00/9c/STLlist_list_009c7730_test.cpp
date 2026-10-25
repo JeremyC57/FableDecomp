@@ -13,7 +13,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -57,13 +57,13 @@ template <class _Tp, class _Alloc> list<_Tp, _Alloc>::list(const allocator_type&
 
 int main()
 {
-    _STL::list<CFileInstaller::CActiveFile>* l = new _STL::list<CFileInstaller::CActiveFile>();
-    _STL::_List_node<CFileInstaller::CActiveFile>* s = l->_M_node._M_data;
+    std::list<CFileInstaller::CActiveFile>* l = new std::list<CFileInstaller::CActiveFile>();
+    std::_List_node<CFileInstaller::CActiveFile>* s = l->_M_node._M_data;
     if (g_mallocs != 1 || s == 0 || s->_M_next != s || s->_M_prev != s ||
-        g_lastSize != sizeof(_STL::_List_node<CFileInstaller::CActiveFile>) || sizeof(CFileInstaller::CActiveFile) != 0xB0) {
+        g_lastSize != sizeof(std::_List_node<CFileInstaller::CActiveFile>) || sizeof(CFileInstaller::CActiveFile) != 0xB0) {
         std::printf("009c7730_TEST FAIL\n"); return 1;
     }
-    _STL::list<CFileInstaller::CActiveFile> l2;
+    std::list<CFileInstaller::CActiveFile> l2;
     if (g_mallocs != 2 || l2._M_node._M_data == s || l2._M_node._M_data->_M_next != l2._M_node._M_data) {
         std::printf("009c7730_TEST FAIL\n"); return 1;
     }

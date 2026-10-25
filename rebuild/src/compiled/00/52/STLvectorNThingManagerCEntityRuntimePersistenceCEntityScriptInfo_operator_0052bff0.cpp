@@ -1,4 +1,4 @@
-// 0052bff0 _STL::vector<NThingManager::CEntityRuntimePersistence::CEntityScriptInfo>::operator=
+// 0052bff0 std::vector<NThingManager::CEntityRuntimePersistence::CEntityScriptInfo>::operator=
 // Flags: /O2 /Oy /W3 
 // Leaf: ??4?$vector@UCEntityScriptInfo@CEntityRuntimePersistence@NThingManager@
 #include <stdlib.h>
@@ -17,7 +17,7 @@ struct __false_type{__false_type(){}};
 template<class EmptyTag> __declspec(noinline) CEntityScriptInfo* __fastcall uninitialized_copy(CEntityScriptInfo*a,CEntityScriptInfo*b,CEntityScriptInfo*out,const EmptyTag&){while(a!=b){new(out)CEntityScriptInfo(*a);++a;++out;}return out;}
 template<class EmptyTag> __declspec(noinline) CEntityScriptInfo* __fastcall copy(CEntityScriptInfo*a,CEntityScriptInfo*b,CEntityScriptInfo*out,const EmptyTag&,bool){int n=b-a;while(n>0){*out=*a;++a;++out;--n;}return out;}
 template<class EmptyTag> __declspec(noinline) void __fastcall destroy(CEntityScriptInfo*a,CEntityScriptInfo*b,const EmptyTag&){while(a!=b){a->~CEntityScriptInfo();++a;}}
-namespace _STL {
+namespace std {
 template<class T>struct vector{T*first,*last,*limit;vector&operator=(const vector&);};
 template<class T>vector<T>&vector<T>::operator=(const vector&rhs){
  if(&rhs!=this){T*end=rhs.last;T*begin=rhs.first;unsigned n=end-begin;
@@ -32,5 +32,5 @@ template<class T>vector<T>&vector<T>::operator=(const vector&rhs){
 }
 template struct vector<CEntityScriptInfo>;
 }
-using _STL::vector;
+using std::vector;
 }

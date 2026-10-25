@@ -1,4 +1,4 @@
-// _STL::fill(CCountedPointer<CParticleSimulation>* first, CCountedPointer<CParticleSimulation>* last, const CCountedPointer<CParticleSimulation>& val) -- assign val to every counted pointer of [first, last)
+// std::fill(CCountedPointer<CParticleSimulation>* first, CCountedPointer<CParticleSimulation>* last, const CCountedPointer<CParticleSimulation>& val) -- assign val to every counted pointer of [first, last)
 // Leaf: ??$fill@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B832B0, 94 bytes. __fastcall (first ecx, last edx), `ret 4` (&val on
 //   the stack); last is spilled to the `push ecx` slot across the deleter call.
@@ -51,7 +51,7 @@ public:
 
 class CParticleSimulation;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {

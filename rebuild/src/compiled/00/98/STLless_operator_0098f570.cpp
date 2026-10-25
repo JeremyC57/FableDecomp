@@ -1,5 +1,5 @@
-// _STL::less::operator()(const CThreadedFileManager::CPendingObjectSortKey& x, const CThreadedFileManager::CPendingObjectSortKey& y) -- less<CPendingObjectSortKey>: pending-read order: physical file sort key, then file position, then object address
-// Leaf: ??R?$less@VCPendingObjectSortKey@CThreadedFileManager@@@_STL@@
+// std::less::operator()(const CThreadedFileManager::CPendingObjectSortKey& x, const CThreadedFileManager::CPendingObjectSortKey& y) -- less<CPendingObjectSortKey>: pending-read order: physical file sort key, then file position, then object address
+// Leaf: ??R?$less@VCPendingObjectSortKey@CThreadedFileManager@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098F570, 64 bytes, `__fastcall` (the empty comparator in ecx, unused),
 //   `ret 8`. No callees (the key's operator< is inline).
 // Identity: STLport `less<_Tp>::operator()` (`return __x < __y;`) over CThreadedFileManager's pending-object map key,
@@ -51,7 +51,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result>
 struct binary_function {
     typedef _Arg1   first_argument_type;

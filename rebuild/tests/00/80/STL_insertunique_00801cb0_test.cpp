@@ -1,4 +1,4 @@
-// 00801cb0 _STL::_Rb_tree::insert_unique
+// 00801cb0 std::_Rb_tree::insert_unique
 // Flags: /O2 /Oy /W3
 // Leaf: ?insert_unique@_Rb_tree
 #include <stdlib.h>
@@ -6,8 +6,8 @@
 namespace RecutTree_00801cb0 {
 
 // Layout: actual mapped value from allocator/caller evidence in ROW; key16, mapped20.
-namespace _STL {template<class T>struct less{__forceinline bool operator()(const T&a,const T&b)const{return a<b;}};template<class A,class B>struct pair {A first;B second;pair(){}pair(const A& a):first(a),second(){}pair(const A&a,const B&b):first(a),second(b){}pair(const pair&o):first(o.first),second(o.second){}};}
-typedef _STL::pair<int,unsigned> value_type;
+namespace std {template<class T>struct less{__forceinline bool operator()(const T&a,const T&b)const{return a<b;}};template<class A,class B>struct pair {A first;B second;pair(){}pair(const A& a):first(a),second(){}pair(const A&a,const B&b):first(a),second(b){}pair(const pair&o):first(o.first),second(o.second){}};}
+typedef std::pair<int,unsigned> value_type;
 // Layout: retail node colour +0,parent +4,left +8,right +12,key +16; tree header +0,count +4.
 struct _Rb_tree_node {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node* Parent;_Rb_tree_node* Left;_Rb_tree_node* Right;int Key;unsigned Mapped;};
 struct _Rb_tree_base_iterator{_Rb_tree_node*Node;};
@@ -19,9 +19,9 @@ struct _Rb_tree_iterator: _Rb_tree_base_iterator {
 };
 __declspec(noinline) void _Rb_tree_iterator::_M_increment(){if(Node->Right){Node=Node->Right;while(Node->Left)Node=Node->Left;}else{_Rb_tree_node* p=Node->Parent;while(Node==p->Right){Node=p;p=p->Parent;}if(Node->Right!=p)Node=p;}}
 __declspec(noinline) void _Rb_tree_iterator::_M_decrement(){if(Node->Colour==0 && Node->Parent->Parent==Node){Node=Node->Right;return;}if(Node->Left){Node=Node->Left;while(Node->Right)Node=Node->Right;}else{_Rb_tree_node* p=Node->Parent;while(Node==p->Left){Node=p;p=p->Parent;}Node=p;}}
-typedef _STL::pair<_Rb_tree_iterator,bool> _Rb_tree_insert_result;
+typedef std::pair<_Rb_tree_iterator,bool> _Rb_tree_insert_result;
 struct _Rb_tree {
- _Rb_tree_node* Header;unsigned Count;_STL::less<int> _M_key_compare;
+ _Rb_tree_node* Header;unsigned Count;std::less<int> _M_key_compare;
  _Rb_tree_iterator _M_insert(_Rb_tree_node*,_Rb_tree_node*,const value_type&, _Rb_tree_node*);
  _Rb_tree_insert_result insert_unique(const value_type&);
  _Rb_tree_iterator insert_unique(_Rb_tree_iterator,const value_type&);

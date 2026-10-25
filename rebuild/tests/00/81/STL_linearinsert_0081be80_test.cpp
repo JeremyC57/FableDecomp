@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__linear_insert over (unsigned key, 8-byte payload) pairs -- insert the last element into the sorted prefix
+// Behaviour test: std::__linear_insert over (unsigned key, 8-byte payload) pairs -- insert the last element into the sorted prefix
 #include <cstdio>
 
 struct SPayload {                                       // 8-byte POD payload

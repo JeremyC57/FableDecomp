@@ -1,9 +1,9 @@
-// _STL::__partial_sort(CBindingPair* first, CBindingPair* middle, CBindingPair* last, CBindingPair*, CBindingLess comp) -- partial sort of (name, entity script binding) pairs by name: heapify [first, middle), pop every smaller later pair into the heap, then sort the heap
+// std::__partial_sort(CBindingPair* first, CBindingPair* middle, CBindingPair* last, CBindingPair*, CBindingLess comp) -- partial sort of (name, entity script binding) pairs by name: heapify [first, middle), pop every smaller later pair into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBD0F0, 120 bytes (`ret 0Ch`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __partial_sort over (name, entity script binding) = _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530); the 6 callers
+// Identity: STLport __partial_sort over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530); the 6 callers
 //   0x00CBD49C, 0x00CBDDE4..0x00CBDEB3 are the binding-map sort. The manifest label "CGameCameraManager_InitModes" is
 //   propagated and wrong.
 // Callees: __make_heap 0x00CBBC00, __pop_heap 0x00CBBAD0, sort_heap 0x00CBC580, CCharString::FastCompare 0x009E6530,
@@ -65,7 +65,7 @@ public:
     }
 };
 class CEntityScriptBindingBase;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -73,11 +73,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
-typedef _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
+typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*);   // 0x00CBBC00
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>

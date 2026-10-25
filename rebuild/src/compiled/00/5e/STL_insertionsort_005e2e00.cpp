@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(SPriorityEntry* first, SPriorityEntry* last, CContextSensitivePriorityCompare comp) -- STLport insertion sort over (priority, CDefPointer<const CContextSensitiveItemDef>) pairs: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(SPriorityEntry* first, SPriorityEntry* last, CContextSensitivePriorityCompare comp) -- STLport insertion sort over (priority, CDefPointer<const CContextSensitiveItemDef>) pairs: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E2E00, 69 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // 4-byte comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).

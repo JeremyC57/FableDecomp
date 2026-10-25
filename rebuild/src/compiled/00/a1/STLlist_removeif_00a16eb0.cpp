@@ -1,4 +1,4 @@
-// _STL::list::remove_if(CIsNavigator pred) -- STLport list<pair<long, const CNavigatorBase*> >: erase every entry whose navigator is the predicate's
+// std::list::remove_if(CIsNavigator pred) -- STLport list<pair<long, const CNavigatorBase*> >: erase every entry whose navigator is the predicate's
 // Leaf: ??$remove_if@VCIsNavigator@@@?$list@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A16EB0, 52 bytes (+ int3 padding), __fastcall `ret 4` (the 4-byte predicate by value).
 // Identity: STLport 4.6 member-template list::remove_if with the inline single-node erase (trivial payload: unlink + free).
@@ -10,7 +10,7 @@ extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 
 class CNavigatorBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -20,10 +20,10 @@ template <class _T1, class _T2> struct pair {
 class CIsNavigator {
 public:
     const CNavigatorBase* Navigator;                    // +0x00
-    bool operator()(const _STL::pair<long, const CNavigatorBase*>& entry) const { return entry.second == Navigator; }
+    bool operator()(const std::pair<long, const CNavigatorBase*>& entry) const { return entry.second == Navigator; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -108,4 +108,4 @@ public:
 
 template void list<pair<long, const CNavigatorBase*> >::remove_if<CIsNavigator>(CIsNavigator);
 
-} // namespace _STL
+} // namespace std

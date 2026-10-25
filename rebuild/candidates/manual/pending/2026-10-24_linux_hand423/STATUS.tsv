@@ -1,20 +1,20 @@
 address	status	bytes	test	note
 00a83110	RELOCATION_MATCH	81v81	PASS	1 grade; CNavRegion copy ctor; inline STLport list copy (insert(begin(), first, last)) with same-TU noinline _M_insert_dispatch
-00a834b0	DIFFER	111v113	-	4 grades; _STL::__linear_insert (connector-map pairs); register allocation only (first in edi, count block hoisted)
-00a83570	RELOCATION_MATCH	141v141	PASS	4 grades; _STL::__pop_heap (u64-keyed list pairs); by-value value built in its arg slot, inline list copy
-00a83680	RELOCATION_MATCH	156v156	PASS	1 grade; _STL::__make_heap (u64-keyed list pairs); __adjust_heap out of line
+00a834b0	DIFFER	111v113	-	4 grades; std::__linear_insert (connector-map pairs); register allocation only (first in edi, count block hoisted)
+00a83570	RELOCATION_MATCH	141v141	PASS	4 grades; std::__pop_heap (u64-keyed list pairs); by-value value built in its arg slot, inline list copy
+00a83680	RELOCATION_MATCH	156v156	PASS	1 grade; std::__make_heap (u64-keyed list pairs); __adjust_heap out of line
 00a83770	DIFFER	111v109	-	4 grades; CVectorMap<u64,bool>::Insert; next: same-TU _M_insert_overflow 0xA82380 (proven on twin 00a837e0)
 00a837e0	RELOCATION_MATCH	114v114	PASS	3 grades; CVectorMap<u64,CANavQuadTreeNode*>::Insert; same-TU noinline _M_insert_overflow stand-in
-00a83cc0	RELOCATION_MATCH	88v88	PASS	4 grades; _STL::__unguarded_partition (u64-keyed list pairs); by-value pivot destroyed at exit
+00a83cc0	RELOCATION_MATCH	88v88	PASS	4 grades; std::__unguarded_partition (u64-keyed list pairs); by-value pivot destroyed at exit
 00a83fd0	RELOCATION_MATCH	103v103	PASS	1 grade; CVectorMap<long,CCountedPointer<CNavConnectorNode>>::DeallocateMemory (clear + swap with empty)
 00a84090	RELOCATION_MATCH	78v78	PASS	2 grades; vector<list<C2DLineF>>::erase; __forceinline __copy + same-TU noinline __destroy_aux
-00a843f0	RELOCATION_MATCH	124v124	PASS	2 grades; _STL::__linear_insert (u64-keyed list pairs); same-TU pair copy ctor + list::operator= stand-ins
-00a848c0	RELOCATION_MATCH	120v120	PASS	1 grade; _STL::__insertion_sort (u64-keyed list pairs); __linear_insert out of line
-00a84a60	RELOCATION_MATCH	163v163	PASS	1 grade; _STL::__partial_sort (u64-keyed list pairs); make_heap/__pop_heap/sort_heap out of line
+00a843f0	RELOCATION_MATCH	124v124	PASS	2 grades; std::__linear_insert (u64-keyed list pairs); same-TU pair copy ctor + list::operator= stand-ins
+00a848c0	RELOCATION_MATCH	120v120	PASS	1 grade; std::__insertion_sort (u64-keyed list pairs); __linear_insert out of line
+00a84a60	RELOCATION_MATCH	163v163	PASS	1 grade; std::__partial_sort (u64-keyed list pairs); make_heap/__pop_heap/sort_heap out of line
 00a84c20	RELOCATION_MATCH	208v208	PASS	1 grade (+1 regrade after a cast-spelling fix); vector<pair<u64,list>>::_M_insert_overflow
 00a85240	RELOCATION_MATCH	112v112	PASS	1 grade; vector<list<C2DLineF>>::resize(n); same-TU noinline ~list and _M_fill_insert stand-ins
 00a852b0	DIFFER	153v143	-	4 grades; CVectorMap<u64,list<C2DLineF>>::Insert; inline list copy schedule differs; next: same-TU pair copy/_M_insert_overflow/~list
-00a85930	DIFFER	108v108	-	4 grades; _STL::__destroy_aux<CNavigationLayer*>; one tag frame byte ([esp+0Ah] v [esp+0Bh]); lane gap: frame-slot packing
+00a85930	DIFFER	108v108	-	4 grades; std::__destroy_aux<CNavigationLayer*>; one tag frame byte ([esp+0Ah] v [esp+0Bh]); lane gap: frame-slot packing
 00a85e40	RELOCATION_MATCH	105v105	PASS	1 grade; vector<CNavQuadTree::CNavigationLayer>::push_back; implicit layer copy inline
 00a87090	RELOCATION_MATCH	90v90	PASS	1 grade; vector<unsigned short> copy ctor; __copy_trivial memmove
 00a88b10	RELOCATION_MATCH	77v77	PASS	1 grade; list<CWall>::push_back; CWall is 24 bytes
@@ -22,11 +22,11 @@ address	status	bytes	test	note
 00a8d750	RELOCATION_MATCH	97v97	PASS	1 grade; vector<unsigned short>(n); fill_n zero loop -> rep stos
 00a8d7c0	RELOCATION_MATCH	46v46	PASS	1 grade; CCountedPointer<CScopedMemoryHandle>::DeleteData (static __fastcall deleter, inline ~ -> Clear)
 00a910e0	RELOCATION_MATCH	148v148	PASS	1 grade; C3DPrimitive2::CalculateVertexSize static __fastcall; two derived shader-input temporaries
-00a945d0	MATCH	45v45	PASS	1 grade; _STL::fill<C3DTriangle2*> __fastcall
-00a94950	MATCH	80v80	PASS	1 grade; _STL::__uninitialized_fill_n<SKeyRecord32*> __fastcall (catalog fill<C3DAnimationStateAlpha*>)
-00a95970	MATCH	48v48	PASS	1 grade; _STL::uninitialized_fill_n<C3DTriangle2*> __fastcall
+00a945d0	MATCH	45v45	PASS	1 grade; std::fill<C3DTriangle2*> __fastcall
+00a94950	MATCH	80v80	PASS	1 grade; std::__uninitialized_fill_n<SKeyRecord32*> __fastcall (catalog fill<C3DAnimationStateAlpha*>)
+00a95970	MATCH	48v48	PASS	1 grade; std::uninitialized_fill_n<C3DTriangle2*> __fastcall
 00a96100	RELOCATION_MATCH	98v98	PASS	1 grade; vector<unsigned long>(n); fill_n zero loop -> rep stos
-00a96350	RELOCATION_MATCH	94v94	PASS	1 grade; _STL::fill<CCountedPointer<C3DGroup2>*> __fastcall (catalog _Copy_backward)
+00a96350	RELOCATION_MATCH	94v94	PASS	1 grade; std::fill<CCountedPointer<C3DGroup2>*> __fastcall (catalog _Copy_backward)
 00a96a90	MATCH	79v79	PASS	1 grade; vector<C3DVertex2>::erase (32-byte POD, rep movsd 8)
 00a96b30	RELOCATION_MATCH	233v233	PASS	2 grades (+1 regrade after a cast-spelling fix); vector<SKeyRecord32>::_M_insert_overflow
 00a9ad00	RELOCATION_MATCH	119v119	PASS	1 grade; C3DMeshFileLoader::AddChunkType (no NRVO: local copied into the hidden result)
@@ -37,5 +37,5 @@ address	status	bytes	test	note
 00aa7760	RELOCATION_MATCH	61v61	PASS	1 grade; CChunkedFileRawDataChunk::SetData (delete[] / new[] 0xBFEB22 / memcpy intrinsic)
 00aa84f0	RELOCATION_MATCH	69v69	PASS	1 grade; CChunkedFileSuperChunk::AddSubChunk (SetParent + push_back)
 00aa87e0	RELOCATION_MATCH	69v69	PASS	1 grade; CChunkedFileSuperChunk::RegisterSubChunkType (push_back; ICF-shared)
-00aaaf50	MATCH	55v55	PASS	1 grade; _STL::fill<C3DClothQuad*> __fastcall
+00aaaf50	MATCH	55v55	PASS	1 grade; std::fill<C3DClothQuad*> __fastcall
 00aabbb0	MATCH	146v146	PASS	3 grades; CSoundEmitterLH vtable slot 15 (SetPosition); pack(1) C3DVector, component-wise copy

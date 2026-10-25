@@ -1,5 +1,5 @@
 // std::list::erase(iterator first, iterator last) -- (list<NUISystem::CComponent*>) STLport range erase: unlink and free every node of [first, last), return last
-// Leaf: ?erase@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@_STL@@@_STL@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@_STL@@@2@U32@0@Z
+// Leaf: ?erase@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00534D30, 54 bytes, thiscall with `this` unused, `ret 0Ch` (hidden
 //   iterator result, first, last); returns the result pointer.
 // Identity: the manifest's "std::list_node::splice" is propagated. The only caller is list<CComponent*>::operator=
@@ -14,7 +14,7 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 namespace NUISystem { class CComponent; }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -94,4 +94,4 @@ typename list<_Tp, _Alloc>::iterator list<_Tp, _Alloc>::erase(iterator __first, 
 
 template list<NUISystem::CComponent*>::iterator list<NUISystem::CComponent*>::erase(iterator, iterator);
 
-} // namespace _STL
+} // namespace std

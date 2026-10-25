@@ -1,4 +1,4 @@
-// _STL::vector<CDefString>::vector(const vector<CDefString>& x) -- STLport vector copy constructor for a CArray<CDefString> (4-byte def-string handles): the base allocates exactly x.size() elements, then x's range is copy-constructed into them
+// std::vector<CDefString>::vector(const vector<CDefString>& x) -- STLport vector copy constructor for a CArray<CDefString> (4-byte def-string handles): the base allocates exactly x.size() elements, then x's range is copy-constructed into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EC4B0, 66 bytes, `ret 4` (thiscall); the vector<C2DVector> twin 0x004EBE1A at a
 //   4-byte stride.
@@ -23,7 +23,7 @@ public:
     long TablePos;                              // +0x00 def-string table index
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class T> struct __type_traits { typedef __false_type is_POD_type; };
 template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }

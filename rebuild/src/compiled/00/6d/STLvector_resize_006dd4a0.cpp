@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CAttackHistoryCombo>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default attack-history combos at the end
-// Leaf: ?resize@?$vector@VCAttackHistoryCombo@@V?$allocator@VCAttackHistoryCombo@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CAttackHistoryCombo>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default attack-history combos at the end
+// Leaf: ?resize@?$vector@VCAttackHistoryCombo@@V?$allocator@VCAttackHistoryCombo@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006DD4A0, 91 bytes, thiscall on the vector, `ret 4`.
 // Identity: FableWin.pdb ?resize@?$vector@VCAttackHistoryCombo@@...@@QAEXI@Z; sole caller
 //   GFSerialiseVectorBinaryIn<CAttackHistoryCombo> 0x006DD580 (landed; the catalog's "<CBrainUpdateZone>" is propagated).
@@ -22,7 +22,7 @@ enum EDamageAttribute { DAMAGE_ATTRIBUTE_NONE = 0 };
 
 extern "C" void __cdecl free(void* block);                         // 0x00BFEA14 (_Vector_base destructor)
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {                       // STLport pair
     _T1 first;
     _T2 second;
@@ -78,7 +78,7 @@ public:
 
 class CAttackHistoryCombo {                                         // 16 bytes in retail
 public:
-    _STL::vector<_STL::pair<EAttackHistoryType, EDamageAttribute> > AttackCombo;   // +0x00
+    std::vector<std::pair<EAttackHistoryType, EDamageAttribute> > AttackCombo;   // +0x00
     float Multiplier;                                               // +0x0C
     CAttackHistoryCombo() { }
 };
@@ -87,16 +87,16 @@ public:
 // retail bodies, never write through the value reference (not graded)
 #pragma auto_inline(off)
 template <class _Tp, class _Alloc>
-__declspec(noinline) _Tp* _STL::vector<_Tp, _Alloc>::erase(_Tp* __first, _Tp* __last)
+__declspec(noinline) _Tp* std::vector<_Tp, _Alloc>::erase(_Tp* __first, _Tp* __last)
 {
     this->_M_finish = __first + (this->_M_finish - __last);
     return __first;
 }
 template <class _Tp, class _Alloc>
-__declspec(noinline) void _STL::vector<_Tp, _Alloc>::_M_fill_insert(_Tp* __pos, unsigned int __n, const _Tp& __x)
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_fill_insert(_Tp* __pos, unsigned int __n, const _Tp& __x)
 {
     for (; __n != 0; --__n, ++__pos)
         __pos->Multiplier = __x.Multiplier;
 }
 #pragma auto_inline(on)
-template void _STL::vector<CAttackHistoryCombo>::resize(unsigned int);
+template void std::vector<CAttackHistoryCombo>::resize(unsigned int);

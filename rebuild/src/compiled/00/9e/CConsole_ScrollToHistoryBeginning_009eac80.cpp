@@ -9,7 +9,7 @@
 // Layout: retail CConsole offsets as in the landed CConsole::SetHistoryMode 0x009EAB80: CommandLineHistory +0x4c,
 //   VisibleHistoryStart +0x50, VisibleHistoryFinish +0x54, NumberOfHistoryLinesOnscreen +0x58.
 // Leaf: ?ScrollToHistoryBeginning@CConsole_Retail@@QAEXXZ
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -74,7 +74,7 @@ public:
     }
 };
 
-} // namespace _STL
+} // namespace std
 
 struct CCharString { void* PStringData; };
 
@@ -94,9 +94,9 @@ struct CConsole_Retail                                          // retail offset
     CConsoleCommandLine BackCommandLine;                        // +0x2c
     CCharString         HelpBarString;                          // +0x3c
     unsigned char       _registered[0x0c];                      // +0x40 RegisteredConsoleInputs
-    _STL::list<CConsoleCommandLine>           CommandLineHistory;    // +0x4c
-    _STL::list<CConsoleCommandLine>::iterator VisibleHistoryStart;   // +0x50
-    _STL::list<CConsoleCommandLine>::iterator VisibleHistoryFinish;  // +0x54
+    std::list<CConsoleCommandLine>           CommandLineHistory;    // +0x4c
+    std::list<CConsoleCommandLine>::iterator VisibleHistoryStart;   // +0x50
+    std::list<CConsoleCommandLine>::iterator VisibleHistoryFinish;  // +0x54
     long                NumberOfHistoryLinesOnscreen;           // +0x58
 
     void ScrollToHistoryBeginning();
@@ -106,7 +106,7 @@ void CConsole_Retail::ScrollToHistoryBeginning()
 {
     VisibleHistoryStart = VisibleHistoryFinish = CommandLineHistory.begin();
     if (CommandLineHistory.size() > NumberOfHistoryLinesOnscreen)
-        _STL::advance(VisibleHistoryFinish, NumberOfHistoryLinesOnscreen);
+        std::advance(VisibleHistoryFinish, NumberOfHistoryLinesOnscreen);
     else
-        _STL::advance(VisibleHistoryFinish, CommandLineHistory.size());
+        std::advance(VisibleHistoryFinish, CommandLineHistory.size());
 }

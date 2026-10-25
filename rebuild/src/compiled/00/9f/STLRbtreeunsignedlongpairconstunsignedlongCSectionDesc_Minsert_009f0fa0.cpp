@@ -1,11 +1,11 @@
-// _STL::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>::_M_insert(x, y, v, w) -- link a new section-descriptor node under y, rebalance, count it
+// std::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>::_M_insert(x, y, v, w) -- link a new section-descriptor node under y, rebalance, count it
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F0FA0, 153 bytes (160 with padding), `ret 14h` (hidden iterator result, x, y,
 //   &v, w). Catalog label "RBTree_Insert" is descriptive; same SectionDesc tree as _M_create_node 0x009F0DE0.
 // Callees: _M_create_node 0x009F0DE0 (declared only: retail calls it out of line), _Rb_global<bool>::_Rebalance(z,
 //   root&) 0x0042971D (__cdecl).
 // Shape: STLport 4.5 _Rb_tree::_M_insert verbatim: the left test `y == header || (w == 0 && (x != 0 || v.first <
 //   key(y)))` (unsigned `jb`), header re-read after each child store, z's parent/left/right set, rebalance, ++count.
-// Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKUCSectionDesc@@@_STL@@U?$_Select1st@U?$pair@$$CBKUCSectionDesc@@@_STL@@@2@U?$less@K@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKUCSectionDesc@@@_STL@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKUCSectionDesc@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKUCSectionDesc@@@std@@U?$_Select1st@U?$pair@$$CBKUCSectionDesc@@@std@@@2@U?$less@K@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKUCSectionDesc@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKUCSectionDesc@@@2@0@Z
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
@@ -26,7 +26,7 @@ struct CSectionDesc                                   // CCodeSectionManager::CS
     long        Size;                                 // +0x0c
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair { typedef _T1 first_type; _T1 first; _T2 second; };
 template <class _Tp> struct less { bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; } };
@@ -102,9 +102,9 @@ public:
     iterator _M_insert(_Base_ptr __x_, _Base_ptr __y_, const _Value& __v, _Base_ptr __w_);
 };
 
-} // namespace _STL
+} // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::iterator
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_insert(_Base_ptr __x_, _Base_ptr __y_, const _Value& __v, _Base_ptr __w_)
@@ -141,9 +141,9 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_insert(_Base_ptr __x_, _Base_p
     return iterator(__z);
 }
 }
-template _STL::_Rb_tree<unsigned long, _STL::pair<const unsigned long, CSectionDesc>,
-                        _STL::_Select1st<_STL::pair<const unsigned long, CSectionDesc> >, _STL::less<unsigned long> >::iterator
-_STL::_Rb_tree<unsigned long, _STL::pair<const unsigned long, CSectionDesc>,
-               _STL::_Select1st<_STL::pair<const unsigned long, CSectionDesc> >, _STL::less<unsigned long> >::_M_insert(
-    _STL::_Rb_tree_node_base*, _STL::_Rb_tree_node_base*, const _STL::pair<const unsigned long, CSectionDesc>&,
-    _STL::_Rb_tree_node_base*);
+template std::_Rb_tree<unsigned long, std::pair<const unsigned long, CSectionDesc>,
+                        std::_Select1st<std::pair<const unsigned long, CSectionDesc> >, std::less<unsigned long> >::iterator
+std::_Rb_tree<unsigned long, std::pair<const unsigned long, CSectionDesc>,
+               std::_Select1st<std::pair<const unsigned long, CSectionDesc> >, std::less<unsigned long> >::_M_insert(
+    std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, const std::pair<const unsigned long, CSectionDesc>&,
+    std::_Rb_tree_node_base*);

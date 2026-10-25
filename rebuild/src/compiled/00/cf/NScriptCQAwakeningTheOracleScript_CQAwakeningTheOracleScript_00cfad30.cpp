@@ -30,7 +30,7 @@ public:
     void* PImplementationInfo;
 };
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -104,7 +104,7 @@ template <class T> class vector : public _Vector_base<T> {
 public:
     vector() : _Vector_base<T>(allocator<T>()) { }
 };
-} // namespace _STL
+} // namespace std
 
 struct CScriptBase {                                        // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
@@ -140,9 +140,9 @@ public:
     bool GotM;
     bool GotC;
     bool GotA;                                              // +0x70
-    _STL::vector<CScriptThing> DiggingPoints;               // +0x74
-    _STL::map<CCharString, CCharString> cs_args;            // +0x80
-    _STL::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cs_chars;   // +0x8c
+    std::vector<CScriptThing> DiggingPoints;               // +0x74
+    std::map<CCharString, CCharString> cs_args;            // +0x80
+    std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cs_chars;   // +0x8c
     CQ_AwakeningTheOracleScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
     virtual ~CQ_AwakeningTheOracleScript();
 };

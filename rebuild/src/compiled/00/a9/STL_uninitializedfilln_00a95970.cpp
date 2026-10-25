@@ -1,4 +1,4 @@
-// _STL::uninitialized_fill_n(C3DTriangle2* first, unsigned int n, const C3DTriangle2& x) -- copy-construct one 6-byte triangle into n raw slots starting at first; returns the end of the run
+// std::uninitialized_fill_n(C3DTriangle2* first, unsigned int n, const C3DTriangle2& x) -- copy-construct one 6-byte triangle into n raw slots starting at first; returns the end of the run
 // Leaf: ??$uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A95970, 46 bytes (+ int3 padding), `ret 4`: /Gr `__fastcall` (first in
 //   ecx -> eax as the cursor, n in edx counted down, the value reference on the stack).
@@ -16,7 +16,7 @@ public:
     unsigned short VertexIndex[3];                 // +0x00
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

@@ -33,7 +33,7 @@ public:
     ~CCountedPointer();
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
@@ -88,11 +88,11 @@ public:
     unsigned char _base[0x16C];
     CCharString Filename;                                              // +0x16C
     unsigned char _banks[0x210];
-    _STL::vector<CMeshDataBankEntry*>                     MeshesAndAnimations;     // +0x380
-    _STL::vector<C3DMeshInfo>                             MeshInfoBuffer;          // +0x38C
-    _STL::vector<CPhysicsMeshInfo>                        PhysicsMeshInfoBuffer;   // +0x398
-    _STL::vector<C3DAnimationInfo>                        AnimationInfoBuffer;     // +0x3A4
-    _STL::vector<CCountedPointer<CMeshDataBankEntry> >    DynamicInfoBuffer;       // +0x3B0
+    std::vector<CMeshDataBankEntry*>                     MeshesAndAnimations;     // +0x380
+    std::vector<C3DMeshInfo>                             MeshInfoBuffer;          // +0x38C
+    std::vector<CPhysicsMeshInfo>                        PhysicsMeshInfoBuffer;   // +0x398
+    std::vector<C3DAnimationInfo>                        AnimationInfoBuffer;     // +0x3A4
+    std::vector<CCountedPointer<CMeshDataBankEntry> >    DynamicInfoBuffer;       // +0x3B0
 private:
     void CloseMeshes();
 };

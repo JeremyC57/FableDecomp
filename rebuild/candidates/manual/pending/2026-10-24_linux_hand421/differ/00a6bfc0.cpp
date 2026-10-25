@@ -2,7 +2,7 @@
 // Grade: DIFFER(30v64) -- the compiler-generated ~CPreallocTexturePool is called out of line from ??_G (retail inlines it: __destroy_aux call with the tag in the flags slot, free, base dtor); with plain-inline vector destructors the implicit dtor IS inlined but ~vector stays a call (40v64); `novtable` + `__forceinline ~T() {}` suppresses the ??_G entirely
 // Leaf: ??_GCPreallocTexturePool@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6BFC0, 64 bytes, `ret 4`. CPreallocTexturePool vtable 0x0129DC50 slot 0.
-// Callees: 0x00A6B700 _STL::__destroy_aux(first, last, const __false_type&) (out of line, __fastcall, `ret 4`; the
+// Callees: 0x00A6B700 std::__destroy_aux(first, last, const __false_type&) (out of line, __fastcall, `ret 4`; the
 //   landed "Destroy_00a6b700"), 0x00BFEA14 free (the vector storage), 0x009FC5C0 CResourceList::~CResourceList (catalog
 //   "Stack<unsigned long,64>::~Stack" is propagated; the landed CTextureManager dtor 0x00A6A440 names it), 0x00BFE9BC
 //   operator delete.
@@ -44,7 +44,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 
@@ -111,7 +111,7 @@ public:
     unsigned long Count;                                // +0x3C
     unsigned long MaxSize;                              // +0x40
     long PoolIndex;                                     // +0x44
-    _STL::vector<CIVCountedPointer<CManagedTextureData> > Textures;   // +0x48
+    std::vector<CIVCountedPointer<CManagedTextureData> > Textures;   // +0x48
     CPreallocTexturePool() : Count(0), MaxSize(0), PoolIndex(-1) { }
 };
 

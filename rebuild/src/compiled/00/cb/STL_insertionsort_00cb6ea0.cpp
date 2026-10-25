@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(PairCharStringScriptInfo* first, PairCharStringScriptInfo* last, CCompareScriptName comp) -- STLport insertion sort over the script registry's 0x18-byte pair<CCharString, CScriptInfo> records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(PairCharStringScriptInfo* first, PairCharStringScriptInfo* last, CCompareScriptName comp) -- STLport insertion sort over the script registry's 0x18-byte pair<CCharString, CScriptInfo> records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB6EA0, 112 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // 4-byte comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).

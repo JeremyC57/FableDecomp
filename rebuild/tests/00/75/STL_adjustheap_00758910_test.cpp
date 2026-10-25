@@ -1,4 +1,4 @@
-// Behaviour test for 0x00758910 _STL::__adjust_heap over the 0x2C-byte wound-morph entries
+// Behaviour test for 0x00758910 std::__adjust_heap over the 0x2C-byte wound-morph entries
 #include <cstdio>
 
 struct CWoundMorphsEntry { long Words[10]; };

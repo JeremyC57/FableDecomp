@@ -1,5 +1,5 @@
 // for_each<C3DVector*, CRescaleBy>(C3DVector* first, C3DVector* last, CRescaleBy f) -- scale every vector in the range by the functor's factor and return the functor
-// Leaf: ??$for_each@PAVC3DVector@@UCRescaleBy@@@_STL@@YI?AUCRescaleBy@@PAVC3DVector@@0U1@@Z
+// Leaf: ??$for_each@PAVC3DVector@@UCRescaleBy@@@std@@YI?AUCRescaleBy@@PAVC3DVector@@0U1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A13440, 73 bytes, `ret 8`. Only caller 0x00A1287F.
 // Identity: the body MULTIPLIES each component by the functor's float, so the functor is the PDB's CRescaleBy
 //   (`_For_each<C3DVector*, CRescaleBy>` in Ego_r.pdb, struct, one float), not CAddElements<C3DVector> as the catalog
@@ -20,7 +20,7 @@ struct CRescaleBy {
     void operator()(C3DVector& v) const { v *= Scale; }
 };
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _Function>
 _Function __fastcall for_each(_InputIter __first, _InputIter __last, _Function __f)
 {
@@ -30,4 +30,4 @@ _Function __fastcall for_each(_InputIter __first, _InputIter __last, _Function _
 }
 }
 
-template CRescaleBy __fastcall _STL::for_each(C3DVector*, C3DVector*, CRescaleBy);
+template CRescaleBy __fastcall std::for_each(C3DVector*, C3DVector*, CRescaleBy);

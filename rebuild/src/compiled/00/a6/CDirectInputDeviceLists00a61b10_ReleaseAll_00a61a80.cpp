@@ -19,7 +19,7 @@ struct SDirectInputInterfaceEntry {                    // 8-byte list element (n
     unsigned long Data;                                // +0x04
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -123,12 +123,12 @@ public:
     void pop_back() { iterator __tmp = end(); erase(--__tmp); }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CDirectInputDeviceLists_00a61b10 {               // CInputManagerDX member at +0x2B0 (0x10 bytes)
 public:
-    _STL::list<SDirectInputInterfaceEntry> m_devices;   // +0x00
-    _STL::list<SDirectInputInterfaceEntry> m_effects;   // +0x04
+    std::list<SDirectInputInterfaceEntry> m_devices;   // +0x00
+    std::list<SDirectInputInterfaceEntry> m_effects;   // +0x04
     long          m_enabled;                            // +0x08 (1 after construction)
     long          m_count;                              // +0x0c (0 after construction)
     CDirectInputDeviceLists_00a61b10();

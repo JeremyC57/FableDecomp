@@ -1,5 +1,5 @@
 // __copy(CPhysicsMeshInfo* first, CPhysicsMeshInfo* last, CPhysicsMeshInfo* result, random_access_iterator_tag, int*) -- assign a range of physics-mesh infos forwards
-// Leaf: ??$__copy@PAVCPhysicsMeshInfo@@PAV1@H@_STL@@YIPAVCPhysicsMeshInfo@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Leaf: ??$__copy@PAVCPhysicsMeshInfo@@PAV1@H@std@@YIPAVCPhysicsMeshInfo@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2BC00, 97 bytes, two `ret 0Ch` (n <= 0 early exit). Callers 0x00A2C47C and 0x00A2CA89 (the
 //   CPhysicsMeshInfo vector's assignment/insert paths). The catalog label "_Move<CPhysicsMeshInfo*,CPhysicsMeshInfo*>"
 //   is a descriptive Dinkumware-style name; the build ships STLport 4.6.
@@ -52,7 +52,7 @@ public:
     CIVCountedPointer<CMeshData> MeshData;               // +0x0C
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*)
@@ -66,4 +66,4 @@ _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __las
 }
 }
 
-template CPhysicsMeshInfo* __fastcall _STL::__copy(CPhysicsMeshInfo*, CPhysicsMeshInfo*, CPhysicsMeshInfo*, const _STL::random_access_iterator_tag&, int*);
+template CPhysicsMeshInfo* __fastcall std::__copy(CPhysicsMeshInfo*, CPhysicsMeshInfo*, CPhysicsMeshInfo*, const std::random_access_iterator_tag&, int*);

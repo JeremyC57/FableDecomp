@@ -24,7 +24,7 @@ public:
     SCountBlock* Info;                                      // +4
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -73,7 +73,7 @@ public:
 class CNavRegion {
 public:
     long RegionID;                                                      // +0
-    _STL::list<CCountedPointer<CNavRegionConnection> > Connections;     // +4
+    std::list<CCountedPointer<CNavRegionConnection> > Connections;     // +4
     long MostRecentSearchID;                                            // +8
     CNavRegion(long mapIndex, long internalIndex);
 };

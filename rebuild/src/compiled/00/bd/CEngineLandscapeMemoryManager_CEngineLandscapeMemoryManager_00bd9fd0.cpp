@@ -15,7 +15,7 @@
 //   three-step loop of the STLport _List_base constructor (zero store, malloc(12), self-link, publish).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -63,7 +63,7 @@ public:
     explicit list(const allocator_type& __a = allocator_type()) : _List_base<_Tp, _Alloc>(__a) { }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CEngineMemoryInit;
 class CTexture;
@@ -94,9 +94,9 @@ public:
 
     CMovableResourceMemoryPool*         VirtualMemPool;                  // +0x08
     CXboxBufferMemoryPool*              PhysicalMemPool;                 // +0x0c
-    _STL::list<CTexture*>               TextureDisposalList[3];          // +0x10
-    _STL::list<CVertexBufferWin32*>     VertexBufferDisposalList[3];     // +0x1c
-    _STL::list<CIndexBuffer*>           IndexBufferDisposalList[3];      // +0x28
+    std::list<CTexture*>               TextureDisposalList[3];          // +0x10
+    std::list<CVertexBufferWin32*>     VertexBufferDisposalList[3];     // +0x1c
+    std::list<CIndexBuffer*>           IndexBufferDisposalList[3];      // +0x28
     long                                CurrentDisposalListIndex;        // +0x34
     bool                                InsideDefragment;                // +0x38
     bool                                PoolAllocationEnabled;           // +0x39

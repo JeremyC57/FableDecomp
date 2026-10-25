@@ -1,4 +1,4 @@
-// _STL::list::pop_front() -- STLport list<long>: unlink the first node and free it
+// std::list::pop_front() -- STLport list<long>: unlink the first node and free it
 // Leaf: ?pop_front@?$list@J
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A219E0, 22 bytes, __fastcall, plain `ret`.
 // Identity: STLport 4.6 `void pop_front() { erase(begin()); }` with the inline single-node erase (unlink, trivial
@@ -8,7 +8,7 @@
 // Shape: the node's next/prev are loaded together, then the two link stores bracket the `push node`.
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -74,4 +74,4 @@ public:
 
 template void list<long>::pop_front();
 
-} // namespace _STL
+} // namespace std

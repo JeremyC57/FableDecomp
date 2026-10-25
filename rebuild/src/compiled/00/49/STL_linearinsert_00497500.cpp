@@ -1,4 +1,4 @@
-// _STL::__linear_insert(CWideString*, CWideString*, CWideString, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport insertion step over wide strings ordered case-insensitively: a value below *first shifts [first, last) up one slot and lands at first, else the unguarded linear insert @ 0x00496FD0
+// std::__linear_insert(CWideString*, CWideString*, CWideString, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport insertion step over wide strings ordered case-insensitively: a value below *first shifts [first, last) up one slot and lands at first, else the unguarded linear insert @ 0x00496FD0
 // Flags: /Gr
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00497500, 112 bytes, `ret 8` (__fastcall: first in ecx -> esi, last in edx ->

@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry> pivot, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) -- STLport quicksort partition of the CRC-keyed animation entries around a by-value pivot (unsigned key order); returns the cut
+// std::__unguarded_partition(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry> pivot, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) -- STLport quicksort partition of the CRC-keyed animation entries around a by-value pivot (unsigned key order); returns the cut
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E2100, 94 bytes, `ret 18h` (__fastcall /Gr algorithm TU: first in ecx ->
 //   esi, last in edx -> edi, the 20-byte pivot by value and the empty comparator on the stack).

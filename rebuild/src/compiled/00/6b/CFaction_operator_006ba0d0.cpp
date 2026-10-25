@@ -17,7 +17,7 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {};
 template <class _Tp> class allocator {};
 template <class _Tp> struct _Identity {};
@@ -39,8 +39,8 @@ public:
 class CFaction {
 public:
     CCharString             Name;                       // +0x00
-    _STL::set<CCharString>  AlliedFactions;             // +0x04
-    _STL::set<CCharString>  EnemyFactions;              // +0x10
+    std::set<CCharString>  AlliedFactions;             // +0x04
+    std::set<CCharString>  EnemyFactions;              // +0x10
 };
 
 CFaction& (CFaction::*g_pAssignFaction)(const CFaction&) = &CFaction::operator=;

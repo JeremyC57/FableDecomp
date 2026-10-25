@@ -1,4 +1,4 @@
-// _STL::vector<pair<CCharString,CSymbolInfo>>::push_back(const pair<CCharString,CSymbolInfo>& x) -- STLport push_back for the symbol-map entry vector: copy-construct at the finish when there is room, else grow through _M_insert_overflow
+// std::vector<pair<CCharString,CSymbolInfo>>::push_back(const pair<CCharString,CSymbolInfo>& x) -- STLport push_back for the symbol-map entry vector: copy-construct at the finish when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E7AB0, length 105 bytes (`ret 4`).
 // Label correction: the catalog's "Vector_Append_CCharString" is STLport `vector<pair<CCharString, CSymbolMap::CSymbolInfo> >::
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;

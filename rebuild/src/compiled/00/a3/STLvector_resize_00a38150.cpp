@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CClassTypeInfo>::resize(n): resize(n, CClassTypeInfo()) with a default class-type record built on the stack and destroyed after
-// Leaf: ?resize@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CClassTypeInfo>::resize(n): resize(n, CClassTypeInfo()) with a default class-type record built on the stack and destroyed after
+// Leaf: ?resize@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe @ 0x00A38150, 100 bytes, thiscall `ret 4`.
 // Callers: the CClassFactory constructors 0x00A37360 / 0x00A373B0 (`ClassTypeInfo.resize(MaxClassTypeID)`).
 // Callees: malloc 0x00BFEA0E (the TypeList sentinel), CCharString() 0x0099E4B0, vector<CClassTypeInfo>::resize(n, x)
@@ -24,7 +24,7 @@ public:
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -72,7 +72,7 @@ typedef CClass* (__cdecl* ClassAllocFunc)();
 // Retail layout (20 bytes; Ego_r's is 28 because its std::list is 12 bytes), as the landed constructor 0x00A37880.
 class CClassTypeInfo {
 public:
-    _STL::list<CClass*> TypeList;                           // +0x00
+    std::list<CClass*> TypeList;                           // +0x00
     unsigned long       NoAllocated;                        // +0x04
     bool                Used;                               // +0x08
     bool                Local;                              // +0x09
@@ -89,7 +89,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
     _Tp* _M_start;                                          // +0x00
@@ -100,4 +100,4 @@ public:
 };
 }
 
-template void _STL::vector<CClassTypeInfo>::resize(unsigned int);
+template void std::vector<CClassTypeInfo>::resize(unsigned int);

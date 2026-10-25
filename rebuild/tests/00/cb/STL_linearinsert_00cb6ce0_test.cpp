@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CB6CE0 _STL::__linear_insert over pair<CCharString,CScriptInfo>: a new minimum shifts the whole sorted run up one, else the unguarded insert.
+// Behaviour test for 0x00CB6CE0 std::__linear_insert over pair<CCharString,CScriptInfo>: a new minimum shifts the whole sorted run up one, else the unguarded insert.
 #include <cstdio>
 #include <cstring>
 

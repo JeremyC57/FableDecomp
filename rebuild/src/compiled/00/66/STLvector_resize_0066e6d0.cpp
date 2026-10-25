@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CRegionMinimap::RegionMinimapCellData>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() zeroed (theme, light) cells at the end
-// Leaf: ?resize@?$vector@URegionMinimapCellData@CRegionMinimap@@V?$allocator@URegionMinimapCellData@CRegionMinimap@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CRegionMinimap::RegionMinimapCellData>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() zeroed (theme, light) cells at the end
+// Leaf: ?resize@?$vector@URegionMinimapCellData@CRegionMinimap@@V?$allocator@URegionMinimapCellData@CRegionMinimap@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066E6D0, 85 bytes, thiscall on the vector, `ret 4`.
 // Identity: FableWin.pdb ?resize@?$vector@URegionMinimapCellData@CRegionMinimap@@...@@QAEXI@Z; sole caller
 //   CRegionMinimap::CreateRegionMinimap 0x0066DC50 (landed; `RegionMinimapCellList.resize(RegionMinimapSize *
@@ -25,7 +25,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -67,4 +67,4 @@ public:
 }
 
 // 0x0066E210 erase, 0x0066E480 _M_fill_insert (out of line in retail)
-template void _STL::vector<CRegionMinimap::RegionMinimapCellData>::resize(unsigned int);
+template void std::vector<CRegionMinimap::RegionMinimapCellData>::resize(unsigned int);

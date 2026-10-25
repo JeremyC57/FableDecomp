@@ -1,5 +1,5 @@
-// _STL::__adjust_heap(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>* first, int holeIndex, int len, pair<CCharString,CPersistInfo> val, CKeyPairCompareLess comp) -- STLport heap sift-down of the quest-persistence (quest name, persist info) table by name, then __push_heap val back up
-// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@UCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@_STL@@
+// std::__adjust_heap(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>* first, int holeIndex, int len, pair<CCharString,CPersistInfo> val, CKeyPairCompareLess comp) -- STLport heap sift-down of the quest-persistence (quest name, persist info) table by name, then __push_heap val back up
+// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@UCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004BA180, 282 bytes (+ int3 padding), `ret 14h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 12-byte value and the empty comparator on the stack: 4 + 0xC + 4 = 0x14).
 // Element (12 bytes, `lea eax,[esi+esi*2]` * 4): CCharString key +0, CPersistInfo +4 (Ego_r.pdb, 8 bytes:
@@ -44,7 +44,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -54,11 +54,11 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo> CPersistPair;
+typedef std::pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo> CPersistPair;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp);   // 0x004B9540
 

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00743470 _STL::__partial_sort over the mode-registry pairs (unsigned key)
+// Behaviour test for 0x00743470 std::__partial_sort over the mode-registry pairs (unsigned key)
 #include <cstdio>
 struct CRegisteredModeInfo { int tag; };
 

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__destroy_aux(NFire::CFirePoint*, NFire::CFirePoint*, const __false_type&) (0x007817B0):
+// Behaviour test for std::__destroy_aux(NFire::CFirePoint*, NFire::CFirePoint*, const __false_type&) (0x007817B0):
 // each fire point is destroyed in order -- the singe-effect pointer, then the effect pointer, then the helper name.
 #include <cstdio>
 #include <new>
@@ -43,7 +43,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
@@ -60,7 +60,7 @@ int main()
     NFire::CFirePoint* f = (NFire::CFirePoint*)storage;
     for (int i = 0; i < 2; ++i)
         new (&f[i]) NFire::CFirePoint(10 * (i + 1));
-    _STL::__destroy_aux(f, f + 2, _STL::__false_type());
+    std::__destroy_aux(f, f + 2, std::__false_type());
     static const int expect[6] = { 12, 11, 10, 22, 21, 20 };
     int fails = 0;
     if (gCount != 6) ++fails;

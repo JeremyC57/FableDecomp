@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF1AA0 _STL::__uninitialized_fill_n over NParticleEngine::CParticleEmitterInfo: n counted copies of x into raw storage, return first + n
+// behaviour test for 0x00AF1AA0 std::__uninitialized_fill_n over NParticleEngine::CParticleEmitterInfo: n counted copies of x into raw storage, return first + n
 #include <cstdio>
 #include <new>
 struct SPointee { void* VTable; unsigned int IVRefCount; };

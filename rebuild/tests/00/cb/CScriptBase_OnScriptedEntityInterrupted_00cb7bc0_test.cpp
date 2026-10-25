@@ -26,7 +26,7 @@ public:
     void* Info;
     T* operator->() const { return Data; }
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -44,9 +44,9 @@ public:
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type* iterator;
-    _STL::vector<value_type> Vector;
+    std::vector<value_type> Vector;
     C    Compare;
     bool Dirty;
     iterator LowerBound(const K& key)                      // the out-of-line 0x00CB9840, a plain lower bound

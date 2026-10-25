@@ -1,4 +1,4 @@
-// _STL::list<CVertexGroupBlock>::push_back(const CVertexGroupBlock& x) -- append a copy of a block to the optimiser's block list
+// std::list<CVertexGroupBlock>::push_back(const CVertexGroupBlock& x) -- append a copy of a block to the optimiser's block list
 // Leaf: ?push_back@?$list@VCVertexGroupBlock
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADCE10, 0x45 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: 0x20-byte list node {next, prev, CVertexGroupBlock}; the element copy is CVertexGroupBlock's implicit copy
@@ -14,7 +14,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -87,15 +87,15 @@ public:
     map(const map& __x) : _M_t(__x._M_t) { }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 bytes in retail
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0x0
@@ -154,4 +154,4 @@ public:
 };
 
 template void list<CVertexGroupBlock>::push_back(const CVertexGroupBlock&);
-} // namespace _STL
+} // namespace std

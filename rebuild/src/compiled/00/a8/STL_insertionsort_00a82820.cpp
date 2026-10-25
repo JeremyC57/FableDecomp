@@ -1,8 +1,8 @@
-// _STL::__insertion_sort(SKeyPairU64Bool* first, SKeyPairU64Bool* last, CKeyPairCompareLess comp) -- STLport insertion sort over 16-byte pair<unsigned __int64, bool> records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(SKeyPairU64Bool* first, SKeyPairU64Bool* last, CKeyPairCompareLess comp) -- STLport insertion sort over 16-byte pair<unsigned __int64, bool> records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A82820, 68 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // 4-byte comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).
-// Callee: 0x00A81C50 _STL::__linear_insert(first, last, value, comp) (manifest "InsertionSort_Callback_PairLong" is
+// Callee: 0x00A81C50 std::__linear_insert(first, last, value, comp) (manifest "InsertionSort_Callback_PairLong" is
 // propagated; only this body calls it). That callee orders on a 64-bit unsigned key (`cmp hi ; ja/jb ; cmp lo ; jae`)
 // and re-copies the byte at +8 with `mov cl,[..] ; mov [eax+8],cl`, so the element is pair<unsigned __int64, bool>.
 // Label: catalogued as `_Insertion_sort1<pair<long,long>*, CKeyPairCompareLess<long,long> >` (propagated); the code is

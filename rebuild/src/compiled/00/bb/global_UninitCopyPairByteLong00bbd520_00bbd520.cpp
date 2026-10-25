@@ -12,7 +12,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct SPairByteLong_00bbd520 {                 // _STL::pair<bool, long>, 8 bytes
+struct SPairByteLong_00bbd520 {                 // std::pair<bool, long>, 8 bytes
     bool first;                                 // +0x00
     long second;                                // +0x04
     SPairByteLong_00bbd520(const SPairByteLong_00bbd520& o) : first(o.first), second(o.second) { }

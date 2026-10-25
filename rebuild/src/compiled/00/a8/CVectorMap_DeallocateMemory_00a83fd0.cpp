@@ -10,7 +10,7 @@
 //   __false_type) 0x00A80E40 (both /Gr `__fastcall`), free 0x00BFEA14.
 // Layout: CVectorMap = STLport vector<pair<K, V> > (12 bytes) + empty Compare +0x0C + Dirty +0x0D.
 // Shape: STLport `clear()` = `erase(begin(), end())` (`copy(end, end, begin)` -> __copy, `_Destroy(i, finish)`,
-//   `_M_finish = i`), then `vector empty; swap(empty);` (the three _STL::swap exchanges leave this zeroed and the old
+//   `_M_finish = i`), then `vector empty; swap(empty);` (the three std::swap exchanges leave this zeroed and the old
 //   block in registers), `Dirty = false`, and the temporary's destructor at scope end (`_Destroy(start, finish)` and the
 //   allocator's `if (p) free(p)`). Every empty tag shares one byte of the `push ecx` frame word.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
@@ -29,7 +29,7 @@ public:
 
 class CNavConnectorNode;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -94,26 +94,26 @@ public:
     void clear() { erase(begin(), end()); }
     void swap(vector& __x)
     {
-        _STL::swap(this->_M_start, __x._M_start);
-        _STL::swap(this->_M_finish, __x._M_finish);
-        _STL::swap(this->_M_end_of_storage, __x._M_end_of_storage);
+        std::swap(this->_M_start, __x._M_start);
+        std::swap(this->_M_finish, __x._M_finish);
+        std::swap(this->_M_end_of_storage, __x._M_end_of_storage);
     }
 };
 }
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                       // +0x0c
     bool Dirty;                                         // +0x0d
     void DeallocateMemory()
     {
         this->clear();
-        _STL::vector<_STL::pair<K, V> > empty;
+        std::vector<std::pair<K, V> > empty;
         this->swap(empty);
         Dirty = false;
     }

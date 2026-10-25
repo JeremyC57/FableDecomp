@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB3810, length 83 bytes (+13 int3), `ret 8`.
 // Tried (4 grades): brace temporary, named local, user copy ctor on CDataElement, CArray wrapper vs raw vector --
 //   all compile identically. Next: a same-TU noinline _M_insert_overflow body (the 00ab3b40 fix), else lane gap.
-// Callees: _STL::vector<CVertexStreamFormat::CDataElement>::_M_insert_overflow(pointer, const CDataElement&,
+// Callees: std::vector<CVertexStreamFormat::CDataElement>::_M_insert_overflow(pointer, const CDataElement&,
 //   const __false_type&, size_type, bool) @ 0x00AB4150.
 // Identity: Ego_r.pdb `?AddDataElement@CVertexStreamFormat@@QAEXKW4EVertexStreamDataType@@@Z`; the twelve callers are the
 //   landed CVertexShaderInputStatic/Animated::Initialise (0x00A90560 / 0x00A90630), which already name 0x00AB3810.
@@ -23,7 +23,7 @@ public:
     virtual ~CBaseClass();                         // 0x0099A2E0
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -55,9 +55,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> { };
+template <class T> class CArray : public std::vector<T> { };
 
 class CVertexStreamFormat : public CBaseClass {
 public:

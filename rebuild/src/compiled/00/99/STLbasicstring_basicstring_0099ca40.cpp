@@ -1,5 +1,5 @@
-// _STL::basic_string::basic_string(const unsigned short* s, unsigned int n, const allocator& a) -- STLport wide-string constructor from a character pointer and a count: empty base, then allocate and copy [s, s + n) with a terminator
-// Leaf: ??0?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAE@PBGIABV?$allocator@G@1@@Z
+// std::basic_string::basic_string(const unsigned short* s, unsigned int n, const allocator& a) -- STLport wide-string constructor from a character pointer and a count: empty base, then allocate and copy [s, s + n) with a terminator
+// Leaf: ??0?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@QAE@PBGIABV?$allocator@G@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099CA40, 44 bytes, thiscall, `ret 0xC`.
 // Identity: STLport 4.x basic_string<unsigned short>(const _CharT* s, size_type n, const allocator_type& a) -- the
 //   (pointer, count) constructor that the landed CWideString::AllocStringData 0x0099B3C0 inlines into its
@@ -13,7 +13,7 @@
 //   argument slot (`lea eax,[esp+8]`, pushed first), s is reloaded after the push and the end is `s + n*2`.
 // Label correction: catalogued as `vector<long>::vector<int>` (propagated); the body is the STLport wide
 //   basic_string (pointer, count) constructor.
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };

@@ -1,5 +1,5 @@
 // _Rb_tree<long, pair<const long, CAStarState>>::_M_insert(x, y, v, w) -- link a new A* state node under parent y (left or right by the hint and key order), then rebalance
-// Leaf: ?_M_insert@?$_Rb_tree@JU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@_STL@@U?$_Select1st@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@_STL@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@_STL@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@JU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@U?$_Select1st@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A21D90, 180 bytes, `ret 14h`. Callers 0x00A22203 / 0x00A2223B (the tree's
 //   insert_unique paths). The catalog label "RBTree_InsertNodeAStar" is descriptive.
 // Identity: the tree under CNavigatorAStar's state map (map<long, CAStarState>, node 0x28; see _M_erase 0x00A21640).
@@ -25,7 +25,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     typedef _T1 first_type;
     _T1 first;
@@ -132,5 +132,5 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Rb_tree_node_b
 }
 }
 
-template class _STL::_Rb_tree<long, _STL::pair<const long, CNavigatorAStar::CAStarState>,
-    _STL::_Select1st<_STL::pair<const long, CNavigatorAStar::CAStarState> >, _STL::less<long> >;
+template class std::_Rb_tree<long, std::pair<const long, CNavigatorAStar::CAStarState>,
+    std::_Select1st<std::pair<const long, CNavigatorAStar::CAStarState> >, std::less<long> >;

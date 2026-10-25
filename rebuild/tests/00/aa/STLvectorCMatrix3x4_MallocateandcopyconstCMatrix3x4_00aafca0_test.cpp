@@ -1,4 +1,4 @@
-// Behaviour test for _STL::vector<CMatrix3x4>::_M_allocate_and_copy<const CMatrix3x4*> @ 0x00AAFCA0
+// Behaviour test for std::vector<CMatrix3x4>::_M_allocate_and_copy<const CMatrix3x4*> @ 0x00AAFCA0
 #include <cstdio>
 #include <cstdlib>
 #include <new>

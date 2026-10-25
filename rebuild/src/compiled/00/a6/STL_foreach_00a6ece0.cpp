@@ -1,4 +1,4 @@
-// _STL::for_each(C3DVector* first, C3DVector* last, CAddElements<C3DVector> f) -- add every vector of [first, last) into the functor's running sum; returns the functor
+// std::for_each(C3DVector* first, C3DVector* last, CAddElements<C3DVector> f) -- add every vector of [first, last) into the functor's running sum; returns the functor
 // Leaf: ??$for_each@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6ECE0, 64 bytes, /Gr `__fastcall` (hidden CAddElements result in ecx,
 //   first in edx, last and the 4-byte functor by value on the stack, `ret 8`). No callees.
@@ -26,7 +26,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _InputIter, class _Function>
 _Function __fastcall for_each(_InputIter __first, _InputIter __last, _Function __f)

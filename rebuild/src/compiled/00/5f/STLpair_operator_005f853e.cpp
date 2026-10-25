@@ -1,5 +1,5 @@
-// _STL::pair::operator=(const pair& other) -- copy assignment of pair<long, CDefPointer<const CHeroAbilityDef>>: copy the key, then re-point the counted def (release the old one, add-ref the new one)
-// Leaf: ??4?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@_STL@@QAEAAU01@ABU01@@Z
+// std::pair::operator=(const pair& other) -- copy assignment of pair<long, CDefPointer<const CHeroAbilityDef>>: copy the key, then re-point the counted def (release the old one, add-ref the new one)
+// Leaf: ??4?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@QAEAAU01@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005F853E, 58 bytes, __fastcall `ret 4`, returns `*this` (unaligned: a size-optimised TU).
 // Identity: the byte-identical twin of 0x0059308A in the 0x005F8xxx size-optimised module, whose element copy
 //   constructor 0x005F8578 is staged as pair<long, CDefPointer<const CHeroAbilityDef>>; FableWin.pdb has exactly two
@@ -49,7 +49,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -58,5 +58,5 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-typedef _STL::pair<long, CDefPointer<const CHeroAbilityDef> > TDefPair;
+typedef std::pair<long, CDefPointer<const CHeroAbilityDef> > TDefPair;
 TDefPair& (TDefPair::*g_pAssignDefPair)(const TDefPair&) = &TDefPair::operator=;

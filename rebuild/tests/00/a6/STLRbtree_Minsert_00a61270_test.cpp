@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A61270 _STL::_Rb_tree<CWideString, pair<const CWideString, CEntry>, ...>::_M_insert(x, y, v, w)
+// Behaviour test for 0x00A61270 std::_Rb_tree<CWideString, pair<const CWideString, CEntry>, ...>::_M_insert(x, y, v, w)
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> class pair {
 public:
     typedef T1 first_type;
@@ -112,11 +112,11 @@ public:
         return iterator(z);
     }
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const CWideString, CChecksumCacheFile::CEntry> CValue;
-typedef _STL::_Rb_tree<CWideString, CValue, _STL::_Select1st<CValue>, _STL::less<CWideString> > CTree;
-typedef _STL::_Rb_tree_node_base CBase;
+typedef std::pair<const CWideString, CChecksumCacheFile::CEntry> CValue;
+typedef std::_Rb_tree<CWideString, CValue, std::_Select1st<CValue>, std::less<CWideString> > CTree;
+typedef std::_Rb_tree_node_base CBase;
 
 static const wchar_t* KeyOf(CBase* n) { return ((CTree::_Node*)n)->_M_value_field.first.PStringData; }
 static bool Same(const wchar_t* a, const wchar_t* b) { while (*a != 0 && *a == *b) { ++a; ++b; } return *a == *b; }

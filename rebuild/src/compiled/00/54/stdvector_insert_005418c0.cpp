@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 namespace NUISystem { class CComponent; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -86,4 +86,4 @@ public:
 
 template vector<NUISystem::CComponent*>::iterator vector<NUISystem::CComponent*>::insert(iterator, NUISystem::CComponent* const&);
 
-} // namespace _STL
+} // namespace std

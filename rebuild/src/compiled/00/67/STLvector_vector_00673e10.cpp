@@ -1,4 +1,4 @@
-// _STL::vector::vector(const vector& x) -- STLport copy constructor of vector<pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> > (the texture-morph entries): allocate x.size() elements, then placement-copy x's range
+// std::vector::vector(const vector& x) -- STLport copy constructor of vector<pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> > (the texture-morph entries): allocate x.size() elements, then placement-copy x's range
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00673E10, length 142 bytes, `ret 4`.
 // Callers: 17 sites (0x006747F8 .. 0x00674FC5, 0x0086D0A7 .. 0x0086E8A8): copies of CRandomAppearanceMorph /
@@ -25,7 +25,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -89,5 +89,5 @@ public:
 };
 }
 
-typedef _STL::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> TTextureMorphEntry;
-template _STL::vector<TTextureMorphEntry>::vector(const _STL::vector<TTextureMorphEntry>&);
+typedef std::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> TTextureMorphEntry;
+template std::vector<TTextureMorphEntry>::vector(const std::vector<TTextureMorphEntry>&);

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(C2DLineF* first, C2DLineF* last, C2DLineF* result, const __false_type&) -- placement copy-construct the 16-byte lines [first, last) into result, return the advanced result
+// std::__uninitialized_copy(C2DLineF* first, C2DLineF* last, C2DLineF* result, const __false_type&) -- placement copy-construct the 16-byte lines [first, last) into result, return the advanced result
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDB750, 62 bytes, __fastcall (first ecx, last edx), `ret 8` (result + the tag reference).
 // Callers: vector<C2DLineF>::_M_allocate_and_copy 0x00BDB9B0 (tag homed in its dead `n` slot) and vector::operator=
@@ -18,7 +18,7 @@ public:
     C2DVectorF End;                      // +0x08
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -32,4 +32,4 @@ _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __la
 
 template C2DLineF* __fastcall __uninitialized_copy<C2DLineF*, C2DLineF*>(C2DLineF*, C2DLineF*, C2DLineF*, const __false_type&);
 
-} // namespace _STL
+} // namespace std

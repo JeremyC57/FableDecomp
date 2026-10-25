@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A7FBA0 _STL::__unguarded_partition over (unsigned __int64 key, value) entries: every entry before
+// Behaviour test for 0x00A7FBA0 std::__unguarded_partition over (unsigned __int64 key, value) entries: every entry before
 // the returned cut has a key <= pivot, every entry from the cut on has a key >= pivot; the multiset of keys is kept.
 #include <cstdio>
 struct SEntry { unsigned long long first; bool second; };

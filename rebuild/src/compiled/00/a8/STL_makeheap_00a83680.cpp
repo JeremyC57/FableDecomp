@@ -1,4 +1,4 @@
-// _STL::__make_heap(SKeyedList* first, SKeyedList* last, CKeyPairCompareLess comp, SKeyedList*, int*) -- SGI make_heap over (unsigned __int64 key, list) pairs: sift every parent position down from (len - 2) / 2 to the root
+// std::__make_heap(SKeyedList* first, SKeyedList* last, CKeyPairCompareLess comp, SKeyedList*, int*) -- SGI make_heap over (unsigned __int64 key, list) pairs: sift every parent position down from (len - 2) / 2 to the root
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A83680, 156 bytes (+ int3 padding), `ret 0Ch`: /Gr `__fastcall` (first in
 //   ecx, last in edx; the empty comparator and the two type pointers on the stack).

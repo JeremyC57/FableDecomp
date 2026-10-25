@@ -30,7 +30,7 @@ public:
     virtual ~CBaseClass();
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 template <class T> struct less { };
@@ -93,7 +93,7 @@ public:
     map() : _M_t(Compare(), Alloc()) { }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 namespace {
 
@@ -106,9 +106,9 @@ class CShaderStats : public CBaseClass {
 public:
     static const CCharString NoneStr;           // 0x013BC440
     CCharString CurrentPixelShaderName;         // +0x04
-    _STL::map<_STL::pair<CCharString, CCharString>, CInitialisedValue<unsigned long, 0> > PixelShaderChanges;   // +0x08
+    std::map<std::pair<CCharString, CCharString>, CInitialisedValue<unsigned long, 0> > PixelShaderChanges;   // +0x08
     CCharString CurrentVertexShaderName;        // +0x14
-    _STL::map<_STL::pair<CCharString, CCharString>, CInitialisedValue<unsigned long, 0> > VertexShaderChanges;  // +0x18
+    std::map<std::pair<CCharString, CCharString>, CInitialisedValue<unsigned long, 0> > VertexShaderChanges;  // +0x18
     CShaderStats();
     virtual ~CShaderStats();
 };

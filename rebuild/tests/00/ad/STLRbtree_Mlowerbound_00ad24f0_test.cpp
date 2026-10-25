@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<pair<long,long>, pair<const pair<long,long>, CCountedPointer<CVertexPairContraction> >, ...>::_M_lower_bound @ 0x00AD24F0
+// Behaviour test for std::_Rb_tree<pair<long,long>, pair<const pair<long,long>, CCountedPointer<CVertexPairContraction> >, ...>::_M_lower_bound @ 0x00AD24F0
 // Returns the first node whose key is not less than k (lexicographic pair order), or the header when there is none.
 #include <cstdio>
 #include <cstdlib>

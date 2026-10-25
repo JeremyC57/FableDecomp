@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::insert_unique(const CWideString& v) -- set<CWideString> insert: find v's position, insert it unless an equal string exists, return the iterator and whether it was inserted
+// std::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::insert_unique(const CWideString& v) -- set<CWideString> insert: find v's position, insert it unless an equal string exists, return the iterator and whether it was inserted
 // Leaf: ?insert_unique@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AAEB0, 155 bytes, thiscall `ret 8` (hidden pair<iterator, bool> result). Catalog
 // name "RBTree_LowerBound" is a guess. Callers: CBankFileManager 0x009A7A63 / 0x009A7DBC (CreatedRetailBanks, the
@@ -14,7 +14,7 @@ public:
     bool operator<(const CWideString& other) const;         // 0x0099AF70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

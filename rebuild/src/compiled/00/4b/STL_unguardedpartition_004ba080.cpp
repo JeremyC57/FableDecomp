@@ -1,6 +1,6 @@
-// _STL::__unguarded_partition(pair<CCharString,CPersistInfo>* first, pair<CCharString,CPersistInfo>* last, pair<CCharString,CPersistInfo> pivot, CKeyPairCompareLess<CCharString,CPersistInfo> comp) -- STLport Hoare partition of the quest-persistence script map around a by-value pivot (ordered by quest-name key): returns the first entry of the upper part
-// Instantiation: _STL::__unguarded_partition<pair<CCharString,CPersistInfo>*,pair<CCharString,CPersistInfo>,CKeyPairCompareLess<CCharString,CPersistInfo> >
-// Leaf: ??$__unguarded_partition@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@_STL@@U12@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@_STL@@
+// std::__unguarded_partition(pair<CCharString,CPersistInfo>* first, pair<CCharString,CPersistInfo>* last, pair<CCharString,CPersistInfo> pivot, CKeyPairCompareLess<CCharString,CPersistInfo> comp) -- STLport Hoare partition of the quest-persistence script map around a by-value pivot (ordered by quest-name key): returns the first entry of the upper part
+// Instantiation: std::__unguarded_partition<pair<CCharString,CPersistInfo>*,pair<CCharString,CPersistInfo>,CKeyPairCompareLess<CCharString,CPersistInfo> >
+// Leaf: ??$__unguarded_partition@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BA080, 128 bytes, __fastcall (first ecx, last edx; the 12-byte by-value
 //   pivot and the 4-byte comparator slot on the stack), `ret 10h`; the callee destroys its by-value pivot.
 // Identity: called by the __introsort_loop @ 0x004BBA40 of the pair<CCharString, CPersistInfo> sort (sort @ 0x004BBB40,
@@ -64,7 +64,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -74,14 +74,14 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo CPersistInfo;
-typedef _STL::pair<CCharString, CPersistInfo> CPersistEntry;
+typedef std::pair<CCharString, CPersistInfo> CPersistEntry;
 typedef CKeyPairCompareLess<CCharString, CPersistInfo> CPersistLess;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2>
 void __fastcall iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2);                                  // 0x004B7800
 

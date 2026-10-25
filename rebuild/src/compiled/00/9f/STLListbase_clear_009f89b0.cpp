@@ -1,5 +1,5 @@
-// _STL::_List_base::clear() -- free every graphic data-bank entry of the bank manager's list (counted bank released, bank handle string destroyed) and relink the sentinel to itself
-// Instantiation: _STL::_List_base<CGraphicBankManager::CGraphicDataBankInfo,_STL::allocator<CGraphicBankManager::CGraphicDataBankInfo> >::clear
+// std::_List_base::clear() -- free every graphic data-bank entry of the bank manager's list (counted bank released, bank handle string destroyed) and relink the sentinel to itself
+// Instantiation: std::_List_base<CGraphicBankManager::CGraphicDataBankInfo,std::allocator<CGraphicBankManager::CGraphicDataBankInfo> >::clear
 // Leaf: ?clear@?$_List_base@VCGraphicDataBankInfo@CGraphicBankManager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F89B0, 97 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: called by ~CGraphicBankManager 0x009F86C0 (call 0x009F8710) and the STLport `~list` body 0x009F8A90 (catalogued
@@ -75,7 +75,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -120,4 +120,4 @@ void _List_base<_Tp, _Alloc>::clear()
 }
 }
 
-template class _STL::_List_base<CGraphicBankManager::CGraphicDataBankInfo, _STL::allocator<CGraphicBankManager::CGraphicDataBankInfo> >;
+template class std::_List_base<CGraphicBankManager::CGraphicDataBankInfo, std::allocator<CGraphicBankManager::CGraphicDataBankInfo> >;

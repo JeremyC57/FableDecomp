@@ -1,4 +1,4 @@
-// _STL::vector::vector(const vector& x) -- STLport vector<NPlayerTargeting::CTargetPoint> copy constructor: allocate x.size() target points and copy-construct x's elements into them
+// std::vector::vector(const vector& x) -- STLport vector<NPlayerTargeting::CTargetPoint> copy constructor: allocate x.size() target points and copy-construct x's elements into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808470, 104 bytes, __fastcall, `ret 4`, returns this.
 // Name: Ego_r.pdb `std::vector<NPlayerTargeting::CTargetPoint>::vector(const vector&)` (donor 0x008039F0, Dinkumware);
@@ -34,7 +34,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _InputIter, class _ForwardIter>

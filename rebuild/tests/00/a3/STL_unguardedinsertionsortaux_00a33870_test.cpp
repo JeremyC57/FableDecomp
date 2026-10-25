@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A33870 _STL::__unguarded_insertion_sort_aux: with a sentinel minimum in front, the pass sorts the rest stably and keeps every entry intact.
+// Behaviour test for 0x00A33870 std::__unguarded_insertion_sort_aux: with a sentinel minimum in front, the pass sorts the rest stably and keeps every entry intact.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

@@ -1,4 +1,4 @@
-// _STL::list<CVertexGroupBlock>::operator=(const list& x) -- copy-assign the optimiser's block list: assign over the existing blocks pairwise, then erase the surplus or append copies of the rest
+// std::list<CVertexGroupBlock>::operator=(const list& x) -- copy-assign the optimiser's block list: assign over the existing blocks pairwise, then erase the surplus or append copies of the rest
 // Leaf: ??4?$list@VCVertexGroupBlock
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADD020, 0xAB bytes, thiscall, `ret 4`, returns this.
 // Identity: list nodes {next, prev, CVertexGroupBlock}; element assignment is CVertexGroupBlock's implicit operator=
@@ -17,7 +17,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -103,15 +103,15 @@ public:
     map& operator=(const map& __x) { _M_t = __x._M_t; return *this; }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 bytes in retail
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0x0
@@ -223,4 +223,4 @@ list<_Tp>& list<_Tp>::operator=(const list<_Tp>& __x)
 }
 
 template list<CVertexGroupBlock>& list<CVertexGroupBlock>::operator=(const list<CVertexGroupBlock>&);
-} // namespace _STL
+} // namespace std

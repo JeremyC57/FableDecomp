@@ -4,7 +4,7 @@
   - an implicit ctor of `{long, CCharString}` builds only the string (CTextTag, CPaletteEntry, CQuestCardItem);
   - STLport `pair()` zeroes `second` after the compare;
   - CIntelligentPointer's derived vtable store is scheduled after the compare.
-- Explicit instantiation of `vector<T>::resize(unsigned int)` also emits the inline two-argument `resize(n, x)` as its own COMDAT, and `?resize@?$vector@` then matches two symbols. Use the full `?resize@?$vector@...@_STL@@QAEXI@Z` leaf (0x0049B7F0).
+- Explicit instantiation of `vector<T>::resize(unsigned int)` also emits the inline two-argument `resize(n, x)` as its own COMDAT, and `?resize@?$vector@` then matches two symbols. Use the full `?resize@?$vector@...@std@@QAEXI@Z` leaf (0x0049B7F0).
 - The catalog label "vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>>::resize" covers every 8-byte-element resize(n), across seven element types. Identify each from the caller's class layout plus the `?resize@?$vector@V<elem>` PDB name sets.
 - CArray<T> (Lionhead) has no resize in the PDB name sets: `CArray<T>::Resize` callers really call the inherited `vector<T>::resize` (0x009C7850 from CFileInstaller::InitBuffers).
 - The byte-vector resize (0x004122D0) is STLport `__copy_trivial` with `__last == __first` both `_M_finish`. VC7.1 keeps the unfolded `cmp eax,eax ; jne` and `mov esi,eax ; sub esi,eax` from the plain template. memmove is a plain `extern "C"` declaration: the call is rel32 to the 0x00BFEAE6 thunk, not `call [__imp_]`.
@@ -28,5 +28,5 @@ Review at landing:
   - The landed 0x00CD2AE2 "CTavernTableDef::operator=" is really the copy of a {CScriptThing, bool} record (it calls CScriptThing's copy 0x004ABE90).
   - The landed CFileInstaller::InitBuffers 0x009C5310 names its callee 0x009C7850 "CArray<CBufferChunk>::Resize(unsigned long)"; it is the inherited `vector<CFileInstaller::CBufferChunk>::resize(unsigned int)`.
   - The landed 0x00A744B0 is named Copy_VectorWord (C3DVectorWord), but its caller 0x00A97A50 is vector<C3DTriangle2>::resize (the landed C3DMeshFileTrianglesChunk::ReadFromFile agrees). The 6-byte POD `__copy` bodies are byte twins, so the label is propagated.
-  - The landed 0x004DA636, 0x004129F0 and 0x004110D0 use namespace `std` instead of `_STL`. 0x004110D0 cites `.?AVlength_error@std@@` RTTI. This chunk follows the brief's `_STL` rule; pick one convention at landing.
+  - The landed 0x004DA636, 0x004129F0 and 0x004110D0 use namespace `std` instead of `std`. 0x004110D0 cites `.?AVlength_error@std@@` RTTI. This chunk follows the brief's `std` rule; pick one convention at landing.
 - No catalog row in this chunk holds two functions.

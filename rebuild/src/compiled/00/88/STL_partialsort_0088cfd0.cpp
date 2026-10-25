@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<long, CAIStateGroupBase*>* first, pair<long, CAIStateGroupBase*>* middle, pair<long, CAIStateGroupBase*>* last, pair<long, CAIStateGroupBase*>*, CKeyPairCompareGreater comp) -- introsort depth-limit fallback for the AI brain's state-group map: heap the prefix, pop every higher-priority group from the rest into it, then heap-sort the prefix
+// std::__partial_sort(pair<long, CAIStateGroupBase*>* first, pair<long, CAIStateGroupBase*>* middle, pair<long, CAIStateGroupBase*>* last, pair<long, CAIStateGroupBase*>*, CKeyPairCompareGreater comp) -- introsort depth-limit fallback for the AI brain's state-group map: heap the prefix, pop every higher-priority group from the rest into it, then heap-sort the prefix
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088CFD0, 107 bytes, `ret 0Ch` (/Gr algorithm TU: first in ecx, middle
 //   in edx; last, the value-type tag pointer and the empty comparator on the stack).
@@ -11,7 +11,7 @@
 //   `*i = *first`, then rebuilt in its argument slot by the pair copy constructor (`sub esp,8 ; mov eax,esp`).
 class CAIStateGroupBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a struct: mangled U)
     typedef _T1 first_type;
     typedef _T2 second_type;
@@ -26,12 +26,12 @@ template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a s
 // CAIStateGroupBase*> > -- the groups are kept in DESCENDING key (priority) order; the comparator is empty.
 template <class K, class V> class CKeyPairCompareGreater {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first > b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first > b.first; }
 };
-typedef _STL::pair<long, CAIStateGroupBase*> TGroupEntry;
+typedef std::pair<long, CAIStateGroupBase*> TGroupEntry;
 typedef CKeyPairCompareGreater<long, CAIStateGroupBase*> TGroupCompare;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x0088CA20

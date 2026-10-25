@@ -1,4 +1,4 @@
-// _STL::__copy_ptrs(const CShoveHaPennyRegionDef* first, const CShoveHaPennyRegionDef* last, CShoveHaPennyRegionDef* result, const __false_type&) -- STLport __copy_ptrs for the non-POD shove-ha'penny region def: counted forward assignment of 48-byte elements, returns the advanced result
+// std::__copy_ptrs(const CShoveHaPennyRegionDef* first, const CShoveHaPennyRegionDef* last, CShoveHaPennyRegionDef* result, const __false_type&) -- STLport __copy_ptrs for the non-POD shove-ha'penny region def: counted forward assignment of 48-byte elements, returns the advanced result
 // Leaf: __copy_ptrs
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EAF33, 75 bytes, `ret 8` (/Gr __fastcall: first in ecx, last in edx; result and the
 //   tag reference on the stack).
@@ -37,7 +37,7 @@ public:
         return *this;
     }
 };
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>

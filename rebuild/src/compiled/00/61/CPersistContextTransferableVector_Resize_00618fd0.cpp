@@ -7,7 +7,7 @@
 // Callees: vector<unsigned __int64>::resize(size_type, const value_type&) @ 0x00618EF0.
 // Shape: `TransVector->resize(size)` with STLport `resize(n) { resize(n, _Tp()); }` inlined: the zero 64-bit
 //   temporary is two eax stores into the 8-byte frame.
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -39,13 +39,13 @@ class CStringParser;
 template <class T>
 class CPersistContext_TransferableVector {
 public:
-    CPersistContext_TransferableVector(_STL::vector<T>& v);
+    CPersistContext_TransferableVector(std::vector<T>& v);
 private:
     virtual long Size();                                                                    // slot 0
     virtual void Resize(long size) { TransVector->resize(size); }                           // slot 1
     virtual void TransferIn(CPersistContext& context, CStringParser& parser, long index);  // slot 2
     virtual void TransferOut(CPersistContext& context, CCharString& out, long index);      // slot 3
-    _STL::vector<T>* TransVector;                                                           // +0x04
+    std::vector<T>* TransVector;                                                           // +0x04
 };
 
 template void CPersistContext_TransferableVector<unsigned __int64>::Resize(long);

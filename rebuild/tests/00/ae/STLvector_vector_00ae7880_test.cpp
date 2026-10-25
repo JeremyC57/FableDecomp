@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE7880 _STL::vector<_STL::set<long> >::vector(unsigned int n): n empty sets, each with its own
+// behaviour test for 0x00AE7880 std::vector<std::set<long> >::vector(unsigned int n): n empty sets, each with its own
 // header (colour red, no root, leftmost = rightmost = header); the temporary's header is freed again
 #include <cstdio>
 #include <cstdlib>

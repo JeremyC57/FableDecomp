@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<long,CMusicManager::CRegisteredMusicEntry>* first, pair<...>* last, pair<...>*, CKeyPairCompareLess<long,CMusicManager::CRegisteredMusicEntry> comp) -- STLport final unguarded insertion pass over the registered-music map
+// std::__unguarded_insertion_sort_aux(pair<long,CMusicManager::CRegisteredMusicEntry>* first, pair<...>* last, pair<...>*, CKeyPairCompareLess<long,CMusicManager::CRegisteredMusicEntry> comp) -- STLport final unguarded insertion pass over the registered-music map
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BEB80, 101 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx, last in edx
 //   -> ebp; the value-type tag pointer and the comparator word on the stack, `ret 8`).
@@ -34,7 +34,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -54,10 +54,10 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 }
 
 template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value (one stack word)
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-typedef _STL::pair<long, CMusicManager::CRegisteredMusicEntry> TMusicEntryPair;
+typedef std::pair<long, CMusicManager::CRegisteredMusicEntry> TMusicEntryPair;
 typedef CKeyPairCompareLess<long, CMusicManager::CRegisteredMusicEntry> TMusicEntryLess;
-template void __fastcall _STL::__unguarded_insertion_sort_aux<TMusicEntryPair*, TMusicEntryPair, TMusicEntryLess>(
+template void __fastcall std::__unguarded_insertion_sort_aux<TMusicEntryPair*, TMusicEntryPair, TMusicEntryLess>(
     TMusicEntryPair*, TMusicEntryPair*, TMusicEntryPair*, TMusicEntryLess);

@@ -1,4 +1,4 @@
-// _STL::vector<CMatrix3x4>::reserve(unsigned int n) -- STLport reserve of the 48-byte matrix array: when the capacity is below n, move the elements into a fresh block of n (copy + free) or just allocate one
+// std::vector<CMatrix3x4>::reserve(unsigned int n) -- STLport reserve of the 48-byte matrix array: when the capacity is below n, move the elements into a fresh block of n (copy + free) or just allocate one
 // Leaf: ?reserve@?$vector@VCMatrix3x4@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAFD90, length 153 bytes, `ret 4`.
 // Callees: vector<CMatrix3x4>::_M_allocate_and_copy<const CMatrix3x4*> @ 0x00AAFCA0 (out of line), free @ 0x00BFEA14
@@ -17,7 +17,7 @@ public:
     float m_row[3][4];
 };
 
-namespace _STL {
+namespace std {
 
 template <class T> class allocator {
 public:
@@ -80,4 +80,4 @@ void vector<T, A>::reserve(size_type n)
 
 template void vector<CMatrix3x4>::reserve(unsigned int);
 
-}   // namespace _STL
+}   // namespace std

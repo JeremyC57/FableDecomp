@@ -1,6 +1,6 @@
-// _STL::vector::vector(const vector<pair<unsigned long,CDefClassBase::CSubDefInfo> >& other) -- copy constructor of the parent def's sub-def info map vector: allocate other.size() entries and placement-copy every (key, sub-def info) pair
-// Instantiation: _STL::vector<pair<unsigned long,CDefClassBase::CSubDefInfo> >::vector
-// Leaf: ??0?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@_STL@@
+// std::vector::vector(const vector<pair<unsigned long,CDefClassBase::CSubDefInfo> >& other) -- copy constructor of the parent def's sub-def info map vector: allocate other.size() entries and placement-copy every (key, sub-def info) pair
+// Instantiation: std::vector<pair<unsigned long,CDefClassBase::CSubDefInfo> >::vector
+// Leaf: ??0?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0046EECF, 100 bytes (size-optimised def TU, no padding), thiscall, `ret 4`.
 // Identity: called by the landed CParentDefClassBase copy constructor 0x0046EE98 (SubDefInfoMap's vector) and six more
 //   CParentDefClassBase-derived copy constructors (0x00624608, 0x006249C9, 0x006250D5, 0x0067C6F5, ...). Ego_r.pdb names it
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _T1, class _T2> struct pair {

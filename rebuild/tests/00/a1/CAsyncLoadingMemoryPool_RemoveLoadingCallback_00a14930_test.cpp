@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)
 {
@@ -77,14 +77,14 @@ public:
 class CAsyncLoadingMemoryPool {
 public:
     static void RemoveLoadingCallback(CAsyncLoadingProcessCallback* callback);
-    static _STL::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
+    static std::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
 };
 
-_STL::vector<CAsyncLoadingProcessCallback*> CAsyncLoadingMemoryPool::LoadingCallbacks;
+std::vector<CAsyncLoadingProcessCallback*> CAsyncLoadingMemoryPool::LoadingCallbacks;
 
 void CAsyncLoadingMemoryPool::RemoveLoadingCallback(CAsyncLoadingProcessCallback* callback)
 {
-    _STL::vector<CAsyncLoadingProcessCallback*>::iterator it = _STL::find(LoadingCallbacks.begin(), LoadingCallbacks.end(), callback);
+    std::vector<CAsyncLoadingProcessCallback*>::iterator it = std::find(LoadingCallbacks.begin(), LoadingCallbacks.end(), callback);
     if (it != LoadingCallbacks.end())
         LoadingCallbacks.erase(it);
 }
@@ -99,7 +99,7 @@ int main()
     CDummyCallback cb[7];
     CAsyncLoadingProcessCallback* storage[8];
     int ok = 1;
-    _STL::vector<CAsyncLoadingProcessCallback*>& v = CAsyncLoadingMemoryPool::LoadingCallbacks;
+    std::vector<CAsyncLoadingProcessCallback*>& v = CAsyncLoadingMemoryPool::LoadingCallbacks;
     for (int i = 0; i < 6; ++i) storage[i] = &cb[i];
     v._M_start = storage; v._M_finish = storage + 6; v._M_end_of_storage._M_data = storage + 8;
 

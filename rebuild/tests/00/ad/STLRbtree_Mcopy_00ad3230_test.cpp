@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<unsigned long, unsigned long, _Identity, less, allocator>::_M_copy (set<unsigned long>) @ 0x00AD3230
+// Behaviour test for std::_Rb_tree<unsigned long, unsigned long, _Identity, less, allocator>::_M_copy (set<unsigned long>) @ 0x00AD3230
 // Structural copy of a red-black subtree: same shape, colours and values, fresh nodes, parent links into the new tree.
 #include <cstdio>
 #include <cstdlib>

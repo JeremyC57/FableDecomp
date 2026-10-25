@@ -30,7 +30,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -99,4 +99,4 @@ vector<_Tp, _Alloc>::vector(unsigned int __n)
 
 template vector<CCharString>::vector(unsigned int);
 
-} // namespace _STL
+} // namespace std

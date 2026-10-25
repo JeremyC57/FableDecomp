@@ -1,5 +1,5 @@
-// _STL::pair::operator=(const pair& other) -- copy assignment of pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo>: the key, then the quest name and persist script
-// Leaf: ??4?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@_STL@@QAEAAU01@ABU01@@Z
+// std::pair::operator=(const pair& other) -- copy assignment of pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo>: the key, then the quest name and persist script
+// Leaf: ??4?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@QAEAAU01@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004B7650, 49 bytes, __fastcall `ret 4`, returns `*this`.
 // Identity: twin of the copy constructor 0x004B7490 (same 12-byte element of three CCharStrings: key, then
 //   NQuestManager::CRuntimeQuestPersistence::CPersistInfo {QuestName, PersistScript}, Ego_r.pdb); the TU's swap 0x004B7800
@@ -26,7 +26,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -35,5 +35,5 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-typedef _STL::pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo> TQuestPersistPair;
+typedef std::pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo> TQuestPersistPair;
 TQuestPersistPair& (TQuestPersistPair::*g_pAssignQuestPersistPair)(const TQuestPersistPair&) = &TQuestPersistPair::operator=;

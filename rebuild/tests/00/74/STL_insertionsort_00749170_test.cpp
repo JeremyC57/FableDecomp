@@ -1,4 +1,4 @@
-// Behaviour test for 0x00749170 _STL::__insertion_sort(CThing**, CThing**, CCompare_FurthestFromInitPos2D)
+// Behaviour test for 0x00749170 std::__insertion_sort(CThing**, CThing**, CCompare_FurthestFromInitPos2D)
 #include <cstdio>
 #include <cstring>
 

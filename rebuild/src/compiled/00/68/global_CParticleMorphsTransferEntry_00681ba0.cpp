@@ -18,8 +18,8 @@ struct CCharString { Data* data;CCharString();CCharString(const char*,int=-1);CC
 Data* MakeData(const char*,int);Data* ShareData(Data*);void DropData(Data*);
 
 struct CPersistContext {char pad[24];int mode;void Write(const char*,CCharString&,CCharString&);void Read(const char*,CCharString&);};
-namespace _STL {template<class T>struct vector {T* first;T* last;T* end;};}
-typedef _STL::vector<bool> BoolVector;
+namespace std {template<class T>struct vector {T* first;T* last;T* end;};}
+typedef std::vector<bool> BoolVector;
 __forceinline CCharString DefaultString(){CCharString s;return s;}
 struct CPersistTraits {void Transfer(CPersistContext*,CCharString*,BoolVector*);};
 void CPersistTraits::Transfer(CPersistContext* ctx,CCharString* name,BoolVector* arr){

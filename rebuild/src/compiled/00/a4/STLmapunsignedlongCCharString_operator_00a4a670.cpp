@@ -1,4 +1,4 @@
-// _STL::map<unsigned long, CCharString>::operator[](const unsigned long& k) -- find the entry for k (inline lower_bound walk); when absent insert (k, CCharString()) at the hint; return a reference to the mapped string
+// std::map<unsigned long, CCharString>::operator[](const unsigned long& k) -- find the entry for k (inline lower_bound walk); when absent insert (k, CCharString()) at the hint; return a reference to the mapped string
 // Leaf: ??A?$map@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4A670, length 147 bytes (+13 int3 pad), `ret 4`.
 // Callers: 0x00A48C6E (CLipSyncSampleData::WriteToFile 0x00A48BA0), 0x00A496F7 / 0x00A499F7 (CLipSyncSampleData::ReadFromFile
@@ -20,7 +20,7 @@ public:
     ~CCharString();                                  // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp>

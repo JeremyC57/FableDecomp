@@ -1,4 +1,4 @@
-// _STL::basic_string<unsigned short>::append(size_type n, unsigned short c) -- append n copies of c (length check, grow to size + max(size, n), fill, terminate)
+// std::basic_string<unsigned short>::append(size_type n, unsigned short c) -- append n copies of c (length check, grow to size + max(size, n), fill, terminate)
 // Bounds: int3-after-noreturn row: RELOCATION_MATCH against the 145-byte row read straight from Fable.exe (byte 144 is the 0xCC VC7.1 emits after the final noreturn _M_throw_length_error call; the chunk row and q.py strip it as padding). Land against an N+1 oracle row (GOTCHAS: int3-after-noreturn rows).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099CB00, 144 bytes, thiscall `ret 8`, returns *this. The function ends in the
 // noreturn length-error call.
@@ -11,8 +11,8 @@
 // Shape: STLport 4.x verbatim -- `max` by reference over size() (spilled to the `push ecx` frame word) and n's own
 // argument slot; the fill reads c through its argument slot; _M_construct_null(_M_finish + n) then
 // `_Traits::assign(*end(), c)` re-read _M_finish after the fill call.
-// Leaf: ?append@?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAEAAV12@IG@Z
-namespace _STL {
+// Leaf: ?append@?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@QAEAAV12@IG@Z
+namespace std {
 
 typedef unsigned int size_t;
 

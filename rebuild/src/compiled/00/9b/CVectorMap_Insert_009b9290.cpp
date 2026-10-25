@@ -25,7 +25,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
@@ -87,7 +87,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -103,21 +103,21 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     void Insert(const K& key, const V& value);
     C    Compare;                                       // +0x0C
     bool Dirty;                                         // +0x0D
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V, class C> void CVectorMap<K, V, C>::Insert(const K& key, const V& value)
 {
-    this->push_back(_STL::pair<K, V>(key, value));
+    this->push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 

@@ -1,5 +1,5 @@
-// _STL::list::_M_insert_dispatch(list<CCountedPointer<CQuestManager::CActiveQuest> >::iterator pos, const_iterator first, const_iterator last, const __false_type&) -- STLport range insert of the active-quest list: for every counted quest pointer in [first, last) allocate a node, copy the pointer (adding a reference) and link it in before `pos`
-// Instantiation: _STL::list<CCountedPointer<CQuestManager::CActiveQuest> >::_M_insert_dispatch
+// std::list::_M_insert_dispatch(list<CCountedPointer<CQuestManager::CActiveQuest> >::iterator pos, const_iterator first, const_iterator last, const __false_type&) -- STLport range insert of the active-quest list: for every counted quest pointer in [first, last) allocate a node, copy the pointer (adding a reference) and link it in before `pos`
+// Instantiation: std::list<CCountedPointer<CQuestManager::CActiveQuest> >::_M_insert_dispatch
 // Leaf: ??$_M_insert_dispatch@U?$_List_iterator@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@U?$_Const_traits@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B92D0, 78 bytes (+ int3 padding), thiscall (`this` unused: the allocator
 //   is stateless), `ret 10h` (pos, first, last, the tag reference).
@@ -38,7 +38,7 @@ public:
     class CActiveQuest;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _Tp> class allocator {

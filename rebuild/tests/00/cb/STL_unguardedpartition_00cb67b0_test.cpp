@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CB67B0 _STL::__unguarded_partition over pair<CCharString,CScriptInfo>: everything before the split sorts no later than the pivot, everything after no earlier.
+// Behaviour test for 0x00CB67B0 std::__unguarded_partition over pair<CCharString,CScriptInfo>: everything before the split sorts no later than the pivot, everything after no earlier.
 #include <cstdio>
 #include <cstring>
 

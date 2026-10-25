@@ -1,4 +1,4 @@
-// _STL::vector<list<C2DLineF> >::erase(list<C2DLineF>* first, list<C2DLineF>* last) -- remove a range of per-cell line lists: assign the tail down over the range list by list, destroy the left-over lists at the end, pull the finish pointer back
+// std::vector<list<C2DLineF> >::erase(list<C2DLineF>* first, list<C2DLineF>* last) -- remove a range of per-cell line lists: assign the tail down over the range list by list, destroy the left-over lists at the end, pull the finish pointer back
 // Leaf: ?erase@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A84090, 78 bytes, thiscall `ret 8`, returns `first`.
 // Identity: callers 0x00A84F7B and 0x00A85273 -- the latter is vector<list<C2DLineF> >::resize 0x00A85240 (the shrink arm,
@@ -15,7 +15,7 @@ extern "C" void __cdecl free(void* block);              // stand-in body only
 
 class C2DLineF;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

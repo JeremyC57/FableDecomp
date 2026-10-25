@@ -18,7 +18,7 @@ public:
     virtual void Start() { ++Started; ++g_starts; }
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -64,7 +64,7 @@ public:
 class CSoundManagerLH {
 public:
     bool Allow;
-    _STL::list<CSoundEmitterLH*> m_entries;
+    std::list<CSoundEmitterLH*> m_entries;
     virtual ~CSoundManagerLH() { }
     virtual CSoundEmitterLH* vfunc_4(const C3DVector& position);
     virtual bool vfunc_6() { return Allow; }
@@ -80,10 +80,10 @@ CSoundEmitterLH* CSoundManagerLH::vfunc_4(const C3DVector& position)
     return 0;
 }
 
-static int Count(_STL::list<CSoundEmitterLH*>& l)
+static int Count(std::list<CSoundEmitterLH*>& l)
 {
     int n = 0;
-    for (_STL::_List_node_base* p = l._M_node->_M_next; p != l._M_node; p = p->_M_next)
+    for (std::_List_node_base* p = l._M_node->_M_next; p != l._M_node; p = p->_M_next)
         ++n;
     return n;
 }
@@ -91,7 +91,7 @@ static int Count(_STL::list<CSoundEmitterLH*>& l)
 int main()
 {
     CSoundManagerLH m;
-    _STL::_List_node_base sentinel;
+    std::_List_node_base sentinel;
     sentinel._M_next = sentinel._M_prev = &sentinel;
     m.m_entries._M_node = &sentinel;
     C3DVector pos = { 1.0f, 2.0f, 3.0f };
@@ -106,10 +106,10 @@ int main()
         || a->Owner != &m || b->Position.X < 4.99f || b->Position.X > 5.01f || a->Position.Z < 2.99f || a->Position.Z > 3.01f
         || m.m_entries.back() != b)
         { std::printf("00a3ecb0_TEST FAIL\n"); return 1; }
-    _STL::_List_node_base* p = sentinel._M_next;
+    std::_List_node_base* p = sentinel._M_next;
     while (p != &sentinel) {
-        _STL::_List_node_base* n = p->_M_next;
-        delete ((_STL::_List_node<CSoundEmitterLH*>*)p)->_M_data;
+        std::_List_node_base* n = p->_M_next;
+        delete ((std::_List_node<CSoundEmitterLH*>*)p)->_M_data;
         free(p);
         p = n;
     }

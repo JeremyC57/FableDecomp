@@ -4,7 +4,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::uninitialized_fill_n<CThemeWeight*> @ 0x00885DD0: copy-construct n theme weights into raw storage
+// Model of std::uninitialized_fill_n<CThemeWeight*> @ 0x00885DD0: copy-construct n theme weights into raw storage
 // through the inline `__false_type` helper, return first + n.
 struct CThemeWeight {
     int   ThemeID;

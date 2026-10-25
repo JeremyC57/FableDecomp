@@ -1,4 +1,4 @@
-// _STL::fill(CNavigationAreaUpdate::CNavigationLayerUpdate* first, CNavigationAreaUpdate::CNavigationLayerUpdate* last, const CNavigationAreaUpdate::CNavigationLayerUpdate& value) -- assign one navigation-layer update (line list and switchable blockages) to every element of a range
+// std::fill(CNavigationAreaUpdate::CNavigationLayerUpdate* first, CNavigationAreaUpdate::CNavigationLayerUpdate* last, const CNavigationAreaUpdate::CNavigationLayerUpdate& value) -- assign one navigation-layer update (line list and switchable blockages) to every element of a range
 // Leaf: ??$fill@PAVCNavigationLayerUpdate@CNavigationAreaUpdate@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051CAA0, 50 bytes, `__fastcall` (first ecx, last edx, value pointer
 //   on the stack), `ret 4`.
@@ -35,7 +35,7 @@ public:
 };
 typedef CNavigationAreaUpdate::CNavigationLayerUpdate CNavigationLayerUpdate;
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -45,4 +45,4 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CNavigationLayerUpdate*, CNavigationLayerUpdate>(CNavigationLayerUpdate*, CNavigationLayerUpdate*, const CNavigationLayerUpdate&);
+template void __fastcall std::fill<CNavigationLayerUpdate*, CNavigationLayerUpdate>(CNavigationLayerUpdate*, CNavigationLayerUpdate*, const CNavigationLayerUpdate&);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00743EC0 _STL::__introsort_loop over the mode-registry pairs (unsigned key)
+// Behaviour test for 0x00743EC0 std::__introsort_loop over the mode-registry pairs (unsigned key)
 #include <cstdio>
 struct CRegisteredModeInfo { int tag; };
 

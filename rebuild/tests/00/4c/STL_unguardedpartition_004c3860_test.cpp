@@ -45,7 +45,7 @@ static bool Same(const CMeshInfo* a, const int* bits, int invert, const int* wan
 }
 
 // STLport 4.x sort / heap algorithms (the model's bodies and the test's copies of their out-of-line callees).
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
@@ -248,7 +248,7 @@ static bool TestFunction()
     Fill(a, kBits12, 12, 0);
     CMeshInfo pivot;                                    // a non-primary pivot (a primary one never stops the right scan)
     pivot.Index = 99; pivot.SizeX = 0.0f; pivot.PrimaryMesh = 0;
-    CMeshInfo* cut = _STL::__unguarded_partition(a, a + 12, pivot, TLess());
+    CMeshInfo* cut = std::__unguarded_partition(a, a + 12, pivot, TLess());
     bool ok = cut == a + 8 && Same(a, kBits12, 0, want, 12);
     for (CMeshInfo* p = cut; ok && p < a + 12; ++p)
         if (p->PrimaryMesh)

@@ -8,10 +8,10 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::vector<long>::_M_initialize_aux<int>(n, val, __true_type) @ 0x00451C3E: allocate n longs and fill
+// Model of std::vector<long>::_M_initialize_aux<int>(n, val, __true_type) @ 0x00451C3E: allocate n longs and fill
 // them with val (the integral fill-constructor path).
 
-namespace _STL {
+namespace std {
 struct __true_type { };
 
 template <class _Tp> class allocator {
@@ -63,15 +63,15 @@ public:
 int main()
 {
     bool ok = true;
-    _STL::vector<long> v;
-    v._M_initialize_aux(5, 7, _STL::__true_type());
+    std::vector<long> v;
+    v._M_initialize_aux(5, 7, std::__true_type());
     if (v._M_finish - v._M_start != 5 || v._M_end_of_storage._M_data != v._M_start + 5)
         ok = false;
     for (int i = 0; i < 5; ++i)
         if (v._M_start[i] != 7)
             ok = false;
-    _STL::vector<long> w;
-    w._M_initialize_aux(0, 3, _STL::__true_type());
+    std::vector<long> w;
+    w._M_initialize_aux(0, 3, std::__true_type());
     if (w._M_start != 0 || w._M_finish != 0 || w._M_end_of_storage._M_data != 0)
         ok = false;
     if (!ok) { printf("00451c3e_TEST FAIL\n"); return 1; }

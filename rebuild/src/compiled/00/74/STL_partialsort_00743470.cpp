@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* first, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* middle, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* last, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>*, CKeyPairCompareLess comp) -- heap-select the smallest keys into [first, middle) and sort them
+// std::__partial_sort(pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* first, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* middle, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* last, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>*, CKeyPairCompareLess comp) -- heap-select the smallest keys into [first, middle) and sort them
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00743470, 107 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, middle in edx,
 //   then last, the value-type tag pointer and the empty comparator on the stack).
@@ -20,7 +20,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                             // +0x00
     B second;                                            // +0x04
@@ -30,13 +30,13 @@ template <class A, class B> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {  // empty, passed by value
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModePair;
+typedef std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModePair;
 typedef CKeyPairCompareLess<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModeLess;
 
-namespace _STL {
+namespace std {
 void __fastcall __make_heap(TModePair* first, TModePair* last, TModeLess comp, TModePair*, int*);              // 0x0073DF30
 void __fastcall __adjust_heap(TModePair* first, int holeIndex, int len, TModePair val, TModeLess comp);       // 0x0073D7C0
 void __fastcall sort_heap(TModePair* first, TModePair* last, TModeLess comp);                                 // 0x007423D0

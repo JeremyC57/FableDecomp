@@ -41,7 +41,7 @@ public:
 
 static int g_overflows = 0;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -87,7 +87,7 @@ int main()
     CPhysicsMeshInfo info;
     info.Bank = &bank; info.Index = 42; info.MeshData.Object = &data;
 
-    _STL::vector<CPhysicsMeshInfo> v;
+    std::vector<CPhysicsMeshInfo> v;
     v._M_start = (CPhysicsMeshInfo*)std::malloc(2 * sizeof(CPhysicsMeshInfo));
     v._M_finish = v._M_start; v._M_end_of_storage._M_data = v._M_start + 2;
 

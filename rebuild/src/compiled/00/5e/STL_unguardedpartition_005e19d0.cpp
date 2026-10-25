@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > pivot, CKeyPairCompareLess<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > comp) -- STLport quicksort partition of anim-component map entries around a by-value pivot (signed key order); returns the cut
+// std::__unguarded_partition(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > pivot, CKeyPairCompareLess<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > comp) -- STLport quicksort partition of anim-component map entries around a by-value pivot (signed key order); returns the cut
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E19D0, 94 bytes, `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   esi, last in edx -> edi, the 8-byte pivot by value and the empty comparator on the stack).

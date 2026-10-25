@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CThing** first, CThing** last, ThingCompare comp) -- STLport insertion sort: each element that sorts before *first is memmoved to the front, the rest take the unguarded insert
+// std::__insertion_sort(CThing** first, CThing** last, ThingCompare comp) -- STLport insertion sort: each element that sorts before *first is memmoved to the front, the rest take the unguarded insert
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00932660, 110 bytes (112 with padding), `ret 4` (first in ecx, last in edx, comp on the stack).
 // Name: STLport `__insertion_sort<CThing**, bool (__fastcall*)(CThing*, CThing*)>`; callers sort 0x0093291A / 0x00932934
@@ -23,7 +23,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, size_t n);   // 0x0
 class CThing;
 typedef bool (__fastcall* ThingCompare)(CThing* a, CThing* b);   // e.g. the height compare 0x00930D90
 
-namespace _STL {
+namespace std {
 inline void* __copy_trivial_backward(const void* __first, const void* __last, void* __result)
 {
     const ptrdiff_t _Num = (const char*)__last - (const char*)__first;

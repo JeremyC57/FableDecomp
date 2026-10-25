@@ -1,4 +1,4 @@
-# Hand chunk 451 (_STL::__partial_sort .. FadeOutThing): 37 of 40 byte-exact
+# Hand chunk 451 (std::__partial_sort .. FadeOutThing): 37 of 40 byte-exact
 
 All 40 rows are `_global` in the catalog. They come from two TUs: the scripting library's STLport 4.x algorithm
 instantiations (0x00CB7140-0x00CBD0F0, built `/Gr` so the templates are `__fastcall`) with two CScriptBase-family
@@ -8,7 +8,7 @@ A = `pair<CCharString, CScriptInfo>` (0x18), B = `pair<unsigned __int64, CRuntim
 D = `pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >` (0x0C, compared with CCharString::FastCompare).
 
 ## What matched (37)
-- **_STL (STLport 4.x algorithms, 24 rows)** -- __partial_sort A/D (0x00CB7140, 0x00CBD0F0), __unguarded_linear_insert
+- **std (STLport 4.x algorithms, 24 rows)** -- __partial_sort A/D (0x00CB7140, 0x00CBD0F0), __unguarded_linear_insert
   B/C (0x00CB92C0, 0x00CBA840), __uninitialized_copy / __uninitialized_fill_n B (0x00CB9B00, 0x00CB9B50), __median B/C
   (0x00CB9D30, 0x00CB9DA0), __unguarded_insertion_sort_aux B/C (0x00CB9E40, 0x00CBB270), __unguarded_partition B/D
   (0x00CBA580, 0x00CBB860), swap D (0x00CBA8E0), __make_heap B/C/D (0x00CBAAB0, 0x00CBBB70, 0x00CBBC00), __linear_insert
@@ -41,25 +41,25 @@ D = `pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >` (0x0C, compa
 - None: no row holds a second function.
 
 ## Label corrections
-- 0x00CB7140 "ScriptInfo_Heapsort" -> `_STL::__partial_sort<pair<CCharString, CScriptInfo>*>`
+- 0x00CB7140 "ScriptInfo_Heapsort" -> `std::__partial_sort<pair<CCharString, CScriptInfo>*>`
 - 0x00CB7BC0 "NavQuadTree_MarkNodeActive" -> `CScriptBase::OnScriptedEntityInterrupted(unsigned __int64)`
 - 0x00CB8170 "ScriptEntity_UpdateSpawnedFunctions" -> `CScriptBase::RunEntityThreads()`
 - 0x00CB82F0 "ScriptEntity_InsertOrUpdatePersist" -> `NScript::CRuntimeScriptedEntityPersist::SetEntityPersistScript`
-- 0x00CB92C0 "NavigationPosition_InsertSorted" -> `_STL::__unguarded_linear_insert` (B)
-- 0x00CB9B00 "_Move<CMusicEntry*,CMusicEntry*>" -> `_STL::__uninitialized_copy` (B)
-- 0x00CB9B50 "fill<CTextureManagerPoolInfo*,...>" -> `_STL::__uninitialized_fill_n` (B)
-- 0x00CB9D30 "MinOf3" / 0x00CB9DA0 "MaxOf3" -> `_STL::__median` (B / C; byte-identical)
-- 0x00CB9E40 / 0x00CBB270 "_Copy_impl<CNavigationPosition*,...>" -> `_STL::__unguarded_insertion_sort_aux` (B / C)
-- 0x00CBA580 "PSCInfo_Partition" / 0x00CBB860 "Quicksort_Partition" -> `_STL::__unguarded_partition` (B / D)
-- 0x00CBA840 "SpeechFrame_InsertSorted" -> `_STL::__unguarded_linear_insert` (C)
-- 0x00CBA8E0 "swap<C3DMeshVolume>" -> `_STL::swap` (D)
+- 0x00CB92C0 "NavigationPosition_InsertSorted" -> `std::__unguarded_linear_insert` (B)
+- 0x00CB9B00 "_Move<CMusicEntry*,CMusicEntry*>" -> `std::__uninitialized_copy` (B)
+- 0x00CB9B50 "fill<CTextureManagerPoolInfo*,...>" -> `std::__uninitialized_fill_n` (B)
+- 0x00CB9D30 "MinOf3" / 0x00CB9DA0 "MaxOf3" -> `std::__median` (B / C; byte-identical)
+- 0x00CB9E40 / 0x00CBB270 "_Copy_impl<CNavigationPosition*,...>" -> `std::__unguarded_insertion_sort_aux` (B / C)
+- 0x00CBA580 "PSCInfo_Partition" / 0x00CBB860 "Quicksort_Partition" -> `std::__unguarded_partition` (B / D)
+- 0x00CBA840 "SpeechFrame_InsertSorted" -> `std::__unguarded_linear_insert` (C)
+- 0x00CBA8E0 "swap<C3DMeshVolume>" -> `std::swap` (D)
 - 0x00CBAAB0 "ScriptEntity_BuildHeapify" / 0x00CBBB70 "CActiveEntityScript_BuildHeapify" / 0x00CBBC00
-  "EntityScriptBinding_BuildHeapify" -> `_STL::__make_heap` (B / C / D)
+  "EntityScriptBinding_BuildHeapify" -> `std::__make_heap` (B / C / D)
 - 0x00CBB920 "NavigationPosition_InsertInOrder" / 0x00CBC330 "Item_InsertInPriorityOrder" / 0x00CBC3C0
-  "SoundPair_InsertInPriorityOrder" -> `_STL::__linear_insert` (B / C / D)
-- 0x00CBC7B0 "CMusicEntry_InsertIfCapacity" -> `_STL::vector<pair<unsigned __int64, CPersistInfo> >::push_back`
-- 0x00CBCF20 "PriorityQueue_BuildHeap" / 0x00CBCF70 "SoundPair_BuildHeap" -> `_STL::__insertion_sort` (C / D)
-- 0x00CBD0F0 "CGameCameraManager_InitModes" -> `_STL::__partial_sort` (D)
+  "SoundPair_InsertInPriorityOrder" -> `std::__linear_insert` (B / C / D)
+- 0x00CBC7B0 "CMusicEntry_InsertIfCapacity" -> `std::vector<pair<unsigned __int64, CPersistInfo> >::push_back`
+- 0x00CBCF20 "PriorityQueue_BuildHeap" / 0x00CBCF70 "SoundPair_BuildHeap" -> `std::__insertion_sort` (C / D)
+- 0x00CBD0F0 "CGameCameraManager_InitModes" -> `std::__partial_sort` (D)
 - 0x00CBE512 "GetSquaredDistanceBetweenThings" -> `GetDistanceBetweenThings` (fsqrt); the squared ones are 0x00CBE583
   (manifest "CScriptBase::Activate", wrong) and 0x00CBE5C0 (thing to position)
 - 0x00CBE551 "DistanceCalculator_GetVectorDistance" -> `GetDistanceBetweenThingAndPosition`
@@ -70,4 +70,4 @@ D = `pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >` (0x0C, compa
   0x00CB8D30 (`CCountedPointerCEntityScriptBindingBase_DeleteData_00cb8d30.cpp`, modelled as `operator_new` calling
   `helper_bfeb1c`) calls 0x00BFE9BC operator delete, not the 0x00BFEB1C import; 0x00CBD5B0
   (`CVectorMap_T_00cbd5b0_Sort_00cbd5b0.cpp`, callee "GuiVarBool_Apply") is `CVectorMap<unsigned __int64,
-  CPersistInfo>::Sort` calling `_STL::sort` 0x00CBD370 (the same sort SetEntityPersistScript's Add uses).
+  CPersistInfo>::Sort` calling `std::sort` 0x00CBD370 (the same sort SetEntityPersistScript's Add uses).

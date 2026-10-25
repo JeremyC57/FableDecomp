@@ -1,5 +1,5 @@
-// _STL::vector::_M_insert_overflow(CScriptEntry* position, const CScriptEntry& x, const __false_type&, unsigned int fillLen, bool atEnd) -- (vector<CRangeCompressor::CScriptEntry>) grow: allocate size + max(size, fillLen) entries, copy the prefix, construct the fill, copy the tail unless at the end, free the old block
-// Leaf: ?_M_insert_overflow@?$vector@UCScriptEntry@CRangeCompressor@@V?$allocator@UCScriptEntry@CRangeCompressor@@@_STL@@@_STL@@IAEXPAUCScriptEntry@CRangeCompressor@@ABU34@ABU__false_type@2@I_N@Z
+// std::vector::_M_insert_overflow(CScriptEntry* position, const CScriptEntry& x, const __false_type&, unsigned int fillLen, bool atEnd) -- (vector<CRangeCompressor::CScriptEntry>) grow: allocate size + max(size, fillLen) entries, copy the prefix, construct the fill, copy the tail unless at the end, free the old block
+// Leaf: ?_M_insert_overflow@?$vector@UCScriptEntry@CRangeCompressor@@V?$allocator@UCScriptEntry@CRangeCompressor@@@std@@@std@@IAEXPAUCScriptEntry@CRangeCompressor@@ABU34@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3B330, 238 bytes (+ int3 padding), thiscall `ret 14h`.
 // Identity: only caller is vector<CScriptEntry>::push_back 0x00F3B420 (landed as CRetailVector_SRecord24), used by
 //   CRangeCompressor::CalcCompressionScript 0x00F3ABF0; element = Ego_r.pdb CRangeCompressor::CScriptEntry (24 bytes).
@@ -26,7 +26,7 @@ public:
 };
 typedef CRangeCompressor::CScriptEntry CScriptEntry;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -119,4 +119,4 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 
 template void vector<CScriptEntry>::_M_insert_overflow(CScriptEntry*, const CScriptEntry&, const __false_type&, unsigned int, bool);
 
-}   // namespace _STL
+}   // namespace std

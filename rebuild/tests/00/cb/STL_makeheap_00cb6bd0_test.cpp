@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CB6BD0 _STL::__make_heap over pair<CCharString,CScriptInfo>: a max-heap on the name; 0/1 elements untouched.
+// Behaviour test for 0x00CB6BD0 std::__make_heap over pair<CCharString,CScriptInfo>: a max-heap on the name; 0/1 elements untouched.
 #include <cstdio>
 #include <cstring>
 

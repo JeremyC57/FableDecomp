@@ -1,4 +1,4 @@
-// _STL::vector<unsigned short>::push_back(const unsigned short& x) -- append one 16-bit element, growing through _M_insert_overflow when full
+// std::vector<unsigned short>::push_back(const unsigned short& x) -- append one 16-bit element, growing through _M_insert_overflow when full
 // Leaf: ?push_back@?$vector@G
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B4A20, 52 bytes, `ret 4` (__fastcall). Catalog name "Vector_Append_uint16"
 // (descriptive). Callers 0x00A86AC6, 0x00A86AD8, 0x00F3DE3A. Callee: vector<unsigned short>::_M_insert_overflow(pos, x,
@@ -15,7 +15,7 @@ struct __true_type {
     __true_type() {}
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class vector {
 public:
     _Tp* _M_start;                              // +0x00
@@ -35,7 +35,7 @@ public:
 }
 
 #pragma auto_inline(off)
-template <> void _STL::vector<unsigned short>::_M_insert_overflow(unsigned short* __position, const unsigned short& __x,
+template <> void std::vector<unsigned short>::_M_insert_overflow(unsigned short* __position, const unsigned short& __x,
                                                                 const __true_type&, unsigned long __fill_len, bool __atend)   // 0x005135D0 (stand-in)
 {
     if (__atend && __fill_len == 1)
@@ -43,4 +43,4 @@ template <> void _STL::vector<unsigned short>::_M_insert_overflow(unsigned short
 }
 #pragma auto_inline(on)
 
-template void _STL::vector<unsigned short>::push_back(const unsigned short& __x);
+template void std::vector<unsigned short>::push_back(const unsigned short& __x);

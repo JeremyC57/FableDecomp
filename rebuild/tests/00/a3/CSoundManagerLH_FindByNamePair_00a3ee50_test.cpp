@@ -76,7 +76,7 @@ public:
     int Id;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -96,14 +96,14 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
+typedef std::pair<CCharString, CCharString>      SNamePair;
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
@@ -158,7 +158,7 @@ template <class T, class C> static bool IsHeap(const T* p, int n, C comp)
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> > class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     value_type* _M_start;
     value_type* _M_finish;
     value_type* _M_end_of_storage;
@@ -194,7 +194,7 @@ public:
 
 class CSoundManagerLH {
 public:
-    CVectorMap<_STL::pair<CCharString, CCharString>, CSoundBankLH*> NamePairMap;
+    CVectorMap<std::pair<CCharString, CCharString>, CSoundBankLH*> NamePairMap;
     CVectorMap<CCharString, CSoundBankLH*>                          NameMap;
     CSoundBankLH* FindByName(const CCharString& name);
     CSoundBankLH* FindByNamePair(const CCharString& first, const CCharString& second);
@@ -202,8 +202,8 @@ public:
 
 CSoundBankLH* CSoundManagerLH::FindByNamePair(const CCharString& first, const CCharString& second)
 {
-    const CVectorMap<_STL::pair<CCharString, CCharString>, CSoundBankLH*>::value_type* it =
-        NamePairMap.Find(_STL::pair<CCharString, CCharString>(first, second));
+    const CVectorMap<std::pair<CCharString, CCharString>, CSoundBankLH*>::value_type* it =
+        NamePairMap.Find(std::pair<CCharString, CCharString>(first, second));
     if (it == NamePairMap.End())
         return 0;
     return it->second;

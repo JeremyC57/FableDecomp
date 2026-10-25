@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(NPlayerTargeting::CTargetPoint* first, unsigned int n, const NPlayerTargeting::CTargetPoint& x, const __false_type&) -- STLport uninitialized_fill_n over target points: copy-construct n copies of x from first; returns the advanced pointer
+// std::__uninitialized_fill_n(NPlayerTargeting::CTargetPoint* first, unsigned int n, const NPlayerTargeting::CTargetPoint& x, const __false_type&) -- STLport uninitialized_fill_n over target points: copy-construct n copies of x from first; returns the advanced pointer
 // Grade: DIFFER(98v98) -- register allocation only: retail keeps cur in ebx and the value reference in edi, ours swaps them (same instructions otherwise); tried the STLport `__cur` copy, iterating `__first` directly, CTargetPoint's implicit copy constructor
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00806C80, 98 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx, n in
@@ -47,7 +47,7 @@ struct CTargetPoint {
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

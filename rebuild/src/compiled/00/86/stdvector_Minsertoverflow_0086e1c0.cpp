@@ -18,7 +18,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -114,13 +114,13 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
     _M_set(__new_start, __new_finish, __new_start + __len);
 }
 
-} // namespace _STL
+} // namespace std
 
 template <class K, class V> class CKeyPairCompareLess {
 };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                           // +0x0C (empty)
     bool Dirty;                                             // +0x0D
@@ -136,5 +136,5 @@ public:
 };
 
 typedef CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph> CTextureMorphMap;
-template void _STL::vector<CTextureMorphMap>::_M_insert_overflow(CTextureMorphMap*, const CTextureMorphMap&,
-                                                                 const _STL::__false_type&, unsigned int, bool);
+template void std::vector<CTextureMorphMap>::_M_insert_overflow(CTextureMorphMap*, const CTextureMorphMap&,
+                                                                 const std::__false_type&, unsigned int, bool);

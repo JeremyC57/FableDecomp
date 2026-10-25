@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::insert_unique(const pair<const pair<long,long>, CEngineTextureMorph>& v) -- STLport unique insert of the surface-composition manager's map<pair<long,long>, CEngineTextureMorph>: walk down to the insertion parent, step back once when the walk ended going left, and insert only when no equal key exists
+// std::_Rb_tree::insert_unique(const pair<const pair<long,long>, CEngineTextureMorph>& v) -- STLport unique insert of the surface-composition manager's map<pair<long,long>, CEngineTextureMorph>: walk down to the insertion parent, step back once when the walk ended going left, and insert only when no equal key exists
 // Leaf: ?insert_unique@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2F130, length 175 bytes, `ret 8` (hidden pair<iterator,bool> result, &v).
 // Callers: two sites in the map's insert paths @ 0x00B2F388 / 0x00B2F4AB (inside 0x00B2F240, catalogued RBTree_InsertOrFind).
@@ -13,7 +13,7 @@
 //   the same thiscall hidden-result ABI); the by-value `pair(_M_insert(y, y, v), true)` form gives the temporary its own
 //   `push ecx` frame slot (177v175).
 // Label: the catalog's descriptive `RBTree_FindInsertPosition` -- this is the STLport insert_unique.
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -120,7 +120,7 @@ _Rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::insert_unique(const value_type
     return pair<iterator, bool>(j, false);
 }
 
-}   // namespace _STL
+}   // namespace std
 
 struct CCompositeBlendDesc;
 struct CCompositeBlendDescVector {               // retail STLport vector<CCompositeBlendDesc>, 12 bytes
@@ -135,9 +135,9 @@ public:
     CCompositeBlendDescVector Blends;                 // +0x08
 };
 
-typedef _STL::pair<long, long> CMorphKey;
-typedef _STL::pair<const CMorphKey, CEngineTextureMorph> CMorphValue;
-typedef _STL::_Rb_tree<CMorphKey, CMorphValue, _STL::_Select1st<CMorphValue>, _STL::less<CMorphKey>,
-    _STL::allocator<CMorphValue> > CMorphTree;
+typedef std::pair<long, long> CMorphKey;
+typedef std::pair<const CMorphKey, CEngineTextureMorph> CMorphValue;
+typedef std::_Rb_tree<CMorphKey, CMorphValue, std::_Select1st<CMorphValue>, std::less<CMorphKey>,
+    std::allocator<CMorphValue> > CMorphTree;
 
-template _STL::pair<CMorphTree::iterator, bool> CMorphTree::insert_unique(const CMorphValue& v);
+template std::pair<CMorphTree::iterator, bool> CMorphTree::insert_unique(const CMorphValue& v);

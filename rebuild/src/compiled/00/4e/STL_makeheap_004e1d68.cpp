@@ -1,4 +1,4 @@
-// _STL::__make_heap(SRegisteredTCEntry* first, SRegisteredTCEntry* last, CKeyPairCompareLess comp, SRegisteredTCEntry*, int*) -- STLport heap build over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): sift every parent down from the last one to the root with __adjust_heap
+// std::__make_heap(SRegisteredTCEntry* first, SRegisteredTCEntry* last, CKeyPairCompareLess comp, SRegisteredTCEntry*, int*) -- STLport heap build over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): sift every parent down from the last one to the root with __adjust_heap
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E1D68, 75 bytes, `ret 0Ch` (size-optimised TU: unaligned entry).
 // Callees: the pair copy constructor 0x004D788D (thiscall, out of line in this /Os TU), __adjust_heap(first, parent,
@@ -14,7 +14,7 @@
 //   by-value copy is built in the argument area by the out-of-line pair copy constructor, `first + parent` is
 //   strength-reduced into edi.
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 
 struct CCharString {
     void* PStringData;

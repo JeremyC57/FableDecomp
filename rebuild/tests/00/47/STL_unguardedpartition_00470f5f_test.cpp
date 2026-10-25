@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__unguarded_partition<pair<unsigned long,CSoundPair>*, ..> @ 0x00470F5F: Hoare partition around a
+// Model of std::__unguarded_partition<pair<unsigned long,CSoundPair>*, ..> @ 0x00470F5F: Hoare partition around a
 // by-value pivot taken from the range.
 
 class CSoundPair {                                          // Ego_r.pdb, 8 bytes (a class: mangled V)
@@ -17,7 +17,7 @@ public:
     long LastSound;                                         // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -27,10 +27,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 __forceinline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {
@@ -65,7 +65,7 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 typedef pair<unsigned long, CSoundPair> _SoundEntry;
 }
 
-typedef _STL::pair<unsigned long, CSoundPair> E;
+typedef std::pair<unsigned long, CSoundPair> E;
 typedef CKeyPairCompareLess<unsigned long, CSoundPair> C;
 static void SetEntry(E& e, unsigned int key) { e.first = key; e.second.FirstSound = (long)(key * 3); e.second.LastSound = (long)(key + 7); }
 static bool Consistent(const E& e) { return e.second.FirstSound == (long)(e.first * 3) && e.second.LastSound == (long)(e.first + 7); }
@@ -90,7 +90,7 @@ int main()
         FillRandom(a, n);
         unsigned long sum = KeySum(a, n);
         E pivot(a[n / 2]);
-        E* cut = _STL::__unguarded_partition(a, a + n, pivot, C());
+        E* cut = std::__unguarded_partition(a, a + n, pivot, C());
         if (cut < a || cut > a + n)
             ok = false;
         for (E* p = a; p < cut; ++p)

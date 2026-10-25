@@ -1,4 +1,4 @@
-// Behaviour test for 0x005E1B20 _STL::__pop_heap<CCharString*, CCharString, less<CCharString>>.
+// Behaviour test for 0x005E1B20 std::__pop_heap<CCharString*, CCharString, less<CCharString>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("005e1b20_TEST FAIL\n"); return 1; } } while (0)

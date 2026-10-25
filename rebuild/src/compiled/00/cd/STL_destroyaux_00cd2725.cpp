@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(CScriptRecord16* first, CScriptRecord16* last, const __false_type&) -- destroy each 16-byte polymorphic script record in [first, last) through its virtual destructor
+// std::__destroy_aux(CScriptRecord16* first, CScriptRecord16* last, const __false_type&) -- destroy each 16-byte polymorphic script record in [first, last) through its virtual destructor
 // Leaf: ??$__destroy_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CD2725, 28 bytes (a /Os module: unaligned entry, the loop entered at its test),
 //   /Gr `__fastcall` (first in ecx -> esi, last in edx -> edi), `ret 4` (the tag reference).
@@ -16,7 +16,7 @@ public:
     unsigned char _body[0xc];                           // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

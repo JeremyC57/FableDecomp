@@ -1,4 +1,4 @@
-// _STL::vector<CScreenFilterSThingByPass>::push_back(const CScreenFilterSThingByPass& x) -- STLport push_back of a 9-byte screen-filter bypass entry (thing pointer + flag): copy-construct it at the end when there is room, else grow through _M_insert_overflow
+// std::vector<CScreenFilterSThingByPass>::push_back(const CScreenFilterSThingByPass& x) -- STLport push_back of a 9-byte screen-filter bypass entry (thing pointer + flag): copy-construct it at the end when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A3C70, length 92 bytes (+ int3 padding), `ret 4` (thiscall, &x).
 // Callers: CTCBulletTime 0x0079D6B0 / 0x0079D9D4 and CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter
@@ -40,7 +40,7 @@ struct CScreenFilterSThingByPass {                          // TLC layout, 9 byt
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -64,4 +64,4 @@ public:
 };
 }
 
-template void _STL::vector<CScreenFilterSThingByPass>::push_back(const CScreenFilterSThingByPass&);
+template void std::vector<CScreenFilterSThingByPass>::push_back(const CScreenFilterSThingByPass&);

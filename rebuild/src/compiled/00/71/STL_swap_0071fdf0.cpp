@@ -1,4 +1,4 @@
-// _STL::swap(pair<EHeroMorphType,CTextureMorphEntry>& a, pair<EHeroMorphType,CTextureMorphEntry>& b) -- exchange two hero texture-morph table entries (morph type key + texture layer + blend description) through a by-value temporary
+// std::swap(pair<EHeroMorphType,CTextureMorphEntry>& a, pair<EHeroMorphType,CTextureMorphEntry>& b) -- exchange two hero texture-morph table entries (morph type key + texture layer + blend description) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0071FDF0, 118 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx -> esi, b in edx
 //   -> edi), plain `ret`; 0x18-byte frame temporary.
@@ -31,7 +31,7 @@ struct CTextureMorphEntry {                             // retail, 20 bytes
     CCompositeBlendDesc Blend;                          // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;                                          // +0x00

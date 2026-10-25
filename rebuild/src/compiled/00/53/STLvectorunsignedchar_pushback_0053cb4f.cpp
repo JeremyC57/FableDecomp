@@ -1,4 +1,4 @@
-// _STL::vector<unsigned char>::push_back(const unsigned char& x) -- STLport vector push_back of a byte vector: store x at the end when there is room, else grow through _M_insert_overflow
+// std::vector<unsigned char>::push_back(const unsigned char& x) -- STLport vector push_back of a byte vector: store x at the end when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0053CB4F, length 48 bytes, `ret 4` (thiscall on the vector, &x).
 // Callees: vector<unsigned char>::_M_insert_overflow(pos, x, const __true_type&, 1, true) @ 0x00467831 (landed).
@@ -14,7 +14,7 @@
 #pragma optimize("s", on)
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 struct __true_type {
     __true_type() {}
 };

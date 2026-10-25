@@ -1,4 +1,4 @@
-// Behaviour test for 00818dc0 (_STL::vector<pair<NHitLocations::CHitLocation, long> >::push_back): with room the element is
+// Behaviour test for 00818dc0 (std::vector<pair<NHitLocations::CHitLocation, long> >::push_back): with room the element is
 // copy-constructed at end() (both def pointers bump their RefCount) and end() advances; when full, _M_insert_overflow gets
 // (end(), x, fill length 1, at-end true).
 #include <cstdio>

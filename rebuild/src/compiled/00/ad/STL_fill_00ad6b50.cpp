@@ -1,4 +1,4 @@
-// _STL::fill(QuadricOptimiserInternals::CUniqueVertex* first, QuadricOptimiserInternals::CUniqueVertex* last, const QuadricOptimiserInternals::CUniqueVertex& value) -- assign one mesh-optimiser unique-vertex record (exists flag, vertex and face index sets) to every element of a range
+// std::fill(QuadricOptimiserInternals::CUniqueVertex* first, QuadricOptimiserInternals::CUniqueVertex* last, const QuadricOptimiserInternals::CUniqueVertex& value) -- assign one mesh-optimiser unique-vertex record (exists flag, vertex and face index sets) to every element of a range
 // Leaf: ??$fill@PAVCUniqueVertex@QuadricOptimiserInternals@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD6B50, 73 bytes, `__fastcall` (first ecx, last edx, value pointer
 //   on the stack), `ret 4`; `last` is spilled to the frame (`push ecx` slot) for the loop test.
@@ -12,7 +12,7 @@
 // Shape: STLport fill with CUniqueVertex's implicit operator= inline (the bool, then the two CIndexList implicit
 //   operator= -> set::operator= inline -> the tree's operator= out of line); both member addresses of val hoisted.
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { };
 template <class _Tp> class allocator { };
 template <class _Key, class _Value, class _Compare> class _Rb_tree {   // 12 bytes
@@ -32,7 +32,7 @@ public:
 namespace QuadricOptimiserInternals {
 class CIndexList {                                       // 12 bytes
 public:
-    _STL::set<unsigned long> Indices;                    // +0x00
+    std::set<unsigned long> Indices;                    // +0x00
 };
 class CUniqueVertex {                                    // 28 bytes
 public:
@@ -43,7 +43,7 @@ public:
 }
 typedef QuadricOptimiserInternals::CUniqueVertex CUniqueVertex;
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -53,4 +53,4 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CUniqueVertex*, CUniqueVertex>(CUniqueVertex*, CUniqueVertex*, const CUniqueVertex&);
+template void __fastcall std::fill<CUniqueVertex*, CUniqueVertex>(CUniqueVertex*, CUniqueVertex*, const CUniqueVertex&);

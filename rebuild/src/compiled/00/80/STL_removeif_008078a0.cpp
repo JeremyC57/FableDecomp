@@ -1,4 +1,4 @@
-// _STL::remove_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred) -- STLport remove_if over target points: drop the points inside the field of view, keeping the order of the rest; returns the new end
+// std::remove_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred) -- STLport remove_if over target points: drop the points inside the field of view, keeping the order of the rest; returns the new end
 // Leaf: ??$remove_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008078A0, 165 bytes, /Gr `__fastcall` (first in ecx, last in edx), the
 //   0x24-byte predicate by value, `ret 24h`.
@@ -44,7 +44,7 @@ public:
     bool operator()(const NPlayerTargeting::CTargetPoint& point) const;   // 0x006A7380
 };
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _Predicate>
 _InputIter __fastcall find_if(_InputIter __first, _InputIter __last, _Predicate __pred);   // 0x00806640
 template <class _InputIter, class _OutputIter, class _Predicate>

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00ADC790 _STL::list<CVertexGroupBlock>::pop_back: unlink the last node, destroy its
+// Behaviour test for 0x00ADC790 std::list<CVertexGroupBlock>::pop_back: unlink the last node, destroy its
 // vertex-group block and free the node
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +13,7 @@ public:
     ~CVertexGroupBlock();
 };
 CVertexGroupBlock::~CVertexGroupBlock() { ++gDtors; gLastDestroyed = Fields[0]; }   // stand-in
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { test_free(__p); }
@@ -72,7 +72,7 @@ public:
     }
 };
 }
-typedef _STL::list<CVertexGroupBlock> CBlockList;
+typedef std::list<CVertexGroupBlock> CBlockList;
 typedef CBlockList::_Node CNode;
 int main()
 {

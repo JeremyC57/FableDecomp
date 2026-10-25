@@ -1,4 +1,4 @@
-// Behaviour test for 0x008FBF10 _STL::list<C3DVector>::_M_insert_dispatch: copies a range before a position, in order.
+// Behaviour test for 0x008FBF10 std::list<C3DVector>::_M_insert_dispatch: copies a range before a position, in order.
 #include <cstdio>
 #include <cstdlib>
 #include <new>

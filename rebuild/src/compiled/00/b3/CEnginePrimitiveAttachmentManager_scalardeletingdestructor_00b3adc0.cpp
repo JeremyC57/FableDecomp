@@ -33,7 +33,7 @@ public:
 class CEngineInternalAttachedPrimitiveInfo;
 struct SAttachedPrimitiveNode;                          // STLport _List_node<CEngineInternalAttachedPrimitiveInfo>
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
@@ -46,7 +46,7 @@ public:
 
 class CAttachedPrimitiveList {                          // list<CEngineInternalAttachedPrimitiveInfo> (retail 4 bytes)
 public:
-    _STL::_STLP_alloc_proxy<SAttachedPrimitiveNode*, SAttachedPrimitiveNode, _STL::allocator<SAttachedPrimitiveNode> > _M_node;
+    std::_STLP_alloc_proxy<SAttachedPrimitiveNode*, SAttachedPrimitiveNode, std::allocator<SAttachedPrimitiveNode> > _M_node;
     void clear();                                       // 0x00B3A760
     ~CAttachedPrimitiveList()
     {

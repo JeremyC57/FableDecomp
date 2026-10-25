@@ -1,4 +1,4 @@
-// _STL::random_shuffle(CCharString*, CCharString*, RandFunc&) -- STLport random shuffle of a CCharString array: each string from first+1 swaps (through a copy) with first[rand(i - first + 1)], RandFunc drawing through GFFloatRandom on the caller's seed
+// std::random_shuffle(CCharString*, CCharString*, RandFunc&) -- STLport random shuffle of a CCharString array: each string from first+1 swaps (through a copy) with first[rand(i - first + 1)], RandFunc drawing through GFFloatRandom on the caller's seed
 // Flags: /Gr
 // Leaf: random_shuffle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049B240, 133 bytes, `ret 4` (__fastcall: first in ecx -> ebp, last in edx

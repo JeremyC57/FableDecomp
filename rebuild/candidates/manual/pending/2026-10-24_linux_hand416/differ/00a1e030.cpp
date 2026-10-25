@@ -43,7 +43,7 @@ public:
     void SetGoal(const C2DVector& goal, const C2DVector& nextGoal);   // 0x00A20970
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -88,7 +88,7 @@ public:
     unsigned char   _pad04[0x1C];                       // CClass registration, PInterface, OnRoute, NavigationManager
     CSteeringAgent* SteeringAgent;                      // +0x20 (CNavigatorBase)
     unsigned char   _pad24[0x68];                       // States .. LastNavigableNodeVisited
-    _STL::list<CNavWayPoint> Route;                     // +0x8C
+    std::list<CNavWayPoint> Route;                     // +0x8C
     void CalculateNavigableWidthOfLine(const C3DVector& pos);   // 0x00A1DE30
     void UpdateGoal(const C3DVector& pos, C2DVector previous, C2DVector next);
 };

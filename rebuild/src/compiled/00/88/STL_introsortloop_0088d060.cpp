@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<long, CAIStateGroupBase*>* first, pair<long, CAIStateGroupBase*>* last, pair<long, CAIStateGroupBase*>*, int depth_limit, CKeyPairCompareGreater comp) -- introsort recursion of the AI brain's state-group map: median-of-three partition until 16 groups remain, partial (heap) sort when the depth budget runs out
+// std::__introsort_loop(pair<long, CAIStateGroupBase*>* first, pair<long, CAIStateGroupBase*>* last, pair<long, CAIStateGroupBase*>*, int depth_limit, CKeyPairCompareGreater comp) -- introsort recursion of the AI brain's state-group map: median-of-three partition until 16 groups remain, partial (heap) sort when the depth budget runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088D060, 196 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first
 //   in ecx, last in edx; the value-type tag pointer, the depth limit and the empty comparator on the stack).
@@ -12,7 +12,7 @@
 //   inline returning a reference (the three keys in ecx/edx/ebp, the chosen element's address in eax), `last = cut`.
 class CAIStateGroupBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a struct: mangled U)
     typedef _T1 first_type;
     typedef _T2 second_type;
@@ -27,12 +27,12 @@ template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a s
 // CAIStateGroupBase*> > -- the groups are kept in DESCENDING key (priority) order; the comparator is empty.
 template <class K, class V> class CKeyPairCompareGreater {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first > b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first > b.first; }
 };
-typedef _STL::pair<long, CAIStateGroupBase*> TGroupEntry;
+typedef std::pair<long, CAIStateGroupBase*> TGroupEntry;
 typedef CKeyPairCompareGreater<long, CAIStateGroupBase*> TGroupCompare;
 
-namespace _STL {
+namespace std {
 const int __stl_threshold = 16;
 
 template <class _Tp, class _Compare>

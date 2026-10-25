@@ -6,7 +6,7 @@
 - if/else into an `unsigned long` local gives one `movzx` per arm, and a ternary widens once after the merge. A separate counter local takes a different register than incrementing the parameter (0x00BEBBE0).
 - Reading a float member into a local before a flag test hoists the `fld` above the test. `member * global` written inline loads the global first (0x00BEB660).
 - The /Gr STLport sort family of CVectorMap<long, CCompositeSurfaceInfo> and CVectorMap<pair<long,long>, CEngineTextureDecal> (0xBED790..0xBEF830) compiles from VERBATIM STLport 4.6 bodies:
-  - Write them as templates in `namespace _STL`, with the comparator's `operator()` inline. Make it declaration-only in `__unguarded_insertion_sort_aux`.
+  - Write them as templates in `namespace std`, with the comparator's `operator()` inline. Make it declaration-only in `__unguarded_insertion_sort_aux`.
   - Keep `__unguarded_linear_insert` / `__linear_insert` / `__adjust_heap` / `__pop_heap` / `sort_heap` / `iter_swap` declared out of line.
   - VC itself calls the 16-byte pair's implicit operator= out of line inside `__linear_insert` (0x00BEE8F0).
   - VC itself calls the decal vector's copy ctor out of line in `iter_swap` / `__linear_insert` / `_M_insert_overflow` and inlines it elsewhere, given an inline-defined STLport copy ctor (`_Vector_base(n, a)` + `__uninitialized_copy(..., __false_type())`).
@@ -32,7 +32,7 @@ Review at landing:
   - 0x00BEE710 "CRandomAppearanceMorph::UninitializedFillN" is the decal-entry `__uninitialized_fill_n`.
   - 0x00BED9A0 "CopyBackward_PairLongPointerHolder" is `__copy_backward<pair<long, CCompositeSurfaceInfo>*>`.
   - 0x00BEDD70's file name and line 1 name pair<long, CCountedPointer<CNavConnectorNode>>, but its body is the CCompositeSurfaceInfo `__adjust_heap`.
-  - 0x00BEF5C0 "Sort_SElement16" is `_STL::sort` over the CCompositeSurfaceInfo entries.
-  - The landed std_sortheap_00bee990 / 00bef350 line 1s say `std::`, but retail is STLport `_STL`.
+  - 0x00BEF5C0 "Sort_SElement16" is `std::sort` over the CCompositeSurfaceInfo entries.
+  - The landed std_sortheap_00bee990 / 00bef350 line 1s say `std::`, but retail is STLport `std`.
 - The CRT tail (0x00BFE9C8 report_failure .. 0x00BFEBB0 __aullrem) is MSVCRT hand asm / seccook.c and was not authored.
 - 0x00BE6800 / 0x00BFDFD0 are retail_asm candidates (bare dword fistp ROUND helper, as the landed 0x00BE6790 / 0x00BFDF60).

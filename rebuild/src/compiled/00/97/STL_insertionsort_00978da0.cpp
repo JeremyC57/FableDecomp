@@ -1,8 +1,8 @@
-// _STL::__insertion_sort(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- guarded insertion sort of the advance-in-cover candidate sort (each element goes through __linear_insert)
+// std::__insertion_sort(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- guarded insertion sort of the advance-in-cover candidate sort (each element goes through __linear_insert)
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00978DA0, 75 bytes, __fastcall (/Gr algorithm TU: first in ecx, last in edx, the
 //   comparator on the stack), `ret 10h`.
-// Instantiation: the advance-in-cover candidate sort: _STL::sort<CThing**,
+// Instantiation: the advance-in-cover candidate sort: std::sort<CThing**,
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch> called from
 //   CAIStateGroup_CreatureAdvanceInCover::ProcessCoverThingList (0x00979260 -> sort 0x00979870); the Ego_r.pdb
 //   symbols carry the anonymous namespace ?A0xffab493a of CAIStateGroup_CreatureAdvanceInCover.cpp.
@@ -11,7 +11,7 @@
 //   comp);` with __linear_insert out of line. The model compiles operator() as a same-TU stand-in (auto_inline(off) +
 //   noinline); with it VC7.1 reproduces retail's comparator-copy scheduling (copies loaded two words ahead) and slot
 //   sharing.
-// Label: catalog "std_for_each" -> the STLport 4.x _STL::__insertion_sort instantiation for
+// Label: catalog "std_for_each" -> the STLport 4.x std::__insertion_sort instantiation for
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma; the stand-ins use `#pragma auto_inline(off)` + `__declspec(noinline)`.
@@ -75,7 +75,7 @@ bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(CThing* a
 }
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00978C50
 
@@ -87,4 +87,4 @@ void __fastcall __insertion_sort(_RandomAccessIter __first, _RandomAccessIter __
         __linear_insert(__first, __i, *__i, __comp);
 }
 template void __fastcall __insertion_sort<CThing**, TComp>(CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

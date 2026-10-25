@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A34260 _STL::__unguarded_partition: entries not above the pivot key end up in front of the returned cut, entries not below it after it; the pivot copy is released.
+// Behaviour test for 0x00A34260 std::__unguarded_partition: entries not above the pivot key end up in front of the returned cut, entries not below it after it; the pivot copy is released.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

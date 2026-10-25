@@ -25,16 +25,16 @@ address	status	bytes	test	note
 00bca0d0	RELOCATION_MATCH	45v45	PASS	label: CEngineDynamic3DResourceManager<..VertexBuffer..> ctor (explicit ctor instantiation); 1 grade
 00bca4d0	RELOCATION_MATCH	60v60	PASS	label: CEngineVertexBufferPool(long sizeGranularity) ctor; 1 grade
 0059308a	MATCH	58v58	PASS	pair<long, CDefPointer<const CContextSensitiveItemDef>>::operator=, /Os, __forceinline helpers; 4 grades
-005e1b60	RELOCATION_MATCH	126v126	PASS	label: _STL::__pop_heap over pair<EAnimComponent, CIVCountedPointer<..>>; 2 grades
+005e1b60	RELOCATION_MATCH	126v126	PASS	label: std::__pop_heap over pair<EAnimComponent, CIVCountedPointer<..>>; 2 grades
 005f853e	MATCH	58v58	PASS	label: twin pair<long, CDefPointer<const CHeroAbilityDef>>::operator=, /Os; 3 grades
 007229d0	RELOCATION_MATCH	65v65	PASS	label: CTCSmokeGenerator::CGenerationPos copy ctor; 1 grade
 0078e600	RELOCATION_MATCH	65v65	PASS	label: CTCDivineWrath::PerEffectInfo copy ctor; 1 grade
 00793b60	RELOCATION_MATCH	65v65	PASS	label: CTCUnholyPower::PerEffectInfo copy ctor; 1 grade
-006bedc0	RELOCATION_MATCH	179v179	PASS	label: _STL::__pop_heap over pair<long, CMusicManager::CRegisteredMusicEntry>; 1 grade
+006bedc0	RELOCATION_MATCH	179v179	PASS	label: std::__pop_heap over pair<long, CMusicManager::CRegisteredMusicEntry>; 1 grade
 006e6b60	RELOCATION_MATCH	79v79	PASS	label: CScriptConversation copy ctor; 1 grade
 00a20240	RELOCATION_MATCH	81v81	PASS	pair<const long, CAStarState> converting ctor from pair<long, CAStarState>; 1 grade
 00a20670	RELOCATION_MATCH	81v81	PASS	pair<const long, CAStarState> copy ctor (CAStarState copy counts states); 1 grade
-00769cb0	RELOCATION_MATCH	74v74	PASS	label: _STL::swap of pair<unsigned long, CParticleUpdateParamDesc<ul,ul>>; 1 grade
+00769cb0	RELOCATION_MATCH	74v74	PASS	label: std::swap of pair<unsigned long, CParticleUpdateParamDesc<ul,ul>>; 1 grade
 00cb90f0	RELOCATION_MATCH	47v47	PASS	label: pair<unsigned __int64, NScript::..::CPersistInfo> copy ctor; 1 grade
 00739e20	RELOCATION_MATCH	26v26	PASS	label: CTCCreatureModeManager::CModeBase::~CModeBase; 1 grade
 009ea150	RELOCATION_MATCH	28v28	PASS	label: CGenericVar::CGenericVar(); 1 grade

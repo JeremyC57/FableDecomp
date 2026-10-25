@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* block);                                      
 extern "C" char* __cdecl _itoa(int value, char* buffer, int radix);                // 0x00BFED34
 extern "C" __declspec(dllimport) int __stdcall WSAGetLastError();                  // WSOCK32 #111
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -29,7 +29,7 @@ struct CNetErrorString {                           // STLport basic_string<char>
     char* m_start;
     char* m_finish;
     char* m_endOfStorage;
-    CNetErrorString(const char* text, const _STL::allocator<char>& a = _STL::allocator<char>());   // 0x00568440
+    CNetErrorString(const char* text, const std::allocator<char>& a = std::allocator<char>());   // 0x00568440
     ~CNetErrorString()
     {
         if (m_start)

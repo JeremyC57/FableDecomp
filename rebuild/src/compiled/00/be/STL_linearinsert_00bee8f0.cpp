@@ -1,5 +1,5 @@
-// _STL::__linear_insert(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntry val, CSurfaceEntryLess comp) -- insertion step: a new minimum shifts [first, last) up one slot and lands at first, anything else takes the unguarded linear insert
-// Leaf: ??$__linear_insert@PAU?$pair@JVCCompositeSurfaceInfo@@@_STL@@
+// std::__linear_insert(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntry val, CSurfaceEntryLess comp) -- insertion step: a new minimum shifts [first, last) up one slot and lands at first, anything else takes the unguarded linear insert
+// Leaf: ??$__linear_insert@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEE8F0, 160 bytes, `ret 14h` (the 16-byte value + the empty comparator).
 // Callees: __copy_backward @ 0x00BED9A0 (landed), the entry's implicit operator= @ 0x00BED640 (out of line here),
@@ -61,7 +61,7 @@ public:
     CCountedPointer<CCompositeSurfaceCache> Cache;  // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -69,18 +69,18 @@ template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
+typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 
-namespace _STL {
+namespace std {
 template <class BidirectionalIter1, class BidirectionalIter2, class Distance>
 BidirectionalIter2 __copy_backward(BidirectionalIter1 first, BidirectionalIter1 last, BidirectionalIter2 result,
                                    const random_access_iterator_tag&, Distance*);   // 0x00BED9A0
@@ -104,6 +104,6 @@ void __linear_insert(RandomAccessIter first, RandomAccessIter last, T val, Compa
     else
         __unguarded_linear_insert(last, val, comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::__linear_insert(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry, CSurfaceEntryLess);
+template void std::__linear_insert(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry, CSurfaceEntryLess);

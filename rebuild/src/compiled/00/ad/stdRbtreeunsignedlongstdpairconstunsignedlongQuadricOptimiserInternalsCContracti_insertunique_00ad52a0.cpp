@@ -12,7 +12,7 @@
 //   insert_unique(v) 0x00AD4480.
 // Model: STLport 4.6 _Rb_tree / _Rb_tree_iterator<_Value,_Nonconst_traits<_Value> > as the landed 0x00AD4720;
 //   operator++ / operator-- carry same-TU `__declspec(noinline)` bodies standing in for the out-of-line retail copies.
-//   Was the non-template local model `RecutTree_00ad52a0::_Rb_tree` (catalogued `_STL::_Rb_tree::insert_unique`).
+//   Was the non-template local model `RecutTree_00ad52a0::_Rb_tree` (catalogued `std::_Rb_tree::insert_unique`).
 // Leaf: ?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@U?$_Select1st@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@2@@Z
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14

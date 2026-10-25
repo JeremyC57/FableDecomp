@@ -1,8 +1,8 @@
-// _STL::__linear_insert(SKeyedEvents* first, SKeyedEvents* last, SKeyedEvents val, CKeyPairCompareLess comp) -- STLport insertion step over the keyed animation-event vector: shift [first, last) up one and put val first when it sorts before *first, else the unguarded insert from last
+// std::__linear_insert(SKeyedEvents* first, SKeyedEvents* last, SKeyedEvents val, CKeyPairCompareLess comp) -- STLport insertion step over the keyed animation-event vector: shift [first, last) up one and put val first when it sorts before *first, else the unguarded insert from last
 // Leaf: ??$__linear_insert@
-// Grade: RELOCATION_MATCH (agent902, 4th grade of this pass) -- the real STLport 4.6 template (namespace _STL, `if (comp(val, *first)) { copy_backward(first, last, last + 1); *first = val; } else __unguarded_linear_insert(last, val, comp);`, pair with its user ctors, copy_backward -> __copy_backward_ptrs forceinline) plus a same-TU noinline CSmallVector::Copy body (chunk-422 recipe: Copy receives &val.second, and a visible body that never keeps it leaves val uncaptured, so val.first stays in ebx across the __copy_backward call).
+// Grade: RELOCATION_MATCH (agent902, 4th grade of this pass) -- the real STLport 4.6 template (namespace std, `if (comp(val, *first)) { copy_backward(first, last, last + 1); *first = val; } else __unguarded_linear_insert(last, val, comp);`, pair with its user ctors, copy_backward -> __copy_backward_ptrs forceinline) plus a same-TU noinline CSmallVector::Copy body (chunk-422 recipe: Copy receives &val.second, and a visible body that never keeps it leaves val uncaptured, so val.first stays in ebx across the __copy_backward call).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FC3E0, 137 bytes, `ret 0x10` (/Gr: first, last in ecx/edx; val by value; comp).
-// Label correction: catalog "Vector_Erase_WithMove" -> _STL::__linear_insert of the keyed event vector (called from
+// Label correction: catalog "Vector_Erase_WithMove" -> std::__linear_insert of the keyed event vector (called from
 //   __insertion_sort 0x006FCB30).
 // Callees: __copy_backward 0x006FB830 (same-TU noinline body so the empty tag shares the dead comp slot), CSmallVector::Copy
 //   0x006FB5C0 (same-TU noinline body, the landed source's shape), __unguarded_linear_insert 0x006FB960, operator
@@ -46,7 +46,7 @@ template <class T, int N> __declspec(noinline) void CSmallVector<T, N>::Copy(con
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -101,10 +101,10 @@ inline void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessI
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > SKeyedEvents;
+typedef std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > SKeyedEvents;
 typedef CKeyPairCompareLess<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > SKeyedLess;
 
-template void __fastcall _STL::__linear_insert(SKeyedEvents*, SKeyedEvents*, SKeyedEvents, SKeyedLess);
+template void __fastcall std::__linear_insert(SKeyedEvents*, SKeyedEvents*, SKeyedEvents, SKeyedLess);

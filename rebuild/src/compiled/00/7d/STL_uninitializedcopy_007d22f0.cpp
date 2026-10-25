@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const CShoveHaPennyRegionDef* first, const CShoveHaPennyRegionDef* last, CShoveHaPennyRegionDef* result, const __false_type&) -- STLport copy-construct a range of shove-ha'penny region defs into raw storage (base def copy, vptr, Start, Score); returns the end of the copies
+// std::__uninitialized_copy(const CShoveHaPennyRegionDef* first, const CShoveHaPennyRegionDef* last, CShoveHaPennyRegionDef* result, const __false_type&) -- STLport copy-construct a range of shove-ha'penny region defs into raw storage (base def copy, vptr, Start, Score); returns the end of the copies
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D22F0, 64 bytes, /Gr __fastcall (first in ecx, last in edx, result and the
 //   tag reference on the stack, `ret 8`).
@@ -27,7 +27,7 @@ public:
     float Score;                                        // +0x2c
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

@@ -1,4 +1,4 @@
-// _STL::vector::_M_allocate_and_copy(size_type n, const_pointer first, const_pointer last) -- STLport vector<pair<C2DVector, unsigned char> >: allocate room for n route points and copy-construct [first, last) into it; returns the new block
+// std::vector::_M_allocate_and_copy(size_type n, const_pointer first, const_pointer last) -- STLport vector<pair<C2DVector, unsigned char> >: allocate room for n route points and copy-construct [first, last) into it; returns the new block
 // Leaf: ?_M_allocate_and_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00800380, 89 bytes (+ int3 padding), __fastcall (`this` unused), `ret 0Ch`.
 //   Caller: vector<pair<C2DVector, unsigned char> >::reserve 0x00800CA0 (this chunk), the route vector of
@@ -19,7 +19,7 @@ struct C2DVector {
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 #pragma pack(push, 1)

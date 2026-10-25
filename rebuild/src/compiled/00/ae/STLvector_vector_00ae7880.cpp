@@ -1,4 +1,4 @@
-// _STL::vector::vector(unsigned int n) -- STLport sized vector constructor (T = _STL::set<long>) for an array of index sets: allocate n 12-byte sets and copy-construct each from one empty set temporary, then destroy the temporary
+// std::vector::vector(unsigned int n) -- STLport sized vector constructor (T = std::set<long>) for an array of index sets: allocate n 12-byte sets and copy-construct each from one empty set temporary, then destroy the temporary
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE7880, 214 bytes, __fastcall `ret 4`, returns this.
 // Callers: the particle-program adjacency builder 0x00AE2E20 (one set per particle, n = the particle count at +0x20; each
@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -157,4 +157,4 @@ public:
 };
 }
 
-template _STL::vector<_STL::set<long> >::vector(unsigned int);
+template std::vector<std::set<long> >::vector(unsigned int);

@@ -11,14 +11,14 @@
 #define __declspec(x)
 #endif
 class CDefClassBase { public: class CSubDefInfo { public: unsigned long a, b; }; };
-namespace _STL { template <class _T1, class _T2> class pair { public: _T1 first; _T2 second; }; }
+namespace std { template <class _T1, class _T2> class pair { public: _T1 first; _T2 second; }; }
 #ifdef _MSC_VER
 inline void* operator new(unsigned int, void* p) { return p; }
 #else
 #include <new>
 #endif
 
-namespace _STL {
+namespace std {
 struct forward_iterator_tag { forward_iterator_tag() { } };
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b) { _Tp __tmp = __a; __a = __b; __b = __tmp; }
 
@@ -66,9 +66,9 @@ public:
     }
     void swap(vector<_Tp, _Alloc>& __x)
     {
-        _STL::swap(this->_M_start, __x._M_start);
-        _STL::swap(this->_M_finish, __x._M_finish);
-        _STL::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
+        std::swap(this->_M_start, __x._M_start);
+        std::swap(this->_M_finish, __x._M_finish);
+        std::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
     }
 };
 
@@ -99,7 +99,7 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_range_insert(iterator __pos, c
 #pragma auto_inline(on)
 }
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
     void DeallocateMemory();
     void DeallocateUnusedMemory();
@@ -132,24 +132,24 @@ template <class T> void CArray<T>::DeallocateUnusedMemory()
     }
 }
 
-template class CArray<_STL::pair<unsigned long, CDefClassBase::CSubDefInfo> >;
-typedef _STL::pair<unsigned long, CDefClassBase::CSubDefInfo> E;
+template class CArray<std::pair<unsigned long, CDefClassBase::CSubDefInfo> >;
+typedef std::pair<unsigned long, CDefClassBase::CSubDefInfo> E;
 static E Make(int i) { E e; e.first = 100 + i; e.second.a = 7 * i; e.second.b = 9 + i; return e; }
 static int Same(const E& e, int i) { return e.first == (unsigned long)(100 + i) && e.second.a == (unsigned long)(7 * i) && e.second.b == (unsigned long)(9 + i); }
 
 int main()
 {
     int ok = 1;
-    CArray<_STL::pair<unsigned long, CDefClassBase::CSubDefInfo> > v;
+    CArray<std::pair<unsigned long, CDefClassBase::CSubDefInfo> > v;
     v.reserve(8);
-    for (int i = 0; i < 5; ++i) { _STL::pair<unsigned long, CDefClassBase::CSubDefInfo> x = Make(i); v.insert(v.end(), &x, &x + 1); }
+    for (int i = 0; i < 5; ++i) { std::pair<unsigned long, CDefClassBase::CSubDefInfo> x = Make(i); v.insert(v.end(), &x, &x + 1); }
     if (v.size() != 5 || v.capacity() != 8) ok = 0;
     v.DeallocateUnusedMemory();
     if (v.size() != 5 || v.capacity() != 5) ok = 0;
     for (int i = 0; i < 5; ++i) if (!Same(v.begin()[i], i)) ok = 0;
     v.DeallocateUnusedMemory();                 // already tight: nothing changes
     if (v.size() != 5 || v.capacity() != 5) ok = 0;
-    CArray<_STL::pair<unsigned long, CDefClassBase::CSubDefInfo> > e;
+    CArray<std::pair<unsigned long, CDefClassBase::CSubDefInfo> > e;
     e.DeallocateUnusedMemory();                 // empty: nothing to do
     if (e.begin() != 0 || e.capacity() != 0) ok = 0;
     printf("009b79b0_TEST %s\n", ok ? "PASS" : "FAIL");

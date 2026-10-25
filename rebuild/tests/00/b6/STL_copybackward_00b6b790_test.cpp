@@ -38,7 +38,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag {};
 struct forward_iterator_tag : public input_iterator_tag {};
 struct bidirectional_iterator_tag : public forward_iterator_tag {};
@@ -85,7 +85,7 @@ int main()
     CVertexShaderData* d[8];
     for (int i = 0; i < 8; ++i) { d[i] = NewData(1); v[i].Data = d[i]; }
     // overlapping shift right by two: [1, 5) -> [3, 7)
-    CVertexShader* r = _STL::__copy_backward(v + 1, v + 5, v + 7, _STL::random_access_iterator_tag(), (int*)0);
+    CVertexShader* r = std::__copy_backward(v + 1, v + 5, v + 7, std::random_access_iterator_tag(), (int*)0);
     if (r != v + 3) { std::printf("00b6b790_TEST FAIL\n"); return 1; }
     for (int i = 0; i < 4; ++i) if (v[3 + i].Data != d[1 + i]) { std::printf("00b6b790_TEST FAIL\n"); return 1; }
     if (v[0].Data != d[0] || v[7].Data != d[7]) { std::printf("00b6b790_TEST FAIL\n"); return 1; }

@@ -45,7 +45,7 @@ struct C2DBoxF {
     float MinX, MinY, MaxX, MaxY;
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { };
@@ -151,7 +151,7 @@ public:
 
 class CTCShapeManager : public CTCBase {
 public:
-    _STL::vector<CCountedPointer<NShape::CShape> > PersistantShapes;  // +0x0C
+    std::vector<CCountedPointer<NShape::CShape> > PersistantShapes;  // +0x0C
     CCountedPointer<NShape::CShape>* SelectedShape;                   // +0x18
     bool Activated;                                                   // +0x1C
     bool NewShapeActivated;                                           // +0x1D
@@ -161,10 +161,10 @@ public:
     virtual ~CTCShapeManager();
 };
 
-extern _STL::vector<CTCShapeManager*> g_ShapeManagers;               // 0x013BAD80
+extern std::vector<CTCShapeManager*> g_ShapeManagers;               // 0x013BAD80
 
 CTCShapeManager::~CTCShapeManager()
 {
-    g_ShapeManagers.erase(_STL::remove(g_ShapeManagers.begin(), g_ShapeManagers.end(), this));
+    g_ShapeManagers.erase(std::remove(g_ShapeManagers.begin(), g_ShapeManagers.end(), this));
     SelectedShape = PersistantShapes.end();
 }

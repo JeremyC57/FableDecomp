@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph> >::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() empty texture-morph maps at the end
-// Leaf: ?resize@?$vector@V?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@V?$allocator@V?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph> >::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() empty texture-morph maps at the end
+// Leaf: ?resize@?$vector@V?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@V?$allocator@V?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0086EA80, 95 bytes, thiscall on the vector, `ret 4`.
 // Identity: FableWin.pdb ?resize@?$vector@V?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@...@@QAEXI@Z; sole
 //   caller CRandomAppearanceMorph::CRandomAppearanceMorph 0x0086C4D0 (landed; `BodyPartTextureMorphs.resize(3)` on the
@@ -19,7 +19,7 @@
 // Label correction: catalogued as `vector<std::pair<CCharString...>::resize` (propagated); the element is
 //   CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph, CKeyPairCompareLess<...> >.
 extern "C" void __cdecl free(void* block);                         // 0x00BFEA14 (_Vector_base destructor)
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {                       // STLport pair
     _T1 first;
     _T2 second;
@@ -78,7 +78,7 @@ public:
     CKeyPairCompareLess() { }
 };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                                   // +0x0C
     bool Dirty;                                                     // +0x0D
@@ -101,16 +101,16 @@ typedef CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph,
 // retail bodies, never write through the value reference (not graded; the landed 0x0086E4B0 is the real fill insert)
 #pragma auto_inline(off)
 template <class _Tp, class _Alloc>
-__declspec(noinline) _Tp* _STL::vector<_Tp, _Alloc>::erase(_Tp* __first, _Tp* __last)
+__declspec(noinline) _Tp* std::vector<_Tp, _Alloc>::erase(_Tp* __first, _Tp* __last)
 {
     this->_M_finish = __first + (this->_M_finish - __last);
     return __first;
 }
 template <class _Tp, class _Alloc>
-__declspec(noinline) void _STL::vector<_Tp, _Alloc>::_M_fill_insert(_Tp* __pos, unsigned int __n, const _Tp& __x)
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_fill_insert(_Tp* __pos, unsigned int __n, const _Tp& __x)
 {
     for (; __n != 0; --__n, ++__pos)
         __pos->Dirty = __x.Dirty;
 }
 #pragma auto_inline(on)
-template void _STL::vector<CTextureMorphMap>::resize(unsigned int);
+template void std::vector<CTextureMorphMap>::resize(unsigned int);

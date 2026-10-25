@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<EReactionSpeechType, long>* first, pair<EReactionSpeechType, long>* last, pair<EReactionSpeechType, long>*, int depth_limit, CKeyPairCompareLess<EReactionSpeechType, long> comp) -- STLport introsort recursion over CSimVoice's voice entries: median-of-three partition, recurse on the right part until ranges reach 16 entries, partial_sort at depth zero
+// std::__introsort_loop(pair<EReactionSpeechType, long>* first, pair<EReactionSpeechType, long>* last, pair<EReactionSpeechType, long>*, int depth_limit, CKeyPairCompareLess<EReactionSpeechType, long> comp) -- STLport introsort recursion over CSimVoice's voice entries: median-of-three partition, recurse on the right part until ranges reach 16 entries, partial_sort at depth zero
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00681270, length 196 bytes (+ int3 padding), `ret 0Ch`.
 // Callers: sort 0x006813A0 (landed; 0x006813D8, depth 2*lg(n)) and itself (0x006812FD).
@@ -17,7 +17,7 @@
 //   edx, the value-type tag, the depth limit and the empty comparator on the stack).
 enum EReactionSpeechType { REACTION_SPEECH_TYPE_NONE = -1, REACTION_SPEECH_TYPE_0 = 0 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -28,13 +28,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<EReactionSpeechType, long> TVoiceEntry;
+typedef std::pair<EReactionSpeechType, long> TVoiceEntry;
 typedef CKeyPairCompareLess<EReactionSpeechType, long> TVoiceLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -85,4 +85,4 @@ void __fastcall __introsort_loop(_RandomAccessIter __first, _RandomAccessIter __
 }
 }
 
-template void __fastcall _STL::__introsort_loop<TVoiceEntry*, TVoiceEntry, int, TVoiceLess>(TVoiceEntry*, TVoiceEntry*, TVoiceEntry*, int, TVoiceLess);
+template void __fastcall std::__introsort_loop<TVoiceEntry*, TVoiceEntry, int, TVoiceLess>(TVoiceEntry*, TVoiceEntry*, TVoiceEntry*, int, TVoiceLess);

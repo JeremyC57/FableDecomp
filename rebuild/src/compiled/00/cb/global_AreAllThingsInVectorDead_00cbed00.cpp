@@ -28,7 +28,7 @@ struct CScriptThing {                       // 12 bytes, vtable 0x01238C8C (vptr
     void* m_pImpData;                       // +0x04 CCountedPointer<CThing> PImp
     void* m_pImpInfo;                       // +0x08
 };
-namespace _STL {
+namespace std {
 template <class T> class allocator { };
 template <class T, class A = allocator<T> > class vector {
 public:
@@ -41,7 +41,7 @@ public:
 };
 }
 
-bool __fastcall AreAllThingsInVectorDead(const _STL::vector<CScriptThing>& things)
+bool __fastcall AreAllThingsInVectorDead(const std::vector<CScriptThing>& things)
 {
     unsigned int dead = 0;
     for (const CScriptThing* it = things.begin(); it != things.end(); ++it)

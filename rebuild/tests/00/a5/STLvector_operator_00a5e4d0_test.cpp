@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A5E4D0 _STL::vector<SElement8>::operator=(const vector&)
+// Behaviour test for 0x00A5E4D0 std::vector<SElement8>::operator=(const vector&)
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -8,7 +8,7 @@ struct SElement8 {
     long m_04;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _Tp> inline void _Destroy(_Tp*, _Tp*) { }
 // stand-ins for the out-of-line helpers 0x00A5DF30 / 0x00A5DDE0 / 0x00A5DEE0
@@ -81,9 +81,9 @@ public:
         return *this;
     }
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::vector<SElement8> CVec;
+typedef std::vector<SElement8> CVec;
 
 static bool Holds(const CVec& v, unsigned int n, long seed)
 {

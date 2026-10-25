@@ -7,35 +7,35 @@ address	status	bytes	test	note
 00878b60	RELOCATION_MATCH	123v123	PASS	NCameraModes::CProjectileWeapon::GetLookDirectionXYFromParams (PDB name); named local overwritten then returned
 0087c660	RELOCATION_MATCH	76v76	PASS	CTurningAnimCompare::operator()(a,b) (retail reads a twice)
 0087c6b0	DIFFER	150v146	-	parked: CTurningAnimCompare unary operator(); dot-product x87 order
-0087da90	RELOCATION_MATCH	184v184	PASS	_STL::__median<CTurningAnimCompare>
-0087db50	RELOCATION_MATCH	198v198	PASS	_STL::__find_if<unary_negate<CTurningAnimCompare>>
-0087dc30	RELOCATION_MATCH	95v95	PASS	_STL::__unguarded_linear_insert<CTurningAnimCompare>
-0087ddd0	RELOCATION_MATCH	63v63	PASS	_STL::remove_copy_if<unary_negate<CTurningAnimCompare>>
-0087e250	RELOCATION_MATCH	123v123	PASS	_STL::__linear_insert<CTurningAnimCompare> (memmove copy_backward)
+0087da90	RELOCATION_MATCH	184v184	PASS	std::__median<CTurningAnimCompare>
+0087db50	RELOCATION_MATCH	198v198	PASS	std::__find_if<unary_negate<CTurningAnimCompare>>
+0087dc30	RELOCATION_MATCH	95v95	PASS	std::__unguarded_linear_insert<CTurningAnimCompare>
+0087ddd0	RELOCATION_MATCH	63v63	PASS	std::remove_copy_if<unary_negate<CTurningAnimCompare>>
+0087e250	RELOCATION_MATCH	123v123	PASS	std::__linear_insert<CTurningAnimCompare> (memmove copy_backward)
 00883ae0	RELOCATION_MATCH	142v142	PASS	CScreenFilterEntry::Reset (bypass-map walk)
 008840d0	RELOCATION_MATCH	78v78	PASS	_Rb_tree::_M_create_node (screen-filter bypass map)
 00884120	RELOCATION_MATCH	94v94	PASS	_Rb_tree::_M_clone_node (bypass map)
 008843f0	RELOCATION_MATCH	153v153	PASS	_Rb_tree::_M_insert (bypass map)
 00884490	RELOCATION_MATCH	198v198	PASS	_Rb_tree::_M_copy (bypass map)
 00884c70	RELOCATION_MATCH	207v207	PASS	map::operator[] (bypass map)
-00885dd0	MATCH	52v52	PASS	_STL::uninitialized_fill_n<CThemeWeight*>
-00889300	RELOCATION_MATCH	90v90	PASS	_STL::__uninitialized_copy<CEnvironmentThemePriorityStackEntry*>
-008897d0	RELOCATION_MATCH	40v40	PASS	_STL::fill<CBlendedEnvironmentTheme*>
-00889800	RELOCATION_MATCH	45v45	PASS	_STL::uninitialized_fill_n<CBlendedEnvironmentTheme*>
+00885dd0	MATCH	52v52	PASS	std::uninitialized_fill_n<CThemeWeight*>
+00889300	RELOCATION_MATCH	90v90	PASS	std::__uninitialized_copy<CEnvironmentThemePriorityStackEntry*>
+008897d0	RELOCATION_MATCH	40v40	PASS	std::fill<CBlendedEnvironmentTheme*>
+00889800	RELOCATION_MATCH	45v45	PASS	std::uninitialized_fill_n<CBlendedEnvironmentTheme*>
 00889cb0	DIFFER	238v230	-	parked: vector<CBlendedEnvironmentTheme>::reserve; tag gets its own frame byte
 0088aff0	RELOCATION_MATCH	193v193	PASS	GFRemapToThingAfterSerialisation (PDB name); same-TU LowerBound stand-in
-0088c780	MATCH	51v51	PASS	_STL::__unguarded_linear_insert<SKeyedPair,SKeyGreater> (descriptive types)
-0088c9d0	MATCH	73v73	PASS	_STL::__unguarded_insertion_sort_aux<SKeyedPair,SKeyGreater> (descriptive types)
+0088c780	MATCH	51v51	PASS	std::__unguarded_linear_insert<SKeyedPair,SKeyGreater> (descriptive types)
+0088c9d0	MATCH	73v73	PASS	std::__unguarded_insertion_sort_aux<SKeyedPair,SKeyGreater> (descriptive types)
 008aabc0	MATCH	77v77	PASS	unary_negate<CVectorFilter_FurtherFromPointThan>::operator()
-008ac060	RELOCATION_MATCH	100v100	PASS	_STL::remove_if<C3DVector*, not1(FurtherFromPointThan)>; same-TU __find_if stand-in
-008ac2a0	RELOCATION_MATCH	132v132	PASS	_STL::__copy<CScriptThing*>
+008ac060	RELOCATION_MATCH	100v100	PASS	std::remove_if<C3DVector*, not1(FurtherFromPointThan)>; same-TU __find_if stand-in
+008ac2a0	RELOCATION_MATCH	132v132	PASS	std::__copy<CScriptThing*>
 008adf90	RELOCATION_MATCH	72v72	PASS	vector<CScriptThing>::push_back; same-TU _M_insert_overflow stand-in
 008af220	RELOCATION_MATCH	134v134	PASS	CombatDialogueManager::CombatDialogueManager()
 008b3430	RELOCATION_MATCH	63v63	PASS	CCombatSequenceBase scalar deleting destructor; same-TU __destroy_aux stand-in
 008b8050	RELOCATION_MATCH	141v141	PASS	CCreatureAction_PlayCombatAnimation ctor; same-TU _M_insert_overflow stand-in
-008c34a0	RELOCATION_MATCH	100v100	PASS	_STL::remove_if<C3DVector*, CIsOutsideRadius> (descriptive functor)
+008c34a0	RELOCATION_MATCH	100v100	PASS	std::remove_if<C3DVector*, CIsOutsideRadius> (descriptive functor)
 008c7e50	RELOCATION_MATCH	173v173	PASS	CompareActorRotations (descriptive name, no PDB symbol)
 008d45a0	RELOCATION_MATCH	95v95	PASS	CFilter_Bind4<...>::operator()<CEventHitBy*>
-008e2db0	MATCH	66v66	PASS	_STL::swap<C3DVector>
-008e3150	MATCH	66v66	PASS	_STL::swap<C3DVector> (second instantiation)
-008e3430	RELOCATION_MATCH	137v137	PASS	_STL::__partition<C3DVector*, CIsUsableIciclePoint>
+008e2db0	MATCH	66v66	PASS	std::swap<C3DVector>
+008e3150	MATCH	66v66	PASS	std::swap<C3DVector> (second instantiation)
+008e3430	RELOCATION_MATCH	137v137	PASS	std::__partition<C3DVector*, CIsUsableIciclePoint>

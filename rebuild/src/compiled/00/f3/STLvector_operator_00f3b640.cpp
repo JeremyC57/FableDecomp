@@ -1,5 +1,5 @@
-// _STL::vector::operator=(const vector& x) -- (vector<unsigned short>, the CArray<unsigned short> base) STLport assignment: reallocate and copy when x exceeds capacity, else copy over the live part and append the rest, then set finish = start + x.size()
-// Leaf: ??4?$vector@GV?$allocator@G@_STL@@@_STL@@QAEAAV01@ABV01@@Z
+// std::vector::operator=(const vector& x) -- (vector<unsigned short>, the CArray<unsigned short> base) STLport assignment: reallocate and copy when x exceeds capacity, else copy over the live part and append the rest, then set finish = start + x.size()
+// Leaf: ??4?$vector@GV?$allocator@G@std@@@std@@QAEAAV01@ABV01@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3B640, 236 bytes (+ int3 padding), thiscall `ret 4` (returns this).
 // Identity: six callers -- the landed CArray<CArray<unsigned short>> __copy / __copy_backward loops 0x00F3B8A0 /
 //   0x00F3B8F0 (catalog "CElement12_00f3b640::operator="), 0x00F3B863, 0x00F3BA48, 0x00F3E083 -- the CTriangleStripifier2 TU,
@@ -15,7 +15,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
@@ -125,12 +125,12 @@ protected:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> {   // retail CArray: the 12-byte STLport vector itself
+template <class T> class CArray : public std::vector<T> {   // retail CArray: the 12-byte STLport vector itself
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp, class _Alloc>
 vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& __x)
@@ -158,4 +158,4 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
 
 template class vector<unsigned short>;
 
-}   // namespace _STL
+}   // namespace std

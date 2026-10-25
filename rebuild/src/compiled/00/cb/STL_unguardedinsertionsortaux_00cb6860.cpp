@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<CCharString, CScriptInfo>* first, pair<CCharString, CScriptInfo>* last, pair<CCharString, CScriptInfo>*, CKeyPairCompareLess<CCharString, CScriptInfo> comp) -- unguarded insertion sort of [first, last): each element, copied by value, goes through the unguarded linear insert
+// std::__unguarded_insertion_sort_aux(pair<CCharString, CScriptInfo>* first, pair<CCharString, CScriptInfo>* last, pair<CCharString, CScriptInfo>*, CKeyPairCompareLess<CCharString, CScriptInfo> comp) -- unguarded insertion sort of [first, last): each element, copied by value, goes through the unguarded linear insert
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB6860, 94 bytes, __fastcall (first ecx, last edx; the null value-type pointer and
 //   the comparator on the stack, `ret 8`).
@@ -32,7 +32,7 @@ public:
     bool        MasterScript;                   // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -43,13 +43,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-typedef _STL::pair<CCharString, CScriptInfo> CScriptInfoEntry;            // 24 bytes
+typedef std::pair<CCharString, CScriptInfo> CScriptInfoEntry;            // 24 bytes
 typedef CKeyPairCompareLess<CCharString, CScriptInfo> CScriptInfoLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00CB6420
 

@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<CCharString, long>* last, pair<CCharString, long> val, CKeyPairCompareLess<CCharString, long> comp) -- insertion-sort inner step over (name, value) entries: shift entries with larger names up one slot until val's name fits, then assign val there
+// std::__unguarded_linear_insert(pair<CCharString, long>* last, pair<CCharString, long> val, CKeyPairCompareLess<CCharString, long> comp) -- insertion-sort inner step over (name, value) entries: shift entries with larger names up one slot until val's name fits, then assign val there
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B47F0, 89 bytes, `ret 0Ch`: `__fastcall` (/Gr algorithm TU: last in ecx, the 8-byte
 // pair value and the empty comparator on the stack). Catalog name "Sorted_Vector_InsertElement" (descriptive). Callers:
@@ -32,7 +32,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                      // +0x00
     _T2 second;                                     // +0x04
@@ -55,9 +55,9 @@ void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, long> SNameEntry;
-template void __fastcall _STL::__unguarded_linear_insert<SNameEntry*, SNameEntry, CKeyPairCompareLess<CCharString, long> >(
+typedef std::pair<CCharString, long> SNameEntry;
+template void __fastcall std::__unguarded_linear_insert<SNameEntry*, SNameEntry, CKeyPairCompareLess<CCharString, long> >(
     SNameEntry* __last, SNameEntry __val, CKeyPairCompareLess<CCharString, long> __comp);

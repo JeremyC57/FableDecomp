@@ -1,4 +1,4 @@
-// Behaviour test for 0x007AF980 _STL::fill(CIntelligentPointer<CThing>*, ...): every intelligent pointer of the range is pointed at the value's thing (SetPItem(other.GetPItem()) per element)
+// Behaviour test for 0x007AF980 std::fill(CIntelligentPointer<CThing>*, ...): every intelligent pointer of the range is pointed at the value's thing (SetPItem(other.GetPItem()) per element)
 #include <stdio.h>
 #if !defined(_MSC_VER)
 #define __fastcall
@@ -21,7 +21,7 @@ public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 static CBaseObject gTarget = { 3 };
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
@@ -36,11 +36,11 @@ int main()
     for (i = 0; i < 4; ++i) arr[i].PItem = 0;
     CIntelligentPointer<CThing> v; v.PItem = &gTarget;
     bool ok = true;
-    _STL::fill(arr, arr + 3, v);
+    std::fill(arr, arr + 3, v);
     for (i = 0; i < 3; ++i)
         ok = ok && arr[i].PItem == &gTarget;
     ok = ok && arr[3].PItem == 0 && gAssigns == 3 && gGets == 3;
-    _STL::fill(arr, arr, v);
+    std::fill(arr, arr, v);
     ok = ok && gAssigns == 3 && gGets == 3;
     if (ok) { printf("007af980_TEST PASS\n"); return 0; }
     printf("007af980_TEST FAIL\n");

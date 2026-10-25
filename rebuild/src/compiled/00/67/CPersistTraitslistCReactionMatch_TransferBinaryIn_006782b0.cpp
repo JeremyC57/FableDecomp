@@ -121,7 +121,7 @@ __forceinline CReactionMatch* CReactionMatch::CreateFromType(EReactionMatchType 
     return 0;
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {};
 struct _List_node_base {
     _List_node_base* _M_next;                          // +0x00
@@ -182,12 +182,12 @@ template <> struct CPersistTraits<EReactionMatchType> {
         *value = number;
     }
 };
-template <> struct CPersistTraits<_STL::list<CReactionMatch*> > {
-    void TransferBinaryIn(CMemoryDataInputStream& stream, _STL::list<CReactionMatch*>& value);
+template <> struct CPersistTraits<std::list<CReactionMatch*> > {
+    void TransferBinaryIn(CMemoryDataInputStream& stream, std::list<CReactionMatch*>& value);
 };
 
-void CPersistTraits<_STL::list<CReactionMatch*> >::TransferBinaryIn(CMemoryDataInputStream& stream,
-                                                                    _STL::list<CReactionMatch*>& value)
+void CPersistTraits<std::list<CReactionMatch*> >::TransferBinaryIn(CMemoryDataInputStream& stream,
+                                                                    std::list<CReactionMatch*>& value)
 {
     long count;
     CPersistTraits<long>().TransferBinaryIn(stream, &count);

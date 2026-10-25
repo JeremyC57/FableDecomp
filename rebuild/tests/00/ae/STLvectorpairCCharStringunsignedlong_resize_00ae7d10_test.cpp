@@ -1,4 +1,4 @@
-// Behaviour test for 0x00AE7D10 _STL::vector<pair<CCharString,unsigned long>>::resize(unsigned int new_size).
+// Behaviour test for 0x00AE7D10 std::vector<pair<CCharString,unsigned long>>::resize(unsigned int new_size).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00ae7d10_TEST FAIL\n"); return 1; } } while (0)

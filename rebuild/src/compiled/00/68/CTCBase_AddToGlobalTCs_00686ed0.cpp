@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CThing;
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0x00
@@ -58,7 +58,7 @@ public:
     void push_back(const _Tp& __x) { insert(end(), __x); }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CTCBase {
 public:
@@ -67,7 +67,7 @@ public:
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
 
-    static _STL::list<CTCBase*> GlobalUpdateTCs;            // 0x013BA8AC
+    static std::list<CTCBase*> GlobalUpdateTCs;            // 0x013BA8AC
     void AddToGlobalTCs();
 };
 

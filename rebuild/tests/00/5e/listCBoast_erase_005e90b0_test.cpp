@@ -41,7 +41,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -135,19 +135,19 @@ public:
     list& operator=(const list& x);
 };
 
-} // namespace _STL
+} // namespace std
 
-namespace _STL {
+namespace std {
 template <class T> typename list<T>::iterator list<T>::erase(iterator first, iterator last)
 {
     while (first != last)
         erase(first++);
     return last;
 }
-} // namespace _STL
+} // namespace std
 
-template _STL::list<CQuestManager::CBoast>::iterator _STL::list<CQuestManager::CBoast>::erase(
-    _STL::list<CQuestManager::CBoast>::iterator, _STL::list<CQuestManager::CBoast>::iterator);
+template std::list<CQuestManager::CBoast>::iterator std::list<CQuestManager::CBoast>::erase(
+    std::list<CQuestManager::CBoast>::iterator, std::list<CQuestManager::CBoast>::iterator);
 
 // ---- test bodies of the retail callees ----
 static int g_strCopies = 0, g_strDtors = 0, g_strAssigns = 0;
@@ -161,8 +161,8 @@ CWideString& CWideString::operator=(const CWideString& other) { PStringData = ot
 static void ResetCounts() { g_strCopies = g_strDtors = g_strAssigns = g_wideCopies = g_wideDtors = g_wideAssigns = 0; }
 
 typedef CQuestManager::CBoast CBoast;
-typedef _STL::list<CBoast> CBoastList;
-typedef _STL::_List_node<CBoast> CBoastNode;
+typedef std::list<CBoast> CBoastList;
+typedef std::_List_node<CBoast> CBoastNode;
 struct SRawBoast {                                         // CBoast's layout (it has no default constructor)
     long ID, Cost, Reward;
     void* ScriptName;
@@ -191,7 +191,7 @@ static CBoastNode* NewBoastNode(long id)                   // every field derive
 }
 static void InitList(CBoastList& l, const long* ids, int n)
 {
-    l._M_node = (_STL::_List_node_base*)malloc(sizeof(CBoastNode));
+    l._M_node = (std::_List_node_base*)malloc(sizeof(CBoastNode));
     l._M_node->_M_next = l._M_node->_M_prev = l._M_node;
     for (int i = 0; i < n; ++i) {
         CBoastNode* node = NewBoastNode(ids[i]);
@@ -209,7 +209,7 @@ static bool BoastIs(const CBoast& b, long id)
 }
 static bool ListIs(const CBoastList& l, const long* ids, int n)   // forward order, back links and every field
 {
-    _STL::_List_node_base* p = l._M_node->_M_next;
+    std::_List_node_base* p = l._M_node->_M_next;
     for (int i = 0; i < n; ++i, p = p->_M_next)
         if (p == l._M_node || p->_M_next->_M_prev != p || !BoastIs(((CBoastNode*)p)->_M_data, ids[i]))
             return false;

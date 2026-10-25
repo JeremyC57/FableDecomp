@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<CCharString, unsigned long>* first, pair<CCharString, unsigned long>* last, pair<CCharString, unsigned long>*, int depth_limit, CKeyPairCompareLess comp) -- introsort recursion of a name-keyed vector map: median-of-three partition until 16 entries remain, partial (heap) sort when the depth budget runs out
+// std::__introsort_loop(pair<CCharString, unsigned long>* first, pair<CCharString, unsigned long>* last, pair<CCharString, unsigned long>*, int depth_limit, CKeyPairCompareLess comp) -- introsort recursion of a name-keyed vector map: median-of-three partition until 16 entries remain, partial (heap) sort when the depth budget runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B8B50, 171 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first
 //   in ecx, last in edx; the value-type tag pointer, the depth limit and the empty comparator on the stack).
@@ -21,7 +21,7 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a struct: mangled U)
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -32,12 +32,12 @@ template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a s
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
-typedef _STL::pair<CCharString, unsigned long> TNameEntry;
+typedef std::pair<CCharString, unsigned long> TNameEntry;
 typedef CKeyPairCompareLess<CCharString, unsigned long> TNameCompare;
 
-namespace _STL {
+namespace std {
 const int __stl_threshold = 16;
 
 template <class _Tp, class _Compare>

@@ -1,5 +1,5 @@
-// _STL::vector<CQuestCardItem>::resize(unsigned int new_size) -- STLport one-argument resize of the quest screen's card-item vector: resize(n, CQuestCardItem()) with the default item destroyed on both exits
-// Leaf: ?resize@?$vector@VCQuestCardItem@@@_STL@@QAEXI@Z
+// std::vector<CQuestCardItem>::resize(unsigned int new_size) -- STLport one-argument resize of the quest screen's card-item vector: resize(n, CQuestCardItem()) with the default item destroyed on both exits
+// Leaf: ?resize@?$vector@VCQuestCardItem@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006253D0, 108 bytes (+ int3 padding), `__fastcall` (this -> esi), `ret 4`.
 // Identity: Ego_r.pdb `?resize@?$vector@VCQuestCardItem@@...@@QAEXI@Z` (CTCInventoryQuests::QuestCardItemList is a
 //   vector<CQuestCardItem>); the one caller 0x0061A731 is CTCInventoryQuests::OnCreate 0x0061A6A0. The 8-byte element is
@@ -24,7 +24,7 @@ public:
     CWideString ItemText;                               // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 class vector {
 public:

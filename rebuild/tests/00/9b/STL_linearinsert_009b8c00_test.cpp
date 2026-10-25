@@ -70,7 +70,7 @@ public:
     char* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -204,7 +204,7 @@ private:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -218,16 +218,16 @@ public:
         CArray<unsigned long>  GlobalIndices;
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoLess;
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     CVectorMap() : Dirty(false) {}
     void Insert(const K& key, const V& value);
@@ -237,11 +237,11 @@ public:
 
 template <class K, class V, class C> void CVectorMap<K, V, C>::Insert(const K& key, const V& value)
 {
-    this->push_back(_STL::pair<K, V>(key, value));
+    this->push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;
@@ -496,7 +496,7 @@ int main()
         unsigned long keys[5] = { 2, 4, 6, 8, 1 };
         CDefClassInfoPair a[5];
         Fill(a, keys, 5);
-        _STL::__linear_insert(a, a + 4, CDefClassInfoPair(a[4]), CDefClassInfoLess());
+        std::__linear_insert(a, a + 4, CDefClassInfoPair(a[4]), CDefClassInfoLess());
         unsigned long want[5] = { 1, 2, 4, 6, 8 };
         for (int i = 0; i < 5; ++i)
             if (a[i].first != want[i] || !InfoIs(a[i], want[i], Name(want[i]), want[i] * 10, (unsigned int)(want[i] % 3)))
@@ -504,7 +504,7 @@ int main()
 
         unsigned long keys2[5] = { 2, 4, 6, 8, 5 };
         Fill(a, keys2, 5);
-        _STL::__linear_insert(a, a + 4, CDefClassInfoPair(a[4]), CDefClassInfoLess());
+        std::__linear_insert(a, a + 4, CDefClassInfoPair(a[4]), CDefClassInfoLess());
         unsigned long want2[5] = { 2, 4, 5, 6, 8 };
         for (int i = 0; i < 5; ++i)
             if (a[i].first != want2[i] || !InfoIs(a[i], want2[i], Name(want2[i]), want2[i] * 10, (unsigned int)(want2[i] % 3)))

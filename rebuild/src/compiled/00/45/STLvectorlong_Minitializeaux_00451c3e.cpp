@@ -1,4 +1,4 @@
-// _STL::vector<long>::_M_initialize_aux(int n, int value, const __true_type&) -- the integral-argument path of vector<long>'s range constructor: allocate exactly n longs and fill them all with `value`
+// std::vector<long>::_M_initialize_aux(int n, int value, const __true_type&) -- the integral-argument path of vector<long>'s range constructor: allocate exactly n longs and fill them all with `value`
 // Leaf: ??$_M_initialize_aux@H@?$vector@J
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00451C3E, 69 bytes (size-optimised TU, no padding), thiscall, `ret 0Ch`.
 // Identity: the only caller 0x00451C3E <- 0x00453673 is vector<long>::vector<int>(int first, int last, const allocator&)
@@ -14,7 +14,7 @@
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 struct __true_type { };
 
 template <class _Tp> class allocator {

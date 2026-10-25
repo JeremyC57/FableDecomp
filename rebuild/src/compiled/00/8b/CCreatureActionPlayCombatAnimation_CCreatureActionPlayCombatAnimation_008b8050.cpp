@@ -24,7 +24,7 @@ struct CSoundPair {                                     // two sound ids, zeroed
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 template <class _Tp>
@@ -62,7 +62,7 @@ public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     unsigned char _body04[0xF0 - 4];
-    _STL::vector<const CAnimationEntry*> CombatAnimations; // +0xF0
+    std::vector<const CAnimationEntry*> CombatAnimations; // +0xF0
     unsigned char _bodyFC[0x114 - 0xFC];
 };
 

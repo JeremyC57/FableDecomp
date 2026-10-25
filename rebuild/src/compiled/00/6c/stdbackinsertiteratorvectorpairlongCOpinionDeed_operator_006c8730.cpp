@@ -14,7 +14,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class COpinionDeed;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -88,4 +88,4 @@ back_insert_iterator<_Container>& back_insert_iterator<_Container>::operator=(co
 
 template class back_insert_iterator<vector<pair<long, COpinionDeed*> > >;
 
-} // namespace _STL
+} // namespace std

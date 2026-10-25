@@ -11,7 +11,7 @@ All 38 sources grade MATCH (11) or RELOCATION_MATCH (27) through gall.sh. Their 
   - Leaves need `class` types (V mangling).
 - **STLport vector::clear** (0x0049BAE0 `vector<float>`, 0x008F9E90 `vector<char>`):
   - `erase(begin(), end())` over STLport 4.6 `__copy_ptrs` / `__copy_trivial`, written in the `(last == first) ? result : memmove(..)+n` form. This keeps the never-true `cmp eax,eax ; jne` and the zero-length memmove tail.
-  - Both are modelled as real `_STL` templates with an explicit instantiation.
+  - Both are modelled as real `std` templates with an explicit instantiation.
 - **Deleting destructors** (0x00414FC0 CConsoleCommandBase, 0x009973C0 CMemoryDataOutputStream, 0x009D8140 CLoadingMemoryFailureHandler, 0x009FC700 CResourceList, 0x00C5EC00 the no-RTTI handle class, 0x008EFFD0 Coin):
   - The rule: an out-of-line (empty, or DeleteCriticalSection) virtual destructor defined in the TU emits the vtable and ??_G, and VC7.1 inlines it into ??_G.
   - Classes that declare no destructor (CDataOutputStream, Coin, CConsoleCommandParameters) drop their own vtable reset.

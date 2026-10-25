@@ -1,5 +1,5 @@
-// _STL::_Rb_tree::insert_unique(const value_type& v) -- STLport unique insert for map<pair<long,long>,CCountedPointer<CVertexPairContraction> >: walk down to the insertion parent, step back one node when the walk ended left, insert unless that node's key equals v's
-// Leaf: ?insert_unique@?$_Rb_tree@U?$pair@JJ@_STL@@
+// std::_Rb_tree::insert_unique(const value_type& v) -- STLport unique insert for map<pair<long,long>,CCountedPointer<CVertexPairContraction> >: walk down to the insertion parent, step back one node when the walk ended left, insert unless that node's key equals v's
+// Leaf: ?insert_unique@?$_Rb_tree@U?$pair@JJ@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD4720, 175 bytes (+int3), thiscall `ret 8` (hidden pair<iterator,bool>
 //   result + v).
 // Identity: callers 0x00AD5778 / 0x00AD589B (the map's insert(value) and the hinted insert_unique fallbacks of the
@@ -56,7 +56,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -228,9 +228,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 pair<typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::iterator, bool>
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::insert_unique(const value_type& __v)
@@ -253,10 +253,10 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::insert_unique(const value
         return pair<iterator, bool>(_M_insert(__x, __y, __v), true);
     return pair<iterator, bool>(__j, false);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, long> TVertexPairKey;
-typedef _STL::pair<const TVertexPairKey, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > TPairContractionValue;
-typedef _STL::_Rb_tree<TVertexPairKey, TPairContractionValue, _STL::_Select1st<TPairContractionValue>,
-                       _STL::less<TVertexPairKey>, _STL::allocator<TPairContractionValue> > TPairContractionMapTree;
-template _STL::pair<TPairContractionMapTree::iterator, bool> TPairContractionMapTree::insert_unique(const TPairContractionValue&);
+typedef std::pair<long, long> TVertexPairKey;
+typedef std::pair<const TVertexPairKey, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > TPairContractionValue;
+typedef std::_Rb_tree<TVertexPairKey, TPairContractionValue, std::_Select1st<TPairContractionValue>,
+                       std::less<TVertexPairKey>, std::allocator<TPairContractionValue> > TPairContractionMapTree;
+template std::pair<TPairContractionMapTree::iterator, bool> TPairContractionMapTree::insert_unique(const TPairContractionValue&);

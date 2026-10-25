@@ -6,4 +6,4 @@ address	name	evidence
 005eadc0	CTCTavernGame::SetStateAfterYesNoAlt	Ego_r.pdb name, 7 args ret 1Ch, /GS; RELOCATION_MATCH on 354 B
 009ad3b0	CDefinitionManager::GetNoInstantiatedDefsOfType	not LTextSystem::GetIDFromSymbol (bounds follow-up)
 00b6bd40	GetDef<CEngineThemeDef>	callee of BuildThemes (bounds follow-up)
-00b6cb20	_STL::vector<CLandscapeTheme>::resize	callee of BuildThemes (bounds follow-up)
+00b6cb20	std::vector<CLandscapeTheme>::resize	callee of BuildThemes (bounds follow-up)

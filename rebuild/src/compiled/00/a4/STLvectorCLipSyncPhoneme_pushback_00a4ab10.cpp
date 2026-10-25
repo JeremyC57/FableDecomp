@@ -1,4 +1,4 @@
-// _STL::vector<CLipSyncPhoneme>::push_back(const CLipSyncPhoneme& x) -- append a lip-sync phoneme: placement copy at the finish pointer when there is room, else _M_insert_overflow(finish, x, __false_type(), 1, true)
+// std::vector<CLipSyncPhoneme>::push_back(const CLipSyncPhoneme& x) -- append a lip-sync phoneme: placement copy at the finish pointer when there is room, else _M_insert_overflow(finish, x, __false_type(), 1, true)
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4AB10, length 78 bytes (+2 int3 pad), `ret 4`.
 // Callees: CCharString copy ctor 0x0099EC30, 0x00A4A710 vector<CLipSyncPhoneme>::_M_insert_overflow (the catalog's
@@ -25,7 +25,7 @@ public:
     float         Weight;                            // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 
 template <class _T1, class _T2>

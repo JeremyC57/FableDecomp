@@ -3,7 +3,7 @@
 All 38 src/ rows grade MATCH or RELOCATION_MATCH through gall.sh (006F8EA0 is a full MATCH; the rest are
 RELOCATION_MATCH). Every test passes under g++ (tall.sh) and VC7.1 (tall.py). calls.py finds every call target
 equal to retail's, including the imports malloc 0xBFEA0E, free 0xBFEA14 and memmove 0xBFEAE6. Everything is modelled
-as STLport 4.6 templates in namespace `_STL`. Line 1 says `std::` because STLport maps `std` onto `_STL`. Where a
+as STLport 4.6 templates in namespace `std`. Line 1 says `std::` because STLport maps `std` onto `std`. Where a
 template argument contains `::`, line 1 uses the plain template name and the description gives the element type.
 
 ## What matched (38)
@@ -63,7 +63,7 @@ template argument contains `::`, line 1 uses the plain template name and the des
   _Destroy(finish);`. The tag sits in the top byte of the dead `position` slot (`lea eax,[ebp+0Bh]`).
 - 006CA850 `CEngineTextureMorphSet::ClearTextureMorph(long)`: an erase-while loop with the single erase inline. The
   random-access tag lands on the LIVE `index` slot, so `__copy` needs a same-TU noinline stand-in.
-- 006BC160 `CRegion::RemoveMap(long)`: `Maps.erase(_STL::remove(Maps.begin(), Maps.end(), map))`. `remove` is find +
+- 006BC160 `CRegion::RemoveMap(long)`: `Maps.erase(std::remove(Maps.begin(), Maps.end(), map))`. `remove` is find +
   remove_copy, and the single erase becomes one memmove. find's tag is on the live `map` slot, which needs a same-TU
   noinline `__fastcall __find` stand-in (0x0050E540).
 
@@ -105,7 +105,7 @@ template argument contains `::`, line 1 uses the plain template name and the des
   to the full 1-arg mangled name because the 2-arg inline overload is emitted too.
 
 ### Algorithms
-- 006F8EA0 `_STL::__find_if<const NAnimationEvents::CEvent*, CIsEventIndexEqualTo>`: the four-way unrolled
+- 006F8EA0 `std::__find_if<const NAnimationEvents::CEvent*, CIsEventIndexEqualTo>`: the four-way unrolled
   random-access `__find_if` as written in the source (`__fastcall`). `pred.Index` (a 30-bit bitfield) is cached in
   esi, followed by the 3/2/1 switch remainder. This is a full MATCH.
 
@@ -133,7 +133,7 @@ the class methods come from the Ego_r PDB name sets. No row here needs a "descri
 - 0047AE50 `vector::erase_with_tree_cleanup` -> `CHeroLogBook::Clear()`
 - 005418C0 `vector::insert_single` -> `vector<NUISystem::CComponent*>::insert(pos, x)`
 - 005E29D0 `vector::_Reallocate` -> `vector<pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > >::_M_insert_overflow`
-- 006F8EA0 `vector::Find_ByMask` -> `_STL::__find_if<const NAnimationEvents::CEvent*, CIsEventIndexEqualTo>`
+- 006F8EA0 `vector::Find_ByMask` -> `std::__find_if<const NAnimationEvents::CEvent*, CIsEventIndexEqualTo>`
 - 0085E200 `Reallocate_element` -> `vector<CTextureManagerPoolInfo>::_M_insert_overflow`
 - 008657E0 `Reallocate_pair_animation` -> `vector<NCreatureHitNotification::CFlash>::_M_insert_overflow`
 - 0086E1C0 `Reallocate_with_fill_16byte` -> `vector<CVectorMap<ulong, CRandomAppearanceMorph::CTextureMorph> >::_M_insert_overflow`

@@ -1,4 +1,4 @@
-// Behaviour test for 0x006BEB80 _STL::__unguarded_insertion_sort_aux<pair<long,CMusicManager::CRegisteredMusicEntry>*>.
+// Behaviour test for 0x006BEB80 std::__unguarded_insertion_sort_aux<pair<long,CMusicManager::CRegisteredMusicEntry>*>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("006beb80_TEST FAIL\n"); return 1; } } while (0)

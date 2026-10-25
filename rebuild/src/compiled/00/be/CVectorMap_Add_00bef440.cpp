@@ -64,7 +64,7 @@ public:
     CCountedPointer<CCompositeSurfaceCache> Cache;  // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -73,21 +73,21 @@ template <class T1, class T2> struct pair {
     T2 second;                                      // +0x04
     pair(const T1& a, const T2& b) : first(a), second(b) { }
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
+typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 template <class T> inline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
@@ -155,11 +155,11 @@ public:
             _M_insert_overflow(this->_M_finish, x, __false_type(), 1UL, true);
     }
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::vector<CSurfaceEntry, _STL::allocator<CSurfaceEntry> > CSurfaceEntryVector;
+typedef std::vector<CSurfaceEntry, std::allocator<CSurfaceEntry> > CSurfaceEntryVector;
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V>, _STL::allocator<_STL::pair<K, V> > > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V>, std::allocator<std::pair<K, V> > > {
 public:
     C    Compare;                                   // +0x0c (empty CKeyPairCompareLess)
     bool Dirty;                                     // +0x0d
@@ -169,7 +169,7 @@ public:
 template <class K, class V, class C>
 void CVectorMap<K, V, C>::Add(const K& key, const V& value)
 {
-    push_back(_STL::pair<K, V>(key, value));
+    push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 

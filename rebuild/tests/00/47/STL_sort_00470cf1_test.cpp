@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::sort<pair<unsigned long,CSoundPair>*, CKeyPairCompareLess<..> > @ 0x00470CF1: introsort with a
+// Model of std::sort<pair<unsigned long,CSoundPair>*, CKeyPairCompareLess<..> > @ 0x00470CF1: introsort with a
 // 2 * lg(n) depth budget, then the final insertion sort.
 
 class CSoundPair {                                          // Ego_r.pdb, 8 bytes (a class: mangled V)
@@ -17,7 +17,7 @@ public:
     long LastSound;                                         // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -26,10 +26,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Size> __forceinline _Size __lg(_Size __n)
 {
     _Size __k;
@@ -58,7 +58,7 @@ void __fastcall sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compa
 typedef pair<unsigned long, CSoundPair> _SoundEntry;
 }
 
-typedef _STL::pair<unsigned long, CSoundPair> E;
+typedef std::pair<unsigned long, CSoundPair> E;
 typedef CKeyPairCompareLess<unsigned long, CSoundPair> C;
 static void SetEntry(E& e, unsigned int key) { e.first = key; e.second.FirstSound = (long)(key * 3); e.second.LastSound = (long)(key + 7); }
 static bool Consistent(const E& e) { return e.second.FirstSound == (long)(e.first * 3) && e.second.LastSound == (long)(e.first + 7); }
@@ -199,13 +199,13 @@ template <class RI, class T, class C> void IntrosortLoop(RI first, RI last, T*, 
     }
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class T, class S, class C> void __fastcall __introsort_loop(RI first, RI last, T*, S depth, C comp)
 {
     TLib::IntrosortLoop(first, last, (T*)0, (int)depth, comp);
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class C> void __fastcall __final_insertion_sort(RI first, RI last, C comp) { TLib::InsertionSort(first, last, comp); }
 }
 int main()
@@ -217,12 +217,12 @@ int main()
         E* a = NewEntries(n);
         FillRandom(a, n);
         unsigned long sum = KeySum(a, n);
-        _STL::sort(a, a + n, C());
+        std::sort(a, a + n, C());
         if (!SortedOk(a, n) || KeySum(a, n) != sum)
             ok = false;
         free(a);
     }
-    if (_STL::__lg(1) != 0 || _STL::__lg(16) != 4 || _STL::__lg(40) != 5)
+    if (std::__lg(1) != 0 || std::__lg(16) != 4 || std::__lg(40) != 5)
         ok = false;
     if (!ok) { printf("00470cf1_TEST FAIL\n"); return 1; }
     printf("00470cf1_TEST PASS\n");

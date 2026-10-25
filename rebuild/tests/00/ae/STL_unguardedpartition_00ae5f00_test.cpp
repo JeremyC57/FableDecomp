@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE5F00 _STL::__unguarded_partition over pair<long, unsigned long>: everything left of the cut is not greater than the pivot, everything right is not less
+// behaviour test for 0x00AE5F00 std::__unguarded_partition over pair<long, unsigned long>: everything left of the cut is not greater than the pivot, everything right is not less
 #include <cstdio>
 struct SPair { long first; unsigned int second; };
 inline bool operator<(const SPair& x, const SPair& y) { return x.first < y.first || (!(y.first < x.first) && x.second < y.second); }

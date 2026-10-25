@@ -1,4 +1,4 @@
-// _STL::list::push_front(const CTCCreatureExpression::CExpressionState& x) -- STLport list<CExpressionState> push_front of a creature expression state: allocate a node, copy the state into it, link it in before the first node
+// std::list::push_front(const CTCCreatureExpression::CExpressionState& x) -- STLport list<CExpressionState> push_front of a creature expression state: allocate a node, copy the state into it, link it in before the first node
 // Grade: RELOCATION_MATCH (agent902, 1st grade of this pass) -- the parked flat `CExpressionStateList` (raw node pointers) shrink-wrapped edi into the placement-copy block; the real STLport 4.6 list (by-value _List_iterator<T, _Nonconst_traits<T> > with its declared copy ctor, begin() -> insert(iterator, x) -> _M_create_node) keeps retail's entry `push esi ; push edi`.
 // Leaf: ?push_front@?$list@VCExpressionState@CTCCreatureExpression@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729960, 73 bytes, `ret 4`.
@@ -6,7 +6,7 @@
 //   ForcePrimaryExpression (landed 0x007293A0) calls it as list<CExpressionState>::push_front.
 // Identity: CExpressionState is the nested class CTCCreatureExpression::CExpressionState (Ego_r.pdb
 //   `?Update@CExpressionState@CTCCreatureExpression@@QAEXM@Z`), so the instantiation is
-//   `_STL::list<CTCCreatureExpression::CExpressionState>` (an out-of-line COMDAT).
+//   `std::list<CTCCreatureExpression::CExpressionState>` (an out-of-line COMDAT).
 // Callee: malloc @ 0x00BFEA0E (the node allocator, 0x1c bytes).
 // Layout: STLport list = one sentinel pointer (the alloc proxy's _M_data); node {next +0, prev +4, CExpressionState +8};
 //   CExpressionState (0x14): AnimIndex +0, MaxWeight +4, Weight +8, OldWeight +0xc, Primary +0x10, Stage +0x11.
@@ -31,7 +31,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -106,4 +106,4 @@ public:
 };
 }
 
-template void _STL::list<CTCCreatureExpression::CExpressionState>::push_front(const CTCCreatureExpression::CExpressionState&);
+template void std::list<CTCCreatureExpression::CExpressionState>::push_front(const CTCCreatureExpression::CExpressionState&);

@@ -1,4 +1,4 @@
-// Behaviour test for 00a415d0 (_STL::__insertion_sort over pair<pair<CCharString, CCharString>, long> by CKeyPairCompareLess): the range comes out ordered by the comparator, every element
+// Behaviour test for 00a415d0 (std::__insertion_sort over pair<pair<CCharString, CCharString>, long> by CKeyPairCompareLess): the range comes out ordered by the comparator, every element
 // moved whole (all members still agree with its key), and the by-value copies are balanced.
 #include <cstdio>
 #include <new>

@@ -1,4 +1,4 @@
-// Behaviour test for 0x008FCA40 _STL::transform<..., CGetMeshObject>: one mesh object per thing, appended in order.
+// Behaviour test for 0x008FCA40 std::transform<..., CGetMeshObject>: one mesh object per thing, appended in order.
 #include <cstdio>
 
 struct Mesh { int RefCount; };

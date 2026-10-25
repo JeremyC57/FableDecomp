@@ -28,7 +28,7 @@ public:
     long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
 };
 CCharString __fastcall operator+(const CCharString& left, char right);   // 0x0099F7A0
-namespace _STL {
+namespace std {
 template <class T> class allocator { };
 template <class T, class A = allocator<T> > class vector {
 public:
@@ -40,7 +40,7 @@ public:
 };
 }
 
-int __fastcall CSExtractParameterList(CCharString& text, _STL::vector<CCharString>& params)
+int __fastcall CSExtractParameterList(CCharString& text, std::vector<CCharString>& params)
 {
     CCharString current("");
     for (long i = 0; i < text.GetLength(); ++i) {

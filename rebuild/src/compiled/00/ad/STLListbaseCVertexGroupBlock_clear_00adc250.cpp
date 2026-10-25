@@ -1,4 +1,4 @@
-// _STL::_List_base<CVertexGroupBlock>::clear() -- free every node of the optimiser's block list (each block's group map and group vector destroyed in place) and relink the sentinel to itself
+// std::_List_base<CVertexGroupBlock>::clear() -- free every node of the optimiser's block list (each block's group map and group vector destroyed in place) and relink the sentinel to itself
 // Leaf: ?clear@?$_List_base@VCVertexGroupBlock
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADC250, 0xB7 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: the list node is {next +0, prev +4, CVertexGroupBlock +8} (map count at node +0x18, map header +0x14,
@@ -11,7 +11,7 @@
 // (top level of _M_erase inlined); `this` and `tmp` live in the two frame words.
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -129,15 +129,15 @@ public:
     _Rb_tree<K, value_type, Compare> _M_t;
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 bytes in retail
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0x0
@@ -169,4 +169,4 @@ void _List_base<_Tp>::clear()
 }
 
 template class _List_base<CVertexGroupBlock>;
-} // namespace _STL
+} // namespace std

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CActiveSoundInfo* first, unsigned int n, const CActiveSoundInfo& x, const __false_type&) -- copy-construct n copies of x into raw storage at first and return the end
+// std::__uninitialized_fill_n(CActiveSoundInfo* first, unsigned int n, const CActiveSoundInfo& x, const __false_type&) -- copy-construct n copies of x into raw storage at first and return the end
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AACB50, length 54 bytes, __fastcall (first in ecx, n in edx, the
 //   value and the empty tag reference on the stack, `ret 8`), returns the end in eax.
@@ -22,7 +22,7 @@ public:
     virtual ~CActiveSoundInfo();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

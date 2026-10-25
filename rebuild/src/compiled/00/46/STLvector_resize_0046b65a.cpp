@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the music entries
-// Leaf: ?resize@?$vector@VCMusicEntry@@V?$allocator@VCMusicEntry@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the music entries
+// Leaf: ?resize@?$vector@VCMusicEntry@@V?$allocator@VCMusicEntry@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0046B65A, 39 bytes, thiscall, `ret 4`; size-optimised TU.
 // Identity: vector<CMusicEntry> (sound bank TU): the only caller is the CMusicEntry vector transfer at 0x0046B51E; the
 //   callee 0x0046B681 is the two-argument resize. Ego_r.pdb members: ID, Filename (CDefString), Gain, CacheToHD.
@@ -25,7 +25,7 @@ public:
     CMusicEntry() : ID(0), Gain(0.0f), CacheToHD(false) { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

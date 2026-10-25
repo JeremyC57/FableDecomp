@@ -81,7 +81,7 @@ struct CPersistInfo {                      // NScript::CRuntimeScriptedEntityPer
     u64         UID;
     CCharString PersistScript;
 };
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _T1, class _T2> struct pair {
@@ -91,19 +91,19 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
-typedef _STL::pair<CCharString, CScriptInfo> CScriptInfoPair;
+typedef std::pair<CCharString, CScriptInfo> CScriptInfoPair;
 typedef CKeyPairCompareLess<CCharString, CScriptInfo> CScriptInfoLess;
-typedef _STL::pair<u64, CPersistInfo> CPersistPair;
+typedef std::pair<u64, CPersistInfo> CPersistPair;
 typedef CKeyPairCompareLess<u64, CPersistInfo> CPersistLess;
-typedef _STL::pair<u64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;
+typedef std::pair<u64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;
 typedef CKeyPairCompareLess<u64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptLess;
-typedef _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;
+typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;
 
 static CPersistPair MakePersist(u64 uid, const char* script)
@@ -159,7 +159,7 @@ static bool CountsAre(int n, long count)
             return false;
     return g_deletes == 0;
 }
-namespace _STL {
+namespace std {
 template <class _Tp> void swap(_Tp& __a, _Tp& __b);
 template <class _ForwardIter1, class _ForwardIter2> void iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2);
 template <class _Tp, class _Compare> const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp);
@@ -280,7 +280,7 @@ template <class _RandomAccessIterator, class _Compare> void sort_heap(_RandomAcc
 }
 }
 // ---- the function under test, copied from src/00cb9b00.cpp (calling convention dropped) ----
-namespace _STL {
+namespace std {
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
@@ -339,10 +339,10 @@ int main()
     void* raw = operator new(sizeof(CPersistPair) * 3);
     CPersistPair* dst = (CPersistPair*)raw;
     int before = g_stringCopies;
-    CPersistPair* end = _STL::__uninitialized_copy(src + 0, src + 3, dst, _STL::__false_type());
+    CPersistPair* end = std::__uninitialized_copy(src + 0, src + 3, dst, std::__false_type());
     if (end != dst + 3 || g_stringCopies - before != 3) return Fail();
     if (dst[0].first != 10 || dst[2].second.UID != 30 || std::strcmp(dst[1].second.PersistScript.m_pText, "y") != 0) return Fail();
-    if (_STL::__uninitialized_copy(src + 1, src + 1, dst, _STL::__false_type()) != dst) return Fail();
+    if (std::__uninitialized_copy(src + 1, src + 1, dst, std::__false_type()) != dst) return Fail();
     int i;
     for (i = 0; i < 3; ++i) dst[i].~CPersistPair();
     operator delete(raw);

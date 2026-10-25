@@ -52,7 +52,7 @@ public:
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;
 static TComp MakeComp() { return TComp(C2DVector(0.0f, 0.0f), C2DVector(1.0f, 0.0f)); }
 
-namespace _STL {
+namespace std {
 template <class _Iter> inline void iter_swap(_Iter __i1, _Iter __i2) { CThing* __tmp = *__i1; *__i1 = *__i2; *__i2 = __tmp; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -237,7 +237,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
         __final_insertion_sort(__first, __last, __comp);
     }
 }
-} // namespace _STL
+} // namespace std
 
 // ---- checks ----
 template <class C> static bool IsSorted(CThing** v, int n, C comp)
@@ -299,15 +299,15 @@ int main()
     {   // short range: a plain insertion sort
         CThing* v[N]; Fill(v, 12);
         CThing* before[N]; for (int i = 0; i < 12; ++i) before[i] = v[i];
-        _STL::__final_insertion_sort(v, v + 12, comp);
+        std::__final_insertion_sort(v, v + 12, comp);
         if (!IsSorted(v, 12, comp) || !SameSet(before, v, 12)) return Fail(A, "short range");
     }
     {   // long range after introsort's partitioning: the best element lies in the first 16
         CThing* v[N]; Fill(v, N);
-        CThing* sorted[N]; Fill(sorted, N); _STL::__insertion_sort(sorted, sorted + N, comp);
+        CThing* sorted[N]; Fill(sorted, N); std::__insertion_sort(sorted, sorted + N, comp);
         for (int i = 0; i < N; ++i) if (v[i] == sorted[0]) { v[i] = v[5]; v[5] = sorted[0]; break; }
         CThing* before[N]; for (int i = 0; i < N; ++i) before[i] = v[i];
-        _STL::__final_insertion_sort(v, v + N, comp);
+        std::__final_insertion_sort(v, v + N, comp);
         if (!IsSorted(v, N, comp) || !SameSet(before, v, N)) return Fail(A, "long range");
     }
 

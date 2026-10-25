@@ -7,7 +7,7 @@
 //   ?push_back@?$CArray@V?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@@QAEXABV...@Z out of line (and no
 //   vector<CDefPointer<const CCreatureGenerationFamilyDef> >::push_back), so this is the CArray member with the STLport
 //   body inlined into it (GOTCHAS: CArray::push_back carries the body, the 0x006BF410 recipe). Was landed as
-//   "_STL::vector<CDefPointer<const CDefClassBase> >::push_back" (a stand-in pointee); the catalog label
+//   "std::vector<CDefPointer<const CDefClassBase> >::push_back" (a stand-in pointee); the catalog label
 //   "vector_PushBack_CCountedPtr" is descriptive.
 // Callees: vector<...>::_M_insert_overflow(pointer, const T&, const __false_type&, size_type, bool) @ 0x007CA250.
 // Layout: CDefPointer<T> holds a CDefPointeeBase* (Ego_r.pdb), reference count at +4; retail CArray is the bare

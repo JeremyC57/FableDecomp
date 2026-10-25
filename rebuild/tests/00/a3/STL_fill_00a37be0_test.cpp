@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A37BE0 _STL::fill(CClassTypeInfo*, ...): every class-factory type record of the range becomes a copy of the value (type list and name through their operator=, the counts, flags and allocator copied)
+// Behaviour test for 0x00A37BE0 std::fill(CClassTypeInfo*, ...): every class-factory type record of the range becomes a copy of the value (type list and name through their operator=, the counts, flags and allocator copied)
 #include <stdio.h>
 #if !defined(_MSC_VER)
 #define __fastcall
@@ -31,7 +31,7 @@ public:
 };
 static int gNodeDummy;
 static CClassTypeInfo gArr[4];
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
@@ -46,12 +46,12 @@ int main()
     int i;
     for (i = 0; i < 4; ++i) { gArr[i].TypeList._M_node = 0; gArr[i].NoAllocated = 0; gArr[i].Used = false; gArr[i].Local = false; gArr[i].AllocFunc = 0; gArr[i].Name.PStringData = 0; }
     bool ok = true;
-    _STL::fill(gArr + 1, gArr + 4, v);
+    std::fill(gArr + 1, gArr + 4, v);
     for (i = 1; i < 4; ++i)
         ok = ok && gArr[i].TypeList._M_node == (void*)&gNodeDummy && gArr[i].NoAllocated == 5 && gArr[i].Used && gArr[i].Local &&
              gArr[i].AllocFunc == MakeClass && gArr[i].AllocFunc()->Id == 9 && gArr[i].Name.PStringData == v.Name.PStringData;
     ok = ok && gArr[0].NoAllocated == 0 && gArr[0].AllocFunc == 0 && gAssigns == 3 && gListAssigns == 3;
-    _STL::fill(gArr, gArr, v);
+    std::fill(gArr, gArr, v);
     ok = ok && gAssigns == 3 && gListAssigns == 3;
     if (ok) { printf("00a37be0_TEST PASS\n"); return 0; }
     printf("00a37be0_TEST FAIL\n");

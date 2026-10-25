@@ -1,4 +1,4 @@
-// _STL::vector<CPreTransposedBoneMatrix>::resize(size_type new_size, const CPreTransposedBoneMatrix& x) -- shrink with erase or grow with a fill insert (48-byte bone matrices)
+// std::vector<CPreTransposedBoneMatrix>::resize(size_type new_size, const CPreTransposedBoneMatrix& x) -- shrink with erase or grow with a fill insert (48-byte bone matrices)
 // Leaf: ?resize@?$vector@UCPreTransposedBoneMatrix@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B7EDF0, 100 bytes (+ int3 padding), thiscall, `ret 8`.
 // Identity: the 14 callers are the CEngineWaterRenderer render passes (e.g. 0x00B75824: `resize(4, m)` on
@@ -12,7 +12,7 @@ struct CPreTransposedBoneMatrix {             // 48 bytes (a struct in FableWin.
     float Data[3][4];
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

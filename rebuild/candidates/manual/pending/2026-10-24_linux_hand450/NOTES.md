@@ -66,7 +66,7 @@ ImeUi_SetAppearance, _PumpMessage, CheckToggleState, ImeUi_EnableIme and GetCand
 
 **STLport 4.6 over pair<CCharString, CScriptInfo> (4):** __unguarded_linear_insert, __unguarded_partition,
 __make_heap and __linear_insert.
-- They are templates in `_STL`, defined __fastcall and explicitly instantiated. CKeyPairCompareLess is an empty
+- They are templates in `std`, defined __fastcall and explicitly instantiated. CKeyPairCompareLess is an empty
   by-value comparator.
 - __unguarded_partition 0x00CB67B0 took 2 grades. It needs the same-TU noinline CBasicString<char>::operator<
   stand-in (the landed 0x00429950 body) so the pivot handle stays in esi. With an extern compare it is reloaded
@@ -122,17 +122,17 @@ SetCompStringColor, SetImeApi, ImeUi_EnableIme and AddScript, which are right.
 | 0x00CB2F00 | ProcessAllMessages | _PumpMessage |
 | 0x00CB47C0 | ImeUi_QueryInputStatus | CheckToggleState |
 | 0x00CB5AD0 | QuestPersist_FindInfoByName | CScriptInfoManager::GetPScriptInfo (Ego_r.pdb) |
-| 0x00CB6420 | CParticleMorphEntry_InsertSorted | _STL::__unguarded_linear_insert<pair<CCharString,CScriptInfo>*, ...> |
-| 0x00CB67B0 | MusicEntry_Partition | _STL::__unguarded_partition<...> |
-| 0x00CB6BD0 | ScriptInfo_BuildHeapify | _STL::__make_heap<...> |
-| 0x00CB6CE0 | ScriptInfo_InsertElement | _STL::__linear_insert<...> |
+| 0x00CB6420 | CParticleMorphEntry_InsertSorted | std::__unguarded_linear_insert<pair<CCharString,CScriptInfo>*, ...> |
+| 0x00CB67B0 | MusicEntry_Partition | std::__unguarded_partition<...> |
+| 0x00CB6BD0 | ScriptInfo_BuildHeapify | std::__make_heap<...> |
+| 0x00CB6CE0 | ScriptInfo_InsertElement | std::__linear_insert<...> |
 
 Callees outside the chunk:
 
 | address | manifest label | real name |
 |---|---|---|
 | 0x00CB37A0 | ImeUI_SetupLayoutFromKeyboard | ImeUi CheckInputLocale |
-| 0x00CB6230 | swap<CMusicManager...> | _STL::iter_swap over pair<CCharString,CScriptInfo>* |
+| 0x00CB6230 | swap<CMusicManager...> | std::iter_swap over pair<CCharString,CScriptInfo>* |
 | 0x00CB5180 | | ImeUi_Initialize |
 | 0x00CB2440 / 0x00CB2310 | | likely the ImeUi WA_ImmGetCompositionString / WA_GetCandidateList wrappers (unverified) |
 
@@ -147,4 +147,4 @@ Already-landed rows whose names look wrong (no bytes change; details in LESSONS.
 | 0x00CB1AC0 | CCodecState_00cb1ac0::Reset | CMediaType::InitMediaType |
 | 0x00CB1D00 | CMediaType::CMediaType() modelled as a "libpk record" | strmbase CMediaType() |
 | 0x00CB1CC0 | CComHolder::Release / ~CMediaType | ~CMediaType: the inline FreeMediaType body |
-| 0x00CB7210 | CStringPairRecordVector_00cb7210::push_back | _STL::vector<pair<CCharString,CScriptInfo>>::push_back (CVectorMap Scripts; caller AddScript 0x00CB5D47) |
+| 0x00CB7210 | CStringPairRecordVector_00cb7210::push_back | std::vector<pair<CCharString,CScriptInfo>>::push_back (CVectorMap Scripts; caller AddScript 0x00CB5D47) |

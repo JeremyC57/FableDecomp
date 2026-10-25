@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__pop_heap_aux over (long key, 36-byte payload) pairs -- the largest moves to the back, the rest stays a heap
+// Behaviour test: std::__pop_heap_aux over (long key, 36-byte payload) pairs -- the largest moves to the back, the rest stays a heap
 #include <cstdio>
 
 struct SPayload {                                       // 36-byte POD payload

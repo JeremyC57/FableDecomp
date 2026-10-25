@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const pair<NHitLocations::CHitLocation, long>& x) -- append a (hit location, value) pair: copy-construct it in place when there is room, else grow through _M_insert_overflow
+// std::vector::push_back(const pair<NHitLocations::CHitLocation, long>& x) -- append a (hit location, value) pair: copy-construct it in place when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00818DC0, 109 bytes, thiscall `ret 4`.
 // Callers: one, 0x00816B73.
@@ -48,7 +48,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {

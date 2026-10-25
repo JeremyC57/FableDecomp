@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (unsigned long, CSkeletalMorphs::CEntry) pair vector
-// Leaf: ?resize@?$vector@U?$pair@KVCEntry@CSkeletalMorphs@@@_STL@@V?$allocator@U?$pair@KVCEntry@CSkeletalMorphs@@@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (unsigned long, CSkeletalMorphs::CEntry) pair vector
+// Leaf: ?resize@?$vector@U?$pair@KVCEntry@CSkeletalMorphs@@@std@@V?$allocator@U?$pair@KVCEntry@CSkeletalMorphs@@@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081DF20, 39 bytes, thiscall, `ret 4`.
 // Identity: the storage vector of CVectorMap<unsigned long, CSkeletalMorphs::CEntry> (FableWin.pdb ??1?$CVectorMap@KVCEntry@
 //   CSkeletalMorphs@@...; 12-byte pair: the key + CEntry {CDefString MorphName, short Priority, bool SupressesLowerMorphs}).
@@ -23,7 +23,7 @@ public:
         CEntry() { }
     };
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -57,5 +57,5 @@ public:
     void resize(size_type __new_size) { resize(__new_size, _Tp()); }
 };
 
-template void vector<_STL::pair<unsigned long, CSkeletalMorphs::CEntry> >::resize(size_type);
+template void vector<std::pair<unsigned long, CSkeletalMorphs::CEntry> >::resize(size_type);
 }

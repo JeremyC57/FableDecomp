@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- resize the C2DVector vector: erase the surplus tail, or append default-constructed elements up to the new size
-// Leaf: ?resize@?$vector@VC2DVector@@V?$allocator@VC2DVector@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- resize the C2DVector vector: erase the surplus tail, or append default-constructed elements up to the new size
+// Leaf: ?resize@?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE7B10, 75 bytes, thiscall `ret 4`.
 // Callers: one, 0x00AE40A7 in CParticleProgram::ReadFromFile 0x00AE3C30 on the program's IndexedTextureCoords array (retail
 //   +0xC4, the PDB +0xD4 less 0x10); its erase / fill-insert are COMDAT-folded with other 8-byte vectors' bodies.
@@ -18,7 +18,7 @@ public:
     C2DVector() { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }

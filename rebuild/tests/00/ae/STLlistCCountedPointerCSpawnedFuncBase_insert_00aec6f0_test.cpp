@@ -1,4 +1,4 @@
-// Behaviour test for 0x00AEC6F0 _STL::list<CCountedPointer<CSpawnedFuncBase> >::insert, byte twin of 0x005355C0 (malloc'd node, counted copy, linked before pos).
+// Behaviour test for 0x00AEC6F0 std::list<CCountedPointer<CSpawnedFuncBase> >::insert, byte twin of 0x005355C0 (malloc'd node, counted copy, linked before pos).
 #include <cstdio>
 #include <cstdlib>
 #include <new>

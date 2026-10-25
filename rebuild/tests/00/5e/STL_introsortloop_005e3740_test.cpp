@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__introsort_loop(CCharString* first, CCharString* last, CCharString*, int depth_limit, less<CCharString> comp) (retail 0x005E3740)
+// Behaviour test of std::__introsort_loop(CCharString* first, CCharString* last, CCharString*, int depth_limit, less<CCharString> comp) (retail 0x005E3740)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

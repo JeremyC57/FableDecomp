@@ -1,4 +1,4 @@
-// _STL::__linear_insert(pair<C3DVector, long>* first, pair<C3DVector, long>* last, pair<C3DVector, long> val, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport insertion-sort step of the first-person targeting position sort: if val scores better than *first shift [first, last) up one and put val first, else the unguarded linear insert from last
+// std::__linear_insert(pair<C3DVector, long>* first, pair<C3DVector, long>* last, pair<C3DVector, long> val, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport insertion-sort step of the first-person targeting position sort: if val scores better than *first shift [first, last) up one and put val first, else the unguarded linear insert from last
 // Grade: DIFFER(229v229) -- scheduling only, in the else arm: retail software-pipelines the comparator and value copies into the argument area (two loads hoisted above `sub esp,2Ch`, each load one store ahead, the value's first two words loaded before `sub esp,10h`), ours copies load/store in order; tried the callee __unguarded_linear_insert body in the TU (the loop rows 0x00808120 / 0x00808CF0 do pipeline and match)
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808AA0, 229 bytes, /Gr `__fastcall` (first in ecx, last in edx), the
@@ -33,14 +33,14 @@ struct CVectorCompare_BestForTargeting {
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
     pair(const pair& __o) : first(__o.first), second(__o.second) { }   // STLport's explicit copy constructor
 };
 }
-typedef _STL::pair<C3DVector, long> CPositionEntry;
+typedef std::pair<C3DVector, long> CPositionEntry;
 
 namespace {
 struct CCompareTargetedPositionsForFirstPersonTargeting {
@@ -54,7 +54,7 @@ struct CCompareTargetedPositionsForFirstPersonTargeting {
 };
 }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 // The real __copy_backward body (0x00806310), out of line in the TU: VC7.1 then homes the empty tag temporary in the

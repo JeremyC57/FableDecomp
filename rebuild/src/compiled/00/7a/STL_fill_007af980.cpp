@@ -1,4 +1,4 @@
-// _STL::fill(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, const CIntelligentPointer<CThing>& value) -- point every intelligent pointer of a range at the same thing
+// std::fill(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, const CIntelligentPointer<CThing>& value) -- point every intelligent pointer of a range at the same thing
 // Leaf: ??$fill@PAV?$CIntelligentPointer@VCThing@@@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AF980, 44 bytes, `__fastcall` (first ecx, last edx, value pointer
 //   on the stack), `ret 4`.
@@ -28,7 +28,7 @@ public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -38,5 +38,5 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CIntelligentPointer<CThing>*, CIntelligentPointer<CThing> >(
+template void __fastcall std::fill<CIntelligentPointer<CThing>*, CIntelligentPointer<CThing> >(
     CIntelligentPointer<CThing>*, CIntelligentPointer<CThing>*, const CIntelligentPointer<CThing>&);

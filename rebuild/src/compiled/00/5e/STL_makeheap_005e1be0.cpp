@@ -1,4 +1,4 @@
-// _STL::__make_heap(CCharString* first, CCharString* last, less<CCharString> comp, CCharString*, int*) -- STLport make_heap core: sift every parent of a CCharString range down, last parent first
+// std::__make_heap(CCharString* first, CCharString* last, less<CCharString> comp, CCharString*, int*) -- STLport make_heap core: sift every parent of a CCharString range down, last parent first
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E1BE0, 73 bytes (+ padding to 80), `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   ebp, last in edx, then the empty comparator and the two null type-tag pointers on the stack).

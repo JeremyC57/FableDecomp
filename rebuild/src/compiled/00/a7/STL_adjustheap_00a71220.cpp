@@ -1,5 +1,5 @@
-// _STL::__adjust_heap(pair<long,C3DMeshVolume>* first, int holeIndex, int len, pair<long,C3DMeshVolume> val, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- STLport heap sift-down of the (signed key, named convex mesh volume) table, then __push_heap val back up
-// Leaf: ??$__adjust_heap@PAU?$pair@JVC3DMeshVolume@@@_STL@@
+// std::__adjust_heap(pair<long,C3DMeshVolume>* first, int holeIndex, int len, pair<long,C3DMeshVolume> val, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- STLport heap sift-down of the (signed key, named convex mesh volume) table, then __push_heap val back up
+// Leaf: ??$__adjust_heap@PAU?$pair@JVC3DMeshVolume@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A71220, 336 bytes (+ int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): long key +0 (SIGNED compare, `jge` over the `dec ebx`), C3DMeshVolume +4
@@ -78,7 +78,7 @@ public:
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -88,11 +88,11 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<long, C3DMeshVolume> CMeshVolumePair;
+typedef std::pair<long, C3DMeshVolume> CMeshVolumePair;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp);   // 0x00A707D0
 

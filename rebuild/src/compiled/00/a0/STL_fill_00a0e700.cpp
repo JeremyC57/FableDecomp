@@ -1,4 +1,4 @@
-// _STL::fill(_Deque_iterator first, _Deque_iterator last, const C2DVector& val) -- assign val to every element of [first, last)
+// std::fill(_Deque_iterator first, _Deque_iterator last, const C2DVector& val) -- assign val to every element of [first, last)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0E700, length 62 bytes (`__fastcall`: val in ecx, `ret 20h`, + int3 padding).
 // Callers: 0x00A0F6DB, 0x00A0F7B7, 0x00A0F97C, 0x00A0FA57 (the deque fill-insert paths).
 // Callees: none.
@@ -21,7 +21,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

@@ -28,7 +28,7 @@ public:
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -76,7 +76,7 @@ typedef CClass* (__cdecl* ClassAllocFunc)();
 // Retail layout (20 bytes; Ego_r's is 28 because its std::list is 12 bytes), as the landed constructor 0x00A37880.
 class CClassTypeInfo {
 public:
-    _STL::list<CClass*> TypeList;                           // +0x00
+    std::list<CClass*> TypeList;                           // +0x00
     unsigned long       NoAllocated;                        // +0x04
     bool                Used;                               // +0x08
     bool                Local;                              // +0x09
@@ -105,7 +105,7 @@ public:
     virtual ~CBaseClassNonCopyable();                       // 0x0099A300
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 
@@ -144,10 +144,10 @@ class CClassFactory : public CBaseClassNonCopyable {        // vtable 0x0129CF70
 protected:
     CClassFactory(unsigned char maxClassTypeID);            // 0x00A373B0 (defined below: emits the vtable and ??_G)
     virtual ~CClassFactory();
-    _STL::vector<CClassTypeInfo> ClassTypeInfo;             // +0x04
+    std::vector<CClassTypeInfo> ClassTypeInfo;             // +0x04
     unsigned long                MaxClassTypeID;            // +0x10
     unsigned long                NoAllocatedClasses;        // +0x14
-    _STL::list<CClass*>          ClassList;                 // +0x18
+    std::list<CClass*>          ClassList;                 // +0x18
 };
 
 CClassFactory::~CClassFactory()

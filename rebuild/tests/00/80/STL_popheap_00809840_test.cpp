@@ -1,4 +1,4 @@
-// Behaviour test for 0x00809840 _STL::pop_heap front end: forwards (first, last, (T*)0, comp).
+// Behaviour test for 0x00809840 std::pop_heap front end: forwards (first, last, (T*)0, comp).
 #include <cstdio>
 
 struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } C3DVector() : X(0), Y(0), Z(0) { } };

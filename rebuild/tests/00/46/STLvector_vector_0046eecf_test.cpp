@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::vector<pair<unsigned long,CDefClassBase::CSubDefInfo> >::vector(const vector&) @ 0x0046EECF:
+// Model of std::vector<pair<unsigned long,CDefClassBase::CSubDefInfo> >::vector(const vector&) @ 0x0046EECF:
 // allocate other.size() entries and copy every (key, sub-def info) pair.
 
 class CDefClassBase {
@@ -20,7 +20,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _T1, class _T2> struct pair {
@@ -87,8 +87,8 @@ typedef pair<unsigned long, CDefClassBase::CSubDefInfo> _SubDefEntry;
 int main()
 {
     bool ok = true;
-    typedef _STL::pair<unsigned long, CDefClassBase::CSubDefInfo> E;
-    typedef _STL::vector<E> V;
+    typedef std::pair<unsigned long, CDefClassBase::CSubDefInfo> E;
+    typedef std::vector<E> V;
     E* items = (E*)malloc(3 * sizeof(E));
     for (int i = 0; i < 3; ++i) {
         items[i].first = 10 + i;

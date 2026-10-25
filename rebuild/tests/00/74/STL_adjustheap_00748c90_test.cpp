@@ -1,4 +1,4 @@
-// Behaviour test for 0x00748C90 _STL::__adjust_heap(CThing**, int, int, CThing*, CCompare_FurthestFromInitPos2D)
+// Behaviour test for 0x00748C90 std::__adjust_heap(CThing**, int, int, CThing*, CCompare_FurthestFromInitPos2D)
 #include <cstdio>
 
 struct CThing { int key; };

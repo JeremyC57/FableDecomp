@@ -1,8 +1,8 @@
-// _STL::__merge_backward(CEngineSubPrimitiveRenderer::CSortElement* first1, CEngineSubPrimitiveRenderer::CSortElement* last1, CEngineSubPrimitiveRenderer::CSortElement* first2, CEngineSubPrimitiveRenderer::CSortElement* last2, CEngineSubPrimitiveRenderer::CSortElement* result, less<CSortElement> comp) -- merge two sorted runs backwards into the range ending at result
+// std::__merge_backward(CEngineSubPrimitiveRenderer::CSortElement* first1, CEngineSubPrimitiveRenderer::CSortElement* last1, CEngineSubPrimitiveRenderer::CSortElement* first2, CEngineSubPrimitiveRenderer::CSortElement* last2, CEngineSubPrimitiveRenderer::CSortElement* result, less<CSortElement> comp) -- merge two sorted runs backwards into the range ending at result
 // Leaf: ??$__merge_backward@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B859A0, 195 bytes. __fastcall (first1 ecx, last1 edx), `ret 10h` (first2,
 //   last2, result and the empty comparator on the stack), result in eax.
-// Callees: _STL::copy_backward<CSortElement*, CSortElement*> @ 0x00B855C0 (fastcall, out of line in the loop exits).
+// Callees: std::copy_backward<CSortElement*, CSortElement*> @ 0x00B855C0 (fastcall, out of line in the loop exits).
 // Callers: the buffered __merge_adaptive 0x00B862C0.
 // Identity: the manifest label "Merge_TwoSortedRanges" is descriptive; STLport `__merge_backward`.
 //   The element is CEngineSubPrimitiveRenderer::CSortElement (8 bytes: unsigned long SortValue, CEngineSubPrimitiveBase*
@@ -11,7 +11,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `__merge_backward` verbatim (landed 0x00710D00 form). copy_backward is the STLport pointer chain: VC7.1
 //   inlines the two early-out calls and keeps the two in-loop calls out of line (0x00B855C0), as retail does.
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -37,13 +37,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag {};
 struct forward_iterator_tag : public input_iterator_tag {};
 struct bidirectional_iterator_tag : public forward_iterator_tag {};

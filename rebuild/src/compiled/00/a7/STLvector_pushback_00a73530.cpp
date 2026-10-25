@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const SStringKeyedChunk& x) -- append a 16-byte (CCharString key, {name, counted chunk}) record: copy-construct it at the finish when there is room, else grow through _M_insert_overflow
+// std::vector::push_back(const SStringKeyedChunk& x) -- append a 16-byte (CCharString key, {name, counted chunk}) record: copy-construct it at the finish when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A73530, 105 bytes (+ int3 padding to 112), thiscall `ret 4`.
 // Callers: the landed 0x00A73840 ("C3DAnimFile::AddStringKeyedChunk", the string-keyed record map's add). Callees: CCharString
@@ -43,7 +43,7 @@ struct SNamedChunk {                                    // 12 bytes
     CCountedPointer<C3DAnimFileRootChunk>   Chunk;      // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> class pair {
 public:
@@ -82,5 +82,5 @@ void vector<T>::_M_insert_overflow(T* __position, const T& __x, const __false_ty
 }
 }
 
-typedef _STL::pair<CCharString, SNamedChunk> SStringKeyedChunk;      // 0x10 bytes
-template class _STL::vector<SStringKeyedChunk>;
+typedef std::pair<CCharString, SNamedChunk> SStringKeyedChunk;      // 0x10 bytes
+template class std::vector<SStringKeyedChunk>;

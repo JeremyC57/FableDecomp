@@ -1,4 +1,4 @@
-// behaviour test for 0x009E6220 _STL::_Construct(pair<const CCharString,CShaderParserSymbol>*, const pair&): placement copy, nothing for a null slot
+// behaviour test for 0x009E6220 std::_Construct(pair<const CCharString,CShaderParserSymbol>*, const pair&): placement copy, nothing for a null slot
 #include <cstdio>
 #include <new>
 
@@ -21,7 +21,7 @@ public:
     CShaderParserSymbol(const CCharString& name, const CCharString& value, EType type) : Name(name), Value(value), Type(type) { }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -35,7 +35,7 @@ inline void _Construct(_T1* __p, const _T2& __val)
 }
 }
 
-typedef _STL::pair<const CCharString, CShaderParserSymbol> TValue;
+typedef std::pair<const CCharString, CShaderParserSymbol> TValue;
 
 int main()
 {
@@ -45,7 +45,7 @@ int main()
     TValue source(CCharString(key), CShaderParserSymbol(CCharString(name), CCharString(value), CShaderParserSymbol::TYPE_MACRO));
     union { double align; unsigned char bytes[sizeof(TValue)]; } slot;
     g_stringCopies = 0;
-    _STL::_Construct((TValue*)slot.bytes, source);
+    std::_Construct((TValue*)slot.bytes, source);
     TValue* built = (TValue*)slot.bytes;
     if (g_stringCopies != 3) { std::printf("009e6220_TEST FAIL\n"); return 1; }
     if (built->first.PData != key || built->second.Name.PData != name || built->second.Value.PData != value

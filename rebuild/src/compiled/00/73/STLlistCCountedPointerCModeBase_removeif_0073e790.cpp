@@ -1,4 +1,4 @@
-// _STL::list<CCountedPointer<CModeBase> >::remove_if(CTCCreatureModeManager::CModeBase::CIsType pred) -- erase every creature mode whose GetModeType() equals the predicate's type (each erased node releases its counted mode pointer and is freed)
+// std::list<CCountedPointer<CModeBase> >::remove_if(CTCCreatureModeManager::CModeBase::CIsType pred) -- erase every creature mode whose GetModeType() equals the predicate's type (each erased node releases its counted mode pointer and is freed)
 // Leaf: ??$remove_if@VCIsType@CModeBase@CTCCreatureModeManager@@@?$list@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073E790, 104 bytes, thiscall, `ret 4` (the one-word predicate by value).
 // Identity: FableWin.pdb `??$remove_if@VCIsType@CModeBase@CTCCreatureModeManager@@@?$list@V?$CCountedPointer@VCModeBase@
@@ -52,7 +52,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }

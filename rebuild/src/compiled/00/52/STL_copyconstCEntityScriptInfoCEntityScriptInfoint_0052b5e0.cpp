@@ -1,4 +1,4 @@
-// _STL::__copy<const CEntityScriptInfo*, CEntityScriptInfo*, int>(first, last, result, const random_access_iterator_tag&, int*) -- STLport random-access copy of NThingManager::CEntityRuntimePersistence::CEntityScriptInfo records: assign (last - first) elements forward, return the end of the destination
+// std::__copy<const CEntityScriptInfo*, CEntityScriptInfo*, int>(first, last, result, const random_access_iterator_tag&, int*) -- STLport random-access copy of NThingManager::CEntityRuntimePersistence::CEntityScriptInfo records: assign (last - first) elements forward, return the end of the destination
 // Leaf: ??$__copy
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052B5E0, 91 bytes, `ret 0Ch` (/Gr `__fastcall`: first in ecx, last in edx; result,
 //   the tag reference and the null `_Distance*` on the stack).
@@ -26,7 +26,7 @@ public:
     CCharString& operator=(const CCharString& other);                     // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -91,7 +91,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {               // retail CArray<T>: an STLport vector (12 bytes)
+template <class T> class CArray : public std::vector<T> {               // retail CArray<T>: an STLport vector (12 bytes)
 };
 
 namespace NThingManager {
@@ -104,7 +104,7 @@ struct CEntityScriptInfo {                                                // NTh
 }
 using NThingManager::CEntityScriptInfo;
 
-namespace _STL {
+namespace std {
 // STLport 4.x random-access __copy; the algorithm TU is compiled /Gr, so the template is __fastcall.
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 inline _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last,

@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__linear_insert(CCharString* first, CCharString* last, CCharString val, less<CCharString> comp) (retail 0x005E1A40)
+// Behaviour test of std::__linear_insert(CCharString* first, CCharString* last, CCharString val, less<CCharString> comp) (retail 0x005E1A40)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

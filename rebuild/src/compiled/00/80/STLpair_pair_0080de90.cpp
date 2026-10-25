@@ -1,5 +1,5 @@
-// _STL::pair::pair(const pair<CIntelligentPointer<CThing>, int>& p) -- converting constructor of pair<CIntelligentPointer<CThing>, long> from the int pair make_pair returns: copy the pointer, widen the int
-// Leaf: ??$?0V?$CIntelligentPointer@VCThing@@@@H@?$pair@V?$CIntelligentPointer@VCThing@@@@J@_STL@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@H@1@@Z
+// std::pair::pair(const pair<CIntelligentPointer<CThing>, int>& p) -- converting constructor of pair<CIntelligentPointer<CThing>, long> from the int pair make_pair returns: copy the pointer, widen the int
+// Leaf: ??$?0V?$CIntelligentPointer@VCThing@@@@H@?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@H@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080DE90, 47 bytes, __fastcall `ret 4`, returns `this`.
 // Identity: the catalog name pair<CIntelligentPointer<CThing>,long><CIntelligentPointer<CThing>,int> (STLport's member
 //   template `template <class _U1, class _U2> pair(const pair<_U1, _U2>& __p)`). The only caller, 0x00810848, converts the
@@ -29,7 +29,7 @@ public:
     CIntelligentPointer(const CIntelligentPointer<T>& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x08

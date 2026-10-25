@@ -1,4 +1,4 @@
-// _STL::__partial_sort(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* middle, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph*, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI partial sort: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort_heap
+// std::__partial_sort(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* middle, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph*, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI partial sort: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort_heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A46940, length 124 bytes, `ret 0Ch`.
 // Callers: 0x00A46A8C (partial_sort) and 0x00A46F23 (the introsort loop's depth-limit fallback).
@@ -33,7 +33,7 @@ public:
 
 typedef bool (__fastcall* TBoneMorphCompare)(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*);   // 0x00A46350
 

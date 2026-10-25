@@ -1,4 +1,4 @@
-// _STL::vector<CCamera>::_M_insert_overflow(CCamera* position, const CCamera& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the engine's camera vectors: allocate old + max(old, n), copy the head, copy-construct the n new cameras, copy the tail, free the old block
+// std::vector<CCamera>::_M_insert_overflow(CCamera* position, const CCamera& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the engine's camera vectors: allocate old + max(old, n), copy the head, copy-construct the n new cameras, copy the tail, free the old block
 // Leaf: ?_M_insert_overflow@?$vector@VCCamera@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B29840, length 211 bytes, thiscall `ret 14h`.
 // Callees: malloc @ 0x00BFEA0E (the inline allocate, `len ? malloc(len * 56) : 0`), __uninitialized_copy @ 0x00B28ED0
@@ -44,7 +44,7 @@ public:
     CCamera(const CCamera& other);                          // 0x0049D380
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class T> inline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
 template <class T> inline void _Destroy(T* p) { p->~T(); }
@@ -129,5 +129,5 @@ void vector<T>::_M_insert_overflow(T* position, const T& x, const __false_type&,
 }
 }
 
-template void _STL::vector<CCamera>::_M_insert_overflow(CCamera*, const CCamera&, const _STL::__false_type&, unsigned int,
+template void std::vector<CCamera>::_M_insert_overflow(CCamera*, const CCamera&, const std::__false_type&, unsigned int,
     bool);

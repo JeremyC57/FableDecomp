@@ -1,4 +1,4 @@
-// _STL::list::remove_if(CIsQuestCardWithDefName pred) -- STLport list<CQuestManager::CQuestCard>: erase every quest card whose def name equals the predicate's string
+// std::list::remove_if(CIsQuestCardWithDefName pred) -- STLport list<CQuestManager::CQuestCard>: erase every quest card whose def name equals the predicate's string
 // Leaf: ??$remove_if@VCIsQuestCardWithDefName@@@?$list@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004B9250, 117 bytes (+ int3 padding), __fastcall `ret 4` (the 4-byte predicate by value).
 // Identity: STLport 4.6 member-template list::remove_if with the inline single-node erase, as its FeatIndex twin 0x004B91A0.
@@ -65,7 +65,7 @@ public:
     bool operator()(const CQuestManager::CQuestCard& card) const { return card.DefName == *DefName; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -150,4 +150,4 @@ public:
 
 template void list<CQuestManager::CQuestCard>::remove_if<CIsQuestCardWithDefName>(CIsQuestCardWithDefName);
 
-} // namespace _STL
+} // namespace std

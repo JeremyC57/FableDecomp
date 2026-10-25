@@ -1,5 +1,5 @@
 // std::vector<CVertexShader>::resize(size_type n) -- STLport resize: erase the tail past n, or fill-insert copies of a default CVertexShader up to n
-// Leaf: ?resize@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@_STL@@@_STL@@QAEXI@Z
+// Leaf: ?resize@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6CBD0, 121 bytes (+7 int3 padding), thiscall, `ret 4`.
 // Identity: the manifest's "std::vector::erase" is propagated; the labels already carry the chunk-316 correction
 //   (std::vector<CVertexShader>::resize) and the landed particle-group constructors 0x00BBEAF0 / 0x00BC34D0 declare
@@ -41,7 +41,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -84,4 +84,4 @@ public:
 
 template void vector<CVertexShader>::resize(unsigned int);
 
-} // namespace _STL
+} // namespace std

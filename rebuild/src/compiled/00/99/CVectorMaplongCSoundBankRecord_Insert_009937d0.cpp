@@ -5,10 +5,10 @@
 // ?Insert@?$CVectorMap@KVCSoundPair@@...@@QAEXABKABVCSoundPair@@@Z); layout vector +0x00 (STLport, 12 bytes), empty
 // Compare +0x0C, Dirty +0x0D (as the landed CVectorMap::Sort 0x00993A10).
 // Callees: CSoundBankRecord copy constructor @ 0x009922F0 (the pair temporary, then the placed copy), ~CSoundBankRecord @
-// 0x00992510 (the temporary), _STL::vector<CSoundBankEntry>::_M_insert_overflow @ 0x00993310.
+// 0x00992510 (the temporary), std::vector<CSoundBankEntry>::_M_insert_overflow @ 0x00993310.
 // Label: the manifest's "NScript_CIsThingAlive_Vector_Insert" is propagated; the landed WoundMorphs twin 0x00759570
 // calls this method "Add".
-// Element: _STL::pair<long, CSoundBankRecord> (0x24 bytes) -- the CASoundManager's bank map entries (see the landed
+// Element: std::pair<long, CSoundBankRecord> (0x24 bytes) -- the CASoundManager's bank map entries (see the landed
 // ~CSoundBankRecord 0x00992510 and the sort family 0x00992750..0x00993420); record = two CCountedPointers + four
 // CCharStrings with an implicit copy constructor (here called out of line, retail 0x009922F0) and out-of-line
 // assignment / destructor. Record / comparator names are descriptive (the sound module is absent from the Ego PDB).
@@ -55,7 +55,7 @@ public:
     ~CSoundBankRecord();                        // 0x00992510
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -68,16 +68,16 @@ template <class T1, class T2> struct pair {
     pair(const T1& a, const T2& b) : first(a), second(b) { }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CSoundBankRecord> CSoundBankEntry;     // 0x24 bytes
+typedef std::pair<long, CSoundBankRecord> CSoundBankEntry;     // 0x24 bytes
 
 // CVectorMap<long, CSoundBankRecord>'s key order (an empty functor passed by value)
 struct CSoundBankEntryLess {
     bool operator()(const CSoundBankEntry& a, const CSoundBankEntry& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
@@ -109,16 +109,16 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> > class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Data;              // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Data;              // +0x00
     C Compare;                                  // +0x0c (empty)
     bool Dirty;                                 // +0x0d
     void Insert(const K& key, const V& value)

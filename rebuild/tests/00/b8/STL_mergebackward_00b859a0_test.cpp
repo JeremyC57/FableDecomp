@@ -22,7 +22,7 @@ public:
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
 // STLport 4.6 sort / stable_sort machinery over CSortElement (the model the chunk-428 sources compile).
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -365,9 +365,9 @@ void __fastcall __stable_sort_aux(_RandomAccessIter __first, _RandomAccessIter _
     else
         __stable_sort_adaptive(__first, __last, buf.begin(), _Distance(buf.size()), __comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::less<CSortElement> CLess;
+typedef std::less<CSortElement> CLess;
 
 // Test helpers: elements tagged with their original index so stability is checkable.
 static CEngineSubPrimitiveBase* Tag(int i) { return (CEngineSubPrimitiveBase*)(size_t)(i + 1); }
@@ -410,10 +410,10 @@ int main()
     static CSortElement x[30], y[25], out[60];
     for (int i = 0; i < 30; ++i) x[i] = CSortElement((unsigned long)i / 2, Tag(i));
     for (int i = 0; i < 25; ++i) y[i] = CSortElement((unsigned long)i / 3, Tag(30 + i));
-    CSortElement* r = _STL::__merge_backward(x, x + 30, y, y + 25, out + 60, CLess());
+    CSortElement* r = std::__merge_backward(x, x + 30, y, y + 25, out + 60, CLess());
     if (r != out + 5) { std::printf("00b859a0_TEST FAIL\n"); return 1; }
     if (!IsStableSorted(out + 5, 55)) { std::printf("00b859a0_TEST FAIL\n"); return 1; }
-    r = _STL::__merge_backward(x, x, y, y + 25, out + 60, CLess());
+    r = std::__merge_backward(x, x, y, y + 25, out + 60, CLess());
     if (r != out + 35 || out[59].SortValue != y[24].SortValue) { std::printf("00b859a0_TEST FAIL\n"); return 1; }
     std::printf("00b859a0_TEST PASS\n");
     return 0;

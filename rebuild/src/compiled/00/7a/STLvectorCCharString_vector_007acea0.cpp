@@ -1,4 +1,4 @@
-// _STL::vector<CCharString>::vector(const vector& x) -- STLport vector copy constructor for CCharString elements: allocate exactly x.size() slots (none when empty), then copy-construct x's strings into them
+// std::vector<CCharString>::vector(const vector& x) -- STLport vector copy constructor for CCharString elements: allocate exactly x.size() slots (none when empty), then copy-construct x's strings into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007ACEA0, 106 bytes, thiscall, `ret 4`, returns this.
 // Callees: CRT malloc 0x00BFEA0E (`add esp,4`), CCharString::CCharString(const CCharString&) 0x0099EC30 (out of line).
@@ -17,7 +17,7 @@ public:
     CCharString(const CCharString& other);                  // 0x0099EC30
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

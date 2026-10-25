@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A53650: _STL::vector<C3DTriangle2>::_M_allocate_and_copy (malloc n triangles, copy a range in, return the block)
+// Behaviour test for 0x00A53650: std::vector<C3DTriangle2>::_M_allocate_and_copy (malloc n triangles, copy a range in, return the block)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool c) { if (!c) g_fail = 1; }
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -55,7 +55,7 @@ static bool IsTri(const C3DTriangle2& t, unsigned short a, unsigned short b, uns
     return t.VertexIndex[0] == a && t.VertexIndex[1] == b && t.VertexIndex[2] == c;
 }
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _ForwardIter>
 inline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
@@ -80,7 +80,7 @@ int main()
 {
     C3DTriangle2 src[3];
     src[0] = Tri(1, 2, 3); src[1] = Tri(4, 5, 6); src[2] = Tri(7, 8, 9);
-    _STL::vector<C3DTriangle2> v;
+    std::vector<C3DTriangle2> v;
     C3DTriangle2* block = v._M_allocate_and_copy(5u, src, src + 3);
     Check(block != 0 && block != src);
     Check(IsTri(block[0], 1, 2, 3) && IsTri(block[1], 4, 5, 6) && IsTri(block[2], 7, 8, 9));

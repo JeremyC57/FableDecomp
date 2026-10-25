@@ -1,4 +1,4 @@
-// 006c4060 _STL::find<CBaseIntelligentPointer*,CBaseIntelligentPointer>
+// 006c4060 std::find<CBaseIntelligentPointer*,CBaseIntelligentPointer>
 // Flags: /Gr
 // Leaf: ??$find@UCBaseIntelligentPointer@FableFind_006c4060@@U12@@FableFind_006c4060@@YIPAUCBaseIntelligentPointer@0@PAU10@0ABU10@ABUrandom_access_iterator_tag@0@@Z
 // Layout: CBaseIntelligentPointer stride8, GetPItem00a01b50 reads pointer+4; SGI random-access find unroll4.

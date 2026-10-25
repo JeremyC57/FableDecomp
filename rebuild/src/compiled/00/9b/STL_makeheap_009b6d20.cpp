@@ -1,6 +1,6 @@
-// _STL::__make_heap(pair<CCharString,unsigned long>* first, pair<CCharString,unsigned long>* last, CKeyPairCompareLess<CCharString,unsigned long> comp, pair<CCharString,unsigned long>*, int*) -- STLport heapify: sift every parent from (len - 2) / 2 down to the root with __adjust_heap
+// std::__make_heap(pair<CCharString,unsigned long>* first, pair<CCharString,unsigned long>* last, CKeyPairCompareLess<CCharString,unsigned long> comp, pair<CCharString,unsigned long>*, int*) -- STLport heapify: sift every parent from (len - 2) / 2 down to the root with __adjust_heap
 // Flags: /Gr
-// Leaf: ??$__make_heap@PAU?$pair@VCCharString@@K@_STL@@
+// Leaf: ??$__make_heap@PAU?$pair@VCCharString@@K@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B6D20, 88 bytes (+ int3 padding), `ret 0Ch` (/Gr TU: first in ecx,
 //   last in edx; the empty comparator, the unused T* and distance* on the stack).
 // Identity: the CVectorMap<CCharString, unsigned long> heap (the callee 0x009B5C70 is the landed __adjust_heap over
@@ -20,7 +20,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -30,10 +30,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x009B5C70
 

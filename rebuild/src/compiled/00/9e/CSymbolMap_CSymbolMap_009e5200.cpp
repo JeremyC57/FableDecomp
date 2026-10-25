@@ -21,7 +21,7 @@ struct CBase {
 
 struct CCharString { void* PStringData; };
 
-namespace _STL {
+namespace std {
 template <class T> struct less { };
 template <class T> struct allocator { };
 
@@ -80,7 +80,7 @@ template <class T> struct CCompareString { };
 struct CSymbolMap : CBase {                                 // vtable 0x0129C158
     struct CSymbolInfo { CCharString GroupName; CCharString EntryName; long Val; };   // PDB, 12 bytes
     CVectorMap<CCharString, CSymbolInfo, CCompareString<CSymbolInfo> > SLONGMap;   // +0x04
-    _STL::set<CCharString>                                             NamesUsed;  // +0x14
+    std::set<CCharString>                                             NamesUsed;  // +0x14
     bool                                                               CheckForDuplicateSymbols;   // +0x20
     CSymbolMap();
     virtual ~CSymbolMap();

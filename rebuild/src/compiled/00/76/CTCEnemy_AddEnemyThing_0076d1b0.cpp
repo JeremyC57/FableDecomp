@@ -33,7 +33,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CI
     CIntelligentPointer(T* const& item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag {
     input_iterator_tag() { }
 };
@@ -53,7 +53,7 @@ struct CThingListIterator {
 struct SThingListValueNode : SThingListNode {
     CIntelligentPointer<const CThing> _M_data;      // +0x08
 };
-namespace _STL {
+namespace std {
 #pragma auto_inline(off)
 // Same-TU stand-in for the STLport COMDAT 0x0076D5D0 (the retail body: it reads the value and never touches the tag),
 // so VC7.1 sees that neither reference escapes: the tag shares the `enemy` slot and `enemy` stays in a register.
@@ -125,7 +125,7 @@ public:
 void CTCEnemy::AddEnemyThing(const CThing* enemy)
 {
     CThingListIterator end = EnemyThings.end();
-    if (_STL::find(EnemyThings.begin(), end, const_cast<CThing* const&>(enemy)) == end) {
+    if (std::find(EnemyThings.begin(), end, const_cast<CThing* const&>(enemy)) == end) {
         EnemyThings.push_back(CIntelligentPointer<const CThing>(enemy));
         if (enemy->HasTC(0x51)) {
             CTCBase* opinion;

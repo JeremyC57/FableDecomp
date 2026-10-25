@@ -20,7 +20,7 @@ public:
     class CFileObject;
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -119,15 +119,15 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template class _STL::map<unsigned long, CThreadedFileManager::CFileObject*>;
+template class std::map<unsigned long, CThreadedFileManager::CFileObject*>;
 
 // ---- test harness ----
 // The source's insert_unique is the same-TU stand-in (counts the insert, returns the hint), so the test checks
 // operator[]'s own logic: lower_bound walk, the end / key_comp test, the hinted insert of {k, 0} and the returned slot.
-typedef _STL::map<unsigned long, CThreadedFileManager::CFileObject*> TMap;
-typedef _STL::_Rb_tree_node<TMap::value_type> TNode;
+typedef std::map<unsigned long, CThreadedFileManager::CFileObject*> TMap;
+typedef std::_Rb_tree_node<TMap::value_type> TNode;
 static TNode* MakeNode(unsigned long k)
 {
     TNode* n = (TNode*)malloc(sizeof(TNode));

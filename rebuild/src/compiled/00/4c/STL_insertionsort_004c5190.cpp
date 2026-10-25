@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CMeshInfo* first, CMeshInfo* last, CSortPrimaryMeshesLast comp) -- STLport insertion sort over NGraphicAppearance::CMeshInfo with __linear_insert inlined: a non-primary mesh info shifts the run up one slot (out-of-line __copy_backward) and goes first, a primary one goes through the out-of-line __unguarded_linear_insert
+// std::__insertion_sort(CMeshInfo* first, CMeshInfo* last, CSortPrimaryMeshesLast comp) -- STLport insertion sort over NGraphicAppearance::CMeshInfo with __linear_insert inlined: a non-primary mesh info shifts the run up one slot (out-of-line __copy_backward) and goes first, a primary one goes through the out-of-line __unguarded_linear_insert
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C5190, 139 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // 4-byte comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).

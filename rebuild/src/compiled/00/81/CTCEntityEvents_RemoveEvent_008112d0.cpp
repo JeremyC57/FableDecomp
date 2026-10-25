@@ -60,7 +60,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -153,7 +153,7 @@ public:
 
 class CTCEntityEvents : public CTCBase {
 public:
-    typedef _STL::list<CCountedPointer<NEntityEvents::CEventBase> > CEventList;
+    typedef std::list<CCountedPointer<NEntityEvents::CEventBase> > CEventList;
     CEventList Events;                                      // +0x0c
     void RemoveEvent(NEntityEvents::CEventBase& event);
 };

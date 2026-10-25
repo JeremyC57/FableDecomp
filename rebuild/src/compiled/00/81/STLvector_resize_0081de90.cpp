@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (EHeroMorphType, CTextureMorphEntry) pair vector
-// Leaf: ?resize@?$vector@U?$pair@W4EHeroMorphType@@VCTextureMorphEntry@@@_STL@@V?$allocator@U?$pair@W4EHeroMorphType@@VCTextureMorphEntry@@@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (EHeroMorphType, CTextureMorphEntry) pair vector
+// Leaf: ?resize@?$vector@U?$pair@W4EHeroMorphType@@VCTextureMorphEntry@@@std@@V?$allocator@U?$pair@W4EHeroMorphType@@VCTextureMorphEntry@@@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081DE90, 64 bytes, thiscall, `ret 4`.
 // Identity: the storage vector of CVectorMap<EHeroMorphType, CTextureMorphEntry> (CTextureMorphs). No direct reference to
 //   this body (xref 0); the callee 0x0081D920 is the two-argument resize over a 24-byte element (pair = 4-byte enum +
@@ -23,7 +23,7 @@ public:
     long Blend;                                // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -57,5 +57,5 @@ public:
     void resize(size_type __new_size) { resize(__new_size, _Tp()); }
 };
 
-template void vector<_STL::pair<EHeroMorphType, CTextureMorphEntry> >::resize(size_type);
+template void vector<std::pair<EHeroMorphType, CTextureMorphEntry> >::resize(size_type);
 }

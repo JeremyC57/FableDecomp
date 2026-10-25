@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF35A0 _STL::__linear_insert over pair<CCharString, CRegisteredPSCInfo> (key compare)
+// behaviour test for 0x00AF35A0 std::__linear_insert over pair<CCharString, CRegisteredPSCInfo> (key compare)
 #include <cstdio>
 #include <cstring>
 struct CStr { const char* s; };

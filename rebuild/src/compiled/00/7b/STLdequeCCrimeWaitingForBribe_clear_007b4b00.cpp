@@ -1,4 +1,4 @@
-// _STL::deque<CCrimeWaitingForBribe>::clear() -- STLport deque clear for 8-byte POD bribe records: free every interior node buffer, free the finish buffer when the deque spans more than one node, then collapse the finish iterator onto the start
+// std::deque<CCrimeWaitingForBribe>::clear() -- STLport deque clear for 8-byte POD bribe records: free every interior node buffer, free the finish buffer when the deque spans more than one node, then collapse the finish iterator onto the start
 // Leaf: ?clear@?$deque@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B4B00, 94 bytes, thiscall, plain `ret`.
 // Callees: free 0x00BFEA14 (STLport allocator deallocate: null-tested).
@@ -19,7 +19,7 @@ public:
     long Type;                                              // +0x04 EOpinionDeedType
 };
 
-namespace _STL {
+namespace std {
 
 template <class T> inline void _Destroy(T*, T*) { }        // trivial destructor: nothing to do
 

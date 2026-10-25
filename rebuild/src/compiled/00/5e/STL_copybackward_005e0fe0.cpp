@@ -1,4 +1,4 @@
-// _STL::copy_backward(CCharString* first, CCharString* last, CCharString* result) -- STLport copy_backward of a CCharString range (the inlined random-access __copy_backward), returns the moved-back result
+// std::copy_backward(CCharString* first, CCharString* last, CCharString* result) -- STLport copy_backward of a CCharString range (the inlined random-access __copy_backward), returns the moved-back result
 // Leaf: ?copy_backward@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E0FE0, 49 bytes (+ padding to 64), `ret 4` (__fastcall /Gr algorithm TU: first in ecx,
 //   last in edx, result on the stack -- three arguments, so the out-of-line layer is copy_backward itself with the

@@ -1,4 +1,4 @@
-// _STL::vector<list<C2DLineF> >::resize(unsigned int newSize) -- resize a navigation layer's per-cell line-list array: erase the surplus lists, or append empty lists up to the new size
+// std::vector<list<C2DLineF> >::resize(unsigned int newSize) -- resize a navigation layer's per-cell line-list array: erase the surplus lists, or append empty lists up to the new size
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A85240, 112 bytes, thiscall `ret 4`.
 // Identity: the only caller 0x00A7A613 is CNavQuadTree::InitialiseLines 0x00A7A5E0, whose landed source calls it as the line
@@ -16,7 +16,7 @@ extern "C" void __cdecl free(void* block);              // stand-in bodies only
 
 class C2DLineF;
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                           // +0x00

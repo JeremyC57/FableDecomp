@@ -1,4 +1,4 @@
-// _STL::set<EClothingSuitPart>::insert(const EClothingSuitPart&) -- insert a clothing suit part into the set; return the (const) iterator and whether it was new
+// std::set<EClothingSuitPart>::insert(const EClothingSuitPart&) -- insert a clothing suit part into the set; return the (const) iterator and whether it was new
 // Leaf: ?insert@?$set@W4EClothingSuitPart@@
 // Flags: /Os
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BAF94, 35 bytes, `__fastcall`, `ret 8` (hidden result + value),
@@ -16,7 +16,7 @@ extern "C" void __cdecl free(void* block);               // 0x00BFEA14 (import t
 
 enum EClothingSuitPart { CLOTHING_SUIT_PART_NONE };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator { };
 template <class _T1, class _T2> struct pair {
@@ -71,4 +71,4 @@ public:
 };
 }
 
-template class _STL::set<EClothingSuitPart>;
+template class std::set<EClothingSuitPart>;

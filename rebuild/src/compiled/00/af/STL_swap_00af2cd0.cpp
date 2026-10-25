@@ -1,4 +1,4 @@
-// _STL::swap(pair<CCharString,NParticleEngine::CRegisteredPSCInfo>& a, pair<CCharString,NParticleEngine::CRegisteredPSCInfo>& b) -- exchange two registered particle-system-component entries (GUI key + alloc function, type, GUI name) through a by-value temporary
+// std::swap(pair<CCharString,NParticleEngine::CRegisteredPSCInfo>& a, pair<CCharString,NParticleEngine::CRegisteredPSCInfo>& b) -- exchange two registered particle-system-component entries (GUI key + alloc function, type, GUI name) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF2CD0, 141 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx -> edi, b in edx
 //   -> esi), plain `ret`.
@@ -29,7 +29,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;                                          // +0x00

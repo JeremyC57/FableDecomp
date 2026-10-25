@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(SSwitchableLineList* last, SSwitchableLineList val, CSwitchableLineListLess comp) -- insertion-sort step over the 16-byte (unsigned __int64 ID, list of lines) switchable line-list entries: shift every larger entry up one slot, assign the value into the hole, destroy the by-value copy
+// std::__unguarded_linear_insert(SSwitchableLineList* last, SSwitchableLineList val, CSwitchableLineListLess comp) -- insertion-sort step over the 16-byte (unsigned __int64 ID, list of lines) switchable line-list entries: shift every larger entry up one slot, assign the value into the hole, destroy the by-value copy
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A81E20, 88 bytes (+ int3 padding to 96), `ret 14h` (/Gr: last in ecx; the 16-byte
 //   value and the empty comparator's slot on the stack).
@@ -28,7 +28,7 @@ public:
     C2DVector End;                                          // +0x8
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -117,15 +117,15 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
-typedef _STL::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
+typedef std::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
+typedef std::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CLineList>        CSwitchableLineListLess;
 
 #pragma auto_inline(off)
-namespace _STL {
+namespace std {
 // 0x005152C0 (landed): the real range insert as a same-TU noinline body.
 template <class _Tp, class _Alloc> template <class _InputIter>
 __declspec(noinline) void list<_Tp, _Alloc>::_M_insert_dispatch(iterator __pos, _InputIter __first, _InputIter __last, const __false_type&)
@@ -181,7 +181,7 @@ __declspec(noinline) list<_Tp, _Alloc>& list<_Tp, _Alloc>::operator=(const list<
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

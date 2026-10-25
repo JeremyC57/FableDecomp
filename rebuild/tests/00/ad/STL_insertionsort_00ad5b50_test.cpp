@@ -1,4 +1,4 @@
-// Behaviour test for 0x00AD5B50 _STL::__insertion_sort over (long, long) pairs with a function-pointer comparator.
+// Behaviour test for 0x00AD5B50 std::__insertion_sort over (long, long) pairs with a function-pointer comparator.
 #include <cstdio>
 
 struct SKeyPair8 { long first; long second; };

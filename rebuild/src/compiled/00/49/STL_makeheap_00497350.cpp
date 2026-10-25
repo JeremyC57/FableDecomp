@@ -1,4 +1,4 @@
-// _STL::__make_heap(CWideString*, CWideString*, NGameComponentHelpers::CCaseInsensitiveStringCompare, CWideString*, int*) -- STLport make_heap over wide strings ordered case-insensitively: sift every parent down from (len-2)/2 to 0 through __adjust_heap @ 0x00497160
+// std::__make_heap(CWideString*, CWideString*, NGameComponentHelpers::CCaseInsensitiveStringCompare, CWideString*, int*) -- STLport make_heap over wide strings ordered case-insensitively: sift every parent down from (len-2)/2 to 0 through __adjust_heap @ 0x00497160
 // Flags: /Gr
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00497350, 73 bytes, `ret 0Ch` (__fastcall: first in ecx -> ebp, last in edx,

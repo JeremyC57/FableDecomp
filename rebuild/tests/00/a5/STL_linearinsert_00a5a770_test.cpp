@@ -1,9 +1,9 @@
-// Behaviour test for 0x00A5A770 _STL::__linear_insert<float*, float, less<float> >
+// Behaviour test for 0x00A5A770 std::__linear_insert<float*, float, less<float> >
 #include <cstdio>
 #include <cstring>
 #include <cstddef>
 
-namespace _STL {
+namespace std {
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
 };
@@ -39,7 +39,7 @@ inline void __linear_insert(RandomAccessIter first, RandomAccessIter last, T val
     else
         __unguarded_linear_insert(last, val, comp);
 }
-}   // namespace _STL
+}   // namespace std
 
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
@@ -55,15 +55,15 @@ int main()
     // val below the first element: the whole sorted prefix shifts up one slot
     float a[5] = { 2.0f, 4.0f, 6.0f, 8.0f, 1.0f };
     const float ea[5] = { 1.0f, 2.0f, 4.0f, 6.0f, 8.0f };
-    _STL::__linear_insert(a, a + 4, a[4], _STL::less<float>());
+    std::__linear_insert(a, a + 4, a[4], std::less<float>());
     // val inside the range: unguarded insert from the back
     float b[5] = { 2.0f, 4.0f, 6.0f, 8.0f, 5.0f };
     const float eb[5] = { 2.0f, 4.0f, 5.0f, 6.0f, 8.0f };
-    _STL::__linear_insert(b, b + 4, b[4], _STL::less<float>());
+    std::__linear_insert(b, b + 4, b[4], std::less<float>());
     // val above every element stays put
     float c[3] = { 1.0f, 2.0f, 9.0f };
     const float ec[3] = { 1.0f, 2.0f, 9.0f };
-    _STL::__linear_insert(c, c + 2, c[2], _STL::less<float>());
+    std::__linear_insert(c, c + 2, c[2], std::less<float>());
     if (!Same(a, ea, 5) || !Same(b, eb, 5) || !Same(c, ec, 3)) { std::printf("00a5a770_TEST FAIL\n"); return 1; }
     std::printf("00a5a770_TEST PASS\n");
     return 0;

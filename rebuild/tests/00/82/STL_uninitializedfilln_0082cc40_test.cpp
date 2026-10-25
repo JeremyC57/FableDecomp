@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__uninitialized_fill_n over CMinimapData -- n copies of the prototype record, each with its own vector storage
+// Behaviour test: std::__uninitialized_fill_n over CMinimapData -- n copies of the prototype record, each with its own vector storage
 #include <cstdio>
 #include <cstdlib>
 #include <new>

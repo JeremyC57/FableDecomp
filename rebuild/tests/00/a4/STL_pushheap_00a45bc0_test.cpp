@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A45BC0: _STL::__push_heap<C3DSkeletalBoneMorph*, int> (sift a value up from the hole)
+// Behaviour test for 0x00A45BC0: std::__push_heap<C3DSkeletalBoneMorph*, int> (sift a value up from the hole)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -80,7 +80,7 @@ static void FillMorphs(C3DSkeletalBoneMorph* a, const unsigned long* crcs, int n
         SetMorph(a[i], crcs[i]);
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp)
 {
@@ -110,18 +110,18 @@ int main()
         FillMorphs(a, crcs, 7);
         C3DSkeletalBoneMorph v;
         SetMorph(v, 7);
-        _STL::__push_heap(a, 6, 0, v, (TBoneMorphCompare)LessByCRC);
+        std::__push_heap(a, 6, 0, v, (TBoneMorphCompare)LessByCRC);
         Check(a[6].BoneNameCRC == 7 && Consistent(a[6]) && IsHeap(a, 7));
         FillMorphs(a, crcs, 7);
         SetMorph(v, 10);
-        _STL::__push_heap(a, 6, 0, v, (TBoneMorphCompare)LessByCRC);
+        std::__push_heap(a, 6, 0, v, (TBoneMorphCompare)LessByCRC);
         static const unsigned long want[7] = { 10, 5, 9, 1, 2, 3, 8 };
         for (int i = 0; i < 7; ++i)
             Check(a[i].BoneNameCRC == want[i] && Consistent(a[i]));
         Check(IsHeap(a, 7));
         // topIndex stops the climb
         FillMorphs(a, crcs, 7);
-        _STL::__push_heap(a, 6, 2, v, (TBoneMorphCompare)LessByCRC);
+        std::__push_heap(a, 6, 2, v, (TBoneMorphCompare)LessByCRC);
         Check(a[2].BoneNameCRC == 10 && a[6].BoneNameCRC == 8 && a[0].BoneNameCRC == 9);
     }
     Check(g_liveStrings == 0);

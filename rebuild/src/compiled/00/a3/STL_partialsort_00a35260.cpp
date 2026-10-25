@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* middle, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume>*, CKeyPairCompareLess comp) -- heap-based partial sort of the mesh-volume table: heapify [first, middle), pop every smaller later entry into it, then sort the heap
+// std::__partial_sort(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* middle, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume>*, CKeyPairCompareLess comp) -- heap-based partial sort of the mesh-volume table: heapify [first, middle), pop every smaller later entry into it, then sort the heap
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A35260, 123 bytes, `ret 0Ch` (__fastcall: first in ecx, middle in edx, last,
 //   the value-type pointer and the empty comparator on the stack).
@@ -78,7 +78,7 @@ struct C3DMeshVolume {                                        // 12 bytes (Ego_r
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     T1 first;
@@ -96,7 +96,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class RandomAccessIter, class Compare, class T, class Distance>
 void __fastcall __make_heap(RandomAccessIter first, RandomAccessIter last, Compare comp, T*, Distance*);   // 0x00A344E0

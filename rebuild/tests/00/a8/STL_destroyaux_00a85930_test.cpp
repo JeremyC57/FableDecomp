@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A85930 _STL::__destroy_aux<CNavQuadTree::CNavigationLayer*>: destroying a range of layers
+// Behaviour test for 0x00A85930 std::__destroy_aux<CNavQuadTree::CNavigationLayer*>: destroying a range of layers
 // destroys, per layer, the switchable map's lists then frees its storage, the line lists then their storage, then the
 // node array (members in reverse order).
 #include <cstdio>

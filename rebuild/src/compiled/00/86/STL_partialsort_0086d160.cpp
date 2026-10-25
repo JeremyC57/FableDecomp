@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CSkeletalMorph>* middle, pair<long, CSkeletalMorph>* last, pair<long, CSkeletalMorph>*, CKeyPairCompareLess<long, CSkeletalMorph> comp) -- STLport partial_sort core over the skeletal-morph vector map: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
+// std::__partial_sort(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CSkeletalMorph>* middle, pair<long, CSkeletalMorph>* last, pair<long, CSkeletalMorph>*, CKeyPairCompareLess<long, CSkeletalMorph> comp) -- STLport partial_sort core over the skeletal-morph vector map: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086D160, length 171 bytes, `ret 0Ch`.
 // Callers: the map's __introsort_loop 0x0086DB30 (this chunk; 0x0086DBFA, the depth-limit fallback) and 0x0086D66C.
@@ -25,7 +25,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -68,9 +68,9 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+typedef std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
 typedef CKeyPairCompareLess<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphLess;
-template void __fastcall _STL::__partial_sort<TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess>(TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphLess);
+template void __fastcall std::__partial_sort<TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess>(TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphLess);

@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF1C10 _STL::__uninitialized_copy over NParticleEngine::CParticleEmitterInfo: counted copies of [first, last) into raw storage, return the end
+// behaviour test for 0x00AF1C10 std::__uninitialized_copy over NParticleEngine::CParticleEmitterInfo: counted copies of [first, last) into raw storage, return the end
 #include <cstdio>
 #include <new>
 struct SPointee { void* VTable; unsigned int IVRefCount; };

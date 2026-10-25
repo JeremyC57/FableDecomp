@@ -8,7 +8,7 @@
 //   ("the map _M_create_node (landed as BuyNode)"). Was landed as "CRetailTree_00824fb0::BuyNode" with stand-in types.
 // Model: the landed 0x0082F7B0 _Rb_tree model (Ego_r.pdb CThingPosAndOrientation: Position +0x00, FacingAngles +0x0C),
 //   in namespace std: retail RTTI type names spell the STL namespace `std` (e.g. .?AVlength_error@std@@,
-//   .?AV?$CPersistContext_TransferableVector@U?$pair@VCCharString@@J@std@@@@; no `_STL` anywhere in Fable.exe).
+//   .?AV?$CPersistContext_TransferableVector@U?$pair@VCCharString@@J@std@@@@; no `std` anywhere in Fable.exe).
 // Leaf: ?_M_create_node@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@ABU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@2@@Z
 class C3DVector {                                       // user memberwise copy constructor
 public:

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A6B000 _STL::fill(CIVCountedPointer<CLocalDetailPlacementGrid>*, ..., const CIVCountedPointer&)
+// Behaviour test for 0x00A6B000 std::fill(CIVCountedPointer<CLocalDetailPlacementGrid>*, ..., const CIVCountedPointer&)
 #include <cstdio>
 
 static int g_destroyed = 0;
@@ -32,14 +32,14 @@ public:
 class CLocalDetailPlacementGrid : public CIVCountedPointeeBase {
 };
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;
 }
-}   // namespace _STL
+}   // namespace std
 
 typedef CIVCountedPointer<CLocalDetailPlacementGrid> CGridPtr;
 
@@ -52,11 +52,11 @@ int main()
     CGridPtr val;
     val.Object = &c;
     c.m_count = 1;
-    _STL::fill(slots, slots + 4, val);
+    std::fill(slots, slots + 4, val);
     bool ok = a.m_count == 0 && b.m_count == 0 && c.m_count == 5 && g_destroyed == 2;
     for (int i = 0; ok && i < 4; ++i)
         ok = slots[i].Object == &c;
-    _STL::fill(slots, slots + 4, val);                  // same pointer: no count change
+    std::fill(slots, slots + 4, val);                  // same pointer: no count change
     ok = ok && c.m_count == 5 && g_destroyed == 2;
     if (!ok) { std::printf("00a6b000_TEST FAIL\n"); return 1; }
     std::printf("00a6b000_TEST PASS\n");

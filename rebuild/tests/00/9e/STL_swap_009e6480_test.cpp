@@ -1,4 +1,4 @@
-// Behaviour test for 0x009E6480 _STL::swap<pair<CCharString,CSymbolMap::CSymbolInfo>>.
+// Behaviour test for 0x009E6480 std::swap<pair<CCharString,CSymbolMap::CSymbolInfo>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("009e6480_TEST FAIL\n"); return 1; } } while (0)

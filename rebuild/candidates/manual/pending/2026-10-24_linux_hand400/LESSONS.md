@@ -43,7 +43,7 @@
   `_M_clone_node(x)` as a call and inlines the one in the loop by itself. No source lever is needed; verbatim STLport
   reproduces it.
 - **A leaf that matches no object symbol silently grades the LARGEST function in the TU** (0x0082CB70): the leaf
-  `?__uninitialized_copy@_STL@@YIPAV...` matched nothing, and the grade still read RELOCATION_MATCH for a different
+  `?__uninitialized_copy@std@@YIPAV...` matched nothing, and the grade still read RELOCATION_MATCH for a different
   function. Use the `??$__uninitialized_copy@PBVCMinimapData@@` template form and check it against `objdump -t`.
 
 Review at landing:
@@ -52,7 +52,7 @@ Review at landing:
   CMinimapData, CRegionConnectionGraph and CThingAICreature's perception call path. They were kept local because the
   STLport 4.6 tree, vector and list layouts must be exact (4-byte list, 12-byte vector). Check them against
   `engine/<Class>.h` before landing.
-- 0x0081C270 models the vector in `namespace std` rather than `_STL`. Check the mangled leaf when landing.
+- 0x0081C270 models the vector in `namespace std` rather than `std`. Check the mangled leaf when landing.
 - 0x0081E550 FtoL is a retail_asm candidate, re-authored with the minimal `fistp dword` helper (as
   CSprite_00b1b5e0::GetHeight 0x00B1B5E0).
 - 0x0082FB90 `map::operator[]` is parked as scheduling only, 192v192.

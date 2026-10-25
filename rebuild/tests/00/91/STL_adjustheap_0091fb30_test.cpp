@@ -1,4 +1,4 @@
-// Behaviour test for 0x0091FB30 _STL::__adjust_heap<CThing**, int, CThing*, CThingCompare_Nearest> (byte twin of the landed 0x0095CFE0; same model)
+// Behaviour test for 0x0091FB30 std::__adjust_heap<CThing**, int, CThing*, CThingCompare_Nearest> (byte twin of the landed 0x0095CFE0; same model)
 #include <cstdio>
 #include <string.h>
 #include <math.h>
@@ -45,7 +45,7 @@ typedef CThingCompare_Nearest TRaw;                                  // the reta
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;    // a strict ordering for the checks
 static TComp MakeComp() { TComp c; c.Functor = &g_Nearest; return c; }
 
-namespace _STL {
+namespace std {
 template <class _Iter> inline void iter_swap(_Iter __i1, _Iter __i2) { CThing* __tmp = *__i1; *__i1 = *__i2; *__i2 = __tmp; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -230,7 +230,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
         __final_insertion_sort(__first, __last, __comp);
     }
 }
-} // namespace _STL
+} // namespace std
 
 // ---- checks ----
 template <class C> static bool IsSorted(CThing** v, int n, C comp)
@@ -291,12 +291,12 @@ int main()
 
     for (int k = 2; k <= N; k += 5) {
         CThing* v[N]; Fill(v, k);
-        _STL::make_heap(v, v + k, comp);
+        std::make_heap(v, v + k, comp);
         CThing* before[N]; for (int i = 0; i < k; ++i) before[i] = v[i];
         CThing* top = v[0];
         CThing* val = v[k - 1];
         v[k - 1] = v[0];                                   // pop: the root goes to the back
-        _STL::__adjust_heap(v, 0, k - 1, val, comp);
+        std::__adjust_heap(v, 0, k - 1, val, comp);
         if (v[k - 1] != top) return Fail(A, "root not at the back");
         if (!IsHeap(v, k - 1, comp)) return Fail(A, "not a heap");
         for (int i = 0; i < k - 1; ++i) if (comp(top, v[i])) return Fail(A, "root was not the last in order");
@@ -308,7 +308,7 @@ int main()
         CThing* v[N]; Fill(v, N);
         CThing* before[N]; for (int i = 0; i < N; ++i) before[i] = v[i];
         CThing* val = v[N - 1]; v[N - 1] = v[0];
-        _STL::__adjust_heap(v, 0, N - 1, val, raw);
+        std::__adjust_heap(v, 0, N - 1, val, raw);
         if (!SameSet(before, v, N)) return Fail(A, "raw comparator: permutation");
         if (v[0] != val) return Fail(A, "raw comparator: val must rise to the root");
     }

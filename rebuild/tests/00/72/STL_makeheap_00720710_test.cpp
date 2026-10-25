@@ -1,4 +1,4 @@
-// Behaviour test for 0x00720710 _STL::__make_heap over pair<long, CTCHeroMorph::CTextureLayer> by key (the SGI __adjust_heap / __push_heap pair stands in for 0x0071FF00).
+// Behaviour test for 0x00720710 std::__make_heap over pair<long, CTCHeroMorph::CTextureLayer> by key (the SGI __adjust_heap / __push_heap pair stands in for 0x0071FF00).
 #include <cstdio>
 
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0, COMPOSITE_BLEND_ADD = 2 };

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A5DFF0 _STL::vector<_D3DVERTEXELEMENT9>::_M_allocate_and_copy(n, first, last)
+// Behaviour test for 0x00A5DFF0 std::vector<_D3DVERTEXELEMENT9>::_M_allocate_and_copy(n, first, last)
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -12,7 +12,7 @@ struct _D3DVERTEXELEMENT9 {
     unsigned char  UsageIndex;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _Tp> class allocator {
 public:
@@ -39,7 +39,7 @@ public:
         return __result;
     }
 };
-}   // namespace _STL
+}   // namespace std
 
 int main()
 {
@@ -52,7 +52,7 @@ int main()
         src[i].Usage = (unsigned char)(i + 3);
         src[i].UsageIndex = 1;
     }
-    _STL::vector<_D3DVERTEXELEMENT9> v;
+    std::vector<_D3DVERTEXELEMENT9> v;
     _D3DVERTEXELEMENT9* p = v._M_allocate_and_copy(4, src, src + 3);     // spare capacity left uninitialised
     bool ok = p != 0;
     for (int i = 0; ok && i < 3; ++i)

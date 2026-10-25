@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) -- STLport insertion sort of the CRC-keyed animation entries: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) -- STLport insertion sort of the CRC-keyed animation entries: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: ?__insertion_sort@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E2E50, 92 bytes (+ padding to 96), `ret 4` (__fastcall /Gr algorithm TU: first in ecx ->
 //   ebp, last in edx -> ebx, the empty comparator on the stack, re-read from its slot every pass).

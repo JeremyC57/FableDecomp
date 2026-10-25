@@ -1,4 +1,4 @@
-// _STL::list<CAnimSet>::remove_if(CAnimSet::CHasTypeFlags pred) -- erase every queued animation set whose TypeFlags share a bit with the predicate's flags (each erased node frees its two vector buffers, then the node)
+// std::list<CAnimSet>::remove_if(CAnimSet::CHasTypeFlags pred) -- erase every queued animation set whose TypeFlags share a bit with the predicate's flags (each erased node frees its two vector buffers, then the node)
 // Leaf: ??$remove_if@VCHasTypeFlags@CAnimSet@@@?$list@VCAnimSet@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007118C0, 85 bytes (+ int3 padding), thiscall, `ret 4` (the one-word predicate).
 // Identity: FableWin.pdb `??$remove_if@VCHasTypeFlags@CAnimSet@@@?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@QAEXVCHasTypeFlags@CAnimSet@@@Z`;
@@ -8,7 +8,7 @@
 // Shape: STLport 4.6 `remove_if` + 4.6 `erase`; `(set.TypeFlags & Flags) != 0` is one `test [esi+4Ch],ebp`.
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -54,8 +54,8 @@ public:
 class CAnimSet {                                            // Ego_r.pdb with the retail 12-byte STLport vectors: 0x54 bytes
 public:
     EAnimUpdateMode                        UpdateMode;                 // +0x00
-    _STL::vector<short>                    Anims;                      // +0x04
-    _STL::vector<CTransitionBlendAlpha>    InternalAlphas;             // +0x10
+    std::vector<short>                    Anims;                      // +0x04
+    std::vector<CTransitionBlendAlpha>    InternalAlphas;             // +0x10
     float                                  CurrentPercentageComplete;  // +0x1c
     float                                  LastPercentageComplete;     // +0x20
     float                                  Speed;                      // +0x24
@@ -90,7 +90,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0x0
     _List_node_base* _M_prev;                               // +0x4
@@ -154,4 +154,4 @@ public:
 };
 }
 
-template void _STL::list<CAnimSet>::remove_if(CAnimSet::CHasTypeFlags);
+template void std::list<CAnimSet>::remove_if(CAnimSet::CHasTypeFlags);

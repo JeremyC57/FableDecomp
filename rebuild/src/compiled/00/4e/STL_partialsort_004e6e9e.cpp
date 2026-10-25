@@ -1,4 +1,4 @@
-// _STL::__partial_sort(SRegisteredTCEntry* first, SRegisteredTCEntry* middle, SRegisteredTCEntry* last, SRegisteredTCEntry*, CKeyPairCompareLess comp) -- STLport partial sort over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): heap the first part, pop every smaller element of the tail into it, then sort the heap
+// std::__partial_sort(SRegisteredTCEntry* first, SRegisteredTCEntry* middle, SRegisteredTCEntry* last, SRegisteredTCEntry*, CKeyPairCompareLess comp) -- STLport partial sort over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): heap the first part, pop every smaller element of the tail into it, then sort the heap
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E6E9E, 104 bytes, `ret 0Ch` (size-optimised TU: unaligned entry,
 //   frame pointer).
@@ -16,7 +16,7 @@
 //   the by-value copy is built in the argument area by the out-of-line pair copy constructor, the distance tag is a
 //   null `push 0`; `*first`'s block pointer is re-read every pass (the heap top changes in __pop_heap).
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 
 struct CBasicStringChar {
     char* PData;

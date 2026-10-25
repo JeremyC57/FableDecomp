@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* last, pair<unsigned long, C3DHelperPoint> pivot, CKeyPairCompareLess comp) -- quicksort partition step of the helper-point table around the pivot's key: advance from both ends, swap out-of-place pairs, return the split point
+// std::__unguarded_partition(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* last, pair<unsigned long, C3DHelperPoint> pivot, CKeyPairCompareLess comp) -- quicksort partition step of the helper-point table around the pivot's key: advance from both ends, swap out-of-place pairs, return the split point
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A329B0, 163 bytes, `ret 18h` (__fastcall: first in ecx, last in edx, the
 //   20-byte pivot and the empty comparator on the stack). No callees.
@@ -10,7 +10,7 @@
 //   if (!(first < last)) return first; iter_swap(first, last); ++first; }` -- the pivot key kept in ecx (unsigned
 //   `jae`/`jb`), __iter_swap's `T tmp = *a` with its key in esi and its second homed in the pivot's own (dead) second
 //   slots, the two assignments implicit five-dword copies.
-namespace _STL {
+namespace std {
 
 struct C3DVector {
     float X, Y, Z;

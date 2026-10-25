@@ -18,7 +18,7 @@ public:
     CCountBlock* Block;                                     // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -67,7 +67,7 @@ public:
 namespace NParticleEngine {
 class CParticleEmitterList {
 public:
-    _STL::list<CCountedPointer<CParticleEmitter> > Active;  // +0x0
+    std::list<CCountedPointer<CParticleEmitter> > Active;  // +0x0
     long MaxActiveEmitters;                                 // +0x4
     CParticleEmitterList(long maxActiveEmitters);
 };

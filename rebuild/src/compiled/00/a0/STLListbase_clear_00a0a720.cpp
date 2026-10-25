@@ -1,5 +1,5 @@
-// _STL::_List_base::clear() -- free every mesh data-bank entry of the bank manager's list (counted bank released, bank handle string destroyed) and relink the sentinel to itself
-// Instantiation: _STL::_List_base<CMeshBankManager::CMeshDataBankInfo,_STL::allocator<CMeshBankManager::CMeshDataBankInfo> >::clear
+// std::_List_base::clear() -- free every mesh data-bank entry of the bank manager's list (counted bank released, bank handle string destroyed) and relink the sentinel to itself
+// Instantiation: std::_List_base<CMeshBankManager::CMeshDataBankInfo,std::allocator<CMeshBankManager::CMeshDataBankInfo> >::clear
 // Leaf: ?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0A720, 105 bytes, thiscall, plain `ret`.
 // Identity: called by ~CMeshBankManager 0x00A0A150 (call 0x00A0A1A1, MeshDataBanks +0x08) and the STLport `~list` bodies
@@ -56,7 +56,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -101,4 +101,4 @@ void _List_base<_Tp, _Alloc>::clear()
 }
 }
 
-template class _STL::_List_base<CMeshBankManager::CMeshDataBankInfo, _STL::allocator<CMeshBankManager::CMeshDataBankInfo> >;
+template class std::_List_base<CMeshBankManager::CMeshDataBankInfo, std::allocator<CMeshBankManager::CMeshDataBankInfo> >;

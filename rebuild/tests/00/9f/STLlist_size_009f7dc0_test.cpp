@@ -5,7 +5,7 @@
 
 static int gNodesAllocated = 0, gNodesFreed = 0;
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -177,7 +177,7 @@ public:
         long             Frame;
         double           TimeStamp;
     };
-    typedef _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > CQueryList;
+    typedef std::list<CPendingQuery, std::allocator<CPendingQuery> > CQueryList;
     void* Device;
     CQueryList FreeQueoryObjects;
     CQueryList PendingQueories;

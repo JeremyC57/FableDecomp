@@ -1,4 +1,4 @@
-// _STL::__median(const pair<C3DVector, long>& a, const pair<C3DVector, long>& b, const pair<C3DVector, long>& c, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport median-of-three for the first-person targeting position sort (the pivot by best-for-targeting score, larger first)
+// std::__median(const pair<C3DVector, long>& a, const pair<C3DVector, long>& b, const pair<C3DVector, long>& c, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport median-of-three for the first-person targeting position sort (the pivot by best-for-targeting score, larger first)
 // Grade: DIFFER(216v216) -- scheduling only: in the two compares that first touch c, retail loads c (`mov ebx,[esp+14h]`) between the first GetCompareValueForPoint call and the `fstp` of its result, ours after the `fstp`; tried a nested CVectorCompare operator(), one and two named compare values (two named values is retail's comparator form, see 0x00808AA0)
 // Leaf: ??$__median@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00807170, 216 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx, b in
@@ -27,7 +27,7 @@ struct CVectorCompare_BestForTargeting {
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -37,7 +37,7 @@ template <class _T1, class _T2> struct pair {
 namespace {
 struct CCompareTargetedPositionsForFirstPersonTargeting {
     CVectorCompare_BestForTargeting VectorCompare;         // +0x00
-    bool operator()(const _STL::pair<C3DVector, long>& a, const _STL::pair<C3DVector, long>& b) const
+    bool operator()(const std::pair<C3DVector, long>& a, const std::pair<C3DVector, long>& b) const
     {
         const float aValue = VectorCompare.GetCompareValueForPoint(a.first);
         const float bValue = VectorCompare.GetCompareValueForPoint(b.first);
@@ -46,7 +46,7 @@ struct CCompareTargetedPositionsForFirstPersonTargeting {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {

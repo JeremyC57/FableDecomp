@@ -40,7 +40,7 @@ template <class T> struct _Vector_base {        // retail 12-byte STLport vector
     ~_Vector_base() { if (_M_start) free(_M_start); }   // _M_end_of_storage.deallocate(_M_start, n)
 };
 
-struct SStringRecordVector_00a43f80 : _Vector_base<SStringRecord12_00a43f80> {   // _STL::vector<SStringRecord12>
+struct SStringRecordVector_00a43f80 : _Vector_base<SStringRecord12_00a43f80> {   // std::vector<SStringRecord12>
     ~SStringRecordVector_00a43f80() { _Destroy(this->_M_start, this->_M_finish); }
 };
 

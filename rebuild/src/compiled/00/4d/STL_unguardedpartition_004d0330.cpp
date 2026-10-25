@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<float, CSubtitledMessage::CCameraTag>* first, pair<float, CSubtitledMessage::CCameraTag>* last, pair<float, CSubtitledMessage::CCameraTag> pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of a subtitled message's camera tags (time -> camera set-up) around a by-value pivot; returns the cut
+// std::__unguarded_partition(pair<float, CSubtitledMessage::CCameraTag>* first, pair<float, CSubtitledMessage::CCameraTag>* last, pair<float, CSubtitledMessage::CCameraTag> pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of a subtitled message's camera tags (time -> camera set-up) around a by-value pivot; returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004D0330, 136 bytes, `ret 20h` (/Gr algorithm TU, explicit __fastcall here: first in
 //   ecx, last in edx, the 28-byte pivot and the empty comparator slot on the stack). No callees.
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -38,13 +38,13 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<float, CSubtitledMessage::CCameraTag> TCameraPair;      // 28 bytes
+typedef std::pair<float, CSubtitledMessage::CCameraTag> TCameraPair;      // 28 bytes
 typedef CKeyPairCompareLess<float, CSubtitledMessage::CCameraTag> TCameraLess;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {

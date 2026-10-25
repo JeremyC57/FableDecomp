@@ -1,4 +1,4 @@
-// Behaviour test for 0x004C5190 _STL::__insertion_sort over NGraphicAppearance::CMeshInfo with CSortPrimaryMeshesLast (inlined __linear_insert).
+// Behaviour test for 0x004C5190 std::__insertion_sort over NGraphicAppearance::CMeshInfo with CSortPrimaryMeshesLast (inlined __linear_insert).
 #include <cstdio>
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

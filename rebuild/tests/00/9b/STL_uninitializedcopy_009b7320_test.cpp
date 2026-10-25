@@ -70,7 +70,7 @@ public:
     char* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -204,7 +204,7 @@ private:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -218,16 +218,16 @@ public:
         CArray<unsigned long>  GlobalIndices;
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoLess;
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     CVectorMap() : Dirty(false) {}
     void Insert(const K& key, const V& value);
@@ -237,11 +237,11 @@ public:
 
 template <class K, class V, class C> void CVectorMap<K, V, C>::Insert(const K& key, const V& value)
 {
-    this->push_back(_STL::pair<K, V>(key, value));
+    this->push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;
@@ -490,17 +490,17 @@ int main()
         SetInfo(src[1], 3, "CCreature", 200, 3);
         SetInfo(src[2], 9, "CBuilding", 300, 0);
         CDefClassInfoPair* raw = (CDefClassInfoPair*)std::malloc(3 * sizeof(CDefClassInfoPair));
-        CDefClassInfoPair* end = _STL::__uninitialized_copy((const CDefClassInfoPair*)src, (const CDefClassInfoPair*)src + 3,
-                                                            raw, _STL::__false_type());
+        CDefClassInfoPair* end = std::__uninitialized_copy((const CDefClassInfoPair*)src, (const CDefClassInfoPair*)src + 3,
+                                                            raw, std::__false_type());
         if (end != raw + 3) { std::printf("009b7320_TEST FAIL\n"); return 1; }
         if (!InfoIs(raw[0], 7, "CThing", 100, 2) || !InfoIs(raw[1], 3, "CCreature", 200, 3) || !InfoIs(raw[2], 9, "CBuilding", 300, 0))
             { std::printf("009b7320_TEST FAIL\n"); return 1; }
         if (raw[0].second.GlobalIndices._M_start == src[0].second.GlobalIndices._M_start ||
             raw[1].second.Name.PStringData == src[1].second.Name.PStringData) { std::printf("009b7320_TEST FAIL\n"); return 1; }
-        if (_STL::__uninitialized_copy((const CDefClassInfoPair*)src, (const CDefClassInfoPair*)src, raw, _STL::__false_type()) != raw)
+        if (std::__uninitialized_copy((const CDefClassInfoPair*)src, (const CDefClassInfoPair*)src, raw, std::__false_type()) != raw)
             { std::printf("009b7320_TEST FAIL\n"); return 1; }
         for (int i = 0; i < 3; ++i)
-            _STL::_Destroy(raw + i);
+            std::_Destroy(raw + i);
         std::free(raw);
     }
     if (g_live != live0 || g_blocks != blocks0) { std::printf("009b7320_TEST FAIL\n"); return 1; }

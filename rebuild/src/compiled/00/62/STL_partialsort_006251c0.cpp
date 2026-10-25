@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CTestQuest* first, CTestQuest* middle, CTestQuest* last, CTestQuest*, CTestQuestNameCompare comp) -- STLport partial_sort core for the test-quest list: heapify [first, middle), pop every smaller later element into the heap, then sort the heap
+// std::__partial_sort(CTestQuest* first, CTestQuest* middle, CTestQuest* last, CTestQuest*, CTestQuestNameCompare comp) -- STLport partial_sort core for the test-quest list: heapify [first, middle), pop every smaller later element into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006251C0, length 225 bytes, `ret 0Ch`.
 // Callers: 0x0062532C (__introsort_loop's depth-limit fallback) and 0x006255A0 (the partial_sort front end).
@@ -50,7 +50,7 @@ struct CTestQuestNameCompare {
 };
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp, _Tp*, _Distance*);   // 0x00624880
 template <class _RandomAccessIter, class _Tp, class _Compare, class _Distance>
@@ -78,4 +78,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 }
 }
 
-template void __fastcall _STL::__partial_sort<CTestQuest*, CTestQuest, CTestQuestNameCompare>(CTestQuest*, CTestQuest*, CTestQuest*, CTestQuest*, CTestQuestNameCompare);
+template void __fastcall std::__partial_sort<CTestQuest*, CTestQuest, CTestQuestNameCompare>(CTestQuest*, CTestQuest*, CTestQuest*, CTestQuest*, CTestQuestNameCompare);

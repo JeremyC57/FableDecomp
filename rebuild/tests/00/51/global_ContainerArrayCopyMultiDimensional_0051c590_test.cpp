@@ -1,4 +1,4 @@
-// 0051c590 _STL::__uninitialized_copy (catalog: ContainerArray_CopyMultiDimensional; element types unknown)
+// 0051c590 std::__uninitialized_copy (catalog: ContainerArray_CopyMultiDimensional; element types unknown)
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: __uninitialized_copy
 #include <new>
@@ -13,7 +13,7 @@ struct Node {Node*next,*prev;A value;};
 struct List {Node*head;List();List(const List&);~List();};
 struct B {unsigned __int64 key;List list;};
 }
-namespace _STL { NCopy0051c590::B* __fastcall __uninitialized_copy(const NCopy0051c590::B*,const NCopy0051c590::B*,NCopy0051c590::B*,const __false_type&); } // 0051ac00
+namespace std { NCopy0051c590::B* __fastcall __uninitialized_copy(const NCopy0051c590::B*,const NCopy0051c590::B*,NCopy0051c590::B*,const __false_type&); } // 0051ac00
 namespace NCopy0051c590 {
 __forceinline A* CopyA(A* out,const A* first,const A* last){for(;first!=last;++first,++out)if(out)new(out)A(*first);return out;}
 template<class T> struct Storage {
@@ -29,11 +29,11 @@ struct VA:Storage<A> {
 };
 struct VB:Storage<B> {
  __forceinline VB():Storage<B>(){}
- __forceinline VB(const VB& x):Storage<B>(x.finish-x.start) {finish=_STL::__uninitialized_copy(x.start,x.finish,start,__false_type());}
+ __forceinline VB(const VB& x):Storage<B>(x.finish-x.start) {finish=std::__uninitialized_copy(x.start,x.finish,start,__false_type());}
 };
 struct Pair { VA a; VB b; __forceinline Pair():a(),b(){} __forceinline Pair(const Pair& x):a(x.a),b(x.b){} };
 }
-namespace _STL {
+namespace std {
 using namespace NCopy0051c590;
 Pair* __fastcall __uninitialized_copy(const Pair* first,const Pair* last,Pair* out,const __false_type&) {
  Pair* result=out;for(;first!=last;++first,++result) if(result) new(result) Pair(*first); return result;
@@ -49,11 +49,11 @@ static void Append(List&l,const A&v){Node*n=new(malloc(sizeof(Node)))Node;n->val
 List::List(const List&l){head=new(malloc(sizeof(Node)))Node;head->next=head->prev=head;++sentinels;for(Node*n=l.head->next;n!=l.head;n=n->next)Append(*this,n->value);}
 List::~List(){Node*n=head->next;while(n!=head){Node*next=n->next;n->~Node();free(n);n=next;--nodes;}head->~Node();free(head);--sentinels;}
 }
-namespace _STL {
+namespace std {
 using namespace NCopy0051c590;
 B* __fastcall __uninitialized_copy(const B*f,const B*e,B*out,const __false_type&){for(;f!=e;++f,++out)if(out)new(out)B(*f);return out;}
 }
-int main(){using namespace NCopy0051c590;using namespace _STL;assert(sizeof(B)==16&&offsetof(B,list)==8&&sizeof(Node)==24&&sizeof(Pair)==24);
+int main(){using namespace NCopy0051c590;using namespace std;assert(sizeof(B)==16&&offsetof(B,list)==8&&sizeof(Node)==24&&sizeof(Pair)==24);
  {Pair input[2];A av[2];av[0]=A(1,2,3,4);av[1]=A(5,6,7,8);B bv[2];bv[0].key=((unsigned __int64)7<<32)|11;bv[1].key=19;Append(bv[0].list,A(13,17,23,29));Append(bv[0].list,A(31,37,41,43));
  input[0].a.start=av;input[0].a.finish=input[0].a.end=av+2;input[0].b.start=bv;input[0].b.finish=input[0].b.end=bv+2;
  Pair*out=(Pair*)malloc(sizeof(Pair)*2);__false_type tag;assert(__uninitialized_copy(input,input,out,tag)==out);assert(__uninitialized_copy(input,input+2,out,tag)==out+2);

@@ -1,4 +1,4 @@
-// _STL::back_insert_iterator<deque<CCrimeWaitingForBribe> >::operator=(const CCrimeWaitingForBribe& value) -- append one bribe record through the iterator's deque (STLport push_back inlined: construct at the finish cursor while the node has room, else _M_push_back_aux_v) and return the iterator
+// std::back_insert_iterator<deque<CCrimeWaitingForBribe> >::operator=(const CCrimeWaitingForBribe& value) -- append one bribe record through the iterator's deque (STLport push_back inlined: construct at the finish cursor while the node has room, else _M_push_back_aux_v) and return the iterator
 // Leaf: ??4?$back_insert_iterator@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B5270, 62 bytes (+2 int3), thiscall `ret 4`, returns this.
 // Callees: deque<CCrimeWaitingForBribe>::_M_push_back_aux_v(const value_type&) 0x007B4F70.
@@ -17,7 +17,7 @@ public:
     long Type;                                              // +0x04 EOpinionDeedType
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class T> struct _Deque_iterator {

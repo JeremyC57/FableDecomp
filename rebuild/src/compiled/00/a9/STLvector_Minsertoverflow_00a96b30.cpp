@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(SKeyRecord32* position, const SKeyRecord32& x, const __false_type&, unsigned int fill_len, bool atend) -- grow a vector of 32-byte key records: allocate old size + max(old size, fill_len), copy the head, construct fill_len copies of x, copy the tail unless inserting at the end, free the old block
+// std::vector::_M_insert_overflow(SKeyRecord32* position, const SKeyRecord32& x, const __false_type&, unsigned int fill_len, bool atend) -- grow a vector of 32-byte key records: allocate old size + max(old size, fill_len), copy the head, construct fill_len copies of x, copy the tail unless inserting at the end, free the old block
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A96B30, 231 bytes (+ int3 padding), thiscall `ret 14h`.
 // Identity: callers 0x00A97166 (0x00A97040, the same vector's assign/insert path) and 0x00ABEDC6
@@ -26,7 +26,7 @@ struct SKeyRecord32 {                              // 0x20 bytes (as the landed 
     SKeyRecord32(const SKeyRecord32& o) : m_0(o.m_0), m_4(o.m_4), m_8(o.m_8), m_record(o.m_record), m_18(o.m_18), m_1c(o.m_1c) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }

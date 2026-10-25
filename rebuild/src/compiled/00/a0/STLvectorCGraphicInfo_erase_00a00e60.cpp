@@ -1,4 +1,4 @@
-// _STL::vector<CGraphicInfo>::erase(CGraphicInfo* first, CGraphicInfo* last) -- remove the graphic records [first, last): move the tail down over them, destroy the vacated tail records, return first
+// std::vector<CGraphicInfo>::erase(CGraphicInfo* first, CGraphicInfo* last) -- remove the graphic records [first, last): move the tail down over them, destroy the vacated tail records, return first
 // Leaf: ?erase@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A00E60, 109 bytes (+ int3 padding), `__fastcall` (this -> ebp, first and last
 //   on the stack), `ret 8`, returns first.
@@ -33,7 +33,7 @@ public:
     ~CGraphicInfo() { Bank = 0; Frames = 0; }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

@@ -10,7 +10,7 @@
 //   (last - first)` -- the pointer compare comes first (`cmp edx,ecx ; je`, result already in eax), then the byte
 //   count is formed in esi and kept across the call. (A `n = last - first; n ? ... : result` form tests `sub ; je`.)
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
-namespace _STL {
+namespace std {
 struct __true_type { };
 inline void* __copy_trivial(const void* first, const void* last, void* result)
 {
@@ -23,4 +23,4 @@ template <class T> T* __fastcall __uninitialized_copy(const T* first, const T* l
     return (T*)__copy_trivial(first, last, result);
 }
 template bool* __fastcall __uninitialized_copy<bool>(const bool* first, const bool* last, bool* result, const __true_type&);
-} // namespace _STL
+} // namespace std

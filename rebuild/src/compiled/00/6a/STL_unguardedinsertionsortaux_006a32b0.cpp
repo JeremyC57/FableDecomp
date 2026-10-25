@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<long,CIntelligentPointer<CThing>>* first, pair<long,CIntelligentPointer<CThing>>* last, pair<long,CIntelligentPointer<CThing>>*, CKeyPairCompareLess<long,CIntelligentPointer<CThing>> comp) -- STLport final unguarded insertion pass over the long-keyed thing map: insert each entry into the sorted run before it
+// std::__unguarded_insertion_sort_aux(pair<long,CIntelligentPointer<CThing>>* first, pair<long,CIntelligentPointer<CThing>>* last, pair<long,CIntelligentPointer<CThing>>*, CKeyPairCompareLess<long,CIntelligentPointer<CThing>> comp) -- STLport final unguarded insertion pass over the long-keyed thing map: insert each entry into the sorted run before it
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006A32B0, 79 bytes (+ int3), /Gr `__fastcall` (first in ecx -> esi, last in edx
 //   -> ebx; the value-type tag pointer and the comparator word on the stack, `ret 8`).
@@ -33,7 +33,7 @@ public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -54,10 +54,10 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 
 template <class K, class V> class CKeyPairCompareLess {   // empty, passed by value (one stack word)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-typedef _STL::pair<long, CIntelligentPointer<CThing> > TThingEntry;
+typedef std::pair<long, CIntelligentPointer<CThing> > TThingEntry;
 typedef CKeyPairCompareLess<long, CIntelligentPointer<CThing> > TThingEntryLess;
-template void __fastcall _STL::__unguarded_insertion_sort_aux<TThingEntry*, TThingEntry, TThingEntryLess>(
+template void __fastcall std::__unguarded_insertion_sort_aux<TThingEntry*, TThingEntry, TThingEntryLess>(
     TThingEntry*, TThingEntry*, TThingEntry*, TThingEntryLess);

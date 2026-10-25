@@ -1,7 +1,7 @@
-// _STL::copy(_Rb_tree_iterator<unsigned long> first, _Rb_tree_iterator<unsigned long> last, back_insert_iterator<vector<unsigned long> > result) -- STLport copy of a set<unsigned long> range into a vector through a back inserter: forwards to __copy_aux with a __false_type tag and returns the advanced inserter
+// std::copy(_Rb_tree_iterator<unsigned long> first, _Rb_tree_iterator<unsigned long> last, back_insert_iterator<vector<unsigned long> > result) -- STLport copy of a set<unsigned long> range into a vector through a back inserter: forwards to __copy_aux with a __false_type tag and returns the advanced inserter
 // Leaf: copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00661287, 30 bytes, `ret 0Ch` (__fastcall: hidden result in ecx).
-// Callee: 0x0066124B _STL::__copy_aux(first, last, result, const __false_type&) (__fastcall: hidden result in ecx, tag
+// Callee: 0x0066124B std::__copy_aux(first, last, result, const __false_type&) (__fastcall: hidden result in ecx, tag
 // in edx, `ret 0Ch`; landed as `ConstructString`), which in turn calls __copy(..., const input_iterator_tag&,
 // (ptrdiff_t*)0) @ 0x006611F7 -- that loop pushes each node value (+0x10) through vector::push_back 0x00485FF3 and
 // steps with _Rb_tree_increment 0x004292C0.
@@ -17,7 +17,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

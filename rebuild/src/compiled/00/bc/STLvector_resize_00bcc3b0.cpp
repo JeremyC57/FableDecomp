@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- resize the CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry vector: erase the surplus tail, or append default-constructed elements up to the new size
-// Leaf: ?resize@?$vector@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- resize the CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry vector: erase the surplus tail, or append default-constructed elements up to the new size
+// Leaf: ?resize@?$vector@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCC3B0, 77 bytes, thiscall `ret 4`.
 // Callers: one, 0x00BCBDCD in CEngineInternalPrimitiveSpriteTrail::Update 0x00BCBC00 (landed: `Trail.resize(trail.Trail.size())`).
 // Callees: vector::erase(first, last) 0x00BCBF20 (thiscall, returns the iterator, dropped), vector::_M_fill_insert(pos, n, x)
@@ -28,7 +28,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }

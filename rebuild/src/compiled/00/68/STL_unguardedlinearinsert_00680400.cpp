@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<EReactionSpeechType, long>* last, pair<EReactionSpeechType, long> val, CKeyPairCompareLess<EReactionSpeechType, long> comp) -- STLport insertion step over CSimVoice's voice entries: shift every larger entry up one slot and drop val into the hole
+// std::__unguarded_linear_insert(pair<EReactionSpeechType, long>* last, pair<EReactionSpeechType, long> val, CKeyPairCompareLess<EReactionSpeechType, long> comp) -- STLport insertion step over CSimVoice's voice entries: shift every larger entry up one slot and drop val into the hole
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00680400, length 51 bytes (+ int3 padding), `ret 0Ch`.
 // Callers: __linear_insert 0x00680CB0 (0x00680D08), in the sort of CSimVoice::Voices (sort 0x006813A0, landed).
@@ -13,7 +13,7 @@
 //   the stack); the value's key rides in edx, its second word is read from the argument slot for the final store.
 enum EReactionSpeechType { REACTION_SPEECH_TYPE_NONE = -1, REACTION_SPEECH_TYPE_0 = 0 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -24,13 +24,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<EReactionSpeechType, long> TVoiceEntry;
+typedef std::pair<EReactionSpeechType, long> TVoiceEntry;
 typedef CKeyPairCompareLess<EReactionSpeechType, long> TVoiceLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
@@ -45,4 +45,4 @@ void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _
 }
 }
 
-template void __fastcall _STL::__unguarded_linear_insert<TVoiceEntry*, TVoiceEntry, TVoiceLess>(TVoiceEntry*, TVoiceEntry, TVoiceLess);
+template void __fastcall std::__unguarded_linear_insert<TVoiceEntry*, TVoiceEntry, TVoiceLess>(TVoiceEntry*, TVoiceEntry, TVoiceLess);

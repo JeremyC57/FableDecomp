@@ -1,4 +1,4 @@
-// _STL::__make_heap(STextureMorphPair* first, STextureMorphPair* last, CKeyPairCompareLess comp, STextureMorphPair*, int*) -- heapify a vector of (EHeroMorphType, CTextureMorphEntry) pairs: sift every parent down from the last one to the root
+// std::__make_heap(STextureMorphPair* first, STextureMorphPair* last, CKeyPairCompareLess comp, STextureMorphPair*, int*) -- heapify a vector of (EHeroMorphType, CTextureMorphEntry) pairs: sift every parent down from the last one to the root
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081BAD0, 123 bytes (+int3 pad), `ret 0Ch` (link-time __fastcall /Gr TU: first in
 //   ecx, last in edx, then the empty comparator and the value-type / distance-type tag pointers on the stack).
@@ -22,7 +22,7 @@ struct CTextureMorphEntry {                 // Ego_r.pdb, 20 bytes, trivially co
     long Blend;                             // +0x10 ECompositeBlendType
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                // +0x00
     B second;                               // +0x04

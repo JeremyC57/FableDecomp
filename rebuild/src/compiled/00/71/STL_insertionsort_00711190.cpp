@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetItPriorityLessThan comp) -- STLport insertion sort of a vector of list<CAnimSet> const iterators by the anim set's Priority, everything inlined: a lower priority shifts the run up one slot and goes first, anything else sinks with the unguarded linear insert
+// std::__insertion_sort(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetItPriorityLessThan comp) -- STLport insertion sort of a vector of list<CAnimSet> const iterators by the anim set's Priority, everything inlined: a lower priority shifts the run up one slot and goes first, anything else sinks with the unguarded linear insert
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00711190, 153 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // comparator slot on the stack -- the SGI/STLport algorithm TUs are /Gr). No callees: __linear_insert, copy_backward /

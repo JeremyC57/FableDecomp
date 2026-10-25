@@ -1,4 +1,4 @@
-// Behaviour test for 0x00759420 _STL::__partial_sort over the 0x2C-byte wound-morph entries
+// Behaviour test for 0x00759420 std::__partial_sort over the 0x2C-byte wound-morph entries
 #include <cstdio>
 
 struct CWoundMorphsEntry { long Words[10]; };

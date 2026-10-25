@@ -1,4 +1,4 @@
-// Behaviour test for 0x00817950 _STL::__make_heap over THitLocationIntersectionElement by key (the SGI __adjust_heap / __push_heap pair stands in for 0x008175D0).
+// Behaviour test for 0x00817950 std::__make_heap over THitLocationIntersectionElement by key (the SGI __adjust_heap / __push_heap pair stands in for 0x008175D0).
 #include <cstdio>
 
 struct CHitLocation { int id; };

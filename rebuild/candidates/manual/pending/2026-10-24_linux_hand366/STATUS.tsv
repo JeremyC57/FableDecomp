@@ -29,7 +29,7 @@ address	status	bytes	test	note
 0040bb30	RELOCATION_MATCH	89v89	PASS	CUserProfileManager::ProcessPendingTutorials; label Tutorial_CheckDivineWrathStrike wrong
 0040e1e0	RELOCATION_MATCH	39v39	PASS	GetDefaultVal<CCharString> (no NRVO copy)
 0040e350	MATCH	72v72	PASS	STLport __copy<CActionInputControl*> with tag + int*
-0040f6b0	RELOCATION_MATCH	218v218	PASS	_STL::vector<char>::_M_insert_overflow (speed TU, inline memmove/memset); label CString_FillRange wrong
+0040f6b0	RELOCATION_MATCH	218v218	PASS	std::vector<char>::_M_insert_overflow (speed TU, inline memmove/memset); label CString_FillRange wrong
 0040fca0	RELOCATION_MATCH	145v145	PASS	GFSerialiseVectorBinaryOut<CActionInputControl>
 00412450	RELOCATION_MATCH	104v104	PASS	vector<CWideString>::erase(first,last); __forceinline copy/destroy helpers
 004127e0	RELOCATION_MATCH	101v101	PASS	deque<ETutorialCategory>::_M_push_back_aux_v

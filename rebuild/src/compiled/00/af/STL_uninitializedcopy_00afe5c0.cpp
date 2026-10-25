@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(CArray<long>* first, CArray<long>* last, CArray<long>* result, const __false_type&) -- copy-construct a run of particle primitive-ID lists into raw storage; returns the end of the copied run
+// std::__uninitialized_copy(CArray<long>* first, CArray<long>* last, CArray<long>* result, const __false_type&) -- copy-construct a run of particle primitive-ID lists into raw storage; returns the end of the copied run
 // Flags: /Gr
 // Leaf: ??$__uninitialized_copy@PAV?$CArray@J@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AFE5C0, length 115 bytes, __fastcall (first ecx, last edx), `ret 8`
@@ -15,7 +15,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -65,12 +65,12 @@ public:
     }
 };
 
-} // namespace _STL
+} // namespace std
 
-template <class T> class CArray : public _STL::vector<T> {   // Fable's CArray: the retail 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {   // Fable's CArray: the retail 12-byte STLport vector
 };
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
@@ -82,4 +82,4 @@ _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _Forwar
 
 template CArray<long>* __uninitialized_copy<CArray<long>*, CArray<long>*>(CArray<long>*, CArray<long>*, CArray<long>*,
                                                                           const __false_type&);
-} // namespace _STL
+} // namespace std

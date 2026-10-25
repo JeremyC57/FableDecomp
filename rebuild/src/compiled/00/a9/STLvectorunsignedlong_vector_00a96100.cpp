@@ -1,4 +1,4 @@
-// _STL::vector<unsigned long>::vector(unsigned int n) -- STLport sized constructor of a 32-bit word vector: allocate n dwords (none for zero) and zero-fill them
+// std::vector<unsigned long>::vector(unsigned int n) -- STLport sized constructor of a 32-bit word vector: allocate n dwords (none for zero) and zero-fill them
 // Leaf: ??0?$vector@K
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A96100, 98 bytes, thiscall `ret 4`, returns this.
 // Identity: 5 call sites (0x00A9027D, 0x00A96A28, 0x00B22F90, 0x00F1D160, 0x00F3ACB0) in the 3D primitive code; the element is
@@ -12,7 +12,7 @@
 //   behind the unsigned `n > 0` test (`jbe`).
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 

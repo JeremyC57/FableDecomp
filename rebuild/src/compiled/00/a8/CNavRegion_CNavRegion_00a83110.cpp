@@ -23,7 +23,7 @@ public:
     void* Info;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 struct _List_node_base {
@@ -93,7 +93,7 @@ public:
 class CNavRegion {                                      // retail 12 bytes
 public:
     long                                                   RegionID;             // +0x00
-    _STL::list<CCountedPointer<CNavRegionConnection> >     Connections;          // +0x04
+    std::list<CCountedPointer<CNavRegionConnection> >     Connections;          // +0x04
     long                                                   MostRecentSearchID;   // +0x08
     CNavRegion(const CNavRegion& other);
 };

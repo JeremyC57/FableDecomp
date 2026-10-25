@@ -5,7 +5,7 @@
 // (rtti-vtables.tsv: primary 0x0129B4D4 at +0, the secondary base's 0x0129B528 at +0x164); FableWin/Ego donor
 // ??1CDataBank@NGameText@@UAE@XZ (0x00B17970). Only caller: the scalar deleting destructor at 0x009CB843.
 // Callees: CDataBank::CloseTextAndGroups 0x009C8660 (donor ?CloseTextAndGroups@CDataBank@NGameText@@IAEXXZ),
-// CCharString::~CCharString 0x0099EAE0, the LTCG `__fastcall` element-range destroys _STL::__destroy_aux 0x009CAC00
+// CCharString::~CCharString 0x0099EAE0, the LTCG `__fastcall` element-range destroys std::__destroy_aux 0x009CAC00
 // (CDataBankGroupEntry, 4-byte elements) and 0x009CABC0 (CDataBankTextEntry, 8-byte elements) -- ecx = first,
 // edx = last, the __false_type tag temporary by reference (`lea eax,[esp+13h]`, the push-ecx slot) -- MSVCR71 free
 // 0x00BFEA14, the secondary base's dtor 0x009FC690 and ~CBankFileAsync 0x009D6490 (landed).
@@ -40,7 +40,7 @@ namespace NGameText
     };
 }
 
-namespace _STL
+namespace std
 {
     struct __true_type { __true_type() { } };
     struct __false_type { __false_type() { } };
@@ -95,7 +95,7 @@ namespace _STL
 }
 
 template <class T>
-class CArray : public _STL::vector<T> { };             // retail 12 bytes
+class CArray : public std::vector<T> { };             // retail 12 bytes
 
 class CBankFileAsync                                   // landed ~CBankFileAsync 0x009D6490
 {

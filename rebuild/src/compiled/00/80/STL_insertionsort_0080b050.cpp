@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- STLport insertion sort of target points (best target first): every element after the first goes through __linear_insert
+// std::__insertion_sort(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- STLport insertion sort of target points (best target first): every element after the first goes through __linear_insert
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B050, 223 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx --
 //   spilled to the `push ecx` frame word, last in edx), the 0x34-byte comparator by value, `ret 34h`.
@@ -72,7 +72,7 @@ struct CThingCompare_BestForTargeting2 {
     bool operator()(const CTargetPoint& a, const CTargetPoint& b) const;             // 0x008098B0
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x0080AA60
 

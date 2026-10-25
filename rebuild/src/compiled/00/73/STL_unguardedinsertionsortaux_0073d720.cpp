@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* first, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* last, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>*, CKeyPairCompareLess comp) -- insertion-sort pass with no lower-bound test over the 8-byte mode-registry entries, each sifted down by its unsigned key
+// std::__unguarded_insertion_sort_aux(pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* first, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* last, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>*, CKeyPairCompareLess comp) -- insertion-sort pass with no lower-bound test over the 8-byte mode-registry entries, each sifted down by its unsigned key
 // Leaf: __unguarded_insertion_sort_aux
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073D720, 73 bytes (+7 int3), `ret 8` (link-time __fastcall: first in ecx, last in
 //   edx, the value-type tag pointer and the empty comparator on the stack). No callees.
@@ -19,7 +19,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                             // +0x00
     B second;                                            // +0x04
@@ -29,13 +29,13 @@ template <class A, class B> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {  // empty, passed by value
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModePair;
+typedef std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModePair;
 typedef CKeyPairCompareLess<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModeLess;
 
-namespace _STL {
+namespace std {
 template <class RandomAccessIter, class T, class Compare>
 inline void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp)
 {

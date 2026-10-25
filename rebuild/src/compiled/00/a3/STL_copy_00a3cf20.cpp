@@ -1,4 +1,4 @@
-// _STL::__copy(C3DAnimationStateAlpha* first, C3DAnimationStateAlpha* last, C3DAnimationStateAlpha* result, const random_access_iterator_tag&, int*) -- STLport random-access copy: assign *result++ = *first++, (last - first) times; returns the advanced result
+// std::__copy(C3DAnimationStateAlpha* first, C3DAnimationStateAlpha* last, C3DAnimationStateAlpha* result, const random_access_iterator_tag&, int*) -- STLport random-access copy: assign *result++ = *first++, (last - first) times; returns the advanced result
 // Leaf: ??$__copy@
 // Retail: Fable.exe @ 0x00A3CF20, 203 bytes, `ret 0Ch`. /Gr TU written as explicit __fastcall: first in ecx, last in
 //   edx, result + the tag reference + the (int*)0 distance pointer on the stack.
@@ -37,7 +37,7 @@ public:
     float AlphaWeight;                                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
@@ -53,5 +53,5 @@ _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __las
 }
 }
 
-template C3DAnimationStateAlpha* __fastcall _STL::__copy<C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, int>(
-    C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, const _STL::random_access_iterator_tag&, int*);
+template C3DAnimationStateAlpha* __fastcall std::__copy<C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, int>(
+    C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, const std::random_access_iterator_tag&, int*);

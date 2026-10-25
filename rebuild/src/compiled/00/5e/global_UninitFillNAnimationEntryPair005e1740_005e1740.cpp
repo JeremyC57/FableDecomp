@@ -38,7 +38,7 @@ struct CAnimationEntry {                        // 16 bytes
     CIVCountedPointer_CAnimComponentMap Components;    // +0x0C
 };
 
-struct CAnimationEntryPair {                    // _STL::pair<unsigned long, CAnimationEntry>, 20 bytes
+struct CAnimationEntryPair {                    // std::pair<unsigned long, CAnimationEntry>, 20 bytes
     unsigned long   first;                      // +0x00
     CAnimationEntry second;                     // +0x04
     CAnimationEntryPair(const CAnimationEntryPair& o) : first(o.first), second(o.second) { }

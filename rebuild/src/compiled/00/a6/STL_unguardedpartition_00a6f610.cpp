@@ -1,9 +1,9 @@
-// _STL::__unguarded_partition(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* last, pair<CCharString,C3DHelperPoint> pivot, CCompareString<C3DHelperPoint> comp) -- quicksort partition of the helper-point map entries around a by-value pivot (name order); returns the cut
+// std::__unguarded_partition(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* last, pair<CCharString,C3DHelperPoint> pivot, CCompareString<C3DHelperPoint> comp) -- quicksort partition of the helper-point map entries around a by-value pivot (name order); returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6F610, 115 bytes (+13 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the 20-byte pivot and the 4-byte comparator by value on the stack, `ret 18h`).
 // Callees: CCharString::FastCompare(const CCharString&) const 0x009E6530 (the CCompareString "less"),
-//   _STL::swap<pair<CCharString,C3DHelperPoint> > 0x00A6E5E0 (same chunk, out of line), CCharString::~CCharString
+//   std::swap<pair<CCharString,C3DHelperPoint> > 0x00A6E5E0 (same chunk, out of line), CCharString::~CCharString
 //   0x0099EAE0 (the by-value pivot).
 // Identity: the manifest's "QuickSort_Partition_Skeleton_Small" is descriptive. 20-byte pair<CCharString,
 //   C3DHelperPoint> entries of CPhysicsMesh::HelperPoints ordered by CCompareString.
@@ -31,7 +31,7 @@ public:
     long      BoneIndex;                                // +0x0C
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -42,10 +42,10 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b);              // 0x00A6E5E0

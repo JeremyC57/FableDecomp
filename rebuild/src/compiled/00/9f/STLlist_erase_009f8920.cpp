@@ -1,4 +1,4 @@
-// _STL::list::erase(_STL::list<CGraphicBankManager::CGraphicDataBankInfo>::iterator position) -- list<CGraphicDataBankInfo>: unlink one graphic-bank record, release its bank pointer and handle string, free the node and return the next position
+// std::list::erase(std::list<CGraphicBankManager::CGraphicDataBankInfo>::iterator position) -- list<CGraphicDataBankInfo>: unlink one graphic-bank record, release its bank pointer and handle string, free the node and return the next position
 // Leaf: ?erase@?$list@VCGraphicDataBankInfo@CGraphicBankManager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F8920, 93 bytes, `__fastcall` (the list in ecx, unused), hidden
 //   iterator result + position on the stack, `ret 8`.
@@ -57,7 +57,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { free(__p); }   // malloc-backed node allocator: no null test
@@ -135,5 +135,5 @@ public:
 };
 }
 
-template _STL::list<CGraphicBankManager::CGraphicDataBankInfo>::iterator
-    _STL::list<CGraphicBankManager::CGraphicDataBankInfo>::erase(_STL::list<CGraphicBankManager::CGraphicDataBankInfo>::iterator);
+template std::list<CGraphicBankManager::CGraphicDataBankInfo>::iterator
+    std::list<CGraphicBankManager::CGraphicDataBankInfo>::erase(std::list<CGraphicBankManager::CGraphicDataBankInfo>::iterator);

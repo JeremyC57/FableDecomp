@@ -1,4 +1,4 @@
-// Behaviour test for 0x004DFC42 _STL::__median of pair<CCharString, CCharString> by the first string (CKeyPairCompareLess; same body as 0x00A70020 in a frame-pointer, size-optimised TU).
+// Behaviour test for 0x004DFC42 std::__median of pair<CCharString, CCharString> by the first string (CKeyPairCompareLess; same body as 0x00A70020 in a frame-pointer, size-optimised TU).
 #include <cstdio>
 #include <cstring>
 

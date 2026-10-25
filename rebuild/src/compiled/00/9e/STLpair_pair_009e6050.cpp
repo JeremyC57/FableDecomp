@@ -1,5 +1,5 @@
-// _STL::pair::pair(const pair& other) -- copy constructor of pair<CCharString, CSymbolMap::CSymbolInfo>: the key string, then the symbol info's copy constructor
-// Leaf: ??0?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@_STL@@QAE@ABU01@@Z
+// std::pair::pair(const pair& other) -- copy constructor of pair<CCharString, CSymbolMap::CSymbolInfo>: the key string, then the symbol info's copy constructor
+// Leaf: ??0?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@QAE@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E6050, 55 bytes, __fastcall `ret 4`, returns `this`.
 // Identity: the element of CSymbolMap::SLONGMap (Ego_r.pdb: CVectorMap<CCharString, CSymbolMap::CSymbolInfo,
 //   CCompareString<CSymbolInfo> >); Ego_r.pdb CSymbolMap::CSymbolInfo (12 bytes): GroupName +0, EntryName +4 (CCharString),
@@ -24,7 +24,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

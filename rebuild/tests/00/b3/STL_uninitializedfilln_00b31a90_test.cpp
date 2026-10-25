@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 
-// Model of _STL::__uninitialized_fill_n over CEngineCamera::CDebugScriptElement: n placement copies, returns first + n.
+// Model of std::__uninitialized_fill_n over CEngineCamera::CDebugScriptElement: n placement copies, returns first + n.
 struct C3DVector {
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }

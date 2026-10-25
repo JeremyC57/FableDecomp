@@ -1,4 +1,4 @@
-// _STL::vector<C3DVector>::vector(const vector& x) -- STLport vector copy constructor for 12-byte C3DVector points: allocate exactly x.size() elements (none when empty), then copy-construct x's range into them
+// std::vector<C3DVector>::vector(const vector& x) -- STLport vector copy constructor for 12-byte C3DVector points: allocate exactly x.size() elements (none when empty), then copy-construct x's range into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F0810, 137 bytes, thiscall, `ret 4`, returns this.
 // Identity: 76 call sites (0x006EADCA, 0x006F3037, 0x0075DEBB, ...); the landed CTCShapeManager::InitialiseFrom 0x00762AB0
@@ -21,7 +21,7 @@ struct C3DVector {                                          // 1-aligned in reta
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

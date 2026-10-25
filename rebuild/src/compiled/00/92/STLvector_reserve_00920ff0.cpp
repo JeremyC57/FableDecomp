@@ -1,4 +1,4 @@
-// _STL::vector::reserve(size_type n) -- STLport vector<C3DVector>::reserve: when the capacity is below n, reallocate n elements (copying and freeing the old block when there is one) and keep the size
+// std::vector::reserve(size_type n) -- STLport vector<C3DVector>::reserve: when the capacity is below n, reallocate n elements (copying and freeing the old block when there is one) and keep the size
 // Leaf: ?reserve@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00920FF0, 147 bytes, __fastcall `ret 4`.
 // Identity: STLport 4.6 vector<_Tp>::reserve (Ego_r.pdb ?reserve@?$vector@VC3DVector@@...@std@@QAEXI@Z family). The catalog
@@ -27,7 +27,7 @@ public:
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 
 struct __false_type {                           // STLport empty tag; a user ctor keeps the temporary store-free
     __false_type() { }
@@ -119,4 +119,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 
 }
 
-template class _STL::vector<C3DVector>;
+template class std::vector<C3DVector>;

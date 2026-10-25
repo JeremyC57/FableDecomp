@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A617E0 _STL::map<CWideString, CChecksumCacheFile::CEntry>::operator[](const CWideString&)
+// Behaviour test for 0x00A617E0 std::map<CWideString, CChecksumCacheFile::CEntry>::operator[](const CWideString&)
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -32,7 +32,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> class pair {
 public:
     typedef T1 first_type;
@@ -133,9 +133,9 @@ public:
         return (*i).second;
     }
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::map<CWideString, CChecksumCacheFile::CEntry, _STL::less<CWideString> > CEntryMap;
+typedef std::map<CWideString, CChecksumCacheFile::CEntry, std::less<CWideString> > CEntryMap;
 
 int main()
 {

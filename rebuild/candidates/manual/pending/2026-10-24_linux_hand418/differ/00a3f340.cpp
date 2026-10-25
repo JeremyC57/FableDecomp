@@ -21,7 +21,7 @@ public:
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
@@ -86,16 +86,16 @@ template <class K, class V> class CKeyPairCompareLess { };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> > class CVectorMap {   // retail 16 bytes
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type*      iterator;
-    _STL::vector<value_type> Data;                          // +0x00
+    std::vector<value_type> Data;                          // +0x00
     C                        Comp;                          // +0x0C (empty comparator)
     bool                     Dirty;                         // +0x0D
     iterator Begin() { return Data.begin(); }
     iterator End() { return Data.end(); }
     void Sort()
     {
-        _STL::sort(Data.begin(), Data.end(), Comp);
+        std::sort(Data.begin(), Data.end(), Comp);
         Dirty = false;
     }
     void Update()
@@ -119,7 +119,7 @@ class CSoundManagerLH {                                     // vtable 0x0129D2C4
 public:
     virtual void v00();
     unsigned char _04[0x50];                                // +0x04..+0x53
-    CVectorMap<_STL::pair<CCharString, CCharString>, CSoundBankLH*> NamePairMap;   // +0x54
+    CVectorMap<std::pair<CCharString, CCharString>, CSoundBankLH*> NamePairMap;   // +0x54
     CVectorMap<CCharString, CSoundBankLH*>                          NameMap;       // +0x64
     void vfunc_41();
 };

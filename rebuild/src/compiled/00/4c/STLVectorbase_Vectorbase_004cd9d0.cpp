@@ -1,4 +1,4 @@
-// _STL::_Vector_base::_Vector_base(unsigned int n, const allocator<unsigned long>& a) -- STLport vector base for 4-byte elements: null the three pointers, allocate room for n elements, finish = start, end of storage = start + n
+// std::_Vector_base::_Vector_base(unsigned int n, const allocator<unsigned long>& a) -- STLport vector base for 4-byte elements: null the three pointers, allocate room for n elements, finish = start, end of storage = start + n
 // Leaf: ??0?$_Vector_base@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CD9D0, 56 bytes, thiscall `ret 8` (n and the allocator reference).
 // Caller: 0x0057FCEB, the vector<unsigned long>(size_type n, const unsigned long& value) constructor at 0x0057FCDD
@@ -11,7 +11,7 @@
 //   reuses the shared zero register for the null block. The catalog's "std::vector_ctor" is descriptive.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:

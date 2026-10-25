@@ -2,7 +2,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::remove_if<C3DVector*, unary_negate<CVectorFilter_FurtherFromPointThan> > @ 0x008AC060: find the first
+// Model of std::remove_if<C3DVector*, unary_negate<CVectorFilter_FurtherFromPointThan> > @ 0x008AC060: find the first
 // point within the XY radius, then compact the remaining far points over it; returns the new end.
 struct C3DVector {
     float X, Y, Z;

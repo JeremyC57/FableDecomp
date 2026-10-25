@@ -1,5 +1,5 @@
-// _STL::fill(_STL::pair<float, CWideString>* first, _STL::pair<float, CWideString>* last, const _STL::pair<float, CWideString>& value) -- assign one (float, wide string) pair to every element of a range
-// Leaf: ??$fill@PAU?$pair@MVCWideString@@@_STL@@
+// std::fill(std::pair<float, CWideString>* first, std::pair<float, CWideString>* last, const std::pair<float, CWideString>& value) -- assign one (float, wide string) pair to every element of a range
+// Leaf: ??$fill@PAU?$pair@MVCWideString@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00623110, 46 bytes, `__fastcall` (first ecx, last edx, value pointer
 //   on the stack), `ret 4`.
 // Identity: 8-byte stride = {4-byte member +0 copied by register, member +4 assigned through 0x0099B7D0
@@ -15,15 +15,15 @@ public:
     void* PStringData;
     CWideString& operator=(const CWideString& other);    // 0x0099B7D0
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
 };
 }
-typedef _STL::pair<float, CWideString> CFloatWideStringPair;
+typedef std::pair<float, CWideString> CFloatWideStringPair;
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -33,4 +33,4 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CFloatWideStringPair*, CFloatWideStringPair>(CFloatWideStringPair*, CFloatWideStringPair*, const CFloatWideStringPair&);
+template void __fastcall std::fill<CFloatWideStringPair*, CFloatWideStringPair>(CFloatWideStringPair*, CFloatWideStringPair*, const CFloatWideStringPair&);

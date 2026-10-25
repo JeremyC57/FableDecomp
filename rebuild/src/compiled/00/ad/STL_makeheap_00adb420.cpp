@@ -1,4 +1,4 @@
-// _STL::__make_heap(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* last, less<CBlockInfo> comp, CBlockInfo*, int*) -- STLport heapify of the vertex-group block candidates by cost: sift every parent down from the last one to the root
+// std::__make_heap(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* last, less<CBlockInfo> comp, CBlockInfo*, int*) -- STLport heapify of the vertex-group block candidates by cost: sift every parent down from the last one to the root
 // Flags: /Gr
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ADB420, 140 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first in
@@ -25,7 +25,7 @@ public:
 };
 typedef CVertexGroupBlockOptimiser::CBlockInfo CBlockInfo;
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
@@ -52,4 +52,4 @@ void __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _C
 template void __make_heap<CBlockInfo*, less<CBlockInfo>, CBlockInfo, int>(CBlockInfo*, CBlockInfo*, less<CBlockInfo>,
                                                                          CBlockInfo*, int*);
 
-} // namespace _STL
+} // namespace std

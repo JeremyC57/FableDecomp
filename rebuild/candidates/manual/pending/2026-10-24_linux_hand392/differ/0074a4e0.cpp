@@ -50,7 +50,7 @@ public:
     bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance);   // 0x006CB620
 };
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     T* _M_start;                                             // +0x00
@@ -67,7 +67,7 @@ public:
     virtual void v00();
     CThing*          ParentThing;                            // +0x04
     unsigned char    _pad08[0x60 - 0x08];
-    _STL::vector<C3DVector> OpenPositions;                   // +0x60
+    std::vector<C3DVector> OpenPositions;                   // +0x60
     void DoNavCheck(const CThingCreatureBase& creature);
 };
 

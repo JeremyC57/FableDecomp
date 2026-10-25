@@ -1,4 +1,4 @@
-// _STL::__linear_insert(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI insertion step: if val sorts before *first shift [first, last) up one and store val at first, else the unguarded insert from last
+// std::__linear_insert(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI insertion step: if val sorts before *first shift [first, last) up one and store val at first, else the unguarded insert from last
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A46530, length 169 bytes, `ret 18h`.
 // Caller: 0x00A466CF __insertion_sort<C3DSkeletalBoneMorph*> (landed 0x00A46680 calls this address as __linear_insert).
@@ -35,7 +35,7 @@ public:
 
 typedef bool (__fastcall* TBoneMorphCompare)(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b);
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>

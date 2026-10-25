@@ -22,7 +22,7 @@ public:
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
 // STLport 4.6 sort / stable_sort machinery over CSortElement (the model the chunk-428 sources compile).
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -365,9 +365,9 @@ void __fastcall __stable_sort_aux(_RandomAccessIter __first, _RandomAccessIter _
     else
         __stable_sort_adaptive(__first, __last, buf.begin(), _Distance(buf.size()), __comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::less<CSortElement> CLess;
+typedef std::less<CSortElement> CLess;
 
 // Test helpers: elements tagged with their original index so stability is checkable.
 static CEngineSubPrimitiveBase* Tag(int i) { return (CEngineSubPrimitiveBase*)(size_t)(i + 1); }
@@ -411,7 +411,7 @@ int main()
     for (int n = 0; n <= 200; n += 7) {
         Fill(a, n, 50);
         for (int i = 0; i < n; ++i) o[i] = a[i];
-        _STL::__make_heap(a, a + n, CLess(), (CSortElement*)0, (int*)0);
+        std::__make_heap(a, a + n, CLess(), (CSortElement*)0, (int*)0);
         for (int i = 1; i < n; ++i)
             if (a[(i - 1) / 2] < a[i]) { std::printf("00b855f0_TEST FAIL\n"); return 1; }
         if (!SameMultiset(a, o, n)) { std::printf("00b855f0_TEST FAIL\n"); return 1; }

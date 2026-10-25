@@ -1,4 +1,4 @@
-// _STL::__linear_insert(CCharString* first, CCharString* last, CCharString val, less<CCharString> comp) -- STLport insertion-sort step: a new minimum shifts the whole prefix up one slot, anything else goes through the unguarded insert
+// std::__linear_insert(CCharString* first, CCharString* last, CCharString val, less<CCharString> comp) -- STLport insertion-sort step: a new minimum shifts the whole prefix up one slot, anything else goes through the unguarded insert
 // Leaf: ?__linear_insert@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E1A40, 112 bytes, `ret 8` (__fastcall /Gr algorithm TU: first in ecx ->
 //   esi, last in edx -> edi, the by-value string and the empty comparator on the stack; val is destroyed on both paths).

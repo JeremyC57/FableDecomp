@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A70020 _STL::__median of pair<CCharString, CCharString> by the first string (CKeyPairCompareLess).
+// Behaviour test for 0x00A70020 std::__median of pair<CCharString, CCharString> by the first string (CKeyPairCompareLess).
 #include <cstdio>
 #include <cstring>
 

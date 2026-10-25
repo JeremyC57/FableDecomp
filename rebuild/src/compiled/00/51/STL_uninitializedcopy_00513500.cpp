@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(CLevelLoader::CObject::CLevelFiles* first, CLevelLoader::CObject::CLevelFiles* last, CLevelLoader::CObject::CLevelFiles* result, const __false_type&) -- STLport uninitialized copy of the level-file triples: placement copy-construct each 28-byte record (level id + three counted file pointers, each bumping its shared reference count) and return the advanced destination
+// std::__uninitialized_copy(CLevelLoader::CObject::CLevelFiles* first, CLevelLoader::CObject::CLevelFiles* last, CLevelLoader::CObject::CLevelFiles* result, const __false_type&) -- STLport uninitialized copy of the level-file triples: placement copy-construct each 28-byte record (level id + three counted file pointers, each bumping its shared reference count) and return the advanced destination
 // Leaf: __uninitialized_copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00513500, 99 bytes, `ret 8` (__fastcall: first in ecx, last in edx, result
 // and the __false_type tag reference on the stack). No callees. A byte-identical twin sits at 0x006C2AA0 (another TU).

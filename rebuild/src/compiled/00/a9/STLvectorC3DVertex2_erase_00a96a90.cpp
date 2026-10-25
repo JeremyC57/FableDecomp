@@ -1,4 +1,4 @@
-// _STL::vector<C3DVertex2>::erase(C3DVertex2* first, C3DVertex2* last) -- remove a range of 32-byte mesh vertices: slide the tail down over it and pull the finish pointer back
+// std::vector<C3DVertex2>::erase(C3DVertex2* first, C3DVertex2* last) -- remove a range of 32-byte mesh vertices: slide the tail down over it and pull the finish pointer back
 // Leaf: ?erase@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A96A90, 80 bytes, thiscall `ret 8`, returns `first`.
 // Identity: 7 call sites; C3DMeshFileVerticesChunk::ReadFromFile 0x00ABD150 calls it as the shrink arm of
@@ -23,7 +23,7 @@ public:
     float     V;                                        // +0x1c
 };
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };

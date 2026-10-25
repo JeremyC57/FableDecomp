@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_copy(_Link_type x, _Link_type p) -- structural copy of a screen-filter bypass map subtree: clone the root, recurse into right children, walk the left spine iteratively
+// std::_Rb_tree::_M_copy(_Link_type x, _Link_type p) -- structural copy of a screen-filter bypass map subtree: clone the root, recurse into right children, walk the left spine iteratively
 // Leaf: ?_M_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00884490, length 198 bytes (`ret 8`).
 // Identity: `map<CThing*, CThingGraphicByPassFlagState>` = NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry
@@ -50,7 +50,7 @@ public:
 
 typedef NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState CByPassState;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -133,7 +133,7 @@ struct less {
 }
 
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare>
 inline typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_Link_type
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_create_node(const value_type& __x)

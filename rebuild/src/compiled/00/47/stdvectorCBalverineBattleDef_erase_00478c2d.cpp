@@ -23,7 +23,7 @@ public:
     CBalverineBattleDef& operator=(const CBalverineBattleDef& other);   // 0x00478876
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -84,4 +84,4 @@ public:
 
 template vector<CBalverineBattleDef>::iterator vector<CBalverineBattleDef>::erase(iterator, iterator);
 
-} // namespace _STL
+} // namespace std

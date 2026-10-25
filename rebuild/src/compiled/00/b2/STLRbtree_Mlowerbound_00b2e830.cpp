@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_lower_bound(const pair<long,long>& k) const -- STLport lower bound of the surface-composition manager's map<pair<long,long>, CEngineTextureMorph>: the first node whose key does not sort before k, the header when none
+// std::_Rb_tree::_M_lower_bound(const pair<long,long>& k) const -- STLport lower bound of the surface-composition manager's map<pair<long,long>, CEngineTextureMorph>: the first node whose key does not sort before k, the header when none
 // Leaf: _M_lower_bound
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2E830, length 53 bytes, `ret 4`, the node pointer in eax.
 // Callers: map<pair<long,long>,CEngineTextureMorph>::operator[] @ 0x00B2F5E0 (call 0x00B2F5EE) and the map's other
@@ -13,7 +13,7 @@
 //   x = right(x); return y;` with the pair operator< (`x.first < y.first || (!(y.first < x.first) && x.second <
 //   y.second)`) folded into the signed `jg`/`jl`/`jl` branch chain and k.first hoisted into esi.
 // Label: the catalog's descriptive `RBTree_FindLE` -- this is the STLport lower bound.
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -79,7 +79,7 @@ _Rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::_M_lower_bound(const Key& k) c
     return y;
 }
 
-}   // namespace _STL
+}   // namespace std
 
 struct CCompositeBlendDesc;
 struct CCompositeBlendDescVector {               // retail STLport vector<CCompositeBlendDesc>, 12 bytes
@@ -94,8 +94,8 @@ public:
     CCompositeBlendDescVector Blends;                 // +0x08
 };
 
-typedef _STL::pair<long, long> CMorphKey;
-typedef _STL::pair<const CMorphKey, CEngineTextureMorph> CMorphValue;
+typedef std::pair<long, long> CMorphKey;
+typedef std::pair<const CMorphKey, CEngineTextureMorph> CMorphValue;
 
-template class _STL::_Rb_tree<CMorphKey, CMorphValue, _STL::_Select1st<CMorphValue>, _STL::less<CMorphKey>,
-    _STL::allocator<CMorphValue> >;
+template class std::_Rb_tree<CMorphKey, CMorphValue, std::_Select1st<CMorphValue>, std::less<CMorphKey>,
+    std::allocator<CMorphValue> >;

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(QuadricOptimiserInternals::COptimisedEdge* first, unsigned int n, const COptimisedEdge& x, const __false_type&) -- copy-construct n copies of a 16-byte optimiser edge into raw storage and return the end
+// std::__uninitialized_fill_n(QuadricOptimiserInternals::COptimisedEdge* first, unsigned int n, const COptimisedEdge& x, const __false_type&) -- copy-construct n copies of a 16-byte optimiser edge into raw storage and return the end
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ACFFE0, length 58 bytes, __fastcall (first in ecx -> eax, n in edx, the
 //   value and the empty tag reference on the stack, `ret 8`), returns the end in eax.
@@ -21,7 +21,7 @@ public:
 }
 typedef QuadricOptimiserInternals::COptimisedEdge COptimisedEdge;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

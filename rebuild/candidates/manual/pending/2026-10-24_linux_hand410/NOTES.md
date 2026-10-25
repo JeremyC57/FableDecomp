@@ -1,4 +1,4 @@
-# Hand chunk 410 (GFBoolToCharString .. _STL::__insertion_sort): 39 of 40 byte-exact
+# Hand chunk 410 (GFBoolToCharString .. std::__insertion_sort): 39 of 40 byte-exact
 
 ## What matched (39)
 

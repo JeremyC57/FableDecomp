@@ -27,7 +27,7 @@ struct SCountedPointer_006b8de0 {               // CCountedPointer<T>, 8 bytes
     }
 };
 
-struct SLongCountedPointer_006b8de0 {           // _STL::pair<long, CCountedPointer<T> >, 12 bytes
+struct SLongCountedPointer_006b8de0 {           // std::pair<long, CCountedPointer<T> >, 12 bytes
     long                     first;             // +0x00
     SCountedPointer_006b8de0 second;            // +0x04
     SLongCountedPointer_006b8de0(const SLongCountedPointer_006b8de0& o) : first(o.first), second(o.second) { }

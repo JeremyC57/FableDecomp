@@ -1,4 +1,4 @@
-// Behaviour test for _STL::insert_iterator<set<unsigned long> >::operator=(const unsigned long&) @ 0x00AD4810
+// Behaviour test for std::insert_iterator<set<unsigned long> >::operator=(const unsigned long&) @ 0x00AD4810
 // Inserts the value at the hint (iter = container->insert(iter, value)), then advances the hint past it.
 #include <cstdio>
 #include <set>

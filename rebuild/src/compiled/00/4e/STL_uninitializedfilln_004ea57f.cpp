@@ -1,4 +1,4 @@
-// _STL::uninitialized_fill_n(CEngineGraphic* first, unsigned int n, const CEngineGraphic& x) -- STLport uninitialized fill of n 14-byte engine graphics: placement-copy x into each slot, return the end
+// std::uninitialized_fill_n(CEngineGraphic* first, unsigned int n, const CEngineGraphic& x) -- STLport uninitialized fill of n 14-byte engine graphics: placement-copy x into each slot, return the end
 // Leaf: ??$uninitialized_fill_n
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EA57F, 34 bytes, `ret 4` (/Gr __fastcall: first in ecx, n in edx, x on the stack).
 // Label correction: the catalog's `_Fill<CEngineGraphic*,CEngineGraphic>` is the propagated Dinkumware spelling; retail STL is
@@ -13,7 +13,7 @@
 
 inline void* operator new(size_t, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 #pragma pack(push, 2)

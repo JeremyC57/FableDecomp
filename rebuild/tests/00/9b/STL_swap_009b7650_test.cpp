@@ -70,7 +70,7 @@ public:
     char* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -204,7 +204,7 @@ private:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -218,16 +218,16 @@ public:
         CArray<unsigned long>  GlobalIndices;
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoLess;
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     CVectorMap() : Dirty(false) {}
     void Insert(const K& key, const V& value);
@@ -237,11 +237,11 @@ public:
 
 template <class K, class V, class C> void CVectorMap<K, V, C>::Insert(const K& key, const V& value)
 {
-    this->push_back(_STL::pair<K, V>(key, value));
+    this->push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;
@@ -488,9 +488,9 @@ int main()
         CDefClassInfoPair a, b;
         SetInfo(a, 1, "CAlpha", 10, 1);
         SetInfo(b, 2, "CBravo", 20, 3);
-        _STL::swap(a, b);
+        std::swap(a, b);
         if (!InfoIs(a, 2, "CBravo", 20, 3) || !InfoIs(b, 1, "CAlpha", 10, 1)) { std::printf("009b7650_TEST FAIL\n"); return 1; }
-        _STL::swap(a, a);                            // self swap keeps the value
+        std::swap(a, a);                            // self swap keeps the value
         if (!InfoIs(a, 2, "CBravo", 20, 3)) { std::printf("009b7650_TEST FAIL\n"); return 1; }
         if (g_live != live0 + 2) { std::printf("009b7650_TEST FAIL\n"); return 1; }
     }

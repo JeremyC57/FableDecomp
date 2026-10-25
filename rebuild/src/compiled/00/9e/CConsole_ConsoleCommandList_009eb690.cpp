@@ -10,7 +10,7 @@
 //   `strcmp(text, "") == 0` (the repe cmpsb); the type temporary dies before the branch; the name is the input's
 //   CCharString at +4 (inline GetName). A brace-initialised iterator in the for-init is a VC7.1 syntax error.
 // Layout: retail CConsole RegisteredConsoleInputs header +0x40 (as the landed 0x009EB590 / 0x009EB430).
-// Leaf: ?ConsoleCommandList@CConsole_Retail@@SIXAAU1@ABU?$vector@UCGenericVar@@@_STL@@@Z
+// Leaf: ?ConsoleCommandList@CConsole_Retail@@SIXAAU1@ABU?$vector@UCGenericVar@@@std@@@Z
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -50,7 +50,7 @@ struct CGenericVar {                                // PDB 0x1c bytes
     bool          ValBool;
     float         ValFloat;
 };
-namespace _STL { template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; }; }
+namespace std { template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; }; }
 
 struct CConsoleInputBase {
     virtual ~CConsoleInputBase();
@@ -95,10 +95,10 @@ struct CConsole_Retail {
     unsigned char  _pad00[0x40];                    // vptr, maps, command lines, HelpBarString
     SInputNode*    RegisteredConsoleInputsHeader;   // +0x40 map<CCharString, CCountedPointer<CConsoleInputBase>> header
     void SendMessageToUser(const CCharString& message);     // 0x009EB260
-    static void __fastcall ConsoleCommandList(CConsole_Retail& console, const _STL::vector<CGenericVar>& params);
+    static void __fastcall ConsoleCommandList(CConsole_Retail& console, const std::vector<CGenericVar>& params);
 };
 
-void __fastcall CConsole_Retail::ConsoleCommandList(CConsole_Retail& console, const _STL::vector<CGenericVar>& params)
+void __fastcall CConsole_Retail::ConsoleCommandList(CConsole_Retail& console, const std::vector<CGenericVar>& params)
 {
     CInputIterator it;
     it._M_node = console.RegisteredConsoleInputsHeader->_M_left;

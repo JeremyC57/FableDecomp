@@ -48,7 +48,7 @@ All 36 grade MATCH or RELOCATION_MATCH under VC7.1 RTM. Every relocation was res
   - deque members: 0x00A0E940 `pop_back`, 0x00A0EA90 `clear`, 0x00A0F300 `_M_new_elements_at_front`, 0x00A0F350
     `_M_new_elements_at_back`, 0x00A0F3B0 `_M_push_front_aux_v`, 0x00A0F430 `_M_reserve_elements_at_front`, 0x00A0FC80
     `resize`.
-  - Shape: the STLport 4.6 bodies, verbatim, in namespace `_STL`.
+  - Shape: the STLport 4.6 bodies, verbatim, in namespace `std`.
     - Layout: the deque is 0x28 bytes {start +0, finish +0x10, map +0x20, map_size +0x24}; nodes hold 0x80 bytes
       (16 elements).
     - Allocation: malloc 0x00BFEA0E and free 0x00BFEA14.

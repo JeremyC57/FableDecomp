@@ -1,4 +1,4 @@
-// Behaviour test for 0x00809590 _STL::__insertion_sort over the first-person targeting (position, index) pairs with a 0x2C-byte comparator by value.
+// Behaviour test for 0x00809590 std::__insertion_sort over the first-person targeting (position, index) pairs with a 0x2C-byte comparator by value.
 #include <cstdio>
 
 struct C3DVector {

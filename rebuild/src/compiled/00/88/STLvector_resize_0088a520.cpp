@@ -1,4 +1,4 @@
-// _STL::vector::resize(size_type new_size, const CBlendedEnvironmentTheme& x) -- shrink (inline erase: copy down + destroy the tail) or grow with a fill insert (500-byte blended environment themes)
+// std::vector::resize(size_type new_size, const CBlendedEnvironmentTheme& x) -- shrink (inline erase: copy down + destroy the tail) or grow with a fill insert (500-byte blended environment themes)
 // Leaf: ?resize@?$vector@VCBlendedEnvironmentTheme@NEnvironmentInternal@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0088A520, 110 bytes, thiscall, `ret 8`.
 // Identity: vector<NEnvironmentInternal::CBlendedEnvironmentTheme> (CArray<CBlendedEnvironmentTheme> derives from it).
@@ -33,7 +33,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

@@ -150,7 +150,7 @@ public:
     long       BoneIndex;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -162,18 +162,18 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
 
-typedef _STL::pair<CCharString, C3DHelperPoint> THelperEntry;
-typedef _STL::pair<CCharString, C3DDummyObject> TDummyEntry;
-typedef _STL::pair<long, C3DMeshVolume>         TNavEntry;
-typedef _STL::pair<CCharString, C3DMeshVolume>  TVolumeEntry;
+typedef std::pair<CCharString, C3DHelperPoint> THelperEntry;
+typedef std::pair<CCharString, C3DDummyObject> TDummyEntry;
+typedef std::pair<long, C3DMeshVolume>         TNavEntry;
+typedef std::pair<CCharString, C3DMeshVolume>  TVolumeEntry;
 typedef CCompareString<C3DHelperPoint>               THelperLess;
 typedef CCompareString<C3DDummyObject>               TDummyLess;
 typedef CKeyPairCompareLess<long, C3DMeshVolume>        TNavLess;
@@ -300,7 +300,7 @@ template <class E> bool RefsOk(const E* a, int n)
 static bool RefsOk(const THelperEntry*, int) { return gDeleted == 0; }
 static bool RefsOk(const TDummyEntry*, int) { return gDeleted == 0; }
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
@@ -508,7 +508,7 @@ int main()
         for (int i = 0; i < 5; ++i)
             Set(a[i], (int)k1[i], i);
         int live1 = gLiveStrings;
-        _STL::__linear_insert(a, a + 4, a[4], TVolumeLess());      // below *first: shift and put first
+        std::__linear_insert(a, a + 4, a[4], TVolumeLess());      // below *first: shift and put first
         static const long ek1[5] = { 0, 1, 2, 3, 4 };
         static const long ei1[5] = { 4, 0, 1, 2, 3 };
         if (!Expect(a, 5, ek1, ei1) || gLiveStrings != live1 || !RefsOk(a, 5))
@@ -516,7 +516,7 @@ int main()
         static const long k2[5] = { 0, 1, 3, 4, 2 };
         for (int j = 0; j < 5; ++j)
             Set(a[j], (int)k2[j], j);
-        _STL::__linear_insert(a, a + 4, a[4], TVolumeLess());      // not below: the unguarded insert
+        std::__linear_insert(a, a + 4, a[4], TVolumeLess());      // not below: the unguarded insert
         static const long ek2[5] = { 0, 1, 2, 3, 4 };
         static const long ei2[5] = { 0, 1, 4, 2, 3 };
         if (!Expect(a, 5, ek2, ei2) || gLiveStrings != live1 || !RefsOk(a, 5))

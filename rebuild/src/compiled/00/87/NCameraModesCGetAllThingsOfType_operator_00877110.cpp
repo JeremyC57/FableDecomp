@@ -25,7 +25,7 @@ public:
     CDefString GetDefName() const;                      // 0x004C7CC0
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -60,7 +60,7 @@ namespace NCameraModes {
 class CGetAllThingsOfType {                             // Ego_r.pdb, 8 bytes
 public:
     char*                         DefName;              // +0x00
-    _STL::list<const CThing*>*    ListToChange;         // +0x04
+    std::list<const CThing*>*    ListToChange;         // +0x04
     void operator()(const CThing* thing);
 };
 

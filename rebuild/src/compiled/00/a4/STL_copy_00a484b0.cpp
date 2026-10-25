@@ -1,4 +1,4 @@
-// _STL::__copy(CLipSyncPhoneme* first, CLipSyncPhoneme* last, CLipSyncPhoneme* result, const random_access_iterator_tag&, int*) -- SGI counted forward copy of lip-sync phonemes (string operator=, ID, Weight), returns the advanced result
+// std::__copy(CLipSyncPhoneme* first, CLipSyncPhoneme* last, CLipSyncPhoneme* result, const random_access_iterator_tag&, int*) -- SGI counted forward copy of lip-sync phonemes (string operator=, ID, Weight), returns the advanced result
 // Leaf: ??$__copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A484B0, length 78 bytes, `ret 0Ch`.
 // Callers: 0x00A489AC, 0x00A4A5E1 and 0x00A4A60A (the vector<CLipSyncPhoneme> erase / insert / assign helpers of the lip-sync TU). Callee: CCharString::operator= 0x0099EFB0.
@@ -23,7 +23,7 @@ public:
     float         Weight;                            // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>

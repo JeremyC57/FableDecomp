@@ -1,4 +1,4 @@
-// _STL::uninitialized_fill(_STL::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> > first, _STL::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> > last, const C2DVector& x) -- copy-construct one 2D vector into every slot of a deque range (forwards to the out-of-line non-POD loop)
+// std::uninitialized_fill(std::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> > first, std::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> > last, const C2DVector& x) -- copy-construct one 2D vector into every slot of a deque range (forwards to the out-of-line non-POD loop)
 // Leaf: ??$uninitialized_fill@U?$_Deque_iterator@VC2DVector@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0EAF0, 78 bytes, `__fastcall` (the value reference in ecx, the two
 //   16-byte iterators on the stack), `ret 20h`.
@@ -19,7 +19,7 @@ public:
     float X, Y;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };              // user constructor: `__false_type()` is not zero-stored
 template <class _Tp> struct __type_traits {              // the unspecialised STLport traits: nothing is trivial
@@ -59,11 +59,11 @@ template <class _Tp, class _Traits> struct _Deque_iterator : public _Deque_itera
 };
 template <class _Tp, class _Traits> inline _Tp* value_type(const _Deque_iterator<_Tp, _Traits>&) { return (_Tp*)0; }
 }
-typedef _STL::_Deque_iterator<C2DVector, _STL::_Nonconst_traits<C2DVector> > CDequeIter;
+typedef std::_Deque_iterator<C2DVector, std::_Nonconst_traits<C2DVector> > CDequeIter;
 
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 #pragma auto_inline(off)
@@ -89,4 +89,4 @@ void __fastcall uninitialized_fill(_ForwardIter __first, _ForwardIter __last, co
 }
 }
 
-template void __fastcall _STL::uninitialized_fill<CDequeIter, C2DVector>(CDequeIter, CDequeIter, const C2DVector&);
+template void __fastcall std::uninitialized_fill<CDequeIter, C2DVector>(CDequeIter, CDequeIter, const C2DVector&);

@@ -1,4 +1,4 @@
-// _STL::__adjust_heap(pair<EBodyLocation,CWoundMorphs::CEntry>* first, int holeIndex, int len, pair<EBodyLocation,CWoundMorphs::CEntry> val, CKeyPairCompareLess comp) -- sift a hole down to a leaf through the larger children, then push the value back up from there
+// std::__adjust_heap(pair<EBodyLocation,CWoundMorphs::CEntry>* first, int holeIndex, int len, pair<EBodyLocation,CWoundMorphs::CEntry> val, CKeyPairCompareLess comp) -- sift a hole down to a leaf through the larger children, then push the value back up from there
 // Leaf: __adjust_heap
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00758910, 151 bytes (+9 int3), `ret 34h` (link-time __fastcall: first in ecx,
 //   holeIndex in edx, then len, the 0x2C-byte value and the empty comparator on the stack: 4 + 0x2C + 4 = 0x34).
@@ -17,7 +17,7 @@ struct CWoundMorphsEntry {                       // CWoundMorphs::CEntry, 40 byt
     long Words[10];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                     // +0x00
     B second;                                    // +0x04

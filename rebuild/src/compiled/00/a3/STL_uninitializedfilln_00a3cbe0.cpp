@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(C3DAnimationStateAlpha* first, unsigned int n, const C3DAnimationStateAlpha& x, const __false_type&) -- STLport placement copy of x into n raw slots; returns the end of the run
+// std::__uninitialized_fill_n(C3DAnimationStateAlpha* first, unsigned int n, const C3DAnimationStateAlpha& x, const __false_type&) -- STLport placement copy of x into n raw slots; returns the end of the run
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe @ 0x00A3CBE0, 72 bytes (+ int3 padding), `ret 8`. /Gr TU written as explicit __fastcall: first in
 //   ecx (moved to eax as `cur`), n in edx counted down, &x and the empty __false_type tag reference on the stack.
@@ -37,7 +37,7 @@ public:
     float AlphaWeight;                                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -51,5 +51,5 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 }
 }
 
-template C3DAnimationStateAlpha* __fastcall _STL::__uninitialized_fill_n<C3DAnimationStateAlpha*, unsigned int, C3DAnimationStateAlpha>(
-    C3DAnimationStateAlpha*, unsigned int, const C3DAnimationStateAlpha&, const _STL::__false_type&);
+template C3DAnimationStateAlpha* __fastcall std::__uninitialized_fill_n<C3DAnimationStateAlpha*, unsigned int, C3DAnimationStateAlpha>(
+    C3DAnimationStateAlpha*, unsigned int, const C3DAnimationStateAlpha&, const std::__false_type&);

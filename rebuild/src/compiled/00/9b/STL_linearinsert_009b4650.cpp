@@ -1,4 +1,4 @@
-// _STL::__linear_insert(pair<unsigned long, SValue8>* first, pair<unsigned long, SValue8>* last, pair<unsigned long, SValue8> val, CKeyPairCompareLess<unsigned long, SValue8> comp) -- STLport insertion-sort step over 12-byte map entries: a new minimum shifts the prefix up one slot, anything else goes through the unguarded insert
+// std::__linear_insert(pair<unsigned long, SValue8>* first, pair<unsigned long, SValue8>* last, pair<unsigned long, SValue8> val, CKeyPairCompareLess<unsigned long, SValue8> comp) -- STLport insertion-sort step over 12-byte map entries: a new minimum shifts the prefix up one slot, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B4650, 91 bytes, `ret 10h`: `__fastcall` (/Gr algorithm TU: first in ecx, last in
 // edx, the 12-byte value and the empty comparator on the stack). Catalog name "StdVector_InsertElement_Sort"
@@ -8,7 +8,7 @@
 // Element: pair<unsigned long, 8-byte value>; CKeyPairCompareLess compares the keys only (unsigned: jae).
 // Shape: STLport 4.6 verbatim; the random_access_iterator_tag temporary for the __copy_backward call is homed in the
 // dead comparator argument slot (`lea eax,[esp+1Ch]`), the else arm copy-constructs val into the callee's argument area.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                  // +0x00
     _T2 second;                                 // +0x04
@@ -52,9 +52,9 @@ struct SValue8 {                                // 8-byte mapped value (two word
 };
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, SValue8> SEntry12;
-template void __fastcall _STL::__linear_insert<SEntry12*, SEntry12, CKeyPairCompareLess<unsigned long, SValue8> >(
+typedef std::pair<unsigned long, SValue8> SEntry12;
+template void __fastcall std::__linear_insert<SEntry12*, SEntry12, CKeyPairCompareLess<unsigned long, SValue8> >(
     SEntry12* __first, SEntry12* __last, SEntry12 __val, CKeyPairCompareLess<unsigned long, SValue8> __comp);

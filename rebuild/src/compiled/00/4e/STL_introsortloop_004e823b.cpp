@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(SRegisteredTCEntry* first, SRegisteredTCEntry* last, SRegisteredTCEntry*, int depth_limit, CKeyPairCompareLess comp) -- STLport introsort core over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): while more than 16 elements remain, partition around the median of three and recurse on the right part, falling back to partial_sort when the depth budget runs out
+// std::__introsort_loop(SRegisteredTCEntry* first, SRegisteredTCEntry* last, SRegisteredTCEntry*, int depth_limit, CKeyPairCompareLess comp) -- STLport introsort core over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): while more than 16 elements remain, partition around the median of three and recurse on the right part, falling back to partial_sort when the depth budget runs out
 // Leaf: __introsort_loop
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E823B, 138 bytes, `ret 0Ch` (size-optimised TU: unaligned entry,
 //   frame pointer).
@@ -16,7 +16,7 @@
 //   the depth test, depth_limit is decremented in its argument slot, the pivot is built in the argument area by the
 //   out-of-line pair copy constructor from __median's reference; `(last - first) > 16` folds to `and ; cmp 100h`.
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 
 struct CCharString {
     void* PStringData;

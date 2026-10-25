@@ -1,9 +1,9 @@
-// _STL::__partial_sort(CScriptInfoPair* first, CScriptInfoPair* middle, CScriptInfoPair* last, CScriptInfoPair*, CScriptInfoLess comp) -- partial sort of the script registry's (name, script info) pairs by name: heapify [first, middle), pop every smaller later pair into the heap, then sort the heap
+// std::__partial_sort(CScriptInfoPair* first, CScriptInfoPair* middle, CScriptInfoPair* last, CScriptInfoPair*, CScriptInfoLess comp) -- partial sort of the script registry's (name, script info) pairs by name: heapify [first, middle), pop every smaller later pair into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB7140, 162 bytes (`ret 0Ch`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __partial_sort over (name, script info) = _STL::pair<CCharString, CScriptInfo> (0x18 bytes, CKeyPairCompareLess -> CCharString::operator<);
+// Identity: STLport __partial_sort over (name, script info) = std::pair<CCharString, CScriptInfo> (0x18 bytes, CKeyPairCompareLess -> CCharString::operator<);
 //   called 7x from the script-info introsort/partial_sort wrappers (0x00CB728C, 0x00CB7668..0x00CB776A). The manifest
 //   label "ScriptInfo_Heapsort" is descriptive.
 // Callees: __make_heap 0x00CB6BD0, __pop_heap 0x00CB6B00, sort_heap 0x00CB6F10, CBasicString<char>::operator<
@@ -46,7 +46,7 @@ public:
     long             ID;                                   // +0x0c
     bool             MasterScript;                         // +0x10
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -54,11 +54,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<CCharString, CScriptInfo> CScriptInfoPair;   // 0x18 bytes
+typedef std::pair<CCharString, CScriptInfo> CScriptInfoPair;   // 0x18 bytes
 typedef CKeyPairCompareLess<CCharString, CScriptInfo> CScriptInfoLess;
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*);   // 0x00CB6BD0
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>

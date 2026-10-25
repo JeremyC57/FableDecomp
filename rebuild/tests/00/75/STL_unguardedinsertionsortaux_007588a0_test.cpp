@@ -1,4 +1,4 @@
-// Behaviour test for 0x007588A0 _STL::__unguarded_insertion_sort_aux over the 0x2C-byte wound-morph entries
+// Behaviour test for 0x007588A0 std::__unguarded_insertion_sort_aux over the 0x2C-byte wound-morph entries
 #include <cstdio>
 
 enum EBodyLocation { LOC0 = 0 };

@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for a vector of longs
-// Leaf: ?resize@?$vector@JV?$allocator@J@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for a vector of longs
+// Leaf: ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004433F0, 27 bytes, thiscall, `ret 4`.
 // Identity: vector<long>: the callee 0x004428F0 is the two-argument resize over a 4-byte element (shrink/grow with
 //   `lea [eax*4]`); callers 0x00590EA3, 0x005F3E6D, 0x0064E0CF, 0x0066EA9D (the landed NHeroInformationScreens
@@ -8,7 +8,7 @@
 // Callees: vector::resize(size_type, const value_type&) @ 0x004428F0.
 // Shape: STLport 4.6 `resize(n) { resize(n, _Tp()); }`; the `long()` temporary lives in the `push ecx` frame word and
 //   its zero is an immediate store scheduled after the argument pushes.
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

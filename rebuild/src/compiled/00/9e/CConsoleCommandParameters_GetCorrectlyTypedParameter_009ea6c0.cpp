@@ -32,7 +32,7 @@ public:
     virtual ~CGenericVar() {}
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class vector
 {
 public:
@@ -46,7 +46,7 @@ public:
 class CConsoleCommandParameters
 {
 public:
-    _STL::vector<EGenericVarType> ParamTypes;           // +0x00
+    std::vector<EGenericVarType> ParamTypes;           // +0x00
     CGenericVar GetCorrectlyTypedParameter(long index) const;
 };
 

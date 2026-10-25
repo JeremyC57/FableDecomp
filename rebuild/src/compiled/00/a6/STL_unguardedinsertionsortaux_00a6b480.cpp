@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long,unsigned long>* first, pair<unsigned long,unsigned long>* last, pair<unsigned long,unsigned long>*, less<pair<unsigned long,unsigned long> > comp) -- insertion-sort pass with no lower-bound test: each pair sifted down to its lexicographic place
+// std::__unguarded_insertion_sort_aux(pair<unsigned long,unsigned long>* first, pair<unsigned long,unsigned long>* last, pair<unsigned long,unsigned long>*, less<pair<unsigned long,unsigned long> > comp) -- insertion-sort pass with no lower-bound test: each pair sifted down to its lexicographic place
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6B480, 67 bytes (+13 int3), `ret 8` (link-time __fastcall: first in
 //   ecx, last in edx, the value-type tag pointer and the empty comparator on the stack). No callees.
@@ -7,7 +7,7 @@
 //   under the default less<pair> (as the catalogued _Push_heap 0x00A6B1E0 / _Adjust_heap 0x00A6B4F0 of this TU).
 // Shape: STLport `for (i = first; i != last; ++i) __unguarded_linear_insert(i, T(*i), comp);` with the linear insert
 //   inlined: the value's two words ride in edi/ebp, next in eax, the slot being filled in esi.
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> class pair {
 public:

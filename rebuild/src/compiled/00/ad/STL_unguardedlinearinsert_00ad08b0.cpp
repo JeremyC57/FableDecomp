@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(CGroup* last, CGroup val, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- SGI insertion step without a lower bound: shift the bone-weight groups up while comp(val, *prev), then store val
+// std::__unguarded_linear_insert(CGroup* last, CGroup val, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- SGI insertion step without a lower bound: shift the bone-weight groups up while comp(val, *prev), then store val
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD08B0, length 68 bytes (+12 int3), `ret 8`.
 // Caller: __linear_insert @ 0x00AD4880 (0x00AD48DB); the comparator is called through ebx.
@@ -21,7 +21,7 @@ public:
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 typedef bool (__fastcall* TGroupCompare)(const CGroup& a, const CGroup& b);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

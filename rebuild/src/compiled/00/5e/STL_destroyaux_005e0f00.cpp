@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, const __false_type&) -- STLport range destroy of anim-component map entries: release every counted component pointer
+// std::__destroy_aux(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, const __false_type&) -- STLport range destroy of anim-component map entries: release every counted component pointer
 // Leaf: __destroy_aux
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E0F00, 52 bytes (+ padding to 64), `ret 4` (__fastcall /Gr algorithm TU: first in ecx ->
 //   esi, last in edx -> edi, the `const __false_type&` tag on the stack). No direct callees (the pointee's virtual

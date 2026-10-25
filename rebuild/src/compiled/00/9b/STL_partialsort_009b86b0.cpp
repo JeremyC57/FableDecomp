@@ -1,6 +1,6 @@
-// _STL::__partial_sort(pair<CCharString,unsigned long>* first, pair<CCharString,unsigned long>* middle, pair<CCharString,unsigned long>* last, pair<CCharString,unsigned long>*, CKeyPairCompareLess<CCharString,unsigned long> comp) -- STLport partial sort of (name, value) pairs by name: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort the heap
+// std::__partial_sort(pair<CCharString,unsigned long>* first, pair<CCharString,unsigned long>* middle, pair<CCharString,unsigned long>* last, pair<CCharString,unsigned long>*, CKeyPairCompareLess<CCharString,unsigned long> comp) -- STLport partial sort of (name, value) pairs by name: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort the heap
 // Flags: /Gr
-// Leaf: ??$__partial_sort@PAU?$pair@VCCharString@@K@_STL@@
+// Leaf: ??$__partial_sort@PAU?$pair@VCCharString@@K@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B86B0, 189 bytes (+ int3 padding), `ret 0Ch` (/Gr TU: first in ecx,
 //   middle in edx; last, the unused T* and the empty comparator on the stack; `and esp,-8` frame for the 8-byte pair
 //   local inside the loop).
@@ -51,7 +51,7 @@ private:
     CBasicString<char>* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -61,10 +61,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(const _Tp*) { return (int*)0; }
 

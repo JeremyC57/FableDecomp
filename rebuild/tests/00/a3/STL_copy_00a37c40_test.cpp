@@ -18,7 +18,7 @@ public:
     CCharString& operator=(const CCharString& o) { Value = o.Value; ++g_strAssign; return *this; }
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -50,7 +50,7 @@ typedef CClass* (*ClassAllocFunc)();
 
 class CClassTypeInfo {
 public:
-    _STL::list<CClass*> TypeList;
+    std::list<CClass*> TypeList;
     unsigned long       NoAllocated;
     bool                Used;
     bool                Local;
@@ -69,7 +69,7 @@ public:
 
 static CClass* AllocA() { return 0; }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
@@ -97,7 +97,7 @@ int main()
             src[i].AllocFunc = AllocA;
             src[i].Name.Value = 1000 + i;
         }
-        CClassTypeInfo* r = _STL::__copy(src, src + 3, dst, _STL::random_access_iterator_tag(), (int*)0);
+        CClassTypeInfo* r = std::__copy(src, src + 3, dst, std::random_access_iterator_tag(), (int*)0);
         if (r != dst + 3 || g_strAssign != 3 || g_listAssign != 3)
             { std::printf("00a37c40_TEST FAIL\n"); return 1; }
         for (int i = 0; i < 3; ++i)

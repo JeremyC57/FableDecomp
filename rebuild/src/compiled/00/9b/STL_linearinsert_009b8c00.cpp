@@ -1,6 +1,6 @@
-// _STL::__linear_insert(pair<unsigned long,CDefClassInfo>* first, pair<unsigned long,CDefClassInfo>* last, pair<unsigned long,CDefClassInfo> val, CKeyPairCompareLess<unsigned long,CDefClassInfo> comp) -- STLport insertion-sort step: if val sorts before the first element shift [first, last) up one slot and store val first, otherwise sink it from last
+// std::__linear_insert(pair<unsigned long,CDefClassInfo>* first, pair<unsigned long,CDefClassInfo>* last, pair<unsigned long,CDefClassInfo> val, CKeyPairCompareLess<unsigned long,CDefClassInfo> comp) -- STLport insertion-sort step: if val sorts before the first element shift [first, last) up one slot and store val first, otherwise sink it from last
 // Flags: /Gr
-// Leaf: ??$__linear_insert@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@_STL@@
+// Leaf: ??$__linear_insert@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B8C00, 160 bytes, `ret 1Ch` (/Gr TU: first in ecx, last in edx; the
 //   24-byte value and the empty comparator on the stack, the value destroyed by the callee).
 // Identity: the pair<unsigned long, CDefinitionManager::CDefClassInfo> vector of 0x009B7320 (FableWin.pdb names
@@ -26,7 +26,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
@@ -86,7 +86,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -99,14 +99,14 @@ public:
         CArray<unsigned long>  GlobalIndices;           // +0x08
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>

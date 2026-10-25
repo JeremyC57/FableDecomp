@@ -1,8 +1,8 @@
-// _STL::__linear_insert(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CSortElement val, less<CSortElement> comp) -- insertion-sort step: insert val (the old *last) into the sorted run [first, last)
+// std::__linear_insert(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CSortElement val, less<CSortElement> comp) -- insertion-sort step: insert val (the old *last) into the sorted run [first, last)
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B85870, 89 bytes. __fastcall (first ecx, last edx), `ret 0Ch` (val by
 //   value in two dwords, then the empty comparator).
-// Callees: _STL::__unguarded_linear_insert<CSortElement*, CSortElement, less<CSortElement> > @ 0x00B84F40.
+// Callees: std::__unguarded_linear_insert<CSortElement*, CSortElement, less<CSortElement> > @ 0x00B84F40.
 // Identity: the manifest label "Insertion_HeapShift" is descriptive; STLport `__linear_insert` (the out-of-line step of
 //   __insertion_sort 0x00B85B30).
 //   The element is CEngineSubPrimitiveRenderer::CSortElement (8 bytes: unsigned long SortValue, CEngineSubPrimitiveBase*
@@ -11,7 +11,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `if (comp(val, *first)) { copy_backward(first, last, last + 1); *first = val; } else
 //   __unguarded_linear_insert(last, val, comp);` -- copy_backward is the STLport pointer chain (copy_backward ->
 //   __copy_backward_aux -> __copy_backward_ptrs (__false_type) -> the counted __copy_backward loop), all inline here.
@@ -38,13 +38,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag {};
 struct forward_iterator_tag : public input_iterator_tag {};
 struct bidirectional_iterator_tag : public forward_iterator_tag {};

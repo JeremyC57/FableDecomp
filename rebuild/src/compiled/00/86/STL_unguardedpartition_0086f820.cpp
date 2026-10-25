@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<EExpressionType, CExpressionSet::CEntry>* first, pair<EExpressionType, CEntry>* last, pair<EExpressionType, CEntry> pivot, CKeyPairCompareLess<EExpressionType, CEntry> comp) -- STLport quicksort partition of a creature expression set's vector map: walk both ends inwards past correctly placed keys and swap the strays, return the split point
+// std::__unguarded_partition(pair<EExpressionType, CExpressionSet::CEntry>* first, pair<EExpressionType, CEntry>* last, pair<EExpressionType, CEntry> pivot, CKeyPairCompareLess<EExpressionType, CEntry> comp) -- STLport quicksort partition of a creature expression set's vector map: walk both ends inwards past correctly placed keys and swap the strays, return the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086F820, length 120 bytes, `ret 10h`.
 // Callers: the map's __introsort_loop 0x008700A0 (landed under the descriptive SGI::IntrosortLoop_Element12; 0x00870140).
@@ -19,7 +19,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -60,9 +60,9 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<EExpressionType, CExpressionSet::CEntry> TExpressionPair;
+typedef std::pair<EExpressionType, CExpressionSet::CEntry> TExpressionPair;
 typedef CKeyPairCompareLess<EExpressionType, CExpressionSet::CEntry> TExpressionLess;
-template TExpressionPair* __fastcall _STL::__unguarded_partition<TExpressionPair*, TExpressionPair, TExpressionLess>(TExpressionPair*, TExpressionPair*, TExpressionPair, TExpressionLess);
+template TExpressionPair* __fastcall std::__unguarded_partition<TExpressionPair*, TExpressionPair, TExpressionLess>(TExpressionPair*, TExpressionPair*, TExpressionPair, TExpressionLess);

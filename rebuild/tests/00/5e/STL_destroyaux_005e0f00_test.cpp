@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__destroy_aux(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, const __false_type&) (retail 0x005E0F00)
+// Behaviour test of std::__destroy_aux(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, const __false_type&) (retail 0x005E0F00)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

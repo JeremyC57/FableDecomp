@@ -43,7 +43,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -137,16 +137,16 @@ public:
     list& operator=(const list& x);
 };
 
-} // namespace _STL
+} // namespace std
 
-namespace _STL {
+namespace std {
 template <class T> typename list<T>::iterator list<T>::erase(iterator first, iterator last)
 {
     while (first != last)
         erase(first++);
     return last;
 }
-} // namespace _STL
+} // namespace std
 
-template _STL::list<CQuestManager::CBoast>::iterator _STL::list<CQuestManager::CBoast>::erase(
-    _STL::list<CQuestManager::CBoast>::iterator, _STL::list<CQuestManager::CBoast>::iterator);
+template std::list<CQuestManager::CBoast>::iterator std::list<CQuestManager::CBoast>::erase(
+    std::list<CQuestManager::CBoast>::iterator, std::list<CQuestManager::CBoast>::iterator);

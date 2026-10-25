@@ -1,4 +1,4 @@
-// _STL::basic_string<unsigned short>::basic_string(size_type n, unsigned short c, const allocator_type& a) -- build a wide string of n copies of c
+// std::basic_string<unsigned short>::basic_string(size_type n, unsigned short c, const allocator_type& a) -- build a wide string of n copies of c
 // Grade: DIFFER(118v117) -- int3-after-noreturn row: RELOCATION_MATCH against the 118-byte row read straight from Fable.exe (byte 117 is the 0xCC VC7.1 emits after the final noreturn _M_throw_length_error call; the chunk row and q.py strip it as padding). Land against an N+1 oracle row (GOTCHAS: int3-after-noreturn rows).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099CA70, 117 bytes, thiscall `ret 0Ch`, returns this. The function ends in the
 // noreturn length-error call.
@@ -8,8 +8,8 @@
 // Shape: STLport 4.x: _String_base(a, n + 1) zero-stores the three pointers and runs _M_allocate_block (`n <= max_size()
 // + 1 && n > 0`, else the length error); _M_finish = uninitialized_fill_n(_M_start, n, c) -- the trivial fill_n loop over
 // the by-value c, which VC7.1 turns into `rep stosd ; adc ecx,ecx ; rep stosw` -- then _M_terminate_string().
-// Leaf: ??0?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAE@IGABV?$allocator@G@1@@Z
-namespace _STL {
+// Leaf: ??0?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@QAE@IGABV?$allocator@G@1@@Z
+namespace std {
 
 typedef unsigned int size_t;
 

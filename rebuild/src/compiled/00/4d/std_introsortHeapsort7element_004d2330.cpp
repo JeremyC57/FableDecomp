@@ -1,4 +1,4 @@
-// 004d2330 _STL::__introsort_loop<Element,Compare> (catalog: std::introsort_Heapsort_7element; element and comparator types unknown)
+// 004d2330 std::__introsort_loop<Element,Compare> (catalog: std::introsort_Heapsort_7element; element and comparator types unknown)
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: __introsort_loop
 // Layout: SGI template iterator stride, comparator dword and ret cleanup from oracle.tsv.
@@ -10,7 +10,7 @@ struct Compare {unsigned int State;};
 struct Payload {unsigned int A,B,C,D,E,F;};
 struct Element {float Key;Payload Data;Element(){} __forceinline Element(const Element& o):Key(o.Key),Data(o.Data) {}};
 }
-namespace _STL {
+namespace std {
 using namespace N004d2330;
 __forceinline const Element& __median(const Element& a,const Element& b,const Element& c) {
  if(a.Key<b.Key) {if(b.Key<c.Key)return b;else if(a.Key<c.Key)return c;else return a;}

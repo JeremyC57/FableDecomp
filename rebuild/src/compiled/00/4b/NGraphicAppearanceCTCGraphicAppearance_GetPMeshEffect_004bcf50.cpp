@@ -30,7 +30,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { };
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -136,7 +136,7 @@ struct CTCGraphicAppearance {
         bool          EffectsWeapons;                       // +0x9
         bool          InheritedFromCarrier;                 // +0xa
     };
-    typedef _STL::map<void*, CMeshEffectPriorityEntry> CMeshEffectMap;
+    typedef std::map<void*, CMeshEffectPriorityEntry> CMeshEffectMap;
 
     void*          __vftable;                               // +0x00 (CTCBase)
     void*          ParentThing;                             // +0x04

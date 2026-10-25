@@ -1,5 +1,5 @@
-// _STL::list::remove(const CCountedPointer<const CFileInstaller::CFileInfo>& value) -- erase every queued file-info entry that points at the same file info as `value`
-// Instantiation: _STL::list<CCountedPointer<const CFileInstaller::CFileInfo> >::remove
+// std::list::remove(const CCountedPointer<const CFileInstaller::CFileInfo>& value) -- erase every queued file-info entry that points at the same file info as `value`
+// Instantiation: std::list<CCountedPointer<const CFileInstaller::CFileInfo> >::remove
 // Leaf: ?remove@?$list@V?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C6E50, 97 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: FableWin.pdb `?remove@?$list@V?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@...@std@@QAEXABV?$CCountedPointer@...@@@Z`;
@@ -41,7 +41,7 @@ public:
     class CFileInfo;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -132,4 +132,4 @@ public:
 };
 }
 
-template void _STL::list<CCountedPointer<const CFileInstaller::CFileInfo> >::remove(const CCountedPointer<const CFileInstaller::CFileInfo>&);
+template void std::list<CCountedPointer<const CFileInstaller::CFileInfo> >::remove(const CCountedPointer<const CFileInstaller::CFileInfo>&);

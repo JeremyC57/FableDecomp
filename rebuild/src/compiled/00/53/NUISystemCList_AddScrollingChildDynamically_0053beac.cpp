@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0053BEAC, length 116 bytes.
 // Callees: CChangingStateComponent::AddChildDynamically @ 0x0052CAB0 (direct base call), vector<CComponent*>::push_back
 //          @ 0x00486024, the visibility flags' push_back(const bool&) @ 0x0053CB4F, vector<map<unsigned long, CUIState> >
-//          ::push_back @ 0x0053CFC2 (landed; declared with that row's _STL::vector<CUIStateMap> spelling so the symbols
+//          ::push_back @ 0x0053CFC2 (landed; declared with that row's std::vector<CUIStateMap> spelling so the symbols
 //          agree), vector<long>::push_back @ 0x005178A0, the child's virtual slot 82 (+0x148) GetStates(), whose returned
 //          reference is pushed straight on (Ego_r.pdb ?GetStates@CComponent@NUISystem@@UAEAAV?$map@KVCUIState@...).
 // Layout: Ego_r.pdb CList ScrollingChildren +0x194, ScrollingChildrenStates +0x1b4, ScrollingChildrenVisibility +0x204;
@@ -13,7 +13,7 @@
 // slot's high byte (`mov byte ptr [ebp+0Bh],1`); the row count is the signed `(last - first) >> 3` minus one.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 class CUIStateMap;                                 // map<unsigned long, NUISystem::CUIState> (12 bytes)
 template <class T> class vector {
 public:
@@ -36,7 +36,7 @@ struct CComponent {
     virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
     virtual void v072(); virtual void v073(); virtual void v074(); virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
     virtual void v080(); virtual void v081();
-    virtual _STL::CUIStateMap& GetStates();        // slot 82 (+0x148)
+    virtual std::CUIStateMap& GetStates();        // slot 82 (+0x148)
 };
 }
 template <class T> class CCountedPointer {
@@ -66,7 +66,7 @@ struct CList : CChangingStateComponent {
     unsigned char               _padf0[0x74];
     CRetailVector<CComponent*>  ScrollingChildren;             // +0x164
     unsigned char               _pad170[0xc];                  // NonScrollingChildren
-    _STL::vector<_STL::CUIStateMap> ScrollingChildrenStates;   // +0x17c
+    std::vector<std::CUIStateMap> ScrollingChildrenStates;   // +0x17c
     unsigned char               _pad188[0x40];
     CBoolList                   ScrollingChildrenVisibility;   // +0x1c8
     void AddScrollingChildDynamically(const CCountedPointer<CComponent>& child);

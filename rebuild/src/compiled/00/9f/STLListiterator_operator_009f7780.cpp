@@ -1,4 +1,4 @@
-// _STL::_List_iterator::operator--() -- STLport prefix operator-- of list<CVsyncCallbackTimer::CPendingQuery>'s mutable iterator: step to the prev node, return *this
+// std::_List_iterator::operator--() -- STLport prefix operator-- of list<CVsyncCallbackTimer::CPendingQuery>'s mutable iterator: step to the prev node, return *this
 // Leaf: ??F?$_List_iterator@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009f7780, 22 bytes (+ int3 padding), __fastcall, plain `ret`, returns `this`.
 // Identity: the body sits in the unoptimised CVsyncCallbackTimer TU (0x009F7020..0x009F7F40, landed relatives: the iterator
@@ -22,7 +22,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -48,5 +48,5 @@ template <class _Tp, class _Traits> struct _List_iterator : _List_iterator_base 
 
 }
 
-template _STL::_List_iterator<CVsyncCallbackTimer::CPendingQuery, _STL::_Nonconst_traits<CVsyncCallbackTimer::CPendingQuery> >&
-    _STL::_List_iterator<CVsyncCallbackTimer::CPendingQuery, _STL::_Nonconst_traits<CVsyncCallbackTimer::CPendingQuery> >::operator--();
+template std::_List_iterator<CVsyncCallbackTimer::CPendingQuery, std::_Nonconst_traits<CVsyncCallbackTimer::CPendingQuery> >&
+    std::_List_iterator<CVsyncCallbackTimer::CPendingQuery, std::_Nonconst_traits<CVsyncCallbackTimer::CPendingQuery> >::operator--();

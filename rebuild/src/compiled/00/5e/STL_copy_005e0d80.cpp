@@ -1,4 +1,4 @@
-// _STL::__copy(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of anim-component map entries; returns the end of the output
+// std::__copy(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of anim-component map entries; returns the end of the output
 // Leaf: __copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E0D80, 91 bytes (+ padding to 96), `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   edi, last in edx, then result, the tag reference and the null Distance* on the stack). No direct callees (the

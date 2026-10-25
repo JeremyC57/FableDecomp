@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A5A910 _STL::back_insert_iterator<vector<C2DVector> >::operator=(const C2DVector&)
+// Behaviour test for 0x00A5A910 std::back_insert_iterator<vector<C2DVector> >::operator=(const C2DVector&)
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -9,7 +9,7 @@ public:
     float Y;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class T> class vector {
@@ -57,19 +57,19 @@ public:
         return *this;
     }
 };
-}   // namespace _STL
+}   // namespace std
 
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
 int main()
 {
-    _STL::vector<C2DVector> v;
-    _STL::back_insert_iterator<_STL::vector<C2DVector> > out(v);
+    std::vector<C2DVector> v;
+    std::back_insert_iterator<std::vector<C2DVector> > out(v);
     for (int i = 0; i < 5; ++i) {                   // 1st, 2nd and 3rd/5th overflow; 4th constructs in place
         C2DVector p;
         p.X = (float)i;
         p.Y = (float)(i * 10);
-        _STL::back_insert_iterator<_STL::vector<C2DVector> >& r = (out = p);
+        std::back_insert_iterator<std::vector<C2DVector> >& r = (out = p);
         if (&r != &out) { std::printf("00a5a910_TEST FAIL\n"); return 1; }
     }
     if (v._M_finish - v._M_start != 5) { std::printf("00a5a910_TEST FAIL\n"); return 1; }

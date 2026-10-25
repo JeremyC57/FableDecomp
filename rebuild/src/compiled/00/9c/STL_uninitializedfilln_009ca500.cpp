@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(SCountedPointerLong*, unsigned int, const SCountedPointerLong&, const __false_type&) -- placement copy-construct n copies of an 8-byte {intrusive counted pointer, long} record (add-ref each copy), return the advanced pointer
+// std::__uninitialized_fill_n(SCountedPointerLong*, unsigned int, const SCountedPointerLong&, const __false_type&) -- placement copy-construct n copies of an 8-byte {intrusive counted pointer, long} record (add-ref each copy), return the advanced pointer
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CA500, length 47 bytes (+ int3 padding), `ret 8`.
 // Caller: the STLport vector _M_insert_overflow at 0x009CB4E0 (fill_len != 1 branch, 0x009CB567), whose other branch
@@ -11,7 +11,7 @@
 // to esi because edx carries the copied pointer; the placement-new null test guards each construct.
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
-namespace _STL
+namespace std
 {
     struct __false_type { __false_type() { } };     // STLport empty tag, passed by const reference
 
@@ -43,4 +43,4 @@ struct SCountedPointerLong               // 8 bytes
     long              m_value;           // +0x04
 };
 
-template SCountedPointerLong* __fastcall _STL::__uninitialized_fill_n(SCountedPointerLong*, unsigned int, const SCountedPointerLong&, const _STL::__false_type&);
+template SCountedPointerLong* __fastcall std::__uninitialized_fill_n(SCountedPointerLong*, unsigned int, const SCountedPointerLong&, const std::__false_type&);

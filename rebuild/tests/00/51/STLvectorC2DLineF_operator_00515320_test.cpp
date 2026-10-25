@@ -1,4 +1,4 @@
-// 00515320 _STL::vector<C2DLineF>::operator=
+// 00515320 std::vector<C2DLineF>::operator=
 // Flags: /Gr
 // Leaf: ??4?$vector@UC2DLineF@FableAssign_00515320@@@FableAssign_00515320@@QAEAAU01@ABU01@@Z
 // Layout: vector3 pointer words; oracle element stride16; trivial destruction, separately bound copy helpers.

@@ -1,4 +1,4 @@
-// _STL::vector::vector(const vector& x) -- (vector<COptimisedBone>) STLport copy constructor: allocate x.size() 16-byte bones through the _Vector_base constructor and copy-construct x's elements into them
+// std::vector::vector(const vector& x) -- (vector<COptimisedBone>) STLport copy constructor: allocate x.size() 16-byte bones through the _Vector_base constructor and copy-construct x's elements into them
 // Leaf: ??0?$vector@VCOptimisedBone@QuadricOptimiserInternals@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD2730, length 87 bytes (+9 int3), `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (allocator::allocate), __uninitialized_copy(const COptimisedBone*, const COptimisedBone*,
@@ -31,7 +31,7 @@ public:
 }
 typedef QuadricOptimiserInternals::COptimisedBone COptimisedBone;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -86,4 +86,4 @@ public:
 
 template vector<COptimisedBone>::vector(const vector<COptimisedBone>&);
 
-}   // namespace _STL
+}   // namespace std

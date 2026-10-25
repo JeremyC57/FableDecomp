@@ -1,5 +1,5 @@
-// _STL::__partial_sort(CSurfaceEntry* first, CSurfaceEntry* middle, CSurfaceEntry* last, CSurfaceEntry*, CSurfaceEntryLess comp) -- heap-select the smallest (key, CCompositeSurfaceInfo) entries into [first, middle) and sort them (introsort's depth-limit fallback)
-// Leaf: ??$__partial_sort@PAU?$pair@JVCCompositeSurfaceInfo@@@_STL@@
+// std::__partial_sort(CSurfaceEntry* first, CSurfaceEntry* middle, CSurfaceEntry* last, CSurfaceEntry*, CSurfaceEntryLess comp) -- heap-select the smallest (key, CCompositeSurfaceInfo) entries into [first, middle) and sort them (introsort's depth-limit fallback)
+// Leaf: ??$__partial_sort@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEED30, 111 bytes, `ret 0Ch` (last, value-type pointer, comparator).
 // Callees: __make_heap @ 0x00BEE140 (this chunk), __pop_heap @ 0x00BEE070 (pending), sort_heap @ 0x00BEE990 (landed).
@@ -60,7 +60,7 @@ public:
     CCountedPointer<CCompositeSurfaceCache> Cache;  // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -68,18 +68,18 @@ template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
+typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 
-namespace _STL {
+namespace std {
 template <class RandomAccessIter, class Compare, class T, class Distance>
 void __make_heap(RandomAccessIter first, RandomAccessIter last, Compare comp, T*, Distance*);   // 0x00BEE140
 
@@ -104,6 +104,6 @@ void __partial_sort(RandomAccessIter first, RandomAccessIter middle, RandomAcces
             __pop_heap(first, middle, i, T(*i), comp, (ptrdiff_t*)0);
     sort_heap(first, middle, comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::__partial_sort(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntryLess);
+template void std::__partial_sort(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntryLess);

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CLineList* first, unsigned int n, const CLineList& x, const __false_type&) -- copy-construct n lists of lines from x into raw storage (each gets its own sentinel, then a copy of every line), return the end
+// std::__uninitialized_fill_n(CLineList* first, unsigned int n, const CLineList& x, const __false_type&) -- copy-construct n lists of lines from x into raw storage (each gets its own sentinel, then a copy of every line), return the end
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A826D0, 83 bytes (+ int3 padding to 96), `ret 8` (/Gr: first in ecx, n in edx;
 //   x and the tag reference on the stack).
@@ -25,7 +25,7 @@ public:
     C2DVector End;                                          // +0x8
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -113,14 +113,14 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
-typedef _STL::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
+typedef std::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
+typedef std::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CLineList>        CSwitchableLineListLess;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _ForwardIter, class _Size, class _Tp>

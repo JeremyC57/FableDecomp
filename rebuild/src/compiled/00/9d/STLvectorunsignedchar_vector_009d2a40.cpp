@@ -1,4 +1,4 @@
-// _STL::vector<unsigned char>::vector(unsigned int, const unsigned char&, const allocator<unsigned char>&) -- fill constructor: allocate n bytes (none for n == 0) and set every byte to the value
+// std::vector<unsigned char>::vector(unsigned int, const unsigned char&, const allocator<unsigned char>&) -- fill constructor: allocate n bytes (none for n == 0) and set every byte to the value
 // Leaf: ??0?$vector@E
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D2A40, length 101 bytes (+ int3 padding), `ret 0Ch`.
 // Identity: the catalog label "Vector_InitFill" is descriptive. Six callers (0x009CCB82, 0x009D3204, 0x00A5B5BB,
@@ -12,7 +12,7 @@
 #include <string.h>
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-namespace _STL
+namespace std
 {
     template <class _Tp>
     class allocator

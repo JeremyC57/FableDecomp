@@ -1,8 +1,8 @@
-// Behaviour test for 0x004AA6C0 _STL::binary_compose<logical_or<bool>,CThingFilter_HasTC,CThingFilter_HasTC>::operator():
+// Behaviour test for 0x004AA6C0 std::binary_compose<logical_or<bool>,CThingFilter_HasTC,CThingFilter_HasTC>::operator():
 // a thing passes when either TC filter accepts it (both filters always run, then their results are or-ed)
 #include <stdio.h>
 static int gFilterCalls = 0;
-namespace _STL {
+namespace std {
 template <class _Arg, class _Result> struct unary_function {
     typedef _Arg    argument_type;
     typedef _Result result_type;
@@ -35,7 +35,7 @@ class CThing {
 public:
     unsigned long TCMask;
 };
-class CThingFilter_HasTC : public _STL::unary_function<CThing, bool> {
+class CThingFilter_HasTC : public std::unary_function<CThing, bool> {
 public:
     long Type;
     bool operator()(const CThing& thing) const;
@@ -45,12 +45,12 @@ bool CThingFilter_HasTC::operator()(const CThing& thing) const   // stand-in: th
     ++gFilterCalls;
     return (thing.TCMask & (1ul << Type)) != 0;
 }
-typedef _STL::binary_compose<_STL::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC> CEitherTC;
+typedef std::binary_compose<std::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC> CEitherTC;
 int main()
 {
     CThingFilter_HasTC f1; f1.Type = 3;
     CThingFilter_HasTC f2; f2.Type = 5;
-    CEitherTC either(_STL::logical_or<bool>(), f1, f2);
+    CEitherTC either(std::logical_or<bool>(), f1, f2);
     CThing none; none.TCMask = 0;
     CThing first; first.TCMask = 1ul << 3;
     CThing second; second.TCMask = 1ul << 5;

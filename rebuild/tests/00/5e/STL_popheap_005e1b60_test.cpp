@@ -1,4 +1,4 @@
-// Behaviour test for 0x005E1B60 _STL::__pop_heap over pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >.
+// Behaviour test for 0x005E1B60 std::__pop_heap over pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >.
 #include <cstdio>
 #include <cstring>
 

@@ -1,8 +1,8 @@
-// _STL::__make_heap(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* last, CKeyPairCompareLess<unsigned long, C3DHelperPoint> comp, pair<unsigned long, C3DHelperPoint>*, int*) -- SGI make_heap of the keyed helper points: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
+// std::__make_heap(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* last, CKeyPairCompareLess<unsigned long, C3DHelperPoint> comp, pair<unsigned long, C3DHelperPoint>*, int*) -- SGI make_heap of the keyed helper points: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32C20, 113 bytes, `ret 0Ch` (__fastcall: first in ecx, last in edx, the
 // empty comparator's slot, the value-type pointer and the Distance* on the stack -- the SGI/STLport algorithm TUs are /Gr).
-// Callee: _STL::__adjust_heap(first, holeIndex, len, T value, comp) @ 0x00A32440 (manifest `_Adjust_heap<pair<unsigned
+// Callee: std::__adjust_heap(first, holeIndex, len, T value, comp) @ 0x00A32440 (manifest `_Adjust_heap<pair<unsigned
 // long,C3DHelperPoint>*, ...>`; /Gr: first in ecx, holeIndex in edx, then len, the 20-byte value and the comparator slot).
 // Types (Ego_r.pdb): C3DHelperPoint (16 bytes) = C3DVector Position +0, long BoneIndex +0xc; the pair is 20 bytes with the
 // key at +0. The comparator is empty.

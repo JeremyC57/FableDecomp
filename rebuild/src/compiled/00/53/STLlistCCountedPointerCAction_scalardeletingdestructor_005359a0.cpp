@@ -1,4 +1,4 @@
-// _STL::list<CCountedPointer<CAction> >::`scalar deleting destructor'(unsigned int flags) -- deleting destructor of the heap-allocated NUISystem action list: clear the nodes (releasing each counted action), free the sentinel node, then free the list object itself when flags bit 0 is set
+// std::list<CCountedPointer<CAction> >::`scalar deleting destructor'(unsigned int flags) -- deleting destructor of the heap-allocated NUISystem action list: clear the nodes (releasing each counted action), free the sentinel node, then free the list object itself when flags bit 0 is set
 // Leaf: ??_GCActionList@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005359A0, 45 bytes, `ret 4` (thiscall: the delete flags).
 // Callees: _List_base<CCountedPointer<NUISystem::CAction> >::clear() 0x005356A0 (landed as CRetailList_CountedPointer::clear),
@@ -16,7 +16,7 @@ void __cdecl operator delete(void* block);                // 0x00BFE9BC
 
 namespace NUISystem { class CAction; }
 
-struct CActionList {                                      // _STL::list<CCountedPointer<NUISystem::CAction> >
+struct CActionList {                                      // std::list<CCountedPointer<NUISystem::CAction> >
     void* _M_node;                                        // +0x00 the sentinel node (_List_base::_M_node._M_data)
     void clear();                                         // 0x005356A0
     __forceinline ~CActionList()

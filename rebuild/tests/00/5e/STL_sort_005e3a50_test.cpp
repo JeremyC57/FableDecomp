@@ -1,4 +1,4 @@
-// Behaviour test of _STL::sort(CCharString* first, CCharString* last) (retail 0x005E3A50)
+// Behaviour test of std::sort(CCharString* first, CCharString* last) (retail 0x005E3A50)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

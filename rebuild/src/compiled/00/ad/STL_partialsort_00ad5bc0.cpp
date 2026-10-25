@@ -1,4 +1,4 @@
-// _STL::__partial_sort(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* middle, COptimisedVertex::CGroup* last, CGroup*, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- STLport partial sort of a vertex's bone groups: heapify [first, middle), swap every smaller later group into the heap, then sort the heap
+// std::__partial_sort(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* middle, COptimisedVertex::CGroup* last, CGroup*, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- STLport partial sort of a vertex's bone groups: heapify [first, middle), swap every smaller later group into the heap, then sort the heap
 // Flags: /Gr
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD5BC0, 105 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first in
@@ -25,7 +25,7 @@ public:
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 typedef bool (__fastcall* PFNGroupCompare)(const CGroup&, const CGroup&);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                    _Compare __comp);   // CGroup: 0x00AD1DD0

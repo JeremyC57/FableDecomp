@@ -1,4 +1,4 @@
-// _STL::list<CClass*>::_M_insert_dispatch(iterator pos, const_iterator first, const_iterator last, const __false_type&) -- insert a copy of each element of [first, last) before pos (STLport range insert, node creation inlined)
+// std::list<CClass*>::_M_insert_dispatch(iterator pos, const_iterator first, const_iterator last, const __false_type&) -- insert a copy of each element of [first, last) before pos (STLport range insert, node creation inlined)
 // Leaf: ??$_M_insert_dispatch@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A37800, 66 bytes (+ int3 padding), `ret 10h` (pos, first, last, the tag;
 //   `this` is never read: the inlined insert only links nodes around pos).
@@ -15,7 +15,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 class CClass;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct _List_node_base {
     _List_node_base* _M_next;                            // +0x00
@@ -66,5 +66,5 @@ public:
     }
 };
 }
-template void _STL::list<CClass*>::_M_insert_dispatch<_STL::list<CClass*>::const_iterator>(_STL::list<CClass*>::iterator,
-    _STL::list<CClass*>::const_iterator, _STL::list<CClass*>::const_iterator, const _STL::__false_type&);
+template void std::list<CClass*>::_M_insert_dispatch<std::list<CClass*>::const_iterator>(std::list<CClass*>::iterator,
+    std::list<CClass*>::const_iterator, std::list<CClass*>::const_iterator, const std::__false_type&);

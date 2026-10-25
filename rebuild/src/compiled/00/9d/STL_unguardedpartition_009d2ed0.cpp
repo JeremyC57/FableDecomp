@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(unsigned long* first, unsigned long* last, unsigned long pivot, CBankFile::CompareDataOffset comp) -- STLport quicksort partition of a bank's entry indices around a pivot index, ordered by each entry's data offset (packed array or runtime record); returns the split point
+// std::__unguarded_partition(unsigned long* first, unsigned long* last, unsigned long pivot, CBankFile::CompareDataOffset comp) -- STLport quicksort partition of a bank's entry indices around a pivot index, ordered by each entry's data offset (packed array or runtime record); returns the split point
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D2ED0, 234 bytes (+ int3 padding), `ret 8` (__fastcall: first in ecx,
 // last in edx, the pivot index and the one-pointer comparator by value on the stack -- the SGI/STLport algorithm TUs

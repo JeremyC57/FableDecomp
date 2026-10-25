@@ -15,7 +15,7 @@
 //   __copy stand-in that never touches the tag -- and ~CEngineTextureMorph is the Blends vector's free.
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -90,9 +90,9 @@ public:
     }
 };
 
-} // namespace _STL
+} // namespace std
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 };
 
 class CCompositeBlendDesc {                                 // trivially destructible blend record
@@ -104,7 +104,7 @@ class CEngineTextureMorph {
 public:
     long                                OriginalTextureIndex;   // +0x00
     long                                MorphID;                // +0x04
-    _STL::vector<CCompositeBlendDesc>   Blends;                 // +0x08
+    std::vector<CCompositeBlendDesc>   Blends;                 // +0x08
 };
 
 class CEngineTextureMorphSet {

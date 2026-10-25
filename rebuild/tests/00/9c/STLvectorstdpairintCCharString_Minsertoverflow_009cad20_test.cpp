@@ -1,4 +1,4 @@
-// 009cad20 _STL::vector<std::pair<int,CCharString>>::_M_insert_overflow
+// 009cad20 std::vector<std::pair<int,CCharString>>::_M_insert_overflow
 // Flags: /Gr
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@HUCCharString@FableVector_009cad20@@@FableVector_009cad20@@@FableVector_009cad20@@QAEXPAU?$pair@HUCCharString@FableVector_009cad20@@@2@ABU32@ABU__false_type@2@I_N@Z
 // Layout: vector3 pointers; pair stride8 and CCharString at+4 from ctor99ec30 indexed access.

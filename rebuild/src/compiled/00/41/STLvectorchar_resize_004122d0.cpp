@@ -1,4 +1,4 @@
-// _STL::vector<char>::resize(unsigned int new_size, const char& x) -- STLport resize of a byte vector: erase the tail past new_size (memmove of the empty tail), or fill-insert copies of x at the end
+// std::vector<char>::resize(unsigned int new_size, const char& x) -- STLport resize of a byte vector: erase the tail past new_size (memmove of the empty tail), or fill-insert copies of x at the end
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004122D0, 85 bytes (+ int3 padding), `__fastcall` (this -> edi), `ret 8`.
 // Identity: the 1-byte element and the callee: the landed vector<char>::_M_fill_insert 0x004110D0 (FINDINGS chunk 401;
@@ -14,7 +14,7 @@
 //   unfolded `cmp eax,eax ; jne` and `mov esi,eax ; sub esi,eax`; the trivial _Destroy compiles away.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6 (import thunk)
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)

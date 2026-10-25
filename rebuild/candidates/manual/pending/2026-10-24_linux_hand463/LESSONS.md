@@ -8,7 +8,7 @@
   `{ memset(this, 0, sizeof(*this)); LocationName = CDefString(); }` with `#pragma intrinsic(memset)` (0x0081DFE0, 0x0081DED0).
 - STLport `pair() : first(_T1()), second(_T2())`: a 20-byte POD second is copied from a zero temporary held in
   eax/edx/esi/edi and stored late, a 2-dword POD second is stored early, first's zero is an immediate after the pushes
-  (0x0081DE90, 0x008701A0); write the element type as `_STL::pair<A, B> ` with the space before `>`.
+  (0x0081DE90, 0x008701A0); write the element type as `std::pair<A, B> ` with the space before `>`.
 - Store order of a default constructor: init-list members go in declaration order, a member assigned in the BODY goes
   after them, and a float immediate sinks below the argument pushes: `: BaseWeight(1.0f), ThemeTransitionActive(false)
   { BaseWeightLocked = false; }` = retail's +8..+0x10, +0x1C, +4, push, 1.0f (0x0088A4E0).
@@ -40,7 +40,7 @@ Review at landing:
   the nested record and its constructor are not in it).
 - 004ea398 / 0067f3a0: `#pragma pack(push, 2)` on CEngineGraphic = the PDB's 14-byte layout (GOTCHAS precedent), not a trick.
 - 0076e5d0: the vector parameter is spelled in namespace `std` to keep the PDB-exact symbol, following the landed sibling
-  0x0076E5F0; the rest of the chunk uses `_STL`.
+  0x0076E5F0; the rest of the chunk uses `std`.
 - 00514230: one ICF-folded body serves every 4-byte signed-key set (CTCVillage, CTCInventoryTrade, CMiniMapDisplay
   callers); named set<long> after Ego_r CTCVillage::PlayersCrimes.
 - No row needed more than 4 grades (max 3: 0051ae60, 005813d7); no catalog row holds two functions; no errors found in

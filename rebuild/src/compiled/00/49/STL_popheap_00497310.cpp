@@ -1,4 +1,4 @@
-// _STL::__pop_heap(CWideString* first, CWideString* last, CWideString* result, CWideString val, NGameComponentHelpers::CCaseInsensitiveStringCompare comp, int*) -- STLport heap pop step of a case-insensitive wide-string sort: move the top string to *result, then sift val down from the root
+// std::__pop_heap(CWideString* first, CWideString* last, CWideString* result, CWideString val, NGameComponentHelpers::CCaseInsensitiveStringCompare comp, int*) -- STLport heap pop step of a case-insensitive wide-string sort: move the top string to *result, then sift val down from the root
 // Leaf: ??$__pop_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00497310, 63 bytes (+ int3), /Gr `__fastcall` (first in ecx -> edi, last in edx
 //   -> esi; result, the 4-byte string by value, the comparator word and the distance pointer on the stack, `ret 10h`).
@@ -26,7 +26,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex,
                               _Distance __len, _Tp __val, _Compare __comp);   // 0x00497160

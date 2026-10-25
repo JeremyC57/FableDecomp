@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A74CA0 _STL::__uninitialized_copy over C2DLineF vectors: each source vector is deep-copied
+// Behaviour test for 0x00A74CA0 std::__uninitialized_copy over C2DLineF vectors: each source vector is deep-copied
 // into raw storage (own block, same lines), the returned end is result + (last - first).
 #include <cstdio>
 #include <cstdlib>

@@ -1,4 +1,4 @@
-// _STL::vector::operator=(const vector<pair<long, EHeroAbility> >& x) -- assign the hero ability-button map's entry vector: reallocate and copy when x outgrows the capacity, else copy over the live elements and copy-construct the rest
+// std::vector::operator=(const vector<pair<long, EHeroAbility> >& x) -- assign the hero ability-button map's entry vector: reallocate and copy when x outgrows the capacity, else copy over the live elements and copy-construct the rest
 // Leaf: ??4?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005F9074, 169 bytes, thiscall `ret 4`, in a size-optimised TU (unaligned entry, ebp frame).
 // Callers: 0x005F9BBB -- CVectorMap<long, EHeroAbility>::operator= 0x005F9BB2 (the map's vector, then Dirty), which the landed
@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 
 enum EHeroAbility { HERO_ABILITY_NULL };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

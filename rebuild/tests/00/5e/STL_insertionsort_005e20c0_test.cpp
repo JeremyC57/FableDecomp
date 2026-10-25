@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__insertion_sort(CCharString* first, CCharString* last, less<CCharString> comp) (retail 0x005E20C0)
+// Behaviour test of std::__insertion_sort(CCharString* first, CCharString* last, less<CCharString> comp) (retail 0x005E20C0)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

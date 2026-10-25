@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<unsigned long, pair<const unsigned long, CIVCountedPointer<T> >, _Select1st<...>, less<unsigned long> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<unsigned long, CIVCountedPointer> node insert: create a node for v (taking a reference), link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
+// std::_Rb_tree<unsigned long, pair<const unsigned long, CIVCountedPointer<T> >, _Select1st<...>, less<unsigned long> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<unsigned long, CIVCountedPointer> node insert: create a node for v (taking a reference), link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B5160, 205 bytes, thiscall `ret 14h` (the hidden iterator result pointer first).
 // Catalog name "RBTree_Insert" (descriptive). Callers: insert_unique 0x009B5230 (0x009B5283 / 0x009B52BB) and the hinted
@@ -25,7 +25,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -130,7 +130,7 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_insert(_Rb_tree_node_base* __x
 
 }
 
-typedef _STL::pair<const unsigned long, CIVCountedPointer<CIVCountedPointeeBase> > SKeyedPointer;
-template _STL::_Rb_tree<unsigned long, SKeyedPointer, _STL::_Select1st<SKeyedPointer>, _STL::less<unsigned long> >::iterator
-_STL::_Rb_tree<unsigned long, SKeyedPointer, _STL::_Select1st<SKeyedPointer>, _STL::less<unsigned long> >::_M_insert(
-    _STL::_Rb_tree_node_base*, _STL::_Rb_tree_node_base*, const SKeyedPointer&, _STL::_Rb_tree_node_base*);
+typedef std::pair<const unsigned long, CIVCountedPointer<CIVCountedPointeeBase> > SKeyedPointer;
+template std::_Rb_tree<unsigned long, SKeyedPointer, std::_Select1st<SKeyedPointer>, std::less<unsigned long> >::iterator
+std::_Rb_tree<unsigned long, SKeyedPointer, std::_Select1st<SKeyedPointer>, std::less<unsigned long> >::_M_insert(
+    std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, const SKeyedPointer&, std::_Rb_tree_node_base*);

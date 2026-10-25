@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A48670: _STL::__uninitialized_copy<const CLipSyncPhoneme*, CLipSyncPhoneme*> (placement copy-construct a range)
+// Behaviour test for 0x00A48670: std::__uninitialized_copy<const CLipSyncPhoneme*, CLipSyncPhoneme*> (placement copy-construct a range)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -55,7 +55,7 @@ static bool Same(const CLipSyncPhoneme& p, const char* s, unsigned long id, floa
     return Eq(p.Symbol, s) && p.ID == id && Near(p.Weight, w);
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -79,7 +79,7 @@ int main()
         CLipSyncPhoneme* raw = (CLipSyncPhoneme*)malloc(3 * sizeof(CLipSyncPhoneme));
         int live = g_liveStrings;
         const CLipSyncPhoneme* first = src;
-        CLipSyncPhoneme* end = _STL::__uninitialized_copy(first, first + 3, raw, _STL::__false_type());
+        CLipSyncPhoneme* end = std::__uninitialized_copy(first, first + 3, raw, std::__false_type());
         Check(end == raw + 3 && g_liveStrings == live + 3);
         Check(Same(raw[0], "AA", 1, 0.25f) && Same(raw[1], "EE", 2, 0.5f) && Same(raw[2], "OO", 3, 0.75f));
         Check(raw[0].Symbol.m_pData != src[0].Symbol.m_pData);

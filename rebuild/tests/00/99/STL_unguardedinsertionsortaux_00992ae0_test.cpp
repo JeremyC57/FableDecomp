@@ -1,4 +1,4 @@
-// Behaviour test for 0x00992AE0 _STL::__unguarded_insertion_sort_aux over the 36-byte (long key, sound-bank record) entries: __unguarded_insertion_sort_aux: with a smaller sentinel in front every entry is inserted in order.
+// Behaviour test for 0x00992AE0 std::__unguarded_insertion_sort_aux over the 36-byte (long key, sound-bank record) entries: __unguarded_insertion_sort_aux: with a smaller sentinel in front every entry is inserted in order.
 // The record is modelled with a shared reference count (copies bump it, assignments move it, destruction drops it) so
 // leaked or double-destroyed copies show up as a non-zero final count.
 #include <cstdio>

@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<pair<long, COpinionDeed*> >::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() zeroed (handle, deed) pairs at the end
-// Leaf: ?resize@?$vector@U?$pair@JPAVCOpinionDeed@@@_STL@@V?$allocator@U?$pair@JPAVCOpinionDeed@@@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<pair<long, COpinionDeed*> >::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() zeroed (handle, deed) pairs at the end
+// Leaf: ?resize@?$vector@U?$pair@JPAVCOpinionDeed@@@std@@V?$allocator@U?$pair@JPAVCOpinionDeed@@@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C9D50, 85 bytes, thiscall on the vector, `ret 4`.
 // Identity: FableWin.pdb ?resize@?$vector@U?$pair@JPAVCOpinionDeed@@@std@@...@@QAEXI@Z; sole caller
 //   GFSerialiseVectorBinaryIn<pair<long, COpinionDeed*> > 0x006C9E40 (landed; the hero opinion-deed log's load).
@@ -14,7 +14,7 @@
 //   pair<long, COpinionDeed*>.
 class COpinionDeed;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {                       // STLport pair
     _T1 first;                                                      // +0x00
     _T2 second;                                                     // +0x04
@@ -63,4 +63,4 @@ public:
 }
 
 // 0x006C7FE0 erase, 0x006C8610 _M_fill_insert (out of line in retail)
-template void _STL::vector<_STL::pair<long, COpinionDeed*> >::resize(unsigned int);
+template void std::vector<std::pair<long, COpinionDeed*> >::resize(unsigned int);

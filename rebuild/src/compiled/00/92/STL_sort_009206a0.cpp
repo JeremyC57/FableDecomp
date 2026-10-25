@@ -1,4 +1,4 @@
-// _STL::sort(CThing** first, CThing** last, CThingCompare_Nearest comp) -- STLport sort of a CThing* range nearest-first: introsort to depth 2*lg(n), then the final insertion sort
+// std::sort(CThing** first, CThing** last, CThingCompare_Nearest comp) -- STLport sort of a CThing* range nearest-first: introsort to depth 2*lg(n), then the final insertion sort
 // Leaf: ??$sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009206A0, 111 bytes (112 with padding), __fastcall (first in ecx, last in edx; the
 //   12-byte comparator on the stack), `ret 0Ch`.
@@ -32,7 +32,7 @@ public:
     template <class T> T* operator()(T* a, T* b) const;   // 0x0091F740 (returns the nearer thing; null loses)
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Size>
 inline _Size __lg(_Size __n)

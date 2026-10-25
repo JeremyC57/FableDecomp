@@ -28,7 +28,7 @@ public:
 }
 using NUISystem::CObserver;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 struct _List_node_base {
@@ -119,13 +119,13 @@ class CObservable {
 public:
     virtual ~CObservable();
     virtual void SetOwnedEvent(CObserver* owner, EEvent event);   // slot 1 (+0x04)
-    _STL::list Observers;                               // +0x04
+    std::list Observers;                               // +0x04
 };
 
 void CObservable::SetOwnedEvent(CObserver* owner, EEvent event)
 {
-    _STL::list observers(Observers);
-    for (_STL::_List_iterator it = observers.begin(); it != observers.end(); ++it) {
+    std::list observers(Observers);
+    for (std::_List_iterator it = observers.begin(); it != observers.end(); ++it) {
         if (*it == owner && (*it)->IsObservingEvent(event))
             (*it)->ProcessEvent(event);
     }

@@ -24,7 +24,7 @@ public:
     operator bool() const { return Data != 0; }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -87,7 +87,7 @@ class C3DAnimationInfo {
 public:
     class CAnimationData {
     public:
-        typedef _STL::map<unsigned long, CCountedPointer<C3DAnimation2> > CAnimationMap;
+        typedef std::map<unsigned long, CCountedPointer<C3DAnimation2> > CAnimationMap;
         unsigned char       _base[0x1C];
         CAnimationMap       Animations;
         CCountedPointer<C3DAnimation2>      SharedAnimation;
@@ -107,7 +107,7 @@ unsigned long C3DAnimationInfo::CAnimationData::Sizeof() const
     return size;
 }
 
-typedef _STL::_Rb_tree_node<C3DAnimationInfo::CAnimationData::CAnimationMap::value_type> SNode;
+typedef std::_Rb_tree_node<C3DAnimationInfo::CAnimationData::CAnimationMap::value_type> SNode;
 
 int main()
 {
@@ -115,7 +115,7 @@ int main()
     unsigned int entry = (unsigned int)sizeof(C3DAnimationInfo::CAnimationData::CAnimationMap::value_type);   // 12 on the target
     unsigned int cp = (unsigned int)sizeof(CCountedPointer<C3DAnimation2>);                                  // 8 on the target
     C3DAnimationInfo::CAnimationData d;
-    _STL::_Rb_tree_node_base header;
+    std::_Rb_tree_node_base header;
     header._M_parent = 0; header._M_left = &header; header._M_right = &header;
     d.Animations._M_header = &header; d.Animations._M_node_count = 0;
     d.SharedAnimation.Data = 0; d.FileData.Data = 0;

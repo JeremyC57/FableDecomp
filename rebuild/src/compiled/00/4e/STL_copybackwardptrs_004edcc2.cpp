@@ -1,4 +1,4 @@
-// _STL::__copy_backward_ptrs(const CPrizeScoreDef* first, const CPrizeScoreDef* last, CPrizeScoreDef* result, const __false_type&) -- STLport backward copy for the non-POD prize score def: assign the 48-byte elements of [first, last) downward ending at result, return the new start
+// std::__copy_backward_ptrs(const CPrizeScoreDef* first, const CPrizeScoreDef* last, CPrizeScoreDef* result, const __false_type&) -- STLport backward copy for the non-POD prize score def: assign the 48-byte elements of [first, last) downward ending at result, return the new start
 // Leaf: __copy_backward_ptrs
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EDCC2, 81 bytes, `ret 8` (/Gr __fastcall: first in ecx, last in edx; result and the
 //   tag reference on the stack).
@@ -37,7 +37,7 @@ public:
         return *this;
     }
 };
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>

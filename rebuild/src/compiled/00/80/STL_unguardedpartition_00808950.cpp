@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CIntelligentPointer<CThing> pivot, CDoNotUseBinaryPredicate comp) -- STLport introsort partition step of the thing-pointer shuffle: every comparison is a coin flip from the world's random seed; returns the cut
+// std::__unguarded_partition(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CIntelligentPointer<CThing> pivot, CDoNotUseBinaryPredicate comp) -- STLport introsort partition step of the thing-pointer shuffle: every comparison is a coin flip from the world's random seed; returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808950, 217 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 8-byte pivot and the 4-byte predicate by value on the stack, `ret 0Ch`; the pivot is destroyed
@@ -65,7 +65,7 @@ struct CDoNotUseBinaryPredicate {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;

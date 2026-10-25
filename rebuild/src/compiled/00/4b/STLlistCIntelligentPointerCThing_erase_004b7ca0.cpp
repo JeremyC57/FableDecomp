@@ -1,4 +1,4 @@
-// _STL::list<CIntelligentPointer<CThing> >::erase(iterator position) -- STLport list erase: unlink the node, destroy its intelligent pointer through the virtual destructor, free the node, return the iterator to the next node
+// std::list<CIntelligentPointer<CThing> >::erase(iterator position) -- STLport list erase: unlink the node, destroy its intelligent pointer through the virtual destructor, free the node, return the iterator to the next node
 // Leaf: ?erase@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B7CA0, 45 bytes (48 with padding), `ret 8` (__fastcall: the hidden
 //   iterator result and the position by value on the stack; `this` unused).

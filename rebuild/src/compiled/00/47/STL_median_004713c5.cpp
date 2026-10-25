@@ -1,6 +1,6 @@
-// _STL::__median(const pair<unsigned long,CDefString>& a, const pair<unsigned long,CDefString>& b, const pair<unsigned long,CDefString>& c, CKeyPairCompareLess<unsigned long,CDefString> comp) -- STLport median-of-three for the sound map's criteria-entry introsort pivot: returns a reference to whichever of the three entries has the middle key
-// Instantiation: _STL::__median<pair<unsigned long,CDefString>,CKeyPairCompareLess<unsigned long,CDefString> >
-// Leaf: ??$__median@U?$pair@KVCDefString@@@_STL@@V?$CKeyPairCompareLess@KVCDefString@@@@@_STL@@
+// std::__median(const pair<unsigned long,CDefString>& a, const pair<unsigned long,CDefString>& b, const pair<unsigned long,CDefString>& c, CKeyPairCompareLess<unsigned long,CDefString> comp) -- STLport median-of-three for the sound map's criteria-entry introsort pivot: returns a reference to whichever of the three entries has the middle key
+// Instantiation: std::__median<pair<unsigned long,CDefString>,CKeyPairCompareLess<unsigned long,CDefString> >
+// Leaf: ??$__median@U?$pair@KVCDefString@@@std@@V?$CKeyPairCompareLess@KVCDefString@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004713C5, 45 bytes (size-optimised def TU, no padding), __fastcall
 //   (a ecx, b edx; c and the 4-byte comparator slot on the stack), `ret 8`.
 // Identity: called by the landed __introsort_loop @ 0x00471338 (first, middle, last - 1) for CSoundMap::CriteriaMap's
@@ -15,7 +15,7 @@ public:
     long TablePos;                                          // +0x0 def-string table index
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -24,10 +24,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {

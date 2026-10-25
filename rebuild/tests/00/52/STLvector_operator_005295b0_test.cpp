@@ -6,7 +6,7 @@
 
 static int gMallocs = 0;
 static int gFrees = 0;
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 template <class _Tp> class allocator {
@@ -108,7 +108,7 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
     return *this;
 }
 }
-typedef _STL::vector<unsigned char> TBytes;
+typedef std::vector<unsigned char> TBytes;
 
 int main()
 {

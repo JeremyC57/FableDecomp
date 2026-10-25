@@ -10,7 +10,7 @@
 //   then LowerBound, and divides the byte difference by the 8-byte entry with `sar 3`.
 // Layout: STLport vector {First, Last, EndOfStorage} at +0, the empty Compare at +0x0C, Dirty at +0x0D (Ego_r.pdb gives
 //   the Dinkumware 16-byte vector, so its Compare/Dirty sit at +0x10/+0x11 there).
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;
     B second;
@@ -25,12 +25,12 @@ public:
 };
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& entry, const K& key) const { return entry.first < key; }
-    bool operator()(const K& key, const _STL::pair<K, V>& entry) const { return key < entry.first; }
+    bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
+    bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef const value_type* const_iterator;
     value_type* First;                                   // +0x00
     value_type* Last;                                    // +0x04

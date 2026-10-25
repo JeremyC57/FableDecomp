@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<unsigned long, pair<const unsigned long, float>, ...>::_M_copy (map<unsigned long, float>) @ 0x00AD3500
+// Behaviour test for std::_Rb_tree<unsigned long, pair<const unsigned long, float>, ...>::_M_copy (map<unsigned long, float>) @ 0x00AD3500
 // Structural copy of a red-black subtree: same shape, colours and key/value pairs, fresh nodes.
 #include <cstdio>
 #include <cstdlib>

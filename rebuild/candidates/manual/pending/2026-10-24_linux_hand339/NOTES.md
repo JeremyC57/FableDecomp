@@ -46,12 +46,12 @@ All 37 matched rows grade MATCH or RELOCATION_MATCH (`grades.txt`). Their behavi
   - `#pragma optimize("s", on)`.
   - The store order follows the body assignment order: loop, X, Y, Z, LastTimeSeenByGuard, ExitedUsingTeleporter, LastTimeExited, EntranceAngle.
 - **SNamedZeroRecord** 006f2bd0, the constructor. A CCharString member at +0x10 and six zeroed words are followed by `memset(this, 0, 0x2c)` (intrinsic).
-- **_STL::vector\<C3DVector\>** 0075f4e0 `erase(iterator)`:
+- **std::vector\<C3DVector\>** 0075f4e0 `erase(iterator)`:
   - `if (pos + 1 != end()) __copy(pos + 1, finish, pos, random_access_iterator_tag(), (int*)0); --_M_finish;`.
   - __copy is the `__fastcall` 0x0074CA20; its tag is passed by const ref.
 - **CSoundBankRegistry** 00991840 `GetBank(long)` is a vector-map find. The found arm comes first: `if (it != end()) return it->second; return 0;`.
 - **NBankFileManager::CRetailBank** 009ac4d0, the constructor. Shape: the STLport `_Rb_tree_base` constructor allocates the header (malloc 0x24) before the derived node-count initialisation and `_M_empty_initialize`.
-- **_STL::map\<CCharString, CContainedBank\>** 009ac530 `operator[]`.
+- **std::map\<CCharString, CContainedBank\>** 009ac530 `operator[]`.
   - Shape: `insert(it, v)` must be an inline forwarder to the out-of-line `insert_unique` (0x009AB870). Then the result is re-read from its return slot, as retail does.
 - **MicroThread::MicroThreadDetails** 009d8890 `MicroThreadStackSize`: `if (g_pActiveMicroThread == this) return 0; return Stack.size();`.
 - **NParticleEngine::CDecal** 00af8ab0 `GetInterpolatedLifetimerInSeconds(float)` is `GetParticleUpdatePeriod() * (Lifetimer + fraction)`. It uses engine/CDecal.h through a derived struct.
@@ -70,7 +70,7 @@ All 37 matched rows grade MATCH or RELOCATION_MATCH (`grades.txt`). Their behavi
 None. All 40 catalog bounds are right. The dis_all `len=` values include int3 padding; the oracle lengths are the true ones.
 
 ## Label corrections
-- 0075f4e0 "MedianCut::GetNewTreeNode" is `_STL::vector<C3DVector>::erase(iterator)`. Its caller is NShape::CShape::UpdateDeletePoint 0x00762010.
+- 0075f4e0 "MedianCut::GetNewTreeNode" is `std::vector<C3DVector>::erase(iterator)`. Its caller is NShape::CShape::UpdateDeletePoint 0x00762010.
 - 00991840 "MessageMap::FindMessageByID" is CSoundBankRegistry::GetBank(long). It is a vector map at +0x30, with LowerBound 0x00992290.
 - 006f2bd0 "MirroredCriminalStatus::MirroredCriminalStatus" is wrong. It is the constructor of an unreferenced 0x2c-byte record (CCharString at +0x10, then memset); the real MirroredCriminalStatus constructor is 0057a5dd.
 - 00af8ab0 "NCreatureAI dynamic_initializer..." is NParticleEngine::CDecal::GetInterpolatedLifetimerInSeconds(float).

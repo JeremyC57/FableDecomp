@@ -1,4 +1,4 @@
-// _STL::fill(C3DAnimationStateAlpha* first, C3DAnimationStateAlpha* last, const C3DAnimationStateAlpha& val) -- STLport fill: assign val to every element of [first, last)
+// std::fill(C3DAnimationStateAlpha* first, C3DAnimationStateAlpha* last, const C3DAnimationStateAlpha& val) -- STLport fill: assign val to every element of [first, last)
 // Leaf: ??$fill@
 // Retail: Fable.exe @ 0x00A3CEE0, 51 bytes (+ int3 padding), `ret 4`. /Gr TU written as explicit __fastcall: first in
 //   ecx, last in edx, &val on the stack.
@@ -37,7 +37,7 @@ public:
     float AlphaWeight;                                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
@@ -46,5 +46,5 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<C3DAnimationStateAlpha*, C3DAnimationStateAlpha>(C3DAnimationStateAlpha*,
+template void __fastcall std::fill<C3DAnimationStateAlpha*, C3DAnimationStateAlpha>(C3DAnimationStateAlpha*,
     C3DAnimationStateAlpha*, const C3DAnimationStateAlpha&);

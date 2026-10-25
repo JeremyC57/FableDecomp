@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long,CAnimationEntry>* first, pair<unsigned long,CAnimationEntry>* last, pair<unsigned long,CAnimationEntry>*, CKeyPairCompareLess<unsigned long,CAnimationEntry> comp) -- STLport final unguarded insertion pass over the CRC-keyed animation entries
+// std::__unguarded_insertion_sort_aux(pair<unsigned long,CAnimationEntry>* first, pair<unsigned long,CAnimationEntry>* last, pair<unsigned long,CAnimationEntry>*, CKeyPairCompareLess<unsigned long,CAnimationEntry> comp) -- STLport final unguarded insertion pass over the CRC-keyed animation entries
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E1AC0, 81 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx, last in edx
 //   -> ebx; the value-type tag pointer and the comparator word on the stack, `ret 8`).
@@ -37,7 +37,7 @@ struct CAnimationEntry {                                // Ego_r.pdb, 0x10 bytes
     CIVCountedPointer<CAnimComponentMap> Components;    // +0x0c
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -57,10 +57,10 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 }
 
 template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value (one stack word)
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-typedef _STL::pair<unsigned long, CAnimationEntry> TAnimationEntryPair;
+typedef std::pair<unsigned long, CAnimationEntry> TAnimationEntryPair;
 typedef CKeyPairCompareLess<unsigned long, CAnimationEntry> TAnimationEntryLess;
-template void __fastcall _STL::__unguarded_insertion_sort_aux<TAnimationEntryPair*, TAnimationEntryPair, TAnimationEntryLess>(
+template void __fastcall std::__unguarded_insertion_sort_aux<TAnimationEntryPair*, TAnimationEntryPair, TAnimationEntryLess>(
     TAnimationEntryPair*, TAnimationEntryPair*, TAnimationEntryPair*, TAnimationEntryLess);

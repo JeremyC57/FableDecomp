@@ -73,7 +73,7 @@ struct CTCUserActionPointBase {
     long GetNumberOfActionPointsInUse();          // 0x007FEC10
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport vector (12 bytes)
 public:
@@ -97,7 +97,7 @@ __declspec(noinline) void vector<_Tp, _Alloc>::push_back(const _Tp& __x)
 
 class CAddFreeSeatToList {
 public:
-    _STL::vector<CThing*>* m_pSeats;                       // +0x00
+    std::vector<CThing*>* m_pSeats;                       // +0x00
     void operator()(const CIntelligentPointer<CThing>& thing) const;
 };
 void CAddFreeSeatToList::operator()(const CIntelligentPointer<CThing>& thing) const

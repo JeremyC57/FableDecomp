@@ -1,6 +1,6 @@
-// _STL::__linear_insert(pair<unsigned long,CDefString>* first, pair<unsigned long,CDefString>* last, pair<unsigned long,CDefString> val, CKeyPairCompareLess<unsigned long,CDefString> comp) -- one insertion-sort step of the sound map's criteria entries: a key below the first entry shifts the whole run up one slot (copy_backward) and lands at the front, otherwise it walks down from `last` (the inlined unguarded linear insert)
-// Instantiation: _STL::__linear_insert<pair<unsigned long,CDefString>*,pair<unsigned long,CDefString>,CKeyPairCompareLess<unsigned long,CDefString> >
-// Leaf: ??$__linear_insert@PAU?$pair@KVCDefString@@@_STL@@U12@V?$CKeyPairCompareLess@KVCDefString@@@@@_STL@@
+// std::__linear_insert(pair<unsigned long,CDefString>* first, pair<unsigned long,CDefString>* last, pair<unsigned long,CDefString> val, CKeyPairCompareLess<unsigned long,CDefString> comp) -- one insertion-sort step of the sound map's criteria entries: a key below the first entry shifts the whole run up one slot (copy_backward) and lands at the front, otherwise it walks down from `last` (the inlined unguarded linear insert)
+// Instantiation: std::__linear_insert<pair<unsigned long,CDefString>*,pair<unsigned long,CDefString>,CKeyPairCompareLess<unsigned long,CDefString> >
+// Leaf: ??$__linear_insert@PAU?$pair@KVCDefString@@@std@@U12@V?$CKeyPairCompareLess@KVCDefString@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004712B2, 92 bytes (size-optimised def TU, no padding), __fastcall
 //   (first ecx, last edx; the 8-byte value and the 4-byte comparator slot on the stack), `ret 0Ch`.
 // Identity: the only call site is 0x004712A0 (the 8-byte __insertion_sort just above it) in CSoundMap::CriteriaMap's
@@ -21,7 +21,7 @@ public:
     long TablePos;                                          // +0x0 def-string table index
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -31,10 +31,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _Tp1, class _Tp2> struct _OKToMemCpy {

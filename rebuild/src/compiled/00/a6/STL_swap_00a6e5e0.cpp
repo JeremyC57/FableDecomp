@@ -1,4 +1,4 @@
-// _STL::swap(pair<CCharString,C3DHelperPoint>& a, pair<CCharString,C3DHelperPoint>& b) -- STLport swap of two helper-point map entries through a temporary copy
+// std::swap(pair<CCharString,C3DHelperPoint>& a, pair<CCharString,C3DHelperPoint>& b) -- STLport swap of two helper-point map entries through a temporary copy
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6E5E0, 141 bytes (+3 int3), /Gr `__fastcall` (a in ecx -> edi, b in
 //   edx -> ebx), plain `ret`.
@@ -34,7 +34,7 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> class pair {
 public:

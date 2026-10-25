@@ -1,4 +1,4 @@
-// Behaviour test for 0x007A4260 _STL::sort<CThing**, CThingCompare_NearestToPos>: a non-empty range runs
+// Behaviour test for 0x007A4260 std::sort<CThing**, CThingCompare_NearestToPos>: a non-empty range runs
 // the introsort loop with depth 2*lg(n) and then the final insertion sort; an empty range does nothing.
 #include <cstdio>
 

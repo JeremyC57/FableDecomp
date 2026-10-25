@@ -1,4 +1,4 @@
-// _STL::pair<CIntelligentPointer<CThingObject>, bool>::pair(const CIntelligentPointer<CThingObject>& a, const bool& b) -- copy the intelligent pointer into `first` and the flag into `second`
+// std::pair<CIntelligentPointer<CThingObject>, bool>::pair(const CIntelligentPointer<CThingObject>& a, const bool& b) -- copy the intelligent pointer into `first` and the flag into `second`
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CA5A0, length 46 bytes.
 // Leaf: ??0?$pair
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, GetPItem @ 0x00A01B50 (on `a`),
@@ -31,7 +31,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> struct pair {
     T1 first;     // +0x00
     T2 second;    // +0x08

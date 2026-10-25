@@ -17,7 +17,7 @@ struct C3DVector {                              // retail C3DVector, 12 bytes
     float X, Y, Z;
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { };
 
@@ -139,9 +139,9 @@ namespace NCameraModes {
 
 class CPhysicsCollisionPointsObject {
 public:
-    _STL::list<C3DVector>                                    Points;            // +0x00
-    _STL::list<_STL::pair<float, _STL::list<C3DVector> > >   SmartPointList;    // +0x04
-    _STL::list<_STL::pair<float, long> >                     NumTestsPerTheta;  // +0x08
+    std::list<C3DVector>                                    Points;            // +0x00
+    std::list<std::pair<float, std::list<C3DVector> > >   SmartPointList;    // +0x04
+    std::list<std::pair<float, long> >                     NumTestsPerTheta;  // +0x08
     long  ScanDensity;                                                          // +0x0c
     float StartTheta;                                                           // +0x10
     float DeltaTheta;                                                           // +0x14
@@ -154,9 +154,9 @@ public:
 void CPhysicsCollisionPointsObject::GetPointsList()
 {
     Points.clear();
-    for (_STL::list<_STL::pair<float, _STL::list<C3DVector> > >::iterator it = SmartPointList.begin();
+    for (std::list<std::pair<float, std::list<C3DVector> > >::iterator it = SmartPointList.begin();
          it != SmartPointList.end(); ++it)
-        for (_STL::list<C3DVector>::iterator point = (*it).second.begin(); point != (*it).second.end(); ++point)
+        for (std::list<C3DVector>::iterator point = (*it).second.begin(); point != (*it).second.end(); ++point)
             Points.push_back(*point);
 }
 

@@ -18,7 +18,7 @@ namespace NUISystem {
 
 class CAction;
 
-struct CActionList {                                      // _STL::list<CCountedPointer<NUISystem::CAction> >
+struct CActionList {                                      // std::list<CCountedPointer<NUISystem::CAction> >
     void* _M_node;                                        // +0x00 the sentinel node
     void clear();                                         // 0x005356A0
     ~CActionList()

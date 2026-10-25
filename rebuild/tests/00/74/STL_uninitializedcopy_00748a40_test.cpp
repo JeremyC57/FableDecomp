@@ -1,4 +1,4 @@
-// Behaviour test for 0x00748A40 _STL::__uninitialized_copy over CTCStealth danger-thing pairs
+// Behaviour test for 0x00748A40 std::__uninitialized_copy over CTCStealth danger-thing pairs
 #include <cstdio>
 #include <new>
 class CThing { public: int id; };

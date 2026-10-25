@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CCharString* first, CCharString* last, CCharString pivot, less<CCharString> comp) -- STLport quicksort partition of a CCharString range around a by-value pivot; returns the cut
+// std::__unguarded_partition(CCharString* first, CCharString* last, CCharString pivot, less<CCharString> comp) -- STLport quicksort partition of a CCharString range around a by-value pivot; returns the cut
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E0650, 141 bytes, `ret 8` (__fastcall /Gr algorithm TU: first in ecx ->
 //   edi, last in edx -> ebx, the 4-byte pivot string by value and the empty comparator's slot on the stack; the callee

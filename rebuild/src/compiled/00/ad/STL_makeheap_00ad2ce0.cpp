@@ -1,4 +1,4 @@
-// _STL::__make_heap(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* last, bool (__fastcall* comp)(const CGroup&, const CGroup&), CGroup*, int*) -- STLport heapify of a vertex's bone groups: sift every parent down from the last one to the root
+// std::__make_heap(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* last, bool (__fastcall* comp)(const CGroup&, const CGroup&), CGroup*, int*) -- STLport heapify of a vertex's bone groups: sift every parent down from the last one to the root
 // Flags: /Gr
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD2CE0, 102 bytes (+ int3 padding), `ret 0Ch`: /Gr algorithm TU (first in ecx,
@@ -25,7 +25,7 @@ public:
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 typedef bool (__fastcall* PFNGroupCompare)(const CGroup&, const CGroup&);
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value,
@@ -47,4 +47,4 @@ void __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _C
 
 template void __make_heap<CGroup*, PFNGroupCompare, CGroup, int>(CGroup*, CGroup*, PFNGroupCompare, CGroup*, int*);
 
-} // namespace _STL
+} // namespace std

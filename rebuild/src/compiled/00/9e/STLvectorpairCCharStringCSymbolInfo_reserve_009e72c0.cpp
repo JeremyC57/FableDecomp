@@ -1,4 +1,4 @@
-// _STL::vector<pair<CCharString,CSymbolInfo>>::reserve(unsigned int n) -- STLport reserve for the symbol-map entry vector: when the capacity is below n, copy the entries into a fresh n-element block, destroy and free the old one (or just allocate when empty) and re-point the three words
+// std::vector<pair<CCharString,CSymbolInfo>>::reserve(unsigned int n) -- STLport reserve for the symbol-map entry vector: when the capacity is below n, copy the entries into a fresh n-element block, destroy and free the old one (or just allocate when empty) and re-point the three words
 // Leaf: ?reserve@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E72C0, length 186 bytes (`ret 4`).
 // Label correction: the catalog's "Vector_Reserve" is STLport `vector<pair<CCharString, CSymbolMap::CSymbolInfo> >::reserve`
@@ -32,7 +32,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;

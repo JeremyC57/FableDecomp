@@ -1,4 +1,4 @@
-// _STL::fill(CGraphicInfoFrame*, CGraphicInfoFrame*, const CGraphicInfoFrame&) -- assign val to every element of [first, last)
+// std::fill(CGraphicInfoFrame*, CGraphicInfoFrame*, const CGraphicInfoFrame&) -- assign val to every element of [first, last)
 // Leaf: fill
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A00A90, 91 bytes, __fastcall (first/last in ecx/edx), `ret 4` (val).
 // Caller: 0x00A0103A (vector<CGraphicInfoFrame>::_M_fill_insert). The chunk label
@@ -66,7 +66,7 @@ public:
     virtual void v001();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct input_iterator_tag { input_iterator_tag() {} };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() {} };
@@ -75,7 +75,7 @@ struct random_access_iterator_tag : public bidirectional_iterator_tag { random_a
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-namespace _STL {
+namespace std {
 void __fastcall fill(CGraphicInfoFrame* __first, CGraphicInfoFrame* __last, const CGraphicInfoFrame& __val)
 {
     for ( ; __first != __last; ++__first)

@@ -62,7 +62,7 @@ static CCPPointerInfo* NewInfo(unsigned int refs)
     info->Data = 0;
     return info;
 }
-// _STL::__copy<CScriptThing*, CScriptThing*, int> @ 0x008AC2A0: counted forward assignment loop.
+// std::__copy<CScriptThing*, CScriptThing*, int> @ 0x008AC2A0: counted forward assignment loop.
 struct random_access_iterator_tag { };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 _OutputIter __fastcall Copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,

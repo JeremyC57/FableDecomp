@@ -72,7 +72,7 @@ Line 1 of each source carries the real (PDB) name. Every row has a test that pas
 - 00d258c0 CQ_DragonBossFightScript::SetDragonState:
   - An if/else-if chain over the four EDragonState values.
   - Each arm opens with the translator's `if (IsActiveThreadTerminating()) return;` and then loads two scriptdef longs into TargetNumMinions (+0x68) and TargetNumSummoners (+0x6C).
-- 00d34f00 `_STL::vector<bool>::vector(const vector<bool>&)`:
+- 00d34f00 `std::vector<bool>::vector(const vector<bool>&)`:
   - `_Vector_base(n, a)` (0x450CCC) is called out of line, followed by `__uninitialized_copy`.
   - The helper needs an explicit `__fastcall`, because the lane has no /Gr.
   - Fable's vector<bool> is not specialised; it is a vector of bytes.
@@ -81,11 +81,11 @@ Line 1 of each source carries the real (PDB) name. Every row has a test that pas
   - The source is a counted assignment loop, with `__copy` marked `__forceinline`.
   - The element's implicit operator= calls CDefClassBase::operator= (0x431F10) and vector<bool>::operator= (0x462E78).
 - 00d38400 CQ_FireHeartScript::TriggerProphetComment: `ProphetComment = "TEXT_QST_B01_PROPHET" + GFIntToCharString(Freed + Killed + 1) + "_" + comment`, then `ShouldProphetSpeak[Freed + Killed] = true`.
-- 00d38f30 `_STL::vector<long>::vector(size_type n)`: an out-of-line `_Vector_base` (0x50FA40) and an inline `uninitialized_fill_n` of 0. VC7.1 turns the fill into `rep stosd`.
+- 00d38f30 `std::vector<long>::vector(size_type n)`: an out-of-line `_Vector_base` (0x50FA40) and an inline `uninitialized_fill_n` of 0. VC7.1 turns the fill into `rep stosd`.
 - 00d9f070 CQ_MinionCampScript::ShouldSpawnPointSpawn:
   - Nested ifs ending in `if (IsActiveThreadTerminating()) return false; return true;`, which gives the byte-wide `neg al ; sbb al,al ; inc al`.
   - `return !IsActiveThreadTerminating()` gives a full-width `sbb eax,eax` instead.
-- 00da01e0 `_STL::list<CScriptThing>::push_back` / 00da0200 `_M_create_node`:
+- 00da01e0 `std::list<CScriptThing>::push_back` / 00da0200 `_M_create_node`:
   - push_back is `insert(end(), x)` with insert inline and `_M_create_node` out of line.
   - The node allocator is malloc (0xBFEA0E).
   - The placement new tests the element address (`lea ecx,[esi+8] ; test ecx,ecx`).

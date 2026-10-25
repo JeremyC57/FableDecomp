@@ -18,7 +18,7 @@ public:
     CCharString& operator=(const CCharString& o) { Value = o.Value; ++g_strAssign; return *this; }
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -50,7 +50,7 @@ typedef CClass* (*ClassAllocFunc)();
 
 class CClassTypeInfo {
 public:
-    _STL::list<CClass*> TypeList;
+    std::list<CClass*> TypeList;
     unsigned long       NoAllocated;
     bool                Used;
     bool                Local;
@@ -73,7 +73,7 @@ static unsigned int g_n = 0;
 static int g_seenDefault = 0;
 static int g_liveAtCall = 0;
 
-namespace _STL {
+namespace std {
 template <class _Tp> class vector {
 public:
     _Tp* _M_start;
@@ -94,7 +94,7 @@ public:
 
 int main()
 {
-    _STL::vector<CClassTypeInfo> v;
+    std::vector<CClassTypeInfo> v;
     v._M_start = v._M_finish = v._M_end_of_storage = 0;
     v.resize(42);
     if (g_n != 42 || g_seenDefault != 1 || g_liveAtCall != 1 || g_strings != 0 || g_lists != 0)

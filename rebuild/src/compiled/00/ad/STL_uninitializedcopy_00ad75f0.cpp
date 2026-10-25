@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const COptimisedSubMesh* first, const COptimisedSubMesh* last, COptimisedSubMesh* result, const __false_type&) -- copy-construct a run of optimiser sub-meshes (their primitive pointer and bone vectors) into raw storage
+// std::__uninitialized_copy(const COptimisedSubMesh* first, const COptimisedSubMesh* last, COptimisedSubMesh* result, const __false_type&) -- copy-construct a run of optimiser sub-meshes (their primitive pointer and bone vectors) into raw storage
 // Flags: /Gr
 // Leaf: ??$__uninitialized_copy@PBVCOptimisedSubMesh
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD75F0, 0xEB bytes (+ int3 padding), __fastcall (first ecx, last edx),
@@ -38,7 +38,7 @@ public:
     CCountedPointer(const CCountedPointer& x) : Data(x.Data), Info(x.Info) { if (Info) ++Info->RefCount; }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -91,7 +91,7 @@ public:
     }
 };
 
-} // namespace _STL
+} // namespace std
 
 namespace QuadricOptimiserInternals {
 
@@ -107,13 +107,13 @@ public:
 
 class COptimisedSubMesh {                                   // 0x18 bytes in retail
 public:
-    _STL::vector<CCountedPointer<COptimisedPrimitive> > Primitives;   // +0x00
-    _STL::vector<COptimisedBone>                        Bones;        // +0x0C
+    std::vector<CCountedPointer<COptimisedPrimitive> > Primitives;   // +0x00
+    std::vector<COptimisedBone>                        Bones;        // +0x0C
 };
 
 } // namespace QuadricOptimiserInternals
 
-namespace _STL {
+namespace std {
 template <> QuadricOptimiserInternals::COptimisedBone*
 __uninitialized_copy<const QuadricOptimiserInternals::COptimisedBone*, QuadricOptimiserInternals::COptimisedBone*>(
     const QuadricOptimiserInternals::COptimisedBone*, const QuadricOptimiserInternals::COptimisedBone*,
@@ -123,4 +123,4 @@ template QuadricOptimiserInternals::COptimisedSubMesh*
 __uninitialized_copy<const QuadricOptimiserInternals::COptimisedSubMesh*, QuadricOptimiserInternals::COptimisedSubMesh*>(
     const QuadricOptimiserInternals::COptimisedSubMesh*, const QuadricOptimiserInternals::COptimisedSubMesh*,
     QuadricOptimiserInternals::COptimisedSubMesh*, const __false_type&);
-} // namespace _STL
+} // namespace std

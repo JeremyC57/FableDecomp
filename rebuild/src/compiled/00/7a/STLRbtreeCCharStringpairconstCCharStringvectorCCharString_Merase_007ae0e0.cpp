@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::_M_erase(_Rb_tree_node* x) -- STLport recursive subtree release without rebalancing: for each node erase its right subtree, destroy the value (the string vector, then the key) and free the node, continuing with its left child
+// std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::_M_erase(_Rb_tree_node* x) -- STLport recursive subtree release without rebalancing: for each node erase its right subtree, destroy the value (the string vector, then the key) and free the node, continuing with its left child
 // Leaf: ?_M_erase@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AE0E0, 110 bytes, thiscall, `ret 4`; recursive (calls itself at 0x007AE0F9).
 // Callees: ~CCharString 0x0099EAE0, free 0x00BFEA14.
@@ -16,7 +16,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 template <class T> inline void _Destroy(T* p) { p->~T(); }
 template <class T> inline void _Destroy(T* first, T* last)

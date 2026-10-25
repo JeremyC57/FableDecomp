@@ -1,4 +1,4 @@
-// _STL::deque<CCrimeWaitingForBribe>::_M_push_back_aux_v(const CCrimeWaitingForBribe& t) -- STLport deque push_back slow path: copy the value, make room for one more node at the back of the map, allocate the new 128-byte node buffer, construct the value at the old finish cursor and step the finish iterator onto the new node
+// std::deque<CCrimeWaitingForBribe>::_M_push_back_aux_v(const CCrimeWaitingForBribe& t) -- STLport deque push_back slow path: copy the value, make room for one more node at the back of the map, allocate the new 128-byte node buffer, construct the value at the old finish cursor and step the finish iterator onto the new node
 // Leaf: ?_M_push_back_aux_v@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B4F70, 111 bytes (+1 int3), thiscall `ret 4`.
 // Callees: deque::_M_reallocate_map(size_type nodes_to_add, bool add_at_front) 0x007B4980, malloc 0x00BFEA0E.
@@ -19,7 +19,7 @@ public:
     long Type;                                              // +0x04 EOpinionDeedType
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class T> class allocator {

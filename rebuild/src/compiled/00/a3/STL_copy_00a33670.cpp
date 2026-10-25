@@ -1,4 +1,4 @@
-// _STL::__copy(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume>* result, const random_access_iterator_tag&, int*) -- assign [first, last) element by element onto result (counted loop), return the end of the destination
+// std::__copy(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume>* result, const random_access_iterator_tag&, int*) -- assign [first, last) element by element onto result (counted loop), return the end of the destination
 // Leaf: __copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A33670, 162 bytes (+ int3 padding), `ret 0Ch` (__fastcall: first in ecx,
 //   last in edx, result, the tag reference and the distance pointer on the stack).
@@ -78,7 +78,7 @@ struct C3DMeshVolume {                                        // 12 bytes (Ego_r
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     T1 first;
@@ -96,7 +96,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class RandomAccessIter, class OutputIter, class Distance>
 OutputIter __fastcall __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,

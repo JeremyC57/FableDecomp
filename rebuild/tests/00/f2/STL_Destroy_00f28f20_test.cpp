@@ -1,4 +1,4 @@
-// Behaviour test for 0x00F28F20: _STL::_Destroy(first, last) runs the virtual destructor of every 100-byte CFeatDef in [first, last)
+// Behaviour test for 0x00F28F20: std::_Destroy(first, last) runs the virtual destructor of every 100-byte CFeatDef in [first, last)
 #include <cstdio>
 #include <new>
 

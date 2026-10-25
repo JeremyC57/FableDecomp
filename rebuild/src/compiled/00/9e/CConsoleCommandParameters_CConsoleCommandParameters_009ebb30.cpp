@@ -15,7 +15,7 @@ inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
 enum EGenericVarType { GENERIC_VAR_TYPE_NONE };
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() {} };            // user ctor: the 1-byte tag is not zero-filled
 
@@ -78,12 +78,12 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __pos, co
 }
 #pragma auto_inline(on)
 
-} // namespace _STL
+} // namespace std
 
 class CConsoleCommandParameters
 {
 public:
-    _STL::vector<EGenericVarType> ParamTypes;           // +0x00 (retail STLport vector, 12 bytes)
+    std::vector<EGenericVarType> ParamTypes;           // +0x00 (retail STLport vector, 12 bytes)
 
     CConsoleCommandParameters(EGenericVarType type);
     void AddParameterType(const EGenericVarType& type) { ParamTypes.push_back(type); }

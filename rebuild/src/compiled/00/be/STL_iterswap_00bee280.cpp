@@ -1,5 +1,5 @@
-// _STL::iter_swap(CDecalEntry* a, CDecalEntry* b) -- swap two ((long, long), CEngineTextureDecal) entries through a temporary copy
-// Leaf: ??$iter_swap@PAU?$pair@U?$pair@JJ@_STL@@VCEngineTextureDecal@@@_STL@@
+// std::iter_swap(CDecalEntry* a, CDecalEntry* b) -- swap two ((long, long), CEngineTextureDecal) entries through a temporary copy
+// Leaf: ??$iter_swap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEE280, 146 bytes, `ret` (both pointers in ecx/edx).
 // Callees: vector<CCompositeBlendDesc> copy constructor @ 0x005BB346 (out of line here), operator= @ 0x006CADE0 (twice),
@@ -26,7 +26,7 @@ public:
     CRGBColour    SpecularColour;                   // +0x0c
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -79,29 +79,29 @@ public:
     ~vector() { }
     vector& operator=(const vector& x);             // 0x006CADE0
 };
-}   // namespace _STL
+}   // namespace std
 
 // Ego_r.pdb CEngineTextureDecal (20 bytes in retail: the STLport vector is 12).
 class CEngineTextureDecal {
 public:
     long OriginalTextureIndex;                      // +0x00
     long DecalID;                                   // +0x04
-    _STL::vector<CCompositeBlendDesc, _STL::allocator<CCompositeBlendDesc> > OverlaidBlends;   // +0x08
+    std::vector<CCompositeBlendDesc, std::allocator<CCompositeBlendDesc> > OverlaidBlends;   // +0x08
 };
 
-typedef _STL::pair<long, long> CDecalKey;
-typedef _STL::pair<CDecalKey, CEngineTextureDecal> CDecalEntry;   // 0x1c bytes
+typedef std::pair<long, long> CDecalKey;
+typedef std::pair<CDecalKey, CEngineTextureDecal> CDecalEntry;   // 0x1c bytes
 
 // The vector map's key order (an empty functor passed by value): the lexicographic pair<long, long> compare.
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 typedef CKeyPairCompareLess<CDecalKey, CEngineTextureDecal> CDecalEntryLess;
 
-namespace _STL {
+namespace std {
 template <class ForwardIter1, class ForwardIter2, class T>
 __forceinline void __iter_swap(ForwardIter1 a, ForwardIter2 b, T*)
 {
@@ -115,6 +115,6 @@ void iter_swap(ForwardIter1 a, ForwardIter2 b)
 {
     __iter_swap(a, b, (CDecalEntry*)0);
 }
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::iter_swap(CDecalEntry*, CDecalEntry*);
+template void std::iter_swap(CDecalEntry*, CDecalEntry*);

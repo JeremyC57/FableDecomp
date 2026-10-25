@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF3AA0 _STL::__introsort_loop over pair<CCharString, CRegisteredPSCInfo> (key compare): partition down to runs of 16, heap sort once the depth runs out
+// behaviour test for 0x00AF3AA0 std::__introsort_loop over pair<CCharString, CRegisteredPSCInfo> (key compare): partition down to runs of 16, heap sort once the depth runs out
 #include <cstdio>
 #include <cstring>
 struct CStr { const char* s; };

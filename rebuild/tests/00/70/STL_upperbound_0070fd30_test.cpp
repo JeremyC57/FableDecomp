@@ -1,4 +1,4 @@
-// Behaviour test for 0x0070FD30 _STL::__upper_bound over list<CAnimSet>::const_iterator ordered by Priority.
+// Behaviour test for 0x0070FD30 std::__upper_bound over list<CAnimSet>::const_iterator ordered by Priority.
 #include <cstdio>
 
 struct CAnimSet {

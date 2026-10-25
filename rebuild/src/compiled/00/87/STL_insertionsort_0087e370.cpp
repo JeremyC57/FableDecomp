@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(const CAnimationEntry** first, const CAnimationEntry** last, CTurningAnimCompare comp) -- insertion sort of the turning animations: linear-insert every entry after the first into the sorted prefix
+// std::__insertion_sort(const CAnimationEntry** first, const CAnimationEntry** last, CTurningAnimCompare comp) -- insertion sort of the turning animations: linear-insert every entry after the first into the sorted prefix
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087E370, 50 bytes (+ int3 padding), `ret 4` (/Gr algorithm TU: first in
 //   ecx, last in edx, the 4-byte comparator by value on the stack).
@@ -35,7 +35,7 @@ public:
 }
 typedef const CAnimationEntry* TEntry;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x0087E250
 

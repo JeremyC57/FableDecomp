@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<EEvent, EEvent, _Identity, less<EEvent> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const EEvent& v, _Rb_tree_node_base* w) -- STLport red-black tree node insert of NUISystem::CObserver's observed-event set (EEvent = NUISystem::EEvent): allocate a node, copy the event in, link it left/right of y (maintaining root/leftmost/rightmost), rebalance, count, return the iterator
+// std::_Rb_tree<EEvent, EEvent, _Identity, less<EEvent> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const EEvent& v, _Rb_tree_node_base* w) -- STLport red-black tree node insert of NUISystem::CObserver's observed-event set (EEvent = NUISystem::EEvent): allocate a node, copy the event in, link it left/right of y (maintaining root/leftmost/rightmost), rebalance, count, return the iterator
 // Leaf: _M_insert
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052E0E0, 179 bytes, `ret 14h` (thiscall: the hidden iterator result, x, y, &v, w).
 // Callees: malloc 0x00BFEA0E (the 0x14-byte node: 0x10 links + the 4-byte event), _Rb_global<bool>::_Rebalance(node,

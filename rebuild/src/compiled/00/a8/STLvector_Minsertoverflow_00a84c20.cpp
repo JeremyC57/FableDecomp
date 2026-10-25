@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(SKeyedList* position, const SKeyedList& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the (unsigned __int64 key, list<C2DLineF>) pair vector: allocate old size + max(old size, fill_len), copy the head, construct fill_len copies of x, copy the tail unless inserting at the end, destroy and free the old elements
+// std::vector::_M_insert_overflow(SKeyedList* position, const SKeyedList& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the (unsigned __int64 key, list<C2DLineF>) pair vector: allocate old size + max(old size, fill_len), copy the head, construct fill_len copies of x, copy the tail unless inserting at the end, destroy and free the old elements
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A84C20, 208 bytes, thiscall `ret 14h`.
 // Identity: callers 0x00A84FE2 (the landed push_back 0x00A84FB0) and 0x00A85325 (CVectorMap<unsigned __int64,
@@ -27,7 +27,7 @@ struct SKeyedList {                                // std::pair<unsigned __int64
     SKeyedList(const SKeyedList& o);               // 0x00A825D0 (STLport pair's copy constructor, out of line here)
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }

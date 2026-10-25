@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__unguarded_partition(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry> pivot, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) (retail 0x005E2100)
+// Behaviour test of std::__unguarded_partition(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry> pivot, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) (retail 0x005E2100)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

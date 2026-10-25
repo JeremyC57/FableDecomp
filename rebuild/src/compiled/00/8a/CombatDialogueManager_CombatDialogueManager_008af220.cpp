@@ -17,7 +17,7 @@
 //   SetPItem(GetPItem()), destroyed) and `CurrentTalkerTextGroupIndex = 0` last.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -109,7 +109,7 @@ public:
     struct TSpeechGroupInfo {                               // 4 bytes in retail (0x18-byte map nodes)
         unsigned long Data;
     };
-    _STL::map<unsigned long, TSpeechGroupInfo> SpeechGroupInfoMap;   // +0x00
+    std::map<unsigned long, TSpeechGroupInfo> SpeechGroupInfoMap;   // +0x00
     CDefPointer<const CCombatDialogueDef>       PDialogueDef;         // +0x0C
     CIntelligentPointer<CThingCreatureBase>      PCurrentTalker;      // +0x10
     unsigned long CurrentTalkerTextGroupIndex;                        // +0x18

@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(CLineList* first, CLineList* last, const __false_type&) -- destroy a range of lists of lines: free every node of each list, re-link its sentinel to itself, then free the sentinel
+// std::__destroy_aux(CLineList* first, CLineList* last, const __false_type&) -- destroy a range of lists of lines: free every node of each list, re-link its sentinel to itself, then free the sentinel
 // Leaf: ??$__destroy_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A827D0, 80 bytes, `ret 4` (/Gr: first in ecx, last in
 //   edx; the tag reference on the stack, never read).
@@ -23,7 +23,7 @@ public:
     C2DVector End;                                          // +0x8
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
@@ -80,9 +80,9 @@ class list : public _List_base<_Tp, _Alloc> {
 };
 }
 
-typedef _STL::list<C2DLineF> CLineList;                     // 4 bytes (0x18-byte nodes)
+typedef std::list<C2DLineF> CLineList;                     // 4 bytes (0x18-byte nodes)
 
-namespace _STL {
+namespace std {
 template <class _ForwardIterator>
 void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {

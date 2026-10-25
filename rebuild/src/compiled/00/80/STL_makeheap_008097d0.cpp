@@ -1,4 +1,4 @@
-// _STL::make_heap(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport make_heap front end for the first-person targeting positions: forward to __make_heap with the value and distance type pointers
+// std::make_heap(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport make_heap front end for the first-person targeting positions: forward to __make_heap with the value and distance type pointers
 // Leaf: ??$make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008097D0, 99 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx -- passed through untouched), the 0x2c-byte comparator by value, `ret 2Ch`.
@@ -27,7 +27,7 @@ struct CVectorCompare_BestForTargeting {
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -38,7 +38,7 @@ template <class _T1, class _T2> struct pair {
 namespace {
 struct CCompareTargetedPositionsForFirstPersonTargeting {
     CVectorCompare_BestForTargeting VectorCompare;         // +0x00
-    bool operator()(const _STL::pair<C3DVector, long>& a, const _STL::pair<C3DVector, long>& b) const
+    bool operator()(const std::pair<C3DVector, long>& a, const std::pair<C3DVector, long>& b) const
     {
         const float aValue = VectorCompare.GetCompareValueForPoint(a.first);
         const float bValue = VectorCompare.GetCompareValueForPoint(b.first);
@@ -47,7 +47,7 @@ struct CCompareTargetedPositionsForFirstPersonTargeting {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*,
                             _Distance*);   // 0x00808CF0

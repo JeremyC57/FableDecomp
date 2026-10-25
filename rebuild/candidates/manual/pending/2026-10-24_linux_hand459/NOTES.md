@@ -1,6 +1,6 @@
 # Hand chunk 459 (std .. std): 40 of 40 byte-exact
 
-All 40 rows are STLport 4.6 helpers (namespace `_STL`, algorithm templates `__fastcall` under /Gr, members thiscall).
+All 40 rows are STLport 4.6 helpers (namespace `std`, algorithm templates `__fastcall` under /Gr, members thiscall).
 gall.sh: 12 MATCH + 28 RELOCATION_MATCH; tall.sh (g++) and tall.py (VC7.1) 40/40 PASS; calls.py shows no import
 mismatch (malloc 0xBFEA0E / free 0xBFEA14 / memmove 0xBFEAE6 / operator delete 0xBFE9BC as retail). Every
 `// Leaf:` was checked against `objdump -t`: exactly one symbol per object, the intended one.
@@ -8,7 +8,7 @@ mismatch (malloc 0xBFEA0E / free 0xBFEA14 / memmove 0xBFEAE6 / operator delete 0
 ## What matched (40)
 
 ### Red-black tree / map
-- 0x00534F20 `_STL::__find` (set<NUISystem::CComponent*> iterators): input-iterator find; operator++ is the static
+- 0x00534F20 `std::__find` (set<NUISystem::CComponent*> iterators): input-iterator find; operator++ is the static
   `_Rb_global<bool>::_M_increment(node)` walk; the iterator class has user ctors, so the result goes through the
   hidden pointer in ecx and &val takes edx.
 - 0x0053CB9B `_Rb_tree::_Rb_tree(const _Rb_tree&)` (map<unsigned long, NUISystem::CUIState>): `optimize("s", on)` TU,
@@ -65,7 +65,7 @@ None (no row holds two functions).
 
 ## Label corrections
 Catalog labels (all descriptive or propagated) -> STLport names:
-- 0x00534F20 __find_in_tree_by_key -> `_STL::__find` (set<CComponent*> iterators)
+- 0x00534F20 __find_in_tree_by_key -> `std::__find` (set<CComponent*> iterators)
 - 0x0053CB4F deque_push_back_or_allocate -> `vector<unsigned char>::push_back`
 - 0x0053CB9B list_construct_from_list -> `_Rb_tree` copy ctor of map<unsigned long, NUISystem::CUIState>
 - 0x005657C0 __init_range_fixed_struct -> `__uninitialized_fill_n<CTCHeroOnlineScoreboard::CActivity*>`
@@ -96,13 +96,13 @@ Catalog labels (all descriptive or propagated) -> STLport names:
 - 0x0086DB30 introsort_4way_partition -> `__introsort_loop`
 
 Already-landed sources whose names look wrong (found while naming callers/callees):
-- 0x0065572D landed as "_Destroy_range": it is `_STL::fill(first, last, const T&)` (its loop calls operator= 0x004A9760).
+- 0x0065572D landed as "_Destroy_range": it is `std::fill(first, last, const T&)` (its loop calls operator= 0x004A9760).
 - 0x0086C620 landed as CCompressorZlib::SetupStream (its own header says propagated): `__linear_insert` of the
   skeletal-morph map.
 - 0x00722130 DestroyAux_SNestedVectorRecord10, 0x00728A40 / 0x00728B10 / 0x00728B50 SPairLongCSecond_005bbdf1: the element
   is CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts; 0x005BBDF1 CRetailVector20_005bbdf1 is
   CArray<CEngineTextureMorph>'s copy ctor (as 0x00709E60 already says).
-- 0x00841DE0 Copy_RetailString_00841de0 = `_STL::__copy<const basic_string*, basic_string*, int>`.
+- 0x00841DE0 Copy_RetailString_00841de0 = `std::__copy<const basic_string*, basic_string*, int>`.
 - 0x00865650 UninitCopy_ListLongPair_00865650 = `__uninitialized_copy<NCreatureHitNotification::CFlash*>`.
 - 0x0086F3E0 / 0x0086FA00 / 0x0086F600 / 0x008700A0 / 0x0086EFF0 (pair<long, CLongMapValue8>, Element_008700a0): the
   map is CExpressionSet::Expressions = CVectorMap<EExpressionType, CExpressionSet::CEntry> (see 0x0086F090's header).

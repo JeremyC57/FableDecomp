@@ -1,4 +1,4 @@
-// _STL::deque<C2DVector>::clear() -- free every interior node buffer, free the finish buffer when start and finish nodes differ, then collapse the finish iterator onto the start
+// std::deque<C2DVector>::clear() -- free every interior node buffer, free the finish buffer when start and finish nodes differ, then collapse the finish iterator onto the start
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0EA90, length 94 bytes (thiscall `ret`). Caller: 0x00A0F063 (erase of the whole
 // range).
 // Callees: free @ 0x00BFEA14.
@@ -20,7 +20,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

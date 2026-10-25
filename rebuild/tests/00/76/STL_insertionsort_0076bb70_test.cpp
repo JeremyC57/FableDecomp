@@ -1,4 +1,4 @@
-// Behaviour test for 0x0076BB70 _STL::__insertion_sort over pair<unsigned long, CParticleUpdateParamDesc<ulong,ulong> >.
+// Behaviour test for 0x0076BB70 std::__insertion_sort over pair<unsigned long, CParticleUpdateParamDesc<ulong,ulong> >.
 #include <cstdio>
 
 struct CBase { virtual ~CBase() { } virtual int Kind() const { return 0; } };

@@ -1,4 +1,4 @@
-// _STL::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[](const unsigned long& k) -- the animation instance slot for a key: lower_bound it, insert an empty counted pointer when absent, return the mapped pointer
+// std::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[](const unsigned long& k) -- the animation instance slot for a key: lower_bound it, insert an empty counted pointer when absent, return the mapped pointer
 // Grade: RELOCATION_MATCH (agent902, 4th grade) -- chunk-422 same-TU noinline insert_unique stand-in that reads v AND may write its counted pointer: a read-only stand-in lets VC7.1 fold the pair's release away (123), none keeps the escaped-pair scheduling (155).
 // Leaf: ??A?$map@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2D810, 150 bytes (+ int3 padding), thiscall `ret 4`.
@@ -45,7 +45,7 @@ public:
 
 class C3DAnimation2;
 
-namespace _STL {
+namespace std {
 
 struct _Rb_tree_node_base {
     unsigned char       _M_color;
@@ -126,4 +126,4 @@ __declspec(noinline) typename map<K, T, C, A>::iterator map<K, T, C, A>::insert_
 
 }
 
-template CCountedPointer<C3DAnimation2>& _STL::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[](const unsigned long& k);
+template CCountedPointer<C3DAnimation2>& std::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[](const unsigned long& k);

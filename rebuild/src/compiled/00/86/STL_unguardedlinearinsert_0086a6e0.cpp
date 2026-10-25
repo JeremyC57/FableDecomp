@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* last, pair<long, CSkeletalMorph> val, CKeyPairCompareLess<long, CSkeletalMorph> comp) -- STLport insertion step over the skeletal-morph vector map: shift every larger-keyed entry up one slot and drop val into the hole
+// std::__unguarded_linear_insert(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* last, pair<long, CSkeletalMorph> val, CKeyPairCompareLess<long, CSkeletalMorph> comp) -- STLport insertion step over the skeletal-morph vector map: shift every larger-keyed entry up one slot and drop val into the hole
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086A6E0, length 80 bytes, `ret 14h`.
 // Callers: __unguarded_insertion_sort_aux 0x0086AF60 (landed; 0x0086AF92) and the same map's __linear_insert 0x0086C620
@@ -24,7 +24,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -47,9 +47,9 @@ void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+typedef std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
 typedef CKeyPairCompareLess<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphLess;
-template void __fastcall _STL::__unguarded_linear_insert<TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess>(TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess);
+template void __fastcall std::__unguarded_linear_insert<TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess>(TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess);

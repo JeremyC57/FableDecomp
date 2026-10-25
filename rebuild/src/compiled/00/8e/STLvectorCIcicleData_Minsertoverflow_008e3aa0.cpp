@@ -1,4 +1,4 @@
-// 008e3aa0 _STL::vector<CIcicleData>::_M_insert_overflow
+// 008e3aa0 std::vector<CIcicleData>::_M_insert_overflow
 // Flags: /O2 /Oy /W3 
 // Leaf: _M_insert_overflow
 #include <stdlib.h>
@@ -12,7 +12,7 @@ struct CThing;struct C3DVector{float X,Y,Z;};
 struct CIcicleData{CIntelligentPointer<CThing>PEffect,PTrap;int EffectTimer,TrapTimer;C3DVector Position;CIcicleData();CIcicleData(const CIcicleData&);};
 struct __false_type {__false_type(){}};
 CIcicleData* __fastcall uninitialized_copy(CIcicleData*,CIcicleData*,CIcicleData*,const __false_type&);
-namespace _STL {
+namespace std {
 template<class T>__forceinline const T&max(const T&a,const T&b){return a<b?b:a;}
 template<class T>__forceinline T*uninitialized_fill_n(T*out,unsigned n,const T&v){for(;n>0;--n,++out)if(out)new(out)T(v);return out;}
 template<class T>struct vector {T*_M_start,*_M_finish,*_M_end_of_storage;

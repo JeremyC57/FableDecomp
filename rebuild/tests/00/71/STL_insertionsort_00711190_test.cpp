@@ -1,4 +1,4 @@
-// Behaviour test for 0x00711190 _STL::__insertion_sort over list<CAnimSet>::const_iterator with CAnimSetItPriorityLessThan (everything inlined).
+// Behaviour test for 0x00711190 std::__insertion_sort over list<CAnimSet>::const_iterator with CAnimSetItPriorityLessThan (everything inlined).
 #include <cstdio>
 
 struct CAnimSet { unsigned char _before[0x4c]; long Priority; unsigned char _after[0x0c]; };

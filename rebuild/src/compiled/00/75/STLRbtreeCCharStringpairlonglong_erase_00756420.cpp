@@ -1,5 +1,5 @@
-// _STL::_Rb_tree<CCharString,pair<long,long>>::erase(iterator first, iterator last) -- erase a node range of the region -> (crime duration, fine) map: clear() for [begin, end), else erase(first++) node by node
-// Leaf: ?erase@_Rb_tree_CrimeMap@_STL@@QAEXU_Rb_tree_iterator_CrimeMap@2@0@Z
+// std::_Rb_tree<CCharString,pair<long,long>>::erase(iterator first, iterator last) -- erase a node range of the region -> (crime duration, fine) map: clear() for [begin, end), else erase(first++) node by node
+// Leaf: ?erase@_Rb_tree_CrimeMap@std@@QAEXU_Rb_tree_iterator_CrimeMap@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00756420, 196 bytes (+12 int3), __fastcall `ret 8` (two by-value 4-byte iterators).
 // Callees: _Rb_tree::_M_erase(node) @ 0x00755E80 (recursive subtree release; manifest "LTextTreeWalkThrough::BuildTreeArray"
 //   is a propagation), _Rb_global::_Rebalance_for_erase(z, root&, leftmost&, rightmost&) @ 0x0042A34E (__cdecl, landed
@@ -22,7 +22,7 @@ public:
     ~CCharString();                                          // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 struct _Rb_tree_node_base {
     bool                _M_color;                            // +0x00
     _Rb_tree_node_base* _M_parent;                           // +0x04

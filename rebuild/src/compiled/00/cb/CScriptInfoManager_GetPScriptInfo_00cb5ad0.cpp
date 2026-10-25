@@ -42,7 +42,7 @@ public:
     bool             MasterScript;                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;
@@ -56,7 +56,7 @@ struct CKeyPairCompareLess { };
 template <class K, class V, class C>
 class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     value_type* _M_start;                               // +0x00
     value_type* _M_finish;                              // +0x04
     value_type* _M_end_of_storage;                      // +0x08

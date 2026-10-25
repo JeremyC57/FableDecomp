@@ -16,7 +16,7 @@
 // re-reading the header member at each store; one shared zero register (ebx) and a single `add esp,8`.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -73,13 +73,13 @@ public:
     _Rep_type _M_t;
     set() : _M_t(C(), A()) { }
 };
-} // namespace _STL
+} // namespace std
 
 namespace QuadricOptimiserInternals {
 
 class CIndexList {
 public:
-    _STL::set<unsigned long> Indices;                       // +0x00 (12 bytes in retail)
+    std::set<unsigned long> Indices;                       // +0x00 (12 bytes in retail)
 };
 
 class CUniqueVertex {

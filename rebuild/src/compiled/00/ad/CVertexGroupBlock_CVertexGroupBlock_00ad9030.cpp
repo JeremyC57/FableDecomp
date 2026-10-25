@@ -11,7 +11,7 @@
 // left/right at the header, re-read per store); one shared zero register.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -92,12 +92,12 @@ template <class T> class vector : public _Vector_base<T> {
 public:
     vector() : _Vector_base<T>(allocator<T>()) { }
 };
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
     CVertexGroupBlock();
 };
 

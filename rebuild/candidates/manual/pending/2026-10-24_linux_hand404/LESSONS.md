@@ -19,7 +19,7 @@
   - -> dword-by-dword predicate copies (0x008AC060, 0x008C34A0);
   - -> the swap temporary goes through the frame (0x008E2DB0, 0x008E3150, 0x008E3430).
 - `if (x) return true; return false;` -> byte exits on float compares (0x0087C660). An out-of-line `return a && b && c && d;` -> eax 1/0 (0x008D45A0).
-- A template leaf `?swap@_STL@@` never matches the template symbol `??$swap@...`, so q.py silently fell back to the largest function. Use `??$name@` for templates and `??$?R...@` for member-template operators (0x008E2DB0, 0x008D45A0).
+- A template leaf `?swap@std@@` never matches the template symbol `??$swap@...`, so q.py silently fell back to the largest function. Use `??$name@` for templates and `??$?R...@` for member-template operators (0x008E2DB0, 0x008D45A0).
 
 Review at landing:
 - Landed 0x00878A80 "GetRotatedPosition" is NCameraModes::CProjectileWeapon::GetCamPosOffsetXY(float) const (PDB name set).

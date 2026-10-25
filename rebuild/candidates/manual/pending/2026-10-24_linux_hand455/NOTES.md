@@ -3,7 +3,7 @@
 All 39 src/ files grade MATCH/RELOCATION_MATCH through gall.sh (grades.txt), every test prints `<addr>_TEST PASS`
 under g++ (tall.sh) and VC7.1 (tall.py), every `// Leaf:` names exactly one object symbol (objdump -t), and every
 call target was paired with retail's by `$S/w22/calls.py` (free 0xBFEA14, operator delete 0xBFE9BC, mixer IAT,
-landed callees). STL rows are modelled as STLport 4.6 templates in namespace `_STL`; class keys follow the PDB
+landed callees). STL rows are modelled as STLport 4.6 templates in namespace `std`; class keys follow the PDB
 name sets (CShopItem, CEngineSceneRenderStats, CEngineTextureMorph, CCompositeBlendDesc, CFileObject,
 CLipSyncEntry, CScriptInfo are `class`; CSubTitle, CPendingQuery, pair are `struct`).
 
@@ -11,28 +11,28 @@ CLipSyncEntry, CScriptInfo are `class`; CSubTitle, CPendingQuery, pair are `stru
 
 - **CWorld::GetFrameAsString** (0049d880, catalog "list<CMessageEvent const*>" ctor): static member formatting the
   frame counter through `__fastcall` GFIntToCharString (hidden result in ecx, the result pointer kept in esi).
-- **_STL::_List_iterator<CVsyncCallbackTimer::CPendingQuery>::operator-- / operator++** (009f7780, 009f78f0, catalog
+- **std::_List_iterator<CVsyncCallbackTimer::CPendingQuery>::operator-- / operator++** (009f7780, 009f78f0, catalog
   list ctor): the unoptimised CVsyncCallbackTimer TU, `#pragma optimize("", off)`; `this` homed at [ebp-4] around the
   shared `_M_decr`/`_M_incr` (0x0041C7B0 / 0x0041C7A0).
-- **_STL::list erase / pop_front / remove_if** (00a17110 CNavQuadTreeMap, 004b87f0 CQuestManager::CBoast, 004b91a0
+- **std::list erase / pop_front / remove_if** (00a17110 CNavQuadTreeMap, 004b87f0 CQuestManager::CBoast, 004b91a0
   and 004b9250 CQuestCard, 009be100 CSubTitle, 00a219e0 long, 00a16eb0 pair<long, const CNavigatorBase*>): the
   payloads declare no destructor (the implicit one runs the members in reverse); CCountedPointer's dtor re-reads Info at
   every step (00a17110); CIVCountedPointer's release through a local copy plus the `Data = 0` store gives
   `dec [ecx+4] ; jne` (009be100); 009be100 needs `__forceinline erase` (it is pop_front, not the catalog's clear);
   004b9250 needs the landed `Compare` 0x00411570 body in the TU under `auto_inline(off)` so the unlink reuses `next`.
-- **_STL::__lower_bound** (0070fcf0) over list<CAnimSet>::const_iterator by CAnimSetItPriorityLessThan: `__fastcall`
+- **std::__lower_bound** (0070fcf0) over list<CAnimSet>::const_iterator by CAnimSetItPriorityLessThan: `__fastcall`
   template, priority at +0x4C (TLC 12-byte vectors).
-- **_STL::__final_insertion_sort** (00470d36, catalog make_heap) over pair<unsigned long, CSoundPair>: size TU, inline
+- **std::__final_insertion_sort** (00470d36, catalog make_heap) over pair<unsigned long, CSoundPair>: size TU, inline
   3-argument `__unguarded_insertion_sort` passing `(_Tp*)0`; callee identity checked with objdump -r.
 - **CAudioMixer::SetVolume** (00c71640, catalog make_pair): `_ftol` of the scaled span, mixerSetControlDetails through
   the IAT, the value homed in the dead argument slot.
 - **libpk PKCWideString::operator=(const wchar_t*)** (00c16970) and **PKCPlaybackTemplate::ApplyTo** (00c14a80;
   descriptive names, libpk has no PDB): ApplyTo matches as an if/else of two calls (the shared push hoisted).
 - **NFractal::CPerlinNoise::CPerlinNoise(unsigned long)** (00f36be0, catalog operator&&): `Initialise(seed); return this`.
-- **_STL::pair copy ctor / operator=** (00654dd4, 00654eb6 pair<C3DVector, CCharString>, size TU: C3DVector has a user
+- **std::pair copy ctor / operator=** (00654dd4, 00654eb6 pair<C3DVector, CCharString>, size TU: C3DVector has a user
   memberwise copy ctor but no operator=, so the assignment block-copies with movsd; 00cb5f50 pair<CCharString,
   CScriptInfo>; 009e6050 pair<CCharString, CSymbolMap::CSymbolInfo>).
-- **_STL::map<CCharString, T>::operator[]** (009ac700 CCharString, 00519230 long, 008adf10 bool, 006bd6a0 C2DVector,
+- **std::map<CCharString, T>::operator[]** (009ac700 CCharString, 00519230 long, 008adf10 bool, 006bd6a0 C2DVector,
   00721640 pair<long, CDateAndTime>, 00756be0 pair<long, long>, 007aebe0 vector<CCharString>, 009d4810
   vector<unsigned long>, 00a2e290 vector<CMeshDataBank::CLipSyncEntry>): STLport 4.6 verbatim (`_M_lower_bound`
   out of line, inline CCharString operator<, `__default_constructed((_Tp*)0)`, insert forwarding to insert_unique).
@@ -45,7 +45,7 @@ CLipSyncEntry, CScriptInfo are `class`; CSubTitle, CPendingQuery, pair are `stru
   `__default_constructed` (re-addresses the out-of-line-built default with `lea`, insert result in its own word);
   005bbc4e needs the chunk-422 insert stand-in (late `false` store); 005b322b needs the STLport pair with user copy
   ctor (two `and [ebp-x],0` stores ahead of the key); 005bbfd6 reuses 00485d30's handle model.
-- **_STL::vector<CEnginePrimitiveHandle>::vector(size_type)** (00485d30, catalog map<long, ...>::operator[]): size TU;
+- **std::vector<CEnginePrimitiveHandle>::vector(size_type)** (00485d30, catalog map<long, ...>::operator[]): size TU;
   handle ctor/dtor `__forceinline`; retail's uniqueness test here is `(Object ? Object->RefCount : 0) == 1`; the
   allocator / `__false_type` (user ctor) temporaries overlay the high byte of the live `n` slot because the
   _Vector_base ctor (0x00485779, same retail TU) and `__uninitialized_fill_n` (landed 0x0043F6C0) bodies are visible.

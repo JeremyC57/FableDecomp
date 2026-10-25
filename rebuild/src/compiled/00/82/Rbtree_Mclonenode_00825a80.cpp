@@ -20,7 +20,7 @@ struct CThingPosAndOrientation {                            // CScriptedMapBrush
     C3DVector Position;                                     // +0x00
     C3DAngles FacingAngles;                                 // +0x0C
 };
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;
     B second;
@@ -30,7 +30,7 @@ template <class A, class B> struct pair {
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
 template <class T> class allocator {
@@ -108,4 +108,4 @@ typename _Rb_tree<_Key, _Value, _Compare>::_Link_type _Rb_tree<_Key, _Value, _Co
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
 }
 
-template class _STL::_Rb_tree<unsigned __int64, _STL::pair<const unsigned __int64, CThingPosAndOrientation>, _STL::less<unsigned __int64> >;
+template class std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, CThingPosAndOrientation>, std::less<unsigned __int64> >;

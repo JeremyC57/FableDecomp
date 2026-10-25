@@ -17,7 +17,7 @@ public:
     ~CRegion();                                 // 0x0051A110
 };
 
-namespace _STL {
+namespace std {
 template <class T> class allocator { };
 template <class T, class Alloc = allocator<T> > class vector {
 public:
@@ -38,7 +38,7 @@ public:
     virtual void v00(); virtual void v01();
     virtual void DeleteAllRegions();            // slot 2
     unsigned char          _pad04[0x28];
-    _STL::vector<CRegion>  Regions;             // +0x2C (PDB +0x34)
+    std::vector<CRegion>  Regions;             // +0x2C (PDB +0x34)
 };
 
 void CWorldMap::DeleteAllRegions()

@@ -1,4 +1,4 @@
-// _STL::map<unsigned long, CArray<C3DVector> >::operator[](const unsigned long& k) -- find a mesh's cached bone-scaling array by key, inserting an empty one when absent
+// std::map<unsigned long, CArray<C3DVector> >::operator[](const unsigned long& k) -- find a mesh's cached bone-scaling array by key, inserting an empty one when absent
 // Leaf: ??A?$map@KV?$CArray@VC3DVector@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BD9110, 161 bytes, thiscall, `ret 4`.
 // Identity: called by CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings 0x00BD2A90 (call 0x00BD2AE2): Ego_r.pdb
@@ -49,7 +49,7 @@ template <class T> __declspec(noinline) CArray<T>::CArray(const CArray& other)
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair
 {
@@ -126,4 +126,4 @@ public:
 
 template class map<unsigned long, CArray<C3DVector> >;
 
-} // namespace _STL
+} // namespace std

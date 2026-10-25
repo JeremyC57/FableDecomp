@@ -1,10 +1,10 @@
-// _STL::vector<CSoundBankEntry>::push_back(const CSoundBankEntry& x) -- STLport push_back of a 36-byte (key, sound-bank record) entry: copy-construct at finish and advance, else grow through _M_insert_overflow
-// Leaf: ?push_back@?$vector@U?$pair@JVCSoundBankRecord@@@_STL@@
+// std::vector<CSoundBankEntry>::push_back(const CSoundBankEntry& x) -- STLport push_back of a 36-byte (key, sound-bank record) entry: copy-construct at finish and advance, else grow through _M_insert_overflow
+// Leaf: ?push_back@?$vector@U?$pair@JVCSoundBankRecord@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009936E0, length 69 bytes (+ int3 padding), `ret 4`.
 // Callees: the implicit CSoundBankRecord copy constructor out of line @ 0x009922F0 (landed as SRecord::SRecord),
-// _STL::vector<CSoundBankEntry>::_M_insert_overflow(pos, x, __false_type, 1, true) @ 0x00993310.
+// std::vector<CSoundBankEntry>::_M_insert_overflow(pos, x, __false_type, 1, true) @ 0x00993310.
 // Label: the manifest's "NScript_CIsThingAlive_Vector_PushBack" is propagated.
-// Element: _STL::pair<long, CSoundBankRecord> (0x24 bytes) -- the CASoundManager's bank map entries (see the landed
+// Element: std::pair<long, CSoundBankRecord> (0x24 bytes) -- the CASoundManager's bank map entries (see the landed
 // ~CSoundBankRecord 0x00992510 and the sort family 0x00992750..0x00993420); record = two CCountedPointers + four
 // CCharStrings with an implicit copy constructor (here called out of line, retail 0x009922F0) and out-of-line
 // assignment / destructor. Record / comparator names are descriptive (the sound module is absent from the Ego PDB).
@@ -50,7 +50,7 @@ public:
     ~CSoundBankRecord();                        // 0x00992510
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -63,16 +63,16 @@ template <class T1, class T2> struct pair {
     pair(const T1& a, const T2& b) : first(a), second(b) { }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CSoundBankRecord> CSoundBankEntry;     // 0x24 bytes
+typedef std::pair<long, CSoundBankRecord> CSoundBankEntry;     // 0x24 bytes
 
 // CVectorMap<long, CSoundBankRecord>'s key order (an empty functor passed by value)
 struct CSoundBankEntryLess {
     bool operator()(const CSoundBankEntry& a, const CSoundBankEntry& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
@@ -104,16 +104,16 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> > class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Data;              // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Data;              // +0x00
     C Compare;                                  // +0x0c (empty)
     bool Dirty;                                 // +0x0d
     void Insert(const K& key, const V& value)
@@ -123,4 +123,4 @@ public:
     }
 };
 
-template void _STL::vector<CSoundBankEntry>::push_back(const CSoundBankEntry&);
+template void std::vector<CSoundBankEntry>::push_back(const CSoundBankEntry&);

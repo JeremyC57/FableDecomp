@@ -20,7 +20,7 @@ public:
     CBlurredAttitudesDef(const CBlurredAttitudesDef& other);   // 0x0067C6D0
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -67,4 +67,4 @@ public:
 template CBlurredAttitudesDef* vector<CBlurredAttitudesDef>::_M_allocate_and_copy<const CBlurredAttitudesDef*>(
     unsigned int, const CBlurredAttitudesDef*, const CBlurredAttitudesDef*);
 
-} // namespace _STL
+} // namespace std

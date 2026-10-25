@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::const_mem_fun1_t<bool, CThing, CCharString>::operator() @ 0x0048B2F0: calls the bound const member
+// Model of std::const_mem_fun1_t<bool, CThing, CCharString>::operator() @ 0x0048B2F0: calls the bound const member
 // (CThing::IsSameScriptName) on p with a copy of the script name.
 static int gCopies = 0, gDtors = 0;
 class CCharString {
@@ -24,7 +24,7 @@ public:
     void* ScriptName;          // FableWin.pdb ?IsSameScriptName@CThing@@QBE_NVCCharString@@@Z
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result> struct binary_function {
     typedef _Arg1 first_argument_type;
     typedef _Arg2 second_argument_type;
@@ -53,7 +53,7 @@ int main()
     CCharString* other = (CCharString*)raw1.bytes;
     same->PStringData = &names[0];
     other->PStringData = &names[1];
-    _STL::const_mem_fun1_t<bool, CThing, CCharString> f(&CThing::IsSameScriptName);
+    std::const_mem_fun1_t<bool, CThing, CCharString> f(&CThing::IsSameScriptName);
     if (!f(&thing, *same) || f(&thing, *other))
         ok = false;
     if (gCopies < 2 || gCopies != gDtors)

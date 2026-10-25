@@ -1,4 +1,4 @@
-// Behaviour test for 0x009F63B0 _STL::__copy_ptrs<CInputEvent*,CInputEvent*>: element-wise assignment of [first, last) onto
+// Behaviour test for 0x009F63B0 std::__copy_ptrs<CInputEvent*,CInputEvent*>: element-wise assignment of [first, last) onto
 // result (forward), returning result + (last - first); an empty range returns result untouched.
 #include <cstdio>
 

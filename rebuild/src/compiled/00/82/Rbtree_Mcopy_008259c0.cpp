@@ -16,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
 template <class T> class allocator {
@@ -94,4 +94,4 @@ typename _Rb_tree<_Key, _Value, _Compare>::_Link_type _Rb_tree<_Key, _Value, _Co
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
 }
 
-template class _STL::_Rb_tree<unsigned __int64, unsigned __int64, _STL::less<unsigned __int64> >;
+template class std::_Rb_tree<unsigned __int64, unsigned __int64, std::less<unsigned __int64> >;

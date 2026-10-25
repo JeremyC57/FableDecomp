@@ -1,4 +1,4 @@
-// 004eaad0 _STL::vector<CPrizeScoreDef>::operator=
+// 004eaad0 std::vector<CPrizeScoreDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
 // Leaf: operator=
 #include <stdlib.h>

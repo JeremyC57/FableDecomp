@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A31320 _STL::__unguarded_linear_insert: the value sinks past every larger key and lands in the
+// Behaviour test for 0x00A31320 std::__unguarded_linear_insert: the value sinks past every larger key and lands in the
 // gap; equal keys stay in front of it (stable for equal keys); the other fields travel with their keys.
 #include <cstdio>
 #include <cstring>

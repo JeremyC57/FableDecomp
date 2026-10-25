@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_linear_insert<CGroup*, CGroup, comp> @ 0x00AD08B0
+// Behaviour test for std::__unguarded_linear_insert<CGroup*, CGroup, comp> @ 0x00AD08B0
 // Shifts elements up while comp(val, *prev) and stores val in the gap (no lower bound check: a sentinel stops it).
 #include <cstdio>
 

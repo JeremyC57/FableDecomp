@@ -1,9 +1,9 @@
-// _STL::__linear_insert(SKeyedRecord2C* first, SKeyedRecord2C* last, SKeyedRecord2C val, CKeyCompareLess comp) -- insertion-sort step over 0x2C-byte records keyed by a signed long: a value smaller than the first element shifts the run up one slot and goes first, anything else goes through the unguarded insert
+// std::__linear_insert(SKeyedRecord2C* first, SKeyedRecord2C* last, SKeyedRecord2C val, CKeyCompareLess comp) -- insertion-sort step over 0x2C-byte records keyed by a signed long: a value smaller than the first element shifts the run up one slot and goes first, anything else goes through the unguarded insert
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00758E00, 77 bytes, `ret 30h` (__fastcall: first in ecx, last in edx, the
 // 0x2C-byte value and the empty comparator on the stack).
-// Callees: 0x00758C50 _STL::copy_backward(first, last, result) (__fastcall, out of line, `ret 4`; catalogued as the
-// propagated `_Copy_backward<pair<unsigned long,C3DDummyObject>*>`), 0x00758390 _STL::__unguarded_linear_insert(last,
+// Callees: 0x00758C50 std::copy_backward(first, last, result) (__fastcall, out of line, `ret 4`; catalogued as the
+// propagated `_Copy_backward<pair<unsigned long,C3DDummyObject>*>`), 0x00758390 std::__unguarded_linear_insert(last,
 // val, comp) (__fastcall; catalogued as the propagated `_Copy_impl<CDegradableInfo*>`). Both are referenced only here.
 // Identity: the manifest's `CPersistContext_TransferableVector<CReverbEnvironmentEntry>::Resize` is propagated; no code
 // references this body (an out-of-line COMDAT of an insertion-sort helper, the 0x2C-element sibling of 0x00A33800).
@@ -12,7 +12,7 @@
 // Shape: copy_backward stays a call here (it is out of line in this module); `*first = val` is an 11-dword
 // `rep movsd` (implicit operator=); the by-value argument copy in the else arm is memberwise -- the key already
 // loaded for the compare (`mov [eax],ecx`) then 10 dwords -- so the record has a user copy constructor.
-namespace _STL {
+namespace std {
 
 struct SRecordBody28 { long Words[10]; };
 

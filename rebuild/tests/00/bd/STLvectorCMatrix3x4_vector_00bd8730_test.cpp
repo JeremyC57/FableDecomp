@@ -1,4 +1,4 @@
-// behaviour test for 0x00BD8730 _STL::vector<CMatrix3x4>::vector(size_type n)
+// behaviour test for 0x00BD8730 std::vector<CMatrix3x4>::vector(size_type n)
 #include <cstdio>
 #include <cstdlib>
 #include <new>

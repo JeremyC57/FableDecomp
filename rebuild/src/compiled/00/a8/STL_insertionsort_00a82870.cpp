@@ -1,8 +1,8 @@
-// _STL::__insertion_sort(SKeyPairU64Long* first, SKeyPairU64Long* last, CKeyPairCompareLess comp) -- STLport insertion sort over 16-byte pair<unsigned __int64, long> records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(SKeyPairU64Long* first, SKeyPairU64Long* last, CKeyPairCompareLess comp) -- STLport insertion sort over 16-byte pair<unsigned __int64, long> records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A82870, 68 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // 4-byte comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).
-// Callee: 0x00A81CC0 _STL::__linear_insert(first, last, value, comp) (manifest "InsertionSort_Callback_MeshInfo" is
+// Callee: 0x00A81CC0 std::__linear_insert(first, last, value, comp) (manifest "InsertionSort_Callback_MeshInfo" is
 // propagated; only this body calls it). That callee orders on a 64-bit unsigned key (`cmp hi ; ja/jb ; cmp lo ; jae`)
 // and assigns `*first = value` as four dwords, so the element is a 16-byte, 8-aligned pair<unsigned __int64, long>.
 // Label: catalogued as `_Insertion_sort1<NGraphicAppearance::CMeshInfo*, CSortPrimaryMeshesFirst>` (propagated); the

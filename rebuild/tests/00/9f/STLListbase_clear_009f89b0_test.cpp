@@ -74,7 +74,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -132,7 +132,7 @@ template <class L> typename L::_Node* NewBack(L& l)
 {
     typedef typename L::_Node Node;
     Node* n = (Node*)malloc(sizeof(Node));
-    _STL::_List_node_base* s = l._M_node._M_data;
+    std::_List_node_base* s = l._M_node._M_data;
     n->_M_next = s;
     n->_M_prev = s->_M_prev;
     s->_M_prev->_M_next = n;
@@ -142,14 +142,14 @@ template <class L> typename L::_Node* NewBack(L& l)
 template <class L> int CountList(L& l)
 {
     int c = 0;
-    for (_STL::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
+    for (std::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
         ++c;
     return c;
 }
 template <class L> bool LinksOk(L& l)
 {
-    _STL::_List_node_base* s = l._M_node._M_data;
-    for (_STL::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
+    std::_List_node_base* s = l._M_node._M_data;
+    for (std::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
         if (p->_M_next->_M_prev != p || p->_M_prev->_M_next != p)
             return false;
     return s->_M_next->_M_prev == s && s->_M_prev->_M_next == s;
@@ -168,7 +168,7 @@ static CCPPointerInfo* NewInfo(void* data, unsigned int refs)
 int main()
 {
     bool ok = true;
-    typedef _STL::_List_base<CGraphicBankManager::CGraphicDataBankInfo, _STL::allocator<CGraphicBankManager::CGraphicDataBankInfo> > L;
+    typedef std::_List_base<CGraphicBankManager::CGraphicDataBankInfo, std::allocator<CGraphicBankManager::CGraphicDataBankInfo> > L;
     L l;
     InitList(l);
     static int dummies[3];
@@ -182,7 +182,7 @@ int main()
         n->_M_data.GraphicDataBank.Info = infos[i];
     }
     l.clear();
-    _STL::_List_node_base* s = l._M_node._M_data;
+    std::_List_node_base* s = l._M_node._M_data;
     if (s->_M_next != s || s->_M_prev != s || gStringDtors != 3 || gDeleted != 2 || infos[1]->RefCount != 1)
         ok = false;
     l.clear();

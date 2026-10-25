@@ -1,4 +1,4 @@
-// _STL::vector<bool>::vector(const vector<bool>& x) -- STLport vector copy constructor for a 1-byte element: allocate x.size() bytes, then copy the elements trivially
+// std::vector<bool>::vector(const vector<bool>& x) -- STLport vector copy constructor for a 1-byte element: allocate x.size() bytes, then copy the elements trivially
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D34F00, 59 bytes, `__fastcall`, one stack argument (`ret 4`), returns this.
 //   Callers: the CFireHeartPatternDef element construct @ 0x00D34EC0 (PadActive +0x28, Ego_r.pdb
@@ -12,7 +12,7 @@
 //   { _M_finish = __uninitialized_copy(x._M_start, x._M_finish, _M_start, _IsPODType()); }`. Fable's STLport does not
 //   specialise vector<bool> (a 12-byte vector of bytes). The allocator temporary (user ctor, no store) and the
 //   __true_type tag (value-initialised POD, one byte store of 0) both live in the dead argument slot [esp+0Ch].
-namespace _STL {
+namespace std {
 struct __true_type { };
 template <class T> class allocator {
 public:
@@ -36,4 +36,4 @@ public:
     }
 };
 template class vector<bool>;
-} // namespace _STL
+} // namespace std

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::vector<CActiveSoundInfo>::push_back(const CActiveSoundInfo&) @ 0x00AACEF0
+// Behaviour test for std::vector<CActiveSoundInfo>::push_back(const CActiveSoundInfo&) @ 0x00AACEF0
 #include <cstdio>
 #include <new>
 

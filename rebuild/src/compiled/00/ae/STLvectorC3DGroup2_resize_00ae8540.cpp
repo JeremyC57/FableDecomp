@@ -1,5 +1,5 @@
-// _STL::vector<C3DGroup2>::resize(unsigned int new_size) -- resize the skinning-group array (CArray<C3DGroup2>) to new_size: erase the tail, or append default groups (BoneIndex -1, no blends) copied from one temporary
-// Leaf: ?resize@?$vector@UC3DGroup2@@V?$allocator@UC3DGroup2@@@_STL@@@_STL@@QAEXI@Z
+// std::vector<C3DGroup2>::resize(unsigned int new_size) -- resize the skinning-group array (CArray<C3DGroup2>) to new_size: erase the tail, or append default groups (BoneIndex -1, no blends) copied from one temporary
+// Leaf: ?resize@?$vector@UC3DGroup2@@V?$allocator@UC3DGroup2@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE8540, 101 bytes, __fastcall `ret 4`.
 // Callers: the program loader 0x00AE3ABF.
 // Callees: C3DGroup2::C3DGroup2() 0x00AC40C0 (landed; the default value, its returned `this` pushed as x), erase(first,
@@ -12,7 +12,7 @@
 //   end()); else insert(end(), n - size(), x); }`, both inline; the temporary dies after the call (`if (p) free(p)`).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -62,7 +62,7 @@ public:
 
 struct C3DVertexBlend2 { long Vertex; float Weight; };   // 8 bytes
 
-template <class T> class CArray : public _STL::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
+template <class T> class CArray : public std::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
 };
 
 struct C3DGroup2 {                                       // 16 bytes in retail
@@ -71,4 +71,4 @@ struct C3DGroup2 {                                       // 16 bytes in retail
     C3DGroup2();                                         // 0x00AC40C0 (BoneIndex -1, empty VertexBlends)
 };
 
-template void _STL::vector<C3DGroup2>::resize(unsigned int);
+template void std::vector<C3DGroup2>::resize(unsigned int);

@@ -1,4 +1,4 @@
-// _STL::__make_heap(SNamedPosition* first, SNamedPosition* last, CKeyPairCompareLess comp, SNamedPosition*, int*) -- STLport make_heap core over 16-byte (CCharString, C3DVector) pairs ordered by name: sift every parent down, last parent first
+// std::__make_heap(SNamedPosition* first, SNamedPosition* last, CKeyPairCompareLess comp, SNamedPosition*, int*) -- STLport make_heap core over 16-byte (CCharString, C3DVector) pairs ordered by name: sift every parent down, last parent first
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077EDA0, 108 bytes, `ret 0Ch` (__fastcall /Gr algorithm TU: first in
 //   ecx (kept in the `push ecx` frame word), last in edx; the empty comparator and the two null type-tag pointers on

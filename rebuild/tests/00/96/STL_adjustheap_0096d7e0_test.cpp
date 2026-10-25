@@ -43,7 +43,7 @@ static CThingCompare_Nearest g_Nearest;
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 static TComp MakeComp() { TComp c; c.Functor = &g_Nearest; return c; }
 
-namespace _STL {
+namespace std {
 template <class _Iter> inline void iter_swap(_Iter __i1, _Iter __i2) { CThing* __tmp = *__i1; *__i1 = *__i2; *__i2 = __tmp; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -228,7 +228,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
         __final_insertion_sort(__first, __last, __comp);
     }
 }
-} // namespace _STL
+} // namespace std
 
 // ---- checks ----
 template <class C> static bool IsSorted(CThing** v, int n, C comp)
@@ -289,12 +289,12 @@ int main()
 
     for (int k = 2; k <= N; k += 5) {
         CThing* v[N]; Fill(v, k);
-        _STL::make_heap(v, v + k, comp);
+        std::make_heap(v, v + k, comp);
         CThing* before[N]; for (int i = 0; i < k; ++i) before[i] = v[i];
         CThing* top = v[0];
         CThing* val = v[k - 1];
         v[k - 1] = v[0];                                   // pop: the root goes to the back
-        _STL::__adjust_heap(v, 0, k - 1, val, comp);
+        std::__adjust_heap(v, 0, k - 1, val, comp);
         if (v[k - 1] != top) return Fail(A, "root not at the back");
         if (!IsHeap(v, k - 1, comp)) return Fail(A, "not a heap");
         for (int i = 0; i < k - 1; ++i) if (comp(top, v[i])) return Fail(A, "root was not the last in order");

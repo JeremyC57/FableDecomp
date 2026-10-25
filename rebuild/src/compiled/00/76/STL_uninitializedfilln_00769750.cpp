@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(AttackParticleAndEndPoints* first, unsigned int n, const AttackParticleAndEndPoints& x, const __false_type&) -- copy-construct n copies of x into raw storage at first, return the end
+// std::__uninitialized_fill_n(AttackParticleAndEndPoints* first, unsigned int n, const AttackParticleAndEndPoints& x, const __false_type&) -- copy-construct n copies of x into raw storage at first, return the end
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769750, 102 bytes (+int3 pad to 112), `ret 8`.
 // Caller: 0x0076B760 (vector<AttackParticleAndEndPoints>::_M_insert_overflow, the fill_len > 1 path).
@@ -42,7 +42,7 @@ struct AttackParticleAndEndPoints {                     // 0x18 (Ego_r.pdb)
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

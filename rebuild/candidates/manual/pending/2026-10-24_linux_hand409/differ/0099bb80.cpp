@@ -22,7 +22,7 @@ extern "C" void __cdecl free(void* block);                                      
 extern "C" unsigned int __cdecl wcslen(const wchar16* text);                                     // 0x00BFED94
 extern "C" int __cdecl _vsnwprintf(wchar16* buffer, unsigned int count, const wchar16* format, va_list args);   // 0x00BFED9A
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {                    // STLport allocator over malloc/free
 public:
     allocator() { }
@@ -142,7 +142,7 @@ public:
 
 void CWideString::SprintfDynamic(const wchar16* format, ...)
 {
-    _STL::vector<wchar16> buffer;
+    std::vector<wchar16> buffer;
     int size = wcslen(format) + 0x1000;
     buffer.resize(size);
     va_list args;

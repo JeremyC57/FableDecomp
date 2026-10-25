@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume>*, int depth_limit, CKeyPairCompareLess comp) -- introsort driver of the mesh-volume table: median-of-three quicksort partitions down to 16-entry runs, heap-sorting a range once the depth limit runs out
+// std::__introsort_loop(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume>*, int depth_limit, CKeyPairCompareLess comp) -- introsort driver of the mesh-volume table: median-of-three quicksort partitions down to 16-entry runs, heap-sorting a range once the depth limit runs out
 // Leaf: __introsort_loop
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A35490, 234 bytes (+ int3 padding), `ret 0Ch` (__fastcall: first in ecx,
 //   last in edx, the value-type pointer, the depth limit and the empty comparator on the stack).
@@ -80,7 +80,7 @@ struct C3DMeshVolume {                                        // 12 bytes (Ego_r
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     T1 first;
@@ -98,7 +98,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 }
 
-namespace _STL {
+namespace std {
 
 const int __stl_threshold = 16;
 

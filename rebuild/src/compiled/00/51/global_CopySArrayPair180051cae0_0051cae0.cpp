@@ -7,7 +7,7 @@
 // both pointers stepped by 0x18; the advanced result is returned (the untouched result for an empty range).
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on
 // the stack (callers push `0`, `lea` of a dead slot, result).
-// Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is a pair of 12-byte vectors (0x00515320 is the landed _STL::vector<C2DLineF>::operator=, 0x0051BCD0 another vector assignment).
+// Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is a pair of 12-byte vectors (0x00515320 is the landed std::vector<C2DLineF>::operator=, 0x0051BCD0 another vector assignment).
 struct SArray0C_00515320 {                       // 12 bytes, assigned out of line
     void* m_words[3];
     SArray0C_00515320& operator=(const SArray0C_00515320& other);   // 0x00515320

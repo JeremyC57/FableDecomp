@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CThing** first, CThing** last, CThing* pivot, ThingCompare comp) -- STLport Hoare partition around pivot (no bounds checks: the median-of-three guarantees sentinels); returns the cut
+// std::__unguarded_partition(CThing** first, CThing** last, CThing* pivot, ThingCompare comp) -- STLport Hoare partition around pivot (no bounds checks: the median-of-three guarantees sentinels); returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00932490, 104 bytes, `ret 8` (first in ecx, last in edx; pivot and comp on the stack).
 // Name: STLport `__unguarded_partition<CThing**, CThing*, bool (__fastcall*)(CThing*, CThing*)>`; caller __introsort_loop
@@ -20,7 +20,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, size_t n);   // 0x0
 class CThing;
 typedef bool (__fastcall* ThingCompare)(CThing* a, CThing* b);   // e.g. the height compare 0x00930D90
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 inline void swap(_Tp& __a, _Tp& __b)
 {

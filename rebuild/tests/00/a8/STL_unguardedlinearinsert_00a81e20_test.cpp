@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A81E20 _STL::__unguarded_linear_insert over (unsigned __int64 ID, list) entries: the value is
+// Behaviour test for 0x00A81E20 std::__unguarded_linear_insert over (unsigned __int64 ID, list) entries: the value is
 // inserted into the sorted prefix ending at last (larger entries shift up, lists move with their keys through the
 // list's operator=), and the by-value copy is destroyed (no list leaks).
 #include <cstdio>

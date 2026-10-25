@@ -25,7 +25,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -122,4 +122,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 
 template void vector<CVertexGroupBlockOptimiser::CBlockInfo>::reserve(unsigned int);
 
-} // namespace _STL
+} // namespace std

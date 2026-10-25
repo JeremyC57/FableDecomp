@@ -1,4 +1,4 @@
-// _STL::__copy_backward(CIntelligentPointer<CThingAICreature>* first, CIntelligentPointer<CThingAICreature>* last, CIntelligentPointer<CThingAICreature>* result, const random_access_iterator_tag&, int*) -- STLport random-access backward copy of AI-creature intelligent pointers: n = last - first assignments from the back, returns the new start of the output
+// std::__copy_backward(CIntelligentPointer<CThingAICreature>* first, CIntelligentPointer<CThingAICreature>* last, CIntelligentPointer<CThingAICreature>* result, const random_access_iterator_tag&, int*) -- STLport random-access backward copy of AI-creature intelligent pointers: n = last - first assignments from the back, returns the new start of the output
 // Leaf: ??$__copy_backward@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AFA50, 62 bytes (+2 int3), `ret 0Ch` (/Gr __fastcall: first in ecx, last in edx
 //   -> esi, then result, the iterator-category tag reference and the distance-type pointer on the stack).
@@ -10,7 +10,7 @@
 //   -- both pointers pre-decremented before the GetPItem/SetPItem pair, the count in ebx.
 class CThingAICreature;
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 }
 
@@ -28,7 +28,7 @@ public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
 _BidirectionalIter __fastcall __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                               _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)

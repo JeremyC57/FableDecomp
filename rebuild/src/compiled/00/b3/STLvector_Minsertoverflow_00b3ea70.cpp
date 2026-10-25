@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(CTextureManagerPoolInfo* position, const CTextureManagerPoolInfo& x, const __false_type&, unsigned int fill_len, bool atend) -- (vector<CTextureManagerPoolInfo>) STLport grow-and-insert: allocate old + max(old, fill_len) slots, copy the head, construct x once or fill fill_len copies, copy the tail unless inserting at the end, free the old block and adopt the new one
+// std::vector::_M_insert_overflow(CTextureManagerPoolInfo* position, const CTextureManagerPoolInfo& x, const __false_type&, unsigned int fill_len, bool atend) -- (vector<CTextureManagerPoolInfo>) STLport grow-and-insert: allocate old + max(old, fill_len) slots, copy the head, construct x once or fill fill_len copies, copy the tail unless inserting at the end, free the old block and adopt the new one
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B3EA70, 232 bytes. __fastcall, `ret 14h`.
 // Identity: the STLport 4.6 vector<_Tp>::_M_insert_overflow for the 20-byte CTextureManagerPoolInfo (divide by 20:
@@ -34,7 +34,7 @@ public:
 
 struct __false_type { __false_type() { } };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 #pragma auto_inline(off)
@@ -125,5 +125,5 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 }
 }
 
-template void _STL::vector<CTextureManagerPoolInfo>::_M_insert_overflow(CTextureManagerPoolInfo*,
+template void std::vector<CTextureManagerPoolInfo>::_M_insert_overflow(CTextureManagerPoolInfo*,
     const CTextureManagerPoolInfo&, const __false_type&, unsigned int, bool);

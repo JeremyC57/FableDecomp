@@ -1,4 +1,4 @@
-// _STL::__pop_heap(first, last, result, val, comp, int*) -- STLport heap pop for the registered-music map: move the top entry to *result, then sift the by-value val down from the root of the shrunk heap
+// std::__pop_heap(first, last, result, val, comp, int*) -- STLport heap pop for the registered-music map: move the top entry to *result, then sift the by-value val down from the root of the shrunk heap
 // Leaf: ??$__pop_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BEDC0, 179 bytes (+ padding to 192), `ret 24h` (__fastcall /Gr algorithm TU:
 //   first in ecx -> ebx, last in edx -> ebp; result, the 24-byte by-value pair, the empty comparator and the null distance
@@ -35,7 +35,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -43,14 +43,14 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-typedef _STL::pair<long, CMusicManager::CRegisteredMusicEntry> CMusicEntryPair;   // 24 bytes
+typedef std::pair<long, CMusicManager::CRegisteredMusicEntry> CMusicEntryPair;   // 24 bytes
 
 template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CMusicManager::CRegisteredMusicEntry> TMusicEntryLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);         // 0x006BEBF0

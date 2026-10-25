@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CCharString, pair<const CCharString,bool>, ...>::erase(iterator first, iterator last) -- STLport range erase of a map<CCharString,bool>: [begin, end) clears the whole tree (recursive _M_erase from the root, header re-linked to itself, count zeroed); otherwise erase(first++) node by node
+// std::_Rb_tree<CCharString, pair<const CCharString,bool>, ...>::erase(iterator first, iterator last) -- STLport range erase of a map<CCharString,bool>: [begin, end) clears the whole tree (recursive _M_erase from the root, header re-linked to itself, count zeroed); otherwise erase(first++) node by node
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AD180, 196 bytes, thiscall, `ret 8`.
 // Callees: _Rb_tree::_M_erase(_Link_type) 0x007ACC50 (recursive subtree release), __cdecl
 //   _Rb_tree_rebalance_for_erase(node, root&, leftmost&, rightmost&) 0x0042A34E, ~CCharString 0x0099EAE0, free 0x00BFEA14.

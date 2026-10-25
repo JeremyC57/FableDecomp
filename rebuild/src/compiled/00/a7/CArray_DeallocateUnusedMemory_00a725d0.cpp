@@ -14,7 +14,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct forward_iterator_tag { forward_iterator_tag() { } };
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b) { _Tp __tmp = __a; __a = __b; __b = __tmp; }
 
@@ -62,9 +62,9 @@ public:
     }
     void swap(vector<_Tp, _Alloc>& __x)
     {
-        _STL::swap(this->_M_start, __x._M_start);
-        _STL::swap(this->_M_finish, __x._M_finish);
-        _STL::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
+        std::swap(this->_M_start, __x._M_start);
+        std::swap(this->_M_finish, __x._M_finish);
+        std::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
     }
 };
 
@@ -95,7 +95,7 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_range_insert(iterator __pos, c
 #pragma auto_inline(on)
 }
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
     void DeallocateMemory();
     void DeallocateUnusedMemory();

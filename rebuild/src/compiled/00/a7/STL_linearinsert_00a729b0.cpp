@@ -1,10 +1,10 @@
-// _STL::__linear_insert(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, pair<CCharString,C3DMeshVolume> val, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- insertion-sort step over the named containment volumes: a value whose name sorts before first's shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
+// std::__linear_insert(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, pair<CCharString,C3DMeshVolume> val, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- insertion-sort step over the named containment volumes: a value whose name sorts before first's shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A729B0, 226 bytes (+14 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the 16-byte value and the empty comparator on the stack, `ret 14h`).
-// Callees: CBasicString<char>::operator< 0x00429950 (behind the inline CCharString::operator<), _STL::__copy_backward
+// Callees: CBasicString<char>::operator< 0x00429950 (behind the inline CCharString::operator<), std::__copy_backward
 //   0x00A70AB0, CCharString::operator= 0x0099EFB0, C3DMeshVolume::operator= 0x00A32960 (out-of-line COMDAT),
-//   CCharString::CCharString(const CCharString&) 0x0099EC30 (x2), _STL::__unguarded_linear_insert 0x00A70540 (same
+//   CCharString::CCharString(const CCharString&) 0x0099EC30 (x2), std::__unguarded_linear_insert 0x00A70540 (same
 //   chunk), the count block's DeleteFunc, operator delete 0x00BFE9BC, CCharString::~CCharString 0x0099EAE0 (x2).
 // Identity: the manifest's "Vector_InsertElement_StringPair" is descriptive. 16-byte pair<CCharString, C3DMeshVolume>
 //   entries of CPhysicsMesh::ContainmentVolumes ordered by the CCharString key.
@@ -97,7 +97,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -108,10 +108,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };

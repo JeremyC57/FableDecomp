@@ -76,7 +76,7 @@ public:
     int Id;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -96,14 +96,14 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
+typedef std::pair<CCharString, CCharString>      SNamePair;
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
@@ -156,7 +156,7 @@ template <class T, class C> static bool IsHeap(const T* p, int n, C comp)
     return true;
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> class allocator { public: allocator() { } };
 static int g_overflow = 0;
@@ -185,14 +185,14 @@ public:
 
 int main()
 {
-    _STL::vector<SNameEntry> v;
+    std::vector<SNameEntry> v;
     v._M_start = v._M_finish = (SNameEntry*)malloc(2 * sizeof(SNameEntry));
     v._M_end_of_storage = v._M_start + 2;
     v.push_back(SNameEntry(CCharString("bravo"), &g_banks[1]));
     v.push_back(SNameEntry(CCharString("alpha"), &g_banks[0]));
     v.push_back(SNameEntry(CCharString("charlie"), &g_banks[2]));
     if (v._M_finish != v._M_start + 2 || !NameIs(v._M_start[0], "bravo") || !NameIs(v._M_start[1], "alpha")
-        || v._M_start[1].second != &g_banks[0] || _STL::g_overflow != 1 || g_blocks != 2)
+        || v._M_start[1].second != &g_banks[0] || std::g_overflow != 1 || g_blocks != 2)
         { std::printf("00a418a0_TEST FAIL\n"); return 1; }
     FreeNames(v._M_start, 2);
     if (g_blocks != 0)

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::vector<unsigned char>::vector(n, val, alloc) -- fill constructor (0x009D2A40).
+// Behaviour test for std::vector<unsigned char>::vector(n, val, alloc) -- fill constructor (0x009D2A40).
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

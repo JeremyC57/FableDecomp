@@ -11,31 +11,31 @@ address	status	bytes	test	note
 009a7ac0	RELOCATION_MATCH	172v172	PASS	CBankFileManager::CBankFileManager
 009a7d40	DIFFER	223v222	PASS	CBankFileManager::GetRetailBankFilePath; only the int3 after the final noreturn _CxxThrowException (q.py strips it from retail); RELOCATION_MATCH vs the 223-byte N+1 span (probe/n1.py); label "CBankFileManager_FindOrCreateBank" corrected
 009a80b0	RELOCATION_MATCH	145v145	PASS	CBankFileManager::BankExists
-009aa4c0	RELOCATION_MATCH	83v83	PASS	_STL::_Rb_tree<>::_M_find
-009aa900	RELOCATION_MATCH	187v187	PASS	_STL::_Rb_tree<>::_M_insert
-009aaeb0	RELOCATION_MATCH	155v155	PASS	_STL::_Rb_tree<>::insert_unique
-009aaf70	RELOCATION_MATCH	173v173	PASS	_STL::_Rb_tree<>::_M_insert
-009ab120	RELOCATION_MATCH	206v206	PASS	_STL::_Rb_tree<>::_M_insert
+009aa4c0	RELOCATION_MATCH	83v83	PASS	std::_Rb_tree<>::_M_find
+009aa900	RELOCATION_MATCH	187v187	PASS	std::_Rb_tree<>::_M_insert
+009aaeb0	RELOCATION_MATCH	155v155	PASS	std::_Rb_tree<>::insert_unique
+009aaf70	RELOCATION_MATCH	173v173	PASS	std::_Rb_tree<>::_M_insert
+009ab120	RELOCATION_MATCH	206v206	PASS	std::_Rb_tree<>::_M_insert
 009ad580	RELOCATION_MATCH	98v98	PASS	CDefinitionManager::GetPDefClassInfo
-009b1870	RELOCATION_MATCH	74v74	PASS	_STL::__unguarded_linear_insert
-009b1a30	MATCH	67v67	PASS	_STL::__unguarded_linear_insert
-009b1b00	MATCH	51v51	PASS	_STL::__unguarded_linear_insert
-009b1c30	RELOCATION_MATCH	110v110	PASS	_STL::__push_heap
-009b2780	RELOCATION_MATCH	86v86	PASS	_STL::vector<SRecord12>::_M_allocate_and_copy
-009b2cb0	MATCH	103v103	PASS	_STL::__unguarded_insertion_sort_aux
-009b2d40	MATCH	73v73	PASS	_STL::__unguarded_insertion_sort_aux
-009b2db0	MATCH	73v73	PASS	_STL::__unguarded_insertion_sort_aux
-009b2ea0	RELOCATION_MATCH	138v138	PASS	_STL::__adjust_heap
-009b3580	RELOCATION_MATCH	146v146	PASS	_STL::__unguarded_partition
-009b3bb0	RELOCATION_MATCH	73v73	PASS	_STL::__make_heap
-009b4650	RELOCATION_MATCH	91v91	PASS	_STL::__linear_insert
-009b46b0	RELOCATION_MATCH	99v99	PASS	_STL::__linear_insert
-009b47f0	RELOCATION_MATCH	89v89	PASS	_STL::__unguarded_linear_insert
-009b4a20	RELOCATION_MATCH	52v52	PASS	_STL::vector<unsigned short>::push_back
-009b4d80	RELOCATION_MATCH	147v147	PASS	_STL::vector<SRecord12>::reserve
-009b4e20	RELOCATION_MATCH	140v140	PASS	_STL::vector<unsigned char>::reserve
-009b5160	RELOCATION_MATCH	205v205	PASS	_STL::_Rb_tree<>::_M_insert
-009b5800	RELOCATION_MATCH	170v170	PASS	_STL::__unguarded_partition
-009b5920	RELOCATION_MATCH	99v99	PASS	_STL::__linear_insert
-009b5990	RELOCATION_MATCH	137v137	PASS	_STL::__linear_insert
-009b68d0	RELOCATION_MATCH	200v200	PASS	_STL::__insertion_sort
+009b1870	RELOCATION_MATCH	74v74	PASS	std::__unguarded_linear_insert
+009b1a30	MATCH	67v67	PASS	std::__unguarded_linear_insert
+009b1b00	MATCH	51v51	PASS	std::__unguarded_linear_insert
+009b1c30	RELOCATION_MATCH	110v110	PASS	std::__push_heap
+009b2780	RELOCATION_MATCH	86v86	PASS	std::vector<SRecord12>::_M_allocate_and_copy
+009b2cb0	MATCH	103v103	PASS	std::__unguarded_insertion_sort_aux
+009b2d40	MATCH	73v73	PASS	std::__unguarded_insertion_sort_aux
+009b2db0	MATCH	73v73	PASS	std::__unguarded_insertion_sort_aux
+009b2ea0	RELOCATION_MATCH	138v138	PASS	std::__adjust_heap
+009b3580	RELOCATION_MATCH	146v146	PASS	std::__unguarded_partition
+009b3bb0	RELOCATION_MATCH	73v73	PASS	std::__make_heap
+009b4650	RELOCATION_MATCH	91v91	PASS	std::__linear_insert
+009b46b0	RELOCATION_MATCH	99v99	PASS	std::__linear_insert
+009b47f0	RELOCATION_MATCH	89v89	PASS	std::__unguarded_linear_insert
+009b4a20	RELOCATION_MATCH	52v52	PASS	std::vector<unsigned short>::push_back
+009b4d80	RELOCATION_MATCH	147v147	PASS	std::vector<SRecord12>::reserve
+009b4e20	RELOCATION_MATCH	140v140	PASS	std::vector<unsigned char>::reserve
+009b5160	RELOCATION_MATCH	205v205	PASS	std::_Rb_tree<>::_M_insert
+009b5800	RELOCATION_MATCH	170v170	PASS	std::__unguarded_partition
+009b5920	RELOCATION_MATCH	99v99	PASS	std::__linear_insert
+009b5990	RELOCATION_MATCH	137v137	PASS	std::__linear_insert
+009b68d0	RELOCATION_MATCH	200v200	PASS	std::__insertion_sort

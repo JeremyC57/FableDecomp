@@ -1,5 +1,5 @@
-// _STL::deque::_M_pop_front_aux() -- deque<pair<CCharString,long> >: pop the last element of the front buffer: destroy it, free the buffer and step the start iterator to the next map node
-// Leaf: ?_M_pop_front_aux@?$deque@U?$pair@VCCharString@@J@_STL@@
+// std::deque::_M_pop_front_aux() -- deque<pair<CCharString,long> >: pop the last element of the front buffer: destroy it, free the buffer and step the start iterator to the next map node
+// Leaf: ?_M_pop_front_aux@?$deque@U?$pair@VCCharString@@J@std@@
 // Flags: /Os
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00655CA7, 53 bytes, `__fastcall`, plain `ret`. It sits unaligned in
 //   a packed (/Os-style) run of STL instantiations.
@@ -23,7 +23,7 @@ public:
     ~CCharString();                                      // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* p, unsigned int) { if (p != 0) free(p); }   // malloc-backed node allocator
@@ -79,8 +79,8 @@ void deque<_Tp, _Alloc>::_M_pop_front_aux()
 }
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
 }
 
-template void _STL::deque<_STL::pair<CCharString, long> >::_M_pop_front_aux();
+template void std::deque<std::pair<CCharString, long> >::_M_pop_front_aux();

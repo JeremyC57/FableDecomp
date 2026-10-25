@@ -1,4 +1,4 @@
-// _STL::vector::vector(unsigned int n) -- STLport vector<CEnginePrimitiveHandle>(size_type n) (size TU): allocate n slots, then copy a default-constructed handle into each
+// std::vector::vector(unsigned int n) -- STLport vector<CEnginePrimitiveHandle>(size_type n) (size TU): allocate n slots, then copy a default-constructed handle into each
 // Leaf: ??0?$vector@VCEnginePrimitiveHandle@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00485D30, 135 bytes, __fastcall `ret 4`, returns this; frame-pointer size TU.
 // Label correction: the catalog's map<long, CEnginePrimitiveHandle>::operator[] is wrong: the body builds a vector, not a
@@ -74,7 +74,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -134,4 +134,4 @@ public:
 
 template class vector<CEnginePrimitiveHandle>;
 
-} // namespace _STL
+} // namespace std

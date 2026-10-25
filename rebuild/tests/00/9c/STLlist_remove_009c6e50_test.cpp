@@ -41,7 +41,7 @@ public:
     class CFileInfo { public: int Size; };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -145,7 +145,7 @@ template <class L> typename L::_Node* NewBack(L& l)
 {
     typedef typename L::_Node Node;
     Node* n = (Node*)malloc(sizeof(Node));
-    _STL::_List_node_base* s = l._M_node._M_data;
+    std::_List_node_base* s = l._M_node._M_data;
     n->_M_next = s;
     n->_M_prev = s->_M_prev;
     s->_M_prev->_M_next = n;
@@ -155,14 +155,14 @@ template <class L> typename L::_Node* NewBack(L& l)
 template <class L> int CountList(L& l)
 {
     int c = 0;
-    for (_STL::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
+    for (std::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
         ++c;
     return c;
 }
 template <class L> bool LinksOk(L& l)
 {
-    _STL::_List_node_base* s = l._M_node._M_data;
-    for (_STL::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
+    std::_List_node_base* s = l._M_node._M_data;
+    for (std::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
         if (p->_M_next->_M_prev != p || p->_M_prev->_M_next != p)
             return false;
     return s->_M_next->_M_prev == s && s->_M_prev->_M_next == s;
@@ -182,7 +182,7 @@ int main()
 {
     bool ok = true;
     typedef CCountedPointer<const CFileInstaller::CFileInfo> P;
-    typedef _STL::list<P> L;
+    typedef std::list<P> L;
     L l;
     InitList(l);
     static CFileInstaller::CFileInfo objs[3];

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__uninitialized_fill_n<CActiveSoundInfo*> @ 0x00AACB50
+// Behaviour test for std::__uninitialized_fill_n<CActiveSoundInfo*> @ 0x00AACB50
 #include <cstdio>
 #include <new>
 

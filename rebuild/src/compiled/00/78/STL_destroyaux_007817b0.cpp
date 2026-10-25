@@ -1,5 +1,5 @@
-// _STL::__destroy_aux(NFire::CFirePoint* first, NFire::CFirePoint* last, const __false_type&) -- destroy a run of 44-byte fire points: each point's singe-effect and effect intelligent pointers, then its helper name
-// Leaf: ??$__destroy_aux@PAVCFirePoint@NFire@@@_STL@@
+// std::__destroy_aux(NFire::CFirePoint* first, NFire::CFirePoint* last, const __false_type&) -- destroy a run of 44-byte fire points: each point's singe-effect and effect intelligent pointers, then its helper name
+// Leaf: ??$__destroy_aux@PAVCFirePoint@NFire@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007817B0, 50 bytes (+14 int3), `ret 4` (link-time __fastcall: first in ecx, last in
 //   edx, the __false_type tag reference on the stack, never read).
@@ -45,7 +45,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

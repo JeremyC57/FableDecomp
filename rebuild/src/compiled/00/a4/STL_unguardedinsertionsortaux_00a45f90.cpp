@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph*, bool (__fastcall*)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&) comp) -- unguarded insertion sort of [first, last): each element, copied by value, goes through the unguarded linear insert
+// std::__unguarded_insertion_sort_aux(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph*, bool (__fastcall*)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&) comp) -- unguarded insertion sort of [first, last): each element, copied by value, goes through the unguarded linear insert
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A45F90, 83 bytes, __fastcall (first ecx, last edx; the null value-type pointer and
 //   the comparator on the stack, `ret 8`).
@@ -37,7 +37,7 @@ public:
 
 typedef bool (__fastcall* TBoneMorphCompare)(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b);
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -46,7 +46,7 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00A45B00
 

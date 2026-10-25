@@ -1,4 +1,4 @@
-// _STL::__final_insertion_sort(SRegisteredTCEntry* first, SRegisteredTCEntry* last, CKeyPairCompareLess comp) -- STLport introsort finish over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): a guarded insertion sort of the first 16 elements, then the unguarded insertion sort of the rest (or one guarded sort when the range is short)
+// std::__final_insertion_sort(SRegisteredTCEntry* first, SRegisteredTCEntry* last, CKeyPairCompareLess comp) -- STLport introsort finish over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): a guarded insertion sort of the first 16 elements, then the unguarded insertion sort of the rest (or one guarded sort when the range is short)
 // Leaf: __final_insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E415D, 68 bytes, `ret 4` (size-optimised TU: unaligned entry).
 // Callees: __insertion_sort(first, last, comp) 0x004E3686 (`__fastcall`, `ret 4`), __unguarded_insertion_sort_aux(first,
@@ -12,7 +12,7 @@
 //   `__unguarded_insertion_sort` forwarding to the aux with a null value-type tag; `(last - first) > 16` folds to
 //   `and eax,-16 ; cmp eax,100h`; `optimize("s")` passes the comparator through with `push dword ptr [esp+N]`.
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 
 struct CCharString {
     void* PStringData;

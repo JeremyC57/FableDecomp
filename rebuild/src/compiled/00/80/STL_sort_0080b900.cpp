@@ -1,4 +1,4 @@
-// _STL::sort(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport introsort of the first-person targeting positions (best score first): introsort loop with depth 2*lg(n), then the final insertion sort
+// std::sort(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport introsort of the first-person targeting positions (best score first): introsort loop with depth 2*lg(n), then the final insertion sort
 // Leaf: ??$sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B900, 227 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x2c-byte comparator by value, `ret 2Ch`.
@@ -28,7 +28,7 @@ struct CVectorCompare_BestForTargeting {
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -39,7 +39,7 @@ template <class _T1, class _T2> struct pair {
 namespace {
 struct CCompareTargetedPositionsForFirstPersonTargeting {
     CVectorCompare_BestForTargeting VectorCompare;         // +0x00
-    bool operator()(const _STL::pair<C3DVector, long>& a, const _STL::pair<C3DVector, long>& b) const
+    bool operator()(const std::pair<C3DVector, long>& a, const std::pair<C3DVector, long>& b) const
     {
         const float aValue = VectorCompare.GetCompareValueForPoint(a.first);
         const float bValue = VectorCompare.GetCompareValueForPoint(b.first);
@@ -48,7 +48,7 @@ struct CCompareTargetedPositionsForFirstPersonTargeting {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Size> inline _Size __lg(_Size __n)
 {
     _Size __k;

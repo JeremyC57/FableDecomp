@@ -1,8 +1,8 @@
-// _STL::__linear_insert(CThing** first, CThing** last, CThing* val, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- insertion step of the advance-in-cover candidate sort: an element that sorts before the first is moved to the front with one memmove, any other goes through the unguarded insert
+// std::__linear_insert(CThing** first, CThing** last, CThing* val, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- insertion step of the advance-in-cover candidate sort: an element that sorts before the first is moved to the front with one memmove, any other goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00978C50, 107 bytes, __fastcall (/Gr algorithm TU: first in ecx, last in edx,
 //   val and the comparator on the stack), `ret 14h`.
-// Instantiation: the advance-in-cover candidate sort: _STL::sort<CThing**,
+// Instantiation: the advance-in-cover candidate sort: std::sort<CThing**,
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch> called from
 //   CAIStateGroup_CreatureAdvanceInCover::ProcessCoverThingList (0x00979260 -> sort 0x00979870); the Ego_r.pdb
 //   symbols carry the anonymous namespace ?A0xffab493a of CAIStateGroup_CreatureAdvanceInCover.cpp.
@@ -12,7 +12,7 @@
 //   __unguarded_linear_insert(last, val, comp);` -- copy_backward over CThing* is `__copy_trivial_backward` = one
 //   memmove behind a `> 0` test. The model compiles operator() as a same-TU stand-in (auto_inline(off) + noinline);
 //   with it VC7.1 reproduces retail's comparator-copy scheduling (copies loaded two words ahead) and slot sharing.
-// Label: catalog "std_sort_InsertionPoint_HeuristicBitch" -> the STLport 4.x _STL::__linear_insert instantiation for
+// Label: catalog "std_sort_InsertionPoint_HeuristicBitch" -> the STLport 4.x std::__linear_insert instantiation for
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma; the stand-ins use `#pragma auto_inline(off)` + `__declspec(noinline)`.
@@ -76,7 +76,7 @@ bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(CThing* a
 }
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 // copy_backward over a trivially assignable pointer range is one memmove (`(_Num > 0) ? memmove : result`).
@@ -111,4 +111,4 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
         __unguarded_linear_insert(__last, __val, __comp);
 }
 template void __fastcall __linear_insert<CThing**, CThing*, TComp>(CThing**, CThing**, CThing*, TComp);
-} // namespace _STL
+} // namespace std

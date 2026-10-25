@@ -5,7 +5,7 @@ and all 34 tests PASS under both g++ and the lane's VC7.1. 5 rows are parked in 
 
 ## What matched (34)
 - **STLport algorithms over C3DSkeletalBoneMorph** (20 bytes: CCharString, CRC, C3DVector), all `/Gr` `__fastcall`
-  templates in `_STL`:
+  templates in `std`:
   - 00a45a70 swap
   - 00a45b00 __unguarded_linear_insert
   - 00a45bc0 __push_heap
@@ -68,7 +68,7 @@ and all 34 tests PASS under both g++ and the lane's VC7.1. 5 rows are parked in 
   `erase(i); --i;`, `erase(i--)`, `i = erase(i); --i;`, and the layered STLport erase (`__copy_ptrs` + `__true_type` +
   `_Destroy`); all four give the same 110 bytes | next: an index loop or another iterator shape that keeps pos+1 off
   the induction set.
-- 00a557e0 _STL::copy(set<CCharString> range, back_insert_iterator<vector<CCharString> >) DIFFER(155v154): the only
+- 00a557e0 std::copy(set<CCharString> range, back_insert_iterator<vector<CCharString> >) DIFFER(155v154): the only
   difference is `push edi`. Ours saves it in the prologue, before the empty-range `je`; retail shrink-wraps it into the
   loop path. | tried: __copy not inlined; `__forceinline __copy`; the static `_Rb_global<bool>::_M_increment`; an extra
   `__copy_aux` layer | next: a same-TU noinline `vector<CCharString>::_M_insert_overflow` stand-in (callee-clobber
@@ -83,7 +83,7 @@ and all 34 tests PASS under both g++ and the lane's VC7.1. 5 rows are parked in 
 All of these are rows of this chunk unless marked "landed".
 
 **STLport algorithms (named with the STLport spelling):**
-- 0x00A41D50 `_STL::__introsort_loop<pair<CCharString,4-byte>*>`, not Introsort_Partition_CCharStringPair.
+- 0x00A41D50 `std::__introsort_loop<pair<CCharString,4-byte>*>`, not Introsort_Partition_CCharStringPair.
 - 0x00A45B00 `__unguarded_linear_insert`, not Vector_Insert_ConditionalShift.
 - 0x00A461D0 `__unguarded_partition`, not Introsort_PartitionStep.
 - 0x00A46350 `__make_heap`, not MakeHeap_Generic.

@@ -1,5 +1,5 @@
 // CSteeringAgent::CreateLineList(vector<C3DVector>& lines) -- let every steering behaviour, input and constraint add its debug lines
-// Leaf: ?CreateLineList@CSteeringAgent@@QAEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@_STL@@@_STL@@@Z
+// Leaf: ?CreateLineList@CSteeringAgent@@QAEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1B470, 102 bytes, `ret 4`.
 // Identity: Ego_r.pdb `?CreateLineList@CSteeringAgent@@QAEXAAV?$vector@VC3DVector@@...@Z`; its only caller is the
 //   tail jump in CNavigatorAStar::CreateLineList 0x00A1BFC0 (`mov ecx,[ecx+20h]` = CNavigatorBase::SteeringAgent).
@@ -12,7 +12,7 @@
 class C3DVector { public: float X, Y, Z; };
 class CNavigatorExternalInterface;
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() {} };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy { public: _Tp _M_data; };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
@@ -50,21 +50,21 @@ public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
-    virtual void CreateLineList(_STL::vector<C3DVector>& lines);   // slot 3
+    virtual void CreateLineList(std::vector<C3DVector>& lines);   // slot 3
 };
 class CSBInput {
 public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
-    virtual void CreateLineList(_STL::vector<C3DVector>& lines);   // slot 3
+    virtual void CreateLineList(std::vector<C3DVector>& lines);   // slot 3
 };
 class CSBConstraint {
 public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
-    virtual void CreateLineList(_STL::vector<C3DVector>& lines);   // slot 3
+    virtual void CreateLineList(std::vector<C3DVector>& lines);   // slot 3
 };
 
 class CSteeringAgent {
@@ -72,18 +72,18 @@ public:
     CNavigatorExternalInterface*  NavigatorInterface;               // +0x00
     bool                          DummyObstacle;                    // +0x04
     float                         RepulsionMultiplier;              // +0x08
-    _STL::list<CSB*>              SteeringBehaviours;               // +0x0C
-    _STL::list<CSBInput*>         SteeringBehaviourInputs;          // +0x10
-    _STL::list<CSBConstraint*>    SteeringBehaviourConstraints;     // +0x14
-    void CreateLineList(_STL::vector<C3DVector>& lines);
+    std::list<CSB*>              SteeringBehaviours;               // +0x0C
+    std::list<CSBInput*>         SteeringBehaviourInputs;          // +0x10
+    std::list<CSBConstraint*>    SteeringBehaviourConstraints;     // +0x14
+    void CreateLineList(std::vector<C3DVector>& lines);
 };
 
-void CSteeringAgent::CreateLineList(_STL::vector<C3DVector>& lines)
+void CSteeringAgent::CreateLineList(std::vector<C3DVector>& lines)
 {
-    for (_STL::list<CSB*>::iterator b = SteeringBehaviours.begin(); b != SteeringBehaviours.end(); ++b)
+    for (std::list<CSB*>::iterator b = SteeringBehaviours.begin(); b != SteeringBehaviours.end(); ++b)
         (*b)->CreateLineList(lines);
-    for (_STL::list<CSBInput*>::iterator i = SteeringBehaviourInputs.begin(); i != SteeringBehaviourInputs.end(); ++i)
+    for (std::list<CSBInput*>::iterator i = SteeringBehaviourInputs.begin(); i != SteeringBehaviourInputs.end(); ++i)
         (*i)->CreateLineList(lines);
-    for (_STL::list<CSBConstraint*>::iterator c = SteeringBehaviourConstraints.begin(); c != SteeringBehaviourConstraints.end(); ++c)
+    for (std::list<CSBConstraint*>::iterator c = SteeringBehaviourConstraints.begin(); c != SteeringBehaviourConstraints.end(); ++c)
         (*c)->CreateLineList(lines);
 }

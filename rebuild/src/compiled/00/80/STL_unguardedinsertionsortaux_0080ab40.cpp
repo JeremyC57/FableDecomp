@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint*, CThingCompare_BestForTargeting2 comp) -- unguarded insertion sort of the player-targeting candidate points: each point, copied by value, goes through the unguarded linear insert with the 0x34-byte targeting comparator copied by value
+// std::__unguarded_insertion_sort_aux(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint*, CThingCompare_BestForTargeting2 comp) -- unguarded insertion sort of the player-targeting candidate points: each point, copied by value, goes through the unguarded linear insert with the 0x34-byte targeting comparator copied by value
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080AB40, 205 bytes, __fastcall (first ecx, last edx; the null value-type pointer and
 //   the 0x34-byte comparator on the stack, `ret 0x38`).
@@ -71,7 +71,7 @@ public:
     bool operator()(const NPlayerTargeting::CTargetPoint& a, const NPlayerTargeting::CTargetPoint& b) const;
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x0080A340
 

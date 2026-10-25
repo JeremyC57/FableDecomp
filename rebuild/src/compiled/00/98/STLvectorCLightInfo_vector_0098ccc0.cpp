@@ -1,4 +1,4 @@
-// _STL::vector<CLightInfo>::vector(unsigned int count) -- (CShaderRenderManager::CLightInfo elements) STLport vector of 56-byte light infos: pointers nulled, count elements malloc'd (none for zero), finish/end-of-storage set, every element copied from a default CLightInfo
+// std::vector<CLightInfo>::vector(unsigned int count) -- (CShaderRenderManager::CLightInfo elements) STLport vector of 56-byte light infos: pointers nulled, count elements malloc'd (none for zero), finish/end-of-storage set, every element copied from a default CLightInfo
 // Leaf: ??0?$vector@VCLightInfo@CShaderRenderManager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098CCC0, length 119 bytes, `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (`__cdecl`, the STLport allocator).
@@ -39,7 +39,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class T> __forceinline T* uninitialized_fill_n(T* first, size_t count, const T& value)
 {
@@ -84,6 +84,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template _STL::vector<CShaderRenderManager::CLightInfo>::vector(size_t);
+template std::vector<CShaderRenderManager::CLightInfo>::vector(size_t);

@@ -76,7 +76,7 @@ public:
     int Id;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -96,14 +96,14 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
+typedef std::pair<CCharString, CCharString>      SNamePair;
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
@@ -155,7 +155,7 @@ template <class T, class C> static bool IsHeap(const T* p, int n, C comp)
             return false;
     return true;
 }
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {
@@ -181,9 +181,9 @@ int main()
     SNamePairEntry* p = MakePairs(names, 3, 3);
     CNamePairLess c;
     const SNamePairEntry *A0 = p, *B0 = p + 1, *C0 = p + 2;
-    if (&_STL::__median(*A0, *B0, *C0, c) != B0 || &_STL::__median(*A0, *C0, *B0, c) != B0 || &_STL::__median(*B0, *A0, *C0, c) != B0
-        || &_STL::__median(*B0, *C0, *A0, c) != B0 || &_STL::__median(*C0, *A0, *B0, c) != B0 || &_STL::__median(*C0, *B0, *A0, c) != B0
-        || &_STL::__median(*A0, *A0, *C0, c) != A0)
+    if (&std::__median(*A0, *B0, *C0, c) != B0 || &std::__median(*A0, *C0, *B0, c) != B0 || &std::__median(*B0, *A0, *C0, c) != B0
+        || &std::__median(*B0, *C0, *A0, c) != B0 || &std::__median(*C0, *A0, *B0, c) != B0 || &std::__median(*C0, *B0, *A0, c) != B0
+        || &std::__median(*A0, *A0, *C0, c) != A0)
         { std::printf("00a40d80_TEST FAIL\n"); return 1; }
     FreePairs(p, 3);
     if (g_blocks != 0)

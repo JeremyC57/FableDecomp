@@ -1,4 +1,4 @@
-# Hand chunk 396 (_STL::sort<CThing**> .. _STL::vector<vector<CCard*> >::insert): 36 of 40 byte-exact
+# Hand chunk 396 (std::sort<CThing**> .. std::vector<vector<CCard*> >::insert): 36 of 40 byte-exact
 
 All 36 matched rows grade RELOCATION_MATCH. Each has a test that passes under both g++ (tall.sh) and the VC7.1 lane (tall.py).
 
@@ -61,7 +61,7 @@ All 36 matched rows grade RELOCATION_MATCH. Each has a test that passes under bo
 - **0x007D7AE0 `GetNextHaltonSequenceNumber(float&, int)`** (first grade) -- `double h = 1.0; while (h >= 1 - value) h *= 1.0 / base; value += (base + 1.0) * h - 1.0;`.
 
 ## Parked for Fable 5.1 (4)
-- 0x007AF940 _STL::__uninitialized_fill_n<CIntelligentPointer<CThingAICreature>*> DIFFER(62v62): register tie: retail keeps x in edi and n in ebx, ours swaps them (same instructions otherwise) | tried: plain placement new, `_Construct`, a count local, a const-ref local (4 grades) | next: compare with 0x007DC580 (same STLport loop, matched first grade over a vector element) -- the intelligent-pointer copy (base ctor + vtable + GetPItem/SetPItem calls) may need the 1-aligned GiveItems model; else lane gap: register allocation
+- 0x007AF940 std::__uninitialized_fill_n<CIntelligentPointer<CThingAICreature>*> DIFFER(62v62): register tie: retail keeps x in edi and n in ebx, ours swaps them (same instructions otherwise) | tried: plain placement new, `_Construct`, a count local, a const-ref local (4 grades) | next: compare with 0x007DC580 (same STLport loop, matched first grade over a vector element) -- the intelligent-pointer copy (base ctor + vtable + GetPItem/SetPItem calls) may need the 1-aligned GiveItems model; else lane gap: register allocation
 - 0x007B8530 CTCTavernTable::SetSeatState DIFFER(57v57): `mov edx,[ecx+34h] ; mov eax,[ecx+38h] ; sub eax,edx ; mov edx,[esp+4]` vs retail `mov eax,.. ; mov edx,.. ; sub edx,eax ; mov eax,[esp+4]` (seat/size register swap; p = seat + begin in retail) | tried: `size() > seat`, `seat < size()`, `*(begin() + (int)n)` (3 grades, scheduling-only) | next: an index-first operator[] (`n + begin()`) or the bool-vector type of the real header; possibly a lane gap: register allocation
 - 0x007B8AA0 CTCTavernTable::FreeSeat DIFFER(112v111): retail pushes esi in the prologue and keeps the seat start in esi across the size check (`mov esi,[edi+34h] .. mov ecx,esi ; add eax,ecx`); ours shrink-wraps `push esi` into the GetInterface hit block and re-reads `[edi+34h]` | tried: inline seat-free, STLport `end() - begin()` size, auto-inlined `SetSeatState(seat, false)`, explicit `bool* seats = begin()` local (4 grades) | next: match SetSeatState first (same TU; FreeSeat probably inlines it) and retry with that operator[]
 - 0x007DB5C0 CTCTavernGameCardBlackjack::Split DIFFER(237v224): retail has no destructor for the empty hand passed to `PlayersCards.insert` (no reload/free after the call, `test ecx,ecx` on the index, immediate zero stores); ours always frees the temporary, which costs an extra ebx push and keeps `&Bets` live | tried: temporary `vector<CCard*>()`, const local, block-scoped const local, countdown loop + local hand pointers + STLport `__copy_trivial` erase (4 grades) | next: the `insert(iterator)` one-argument overload or a vector whose destructor the TU cannot see (out-of-line `~vector` would show a call, so look for a by-value/static empty hand); the rest (inline push_back from the next hand, erase via memmove, Bets.insert, ReorderCards) is already in place
@@ -72,7 +72,7 @@ None. No row contains a second function body.
 ## Label corrections
 | Address | Catalog label | Real identity |
 |---|---|---|
-| 0x007A4260 | MakeHeap_AndSort | `_STL::sort<CThing**, CThingCompare_NearestToPos>` |
+| 0x007A4260 | MakeHeap_AndSort | `std::sort<CThing**, CThingCompare_NearestToPos>` |
 | 0x007A44C0 | CTCEnflame_ResetState | `CTCWillEnflame::CancelMove` |
 | 0x007AA4D0 | CTCInventory_OnDeactivate | `CTCAssassinRush::FinalCleanup` |
 | 0x007ACEA0 | Vector_Copy | `vector<CCharString>` copy ctor |

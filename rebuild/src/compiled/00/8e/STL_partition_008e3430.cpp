@@ -1,4 +1,4 @@
-// _STL::__partition(C3DVector* first, C3DVector* last, CIsUsableIciclePoint pred, const bidirectional_iterator_tag&) -- move the usable icicle points to the front of [first, last), return the partition point
+// std::__partition(C3DVector* first, C3DVector* last, CIsUsableIciclePoint pred, const bidirectional_iterator_tag&) -- move the usable icicle points to the front of [first, last), return the partition point
 // Leaf: ??$__partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E3430, length 137 bytes (+ int3 padding), `ret 0Ch`.
 // Identity: callers 0x008DE90B and 0x008E359F (the ice-troll icicle-assault TU). Ego_r.pdb names the instance
@@ -23,20 +23,20 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class vector;
 }
 
 namespace {
 class CIsUsableIciclePoint {                            // Ego_r.pdb, 8 bytes
 public:
-    const _STL::vector<NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData>* Icicles;   // +0x00
+    const std::vector<NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData>* Icicles;   // +0x00
     float IciclesLimit;                                 // +0x04
     bool operator()(const C3DVector& point) const;      // 0x008E2E40
 };
 }
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };

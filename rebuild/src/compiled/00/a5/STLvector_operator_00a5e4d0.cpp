@@ -1,4 +1,4 @@
-// _STL::vector::operator=(const vector& x) -- STLport vector assignment for an 8-byte trivially-copyable element (SElement8, descriptive): reallocate-and-copy when x outgrows the capacity, else copy over the live prefix and copy-construct any tail; the finish pointer set to start + x.size()
+// std::vector::operator=(const vector& x) -- STLport vector assignment for an 8-byte trivially-copyable element (SElement8, descriptive): reallocate-and-copy when x outgrows the capacity, else copy over the live prefix and copy-construct any tail; the finish pointer set to start + x.size()
 // Leaf: ??4?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5E4D0, 198 bytes, `ret 4`.
 // Callers: 0x00A5E618 (a CArray<> operator= wrapper @ 0x00A5E610) and the implicit copy assignments @ 0x00A5E730 /
@@ -18,7 +18,7 @@ struct SElement8 {                              // 8 bytes, copied memberwise as
     long m_04;
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() {} };
 
@@ -100,4 +100,4 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
 
 template class vector<SElement8>;
 
-}   // namespace _STL
+}   // namespace std

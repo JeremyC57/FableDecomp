@@ -33,7 +33,7 @@ public:
     virtual ~CBase();
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _T1, class _T2> struct pair {
@@ -96,8 +96,8 @@ template <class K, class V> class CKeyPairCompareLess { };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> > class CVectorMap {   // retail 16 bytes
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Data;                          // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Data;                          // +0x00
     C                        Compare;                       // +0x0C (empty comparator)
     bool                     Dirty;                         // +0x0D
     const value_type* LowerBound(const K& key) const;       // 0x009B21F0
@@ -121,7 +121,7 @@ public:
 class CCRCSymbolMap : public CBase {                        // vtable 0x0129CF84
 public:
     CVectorMap<unsigned long, long> SLONGMap;               // +0x04
-    _STL::set<unsigned long>        NamesUsed;              // +0x14
+    std::set<unsigned long>        NamesUsed;              // +0x14
     bool                            CheckForDuplicateSymbols;   // +0x20
     void AddSymbolDirty(const CCharString& name, long value);
     bool FindSymbol(const CCharString& name, long& value) const;
@@ -149,10 +149,10 @@ CBase::~CBase() { }
 int main()
 {
     int ok = 1;
-    static unsigned char room[8 * sizeof(_STL::pair<unsigned long, long>)];
+    static unsigned char room[8 * sizeof(std::pair<unsigned long, long>)];
     CCRCSymbolMap* m = (CCRCSymbolMap*)malloc(sizeof(CCRCSymbolMap));
     memset(m, 0, sizeof(CCRCSymbolMap));
-    typedef _STL::pair<unsigned long, long> TPair;
+    typedef std::pair<unsigned long, long> TPair;
     m->SLONGMap.Data._M_start = m->SLONGMap.Data._M_finish = (TPair*)room;
     m->SLONGMap.Data._M_end_of_storage = (TPair*)room + 1;
     CCharStringData data; data.PData = "ALPHA"; data.StringLength = 5;

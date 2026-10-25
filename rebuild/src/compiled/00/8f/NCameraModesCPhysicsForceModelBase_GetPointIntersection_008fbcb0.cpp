@@ -32,7 +32,7 @@ struct CPhysicsMeshObject {
     bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;   // 0x00A12450
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { };
 
 struct _List_node_base {
@@ -67,15 +67,15 @@ namespace NCameraModes {
 
 class CPhysicsForceModelBase {
 public:
-    bool GetPointIntersection(_STL::list<CPhysicsMeshObject>& meshes, long unused, const C3DVector& from,
+    bool GetPointIntersection(std::list<CPhysicsMeshObject>& meshes, long unused, const C3DVector& from,
                               const C3DVector& to, C3DVector& out);
 };
 
-bool CPhysicsForceModelBase::GetPointIntersection(_STL::list<CPhysicsMeshObject>& meshes, long, const C3DVector& from,
+bool CPhysicsForceModelBase::GetPointIntersection(std::list<CPhysicsMeshObject>& meshes, long, const C3DVector& from,
                                                   const C3DVector& to, C3DVector& out)
 {
     CMeshIntersectionData data;
-    for (_STL::list<CPhysicsMeshObject>::iterator it = meshes.begin(); it != meshes.end(); ) {
+    for (std::list<CPhysicsMeshObject>::iterator it = meshes.begin(); it != meshes.end(); ) {
         if ((it++)->GetPointIntersectionFromTo(from, to, data)) {
             out = data.IntersectionPosition;
             return true;

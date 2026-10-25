@@ -1,4 +1,4 @@
-// _STL::back_insert_iterator<vector<CCrimeWaitingForBribe> >::operator=(const CCrimeWaitingForBribe& value) -- append one bribe record through the iterator's vector (STLport push_back inlined: construct in place, or grow through _M_insert_overflow) and return the iterator
+// std::back_insert_iterator<vector<CCrimeWaitingForBribe> >::operator=(const CCrimeWaitingForBribe& value) -- append one bribe record through the iterator's vector (STLport push_back inlined: construct in place, or grow through _M_insert_overflow) and return the iterator
 // Leaf: ??4?$back_insert_iterator@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B4F20, 69 bytes (+11 int3), thiscall `ret 4`, returns this.
 // Callees: vector<CCrimeWaitingForBribe>::_M_insert_overflow(pointer, const T&, const __false_type&, size_type, bool)
@@ -21,7 +21,7 @@ public:
     long Type;                                              // +0x04 EOpinionDeedType
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

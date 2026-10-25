@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__uninitialized_fill_n(CUniqueVertex*, unsigned int, const CUniqueVertex&, const __false_type&)
+// Behaviour test for std::__uninitialized_fill_n(CUniqueVertex*, unsigned int, const CUniqueVertex&, const __false_type&)
 // (0x00AD62E0): n copies of x are constructed in raw storage (the flag and both index sets copied), the end pointer
 // first + n is returned, and n = 0 constructs nothing and returns first.
 #include <cstdio>
@@ -7,7 +7,7 @@
 
 static int gSetCopies = 0;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Key> class set {                   // deep-copying stand-in for set<unsigned long>
@@ -52,7 +52,7 @@ _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& 
 namespace QuadricOptimiserInternals {
 class CIndexList {
 public:
-    _STL::set<unsigned long> Indices;
+    std::set<unsigned long> Indices;
 };
 class CUniqueVertex {
 public:
@@ -74,7 +74,7 @@ int main()
         x.FaceList.Indices.Add(2u);
         static double storage[64];
         CUniqueVertex* first = (CUniqueVertex*)storage;
-        CUniqueVertex* end = _STL::__uninitialized_fill_n(first, 3u, x, _STL::__false_type());
+        CUniqueVertex* end = std::__uninitialized_fill_n(first, 3u, x, std::__false_type());
         if (end != first + 3) ++fails;
         if (gSetCopies != 6) ++fails;
         for (int i = 0; i < 3; ++i) {
@@ -83,7 +83,7 @@ int main()
             if (first[i].FaceList.Indices.Count != 1u || first[i].FaceList.Indices.Items[0] != 2u) ++fails;
             if (first[i].FaceList.Indices.Items == x.FaceList.Indices.Items) ++fails;
         }
-        CUniqueVertex* none = _STL::__uninitialized_fill_n(first + 3, 0u, x, _STL::__false_type());
+        CUniqueVertex* none = std::__uninitialized_fill_n(first + 3, 0u, x, std::__false_type());
         if (none != first + 3 || gSetCopies != 6) ++fails;
         for (int i = 0; i < 3; ++i)
             first[i].~CUniqueVertex();

@@ -1,4 +1,4 @@
-// Behaviour test for 00ae7aa0 (_STL::vector<C3DQuad2>::resize(n)): growing appends through one fill insert at end(), shrinking erases the tail
+// Behaviour test for 00ae7aa0 (std::vector<C3DQuad2>::resize(n)): growing appends through one fill insert at end(), shrinking erases the tail
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>

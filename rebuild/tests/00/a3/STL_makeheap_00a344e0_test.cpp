@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A344E0 _STL::__make_heap: the range becomes a max-heap on the unsigned key; every entry kept intact.
+// Behaviour test for 0x00A344E0 std::__make_heap: the range becomes a max-heap on the unsigned key; every entry kept intact.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

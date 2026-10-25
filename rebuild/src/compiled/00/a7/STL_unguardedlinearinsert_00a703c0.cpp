@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<long,C3DMeshVolume>* last, pair<long,C3DMeshVolume> val, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- insertion-sort inner step over the navigation containment volumes: shift every entry with a larger key up one slot, drop the value into the gap, destroy the by-value copy
+// std::__unguarded_linear_insert(pair<long,C3DMeshVolume>* last, pair<long,C3DMeshVolume> val, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- insertion-sort inner step over the navigation containment volumes: shift every entry with a larger key up one slot, drop the value into the gap, destroy the by-value copy
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A703C0, 200 bytes (+8 int3), /Gr `__fastcall` (last in ecx; the
 //   16-byte value and the empty comparator on the stack, `ret 14h`).
@@ -80,7 +80,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -91,10 +91,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)

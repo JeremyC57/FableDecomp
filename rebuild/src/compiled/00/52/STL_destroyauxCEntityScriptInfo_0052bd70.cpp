@@ -1,4 +1,4 @@
-// _STL::__destroy_aux<CEntityScriptInfo*>(first, last, const __false_type&) -- STLport range destroy of NThingManager::CEntityRuntimePersistence::CEntityScriptInfo records: run each element's destructor from first to last (free the SaveData buffer, destroy the Script string)
+// std::__destroy_aux<CEntityScriptInfo*>(first, last, const __false_type&) -- STLport range destroy of NThingManager::CEntityRuntimePersistence::CEntityScriptInfo records: run each element's destructor from first to last (free the SaveData buffer, destroy the Script string)
 // Leaf: ??$__destroy_aux
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052BD70, 51 bytes, `ret 4` (/Gr `__fastcall`: first in ecx, last in edx, the
 //   `__false_type` reference on the stack).
@@ -25,7 +25,7 @@ public:
     CCharString& operator=(const CCharString& other);                     // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -90,7 +90,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {               // retail CArray<T>: an STLport vector (12 bytes)
+template <class T> class CArray : public std::vector<T> {               // retail CArray<T>: an STLport vector (12 bytes)
 };
 
 namespace NThingManager {
@@ -103,7 +103,7 @@ struct CEntityScriptInfo {                                                // NTh
 }
 using NThingManager::CEntityScriptInfo;
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 // STLport 4.x __destroy_aux; the algorithm TU is compiled /Gr, so the template is __fastcall.
 template <class _ForwardIterator>

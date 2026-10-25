@@ -1,5 +1,5 @@
 // vector<C3DMeshInfo>::reserve(unsigned int n) -- grow the mesh bank's mesh info array to n entries, copying the existing infos into a fresh block
-// Leaf: ?reserve@?$vector@VC3DMeshInfo@@V?$allocator@VC3DMeshInfo@@@_STL@@@_STL@@QAEXI@Z
+// Leaf: ?reserve@?$vector@VC3DMeshInfo@@V?$allocator@VC3DMeshInfo@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2C210, 145 bytes, `ret 4`. Only caller 0x00A26702 (CMeshDataBank sizing its
 //   three info arrays: +0x38C C3DMeshInfo, +0x398 CPhysicsMeshInfo, +0x3A4 C3DAnimationInfo). The catalog label
 //   "vector_reserve_generic" is descriptive; the element is the 0x60-byte C3DMeshInfo (Ego_r.pdb, /96 reciprocal).
@@ -59,7 +59,7 @@ public:
     unsigned long     LODDataSizes[4];                  // +0x50
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -104,4 +104,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 }
 
-template void _STL::vector<C3DMeshInfo>::reserve(unsigned int);
+template void std::vector<C3DMeshInfo>::reserve(unsigned int);

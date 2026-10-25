@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(CWideString* last, CWideString val, less<CWideString> comp) -- insertion-sort inner step over wide strings: shift larger strings up one slot until val fits, then assign val there
+// std::__unguarded_linear_insert(CWideString* last, CWideString val, less<CWideString> comp) -- insertion-sort inner step over wide strings: shift larger strings up one slot until val fits, then assign val there
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B1870, 74 bytes, `ret 8`: `__fastcall` (/Gr algorithm TU: last in ecx, the 4-byte
 // CWideString value and the empty comparator on the stack). Catalog name "CWideString_BackupAndRestore" is descriptive and
@@ -16,7 +16,7 @@ public:
     bool operator<(const CWideString& other) const;     // 0x0099AF70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -35,5 +35,5 @@ void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _
 }
 }
 
-template void __fastcall _STL::__unguarded_linear_insert<CWideString*, CWideString, _STL::less<CWideString> >(
-    CWideString* __last, CWideString __val, _STL::less<CWideString> __comp);
+template void __fastcall std::__unguarded_linear_insert<CWideString*, CWideString, std::less<CWideString> >(
+    CWideString* __last, CWideString __val, std::less<CWideString> __comp);

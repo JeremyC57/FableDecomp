@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<unsigned long, pair<const unsigned long, CContractionReference>, ...>::_M_insert @ 0x00AD42C0
+// Behaviour test for std::_Rb_tree<unsigned long, pair<const unsigned long, CContractionReference>, ...>::_M_insert @ 0x00AD42C0
 // Links a copy of v as the left or right child of y (left when y is the header, or w == 0 and (x != 0 or v < key(y))),
 // keeps the header's root/leftmost/rightmost, rebalances and counts the node.
 #include <cstdio>

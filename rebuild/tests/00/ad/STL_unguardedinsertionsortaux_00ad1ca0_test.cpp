@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_insertion_sort_aux<CGroup*, CGroup, comp> @ 0x00AD1CA0
+// Behaviour test for std::__unguarded_insertion_sort_aux<CGroup*, CGroup, comp> @ 0x00AD1CA0
 // Runs the unguarded linear insert on every element of [first, last); elements before first act as the guard.
 #include <cstdio>
 

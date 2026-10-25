@@ -11,7 +11,7 @@ struct CBasicStringData{char*PData;unsigned StringLength,DataLength;bool UseFast
 #pragma pack(pop)
 struct CCharString{CBasicStringData*PData;CCharString();CCharString(const CCharString&);~CCharString();};
 template<class T>struct CBasicString{static int __fastcall Compare(const T*,const T*);};
-namespace _STL{
+namespace std{
 template<class A,class B>struct pair{A first;B second;};
 template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;__forceinline vector():_M_start(0),_M_finish(0),_M_end_of_storage(0){}~vector();};
 }
@@ -33,16 +33,16 @@ __declspec(noinline)bool __fastcall IsValidStrikeEventName(const CCharString&nam
  if(Equal(name,CombatStop2)){start=false;primaryLegacy=false;return true;}
  return false;
 }
-void __fastcall GetHelperPointNamesFromStrikeEventName(const CCharString&,_STL::vector<CCharString>&,bool,bool,bool);
+void __fastcall GetHelperPointNamesFromStrikeEventName(const CCharString&,std::vector<CCharString>&,bool,bool,bool);
 __forceinline bool Equal(const CCharString&a,const CCharString&b){if(a.PData==b.PData)return true;if(!a.PData||!b.PData)return false;if(a.PData->StringLength!=b.PData->StringLength)return false;return CBasicString<char>::Compare(a.PData->PData,b.PData->PData)==0;}
 // Layout: PDB functor12 bytes: StrikeEvent0,BestEventEndFrame4,FoundEvent8.
-struct CGetMatchingStrikeEndEventName{CStrikeEvent*StrikeEvent;long BestEventEndFrame;bool FoundEvent;void operator()(const _STL::pair<CCharString,float>&);};
-void CGetMatchingStrikeEndEventName::operator()(const _STL::pair<CCharString,float>&event){
+struct CGetMatchingStrikeEndEventName{CStrikeEvent*StrikeEvent;long BestEventEndFrame;bool FoundEvent;void operator()(const std::pair<CCharString,float>&);};
+void CGetMatchingStrikeEndEventName::operator()(const std::pair<CCharString,float>&event){
  float frame=FramesPerSecond*event.second;bool start,weapon,legacy,primaryLegacy;
  if(IsValidStrikeEventName(event.first,start,weapon,legacy,primaryLegacy)){
   if(!start){bool matches=false;
    if(StrikeEvent->Legacy&&legacy){if(!StrikeEvent->PrimaryLegacy)return;matches=primaryLegacy;}
-   else{if(weapon!=StrikeEvent->Weapon)return;_STL::vector<CCharString>names;GetHelperPointNamesFromStrikeEventName(event.first,names,weapon,legacy,primaryLegacy);if(Equal(names._M_start[0],StrikeEvent->HelperPointName))matches=true;}
+   else{if(weapon!=StrikeEvent->Weapon)return;std::vector<CCharString>names;GetHelperPointNamesFromStrikeEventName(event.first,names,weapon,legacy,primaryLegacy);if(Equal(names._M_start[0],StrikeEvent->HelperPointName))matches=true;}
    if(matches&&StrikeEvent->StartFrame<frame&&BestEventEndFrame>frame){BestEventEndFrame=(long)frame;FoundEvent=true;}
   }
  }

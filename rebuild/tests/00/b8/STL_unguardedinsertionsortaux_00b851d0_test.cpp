@@ -22,7 +22,7 @@ public:
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
 // STLport 4.6 sort / stable_sort machinery over CSortElement (the model the chunk-428 sources compile).
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -365,9 +365,9 @@ void __fastcall __stable_sort_aux(_RandomAccessIter __first, _RandomAccessIter _
     else
         __stable_sort_adaptive(__first, __last, buf.begin(), _Distance(buf.size()), __comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::less<CSortElement> CLess;
+typedef std::less<CSortElement> CLess;
 
 // Test helpers: elements tagged with their original index so stability is checkable.
 static CEngineSubPrimitiveBase* Tag(int i) { return (CEngineSubPrimitiveBase*)(size_t)(i + 1); }
@@ -410,7 +410,7 @@ int main()
     static CSortElement a[120];
     for (int i = 0; i < 16; ++i) a[i] = CSortElement(0, Tag(i));
     for (int i = 16; i < 120; ++i) a[i] = CSortElement(NextRand() % 40, Tag(i));
-    _STL::__unguarded_insertion_sort_aux(a + 16, a + 120, (CSortElement*)0, CLess());
+    std::__unguarded_insertion_sort_aux(a + 16, a + 120, (CSortElement*)0, CLess());
     if (!IsStableSorted(a, 120)) { std::printf("00b851d0_TEST FAIL\n"); return 1; }
     std::printf("00b851d0_TEST PASS\n");
     return 0;

@@ -1,5 +1,5 @@
-// _STL::vector<CTexture>::resize(unsigned int new_size) -- STLport one-argument resize of the progress display's texture vector: resize(n, CTexture()) with the empty default texture destroyed on both exits
-// Leaf: ?resize@?$vector@VCTexture@@@_STL@@QAEXI@Z
+// std::vector<CTexture>::resize(unsigned int new_size) -- STLport one-argument resize of the progress display's texture vector: resize(n, CTexture()) with the empty default texture destroyed on both exits
+// Leaf: ?resize@?$vector@VCTexture@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049B7F0, 103 bytes (+ int3 padding), `__fastcall` (this stays in ecx), `ret 4`.
 // Identity: Ego_r.pdb `?resize@?$vector@VCTexture@@...@@QAEXI@Z`; the erase callee is the landed vector<CTexture>::erase
 //   0x0049B3B0 (FableWin.pdb names) and the temporary's destructor is ~CTexture 0x009F9F70 (byte twin of
@@ -23,7 +23,7 @@ public:
     ~CTexture();                                        // 0x009F9F70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 class vector {
 public:

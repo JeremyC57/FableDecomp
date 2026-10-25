@@ -1,6 +1,6 @@
 # Chunk 390 -- lessons from the authoring agent (fold into GOTCHAS at landing)
 
-- Retail STLport 4.x lives in namespace `std`, not `_STLP`/`_STL` (RTTI `.?AU?$pair@...@std@@`). It has 12-byte
+- Retail STLport 4.x lives in namespace `std`, not `_STLP`/`std` (RTTI `.?AU?$pair@...@std@@`). It has 12-byte
   vectors and 4-byte lists (sentinel `_M_node`, node {next, prev, data}), and its allocator is
   `n != 0 ? malloc(n*sz) : 0` / `if (p) free(p)`. Name algorithm rows with the STLport spelling (`__merge_sort_loop`,
   `__stable_sort_adaptive`, `_M_insert_overflow`, `_M_allocate_and_copy`) (0x007107D0 .. 0x00711B80).

@@ -1,4 +1,4 @@
-// _STL::map<EObjectAugmentationType, CObjectAugmentationSoundSet>::operator[](const key_type& k) -- STLport subscript on an augmentation sound map: lower_bound, insert (k, CObjectAugmentationSoundSet()) when absent, return the sound set
+// std::map<EObjectAugmentationType, CObjectAugmentationSoundSet>::operator[](const key_type& k) -- STLport subscript on an augmentation sound map: lower_bound, insert (k, CObjectAugmentationSoundSet()) when absent, return the sound set
 // Leaf: ??A?$map
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076AFF0, 183 bytes, `ret 4`.
 // Callers: 0x00766C63 and 0x00766D06 (CTCObjectAugmentations, on InitSounds / LoopingSounds).
@@ -31,7 +31,7 @@ struct CObjectAugmentationSoundSet {                        // Ego_r.pdb, 12 byt
     CObjectAugmentationSoundSet() : Played(false), Sound("", -1), Handle(0xFFFFFFFF) { }   // 0x00765CC0 out of line
 };
 
-namespace _STL {
+namespace std {
 
 template <class T> struct less {
     less() { }

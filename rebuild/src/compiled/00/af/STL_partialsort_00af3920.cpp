@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CPSCPair* first, CPSCPair* middle, CPSCPair* last, CPSCPair*, CPSCLess comp) -- STLport partial_sort over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: heapify [first, middle), pop every entry of [middle, last) whose name sorts before the heap top into the heap, then sort the heap
+// std::__partial_sort(CPSCPair* first, CPSCPair* middle, CPSCPair* last, CPSCPair*, CPSCLess comp) -- STLport partial_sort over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: heapify [first, middle), pop every entry of [middle, last) whose name sorts before the heap top into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF3920, 141 bytes, `ret 0Ch`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, middle in edx, then last, the value-type pointer tag and the 4-byte empty comparator slot on the stack.
@@ -64,7 +64,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -75,13 +75,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 typedef CKeyPairCompareLess<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*);   // 0x00AF34E0
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
@@ -112,4 +112,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 }
 }
 
-template void __fastcall _STL::__partial_sort<CPSCPair*, CPSCPair, CPSCLess>(CPSCPair*, CPSCPair*, CPSCPair*, CPSCPair*, CPSCLess);
+template void __fastcall std::__partial_sort<CPSCPair*, CPSCPair, CPSCLess>(CPSCPair*, CPSCPair*, CPSCPair*, CPSCPair*, CPSCLess);

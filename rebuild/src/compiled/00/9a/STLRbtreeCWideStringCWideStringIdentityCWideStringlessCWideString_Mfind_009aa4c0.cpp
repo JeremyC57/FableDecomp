@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::_M_find(const CWideString& k) const -- set<CWideString> lookup: lower-bound walk, then the header unless the found key equals k
+// std::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::_M_find(const CWideString& k) const -- set<CWideString> lookup: lower-bound walk, then the header unless the found key equals k
 // Leaf: ?_M_find@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AA4C0, 83 bytes, thiscall `ret 4`, the node pointer in eax. Catalog name
 // "BinaryTree_FindByComparator" (descriptive). Callers: CBankFileManager 0x009A7D9B (CreatedRetailBanks, the
@@ -14,7 +14,7 @@ public:
     bool operator<(const CWideString& other) const;         // 0x0099AF70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

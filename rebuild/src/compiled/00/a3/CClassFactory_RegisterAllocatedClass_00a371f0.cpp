@@ -16,7 +16,7 @@
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 template <class T> struct _List_node {
     _List_node* _M_next;
@@ -62,7 +62,7 @@ public:
 }
 
 class CClass;
-typedef _STL::list<CClass*> CClassList;
+typedef std::list<CClass*> CClassList;
 
 class CClass {
 public:

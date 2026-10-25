@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__make_heap over (unsigned key, 8-byte payload) pairs -- heap property, payloads kept with their keys
+// Behaviour test: std::__make_heap over (unsigned key, 8-byte payload) pairs -- heap property, payloads kept with their keys
 #include <cstdio>
 
 struct SPayload {                                       // 8-byte POD payload

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A323D0 _STL::__unguarded_insertion_sort_aux over pair<unsigned long, C3DDummyObject>: with a
+// Behaviour test for 0x00A323D0 std::__unguarded_insertion_sort_aux over pair<unsigned long, C3DDummyObject>: with a
 // sentinel minimum in front of the range, the pass sorts by unsigned key and keeps equal keys in their original order.
 #include <cstdio>
 struct CMatrix3x4 { float M[12]; };

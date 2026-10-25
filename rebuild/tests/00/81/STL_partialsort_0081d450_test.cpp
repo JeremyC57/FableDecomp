@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__partial_sort over (long key, CTextureMorphEntry) pairs -- the first four are the four smallest, ascending
+// Behaviour test: std::__partial_sort over (long key, CTextureMorphEntry) pairs -- the first four are the four smallest, ascending
 #include <cstdio>
 
 struct SPayload {                                       // 20-byte POD payload

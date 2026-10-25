@@ -1,4 +1,4 @@
-// _STL::vector::_M_allocate_and_copy(unsigned int n, const CNavigationPosition* first, const CNavigationPosition* last) -- allocate room for n 12-byte navigation positions and copy-construct [first, last) into it, return the block
+// std::vector::_M_allocate_and_copy(unsigned int n, const CNavigationPosition* first, const CNavigationPosition* last) -- allocate room for n 12-byte navigation positions and copy-construct [first, last) into it, return the block
 // Leaf: ??$_M_allocate_and_copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7F9F0, 88 bytes, thiscall `ret 0Ch` (`this` unused: the
 //   allocator is empty).
@@ -28,7 +28,7 @@ public:
     long      Layer;                                        // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -77,4 +77,4 @@ public:
 };
 }
 
-template CNavigationPosition* _STL::vector<CNavigationPosition>::_M_allocate_and_copy<const CNavigationPosition*>(unsigned int, const CNavigationPosition*, const CNavigationPosition*);
+template CNavigationPosition* std::vector<CNavigationPosition>::_M_allocate_and_copy<const CNavigationPosition*>(unsigned int, const CNavigationPosition*, const CNavigationPosition*);

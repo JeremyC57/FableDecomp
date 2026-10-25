@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(COptimisedSubMesh* first, unsigned int n, const COptimisedSubMesh& x, const __false_type&) -- copy-construct n copies of one optimiser sub-mesh into raw storage
+// std::__uninitialized_fill_n(COptimisedSubMesh* first, unsigned int n, const COptimisedSubMesh& x, const __false_type&) -- copy-construct n copies of one optimiser sub-mesh into raw storage
 // Flags: /Gr
 // Leaf: ??$__uninitialized_fill_n@PAVCOptimisedSubMesh
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD76E0, 0xEB bytes, __fastcall (first ecx, n edx), `ret 8` (x, the
@@ -34,7 +34,7 @@ public:
     CCountedPointer(const CCountedPointer& x) : Data(x.Data), Info(x.Info) { if (Info) ++Info->RefCount; }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -96,7 +96,7 @@ public:
     }
 };
 
-} // namespace _STL
+} // namespace std
 
 namespace QuadricOptimiserInternals {
 
@@ -112,13 +112,13 @@ public:
 
 class COptimisedSubMesh {                                   // 0x18 bytes in retail
 public:
-    _STL::vector<CCountedPointer<COptimisedPrimitive> > Primitives;   // +0x00
-    _STL::vector<COptimisedBone>                        Bones;        // +0x0C
+    std::vector<CCountedPointer<COptimisedPrimitive> > Primitives;   // +0x00
+    std::vector<COptimisedBone>                        Bones;        // +0x0C
 };
 
 } // namespace QuadricOptimiserInternals
 
-namespace _STL {
+namespace std {
 template <> QuadricOptimiserInternals::COptimisedBone*
 __uninitialized_copy<const QuadricOptimiserInternals::COptimisedBone*, QuadricOptimiserInternals::COptimisedBone*>(
     const QuadricOptimiserInternals::COptimisedBone*, const QuadricOptimiserInternals::COptimisedBone*,
@@ -128,4 +128,4 @@ template QuadricOptimiserInternals::COptimisedSubMesh*
 __uninitialized_fill_n<QuadricOptimiserInternals::COptimisedSubMesh*, unsigned int, QuadricOptimiserInternals::COptimisedSubMesh>(
     QuadricOptimiserInternals::COptimisedSubMesh*, unsigned int, const QuadricOptimiserInternals::COptimisedSubMesh&,
     const __false_type&);
-} // namespace _STL
+} // namespace std

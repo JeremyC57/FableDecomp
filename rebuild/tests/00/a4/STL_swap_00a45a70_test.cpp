@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A45A70: _STL::swap<C3DSkeletalBoneMorph> (swap two bone morphs through a temporary)
+// Behaviour test for 0x00A45A70: std::swap<C3DSkeletalBoneMorph> (swap two bone morphs through a temporary)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -80,7 +80,7 @@ static void FillMorphs(C3DSkeletalBoneMorph* a, const unsigned long* crcs, int n
         SetMorph(a[i], crcs[i]);
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b)
 {
@@ -97,11 +97,11 @@ int main()
         SetMorph(a, 1);
         SetMorph(b, 30);
         int live = g_liveStrings;
-        _STL::swap(a, b);
+        std::swap(a, b);
         Check(a.BoneNameCRC == 30 && Consistent(a));
         Check(b.BoneNameCRC == 1 && Consistent(b));
         Check(g_liveStrings == live);
-        _STL::swap(a, a);
+        std::swap(a, a);
         Check(a.BoneNameCRC == 30 && Consistent(a));
     }
     Check(g_liveStrings == 0);

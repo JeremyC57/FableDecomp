@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const CNavQuadTree::CNavigationLayer& x) -- append a copy of a 40-byte navigation layer (node array, line lists, switchable line-list map) to the quad tree's layer array
+// std::vector::push_back(const CNavQuadTree::CNavigationLayer& x) -- append a copy of a 40-byte navigation layer (node array, line lists, switchable line-list map) to the quad tree's layer array
 // Leaf: ?push_back@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A85E40, 105 bytes, thiscall `ret 4`.
 // Identity: the only call site 0x00A7AA36 is CNavQuadTree::Initialise 0x00A7A8D0 (NavigationLayers +0x1C); the overflow
@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 class C2DLineF;
 class CANavQuadTreeNode;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -69,11 +69,11 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> { };   // retail CArray<T>: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> { };   // retail CArray<T>: the 12-byte STLport vector
 
 template <class K, class V> class CKeyPairCompareLess { };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                       // +0x0c
     bool Dirty;                                         // +0x0d
@@ -84,10 +84,10 @@ public:
     class CNavigationLayer {                            // 0x28 bytes
     public:
         CArray<CANavQuadTreeNode*>             Nodes;                // +0x00
-        _STL::vector<_STL::list<C2DLineF> >    LineLists;            // +0x0c
-        CVectorMap<unsigned __int64, _STL::list<C2DLineF>,
-                   CKeyPairCompareLess<unsigned __int64, _STL::list<C2DLineF> > > SwitchableLineLists;   // +0x18
+        std::vector<std::list<C2DLineF> >    LineLists;            // +0x0c
+        CVectorMap<unsigned __int64, std::list<C2DLineF>,
+                   CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF> > > SwitchableLineLists;   // +0x18
     };
 };
 
-template void _STL::vector<CNavQuadTree::CNavigationLayer>::push_back(const CNavQuadTree::CNavigationLayer& __x);
+template void std::vector<CNavQuadTree::CNavigationLayer>::push_back(const CNavQuadTree::CNavigationLayer& __x);

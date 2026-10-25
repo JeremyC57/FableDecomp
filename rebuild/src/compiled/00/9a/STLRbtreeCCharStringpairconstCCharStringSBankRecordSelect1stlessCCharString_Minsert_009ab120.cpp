@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CCharString, pair<const CCharString, SBankRecord>, _Select1st<...>, less<CCharString> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<CCharString, 20-byte record> node insert: create a node for v, link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
+// std::_Rb_tree<CCharString, pair<const CCharString, SBankRecord>, _Select1st<...>, less<CCharString> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<CCharString, 20-byte record> node insert: create a node for v, link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AB120, 206 bytes, thiscall `ret 14h` (the hidden iterator result pointer first).
 // Catalog name "RBTree_Insert" (descriptive). Callers: insert_unique 0x009AB1F0 (0x009AB266 / 0x009AB2BF) and the hinted
@@ -36,7 +36,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -150,7 +150,7 @@ struct SBankRecord {                                        // 20-byte mapped va
     CWideString Strings[4];                                 // +0x00
     long        Value;                                      // +0x10
 };
-typedef _STL::pair<const CCharString, SBankRecord> SBankEntry;
-template _STL::_Rb_tree<CCharString, SBankEntry, _STL::_Select1st<SBankEntry>, _STL::less<CCharString> >::iterator
-_STL::_Rb_tree<CCharString, SBankEntry, _STL::_Select1st<SBankEntry>, _STL::less<CCharString> >::_M_insert(
-    _STL::_Rb_tree_node_base*, _STL::_Rb_tree_node_base*, const SBankEntry&, _STL::_Rb_tree_node_base*);
+typedef std::pair<const CCharString, SBankRecord> SBankEntry;
+template std::_Rb_tree<CCharString, SBankEntry, std::_Select1st<SBankEntry>, std::less<CCharString> >::iterator
+std::_Rb_tree<CCharString, SBankEntry, std::_Select1st<SBankEntry>, std::less<CCharString> >::_M_insert(
+    std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, const SBankEntry&, std::_Rb_tree_node_base*);

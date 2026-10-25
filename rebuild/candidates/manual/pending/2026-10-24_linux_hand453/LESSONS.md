@@ -55,7 +55,7 @@ Review at landing:
   unaffected; align the names if the lander checks mangling.
 - **Errors in already-landed sources:**
   - 0x00F3B220 is named `std::__uninitialized_fill_n<pair<EHeroMorphType, CTextureMorphEntry>>`. It is
-    `_STL::__uninitialized_fill_n<CRangeCompressor::CScriptEntry*>`.
+    `std::__uninitialized_fill_n<CRangeCompressor::CScriptEntry*>`.
   - 0x00F3B420 "CRetailVector_SRecord24::PushBack" is `vector<CRangeCompressor::CScriptEntry>::push_back`.
   - 0x00F37030 FreeMemoryPage names its callee "FreeTextureSlot". The PDB name is `FreeResourceEntry`.
   - 0x00F3B8A0 / 0x00F3B8F0 "CElement12_00f3b640" is CArray<unsigned short>.

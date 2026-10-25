@@ -1,4 +1,4 @@
-// _STL::__final_insertion_sort(unsigned long* first, unsigned long* last, CBankFile::CompareDataOffset comp) -- STLport introsort tail over a bank's entry indices: more than 16 elements -> insertion-sort the first 16, then unguarded linear inserts for the rest; otherwise one insertion sort
+// std::__final_insertion_sort(unsigned long* first, unsigned long* last, CBankFile::CompareDataOffset comp) -- STLport introsort tail over a bank's entry indices: more than 16 elements -> insertion-sort the first 16, then unguarded linear inserts for the rest; otherwise one insertion sort
 // Leaf: __final_insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D3ED0, 75 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // one-pointer comparator by value on the stack -- the SGI/STLport algorithm TUs are /Gr).

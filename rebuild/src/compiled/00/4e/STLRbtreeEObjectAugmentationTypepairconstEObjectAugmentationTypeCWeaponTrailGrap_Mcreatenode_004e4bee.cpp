@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<EObjectAugmentationType,pair<const EObjectAugmentationType,CWeaponTrailGraphicSet>,...>::_M_create_node(const value_type& x) -- STLport map node factory (probably CWeaponDef::WeaponTrails): malloc a 0x1C-byte red-black node and copy-construct the 12-byte {key, trail set} value at +0x10
+// std::_Rb_tree<EObjectAugmentationType,pair<const EObjectAugmentationType,CWeaponTrailGraphicSet>,...>::_M_create_node(const value_type& x) -- STLport map node factory (probably CWeaponDef::WeaponTrails): malloc a 0x1C-byte red-black node and copy-construct the 12-byte {key, trail set} value at +0x10
 // Leaf: _M_create_node
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E4BEE, 40 bytes, `ret 4` (size-optimised TU: unaligned entry,
 //   `pop ecx` after malloc). `this` (the tree) is never read: the node allocator is empty.
@@ -22,7 +22,7 @@
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 inline void* operator new(size_t, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 enum EObjectAugmentationType { OBJECT_AUGMENTATION_NONE };
 

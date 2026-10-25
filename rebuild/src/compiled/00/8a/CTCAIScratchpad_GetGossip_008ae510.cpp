@@ -22,7 +22,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -72,17 +72,17 @@ public:
     _Tp& operator[](const _Key& __k);                    // 0x007AEBE0
 };
 
-} // namespace _STL
+} // namespace std
 
-typedef _STL::map<CCharString, _STL::vector<CCharString> > CGossipMap;
+typedef std::map<CCharString, std::vector<CCharString> > CGossipMap;
 
 class CTCAIScratchpad {
 public:
     static CGossipMap Gossip;                               // 0x013BAE44 (descriptive)
-    static const _STL::vector<CCharString>* __fastcall GetGossip(CCharString category);
+    static const std::vector<CCharString>* __fastcall GetGossip(CCharString category);
 };
 
-const _STL::vector<CCharString>* __fastcall CTCAIScratchpad::GetGossip(CCharString category)
+const std::vector<CCharString>* __fastcall CTCAIScratchpad::GetGossip(CCharString category)
 {
     CGossipMap::iterator it = Gossip.find(category);
     if (it == Gossip.end())

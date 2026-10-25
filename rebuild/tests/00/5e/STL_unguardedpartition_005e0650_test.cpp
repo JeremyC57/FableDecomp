@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__unguarded_partition(CCharString* first, CCharString* last, CCharString pivot, less<CCharString> comp) (retail 0x005E0650)
+// Behaviour test of std::__unguarded_partition(CCharString* first, CCharString* last, CCharString pivot, less<CCharString> comp) (retail 0x005E0650)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

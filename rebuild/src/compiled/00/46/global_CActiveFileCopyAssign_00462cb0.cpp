@@ -1,6 +1,6 @@
 // 00462cb0 CActiveFile_CopyAssign
 // Flags: /O2 /Oy /W3 /O1 /Oy-
-// Leaf: ??4?$vector@Uvalue_type@FileVectorAssignment@@@_STL@FileVectorAssignment@@QAEAAU012@ABU012@@Z
+// Leaf: ??4?$vector@Uvalue_type@FileVectorAssignment@@@std@FileVectorAssignment@@QAEAAU012@ABU012@@Z
 #include <stdlib.h>
 #include <string.h>
 #include <new>
@@ -8,7 +8,7 @@
 namespace FileVectorAssignment {
 // Layout: receiver is a12-byte STLport vector, three-dword POD elements per pointer arithmetic and movsd copies. Semantic element name unresolved.
 struct value_type{unsigned Data[3];};
-namespace _STL {
+namespace std {
 template<class T>__forceinline T*_Copy(T*first,T*last,T*out){for(int n=last-first;n>0;--n,++first,++out)*out=*first;return out;}
 template<class T>__forceinline void _UninitializedCopy(T*out,T*first,T*last){while(first!=last){if(out)new(out)T(*first);++first;++out;}}
 template<class T>struct vector {T*_M_start,*_M_finish,*_M_end_of_storage;T*_M_allocate_and_copy(unsigned,T*,T*);void _M_clear();vector&operator=(const vector&);};

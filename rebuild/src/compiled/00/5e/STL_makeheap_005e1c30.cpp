@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, CKeyPairCompareLess<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > comp, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >*, int*) -- STLport make_heap core for anim-component map entries: sift every parent down, last parent first
+// std::__make_heap(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, CKeyPairCompareLess<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > comp, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >*, int*) -- STLport make_heap core for anim-component map entries: sift every parent down, last parent first
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E1C30, 81 bytes, `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   edi, last in edx, then the empty comparator and the two null type-tag pointers on the stack).

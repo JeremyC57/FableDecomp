@@ -19,7 +19,7 @@ enum EBodyLocation { BODY_LOCATION_NONE = 0 };
 
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class A, class B> struct pair {
@@ -48,10 +48,10 @@ public:
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                // +0x0C
     bool Dirty;                                  // +0x0D
@@ -78,6 +78,6 @@ public:
 
 void CWoundMorphs::Add(CEntry& entry)
 {
-    Morphs.push_back(_STL::pair<EBodyLocation, CEntry>(entry.Location, entry));
+    Morphs.push_back(std::pair<EBodyLocation, CEntry>(entry.Location, entry));
     Morphs.Dirty = true;
 }

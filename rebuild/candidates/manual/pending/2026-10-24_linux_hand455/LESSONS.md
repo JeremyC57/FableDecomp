@@ -51,5 +51,5 @@ Review at landing:
   CPredicateAndBuffer model) are /Od-TU `_List_iterator(_List_node_base*)` constructors of list<CVsyncCallbackTimer::
   CPendingQuery> calling the optimised `_List_iterator_base(_List_node_base*)` 0x0041C780 (catalogued "__EH_epilog3",
   also wrong: `mov eax,ecx ; mov ecx,[esp+4] ; mov [eax],ecx ; ret 4`). Landed 0x0042D131 / 0x0042D1B7 / 0x005812DF
-  model STLport in namespace `std` (cosmetic; `_STL` per the wave rules).
+  model STLport in namespace `std` (cosmetic; `std` per the wave rules).
 - 0x004DD728 is one COMDAT shared (ICF) by ~CTCShotDefinitionProjectile and ~pair<const long, CEnginePrimitiveHandle>.

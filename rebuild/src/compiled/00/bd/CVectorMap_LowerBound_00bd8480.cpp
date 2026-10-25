@@ -20,7 +20,7 @@ public:
     CCompositeBlendDesc* OverlaidBlends[3];        // +0x08 vector<CCompositeBlendDesc> {start, finish, end}
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -34,18 +34,18 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
     return __x.first < __y.first || (!(__y.first < __x.first) && __x.second < __y.second);
 }
 
-}   // namespace _STL
+}   // namespace std
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
     CKeyPairCompareLess() { }
-    bool operator()(const _STL::pair<K, V>& entry, const K& key) const { return entry.first < key; }
-    bool operator()(const K& key, const _STL::pair<K, V>& entry) const { return key < entry.first; }
+    bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
+    bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type* iterator;
     value_type* First;                             // +0x00 STLport vector<pair<K, V> >
     value_type* Last;                              // +0x04
@@ -77,5 +77,5 @@ typename CVectorMap<K, V, C>::iterator CVectorMap<K, V, C>::LowerBound(const K& 
     return first;
 }
 
-typedef _STL::pair<long, long> TTextureDecalKey;
+typedef std::pair<long, long> TTextureDecalKey;
 template class CVectorMap<TTextureDecalKey, CEngineTextureDecal, CKeyPairCompareLess<TTextureDecalKey, CEngineTextureDecal> >;

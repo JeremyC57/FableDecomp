@@ -18,7 +18,7 @@ public:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
 template <class _Tp> struct less { bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; } };
@@ -97,7 +97,7 @@ public:
     map() : _M_t(_Compare(), _Alloc()) {}
 };
 
-} // namespace _STL
+} // namespace std
 
 template <class T> class CTBaseSingleton
 {
@@ -118,9 +118,9 @@ public:
         long        Size;
     };
 
-    _STL::map<CCharString, unsigned long> ShortNameToHandle;        // +0x04
-    _STL::map<CCharString, unsigned long> LongNameToHandle;         // +0x10
-    _STL::map<unsigned long, CSectionDesc> SectionDesc;             // +0x1c
+    std::map<CCharString, unsigned long> ShortNameToHandle;        // +0x04
+    std::map<CCharString, unsigned long> LongNameToHandle;         // +0x10
+    std::map<unsigned long, CSectionDesc> SectionDesc;             // +0x1c
     bool SectionLoadingEnabled;                                     // +0x28
 
     CCodeSectionManager();

@@ -1,4 +1,4 @@
-// _STL::__partial_sort(SNamedPosition* first, SNamedPosition* middle, SNamedPosition* last, SNamedPosition*, CKeyPairCompareLess comp) -- STLport partial_sort core over 16-byte (CCharString, C3DVector) pairs ordered by name: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
+// std::__partial_sort(SNamedPosition* first, SNamedPosition* middle, SNamedPosition* last, SNamedPosition*, CKeyPairCompareLess comp) -- STLport partial_sort core over 16-byte (CCharString, C3DVector) pairs ordered by name: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077F2C0, 135 bytes, `ret 0Ch` (__fastcall /Gr algorithm TU: first in
 //   ecx -> ebp, middle in edx -> ebx; last, the null value-type pointer and the empty comparator on the stack).

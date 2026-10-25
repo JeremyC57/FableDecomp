@@ -46,7 +46,7 @@ public:
     CBaseObject();                                          // 0x0099A380
 };
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -181,10 +181,10 @@ public:
         C3DVector Position;                                 // +0x00
         C3DAngles FacingAngles;                             // +0x0c
     };
-    _STL::vector<CScriptedMapCell>                                   Cells;                 // +0x08
-    _STL::set<unsigned __int64>                                      ThingsToDelete;        // +0x14
-    _STL::map<unsigned __int64, CThingPosAndOrientation>             ThingsToMove;          // +0x20
-    _STL::set<unsigned __int64>                                      ThingsToAdd;           // +0x2c
+    std::vector<CScriptedMapCell>                                   Cells;                 // +0x08
+    std::set<unsigned __int64>                                      ThingsToDelete;        // +0x14
+    std::map<unsigned __int64, CThingPosAndOrientation>             ThingsToMove;          // +0x20
+    std::set<unsigned __int64>                                      ThingsToAdd;           // +0x2c
     C2DBoxI                                                          GameArea;              // +0x38
     CCharString                                                      BrushName;             // +0x48
     float                                                            CreationTimeSeconds;   // +0x4c
@@ -197,13 +197,13 @@ public:
 
 void CScriptedMapBrush::RemoveThing(unsigned __int64 uid)
 {
-    _STL::map<unsigned __int64, CThingPosAndOrientation>::iterator moved = ThingsToMove.find(uid);
+    std::map<unsigned __int64, CThingPosAndOrientation>::iterator moved = ThingsToMove.find(uid);
     if (moved != ThingsToMove.end())
         ThingsToMove.erase(moved);
-    _STL::set<unsigned __int64>::iterator deleted = ThingsToDelete.find(uid);
+    std::set<unsigned __int64>::iterator deleted = ThingsToDelete.find(uid);
     if (deleted != ThingsToDelete.end())
         ThingsToDelete.erase(deleted);
-    _STL::set<unsigned __int64>::iterator added = ThingsToAdd.find(uid);
+    std::set<unsigned __int64>::iterator added = ThingsToAdd.find(uid);
     if (added != ThingsToAdd.end())
         ThingsToAdd.erase(added);
 }

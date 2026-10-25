@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CWideString* first, CWideString* last, CWideString*, int depth_limit, less<CWideString> comp) -- STLport introsort over wide strings: median-of-three partition while the range exceeds 16 elements, recursing on the upper part and falling back to partial_sort when the depth runs out
+// std::__introsort_loop(CWideString* first, CWideString* last, CWideString*, int depth_limit, less<CWideString> comp) -- STLport introsort over wide strings: median-of-three partition while the range exceeds 16 elements, recursing on the upper part and falling back to partial_sort when the depth runs out
 // Flags: /Gr
 // Leaf: ??$__introsort_loop@PAVCWideString@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B7CF0, 217 bytes (+ int3 padding), `ret 0Ch` (/Gr TU: first in ecx,
@@ -19,7 +19,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

@@ -150,7 +150,7 @@ public:
     long       BoneIndex;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -162,18 +162,18 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
 
-typedef _STL::pair<CCharString, C3DHelperPoint> THelperEntry;
-typedef _STL::pair<CCharString, C3DDummyObject> TDummyEntry;
-typedef _STL::pair<long, C3DMeshVolume>         TNavEntry;
-typedef _STL::pair<CCharString, C3DMeshVolume>  TVolumeEntry;
+typedef std::pair<CCharString, C3DHelperPoint> THelperEntry;
+typedef std::pair<CCharString, C3DDummyObject> TDummyEntry;
+typedef std::pair<long, C3DMeshVolume>         TNavEntry;
+typedef std::pair<CCharString, C3DMeshVolume>  TVolumeEntry;
 typedef CCompareString<C3DHelperPoint>               THelperLess;
 typedef CCompareString<C3DDummyObject>               TDummyLess;
 typedef CKeyPairCompareLess<long, C3DMeshVolume>        TNavLess;
@@ -300,7 +300,7 @@ template <class E> bool RefsOk(const E* a, int n)
 static bool RefsOk(const THelperEntry*, int) { return gDeleted == 0; }
 static bool RefsOk(const TDummyEntry*, int) { return gDeleted == 0; }
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
@@ -511,7 +511,7 @@ int main()
         double raw[96];
         TDummyEntry* p = (TDummyEntry*)raw;
         int live1 = gLiveStrings;
-        TDummyEntry* e = _STL::__uninitialized_copy(a, a + 3, p, _STL::__false_type());
+        TDummyEntry* e = std::__uninitialized_copy(a, a + 3, p, std::__false_type());
         static const long ek[3] = { 5, 4, 3 };
         static const long ei[3] = { 0, 1, 2 };
         if (e != p + 3 || gLiveStrings != live1 + 3 || !Expect(p, 3, ek, ei))

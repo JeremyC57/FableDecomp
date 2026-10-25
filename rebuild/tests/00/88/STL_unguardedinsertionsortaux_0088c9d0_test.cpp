@@ -2,7 +2,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::__unguarded_insertion_sort_aux<SKeyedPair*, SKeyedPair, SKeyGreater> @ 0x0088C9D0: insertion-sort
+// Model of std::__unguarded_insertion_sort_aux<SKeyedPair*, SKeyedPair, SKeyGreater> @ 0x0088C9D0: insertion-sort
 // [first, last) descending by key, relying on a larger-or-equal key before first as the sentinel (introsort tail pass).
 struct SKeyedPair {
     int          m_key;

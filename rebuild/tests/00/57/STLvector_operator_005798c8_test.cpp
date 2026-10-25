@@ -1,4 +1,4 @@
-// behaviour test for 0x005798C8 _STL::vector<NUISystem::CComponent*>::operator=: grow, shrink and fill-the-tail branches
+// behaviour test for 0x005798C8 std::vector<NUISystem::CComponent*>::operator=: grow, shrink and fill-the-tail branches
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -7,7 +7,7 @@ namespace NUISystem { class CComponent { public: int Id; }; }
 
 static int g_allocs = 0, g_frees = 0;
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -108,7 +108,7 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
 
 }
 
-typedef _STL::vector<NUISystem::CComponent*> TSliders;
+typedef std::vector<NUISystem::CComponent*> TSliders;
 
 static NUISystem::CComponent g_items[8];
 

@@ -1,5 +1,5 @@
-// _STL::vector::erase(CFeatDef* first, CFeatDef* last) -- (vector<CFeatDef>) STLport range erase: assign the tail down over [first, last), destroy the leftover elements through their virtual destructor, shrink _M_finish, return first
-// Leaf: ?erase@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@_STL@@@_STL@@QAEPAVCFeatDef@@PAV3@0@Z
+// std::vector::erase(CFeatDef* first, CFeatDef* last) -- (vector<CFeatDef>) STLport range erase: assign the tail down over [first, last), destroy the leftover elements through their virtual destructor, shrink _M_finish, return first
+// Leaf: ?erase@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@QAEPAVCFeatDef@@PAV3@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F345F0, 109 bytes (+ int3 padding), __fastcall `ret 8`; one caller (0x00F345AC).
 // Callees: CFeatDef::operator=(const CFeatDef&) @ 0x00F2D200 (out of line), the element's virtual destructor (vtable slot 0 with a
 //   zero flag: the explicit `p->~T()` of a polymorphic element).
@@ -22,7 +22,7 @@ public:
     virtual ~CFeatDef();
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -100,6 +100,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template CFeatDef* _STL::vector<CFeatDef>::erase(CFeatDef*, CFeatDef*);
+template CFeatDef* std::vector<CFeatDef>::erase(CFeatDef*, CFeatDef*);

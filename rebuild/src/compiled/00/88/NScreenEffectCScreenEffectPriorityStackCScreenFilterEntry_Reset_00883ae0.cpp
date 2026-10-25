@@ -28,7 +28,7 @@ public:
     unsigned char _pad68[0x29];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
 };
-namespace _STL {
+namespace std {
 template <class _Tp> struct less;
 template <class _Key, class _Tp, class _Compare> class map;
 }
@@ -53,7 +53,7 @@ public:
 
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -155,7 +155,7 @@ struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
-namespace _STL {
+namespace std {
 template <class _Key, class _Tp, class _Compare>
 class map {
 public:
@@ -181,7 +181,7 @@ public:
         };
         unsigned char _base[0x10];                      // +0x00 CStackEntry base (vptr ...)
         float param[8];                                 // +0x10 CScreenFilterParams (Alpha .. Tint)
-        _STL::map<CThing*, CThingGraphicByPassFlagState, _STL::less<CThing*> > reset;   // +0x30 (12 bytes in retail)
+        std::map<CThing*, CThingGraphicByPassFlagState, std::less<CThing*> > reset;   // +0x30 (12 bytes in retail)
         void Reset();
     };
 };
@@ -192,7 +192,7 @@ public:
 namespace NScreenEffect {
 void CScreenEffectPriorityStack::CScreenFilterEntry::Reset()
 {
-    typedef _STL::map<CThing*, CThingGraphicByPassFlagState, _STL::less<CThing*> > CResetMap;
+    typedef std::map<CThing*, CThingGraphicByPassFlagState, std::less<CThing*> > CResetMap;
     CResetMap::iterator end = reset.end();
     for (CResetMap::iterator it = reset.begin(); it != end; ++it) {
         CThingGraphicByPassFlagState& state = (*it).second;

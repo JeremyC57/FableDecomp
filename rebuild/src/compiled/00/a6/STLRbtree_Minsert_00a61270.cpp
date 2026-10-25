@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<CWideString, CChecksumCacheFile::CEntry> node insert: allocate a node, copy the pair in, link it left or right of y (keeping leftmost/rightmost), rebalance and count
+// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<CWideString, CChecksumCacheFile::CEntry> node insert: allocate a node, copy the pair in, link it left or right of y (keeping leftmost/rightmost), rebalance and count
 // Leaf: ?_M_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A61270, 233 bytes (+7 int3), `ret 14h` (hidden iterator result + four
 //   arguments).
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> class pair {
 public:
@@ -118,9 +118,9 @@ _Rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::_M_insert(_Rb_tree_node_base* 
     return iterator(z);
 }
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const CWideString, CChecksumCacheFile::CEntry> CChecksumEntryValue;
+typedef std::pair<const CWideString, CChecksumCacheFile::CEntry> CChecksumEntryValue;
 
-template class _STL::_Rb_tree<CWideString, CChecksumEntryValue, _STL::_Select1st<CChecksumEntryValue>,
-    _STL::less<CWideString>, _STL::allocator<CChecksumEntryValue> >;
+template class std::_Rb_tree<CWideString, CChecksumEntryValue, std::_Select1st<CChecksumEntryValue>,
+    std::less<CWideString>, std::allocator<CChecksumEntryValue> >;

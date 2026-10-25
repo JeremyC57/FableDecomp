@@ -16,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -106,7 +106,7 @@ public:
     unsigned int size() const { return _M_t.size(); }
     pair<iterator, bool> insert(const K& x) { return _M_t.insert_unique(x); }
 };
-} // namespace _STL
+} // namespace std
 
 struct CLongArray {                                         // CArray<long> (retail STLport vector)
     long* _M_start;
@@ -137,7 +137,7 @@ unsigned long CVertexGroupBlockOptimiser::CountRemainingCurrentBlockSegments() c
 {
     if (CurrentBlockSegmentCount == 1)
         return 1;
-    _STL::set<long> segments;
+    std::set<long> segments;
     for (unsigned long i = 0; i < CurrentBlockSegmentIndices.size(); ++i)
         if (RemainingBlocks[i])
             segments.insert(CurrentBlockSegmentIndices[i]);

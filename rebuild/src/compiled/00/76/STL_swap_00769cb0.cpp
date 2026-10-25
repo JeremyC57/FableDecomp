@@ -1,4 +1,4 @@
-// _STL::swap(_Tp& a, _Tp& b) -- STLport swap of two update-parameter map entries pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>>: copy a to a temporary, assign b to a, the temporary to b
+// std::swap(_Tp& a, _Tp& b) -- STLport swap of two update-parameter map entries pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>>: copy a to a temporary, assign b to a, the temporary to b
 // Leaf: ??$swap@U?$pair@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00769CB0, 74 bytes (+ padding to 80), `__fastcall` (/Gr: a in ecx, b in edx), `ret`.
 // Identity (label correction): the catalog's "pair<pair<long,long>,CEngineTextureDecal>" is propagated. The temporary's
@@ -26,7 +26,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

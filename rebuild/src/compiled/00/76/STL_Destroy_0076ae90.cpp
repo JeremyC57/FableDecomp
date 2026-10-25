@@ -1,5 +1,5 @@
-// _STL::_Destroy(ParticleAndEndPoints* first, ParticleAndEndPoints* last) -- destroy a run of 20-byte augmentation particle records: each record's two point-name CCharStrings, the second first
-// Leaf: ??$_Destroy@PAUParticleAndEndPoints@@@_STL@@
+// std::_Destroy(ParticleAndEndPoints* first, ParticleAndEndPoints* last) -- destroy a run of 20-byte augmentation particle records: each record's two point-name CCharStrings, the second first
+// Leaf: ??$_Destroy@PAUParticleAndEndPoints@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0076AE90, 41 bytes (+7 int3), plain `ret` (link-time __fastcall: first in ecx,
 //   last in edx; the two-iterator `_Destroy` takes no tag argument).
@@ -28,7 +28,7 @@ struct ParticleAndEndPoints {                        // Ego_r.pdb struct, 20 byt
     long          PeriodicFrames;                    // +0x10
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

@@ -51,7 +51,7 @@ Review at landing:
     NInventory::CItem>::Resize (vtable 0x01253CA4 slot 1), not a "CSoundPairTable::ClearEntry". Its 0x14-byte
     {id, CSoundPair} model is really CItem.
   - CRegion_SetMiniMapRegionExitTextOffsetX_009d5060.cpp is CDefString::SetString(const CCharString&).
-  - global_ConstructString_0066124b.cpp is _STL::__copy_aux(first, last, result, const __false_type&) (__fastcall,
+  - global_ConstructString_0066124b.cpp is std::__copy_aux(first, last, result, const __false_type&) (__fastcall,
     hidden result), not a CWideString constructor.
   - CPersistContextTransferableVectorSPersistRecord1C_Resize_006193b0.cpp: the vtable 0x01257164 element is
     CTCInventoryMap::CUIMiniMapMarker (long Region, CCharString, C2DVector, long, long, float Angle), not

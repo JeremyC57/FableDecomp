@@ -1,4 +1,4 @@
-// Behaviour test for 0x008EBA90 _STL::__uninitialized_copy<CHoverState*>: copy-constructs each element in order.
+// Behaviour test for 0x008EBA90 std::__uninitialized_copy<CHoverState*>: copy-constructs each element in order.
 #include <cstdio>
 #include <new>
 

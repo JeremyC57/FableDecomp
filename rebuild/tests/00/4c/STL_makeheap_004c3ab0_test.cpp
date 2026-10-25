@@ -45,7 +45,7 @@ static bool Same(const CMeshInfo* a, const int* bits, int invert, const int* wan
 }
 
 // STLport 4.x sort / heap algorithms (the model's bodies and the test's copies of their out-of-line callees).
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
@@ -247,9 +247,9 @@ static bool TestFunction()
     static const int ident[12] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
     CMeshInfo a[12];
     Fill(a, kBits12, 12, 0);
-    _STL::__make_heap(a, a + 1, TLess(), (CMeshInfo*)0, (int*)0);   // one element: no-op
+    std::__make_heap(a, a + 1, TLess(), (CMeshInfo*)0, (int*)0);   // one element: no-op
     bool ok = Same(a, kBits12, 0, ident, 12);
-    _STL::__make_heap(a, a + 12, TLess(), (CMeshInfo*)0, (int*)0);
+    std::__make_heap(a, a + 12, TLess(), (CMeshInfo*)0, (int*)0);
     return ok && Same(a, kBits12, 0, want, 12);
 }
 

@@ -1,4 +1,4 @@
-// _STL::vector::reserve(unsigned int n) -- vector<C2DLineF>::reserve: when the capacity is below n, copy the lines into a fresh n-element block (malloc, uninitialized copy, free the old block) or just allocate when empty
+// std::vector::reserve(unsigned int n) -- vector<C2DLineF>::reserve: when the capacity is below n, copy the lines into a fresh n-element block (malloc, uninitialized copy, free the old block) or just allocate when empty
 // Leaf: ?reserve@?$vector@VC2DLineF@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C2900, 171 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: STLport 4.x `vector<_Tp>::reserve` over a 16-byte element; its uninitialized-copy callee 0x0040DDC0 carries
@@ -28,7 +28,7 @@ public:
     C2DLineF(const C2DVector& point1, const C2DVector& point2) : Point1(point1), Point2(point2) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 // Same-TU stand-in body of the out-of-line element copy 0x0040DDC0 (it never reads the tag).
@@ -109,4 +109,4 @@ void vector<T, A>::reserve(size_type n)
 }
 }
 
-template void _STL::vector<C2DLineF>::reserve(unsigned int n);
+template void std::vector<C2DLineF>::reserve(unsigned int n);

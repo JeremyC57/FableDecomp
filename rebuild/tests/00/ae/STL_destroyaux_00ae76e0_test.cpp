@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE76E0 _STL::__destroy_aux over _STL::set<long>*: destroy each set of the range -- erase every
+// behaviour test for 0x00AE76E0 std::__destroy_aux over std::set<long>*: destroy each set of the range -- erase every
 // tree node (right subtree recursively, then walk left) and free the header
 #include <cstdio>
 #include <cstdlib>

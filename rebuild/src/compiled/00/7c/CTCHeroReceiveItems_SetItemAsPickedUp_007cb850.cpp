@@ -14,7 +14,7 @@
 //   bodies that read the value and leave the tag unnamed (stand-ins below; only the target row is graded).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __true_type { __true_type() { } };
 
@@ -67,12 +67,12 @@ public:
     void*                ParentThing;                       // +0x04 (CTCBase)
     unsigned char        _pad08[4];                         // +0x08
     unsigned char        Items[4];                          // +0x0c STLport list
-    _STL::vector<long>   PickedUpItems;                     // +0x10
+    std::vector<long>   PickedUpItems;                     // +0x10
     void SetItemAsPickedUp(long item);
 };
 
 void CTCHeroReceiveItems::SetItemAsPickedUp(long item)
 {
-    if (_STL::find(PickedUpItems.begin(), PickedUpItems.end(), item) == PickedUpItems.end())
+    if (std::find(PickedUpItems.begin(), PickedUpItems.end(), item) == PickedUpItems.end())
         PickedUpItems.push_back(item);
 }

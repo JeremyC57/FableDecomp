@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A46940: _STL::__partial_sort<C3DSkeletalBoneMorph*> (heap select the smallest prefix, then sort it)
+// Behaviour test for 0x00A46940: std::__partial_sort<C3DSkeletalBoneMorph*> (heap select the smallest prefix, then sort it)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -80,7 +80,7 @@ static void FillMorphs(C3DSkeletalBoneMorph* a, const unsigned long* crcs, int n
         SetMorph(a[i], crcs[i]);
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp)
 {
@@ -120,7 +120,7 @@ static bool IsHeap(const C3DSkeletalBoneMorph* a, int n)
     return true;
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*)
 {
@@ -171,7 +171,7 @@ int main()
         C3DSkeletalBoneMorph a[12];
         FillMorphs(a, crcs, 12);
         int live = g_liveStrings;
-        _STL::__partial_sort(a, a + 5, a + 12, (C3DSkeletalBoneMorph*)0, (TBoneMorphCompare)LessByCRC);
+        std::__partial_sort(a, a + 5, a + 12, (C3DSkeletalBoneMorph*)0, (TBoneMorphCompare)LessByCRC);
         Check(g_liveStrings == live);
         static const unsigned long want[5] = { 0, 2, 4, 5, 8 };
         for (int i = 0; i < 5; ++i)

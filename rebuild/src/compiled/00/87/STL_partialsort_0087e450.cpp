@@ -1,4 +1,4 @@
-// _STL::__partial_sort(const CAnimationEntry** first, const CAnimationEntry** middle, const CAnimationEntry** last, const CAnimationEntry**, CTurningAnimCompare comp) -- introsort depth-limit fallback for the turning animations: heap the prefix, pop every closer entry from the rest into it, then heap-sort the prefix
+// std::__partial_sort(const CAnimationEntry** first, const CAnimationEntry** middle, const CAnimationEntry** last, const CAnimationEntry**, CTurningAnimCompare comp) -- introsort depth-limit fallback for the turning animations: heap the prefix, pop every closer entry from the rest into it, then heap-sort the prefix
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087E450, 152 bytes, `ret 0Ch` (/Gr algorithm TU: first in ecx, middle
 //   in edx; last, the value-type tag pointer and the 4-byte comparator on the stack).
@@ -39,7 +39,7 @@ public:
 }
 typedef const CAnimationEntry* TEntry;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x0087DE50

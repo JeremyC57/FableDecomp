@@ -1,4 +1,4 @@
-# Hand chunk 464 (_STL::vector<long> .. CGPUScratchBufferTextureManager::CResourceEntry): 39 of 40 byte-exact
+# Hand chunk 464 (std::vector<long> .. CGPUScratchBufferTextureManager::CResourceEntry): 39 of 40 byte-exact
 
 Every catalog label in the chunk was propagated from byte-identical bodies and named the wrong function (the eight
 "vector<EWeaponClass>::_Umove", the 22 "vector<std::pair<CCharString>>::_Destroy/resize", ...). The real names come from
@@ -67,7 +67,7 @@ None (no row holds two functions; 0x00453659's 38-byte row is a size-optimised b
 
 ## Label corrections
 
-- 0x00453659 `vector<long>::vector<int>` -- right (spelled `_STL::vector<long>::vector<int>(int, int, const allocator&)`).
+- 0x00453659 `vector<long>::vector<int>` -- right (spelled `std::vector<long>::vector<int>(int, int, const allocator&)`).
 - 0x004ABD90, 0x0076AE90, 0x007817B0, 0x00A43A00, 0x00AF1D90 (`..._Destroy`) -> STLport `__destroy_aux` / `_Destroy` over
   CTestQuest, ParticleAndEndPoints, NFire::CFirePoint, NGameText::CDataBankTextEntry, NParticleEngine::CParticleEmitterInfo.
 - 0x004D0420, 0x005E0F60, 0x006FBD10, 0x0077EA10, 0x009B2AC0, 0x009B5A20, 0x00A407C0, 0x00A40FF0, 0x00A710F0

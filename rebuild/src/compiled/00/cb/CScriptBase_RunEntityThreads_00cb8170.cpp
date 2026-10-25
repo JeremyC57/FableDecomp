@@ -52,7 +52,7 @@ public:
 };
 class CActiveEntityScriptBase : public CSpawnedFuncBase {
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -139,15 +139,15 @@ public:
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 template <class V> class CCompareString {                  // empty
 };
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type* iterator;
-    _STL::vector<value_type> Vector;                       // +0x00
+    std::vector<value_type> Vector;                       // +0x00
     C    Compare;                                          // +0x0c
     bool Dirty;                                            // +0x0d
     iterator LowerBound(const K& key);                     // out of line
@@ -172,7 +172,7 @@ public:
 // Same-TU body of the out-of-line vector copy constructor (0x00CBB020, STLport: allocate size() elements and
 // uninitialized-copy them): VC7.1 then sees the snapshot's address is not captured, so its start pointer stays in a
 // register across the element destruction at the end, as retail.
-namespace _STL {
+namespace std {
 template <class _Tp, class _Alloc>
 __declspec(noinline) vector<_Tp, _Alloc>::vector(const vector<_Tp, _Alloc>& __x)
 {
@@ -224,7 +224,7 @@ typedef CVectorMap<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>, C
 class CScriptBase {
 public:
     virtual ~CScriptBase();
-    _STL::list<CCountedPointer<CSpawnedFuncBase> > Threads;                                  // +0x04
+    std::list<CCountedPointer<CSpawnedFuncBase> > Threads;                                  // +0x04
     CEntityScriptMap EntityScripts;                                                          // +0x08
     CVectorMap<CCharString, CCountedPointer<CEntityScriptBindingBase>, CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;   // +0x18
     unsigned long     LastWorldUpdateFrame;                                                  // +0x28

@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CPendingObjectSortKey& k) -- STLport subscript of CThreadedFileManager's device-queue map<CPendingObjectSortKey, CFileObject*>: lower_bound the key, insert {key, null} at that hint when absent, return a reference to the mapped pointer
+// std::map::operator[](const CPendingObjectSortKey& k) -- STLport subscript of CThreadedFileManager's device-queue map<CPendingObjectSortKey, CFileObject*>: lower_bound the key, insert {key, null} at that hint when absent, return a reference to the mapped pointer
 // Leaf: ??A?$map@VCPendingObjectSortKey@CThreadedFileManager@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00991350, 124 bytes (+ int3 padding), __fastcall `ret 4`.
 // Identity: twin of the landed map<unsigned long, CFileObject*>::operator[] 0x009913D0 (its header names this row); callers
@@ -56,7 +56,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -144,6 +144,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template CThreadedFileManager::CFileObject*& _STL::map<CThreadedFileManager::CPendingObjectSortKey, CThreadedFileManager::CFileObject*>::operator[](const CThreadedFileManager::CPendingObjectSortKey&);
+template CThreadedFileManager::CFileObject*& std::map<CThreadedFileManager::CPendingObjectSortKey, CThreadedFileManager::CFileObject*>::operator[](const CThreadedFileManager::CPendingObjectSortKey&);

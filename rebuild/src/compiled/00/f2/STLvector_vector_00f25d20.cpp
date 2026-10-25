@@ -1,7 +1,7 @@
-// _STL::vector::vector(const vector& x) -- (vector<CArenaCreatureDef>) STLport copy constructor: allocate x.size() 0x38-byte CArenaCreatureDefs through the out-of-line _Vector_base constructor and copy-construct x's elements into them
-// Leaf: ??0?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@_STL@@@_STL@@QAE@ABV01@@Z
+// std::vector::vector(const vector& x) -- (vector<CArenaCreatureDef>) STLport copy constructor: allocate x.size() 0x38-byte CArenaCreatureDefs through the out-of-line _Vector_base constructor and copy-construct x's elements into them
+// Leaf: ??0?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@std@@@std@@QAE@ABV01@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F25D20, 98 bytes (+ int3 padding), `ret 4` (returns this).
-// Callees: _STL::_Vector_base<CArenaCreatureDef>::_Vector_base(unsigned int, const allocator&) @ 0x00F25D90 (out of line), CArenaCreatureDef::CArenaCreatureDef(const CArenaCreatureDef&)
+// Callees: std::_Vector_base<CArenaCreatureDef>::_Vector_base(unsigned int, const allocator&) @ 0x00F25D90 (out of line), CArenaCreatureDef::CArenaCreatureDef(const CArenaCreatureDef&)
 //   @ 0x00F25DD0 (the element copy, out of line, under the placement-new null test).
 // Identity: element vtable 0x012FB358 (no RTTI; Transfer slot names CreatureType +0x28, NumCreatures +0x2c, HUDType
 //   +0x30, DeathScore +0x34; Sizeof slot returns 0x38) = Ego_r.pdb CArenaCreatureDef (56 bytes); called from the
@@ -24,7 +24,7 @@ class CCharString {
 public:
     void* PStringData;
 };
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -74,7 +74,7 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CArenaCreatureDef : public CDefClassBase {    // vtable 0x012FB358, 0x38 bytes
 public:
@@ -85,4 +85,4 @@ public:
     CArenaCreatureDef(const CArenaCreatureDef& other);   // 0x00F25DD0
 };
 
-template class _STL::vector<CArenaCreatureDef>;
+template class std::vector<CArenaCreatureDef>;

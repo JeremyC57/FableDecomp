@@ -43,7 +43,7 @@ public:
         Data = 0;
     }
 };
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -116,7 +116,7 @@ public:
 };
 class C3DSkeletalMorph : public CBaseClassNonCopyable {
 public:
-    _STL::vector<CCountedPointer<C3DSkeletalMorphParameter> > MorphParameters;
+    std::vector<CCountedPointer<C3DSkeletalMorphParameter> > MorphParameters;
     CCountedPointer<C3DSkeletalMorphTarget>                     CombinedMorph;
     void NotifyParamUpdate() { CombinedMorph.Clear(); }
     void AddMorphParameter(const CCountedPointer<C3DSkeletalMorphParameter>& parameter);
@@ -160,9 +160,9 @@ int main()
     // more adds with no cached morph; the fourth takes the in-place push_back arm
     morph.AddMorphParameter(p);
     morph.AddMorphParameter(p);
-    Check(morph.MorphParameters.size() == 3 && paramInfo.RefCount == 4 && _STL::g_overflows == 3);
+    Check(morph.MorphParameters.size() == 3 && paramInfo.RefCount == 4 && std::g_overflows == 3);
     morph.AddMorphParameter(p);
-    Check(morph.MorphParameters.size() == 4 && paramInfo.RefCount == 5 && _STL::g_overflows == 3);
+    Check(morph.MorphParameters.size() == 4 && paramInfo.RefCount == 5 && std::g_overflows == 3);
     Check(morph.CombinedMorph.Info == 0 && g_targetsDeleted == 1);
     free(morph.MorphParameters._M_start);
     if (g_fail) {

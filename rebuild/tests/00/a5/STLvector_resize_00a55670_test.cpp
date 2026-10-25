@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A55670 _STL::vector<C3DAnimationSequenceData::C3DVectorWord>::resize(unsigned int new_size, const C3DVectorWord& x).
+// Behaviour test for 0x00A55670 std::vector<C3DAnimationSequenceData::C3DVectorWord>::resize(unsigned int new_size, const C3DVectorWord& x).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00a55670_TEST FAIL\n"); return 1; } } while (0)

@@ -2,7 +2,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::fill<CBlendedEnvironmentTheme*> @ 0x008897D0: assign val to every element of [first, last) through
+// Model of std::fill<CBlendedEnvironmentTheme*> @ 0x008897D0: assign val to every element of [first, last) through
 // the class's operator=.
 static int g_assignments = 0;
 class CBlendedEnvironmentTheme {

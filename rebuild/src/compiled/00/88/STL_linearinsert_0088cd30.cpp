@@ -1,4 +1,4 @@
-// _STL::__linear_insert(pair<long, CAIStateGroupBase*>* first, pair<long, CAIStateGroupBase*>* last, pair<long, CAIStateGroupBase*> val, CKeyPairCompareGreater comp) -- insertion-sort step of the AI brain's state-group map: a new highest priority shifts the prefix up one place, anything else goes through the unguarded insert
+// std::__linear_insert(pair<long, CAIStateGroupBase*>* first, pair<long, CAIStateGroupBase*>* last, pair<long, CAIStateGroupBase*> val, CKeyPairCompareGreater comp) -- insertion-sort step of the AI brain's state-group map: a new highest priority shifts the prefix up one place, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088CD30, 99 bytes, `ret 0Ch` (/Gr algorithm TU: first in ecx, last in
 //   edx, the 8-byte value and the empty comparator by value on the stack).
@@ -13,7 +13,7 @@
 //   *--result = *--last;`).
 class CAIStateGroupBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a struct: mangled U)
     typedef _T1 first_type;
     typedef _T2 second_type;
@@ -28,12 +28,12 @@ template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a s
 // CAIStateGroupBase*> > -- the groups are kept in DESCENDING key (priority) order; the comparator is empty.
 template <class K, class V> class CKeyPairCompareGreater {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first > b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first > b.first; }
 };
-typedef _STL::pair<long, CAIStateGroupBase*> TGroupEntry;
+typedef std::pair<long, CAIStateGroupBase*> TGroupEntry;
 typedef CKeyPairCompareGreater<long, CAIStateGroupBase*> TGroupCompare;
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>

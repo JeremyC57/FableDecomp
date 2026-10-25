@@ -1,5 +1,5 @@
-// _STL::pair::pair(const CCharString& a, const CCharString& b) -- value constructor of pair<CCharString, CCharString>: copy-construct both strings
-// Leaf: ??0?$pair@VCCharString@@V1@@_STL@@QAE@ABVCCharString@@0@Z
+// std::pair::pair(const CCharString& a, const CCharString& b) -- value constructor of pair<CCharString, CCharString>: copy-construct both strings
+// Leaf: ??0?$pair@VCCharString@@V1@@std@@QAE@ABVCCharString@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0076DD40, 32 bytes, __fastcall `ret 8`, returns `this`.
 // Identity (label correction): the catalog's "pair<CCharString,CTCBase::CRegisteredTCInfo>" is propagated. The only caller,
 //   0x00A3F2D0 (CSoundManagerLH, catalog vfunc_39), builds this pair from two CCharString references into a frame
@@ -15,7 +15,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     typedef _T1 first_type;
     typedef _T2 second_type;

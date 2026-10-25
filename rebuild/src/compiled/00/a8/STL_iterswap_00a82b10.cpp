@@ -1,4 +1,4 @@
-// _STL::iter_swap(SSwitchableLineList* a, SSwitchableLineList* b) -- swap two 16-byte (unsigned __int64 ID, list of lines) switchable line-list entries through a by-value temporary (key words + a fresh copy of the list), then destroy the temporary
+// std::iter_swap(SSwitchableLineList* a, SSwitchableLineList* b) -- swap two 16-byte (unsigned __int64 ID, list of lines) switchable line-list entries through a by-value temporary (key words + a fresh copy of the list), then destroy the temporary
 // Leaf: ??$iter_swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A82B10, 138 bytes, plain `ret` (/Gr: a in ecx, b in edx).
 // Callees: malloc 0x00BFEA0E (the temporary's list sentinel), list<C2DLineF>::_M_insert_dispatch 0x005152C0 (landed),
@@ -28,7 +28,7 @@ public:
     C2DVector End;                                          // +0x8
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -117,15 +117,15 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
-typedef _STL::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
+typedef std::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
+typedef std::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CLineList>        CSwitchableLineListLess;
 
 #pragma auto_inline(off)
-namespace _STL {
+namespace std {
 // 0x005152C0 (landed): the real range insert as a same-TU noinline body.
 template <class _Tp, class _Alloc> template <class _InputIter>
 __declspec(noinline) void list<_Tp, _Alloc>::_M_insert_dispatch(iterator __pos, _InputIter __first, _InputIter __last, const __false_type&)
@@ -181,7 +181,7 @@ __declspec(noinline) list<_Tp, _Alloc>& list<_Tp, _Alloc>::operator=(const list<
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type_of(_Tp*) { return (_Tp*)0; }
 
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>

@@ -1,4 +1,4 @@
-// _STL::__copy_backward(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing>* result, const random_access_iterator_tag&, int*) -- STLport random-access copy_backward: assign last-1 .. first into result-1 downwards, n = last - first times; returns the new result
+// std::__copy_backward(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing>* result, const random_access_iterator_tag&, int*) -- STLport random-access copy_backward: assign last-1 .. first into result-1 downwards, n = last - first times; returns the new result
 // Leaf: ??$__copy_backward@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00926760, 62 bytes (64 with padding), `ret 0Ch` (first in ecx, last in edx; result, tag, distance on the stack).
 // Name: STLport `__copy_backward<CIntelligentPointer<const CThing>*, CIntelligentPointer<const CThing>*, int>`; four callers
@@ -38,7 +38,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag {
     random_access_iterator_tag() { }
 };

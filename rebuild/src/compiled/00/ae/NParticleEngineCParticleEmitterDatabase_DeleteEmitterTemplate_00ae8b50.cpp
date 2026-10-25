@@ -23,7 +23,7 @@ public:
     SCountBlock* Block;                                     // +0x4
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
@@ -74,9 +74,9 @@ template <class K, class V> struct CKeyPairCompareLess { };
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type* iterator;
-    _STL::vector<value_type> m_vector;                      // +0x00
+    std::vector<value_type> m_vector;                      // +0x00
     C    Compare;                                           // +0x0c (empty)
     bool Dirty;                                             // +0x0d
 #pragma auto_inline(off)

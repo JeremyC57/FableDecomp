@@ -22,7 +22,7 @@ public:
     CCharStringData* PStringData;                           // +0x00
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -145,7 +145,7 @@ public:
     void clear() { _M_t.clear(); }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CHeroLogBook {
 public:
@@ -161,7 +161,7 @@ public:
         unsigned long                          ScriptID;             // +0x00
         CCharString                            TextDescription;      // +0x04
         EQuestStatus                           QuestStatus;          // +0x08
-        _STL::vector<CQuestObjectiveDesc>      QuestSubObjectives;   // +0x0C
+        std::vector<CQuestObjectiveDesc>      QuestSubObjectives;   // +0x0C
     };
     class CHeroLogBookEntry {                               // 12 bytes: Name, AbbreviatedName, Content (CWideString)
     public:
@@ -171,9 +171,9 @@ public:
         void* Content;
     };
 
-    _STL::vector<CQuestDesc> GivenQuests;                   // +0x00
+    std::vector<CQuestDesc> GivenQuests;                   // +0x00
     long                     QuestBeingViewed;              // +0x0C
-    _STL::map<CHeroLogBookEntry::ECategory, _STL::vector<CHeroLogBookEntry> > LogEntries;   // +0x10
+    std::map<CHeroLogBookEntry::ECategory, std::vector<CHeroLogBookEntry> > LogEntries;   // +0x10
 
     void Clear();
 };

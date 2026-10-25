@@ -1,4 +1,4 @@
-// _STL::vector::_M_allocate_and_copy(size_type n, const _D3DVERTEXELEMENT9* first, const _D3DVERTEXELEMENT9* last) -- vector<_D3DVERTEXELEMENT9> (CArray of the vertex-shader declaration): malloc n elements and copy-construct [first, last) into them, returning the new block
+// std::vector::_M_allocate_and_copy(size_type n, const _D3DVERTEXELEMENT9* first, const _D3DVERTEXELEMENT9* last) -- vector<_D3DVERTEXELEMENT9> (CArray of the vertex-shader declaration): malloc n elements and copy-construct [first, last) into them, returning the new block
 // Leaf: ??$_M_allocate_and_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5DFF0, 78 bytes, `ret 0Ch` (thiscall, `this` unused).
 // Caller: vector<_D3DVERTEXELEMENT9>::operator= @ 0x00A5E2E0 (via CArray<_D3DVERTEXELEMENT9>::operator= 0x00A5E5A0, which
@@ -21,7 +21,7 @@ extern "C" void* __cdecl malloc(size_t size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 inline void* operator new(size_t, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
@@ -77,4 +77,4 @@ public:
 template _D3DVERTEXELEMENT9* vector<_D3DVERTEXELEMENT9>::_M_allocate_and_copy(size_t, const _D3DVERTEXELEMENT9*,
                                                                               const _D3DVERTEXELEMENT9*);
 
-}   // namespace _STL
+}   // namespace std

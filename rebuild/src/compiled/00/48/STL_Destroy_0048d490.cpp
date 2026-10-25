@@ -1,4 +1,4 @@
-// _STL::_Destroy(_STL::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> > first, _STL::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> > last) -- destroy a range of a deque of 2D vectors (forwards to the out-of-line non-trivial-destructor loop)
+// std::_Destroy(std::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> > first, std::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> > last) -- destroy a range of a deque of 2D vectors (forwards to the out-of-line non-trivial-destructor loop)
 // Leaf: ??$_Destroy@U?$_Deque_iterator@VC2DVector@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048D490, 76 bytes, `__fastcall` with no register arguments (the two
 //   16-byte iterators on the stack), `ret 20h`.
@@ -22,7 +22,7 @@ public:
     float X, Y;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };              // user constructor: `__false_type()` is not zero-stored
 template <class _Tp> struct __type_traits {              // the unspecialised STLport traits: nothing is trivial
@@ -62,9 +62,9 @@ template <class _Tp, class _Traits> struct _Deque_iterator : public _Deque_itera
 };
 template <class _Tp, class _Traits> inline _Tp* value_type(const _Deque_iterator<_Tp, _Traits>&) { return (_Tp*)0; }
 }
-typedef _STL::_Deque_iterator<C2DVector, _STL::_Nonconst_traits<C2DVector> > CDequeIter;
+typedef std::_Deque_iterator<C2DVector, std::_Nonconst_traits<C2DVector> > CDequeIter;
 
-namespace _STL {
+namespace std {
 #pragma auto_inline(off)
 template <class _ForwardIterator>
 __declspec(noinline) void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)   // 0x0048D050
@@ -88,4 +88,4 @@ void __fastcall _Destroy(_ForwardIterator __first, _ForwardIterator __last)
 }
 }
 
-template void __fastcall _STL::_Destroy<CDequeIter>(CDequeIter, CDequeIter);
+template void __fastcall std::_Destroy<CDequeIter>(CDequeIter, CDequeIter);

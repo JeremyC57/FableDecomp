@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const CWideString& v, _Rb_tree_node_base* w) -- set<CWideString> node insert: create a node for v, link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
+// std::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const CWideString& v, _Rb_tree_node_base* w) -- set<CWideString> node insert: create a node for v, link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AA900, 187 bytes, thiscall `ret 14h` (the hidden iterator result pointer first).
 // Catalog name "BinaryTree_InsertNode" (descriptive). Caller: insert_unique @ 0x009AAF1E (0x009AAEB0, this chunk).
@@ -17,7 +17,7 @@ public:
     bool operator<(const CWideString& other) const;         // 0x0099AF70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

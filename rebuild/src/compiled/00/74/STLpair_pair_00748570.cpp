@@ -1,5 +1,5 @@
-// _STL::pair::pair(const pair& other) -- copy constructor of pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus>: copy the pointer, then the danger status and its timer
-// Leaf: ??0?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@_STL@@QAE@ABU01@@Z
+// std::pair::pair(const pair& other) -- copy constructor of pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus>: copy the pointer, then the danger status and its timer
+// Leaf: ??0?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@QAE@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00748570, 53 bytes, __fastcall `ret 4`, returns `this`.
 // Identity (label correction): the catalog's "pair<CIntelligentPointer<CThing>,long><CIntelligentPointer<CThing>,int>" is
 //   propagated. The pointer is a CIntelligentPointer<const CThing> (vtable 0x01237F1C, RTTI
@@ -37,7 +37,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x08

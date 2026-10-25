@@ -64,7 +64,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class T> inline void _Destroy(T* p) { p->~T(); }
 
 template <class ForwardIter>
@@ -124,11 +124,11 @@ public:
     };
     class CHoverAnim;
 
-    _STL::vector<CHoverState>                        HoverStates;           // +0x1C
+    std::vector<CHoverState>                        HoverStates;           // +0x1C
     CCharString                                      CurrentName;           // +0x28
     CHoverState*                                     PCurrentState;         // +0x2C
     EMovementType                                    CurrentMovementType;   // +0x30
-    _STL::list<CCountedPointer<CHoverAnim> >         AnimQueue;             // +0x34
+    std::list<CCountedPointer<CHoverAnim> >         AnimQueue;             // +0x34
     CIntelligentPointer<CThing>                      PParticleEffect;       // +0x38
     ~CModeHoverBase();
 };

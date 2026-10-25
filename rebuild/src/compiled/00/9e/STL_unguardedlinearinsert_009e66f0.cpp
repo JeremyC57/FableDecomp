@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<CCharString, CSymbolMap::CSymbolInfo>* last, pair<CCharString, CSymbolMap::CSymbolInfo> val, CCompareString<CSymbolMap::CSymbolInfo> comp) -- insertion-sort inner step of the symbol map: shift the entries whose name sorts after val's up one place and assign val into the gap
+// std::__unguarded_linear_insert(pair<CCharString, CSymbolMap::CSymbolInfo>* last, pair<CCharString, CSymbolMap::CSymbolInfo> val, CCompareString<CSymbolMap::CSymbolInfo> comp) -- insertion-sort inner step of the symbol map: shift the entries whose name sorts after val's up one place and assign val into the gap
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E66F0, 173 bytes, `ret 14h` (/Gr algorithm TU: last in ecx; the 16-byte
 //   value and the empty comparator by value on the stack; the callee destroys the value).
@@ -30,7 +30,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a struct: mangled U)
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -42,14 +42,14 @@ template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a s
 // The CVectorMap<CCharString, T> key order: names compared with the cheap CCharString::FastCompare (empty functor).
 template <class T> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, T>& a, const _STL::pair<CCharString, T>& b) const
+    bool operator()(const std::pair<CCharString, T>& a, const std::pair<CCharString, T>& b) const
     {
         return a.first.FastCompare(b.first);
     }
 };
-typedef _STL::pair<CCharString, CSymbolMap::CSymbolInfo> TSymbolEntry;
+typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> TSymbolEntry;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

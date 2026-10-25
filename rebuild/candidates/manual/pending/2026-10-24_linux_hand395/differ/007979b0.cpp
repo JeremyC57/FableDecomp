@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CTCUnholyPower::PerEffectInfo* first, unsigned int n, const CTCUnholyPower::PerEffectInfo& x, const __false_type&) -- copy-construct n copies of a per-effect record (position + intelligent effect pointer) into raw storage and return the end
+// std::__uninitialized_fill_n(CTCUnholyPower::PerEffectInfo* first, unsigned int n, const CTCUnholyPower::PerEffectInfo& x, const __false_type&) -- copy-construct n copies of a per-effect record (position + intelligent effect pointer) into raw storage and return the end
 // Grade: DIFFER(86v86) -- register allocation only: retail keeps the cursor in ebx and the source element in edi, ours
 //   swaps them (edi = cursor, ebx = x); every instruction otherwise matches (Position as three dwords stored off the
 //   esi Effect induction pointer, the intelligent pointer's copy constructor, the null test, `dec ebp ; jne`).

@@ -1,4 +1,4 @@
-// _STL::back_insert_iterator<vector<unsigned char>>::operator=(const unsigned char& value) -- STLport back inserter assignment: push the byte onto the container and return the iterator
+// std::back_insert_iterator<vector<unsigned char>>::operator=(const unsigned char& value) -- STLport back inserter assignment: push the byte onto the container and return the iterator
 // Leaf: ??4?$back_insert_iterator@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E98C0, length 59 bytes (`ret 4`, returns `this`).
 // Label correction: the catalog's "Vector_PushBackByte" is STLport `back_insert_iterator<vector<unsigned char> >::operator=`
@@ -10,7 +10,7 @@
 //   homed in the `value` reference's own slot (re-read for the push right after).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 

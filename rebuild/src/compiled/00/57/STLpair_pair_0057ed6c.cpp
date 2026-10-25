@@ -1,5 +1,5 @@
-// _STL::pair::pair(const CCharString& a, const CTCHeroStats::MirroredCriminalStatus& b) -- value constructor of a criminal-status map node value: copy the region name, block-copy the 0x44-byte status
-// Leaf: ??0?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@_STL@@QAE@ABVCCharString@@ABUMirroredCriminalStatus@CTCHeroStats@@@Z
+// std::pair::pair(const CCharString& a, const CTCHeroStats::MirroredCriminalStatus& b) -- value constructor of a criminal-status map node value: copy the region name, block-copy the 0x44-byte status
+// Leaf: ??0?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@QAE@ABVCCharString@@ABUMirroredCriminalStatus@CTCHeroStats@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0057ED6C, 34 bytes, __fastcall `ret 8`, returns `this` (unaligned: a size-optimised TU).
 // Identity: the value_type of CTCHeroStats::OutstandingCrimes (map<CCharString, CTCHeroStats::MirroredCriminalStatus>);
 //   the caller 0x00581322 builds `value_type(key, MirroredCriminalStatus())` in a frame slot for the map's insert
@@ -32,7 +32,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>* last, pair<unsigned long, CTextureMorph> val, CKeyPairCompareLess<unsigned long, CTextureMorph> comp) -- STLport insertion step over a texture-morph vector map: shift every larger-keyed entry up one slot and drop val into the hole
+// std::__unguarded_linear_insert(pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>* last, pair<unsigned long, CTextureMorph> val, CKeyPairCompareLess<unsigned long, CTextureMorph> comp) -- STLport insertion step over a texture-morph vector map: shift every larger-keyed entry up one slot and drop val into the hole
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086A640, length 67 bytes (+ int3 padding), `ret 10h`.
 // Callers: __linear_insert 0x0086C5C0 (landed; 0x0086C611, it carries this body as a same-TU stand-in) and
@@ -18,7 +18,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -41,9 +41,9 @@ void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> TTextureMorphPair;
+typedef std::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> TTextureMorphPair;
 typedef CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph> TTextureMorphLess;
-template void __fastcall _STL::__unguarded_linear_insert<TTextureMorphPair*, TTextureMorphPair, TTextureMorphLess>(TTextureMorphPair*, TTextureMorphPair, TTextureMorphLess);
+template void __fastcall std::__unguarded_linear_insert<TTextureMorphPair*, TTextureMorphPair, TTextureMorphLess>(TTextureMorphPair*, TTextureMorphPair, TTextureMorphLess);

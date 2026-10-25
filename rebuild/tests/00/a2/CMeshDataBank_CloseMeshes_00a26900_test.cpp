@@ -25,7 +25,7 @@ public:
     ~CCountedPointer() { ++g_cpDestroyed; }
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
@@ -85,11 +85,11 @@ template <> C3DAnimationInfo* vector<C3DAnimationInfo>::erase(C3DAnimationInfo* 
 class CMeshDataBank {
 public:
     CCharString Filename;
-    _STL::vector<CMeshDataBankEntry*>                     MeshesAndAnimations;
-    _STL::vector<C3DMeshInfo>                             MeshInfoBuffer;
-    _STL::vector<CPhysicsMeshInfo>                        PhysicsMeshInfoBuffer;
-    _STL::vector<C3DAnimationInfo>                        AnimationInfoBuffer;
-    _STL::vector<CCountedPointer<CMeshDataBankEntry> >    DynamicInfoBuffer;
+    std::vector<CMeshDataBankEntry*>                     MeshesAndAnimations;
+    std::vector<C3DMeshInfo>                             MeshInfoBuffer;
+    std::vector<CPhysicsMeshInfo>                        PhysicsMeshInfoBuffer;
+    std::vector<C3DAnimationInfo>                        AnimationInfoBuffer;
+    std::vector<CCountedPointer<CMeshDataBankEntry> >    DynamicInfoBuffer;
     void CloseMeshes();
 };
 
@@ -103,7 +103,7 @@ void CMeshDataBank::CloseMeshes()
     Filename = "";
 }
 
-template <class T> static void Fill(_STL::vector<T>& v, T* storage, int n, int cap) { v._M_start = storage; v._M_finish = storage + n; v._M_end_of_storage._M_data = storage + cap; }
+template <class T> static void Fill(std::vector<T>& v, T* storage, int n, int cap) { v._M_start = storage; v._M_finish = storage + n; v._M_end_of_storage._M_data = storage + cap; }
 
 int main()
 {

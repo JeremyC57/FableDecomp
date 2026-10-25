@@ -1,5 +1,5 @@
-// _STL::vector::clear() -- empty a vector<float>: erase(begin(), end()) with STLport's __copy_trivial inlined
-// Leaf: ?clear@?$vector@MV?$allocator@M@_STL@@@_STL@@QAEXXZ
+// std::vector::clear() -- empty a vector<float>: erase(begin(), end()) with STLport's __copy_trivial inlined
+// Leaf: ?clear@?$vector@MV?$allocator@M@std@@@std@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049BAE0, 41 bytes, thiscall, `ret`.
 // Identity: vector<float>::clear. The only caller is the CPersistContext vector transfer 0x00569FE0 (catalog
 //   "Transfer<signed_char>"), whose other mode arms serialise the same vector with GFSerialiseVectorBinaryOut<float>
@@ -11,7 +11,7 @@
 //   it keeps the never-true `cmp eax,eax ; jne` and the zero-length memmove + `add eax,esi` tail.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)

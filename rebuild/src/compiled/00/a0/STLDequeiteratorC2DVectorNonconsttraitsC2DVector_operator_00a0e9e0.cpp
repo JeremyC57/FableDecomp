@@ -1,4 +1,4 @@
-// _STL::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> >::operator[](int n) const -- the element n places from the iterator: copy the iterator, advance the copy, return a reference to its cursor
+// std::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> >::operator[](int n) const -- the element n places from the iterator: copy the iterator, advance the copy, return a reference to its cursor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0E9E0, length 76 bytes (thiscall `ret 4`, + int3 padding). No direct callers
 // (an emitted COMDAT); byte-identical to 0x00A0EE00 (the const_iterator instantiation).
 // Callees: _Deque_iterator_base::_M_advance @ 0x00A0E2A0.
@@ -22,7 +22,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

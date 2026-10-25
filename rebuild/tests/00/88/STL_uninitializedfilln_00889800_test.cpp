@@ -4,7 +4,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::uninitialized_fill_n<CBlendedEnvironmentTheme*> @ 0x00889800: copy-construct n themes into raw
+// Model of std::uninitialized_fill_n<CBlendedEnvironmentTheme*> @ 0x00889800: copy-construct n themes into raw
 // storage through the class's copy constructor, return first + n.
 static int g_copies = 0;
 class CBlendedEnvironmentTheme {

@@ -1,4 +1,4 @@
-// _STL::__partial_sort(SUniqueIDOpen* first, SUniqueIDOpen* middle, SUniqueIDOpen* last, SUniqueIDOpen*, CUniqueIDOpenLess comp) -- STLport partial sort of the 16-byte (unsigned __int64 unique ID, bool open) entries: heap [first, middle), pop every later entry with a smaller 64-bit key into it, then sort the heap
+// std::__partial_sort(SUniqueIDOpen* first, SUniqueIDOpen* middle, SUniqueIDOpen* last, SUniqueIDOpen*, CUniqueIDOpenLess comp) -- STLport partial sort of the 16-byte (unsigned __int64 unique ID, bool open) entries: heap [first, middle), pop every later entry with a smaller 64-bit key into it, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A828C0, 160 bytes, `ret 0Ch` (/Gr: first in ecx, middle in
 //   edx; last, the null value-type pointer and the empty comparator's slot on the stack).
@@ -11,7 +11,7 @@
 //   (`*result = *first` = the pair's trivial four-dword assignment, then __adjust_heap(first, 0, middle - first, val,
 //   comp)); the value copy keeps the key in ecx:edx and spills the second member, the pair's memberwise copy ctor
 //   copies only that member (no padding) into the argument area.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -23,14 +23,14 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 class CANavQuadTreeNode;
-typedef _STL::pair<unsigned __int64, bool>          SUniqueIDOpen;    // 16 bytes
+typedef std::pair<unsigned __int64, bool>          SUniqueIDOpen;    // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, bool> CUniqueIDOpenLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type_of(_Tp*) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type_of(_Tp*) { return (int*)0; }
 

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-// Behaviour model of _STL::pair<unsigned long, C3DMeshVolume>::pair() @ 0x00A327E0: zero key, the volume's name
+// Behaviour model of std::pair<unsigned long, C3DMeshVolume>::pair() @ 0x00A327E0: zero key, the volume's name
 // default-constructed (CCharString() stand-in), null counted convex volume.
 static char gEmptyString[1] = { 0 };
 static int gNameCtorCalls = 0;
@@ -23,7 +23,7 @@ public:
     CCharString                         Name;
     CCountedPointer<CContainmentVolume> ConvexVolume;
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -32,7 +32,7 @@ template <class _T1, class _T2> struct pair {
 }
 int main()
 {
-    typedef _STL::pair<unsigned long, C3DMeshVolume> Entry;
+    typedef std::pair<unsigned long, C3DMeshVolume> Entry;
     union { double align; unsigned char bytes[sizeof(Entry)]; } buf;
     std::memset(buf.bytes, 0xCD, sizeof(buf.bytes));
     Entry* e = new (buf.bytes) Entry;

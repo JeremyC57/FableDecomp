@@ -15,7 +15,7 @@
 //   _M_insert_overflow (reads x, no escape); declared only, VC7.1 re-reads the temporary from the frame.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -76,16 +76,16 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __positio
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                       // +0x0c
     bool Dirty;                                         // +0x0d
     void Insert(const K& key, const V& value)
     {
-        push_back(_STL::pair<K, V>(key, value));
+        push_back(std::pair<K, V>(key, value));
         Dirty = true;
     }
 };

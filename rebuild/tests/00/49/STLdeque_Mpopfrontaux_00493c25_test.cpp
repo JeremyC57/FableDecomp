@@ -1,4 +1,4 @@
-// Behaviour test for 0x00493C25 _STL::deque<CSubtitleRenderer::CSetTextInfo>::_M_pop_front_aux: popping the last
+// Behaviour test for 0x00493C25 std::deque<CSubtitleRenderer::CSetTextInfo>::_M_pop_front_aux: popping the last
 // element of the front buffer destroys it, frees that buffer and moves the start iterator to the next map node
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +24,7 @@ public:
     };
 };
 CSubtitleRenderer::CSetTextInfo::~CSetTextInfo() { ++gDtors; gLastDestroyed = DisplayFlags; }   // stand-in
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* p, unsigned int) { if (p != 0) test_free(p); }
@@ -77,7 +77,7 @@ void deque<_Tp, _Alloc>::_M_pop_front_aux()
 }
 }
 typedef CSubtitleRenderer::CSetTextInfo CInfo;
-typedef _STL::deque<CInfo> CInfoDeque;
+typedef std::deque<CInfo> CInfoDeque;
 static CInfo* gMap[3];
 int main()
 {

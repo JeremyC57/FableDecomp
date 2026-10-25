@@ -1,4 +1,4 @@
-// Behaviour test for 0x006BEDC0 _STL::__pop_heap over pair<long, CMusicManager::CRegisteredMusicEntry>.
+// Behaviour test for 0x006BEDC0 std::__pop_heap over pair<long, CMusicManager::CRegisteredMusicEntry>.
 #include <cstdio>
 #include <cstring>
 

@@ -1,4 +1,4 @@
-// _STL::__final_insertion_sort(first, last, comp) -- STLport sort tail over pair<unsigned long, CSoundPair> by CKeyPairCompareLess: insertion-sort the first 16, unguarded insertion for the rest
+// std::__final_insertion_sort(first, last, comp) -- STLport sort tail over pair<unsigned long, CSoundPair> by CKeyPairCompareLess: insertion-sort the first 16, unguarded insertion for the rest
 // Leaf: ??$__final_insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00470D36, 65 bytes, __fastcall (first ecx, last edx), `ret 4` (the empty comparator);
 //   size-optimised TU (odd address, `push 0Ch ; cdq ; pop esi ; idiv esi` for the 12-byte element count).
@@ -23,7 +23,7 @@ template <class K, class V> class CKeyPairCompareLess {
 public:
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
@@ -63,4 +63,4 @@ void __fastcall __final_insertion_sort(_RandomAccessIter __first, _RandomAccessI
 template void __fastcall __final_insertion_sort(pair<unsigned long, CSoundPair>*, pair<unsigned long, CSoundPair>*,
                                                 CKeyPairCompareLess<unsigned long, CSoundPair>);
 
-} // namespace _STL
+} // namespace std

@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CCharString* first, CCharString* last, CCharString*, int depth_limit, less<CCharString> comp) -- STLport introsort recursion for a CCharString range: median-of-three quicksort partitions down to 16 elements, heap sort once the depth budget is spent
+// std::__introsort_loop(CCharString* first, CCharString* last, CCharString*, int depth_limit, less<CCharString> comp) -- STLport introsort recursion for a CCharString range: median-of-three quicksort partitions down to 16 elements, heap sort once the depth budget is spent
 // Leaf: __introsort_loop
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E3740, 142 bytes (+ padding to 144), `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   ebx, last in edx -> edi, then the null value-type pointer, the depth budget and the empty comparator on the stack).

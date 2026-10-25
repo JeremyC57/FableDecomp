@@ -10,7 +10,7 @@
 //   the candidate in edx and the key in ebx); `__default_constructed((_Tp*)0)` gives the late `mov [esp+1Ch],0`
 //   store of the pair temporary's second word after the argument pushes -- only when insert_unique has a same-TU
 //   out-of-line body that reads the value (declaration-only schedules the store one push earlier).
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -90,4 +90,4 @@ typename map<_Key, _Tp, _Compare>::iterator map<_Key, _Tp, _Compare>::insert_uni
 
 template unsigned long& map<unsigned long, unsigned long>::operator[](const unsigned long&);
 
-} // namespace _STL
+} // namespace std

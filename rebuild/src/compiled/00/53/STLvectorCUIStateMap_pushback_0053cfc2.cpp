@@ -1,4 +1,4 @@
-// _STL::vector<CUIStateMap>::push_back(const CUIStateMap& x) -- STLport vector push_back of NUISystem::CList::ScrollingChildrenStates (CUIStateMap = map<unsigned long, NUISystem::CUIState>): copy-construct the map at the end when there is room, else grow through _M_insert_overflow
+// std::vector<CUIStateMap>::push_back(const CUIStateMap& x) -- STLport vector push_back of NUISystem::CList::ScrollingChildrenStates (CUIStateMap = map<unsigned long, NUISystem::CUIState>): copy-construct the map at the end when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0053CFC2, 56 bytes, `ret 4` (thiscall on the vector, &x); size-optimised frame-pointer
 //   TU (`push ebp ; mov ebp,esp`, unaligned entry: `optimize("y", off)` + `("s", on)`, as the landed CList rows).
@@ -22,7 +22,7 @@ namespace NUISystem {
 class CUIState;
 }
 
-namespace _STL {
+namespace std {
 struct __false_type {
     __false_type() {}
 };

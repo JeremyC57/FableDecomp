@@ -1,4 +1,4 @@
-// _STL::list<CScriptThing>::push_back(const CScriptThing& x) -- append a copy of a script thing at the end of the list
+// std::list<CScriptThing>::push_back(const CScriptThing& x) -- append a copy of a script thing at the end of the list
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA01E0, 30 bytes, `__fastcall`, one stack argument (`ret 4`).
 //   Callers: the minion-camp entity script's Main @ 0x00DA0160 (twice: ParentClass->LeftSpawnPoints +0x90 and
@@ -16,7 +16,7 @@ public:
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
 };
 
-namespace _STL {
+namespace std {
 class __malloc_alloc {                                      // Fable's STLport node allocator: malloc
 public:
     static void* allocate(unsigned int n) { return malloc(n); }
@@ -68,4 +68,4 @@ public:
     void push_back(const T& x) { insert(end(), x); }
 };
 template class list<CScriptThing>;
-} // namespace _STL
+} // namespace std

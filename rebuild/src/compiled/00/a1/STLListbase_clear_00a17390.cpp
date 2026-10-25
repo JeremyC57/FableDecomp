@@ -1,5 +1,5 @@
-// _STL::_List_base::clear() -- free every quad-tree map entry of the navigator manager's list (section name destroyed, counted quad tree released) and relink the sentinel to itself
-// Instantiation: _STL::_List_base<CNavQuadTreeMap,_STL::allocator<CNavQuadTreeMap> >::clear
+// std::_List_base::clear() -- free every quad-tree map entry of the navigator manager's list (section name destroyed, counted quad tree released) and relink the sentinel to itself
+// Instantiation: std::_List_base<CNavQuadTreeMap,std::allocator<CNavQuadTreeMap> >::clear
 // Leaf: ?clear@?$_List_base@VCNavQuadTreeMap@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A17390, 97 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: called by the two STLport `~list` bodies 0x00A17510 / 0x00A17570 (landed as std::list_T_00a17510 / _00a17570);
@@ -58,7 +58,7 @@ public:
     CCharString                   SectionName;              // +0x1c
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -103,4 +103,4 @@ void _List_base<_Tp, _Alloc>::clear()
 }
 }
 
-template class _STL::_List_base<CNavQuadTreeMap, _STL::allocator<CNavQuadTreeMap> >;
+template class std::_List_base<CNavQuadTreeMap, std::allocator<CNavQuadTreeMap> >;

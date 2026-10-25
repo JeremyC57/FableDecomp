@@ -1,4 +1,4 @@
-// _STL::vector<CGenericVar>::push_back(const CGenericVar&) -- append a copy of a generic variable, reallocating through _M_insert_overflow when full
+// std::vector<CGenericVar>::push_back(const CGenericVar&) -- append a copy of a generic variable, reallocating through _M_insert_overflow when full
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EFDF0, 113 bytes (`ret 4`). Catalog label "Vector_PushBackPolymorphicEntry" is
 //   descriptive; the element vtable 0x0129C3E4 is CGenericVar (the console parameter vector).
 // Callees: CCharString copy ctor 0x0099EC30, vector<CGenericVar>::_M_insert_overflow(pos, x, const __false_type&, 1, true)
@@ -6,7 +6,7 @@
 // Shape: STLport push_back over the _Vector_base + _STLP_alloc_proxy model: placement-new null test, the implicit
 //   CGenericVar copy, ++_M_finish re-read from memory; when full, x is loaded first and the empty tag lands in its now
 //   dead argument slot (a declared callee is enough here).
-// Leaf: ?push_back@?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@_STL@@@_STL@@QAEXABVCGenericVar@@@Z
+// Leaf: ?push_back@?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@QAEXABVCGenericVar@@@Z
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
 class CCharString
@@ -30,7 +30,7 @@ public:
     virtual ~CGenericVar();
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() {} };          // user ctor: the 1-byte tag is not zero-filled
 
@@ -72,4 +72,4 @@ public:
 
 template void vector<CGenericVar>::push_back(const CGenericVar&);
 
-} // namespace _STL
+} // namespace std

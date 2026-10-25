@@ -1,4 +1,4 @@
-// _STL::__partial_sort(unsigned long* first, unsigned long* middle, unsigned long* last, unsigned long*, CBankFile::CompareDataOffset comp) -- introsort depth-limit fallback of a bank's entry-index sort: heap the prefix, pop every index whose data offset is lower from the rest into it, then heap-sort the prefix
+// std::__partial_sort(unsigned long* first, unsigned long* middle, unsigned long* last, unsigned long*, CBankFile::CompareDataOffset comp) -- introsort depth-limit fallback of a bank's entry-index sort: heap the prefix, pop every index whose data offset is lower from the rest into it, then heap-sort the prefix
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4620, 168 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first
 //   in ecx, middle in edx; last, the value-type tag pointer and the one-pointer comparator on the stack).
@@ -59,7 +59,7 @@ struct CompareDataOffset {                         // CBankFile::CompareDataOffs
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x009D3750

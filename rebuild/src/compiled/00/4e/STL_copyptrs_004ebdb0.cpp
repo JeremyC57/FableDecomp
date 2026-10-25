@@ -1,4 +1,4 @@
-// _STL::__copy_ptrs(const CCardPositionsDef* first, const CCardPositionsDef* last, CCardPositionsDef* result, const __false_type&) -- STLport __copy_ptrs for the non-POD card-positions def: counted forward assignment of 72-byte elements, returns the advanced result
+// std::__copy_ptrs(const CCardPositionsDef* first, const CCardPositionsDef* last, CCardPositionsDef* result, const __false_type&) -- STLport __copy_ptrs for the non-POD card-positions def: counted forward assignment of 72-byte elements, returns the advanced result
 // Leaf: __copy_ptrs
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EBDB0, 65 bytes, `ret 8` (/Gr __fastcall: first in ecx, last in edx; result and the
 //   tag reference on the stack).
@@ -15,7 +15,7 @@
 //   0x004E9BDA recipe). Size TU without a frame pointer: `#pragma optimize("s", on)`.
 // Model: no engine header for CCardPositionsDef (Ego_r.pdb gives 80 bytes, retail 0x48); local model as in 0x004EBDF1.
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 struct __false_type { };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 }
@@ -41,7 +41,7 @@ public:
         return *this;
     }
 };
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 __forceinline _OutputIter __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
                                  const random_access_iterator_tag&, _Distance*)

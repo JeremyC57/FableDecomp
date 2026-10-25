@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CLandscapeTheme>::resize(n): resize the landscape theme list to n entries, filling with a default theme (no textures or bump maps, no water)
-// Leaf: ?resize@?$vector@UCLandscapeTheme@@V?$allocator@UCLandscapeTheme@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CLandscapeTheme>::resize(n): resize the landscape theme list to n entries, filling with a default theme (no textures or bump maps, no water)
+// Leaf: ?resize@?$vector@UCLandscapeTheme@@V?$allocator@UCLandscapeTheme@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B6CC50, 56 bytes (+8 int3), thiscall on the vector, `ret 4`.
 // Identity: Ego_r.pdb / FableWin.pdb ?resize@?$vector@UCLandscapeTheme@@...@@QAEXI@Z; no direct call site in the image
 //   (xref: 0 calls / 0 references); its callee is the two-argument resize CEngineLandscapeRenderer::BuildThemes
@@ -38,7 +38,7 @@ struct CLandscapeTheme {                            // 56 bytes
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -63,4 +63,4 @@ public:
 };
 }
 
-template void _STL::vector<CLandscapeTheme>::resize(unsigned int);
+template void std::vector<CLandscapeTheme>::resize(unsigned int);

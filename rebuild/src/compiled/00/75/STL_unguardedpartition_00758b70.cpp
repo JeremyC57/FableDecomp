@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* last, pair<EBodyLocation,CWoundMorphs::CEntry> pivot, CKeyPairCompareLess comp) -- quicksort partition of the wound-morph entries around a by-value pivot; returns the cut
+// std::__unguarded_partition(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* last, pair<EBodyLocation,CWoundMorphs::CEntry> pivot, CKeyPairCompareLess comp) -- quicksort partition of the wound-morph entries around a by-value pivot; returns the cut
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00758B70, 109 bytes (+3 int3), `ret 30h` (link-time __fastcall: first in ecx, last
 //   in edx, the 0x2C-byte pivot and the empty comparator on the stack: 0x2C + 4 = 0x30). No callees.
@@ -15,7 +15,7 @@ struct CWoundMorphsEntry {                       // CWoundMorphs::CEntry, 40 byt
     long Words[10];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                     // +0x00
     B second;                                    // +0x04

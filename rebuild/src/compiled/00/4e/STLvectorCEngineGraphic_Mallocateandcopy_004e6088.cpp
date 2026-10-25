@@ -1,4 +1,4 @@
-// _STL::vector<CEngineGraphic>::_M_allocate_and_copy(size_t n, const CEngineGraphic* first, const CEngineGraphic* last) -- STLport vector regrowth helper for CReplaceableMeshes' CArray<CEngineGraphic> (14-byte packed records): malloc n elements (none for zero) and copy-construct [first, last) into them
+// std::vector<CEngineGraphic>::_M_allocate_and_copy(size_t n, const CEngineGraphic* first, const CEngineGraphic* last) -- STLport vector regrowth helper for CReplaceableMeshes' CArray<CEngineGraphic> (14-byte packed records): malloc n elements (none for zero) and copy-construct [first, last) into them
 // Leaf: _M_allocate_and_copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E6088, 66 bytes, `ret 0Ch` (size-optimised TU: unaligned entry,
 //   `pop ecx` after malloc). `this` (the vector) is never read: the allocator is empty.
@@ -19,7 +19,7 @@
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 inline void* operator new(size_t, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

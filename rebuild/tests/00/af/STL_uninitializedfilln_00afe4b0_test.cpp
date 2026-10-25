@@ -3,7 +3,7 @@
 #include <cstring>
 #include <new>
 
-// Model of _STL::__uninitialized_fill_n over CArray<long>: n deep copies of one primitive-ID list.
+// Model of std::__uninitialized_fill_n over CArray<long>: n deep copies of one primitive-ID list.
 struct LongArray {
     long* start; long* finish; long* eos;
     LongArray() : start(0), finish(0), eos(0) { }

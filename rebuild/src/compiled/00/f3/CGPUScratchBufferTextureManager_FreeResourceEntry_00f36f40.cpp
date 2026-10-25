@@ -18,7 +18,7 @@
 #include <string.h>
 #include <stddef.h>
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -80,7 +80,7 @@ void vector<T, Alloc>::_M_insert_overflow(T* position, const T& x, const __true_
         this->_M_finish = position + fillLen;
 }
 
-}   // namespace _STL
+}   // namespace std
 
 class CTexture {
 public:
@@ -111,7 +111,7 @@ public:
     };
     struct CResourcePage {                   // 0x1c bytes
         long                ScratchPool;           // +0x00
-        _STL::vector<long>  ResourceList;          // +0x04
+        std::vector<long>  ResourceList;          // +0x04
         unsigned char*      NextFreeBufferAddress; // +0x10
         long                FreeSpaceSize;         // +0x14
         bool                EnableAutoRestore;     // +0x18
@@ -119,11 +119,11 @@ public:
     struct CScratchPool { unsigned char* Buffer; long BufferSize; };
 
     virtual ~CGPUScratchBufferTextureManager();
-    _STL::vector<CResourceEntry> Resources;            // +0x04
-    _STL::vector<CResourcePage>  MemoryPages;          // +0x10
-    _STL::vector<CScratchPool>   ScratchPools;         // +0x1c
-    _STL::vector<long>           FreeTexturePageSlots; // +0x28
-    _STL::vector<long>           FreeTextureSlots;     // +0x34
+    std::vector<CResourceEntry> Resources;            // +0x04
+    std::vector<CResourcePage>  MemoryPages;          // +0x10
+    std::vector<CScratchPool>   ScratchPools;         // +0x1c
+    std::vector<long>           FreeTexturePageSlots; // +0x28
+    std::vector<long>           FreeTextureSlots;     // +0x34
     bool                         ShutdownFlag;         // +0x40
 
 private:

@@ -1,4 +1,4 @@
-// _STL::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CFilter_Bind2 pred) -- copy to result every target point that is outside the field of view or targetable from behind; returns the new end
+// std::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CFilter_Bind2 pred) -- copy to result every target point that is outside the field of view or targetable from behind; returns the new end
 // Leaf: ??$remove_copy_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080A850, 146 bytes, /Gr `__fastcall` (first in ecx, last in edx --
 //   spilled to the `push ecx` frame word), result and the 8-byte CFilter_Bind2 by value on the stack, `ret 0Ch`.
@@ -55,7 +55,7 @@ struct CThingFilter_IsTargetableBehind {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Predicate> class unary_negate {
 protected:
     _Predicate _M_pred;
@@ -69,9 +69,9 @@ template <class TF1, class TF2> struct CFilter_Bind2 {
     TF2* F2;                                              // +0x4
     template <class T> bool operator()(const T& t) const { return (*F1)(t) && (*F2)(t); }
 };
-typedef CFilter_Bind2<CThingFilter_IsInFOV, _STL::unary_negate<CThingFilter_IsTargetableBehind> > Pred;
+typedef CFilter_Bind2<CThingFilter_IsInFOV, std::unary_negate<CThingFilter_IsTargetableBehind> > Pred;
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _OutputIter, class _Predicate>
 _OutputIter __fastcall remove_copy_if(_InputIter __first, _InputIter __last, _OutputIter __result, _Predicate __pred)
 {

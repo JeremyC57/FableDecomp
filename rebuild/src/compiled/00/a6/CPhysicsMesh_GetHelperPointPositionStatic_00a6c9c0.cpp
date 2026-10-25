@@ -34,7 +34,7 @@ public:
     long      BoneIndex;                                // +0x0C
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -44,12 +44,12 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& entry, const CCharString& key) const;
+    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const;
 };
 
 template <class K, class V, class C> class CVectorMap {   // retail 16 bytes: STLport vector + Compare + Dirty
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef const value_type* const_iterator;
     value_type* _M_start;                               // +0x00
     value_type* _M_finish;                              // +0x04

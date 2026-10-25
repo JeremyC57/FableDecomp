@@ -20,7 +20,7 @@ struct CBase {
 
 struct CCharString { void* PStringData; };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator {
 public:
@@ -91,7 +91,7 @@ template <class T> struct CCompareString { };
 struct CSymbolMap : CBase {
     struct CSymbolInfo { CCharString GroupName; CCharString EntryName; long Val; };   // PDB, 12 bytes
     CVectorMap<CCharString, CSymbolInfo, CCompareString<CSymbolInfo> > SLONGMap;   // +0x04
-    _STL::set<CCharString>                                             NamesUsed;  // +0x14
+    std::set<CCharString>                                             NamesUsed;  // +0x14
     bool                                                               CheckForDuplicateSymbols;   // +0x20
     virtual ~CSymbolMap();
     void Clear();

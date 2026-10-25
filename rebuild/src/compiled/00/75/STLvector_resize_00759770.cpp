@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (EBodyLocation, CWoundMorphs::CEntry) pair vector
-// Leaf: ?resize@?$vector@U?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@_STL@@V?$allocator@U?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (EBodyLocation, CWoundMorphs::CEntry) pair vector
+// Leaf: ?resize@?$vector@U?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@std@@V?$allocator@U?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00759770, 68 bytes, thiscall, `ret 4`.
 // Identity: the storage vector of CWoundMorphs::Morphs, a CVectorMap<EBodyLocation, CWoundMorphs::CEntry> (Ego_r.pdb
 //   _Pair_base<EBodyLocation, CWoundMorphs::CEntry> is 44 bytes: the enum + a 40-byte entry of Location, six texture /
@@ -29,7 +29,7 @@ public:
                    PermanentScarStrength(0.0f) { }
     };
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -63,5 +63,5 @@ public:
     void resize(size_type __new_size) { resize(__new_size, _Tp()); }
 };
 
-template void vector<_STL::pair<EBodyLocation, CWoundMorphs::CEntry> >::resize(size_type);
+template void vector<std::pair<EBodyLocation, CWoundMorphs::CEntry> >::resize(size_type);
 }

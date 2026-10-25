@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__partial_sort<pair<unsigned long,CSoundPair>*, ..> @ 0x00470FA5: the smallest (middle - first)
+// Model of std::__partial_sort<pair<unsigned long,CSoundPair>*, ..> @ 0x00470FA5: the smallest (middle - first)
 // entries end up sorted at the front.
 
 class CSoundPair {                                          // Ego_r.pdb, 8 bytes (a class: mangled V)
@@ -17,7 +17,7 @@ public:
     long LastSound;                                         // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -27,10 +27,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> __forceinline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }     // _STLP_VALUE_TYPE for pointers
 template <class _Tp> __forceinline int* __distance_type(const _Tp*) { return (int*)0; }  // _STLP_DISTANCE_TYPE for pointers
 
@@ -84,7 +84,7 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 typedef pair<unsigned long, CSoundPair> _SoundEntry;
 }
 
-typedef _STL::pair<unsigned long, CSoundPair> E;
+typedef std::pair<unsigned long, CSoundPair> E;
 typedef CKeyPairCompareLess<unsigned long, CSoundPair> C;
 static void SetEntry(E& e, unsigned int key) { e.first = key; e.second.FirstSound = (long)(key * 3); e.second.LastSound = (long)(key + 7); }
 static bool Consistent(const E& e) { return e.second.FirstSound == (long)(e.first * 3) && e.second.LastSound == (long)(e.first + 7); }
@@ -225,19 +225,19 @@ template <class RI, class T, class C> void IntrosortLoop(RI first, RI last, T*, 
     }
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class D, class T, class C> void __fastcall __adjust_heap(RI first, D hole, D len, T val, C comp)
 {
     TLib::AdjustHeap(first, hole, len, val, comp);
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class C, class T, class D> void __fastcall __make_heap(RI first, RI last, C comp, T*, D*)
 {
     TLib::MakeHeapT(first, last, comp, (T*)0, (D*)0);
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class T, class C> void __fastcall __pop_heap_aux(RI first, RI last, T*, C comp) { TLib::PopHeapAux(first, last, (T*)0, comp); }
 }
 int main()
@@ -249,7 +249,7 @@ int main()
         E* a = NewEntries(n);
         FillRandom(a, n);
         unsigned long sum = KeySum(a, n);
-        _STL::__partial_sort(a, a + m, a + n, (E*)0, C());
+        std::__partial_sort(a, a + m, a + n, (E*)0, C());
         if (!SortedOk(a, m))
             ok = false;
         for (int i = m; i < n; ++i)

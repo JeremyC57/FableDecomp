@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CWideString* first, CWideString* last, CWideString pivot, less<CWideString> comp) -- quicksort partition over wide strings: advance first past smaller strings, retreat last past larger ones, swap the pair, repeat until they cross
+// std::__unguarded_partition(CWideString* first, CWideString* last, CWideString pivot, less<CWideString> comp) -- quicksort partition over wide strings: advance first past smaller strings, retreat last past larger ones, swap the pair, repeat until they cross
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B3580, 146 bytes, `ret 8`: `__fastcall` (/Gr algorithm TU: first in ecx, last in
 // edx, the 4-byte CWideString pivot and the empty comparator on the stack), returns the cut in eax. Catalog name
@@ -15,7 +15,7 @@ public:
     bool operator<(const CWideString& other) const;     // 0x0099AF70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -54,5 +54,5 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 }
 
-template CWideString* __fastcall _STL::__unguarded_partition<CWideString*, CWideString, _STL::less<CWideString> >(
-    CWideString* __first, CWideString* __last, CWideString __pivot, _STL::less<CWideString> __comp);
+template CWideString* __fastcall std::__unguarded_partition<CWideString*, CWideString, std::less<CWideString> >(
+    CWideString* __first, CWideString* __last, CWideString __pivot, std::less<CWideString> __comp);

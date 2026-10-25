@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(SNamedPosition* last, SNamedPosition val, CKeyPairCompareLess comp) -- STLport insertion step over 16-byte (CCharString, C3DVector) pairs ordered by name: shift greater entries up one slot until val's place, then store it
+// std::__unguarded_linear_insert(SNamedPosition* last, SNamedPosition val, CKeyPairCompareLess comp) -- STLport insertion step over 16-byte (CCharString, C3DVector) pairs ordered by name: shift greater entries up one slot until val's place, then store it
 // Leaf: __unguarded_linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077E6A0, 133 bytes (+ int3 padding to 144), `ret 14h` (__fastcall /Gr
 //   algorithm TU: last in ecx -> edi, the 16-byte by-value pair and the empty comparator on the stack, 0x10 + 4; the

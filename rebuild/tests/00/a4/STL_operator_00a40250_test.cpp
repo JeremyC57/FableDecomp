@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A40250 _STL::operator< over pair<CCharString, CCharString> (first strings, then second; null data sorts first, shared data is equal).
+// Behaviour test for 0x00A40250 std::operator< over pair<CCharString, CCharString> (first strings, then second; null data sorts first, shared data is equal).
 #include <cstdio>
 #include <cstring>
 

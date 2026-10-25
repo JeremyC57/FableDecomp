@@ -1,5 +1,5 @@
-// _STL::__unguarded_insertion_sort_aux(_STL::pair<CCharString, C3DDummyObject>* first, _STL::pair<CCharString, C3DDummyObject>* last, _STL::pair<CCharString, C3DDummyObject>*, CCompareString<C3DDummyObject> comp) -- the unguarded tail of an insertion sort of named dummy objects by name
-// Leaf: ??$__unguarded_insertion_sort_aux@PAU?$pair@VCCharString@@VC3DDummyObject@@@_STL@@
+// std::__unguarded_insertion_sort_aux(std::pair<CCharString, C3DDummyObject>* first, std::pair<CCharString, C3DDummyObject>* last, std::pair<CCharString, C3DDummyObject>*, CCompareString<C3DDummyObject> comp) -- the unguarded tail of an insertion sort of named dummy objects by name
+// Leaf: ??$__unguarded_insertion_sort_aux@PAU?$pair@VCCharString@@VC3DDummyObject@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6F910, 68 bytes, `__fastcall` (first ecx, last edx; the unused
 //   T* tag and the 4-byte comparator on the stack), `ret 8`.
 // Identity: the loop passes each element by value (0x38 bytes: CCharString copy 0x0099EC30 + 13 dwords) with the
@@ -27,7 +27,7 @@ public:
     long       BoneIndex;                                // +0x30
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -36,16 +36,16 @@ template <class _T1, class _T2> struct pair {
 
 template <class V> class CCompareString {                // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const
     {
         return a.first.FastCompare(b.first);
     }
 };
 
-typedef _STL::pair<CCharString, C3DDummyObject> CDummyPair;   // 56 bytes
+typedef std::pair<CCharString, C3DDummyObject> CDummyPair;   // 56 bytes
 typedef CCompareString<C3DDummyObject> CDummyLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00A6F070
 
@@ -57,4 +57,4 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 }
 }
 
-template void __fastcall _STL::__unguarded_insertion_sort_aux<CDummyPair*, CDummyPair, CDummyLess>(CDummyPair*, CDummyPair*, CDummyPair*, CDummyLess);
+template void __fastcall std::__unguarded_insertion_sort_aux<CDummyPair*, CDummyPair, CDummyLess>(CDummyPair*, CDummyPair*, CDummyPair*, CDummyLess);

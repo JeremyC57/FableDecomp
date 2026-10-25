@@ -10,7 +10,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 class CNavigatorBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -91,8 +91,8 @@ public:
 
 class CNavigatorQueueManager {
 public:
-    typedef _STL::pair<long, const CNavigatorBase*> CQueueEntry;
-    _STL::list<CQueueEntry> Navigators;                 // +0x00 (STLport: one header pointer)
+    typedef std::pair<long, const CNavigatorBase*> CQueueEntry;
+    std::list<CQueueEntry> Navigators;                 // +0x00 (STLport: one header pointer)
     void AddNavigatorToQueue(const CNavigatorBase& navigator, bool immediately, float priority);
 };
 
@@ -109,8 +109,8 @@ void CNavigatorQueueManager::AddNavigatorToQueue(const CNavigatorBase& navigator
         Navigators.push_back(CQueueEntry(rank, &navigator));
         return;
     }
-    _STL::list<CQueueEntry>::iterator it = Navigators.begin();
-    _STL::advance(it, 2);
+    std::list<CQueueEntry>::iterator it = Navigators.begin();
+    std::advance(it, 2);
     while (it != Navigators.end() && (it->first >= rank || it->first == -1))
         ++it;
     Navigators.insert(it, CQueueEntry(rank, &navigator));

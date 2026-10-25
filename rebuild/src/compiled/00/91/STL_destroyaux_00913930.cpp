@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(_Deque_iterator first, _Deque_iterator last, const __false_type&) -- STLport destroy loop over a deque<CBezierCurve> range: steps the cursor (wrapping to the next node buffer) until it reaches last; the element destructor is empty
+// std::__destroy_aux(_Deque_iterator first, _Deque_iterator last, const __false_type&) -- STLport destroy loop over a deque<CBezierCurve> range: steps the cursor (wrapping to the next node buffer) until it reaches last; the element destructor is empty
 // Leaf: ??$__destroy_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00913930, 45 bytes (48 with padding), __fastcall (/Gr: the tag reference in ecx, both
 //   16-byte iterators on the stack), `ret 20h`.
@@ -40,7 +40,7 @@ public:
     C3DVector Point4;                           // +0x24
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type {                           // STLport empty tag; a user ctor keeps the temporary store-free
     __false_type() { }
@@ -193,5 +193,5 @@ void deque<_Tp, _Alloc>::clear()
 
 }
 
-template void __fastcall _STL::__destroy_aux(_STL::_Deque_iterator<CBezierCurve, _STL::_Nonconst_traits<CBezierCurve> >,
-    _STL::_Deque_iterator<CBezierCurve, _STL::_Nonconst_traits<CBezierCurve> >, const _STL::__false_type&);
+template void __fastcall std::__destroy_aux(std::_Deque_iterator<CBezierCurve, std::_Nonconst_traits<CBezierCurve> >,
+    std::_Deque_iterator<CBezierCurve, std::_Nonconst_traits<CBezierCurve> >, const std::__false_type&);

@@ -1,4 +1,4 @@
-// _STL::make_heap(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- STLport make_heap front end for target points: forward to __make_heap with the value and distance type pointers
+// std::make_heap(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- STLport make_heap front end for target points: forward to __make_heap with the value and distance type pointers
 // Leaf: ??$make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B810, 113 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx -- passed through untouched), the 0x34-byte comparator by value, `ret 34h`.
@@ -69,7 +69,7 @@ struct CThingCompare_BestForTargeting2 {
     bool operator()(const CTargetPoint& a, const CTargetPoint& b) const;             // 0x008098B0
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*,
                             _Distance*);   // 0x0080B330

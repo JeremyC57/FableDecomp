@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<set<unsigned long> >::resize(n): build an empty set, resize the vector with it as the fill value (or truncate), then destroy the temporary set
-// Leaf: ?resize@?$vector@V?$set@KV?$less@K@_STL@@V?$allocator@K@2@@_STL@@V?$allocator@V?$set@KV?$less@K@_STL@@V?$allocator@K@2@@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<set<unsigned long> >::resize(n): build an empty set, resize the vector with it as the fill value (or truncate), then destroy the temporary set
+// Leaf: ?resize@?$vector@V?$set@KV?$less@K@std@@V?$allocator@K@2@@std@@V?$allocator@V?$set@KV?$less@K@std@@V?$allocator@K@2@@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051D240, 144 bytes, `ret 4` (__fastcall: this in ecx, new_size on the stack).
 // Caller: 0x005073E2.
 // Callees: malloc 0x00BFEA0E (the temporary set's 20-byte header node), vector::resize(n, const set&) 0x0051D030 (the
@@ -15,7 +15,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -120,4 +120,4 @@ public:
 };
 
 template void vector<set<unsigned long> >::resize(unsigned int);
-} // namespace _STL
+} // namespace std

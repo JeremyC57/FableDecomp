@@ -1,4 +1,4 @@
-// _STL::list<CAnimSet>::remove_if<CPointersEquivalent<const CAnimSet> >(pred) -- remove the one animation set whose address the predicate holds (destroying it and freeing its node)
+// std::list<CAnimSet>::remove_if<CPointersEquivalent<const CAnimSet> >(pred) -- remove the one animation set whose address the predicate holds (destroying it and freeing its node)
 // Leaf: ??$remove_if@V?$CPointersEquivalent@$$CBVCAnimSet@@@@@?$list@VCAnimSet@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00711860, 91 bytes, `__fastcall`, the 4-byte predicate by value on the
 //   stack, `ret 4`.
@@ -52,7 +52,7 @@ public:
     bool operator()(const T& x) const { return P == &x; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { free(__p); }   // malloc-backed node allocator: no null test
@@ -130,4 +130,4 @@ public:
 };
 }
 
-template void _STL::list<CAnimSet>::remove_if<CPointersEquivalent<const CAnimSet> >(CPointersEquivalent<const CAnimSet>);
+template void std::list<CAnimSet>::remove_if<CPointersEquivalent<const CAnimSet> >(CPointersEquivalent<const CAnimSet>);

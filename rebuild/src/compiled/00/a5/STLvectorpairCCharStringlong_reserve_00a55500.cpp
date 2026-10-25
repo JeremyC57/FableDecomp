@@ -1,4 +1,4 @@
-// _STL::vector<pair<CCharString, long> >::reserve(unsigned int n) -- grow the capacity to n: allocate, copy the elements across and release the old block (or just allocate when empty), keeping the size
+// std::vector<pair<CCharString, long> >::reserve(unsigned int n) -- grow the capacity to n: allocate, copy the elements across and release the old block (or just allocate when empty), keeping the size
 // Leaf: ?reserve@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A55500, length 151 bytes (+9 int3 pad), `ret 4`.
 // Caller: 0x00A50BFE (0x00A50BF0, which reserves the output vector to the size of the CCharString-keyed map at +0x20 /
@@ -21,7 +21,7 @@ public:
     ~CCharString();                                  // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 
 template <class _T1, class _T2>

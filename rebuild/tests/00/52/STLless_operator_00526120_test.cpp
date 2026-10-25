@@ -1,9 +1,9 @@
-// Behaviour test for 0x00526120 _STL::less<unsigned __int64>::operator(): x < y on 64-bit unsigned keys
+// Behaviour test for 0x00526120 std::less<unsigned __int64>::operator(): x < y on 64-bit unsigned keys
 #include <stdio.h>
 #if !defined(_MSC_VER)
 #define __int64 long long
 #endif
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result>
 struct binary_function {
     typedef _Arg1   first_argument_type;
@@ -17,7 +17,7 @@ struct less : public binary_function<_Tp, _Tp, bool> {
 }
 int main()
 {
-    _STL::less<unsigned __int64> lt;
+    std::less<unsigned __int64> lt;
     unsigned __int64 one = 1;
     unsigned __int64 high = 1;
     high <<= 32;                         // 0x100000000: only the high dword is set

@@ -1,5 +1,5 @@
-// _STL::list<CVertexGroupBlock>::erase(iterator first, iterator last) -- unlink and destroy a run of blocks from the optimiser's block list (each block's group map and group vector), return last
-// Leaf: ?erase@?$list@VCVertexGroupBlock@@@_STL@@QAE?AU?$_List_iterator@VCVertexGroupBlock@@@2@U32@0@Z
+// std::list<CVertexGroupBlock>::erase(iterator first, iterator last) -- unlink and destroy a run of blocks from the optimiser's block list (each block's group map and group vector), return last
+// Leaf: ?erase@?$list@VCVertexGroupBlock@@@std@@QAE?AU?$_List_iterator@VCVertexGroupBlock@@@2@U32@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADC4E0, 0xC1 bytes, thiscall (`this` unused), `ret 0Ch` (hidden iterator
 // result, first, last), returns the result pointer.
 // Identity: the list node is {next +0, prev +4, CVertexGroupBlock +8} (map header +0x14, map count +0x18, vector start
@@ -12,7 +12,7 @@
 // into the `first` argument slot; ~CVertexGroupBlock inline (top level of _M_erase inlined).
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -130,15 +130,15 @@ public:
     _Rb_tree<K, value_type, Compare> _M_t;
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 bytes in retail
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0x0
@@ -201,4 +201,4 @@ typename list<_Tp>::iterator list<_Tp>::erase(iterator __first, iterator __last)
 }
 
 template list<CVertexGroupBlock>::iterator list<CVertexGroupBlock>::erase(iterator, iterator);
-} // namespace _STL
+} // namespace std

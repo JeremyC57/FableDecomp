@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__unguarded_linear_insert(pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry> val, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) (retail 0x005E10B0)
+// Behaviour test of std::__unguarded_linear_insert(pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry> val, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) (retail 0x005E10B0)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

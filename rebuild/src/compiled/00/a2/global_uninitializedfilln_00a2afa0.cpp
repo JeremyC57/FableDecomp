@@ -1,5 +1,5 @@
 // __uninitialized_fill_n(C3DAnimationInfo* first, unsigned int n, const C3DAnimationInfo& x, __false_type) -- copy-construct n animation infos from one prototype
-// Leaf: ??$__uninitialized_fill_n@PAVC3DAnimationInfo@@IV1@@_STL@@YIPAVC3DAnimationInfo@@PAV1@IABV1@ABU__false_type@0@@Z
+// Leaf: ??$__uninitialized_fill_n@PAVC3DAnimationInfo@@IV1@@std@@YIPAVC3DAnimationInfo@@PAV1@IABV1@ABU__false_type@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2AFA0, 107 bytes, `ret 8`. Only caller 0x00A2CB5B (inside 0x00A2CAC0, the
 //   C3DAnimationInfo vector's grow path). The catalog label "fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha>" is
 //   a mis-propagated ICF name: the element is the 0x28-byte C3DAnimationInfo (vtables 0x0129CD28 -> 0x0129CD64).
@@ -60,7 +60,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -74,4 +74,4 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 }
 }
 
-template C3DAnimationInfo* __fastcall _STL::__uninitialized_fill_n(C3DAnimationInfo*, unsigned int, const C3DAnimationInfo&, const _STL::__false_type&);
+template C3DAnimationInfo* __fastcall std::__uninitialized_fill_n(C3DAnimationInfo*, unsigned int, const C3DAnimationInfo&, const std::__false_type&);

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy<const CEntityScriptInfo*, CEntityScriptInfo*>(first, last, result, const __false_type&) -- STLport uninitialized copy of NThingManager::CEntityRuntimePersistence::CEntityScriptInfo records: copy-construct each source element into raw storage from result on, return the end of the constructed range
+// std::__uninitialized_copy<const CEntityScriptInfo*, CEntityScriptInfo*>(first, last, result, const __false_type&) -- STLport uninitialized copy of NThingManager::CEntityRuntimePersistence::CEntityScriptInfo records: copy-construct each source element into raw storage from result on, return the end of the constructed range
 // Leaf: ??$__uninitialized_copy
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052BBE0, 145 bytes, `ret 8` (/Gr `__fastcall`: first in ecx, last in edx; result and
 //   the `__false_type` reference on the stack).
@@ -27,7 +27,7 @@ public:
     CCharString& operator=(const CCharString& other);                     // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -92,7 +92,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {               // retail CArray<T>: an STLport vector (12 bytes)
+template <class T> class CArray : public std::vector<T> {               // retail CArray<T>: an STLport vector (12 bytes)
 };
 
 namespace NThingManager {
@@ -105,7 +105,7 @@ struct CEntityScriptInfo {                                                // NTh
 }
 using NThingManager::CEntityScriptInfo;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 // STLport 4.x __uninitialized_copy for a non-trivial element; the algorithm TU is compiled /Gr, so it is __fastcall.
 template <class _InputIter, class _ForwardIter>

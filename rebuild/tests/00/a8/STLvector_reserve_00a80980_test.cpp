@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A80980 _STL::vector<CNavigationPosition>::reserve: grows only when capacity < n, keeps the size and the
+// Behaviour test for 0x00A80980 std::vector<CNavigationPosition>::reserve: grows only when capacity < n, keeps the size and the
 // element values, frees the old block; an empty (null) vector just allocates.
 #include <cstdio>
 #include <cstdlib>

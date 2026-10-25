@@ -1,7 +1,7 @@
-// _STL::vector::vector(const vector& x) -- (vector<CArenaWaveDef>) STLport copy constructor: allocate x.size() 0x3c-byte CArenaWaveDefs through the out-of-line _Vector_base constructor and copy-construct x's elements into them
-// Leaf: ??0?$vector@VCArenaWaveDef@@V?$allocator@VCArenaWaveDef@@@_STL@@@_STL@@QAE@ABV01@@Z
+// std::vector::vector(const vector& x) -- (vector<CArenaWaveDef>) STLport copy constructor: allocate x.size() 0x3c-byte CArenaWaveDefs through the out-of-line _Vector_base constructor and copy-construct x's elements into them
+// Leaf: ??0?$vector@VCArenaWaveDef@@V?$allocator@VCArenaWaveDef@@@std@@@std@@QAE@ABV01@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F25BB0, 98 bytes (+ int3 padding), `ret 4` (returns this).
-// Callees: _STL::_Vector_base<CArenaWaveDef>::_Vector_base(unsigned int, const allocator&) @ 0x00F25C20 (out of line), CArenaWaveDef::CArenaWaveDef(const CArenaWaveDef&)
+// Callees: std::_Vector_base<CArenaWaveDef>::_Vector_base(unsigned int, const allocator&) @ 0x00F25C20 (out of line), CArenaWaveDef::CArenaWaveDef(const CArenaWaveDef&)
 //   @ 0x00F25C60 (the element copy, out of line, under the placement-new null test).
 // Identity: element vtable 0x012FB2F0 (no RTTI; Transfer slot names NumWaveCreatures +0x28, Creatures +0x2c, ShortWave
 //   +0x38; Sizeof slot returns 0x3c) = Ego_r.pdb CArenaWaveDef (PDB 64 bytes, retail 0x3c with a 12-byte vector), the
@@ -24,7 +24,7 @@ class CCharString {
 public:
     void* PStringData;
 };
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -74,15 +74,15 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CArenaCreatureDef;
 class CArenaWaveDef : public CDefClassBase {        // vtable 0x012FB2F0, 0x3c bytes
 public:
     long                             NumWaveCreatures;   // +0x28
-    _STL::vector<CArenaCreatureDef>  Creatures;          // +0x2c
+    std::vector<CArenaCreatureDef>  Creatures;          // +0x2c
     bool                             ShortWave;          // +0x38
     CArenaWaveDef(const CArenaWaveDef& other);           // 0x00F25C60
 };
 
-template class _STL::vector<CArenaWaveDef>;
+template class std::vector<CArenaWaveDef>;

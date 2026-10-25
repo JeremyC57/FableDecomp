@@ -1,4 +1,4 @@
-// _STL::__lower_bound(first, last, val, comp, int*) -- STLport binary search over a vector of list<CAnimSet>::const_iterator, ordered by CAnimSetItPriorityLessThan (the anim set's Priority)
+// std::__lower_bound(first, last, val, comp, int*) -- STLport binary search over a vector of list<CAnimSet>::const_iterator, ordered by CAnimSetItPriorityLessThan (the anim set's Priority)
 // Leaf: ??$__lower_bound@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0070FCF0, 60 bytes (+ int3 padding), __fastcall (first ecx, last edx), `ret 0Ch`
 //   (val, the empty comparator, the null distance-type pointer).
@@ -17,7 +17,7 @@ public:
     unsigned char Bits;                                 // +0x51 (Looping, Finished, Forwards, HadUpdate, OwnedByMainAnim)
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -61,13 +61,13 @@ _ForwardIter __fastcall __lower_bound(_ForwardIter __first, _ForwardIter __last,
     return __first;
 }
 
-} // namespace _STL
+} // namespace std
 
-typedef _STL::_List_iterator<CAnimSet, _STL::_Const_traits<CAnimSet> > CAnimSetIt;
+typedef std::_List_iterator<CAnimSet, std::_Const_traits<CAnimSet> > CAnimSetIt;
 
 class CAnimSetItPriorityLessThan {
 public:
     bool operator()(const CAnimSetIt& a, const CAnimSetIt& b) const { return (*a).Priority < (*b).Priority; }
 };
 
-template CAnimSetIt* __fastcall _STL::__lower_bound(CAnimSetIt*, CAnimSetIt*, const CAnimSetIt&, CAnimSetItPriorityLessThan, int*);
+template CAnimSetIt* __fastcall std::__lower_bound(CAnimSetIt*, CAnimSetIt*, const CAnimSetIt&, CAnimSetItPriorityLessThan, int*);

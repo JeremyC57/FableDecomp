@@ -1,4 +1,4 @@
-// _STL::swap(CIntelligentPointer<const CThing>& a, CIntelligentPointer<const CThing>& b) -- STLport swap of two intelligent const-thing pointers through a temporary copy
+// std::swap(CIntelligentPointer<const CThing>& a, CIntelligentPointer<const CThing>& b) -- STLport swap of two intelligent const-thing pointers through a temporary copy
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009267F0, 90 bytes (96 with padding), plain `ret` (a in ecx, b in edx).
 // Name: STLport `swap<CIntelligentPointer<const CThing> >`; its only caller is the iter_swap tail-jump 0x00927440. The
@@ -38,7 +38,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b)
 {

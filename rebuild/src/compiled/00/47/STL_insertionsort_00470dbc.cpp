@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(SULongKeyedRecord* first, SULongKeyedRecord* last, SULongKeyLess comp) -- STLport insertion sort over 12-byte pair<unsigned long, {long, long}> records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(SULongKeyedRecord* first, SULongKeyedRecord* last, SULongKeyLess comp) -- STLport insertion sort over 12-byte pair<unsigned long, {long, long}> records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00470DBC, 76 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // 4-byte comparator on the stack); size-optimised frame-pointer TU (`push ebp ; mov ebp,esp ; ... leave`).

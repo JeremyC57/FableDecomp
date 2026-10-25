@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A73910 _STL::__introsort_loop over (long key, record) pairs: the loop leaves runs of at most
+// Behaviour test for 0x00A73910 std::__introsort_loop over (long key, record) pairs: the loop leaves runs of at most
 // 16 elements, each holding keys between its neighbours' (a final insertion sort completes the order); depth 0 falls
 // back to a full partial sort.
 #include <cstdio>

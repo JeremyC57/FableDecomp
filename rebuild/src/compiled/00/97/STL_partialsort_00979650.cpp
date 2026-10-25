@@ -1,8 +1,8 @@
-// _STL::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing** valueType, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- partial sort of the advance-in-cover candidate sort: heapify [first, middle), push every better element of [middle, last) through the heap, then sort the heap
+// std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing** valueType, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- partial sort of the advance-in-cover candidate sort: heapify [first, middle), push every better element of [middle, last) through the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00979650, 194 bytes, __fastcall (/Gr algorithm TU: first in ecx, middle in edx,
 //   last, the value-type tag and the comparator on the stack), `ret 18h`.
-// Instantiation: the advance-in-cover candidate sort: _STL::sort<CThing**,
+// Instantiation: the advance-in-cover candidate sort: std::sort<CThing**,
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch> called from
 //   CAIStateGroup_CreatureAdvanceInCover::ProcessCoverThingList (0x00979260 -> sort 0x00979870); the Ego_r.pdb
 //   symbols carry the anonymous namespace ?A0xffab493a of CAIStateGroup_CreatureAdvanceInCover.cpp.
@@ -12,7 +12,7 @@
 //   __pop_heap(first, middle, i, T(*i), comp, (int*)0); sort_heap(first, middle, comp);` with make_heap the inline
 //   front end of __make_heap. The model compiles operator() as a same-TU stand-in (auto_inline(off) + noinline); with
 //   it VC7.1 reproduces retail's comparator-copy scheduling (copies loaded two words ahead) and slot sharing.
-// Label: catalog "std_sort_HeapSortFinalize_HeuristicBitch" -> the STLport 4.x _STL::__partial_sort instantiation for
+// Label: catalog "std_sort_HeapSortFinalize_HeuristicBitch" -> the STLport 4.x std::__partial_sort instantiation for
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma; the stand-ins use `#pragma auto_inline(off)` + `__declspec(noinline)`.
@@ -76,7 +76,7 @@ bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(CThing* a
 }
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x00978B90
@@ -109,4 +109,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
     sort_heap(__first, __middle, __comp);
 }
 template void __fastcall __partial_sort<CThing**, CThing*, TComp>(CThing**, CThing**, CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

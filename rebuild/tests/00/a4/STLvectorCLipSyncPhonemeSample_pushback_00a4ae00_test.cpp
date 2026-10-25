@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A4AE00: _STL::vector<CLipSyncPhonemeSample>::push_back (copy adds a reference to the sample frame)
+// Behaviour test for 0x00A4AE00: std::vector<CLipSyncPhonemeSample>::push_back (copy adds a reference to the sample frame)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -77,7 +77,7 @@ public:
     CCountedPointer<CSpeechFrame> SampleFrame;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -157,14 +157,14 @@ int main()
         s.SampleFrame.Data = (CSpeechFrame*)info.Data;
         s.SampleFrame.Info = &info;
         {
-            _STL::vector<CLipSyncPhonemeSample> v;
+            std::vector<CLipSyncPhonemeSample> v;
             v.push_back(s);
-            Check(_STL::g_overflows == 1 && v.size() == 1 && info.RefCount == 2);
+            Check(std::g_overflows == 1 && v.size() == 1 && info.RefCount == 2);
             v.push_back(s);
             v.push_back(s);
-            Check(_STL::g_overflows == 3 && info.RefCount == 4);
+            Check(std::g_overflows == 3 && info.RefCount == 4);
             v.push_back(s);                          // in place
-            Check(_STL::g_overflows == 3 && v.size() == 4 && info.RefCount == 5);
+            Check(std::g_overflows == 3 && v.size() == 4 && info.RefCount == 5);
             Check(Eq(v._M_start[3].Symbol, "AA") && v._M_start[3].ID == 7 && v._M_start[3].SampleFrame.Info == &info);
             Check(v._M_start[3].SampleFrame.Data == (CSpeechFrame*)info.Data);
         }

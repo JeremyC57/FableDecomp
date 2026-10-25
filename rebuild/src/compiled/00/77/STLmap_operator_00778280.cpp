@@ -1,4 +1,4 @@
-// _STL::map::operator[](const long& k) -- STLport subscript of CTCShop's map<long, CShopItem>: lower_bound the key, insert {key, CShopItem()} at that hint when absent, return the stock record
+// std::map::operator[](const long& k) -- STLport subscript of CTCShop's map<long, CShopItem>: lower_bound the key, insert {key, CShopItem()} at that hint when absent, return the stock record
 // Leaf: ??A?$map@JVCShopItem@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00778280, 189 bytes, __fastcall `ret 4`.
 // Identity: callers CTCShop::CTCShop 0x007744A0, CTCShop_OnInitialActivate 0x00775350, CPersistentShop_TransferStockItems
@@ -25,7 +25,7 @@ public:
           SalesPerDay(0.0f), SalesPerDayRandomness(0.0f) { }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -112,6 +112,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template CShopItem& _STL::map<long, CShopItem>::operator[](const long&);
+template CShopItem& std::map<long, CShopItem>::operator[](const long&);

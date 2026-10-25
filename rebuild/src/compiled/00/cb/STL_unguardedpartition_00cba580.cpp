@@ -1,11 +1,11 @@
-// _STL::__unguarded_partition(CPersistPair* first, CPersistPair* last, CPersistPair pivot, CPersistLess comp) -- Hoare partition of (UID, persist info) pairs around the pivot UID, returns the split point
+// std::__unguarded_partition(CPersistPair* first, CPersistPair* last, CPersistPair pivot, CPersistLess comp) -- Hoare partition of (UID, persist info) pairs around the pivot UID, returns the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBA580, 94 bytes (`ret 1Ch`: by-value pivot + comparator slot).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __unguarded_partition over (UID, persist info) = _STL::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned); the 6 callers
+// Identity: STLport __unguarded_partition over (UID, persist info) = std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned); the 6 callers
 //   0x00CBCB5F..0x00CBCDCD are the 24-byte introsort loops. The manifest label "PSCInfo_Partition" is propagated.
-// Callees: _STL::swap<CPersistPair> 0x00CB9230 (through the inline iter_swap), ~CCharString 0x0099EAE0 (pivot).
+// Callees: std::swap<CPersistPair> 0x00CB9230 (through the inline iter_swap), ~CCharString 0x0099EAE0 (pivot).
 // Shape: the textbook loop; iter_swap is inline and calls the out-of-line swap with the two iterators.
 class CCharString {
 public:
@@ -23,7 +23,7 @@ public:
     };
 };
 }
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -31,11 +31,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistPair;   // 24 bytes
+typedef std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistPair;   // 24 bytes
 typedef CKeyPairCompareLess<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistLess;
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b);   // 0x00CB9230
 

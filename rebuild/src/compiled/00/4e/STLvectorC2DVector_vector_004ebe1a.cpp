@@ -1,4 +1,4 @@
-// _STL::vector<C2DVector>::vector(const vector<C2DVector>& x) -- STLport vector copy constructor for the 8-byte 2D vectors: the base allocates exactly x.size() elements, then x's range is copy-constructed into them
+// std::vector<C2DVector>::vector(const vector<C2DVector>& x) -- STLport vector copy constructor for the 8-byte 2D vectors: the base allocates exactly x.size() elements, then x's range is copy-constructed into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EBE1A, 72 bytes, `ret 4` (thiscall).
 // Callers: CCardPositionsDef's _Construct @ 0x004EBDF1 (landed: the Offset member at +0x3C) and 0x004F9E3C.
@@ -22,7 +22,7 @@ struct C2DVector {                              // 8 bytes
     float Y;                                    // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class T> struct __type_traits { typedef __false_type is_POD_type; };
 template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }

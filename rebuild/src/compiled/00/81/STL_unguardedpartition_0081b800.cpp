@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(SKeyedBlock40* first, SKeyedBlock40* last, SKeyedBlock40 pivot, CKeyPairCompareLess comp) -- quicksort partition of the (long key, 36-byte payload) pairs around a by-value pivot; returns the cut
+// std::__unguarded_partition(SKeyedBlock40* first, SKeyedBlock40* last, SKeyedBlock40 pivot, CKeyPairCompareLess comp) -- quicksort partition of the (long key, 36-byte payload) pairs around a by-value pivot; returns the cut
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081B800, 109 bytes, `ret 2Ch` (link-time __fastcall /Gr TU: first in ecx, last in
 //   edx, the 0x28-byte pivot and the empty comparator on the stack: 0x28 + 4 = 0x2C). No callees.
@@ -13,7 +13,7 @@ struct SPayload36 {                         // 36-byte POD payload (copied as on
     unsigned long m_words[9];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                // +0x00
     B second;                               // +0x04

@@ -22,7 +22,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -74,4 +74,4 @@ public:
 template vector<NEnvironmentInternal::CBlendedEnvironmentTheme>::vector(
     const vector<NEnvironmentInternal::CBlendedEnvironmentTheme>&);
 
-} // namespace _STL
+} // namespace std

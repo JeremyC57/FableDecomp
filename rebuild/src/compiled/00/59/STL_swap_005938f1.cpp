@@ -1,4 +1,4 @@
-// _STL::swap(pair<long,CDefPointer<const CContextSensitiveItemDef>>& a, pair<long,CDefPointer<const CContextSensitiveItemDef>>& b) -- exchange two prioritised context-sensitive item entries through a by-value temporary
+// std::swap(pair<long,CDefPointer<const CContextSensitiveItemDef>>& a, pair<long,CDefPointer<const CContextSensitiveItemDef>>& b) -- exchange two prioritised context-sensitive item entries through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005938F1, 51 bytes (a /Os module: unaligned entry, ebp frame, `leave`), /Gr
 //   `__fastcall` (a in ecx -> edi, b in edx -> esi), plain `ret`.
@@ -39,7 +39,7 @@ public:
 
 class CContextSensitiveItemDef;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;                                          // +0x00

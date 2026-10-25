@@ -21,7 +21,7 @@ struct sockaddr_in {                            // winsock sockaddr_in, 16 bytes
     char           sin_zero[8];                 // +0x08
 };
 
-namespace _STL {
+namespace std {
 template <class _CharT> class char_traits { };
 template <class _Tp> class allocator { };
 template <class _CharT, class _Traits, class _Alloc>
@@ -37,7 +37,7 @@ typedef basic_string<char, char_traits<char>, allocator<char> > string;
 namespace LHNetworkLib {
 
 struct LAddress {                               // Ego_r.pdb names; retail 0x1C bytes
-    _STL::string   ServerName;                  // +0x00
+    std::string   ServerName;                  // +0x00
     unsigned long  ServerIP;                    // +0x0C
     unsigned short ServerPort;                  // +0x10
     long           TransportProtocol;           // +0x14

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CRandomAppearanceMorph::CBodyPartMesh* first, unsigned int n, const CRandomAppearanceMorph::CBodyPartMesh& x, const __false_type&) -- copy-construct n body-part mesh records (mesh index, priority, texture-morph map) into raw storage at first and return first + n
+// std::__uninitialized_fill_n(CRandomAppearanceMorph::CBodyPartMesh* first, unsigned int n, const CRandomAppearanceMorph::CBodyPartMesh& x, const __false_type&) -- copy-construct n body-part mesh records (mesh index, priority, texture-morph map) into raw storage at first and return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0086D8C0, 63 bytes, __fastcall (first ecx, n edx; x and the empty tag on the stack, `ret 8`).
 // Callers: 0x0086DA1A, 0x0086E461 (the vector's insert-grow 0x0086E3B0, landed) and 0x0086E68F (its _M_fill_insert
@@ -13,7 +13,7 @@
 //   n so `jbe`), the placement new keeping its null test (`test esi,esi ; je`).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -37,12 +37,12 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    _STL::vector<_STL::pair<K, V> > Vec;        // +0x0
+    std::vector<std::pair<K, V> > Vec;        // +0x0
     C    Compare;                               // +0xC (empty)
     bool Dirty;                                 // +0xD
 };
@@ -62,7 +62,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _ForwardIter, class _Size, class _Tp>

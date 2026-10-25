@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::_Vector_base<pair<unsigned long,CDefClassBase::CSubDefInfo> >::_Vector_base(n, a) @ 0x0046EF33:
+// Model of std::_Vector_base<pair<unsigned long,CDefClassBase::CSubDefInfo> >::_Vector_base(n, a) @ 0x0046EF33:
 // allocate room for n entries (none for n == 0), empty, with the end of storage n entries on.
 
 class CDefClassBase {
@@ -20,7 +20,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _T1, class _T2> struct pair {
@@ -73,11 +73,11 @@ typedef pair<unsigned long, CDefClassBase::CSubDefInfo> _SubDefEntry;
 int main()
 {
     bool ok = true;
-    typedef _STL::pair<unsigned long, CDefClassBase::CSubDefInfo> E;
-    _STL::_Vector_base<E, _STL::allocator<E> > b(3, _STL::allocator<E>());
+    typedef std::pair<unsigned long, CDefClassBase::CSubDefInfo> E;
+    std::_Vector_base<E, std::allocator<E> > b(3, std::allocator<E>());
     if (b._M_start == 0 || b._M_finish != b._M_start || b._M_end_of_storage._M_data != b._M_start + 3)
         ok = false;
-    _STL::_Vector_base<E, _STL::allocator<E> > z(0, _STL::allocator<E>());
+    std::_Vector_base<E, std::allocator<E> > z(0, std::allocator<E>());
     if (z._M_start != 0 || z._M_finish != 0 || z._M_end_of_storage._M_data != 0)
         ok = false;
     if (!ok) { printf("0046ef33_TEST FAIL\n"); return 1; }

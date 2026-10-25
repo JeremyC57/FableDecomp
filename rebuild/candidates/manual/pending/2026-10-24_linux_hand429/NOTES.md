@@ -1,4 +1,4 @@
-# Hand chunk 429 (_STL::__introsort_loop<CSortElement> .. CEngineStaticMapFileBlockManager): 35 of 40 byte-exact
+# Hand chunk 429 (std::__introsort_loop<CSortElement> .. CEngineStaticMapFileBlockManager): 35 of 40 byte-exact
 
 All 40 rows are module `_global`. 35 graded MATCH (5) or RELOCATION_MATCH (30) on a final gall.sh re-grade; all 35 tests
 print `<addr>_TEST PASS` under g++ (tall.sh) and VC7.1 (tall.py). 5 rows are parked in differ/. No skips.
@@ -15,9 +15,9 @@ print `<addr>_TEST PASS` under g++ (tall.sh) and VC7.1 (tall.py). 5 rows are par
 - **CEngineOcclusionManager**:
   - GetPrevFrameFlareTestResultFromRetrivalID 0x00B8D3C0: CVectorMap-style bound inlined. On a hit it tail-calls
     GetPrevFrameFlareTestResult with the handle written over the argument slot; on a miss it returns `0.0f`.
-  - `_STL::__lower_bound<..., MapperPred, int>` 0x00B8F1C0: `__fastcall` template with an anonymous-namespace functor;
+  - `std::__lower_bound<..., MapperPred, int>` 0x00B8F1C0: `__fastcall` template with an anonymous-namespace functor;
     the `/12` distance comes out as `imul 0x2AAAAAAB`.
-  - `_STL::vector<pair<ulong,ulong>>::insert` 0x00B8F650: needs `__forceinline` on `__copy_backward_ptrs` and
+  - `std::vector<pair<ulong,ulong>>::insert` 0x00B8F650: needs `__forceinline` on `__copy_backward_ptrs` and
     `__copy_backward`, otherwise both are calls.
 - **CShaderRenderManager::DrawBuffersIndexed**, two overloads:
   - 0x00B8EB00: inline SelectVertexBuffer + a `__forceinline` 6-arg overload.
@@ -38,7 +38,7 @@ print `<addr>_TEST PASS` under g++ (tall.sh) and VC7.1 (tall.py). 5 rows are par
   - the single expression `X*X + Y*Y + Z*Z` squares in the order Z, Y, X, matching retail.
 - **CEngineInternalPrimitiveMorphInfo** (texture decals):
   - `CVectorMap<pair<long,long>,CEngineTextureDecal>::LowerBound` 0x00BD8480: a hand-written `count/2` (cdq) bound, with
-    the `_STL::pair` operator<.
+    the `std::pair` operator<.
   - GetTextureDecal 0x00BD8800 (descriptive name):
     - the find is `(it == end() || Compare(key, *it)) ? end() : it`;
     - the out-of-line LowerBound has to be a same-TU `auto_inline(off)` + `noinline` stand-in, or the key is reloaded
@@ -46,7 +46,7 @@ print `<addr>_TEST PASS` under g++ (tall.sh) and VC7.1 (tall.py). 5 rows are par
 - **CEngineLandscapeMemoryManager::CEngineLandscapeMemoryManager(const CEngineMemoryInit&)** 0x00BD9FD0:
   - bases: CFailedAllocationHandler with an implicit constructor (no vtable store of its own), then CMovableResource with
     a user constructor;
-  - three `_STL::list<T*>[3]` arrays, each built by the inline `_List_base` (malloc(12), self-link);
+  - three `std::list<T*>[3]` arrays, each built by the inline `_List_base` (malloc(12), self-link);
   - the five scalar member stores.
 - **CEngineStaticMapFileBlockManager::DeleteUnusedBlocks** 0x00BE04F0: map walk with erase. It discards the async load
   when that load has not finished, then releases the counted pointer.
@@ -89,11 +89,11 @@ None.
 Every row's catalog name was propagated or descriptive. These are corrected from Ego_r/Ego_d/FableWin name sets, RTTI and
 callers:
 
-- 00b867a0 Std_Introsort_8BytePartition -> `_STL::__introsort_loop<CSortElement*, CSortElement, int, less<CSortElement> >`
+- 00b867a0 Std_Introsort_8BytePartition -> `std::__introsort_loop<CSortElement*, CSortElement, int, less<CSortElement> >`
 - 00b8d3c0 SunFlare_BinarySearch -> CEngineOcclusionManager::GetPrevFrameFlareTestResultFromRetrivalID
 - 00b8eb00 CEngineScreen_RenderFrame -> CShaderRenderManager::DrawBuffersIndexed (vertex buffer, index buffer, primitive type) -- catalog wrong
-- 00b8f1c0 BinarySearch_VertexBuffer -> `_STL::__lower_bound<pair<ulong, CCountedPointer<CVertexBufferWin32> >*, ulong, MapperPred, int>`
-- 00b8f650 Vector_InsertElement_WithReallocation -> `_STL::vector<pair<ulong, ulong> >::insert(iterator, const value_type&)`
+- 00b8f1c0 BinarySearch_VertexBuffer -> `std::__lower_bound<pair<ulong, CCountedPointer<CVertexBufferWin32> >*, ulong, MapperPred, int>`
+- 00b8f650 Vector_InsertElement_WithReallocation -> `std::vector<pair<ulong, ulong> >::insert(iterator, const value_type&)`
 - 00b91840 UpdatePosition -> CEngineScene::UpdatePosition (static)
 - 00b91f00 CEngineScene_IterateGrid_MovePrimitives -> CEngineSceneGrid::MovePrimitivesUp
 - 00b93290 engine_enumerate_scene_grid_primitives -> CEngineScene::EnumerateScene
@@ -110,23 +110,23 @@ callers:
 - 00bb1e30 CSimpleMemoryPool_ReallocateBuffer -> CEngineClothRenderer::GetPositionBuffer
 - 00bb1e90 VertexBuffer_Reallocate -> CEngineClothRenderer::GetNormalBuffer
 - 00bb6450 ComputeDistanceToCamera -> CEnginePrimitiveRenderUtil::CalcDistanceFromCamera(const CMatrix3x4&)
-- 00bb9fd0 std_vector_initialize_with_fill -> `_STL::vector<CTVertexNormTex1>::vector(size_type)` (element descriptive)
+- 00bb9fd0 std_vector_initialize_with_fill -> `std::vector<CTVertexNormTex1>::vector(size_type)` (element descriptive)
 - 00bba1e0 CGuiControlTreePane_OnFileLoadComplete -> CEngineInternalPrimitiveParticleGroup::`scalar deleting destructor' -- catalog wrong
-- 00bbd580 _Fill_n<unsigned_long*,unsigned_int,unsigned_long> -> `_STL::uninitialized_fill_n<pair<bool,long>*, unsigned int, pair<bool,long> >` (element descriptive)
-- 00bbd6b0 DestroyLinkedListBetween -> `_STL::list<CEnginePrimitiveHandle>::erase(iterator, iterator)`
-- 00bbd770 AllocateLinkedListNodes -> `_STL::list<long>::_M_fill_insert`
-- 00bbda70 LinkedList_RemoveN -> `_STL::list<long>::resize(size_type, const long&)`
-- 00bbdad0 AllocateLinkedListNodesWithRefcount -> `_STL::list<CEnginePrimitiveHandle>::_M_fill_insert`
-- 00bbdc60 LinkedList_AddN -> `_STL::list<CEnginePrimitiveHandle>::resize(size_type, const T&)`
-- 00bc5e90 std_vector_reserve_with_copy -> `_STL::vector<CEnginePrimitiveHandle>::reserve`
+- 00bbd580 _Fill_n<unsigned_long*,unsigned_int,unsigned_long> -> `std::uninitialized_fill_n<pair<bool,long>*, unsigned int, pair<bool,long> >` (element descriptive)
+- 00bbd6b0 DestroyLinkedListBetween -> `std::list<CEnginePrimitiveHandle>::erase(iterator, iterator)`
+- 00bbd770 AllocateLinkedListNodes -> `std::list<long>::_M_fill_insert`
+- 00bbda70 LinkedList_RemoveN -> `std::list<long>::resize(size_type, const long&)`
+- 00bbdad0 AllocateLinkedListNodesWithRefcount -> `std::list<CEnginePrimitiveHandle>::_M_fill_insert`
+- 00bbdc60 LinkedList_AddN -> `std::list<CEnginePrimitiveHandle>::resize(size_type, const T&)`
+- 00bc5e90 std_vector_reserve_with_copy -> `std::vector<CEnginePrimitiveHandle>::reserve`
 - 00bc9b80 CEngineTreeFilerBase_FindKeyNode -> CEngineTreeFilerBase::FindID(unsigned long*)
 - 00bd8480 std_lower_bound_TextureKey -> `CVectorMap<pair<long,long>, CEngineTextureDecal, CKeyPairCompareLess<...> >::LowerBound`
-- 00bd8730 MatrixBuffer_Allocate -> `_STL::vector<CMatrix3x4>::vector(size_type)` (element descriptive)
+- 00bd8730 MatrixBuffer_Allocate -> `std::vector<CMatrix3x4>::vector(size_type)` (element descriptive)
 - 00bd8800 Texture_FindOrCreateCacheEntry -> CEngineInternalPrimitiveMorphInfo::GetTextureDecal(long, long) (descriptive name; nothing is created) -- catalog wrong
 - 00bd8b30 NThingMap_CloneMapInfoTree -> `_Rb_tree<unsigned long, CArray<C3DVector>...>::_M_copy`
-- 00bd9110 std_map_find_or_insert_uint -> `_STL::map<unsigned long, CArray<C3DVector> >::operator[]`
+- 00bd9110 std_map_find_or_insert_uint -> `std::map<unsigned long, CArray<C3DVector> >::operator[]`
 - 00bd9fd0 ParticleSpriteGroup_Construct -> CEngineLandscapeMemoryManager::CEngineLandscapeMemoryManager(const CEngineMemoryInit&) -- catalog wrong
-- 00bdb750 _Copy_impl<C2DLineF*,C2DLineF*> -> `_STL::__uninitialized_copy<C2DLineF*, C2DLineF*>(..., const __false_type&)`
+- 00bdb750 _Copy_impl<C2DLineF*,C2DLineF*> -> `std::__uninitialized_copy<C2DLineF*, C2DLineF*>(..., const __false_type&)`
 - 00be04f0 BankFileList_RemoveFinished -> CEngineStaticMapFileBlockManager::DeleteUnusedBlocks
 - Only 00b9d670 SetupFirstTextures agrees with the catalog.
 

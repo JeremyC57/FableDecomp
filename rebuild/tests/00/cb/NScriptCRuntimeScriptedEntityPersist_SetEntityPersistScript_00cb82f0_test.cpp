@@ -27,7 +27,7 @@ public:
 };
 }
 typedef NScript::CRuntimeScriptedEntityPersist::CPersistInfo CPersistInfo;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -72,7 +72,7 @@ public:
 };
 }
 template <class _Tp>
-void _STL::vector<_Tp>::push_back(const _Tp& __x)
+void std::vector<_Tp>::push_back(const _Tp& __x)
 {
     if (this->_M_finish != this->_M_end_of_storage) {
         new (this->_M_finish) _Tp(__x);
@@ -81,7 +81,7 @@ void _STL::vector<_Tp>::push_back(const _Tp& __x)
     else
         _M_insert_overflow(this->_M_finish, __x, __false_type(), 1UL, true);
 }
-namespace _STL {
+namespace std {
 template <class _Tp> void SwapValues(_Tp* a, _Tp* b) { _Tp tmp(*a); *a = *b; *b = tmp; }
 template <class _Iter, class _Compare> void sort(_Iter first, _Iter last, _Compare comp)   // insertion sort stand-in for 0x00CBD370
 {
@@ -93,13 +93,13 @@ template <class _Iter, class _Compare> void sort(_Iter first, _Iter last, _Compa
 }
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type* iterator;
-    _STL::vector<value_type> Vector;
+    std::vector<value_type> Vector;
     C    Compare;
     bool Dirty;
     CVectorMap() : Dirty(false) { }
@@ -129,7 +129,7 @@ public:
     }
     void Sort()
     {
-        _STL::sort(Vector.begin(), Vector.end(), Compare);
+        std::sort(Vector.begin(), Vector.end(), Compare);
         Dirty = false;
     }
     void Add(const K& key, const V& value)

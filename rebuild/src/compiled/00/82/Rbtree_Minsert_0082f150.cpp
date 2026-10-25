@@ -1,5 +1,5 @@
 // _Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const unsigned __int64& v, _Rb_tree_node_base* w) -- STLport set<unsigned __int64> node insert: create the node under y (left or right by the hint and key order), keep leftmost/rightmost, rebalance, count it
-// Leaf: ?_M_insert@?$_Rb_tree@_K_KU?$_Identity@_K@_STL@@
+// Leaf: ?_M_insert@?$_Rb_tree@_K_KU?$_Identity@_K@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082F150, 203 bytes (+5 int3), thiscall `ret 14h` (the iterator through the hidden
 //   pointer, then x, y, v, w).
 // Identity: the 0x18-byte node with an unsigned __int64 value at +0x10 is the set<unsigned __int64> of
@@ -12,7 +12,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
 template <class T> class allocator {
@@ -117,4 +117,4 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Rb_tree_node_b
 }
 }
 
-template class _STL::_Rb_tree<unsigned __int64, unsigned __int64, _STL::_Identity<unsigned __int64>, _STL::less<unsigned __int64> >;
+template class std::_Rb_tree<unsigned __int64, unsigned __int64, std::_Identity<unsigned __int64>, std::less<unsigned __int64> >;

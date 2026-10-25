@@ -1,4 +1,4 @@
-// _STL::__copy_backward(CDefPointer<const CThingBaseDef>* first, CDefPointer<const CThingBaseDef>* last, CDefPointer<const CThingBaseDef>* result, const random_access_iterator_tag&, int*) -- copy [first, last) backwards onto the range ending at result, counted-def assignment inlined
+// std::__copy_backward(CDefPointer<const CThingBaseDef>* first, CDefPointer<const CThingBaseDef>* last, CDefPointer<const CThingBaseDef>* result, const random_access_iterator_tag&, int*) -- copy [first, last) backwards onto the range ending at result, counted-def assignment inlined
 // Leaf: ??$__copy_backward@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769210, 88 bytes (+int3 pad to 96), `ret 0Ch`.
 // Callers: 0x0076986C and 0x0076B9C9 (vector<CDefPointer<const CThingBaseDef> > insert/erase paths).
@@ -43,7 +43,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

@@ -1,4 +1,4 @@
-// _STL::vector<pair<float,CCameraTag>>::vector(const vector& x) -- STLport vector copy constructor for the CSubtitledMessage camera-tag map's 28-byte pair<float, CSubtitledMessage::CCameraTag> elements: allocate exactly x.size() elements (none when empty), then __uninitialized_copy x's range into them
+// std::vector<pair<float,CCameraTag>>::vector(const vector& x) -- STLport vector copy constructor for the CSubtitledMessage camera-tag map's 28-byte pair<float, CSubtitledMessage::CCameraTag> elements: allocate exactly x.size() elements (none when empty), then __uninitialized_copy x's range into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D08A0, 104 bytes (+ int3 padding), `ret 4`.
 // Callers: 0x004D1238, 0x004D1859, 0x004D2043 (vector-map copies in the same TU).
@@ -14,7 +14,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

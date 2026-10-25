@@ -1,8 +1,8 @@
-// _STL::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing** valueType, CThingCompare_Nearest comp) -- partial sort of the preferred-fire-point sort: heapify [first, middle), push every better element of [middle, last) through the heap, then sort the heap
+// std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing** valueType, CThingCompare_Nearest comp) -- partial sort of the preferred-fire-point sort: heapify [first, middle), push every better element of [middle, last) through the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0095DE60, 172 bytes, __fastcall (/Gr algorithm TU: first in ecx, middle in edx,
 //   last, the value-type tag and the comparator on the stack), `ret 14h`.
-// Instantiation: the fire-point sort: _STL::sort<CThing**, CThingCompare_Nearest> called from
+// Instantiation: the fire-point sort: std::sort<CThing**, CThingCompare_Nearest> called from
 //   CAIStateGroup_RangedCombatUsePreferredFirePoint::GetFirePointList (0x0095D4C0) and ::IsRunnable (0x0095D590).
 // Callees: CThingCompare_Nearest::operator()<CThing> @ 0x004A8D80 (the returned pointer is the predicate),
 //   __make_heap @ 0x0095D880, __adjust_heap @ 0x0095CFE0, sort_heap @ 0x0095DB30.
@@ -10,7 +10,7 @@
 //   __pop_heap(first, middle, i, T(*i), comp, (int*)0); sort_heap(first, middle, comp);` with make_heap the inline
 //   front end of __make_heap. The comparator is CThingCompare_Nearest itself, so each test is `test eax,eax` on the
 //   nearer thing: the predicate is true whenever either thing is non-null (a retail quirk the sort keeps).
-// Label: catalog "std_sort_HeapSortFinalize" -> the STLport 4.x _STL::__partial_sort instantiation for
+// Label: catalog "std_sort_HeapSortFinalize" -> the STLport 4.x std::__partial_sort instantiation for
 //   CThingCompare_Nearest (retail links STLport; the Dinkumware names in Ego_r.pdb are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma; the stand-ins use `#pragma auto_inline(off)` + `__declspec(noinline)`.
 class CThing;
@@ -55,7 +55,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
 #pragma auto_inline(on)
 typedef CThingCompare_Nearest TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x0095CFE0
@@ -88,4 +88,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
     sort_heap(__first, __middle, __comp);
 }
 template void __fastcall __partial_sort<CThing**, CThing*, TComp>(CThing**, CThing**, CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

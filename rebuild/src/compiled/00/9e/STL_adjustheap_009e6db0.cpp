@@ -1,5 +1,5 @@
-// _STL::__adjust_heap(pair<CCharString,CSymbolMap::CSymbolInfo>* first, int holeIndex, int len, pair<CCharString,CSymbolMap::CSymbolInfo> val, CCompareString comp) -- STLport heap sift-down of the symbol map's (name, symbol info) table by CCharString::FastCompare, then __push_heap val back up
-// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@_STL@@
+// std::__adjust_heap(pair<CCharString,CSymbolMap::CSymbolInfo>* first, int holeIndex, int len, pair<CCharString,CSymbolMap::CSymbolInfo> val, CCompareString comp) -- STLport heap sift-down of the symbol map's (name, symbol info) table by CCharString::FastCompare, then __push_heap val back up
+// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E6DB0, 287 bytes (+ int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): CCharString key +0, CSymbolMap::CSymbolInfo +4 (Ego_r.pdb, 0xC bytes:
@@ -30,7 +30,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -40,11 +40,11 @@ template <class _T1, class _T2> struct pair {
 
 template <class T> class CCompareString {       // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<CCharString, T>& a, const _STL::pair<CCharString, T>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, T>& a, const std::pair<CCharString, T>& b) const { return a.first.FastCompare(b.first); }
 };
-typedef _STL::pair<CCharString, CSymbolMap::CSymbolInfo> CSymbolPair;
+typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> CSymbolPair;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp);   // 0x009E67C0
 

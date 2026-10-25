@@ -1,4 +1,4 @@
-// _STL::vector::reserve(unsigned int n) -- STLport reserve for a thing's component-map storage (vector<pair<ETCInterfaceType, CTCBase*> >): reallocate to n entries when the capacity is smaller, keeping the entries
+// std::vector::reserve(unsigned int n) -- STLport reserve for a thing's component-map storage (vector<pair<ETCInterfaceType, CTCBase*> >): reallocate to n entries when the capacity is smaller, keeping the entries
 // Leaf: ?reserve@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CC9B0, 114 bytes, thiscall, `ret 4`.
 // Caller: CThing::CreateFromDef 0x004CA930 (landed: `Components.reserve(Components.size() + def->NoTCs)` on the
@@ -16,7 +16,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14 (MSVCR71 i
 enum ETCInterfaceType { TC_NONE = 0 };                  // the thing-component interface type
 class CTCBase;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {          // STLport pair: explicit copy constructor next to the converting one

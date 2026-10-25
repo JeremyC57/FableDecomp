@@ -1,4 +1,4 @@
-// _STL::vector<CInputEvent>::vector(const vector& x) -- STLport vector copy constructor for 52-byte input events: allocate exactly x.size() slots (none when empty), then copy-construct x's events into them
+// std::vector<CInputEvent>::vector(const vector& x) -- STLport vector copy constructor for 52-byte input events: allocate exactly x.size() slots (none when empty), then copy-construct x's events into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F66A0, 128 bytes, thiscall, `ret 4`, returns this.
 // Callees: CRT malloc 0x00BFEA0E (`add esp,4`), CInputEvent::CInputEvent(const CInputEvent&) 0x009E4850 (out of line).
@@ -19,7 +19,7 @@ public:
     CInputEvent(const CInputEvent& other);                  // 0x009E4850
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

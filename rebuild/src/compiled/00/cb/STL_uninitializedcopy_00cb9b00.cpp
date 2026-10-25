@@ -1,9 +1,9 @@
-// _STL::__uninitialized_copy(const CPersistPair* first, const CPersistPair* last, CPersistPair* result, const __false_type&) -- placement-copy the (UID, persist info) pairs into raw storage, return the advanced result
+// std::__uninitialized_copy(const CPersistPair* first, const CPersistPair* last, CPersistPair* result, const __false_type&) -- placement-copy the (UID, persist info) pairs into raw storage, return the advanced result
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB9B00, 72 bytes (`ret 8`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __uninitialized_copy(..., __false_type) over (UID, persist info) = _STL::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned);
+// Identity: STLport __uninitialized_copy(..., __false_type) over (UID, persist info) = std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned);
 //   called from vector<CPersistPair>::_M_insert_overflow (0x00CBC19C, 0x00CBC1FF). The manifest label
 //   "_Move<CMusicEntry*,CMusicEntry*>" is propagated and wrong.
 // Callees: CCharString copy constructor 0x0099EC30.
@@ -25,7 +25,7 @@ public:
     };
 };
 }
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -33,8 +33,8 @@ template <class _T1, class _T2> struct pair {
 struct __false_type { __false_type() { } };
 }
 inline void* operator new(unsigned int, void* where) { return where; }
-typedef _STL::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistPair;   // 24 bytes
-namespace _STL {
+typedef std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistPair;   // 24 bytes
+namespace std {
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {

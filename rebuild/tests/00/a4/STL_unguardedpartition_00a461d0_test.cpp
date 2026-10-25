@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A461D0: _STL::__unguarded_partition<C3DSkeletalBoneMorph*> (Hoare partition around a pivot copy)
+// Behaviour test for 0x00A461D0: std::__unguarded_partition<C3DSkeletalBoneMorph*> (Hoare partition around a pivot copy)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -80,7 +80,7 @@ static void FillMorphs(C3DSkeletalBoneMorph* a, const unsigned long* crcs, int n
         SetMorph(a[i], crcs[i]);
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b)
 {
@@ -114,7 +114,7 @@ int main()
         C3DSkeletalBoneMorph a[9];
         FillMorphs(a, crcs, 9);
         int live = g_liveStrings;
-        C3DSkeletalBoneMorph* cut = _STL::__unguarded_partition(a, a + 9, a[0], (TBoneMorphCompare)LessByCRC);
+        C3DSkeletalBoneMorph* cut = std::__unguarded_partition(a, a + 9, a[0], (TBoneMorphCompare)LessByCRC);
         Check(g_liveStrings == live);
         Check(cut > a && cut < a + 9);
         for (C3DSkeletalBoneMorph* p = a; p < cut; ++p)

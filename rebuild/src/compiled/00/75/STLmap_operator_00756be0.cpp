@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, pair<long, long> >: lower_bound, insert (k, (0, 0)) when absent, return the mapped pair
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, pair<long, long> >: lower_bound, insert (k, (0, 0)) when absent, return the mapped pair
 // Leaf: ??A?$map@VCCharString@@U?$pair@JJ@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00756BE0, 127 bytes (+ int3 padding), __fastcall `ret 4`.
 // Identity: Ego_r.pdb CTCHeroRememberCrimes::RegionNamesToCrimeDurationAndFine (+0xC) is map<CCharString, pair<long, long> >;
@@ -30,7 +30,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {             // STLport 4.6 (member templates on)
     _T1 first;
@@ -88,4 +88,4 @@ public:
 
 template pair<long, long> & map<CCharString, pair<long, long> >::operator[](const CCharString&);
 
-} // namespace _STL
+} // namespace std

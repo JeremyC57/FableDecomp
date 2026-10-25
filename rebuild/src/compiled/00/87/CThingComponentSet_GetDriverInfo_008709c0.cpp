@@ -2,7 +2,7 @@
 // Leaf: ?GetDriverInfo@CThingComponentSet@@QBEABVCEntry@1@XZ
 // Retail 0x008709C0, 0x28 bytes (+ int3 padding to 0x30), thiscall `ret`. FableWin/Ego_r name:
 // ?GetDriverInfo@CThingComponentSet@@QBEABVCEntry@1@XZ. No direct caller (reached through a vtable/def table).
-// Callee: _STL::find_if<const CEntry*, CPred_EntryIsDriver>(first, last, pred, const random_access_iterator_tag&)
+// Callee: std::find_if<const CEntry*, CPred_EntryIsDriver>(first, last, pred, const random_access_iterator_tag&)
 // @ 0x00870530 (/Gr: first in ecx, last in edx, the empty predicate by value and the tag reference on the stack, `ret 8`;
 // the 4-way unrolled random-access find_if with CPred_EntryIsDriver::operator() inlined). HasDriver (0x00870980) is the
 // same call followed by `!= end`.
@@ -18,7 +18,7 @@ public:
     long TablePos;                                   // +0x00
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _Predicate>
@@ -69,5 +69,5 @@ public:
 const CThingComponentSet::CEntry& CThingComponentSet::GetDriverInfo() const
 {
     const CEntry* begin = Entries.GetAsCArray();
-    return *_STL::find_if(begin, begin + GetNoComponents(), CPred_EntryIsDriver());
+    return *std::find_if(begin, begin + GetNoComponents(), CPred_EntryIsDriver());
 }

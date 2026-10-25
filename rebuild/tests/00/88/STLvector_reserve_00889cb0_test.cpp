@@ -1,4 +1,4 @@
-// Behaviour test for 0x00889CB0 _STL::vector<CBlendedEnvironmentTheme>::reserve(n): when n exceeds the capacity, allocate
+// Behaviour test for 0x00889CB0 std::vector<CBlendedEnvironmentTheme>::reserve(n): when n exceeds the capacity, allocate
 // n elements, copy-construct the old ones across, destroy and free the old block, keep the size; otherwise do nothing.
 #include <stdio.h>
 #include <string.h>
@@ -18,7 +18,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 typedef NEnvironmentInternal::CBlendedEnvironmentTheme CTheme;
@@ -104,7 +104,7 @@ NEnvironmentInternal::CBlendedEnvironmentTheme::~CBlendedEnvironmentTheme() { ++
 int main()
 {
     typedef NEnvironmentInternal::CBlendedEnvironmentTheme T;
-    _STL::vector<T> v; v._M_start = v._M_finish = v._M_end_of_storage._M_data = 0;
+    std::vector<T> v; v._M_start = v._M_finish = v._M_end_of_storage._M_data = 0;
     int ok = 1;
     v.reserve(2);                                           // empty: a bare allocation
     if (v.capacity() != 2 || v.size() != 0 || !v._M_start || g_dtors != 0) ok = 0;

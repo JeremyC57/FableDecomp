@@ -8,7 +8,7 @@
 
 static int LiveObjects() { return 0; }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;
     _T2 second;
@@ -19,7 +19,7 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // empty functor, by value
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 enum EConversationProtagonist { PROTAGONIST_NONE = 0, PROTAGONIST_TEST_MAX = 255 };       // test ranges widened
@@ -39,7 +39,7 @@ public:
         EConversationCameraView     CameraView;
     };
 };
-typedef _STL::pair<float, CSubtitledMessage::CCameraTag> TElem;
+typedef std::pair<float, CSubtitledMessage::CCameraTag> TElem;
 typedef CKeyPairCompareLess<float, CSubtitledMessage::CCameraTag> TLess;
 #define LOWEST_KEY 0
 static TElem Mk(int key, int tag)
@@ -64,7 +64,7 @@ static bool PayloadOk(const TElem& e)
 }
 
 // STLport 4.x sort / heap algorithms (the model's bodies and the test's copies of their out-of-line callees).
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
@@ -326,7 +326,7 @@ static bool TestFunction()                              // __partial_sort: the m
         int keys[n];
         Keys(keys, n, seed, 18, LOWEST_KEY);
         TElem* a = NewArr(keys, n);
-        _STL::__partial_sort(a, a + m, a + n, (TElem*)0, TLess());
+        std::__partial_sort(a, a + m, a + n, (TElem*)0, TLess());
         ok = IsPerm(a, n, keys) && IsSorted(a, m);
         for (int i = m; ok && i < n; ++i)
             if (TLess()(a[i], a[m - 1]))

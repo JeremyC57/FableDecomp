@@ -1,9 +1,9 @@
-// _STL::__unguarded_insertion_sort_aux(CPersistPair* first, CPersistPair* last, CPersistPair*, CPersistLess comp) -- insertion-sort the tail of an introsorted (UID, persist info) range without bound checks
+// std::__unguarded_insertion_sort_aux(CPersistPair* first, CPersistPair* last, CPersistPair*, CPersistLess comp) -- insertion-sort the tail of an introsorted (UID, persist info) range without bound checks
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB9E40, 76 bytes (`ret 8`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __unguarded_insertion_sort_aux over (UID, persist info) = _STL::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned);
+// Identity: STLport __unguarded_insertion_sort_aux over (UID, persist info) = std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned);
 //   callers 0x00CBA5E7 / 0x00CBC2E6 (final insertion sort). The manifest label "_Copy_impl<CNavigationPosition*,...>"
 //   is propagated and wrong.
 // Callees: __unguarded_linear_insert 0x00CB92C0, CCharString copy constructor 0x0099EC30 (the by-value val).
@@ -24,7 +24,7 @@ public:
     };
 };
 }
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -32,11 +32,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistPair;   // 24 bytes
+typedef std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistPair;   // 24 bytes
 typedef CKeyPairCompareLess<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistLess;
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00CB92C0
 

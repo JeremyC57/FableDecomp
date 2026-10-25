@@ -1,4 +1,4 @@
-// _STL::list::erase(iterator position) -- STLport list<CQuestManager::CBoast>: unlink one node, destroy the boast (title, text, script name), free the node, return the next position
+// std::list::erase(iterator position) -- STLport list<CQuestManager::CBoast>: unlink one node, destroy the boast (title, text, script name), free the node, return the next position
 // Leaf: ?erase@?$list@VCBoast@CQuestManager@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004B87F0, 60 bytes, __fastcall `ret 8` (hidden iterator result, position); `this` unused.
 // Identity: STLport 4.6 list::erase(iterator) out of line; the node payload at +8 is Ego_r.pdb CQuestManager::CBoast
@@ -39,7 +39,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -102,4 +102,4 @@ public:
 
 template list<CQuestManager::CBoast>::iterator list<CQuestManager::CBoast>::erase(iterator);
 
-} // namespace _STL
+} // namespace std

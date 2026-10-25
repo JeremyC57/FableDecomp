@@ -1,4 +1,4 @@
-// Behaviour test for 0x0043F850 _STL::__destroy_aux<CIntelligentPointer<NParticleEngine::CParticleEmitter>*>.
+// Behaviour test for 0x0043F850 std::__destroy_aux<CIntelligentPointer<NParticleEngine::CParticleEmitter>*>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("0043f850_TEST FAIL\n"); return 1; } } while (0)

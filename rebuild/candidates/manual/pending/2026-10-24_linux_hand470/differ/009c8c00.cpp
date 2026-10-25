@@ -27,7 +27,7 @@ public:
 };
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };   // a user constructor keeps the tag store-free
 }
 template <class T> class CArray {                        // retail 12-byte STLport vector
@@ -39,7 +39,7 @@ public:
     const T* GetData() const { return size() ? _M_start : (const T*)this; }
     T& operator[](unsigned int i) { return _M_start[i]; }
     T& back() { return *(_M_finish - 1); }
-    void _M_insert_overflow(T* pos, const T& x, const _STL::__true_type&, unsigned int fillLen, bool atEnd);
+    void _M_insert_overflow(T* pos, const T& x, const std::__true_type&, unsigned int fillLen, bool atEnd);
     void push_back(const T& x)
     {
         if (_M_finish != _M_end_of_storage) {
@@ -47,7 +47,7 @@ public:
             ++_M_finish;
         }
         else
-            _M_insert_overflow(_M_finish, x, _STL::__true_type(), 1, true);
+            _M_insert_overflow(_M_finish, x, std::__true_type(), 1, true);
     }
 };
 
@@ -82,7 +82,7 @@ struct CDataBankEntry { };
 // Same-TU stand-in for the out-of-line overflow (the real body is 0x009CA950): it never reads the tag.
 #pragma auto_inline(off)
 template <> __declspec(noinline) void CArray<NGameText::CDataBankEntry*>::_M_insert_overflow(NGameText::CDataBankEntry** pos,
-    NGameText::CDataBankEntry* const& x, const _STL::__true_type&, unsigned int fillLen, bool atEnd)
+    NGameText::CDataBankEntry* const& x, const std::__true_type&, unsigned int fillLen, bool atEnd)
 {
     for (; fillLen != 0; --fillLen)
         *pos++ = x;

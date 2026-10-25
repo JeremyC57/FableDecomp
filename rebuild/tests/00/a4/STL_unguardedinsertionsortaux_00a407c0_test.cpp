@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_insertion_sort_aux(pair<CCharString, CSoundBankLH*>*, ..., CKeyPairCompareLess<CCharString, CSoundBankLH*>) (0x00A407C0): after the pass [first, last) is in ascending key order (the
+// Behaviour test for std::__unguarded_insertion_sort_aux(pair<CCharString, CSoundBankLH*>*, ..., CKeyPairCompareLess<CCharString, CSoundBankLH*>) (0x00A407C0): after the pass [first, last) is in ascending key order (the
 // entry before first is a sentinel no greater than any key), equal keys keep their order and payloads travel with keys.
 #include <cstdio>
 #include <cstring>
@@ -13,7 +13,7 @@ public:
     bool operator<(const CCharString& o) const { return std::strcmp(Text, o.Text) < 0; }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -46,12 +46,12 @@ void __unguarded_insertion_sort_aux(_RandomAccessIter __first, _RandomAccessIter
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 class CSoundBankLH { public: int Id; };
 static CSoundBankLH gBanks[6];
 
-typedef _STL::pair<CCharString, CSoundBankLH*> E;
+typedef std::pair<CCharString, CSoundBankLH*> E;
 
 int main()
 {
@@ -60,7 +60,7 @@ int main()
     a[0] = E(CCharString(""), (CSoundBankLH*)0);
     for (int i = 0; i < 6; ++i)
         a[i + 1] = E(CCharString(names[i]), &gBanks[i]);
-    _STL::__unguarded_insertion_sort_aux(a + 1, a + 7, (E*)0, CKeyPairCompareLess<CCharString, CSoundBankLH*>());
+    std::__unguarded_insertion_sort_aux(a + 1, a + 7, (E*)0, CKeyPairCompareLess<CCharString, CSoundBankLH*>());
     static const char* sorted[6] = { "alpha", "alpha", "bravo", "charlie", "delta", "echo" };
     static const int order[6] = { 1, 4, 3, 5, 0, 2 };
     int fails = 0;

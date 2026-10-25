@@ -62,41 +62,41 @@ Names come from the PDB where it has them (Ego_d / Ego_r function-name tables). 
 shape and the callers. "Descriptive name" marks a name the PDB does not have.
 
 - 0x009F5600 CInputEventVector_PushBackAt0x14 -> CInputManager::AddEventToStore (PDB)
-- 0x009F63B0 CInputEvent_Copy -> _STL::__copy_ptrs<CInputEvent*, CInputEvent*>
-- 0x009F65E0 CInputEvent_AllocateCopy -> _STL::vector<CInputEvent>::_M_allocate_and_copy
-- 0x009F66A0 Array_CopyConstruct -> _STL::vector<CInputEvent>::vector(const vector&)
-- 0x009F67E0 EventContainer_Erase -> _STL::vector<CInputEvent>::erase(first, last)
-- 0x009F6ED0 Vector_InsertElementRange -> _STL::vector<CInputEventPackage>::_M_insert_overflow
+- 0x009F63B0 CInputEvent_Copy -> std::__copy_ptrs<CInputEvent*, CInputEvent*>
+- 0x009F65E0 CInputEvent_AllocateCopy -> std::vector<CInputEvent>::_M_allocate_and_copy
+- 0x009F66A0 Array_CopyConstruct -> std::vector<CInputEvent>::vector(const vector&)
+- 0x009F67E0 EventContainer_Erase -> std::vector<CInputEvent>::erase(first, last)
+- 0x009F6ED0 Vector_InsertElementRange -> std::vector<CInputEventPackage>::_M_insert_overflow
 - 0x009F7250 CVsyncCallbackTimer_FlushPendingQueries -> CVsyncCallbackTimer::ClearAllQueries
 - 0x009F73A0 operator_new -> CVsyncCallbackTimer::OnPreDeviceReset
-- 0x009F76F0 AllocArray_0x18Elements -> _STL::allocator<_List_node<CPendingQuery> >::allocate
-- 0x009F77B0 __EH_epilog3 -> _STL::_STLP_alloc_proxy constructor
-- 0x009F7830 LinkedList_Clear -> _STL::_List_base<CPendingQuery>::clear
-- 0x009F79D0 StdList_EraseNode -> _STL::list<CPendingQuery>::erase
-- 0x009F7A30 StdList_DefaultCtor_9f7a30 -> _STL::_List_base<CPendingQuery> constructor
-- 0x009F7AD0 CFourierAnalysis_CreateHeapInstance -> _STL::list<CPendingQuery>::_M_create_node
-- 0x009F7B60 MapIterator_CountDistance -> _STL::__distance (list const_iterator)
-- 0x009F7BB0 StdList_DefaultCtor_9f7bb0 -> _STL::_List_base<16-byte element> constructor (element unidentified)
-- 0x009F7C50 List_RemoveNode_Free -> _STL::list<CPendingQuery>::pop_back
-- 0x009F7D70 MapIterator_CountDistance_9f7d70 -> _STL::distance (list const_iterator)
-- 0x009F7DC0 OnPostSwapScreens_UpdateNUIListCount -> _STL::list<CPendingQuery>::size
-- 0x009F7E40 Link_FourierAnalysisNode -> _STL::list<CPendingQuery>::push_front
-- 0x009F7EC0 LinkedList_InsertNode -> _STL::list<CPendingQuery>::push_back
+- 0x009F76F0 AllocArray_0x18Elements -> std::allocator<_List_node<CPendingQuery> >::allocate
+- 0x009F77B0 __EH_epilog3 -> std::_STLP_alloc_proxy constructor
+- 0x009F7830 LinkedList_Clear -> std::_List_base<CPendingQuery>::clear
+- 0x009F79D0 StdList_EraseNode -> std::list<CPendingQuery>::erase
+- 0x009F7A30 StdList_DefaultCtor_9f7a30 -> std::_List_base<CPendingQuery> constructor
+- 0x009F7AD0 CFourierAnalysis_CreateHeapInstance -> std::list<CPendingQuery>::_M_create_node
+- 0x009F7B60 MapIterator_CountDistance -> std::__distance (list const_iterator)
+- 0x009F7BB0 StdList_DefaultCtor_9f7bb0 -> std::_List_base<16-byte element> constructor (element unidentified)
+- 0x009F7C50 List_RemoveNode_Free -> std::list<CPendingQuery>::pop_back
+- 0x009F7D70 MapIterator_CountDistance_9f7d70 -> std::distance (list const_iterator)
+- 0x009F7DC0 OnPostSwapScreens_UpdateNUIListCount -> std::list<CPendingQuery>::size
+- 0x009F7E40 Link_FourierAnalysisNode -> std::list<CPendingQuery>::push_front
+- 0x009F7EC0 LinkedList_InsertNode -> std::list<CPendingQuery>::push_back
 - 0x009F8A20 ComputeGraphicDataBankListSize -> descriptive name: Sizeof over list<CGraphicBankManager::CGraphicDataBankInfo>
   (no callers; the body CGraphicBankManager::Sizeof 0x009F8380 inlines)
 - 0x009F8FC0 DoublyLinkedList_InsertNode -> CProfileManager::AddProfile(CProfile&) (PDB)
-- 0x009F9930 std_vector_copy_constructor -> _STL::vector<CProfileManager::CProfileTreeEntry*>::vector(const vector&)
-- 0x009F9BA0 ProfileEntry_Insert -> _STL::list<CProfileManager::CProfileTreeEntry>::insert(iterator, const T&)
-- 0x009F9C40 ProfileList_AddEntry -> _STL::list<CProfileManager::CProfileTreeEntry>::insert(iterator)
+- 0x009F9930 std_vector_copy_constructor -> std::vector<CProfileManager::CProfileTreeEntry*>::vector(const vector&)
+- 0x009F9BA0 ProfileEntry_Insert -> std::list<CProfileManager::CProfileTreeEntry>::insert(iterator, const T&)
+- 0x009F9C40 ProfileList_AddEntry -> std::list<CProfileManager::CProfileTreeEntry>::insert(iterator)
 - 0x009FC210 CResourceList_MakeFreeSpace -> CResourceList::ShrinkResources(unsigned long) (PDB; MakeFreeSpace is its caller 0x009FC4F0)
-- 0x00A004D0 EntityArray_CopyInit -> _STL::__uninitialized_fill_n<CGraphicInfoFrame*>
-- 0x00A00750 _Copy_impl<CGameMapCell*,CGameMapCell*> -> _STL::__uninitialized_copy<CGraphicInfoFrame*>
-- 0x00A00840 _Copy_backward<CPhysicsMeshInfo*,...> -> _STL::__copy_backward<CGraphicInfoFrame*>
-- 0x00A00A90 _Copy_backward<CDefPointer<CThingBaseDef const>*,...> -> _STL::fill<CGraphicInfoFrame*>
-- 0x00A00B20 _Move<CGraphicInfoFrame*,...> -> _STL::__copy<CGraphicInfoFrame*> (element right, algorithm name STLport's)
+- 0x00A004D0 EntityArray_CopyInit -> std::__uninitialized_fill_n<CGraphicInfoFrame*>
+- 0x00A00750 _Copy_impl<CGameMapCell*,CGameMapCell*> -> std::__uninitialized_copy<CGraphicInfoFrame*>
+- 0x00A00840 _Copy_backward<CPhysicsMeshInfo*,...> -> std::__copy_backward<CGraphicInfoFrame*>
+- 0x00A00A90 _Copy_backward<CDefPointer<CThingBaseDef const>*,...> -> std::fill<CGraphicInfoFrame*>
+- 0x00A00B20 _Move<CGraphicInfoFrame*,...> -> std::__copy<CGraphicInfoFrame*> (element right, algorithm name STLport's)
 - 0x00A00950 Calc -> CCRC::Calc (PDB class; retail takes stack arguments)
-- 0x00A01650 CGraphicDataBank_AddEntry -> _STL::vector<CGraphicInfo>::push_back()
-- 0x00A016F0 Vector_Resize -> _STL::vector<CGraphicInfoFrame>::resize(unsigned int)
+- 0x00A01650 CGraphicDataBank_AddEntry -> std::vector<CGraphicInfo>::push_back()
+- 0x00A016F0 Vector_Resize -> std::vector<CGraphicInfoFrame>::resize(unsigned int)
 - 0x00A03870 DiscardAsyncData -> CScopedMemoryHandle::Clear (PDB)
 - 0x00A039F0 CHandleBuffer_Reset -> CScopedMemoryHandle::Initialise(CHandleBasedMemoryPool*, long) (PDB)
 

@@ -1,5 +1,5 @@
-// _STL::pair::pair(const pair<long, CNavigatorAStar::CAStarState>& p) -- converting constructor of the A* state map's node value pair<const long, CAStarState> from the make_pair temporary: the key, then the state (copied and counted)
-// Leaf: ??$?0JVCAStarState@CNavigatorAStar@@@?$pair@$$CBJVCAStarState@CNavigatorAStar@@@_STL@@QAE@ABU?$pair@JVCAStarState@CNavigatorAStar@@@1@@Z
+// std::pair::pair(const pair<long, CNavigatorAStar::CAStarState>& p) -- converting constructor of the A* state map's node value pair<const long, CAStarState> from the make_pair temporary: the key, then the state (copied and counted)
+// Leaf: ??$?0JVCAStarState@CNavigatorAStar@@@?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@QAE@ABU?$pair@JVCAStarState@CNavigatorAStar@@@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A20240, 81 bytes, __fastcall `ret 4`, returns `this` (held in eax throughout).
 // Element: the node value of CNavigatorAStar's state map (STLport map<long, CAStarState>): key +0, then Ego_r.pdb
 //   CNavigatorAStar::CAStarState at +4 (ParentState, Node, CostToThisState, TotalCost, OnOpenList +0x14, OnClosedList
@@ -39,7 +39,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

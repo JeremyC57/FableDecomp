@@ -23,7 +23,7 @@ extern "C" void  __cdecl free(void* block);                                     
 extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
 
-namespace _STL {
+namespace std {
 
 template <class _CharT> class char_traits {
 public:
@@ -90,7 +90,7 @@ public:
 namespace LHNetworkLib {
 
 struct LAddress {                               // Ego_r.pdb names; retail 0x1C bytes
-    _STL::string   ServerName;                  // +0x00
+    std::string   ServerName;                  // +0x00
     unsigned long  ServerIP;                    // +0x0C
     unsigned short ServerPort;                  // +0x10
     long           TransportProtocol;           // +0x14 LSOCKET_PROTOCOL
@@ -108,11 +108,11 @@ struct LAddress {                               // Ego_r.pdb names; retail 0x1C 
 
 class LSocket {
 public:
-    bool Receive(_STL::vector<char>& data, LAddress& from, const LAddress& to);    // 0x008F9320
-    bool Receive(_STL::vector<char>& data);
+    bool Receive(std::vector<char>& data, LAddress& from, const LAddress& to);    // 0x008F9320
+    bool Receive(std::vector<char>& data);
 };
 
-bool LSocket::Receive(_STL::vector<char>& data)
+bool LSocket::Receive(std::vector<char>& data)
 {
     LAddress from;
     LAddress to;

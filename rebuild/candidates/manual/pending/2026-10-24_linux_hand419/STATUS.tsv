@@ -1,7 +1,7 @@
 address	status	bytes	test	note
-00a41d50	RELOCATION_MATCH	171v171	PASS	_STL::__introsort_loop<pair<CCharString,4-byte value>*> (was Introsort_Partition_CCharStringPair); empty comparator with user ctor; grades 1
-00a43500	MATCH	47v47	PASS	_STL::__uninitialized_fill_n<NGameText::CDataBankTextEntry*> (was _Fill_n<unsigned long*>); grades 1
-00a43670	MATCH	47v47	PASS	_STL::uninitialized_fill_n front end, __forceinline inner helper; grades 1
+00a41d50	RELOCATION_MATCH	171v171	PASS	std::__introsort_loop<pair<CCharString,4-byte value>*> (was Introsort_Partition_CCharStringPair); empty comparator with user ctor; grades 1
+00a43500	MATCH	47v47	PASS	std::__uninitialized_fill_n<NGameText::CDataBankTextEntry*> (was _Fill_n<unsigned long*>); grades 1
+00a43670	MATCH	47v47	PASS	std::uninitialized_fill_n front end, __forceinline inner helper; grades 1
 00a43b20	RELOCATION_MATCH	223v223	PASS	vector<NGameText::CDataBankTextEntry>::_M_insert_overflow (was Vector_Reallocate_CDataBankGroupEntry); same-TU noinline stand-ins; grades 1
 00a43e30	SKIP	-	-	not a function start: the row begins inside 0x00A43DF0 (the `eb 05` jump at 0x00A43E2F lands on 0x00A43E31) and has no callers
 00a441e0	DIFFER	106v98	-	GFGetSignedAngleDifference (PDB, __fastcall); compares reload the homed angle where retail compares its register copy; grades 4, parked
@@ -11,31 +11,31 @@ address	status	bytes	test	note
 00a44660	RELOCATION_MATCH	40v40	PASS	CSuspendableProcessMicrothread::InternalSwitchToProcess, optimize("", off) TU; grades 1
 00a44df0	RELOCATION_MATCH	99v99	PASS	C3DSkeletalBoneMorph::C3DSkeletalBoneMorph(const CCharString&, const C3DVector&) (was CCharString_InitWithCRC); grades 1
 00a45470	RELOCATION_MATCH	117v117	PASS	C3DSkeletalMorph::AddMorphParameter (was CSkeletalMorph_SetMorphTarget); grades 1
-00a45a70	RELOCATION_MATCH	141v141	PASS	_STL::swap<C3DSkeletalBoneMorph>; C3DVector memberwise user copy ctor; grades 1
-00a45b00	RELOCATION_MATCH	145v145	PASS	_STL::__unguarded_linear_insert (was Vector_Insert_ConditionalShift); grades 1
-00a45bc0	RELOCATION_MATCH	179v179	PASS	_STL::__push_heap<C3DSkeletalBoneMorph*,int>; grades 1
-00a461d0	RELOCATION_MATCH	114v114	PASS	_STL::__unguarded_partition (was Introsort_PartitionStep); grades 1
-00a46350	RELOCATION_MATCH	124v124	PASS	_STL::__make_heap (was MakeHeap_Generic); grades 1
-00a46530	RELOCATION_MATCH	169v169	PASS	_STL::__linear_insert (was Vector_InsertConditionalShift_Decal); C3DVector user copy ctor fixed 171v169; grades 3
-00a46940	RELOCATION_MATCH	124v124	PASS	_STL::__partial_sort (was Introsort_Partition_With_Predicate); grades 1
+00a45a70	RELOCATION_MATCH	141v141	PASS	std::swap<C3DSkeletalBoneMorph>; C3DVector memberwise user copy ctor; grades 1
+00a45b00	RELOCATION_MATCH	145v145	PASS	std::__unguarded_linear_insert (was Vector_Insert_ConditionalShift); grades 1
+00a45bc0	RELOCATION_MATCH	179v179	PASS	std::__push_heap<C3DSkeletalBoneMorph*,int>; grades 1
+00a461d0	RELOCATION_MATCH	114v114	PASS	std::__unguarded_partition (was Introsort_PartitionStep); grades 1
+00a46350	RELOCATION_MATCH	124v124	PASS	std::__make_heap (was MakeHeap_Generic); grades 1
+00a46530	RELOCATION_MATCH	169v169	PASS	std::__linear_insert (was Vector_InsertConditionalShift_Decal); C3DVector user copy ctor fixed 171v169; grades 3
+00a46940	RELOCATION_MATCH	124v124	PASS	std::__partial_sort (was Introsort_Partition_With_Predicate); grades 1
 00a47d10	DIFFER	110v97	-	CNavigatorExternalInterface::RemoveAgentFromLists: lane strength-reduces pos+1 and spills agent; grades 4, parked
 00a47d80	RELOCATION_MATCH	77v77	PASS	CNavigatorExternalInterface::RemoveAgentListFromLists (static __fastcall); grades 1
-00a484b0	RELOCATION_MATCH	78v78	PASS	_STL::__copy<CLipSyncPhoneme*> (was _Move); grades 1
-00a48670	RELOCATION_MATCH	58v58	PASS	_STL::__uninitialized_copy<CLipSyncPhoneme> (was _Copy_backward<CBrainUpdateZone>); grades 1
+00a484b0	RELOCATION_MATCH	78v78	PASS	std::__copy<CLipSyncPhoneme*> (was _Move); grades 1
+00a48670	RELOCATION_MATCH	58v58	PASS	std::__uninitialized_copy<CLipSyncPhoneme> (was _Copy_backward<CBrainUpdateZone>); grades 1
 00a48870	RELOCATION_MATCH	78v78	PASS	byte twin of 00a484b0; grades 1
 00a488c0	RELOCATION_MATCH	58v58	PASS	byte twin of 00a48670; grades 1
-00a4a670	RELOCATION_MATCH	147v147	PASS	_STL::map<unsigned long, CCharString>::operator[] (was BST_InsertEntry_EHeroMorphType); grades 2
-00a4a8c0	RELOCATION_MATCH	78v78	PASS	_STL::vector<CLipSyncPhoneme>::push_back (was Vector_CCharString_12byte_Append); grades 1
+00a4a670	RELOCATION_MATCH	147v147	PASS	std::map<unsigned long, CCharString>::operator[] (was BST_InsertEntry_EHeroMorphType); grades 2
+00a4a8c0	RELOCATION_MATCH	78v78	PASS	std::vector<CLipSyncPhoneme>::push_back (was Vector_CCharString_12byte_Append); grades 1
 00a4a910	RELOCATION_MATCH	33v33	PASS	CCountedPointer<CSpeechFrame>::DeleteData (was FreeListNode_Destroy); grades 1
 00a4ab10	RELOCATION_MATCH	78v78	PASS	byte twin of 00a4a8c0; grades 1
-00a4ae00	RELOCATION_MATCH	97v97	PASS	_STL::vector<CLipSyncPhonemeSample>::push_back; grades 1
+00a4ae00	RELOCATION_MATCH	97v97	PASS	std::vector<CLipSyncPhonemeSample>::push_back; grades 1
 00a4b7b0	MATCH	68v68	PASS	GFWorld3DDistanceSmallerThan (PDB); grades 1
-00a52080	MATCH	45v45	PASS	_STL::fill<C3DTriangle2*>; grades 1
-00a520b0	MATCH	48v48	PASS	_STL::uninitialized_fill_n<C3DTriangle2*> (was _Fill_n<unsigned long*>); grades 1
+00a52080	MATCH	45v45	PASS	std::fill<C3DTriangle2*>; grades 1
+00a520b0	MATCH	48v48	PASS	std::uninitialized_fill_n<C3DTriangle2*> (was _Fill_n<unsigned long*>); grades 1
 00a53650	RELOCATION_MATCH	83v83	PASS	vector<C3DTriangle2>::_M_allocate_and_copy (was Array_Copy_Construct); __forceinline __uninitialized_copy; grades 2
 00a537f0	RELOCATION_MATCH	101v101	PASS	C3DAnimFile::GetRoot() const (was SharedPtr_Copy); byte twin of landed C3DMeshFile::GetRoot 0x00A32620; grades 1
-00a54580	RELOCATION_MATCH	117v117	PASS	_STL::vector<C3DKeyframe>::vector(size_type) (was Vector_InitialiseAsConstant_C3DKeyframe); grades 1
-00a547c0	RELOCATION_MATCH	207v207	PASS	_STL::_Rb_tree<CCharString, pair<const CCharString,long>>::_M_copy (was TreeNode_CloneRecursive); grades 1
-00a54fa0	RELOCATION_MATCH	207v207	PASS	_STL::vector<C2DLineF>::_M_insert_overflow; grades 1
-00a55500	RELOCATION_MATCH	151v151	PASS	_STL::vector<pair<CCharString,4-byte> >::reserve (was CDefendingCombatantInfo_CCombatWheel_Reallocate); grades 1
-00a557e0	DIFFER	155v154	-	_STL::copy(set<CCharString> range, back_inserter) (was BinaryTreeTraversal_Insert): push edi not shrink-wrapped; grades 4, parked
+00a54580	RELOCATION_MATCH	117v117	PASS	std::vector<C3DKeyframe>::vector(size_type) (was Vector_InitialiseAsConstant_C3DKeyframe); grades 1
+00a547c0	RELOCATION_MATCH	207v207	PASS	std::_Rb_tree<CCharString, pair<const CCharString,long>>::_M_copy (was TreeNode_CloneRecursive); grades 1
+00a54fa0	RELOCATION_MATCH	207v207	PASS	std::vector<C2DLineF>::_M_insert_overflow; grades 1
+00a55500	RELOCATION_MATCH	151v151	PASS	std::vector<pair<CCharString,4-byte> >::reserve (was CDefendingCombatantInfo_CCombatWheel_Reallocate); grades 1
+00a557e0	DIFFER	155v154	-	std::copy(set<CCharString> range, back_inserter) (was BinaryTreeTraversal_Insert): push edi not shrink-wrapped; grades 4, parked

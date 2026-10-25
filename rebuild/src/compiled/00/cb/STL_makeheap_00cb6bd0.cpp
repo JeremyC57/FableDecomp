@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<CCharString,CScriptInfo>* __first, pair<CCharString,CScriptInfo>* __last, CKeyPairCompareLess __comp, pair<CCharString,CScriptInfo>*, int*) -- STLport make_heap core: sift every parent from (len-2)/2 down to the root with __adjust_heap
+// std::__make_heap(pair<CCharString,CScriptInfo>* __first, pair<CCharString,CScriptInfo>* __last, CKeyPairCompareLess __comp, pair<CCharString,CScriptInfo>*, int*) -- STLport make_heap core: sift every parent from (len-2)/2 down to the root with __adjust_heap
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB6BD0, 134 bytes. __fastcall: __first ecx, __last edx, the comparator
 // word and the two type-tag pointers on the stack (`ret 0Ch`). The manifest label "ScriptInfo_BuildHeapify" is
@@ -8,8 +8,8 @@
 // Shape: the STLport body verbatim; `__last - __first < 2` and `__len` share one divide (`imul 2AAAAAABh`), the
 // `_Tp(*(__first + __parent))` temporary is copy-constructed straight into __adjust_heap's argument area (the pair copy
 // constructor, then CScriptInfo's implicit one), __first lives in the `push ecx` frame word.
-// Model: STLport 4.6 algorithms (namespace _STL, the /Gr TU makes the templates __fastcall) over the script registry's
-// 0x18-byte _STL::pair<CCharString, CScriptInfo> (CScriptInfoManager::Scripts, a CVectorMap sorted with
+// Model: STLport 4.6 algorithms (namespace std, the /Gr TU makes the templates __fastcall) over the script registry's
+// 0x18-byte std::pair<CCharString, CScriptInfo> (CScriptInfoManager::Scripts, a CVectorMap sorted with
 // CKeyPairCompareLess). Ego_r.pdb CScriptInfo (0x14): AllocFunc +0, MasterScriptDataAlloc +4, CCharString Name +8,
 // long ID +0xc, bool MasterScript +0x10 (implicit copy and assignment) -- the model of the landed __insertion_sort
 // 0x00CB6EA0, __pop_heap 0x00CB6B00 and __copy_backward 0x00CB62F0. STLport's pair has a user copy constructor;
@@ -50,7 +50,7 @@ public:
     bool             MasterScript;                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;
@@ -62,13 +62,13 @@ struct pair {
 
 template <class K, class V>
 struct CKeyPairCompareLess {                            // empty, passed by value (one stack word)
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, CScriptInfo>   SScriptInfoPair;
+typedef std::pair<CCharString, CScriptInfo>   SScriptInfoPair;
 typedef CKeyPairCompareLess<CCharString, CScriptInfo> SScriptInfoLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIter __first, _Distance __holeIndex,
                               _Distance __len, _Tp __val, _Compare __comp);    // 0x00CB68C0

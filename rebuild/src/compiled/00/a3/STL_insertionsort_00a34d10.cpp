@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, CKeyPairCompareLess comp) -- straight insertion sort of the mesh-volume table: hand each entry after the first by value to __linear_insert
+// std::__insertion_sort(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, CKeyPairCompareLess comp) -- straight insertion sort of the mesh-volume table: hand each entry after the first by value to __linear_insert
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A34D10, 109 bytes (+ int3 padding), `ret 4` (__fastcall: first in ecx, last
 //   in edx, the empty comparator on the stack).
@@ -77,7 +77,7 @@ struct C3DMeshVolume {                                        // 12 bytes (Ego_r
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     T1 first;
@@ -95,7 +95,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class RandomAccessIter, class T, class Compare>
 void __fastcall __linear_insert(RandomAccessIter first, RandomAccessIter last, T val, Compare comp);   // 0x00A34820

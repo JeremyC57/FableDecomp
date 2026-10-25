@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill(_Deque_iterator first, _Deque_iterator last, const C2DVector& x, const __false_type&) -- copy-construct x into every slot of the raw range [first, last)
+// std::__uninitialized_fill(_Deque_iterator first, _Deque_iterator last, const C2DVector& x, const __false_type&) -- copy-construct x into every slot of the raw range [first, last)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0E740, length 80 bytes (`__fastcall`: x in ecx, the tag in edx, `ret 20h`).
 // Callers: 0x00A0EB35 (the out-of-line uninitialized_fill), __uninitialized_copy_fill 0x00A0EBC0, __uninitialized_fill_copy 0x00A0EC80.
 // Callees: none.
@@ -22,7 +22,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

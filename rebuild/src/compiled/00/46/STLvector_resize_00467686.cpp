@@ -1,4 +1,4 @@
-// _STL::vector::resize(unsigned int new_size, const unsigned char& x) -- resize a byte vector: erase the surplus tail, or fill-insert copies of x at the end
+// std::vector::resize(unsigned int new_size, const unsigned char& x) -- resize a byte vector: erase the surplus tail, or fill-insert copies of x at the end
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00467686, 53 bytes, thiscall `ret 8`, in a size-optimised TU (unaligned entry, the shared
 //   `jmp` epilogue, ebp-framed neighbours).
@@ -11,7 +11,7 @@
 //   one epilogue. `#pragma optimize("s", on)` stands for the TU's size optimisation.
 #pragma optimize("s", on)
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }

@@ -1,5 +1,5 @@
-// _STL::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for multimap<float,CCountedPointer<CVertexPairContraction> > (COptimisedPrimitive::VertexPairContractions): allocate a node, copy the pair in (add-ref), link it left or right of y keeping leftmost/rightmost, rebalance and count
-// Leaf: ?_M_insert@?$_Rb_tree@MU?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@_STL@@
+// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for multimap<float,CCountedPointer<CVertexPairContraction> > (COptimisedPrimitive::VertexPairContractions): allocate a node, copy the pair in (add-ref), link it left or right of y keeping leftmost/rightmost, rebalance and count
+// Leaf: ?_M_insert@?$_Rb_tree@MU?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD4540, 216 bytes (+8 int3), thiscall `ret 14h` (hidden iterator
 //   result + x, y, v, w).
 // Identity: callers 0x00ACBDCA / 0x00ACC141 (COptimisedPrimitive code inserting contractions by cost) and 0x00AD54E4.
@@ -52,7 +52,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -205,9 +205,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::iterator
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Base_ptr __x_, _Base_ptr __y_, const value_type& __v,
@@ -244,11 +244,11 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Base_ptr __x_,
     ++_M_node_count;
     return iterator(__z);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const float, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > TCostValue;
-typedef _STL::_Rb_tree<float, TCostValue, _STL::_Select1st<TCostValue>, _STL::less<float>,
-                       _STL::allocator<TCostValue> > TCostMultimapTree;
-template TCostMultimapTree::iterator TCostMultimapTree::_M_insert(_STL::_Rb_tree_node_base*, _STL::_Rb_tree_node_base*,
+typedef std::pair<const float, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > TCostValue;
+typedef std::_Rb_tree<float, TCostValue, std::_Select1st<TCostValue>, std::less<float>,
+                       std::allocator<TCostValue> > TCostMultimapTree;
+template TCostMultimapTree::iterator TCostMultimapTree::_M_insert(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*,
                                                                   const TCostMultimapTree::value_type&,
-                                                                  _STL::_Rb_tree_node_base*);
+                                                                  std::_Rb_tree_node_base*);

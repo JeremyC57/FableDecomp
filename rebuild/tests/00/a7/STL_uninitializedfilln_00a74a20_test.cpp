@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A74A20 _STL::__uninitialized_fill_n over C2DLineF vectors: n deep copies of x, each with its
+// Behaviour test for 0x00A74A20 std::__uninitialized_fill_n over C2DLineF vectors: n deep copies of x, each with its
 // own block, the returned end is first + n; n == 0 writes nothing.
 #include <cstdio>
 #include <cstdlib>

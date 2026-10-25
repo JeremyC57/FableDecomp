@@ -1,4 +1,4 @@
-// Behaviour test for 0x00470DBC _STL::__insertion_sort over pair<unsigned long, {long, long}> records.
+// Behaviour test for 0x00470DBC std::__insertion_sort over pair<unsigned long, {long, long}> records.
 #include <cstdio>
 
 struct SPayload8 { long m_value0; long m_value1; };

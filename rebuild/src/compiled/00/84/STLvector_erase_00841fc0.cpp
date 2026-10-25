@@ -1,4 +1,4 @@
-// _STL::vector::erase(iterator first, iterator last) -- STLport range erase of a vector<basic_string<char> >: assign the tail down over the erased range, destroy (free) the strings left past the new end, return first
+// std::vector::erase(iterator first, iterator last) -- STLport range erase of a vector<basic_string<char> >: assign the tail down over the erased range, destroy (free) the strings left past the new end, return first
 // Leaf: ?erase@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00841FC0, length 84 bytes (+ int3 padding), thiscall, `ret 8`.
 // Callers: 9 sites, among them LHNetworkLib::LHHttpHeaders::Reset 0x0083FBC0 (landed; clear() as erase(begin(), end()))
@@ -13,7 +13,7 @@
 //   _Destroy's loop and the string destructor (`if (_M_start) free(_M_start)`) are inline.
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
@@ -105,5 +105,5 @@ public:
 };
 }
 
-typedef _STL::basic_string<char, _STL::char_traits<char>, _STL::allocator<char> > TString;
-template TString* _STL::vector<TString>::erase(TString*, TString*);
+typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > TString;
+template TString* std::vector<TString>::erase(TString*, TString*);

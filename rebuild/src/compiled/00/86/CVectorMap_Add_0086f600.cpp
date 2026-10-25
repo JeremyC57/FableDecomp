@@ -3,7 +3,7 @@
 // Retail 0x0086F600, 0x72 bytes (+ int3 padding to 0x80), thiscall `ret 4` (`this` is the map). No direct caller.
 // Callees: vector<pair<long, V> >::_M_insert_overflow(pos, x, __false_type, 1, true) @ 0x0086FC00 (same-TU STLport
 // stand-in below: with only a declaration the pair temporary is spilled and reloaded instead of kept in ecx/edx/edi),
-// _STL::sort<pair<long, V>*, CKeyPairCompareLess<long, V> > @ 0x008701D0 (__fastcall first/last, the empty comparator
+// std::sort<pair<long, V>*, CKeyPairCompareLess<long, V> > @ 0x008701D0 (__fastcall first/last, the empty comparator
 // pushed as a zero-extended byte; its insertion passes are 0x0086F3E0 / 0x0086FA00, signed key).
 // Element: pair<long, 8-byte value> (0x0C). The value type is NOT identified (FableWin/Ego_r long-keyed maps of 8-byte
 // values: CTCHeroMorph::CTextureLayer, CMusicManager::CRegisteredMusicEntry; neither tied to this code by a second
@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: the tag temporary is not zero-stored
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -130,14 +130,14 @@ void __fastcall sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compa
 template <class K, class V> class CKeyPairCompareLess
 {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class K, class V, class C> class CVectorMap
 {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Vector;                 // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Vector;                 // +0x00
     C                        Compare;                // +0x0C
     bool                     Dirty;                  // +0x0D
 
@@ -148,7 +148,7 @@ public:
     }
     void Sort()
     {
-        _STL::sort(Vector.begin(), Vector.end(), Compare);
+        std::sort(Vector.begin(), Vector.end(), Compare);
         Dirty = false;
     }
     void Add(const V& value);

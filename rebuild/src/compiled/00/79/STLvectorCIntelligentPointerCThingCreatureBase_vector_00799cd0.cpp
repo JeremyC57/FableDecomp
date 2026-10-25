@@ -1,4 +1,4 @@
-// _STL::vector<CIntelligentPointer<CThingCreatureBase> >::vector(unsigned int n) -- construct a vector of n null intelligent creature pointers
+// std::vector<CIntelligentPointer<CThingCreatureBase> >::vector(unsigned int n) -- construct a vector of n null intelligent creature pointers
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799CD0, 110 bytes (+ int3 padding to 112), __fastcall `ret 4`, returns this.
 // Identity: the element is the 8-byte CIntelligentPointer<CThingCreatureBase> (vtable 0x0123E7D8, as the landed

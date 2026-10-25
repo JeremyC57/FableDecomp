@@ -9,7 +9,7 @@ CCharString imports, and the out-of-line STLport helpers at their retail address
 ## What matched (40)
 
 **pair<unsigned_long (3 rows): constructors**
-- 0x00A327E0 `_STL::pair<unsigned long,C3DMeshVolume>::pair()` default-constructs a C3DMeshStats volume entry.
+- 0x00A327E0 `std::pair<unsigned long,C3DMeshVolume>::pair()` default-constructs a C3DMeshStats volume entry.
   - Shape: STLport `pair() : first(_T1()), second(_T2())`; the key zero store comes first.
 - 0x00C108A0 `SPKPlaybackRequest::SPKPlaybackRequest()` and 0x00C2D1A0 `SPKVoiceSettings::SPKVoiceSettings()` are libpk
   record constructors (descriptive names; libpk has no PDB or RTTI).
@@ -53,7 +53,7 @@ CCharString imports, and the out-of-line STLport helpers at their retail address
     reuses eax.
 
 **sort<... CThing* ... (1 row)**
-- 0x007FA680 is really `_STL::__pop_heap<CThing**, CThing*, CThingCompare_BestForTargeting2, int>`.
+- 0x007FA680 is really `std::__pop_heap<CThing**, CThing*, CThingCompare_BestForTargeting2, int>`.
   - Shape: `__fastcall`, `*result = *first; __adjust_heap(first, 0, last - first, value, comp)`.
 
 **std (20 rows)**
@@ -87,9 +87,9 @@ pair<CCharString, CPersistInfo{QuestName, PersistScript}>, 12 bytes, /Gr TU)*
     nothing and is homed in the dead comparator slot, while `__false_type` stays POD.
 
 *Other std rows*
-- 0x0048B2F0 `_STL::const_mem_fun1_t<bool,CThing,CCharString>::operator()`, which binds CThing::IsSameScriptName.
+- 0x0048B2F0 `std::const_mem_fun1_t<bool,CThing,CCharString>::operator()`, which binds CThing::IsSameScriptName.
   - It is an unreferenced COMDAT (no call or absolute reference in retail).
-- 0x004B92D0 `_STL::list<CCountedPointer<CQuestManager::CActiveQuest> >::_M_insert_dispatch<const_iterator>`. It serves
+- 0x004B92D0 `std::list<CCountedPointer<CQuestManager::CActiveQuest> >::_M_insert_dispatch<const_iterator>`. It serves
   list::insert 0x4B9EB0, the list copy constructor 0x4BADC0 and CQuestManager 0x4B2AD0 (which copies ActiveQuests).
 
 ## Parked for Fable 5.1 (0)

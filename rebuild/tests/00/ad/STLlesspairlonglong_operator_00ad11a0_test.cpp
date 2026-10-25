@@ -1,6 +1,6 @@
-// Behaviour test for 0x00AD11A0 _STL::less<pair<long,long> >::operator(): lexicographic order on (first, second)
+// Behaviour test for 0x00AD11A0 std::less<pair<long,long> >::operator(): lexicographic order on (first, second)
 #include <stdio.h>
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result>
 struct binary_function {
     typedef _Arg1   first_argument_type;
@@ -23,11 +23,11 @@ struct less : public binary_function<_Tp, _Tp, bool> {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
-typedef _STL::pair<long, long> LL;
+typedef std::pair<long, long> LL;
 static LL mk(long a, long b) { LL p; p.first = a; p.second = b; return p; }
 int main()
 {
-    _STL::less<LL> lt;
+    std::less<LL> lt;
     bool ok = true;
     ok = ok && lt(mk(1, 9), mk(2, 0)) && !lt(mk(2, 0), mk(1, 9));   // first decides
     ok = ok && lt(mk(3, 1), mk(3, 2)) && !lt(mk(3, 2), mk(3, 1));   // tie on first: second decides

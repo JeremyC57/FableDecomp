@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A54580: _STL::vector<C3DKeyframe>::vector(unsigned int n) (allocate n keyframes and fill them with a default one)
+// Behaviour test for 0x00A54580: std::vector<C3DKeyframe>::vector(unsigned int n) (allocate n keyframes and fill them with a default one)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -30,7 +30,7 @@ public:
     C4DVector   Position;
     C4DVector   Scaling;
 };
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -88,13 +88,13 @@ public:
 int main()
 {
     {
-        _STL::vector<C3DKeyframe> v(5u);
+        std::vector<C3DKeyframe> v(5u);
         Check(v._M_start != 0 && v._M_finish == v._M_start + 5 && v._M_end_of_storage._M_data == v._M_start + 5);
         Check(g_quatCtor == 1);                      // one default keyframe, copied five times
         free(v._M_start);
     }
     {
-        _STL::vector<C3DKeyframe> e(0u);
+        std::vector<C3DKeyframe> e(0u);
         Check(e._M_start == 0 && e._M_finish == 0 && e._M_end_of_storage._M_data == 0);
     }
     Check(sizeof(C3DKeyframe) == 48u);

@@ -43,7 +43,7 @@ public:
         CTextureMorph() : NewTexture(0), GroupID(0) { }
     };
 };
-namespace _STL {
+namespace std {
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;
@@ -61,8 +61,8 @@ public:
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Entries;       // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Entries;       // +0x00
     C                        Compare;       // +0x0c (empty)
     bool                     Dirty;         // +0x0d
     unsigned int size() const { return Entries.size(); }

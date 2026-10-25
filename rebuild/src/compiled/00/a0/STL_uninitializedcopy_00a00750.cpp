@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(CGraphicInfoFrame*, CGraphicInfoFrame*, CGraphicInfoFrame*, const __false_type&) -- copy-construct [first, last) into raw storage at result and return the end
+// std::__uninitialized_copy(CGraphicInfoFrame*, CGraphicInfoFrame*, CGraphicInfoFrame*, const __false_type&) -- copy-construct [first, last) into raw storage at result and return the end
 // Leaf: __uninitialized_copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A00750, 74 bytes, __fastcall (first/last in ecx/edx), `ret 8` (result + tag).
 // Callers: 0x00A00CD9, 0x00A00D41, 0x00A00FCD, 0x00A01021 (vector<CGraphicInfoFrame> copy/insert paths). The chunk label
@@ -66,7 +66,7 @@ public:
     virtual void v001();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct input_iterator_tag { input_iterator_tag() {} };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() {} };
@@ -75,7 +75,7 @@ struct random_access_iterator_tag : public bidirectional_iterator_tag { random_a
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-namespace _STL {
+namespace std {
 CGraphicInfoFrame* __fastcall __uninitialized_copy(CGraphicInfoFrame* __first, CGraphicInfoFrame* __last, CGraphicInfoFrame* __result,
                                                   const __false_type&)
 {

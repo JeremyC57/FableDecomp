@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CWideString* first, CWideString* last, less<CWideString> comp) -- STLport insertion sort of wide strings: each element that sorts before *first shifts the prefix up one slot and lands at the front, the rest take the unguarded insert
+// std::__insertion_sort(CWideString* first, CWideString* last, less<CWideString> comp) -- STLport insertion sort of wide strings: each element that sorts before *first shifts the prefix up one slot and lands at the front, the rest take the unguarded insert
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B68D0, 200 bytes, `ret 4`: `__fastcall` (/Gr algorithm TU: first in ecx, last in
 // edx, the empty comparator on the stack; no value-type tag argument). Catalog name "Vector_InsertRange_String" is wrong.
@@ -19,7 +19,7 @@ public:
     bool operator<(const CWideString& other) const;     // 0x0099AF70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -66,5 +66,5 @@ void __fastcall __insertion_sort(_RandomAccessIter __first, _RandomAccessIter __
 }
 }
 
-template void __fastcall _STL::__insertion_sort<CWideString*, _STL::less<CWideString> >(
-    CWideString* __first, CWideString* __last, _STL::less<CWideString> __comp);
+template void __fastcall std::__insertion_sort<CWideString*, std::less<CWideString> >(
+    CWideString* __first, CWideString* __last, std::less<CWideString> __comp);

@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(CThing** first, CThing** last, CThing**, CCompare_FurthestFromInitPos2D comp) -- insertion-sort pass with no lower-bound test over thing pointers ordered by the "furthest from initial position (2D)" predicate
+// std::__unguarded_insertion_sort_aux(CThing** first, CThing** last, CThing**, CCompare_FurthestFromInitPos2D comp) -- insertion-sort pass with no lower-bound test over thing pointers ordered by the "furthest from initial position (2D)" predicate
 // Leaf: __unguarded_insertion_sort_aux
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00748C10, 96 bytes, `ret 8` (link-time __fastcall: first in ecx, last in edx, the
 //   value-type tag pointer and the comparator on the stack).
@@ -82,7 +82,7 @@ bool CCompare_FurthestFromInitPos2D::operator()(CThing* a, CThing* b) const
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 template <class RandomAccessIter, class T, class Compare>
 inline void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp)
 {

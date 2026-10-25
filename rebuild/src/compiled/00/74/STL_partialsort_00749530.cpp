@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, CCompare_FurthestFromInitPos2D comp) -- heap-select the thing pointers the predicate orders first into [first, middle) and sort them
+// std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, CCompare_FurthestFromInitPos2D comp) -- heap-select the thing pointers the predicate orders first into [first, middle) and sort them
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00749530, 104 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, middle in edx,
 //   then last, the value-type tag pointer and the comparator on the stack).
@@ -82,7 +82,7 @@ bool CCompare_FurthestFromInitPos2D::operator()(CThing* a, CThing* b) const
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 void __fastcall __make_heap(CThing** first, CThing** last, CCompare_FurthestFromInitPos2D comp, CThing**, int*);          // 0x00749050
 void __fastcall __adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CCompare_FurthestFromInitPos2D comp);  // 0x00748C90
 void __fastcall sort_heap(CThing** first, CThing** last, CCompare_FurthestFromInitPos2D comp);                            // 0x00749390

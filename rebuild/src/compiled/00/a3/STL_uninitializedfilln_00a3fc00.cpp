@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(pair<pair<CCharString, CCharString>, long>* first, unsigned int n, const pair<pair<CCharString, CCharString>, long>& x, const __false_type&) -- copy-construct n (string-pair key, long) map entries into raw storage at first and return first + n
+// std::__uninitialized_fill_n(pair<pair<CCharString, CCharString>, long>* first, unsigned int n, const pair<pair<CCharString, CCharString>, long>& x, const __false_type&) -- copy-construct n (string-pair key, long) map entries into raw storage at first and return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3FC00, 60 bytes, __fastcall (first ecx, n edx; x and the empty tag on the stack, `ret 8`).
 // Callers: one, 0x00A41434 (the vector's grow path at 0x00A41390, called from the pair vector's push_back 0x00A41840 that
@@ -17,7 +17,7 @@ public:
     CCharString(const CCharString& other);      // 0x0099EC30
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {

@@ -24,7 +24,7 @@ class CMaintainedEvent {
 public:
     unsigned char Data[0x38];
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -72,14 +72,14 @@ public:
     typedef _Alloc allocator_type;
     explicit list(const allocator_type& __a = allocator_type()) : _List_base<_Tp, _Alloc>(__a) {}
 };
-}   // namespace _STL
+}   // namespace std
 
 class CKeyboard : public CBaseClassNonCopyable {
 public:
     CInputEvent                     EventStore[256];
     long                            NoStoredEvents;
     long                            NoEventScansRunning;
-    _STL::list<CMaintainedEvent>    MaintainedEventsList;
+    std::list<CMaintainedEvent>    MaintainedEventsList;
     CInputManager*                  InputManager;
     CKeyboard(CInputManager& inputManager, bool)
     {
@@ -95,7 +95,7 @@ int main()
     CInputManager manager;
     manager.Id = 7;
     CKeyboard* device = new CKeyboard(manager, true);
-    _STL::_List_node_base* s = device->MaintainedEventsList._M_node._M_data;
+    std::_List_node_base* s = device->MaintainedEventsList._M_node._M_data;
     bool ok = g_baseCtors == 1 && g_eventCtors == 256 && device->EventStore[255].Kind == 0 && device->NoStoredEvents == 0 &&
               device->NoEventScansRunning == 0 && s != 0 && s->_M_next == s && s->_M_prev == s &&
               device->InputManager == &manager && device->InputManager->Id == 7;

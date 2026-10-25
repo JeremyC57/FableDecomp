@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF3920 _STL::__partial_sort over pair<CCharString, CRegisteredPSCInfo> (key compare)
+// behaviour test for 0x00AF3920 std::__partial_sort over pair<CCharString, CRegisteredPSCInfo> (key compare)
 #include <cstdio>
 #include <cstring>
 struct CStr { const char* s; };

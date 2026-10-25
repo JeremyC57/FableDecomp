@@ -1,5 +1,5 @@
-// _STL::__adjust_heap(pair<CCharString,NParticleEngine::CRegisteredPSCInfo>* first, int holeIndex, int len, pair<CCharString,NParticleEngine::CRegisteredPSCInfo> val, CKeyPairCompareLess comp) -- STLport heap sift-down of the registered particle-component table by name, then __push_heap val back up
-// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@UCRegisteredPSCInfo@NParticleEngine@@@_STL@@
+// std::__adjust_heap(pair<CCharString,NParticleEngine::CRegisteredPSCInfo>* first, int holeIndex, int len, pair<CCharString,NParticleEngine::CRegisteredPSCInfo> val, CKeyPairCompareLess comp) -- STLport heap sift-down of the registered particle-component table by name, then __push_heap val back up
+// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@UCRegisteredPSCInfo@NParticleEngine@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF3290, 280 bytes (+ int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): CCharString key +0, NParticleEngine::CRegisteredPSCInfo +4 (PDB: AllocFunc +0,
@@ -47,7 +47,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -57,11 +57,11 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp);   // 0x00AF2F10
 

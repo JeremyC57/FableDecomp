@@ -1,5 +1,5 @@
-// _STL::less::operator()(const CDisplayModeDesc& x, const CDisplayModeDesc& y) -- set<CDisplayModeDesc> ordering: compare width, height, bits per pixel, then refresh rate (signed, lexicographic)
-// Leaf: ??R?$less@VCDisplayModeDesc@@@_STL@@
+// std::less::operator()(const CDisplayModeDesc& x, const CDisplayModeDesc& y) -- set<CDisplayModeDesc> ordering: compare width, height, bits per pixel, then refresh rate (signed, lexicographic)
+// Leaf: ??R?$less@VCDisplayModeDesc@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C1860, 50 bytes, thiscall `ret 8` with `this` (the empty functor) unused.
 // Identity: the out-of-line comparator of the STLport `set<CDisplayModeDesc>` built by
 // CDisplayManager::EnumerateDisplayModes (0x009C02D0: a local tree header malloc'd, each adapter mode inserted through
@@ -36,7 +36,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Arg1, class _Arg2, class _Result> struct binary_function {
     typedef _Arg1 first_argument_type;

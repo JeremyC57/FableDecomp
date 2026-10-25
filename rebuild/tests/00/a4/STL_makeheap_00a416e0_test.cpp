@@ -76,7 +76,7 @@ public:
     int Id;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -96,14 +96,14 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
+typedef std::pair<CCharString, CCharString>      SNamePair;
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
@@ -155,7 +155,7 @@ template <class T, class C> static bool IsHeap(const T* p, int n, C comp)
             return false;
     return true;
 }
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp)
 {
@@ -206,7 +206,7 @@ int main()
 {
     const char* names[14] = { "b", "2", "b", "9", "a", "5", "c", "1", "b", "1", "a", "7", "c", "0" };
     SNamePairEntry* a = MakePairs(names, 7, 7);
-    _STL::__make_heap(a, a + 7, CNamePairLess(), (SNamePairEntry*)0, (int*)0);
+    std::__make_heap(a, a + 7, CNamePairLess(), (SNamePairEntry*)0, (int*)0);
     if (!IsHeap(a, 7, CNamePairLess()) || !PairIs(a[0], "c", "1"))
         { std::printf("00a416e0_TEST FAIL\n"); return 1; }
     FreePairs(a, 7);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A733B0 _STL::__partial_sort over (CCharString key, record) pairs: the key compare is the
+// Behaviour test for 0x00A733B0 std::__partial_sort over (CCharString key, record) pairs: the key compare is the
 // inline CCharString::operator< (same data -> false, null left -> true, null right -> false, else the data compare).
 #include <cstdio>
 

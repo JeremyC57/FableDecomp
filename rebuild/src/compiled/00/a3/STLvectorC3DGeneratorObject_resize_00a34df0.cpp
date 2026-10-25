@@ -1,5 +1,5 @@
-// _STL::vector<C3DGeneratorObject>::resize(unsigned int new_size) -- grow or shrink the mesh-generator array to new_size, new slots copied from a default generator object (identity transform, empty name)
-// Leaf: ?resize@?$vector@VC3DGeneratorObject@@@_STL@@QAEXI@Z
+// std::vector<C3DGeneratorObject>::resize(unsigned int new_size) -- grow or shrink the mesh-generator array to new_size, new slots copied from a default generator object (identity transform, empty name)
+// Leaf: ?resize@?$vector@VC3DGeneratorObject@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A34DF0, 206 bytes, thiscall `ret 4`.
 // Identity: C3DMeshStats::MeshGenerators (Ego_r.pdb CArray<C3DGeneratorObject>, an STLport vector in retail); the only
 //   caller is 0x00A2F6F2 (the mesh-stats loader sizing the array before reading it). The catalog's
@@ -44,7 +44,7 @@ public:
     bool          UseLocalOrigin;                       // +0x3c
 };
 
-namespace _STL {
+namespace std {
 
 template <class T> class vector {
 public:

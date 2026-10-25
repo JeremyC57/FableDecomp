@@ -1,4 +1,4 @@
-// _STL::vector<char>::reserve(unsigned int n) -- grow a byte vector's capacity to at least n: allocate n bytes, move the current bytes over (when any), free the old block, keep the size
+// std::vector<char>::reserve(unsigned int n) -- grow a byte vector's capacity to at least n: allocate n bytes, move the current bytes over (when any), free the old block, keep the size
 // Leaf: ?reserve@?$vector@D
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00997330, length 140 bytes (+ int3 padding), `ret 4`.
 // Callees: malloc @ 0x00BFEA0E, memmove @ 0x00BFEAE6, free @ 0x00BFEA14 (the STLport allocator).
@@ -15,7 +15,7 @@ extern "C" void* __cdecl malloc(size_t size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dest, const void* source, size_t count);   // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 
 inline void* __copy_trivial(const void* first, const void* last, void* result)
 {
@@ -80,6 +80,6 @@ template <class T, class Alloc> void vector<T, Alloc>::reserve(size_t n)
     }
 }
 
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::vector<char>::reserve(size_t);
+template void std::vector<char>::reserve(size_t);

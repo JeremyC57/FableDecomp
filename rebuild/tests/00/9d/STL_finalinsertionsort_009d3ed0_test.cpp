@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__final_insertion_sort over bank entry indices ordered by data offset (0x009D3ED0).
+// Behaviour test for std::__final_insertion_sort over bank entry indices ordered by data offset (0x009D3ED0).
 #include <cstdio>
 
 struct Bank { unsigned int Offsets[64]; };

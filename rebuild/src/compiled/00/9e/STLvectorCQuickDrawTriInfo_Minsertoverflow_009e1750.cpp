@@ -1,4 +1,4 @@
-// 009e1750 _STL::vector<CQuickDrawTriInfo>::_M_insert_overflow
+// 009e1750 std::vector<CQuickDrawTriInfo>::_M_insert_overflow
 // Flags: /O2 /Oy /W3 
 // Leaf: _M_insert_overflow
 #include <stdlib.h>
@@ -13,7 +13,7 @@ struct CQuickDrawTriInfo {unsigned char Line:1;unsigned char IsText:1;C2DBoxF Wi
 struct __false_type {__false_type(){}};
 template<class Tag>__declspec(noinline) CQuickDrawTriInfo* __fastcall uninitialized_copy(CQuickDrawTriInfo*a,CQuickDrawTriInfo*b,CQuickDrawTriInfo*c,const Tag&){while(a!=b){if(c)new(c)CQuickDrawTriInfo(*a);++a;++c;}return c;}
 template<class T>inline const T&max(const T&a,const T&b){return a<b?b:a;}
-namespace _STL {
+namespace std {
 template<class T>struct vector {T*_M_start,*_M_finish,*_M_end_of_storage;
  void _M_clear();void _M_insert_overflow(T*,const T&,const __false_type&,unsigned,bool);
 };

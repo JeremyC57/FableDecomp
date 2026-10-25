@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const C3DAnimationStateAlpha* first, const C3DAnimationStateAlpha* last, C3DAnimationStateAlpha* result, const __false_type&) -- STLport placement copy of [first, last) into raw storage (const source); returns the end of the copies
+// std::__uninitialized_copy(const C3DAnimationStateAlpha* first, const C3DAnimationStateAlpha* last, C3DAnimationStateAlpha* result, const __false_type&) -- STLport placement copy of [first, last) into raw storage (const source); returns the end of the copies
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe @ 0x00A3CC30, 76 bytes, `ret 8`. /Gr TU written as explicit __fastcall (first ecx, last edx, result
 //   and the __false_type tag reference on the stack).
@@ -37,7 +37,7 @@ public:
     float AlphaWeight;                                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -51,5 +51,5 @@ _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __la
 }
 }
 
-template C3DAnimationStateAlpha* __fastcall _STL::__uninitialized_copy<const C3DAnimationStateAlpha*, C3DAnimationStateAlpha*>(
-    const C3DAnimationStateAlpha*, const C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, const _STL::__false_type&);
+template C3DAnimationStateAlpha* __fastcall std::__uninitialized_copy<const C3DAnimationStateAlpha*, C3DAnimationStateAlpha*>(
+    const C3DAnimationStateAlpha*, const C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, const std::__false_type&);

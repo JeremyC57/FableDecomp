@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<long, CAIStateGroupBase*>* first, pair<long, CAIStateGroupBase*>* last, pair<long, CAIStateGroupBase*> pivot, CKeyPairCompareGreater comp) -- introsort partition of the AI brain's state-group map: walk both ends towards the pivot priority and swap the out-of-place pairs
+// std::__unguarded_partition(pair<long, CAIStateGroupBase*>* first, pair<long, CAIStateGroupBase*>* last, pair<long, CAIStateGroupBase*> pivot, CKeyPairCompareGreater comp) -- introsort partition of the AI brain's state-group map: walk both ends towards the pivot priority and swap the out-of-place pairs
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088C970, 85 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first in
 //   ecx, last in edx, the 8-byte pivot and the empty comparator by value on the stack).
@@ -11,7 +11,7 @@
 //   `cmp ; jle/jg` on the keys (pivot.first in ecx), the iter_swap through a pair temporary (both dwords).
 class CAIStateGroupBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a struct: mangled U)
     typedef _T1 first_type;
     typedef _T2 second_type;
@@ -26,12 +26,12 @@ template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a s
 // CAIStateGroupBase*> > -- the groups are kept in DESCENDING key (priority) order; the comparator is empty.
 template <class K, class V> class CKeyPairCompareGreater {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first > b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first > b.first; }
 };
-typedef _STL::pair<long, CAIStateGroupBase*> TGroupEntry;
+typedef std::pair<long, CAIStateGroupBase*> TGroupEntry;
 typedef CKeyPairCompareGreater<long, CAIStateGroupBase*> TGroupCompare;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {

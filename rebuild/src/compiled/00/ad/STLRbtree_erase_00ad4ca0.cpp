@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::erase(iterator position) -- unlink one node of the optimiser's contraction multimap (multimap<float, CCountedPointer<CVertexPairContraction>>), release its counted pointer, free the node, drop the count
+// std::_Rb_tree::erase(iterator position) -- unlink one node of the optimiser's contraction multimap (multimap<float, CCountedPointer<CVertexPairContraction>>), release its counted pointer, free the node, drop the count
 // Leaf: ?erase@?$_Rb_tree@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD4CA0, 0x67 bytes (+ int3 padding), thiscall, `ret 4` (the iterator by value).
 // Identity: the 0x1C-byte node is { colour, parent, left, right } + pair<const float, CCountedPointer<
@@ -43,7 +43,7 @@ public:
 
 namespace QuadricOptimiserInternals { class CVertexPairContraction; }
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     void deallocate(T* p, unsigned int) { if (p != 0) free(p); }
@@ -103,4 +103,4 @@ void _Rb_tree<K, V, KeyOfValue, Compare, A>::erase(iterator __position)
 
 typedef pair<const float, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > SContractionEntry;
 template class _Rb_tree<float, SContractionEntry, _Select1st<SContractionEntry>, less<float>, allocator<SContractionEntry> >;
-} // namespace _STL
+} // namespace std

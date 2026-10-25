@@ -1,4 +1,4 @@
-// _STL::__push_heap(C3DSkeletalBoneMorph* first, int holeIndex, int topIndex, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI heap sift-up: move parents down while comp(parent, val), then store val in the hole
+// std::__push_heap(C3DSkeletalBoneMorph* first, int holeIndex, int topIndex, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI heap sift-up: move parents down while comp(parent, val), then store val in the hole
 // Leaf: ??$__push_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A45BC0, length 179 bytes (+13 int3 pad), `ret 1Ch`.
 // Caller: 0x00A46125 in __adjust_heap<C3DSkeletalBoneMorph*> 0x00A46040 (landed). Callees: CCharString::operator=
@@ -32,7 +32,7 @@ public:
 
 typedef bool (__fastcall* TBoneMorphCompare)(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp)
 {

@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <new>
 
-// Host model of _STL::vector<CVertexShaderInput::CStreamInfo>::push_back: copy-construct {StreamIndex, CVertexStreamFormat}
+// Host model of std::vector<CVertexShaderInput::CStreamInfo>::push_back: copy-construct {StreamIndex, CVertexStreamFormat}
 // in place when there is room, else grow through _M_insert_overflow (old + max(old, 1), copy, construct, destroy, free).
 static int g_live = 0;
 

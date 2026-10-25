@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(TeleportData* first, TeleportData* last, const __false_type&) -- run the destructor of every teleport record in [first, last) (its four strings, last member first)
+// std::__destroy_aux(TeleportData* first, TeleportData* last, const __false_type&) -- run the destructor of every teleport record in [first, last) (its four strings, last member first)
 // Leaf: ??$__destroy_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDB640, 59 bytes, __fastcall (first ecx, last edx; the empty tag reference on the stack,
 //   `ret 4`).
@@ -26,7 +26,7 @@ public:
     CCharString   teleportMkr;                  // +0x14
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

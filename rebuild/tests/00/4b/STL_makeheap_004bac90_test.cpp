@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__make_heap<pair<CCharString,CPersistInfo>*, ..> @ 0x004BAC90: builds a max-heap by quest name.
+// Model of std::__make_heap<pair<CCharString,CPersistInfo>*, ..> @ 0x004BAC90: builds a max-heap by quest name.
 template <class T> class CBasicString {
 public:
     T* m_pData;                                             // +0x0
@@ -60,7 +60,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -70,14 +70,14 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo CPersistInfo;
-typedef _STL::pair<CCharString, CPersistInfo> CPersistEntry;
+typedef std::pair<CCharString, CPersistInfo> CPersistEntry;
 typedef CKeyPairCompareLess<CCharString, CPersistInfo> CPersistLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);                                                      // 0x004BA180
@@ -242,7 +242,7 @@ template <class RI, class T, class C> void IntrosortLoop(RI first, RI last, T*, 
     }
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class D, class T, class C> void __fastcall __adjust_heap(RI first, D hole, D len, T val, C comp)
 {
     TLib::AdjustHeap(first, hole, len, val, comp);
@@ -260,7 +260,7 @@ int main()
             SetEntry(a[i], (int)((seed >> 16) % 7u) - 1);
         }
         int sum = KeySum(a, n);
-        _STL::__make_heap(a, a + n, CPersistLess(), (CPersistEntry*)0, (int*)0);
+        std::__make_heap(a, a + n, CPersistLess(), (CPersistEntry*)0, (int*)0);
         for (int i = 1; i < n; ++i)
             if (KeyOf(a[(i - 1) / 2]) < KeyOf(a[i]))
                 ok = false;

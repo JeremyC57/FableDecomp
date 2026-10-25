@@ -1,6 +1,6 @@
-// _STL::_Vector_base::_Vector_base(unsigned int n, const allocator<pair<unsigned long,CDefClassBase::CSubDefInfo> >& a) -- allocate room for exactly n sub-def map entries (12 bytes each) and leave the vector empty
-// Instantiation: _STL::_Vector_base<pair<unsigned long,CDefClassBase::CSubDefInfo>,allocator<...> >::_Vector_base
-// Leaf: ??0?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@_STL@@
+// std::_Vector_base::_Vector_base(unsigned int n, const allocator<pair<unsigned long,CDefClassBase::CSubDefInfo> >& a) -- allocate room for exactly n sub-def map entries (12 bytes each) and leave the vector empty
+// Instantiation: std::_Vector_base<pair<unsigned long,CDefClassBase::CSubDefInfo>,allocator<...> >::_Vector_base
+// Leaf: ??0?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0046EF33, 56 bytes (size-optimised def TU, no padding), thiscall, `ret 8`.
 // Identity: called only by vector<pair<unsigned long, CDefClassBase::CSubDefInfo> >::vector(const vector&) @ 0x0046EECF
 //   (call 0x0046EEEB, n = other.size()). Element = Ego_r.pdb pair<unsigned long, CDefClassBase::CSubDefInfo> (12 bytes), the
@@ -24,7 +24,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _T1, class _T2> struct pair {

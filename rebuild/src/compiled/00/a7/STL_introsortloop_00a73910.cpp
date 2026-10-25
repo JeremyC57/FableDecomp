@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(SKeyedChunk* first, SKeyedChunk* last, SKeyedChunk*, int depth_limit, CKeyedChunkLess comp) -- STLport introsort recursion over the 16-byte (long key, {name, counted chunk}) records: partition around the median of three, recurse on the right part, loop on the left; partial-sort fallback when the depth runs out
+// std::__introsort_loop(SKeyedChunk* first, SKeyedChunk* last, SKeyedChunk*, int depth_limit, CKeyedChunkLess comp) -- STLport introsort recursion over the 16-byte (long key, {name, counted chunk}) records: partition around the median of three, recurse on the right part, loop on the left; partial-sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A73910, 234 bytes (+ int3 padding to 240), `ret 0Ch` (first in ecx, last in edx;
 //   the value-type pointer, the depth limit and the empty comparator's slot on the stack).
@@ -42,7 +42,7 @@ struct SNamedChunk {                                    // 12 bytes
     CCountedPointer<C3DAnimFileRootChunk>   Chunk;      // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -54,13 +54,13 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, SNamedChunk>          SKeyedChunk;    // 0x10 bytes
+typedef std::pair<long, SNamedChunk>          SKeyedChunk;    // 0x10 bytes
 typedef CKeyPairCompareLess<long, SNamedChunk> CKeyedChunkLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 inline const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {

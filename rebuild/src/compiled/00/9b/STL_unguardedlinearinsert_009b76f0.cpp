@@ -1,6 +1,6 @@
-// _STL::__unguarded_linear_insert(pair<unsigned long,CDefClassInfo>* last, pair<unsigned long,CDefClassInfo> val, CKeyPairCompareLess<unsigned long,CDefClassInfo> comp) -- STLport insertion-sort inner step: shift larger-keyed (index, class info) pairs up one slot and drop val into the gap
+// std::__unguarded_linear_insert(pair<unsigned long,CDefClassInfo>* last, pair<unsigned long,CDefClassInfo> val, CKeyPairCompareLess<unsigned long,CDefClassInfo> comp) -- STLport insertion-sort inner step: shift larger-keyed (index, class info) pairs up one slot and drop val into the gap
 // Flags: /Gr
-// Leaf: ??$__unguarded_linear_insert@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@_STL@@
+// Leaf: ??$__unguarded_linear_insert@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B76F0, 139 bytes, `ret 1Ch` (/Gr TU: last in ecx; the 24-byte value
 //   and the empty comparator on the stack, the value destroyed by the callee).
 // Identity: the 24-byte pair<unsigned long, CDefClassInfo> of 0x009B7320 sorted by its unsigned key
@@ -23,7 +23,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
@@ -83,7 +83,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -96,14 +96,14 @@ public:
         CArray<unsigned long>  GlobalIndices;           // +0x08
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

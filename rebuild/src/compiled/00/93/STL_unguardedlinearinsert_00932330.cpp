@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(CThing** last, CThing* val, ThingCompare comp) -- STLport insertion step: shift the predecessors that val sorts before up one slot and drop val into the gap
+// std::__unguarded_linear_insert(CThing** last, CThing* val, ThingCompare comp) -- STLport insertion step: shift the predecessors that val sorts before up one slot and drop val into the gap
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00932330, 61 bytes (64 with padding), `ret 4` (last in ecx, val in edx, comp on the stack).
 // Name: STLport `__unguarded_linear_insert<CThing**, CThing*, bool (__fastcall*)(CThing*, CThing*)>`; callers
@@ -20,7 +20,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, size_t n);   // 0x0
 class CThing;
 typedef bool (__fastcall* ThingCompare)(CThing* a, CThing* b);   // e.g. the height compare 0x00930D90
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

@@ -27,7 +27,7 @@ public:
     unsigned char Data[0x38];
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -75,14 +75,14 @@ public:
     explicit list(const allocator_type& __a = allocator_type()) : _List_base<_Tp, _Alloc>(__a) {}
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CMouse : public CBaseClassNonCopyable {
 public:
     CInputEvent                     EventStore[256];        // +0x0004
     long                            NoStoredEvents;         // +0x3404
     long                            NoEventScansRunning;    // +0x3408
-    _STL::list<CMaintainedEvent>    MaintainedEventsList;   // +0x340c
+    std::list<CMaintainedEvent>    MaintainedEventsList;   // +0x340c
     CInputManager*                  InputManager;           // +0x3410
     CMouse(CInputManager& inputManager, bool);
     virtual ~CMouse();

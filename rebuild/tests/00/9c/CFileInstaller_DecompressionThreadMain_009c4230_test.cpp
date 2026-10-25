@@ -33,7 +33,7 @@ public:
     int StreamInput;
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -51,8 +51,8 @@ public:
     class CActiveFile {
     public:
         CCompressorZlib           Decompressor;
-        _STL::list<void*>         PendingWrites;
-        _STL::list<CActiveRead*>  PendingDecompression;
+        std::list<void*>         PendingWrites;
+        std::list<CActiveRead*>  PendingDecompression;
     };
     void ProcessActiveFileForDecompression(CActiveFile& file)   // stand-in: consume one unit of input, free a buffer
     {
@@ -90,7 +90,7 @@ public:
 };
 
 static CFileInstaller::CActiveFile g_file;
-static _STL::_List_node_base g_pendingSentinel, g_pendingNode;
+static std::_List_node_base g_pendingSentinel, g_pendingNode;
 static void SimulateWait(CFileInstaller* fi)
 {
     if (g_waits == 1) { fi->PCurrentWriteFile = &g_file; }              // a write file appears (2 stream units)

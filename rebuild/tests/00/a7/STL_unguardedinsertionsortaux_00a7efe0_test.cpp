@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A7EFE0 _STL::__unguarded_insertion_sort_aux over (unsigned __int64 key, value) entries: with a
+// Behaviour test for 0x00A7EFE0 std::__unguarded_insertion_sort_aux over (unsigned __int64 key, value) entries: with a
 // sorted prefix that holds the minimum (the unguarded sentinel), inserting [first, last) leaves the whole array sorted.
 #include <cstdio>
 struct SEntry { unsigned long long first; bool second; };

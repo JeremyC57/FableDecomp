@@ -1,4 +1,4 @@
-// _STL::__pop_heap_aux(SKeyedBlock40* first, SKeyedBlock40* last, SKeyedBlock40*, CKeyPairCompareLess comp) -- pop the heap root of the (long key, 36-byte payload) pairs into the last slot and sift the old last element down from the root
+// std::__pop_heap_aux(SKeyedBlock40* first, SKeyedBlock40* last, SKeyedBlock40*, CKeyPairCompareLess comp) -- pop the heap root of the (long key, 36-byte payload) pairs into the last slot and sift the old last element down from the root
 // Leaf: __pop_heap_aux
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081BC90, 113 bytes (+int3 pad), `ret 8` (link-time __fastcall /Gr TU: first in ecx,
 //   last in edx, then the value-type tag pointer and the empty comparator on the stack).
@@ -14,7 +14,7 @@ struct SPayload36 {                         // 36-byte POD payload (copied as on
     unsigned long m_words[9];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                // +0x00
     B second;                               // +0x04

@@ -9,7 +9,7 @@
 
 static int gHeaders = 0;
 static int gNodes = 0;
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -149,8 +149,8 @@ public:
     void resize(unsigned int __new_size) { resize(__new_size, _Tp()); }
 };
 }
-typedef _STL::set<unsigned long> TSet;
-typedef _STL::vector<TSet> TVec;
+typedef std::set<unsigned long> TSet;
+typedef std::vector<TSet> TVec;
 
 int main()
 {

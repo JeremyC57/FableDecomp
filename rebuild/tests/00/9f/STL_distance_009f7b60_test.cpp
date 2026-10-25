@@ -1,11 +1,11 @@
-// Behaviour test for 0x009F7B60 _STL::__distance over list const_iterators: counts the steps from first to last.
+// Behaviour test for 0x009F7B60 std::__distance over list const_iterators: counts the steps from first to last.
 #include <cstdio>
 #include <cstdlib>
 #include <new>
 
 static int gNodesAllocated = 0, gNodesFreed = 0;
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -177,7 +177,7 @@ public:
         long             Frame;
         double           TimeStamp;
     };
-    typedef _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > CQueryList;
+    typedef std::list<CPendingQuery, std::allocator<CPendingQuery> > CQueryList;
     void* Device;
     CQueryList FreeQueoryObjects;
     CQueryList PendingQueories;
@@ -213,12 +213,12 @@ int main()
 {
     CQueryList l;
     const CQueryList& c = l;
-    bool ok = _STL::__distance(c.begin(), c.end(), _STL::input_iterator_tag()) == 0;
+    bool ok = std::__distance(c.begin(), c.end(), std::input_iterator_tag()) == 0;
     for (long i = 0; i < 5; ++i) l.push_back(MakeQuery(0, i));
     CQueryList::const_iterator second = c.begin();
     ++second;
-    ok = ok && _STL::__distance(c.begin(), c.end(), _STL::input_iterator_tag()) == 5
-            && _STL::__distance(second, c.end(), _STL::input_iterator_tag()) == 4;
+    ok = ok && std::__distance(c.begin(), c.end(), std::input_iterator_tag()) == 5
+            && std::__distance(second, c.end(), std::input_iterator_tag()) == 4;
     if (!ok) { std::printf("009f7b60_TEST FAIL\n"); return 1; }
     std::printf("009f7b60_TEST PASS\n");
     return 0;

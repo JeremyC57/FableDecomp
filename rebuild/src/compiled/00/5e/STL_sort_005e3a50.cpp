@@ -1,4 +1,4 @@
-// _STL::sort(CCharString* first, CCharString* last) -- STLport sort of a CCharString range with the default less<CCharString>: introsort to 16-element runs, then the final insertion sort
+// std::sort(CCharString* first, CCharString* last) -- STLport sort of a CCharString range with the default less<CCharString>: introsort to 16-element runs, then the final insertion sort
 // Leaf: ?sort@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E3A50, 115 bytes (+ padding to 128), plain `ret` (__fastcall /Gr algorithm TU: first in ecx ->
 //   edi, last in edx -> ebx; no stack arguments).

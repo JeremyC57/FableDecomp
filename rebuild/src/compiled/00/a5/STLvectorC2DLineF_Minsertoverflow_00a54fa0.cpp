@@ -1,4 +1,4 @@
-// _STL::vector<C2DLineF>::_M_insert_overflow(C2DLineF* position, const C2DLineF& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport reallocating insert of 16-byte records: allocate old_size + max(old_size, n), copy the head, construct the n new records, copy the tail unless appending, free the old block
+// std::vector<C2DLineF>::_M_insert_overflow(C2DLineF* position, const C2DLineF& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport reallocating insert of 16-byte records: allocate old_size + max(old_size, n), copy the head, construct the n new records, copy the tail unless appending, free the old block
 // Leaf: _M_insert_overflow
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A54FA0, length 207 bytes (+1 int3 pad), `ret 14h` (__fastcall, five arguments).
 // Callers: 0x00A552A1 (the fill-insert 0x00A55190) and 0x00A5548E (push_back). Callees: malloc 0x00BFEA0E / free
@@ -28,7 +28,7 @@ public:
     C2DVector Point2;                                // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 
 template <class _T1, class _T2>

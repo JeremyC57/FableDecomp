@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<long, CCountedPointer<CEngineSceneMap> > (one row of CEngineScene::MapList): clone x under parent p (the counted map pointer adds a reference), recurse into every right subtree and walk down the left spine
+// std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<long, CCountedPointer<CEngineSceneMap> > (one row of CEngineScene::MapList): clone x under parent p (the counted map pointer adds a reference), recurse into every right subtree and walk down the left spine
 // Leaf: ?_M_copy@?$_Rb_tree@JU?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B97980, 212 bytes, thiscall `ret 8` (x, p; returns the cloned top).
 // Identity: recursive (0x00B979D8, 0x00B97A39) and called by the tree copy 0x00B97E3B. Node 0x1c bytes = 0x10 links +
@@ -46,7 +46,7 @@ public:
 
 class CEngineSceneMap;
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -199,9 +199,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_Link_type
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _Link_type __p)
@@ -224,9 +224,9 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _
     }
     return __top;
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const long, CCountedPointer<CEngineSceneMap> > TSceneMapValue;
-typedef _STL::_Rb_tree<long, TSceneMapValue, _STL::_Select1st<TSceneMapValue>, _STL::less<long>,
-                       _STL::allocator<TSceneMapValue> > TSceneMapTree;
+typedef std::pair<const long, CCountedPointer<CEngineSceneMap> > TSceneMapValue;
+typedef std::_Rb_tree<long, TSceneMapValue, std::_Select1st<TSceneMapValue>, std::less<long>,
+                       std::allocator<TSceneMapValue> > TSceneMapTree;
 template TSceneMapTree::_Link_type TSceneMapTree::_M_copy(TSceneMapTree::_Link_type, TSceneMapTree::_Link_type);

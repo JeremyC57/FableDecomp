@@ -5,7 +5,7 @@
 //   Vtable 0x01264A8C is RTTI CGameCameraBase and 0x0125C1F4 CAIGameCameraBase (rtti-vtables.tsv; the landed ctor
 //   0x006FD8C0 and ??_G 0x006FE780 store the same pair -- the ??_G inlines this body). Label correction: the catalog's
 //   "~CPredicate_And<...CIsThingAlive...>" is propagated.
-// Callees: _STL::list<C3DVector>::~list @ 0x0048CA60 (out of line, x2: the folded POD-list body that frees every node and
+// Callees: std::list<C3DVector>::~list @ 0x0048CA60 (out of line, x2: the folded POD-list body that frees every node and
 //   then the sentinel; the catalog's "CGuiControlTreePane::SortTreeRecursively" is propagated).
 // Layout: engine/CGameCameraBase.h is the Ego_r layout; retail matches it up to +0xa8 and then has 4-byte STLport lists
 //   (DrawCoordList +0xa8, LocalThingPosList +0xac, see the landed ctor), so `this` is a local model with the camera
@@ -17,7 +17,7 @@ public:
     float X, Y, Z;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -37,8 +37,8 @@ public:
 class CGameCameraBase : public CAIGameCameraBase {       // vtable 0x01264A8C
 public:
     unsigned char          _camera[0xa4];                // +0x04 InternalCam, LastInternalCam, PointingAt, World, orbit
-    _STL::list<C3DVector>  DrawCoordList;                // +0xa8
-    _STL::list<C3DVector>  LocalThingPosList;            // +0xac
+    std::list<C3DVector>  DrawCoordList;                // +0xa8
+    std::list<C3DVector>  LocalThingPosList;            // +0xac
     virtual ~CGameCameraBase();
 };
 

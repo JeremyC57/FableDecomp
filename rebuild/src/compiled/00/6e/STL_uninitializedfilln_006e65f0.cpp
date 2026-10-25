@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CConversationLine* first, unsigned int n, const CConversationLine& x, const __false_type&) -- copy-construct n conversation lines into raw storage at first and return first + n
+// std::__uninitialized_fill_n(CConversationLine* first, unsigned int n, const CConversationLine& x, const __false_type&) -- copy-construct n conversation lines into raw storage at first and return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E65F0, 62 bytes, __fastcall (first ecx, n edx; x and the empty tag on the stack, `ret 8`).
 // Callers: one caller, 0x006E6C58 (the vector's fill-insert at 0x006E6BC0).
@@ -24,7 +24,7 @@ public:
     bool          ShowSubtitle;                 // +0xC
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

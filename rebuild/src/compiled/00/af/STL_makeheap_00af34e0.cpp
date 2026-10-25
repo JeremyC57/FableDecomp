@@ -1,4 +1,4 @@
-// _STL::__make_heap(CPSCPair* first, CPSCPair* last, CPSCLess comp, CPSCPair*, int*) -- STLport make_heap worker over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: sift every parent from (len - 2) / 2 down to the root through __adjust_heap
+// std::__make_heap(CPSCPair* first, CPSCPair* last, CPSCLess comp, CPSCPair*, int*) -- STLport make_heap worker over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: sift every parent from (len - 2) / 2 down to the root through __adjust_heap
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF34E0, 112 bytes, `ret 0Ch`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, last in edx, the 4-byte empty comparator, the value-type and distance-type pointer tags on the stack.
@@ -63,7 +63,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -74,13 +74,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 typedef CKeyPairCompareLess<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value, _Compare __comp);   // 0x00AF3290
 
@@ -101,4 +101,4 @@ void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator
 }
 }
 
-template void __fastcall _STL::__make_heap<CPSCPair*, CPSCLess, CPSCPair, int>(CPSCPair*, CPSCPair*, CPSCLess, CPSCPair*, int*);
+template void __fastcall std::__make_heap<CPSCPair*, CPSCLess, CPSCPair, int>(CPSCPair*, CPSCPair*, CPSCLess, CPSCPair*, int*);

@@ -22,7 +22,7 @@ public:
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
 // STLport 4.6 sort / stable_sort machinery over CSortElement (the model the chunk-428 sources compile).
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -365,9 +365,9 @@ void __fastcall __stable_sort_aux(_RandomAccessIter __first, _RandomAccessIter _
     else
         __stable_sort_adaptive(__first, __last, buf.begin(), _Distance(buf.size()), __comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::less<CSortElement> CLess;
+typedef std::less<CSortElement> CLess;
 
 // Test helpers: elements tagged with their original index so stability is checkable.
 static CEngineSubPrimitiveBase* Tag(int i) { return (CEngineSubPrimitiveBase*)(size_t)(i + 1); }
@@ -413,9 +413,9 @@ int main()
         for (int i = 0; i < 101; ++i) o[i] = a[i];
         for (int s = 0; s < 101; s += step) {
             int e = s + step < 101 ? s + step : 101;
-            _STL::__insertion_sort(a + s, a + e, CLess());
+            std::__insertion_sort(a + s, a + e, CLess());
         }
-        _STL::__merge_sort_loop(a, a + 101, r, step, CLess());
+        std::__merge_sort_loop(a, a + 101, r, step, CLess());
         for (int s = 0; s < 101; s += 2 * step) {
             int e = s + 2 * step < 101 ? s + 2 * step : 101;
             if (!IsStableSorted(r + s, e - s)) { std::printf("00b858d0_TEST FAIL\n"); return 1; }

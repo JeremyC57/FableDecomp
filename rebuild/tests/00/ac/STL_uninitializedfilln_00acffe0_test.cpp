@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__uninitialized_fill_n<QuadricOptimiserInternals::COptimisedEdge*> @ 0x00ACFFE0
+// Behaviour test for std::__uninitialized_fill_n<QuadricOptimiserInternals::COptimisedEdge*> @ 0x00ACFFE0
 #include <cstdio>
 #include <new>
 

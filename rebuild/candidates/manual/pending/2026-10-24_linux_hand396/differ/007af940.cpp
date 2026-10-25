@@ -1,5 +1,5 @@
 // Grade: DIFFER(62v62) -- register tie: retail keeps x in edi and n in ebx, ours swaps them (x in ebx, n in edi); same instructions otherwise
-// _STL::__uninitialized_fill_n(CIntelligentPointer<CThingAICreature>* first, unsigned int n, const CIntelligentPointer<CThingAICreature>& x, const __false_type&) -- STLport fill-construct n AI-creature intelligent pointers from x
+// std::__uninitialized_fill_n(CIntelligentPointer<CThingAICreature>* first, unsigned int n, const CIntelligentPointer<CThingAICreature>& x, const __false_type&) -- STLport fill-construct n AI-creature intelligent pointers from x
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AF940, 62 bytes (+2 int3), `ret 8` (/Gr: first in ecx, n in edx, x and the
 //   __false_type tag reference on the stack).
@@ -28,7 +28,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x0123E
 public:
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {

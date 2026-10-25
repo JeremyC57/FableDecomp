@@ -1,4 +1,4 @@
-// _STL::__inplace_stable_sort(list<CAnimSet>::const_iterator* first, list<CAnimSet>::const_iterator* last, CAnimSetItPriorityLessThan comp) -- in-place stable sort of anim-set iterators by priority: insertion sort below 15 elements, else sort both halves recursively and merge them without a buffer
+// std::__inplace_stable_sort(list<CAnimSet>::const_iterator* first, list<CAnimSet>::const_iterator* last, CAnimSetItPriorityLessThan comp) -- in-place stable sort of anim-set iterators by priority: insertion sort below 15 elements, else sort both halves recursively and merge them without a buffer
 // Leaf: ??$__inplace_stable_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00711640, length 99 bytes (+ int3 padding). __fastcall (first ecx, last edx,
 //   the 4-byte comparator slot on the stack), `ret 4`.
@@ -17,7 +17,7 @@ public:
     unsigned char _after[0x08];                         // Type, the flag bits
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct _Nonconst_traits { typedef _Tp* pointer; typedef _Tp& reference; };
 template <class _Tp> struct _Const_traits { typedef const _Tp* pointer; typedef const _Tp& reference; };
 struct _List_node_base {
@@ -42,13 +42,13 @@ template <class _Tp, class _Traits> struct _List_iterator : public _List_iterato
     reference operator*() const { return ((_Node*)_M_node)->_M_data; }
 };
 }
-typedef _STL::_List_iterator<CAnimSet, _STL::_Const_traits<CAnimSet> > CAnimSetConstIterator;   // list<CAnimSet>::const_iterator
+typedef std::_List_iterator<CAnimSet, std::_Const_traits<CAnimSet> > CAnimSetConstIterator;   // list<CAnimSet>::const_iterator
 
 struct CAnimSetItPriorityLessThan {                     // empty functor (a 4-byte argument slot)
     bool operator()(const CAnimSetConstIterator& a, const CAnimSetConstIterator& b) const { return (*a).Priority < (*b).Priority; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Compare>
 void __fastcall __insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp);        // 0x00711190
 template <class _BidirectionalIter, class _Distance, class _Compare>

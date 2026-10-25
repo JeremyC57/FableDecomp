@@ -37,7 +37,7 @@ struct CIsShapeTrack {
 };
 }
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };
@@ -83,7 +83,7 @@ public:
     CThing* ParentThing;                                                  // +0x04 (CTCBase)
     bool ToBeRemoved;                                                     // +0x08
     bool IsInGlobalUpdateTCs;                                             // +0x09
-    _STL::vector<CCountedPointer<NShape::CShape> > PersistantShapes;      // +0x0C
+    std::vector<CCountedPointer<NShape::CShape> > PersistantShapes;      // +0x0C
     const CCountedPointer<NShape::CShape>* SelectedShape;                 // +0x18
     bool GetBestTrack(const NShape::CTrack** out) const;
 };
@@ -91,7 +91,7 @@ public:
 bool CTCShapeManager::GetBestTrack(const NShape::CTrack** out) const
 {
     const CCountedPointer<NShape::CShape>* it =
-        _STL::find_if(PersistantShapes.begin(), PersistantShapes.end(), NShape::CIsShapeTrack());
+        std::find_if(PersistantShapes.begin(), PersistantShapes.end(), NShape::CIsShapeTrack());
     if (it != PersistantShapes.end()) {
         *out = static_cast<const NShape::CTrack*>((*it).operator->());
         return true;

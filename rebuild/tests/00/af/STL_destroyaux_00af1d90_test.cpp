@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__destroy_aux(NParticleEngine::CParticleEmitterInfo*, ..., const __false_type&) (0x00AF1D90):
+// Behaviour test for std::__destroy_aux(NParticleEngine::CParticleEmitterInfo*, ..., const __false_type&) (0x00AF1D90):
 // each record's counted emitter-data pointer is released (count decremented, Delete() at zero) and nulled; null
 // pointers are skipped and the other members are left alone.
 #include <cstdio>
@@ -39,7 +39,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
@@ -66,7 +66,7 @@ int main()
     e[1].Data.Object = &single;
     e[2].Data.Object = 0;
     e[3].Data.Object = &shared;
-    _STL::__destroy_aux(e, e + 3, _STL::__false_type());          // the last record stays alive
+    std::__destroy_aux(e, e + 3, std::__false_type());          // the last record stays alive
     int fails = 0;
     if (shared.IVRefCount != 2 || single.IVRefCount != 0) ++fails;
     if (gDeleted != 1) ++fails;

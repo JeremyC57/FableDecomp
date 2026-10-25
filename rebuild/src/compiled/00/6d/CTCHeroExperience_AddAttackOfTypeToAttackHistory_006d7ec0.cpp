@@ -1,7 +1,7 @@
 // CTCHeroExperience::AddAttackOfTypeToAttackHistory(EDamageAttribute type) -- drop the oldest attack record and append {type, current world frame} to the attack history
 // Leaf: ?AddAttackOfTypeToAttackHistory@
 // Grade: RELOCATION_MATCH (agent902, 1 grade this pass) -- the parked `std` list (raw sentinel pointer, one-parameter
-//        iterator, pair without its copy ctor) coloured `type` into edi; the real STLport 4.6 list in _STL (alloc-proxy
+//        iterator, pair without its copy ctor) coloured `type` into edi; the real STLport 4.6 list in std (alloc-proxy
 //        sentinel, _List_iterator<T, _Nonconst_traits<T> > with its declared copy ctor, erase with _Destroy + deallocate,
 //        pair with its user ctors) gives retail's frame-only edi and the `type` read from its argument slot.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D7EC0, length 89 bytes (+ int3 padding), thiscall `ret 4`.
@@ -24,7 +24,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 enum EDamageAttribute { EDamageAttribute_Force32 = 0x7fffffff };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -127,7 +127,7 @@ struct CWorld {
 struct CTCHeroExperience {
     void*         __vftable;                               // +0x00
     unsigned char _pad_0x04[0x4C];                         // +0x04 CTCBase fields, experience counters, vectors, Pickups
-    _STL::list<_STL::pair<EDamageAttribute, long> > AttackHistory;   // +0x50 (PDB +0x64)
+    std::list<std::pair<EDamageAttribute, long> > AttackHistory;   // +0x50 (PDB +0x64)
 
     CWorld* GetWorld();                                    // 0x00686A70 (CTCBase)
 private:
@@ -137,5 +137,5 @@ private:
 void CTCHeroExperience::AddAttackOfTypeToAttackHistory(EDamageAttribute type)
 {
     AttackHistory.pop_front();
-    AttackHistory.push_back(_STL::pair<EDamageAttribute, long>(type, GetWorld()->GetFrame()));
+    AttackHistory.push_back(std::pair<EDamageAttribute, long>(type, GetWorld()->GetFrame()));
 }

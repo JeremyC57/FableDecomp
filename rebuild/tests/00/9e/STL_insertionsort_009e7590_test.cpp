@@ -1,4 +1,4 @@
-// Behaviour test for 0x009E7590 _STL::__insertion_sort over pair<CCharString, CSymbolMap::CSymbolInfo> records.
+// Behaviour test for 0x009E7590 std::__insertion_sort over pair<CCharString, CSymbolMap::CSymbolInfo> records.
 #include <cstdio>
 #include <cstring>
 

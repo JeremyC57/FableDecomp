@@ -15,7 +15,7 @@ public:
     bool operator()(const CANavQuadTreeNode* node) const { return *Node == *node; }
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 template <class _RandomAccessIter, class _Predicate>
 _RandomAccessIter __find_if(_RandomAccessIter __first, _RandomAccessIter __last, _Predicate __pred, const random_access_iterator_tag&)
@@ -53,11 +53,11 @@ int main()
     CANavQuadTreeNode nodes[10];
     const CANavQuadTreeNode* v[10];
     for (int i = 0; i < 10; ++i) { nodes[i].Key = 100 + (i % 7); v[i] = &nodes[i]; }   // keys repeat after 7
-    _STL::random_access_iterator_tag tag;
+    std::random_access_iterator_tag tag;
     for (int n = 0; n <= 9; ++n) {
         for (int key = 99; key <= 107; ++key) {
             CANavQuadTreeNode target; target.Key = key;
-            const CANavQuadTreeNode** r = _STL::__find_if(v, v + n, IsSameNavQuadTreeNode(&target), tag);
+            const CANavQuadTreeNode** r = std::__find_if(v, v + n, IsSameNavQuadTreeNode(&target), tag);
             int expect = n;
             for (int i = 0; i < n; ++i) if (nodes[i].Key == key) { expect = i; break; }
             if (r != v + expect) ok = 0;

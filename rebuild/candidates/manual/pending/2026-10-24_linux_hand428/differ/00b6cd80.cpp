@@ -1,4 +1,4 @@
-// _STL::vector::erase(CTVertexLandscapeBackground* first, CTVertexLandscapeBackground* last) -- (vector<CTVertexLandscapeBackground>, the landscape tesselator's bridge vertex buffer) move the tail down over [first, last), set the new finish and return first
+// std::vector::erase(CTVertexLandscapeBackground* first, CTVertexLandscapeBackground* last) -- (vector<CTVertexLandscapeBackground>, the landscape tesselator's bridge vertex buffer) move the tail down over [first, last), set the new finish and return first
 // Grade: DIFFER(41v113) -- best GRADED form (the 4-level std copy -> __copy_aux -> __copy_ptrs -> __copy chain) left __copy_ptrs out of line; THIS file is the ungraded 2-level all-__forceinline form that MATCHED the sibling rows 0x00B7FD70 / 0x00B80190 (grade budget spent before it could be tried here)
 // Leaf: ?erase@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6CD80, 113 bytes. __thiscall, `ret 8`.
@@ -30,7 +30,7 @@ public:
     unsigned char UVPad2;                               // +0x17
 };
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };

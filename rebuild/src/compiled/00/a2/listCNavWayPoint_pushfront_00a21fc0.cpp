@@ -1,5 +1,5 @@
 // list<CNavWayPoint>::push_front(const CNavWayPoint& x) -- link a copy of the way point in front of the route
-// Leaf: ?push_front@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@_STL@@@_STL@@QAEXABVCNavWayPoint@@@Z
+// Leaf: ?push_front@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAEXABVCNavWayPoint@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A21FC0, 67 bytes, `ret 4`. Callers 0x00A1E296 / 0x00A1F242 (CNavigatorAStar).
 //   The catalog label "CNavigatorPathNode_Create" is descriptive.
 // Element: CNavWayPoint (Ego_r.pdb: C2DVector Position +0, uchar NavLayer +8, bool Removable +9; 0x0C with padding),
@@ -21,7 +21,7 @@ public:
     bool          Removable;                            // +0x09
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> class allocator {
@@ -71,4 +71,4 @@ public:
 };
 }
 
-template void _STL::list<CNavWayPoint>::push_front(const CNavWayPoint&);
+template void std::list<CNavWayPoint>::push_front(const CNavWayPoint&);

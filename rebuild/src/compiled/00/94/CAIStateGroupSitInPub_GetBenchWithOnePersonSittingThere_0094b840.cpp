@@ -2,7 +2,7 @@
 // Leaf: ?GetBenchWithOnePersonSittingThere@CAIStateGroup_SitInPub
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0094B840, 100 bytes (+ int3 padding to 112), `ret 4`.
 // Callees: CVectorMap LowerBound const @ 0x004365B0 (the inlined const GetInterface of type 0x21 = CTCThingOwner:
-//   bitset word +0x24 bit 1), _STL::find_if<list const iterator, CIsBenchWithOnePerson> @ 0x0094BA90 (/Gr __fastcall:
+//   bitset word +0x24 bit 1), std::find_if<list const iterator, CIsBenchWithOnePerson> @ 0x0094BA90 (/Gr __fastcall:
 //   the iterator result by hidden pointer in ecx, first / last / the empty predicate on the stack),
 //   CBaseIntelligentPointer::GetPItem @ 0x00A01B50. The predicate's operator() is 0x0094B9B0 (called inside find_if).
 // Shape: `if (GetInterface(&owner, 0x21)) { it = find_if(begin, end, CIsBenchWithOnePerson()); if (it != end) return
@@ -71,7 +71,7 @@ struct CBaseIntelligentPointer {
 };
 template <class T> struct CIntelligentPointer : public CBaseIntelligentPointer { };
 
-namespace _STL {
+namespace std {
 struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
 template <class _Tp> struct _List_node : public _List_node_base { _Tp _M_data; };
 template <class _Tp> struct _Const_traits { typedef const _Tp& reference; typedef const _Tp* pointer; };
@@ -104,7 +104,7 @@ _InputIter __fastcall find_if(_InputIter __first, _InputIter __last, _Predicate 
 struct CTCThingOwner {                                      // interface 0x21
     virtual void v00();
     unsigned char _pad04[0x8];
-    _STL::list<CIntelligentPointer<CThing> > ObjectList;    // +0x0c
+    std::list<CIntelligentPointer<CThing> > ObjectList;    // +0x0c
 };
 
 struct CIsBenchWithOnePerson {                              // empty predicate
@@ -123,8 +123,8 @@ CThingObject* CAIStateGroup_SitInPub::GetBenchWithOnePersonSittingThere(const CT
 {
     const CTCThingOwner* owner;
     if (building.GetInterface(&owner, 0x21)) {
-        _STL::list<CIntelligentPointer<CThing> >::const_iterator it =
-            _STL::find_if(owner->ObjectList.begin(), owner->ObjectList.end(), CIsBenchWithOnePerson());
+        std::list<CIntelligentPointer<CThing> >::const_iterator it =
+            std::find_if(owner->ObjectList.begin(), owner->ObjectList.end(), CIsBenchWithOnePerson());
         if (it != owner->ObjectList.end())
             return static_cast<CThingObject*>(it->GetPItem());
     }

@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(CVertexGroupBlock* first, CVertexGroupBlock* last, const __false_type&) -- destroy a run of vertex-group blocks: each one's group -> index map (nodes, header) then its group vector storage
+// std::__destroy_aux(CVertexGroupBlock* first, CVertexGroupBlock* last, const __false_type&) -- destroy a run of vertex-group blocks: each one's group -> index map (nodes, header) then its group vector storage
 // Flags: /Gr
 // Leaf: ??$__destroy_aux@PAVCVertexGroupBlock
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADC190, 0x8D bytes, __fastcall (first ecx, last edx), `ret 4` (the
@@ -15,7 +15,7 @@
 // ~vector (`if (start) free(start)`). `last` lives in the `push ecx` frame word across the loop.
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -133,14 +133,14 @@ public:
     _Rb_tree<K, value_type, Compare> _M_t;
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 bytes in retail
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
 };
 
-namespace _STL {
+namespace std {
 template void __destroy_aux<CVertexGroupBlock*>(CVertexGroupBlock*, CVertexGroupBlock*, const __false_type&);
-} // namespace _STL
+} // namespace std

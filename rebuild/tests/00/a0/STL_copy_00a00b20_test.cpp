@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A00B20 _STL::__copy<CGraphicInfoFrame*>: [first, last) is assigned forwards onto result (an overlapping shift left
+// Behaviour test for 0x00A00B20 std::__copy<CGraphicInfoFrame*>: [first, last) is assigned forwards onto result (an overlapping shift left
 // works) and the end of the destination is returned.
 #include <cstdlib>
 #include <cstdio>

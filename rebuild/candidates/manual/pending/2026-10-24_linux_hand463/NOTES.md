@@ -5,7 +5,7 @@ and VC7.1 (tall.py), and calls.py shows every relocation going to retail's targe
 The catalog labels of all 40 rows are propagated: the real names are below and in each source's header.
 
 ## What matched (40)
-- **_STL::_Destroy (00cdb820 CHeroSoulsRoundDef*, 00f28f20 CFeatDef*)** -- run the virtual destructor of every def in
+- **std::_Destroy (00cdb820 CHeroSoulsRoundDef*, 00f28f20 CFeatDef*)** -- run the virtual destructor of every def in
   [first, last). Shape: /Gr TU, `__fastcall` template; `__destroy` -> `__destroy_aux(__false_type())` -> `first->~T()`
   inlined, the virtual dtor called through the vtable with flag 0; stride 0x38 / 0x64 = the PDB size less 4 per STLport
   vector.
@@ -60,7 +60,7 @@ None (no row holds two functions).
 
 ## Label corrections
 - 00cdb820, 00f28f20: catalog `vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>>::_Destroy` ->
-  `_STL::_Destroy<CHeroSoulsRoundDef*>` / `_STL::_Destroy<CFeatDef*>`.
+  `std::_Destroy<CHeroSoulsRoundDef*>` / `std::_Destroy<CFeatDef*>`.
 - 0043cac0, 0075ee70: `vector<CScriptThing>::size` -> `vector<CAbilityButtonGuiDef>::size` /
   `vector<CTCCameraPointScriptedSpline::CKeyCamera>::size`.
 - 006b6d90, 0088a520: `vector<CTCInventoryMap::CUIMiniMapMarker>::resize` -> `vector<CIDrawEnvironmentParams::CThemeChannel>

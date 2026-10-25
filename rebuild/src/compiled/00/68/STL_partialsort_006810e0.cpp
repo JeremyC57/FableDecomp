@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<EReactionSpeechType, long>* first, pair<EReactionSpeechType, long>* middle, pair<EReactionSpeechType, long>* last, pair<EReactionSpeechType, long>*, CKeyPairCompareLess<EReactionSpeechType, long> comp) -- STLport partial_sort core over CSimVoice's voice entries: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
+// std::__partial_sort(pair<EReactionSpeechType, long>* first, pair<EReactionSpeechType, long>* middle, pair<EReactionSpeechType, long>* last, pair<EReactionSpeechType, long>*, CKeyPairCompareLess<EReactionSpeechType, long> comp) -- STLport partial_sort core over CSimVoice's voice entries: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006810E0, length 107 bytes (+ int3 padding), `ret 0Ch`.
 // Callers: partial_sort 0x006811AC and __introsort_loop 0x00681270 (0x00681328, the depth-limit fallback).
@@ -17,7 +17,7 @@
 //   __comp)`) with the value's two words read before the store and rebuilt in the argument area.
 enum EReactionSpeechType { REACTION_SPEECH_TYPE_NONE = -1, REACTION_SPEECH_TYPE_0 = 0 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -28,13 +28,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<EReactionSpeechType, long> TVoiceEntry;
+typedef std::pair<EReactionSpeechType, long> TVoiceEntry;
 typedef CKeyPairCompareLess<EReactionSpeechType, long> TVoiceLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp, _Tp*, _Distance*);   // 0x00680C20
 template <class _RandomAccessIter, class _Distance, class _Tp, class _Compare>
@@ -69,4 +69,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 }
 }
 
-template void __fastcall _STL::__partial_sort<TVoiceEntry*, TVoiceEntry, TVoiceLess>(TVoiceEntry*, TVoiceEntry*, TVoiceEntry*, TVoiceEntry*, TVoiceLess);
+template void __fastcall std::__partial_sort<TVoiceEntry*, TVoiceEntry, TVoiceLess>(TVoiceEntry*, TVoiceEntry*, TVoiceEntry*, TVoiceEntry*, TVoiceLess);

@@ -35,7 +35,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
@@ -90,9 +90,9 @@ class CEngineSimulationManager {
 public:
     void* __vftable;                                    // +0x00 (CEngineComponent vptr)
     unsigned char _pad_0x04[0x0C];                      // +0x04 CEngineComponent members
-    _STL::list<CSimulationInfoPtr> FullUpdateOnlySimulationInfoList;   // +0x10
-    _STL::list<CSimulationInfoPtr> AlwaysUpdateSimulationInfoList;     // +0x14
-    _STL::list<CSimulationInfoPtr> PausedSimulationInfoList;           // +0x18
+    std::list<CSimulationInfoPtr> FullUpdateOnlySimulationInfoList;   // +0x10
+    std::list<CSimulationInfoPtr> AlwaysUpdateSimulationInfoList;     // +0x14
+    std::list<CSimulationInfoPtr> PausedSimulationInfoList;           // +0x18
     void AddSimulationInfo(const CSimulationInfoPtr& info, bool paused, bool fullUpdateOnly);
 };
 

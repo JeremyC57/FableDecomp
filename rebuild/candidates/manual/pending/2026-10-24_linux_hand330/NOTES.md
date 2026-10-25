@@ -50,9 +50,9 @@ propagated and wrong. The real identities come from vtable slots, callers and el
 - **CPersistTraits<CBrainBehaviour>::CPersistTraits() 0x004670F5.** The "" temporary dies after the zero stores, so it
   is the argument of `DefaultVal("")`, with __forceinline CBrainBehaviour(const CCharString&) and
   CDefString(const CCharString&) constructors. This is a size TU, so plain inline constructors stay out of line.
-- **_STL::copy 0x00661287.** A __fastcall template with a hidden result in ecx and the __false_type tag homed in a dead
+- **std::copy 0x00661287.** A __fastcall template with a hidden result in ecx and the __false_type tag homed in a dead
   argument slot. back_insert_iterator needs STLport's user constructor; as an aggregate it returns in eax.
-- **_STL::__linear_insert (3).**
+- **std::__linear_insert (3).**
   - 0x00A33800 works on pair<unsigned long, C3DDummyObject> with an unsigned key. copy_backward is inlined to
     __copy_backward with the tag in the dead comparator slot. pair needs a user copy constructor
     `first(p.first), second(p.second)` for the memberwise by-value copy.
@@ -99,10 +99,10 @@ propagated and wrong. The real identities come from vtable slots, callers and el
 - 0x0046B0D6 is CPersistTraits<pair<CDefIndex,CDefString>>::TransferBinaryIn (8-byte element, traits default {0,-1}).
 - 0x0044FC00 is CDefString::TransferBinaryIn, not CPersistTraits<float>. 0x009D5060 is CDefString::SetString (or
   SetDefaultString), not CRegion::SetMiniMapRegionExitTextOffsetX.
-- 0x00661287 is _STL::copy<_Rb_tree_iterator<ulong>, back_insert_iterator<vector<ulong>>>. 0x0066124B is __copy_aux
+- 0x00661287 is std::copy<_Rb_tree_iterator<ulong>, back_insert_iterator<vector<ulong>>>. 0x0066124B is __copy_aux
   (landed as `ConstructString`). 0x006611F7 is __copy (input_iterator_tag), not
   `MemoryAllocator_IterateAllocatedAreas`.
-- 0x00758E00 / 0x0081BE30 / 0x00A33800 are _STL::__linear_insert, and 0x0083EB90 is LHHttp2::ResetDocumentRecv. None
+- 0x00758E00 / 0x0081BE30 / 0x00A33800 are std::__linear_insert, and 0x0083EB90 is LHHttp2::ResetDocumentRecv. None
   of the four is a TransferableVector<CReverbEnvironmentEntry>::Resize.
 - 0x00C70120 / 0x00C70B00 are constructors of the no-RTTI classes with vtables 0x012BEDCC / 0x012BEDE0, not Resize.
   The base constructor 0x00C6E6A0 is not CConsoleCommandParameters.

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(ParticleAndEndPoints* first, ParticleAndEndPoints* last, ParticleAndEndPoints* result, const __false_type&) -- copy-construct [first, last) into raw storage at result, return the end of the constructed range
+// std::__uninitialized_copy(ParticleAndEndPoints* first, ParticleAndEndPoints* last, ParticleAndEndPoints* result, const __false_type&) -- copy-construct [first, last) into raw storage at result, return the end of the constructed range
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007697C0, 76 bytes (+int3 pad to 80), `ret 8`.
 // Callers: 0x0076B850 (vector<ParticleAndEndPoints>::_M_insert_overflow, twice). Callee: CCharString copy constructor 0x0099EC30 (twice per element).
@@ -26,7 +26,7 @@ struct ParticleAndEndPoints {                     // 0x14 (Ego_r.pdb: PeriodicFr
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

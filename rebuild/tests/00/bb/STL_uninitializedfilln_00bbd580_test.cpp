@@ -1,4 +1,4 @@
-// behaviour test for 0x00BBD580 _STL::uninitialized_fill_n over an 8-byte {bool, long} pair
+// behaviour test for 0x00BBD580 std::uninitialized_fill_n over an 8-byte {bool, long} pair
 #include <cstdio>
 #include <new>
 

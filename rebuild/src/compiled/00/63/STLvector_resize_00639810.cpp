@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<NThingMap::CThingMapManager::CThingMapInfo>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() zeroed (map, count) records at the end
-// Leaf: ?resize@?$vector@VCThingMapInfo@CThingMapManager@NThingMap@@V?$allocator@VCThingMapInfo@CThingMapManager@NThingMap@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<NThingMap::CThingMapManager::CThingMapInfo>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() zeroed (map, count) records at the end
+// Leaf: ?resize@?$vector@VCThingMapInfo@CThingMapManager@NThingMap@@V?$allocator@VCThingMapInfo@CThingMapManager@NThingMap@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00639810, 85 bytes, thiscall on the vector, `ret 4`.
 // Identity: FableWin.pdb ?resize@?$vector@VCThingMapInfo@CThingMapManager@NThingMap@@...@@QAEXI@Z; sole caller
 //   NThingMap::CThingMapManager::Init 0x00638540 (landed; `ThingMaps.resize(Width * Height)` on the CArray<CThingMapInfo>
@@ -27,7 +27,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -69,4 +69,4 @@ public:
 }
 
 // 0x00639050 erase, 0x00639600 _M_fill_insert (out of line in retail)
-template void _STL::vector<NThingMap::CThingMapManager::CThingMapInfo>::resize(unsigned int);
+template void std::vector<NThingMap::CThingMapManager::CThingMapInfo>::resize(unsigned int);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x009E4A20 _STL::list<CMaintainedEvent>::insert(iterator): default event linked before pos.
+// Behaviour test for 0x009E4A20 std::list<CMaintainedEvent>::insert(iterator): default event linked before pos.
 #include <cstdio>
 #include <cstdlib>
 #include <new>

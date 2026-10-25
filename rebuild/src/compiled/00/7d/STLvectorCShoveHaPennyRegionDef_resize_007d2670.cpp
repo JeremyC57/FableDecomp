@@ -1,4 +1,4 @@
-// _STL::vector<CShoveHaPennyRegionDef>::resize(size_type new_size, const CShoveHaPennyRegionDef& x) -- shrink with erase or grow with a fill insert (48-byte defs)
+// std::vector<CShoveHaPennyRegionDef>::resize(size_type new_size, const CShoveHaPennyRegionDef& x) -- shrink with erase or grow with a fill insert (48-byte defs)
 // Leaf: ?resize@?$vector@VCShoveHaPennyRegionDef@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D2670, 102 bytes (+ int3 padding), thiscall, `ret 8`.
 // Identity: the only caller is the one-argument resize 0x007D26E0 (a 48-byte def temporary: CResource-style base
@@ -21,7 +21,7 @@ public:
     float Score;                              // +0x2C
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

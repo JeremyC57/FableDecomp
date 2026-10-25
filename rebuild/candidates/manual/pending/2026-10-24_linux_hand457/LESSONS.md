@@ -59,7 +59,7 @@ Review at landing:
   - 0x00470CD8 is `CVectorMap<unsigned long,CSoundPair,..>::Sort`, landed as global_TransferToGui with a
     CGuiVarTransferBool model.
   - 0x00470DBC models CKeyPairCompareLess as a `void*` context struct.
-- The landed 0x00470E9E / 0x00471338 `__introsort_loop` rows use namespace `std` rather than `_STL`, so their mangled
+- The landed 0x00470E9E / 0x00471338 `__introsort_loop` rows use namespace `std` rather than `std`, so their mangled
   names differ from the STLport rows here. 0x00471338's callee comments name the 12-byte addresses (0x470F32/0x470F5F/
   0x470FA5) instead of its own 0x4713C5/0x4713F2/0x47142B.
 - The landed CTCEntityEvents_FrameUpdate_00811450.cpp is a weak model of the same class; recheck it against this row's

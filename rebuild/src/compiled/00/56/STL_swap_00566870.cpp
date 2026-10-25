@@ -1,4 +1,4 @@
-// _STL::swap(pair<float,CWideString>& a, pair<float,CWideString>& b) -- exchange two float-keyed wide-string entries through a by-value temporary
+// std::swap(pair<float,CWideString>& a, pair<float,CWideString>& b) -- exchange two float-keyed wide-string entries through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00566870, 78 bytes, /Gr `__fastcall` (a in ecx -> edi, b in edx -> esi), plain `ret`.
 // Identity: an 8-byte {4-byte key copied as an integer, CWideString} element; FableWin.pdb sorts
@@ -17,7 +17,7 @@ public:
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;                                          // +0x00

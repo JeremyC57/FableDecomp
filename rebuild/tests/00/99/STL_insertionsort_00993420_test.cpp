@@ -1,4 +1,4 @@
-// Behaviour test for 0x00993420 _STL::__insertion_sort over the 36-byte (long key, sound-bank record) entries: __insertion_sort: sorts a range by key (stable for equal keys), empty range untouched.
+// Behaviour test for 0x00993420 std::__insertion_sort over the 36-byte (long key, sound-bank record) entries: __insertion_sort: sorts a range by key (stable for equal keys), empty range untouched.
 // The record is modelled with a shared reference count (copies bump it, assignments move it, destruction drops it) so
 // leaked or double-destroyed copies show up as a non-zero final count.
 #include <cstdio>

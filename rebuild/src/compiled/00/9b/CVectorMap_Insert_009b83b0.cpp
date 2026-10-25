@@ -21,7 +21,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _T1, class _T2> struct pair {
@@ -66,11 +66,11 @@ protected:
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     void Insert(const K& key, const V& value);
     C    Compare;                                       // +0x0C
@@ -79,7 +79,7 @@ public:
 
 template <class K, class V, class C> void CVectorMap<K, V, C>::Insert(const K& key, const V& value)
 {
-    this->push_back(_STL::pair<K, V>(key, value));
+    this->push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 

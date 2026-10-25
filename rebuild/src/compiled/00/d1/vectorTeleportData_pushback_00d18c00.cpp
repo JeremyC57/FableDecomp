@@ -37,7 +37,7 @@ public:
 };
 }
 inline void* operator new(unsigned int, void* where) { return where; }
-namespace _STL {
+namespace std {
 struct __false_type { };                                // empty POD tag: value-initialised (byte store of 0)
 template <class T> class allocator { };
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }

@@ -38,7 +38,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -94,13 +94,13 @@ public:
         CCharString   PhonemeName;
         unsigned long AnimationIndex;
     };
-    _STL::map<CCharString, CArray<CLipSyncEntry> > LipSyncAnimations;
+    std::map<CCharString, CArray<CLipSyncEntry> > LipSyncAnimations;
     unsigned long FindLipSyncAnimation(const CCharString& animation, const CCharString& phoneme) const;
 };
 
 unsigned long CMeshDataBank::FindLipSyncAnimation(const CCharString& animation, const CCharString& phoneme) const
 {
-    _STL::map<CCharString, CArray<CLipSyncEntry> >::const_iterator it = LipSyncAnimations.find(animation);
+    std::map<CCharString, CArray<CLipSyncEntry> >::const_iterator it = LipSyncAnimations.find(animation);
     if (it != LipSyncAnimations.end()) {
         const CArray<CLipSyncEntry>& entries = it->second;
         for (unsigned long i = 0; i < entries.size(); ++i) {
@@ -114,7 +114,7 @@ unsigned long CMeshDataBank::FindLipSyncAnimation(const CCharString& animation, 
 
 static CCharStringData MakeData(const char* s) { CCharStringData d; d.m_pData = s; d.m_length = (unsigned long)std::strlen(s); return d; }
 
-typedef _STL::_Rb_tree_node<_STL::map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> >::value_type> SNode;
+typedef std::_Rb_tree_node<std::map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> >::value_type> SNode;
 
 int main()
 {
@@ -127,7 +127,7 @@ int main()
     talkEntries[2].PhonemeName.PStringData = &oh; talkEntries[2].AnimationIndex = 13;
     unsigned char raw[2][sizeof(SNode)];
     SNode* n1 = (SNode*)raw[0]; SNode* n2 = (SNode*)raw[1];
-    _STL::_Rb_tree_node_base header;
+    std::_Rb_tree_node_base header;
     header._M_left = n1; n1->_M_right = n2; n2->_M_right = &header;
     const_cast<CCharString&>(n1->_M_value_field.first).PStringData = &talk;
     n1->_M_value_field.second._M_start = talkEntries; n1->_M_value_field.second._M_finish = talkEntries + 3;

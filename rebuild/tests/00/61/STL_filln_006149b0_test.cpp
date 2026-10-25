@@ -1,4 +1,4 @@
-// Behaviour test for 006149b0 (_STL::fill_n<unsigned __int64*, unsigned int, unsigned __int64>): n slots get the value, the
+// Behaviour test for 006149b0 (std::fill_n<unsigned __int64*, unsigned int, unsigned __int64>): n slots get the value, the
 // returned iterator is first + n, n == 0 writes nothing, the neighbours are untouched.
 #include <cstdio>
 #ifdef _MSC_VER

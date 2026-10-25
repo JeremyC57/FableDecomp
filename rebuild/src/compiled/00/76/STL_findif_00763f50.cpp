@@ -1,4 +1,4 @@
-// _STL::__find_if(C3DVector* first, C3DVector* last, NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation pred, const random_access_iterator_tag&) -- first point in [first, last) the circulation predicate accepts, else last
+// std::__find_if(C3DVector* first, C3DVector* last, NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation pred, const random_access_iterator_tag&) -- first point in [first, last) the circulation predicate accepts, else last
 // Leaf: ??$__find_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00763F50, 212 bytes, `ret 18h`.
 // Identity: Ego_r.pdb names the Dinkumware twin ??$_Find_if@PAVC3DVector@@VCIsPointFinalLinkInTriangleWithMatchingCirculation@NShape@@@std@@;
@@ -24,7 +24,7 @@ struct CIsPointFinalLinkInTriangleWithMatchingCirculation {
 };
 }
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };

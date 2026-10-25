@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__uninitialized_copy over CMinimapData -- each record is copy-constructed member by member (deep vector copies, shared surface/texture)
+// Behaviour test: std::__uninitialized_copy over CMinimapData -- each record is copy-constructed member by member (deep vector copies, shared surface/texture)
 #include <cstdio>
 #include <cstdlib>
 #include <new>

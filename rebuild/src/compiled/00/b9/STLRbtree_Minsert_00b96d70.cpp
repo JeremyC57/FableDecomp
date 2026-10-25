@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for map<EEngineRenderLayer, CEngineSceneRenderStats> (CEngineScene::RenderStats): allocate a node, copy the pair in, link it left or right of y keeping leftmost/rightmost, rebalance and count
+// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for map<EEngineRenderLayer, CEngineSceneRenderStats> (CEngineScene::RenderStats): allocate a node, copy the pair in, link it left or right of y keeping leftmost/rightmost, rebalance and count
 // Leaf: ?_M_insert@?$_Rb_tree@W4EEngineRenderLayer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B96D70, 201 bytes, thiscall `ret 14h` (hidden iterator result + x, y, v, w).
 // Identity: nine callers 0x00B96E93 .. 0x00B97501 (the tree's insert_unique 0x00B96E40 / 0x00B96FE0, landed, and the
@@ -28,7 +28,7 @@ public:
     unsigned long BoundingSphereTests;                  // +0x18
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -181,9 +181,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::iterator
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Base_ptr __x_, _Base_ptr __y_, const value_type& __v,
@@ -220,11 +220,11 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Base_ptr __x_,
     ++_M_node_count;
     return iterator(__z);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const EEngineRenderLayer, CEngineSceneRenderStats> TRenderStatsValue;
-typedef _STL::_Rb_tree<EEngineRenderLayer, TRenderStatsValue, _STL::_Select1st<TRenderStatsValue>, _STL::less<EEngineRenderLayer>,
-                       _STL::allocator<TRenderStatsValue> > TRenderStatsTree;
-template TRenderStatsTree::iterator TRenderStatsTree::_M_insert(_STL::_Rb_tree_node_base*, _STL::_Rb_tree_node_base*,
+typedef std::pair<const EEngineRenderLayer, CEngineSceneRenderStats> TRenderStatsValue;
+typedef std::_Rb_tree<EEngineRenderLayer, TRenderStatsValue, std::_Select1st<TRenderStatsValue>, std::less<EEngineRenderLayer>,
+                       std::allocator<TRenderStatsValue> > TRenderStatsTree;
+template TRenderStatsTree::iterator TRenderStatsTree::_M_insert(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*,
                                                                 const TRenderStatsTree::value_type&,
-                                                                _STL::_Rb_tree_node_base*);
+                                                                std::_Rb_tree_node_base*);

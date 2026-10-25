@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__pop_heap<CThing**, CThing*, CThingCompare_BestForTargeting2, int> @ 0x007FA680: moves the heap top
+// Model of std::__pop_heap<CThing**, CThing*, CThingCompare_BestForTargeting2, int> @ 0x007FA680: moves the heap top
 // to *result and sifts the saved value into the shortened heap; repeated, it heap-sorts the targets.
 class CThing { public: int Score; };
 class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
@@ -31,7 +31,7 @@ public:
     bool operator()(const CThing* a, const CThing* b) const { return a->Score < b->Score; }   // test ordering                                // +0x30
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value, _Compare __comp);   // 0x007FA320
 
@@ -169,7 +169,7 @@ template <class RI, class T, class C> void IntrosortLoop(RI first, RI last, T*, 
     }
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class D, class T, class C> void __fastcall __adjust_heap(RI first, D hole, D len, T val, C comp)
 {
     TLib::AdjustHeap(first, hole, len, val, comp);
@@ -190,7 +190,7 @@ int main()
     const CThingCompare_BestForTargeting2& comp = *(const CThingCompare_BestForTargeting2*)raw.bytes;
     TLib::MakeHeapT(a, a + 7, comp, (CThing**)0, (int*)0);
     for (CThing** last = a + 7; last - a > 1; --last)
-        _STL::__pop_heap(a, last - 1, last - 1, *(last - 1), comp, (int*)0);
+        std::__pop_heap(a, last - 1, last - 1, *(last - 1), comp, (int*)0);
     for (int i = 1; i < 7; ++i)
         if (a[i - 1]->Score > a[i]->Score)
             ok = false;

@@ -1,5 +1,5 @@
 // _Rb_tree<long, pair<const long, CAStarState>>::_M_erase(node* x) -- free a subtree of the A* state map without rebalancing, counting each state out
-// Leaf: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@_STL@@@_STL@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@_STL@@@2@@Z
+// Leaf: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A21640, 90 bytes, `ret 4`. Nine callers: itself (0x00A21656), the
 //   CNavigatorAStar constructor/destructor/clear paths (0x00A1CBAD, 0x00A1CE51, 0x00A1CEE7, 0x00A1E3A6) and the tree's
 //   own clear/erase helpers (0x00A21B32, 0x00A22072, 0x00A22142, 0x00A223B2). Catalog label "TreeNode_RecursiveDelete"
@@ -38,7 +38,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -75,4 +75,4 @@ void _Rb_tree<_Key, _Value>::_M_erase(_Link_type __x)
 }
 }
 
-template void _STL::_Rb_tree<long, _STL::pair<const long, CNavigatorAStar::CAStarState> >::_M_erase(_STL::_Rb_tree_node<_STL::pair<const long, CNavigatorAStar::CAStarState> >*);
+template void std::_Rb_tree<long, std::pair<const long, CNavigatorAStar::CAStarState> >::_M_erase(std::_Rb_tree_node<std::pair<const long, CNavigatorAStar::CAStarState> >*);

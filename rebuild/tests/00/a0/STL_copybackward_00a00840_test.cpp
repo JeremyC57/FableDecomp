@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A00840 _STL::__copy_backward<CGraphicInfoFrame*>: [first, last) is assigned backwards onto the range ending at result (an
+// Behaviour test for 0x00A00840 std::__copy_backward<CGraphicInfoFrame*>: [first, last) is assigned backwards onto the range ending at result (an
 // overlapping shift right works), each assignment releasing the overwritten frame data; the new start is returned.
 #include <cstdlib>
 #include <cstdio>

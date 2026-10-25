@@ -4,7 +4,7 @@
 // Identity: Ego_r.pdb `?SetEntityPersistScript@CRuntimeScriptedEntityPersist@NScript@@...`; called from
 //   CScriptBase::SaveEntityScript (0x00CB8422). The manifest label "ScriptEntity_InsertOrUpdatePersist" is descriptive.
 // Callees: CVectorMap<unsigned __int64, CPersistInfo>::LowerBound 0x00CB9740, CCharString copy/dtor/assign
-//   0x0099EC30 / 0x0099EAE0 / 0x0099EFB0, vector<CPersistPair>::push_back 0x00CBC7B0, _STL::sort 0x00CBD370.
+//   0x0099EC30 / 0x0099EAE0 / 0x0099EFB0, vector<CPersistPair>::push_back 0x00CBC7B0, std::sort 0x00CBD370.
 // Shape: Find + `it->second = info` or Add (push_back of a pair temporary, Dirty = true, sort, Dirty = false). Add and
 //   Sort are __forceinline; LowerBound gets a same-TU __declspec(noinline) body (it only reads), which lets VC7.1 keep
 //   the key and `this` in registers across it as retail does instead of reloading them from the argument slots.
@@ -15,7 +15,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -49,13 +49,13 @@ void __fastcall sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compa
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type* iterator;
-    _STL::vector<value_type> Vector;                       // +0x00
+    std::vector<value_type> Vector;                       // +0x00
     C    Compare;                                          // +0x0c
     bool Dirty;                                            // +0x0d
     iterator LowerBound(const K& key);                     // 0x00CB9740 (same-TU body below)
@@ -69,7 +69,7 @@ public:
     }
     __forceinline void Sort()
     {
-        _STL::sort(Vector.begin(), Vector.end(), Compare);
+        std::sort(Vector.begin(), Vector.end(), Compare);
         Dirty = false;
     }
     __forceinline void Add(const K& key, const V& value)

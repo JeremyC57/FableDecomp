@@ -45,7 +45,7 @@ Every matched row has a behaviour test that passes under g++ (tall.sh) and VC7.1
   - 12-byte `pair<pair<CCharString, CCharString>, CSoundBankLH*>` entries: 00a40820 `__unguarded_linear_insert`,
     00a40af0 `CVectorMap::LowerBound`, 00a40c10 `vector::erase(first, last)`, 00a40d80 `__median`, 00a40f50
     `__linear_insert`, 00a41630 `__pop_heap`, 00a416e0 `__make_heap`, 00a41cd0 `__partial_sort`.
-  - SHAPE: the STLport `_algo.c` / `_heap.c` bodies are verbatim, as `__fastcall` templates in `_STL`. The CCharString
+  - SHAPE: the STLport `_algo.c` / `_heap.c` bodies are verbatim, as `__fastcall` templates in `std`. The CCharString
     model has the inline operator< over `CBasicString<char>::operator<` (a same-TU noinline body), and the pair has
     STLport's explicit copy constructor. Out-of-line callees are only declared. A tag homed in a dead slot needs
     nothing (the copy_backward tag in the comparator slot, 00a40730 / 00a40f50). The tag in erase's LIVE `first` slot
@@ -71,41 +71,41 @@ None.
 All catalog names in this chunk were propagated `_global` labels. Where no PDB name exists, the new name is a
 **descriptive name**.
 
-- 00a37c40 `_Move<CLipSyncPhoneme*,CLipSyncPhoneme*>` -> `_STL::__copy<CClassTypeInfo*, CClassTypeInfo*, int>`
+- 00a37c40 `_Move<CLipSyncPhoneme*,CLipSyncPhoneme*>` -> `std::__copy<CClassTypeInfo*, CClassTypeInfo*, int>`
 - 00a38080 `CGuiControlTreePane_Destructor` -> `CClassFactory::`scalar deleting destructor'` (vtable 0x0129CF70)
-- 00a38150 `CTCInventoryMap_InitMiniMapMarkers` -> `_STL::vector<CClassTypeInfo>::resize(unsigned int)`
+- 00a38150 `CTCInventoryMap_InitMiniMapMarkers` -> `std::vector<CClassTypeInfo>::resize(unsigned int)`
 - 00a38420 `CVectorMap_LookupByCRC` -> `CCRCSymbolMap::FindSymbol(const CCharString&, long&) const` (FableWin.pdb name)
 - 00a385a0 `EnumValue_InsertIntoMap` -> `CCRCSymbolMap::AddSymbolDirty(const CCharString&, long)` (FableWin.pdb name)
 - 00a3ad20 `TextureConvert_ResizeBuffer` -> `CCompressorZlib::Compress(const void*, long, long, CArray<unsigned char>&)` (PDB name)
 - 00a3aef0 / 00a3af10 / 00a3af30 `Compare_4Ints_Equal` / `_Equal_v2` / `_NotEqual` -> `IsEqualGUID` / GUID `operator==` / GUID `operator!=`
-- 00a3cb90 / 00a3cc30 `_Copy_backward<CDisplayModeDesc*>` -> `_STL::__uninitialized_copy<C3DAnimationStateAlpha*>` / `<const C3DAnimationStateAlpha*>`
-- 00a3cbe0 `fill<CTextureManagerPoolInfo*>` -> `_STL::__uninitialized_fill_n<C3DAnimationStateAlpha*, unsigned int, C3DAnimationStateAlpha>`
-- 00a3cd00 `Vector_Insert_CDisplayModeDesc_Bulk` -> `_STL::__copy_backward<C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, int>`
-- 00a3cee0 `fill<CTextureManagerPoolInfo*>` -> `_STL::fill<C3DAnimationStateAlpha*, C3DAnimationStateAlpha>`
-- 00a3cf20 `Vector_Erase_CDisplayModeDesc_Bulk` -> `_STL::__copy<C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, int>`
-- 00a3d380 `Vector_AddCombinationEntry` -> `_STL::vector<C3DAnimationStateAlpha>::push_back`
+- 00a3cb90 / 00a3cc30 `_Copy_backward<CDisplayModeDesc*>` -> `std::__uninitialized_copy<C3DAnimationStateAlpha*>` / `<const C3DAnimationStateAlpha*>`
+- 00a3cbe0 `fill<CTextureManagerPoolInfo*>` -> `std::__uninitialized_fill_n<C3DAnimationStateAlpha*, unsigned int, C3DAnimationStateAlpha>`
+- 00a3cd00 `Vector_Insert_CDisplayModeDesc_Bulk` -> `std::__copy_backward<C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, int>`
+- 00a3cee0 `fill<CTextureManagerPoolInfo*>` -> `std::fill<C3DAnimationStateAlpha*, C3DAnimationStateAlpha>`
+- 00a3cf20 `Vector_Erase_CDisplayModeDesc_Bulk` -> `std::__copy<C3DAnimationStateAlpha*, C3DAnimationStateAlpha*, int>`
+- 00a3d380 `Vector_AddCombinationEntry` -> `std::vector<C3DAnimationStateAlpha>::push_back`
 - 00a3df30 / 00a3e010 `md5_append` / `md5_finish`: correct
 - 00a3ecb0 `PrimitiveStats_EnumerateAndInsert` -> `CSoundManagerLH::vfunc_4` (descriptive name, slot 4 of vtable 0x0129D2C4)
 - 00a3ed30 `VectorMap_LookupByKey` -> `CSoundManagerLH::FindByName` (descriptive name)
 - 00a3ee50 `Map_Insert_Sorted_CCharStringPair` -> `CSoundManagerLH::FindByNamePair` (descriptive name)
 - 00a3f340 `CParticleMorphs_CommitChanges` -> `CSoundManagerLH::vfunc_41` (descriptive name)
 - 00a3f860 `FindFirstSetBit`: kept (descriptive name)
-- 00a40370 `Vector_Insert_CCharStringPair` -> `_STL::__unguarded_linear_insert<SNameEntry*, SNameEntry, CNameLess>`
-- 00a40660 `Introsort_Partition_Pair` -> `_STL::__unguarded_partition<SNameEntry*, SNameEntry, CNameLess>`
-- 00a40730 `Vector_Insert_Sorted_CCharStringPair` -> `_STL::__linear_insert<SNameEntry*, SNameEntry, CNameLess>`
-- 00a40820 `Vector_Insert_Triple_CCharString` -> `_STL::__unguarded_linear_insert<SNamePairEntry*, SNamePairEntry, CNamePairLess>`
+- 00a40370 `Vector_Insert_CCharStringPair` -> `std::__unguarded_linear_insert<SNameEntry*, SNameEntry, CNameLess>`
+- 00a40660 `Introsort_Partition_Pair` -> `std::__unguarded_partition<SNameEntry*, SNameEntry, CNameLess>`
+- 00a40730 `Vector_Insert_Sorted_CCharStringPair` -> `std::__linear_insert<SNameEntry*, SNameEntry, CNameLess>`
+- 00a40820 `Vector_Insert_Triple_CCharString` -> `std::__unguarded_linear_insert<SNamePairEntry*, SNamePairEntry, CNamePairLess>`
 - 00a40af0 `Map_FindUpper_CCharStringPair` -> `CVectorMap<pair<CCharString, CCharString>, CSoundBankLH*>::LowerBound` (a lower bound, not an upper bound)
-- 00a40c10 `Vector_Copy_CCharStringPair` -> `_STL::vector<SNamePairEntry>::erase(iterator, iterator)`
-- 00a40d80 `Med3Comparator_CCharStringPairLess` -> `_STL::__median<SNamePairEntry, CNamePairLess>`
-- 00a40ef0 `Vector_Shrink_Destroy_CCharString` -> `_STL::__insertion_sort<SNameEntry*, CNameLess>`
-- 00a40f50 `Introsort_Quicksort_CCharStringTriple` -> `_STL::__linear_insert<SNamePairEntry*, SNamePairEntry, CNamePairLess>`
-- 00a41200 `Heap_MakeHeap_CCharStringPair` -> `_STL::__make_heap<SNameEntry*, CNameLess, SNameEntry, int>`
-- 00a41630 `_Pop_heap<CTestQuest*,int,CTestQuest,CTestQuestNameCompare>` -> `_STL::__pop_heap<SNamePairEntry*, SNamePairEntry, CNamePairLess, int>`
-- 00a416e0 `Heap_MakeHeap_CCharStringTriple` -> `_STL::__make_heap<SNamePairEntry*, CNamePairLess, SNamePairEntry, int>`
-- 00a418a0 `CCharStringPair_AppendToVector` -> `_STL::vector<SNameEntry>::push_back`
+- 00a40c10 `Vector_Copy_CCharStringPair` -> `std::vector<SNamePairEntry>::erase(iterator, iterator)`
+- 00a40d80 `Med3Comparator_CCharStringPairLess` -> `std::__median<SNamePairEntry, CNamePairLess>`
+- 00a40ef0 `Vector_Shrink_Destroy_CCharString` -> `std::__insertion_sort<SNameEntry*, CNameLess>`
+- 00a40f50 `Introsort_Quicksort_CCharStringTriple` -> `std::__linear_insert<SNamePairEntry*, SNamePairEntry, CNamePairLess>`
+- 00a41200 `Heap_MakeHeap_CCharStringPair` -> `std::__make_heap<SNameEntry*, CNameLess, SNameEntry, int>`
+- 00a41630 `_Pop_heap<CTestQuest*,int,CTestQuest,CTestQuestNameCompare>` -> `std::__pop_heap<SNamePairEntry*, SNamePairEntry, CNamePairLess, int>`
+- 00a416e0 `Heap_MakeHeap_CCharStringTriple` -> `std::__make_heap<SNamePairEntry*, CNamePairLess, SNamePairEntry, int>`
+- 00a418a0 `CCharStringPair_AppendToVector` -> `std::vector<SNameEntry>::push_back`
 - 00a41ad0 `CCharStringPair_AppendWithPointer` -> `CVectorMap<CCharString, CSoundBankLH*>::Insert` (CVectorMap::Insert is a PDB member name)
-- 00a41b60 `Heap_PopHeap_CCharStringPair` -> `_STL::__partial_sort<SNameEntry*, SNameEntry, CNameLess>`
-- 00a41cd0 `Introsort_InsertSorted_CCharStringTriple` -> `_STL::__partial_sort<SNamePairEntry*, SNamePairEntry, CNamePairLess>`
+- 00a41b60 `Heap_PopHeap_CCharStringPair` -> `std::__partial_sort<SNameEntry*, SNameEntry, CNameLess>`
+- 00a41cd0 `Introsort_InsertSorted_CCharStringTriple` -> `std::__partial_sort<SNamePairEntry*, SNamePairEntry, CNamePairLess>`
 - Outside the chunk: 0x00A40250, catalog `_Med3<std::pair<CCharString,CCharString>*,...>`, is the `__cdecl`
   `pair<CCharString, CCharString>` operator<. `CSoundBankLH` (the mapped object type) is a descriptive name.
   SNameEntry = `pair<CCharString, CSoundBankLH*>` and SNamePairEntry = `pair<pair<CCharString, CCharString>, CSoundBankLH*>`.

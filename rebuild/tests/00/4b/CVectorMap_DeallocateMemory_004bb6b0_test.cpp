@@ -90,7 +90,7 @@ typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo TPersistInfo;
 static int gMallocs = 0;
 static int gFrees = 0;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b) { _Tp __tmp = __a; __a = __b; __b = __tmp; }
@@ -156,27 +156,27 @@ public:
     void clear() { erase(begin(), end()); }
     void swap(vector& __x)
     {
-        _STL::swap(this->_M_start, __x._M_start);
-        _STL::swap(this->_M_finish, __x._M_finish);
-        _STL::swap(this->_M_end_of_storage, __x._M_end_of_storage);
+        std::swap(this->_M_start, __x._M_start);
+        std::swap(this->_M_finish, __x._M_finish);
+        std::swap(this->_M_end_of_storage, __x._M_end_of_storage);
     }
 };
 }
 template <class K, class V> class CKeyPairCompareLess {
 };
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;
     bool Dirty;
     void DeallocateMemory()
     {
         this->clear();
-        _STL::vector<_STL::pair<K, V> > empty;
+        std::vector<std::pair<K, V> > empty;
         this->swap(empty);
         Dirty = false;
     }
 };
-typedef _STL::pair<CCharString, TPersistInfo> TElem;
+typedef std::pair<CCharString, TPersistInfo> TElem;
 typedef CVectorMap<CCharString, TPersistInfo, CKeyPairCompareLess<CCharString, TPersistInfo> > TMap;
 
 int main()

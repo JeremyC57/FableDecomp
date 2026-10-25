@@ -1,4 +1,4 @@
-// _STL::__copy_ptrs(const SRecord44* first, const SRecord44* last, SRecord44* result, const __false_type&) -- STLport assignment copy of a range of 44-byte records (the memcpy-unsafe pointer path): counted loop of block assignments, returns the end of the destination
+// std::__copy_ptrs(const SRecord44* first, const SRecord44* last, SRecord44* result, const __false_type&) -- STLport assignment copy of a range of 44-byte records (the memcpy-unsafe pointer path): counted loop of block assignments, returns the end of the destination
 // Leaf: ??$__copy_ptrs@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00673760, length 60 bytes, `ret 8`.
 // Callers: the record vector's operator= 0x00674520 (manifest "Vector_Assign_44byte"; 0x006745E9 when the source fits in
@@ -17,7 +17,7 @@ struct SRecord44 {
     unsigned long Words[11];                               // 0x2C bytes, copied as a block
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
@@ -42,4 +42,4 @@ _OutputIter __fastcall __copy_ptrs(_InputIter __first, _InputIter __last, _Outpu
 }
 }
 
-template SRecord44* __fastcall _STL::__copy_ptrs<const SRecord44*, SRecord44*>(const SRecord44*, const SRecord44*, SRecord44*, const _STL::__false_type&);
+template SRecord44* __fastcall std::__copy_ptrs<const SRecord44*, SRecord44*>(const SRecord44*, const SRecord44*, SRecord44*, const std::__false_type&);

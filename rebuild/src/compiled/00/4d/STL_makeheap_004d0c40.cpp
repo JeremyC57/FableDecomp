@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<float, CCharString>* first, pair<float, CCharString>* last, CKeyPairCompareLess comp, pair<float, CCharString>*, int*) -- STLport heapify of a subtitled message's animation tags (time -> animation name): sift every parent down, from the last one to the root
+// std::__make_heap(pair<float, CCharString>* first, pair<float, CCharString>* last, CKeyPairCompareLess comp, pair<float, CCharString>*, int*) -- STLport heapify of a subtitled message's animation tags (time -> animation name): sift every parent down, from the last one to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004D0C40, 80 bytes, `ret 0Ch` (/Gr algorithm TU, explicit __fastcall here: first in
 //   ecx, last in edx, then the comparator slot and the two tag pointers).
@@ -17,7 +17,7 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -28,13 +28,13 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<float, CCharString> TTextPair;                           // 8 bytes
+typedef std::pair<float, CCharString> TTextPair;                           // 8 bytes
 typedef CKeyPairCompareLess<float, CCharString> TTextLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIter __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x004D0590 (landed)
 

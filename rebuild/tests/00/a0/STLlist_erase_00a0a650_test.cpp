@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A0A650 _STL::list<CMeshBankManager::CMeshDataBankInfo>::erase: unlink the node,
+// Behaviour test for 0x00A0A650 std::list<CMeshBankManager::CMeshDataBankInfo>::erase: unlink the node,
 // destroy the bank info (counted mesh-bank pointer released, then the handle string), free the node, return the next
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,7 +47,7 @@ public:
         CCountedPointer<CMeshDataBank> MeshDataBank;
     };
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { test_free(__p); }
@@ -99,7 +99,7 @@ public:
 };
 }
 typedef CMeshBankManager::CMeshDataBankInfo CInfo;
-typedef _STL::list<CInfo> CInfoList;
+typedef std::list<CInfo> CInfoList;
 typedef CInfoList::_Node CNode;
 static CMeshDataBank gBanks[3];
 static CNode* MakeNode(int i, CCPPointerInfo* info)

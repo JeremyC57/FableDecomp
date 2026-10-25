@@ -40,7 +40,7 @@ struct _List_iterator16 : _List_iterator_base {         // iterator: user copy c
 struct _List_const_iterator16 : _List_iterator_base {   // const_iterator: implicit (trivial) copy
     _List_const_iterator16(_List_node_base* x) : _List_iterator_base(x) { }
 };
-struct SNavList {                                       // _STL::list<SValue16>: one header-node pointer (4 bytes)
+struct SNavList {                                       // std::list<SValue16>: one header-node pointer (4 bytes)
     _List_node16* _M_node;
     _List_iterator16 begin() { return _List_iterator16(_M_node->_M_next); }
     _List_const_iterator16 begin() const { return _List_const_iterator16(_M_node->_M_next); }

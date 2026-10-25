@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* last, CBlockInfo pivot, less<CBlockInfo> comp) -- STLport Hoare partition of the block candidates around a pivot cost (introsort step)
+// std::__unguarded_partition(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* last, CBlockInfo pivot, less<CBlockInfo> comp) -- STLport Hoare partition of the block candidates around a pivot cost (introsort step)
 // Flags: /Gr
 // Leaf: ??$__unguarded_partition@PAVCBlockInfo@CVertexGroupBlockOptimiser
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADB320, 0x82 bytes, __fastcall (first ecx, last edx), `ret 10h` (the 12-byte
@@ -9,7 +9,7 @@
 // Shape: STLport 4.x `for (;;) { while (comp(*first, pivot)) ++first; --last; while (comp(pivot, *last)) --last;
 // if (!(first < last)) return first; iter_swap(first, last); ++first; }` -- pivot.Cost lives in ecx; the iter_swap
 // temporary's last two words reuse the dead pivot argument slots.
-namespace _STL {
+namespace std {
 
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
@@ -47,7 +47,7 @@ _RandomAccessIter __unguarded_partition(_RandomAccessIter __first, _RandomAccess
     }
 }
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlockOptimiser {
 public:
@@ -60,7 +60,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template CVertexGroupBlockOptimiser::CBlockInfo*
 __unguarded_partition<CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo,
                       less<CVertexGroupBlockOptimiser::CBlockInfo> >(

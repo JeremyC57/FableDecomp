@@ -1,4 +1,4 @@
-// _STL::__copy(CIntelligentPointer<CThing>*, CIntelligentPointer<CThing>*, CIntelligentPointer<CThing>*, const random_access_iterator_tag&, int*) -- STLport random-access copy of 8-byte intelligent pointers: n = last - first assignments (SetPItem(src.GetPItem())), returns the end of the output
+// std::__copy(CIntelligentPointer<CThing>*, CIntelligentPointer<CThing>*, CIntelligentPointer<CThing>*, const random_access_iterator_tag&, int*) -- STLport random-access copy of 8-byte intelligent pointers: n = last - first assignments (SetPItem(src.GetPItem())), returns the end of the output
 // Flags: /Gr
 // Leaf: __copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AA610, 60 bytes, `ret 0Ch` (__fastcall: first in ecx -> esi, last in edx,

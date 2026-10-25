@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp, pair<C3DVector, long>*, int*) -- STLport make_heap of the first-person targeting positions (best score at the root): sift every parent down, last parent first
+// std::__make_heap(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp, pair<C3DVector, long>*, int*) -- STLport make_heap of the first-person targeting positions (best score at the root): sift every parent down, last parent first
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808CF0, 183 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x2c-byte comparator by value and the two type pointers on the stack, `ret 34h`.
@@ -28,7 +28,7 @@ struct CVectorCompare_BestForTargeting {
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -39,7 +39,7 @@ template <class _T1, class _T2> struct pair {
 namespace {
 struct CCompareTargetedPositionsForFirstPersonTargeting {
     CVectorCompare_BestForTargeting VectorCompare;         // +0x00
-    bool operator()(const _STL::pair<C3DVector, long>& a, const _STL::pair<C3DVector, long>& b) const
+    bool operator()(const std::pair<C3DVector, long>& a, const std::pair<C3DVector, long>& b) const
     {
         const float aValue = VectorCompare.GetCompareValueForPoint(a.first);
         const float bValue = VectorCompare.GetCompareValueForPoint(b.first);
@@ -48,7 +48,7 @@ struct CCompareTargetedPositionsForFirstPersonTargeting {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value,
                               _Compare __comp);   // 0x008082C0

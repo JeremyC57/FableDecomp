@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// Host model of _STL::__unguarded_linear_insert over pair<CCharString, CSymbolMap::CSymbolInfo> ordered by
+// Host model of std::__unguarded_linear_insert over pair<CCharString, CSymbolMap::CSymbolInfo> ordered by
 // CCompareString (a.first.FastCompare(b.first)); the string is modelled by an int key, FastCompare as key order.
 struct CCharString {
     int Key;

@@ -1,6 +1,6 @@
-// _STL::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CThingCompare_NearestToPos comp) -- STLport heap sift-down for the lightning target sort: move the nearer child up until the hole reaches the bottom, then push `val` back up from there
+// std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CThingCompare_NearestToPos comp) -- STLport heap sift-down for the lightning target sort: move the nearer child up until the hole reaches the bottom, then push `val` back up from there
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the landed 0x0095CFE0 shape with the bool comparator: its real template body (0x007A2F90) noinline in the TU, member-init C3DVector copy ctor, template __adjust_heap
-// Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@UCThingCompare_NearestToPos@@@_STL@@YIXPAPAVCThing@@HHPAV1@UCThingCompare_NearestToPos@@@Z
+// Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@UCThingCompare_NearestToPos@@@std@@YIXPAPAVCThing@@HHPAV1@UCThingCompare_NearestToPos@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A34A0, 135 bytes, __fastcall (/Gr algorithm TU: first in ecx, holeIndex
 //   in edx; len, val and the 12-byte comparator on the stack), `ret 14h`.
 // Instantiation: sort / partial_sort<CThing**, CThingCompare_NearestToPos> of CTCWillLightning.cpp -- Ego_r.pdb places
@@ -60,7 +60,7 @@ template <class T> bool CThingCompare_NearestToPos::operator()(T* a, T* b) const
 #pragma auto_inline(on)
 typedef CThingCompare_NearestToPos TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val,
                             _Compare __comp);   // 0x007A30B0
@@ -85,4 +85,4 @@ void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeInd
     __push_heap(__first, __holeIndex, __topIndex, __val, __comp);
 }
 template void __fastcall __adjust_heap<CThing**, int, CThing*, TComp>(CThing**, int, int, CThing*, TComp);
-} // namespace _STL
+} // namespace std

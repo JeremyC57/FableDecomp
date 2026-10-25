@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long, SValue8>* first, pair<unsigned long, SValue8>* last, pair<unsigned long, SValue8>*, CKeyPairCompareLess<unsigned long, SValue8> comp) -- STLport final unguarded insertion sort over 12-byte map entries
+// std::__unguarded_insertion_sort_aux(pair<unsigned long, SValue8>* first, pair<unsigned long, SValue8>* last, pair<unsigned long, SValue8>*, CKeyPairCompareLess<unsigned long, SValue8> comp) -- STLport final unguarded insertion sort over 12-byte map entries
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B2CB0, 103 bytes, `ret 8`: `__fastcall` (/Gr algorithm TU: first in ecx, last in
 // edx, the value-type tag pointer and the empty comparator on the stack). Catalog name "_Copy_impl<CNavigationPosition*,...>"
@@ -6,7 +6,7 @@
 // Element: pair<unsigned long, 8-byte value> (CVectorMap entry; the 12-byte __unguarded_linear_insert is landed at 0x009B1A30).
 // Shape: STLport 4.6 verbatim; with the inner insert expanded, the value's third word and `last` spill to the frame
 // (sub esp,10h) because only ebx/edi stay free for the key and the second word.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                  // +0x00
     _T2 second;                                 // +0x04
@@ -42,9 +42,9 @@ struct SValue8 {                                // 8-byte mapped value (two word
 };
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, SValue8> SEntry12;
-template void __fastcall _STL::__unguarded_insertion_sort_aux<SEntry12*, SEntry12, CKeyPairCompareLess<unsigned long, SValue8> >(
+typedef std::pair<unsigned long, SValue8> SEntry12;
+template void __fastcall std::__unguarded_insertion_sort_aux<SEntry12*, SEntry12, CKeyPairCompareLess<unsigned long, SValue8> >(
     SEntry12* __first, SEntry12* __last, SEntry12*, CKeyPairCompareLess<unsigned long, SValue8> __comp);

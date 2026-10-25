@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(CMeshMorphSetParts* position, const CMeshMorphSetParts& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of a mesh morph set's part list (vector<CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts>): allocate old + max(old, n), copy the head, place the n copies, copy the tail, destroy and free the old block
+// std::vector::_M_insert_overflow(CMeshMorphSetParts* position, const CMeshMorphSetParts& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of a mesh morph set's part list (vector<CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts>): allocate old + max(old, n), copy the head, place the n copies, copy the tail, destroy and free the old block
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00728D10, length 216 bytes (+ int3 padding), thiscall, `ret 14h`.
 // Callers: the same vector's _M_fill_insert 0x00728DF0 (0x00728EFE, the no-room arm; reached from resize 0x00728F20).
@@ -45,7 +45,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
@@ -135,5 +135,5 @@ void vector<T, Alloc>::_M_insert_overflow(T* position, const T& x, const __false
 }
 
 typedef CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts TMeshMorphSetParts;
-template void _STL::vector<TMeshMorphSetParts>::_M_insert_overflow(TMeshMorphSetParts*, const TMeshMorphSetParts&,
-    const _STL::__false_type&, unsigned int, bool);
+template void std::vector<TMeshMorphSetParts>::_M_insert_overflow(TMeshMorphSetParts*, const TMeshMorphSetParts&,
+    const std::__false_type&, unsigned int, bool);

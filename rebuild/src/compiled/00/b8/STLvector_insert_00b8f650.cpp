@@ -1,4 +1,4 @@
-// _STL::vector::insert(iterator position, const value_type& x) -- STLport single-element insert into the occlusion manager's sorted handle map (vector<pair<unsigned long, unsigned long> >): construct at the end, or shift the tail up one slot and assign x into position, or grow; return the iterator at the insert index
+// std::vector::insert(iterator position, const value_type& x) -- STLport single-element insert into the occlusion manager's sorted handle map (vector<pair<unsigned long, unsigned long> >): construct at the end, or shift the tail up one slot and assign x into position, or grow; return the iterator at the insert index
 // Leaf: ?insert@?$vector@U?$pair@KK
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B8F650, 218 bytes, thiscall, `ret 8`, the iterator (a plain pointer) in eax.
 // Identity: called from the landed CEngineOcclusionManager::AllocateOccluderHandleWithRetrivalID 0x00B8D6C0 (insert into
@@ -13,7 +13,7 @@
 //   __forceinline: with plain `inline` VC7.1 calls __copy_backward_ptrs out of line here.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -96,4 +96,4 @@ typename vector<_Tp, _Alloc>::iterator vector<_Tp, _Alloc>::insert(iterator __po
 
 template class vector<pair<unsigned long, unsigned long> >;
 
-}   // namespace _STL
+}   // namespace std

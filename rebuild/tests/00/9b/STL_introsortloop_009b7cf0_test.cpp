@@ -70,7 +70,7 @@ public:
     char* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -204,7 +204,7 @@ private:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -218,16 +218,16 @@ public:
         CArray<unsigned long>  GlobalIndices;
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoLess;
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     CVectorMap() : Dirty(false) {}
     void Insert(const K& key, const V& value);
@@ -237,11 +237,11 @@ public:
 
 template <class K, class V, class C> void CVectorMap<K, V, C>::Insert(const K& key, const V& value)
 {
-    this->push_back(_STL::pair<K, V>(key, value));
+    this->push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;
@@ -507,23 +507,23 @@ int main()
     {
         CWideString w[40];
         FillW(w, 40);
-        _STL::__introsort_loop(w, w + 40, (CWideString*)0, 10, _STL::less<CWideString>());
+        std::__introsort_loop(w, w + 40, (CWideString*)0, 10, std::less<CWideString>());
         for (int i = 0; i < 40; i += 8) {            // partitioned: no element sorts below an earlier run's max
             for (int j = i + 1; j < 40; ++j)
                 if (w[j] < w[i] && j >= i + 17) { std::printf("009b7cf0_TEST FAIL\n"); return 1; }
         }
-        _STL::__insertion_sort(w, w + 40, _STL::less<CWideString>());
+        std::__insertion_sort(w, w + 40, std::less<CWideString>());
         if (!Sorted(w, 40, 0)) { std::printf("009b7cf0_TEST FAIL\n"); return 1; }
 
         FillW(w, 40);                                 // depth exhausted at once: partial_sort sorts the whole range
-        _STL::__introsort_loop(w, w + 40, (CWideString*)0, 0, _STL::less<CWideString>());
+        std::__introsort_loop(w, w + 40, (CWideString*)0, 0, std::less<CWideString>());
         if (!Sorted(w, 40, 0)) { std::printf("009b7cf0_TEST FAIL\n"); return 1; }
 
         FillW(w, 16);                                 // 16 elements: left for the final insertion sort
         int order[16];
         for (int i = 0; i < 16; ++i)
             order[i] = (i * 17 + 5) % 16;
-        _STL::__introsort_loop(w, w + 16, (CWideString*)0, 10, _STL::less<CWideString>());
+        std::__introsort_loop(w, w + 16, (CWideString*)0, 10, std::less<CWideString>());
         if (!Sorted(w, 16, order)) { std::printf("009b7cf0_TEST FAIL\n"); return 1; }
         if (g_live != live0 + 40) { std::printf("009b7cf0_TEST FAIL\n"); return 1; }
     }

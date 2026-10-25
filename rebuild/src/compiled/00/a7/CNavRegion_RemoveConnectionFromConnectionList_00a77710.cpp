@@ -37,7 +37,7 @@ public:
     ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -138,7 +138,7 @@ public:
 
 class CNavRegion {
 public:
-    typedef _STL::list<CCountedPointer<CNavRegionConnection> > CConnectionList;
+    typedef std::list<CCountedPointer<CNavRegionConnection> > CConnectionList;
     long            RegionID;                               // +0x0
     CConnectionList Connections;                            // +0x4
     long            MostRecentSearchID;                     // +0x8

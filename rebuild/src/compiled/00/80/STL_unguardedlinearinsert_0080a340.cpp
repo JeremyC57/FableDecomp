@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint val, CThingCompare_BestForTargeting2 comp) -- STLport insertion step of the target-point sort: shift the better-placed predecessors up and drop val into the gap
+// std::__unguarded_linear_insert(NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint val, CThingCompare_BestForTargeting2 comp) -- STLport insertion step of the target-point sort: shift the better-placed predecessors up and drop val into the gap
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080A340, 176 bytes, /Gr `__fastcall` (last in ecx), the 0x1c-byte value
 //   and the 0x34-byte comparator by value on the stack, `ret 50h`; the value is destroyed by the callee.
@@ -72,7 +72,7 @@ struct CThingCompare_BestForTargeting2 {
     bool operator()(const CTargetPoint& a, const CTargetPoint& b) const;             // 0x008098B0
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

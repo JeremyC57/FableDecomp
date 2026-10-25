@@ -12,7 +12,7 @@
 //   insert(i, value_type(k, _STLP_DEFAULT_CONSTRUCTED(_Tp))); return (*i).second;` -- the u64 compare high dword first,
 //   the 32-byte pair built in the frame (key, the C3DVector's memberwise copy, the angles), the hint iterator copied
 //   into its argument slot, the result iterator on the dead `k` slot; `.second` is node + 0x18.
-namespace _STL {
+namespace std {
 template <class _Tp> _Tp __fastcall __default_constructed(_Tp* __p);   // 0x0082F5C0 (`return _Tp();`)
 
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
@@ -113,4 +113,4 @@ public:
 };
 
 template CScriptedMapBrush::CThingPosAndOrientation&
-_STL::map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>::operator[](const unsigned __int64&);
+std::map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>::operator[](const unsigned __int64&);

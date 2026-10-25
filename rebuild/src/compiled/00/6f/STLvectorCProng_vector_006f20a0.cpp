@@ -1,4 +1,4 @@
-// _STL::vector<CProng>::vector(const vector& x) -- STLport vector copy constructor (element CDefendingCombatantInfo::CProng) for a combat ring's 28-byte prongs: allocate exactly x.size() elements (none when empty), then __uninitialized_copy x's range into them
+// std::vector<CProng>::vector(const vector& x) -- STLport vector copy constructor (element CDefendingCombatantInfo::CProng) for a combat ring's 28-byte prongs: allocate exactly x.size() elements (none when empty), then __uninitialized_copy x's range into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F20A0, 104 bytes (112 with int3 padding), thiscall, `ret 4`, returns this.
 // Identity: the copy routine is the landed __uninitialized_copy<CDefendingCombatantInfo::CProng*> 0x006F14A0, so the
@@ -34,7 +34,7 @@ struct CProng {                                             // CDefendingCombata
     CIntelligentPointer<CThingCreatureBase> POccupier;            // +0x14
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

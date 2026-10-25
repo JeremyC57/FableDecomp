@@ -27,7 +27,7 @@ struct CCriticalSectionLock {                      // 8 bytes on the stack
 };
 class CBankFileAsync;
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };          // user constructor: no zero-initialised tag temporary
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -90,7 +90,7 @@ private:
 // STLport's POD _M_insert_overflow (0x009D7FC0, a COMDAT of this TU) as a same-TU noinline body: VC7.1 then sees that
 // it never touches the __true_type tag and homes the tag temporary in the dead `bank` argument slot, as retail does.
 #pragma auto_inline(off)
-namespace _STL {
+namespace std {
 template <class _Tp, class _Alloc>
 __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __position, const _Tp& __x, const __true_type&,
                                                                   unsigned int __fill_len, bool __atend)
@@ -108,7 +108,7 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __positio
 }
 #pragma auto_inline(on)
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CFailedAllocationHandler {                   // vtable 0x0129B874

@@ -1,4 +1,4 @@
-// _STL::vector<C3DTriangle2>::_M_allocate_and_copy(unsigned int n, const C3DTriangle2* first, const C3DTriangle2* last) -- allocate storage for n index triangles and copy-construct [first, last) into it; returns the new block
+// std::vector<C3DTriangle2>::_M_allocate_and_copy(unsigned int n, const C3DTriangle2* first, const C3DTriangle2* last) -- allocate storage for n index triangles and copy-construct [first, last) into it; returns the new block
 // Leaf: ??$_M_allocate_and_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6E470, 83 bytes, thiscall `ret 0Ch` (`this` unused: the allocator is
 //   empty). Callee: malloc 0x00BFEA0E (MSVCR71 import thunk, behind STLport allocator<T>::allocate).
@@ -19,7 +19,7 @@ public:
     unsigned short VertexIndex[3];                      // +0x00
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 

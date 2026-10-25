@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(_STL::set<long>* first, _STL::set<long>* last, const __false_type&) -- STLport range destroy for an array of index sets: run each set's destructor (erase every node, reset the header, free the header node)
+// std::__destroy_aux(std::set<long>* first, std::set<long>* last, const __false_type&) -- STLport range destroy for an array of index sets: run each set's destructor (erase every node, reset the header, free the header node)
 // Leaf: ??$__destroy_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE76E0, 114 bytes, `ret 4`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, last in edx (spilled to the pushed-ecx frame word and reloaded after the inner loop), the tag reference on the stack.
@@ -16,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E (not called here)
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -133,4 +133,4 @@ void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last,
 }
 }
 
-template void __fastcall _STL::__destroy_aux<_STL::set<long>*>(_STL::set<long>*, _STL::set<long>*, const _STL::__false_type&);
+template void __fastcall std::__destroy_aux<std::set<long>*>(std::set<long>*, std::set<long>*, const std::__false_type&);

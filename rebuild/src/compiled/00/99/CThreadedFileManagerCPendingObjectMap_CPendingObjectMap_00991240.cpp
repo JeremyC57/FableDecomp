@@ -23,7 +23,7 @@ public:
     class CPendingObjectMap;
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 template <class T> struct less { };
@@ -92,12 +92,12 @@ public:
     map() : _M_t(Compare(), Alloc()) { }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CThreadedFileManager::CPendingObjectMap {
 public:
-    _STL::map<CPendingObjectSortKey, CFileObject*> Objects;              // +0x00
-    _STL::map<CPendingObjectSortKey, CFileObject*>::iterator CurrentPosition;   // +0x0c
+    std::map<CPendingObjectSortKey, CFileObject*> Objects;              // +0x00
+    std::map<CPendingObjectSortKey, CFileObject*>::iterator CurrentPosition;   // +0x0c
     CPendingObjectMap();
 };
 

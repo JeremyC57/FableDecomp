@@ -1,5 +1,5 @@
-// _STL::_Construct(CVsyncCallbackTimer::CPendingQuery* p, const CVsyncCallbackTimer::CPendingQuery& val) -- STLport: placement-copy one 16-byte pending vsync query into a list node (unoptimised TU)
-// Leaf: ??$_Construct@UCPendingQuery@CVsyncCallbackTimer@@U12@@_STL@@YIXPAUCPendingQuery@CVsyncCallbackTimer@@ABU12@@Z
+// std::_Construct(CVsyncCallbackTimer::CPendingQuery* p, const CVsyncCallbackTimer::CPendingQuery& val) -- STLport: placement-copy one 16-byte pending vsync query into a list node (unoptimised TU)
+// Leaf: ??$_Construct@UCPendingQuery@CVsyncCallbackTimer@@U12@@std@@YIXPAUCPendingQuery@CVsyncCallbackTimer@@ABU12@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F7890, 82 bytes (+14 int3), `__fastcall` (p in ecx, &val in edx), `ret`.
 // Identity: CVsyncCallbackTimer (Ego_r.pdb) holds two list<CPendingQuery> (FreeQueoryObjects +0x04, PendingQueories +0x10);
 //   a list node's value is built by STLport's `_Construct(&node->_M_data, x)`. CPendingQuery is a 16-byte POD (copied as
@@ -31,7 +31,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 inline void __fastcall _Construct(_T1* __p, const _T2& __val)

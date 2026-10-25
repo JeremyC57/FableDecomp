@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(unsigned long* first, unsigned long* last, unsigned long*, int depth_limit, CBankFile::CompareDataOffset comp) -- introsort recursion of a bank's entry-index sort by data offset: median-of-three partition until 16 indices remain, partial (heap) sort when the depth budget runs out
+// std::__introsort_loop(unsigned long* first, unsigned long* last, unsigned long*, int depth_limit, CBankFile::CompareDataOffset comp) -- introsort recursion of a bank's entry-index sort by data offset: median-of-three partition until 16 indices remain, partial (heap) sort when the depth budget runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D48C0, 136 bytes, `ret 0Ch` (/Gr algorithm TU: first in ecx, last in
 //   edx; the value-type tag pointer, the depth limit and the one-pointer comparator on the stack).
@@ -57,7 +57,7 @@ struct CompareDataOffset {                         // CBankFile::CompareDataOffs
     }
 };
 
-namespace _STL {
+namespace std {
 const int __stl_threshold = 16;
 
 template <class _Tp, class _Compare>

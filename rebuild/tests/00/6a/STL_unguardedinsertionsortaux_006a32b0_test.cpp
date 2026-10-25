@@ -1,4 +1,4 @@
-// Behaviour test for 0x006A32B0 _STL::__unguarded_insertion_sort_aux<pair<long,CIntelligentPointer<CThing>>*>.
+// Behaviour test for 0x006A32B0 std::__unguarded_insertion_sort_aux<pair<long,CIntelligentPointer<CThing>>*>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("006a32b0_TEST FAIL\n"); return 1; } } while (0)

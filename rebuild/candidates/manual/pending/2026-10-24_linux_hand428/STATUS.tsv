@@ -9,9 +9,9 @@ address	status	bytes	test	note
 00b4a6c0	RELOCATION_MATCH	54v54	PASS	CEnginePrimitiveRenderer2D::Layer2DDistanceToZ; reciprocal as its own statement; grades 2
 00b507e0	MATCH	186v186	PASS	CMatrix4x4::PostMultiply; nested i/j loop; grades 2
 00b670e0	RELOCATION_MATCH	85v85	PASS	CEngineLandscapeRenderer::PatchWithinFadeStartSphere; if/return true; grades 2
-00b6b540	MATCH	60v60	PASS	_STL::fill<CVertexShader*>; grades 4
-00b6b610	MATCH	75v75	PASS	_STL::__copy<CVertexShader*>; grades 2
-00b6b790	MATCH	77v77	PASS	_STL::__copy_backward<CVertexShader*>; grades 2
+00b6b540	MATCH	60v60	PASS	std::fill<CVertexShader*>; grades 4
+00b6b610	MATCH	75v75	PASS	std::__copy<CVertexShader*>; grades 2
+00b6b790	MATCH	77v77	PASS	std::__copy_backward<CVertexShader*>; grades 2
 00b6cd80	DIFFER	41v113	-	vector<CTVertexLandscapeBackground>::erase; budget spent, differ/ holds the ungraded sibling-proven 2-level __forceinline form; grades 4
 00b7ad20	RELOCATION_MATCH	172v172	PASS	CEngineWaterRenderer::SetRenderTargetToSurface; one full-expression; grades 4
 00b7fd70	MATCH	101v101	PASS	vector<CTVertexWaterBackground>::erase; 2-level all-__forceinline copy chain; grades 2
@@ -19,23 +19,23 @@ address	status	bytes	test	note
 00b806e0	DIFFER	151v151	-	CEngineClothSimulationMeshBase::CalculateFadeOut; x87 product order + fst placement; grades 4
 00b81450	RELOCATION_MATCH	85v85	PASS	CEngineClothSimulationMeshBase::ClearStaticParticleSims; bool busy helper; grades 4
 00b817d0	RELOCATION_MATCH	79v79	PASS	CEngineSimulationManager::AddSimulationInfo; 4-byte STLport lists; grades 2
-00b832b0	RELOCATION_MATCH	94v94	PASS	_STL::fill<CCountedPointer<CParticleSimulation>*>; grades 1
+00b832b0	RELOCATION_MATCH	94v94	PASS	std::fill<CCountedPointer<CParticleSimulation>*>; grades 1
 00b83d30	RELOCATION_MATCH	111v111	PASS	CArray<CCountedPointer<CParticleSimulation>>::DeallocateMemory; grades 1
 00b842b0	MATCH	25v25	PASS	CEngineSubPrimitiveRenderer::GetCount; grades 1
 00b84720	DIFFER	142v142	-	CEngineSubPrimitiveRenderer::AddSubPrimitive; retail_asm candidate (bare fistp); grades 1
 00b84b20	DIFFER	221v232	-	CEngineSubPrimitiveRenderer::SortSingleRadix; register allocation + loop alignment pad; grades 4
-00b84e20	RELOCATION_MATCH	75v75	PASS	_STL::_Temporary_buffer::_M_allocate_buffer; grades 1
-00b851d0	MATCH	73v73	PASS	_STL::__unguarded_insertion_sort_aux; grades 2
-00b85240	MATCH	54v54	PASS	_STL::__lower_bound; grades 1
-00b85280	MATCH	54v54	PASS	_STL::__upper_bound; grades 1
-00b85390	MATCH	52v52	PASS	_STL::swap_ranges; grades 1
-00b855f0	RELOCATION_MATCH	102v102	PASS	_STL::__make_heap; grades 1
-00b85870	RELOCATION_MATCH	89v89	PASS	_STL::__linear_insert; grades 1
-00b858d0	RELOCATION_MATCH	197v197	PASS	_STL::__merge_sort_loop; grades 1
-00b859a0	RELOCATION_MATCH	195v195	PASS	_STL::__merge_backward; grades 1
-00b85e10	RELOCATION_MATCH	92v92	PASS	_STL::sort_heap; grades 1
-00b86260	RELOCATION_MATCH	89v89	PASS	_STL::__merge_sort_with_buffer; grades 1
-00b86450	RELOCATION_MATCH	99v99	PASS	_STL::__partial_sort; grades 1
-00b86570	RELOCATION_MATCH	99v99	PASS	_STL::__inplace_stable_sort; grades 1
-00b865e0	RELOCATION_MATCH	145v145	PASS	_STL::__stable_sort_adaptive; grades 1
-00b86710	RELOCATION_MATCH	139v139	PASS	_STL::__stable_sort_aux; grades 1
+00b84e20	RELOCATION_MATCH	75v75	PASS	std::_Temporary_buffer::_M_allocate_buffer; grades 1
+00b851d0	MATCH	73v73	PASS	std::__unguarded_insertion_sort_aux; grades 2
+00b85240	MATCH	54v54	PASS	std::__lower_bound; grades 1
+00b85280	MATCH	54v54	PASS	std::__upper_bound; grades 1
+00b85390	MATCH	52v52	PASS	std::swap_ranges; grades 1
+00b855f0	RELOCATION_MATCH	102v102	PASS	std::__make_heap; grades 1
+00b85870	RELOCATION_MATCH	89v89	PASS	std::__linear_insert; grades 1
+00b858d0	RELOCATION_MATCH	197v197	PASS	std::__merge_sort_loop; grades 1
+00b859a0	RELOCATION_MATCH	195v195	PASS	std::__merge_backward; grades 1
+00b85e10	RELOCATION_MATCH	92v92	PASS	std::sort_heap; grades 1
+00b86260	RELOCATION_MATCH	89v89	PASS	std::__merge_sort_with_buffer; grades 1
+00b86450	RELOCATION_MATCH	99v99	PASS	std::__partial_sort; grades 1
+00b86570	RELOCATION_MATCH	99v99	PASS	std::__inplace_stable_sort; grades 1
+00b865e0	RELOCATION_MATCH	145v145	PASS	std::__stable_sort_adaptive; grades 1
+00b86710	RELOCATION_MATCH	139v139	PASS	std::__stable_sort_aux; grades 1

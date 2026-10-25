@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -71,7 +71,7 @@ public:
 static bool Near(float a, float b) { float d = a - b; return d < 1e-6f && d > -1e-6f; }
 
 
-typedef _STL::pair<long, float> E;
+typedef std::pair<long, float> E;
 
 int main()
 {

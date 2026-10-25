@@ -1,4 +1,4 @@
-// _STL::vector<unsigned short>::vector(size_type n) -- STLport sized constructor: allocate n 16-bit slots through the _Vector_base constructor and fill them with zero
+// std::vector<unsigned short>::vector(size_type n) -- STLport sized constructor: allocate n 16-bit slots through the _Vector_base constructor and fill them with zero
 // Leaf: ??0?$vector@G
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AADD80, length 97 bytes, `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (allocator<unsigned short>::allocate, null for n == 0).
@@ -10,7 +10,7 @@
 //   `fill_n` loop, which VC7.1 turns into the `rep stosd ; adc ecx,ecx ; rep stosw` fill idiom (n > 0 unsigned = `jbe`).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -77,4 +77,4 @@ public:
 
 template vector<unsigned short>::vector(unsigned int);
 
-}   // namespace _STL
+}   // namespace std

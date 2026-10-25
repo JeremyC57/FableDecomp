@@ -1,7 +1,7 @@
 # Chunk 418 -- lessons from the authoring agent (fold into GOTCHAS at landing)
 
 - STLport 4.6 sorts over CCharString pairs match first try when written as verbatim `_algo.c` / `_heap.c` `__fastcall`
-  templates in `_STL`. The model needs the inline CCharString operator< over a same-TU noinline
+  templates in `std`. The model needs the inline CCharString operator< over a same-TU noinline
   `CBasicString<char>::operator<` and STLport's explicit pair copy constructor. Out-of-line callees are only declared.
   15 of the 16 rows took 1 grade (0x00A40370 .. 0x00A41CD0).
 - A by-value comparator slot that is dead after the comparison absorbs the `copy_backward` random_access_iterator_tag

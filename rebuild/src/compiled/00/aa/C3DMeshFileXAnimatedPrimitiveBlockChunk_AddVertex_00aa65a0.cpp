@@ -23,7 +23,7 @@ public:
     unsigned long Weight;                               // +0x04
 };
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
@@ -96,7 +96,7 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __positio
 #pragma auto_inline(on)
 }
 
-template <class T> class CArray : public _STL::vector<T> {     // retail CArray<T>: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {     // retail CArray<T>: the 12-byte STLport vector
 public:
     unsigned long Size() const { return (unsigned long)this->size(); }
 };

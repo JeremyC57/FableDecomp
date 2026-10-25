@@ -1,4 +1,4 @@
-// _STL::map::operator[](const unsigned long& k) -- map<unsigned long,CDefPointer<CDefClassBase>>::operator[]: find the slot for key k, inserting a null def pointer when it is missing
+// std::map::operator[](const unsigned long& k) -- map<unsigned long,CDefPointer<CDefClassBase>>::operator[]: find the slot for key k, inserting a null def pointer when it is missing
 // Flags: /Gr
 // Leaf: ??A?$map@KV?$CDefPointer@VCDefClassBase@@@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B7BC0, 115 bytes (+ int3 padding), thiscall `ret 4`.
@@ -26,7 +26,7 @@ public:
     T* Object;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

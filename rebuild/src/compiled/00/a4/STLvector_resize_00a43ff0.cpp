@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CLipSyncDataBankEntry>::resize(n): resize the lip-sync entry list to n entries, filling with an empty entry (no data, zero duration)
-// Leaf: ?resize@?$vector@VCLipSyncDataBankEntry@@V?$allocator@VCLipSyncDataBankEntry@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CLipSyncDataBankEntry>::resize(n): resize the lip-sync entry list to n entries, filling with an empty entry (no data, zero duration)
+// Leaf: ?resize@?$vector@VCLipSyncDataBankEntry@@V?$allocator@VCLipSyncDataBankEntry@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A43FF0, 39 bytes, thiscall on the vector, `ret 4`.
 // Identity: FableWin.pdb ?resize@?$vector@VCLipSyncDataBankEntry@@...@@QAEXI@Z; no direct call site in the image (xref:
 //   0 calls / 0 references); its callee is the two-argument resize that CLipSyncDataBank::NotifyEntryAdded 0x00A42DF0 /
@@ -44,7 +44,7 @@ public:
     CLipSyncDataBankEntry() : Duration(0.0f) { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -73,7 +73,7 @@ public:
 // writes through the value reference (not graded)
 #pragma auto_inline(off)
 template <class _Tp, class _Alloc>
-__declspec(noinline) void _STL::vector<_Tp, _Alloc>::resize(unsigned int __new_size, const _Tp& __x)
+__declspec(noinline) void std::vector<_Tp, _Alloc>::resize(unsigned int __new_size, const _Tp& __x)
 {
     _Tp* __last = this->_M_start + __new_size;
     for (_Tp* __p = this->_M_finish; __p < __last; ++__p)
@@ -82,4 +82,4 @@ __declspec(noinline) void _STL::vector<_Tp, _Alloc>::resize(unsigned int __new_s
 }
 #pragma auto_inline(on)
 
-template void _STL::vector<CLipSyncDataBankEntry>::resize(unsigned int);
+template void std::vector<CLipSyncDataBankEntry>::resize(unsigned int);

@@ -1,9 +1,9 @@
-// _STL::pair::pair(const pair& other) -- copy constructor of pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo>: the UID key, then the persist info's UID and script string
-// Leaf: ??0?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@_STL@@QAE@ABU01@@Z
+// std::pair::pair(const pair& other) -- copy constructor of pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo>: the UID key, then the persist info's UID and script string
+// Leaf: ??0?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@QAE@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB90F0, 47 bytes, __fastcall `ret 4`, returns `this`.
 // Identity (label correction): the catalog's "pair<pair<long,long>,CEngineTextureDecal>" is propagated. The five callers
 //   0x00CBCBD2..0x00CBCDC4 are the scripting library's 24-byte introsort loops building `_Tp(__median(...))` for
-//   __unguarded_partition 0x00CBA580 (the landed __median 0x00CB9D30 names the element): _STL::pair<unsigned __int64,
+//   __unguarded_partition 0x00CBA580 (the landed __median 0x00CB9D30 names the element): std::pair<unsigned __int64,
 //   NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned: key +0, CPersistInfo::UID +8,
 //   PersistScript +0x10); FableWin.pdb has ??0?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@QAE@ABU01@@Z.
 // Callee: CCharString::CCharString(const CCharString&) @ 0x0099EC30.
@@ -27,7 +27,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x08

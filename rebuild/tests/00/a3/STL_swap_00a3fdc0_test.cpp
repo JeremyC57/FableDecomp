@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A3FDC0 _STL::swap<CSymbolMap::CSymbolInfo>.
+// Behaviour test for 0x00A3FDC0 std::swap<CSymbolMap::CSymbolInfo>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00a3fdc0_TEST FAIL\n"); return 1; } } while (0)

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00711860 _STL::list<CAnimSet>::remove_if<CPointersEquivalent<const CAnimSet> >: erase the
+// Behaviour test for 0x00711860 std::list<CAnimSet>::remove_if<CPointersEquivalent<const CAnimSet> >: erase the
 // animation set whose address the predicate holds (its vectors freed, then the node), leaving the rest linked
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,7 +41,7 @@ public:
     CPointersEquivalent(T* p) : P(p) { }
     bool operator()(const T& x) const { ++gPredCalls; return P == &x; }
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { test_free(__p); }
@@ -110,7 +110,7 @@ public:
     }
 };
 }
-typedef _STL::list<CAnimSet> CAnimSetList;
+typedef std::list<CAnimSet> CAnimSetList;
 typedef CAnimSetList::_Node CNode;
 static CNode* MakeNode(long priority, bool withAnims)
 {

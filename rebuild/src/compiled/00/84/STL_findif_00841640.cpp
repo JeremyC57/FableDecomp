@@ -1,4 +1,4 @@
-// _STL::__find_if(const char* first, const char* last, _Eq_char_bound<char_traits<char> > pred, const random_access_iterator_tag&) -- STLport four-way unrolled find_if over a character range: the first character equal to the bound one, else last
+// std::__find_if(const char* first, const char* last, _Eq_char_bound<char_traits<char> > pred, const random_access_iterator_tag&) -- STLport four-way unrolled find_if over a character range: the first character equal to the bound one, else last
 // Leaf: ??$__find_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00841640, length 76 bytes, `ret 8`.
 // Callers: the find_if wrapper 0x008416C0 (0x008416CA; it forwards the 1-byte predicate by value and homes the tag on the
@@ -11,7 +11,7 @@
 // Shape: STLport 4.6 `_algobase.c` random-access `__find_if` verbatim (as 0x00695E30 of this chunk) in a /Gr algorithm
 //   TU (`__fastcall`: first in ecx, last in edx, the predicate and the tag reference on the stack); the predicate's
 //   char rides in bl, `_Traits::eq` is `cmp byte ptr [eax],bl`.
-namespace _STL {
+namespace std {
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
 struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_iterator_tag() { } };
@@ -66,5 +66,5 @@ _RandomAccessIter __fastcall __find_if(_RandomAccessIter __first, _RandomAccessI
 }
 }
 
-typedef _STL::_Eq_char_bound<_STL::char_traits<char> > TEqCharBound;
-template const char* __fastcall _STL::__find_if<const char*, TEqCharBound>(const char*, const char*, TEqCharBound, const _STL::random_access_iterator_tag&);
+typedef std::_Eq_char_bound<std::char_traits<char> > TEqCharBound;
+template const char* __fastcall std::__find_if<const char*, TEqCharBound>(const char*, const char*, TEqCharBound, const std::random_access_iterator_tag&);

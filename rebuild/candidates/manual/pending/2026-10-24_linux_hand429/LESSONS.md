@@ -56,7 +56,7 @@ Review at landing:
     0x01436E80 is CEnginePrimitiveRendererSharedData (+0x8C ZSpriteDrawDistanceFactor).
   - CLocalDetailCacheMap Update 0x00BDED90 calls 0x00BE04F0 "RemoveFinished"; it is
     CEngineStaticMapFileBlockManager::DeleteUnusedBlocks.
-  - 0x004400C0 (`__uninitialized_copy<CEnginePrimitiveHandle*>`) uses `namespace std`; retail STLport mangles `_STL`.
+  - 0x004400C0 (`__uninitialized_copy<CEnginePrimitiveHandle*>`) uses `namespace std`; retail STLport mangles `std`.
 - Catalog and manifest labels found wrong outside the chunk:
   - 0x009B6300 "vector_insert" is `vector<pair<ulong,ulong> >::_M_insert_overflow`;
   - 0x0042971D / 0x0042A34E are `_Rb_global<bool>::_Rebalance` / `_Rebalance_for_erase`, not

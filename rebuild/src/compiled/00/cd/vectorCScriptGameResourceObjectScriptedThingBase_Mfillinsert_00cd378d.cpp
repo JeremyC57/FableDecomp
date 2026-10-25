@@ -28,7 +28,7 @@ public:
     void* m_pImplementationInfo;
 };
 inline void* operator new(unsigned int, void* where) { return where; }
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class T> class allocator { };

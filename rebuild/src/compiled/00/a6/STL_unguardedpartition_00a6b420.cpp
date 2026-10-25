@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<unsigned long,unsigned long>* first, pair<unsigned long,unsigned long>* last, pair<unsigned long,unsigned long> pivot, less<pair<unsigned long,unsigned long> > comp) -- quicksort partition of the pairs around a by-value pivot; returns the cut
+// std::__unguarded_partition(pair<unsigned long,unsigned long>* first, pair<unsigned long,unsigned long>* last, pair<unsigned long,unsigned long> pivot, less<pair<unsigned long,unsigned long> > comp) -- quicksort partition of the pairs around a by-value pivot; returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6B420, 87 bytes (+9 int3), `ret 0Ch` (link-time __fastcall: first in
 //   ecx, last in edx, the 8-byte pivot and the empty comparator on the stack). No callees.
@@ -8,7 +8,7 @@
 // Shape: STLport `for (;;) { while (comp(*first, pivot)) ++first; --last; while (comp(pivot, *last)) --last;
 //   if (!(first < last)) return first; iter_swap(first, last); ++first; }` -- the pivot words stay in edi/ebx, the
 //   inlined __iter_swap temporary in ecx/esi.
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> class pair {
 public:

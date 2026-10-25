@@ -28,7 +28,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -124,7 +124,7 @@ list<_Tp, _Alloc>& list<_Tp, _Alloc>::operator=(const list<_Tp, _Alloc>& __x)
     return *this;
 }
 
-} // namespace _STL
+} // namespace std
 
-template _STL::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>&
-_STL::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>::operator=(const _STL::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>&);
+template std::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>&
+std::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>::operator=(const std::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>&);

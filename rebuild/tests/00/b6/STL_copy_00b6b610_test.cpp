@@ -38,7 +38,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag {};
 struct forward_iterator_tag : public input_iterator_tag {};
 struct bidirectional_iterator_tag : public forward_iterator_tag {};
@@ -84,14 +84,14 @@ int main()
     CVertexShader src[4], dst[6];
     for (int i = 0; i < 4; ++i) { src[i].Data = NewData(1); }
     for (int i = 0; i < 6; ++i) { dst[i].Data = NewData(1); }
-    CVertexShader* r = _STL::__copy(src, src + 4, dst + 1, _STL::random_access_iterator_tag(), (int*)0);
+    CVertexShader* r = std::__copy(src, src + 4, dst + 1, std::random_access_iterator_tag(), (int*)0);
     if (r != dst + 5) { std::printf("00b6b610_TEST FAIL\n"); return 1; }
     if (g_deleted != 4) { std::printf("00b6b610_TEST FAIL\n"); return 1; }
     for (int i = 0; i < 4; ++i) {
         if (dst[i + 1].Data != src[i].Data) { std::printf("00b6b610_TEST FAIL\n"); return 1; }
         if (src[i].Data->ReferenceCount != 2) { std::printf("00b6b610_TEST FAIL\n"); return 1; }
     }
-    if (_STL::__copy(src, src, dst, _STL::random_access_iterator_tag(), (int*)0) != dst) { std::printf("00b6b610_TEST FAIL\n"); return 1; }
+    if (std::__copy(src, src, dst, std::random_access_iterator_tag(), (int*)0) != dst) { std::printf("00b6b610_TEST FAIL\n"); return 1; }
     std::printf("00b6b610_TEST PASS\n");
     return 0;
 }

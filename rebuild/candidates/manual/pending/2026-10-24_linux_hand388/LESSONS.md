@@ -65,7 +65,7 @@ Review at landing:
   - The landed 0x00764970 element `CElement12_006f0810` is vector<C3DVector>.
 - 006f1ae0 has no call or data reference in the image. Its `_Rb_tree(comp, a)` vs `map(comp, a)` spelling is not
   decided by the bytes. The sibling 0x006F1B20, the same constructor for the 0x18-byte node, is not in this chunk.
-- The STLport rows mix `namespace std` (006eff00, 006f1180, 006f1ae0, as the landed 0x0069C970) and `_STL` (006f0810,
+- The STLport rows mix `namespace std` (006eff00, 006f1180, 006f1ae0, as the landed 0x0069C970) and `std` (006f0810,
   006f20a0, as the landed 0x004D08A0). All leaves are prefix-agnostic and resolve to one symbol each.
 - `#pragma pack(push, 1)` on C3DVector (006eff00, 006f1180, 006f0810, 006f20a0) is the real retail layout (PDB
   `pair<C3DVector,bool>` = 13, CProng::Prong at +1), as in the landed 0x006F14A0 / 0x006EB8A0. It is not a layout trick.

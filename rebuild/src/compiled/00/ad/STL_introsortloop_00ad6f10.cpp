@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* last, CGroup*, int depth_limit, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- STLport introsort recursion over a vertex's bone groups: median-of-three partition until 16 elements remain, heap sort when the depth budget runs out
+// std::__introsort_loop(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* last, CGroup*, int depth_limit, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- STLport introsort recursion over a vertex's bone groups: median-of-three partition until 16 elements remain, heap sort when the depth budget runs out
 // Flags: /Gr
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD6F10, 0xD7 bytes (+ int3 padding), __fastcall (first ecx, last edx),
@@ -28,7 +28,7 @@ public:
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 typedef bool (__fastcall* PFNGroupCompare)(const CGroup&, const CGroup&);
 
-namespace _STL {
+namespace std {
 
 const int __stl_threshold = 16;
 
@@ -82,4 +82,4 @@ void __introsort_loop(_RandomAccessIter __first, _RandomAccessIter __last, _Tp*,
 
 template void __introsort_loop<CGroup*, CGroup, int, PFNGroupCompare>(CGroup*, CGroup*, CGroup*, int, PFNGroupCompare);
 
-} // namespace _STL
+} // namespace std

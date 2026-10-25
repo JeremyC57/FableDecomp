@@ -1,4 +1,4 @@
-// _STL::__find_if(const NAnimationEvents::CEvent* first, const NAnimationEvents::CEvent* last, CIsEventIndexEqualTo pred, const random_access_iterator_tag&) -- STLport four-way unrolled find_if: the first animation event whose 30-bit index equals pred.Index, else last
+// std::__find_if(const NAnimationEvents::CEvent* first, const NAnimationEvents::CEvent* last, CIsEventIndexEqualTo pred, const random_access_iterator_tag&) -- STLport four-way unrolled find_if: the first animation event whose 30-bit index equals pred.Index, else last
 // Leaf: ??$__find_if@PBVCEvent@NAnimationEvents@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F8EA0, 152 bytes, `__fastcall` (first in ecx, last in edx, the 4-byte
 //   predicate by value and the tag reference on the stack, `ret 8`), returns the iterator in eax.
@@ -27,7 +27,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
@@ -74,4 +74,4 @@ template const NAnimationEvents::CEvent* __fastcall __find_if(const NAnimationEv
                                                               NAnimationEvents::CIsEventIndexEqualTo,
                                                               const random_access_iterator_tag&);
 
-} // namespace _STL
+} // namespace std

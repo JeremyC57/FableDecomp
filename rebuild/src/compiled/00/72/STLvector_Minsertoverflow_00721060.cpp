@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(pair* position, const pair& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the hero-morph texture-layer map's vector<pair<long, CTCHeroMorph::CTextureLayer> >: allocate old + max(old, n), copy the head, place the n copies, copy the tail, free the old block
+// std::vector::_M_insert_overflow(pair* position, const pair& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the hero-morph texture-layer map's vector<pair<long, CTCHeroMorph::CTextureLayer> >: allocate old + max(old, n), copy the head, place the n copies, copy the tail, free the old block
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00721060, length 226 bytes (+ int3 padding), thiscall, `ret 14h`.
 // Callers: 0x0071D76B / 0x0071DD05 (CTCHeroMorph::AddCompositeTexture 0x0071DBD0, landed), 0x00721782, and the landed
@@ -38,7 +38,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class T1, class T2> struct pair {
@@ -128,6 +128,6 @@ void vector<T, Alloc>::_M_insert_overflow(T* position, const T& x, const __false
 }
 }
 
-typedef _STL::pair<long, CTCHeroMorph::CTextureLayer> TTextureLayerEntry;
-template void _STL::vector<TTextureLayerEntry>::_M_insert_overflow(TTextureLayerEntry*, const TTextureLayerEntry&,
-    const _STL::__false_type&, unsigned int, bool);
+typedef std::pair<long, CTCHeroMorph::CTextureLayer> TTextureLayerEntry;
+template void std::vector<TTextureLayerEntry>::_M_insert_overflow(TTextureLayerEntry*, const TTextureLayerEntry&,
+    const std::__false_type&, unsigned int, bool);

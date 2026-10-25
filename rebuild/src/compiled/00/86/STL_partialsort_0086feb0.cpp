@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<EExpressionType, CExpressionSet::CEntry>* first, pair<EExpressionType, CEntry>* middle, pair<EExpressionType, CEntry>* last, pair<EExpressionType, CEntry>*, CKeyPairCompareLess<EExpressionType, CEntry> comp) -- STLport partial_sort core over a creature expression set's vector map: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
+// std::__partial_sort(pair<EExpressionType, CExpressionSet::CEntry>* first, pair<EExpressionType, CEntry>* middle, pair<EExpressionType, CEntry>* last, pair<EExpressionType, CEntry>*, CKeyPairCompareLess<EExpressionType, CEntry> comp) -- STLport partial_sort core over a creature expression set's vector map: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086FEB0, length 160 bytes, `ret 0Ch`.
 // Callers: the map's __introsort_loop 0x008700A0 (landed; 0x00870186, the depth-limit fallback) and 0x0086FFAC.
@@ -20,7 +20,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -63,9 +63,9 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<EExpressionType, CExpressionSet::CEntry> TExpressionPair;
+typedef std::pair<EExpressionType, CExpressionSet::CEntry> TExpressionPair;
 typedef CKeyPairCompareLess<EExpressionType, CExpressionSet::CEntry> TExpressionLess;
-template void __fastcall _STL::__partial_sort<TExpressionPair*, TExpressionPair, TExpressionLess>(TExpressionPair*, TExpressionPair*, TExpressionPair*, TExpressionPair*, TExpressionLess);
+template void __fastcall std::__partial_sort<TExpressionPair*, TExpressionPair, TExpressionLess>(TExpressionPair*, TExpressionPair*, TExpressionPair*, TExpressionPair*, TExpressionLess);

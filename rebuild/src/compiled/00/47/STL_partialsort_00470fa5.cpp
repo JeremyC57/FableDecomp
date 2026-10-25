@@ -1,6 +1,6 @@
-// _STL::__partial_sort(pair<unsigned long,CSoundPair>* first, pair<unsigned long,CSoundPair>* middle, pair<unsigned long,CSoundPair>* last, pair<unsigned long,CSoundPair>*, CKeyPairCompareLess<unsigned long,CSoundPair> comp) -- STLport heap-select partial sort of the sound map's 12-byte entries (the introsort depth-exhausted fallback): heapify [first, middle), push every smaller later entry through the heap top, then sort the heap
-// Instantiation: _STL::__partial_sort<pair<unsigned long,CSoundPair>*,pair<unsigned long,CSoundPair>,CKeyPairCompareLess<unsigned long,CSoundPair> >
-// Leaf: ??$__partial_sort@PAU?$pair@KVCSoundPair@@@_STL@@U12@V?$CKeyPairCompareLess@KVCSoundPair@@@@@_STL@@
+// std::__partial_sort(pair<unsigned long,CSoundPair>* first, pair<unsigned long,CSoundPair>* middle, pair<unsigned long,CSoundPair>* last, pair<unsigned long,CSoundPair>*, CKeyPairCompareLess<unsigned long,CSoundPair> comp) -- STLport heap-select partial sort of the sound map's 12-byte entries (the introsort depth-exhausted fallback): heapify [first, middle), push every smaller later entry through the heap top, then sort the heap
+// Instantiation: std::__partial_sort<pair<unsigned long,CSoundPair>*,pair<unsigned long,CSoundPair>,CKeyPairCompareLess<unsigned long,CSoundPair> >
+// Leaf: ??$__partial_sort@PAU?$pair@KVCSoundPair@@@std@@U12@V?$CKeyPairCompareLess@KVCSoundPair@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00470FA5, 176 bytes (size-optimised def TU, no padding), __fastcall
 //   (first ecx, middle edx; last, the value-type pointer and the 4-byte comparator slot on the stack), `ret 0Ch`.
 // Identity: called by the landed __introsort_loop @ 0x00470E9E (partial_sort(first, last, last, comp) when the depth
@@ -20,7 +20,7 @@ public:
     long LastSound;                                         // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -30,10 +30,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> __forceinline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }     // _STLP_VALUE_TYPE for pointers
 template <class _Tp> __forceinline int* __distance_type(const _Tp*) { return (int*)0; }  // _STLP_DISTANCE_TYPE for pointers
 

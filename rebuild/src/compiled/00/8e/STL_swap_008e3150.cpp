@@ -1,4 +1,4 @@
-// _STL::swap(C3DVector& a, C3DVector& b) -- exchange two 12-byte vectors through a frame temporary
+// std::swap(C3DVector& a, C3DVector& b) -- exchange two 12-byte vectors through a frame temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E3150, length 66 bytes (`ret`, no stack arguments).
 // Identity: no direct callers; the body sits in the /Gr STLport algorithm block of the ice-troll icicle TU next to
@@ -13,7 +13,7 @@ struct C3DVector {
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 inline void __fastcall swap(_Tp& __a, _Tp& __b)
 {

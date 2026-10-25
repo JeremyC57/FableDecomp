@@ -1,4 +1,4 @@
-// _STL::vector<pair<EHeroMorphType,CTextureMorphEntry>>::_M_allocate_and_copy(size_t n, const pair* first, const pair* last) -- STLport vector regrowth helper for CTextureMorphs' CVectorMap<EHeroMorphType, CTextureMorphEntry> (24-byte pairs): malloc n elements (none for zero) and copy-construct [first, last) into them
+// std::vector<pair<EHeroMorphType,CTextureMorphEntry>>::_M_allocate_and_copy(size_t n, const pair* first, const pair* last) -- STLport vector regrowth helper for CTextureMorphs' CVectorMap<EHeroMorphType, CTextureMorphEntry> (24-byte pairs): malloc n elements (none for zero) and copy-construct [first, last) into them
 // Leaf: _M_allocate_and_copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E70CF, 79 bytes, `ret 0Ch` (size-optimised TU: unaligned entry,
 //   `pop ecx` after malloc, `push 5 ; pop ecx`). `this` (the vector) is never read: the allocator is empty.
@@ -18,7 +18,7 @@
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 inline void* operator new(size_t, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

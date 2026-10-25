@@ -1,4 +1,4 @@
-// _STL::vector<C3DTriangle2>::_M_allocate_and_copy(unsigned int n, const C3DTriangle2* first, const C3DTriangle2* last) -- allocate storage for n triangles and placement copy [first, last) into it; returns the new block
+// std::vector<C3DTriangle2>::_M_allocate_and_copy(unsigned int n, const C3DTriangle2* first, const C3DTriangle2* last) -- allocate storage for n triangles and placement copy [first, last) into it; returns the new block
 // Leaf: ?_M_allocate_and_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A53650, length 83 bytes (+13 int3 pad), `ret 0Ch`.
 // Caller: 0x00A54CFE (vector<C3DTriangle2>::operator=, the reallocating arm). Callee: malloc 0x00BFEA0E.
@@ -16,7 +16,7 @@ public:
     unsigned short VertexIndex[3];                   // +0x00
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // STLport _IS_POD_ITER result for a class element
 
 template <class _T1, class _T2>

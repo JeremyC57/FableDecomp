@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A82000 _STL::__copy over (unsigned __int64 ID, list) entries: every entry of [first, last)
+// Behaviour test for 0x00A82000 std::__copy over (unsigned __int64 ID, list) entries: every entry of [first, last)
 // is assigned forward into result (key copied, the list assigned through its operator=), the advanced result is
 // returned, an empty range returns result untouched; overlapping forward copies read before they overwrite.
 #include <cstdio>

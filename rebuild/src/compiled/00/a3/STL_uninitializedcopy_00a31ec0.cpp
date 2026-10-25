@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const C3DGeneratorObject* first, const C3DGeneratorObject* last, C3DGeneratorObject* result, const __false_type&) -- copy-construct each generator object of [first, last) into raw storage at result, return the end of the copies
+// std::__uninitialized_copy(const C3DGeneratorObject* first, const C3DGeneratorObject* last, C3DGeneratorObject* result, const __false_type&) -- copy-construct each generator object of [first, last) into raw storage at result, return the end of the copies
 // Leaf: __uninitialized_copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A31EC0, 82 bytes (+ int3 padding), `ret 8` (__fastcall: first in ecx, last
 //   in edx, result and the tag reference on the stack).
@@ -35,7 +35,7 @@ public:
     bool          UseLocalOrigin;                       // +0x3c
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

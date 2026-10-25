@@ -12,7 +12,7 @@
 //   argument slot and pushed as a dword, value = *(last - 1), holeIndex = (last - first) - 1.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -65,11 +65,11 @@ public:
 
 template <class T> class CPriorityQueue {
 public:
-    _STL::vector<T> Elements;                           // +0x00
+    std::vector<T> Elements;                           // +0x00
     template <class C> void Push(const T& element, const C& compare)
     {
         Elements.push_back(element);
-        _STL::push_heap(Elements.begin(), Elements.end(), compare);
+        std::push_heap(Elements.begin(), Elements.end(), compare);
     }
 };
 

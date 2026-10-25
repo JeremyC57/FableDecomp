@@ -22,7 +22,7 @@ public:
     void OnCleanup(bool flag);                          // 0x006E5690
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { };
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _Tp> class allocator {
@@ -115,7 +115,7 @@ public:
 
 class CScriptConversationManager {
 public:
-    _STL::map<long, CScriptConversation> Conversations; // +0x00
+    std::map<long, CScriptConversation> Conversations; // +0x00
     long             NextConversationIndex;             // +0x0c
     bool             AlwaysShowText;                    // +0x10
     void RemoveConversation(long conversation, bool flag);
@@ -123,7 +123,7 @@ public:
 
 void CScriptConversationManager::RemoveConversation(long conversation, bool flag)
 {
-    _STL::map<long, CScriptConversation>::iterator it;
+    std::map<long, CScriptConversation>::iterator it;
     it = Conversations.find(conversation);
     if (it != Conversations.end()) {
         it->second.OnCleanup(flag);
@@ -137,7 +137,7 @@ static int g_dtor = 0, g_cleanup = 0, g_cleanupFlag = -1, g_rebalance = 0;
 static void* g_cleanupThis = 0;
 CScriptConversation::~CScriptConversation() { ++g_dtor; }
 void CScriptConversation::OnCleanup(bool flag) { ++g_cleanup; g_cleanupFlag = flag ? 1 : 0; g_cleanupThis = this; }
-namespace _STL {
+namespace std {
 template <> _Rb_tree_node_base* __cdecl _Rb_global<bool>::_Rebalance_for_erase(_Rb_tree_node_base* __z, _Rb_tree_node_base*& __root,
                                                                               _Rb_tree_node_base*& __leftmost, _Rb_tree_node_base*& __rightmost)
 {
@@ -159,7 +159,7 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::find(const _Key& __k)
     return end();
 }
 }
-typedef _STL::_Rb_tree_node<_STL::pair<const long, CScriptConversation> > TNode;
+typedef std::_Rb_tree_node<std::pair<const long, CScriptConversation> > TNode;
 int main()
 {
     static double hraw[sizeof(TNode) / sizeof(double) + 1];

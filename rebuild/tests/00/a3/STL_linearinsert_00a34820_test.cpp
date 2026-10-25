@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A34820 _STL::__linear_insert: a new minimum shifts the run up and goes first; anything else sinks from the back.
+// Behaviour test for 0x00A34820 std::__linear_insert: a new minimum shifts the run up and goes first; anything else sinks from the back.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A43B20: _STL::vector<NGameText::CDataBankTextEntry>::_M_insert_overflow (grow: copy the head, fill, copy the tail, release the old block)
+// Behaviour test for 0x00A43B20: std::vector<NGameText::CDataBankTextEntry>::_M_insert_overflow (grow: copy the head, fill, copy the tail, release the old block)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool c) { if (!c) g_fail = 1; }
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -70,7 +70,7 @@ struct CDataBankTextEntry {
 using NGameText::CTextEntry;
 using NGameText::CDataBankTextEntry;
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
@@ -146,14 +146,14 @@ int main()
     t1.__vftable = t2.__vftable = t3.__vftable = 0;
     t1.RefCount = t2.RefCount = t3.RefCount = 0;
     {
-        _STL::vector<CDataBankTextEntry> v;
+        std::vector<CDataBankTextEntry> v;
         CDataBankTextEntry e1(&t1, 1), e2(&t2, 2), e3(&t3, 3);
-        v._M_insert_overflow(v._M_finish, e1, _STL::__false_type(), 1u, true);
+        v._M_insert_overflow(v._M_finish, e1, std::__false_type(), 1u, true);
         Check(v.size() == 1 && v._M_end_of_storage._M_data == v._M_start + 1 && t1.RefCount == 2);
-        v._M_insert_overflow(v._M_finish, e2, _STL::__false_type(), 1u, true);
+        v._M_insert_overflow(v._M_finish, e2, std::__false_type(), 1u, true);
         Check(v.size() == 2 && v._M_end_of_storage._M_data == v._M_start + 2 && t1.RefCount == 2 && t2.RefCount == 2);
         // fill three copies in front of the second entry
-        v._M_insert_overflow(v._M_start + 1, e3, _STL::__false_type(), 3u, false);
+        v._M_insert_overflow(v._M_start + 1, e3, std::__false_type(), 3u, false);
         Check(v.size() == 5 && v._M_end_of_storage._M_data == v._M_start + 5);
         Check(v._M_start[0].PText.P == &t1 && v._M_start[0].NarratorIndex == 1);
         for (int i = 1; i < 4; ++i)

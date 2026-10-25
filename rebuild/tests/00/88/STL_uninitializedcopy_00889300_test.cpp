@@ -4,7 +4,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::__uninitialized_copy over CEnvironmentThemePriorityStackEntry @ 0x00889300: copy-construct each 48-byte
+// Model of std::__uninitialized_copy over CEnvironmentThemePriorityStackEntry @ 0x00889300: copy-construct each 48-byte
 // entry (its theme-weight vector through its own deep copy constructor) into raw storage, return the new end.
 struct __false_type { __false_type() { } };
 struct CThemeWeight {

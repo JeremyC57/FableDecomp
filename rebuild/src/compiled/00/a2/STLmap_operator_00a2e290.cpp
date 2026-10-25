@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, vector<CMeshDataBank::CLipSyncEntry> >: lower_bound, insert (k, empty vector) when absent, return the mapped vector
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, vector<CMeshDataBank::CLipSyncEntry> >: lower_bound, insert (k, empty vector) when absent, return the mapped vector
 // Leaf: ??A?$map@VCCharString@@V?$vector@VCLipSyncEntry@CMeshDataBank@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2E290, 224 bytes, __fastcall `ret 4`.
 // Identity: only caller CMeshDataBank::InitialiseEntry (0x00A27BC8); Ego_r.pdb CMeshDataBank::LipSyncA is a map<CCharString,
@@ -50,7 +50,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> inline void _Destroy(_Tp* __p) { __p->~_Tp(); }
 template <class _Tp> inline void _Destroy(_Tp* __first, _Tp* __last)
@@ -99,10 +99,10 @@ template <class _Tp> vector<_Tp>::vector(const vector<_Tp>& __x)
 }
 #pragma auto_inline(on)
 
-} // namespace _STL
-using _STL::vector;
+} // namespace std
+using std::vector;
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {             // STLport 4.6 (member templates on)
     _T1 first;
@@ -160,4 +160,4 @@ public:
 
 template vector<CMeshDataBank::CLipSyncEntry> & map<CCharString, vector<CMeshDataBank::CLipSyncEntry> >::operator[](const CCharString&);
 
-} // namespace _STL
+} // namespace std

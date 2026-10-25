@@ -1,9 +1,9 @@
-// _STL::swap(CBindingPair& a, CBindingPair& b) -- exchange two (name, entity script binding) pairs through a temporary copy
+// std::swap(CBindingPair& a, CBindingPair& b) -- exchange two (name, entity script binding) pairs through a temporary copy
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBA8E0, 194 bytes (`ret`, both references in ecx/edx).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport _STL::swap over (name, entity script binding) = _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530); reached through
+// Identity: STLport std::swap over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530); reached through
 //   iter_swap (tail `jmp` at 0x00CBB2C0) and __unguarded_partition 0x00CBB8B9. The manifest label "swap<C3DMeshVolume>"
 //   is propagated and wrong.
 // Callees: CCharString copy/assign/dtor 0x0099EC30 / 0x0099EFB0 / 0x0099EAE0, pair operator= 0x00CBA700 (retail
@@ -65,7 +65,7 @@ public:
     }
 };
 class CEntityScriptBindingBase;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -73,11 +73,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
-typedef _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
+typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b)
 {

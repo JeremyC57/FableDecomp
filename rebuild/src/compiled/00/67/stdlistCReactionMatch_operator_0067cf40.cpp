@@ -10,7 +10,7 @@
 //   mov [ecx],edx`), while for the const_iterator the same constructor is only a converting one: its copy is
 //   implicit and the two const_iterators are pushed directly (`push ebp ; push ecx`). erase's iterator result is
 //   homed in the dead `x` argument slot. The element is a pointer, so `*first1++ = *first2++` is one dword move.
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -99,8 +99,8 @@ list<_Tp, _Alloc>& list<_Tp, _Alloc>::operator=(const list<_Tp, _Alloc>& __x)
     return *this;
 }
 
-} // namespace _STL
+} // namespace std
 
 class CReactionMatch;
 
-template _STL::list<CReactionMatch*>& _STL::list<CReactionMatch*>::operator=(const _STL::list<CReactionMatch*>&);
+template std::list<CReactionMatch*>& std::list<CReactionMatch*>::operator=(const std::list<CReactionMatch*>&);

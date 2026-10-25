@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__copy_backward_ptrs<pair<unsigned long,CSoundPair>*, ..> @ 0x00470E6D: counted backward copy that
+// Model of std::__copy_backward_ptrs<pair<unsigned long,CSoundPair>*, ..> @ 0x00470E6D: counted backward copy that
 // returns the new start of the destination (safe for an overlapping shift up).
 
 class CSoundPair {                                          // Ego_r.pdb, 8 bytes (a class: mangled V)
@@ -17,7 +17,7 @@ public:
     long LastSound;                                         // +0x4
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
@@ -47,10 +47,10 @@ typedef pair<unsigned long, CSoundPair> _SoundEntry;
 
 template <class Key, class Value> class CKeyPairCompareLess {   // (test only: the row has no comparator)
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CSoundPair> E;
+typedef std::pair<unsigned long, CSoundPair> E;
 typedef CKeyPairCompareLess<unsigned long, CSoundPair> C;
 static void SetEntry(E& e, unsigned int key) { e.first = key; e.second.FirstSound = (long)(key * 3); e.second.LastSound = (long)(key + 7); }
 static bool Consistent(const E& e) { return e.second.FirstSound == (long)(e.first * 3) && e.second.LastSound == (long)(e.first + 7); }
@@ -72,14 +72,14 @@ int main()
     E* a = NewEntries(6);
     for (int i = 0; i < 6; ++i)
         SetEntry(a[i], i + 1);
-    E* r = _STL::__copy_backward_ptrs(a, a + 3, a + 5, _STL::__false_type());
+    E* r = std::__copy_backward_ptrs(a, a + 3, a + 5, std::__false_type());
     unsigned int expect[6] = { 1, 2, 1, 2, 3, 6 };
     for (int i = 0; i < 6; ++i)
         if (a[i].first != expect[i] || !Consistent(a[i]))
             ok = false;
     if (r != a + 2)
         ok = false;
-    if (_STL::__copy_backward_ptrs(a, a, a + 4, _STL::__false_type()) != a + 4)
+    if (std::__copy_backward_ptrs(a, a, a + 4, std::__false_type()) != a + 4)
         ok = false;
     if (!ok) { printf("00470e6d_TEST FAIL\n"); return 1; }
     printf("00470e6d_TEST PASS\n");

@@ -5,7 +5,7 @@
 
 static int gNodesAllocated = 0, gNodesFreed = 0;
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -177,7 +177,7 @@ public:
         long             Frame;
         double           TimeStamp;
     };
-    typedef _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > CQueryList;
+    typedef std::list<CPendingQuery, std::allocator<CPendingQuery> > CQueryList;
     void* Device;
     CQueryList FreeQueoryObjects;
     CQueryList PendingQueories;
@@ -211,7 +211,7 @@ static CPendingQuery MakeQuery(IDirect3DQuery9* q, long frame)
 
 int main()
 {
-    _STL::_List_base<CPendingQuery, _STL::allocator<CPendingQuery> > b((_STL::allocator<CPendingQuery>()));
+    std::_List_base<CPendingQuery, std::allocator<CPendingQuery> > b((std::allocator<CPendingQuery>()));
     bool ok = b._M_node._M_data != 0 && b._M_node._M_data->_M_next == b._M_node._M_data
            && b._M_node._M_data->_M_prev == b._M_node._M_data && gNodesAllocated == 1;
     if (!ok) { std::printf("009f7a30_TEST FAIL\n"); return 1; }

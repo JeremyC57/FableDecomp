@@ -35,7 +35,7 @@ under g++ (`tall.sh`) and VC7.1/Wine (`tall.py`).
 - **CASoundManager** (0x00991910 ctor): the init-list copies of the CSoundManagerInit settings use descriptive member
   names, plus `bool Unknown21[3]` after Flag, then ResourceBank.Reset(new CResourceBank), SetMaximumMemory and
   UnloadDelay = 0.
-- **Sound-bank sort family**, element `_STL::pair<long, CSoundBankRecord>`, all under `// Flags: /Gr` (0x00992750
+- **Sound-bank sort family**, element `std::pair<long, CSoundBankRecord>`, all under `// Flags: /Gr` (0x00992750
   `__uninitialized_copy`, 0x009927F0 `__uninitialized_fill_n`, 0x009928F0 `__unguarded_linear_insert`, 0x00992AE0
   `__unguarded_insertion_sort_aux`, 0x00992CB0 `__unguarded_partition`, 0x00992E20 `__make_heap`, 0x009930C0
   `__linear_insert`, 0x00993420 `__insertion_sort`). Also 0x009936E0 `vector<pair<long,CSoundBankRecord>>::push_back`
@@ -62,7 +62,7 @@ under g++ (`tall.sh`) and VC7.1/Wine (`tall.py`).
 
 ## Parked for Fable 5.1 (1)
 
-- 0x009913D0 `_STL::map<unsigned long, CThreadedFileManager::CFileObject*>::operator[]` DIFFER(115v115): the pair temporary's `second = 0` store is scheduled before the iterator-copy and hidden-result pushes (retail places it after the hidden-result push); everything else is identical | tried: member-init and body iterator copy ctors, `__default_constructed`, direct `insert_unique`, out-of-line `map::insert`, named default value, converting pair ctor | next: lane gap: scheduling (temporary-init store ordering)
+- 0x009913D0 `std::map<unsigned long, CThreadedFileManager::CFileObject*>::operator[]` DIFFER(115v115): the pair temporary's `second = 0` store is scheduled before the iterator-copy and hidden-result pushes (retail places it after the hidden-result push); everything else is identical | tried: member-init and body iterator copy ctors, `__default_constructed`, direct `insert_unique`, out-of-line `map::insert`, named default value, converting pair ctor | next: lane gap: scheduling (temporary-init store ordering)
 
 ## Skipped
 

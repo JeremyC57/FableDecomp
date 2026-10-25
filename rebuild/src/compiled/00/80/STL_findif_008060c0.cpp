@@ -1,4 +1,4 @@
-// _STL::__find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred, const random_access_iterator_tag&) -- STLport random-access find_if: the first target point inside the field of view, or last
+// std::__find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred, const random_access_iterator_tag&) -- STLport random-access find_if: the first target point inside the field of view, or last
 // Leaf: ??$__find_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008060C0, 227 bytes (a `lea esp,[esp]` loop-alignment filler inside), /Gr
 //   `__fastcall` (first in ecx, last in edx), the 0x24-byte predicate by value and the tag reference on the stack,
@@ -42,7 +42,7 @@ public:
     bool operator()(const NPlayerTargeting::CTargetPoint& point) const;   // 0x006A7380
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _Predicate>

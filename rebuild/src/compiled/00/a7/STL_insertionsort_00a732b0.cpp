@@ -1,9 +1,9 @@
-// _STL::__insertion_sort(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- insertion-sort the named containment volumes by name, inserting each entry after the first through __linear_insert
+// std::__insertion_sort(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- insertion-sort the named containment volumes by name, inserting each entry after the first through __linear_insert
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A732B0, 113 bytes (+15 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the empty comparator on the stack, `ret 4`).
 // Callees: CCharString::CCharString(const CCharString&) 0x0099EC30 (x2, the by-value element copy's key and volume
-//   name), _STL::__linear_insert 0x00A729B0 (same chunk).
+//   name), std::__linear_insert 0x00A729B0 (same chunk).
 // Identity: the manifest's "Vector_ReserveLog2_StringPair_Impl" is descriptive. 16-byte pair<CCharString,
 //   C3DMeshVolume> entries of CPhysicsMesh::ContainmentVolumes (CKeyPairCompareLess<CCharString, C3DMeshVolume>).
 // Shape: STLport `if (first == last) return; for (i = first + 1; i != last; ++i) __linear_insert(first, i, *i,
@@ -92,7 +92,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -103,10 +103,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00A729B0

@@ -1,6 +1,6 @@
-// _STL::swap(pair<unsigned long,CDefClassInfo>& a, pair<unsigned long,CDefClassInfo>& b) -- STLport swap of two (index, class info) pairs through a temporary copy
+// std::swap(pair<unsigned long,CDefClassInfo>& a, pair<unsigned long,CDefClassInfo>& b) -- STLport swap of two (index, class info) pairs through a temporary copy
 // Flags: /Gr
-// Leaf: ??$swap@U?$pair@KVCDefClassInfo@CDefinitionManager@@@_STL@@@_STL@@
+// Leaf: ??$swap@U?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B7650, 153 bytes (+ int3 padding), plain `ret` (/Gr TU: a in ecx, b in edx).
 // Identity: the 24-byte pair<unsigned long, CDefClassInfo> of 0x009B7320; reached by iter_swap's tail jump 0x009B80B0
 //   and from __unguarded_partition 0x009B8630.  The catalog label `swap<CEngineTextureDecal>` is propagated.
@@ -22,7 +22,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
@@ -82,7 +82,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -95,9 +95,9 @@ public:
         CArray<unsigned long>  GlobalIndices;           // +0x08
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;

@@ -1,4 +1,4 @@
-// _STL::merge(CSortElement* first1, CSortElement* last1, CSortElement* first2, CSortElement* last2, CSortElement* result, CSortLess comp) -- SGI merge of two sorted runs of CEngineSubPrimitiveRenderer::CSortElement by the unsigned sort value (the second run's element goes first only when strictly smaller), then both tails copied with the counted copy loop
+// std::merge(CSortElement* first1, CSortElement* last1, CSortElement* first2, CSortElement* last2, CSortElement* result, CSortLess comp) -- SGI merge of two sorted runs of CEngineSubPrimitiveRenderer::CSortElement by the unsigned sort value (the second run's element goes first only when strictly smaller), then both tails copied with the counted copy loop
 // Leaf: merge
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B85510, 127 bytes, `ret 10h` (__fastcall: first1 in ecx, last1 in edx,
 // first2, last2, result and the 4-byte comparator slot on the stack -- the SGI/STLport algorithm TUs are /Gr). No callees.

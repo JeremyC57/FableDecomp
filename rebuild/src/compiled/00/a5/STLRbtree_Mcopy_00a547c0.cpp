@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy: clone x under p, recurse into each right subtree, walk the left spine iteratively; returns the cloned top
+// std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy: clone x under p, recurse into each right subtree, walk the left spine iteratively; returns the cloned top
 // Leaf: ?_M_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A547C0, length 207 bytes, `ret 8`.
 // Callers: itself (0x00A54816, 0x00A54868) and the tree's operator= 0x00A54A90 (landed as CRetailTree_00a547c0::operator=,
@@ -20,7 +20,7 @@ public:
     CCharString(const CCharString& other);           // 0x0099EC30
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

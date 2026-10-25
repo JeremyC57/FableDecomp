@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(SKeyedList* first, SKeyedList* last, SKeyedList pivot, CKeyPairCompareLess comp) -- SGI quicksort partition step over (unsigned __int64 key, list) pairs: advance from both ends past elements on the correct side of the pivot key and swap the strays; returns the split point
+// std::__unguarded_partition(SKeyedList* first, SKeyedList* last, SKeyedList pivot, CKeyPairCompareLess comp) -- SGI quicksort partition step over (unsigned __int64 key, list) pairs: advance from both ends past elements on the correct side of the pivot key and swap the strays; returns the split point
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A83CC0, 88 bytes (+ int3 padding), `ret 14h`: /Gr `__fastcall` (first in
 //   ecx -> esi, last in edx -> edi; the 16-byte pivot by value and the empty comparator on the stack).

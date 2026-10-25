@@ -1,4 +1,4 @@
-# Hand chunk 404 (NCameraModes .. _STL::__partition): 37 of 40 byte-exact
+# Hand chunk 404 (NCameraModes .. std::__partition): 37 of 40 byte-exact
 
 All 37 sources in `src/` grade MATCH (6) or RELOCATION_MATCH (31) under `gall.sh` (`grades.txt`). Every one has a
 behaviour test in `test/` that passes under g++ (`tall.sh`) and VC7.1 under Wine (`tall.py`). Lengths are the oracle
@@ -72,7 +72,7 @@ to the next row.
 
 - 0087c6b0 CTurningAnimCompare::operator() DIFFER(150v146): retail `fmulp st(1)` of the two cosines on the x87 stack, then adds sinB*sinA from the frame; ours `fld [esp] ; fmul [esp+8]` (sines first) then `fxch ; fmul st(2) ; faddp ; fstp st(1)` | tried: C2DVector (sin, cos) with X- and Y-first Dot, (cos, sin) vectors, scalar sin/cos locals (160) | next: statement-order dot (`d = cosA * cosB; d += sinB * sinA;`, GOTCHAS retry-10 rule), else lane gap: single-term x87 commutation
 - 00875a30 NCameraModes::CTools::Get2DRotationAngle DIFFER(228v222): dot product and length product start with the `to` copy (`fld b.Y ; fmul a.Y`, |b| first) where retail starts with `from`; `angle * sign` is tail-duplicated into the negative arm (`fstp st(0) ; fmul [-1.0f]` + own epilogue) where retail reloads -1.0f and joins at one `fmulp` | tried: scalar float copies (frame 0xc), implicit C3DVector copies (Z copied), Z-unwritten `C3DVector(x, y, 0)` copies with `to` declared first (frame, loads, clamp, acos and cross product all match), `from` first + `__forceinline` sign helper (same two diffs) | next: statement-order dot/length (`d = a.X*b.X; d += a.Y*b.Y;`, separate length locals); else lane gap: single-term x87 commutation + tail duplication
-- 00889cb0 _STL::vector<CBlendedEnvironmentTheme>::reserve DIFFER(238v230): only the frame -- retail homes both empty `__false_type` tags on n's argument slot (`push ecx` frame), ours gives the tag its own frame byte (`sub esp,8`), shifting every esp offset | tried: temporary tags, ctor-less POD tag (248), `_Is_POD()`/`__destroy(_Tp*)` tag sources, alloc_proxy allocator | next: GOTCHAS 24l -- same-TU `auto_inline(off)` + `noinline` bodies for __uninitialized_copy 0x00889700 and __destroy_aux 0x006B67A0
+- 00889cb0 std::vector<CBlendedEnvironmentTheme>::reserve DIFFER(238v230): only the frame -- retail homes both empty `__false_type` tags on n's argument slot (`push ecx` frame), ours gives the tag its own frame byte (`sub esp,8`), shifting every esp offset | tried: temporary tags, ctor-less POD tag (248), `_Is_POD()`/`__destroy(_Tp*)` tag sources, alloc_proxy allocator | next: GOTCHAS 24l -- same-TU `auto_inline(off)` + `noinline` bodies for __uninitialized_copy 0x00889700 and __destroy_aux 0x006B67A0
 
 ## Skipped
 
@@ -92,28 +92,28 @@ None (no row has int3/nop padding followed by another function).
   const C3DVector(float) member in the PDB name set).
 - 0x87C660 / 0x87C6B0 -> CTurningAnimCompare::operator() (binary / unary overloads).
 - Animation-sort helpers:
-  - 0x87DA90 -> _STL::__median
-  - 0x87DB50 -> _STL::__find_if
-  - 0x87DC30 FindClosestRotation_binary_search -> _STL::__unguarded_linear_insert
-  - 0x87DDD0 -> _STL::remove_copy_if
-  - 0x87E250 -> _STL::__linear_insert
+  - 0x87DA90 -> std::__median
+  - 0x87DB50 -> std::__find_if
+  - 0x87DC30 FindClosestRotation_binary_search -> std::__unguarded_linear_insert
+  - 0x87DDD0 -> std::remove_copy_if
+  - 0x87E250 -> std::__linear_insert
 - 0x883AE0 CEnvironmentSpellEffectInterface_UpdateAllEffects -> NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::Reset.
 - 0x8840D0 / 0x884120 / 0x8843F0 / 0x884490 / 0x884C70 -> _Rb_tree::_M_create_node / _M_clone_node / _M_insert /
   _M_copy / map::operator[] of the screen-filter bypass map. 0x42971D -> _Rb_global<bool>::_Rebalance.
 - Environment-theme helpers:
-  - 0x885DD0 / 0x889800 _Fill_n -> _STL::uninitialized_fill_n<CThemeWeight*> / <CBlendedEnvironmentTheme*>
-  - 0x889300 _Move<CMusicEntry*> -> _STL::__uninitialized_copy<CEnvironmentThemePriorityStackEntry*>
-  - 0x8897D0 -> _STL::fill<CBlendedEnvironmentTheme*>
+  - 0x885DD0 / 0x889800 _Fill_n -> std::uninitialized_fill_n<CThemeWeight*> / <CBlendedEnvironmentTheme*>
+  - 0x889300 _Move<CMusicEntry*> -> std::__uninitialized_copy<CEnvironmentThemePriorityStackEntry*>
+  - 0x8897D0 -> std::fill<CBlendedEnvironmentTheme*>
   - 0x889CB0 Vector_Reserve -> vector<CBlendedEnvironmentTheme>::reserve
 - Keyed-pair helpers (pair/comparator names descriptive):
-  - 0x88C780 RBTree_InsertBefore -> _STL::__unguarded_linear_insert<SKeyedPair, SKeyGreater>
-  - 0x88C9D0 _Copy_impl<CNavigationPosition*> -> _STL::__unguarded_insertion_sort_aux
+  - 0x88C780 RBTree_InsertBefore -> std::__unguarded_linear_insert<SKeyedPair, SKeyGreater>
+  - 0x88C9D0 _Copy_impl<CNavigationPosition*> -> std::__unguarded_insertion_sort_aux
 - Vector-filter helpers:
-  - 0x8AABC0 GFWorld3DDistanceSmallerThan -> _STL::unary_negate<CVectorFilter_FurtherFromPointThan>::operator()
-  - 0x8AC060 Position_FilterNearbyThenFind -> _STL::remove_if<C3DVector*, unary_negate<...>>
-  - 0x8C34A0 GetValidRushPosition_impl -> _STL::remove_if<C3DVector*, CIsOutsideRadius> (descriptive functor, as
+  - 0x8AABC0 GFWorld3DDistanceSmallerThan -> std::unary_negate<CVectorFilter_FurtherFromPointThan>::operator()
+  - 0x8AC060 Position_FilterNearbyThenFind -> std::remove_if<C3DVector*, unary_negate<...>>
+  - 0x8C34A0 GetValidRushPosition_impl -> std::remove_if<C3DVector*, CIsOutsideRadius> (descriptive functor, as
     landed 0x8C2ED0)
-- 0x8AC2A0 _Move<CScriptThing*> -> _STL::__copy<CScriptThing*>; 0x8ADF90 -> vector<CScriptThing>::push_back.
+- 0x8AC2A0 _Move<CScriptThing*> -> std::__copy<CScriptThing*>; 0x8ADF90 -> vector<CScriptThing>::push_back.
 - 0x8AF220 CombatSequenceManager_InitializeHeapList -> CombatDialogueManager::CombatDialogueManager().
 - 0x8B3430 PairContainer_Destructor -> CCombatSequenceBase::`scalar deleting destructor'.
 - 0x8B8050 CCombatActionBase_Constructor_Action0x32 -> CCreatureAction_PlayCombatAnimation ctor.
@@ -124,4 +124,4 @@ None (no row has int3/nop padding followed by another function).
   - landed 0x8D43C0 is likely CEventFilter_HitEventWithWeapon::operator()
   - 0x8D43A0 is HitEventWithNoWeapon
   - 0x810FD0 is CEventHitBase::GetPWeaponUsed
-- 0x8E2DB0 / 0x8E3150 GFToScreen -> _STL::swap<C3DVector>; 0x8E3430 -> _STL::__partition<C3DVector*, CIsUsableIciclePoint>.
+- 0x8E2DB0 / 0x8E3150 GFToScreen -> std::swap<C3DVector>; 0x8E3430 -> std::__partition<C3DVector*, CIsUsableIciclePoint>.

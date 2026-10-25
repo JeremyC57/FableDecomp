@@ -20,7 +20,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -125,9 +125,9 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
     _M_set(__new_start, __new_finish, __new_start + __len);
 }
 
-} // namespace _STL
+} // namespace std
 
-template <class _Tp> class CArray : public _STL::vector<_Tp> {
+template <class _Tp> class CArray : public std::vector<_Tp> {
 };
 
 class CRandomAppearanceMorph {
@@ -147,5 +147,5 @@ public:
     };
 };
 
-template void _STL::vector<CRandomAppearanceMorph::CMorphSet::CMeshTextureSet>::push_back(
+template void std::vector<CRandomAppearanceMorph::CMorphSet::CMeshTextureSet>::push_back(
     const CRandomAppearanceMorph::CMorphSet::CMeshTextureSet&);

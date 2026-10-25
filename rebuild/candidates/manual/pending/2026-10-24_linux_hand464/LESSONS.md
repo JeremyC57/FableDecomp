@@ -42,7 +42,7 @@ Review at landing:
   engine/CIVCountedPointeeBase.h, which carries the vptr as a data member and cannot be a polymorphic base.
 - 0x0051F040 models CThingManager with `_Before[0xCC]` (no engine header exists; retail NPCNameMap at +0xCC, Ego_r +0xF4).
 - 0x00568CE0 uses namespace `std` for the network module's STLport basic_string<char> to match the landed 0x00567D00
-  family; confirm `std` vs `_STL` once (it changes only the mangled names).
+  family; confirm `std` vs `std` once (it changes only the mangled names).
 - 0x00786410's element pair<long, float> is inferred (shared erase COMDAT 0x006B5AA0, neighbour rows), not PDB-named.
 - Already landed: 0x0051F010 is CThingManager::DoesNPCNameEntryExistForThing(unsigned __int64), not
   `CKeyedSet_0051f010::Contains(unsigned long, unsigned long)`; 0x00781CE0 models 0x007817B0's element as an 8-byte

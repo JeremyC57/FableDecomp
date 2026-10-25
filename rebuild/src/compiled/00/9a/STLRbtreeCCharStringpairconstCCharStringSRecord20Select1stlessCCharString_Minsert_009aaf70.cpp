@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CCharString, pair<const CCharString, SRecord20>, _Select1st<...>, less<CCharString> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<CCharString, 20-byte record> node insert: create a node for v, link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
+// std::_Rb_tree<CCharString, pair<const CCharString, SRecord20>, _Select1st<...>, less<CCharString> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<CCharString, 20-byte record> node insert: create a node for v, link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AAF70, 173 bytes, thiscall `ret 14h` (the hidden iterator result pointer first).
 // Catalog name "RBTree_Insert" (descriptive). Callers: nine call sites 0x009AB096..0x009ABA73 (insert_unique and the
@@ -33,7 +33,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -128,7 +128,7 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_insert(_Rb_tree_node_base* __x
 struct SRecord20 {                                          // 20-byte mapped record (five words; copied as a block)
     long Words[5];
 };
-typedef _STL::pair<const CCharString, SRecord20> SNamedRecord;
-template _STL::_Rb_tree<CCharString, SNamedRecord, _STL::_Select1st<SNamedRecord>, _STL::less<CCharString> >::iterator
-_STL::_Rb_tree<CCharString, SNamedRecord, _STL::_Select1st<SNamedRecord>, _STL::less<CCharString> >::_M_insert(
-    _STL::_Rb_tree_node_base*, _STL::_Rb_tree_node_base*, const SNamedRecord&, _STL::_Rb_tree_node_base*);
+typedef std::pair<const CCharString, SRecord20> SNamedRecord;
+template std::_Rb_tree<CCharString, SNamedRecord, std::_Select1st<SNamedRecord>, std::less<CCharString> >::iterator
+std::_Rb_tree<CCharString, SNamedRecord, std::_Select1st<SNamedRecord>, std::less<CCharString> >::_M_insert(
+    std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, const SNamedRecord&, std::_Rb_tree_node_base*);

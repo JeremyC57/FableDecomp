@@ -2,7 +2,7 @@ address	status	bytes	test	note
 00dc3df0	RELOCATION_MATCH	79v79	PASS	g=1; NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton ctor (catalog CScriptThing_Ctor wrong)
 00ddacb0	RELOCATION_MATCH	74v74	PASS	g=1; NScript::CQ_PrisonEscapeRescueMotherScript::Alloc
 00dfa020	RELOCATION_MATCH	92v92	PASS	g=1; NScript::CQ_TraderConflictEvilScript::Alloc
-00dfde90	RELOCATION_MATCH	58v58	PASS	g=1; _STL::_Vector_base<CScriptThing>(n, a) (catalog Std_Vector_Initialize descriptive)
+00dfde90	RELOCATION_MATCH	58v58	PASS	g=1; std::_Vector_base<CScriptThing>(n, a) (catalog Std_Vector_Initialize descriptive)
 00e0af60	RELOCATION_MATCH	79v79	PASS	g=1; NScript::CQ_TraderEscortScript::Alloc
 00e0e760	RELOCATION_MATCH	77v77	PASS	g=1; NScript::CQ_UndeadRisingScript::Alloc
 00e5fc70	RELOCATION_MATCH	60v60	PASS	g=1; CV_BodyGuardScript::CBodyGuard::GetHenchmanGoldCost (descriptive name; jump table hand-verified)
@@ -17,20 +17,20 @@ address	status	bytes	test	note
 00f26fb0	RELOCATION_MATCH	98v98	PASS	g=1; vector<CHeroSoulsCreatureDef> copy ctor
 00f27780	RELOCATION_MATCH	109v109	PASS	g=1; vector<CHeroSoulsCreatureDef>::erase
 00f2a1d0	RELOCATION_MATCH	107v107	PASS	g=1; CCutsceneDef::Transfer (catalog InitialiseDefaultCameraTags wrong)
-00f33ea0	RELOCATION_MATCH	74v74	PASS	g=2; _STL::__copy_ptrs<CFireHeartPatternDef*> (__forceinline __copy + memberwise op=)
-00f34110	RELOCATION_MATCH	74v74	PASS	g=2; _STL::__copy_backward_ptrs<CFireHeartPatternDef*>
+00f33ea0	RELOCATION_MATCH	74v74	PASS	g=2; std::__copy_ptrs<CFireHeartPatternDef*> (__forceinline __copy + memberwise op=)
+00f34110	RELOCATION_MATCH	74v74	PASS	g=2; std::__copy_backward_ptrs<CFireHeartPatternDef*>
 00f342b0	RELOCATION_MATCH	114v114	PASS	g=2; CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef>::Resize
 00f345f0	RELOCATION_MATCH	109v109	PASS	g=1; vector<CFeatDef>::erase
 00f36f40	DIFFER	233v233	-	g=4 (budget spent); CGPUScratchBufferTextureManager::FreeResourceEntry: one cmp operand order in erase; next: STLport __copy_trivial `last == first` form (fixed the same test at 0xF38440)
-00f38440	RELOCATION_MATCH	155v155	PASS	g=2; _STL::__uninitialized_copy<CGPUScratchBufferTextureManager::CResourcePage*>
-00f384e0	RELOCATION_MATCH	163v163	PASS	g=2; _STL::__uninitialized_fill_n<CResourcePage*>
+00f38440	RELOCATION_MATCH	155v155	PASS	g=2; std::__uninitialized_copy<CGPUScratchBufferTextureManager::CResourcePage*>
+00f384e0	RELOCATION_MATCH	163v163	PASS	g=2; std::__uninitialized_fill_n<CResourcePage*>
 00f38770	RELOCATION_MATCH	233v233	PASS	g=1; vector<CResourcePage>::_M_insert_overflow
 00f38860	RELOCATION_MATCH	99v99	PASS	g=1; vector<CResourcePage>::push_back
-00f3b1d0	MATCH	74v74	PASS	g=1; _STL::__uninitialized_copy<CRangeCompressor::CScriptEntry*> (catalog _Move<CTVertexLandscapeBackground*> wrong)
+00f3b1d0	MATCH	74v74	PASS	g=1; std::__uninitialized_copy<CRangeCompressor::CScriptEntry*> (catalog _Move<CTVertexLandscapeBackground*> wrong)
 00f3b330	RELOCATION_MATCH	238v238	PASS	g=1; vector<CRangeCompressor::CScriptEntry>::_M_insert_overflow
-00f3b640	RELOCATION_MATCH	236v236	PASS	g=1; _STL::vector<unsigned short>::operator= (CArray<unsigned short> base)
-00f3b760	RELOCATION_MATCH	110v110	PASS	g=1; _STL::__uninitialized_copy<CArray<unsigned short>*>
-00f3b7d0	RELOCATION_MATCH	122v122	PASS	g=1; _STL::__uninitialized_fill_n<CArray<unsigned short>*>
+00f3b640	RELOCATION_MATCH	236v236	PASS	g=1; std::vector<unsigned short>::operator= (CArray<unsigned short> base)
+00f3b760	RELOCATION_MATCH	110v110	PASS	g=1; std::__uninitialized_copy<CArray<unsigned short>*>
+00f3b7d0	RELOCATION_MATCH	122v122	PASS	g=1; std::__uninitialized_fill_n<CArray<unsigned short>*>
 00f3fb96	DIFFER	98v74	-	g=1; CRT __ehvec_ctor: row cut -- 74 bytes + the 24-byte __finally funclet all match; land against the 98-byte span (differ/00f3fb96.test.cpp PASS)
 00f3fc50	DIFFER	112v170	-	g=1; CRT __alldiv: retail_asm candidate (MASM), reference body only
 00f3fd10	DIFFER	119v33	-	g=1; CRT __allshr: retail_asm candidate (MASM), reference body only

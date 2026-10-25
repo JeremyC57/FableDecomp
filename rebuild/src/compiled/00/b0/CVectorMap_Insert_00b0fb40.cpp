@@ -23,7 +23,7 @@ public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -61,18 +61,18 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T, _STL::allocator<T> > { };   // Fable's CArray over the STLport vector
+template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 template <class K, class V, class TCompare> class CVectorMap {  // sorted-on-demand vector map, retail 0x10 bytes
 public:
-    CArray<_STL::pair<K, V> > Data;                         // +0x00
+    CArray<std::pair<K, V> > Data;                         // +0x00
     TCompare                  Compare;                      // +0x0C (empty comparator)
     bool                      Dirty;                        // +0x0D
     void Insert(const K& key, const V& value)
     {
-        Data.push_back(_STL::pair<K, V>(key, value));
+        Data.push_back(std::pair<K, V>(key, value));
         Dirty = true;
     }
 };

@@ -1,4 +1,4 @@
-// _STL::map::operator[](const unsigned long& k) -- map<unsigned long, CVertexGroupBlockOptimiser::CGroupInfo>::operator[]: find a bone group's block-assignment record, inserting a default one (Count 0, BlockIndex -1) when absent
+// std::map::operator[](const unsigned long& k) -- map<unsigned long, CVertexGroupBlockOptimiser::CGroupInfo>::operator[]: find a bone group's block-assignment record, inserting a default one (Count 0, BlockIndex -1) when absent
 // Leaf: ??A?$map@KVCGroupInfo@CVertexGroupBlockOptimiser
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADBFF0, 0x78 bytes, thiscall, `ret 4`, returns &(*i).second.
 // Identity: node key at +0x10 compared unsigned (`jb`), mapped value at +0x14; the callee 0x00ADBA40 is the landed
@@ -18,7 +18,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

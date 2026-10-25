@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(SKeyedList* first, SKeyedList* last, CKeyPairCompareLess comp) -- SGI insertion sort over (unsigned __int64 key, list) pairs: each element from the second on is passed by value to __linear_insert against the sorted prefix
+// std::__insertion_sort(SKeyedList* first, SKeyedList* last, CKeyPairCompareLess comp) -- SGI insertion sort over (unsigned __int64 key, list) pairs: each element from the second on is passed by value to __linear_insert against the sorted prefix
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A848C0, 117 bytes (+ int3 padding), `ret 4`: /Gr `__fastcall` (first in
 //   ecx, spilled to the `push ecx` frame word; last in edx -> ebx; the empty comparator on the stack).

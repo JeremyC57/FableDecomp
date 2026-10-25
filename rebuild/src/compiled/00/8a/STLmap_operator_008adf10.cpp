@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, bool>: lower_bound, insert (k, false) when absent, return the mapped flag
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, bool>: lower_bound, insert (k, false) when absent, return the mapped flag
 // Leaf: ??A?$map@VCCharString@@_N
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008ADF10, 115 bytes (+ int3 padding), __fastcall `ret 4`.
 // Identity: map<CCharString, bool> (landed callers declare `bool& operator[](const CCharString& key); // 0x008ADF10`; the
@@ -30,7 +30,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -85,4 +85,4 @@ public:
 
 template bool& map<CCharString, bool>::operator[](const CCharString&);
 
-} // namespace _STL
+} // namespace std

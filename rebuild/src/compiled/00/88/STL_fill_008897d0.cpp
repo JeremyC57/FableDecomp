@@ -1,4 +1,4 @@
-// _STL::fill(CBlendedEnvironmentTheme* first, CBlendedEnvironmentTheme* last, const CBlendedEnvironmentTheme& val) -- assign val to every blended environment theme of [first, last)
+// std::fill(CBlendedEnvironmentTheme* first, CBlendedEnvironmentTheme* last, const CBlendedEnvironmentTheme& val) -- assign val to every blended environment theme of [first, last)
 // Leaf: ??$fill@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008897D0, length 48 bytes (+ int3 padding), `ret 4`.
 // Identity: the catalog label `fill<CArray<unsigned_short>*,...>` is propagated from a byte twin. One caller, 0x0088A284,
@@ -16,7 +16,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {

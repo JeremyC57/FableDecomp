@@ -1,5 +1,5 @@
 // vector<C2DLineF>::reserve(unsigned int n) -- grow the line list's capacity to n, copying the existing lines into a fresh block
-// Leaf: ?reserve@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@_STL@@@_STL@@QAEXI@Z
+// Leaf: ?reserve@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A13650, 171 bytes, `ret 4`. Only caller 0x00A12F41 in
 //   CPhysicsMeshObject::GetNavigationLevelVolumes (a zeroed local vector<C2DLineF> reserved to the line count). The
 //   catalog label "CArray_Reserve" is descriptive; the element is the 16-byte C2DLineF (Point1/Point2, Ego_r.pdb).
@@ -24,7 +24,7 @@ public:
     C2DVector Point2;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -90,4 +90,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 }
 
-template void _STL::vector<C2DLineF>::reserve(unsigned int);
+template void std::vector<C2DLineF>::reserve(unsigned int);

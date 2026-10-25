@@ -27,7 +27,7 @@ public:
 };
 class CBankFile;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -122,20 +122,20 @@ public:
         CWideString RetailHeaderFilePath;                   // +0x0c
         CBankFile*  RegisteredBank;                         // +0x10
     };
-    _STL::map<CCharString, CBankInfo> Banks;                // +0x04
+    std::map<CCharString, CBankInfo> Banks;                // +0x04
     void*                             RetailBanks;          // +0x10 (list<CCountedPointer<NBankFileManager::CRetailBank> >)
     bool                              UsingRetailBanks;     // +0x14
-    _STL::map<CCharString, CCharString> BankAliasMap;       // +0x18
+    std::map<CCharString, CCharString> BankAliasMap;       // +0x18
     CWideString                       BasePath;             // +0x24
-    _STL::set<CWideString>            CreatedRetailBanks;   // +0x28
+    std::set<CWideString>            CreatedRetailBanks;   // +0x28
     unsigned long                     FileVersion;          // +0x34
 private:
-    void GetAllRetailPaths(_STL::set<CWideString>& paths);
+    void GetAllRetailPaths(std::set<CWideString>& paths);
 };
 
-void CBankFileManager::GetAllRetailPaths(_STL::set<CWideString>& paths)
+void CBankFileManager::GetAllRetailPaths(std::set<CWideString>& paths)
 {
-    for (_STL::map<CCharString, CBankInfo>::iterator it = Banks.begin(); it != Banks.end(); ++it) {
+    for (std::map<CCharString, CBankInfo>::iterator it = Banks.begin(); it != Banks.end(); ++it) {
         if (it->second.RetailBankFilePath.GetLength())
             paths.insert(BasePath + it->second.RetailBankFilePath);
     }

@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_insert(_Base_ptr x, _Base_ptr y, const value_type& v, _Base_ptr w) -- link a new node of the screen-filter bypass map under y (left when y is the header, w is null and x is set or v sorts first), fix the header links, rebalance, count
+// std::_Rb_tree::_M_insert(_Base_ptr x, _Base_ptr y, const value_type& v, _Base_ptr w) -- link a new node of the screen-filter bypass map under y (left when y is the header, w is null and x is set or v sorts first), fix the header links, rebalance, count
 // Leaf: ?_M_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008843F0, length 153 bytes (`ret 14h`: the hidden iterator + four arguments).
 // Identity: `map<CThing*, CThingGraphicByPassFlagState>` = NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry
@@ -50,7 +50,7 @@ public:
 
 typedef NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState CByPassState;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -133,7 +133,7 @@ struct less {
 }
 
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::iterator
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_insert(_Base_ptr __x_, _Base_ptr __y_, const value_type& __v, _Base_ptr __w_)

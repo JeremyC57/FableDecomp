@@ -26,7 +26,7 @@ public:
     bool Locked;                                // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {};
 
 struct _Rb_tree_node_base {
@@ -63,7 +63,7 @@ private:
     void*                          _padding_;          // +0x00
     mutable _RTL_CRITICAL_SECTION  CriticalSection;    // +0x04
     unsigned char                  _pad1c[0x28];       // +0x1C BufferChunks .. ActiveFiles
-    _STL::set<CCharString>         CompletedFiles;     // +0x44
+    std::set<CCharString>         CompletedFiles;     // +0x44
 };
 
 bool CFileInstaller::IsFileCompleted(const CCharString& name) const

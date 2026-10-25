@@ -1,6 +1,6 @@
-// _STL::vector::reserve(unsigned int n) -- grow a vector<CBlendedEnvironmentTheme> to capacity n: allocate, copy-construct, destroy and free the old block
+// std::vector::reserve(unsigned int n) -- grow a vector<CBlendedEnvironmentTheme> to capacity n: allocate, copy-construct, destroy and free the old block
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- same-TU auto_inline(off) noinline bodies for __uninitialized_copy and __destroy_aux (tags unnamed) with the element's out-of-line destructor declared (an empty destroy loop is dropped) home both tags on n's argument slot
-// Leaf: ?reserve@?$vector@VCBlendedEnvironmentTheme@NEnvironmentInternal@@V?$allocator@VCBlendedEnvironmentTheme@NEnvironmentInternal@@@_STL@@@_STL@@QAEXI@Z
+// Leaf: ?reserve@?$vector@VCBlendedEnvironmentTheme@NEnvironmentInternal@@V?$allocator@VCBlendedEnvironmentTheme@NEnvironmentInternal@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00889CB0, length 240 bytes (+ int3 padding), `ret 4`.
 // Identity: callers 0x00888562, 0x008887C2 and 0x00888846 in the CEnvironmentThemeSetDay code of the environment TU
 //   reserve local vectors of 0x1F4-byte NEnvironmentInternal::CBlendedEnvironmentTheme (the element of the landed
@@ -24,7 +24,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 typedef NEnvironmentInternal::CBlendedEnvironmentTheme CTheme;

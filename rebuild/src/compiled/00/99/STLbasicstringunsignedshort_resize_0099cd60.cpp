@@ -1,4 +1,4 @@
-// _STL::basic_string<unsigned short>::resize(size_type n, unsigned short c) -- STLport wide-string resize: truncate through erase (moving the terminator down) or append n - size() copies of c
+// std::basic_string<unsigned short>::resize(size_type n, unsigned short c) -- STLport wide-string resize: truncate through erase (moving the terminator down) or append n - size() copies of c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099CD60, length 95 bytes (96 with int3 padding).
 // Leaf: resize
 // Callees: basic_string<unsigned short>::append(size_type n, unsigned short c) @ 0x0099CB00 (thiscall, `ret 8`),
@@ -12,7 +12,7 @@
 // Shape: STLport `resize` (`n <= size()` -> erase(begin() + n, end()), else append(n - size(), c)) with the
 // inline erase (`first != last` guard; char_traits move = `n == 0 ? s1 : memmove(s1, s2, n * 2)`, giving the
 // `inc ; je` count test; new finish = finish - (last - first); the destroy of trivial elements vanishes).
-namespace _STL {
+namespace std {
 
 typedef unsigned int size_t;
 

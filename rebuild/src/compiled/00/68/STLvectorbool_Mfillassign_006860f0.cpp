@@ -1,4 +1,4 @@
-// _STL::vector<bool>::_M_fill_assign(size_type n, const bool& val) -- STLport fill assign of a byte vector: rebuild through a temporary when n exceeds the capacity, else overwrite in place and grow or erase the tail
+// std::vector<bool>::_M_fill_assign(size_type n, const bool& val) -- STLport fill assign of a byte vector: rebuild through a temporary when n exceeds the capacity, else overwrite in place and grow or erase the tail
 // Leaf: ?_M_fill_assign@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006860F0, length 205 bytes (+ int3 padding), `ret 8` (thiscall: n, &val).
 // Callers: 0x006821F9 (`assign(0x5C, true)` on the member vector at +0x3C) and the assign forwarder 0x006864E0 (`jmp`).
@@ -21,7 +21,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void  __cdecl free(void* block);                                       // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 template <class _Tp> class allocator {
@@ -107,9 +107,9 @@ public:
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
     void swap(_Self& __x)
     {
-        _STL::swap(this->_M_start, __x._M_start);
-        _STL::swap(this->_M_finish, __x._M_finish);
-        _STL::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
+        std::swap(this->_M_start, __x._M_start);
+        std::swap(this->_M_finish, __x._M_finish);
+        std::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
     }
     iterator erase(iterator __first, iterator __last)
     {
@@ -154,4 +154,4 @@ void vector<_Tp, _Alloc>::_M_fill_assign(size_type __n, const _Tp& __val)
 }
 }
 
-template void _STL::vector<bool>::_M_fill_assign(unsigned int, const bool&);
+template void std::vector<bool>::_M_fill_assign(unsigned int, const bool&);

@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SNamedPosition* first, SNamedPosition* last, SNamedPosition val, CKeyPairCompareLess comp) -- STLport insertion-sort step over 16-byte (CCharString, C3DVector) pairs ordered by name: a value that sorts before the first element shifts [first, last) up one slot and is stored at *first, anything else goes through the unguarded insert
+// std::__linear_insert(SNamedPosition* first, SNamedPosition* last, SNamedPosition val, CKeyPairCompareLess comp) -- STLport insertion-sort step over 16-byte (CCharString, C3DVector) pairs ordered by name: a value that sorts before the first element shifts [first, last) up one slot and is stored at *first, anything else goes through the unguarded insert
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077E960, 166 bytes (+ int3 padding to 176), `ret 14h` (__fastcall /Gr
 //   algorithm TU: first in ecx -> esi, last in edx -> edi, the 16-byte by-value pair and the empty comparator on the

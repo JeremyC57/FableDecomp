@@ -19,7 +19,7 @@ public:
     const char* Text;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {};
 struct _Rb_tree_node_base {
     bool                _M_color;
@@ -62,14 +62,14 @@ public:
     }
     void*                          _padding_;
     mutable _RTL_CRITICAL_SECTION  CriticalSection;
-    _STL::set<CCharString>         CompletedFiles;
+    std::set<CCharString>         CompletedFiles;
 };
 
 int main()
 {
     CFileInstaller fi;
     std::memset(&fi.CriticalSection, 0, sizeof(fi.CriticalSection));
-    _STL::_Rb_tree_node_base header;
+    std::_Rb_tree_node_base header;
     fi.CompletedFiles._M_header = &header;
     fi.CompletedFiles._M_node_count = 2;
     fi.CompletedFiles.Names[0] = "data/levels/a.lev";

@@ -1,9 +1,9 @@
-// _STL::__insertion_sort(CActiveScriptPair* first, CActiveScriptPair* last, CActiveScriptLess comp) -- plain insertion sort of a short (UID, active entity script) range
+// std::__insertion_sort(CActiveScriptPair* first, CActiveScriptPair* last, CActiveScriptLess comp) -- plain insertion sort of a short (UID, active entity script) range
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBCF20, 80 bytes (`ret 4`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __insertion_sort over (UID, active entity script) = _STL::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > (0x10 bytes); callers
+// Identity: STLport __insertion_sort over (UID, active entity script) = std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > (0x10 bytes); callers
 //   0x00CBD3F0, 0x00CBD40E, 0x00CBDF3D, 0x00CBDF57 (__final_insertion_sort). The manifest label "PriorityQueue_BuildHeap"
 //   is propagated and wrong.
 // Callees: __linear_insert 0x00CBC330.
@@ -58,7 +58,7 @@ public:
     }
 };
 class CActiveEntityScriptBase;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -66,11 +66,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;   // 16 bytes
+typedef std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;   // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptLess;
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00CBC330
 

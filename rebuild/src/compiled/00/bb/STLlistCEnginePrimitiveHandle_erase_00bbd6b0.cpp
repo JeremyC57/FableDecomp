@@ -1,5 +1,5 @@
-// _STL::list<CEnginePrimitiveHandle>::erase(iterator first, iterator last) -- unlink, destroy (virtual destructor) and free every node of [first, last), return last
-// Leaf: ?erase@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@_STL@@@_STL@@QAE?AU?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrimitiveHandle@@@_STL@@@2@U32@0@Z
+// std::list<CEnginePrimitiveHandle>::erase(iterator first, iterator last) -- unlink, destroy (virtual destructor) and free every node of [first, last), return last
+// Leaf: ?erase@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE?AU?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrimitiveHandle@@@std@@@2@U32@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BBD6B0, 65 bytes, thiscall (`this` unused), `ret 0Ch` (hidden iterator result,
 //   first, last), returns the result pointer.
 // Identity: called only by list<CEnginePrimitiveHandle>::resize(size_type, const T&) 0x00BBDC60 (the erase-the-tail arm);
@@ -40,7 +40,7 @@ public:
     virtual ~CEnginePrimitiveHandle();
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -148,4 +148,4 @@ typename list<_Tp, _Alloc>::iterator list<_Tp, _Alloc>::erase(iterator __first, 
 
 template list<CEnginePrimitiveHandle>::iterator list<CEnginePrimitiveHandle>::erase(iterator, iterator);
 
-} // namespace _STL
+} // namespace std

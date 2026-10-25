@@ -1,4 +1,4 @@
-// _STL::list<CClass*>::operator=(const list& x) -- STLport list assignment: overwrite the common prefix element by element, then erase this list's surplus or append the rest of x
+// std::list<CClass*>::operator=(const list& x) -- STLport list assignment: overwrite the common prefix element by element, then erase this list's surplus or append the rest of x
 // Leaf: ??4?$list@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A37940, 117 bytes (+ int3 padding), `ret 4`.
 // Identity: the 4-byte-element list of the CClassFactory module (12-byte nodes, value at +8); callees are this list's
@@ -13,7 +13,7 @@
 //   result and the __false_type tag (user-constructed, so not zero-filled) are homed in the dead `x` argument slot.
 class CClass;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct _List_node_base {
     _List_node_base* _M_next;                            // +0x00
@@ -75,4 +75,4 @@ list<T>& list<T>::operator=(const list<T>& x)
     return *this;
 }
 }
-template class _STL::list<CClass*>;
+template class std::list<CClass*>;

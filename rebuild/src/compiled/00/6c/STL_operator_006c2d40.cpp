@@ -1,6 +1,6 @@
-// 006c2d40 _STL::vector<CLevelLoader::CObject::CLevelFiles>::operator=
+// 006c2d40 std::vector<CLevelLoader::CObject::CLevelFiles>::operator=
 // Flags: /O2 /Oy /W3
-// Leaf: ??4?$vector@UCLevelFiles@@@_STL@@
+// Leaf: ??4?$vector@UCLevelFiles@@@std@@
 #include <stdlib.h>
 #include <new>
 struct CCPPointerInfo{unsigned RefCount;void(__cdecl*DeleteFunc)(void*);void*Data;};
@@ -17,7 +17,7 @@ template<class T>struct CCountedPointer{T*Data;CCPPointerInfo*Info;
 // three arms share the trailing `_M_finish = _M_start + n` (retail tail-duplicates it per arm).
 // Callees: __uninitialized_copy 0x006C2AA0, vector::_M_clear 0x005196A0, __copy (assign) 0x006C2B10, _Destroy 0x00518B80.
 struct CLevelFiles{long LevelID;CCountedPointer<CAFile>PTopologyFile,PNavigationFile,PThingFile;};
-namespace _STL{
+namespace std{
 struct __false_type{__false_type(){}};
 template<class Tag>__declspec(noinline) CLevelFiles*__fastcall uninitialized_copy(CLevelFiles*a,CLevelFiles*b,CLevelFiles*c,const Tag&){while(a!=b){if(c)new(c)CLevelFiles(*a);++a;++c;}return c;}
 template<class Tag>__declspec(noinline) CLevelFiles*__fastcall copy(CLevelFiles*a,CLevelFiles*b,CLevelFiles*c,const Tag&,int){while(a!=b)*c++=*a++;return c;}

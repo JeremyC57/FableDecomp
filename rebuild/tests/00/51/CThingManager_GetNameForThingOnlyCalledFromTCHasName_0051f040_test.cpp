@@ -25,7 +25,7 @@ public:
     CWideString(const CWideString& o) : Text(o.Text) { ++gCopies; }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -75,12 +75,12 @@ public:
 };
 }
 
-typedef _STL::pair<CCharString, CWideString> TName;
-typedef _STL::map<TUID, TName>::value_type TEntry;
+typedef std::pair<CCharString, CWideString> TName;
+typedef std::map<TUID, TName>::value_type TEntry;
 
 class CThingManager {
 public:
-    _STL::map<TUID, TName> NPCNameMap;
+    std::map<TUID, TName> NPCNameMap;
     CWideString GetNameForThing_OnlyCalledFromTCHasName(TUID uid)
     {
         return (*NPCNameMap.find(uid)).second.second;
@@ -92,8 +92,8 @@ int main()
     CThingManager manager;
     TUID lowUid = 1;
     TUID highUid = ((TUID)1 << 32) | 1;     // same low word, different high word
-    _STL::_Rb_tree_node<TEntry> a(TEntry(lowUid, TName(CCharString("GUARD_01"), CWideString("Guard"))));
-    _STL::_Rb_tree_node<TEntry> b(TEntry(highUid, TName(CCharString("TRADER_02"), CWideString("Trader"))));
+    std::_Rb_tree_node<TEntry> a(TEntry(lowUid, TName(CCharString("GUARD_01"), CWideString("Guard"))));
+    std::_Rb_tree_node<TEntry> b(TEntry(highUid, TName(CCharString("TRADER_02"), CWideString("Trader"))));
     manager.NPCNameMap._M_t._M_header->_M_next = &a;
     a._M_next = &b;
     b._M_next = 0;

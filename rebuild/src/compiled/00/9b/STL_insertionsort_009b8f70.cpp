@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(pair<unsigned long, CDefinitionManager::CDefClassInfo>* first, pair<unsigned long, CDefinitionManager::CDefClassInfo>* last, CKeyPairCompareLess comp) -- insertion sort of the definition manager's class-info map: linear-insert a copy of every entry after the first into the sorted prefix
+// std::__insertion_sort(pair<unsigned long, CDefinitionManager::CDefClassInfo>* first, pair<unsigned long, CDefinitionManager::CDefClassInfo>* last, CKeyPairCompareLess comp) -- insertion sort of the definition manager's class-info map: linear-insert a copy of every entry after the first into the sorted prefix
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B8F70, 191 bytes (+ int3 padding), `ret 4` (/Gr algorithm TU: first in
 //   ecx, last in edx, the empty comparator by value on the stack).
@@ -27,7 +27,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
@@ -87,7 +87,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -100,14 +100,14 @@ public:
         CArray<unsigned long>  GlobalIndices;           // +0x08
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x009B8C00
 

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CEngineCamera::CDebugScriptElement* first, unsigned int n, const CEngineCamera::CDebugScriptElement& x, const __false_type&) -- STLport placement-copy of one camera debug-script element into n raw slots; returns the end of the run
+// std::__uninitialized_fill_n(CEngineCamera::CDebugScriptElement* first, unsigned int n, const CEngineCamera::CDebugScriptElement& x, const __false_type&) -- STLport placement-copy of one camera debug-script element into n raw slots; returns the end of the run
 // Leaf: ??$__uninitialized_fill_n@PAUCDebugScriptElement@CEngineCamera@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31A90, length 80 bytes, `ret 8` (/Gr: first in ecx -> eax as `cur`, n
 //   in edx moved to ecx and counted down; &x and the empty __false_type tag on the stack), the end pointer in eax.
@@ -29,7 +29,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -43,6 +43,6 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 }
 }
 
-template CEngineCamera::CDebugScriptElement* __fastcall _STL::__uninitialized_fill_n<CEngineCamera::CDebugScriptElement*,
+template CEngineCamera::CDebugScriptElement* __fastcall std::__uninitialized_fill_n<CEngineCamera::CDebugScriptElement*,
     unsigned int, CEngineCamera::CDebugScriptElement>(CEngineCamera::CDebugScriptElement*, unsigned int,
-                                                      const CEngineCamera::CDebugScriptElement&, const _STL::__false_type&);
+                                                      const CEngineCamera::CDebugScriptElement&, const std::__false_type&);

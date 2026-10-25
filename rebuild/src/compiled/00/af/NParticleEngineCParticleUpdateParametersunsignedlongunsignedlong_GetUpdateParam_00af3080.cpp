@@ -17,7 +17,7 @@
 // limit is tested only after a hit; the desc forwards to the callback with `depth + 1` and `*this`.
 struct C3DVector { float X, Y, Z; };
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 }
 
@@ -26,7 +26,7 @@ template <class T> struct CVector {                    // STLport vector, 12 byt
     T* _M_start; T* _M_finish; CAllocProxy<T> _M_end_of_storage;
 };
 template <class K, class V, class C> struct CVectorMap {   // retail 16 bytes
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef const value_type* const_iterator;
     CVector<value_type> Data;                          // +0x00
     C                   Compare;                       // +0x0c empty comparator

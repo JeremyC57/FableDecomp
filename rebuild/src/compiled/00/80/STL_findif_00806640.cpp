@@ -1,4 +1,4 @@
-// _STL::find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred) -- STLport find_if over target points: forward to the random-access __find_if with a copy of the field-of-view filter
+// std::find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred) -- STLport find_if over target points: forward to the random-access __find_if with a copy of the field-of-view filter
 // Leaf: ??$find_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00806640, 86 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x24-byte predicate by value, `ret 24h`.
@@ -45,7 +45,7 @@ public:
     bool operator()(const NPlayerTargeting::CTargetPoint& point) const;   // 0x006A7380
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 // STLport's random-access __find_if (0x008060C0), in the TU as in retail and kept out of line: with only a declaration

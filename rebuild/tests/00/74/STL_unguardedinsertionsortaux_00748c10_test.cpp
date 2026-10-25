@@ -1,4 +1,4 @@
-// Behaviour test for 0x00748C10 _STL::__unguarded_insertion_sort_aux(CThing**, CThing**, CThing**, CCompare_FurthestFromInitPos2D)
+// Behaviour test for 0x00748C10 std::__unguarded_insertion_sort_aux(CThing**, CThing**, CThing**, CCompare_FurthestFromInitPos2D)
 #include <cstdio>
 
 struct CThing { int key; };

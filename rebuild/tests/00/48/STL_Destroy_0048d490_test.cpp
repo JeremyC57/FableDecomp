@@ -1,4 +1,4 @@
-// Behaviour test for 0x0048D490 _STL::_Destroy over a deque<C2DVector> range: every element from first up to last
+// Behaviour test for 0x0048D490 std::_Destroy over a deque<C2DVector> range: every element from first up to last
 // is destroyed in order, stepping across the buffer boundary through the map
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +13,7 @@ public:
     float X, Y;
     ~C2DVector() { if (gDtors < 64) gSeen[gDtors] = X; ++gDtors; }   // test-only: observe each destruction
 };
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 template <class _Tp> struct __type_traits {
@@ -52,8 +52,8 @@ template <class _Tp, class _Traits> struct _Deque_iterator : public _Deque_itera
 };
 template <class _Tp, class _Traits> inline _Tp* value_type(const _Deque_iterator<_Tp, _Traits>&) { return (_Tp*)0; }
 }
-typedef _STL::_Deque_iterator<C2DVector, _STL::_Nonconst_traits<C2DVector> > CDequeIter;
-namespace _STL {
+typedef std::_Deque_iterator<C2DVector, std::_Nonconst_traits<C2DVector> > CDequeIter;
+namespace std {
 template <class _ForwardIterator>
 __declspec(noinline) void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
@@ -85,11 +85,11 @@ int main()
     CDequeIter first, last;
     first._M_set_node(gMap);     first._M_cur = b0 + (bs - 2);     // the last two of the front buffer
     last._M_set_node(gMap + 1);  last._M_cur = b1 + 3;             // ... and the first three of the next
-    _STL::_Destroy(first, last);
+    std::_Destroy(first, last);
     bool ok = bs == 16 && gDtors == 5;
     ok = ok && Near(gSeen[0], (float)(bs - 2)) && Near(gSeen[1], (float)(bs - 1));
     ok = ok && Near(gSeen[2], 100.0f) && Near(gSeen[3], 101.0f) && Near(gSeen[4], 102.0f);
-    _STL::_Destroy(last, last);                                      // empty range
+    std::_Destroy(last, last);                                      // empty range
     ok = ok && gDtors == 5;
     free(b0); free(b1);
     if (ok) { printf("0048d490_TEST PASS\n"); return 0; }

@@ -1,4 +1,4 @@
-// _STL::pop_heap(PairVectorLong* first, PairVectorLong* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- SGI/STLport front end: forwards the range and the 0x2C-byte comparator to __pop_heap_aux(first, last, (T*)0, comp)
+// std::pop_heap(PairVectorLong* first, PairVectorLong* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- SGI/STLport front end: forwards the range and the 0x2C-byte comparator to __pop_heap_aux(first, last, (T*)0, comp)
 // Leaf: pop_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00809840, 97 bytes, `ret 2Ch` (__fastcall: first in ecx, last in edx --
 // passed through untouched --, the 0x2C-byte comparator by value on the stack; the SGI/STLport algorithm TUs are /Gr).

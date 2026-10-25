@@ -7,7 +7,7 @@ public:
     float Z;
     float ShoreLookUpArray[12];
 };
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 inline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, _Distance*)
 {
@@ -38,7 +38,7 @@ int main()
         buf[i].X = (short)i; buf[i].Y = (short)(i * 2); buf[i].Z = (float)i;
         for (int k = 0; k < 12; ++k) buf[i].ShoreLookUpArray[k] = (float)(i * 100 + k);
     }
-    _STL::vector<CTVertexWaterBackground> v;
+    std::vector<CTVertexWaterBackground> v;
     v._M_start = buf; v._M_finish = buf + 9; v._M_end_of_storage = buf + 10;
     CTVertexWaterBackground* r = v.erase(buf + 2, buf + 5);
     if (r != buf + 2 || v._M_finish != buf + 6) { std::printf("00b7fd70_TEST FAIL\n"); return 1; }

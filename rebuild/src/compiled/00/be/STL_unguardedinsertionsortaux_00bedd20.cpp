@@ -1,5 +1,5 @@
-// _STL::__unguarded_insertion_sort_aux(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntry*, CSurfaceEntryLess comp) -- unguarded linear insert of every (key, CCompositeSurfaceInfo) entry of [first, last)
-// Leaf: ??$__unguarded_insertion_sort_aux@PAU?$pair@JVCCompositeSurfaceInfo@@@_STL@@
+// std::__unguarded_insertion_sort_aux(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntry*, CSurfaceEntryLess comp) -- unguarded linear insert of every (key, CCompositeSurfaceInfo) entry of [first, last)
+// Leaf: ??$__unguarded_insertion_sort_aux@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEDD20, 71 bytes, `ret 8` (value-type pointer + empty comparator).
 // Callees: __unguarded_linear_insert @ 0x00BED790 (this chunk).
@@ -61,7 +61,7 @@ public:
     CCountedPointer<CCompositeSurfaceCache> Cache;  // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -69,18 +69,18 @@ template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
+typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 
-namespace _STL {
+namespace std {
 template <class RandomAccessIter, class T, class Compare>
 void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp);   // 0x00BED790
 
@@ -90,6 +90,6 @@ void __unguarded_insertion_sort_aux(RandomAccessIter first, RandomAccessIter las
     for (RandomAccessIter i = first; i != last; ++i)
         __unguarded_linear_insert(i, T(*i), comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::__unguarded_insertion_sort_aux(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntryLess);
+template void std::__unguarded_insertion_sort_aux(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntryLess);

@@ -1,13 +1,13 @@
 address	status	bytes	test	note
 009c87c0	RELOCATION_MATCH	202v202	PASS	NGameText::CDataBank::~CDataBank (label CGameDataBank_DestructorHelper)
-009ca500	MATCH	47v47	PASS	_STL::__uninitialized_fill_n over {counted pointer, long} (label _Fill_n)
+009ca500	MATCH	47v47	PASS	std::__uninitialized_fill_n over {counted pointer, long} (label _Fill_n)
 009cbe90	MATCH	67v67	PASS	CBankFileEntryUpdateData::ReadInfo (label BankData_CopyRange)
 009cd620	RELOCATION_MATCH	239v239	PASS	CBankFile::AddEntry -> virtual AddEntryMultipleFiles (label Map_InsertOrReplacePair)
 009d2160	RELOCATION_MATCH	99v99	PASS	CSmallVector<CCharString,8>::Allocate (label CSmallVector_AllocateHeap)
-009d2a40	RELOCATION_MATCH	101v101	PASS	_STL::vector<unsigned char> fill ctor; needed the _STLP_alloc_proxy end-of-storage (grade 2)
-009d2d00	RELOCATION_MATCH	207v207	PASS	_STL::_Rb_tree::_M_copy, map<CCharString, 4-byte> nodes (label BankEntry_CloneTree)
-009d2ed0	RELOCATION_MATCH	234v234	PASS	_STL::__unguarded_partition for CBankFile::CompareDataOffset (label CBankFile_QuicksortPartition)
-009d3ed0	RELOCATION_MATCH	75v75	PASS	_STL::__final_insertion_sort for CBankFile::CompareDataOffset (label CBankFile_IntroSort)
+009d2a40	RELOCATION_MATCH	101v101	PASS	std::vector<unsigned char> fill ctor; needed the _STLP_alloc_proxy end-of-storage (grade 2)
+009d2d00	RELOCATION_MATCH	207v207	PASS	std::_Rb_tree::_M_copy, map<CCharString, 4-byte> nodes (label BankEntry_CloneTree)
+009d2ed0	RELOCATION_MATCH	234v234	PASS	std::__unguarded_partition for CBankFile::CompareDataOffset (label CBankFile_QuicksortPartition)
+009d3ed0	RELOCATION_MATCH	75v75	PASS	std::__final_insertion_sort for CBankFile::CompareDataOffset (label CBankFile_IntroSort)
 009d4e90	RELOCATION_MATCH	114v114	PASS	CDefStringTable::~CDefStringTable (atexit dtor of g_DefStringTable; label LTextTreeWalkThrough_Destructor)
 009d5240	RELOCATION_MATCH	17v17	PASS	CBankFileAsync::SetEnableFailureHandling
 009d6060	RELOCATION_MATCH	160v160	PASS	CBankFileAsyncEntry::BeginReadData (label CBankFileAsyncEntry_SetupReadRequest; grade 2 after SRC_FAIL)

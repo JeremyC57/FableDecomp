@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the hero marriage records
-// Leaf: ?resize@?$vector@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the hero marriage records
+// Leaf: ?resize@?$vector@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00581284, 42 bytes, thiscall, `ret 4`; size-optimised TU.
 // Identity: vector<CHeroMarriageInfo> (24 bytes: WifeUID, MaritalHomeUID, State, GayMarriage -- Ego_r.pdb): the callee
 //   0x005811F1 is the two-argument resize; the caller 0x00581466 and the TransferableVector Resize 0x005813D7 (vtable
@@ -21,7 +21,7 @@ public:
     CHeroMarriageInfo() : WifeUID(0), MaritalHomeUID(0), State(0), GayMarriage(false) { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

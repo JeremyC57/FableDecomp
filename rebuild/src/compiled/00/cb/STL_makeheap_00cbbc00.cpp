@@ -1,9 +1,9 @@
-// _STL::__make_heap(CBindingPair* first, CBindingPair* last, CBindingLess comp, CBindingPair*, int*) -- heapify the (name, entity script binding) range by sifting every parent down from the last one
+// std::__make_heap(CBindingPair* first, CBindingPair* last, CBindingLess comp, CBindingPair*, int*) -- heapify the (name, entity script binding) range by sifting every parent down from the last one
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBBC00, 117 bytes (`ret 0Ch`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __make_heap over (name, entity script binding) = _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530) (`imul 2AAAAAABh ; sar 1` = /12);
+// Identity: STLport __make_heap over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530) (`imul 2AAAAAABh ; sar 1` = /12);
 //   callers 0x00CBBF79, __partial_sort 0x00CBD101. The manifest label "EntityScriptBinding_BuildHeapify" is descriptive.
 // Callees: __adjust_heap 0x00CBB4D0, CCharString copy constructor 0x0099EC30.
 // Shape: as 0x00CBAAB0 for the 12-byte element.
@@ -63,7 +63,7 @@ public:
     }
 };
 class CEntityScriptBindingBase;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -71,11 +71,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
-typedef _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
+typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x00CBB4D0
 

@@ -1,4 +1,4 @@
-// _STL::vector::push_back() -- STLport anachronism `push_back(_Tp())` for CGraphicDataBank::GraphicList (vector<CGraphicInfo>): append one default-constructed 44-byte CGraphicInfo, through _M_insert_overflow when the storage is full
+// std::vector::push_back() -- STLport anachronism `push_back(_Tp())` for CGraphicDataBank::GraphicList (vector<CGraphicInfo>): append one default-constructed 44-byte CGraphicInfo, through _M_insert_overflow when the storage is full
 // Leaf: ?push_back@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A01650, 160 bytes, thiscall on the vector, plain `ret`.
 // Identity: sole caller CGraphicDataBank::NotifyEntryAdded @ 0x009FF590 (landed; `while (index >= GraphicList.size())`
@@ -12,7 +12,7 @@
 //   constructor is the `rep movsd` of 11 dwords behind the placement-new null test.
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -92,4 +92,4 @@ public:
     CGraphicInfo() : Bank(0), Index(-1), Frames(0) {}
 };
 
-template void _STL::vector<CGraphicInfo>::push_back();
+template void std::vector<CGraphicInfo>::push_back();

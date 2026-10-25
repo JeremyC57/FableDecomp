@@ -1,6 +1,6 @@
 // CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations) -- product of the DamageMultiplier of every augmentation def named by a positive def index (1.0 with none)
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the element is indexed twice (`if (augmentations[i] > 0)` ... `GetDef(augmentations[i], &def)`, no index local) through STLport's `*(begin() + n)` operator[]; together (neither alone) they give retail's `mov ecx,[eax+esi*4] ... mov eax,ecx ; push eax` with the index in esi and the def in edi
-// Leaf: ?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@J@_STL@@@Z
+// Leaf: ?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@J@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007661C0, 158 bytes (+int3 pad to 160), plain `ret` (static __fastcall:
 //   the vector reference in ecx, the float in st0).
 // Identity: Ego_r.pdb ?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@JV?$allocator@J@std@@@std@@@Z
@@ -84,7 +84,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<con
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     T* _M_start;
@@ -99,10 +99,10 @@ public:
 
 class CTCObjectAugmentations {
 public:
-    static float __fastcall GetDamageMultiplierFromAugmentationSet(const _STL::vector<long>& augmentations);
+    static float __fastcall GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations);
 };
 
-float __fastcall CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(const _STL::vector<long>& augmentations)
+float __fastcall CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations)
 {
     float multiplier = 1.0f;
     for (unsigned int i = 0; i < augmentations.size(); ++i) {

@@ -1,4 +1,4 @@
-// _STL::vector<C3DGroup2>::_M_insert_overflow(C3DGroup2* pos, const C3DGroup2& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the 16-byte skinning groups (CArray<C3DGroup2>): move into a size + max(size, fill_len) block with x inserted fill_len times at pos
+// std::vector<C3DGroup2>::_M_insert_overflow(C3DGroup2* pos, const C3DGroup2& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the 16-byte skinning groups (CArray<C3DGroup2>): move into a size + max(size, fill_len) block with x inserted fill_len times at pos
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE81F0, 195 bytes, __fastcall `ret 14h`.
 // Callers: _M_fill_insert 0x00AE82C0 (`_M_insert_overflow(pos, x, __false_type(), n)` when the spare capacity is short; that
@@ -17,7 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                // 0x00BFEA0E
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -109,7 +109,7 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 
 struct C3DVertexBlend2 { long Vertex; float Weight; };   // 8 bytes
 
-template <class T> class CArray : public _STL::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
+template <class T> class CArray : public std::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
 public:
     CArray(const CArray& other);                         // 0x00AE5D80 for CArray<C3DVertexBlend2>
 };
@@ -119,4 +119,4 @@ struct C3DGroup2 {                                       // 16 bytes in retail
     CArray<C3DVertexBlend2>  VertexBlends;               // +0x4
 };
 
-template void _STL::vector<C3DGroup2>::_M_insert_overflow(C3DGroup2*, const C3DGroup2&, const _STL::__false_type&, unsigned int, bool);
+template void std::vector<C3DGroup2>::_M_insert_overflow(C3DGroup2*, const C3DGroup2&, const std::__false_type&, unsigned int, bool);

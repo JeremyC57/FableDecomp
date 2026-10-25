@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<CCharString, pair<const CCharString, unsigned long>, ...>::_M_copy (0x009D2D00).
+// Behaviour test for std::_Rb_tree<CCharString, pair<const CCharString, unsigned long>, ...>::_M_copy (0x009D2D00).
 #include <cstdio>
 #include <cstdlib>
 #include <new>

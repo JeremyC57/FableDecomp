@@ -1,4 +1,4 @@
-// _STL::__copy(CThing** first, CThing** last, back_insert_iterator<vector<CIntelligentPointer<CThing> > > result, const random_access_iterator_tag&, int*) -- STLport random-access copy of a thing-pointer array into a vector of intelligent pointers through a back inserter: each pointer is wrapped in a temporary CIntelligentPointer<CThing> and pushed back; returns the inserter
+// std::__copy(CThing** first, CThing** last, back_insert_iterator<vector<CIntelligentPointer<CThing> > > result, const random_access_iterator_tag&, int*) -- STLport random-access copy of a thing-pointer array into a vector of intelligent pointers through a back inserter: each pointer is wrapped in a temporary CIntelligentPointer<CThing> and pushed back; returns the inserter
 // Leaf: ??$__copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CE1F0, 201 bytes (+7 int3), `ret 10h`, `and esp,-8` frame: /Gr __fastcall
 //   returning the 4-byte back_insert_iterator through the hidden pointer in ecx (it has a user constructor), `first`
@@ -36,7 +36,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

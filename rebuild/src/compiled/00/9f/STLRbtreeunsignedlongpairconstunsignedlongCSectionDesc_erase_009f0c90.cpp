@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>::erase(iterator) -- unlink one section-descriptor node, destroy its strings and free it
+// std::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>::erase(iterator) -- unlink one section-descriptor node, destroy its strings and free it
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F0C90, 78 bytes (80 with padding), `ret 4`. Catalog label
 //   "CMemoryAllocatorVariableSize_EraseElement" is wrong: this is the STLport erase(iterator) of
 //   CCodeSectionManager::SectionDesc (map<unsigned long, CSectionDesc>; node 0x24 bytes, value pair at +0x10).
@@ -6,7 +6,7 @@
 //   0x0099EAE0 (LongName then ShortName), free 0x00BFEA14 (allocator::deallocate's null test).
 // Shape: STLport 4.x _Rb_tree::erase verbatim: rebalance, _Destroy(&y->_M_value_field), deallocate(y, 1),
 //   --_M_node_count (re-read, dec, store).
-// Leaf: ?erase@?$_Rb_tree@KU?$pair@$$CBKUCSectionDesc@@@_STL@@U?$less@K@2@@_STL@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBKUCSectionDesc@@@_STL@@@2@@Z
+// Leaf: ?erase@?$_Rb_tree@KU?$pair@$$CBKUCSectionDesc@@@std@@U?$less@K@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBKUCSectionDesc@@@std@@@2@@Z
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
 class CCharString
@@ -24,7 +24,7 @@ struct CSectionDesc                                  // CCodeSectionManager::CSe
     long        Size;                                // +0x0c
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
 template <class _Tp> struct less { bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; } };
@@ -98,4 +98,4 @@ public:
 
 template class _Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>, less<unsigned long> >;
 
-} // namespace _STL
+} // namespace std

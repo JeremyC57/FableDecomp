@@ -14,7 +14,7 @@
 // byte is zero-extended into the pushed dword.
 struct C3DVector { float X, Y, Z; };
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 template <class RandomIt, class Compare> void __fastcall sort(RandomIt first, RandomIt last, Compare comp);
 }
@@ -26,13 +26,13 @@ template <class T> struct CVector {                    // STLport vector, 12 byt
     T* end() { return _M_finish; }
 };
 template <class K, class V, class C> struct CVectorMap {   // retail 16 bytes
-    CVector<_STL::pair<K, V> > Data;                   // +0x00
+    CVector<std::pair<K, V> > Data;                   // +0x00
     C                          Compare;                // +0x0c empty comparator
     bool                       Dirty;                  // +0x0d
     void Sort()
     {
         if (Dirty) {
-            _STL::sort(Data.begin(), Data.end(), Compare);
+            std::sort(Data.begin(), Data.end(), Compare);
             Dirty = false;
         }
     }

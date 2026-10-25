@@ -38,7 +38,7 @@ parsers. Every src/ file grades RELOCATION_MATCH in grades.txt. Its test prints 
   - 0099e620 GFIsCharStringNumber, 0099e7f0 GFCharStringToInt and 0099e870 GFCharStringToUHUGE use the fetch-ahead loop
     (`char c = GetChar(i); while (i < len) {...; c = GetChar(++i);}`).
     - 0099e7f0 and 0099e870 use an unsigned index.
-- **STLport basic_string<unsigned short>** (`namespace _STL`, `class char_traits`, `class allocator`):
+- **STLport basic_string<unsigned short>** (`namespace std`, `class char_traits`, `class allocator`):
   - 0099c990 reserve is the landed char reserve 0x00777DB0 at element size 2.
 - **TLC error-dialog helpers** (all `__fastcall`; the extern "C" ones use the leafs `@Name@N`):
   - 0099d3a0 RetrieveStringByLanguage walks the string-table block with an unsigned index; the terminator goes at a
@@ -74,15 +74,15 @@ which are one byte short in the chunk.
 - 00999c50 "ScanNextFile" -> CAFile::StartFileScan(const CWideString&, CFileScanInfo&, CWideString&).
 - 0099b770 "CCharString_Replace" -> CWideString::SetAsSubString(const wchar_t*, long).
 - 0099bb80 "CCharString_FromWideFormatted" -> CWideString::SprintfDynamic(const wchar_t*, ...) (`?SprintfDynamic@CWideString@@QAAXPB_WZZ`).
-- 0099c670 "CCharString_AllocStringData" -> _STL::basic_string<unsigned short>::_M_range_initialize.
-- 0099c990 "String_ResizeBuffer" -> _STL::basic_string<unsigned short>::reserve.
-- 0099ca70 "WideString_Allocate" -> _STL::basic_string<unsigned short>::basic_string(size_type, unsigned short, const allocator&).
-- 0099cb00 "std_vector_resize" -> _STL::basic_string<unsigned short>::append(size_type, unsigned short).
-- 0099cc80 "CTCElectrocutedEffect_PushEffect" -> _STL::basic_string<unsigned short>::push_back(unsigned short).
+- 0099c670 "CCharString_AllocStringData" -> std::basic_string<unsigned short>::_M_range_initialize.
+- 0099c990 "String_ResizeBuffer" -> std::basic_string<unsigned short>::reserve.
+- 0099ca70 "WideString_Allocate" -> std::basic_string<unsigned short>::basic_string(size_type, unsigned short, const allocator&).
+- 0099cb00 "std_vector_resize" -> std::basic_string<unsigned short>::append(size_type, unsigned short).
+- 0099cc80 "CTCElectrocutedEffect_PushEffect" -> std::basic_string<unsigned short>::push_back(unsigned short).
 - 0099d470 "Utility_LoadStringByLanguageWithFallback" -> RetrieveString (`@RetrieveString@16`).
 - 0099e870 "ParseLongLong" -> GFCharStringToUHUGE.
 - 0099f690 "CCharString_OperatorPlus_API" -> operator+(const char*, const CCharString&).
 - 0099f830 "GFIntToCharString_API" -> GFIntToCharString(long).
 - 0099f8b0 "CCharString_Format" -> GFUIntToCharString(unsigned long).
-- Callee 0x005149F0 "vector_insert_erase" -> _STL::vector<unsigned short>::_M_fill_insert(iterator, size_type, const unsigned short&).
+- Callee 0x005149F0 "vector_insert_erase" -> std::vector<unsigned short>::_M_fill_insert(iterator, size_type, const unsigned short&).
 - Callee 0x00403C60 "MemCmp_Unsigned16" -> char_traits<wchar_t>::compare.

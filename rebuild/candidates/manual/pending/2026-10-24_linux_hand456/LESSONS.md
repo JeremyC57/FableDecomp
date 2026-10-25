@@ -18,7 +18,7 @@
   a plain pointer member schedules the `push 0` one store early (0x00A0E0A0).
 - A class with a user (empty, inline) destructor stores its vtable in it; a class whose destructor is implicit does not --
   ~CModeBase stores only CAnimFilterBase's vtable at +8, never CAnimFilterOfGroup's (0x00739E20, as the landed 0x00743D40).
-- `_STL::swap` on a pair whose second is polymorphic: the temporary's copy stores the class's own vtable, the vptr is never
+- `std::swap` on a pair whose second is polymorphic: the temporary's copy stores the class's own vtable, the vptr is never
   copied by the assignments, and the temporary dies through the base destructor call (0x00769CB0).
 - A pair<K, V> copy ctor where V's user copy ctor has side effects (counters) still emits the whole memberwise copy first,
   then the side effects on `this`'s copied fields (0x00A20670: `inc [NoOfStates]`, then the flag tests on [eax+14h]/[eax+15h]).
@@ -35,7 +35,7 @@ Review at landing:
   0x012FB500); in that source 0x0042D9E0 "CPSCBase" is CDefClassBase's ctor; manifest 0x00406780 is
   CUserProfileManager::GetDebugSaveDir, 0x00431F10 CDefClassBase::operator=, 0x0046644C CDefClassBase copy ctor.
 - Landed 0x00593924 / 0x00593965 / 0x00593E3E declare the pair at 0x0059308A as `std::pair`; this chunk models it in
-  `_STL` (the retail mangling), so their declared callee names differ from this row's leaf (relocation-masked either way).
+  `std` (the retail mangling), so their declared callee names differ from this row's leaf (relocation-masked either way).
 - Landed 0x00A205C0 "SCountedInstance_00a205c0 scalar deleting destructor" has exactly pair<const long, CAStarState>'s
   layout and ~CAStarState; worth checking whether it is that pair's (or the map node's) deleting destructor.
 - The catalog groups in this chunk ("pair<long", "pair<unsigned_long", "pair<std") each hold unrelated functions;

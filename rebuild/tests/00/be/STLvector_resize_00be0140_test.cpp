@@ -1,4 +1,4 @@
-// Behaviour test for 00be0140 (_STL::vector<C3DBoundingSphere>::resize(n)): growing appends through one fill insert at end(), shrinking erases the tail
+// Behaviour test for 00be0140 (std::vector<C3DBoundingSphere>::resize(n)): growing appends through one fill insert at end(), shrinking erases the tail
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>

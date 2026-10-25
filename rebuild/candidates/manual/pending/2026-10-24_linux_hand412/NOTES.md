@@ -4,13 +4,13 @@
 
 Bank files and STLport containers (FableWin bank code):
 - 009c87c0 NGameText::CDataBank::~CDataBank -- calls CloseTextAndGroups, destroys the four arrays in reverse, then the secondary base (+0x164) and ~CBankFileAsync. SHAPE: same as the landed CParticleDataBank dtor 0x00AF1600. The two refcounted element arrays call their out-of-line `__destroy_aux` instantiations (declared `template <>` specialisations, `__fastcall`, tag temporary by reference). The CCharString array's generic `__destroy_aux` inlines to a call loop.
-- 009ca500 _STL::__uninitialized_fill_n -- fills {counted pointer, long} records. SHAPE: `__fastcall` must be on the template DEFINITION. On the explicit instantiation alone it mangles as cdecl `YA`.
+- 009ca500 std::__uninitialized_fill_n -- fills {counted pointer, long} records. SHAPE: `__fastcall` must be on the template DEFINITION. On the explicit instantiation alone it mangles as cdecl `YA`.
 - 009cbe90 CBankFileEntryUpdateData::ReadInfo -- `memcpy` from InfoBuffer when offset + size is a valid 31-bit position. SHAPE: a `__forceinline` 64-bit range check `p >= 0 && p <= 0x7fffffff`.
 - 009cd620 CBankFile::AddEntry -- wraps the filename in a one-element CArray<CCharString> and calls virtual AddEntryMultipleFiles (slot 6). SHAPE: STLport `vector(size_type n)` with the constant 1. `uninitialized_fill_n` unrolls to one placement copy with a null test. The by-value CCountedPointer has a user copy ctor and dtor, so the outgoing copy is built in its slot and the callee releases its own parameter at the end.
 - 009d2160 CSmallVector<CCharString,8>::Allocate -- `Clear(); Start = new T[n]; Size = n;`. SHAPE: the shared CSmallVector model of the landed rows. `new T[]` writes the count cookie and an inline construct loop.
-- 009d2a40 _STL::vector<unsigned char>::vector(n, val, alloc) -- fill constructor. SHAPE: `_M_end_of_storage` must be the real `_STLP_alloc_proxy` (allocator base + `_M_data`). Three plain pointers scheduled `mov esi,ecx` one slot late (101v101).
-- 009d2d00 _STL::_Rb_tree::_M_copy -- STLport structural tree copy with 0x18-byte nodes {bool colour, parent, left, right, pair<const CCharString, 4-byte>}. SHAPE: verbatim STLport 4.6 `_M_copy`/`_M_clone_node`/`_M_create_node`/`_Construct` without /EHsc. The placement new tests the value address for null.
-- 009d2ed0 _STL::__unguarded_partition and 009d3ed0 _STL::__final_insertion_sort -- the CBankFile entry sort by data offset (CompareDataOffset). SHAPE: verbatim STLport with `__fastcall`. They reuse the retail CBankFile model of the landed siblings 0x009D2FC0/0x009D3B90/0x009D3750 (RuntimeData +0x20, PackedDataOffset +0x38). `last - first > 16` compiles to `and eax,-4 ; cmp eax,40h`.
+- 009d2a40 std::vector<unsigned char>::vector(n, val, alloc) -- fill constructor. SHAPE: `_M_end_of_storage` must be the real `_STLP_alloc_proxy` (allocator base + `_M_data`). Three plain pointers scheduled `mov esi,ecx` one slot late (101v101).
+- 009d2d00 std::_Rb_tree::_M_copy -- STLport structural tree copy with 0x18-byte nodes {bool colour, parent, left, right, pair<const CCharString, 4-byte>}. SHAPE: verbatim STLport 4.6 `_M_copy`/`_M_clone_node`/`_M_create_node`/`_Construct` without /EHsc. The placement new tests the value address for null.
+- 009d2ed0 std::__unguarded_partition and 009d3ed0 std::__final_insertion_sort -- the CBankFile entry sort by data offset (CompareDataOffset). SHAPE: verbatim STLport with `__fastcall`. They reuse the retail CBankFile model of the landed siblings 0x009D2FC0/0x009D3B90/0x009D3750 (RuntimeData +0x20, PackedDataOffset +0x38). `last - first > 16` compiles to `and eax,-4 ; cmp eax,40h`.
 - 009d4e90 CDefStringTable::~CDefStringTable -- the atexit dtor of g_DefStringTable (0x013CA828). SHAPE: a body `StringMap.clear()` (inline STLport clear), then the members in reverse order, then the map's own `~_Rb_tree` clear and `~_Rb_tree_base` deallocate (`if (p) free(p)`).
 - 009d5240 CBankFileAsync::SetEnableFailureHandling -- `s_allocationFlags = enable ? 0 : 2`. SHAPE: a static member under `__fastcall`.
 - 009d6060 CBankFileAsyncEntry::BeginReadData -- a counted data object over a caller buffer, then SetupRead with skip 0. SHAPE: the landed sibling BeginReadDataAutoAlloc 0x009D6100 (a NAMED counted-pointer local returned by copy, so `inc ; dec` survive) without the alignment code.
@@ -49,14 +49,14 @@ None. All 40 rows are single functions, and no row ends one 0xCC long after a no
 
 ## Label corrections
 - 009c87c0 CGameDataBank_DestructorHelper -> NGameText::CDataBank::~CDataBank (vtables 0x0129B4D4 / 0x0129B528; donor ??1CDataBank@NGameText@@UAE@XZ 0x00B17970). Callee 0x009C8660 "CommitChanges" -> CDataBank::CloseTextAndGroups.
-- 009ca500 _Fill_n<unsigned_long*,unsigned_int,unsigned_long> -> _STL::__uninitialized_fill_n over {SIVCountedPointer, long}.
+- 009ca500 _Fill_n<unsigned_long*,unsigned_int,unsigned_long> -> std::__uninitialized_fill_n over {SIVCountedPointer, long}.
 - 009cbe90 BankData_CopyRange -> CBankFileEntryUpdateData::ReadInfo.
 - 009cd620 Map_InsertOrReplacePair -> CBankFile::AddEntry(const CCharString&, unsigned long, const CCharString&, CCountedPointer<CBankStateBlock>) (donor 0x00B1BF50).
 - 009d2160 CSmallVector_AllocateHeap -> CSmallVector<CCharString,8>::Allocate(unsigned long).
-- 009d2a40 Vector_InitFill -> _STL::vector<unsigned char>::vector(unsigned int, const unsigned char&, const allocator&).
-- 009d2d00 BankEntry_CloneTree -> _STL::_Rb_tree<CCharString, pair<const CCharString, 4-byte>>::_M_copy.
-- 009d2ed0 CBankFile_QuicksortPartition -> _STL::__unguarded_partition<unsigned long*, unsigned long, CBankFile::CompareDataOffset>.
-- 009d3ed0 CBankFile_IntroSort -> _STL::__final_insertion_sort<unsigned long*, CBankFile::CompareDataOffset>. The callee 0x009D3B90 catalogued `_Insertion_sort1` is STLport `__insertion_sort` (the landed source already says so).
+- 009d2a40 Vector_InitFill -> std::vector<unsigned char>::vector(unsigned int, const unsigned char&, const allocator&).
+- 009d2d00 BankEntry_CloneTree -> std::_Rb_tree<CCharString, pair<const CCharString, 4-byte>>::_M_copy.
+- 009d2ed0 CBankFile_QuicksortPartition -> std::__unguarded_partition<unsigned long*, unsigned long, CBankFile::CompareDataOffset>.
+- 009d3ed0 CBankFile_IntroSort -> std::__final_insertion_sort<unsigned long*, CBankFile::CompareDataOffset>. The callee 0x009D3B90 catalogued `_Insertion_sort1` is STLport `__insertion_sort` (the landed source already says so).
 - 009d4e90 LTextTreeWalkThrough_Destructor -> CDefStringTable::~CDefStringTable. Its callee 0x0043020A "LTextTreeWalkThrough::BuildTreeArray" is the shared map<CCharString,long> `_M_erase`. 0x00996B30 "~CCompressedMemoryDataInputStream" is ~CMemoryDataOutputStream (vtable 0x0129A788).
 - 009d6060 CBankFileAsyncEntry_SetupReadRequest -> CBankFileAsyncEntry::BeginReadData (donors 0x00B2A1B0 / 0x02FF7EC0). The manifest's 4-parameter signature for 0x009D5D30 is propagated from 0x009D5DF0. The retail ctor takes 3 (buffer, size, bank).
 - 009d8b40 CShaderRenderManager_ApplyShaderStates -> CScopedShadersEnable::~CScopedShadersEnable.

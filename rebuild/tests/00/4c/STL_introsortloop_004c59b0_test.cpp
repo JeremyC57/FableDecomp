@@ -45,7 +45,7 @@ static bool Same(const CMeshInfo* a, const int* bits, int invert, const int* wan
 }
 
 // STLport 4.x sort / heap algorithms (the model's bodies and the test's copies of their out-of-line callees).
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
@@ -248,17 +248,17 @@ static bool TestFunction()
     static const int ident[16] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
     CMeshInfo a[20];
     Fill(a, kBits20, 20, 0);
-    _STL::__introsort_loop(a, a + 20, (CMeshInfo*)0, 0, TLess());   // depth 0: the heap-sort fallback
+    std::__introsort_loop(a, a + 20, (CMeshInfo*)0, 0, TLess());   // depth 0: the heap-sort fallback
     bool ok = Same(a, kBits20, 0, want0, 20);
     Fill(a, kBits20, 20, 0);
-    _STL::__introsort_loop(a, a + 20, (CMeshInfo*)0, 8, TLess());
+    std::__introsort_loop(a, a + 20, (CMeshInfo*)0, 8, TLess());
     ok = ok && Same(a, kBits20, 0, want8, 20);
-    _STL::__insertion_sort(a, a + 20, TLess());         // the final pass: every primary ahead of every other mesh
+    std::__insertion_sort(a, a + 20, TLess());         // the final pass: every primary ahead of every other mesh
     for (int i = 0; ok && i < 20; ++i)
         if ((int)a[i].PrimaryMesh != (i < 9 ? 1 : 0))
             ok = false;
     Fill(a, kBits20, 16, 0);
-    _STL::__introsort_loop(a, a + 16, (CMeshInfo*)0, 8, TLess());   // 16 or fewer: untouched
+    std::__introsort_loop(a, a + 16, (CMeshInfo*)0, 8, TLess());   // 16 or fewer: untouched
     return ok && Same(a, kBits20, 0, ident, 16);
 }
 

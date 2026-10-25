@@ -1,4 +1,4 @@
-// _STL::__linear_insert(CPSCPair* first, CPSCPair* last, CPSCPair val, CPSCLess comp) -- STLport guarded insertion step over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: a new minimum shifts [first, last) up one slot and lands at first, anything else goes through the unguarded insert
+// std::__linear_insert(CPSCPair* first, CPSCPair* last, CPSCPair val, CPSCLess comp) -- STLport guarded insertion step over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: a new minimum shifts [first, last) up one slot and lands at first, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF35A0, 174 bytes, `ret 14h`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, last in edx, the 16-byte val by value and the 4-byte empty comparator slot on the stack; val destroyed here on
@@ -64,7 +64,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -77,13 +77,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 typedef CKeyPairCompareLess<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCLess;
 
-namespace _STL {
+namespace std {
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>
 _BidirectionalIter2 __fastcall __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result,
                                                const random_access_iterator_tag&, _Distance*);   // 0x00AF2D60
@@ -107,4 +107,4 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 }
 }
 
-template void __fastcall _STL::__linear_insert<CPSCPair*, CPSCPair, CPSCLess>(CPSCPair*, CPSCPair*, CPSCPair, CPSCLess);
+template void __fastcall std::__linear_insert<CPSCPair*, CPSCPair, CPSCLess>(CPSCPair*, CPSCPair*, CPSCPair, CPSCLess);

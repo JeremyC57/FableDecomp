@@ -1,8 +1,8 @@
-// _STL::__insertion_sort(SKeyedNameRecord* first, SKeyedNameRecord* last, CKeyPairCompareLess comp) -- STLport insertion sort over 24-byte {unsigned __int64 key, long, long, CCharString} records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(SKeyedNameRecord* first, SKeyedNameRecord* last, CKeyPairCompareLess comp) -- STLport insertion sort over 24-byte {unsigned __int64 key, long, long, CCharString} records: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBBE50, 86 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // 4-byte comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).
-// Callees: 0x00CBB920 _STL::__linear_insert(first, last, value, comp) (manifest "NavigationPosition_InsertInOrder" is
+// Callees: 0x00CBB920 std::__linear_insert(first, last, value, comp) (manifest "NavigationPosition_InsertInOrder" is
 // propagated; only this body calls it, `ret 1Ch` = the 0x18-byte value + the comparator), 0x0099EC30
 // CCharString::CCharString(const CCharString&).
 // Element: the callee orders on a 64-bit unsigned key (`cmp hi ; ja/jb ; cmp lo ; jae`), assigns two more dwords and

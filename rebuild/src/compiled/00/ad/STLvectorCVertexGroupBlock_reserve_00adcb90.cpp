@@ -1,4 +1,4 @@
-// _STL::vector<CVertexGroupBlock>::reserve(unsigned int n) -- grow the optimiser's block vector's storage to n blocks: copy the blocks into new storage, destroy and free the old run
+// std::vector<CVertexGroupBlock>::reserve(unsigned int n) -- grow the optimiser's block vector's storage to n blocks: copy the blocks into new storage, destroy and free the old run
 // Flags: /Gr
 // Leaf: ?reserve@?$vector@VCVertexGroupBlock
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADCB90, 0xE2 bytes (+ int3 padding), thiscall, `ret 4`.
@@ -17,7 +17,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -212,14 +212,14 @@ public:
     map(const map& __x) : _M_t(__x._M_t) { }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 bytes in retail
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
 };
 
-namespace _STL {
+namespace std {
 template void vector<CVertexGroupBlock>::reserve(unsigned int);
-} // namespace _STL
+} // namespace std

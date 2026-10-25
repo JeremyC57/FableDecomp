@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CDegradableInfo* first, CDegradableInfo* last, CDegradableDef::CIsHealth1GTHealth2 comp) -- STLport insertion sort of CDegradableDef's degradation stages by descending HealthPercentage, __linear_insert and __copy_backward inlined: a value above the first element shifts the run up one slot and goes first, anything else goes through the out-of-line __unguarded_linear_insert
+// std::__insertion_sort(CDegradableInfo* first, CDegradableInfo* last, CDegradableDef::CIsHealth1GTHealth2 comp) -- STLport insertion sort of CDegradableDef's degradation stages by descending HealthPercentage, __linear_insert and __copy_backward inlined: a value above the first element shifts the run up one slot and goes first, anything else goes through the out-of-line __unguarded_linear_insert
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067EE30, 204 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // comparator slot on the stack -- the SGI/STLport algorithm TUs are /Gr).

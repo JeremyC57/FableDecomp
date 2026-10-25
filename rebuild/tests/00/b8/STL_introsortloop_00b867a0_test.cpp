@@ -1,4 +1,4 @@
-// behaviour test for 0x00B867A0 _STL::__introsort_loop over CSortElement (SortValue order)
+// behaviour test for 0x00B867A0 std::__introsort_loop over CSortElement (SortValue order)
 #include <cstdio>
 
 struct SortElement { unsigned int SortValue; int Tag; };

@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(CWideString* first, CWideString* last, CWideString*, less<CWideString> comp) -- unguarded insertion-sort pass over a wide-string range: sift a copy of every string of [first, last) down past the greater strings, then assign it into the hole
+// std::__unguarded_insertion_sort_aux(CWideString* first, CWideString* last, CWideString*, less<CWideString> comp) -- unguarded insertion-sort pass over a wide-string range: sift a copy of every string of [first, last) down past the greater strings, then assign it into the hole
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B2AC0, 111 bytes, `ret 8` (link-time __fastcall /Gr algorithm TU, written as
 //   explicit __fastcall: first in ecx, last in edx, the value-type pointer and the empty less<> slot on the stack).
@@ -23,7 +23,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result> struct binary_function {
     typedef _Arg1 first_argument_type;
     typedef _Arg2 second_argument_type;

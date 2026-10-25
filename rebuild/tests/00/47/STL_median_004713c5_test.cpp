@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__median<pair<unsigned long,CDefString>, ..> @ 0x004713C5: the median of three entries by key
+// Model of std::__median<pair<unsigned long,CDefString>, ..> @ 0x004713C5: the median of three entries by key
 // (a reference to one of the arguments).
 
 class CDefString {                                          // Ego_r.pdb, 4 bytes (a class: mangled V)
@@ -16,7 +16,7 @@ public:
     long TablePos;                                          // +0x0 def-string table index
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -25,10 +25,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {
@@ -50,7 +50,7 @@ const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _
 typedef pair<unsigned long, CDefString> _CriteriaEntry;
 }
 
-typedef _STL::pair<unsigned long, CDefString> E;
+typedef std::pair<unsigned long, CDefString> E;
 typedef CKeyPairCompareLess<unsigned long, CDefString> C;
 static void SetEntry(E& e, unsigned int key) { e.first = key; e.second.TablePos = (long)(key * 5); }
 static bool Consistent(const E& e) { return e.second.TablePos == (long)(e.first * 5); }
@@ -75,7 +75,7 @@ int main()
     for (int t = 0; t < 9; ++t) {
         for (int i = 0; i < 3; ++i)
             SetEntry(a[i], perms[t][i]);
-        const E& m = _STL::__median(a[0], a[1], a[2], C());
+        const E& m = std::__median(a[0], a[1], a[2], C());
         if (m.first != 2 || (&m != &a[0] && &m != &a[1] && &m != &a[2]))
             ok = false;
     }

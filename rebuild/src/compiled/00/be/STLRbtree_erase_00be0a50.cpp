@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::erase(iterator position) -- (the static map tree of pair<const long, CEngineStaticMapFileBlockManager::CFileBlock>) unlink one file-block node from the static map's tree (rebalance), release its LoadingData counted pointer, free the node and drop the count
+// std::_Rb_tree::erase(iterator position) -- (the static map tree of pair<const long, CEngineStaticMapFileBlockManager::CFileBlock>) unlink one file-block node from the static map's tree (rebalance), release its LoadingData counted pointer, free the node and drop the count
 // Leaf: ?erase@?$_Rb_tree@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE0A50, 103 bytes (+ int3 padding), `__fastcall`, the iterator by value (`ret 4`).
 // The manifest label "CMemoryAllocatorVariableSize_Erase_Destructor" is propagated. Caller: the map's out-of-line erase(iterator)
@@ -43,7 +43,7 @@ public:
 class CBankFileAsyncEntry;
 class CBankFileAsyncData;
 
-namespace _STL {
+namespace std {
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
 template <class T> class allocator { };
 template <class T1, class T2> struct pair {
@@ -139,6 +139,6 @@ public:
     };
 };
 
-typedef _STL::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock> TBlockValue;
-template void _STL::_Rb_tree<long, TBlockValue, _STL::_Select1st<TBlockValue>, _STL::less<long>, _STL::allocator<TBlockValue> >::erase(
-    _STL::_Rb_tree<long, TBlockValue, _STL::_Select1st<TBlockValue>, _STL::less<long>, _STL::allocator<TBlockValue> >::iterator);
+typedef std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock> TBlockValue;
+template void std::_Rb_tree<long, TBlockValue, std::_Select1st<TBlockValue>, std::less<long>, std::allocator<TBlockValue> >::erase(
+    std::_Rb_tree<long, TBlockValue, std::_Select1st<TBlockValue>, std::less<long>, std::allocator<TBlockValue> >::iterator);

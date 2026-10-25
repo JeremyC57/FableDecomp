@@ -20,7 +20,7 @@ public:
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -62,9 +62,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
     CArray() { }
 };

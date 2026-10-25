@@ -39,7 +39,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                             // +0x00
     B second;                                            // +0x08
@@ -47,9 +47,9 @@ template <class A, class B> struct pair {
 };
 }
 
-typedef _STL::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> TDangerPair;   // 16 bytes
+typedef std::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> TDangerPair;   // 16 bytes
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class T1, class T2>

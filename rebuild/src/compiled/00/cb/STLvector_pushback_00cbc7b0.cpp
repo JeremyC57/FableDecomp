@@ -1,9 +1,9 @@
-// _STL::vector::push_back(const CPersistPair& x) -- append a (UID, persist info) pair: placement-copy at finish while there is room, else the out-of-line _M_insert_overflow @ 0x00CBC130
+// std::vector::push_back(const CPersistPair& x) -- append a (UID, persist info) pair: placement-copy at finish while there is room, else the out-of-line _M_insert_overflow @ 0x00CBC130
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBC7B0, 87 bytes (`ret 4`, thiscall).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport vector<CPersistPair>::push_back over (UID, persist info) = _STL::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned);
+// Identity: STLport vector<CPersistPair>::push_back over (UID, persist info) = std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> (0x18 bytes, 8-aligned);
 //   callers SetEntityPersistScript 0x00CB838C and 0x00CBD25C. The manifest label "CMusicEntry_InsertIfCapacity" is
 //   propagated and wrong.
 // Callees: CCharString copy constructor 0x0099EC30, vector::_M_insert_overflow 0x00CBC130 (`push 1 ; push 1`).
@@ -25,7 +25,7 @@ public:
     };
 };
 }
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -33,12 +33,12 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistPair;   // 24 bytes
+typedef std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistPair;   // 24 bytes
 typedef CKeyPairCompareLess<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CPersistLess;
 inline void* operator new(unsigned int, void* where) { return where; }
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };     // empty tag with a user constructor (no byte store)
 template <class _Tp> class allocator {
 public:
@@ -72,4 +72,4 @@ public:
     }
 };
 }
-template void _STL::vector<CPersistPair>::push_back(const CPersistPair&);
+template void std::vector<CPersistPair>::push_back(const CPersistPair&);

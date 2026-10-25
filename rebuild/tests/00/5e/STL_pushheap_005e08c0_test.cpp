@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__push_heap(CCharString* first, int holeIndex, int topIndex, CCharString val, less<CCharString> comp) (retail 0x005E08C0)
+// Behaviour test of std::__push_heap(CCharString* first, int holeIndex, int topIndex, CCharString val, less<CCharString> comp) (retail 0x005E08C0)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

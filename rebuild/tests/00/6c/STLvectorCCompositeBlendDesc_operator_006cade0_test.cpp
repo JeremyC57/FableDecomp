@@ -1,4 +1,4 @@
-// 006cade0 _STL::vector<CCompositeBlendDesc>::operator=
+// 006cade0 std::vector<CCompositeBlendDesc>::operator=
 // Flags: /Gr
 // Leaf: ??4?$vector@UCCompositeBlendDesc@FableAssign_006cade0@@@FableAssign_006cade0@@QAEAAU01@ABU01@@Z
 // Layout: vector3 pointer words; oracle element stride16; trivial destruction, separately bound copy helpers.

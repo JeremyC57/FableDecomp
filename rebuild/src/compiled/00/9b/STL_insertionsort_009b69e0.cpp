@@ -1,6 +1,6 @@
-// _STL::__insertion_sort(pair<CCharString,unsigned long>* first, pair<CCharString,unsigned long>* last, CKeyPairCompareLess<CCharString,unsigned long> comp) -- STLport insertion sort: __linear_insert each element after the first, passing a copy of it by value
+// std::__insertion_sort(pair<CCharString,unsigned long>* first, pair<CCharString,unsigned long>* last, CKeyPairCompareLess<CCharString,unsigned long> comp) -- STLport insertion sort: __linear_insert each element after the first, passing a copy of it by value
 // Flags: /Gr
-// Leaf: ??$__insertion_sort@PAU?$pair@VCCharString@@K@_STL@@
+// Leaf: ??$__insertion_sort@PAU?$pair@VCCharString@@K@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B69E0, 66 bytes (+ int3 padding), `ret 4` (/Gr TU: first in ecx, last in edx,
 //   the empty comparator in one stack dword).
 // Identity: the sort of CVectorMap<CCharString, unsigned long> (FableWin.pdb names pair<CCharString,unsigned long> /
@@ -18,7 +18,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -28,10 +28,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x009B5990
 

@@ -1,4 +1,4 @@
-// _STL::map::operator[](NUISystem::CComponent* const& k) -- STLport subscript of map<NUISystem::CComponent*, pair<long, long> > (size TU): lower_bound, insert (k, (0, 0)) when absent, return the mapped pair
+// std::map::operator[](NUISystem::CComponent* const& k) -- STLport subscript of map<NUISystem::CComponent*, pair<long, long> > (size TU): lower_bound, insert (k, (0, 0)) when absent, return the mapped pair
 // Leaf: ??A?$map
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005B322B, 74 bytes, __fastcall `ret 4`, frame-pointer size TU.
 // Identity: Ego_r.pdb CTCInventoryTrade::ItemsToBuy / ItemsToSell are map<NUISystem::CComponent*, pair<long, long> >; callers
@@ -11,7 +11,7 @@
 //   copy: one xor-zeroed register, 76v74; a POD stand-in: 89v74).
 #pragma optimize("s", on)
 namespace NUISystem { class CComponent; }
-namespace _STL {
+namespace std {
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
 };

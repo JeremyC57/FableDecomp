@@ -32,7 +32,7 @@ public:
         return false;
     }
 };
-namespace _STL {
+namespace std {
 template <class T> class allocator { };
 template <class T, class A = allocator<T> > class vector {
 public:
@@ -52,7 +52,7 @@ public:
         CCharString   DataAsString;             // +0x04
         unsigned long DataAsULONG;              // +0x08
     };
-    _STL::vector<CElement> Elements;            // +0x00
+    std::vector<CElement> Elements;            // +0x00
 };
 
 void __fastcall GetStringFromDataMarker(const CCharString& marker, CCharString& out, const CDataMarkerOutput& data)

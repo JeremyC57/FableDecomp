@@ -1,4 +1,4 @@
-// _STL::_Deque_iterator_base<C2DVector>::_M_advance(int n) -- move a deque iterator by n elements: inside the current 16-element node just bump the cursor, else step the node pointer by the signed node offset and re-base the cursor in the new node
+// std::_Deque_iterator_base<C2DVector>::_M_advance(int n) -- move a deque iterator by n elements: inside the current 16-element node just bump the cursor, else step the node pointer by the signed node offset and re-base the cursor in the new node
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0E2A0, length 105 bytes (thiscall `ret 4`, + int3 padding). 13 callers in the TU
 // (the iterator operator+= / operator-= inlined into operator+ 0x00A0E980, operator[] 0x00A0E9E0 / 0x00A0EE00, operator- 0x00A0EA30,
 // the deque insert/erase paths). The landed operator+ 0x00A0E980 calls this "operator+="; it is the void _M_advance.
@@ -24,7 +24,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

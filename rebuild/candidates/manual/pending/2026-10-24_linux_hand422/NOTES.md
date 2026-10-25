@@ -1,11 +1,11 @@
-# Hand chunk 422 (_STL::__partial_sort .. _STL::iter_swap): 39 of 40 byte-exact
+# Hand chunk 422 (std::__partial_sort .. std::iter_swap): 39 of 40 byte-exact
 
 All 40 rows are `_global` in the catalog. Every one turned out to be an STLport 4.6 helper or a small member of the
 navigation / animation-file TUs. 34 rows grade RELOCATION_MATCH and 5 grade MATCH. Every test prints PASS under both
 g++ and VC7.1. Default flags throughout: no row needed a `// Flags:` line. Algorithm templates are `__fastcall` (/Gr TUs).
 
 ## What matched (39)
-- **_STL algorithms over the C3DAnimFile chunk records** (pair<long | CCharString, {CCharString, CCountedPointer}>,
+- **std algorithms over the C3DAnimFile chunk records** (pair<long | CCharString, {CCharString, CCountedPointer}>,
   16-byte records):
   - 0xA73330 and 0xA733B0 `__partial_sort`: make_heap, __pop_heap and sort_heap are out of line; the comparator is inline
     and pair's explicit copy ctor makes the value copy. The string version also needs the same-TU noinline
@@ -72,7 +72,7 @@ None. No row holds a second function.
 
 ## Label corrections
 Catalog name → real function:
-- 0xA73330 `Introsort_QuickPartition_LongUnsigned` → `_STL::__partial_sort<pair<long,SNamedChunk>*>`.
+- 0xA73330 `Introsort_QuickPartition_LongUnsigned` → `std::__partial_sort<pair<long,SNamedChunk>*>`.
 - 0xA733B0 `Introsort_QuickPartition_FloatStr` → `__partial_sort` (CCharString keys).
 - 0xA734D0 `Vector_PushBack_Refcounted` → `vector<pair<long,SNamedChunk> >::push_back`.
 - 0xA73530 `Vector_Insert_ElementAt` → `vector<pair<CCharString,SNamedChunk> >::push_back`.

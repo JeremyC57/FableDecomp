@@ -38,7 +38,7 @@
 
 Review at landing:
 - 0x00CB36E0 SetImeApi had 5 grades (over the 4-grade budget): RTM, kl first, QFE 4035, /G7 and /G5.
-- 0x00CB5C90 AddScript carries a same-TU noinline stand-in body for `_STL::vector<CCharString>::_M_insert_overflow`
+- 0x00CB5C90 AddScript carries a same-TU noinline stand-in body for `std::vector<CCharString>::_M_insert_overflow`
   (it is not the retail 0x00433530 body). Its symbol is the real STLport mangling already in reloc_bindings.tsv.
 - The rows reference the landed callees by their real STLport/strmbase symbols, not the landed rows' descriptive
   class names. reloc_identity reports only RELOC_NAME warnings, all from descriptive labels; no hard errors.
@@ -57,11 +57,11 @@ Review at landing:
   - 0x00CB1CC0 (file CMediaType_CMediaType_00cb1cc0.cpp, class CComHolder_00cb1cc0) is ~CMediaType, the inline
     FreeMediaType body.
   - 0x00CB7210 "CStringPairRecordVector_00cb7210::push_back" says the element type is not identified. It is
-    `_STL::vector<_STL::pair<CCharString, CScriptInfo>>::push_back` (CScriptInfoManager::Scripts; caller
+    `std::vector<std::pair<CCharString, CScriptInfo>>::push_back` (CScriptInfoManager::Scripts; caller
     AddScript 0x00CB5D47).
   - 0x00CB65D0 CVectorMap::LowerBound's comment says "Dinkumware-style"; the TLC STL is STLport.
   - 0x00CB27F0 InitCompStringData writes its memsets before the counter stores. Both orders give the same bytes out
     of line, but DXUT and the inlined copy in 0x00CB2C60 put the counters first; consider reordering for fidelity.
 - Catalog rows near 0x00CB6xxx (__copy_backward 0x00CB62F0, __adjust_heap 0x00CB68C0) are landed as plain
-  non-template models or propagated "std::" names. A retemplating pass into `_STL` would give them their retail
+  non-template models or propagated "std::" names. A retemplating pass into `std` would give them their retail
   mangled names.

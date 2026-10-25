@@ -1,4 +1,4 @@
-// _STL::deque<C2DVector>::_M_reserve_elements_at_front(unsigned int n) -- allocate front node buffers when fewer than n free slots precede the start, and return the iterator n before the start
+// std::deque<C2DVector>::_M_reserve_elements_at_front(unsigned int n) -- allocate front node buffers when fewer than n free slots precede the start, and return the iterator n before the start
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0F430, length 52 bytes (thiscall `ret 8`: hidden result pointer and n). No direct
 // callers (an emitted COMDAT; the insert paths inline it).
 // Callees: deque::_M_new_elements_at_front @ 0x00A0F300, _Deque_iterator::operator-(int) @ 0x00A0EA30 (into the hidden result).
@@ -21,7 +21,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

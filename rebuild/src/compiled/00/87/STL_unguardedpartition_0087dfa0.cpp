@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(const CAnimationEntry** first, const CAnimationEntry** last, const CAnimationEntry* pivot, CTurningAnimCompare comp) -- introsort partition step for the turning animations: walk both ends towards the pivot under the rotation comparator and swap the out-of-place pairs
+// std::__unguarded_partition(const CAnimationEntry** first, const CAnimationEntry** last, const CAnimationEntry* pivot, CTurningAnimCompare comp) -- introsort partition step for the turning animations: walk both ends towards the pivot under the rotation comparator and swap the out-of-place pairs
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087DFA0, 172 bytes, `ret 8` (/Gr algorithm TU: first in ecx, last in
 //   edx, the pivot value and the 4-byte comparator by value on the stack).
@@ -40,7 +40,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2>
 inline void iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2)
 {

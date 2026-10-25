@@ -38,7 +38,7 @@ public:
     float PeekRoughProportionOfSphereContained(const C3DVector& position, float radius) const;   // 0x00A2E700
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -48,12 +48,12 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
 template <class K, class V, class C> class CVectorMap {   // retail 16 bytes: STLport vector + Compare + Dirty
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef const value_type* const_iterator;
     value_type* _M_start;                               // +0x00
     value_type* _M_finish;                              // +0x04

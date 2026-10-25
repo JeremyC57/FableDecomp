@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -26,8 +26,8 @@ public:
 };
 }
 
-typedef _STL::pair<unsigned int, unsigned int> TPair;
-typedef _STL::less<TPair> TPairLess;
+typedef std::pair<unsigned int, unsigned int> TPair;
+typedef std::less<TPair> TPairLess;
 
 static bool Same(const TPair* a, const unsigned int (*e)[2], int n)
 {
@@ -49,7 +49,7 @@ static unsigned int Sum(const TPair* a, int n)
     return s;
 }
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
@@ -253,7 +253,7 @@ int main()
     static const unsigned int e[7][2] = { { 0, 0 }, { 1, 1 }, { 2, 3 }, { 2, 7 }, { 6, 0 }, { 6, 1 }, { 9, 9 } };
     TPair a[7];
     Fill(a, v, 7);
-    _STL::__unguarded_insertion_sort_aux(a + 1, a + 7, (TPair*)0, TPairLess());   // a[0] is the guard
+    std::__unguarded_insertion_sort_aux(a + 1, a + 7, (TPair*)0, TPairLess());   // a[0] is the guard
     if (!Same(a, e, 7))
         ok = 0;
 

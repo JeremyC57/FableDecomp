@@ -39,7 +39,7 @@ static bool Is(const C3DAnimationStateAlpha& a, long index, float time, float we
 static int g_overflow = 0;
 static long g_overflowIndex = 0;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> class allocator { public: allocator() { } };
@@ -70,7 +70,7 @@ public:
 
 int main()
 {
-    _STL::vector<C3DAnimationStateAlpha> v;
+    std::vector<C3DAnimationStateAlpha> v;
     v._M_start = (C3DAnimationStateAlpha*)malloc(2 * sizeof(C3DAnimationStateAlpha));
     v._M_finish = v._M_start;
     v._M_end_of_storage = v._M_start + 2;

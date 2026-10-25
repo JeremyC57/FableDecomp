@@ -1,8 +1,8 @@
-// _STL::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing** valueType, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- partial sort of the screamer pursue-target sort: heapify [first, middle), push every better element of [middle, last) through the heap, then sort the heap
+// std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing** valueType, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- partial sort of the screamer pursue-target sort: heapify [first, middle), push every better element of [middle, last) through the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096DAF0, 112 bytes, __fastcall (/Gr algorithm TU: first in ecx, middle in edx,
 //   last, the value-type tag and the comparator on the stack), `ret 0Ch`.
-// Instantiation: the screamer target sort: _STL::partial_sort / sort<CThing**,
+// Instantiation: the screamer target sort: std::partial_sort / sort<CThing**,
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> > of CAIStateGroup_ScreamerPursueTarget::Update
 //   (0x0096DF50) and its __introsort_loop (0x0096E410).
 // Callees: CThingCompare_Nearest::operator()<CThing> @ 0x004A8D80 (through the adapter, inline), __make_heap @
@@ -10,7 +10,7 @@
 // Shape: STLport `make_heap(first, middle, comp); for (i = middle; i < last; ++i) if (comp(*i, *first))
 //   __pop_heap(first, middle, i, T(*i), comp, (int*)0); sort_heap(first, middle, comp);` with make_heap the inline
 //   front end of __make_heap.
-// Label: catalog "std_sort_HeapSortFinalize_Adapted" -> the STLport 4.x _STL::__partial_sort instantiation for
+// Label: catalog "std_sort_HeapSortFinalize_Adapted" -> the STLport 4.x std::__partial_sort instantiation for
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
@@ -41,7 +41,7 @@ public:
 };
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x0096D7E0
@@ -74,4 +74,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
     sort_heap(__first, __middle, __comp);
 }
 template void __fastcall __partial_sort<CThing**, CThing*, TComp>(CThing**, CThing**, CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

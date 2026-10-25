@@ -1,4 +1,4 @@
-// _STL::back_insert_iterator::operator=(const C2DVector& value) -- push the 2D vector onto the back of the target vector<C2DVector> (in place when there is capacity, else through _M_insert_overflow) and return the inserter
+// std::back_insert_iterator::operator=(const C2DVector& value) -- push the 2D vector onto the back of the target vector<C2DVector> (in place when there is capacity, else through _M_insert_overflow) and return the inserter
 // Leaf: ??4?$back_insert_iterator@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5A910, 69 bytes, `ret 4` (thiscall: the inserter in ecx).
 // Callees: vector<C2DVector>::_M_insert_overflow(C2DVector* pos, const C2DVector& x, const __true_type&, size_type n,
@@ -17,7 +17,7 @@ public:
     float Y;                                            // +0x04
 };
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -58,4 +58,4 @@ public:
 
 template class back_insert_iterator<vector<C2DVector> >;
 
-}   // namespace _STL
+}   // namespace std

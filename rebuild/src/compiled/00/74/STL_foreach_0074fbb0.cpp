@@ -1,6 +1,6 @@
-// _STL::for_each(CThingObject** first, CThingObject** last, CAddObjectsNotSolidTo f) -- make every listed object not solid to each object in the range (through its CTCSolidToThing); returns the functor
+// std::for_each(CThingObject** first, CThingObject** last, CAddObjectsNotSolidTo f) -- make every listed object not solid to each object in the range (through its CTCSolidToThing); returns the functor
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- GetTC reads the map's Last into a `last` local shared by a __forceinline lower_bound(first, last, key) helper and the end test, so VC7.1 loads Last before First and keeps it in edi as retail does
-// Leaf: ??$for_each@PAPAVCThingObject@@VCAddObjectsNotSolidTo@@@_STL@@YI?AVCAddObjectsNotSolidTo@@PAPAVCThingObject@@0V1@@Z
+// Leaf: ??$for_each@PAPAVCThingObject@@VCAddObjectsNotSolidTo@@@std@@YI?AVCAddObjectsNotSolidTo@@PAPAVCThingObject@@0V1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0074FBB0, 185 bytes, `ret 8` (link-time __fastcall: the hidden result
 //   pointer in ecx, first in edx, then last and the 4-byte functor on the stack).
 // Callee: CTCSolidToThing::AddThingNotSolidTo(CThing*) @ 0x00770FA0 (per listed object).
@@ -81,7 +81,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     T* _M_start;                                             // +0x00
@@ -94,8 +94,8 @@ public:
 
 class CAddObjectsNotSolidTo {
 public:
-    const _STL::vector<CThingObject*>* ObjectList;           // +0x00
-    CAddObjectsNotSolidTo(const _STL::vector<CThingObject*>& objects) : ObjectList(&objects) { }
+    const std::vector<CThingObject*>* ObjectList;           // +0x00
+    CAddObjectsNotSolidTo(const std::vector<CThingObject*>& objects) : ObjectList(&objects) { }
     __forceinline void operator()(CThingObject* object)
     {
         CTCSolidToThing* solid = object->GetTC<CTCSolidToThing>(77);
@@ -105,7 +105,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class InputIter, class Function>
 Function __fastcall for_each(InputIter first, InputIter last, Function f)
 {

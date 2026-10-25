@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CActivity* first, unsigned int n, const CActivity& x, const __false_type&) -- placement-copy n copies of a CTCHeroOnlineScoreboard::CActivity (three CCharStrings, a decimal-places byte and a lower-is-better flag) and return the end
+// std::__uninitialized_fill_n(CActivity* first, unsigned int n, const CActivity& x, const __false_type&) -- placement-copy n copies of a CTCHeroOnlineScoreboard::CActivity (three CCharStrings, a decimal-places byte and a lower-is-better flag) and return the end
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005657C0, length 78 bytes, `ret 8`.
 // Callers: 0x0056651A, 0x00569072, 0x00569604 (the scoreboard activity vector's fill/insert paths).
@@ -30,7 +30,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -46,4 +46,4 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 }
 
 typedef CTCHeroOnlineScoreboard::CActivity TActivity;
-template TActivity* __fastcall _STL::__uninitialized_fill_n<TActivity*, unsigned int, TActivity>(TActivity*, unsigned int, const TActivity&, const _STL::__false_type&);
+template TActivity* __fastcall std::__uninitialized_fill_n<TActivity*, unsigned int, TActivity>(TActivity*, unsigned int, const TActivity&, const std::__false_type&);

@@ -22,7 +22,7 @@ public:
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
 // STLport 4.6 sort / stable_sort machinery over CSortElement (the model the chunk-428 sources compile).
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -365,9 +365,9 @@ void __fastcall __stable_sort_aux(_RandomAccessIter __first, _RandomAccessIter _
     else
         __stable_sort_adaptive(__first, __last, buf.begin(), _Distance(buf.size()), __comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::less<CSortElement> CLess;
+typedef std::less<CSortElement> CLess;
 
 // Test helpers: elements tagged with their original index so stability is checkable.
 static CEngineSubPrimitiveBase* Tag(int i) { return (CEngineSubPrimitiveBase*)(size_t)(i + 1); }
@@ -409,7 +409,7 @@ int main()
 {
     static CSortElement a[30], b[30];
     for (int i = 0; i < 30; ++i) { a[i] = CSortElement(i, Tag(i)); b[i] = CSortElement(100 + i, Tag(100 + i)); }
-    CSortElement* r = _STL::swap_ranges(a + 5, a + 25, b + 3);
+    CSortElement* r = std::swap_ranges(a + 5, a + 25, b + 3);
     if (r != b + 23) { std::printf("00b85390_TEST FAIL\n"); return 1; }
     for (int i = 0; i < 30; ++i) {
         unsigned long ea = (i >= 5 && i < 25) ? (unsigned long)(100 + i - 2) : (unsigned long)i;

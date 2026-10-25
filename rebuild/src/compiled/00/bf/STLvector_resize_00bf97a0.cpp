@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport one-argument resize of a texture palette's entry vector: resize(n, CPaletteEntry()) with the default entry destroyed on both exits
-// Leaf: ?resize@?$vector@UCPaletteEntry@CEngineTexturePalette@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport one-argument resize of a texture palette's entry vector: resize(n, CPaletteEntry()) with the default entry destroyed on both exits
+// Leaf: ?resize@?$vector@UCPaletteEntry@CEngineTexturePalette@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF97A0, 108 bytes (+ int3 padding), `__fastcall` (this -> esi), `ret 4`.
 // Identity: element Ego_r.pdb CEngineTexturePalette::CPaletteEntry (struct { ulong Index; CCharString Name; }, 8 bytes;
 //   the Palette member is CArray<CEngineTexturePalette::CPaletteEntry>, whose resize is the inherited vector one); the
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 class vector {
 public:

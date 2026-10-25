@@ -1,4 +1,4 @@
-// _STL::swap(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >& a, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >& b) -- STLport swap of two anim-component map entries through a counted temporary
+// std::swap(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >& a, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >& b) -- STLport swap of two anim-component map entries through a counted temporary
 // Leaf: ?swap@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E0760, 131 bytes (+ padding to 144), plain `ret` (__fastcall /Gr algorithm TU: a in ecx ->
 //   esi, b in edx -> edi). No direct callees: the pointee's virtual slot 1 (Delete on the last reference), the final

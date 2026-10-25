@@ -3,13 +3,13 @@ address	status	bytes	test	note
 008e8ff0	DIFFER	135v135	-	NCreatureMode::GetStrafingAnimationName(const CThing&,EMovementType); scheduling only (physics vtable load placement); 4 grades
 008e9080	RELOCATION_MATCH	91v91	PASS	NCreatureMode::GetAnimDistanceAndIndexFromAnimName; 1 grade
 008ea3f0	RELOCATION_MATCH	230v230	PASS	NCreatureMode::CModeHoverBase::CRadialArea::IsPosInArea; radius test as block condition, normalised vector by two statements; 2 grades
-008eba90	RELOCATION_MATCH	80v80	PASS	_STL::__uninitialized_copy<CHoverState*>; 1 grade
-008ecef0	MATCH	102v102	PASS	_STL::__find_if<pair<long,CCharString>*,CIsItemWithDefIndex>; same TU as 008ed040
+008eba90	RELOCATION_MATCH	80v80	PASS	std::__uninitialized_copy<CHoverState*>; 1 grade
+008ecef0	MATCH	102v102	PASS	std::__find_if<pair<long,CCharString>*,CIsItemWithDefIndex>; same TU as 008ed040
 008ed040	RELOCATION_MATCH	77v77	PASS	CTCContainer::RemoveItem(long); same-TU __find_if body; 2 grades
 008ed2b0	RELOCATION_MATCH	183v183	PASS	CTCContainer::OnSerialise(CPersistContext&,bool); 1 grade
 008ed3b0	RELOCATION_MATCH	129v129	PASS	CCreateItemNamesFromIndices::operator(); 3 grades
 008ed440	RELOCATION_MATCH	143v143	PASS	CCreateIndicesFromItemNames::operator(); 3 grades
-008f02e0	RELOCATION_MATCH	161v161	PASS	_STL::__copy<Coin*>; 1 grade
+008f02e0	RELOCATION_MATCH	161v161	PASS	std::__copy<Coin*>; 1 grade
 008f57f0	RELOCATION_MATCH	81v81	PASS	CCreatureAction_DragonSwoop implicit copy ctor; 1 grade
 008f58c0	DIFFER	164v163	-	NPhysicsHelpers::GetLineThingSearchArea; tail only (C2DBoxI corner store order); 4 grades
 008f5b50	RELOCATION_MATCH	74v74	PASS	NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint; 2 grades
@@ -30,8 +30,8 @@ address	status	bytes	test	note
 008f9ca0	RELOCATION_MATCH	82v82	PASS	LHNetworkLib::LTimer::Stop()
 008fa9f0	DIFFER	132v133	-	NCameraModes::CPhysicsCollisionPointsObject::GetPointsList; loop rotation; 4 grades
 008fbcb0	RELOCATION_MATCH	108v108	PASS	NCameraModes::CPhysicsForceModelBase::GetPointIntersection
-008fbf10	RELOCATION_MATCH	78v78	PASS	_STL::list<C3DVector>::_M_insert_dispatch; 1 grade
-008fca40	RELOCATION_MATCH	193v193	PASS	_STL::transform<list<const CThing*>::iterator,back_insert_iterator<list<CPhysicsMeshObject>>,CGetMeshObject>; STLport 4.6 iterator base; 3 grades
+008fbf10	RELOCATION_MATCH	78v78	PASS	std::list<C3DVector>::_M_insert_dispatch; 1 grade
+008fca40	RELOCATION_MATCH	193v193	PASS	std::transform<list<const CThing*>::iterator,back_insert_iterator<list<CPhysicsMeshObject>>,CGetMeshObject>; STLport 4.6 iterator base; 3 grades
 008fcf10	MATCH	22v22	PASS	CAIStateGroupBase::IsRunnableMain()
 008fd21f	RELOCATION_MATCH	35v35	PASS	CAIStateGroupInfo::CAIStateGroupInfo; pragma optimize("s")
 009015b9	RELOCATION_MATCH	71v71	PASS	CAIStateGroup_RecoverStealableItem ctor; pragma optimize("s")

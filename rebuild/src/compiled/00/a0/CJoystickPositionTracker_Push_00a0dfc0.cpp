@@ -26,7 +26,7 @@ public:
     C2DVector& Normalise();                                 // 0x00A14540
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
@@ -191,7 +191,7 @@ public:
 
 class CJoystickPositionTracker {
 public:
-    _STL::deque<C2DVector> RecentPositions;                 // +0x00
+    std::deque<C2DVector> RecentPositions;                 // +0x00
     void Push(const CInputEvent& event);
 };
 

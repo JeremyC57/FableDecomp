@@ -1,4 +1,4 @@
-// Behaviour test for 0x00758C90 _STL::__make_heap over the 0x2C-byte wound-morph entries
+// Behaviour test for 0x00758C90 std::__make_heap over the 0x2C-byte wound-morph entries
 #include <cstdio>
 
 struct CWoundMorphsEntry { long Words[10]; };

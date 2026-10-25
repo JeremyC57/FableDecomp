@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__partial_sort(CCharString* first, CCharString* middle, CCharString* last, CCharString*, less<CCharString> comp) (retail 0x005E2EB0)
+// Behaviour test of std::__partial_sort(CCharString* first, CCharString* middle, CCharString* last, CCharString*, less<CCharString> comp) (retail 0x005E2EB0)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

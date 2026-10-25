@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE8540 _STL::vector<C3DGroup2>::resize(unsigned int n): erase the tail when shrinking, else append default groups (bone -1, no blends)
+// behaviour test for 0x00AE8540 std::vector<C3DGroup2>::resize(unsigned int n): erase the tail when shrinking, else append default groups (bone -1, no blends)
 #include <cstdio>
 #include <cstdlib>
 #include <new>

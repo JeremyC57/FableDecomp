@@ -1,4 +1,4 @@
-// _STL::vector<CCharString>::resize(unsigned int) -- STLport resize of a CCharString vector with a default-constructed fill value: erase the surplus [begin + n, end) when shrinking, else insert n - size() copies of an empty string at the end
+// std::vector<CCharString>::resize(unsigned int) -- STLport resize of a CCharString vector with a default-constructed fill value: erase the surplus [begin + n, end) when shrinking, else insert n - size() copies of an empty string at the end
 // Leaf: ?resize@CCharStringVector@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049B760, 101 bytes, `ret 4` (__fastcall: this -> esi, the new size on the
 //   stack; the `push ecx` frame word holds the default CCharString).

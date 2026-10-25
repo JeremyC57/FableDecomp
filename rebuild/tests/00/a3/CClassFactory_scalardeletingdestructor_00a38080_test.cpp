@@ -18,7 +18,7 @@ public:
     CCharString& operator=(const CCharString& o) { Value = o.Value; ++g_strAssign; return *this; }
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -50,7 +50,7 @@ typedef CClass* (*ClassAllocFunc)();
 
 class CClassTypeInfo {
 public:
-    _STL::list<CClass*> TypeList;
+    std::list<CClass*> TypeList;
     unsigned long       NoAllocated;
     bool                Used;
     bool                Local;
@@ -81,7 +81,7 @@ public:
     virtual ~CBaseClassNonCopyable() { ++g_baseDtor; }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
@@ -121,10 +121,10 @@ class CClassFactory : public CBaseClassNonCopyable {
 public:
     CClassFactory(unsigned char maxClassTypeID);
     virtual ~CClassFactory();
-    _STL::vector<CClassTypeInfo> ClassTypeInfo;
+    std::vector<CClassTypeInfo> ClassTypeInfo;
     unsigned long                MaxClassTypeID;
     unsigned long                NoAllocatedClasses;
-    _STL::list<CClass*>          ClassList;
+    std::list<CClass*>          ClassList;
 };
 
 CClassFactory::~CClassFactory()

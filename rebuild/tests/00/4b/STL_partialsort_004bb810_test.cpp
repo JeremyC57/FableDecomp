@@ -76,7 +76,7 @@ static int StringValue(const CCharString& s, char prefix)
 }
 static int LiveObjects() { return gLiveStrings; }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;
     _T2 second;
@@ -87,7 +87,7 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // empty functor, by value
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 namespace NQuestManager {
@@ -102,7 +102,7 @@ public:
 };
 }
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo TPersistInfo;
-typedef _STL::pair<CCharString, TPersistInfo> TElem;
+typedef std::pair<CCharString, TPersistInfo> TElem;
 typedef CKeyPairCompareLess<CCharString, TPersistInfo> TLess;
 #define LOWEST_KEY (-1)                                 // key -1 is the null string (sorts first)
 static TElem Mk(int key, int tag) { return TElem(MkString(0, key), TPersistInfo(MkString('q', tag), MkString('s', tag))); }
@@ -111,7 +111,7 @@ static int TagOf(const TElem& e) { return StringValue(e.second.QuestName, 'q'); 
 static bool PayloadOk(const TElem& e) { return StringValue(e.second.PersistScript, 's') == TagOf(e); }
 
 // STLport 4.x sort / heap algorithms (the model's bodies and the test's copies of their out-of-line callees).
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
@@ -373,7 +373,7 @@ static bool TestFunction()                              // __partial_sort: the m
         int keys[n];
         Keys(keys, n, seed, 18, LOWEST_KEY);
         TElem* a = NewArr(keys, n);
-        _STL::__partial_sort(a, a + m, a + n, (TElem*)0, TLess());
+        std::__partial_sort(a, a + m, a + n, (TElem*)0, TLess());
         ok = IsPerm(a, n, keys) && IsSorted(a, m);
         for (int i = m; ok && i < n; ++i)
             if (TLess()(a[i], a[m - 1]))

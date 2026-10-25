@@ -16,7 +16,7 @@
 // inline (126 bytes), a named image pointer (this source, 124 bytes), image + size locals before the store.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-namespace _STL
+namespace std
 {
     template <class _Tp> class allocator { };
 
@@ -55,7 +55,7 @@ namespace MicroThread
     public:
         virtual unsigned int MicroThreadStackSize() const;  // 0x009D8890
         virtual ~MicroThreadDetails();
-        _STL::vector<unsigned char> Stack;                 // +0x08
+        std::vector<unsigned char> Stack;                 // +0x08
     };
 
     extern MicroThreadInfo* g_pActiveThread;               // 0x013CA894

@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(pair<CCharString, CPersistInfo>* first, pair<CCharString, CPersistInfo>* last, CKeyPairCompareLess comp) -- STLport insertion sort over the quest manager's persistence table (quest name -> persist info): every entry after the first goes through the out-of-line __linear_insert
+// std::__insertion_sort(pair<CCharString, CPersistInfo>* first, pair<CCharString, CPersistInfo>* last, CKeyPairCompareLess comp) -- STLport insertion sort over the quest manager's persistence table (quest name -> persist info): every entry after the first goes through the out-of-line __linear_insert
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004BAFB0, 86 bytes (+ int3 padding), `ret 4` (/Gr algorithm TU, explicit __fastcall
 //   here: first in ecx, last in edx, the empty comparator slot on the stack).
@@ -31,7 +31,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -41,15 +41,15 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 }
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo TPersistInfo;
-typedef _STL::pair<CCharString, TPersistInfo> TPersistPair;                 // 12 bytes
+typedef std::pair<CCharString, TPersistInfo> TPersistPair;                 // 12 bytes
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;   // only passed along here
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;   // only passed along here
 };
 typedef CKeyPairCompareLess<CCharString, TPersistInfo> TPersistLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x004BAB30
 

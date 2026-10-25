@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<C3DVector, long>* first, pair<C3DVector, long>* last, pair<C3DVector, long>*, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport unguarded insertion sort of the first-person targeting positions (best score first)
+// std::__unguarded_insertion_sort_aux(pair<C3DVector, long>* first, pair<C3DVector, long>* last, pair<C3DVector, long>*, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport unguarded insertion sort of the first-person targeting positions (best score first)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808120, 140 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the unused value-type pointer and the 0x2c-byte comparator by value on the stack, `ret 30h`.
@@ -27,7 +27,7 @@ struct CVectorCompare_BestForTargeting {
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -38,14 +38,14 @@ template <class _T1, class _T2> struct pair {
 namespace {
 struct CCompareTargetedPositionsForFirstPersonTargeting {
     CVectorCompare_BestForTargeting VectorCompare;         // +0x00
-    bool operator()(const _STL::pair<C3DVector, long>& a, const _STL::pair<C3DVector, long>& b) const
+    bool operator()(const std::pair<C3DVector, long>& a, const std::pair<C3DVector, long>& b) const
     {
         return VectorCompare.GetCompareValueForPoint(a.first) > VectorCompare.GetCompareValueForPoint(b.first);
     }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x008074A0
 

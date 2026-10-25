@@ -1,5 +1,5 @@
-// _STL::__unguarded_partition(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntry pivot, CSurfaceEntryLess comp) -- Hoare partition of the (key, CCompositeSurfaceInfo) entries around pivot's key, returns the split point
-// Leaf: ??$__unguarded_partition@PAU?$pair@JVCCompositeSurfaceInfo@@@_STL@@
+// std::__unguarded_partition(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntry pivot, CSurfaceEntryLess comp) -- Hoare partition of the (key, CCompositeSurfaceInfo) entries around pivot's key, returns the split point
+// Leaf: ??$__unguarded_partition@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEDFE0, 127 bytes, `ret 14h` (the 16-byte pivot + the empty comparator).
 // Callees: iter_swap @ 0x00BED690 (out of line, __fastcall), operator delete @ 0x00BFE9BC and ~CBaseClass @ 0x0099A2E0
@@ -61,7 +61,7 @@ public:
     CCountedPointer<CCompositeSurfaceCache> Cache;  // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -69,18 +69,18 @@ template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
+typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 
-namespace _STL {
+namespace std {
 template <class ForwardIter1, class ForwardIter2>
 void iter_swap(ForwardIter1 a, ForwardIter2 b);   // 0x00BED690
 
@@ -99,6 +99,6 @@ RandomAccessIter __unguarded_partition(RandomAccessIter first, RandomAccessIter 
         ++first;
     }
 }
-}   // namespace _STL
+}   // namespace std
 
-template CSurfaceEntry* _STL::__unguarded_partition(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry, CSurfaceEntryLess);
+template CSurfaceEntry* std::__unguarded_partition(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntry, CSurfaceEntryLess);

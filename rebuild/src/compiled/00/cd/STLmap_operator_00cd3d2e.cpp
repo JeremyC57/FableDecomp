@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, CScriptGameResourceObjectScriptedThingBase> (size TU): lower_bound, insert (k, T()) when absent, return the scripted-thing handle
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, CScriptGameResourceObjectScriptedThingBase> (size TU): lower_bound, insert (k, T()) when absent, return the scripted-thing handle
 // Leaf: ??A?$map
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CD3D2E, 118 bytes, __fastcall `ret 4`, frame-pointer size TU.
 // Identity: the mapped value is the 16-byte CScriptGameResourceObjectScriptedThingBase (vtable 0x0127094C; ctor 0x007E72A0
@@ -55,7 +55,7 @@ public:
     ~CScriptGameResourceObjectScriptedThingBase();       // 0x007E74D0
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp __default_constructed(_Tp*) { return _Tp(); }   // _STLP_DEFAULT_CONSTRUCTED
 
 template <class T> struct less {

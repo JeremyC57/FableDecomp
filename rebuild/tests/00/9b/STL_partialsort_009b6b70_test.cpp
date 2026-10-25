@@ -70,7 +70,7 @@ public:
     char* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -204,7 +204,7 @@ private:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -218,16 +218,16 @@ public:
         CArray<unsigned long>  GlobalIndices;
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoLess;
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     CVectorMap() : Dirty(false) {}
     void Insert(const K& key, const V& value);
@@ -237,11 +237,11 @@ public:
 
 template <class K, class V, class C> void CVectorMap<K, V, C>::Insert(const K& key, const V& value)
 {
-    this->push_back(_STL::pair<K, V>(key, value));
+    this->push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;
@@ -481,7 +481,7 @@ inline bool InfoIs(const CDefClassInfoPair& p, unsigned long key, const char* na
 }
 
 // __partial_sort over pair<unsigned long, long> by key (CKeyPairCompareLess): the smallest keys, sorted, with their values.
-typedef _STL::pair<unsigned long, long> KeyPair;
+typedef std::pair<unsigned long, long> KeyPair;
 
 int main()
 {
@@ -491,14 +491,14 @@ int main()
         a[i].first = keys[i];
         a[i].second = (long)(100 - (int)i);
     }
-    _STL::__partial_sort(a, a + 4, a + 8, (KeyPair*)0, CKeyPairCompareLess<unsigned long, long>());
+    std::__partial_sort(a, a + 4, a + 8, (KeyPair*)0, CKeyPairCompareLess<unsigned long, long>());
     unsigned long want[4] = { 1, 2, 3, 6 };
     for (int i = 0; i < 4; ++i)
         if (a[i].first != want[i]) { std::printf("009b6b70_TEST FAIL\n"); return 1; }
     for (int i = 0; i < 8; ++i)                     // values travel with their keys
         for (int j = 0; j < 8; ++j)
             if (a[j].first == keys[i] && a[j].second != (long)((long)(100 - (int)i))) { std::printf("009b6b70_TEST FAIL\n"); return 1; }
-    _STL::__partial_sort(a, a + 8, a + 8, (KeyPair*)0, CKeyPairCompareLess<unsigned long, long>());
+    std::__partial_sort(a, a + 8, a + 8, (KeyPair*)0, CKeyPairCompareLess<unsigned long, long>());
     unsigned long all[8] = { 1, 2, 3, 6, 7, 9, 0x80000000UL, 0xFFFFFFF0UL };
     for (int i = 0; i < 8; ++i)
         if (a[i].first != all[i]) { std::printf("009b6b70_TEST FAIL\n"); return 1; }

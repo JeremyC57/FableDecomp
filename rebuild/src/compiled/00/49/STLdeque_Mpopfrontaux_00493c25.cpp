@@ -1,4 +1,4 @@
-// _STL::deque::_M_pop_front_aux() -- deque<CSubtitleRenderer::CSetTextInfo>: pop the last element of the front buffer: destroy it, free the buffer and step the start iterator to the next map node
+// std::deque::_M_pop_front_aux() -- deque<CSubtitleRenderer::CSetTextInfo>: pop the last element of the front buffer: destroy it, free the buffer and step the start iterator to the next map node
 // Leaf: ?_M_pop_front_aux@?$deque@VCSetTextInfo@CSubtitleRenderer@@
 // Flags: /Os
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00493C25, 51 bytes, `__fastcall`, plain `ret`. It sits unaligned in
@@ -36,7 +36,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* p, unsigned int) { if (p != 0) free(p); }   // malloc-backed node allocator
@@ -92,4 +92,4 @@ void deque<_Tp, _Alloc>::_M_pop_front_aux()
 }
 }
 
-template void _STL::deque<CSubtitleRenderer::CSetTextInfo>::_M_pop_front_aux();
+template void std::deque<CSubtitleRenderer::CSetTextInfo>::_M_pop_front_aux();

@@ -1,4 +1,4 @@
-// _STL::__partial_sort(SKeyedBlock40* first, SKeyedBlock40* middle, SKeyedBlock40* last, SKeyedBlock40*, CKeyPairCompareLess comp) -- heap-select the smallest (long key, 36-byte payload) pairs into [first, middle) and sort them
+// std::__partial_sort(SKeyedBlock40* first, SKeyedBlock40* middle, SKeyedBlock40* last, SKeyedBlock40*, CKeyPairCompareLess comp) -- heap-select the smallest (long key, 36-byte payload) pairs into [first, middle) and sort them
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081D4D0, 175 bytes (+int3 pad), `ret 0Ch` (link-time __fastcall /Gr TU: first in ecx,
 //   middle in edx, then last, the value-type tag pointer and the empty comparator on the stack).
@@ -15,7 +15,7 @@ struct SPayload36 {                         // 36-byte POD payload (copied as on
     unsigned long m_words[9];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                // +0x00
     B second;                               // +0x04

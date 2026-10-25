@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, ConstThingCompare comp) -- STLport insertion sort: __linear_insert each element after the first into the sorted prefix
+// std::__insertion_sort(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, ConstThingCompare comp) -- STLport insertion sort: __linear_insert each element after the first into the sorted prefix
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009278C0, 80 bytes, `ret 4` (first in ecx, last in edx, comp on the stack).
 // Name: STLport `__insertion_sort<CIntelligentPointer<const CThing>*, bool (__fastcall*)(..)>`; four callers (the
@@ -38,7 +38,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00927740
 

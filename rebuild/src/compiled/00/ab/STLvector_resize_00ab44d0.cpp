@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- vector<_D3DVERTEXELEMENT9>::resize(n): erase the surplus tail, or append value-initialised (zeroed) vertex elements up to the new size
-// Leaf: ?resize@?$vector@U_D3DVERTEXELEMENT9@@V?$allocator@U_D3DVERTEXELEMENT9@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- vector<_D3DVERTEXELEMENT9>::resize(n): erase the surplus tail, or append value-initialised (zeroed) vertex elements up to the new size
+// Leaf: ?resize@?$vector@U_D3DVERTEXELEMENT9@@V?$allocator@U_D3DVERTEXELEMENT9@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB44D0, 85 bytes, thiscall `ret 4`.
 // Callers: none found (no direct call, jump or address reference; an out-of-line COMDAT the linker kept).
 // Callees: vector::erase(first, last) 0x00AB3FB0 (thiscall, returns the iterator, dropped), vector::_M_fill_insert(pos, n, x)
@@ -25,7 +25,7 @@ typedef struct _D3DVERTEXELEMENT9 {                        // d3d9types.h / Ego_
     unsigned char  UsageIndex;                              // +0x07
 } D3DVERTEXELEMENT9;
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:

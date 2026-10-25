@@ -1,4 +1,4 @@
-// _STL::__adjust_heap(pair<unsigned long, C3DDummyObject>* first, int holeIndex, int len, pair<unsigned long, C3DDummyObject> val, CKeyPairCompareLess comp) -- heap sift-down for the dummy-object table: move the larger child up until the hole reaches the bottom, then push val back up from there
+// std::__adjust_heap(pair<unsigned long, C3DDummyObject>* first, int holeIndex, int len, pair<unsigned long, C3DDummyObject> val, CKeyPairCompareLess comp) -- heap sift-down for the dummy-object table: move the larger child up until the hole reaches the bottom, then push val back up from there
 // Leaf: __adjust_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32500, 151 bytes (+ int3 padding), `ret 40h` (__fastcall: first in ecx,
 //   holeIndex in edx, then len, the 0x38-byte value and the empty comparator on the stack).
@@ -11,7 +11,7 @@
 //   first[sc - 1])) sc--; first[holeIndex] = first[sc]; holeIndex = sc; sc = 2 * (sc + 1); } if (sc == len) { ... }
 //   __push_heap(first, holeIndex, topIndex, val, comp);` -- the implicit 14-dword assignments, topIndex spilled to the
 //   push-ecx slot, and val re-built in the argument area by STLport's pair copy constructor (key, then `rep movsd` x13).
-namespace _STL {
+namespace std {
 
 struct CMatrix3x4 { float M[12]; };
 struct C3DDummyObject {                                // 0x34 bytes

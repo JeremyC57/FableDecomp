@@ -22,7 +22,7 @@ struct SIVCountedPointer_005e0ca0 {             // CIVCountedPointer<T>, 4 bytes
     SIVCountedPointer_005e0ca0(const SIVCountedPointer_005e0ca0& x) : P(x.P) { if (P) ++P->RefCount; }
 };
 
-struct SLongIVCountedPointer_005e0ca0 {         // _STL::pair<long, CIVCountedPointer<T> >, 8 bytes
+struct SLongIVCountedPointer_005e0ca0 {         // std::pair<long, CIVCountedPointer<T> >, 8 bytes
     long                       first;           // +0x00
     SIVCountedPointer_005e0ca0 second;          // +0x04
     SLongIVCountedPointer_005e0ca0(const SLongIVCountedPointer_005e0ca0& o) : first(o.first), second(o.second) { }

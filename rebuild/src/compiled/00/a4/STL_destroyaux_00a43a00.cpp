@@ -1,5 +1,5 @@
-// _STL::__destroy_aux(NGameText::CDataBankTextEntry* first, NGameText::CDataBankTextEntry* last, const __false_type&) -- destroy a run of 8-byte text-bank entries: release each entry's counted text pointer (virtual delete at a zero count) and null it
-// Leaf: ??$__destroy_aux@PAVCDataBankTextEntry@NGameText@@@_STL@@
+// std::__destroy_aux(NGameText::CDataBankTextEntry* first, NGameText::CDataBankTextEntry* last, const __false_type&) -- destroy a run of 8-byte text-bank entries: release each entry's counted text pointer (virtual delete at a zero count) and null it
+// Leaf: ??$__destroy_aux@PAVCDataBankTextEntry@NGameText@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A43A00, 50 bytes, `ret 4` (link-time __fastcall: first in ecx, last in edx, the
 //   __false_type tag reference on the stack, never read).
@@ -47,7 +47,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

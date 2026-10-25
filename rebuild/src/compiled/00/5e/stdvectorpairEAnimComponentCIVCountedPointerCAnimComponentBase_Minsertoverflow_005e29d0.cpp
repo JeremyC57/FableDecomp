@@ -48,7 +48,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -163,4 +163,4 @@ typedef pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > _AnimCompon
 template void vector<_AnimComponentPair>::_M_insert_overflow(_AnimComponentPair*, const _AnimComponentPair&,
                                                              const __false_type&, unsigned int, bool);
 
-} // namespace _STL
+} // namespace std

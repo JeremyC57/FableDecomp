@@ -1,6 +1,6 @@
-// _STL::vector<CThingTypeInfo>::resize(size_type n) -- STLport one-argument resize: resize(n, CThingTypeInfo()) with a default-constructed temporary
+// std::vector<CThingTypeInfo>::resize(size_type n) -- STLport one-argument resize: resize(n, CThingTypeInfo()) with a default-constructed temporary
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052BF50, length 48 bytes.
-// Leaf: ?resize@?$vector@VCThingTypeInfo@@V?$allocator@VCThingTypeInfo@@@_STL@@@_STL@@QAEXI@Z
+// Leaf: ?resize@?$vector@VCThingTypeInfo@@V?$allocator@VCThingTypeInfo@@@std@@@std@@QAEXI@Z
 // Callees: CCharString::CCharString() @ 0x0099E4B0, vector<CThingTypeInfo>::resize(size_type, const CThingTypeInfo&)
 // @ 0x0052BEA0 (thiscall, `ret 8`; the element stride is 12: the 0x2AAAAAAB/`sar 1` divide), CCharString::~CCharString()
 // @ 0x0099EAE0.
@@ -26,7 +26,7 @@ public:
     CThingTypeInfo() {}
 };
 
-namespace _STL {
+namespace std {
 template <class T> class allocator { };
 
 template <class T, class Alloc = allocator<T> >

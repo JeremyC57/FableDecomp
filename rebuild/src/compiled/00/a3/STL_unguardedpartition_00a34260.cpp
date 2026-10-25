@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume> pivot, CKeyPairCompareLess comp) -- quicksort partition step of the mesh-volume table around the pivot's key: advance from both ends, swap out-of-place entries, return the split point, destroy the by-value pivot
+// std::__unguarded_partition(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume> pivot, CKeyPairCompareLess comp) -- quicksort partition step of the mesh-volume table around the pivot's key: advance from both ends, swap out-of-place entries, return the split point, destroy the by-value pivot
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A34260, 127 bytes, `ret 14h` (__fastcall: first in ecx, last in edx, the
 //   16-byte pivot and the empty comparator on the stack).
@@ -78,7 +78,7 @@ struct C3DMeshVolume {                                        // 12 bytes (Ego_r
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     T1 first;
@@ -96,7 +96,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class T> void __fastcall swap(T& a, T& b);    // 0x00A331B0
 

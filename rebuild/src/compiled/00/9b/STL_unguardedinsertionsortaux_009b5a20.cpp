@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<CCharString, long>* first, pair<CCharString, long>* last, pair<CCharString, long>*, CKeyPairCompareLess<CCharString, long> comp) -- unguarded insertion-sort pass over the 8-byte (name, value) entries: insert a copy of every entry of [first, last)
+// std::__unguarded_insertion_sort_aux(pair<CCharString, long>* first, pair<CCharString, long>* last, pair<CCharString, long>*, CKeyPairCompareLess<CCharString, long> comp) -- unguarded insertion-sort pass over the 8-byte (name, value) entries: insert a copy of every entry of [first, last)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B5A20, 57 bytes, `ret 8` (link-time __fastcall /Gr algorithm TU, written as
 //   explicit __fastcall: first in ecx, last in edx, the value-type pointer and the empty comparator's 4-byte slot on the
@@ -22,7 +22,7 @@ public:
     bool operator<(const CCharString& other) const;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                      // +0x00
     _T2 second;                                     // +0x04
@@ -32,13 +32,13 @@ template <class _T1, class _T2> struct pair {
 }
 
 template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value (4-byte slot)
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, long> SNameEntry;           // 8 bytes
+typedef std::pair<CCharString, long> SNameEntry;           // 8 bytes
 typedef CKeyPairCompareLess<CCharString, long> SNameLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x009B47F0
 

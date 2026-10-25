@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the degradable-state records
-// Leaf: ?resize@?$vector@VCDegradableInfo@@V?$allocator@VCDegradableInfo@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the degradable-state records
+// Leaf: ?resize@?$vector@VCDegradableInfo@@V?$allocator@VCDegradableInfo@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0067F3A0, 45 bytes, thiscall, `ret 4`.
 // Identity: vector<CDegradableInfo> (28 bytes: HealthPercentage, CEngineGraphic EngineGraphic +4 (14 bytes, 2-packed),
 //   SmashParticleEmitter +0x14, BlocksNavigation +0x18 -- Ego_r.pdb): the callee 0x0067F220 is the two-argument resize.
@@ -27,7 +27,7 @@ public:
     bool BlocksNavigation;
     CDegradableInfo() { }
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

@@ -1,5 +1,5 @@
-// _STL::list::remove_if(CMiniMapDisplay::CIsMarkerAutoMarker pred) -- erase every mini-map marker that was placed automatically (each erased marker's thing pointer destroyed, then its node freed)
-// Instantiation: _STL::list<CMiniMapDisplay::CMarkerInfo>::remove_if
+// std::list::remove_if(CMiniMapDisplay::CIsMarkerAutoMarker pred) -- erase every mini-map marker that was placed automatically (each erased marker's thing pointer destroyed, then its node freed)
+// Instantiation: std::list<CMiniMapDisplay::CMarkerInfo>::remove_if
 // Leaf: ??$remove_if@VCIsMarkerAutoMarker@CMiniMapDisplay@@@?$list@VCMarkerInfo@CMiniMapDisplay@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082C6E0, 62 bytes (+ int3 padding), thiscall, `ret 4` (the empty predicate's word).
 // Identity: FableWin.pdb `??$remove_if@VCIsMarkerAutoMarker@CMiniMapDisplay@@@?$list@VCMarkerInfo@CMiniMapDisplay@@...@Z`;
@@ -55,7 +55,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -146,4 +146,4 @@ public:
 };
 }
 
-template void _STL::list<CMiniMapDisplay::CMarkerInfo>::remove_if(CMiniMapDisplay::CIsMarkerAutoMarker);
+template void std::list<CMiniMapDisplay::CMarkerInfo>::remove_if(CMiniMapDisplay::CIsMarkerAutoMarker);

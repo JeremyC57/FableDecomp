@@ -1,4 +1,4 @@
-// Behaviour test for _STL::vector<QuadricOptimiserInternals::COptimisedBone>::vector(const vector&) @ 0x00AD2730
+// Behaviour test for std::vector<QuadricOptimiserInternals::COptimisedBone>::vector(const vector&) @ 0x00AD2730
 // Allocates exactly x.size() elements and copy-constructs x's elements (the name string is deep-copied).
 #include <cstdio>
 #include <cstdlib>

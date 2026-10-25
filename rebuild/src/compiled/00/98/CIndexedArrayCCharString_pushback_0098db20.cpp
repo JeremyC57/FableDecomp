@@ -2,9 +2,9 @@
 // Leaf: ?push_back@?$CIndexedArray@VCCharString@@@@QAEXABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098DB20, length 128 bytes (124 + int3 padding), `ret 4`.
 // PDB (Ego_r, donor 0x00AE86A0): ?push_back@?$CIndexedArray@VCCharString@@@@QAEXABVCCharString@@@Z.
-// Callees: CCharString copy ctor @ 0x0099EC30 (the pair key, then the appended element), _STL::map<CCharString,long>::
+// Callees: CCharString copy ctor @ 0x0099EC30 (the pair key, then the appended element), std::map<CCharString,long>::
 // insert(const value_type&) @ 0x00431606 (pair<iterator,bool> returned through the hidden pointer, dropped),
-// ~CCharString @ 0x0099EAE0 (the pair temporary), _STL::vector<CCharString>::_M_insert_overflow @ 0x00433530
+// ~CCharString @ 0x0099EAE0 (the pair temporary), std::vector<CCharString>::_M_insert_overflow @ 0x00433530
 // (finish, item, __false_type, 1, true).
 // Callers: ten sites in CShaderRenderManager (0x0098AFB6.. 0x0098B3D5), e.g. SetPixelShaderConstant @ 0x0098B390.
 // Label: the manifest's "CVectorMap_Insert_Morphs" is propagated; the PDB names it CIndexedArray<CCharString>::push_back.
@@ -23,7 +23,7 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -75,17 +75,17 @@ public:
     pair<_Rb_tree_iterator<value_type>, bool> insert(const value_type& value);   // 0x00431606
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> { };
+template <class T> class CArray : public std::vector<T> { };
 
 template <class T> class CIndexedArray {
 public:
     CArray<T> Array;                            // +0x00
-    _STL::map<T, long> IndexMap;                // +0x0c
+    std::map<T, long> IndexMap;                // +0x0c
     void push_back(const T& item)
     {
-        IndexMap.insert(_STL::pair<const T, long>(item, Array.size()));
+        IndexMap.insert(std::pair<const T, long>(item, Array.size()));
         Array.push_back(item);
     }
 };

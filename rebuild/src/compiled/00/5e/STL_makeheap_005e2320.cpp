@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp, pair<unsigned long, CAnimationEntry>*, int*) -- STLport make_heap core for the CRC-keyed animation entries: sift every parent down, last parent first
+// std::__make_heap(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp, pair<unsigned long, CAnimationEntry>*, int*) -- STLport make_heap core for the CRC-keyed animation entries: sift every parent down, last parent first
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E2320, 120 bytes, `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   ebp, last in edx, then the empty comparator and the two null type-tag pointers on the stack).

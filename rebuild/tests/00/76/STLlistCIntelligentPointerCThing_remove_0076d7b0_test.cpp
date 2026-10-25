@@ -34,7 +34,7 @@ bool __fastcall operator==(const CIntelligentPointer<T>& a, const CIntelligentPo
     return a.GetPItem() == b.GetPItem();
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -138,7 +138,7 @@ template <class L> typename L::_Node* NewBack(L& l)
 {
     typedef typename L::_Node Node;
     Node* n = (Node*)malloc(sizeof(Node));
-    _STL::_List_node_base* s = l._M_node._M_data;
+    std::_List_node_base* s = l._M_node._M_data;
     n->_M_next = s;
     n->_M_prev = s->_M_prev;
     s->_M_prev->_M_next = n;
@@ -148,14 +148,14 @@ template <class L> typename L::_Node* NewBack(L& l)
 template <class L> int CountList(L& l)
 {
     int c = 0;
-    for (_STL::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
+    for (std::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
         ++c;
     return c;
 }
 template <class L> bool LinksOk(L& l)
 {
-    _STL::_List_node_base* s = l._M_node._M_data;
-    for (_STL::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
+    std::_List_node_base* s = l._M_node._M_data;
+    for (std::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
         if (p->_M_next->_M_prev != p || p->_M_prev->_M_next != p)
             return false;
     return s->_M_next->_M_prev == s && s->_M_prev->_M_next == s;
@@ -164,7 +164,7 @@ int main()
 {
     bool ok = true;
     typedef CIntelligentPointer<CThing> IP;
-    typedef _STL::list<IP> L;
+    typedef std::list<IP> L;
     L l;
     InitList(l);
     static CThing things[3];

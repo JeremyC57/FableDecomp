@@ -1,4 +1,4 @@
-// _STL::__copy(C3DGeneratorObject* first, C3DGeneratorObject* last, C3DGeneratorObject* result, const random_access_iterator_tag&, int*) -- assign [first, last) element by element onto result (counted loop), return the end of the destination
+// std::__copy(C3DGeneratorObject* first, C3DGeneratorObject* last, C3DGeneratorObject* result, const random_access_iterator_tag&, int*) -- assign [first, last) element by element onto result (counted loop), return the end of the destination
 // Leaf: __copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32170, 103 bytes (+ int3 padding), `ret 0Ch` (__fastcall: first in ecx,
 //   last in edx, result, the tag reference and the distance pointer on the stack).
@@ -30,7 +30,7 @@ public:
     bool          UseLocalOrigin;                       // +0x3c
 };
 
-namespace _STL {
+namespace std {
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

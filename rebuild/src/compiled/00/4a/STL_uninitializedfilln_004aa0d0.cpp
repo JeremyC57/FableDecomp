@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CTestQuest*, unsigned int, const CTestQuest&, const __false_type&) -- STLport uninitialised fill of n 28-byte test-quest records: copy-construct x into each slot from first (placement, null-tested); returns the end
+// std::__uninitialized_fill_n(CTestQuest*, unsigned int, const CTestQuest&, const __false_type&) -- STLport uninitialised fill of n 28-byte test-quest records: copy-construct x into each slot from first (placement, null-tested); returns the end
 // Flags: /Gr
 // Leaf: __uninitialized_fill_n
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AA0D0, 108 bytes, `ret 8` (__fastcall: first in ecx -> esi, n in edx ->

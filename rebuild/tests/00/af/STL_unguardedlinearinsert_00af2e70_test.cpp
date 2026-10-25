@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF2E70 _STL::__unguarded_linear_insert over pair<CCharString, CRegisteredPSCInfo> (key compare)
+// behaviour test for 0x00AF2E70 std::__unguarded_linear_insert over pair<CCharString, CRegisteredPSCInfo> (key compare)
 #include <cstdio>
 #include <cstring>
 struct CStr { const char* s; };

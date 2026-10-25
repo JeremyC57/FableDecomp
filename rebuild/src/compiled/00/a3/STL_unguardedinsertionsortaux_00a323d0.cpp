@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long, C3DDummyObject>* first, pair<unsigned long, C3DDummyObject>* last, pair<unsigned long, C3DDummyObject>*, CKeyPairCompareLess comp) -- insertion-sort pass with no lower-bound test over the dummy-object table, each entry sifted down by its unsigned key
+// std::__unguarded_insertion_sort_aux(pair<unsigned long, C3DDummyObject>* first, pair<unsigned long, C3DDummyObject>* last, pair<unsigned long, C3DDummyObject>*, CKeyPairCompareLess comp) -- insertion-sort pass with no lower-bound test over the dummy-object table, each entry sifted down by its unsigned key
 // Leaf: __unguarded_insertion_sort_aux
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A323D0, 98 bytes (+ int3 padding), `ret 8` (__fastcall: first in ecx, last
 //   in edx, the value-type tag pointer and the empty comparator on the stack). No callees.
@@ -9,7 +9,7 @@
 //   the linear insert inlined -- the by-value T(*i) built in the frame by STLport's pair copy constructor (key dword, then
 //   the 52-byte C3DDummyObject as `rep movsd` x13), the shifts and the final store the implicit 14-dword assignment, the
 //   key compare unsigned (`jae`/`jb`) with the key in ebp.
-namespace _STL {
+namespace std {
 
 struct CMatrix3x4 { float M[12]; };
 struct C3DDummyObject {                                // 0x34 bytes

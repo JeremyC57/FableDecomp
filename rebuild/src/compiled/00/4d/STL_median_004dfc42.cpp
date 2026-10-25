@@ -1,4 +1,4 @@
-// _STL::__median(const pair<CCharString, CCharString>& a, const pair<CCharString, CCharString>& b, const pair<CCharString, CCharString>& c, CKeyPairCompareLess<CCharString, CCharString> comp) -- SGI median-of-three for the introsort pivot of a string-pair array ordered by the first string (inline CCharString::operator<)
+// std::__median(const pair<CCharString, CCharString>& a, const pair<CCharString, CCharString>& b, const pair<CCharString, CCharString>& c, CKeyPairCompareLess<CCharString, CCharString> comp) -- SGI median-of-three for the introsort pivot of a string-pair array ordered by the first string (inline CCharString::operator<)
 // Leaf: __median
 // Flags: /Oa
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DFC42, 168 bytes, `ret 8` (__fastcall: a in ecx, b in edx, c and the

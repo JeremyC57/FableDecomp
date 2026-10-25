@@ -22,7 +22,7 @@ public:
     float X, Y, Z;
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     typedef _T1 first_type;
@@ -47,13 +47,13 @@ public:
     const_iterator end() const { return _M_finish; }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T, _STL::allocator<T> > { };   // Fable's CArray over the STLport vector
+template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 template <class K, class V, class TCompare> class CVectorMap {   // sorted-on-demand vector map, retail 0x10 bytes
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef typename CArray<value_type>::const_iterator const_iterator;
     CArray<value_type> Data;                                // +0x00
     TCompare           Compare;                             // +0x0C (empty comparator)
@@ -106,10 +106,10 @@ public:
 template <class A, class B> class CParticleUpdateParameters {
 public:
     template <class K> struct CParticleUpdateCCompareVector {
-        bool operator()(const K& key, const _STL::pair<K, C3DVector>& entry) const { return key < entry.first; }
+        bool operator()(const K& key, const std::pair<K, C3DVector>& entry) const { return key < entry.first; }
     };
     template <class K> struct CParticleUpdateCCompareParamDesc {
-        bool operator()(const K& key, const _STL::pair<K, CParticleUpdateParamDesc<A, B> >& entry) const { return key < entry.first; }
+        bool operator()(const K& key, const std::pair<K, CParticleUpdateParamDesc<A, B> >& entry) const { return key < entry.first; }
     };
     typedef CVectorMap<A, C3DVector, CParticleUpdateCCompareVector<A> >                         CVectorParamMap;
     typedef CVectorMap<A, CParticleUpdateParamDesc<A, B>, CParticleUpdateCCompareParamDesc<A> > CUpdateParamMap;

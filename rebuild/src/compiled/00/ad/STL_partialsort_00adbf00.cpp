@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* middle, CBlockInfo* last, CBlockInfo*, less<CBlockInfo> comp) -- STLport partial sort of the block candidates: heapify the prefix, sift every cheaper tail record into it, then heap-sort the prefix
+// std::__partial_sort(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* middle, CBlockInfo* last, CBlockInfo*, less<CBlockInfo> comp) -- STLport partial sort of the block candidates: heapify the prefix, sift every cheaper tail record into it, then heap-sort the prefix
 // Flags: /Gr
 // Leaf: ??$__partial_sort@PAVCBlockInfo@CVertexGroupBlockOptimiser
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADBF00, 0xA6 bytes (+ int3 padding), __fastcall (first ecx, middle edx),
@@ -11,7 +11,7 @@
 // Shape: STLport 4.x `make_heap(first, middle, comp); for (i = middle; i < last; ++i) if (comp(*i, *first))
 // __pop_heap(first, middle, i, _Tp(*i), comp, (ptrdiff_t*)0); sort_heap(first, middle, comp);` with make_heap and
 // __pop_heap inlined (`*result = *first; __adjust_heap(first, 0, middle - first, val, comp)`).
-namespace _STL {
+namespace std {
 
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
@@ -52,7 +52,7 @@ void __partial_sort(_RandomAccessIter __first, _RandomAccessIter __middle, _Rand
     sort_heap(__first, __middle, __comp);
 }
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlockOptimiser {
 public:
@@ -65,7 +65,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template void __partial_sort<CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo,
                              less<CVertexGroupBlockOptimiser::CBlockInfo> >(
     CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo*,

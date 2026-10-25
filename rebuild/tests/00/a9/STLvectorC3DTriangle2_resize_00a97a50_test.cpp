@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A97A50 _STL::vector<C3DTriangle2>::resize(unsigned int new_size, const C3DTriangle2& x).
+// Behaviour test for 0x00A97A50 std::vector<C3DTriangle2>::resize(unsigned int new_size, const C3DTriangle2& x).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00a97a50_TEST FAIL\n"); return 1; } } while (0)

@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CCharString,pair<const CCharString,CArray<CLipSyncEntry> > >::_M_erase(_Rb_tree_node* x) -- STLport recursive subtree release of the mesh bank's lip-sync map: for each node erase its right subtree, destroy the value (the entry array, then the key string) and free the node, continuing with its left child
+// std::_Rb_tree<CCharString,pair<const CCharString,CArray<CLipSyncEntry> > >::_M_erase(_Rb_tree_node* x) -- STLport recursive subtree release of the mesh bank's lip-sync map: for each node erase its right subtree, destroy the value (the entry array, then the key string) and free the node, continuing with its left child
 // Leaf: ?_M_erase@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2DC20, 112 bytes, thiscall, `ret 4`; recursive (calls itself at 0x00A2DC39).
 // Identity: the tree of CMeshDataBank::LipSyncAnimations (Ego_r.pdb `map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> >`,
@@ -18,7 +18,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 template <class T> inline void _Destroy(T* p) { p->~T(); }
 template <class T> inline void _Destroy(T* first, T* last)
@@ -88,7 +88,7 @@ public:
     };
 };
 
-template <class T> class CArray : public _STL::vector<T> {   // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {   // retail CArray: the 12-byte STLport vector
 };
 
-template class _STL::_Rb_tree<CCharString, _STL::pair<const CCharString, CArray<CMeshDataBank::CLipSyncEntry> > >;
+template class std::_Rb_tree<CCharString, std::pair<const CCharString, CArray<CMeshDataBank::CLipSyncEntry> > >;

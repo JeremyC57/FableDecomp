@@ -1,4 +1,4 @@
-// _STL::sort(CVertexGroupBlockOptimiser::CBlockInfo* first, CVertexGroupBlockOptimiser::CBlockInfo* last) -- STLport introsort of the block candidates by cost (introsort loop to 16-element runs, then the final insertion sort)
+// std::sort(CVertexGroupBlockOptimiser::CBlockInfo* first, CVertexGroupBlockOptimiser::CBlockInfo* last) -- STLport introsort of the block candidates by cost (introsort loop to 16-element runs, then the final insertion sort)
 // Flags: /Gr
 // Leaf: ??$sort@PAVCBlockInfo@CVertexGroupBlockOptimiser
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADC890, 0x53 bytes, __fastcall (first ecx, last edx), plain `ret`.
@@ -10,7 +10,7 @@
 // Shape: STLport 4.x `if (first != last) { __introsort_loop(first, last, _STLP_VALUE_TYPE(first), __lg(last - first)
 // * 2, __less(_STLP_VALUE_TYPE(first))); __final_insertion_sort(first, last, __less(_STLP_VALUE_TYPE(first))); }`
 // with __lg inlined (`for (k = 0; n != 1; n >>= 1) ++k;`).
-namespace _STL {
+namespace std {
 
 template <class _Tp> struct less {
     less() { }
@@ -42,7 +42,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last)
     }
 }
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlockOptimiser {
 public:
@@ -55,6 +55,6 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template void sort<CVertexGroupBlockOptimiser::CBlockInfo*>(CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo*);
 }

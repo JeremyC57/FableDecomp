@@ -1,4 +1,4 @@
-// _STL::vector<CCardPositionsDef>::operator=(const vector<CCardPositionsDef>& x) -- STLport copy assignment of a 72-byte card-positions def vector: reallocate-and-copy when x outgrows the capacity, else assign over the live elements and destroy the surplus or copy-construct the tail
+// std::vector<CCardPositionsDef>::operator=(const vector<CCardPositionsDef>& x) -- STLport copy assignment of a 72-byte card-positions def vector: reallocate-and-copy when x outgrows the capacity, else assign over the live elements and destroy the surplus or copy-construct the tail
 // Leaf: ??4?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EBCA9, 228 bytes, `ret 4` (thiscall); the same bytes as 0x004E9AD3 (vector<CShopItemDef>)
 //   but for the callees.
@@ -36,7 +36,7 @@ public:
     C2DVectorVector Offset;                                 // +0x3C
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 template <class T> struct __type_traits {
     typedef __false_type has_trivial_assignment_operator;

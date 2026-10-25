@@ -1,4 +1,4 @@
-// _STL::map<char, CCharString>::operator[](const char&) -- find the key's string, inserting an empty one when absent (the console key-binding map)
+// std::map<char, CCharString>::operator[](const char&) -- find the key's string, inserting an empty one when absent (the console key-binding map)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EFCF0, 147 bytes (`ret 4`). Catalog label "CCharMap_FindOrInsert" was close;
 //   this is the STLport map<char, CCharString>::operator[] (CConsole::KeyBindingMap, PDB
 //   map<char,CCharString,std::less<char>>).
@@ -10,7 +10,7 @@
 //   reuses the ctor's eax; retail re-derives `lea edx,[esp+1Ch]`), and map::insert as an inline wrapper over
 //   _M_t.insert_unique (a direct call reads the result through eax; retail re-reads the local `mov esi,[esp+0Ch]`).
 //   The iterator has a user copy ctor (built in place in the argument slot: `push ecx ; mov eax,esp ; mov [eax],esi`).
-// Leaf: ??A?$map@DVCCharString@@U?$less@D@_STL@@@_STL@@QAEAAVCCharString@@ABD@Z
+// Leaf: ??A?$map@DVCCharString@@U?$less@D@std@@@std@@QAEAAVCCharString@@ABD@Z
 class CCharString
 {
 public:
@@ -20,7 +20,7 @@ public:
     ~CCharString();                                 // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair
 {
@@ -97,4 +97,4 @@ public:
 
 template class map<char, CCharString>;
 
-} // namespace _STL
+} // namespace std

@@ -1,4 +1,4 @@
-// _STL::swap(C3DSkeletalBoneMorph& a, C3DSkeletalBoneMorph& b) -- exchange two bone morphs through a temporary copy
+// std::swap(C3DSkeletalBoneMorph& a, C3DSkeletalBoneMorph& b) -- exchange two bone morphs through a temporary copy
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A45A70, length 141 bytes (+3 int3 pad), `ret`.
 // Callers: 0x00A461D0 __unguarded_partition (this chunk, through the inlined iter_swap) and the `jmp` at 0x00A45F80
@@ -29,7 +29,7 @@ public:
     C3DVector     Scaling;                           // +0x08
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b)
 {

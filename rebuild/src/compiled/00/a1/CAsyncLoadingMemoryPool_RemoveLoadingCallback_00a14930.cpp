@@ -9,7 +9,7 @@
 //   visible in the same TU (VC7.1 same-TU mod/ref): with a bare declaration the lane reloads it after the call.
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)
 {
@@ -85,12 +85,12 @@ public:
 class CAsyncLoadingMemoryPool {
 public:
     static void __fastcall RemoveLoadingCallback(CAsyncLoadingProcessCallback* callback);
-    static _STL::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
+    static std::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
 };
 
 void __fastcall CAsyncLoadingMemoryPool::RemoveLoadingCallback(CAsyncLoadingProcessCallback* callback)
 {
-    _STL::vector<CAsyncLoadingProcessCallback*>::iterator it = _STL::find(LoadingCallbacks.begin(), LoadingCallbacks.end(), callback);
+    std::vector<CAsyncLoadingProcessCallback*>::iterator it = std::find(LoadingCallbacks.begin(), LoadingCallbacks.end(), callback);
     if (it != LoadingCallbacks.end())
         LoadingCallbacks.erase(it);
 }

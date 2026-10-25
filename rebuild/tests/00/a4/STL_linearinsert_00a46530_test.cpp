@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A46530: _STL::__linear_insert<C3DSkeletalBoneMorph*> (insertion step: shift the run or do the unguarded insert)
+// Behaviour test for 0x00A46530: std::__linear_insert<C3DSkeletalBoneMorph*> (insertion step: shift the run or do the unguarded insert)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -80,7 +80,7 @@ static void FillMorphs(C3DSkeletalBoneMorph* a, const unsigned long* crcs, int n
         SetMorph(a[i], crcs[i]);
 }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>
 _BidirectionalIter2 __fastcall __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result,
@@ -127,14 +127,14 @@ int main()
         C3DSkeletalBoneMorph a[5];
         FillMorphs(a, crcs, 5);
         int live = g_liveStrings;
-        _STL::__linear_insert(a, a + 4, a[4], (TBoneMorphCompare)LessByCRC);
+        std::__linear_insert(a, a + 4, a[4], (TBoneMorphCompare)LessByCRC);
         Check(g_liveStrings == live);
         for (int i = 0; i < 5; ++i)
             Check(a[i].BoneNameCRC == want[i] && Consistent(a[i]));
         static const unsigned long crcs2[5] = { 3, 4, 6, 8, 5 };
         static const unsigned long want2[5] = { 3, 4, 5, 6, 8 };
         FillMorphs(a, crcs2, 5);
-        _STL::__linear_insert(a, a + 4, a[4], (TBoneMorphCompare)LessByCRC);
+        std::__linear_insert(a, a + 4, a[4], (TBoneMorphCompare)LessByCRC);
         for (int i = 0; i < 5; ++i)
             Check(a[i].BoneNameCRC == want2[i] && Consistent(a[i]));
     }

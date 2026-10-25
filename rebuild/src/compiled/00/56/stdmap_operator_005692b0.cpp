@@ -16,7 +16,7 @@ public:
     enum EOnlineScoreboardActivity { ONLINE_SCOREBOARD_ACTIVITY_0 };
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -96,4 +96,4 @@ typename map<_Key, _Tp, _Compare>::iterator map<_Key, _Tp, _Compare>::insert_uni
 
 template float& map<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, float>::operator[](const CTCHeroOnlineScoreboard::EOnlineScoreboardActivity&);
 
-} // namespace _STL
+} // namespace std

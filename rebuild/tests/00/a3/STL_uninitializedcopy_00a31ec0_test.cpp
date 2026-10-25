@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A31EC0 _STL::__uninitialized_copy over C3DGeneratorObject: every element copy-constructed into
+// Behaviour test for 0x00A31EC0 std::__uninitialized_copy over C3DGeneratorObject: every element copy-constructed into
 // raw storage (one string copy each), the returned pointer is the end of the copies; an empty range copies nothing.
 #include <cstdio>
 #include <new>

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00655CA7 _STL::deque<_STL::pair<CCharString,long> >::_M_pop_front_aux: popping the last
+// Behaviour test for 0x00655CA7 std::deque<std::pair<CCharString,long> >::_M_pop_front_aux: popping the last
 // element of the front buffer destroys it, frees that buffer and moves the start iterator to the next map node
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +13,7 @@ public:
     ~CCharString();
 };
 CCharString::~CCharString() { ++gDtors; gLastDestroyed = PStringData; }   // stand-in
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* p, unsigned int) { if (p != 0) test_free(p); }
@@ -66,8 +66,8 @@ void deque<_Tp, _Alloc>::_M_pop_front_aux()
 }
 template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
 }
-typedef _STL::pair<CCharString, long> CMessage;
-typedef _STL::deque<CMessage> CMessageDeque;
+typedef std::pair<CCharString, long> CMessage;
+typedef std::deque<CMessage> CMessageDeque;
 static CMessage* gMap[3];
 int main()
 {

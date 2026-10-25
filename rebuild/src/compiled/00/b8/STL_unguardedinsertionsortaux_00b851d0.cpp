@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CSortElement*, less<CSortElement> comp) -- insertion-sort [first, last) without a lower bound check (a smaller element is known to precede first)
+// std::__unguarded_insertion_sort_aux(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CSortElement*, less<CSortElement> comp) -- insertion-sort [first, last) without a lower bound check (a smaller element is known to precede first)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B851D0, 73 bytes. __fastcall (first ecx, last edx), `ret 8` (the
 //   value-type tag pointer and the empty comparator on the stack).
@@ -11,7 +11,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `for (i = first; i != last; ++i) __unguarded_linear_insert(i, T(*i), comp);` with the linear insert
 //   inlined: `next = last; --next; while (comp(val, *next)) { *last = *next; last = next; --next; } *last = val;`.
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -37,13 +37,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)  // 0x00B84F40 out of line
 {

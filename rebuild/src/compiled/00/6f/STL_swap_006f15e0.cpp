@@ -1,4 +1,4 @@
-// _STL::swap(CDefendingCombatantInfo::CProng& a, CDefendingCombatantInfo::CProng& b) -- exchange two combat-ring prongs (blocked flag, prong position, blockage timer, occupier pointer) through a by-value temporary
+// std::swap(CDefendingCombatantInfo::CProng& a, CDefendingCombatantInfo::CProng& b) -- exchange two combat-ring prongs (blocked flag, prong position, blockage timer, occupier pointer) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F15E0, 199 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx -> edi, b in edx
 //   -> esi), plain `ret`; 0x1c-byte frame temporary.
@@ -50,7 +50,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 inline void __fastcall swap(_Tp& __a, _Tp& __b)
 {

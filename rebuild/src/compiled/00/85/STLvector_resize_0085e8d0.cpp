@@ -1,4 +1,4 @@
-// _STL::vector::resize(unsigned int new_size, const NThingMap::CThingMapCell& x) -- resize a mapwho cell row: erase the surplus tail (inline element-wise copy-down), or fill-insert copies of x at the end
+// std::vector::resize(unsigned int new_size, const NThingMap::CThingMapCell& x) -- resize a mapwho cell row: erase the surplus tail (inline element-wise copy-down), or fill-insert copies of x at the end
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085E8D0, 76 bytes, thiscall `ret 8`.
 // Callers: 0x0085D317 in CThingMap::InitMapwhoLevels 0x0085D180 and the one-argument resize wrapper after this body
@@ -18,7 +18,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

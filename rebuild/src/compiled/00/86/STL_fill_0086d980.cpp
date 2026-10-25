@@ -1,4 +1,4 @@
-// _STL::fill(CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph, CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph> >* first, ...* last, const CVectorMap<...>& value) -- assign one texture-morph vector-map to every element of a range
+// std::fill(CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph, CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph> >* first, ...* last, const CVectorMap<...>& value) -- assign one texture-morph vector-map to every element of a range
 // Leaf: ??$fill@PAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086D980, 43 bytes, `__fastcall` (first ecx, last edx, value
 //   pointer on the stack), `ret 4`.
@@ -37,7 +37,7 @@ public:
 typedef CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph,
                    CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph> > CTextureMorphMap;
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -47,4 +47,4 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CTextureMorphMap*, CTextureMorphMap>(CTextureMorphMap*, CTextureMorphMap*, const CTextureMorphMap&);
+template void __fastcall std::fill<CTextureMorphMap*, CTextureMorphMap>(CTextureMorphMap*, CTextureMorphMap*, const CTextureMorphMap&);

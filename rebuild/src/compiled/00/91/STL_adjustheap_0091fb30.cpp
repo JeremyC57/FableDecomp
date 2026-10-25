@@ -1,6 +1,6 @@
-// _STL::__adjust_heap(CThing** first, int holeIndex, int len, CThing* value, CThingCompare_Nearest comp) -- STLport heap sift-down for the nearest-first sort: move the hole to a leaf through the preferred children, then push the value back up
+// std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* value, CThingCompare_Nearest comp) -- STLport heap sift-down for the nearest-first sort: move the hole to a leaf through the preferred children, then push the value back up
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- port of the landed byte-identical twin 0x0095CFE0 (relocations aside); see Twin below
-// Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@VCThingCompare_Nearest@@@_STL@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_Nearest@@@Z
+// Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@VCThingCompare_Nearest@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_Nearest@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091FB30, 135 bytes, __fastcall (first in ecx, holeIndex in edx; len, value and the
 //   12-byte comparator on the stack), `ret 14h`.
 // Identity: STLport 4.6 __adjust_heap<CThing**, int, CThing*, CThingCompare_Nearest>; callers: __make_heap 0x0091FDB0
@@ -62,7 +62,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
 #pragma auto_inline(on)
 typedef CThingCompare_Nearest TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val,
                             _Compare __comp);   // 0x0091F870
@@ -87,4 +87,4 @@ void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeInd
     __push_heap(__first, __holeIndex, __topIndex, __val, __comp);
 }
 template void __fastcall __adjust_heap<CThing**, int, CThing*, TComp>(CThing**, int, int, CThing*, TComp);
-} // namespace _STL
+} // namespace std

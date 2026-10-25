@@ -1,4 +1,4 @@
-// Behaviour test for 0x00992CB0 _STL::__unguarded_partition over the 36-byte (long key, sound-bank record) entries: __unguarded_partition: everything left of the split is <= pivot, everything right >= pivot.
+// Behaviour test for 0x00992CB0 std::__unguarded_partition over the 36-byte (long key, sound-bank record) entries: __unguarded_partition: everything left of the split is <= pivot, everything right >= pivot.
 // The record is modelled with a shared reference count (copies bump it, assignments move it, destruction drops it) so
 // leaked or double-destroyed copies show up as a non-zero final count.
 #include <cstdio>

@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the texture morph entries
-// Leaf: ?resize@?$vector@VCTextureMorphEntry@@V?$allocator@VCTextureMorphEntry@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the texture morph entries
+// Leaf: ?resize@?$vector@VCTextureMorphEntry@@V?$allocator@VCTextureMorphEntry@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081DFB0, 44 bytes, thiscall, `ret 4`.
 // Identity: vector<CTextureMorphEntry> (20 bytes: MorphType, TextureLayer, ReplacingTextureIndex, BankIndex, Blend --
 //   Ego_r.pdb; FableWin.pdb has no constructor, so the record is POD and value-initialisation zero-fills it). The
@@ -16,7 +16,7 @@ public:
     long BankIndex;
     long Blend;
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

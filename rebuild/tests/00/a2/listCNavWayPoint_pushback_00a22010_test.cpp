@@ -13,7 +13,7 @@ public:
     bool          Removable;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 struct _List_node_base {
@@ -62,8 +62,8 @@ static int nearf(float a, float b) { float d = a - b; return d < 0.0001f && d > 
 int main()
 {
     int ok = 1;
-    _STL::_List_node_base sentinel; sentinel._M_next = &sentinel; sentinel._M_prev = &sentinel;
-    _STL::list<CNavWayPoint> route; route._M_node = &sentinel;
+    std::_List_node_base sentinel; sentinel._M_next = &sentinel; sentinel._M_prev = &sentinel;
+    std::list<CNavWayPoint> route; route._M_node = &sentinel;
     CNavWayPoint wp;
     for (int i = 0; i < 3; ++i) {
         wp.Position.X = 1.5f * i; wp.Position.Y = -2.0f * i; wp.NavLayer = (unsigned char)(10 + i); wp.Removable = (i == 1);
@@ -71,10 +71,10 @@ int main()
     }
     // expected order: 0, 1, 2 (FIFO)
     int expect[3] = { 0, 1, 2 };
-    _STL::_List_node_base* n = sentinel._M_next;
+    std::_List_node_base* n = sentinel._M_next;
     for (int i = 0; i < 3; ++i) {
         if (n == &sentinel) { ok = 0; break; }
-        _STL::_List_node<CNavWayPoint>* node = static_cast<_STL::_List_node<CNavWayPoint>*>(n);
+        std::_List_node<CNavWayPoint>* node = static_cast<std::_List_node<CNavWayPoint>*>(n);
         int k = expect[i];
         if (!nearf(node->_M_data.Position.X, 1.5f * k) || !nearf(node->_M_data.Position.Y, -2.0f * k)) ok = 0;
         if (node->_M_data.NavLayer != 10 + k || node->_M_data.Removable != (k == 1)) ok = 0;
@@ -82,7 +82,7 @@ int main()
         n = n->_M_next;
     }
     if (n != &sentinel || sentinel._M_prev->_M_next != &sentinel) ok = 0;
-    while (sentinel._M_next != &sentinel) { _STL::_List_node_base* d = sentinel._M_next; sentinel._M_next = d->_M_next; std::free(d); }
+    while (sentinel._M_next != &sentinel) { std::_List_node_base* d = sentinel._M_next; sentinel._M_next = d->_M_next; std::free(d); }
 
     if (!ok) { std::printf("00a22010_TEST FAIL\n"); return 1; }
     std::printf("00a22010_TEST PASS\n");

@@ -1,4 +1,4 @@
-// Behaviour test for 0x008073D0 _STL::swap<NPlayerTargeting::CTargetPoint>.
+// Behaviour test for 0x008073D0 std::swap<NPlayerTargeting::CTargetPoint>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("008073d0_TEST FAIL\n"); return 1; } } while (0)

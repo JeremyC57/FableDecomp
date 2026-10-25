@@ -62,8 +62,8 @@ None. No row holds two functions.
 | 00af87c0 | CDynamicObjectHeapBase_Construct_Large | CDynamicObjectHeap<156,2100>::CDynamicObjectHeap(bool) (vtable 0x0129F644, landed CreateMoreBlocks 0x00AF88F0) |
 | 00af8d50 | Audio_CalculateFilterParameter | GFPackFloat (FableWin `?GFPackFloat@@YIKMKMMK@Z`; ecx/edx = the two ulongs) |
 | 00afe380 | Audio_InterpolateFilterCoefficient | NParticleEngine::CParticle::GetRecordedPos(float, float) const (PositionBuffer +0x29) |
-| 00afe4b0 | Vector_AllocateFromTemplate | _STL::__uninitialized_fill_n<CArray<long>*, unsigned int, CArray<long>> |
-| 00afe5c0 | Vector_CopyVectors | _STL::__uninitialized_copy<CArray<long>*, CArray<long>*> |
+| 00afe4b0 | Vector_AllocateFromTemplate | std::__uninitialized_fill_n<CArray<long>*, unsigned int, CArray<long>> |
+| 00afe5c0 | Vector_CopyVectors | std::__uninitialized_copy<CArray<long>*, CArray<long>*> |
 | 00b059f0 | CVectorMap_LookupAndCopyVolume | CParticleUpdateParameters<K,K>::GetVectorParam |
 | 00b05c20 | GFInterpolate (_global) | NParticleEngine::GFInterpolate(long, long, float) (`YIJJJM`) |
 | 00b081a0 | EventQueue_PushEvent | NParticleEngine::CPSCSingleSprite::AddTrailPosition(const C3DVector&, float) |
@@ -81,7 +81,7 @@ None. No row holds two functions.
 | 00b215e0 | CPSCSplineBase_UpdateSplineData | NParticleEngine::CPSCSplineBase::StartUpdate (vtable slot 8) |
 | 00b216f0 | CSplinePosParamData_CalcDistanceAlpha | CPSCSplineBase::CSplinePosParamData::GetScaleFactor |
 | 00b262c0 | Engine_AddRenderLayer | CEngine::AddRenderLayer |
-| 00b29840 | CTCCameraPointScriptedSpline_InsertKeyCamera | _STL::vector<CCamera>::_M_insert_overflow |
+| 00b29840 | CTCCameraPointScriptedSpline_InsertKeyCamera | std::vector<CCamera>::_M_insert_overflow |
 | 00b2ac80 | Vector_PushBack | CEngineLayerRenderer::AddComponent |
 | 00b2af50 | $E2 | CEngineSurfaceCompositionManager::CalcColourDifference |
 | 00b2c460 | CResourceBank_InitializeCompositeSurface | CEngineSurfaceCompositionManager::AddSurface |
@@ -90,8 +90,8 @@ None. No row holds two functions.
 | 00b2f060 | CCreatureAction_NavToPos_Insert | _Rb_tree<...>::_M_insert |
 | 00b2f130 | RBTree_FindInsertPosition | _Rb_tree<...>::insert_unique |
 | 00b2fc10 | ConsoleRunDebugScript | CEngineCamera::ConsoleRunDebugScript (static __fastcall; label OK, class added) |
-| 00b31a90 | fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha> | _STL::__uninitialized_fill_n<CEngineCamera::CDebugScriptElement*, ...> |
-| 00b31b10 | Vector_InsertResizeAnimation | _STL::vector<CEngineCamera::CDebugScriptElement>::_M_insert_overflow |
+| 00b31a90 | fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha> | std::__uninitialized_fill_n<CEngineCamera::CDebugScriptElement*, ...> |
+| 00b31b10 | Vector_InsertResizeAnimation | std::vector<CEngineCamera::CDebugScriptElement>::_M_insert_overflow |
 | 00b31e90 | CEnginePrimitiveHandle_SetAnimation | CEnginePrimitiveRenderer::SetPrimitiveAnimation |
 | 00b31ec0 | CEnginePrimitiveHandle_SetPosition | CEnginePrimitiveRenderer::SetPrimitivePosition |
 | 00b31ef0 | CEnginePrimitiveHandle_AddChild | CEnginePrimitiveRenderer::AddChildPrimitive |

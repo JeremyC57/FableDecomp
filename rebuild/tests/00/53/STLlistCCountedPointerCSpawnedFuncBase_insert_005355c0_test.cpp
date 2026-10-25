@@ -1,4 +1,4 @@
-// Behaviour test for 0x005355C0 _STL::list<CCountedPointer<CSpawnedFuncBase> >::insert (malloc'd node, counted copy, linked before pos).
+// Behaviour test for 0x005355C0 std::list<CCountedPointer<CSpawnedFuncBase> >::insert (malloc'd node, counted copy, linked before pos).
 #include <cstdio>
 #include <cstdlib>
 #include <new>

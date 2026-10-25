@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A826D0 _STL::__uninitialized_fill_n of list<C2DLineF>: n lists are copy-constructed from x
+// Behaviour test for 0x00A826D0 std::__uninitialized_fill_n of list<C2DLineF>: n lists are copy-constructed from x
 // into raw storage (each with its own sentinel and its own copies of x's lines), the end is returned, n == 0 builds none.
 #include <cstdio>
 #include <cstdlib>

@@ -1,4 +1,4 @@
-// _STL::vector::size() const -- element count of CTCCameraPointScriptedSpline's 56-byte CKeyCamera vector
+// std::vector::size() const -- element count of CTCCameraPointScriptedSpline's 56-byte CKeyCamera vector
 // Leaf: ?size@?$vector@VCKeyCamera@CTCCameraPointScriptedSpline@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075EE70, 29 bytes, thiscall, plain `ret`.
 // Identity: vector<CTCCameraPointScriptedSpline::CKeyCamera>. All three callers sit in
@@ -34,7 +34,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

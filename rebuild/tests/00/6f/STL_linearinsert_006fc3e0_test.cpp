@@ -51,7 +51,7 @@ template <class T, int N> __declspec(noinline) void CSmallVector<T, N>::Copy(con
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -106,13 +106,13 @@ inline void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessI
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > SKeyedEvents;
+typedef std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > SKeyedEvents;
 typedef CKeyPairCompareLess<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > SKeyedLess;
 
-template void __fastcall _STL::__linear_insert(SKeyedEvents*, SKeyedEvents*, SKeyedEvents, SKeyedLess);
+template void __fastcall std::__linear_insert(SKeyedEvents*, SKeyedEvents*, SKeyedEvents, SKeyedLess);
 
 
 // ---- test harness ----
@@ -120,7 +120,7 @@ typedef NAnimationEvents::CEvent TEv;
 static int g_unguarded = 0;
 static unsigned long g_unguardedKey = 0;
 static int g_unguardedSize = 0;
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare)
 {
@@ -146,12 +146,12 @@ int main()
     Set(*val, 10, 3, 300);                       // sorts before v[0]: shift [0,2) up, put val first
     SKeyedLess less;
     int ok = 1;
-    _STL::__linear_insert(v, v + 2, *val, less);
+    std::__linear_insert(v, v + 2, *val, less);
     if (v[0].first != 10 || v[1].first != 20 || v[2].first != 30) ok = 0;
     if (v[0].second.Size != 3 || v[0].second.Start[2].m_a != 302 || v[1].second.Size != 1 || v[1].second.Start[0].m_a != 100) ok = 0;
     if (v[2].second.Size != 2 || v[2].second.Start[1].m_b != -201 || g_unguarded != 0) ok = 0;
     Set(*val, 25, 2, 500);                       // not before v[0]: the unguarded insert gets a copy
-    _STL::__linear_insert(v, v + 2, *val, less);
+    std::__linear_insert(v, v + 2, *val, less);
     if (g_unguarded != 1 || g_unguardedKey != 25 || g_unguardedSize != 2) ok = 0;
     printf("006fc3e0_TEST %s\n", ok ? "PASS" : "FAIL");
     return ok ? 0 : 1;

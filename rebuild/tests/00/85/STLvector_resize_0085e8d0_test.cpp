@@ -1,4 +1,4 @@
-// Behaviour test for 0085e8d0 (_STL::vector<NThingMap::CThingMapCell>::resize(n, x)): growing appends through one fill insert at end(), shrinking erases the tail
+// Behaviour test for 0085e8d0 (std::vector<NThingMap::CThingMapCell>::resize(n, x)): growing appends through one fill insert at end(), shrinking erases the tail
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>

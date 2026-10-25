@@ -1,5 +1,5 @@
-// _STL::list<CMaintainedEvent>::insert(iterator) -- STLport list insert of a default-constructed CMaintainedEvent before the position; returns an iterator to the new node
-// Leaf: ?insert@?$list@VCMaintainedEvent@@@_STL@@QAE?AU?$_List_iterator@VCMaintainedEvent@@@2@U32@@Z
+// std::list<CMaintainedEvent>::insert(iterator) -- STLport list insert of a default-constructed CMaintainedEvent before the position; returns an iterator to the new node
+// Leaf: ?insert@?$list@VCMaintainedEvent@@@std@@QAE?AU?$_List_iterator@VCMaintainedEvent@@@2@U32@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E4A20, length 120 bytes.
 // Label correction: the catalog's "CInputEvent_AllocNode" is the one-argument STLport `list<CMaintainedEvent>::insert(iterator)`
 //   (`ret 8`: hidden result pointer + the iterator by value), i.e. `insert(pos, _Tp())` with the two-argument insert and
@@ -37,7 +37,7 @@ public:
     CInputEvent Event;                             // +0x04
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;

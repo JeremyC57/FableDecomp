@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(SPair* first, SPair* last, SPair*, SLess comp) -- STLport final insertion pass over 8-byte pair<long, unsigned long> records: every element in [first, last) goes through the unguarded linear insert (the first 16 are already sorted, so no lower guard)
+// std::__unguarded_insertion_sort_aux(SPair* first, SPair* last, SPair*, SLess comp) -- STLport final insertion pass over 8-byte pair<long, unsigned long> records: every element in [first, last) goes through the unguarded linear insert (the first 16 are already sorted, so no lower guard)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE5F60, 67 bytes (+13 int3 padding), `ret 8`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, last in edx, the value-type pointer tag and the 4-byte empty comparator slot on the stack.
@@ -6,7 +6,7 @@
 // Label: catalog "InsertionSort_64Bit" is descriptive.
 // Shape: STLport 4.6 _algo.c verbatim (`for (i = first; i != last; ++i) __unguarded_linear_insert(i, T(*i), comp);`) with
 //   the out-of-line __unguarded_linear_insert (0x00AE5AB0) inlined here: val's two words in edi/ebp, the hole in esi.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -42,7 +42,7 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 }
 }
 
-typedef _STL::pair<long, unsigned long> SPair;
-typedef _STL::less<SPair> SLess;
+typedef std::pair<long, unsigned long> SPair;
+typedef std::less<SPair> SLess;
 
-template void __fastcall _STL::__unguarded_insertion_sort_aux<SPair*, SPair, SLess>(SPair*, SPair*, SPair*, SLess);
+template void __fastcall std::__unguarded_insertion_sort_aux<SPair*, SPair, SLess>(SPair*, SPair*, SPair*, SLess);

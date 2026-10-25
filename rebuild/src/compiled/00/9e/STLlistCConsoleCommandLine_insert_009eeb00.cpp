@@ -1,4 +1,4 @@
-// _STL::list<CConsoleCommandLine>::insert(iterator, const CConsoleCommandLine&) -- STLport list insert of a copied command line before the position; returns an iterator to the new node
+// std::list<CConsoleCommandLine>::insert(iterator, const CConsoleCommandLine&) -- STLport list insert of a copied command line before the position; returns an iterator to the new node
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EEB00, 92 bytes, `ret 0Ch` (hidden result, the iterator by value, &x).
 //   Catalog label "HeroInformationScreens_CreateListNode" is wrong: the node holds a CConsoleCommandLine (vtable
 //   0x0129C400), the CConsole::CommandLineHistory element.
@@ -7,7 +7,7 @@
 // Shape: STLport 4.x insert + _M_create_node inlined (placement-new null test, no EH). The element copy runs the
 //   out-of-line CBase() DEFAULT constructor, so CConsoleCommandLine has a user copy constructor that does not name
 //   its base (an implicit one would only store the vptr); members copied in order, the bool as a byte.
-// Leaf: ?insert@?$list@VCConsoleCommandLine@@@_STL@@QAE?AU?$_List_iterator@VCConsoleCommandLine@@@2@U32@ABVCConsoleCommandLine@@@Z
+// Leaf: ?insert@?$list@VCConsoleCommandLine@@@std@@QAE?AU?$_List_iterator@VCConsoleCommandLine@@@2@U32@ABVCConsoleCommandLine@@@Z
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);
 
@@ -35,7 +35,7 @@ public:
         : CurrentEntry(other.CurrentEntry), UserEntry(other.UserEntry), CursorPosition(other.CursorPosition) {}
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;

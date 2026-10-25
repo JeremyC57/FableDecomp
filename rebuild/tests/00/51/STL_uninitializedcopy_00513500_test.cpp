@@ -1,4 +1,4 @@
-// Behaviour test for 0x00513500 _STL::__uninitialized_copy over CLevelLoader::CObject::CLevelFiles (placement copy, each counted pointer bumps its reference count).
+// Behaviour test for 0x00513500 std::__uninitialized_copy over CLevelLoader::CObject::CLevelFiles (placement copy, each counted pointer bumps its reference count).
 #include <cstdio>
 #include <new>
 

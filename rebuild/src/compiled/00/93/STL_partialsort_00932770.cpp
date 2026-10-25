@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, ThingCompare comp) -- STLport partial sort: heap the front, swap every later element that sorts before the root into the heap, then heap-sort the front
+// std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, ThingCompare comp) -- STLport partial sort: heap the front, swap every later element that sorts before the root into the heap, then heap-sort the front
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00932770, 95 bytes, `ret 0Ch` (first in ecx, middle in edx; last, the value-type pointer and comp on the stack).
 // Name: STLport `__partial_sort<CThing**, CThing*, bool (__fastcall*)(CThing*, CThing*)>`; caller __introsort_loop
@@ -21,7 +21,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, size_t n);   // 0x0
 class CThing;
 typedef bool (__fastcall* ThingCompare)(CThing* a, CThing* b);   // e.g. the height compare 0x00930D90
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*,
                             _Distance*);   // 0x00932540

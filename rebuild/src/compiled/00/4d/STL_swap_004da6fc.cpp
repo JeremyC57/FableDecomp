@@ -1,10 +1,10 @@
-// _STL::swap(pair<CCharString,CTCBase::CRegisteredTCInfo>& a, pair<CCharString,CTCBase::CRegisteredTCInfo>& b) -- exchange two thing-component registry entries (key string + alloc function, driver type, name) through a by-value temporary
+// std::swap(pair<CCharString,CTCBase::CRegisteredTCInfo>& a, pair<CCharString,CTCBase::CRegisteredTCInfo>& b) -- exchange two thing-component registry entries (key string + alloc function, driver type, name) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004DA6FC, 60 bytes (a /Os module: unaligned entry, ebp frame, `leave`), /Gr
 //   `__fastcall` (a in ecx -> edi, b in edx -> esi), plain `ret`.
 // Identity: the 16-byte element's copy constructor 0x004D788D copies a CCharString and then a 12-byte member through
 //   0x004D6C66, its assignment 0x004DA56A assigns the string and then the member through 0x004D78C5, and the temporary
-//   dies at +0xc and +0 (both ~CCharString): _STL::pair<CCharString, CTCBase::CRegisteredTCInfo> (Ego_r.pdb
+//   dies at +0xc and +0 (both ~CCharString): std::pair<CCharString, CTCBase::CRegisteredTCInfo> (Ego_r.pdb
 //   CRegisteredTCInfo, 12 bytes: AllocFunc +0, DriverType +4, CCharString Name +8) -- the thing-component registry the
 //   catalog's "swap<CTCBase::CRegisteredTCInfo>" names. Callers: the out-of-line iter_swap 0x004DBEDA (a bare `jmp`) and
 //   the partition step 0x004DFD37.
@@ -33,7 +33,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;                                          // +0x00

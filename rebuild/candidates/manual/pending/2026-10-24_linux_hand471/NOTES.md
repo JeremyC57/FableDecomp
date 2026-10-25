@@ -6,7 +6,7 @@ calls.py shows every call target equal to retail's.
 ## What matched (22)
 
 - **STLport heap algorithms (12 rows).** The catalog's Dinkumware `_Adjust_heap` / `_Push_heap` / `_Pop_heap` spellings
-  are STLport 4.6 `__adjust_heap` / `__push_heap` / `__pop_heap` templates in `_STL`.
+  are STLport 4.6 `__adjust_heap` / `__push_heap` / `__pop_heap` templates in `std`.
   - **`__adjust_heap` rows:**
     - 004ba180: quest persistence;
     - 009b8220: def-class registry, with an unsigned key (`jae`);
@@ -88,7 +88,7 @@ calls.py shows every call target equal to retail's.
 - 0055c6f0 NUISystem::CMouseCursor::ProcessEvent DIFFER(276v276): VC7.1 overlays the four GetRenderTargetDimensions temporaries and the movement local in one 8-byte slot (`sub esp,10h`); retail gives each its own slot (`sub esp,30h`) | tried: inline dims helper + movement reference local, inline display-manager accessor + front-end pointer local, inline dtor on the extents temporary, flag probes, RTM and QFE | next: lane gap: frame-slot packing
 - 0053e9a0 NUISystem::CScrollingViewport::ProcessEvent DIFFER(587v578): retail fetches the GetPosition cursor before the GetSize one in each dead far-corner pair and keeps mouse.X/Y in ebx/ebp; ours fetches both cursors first and spills; retail's frame is 0x7C in first-use order, ours 0x8C | tried: free operator+ and member operator+ for the dead cursor corner | next: fetch each GetPosition() cursor into a named local before the GetSize() call; else lane gap: frame layout
 - 0054e6f0 NUISystem::CViewport::Draw DIFFER(690v644): far-corner Y (retail `fld pos.Y ; fadd st(1) ; fstp st(0)`, ours `fadd [pos.Y]`), screen-size slots split, and the primitive store order (retail copies the alpha-mask bank pointer first, then stores every member in one block) | tried: box local, far-corner vector (best), inline ctor (pushed, not inlined), __forceinline ctor (both box temporaries materialised) | next: a primitive ctor that takes the bank pointer first and is inlined under `optimize("s")`
-- 007f7ef0 _STL::__find_if<CThing**, unary_negate<CIsTriggerActivated> > DIFFER(430v432): retail keeps `first` in ebp (moved before `push esi ; push edi`) and the trigger local in edi; VC7.1 picks edi/ebp | tried: plain form, ternary GetInterface form, reference predicate argument | next: lane gap: register allocation
+- 007f7ef0 std::__find_if<CThing**, unary_negate<CIsTriggerActivated> > DIFFER(430v432): retail keeps `first` in ebp (moved before `push esi ; push edi`) and the trigger local in edi; VC7.1 picks edi/ebp | tried: plain form, ternary GetInterface form, reference predicate argument | next: lane gap: register allocation
 - 00a10a60 WordWrap_String::TokenizeW DIFFER(301v281): IsEastAsianChar / IsNonBeginningChar / IsNonEndingChar take the character in ax with no push (LTCG custom convention) | tried: reference body (1 grade) | next: lane gap: LTCG register-argument callees
 - 00a10b80 WordWrap_String::TokenizeA DIFFER(476v450): the same ax-argument LTCG callees as TokenizeW | tried: reference body (1 grade) | next: lane gap: LTCG register-argument callees
 
@@ -122,9 +122,9 @@ None. No row covers two functions.
 - **Other row labels:**
   - 00c69c60: the catalog says `NScript::CQ_GuildTrainingSkillScript::UpdateAnimation`, which is propagated. The body is libpk's software reverb, CReverbProcessor::ProcessInput (vtable 0x012B9594, no PDB/RTTI; descriptive name).
   - **STLport algorithm spellings:** the catalog's Dinkumware spellings are STLport:
-    - `_Adjust_heap` / `_Push_heap` / `_Pop_heap` are `_STL::__adjust_heap` / `__push_heap` / `__pop_heap`;
-    - `_Copy_if` 007b7140 is `_STL::copy_if`;
-    - `_Find_if` 007f7ef0 is `_STL::__find_if`.
+    - `_Adjust_heap` / `_Push_heap` / `_Pop_heap` are `std::__adjust_heap` / `__push_heap` / `__pop_heap`;
+    - `_Copy_if` 007b7140 is `std::copy_if`;
+    - `_Find_if` 007f7ef0 is `std::__find_if`.
   - **Wrong element types in the catalog:**
     - 00a71220 holds pair<long,C3DMeshVolume>, not pair<long,CCountedPointer<CNavConnectorNode>>;
     - 00a33a70 holds pair<unsigned long,C3DMeshVolume>, not pair<unsigned long,CCountedPointer<CFaction>>;

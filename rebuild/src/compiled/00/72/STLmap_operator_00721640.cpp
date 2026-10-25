@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, pair<long, CDateAndTime> >: lower_bound, insert (k, (0, CDateAndTime())) when absent, return the mapped pair
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, pair<long, CDateAndTime> >: lower_bound, insert (k, (0, CDateAndTime())) when absent, return the mapped pair
 // Leaf: ??A?$map@VCCharString@@U?$pair@JVCDateAndTime@@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00721640, 166 bytes, __fastcall `ret 4`.
 // Identity: Ego_r.pdb CTCHeroMorph::CustomToBankIndex is map<CCharString, pair<long, CDateAndTime> > (only caller 0x0071D682,
@@ -45,7 +45,7 @@ public:
     CDateAndTime();                                      // 0x009E9AB0
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {             // STLport 4.6 (member templates on)
     _T1 first;
@@ -103,4 +103,4 @@ public:
 
 template pair<long, CDateAndTime> & map<CCharString, pair<long, CDateAndTime> >::operator[](const CCharString&);
 
-} // namespace _STL
+} // namespace std

@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<unsigned long, C3DDummyObject>* first, pair<unsigned long, C3DDummyObject>* middle, pair<unsigned long, C3DDummyObject>* last, pair<unsigned long, C3DDummyObject>*, CKeyPairCompareLess comp) -- heap-based partial sort of the dummy-object table: heapify [first, middle), pop every smaller later entry into it, then sort the heap
+// std::__partial_sort(pair<unsigned long, C3DDummyObject>* first, pair<unsigned long, C3DDummyObject>* middle, pair<unsigned long, C3DDummyObject>* last, pair<unsigned long, C3DDummyObject>*, CKeyPairCompareLess comp) -- heap-based partial sort of the dummy-object table: heapify [first, middle), pop every smaller later entry into it, then sort the heap
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A34360, 177 bytes (+ int3 padding), `ret 0Ch` (__fastcall: first in ecx,
 //   middle in edx, last, the value-type pointer and the empty comparator on the stack).
@@ -12,7 +12,7 @@
 //   is a frame local (pair copy constructor: key, `rep movsd` x13), `*result = *first` the 14-dword assignment, then
 //   __adjust_heap(first, 0, middle - first, value, comp) re-copies the local into the argument area (divide by 56 via
 //   0x92492493); middle spilled to the frame.
-namespace _STL {
+namespace std {
 
 struct CMatrix3x4 { float M[12]; };
 struct C3DDummyObject {                                // 0x34 bytes

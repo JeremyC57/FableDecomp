@@ -1,4 +1,4 @@
-// _STL::basic_string<unsigned short>::reserve(size_type res_arg) -- move the wide characters into a fresh max(res_arg, size()) + 1 element block, terminate it and free the old block
+// std::basic_string<unsigned short>::reserve(size_type res_arg) -- move the wide characters into a fresh max(res_arg, size()) + 1 element block, terminate it and free the old block
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099C990, 152 bytes, thiscall `ret 4`.
 // Callees: basic_string<unsigned short>::_M_throw_length_error() const @ 0x0099C550 (exceptions-off puts + abort,
 // `__declspec(noreturn)`: VC7.1 keeps the call inline before the fall-through), malloc @ 0x00BFEA0E
@@ -9,8 +9,8 @@
 // basic_string<unsigned short>::reserve, the wide sibling of the landed basic_string<char>::reserve 0x00777DB0.
 // Shape: STLport 4.x verbatim -- `max` by reference (size() spilled to the `push ecx` frame word, n stored back over
 // res_arg), the trivial copy is `last == first ? result : memmove(result, first, bytes) + bytes`.
-// Leaf: ?reserve@?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@
-namespace _STL {
+// Leaf: ?reserve@?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@
+namespace std {
 
 typedef unsigned int size_t;
 

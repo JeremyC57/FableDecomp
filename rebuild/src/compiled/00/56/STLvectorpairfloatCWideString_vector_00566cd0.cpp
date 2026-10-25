@@ -1,4 +1,4 @@
-// _STL::vector<pair<float, CWideString> >::vector(const vector& x) -- STLport vector copy constructor for the online scoreboard's (score, name) rows: allocate x.size() elements (none for an empty source), set start/finish/end of storage, copy-construct the elements through the out-of-line uninitialized copy
+// std::vector<pair<float, CWideString> >::vector(const vector& x) -- STLport vector copy constructor for the online scoreboard's (score, name) rows: allocate x.size() elements (none for an empty source), set start/finish/end of storage, copy-construct the elements through the out-of-line uninitialized copy
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00566CD0, 87 bytes, `ret 4` (thiscall: &x).
 // Callees: malloc 0x00BFEA0E (the STLport malloc allocator), `__uninitialized_copy(first, last, result, const
@@ -23,7 +23,7 @@ public:
     ~CWideString();                                                       // 0x0099B510
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class T1, class T2> struct pair {

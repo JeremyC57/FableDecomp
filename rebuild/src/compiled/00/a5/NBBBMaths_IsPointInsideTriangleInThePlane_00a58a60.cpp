@@ -10,7 +10,7 @@
 //   each difference is built in a frame temporary and copied into the local before the cross product
 //   `edge.X * toPos.Y - edge.Y * toPos.X`; the two sign-change tests are one `||` (the shared false exit sits at the end);
 //   the loop test is `i != 2` (retail `cmp esi,2 ; jne`; `i < 2` gives `jl`).
-namespace _STL {
+namespace std {
 template <class T> class allocator { };
 template <class T, class Alloc = allocator<T> > class vector {
 public:
@@ -21,7 +21,7 @@ public:
     const T* begin() const { return _M_start; }
     const T& operator[](size_type n) const { return *(begin() + n); }
 };
-}   // namespace _STL
+}   // namespace std
 
 class C2DVector {
 public:
@@ -34,7 +34,7 @@ public:
 
 namespace NBBBMaths {
 
-bool __fastcall IsPointInsideTriangleInThePlane(const _STL::vector<C2DVector>& points, const C2DVector& pos)
+bool __fastcall IsPointInsideTriangleInThePlane(const std::vector<C2DVector>& points, const C2DVector& pos)
 {
     C2DVector edge = points[0] - points[2];
     C2DVector toPos = pos - points[2];

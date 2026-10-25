@@ -1,4 +1,4 @@
-// _STL::__linear_insert(pair<long, CCountedPointer<CNavConnectorNode> >* first, pair<long, CCountedPointer<CNavConnectorNode> >* last, pair<long, CCountedPointer<CNavConnectorNode> > val, CKeyPairCompareLess<long, CCountedPointer<CNavConnectorNode> > comp) -- SGI insertion-sort step over the connector map's (long id, counted node) pairs: a value below the front shifts the run up one slot and lands at the front, otherwise the unguarded backward scan places it
+// std::__linear_insert(pair<long, CCountedPointer<CNavConnectorNode> >* first, pair<long, CCountedPointer<CNavConnectorNode> >* last, pair<long, CCountedPointer<CNavConnectorNode> > val, CKeyPairCompareLess<long, CCountedPointer<CNavConnectorNode> > comp) -- SGI insertion-sort step over the connector map's (long id, counted node) pairs: a value below the front shifts the run up one slot and lands at the front, otherwise the unguarded backward scan places it
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A834B0, 113 bytes, `ret 10h`: /Gr `__fastcall` (first in ecx -> esi, last
 //   in edx; the 12-byte value and the empty comparator on the stack).
@@ -60,7 +60,7 @@ public:
 
 class CNavConnectorNode;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (user copy constructor, implicit assignment)
     _T1 first;
     _T2 second;
@@ -72,10 +72,10 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>
 _BidirectionalIter2 __fastcall __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                _BidirectionalIter2 __result, const random_access_iterator_tag&,
@@ -100,6 +100,6 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 }
 }
 
-typedef _STL::pair<long, CCountedPointer<CNavConnectorNode> > SConnectorEntry;   // 12 bytes
-template void __fastcall _STL::__linear_insert(SConnectorEntry* __first, SConnectorEntry* __last, SConnectorEntry __val,
+typedef std::pair<long, CCountedPointer<CNavConnectorNode> > SConnectorEntry;   // 12 bytes
+template void __fastcall std::__linear_insert(SConnectorEntry* __first, SConnectorEntry* __last, SConnectorEntry __val,
                                                CKeyPairCompareLess<long, CCountedPointer<CNavConnectorNode> > __comp);

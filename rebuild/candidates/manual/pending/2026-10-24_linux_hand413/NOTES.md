@@ -77,19 +77,19 @@ Row labels (catalog -> real):
 - 009e2460 Calc_Distance2D -> GFGet2DDistance(const C2DVector&, const C2DVector&)
 - 009e3f60 Graphics_CopyPixelsToBuffer -> CPixelFormat::ConvertRGBToPFDData
 - 009e4420 JoystickGui_Destructor -> CJoystick::~CJoystick
-- 009e47e0 EventNode_Unlink -> _STL::list<CMaintainedEvent>::erase(iterator)
-- 009e4a20 CInputEvent_AllocNode -> _STL::list<CMaintainedEvent>::insert(iterator)
+- 009e47e0 EventNode_Unlink -> std::list<CMaintainedEvent>::erase(iterator)
+- 009e4a20 CInputEvent_AllocNode -> std::list<CMaintainedEvent>::insert(iterator)
 - 009e5170 SymbolMap_Lookup -> CSymbolMap::FindSymbol(const CCharString&, long&)
 - 009e5290 CCombatWheel_TryInsertMatchingString -> CSymbolMap::GetSymbolsFromGroupName
-- 009e6c80 Partition_QuickSort -> _STL::__unguarded_partition
-- 009e7100 MakeHeap_Start -> _STL::__make_heap
+- 009e6c80 Partition_QuickSort -> std::__unguarded_partition
+- 009e7100 MakeHeap_Start -> std::__make_heap
 - 009e72c0 Vector_Reserve -> vector<pair<CCharString, CSymbolInfo>>::reserve
 - 009e7680 Vector_Clear -> CArray<SSymbolEntry>::DeallocateMemory
 - 009e7ab0 Vector_Append_CCharString -> vector<pair<CCharString, CSymbolInfo>>::push_back
-- 009e7b40 Partition_IntroSort -> _STL::__partial_sort
+- 009e7b40 Partition_IntroSort -> std::__partial_sort
 - 009e93c0 BinaryStream_LoadFromWide -> CMemoryFile::Open(void*, long)
 - 009e98c0 Vector_PushBackByte -> back_insert_iterator<vector<unsigned char>>::operator=
-- 009e9900 Vector_AppendRange -> _STL::__copy into a back_insert_iterator
+- 009e9900 Vector_AppendRange -> std::__copy into a back_insert_iterator
 - 009e9e30 Format_DateTimeString -> CDateAndTime::ToString
 - 009ea6c0 Command_CreateAnonymousObject -> CConsoleCommandParameters::GetCorrectlyTypedParameter(long)
 - 009eac80 LinkedList_RotateToIndex -> CConsole::ScrollToHistoryBeginning (best PDB fit: both window iterators reset to
@@ -99,15 +99,15 @@ Row labels (catalog -> real):
 - 009eb8e0 CConsole_ListVariablesCommand -> CConsole::ConsoleVariableList
 - 009ebb30 Vector_PushElementOrReallocate -> CConsoleCommandParameters::CConsoleCommandParameters(EGenericVarType)
 - 009ebcb0 Vector_InitAndAppendFour -> CConsoleCommandParameters::CConsoleCommandParameters(EGenericVarType x4)
-- 009ee0a0 _Copy_backward<CExplosionRing*,CExplosionRing*> -> _STL::__uninitialized_copy<const CGenericVar*, CGenericVar*>
-- 009eeb00 HeroInformationScreens_CreateListNode -> _STL::list<CConsoleCommandLine>::insert(iterator, const T&)
-- 009efcf0 CCharMap_FindOrInsert -> _STL::map<char, CCharString>::operator[]
-- 009efdf0 Vector_PushBackPolymorphicEntry -> _STL::vector<CGenericVar>::push_back
+- 009ee0a0 _Copy_backward<CExplosionRing*,CExplosionRing*> -> std::__uninitialized_copy<const CGenericVar*, CGenericVar*>
+- 009eeb00 HeroInformationScreens_CreateListNode -> std::list<CConsoleCommandLine>::insert(iterator, const T&)
+- 009efcf0 CCharMap_FindOrInsert -> std::map<char, CCharString>::operator[]
+- 009efdf0 Vector_PushBackPolymorphicEntry -> std::vector<CGenericVar>::push_back
 - 009f0320 NQuestManager_InitializeMapsList -> CCodeSectionManager::CCodeSectionManager
 - 009f0c90 CMemoryAllocatorVariableSize_EraseElement -> _Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>::erase(iterator)
 - 009f0de0 RBTree_CreateNode -> the same tree's _M_create_node
 - 009f0fa0 RBTree_Insert -> the same tree's _M_insert
-- 009f1470 CCodeSectionManager_RegisterSection -> _STL::map<unsigned long, CSectionDesc>::operator[] (RegisterSection
+- 009f1470 CCodeSectionManager_RegisterSection -> std::map<unsigned long, CSectionDesc>::operator[] (RegisterSection
   is the landed 0x9F05A0)
 - 009f18f0 CircularBuffer_Read -> CGameEventDataPackage::GetData(long, void*)
 

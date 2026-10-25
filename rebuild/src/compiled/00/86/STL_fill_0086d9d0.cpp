@@ -1,4 +1,4 @@
-// _STL::fill(CRandomAppearanceMorph::CBodyPartMesh* first, CRandomAppearanceMorph::CBodyPartMesh* last, const CRandomAppearanceMorph::CBodyPartMesh& value) -- assign one body-part mesh (index, priority, texture-morph map) to every element of a range
+// std::fill(CRandomAppearanceMorph::CBodyPartMesh* first, CRandomAppearanceMorph::CBodyPartMesh* last, const CRandomAppearanceMorph::CBodyPartMesh& value) -- assign one body-part mesh (index, priority, texture-morph map) to every element of a range
 // Leaf: ??$fill@PAVCBodyPartMesh@CRandomAppearanceMorph@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086D9D0, 58 bytes, `__fastcall` (first ecx, last edx, value
 //   pointer on the stack), `ret 4`.
@@ -45,7 +45,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -55,5 +55,5 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CRandomAppearanceMorph::CBodyPartMesh*, CRandomAppearanceMorph::CBodyPartMesh>(
+template void __fastcall std::fill<CRandomAppearanceMorph::CBodyPartMesh*, CRandomAppearanceMorph::CBodyPartMesh>(
     CRandomAppearanceMorph::CBodyPartMesh*, CRandomAppearanceMorph::CBodyPartMesh*, const CRandomAppearanceMorph::CBodyPartMesh&);

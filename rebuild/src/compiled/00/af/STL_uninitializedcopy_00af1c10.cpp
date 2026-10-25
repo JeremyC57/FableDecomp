@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(CParticleEmitterInfo* first, CParticleEmitterInfo* last, CParticleEmitterInfo* result, const __false_type&) -- copy-construct the particle emitter info records of [first, last) into raw storage at result and return the end of the copies
+// std::__uninitialized_copy(CParticleEmitterInfo* first, CParticleEmitterInfo* last, CParticleEmitterInfo* result, const __false_type&) -- copy-construct the particle emitter info records of [first, last) into raw storage at result and return the end of the copies
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF1C10, 57 bytes, __fastcall (first ecx, last edx; result and the empty tag on the
 //   stack, `ret 8`).
@@ -39,7 +39,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

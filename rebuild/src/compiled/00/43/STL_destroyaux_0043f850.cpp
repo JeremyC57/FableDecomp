@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(CIntelligentPointer<NParticleEngine::CParticleEmitter>* first, CIntelligentPointer<...>* last, const __false_type&) -- destroy each intelligent pointer in [first, last) through its virtual destructor
+// std::__destroy_aux(CIntelligentPointer<NParticleEngine::CParticleEmitter>* first, CIntelligentPointer<...>* last, const __false_type&) -- destroy each intelligent pointer in [first, last) through its virtual destructor
 // Leaf: ??$__destroy_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0043F850, 36 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx -> esi, last
 //   in edx -> edi), `ret 4` (the tag reference).
@@ -23,7 +23,7 @@ public:
     virtual void v01();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

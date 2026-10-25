@@ -1,5 +1,5 @@
 // _Rb_tree<float, pair<const float, const CANavQuadTreeNode*>>::_M_insert(x, y, v, w) -- link a new cost-ordered nav-node entry under parent y (left or right by the hint and key order), then rebalance
-// Leaf: ?_M_insert@?$_Rb_tree@MU?$pair@$$CBMPBVCANavQuadTreeNode@@@_STL@@U?$_Select1st@U?$pair@$$CBMPBVCANavQuadTreeNode@@@_STL@@@2@U?$less@M@2@V?$allocator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@_STL@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBMPBVCANavQuadTreeNode@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@MU?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@U?$_Select1st@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@U?$less@M@2@V?$allocator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBMPBVCANavQuadTreeNode@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A21E80, 196 bytes, `ret 14h`. Callers 0x00A1D8D4, 0x00A1DC14 and 0x00A222E4
 //   (the tree's insert_equal). The catalog label "RBTree_InsertNodeFloat2" is descriptive.
 // Identity: the tree under multimap<float, const CANavQuadTreeNode*> (node 0x18; the same container whose
@@ -11,7 +11,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 class CANavQuadTreeNode;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     typedef _T1 first_type;
     _T1 first;
@@ -116,5 +116,5 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Rb_tree_node_b
 }
 }
 
-template class _STL::_Rb_tree<float, _STL::pair<const float, const CANavQuadTreeNode*>,
-    _STL::_Select1st<_STL::pair<const float, const CANavQuadTreeNode*> >, _STL::less<float> >;
+template class std::_Rb_tree<float, std::pair<const float, const CANavQuadTreeNode*>,
+    std::_Select1st<std::pair<const float, const CANavQuadTreeNode*> >, std::less<float> >;

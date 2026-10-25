@@ -1,4 +1,4 @@
-// _STL::vector<C3DKeyframe>::vector(unsigned int n) -- size constructor: allocate n keyframes and fill them with copies of a default-constructed keyframe
+// std::vector<C3DKeyframe>::vector(unsigned int n) -- size constructor: allocate n keyframes and fill them with copies of a default-constructed keyframe
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A54580, length 117 bytes, `ret 4`.
 // Callers: 0x00A4F082 and 0x00A54F08 (C3DAnimation keyframe arrays). Callee: malloc 0x00BFEA0E.
@@ -30,7 +30,7 @@ public:
     C4DVector   Scaling;                             // +0x20
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // STLport _IS_POD_ITER result for a class element
 
 template <class _T1, class _T2>

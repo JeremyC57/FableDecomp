@@ -12,7 +12,7 @@ public:
 
 static int g_erased = 0;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { };
 template <class _Tp> class allocator { public: allocator() {} };
 template <class _T1, class _T2> struct pair {
@@ -148,15 +148,15 @@ class CMeshBankStateBlock {
 public:
     class CLODStateBlock {
     public:
-        _STL::map<CCharString, long> BoneLODs;
-        void GetBoneLODs(_STL::set<CCharString>& bones, long lod);
+        std::map<CCharString, long> BoneLODs;
+        void GetBoneLODs(std::set<CCharString>& bones, long lod);
     };
 };
 
-void CMeshBankStateBlock::CLODStateBlock::GetBoneLODs(_STL::set<CCharString>& bones, long lod)
+void CMeshBankStateBlock::CLODStateBlock::GetBoneLODs(std::set<CCharString>& bones, long lod)
 {
     bones.clear();
-    for (_STL::map<CCharString, long>::iterator it = BoneLODs.begin(); it != BoneLODs.end(); ++it)
+    for (std::map<CCharString, long>::iterator it = BoneLODs.begin(); it != BoneLODs.end(); ++it)
         if (it->second == lod)
             bones.insert(it->first);
 }
@@ -170,9 +170,9 @@ int main()
     long lods[7] = { 1, 2, 1, 0, 2, 1, 0 };
     for (int i = 0; i < 7; ++i) {
         CCharString name; name.Id = ids[i];
-        block.BoneLODs._M_t.insert_unique(_STL::pair<const CCharString, long>(name, lods[i]));
+        block.BoneLODs._M_t.insert_unique(std::pair<const CCharString, long>(name, lods[i]));
     }
-    _STL::set<CCharString> bones;
+    std::set<CCharString> bones;
     bones._M_t.Init();
     CCharString stale; stale.Id = 999;
     bones.insert(stale);
@@ -180,12 +180,12 @@ int main()
     block.GetBoneLODs(bones, 1);                                    // 30, 40, 70
     if (g_erased != 1 || bones._M_t._M_node_count != 3) ok = 0;
     int expect1[3] = { 30, 40, 70 }, k = 0;
-    for (_STL::set<CCharString>::iterator it = bones._M_t.begin(); it != bones._M_t.end(); ++it, ++k)
+    for (std::set<CCharString>::iterator it = bones._M_t.begin(); it != bones._M_t.end(); ++it, ++k)
         if (k >= 3 || it->Id != expect1[k]) ok = 0;
     if (k != 3) ok = 0;
     block.GetBoneLODs(bones, 0);                                    // 20, 50
     int expect0[2] = { 20, 50 }; k = 0;
-    for (_STL::set<CCharString>::iterator it = bones._M_t.begin(); it != bones._M_t.end(); ++it, ++k)
+    for (std::set<CCharString>::iterator it = bones._M_t.begin(); it != bones._M_t.end(); ++it, ++k)
         if (k >= 2 || it->Id != expect0[k]) ok = 0;
     if (k != 2 || bones._M_t._M_node_count != 2 || g_erased != 4) ok = 0;
     block.GetBoneLODs(bones, 5);                                    // none

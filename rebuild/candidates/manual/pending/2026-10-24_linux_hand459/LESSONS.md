@@ -44,7 +44,7 @@ Review at landing:
   relatives (0x0086EFF0, 0x0086F3E0, 0x0086FA00, 0x0086F600, 0x008700A0) or keep them descriptive -- decide once.
 - 0x00728D10's element identification (CMeshMorphSetParts) rests on the layout chain (0x00722130 destroy, 0x005BBDF1
   copy = CArray<CEngineTextureMorph>) plus the CTCRandomAppearanceMorph neighbourhood; no PDB-named caller.
-- Already-landed names to fix: 0x0065572D "_Destroy_range" = `_STL::fill`; 0x0086C620 "CCompressorZlib::SetupStream" =
+- Already-landed names to fix: 0x0065572D "_Destroy_range" = `std::fill`; 0x0086C620 "CCompressorZlib::SetupStream" =
   skeletal-morph `__linear_insert`; 0x00841DE0 / 0x00865650 / 0x00722130 / 0x00728A40 / 0x00728B10 / 0x00728B50 /
   0x005BBDF1 descriptive names (see NOTES.md); 0x0086AF60's CSkeletalMorph members differ from the PDB.
 - No row needed more than 3 grades (0x00534F20 and 0x006562E7: 3); no catalog row held two functions.

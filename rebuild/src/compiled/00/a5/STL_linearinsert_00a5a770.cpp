@@ -1,5 +1,5 @@
-// _STL::__linear_insert(float* first, float* last, float val, less<float> comp) -- insertion-sort step: a value below the first element memmoves [first, last) up one slot and goes first, anything else sifts down from last
-// Leaf: ??$__linear_insert@PAMMU?$less@M@_STL@@@_STL@@
+// std::__linear_insert(float* first, float* last, float val, less<float> comp) -- insertion-sort step: a value below the first element memmoves [first, last) up one slot and goes first, anything else sifts down from last
+// Leaf: ??$__linear_insert@PAMMU?$less@M@std@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5A770, 87 bytes (+9 int3), `ret 8` (link-time __fastcall: first in ecx,
 //   last in edx, the float value and the empty less<float> on the stack).
@@ -13,7 +13,7 @@
 #include <stddef.h>
 #include <string.h>
 
-namespace _STL {
+namespace std {
 
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
@@ -57,4 +57,4 @@ inline void __linear_insert(RandomAccessIter first, RandomAccessIter last, T val
 
 template void __linear_insert(float*, float*, float, less<float>);
 
-}   // namespace _STL
+}   // namespace std

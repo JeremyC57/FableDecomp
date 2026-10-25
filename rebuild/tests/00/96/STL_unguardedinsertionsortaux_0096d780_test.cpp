@@ -43,7 +43,7 @@ static CThingCompare_Nearest g_Nearest;
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 static TComp MakeComp() { TComp c; c.Functor = &g_Nearest; return c; }
 
-namespace _STL {
+namespace std {
 template <class _Iter> inline void iter_swap(_Iter __i1, _Iter __i2) { CThing* __tmp = *__i1; *__i1 = *__i2; *__i2 = __tmp; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -228,7 +228,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
         __final_insertion_sort(__first, __last, __comp);
     }
 }
-} // namespace _STL
+} // namespace std
 
 // ---- checks ----
 template <class C> static bool IsSorted(CThing** v, int n, C comp)
@@ -289,12 +289,12 @@ int main()
 
     CThing* v[N]; Fill(v, N);
     // put the best element first: it is the sentinel the unguarded inserts stop at
-    _STL::__insertion_sort(v, v + N, comp);
+    std::__insertion_sort(v, v + N, comp);
     CThing* best = v[0];
     Fill(v, N);
     for (int i = 0; i < N; ++i) if (v[i] == best) { v[i] = v[0]; v[0] = best; break; }
     CThing* before[N]; for (int i = 0; i < N; ++i) before[i] = v[i];
-    _STL::__unguarded_insertion_sort_aux(v + 1, v + N, (CThing**)0, comp);
+    std::__unguarded_insertion_sort_aux(v + 1, v + N, (CThing**)0, comp);
     if (!IsSorted(v, N, comp)) return Fail(A, "not sorted");
     if (!SameSet(before, v, N)) return Fail(A, "permutation");
 

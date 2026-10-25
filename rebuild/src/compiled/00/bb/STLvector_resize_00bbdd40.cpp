@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- resize the CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator vector: erase the surplus tail, or append default-constructed elements up to the new size
-// Leaf: ?resize@?$vector@VCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@V?$allocator@VCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- resize the CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator vector: erase the surplus tail, or append default-constructed elements up to the new size
+// Leaf: ?resize@?$vector@VCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@V?$allocator@VCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BBDD40, 80 bytes, thiscall `ret 4`.
 // Callers: 0x00BBD054, 0x00BBD16A, 0x00BBD1BD in CEngineInternalPrimitiveParticleGroup::SetChildPrimitive 0x00BBCF70 (landed; the
 //   PrimitiveIDToIterator table grown to cover a new child id).
@@ -13,7 +13,7 @@
 //   end()); else insert(end(), n - size(), x); }` and `insert(pos, n, x)` forwarding to the out-of-line _M_fill_insert: the
 //   default temporary lives in the `sub esp,8` frame, size() is recomputed after the erase/insert test.
 class CEnginePrimitiveHandle;
-namespace _STL {
+namespace std {
 struct _List_node_base;
 template <class _Tp> struct _List_iterator {    // the primitive list's iterator: one node pointer
     _List_node_base* _M_node;
@@ -26,12 +26,12 @@ public:
     class CPrimitiveIterator {                  // Ego_r.pdb, 8 bytes
     public:
         bool Valid;                             // +0x0
-        _STL::_List_iterator<CEnginePrimitiveHandle> Iterator;   // +0x4
+        std::_List_iterator<CEnginePrimitiveHandle> Iterator;   // +0x4
         CPrimitiveIterator() : Valid(false) { }
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }

@@ -1,4 +1,4 @@
-// Behaviour test for 005f9074 (_STL::vector<pair<long, EHeroAbility> >::operator=): self-assignment is a no-op; a longer source
+// Behaviour test for 005f9074 (std::vector<pair<long, EHeroAbility> >::operator=): self-assignment is a no-op; a longer source
 // reallocates (allocate-and-copy, old block freed, capacity = source length); a shorter source is copied over the head; a
 // source between size() and capacity() copies the head and copy-constructs the rest in place.
 #include <cstdio>

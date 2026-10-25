@@ -1,5 +1,5 @@
-// _STL::swap(pair<unsigned __int64, bool>& a, pair<unsigned __int64, bool>& b) -- exchange two (64-bit key, flag) records through a temporary
-// Leaf: ??$swap@U?$pair@_K_N@_STL@@@_STL@@YIXAAU?$pair@_K_N@0@0@Z
+// std::swap(pair<unsigned __int64, bool>& a, pair<unsigned __int64, bool>& b) -- exchange two (64-bit key, flag) records through a temporary
+// Leaf: ??$swap@U?$pair@_K_N@std@@@std@@YIXAAU?$pair@_K_N@0@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7EF90, 68 bytes (+12 int3 padding), __fastcall (a in ecx, b in edx), `ret`.
 // Identity: the element is 16 bytes with a 64-bit key at +0 and one byte at +8 (8-byte alignment pads it): the Ego_r.pdb
 //   name set instantiates the heap/sort/fill family over `pair<unsigned __int64, bool>` with
@@ -11,7 +11,7 @@
 // Shape: STLport `_Tp __tmp = __a; __a = __b; __b = __tmp;`: the pair's memberwise user copy constructor copies key (esi/edi)
 //   and flag (one frame byte) only, the implicit operator= copies all 16 bytes, so the second assignment carries the
 //   temporary's never-written padding words.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;

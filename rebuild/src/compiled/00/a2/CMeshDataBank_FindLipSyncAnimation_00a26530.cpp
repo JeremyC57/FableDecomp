@@ -47,7 +47,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -99,13 +99,13 @@ public:
         unsigned long AnimationIndex;                               // +0x04
     };
     unsigned char _body[0x3C8];
-    _STL::map<CCharString, CArray<CLipSyncEntry> > LipSyncAnimations;   // +0x3C8
+    std::map<CCharString, CArray<CLipSyncEntry> > LipSyncAnimations;   // +0x3C8
     unsigned long FindLipSyncAnimation(const CCharString& animation, const CCharString& phoneme) const;
 };
 
 unsigned long CMeshDataBank::FindLipSyncAnimation(const CCharString& animation, const CCharString& phoneme) const
 {
-    _STL::map<CCharString, CArray<CLipSyncEntry> >::const_iterator it = LipSyncAnimations.find(animation);
+    std::map<CCharString, CArray<CLipSyncEntry> >::const_iterator it = LipSyncAnimations.find(animation);
     if (it != LipSyncAnimations.end()) {
         const CArray<CLipSyncEntry>& entries = it->second;
         for (unsigned long i = 0; i < entries.size(); ++i) {

@@ -1,8 +1,8 @@
-// _STL::__merge_sort_with_buffer(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CEngineSubPrimitiveRenderer::CSortElement* buffer, int*, less<CSortElement> comp) -- bottom-up merge sort of [first, last) through the temporary buffer: insertion-sort 7-element chunks, then merge back and forth with doubling steps
+// std::__merge_sort_with_buffer(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CEngineSubPrimitiveRenderer::CSortElement* buffer, int*, less<CSortElement> comp) -- bottom-up merge sort of [first, last) through the temporary buffer: insertion-sort 7-element chunks, then merge back and forth with doubling steps
 // Leaf: ??$__merge_sort_with_buffer@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B86260, 89 bytes. __fastcall (first ecx, last edx), `ret 0Ch` (buffer,
 //   the distance-type tag pointer and the empty comparator on the stack).
-// Callees: _STL::__chunk_insertion_sort<...> @ 0x00B85B90, _STL::__merge_sort_loop<...> @ 0x00B858D0.
+// Callees: std::__chunk_insertion_sort<...> @ 0x00B85B90, std::__merge_sort_loop<...> @ 0x00B858D0.
 // Callers: __stable_sort_adaptive 0x00B865E0 (twice).
 // Identity: the manifest label "std_introsort_heapsort_phase" is descriptive and wrong (no heap); STLport
 //   `__merge_sort_with_buffer`.
@@ -12,7 +12,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `__merge_sort_with_buffer` verbatim (landed 0x007116B0 form): `__stl_chunk_size` = 7 (`mov esi,7`),
 //   `__buffer_last` recomputed at its use (`lea edx,[ecx+edi*8]`), the step doubled twice per pass.
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -38,13 +38,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 const int __stl_chunk_size = 7;
 
 template <class _RandomAccessIter, class _Distance, class _Compare>

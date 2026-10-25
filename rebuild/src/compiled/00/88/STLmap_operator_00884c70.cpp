@@ -1,4 +1,4 @@
-// _STL::map::operator[](const key_type& k) -- the bypass state stored for a thing in the screen-filter bypass map, inserting a default (null pointer, false) entry when the thing is not there yet
+// std::map::operator[](const key_type& k) -- the bypass state stored for a thing in the screen-filter bypass map, inserting a default (null pointer, false) entry when the thing is not there yet
 // Leaf: ??A?$map@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00884C70, length 207 bytes (`ret 4`).
 // Identity: Ego_r.pdb `map<CThing*, CThingGraphicByPassFlagState>::operator[]` -- the `reset` map of
@@ -51,7 +51,7 @@ public:
 
 typedef NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState CByPassState;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -149,7 +149,7 @@ struct less {
 }
 
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Tp, class _Compare>
 class map {
 public:

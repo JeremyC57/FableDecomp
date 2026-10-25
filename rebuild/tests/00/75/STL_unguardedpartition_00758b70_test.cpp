@@ -1,4 +1,4 @@
-// Behaviour test for 0x00758B70 _STL::__unguarded_partition over the 0x2C-byte wound-morph entries
+// Behaviour test for 0x00758B70 std::__unguarded_partition over the 0x2C-byte wound-morph entries
 #include <cstdio>
 
 struct CWoundMorphsEntry { long Words[10]; };

@@ -1,4 +1,4 @@
-// _STL::__linear_insert(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* last, CGroup val, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- STLport insertion-sort step over a vertex's bone groups: a value that sorts before the first group shifts [first, last) up one slot and goes first, anything else sinks from last
+// std::__linear_insert(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* last, CGroup val, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- STLport insertion-sort step over a vertex's bone groups: a value that sorts before the first group shifts [first, last) up one slot and goes first, anything else sinks from last
 // Flags: /Gr
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD4880, 102 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first in
@@ -26,7 +26,7 @@ public:
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 typedef bool (__fastcall* PFNGroupCompare)(const CGroup&, const CGroup&);
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>

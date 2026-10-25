@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(vector<CCard*>* first, unsigned int n, const vector<CCard*>& x, const __false_type&) -- STLport construct n copies of one card-pointer vector (a blackjack hand) into raw storage: each copy allocates exactly x's size and memmoves the pointers; returns the end of the copies
+// std::__uninitialized_fill_n(vector<CCard*>* first, unsigned int n, const vector<CCard*>& x, const __false_type&) -- STLport construct n copies of one card-pointer vector (a blackjack hand) into raw storage: each copy allocates exactly x's size and memmoves the pointers; returns the end of the copies
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007DC580, 127 bytes (+1 int3), /Gr __fastcall (first in ecx, n in edx, the
 //   value and the tag references on the stack, `ret 8`).
@@ -13,7 +13,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 struct CCard;
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

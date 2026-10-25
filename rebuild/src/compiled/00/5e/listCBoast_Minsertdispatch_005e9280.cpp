@@ -46,7 +46,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -140,17 +140,17 @@ public:
     list& operator=(const list& x);
 };
 
-} // namespace _STL
+} // namespace std
 
-namespace _STL {
+namespace std {
 template <class T> template <class InputIter>
 void list<T>::_M_insert_dispatch(iterator pos, InputIter first, InputIter last, const __false_type&)
 {
     for (; first != last; ++first)
         insert(pos, *first);
 }
-} // namespace _STL
+} // namespace std
 
-template void _STL::list<CQuestManager::CBoast>::_M_insert_dispatch<_STL::list<CQuestManager::CBoast>::const_iterator>(
-    _STL::list<CQuestManager::CBoast>::iterator, _STL::list<CQuestManager::CBoast>::const_iterator,
-    _STL::list<CQuestManager::CBoast>::const_iterator, const _STL::__false_type&);
+template void std::list<CQuestManager::CBoast>::_M_insert_dispatch<std::list<CQuestManager::CBoast>::const_iterator>(
+    std::list<CQuestManager::CBoast>::iterator, std::list<CQuestManager::CBoast>::const_iterator,
+    std::list<CQuestManager::CBoast>::const_iterator, const std::__false_type&);

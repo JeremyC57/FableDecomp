@@ -24,7 +24,7 @@ extern "C" void __cdecl free(void* p);                // 0x00BFEA14 (MSVCR71 imp
 
 enum EClothingSuitPart { CLOTHING_SUIT_PART_NONE };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _T1, class _T2> struct pair {
@@ -162,12 +162,12 @@ public:
     CThing*                          ParentThing;    // +0x04 (CTCBase)
     unsigned char                    _pad08[4];      // +0x08 CTCBase flags
     CDefPointer<const CHeroSuitDef>  PDef;           // +0x0c
-    _STL::vector<_STL::pair<EClothingSuitPart, bool> > SuitParts;   // +0x10
+    std::vector<std::pair<EClothingSuitPart, bool> > SuitParts;   // +0x10
 };
 
 void CTCDHeroSuit::OnCreate()
 {
     ParentThing->PDef->GetSubDef(&PDef);
     for (CSuitPartConstIterator it = PDef->SuitParts.begin(); it != PDef->SuitParts.end(); ++it)
-        SuitParts.push_back(_STL::make_pair(it->first, false));
+        SuitParts.push_back(std::make_pair(it->first, false));
 }

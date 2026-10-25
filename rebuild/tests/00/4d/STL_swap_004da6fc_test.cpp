@@ -1,4 +1,4 @@
-// Behaviour test for 0x004DA6FC _STL::swap<pair<CCharString,CTCBase::CRegisteredTCInfo>>.
+// Behaviour test for 0x004DA6FC std::swap<pair<CCharString,CTCBase::CRegisteredTCInfo>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("004da6fc_TEST FAIL\n"); return 1; } } while (0)

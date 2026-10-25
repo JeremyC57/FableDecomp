@@ -18,7 +18,7 @@ public:
     float X, Y, Z;
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -58,7 +58,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> { };   // retail CArray<T>: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> { };   // retail CArray<T>: the 12-byte STLport vector
 
 class CChunkedFileSuperChunk;
 

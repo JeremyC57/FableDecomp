@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A46350: _STL::__make_heap<C3DSkeletalBoneMorph*> (heapify by adjusting every parent from the last one up)
+// Behaviour test for 0x00A46350: std::__make_heap<C3DSkeletalBoneMorph*> (heapify by adjusting every parent from the last one up)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -80,7 +80,7 @@ static void FillMorphs(C3DSkeletalBoneMorph* a, const unsigned long* crcs, int n
         SetMorph(a[i], crcs[i]);
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp)
 {
@@ -120,7 +120,7 @@ static bool IsHeap(const C3DSkeletalBoneMorph* a, int n)
     return true;
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*)
 {
@@ -142,7 +142,7 @@ int main()
         C3DSkeletalBoneMorph a[10];
         FillMorphs(a, crcs, 10);
         int live = g_liveStrings;
-        _STL::__make_heap(a, a + 10, (TBoneMorphCompare)LessByCRC, (C3DSkeletalBoneMorph*)0, (int*)0);
+        std::__make_heap(a, a + 10, (TBoneMorphCompare)LessByCRC, (C3DSkeletalBoneMorph*)0, (int*)0);
         Check(g_liveStrings == live);
         Check(IsHeap(a, 10) && a[0].BoneNameCRC == 25);
         unsigned long sum = 0;
@@ -154,7 +154,7 @@ int main()
         // fewer than two elements: untouched
         C3DSkeletalBoneMorph one[1];
         SetMorph(one[0], 4);
-        _STL::__make_heap(one, one + 1, (TBoneMorphCompare)LessByCRC, (C3DSkeletalBoneMorph*)0, (int*)0);
+        std::__make_heap(one, one + 1, (TBoneMorphCompare)LessByCRC, (C3DSkeletalBoneMorph*)0, (int*)0);
         Check(one[0].BoneNameCRC == 4 && Consistent(one[0]));
     }
     Check(g_liveStrings == 0);

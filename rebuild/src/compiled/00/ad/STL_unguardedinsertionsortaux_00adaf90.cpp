@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* last, CBlockInfo*, less<CBlockInfo> comp) -- STLport unguarded insertion sort of the block candidates past the first sixteen (each element sinks to its place by Cost)
+// std::__unguarded_insertion_sort_aux(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* last, CBlockInfo*, less<CBlockInfo> comp) -- STLport unguarded insertion sort of the block candidates past the first sixteen (each element sinks to its place by Cost)
 // Flags: /Gr
 // Leaf: ??$__unguarded_insertion_sort_aux@PAVCBlockInfo@CVertexGroupBlockOptimiser
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADAF90, 0x6F bytes (+ int3 padding), __fastcall (first ecx, last edx),
@@ -9,7 +9,7 @@
 // "_Copy_impl<CNavigationPosition*,...>" is a propagation. No callees.
 // Shape: STLport 4.x `for (i = first; i != last; ++i) __unguarded_linear_insert(i, _Tp(*i), comp);` with
 // __unguarded_linear_insert inlined (val.BlockIndex in ebx, val.Cost in edi, val.Benefit in a frame dword).
-namespace _STL {
+namespace std {
 
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
@@ -35,7 +35,7 @@ void __unguarded_insertion_sort_aux(_RandomAccessIter __first, _RandomAccessIter
         __unguarded_linear_insert(__i, _Tp(*__i), __comp);
 }
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlockOptimiser {
 public:
@@ -48,7 +48,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template void __unguarded_insertion_sort_aux<CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo,
                                              less<CVertexGroupBlockOptimiser::CBlockInfo> >(
     CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo*,

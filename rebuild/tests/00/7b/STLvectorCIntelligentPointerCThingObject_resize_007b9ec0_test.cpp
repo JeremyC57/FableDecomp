@@ -1,4 +1,4 @@
-// Behaviour test for 0x007B9EC0 _STL::vector<CIntelligentPointer<CThingObject>>::resize(unsigned int new_size).
+// Behaviour test for 0x007B9EC0 std::vector<CIntelligentPointer<CThingObject>>::resize(unsigned int new_size).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("007b9ec0_TEST FAIL\n"); return 1; } } while (0)

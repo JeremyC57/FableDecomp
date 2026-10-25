@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<float, EConversationAttitude>* first, pair<float, EConversationAttitude>* last, pair<float, EConversationAttitude> pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of a subtitled message's attitude tags (time -> attitude) around a by-value pivot; returns the cut
+// std::__unguarded_partition(pair<float, EConversationAttitude>* first, pair<float, EConversationAttitude>* last, pair<float, EConversationAttitude> pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of a subtitled message's attitude tags (time -> attitude) around a by-value pivot; returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004D0170, 84 bytes, `ret 0Ch` (/Gr algorithm TU, explicit __fastcall here: first in
 //   ecx, last in edx, the 8-byte pivot and the empty comparator slot on the stack). No callees.
@@ -11,7 +11,7 @@
 //   8-byte frame (`mov [esp+4],eax`).
 enum EConversationAttitude { CONVERSATION_ATTITUDE_NONE = 0 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -22,13 +22,13 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<float, EConversationAttitude> TAttitudePair;             // 8 bytes
+typedef std::pair<float, EConversationAttitude> TAttitudePair;             // 8 bytes
 typedef CKeyPairCompareLess<float, EConversationAttitude> TAttitudeLess;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {

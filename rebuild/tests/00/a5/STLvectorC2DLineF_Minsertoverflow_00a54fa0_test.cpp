@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A54FA0: _STL::vector<C2DLineF>::_M_insert_overflow (grow and insert 16-byte lines)
+// Behaviour test for 0x00A54FA0: std::vector<C2DLineF>::_M_insert_overflow (grow and insert 16-byte lines)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool c) { if (!c) g_fail = 1; }
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -60,7 +60,7 @@ static bool IsLine(const C2DLineF& l, float a)
     return Near(l.Point1.X, a) && Near(l.Point1.Y, a + 1.0f) && Near(l.Point2.X, a + 2.0f) && Near(l.Point2.Y, a + 3.0f);
 }
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
@@ -132,13 +132,13 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __position, const _Tp& __x, co
 
 int main()
 {
-    _STL::vector<C2DLineF> v;
+    std::vector<C2DLineF> v;
     C2DLineF a = Line(1.0f), b = Line(10.0f), c = Line(100.0f);
-    v._M_insert_overflow(v._M_finish, a, _STL::__false_type(), 1u, true);
+    v._M_insert_overflow(v._M_finish, a, std::__false_type(), 1u, true);
     Check(v.size() == 1 && IsLine(v._M_start[0], 1.0f));
-    v._M_insert_overflow(v._M_finish, b, _STL::__false_type(), 1u, true);
+    v._M_insert_overflow(v._M_finish, b, std::__false_type(), 1u, true);
     Check(v.size() == 2 && v._M_end_of_storage._M_data == v._M_start + 2);
-    v._M_insert_overflow(v._M_start + 1, c, _STL::__false_type(), 2u, false);
+    v._M_insert_overflow(v._M_start + 1, c, std::__false_type(), 2u, false);
     Check(v.size() == 4 && v._M_end_of_storage._M_data == v._M_start + 4);
     Check(IsLine(v._M_start[0], 1.0f) && IsLine(v._M_start[1], 100.0f) && IsLine(v._M_start[2], 100.0f) && IsLine(v._M_start[3], 10.0f));
     if (g_fail) {

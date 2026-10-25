@@ -1,4 +1,4 @@
-// _STL::__push_heap(CWideString* first, int holeIndex, int topIndex, CWideString val, less<CWideString> comp) -- heap sift-up over wide strings: move parents down while they sort before val, then assign val into the hole
+// std::__push_heap(CWideString* first, int holeIndex, int topIndex, CWideString val, less<CWideString> comp) -- heap sift-up over wide strings: move parents down while they sort before val, then assign val into the hole
 // Leaf: ??$__push_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B1C30, 110 bytes, `ret 0Ch`: `__fastcall` (/Gr algorithm TU: first in ecx,
 // holeIndex in edx, topIndex, the 4-byte CWideString value and the empty comparator on the stack). Catalog name
@@ -16,7 +16,7 @@ public:
     bool operator<(const CWideString& other) const;     // 0x0099AF70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -34,5 +34,5 @@ void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex
 }
 }
 
-template void __fastcall _STL::__push_heap<CWideString*, int, CWideString, _STL::less<CWideString> >(
-    CWideString* __first, int __holeIndex, int __topIndex, CWideString __val, _STL::less<CWideString> __comp);
+template void __fastcall std::__push_heap<CWideString*, int, CWideString, std::less<CWideString> >(
+    CWideString* __first, int __holeIndex, int __topIndex, CWideString __val, std::less<CWideString> __comp);

@@ -34,7 +34,7 @@ public:
     C3DMeshMaterial* Materials;                    // +0x8c
 };
 
-namespace _STL {
+namespace std {
 template <class T> struct less { };
 template <class T> class allocator { };
 template <class T> struct _Identity { };
@@ -107,7 +107,7 @@ class CEngineInternalPrimitiveMorphInfo {
 public:
     unsigned char TextureDecals[0x10];             // +0x00 CVectorMap<pair<long,long>, CEngineTextureDecal>
     unsigned char CompositeSurfaces[0x10];         // +0x10 CVectorMap<long, CCompositeSurfaceInfo>
-    typedef _STL::set<CCharString, _STL::less<CCharString>, _STL::allocator<CCharString> > HiddenMaterialSet;
+    typedef std::set<CCharString, std::less<CCharString>, std::allocator<CCharString> > HiddenMaterialSet;
     HiddenMaterialSet HiddenMaterialNames;         // +0x20
     CArray<unsigned char> HiddenMaterials;         // +0x2c
     void InitialiseHiddenMaterials(const C3DMesh2& mesh);

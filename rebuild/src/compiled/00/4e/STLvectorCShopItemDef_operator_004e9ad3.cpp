@@ -1,4 +1,4 @@
-// _STL::vector<CShopItemDef>::operator=(const vector<CShopItemDef>& x) -- STLport copy assignment of a 72-byte shop item def vector: reallocate-and-copy when x outgrows the capacity, else assign over the live elements and destroy the surplus or copy-construct the tail
+// std::vector<CShopItemDef>::operator=(const vector<CShopItemDef>& x) -- STLport copy assignment of a 72-byte shop item def vector: reallocate-and-copy when x outgrows the capacity, else assign over the live elements and destroy the surplus or copy-construct the tail
 // Leaf: ??4?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004E9AD3, 228 bytes, `ret 4` (thiscall).
 // Callers: 0x004E9852 / 0x004E985E (an owner's operator= assigning its two shop-item vectors at +0x40 and +0x4C).
@@ -20,7 +20,7 @@
 #pragma optimize("s", on)
 #include "engine/CShopItemDef.h"
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 template <class T> struct __type_traits {
     typedef __false_type has_trivial_assignment_operator;

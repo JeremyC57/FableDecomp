@@ -1,4 +1,4 @@
-// _STL::vector::resize(size_type new_size, const CUniqueVertex& x) -- shrink with erase or grow with a fill insert (28-byte mesh-optimiser unique vertices)
+// std::vector::resize(size_type new_size, const CUniqueVertex& x) -- shrink with erase or grow with a fill insert (28-byte mesh-optimiser unique vertices)
 // Leaf: ?resize@?$vector@VCUniqueVertex@QuadricOptimiserInternals@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD8090, 105 bytes, thiscall, `ret 8`.
 // Identity: vector<QuadricOptimiserInternals::CUniqueVertex>. The only caller is the one-argument resize 0x00AD8310,
@@ -25,7 +25,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

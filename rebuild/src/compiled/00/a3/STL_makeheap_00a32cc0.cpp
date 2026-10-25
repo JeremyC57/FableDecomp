@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<unsigned long, C3DDummyObject>* first, pair<unsigned long, C3DDummyObject>* last, CKeyPairCompareLess comp, pair<unsigned long, C3DDummyObject>*, int*) -- SGI make_heap of the dummy-object table: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
+// std::__make_heap(pair<unsigned long, C3DDummyObject>* first, pair<unsigned long, C3DDummyObject>* last, CKeyPairCompareLess comp, pair<unsigned long, C3DDummyObject>*, int*) -- SGI make_heap of the dummy-object table: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32CC0, 127 bytes (+ int3 padding), `ret 0Ch` (__fastcall: first in ecx,
 //   last in edx, the empty comparator's slot, the value-type pointer and the Distance* on the stack).
@@ -9,7 +9,7 @@
 //   parent, len, T(*(first + parent)), comp); if (parent == 0) return; parent--; }` -- the count divides by 56 (reciprocal
 //   0x92492493, `sar edx,5`), first and len spilled to the frame, the by-value copy built in the argument area by
 //   STLport's pair copy constructor (the key, then the 52-byte second as `rep movsd` x13).
-namespace _STL {
+namespace std {
 
 struct CMatrix3x4 { float M[12]; };
 struct C3DDummyObject {                                // 0x34 bytes

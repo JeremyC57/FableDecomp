@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CB6420 _STL::__unguarded_linear_insert over pair<CCharString,CScriptInfo>: the value moves down past every larger name, whole pairs travel.
+// Behaviour test for 0x00CB6420 std::__unguarded_linear_insert over pair<CCharString,CScriptInfo>: the value moves down past every larger name, whole pairs travel.
 #include <cstdio>
 #include <cstring>
 

@@ -1,4 +1,4 @@
-// _STL::swap(CIntelligentPointer<CThing>& a, CIntelligentPointer<CThing>& b) -- STLport swap of two intelligent thing pointers through a temporary copy
+// std::swap(CIntelligentPointer<CThing>& a, CIntelligentPointer<CThing>& b) -- STLport swap of two intelligent thing pointers through a temporary copy
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00807370, 90 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx, b in
 //   edx), plain `ret`.
@@ -31,7 +31,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> void __fastcall swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;

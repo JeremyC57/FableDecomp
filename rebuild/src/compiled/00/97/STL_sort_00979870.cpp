@@ -1,8 +1,8 @@
-// _STL::sort(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- entry of the advance-in-cover candidate sort: introsort to depth 2*lg(n), then the final insertion sort
+// std::sort(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- entry of the advance-in-cover candidate sort: introsort to depth 2*lg(n), then the final insertion sort
 // Leaf: ??$sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00979870, 125 bytes, __fastcall (/Gr algorithm TU: first in ecx, last in edx,
 //   the comparator on the stack), `ret 10h`.
-// Instantiation: the advance-in-cover candidate sort: _STL::sort<CThing**,
+// Instantiation: the advance-in-cover candidate sort: std::sort<CThing**,
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch> called from
 //   CAIStateGroup_CreatureAdvanceInCover::ProcessCoverThingList (0x00979260 -> sort 0x00979870); the Ego_r.pdb
 //   symbols carry the anonymous namespace ?A0xffab493a of CAIStateGroup_CreatureAdvanceInCover.cpp.
@@ -11,7 +11,7 @@
 //   __final_insertion_sort(first, last, comp); }`; `__lg` is the shift-count loop. The model compiles operator() as a
 //   same-TU stand-in (auto_inline(off) + noinline); with it VC7.1 reproduces retail's comparator-copy scheduling
 //   (copies loaded two words ahead) and slot sharing.
-// Label: catalog "std_sort_Introsort_HeuristicBitch" -> the STLport 4.x _STL::sort instantiation for
+// Label: catalog "std_sort_Introsort_HeuristicBitch" -> the STLport 4.x std::sort instantiation for
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma; the stand-ins use `#pragma auto_inline(off)` + `__declspec(noinline)`.
@@ -75,7 +75,7 @@ bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(CThing* a
 }
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;
 
-namespace _STL {
+namespace std {
 template <class _Size>
 inline _Size __lg(_Size __n)
 {
@@ -98,4 +98,4 @@ void __fastcall sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compa
     }
 }
 template void __fastcall sort<CThing**, TComp>(CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

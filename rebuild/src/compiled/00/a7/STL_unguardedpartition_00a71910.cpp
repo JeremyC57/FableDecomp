@@ -1,8 +1,8 @@
-// _STL::__unguarded_partition(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, pair<CCharString,C3DMeshVolume> pivot, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- quicksort partition of the named containment volumes around a by-value pivot (name order); returns the cut
+// std::__unguarded_partition(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, pair<CCharString,C3DMeshVolume> pivot, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- quicksort partition of the named containment volumes around a by-value pivot (name order); returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A71910, 110 bytes, /Gr `__fastcall` (first in ecx, last in edx; the
 //   16-byte pivot and the empty comparator on the stack, `ret 14h`).
-// Callees: CBasicString<char>::operator< 0x00429950 (behind the inline CCharString::operator<), _STL::swap<pair<
+// Callees: CBasicString<char>::operator< 0x00429950 (behind the inline CCharString::operator<), std::swap<pair<
 //   CCharString,C3DMeshVolume> > 0x00A70490 (landed, out of line), pair<CCharString,C3DMeshVolume>::~pair 0x00A6F390
 //   (landed; the by-value pivot's destructor, out of line here).
 // Identity: the manifest's "Introsort_QuickPartition_Str" is descriptive. The element is the 16-byte
@@ -93,7 +93,7 @@ public:
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -105,10 +105,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b);              // 0x00A70490

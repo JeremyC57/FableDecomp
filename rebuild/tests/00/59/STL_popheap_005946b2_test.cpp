@@ -1,4 +1,4 @@
-// Behaviour test for 0x005946B2 _STL::__pop_heap<pair<long,CDefPointer<const CContextSensitiveItemDef>>*, ..., CContextSensitivePriorityCompare>.
+// Behaviour test for 0x005946B2 std::__pop_heap<pair<long,CDefPointer<const CContextSensitiveItemDef>>*, ..., CContextSensitivePriorityCompare>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("005946b2_TEST FAIL\n"); return 1; } } while (0)

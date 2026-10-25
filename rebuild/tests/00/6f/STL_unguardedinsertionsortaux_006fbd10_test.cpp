@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_insertion_sort_aux(pair<unsigned long, CSmallVector<CEvent,32> >*, ..., CKeyPairCompareLess) (0x006FBD10): after the pass [first, last) is in ascending key order (the entry
+// Behaviour test for std::__unguarded_insertion_sort_aux(pair<unsigned long, CSmallVector<CEvent,32> >*, ..., CKeyPairCompareLess) (0x006FBD10): after the pass [first, last) is in ascending key order (the entry
 // before first is a sentinel no greater than any key), equal keys keep their order and payloads travel with keys.
 #include <cstdio>
 #include <cstring>
@@ -44,7 +44,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -77,11 +77,11 @@ void __unguarded_insertion_sort_aux(_RandomAccessIter __first, _RandomAccessIter
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 typedef CSmallVector<NAnimationEvents::CEvent, 32> TEventList;
-typedef _STL::pair<unsigned long, TEventList> E;
+typedef std::pair<unsigned long, TEventList> E;
 
 static TEventList MakeList(int tag)
 {
@@ -103,7 +103,7 @@ int main()
     {
         E a[7] = { E(0u, TEventList()), E(keys[0], MakeList(0)), E(keys[1], MakeList(1)), E(keys[2], MakeList(2)),
                    E(keys[3], MakeList(3)), E(keys[4], MakeList(4)), E(keys[5], MakeList(5)) };
-        _STL::__unguarded_insertion_sort_aux(a + 1, a + 7, (E*)0, CKeyPairCompareLess<unsigned long, TEventList>());
+        std::__unguarded_insertion_sort_aux(a + 1, a + 7, (E*)0, CKeyPairCompareLess<unsigned long, TEventList>());
         static const int order[6] = { 1, 4, 3, 5, 0, 2 };
         for (int i = 0; i < 6; ++i) {
             if (a[i + 1].first != keys[order[i]]) ++fails;

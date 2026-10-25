@@ -76,7 +76,7 @@ public:
     int Id;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -96,14 +96,14 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
+typedef std::pair<CCharString, CCharString>      SNamePair;
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
@@ -155,7 +155,7 @@ template <class T, class C> static bool IsHeap(const T* p, int n, C comp)
             return false;
     return true;
 }
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
@@ -174,7 +174,7 @@ int main()
 {
     const char* names[10] = { "alpha", "x", "bravo", "y", "bravo", "z", "charlie", "a", "bravo", "a" };
     SNamePairEntry* a = MakePairs(names, 5, 5);
-    _STL::__unguarded_linear_insert(a + 4, SNamePairEntry(a[4]), CNamePairLess());
+    std::__unguarded_linear_insert(a + 4, SNamePairEntry(a[4]), CNamePairLess());
     if (!PairIs(a[0], "alpha", "x") || !PairIs(a[1], "bravo", "a") || !PairIs(a[2], "bravo", "y") || !PairIs(a[3], "bravo", "z")
         || !PairIs(a[4], "charlie", "a") || a[1].second != &g_banks[4] || a[4].second != &g_banks[3])
         { std::printf("00a40820_TEST FAIL\n"); return 1; }

@@ -1,8 +1,8 @@
-// _STL::__linear_insert(pair<unsigned long,unsigned long>* first, pair<unsigned long,unsigned long>* last, pair<unsigned long,unsigned long> val, less<pair<unsigned long,unsigned long> > comp) -- insertion-sort step: a value below *first shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
+// std::__linear_insert(pair<unsigned long,unsigned long>* first, pair<unsigned long,unsigned long>* last, pair<unsigned long,unsigned long> val, less<pair<unsigned long,unsigned long> > comp) -- insertion-sort step: a value below *first shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6B820, 109 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, last
 //   in edx, the 8-byte pair value and the empty comparator on the stack).
-// Callee: 0x00A6B1A0 _STL::__unguarded_linear_insert (same instantiation, out of line).
+// Callee: 0x00A6B1A0 std::__unguarded_linear_insert (same instantiation, out of line).
 // Caller: 0x00A6B97B, the landed __insertion_sort 0x00A6B950 (`__linear_insert(first, i, T(*i), comp)`).
 // Identity: the manifest's "InsertionSort_InsertElement_u64Pair" is descriptive. Element = std::pair<unsigned long,
 //   unsigned long> under the default less<pair> (unsigned `ja/jb` on first, `jae` on second), as in the catalogued
@@ -11,7 +11,7 @@
 //   __unguarded_linear_insert(last, val, comp);` -- copy_backward is fully inlined down to SGI __copy_backward with
 //   the random-access tag (`for (n = last - first; n > 0; --n) *--result = *--last;`, a counted esi loop); the else arm
 //   rebuilds val in the argument area (`sub esp,8 ; mov eax,esp`: STLport's user pair copy constructor).
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };

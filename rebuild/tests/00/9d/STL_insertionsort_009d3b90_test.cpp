@@ -1,4 +1,4 @@
-// Behaviour test for 0x009D3B90 _STL::__insertion_sort over bank entry indices with CBankFile::CompareDataOffset (packed or runtime data offsets; trivial copy_backward through memmove).
+// Behaviour test for 0x009D3B90 std::__insertion_sort over bank entry indices with CBankFile::CompareDataOffset (packed or runtime data offsets; trivial copy_backward through memmove).
 #include <cstdio>
 #include <cstring>
 

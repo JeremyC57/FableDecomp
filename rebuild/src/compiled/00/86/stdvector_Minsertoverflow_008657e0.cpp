@@ -25,24 +25,24 @@ public:
     class CWeaponTrailEntry;                                // 28 bytes: Top, Bottom, CreationTime
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class list {                           // 4 bytes in retail: the sentinel pointer
 public:
     void* _M_node;
     ~list();
 };
-} // namespace _STL
+} // namespace std
 
 namespace NCreatureHitNotification {
 class CFlash {                                              // 8 bytes in retail
 public:
-    _STL::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry> FlashGeometry;   // +0x00
+    std::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry> FlashGeometry;   // +0x00
     long                                                     CreationFrame;   // +0x04
     CFlash(const CFlash& other);                            // 0x00864F80 (the implicit memberwise copy, out of line)
 };
 }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -150,4 +150,4 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 typedef NCreatureHitNotification::CFlash _Flash;
 template void vector<_Flash>::_M_insert_overflow(_Flash*, const _Flash&, const __false_type&, unsigned int, bool);
 
-} // namespace _STL
+} // namespace std

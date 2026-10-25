@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(NGameText::CDataBankTextEntry* first, unsigned int n, const NGameText::CDataBankTextEntry& x, const __false_type&) -- placement copy-construct n text-bank entries from x (add-ref each text entry), return first + n
+// std::__uninitialized_fill_n(NGameText::CDataBankTextEntry* first, unsigned int n, const NGameText::CDataBankTextEntry& x, const __false_type&) -- placement copy-construct n text-bank entries from x (add-ref each text entry), return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A43500, length 47 bytes (+1 int3 pad), `ret 8`.
 // Caller: 0x00A43B20 vector<NGameText::CDataBankTextEntry>::_M_insert_overflow (the fill_len != 1 arm:
@@ -14,7 +14,7 @@
 //   `P(x.P) { if (P) ++P->RefCount; }`, then the narrator index); the /O2 loop-head pad `lea ecx,[ecx]`.
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };     // STLport _IS_POD_ITER result for a class element
 }
 
@@ -38,7 +38,7 @@ struct CDataBankTextEntry {                     // 8 bytes
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

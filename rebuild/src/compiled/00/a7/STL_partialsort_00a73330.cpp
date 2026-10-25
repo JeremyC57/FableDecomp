@@ -1,4 +1,4 @@
-// _STL::__partial_sort(SKeyedChunk* first, SKeyedChunk* middle, SKeyedChunk* last, SKeyedChunk*, CKeyedChunkLess comp) -- STLport partial sort of the 16-byte (long key, {name, counted chunk}) records: heap [first, middle), pop every later record with a smaller key into it, then sort the heap
+// std::__partial_sort(SKeyedChunk* first, SKeyedChunk* middle, SKeyedChunk* last, SKeyedChunk*, CKeyedChunkLess comp) -- STLport partial sort of the 16-byte (long key, {name, counted chunk}) records: heap [first, middle), pop every later record with a smaller key into it, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A73330, 123 bytes (+ int3 padding to 128), `ret 0Ch`. /Gr algorithm TU: first in
 //   ecx, middle in edx; last, the null value-type pointer and the empty comparator's 4-byte slot on the stack.
@@ -46,7 +46,7 @@ struct SNamedChunk {                                    // 12 bytes
     CCountedPointer<C3DAnimFileRootChunk>   Chunk;      // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -58,13 +58,13 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, SNamedChunk>          SKeyedChunk;    // 0x10 bytes
+typedef std::pair<long, SNamedChunk>          SKeyedChunk;    // 0x10 bytes
 typedef CKeyPairCompareLess<long, SNamedChunk> CKeyedChunkLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*);   // 0x00A71CA0
 template <class _Tp> inline _Tp* __value_type_of(_Tp*) { return (_Tp*)0; }
@@ -91,4 +91,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 }
 }
 
-template void __fastcall _STL::__partial_sort<SKeyedChunk*, SKeyedChunk, CKeyedChunkLess>(SKeyedChunk*, SKeyedChunk*, SKeyedChunk*, SKeyedChunk*, CKeyedChunkLess);
+template void __fastcall std::__partial_sort<SKeyedChunk*, SKeyedChunk, CKeyedChunkLess>(SKeyedChunk*, SKeyedChunk*, SKeyedChunk*, SKeyedChunk*, CKeyedChunkLess);

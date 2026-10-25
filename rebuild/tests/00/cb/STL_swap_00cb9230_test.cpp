@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CB9230 _STL::swap<pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>>.
+// Behaviour test for 0x00CB9230 std::swap<pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00cb9230_TEST FAIL\n"); return 1; } } while (0)

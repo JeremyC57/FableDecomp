@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- link a new node for the optimiser's group-info map (map<unsigned long, CVertexGroupBlockOptimiser::CGroupInfo>) below y, fix the header's leftmost/rightmost/root, rebalance
+// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- link a new node for the optimiser's group-info map (map<unsigned long, CVertexGroupBlockOptimiser::CGroupInfo>) below y, fix the header's leftmost/rightmost/root, rebalance
 // Leaf: ?_M_insert@?$_Rb_tree@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADB670, 0xCB bytes (+ int3 padding), thiscall, `ret 14h` (hidden iterator
 // result, x, y, v, w), returns the result pointer.
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -140,4 +140,4 @@ _Rb_tree<K, V, KeyOfValue, Compare, A>::_M_insert(_Base_ptr __x_, _Base_ptr __y_
 
 typedef pair<const unsigned long, CVertexGroupBlockOptimiser::CGroupInfo> SGroupInfoEntry;
 template class _Rb_tree<unsigned long, SGroupInfoEntry, _Select1st<SGroupInfoEntry>, less<unsigned long>, allocator<SGroupInfoEntry> >;
-} // namespace _STL
+} // namespace std

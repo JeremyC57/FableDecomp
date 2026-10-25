@@ -1,4 +1,4 @@
-// _STL::sort_heap(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* last, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- STLport sort_heap over a vertex's bone groups: pop the root to the back until one element remains
+// std::sort_heap(COptimisedVertex::CGroup* first, COptimisedVertex::CGroup* last, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- STLport sort_heap over a vertex's bone groups: pop the root to the back until one element remains
 // Flags: /Gr
 // Leaf: ??$sort_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD4960, 0x5C bytes (+ int3 padding), `ret 4`.
@@ -29,7 +29,7 @@ public:
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 typedef bool (__fastcall* PFNGroupCompare)(const CGroup&, const CGroup&);
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value, _Compare __comp);
@@ -63,4 +63,4 @@ void sort_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Com
 
 template void sort_heap<CGroup*, PFNGroupCompare>(CGroup*, CGroup*, PFNGroupCompare);
 
-} // namespace _STL
+} // namespace std

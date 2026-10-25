@@ -1,4 +1,4 @@
-// _STL::swap(pair<unsigned long, CAnimationEntry>& a, pair<unsigned long, CAnimationEntry>& b) -- STLport swap of two CRC-keyed animation entries through a counted temporary
+// std::swap(pair<unsigned long, CAnimationEntry>& a, pair<unsigned long, CAnimationEntry>& b) -- STLport swap of two CRC-keyed animation entries through a counted temporary
 // Leaf: ?swap@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E1020, 132 bytes (+ padding to 144), plain `ret` (__fastcall /Gr algorithm TU: a in ecx,
 //   b in edx -> esi).

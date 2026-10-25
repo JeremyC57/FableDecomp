@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CB6EA0 _STL::__insertion_sort over the script registry's pair<CCharString, CScriptInfo>.
+// Behaviour test for 0x00CB6EA0 std::__insertion_sort over the script registry's pair<CCharString, CScriptInfo>.
 #include <cstdio>
 #include <cstring>
 

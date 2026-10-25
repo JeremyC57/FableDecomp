@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph pivot, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI Hoare partition around a by-value pivot; returns the split point
+// std::__unguarded_partition(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph pivot, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI Hoare partition around a by-value pivot; returns the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A461D0, length 114 bytes, `ret 18h`.
 // Caller: 0x00A46ED6 (the introsort loop). Callees: 0x00A45A70 swap<C3DSkeletalBoneMorph> (this chunk, reached through
@@ -32,7 +32,7 @@ public:
 
 typedef bool (__fastcall* TBoneMorphCompare)(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b);
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b);            // 0x00A45A70
 

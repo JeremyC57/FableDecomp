@@ -1,4 +1,4 @@
-// _STL::vector::resize(size_type new_size, const CResourceEntry& x) -- shrink with erase or grow with a fill insert (44-byte scratch-buffer resource entries)
+// std::vector::resize(size_type new_size, const CResourceEntry& x) -- shrink with erase or grow with a fill insert (44-byte scratch-buffer resource entries)
 // Leaf: ?resize@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F385A0, 99 bytes, thiscall, `ret 8`.
 // Identity: vector<CGPUScratchBufferTextureManager::CResourceEntry>: callers CGPUScratchBufferTextureManager::
@@ -26,7 +26,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

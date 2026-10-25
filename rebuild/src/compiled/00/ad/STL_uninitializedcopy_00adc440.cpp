@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const CVertexGroupBlock* first, const CVertexGroupBlock* last, CVertexGroupBlock* result, const __false_type&) -- copy-construct a run of vertex-group blocks (group vector + group -> index map) into raw storage
+// std::__uninitialized_copy(const CVertexGroupBlock* first, const CVertexGroupBlock* last, CVertexGroupBlock* result, const __false_type&) -- copy-construct a run of vertex-group blocks (group vector + group -> index map) into raw storage
 // Flags: /Gr
 // Leaf: ??$__uninitialized_copy@PBVCVertexGroupBlock
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADC440, 0x7D bytes, __fastcall (first ecx, last edx),
@@ -19,7 +19,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -102,15 +102,15 @@ public:
     map(const map& __x) : _M_t(__x._M_t) { }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 bytes in retail
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
 };
 
-namespace _STL {
+namespace std {
 template CVertexGroupBlock* __uninitialized_copy<const CVertexGroupBlock*, CVertexGroupBlock*>(
     const CVertexGroupBlock*, const CVertexGroupBlock*, CVertexGroupBlock*, const __false_type&);
-} // namespace _STL
+} // namespace std

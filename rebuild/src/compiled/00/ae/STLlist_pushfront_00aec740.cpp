@@ -1,4 +1,4 @@
-// _STL::list::push_front(const T& x) -- (T = CCountedPointer<NParticleEngine::CParticleEmitter>) STLport list push_front: malloc a 16-byte node, placement copy-construct the counted emitter pointer into it (bumping the shared reference count) and link it in front of the first element
+// std::list::push_front(const T& x) -- (T = CCountedPointer<NParticleEngine::CParticleEmitter>) STLport list push_front: malloc a 16-byte node, placement copy-construct the counted emitter pointer into it (bumping the shared reference count) and link it in front of the first element
 // Leaf: ?push_front@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEC740, 61 bytes, __fastcall `ret 4`.
 // Callers: NParticleEngine::CParticleEmitterList::Insert 0x00AEB060 (catalog name; FableWin.pdb has Insert(CCountedPointer&)
@@ -33,7 +33,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -98,4 +98,4 @@ public:
 };
 }
 
-template void _STL::list<CCountedPointer<NParticleEngine::CParticleEmitter> >::push_front(const CCountedPointer<NParticleEngine::CParticleEmitter>&);
+template void std::list<CCountedPointer<NParticleEngine::CParticleEmitter> >::push_front(const CCountedPointer<NParticleEngine::CParticleEmitter>&);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00756420 _STL::_Rb_tree<CCharString,pair<long,long>>::erase(iterator first, iterator last)
+// Behaviour test for 0x00756420 std::_Rb_tree<CCharString,pair<long,long>>::erase(iterator first, iterator last)
 #include <cstdio>
 
 static int g_dtorCalls = 0;

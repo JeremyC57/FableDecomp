@@ -1,4 +1,4 @@
-// _STL::vector<pair<CCharString,C3DDummyObject>>::push_back(const pair<CCharString,C3DDummyObject>& x) -- append one named dummy object: copy-construct it at the end when there is room, else grow through _M_insert_overflow
+// std::vector<pair<CCharString,C3DDummyObject>>::push_back(const pair<CCharString,C3DDummyObject>& x) -- append one named dummy object: copy-construct it at the end when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A72700, 86 bytes, thiscall `ret 4`.
 // Callees: CCharString::CCharString(const CCharString&) 0x0099EC30 (the in-place pair copy), vector::
@@ -30,7 +30,7 @@ public:
     long       BoneIndex;                               // +0x30
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 

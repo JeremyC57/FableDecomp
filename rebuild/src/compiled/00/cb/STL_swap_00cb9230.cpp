@@ -1,4 +1,4 @@
-// _STL::swap(pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>& a, pair<...>& b) -- exchange two scripted-entity persistence entries (64-bit key + UID + persist script) through a by-value temporary
+// std::swap(pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>& a, pair<...>& b) -- exchange two scripted-entity persistence entries (64-bit key + UID + persist script) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB9230, 138 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx -> edi, b in edx
 //   -> esi), plain `ret`; 0x18-byte frame temporary.
@@ -30,7 +30,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;                                          // +0x00

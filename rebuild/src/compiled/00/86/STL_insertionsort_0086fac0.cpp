@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(SLongKeyedRecord* first, SLongKeyedRecord* last, CKeyPairCompareLess comp) -- STLport insertion sort over 12-byte pair<long, {long, long}> records with __linear_insert inlined: a value below the first element shifts the run up one slot (out-of-line __copy_backward) and goes first, anything else goes through the out-of-line __unguarded_linear_insert
+// std::__insertion_sort(SLongKeyedRecord* first, SLongKeyedRecord* last, CKeyPairCompareLess comp) -- STLport insertion sort over 12-byte pair<long, {long, long}> records with __linear_insert inlined: a value below the first element shifts the run up one slot (out-of-line __copy_backward) and goes first, anything else goes through the out-of-line __unguarded_linear_insert
 // Leaf: ?__insertion_sort@@YIXPAUSLongKeyedRecord@@0UCKeyPairCompareLess@@@Z
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- real __copy_backward body out of line in the TU (auto_inline(off) + noinline, tag unnamed) homes the tag over the live comparator slot
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086FAC0, 122 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the

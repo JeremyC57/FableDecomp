@@ -1,4 +1,4 @@
-// _STL::vector<CAbilityButtonGuiDef>::size() const -- element count of the 92-byte ability-button definitions
+// std::vector<CAbilityButtonGuiDef>::size() const -- element count of the 92-byte ability-button definitions
 // Leaf: ?size@?$vector@VCAbilityButtonGuiDef@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0043CAC0, 29 bytes, thiscall, plain `ret`.
 // Identity: the only caller, CDrawAbilityButtonsPC::DrawExpressionButton (call at 0x006580E6), passes
@@ -19,7 +19,7 @@ public:
     float OffsetX, OffsetY;                   // +0x54  C2DVector Offset
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

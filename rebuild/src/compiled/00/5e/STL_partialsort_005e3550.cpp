@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* middle, pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry>*, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) -- STLport partial_sort core for the CRC-keyed animation entries: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
+// std::__partial_sort(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* middle, pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry>*, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) -- STLport partial_sort core for the CRC-keyed animation entries: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E3550, 117 bytes, `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   ebx, middle in edx -> edi, then last, the null value-type pointer and the empty comparator on the stack).

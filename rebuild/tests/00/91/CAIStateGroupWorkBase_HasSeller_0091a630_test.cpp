@@ -4,7 +4,7 @@
 #include <string.h>
 struct CThingCreatureBase;
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -29,7 +29,7 @@ enum ECreatureInteractionType { CREATURE_INTERACTION_TRADE = 8 };   // descripti
 
 class CCreatureInteraction {
 public:
-    _STL::list<CThingCreatureBase*> Participants;   // +0x00
+    std::list<CThingCreatureBase*> Participants;   // +0x00
     ECreatureInteractionType Type;                  // +0x04
     ECreatureInteractionType GetType() const { return Type; }
 };
@@ -79,9 +79,9 @@ template bool CAIStateGroup_WorkBase<CAIStateGroupBase>::HasSeller() const;
 
 CAIStateGroupBase::~CAIStateGroupBase() { }
 
-static void Link(_STL::_List_node_base* sentinel, _STL::_List_node_base* nodes, unsigned int count)
+static void Link(std::_List_node_base* sentinel, std::_List_node_base* nodes, unsigned int count)
 {
-    _STL::_List_node_base* prev = sentinel;
+    std::_List_node_base* prev = sentinel;
     for (unsigned int i = 0; i < count; ++i) {
         prev->_M_next = &nodes[i];
         nodes[i]._M_prev = prev;
@@ -102,7 +102,7 @@ int main()
         (CAIStateGroup_WorkBase<CAIStateGroupBase>*)new CAIStateGroupBase();
     group->PBrain = &brain;
 
-    _STL::_List_node_base sentinel, nodes[3];
+    std::_List_node_base sentinel, nodes[3];
     CCreatureInteraction interaction;
     interaction.Participants._M_node = &sentinel;
     interaction.Type = CREATURE_INTERACTION_TRADE;

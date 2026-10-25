@@ -1,4 +1,4 @@
-// _STL::vector::vector(const vector&) -- STLport copy constructor of a vector of 8-byte elements: base nulled, size() elements malloc'd (none for zero), then each element placement-copied from the source
+// std::vector::vector(const vector&) -- STLport copy constructor of a vector of 8-byte elements: base nulled, size() elements malloc'd (none for zero), then each element placement-copied from the source
 // Leaf: ??0?$vector@VCMorphSetTextureMorph@CMorphSet@CRandomAppearanceMorph@@
 // Retail 0x0086B2A0, 0x76 bytes (+ int3 padding to 0x80), thiscall `ret 4`. Callee: malloc @ 0x00BFEA0E (the CRT import
 // thunk STLport's allocator<T>::allocate reaches; `__cdecl`, `add esp,4`).
@@ -35,7 +35,7 @@ public:
 
 typedef CRandomAppearanceMorph::CMorphSet::CMorphSetTextureMorph TMorphSetTextureMorph;
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -94,5 +94,5 @@ public:
 };
 }
 
-template _STL::vector<TMorphSetTextureMorph, _STL::allocator<TMorphSetTextureMorph> >::vector(
-    const _STL::vector<TMorphSetTextureMorph, _STL::allocator<TMorphSetTextureMorph> >&);
+template std::vector<TMorphSetTextureMorph, std::allocator<TMorphSetTextureMorph> >::vector(
+    const std::vector<TMorphSetTextureMorph, std::allocator<TMorphSetTextureMorph> >&);

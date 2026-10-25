@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CWideString& k) -- map<CWideString, CChecksumCacheFile::CEntry> subscript: lower_bound(k); when that is end() or a greater key, insert (k, CEntry()) at that hint; return the mapped CEntry
+// std::map::operator[](const CWideString& k) -- map<CWideString, CChecksumCacheFile::CEntry> subscript: lower_bound(k); when that is end() or a greater key, insert (k, CEntry()) at that hint; return the mapped CEntry
 // Leaf: ??A?$map@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A617E0, 136 bytes, `ret 4`, 0x44-byte frame (the CEntry()
 //   temporary +0x10, the value_type temporary +0x30).
@@ -37,7 +37,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> class pair {
 public:
@@ -121,4 +121,4 @@ Tp& map<Key, Tp, Compare, Alloc>::operator[](const Key& k)
 template class map<CWideString, CChecksumCacheFile::CEntry, less<CWideString>,
                    allocator<pair<const CWideString, CChecksumCacheFile::CEntry> > >;
 
-}   // namespace _STL
+}   // namespace std

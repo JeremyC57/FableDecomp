@@ -1,4 +1,4 @@
-// _STL::fill(C3DGeneratorObject* first, C3DGeneratorObject* last, const C3DGeneratorObject& val) -- assign val to every generator object of [first, last)
+// std::fill(C3DGeneratorObject* first, C3DGeneratorObject* last, const C3DGeneratorObject& val) -- assign val to every generator object of [first, last)
 // Leaf: fill
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32100, 73 bytes, `ret 4` (__fastcall: first in ecx, last in edx, val on
 //   the stack).
@@ -30,7 +30,7 @@ public:
     bool          UseLocalOrigin;                       // +0x3c
 };
 
-namespace _STL {
+namespace std {
 
 void __fastcall fill(C3DGeneratorObject* first, C3DGeneratorObject* last, const C3DGeneratorObject& val)
 {

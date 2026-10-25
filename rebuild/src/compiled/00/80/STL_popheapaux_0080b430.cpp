@@ -1,4 +1,4 @@
-// _STL::__pop_heap_aux(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint*, CThingCompare_BestForTargeting2 comp) -- STLport pop_heap core front end for target points: move the root to the back and re-heap with the old back element
+// std::__pop_heap_aux(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint*, CThingCompare_BestForTargeting2 comp) -- STLport pop_heap core front end for target points: move the root to the back and re-heap with the old back element
 // Leaf: ??$__pop_heap_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B430, 184 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the value-type pointer and the 0x34-byte comparator by value on the stack, `ret 38h`.
@@ -71,7 +71,7 @@ struct CThingCompare_BestForTargeting2 {
     bool operator()(const CTargetPoint& a, const CTargetPoint& b) const;             // 0x008098B0
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
 void __fastcall __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                            _Tp __val, _Compare __comp, _Distance*);   // 0x0080B210

@@ -1,4 +1,4 @@
-// _STL::basic_string::_M_assign_dispatch(char* f, char* l, const __false_type&) -- STLport string assign from a char* range: overwrite the existing characters in place, then erase the leftover tail or append the rest of the range
+// std::basic_string::_M_assign_dispatch(char* f, char* l, const __false_type&) -- STLport string assign from a char* range: overwrite the existing characters in place, then erase the leftover tail or append the rest of the range
 // Leaf: ??$_M_assign_dispatch@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00569140, length 104 bytes, `ret 0Ch` (thiscall: f, l, the tag reference).
 // Callers: 20 sites (0x00561041, 0x005697AF, 0x00569999, LHNetworkLib 0x0083F520.., 0x008F8D8C, 0x0090AFFB): the
@@ -13,7 +13,7 @@
 //   the dead `f` argument slot (`lea edx,[esp+0Ch]`).
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
@@ -81,5 +81,5 @@ public:
 };
 }
 
-typedef _STL::basic_string<char, _STL::char_traits<char>, _STL::allocator<char> > TString;
-template TString& TString::_M_assign_dispatch<char*>(char*, char*, const _STL::__false_type&);
+typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > TString;
+template TString& TString::_M_assign_dispatch<char*>(char*, char*, const std::__false_type&);

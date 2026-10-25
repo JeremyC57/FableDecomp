@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint pivot, CThingCompare_BestForTargeting2 comp) -- STLport introsort partition step of the target-point sort (best target first); returns the cut
+// std::__unguarded_partition(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint pivot, CThingCompare_BestForTargeting2 comp) -- STLport introsort partition step of the target-point sort (best target first); returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080A1B0, 136 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x1c-byte pivot and the 0x34-byte comparator by value on the stack, `ret 50h`; the pivot is
@@ -73,7 +73,7 @@ struct CThingCompare_BestForTargeting2 {
     bool operator()(const CTargetPoint& a, const CTargetPoint& b) const;             // 0x008098B0
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> void __fastcall swap(_Tp& __a, _Tp& __b);   // 0x008073D0
 template <class _ForwardIter1, class _ForwardIter2> inline void iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2)
 {

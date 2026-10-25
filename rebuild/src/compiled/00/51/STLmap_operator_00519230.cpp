@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, long>: lower_bound, insert (k, 0) when absent, return the mapped long
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, long>: lower_bound, insert (k, 0) when absent, return the mapped long
 // Leaf: ??A?$map@VCCharString@@J
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00519230, 118 bytes (+ int3 padding), __fastcall `ret 4`.
 // Identity: map<CCharString, long> (the landed callers declare `long& operator[](const CCharString& key); // 0x00519230`;
@@ -32,7 +32,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -87,4 +87,4 @@ public:
 
 template long& map<CCharString, long>::operator[](const CCharString&);
 
-} // namespace _STL
+} // namespace std

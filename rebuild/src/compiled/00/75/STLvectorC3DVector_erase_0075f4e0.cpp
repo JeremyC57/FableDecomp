@@ -1,4 +1,4 @@
-// _STL::vector<C3DVector>::erase(C3DVector* position) -- erase one shape point: shift the tail down one slot and drop the last
+// std::vector<C3DVector>::erase(C3DVector* position) -- erase one shape point: shift the tail down one slot and drop the last
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075F4E0, 42 bytes, `ret 4`.
 // Leaf: ?erase@?$vector@UC3DVector
 // Label: the catalog's "MedianCut::GetNewTreeNode" is propagated and wrong. The only caller, NShape::CShape::UpdateDeletePoint
@@ -12,7 +12,7 @@
 struct C3DVector {
     float X, Y, Z;
 };
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag {
     random_access_iterator_tag() {}
 };

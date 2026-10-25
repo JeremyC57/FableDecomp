@@ -1,6 +1,6 @@
-// _STL::_Rb_tree<CCharString,pair<long,long>>::erase(const CCharString& key) -- erase every entry of the region -> (crime duration, fine) map with this key and return how many there were
+// std::_Rb_tree<CCharString,pair<long,long>>::erase(const CCharString& key) -- erase every entry of the region -> (crime duration, fine) map with this key and return how many there were
 // Grade: DIFFER(92v92) -- only the frame slots of the two by-value distance() iterator copies are swapped (retail: first at frame+0, last at +4; ours: last at +0); tried const-ref distance (reloads p after the call), const pair, named locals, template distance + iterator_category, base-iterator model, reversed-parameter helper
-// Leaf: ?erase@_Rb_tree_CrimeMap@_STL@@QAEIABVCCharString@@@Z
+// Leaf: ?erase@_Rb_tree_CrimeMap@std@@QAEIABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00756C60, 92 bytes (+4 int3), __thiscall `ret 4`.
 // Callees: _Rb_tree::_M_upper_bound(const key&) @ 0x007564F0 and ::_M_lower_bound @ 0x00756100 (out of line, the node
 //   pointer in eax; manifest `_Ubound`/`_Lbound` are Dinkumware-spelled propagations), __distance(const iterator&,
@@ -19,7 +19,7 @@ public:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { input_iterator_tag() {} };
 struct forward_iterator_tag : input_iterator_tag { forward_iterator_tag() {} };
 struct bidirectional_iterator_tag : forward_iterator_tag { bidirectional_iterator_tag() {} };

@@ -1,5 +1,5 @@
 // __find_if(first, last, IsSameNavQuadTreeNode pred, random_access_iterator_tag) -- first node pointer in the range whose node equals the predicate's node
-// Leaf: ??$__find_if@PAPBVCANavQuadTreeNode@@VIsSameNavQuadTreeNode@@@_STL@@YIPAPBVCANavQuadTreeNode@@PAPBV1@0VIsSameNavQuadTreeNode@@ABUrandom_access_iterator_tag@0@@Z
+// Leaf: ??$__find_if@PAPBVCANavQuadTreeNode@@VIsSameNavQuadTreeNode@@@std@@YIPAPBVCANavQuadTreeNode@@PAPBV1@0VIsSameNavQuadTreeNode@@ABUrandom_access_iterator_tag@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A16550, 187 bytes, `ret 8`. Callers 0x00A15C2A / 0x00A1691A (CNavigatorManager
 //   node searches). The catalog label "Vector_Find_NAVNode" is descriptive.
 // Identity: Ego_r.pdb `find_if<vector<const CANavQuadTreeNode*>::iterator, IsSameNavQuadTreeNode>` with
@@ -22,7 +22,7 @@ public:
     bool operator()(const CANavQuadTreeNode* node) const { return *Node == *node; }
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 template <class _RandomAccessIter, class _Predicate>
 _RandomAccessIter __fastcall __find_if(_RandomAccessIter __first, _RandomAccessIter __last, _Predicate __pred, const random_access_iterator_tag&)
@@ -54,4 +54,4 @@ _RandomAccessIter __fastcall __find_if(_RandomAccessIter __first, _RandomAccessI
 }
 }
 
-template const CANavQuadTreeNode** __fastcall _STL::__find_if(const CANavQuadTreeNode**, const CANavQuadTreeNode**, IsSameNavQuadTreeNode, const _STL::random_access_iterator_tag&);
+template const CANavQuadTreeNode** __fastcall std::__find_if(const CANavQuadTreeNode**, const CANavQuadTreeNode**, IsSameNavQuadTreeNode, const std::random_access_iterator_tag&);

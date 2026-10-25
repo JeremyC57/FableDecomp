@@ -11,7 +11,7 @@
 // Shape: a plain iterator loop over the vector; `end()` is re-read after every virtual call (the callee may touch
 //   the static), the element is called through vtable slot 0 (CAsyncLoadingProcessCallback::ProcessLoading;
 //   CEngineResourceManager overrides it in its +0x0C base, vtable 0x012A1B34 slot 0 = 0x00B3B8C0).
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() {} };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy { public: _Tp _M_data; };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {      // retail STLport vector, 12 bytes
@@ -33,11 +33,11 @@ public:
 class CAsyncLoadingMemoryPool {
 public:
     static void __fastcall ProcessLoading();
-    static _STL::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;   // 0x013D2770
+    static std::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;   // 0x013D2770
 };
 
 void __fastcall CAsyncLoadingMemoryPool::ProcessLoading()
 {
-    for (_STL::vector<CAsyncLoadingProcessCallback*>::iterator it = LoadingCallbacks.begin(); it != LoadingCallbacks.end(); ++it)
+    for (std::vector<CAsyncLoadingProcessCallback*>::iterator it = LoadingCallbacks.begin(); it != LoadingCallbacks.end(); ++it)
         (*it)->ProcessLoading();
 }

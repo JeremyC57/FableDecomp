@@ -9,7 +9,7 @@
 //   true)` (0x00A14CB0) with the empty tag at frame byte 3 and the homed callback at frame word 1.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -41,7 +41,7 @@ public:
 class CAsyncLoadingMemoryPool {
 public:
     static void __fastcall AddLoadingCallback(CAsyncLoadingProcessCallback* callback);
-    static _STL::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
+    static std::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
 };
 
 void __fastcall CAsyncLoadingMemoryPool::AddLoadingCallback(CAsyncLoadingProcessCallback* callback)

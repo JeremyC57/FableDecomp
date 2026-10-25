@@ -86,7 +86,7 @@ public:
     void* m_pImplementation;                            // +0x08
     void* m_pImplementationInfo;                        // +0x0c
 };
-namespace _STL {
+namespace std {
 template <class T> struct less {
     bool operator()(const T& a, const T& b) const;
 };
@@ -124,7 +124,7 @@ public:
     iterator end() { return iterator(_M_header); }
 };
 }
-typedef _STL::map<CCharString, CScriptGameResourceObjectScriptedThingBase> CActorMap;
+typedef std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> CActorMap;
 
 struct CGameScriptInterface {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();

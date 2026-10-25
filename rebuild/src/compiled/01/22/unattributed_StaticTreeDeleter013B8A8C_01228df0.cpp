@@ -15,7 +15,7 @@
 //   it), and the malloc allocator's deallocate null-tests before `free`.
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E (import thunk)
 extern "C" void __cdecl free(void* p);                    // 0x00BFEA14 (import thunk)
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator {
 public:
@@ -90,4 +90,4 @@ struct SStaticTreeValue013B8A8C {                  // the unrecoverable 12-byte 
     long m_c;
 };
 
-static _STL::map<long, SStaticTreeValue013B8A8C> g_StaticTree013B8A8C;   // 0x013B8A8C
+static std::map<long, SStaticTreeValue013B8A8C> g_StaticTree013B8A8C;   // 0x013B8A8C

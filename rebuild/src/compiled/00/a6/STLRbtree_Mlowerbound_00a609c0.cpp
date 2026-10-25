@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_lower_bound(const CWideString& k) const -- map<CWideString, CChecksumCacheFile::CEntry> lower bound: the first node whose key does not sort before k, the header when none (node pointer in eax)
+// std::_Rb_tree::_M_lower_bound(const CWideString& k) const -- map<CWideString, CChecksumCacheFile::CEntry> lower bound: the first node whose key does not sort before k, the header when none (node pointer in eax)
 // Leaf: ?_M_lower_bound@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A609C0, 51 bytes (+13 int3), `ret 4`.
 // Callees: CWideString::operator<(const CWideString&) const @ 0x0099AF70 (less<CWideString> inline).
@@ -17,7 +17,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -74,4 +74,4 @@ template class _Rb_tree<CWideString, pair<const CWideString, CChecksumCacheFile:
                         _Select1st<pair<const CWideString, CChecksumCacheFile::CEntry> >, less<CWideString>,
                         allocator<pair<const CWideString, CChecksumCacheFile::CEntry> > >;
 
-}   // namespace _STL
+}   // namespace std

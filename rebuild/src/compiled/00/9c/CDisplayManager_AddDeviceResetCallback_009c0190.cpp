@@ -16,7 +16,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 class CDeviceResetCallback;
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -71,7 +71,7 @@ public:
     void AddDeviceResetCallback(CDeviceResetCallback* callback);
 private:
     unsigned char _pad000[0x264];
-    _STL::list<CDeviceResetCallback*> DeviceResetCallbacks;     // +0x264
+    std::list<CDeviceResetCallback*> DeviceResetCallbacks;     // +0x264
 };
 
 void CDisplayManager::AddDeviceResetCallback(CDeviceResetCallback* callback)

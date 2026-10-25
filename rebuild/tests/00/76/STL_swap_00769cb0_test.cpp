@@ -1,4 +1,4 @@
-// Behaviour test for 0x00769CB0 _STL::swap of pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> >.
+// Behaviour test for 0x00769CB0 std::swap of pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> >.
 #include <cstdio>
 #include <cstring>
 

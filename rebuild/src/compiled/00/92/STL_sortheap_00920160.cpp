@@ -1,4 +1,4 @@
-// _STL::sort_heap(CThing** first, CThing** last, CThingCompare_Nearest comp) -- STLport heap sort for the nearest-first sort: pop the heap's root to the back until one element remains
+// std::sort_heap(CThing** first, CThing** last, CThingCompare_Nearest comp) -- STLport heap sort for the nearest-first sort: pop the heap's root to the back until one element remains
 // Leaf: ??$sort_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00920160, 89 bytes, __fastcall (first in ecx, last in edx; the 12-byte comparator on
 //   the stack), `ret 0Ch`.
@@ -31,7 +31,7 @@ public:
     template <class T> T* operator()(T* a, T* b) const;   // 0x0091F740 (returns the nearer thing; null loses)
 };
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value,

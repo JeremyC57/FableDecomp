@@ -1,4 +1,4 @@
-# Hand chunk 421 (_STL::__copy_backward<CIVCountedPointer<CLocalDetailPlacementGrid>*> .. _STL::__insertion_sort<pair<CCharString,C3DMeshVolume>*>): 39 of 40 byte-exact
+# Hand chunk 421 (std::__copy_backward<CIVCountedPointer<CLocalDetailPlacementGrid>*> .. std::__insertion_sort<pair<CCharString,C3DMeshVolume>*>): 39 of 40 byte-exact
 
 All 39 matched rows grade MATCH (5) or RELOCATION_MATCH (34) through gall.sh. Their tests print `<addr>_TEST PASS` under
 g++ (tall.sh) and the lane's VC7.1 (tall.py).
@@ -18,7 +18,7 @@ The TU also holds a pair<unsigned long, unsigned long> sort.
 
 ## What matched (39)
 
-### _STL algorithms over pair<unsigned long, unsigned long> with less<>
+### std algorithms over pair<unsigned long, unsigned long> with less<>
 
 - 0x00A6B1A0 `__unguarded_linear_insert`, 0x00A6B420 `__unguarded_partition`, 0x00A6B480
   `__unguarded_insertion_sort_aux`, 0x00A6B820 `__linear_insert`, 0x00A6BBB0 `__partial_sort`.
@@ -30,7 +30,7 @@ The TU also holds a pair<unsigned long, unsigned long> sort.
   - `__pop_heap` stays inline and reaches the declared `__adjust_heap`.
   - `sort_heap` is declared.
 
-### _STL::__copy_backward<CIVCountedPointer<CLocalDetailPlacementGrid>*> (0x00A6B0E0)
+### std::__copy_backward<CIVCountedPointer<CLocalDetailPlacementGrid>*> (0x00A6B0E0)
 
 - This is the SGI `__copy_backward` with the CIVCountedPointer assignment inlined. It is a byte twin of the landed
   0x00769210.
@@ -54,7 +54,7 @@ The TU also holds a pair<unsigned long, unsigned long> sort.
   `__uninitialized_copy` (otherwise a cdecl call, 59v83). Placement new is `throw()`. This row took 2 grades.
 - 0x00A70BC0 `reserve`: STLport 4.6 body. `_M_allocate_and_copy` is a declared member template.
 
-### _STL helpers over pair<CCharString, C3DHelperPoint> / pair<CCharString, C3DDummyObject> (CCompareString)
+### std helpers over pair<CCharString, C3DHelperPoint> / pair<CCharString, C3DDummyObject> (CCompareString)
 
 - 0x00A6E5E0 `swap<pair<CCharString,C3DHelperPoint>>`.
 - 0x00A6E840 `__copy_backward` over the dummy-object pair.
@@ -72,7 +72,7 @@ The TU also holds a pair<unsigned long, unsigned long> sort.
     without needing a same-TU body.
 - The C3DDummyObject copy is the implicit 13-dword `rep movsd`.
 
-### _STL helpers over pair<long, C3DMeshVolume> / pair<CCharString, C3DMeshVolume> (CKeyPairCompareLess)
+### std helpers over pair<long, C3DMeshVolume> / pair<CCharString, C3DMeshVolume> (CKeyPairCompareLess)
 
 - The family's model:
   - `C3DMeshVolume::operator=` is defined in-class (Name, then CCountedPointer ShareData). VC inlines it at some
@@ -93,7 +93,7 @@ The TU also holds a pair<unsigned long, unsigned long> sort.
 - 0x00A728F0 / 0x00A729B0 `__linear_insert` (`__copy_backward` 0x00A70A10 / 0x00A70AB0 declared).
 - 0x00A73240 / 0x00A732B0 `__insertion_sort(first, last, comp)` (STLport 4.6 form without the `_Tp*` tag, `ret 4`).
 
-### _STL::for_each<C3DVector*, CAddElements<C3DVector>> (0x00A6ECE0)
+### std::for_each<C3DVector*, CAddElements<C3DVector>> (0x00A6ECE0)
 
 CAddElements has a user constructor, so the functor comes back through the hidden result pointer in ecx.
 

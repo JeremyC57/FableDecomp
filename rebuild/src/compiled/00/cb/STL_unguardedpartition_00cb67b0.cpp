@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<CCharString,CScriptInfo>* __first, pair<CCharString,CScriptInfo>* __last, pair<CCharString,CScriptInfo> __pivot, CKeyPairCompareLess __comp) -- STLport quicksort partition step around a by-value pivot; returns the split point
+// std::__unguarded_partition(pair<CCharString,CScriptInfo>* __first, pair<CCharString,CScriptInfo>* __last, pair<CCharString,CScriptInfo> __pivot, CKeyPairCompareLess __comp) -- STLport quicksort partition step around a by-value pivot; returns the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB67B0, 119 bytes. __fastcall: __first ecx, __last edx, the 0x18-byte
 // pivot and the comparator word on the stack (`ret 1Ch`), the split iterator in eax. The manifest label
@@ -8,8 +8,8 @@
 // Shape: the STLport body verbatim; the pivot key's handle is re-read each outer pass (`mov esi,[esp+10h]`), the
 // `--__last` before and inside the second scan share one loop head. The handle stays in esi only when the
 // string compare's body is in the TU (an extern compare reloads it after every call: 128v119).
-// Model: STLport 4.6 algorithms (namespace _STL, the /Gr TU makes the templates __fastcall) over the script registry's
-// 0x18-byte _STL::pair<CCharString, CScriptInfo> (CScriptInfoManager::Scripts, a CVectorMap sorted with
+// Model: STLport 4.6 algorithms (namespace std, the /Gr TU makes the templates __fastcall) over the script registry's
+// 0x18-byte std::pair<CCharString, CScriptInfo> (CScriptInfoManager::Scripts, a CVectorMap sorted with
 // CKeyPairCompareLess). Ego_r.pdb CScriptInfo (0x14): AllocFunc +0, MasterScriptDataAlloc +4, CCharString Name +8,
 // long ID +0xc, bool MasterScript +0x10 (implicit copy and assignment) -- the model of the landed __insertion_sort
 // 0x00CB6EA0, __pop_heap 0x00CB6B00 and __copy_backward 0x00CB62F0. STLport's pair has a user copy constructor;
@@ -70,7 +70,7 @@ public:
     bool             MasterScript;                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;
@@ -82,13 +82,13 @@ struct pair {
 
 template <class K, class V>
 struct CKeyPairCompareLess {                            // empty, passed by value (one stack word)
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, CScriptInfo>   SScriptInfoPair;
+typedef std::pair<CCharString, CScriptInfo>   SScriptInfoPair;
 typedef CKeyPairCompareLess<CCharString, CScriptInfo> SScriptInfoLess;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2>
 void __fastcall iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2);    // 0x00CB6230
 

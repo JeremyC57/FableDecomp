@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A4A8C0: _STL::vector<CLipSyncPhoneme>::push_back (placement copy, or the grow path when full)
+// Behaviour test for 0x00A4A8C0: std::vector<CLipSyncPhoneme>::push_back (placement copy, or the grow path when full)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -55,7 +55,7 @@ static bool Same(const CLipSyncPhoneme& p, const char* s, unsigned long id, floa
     return Eq(p.Symbol, s) && p.ID == id && Near(p.Weight, w);
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -125,16 +125,16 @@ public:
 int main()
 {
     {
-        _STL::vector<CLipSyncPhoneme> v;
+        std::vector<CLipSyncPhoneme> v;
         CLipSyncPhoneme a("AA", 1, 0.25f), b("EE", 2, 0.5f), c("OO", 3, 0.75f);
         v.push_back(a);
-        Check(_STL::g_overflows == 1 && v.size() == 1);
+        Check(std::g_overflows == 1 && v.size() == 1);
         v.push_back(b);
-        Check(_STL::g_overflows == 2 && v.size() == 2);
+        Check(std::g_overflows == 2 && v.size() == 2);
         v.push_back(c);
-        Check(_STL::g_overflows == 3 && v.size() == 3);
+        Check(std::g_overflows == 3 && v.size() == 3);
         v.push_back(a);                              // capacity 4: the in-place placement copy arm
-        Check(_STL::g_overflows == 3 && v.size() == 4);
+        Check(std::g_overflows == 3 && v.size() == 4);
         Check(Same(v._M_start[0], "AA", 1, 0.25f) && Same(v._M_start[1], "EE", 2, 0.5f));
         Check(Same(v._M_start[2], "OO", 3, 0.75f) && Same(v._M_start[3], "AA", 1, 0.25f));
         Check(v._M_start[3].Symbol.m_pData != a.Symbol.m_pData);

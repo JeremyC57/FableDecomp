@@ -7,8 +7,8 @@ namespace HeroMorphTree {
 struct CCharStringData {char*Text;unsigned Length,Capacity;unsigned char UseFastExtend;unsigned References;};
 #pragma pack(pop)
 struct CCharString {CCharStringData* Data;CCharString();CCharString(const char*,int=-1);CCharString(const CCharString&);CCharString&operator=(const CCharString&);~CCharString();};
-namespace _STL {template<class A,class B>struct pair {A first;B second;pair(const A& a):first(a),second(){}};}
-typedef _STL::pair<const unsigned,CCharString> value_type;
+namespace std {template<class A,class B>struct pair {A first;B second;pair(const A& a):first(a),second(){}};}
+typedef std::pair<const unsigned,CCharString> value_type;
 // Layout: retail node colour +0,parent +4,left +8,right +12,key +16; tree header +0,count +4.
 struct _Rb_tree_node_base {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node_base*Parent,*Left,*Right;__forceinline const value_type&GetValue()const;};
 struct _Rb_tree_node:_Rb_tree_node_base {value_type Value;_Rb_tree_node(const value_type&v=value_type(0)):Value(v){Colour=0;Parent=Left=Right=0;}};

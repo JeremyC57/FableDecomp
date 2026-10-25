@@ -1,4 +1,4 @@
-// _STL::sort_heap(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, ConstThingCompare comp) -- STLport heap sort: pop the root to the back until one element remains
+// std::sort_heap(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, ConstThingCompare comp) -- STLport heap sort: pop the root to the back until one element remains
 // Leaf: ??$sort_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00927810, 174 bytes (176 with padding), `ret 4` (first in ecx, last in edx, comp on the stack), an `and esp,-8` aligned frame.
 // Name: STLport `sort_heap<CIntelligentPointer<const CThing>*, bool (__fastcall*)(..)>`; caller __partial_sort 0x00927A16.
@@ -38,7 +38,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value,
                               _Compare __comp);   // 0x00926850

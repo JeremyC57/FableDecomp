@@ -1,4 +1,4 @@
-// _STL::__make_heap(CDegradableInfo* first, CDegradableInfo* last, CDegradableDef::CIsHealth1GTHealth2 comp, CDegradableInfo*, int*) -- STLport make_heap core over CDegradableDef's degradation stages: sift every parent down from the last one to the root
+// std::__make_heap(CDegradableInfo* first, CDegradableInfo* last, CDegradableDef::CIsHealth1GTHealth2 comp, CDegradableInfo*, int*) -- STLport make_heap core over CDegradableDef's degradation stages: sift every parent down from the last one to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067EAD0, length 155 bytes (+ int3 padding), `ret 0Ch`.
 // Callers: the make_heap forwarders of partial_sort 0x0067EDB9 and __partial_sort 0x0067F168 (landed 0x0067F150, which
@@ -42,7 +42,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x0067E8F0
 
@@ -62,4 +62,4 @@ void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator
 }
 }
 
-template void __fastcall _STL::__make_heap<CDegradableInfo*, CDegradableDef::CIsHealth1GTHealth2, CDegradableInfo, int>(CDegradableInfo*, CDegradableInfo*, CDegradableDef::CIsHealth1GTHealth2, CDegradableInfo*, int*);
+template void __fastcall std::__make_heap<CDegradableInfo*, CDegradableDef::CIsHealth1GTHealth2, CDegradableInfo, int>(CDegradableInfo*, CDegradableInfo*, CDegradableDef::CIsHealth1GTHealth2, CDegradableInfo*, int*);

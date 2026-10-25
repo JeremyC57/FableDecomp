@@ -27,7 +27,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -79,4 +79,4 @@ public:
 template vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry>::vector(
     const vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry>&);
 
-} // namespace _STL
+} // namespace std

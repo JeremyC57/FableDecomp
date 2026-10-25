@@ -1,5 +1,5 @@
 // __find_if(first, last, value_equals<float, const CANavQuadTreeNode*> pred, input_iterator_tag) -- walk a multimap<float, const CANavQuadTreeNode*> in key order to the first entry mapping to the predicate's node
-// Leaf: ??$__find_if@U?$_Rb_tree_iterator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@_STL@@@_STL@@V?$value_equals@MPBVCANavQuadTreeNode@@@@@_STL@@YI?AU?$_Rb_tree_iterator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@_STL@@@0@U10@0V?$value_equals@MPBVCANavQuadTreeNode@@@@ABUinput_iterator_tag@0@@Z
+// Leaf: ??$__find_if@U?$_Rb_tree_iterator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@std@@V?$value_equals@MPBVCANavQuadTreeNode@@@@@std@@YI?AU?$_Rb_tree_iterator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@0@U10@0V?$value_equals@MPBVCANavQuadTreeNode@@@@ABUinput_iterator_tag@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A21730, 100 bytes, `ret 0Ch`. Callers: CNavigatorAStar::
 //   CalculateNavigableWidthOfLine (0x00A1DAD9, the value is a node from 0x00A15140) and the out-of-line
 //   `find_if` wrapper 0x00A21C80. The catalog label "BinarySearchTree_FindNextWithValue_int" is descriptive.
@@ -14,7 +14,7 @@
 //   store survives (the dead `mov [esp+0Ch],esi`); a `const pair&` parameter folds the temporary away (95 bytes).
 class CANavQuadTreeNode;
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { input_iterator_tag() {} };
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -73,8 +73,8 @@ template <class _Key, class _Value> class value_equals {   // Ego_r.pdb value_eq
 public:
     _Value Value;                                       // descriptive member name
     value_equals(_Value value) : Value(value) {}
-    bool operator()(_STL::pair<_Key, _Value> entry) { return entry.second == Value; }
+    bool operator()(std::pair<_Key, _Value> entry) { return entry.second == Value; }
 };
 
-typedef _STL::_Rb_tree_iterator<_STL::pair<const float, const CANavQuadTreeNode*> > CNodeByCostIterator;
-template CNodeByCostIterator __fastcall _STL::__find_if(CNodeByCostIterator, CNodeByCostIterator, value_equals<float, const CANavQuadTreeNode*>, const _STL::input_iterator_tag&);
+typedef std::_Rb_tree_iterator<std::pair<const float, const CANavQuadTreeNode*> > CNodeByCostIterator;
+template CNodeByCostIterator __fastcall std::__find_if(CNodeByCostIterator, CNodeByCostIterator, value_equals<float, const CANavQuadTreeNode*>, const std::input_iterator_tag&);

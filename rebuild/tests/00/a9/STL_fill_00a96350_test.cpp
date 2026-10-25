@@ -76,7 +76,7 @@ public:
 struct C3DGroup2 { int id; };
 typedef CCountedPointer<C3DGroup2> TGroupPtr;
 
-// the row: _STL::fill over CCountedPointer<C3DGroup2> elements (assignment releases each old group)
+// the row: std::fill over CCountedPointer<C3DGroup2> elements (assignment releases each old group)
 static void __fastcall FillGroups(TGroupPtr* first, TGroupPtr* last, const TGroupPtr& val)
 {
     for (; first != last; ++first)

@@ -1,5 +1,5 @@
-// _STL::__unguarded_insertion_sort_aux(float* first, float* last, float*, less<float> comp) -- unguarded insertion-sort pass over a float range: each value is sifted down past every larger predecessor with no lower-bound test
-// Leaf: ??$__unguarded_insertion_sort_aux@PAMMU?$less@M@_STL@@@_STL@@
+// std::__unguarded_insertion_sort_aux(float* first, float* last, float*, less<float> comp) -- unguarded insertion-sort pass over a float range: each value is sifted down past every larger predecessor with no lower-bound test
+// Leaf: ??$__unguarded_insertion_sort_aux@PAMMU?$less@M@std@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5A540, 50 bytes (+14 int3), `ret 8` (link-time __fastcall: first in ecx,
 //   last in edx, the value-type tag pointer and the empty less<float> on the stack). No callees.
@@ -10,7 +10,7 @@
 // Shape: `for (i = first; i != last; ++i) __unguarded_linear_insert(i, T(*i), comp)` with the linear insert and less<float>
 //   inlined: the by-value float stays on the x87 stack (`fld [ecx]` ... `fstp [edi]`), `fcom [esi] ; test ah,5 ; jp` is
 //   `val < *next`, the shifted element is copied as a dword.
-namespace _STL {
+namespace std {
 
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
@@ -38,4 +38,4 @@ void __unguarded_insertion_sort_aux(RandomAccessIter first, RandomAccessIter las
 
 template void __unguarded_insertion_sort_aux(float*, float*, float*, less<float>);
 
-}   // namespace _STL
+}   // namespace std

@@ -14,7 +14,7 @@ static void Check(bool c) { if (!c) g_fail = 1; }
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
 class CSteeringAgent;
-namespace _STL {
+namespace std {
 template <class _Tp>
 class allocator {
 public:
@@ -107,25 +107,25 @@ inline _InputIter find(_InputIter __first, _InputIter __last, const _Tp& __val)
 }
 }
 
-typedef _STL::vector<const CSteeringAgent*> TAgents;
+typedef std::vector<const CSteeringAgent*> TAgents;
 class CNavigatorExternalInterface {
 public:
     virtual ~CNavigatorExternalInterface() { }
-    static _STL::list<TAgents*> AgentLists;
+    static std::list<TAgents*> AgentLists;
     static void __fastcall RemoveAgentListFromLists(TAgents* agentList);
 };
-_STL::list<TAgents*> CNavigatorExternalInterface::AgentLists;
+std::list<TAgents*> CNavigatorExternalInterface::AgentLists;
 
 void __fastcall CNavigatorExternalInterface::RemoveAgentListFromLists(TAgents* agentList)
 {
-    AgentLists.erase(_STL::find(AgentLists.begin(), AgentLists.end(), agentList));
-    _STL::find(AgentLists.begin(), AgentLists.end(), agentList);
+    AgentLists.erase(std::find(AgentLists.begin(), AgentLists.end(), agentList));
+    std::find(AgentLists.begin(), AgentLists.end(), agentList);
 }
 
 static int Count()
 {
     int n = 0;
-    for (_STL::list<TAgents*>::iterator it = CNavigatorExternalInterface::AgentLists.begin();
+    for (std::list<TAgents*>::iterator it = CNavigatorExternalInterface::AgentLists.begin();
          it != CNavigatorExternalInterface::AgentLists.end(); ++it)
         ++n;
     return n;
@@ -134,7 +134,7 @@ static int Count()
 int main()
 {
     TAgents a, b, c;
-    _STL::list<TAgents*>& lists = CNavigatorExternalInterface::AgentLists;
+    std::list<TAgents*>& lists = CNavigatorExternalInterface::AgentLists;
     lists.Init();
     lists.PushBack(&a);
     lists.PushBack(&b);
@@ -142,7 +142,7 @@ int main()
     Check(Count() == 3);
     CNavigatorExternalInterface::RemoveAgentListFromLists(&b);
     Check(Count() == 2);
-    _STL::list<TAgents*>::iterator it = lists.begin();
+    std::list<TAgents*>::iterator it = lists.begin();
     Check(*it == &a);
     ++it;
     Check(*it == &c);

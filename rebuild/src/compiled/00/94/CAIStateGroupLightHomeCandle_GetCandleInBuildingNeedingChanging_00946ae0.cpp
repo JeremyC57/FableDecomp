@@ -2,7 +2,7 @@
 // Leaf: ?GetCandleInBuildingNeedingChanging@CAIStateGroup_LightHomeCandle
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00946AE0, 101 bytes (+ int3 padding to 112), `ret 4`.
 // Callees: CVectorMap LowerBound @ 0x0040F020 (the inlined GetInterface of type 0x21 = CTCThingOwner: bitset word +0x24
-//   bit 1), _STL::find_if<list const iterator, CIsCandleNeedingChanging> @ 0x00946D80 (/Gr __fastcall: the iterator
+//   bit 1), std::find_if<list const iterator, CIsCandleNeedingChanging> @ 0x00946D80 (/Gr __fastcall: the iterator
 //   result by hidden pointer in ecx, first / last / the predicate on the stack), CBaseIntelligentPointer::GetPItem
 //   @ 0x00A01B50. The predicate's operator() is 0x00946C60 (called inside find_if).
 // Shape: `if (GetInterface(&owner, 0x21)) { it = find_if(begin, end, CIsCandleNeedingChanging(this)); if (it != end)
@@ -72,7 +72,7 @@ struct CBaseIntelligentPointer {
 };
 template <class T> struct CIntelligentPointer : public CBaseIntelligentPointer { };
 
-namespace _STL {
+namespace std {
 struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
 template <class _Tp> struct _List_node : public _List_node_base { _Tp _M_data; };
 template <class _Tp> struct _Const_traits { typedef const _Tp& reference; typedef const _Tp* pointer; };
@@ -105,7 +105,7 @@ _InputIter __fastcall find_if(_InputIter __first, _InputIter __last, _Predicate 
 struct CTCThingOwner {                                      // interface 0x21
     virtual void v00();
     unsigned char _pad04[0x8];
-    _STL::list<CIntelligentPointer<CThing> > ObjectList;    // +0x0c
+    std::list<CIntelligentPointer<CThing> > ObjectList;    // +0x0c
 };
 
 class CAIStateGroup_LightHomeCandle;
@@ -118,7 +118,7 @@ struct CIsCandleNeedingChanging {
 
 // Same-TU stand-in for find_if (its retail body is 0x00946D80): STLport's loop, compiled out of line here.
 #pragma auto_inline(off)
-namespace _STL {
+namespace std {
 template <class _InputIter, class _Predicate>
 _InputIter __fastcall find_if(_InputIter __first, _InputIter __last, _Predicate __pred)
 {
@@ -140,8 +140,8 @@ CThing* CAIStateGroup_LightHomeCandle::GetCandleInBuildingNeedingChanging(CThing
 {
     const CTCThingOwner* owner;
     if (building.GetInterface(&owner, 0x21)) {
-        _STL::list<CIntelligentPointer<CThing> >::const_iterator it =
-            _STL::find_if(owner->ObjectList.begin(), owner->ObjectList.end(), CIsCandleNeedingChanging(this));
+        std::list<CIntelligentPointer<CThing> >::const_iterator it =
+            std::find_if(owner->ObjectList.begin(), owner->ObjectList.end(), CIsCandleNeedingChanging(this));
         if (it != owner->ObjectList.end())
             return it->GetPItem();
     }

@@ -1,5 +1,5 @@
 // _Rb_tree<unsigned long, pair<const unsigned long, CCountedPointer<C3DAnimation2>>>::_M_insert(x, y, v, w) -- link a new node holding v under parent y (left or right by the hint and key order), then rebalance
-// Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@_STL@@U?$_Select1st@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@_STL@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@_STL@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2C4E0, 211 bytes, `ret 14h` (hidden iterator pointer + x, y, &v, w). Nine
 //   call sites in the tree's insert_unique(v) 0x00A2C5C0 and insert_unique(hint, v) 0x00A2CCF0, which serves
 //   map::operator[] 0x00A2D810 from CMeshDataBank's BuildAnimationInstance (0x00A26BDE, map at CAnimationData+0x1C).
@@ -33,7 +33,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     typedef _T1 first_type;
     _T1 first;
@@ -138,5 +138,5 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Rb_tree_node_b
 }
 }
 
-template class _STL::_Rb_tree<unsigned long, _STL::pair<const unsigned long, CCountedPointer<C3DAnimation2> >,
-    _STL::_Select1st<_STL::pair<const unsigned long, CCountedPointer<C3DAnimation2> > >, _STL::less<unsigned long> >;
+template class std::_Rb_tree<unsigned long, std::pair<const unsigned long, CCountedPointer<C3DAnimation2> >,
+    std::_Select1st<std::pair<const unsigned long, CCountedPointer<C3DAnimation2> > >, std::less<unsigned long> >;

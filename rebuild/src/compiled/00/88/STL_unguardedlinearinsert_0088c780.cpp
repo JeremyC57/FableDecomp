@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(SKeyedPair* last, SKeyedPair val, SKeyGreater comp) -- shift the greater-keyed pairs before last up one place and drop val into the gap (insertion-sort step without a lower bound)
+// std::__unguarded_linear_insert(SKeyedPair* last, SKeyedPair val, SKeyGreater comp) -- shift the greater-keyed pairs before last up one place and drop val into the gap (insertion-sort step without a lower bound)
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088C780, length 52 bytes (+ int3 padding), `ret 0Ch`.
 // Identity: one caller, 0x0088CD88 in the __linear_insert 0x0088CD30 of the same 8-byte sort family as the landed
@@ -19,7 +19,7 @@ struct SKeyGreater {                            // empty comparator passed by va
     bool operator()(const SKeyedPair& a, const SKeyedPair& b) const { return a.m_key > b.m_key; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 inline void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

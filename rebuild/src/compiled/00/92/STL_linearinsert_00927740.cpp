@@ -1,4 +1,4 @@
-// _STL::__linear_insert(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing> val, ConstThingCompare comp) -- STLport insertion of *last: a value that goes before *first shifts the run up one slot (copy_backward) and goes first, anything else takes the unguarded insert
+// std::__linear_insert(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing> val, ConstThingCompare comp) -- STLport insertion of *last: a value that goes before *first shifts the run up one slot (copy_backward) and goes first, anything else takes the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00927740, 199 bytes, `ret 0Ch` (first in ecx, last in edx; the value and comp on the stack).
 // Name: STLport `__linear_insert<CIntelligentPointer<const CThing>*, CIntelligentPointer<const CThing>, bool (__fastcall*)(..)>`;
@@ -40,7 +40,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag {
     random_access_iterator_tag() { }
 };

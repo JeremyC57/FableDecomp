@@ -1,5 +1,5 @@
-// _STL::list::remove_if(NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType> pred) -- drop every entity event whose GetType() equals the wrapped filter's type
-// Instantiation: _STL::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if
+// std::list::remove_if(NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType> pred) -- drop every entity event whose GetType() equals the wrapped filter's type
+// Instantiation: std::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if
 // Leaf: ??$remove_if@V?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@?$list@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC890, 106 bytes, thiscall, `ret 4` (the one-word predicate by value).
 // Identity: FableWin.pdb `??$remove_if@V?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@?$list@V?$CCountedPointer
@@ -65,7 +65,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -156,4 +156,4 @@ public:
 };
 }
 
-template void _STL::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if(NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>);
+template void std::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if(NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>);

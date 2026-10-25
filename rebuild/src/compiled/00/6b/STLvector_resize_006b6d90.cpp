@@ -1,4 +1,4 @@
-// _STL::vector::resize(size_type new_size, const CThemeChannel& x) -- shrink (inline erase: copy down + destroy the tail) or grow with a fill insert (496-byte environment theme channels)
+// std::vector::resize(size_type new_size, const CThemeChannel& x) -- shrink (inline erase: copy down + destroy the tail) or grow with a fill insert (496-byte environment theme channels)
 // Leaf: ?resize@?$vector@UCThemeChannel@CIDrawEnvironmentParams@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006B6D90, 112 bytes, thiscall, `ret 8`.
 // Identity: vector<CIDrawEnvironmentParams::CThemeChannel> (FableWin.pdb mangles CThemeChannel as a struct). Callers:
@@ -35,7 +35,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

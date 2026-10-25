@@ -1,4 +1,4 @@
-// _STL::basic_string<unsigned short>::_M_range_initialize(const unsigned short* f, const unsigned short* l, const forward_iterator_tag&) -- allocate (l-f)+1 wide characters, copy the range and terminate it
+// std::basic_string<unsigned short>::_M_range_initialize(const unsigned short* f, const unsigned short* l, const forward_iterator_tag&) -- allocate (l-f)+1 wide characters, copy the range and terminate it
 // Bounds: int3-after-noreturn row: RELOCATION_MATCH against the 98-byte row read straight from Fable.exe (byte 97 is the 0xCC VC7.1 emits after the final noreturn _M_throw_length_error call; the chunk row and q.py strip it as padding). Land against an N+1 oracle row (GOTCHAS: int3-after-noreturn rows).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099C670, 97 bytes, thiscall `ret 0Ch` (the empty forward-iterator tag is the 3rd
 // argument). The function ends in the noreturn length-error call (nothing follows it).
@@ -10,8 +10,8 @@
 // Shape: STLport 4.x verbatim: _M_allocate_block(n + 1) (`n <= max_size() + 1 && n > 0`, else the length error),
 // finish = uninitialized_copy(f, l, start) through __copy_trivial (the byte distance l - f is kept for memmove and the
 // end pointer), then _M_construct_null(finish).
-// Leaf: ?_M_range_initialize@?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@
-namespace _STL {
+// Leaf: ?_M_range_initialize@?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@
+namespace std {
 
 typedef unsigned int size_t;
 

@@ -1,6 +1,6 @@
-// _STL::__make_heap(pair<CCharString,CPersistInfo>* first, pair<CCharString,CPersistInfo>* last, CKeyPairCompareLess<CCharString,CPersistInfo> comp, pair<CCharString,CPersistInfo>*, int*) -- STLport make_heap over the quest-persistence script map: sift every parent from (len - 2) / 2 down to 0 into place by quest-name key
-// Instantiation: _STL::__make_heap<pair<CCharString,CPersistInfo>*,CKeyPairCompareLess<CCharString,CPersistInfo>,pair<CCharString,CPersistInfo>,int>
-// Leaf: ??$__make_heap@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@_STL@@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@U12@H@_STL@@
+// std::__make_heap(pair<CCharString,CPersistInfo>* first, pair<CCharString,CPersistInfo>* last, CKeyPairCompareLess<CCharString,CPersistInfo> comp, pair<CCharString,CPersistInfo>*, int*) -- STLport make_heap over the quest-persistence script map: sift every parent from (len - 2) / 2 down to 0 into place by quest-name key
+// Instantiation: std::__make_heap<pair<CCharString,CPersistInfo>*,CKeyPairCompareLess<CCharString,CPersistInfo>,pair<CCharString,CPersistInfo>,int>
+// Leaf: ??$__make_heap@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@U12@H@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BAC90, 123 bytes, __fastcall (first ecx, last edx; the comparator slot,
 //   the value-type and distance-type pointers on the stack), `ret 0Ch`, no frame pointer.
 // Identity: called by the pair<CCharString, CPersistInfo> sort chain's __partial_sort @ 0x004BB810 (from the
@@ -65,7 +65,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -75,14 +75,14 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo CPersistInfo;
-typedef _STL::pair<CCharString, CPersistInfo> CPersistEntry;
+typedef std::pair<CCharString, CPersistInfo> CPersistEntry;
 typedef CKeyPairCompareLess<CCharString, CPersistInfo> CPersistLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);                                                      // 0x004BA180

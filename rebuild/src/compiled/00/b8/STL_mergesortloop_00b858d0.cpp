@@ -1,8 +1,8 @@
-// _STL::__merge_sort_loop(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CEngineSubPrimitiveRenderer::CSortElement* result, int step_size, less<CSortElement> comp) -- merge adjacent step-size runs of [first, last) into result
+// std::__merge_sort_loop(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CEngineSubPrimitiveRenderer::CSortElement* result, int step_size, less<CSortElement> comp) -- merge adjacent step-size runs of [first, last) into result
 // Leaf: ??$__merge_sort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B858D0, 197 bytes. __fastcall (first ecx, last edx), `ret 0Ch` (result,
 //   step_size and the empty comparator on the stack).
-// Callees: _STL::merge<CSortElement*, CSortElement*, CSortElement*, less<CSortElement> > @ 0x00B85510 (fastcall, `ret 10h`).
+// Callees: std::merge<CSortElement*, CSortElement*, CSortElement*, less<CSortElement> > @ 0x00B85510 (fastcall, `ret 10h`).
 // Callers: __merge_sort_with_buffer 0x00B86260 (twice per pass).
 // Identity: the manifest label "std_introsort_merge" is descriptive; STLport `__merge_sort_loop`.
 //   The element is CEngineSubPrimitiveRenderer::CSortElement (8 bytes: unsigned long SortValue, CEngineSubPrimitiveBase*
@@ -11,7 +11,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `__merge_sort_loop` verbatim (landed 0x007107D0 form): `__two_step = 2 * __step_size`, the
 //   strength-reduced loop, then `(min)(_Distance(__last - __first), __step_size)` by const reference -- the difference is
 //   stored into the dead `result` argument slot and the address of the winner selected (`lea ecx,[esp+20h] / [esp+1Ch]`).
@@ -38,13 +38,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline const _Tp& (min)(const _Tp& __a, const _Tp& __b) { return __b < __a ? __b : __a; }
 
 template <class _InputIter1, class _InputIter2, class _OutputIter, class _Compare>

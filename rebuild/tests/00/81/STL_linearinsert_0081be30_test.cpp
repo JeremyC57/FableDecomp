@@ -1,4 +1,4 @@
-// Behaviour test for 0x0081BE30 _STL::__linear_insert over 0x28-byte records keyed by a signed long: a value below the
+// Behaviour test for 0x0081BE30 std::__linear_insert over 0x28-byte records keyed by a signed long: a value below the
 // first key shifts [first, last) up one slot (copy_backward) and goes first; otherwise the unguarded insert walks it
 // down from last. Working stand-ins for copy_backward and __unguarded_linear_insert.
 #include <cstdio>
@@ -6,7 +6,7 @@
 #define __fastcall
 #endif
 
-namespace _STL {
+namespace std {
 
 struct SRecordBody24 { long Words[9]; };
 struct SKeyedRecord28 {
@@ -48,7 +48,7 @@ void __fastcall __linear_insert(SKeyedRecord28* first, SKeyedRecord28* last, SKe
 
 int main()
 {
-    using namespace _STL;
+    using namespace std;
     SKeyedRecord28 a[5];
     long keys[5] = { -10, 20, 30, -50, 25 };
     for (int i = 0; i < 5; ++i) { a[i].Key = keys[i]; a[i].Body.Words[8] = keys[i] * 3; }

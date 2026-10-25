@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport one-argument resize of the file installer's buffer-chunk vector: resize(n, CBufferChunk()) with the empty chunk destroyed on both exits
-// Leaf: ?resize@?$vector@VCBufferChunk@CFileInstaller@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport one-argument resize of the file installer's buffer-chunk vector: resize(n, CBufferChunk()) with the empty chunk destroyed on both exits
+// Leaf: ?resize@?$vector@VCBufferChunk@CFileInstaller@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009C7850, 103 bytes (+ int3 padding), `__fastcall` (this stays in ecx), `ret 4`.
 // Identity: element CFileInstaller::CBufferChunk (Ego_r.pdb { uchar* Mem; bool Used; bool IsInput; }, 8 bytes; the
 //   BufferChunks member is CArray<CFileInstaller::CBufferChunk>, whose resize is the inherited vector one); the one caller
@@ -23,7 +23,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 class vector {
 public:

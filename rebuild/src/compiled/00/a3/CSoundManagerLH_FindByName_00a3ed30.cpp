@@ -33,7 +33,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -53,13 +53,13 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const K& key, const _STL::pair<K, V>& entry) const { return key < entry.first; }
+    bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> > class CVectorMap {   // retail 16 bytes
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Data;                          // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Data;                          // +0x00
     C                        Comp;                          // +0x0C (empty comparator)
     bool                     Dirty;                         // +0x0D
     const value_type* LowerBound(const K& key) const;       // out of line (0x00A404D0 / 0x00A40AF0)
@@ -83,7 +83,7 @@ class CSoundManagerLH {                                     // vtable 0x0129D2C4
 public:
     virtual void v00();
     unsigned char _04[0x50];                                // +0x04..+0x53
-    CVectorMap<_STL::pair<CCharString, CCharString>, CSoundBankLH*> NamePairMap;   // +0x54
+    CVectorMap<std::pair<CCharString, CCharString>, CSoundBankLH*> NamePairMap;   // +0x54
     CVectorMap<CCharString, CSoundBankLH*>                          NameMap;       // +0x64
     CSoundBankLH* FindByName(const CCharString& name);
     CSoundBankLH* FindByNamePair(const CCharString& first, const CCharString& second);

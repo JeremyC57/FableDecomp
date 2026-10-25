@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElement*, THitLocationIntersectionElementPred comp) -- SGI unguarded insertion sort of the hit-location ray intersections by key: every element sinks below its larger predecessors (no lower-bound test), the linear insert inlined
+// std::__unguarded_insertion_sort_aux(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElement*, THitLocationIntersectionElementPred comp) -- SGI unguarded insertion sort of the hit-location ray intersections by key: every element sinks below its larger predecessors (no lower-bound test), the linear insert inlined
 // Leaf: __unguarded_insertion_sort_aux
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00817540, 133 bytes, `ret 8` (__fastcall: first in ecx, last in edx, the
 // unused value-type pointer and the empty comparator on the stack -- the SGI/STLport algorithm TUs are /Gr). No callees.

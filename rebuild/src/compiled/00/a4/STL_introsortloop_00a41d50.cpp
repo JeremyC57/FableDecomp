@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<CCharString, CMapValue4>* first, pair<CCharString, CMapValue4>* last, pair<CCharString, CMapValue4>*, int depth_limit, CKeyPairCompareLess<CCharString, CMapValue4> comp) -- STLport introsort recursion over a CCharString-keyed vector map: partition around the median of three, recurse right, loop left; partial-sort fallback when the depth runs out
+// std::__introsort_loop(pair<CCharString, CMapValue4>* first, pair<CCharString, CMapValue4>* last, pair<CCharString, CMapValue4>*, int depth_limit, CKeyPairCompareLess<CCharString, CMapValue4> comp) -- STLport introsort recursion over a CCharString-keyed vector map: partition around the median of three, recurse right, loop left; partial-sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A41D50, length 171 bytes, `ret 0Ch`.
 // Callers: sort 0x00A41E20 (landed: `__introsort_loop(first, last, (T*)0, __lg(n) * 2, comp)`) and itself (0x00A41DCD).
@@ -30,7 +30,7 @@ public:
     CKeyPairCompareLess() { }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 class pair {
 public:

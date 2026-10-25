@@ -1,4 +1,4 @@
-// Behaviour test for 0x00B85510 _STL::merge of two sorted CEngineSubPrimitiveRenderer::CSortElement runs by the unsigned sort value.
+// Behaviour test for 0x00B85510 std::merge of two sorted CEngineSubPrimitiveRenderer::CSortElement runs by the unsigned sort value.
 #include <cstdio>
 
 struct CEngineSubPrimitiveBase { int id; };

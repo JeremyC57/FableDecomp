@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (EHeroMorphType, CParticleMorphs::CEntry) pair vector
-// Leaf: ?resize@?$vector@U?$pair@W4EHeroMorphType@@VCEntry@CParticleMorphs@@@_STL@@V?$allocator@U?$pair@W4EHeroMorphType@@VCEntry@CParticleMorphs@@@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (EHeroMorphType, CParticleMorphs::CEntry) pair vector
+// Leaf: ?resize@?$vector@U?$pair@W4EHeroMorphType@@VCEntry@CParticleMorphs@@@std@@V?$allocator@U?$pair@W4EHeroMorphType@@VCEntry@CParticleMorphs@@@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081DED0, 77 bytes, thiscall, `ret 4`.
 // Identity: the storage vector of CVectorMap<EHeroMorphType, CParticleMorphs::CEntry> (40-byte pair: the enum + the
 //   36-byte CEntry of MorphType, Blending, Location, CDefString LocationName +0xC, LocationIndex, ParticleIndex,
@@ -35,7 +35,7 @@ public:
         CEntry() { memset(this, 0, sizeof(*this)); LocationName = CDefString(); }
     };
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -69,5 +69,5 @@ public:
     void resize(size_type __new_size) { resize(__new_size, _Tp()); }
 };
 
-template void vector<_STL::pair<EHeroMorphType, CParticleMorphs::CEntry> >::resize(size_type);
+template void vector<std::pair<EHeroMorphType, CParticleMorphs::CEntry> >::resize(size_type);
 }

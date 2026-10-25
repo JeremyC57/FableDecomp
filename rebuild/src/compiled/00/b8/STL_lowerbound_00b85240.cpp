@@ -1,4 +1,4 @@
-// _STL::__lower_bound(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, const CSortElement& val, less<CSortElement> comp, int*) -- STLport bisection for the first sort element not below val
+// std::__lower_bound(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, const CSortElement& val, less<CSortElement> comp, int*) -- STLport bisection for the first sort element not below val
 // Leaf: ??$__lower_bound@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B85240, 54 bytes (+ int3 padding). __fastcall (first ecx -> eax, last
 //   edx), `ret 0Ch` (&val, the empty comparator by value and the null distance-type pointer on the stack).
@@ -12,7 +12,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport bisection (landed 0x008174B0 form): `len = last - first`, `half = len >> 1`, middle = first + half,
 //   `comp(*middle, val)` (unsigned `cmp [eax+edx*8],ecx ; jae`) -> first = middle + 1, `len = len - half - 1` (the
 //   `or edi,-1 ; sub edi,edx` form), else len = half; val.SortValue is loaded once ahead of the loop.
@@ -39,13 +39,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp, class _Compare, class _Distance>
 _ForwardIter __fastcall __lower_bound(_ForwardIter __first, _ForwardIter __last, const _Tp& __val, _Compare __comp,
                                       _Distance*)

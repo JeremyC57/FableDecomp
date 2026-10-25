@@ -12,7 +12,7 @@
 // Layout: PDB CTCObjectAugmentations: PDef +0x0C (CDefPointer<const CObjectAugmentationsDef>, one word),
 //   LoadedFromSaveGame +0x10, Augmentations +0x14 (STLport vector, 12 bytes in retail).
 //   CObjectAugmentationsDef: NumberOfSlots +0x28, MaximumNumberOfSlots +0x2C.
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 }
 
@@ -46,7 +46,7 @@ public:
 
 template <class T> inline void* operator new(unsigned int, T* place) { return place; }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class vector {
 public:
     _Tp* _M_start;
@@ -76,7 +76,7 @@ class CTCObjectAugmentations : public CTCBase {
 public:
     CDefPointer<const CObjectAugmentationsDef> PDef;                 // +0x0C
     bool LoadedFromSaveGame;                                         // +0x10
-    _STL::vector<CDefPointer<const CThingBaseDef> > Augmentations;  // +0x14
+    std::vector<CDefPointer<const CThingBaseDef> > Augmentations;  // +0x14
     long GetNumberOfSlots() const { return (long)Augmentations.size(); }
     long GetMaximumNumberOfSlots() const { return PDef->MaximumNumberOfSlots; }
     void AddNewSlot();

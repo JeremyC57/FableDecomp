@@ -7,7 +7,7 @@
 //   CDefClassBase::CSubDefInfo, ...>, whose entry pair<unsigned long, CSubDefInfo {DefIndex, OriginalParentDefIndex}> is
 //   the 12-byte element; FableWin.pdb has ?reserve@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std... and
 //   ?DeallocateUnusedMemory@?$CArray@U?$pair@KVCSubDefInfo@CDefClassBase@@@std... (the other reserve caller 0x009B79B0).
-//   Renamed from the stand-in _STL::vector<SRecord12> (pair<unsigned long, SValue8>); FINDINGS chunk 410 asked to unify
+//   Renamed from the stand-in std::vector<SRecord12> (pair<unsigned long, SValue8>); FINDINGS chunk 410 asked to unify
 //   the element with 0x009B4D80.
 // Callee: malloc @ 0x00BFEA0E (allocator::allocate, `n != 0 ? malloc(n * 12) : 0`).
 // Shape: STLport 4.x verbatim: allocate, then __uninitialized_copy(first, last, result, __false_type()) = the

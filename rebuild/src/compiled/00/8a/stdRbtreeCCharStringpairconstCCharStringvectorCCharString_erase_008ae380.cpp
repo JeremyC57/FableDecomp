@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::erase(iterator first, iterator last) -- STLport map range erase: clear() when the range is the whole tree, else erase node by node
-// Leaf: ?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@@3@@_STL@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@@2@@2@0@Z
+// Leaf: ?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@2@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AE380, 153 bytes, thiscall, `ret 8` (two iterators by value).
 // Identity: the manifest's "std::map::_Erase_range" is descriptive. The only caller is 0x008AE420 (this tree's
 //   erase(const key&): equal_range + erase(first, last)), the CTCAIScratchpad gossip maps' tree
@@ -19,7 +19,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
@@ -167,4 +167,4 @@ void _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::erase(iterator __fir
 typedef pair<const CCharString, vector<CCharString> > _GossipValue;
 template void _Rb_tree<CCharString, _GossipValue, _Select1st<_GossipValue>, less<CCharString> >::erase(iterator, iterator);
 
-} // namespace _STL
+} // namespace std

@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<QuadricOptimiserInternals::COptimisedFace>::resize(n): resize the optimiser's face list to n entries, filling with a fresh face (existing, no edges, no segment)
-// Leaf: ?resize@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@V?$allocator@VCOptimisedFace@QuadricOptimiserInternals@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<QuadricOptimiserInternals::COptimisedFace>::resize(n): resize the optimiser's face list to n entries, filling with a fresh face (existing, no edges, no segment)
+// Leaf: ?resize@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@V?$allocator@VCOptimisedFace@QuadricOptimiserInternals@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD7350, 47 bytes, thiscall on the vector, `ret 4`.
 // Identity: Ego_r.pdb / FableWin.pdb ?resize@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@...@@QAEXI@Z; no direct
 //   call site in the image (xref: 0 calls / 0 references). Its callee 0x00AD6860 is the 72-byte two-argument resize
@@ -38,7 +38,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -63,4 +63,4 @@ public:
 };
 }
 
-template void _STL::vector<QuadricOptimiserInternals::COptimisedFace>::resize(unsigned int);
+template void std::vector<QuadricOptimiserInternals::COptimisedFace>::resize(unsigned int);

@@ -1,4 +1,4 @@
-// _STL::for_each(CANavQuadTreeNode** first, CANavQuadTreeNode** last, CDeleteNavNode f) -- delete every quad-tree node in a range except null entries and the shared blocked node, return the functor
+// std::for_each(CANavQuadTreeNode** first, CANavQuadTreeNode** last, CDeleteNavNode f) -- delete every quad-tree node in a range except null entries and the shared blocked node, return the functor
 // Leaf: ??$for_each@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7CB50, 51 bytes (+ int3 padding to 64), `ret 8`. /Gr algorithm TU: the hidden
 //   functor-result pointer in ecx (returned in eax), first in edx; last and the empty functor's slot on the stack.
@@ -28,7 +28,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _Function>
 _Function __fastcall for_each(_InputIter __first, _InputIter __last, _Function __f)
 {

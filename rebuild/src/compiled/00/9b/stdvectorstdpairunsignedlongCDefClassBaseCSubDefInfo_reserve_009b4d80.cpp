@@ -6,7 +6,7 @@
 //   CParentDefClassBase::SubDefInfoMap (+41), CVectorMap<unsigned long, CDefClassBase::CSubDefInfo, ...>; FableWin.pdb
 //   name set ?reserve@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std...; the other caller 0x009B79B0 is
 //   CArray<pair<unsigned long, CSubDefInfo> >::DeallocateUnusedMemory (FableWin.pdb name set). Renamed from the
-//   stand-in _STL::vector<SRecord12> (a plain three-word record here, a pair in 0x009B2780; FINDINGS chunk 410: unify).
+//   stand-in std::vector<SRecord12> (a plain three-word record here, a pair in 0x009B2780; FINDINGS chunk 410: unify).
 // Callees: _M_allocate_and_copy<const pair*> @ 0x009B2780, free @ 0x00BFEA14 (the inlined _M_clear:
 // trivial destroy + deallocate), malloc @ 0x00BFEA0E (allocator::allocate).
 // Shape: STLport 4.x `reserve` verbatim: capacity() and size() as pointer differences divided by 12 (the 0x2AAAAAAB

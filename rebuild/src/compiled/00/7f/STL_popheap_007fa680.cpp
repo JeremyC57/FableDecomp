@@ -1,10 +1,10 @@
-// _STL::__pop_heap(CThing** first, CThing** last, CThing** result, CThing* value, CThingCompare_BestForTargeting2 comp, int*) -- SGI heap pop step for the targeting candidate heap: move the root into the result slot, then sift `value` down from the root over [first, last)
-// Leaf: ??$__pop_heap@PAPAVCThing@@PAV1@VCThingCompare_BestForTargeting2@@H@_STL@@
+// std::__pop_heap(CThing** first, CThing** last, CThing** result, CThing* value, CThingCompare_BestForTargeting2 comp, int*) -- SGI heap pop step for the targeting candidate heap: move the root into the result slot, then sift `value` down from the root over [first, last)
+// Leaf: ??$__pop_heap@PAPAVCThing@@PAV1@VCThingCompare_BestForTargeting2@@H@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FA680, 130 bytes (+ int3 padding), __fastcall (first in ecx, last in edx;
 //   result, value, the 52-byte comparator and the distance-type pointer on the stack), `ret 40h`.
 // Identity: called by the landed __pop_heap_aux 0x007FA7B0 (which declares it as this instantiation); the catalog label
 //   `sort<_Vector_iterator<..CThing*..>, CThingCompare_BestForTargeting2>` is propagated.
-// Callees: _STL::__adjust_heap<CThing**, int, CThing*, CThingCompare_BestForTargeting2> @ 0x007FA320 (first in ecx,
+// Callees: std::__adjust_heap<CThing**, int, CThing*, CThingCompare_BestForTargeting2> @ 0x007FA320 (first in ecx,
 //   holeIndex 0 in edx; len, value and the comparator copy on the stack).
 // Shape: SGI `*result = *first; __adjust_heap(first, _Distance(0), _Distance(last - first), value, comp);` -- the
 //   comparator is copied memberwise into the argument area first (C3DVector's user copy constructor makes the implicit
@@ -31,7 +31,7 @@ public:
     float EnemyPreferenceFactor;                                // +0x30
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value, _Compare __comp);   // 0x007FA320
 

@@ -1,7 +1,7 @@
 // C3DMeshFileTrianglesChunk::AddTriangle(const C3DTriangle2& triangle) -- append one 6-byte triangle (three vertex indices) to the chunk's triangle list (+0x2C)
 // Leaf: ?AddTriangle@C3DMeshFileTrianglesChunk
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABCEC0, length 65 bytes (+15 int3), `ret 4`.
-// Callees: _STL::vector<C3DTriangle2>::_M_insert_overflow(pointer, const C3DTriangle2&, const __false_type&, size_type,
+// Callees: std::vector<C3DTriangle2>::_M_insert_overflow(pointer, const C3DTriangle2&, const __false_type&, size_type,
 //   bool) @ 0x00A71550 (the shared triangle-vector grow path).
 // Identity: Ego_r.pdb `?AddTriangle@C3DMeshFileTrianglesChunk@@QAEXABVC3DTriangle2@@@Z`; the only caller is
 //   COptimisedPrimitive::CopyTo (0x00ACCAB9, three uint16 indices built on its frame). The manifest's
@@ -17,7 +17,7 @@ public:
     unsigned short VertexIndex[3];
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -49,9 +49,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> { };
+template <class T> class CArray : public std::vector<T> { };
 
 class C3DMeshFileTrianglesChunk {
 public:

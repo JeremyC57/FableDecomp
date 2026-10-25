@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CPSCPair* first, CPSCPair* last, CPSCPair pivot, CPSCLess comp) -- STLport quicksort partition step over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: walk first up past names below the pivot's, last down past names above it, swap, repeat until the cursors cross
+// std::__unguarded_partition(CPSCPair* first, CPSCPair* last, CPSCPair pivot, CPSCLess comp) -- STLport quicksort partition step over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: walk first up past names below the pivot's, last down past names above it, swap, repeat until the cursors cross
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF31C0, 119 bytes (+9 int3 padding), `ret 14h`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, last in edx, the 16-byte pivot by value and the 4-byte empty comparator slot on the stack; the crossing cursor
@@ -65,7 +65,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -76,13 +76,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 typedef CKeyPairCompareLess<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b);   // 0x00AF2CD0
 template <class _ForwardIter1, class _ForwardIter2>
@@ -108,4 +108,4 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 }
 
-template CPSCPair* __fastcall _STL::__unguarded_partition<CPSCPair*, CPSCPair, CPSCLess>(CPSCPair*, CPSCPair*, CPSCPair, CPSCLess);
+template CPSCPair* __fastcall std::__unguarded_partition<CPSCPair*, CPSCPair, CPSCLess>(CPSCPair*, CPSCPair*, CPSCPair, CPSCLess);

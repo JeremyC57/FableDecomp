@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__linear_insert<pair<CCharString,CPersistInfo>*, ..> @ 0x004BAB30: one insertion-sort step by quest
+// Model of std::__linear_insert<pair<CCharString,CPersistInfo>*, ..> @ 0x004BAB30: one insertion-sort step by quest
 // name (copy_backward + front store, or the unguarded walk down).
 template <class T> class CBasicString {
 public:
@@ -61,7 +61,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -71,14 +71,14 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo CPersistInfo;
-typedef _STL::pair<CCharString, CPersistInfo> CPersistEntry;
+typedef std::pair<CCharString, CPersistInfo> CPersistEntry;
 typedef CKeyPairCompareLess<CCharString, CPersistInfo> CPersistLess;
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };
@@ -270,7 +270,7 @@ template <class RI, class T, class C> void IntrosortLoop(RI first, RI last, T*, 
     }
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class BI, class D>
 BI __fastcall __copy_backward(RI first, RI last, BI result, const random_access_iterator_tag&, D*)
 {
@@ -279,7 +279,7 @@ BI __fastcall __copy_backward(RI first, RI last, BI result, const random_access_
     return result;
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class T, class C> void __fastcall __unguarded_linear_insert(RI last, T val, C comp)
 {
     TLib::UnguardedLinearInsert(last, val, comp);
@@ -298,7 +298,7 @@ int main()
             SetEntry(a[i], base[i]);
         SetEntry(a[4], vals[t]);
         int dtors = gDtors;
-        _STL::__linear_insert(a, a + 4, CPersistEntry(a[4]), CPersistLess());
+        std::__linear_insert(a, a + 4, CPersistEntry(a[4]), CPersistLess());
         for (int i = 0; i < 5; ++i)
             if (KeyOf(a[i]) != expect[t][i] || !Consistent(a[i]))
                 ok = false;

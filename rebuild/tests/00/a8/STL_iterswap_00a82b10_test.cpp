@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A82B10 _STL::iter_swap over (unsigned __int64 ID, list) entries: the two entries exchange keys
+// Behaviour test for 0x00A82B10 std::iter_swap over (unsigned __int64 ID, list) entries: the two entries exchange keys
 // and lists (deep copies through a temporary that is destroyed again); swapping an entry with itself keeps it.
 #include <cstdio>
 static int g_lists = 0;

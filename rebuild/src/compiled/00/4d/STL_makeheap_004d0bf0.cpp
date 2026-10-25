@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<float, EConversationAttitude>* first, pair<float, EConversationAttitude>* last, CKeyPairCompareLess comp, pair<float, EConversationAttitude>*, int*) -- STLport heapify of a subtitled message's attitude tags by time: sift every parent down, from the last one to the root
+// std::__make_heap(pair<float, EConversationAttitude>* first, pair<float, EConversationAttitude>* last, CKeyPairCompareLess comp, pair<float, EConversationAttitude>*, int*) -- STLport heapify of a subtitled message's attitude tags by time: sift every parent down, from the last one to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004D0BF0, 74 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU, explicit
 //   __fastcall here: first in ecx, last in edx, then the comparator slot and the two tag pointers).
@@ -11,7 +11,7 @@
 //   strength reduction for an 8-byte stride) and copied into the argument area by the pair's copy constructor.
 enum EConversationAttitude { CONVERSATION_ATTITUDE_NONE = 0 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -22,13 +22,13 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<float, EConversationAttitude> TAttitudePair;             // 8 bytes
+typedef std::pair<float, EConversationAttitude> TAttitudePair;             // 8 bytes
 typedef CKeyPairCompareLess<float, EConversationAttitude> TAttitudeLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIter __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x004D04F0 (landed)
 

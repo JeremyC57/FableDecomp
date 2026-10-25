@@ -1,4 +1,4 @@
-// Behaviour test for 0x00496FD0 _STL::__unguarded_linear_insert of a CWideString under NGameComponentHelpers::CCaseInsensitiveStringCompare.
+// Behaviour test for 0x00496FD0 std::__unguarded_linear_insert of a CWideString under NGameComponentHelpers::CCaseInsensitiveStringCompare.
 #include <cstdio>
 
 static int g_assigns = 0, g_destroyed = 0;

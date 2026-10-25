@@ -1,4 +1,4 @@
-// Behaviour test for 0x00BF97A0 _STL::vector<CEngineTexturePalette::CPaletteEntry>::resize(unsigned int new_size).
+// Behaviour test for 0x00BF97A0 std::vector<CEngineTexturePalette::CPaletteEntry>::resize(unsigned int new_size).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00bf97a0_TEST FAIL\n"); return 1; } } while (0)

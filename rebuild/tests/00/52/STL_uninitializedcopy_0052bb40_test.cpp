@@ -76,7 +76,7 @@ static int StringValue(const CCharString& s, char prefix)
 static int LiveObjects() { return gLiveStrings; }
 
 static int gBlocks = 0;                                 // live byte blocks of the SaveData vectors
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 
@@ -143,9 +143,9 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
-    CArray(const T* p, unsigned int n) : _STL::vector<T>(p, n) { }   // test constructor
+    CArray(const T* p, unsigned int n) : std::vector<T>(p, n) { }   // test constructor
 };
 
 namespace NThingManager {
@@ -164,7 +164,7 @@ public:
 }
 typedef NThingManager::CEntityRuntimePersistence::CEntityScriptInfo CEntityScriptInfo;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
 inline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
@@ -201,14 +201,14 @@ int main()
         new (src + 1) CEntityScriptInfo("Beta", b0, 0, 0, false);
         new (src + 2) CEntityScriptInfo("Gamma", b2, 6, 60, true);
         CEntityScriptInfo* dst = (CEntityScriptInfo*)std::malloc(3 * sizeof(CEntityScriptInfo));
-        CEntityScriptInfo* end = _STL::__uninitialized_copy((const CEntityScriptInfo*)src, (const CEntityScriptInfo*)src + 3, dst,
-                                                            _STL::__false_type());
+        CEntityScriptInfo* end = std::__uninitialized_copy((const CEntityScriptInfo*)src, (const CEntityScriptInfo*)src + 3, dst,
+                                                            std::__false_type());
         ok = end == dst + 3 && LiveObjects() == live + 6 && gBlocks == 4;
         for (int i = 0; ok && i < 3; ++i)
             if (!SameRecord(dst[i], src[i]))
                 ok = false;
-        CEntityScriptInfo* none = _STL::__uninitialized_copy((const CEntityScriptInfo*)src, (const CEntityScriptInfo*)src, dst,
-                                                             _STL::__false_type());
+        CEntityScriptInfo* none = std::__uninitialized_copy((const CEntityScriptInfo*)src, (const CEntityScriptInfo*)src, dst,
+                                                             std::__false_type());
         ok = ok && none == dst;
         for (int i = 0; i < 3; ++i) {
             dst[i].~CEntityScriptInfo();

@@ -1,4 +1,4 @@
-// _STL::list<CIntelligentPointer<CThing> >::remove(const CIntelligentPointer<CThing>& value) -- erase every intelligent thing pointer that refers to the same thing as `value` (each erased element's virtual destructor runs, then its node is freed)
+// std::list<CIntelligentPointer<CThing> >::remove(const CIntelligentPointer<CThing>& value) -- erase every intelligent thing pointer that refers to the same thing as `value` (each erased element's virtual destructor runs, then its node is freed)
 // Leaf: ?remove@?$list@V?$CIntelligentPointer@VCThing@@@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076D7B0, 87 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: FableWin.pdb `?remove@?$list@V?$CIntelligentPointer@VCThing@@@@...@std@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z`;
@@ -34,7 +34,7 @@ bool __fastcall operator==(const CIntelligentPointer<T>& a, const CIntelligentPo
     return a.GetPItem() == b.GetPItem();
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -125,4 +125,4 @@ public:
 };
 }
 
-template void _STL::list<CIntelligentPointer<CThing> >::remove(const CIntelligentPointer<CThing>&);
+template void std::list<CIntelligentPointer<CThing> >::remove(const CIntelligentPointer<CThing>&);

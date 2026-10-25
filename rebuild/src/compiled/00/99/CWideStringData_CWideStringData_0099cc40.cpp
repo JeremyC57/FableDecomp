@@ -13,7 +13,7 @@
 //   argument slot, text reloaded after the push, end = text + length*2), then the owner count after the call.
 // Label correction: catalogued as `vector<bool>::vector<bool>` (propagated); the body is CWideStringData's
 //   (text, length) constructor.
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
@@ -66,7 +66,7 @@ public:
 
 class CWideStringData {
 public:
-    _STL::basic_string<unsigned short> Data;                        // +0x00
+    std::basic_string<unsigned short> Data;                        // +0x00
     long                               NoRefs;                      // +0x0C
 
     CWideStringData(const unsigned short* text, long length);

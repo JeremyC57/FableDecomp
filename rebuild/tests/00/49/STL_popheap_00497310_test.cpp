@@ -1,4 +1,4 @@
-// Behaviour test for 0x00497310 _STL::__pop_heap<CWideString*, CWideString, NGameComponentHelpers::CCaseInsensitiveStringCompare>.
+// Behaviour test for 0x00497310 std::__pop_heap<CWideString*, CWideString, NGameComponentHelpers::CCaseInsensitiveStringCompare>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00497310_TEST FAIL\n"); return 1; } } while (0)

@@ -1,4 +1,4 @@
-// _STL::map::operator[](const long& k) -- STLport subscript of map<long, CEnginePrimitiveHandle> (size TU): lower_bound, insert (k, CEnginePrimitiveHandle()) when absent, return the handle
+// std::map::operator[](const long& k) -- STLport subscript of map<long, CEnginePrimitiveHandle> (size TU): lower_bound, insert (k, CEnginePrimitiveHandle()) when absent, return the handle
 // Leaf: ??A?$map
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005BBFD6, 170 bytes, __fastcall `ret 4`, frame-pointer size TU.
 // Identity: Ego_r.pdb CTCInventoryClothing::MorphPrimitiveHandles is map<long, CEnginePrimitiveHandle>; both callers sit in
@@ -65,7 +65,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
 };

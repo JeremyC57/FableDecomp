@@ -1,4 +1,4 @@
-// _STL::vector::vector(unsigned int n) -- (vector<CTextureManagerPoolInfo>) STLport sized constructor: pointers nulled, n 20-byte pool infos malloc'd (none for zero), end of storage set, then the out-of-line __uninitialized_fill_n copies a default-constructed info (pixel format -1) into each slot
+// std::vector::vector(unsigned int n) -- (vector<CTextureManagerPoolInfo>) STLport sized constructor: pointers nulled, n 20-byte pool infos malloc'd (none for zero), end of storage set, then the out-of-line __uninitialized_fill_n copies a default-constructed info (pixel format -1) into each slot
 // Leaf: ??0?$vector@VCTextureManagerPoolInfo@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B3E920, 94 bytes. __fastcall, `ret 4`, returns this.
 // Identity: FableWin.pdb `??0?$vector@VCTextureManagerPoolInfo@@V?$allocator@VCTextureManagerPoolInfo@@@std@@@std@@QAE@I@Z`;
@@ -30,7 +30,7 @@ public:
 
 struct __false_type { __false_type() { } };
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&);   // 0x00B3E390
 
@@ -76,4 +76,4 @@ public:
 };
 }
 
-template _STL::vector<CTextureManagerPoolInfo>::vector(unsigned int);
+template std::vector<CTextureManagerPoolInfo>::vector(unsigned int);

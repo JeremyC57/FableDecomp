@@ -1,8 +1,8 @@
-// _STL::sort_heap(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- heap-sort tail of the take-cover candidate sort: pop the heap root to the back until one element remains
+// std::sort_heap(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- heap-sort tail of the take-cover candidate sort: pop the heap root to the back until one element remains
 // Leaf: ??$sort_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097B2C0, 96 bytes, __fastcall (/Gr algorithm TU: first in ecx, last in edx, the
 //   comparator on the stack), `ret 10h`.
-// Instantiation: the take-cover candidate sort: _STL::sort<CThing**,
+// Instantiation: the take-cover candidate sort: std::sort<CThing**,
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch> called from
 //   CAIStateGroup_CreatureTakeCover::ProcessCoverThingList (0x0097AAE0 -> sort 0x0097B660); the second copy of the
 //   0x00978xxx AdvanceInCover family (same bytes, own anonymous namespace ?A0xeaff0e08, own COMDATs).
@@ -10,7 +10,7 @@
 // Shape: STLport `while (last - first > 1) pop_heap(first, last--, comp);` with pop_heap / __pop_heap_aux /
 //   __pop_heap inline. The model compiles operator() as a same-TU stand-in (auto_inline(off) + noinline); with it
 //   VC7.1 reproduces retail's comparator-copy scheduling (copies loaded two words ahead) and slot sharing.
-// Label: catalog "_Sort_heap<long*>" -> the STLport 4.x _STL::sort_heap instantiation for
+// Label: catalog "_Sort_heap<long*>" -> the STLport 4.x std::sort_heap instantiation for
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma; the stand-ins use `#pragma auto_inline(off)` + `__declspec(noinline)`.
@@ -74,7 +74,7 @@ bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(CThing* a
 }
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x0097AF70
@@ -103,4 +103,4 @@ void __fastcall sort_heap(_RandomAccessIterator __first, _RandomAccessIterator _
         pop_heap(__first, __last--, __comp);
 }
 template void __fastcall sort_heap<CThing**, TComp>(CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

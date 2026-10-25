@@ -1,4 +1,4 @@
-// _STL::__make_heap(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CDoNotUseBinaryPredicate comp, CIntelligentPointer<CThing>*, int*) -- STLport make_heap of intelligent thing pointers under the coin-flip predicate (sift every parent down, last parent first)
+// std::__make_heap(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CDoNotUseBinaryPredicate comp, CIntelligentPointer<CThing>*, int*) -- STLport make_heap of intelligent thing pointers under the coin-flip predicate (sift every parent down, last parent first)
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808230, 102 bytes, /Gr `__fastcall` (first in ecx -- spilled to the
 //   `push ecx` frame word, last in edx), the 4-byte predicate and the two type pointers on the stack, `ret 0Ch`.
@@ -33,7 +33,7 @@ struct CDoNotUseBinaryPredicate {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value,
                               _Compare __comp);   // 0x00807520

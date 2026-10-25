@@ -30,7 +30,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -105,13 +105,13 @@ public:
 };
 }
 
-template void _STL::list<CTCCreatureExpression::CExpressionState>::push_front(const CTCCreatureExpression::CExpressionState&);
+template void std::list<CTCCreatureExpression::CExpressionState>::push_front(const CTCCreatureExpression::CExpressionState&);
 
 
 // ---- test harness ----
 typedef CTCCreatureExpression::CExpressionState TState;
-typedef _STL::list<TState> TList;
-typedef _STL::_List_node<TState> TNode;
+typedef std::list<TState> TList;
+typedef std::_List_node<TState> TNode;
 int main()
 {
     static double sentinelRaw[sizeof(TNode) / sizeof(double) + 1];

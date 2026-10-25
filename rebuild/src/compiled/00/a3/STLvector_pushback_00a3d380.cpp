@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const C3DAnimationStateAlpha& x) -- STLport vector<C3DAnimationStateAlpha>::push_back: copy-construct at _M_finish, or grow through _M_insert_overflow
+// std::vector::push_back(const C3DAnimationStateAlpha& x) -- STLport vector<C3DAnimationStateAlpha>::push_back: copy-construct at _M_finish, or grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe @ 0x00A3D380, 90 bytes (+ int3 padding), thiscall `ret 4`.
 // Caller: 0x00A3C323 in C3DAnimationBlendState::CSharedData's AddCombinationBlend path (the combination-blend vector).
@@ -41,7 +41,7 @@ public:
 
 extern "C" void* __cdecl malloc(unsigned int size);         // MSVCR71 import thunk 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -75,4 +75,4 @@ public:
 };
 }
 
-template void _STL::vector<C3DAnimationStateAlpha>::push_back(const C3DAnimationStateAlpha&);
+template void std::vector<C3DAnimationStateAlpha>::push_back(const C3DAnimationStateAlpha&);

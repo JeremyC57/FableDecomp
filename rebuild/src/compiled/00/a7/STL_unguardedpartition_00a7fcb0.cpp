@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(SSwitchableNode* first, SSwitchableNode* last, SSwitchableNode pivot, CSwitchableNodeLess comp) -- quicksort partition step over the 16-byte (unsigned __int64 unique ID, CANavQuadTreeNode*) entries: swap entries across the pivot key until the scans meet, return the cut
+// std::__unguarded_partition(SSwitchableNode* first, SSwitchableNode* last, SSwitchableNode pivot, CSwitchableNodeLess comp) -- quicksort partition step over the 16-byte (unsigned __int64 unique ID, CANavQuadTreeNode*) entries: swap entries across the pivot key until the scans meet, return the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7FCB0, 131 bytes, `ret 14h` (/Gr: first in ecx, last in edx; the 16-byte pivot
 //   and the empty comparator's slot on the stack; the cut in eax).
@@ -9,7 +9,7 @@
 // Shape: STLport verbatim -- `for (;;) { while (comp(*first, pivot)) ++first; --last; while (comp(pivot, *last)) --last;
 //   if (!(first < last)) return first; iter_swap(first, last); ++first; }` with the 64-bit key compare inline (high
 //   word, then low word) and iter_swap's `_Tp tmp = *a; *a = *b; *b = tmp;` inline (the temporary in the frame).
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -21,14 +21,14 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 class CANavQuadTreeNode;
-typedef _STL::pair<unsigned __int64, CANavQuadTreeNode*>          SSwitchableNode;      // 16 bytes
+typedef std::pair<unsigned __int64, CANavQuadTreeNode*>          SSwitchableNode;      // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CANavQuadTreeNode*> CSwitchableNodeLess;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {

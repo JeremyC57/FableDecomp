@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SFloatStringPair* first, SFloatStringPair* last, SFloatStringPair val, CKeyPairCompareLess comp) -- STLport insertion-sort step over the CSubtitledMessage text map's 8-byte pair<float, CCharString>: a value whose key is below the first element shifts [first, last) up one slot and is assigned to *first, anything else goes through the unguarded insert; the by-value pair is destroyed here
+// std::__linear_insert(SFloatStringPair* first, SFloatStringPair* last, SFloatStringPair val, CKeyPairCompareLess comp) -- STLport insertion-sort step over the CSubtitledMessage text map's 8-byte pair<float, CCharString>: a value whose key is below the first element shifts [first, last) up one slot and is assigned to *first, anything else goes through the unguarded insert; the by-value pair is destroyed here
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D0F80, 120 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: __copy_backward(first, last, result, const random_access_iterator_tag&, ptrdiff_t*) 0x004CF580 (`__fastcall`,
@@ -14,7 +14,7 @@
 //   distance pointer; `*first = val` is the implicit pair operator= (key dword, then CCharString::operator=); the
 //   else arm copy-constructs the argument in the argument area; both arms end with the by-value parameter's
 //   ~CCharString.
-namespace _STL {
+namespace std {
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

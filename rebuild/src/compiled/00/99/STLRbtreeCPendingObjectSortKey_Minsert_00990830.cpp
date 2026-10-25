@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CPendingObjectSortKey>::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for a device-queue map: allocate a node, copy the pair in, link it left or right of y (keeping leftmost/rightmost), rebalance and count
+// std::_Rb_tree<CPendingObjectSortKey>::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for a device-queue map: allocate a node, copy the pair in, link it left or right of y (keeping leftmost/rightmost), rebalance and count
 // Leaf: ?_M_insert@?$_Rb_tree@VCPendingObjectSortKey@CThreadedFileManager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00990830, length 208 bytes (201 + int3 padding), `ret 14h` (hidden iterator
 // result + four arguments).
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -117,10 +117,10 @@ _Rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::_M_insert(_Rb_tree_node_base* 
     return iterator(z);
 }
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const CThreadedFileManager::CPendingObjectSortKey, CThreadedFileManager::CFileObject*> CPendingObjectValue;
+typedef std::pair<const CThreadedFileManager::CPendingObjectSortKey, CThreadedFileManager::CFileObject*> CPendingObjectValue;
 
-template class _STL::_Rb_tree<CThreadedFileManager::CPendingObjectSortKey, CPendingObjectValue,
-    _STL::_Select1st<CPendingObjectValue>, _STL::less<CThreadedFileManager::CPendingObjectSortKey>,
-    _STL::allocator<CPendingObjectValue> >;
+template class std::_Rb_tree<CThreadedFileManager::CPendingObjectSortKey, CPendingObjectValue,
+    std::_Select1st<CPendingObjectValue>, std::less<CThreadedFileManager::CPendingObjectSortKey>,
+    std::allocator<CPendingObjectValue> >;

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00805FE0 _STL::__median of thing pointers under CDoNotUseBinaryPredicate (each compare advances the world seed and answers "low bit clear").
+// Behaviour test for 0x00805FE0 std::__median of thing pointers under CDoNotUseBinaryPredicate (each compare advances the world seed and answers "low bit clear").
 #include <cstdio>
 
 static int g_calls = 0;

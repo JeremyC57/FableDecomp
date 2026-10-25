@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(pair<unsigned __int64, list<C2DLineF> >* first, unsigned int n, const pair<unsigned __int64, list<C2DLineF> >& x, const __false_type&) -- copy-construct n (UID, line list) records into raw storage at first and return first + n
+// std::__uninitialized_fill_n(pair<unsigned __int64, list<C2DLineF> >* first, unsigned int n, const pair<unsigned __int64, list<C2DLineF> >& x, const __false_type&) -- copy-construct n (UID, line list) records into raw storage at first and return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A830A0, 109 bytes (+3 int3 padding), __fastcall (first ecx, n edx; x and the empty tag on the stack, `ret 8`).
 // Callers: one, 0x00A84C9A -- the vector's _M_insert_overflow 0x00A84C20 (landed) in the navigation quad-tree TU; the byte twin
@@ -28,7 +28,7 @@ public:
     C2DVector Point2;                           // +0x8
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 struct _List_node_base {

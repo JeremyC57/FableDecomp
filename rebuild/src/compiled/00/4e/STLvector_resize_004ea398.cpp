@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the engine graphic records
-// Leaf: ?resize@?$vector@VCEngineGraphic@@V?$allocator@VCEngineGraphic@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the engine graphic records
+// Leaf: ?resize@?$vector@VCEngineGraphic@@V?$allocator@VCEngineGraphic@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EA398, 43 bytes, thiscall, `ret 4`; size-optimised TU.
 // Identity: vector<CEngineGraphic>: the only caller is the CEngineGraphic vector transfer at 0x004EA326 (inside the
 //   CReplaceableMeshes binary transfer-in 0x004EA2C9); the callee 0x004EA3C3 is the two-argument resize. Ego_r.pdb:
@@ -24,7 +24,7 @@ public:
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

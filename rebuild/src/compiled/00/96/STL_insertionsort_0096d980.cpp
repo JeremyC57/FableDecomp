@@ -1,15 +1,15 @@
-// _STL::__insertion_sort(CThing** first, CThing** last, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- guarded insertion sort of the screamer pursue-target sort (each element goes through the inlined __linear_insert)
+// std::__insertion_sort(CThing** first, CThing** last, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- guarded insertion sort of the screamer pursue-target sort (each element goes through the inlined __linear_insert)
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096D980, 115 bytes, __fastcall (/Gr algorithm TU: first in ecx, last in edx,
 //   the comparator on the stack), `ret 4`.
-// Instantiation: the screamer target sort: _STL::partial_sort / sort<CThing**,
+// Instantiation: the screamer target sort: std::partial_sort / sort<CThing**,
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> > of CAIStateGroup_ScreamerPursueTarget::Update
 //   (0x0096DF50) and its __introsort_loop (0x0096E410).
 // Callees: CThingCompare_Nearest::operator()<CThing> @ 0x004A8D80 (through the adapter, inline), memmove (import
 //   thunk) @ 0x00BFEAE6, __unguarded_linear_insert @ 0x0096D590.
 // Shape: STLport __insertion_sort with __linear_insert, copy_backward and the memmove inlined;
 //   __unguarded_linear_insert stays a call.
-// Label: catalog "std_sort_DownHeap" -> the STLport 4.x _STL::__insertion_sort instantiation for
+// Label: catalog "std_sort_DownHeap" -> the STLport 4.x std::__insertion_sort instantiation for
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
@@ -40,7 +40,7 @@ public:
 };
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 // copy_backward over a trivially assignable pointer range is one memmove (`(_Num > 0) ? memmove : result`).
@@ -83,4 +83,4 @@ void __fastcall __insertion_sort(_RandomAccessIter __first, _RandomAccessIter __
         __linear_insert(__first, __i, *__i, __comp);
 }
 template void __fastcall __insertion_sort<CThing**, TComp>(CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

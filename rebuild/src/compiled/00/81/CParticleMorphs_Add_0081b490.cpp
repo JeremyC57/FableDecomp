@@ -21,7 +21,7 @@ struct CDefString {                                         // 4 bytes: the defi
     long TablePos;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class A, class B> struct pair {
@@ -50,10 +50,10 @@ public:
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                // +0x0C
     bool Dirty;                                  // +0x0D
@@ -74,7 +74,7 @@ public:
         float      EndAtMorphStrength;           // +0x20
     };
     typedef CKeyPairCompareLess<EHeroMorphType, CEntry> TCompare;
-    typedef _STL::pair<EHeroMorphType, CEntry> TPair;
+    typedef std::pair<EHeroMorphType, CEntry> TPair;
     CVectorMap<EHeroMorphType, CEntry, TCompare> Morphs;   // +0x00
     void Add(const CEntry& entry);
 };

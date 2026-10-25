@@ -28,7 +28,7 @@ private:
 
 CWideString __fastcall operator+(const unsigned short* left, const CWideString& right);   // 0x0099BFF0
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator { };
 
@@ -60,7 +60,7 @@ __forceinline CWideString FormatIndex(int index)
     return number;
 }
 
-bool __fastcall ConstructString(CWideString& output, const _STL::vector<CWideString>& replacements)
+bool __fastcall ConstructString(CWideString& output, const std::vector<CWideString>& replacements)
 {
     bool failed = false;
     for (unsigned int i = 0; i != replacements.size(); ++i) {

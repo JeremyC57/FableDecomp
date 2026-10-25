@@ -1,4 +1,4 @@
-// _STL::list::list(const allocator_type& a) -- STLport list<CFileInstaller::CActiveFile> constructor: null the node word, then malloc a 0xB8-byte sentinel linked to itself
+// std::list::list(const allocator_type& a) -- STLport list<CFileInstaller::CActiveFile> constructor: null the node word, then malloc a 0xB8-byte sentinel linked to itself
 // Leaf: ??0?$list@VCActiveFile@CFileInstaller@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C7730, 35 bytes (+ int3 padding), thiscall `ret 4` (the allocator
 // reference), returns this.
@@ -21,7 +21,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {                  // STLport allocator over malloc / free (empty)
 public:

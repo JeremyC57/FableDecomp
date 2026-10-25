@@ -1,4 +1,4 @@
-// Behaviour test for _STL::fill<QuadricOptimiserInternals::COptimisedFace*> @ 0x00AD04A0
+// Behaviour test for std::fill<QuadricOptimiserInternals::COptimisedFace*> @ 0x00AD04A0
 #include <cstdio>
 
 struct C3DVector { float X, Y, Z; };

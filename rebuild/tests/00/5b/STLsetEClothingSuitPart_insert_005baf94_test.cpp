@@ -1,11 +1,11 @@
-// Behaviour test for 0x005BAF94 _STL::set<EClothingSuitPart>::insert: forward to the tree's insert_unique and
+// Behaviour test for 0x005BAF94 std::set<EClothingSuitPart>::insert: forward to the tree's insert_unique and
 // return its (node, inserted) pair converted to the set's const-iterator pair
 #include <stdio.h>
 enum EClothingSuitPart { CLOTHING_SUIT_PART_NONE, CLOTHING_SUIT_PART_A, CLOTHING_SUIT_PART_B, CLOTHING_SUIT_PART_C };
 void* TestNodeFor(int key);
 bool TestFirstInsert(int key);
 static int gInsertCalls = 0;
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator { };
 template <class _T1, class _T2> struct pair {
@@ -67,23 +67,23 @@ public:
     }
 };
 }
-typedef _STL::_Rb_tree_node<EClothingSuitPart> CPartNode;
+typedef std::_Rb_tree_node<EClothingSuitPart> CPartNode;
 static CPartNode gNodes[4];
 static bool gSeen[4];
 void* TestNodeFor(int key) { return &gNodes[key]; }
 bool TestFirstInsert(int key) { bool fresh = !gSeen[key]; gSeen[key] = true; return fresh; }
-typedef _STL::set<EClothingSuitPart> CPartSet;
+typedef std::set<EClothingSuitPart> CPartSet;
 int main()
 {
     CPartSet s;
     s._M_t._M_header = 0;
     s._M_t._M_node_count = 0;
     bool ok = true;
-    _STL::pair<CPartSet::iterator, bool> r1 = s.insert(CLOTHING_SUIT_PART_B);
+    std::pair<CPartSet::iterator, bool> r1 = s.insert(CLOTHING_SUIT_PART_B);
     ok = ok && r1.second && r1.first._M_node == &gNodes[2];
-    _STL::pair<CPartSet::iterator, bool> r2 = s.insert(CLOTHING_SUIT_PART_A);
+    std::pair<CPartSet::iterator, bool> r2 = s.insert(CLOTHING_SUIT_PART_A);
     ok = ok && r2.second && r2.first._M_node == &gNodes[1];
-    _STL::pair<CPartSet::iterator, bool> r3 = s.insert(CLOTHING_SUIT_PART_B);   // duplicate: existing node, not inserted
+    std::pair<CPartSet::iterator, bool> r3 = s.insert(CLOTHING_SUIT_PART_B);   // duplicate: existing node, not inserted
     ok = ok && !r3.second && r3.first._M_node == &gNodes[2];
     ok = ok && gInsertCalls == 3 && s._M_t._M_node_count == 2;
     if (ok) { printf("005baf94_TEST PASS\n"); return 0; }

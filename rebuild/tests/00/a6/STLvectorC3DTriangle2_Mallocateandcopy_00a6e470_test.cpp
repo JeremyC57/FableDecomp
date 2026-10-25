@@ -8,7 +8,7 @@ public:
     unsigned short VertexIndex[3];
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _T1, class _T2>
@@ -33,7 +33,7 @@ _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& 
 }
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -143,7 +143,7 @@ int main()
         for (int j = 0; j < 3; ++j)
             src[i].VertexIndex[j] = (unsigned short)(i * 10 + j);
     {
-        _STL::vector<C3DTriangle2> v;
+        std::vector<C3DTriangle2> v;
         C3DTriangle2* p = v._M_allocate_and_copy(5u, (const C3DTriangle2*)src, (const C3DTriangle2*)src + 3);
         if (p == 0)
             ok = 0;

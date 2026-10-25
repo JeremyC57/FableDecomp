@@ -80,7 +80,7 @@ struct CTCUserActionPointBase {
     long GetNumberOfActionPointsInUse();          // 0x007FEC10
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport vector (12 bytes)
 public:
@@ -104,7 +104,7 @@ __declspec(noinline) void vector<_Tp, _Alloc>::push_back(const _Tp& __x)
 
 class CAddOccupiedSeatToList {
 public:
-    _STL::vector<CThing*>* m_pSeats;                       // +0x00
+    std::vector<CThing*>* m_pSeats;                       // +0x00
     void operator()(const CIntelligentPointer<CThing>& thing) const;
 };
 void CAddOccupiedSeatToList::operator()(const CIntelligentPointer<CThing>& thing) const
@@ -203,7 +203,7 @@ int main()
 {
     int ok = 1;
     static CThing* store[8];
-    _STL::vector<CThing*> seats; seats._M_start = seats._M_finish = store; seats._M_end_of_storage = store + 8;
+    std::vector<CThing*> seats; seats._M_start = seats._M_finish = store; seats._M_end_of_storage = store + 8;
     CAddOccupiedSeatToList f; f.m_pSeats = &seats;
     STestActionPoint apFree; apFree.Free = true;
     STestActionPoint apBusy; apBusy.Free = false;

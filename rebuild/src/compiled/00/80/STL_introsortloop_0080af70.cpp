@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CIntelligentPointer<CThing>*, int depth_limit, CDoNotUseBinaryPredicate comp) -- STLport introsort recursion of the thing-pointer shuffle: partition around a coin-flip median, recurse on the right part, loop on the left; heap-sort fallback when the depth runs out
+// std::__introsort_loop(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CIntelligentPointer<CThing>*, int depth_limit, CDoNotUseBinaryPredicate comp) -- STLport introsort recursion of the thing-pointer shuffle: partition around a coin-flip median, recurse on the right part, loop on the left; heap-sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080AF70, 181 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the value-type pointer, the depth limit and the 4-byte predicate on the stack, `ret 0Ch`.
@@ -37,7 +37,7 @@ struct CDoNotUseBinaryPredicate {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp);   // 0x00805FE0
 template <class _RandomAccessIter, class _Tp, class _Compare>

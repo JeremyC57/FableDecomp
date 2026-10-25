@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CWideString* first, CWideString* middle, CWideString* last, CWideString*, less<CWideString> comp) -- STLport partial sort: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort the heap
+// std::__partial_sort(CWideString* first, CWideString* middle, CWideString* last, CWideString*, less<CWideString> comp) -- STLport partial sort: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort the heap
 // Flags: /Gr
 // Leaf: ??$__partial_sort@PAVCWideString@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B6A40, 130 bytes (+ int3 padding), `ret 0Ch` (/Gr TU: first in ecx,
@@ -22,7 +22,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

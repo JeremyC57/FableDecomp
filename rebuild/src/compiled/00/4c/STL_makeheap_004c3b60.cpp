@@ -1,4 +1,4 @@
-// _STL::__make_heap(CMeshInfo* first, CMeshInfo* last, CSortPrimaryMeshesLast comp, CMeshInfo*, int*) -- STLport heapify of a mesh-info run under the "primary meshes last" order: sift every parent down, from the last one to the root
+// std::__make_heap(CMeshInfo* first, CMeshInfo* last, CSortPrimaryMeshesLast comp, CMeshInfo*, int*) -- STLport heapify of a mesh-info run under the "primary meshes last" order: sift every parent down, from the last one to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C3B60, 140 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU, explicit __fastcall
 //   here: first in ecx, last in edx, then the comparator slot and the value-type / distance-type tag pointers).
@@ -24,7 +24,7 @@ public:
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return !a.PrimaryMesh; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIter __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x004C2D10 (landed)
 

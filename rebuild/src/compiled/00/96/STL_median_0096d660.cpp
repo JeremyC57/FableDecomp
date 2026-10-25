@@ -1,13 +1,13 @@
-// _STL::__median(CThing* const& a, CThing* const& b, CThing* const& c, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- median-of-three pivot choice of the screamer pursue-target sort
+// std::__median(CThing* const& a, CThing* const& b, CThing* const& c, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- median-of-three pivot choice of the screamer pursue-target sort
 // Leaf: ??$__median@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096D660, 144 bytes, __fastcall (/Gr algorithm TU: a in ecx, b in edx, c and the
 //   comparator on the stack), `ret 8`.
-// Instantiation: the screamer target sort: _STL::partial_sort / sort<CThing**,
+// Instantiation: the screamer target sort: std::partial_sort / sort<CThing**,
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> > of CAIStateGroup_ScreamerPursueTarget::Update
 //   (0x0096DF50) and its __introsort_loop (0x0096E410).
 // Callees: CThingCompare_Nearest::operator()<CThing> @ 0x004A8D80 (through the adapter, inline).
 // Shape: STLport `__median` (const T& arguments and result).
-// Label: catalog "std_sort_Median3" -> the STLport 4.x _STL::__median instantiation for
+// Label: catalog "std_sort_Median3" -> the STLport 4.x std::__median instantiation for
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
@@ -38,7 +38,7 @@ public:
 };
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {
@@ -57,4 +57,4 @@ const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _
         return __b;
 }
 template CThing* const& __fastcall __median<CThing*, TComp>(CThing* const&, CThing* const&, CThing* const&, TComp);
-} // namespace _STL
+} // namespace std

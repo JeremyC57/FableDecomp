@@ -1,4 +1,4 @@
-// Behaviour test for 0x00992E20 _STL::__make_heap over the 36-byte (long key, sound-bank record) entries: __make_heap: the result satisfies the max-heap property on the key; short ranges are untouched.
+// Behaviour test for 0x00992E20 std::__make_heap over the 36-byte (long key, sound-bank record) entries: __make_heap: the result satisfies the max-heap property on the key; short ranges are untouched.
 // The record is modelled with a shared reference count (copies bump it, assignments move it, destruction drops it) so
 // leaked or double-destroyed copies show up as a non-zero final count.
 #include <cstdio>

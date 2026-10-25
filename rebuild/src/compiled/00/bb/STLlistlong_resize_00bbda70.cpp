@@ -1,4 +1,4 @@
-// _STL::list<long>::resize(size_type new_size, const long& x) -- walk to the new_size-th id; free the tail nodes when the list is longer, else append copies of x
+// std::list<long>::resize(size_type new_size, const long& x) -- walk to the new_size-th id; free the tail nodes when the list is longer, else append copies of x
 // Leaf: ?resize@?$list@J
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BBDA70, 96 bytes, thiscall, `ret 8`.
 // Identity: called by the landed CEngineInternalPrimitiveParticleGroup::ClearAllChildPrimitives 0x00BBD200
@@ -11,7 +11,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -132,4 +132,4 @@ typename list<_Tp, _Alloc>::iterator list<_Tp, _Alloc>::erase(iterator __first, 
 
 template void list<long>::resize(size_type, const long&);
 
-} // namespace _STL
+} // namespace std

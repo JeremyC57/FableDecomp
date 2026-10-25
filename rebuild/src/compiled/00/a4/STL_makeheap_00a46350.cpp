@@ -1,4 +1,4 @@
-// _STL::__make_heap(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&), C3DSkeletalBoneMorph*, int*) -- SGI heapify: sift every parent from (len - 2) / 2 down to 0 with __adjust_heap
+// std::__make_heap(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&), C3DSkeletalBoneMorph*, int*) -- SGI heapify: sift every parent from (len - 2) / 2 down to 0 with __adjust_heap
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A46350, length 124 bytes, `ret 0Ch`.
 // Callers: 0x00A465E9 (make_heap) and 0x00A46951 (__partial_sort 0x00A46940, this chunk).
@@ -34,7 +34,7 @@ public:
 
 typedef bool (__fastcall* TBoneMorphCompare)(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x00A46040
 

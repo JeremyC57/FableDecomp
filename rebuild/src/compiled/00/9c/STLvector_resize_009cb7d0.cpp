@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport one-argument resize of a text entry's tag vector: resize(n, CTextTag()) with the default tag destroyed on both exits
-// Leaf: ?resize@?$vector@VCTextTag@NGameText@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport one-argument resize of a text entry's tag vector: resize(n, CTextTag()) with the default tag destroyed on both exits
+// Leaf: ?resize@?$vector@VCTextTag@NGameText@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CB7D0, 108 bytes (+ int3 padding), `__fastcall` (this -> esi), `ret 4`.
 // Identity: Ego_r.pdb `?resize@?$vector@VCTextTag@NGameText@@...@@QAEXI@Z` (NGameText::CTextEntry::Tags is
 //   CArray<NGameText::CTextTag>); the one caller 0x009C8EDD is CTextEntry::ReadFromDataStream 0x009C8DE0. The 8-byte
@@ -26,7 +26,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 class vector {
 public:

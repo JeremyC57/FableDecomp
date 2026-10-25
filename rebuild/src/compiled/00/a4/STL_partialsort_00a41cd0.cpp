@@ -1,4 +1,4 @@
-// _STL::__partial_sort(SNamePairEntry* first, SNamePairEntry* middle, SNamePairEntry* last, SNamePairEntry*, CNamePairLess comp) -- STLport partial sort over the 12-byte ((name, name), object) entries: heap [first, middle), pop every smaller later element into it, then sort the heap
+// std::__partial_sort(SNamePairEntry* first, SNamePairEntry* middle, SNamePairEntry* last, SNamePairEntry*, CNamePairLess comp) -- STLport partial sort over the 12-byte ((name, name), object) entries: heap [first, middle), pop every smaller later element into it, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe @ 0x00A41CD0, 122 bytes (+ int3 padding), `ret 0Ch`. /Gr TU written as explicit __fastcall: first
 //   in ecx, middle in edx; last, the null type pointer and the comparator slot on the stack.
@@ -58,7 +58,7 @@ public:
 
 class CSoundBankLH;                                         // descriptive: the mapped object of CSoundManagerLH's maps
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -75,18 +75,18 @@ bool __cdecl operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y);   
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
+typedef std::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*);   // 0x00A416E0
 template <class _Tp> inline _Tp* __value_type_of(_Tp*) { return (_Tp*)0; }
@@ -113,4 +113,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 }
 }
 
-template void __fastcall _STL::__partial_sort<SNamePairEntry*, SNamePairEntry, CNamePairLess>(SNamePairEntry*, SNamePairEntry*, SNamePairEntry*, SNamePairEntry*, CNamePairLess);
+template void __fastcall std::__partial_sort<SNamePairEntry*, SNamePairEntry, CNamePairLess>(SNamePairEntry*, SNamePairEntry*, SNamePairEntry*, SNamePairEntry*, CNamePairLess);

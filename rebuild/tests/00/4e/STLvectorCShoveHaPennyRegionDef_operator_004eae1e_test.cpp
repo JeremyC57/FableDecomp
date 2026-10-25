@@ -1,4 +1,4 @@
-// 004eae1e _STL::vector<CShoveHaPennyRegionDef>::operator=
+// 004eae1e std::vector<CShoveHaPennyRegionDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
 // Leaf: operator=
 #include <stdlib.h>

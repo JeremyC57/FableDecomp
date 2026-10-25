@@ -22,7 +22,7 @@ public:
 extern CCharString g_CCharString_013baff4;      // 0x013BAFF4 "weapon_pos_left_foot"
 extern CCharString g_CCharString_013baff8;      // 0x013BAFF8 "weapon_pos_right_foot"
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _Tp> class allocator {
@@ -65,7 +65,7 @@ public:
 class CThing;
 
 namespace NCombatActionHelpers {
-bool __fastcall GetDustCreationHelperNames(const CThing& thing, _STL::vector<CCharString>& helperNames)
+bool __fastcall GetDustCreationHelperNames(const CThing& thing, std::vector<CCharString>& helperNames)
 {
     helperNames.push_back(g_CCharString_013baff4);
     helperNames.push_back(g_CCharString_013baff8);

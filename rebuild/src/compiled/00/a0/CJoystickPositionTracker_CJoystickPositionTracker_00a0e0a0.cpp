@@ -17,7 +17,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -76,7 +76,7 @@ public:
 
 class CJoystickPositionTracker {
 public:
-    _STL::deque<C2DVector> RecentPositions;             // +0x00
+    std::deque<C2DVector> RecentPositions;             // +0x00
     CJoystickPositionTracker();
 };
 

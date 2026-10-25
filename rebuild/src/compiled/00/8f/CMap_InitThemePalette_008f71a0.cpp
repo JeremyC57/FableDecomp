@@ -15,7 +15,7 @@
 //   entry's zero ThemeDefIndex from ebx in the inline copy-construct (`mov [eax],ebx`) as retail does.
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -128,7 +128,7 @@ public:
     unsigned char _pad00[0x1c];
     const CGameDefinitionManager* DefinitionManager;    // +0x1c
     unsigned char _pad20[0x1a6c - 0x20];
-    _STL::vector<CThemePaletteEntry> ThemePaletteEntryList;   // +0x1a6c
+    std::vector<CThemePaletteEntry> ThemePaletteEntryList;   // +0x1a6c
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex);   // 0x008F70F0
     void InitThemePalette();
 };

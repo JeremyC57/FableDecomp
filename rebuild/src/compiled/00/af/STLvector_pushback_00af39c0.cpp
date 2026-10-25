@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const T& x) -- append one 16-byte registered-PSC entry pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: copy-construct it at the finish pointer, or grow through _M_insert_overflow when the storage is full
+// std::vector::push_back(const T& x) -- append one 16-byte registered-PSC entry pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: copy-construct it at the finish pointer, or grow through _M_insert_overflow when the storage is full
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF39C0, 90 bytes, __fastcall `ret 4`.
 // Callers: CVectorMap<CCharString, CRegisteredPSCInfo>::Add 0x00AF2910 / 0x00AF3A40 (landed; the CPSCManager::RegisterPSC path).
@@ -30,7 +30,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -90,6 +90,6 @@ public:
 
 }
 
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 
-template void _STL::vector<CPSCPair>::push_back(const CPSCPair&);
+template void std::vector<CPSCPair>::push_back(const CPSCPair&);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x0051CAA0 _STL::fill(CNavigationAreaUpdate::CNavigationLayerUpdate*, ...): every navigation-layer update of the range becomes a copy of the value (line list then switchable blockages, each through its vector operator=)
+// Behaviour test for 0x0051CAA0 std::fill(CNavigationAreaUpdate::CNavigationLayerUpdate*, ...): every navigation-layer update of the range becomes a copy of the value (line list then switchable blockages, each through its vector operator=)
 #include <stdio.h>
 #if !defined(_MSC_VER)
 #define __fastcall
@@ -37,7 +37,7 @@ typedef CNavigationAreaUpdate::CNavigationLayerUpdate CNavigationLayerUpdate;
 static C2DLineF gLines[2];
 static CNavigationAreaUpdate::CSwitchableBlockage gBlockages[1];
 static CNavigationLayerUpdate gArr[4];
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
@@ -53,12 +53,12 @@ int main()
     int i;
     for (i = 0; i < 4; ++i) { gArr[i].LineList._M_start = 0; gArr[i].SwitchableBlockages._M_start = 0; }
     bool ok = true;
-    _STL::fill(gArr, gArr + 3, v);
+    std::fill(gArr, gArr + 3, v);
     for (i = 0; i < 3; ++i)
         ok = ok && gArr[i].LineList._M_start == gLines && gArr[i].LineList._M_finish == gLines + 2 &&
              gArr[i].SwitchableBlockages._M_start == gBlockages && gArr[i].SwitchableBlockages._M_finish == gBlockages + 1;
     ok = ok && gArr[3].LineList._M_start == 0 && gAssigns == 6;     // two vector assignments per element
-    _STL::fill(gArr, gArr, v);
+    std::fill(gArr, gArr, v);
     ok = ok && gAssigns == 6;
     if (ok) { printf("0051caa0_TEST PASS\n"); return 0; }
     printf("0051caa0_TEST FAIL\n");

@@ -1,4 +1,4 @@
-// _STL::map<CThing*, float>::operator[](CThing* const& key) -- the distance slot of a thing in CTCAvoidRegionExit::DistMap: lower_bound walk, and a (key, 0.0f) pair inserted at that hint when the key is absent
+// std::map<CThing*, float>::operator[](CThing* const& key) -- the distance slot of a thing in CTCAvoidRegionExit::DistMap: lower_bound walk, and a (key, 0.0f) pair inserted at that hint when the key is absent
 // Grade: RELOCATION_MATCH -- chunk-422 recipe: insert_unique(hint, v) 0x007E9DE0 receives the pair temporary's address; a same-TU
 //   noinline stand-in that READS v but never keeps its address lets VC7.1 store the pair's 0.0f after the hidden-result push, as
 //   retail (a stand-in that ignores v lets VC drop the pair stores altogether: 101 bytes).
@@ -16,7 +16,7 @@
 
 class CThing;
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -117,6 +117,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template class _STL::map<CThing*, float>;
+template class std::map<CThing*, float>;

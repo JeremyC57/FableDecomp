@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A34D10 _STL::__insertion_sort: full stable insertion sort of the range; empty range untouched.
+// Behaviour test for 0x00A34D10 std::__insertion_sort: full stable insertion sort of the range; empty range untouched.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

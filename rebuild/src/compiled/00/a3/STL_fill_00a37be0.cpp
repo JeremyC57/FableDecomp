@@ -1,4 +1,4 @@
-// _STL::fill(CClassTypeInfo* first, CClassTypeInfo* last, const CClassTypeInfo& value) -- assign one class-factory type record to every element of a range
+// std::fill(CClassTypeInfo* first, CClassTypeInfo* last, const CClassTypeInfo& value) -- assign one class-factory type record to every element of a range
 // Leaf: ??$fill@PAVCClassTypeInfo@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A37BE0, 74 bytes, `__fastcall` (first ecx, last edx, value pointer
 //   on the stack), `ret 4`.
@@ -33,7 +33,7 @@ public:
     CCharString    Name;                                 // +0x10
 };
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -43,4 +43,4 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CClassTypeInfo*, CClassTypeInfo>(CClassTypeInfo*, CClassTypeInfo*, const CClassTypeInfo&);
+template void __fastcall std::fill<CClassTypeInfo*, CClassTypeInfo>(CClassTypeInfo*, CClassTypeInfo*, const CClassTypeInfo&);

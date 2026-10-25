@@ -1,4 +1,4 @@
-// _STL::vector::vector(const vector& x) -- STLport copy constructor of vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry> (an appearance-modifier list): allocate x.size() entries, then placement-copy x's range
+// std::vector::vector(const vector& x) -- STLport copy constructor of vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry> (an appearance-modifier list): allocate x.size() entries, then placement-copy x's range
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00708830, length 118 bytes (+ int3 padding), `ret 4`.
 // Callers: 7 call sites -- 0x00706DBB in the landed CTCHeroAttachableAppearanceModifiers constructor 0x00706D10 (its
@@ -23,7 +23,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -82,4 +82,4 @@ public:
 }
 
 typedef CTCHeroAttachableAppearanceModifiers::CModifierEntry TModifierEntry;
-template _STL::vector<TModifierEntry>::vector(const _STL::vector<TModifierEntry>&);
+template std::vector<TModifierEntry>::vector(const std::vector<TModifierEntry>&);

@@ -1,5 +1,5 @@
-// _STL::__destroy_aux(NParticleEngine::CParticleEmitterInfo* first, NParticleEngine::CParticleEmitterInfo* last, const __false_type&) -- destroy a run of 12-byte particle-emitter info records: release each record's counted emitter-data pointer (virtual delete at a zero count) and null it
-// Leaf: ??$__destroy_aux@PAVCParticleEmitterInfo@NParticleEngine@@@_STL@@
+// std::__destroy_aux(NParticleEngine::CParticleEmitterInfo* first, NParticleEngine::CParticleEmitterInfo* last, const __false_type&) -- destroy a run of 12-byte particle-emitter info records: release each record's counted emitter-data pointer (virtual delete at a zero count) and null it
+// Leaf: ??$__destroy_aux@PAVCParticleEmitterInfo@NParticleEngine@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF1D90, 50 bytes, `ret 4` (link-time __fastcall: first in ecx, last in edx, the
 //   __false_type tag reference on the stack, never read).
@@ -48,7 +48,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

@@ -1,4 +1,4 @@
-// _STL::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CFilter_Bind3 pred) -- copy to result every target point that is outside the field of view, within range of the position or the locked target; returns the new end
+// std::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CFilter_Bind3 pred) -- copy to result every target point that is outside the field of view, within range of the position or the locked target; returns the new end
 // Grade: DIFFER(214v222) -- the locked-target test: retail reads PLockedTarget before the GetPItem call and parks it in the dead `result` argument slot (`mov [esp+18h],ecx ; call ; cmp eax,[esp+18h]`), ours calls first and compares through the F3 pointer (`cmp [ecx],eax`); a named local or a pointer operator== reads it first but colours it into ebp and spills result instead (217v222)
 // Leaf: ??$remove_copy_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00807A90, 222 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
@@ -73,7 +73,7 @@ struct CTargetPointFilter_IsLockedTarget {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Predicate> class unary_negate {
 protected:
     _Predicate _M_pred;
@@ -89,9 +89,9 @@ template <class TF1, class TF2, class TF3> struct CFilter_Bind3 {
     template <class T> bool operator()(const T& t) const { return (*F1)(t) && (*F2)(t) && (*F3)(t); }
 };
 typedef CFilter_Bind3<CThingFilter_IsInFOV, CTargetPointFilter_FurtherFromPosThan,
-                      _STL::unary_negate<CTargetPointFilter_IsLockedTarget> > Pred;
+                      std::unary_negate<CTargetPointFilter_IsLockedTarget> > Pred;
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _OutputIter, class _Predicate>
 _OutputIter __fastcall remove_copy_if(_InputIter __first, _InputIter __last, _OutputIter __result, _Predicate __pred)
 {

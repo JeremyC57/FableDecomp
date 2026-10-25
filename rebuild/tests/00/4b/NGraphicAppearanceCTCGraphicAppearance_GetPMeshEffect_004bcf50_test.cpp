@@ -31,7 +31,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { };
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -137,7 +137,7 @@ struct CTCGraphicAppearance {
         bool          EffectsWeapons;                       // +0x9
         bool          InheritedFromCarrier;                 // +0xa
     };
-    typedef _STL::map<void*, CMeshEffectPriorityEntry> CMeshEffectMap;
+    typedef std::map<void*, CMeshEffectPriorityEntry> CMeshEffectMap;
 
     void*          __vftable;                               // +0x00 (CTCBase)
     void*          ParentThing;                             // +0x04
@@ -165,7 +165,7 @@ CIVCountedPointer<CEngineMeshEffect> CTCGraphicAppearance::GetPMeshEffect()
 
 // ---- test harness ----
 void CEngineMeshEffect::v000() { }
-namespace _STL {
+namespace std {
 template <class _Value, class _Traits>
 _Rb_tree_iterator<_Value, _Traits>& _Rb_tree_iterator<_Value, _Traits>::operator++()
 {
@@ -174,7 +174,7 @@ _Rb_tree_iterator<_Value, _Traits>& _Rb_tree_iterator<_Value, _Traits>::operator
 }
 }
 using NGraphicAppearance::CTCGraphicAppearance;
-typedef _STL::_Rb_tree_node<CTCGraphicAppearance::CMeshEffectMap::value_type> TNode;
+typedef std::_Rb_tree_node<CTCGraphicAppearance::CMeshEffectMap::value_type> TNode;
 static TNode* Node(double* raw) { return (TNode*)raw; }
 int main()
 {

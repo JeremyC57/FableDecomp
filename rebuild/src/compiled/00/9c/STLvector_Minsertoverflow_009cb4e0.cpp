@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(NGameText::CDataBankTextEntry* position, const NGameText::CDataBankTextEntry& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport reallocating insert of the text bank's 8-byte text entries: allocate old_size + max(old_size, n), copy the head, construct the n new entries, copy the tail unless appending, destroy and free the old block
+// std::vector::_M_insert_overflow(NGameText::CDataBankTextEntry* position, const NGameText::CDataBankTextEntry& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport reallocating insert of the text bank's 8-byte text entries: allocate old_size + max(old_size, n), copy the head, construct the n new entries, copy the tail unless appending, destroy and free the old block
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CB4E0, 223 bytes (+ int3 padding), thiscall `ret 14h` (five arguments).
 // Identity: called by push_back @ 0x009CB740 (this chunk) of NGameText::CDataBank's TextEntryBuffer (retail +0x1EC,
@@ -16,7 +16,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 extern "C" void* __cdecl malloc(unsigned int);      // 0x00BFEA0E
 extern "C" void __cdecl free(void*);                // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 }
 
@@ -41,7 +41,7 @@ struct CDataBankTextEntry {                          // 8 bytes
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp>

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::vector<COptimisedVertex::CGroup>::_M_allocate_and_copy<const CGroup*> @ 0x00AD04E0
+// Behaviour test for std::vector<COptimisedVertex::CGroup>::_M_allocate_and_copy<const CGroup*> @ 0x00AD04E0
 #include <cstdio>
 #include <cstdlib>
 #include <new>

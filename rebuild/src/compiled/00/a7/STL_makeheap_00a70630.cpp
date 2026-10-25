@@ -1,8 +1,8 @@
-// _STL::__make_heap(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* last, CCompareString<C3DHelperPoint> comp, pair<CCharString,C3DHelperPoint>*, int*) -- build a heap over the helper-point map entries (name order) by sifting down every parent from the last one to the root
+// std::__make_heap(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* last, CCompareString<C3DHelperPoint> comp, pair<CCharString,C3DHelperPoint>*, int*) -- build a heap over the helper-point map entries (name order) by sifting down every parent from the last one to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A70630, 124 bytes (+4 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the comparator, the value-type and distance-type tag pointers on the stack, `ret 0Ch`).
-// Callees: CCharString::CCharString(const CCharString&) 0x0099EC30 (the by-value element copy), _STL::__adjust_heap
+// Callees: CCharString::CCharString(const CCharString&) 0x0099EC30 (the by-value element copy), std::__adjust_heap
 //   0x00A6FA20 (landed "SGI_AdjustHeapstring20"; __fastcall first/hole, then len, the 20-byte value, the comparator).
 // Identity: the manifest's "HeapSort_MakeHeap_PairStringHelperPoint" is descriptive. 20-byte (0x66666667 + `sar 3`)
 //   pair<CCharString, C3DHelperPoint> entries of CPhysicsMesh::HelperPoints ordered by CCompareString.
@@ -30,7 +30,7 @@ public:
     long      BoneIndex;                                // +0x0C
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -41,10 +41,10 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x00A6FA20

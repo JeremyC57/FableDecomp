@@ -27,7 +27,7 @@ struct C2DBoxI {
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { }
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;                          // +0x00
     _List_node_base* _M_prev;                          // +0x04
@@ -123,15 +123,15 @@ template <class A, class B> struct CFilter_Bind2 {
 template <class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 struct CThingSearchTools {
     void FindThingsInRoughArea(const C2DBoxI& area, const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>& filter,
-                               _STL::list<CThingCreatureBase*>& things);   // 0x0091A750
+                               std::list<CThingCreatureBase*>& things);   // 0x0091A750
 };
 // The search instantiation lives in this TU (0x0091A750, just above): a same-TU noinline stand-in that only reads its
 // arguments tells VC7.1 the list's address never escapes, so the header pointer stays in a register across every
 // later call (retail esi). Not landed from here.
-void SearchSink_91a750(const CThingSearchTools* self, long x0, long tcType, float range, _STL::_List_node_base* header);
+void SearchSink_91a750(const CThingSearchTools* self, long x0, long tcType, float range, std::_List_node_base* header);
 #pragma auto_inline(off)
 __declspec(noinline) void CThingSearchTools::FindThingsInRoughArea(const C2DBoxI& area,
-    const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>& filter, _STL::list<CThingCreatureBase*>& things)
+    const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>& filter, std::list<CThingCreatureBase*>& things)
 {
     SearchSink_91a750(this, area.X0, filter.m_pFirst->TCType, filter.m_pSecond->Range, things._M_node);
 }
@@ -173,7 +173,7 @@ template <class Base> void CAIStateGroup_WorkBase<Base>::AcquireSeller()
 {
     C3DVector pos = this->PBrain->PCreature->GetPosition();
     CThingCreatureBase* seller = 0;
-    _STL::list<CThingCreatureBase*> sellers;
+    std::list<CThingCreatureBase*> sellers;
     long x = (long)pos.X;
     long y = (long)pos.Y;
     C2DBoxI area(x - 20, y - 20, x + 20, y + 20);
@@ -182,7 +182,7 @@ template <class Base> void CAIStateGroup_WorkBase<Base>::AcquireSeller()
     while (sellers.size() != 0) {
         unsigned long count = sellers.size();
         unsigned long index = this->GetRandomIndex(count);
-        for (_STL::list<CThingCreatureBase*>::iterator it = sellers.begin(); it != sellers.end(); ++it) {
+        for (std::list<CThingCreatureBase*>::iterator it = sellers.begin(); it != sellers.end(); ++it) {
             if (index == 0) {
                 seller = *it;
                 sellers.erase(it);

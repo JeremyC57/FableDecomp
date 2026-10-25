@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__unguarded_partition<pair<CCharString,CPersistInfo>*, ..> @ 0x004BA080: Hoare partition by quest
+// Model of std::__unguarded_partition<pair<CCharString,CPersistInfo>*, ..> @ 0x004BA080: Hoare partition by quest
 // name around a by-value pivot taken from the range.
 template <class T> class CBasicString {
 public:
@@ -61,7 +61,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -71,14 +71,14 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo CPersistInfo;
-typedef _STL::pair<CCharString, CPersistInfo> CPersistEntry;
+typedef std::pair<CCharString, CPersistInfo> CPersistEntry;
 typedef CKeyPairCompareLess<CCharString, CPersistInfo> CPersistLess;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2>
 void __fastcall iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2);                                  // 0x004B7800
 
@@ -243,7 +243,7 @@ template <class RI, class T, class C> void IntrosortLoop(RI first, RI last, T*, 
     }
 }
 }
-namespace _STL {
+namespace std {
 template <class A, class B> void __fastcall iter_swap(A a, B b) { TLib::IterSwapT(a, b, TLib::VT(a)); }
 }
 int main()
@@ -261,7 +261,7 @@ int main()
         int sum = KeySum(a, n);
         CPersistEntry pivot(a[n / 2]);
         int pk = KeyOf(pivot);
-        CPersistEntry* cut = _STL::__unguarded_partition(a, a + n, CPersistEntry(pivot), CPersistLess());
+        CPersistEntry* cut = std::__unguarded_partition(a, a + n, CPersistEntry(pivot), CPersistLess());
         if (cut < a || cut > a + n)
             ok = false;
         for (CPersistEntry* p = a; p < cut; ++p)

@@ -1,4 +1,4 @@
-// _STL::vector::_M_allocate_and_copy(unsigned int n, const pair<ETCInterfaceType, CTCBase*>* first, const pair<ETCInterfaceType, CTCBase*>* last) -- allocate room for n component-map entries and copy-construct [first, last) into it; returns the block
+// std::vector::_M_allocate_and_copy(unsigned int n, const pair<ETCInterfaceType, CTCBase*>* first, const pair<ETCInterfaceType, CTCBase*>* last) -- allocate room for n component-map entries and copy-construct [first, last) into it; returns the block
 // Leaf: ??$_M_allocate_and_copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CBBF0, 79 bytes, thiscall (`this` unused), `ret 0Ch`, the block in eax.
 // Caller: vector<pair<ETCInterfaceType, CTCBase*> >::reserve 0x004CC9B0 (this chunk).
@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14 (MSVCR71 i
 enum ETCInterfaceType { TC_NONE = 0 };                  // the thing-component interface type
 class CTCBase;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {          // STLport pair: explicit copy constructor next to the converting one

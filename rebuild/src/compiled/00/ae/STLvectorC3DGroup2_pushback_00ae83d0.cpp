@@ -1,4 +1,4 @@
-// _STL::vector<C3DGroup2>::push_back(const C3DGroup2& x) -- append one 16-byte skinning group (CArray<C3DGroup2>): copy-construct it at the finish pointer, or grow into a size + max(size, 1) block (the inlined _M_insert_overflow) when the storage is full
+// std::vector<C3DGroup2>::push_back(const C3DGroup2& x) -- append one 16-byte skinning group (CArray<C3DGroup2>): copy-construct it at the finish pointer, or grow into a size + max(size, 1) block (the inlined _M_insert_overflow) when the storage is full
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE83D0, 187 bytes, __fastcall `ret 4`.
 // Callers: CParticleProgram::AddGroup 0x00AE37D0 (landed), CArray<C3DGroup2>::AddDefault 0x00AE8490 (landed), the program
@@ -17,7 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                // 0x00BFEA0E
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -111,7 +111,7 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 
 struct C3DVertexBlend2 { long Vertex; float Weight; };   // 8 bytes
 
-template <class T> class CArray : public _STL::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
+template <class T> class CArray : public std::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
 public:
     CArray(const CArray& other);                         // 0x00AE5D80 for CArray<C3DVertexBlend2>
 };
@@ -121,4 +121,4 @@ struct C3DGroup2 {                                       // 16 bytes in retail
     CArray<C3DVertexBlend2>  VertexBlends;               // +0x4
 };
 
-template void _STL::vector<C3DGroup2>::push_back(const C3DGroup2&);
+template void std::vector<C3DGroup2>::push_back(const C3DGroup2&);

@@ -14,7 +14,7 @@ Grades per row are in STATUS.tsv notes and probe/ledger.txt. No row used more th
 - **GFReadVectorMapMemDump** (0086deb0, CTextureMorph map): reads count, size and raw bytes, then the default element.
   - `GetData()` is `size() ? begin : this`, and size() is recomputed at each use.
   - The default element is a pair temporary whose CTextureMorph has a user zeroing ctor. That keeps one zero register (esi) for the stores and every 64-bit range compare; a POD value-init gives `test`.
-- **_STL::__find_if<C3DVector*, CIsOutsideRadius>** (008c2f70, catalog "Geometry::FindClosestPointInRadius"): STLport's four-way unrolled random-access find_if in a /Gr TU, with the landed CIsOutsideRadius predicate.
+- **std::__find_if<C3DVector*, CIsOutsideRadius>** (008c2f70, catalog "Geometry::FindClosestPointInRadius"): STLport's four-way unrolled random-access find_if in a /Gr TU, with the landed CIsOutsideRadius predicate.
 - **NCreatureMode modes**:
   - **CModeSitBase::AnimUpdate** (008d6ac0, catalog CModeSitChair vfunc_2):
     - the creature is a named local read after the counter decrement;
@@ -83,7 +83,7 @@ These 10 rows were not attempted, so there is no differ source. They are large (
 
 - 0044a3b0 "HeroSwapState::Initialize" is CPlayerManager::CPlayerManager (vptr .?AVCPlayerManager@@).
 - 007adbf0 "GFSerialiseMapBinaryIn<pair<long,long>,CCharString,...>" is GFSerialiseMapBinaryIn over map<CCharString,bool>.
-- 008c2f70 "Geometry::FindClosestPointInRadius" is _STL::__find_if<C3DVector*,CIsOutsideRadius> (the landed remove_if 0x008C34A0 calls it).
+- 008c2f70 "Geometry::FindClosestPointInRadius" is std::__find_if<C3DVector*,CIsOutsideRadius> (the landed remove_if 0x008C34A0 calls it).
 - 008d6ac0 "CModeSitChair::vfunc_2" is CModeSitBase::AnimUpdate; landed 0x008D6C80 is CModeSitBase::FrameUpdate.
 - 008d8b00 vfunc_2 = CModeCrouch::AnimUpdate; 008e7390 / 008e74f0 vfunc_5 / 6 = CModeIntangible::OnActivate / OnDeactivate; 008d9ca0 vfunc_6 = CModeScorpionKingVulnerable::OnDeactivate; 008e28f0 vfunc_3 = CModeThunderLightningStorm::FrameUpdate; 008fa3b0 vfunc_0 = CPhysicsCoordCartesian::FrameUpdate; 00854180 vfunc_1 = CScriptModuleSpline::Update; 009c8c00 vfunc_12 = NGameText::CDataBank::NotifyEntryAdded.
 - 009793d0 "GetPBestThingInRoughArea<Bind4<IsAICreatureAwareOf,...>>" is GetAllThingsInRoughArea<CThing,vector<CThing*>,Bind4<CanBeUsedAsCover,not1(IsOccupiableOccupied),IsNot,In2DRange>> (caller GetCoverThingList 0x00978FD0).

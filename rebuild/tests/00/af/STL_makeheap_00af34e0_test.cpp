@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF34E0 _STL::__make_heap over pair<CCharString, CRegisteredPSCInfo> (key compare): a max-heap on the key
+// behaviour test for 0x00AF34E0 std::__make_heap over pair<CCharString, CRegisteredPSCInfo> (key compare): a max-heap on the key
 #include <cstdio>
 #include <cstring>
 struct CStr { const char* s; };

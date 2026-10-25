@@ -1,11 +1,11 @@
-// Behaviour test for 0x009F76F0 _STL::allocator<_List_node<CPendingQuery> >::allocate: malloc n nodes for n != 0, null for n == 0.
+// Behaviour test for 0x009F76F0 std::allocator<_List_node<CPendingQuery> >::allocate: malloc n nodes for n != 0, null for n == 0.
 #include <cstdio>
 #include <cstdlib>
 #include <new>
 
 static int gNodesAllocated = 0, gNodesFreed = 0;
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -177,7 +177,7 @@ public:
         long             Frame;
         double           TimeStamp;
     };
-    typedef _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > CQueryList;
+    typedef std::list<CPendingQuery, std::allocator<CPendingQuery> > CQueryList;
     void* Device;
     CQueryList FreeQueoryObjects;
     CQueryList PendingQueories;
@@ -211,8 +211,8 @@ static CPendingQuery MakeQuery(IDirect3DQuery9* q, long frame)
 
 int main()
 {
-    _STL::allocator<_STL::_List_node<CPendingQuery> > a;
-    _STL::_List_node<CPendingQuery>* p = a.allocate(3, 0);
+    std::allocator<std::_List_node<CPendingQuery> > a;
+    std::_List_node<CPendingQuery>* p = a.allocate(3, 0);
     bool ok = p != 0 && a.allocate(0) == 0 && gNodesAllocated == 1;
     std::free(p);
     if (!ok) { std::printf("009f76f0_TEST FAIL\n"); return 1; }

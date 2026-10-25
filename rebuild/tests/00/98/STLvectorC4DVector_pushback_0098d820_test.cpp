@@ -1,4 +1,4 @@
-// Behaviour test for 0x0098D820 _STL::vector<C4DVector>::push_back: with room the value is copied to finish and finish
+// Behaviour test for 0x0098D820 std::vector<C4DVector>::push_back: with room the value is copied to finish and finish
 // advances by one element; when full the overflow path gets (finish, value, 1, true).
 #include <cstdio>
 #include <new>

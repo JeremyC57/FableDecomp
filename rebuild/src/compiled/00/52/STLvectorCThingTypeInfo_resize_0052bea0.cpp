@@ -1,4 +1,4 @@
-// _STL::vector<CThingTypeInfo>::resize(size_type new_size, const CThingTypeInfo& x) -- shrink with erase or grow with a fill insert
+// std::vector<CThingTypeInfo>::resize(size_type new_size, const CThingTypeInfo& x) -- shrink with erase or grow with a fill insert
 // Leaf: ?resize@?$vector@VCThingTypeInfo@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052BEA0, 98 bytes, thiscall, `ret 8`.
 // Identity: CThingManager::InitThingTypes (0x00522A3D: `resize(16, CThingTypeInfo())` on the vector at +0x3C, Ego_r.pdb
@@ -22,7 +22,7 @@ public:
     CCharString   DefClassType;               // +0x08
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

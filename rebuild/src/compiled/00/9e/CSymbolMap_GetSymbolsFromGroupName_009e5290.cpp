@@ -35,7 +35,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _Tp>
@@ -58,7 +58,7 @@ public:
 }
 
 template <class T>
-class CArray : public _STL::vector<T> {};
+class CArray : public std::vector<T> {};
 
 class CSymbolMap {
 public:

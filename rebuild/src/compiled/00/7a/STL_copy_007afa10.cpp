@@ -1,4 +1,4 @@
-// _STL::__copy(CIntelligentPointer<CThingAICreature>* first, CIntelligentPointer<CThingAICreature>* last, CIntelligentPointer<CThingAICreature>* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of AI-creature intelligent pointers: n = last - first assignments, returns the end of the output
+// std::__copy(CIntelligentPointer<CThingAICreature>* first, CIntelligentPointer<CThingAICreature>* last, CIntelligentPointer<CThingAICreature>* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of AI-creature intelligent pointers: n = last - first assignments, returns the end of the output
 // Leaf: ??$__copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AFA10, 60 bytes (+4 int3), `ret 0Ch` (/Gr __fastcall: first in ecx -> esi, last
 //   in edx, then result, the iterator-category tag reference and the distance-type pointer on the stack).
@@ -11,7 +11,7 @@
 //   ++__result; } return __result;` -- the count in ebx, `result` read straight from its slot on the empty path.
 class CThingAICreature;
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 }
 
@@ -29,7 +29,7 @@ public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                               const random_access_iterator_tag&, _Distance*)

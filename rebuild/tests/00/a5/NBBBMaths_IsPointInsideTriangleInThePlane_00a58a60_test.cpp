@@ -1,7 +1,7 @@
 // Behaviour test for 0x00A58A60 NBBBMaths::IsPointInsideTriangleInThePlane(const vector<C2DVector>&, const C2DVector&)
 #include <cstdio>
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     typedef unsigned int size_type;
@@ -11,7 +11,7 @@ public:
     const T* begin() const { return _M_start; }
     const T& operator[](size_type n) const { return *(begin() + n); }
 };
-}   // namespace _STL
+}   // namespace std
 
 class C2DVector {
 public:
@@ -23,7 +23,7 @@ public:
 };
 
 namespace NBBBMaths {
-bool IsPointInsideTriangleInThePlane(const _STL::vector<C2DVector>& points, const C2DVector& pos)
+bool IsPointInsideTriangleInThePlane(const std::vector<C2DVector>& points, const C2DVector& pos)
 {
     C2DVector edge = points[0] - points[2];
     C2DVector toPos = pos - points[2];
@@ -43,7 +43,7 @@ int main()
 {
     C2DVector ccw[3] = { C2DVector(0.0f, 0.0f), C2DVector(4.0f, 0.0f), C2DVector(0.0f, 4.0f) };
     C2DVector cw[3] = { C2DVector(0.0f, 0.0f), C2DVector(0.0f, 4.0f), C2DVector(4.0f, 0.0f) };
-    _STL::vector<C2DVector> a, b;
+    std::vector<C2DVector> a, b;
     a._M_start = ccw; a._M_finish = a._M_end_of_storage = ccw + 3;
     b._M_start = cw;  b._M_finish = b._M_end_of_storage = cw + 3;
     bool ok = NBBBMaths::IsPointInsideTriangleInThePlane(a, C2DVector(1.0f, 1.0f)) &&

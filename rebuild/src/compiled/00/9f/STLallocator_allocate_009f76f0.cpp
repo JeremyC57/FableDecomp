@@ -1,4 +1,4 @@
-// _STL::allocator::allocate(unsigned int __n, const void*) -- STLport allocator<_List_node<CVsyncCallbackTimer::CPendingQuery> >::allocate: malloc __n 0x18-byte list nodes, or null for zero
+// std::allocator::allocate(unsigned int __n, const void*) -- STLport allocator<_List_node<CVsyncCallbackTimer::CPendingQuery> >::allocate: malloc __n 0x18-byte list nodes, or null for zero
 // Leaf: ?allocate@?$allocator@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F76F0, length 55 bytes, thiscall, `ret 8` (__n and the unused hint).
 // Callees: malloc @ 0x00BFEA0E. The chunk label "AllocArray_0x18Elements" is descriptive.
@@ -17,7 +17,7 @@
 extern "C" void __cdecl free(void* block);                         // 0x00BFEA14
 extern "C" void* __cdecl malloc(unsigned int size);                // 0x00BFEA0E
 void* __cdecl operator new(unsigned int size, void* where);        // 0x00405C10 (placement new, called out of line)
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -186,12 +186,12 @@ public:
         double           TimeStamp;
     };
     void* Device;                                                       // +0x00 IDirect3DDevice9*
-    _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > FreeQueoryObjects;   // +0x04
-    _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > PendingQueories;     // +0x08
+    std::list<CPendingQuery, std::allocator<CPendingQuery> > FreeQueoryObjects;   // +0x04
+    std::list<CPendingQuery, std::allocator<CPendingQuery> > PendingQueories;     // +0x08
     long PendingFrame;                                                  // +0x0c
     long FinishedFrame;                                                 // +0x10
     void ClearAllQueries();
     void OnPreDeviceReset();
 };
 
-template class _STL::allocator<_STL::_List_node<CVsyncCallbackTimer::CPendingQuery> >;
+template class std::allocator<std::_List_node<CVsyncCallbackTimer::CPendingQuery> >;

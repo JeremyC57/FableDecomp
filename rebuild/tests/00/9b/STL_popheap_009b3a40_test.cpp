@@ -1,4 +1,4 @@
-// Behaviour test for 0x009B3A40 _STL::__pop_heap<CWideString*, CWideString, less<CWideString>>.
+// Behaviour test for 0x009B3A40 std::__pop_heap<CWideString*, CWideString, less<CWideString>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("009b3a40_TEST FAIL\n"); return 1; } } while (0)

@@ -13,7 +13,7 @@
 // OutputIndex and Cost stay uninitialised. One shared zero register (ebx), one `add esp,0Ch`.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -83,7 +83,7 @@ public:
     _Rep_type _M_t;
     map() : _M_t(C(), A()) { }
 };
-} // namespace _STL
+} // namespace std
 
 namespace QuadricOptimiserInternals {
 
@@ -96,7 +96,7 @@ public:
 
 class CIndexList {
 public:
-    _STL::set<unsigned long> Indices;                       // +0x00 (12 bytes in retail)
+    std::set<unsigned long> Indices;                       // +0x00 (12 bytes in retail)
 };
 
 class COptimisedVertex {
@@ -106,8 +106,8 @@ public:
     bool          Exists;                                   // +0x90
     unsigned long UniqueIndex;                              // +0x94
     unsigned long OutputIndex;                              // +0x98
-    _STL::map<unsigned long, float>                 Groups;            // +0x9C
-    _STL::map<unsigned long, CContractionReference> PairContractions;  // +0xA8
+    std::map<unsigned long, float>                 Groups;            // +0x9C
+    std::map<unsigned long, CContractionReference> PairContractions;  // +0xA8
     COptimisedVertex();
 };
 

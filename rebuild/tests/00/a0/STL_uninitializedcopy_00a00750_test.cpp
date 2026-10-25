@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A00750 _STL::__uninitialized_copy<CGraphicInfoFrame*>: [first, last) is copy-constructed into raw storage at result (each
+// Behaviour test for 0x00A00750 std::__uninitialized_copy<CGraphicInfoFrame*>: [first, last) is copy-constructed into raw storage at result (each
 // copy taking a reference on its frame data) and the end of the destination is returned.
 #include <cstdlib>
 #include <cstdio>

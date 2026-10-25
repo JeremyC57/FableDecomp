@@ -16,7 +16,7 @@
 //   counting loop; `if (a && b && c) return true; return false;` gives the byte `mov al,1` / `xor al,al` exits.
 struct CThingCreatureBase;
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -41,7 +41,7 @@ enum ECreatureInteractionType { CREATURE_INTERACTION_TRADE = 8 };   // descripti
 
 class CCreatureInteraction {
 public:
-    _STL::list<CThingCreatureBase*> Participants;   // +0x00
+    std::list<CThingCreatureBase*> Participants;   // +0x00
     ECreatureInteractionType Type;                  // +0x04
     ECreatureInteractionType GetType() const { return Type; }
 };

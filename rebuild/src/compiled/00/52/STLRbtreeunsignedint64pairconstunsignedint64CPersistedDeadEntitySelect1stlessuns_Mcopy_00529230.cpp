@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CPersistedDeadEntity>, _Select1st, less<unsigned __int64> >::_M_copy(_Rb_tree_node<value_type>* x, _Rb_tree_node<value_type>* p) -- STLport structural subtree copy of CEntityRuntimePersistence::PersistedDeadEntities: clone x under parent p, recurse into every right subtree and walk the left spine iteratively; returns the new subtree root
+// std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CPersistedDeadEntity>, _Select1st, less<unsigned __int64> >::_M_copy(_Rb_tree_node<value_type>* x, _Rb_tree_node<value_type>* p) -- STLport structural subtree copy of CEntityRuntimePersistence::PersistedDeadEntities: clone x under parent p, recurse into every right subtree and walk the left spine iteratively; returns the new subtree root
 // Leaf: _M_copy
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00529230, 180 bytes, `ret 8` (thiscall: x, p).
 // Callees: _M_clone_node 0x00528930 (the out-of-line copy of the inline member: create + colour + null children;

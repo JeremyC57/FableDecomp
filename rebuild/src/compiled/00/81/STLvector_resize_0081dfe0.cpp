@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the particle morph entries
-// Leaf: ?resize@?$vector@VCEntry@CParticleMorphs@@V?$allocator@VCEntry@CParticleMorphs@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the particle morph entries
+// Leaf: ?resize@?$vector@VCEntry@CParticleMorphs@@V?$allocator@VCEntry@CParticleMorphs@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081DFE0, 68 bytes, thiscall, `ret 4`.
 // Identity: vector<CParticleMorphs::CEntry> (36 bytes, Ego_r.pdb members; see 0x0081DED0 for the pair-map relative).
 //   The callee 0x0081DB00 is the two-argument resize. No direct reference (xref 0). Catalog
@@ -34,7 +34,7 @@ public:
         CEntry() { memset(this, 0, sizeof(*this)); LocationName = CDefString(); }
     };
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

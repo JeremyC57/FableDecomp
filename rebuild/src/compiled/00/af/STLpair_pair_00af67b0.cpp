@@ -1,5 +1,5 @@
-// _STL::pair::pair() -- default constructor of pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance>: type 0, then an empty enabled component instance
-// Leaf: ??0?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@_STL@@QAE@XZ
+// std::pair::pair() -- default constructor of pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance>: type 0, then an empty enabled component instance
+// Leaf: ??0?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF67B0, 49 bytes, __fastcall `ret`, returns `this`.
 // Identity: the element of CParticleSystem's Components map (CVectorMap<EPSCType, CComponentInstance>); the same
 //   default pair is built inline by the landed one-argument resize 0x00AF7A10 (`resize(n, value_type())`). No direct
@@ -34,7 +34,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

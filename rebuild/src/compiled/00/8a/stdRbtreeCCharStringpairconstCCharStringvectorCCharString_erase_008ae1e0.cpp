@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::erase(iterator position) -- STLport map node erase: unlink and rebalance, destroy the (key, string vector) value, free the node, drop the count
-// Leaf: ?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@@3@@_STL@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@_STL@@@_STL@@@2@@2@@Z
+// Leaf: ?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@2@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AE1E0, 120 bytes, thiscall, `ret 4` (the iterator by value).
 // Identity: the manifest's "std::map::_Erase_node" is descriptive. The only caller is this tree's erase(first, last)
 //   0x008AE380 (this chunk), used by the CTCAIScratchpad gossip maps (map<CCharString, vector<CCharString> >, the
@@ -21,7 +21,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
@@ -134,4 +134,4 @@ void _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::erase(iterator __pos
 typedef pair<const CCharString, vector<CCharString> > _GossipValue;
 template void _Rb_tree<CCharString, _GossipValue, _Select1st<_GossipValue>, less<CCharString> >::erase(iterator);
 
-} // namespace _STL
+} // namespace std

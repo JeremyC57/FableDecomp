@@ -1,4 +1,4 @@
-// _STL::vector<C3DTriangle2>::reserve(unsigned int n) -- grow the index-triangle vector's storage to hold at least n triangles, copying the existing ones and freeing the old block
+// std::vector<C3DTriangle2>::reserve(unsigned int n) -- grow the index-triangle vector's storage to hold at least n triangles, copying the existing ones and freeing the old block
 // Leaf: ?reserve@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A70BC0, 142 bytes, thiscall `ret 4`.
 // Callees: vector<C3DTriangle2>::_M_allocate_and_copy<const C3DTriangle2*> 0x00A6E470 (same chunk, out of line),
@@ -17,7 +17,7 @@ public:
     unsigned short VertexIndex[3];                      // +0x00
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 

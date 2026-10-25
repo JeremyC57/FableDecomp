@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<long, CLongMapValue8>* first, pair<long, CLongMapValue8>* last, pair<long, CLongMapValue8>*, CKeyPairCompareLess comp) -- STLport insertion-sort pass with no lower-bound test over a long-keyed vector map of 12-byte entries, each entry sifted down by its signed key
+// std::__unguarded_insertion_sort_aux(pair<long, CLongMapValue8>* first, pair<long, CLongMapValue8>* last, pair<long, CLongMapValue8>*, CKeyPairCompareLess comp) -- STLport insertion-sort pass with no lower-bound test over a long-keyed vector map of 12-byte entries, each entry sifted down by its signed key
 // Leaf: ??$__unguarded_insertion_sort_aux@PAU?$pair@JVCLongMapValue8@@
 // Retail 0x0086F3E0, 0x67 bytes (+ int3 padding to 0x70), `ret 8` (/Gr: first in ecx, last in edx, the value-type tag
 // pointer and the empty comparator on the stack). No callees.
@@ -19,7 +19,7 @@ public:
     unsigned long Words[2];
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair
 {
     _T1 first;                                       // +0x00
@@ -51,11 +51,11 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 template <class K, class V> class CKeyPairCompareLess
 {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, CLongMapValue8> TLongMapPair;
+typedef std::pair<long, CLongMapValue8> TLongMapPair;
 
-template void __fastcall _STL::__unguarded_insertion_sort_aux<TLongMapPair*, TLongMapPair,
+template void __fastcall std::__unguarded_insertion_sort_aux<TLongMapPair*, TLongMapPair,
     CKeyPairCompareLess<long, CLongMapValue8> >(TLongMapPair*, TLongMapPair*,
     TLongMapPair*, CKeyPairCompareLess<long, CLongMapValue8>);

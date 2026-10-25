@@ -1,4 +1,4 @@
-// _STL::__partial_sort(SKeyedList* first, SKeyedList* middle, SKeyedList* last, SKeyedList*, CKeyPairCompareLess comp) -- SGI partial_sort over (unsigned __int64 key, list) pairs: heap the head range, pop every smaller tail element into it, then sort the heap
+// std::__partial_sort(SKeyedList* first, SKeyedList* middle, SKeyedList* last, SKeyedList*, CKeyPairCompareLess comp) -- SGI partial_sort over (unsigned __int64 key, list) pairs: heap the head range, pop every smaller tail element into it, then sort the heap
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A84A60, 161 bytes (+ int3 padding), `ret 0Ch`: /Gr `__fastcall` (first in
 //   ecx -> ebx, middle in edx -> esi, spilled to the `push ecx` frame word; last, the type pointer and the empty comparator

@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SAttitudeEntry* first, SAttitudeEntry* last, SAttitudeEntry val, CKeyPairCompareLess comp) -- STLport insertion-sort step over the CSubtitledMessage attitude map's 8-byte pair<float, EConversationAttitude>: a value whose key is below the first element shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
+// std::__linear_insert(SAttitudeEntry* first, SAttitudeEntry* last, SAttitudeEntry val, CKeyPairCompareLess comp) -- STLport insertion-sort step over the CSubtitledMessage attitude map's 8-byte pair<float, EConversationAttitude>: a value whose key is below the first element shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D0F10, 105 bytes (+ int3 padding), `ret 0Ch`.
 // Callee: __unguarded_linear_insert(last, val, comp) 0x004CFCB0 (`__fastcall`, last in ecx, the 8-byte value and the
@@ -12,7 +12,7 @@
 //   `__copy_backward` (`for (n = last - first; n > 0; --n) *--result = *--last;`, the pair's implicit operator= as
 //   two dword moves); the by-value argument of the else arm is built in the argument area through pair's memberwise
 //   copy constructor. `fld val.first ; fcomp [first] ; test ah,5 ; jp` = val.first < first->first.
-namespace _STL {
+namespace std {
 
 enum EConversationAttitude { ATTITUDE_NONE };
 

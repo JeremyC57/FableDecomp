@@ -1,5 +1,5 @@
-// _STL::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<unsigned long,CContractionReference> (COptimisedVertex::PairContractions): clone x under parent p (add-ref of the contraction pointer), recurse into every right subtree and walk down the left spine
-// Leaf: ?_M_copy@?$_Rb_tree@KU?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@_STL@@
+// std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<unsigned long,CContractionReference> (COptimisedVertex::PairContractions): clone x under parent p (add-ref of the contraction pointer), recurse into every right subtree and walk down the left spine
+// Leaf: ?_M_copy@?$_Rb_tree@KU?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD43A0, 218 bytes (+6 int3), thiscall `ret 8`.
 // Identity: recursive (0x00AD43FE, 0x00AD445F); other callers 0x00AD597B / 0x00AD61A4 (the tree copy constructor and
 //   operator=). Node 0x20 bytes = 0x10 links + pair<const unsigned long, CContractionReference>: key, then the
@@ -52,7 +52,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -205,9 +205,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_Link_type
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _Link_type __p)
@@ -230,10 +230,10 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _
     }
     return __top;
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const unsigned long, QuadricOptimiserInternals::CContractionReference> TContractionValue;
-typedef _STL::_Rb_tree<unsigned long, TContractionValue, _STL::_Select1st<TContractionValue>, _STL::less<unsigned long>,
-                       _STL::allocator<TContractionValue> > TContractionMapTree;
+typedef std::pair<const unsigned long, QuadricOptimiserInternals::CContractionReference> TContractionValue;
+typedef std::_Rb_tree<unsigned long, TContractionValue, std::_Select1st<TContractionValue>, std::less<unsigned long>,
+                       std::allocator<TContractionValue> > TContractionMapTree;
 template TContractionMapTree::_Link_type TContractionMapTree::_M_copy(TContractionMapTree::_Link_type,
                                                                       TContractionMapTree::_Link_type);

@@ -4,7 +4,7 @@ address	status	bytes	test	note
 0066a1e0	DIFFER	725v725	-	ForEachInRoughArea Bind3: SIB operand order + exit reload order; 4 grades
 0086deb0	RELOCATION_MATCH	433v433	PASS	GFReadVectorMapMemDump<CTextureMorph>; 3 grades
 007adbf0	RELOCATION_MATCH	286v286	PASS	GFSerialiseMapBinaryIn over map<CCharString,bool>; 2 grades
-008c2f70	MATCH	518v518	PASS	_STL::__find_if<C3DVector*,CIsOutsideRadius> (/Gr TU); 1 grade
+008c2f70	MATCH	518v518	PASS	std::__find_if<C3DVector*,CIsOutsideRadius> (/Gr TU); 1 grade
 00516830	DIFFER	372v370	-	GetAllLeafThings: retail_asm candidate (inline-asm ceil); 1 grade
 00518340	DIFFER	686v686	-	GetAllTCsInRoughArea<iface 0x3D,IsInQuestOrNullQuest,vector>: level-loop exit reload pair; 3 grades
 0084ba50	DIFFER	702v702	-	GetAllTCsInRoughArea vector instance: loop-exit reload order; 1 grade

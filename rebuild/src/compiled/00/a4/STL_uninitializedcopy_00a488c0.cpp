@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const CLipSyncPhoneme* first, const CLipSyncPhoneme* last, CLipSyncPhoneme* result, const __false_type&) -- placement copy-construct lip-sync phonemes into raw storage, return the advanced result
+// std::__uninitialized_copy(const CLipSyncPhoneme* first, const CLipSyncPhoneme* last, CLipSyncPhoneme* result, const __false_type&) -- placement copy-construct lip-sync phonemes into raw storage, return the advanced result
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A488C0, length 58 bytes, `ret 8`.
 // Callers: 0x00A4898C, 0x00A49CB7, 0x00A4A58E and 0x00A4A63A (vector<CLipSyncPhoneme> copy / insert helpers). Callee: CCharString copy ctor 0x0099EC30.
@@ -24,7 +24,7 @@ public:
     float         Weight;                            // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // STLport _IS_POD_ITER result for a class element
 
 template <class _T1, class _T2>

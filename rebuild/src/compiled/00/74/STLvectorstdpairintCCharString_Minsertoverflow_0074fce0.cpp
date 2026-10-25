@@ -1,4 +1,4 @@
-// 0074fce0 _STL::vector<std::pair<int,CCharString>>::_M_insert_overflow
+// 0074fce0 std::vector<std::pair<int,CCharString>>::_M_insert_overflow
 // Flags: /Gr
 // Leaf: _M_insert_overflow
 // Layout: vector3 pointers; pair stride8 and CCharString at+4 from ctor99ec30 indexed access.

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<pair<long,long>, pair<const pair<long,long>, CCountedPointer<CVertexPairContraction> >, ...>::insert_unique(const value_type&) @ 0x00AD4720
+// Behaviour test for std::_Rb_tree<pair<long,long>, pair<const pair<long,long>, CCountedPointer<CVertexPairContraction> >, ...>::insert_unique(const value_type&) @ 0x00AD4720
 // Walks down to the insertion point, steps back one node (operator--) when the walk ended on a left turn, and inserts
 // only when that predecessor's key is less than v's key; returns (node, true) or (existing node, false).
 #include <cstdio>

@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(SNameEntry* first, SNameEntry* last, SNameEntry pivot, CNameLess comp) -- STLport quicksort partition over the 8-byte (name, object) entries around a by-value pivot; returns the split point
+// std::__unguarded_partition(SNameEntry* first, SNameEntry* last, SNameEntry pivot, CNameLess comp) -- STLport quicksort partition over the 8-byte (name, object) entries around a by-value pivot; returns the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe @ 0x00A40660, 170 bytes, `ret 0Ch`. /Gr TU written as explicit __fastcall: first in ecx, last in
 //   edx, the by-value pivot (8 bytes) and the comparator slot on the stack; the callee destroys the pivot's string.
@@ -56,7 +56,7 @@ public:
 
 class CSoundBankLH;                                         // descriptive: the mapped object of CSoundManagerLH's maps
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -73,18 +73,18 @@ bool __cdecl operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y);   
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
+typedef std::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type_of(_Tp*) { return (_Tp*)0; }
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
@@ -116,4 +116,4 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 }
 
-template SNameEntry* __fastcall _STL::__unguarded_partition<SNameEntry*, SNameEntry, CNameLess>(SNameEntry*, SNameEntry*, SNameEntry, CNameLess);
+template SNameEntry* __fastcall std::__unguarded_partition<SNameEntry*, SNameEntry, CNameLess>(SNameEntry*, SNameEntry*, SNameEntry, CNameLess);

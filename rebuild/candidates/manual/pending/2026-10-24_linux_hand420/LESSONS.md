@@ -66,7 +66,7 @@ Review at landing:
   - 0x00A57F70 names its callee 0x00A57EF0 "GetPathLength" (PDB: NBBBMaths::CLinearSpline::GetLength).
   - 0x00A5DDE0's comment calls the second stack argument a by-value allocator; it is the `__false_type` tag reference
     of STLport `__uninitialized_copy`.
-  - 0x004856CD models `namespace std` instead of `_STL`, so its mangled name differs from the retail symbol.
+  - 0x004856CD models `namespace std` instead of `std`, so its mangled name differs from the retail symbol.
 - Catalog rows that hold several functions: none in this chunk.
 - Process slip: one shell command in this session ran `cd` into the agent directory, against the brief's "do not
   cd" rule. It only ran g++ tests and had no other effect.

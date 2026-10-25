@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -72,7 +72,7 @@ static bool Near(float a, float b) { float d = a - b; return d < 1e-6f && d > -1
 
 enum EAttackHistoryType { ATTACK_HISTORY_TYPE_NONE = 0 };
 enum EDamageAttribute { DAMAGE_ATTRIBUTE_NONE = 0 };
-typedef _STL::pair<EAttackHistoryType, EDamageAttribute> TComboStep;
+typedef std::pair<EAttackHistoryType, EDamageAttribute> TComboStep;
 class CComboVector {                           // the combo's (empty) STLport vector: three null words
 public:
     TComboStep* Start;

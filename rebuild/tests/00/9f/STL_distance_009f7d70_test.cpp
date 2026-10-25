@@ -1,11 +1,11 @@
-// Behaviour test for 0x009F7D70 _STL::distance over list const_iterators: forwards to __distance with a bidirectional tag.
+// Behaviour test for 0x009F7D70 std::distance over list const_iterators: forwards to __distance with a bidirectional tag.
 #include <cstdio>
 #include <cstdlib>
 #include <new>
 
 static int gNodesAllocated = 0, gNodesFreed = 0;
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -177,7 +177,7 @@ public:
         long             Frame;
         double           TimeStamp;
     };
-    typedef _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > CQueryList;
+    typedef std::list<CPendingQuery, std::allocator<CPendingQuery> > CQueryList;
     void* Device;
     CQueryList FreeQueoryObjects;
     CQueryList PendingQueories;
@@ -213,9 +213,9 @@ int main()
 {
     CQueryList l;
     const CQueryList& c = l;
-    bool ok = _STL::distance(c.begin(), c.end()) == 0;
+    bool ok = std::distance(c.begin(), c.end()) == 0;
     for (long i = 0; i < 7; ++i) l.push_front(MakeQuery(0, i));
-    ok = ok && _STL::distance(c.begin(), c.end()) == 7;
+    ok = ok && std::distance(c.begin(), c.end()) == 7;
     if (!ok) { std::printf("009f7d70_TEST FAIL\n"); return 1; }
     std::printf("009f7d70_TEST PASS\n");
     return 0;

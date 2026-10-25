@@ -3,8 +3,8 @@
 // Retail 0x008ED040, 0x4D bytes, thiscall `ret 4`. Manifest label "std_vector_erase_single<CTCSkeletalMorph>" is
 //   propagated; the PDB name set has `?RemoveItem@CTCContainer@@QAEXJ@Z` and the landed caller
 //   CGameScriptInterface::RemoveItemFromContainer 0x0089E810 already names it.
-// Callees: _STL::__find_if<pair<long, CCharString>*, pred> __fastcall @ 0x008ECEF0 (defined in this TU, chunk row),
-//   _STL::__copy<pair<long, CCharString>*> __fastcall @ 0x0074F640 (element assignment through CCharString::operator=
+// Callees: std::__find_if<pair<long, CCharString>*, pred> __fastcall @ 0x008ECEF0 (defined in this TU, chunk row),
+//   std::__copy<pair<long, CCharString>*> __fastcall @ 0x0074F640 (element assignment through CCharString::operator=
 //   0x0099EFB0), CCharString::~CCharString @ 0x0099EAE0.
 // Layout: retail CTCContainer = CTCBase (0xC) + ContainerItems vector<pair<long, CCharString>> at +0x0C (Ego_r.pdb
 //   struct layout; STLport vector = start/finish/end-of-storage, 12 bytes); each item is 8 bytes (definition index,
@@ -21,7 +21,7 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -121,20 +121,20 @@ class CIsItemWithDefIndex {
 public:
     long DefIndex;                              // +0x00
     CIsItemWithDefIndex(long defIndex) : DefIndex(defIndex) {}
-    bool operator()(const _STL::pair<long, CCharString>& item) const { return item.first == DefIndex; }
+    bool operator()(const std::pair<long, CCharString>& item) const { return item.first == DefIndex; }
 };
 
 class CTCContainer {
 public:
     unsigned char _base[0xc];                   // +0x00 CTCBase (vptr, parent thing, flags)
-    _STL::vector<_STL::pair<long, CCharString> > ContainerItems;   // +0x0c
+    std::vector<std::pair<long, CCharString> > ContainerItems;   // +0x0c
     void RemoveItem(long defIndex);
 };
 
 void CTCContainer::RemoveItem(long defIndex)
 {
-    _STL::vector<_STL::pair<long, CCharString> >::iterator it =
-        _STL::find_if(ContainerItems.begin(), ContainerItems.end(), CIsItemWithDefIndex(defIndex));
+    std::vector<std::pair<long, CCharString> >::iterator it =
+        std::find_if(ContainerItems.begin(), ContainerItems.end(), CIsItemWithDefIndex(defIndex));
     if (it != ContainerItems.end())
         ContainerItems.erase(it);
 }

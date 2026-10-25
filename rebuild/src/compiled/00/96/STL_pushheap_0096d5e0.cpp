@@ -1,14 +1,14 @@
-// _STL::__push_heap(CThing** first, int holeIndex, int topIndex, CThing* val, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- heap sift-up of the screamer pursue-target sort: move val up while its parent sorts before it
+// std::__push_heap(CThing** first, int holeIndex, int topIndex, CThing* val, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- heap sift-up of the screamer pursue-target sort: move val up while its parent sorts before it
 // Leaf: ??$__push_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096D5E0, 119 bytes (+ int3 padding to 128), __fastcall (/Gr algorithm TU: first
 //   in ecx, holeIndex in edx, topIndex, val and the comparator on the stack), `ret 0Ch`.
-// Instantiation: the screamer target sort: _STL::partial_sort / sort<CThing**,
+// Instantiation: the screamer target sort: std::partial_sort / sort<CThing**,
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> > of CAIStateGroup_ScreamerPursueTarget::Update
 //   (0x0096DF50) and its __introsort_loop (0x0096E410).
 // Callees: CThingCompare_Nearest::operator()<CThing> @ 0x004A8D80 (through the adapter, inline).
 // Shape: SGI/STLport `__push_heap` (parent = (hole - 1) / 2).
 // Label: catalog "_Push_heap<CThing**,int,CThing*,CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest>_>" -> the
-//   STLport 4.x _STL::__push_heap instantiation for CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> (retail
+//   STLport 4.x std::__push_heap instantiation for CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> (retail
 //   links STLport; the Dinkumware names in Ego_r.pdb are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
 class CThing;
@@ -38,7 +38,7 @@ public:
 };
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val,
                             _Compare __comp)
@@ -52,4 +52,4 @@ void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex
     *(__first + __holeIndex) = __val;
 }
 template void __fastcall __push_heap<CThing**, int, CThing*, TComp>(CThing**, int, int, CThing*, TComp);
-} // namespace _STL
+} // namespace std

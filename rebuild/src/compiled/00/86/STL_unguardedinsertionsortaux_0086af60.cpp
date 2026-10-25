@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CRandomAppearanceMorph::CSkeletalMorph>* last, pair<long, CRandomAppearanceMorph::CSkeletalMorph>*, CKeyPairCompareLess comp) -- STLport insertion-sort pass with no lower-bound test over the skeletal-morph vector map, one out-of-line linear insert per entry
+// std::__unguarded_insertion_sort_aux(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CRandomAppearanceMorph::CSkeletalMorph>* last, pair<long, CRandomAppearanceMorph::CSkeletalMorph>*, CKeyPairCompareLess comp) -- STLport insertion-sort pass with no lower-bound test over the skeletal-morph vector map, one out-of-line linear insert per entry
 // Leaf: ??$__unguarded_insertion_sort_aux@PAU?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@
 // Retail 0x0086AF60, 0x40 bytes (+ int3 padding to 0x50), `ret 8` (/Gr: first in ecx, last in edx, the value-type tag
 // pointer and the empty comparator on the stack).
@@ -23,7 +23,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair
 {
     _T1 first;                                       // +0x00
@@ -55,11 +55,11 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 template <class K, class V> class CKeyPairCompareLess
 {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+typedef std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
 
-template void __fastcall _STL::__unguarded_insertion_sort_aux<TSkeletalMorphPair*, TSkeletalMorphPair,
+template void __fastcall std::__unguarded_insertion_sort_aux<TSkeletalMorphPair*, TSkeletalMorphPair,
     CKeyPairCompareLess<long, CRandomAppearanceMorph::CSkeletalMorph> >(TSkeletalMorphPair*, TSkeletalMorphPair*,
     TSkeletalMorphPair*, CKeyPairCompareLess<long, CRandomAppearanceMorph::CSkeletalMorph>);

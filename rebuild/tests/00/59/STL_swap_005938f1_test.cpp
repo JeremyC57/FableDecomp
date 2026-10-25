@@ -1,4 +1,4 @@
-// Behaviour test for 0x005938F1 _STL::swap<pair<long,CDefPointer<const CContextSensitiveItemDef>>>.
+// Behaviour test for 0x005938F1 std::swap<pair<long,CDefPointer<const CContextSensitiveItemDef>>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("005938f1_TEST FAIL\n"); return 1; } } while (0)

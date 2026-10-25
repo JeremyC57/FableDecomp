@@ -27,7 +27,7 @@ public:
     CSoundEmitterLH(CSoundManagerLH* owner, const C3DVector& position);   // 0x00AAC580
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 struct _List_node_base {
@@ -84,7 +84,7 @@ public:
     virtual void v05();
     virtual bool vfunc_6();                                 // slot 6 (+0x18): entries below the limit
     unsigned char _04[0x48];                                // +0x04..+0x4b
-    _STL::list<CSoundEmitterLH*> m_entries;                 // +0x4c
+    std::list<CSoundEmitterLH*> m_entries;                 // +0x4c
 };
 
 CSoundEmitterLH* CSoundManagerLH::vfunc_4(const C3DVector& position)

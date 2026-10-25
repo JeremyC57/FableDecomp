@@ -9,7 +9,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -81,7 +81,7 @@ public:
 class CProfileManager {
 public:
     unsigned char m_before[0x4C];                   // UpPressed .. NewProfilesRegistered
-    _STL::list<CProfile*> ProfileList;              // +0x4C
+    std::list<CProfile*> ProfileList;              // +0x4C
     void AddProfile(CProfile& profile);
 };
 

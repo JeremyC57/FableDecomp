@@ -1,10 +1,10 @@
-// _STL::__linear_insert(pair<long,C3DMeshVolume>* first, pair<long,C3DMeshVolume>* last, pair<long,C3DMeshVolume> val, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- insertion-sort step over the navigation containment volumes: a value whose key is below first's shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
+// std::__linear_insert(pair<long,C3DMeshVolume>* first, pair<long,C3DMeshVolume>* last, pair<long,C3DMeshVolume> val, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- insertion-sort step over the navigation containment volumes: a value whose key is below first's shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A728F0, 179 bytes (+13 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the 16-byte value and the empty comparator on the stack, `ret 14h`).
-// Callees: _STL::__copy_backward 0x00A70A10 (first/last in ecx/edx, result, the tag reference and a null distance
+// Callees: std::__copy_backward 0x00A70A10 (first/last in ecx/edx, result, the tag reference and a null distance
 //   pointer), C3DMeshVolume::operator= 0x00A32960 (out-of-line COMDAT), CCharString::CCharString(const CCharString&)
-//   0x0099EC30, _STL::__unguarded_linear_insert 0x00A703C0 (same chunk), the count block's DeleteFunc, operator
+//   0x0099EC30, std::__unguarded_linear_insert 0x00A703C0 (same chunk), the count block's DeleteFunc, operator
 //   delete 0x00BFE9BC, CCharString::~CCharString 0x0099EAE0 (val).
 // Identity: the manifest's "Vector_InsertElement_ComplexValue" is descriptive. 16-byte pair<long, C3DMeshVolume>
 //   entries of CPhysicsMesh::NavigationContainmentVolumes ordered by the signed key (`jge`).
@@ -81,7 +81,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -92,10 +92,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };

@@ -1,8 +1,8 @@
-// _STL::__insertion_sort(SKeyPair8* first, SKeyPair8* last, PFNKeyPairLess comp) -- STLport insertion sort over 8-byte (long, long) pairs ordered by a comparison FUNCTION pointer: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(SKeyPair8* first, SKeyPair8* last, PFNKeyPairLess comp) -- STLport insertion sort over 8-byte (long, long) pairs ordered by a comparison FUNCTION pointer: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD5B50, 54 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).
-// Callee: 0x00AD4880 _STL::__linear_insert(first, last, value, comp) (manifest "std::_InsertionSort_PartitionHelper" is
+// Callee: 0x00AD4880 std::__linear_insert(first, last, value, comp) (manifest "std::_InsertionSort_PartitionHelper" is
 // propagated; its only caller is this body). That callee calls the comparator indirectly (`call ebx` with ecx = &value,
 // edx = first), so the comparator here is a plain `bool (__fastcall*)(const T&, const T&)` function pointer.
 // Label: catalogued as `_Insertion_sort1<pair<long,long>*, CKeyPairCompareLess<long,long> >` (Dinkumware name, propagated

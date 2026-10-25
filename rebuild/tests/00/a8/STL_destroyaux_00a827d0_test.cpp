@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A827D0 _STL::__destroy_aux over list<C2DLineF>: every node and every sentinel of [first, last)
+// Behaviour test for 0x00A827D0 std::__destroy_aux over list<C2DLineF>: every node and every sentinel of [first, last)
 // is freed (nothing left allocated), an empty range frees nothing.
 #include <cstdio>
 #include <cstdlib>

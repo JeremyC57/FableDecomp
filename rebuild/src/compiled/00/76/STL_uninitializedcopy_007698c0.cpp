@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const AttackParticleAndEndPoints* first, const AttackParticleAndEndPoints* last, AttackParticleAndEndPoints* result, const __false_type&) -- copy-construct [first, last) into raw storage at result, return the end of the constructed range
+// std::__uninitialized_copy(const AttackParticleAndEndPoints* first, const AttackParticleAndEndPoints* last, AttackParticleAndEndPoints* result, const __false_type&) -- copy-construct [first, last) into raw storage at result, return the end of the constructed range
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007698C0, 106 bytes (+int3 pad to 112), `ret 8`.
 // Callers: 0x007699E0, 0x0076A030 and 0x0076B320 (vector copy/assign paths). Callees: CCharString copy constructor 0x0099EC30 (twice per element),
@@ -45,7 +45,7 @@ struct AttackParticleAndEndPoints {                     // 0x18 (Ego_r.pdb)
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

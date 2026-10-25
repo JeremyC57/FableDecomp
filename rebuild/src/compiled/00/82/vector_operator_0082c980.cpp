@@ -21,7 +21,7 @@ public:
     enum MinimapTheme { MINIMAP_THEME_FIRST };          // Ego_r.pdb CMinimapData::MinimapTheme (enumerators not needed)
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
@@ -114,4 +114,4 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
 }
 }
 
-template _STL::vector<CMinimapData::MinimapTheme>& _STL::vector<CMinimapData::MinimapTheme>::operator=(const _STL::vector<CMinimapData::MinimapTheme>&);
+template std::vector<CMinimapData::MinimapTheme>& std::vector<CMinimapData::MinimapTheme>::operator=(const std::vector<CMinimapData::MinimapTheme>&);

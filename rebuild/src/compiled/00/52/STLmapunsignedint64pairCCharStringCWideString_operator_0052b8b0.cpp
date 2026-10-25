@@ -1,4 +1,4 @@
-// _STL::map<unsigned __int64, pair<CCharString, CWideString> >::operator[](const unsigned __int64& k) -- STLport map subscript of CThingManager::NPCNameMap: find the first node not below k; unless its key equals k insert (k, empty name pair) there; return a reference to the mapped (name, display name) pair
+// std::map<unsigned __int64, pair<CCharString, CWideString> >::operator[](const unsigned __int64& k) -- STLport map subscript of CThingManager::NPCNameMap: find the first node not below k; unless its key equals k insert (k, empty name pair) there; return a reference to the mapped (name, display name) pair
 // Leaf: ??ACNPCNameMap
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052B8B0, 178 bytes, `ret 4` (thiscall: &k).
 // Callees: _M_lower_bound(const key&) const 0x00528610 (out of line; manifest "BinaryTree_LowerBound_Uint64"),

@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<unsigned long, CArray<C3DVector> > (CEngineInternalPrimitiveAnimatedMesh::CCache::BoneScalings): clone x under parent p (copy-constructing the bone-scaling array), recurse into every right subtree and walk down the left spine
+// std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<unsigned long, CArray<C3DVector> > (CEngineInternalPrimitiveAnimatedMesh::CCache::BoneScalings): clone x under parent p (copy-constructing the bone-scaling array), recurse into every right subtree and walk down the left spine
 // Leaf: ?_M_copy@?$_Rb_tree@KU?$pair@$$CBKV?$CArray@VC3DVector@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BD8B30, 193 bytes, thiscall `ret 8` (x, p; returns the cloned top).
 // Identity: recursive (0x00BD8B82, 0x00BD8BD6) and called by the tree operator= 0x00BD8D00 (landed as
@@ -30,7 +30,7 @@ public:
     CArray(const CArray& other);                        // 0x006F0810 (the vector<C3DVector> copy constructor)
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -183,9 +183,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_Link_type
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _Link_type __p)
@@ -208,9 +208,9 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _
     }
     return __top;
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const unsigned long, CArray<C3DVector> > TBoneScalingValue;
-typedef _STL::_Rb_tree<unsigned long, TBoneScalingValue, _STL::_Select1st<TBoneScalingValue>, _STL::less<unsigned long>,
-                       _STL::allocator<TBoneScalingValue> > TBoneScalingTree;
+typedef std::pair<const unsigned long, CArray<C3DVector> > TBoneScalingValue;
+typedef std::_Rb_tree<unsigned long, TBoneScalingValue, std::_Select1st<TBoneScalingValue>, std::less<unsigned long>,
+                       std::allocator<TBoneScalingValue> > TBoneScalingTree;
 template TBoneScalingTree::_Link_type TBoneScalingTree::_M_copy(TBoneScalingTree::_Link_type, TBoneScalingTree::_Link_type);

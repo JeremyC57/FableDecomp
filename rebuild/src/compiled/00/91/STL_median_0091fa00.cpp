@@ -1,4 +1,4 @@
-// _STL::__median(CThing* const& a, CThing* const& b, CThing* const& c, CThingCompare_Nearest comp) -- STLport median of three for the nearest-first sort: the middle element by the comparator, returned by reference
+// std::__median(CThing* const& a, CThing* const& b, CThing* const& c, CThingCompare_Nearest comp) -- STLport median of three for the nearest-first sort: the middle element by the comparator, returned by reference
 // Leaf: ??$__median@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091FA00, 132 bytes, __fastcall (&a in ecx, &b in edx; &c and the
 //   comparator on the stack), `ret 10h`.
@@ -31,7 +31,7 @@ public:
     template <class T> T* operator()(T* a, T* b) const;   // 0x0091F740 (returns the nearer thing; null loses)
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)

@@ -1,5 +1,5 @@
-// _STL::vector::push_back(const TeleportData& x) -- (vector<CQ_AmbushTradersScript::TeleportData>) STLport push_back of a 28-byte teleport record: copy-construct at finish and advance, else grow through _M_insert_overflow
-// Leaf: ?push_back@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@_STL@@@_STL@@QAEXABUTeleportData@CQ_AmbushTradersScript@NScript@@@Z
+// std::vector::push_back(const TeleportData& x) -- (vector<CQ_AmbushTradersScript::TeleportData>) STLport push_back of a 28-byte teleport record: copy-construct at finish and advance, else grow through _M_insert_overflow
+// Leaf: ?push_back@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXABUTeleportData@CQ_AmbushTradersScript@NScript@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0D490, 67 bytes (+ int3 padding), `ret 4`.
 // Callees: CQ_AmbushTradersScript::TeleportData::TeleportData(const TeleportData&) @ 0x00F0CA60 (implicit memberwise copy:
 //   CCharString 0x0099EC30, two dwords, CCharString, vector<CCharString> copy 0x007ACEA0), vector::_M_insert_overflow(pos, x,
@@ -17,7 +17,7 @@ public:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { };
 
@@ -51,7 +51,7 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 namespace NScript {
 class CQ_AmbushTradersScript {
@@ -61,11 +61,11 @@ public:
         unsigned long             appearanceSeed;  // +0x04
         float                     health;          // +0x08
         CCharString               scriptName;      // +0x0c
-        _STL::vector<CCharString> itemsCarried;    // +0x10
+        std::vector<CCharString> itemsCarried;    // +0x10
         TeleportData(const TeleportData& other);   // 0x00F0CA60
         ~TeleportData();
     };
 };
 }
 
-template void _STL::vector<NScript::CQ_AmbushTradersScript::TeleportData>::push_back(const NScript::CQ_AmbushTradersScript::TeleportData&);
+template void std::vector<NScript::CQ_AmbushTradersScript::TeleportData>::push_back(const NScript::CQ_AmbushTradersScript::TeleportData&);

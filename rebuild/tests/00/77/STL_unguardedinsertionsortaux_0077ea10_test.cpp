@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_insertion_sort_aux(pair<CCharString, C3DVector>*, ..., CKeyPairCompareLess<CCharString, C3DVector>) (0x0077EA10): after the pass [first, last) is in ascending key order (the
+// Behaviour test for std::__unguarded_insertion_sort_aux(pair<CCharString, C3DVector>*, ..., CKeyPairCompareLess<CCharString, C3DVector>) (0x0077EA10): after the pass [first, last) is in ascending key order (the
 // entry before first is a sentinel no greater than any key), equal keys keep their order and payloads travel with keys.
 #include <cstdio>
 #include <cstring>
@@ -13,7 +13,7 @@ public:
     bool operator<(const CCharString& o) const { return std::strcmp(Text, o.Text) < 0; }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -46,7 +46,7 @@ void __unguarded_insertion_sort_aux(_RandomAccessIter __first, _RandomAccessIter
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 class C3DVector {
 public:
@@ -56,7 +56,7 @@ public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-typedef _STL::pair<CCharString, C3DVector> E;
+typedef std::pair<CCharString, C3DVector> E;
 
 int main()
 {
@@ -65,7 +65,7 @@ int main()
     a[0] = E(CCharString(""), C3DVector(0.0f, 0.0f, 0.0f));
     for (int i = 0; i < 6; ++i)
         a[i + 1] = E(CCharString(names[i]), C3DVector((float)i, 2.0f * i, -1.0f));
-    _STL::__unguarded_insertion_sort_aux(a + 1, a + 7, (E*)0, CKeyPairCompareLess<CCharString, C3DVector>());
+    std::__unguarded_insertion_sort_aux(a + 1, a + 7, (E*)0, CKeyPairCompareLess<CCharString, C3DVector>());
     static const char* sorted[6] = { "alpha", "alpha", "bravo", "charlie", "delta", "echo" };
     static const int order[6] = { 1, 4, 3, 5, 0, 2 };
     int fails = 0;

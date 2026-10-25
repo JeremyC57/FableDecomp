@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, unsigned int n, const pair<long, CRandomAppearanceMorph::CSkeletalMorph>& x, const __false_type&) -- STLport placement-copy of one skeletal-morph map entry into n raw slots; returns the end of the run
+// std::__uninitialized_fill_n(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, unsigned int n, const pair<long, CRandomAppearanceMorph::CSkeletalMorph>& x, const __false_type&) -- STLport placement-copy of one skeletal-morph map entry into n raw slots; returns the end of the run
 // Leaf: ??$__uninitialized_fill_n@PAU?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@
 // Retail 0x0086AC40, 0x3A bytes, `ret 8` (/Gr: first in ecx -> eax as `cur`, n in edx counted down; &x and the empty
 // __false_type tag on the stack).
@@ -32,7 +32,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _T1, class _T2> struct pair
@@ -54,7 +54,7 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 }
 }
 
-typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+typedef std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
 
-template TSkeletalMorphPair* __fastcall _STL::__uninitialized_fill_n<TSkeletalMorphPair*, unsigned int, TSkeletalMorphPair>(
-    TSkeletalMorphPair*, unsigned int, const TSkeletalMorphPair&, const _STL::__false_type&);
+template TSkeletalMorphPair* __fastcall std::__uninitialized_fill_n<TSkeletalMorphPair*, unsigned int, TSkeletalMorphPair>(
+    TSkeletalMorphPair*, unsigned int, const TSkeletalMorphPair&, const std::__false_type&);

@@ -1,4 +1,4 @@
-// _STL::bitset::set(unsigned int pos) -- range-checked set of one bit of CThing::UsingComponents (bitset<274>: the interface types a thing uses); returns *this
+// std::bitset::set(unsigned int pos) -- range-checked set of one bit of CThing::UsingComponents (bitset<274>: the interface types a thing uses); returns *this
 // Leaf: ?set@?$bitset@$0BBC@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CC090, 62 bytes (+ int3 padding), thiscall `ret 4`, *this in eax.
 // Caller: CThing::AddTC 0x004C9D60 (landed; 0x004C9F17 `UsingComponents.set(type)`).
@@ -11,7 +11,7 @@
 extern "C" int __cdecl puts(const char* text);              // 0x00BFEAF2 (MSVCR71 import thunk)
 extern "C" __declspec(noreturn) void __cdecl abort(void);   // 0x00BFEAEC (MSVCR71 import thunk)
 
-namespace _STL {
+namespace std {
 template <unsigned int _Nb>
 class bitset {                                              // STLport 4.x bitset (exceptions off)
 public:

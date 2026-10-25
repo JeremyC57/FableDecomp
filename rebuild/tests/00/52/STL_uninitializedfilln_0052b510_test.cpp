@@ -76,7 +76,7 @@ static int StringValue(const CCharString& s, char prefix)
 static int LiveObjects() { return gLiveStrings; }
 
 static int gBlocks = 0;                                 // live byte blocks of the SaveData vectors
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 
@@ -143,9 +143,9 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
-    CArray(const T* p, unsigned int n) : _STL::vector<T>(p, n) { }   // test constructor
+    CArray(const T* p, unsigned int n) : std::vector<T>(p, n) { }   // test constructor
 };
 
 namespace NThingManager {
@@ -164,7 +164,7 @@ public:
 }
 typedef NThingManager::CEntityRuntimePersistence::CEntityScriptInfo CEntityScriptInfo;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _ForwardIter, class _Size, class _Tp>
 inline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
@@ -196,15 +196,15 @@ int main()
         static const unsigned char bytes[5] = { 9, 8, 7, 6, 5 };
         CEntityScriptInfo x("ScriptA", bytes, 5, 1234, true);
         CEntityScriptInfo* raw = (CEntityScriptInfo*)std::malloc(4 * sizeof(CEntityScriptInfo));
-        CEntityScriptInfo* end = _STL::__uninitialized_fill_n(raw, 3u, x, _STL::__false_type());
+        CEntityScriptInfo* end = std::__uninitialized_fill_n(raw, 3u, x, std::__false_type());
         ok = end == raw + 3 && LiveObjects() == live + 4 && gBlocks == 4;
         for (int i = 0; ok && i < 3; ++i)
             if (!SameRecord(raw[i], x))
                 ok = false;
-        CEntityScriptInfo* none = _STL::__uninitialized_fill_n(raw + 3, 0u, x, _STL::__false_type());
+        CEntityScriptInfo* none = std::__uninitialized_fill_n(raw + 3, 0u, x, std::__false_type());
         ok = ok && none == raw + 3;
         CEntityScriptInfo e("Empty", bytes, 0, 0, false); // empty SaveData: no byte block
-        CEntityScriptInfo* one = _STL::__uninitialized_fill_n(raw + 3, 1u, e, _STL::__false_type());
+        CEntityScriptInfo* one = std::__uninitialized_fill_n(raw + 3, 1u, e, std::__false_type());
         ok = ok && one == raw + 4 && SameRecord(raw[3], e) && gBlocks == 4;
         for (int i = 0; i < 4; ++i)
             raw[i].~CEntityScriptInfo();

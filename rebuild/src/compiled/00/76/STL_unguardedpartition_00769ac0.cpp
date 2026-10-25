@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector> pivot, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- Hoare partition around pivot's key, return the split point
+// std::__unguarded_partition(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector> pivot, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- Hoare partition around pivot's key, return the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769AC0, 140 bytes, `ret 14h`.
 // Caller: 0x0076BEB8 (__introsort_loop 0x0076BE30 of the same instantiation). No callees.
@@ -11,7 +11,7 @@ struct C3DVector {
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -24,13 +24,13 @@ public:
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, C3DVector> SKeyedVector;                 // 16 bytes
+typedef std::pair<unsigned long, C3DVector> SKeyedVector;                 // 16 bytes
 typedef CKeyPairCompareLess<unsigned long, C3DVector> SKeyedVectorLess;
 
-namespace _STL {
+namespace std {
 
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)

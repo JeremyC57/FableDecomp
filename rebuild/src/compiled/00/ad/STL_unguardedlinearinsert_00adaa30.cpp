@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(CVertexGroupBlockOptimiser::CBlockInfo* last, CBlockInfo val, less<CBlockInfo> comp) -- STLport unguarded insertion step over block candidates: shift every larger-cost record up one slot and drop the value into the hole
+// std::__unguarded_linear_insert(CVertexGroupBlockOptimiser::CBlockInfo* last, CBlockInfo val, less<CBlockInfo> comp) -- STLport unguarded insertion step over block candidates: shift every larger-cost record up one slot and drop the value into the hole
 // Flags: /Gr
 // Leaf: ??$__unguarded_linear_insert@PAVCBlockInfo@CVertexGroupBlockOptimiser
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADAA30, 0x43 bytes, __fastcall (last in ecx), `ret 10h` (the 12-byte value
@@ -9,7 +9,7 @@
 // Catalog "Insertion_ShiftAndInsert" is descriptive. No callees.
 // Shape: STLport 4.x `next = last; --next; while (comp(val, *next)) { *last = *next; last = next; --next; }
 // *last = val;` -- val.Cost lives in edx, the moves are three dword copies.
-namespace _STL {
+namespace std {
 
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
@@ -28,7 +28,7 @@ void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __c
     *__last = __val;
 }
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlockOptimiser {
 public:
@@ -41,7 +41,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template void __unguarded_linear_insert<CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo,
                                         less<CVertexGroupBlockOptimiser::CBlockInfo> >(
     CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo, less<CVertexGroupBlockOptimiser::CBlockInfo>);

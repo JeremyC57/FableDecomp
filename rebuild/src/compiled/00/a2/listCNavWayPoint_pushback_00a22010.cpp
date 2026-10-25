@@ -1,5 +1,5 @@
 // list<CNavWayPoint>::push_back(const CNavWayPoint& x) -- link a copy of the way point at the end of the route
-// Leaf: ?push_back@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@_STL@@@_STL@@QAEXABVCNavWayPoint@@@Z
+// Leaf: ?push_back@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAEXABVCNavWayPoint@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A22010, 65 bytes, `ret 4`. Callers 0x00A1ED8A / 0x00A1ED9D / 0x00A1EE2E /
 //   0x00A1F268 (CNavigatorAStar). The catalog label "LinkedList_InsertNodeSmall" is descriptive.
 // Element: CNavWayPoint (Ego_r.pdb: C2DVector Position +0, uchar NavLayer +8, bool Removable +9; 0x0C with padding),
@@ -21,7 +21,7 @@ public:
     bool          Removable;                            // +0x09
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> class allocator {
@@ -71,4 +71,4 @@ public:
 };
 }
 
-template void _STL::list<CNavWayPoint>::push_back(const CNavWayPoint&);
+template void std::list<CNavWayPoint>::push_back(const CNavWayPoint&);

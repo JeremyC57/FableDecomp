@@ -37,8 +37,8 @@ Review at landing:
 - Already-landed sources with wrong identity: 0x00CB8220 is `CScriptBase::RunSubThreads` (landed as
   Destval_CRegisteredMusicEntry / `Close`); 0x00CB8D30 calls 0x00BFE9BC operator delete but its landed source declares
   `helper_bfeb1c` (an operator-new import) and names the function `operator_new`; 0x00CBD5B0 is CVectorMap<u64,
-  CPersistInfo>::Sort calling `_STL::sort` 0x00CBD370, landed with the callee as "GuiVarBool_Apply". The landed
-  0x00CBB1B0 / 0x00CBB2D0 files carry Dinkumware `std::` names but this TU is STLport (`_STL::__destroy_aux`,
-  `_STL::__unguarded_insertion_sort_aux`).
+  CPersistInfo>::Sort calling `std::sort` 0x00CBD370, landed with the callee as "GuiVarBool_Apply". The landed
+  0x00CBB1B0 / 0x00CBB2D0 files carry Dinkumware `std::` names but this TU is STLport (`std::__destroy_aux`,
+  `std::__unguarded_insertion_sort_aux`).
 - Manifest label 0x00CBE583 "CScriptBase::Activate" is GetSquaredDistanceBetweenThings (no fsqrt, two GetPos calls).
 - No catalog row of this chunk holds two functions.

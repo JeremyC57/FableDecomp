@@ -16,7 +16,7 @@
 //   no parent, left/right at the header); one shared zero register.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -86,7 +86,7 @@ public:
     _Rep_type _M_t;
     map() : _M_t(C(), A()) { }
 };
-} // namespace _STL
+} // namespace std
 
 class CBankFileAsyncEntry;
 class CBankFileAsyncData;
@@ -108,7 +108,7 @@ public:
         CCountedPointer<CBankFileAsyncData> LoadingData;  // +0x08
     };
     CCountedPointer<CBankFileAsyncEntry>  AsyncBankEntry; // +0x00
-    _STL::map<long, CFileBlock>           Blocks;         // +0x08
+    std::map<long, CFileBlock>           Blocks;         // +0x08
     CEngineStaticMapFileBlockManager();
     ~CEngineStaticMapFileBlockManager();                // 0x00B443B0
 };

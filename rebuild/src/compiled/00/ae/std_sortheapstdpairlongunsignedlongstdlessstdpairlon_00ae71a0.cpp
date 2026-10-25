@@ -2,7 +2,7 @@
 // Leaf: ??$sort_heap@PAU?$pair@JK@std@@U?$less@U?$pair@JK@std@@@2@@std@@YIXPAU?$pair@JK@0@0U?$less@U?$pair@JK@std@@@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE71A0, 96 bytes, __fastcall (first ecx, last edx), the empty less<> in a
 //   4-byte stack slot (`ret 4`).
-// Identity: the sort_heap step of the landed STLport `_STL::__partial_sort` 0x00AE7760 (its only caller, which declares
+// Identity: the sort_heap step of the landed STLport `std::__partial_sort` 0x00AE7760 (its only caller, which declares
 //   `sort_heap(_RandomAccessIterator, _RandomAccessIterator, _Compare)` for this instantiation); STLport's
 //   `while (__last - __first > 1) pop_heap(__first, __last--, __comp);` with pop_heap -> __pop_heap_aux -> __pop_heap
 //   inlined. Renamed from the stand-in _global::SortHeap_00ae71a0 (Dinkumware comments).

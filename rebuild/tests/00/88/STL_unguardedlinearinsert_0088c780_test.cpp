@@ -2,7 +2,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::__unguarded_linear_insert<SKeyedPair*, SKeyedPair, SKeyGreater> @ 0x0088C780: shift the pairs whose key
+// Model of std::__unguarded_linear_insert<SKeyedPair*, SKeyedPair, SKeyGreater> @ 0x0088C780: shift the pairs whose key
 // is smaller than val's up one place (descending order) and drop val into the gap.
 struct SKeyedPair {
     int          m_key;

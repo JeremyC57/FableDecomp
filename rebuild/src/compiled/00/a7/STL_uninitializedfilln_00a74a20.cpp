@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CLineVector* first, unsigned int n, const CLineVector& x, const __false_type&) -- copy-construct n copies of one C2DLineF vector into raw storage (each copy allocates its own block and copies the 16-byte lines), return the end
+// std::__uninitialized_fill_n(CLineVector* first, unsigned int n, const CLineVector& x, const __false_type&) -- copy-construct n copies of one C2DLineF vector into raw storage (each copy allocates its own block and copies the 16-byte lines), return the end
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A74A20, 159 bytes (+ int3 padding to 160), `ret 8` (/Gr: first in ecx, n in edx;
 //   x and the tag reference on the stack).
@@ -25,7 +25,7 @@ public:
     C2DVector End;                                          // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -84,9 +84,9 @@ public:
     }
 };
 }
-typedef _STL::vector<C2DLineF> CLineVector;                 // 12 bytes
+typedef std::vector<C2DLineF> CLineVector;                 // 12 bytes
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {

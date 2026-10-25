@@ -1,4 +1,4 @@
-// Behaviour test for 0x006253D0 _STL::vector<CQuestCardItem>::resize(unsigned int new_size).
+// Behaviour test for 0x006253D0 std::vector<CQuestCardItem>::resize(unsigned int new_size).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("006253d0_TEST FAIL\n"); return 1; } } while (0)

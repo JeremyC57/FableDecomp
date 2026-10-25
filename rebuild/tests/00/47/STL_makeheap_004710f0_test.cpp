@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__make_heap<pair<unsigned long,CSoundPair>*, ..> @ 0x004710F0: builds a max-heap by key.
+// Model of std::__make_heap<pair<unsigned long,CSoundPair>*, ..> @ 0x004710F0: builds a max-heap by key.
 
 class CSoundPair {                                          // Ego_r.pdb, 8 bytes (a class: mangled V)
 public:
@@ -16,7 +16,7 @@ public:
     long LastSound;                                         // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -26,10 +26,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);                                                      // 0x00471055
@@ -53,7 +53,7 @@ void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator
 typedef pair<unsigned long, CSoundPair> _SoundEntry;
 }
 
-typedef _STL::pair<unsigned long, CSoundPair> E;
+typedef std::pair<unsigned long, CSoundPair> E;
 typedef CKeyPairCompareLess<unsigned long, CSoundPair> C;
 static void SetEntry(E& e, unsigned int key) { e.first = key; e.second.FirstSound = (long)(key * 3); e.second.LastSound = (long)(key + 7); }
 static bool Consistent(const E& e) { return e.second.FirstSound == (long)(e.first * 3) && e.second.LastSound == (long)(e.first + 7); }
@@ -194,7 +194,7 @@ template <class RI, class T, class C> void IntrosortLoop(RI first, RI last, T*, 
     }
 }
 }
-namespace _STL {
+namespace std {
 template <class RI, class D, class T, class C> void __fastcall __adjust_heap(RI first, D hole, D len, T val, C comp)
 {
     TLib::AdjustHeap(first, hole, len, val, comp);
@@ -207,7 +207,7 @@ int main()
         E* a = NewEntries(n);
         FillRandom(a, n);
         unsigned long sum = KeySum(a, n);
-        _STL::__make_heap(a, a + n, C(), (E*)0, (int*)0);
+        std::__make_heap(a, a + n, C(), (E*)0, (int*)0);
         for (int i = 1; i < n; ++i)
             if (a[(i - 1) / 2].first < a[i].first)
                 ok = false;

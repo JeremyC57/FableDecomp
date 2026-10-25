@@ -1,4 +1,4 @@
-// _STL::list<long>::_M_fill_insert(iterator pos, size_type n, const long& x) -- insert n copies of the id before pos
+// std::list<long>::_M_fill_insert(iterator pos, size_type n, const long& x) -- insert n copies of the id before pos
 // Leaf: ?_M_fill_insert@?$list@J
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BBD770, 64 bytes, thiscall (`this` unused), `ret 0Ch`.
 // Identity: called by list<long>::resize 0x00BBDA70 and 0x00BBD913; 12-byte node {next, prev, long}
@@ -10,7 +10,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -117,4 +117,4 @@ void list<_Tp, _Alloc>::_M_fill_insert(iterator __pos, size_type __n, const _Tp&
 
 template void list<long>::_M_fill_insert(iterator, size_type, const long&);
 
-} // namespace _STL
+} // namespace std

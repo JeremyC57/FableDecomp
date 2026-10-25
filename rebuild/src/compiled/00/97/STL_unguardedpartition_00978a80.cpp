@@ -1,8 +1,8 @@
-// _STL::__unguarded_partition(CThing** first, CThing** last, CThing* pivot, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- quicksort partition step of the advance-in-cover candidate sort: walk both ends towards the pivot and swap each out-of-place pair, returning the cut
+// std::__unguarded_partition(CThing** first, CThing** last, CThing* pivot, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- quicksort partition step of the advance-in-cover candidate sort: walk both ends towards the pivot and swap each out-of-place pair, returning the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00978A80, 126 bytes (+ int3 padding to 128), __fastcall (/Gr algorithm TU: first
 //   in ecx, last in edx, pivot and the comparator on the stack), `ret 14h`.
-// Instantiation: the advance-in-cover candidate sort: _STL::sort<CThing**,
+// Instantiation: the advance-in-cover candidate sort: std::sort<CThing**,
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch> called from
 //   CAIStateGroup_CreatureAdvanceInCover::ProcessCoverThingList (0x00979260 -> sort 0x00979870); the Ego_r.pdb
 //   symbols carry the anonymous namespace ?A0xffab493a of CAIStateGroup_CreatureAdvanceInCover.cpp.
@@ -10,7 +10,7 @@
 // Shape: STLport 4.x `__unguarded_partition` with an inline `iter_swap`; the comparator is copied into the argument
 //   area for each call. The model compiles operator() as a same-TU stand-in (auto_inline(off) + noinline); with it
 //   VC7.1 reproduces retail's comparator-copy scheduling (copies loaded two words ahead) and slot sharing.
-// Label: catalog "std_sort_Partition_HeuristicBitch" -> the STLport 4.x _STL::__unguarded_partition instantiation for
+// Label: catalog "std_sort_Partition_HeuristicBitch" -> the STLport 4.x std::__unguarded_partition instantiation for
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma; the stand-ins use `#pragma auto_inline(off)` + `__declspec(noinline)`.
@@ -74,7 +74,7 @@ bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(CThing* a
 }
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2>
 inline void iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2)
 {
@@ -100,4 +100,4 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
     }
 }
 template CThing** __fastcall __unguarded_partition<CThing**, CThing*, TComp>(CThing**, CThing**, CThing*, TComp);
-} // namespace _STL
+} // namespace std

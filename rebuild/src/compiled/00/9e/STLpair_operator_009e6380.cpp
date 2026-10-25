@@ -1,5 +1,5 @@
-// _STL::pair::operator=(const pair& other) -- copy assignment of pair<CCharString, CSymbolMap::CSymbolInfo>: the key string, then the symbol info's two strings and its value
-// Leaf: ??4?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@_STL@@QAEAAU01@ABU01@@Z
+// std::pair::operator=(const pair& other) -- copy assignment of pair<CCharString, CSymbolMap::CSymbolInfo>: the key string, then the symbol info's two strings and its value
+// Leaf: ??4?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@QAEAAU01@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E6380, 55 bytes, __fastcall `ret 4`, returns `*this`.
 // Identity: the element of CSymbolMap's sorted vector map (Ego_r.pdb: CVectorMap<CCharString, CSymbolMap::CSymbolInfo,
 //   CCompareString<CSymbolInfo> >); CSymbolMap::CSymbolInfo (12 bytes): GroupName +0, EntryName +4 (CCharString),
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -35,5 +35,5 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-typedef _STL::pair<CCharString, CSymbolMap::CSymbolInfo> TSymbolPair;
+typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> TSymbolPair;
 TSymbolPair& (TSymbolPair::*g_pAssignSymbolPair)(const TSymbolPair&) = &TSymbolPair::operator=;

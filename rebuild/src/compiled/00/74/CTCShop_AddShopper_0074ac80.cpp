@@ -30,7 +30,7 @@ public:
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class RandomAccessIter, class T>
@@ -64,14 +64,14 @@ public:
     long            StockState;                  // +0x0C
     CBaseIntelligentPointer PShopKeeper;         // +0x10
     unsigned char   _pad18[0x1c - 0x18];
-    _STL::vector<CIntelligentPointer<CThingCreatureBase> > Shoppers;   // +0x1C
+    std::vector<CIntelligentPointer<CThingCreatureBase> > Shoppers;   // +0x1C
     void AddShopper(CThingCreatureBase* shopper);
 };
 
 void CTCShop::AddShopper(CThingCreatureBase* shopper)
 {
     CIntelligentPointer<CThingCreatureBase> pShopper(shopper);
-    CIntelligentPointer<CThingCreatureBase>* it = _STL::find(Shoppers.begin(), Shoppers.end(), pShopper);
+    CIntelligentPointer<CThingCreatureBase>* it = std::find(Shoppers.begin(), Shoppers.end(), pShopper);
     if (it == Shoppers.end())
         Shoppers.push_back(pShopper);
 }

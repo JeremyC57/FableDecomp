@@ -1,5 +1,5 @@
-// _STL::list::remove_if(NEntityEvents::CPred_EventExpired pred) -- drop every entity event that is ready to die and whose lifetime has run out at the predicate's world frame
-// Instantiation: _STL::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if
+// std::list::remove_if(NEntityEvents::CPred_EventExpired pred) -- drop every entity event that is ready to die and whose lifetime has run out at the predicate's world frame
+// Instantiation: std::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if
 // Leaf: ??$remove_if@VCPred_EventExpired@NEntityEvents@@@?$list@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00812030, 125 bytes, thiscall, `ret 4` (the one-word predicate by value).
 // Identity: FableWin.pdb `??$remove_if@VCPred_EventExpired@NEntityEvents@@@?$list@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@...`;
@@ -66,7 +66,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -157,4 +157,4 @@ public:
 };
 }
 
-template void _STL::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if(NEntityEvents::CPred_EventExpired);
+template void std::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if(NEntityEvents::CPred_EventExpired);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A48870: _STL::__copy<CLipSyncPhoneme*> (counted assignment copy)
+// Behaviour test for 0x00A48870: std::__copy<CLipSyncPhoneme*> (counted assignment copy)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -55,7 +55,7 @@ static bool Same(const CLipSyncPhoneme& p, const char* s, unsigned long id, floa
     return Eq(p.Symbol, s) && p.ID == id && Near(p.Weight, w);
 }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
@@ -80,12 +80,12 @@ int main()
         CLipSyncPhoneme dst[4];
         dst[3] = CLipSyncPhoneme("ZZ", 9, 1.0f);
         int live = g_liveStrings;
-        CLipSyncPhoneme* end = _STL::__copy(src, src + 3, dst, _STL::random_access_iterator_tag(), (int*)0);
+        CLipSyncPhoneme* end = std::__copy(src, src + 3, dst, std::random_access_iterator_tag(), (int*)0);
         Check(g_liveStrings == live);
         Check(end == dst + 3);
         Check(Same(dst[0], "AA", 1, 0.25f) && Same(dst[1], "EE", 2, 0.5f) && Same(dst[2], "OO", 3, 0.75f));
         Check(Same(dst[3], "ZZ", 9, 1.0f) && Same(src[1], "EE", 2, 0.5f));
-        Check(_STL::__copy(src, src, dst, _STL::random_access_iterator_tag(), (int*)0) == dst);
+        Check(std::__copy(src, src, dst, std::random_access_iterator_tag(), (int*)0) == dst);
     }
     Check(g_liveStrings == 0);
     if (g_fail) {

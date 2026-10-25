@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(SPair* first, SPair* last, SPair pivot, SLess comp) -- STLport quicksort partition step over 8-byte pair<long, unsigned long> records: walk first up past records below the pivot, last down past records above it, swap, repeat until the cursors cross
+// std::__unguarded_partition(SPair* first, SPair* last, SPair pivot, SLess comp) -- STLport quicksort partition step over 8-byte pair<long, unsigned long> records: walk first up past records below the pivot, last down past records above it, swap, repeat until the cursors cross
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE5F00, 87 bytes (+9 int3 padding), `ret 0Ch`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, last in edx, the 8-byte pivot by value and the 4-byte empty comparator slot on the stack; the crossing cursor
@@ -9,7 +9,7 @@
 // Shape: STLport 4.6 _algo.c verbatim (`for (;;) { while (comp(*first, pivot)) ++first; --last; while (comp(pivot, *last))
 //   --last; if (!(first < last)) return first; iter_swap(first, last); ++first; }`); iter_swap is the inline
 //   `__iter_swap(a, b, value_type)` -- `T tmp = *a; *a = *b; *b = tmp;`.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -56,7 +56,7 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 }
 
-typedef _STL::pair<long, unsigned long> SPair;
-typedef _STL::less<SPair> SLess;
+typedef std::pair<long, unsigned long> SPair;
+typedef std::less<SPair> SLess;
 
-template SPair* __fastcall _STL::__unguarded_partition<SPair*, SPair, SLess>(SPair*, SPair*, SPair, SLess);
+template SPair* __fastcall std::__unguarded_partition<SPair*, SPair, SLess>(SPair*, SPair*, SPair, SLess);

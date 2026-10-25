@@ -1,4 +1,4 @@
-// _STL::vector::operator=(const vector<unsigned char>& x) -- STLport vector<unsigned char> copy assignment: reallocate-and-copy when x is larger than the capacity, otherwise memmove over the live bytes and append the rest
+// std::vector::operator=(const vector<unsigned char>& x) -- STLport vector<unsigned char> copy assignment: reallocate-and-copy when x is larger than the capacity, otherwise memmove over the live bytes and append the rest
 // Leaf: ??4?$vector@E
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005295B0, 218 bytes, `ret 4` (__fastcall: this in ecx, &x on the stack).
 // Callers: 0x0052AAB8, 0x0052B5C5, 0x0052B611, 0x0052B677, 0x0052BCBF, 0x0052BD41 (the CEntityScriptInfo save-data
@@ -13,7 +13,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* p);                                               // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);     // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -106,4 +106,4 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
 
 template vector<unsigned char>& vector<unsigned char>::operator=(const vector<unsigned char>&);
 
-}   // namespace _STL
+}   // namespace std

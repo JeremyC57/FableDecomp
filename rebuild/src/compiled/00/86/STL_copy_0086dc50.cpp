@@ -1,4 +1,4 @@
-// _STL::__copy(CRandomAppearanceMorph::CBodyPartMesh* first, CRandomAppearanceMorph::CBodyPartMesh* last, CRandomAppearanceMorph::CBodyPartMesh* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of body-part meshes by assignment; returns the end of the destination run
+// std::__copy(CRandomAppearanceMorph::CBodyPartMesh* first, CRandomAppearanceMorph::CBodyPartMesh* last, CRandomAppearanceMorph::CBodyPartMesh* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of body-part meshes by assignment; returns the end of the destination run
 // Leaf: ??$__copy@PAVCBodyPartMesh@CRandomAppearanceMorph@@
 // Retail 0x0086DC50, 0x57 bytes (+ int3 padding to 0x60), `ret 0Ch` (/Gr: first in ecx, last in edx; result, the
 // iterator-category tag and the null distance pointer on the stack). Callers 0x0086DE2C, 0x0086E169 (the
@@ -11,7 +11,7 @@
 // Shape: STLport `for (_Distance n = last - first; n > 0; --n) { *result = *first; ++first; ++result; } return result;`
 // (the count is a signed divide by 24: `imul 2AAAAAABh ; sar edx,2`).
 // Label: the manifest's "_Move<CEngineTextureMorph*,CEngineTextureMorph*>" is a propagated label.
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _T1, class _T2> struct pair
@@ -47,7 +47,7 @@ template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class C> class CVectorMap
 {
 public:
-    _STL::vector<_STL::pair<K, V> > Vector;          // +0x00
+    std::vector<std::pair<K, V> > Vector;          // +0x00
     C                               Compare;         // +0x0C
     bool                            Dirty;           // +0x0D
 };
@@ -74,5 +74,5 @@ public:
 
 typedef CRandomAppearanceMorph::CBodyPartMesh TBodyPartMesh;
 
-template TBodyPartMesh* __fastcall _STL::__copy<TBodyPartMesh*, TBodyPartMesh*, int>(TBodyPartMesh*, TBodyPartMesh*,
-    TBodyPartMesh*, const _STL::random_access_iterator_tag&, int*);
+template TBodyPartMesh* __fastcall std::__copy<TBodyPartMesh*, TBodyPartMesh*, int>(TBodyPartMesh*, TBodyPartMesh*,
+    TBodyPartMesh*, const std::random_access_iterator_tag&, int*);

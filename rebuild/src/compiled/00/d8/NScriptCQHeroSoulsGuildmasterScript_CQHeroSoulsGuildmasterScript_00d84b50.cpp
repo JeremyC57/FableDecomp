@@ -20,7 +20,7 @@ public:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -83,7 +83,7 @@ public:
     _Rep_type _M_t;
     map() : _M_t(C(), A()) { }
 };
-} // namespace _STL
+} // namespace std
 
 struct CScriptBase {                                        // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
@@ -108,7 +108,7 @@ public:
     bool GiveWarningCutscene;                               // +0x4c
     long GuardInWoodsCount;                                 // +0x50
     long DistanceReached;                                   // +0x54
-    _STL::map<CCharString, bool> cs_flags;                  // +0x58
+    std::map<CCharString, bool> cs_flags;                  // +0x58
     CQ_HeroSoulsGuildmasterScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
     virtual ~CQ_HeroSoulsGuildmasterScript();
 };

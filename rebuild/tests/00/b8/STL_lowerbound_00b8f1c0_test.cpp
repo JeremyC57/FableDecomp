@@ -1,4 +1,4 @@
-// behaviour test for 0x00B8F1C0 _STL::__lower_bound over the flare vertex-buffer map (key compare via MapperPred)
+// behaviour test for 0x00B8F1C0 std::__lower_bound over the flare vertex-buffer map (key compare via MapperPred)
 #include <cstdio>
 
 struct Entry { unsigned int first; void* Data; void* Info; };

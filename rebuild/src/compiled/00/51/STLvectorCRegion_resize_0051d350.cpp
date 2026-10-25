@@ -1,4 +1,4 @@
-// _STL::vector<CRegion>::resize(size_type new_size, const CRegion& x) -- shrink with erase or grow with a fill insert (88-byte world-map regions)
+// std::vector<CRegion>::resize(size_type new_size, const CRegion& x) -- shrink with erase or grow with a fill insert (88-byte world-map regions)
 // Leaf: ?resize@?$vector@VCRegion@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051D350, 99 bytes, thiscall, `ret 8`.
 // Identity: CWorldMap::DeleteAllRegions (0x00507610: `Regions.erase(begin(), end()); Regions.resize(1, CRegion());`
@@ -39,7 +39,7 @@ public:
     bool SoundThemesEnabled;                  // +0x56
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

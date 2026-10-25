@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__partial_sort over (long key, 36-byte payload) pairs -- the first four are the four smallest, ascending
+// Behaviour test: std::__partial_sort over (long key, 36-byte payload) pairs -- the first four are the four smallest, ascending
 #include <cstdio>
 
 struct SPayload {                                       // 36-byte POD payload

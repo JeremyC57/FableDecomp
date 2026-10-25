@@ -1,4 +1,4 @@
-// _STL::fill(CIVCountedPointer<CLocalDetailPlacementGrid>* first, CIVCountedPointer<CLocalDetailPlacementGrid>* last, const CIVCountedPointer<CLocalDetailPlacementGrid>& value) -- assign one intrusive counted pointer over [first, last)
+// std::fill(CIVCountedPointer<CLocalDetailPlacementGrid>* first, CIVCountedPointer<CLocalDetailPlacementGrid>* last, const CIVCountedPointer<CLocalDetailPlacementGrid>& value) -- assign one intrusive counted pointer over [first, last)
 // Leaf: ??$fill@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007691A0, 66 bytes, `ret 4`.
 // Caller: 0x0076BA28 (vector<CIVCountedPointer<..> > fill-assign path). No callees: the pointee's
@@ -43,7 +43,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)

@@ -1,4 +1,4 @@
-// _STL::__find_if(pair<long, CCharString>*, pair<long, CCharString>*, CIsItemWithDefIndex, const random_access_iterator_tag&) -- first container item whose definition index equals the predicate key, unrolled x4
+// std::__find_if(pair<long, CCharString>*, pair<long, CCharString>*, CIsItemWithDefIndex, const random_access_iterator_tag&) -- first container item whose definition index equals the predicate key, unrolled x4
 // Leaf: __find_if
 // Retail 0x008ECEF0, 0x66 bytes, __fastcall (first in ecx, last in edx, the 4-byte predicate BY VALUE and the
 //   iterator-category tag by const reference on the stack, `ret 8`). Manifest label "std_find_<int_qword_aligned>" is
@@ -21,7 +21,7 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -121,20 +121,20 @@ class CIsItemWithDefIndex {
 public:
     long DefIndex;                              // +0x00
     CIsItemWithDefIndex(long defIndex) : DefIndex(defIndex) {}
-    bool operator()(const _STL::pair<long, CCharString>& item) const { return item.first == DefIndex; }
+    bool operator()(const std::pair<long, CCharString>& item) const { return item.first == DefIndex; }
 };
 
 class CTCContainer {
 public:
     unsigned char _base[0xc];                   // +0x00 CTCBase (vptr, parent thing, flags)
-    _STL::vector<_STL::pair<long, CCharString> > ContainerItems;   // +0x0c
+    std::vector<std::pair<long, CCharString> > ContainerItems;   // +0x0c
     void RemoveItem(long defIndex);
 };
 
 void CTCContainer::RemoveItem(long defIndex)
 {
-    _STL::vector<_STL::pair<long, CCharString> >::iterator it =
-        _STL::find_if(ContainerItems.begin(), ContainerItems.end(), CIsItemWithDefIndex(defIndex));
+    std::vector<std::pair<long, CCharString> >::iterator it =
+        std::find_if(ContainerItems.begin(), ContainerItems.end(), CIsItemWithDefIndex(defIndex));
     if (it != ContainerItems.end())
         ContainerItems.erase(it);
 }

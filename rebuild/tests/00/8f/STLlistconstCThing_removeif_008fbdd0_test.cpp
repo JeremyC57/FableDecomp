@@ -41,7 +41,7 @@ public:
     const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }   // FableWin.pdb ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg, class _Result> struct unary_function {
     typedef _Arg argument_type;
     typedef _Result result_type;
@@ -57,14 +57,14 @@ public:
 }
 
 namespace NCameraModes {
-class CGetThingsWithCollisionMesh : public _STL::unary_function<const CThing*, bool> {
+class CGetThingsWithCollisionMesh : public std::unary_function<const CThing*, bool> {
 public:
     CGetThingsWithCollisionMesh() { }
     bool operator()(const CThing* thing) const { return thing->GetPhysicsTC()->GetPhysicsMeshInfo() != 0; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -168,7 +168,7 @@ template <class L> typename L::_Node* NewBack(L& l)
 {
     typedef typename L::_Node Node;
     Node* n = (Node*)malloc(sizeof(Node));
-    _STL::_List_node_base* s = l._M_node._M_data;
+    std::_List_node_base* s = l._M_node._M_data;
     n->_M_next = s;
     n->_M_prev = s->_M_prev;
     s->_M_prev->_M_next = n;
@@ -178,14 +178,14 @@ template <class L> typename L::_Node* NewBack(L& l)
 template <class L> int CountList(L& l)
 {
     int c = 0;
-    for (_STL::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
+    for (std::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
         ++c;
     return c;
 }
 template <class L> bool LinksOk(L& l)
 {
-    _STL::_List_node_base* s = l._M_node._M_data;
-    for (_STL::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
+    std::_List_node_base* s = l._M_node._M_data;
+    for (std::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
         if (p->_M_next->_M_prev != p || p->_M_prev->_M_next != p)
             return false;
     return s->_M_next->_M_prev == s && s->_M_prev->_M_next == s;
@@ -193,7 +193,7 @@ template <class L> bool LinksOk(L& l)
 int main()
 {
     bool ok = true;
-    typedef _STL::list<const CThing*> L;
+    typedef std::list<const CThing*> L;
     L l;
     InitList(l);
     static CThingPhysicsMeshInfo meshes[2];
@@ -204,7 +204,7 @@ int main()
         things[i].PhysicsTC = &physics[i];
         NewBack(l)->_M_data = &things[i];
     }
-    l.remove_if(_STL::unary_negate<NCameraModes::CGetThingsWithCollisionMesh>(NCameraModes::CGetThingsWithCollisionMesh()));
+    l.remove_if(std::unary_negate<NCameraModes::CGetThingsWithCollisionMesh>(NCameraModes::CGetThingsWithCollisionMesh()));
     int k = 0;
     for (L::iterator it = l.begin(); it != l.end(); ++it, ++k)
         if (k >= 2 || *it != &things[2 * k])

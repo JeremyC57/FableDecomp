@@ -1,4 +1,4 @@
-// _STL::__push_heap(CIntelligentPointer<const CThing>* first, int holeIndex, int topIndex, CIntelligentPointer<const CThing> val, ConstThingCompare comp) -- STLport push_heap core: move the parents that compare below val down the hole, then drop val in
+// std::__push_heap(CIntelligentPointer<const CThing>* first, int holeIndex, int topIndex, CIntelligentPointer<const CThing> val, ConstThingCompare comp) -- STLport push_heap core: move the parents that compare below val down the hole, then drop val in
 // Grade: DIFFER(192v198) -- register assignment: retail keeps first in ebp and spills holeIndex to the `push ecx` slot (reloaded into esi at the exit); ours keeps holeIndex in ebp and spills first
 // Leaf: ??$__push_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00926690, 198 bytes (208 with padding), `ret 10h` (first in ecx, holeIndex in edx;
@@ -41,7 +41,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val,
                             _Compare __comp)

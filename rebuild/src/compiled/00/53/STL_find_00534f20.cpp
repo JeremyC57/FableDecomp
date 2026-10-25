@@ -1,4 +1,4 @@
-// _STL::__find(_Rb_tree_iterator first, _Rb_tree_iterator last, CComponent* const& val, const input_iterator_tag&) -- linear search of a set<CComponent*> range: walk the in-order successors until the node value equals val
+// std::__find(_Rb_tree_iterator first, _Rb_tree_iterator last, CComponent* const& val, const input_iterator_tag&) -- linear search of a set<CComponent*> range: walk the in-order successors until the node value equals val
 // Leaf: ??$__find@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00534F20, length 95 bytes, `ret 0Ch`.
 // Callers: NUISystem::CComponent::PositionChildDying 0x00531B40 (landed; it carries a same-TU stand-in of this body)
@@ -12,7 +12,7 @@
 //   `_Rb_tree_base_iterator::_M_increment()` gives the same instructions with the node in esi and &val left in edx.
 namespace NUISystem { class CComponent; }
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { input_iterator_tag() { } };
 
 struct _Rb_tree_node_base {
@@ -86,5 +86,5 @@ _InputIter __fastcall __find(_InputIter __first, _InputIter __last, const _Tp& _
 }
 }
 
-typedef _STL::_Rb_tree_iterator<NUISystem::CComponent*, _STL::_Const_traits<NUISystem::CComponent*> > TComponentSetIter;
-template TComponentSetIter __fastcall _STL::__find<TComponentSetIter, NUISystem::CComponent*>(TComponentSetIter, TComponentSetIter, NUISystem::CComponent* const&, const _STL::input_iterator_tag&);
+typedef std::_Rb_tree_iterator<NUISystem::CComponent*, std::_Const_traits<NUISystem::CComponent*> > TComponentSetIter;
+template TComponentSetIter __fastcall std::__find<TComponentSetIter, NUISystem::CComponent*>(TComponentSetIter, TComponentSetIter, NUISystem::CComponent* const&, const std::input_iterator_tag&);

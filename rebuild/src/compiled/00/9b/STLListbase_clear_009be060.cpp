@@ -1,4 +1,4 @@
-// _STL::_List_base::clear() -- list<CSubTitle>::clear: destroy every node's CSubTitle (sound name, formatted text, text-entry reference), free the node and re-link the sentinel to itself
+// std::_List_base::clear() -- list<CSubTitle>::clear: destroy every node's CSubTitle (sound name, formatted text, text-entry reference), free the node and re-link the sentinel to itself
 // Leaf: ?clear@?$_List_base@UCSubTitle@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BE060, 88 bytes, thiscall plain `ret`.
 // Identity: STLport `_List_base<CSubTitle, allocator<CSubTitle> >::clear()` (FableWin.pdb has ?clear@?$list@UCSubTitle@@...
@@ -76,7 +76,7 @@ struct CSubTitle {                                      // Ego_r.pdb, 28 bytes
     float       EndTime;                                // +0x18
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {                  // STLport allocator over malloc / free (empty)
 public:

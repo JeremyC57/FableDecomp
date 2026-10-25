@@ -1,4 +1,4 @@
-# Hand chunk 424 (CSoundEmitterLH .. _STL::__copy): 38 of 40 byte-exact
+# Hand chunk 424 (CSoundEmitterLH .. std::__copy): 38 of 40 byte-exact
 
 All 40 rows are `_global` catalog rows from the sound-emitter, mesh/animation-file, vertex-stream and QuadricOptimiser
 TUs. 38 match: 6 plain MATCH and 32 RELOCATION_MATCH, graded by gall.sh into `grades.txt`. Each has a behaviour test that
@@ -10,7 +10,7 @@ passes under both g++ (tall.sh) and VC7.1 (tall.py). The other 2 are parked in `
 - 00aac530 `CSoundEmitterLH::CSoundEmitterLH(CGameScriptThing*)`: CBaseClass base, the thing at +4, the vtable, an
   empty retail list at +0x14 and three false flag bytes. One zero register (ebx) feeds the list's pre-allocation
   zero store and the three byte stores. The position members have no initialiser.
-- 00aacb10 `_STL::__uninitialized_copy<CActiveSoundInfo*>` and 00aacb50 `_STL::__uninitialized_fill_n<CActiveSoundInfo*>`:
+- 00aacb10 `std::__uninitialized_copy<CActiveSoundInfo*>` and 00aacb50 `std::__uninitialized_fill_n<CActiveSoundInfo*>`:
   STLport 4.x `_Construct` loops. The placement-new null test survives. The implicit copy of the polymorphic record
   stores the vtable and then three words. fill_n uses an unsigned count (`jbe`, `dec edx ; jne`).
 - 00aacef0 `vector<CActiveSoundInfo>::push_back`: STLport 4.6 push_back. The overflow arm passes `__false_type()` homed
@@ -44,7 +44,7 @@ passes under both g++ (tall.sh) and VC7.1 (tall.py). The other 2 are parked in `
 - 00ab3b40 `CVertexShaderInput::AddStream`: `DataStreams.push_back(CStreamInfo(streamIndex, format))`, then the flag
   test. The tag is homed on the live flag slot only when `_M_insert_overflow` has a same-TU noinline body that never
   reads its tag.
-- 00ab4490 `_STL::__uninitialized_fill_n<CVertexShaderInput::CStreamInfo*>`: a user copy constructor chain. The
+- 00ab4490 `std::__uninitialized_fill_n<CVertexShaderInput::CStreamInfo*>`: a user copy constructor chain. The
   implicit CBaseClass copy's vtable store is dead and dropped.
 
 **C3DMeshFile / partition**
@@ -54,7 +54,7 @@ passes under both g++ (tall.sh) and VC7.1 (tall.py). The other 2 are parked in `
   destructor deletes both children (null test plus `??_G`), then two zero stores.
 
 **QuadricOptimiser: arrays and sorts**
-- 00acffe0 `_STL::__uninitialized_fill_n<COptimisedEdge*>` and 00ad04a0 `_STL::fill<COptimisedFace*>`: /Gr
+- 00acffe0 `std::__uninitialized_fill_n<COptimisedEdge*>` and 00ad04a0 `std::fill<COptimisedFace*>`: /Gr
   `__fastcall` templates.
 - 00ad2730 `vector<COptimisedBone>::vector(const vector&)`: `_Vector_base(x.size(), x.get_allocator())` plus
   `__uninitialized_copy`. One register zeroes the three words and is also the null allocation.
@@ -79,7 +79,7 @@ passes under both g++ (tall.sh) and VC7.1 (tall.py). The other 2 are parked in `
   declaration-only, it adds a `push ecx` slot (177v175).
 - 00ad4810 `insert_iterator<set<unsigned long> >::operator=`: `iter = container->insert(iter, val); ++iter;`, with
   `_Rb_global<bool>::_M_increment` as an inline static, walked on a register copy and stored once.
-- 00ad48f0 `_STL::__copy(set const_iterator, ..., insert_iterator, const input_iterator_tag&, int*)`: /Gr `__fastcall`.
+- 00ad48f0 `std::__copy(set const_iterator, ..., insert_iterator, const input_iterator_tag&, int*)`: /Gr `__fastcall`.
   The hidden return pointer goes in ecx and the tag reference in edx; the iterators go on the stack (`ret 14h`). The
   inserter's operator= stays out of line, as a same-TU noinline body.
 - 00ac8960 / 00aca2b0 / 00aca380 `CIndexList::GetIntersection` / `GetUnion` / `GetSymmetricDifference`: `CIndexList result;
@@ -103,11 +103,11 @@ next function, with no noreturn tail.
 ## Label corrections
 Catalog/manifest labels → the names used here (PDB name sets plus callers and layouts):
 - 00aac530 "NHeroInformationScreens_CBase_Constructor" → `CSoundEmitterLH::CSoundEmitterLH(CGameScriptThing*)` (vtable 0x0129E6EC).
-- 00aacb10 "_Copy_backward<C3DVector*,C3DVector*>" → `_STL::__uninitialized_copy<CActiveSoundInfo*>`.
-- 00aacb50 and 00ab4490 "_Fill_n<unsigned_long*,unsigned_int,unsigned_long>" → `_STL::__uninitialized_fill_n` of
+- 00aacb10 "_Copy_backward<C3DVector*,C3DVector*>" → `std::__uninitialized_copy<CActiveSoundInfo*>`.
+- 00aacb50 and 00ab4490 "_Fill_n<unsigned_long*,unsigned_int,unsigned_long>" → `std::__uninitialized_fill_n` of
   CActiveSoundInfo and of CVertexShaderInput::CStreamInfo.
-- 00acffe0 "fill<C3DClothQuad*,C3DClothQuad>" → `_STL::__uninitialized_fill_n<COptimisedEdge*>`.
-- 00ad04a0 "_Fill<CHeroMarriageInfo*,CHeroMarriageInfo>" → `_STL::fill<COptimisedFace*>`.
+- 00acffe0 "fill<C3DClothQuad*,C3DClothQuad>" → `std::__uninitialized_fill_n<COptimisedEdge*>`.
+- 00ad04a0 "_Fill<CHeroMarriageInfo*,CHeroMarriageInfo>" → `std::fill<COptimisedFace*>`.
 - 00ab9dd0 "swap<CDebugSphere>" → `C3DMeshFileBoneChunk::GetBone() const`.
 - 00ab1660 "CParticleMorphs_InitializeEntry" → `C3DAnimationBuilder::C3DAnimationBuilder()`.
 - 00ad2730 "Vector_Construct_CFeatDef" → `vector<COptimisedBone>::vector(const vector&)`. Its callee 0x00AD1B20 is
@@ -119,7 +119,7 @@ Catalog/manifest labels → the names used here (PDB name sets plus callers and 
 - 00ad24f0 "RBTree_LowerBound_int64" → `_Rb_tree::_M_lower_bound` (key pair<long,long>).
 - 00ad4720 "std_map_insert_pair" → `_Rb_tree::insert_unique(const value_type&)`.
 - 00ad4810 "LTextTreeWalkThrough_Erase" (propagated, wrong) → `insert_iterator<set<unsigned long> >::operator=`.
-- 00ad48f0 "TreeWalk_Destroy" → `_STL::__copy` (input-iterator form).
+- 00ad48f0 "TreeWalk_Destroy" → `std::__copy` (input-iterator form).
 - 00ac8960 "BinaryTree_Copy_Simple", 00aca2b0 "BinaryTree_Copy_Transformed" and 00aca380
   "QuadricOptimiser_DetectFoldOver_BuildTree" → `CIndexList::GetIntersection` / `GetUnion` / `GetSymmetricDifference`.
 - 00ac96e0 "QuadricOptimiser_ProcessVertexContraction" → `COptimisedPrimitive::UpdateContractions(const CSubContraction&)`.

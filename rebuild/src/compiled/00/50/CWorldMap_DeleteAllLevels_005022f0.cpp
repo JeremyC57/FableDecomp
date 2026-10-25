@@ -15,7 +15,7 @@
 //   list is emptied by its erase (byte-count memmove copy-down) and its storage freed when it has any capacity.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-namespace _STL { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
+namespace std { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
 struct CThingManager {
     void DeleteAllThings();                             // 0x0051FBA0
 };
@@ -96,9 +96,9 @@ struct CLongArray {
     ~CLongArray() { if (_M_start) free(_M_start); }
     void swap(CLongArray& x)
     {
-        _STL::swap(_M_start, x._M_start);
-        _STL::swap(_M_finish, x._M_finish);
-        _STL::swap(_M_end_of_storage, x._M_end_of_storage);
+        std::swap(_M_start, x._M_start);
+        std::swap(_M_finish, x._M_finish);
+        std::swap(_M_end_of_storage, x._M_end_of_storage);
     }
     void Reset()
     {

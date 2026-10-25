@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(CWideString* last, CWideString val, NGameComponentHelpers::CCaseInsensitiveStringCompare comp) -- SGI unguarded linear insert of a wide string: shift every predecessor that compares case-insensitively greater (_wcsicmp) up one slot, store the value in the hole, destroy the by-value copy
+// std::__unguarded_linear_insert(CWideString* last, CWideString val, NGameComponentHelpers::CCaseInsensitiveStringCompare comp) -- SGI unguarded linear insert of a wide string: shift every predecessor that compares case-insensitively greater (_wcsicmp) up one slot, store the value in the hole, destroy the by-value copy
 // Leaf: __unguarded_linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00496FD0, 106 bytes, `ret 8` (__fastcall: last in ecx; the 4-byte string by
 // value and the empty comparator's slot on the stack -- the SGI/STLport algorithm TUs are /Gr; the callee destroys its

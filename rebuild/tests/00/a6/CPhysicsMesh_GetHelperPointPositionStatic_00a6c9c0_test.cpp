@@ -90,7 +90,7 @@ public:
     long      BoneIndex;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -100,7 +100,7 @@ public:
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef const value_type* const_iterator;
     value_type* _M_start;
     value_type* _M_finish;
@@ -134,12 +134,12 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const K& key, const _STL::pair<K, V>& entry) const { return key < entry.first; }
+    bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const CCharString& key, const _STL::pair<CCharString, V>& entry) const { return key.FastCompare(entry.first); }
+    bool operator()(const CCharString& key, const std::pair<CCharString, V>& entry) const { return key.FastCompare(entry.first); }
 };
 
 typedef CVectorMap<CCharString, C3DMeshVolume, CKeyPairCompareLess<CCharString, C3DMeshVolume> > TVolumeMap;
@@ -186,8 +186,8 @@ static bool Near(float a, float b) { float d = a - b; return d < 0.001f && d > -
 
 // alpha: one volume; bravo: two; charlie: two; delta: one (negative fraction)
 static CContainmentVolume gCV[6];
-static _STL::pair<CCharString, C3DMeshVolume> gVolumes[6];
-static _STL::pair<CCharString, C3DHelperPoint> gHelpers[4];
+static std::pair<CCharString, C3DMeshVolume> gVolumes[6];
+static std::pair<CCharString, C3DHelperPoint> gHelpers[4];
 
 static void BuildMesh(CPhysicsMesh& m)
 {

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CB6230 _STL::swap<pair<CCharString,CScriptInfo>> (copy-construct a temporary, assign both ways).
+// Behaviour test for 0x00CB6230 std::swap<pair<CCharString,CScriptInfo>> (copy-construct a temporary, assign both ways).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00cb6230_TEST FAIL\n"); return 1; } } while (0)

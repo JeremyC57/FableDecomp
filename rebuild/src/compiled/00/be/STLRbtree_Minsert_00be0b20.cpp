@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (the static map tree of pair<const long, CEngineStaticMapFileBlockManager::CFileBlock>) link a new file-block node under parent y (left when y is the header, or w is null and x is set or the key is smaller; else right), fix the header's root/leftmost/rightmost, rebalance and count it; returns the iterator through the hidden pointer
+// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (the static map tree of pair<const long, CEngineStaticMapFileBlockManager::CFileBlock>) link a new file-block node under parent y (left when y is the header, or w is null and x is set or the key is smaller; else right), fix the header's root/leftmost/rightmost, rebalance and count it; returns the iterator through the hidden pointer
 // Leaf: ?_M_insert@?$_Rb_tree@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE0B20, 194 bytes (+ int3 padding), `__fastcall`, hidden iterator result + 4
 // arguments (`ret 14h`). The manifest label "predicate_tree_insert_node" is descriptive. Callers: the landed insert_unique
@@ -44,7 +44,7 @@ public:
 class CBankFileAsyncEntry;
 class CBankFileAsyncData;
 
-namespace _STL {
+namespace std {
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
 template <class T> class allocator { };
 template <class T1, class T2> struct pair {
@@ -157,8 +157,8 @@ public:
 };
 
 template <class K, class V, class KoV, class C, class A>
-typename _STL::_Rb_tree<K, V, KoV, C, A>::iterator
-_STL::_Rb_tree<K, V, KoV, C, A>::_M_insert(_Rb_tree_node_base* x_, _Rb_tree_node_base* y_, const V& v, _Rb_tree_node_base* w_)
+typename std::_Rb_tree<K, V, KoV, C, A>::iterator
+std::_Rb_tree<K, V, KoV, C, A>::_M_insert(_Rb_tree_node_base* x_, _Rb_tree_node_base* y_, const V& v, _Rb_tree_node_base* w_)
 {
     _Link_type w = (_Link_type)w_;
     _Link_type x = (_Link_type)x_;
@@ -188,5 +188,5 @@ _STL::_Rb_tree<K, V, KoV, C, A>::_M_insert(_Rb_tree_node_base* x_, _Rb_tree_node
     return iterator(z);
 }
 
-typedef _STL::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock> TBlockValue;
-template class _STL::_Rb_tree<long, TBlockValue, _STL::_Select1st<TBlockValue>, _STL::less<long>, _STL::allocator<TBlockValue> >;
+typedef std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock> TBlockValue;
+template class std::_Rb_tree<long, TBlockValue, std::_Select1st<TBlockValue>, std::less<long>, std::allocator<TBlockValue> >;

@@ -52,7 +52,7 @@ Review at landing:
     argument. The bytes coincide; the model is wrong.
   - 0x00AE5FB0 / 0x00AE71A0 (and 0x00AF6120 UpperBound, 0x00AF6980 UninitFillN) describe the code as Dinkumware
     (`_Uninit_fill_n`, `upper_bound`). Retail is STLport (`__uninitialized_fill_n`, CVectorMap::UpperBound).
-  - 0x00AF6980 is `_STL::__uninitialized_fill_n<pair<EPSCType, CComponentInstance>*>`, the fill twin of 0x00AF6920.
+  - 0x00AF6980 is `std::__uninitialized_fill_n<pair<EPSCType, CComponentInstance>*>`, the fill twin of 0x00AF6920.
     It is landed as a non-template `UninitFillN_SPairEPSCTypeCComponentInstance_00af6980` with a by-value
     "CRetailAllocator" (in fact the `const __false_type&`).
   - 0x00AF2C00 is landed as a non-template `std::__uninitialized_fill_n`. Its "Caller: the combat-wheel ring resize at

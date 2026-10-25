@@ -1,5 +1,5 @@
-// _STL::pair::operator=(const pair& other) -- copy assignment of pair<long, CDefPointer<const CContextSensitiveItemDef>>: copy the key, then re-point the counted def (release the old one, add-ref the new one)
-// Leaf: ??4?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@_STL@@QAEAAU01@ABU01@@Z
+// std::pair::operator=(const pair& other) -- copy assignment of pair<long, CDefPointer<const CContextSensitiveItemDef>>: copy the key, then re-point the counted def (release the old one, add-ref the new one)
+// Leaf: ??4?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@std@@QAEAAU01@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059308A, 58 bytes, __fastcall `ret 4`, returns `*this` (unaligned: a size-optimised TU).
 // Identity: the element of the context-sensitive item priority heap: the landed STLport helpers of the same TU
 //   (__unguarded_linear_insert 0x00593924, __push_heap 0x00593965, __adjust_heap 0x00593E3E) declare this exact
@@ -50,7 +50,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -59,5 +59,5 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-typedef _STL::pair<long, CDefPointer<const CContextSensitiveItemDef> > TDefPair;
+typedef std::pair<long, CDefPointer<const CContextSensitiveItemDef> > TDefPair;
 TDefPair& (TDefPair::*g_pAssignDefPair)(const TDefPair&) = &TDefPair::operator=;

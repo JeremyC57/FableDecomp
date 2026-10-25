@@ -1,7 +1,7 @@
-// _STL::vector<CActiveSoundInfo>::push_back(const CActiveSoundInfo& x) -- copy-construct the sound record at finish and advance when there is room, else grow through _M_insert_overflow
+// std::vector<CActiveSoundInfo>::push_back(const CActiveSoundInfo& x) -- copy-construct the sound record at finish and advance when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@VCActiveSoundInfo@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AACEF0, length 72 bytes (+8 int3), `ret 4`.
-// Callees: _STL::vector<CActiveSoundInfo>::_M_insert_overflow(pointer, const CActiveSoundInfo&, const __false_type&,
+// Callees: std::vector<CActiveSoundInfo>::_M_insert_overflow(pointer, const CActiveSoundInfo&, const __false_type&,
 //   size_type, bool) @ 0x00AACDA0 (thiscall, five arguments: finish, value, the tag, 1, true).
 // Identity: element vtable 0x0129E674 = CActiveSoundInfo (16 bytes); caller 0x00AAC645 is in the CSoundEmitterLH
 //   module. The manifest's "Vector_PushBack_SingleElement" is descriptive.
@@ -23,7 +23,7 @@ public:
     virtual ~CActiveSoundInfo();
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -55,6 +55,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::vector<CActiveSoundInfo>::push_back(const CActiveSoundInfo&);
+template void std::vector<CActiveSoundInfo>::push_back(const CActiveSoundInfo&);

@@ -13,7 +13,7 @@
 // Shape: `Exists = false;` then two inline STLport clear() calls (`if (_M_node_count != 0) { _M_erase(_M_root());
 // _M_leftmost() = header; _M_root() = 0; _M_rightmost() = header; _M_node_count = 0; }`) sharing one zero register
 // (ebx) for the flag, the count tests and the stores; the tree's address is formed once (`lea esi`).
-namespace _STL {
+namespace std {
 template <class T> class less { };
 template <class T> class allocator { };
 template <class T1, class T2> class pair {
@@ -64,7 +64,7 @@ public:
     _Rb_tree<K, pair<const K, T>, _Select1st<pair<const K, T> >, C, A> _M_t;
     void clear() { _M_t.clear(); }
 };
-} // namespace _STL
+} // namespace std
 
 namespace QuadricOptimiserInternals {
 
@@ -77,7 +77,7 @@ public:
 
 class CIndexList {
 public:
-    _STL::set<unsigned long> Indices;                            // +0x00 (12 bytes in retail)
+    std::set<unsigned long> Indices;                            // +0x00 (12 bytes in retail)
 };
 
 class COptimisedVertex {
@@ -87,8 +87,8 @@ public:
     bool          Exists;                                        // +0x90
     unsigned long UniqueIndex;                                   // +0x94
     unsigned long OutputIndex;                                   // +0x98
-    _STL::map<unsigned long, float>                 Groups;            // +0x9C
-    _STL::map<unsigned long, CContractionReference> PairContractions;  // +0xA8
+    std::map<unsigned long, float>                 Groups;            // +0x9C
+    std::map<unsigned long, CContractionReference> PairContractions;  // +0xA8
     void Remove();
 };
 

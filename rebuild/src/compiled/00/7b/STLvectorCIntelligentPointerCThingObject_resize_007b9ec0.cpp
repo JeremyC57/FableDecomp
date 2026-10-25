@@ -1,5 +1,5 @@
-// _STL::vector<CIntelligentPointer<CThingObject> >::resize(unsigned int new_size) -- STLport one-argument resize of a tavern table's tankard/food pointer vector: resize(n, CIntelligentPointer<CThingObject>()) with the empty pointer destroyed on both exits
-// Leaf: ?resize@?$vector@V?$CIntelligentPointer@VCThingObject@@@@@_STL@@QAEXI@Z
+// std::vector<CIntelligentPointer<CThingObject> >::resize(unsigned int new_size) -- STLport one-argument resize of a tavern table's tankard/food pointer vector: resize(n, CIntelligentPointer<CThingObject>()) with the empty pointer destroyed on both exits
+// Leaf: ?resize@?$vector@V?$CIntelligentPointer@VCThingObject@@@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B9EC0, 116 bytes (+ int3 padding), `__fastcall` (this -> esi), `ret 4`.
 // Identity: Ego_r.pdb `?resize@?$vector@V?$CIntelligentPointer@VCThingObject@@@@...@@QAEXI@Z` (CTCTavernTable::Tankards
 //   and ::Food); both callers (0x007B91F1, 0x007B91FA) are CTCTavernTable::OnInitialActivate 0x007B90F0. The temporary's
@@ -29,7 +29,7 @@ public:
 
 class CThingObject;
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 class vector {
 public:

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A71810 _STL::__insertion_sort over pair<CCharString, 52-byte POD> records.
+// Behaviour test for 0x00A71810 std::__insertion_sort over pair<CCharString, 52-byte POD> records.
 #include <cstdio>
 #include <cstring>
 

@@ -1,4 +1,4 @@
-// _STL::__find_if(const pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* first, const pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* last, CFindDangerThing pred, const random_access_iterator_tag&) -- first danger-thing entry whose thing is the predicate's thing (const scan)
+// std::__find_if(const pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* first, const pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* last, CFindDangerThing pred, const random_access_iterator_tag&) -- first danger-thing entry whose thing is the predicate's thing (const scan)
 // Leaf: __find_if
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00748690, 159 bytes (+1 int3), `ret 8` (link-time __fastcall: first in ecx, last in
 //   edx, the 4-byte predicate and the iterator-tag reference on the stack).
@@ -37,7 +37,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                             // +0x00
     B second;                                            // +0x08
@@ -45,7 +45,7 @@ template <class A, class B> struct pair {
 };
 }
 
-typedef _STL::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> TDangerPair;   // 16 bytes
+typedef std::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> TDangerPair;   // 16 bytes
 
 namespace {
 class CFindDangerThing {
@@ -56,7 +56,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag {};
 
 template <class RandomAccessIter, class Predicate>

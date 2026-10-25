@@ -24,7 +24,7 @@ struct sockaddr_in {                            // winsock sockaddr_in, 16 bytes
 extern "C" __declspec(dllimport) char* __stdcall inet_ntoa(in_addr in);                     // WSOCK32 #11
 extern "C" __declspec(dllimport) unsigned short __stdcall ntohs(unsigned short netshort);   // WSOCK32 #15
 
-namespace _STL {
+namespace std {
 template <class _CharT> class char_traits {
 public:
     static unsigned int length(const _CharT* __s) { return strlen(__s); }
@@ -45,7 +45,7 @@ typedef basic_string<char, char_traits<char>, allocator<char> > string;
 namespace LHNetworkLib {
 
 struct LAddress {                               // Ego_r.pdb names; retail 0x1C bytes
-    _STL::string   ServerName;                  // +0x00
+    std::string   ServerName;                  // +0x00
     unsigned long  ServerIP;                    // +0x0C
     unsigned short ServerPort;                  // +0x10
     long           TransportProtocol;           // +0x14

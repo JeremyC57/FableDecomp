@@ -1,4 +1,4 @@
-// _STL::merge(CAnimSetIterator* first1, CAnimSetIterator* last1, CAnimSetIterator* first2, CAnimSetIterator* last2, CAnimSetIterator* result, CAnimSetItPriorityLessThan comp) -- SGI merge of two sorted runs of list<CAnimSet> const iterators by the anim set's Priority (the second run's iterator goes first only when its priority is strictly lower), then both tails copied with the counted copy loop
+// std::merge(CAnimSetIterator* first1, CAnimSetIterator* last1, CAnimSetIterator* first2, CAnimSetIterator* last2, CAnimSetIterator* result, CAnimSetItPriorityLessThan comp) -- SGI merge of two sorted runs of list<CAnimSet> const iterators by the anim set's Priority (the second run's iterator goes first only when its priority is strictly lower), then both tails copied with the counted copy loop
 // Leaf: merge
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00710310, 114 bytes, `ret 10h` (__fastcall: first1 in ecx, last1 in edx,
 // first2, last2, result and the empty comparator's slot on the stack -- the SGI/STLport algorithm TUs are /Gr). No callees.

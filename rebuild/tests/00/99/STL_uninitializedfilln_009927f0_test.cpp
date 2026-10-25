@@ -1,4 +1,4 @@
-// Behaviour test for 0x009927F0 _STL::__uninitialized_fill_n over the 36-byte (long key, sound-bank record) entries: __uninitialized_fill_n: n copies of x built in raw storage, returns first + n; n == 0 builds nothing.
+// Behaviour test for 0x009927F0 std::__uninitialized_fill_n over the 36-byte (long key, sound-bank record) entries: __uninitialized_fill_n: n copies of x built in raw storage, returns first + n; n == 0 builds nothing.
 // The record is modelled with a shared reference count (copies bump it, assignments move it, destruction drops it) so
 // leaked or double-destroyed copies show up as a non-zero final count.
 #include <cstdio>

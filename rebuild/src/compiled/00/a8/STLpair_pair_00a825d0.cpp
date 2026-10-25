@@ -1,4 +1,4 @@
-// _STL::pair::pair(const pair& o) -- copy-construct a 16-byte (unsigned __int64 ID, list of lines) switchable line-list entry: copy the key, give the list its own self-linked sentinel, then insert a copy of every line of the source list
+// std::pair::pair(const pair& o) -- copy-construct a 16-byte (unsigned __int64 ID, list of lines) switchable line-list entry: copy the key, give the list its own self-linked sentinel, then insert a copy of every line of the source list
 // Leaf: ??0?$pair@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A825D0, 79 bytes (+ int3 padding to 80), thiscall `ret 4`, returns this.
 // Callees: malloc 0x00BFEA0E (the 0x18-byte list sentinel), list<C2DLineF>::_M_insert_dispatch(iterator, const_iterator,
@@ -26,7 +26,7 @@ public:
     C2DVector End;                                          // +0x8
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -114,11 +114,11 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
-typedef _STL::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
+typedef std::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
+typedef std::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CLineList>        CSwitchableLineListLess;
 
-template _STL::pair<unsigned __int64, CLineList>::pair(const _STL::pair<unsigned __int64, CLineList>&);
+template std::pair<unsigned __int64, CLineList>::pair(const std::pair<unsigned __int64, CLineList>&);

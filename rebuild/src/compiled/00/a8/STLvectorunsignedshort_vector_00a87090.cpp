@@ -1,4 +1,4 @@
-// _STL::vector<unsigned short>::vector(const vector& x) -- STLport copy constructor of a 16-bit index vector: allocate exactly x.size() shorts (none when empty) and memmove the source range in
+// std::vector<unsigned short>::vector(const vector& x) -- STLport copy constructor of a 16-bit index vector: allocate exactly x.size() shorts (none when empty) and memmove the source range in
 // Leaf: ??0?$vector@G
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A87090, 90 bytes, thiscall `ret 4`, returns this.
 // Identity: 13 call sites in the 3D mesh/primitive code (0x00A86B21, 0x00A86BF6, 0x00A86C8F, 0x00A870F8, 0x00F3B755, ...);
@@ -13,7 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 

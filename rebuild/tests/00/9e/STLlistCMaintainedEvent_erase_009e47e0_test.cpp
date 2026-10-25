@@ -1,4 +1,4 @@
-// Behaviour test for 0x009E47E0 _STL::list<CMaintainedEvent>::erase(iterator).
+// Behaviour test for 0x009E47E0 std::list<CMaintainedEvent>::erase(iterator).
 #include <cstdio>
 #include <cstdlib>
 #include <new>

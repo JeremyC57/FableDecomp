@@ -61,7 +61,7 @@ public:
     bool           BlocksNavigation;                        // +0x18
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class vector {
 public:
     typedef unsigned int size_type;
@@ -98,7 +98,7 @@ __forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 }
 
 template <class T>
-void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStreamReader& stream, _STL::vector<T>& out)
+void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStreamReader& stream, std::vector<T>& out)
 {
     CPersistTraits<T> traits;
     long count;
@@ -108,4 +108,4 @@ void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStreamReader& stream, 
         traits.TransferBinaryIn(&stream, &out[i]);
 }
 
-template void __fastcall GFSerialiseVectorBinaryIn<CDegradableInfo>(CMemoryDataInputStreamReader& stream, _STL::vector<CDegradableInfo>& out);
+template void __fastcall GFSerialiseVectorBinaryIn<CDegradableInfo>(CMemoryDataInputStreamReader& stream, std::vector<CDegradableInfo>& out);

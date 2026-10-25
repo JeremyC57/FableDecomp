@@ -1,4 +1,4 @@
-// _STL::list::size() const -- STLport list<CVsyncCallbackTimer::CPendingQuery>::size: distance(begin(), end()) with distance/__distance expanded inline
+// std::list::size() const -- STLport list<CVsyncCallbackTimer::CPendingQuery>::size: distance(begin(), end()) with distance/__distance expanded inline
 // Leaf: ?size@?$list@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F7DC0, length 115 bytes, plain `ret`.
 // Callees: the iterator base ctor @ 0x0041C780 (end() then begin(): arguments evaluate right to left), operator!= @ 0x0041C7C0,
@@ -19,7 +19,7 @@
 extern "C" void __cdecl free(void* block);                         // 0x00BFEA14
 extern "C" void* __cdecl malloc(unsigned int size);                // 0x00BFEA0E
 void* __cdecl operator new(unsigned int size, void* where);        // 0x00405C10 (placement new, called out of line)
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -188,13 +188,13 @@ public:
         double           TimeStamp;
     };
     void* Device;                                                       // +0x00 IDirect3DDevice9*
-    _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > FreeQueoryObjects;   // +0x04
-    _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > PendingQueories;     // +0x08
+    std::list<CPendingQuery, std::allocator<CPendingQuery> > FreeQueoryObjects;   // +0x04
+    std::list<CPendingQuery, std::allocator<CPendingQuery> > PendingQueories;     // +0x08
     long PendingFrame;                                                  // +0x0c
     long FinishedFrame;                                                 // +0x10
     void ClearAllQueries();
     void OnPreDeviceReset();
 };
 
-template class _STL::_List_base<CVsyncCallbackTimer::CPendingQuery, _STL::allocator<CVsyncCallbackTimer::CPendingQuery> >;
-template class _STL::list<CVsyncCallbackTimer::CPendingQuery, _STL::allocator<CVsyncCallbackTimer::CPendingQuery> >;
+template class std::_List_base<CVsyncCallbackTimer::CPendingQuery, std::allocator<CVsyncCallbackTimer::CPendingQuery> >;
+template class std::list<CVsyncCallbackTimer::CPendingQuery, std::allocator<CVsyncCallbackTimer::CPendingQuery> >;

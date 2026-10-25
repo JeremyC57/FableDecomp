@@ -57,7 +57,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -86,7 +86,7 @@ int main()
     void* raw = std::malloc(sizeof(C3DAnimationInfo) * 4);
     std::memset(raw, 0xCD, sizeof(C3DAnimationInfo) * 4);
     C3DAnimationInfo* first = (C3DAnimationInfo*)raw;
-    C3DAnimationInfo* end = _STL::__uninitialized_fill_n(first, 3u, proto, _STL::__false_type());
+    C3DAnimationInfo* end = std::__uninitialized_fill_n(first, 3u, proto, std::__false_type());
     if (end != first + 3) ok = 0;
     for (int i = 0; i < 3; ++i) {
         C3DAnimationInfo& a = first[i];
@@ -97,7 +97,7 @@ int main()
     if (data.IVRefCount != 4) ok = 0;
     unsigned char* tail = (unsigned char*)(first + 3);
     if (tail[0] != 0xCD || tail[sizeof(C3DAnimationInfo) - 1] != 0xCD) ok = 0;
-    C3DAnimationInfo* none = _STL::__uninitialized_fill_n(first + 3, 0u, proto, _STL::__false_type());
+    C3DAnimationInfo* none = std::__uninitialized_fill_n(first + 3, 0u, proto, std::__false_type());
     if (none != first + 3 || data.IVRefCount != 4 || tail[0] != 0xCD) ok = 0;
     std::free(raw);
 

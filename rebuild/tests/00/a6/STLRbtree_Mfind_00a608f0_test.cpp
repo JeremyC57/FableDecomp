@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A608F0 _STL::_Rb_tree<CWideString, pair<const CWideString, CEntry>, ...>::_M_find(const CWideString&) const
+// Behaviour test for 0x00A608F0 std::_Rb_tree<CWideString, pair<const CWideString, CEntry>, ...>::_M_find(const CWideString&) const
 #include <cstdio>
 
 class CWideString {
@@ -20,7 +20,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -66,11 +66,11 @@ public:
         return __y;
     }
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<CWideString, CChecksumCacheFile::CEntry> CValue;
-typedef _STL::_Rb_tree_node<CValue> CNode;
-typedef _STL::_Rb_tree<CWideString, CValue, _STL::less<CWideString> > CTree;
+typedef std::pair<CWideString, CChecksumCacheFile::CEntry> CValue;
+typedef std::_Rb_tree_node<CValue> CNode;
+typedef std::_Rb_tree<CWideString, CValue, std::less<CWideString> > CTree;
 
 static void Set(CNode& n, const wchar_t* key, CNode* parent, CNode* left, CNode* right)
 {

@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__unguarded_linear_insert<pair<CCharString,CPersistInfo>*, ..> @ 0x004B9480: walks the entry down
+// Model of std::__unguarded_linear_insert<pair<CCharString,CPersistInfo>*, ..> @ 0x004B9480: walks the entry down
 // from last past every entry whose quest name sorts after it (a null name sorts first).
 template <class T> class CBasicString {
 public:
@@ -61,7 +61,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -71,14 +71,14 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo CPersistInfo;
-typedef _STL::pair<CCharString, CPersistInfo> CPersistEntry;
+typedef std::pair<CCharString, CPersistInfo> CPersistEntry;
 typedef CKeyPairCompareLess<CCharString, CPersistInfo> CPersistLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
@@ -121,7 +121,7 @@ int main()
         SetEntry(a[i], base[i]);
     SetEntry(a[4], 1);
     int dtors = gDtors;
-    _STL::__unguarded_linear_insert(a + 4, CPersistEntry(a[4]), CPersistLess());
+    std::__unguarded_linear_insert(a + 4, CPersistEntry(a[4]), CPersistLess());
     int expect[5] = { 0, 1, 2, 3, 4 };
     for (int i = 0; i < 5; ++i)
         if (KeyOf(a[i]) != expect[i] || !Consistent(a[i]))
@@ -132,7 +132,7 @@ int main()
     for (int i = 0; i < 3; ++i)
         SetEntry(a[i], base2[i]);
     SetEntry(a[3], 3);
-    _STL::__unguarded_linear_insert(a + 3, CPersistEntry(a[3]), CPersistLess());
+    std::__unguarded_linear_insert(a + 3, CPersistEntry(a[3]), CPersistLess());
     int expect2[4] = { -1, 1, 3, 5 };
     for (int i = 0; i < 4; ++i)
         if (KeyOf(a[i]) != expect2[i] || !Consistent(a[i]))

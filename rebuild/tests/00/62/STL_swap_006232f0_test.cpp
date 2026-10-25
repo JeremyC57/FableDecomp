@@ -1,4 +1,4 @@
-// Behaviour test for 0x006232F0 _STL::swap<CTestQuest>.
+// Behaviour test for 0x006232F0 std::swap<CTestQuest>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("006232f0_TEST FAIL\n"); return 1; } } while (0)

@@ -1,4 +1,4 @@
-// Behaviour test for 0x005E1AC0 _STL::__unguarded_insertion_sort_aux<pair<unsigned long,CAnimationEntry>*>.
+// Behaviour test for 0x005E1AC0 std::__unguarded_insertion_sort_aux<pair<unsigned long,CAnimationEntry>*>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("005e1ac0_TEST FAIL\n"); return 1; } } while (0)

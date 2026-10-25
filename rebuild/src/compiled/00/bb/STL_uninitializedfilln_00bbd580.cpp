@@ -1,4 +1,4 @@
-// _STL::uninitialized_fill_n(SPairByteLong* first, unsigned int n, const SPairByteLong& x) -- placement copy-construct n copies of an 8-byte {byte, long} pair at first, return the advanced pointer
+// std::uninitialized_fill_n(SPairByteLong* first, unsigned int n, const SPairByteLong& x) -- placement copy-construct n copies of an 8-byte {byte, long} pair at first, return the advanced pointer
 // Leaf: ??$uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BBD580, 40 bytes, __fastcall (first ecx, n edx), `ret 4` (the value reference).
 // Caller: the vector<pair> `_M_fill_insert` helper 0x00BBD950 (the "fewer elements after the position" arm), whose
@@ -10,13 +10,13 @@
 //   test, the advanced pointer returned in eax.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct SPairByteLong {                       // _STL::pair<bool, long>, 8 bytes
+struct SPairByteLong {                       // std::pair<bool, long>, 8 bytes
     bool first;                              // +0x00
     long second;                             // +0x04
     SPairByteLong(const SPairByteLong& o) : first(o.first), second(o.second) { }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -40,4 +40,4 @@ _ForwardIter __fastcall uninitialized_fill_n(_ForwardIter __first, _Size __n, co
 
 template SPairByteLong* __fastcall uninitialized_fill_n<SPairByteLong*, unsigned int, SPairByteLong>(SPairByteLong*, unsigned int, const SPairByteLong&);
 
-} // namespace _STL
+} // namespace std

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A33250 _STL::__unguarded_linear_insert: the copied element sinks past the larger keys; names, pointers and reference counts travel with their keys.
+// Behaviour test for 0x00A33250 std::__unguarded_linear_insert: the copied element sinks past the larger keys; names, pointers and reference counts travel with their keys.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

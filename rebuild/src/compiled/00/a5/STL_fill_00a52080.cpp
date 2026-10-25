@@ -1,4 +1,4 @@
-// _STL::fill(C3DTriangle2* first, C3DTriangle2* last, const C3DTriangle2& val) -- assign val to every triangle of [first, last)
+// std::fill(C3DTriangle2* first, C3DTriangle2* last, const C3DTriangle2& val) -- assign val to every triangle of [first, last)
 // Leaf: ??$fill@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A52080, length 45 bytes (+3 int3 pad), `ret 4`.
 // Callers: 0x00A55350 and 0x00A553AB (the vector<C3DTriangle2> fill-insert helper). No callees.
@@ -11,7 +11,7 @@ public:
     unsigned short VertexIndex[3];                   // +0x00
 };
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {

@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::_M_create_node(const value_type& x) -- allocate a 0x20-byte tree node and copy-construct the (augmentation type, sound set) pair into it
+// std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::_M_create_node(const value_type& x) -- allocate a 0x20-byte tree node and copy-construct the (augmentation type, sound set) pair into it
 // Leaf: ?_M_create_node@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769980, 62 bytes (+int3 pad to 64), `ret 4` (thiscall; `this` is never read).
 // Caller: 0x0076A110 _M_insert (its right-hand branch; the left-hand branch carries an inlined copy).
@@ -27,7 +27,7 @@ struct CObjectAugmentationSoundSet {                        // Ego_r.pdb, 12 byt
     unsigned long Handle;                                   // +0x08
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -51,11 +51,11 @@ struct _Rb_tree_node : public _Rb_tree_node_base {
 
 }
 
-typedef _STL::pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> SSoundSetValue;   // 0x10 bytes
-typedef _STL::_Rb_tree_node<SSoundSetValue> SSoundSetNode;                                          // 0x20 bytes
+typedef std::pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> SSoundSetValue;   // 0x10 bytes
+typedef std::_Rb_tree_node<SSoundSetValue> SSoundSetNode;                                          // 0x20 bytes
 
 struct CSoundSetTree {                                      // _Rb_tree<EObjectAugmentationType, SSoundSetValue, ...>
-    _STL::_Rb_tree_node_base* _M_header;                    // +0x00
+    std::_Rb_tree_node_base* _M_header;                    // +0x00
     unsigned long             _M_node_count;                // +0x04
     SSoundSetNode* _M_create_node(const SSoundSetValue& __x);
 };

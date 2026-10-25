@@ -1,4 +1,4 @@
-// _STL::__final_insertion_sort(const CAnimationEntry** first, const CAnimationEntry** last, CTurningAnimCompare comp) -- introsort tail for the turning animations: insertion-sort the first 16 entries, then unguarded-insert the rest
+// std::__final_insertion_sort(const CAnimationEntry** first, const CAnimationEntry** last, CTurningAnimCompare comp) -- introsort tail for the turning animations: insertion-sort the first 16 entries, then unguarded-insert the rest
 // Leaf: ??$__final_insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087E400, 75 bytes (+ int3 padding), `ret 4` (/Gr algorithm TU: first
 //   in ecx, last in edx, the 4-byte comparator by value on the stack).
@@ -36,7 +36,7 @@ public:
 }
 typedef const CAnimationEntry* TEntry;
 
-namespace _STL {
+namespace std {
 const int __stl_threshold = 16;
 
 template <class _RandomAccessIter, class _Tp, class _Compare>

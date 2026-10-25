@@ -1,4 +1,4 @@
-// _STL::deque<C2DVector>::_M_new_elements_at_back(unsigned int new_elements) -- make sure the map has room after the finish node, then allocate enough node buffers behind it for new_elements more elements
+// std::deque<C2DVector>::_M_new_elements_at_back(unsigned int new_elements) -- make sure the map has room after the finish node, then allocate enough node buffers behind it for new_elements more elements
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0F350, length 94 bytes (thiscall `ret 4`). Callers: 0x00A0F48E, 0x00A0F7E0,
 // 0x00A0FB79.
 // Callees: deque::_M_reallocate_map @ 0x00A0EE50 (nodes, false), malloc @ 0x00BFEA0E.
@@ -21,7 +21,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

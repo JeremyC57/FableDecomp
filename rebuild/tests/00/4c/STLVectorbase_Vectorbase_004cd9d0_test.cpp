@@ -4,7 +4,7 @@
 #include <cstdlib>
 
 static int gMallocs = 0;
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -31,11 +31,11 @@ public:
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
 };
 }
-typedef _STL::_Vector_base<unsigned long, _STL::allocator<unsigned long> > TBase;
+typedef std::_Vector_base<unsigned long, std::allocator<unsigned long> > TBase;
 
 int main()
 {
-    _STL::allocator<unsigned long> alloc;
+    std::allocator<unsigned long> alloc;
     TBase b(10, alloc);
     bool ok = b._M_start != 0 && b._M_finish == b._M_start && b._M_end_of_storage._M_data - b._M_start == 10 && gMallocs == 1;
     for (int i = 0; ok && i < 10; ++i)

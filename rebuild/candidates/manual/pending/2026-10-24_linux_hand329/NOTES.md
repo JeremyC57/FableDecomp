@@ -24,7 +24,7 @@ FableWin.pdb symbols, PDB layouts and landed siblings.
 - **CGraphicInfoFrame::CFrameData** IsResourceLoaded (009fd7f0, slot 4) and ReleaseTexture (009fea00, slot 10):
   IsResourceLoaded needs `if (p && !p->IsFinished()) return false; return true;`. The `||` form gives 32-bit
   0/1.
-- **_STL::basic_string<unsigned short>::resize** (0099cd60): STLport resize with the inline erase. Its move includes the
+- **std::basic_string<unsigned short>::resize** (0099cd60): STLport resize with the inline erase. Its move includes the
   terminator (`(finish-last)+1`), and the char_traits `n==0 ? s1 : memmove` gives `inc ; je`.
 - **CIntelligentPointer holders**:
   - 006a2f00 NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgPasser(CThing*, bool) (FableWin ctor symbol).
@@ -53,7 +53,7 @@ FableWin.pdb symbols, PDB layouts and landed siblings.
     the call writes no memory and keeps the key in ebx.
 - **CSymbolMap / CCRCSymbolMap ctors** (009e5200, 00a38500): CBase, a CVectorMap, an STLport set (malloc'ed header,
   `_M_empty_initialize`) and a bool.
-- **_STL::vector<CThingTypeInfo>::resize(n)** (0052bf50): `resize(n, T())` with the string-only default ctor.
+- **std::vector<CThingTypeInfo>::resize(n)** (0052bf50): `resize(n, T())` with the string-only default ctor.
 - **CPersistContext transferable components**:
   - CRGBColour TransferOut (006421f0).
   - C3DVector TransferOut/TransferIn (00485348/0048531e, /Os with frame pointers: `optimize("s",on)` plus `("y",off)`).

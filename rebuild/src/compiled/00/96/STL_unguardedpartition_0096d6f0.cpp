@@ -1,14 +1,14 @@
-// _STL::__unguarded_partition(CThing** first, CThing** last, CThing* pivot, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- quicksort partition step of the screamer pursue-target sort: walk both ends towards the pivot and swap each out-of-place pair, returning the cut
+// std::__unguarded_partition(CThing** first, CThing** last, CThing* pivot, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- quicksort partition step of the screamer pursue-target sort: walk both ends towards the pivot and swap each out-of-place pair, returning the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096D6F0, 141 bytes (+ int3 padding to 144), __fastcall (/Gr algorithm TU: first
 //   in ecx, last in edx, pivot and the comparator on the stack), `ret 8`.
-// Instantiation: the screamer target sort: _STL::partial_sort / sort<CThing**,
+// Instantiation: the screamer target sort: std::partial_sort / sort<CThing**,
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> > of CAIStateGroup_ScreamerPursueTarget::Update
 //   (0x0096DF50) and its __introsort_loop (0x0096E410).
 // Callees: CThingCompare_Nearest::operator()<CThing> @ 0x004A8D80 (through the adapter, inline).
 // Shape: STLport 4.x `__unguarded_partition` with an inline `iter_swap`; the comparator is copied into the argument
 //   area for each call.
-// Label: catalog "std_sort_Partition_WithPivot" -> the STLport 4.x _STL::__unguarded_partition instantiation for
+// Label: catalog "std_sort_Partition_WithPivot" -> the STLport 4.x std::__unguarded_partition instantiation for
 //   CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> (retail links STLport; the Dinkumware names in Ego_r.pdb
 //   are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
@@ -39,7 +39,7 @@ public:
 };
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2>
 inline void iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2)
 {
@@ -65,4 +65,4 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
     }
 }
 template CThing** __fastcall __unguarded_partition<CThing**, CThing*, TComp>(CThing**, CThing**, CThing*, TComp);
-} // namespace _STL
+} // namespace std

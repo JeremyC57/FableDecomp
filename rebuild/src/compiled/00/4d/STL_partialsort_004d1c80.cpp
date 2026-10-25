@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<float, CSubtitledMessage::CCameraTag>* first, pair<float, CSubtitledMessage::CCameraTag>* middle, pair<float, CSubtitledMessage::CCameraTag>* last, pair<float, CSubtitledMessage::CCameraTag>*, CKeyPairCompareLess comp) -- STLport partial sort of a subtitled message's camera tags by time: heapify the prefix, pop every earlier tail tag into it, then heap-sort the prefix
+// std::__partial_sort(pair<float, CSubtitledMessage::CCameraTag>* first, pair<float, CSubtitledMessage::CCameraTag>* middle, pair<float, CSubtitledMessage::CCameraTag>* last, pair<float, CSubtitledMessage::CCameraTag>*, CKeyPairCompareLess comp) -- STLport partial sort of a subtitled message's camera tags by time: heapify the prefix, pop every earlier tail tag into it, then heap-sort the prefix
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004D1C80, 133 bytes, `ret 0Ch` (/Gr algorithm TU, explicit __fastcall here: first in
 //   ecx, middle in edx, then last, the value-type tag pointer and the comparator slot).
@@ -28,7 +28,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -39,13 +39,13 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<float, CSubtitledMessage::CCameraTag> TCameraPair;      // 28 bytes
+typedef std::pair<float, CSubtitledMessage::CCameraTag> TCameraPair;      // 28 bytes
 typedef CKeyPairCompareLess<float, CSubtitledMessage::CCameraTag> TCameraLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp, _Tp*, _Distance*);   // 0x004D0C90
 template <class _RandomAccessIter, class _Tp, class _Compare, class _Distance>

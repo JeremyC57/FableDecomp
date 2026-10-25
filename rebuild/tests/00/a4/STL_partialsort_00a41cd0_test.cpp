@@ -76,7 +76,7 @@ public:
     int Id;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -96,14 +96,14 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
+typedef std::pair<CCharString, CCharString>      SNamePair;
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
@@ -155,7 +155,7 @@ template <class T, class C> static bool IsHeap(const T* p, int n, C comp)
             return false;
     return true;
 }
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type_of(_Tp*) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type_of(_Tp*) { return (int*)0; }
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
@@ -237,7 +237,7 @@ int main()
 {
     const char* names[16] = { "h", "1", "c", "2", "a", "9", "g", "1", "a", "1", "f", "1", "b", "5", "e", "1" };
     SNamePairEntry* a = MakePairs(names, 8, 8);
-    _STL::__partial_sort(a, a + 3, a + 8, (SNamePairEntry*)0, CNamePairLess());
+    std::__partial_sort(a, a + 3, a + 8, (SNamePairEntry*)0, CNamePairLess());
     if (!PairIs(a[0], "a", "1") || !PairIs(a[1], "a", "9") || !PairIs(a[2], "b", "5") || a[0].second != &g_banks[4])
         { std::printf("00a41cd0_TEST FAIL\n"); return 1; }
     for (int i = 3; i < 8; ++i)

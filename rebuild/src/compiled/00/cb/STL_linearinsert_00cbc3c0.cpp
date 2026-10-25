@@ -1,9 +1,9 @@
-// _STL::__linear_insert(CBindingPair* first, CBindingPair* last, CBindingPair val, CBindingLess comp) -- insert val at last into the sorted (name, entity script binding) run [first, last): to the front (after shifting the run up) when its name sorts first, else by the unguarded backward walk
+// std::__linear_insert(CBindingPair* first, CBindingPair* last, CBindingPair val, CBindingLess comp) -- insert val at last into the sorted (name, entity script binding) run [first, last): to the front (after shifting the run up) when its name sorts first, else by the unguarded backward walk
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBC3C0, 175 bytes (`ret 10h`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __linear_insert over (name, entity script binding) = _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530); caller __insertion_sort
+// Identity: STLport __linear_insert over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530); caller __insertion_sort
 //   0x00CBCFAB. The manifest label "SoundPair_InsertInPriorityOrder" is propagated and wrong.
 // Callees: CCharString::FastCompare 0x009E6530, __copy_backward 0x00CBAE30, __unguarded_linear_insert 0x00CBA9B0,
 //   pair operator= 0x00CBA700, CCharString copy/dtor, operator delete 0x00BFE9BC.
@@ -64,7 +64,7 @@ public:
     }
 };
 class CEntityScriptBindingBase;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -72,11 +72,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
-typedef _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
+typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>

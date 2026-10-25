@@ -1,5 +1,5 @@
-// _STL::pair::pair(const pair& other) -- copy constructor of the criminal-status map node value: copy the region name, block-copy the 0x44-byte status
-// Leaf: ??0?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@_STL@@QAE@ABU01@@Z
+// std::pair::pair(const pair& other) -- copy constructor of the criminal-status map node value: copy the region name, block-copy the 0x44-byte status
+// Leaf: ??0?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@QAE@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0057F30A, 34 bytes, __fastcall `ret 4`, returns `this` (unaligned: a size-optimised TU).
 // Identity: the value_type of CTCHeroStats::OutstandingCrimes (map<CCharString, CTCHeroStats::MirroredCriminalStatus>);
 //   its callers are the TU's `_Construct(p, v)` helper 0x0057F9A5 (`if (p) new (p) value_type(v)`) and 0x0058041D.
@@ -32,7 +32,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

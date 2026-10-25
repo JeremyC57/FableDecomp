@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF31C0 _STL::__unguarded_partition over pair<CCharString, CRegisteredPSCInfo> (key compare)
+// behaviour test for 0x00AF31C0 std::__unguarded_partition over pair<CCharString, CRegisteredPSCInfo> (key compare)
 #include <cstdio>
 #include <cstring>
 struct CStr { const char* s; };

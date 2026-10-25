@@ -23,7 +23,7 @@ static unsigned long Calc(unsigned long seed, const void* data, unsigned long le
     return h;
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -39,8 +39,8 @@ public:
 
 template <class K, class V> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Data;
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Data;
     bool                     Dirty;
     const value_type* LowerBound(const K& key) const
     {
@@ -89,7 +89,7 @@ static void MakeString(CCharString& s, CCharStringData& d, const char* text)
 int main()
 {
     const char* names[4] = { "ENUM_A", "ENUM_B", "ENUM_C", "" };
-    _STL::pair<unsigned long, long> entries[4];
+    std::pair<unsigned long, long> entries[4];
     for (int i = 0; i < 4; ++i) {
         entries[i].first = Calc(0, names[i], (unsigned long)strlen(names[i]));
         entries[i].second = 10 * (i + 1);
@@ -97,7 +97,7 @@ int main()
     for (int i = 0; i < 4; ++i)                           // sort by key (CVectorMap order)
         for (int j = i + 1; j < 4; ++j)
             if (entries[j].first < entries[i].first) {
-                _STL::pair<unsigned long, long> t = entries[i];
+                std::pair<unsigned long, long> t = entries[i];
                 entries[i] = entries[j];
                 entries[j] = t;
             }
@@ -112,7 +112,7 @@ int main()
     for (int i = 0; i < 3; ++i)
         for (int j = i + 1; j < 3; ++j)
             if (entries[j].first < entries[i].first) {
-                _STL::pair<unsigned long, long> t = entries[i];
+                std::pair<unsigned long, long> t = entries[i];
                 entries[i] = entries[j];
                 entries[j] = t;
             }

@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<CCharString,CSymbolInfo>* first, pair<CCharString,CSymbolInfo>* last, CCompareString comp, pair<CCharString,CSymbolInfo>*, int*) -- STLport make_heap core over the symbol-map entries: sift every parent down from (len-2)/2 to the root
+// std::__make_heap(pair<CCharString,CSymbolInfo>* first, pair<CCharString,CSymbolInfo>* last, CCompareString comp, pair<CCharString,CSymbolInfo>*, int*) -- STLport make_heap core over the symbol-map entries: sift every parent down from (len-2)/2 to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E7100, length 122 bytes (`ret 0Ch`: comparator, value-type and distance-type pointers).
 // Label correction: the catalog's "MakeHeap_Start" is STLport `__make_heap` for pair<CCharString, CSymbolMap::CSymbolInfo>*
@@ -28,7 +28,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;
@@ -37,14 +37,14 @@ struct pair {
 };
 }
 
-typedef _STL::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
+typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
 
 template <class T>
 struct CCompareString {
     bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.FastCompare(b.first); }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value, _Compare __comp);   // 0x009E6DB0
 
@@ -63,4 +63,4 @@ void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator
 }
 }
 
-template void __fastcall _STL::__make_heap(SSymbolEntry*, SSymbolEntry*, CCompareString<CSymbolMap::CSymbolInfo>, SSymbolEntry*, int*);
+template void __fastcall std::__make_heap(SSymbolEntry*, SSymbolEntry*, CCompareString<CSymbolMap::CSymbolInfo>, SSymbolEntry*, int*);

@@ -1,5 +1,5 @@
-// _STL::vector::clear() -- empty a vector<char> byte buffer: erase(begin(), end()) with STLport's __copy_trivial inlined
-// Leaf: ?clear@?$vector@DV?$allocator@D@_STL@@@_STL@@QAEXXZ
+// std::vector::clear() -- empty a vector<char> byte buffer: erase(begin(), end()) with STLport's __copy_trivial inlined
+// Leaf: ?clear@?$vector@DV?$allocator@D@std@@@std@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008F9E90, 41 bytes, thiscall, `ret`.
 // Identity: vector<char>::clear. Both callers sit in LHNetworkLib::LSocket::Send (0x008F8F50: after `send` consumed the
 //   whole buffer, and again after the unsent tail was copied out), whose PDB signature takes `vector<char>&`; the PDB
@@ -11,7 +11,7 @@
 //   it keeps the never-true `cmp eax,eax ; jne` and the zero-length memmove + `add eax,esi` tail.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)

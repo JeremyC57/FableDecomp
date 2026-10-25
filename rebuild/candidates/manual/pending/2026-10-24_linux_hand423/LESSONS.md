@@ -23,7 +23,7 @@
   retail's `lea ebp,[esi+8]; mov edx,ebp` member-pointer shape. A plain `= m_position` copy does not (00aabbb0
   CSoundEmitterLH slot 15).
 - **CVectorMap::DeallocateMemory.** The shape is `clear(); vector empty; swap(empty); Dirty = false;`. Retail
-  `vector::swap` is three `_STL::swap` calls, one of them on the whole `_STLP_alloc_proxy`; `__copy` and
+  `vector::swap` is three `std::swap` calls, one of them on the whole `_STLP_alloc_proxy`; `__copy` and
   `__destroy_aux` stay out of line (00a83fd0).
 - **vector(n) for PODs.** `vector<T>(n)` for T = unsigned short or unsigned long uses the real `_Vector_base(n, a)` +
   `uninitialized_fill_n(start, n, T())` with `__true_type`, which becomes `fill_n` and compiles to `rep stos`.
@@ -49,7 +49,7 @@ Review at landing:
   C3DMeshFileLoader::RegisterMapSubChunkType (+0x88) and RegisterHelpersSubChunkType (+0x98). The callers' landed
   "C3DMeshFileRootChunk" naming of AddChunkType's parent is also wrong.
 - The landed CSBCCorridor::Reset 0x00A88080 models CWall as 16 bytes; it is 24 (Ego_r, and 00a88b10 copies 6 dwords).
-- The landed 0x0056D490 and std_fill 0x00A85810 model STLport in namespace `std`, not `_STL`, so their mangled names
+- The landed 0x0056D490 and std_fill 0x00A85810 model STLport in namespace `std`, not `std`, so their mangled names
   differ from retail.
 - The landed `CVectorMap_T_00a84ff0_Sort` models a TransferToGui call. Re-check what that function is.
 - The engine headers `rebuild/include/engine/CChunkedFileSuperChunk.h` and `C3DMeshFileXUVTangentChunk.h` carry Ego_r

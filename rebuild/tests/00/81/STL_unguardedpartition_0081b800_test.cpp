@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__unguarded_partition over (long key, 36-byte payload) pairs -- everything left of the cut is <= the pivot, right of it >= it
+// Behaviour test: std::__unguarded_partition over (long key, 36-byte payload) pairs -- everything left of the cut is <= the pivot, right of it >= it
 #include <cstdio>
 
 struct SPayload {                                       // 36-byte POD payload

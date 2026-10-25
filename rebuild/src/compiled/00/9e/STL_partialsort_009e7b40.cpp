@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<CCharString,CSymbolInfo>* first, pair<CCharString,CSymbolInfo>* middle, pair<CCharString,CSymbolInfo>* last, pair<CCharString,CSymbolInfo>*, CCompareString comp) -- STLport partial_sort over the symbol-map entries: heapify [first, middle), pop in every later entry that sorts before the root, then sort_heap
+// std::__partial_sort(pair<CCharString,CSymbolInfo>* first, pair<CCharString,CSymbolInfo>* middle, pair<CCharString,CSymbolInfo>* last, pair<CCharString,CSymbolInfo>*, CCompareString comp) -- STLport partial_sort over the symbol-map entries: heapify [first, middle), pop in every later entry that sorts before the root, then sort_heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E7B40, length 132 bytes (`ret 0Ch`: last, the value-type pointer, the comparator).
 // Label correction: the catalog's "Partition_IntroSort" is STLport `__partial_sort` (the introsort's depth-limit fallback)
@@ -28,7 +28,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;
@@ -37,14 +37,14 @@ struct pair {
 };
 }
 
-typedef _STL::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
+typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
 
 template <class T>
 struct CCompareString {
     bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.FastCompare(b.first); }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*);   // 0x009E7100
 
@@ -77,4 +77,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 }
 }
 
-template void __fastcall _STL::__partial_sort(SSymbolEntry*, SSymbolEntry*, SSymbolEntry*, SSymbolEntry*, CCompareString<CSymbolMap::CSymbolInfo>);
+template void __fastcall std::__partial_sort(SSymbolEntry*, SSymbolEntry*, SSymbolEntry*, SSymbolEntry*, CCompareString<CSymbolMap::CSymbolInfo>);

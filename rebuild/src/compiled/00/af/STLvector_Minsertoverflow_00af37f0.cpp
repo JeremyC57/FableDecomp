@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(T* pos, const T& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: move into a size + max(size, fill_len) block with x inserted fill_len times at pos
+// std::vector::_M_insert_overflow(T* pos, const T& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: move into a size + max(size, fill_len) block with x inserted fill_len times at pos
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF37F0, 215 bytes, __fastcall `ret 14h`.
 // Callers: push_back 0x00AF39C0 (`_M_insert_overflow(_M_finish, x, __false_type(), 1, true)`).
@@ -38,7 +38,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -135,6 +135,6 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 }
 }
 
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 
-template void _STL::vector<CPSCPair>::_M_insert_overflow(CPSCPair*, const CPSCPair&, const _STL::__false_type&, unsigned int, bool);
+template void std::vector<CPSCPair>::_M_insert_overflow(CPSCPair*, const CPSCPair&, const std::__false_type&, unsigned int, bool);

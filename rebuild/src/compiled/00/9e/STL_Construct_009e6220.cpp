@@ -1,5 +1,5 @@
-// _STL::_Construct(pair<const CCharString,CShaderParserSymbol>* p, const pair<const CCharString,CShaderParserSymbol>& val) -- STLport: placement-copy one shader-symbol map value (key string, then the symbol's two strings and its type)
-// Leaf: ??$_Construct@U?$pair@$$CBVCCharString@@VCShaderParserSymbol@@@_STL@@U12@@_STL@@YIXPAU?$pair@$$CBVCCharString@@VCShaderParserSymbol@@@0@ABU10@@Z
+// std::_Construct(pair<const CCharString,CShaderParserSymbol>* p, const pair<const CCharString,CShaderParserSymbol>& val) -- STLport: placement-copy one shader-symbol map value (key string, then the symbol's two strings and its type)
+// Leaf: ??$_Construct@U?$pair@$$CBVCCharString@@VCShaderParserSymbol@@@std@@U12@@std@@YIXPAU?$pair@$$CBVCCharString@@VCShaderParserSymbol@@@0@ABU10@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E6220, 51 bytes, `__fastcall` (p in ecx, &val in edx), `ret`.
 // Identity: the element of the CShaderPreParser symbol map (FableWin.pdb ?FindSymbol@CShaderPreParser@@AAEAAVCShaderParserSymbol@@
 //   ABVCCharString@@@Z; map<CCharString, CShaderParserSymbol>, whose node values are pair<const CCharString,
@@ -30,7 +30,7 @@ public:
     EType       Type;                                    // +0x08
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;

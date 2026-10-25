@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(SNewQuestRecord*, unsigned int, const SNewQuestRecord&, const __false_type&) -- STLport uninitialised fill of n 12-byte records of three CCharStrings: copy-construct x into each slot from first (placement, null-tested); returns the end
+// std::__uninitialized_fill_n(SNewQuestRecord*, unsigned int, const SNewQuestRecord&, const __false_type&) -- STLport uninitialised fill of n 12-byte records of three CCharStrings: copy-construct x into each slot from first (placement, null-tested); returns the end
 // Flags: /Gr
 // Leaf: __uninitialized_fill_n
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B8260, 79 bytes (81 with padding), `ret 8` (__fastcall: first in ecx ->

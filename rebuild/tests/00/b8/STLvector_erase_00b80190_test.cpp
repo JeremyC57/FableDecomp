@@ -5,7 +5,7 @@ class CTVertexSeaBackground {
 public:
     unsigned int Data[3];
 };
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 inline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, _Distance*)
 {
@@ -35,7 +35,7 @@ int main()
     for (int i = 0; i < 10; ++i) {
         buf[i].Data[0] = i; buf[i].Data[1] = i * 2; buf[i].Data[2] = i * 100 + 11;
     }
-    _STL::vector<CTVertexSeaBackground> v;
+    std::vector<CTVertexSeaBackground> v;
     v._M_start = buf; v._M_finish = buf + 9; v._M_end_of_storage = buf + 10;
     CTVertexSeaBackground* r = v.erase(buf + 2, buf + 5);
     if (r != buf + 2 || v._M_finish != buf + 6) { std::printf("00b80190_TEST FAIL\n"); return 1; }

@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CCharString* first, CCharString* last, less<CCharString> comp) -- STLport insertion sort of a CCharString range: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(CCharString* first, CCharString* last, less<CCharString> comp) -- STLport insertion sort of a CCharString range: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: ?__insertion_sort@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E20C0, 56 bytes (+ padding to 64), `ret 4` (__fastcall /Gr algorithm TU: first in ecx ->
 //   ebx, last in edx -> edi, the empty comparator on the stack, loaded once into ebp).

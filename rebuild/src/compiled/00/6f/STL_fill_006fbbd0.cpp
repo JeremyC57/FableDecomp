@@ -1,5 +1,5 @@
-// _STL::fill(_STL::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> >* first, _STL::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> >* last, const _STL::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> >& value) -- assign one (animation id, event list) pair to every element of a range
-// Leaf: ??$fill@PAU?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@_STL@@
+// std::fill(std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> >* first, std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> >* last, const std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> >& value) -- assign one (animation id, event list) pair to every element of a range
+// Leaf: ??$fill@PAU?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FBBD0, 71 bytes, `__fastcall` (first ecx, last edx, value pointer
 //   on the stack), `ret 4`; `last` is spilled to the frame (`push ecx` slot) and reloaded after the call.
 // Identity: the manifest label agrees with the bytes: 12-byte stride = {unsigned long +0, CSmallVector<CEvent,32>
@@ -25,15 +25,15 @@ public:
     }
     void Copy(const CSmallVector& other);                // 0x006FB5C0 for <CEvent, 32>
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
 };
 }
-typedef _STL::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > CAnimEventsPair;
+typedef std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > CAnimEventsPair;
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -43,4 +43,4 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CAnimEventsPair*, CAnimEventsPair>(CAnimEventsPair*, CAnimEventsPair*, const CAnimEventsPair&);
+template void __fastcall std::fill<CAnimEventsPair*, CAnimEventsPair>(CAnimEventsPair*, CAnimEventsPair*, const CAnimEventsPair&);

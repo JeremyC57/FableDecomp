@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CDB820: _STL::_Destroy(first, last) runs the virtual destructor of every 56-byte CHeroSoulsRoundDef in [first, last)
+// Behaviour test for 0x00CDB820: std::_Destroy(first, last) runs the virtual destructor of every 56-byte CHeroSoulsRoundDef in [first, last)
 #include <cstdio>
 #include <new>
 

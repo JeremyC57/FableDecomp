@@ -1,4 +1,4 @@
-// _STL::deque<CSetTextInfo>::push_back(const CSetTextInfo&) -- STLport deque push_back for the subtitle text-info queue: copy-construct at the finish cursor when the finish node has room for more than this record, else the slow path _M_push_back_aux_v @ 0x00494106
+// std::deque<CSetTextInfo>::push_back(const CSetTextInfo&) -- STLport deque push_back for the subtitle text-info queue: copy-construct at the finish cursor when the finish node has room for more than this record, else the slow path _M_push_back_aux_v @ 0x00494106
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004941C0, 50 bytes, `ret 4` (__fastcall; size-optimised TU:
 //   `#pragma optimize("s", on)`; the reference argument is re-pushed from its slot, `push dword ptr [esp+8]`).

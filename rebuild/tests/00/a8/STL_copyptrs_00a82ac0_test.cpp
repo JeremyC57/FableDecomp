@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A82AC0 _STL::__copy_ptrs over list<C2DLineF>: each list of [first, last) is assigned (list
+// Behaviour test for 0x00A82AC0 std::__copy_ptrs over list<C2DLineF>: each list of [first, last) is assigned (list
 // operator=) onto the matching existing list at result, the advanced result is returned, an empty range does nothing.
 #include <cstdio>
 static int g_assigns = 0;

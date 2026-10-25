@@ -28,7 +28,7 @@ public:
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
 template <class T> class allocator {
@@ -141,6 +141,6 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Rb_tree_node_b
 }
 }
 
-template class _STL::_Rb_tree<unsigned __int64, _STL::pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>,
-                              _STL::_Select1st<_STL::pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation> >,
-                              _STL::less<unsigned __int64> >;
+template class std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>,
+                              std::_Select1st<std::pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation> >,
+                              std::less<unsigned __int64> >;

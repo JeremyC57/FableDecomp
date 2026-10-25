@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(const CAnimationEntry** last, const CAnimationEntry* val, CTurningAnimCompare comp) -- insertion-sort inner step for the turning animations: shift entries up while the comparator says val goes first
+// std::__unguarded_linear_insert(const CAnimationEntry** last, const CAnimationEntry* val, CTurningAnimCompare comp) -- insertion-sort inner step for the turning animations: shift entries up while the comparator says val goes first
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087DC30, length 95 bytes (`ret 4`).
 // Identity: STLport `__unguarded_linear_insert(last, val, comp)` of the CCreatureAction_InterruptableMidAttackAutoTurn
@@ -35,7 +35,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

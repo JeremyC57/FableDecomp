@@ -16,7 +16,7 @@
 - **`_M_insert_overflow`.** It needs same-TU `#pragma auto_inline(off)` + `__declspec(noinline) __fastcall` bodies of `__uninitialized_copy` and `__uninitialized_fill_n`. Declaration-only callees change the register and stack homing (0x00B3EA70).
 - **`??_G` of a two-base engine component with an STLport list member.** Declare the class with an empty out-of-line virtual dtor and model the list's `~_List_base` as `clear(); _M_node.deallocate(p, 1)`, where the allocator does `if (p) free(p)`. Both base vtables are then reset, as in retail (0x00B3ADC0).
 - **`CArray<T*>` delete loops.** A trivially destructible element's `delete` is the bare static class `operator delete` with no null test. `clear()` through `__copy_trivial` keeps the `cmp eax,eax` of finish against itself (0x00B49FE0, 0x00B4A060).
-- **STLport namespace.** Retail's RTTI strings spell STLport's namespace `std` (12 `@std@@` hits, 0 `@_STL@@` in Fable.exe). The lane convention `_STL` changes only the mangled names, not the bytes. All 22 rows of this chunk that were first written in `std` were renamed to `_STL` and re-graded by gall.sh unchanged (MATCH/RELOCATION_MATCH).
+- **STLport namespace.** Retail's RTTI strings spell STLport's namespace `std` (12 `@std@@` hits, 0 `@std@@` in Fable.exe). The lane convention `std` changes only the mangled names, not the bytes. All 22 rows of this chunk that were first written in `std` were renamed to `std` and re-graded by gall.sh unchanged (MATCH/RELOCATION_MATCH).
 - **Inline-asm float-to-long.** A float-to-long conversion that retail does as `fstp [slot]; fld [slot]; fistp dword [esp]` is an inline-asm helper, since VC7.1 C++ emits `call __ftol` (0x00B84720, parked as a retail_asm candidate).
 
 Review at landing:

@@ -1,4 +1,4 @@
-// _STL::__make_heap(CWideString* first, CWideString* last, less<CWideString> comp, CWideString*, int*) -- build a heap over wide strings: __adjust_heap every parent from the last one down to the root
+// std::__make_heap(CWideString* first, CWideString* last, less<CWideString> comp, CWideString*, int*) -- build a heap over wide strings: __adjust_heap every parent from the last one down to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B3BB0, 73 bytes, `ret 0Ch`: `__fastcall` (/Gr algorithm TU: first in ecx, last in
 // edx, the empty comparator and the two type-tag pointers on the stack). Catalog name "MakeHeap_CWideString_Build"
@@ -16,7 +16,7 @@ public:
     bool operator<(const CWideString& other) const;     // 0x0099AF70
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -40,5 +40,5 @@ void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator
 }
 }
 
-template void __fastcall _STL::__make_heap<CWideString*, _STL::less<CWideString>, CWideString, int>(
-    CWideString* __first, CWideString* __last, _STL::less<CWideString> __comp, CWideString*, int*);
+template void __fastcall std::__make_heap<CWideString*, std::less<CWideString>, CWideString, int>(
+    CWideString* __first, CWideString* __last, std::less<CWideString> __comp, CWideString*, int*);

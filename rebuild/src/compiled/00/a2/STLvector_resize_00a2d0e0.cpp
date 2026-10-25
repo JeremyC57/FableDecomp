@@ -1,4 +1,4 @@
-// _STL::vector::resize(unsigned int new_size, CMeshDataBankEntry* const& x) -- resize the mesh bank's entry-pointer table: erase the surplus tail (inline memmove copy-down), or fill-insert copies of x at the end
+// std::vector::resize(unsigned int new_size, CMeshDataBankEntry* const& x) -- resize the mesh bank's entry-pointer table: erase the surplus tail (inline memmove copy-down), or fill-insert copies of x at the end
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2D0E0, 87 bytes, thiscall `ret 8`.
 // Callers: one, 0x00A26681 in CMeshDataBank::NotifyBankSize 0x00A26660 (landed: `MeshesAndAnimations.resize(noEntries, 0)`).
@@ -12,7 +12,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 
 class CMeshDataBankEntry;
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)

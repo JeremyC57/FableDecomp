@@ -1,4 +1,4 @@
-// Behaviour test for 0x00748AA0 _STL::__uninitialized_fill_n over CTCStealth danger-thing pairs
+// Behaviour test for 0x00748AA0 std::__uninitialized_fill_n over CTCStealth danger-thing pairs
 #include <cstdio>
 #include <new>
 class CThing { public: int id; };

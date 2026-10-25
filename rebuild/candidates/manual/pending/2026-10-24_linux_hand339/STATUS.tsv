@@ -3,7 +3,7 @@ address	status	bytes	test	note
 0057a5dd	MATCH	45v45	PASS	CTCHeroStats::MirroredCriminalStatus ctor; pragma optimize("s"); body store order
 0069ddc0	MATCH	26v26	PASS	CStringAndCageBase::SetSACPosition (slot 30)
 006f2bd0	RELOCATION_MATCH	46v46	PASS	label wrong: unreferenced 0x2c-byte named zero record (CCharString +0x10, memset)
-0075f4e0	RELOCATION_MATCH	42v42	PASS	label wrong: _STL::vector<C3DVector>::erase (caller NShape::CShape::UpdateDeletePoint 0x00762010)
+0075f4e0	RELOCATION_MATCH	42v42	PASS	label wrong: std::vector<C3DVector>::erase (caller NShape::CShape::UpdateDeletePoint 0x00762010)
 008506e0	MATCH	29v29	PASS	CSnapToPoint::UpdateDesiredPos (slot 27)
 00850700	RELOCATION_MATCH	128v128	PASS	CSnapToPoint::OnInitLeaf; inline PeekTC + GetPointType, pack(1) layout
 00851dd0	RELOCATION_MATCH	35v35	PASS	CScriptModuleBase::GetModuleFOV (slot 5)

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(CHoverState*, CHoverState*, CHoverState*, const __false_type&) -- copy-construct the range [first, last) into raw storage at result and return the end of the copies
+// std::__uninitialized_copy(CHoverState*, CHoverState*, CHoverState*, const __false_type&) -- copy-construct the range [first, last) into raw storage at result and return the end of the copies
 // Leaf: __uninitialized_copy
 // Retail 0x008EBA90, 0x50 bytes, __fastcall (first in ecx, last in edx, result and the empty tag by reference on the
 //   stack, `ret 8`), returns the end of the copies in eax. Manifest label "_Copy_backward<CExplosionRing*,...>" is
@@ -41,7 +41,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

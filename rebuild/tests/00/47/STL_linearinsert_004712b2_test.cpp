@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__linear_insert<pair<unsigned long,CDefString>*, ..> @ 0x004712B2: one insertion-sort step (a key below the first shifts the run up,
+// Model of std::__linear_insert<pair<unsigned long,CDefString>*, ..> @ 0x004712B2: one insertion-sort step (a key below the first shifts the run up,
 // otherwise the unguarded walk down from last).
 
 class CDefString {                                          // Ego_r.pdb, 4 bytes (a class: mangled V)
@@ -16,7 +16,7 @@ public:
     long TablePos;                                          // +0x0 def-string table index
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -26,10 +26,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _Tp1, class _Tp2> struct _OKToMemCpy {
@@ -76,7 +76,7 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 typedef pair<unsigned long, CDefString> _CriteriaEntry;
 }
 
-typedef _STL::pair<unsigned long, CDefString> E;
+typedef std::pair<unsigned long, CDefString> E;
 typedef CKeyPairCompareLess<unsigned long, CDefString> C;
 static void SetEntry(E& e, unsigned int key) { e.first = key; e.second.TablePos = (long)(key * 5); }
 static bool Consistent(const E& e) { return e.second.TablePos == (long)(e.first * 5); }
@@ -92,7 +92,7 @@ static bool SortedOk(const E* a, int n)
             return false;
     return true;
 }
-namespace _STL {
+namespace std {
 template <class A, class B> B __fastcall __copy_backward_ptrs(A first, A last, B result, const __false_type&)
 {
     while (first != last)
@@ -111,7 +111,7 @@ int main()
         for (int i = 0; i < 4; ++i)
             SetEntry(a[i], base[i]);
         SetEntry(a[4], vals[t]);
-        _STL::__linear_insert(a, a + 4, E(a[4]), C());
+        std::__linear_insert(a, a + 4, E(a[4]), C());
         for (int i = 0; i < 5; ++i)
             if (a[i].first != expect[t][i] || !Consistent(a[i]))
                 ok = false;

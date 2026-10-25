@@ -1,4 +1,4 @@
-// _STL::fill(CSharerParserOutputToDebugContextMapper::CEntry* first, CSharerParserOutputToDebugContextMapper::CEntry* last, const CSharerParserOutputToDebugContextMapper::CEntry& value) -- assign one line-mapping entry to every element of a range
+// std::fill(CSharerParserOutputToDebugContextMapper::CEntry* first, CSharerParserOutputToDebugContextMapper::CEntry* last, const CSharerParserOutputToDebugContextMapper::CEntry& value) -- assign one line-mapping entry to every element of a range
 // Leaf: ??$fill@PAVCEntry@CSharerParserOutputToDebugContextMapper@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00527C10, 52 bytes, `__fastcall` (first ecx, last edx, value
 //   pointer on the stack), `ret 4`.
@@ -25,7 +25,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -35,6 +35,6 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CSharerParserOutputToDebugContextMapper::CEntry*, CSharerParserOutputToDebugContextMapper::CEntry>(
+template void __fastcall std::fill<CSharerParserOutputToDebugContextMapper::CEntry*, CSharerParserOutputToDebugContextMapper::CEntry>(
     CSharerParserOutputToDebugContextMapper::CEntry*, CSharerParserOutputToDebugContextMapper::CEntry*,
     const CSharerParserOutputToDebugContextMapper::CEntry&);

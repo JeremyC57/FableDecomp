@@ -35,7 +35,7 @@ public:
 
 class CMiniMapDisplay;
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;                           // +0x00
     _List_node_base* _M_prev;                           // +0x04
@@ -91,7 +91,7 @@ public:
     };
     virtual void v00();
     unsigned char _pad04[0x1c];                         // +0x04 two retail 12-byte vectors, MiniMapGraphic
-    _STL::list<CMarkerInfo> Markers;                    // +0x20 (retail; Ego_r.pdb +0x28)
+    std::list<CMarkerInfo> Markers;                    // +0x20 (retail; Ego_r.pdb +0x28)
     void AddAutoMarker(const CThing& thing, long graphicIndex);
 };
 

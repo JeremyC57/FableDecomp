@@ -1,7 +1,7 @@
 // C3DGroup2::AddVertexBlend(const C3DVertexBlend2& blend) -- append one {vertex index, blend value} pair to the group's blend list (+4)
 // Leaf: ?AddVertexBlend@C3DGroup2
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC4110, length 63 bytes (+1 int3), `ret 4`.
-// Callees: _STL::vector<C3DVertexBlend2>::_M_insert_overflow(pointer, const C3DVertexBlend2&, const __false_type&,
+// Callees: std::vector<C3DVertexBlend2>::_M_insert_overflow(pointer, const C3DVertexBlend2&, const __false_type&,
 //   size_type, bool) @ 0x00ABEB40 (the landed C3DMeshFileGroupChunk::AddVertex calls the same grow path).
 // Identity: Ego_r.pdb `?AddVertexBlend@C3DGroup2@@QAEXABVC3DVertexBlend2@@@Z`; callers 0x00AE38B7 / 0x00AE38F2 are the
 //   landed CParticleProgram::AddGroup 0x00AE37D0, which already names 0x00AC4110 C3DGroup2::AddVertexBlend. The
@@ -17,7 +17,7 @@ public:
     float         BlendValue;                      // +4
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -49,9 +49,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> { };
+template <class T> class CArray : public std::vector<T> { };
 
 class C3DGroup2 {
 public:

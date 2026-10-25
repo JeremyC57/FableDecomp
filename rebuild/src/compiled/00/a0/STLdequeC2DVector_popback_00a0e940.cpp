@@ -1,4 +1,4 @@
-// _STL::deque<C2DVector>::pop_back() -- drop the last element: step the finish cursor back, or (at the start of its node) free the node buffer and move the finish iterator to the end of the previous node
+// std::deque<C2DVector>::pop_back() -- drop the last element: step the finish cursor back, or (at the start of its node) free the node buffer and move the finish iterator to the end of the previous node
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0E940, length 64 bytes (thiscall `ret`). No direct callers (an emitted COMDAT;
 // CJoystickPositionTracker::Push 0x00A0DFC0 inlines it).
 // Callees: free @ 0x00BFEA14 (the null-tested deallocate).
@@ -21,7 +21,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

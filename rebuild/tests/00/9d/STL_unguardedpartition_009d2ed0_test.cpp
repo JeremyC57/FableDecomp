@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_partition over bank entry indices ordered by data offset (0x009D2ED0).
+// Behaviour test for std::__unguarded_partition over bank entry indices ordered by data offset (0x009D2ED0).
 #include <cstdio>
 
 struct Bank { unsigned int Offsets[32]; };

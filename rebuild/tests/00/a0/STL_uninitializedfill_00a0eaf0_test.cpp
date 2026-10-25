@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A0EAF0 _STL::uninitialized_fill over a deque<C2DVector> range: one copy of x is
+// Behaviour test for 0x00A0EAF0 std::uninitialized_fill over a deque<C2DVector> range: one copy of x is
 // constructed in every slot from first up to last, stepping across the buffer boundary through the map
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@ public:
     C2DVector() { }
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { ++gCopies; }   // test-only: count constructions
 };
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 template <class _Tp> struct __type_traits {
@@ -53,8 +53,8 @@ template <class _Tp, class _Traits> struct _Deque_iterator : public _Deque_itera
 };
 template <class _Tp, class _Traits> inline _Tp* value_type(const _Deque_iterator<_Tp, _Traits>&) { return (_Tp*)0; }
 }
-typedef _STL::_Deque_iterator<C2DVector, _STL::_Nonconst_traits<C2DVector> > CDequeIter;
-namespace _STL {
+typedef std::_Deque_iterator<C2DVector, std::_Nonconst_traits<C2DVector> > CDequeIter;
+namespace std {
 template <class _ForwardIter, class _Tp>
 __declspec(noinline) void __fastcall __uninitialized_fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __x, const __false_type&)
 {
@@ -87,12 +87,12 @@ int main()
     first._M_set_node(gMap);     first._M_cur = b0 + (bs - 2);
     last._M_set_node(gMap + 1);  last._M_cur = b1 + 3;
     C2DVector x; x.X = 1.5f; x.Y = -2.25f;
-    _STL::uninitialized_fill(first, last, x);
+    std::uninitialized_fill(first, last, x);
     bool ok = bs == 16 && gCopies == 5;
     ok = ok && Near(b0[bs - 2].X, 1.5f) && Near(b0[bs - 1].Y, -2.25f);
     ok = ok && Near(b1[0].X, 1.5f) && Near(b1[1].X, 1.5f) && Near(b1[2].Y, -2.25f);
     ok = ok && Near(b0[bs - 3].X, -1.0f) && Near(b1[3].X, -1.0f);      // outside the range: untouched
-    _STL::uninitialized_fill(last, last, x);
+    std::uninitialized_fill(last, last, x);
     ok = ok && gCopies == 5;
     free(b0); free(b1);
     if (ok) { printf("00a0eaf0_TEST PASS\n"); return 0; }

@@ -1,4 +1,4 @@
-// _STL::swap(CSymbolMap::CSymbolInfo& a, CSymbolMap::CSymbolInfo& b) -- exchange two symbol records (group name, entry name, value) through a by-value temporary
+// std::swap(CSymbolMap::CSymbolInfo& a, CSymbolMap::CSymbolInfo& b) -- exchange two symbol records (group name, entry name, value) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3FDC0, 123 bytes, /Gr `__fastcall` (a in ecx -> edi, b in edx -> esi), plain `ret`.
 // Identity: the 12-byte {CCharString, CCharString, long} element of the /Gr STLport block at 0x00A3FB60.. (landed
@@ -26,7 +26,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 inline void __fastcall swap(_Tp& __a, _Tp& __b)
 {

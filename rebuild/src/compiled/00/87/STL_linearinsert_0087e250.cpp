@@ -1,4 +1,4 @@
-// _STL::__linear_insert(const CAnimationEntry** first, const CAnimationEntry** last, const CAnimationEntry* val, CTurningAnimCompare comp) -- insertion-sort step for the turning animations: a new minimum shifts the whole prefix up with memmove, anything else goes through the unguarded insert
+// std::__linear_insert(const CAnimationEntry** first, const CAnimationEntry** last, const CAnimationEntry* val, CTurningAnimCompare comp) -- insertion-sort step for the turning animations: a new minimum shifts the whole prefix up with memmove, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087E250, length 123 bytes (`ret 8`).
 // Identity: STLport `__linear_insert(first, last, val, comp)` of the CCreatureAction_InterruptableMidAttackAutoTurn
@@ -37,7 +37,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 inline void* __copy_trivial_backward(const void* __first, const void* __last, void* __result)
 {
     const int _Num = (const char*)__last - (const char*)__first;

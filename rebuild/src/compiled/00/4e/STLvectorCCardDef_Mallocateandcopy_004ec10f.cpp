@@ -1,4 +1,4 @@
-// _STL::vector<CCardDef>::_M_allocate_and_copy(size_t n, const CCardDef* first, const CCardDef* last) -- STLport vector regrowth helper: malloc n 68-byte card defs (none for zero) and copy-construct [first, last) into them
+// std::vector<CCardDef>::_M_allocate_and_copy(size_t n, const CCardDef* first, const CCardDef* last) -- STLport vector regrowth helper: malloc n 68-byte card defs (none for zero) and copy-construct [first, last) into them
 // Leaf: _M_allocate_and_copy
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EC10F, 68 bytes, `ret 0Ch` (thiscall; `this` is never read: the allocator is empty).
 // Caller: vector<CCardDef>::operator= @ 0x004EBF32 (this chunk, the reallocation branch).
@@ -27,7 +27,7 @@ public:
     long CardVal;                               // +0x40
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class T> void __fastcall _Construct(T* p, const T& value);   // 0x004EC08A
 template <class InputIter, class ForwardIter>

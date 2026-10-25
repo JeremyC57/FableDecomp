@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const NGameText::CDataBankTextEntry& x) -- vector<NGameText::CDataBankTextEntry>::push_back: copy-construct x at the end (add-ref the text-bank entry), or grow through _M_insert_overflow when full
+// std::vector::push_back(const NGameText::CDataBankTextEntry& x) -- vector<NGameText::CDataBankTextEntry>::push_back: copy-construct x at the end (add-ref the text-bank entry), or grow through _M_insert_overflow when full
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CB740, 65 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: called once by the NGameText::CDataBank virtual at 0x009C8C00 on `lea ecx,[ebx+...]` = CDataBank::TextEntryBuffer (retail +0x1EC),
@@ -31,7 +31,7 @@ struct CDataBankTextEntry {                          // 8 bytes (Ego_r.pdb)
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

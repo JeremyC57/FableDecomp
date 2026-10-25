@@ -1,4 +1,4 @@
-// behaviour test for 0x00BDB750 _STL::__uninitialized_copy over C2DLineF
+// behaviour test for 0x00BDB750 std::__uninitialized_copy over C2DLineF
 #include <cstdio>
 #include <new>
 

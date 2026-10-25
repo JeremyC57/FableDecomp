@@ -50,7 +50,7 @@ public:
 static CMeshDataBank g_bank;
 static CIVCountedPointeeBase g_data;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -125,7 +125,7 @@ int main()
 {
     int ok = 1;
     if (sizeof(void*) == 4u && sizeof(C3DMeshInfo) != 96u) ok = 0;
-    _STL::vector<C3DMeshInfo> v;
+    std::vector<C3DMeshInfo> v;
     v.reserve(0);
     if (v._M_start != 0 || v.capacity() != 0 || g_allocs != 0) ok = 0;
     v.reserve(2);

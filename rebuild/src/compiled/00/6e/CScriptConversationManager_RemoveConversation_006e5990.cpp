@@ -20,7 +20,7 @@ public:
     void OnCleanup(bool flag);                          // 0x006E5690
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { };
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _Tp> class allocator {
@@ -113,7 +113,7 @@ public:
 
 class CScriptConversationManager {
 public:
-    _STL::map<long, CScriptConversation> Conversations; // +0x00
+    std::map<long, CScriptConversation> Conversations; // +0x00
     long             NextConversationIndex;             // +0x0c
     bool             AlwaysShowText;                    // +0x10
     void RemoveConversation(long conversation, bool flag);
@@ -121,7 +121,7 @@ public:
 
 void CScriptConversationManager::RemoveConversation(long conversation, bool flag)
 {
-    _STL::map<long, CScriptConversation>::iterator it;
+    std::map<long, CScriptConversation>::iterator it;
     it = Conversations.find(conversation);
     if (it != Conversations.end()) {
         it->second.OnCleanup(flag);

@@ -1,4 +1,4 @@
-// _STL::vector<CMatrix3x4>::vector(size_type n) -- STLport sized constructor for 48-byte bone matrices: allocate n elements and copy-construct a default (uninitialised) matrix into each
+// std::vector<CMatrix3x4>::vector(size_type n) -- STLport sized constructor for 48-byte bone matrices: allocate n elements and copy-construct a default (uninitialised) matrix into each
 // Leaf: ??0?$vector@VCMatrix3x4@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BD8730, 117 bytes, thiscall, `ret 4`, returns this.
 // Identity: callers CEnginePrimitiveManagerAnimatedMeshesBase::RenderDebugBoneHierarchy 0x00BD6855 and 0x00BD88A8 (the
@@ -19,7 +19,7 @@ public:
     CMatrix3x4() { }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -83,4 +83,4 @@ public:
 
 template vector<CMatrix3x4>::vector(size_type);
 
-}   // namespace _STL
+}   // namespace std

@@ -33,7 +33,7 @@ public:
     ~CMemoryDataOutputStream();                        // 0x00996B30
 };
 
-namespace _STL
+namespace std
 {
     template <class _T1, class _T2>
     struct pair
@@ -132,7 +132,7 @@ namespace _STL
 class CDefStringTable
 {
 public:
-    _STL::map<CCharString, long> StringMap;            // +0x00
+    std::map<CCharString, long> StringMap;            // +0x00
     CMemoryDataOutputStream StringStream;              // +0x0C
     unsigned long StringCount;                         // +0x24
     unsigned long SharedCount;                         // +0x28

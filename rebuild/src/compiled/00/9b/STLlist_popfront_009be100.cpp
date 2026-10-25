@@ -1,4 +1,4 @@
-// _STL::list::pop_front() -- STLport list<CSubTitle>: unlink the first subtitle node, destroy the subtitle (sound name, formatted text, counted text entry) and free the node
+// std::list::pop_front() -- STLport list<CSubTitle>: unlink the first subtitle node, destroy the subtitle (sound name, formatted text, counted text entry) and free the node
 // Leaf: ?pop_front@?$list@UCSubTitle@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BE100, 66 bytes (+ int3 padding), __fastcall, plain `ret`.
 // Identity: STLport 4.6 `void pop_front() { erase(begin()); }` with the inline single-node erase; the node payload at +8 is
@@ -59,7 +59,7 @@ public:
     float       EndTime;                                // +0x18
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -124,4 +124,4 @@ public:
 
 template void list<CSubTitle>::pop_front();
 
-} // namespace _STL
+} // namespace std

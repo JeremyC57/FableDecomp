@@ -12,7 +12,7 @@ extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(struct _RTL
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(struct _RTL_CRITICAL_SECTION* section);   // IAT 0x0143FE10
 struct _RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 template <class T> struct less { };
@@ -74,7 +74,7 @@ public:
     const_iterator end() const { return const_iterator(_M_header); }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 enum EFileLoadingStatus { FILE_LOADING_PENDING, FILE_LOADING_READING, FILE_LOADING_READ_ISSUED, FILE_LOADING_READ_COMPLETE, FILE_LOADING_FINISHED };
 
@@ -92,7 +92,7 @@ public:
         EFileLoadingStatus LoadingStatus;       // +0x1c
     };
     unsigned char _pad00[0x13c];                // vtable, DeviceQueue, device levels, time slices, current object
-    _STL::map<unsigned long, CFileObject*> Objects;   // +0x13c
+    std::map<unsigned long, CFileObject*> Objects;   // +0x13c
     bool Initialised;                           // +0x148
     bool ExitThread;                            // +0x149
     bool ThreadFinished;                        // +0x14a
@@ -108,7 +108,7 @@ long CThreadedFileManager::GetTotalObjectsFinishedCount() const
 {
     EnterCriticalSection(&CriticalSection);
     long total = 0;
-    for (_STL::map<unsigned long, CFileObject*>::const_iterator it = Objects.begin(); it != Objects.end(); ++it)
+    for (std::map<unsigned long, CFileObject*>::const_iterator it = Objects.begin(); it != Objects.end(); ++it)
         if (it->second->LoadingStatus == FILE_LOADING_FINISHED)
             ++total;
     LeaveCriticalSection(&CriticalSection);

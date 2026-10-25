@@ -36,7 +36,7 @@ static bool Is(const C3DAnimationStateAlpha& a, long index, float time, float we
     return a.GetType() == 2 && a.AnimationIndex == index && Near(a.AnimationTime, time) && Near(a.AlphaWeight, weight);
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _ForwardIter, class _Size, class _Tp>
@@ -54,13 +54,13 @@ int main()
     C3DAnimationStateAlpha x;
     Set(x, 7, 3.0f, 0.125f);
     C3DAnimationStateAlpha* raw = (C3DAnimationStateAlpha*)malloc(5 * sizeof(C3DAnimationStateAlpha));
-    C3DAnimationStateAlpha* end = _STL::__uninitialized_fill_n(raw, 4u, x, _STL::__false_type());
+    C3DAnimationStateAlpha* end = std::__uninitialized_fill_n(raw, 4u, x, std::__false_type());
     if (end != raw + 4)
         { std::printf("00a3cbe0_TEST FAIL\n"); return 1; }
     for (int i = 0; i < 4; ++i)
         if (!Is(raw[i], 7, 3.0f, 0.125f))
             { std::printf("00a3cbe0_TEST FAIL\n"); return 1; }
-    if (_STL::__uninitialized_fill_n(raw + 4, 0u, x, _STL::__false_type()) != raw + 4)
+    if (std::__uninitialized_fill_n(raw + 4, 0u, x, std::__false_type()) != raw + 4)
         { std::printf("00a3cbe0_TEST FAIL\n"); return 1; }
     for (int i = 0; i < 4; ++i)
         raw[i].~C3DAnimationStateAlpha();

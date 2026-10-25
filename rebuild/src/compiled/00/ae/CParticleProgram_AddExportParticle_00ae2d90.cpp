@@ -24,7 +24,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -60,13 +60,13 @@ public:
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> m_vector;                      // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> m_vector;                      // +0x00
     C    Compare;                                           // +0x0c (empty)
     bool Dirty;                                             // +0x0d
     __forceinline void Add(const K& key, const V& value)

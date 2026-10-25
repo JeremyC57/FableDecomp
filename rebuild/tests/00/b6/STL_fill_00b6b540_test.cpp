@@ -38,7 +38,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag {};
 struct forward_iterator_tag : public input_iterator_tag {};
 struct bidirectional_iterator_tag : public forward_iterator_tag {};
@@ -87,7 +87,7 @@ int main()
     olds[2]->ReferenceCount = 2;                       // shared elsewhere: must survive
     CVertexShader value;
     value.Data = NewData(1);
-    _STL::fill(shaders + 1, shaders + 5, value);
+    std::fill(shaders + 1, shaders + 5, value);
     if (g_deleted != 3) { std::printf("00b6b540_TEST FAIL\n"); return 1; }                           // olds 1, 3, 4 released to zero
     if (olds[2]->ReferenceCount != 1) { std::printf("00b6b540_TEST FAIL\n"); return 1; }
     for (int i = 1; i < 5; ++i) if (shaders[i].Data != value.Data) { std::printf("00b6b540_TEST FAIL\n"); return 1; }

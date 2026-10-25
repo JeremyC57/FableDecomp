@@ -1,4 +1,4 @@
-// _STL::__copy(CScriptThing* first, CScriptThing* last, CScriptThing* result, const random_access_iterator_tag&, int*) -- assign the script things of [first, last) forward over result (counted-pointer share), return the advanced result
+// std::__copy(CScriptThing* first, CScriptThing* last, CScriptThing* result, const random_access_iterator_tag&, int*) -- assign the script things of [first, last) forward over result (counted-pointer share), return the advanced result
 // Leaf: ??$__copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC2A0, length 132 bytes (+ int3 padding), `ret 0Ch`.
 // Identity: callers 0x008AC87C and 0x008AC9E9 (the vector<CScriptThing> insert/erase/assign paths of the script-interface
@@ -57,7 +57,7 @@ public:
     CCountedPointer<CScriptThing> PImp;                 // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };

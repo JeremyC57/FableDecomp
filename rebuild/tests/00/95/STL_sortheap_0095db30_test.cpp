@@ -44,7 +44,7 @@ typedef CThingCompare_Nearest TRaw;                                  // the reta
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;    // a strict ordering for the checks
 static TComp MakeComp() { TComp c; c.Functor = &g_Nearest; return c; }
 
-namespace _STL {
+namespace std {
 template <class _Iter> inline void iter_swap(_Iter __i1, _Iter __i2) { CThing* __tmp = *__i1; *__i1 = *__i2; *__i2 = __tmp; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -229,7 +229,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
         __final_insertion_sort(__first, __last, __comp);
     }
 }
-} // namespace _STL
+} // namespace std
 
 // ---- checks ----
 template <class C> static bool IsSorted(CThing** v, int n, C comp)
@@ -290,9 +290,9 @@ int main()
 
     for (int k = 0; k <= N; k += 3) {
         CThing* v[N]; Fill(v, k);
-        _STL::make_heap(v, v + k, comp);
+        std::make_heap(v, v + k, comp);
         CThing* before[N]; for (int i = 0; i < k; ++i) before[i] = v[i];
-        _STL::sort_heap(v, v + k, comp);
+        std::sort_heap(v, v + k, comp);
         if (!IsSorted(v, k, comp)) return Fail(A, "not sorted");
         if (!SameSet(before, v, k)) return Fail(A, "permutation");
     }
@@ -301,7 +301,7 @@ int main()
         TRaw raw; raw.Pos = C3DVector(0.0f, 0.0f, 0.0f);
         CThing* v[N]; Fill(v, N);
         CThing* before[N]; for (int i = 0; i < N; ++i) before[i] = v[i];
-        _STL::sort_heap(v, v + N, raw);
+        std::sort_heap(v, v + N, raw);
         if (!SameSet(before, v, N)) return Fail(A, "raw comparator: permutation");
     }
 

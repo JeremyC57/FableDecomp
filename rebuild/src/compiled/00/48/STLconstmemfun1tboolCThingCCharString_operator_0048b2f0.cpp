@@ -1,5 +1,5 @@
-// _STL::const_mem_fun1_t<bool,CThing,CCharString>::operator()(const CThing* p, CCharString x) const -- STLport const member-function adaptor: copy the by-value script name and call the bound `bool (CThing::*)(CCharString) const` (CThing::IsSameScriptName) on p
-// Leaf: ??R?$const_mem_fun1_t@_NVCThing@@VCCharString@@@_STL@@QBE_NPBVCThing@@VCCharString@@@Z
+// std::const_mem_fun1_t<bool,CThing,CCharString>::operator()(const CThing* p, CCharString x) const -- STLport const member-function adaptor: copy the by-value script name and call the bound `bool (CThing::*)(CCharString) const` (CThing::IsSameScriptName) on p
+// Leaf: ??R?$const_mem_fun1_t@_NVCThing@@VCCharString@@@std@@QBE_NPBVCThing@@VCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048B2F0, 41 bytes, thiscall (this = the adaptor; p and the 4-byte
 //   by-value CCharString on the stack), `ret 8`, returns the bool in al.
 // Identity: FableWin.pdb's only const_mem_fun1_t over CCharString is `const_mem_fun1_t<bool, CThing, CCharString>`
@@ -23,7 +23,7 @@ public:
     bool IsSameScriptName(CCharString name) const;          // FableWin.pdb ?IsSameScriptName@CThing@@QBE_NVCCharString@@@Z
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result> struct binary_function {
     typedef _Arg1 first_argument_type;
     typedef _Arg2 second_argument_type;

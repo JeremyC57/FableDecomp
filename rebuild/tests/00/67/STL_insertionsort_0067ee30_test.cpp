@@ -1,4 +1,4 @@
-// Behaviour test for 0x0067EE30 _STL::__insertion_sort over CDegradableInfo with CDegradableDef::CIsHealth1GTHealth2 (health descending; __linear_insert / copy_backward inlined).
+// Behaviour test for 0x0067EE30 std::__insertion_sort over CDegradableInfo with CDegradableDef::CIsHealth1GTHealth2 (health descending; __linear_insert / copy_backward inlined).
 #include <cstdio>
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

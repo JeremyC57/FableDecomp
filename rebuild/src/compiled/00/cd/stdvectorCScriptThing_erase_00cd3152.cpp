@@ -38,7 +38,7 @@ public:
     CCountedPointer<CScriptThing> PImp;                     // +0x04
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -94,4 +94,4 @@ typename vector<_Tp, _Alloc>::iterator vector<_Tp, _Alloc>::erase(iterator __pos
 
 template vector<CScriptThing>::iterator vector<CScriptThing>::erase(iterator);
 
-} // namespace _STL
+} // namespace std

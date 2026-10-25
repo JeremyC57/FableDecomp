@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for a vector of 2D integer coordinates
-// Leaf: ?resize@?$vector@VC2DCoordI@@V?$allocator@VC2DCoordI@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for a vector of 2D integer coordinates
+// Leaf: ?resize@?$vector@VC2DCoordI@@V?$allocator@VC2DCoordI@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00657069, 21 bytes, thiscall, `ret 4`; size-optimised TU.
 // Identity: vector<C2DCoordI> (Ego_r.pdb CDrawQuickAccessIcons::EffectPositions): the callee 0x00656FAB is the
 //   two-argument resize over an 8-byte element. No direct reference (xref 0). C2DCoordI has an empty user constructor
@@ -17,7 +17,7 @@ public:
     C2DCoordI() { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

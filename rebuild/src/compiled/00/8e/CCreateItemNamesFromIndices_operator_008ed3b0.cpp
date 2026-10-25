@@ -53,7 +53,7 @@ public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -132,19 +132,19 @@ template <class _InputIter, class _Function>
 _Function __fastcall for_each(_InputIter __first, _InputIter __last, _Function __f);   // 0x008ED4D0 / 0x008ED510
 }
 
-typedef _STL::pair<long, CCharString> CContainerItem;
+typedef std::pair<long, CCharString> CContainerItem;
 
 class CCreateItemNamesFromIndices {
 public:
-    _STL::vector<CCharString>* ItemNames;       // +0x00
-    CCreateItemNamesFromIndices(_STL::vector<CCharString>& itemNames) : ItemNames(&itemNames) {}
+    std::vector<CCharString>* ItemNames;       // +0x00
+    CCreateItemNamesFromIndices(std::vector<CCharString>& itemNames) : ItemNames(&itemNames) {}
     void operator()(const CContainerItem& item);
 };
 
 class CCreateIndicesFromItemNames {
 public:
-    _STL::vector<CContainerItem>* ItemIndices;  // +0x00
-    CCreateIndicesFromItemNames(_STL::vector<CContainerItem>& itemIndices) : ItemIndices(&itemIndices) {}
+    std::vector<CContainerItem>* ItemIndices;  // +0x00
+    CCreateIndicesFromItemNames(std::vector<CContainerItem>& itemIndices) : ItemIndices(&itemIndices) {}
     void operator()(const CCharString& name);
 };
 
@@ -153,13 +153,13 @@ public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18 (EMode)
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    template <class T> void TransferVector(const char* name, _STL::vector<T>& value);   // <CCharString> 0x0049B8D0
+    template <class T> void TransferVector(const char* name, std::vector<T>& value);   // <CCharString> 0x0049B8D0
 };
 
 class CTCContainer {
 public:
     unsigned char _base[0xc];                   // +0x00 CTCBase (vptr, parent thing, flags)
-    _STL::vector<CContainerItem> ContainerItems;   // +0x0c
+    std::vector<CContainerItem> ContainerItems;   // +0x0c
     void OnSerialise(CPersistContext& context, bool savedInGame);
 };
 

@@ -1,4 +1,4 @@
-// behaviour test for 0x00B8F650 _STL::vector<pair<unsigned long, unsigned long> >::insert(position, x)
+// behaviour test for 0x00B8F650 std::vector<pair<unsigned long, unsigned long> >::insert(position, x)
 #include <cstdio>
 #include <cstdlib>
 #include <new>

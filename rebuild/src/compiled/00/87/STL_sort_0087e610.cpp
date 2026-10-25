@@ -1,4 +1,4 @@
-// _STL::sort(const CAnimationEntry** first, const CAnimationEntry** last, CTurningAnimCompare comp) -- sort the turning animations by how close their rotation is to the wanted turn: introsort to 16-element runs, then the final insertion sort
+// std::sort(const CAnimationEntry** first, const CAnimationEntry** last, CTurningAnimCompare comp) -- sort the turning animations by how close their rotation is to the wanted turn: introsort to 16-element runs, then the final insertion sort
 // Leaf: ??$sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087E610, 69 bytes (+ int3 padding), `ret 4` (/Gr algorithm TU: first in
 //   ecx, last in edx, the 4-byte comparator by value on the stack).
@@ -36,7 +36,7 @@ public:
 }
 typedef const CAnimationEntry* TEntry;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Size, class _Compare>
 void __fastcall __introsort_loop(_RandomAccessIter __first, _RandomAccessIter __last, _Tp*, _Size __depth_limit,
                                  _Compare __comp);   // 0x0087E530

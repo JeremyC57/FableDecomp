@@ -1,4 +1,4 @@
-// _STL::fill_n(C4DVector* first, unsigned int n, const C4DVector& value) -- assign value to n consecutive 4D vectors starting at first and return the end of the filled range
+// std::fill_n(C4DVector* first, unsigned int n, const C4DVector& value) -- assign value to n consecutive 4D vectors starting at first and return the end of the filled range
 // Leaf: ??$fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A5C510, 54 bytes, __fastcall (first ecx, n edx; the value pointer on the stack, `ret 4`).
 // Callers: one, 0x00A5C350 -- GFClear4DVectors 0x00A5C300 (the non-SSE path copies the value to a local and fills with it).
@@ -14,7 +14,7 @@ public:
     float W;                                    // +0xC
 };
 
-namespace _STL {
+namespace std {
 template <class _OutputIter, class _Size, class _Tp>
 inline _OutputIter __fastcall fill_n(_OutputIter __first, _Size __n, const _Tp& __val)
 {

@@ -1,4 +1,4 @@
-// _STL::uninitialized_fill_n(CBlendedEnvironmentTheme* first, unsigned int n, const CBlendedEnvironmentTheme& x) -- copy-construct n blended environment themes into raw storage, return first + n
+// std::uninitialized_fill_n(CBlendedEnvironmentTheme* first, unsigned int n, const CBlendedEnvironmentTheme& x) -- copy-construct n blended environment themes into raw storage, return first + n
 // Leaf: ??$uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00889800, length 48 bytes (+ int3 padding), `ret 4`.
 // Identity: the catalog label `_Fill_n<unsigned_long*,...>` is propagated from a byte twin. One caller, 0x0088A245, the
@@ -19,7 +19,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2>

@@ -1,5 +1,5 @@
-// _STL::__copy(_InputIter first, _InputIter last, _OutputIter result, const input_iterator_tag&, _Distance*) -- STLport input-iterator copy of a set<unsigned long> range through an insert_iterator into another set: assign each element to the inserter, step the source iterator, return the inserter
-// Leaf: ??$__copy@U?$_Rb_tree_iterator@KU?$_Const_traits@K@_STL@@
+// std::__copy(_InputIter first, _InputIter last, _OutputIter result, const input_iterator_tag&, _Distance*) -- STLport input-iterator copy of a set<unsigned long> range through an insert_iterator into another set: assign each element to the inserter, step the source iterator, return the inserter
+// Leaf: ??$__copy@U?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD48F0, 111 bytes (+int3), /Gr __fastcall `ret 14h`: the
 //   insert_iterator result through the hidden pointer in ecx (it has a user constructor), the tag reference in edx,
 //   then first, last, the 8-byte inserter by value and the distance pointer on the stack.
@@ -53,7 +53,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -246,9 +246,9 @@ public:
     insert_iterator<_Container>& operator++(int) { return *this; }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _OutputIter, class _Distance>
 _OutputIter __fastcall __copy(_InputIter __first, _InputIter __last, _OutputIter __result,
                               const input_iterator_tag&, _Distance*)
@@ -257,9 +257,9 @@ _OutputIter __fastcall __copy(_InputIter __first, _InputIter __last, _OutputIter
         *__result = *__first;
     return __result;
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::set<unsigned long, _STL::less<unsigned long>, _STL::allocator<unsigned long> > TIndexSet;
-template _STL::insert_iterator<TIndexSet> __fastcall _STL::__copy(TIndexSet::const_iterator, TIndexSet::const_iterator,
-                                                                  _STL::insert_iterator<TIndexSet>,
-                                                                  const _STL::input_iterator_tag&, int*);
+typedef std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long> > TIndexSet;
+template std::insert_iterator<TIndexSet> __fastcall std::__copy(TIndexSet::const_iterator, TIndexSet::const_iterator,
+                                                                  std::insert_iterator<TIndexSet>,
+                                                                  const std::input_iterator_tag&, int*);

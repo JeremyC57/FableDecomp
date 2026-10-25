@@ -6,7 +6,7 @@
 //   LSocketServer Receive / GetUDPPacket family): LHHttp2::GetUntilCRLF / ReceiveDocumentAsync / SendRawData /
 //   ReceiveResponseHeaders and the socket receive / bank-file send paths, plus vector<char>::resize (0x004122F7) and a
 //   push_back tail jump (0x00411B30). The retail STL namespace is `std` (Fable.exe RTTI has .?AVlength_error@std@@ and
-//   no @_STL@@ string), so the row moves from `_STL::` to `std::`. FINDINGS chunk 401 (catalog was "CString_FillRange").
+//   no @std@@ string), so the row moves from `std::` to `std::`. FINDINGS chunk 401 (catalog was "CString_FillRange").
 // Callees: memmove @ 0x00BFEAE6 (both copies); the fills are inlined memsets (rep stosd / rep stosb);
 //   vector::_M_insert_overflow(position, x, const __true_type&, n, false) on the grow path.
 // Layout: retail [ecx+0,4,8] is STLport vector<char> storage (start / finish / end of storage).

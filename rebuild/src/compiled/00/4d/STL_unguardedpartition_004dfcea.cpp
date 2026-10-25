@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<CCharString, CTCBase::CRegisteredTCInfo>* first, pair* last, pair pivot, CKeyPairCompareLess comp) -- STLport quicksort partition step over the thing-component registry (ordered by name): advance first past smaller names, retreat last past larger ones, swap the out-of-place pair, return the split point; the by-value pivot is destroyed here
+// std::__unguarded_partition(pair<CCharString, CTCBase::CRegisteredTCInfo>* first, pair* last, pair pivot, CKeyPairCompareLess comp) -- STLport quicksort partition step over the thing-component registry (ordered by name): advance first past smaller names, retreat last past larger ones, swap the out-of-place pair, return the split point; the by-value pivot is destroyed here
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DFCEA, 113 bytes, `ret 14h` (size-optimised TU: unaligned entry).
 // Caller: 0x004E828F (the introsort loop of CVectorMap<CCharString, CTCBase::CRegisteredTCInfo, ..>::Sort, Ego_r.pdb).
@@ -64,7 +64,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -91,7 +91,7 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    __forceinline bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    __forceinline bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<CCharString, CTCBase::CRegisteredTCInfo> TEntry;
-template TEntry* __fastcall _STL::__unguarded_partition(TEntry*, TEntry*, TEntry, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>);
+typedef std::pair<CCharString, CTCBase::CRegisteredTCInfo> TEntry;
+template TEntry* __fastcall std::__unguarded_partition(TEntry*, TEntry*, TEntry, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>);

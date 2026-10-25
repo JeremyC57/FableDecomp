@@ -1,4 +1,4 @@
-// Behaviour test for 0x00661287 _STL::copy(set iterator, set iterator, back_insert_iterator<vector<unsigned long> >):
+// Behaviour test for 0x00661287 std::copy(set iterator, set iterator, back_insert_iterator<vector<unsigned long> >):
 // copy forwards (first, last, result) to __copy_aux with a __false_type tag and returns the inserter __copy_aux returns.
 // __copy_aux is a working stand-in that walks a node list and appends to the vector.
 #include <cstdio>
@@ -6,7 +6,7 @@
 #define __fastcall
 #endif
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -49,7 +49,7 @@ TInserter __fastcall copy(TSetIterator first, TSetIterator last, TInserter resul
 
 int main()
 {
-    using namespace _STL;
+    using namespace std;
     _Rb_tree_node_base header, n3, n2, n1;
     n1.Next = &n2; n1.Value = 4; n2.Next = &n3; n2.Value = 8; n3.Next = &header; n3.Value = 15;
     unsigned long storage[8];

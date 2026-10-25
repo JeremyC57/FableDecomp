@@ -1,5 +1,5 @@
-// _STL::__adjust_heap(pair<unsigned long,CDefClassInfo>* first, int holeIndex, int len, pair<unsigned long,CDefClassInfo> val, CKeyPairCompareLess<unsigned long,CDefClassInfo> comp) -- STLport heap sift-down of the def-class registry: walk the hole to a leaf along the larger CRC key, then __push_heap val back up
-// Leaf: ??$__adjust_heap@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@_STL@@
+// std::__adjust_heap(pair<unsigned long,CDefClassInfo>* first, int holeIndex, int len, pair<unsigned long,CDefClassInfo> val, CKeyPairCompareLess<unsigned long,CDefClassInfo> comp) -- STLport heap sift-down of the def-class registry: walk the hole to a leaf along the larger CRC key, then __push_heap val back up
+// Leaf: ??$__adjust_heap@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B8220, 272 bytes (+ int3 padding), `ret 20h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 24-byte value and the empty comparator on the stack: 4 + 0x18 + 4 = 0x20).
 // Element: the 24-byte pair<unsigned long, CDefinitionManager::CDefClassInfo> (`lea eax,[esi+esi*2]` * 8):
@@ -26,7 +26,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {                  // STLport allocator over malloc / free (empty)
 public:
     allocator() {}
@@ -62,7 +62,7 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -75,14 +75,14 @@ public:
         CArray<unsigned long>  GlobalIndices;           // +0x08
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp);   // 0x009B77B0
 

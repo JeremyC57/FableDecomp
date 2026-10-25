@@ -22,9 +22,9 @@ different function or a different element type than the catalog says (see Label 
   006e4900 CActiveDialogueInfo, 0082c370 CMarkerInfo, 008126b0 CGroupMemberData, 007229d0 CGenerationPos, 0078e600 /
   00793b60 PerEffectInfo, 006e6b60 CScriptConversation): memberwise user copy ctor written out of line; the intelligent
   pointer's copy is `CBaseIntelligentPointer()` 0x00A01B10, own vtable store, `SetPItem(other.GetPItem())`; C3DVector with
-  a memberwise copy ctor gives the three interleaved dword moves; CArray is an empty class over `_STL::vector`.
+  a memberwise copy ctor gives the three interleaved dword moves; CArray is an empty class over `std::vector`.
 - **STLport heap/algorithm helpers** (005e1b60, 006bedc0 `__pop_heap`; 00769cb0 `swap`): STLport 4.6 bodies as `__fastcall`
-  templates in `_STL`, explicitly instantiated. 005e1b60's CIVCountedPointer assignment must read both pointers into locals
+  templates in `std`, explicitly instantiated. 005e1b60's CIVCountedPointer assignment must read both pointers into locals
   before comparing (`cmp ecx,eax`); 006bedc0 inlines the entry's implicit assignment (CWideString operator= x2, then the
   floats and the flag) and builds the by-value copy in the argument area; 00769cb0's temporary stores the
   CParticleUpdateParamDesc vtable (the vptr is never copied) and dies through ~CBaseClass 0x0099A2E0.
@@ -61,13 +61,13 @@ Propagated catalog labels found wrong (new name from the PDB name sets / Ego_r.p
   00c6b9a0 -> libpk CStateVariableFilter ctor (descriptive name: libpk has no PDB/RTTI).
 - 00bca0d0 / 00bca4d0 "pair<EPSCType,CComponentInstance>" -> CEngineDynamic3DResourceManager<CEngineDynamic3DResource<CVertexBufferWin32,3> > ctor
   / CEngineVertexBufferPool(long) ctor.
-- 005e1b60 "pair<long,..>::operator=" -> _STL::__pop_heap over pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >.
+- 005e1b60 "pair<long,..>::operator=" -> std::__pop_heap over pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >.
 - 005f853e -> pair<long, CDefPointer<const CHeroAbilityDef> >::operator= (twin of 0059308a).
 - 007229d0 / 0078e600 / 00793b60 "pair<long,CIntelligentPointer<CThing> >" -> CTCSmokeGenerator::CGenerationPos /
   CTCDivineWrath::PerEffectInfo / CTCUnholyPower::PerEffectInfo copy ctors.
-- 006bedc0 "pair<long,CMusicManager::CRegisteredMusicEntry>" -> _STL::__pop_heap over that element.
+- 006bedc0 "pair<long,CMusicManager::CRegisteredMusicEntry>" -> std::__pop_heap over that element.
 - 006e6b60 "pair<long,CMusicManager::..>" -> CScriptConversation copy ctor.
-- 00769cb0 "pair<pair<long,long>,CEngineTextureDecal>" -> _STL::swap of pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<ul,ul> >.
+- 00769cb0 "pair<pair<long,long>,CEngineTextureDecal>" -> std::swap of pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<ul,ul> >.
 - 00cb90f0 -> pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> copy ctor.
 - 00739e20 "pair<unsigned_long,C3DMeshVolume>" -> CTCCreatureModeManager::CModeBase::~CModeBase; 009ea150 -> CGenericVar::CGenericVar();
   009f9990 -> CProfileManager::CProfileTreeEntry::CProfileTreeEntry().

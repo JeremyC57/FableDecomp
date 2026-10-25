@@ -1,4 +1,4 @@
-// _STL::__upper_bound(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, const CSortElement& val, less<CSortElement> comp, int*) -- STLport bisection for the first sort element above val
+// std::__upper_bound(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, const CSortElement& val, less<CSortElement> comp, int*) -- STLport bisection for the first sort element above val
 // Leaf: ??$__upper_bound@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B85280, 54 bytes. __fastcall (first ecx -> eax, last edx), `ret 0Ch`
 //   (&val, the empty comparator by value and the null distance-type pointer on the stack).
@@ -11,7 +11,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport bisection (landed 0x008174F0 form): `comp(val, *middle)` (unsigned `cmp ecx,[eax+edx*8] ; jae`) ->
 //   len = half, else first = middle + 1, `len = len - half - 1`; val.SortValue is loaded once ahead of the loop.
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -37,13 +37,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp, class _Compare, class _Distance>
 _ForwardIter __fastcall __upper_bound(_ForwardIter __first, _ForwardIter __last, const _Tp& __val, _Compare __comp,
                                       _Distance*)

@@ -17,7 +17,7 @@ public:
 
 extern unsigned char g_HasSSE;                          // 0x013D2880
 
-namespace _STL {
+namespace std {
 template <class OutputIter, class Size, class T>
 OutputIter __fastcall fill_n(OutputIter first, Size n, const T& value);   // 0x00A5C510
 }
@@ -33,7 +33,7 @@ void GFClear4DVectors(C4DVector* out, unsigned long count, const C4DVector& valu
     }
     else {
         C4DVector v = value;
-        _STL::fill_n(out, count, v);
+        std::fill_n(out, count, v);
     }
 }
 

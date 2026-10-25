@@ -24,7 +24,7 @@ public:
     ~CCharString();                                    // 0x0099EAE0
 };
 class C3DVector { public: float X, Y, Z; };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { free(__p); }
@@ -64,13 +64,13 @@ public:
 };
 class CTCSoundPlayer : public CTCBase {
 public:
-    void GetPotentialCriteriaStrings(const CCharString& criteria, _STL::vector<CCharString>& names);   // 0x0066BC10
+    void GetPotentialCriteriaStrings(const CCharString& criteria, std::vector<CCharString>& names);   // 0x0066BC10
     unsigned long InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached);   // 0x0066A920
     unsigned long PlayUnattachedCriteria(const CCharString& criteria, const C3DVector& pos, bool loop, bool attached);
 };
 #pragma auto_inline(off)
 // 0x0066BC10 (this TU): same-TU noinline stand-in -- it fills `names` but never keeps its address (chunk-422 recipe)
-__declspec(noinline) void CTCSoundPlayer::GetPotentialCriteriaStrings(const CCharString& criteria, _STL::vector<CCharString>& names)
+__declspec(noinline) void CTCSoundPlayer::GetPotentialCriteriaStrings(const CCharString& criteria, std::vector<CCharString>& names)
 {
     CCharString* block = (CCharString*)malloc(sizeof(CCharString) * 2);
     block[0].PStringData = criteria.PStringData;
@@ -84,9 +84,9 @@ unsigned long CTCSoundPlayer::PlayUnattachedCriteria(const CCharString& criteria
 {
     if (g_bSoundEnabled && g_pGameState) {
         CASoundBank& bank = ParentThing->GetSampleBank();
-        _STL::vector<CCharString> names;
+        std::vector<CCharString> names;
         GetPotentialCriteriaStrings(criteria, names);
-        for (_STL::vector<CCharString>::iterator it = names.begin(); it != names.end(); ++it) {
+        for (std::vector<CCharString>::iterator it = names.begin(); it != names.end(); ++it) {
             unsigned long handle = InternalPlaySoundEventAtPos(bank, ParentThing->GetPosition(), *it, loop, attached);
             if (handle != g_InvalidSoundHandle) {
 #pragma inline_depth(0)

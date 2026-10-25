@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(pair<unsigned long, C3DHelperPoint>* first, unsigned int n, const pair<unsigned long, C3DHelperPoint>& x, const __false_type&) -- copy-construct n copies of x into raw storage at first, return the end of the copies
+// std::__uninitialized_fill_n(pair<unsigned long, C3DHelperPoint>* first, unsigned int n, const pair<unsigned long, C3DHelperPoint>& x, const __false_type&) -- copy-construct n copies of x into raw storage at first, return the end of the copies
 // Leaf: __uninitialized_fill_n
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32020, 61 bytes (+ int3 padding), `ret 8` (__fastcall: first in ecx, n in
 //   edx, x and the tag reference on the stack). No callees.
@@ -11,7 +11,7 @@
 //   pointer (`lea esi,[eax+0Ch]`).
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 struct SRecordInfo {                                   // C3DHelperPoint as words (16 bytes)
     unsigned long m_a, m_b, m_c, m_d;

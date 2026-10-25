@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SPair* first, SPair* last, SPair val, SLess comp) -- STLport guarded insertion step over 8-byte pair<long, unsigned long> records: a new minimum shifts [first, last) up one slot and lands at first, anything else goes through the unguarded insert
+// std::__linear_insert(SPair* first, SPair* last, SPair val, SLess comp) -- STLport guarded insertion step over 8-byte pair<long, unsigned long> records: a new minimum shifts [first, last) up one slot and lands at first, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE6760, 109 bytes (+3 int3 padding), `ret 0Ch`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, last in edx, the 8-byte val by value and the 4-byte empty comparator slot on the stack.
@@ -9,7 +9,7 @@
 // Shape: STLport 4.6 _algo.c verbatim (`if (comp(val, *first)) { copy_backward(first, last, last + 1); *first = val; } else
 //   __unguarded_linear_insert(last, val, comp);`); for this element copy_backward is the inline random-access
 //   `for (n = last - first; n > 0; --n) *--result = *--last;` loop (the pair's assignment is implicit).
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -55,7 +55,7 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 }
 }
 
-typedef _STL::pair<long, unsigned long> SPair;
-typedef _STL::less<SPair> SLess;
+typedef std::pair<long, unsigned long> SPair;
+typedef std::less<SPair> SLess;
 
-template void __fastcall _STL::__linear_insert<SPair*, SPair, SLess>(SPair*, SPair*, SPair, SLess);
+template void __fastcall std::__linear_insert<SPair*, SPair, SLess>(SPair*, SPair*, SPair, SLess);

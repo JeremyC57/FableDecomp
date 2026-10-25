@@ -1,4 +1,4 @@
-// Behaviour test for 0x009323D0 _STL::__unguarded_insertion_sort_aux<CThing**, CThing*, bool(*)(CThing*,CThing*)>.
+// Behaviour test for 0x009323D0 std::__unguarded_insertion_sort_aux<CThing**, CThing*, bool(*)(CThing*,CThing*)>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("009323d0_TEST FAIL\n"); return 1; } } while (0)

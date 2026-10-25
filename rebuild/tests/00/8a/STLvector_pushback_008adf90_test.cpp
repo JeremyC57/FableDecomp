@@ -62,7 +62,7 @@ static CCPPointerInfo* NewInfo(unsigned int refs)
     info->Data = 0;
     return info;
 }
-// _STL::vector<CScriptThing>::push_back @ 0x008ADF90: placement copy at the end when there is room, otherwise
+// std::vector<CScriptThing>::push_back @ 0x008ADF90: placement copy at the end when there is room, otherwise
 // _M_insert_overflow(finish, x, __false_type(), 1, true) (a growing stand-in here).
 struct __false_type { __false_type() { } };
 static int g_overflows = 0;

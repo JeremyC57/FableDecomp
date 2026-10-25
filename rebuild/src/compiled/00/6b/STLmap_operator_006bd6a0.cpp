@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, C2DVector>: lower_bound, insert (k, C2DVector()) when absent, return the mapped vector
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, C2DVector>: lower_bound, insert (k, C2DVector()) when absent, return the mapped vector
 // Leaf: ??A?$map@VCCharString@@VC2DVector@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BD6A0, 124 bytes, __fastcall `ret 4`.
 // Identity: map<CCharString, C2DVector> (landed callers declare `C2DVector& operator[](const CCharString& key); //
@@ -38,7 +38,7 @@ public:
     C2DVector() {}
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -93,4 +93,4 @@ public:
 
 template C2DVector& map<CCharString, C2DVector>::operator[](const CCharString&);
 
-} // namespace _STL
+} // namespace std

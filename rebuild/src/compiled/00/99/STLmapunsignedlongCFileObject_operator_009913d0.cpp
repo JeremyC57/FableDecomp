@@ -1,8 +1,8 @@
-// _STL::map<unsigned long, CFileObject*>::operator[](const unsigned long& key) -- the file-object-by-UID map's subscript: lower_bound the key, insert {key, null} at that hint when absent, return a reference to the mapped pointer
+// std::map<unsigned long, CFileObject*>::operator[](const unsigned long& key) -- the file-object-by-UID map's subscript: lower_bound the key, insert {key, null} at that hint when absent, return a reference to the mapped pointer
 // Grade: RELOCATION_MATCH -- chunk-422 recipe: insert_unique(hint, v) 0x00991030 receives the pair temporary's address; a same-TU noinline stand-in that never keeps it lets VC7.1 store the pair's zero second after the hidden-result push, as retail (the "pair zero-store scheduling" residue earlier passes called a lane gap).
 // Leaf: ??A?$map@KPAVCFileObject@CThreadedFileManager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009913D0, length 128 bytes (115 + int3 padding), `ret 4`.
-// Callees: _STL::_Rb_tree<unsigned long, pair<const unsigned long, CFileObject*>, ...>::insert_unique(iterator, const
+// Callees: std::_Rb_tree<unsigned long, pair<const unsigned long, CFileObject*>, ...>::insert_unique(iterator, const
 // value_type&) @ 0x00991030 (the hint insert; manifest "map_operator_square_bracket_uint"), iterator through the hidden
 // pointer -- homed on this function's dead key-argument slot.
 // Identity: CThreadedFileManager::Objects (+0x13C retail) = map<unsigned long, CThreadedFileManager::CFileObject*> (PDB);
@@ -17,7 +17,7 @@ public:
     class CFileObject;
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -116,6 +116,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template class _STL::map<unsigned long, CThreadedFileManager::CFileObject*>;
+template class std::map<unsigned long, CThreadedFileManager::CFileObject*>;

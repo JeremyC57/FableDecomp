@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A73A00 _STL::__introsort_loop over (CCharString key, record) pairs: string keys under the
+// Behaviour test for 0x00A73A00 std::__introsort_loop over (CCharString key, record) pairs: string keys under the
 // CCharString order (null first); the loop plus a final insertion sort orders the range, depth 0 partial-sorts it.
 #include <cstdio>
 static bool DataLess(const char* a, const char* b)

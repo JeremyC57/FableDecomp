@@ -1,4 +1,4 @@
-# Hand chunk 417 (_STL::map .. CClassTypeInfo): 38 of 40 byte-exact
+# Hand chunk 417 (std::map .. CClassTypeInfo): 38 of 40 byte-exact
 
 ## What matched (38)
 
@@ -64,7 +64,7 @@
 
 ## Parked for Fable 5.1 (2)
 
-- 00a2d810 _STL::map<unsigned long,CCountedPointer<C3DAnimation2> >::operator[] DIFFER(155v150): the pair's two `mov [esp+..],0` stores are scheduled before the iterator-slot store `mov [eax],edx` (retail: after `push edx`), and the release reads the block into eax and copies it to esi (`mov eax,[esp+14h] ; mov esi,eax ; dec [eax] ; cmp [esi],0`) where retail does `mov esi,[esp+14h] ; dec [esi] ; jne` | tried: local-block nested release with zeroing, member-form release (161v150, Info re-read), `info && --RefCount == 0` local, static Release(SCountBlock*) helper (158v150) | next: release through a Fable-style `ReleaseData()` member, or the T() temporary as a named local; else lane gap: register-copy/scheduling
+- 00a2d810 std::map<unsigned long,CCountedPointer<C3DAnimation2> >::operator[] DIFFER(155v150): the pair's two `mov [esp+..],0` stores are scheduled before the iterator-slot store `mov [eax],edx` (retail: after `push edx`), and the release reads the block into eax and copies it to esi (`mov eax,[esp+14h] ; mov esi,eax ; dec [eax] ; cmp [esi],0`) where retail does `mov esi,[esp+14h] ; dec [esi] ; jne` | tried: local-block nested release with zeroing, member-form release (161v150, Info re-read), `info && --RefCount == 0` local, static Release(SCountBlock*) helper (158v150) | next: release through a Fable-style `ReleaseData()` member, or the T() temporary as a named local; else lane gap: register-copy/scheduling
 - 00a358f0 C3DMeshObject::GetPositionMatrixFromRHSet DIFFER(185v185): the z cross-product term loads `fld [edx+4] ; fmul [edx+0Ch]` where retail has `fld [edx+0Ch] ; fmul [edx+4]` (one x87 operand order, everything else identical) | tried: four-row by-value ctor with negated Forward, named up/forward/right locals into const-ref and by-value ctors, static `__fastcall` with a named local matrix and a by-value axis setter | next: write the z term as `b.Y * a.X` in CrossProduct (right operand loaded first), or a member CrossProduct
 
 ## Skipped
@@ -77,7 +77,7 @@ All 40 catalog labels are propagated or descriptive. The real identities are:
 
 | Address | Catalog label | Real identity |
 |---|---|---|
-| 0x00A2D810 | rbtree_lookup_or_insert | `_STL::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[]` (C3DAnimationInfo::CAnimationData::Animations) |
+| 0x00A2D810 | rbtree_lookup_or_insert | `std::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[]` (C3DAnimationInfo::CAnimationData::Animations) |
 | 0x00A2DC20 | Utility_DestroyMapNodeWithAllocator | `_Rb_tree<CCharString, pair<const CCharString, CArray<CMeshDataBank::CLipSyncEntry> > >::_M_erase` |
 | 0x00A2F150 | ConstructString | `C3DMeshStats::GetDummyObjectNamesStartingWith` |
 | 0x00A31280 | std_deque_rotate | `__unguarded_linear_insert<pair<ulong,C3DHelperPoint>>` |

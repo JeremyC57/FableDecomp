@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* middle, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector>*, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- heap-select the smallest keys into [first, middle) and sort them
+// std::__partial_sort(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* middle, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector>*, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- heap-select the smallest keys into [first, middle) and sort them
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076B530, 153 bytes (+int3 pad to 160), `ret 0Ch`.
 // Callers: 0x0076BB5C and 0x0076BEF6 (the introsort loop 0x0076BE30's depth-limit fallback).
@@ -14,7 +14,7 @@ struct C3DVector {
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -27,13 +27,13 @@ public:
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, C3DVector> SKeyedVector;                 // 16 bytes
+typedef std::pair<unsigned long, C3DVector> SKeyedVector;                 // 16 bytes
 typedef CKeyPairCompareLess<unsigned long, C3DVector> SKeyedVectorLess;
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x00769D50

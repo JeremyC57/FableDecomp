@@ -25,7 +25,7 @@ struct CParticleUpdateParamDesc {               // NParticleEngine::CParticleUpd
     virtual void v00();
 };
 
-struct CParamDescPair {                         // _STL::pair<unsigned long, CParticleUpdateParamDesc>, 16 bytes
+struct CParamDescPair {                         // std::pair<unsigned long, CParticleUpdateParamDesc>, 16 bytes
     unsigned long            first;             // +0x00
     CParticleUpdateParamDesc second;            // +0x04
     CParamDescPair(const CParamDescPair& o) : first(o.first), second(o.second) { }

@@ -1,4 +1,4 @@
-// _STL::swap(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>& a, pair<...>& b) -- exchange two quest-persistence entries (key string + quest name + persist script) through a by-value temporary
+// std::swap(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>& a, pair<...>& b) -- exchange two quest-persistence entries (key string + quest name + persist script) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004B7800, 148 bytes, /Gr `__fastcall` (a in ecx -> edi, b in edx -> ebx), plain `ret`.
 // Identity: the quest-persistence vector map's sort TU (neighbours: the landed pair<CCharString,
@@ -27,7 +27,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;                                          // +0x00

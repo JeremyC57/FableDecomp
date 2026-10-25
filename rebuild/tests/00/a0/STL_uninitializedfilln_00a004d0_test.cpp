@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A004D0 _STL::__uninitialized_fill_n<CGraphicInfoFrame*>: n copies of x are copy-constructed into raw storage (each taking a
+// Behaviour test for 0x00A004D0 std::__uninitialized_fill_n<CGraphicInfoFrame*>: n copies of x are copy-constructed into raw storage (each taking a
 // reference on x's frame data) and first + n is returned; n == 0 constructs nothing.
 #include <cstdlib>
 #include <cstdio>

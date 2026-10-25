@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CDegradableInfo* first, CDegradableInfo* last, CDegradableInfo pivot, CDegradableDef::CIsHealth1GTHealth2 comp) -- STLport quicksort partition of CDegradableDef's degradation stages around a pivot (descending HealthPercentage), swapping out-of-place pairs
+// std::__unguarded_partition(CDegradableInfo* first, CDegradableInfo* last, CDegradableInfo pivot, CDegradableDef::CIsHealth1GTHealth2 comp) -- STLport quicksort partition of CDegradableDef's degradation stages around a pivot (descending HealthPercentage), swapping out-of-place pairs
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067E9B0, length 99 bytes, `ret 20h` (the 28-byte pivot + the comparator).
 // Callers: __introsort_loop 0x0067F340 of CDegradableDef's vector<CDegradableInfo> (the sort beside the landed
@@ -42,7 +42,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
@@ -75,4 +75,4 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 }
 
-template CDegradableInfo* __fastcall _STL::__unguarded_partition<CDegradableInfo*, CDegradableInfo, CDegradableDef::CIsHealth1GTHealth2>(CDegradableInfo*, CDegradableInfo*, CDegradableInfo, CDegradableDef::CIsHealth1GTHealth2);
+template CDegradableInfo* __fastcall std::__unguarded_partition<CDegradableInfo*, CDegradableInfo, CDegradableDef::CIsHealth1GTHealth2>(CDegradableInfo*, CDegradableInfo*, CDegradableInfo, CDegradableDef::CIsHealth1GTHealth2);

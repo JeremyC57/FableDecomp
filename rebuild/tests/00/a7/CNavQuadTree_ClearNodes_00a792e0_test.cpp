@@ -1,5 +1,5 @@
 // 00a792e0 behaviour test: CNavQuadTree::ClearNodes (match.cpp body; the node array is released by swapping with an empty
-// temporary through _STL::swap), host stand-ins. C++03, g++ -w; also VC7.1 /Od.
+// temporary through std::swap), host stand-ins. C++03, g++ -w; also VC7.1 /Od.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,7 +9,7 @@ static int g_frees = 0;
 static void* g_lastFreed = 0;
 static void host_free(void* p) { ++g_frees; g_lastFreed = p; free(p); }
 
-namespace _STL { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
+namespace std { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
 template <class T> struct CArray {
     T* m_first;
     T* m_last;
@@ -31,9 +31,9 @@ template <class T> struct CArray {
     ~CArray() { if (m_first) host_free(m_first); }
     void swap(CArray& other)
     {
-        _STL::swap(m_first, other.m_first);
-        _STL::swap(m_last, other.m_last);
-        _STL::swap(m_end, other.m_end);
+        std::swap(m_first, other.m_first);
+        std::swap(m_last, other.m_last);
+        std::swap(m_end, other.m_end);
     }
     void ClearAndFree()
     {

@@ -1,5 +1,5 @@
-// _STL::__pop_heap(first, last, result, val, comp, int*) -- STLport heap pop for anim-component map entries: move the top entry to *result, then sift the by-value val down from the root of the shrunk heap
-// Leaf: ??$__pop_heap@PAU?$pair@W4EAnimComponent@@U?$CIVCountedPointer@UCAnimComponentBase@@@@@_STL@@U12@U?$CKeyPairCompareLess@W4EAnimComponent@@U?$CIVCountedPointer@UCAnimComponentBase@@@@@@H@_STL@@YIXPAU?$pair@W4EAnimComponent@@U?$CIVCountedPointer@UCAnimComponentBase@@@@@0@00U10@U?$CKeyPairCompareLess@W4EAnimComponent@@U?$CIVCountedPointer@UCAnimComponentBase@@@@@@PAH@Z
+// std::__pop_heap(first, last, result, val, comp, int*) -- STLport heap pop for anim-component map entries: move the top entry to *result, then sift the by-value val down from the root of the shrunk heap
+// Leaf: ??$__pop_heap@PAU?$pair@W4EAnimComponent@@U?$CIVCountedPointer@UCAnimComponentBase@@@@@std@@U12@U?$CKeyPairCompareLess@W4EAnimComponent@@U?$CIVCountedPointer@UCAnimComponentBase@@@@@@H@std@@YIXPAU?$pair@W4EAnimComponent@@U?$CIVCountedPointer@UCAnimComponentBase@@@@@0@00U10@U?$CKeyPairCompareLess@W4EAnimComponent@@U?$CIVCountedPointer@UCAnimComponentBase@@@@@@PAH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E1B60, 126 bytes (+ padding to 128), `ret 14h` (__fastcall /Gr algorithm TU:
 //   first in ecx -> esi, last in edx -> ebx; result, the 8-byte by-value pair, the empty comparator and the null distance
 //   pointer on the stack).
@@ -52,21 +52,21 @@ template <class T> struct CIVCountedPointer {              // one word: the intr
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {              // STLport pair: explicit memberwise copy constructor
     _T1 first;
     _T2 second;
     pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
-typedef _STL::pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > SAnimComponentPair;   // 8 bytes
+typedef std::pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > SAnimComponentPair;   // 8 bytes
 
 template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > TAnimComponentLess;
 
-namespace _STL {
+namespace std {
 void __fastcall __adjust_heap(SAnimComponentPair* __first, int __holeIndex, int __len, SAnimComponentPair __val,
                               TAnimComponentLess __comp);   // 0x005E1210
 

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A520B0: _STL::uninitialized_fill_n<C3DTriangle2*, unsigned int> (placement fill n triangles)
+// Behaviour test for 0x00A520B0: std::uninitialized_fill_n<C3DTriangle2*, unsigned int> (placement fill n triangles)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool c) { if (!c) g_fail = 1; }
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -55,7 +55,7 @@ static bool IsTri(const C3DTriangle2& t, unsigned short a, unsigned short b, uns
     return t.VertexIndex[0] == a && t.VertexIndex[1] == b && t.VertexIndex[2] == c;
 }
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
@@ -75,11 +75,11 @@ int main()
 {
     C3DTriangle2* raw = (C3DTriangle2*)malloc(6 * sizeof(C3DTriangle2));
     C3DTriangle2 v = Tri(3, 4, 5);
-    C3DTriangle2* end = _STL::uninitialized_fill_n(raw, 6u, v);
+    C3DTriangle2* end = std::uninitialized_fill_n(raw, 6u, v);
     Check(end == raw + 6);
     for (int i = 0; i < 6; ++i)
         Check(IsTri(raw[i], 3, 4, 5));
-    Check(_STL::uninitialized_fill_n(raw, 0u, Tri(9, 9, 9)) == raw && IsTri(raw[0], 3, 4, 5));
+    Check(std::uninitialized_fill_n(raw, 0u, Tri(9, 9, 9)) == raw && IsTri(raw[0], 3, 4, 5));
     free(raw);
     if (g_fail) {
         printf("00a520b0_TEST FAIL\n");

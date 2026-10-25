@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(pair<long, CRandomAppearanceMorph::CSkeletalMorph>*, const pair<long, CRandomAppearanceMorph::CSkeletalMorph>&, const __false_type&, unsigned int, bool) -- STLport growth path of the skeletal-morph map's vector: allocate old_size + max(old_size, fill_len), copy the head, place the new entries, copy the tail unless appending, free the old block
+// std::vector::_M_insert_overflow(pair<long, CRandomAppearanceMorph::CSkeletalMorph>*, const pair<long, CRandomAppearanceMorph::CSkeletalMorph>&, const __false_type&, unsigned int, bool) -- STLport growth path of the skeletal-morph map's vector: allocate old_size + max(old_size, fill_len), copy the head, place the new entries, copy the tail unless appending, free the old block
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@
 // Retail 0x0086CC50, 0xD5 bytes, thiscall `ret 14h`. Callers: 0x0086BBD8 (CRandomAppearanceMorph::AddSkeletalMorph),
 // 0x0086D7AE (CVectorMap<long, CSkeletalMorph>::Insert 0x0086D740), 0x0086CE83, 0x0086D362 (the vector's insert paths).
@@ -37,7 +37,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: the tag temporary is not zero-stored
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -130,7 +130,7 @@ void vector<_Tp>::_M_insert_overflow(_Tp* __position, const _Tp& __x, const __fa
 }
 }
 
-typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+typedef std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
 
-template void _STL::vector<TSkeletalMorphPair>::_M_insert_overflow(TSkeletalMorphPair*, const TSkeletalMorphPair&,
-    const _STL::__false_type&, unsigned int, bool);
+template void std::vector<TSkeletalMorphPair>::_M_insert_overflow(TSkeletalMorphPair*, const TSkeletalMorphPair&,
+    const std::__false_type&, unsigned int, bool);

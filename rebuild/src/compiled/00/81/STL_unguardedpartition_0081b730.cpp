@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(STextureMorphPair* first, STextureMorphPair* last, STextureMorphPair pivot, CKeyPairCompareLess comp) -- quicksort partition of the (EHeroMorphType, CTextureMorphEntry) pairs around a by-value pivot; returns the cut
+// std::__unguarded_partition(STextureMorphPair* first, STextureMorphPair* last, STextureMorphPair pivot, CKeyPairCompareLess comp) -- quicksort partition of the (EHeroMorphType, CTextureMorphEntry) pairs around a by-value pivot; returns the cut
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081B730, 179 bytes, `ret 1Ch` (link-time __fastcall /Gr TU: first in ecx, last in
 //   edx, the 0x18-byte pivot and the empty comparator on the stack: 0x18 + 4 = 0x1C). No callees.
@@ -17,7 +17,7 @@ struct CTextureMorphEntry {                 // Ego_r.pdb, 20 bytes, trivially co
     long Blend;                             // +0x10 ECompositeBlendType
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                // +0x00
     B second;                               // +0x04

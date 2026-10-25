@@ -3,7 +3,7 @@
 // Leaf: ?_M_insert_overflow@?$vector@VCQuestCardItem@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00624B90, 249 bytes, thiscall `ret 14h` (a /Gr TU: the helpers are __fastcall).
-// Renamed from _STL::vector<std::pair<int,CWideString>>::_M_insert_overflow (FINDINGS chunk 381): the element is
+// Renamed from std::vector<std::pair<int,CWideString>>::_M_insert_overflow (FINDINGS chunk 381): the element is
 //   Ego_r.pdb CQuestCardItem (8 bytes: long ItemIndex +0, CWideString ItemText +4), the same shape as the old pair model.
 // Identity chain: the only caller is _M_fill_insert 0x00624E40 (call at 0x00624F4B), which also calls the landed
 //   std::uninitialized_fill_n<CQuestCardItem*> 0x006236C0; 0x00624E40 is reached from resize 0x006253D0, which

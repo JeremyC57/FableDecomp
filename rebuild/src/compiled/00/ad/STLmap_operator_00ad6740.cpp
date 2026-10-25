@@ -1,5 +1,5 @@
-// _STL::map::operator[](const pair<long,long>& k) -- STLport subscript of the quadric optimiser's edge map (vertex pair -> counted contraction pointer): lower_bound, insert (k, null pointer) when absent, return the mapped pointer
-// Leaf: ??A?$map@U?$pair@JJ@_STL@@
+// std::map::operator[](const pair<long,long>& k) -- STLport subscript of the quadric optimiser's edge map (vertex pair -> counted contraction pointer): lower_bound, insert (k, null pointer) when absent, return the mapped pointer
+// Leaf: ??A?$map@U?$pair@JJ@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD6740, 137 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: map<pair<long,long>, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > (Ego_r.pdb; the
 //   landed _M_lower_bound 0x00AD24F0 documents the family); single caller 0x00ACB913 indexes it with the (min, max)
@@ -45,7 +45,7 @@ namespace QuadricOptimiserInternals {
 class CVertexPairContraction;
 }
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {             // STLport 4.6 (member templates on)
     typedef _T1 first_type;
@@ -125,4 +125,4 @@ map<_Key, _Tp, _Compare>::insert_unique(iterator __position, const value_type& _
 template CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction>&
 map<pair<long, long>, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> >::operator[](const pair<long, long>&);
 
-} // namespace _STL
+} // namespace std

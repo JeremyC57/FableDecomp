@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<CCharString,C3DDummyObject>* first, pair<CCharString,C3DDummyObject>* last, pair<CCharString,C3DDummyObject> pivot, CCompareString<C3DDummyObject> comp) -- quicksort partition of the dummy-object map entries around a by-value pivot (name order); returns the cut
+// std::__unguarded_partition(pair<CCharString,C3DDummyObject>* first, pair<CCharString,C3DDummyObject>* last, pair<CCharString,C3DDummyObject> pivot, CCompareString<C3DDummyObject> comp) -- quicksort partition of the dummy-object map entries around a by-value pivot (name order); returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6F6F0, 198 bytes, /Gr `__fastcall` (first in ecx, last in edx; the
 //   56-byte pivot and the 4-byte comparator by value on the stack, `ret 3Ch`).
@@ -31,7 +31,7 @@ public:
     long       BoneIndex;                               // +0x30
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -42,10 +42,10 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp>
 inline void swap(_Tp& __a, _Tp& __b)

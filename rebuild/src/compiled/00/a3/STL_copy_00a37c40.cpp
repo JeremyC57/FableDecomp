@@ -1,4 +1,4 @@
-// _STL::__copy(CClassTypeInfo* first, CClassTypeInfo* last, CClassTypeInfo* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of class-type records: *result++ = *first++, (last - first) times; returns the advanced result
+// std::__copy(CClassTypeInfo* first, CClassTypeInfo* last, CClassTypeInfo* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of class-type records: *result++ = *first++, (last - first) times; returns the advanced result
 // Leaf: ??$__copy@
 // Retail: Fable.exe @ 0x00A37C40, 103 bytes, `ret 0Ch`. /Gr TU written as explicit __fastcall: first in ecx, last in
 //   edx, result + the tag reference + the (int*)0 distance pointer on the stack.
@@ -26,7 +26,7 @@ public:
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -74,7 +74,7 @@ typedef CClass* (__cdecl* ClassAllocFunc)();
 // Retail layout (20 bytes; Ego_r's is 28 because its std::list is 12 bytes), as the landed constructor 0x00A37880.
 class CClassTypeInfo {
 public:
-    _STL::list<CClass*> TypeList;                           // +0x00
+    std::list<CClass*> TypeList;                           // +0x00
     unsigned long       NoAllocated;                        // +0x04
     bool                Used;                               // +0x08
     bool                Local;                              // +0x09
@@ -91,7 +91,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
@@ -107,5 +107,5 @@ _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __las
 }
 }
 
-template CClassTypeInfo* __fastcall _STL::__copy<CClassTypeInfo*, CClassTypeInfo*, int>(CClassTypeInfo*, CClassTypeInfo*,
-    CClassTypeInfo*, const _STL::random_access_iterator_tag&, int*);
+template CClassTypeInfo* __fastcall std::__copy<CClassTypeInfo*, CClassTypeInfo*, int>(CClassTypeInfo*, CClassTypeInfo*,
+    CClassTypeInfo*, const std::random_access_iterator_tag&, int*);

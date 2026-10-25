@@ -1,4 +1,4 @@
-// _STL::map::operator[](const unsigned long& k) -- map<unsigned long, QuadricOptimiserInternals::CContractionReference>::operator[]: find a vertex's pair contraction by partner index, inserting an empty reference when absent (COptimisedVertex::PairContractions)
+// std::map::operator[](const unsigned long& k) -- map<unsigned long, QuadricOptimiserInternals::CContractionReference>::operator[]: find a vertex's pair contraction by partner index, inserting an empty reference when absent (COptimisedVertex::PairContractions)
 // Leaf: ??A?$map@KVCContractionReference
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD64C0, 0x9E bytes (+ int3 padding), thiscall, `ret 4`, returns &(*i).second.
 // Identity: the callee 0x00AD52A0 is the landed _Rb_tree::insert_unique(iterator, const value_type&) of
@@ -43,7 +43,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

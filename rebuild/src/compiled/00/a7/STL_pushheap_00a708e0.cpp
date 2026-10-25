@@ -1,5 +1,5 @@
-// _STL::__push_heap(pair<CCharString,C3DMeshVolume>* first, int holeIndex, int topIndex, pair<CCharString,C3DMeshVolume> val, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- STLport heap sift-up of the (name, named convex mesh volume) table: move parents that sort before val down, then store val in the hole
-// Leaf: ??$__push_heap@PAU?$pair@VCCharString@@VC3DMeshVolume@@@_STL@@
+// std::__push_heap(pair<CCharString,C3DMeshVolume>* first, int holeIndex, int topIndex, pair<CCharString,C3DMeshVolume> val, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- STLport heap sift-up of the (name, named convex mesh volume) table: move parents that sort before val down, then store val in the hole
+// Leaf: ??$__push_heap@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A708E0, 292 bytes (+ int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; topIndex, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): CCharString key +0, C3DMeshVolume +4 (Ego_r.pdb, 12 bytes: CCharString Name +0,
@@ -90,7 +90,7 @@ public:
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -100,11 +100,11 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<CCharString, C3DMeshVolume> CMeshVolumePair;
+typedef std::pair<CCharString, C3DMeshVolume> CMeshVolumePair;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp)
 {

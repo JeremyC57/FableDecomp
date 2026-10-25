@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const pair<CCharString, CPersistInfo>& x) -- append one entry to the quest manager's persistence table storage: construct it in place when there is room, else grow through _M_insert_overflow
+// std::vector::push_back(const pair<CCharString, CPersistInfo>& x) -- append one entry to the quest manager's persistence table storage: construct it in place when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004BB780, 99 bytes (+ int3 padding), thiscall `ret 4`.
 // Callers: 0x004B4ED0 / 0x004B4FDB (CRuntimeQuestPersistence::SetQuestScriptPersistScript 0x004B4E30 and
@@ -34,7 +34,7 @@ public:
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors

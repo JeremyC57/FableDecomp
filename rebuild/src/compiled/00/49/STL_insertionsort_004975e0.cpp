@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CWideString*, CWideString*, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport insertion sort of wide strings ordered case-insensitively: every element from first+1 goes through __linear_insert @ 0x00497500 with a by-value copy of itself
+// std::__insertion_sort(CWideString*, CWideString*, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport insertion sort of wide strings ordered case-insensitively: every element from first+1 goes through __linear_insert @ 0x00497500 with a by-value copy of itself
 // Flags: /Gr
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004975E0, 56 bytes, `ret 4` (__fastcall: first in ecx -> ebx, last in edx ->

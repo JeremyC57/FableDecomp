@@ -1,5 +1,5 @@
-// _STL::__uninitialized_copy(CArray<unsigned short>* first, CArray<unsigned short>* last, CArray<unsigned short>* result, const __false_type&) -- copy-construct a range of 12-byte index arrays into raw storage, each getting its own exact-size buffer; returns the end
-// Leaf: ??$__uninitialized_copy@PAV?$CArray@G@@PAV1@@_STL@@YIPAV?$CArray@G@@PAV1@00ABU__false_type@0@@Z
+// std::__uninitialized_copy(CArray<unsigned short>* first, CArray<unsigned short>* last, CArray<unsigned short>* result, const __false_type&) -- copy-construct a range of 12-byte index arrays into raw storage, each getting its own exact-size buffer; returns the end
+// Leaf: ??$__uninitialized_copy@PAV?$CArray@G@@PAV1@@std@@YIPAV?$CArray@G@@PAV1@00ABU__false_type@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3B760, 110 bytes (+ int3 padding), __fastcall (first ecx, last edx), `ret 8`.
 // Identity: five callers in the CTriangleStripifier2 TU (0x00F3E046, 0x00F3F8E9, 0x00F3F936, 0x00F3F9DD, 0x00F3FA37: the
 //   CArray<CArray<unsigned short>> grow/insert paths); element = CArray<unsigned short> (Ego_r.pdb `V?$CArray@G@@`, a
@@ -14,7 +14,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
@@ -124,12 +124,12 @@ protected:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> {   // retail CArray: the 12-byte STLport vector itself
+template <class T> class CArray : public std::vector<T> {   // retail CArray: the 12-byte STLport vector itself
 };
 
-namespace _STL {
+namespace std {
 
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
@@ -142,4 +142,4 @@ _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __la
 
 template CArray<unsigned short>* __fastcall __uninitialized_copy(CArray<unsigned short>*, CArray<unsigned short>*, CArray<unsigned short>*, const __false_type&);
 
-}   // namespace _STL
+}   // namespace std

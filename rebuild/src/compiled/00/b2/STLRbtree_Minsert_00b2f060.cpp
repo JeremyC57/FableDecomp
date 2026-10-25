@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const pair<const pair<long,long>, CEngineTextureMorph>& v, _Rb_tree_node_base* w) -- STLport node insert of the surface-composition manager's map<pair<long,long>, CEngineTextureMorph>: create the node, link it left or right of y (keeping leftmost/rightmost), rebalance and count
+// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const pair<const pair<long,long>, CEngineTextureMorph>& v, _Rb_tree_node_base* w) -- STLport node insert of the surface-composition manager's map<pair<long,long>, CEngineTextureMorph>: create the node, link it left or right of y (keeping leftmost/rightmost), rebalance and count
 // Leaf: ?_M_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2F060, length 206 bytes, `ret 14h` (hidden iterator result + four arguments).
 // Callers: insert_unique @ 0x00B2F130 (two sites) and the hinted insert @ 0x00B2F240 (six sites).
@@ -21,7 +21,7 @@ inline void* operator new(size_t, void* where) { return where; }
 
 struct CCompositeBlendDesc;
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -125,19 +125,19 @@ _Rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::_M_insert(_Rb_tree_node_base* 
     return iterator(z);
 }
 
-}   // namespace _STL
+}   // namespace std
 
 class CEngineTextureMorph {
 public:
     long OriginalTextureIndex;                                           // +0x00
     long MorphID;                                                        // +0x04
-    _STL::vector<CCompositeBlendDesc, _STL::allocator<CCompositeBlendDesc> > Blends;   // +0x08
+    std::vector<CCompositeBlendDesc, std::allocator<CCompositeBlendDesc> > Blends;   // +0x08
 };
 
-typedef _STL::pair<long, long> CMorphKey;
-typedef _STL::pair<const CMorphKey, CEngineTextureMorph> CMorphValue;
-typedef _STL::_Rb_tree<CMorphKey, CMorphValue, _STL::_Select1st<CMorphValue>, _STL::less<CMorphKey>,
-    _STL::allocator<CMorphValue> > CMorphTree;
+typedef std::pair<long, long> CMorphKey;
+typedef std::pair<const CMorphKey, CEngineTextureMorph> CMorphValue;
+typedef std::_Rb_tree<CMorphKey, CMorphValue, std::_Select1st<CMorphValue>, std::less<CMorphKey>,
+    std::allocator<CMorphValue> > CMorphTree;
 
-template CMorphTree::iterator CMorphTree::_M_insert(_STL::_Rb_tree_node_base* x_, _STL::_Rb_tree_node_base* y_,
-                                                    const CMorphValue& v, _STL::_Rb_tree_node_base* w_);
+template CMorphTree::iterator CMorphTree::_M_insert(std::_Rb_tree_node_base* x_, std::_Rb_tree_node_base* y_,
+                                                    const CMorphValue& v, std::_Rb_tree_node_base* w_);

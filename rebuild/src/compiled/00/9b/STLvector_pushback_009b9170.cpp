@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const pair<unsigned long, CDefinitionManager::CDefClassInfo>& x) -- vector<pair<unsigned long, CDefClassInfo> >::push_back: copy-construct x at the end, or grow through _M_insert_overflow when full
+// std::vector::push_back(const pair<unsigned long, CDefinitionManager::CDefClassInfo>& x) -- vector<pair<unsigned long, CDefClassInfo> >::push_back: copy-construct x at the end, or grow through _M_insert_overflow when full
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B9170, 93 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: the 24-byte element {unsigned long, CDefClassInfo} = the definition manager's class-info CVectorMap storage
@@ -24,7 +24,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
@@ -88,7 +88,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -101,14 +101,14 @@ public:
         CArray<unsigned long>  GlobalIndices;           // +0x08
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Alloc> void vector<_Tp, _Alloc>::push_back(const _Tp& __x)
 {
     if (this->_M_finish != this->_M_end_of_storage._M_data) {

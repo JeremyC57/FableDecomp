@@ -16,7 +16,7 @@ struct SDirectInputInterfaceEntry {
     IUnknown*     Interface;
     unsigned long Data;
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -117,12 +117,12 @@ public:
         s->_M_prev = n;
     }
 };
-}   // namespace _STL
+}   // namespace std
 
 class CDirectInputDeviceLists_00a61b10 {
 public:
-    _STL::list<SDirectInputInterfaceEntry> m_devices;
-    _STL::list<SDirectInputInterfaceEntry> m_effects;
+    std::list<SDirectInputInterfaceEntry> m_devices;
+    std::list<SDirectInputInterfaceEntry> m_effects;
     long          m_enabled;
     long          m_count;
     CDirectInputDeviceLists_00a61b10() : m_enabled(1), m_count(0) { }
@@ -139,9 +139,9 @@ public:
     }
 };
 
-static bool Empty(_STL::list<SDirectInputInterfaceEntry>& l)
+static bool Empty(std::list<SDirectInputInterfaceEntry>& l)
 {
-    _STL::_List_node_base* s = l._M_node._M_data;
+    std::_List_node_base* s = l._M_node._M_data;
     return s != 0 && s->_M_next == s && s->_M_prev == s && l.size() == 0;
 }
 

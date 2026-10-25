@@ -1,4 +1,4 @@
-// _STL::list<CWall>::push_back(const CWall& x) -- append one 24-byte corridor wall to a steering corridor's wall list: malloc a node, copy the wall in, link it before the sentinel
+// std::list<CWall>::push_back(const CWall& x) -- append one 24-byte corridor wall to a steering corridor's wall list: malloc a node, copy the wall in, link it before the sentinel
 // Leaf: ?push_back@?$list@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A88B10, 80 bytes, thiscall `ret 4`.
 // Identity: the 4 callers (0x00A8832E, 0x00A883C8, 0x00A8844C, 0x00A884D4) all sit in CSBCCorridor::Process 0x00A880C0, which
@@ -25,7 +25,7 @@ public:
     C2DVector ToInternal;                               // +0x10
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

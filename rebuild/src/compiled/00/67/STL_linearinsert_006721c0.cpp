@@ -1,4 +1,4 @@
-// _STL::__linear_insert(ENavigatorType* first, ENavigatorType* last, ENavigatorType val, less<ENavigatorType> comp) -- STLport insertion-sort step for the creature def's navigator types: a value below the first element shifts the run up one slot and goes first, anything else walks down unguarded
+// std::__linear_insert(ENavigatorType* first, ENavigatorType* last, ENavigatorType val, less<ENavigatorType> comp) -- STLport insertion-sort step for the creature def's navigator types: a value below the first element shifts the run up one slot and goes first, anything else walks down unguarded
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006721C0, length 72 bytes (+ int3 padding), `ret 8`.
 // Callers: __final_insertion_sort 0x00672100 (landed; 0x0067212E, 0x00672168), part of sort() over CThingCreatureDef's
@@ -14,7 +14,7 @@
 //   __false_type returned by value in al (`xor al,al`) and stored into the dead `val` slot (`mov [esp+0Ch],al`).
 enum ENavigatorType { NAVIGATOR_TYPE_0 };                  // 4-byte enum (signed compares)
 
-namespace _STL {
+namespace std {
 struct __true_type { };
 struct __false_type { };
 
@@ -74,4 +74,4 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 }
 }
 
-template void __fastcall _STL::__linear_insert<ENavigatorType*, ENavigatorType, _STL::less<ENavigatorType> >(ENavigatorType*, ENavigatorType*, ENavigatorType, _STL::less<ENavigatorType>);
+template void __fastcall std::__linear_insert<ENavigatorType*, ENavigatorType, std::less<ENavigatorType> >(ENavigatorType*, ENavigatorType*, ENavigatorType, std::less<ENavigatorType>);

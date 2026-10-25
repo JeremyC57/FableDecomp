@@ -1,6 +1,6 @@
-// _STL::sort(pair<unsigned long,CSoundPair>* first, pair<unsigned long,CSoundPair>* last, CKeyPairCompareLess<unsigned long,CSoundPair> comp) -- STLport introsort entry for the sound map's 12-byte (key, sound pair) entries: introsort loop with a 2 * lg(n) depth budget, then the final insertion sort
-// Instantiation: _STL::sort<pair<unsigned long,CSoundPair>*,CKeyPairCompareLess<unsigned long,CSoundPair> >
-// Leaf: ??$sort@PAU?$pair@KVCSoundPair@@@_STL@@V?$CKeyPairCompareLess@KVCSoundPair@@@@@_STL@@
+// std::sort(pair<unsigned long,CSoundPair>* first, pair<unsigned long,CSoundPair>* last, CKeyPairCompareLess<unsigned long,CSoundPair> comp) -- STLport introsort entry for the sound map's 12-byte (key, sound pair) entries: introsort loop with a 2 * lg(n) depth budget, then the final insertion sort
+// Instantiation: std::sort<pair<unsigned long,CSoundPair>*,CKeyPairCompareLess<unsigned long,CSoundPair> >
+// Leaf: ??$sort@PAU?$pair@KVCSoundPair@@@std@@V?$CKeyPairCompareLess@KVCSoundPair@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00470CF1, 69 bytes (size-optimised def TU, no padding), __fastcall
 //   (first ecx, last edx; the 4-byte comparator slot on the stack), `ret 4`, no frame pointer.
 // Identity: called from CVectorMap<unsigned long, CSoundPair, CKeyPairCompareLess<..> >::Sort @ 0x00470CD8 (landed as
@@ -19,7 +19,7 @@ public:
     long LastSound;                                         // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -28,10 +28,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Size> __forceinline _Size __lg(_Size __n)
 {
     _Size __k;

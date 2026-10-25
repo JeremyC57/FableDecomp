@@ -14,7 +14,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 #define __declspec(x)
 #define __int64 long long
 #endif
-namespace _STL {
+namespace std {
 template <class _Tp> _Tp __fastcall __default_constructed(_Tp* __p);   // 0x0082F5C0 (`return _Tp();`)
 
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
@@ -115,14 +115,14 @@ public:
 };
 
 template CScriptedMapBrush::CThingPosAndOrientation&
-_STL::map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>::operator[](const unsigned __int64&);
+std::map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>::operator[](const unsigned __int64&);
 
 // ---- test harness ----
 // The source's insert_unique is the same-TU stand-in (adds the low bytes of the inserted key and value to the node count,
 // returns the hint), so the test checks operator[]'s own logic: the lower_bound walk, the end / key_comp test, the hinted
 // insert of {k, T()} and the returned mapped slot.
 static unsigned char g_zeroValue[sizeof(CScriptedMapBrush::CThingPosAndOrientation)];
-namespace _STL {
+namespace std {
 template <> CScriptedMapBrush::CThingPosAndOrientation __fastcall __default_constructed(CScriptedMapBrush::CThingPosAndOrientation*)
 {
     return *(const CScriptedMapBrush::CThingPosAndOrientation*)g_zeroValue;
@@ -139,7 +139,7 @@ template <> _Rb_tree_node_base* _Rb_tree<unsigned __int64, pair<const unsigned _
     return y;
 }
 }
-typedef _STL::map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation> TMap;
+typedef std::map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation> TMap;
 typedef TMap::value_type TValue;
 struct STestNode { long color; STestNode* parent; STestNode* left; STestNode* right; TValue value; };
 static STestNode* MakeNode(unsigned __int64 k)

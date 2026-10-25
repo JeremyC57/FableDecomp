@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the bank file runtime records
-// Leaf: ?resize@?$vector@VCRuntimeData@CBankFile@@V?$allocator@VCRuntimeData@CBankFile@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the bank file runtime records
+// Leaf: ?resize@?$vector@VCRuntimeData@CBankFile@@V?$allocator@VCRuntimeData@CBankFile@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D4300, 40 bytes, thiscall, `ret 4`.
 // Identity: vector<CBankFile::CRuntimeData> (12 bytes: DataOffset, DataSize, DataType byte, Valid -- Ego_r.pdb): the
 //   callee 0x009D4010 is the two-argument resize. No direct reference (xref 0). FableWin.pdb has
@@ -19,7 +19,7 @@ public:
         CRuntimeData() : DataOffset(0), DataSize(0), DataType(0), Valid(false) { }
     };
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

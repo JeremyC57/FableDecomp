@@ -13,7 +13,7 @@
 // below the 0x20-byte image (`lea eax,[esp+0Fh]`, pushed first); the image's zero words reuse the null-test zero.
 extern void* __cdecl operator new(unsigned int size);   // 0x00BFEA1A
 
-namespace _STL
+namespace std
 {
     struct input_iterator_tag { input_iterator_tag() {} };
     struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() {} };
@@ -71,7 +71,7 @@ namespace MicroThread
         MicroThreadDetails() { }
         virtual unsigned int MicroThreadStackSize() const;   // 0x009D8890
         virtual ~MicroThreadDetails();
-        _STL::vector<unsigned char> Stack;                  // +0x08
+        std::vector<unsigned char> Stack;                  // +0x08
     };
 
     struct CDummyExceptionBlock { void* Next; void* Handler; };

@@ -1,4 +1,4 @@
-// _STL::vector<pair<unsigned long,C3DHelperPoint> >::_M_insert_overflow(pair<unsigned long, C3DHelperPoint>* position, const pair<unsigned long, C3DHelperPoint>& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the helper-point vector: allocate max(2*size, size+fill_len) slots, copy the head, fill_len copies of x and (unless appending) the tail, free the old block
+// std::vector<pair<unsigned long,C3DHelperPoint> >::_M_insert_overflow(pair<unsigned long, C3DHelperPoint>* position, const pair<unsigned long, C3DHelperPoint>& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the helper-point vector: allocate max(2*size, size+fill_len) slots, copy the head, fill_len copies of x and (unless appending) the tail, free the old block
 // Leaf: _M_insert_overflow
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A33D90, 232 bytes (+ int3 padding), thiscall `ret 14h`.
 // Identity: the regrowth of CVectorMap<unsigned long, C3DHelperPoint> (C3DMeshStats::HelperPoints); called by its Insert
@@ -29,7 +29,7 @@ struct C3DHelperPoint {                                // 16 bytes (Ego_r.pdb)
     long      BoneIndex;                               // +0x0c
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

@@ -1,4 +1,4 @@
-// _STL::vector::resize(unsigned int) -- STLport `resize(n) { resize(n, _Tp()); }` for a vector<CGraphicInfoFrame>: erase the tail past n, or fill-insert copies of a default CGraphicInfoFrame up to n, then destroy the temporary
+// std::vector::resize(unsigned int) -- STLport `resize(n) { resize(n, _Tp()); }` for a vector<CGraphicInfoFrame>: erase the tail past n, or fill-insert copies of a default CGraphicInfoFrame up to n, then destroy the temporary
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A016F0, 160 bytes, thiscall on the vector, `ret 4`.
 // Identity: sole caller CGraphicInfo::InitFrames @ 0x009FF440 (landed; the frame vector at 0x009FF497). The chunk label
@@ -54,7 +54,7 @@ public:
     virtual void v001();
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -91,4 +91,4 @@ public:
 };
 }
 
-template void _STL::vector<CGraphicInfoFrame>::resize(unsigned int);
+template void std::vector<CGraphicInfoFrame>::resize(unsigned int);

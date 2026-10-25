@@ -1,4 +1,4 @@
-// _STL::swap(NPlayerTargeting::CTargetPoint& a, NPlayerTargeting::CTargetPoint& b) -- exchange two player-targeting candidates (thing pointer, index, targeting position, rejection frame) through a by-value temporary
+// std::swap(NPlayerTargeting::CTargetPoint& a, NPlayerTargeting::CTargetPoint& b) -- exchange two player-targeting candidates (thing pointer, index, targeting position, rejection frame) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008073D0, 195 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx -> edi, b in edx
 //   -> esi), plain `ret`; 0x1c-byte frame temporary.
@@ -47,7 +47,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 inline void __fastcall swap(_Tp& __a, _Tp& __b)
 {

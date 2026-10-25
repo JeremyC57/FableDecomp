@@ -69,7 +69,7 @@ struct CRetailMap {                                         // STLport map<K, V>
     SNode* end() const { return m_pHead; }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -108,7 +108,7 @@ public:
     bool                                  UsingRetailBanks;     // +0x14
     CRetailMap<CCharString, CCharString>  BankAliasMap;         // +0x18
     CWideString                           BasePath;             // +0x24
-    _STL::set<CWideString>                CreatedRetailBanks;   // +0x28
+    std::set<CWideString>                CreatedRetailBanks;   // +0x28
     unsigned long                         FileVersion;          // +0x34
     CCharString ResolveAlias(const CCharString& name)
     {

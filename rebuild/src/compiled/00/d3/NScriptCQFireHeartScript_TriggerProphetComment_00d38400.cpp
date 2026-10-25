@@ -25,7 +25,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     T* _M_start;
@@ -49,7 +49,7 @@ public:
     long               FreedProphets;                   // +0x64
     long               KilledProphets;                  // +0x68
     unsigned char      _state6c[0xe0 - 0x6c];           // StartNumberOfSuns .. ProphetsReleased
-    _STL::vector<bool> ShouldProphetSpeak;              // +0xe0
+    std::vector<bool> ShouldProphetSpeak;              // +0xe0
     unsigned char      _stateec[0x188 - 0xec];          // ShouldVillagerSpeak .. MissionHistory
     CCharString        ProphetComment;                  // +0x188
     void TriggerProphetComment(const CCharString& comment);

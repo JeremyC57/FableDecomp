@@ -54,7 +54,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;
     B second;
@@ -72,13 +72,13 @@ struct CRegisteredPSCInfo {
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& entry, const K& key) const { return entry.first < key; }
-    bool operator()(const K& key, const _STL::pair<K, V>& entry) const { return key < entry.first; }
+    bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
+    bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     value_type* First;                                   // +0x00
     value_type* Last;                                    // +0x04
     value_type* EndOfStorage;                            // +0x08
@@ -103,7 +103,7 @@ public:
 
 CPSCBase* CPSCManager::AllocatePSC(const CCharString& name)
 {
-    _STL::pair<CCharString, CRegisteredPSCInfo>* it = RegisteredPSCs.Find(name);
+    std::pair<CCharString, CRegisteredPSCInfo>* it = RegisteredPSCs.Find(name);
     if (it != RegisteredPSCs.Last)
         return it->second.AllocFunc();
     return 0;

@@ -1,5 +1,5 @@
-// _STL::__uninitialized_fill_n(CArray<unsigned short>* first, unsigned int n, const CArray<unsigned short>& x, const __false_type&) -- copy-construct n copies of an index array into raw storage at first, each with its own buffer; returns the end
-// Leaf: ??$__uninitialized_fill_n@PAV?$CArray@G@@IV1@@_STL@@YIPAV?$CArray@G@@PAV1@IABV1@ABU__false_type@0@@Z
+// std::__uninitialized_fill_n(CArray<unsigned short>* first, unsigned int n, const CArray<unsigned short>& x, const __false_type&) -- copy-construct n copies of an index array into raw storage at first, each with its own buffer; returns the end
+// Leaf: ??$__uninitialized_fill_n@PAV?$CArray@G@@IV1@@std@@YIPAV?$CArray@G@@PAV1@IABV1@ABU__false_type@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3B7D0, 122 bytes (+ int3 padding), __fastcall (first ecx, n edx), `ret 8`.
 // Identity: callers 0x00F3B88A, 0x00F3F91A, 0x00F3FA16 in the CTriangleStripifier2 TU (CArray<CArray<unsigned short>> fill
 //   paths); catalog "Vector_CopyMultipleUshortElements" is descriptive.
@@ -12,7 +12,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
@@ -122,12 +122,12 @@ protected:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> {   // retail CArray: the 12-byte STLport vector itself
+template <class T> class CArray : public std::vector<T> {   // retail CArray: the 12-byte STLport vector itself
 };
 
-namespace _STL {
+namespace std {
 
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
@@ -140,4 +140,4 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 
 template CArray<unsigned short>* __fastcall __uninitialized_fill_n(CArray<unsigned short>*, unsigned int, const CArray<unsigned short>&, const __false_type&);
 
-}   // namespace _STL
+}   // namespace std

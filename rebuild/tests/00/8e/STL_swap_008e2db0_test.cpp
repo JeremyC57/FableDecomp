@@ -2,7 +2,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::swap over a 12-byte vector with a memberwise copy constructor.
+// Model of std::swap over a 12-byte vector with a memberwise copy constructor.
 struct C3DVector {
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

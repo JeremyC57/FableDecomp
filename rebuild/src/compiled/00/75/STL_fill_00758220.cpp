@@ -1,4 +1,4 @@
-// _STL::fill(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* last, const pair<EBodyLocation,CWoundMorphs::CEntry>& val) -- assign val to every 0x2C-byte wound-morph entry in [first, last)
+// std::fill(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* last, const pair<EBodyLocation,CWoundMorphs::CEntry>& val) -- assign val to every 0x2C-byte wound-morph entry in [first, last)
 // Leaf: fill
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00758220, 40 bytes, `ret 4` (link-time __fastcall: first in ecx, last in edx, the
 //   value reference on the stack). No callees.
@@ -15,7 +15,7 @@ struct CWoundMorphsEntry {                       // CWoundMorphs::CEntry, 40 byt
     long Words[10];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                     // +0x00
     B second;                                    // +0x04

@@ -23,7 +23,7 @@ struct hostent {                                // winsock hostent
 extern "C" __declspec(dllimport) unsigned long __stdcall inet_addr(const char* cp);      // WSOCK32 #10
 extern "C" __declspec(dllimport) hostent* __stdcall gethostbyname(const char* name);     // WSOCK32 #52
 
-namespace _STL {
+namespace std {
 template <class _CharT> class char_traits { };
 template <class _Tp> class allocator { };
 template <class _CharT, class _Traits, class _Alloc>
@@ -41,10 +41,10 @@ namespace LHNetworkLib {
 
 class LSocket {
 public:
-    static unsigned long __fastcall ResolveHost(const _STL::string& host);
+    static unsigned long __fastcall ResolveHost(const std::string& host);
 };
 
-unsigned long __fastcall LSocket::ResolveHost(const _STL::string& host)
+unsigned long __fastcall LSocket::ResolveHost(const std::string& host)
 {
     char* scratch = (char*)malloc(1);
     scratch[0] = 0;

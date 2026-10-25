@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 class CAIStateGroupBase;
 enum EIdleStateGroup { IDLE_STATE_GROUP_NONE };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -100,14 +100,14 @@ public:
 };
 }
 
-template class _STL::map<EIdleStateGroup, CAIStateGroupBase*>;
+template class std::map<EIdleStateGroup, CAIStateGroupBase*>;
 
 // ---- test harness ----
 // The source's insert_unique is the same-TU stand-in (adds the low bytes of the inserted key and value to the node count,
 // returns the hint), so the test checks operator[]'s own logic: the lower_bound walk, the end / key_comp test, the hinted
 // insert of {k, T()} and the returned mapped slot.
 
-typedef _STL::map<EIdleStateGroup, CAIStateGroupBase*> TMap;
+typedef std::map<EIdleStateGroup, CAIStateGroupBase*> TMap;
 typedef TMap::value_type TValue;
 struct STestNode { long color; STestNode* parent; STestNode* left; STestNode* right; TValue value; };
 static STestNode* MakeNode(EIdleStateGroup k)

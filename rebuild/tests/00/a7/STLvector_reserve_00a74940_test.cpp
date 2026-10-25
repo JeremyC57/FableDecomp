@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A74940 _STL::vector<C2DLineF>::reserve: grows only when capacity < n, keeps the size and the
+// Behaviour test for 0x00A74940 std::vector<C2DLineF>::reserve: grows only when capacity < n, keeps the size and the
 // element values, frees the old block; an empty (null) vector just allocates.
 #include <cstdio>
 #include <cstdlib>

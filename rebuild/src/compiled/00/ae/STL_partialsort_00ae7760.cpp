@@ -1,4 +1,4 @@
-// _STL::__partial_sort(SPair* first, SPair* middle, SPair* last, SPair*, SLess comp) -- STLport partial_sort over 8-byte pair<long, unsigned long> records: heapify [first, middle), pop every smaller record of [middle, last) into the heap, then sort the heap
+// std::__partial_sort(SPair* first, SPair* middle, SPair* last, SPair*, SLess comp) -- STLport partial_sort over 8-byte pair<long, unsigned long> records: heapify [first, middle), pop every smaller record of [middle, last) into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE7760, 119 bytes, `ret 0Ch`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, middle in edx, then last, the value-type pointer tag and the 4-byte empty comparator slot on the stack.
@@ -10,7 +10,7 @@
 //   __pop_heap(first, middle, i, T(*i), comp, (int*)0); sort_heap(first, middle, comp);`) with __pop_heap inline
 //   (`*result = *first; __adjust_heap(first, 0, middle - first, value, comp);`) -- the by-value copy of *i is read
 //   before *first overwrites it, then rebuilt in the argument area by the pair's user copy constructor.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -62,7 +62,7 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 }
 }
 
-typedef _STL::pair<long, unsigned long> SPair;
-typedef _STL::less<SPair> SLess;
+typedef std::pair<long, unsigned long> SPair;
+typedef std::less<SPair> SLess;
 
-template void __fastcall _STL::__partial_sort<SPair*, SPair, SLess>(SPair*, SPair*, SPair*, SPair*, SLess);
+template void __fastcall std::__partial_sort<SPair*, SPair, SLess>(SPair*, SPair*, SPair*, SPair*, SLess);

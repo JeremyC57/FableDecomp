@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(CThing** first, CThing** last, CCompare_FurthestFromInitPos2D comp) -- insertion sort of thing pointers: a value ordered before the first shifts the run up with memmove, anything else goes through the unguarded insert
+// std::__insertion_sort(CThing** first, CThing** last, CCompare_FurthestFromInitPos2D comp) -- insertion sort of thing pointers: a value ordered before the first shifts the run up with memmove, anything else goes through the unguarded insert
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00749170, 113 bytes, `ret 4` (link-time __fastcall: first in ecx, last in
 //   edx, the comparator on the stack).
@@ -85,7 +85,7 @@ bool CCompare_FurthestFromInitPos2D::operator()(CThing* a, CThing* b) const
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 inline void* __copy_trivial_backward(const void* first, const void* last, void* result)
 {
     const int num = (const char*)last - (const char*)first;

@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(CCharString* first, CCharString* last, CCharString*, less<CCharString> comp) -- unguarded insertion-sort pass over a CCharString range: insert a copy of every string of [first, last)
+// std::__unguarded_insertion_sort_aux(CCharString* first, CCharString* last, CCharString*, less<CCharString> comp) -- unguarded insertion-sort pass over a CCharString range: insert a copy of every string of [first, last)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E0F60, 46 bytes, `ret 8` (link-time __fastcall /Gr algorithm TU, written as
 //   explicit __fastcall: first in ecx, last in edx, the value-type pointer and the empty comparator's 4-byte slot on the
@@ -20,7 +20,7 @@ public:
     bool operator<(const CCharString& other) const;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                         // STLport less<T>: empty, passed by value
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<ETCInterfaceType, CTCBase*>* first, pair<ETCInterfaceType, CTCBase*>* last, pair<ETCInterfaceType, CTCBase*> pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of a thing's component map around a by-value pivot entry; returns the cut
+// std::__unguarded_partition(pair<ETCInterfaceType, CTCBase*>* first, pair<ETCInterfaceType, CTCBase*>* last, pair<ETCInterfaceType, CTCBase*> pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of a thing's component map around a by-value pivot entry; returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CC690, 85 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU, explicit
 //   __fastcall here: first in ecx, last in edx, the 8-byte pivot and the comparator slot on the stack). No callees.
@@ -11,7 +11,7 @@
 enum ETCInterfaceType { TC_NONE = 0 };                  // the thing-component interface type (a signed key)
 class CTCBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -23,13 +23,13 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<ETCInterfaceType, CTCBase*> TComponentPair;          // CThing::Components entry, 8 bytes
+typedef std::pair<ETCInterfaceType, CTCBase*> TComponentPair;          // CThing::Components entry, 8 bytes
 typedef CKeyPairCompareLess<ETCInterfaceType, CTCBase*> TComponentLess;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {

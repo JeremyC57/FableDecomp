@@ -1,4 +1,4 @@
-// _STL::list::push_back(const CFileInstaller::CPendingWrite& x) -- STLport list push_back of a 12-byte pending-write record (insert(end(), x) inlined)
+// std::list::push_back(const CFileInstaller::CPendingWrite& x) -- STLport list push_back of a 12-byte pending-write record (insert(end(), x) inlined)
 // Leaf: ?push_back@?$list@VCPendingWrite@CFileInstaller@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C6AF0, 59 bytes, thiscall `ret 4` (this = the list).
 // Name: FableWin.pdb has `list<CFileInstaller::CPendingWrite>::push_back`; the only caller,
@@ -26,7 +26,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator { };
 

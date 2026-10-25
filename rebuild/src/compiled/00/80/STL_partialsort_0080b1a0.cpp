@@ -1,4 +1,4 @@
-// _STL::partial_sort(pair<C3DVector, long>* first, pair<C3DVector, long>* middle, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport partial_sort front end for the first-person targeting positions: forward to __partial_sort with the value type pointer
+// std::partial_sort(pair<C3DVector, long>* first, pair<C3DVector, long>* middle, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport partial_sort front end for the first-person targeting positions: forward to __partial_sort with the value type pointer
 // Leaf: ??$partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B1A0, 102 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   middle in edx -- passed through untouched), last and the 0x2c-byte comparator by value on the stack, `ret 30h`.
@@ -27,7 +27,7 @@ struct CVectorCompare_BestForTargeting {
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -38,7 +38,7 @@ template <class _T1, class _T2> struct pair {
 namespace {
 struct CCompareTargetedPositionsForFirstPersonTargeting {
     CVectorCompare_BestForTargeting VectorCompare;         // +0x00
-    bool operator()(const _STL::pair<C3DVector, long>& a, const _STL::pair<C3DVector, long>& b) const
+    bool operator()(const std::pair<C3DVector, long>& a, const std::pair<C3DVector, long>& b) const
     {
         const float aValue = VectorCompare.GetCompareValueForPoint(a.first);
         const float bValue = VectorCompare.GetCompareValueForPoint(b.first);
@@ -47,7 +47,7 @@ struct CCompareTargetedPositionsForFirstPersonTargeting {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __middle, _RandomAccessIter __last, _Tp*,
                                _Compare __comp);   // 0x0080AC10

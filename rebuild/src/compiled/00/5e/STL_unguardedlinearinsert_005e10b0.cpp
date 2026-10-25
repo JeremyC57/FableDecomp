@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry> val, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) -- STLport insertion step for the CRC-keyed animation entries: shift greater entries up one slot until val's place, then store it
+// std::__unguarded_linear_insert(pair<unsigned long, CAnimationEntry>* last, pair<unsigned long, CAnimationEntry> val, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp) -- STLport insertion step for the CRC-keyed animation entries: shift greater entries up one slot until val's place, then store it
 // Leaf: __unguarded_linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E10B0, 186 bytes (+ padding to 192), `ret 18h` (__fastcall /Gr algorithm TU: last in ecx ->
 //   esi, the 20-byte val by value and the empty comparator on the stack). No direct callees (the component map's

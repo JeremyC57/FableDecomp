@@ -1,5 +1,5 @@
-// _STL::vector<pair<CCharString,unsigned long> >::resize(unsigned int new_size) -- STLport one-argument resize of the particle program's export-name map storage: resize(n, pair()) with the default pair destroyed on both exits
-// Leaf: ?resize@?$vector@U?$pair@VCCharString@@K@_STL@@@_STL@@QAEXI@Z
+// std::vector<pair<CCharString,unsigned long> >::resize(unsigned int new_size) -- STLport one-argument resize of the particle program's export-name map storage: resize(n, pair()) with the default pair destroyed on both exits
+// Leaf: ?resize@?$vector@U?$pair@VCCharString@@K@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE7D10, 116 bytes (+ int3 padding), `__fastcall` (this -> esi), `ret 4`.
 // Identity: Ego_r.pdb `?resize@?$vector@U?$pair@VCCharString@@K@std@@...@@QAEXI@Z` (CParticleProgram::ExportParticles is
 //   a CVectorMap<CCharString, unsigned long>, a vector of pairs); the one caller 0x00AE4419 is CParticleProgram::ReadFromFile
@@ -18,7 +18,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

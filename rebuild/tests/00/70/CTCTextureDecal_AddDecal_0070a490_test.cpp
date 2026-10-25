@@ -29,7 +29,7 @@ public:
     void ForwardToGraphicAppearance(long request);   // 0x004C7590
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> class allocator {
@@ -114,7 +114,7 @@ public:
     void* __vftable;                            // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];
-    _STL::list<CEntry> Decals;                  // +0x0c (4-byte STLport list)
+    std::list<CEntry> Decals;                  // +0x0c (4-byte STLport list)
     unsigned char EngineDecals[0xc];            // +0x10 vector<CEngineTextureDecal>
     long CurrentAllocEntryID;                   // +0x1c
     bool Dirty;                                 // +0x20
@@ -139,7 +139,7 @@ int main()
     CThing thing;
     CTCTextureDecal td;
     memset(&td, 0, sizeof td);
-    _STL::_List_node<CTCTextureDecal::CEntry>* sentinel = (_STL::_List_node<CTCTextureDecal::CEntry>*)malloc(sizeof(_STL::_List_node<CTCTextureDecal::CEntry>));
+    std::_List_node<CTCTextureDecal::CEntry>* sentinel = (std::_List_node<CTCTextureDecal::CEntry>*)malloc(sizeof(std::_List_node<CTCTextureDecal::CEntry>));
     sentinel->_M_next = sentinel->_M_prev = sentinel;
     td.Decals._M_node._M_data = sentinel;
     td.ParentThing = &thing;
@@ -151,8 +151,8 @@ int main()
     d->TextureIndex = 88;
     long id2 = td.AddDecal(5678, *d);
     if (id1 != 5 || id2 != 6 || td.CurrentAllocEntryID != 7 || !td.Dirty || g_requests != 2 || g_lastRequest != 4) ok = 0;
-    _STL::_List_node<CTCTextureDecal::CEntry>* a = (_STL::_List_node<CTCTextureDecal::CEntry>*)sentinel->_M_next;
-    _STL::_List_node<CTCTextureDecal::CEntry>* b = (_STL::_List_node<CTCTextureDecal::CEntry>*)a->_M_next;
+    std::_List_node<CTCTextureDecal::CEntry>* a = (std::_List_node<CTCTextureDecal::CEntry>*)sentinel->_M_next;
+    std::_List_node<CTCTextureDecal::CEntry>* b = (std::_List_node<CTCTextureDecal::CEntry>*)a->_M_next;
     if (b->_M_next != sentinel || sentinel->_M_prev != b || b->_M_prev != a || a->_M_prev != sentinel) ok = 0;
     if (a->_M_data.AllocEntryID != 5 || a->_M_data.Decal != 1234 || a->_M_data.Desc.TextureIndex != 77 ||
         a->_M_data.Desc.BlendType != 3 || a->_M_data.Desc.DiffuseColour.G != 4) ok = 0;

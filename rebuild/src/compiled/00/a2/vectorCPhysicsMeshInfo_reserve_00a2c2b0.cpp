@@ -1,5 +1,5 @@
 // vector<CPhysicsMeshInfo>::reserve(unsigned int n) -- grow the mesh bank's physics-mesh info array to n entries, copying the existing infos into a fresh block
-// Leaf: ?reserve@?$vector@VCPhysicsMeshInfo@@V?$allocator@VCPhysicsMeshInfo@@@_STL@@@_STL@@QAEXI@Z
+// Leaf: ?reserve@?$vector@VCPhysicsMeshInfo@@V?$allocator@VCPhysicsMeshInfo@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2C2B0, 163 bytes, `ret 4`. Only caller 0x00A2670E (CMeshDataBank sizing its
 //   +0x398 physics-mesh info array). The catalog label "vector_reserve_generic_0x10" is descriptive.
 // Callees: malloc 0x00BFEA0E (inline allocator), STLport `__uninitialized_copy(first, last, result, const
@@ -44,7 +44,7 @@ public:
     CIVCountedPointer<CMeshData> MeshData;              // +0x0C
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -107,4 +107,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 }
 
-template void _STL::vector<CPhysicsMeshInfo>::reserve(unsigned int);
+template void std::vector<CPhysicsMeshInfo>::reserve(unsigned int);

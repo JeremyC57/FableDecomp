@@ -1,10 +1,10 @@
-// _STL::__partial_sort(pair<unsigned long,unsigned long>* first, pair<unsigned long,unsigned long>* middle, pair<unsigned long,unsigned long>* last, pair<unsigned long,unsigned long>*, less<pair<unsigned long,unsigned long> > comp) -- heap-select the smallest (middle - first) pairs into [first, middle) and heap-sort them
+// std::__partial_sort(pair<unsigned long,unsigned long>* first, pair<unsigned long,unsigned long>* middle, pair<unsigned long,unsigned long>* last, pair<unsigned long,unsigned long>*, less<pair<unsigned long,unsigned long> > comp) -- heap-select the smallest (middle - first) pairs into [first, middle) and heap-sort them
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6BBB0, 119 bytes, `ret 0Ch` (link-time __fastcall: first in ecx,
 //   middle in edx, last, the value-type tag pointer and the empty comparator on the stack).
-// Callees: 0x00A6B780 _STL::__make_heap(first, last, comp, T*, ptrdiff_t*) (the two null tag pointers are the
-//   `push 0 ; push 0`), 0x00A6B4F0 _STL::__adjust_heap(first, hole, len, val, comp) (catalogued _Adjust_heap of
-//   pair<unsigned long,unsigned long>), 0x00A6B990 _STL::sort_heap(first, last, comp).
+// Callees: 0x00A6B780 std::__make_heap(first, last, comp, T*, ptrdiff_t*) (the two null tag pointers are the
+//   `push 0 ; push 0`), 0x00A6B4F0 std::__adjust_heap(first, hole, len, val, comp) (catalogued _Adjust_heap of
+//   pair<unsigned long,unsigned long>), 0x00A6B990 std::sort_heap(first, last, comp).
 // Callers: 0x00A6BDFC, 0x00A6BFAC (the same TU's partial_sort / introsort depth-limit fallback).
 // Identity: the manifest's "HeapSort_PartialSort_u64PairLarge" is descriptive. Element = std::pair<unsigned long,
 //   unsigned long> under the default less<pair> (unsigned `ja/jb` on first, `jae` on second).
@@ -12,7 +12,7 @@
 //   __pop_heap(first, middle, i, T(*i), comp, (ptrdiff_t*)0); sort_heap(first, middle, comp);` with make_heap's
 //   front end and __pop_heap (`*result = *first; __adjust_heap(first, 0, last - first, val, comp)`) inlined; the
 //   value copy T(*i) is taken before the `*i = *first` store (its words in ecx/edx) and rebuilt in the argument area.
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> class pair {
 public:

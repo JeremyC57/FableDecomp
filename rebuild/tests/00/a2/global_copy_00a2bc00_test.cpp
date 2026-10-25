@@ -50,7 +50,7 @@ public:
     CIVCountedPointer<CMeshData> MeshData;
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*)
@@ -80,14 +80,14 @@ int main()
     dst[2].MeshData.Object = &m1; m1.IVRefCount = 2;   // dropped to 1, src[0] still holds it
     dst[3].MeshData.Object = 0;
     int* dist = 0;
-    CPhysicsMeshInfo* r = _STL::__copy(src, src + 3, dst, _STL::random_access_iterator_tag(), dist);
+    CPhysicsMeshInfo* r = std::__copy(src, src + 3, dst, std::random_access_iterator_tag(), dist);
     if (r != dst + 3) ok = 0;
     for (int i = 0; i < 3; ++i)
         if (dst[i].Kind() != 1 || dst[i].Bank != src[i].Bank || dst[i].Index != src[i].Index || dst[i].MeshData.Object != src[i].MeshData.Object) ok = 0;
     if (g_deleted != 1 || m3.IVRefCount != 0) ok = 0;
     if (m1.IVRefCount != 2 || m2.IVRefCount != 2) ok = 0;
     if (dst[3].Index != 99 || dst[3].Bank != 0) ok = 0;
-    CPhysicsMeshInfo* e = _STL::__copy(src, src, dst + 1, _STL::random_access_iterator_tag(), dist);
+    CPhysicsMeshInfo* e = std::__copy(src, src, dst + 1, std::random_access_iterator_tag(), dist);
     if (e != dst + 1 || g_deleted != 1) ok = 0;
 
     if (!ok) { std::printf("00a2bc00_TEST FAIL\n"); return 1; }

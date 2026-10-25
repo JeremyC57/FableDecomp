@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CLipSyncPhoneme* first, unsigned int n, const CLipSyncPhoneme& x, const __false_type&) -- copy-construct n lip-sync phonemes into raw storage at first and return first + n
+// std::__uninitialized_fill_n(CLipSyncPhoneme* first, unsigned int n, const CLipSyncPhoneme& x, const __false_type&) -- copy-construct n lip-sync phonemes into raw storage at first and return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A486B0, 54 bytes, __fastcall (first ecx, n edx; x and the empty tag on the stack, `ret 8`).
 // Callers: one, 0x00A4A7B6 (the phoneme vector's fill insert 0x00A4A710, manifest "vector_insert").
@@ -24,7 +24,7 @@ public:
     float         Weight;                       // +0x8
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

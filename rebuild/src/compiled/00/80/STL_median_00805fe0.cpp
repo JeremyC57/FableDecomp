@@ -1,4 +1,4 @@
-// _STL::__median(const CIntelligentPointer<CThing>& a, const CIntelligentPointer<CThing>& b, const CIntelligentPointer<CThing>& c, CDoNotUseBinaryPredicate comp) -- SGI median-of-three for the introsort pivot of a thing-pointer array under the coin-flip predicate: each comparison advances the world's random seed and answers "low bit clear", so the pick is random
+// std::__median(const CIntelligentPointer<CThing>& a, const CIntelligentPointer<CThing>& b, const CIntelligentPointer<CThing>& c, CDoNotUseBinaryPredicate comp) -- SGI median-of-three for the introsort pivot of a thing-pointer array under the coin-flip predicate: each comparison advances the world's random seed and answers "low bit clear", so the pick is random
 // Leaf: __median
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00805FE0, 220 bytes, `ret 8` (__fastcall: a in ecx, b in edx, c and the
 // predicate's slot on the stack -- the SGI/STLport algorithm TUs are /Gr). Callee: GFROR13 @ 0x00497890 (landed,

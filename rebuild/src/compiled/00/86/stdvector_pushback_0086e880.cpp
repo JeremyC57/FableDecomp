@@ -13,7 +13,7 @@
 //   comparator, then the Dirty byte. The overflow's same-TU noinline stand-in homes the tag in x's argument slot.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -71,13 +71,13 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __position, const _Tp& __x, co
 }
 #pragma auto_inline(on)
 
-} // namespace _STL
+} // namespace std
 
 template <class K, class V> class CKeyPairCompareLess {
 };
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                           // +0x0C (empty)
     bool Dirty;                                             // +0x0D
@@ -98,4 +98,4 @@ public:
     };
 };
 
-template void _STL::vector<CRandomAppearanceMorph::CBodyPartMesh>::push_back(const CRandomAppearanceMorph::CBodyPartMesh&);
+template void std::vector<CRandomAppearanceMorph::CBodyPartMesh>::push_back(const CRandomAppearanceMorph::CBodyPartMesh&);

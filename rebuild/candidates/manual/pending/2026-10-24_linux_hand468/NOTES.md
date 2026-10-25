@@ -47,7 +47,7 @@ __ftol2 0xBFEA70, sprintf import 0x01440128). 26 rows matched on the first grade
     - **004ff440 PostLoadTopology**: `operator[]` written as `*(begin()+n)` fixes the SIB base/index order.
     - **004ff8b0 RemoveLevel**: `CMapInfo& info = Maps[map]` is taken first and `info.Used = false` is the last
       statement.
-    - **00507610 DeleteAllRegions**: `_STL::vector<CRegion>` with `clear()` then `resize(1)`.
+    - **00507610 DeleteAllRegions**: `std::vector<CRegion>` with `clear()` then `resize(1)`.
     - **0063a910 SetGroundSizeZAtBlock** and **0063ae70 GetStrongestEngineThemeAtBlock**: the named C2DCoordI local is
       filled by the hidden-pointer convert call before the setter's arguments are pushed.
 - **Relabelled rows (12).**

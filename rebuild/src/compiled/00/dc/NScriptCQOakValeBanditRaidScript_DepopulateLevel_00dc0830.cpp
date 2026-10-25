@@ -26,7 +26,7 @@ public:
     void* PImp_Data;                                    // +0x04
     void* PImp_Info;                                    // +0x08
 };
-namespace _STL {
+namespace std {
 template <class T> inline void _Destroy(T* p) { p->~T(); }
 template <class T> inline void _Destroy(T* first, T* last)
 {
@@ -134,9 +134,9 @@ public:
     virtual void v72();
     virtual void v73();
     virtual void v74();
-    virtual long GetAllThingsWithScriptName(const CCharString& name, _STL::vector<CScriptThing>& things) const;   // slot 75 (+0x12c)
+    virtual long GetAllThingsWithScriptName(const CCharString& name, std::vector<CScriptThing>& things) const;   // slot 75 (+0x12c)
 };
-void __fastcall KillAllThingsInVector(CGameScriptInterfaceBase& game, const _STL::vector<CScriptThing>& things, bool fade);   // 0x00CBED82
+void __fastcall KillAllThingsInVector(CGameScriptInterfaceBase& game, const std::vector<CScriptThing>& things, bool fade);   // 0x00CBED82
 
 namespace NScript {
 class CScriptBase {                                     // retail 0x40 bytes
@@ -152,7 +152,7 @@ public:
 };
 void CQ_OakValeBanditRaidScript::DepopulateLevel()
 {
-    _STL::vector<CScriptThing> bandits;
+    std::vector<CScriptThing> bandits;
     Game->GetAllThingsWithScriptName("OakValeBanditRaidBandit", bandits);
     KillAllThingsInVector(*Game, bandits, false);
 }

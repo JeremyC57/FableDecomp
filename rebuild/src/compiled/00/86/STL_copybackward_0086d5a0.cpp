@@ -1,4 +1,4 @@
-// _STL::__copy_backward(SVectorMap* first, SVectorMap* last, SVectorMap* result, const random_access_iterator_tag&, int*) -- SGI counted backward copy of 16-byte CVectorMap records (vector of 12-byte entries, empty comparator, dirty flag): returns the moved-back result
+// std::__copy_backward(SVectorMap* first, SVectorMap* last, SVectorMap* result, const random_access_iterator_tag&, int*) -- SGI counted backward copy of 16-byte CVectorMap records (vector of 12-byte entries, empty comparator, dirty flag): returns the moved-back result
 // Leaf: __copy_backward
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086D5A0, 61 bytes, `ret 0Ch` (__fastcall: first in ecx, last in edx, result,
 // the iterator-tag reference and the Distance* on the stack -- the SGI/STLport algorithm TUs are /Gr).

@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CSkeletalMorphs::CEntry>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default morph entries (no morph name) at the end
-// Leaf: ?resize@?$vector@VCEntry@CSkeletalMorphs@@V?$allocator@VCEntry@CSkeletalMorphs@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CSkeletalMorphs::CEntry>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default morph entries (no morph name) at the end
+// Leaf: ?resize@?$vector@VCEntry@CSkeletalMorphs@@V?$allocator@VCEntry@CSkeletalMorphs@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081DF50, 81 bytes (+15 int3), thiscall on the vector, `ret 4`.
 // Identity: FableWin.pdb ?resize@?$vector@VCEntry@CSkeletalMorphs@@...@@QAEXI@Z; sole caller
 //   CSkeletalMorphs::GetAllMorphsOfType 0x0081AE50 (landed; `out->resize(count)`).
@@ -31,7 +31,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -73,4 +73,4 @@ public:
 }
 
 // 0x0081C080 erase, 0x0081CF90 _M_fill_insert (out of line in retail)
-template void _STL::vector<CSkeletalMorphs::CEntry>::resize(unsigned int);
+template void std::vector<CSkeletalMorphs::CEntry>::resize(unsigned int);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A73330 _STL::__partial_sort over (long key, record) pairs: after the call [first, middle)
+// Behaviour test for 0x00A73330 std::__partial_sort over (long key, record) pairs: after the call [first, middle)
 // holds the smallest keys in ascending order and the whole range is a permutation of the input.
 #include <cstdio>
 

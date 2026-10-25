@@ -1,4 +1,4 @@
-// _STL::__median(const SNamePairEntry& a, const SNamePairEntry& b, const SNamePairEntry& c, CNamePairLess comp) -- STLport median-of-three over the 12-byte ((name, name), object) entries (introsort pivot choice)
+// std::__median(const SNamePairEntry& a, const SNamePairEntry& b, const SNamePairEntry& c, CNamePairLess comp) -- STLport median-of-three over the 12-byte ((name, name), object) entries (introsort pivot choice)
 // Leaf: ??$__median@
 // Retail: Fable.exe @ 0x00A40D80, 106 bytes (+ int3 padding), `ret 8`. /Gr TU written as explicit __fastcall: a in ecx,
 //   b in edx; c and the comparator slot on the stack; returns the chosen reference in eax.
@@ -55,7 +55,7 @@ public:
 
 class CSoundBankLH;                                         // descriptive: the mapped object of CSoundManagerLH's maps
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -72,18 +72,18 @@ bool __cdecl operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y);   
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
+typedef std::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {
@@ -103,4 +103,4 @@ const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _
 }
 }
 
-template const SNamePairEntry& __fastcall _STL::__median<SNamePairEntry, CNamePairLess>(const SNamePairEntry&, const SNamePairEntry&, const SNamePairEntry&, CNamePairLess);
+template const SNamePairEntry& __fastcall std::__median<SNamePairEntry, CNamePairLess>(const SNamePairEntry&, const SNamePairEntry&, const SNamePairEntry&, CNamePairLess);

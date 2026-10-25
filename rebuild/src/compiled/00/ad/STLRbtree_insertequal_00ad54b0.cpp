@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::insert_equal(const value_type& v) -- multimap insert for the optimiser's contraction multimap (multimap<float, CCountedPointer<CVertexPairContraction>>): descend on the float key, link below the last node visited
+// std::_Rb_tree::insert_equal(const value_type& v) -- multimap insert for the optimiser's contraction multimap (multimap<float, CCountedPointer<CVertexPairContraction>>): descend on the float key, link below the last node visited
 // Leaf: ?insert_equal@?$_Rb_tree@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD54B0, 0x40 bytes, thiscall, `ret 8` (hidden iterator result + the value
 // reference), returns the result pointer.
@@ -17,7 +17,7 @@ public:
 };
 namespace QuadricOptimiserInternals { class CVertexPairContraction; }
 
-namespace _STL {
+namespace std {
 template <class T> class allocator { };
 template <class T> class less {
 public:
@@ -87,4 +87,4 @@ _Rb_tree<K, V, KeyOfValue, Compare, A>::insert_equal(const V& __v)
 typedef pair<const float, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > SContractionEntry;
 template _Rb_tree<float, SContractionEntry, _Select1st<SContractionEntry>, less<float>, allocator<SContractionEntry> >::iterator
 _Rb_tree<float, SContractionEntry, _Select1st<SContractionEntry>, less<float>, allocator<SContractionEntry> >::insert_equal(const SContractionEntry&);
-} // namespace _STL
+} // namespace std

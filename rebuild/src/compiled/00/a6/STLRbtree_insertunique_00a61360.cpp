@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::insert_unique(const value_type& v) -- map<CWideString, CChecksumCacheFile::CEntry> unique insert: walk to the leaf position, step back one node when the walk ended left, and insert only when that node's key sorts before v's key; returns pair<iterator, bool>
+// std::_Rb_tree::insert_unique(const value_type& v) -- map<CWideString, CChecksumCacheFile::CEntry> unique insert: walk to the leaf position, step back one node when the walk ended left, and insert only when that node's key sorts before v's key; returns pair<iterator, bool>
 // Leaf: ?insert_unique@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A61360, 155 bytes (+5 int3), `ret 8` (hidden pair result + v).
 // Callees: CWideString::operator< @ 0x0099AF70 (less<CWideString> inline), _Rb_tree_iterator::operator--() @ 0x00A60890
@@ -26,7 +26,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> class pair {
 public:
@@ -175,9 +175,9 @@ _Rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::insert_unique(const Value& v)
     return pair<iterator, bool>(j, false);
 }
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const CWideString, CChecksumCacheFile::CEntry> CChecksumEntryValue;
+typedef std::pair<const CWideString, CChecksumCacheFile::CEntry> CChecksumEntryValue;
 
-template class _STL::_Rb_tree<CWideString, CChecksumEntryValue, _STL::_Select1st<CChecksumEntryValue>,
-    _STL::less<CWideString>, _STL::allocator<CChecksumEntryValue> >;
+template class std::_Rb_tree<CWideString, CChecksumEntryValue, std::_Select1st<CChecksumEntryValue>,
+    std::less<CWideString>, std::allocator<CChecksumEntryValue> >;

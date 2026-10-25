@@ -13,7 +13,7 @@
 - `(float)unsigned_value` = `fild` + `test`/`jge` + 2^32 `fadd` fixup (0x00C15CD0); `x <= 0.0f` -> `test ah,41h; jp`, `x >= y` -> `test ah,1; jne`; `(float)pow(a, b)` under `#pragma intrinsic(pow)` -> `_CIpow` (0x00C1BDA0); a named `scaled` local keeps the two separate fmuls (0x00C1BA40).
 - A `||` of two calls each taking a CString temporary: VC7.1 tracks the conditional temporaries with construction-flag bits (1, 2) in ebx mirrored to a frame word and destroys each only when built (0x00C16C10).
 - LTCG register arguments are easy to spot: the callee pushes / reads esi, edi or ebx without ever setting or saving them, and the caller loads them (often by `lea`) right before the call. In this chunk: 0x00C16C10 (esi), 0x00C16CE0 (esi), 0x00C16D90 (edi + esi to its callee), 0x00C17640 (ebx + esi to its callee 0x00C174A0), 0x00C1BF00 (esi, edi, ebx). Park after one reference grade.
-- libpk uses Dinkumware STL (MSVCP71 basic_string imports, 16-byte vectors: allocator word + first/last/end), not STLport: name its vector/algorithm rows in `std`, not `_STL`.
+- libpk uses Dinkumware STL (MSVCP71 basic_string imports, 16-byte vectors: allocator word + first/last/end), not STLport: name its vector/algorithm rows in `std`, not `std`.
 
 Review at landing:
 - 0x00C12680 used the full 4-grade budget before matching (inline accessors + inline `IsPlaying`); 0x00C1B7D0 and 0x00C16E10 are parked at 4 grades.

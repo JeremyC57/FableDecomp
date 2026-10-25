@@ -22,7 +22,7 @@ public:
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -64,9 +64,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
     CArray() { }
 };
@@ -88,7 +88,7 @@ CCardinalSpline::CCardinalSpline(const C3DVector& start, const C3DVector& end, f
 
 // ---- test harness ----
 static int g_overflow = 0;
-namespace _STL {
+namespace std {
 template <> void vector<C3DVector, allocator<C3DVector> >::_M_insert_overflow(C3DVector* position, const C3DVector& x, const __false_type&, size_type fill_len, bool atend)
 {
     ++g_overflow;

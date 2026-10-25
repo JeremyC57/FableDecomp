@@ -1,4 +1,4 @@
-// _STL::__linear_insert(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* last, CBlockInfo val, less<CBlockInfo> comp) -- STLport insertion-sort step over block candidates: a value cheaper than the first shifts the run up and goes first, otherwise it sinks unguarded
+// std::__linear_insert(CVertexGroupBlockOptimiser::CBlockInfo* first, CBlockInfo* last, CBlockInfo val, less<CBlockInfo> comp) -- STLport insertion-sort step over block candidates: a value cheaper than the first shifts the run up and goes first, otherwise it sinks unguarded
 // Flags: /Gr
 // Leaf: ??$__linear_insert@PAVCBlockInfo@CVertexGroupBlockOptimiser
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADBC50, 0x5C bytes (+ int3 padding), __fastcall (first ecx, last edx),
@@ -11,7 +11,7 @@
 // Shape: STLport 4.x `if (comp(val, *first)) { copy_backward(first, last, last + 1); *first = val; } else
 // __unguarded_linear_insert(last, val, comp);` -- copy_backward's empty iterator tag is homed over the comparator's
 // argument slot (`lea eax,[esp+1Ch]`), which needs the real __copy_backward body out of line in the TU.
-namespace _STL {
+namespace std {
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
@@ -52,7 +52,7 @@ void __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __
         __unguarded_linear_insert(__last, __val, __comp);
 }
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlockOptimiser {
 public:
@@ -65,7 +65,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template void __linear_insert<CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo,
                               less<CVertexGroupBlockOptimiser::CBlockInfo> >(
     CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo*, CVertexGroupBlockOptimiser::CBlockInfo,

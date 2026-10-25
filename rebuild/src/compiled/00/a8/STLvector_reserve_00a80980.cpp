@@ -1,4 +1,4 @@
-// _STL::vector::reserve(unsigned int n) -- STLport reserve for a vector of 12-byte CNavigationPosition entries: when the capacity is below n, copy the entries into a fresh n-entry block and free the old one, or just allocate when the vector is empty; the size is kept
+// std::vector::reserve(unsigned int n) -- STLport reserve for a vector of 12-byte CNavigationPosition entries: when the capacity is below n, copy the entries into a fresh n-entry block and free the old one, or just allocate when the vector is empty; the size is kept
 // Leaf: ?reserve@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A80980, 147 bytes (+ int3 padding to 160), thiscall `ret 4`.
 // Caller: CNavQuadTree::LoadFromFile (0x00A7B0FA: `ActionPoints.reserve(count)`, the vector<CNavigationPosition> at +0x50).
@@ -23,7 +23,7 @@ public:
     long      Layer;                                        // +0x08
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -86,4 +86,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 }
 
-template void _STL::vector<CNavigationPosition>::reserve(unsigned int);
+template void std::vector<CNavigationPosition>::reserve(unsigned int);

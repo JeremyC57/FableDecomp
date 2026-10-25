@@ -22,7 +22,7 @@ public:
     CEngineLocalDetailObjectDef& operator=(const CEngineLocalDetailObjectDef& other);   // 0x00477964
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -83,4 +83,4 @@ public:
 
 template vector<CEngineLocalDetailObjectDef>::iterator vector<CEngineLocalDetailObjectDef>::erase(iterator, iterator);
 
-} // namespace _STL
+} // namespace std

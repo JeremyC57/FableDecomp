@@ -1,5 +1,5 @@
-// _STL::__adjust_heap(pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> >* first, int holeIndex, int len, pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> > val, CKeyPairCompareLess comp) -- STLport heap sift-down of the active-entity script table keyed by a 64-bit id, then __push_heap val back up
-// Leaf: ??$__adjust_heap@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@_STL@@
+// std::__adjust_heap(pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> >* first, int holeIndex, int len, pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> > val, CKeyPairCompareLess comp) -- STLport heap sift-down of the active-entity script table keyed by a 64-bit id, then __push_heap val back up
+// Leaf: ??$__adjust_heap@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBB3B0, 288 bytes (incl. int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): unsigned __int64 key +0 (high dword compared first: `ja` / `jb`, then the low
@@ -60,7 +60,7 @@ public:
 
 class CActiveEntityScriptBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -70,11 +70,11 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CScriptPair;
+typedef std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CScriptPair;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp);   // 0x00CBABA0
 

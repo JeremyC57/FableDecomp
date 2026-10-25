@@ -1,4 +1,4 @@
-// Behaviour test for 00a830a0 (_STL::__uninitialized_fill_n over pair<unsigned __int64, list<C2DLineF> >): n copies of x are copy-constructed into raw storage,
+// Behaviour test for 00a830a0 (std::__uninitialized_fill_n over pair<unsigned __int64, list<C2DLineF> >): n copies of x are copy-constructed into raw storage,
 // the returned cursor is first + n, n == 0 constructs nothing, and every copy is balanced by its destructor.
 #include <cstdio>
 #include <new>

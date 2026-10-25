@@ -1,4 +1,4 @@
-// _STL::vector<CEnginePrimitiveHandle>::reserve(size_type n) -- grow the handle vector's capacity to n: copy the handles into new storage (adding references) and release the old block, or just allocate when empty
+// std::vector<CEnginePrimitiveHandle>::reserve(size_type n) -- grow the handle vector's capacity to n: copy the handles into new storage (adding references) and release the old block, or just allocate when empty
 // Leaf: ?reserve@?$vector@VCEnginePrimitiveHandle@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC5E90, 151 bytes, thiscall, `ret 4`.
 // Identity: callers 0x00BC5AF2 / 0x00BC64E2; the out-of-line copy is the landed __uninitialized_copy<CEnginePrimitiveHandle*>
@@ -36,7 +36,7 @@ public:
     CIVCountedPointer Data;                            // +0x04
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -116,4 +116,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 
 template void vector<CEnginePrimitiveHandle>::reserve(size_type);
 
-}   // namespace _STL
+}   // namespace std

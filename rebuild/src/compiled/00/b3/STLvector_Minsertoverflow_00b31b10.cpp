@@ -1,4 +1,4 @@
-// _STL::vector::_M_insert_overflow(CDebugScriptElement* position, const CDebugScriptElement& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the camera's debug-script element vector: allocate old + max(old, n), copy the head, place the n copies, copy the tail, free the old block
+// std::vector::_M_insert_overflow(CDebugScriptElement* position, const CDebugScriptElement& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the camera's debug-script element vector: allocate old + max(old, n), copy the head, place the n copies, copy the tail, free the old block
 // Leaf: ?_M_insert_overflow@?$vector@UCDebugScriptElement@CEngineCamera@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31B10, length 233 bytes, thiscall `ret 14h`.
 // Callees: malloc @ 0x00BFEA0E (the inline allocate, `len ? malloc(len * 32) : 0`), __uninitialized_copy @ 0x00B31A30
@@ -33,7 +33,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class T> inline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
 template <class T> inline void _Destroy(T* p) { p->~T(); }
@@ -118,5 +118,5 @@ void vector<T>::_M_insert_overflow(T* position, const T& x, const __false_type&,
 }
 }
 
-template void _STL::vector<CEngineCamera::CDebugScriptElement>::_M_insert_overflow(CEngineCamera::CDebugScriptElement*,
-    const CEngineCamera::CDebugScriptElement&, const _STL::__false_type&, unsigned int, bool);
+template void std::vector<CEngineCamera::CDebugScriptElement>::_M_insert_overflow(CEngineCamera::CDebugScriptElement*,
+    const CEngineCamera::CDebugScriptElement&, const std::__false_type&, unsigned int, bool);

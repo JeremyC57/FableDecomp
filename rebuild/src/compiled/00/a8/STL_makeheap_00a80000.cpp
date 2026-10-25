@@ -1,4 +1,4 @@
-// _STL::__make_heap(SUniqueIDOpen* first, SUniqueIDOpen* last, CUniqueIDOpenLess comp, SUniqueIDOpen*, int*) -- build a max-heap over the 16-byte (unsigned __int64 unique ID, bool open) entries: sift every parent down, from the last parent to the root
+// std::__make_heap(SUniqueIDOpen* first, SUniqueIDOpen* last, CUniqueIDOpenLess comp, SUniqueIDOpen*, int*) -- build a max-heap over the 16-byte (unsigned __int64 unique ID, bool open) entries: sift every parent down, from the last parent to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A80000, 88 bytes, `ret 0Ch` (/Gr: first in ecx, last in edx; the empty
 //   comparator's slot, the null value-type and distance pointers on the stack).
@@ -9,7 +9,7 @@
 // Shape: STLport verbatim -- `if (last - first < 2) return; len = last - first; parent = (len - 2) / 2; for (;;) {
 //   __adjust_heap(first, parent, len, _Tp(*(first + parent)), comp); if (parent == 0) return; parent--; }` (the length
 //   computed once; the parent's address strength-reduced in esi; pair's explicit copy ctor in the argument area).
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -21,13 +21,13 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-typedef _STL::pair<unsigned __int64, bool>          SUniqueIDOpen;      // 16 bytes
+typedef std::pair<unsigned __int64, bool>          SUniqueIDOpen;      // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, bool> CUniqueIDOpenLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x00A7F0F0
 

@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<CCharString, long>* first, pair<CCharString, long>* last, pair<CCharString, long> pivot, CKeyPairCompareLess<CCharString, long> comp) -- quicksort partition over (name, value) entries: advance first past smaller names, retreat last past larger ones, swap the pair, repeat until they cross
+// std::__unguarded_partition(pair<CCharString, long>* first, pair<CCharString, long>* last, pair<CCharString, long> pivot, CKeyPairCompareLess<CCharString, long> comp) -- quicksort partition over (name, value) entries: advance first past smaller names, retreat last past larger ones, swap the pair, repeat until they cross
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B5800, 170 bytes, `ret 0Ch`: `__fastcall` (/Gr algorithm TU: first in ecx, last in
 // edx, the 8-byte pivot pair and the empty comparator on the stack), returns the cut in eax. Catalog name
@@ -56,7 +56,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                      // +0x00
     _T2 second;                                     // +0x04
@@ -99,9 +99,9 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, long> SNameEntry;
-template SNameEntry* __fastcall _STL::__unguarded_partition<SNameEntry*, SNameEntry, CKeyPairCompareLess<CCharString, long> >(
+typedef std::pair<CCharString, long> SNameEntry;
+template SNameEntry* __fastcall std::__unguarded_partition<SNameEntry*, SNameEntry, CKeyPairCompareLess<CCharString, long> >(
     SNameEntry* __first, SNameEntry* __last, SNameEntry __pivot, CKeyPairCompareLess<CCharString, long> __comp);

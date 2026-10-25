@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE5F60 _STL::__unguarded_insertion_sort_aux over pair<long, unsigned long>: insertion sort of a range whose left neighbour bounds it
+// behaviour test for 0x00AE5F60 std::__unguarded_insertion_sort_aux over pair<long, unsigned long>: insertion sort of a range whose left neighbour bounds it
 #include <cstdio>
 struct SPair { long first; unsigned int second; };
 inline bool operator<(const SPair& x, const SPair& y) { return x.first < y.first || (!(y.first < x.first) && x.second < y.second); }

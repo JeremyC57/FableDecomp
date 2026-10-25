@@ -13,7 +13,7 @@
 // Model: no engine header for CEngineLayerRenderer; modelled locally from the PDB layout.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -58,9 +58,9 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __positio
 }
 #pragma auto_inline(on)
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T, _STL::allocator<T> > { };   // Fable's CArray over the STLport vector
+template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 class CEngineComponent;
 

@@ -21,7 +21,7 @@ struct CBase {
 };
 
 
-namespace _STL {
+namespace std {
 template <class T> struct less { };
 template <class T> struct allocator { };
 
@@ -79,7 +79,7 @@ template <class K, class V> struct CKeyPairCompareLess { };
 
 struct CCRCSymbolMap : CBase {                              // vtable 0x0129CF84
     CVectorMap<unsigned long, long, CKeyPairCompareLess<unsigned long, long> > SLONGMap;   // +0x04
-    _STL::set<unsigned long>                                                  NamesUsed;  // +0x14
+    std::set<unsigned long>                                                  NamesUsed;  // +0x14
     bool                                                                      CheckForDuplicateSymbols;   // +0x20
     CCRCSymbolMap();
     virtual ~CCRCSymbolMap();

@@ -4,7 +4,7 @@
 retail target (callees, `free` thunk 0x00BFEA14, operator delete 0x00BFE9BC, `__imp__free` 0x01440154, VirtualFree
 import). All 37 behaviour tests PASS under g++ (tall.sh) and under VC7.1 /Od in Wine (tall.py). 3 rows are parked in
 differ/. Grade counts per row are in the STATUS.tsv notes; they exclude the final gall.sh verification pass. Line 1 of
-the template rows uses the plain template name (`_STL::fill(...)`, `_STL::deque::_M_pop_front_aux()`, ...), with the
+the template rows uses the plain template name (`std::fill(...)`, `std::deque::_M_pop_front_aux()`, ...), with the
 instantiation in the parameters or the description, so finish.py's `::` split stays correct.
 
 ## What matched (37)
@@ -23,7 +23,7 @@ instantiation in the parameters or the description, so finish.py's `::` split st
   - 0122a9a0 CMemoryAllocator::DestroyDeallocator: ~CDeallocator, which sets ShuttingDown and calls Destroy() when
     PeekNoAllocators() == 0.
     - Destroy() is `delete PAllocator` through the class `operator delete` (VirtualFree), all inline.
-- **STLport containers (`_STL`)**
+- **STLport containers (`std`)**
   - 00493c25 / 00655ca7 `deque<T>::_M_pop_front_aux`, for CSubtitleRenderer::CSetTextInfo and for
     `pair<CCharString,long>`: destroy the element, free the 128-byte buffer, step to the next map node.
     - Lessons: `// Flags: /Os` (the address is unaligned); the element is a `class` (V in the leaf); explicitly

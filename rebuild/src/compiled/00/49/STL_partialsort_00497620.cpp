@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CWideString*, CWideString*, CWideString*, CWideString*, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport partial sort of wide strings ordered case-insensitively: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort_heap
+// std::__partial_sort(CWideString*, CWideString*, CWideString*, CWideString*, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport partial sort of wide strings ordered case-insensitively: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort_heap
 // Flags: /Gr
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00497620, 146 bytes, `ret 0Ch` (__fastcall: first in ecx -> esi, middle in

@@ -1,4 +1,4 @@
-// _STL::vector::_M_allocate_and_copy(unsigned int n, const CGroup* first, const CGroup* last) -- (vector<COptimisedVertex::CGroup>) STLport growth helper: allocate n 8-byte bone-weight groups and copy-construct [first, last) into the block, return it
+// std::vector::_M_allocate_and_copy(unsigned int n, const CGroup* first, const CGroup* last) -- (vector<COptimisedVertex::CGroup>) STLport growth helper: allocate n 8-byte bone-weight groups and copy-construct [first, last) into the block, return it
 // Leaf: ??$_M_allocate_and_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD04E0, length 78 bytes, thiscall `ret 0Ch` (`this` is never
 //   read: the allocator is empty).
@@ -26,7 +26,7 @@ public:
 }
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -74,7 +74,7 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template CGroup* _STL::vector<CGroup>::_M_allocate_and_copy<const CGroup*>(
+template CGroup* std::vector<CGroup>::_M_allocate_and_copy<const CGroup*>(
     unsigned int n, const CGroup* first, const CGroup* last);

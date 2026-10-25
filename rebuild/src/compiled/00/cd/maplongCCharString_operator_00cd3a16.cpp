@@ -20,7 +20,7 @@ public:
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
 };
-namespace _STL {
+namespace std {
 template <class T> struct less {
     bool operator()(const T& a, const T& b) const { return a < b; }
 };

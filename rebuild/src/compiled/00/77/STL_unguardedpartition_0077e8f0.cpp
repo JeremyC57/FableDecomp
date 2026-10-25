@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(SNamedPosition* first, SNamedPosition* last, SNamedPosition pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of 16-byte (CCharString, C3DVector) pairs around a by-value pivot (ordered by name); returns the cut
+// std::__unguarded_partition(SNamedPosition* first, SNamedPosition* last, SNamedPosition pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of 16-byte (CCharString, C3DVector) pairs around a by-value pivot (ordered by name); returns the cut
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077E8F0, 110 bytes (+ int3 padding to 112), `ret 14h` (__fastcall /Gr
 //   algorithm TU: first in ecx -> edi, last in edx -> ebx, the 16-byte by-value pivot and the empty comparator on the

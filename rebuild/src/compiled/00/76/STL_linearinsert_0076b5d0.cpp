@@ -1,4 +1,4 @@
-// _STL::__linear_insert(pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* first, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* last, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> > val, CParticleUpdateCCompareParamDesc<unsigned long> comp) -- insert val into the sorted prefix [first, last): shift the whole prefix when val is the new minimum, else an unguarded linear insert
+// std::__linear_insert(pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* first, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* last, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> > val, CParticleUpdateCCompareParamDesc<unsigned long> comp) -- insert val into the sorted prefix [first, last): shift the whole prefix when val is the new minimum, else an unguarded linear insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076B5D0, 115 bytes (+int3 pad to 128), `ret 14h`.
 // Caller: the landed __insertion_sort 0x0076BB70 (0x0076BBAA).
@@ -30,7 +30,7 @@ public:
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -42,7 +42,7 @@ public:
 
 }
 
-typedef _STL::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> > SKeyedDesc;   // 16 bytes
+typedef std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> > SKeyedDesc;   // 16 bytes
 
 namespace NParticleEngine {
 
@@ -54,7 +54,7 @@ template <class K> struct CParticleUpdateCCompareParamDesc {
 
 typedef NParticleEngine::CParticleUpdateCCompareParamDesc<unsigned long> SKeyedDescLess;
 
-namespace _STL {
+namespace std {
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

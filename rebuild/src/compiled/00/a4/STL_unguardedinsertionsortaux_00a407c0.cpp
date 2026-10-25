@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<CCharString, CSoundBankLH*>* first, pair<CCharString, CSoundBankLH*>* last, pair<CCharString, CSoundBankLH*>*, CKeyPairCompareLess<CCharString, CSoundBankLH*> comp) -- unguarded insertion-sort pass over the sound manager's 8-byte (name, bank) entries: insert a copy of every entry of [first, last)
+// std::__unguarded_insertion_sort_aux(pair<CCharString, CSoundBankLH*>* first, pair<CCharString, CSoundBankLH*>* last, pair<CCharString, CSoundBankLH*>*, CKeyPairCompareLess<CCharString, CSoundBankLH*> comp) -- unguarded insertion-sort pass over the sound manager's 8-byte (name, bank) entries: insert a copy of every entry of [first, last)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A407C0, 57 bytes, `ret 8` (link-time __fastcall /Gr algorithm TU, written as
 //   explicit __fastcall: first in ecx, last in edx, the value-type pointer and the empty comparator's 4-byte slot on the
@@ -24,7 +24,7 @@ public:
 
 class CSoundBankLH;                                         // descriptive: the mapped object of CSoundManagerLH's maps
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -35,13 +35,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, CSoundBankLH*> SNameEntry;  // NameMap entry, 8 bytes
+typedef std::pair<CCharString, CSoundBankLH*> SNameEntry;  // NameMap entry, 8 bytes
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00A40370
 

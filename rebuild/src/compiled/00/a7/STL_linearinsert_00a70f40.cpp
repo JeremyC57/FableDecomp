@@ -1,11 +1,11 @@
-// _STL::__linear_insert(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* last, pair<CCharString,C3DHelperPoint> val, CCompareString<C3DHelperPoint> comp) -- insertion-sort step over the helper-point map entries: a value whose name sorts before *first shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
+// std::__linear_insert(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* last, pair<CCharString,C3DHelperPoint> val, CCompareString<C3DHelperPoint> comp) -- insertion-sort step over the helper-point map entries: a value whose name sorts before *first shifts [first, last) up one slot and goes first, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A70F40, 167 bytes (+9 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the 20-byte value and the 4-byte comparator by value on the stack, `ret 18h`).
-// Callees: CCharString::FastCompare 0x009E6530 (the CCompareString "less"), _STL::__copy_backward 0x00A6E7C0 (landed
+// Callees: CCharString::FastCompare 0x009E6530 (the CCompareString "less"), std::__copy_backward 0x00A6E7C0 (landed
 //   "CopyBackward_PairCharStringValue10": first/last in ecx/edx, result, the tag reference and a null distance
 //   pointer), CCharString::operator= 0x0099EFB0, CCharString::CCharString(const CCharString&) 0x0099EC30,
-//   _STL::__unguarded_linear_insert 0x00A6EFD0 (same chunk), CCharString::~CCharString 0x0099EAE0 (val).
+//   std::__unguarded_linear_insert 0x00A6EFD0 (same chunk), CCharString::~CCharString 0x0099EAE0 (val).
 // Identity: the manifest's "Vector_ConstructElement_Pair" is descriptive. 20-byte pair<CCharString, C3DHelperPoint>
 //   entries of CPhysicsMesh::HelperPoints ordered by CCompareString.
 // Shape: STLport `if (comp(val, *first)) { copy_backward(first, last, last + 1); *first = val; } else
@@ -34,7 +34,7 @@ public:
     long      BoneIndex;                                // +0x0C
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -45,10 +45,10 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };

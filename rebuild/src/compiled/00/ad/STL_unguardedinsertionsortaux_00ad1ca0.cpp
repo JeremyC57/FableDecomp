@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(CGroup* first, CGroup* last, CGroup*, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- unguarded linear insert of every bone-weight group of [first, last) under a function-pointer predicate
+// std::__unguarded_insertion_sort_aux(CGroup* first, CGroup* last, CGroup*, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- unguarded linear insert of every bone-weight group of [first, last) under a function-pointer predicate
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD1CA0, length 114 bytes (+14 int3), `ret 8`.
 // Callers: __unguarded_insertion_sort @ 0x00AD2B70 (`push comp ; push 0 ; call`) and two more 8-byte sorts folded onto
@@ -22,7 +22,7 @@ public:
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 typedef bool (__fastcall* TGroupCompare)(const CGroup& a, const CGroup& b);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 inline void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

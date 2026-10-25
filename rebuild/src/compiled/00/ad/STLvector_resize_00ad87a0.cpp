@@ -1,4 +1,4 @@
-// _STL::vector::resize(size_type new_size, const COptimisedVertex& x) -- shrink with erase or grow with a fill insert (184-byte mesh-optimiser vertices)
+// std::vector::resize(size_type new_size, const COptimisedVertex& x) -- shrink with erase or grow with a fill insert (184-byte mesh-optimiser vertices)
 // Leaf: ?resize@?$vector@VCOptimisedVertex@QuadricOptimiserInternals@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD87A0, 108 bytes (+ int3 padding), thiscall, `ret 8`.
 // Identity: vector<QuadricOptimiserInternals::COptimisedVertex>: the insert arm calls the landed
@@ -41,7 +41,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

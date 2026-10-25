@@ -1,4 +1,4 @@
-// _STL::remove_copy_if(CCountedPointer<CActionEventBase>* first, CCountedPointer<CActionEventBase>* last, CCountedPointer<CActionEventBase>* result, CIsActionEventFinished pred) -- STLport remove_copy_if over a creature action's event pointers: assign every unfinished event down to result, return the new end
+// std::remove_copy_if(CCountedPointer<CActionEventBase>* first, CCountedPointer<CActionEventBase>* last, CCountedPointer<CActionEventBase>* result, CIsActionEventFinished pred) -- STLport remove_copy_if over a creature action's event pointers: assign every unfinished event down to result, return the new end
 // Leaf: ??$remove_copy_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00696240, length 114 bytes (+ int3 padding), `ret 8`.
 // Callers: CCreatureActionBase::FrameUpdate 0x00694020 (landed; the inline remove_if over ActionEvents) and two more.
@@ -64,7 +64,7 @@ public:
 
 typedef CCountedPointer<NCreatureAction::CActionEventBase> TActionEventPtr;
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _OutputIter, class _Predicate>
 _OutputIter __fastcall remove_copy_if(_InputIter __first, _InputIter __last, _OutputIter __result, _Predicate __pred)
 {
@@ -77,4 +77,4 @@ _OutputIter __fastcall remove_copy_if(_InputIter __first, _InputIter __last, _Ou
 }
 }
 
-template TActionEventPtr* __fastcall _STL::remove_copy_if<TActionEventPtr*, TActionEventPtr*, NCreatureAction::CIsActionEventFinished>(TActionEventPtr*, TActionEventPtr*, TActionEventPtr*, NCreatureAction::CIsActionEventFinished);
+template TActionEventPtr* __fastcall std::remove_copy_if<TActionEventPtr*, TActionEventPtr*, NCreatureAction::CIsActionEventFinished>(TActionEventPtr*, TActionEventPtr*, TActionEventPtr*, NCreatureAction::CIsActionEventFinished);

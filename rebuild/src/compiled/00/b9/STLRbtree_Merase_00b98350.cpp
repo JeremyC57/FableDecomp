@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_erase(_Rb_tree_node* x) -- STLport erase-without-rebalancing for CEngineScene::MapList (map<long, map<long, CCountedPointer<CEngineSceneMap> > >): recurse right, destroy the row's inner map (clear + free its header), free the node, continue left
+// std::_Rb_tree::_M_erase(_Rb_tree_node* x) -- STLport erase-without-rebalancing for CEngineScene::MapList (map<long, map<long, CCountedPointer<CEngineSceneMap> > >): recurse right, destroy the row's inner map (clear + free its header), free the node, continue left
 // Leaf: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJV?$map@J
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B98350, 114 bytes, thiscall, `ret 4`.
 // Identity: recursive (0x00B9836B) and called by the outer tree's destructor / clear (0x00B94BBF, 0x00B985A2, 0x00B98812,
@@ -21,7 +21,7 @@ public:
     long* Info;
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 
@@ -113,4 +113,4 @@ template <> void _Rb_tree<long, TSceneMapValue, less<long> >::_M_erase(_Link_typ
 typedef map<long, CCountedPointer<CEngineSceneMap> > TSceneMapRow;
 template void _Rb_tree<long, pair<const long, TSceneMapRow>, less<long> >::_M_erase(_Link_type);
 
-} // namespace _STL
+} // namespace std

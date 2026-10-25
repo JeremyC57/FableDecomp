@@ -24,7 +24,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -79,4 +79,4 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __position, const _Tp& __x, co
 template void vector<NEnvironmentInternal::CBlendedEnvironmentTheme>::push_back(
     const NEnvironmentInternal::CBlendedEnvironmentTheme&);
 
-} // namespace _STL
+} // namespace std

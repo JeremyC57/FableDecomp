@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const CGenerationPos& x) -- STLport push_back of vector<CTCSmokeGenerator::CGenerationPos>, a smoke generation position (point + emitter thing pointer): copy-construct it at the end when there is room, else grow through _M_insert_overflow
+// std::vector::push_back(const CGenerationPos& x) -- STLport push_back of vector<CTCSmokeGenerator::CGenerationPos>, a smoke generation position (point + emitter thing pointer): copy-construct it at the end when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00723270, length 105 bytes (+ int3 padding), `ret 4` (thiscall, &x).
 // Callers: CTCSmokeGenerator::CreatePositions 0x00722590 (landed; 0x007226B2, one per focus_chimney helper point).
@@ -46,7 +46,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -70,4 +70,4 @@ public:
 };
 }
 
-template void _STL::vector<CTCSmokeGenerator::CGenerationPos>::push_back(const CTCSmokeGenerator::CGenerationPos&);
+template void std::vector<CTCSmokeGenerator::CGenerationPos>::push_back(const CTCSmokeGenerator::CGenerationPos&);

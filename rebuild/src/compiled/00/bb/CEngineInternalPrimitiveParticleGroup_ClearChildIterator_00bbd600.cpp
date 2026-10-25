@@ -15,7 +15,7 @@
 // assignment is trivial), the iterator dword read from the uninitialised frame word.
 class CEnginePrimitiveHandle;
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -32,7 +32,7 @@ template <class T, class Traits> struct _List_iterator : public _List_iterator_b
     _List_iterator(const _List_iterator& x) : _List_iterator_base(x._M_node) { }
 };
 }
-typedef _STL::_List_iterator<CEnginePrimitiveHandle, _STL::_Nonconst_traits<CEnginePrimitiveHandle> > CHandleListIterator;
+typedef std::_List_iterator<CEnginePrimitiveHandle, std::_Nonconst_traits<CEnginePrimitiveHandle> > CHandleListIterator;
 
 template <class T> class CArray {               // retail CArray<T>: STLport vector (12 bytes)
 public:

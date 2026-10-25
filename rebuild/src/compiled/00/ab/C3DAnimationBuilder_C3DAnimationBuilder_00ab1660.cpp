@@ -27,7 +27,7 @@ public:
     virtual ~CBaseClassNonCopyable();
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -70,9 +70,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template <class T> class CArray : public _STL::vector<T> { };
+template <class T> class CArray : public std::vector<T> { };
 
 class C3DAnimationBuilder : public CBaseClassNonCopyable {     // vtable 0x0129E9C8
 public:

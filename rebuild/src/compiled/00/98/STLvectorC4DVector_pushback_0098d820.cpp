@@ -1,7 +1,7 @@
-// _STL::vector<C4DVector>::push_back(const C4DVector& value) -- STLport push_back of a 16-byte vector: copy-construct at finish and advance when there is room, else grow through _M_insert_overflow
+// std::vector<C4DVector>::push_back(const C4DVector& value) -- STLport push_back of a 16-byte vector: copy-construct at finish and advance when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@VC4DVector@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098D820, length 80 bytes (70 + int3 padding), `ret 4`.
-// Callees: _STL::vector<C4DVector>::_M_insert_overflow(pointer, const C4DVector&, const __false_type&, size_type, bool)
+// Callees: std::vector<C4DVector>::_M_insert_overflow(pointer, const C4DVector&, const __false_type&, size_type, bool)
 // @ 0x0098D240 (thiscall, five arguments: finish, value, the POD tag, 1, true).
 // Caller: CShaderRenderManager::SetPixelShaderConstant @ 0x0098B390 (the PSConstTable CArray<C4DVector>).
 // Label: the manifest's "std_vector_PushBack_Fixed" is descriptive.
@@ -15,7 +15,7 @@ public:
     float X, Y, Z, W;
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -47,6 +47,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::vector<C4DVector>::push_back(const C4DVector&);
+template void std::vector<C4DVector>::push_back(const C4DVector&);

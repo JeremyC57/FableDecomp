@@ -1,4 +1,4 @@
-// 006393d0 _STL::vector<std::pair<unsigned_int,unsigned_int>>::_M_insert_overflow
+// 006393d0 std::vector<std::pair<unsigned_int,unsigned_int>>::_M_insert_overflow
 // Flags: /Gr
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@II@FableVector_006393d0@@@FableVector_006393d0@@QAEXPAU?$pair@II@2@ABU32@ABU__false_type@2@I_N@Z
 // Layout: oracle stride8; two copied dwords, trivial destructor; vector3 pointers. Concrete pair key/value aliases unknown.

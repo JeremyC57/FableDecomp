@@ -1,7 +1,7 @@
-// _STL::vector::erase(SNamePairEntry* first, SNamePairEntry* last) -- STLport vector<pair<pair<CCharString, CCharString>, CSoundBankLH*>>::erase(range): copy the tail down over the hole, destroy the leftover entries, shrink _M_finish, return first
+// std::vector::erase(SNamePairEntry* first, SNamePairEntry* last) -- STLport vector<pair<pair<CCharString, CCharString>, CSoundBankLH*>>::erase(range): copy the tail down over the hole, destroy the leftover entries, shrink _M_finish, return first
 // Leaf: ?erase@
 // Retail: Fable.exe @ 0x00A40C10, 84 bytes, thiscall `ret 8`.
-// Callee: _STL::__copy<SNamePairEntry*, SNamePairEntry*, int> 0x00A40040 (fastcall: last, _M_finish; result = first, the
+// Callee: std::__copy<SNamePairEntry*, SNamePairEntry*, int> 0x00A40040 (fastcall: last, _M_finish; result = first, the
 //   random_access_iterator_tag reference and the null distance pointer pushed) -- retail homes the empty tag in first's
 //   LIVE argument slot (`lea eax,[esp+18h]` after the push 0), so __copy gets its real STLport body here as a same-TU
 //   noinline function that never touches the tag. ~CCharString 0x0099EAE0 (inline destroy loop, +4 then +0, stride 12).
@@ -56,7 +56,7 @@ public:
 
 class CSoundBankLH;                                         // descriptive: the mapped object of CSoundManagerLH's maps
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -73,18 +73,18 @@ bool __cdecl operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y);   
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
+typedef std::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
-namespace _STL {
+namespace std {
 #pragma auto_inline(off)
 // 0x00A40040: STLport __copy for random-access iterators (same-TU noinline body; it never reads the tag)
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
@@ -132,4 +132,4 @@ public:
 };
 }
 
-template SNamePairEntry* _STL::vector<SNamePairEntry>::erase(SNamePairEntry*, SNamePairEntry*);
+template SNamePairEntry* std::vector<SNamePairEntry>::erase(SNamePairEntry*, SNamePairEntry*);

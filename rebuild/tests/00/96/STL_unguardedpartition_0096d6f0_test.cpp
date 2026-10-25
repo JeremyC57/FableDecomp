@@ -43,7 +43,7 @@ static CThingCompare_Nearest g_Nearest;
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 static TComp MakeComp() { TComp c; c.Functor = &g_Nearest; return c; }
 
-namespace _STL {
+namespace std {
 template <class _Iter> inline void iter_swap(_Iter __i1, _Iter __i2) { CThing* __tmp = *__i1; *__i1 = *__i2; *__i2 = __tmp; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -228,7 +228,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
         __final_insertion_sort(__first, __last, __comp);
     }
 }
-} // namespace _STL
+} // namespace std
 
 // ---- checks ----
 template <class C> static bool IsSorted(CThing** v, int n, C comp)
@@ -288,9 +288,9 @@ int main()
     TComp comp = MakeComp();
 
     CThing* v[N]; Fill(v, N);
-    CThing* pivot = _STL::__median(v[0], v[N / 2], v[N - 1], comp);
+    CThing* pivot = std::__median(v[0], v[N / 2], v[N - 1], comp);
     CThing* before[N]; for (int i = 0; i < N; ++i) before[i] = v[i];
-    CThing** cut = _STL::__unguarded_partition(v, v + N, pivot, comp);
+    CThing** cut = std::__unguarded_partition(v, v + N, pivot, comp);
     if (cut <= v || cut >= v + N) return Fail(A, "cut out of range");
     // (the adapter is reflexive -- comp(x, x) is true for the same pointer -- so the pivot itself is skipped)
     for (CThing** p = v; p < cut; ++p) if (*p != pivot && comp(pivot, *p)) return Fail(A, "left side");

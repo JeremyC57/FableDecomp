@@ -1,4 +1,4 @@
-// Behaviour test for 0x009204F0 _STL::__partial_sort<CThing**, CThing*, CThingCompare_Nearest> (byte twin of the landed 0x0095DE60; same model)
+// Behaviour test for 0x009204F0 std::__partial_sort<CThing**, CThing*, CThingCompare_Nearest> (byte twin of the landed 0x0095DE60; same model)
 #include <cstdio>
 #include <string.h>
 #include <math.h>
@@ -45,7 +45,7 @@ typedef CThingCompare_Nearest TRaw;                                  // the reta
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;    // a strict ordering for the checks
 static TComp MakeComp() { TComp c; c.Functor = &g_Nearest; return c; }
 
-namespace _STL {
+namespace std {
 template <class _Iter> inline void iter_swap(_Iter __i1, _Iter __i2) { CThing* __tmp = *__i1; *__i1 = *__i2; *__i2 = __tmp; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -230,7 +230,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
         __final_insertion_sort(__first, __last, __comp);
     }
 }
-} // namespace _STL
+} // namespace std
 
 // ---- checks ----
 template <class C> static bool IsSorted(CThing** v, int n, C comp)
@@ -291,9 +291,9 @@ int main()
 
     for (int m = 1; m <= N; m += 6) {
         CThing* v[N]; Fill(v, N);
-        CThing* sorted[N]; Fill(sorted, N); _STL::__insertion_sort(sorted, sorted + N, comp);
+        CThing* sorted[N]; Fill(sorted, N); std::__insertion_sort(sorted, sorted + N, comp);
         CThing* before[N]; for (int i = 0; i < N; ++i) before[i] = v[i];
-        _STL::__partial_sort(v, v + m, v + N, (CThing**)0, comp);
+        std::__partial_sort(v, v + m, v + N, (CThing**)0, comp);
         for (int i = 0; i < m; ++i) if (v[i] != sorted[i]) return Fail(A, "head differs from the full sort");
         if (!SameSet(before, v, N)) return Fail(A, "permutation");
     }
@@ -302,7 +302,7 @@ int main()
         TRaw raw; raw.Pos = C3DVector(0.0f, 0.0f, 0.0f);
         CThing* v[N]; Fill(v, N);
         CThing* before[N]; for (int i = 0; i < N; ++i) before[i] = v[i];
-        _STL::__partial_sort(v, v + 10, v + N, (CThing**)0, raw);
+        std::__partial_sort(v, v + 10, v + N, (CThing**)0, raw);
         if (!SameSet(before, v, N)) return Fail(A, "raw comparator: permutation");
     }
 

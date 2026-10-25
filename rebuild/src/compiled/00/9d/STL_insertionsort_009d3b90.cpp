@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(unsigned long* first, unsigned long* last, CBankFile::CompareDataOffset comp) -- STLport insertion sort of a bank's entry indices by each entry's data offset (packed array or runtime record), __linear_insert inlined: an index whose data comes first shifts the run up one slot with memmove and goes first, anything else goes through the out-of-line __unguarded_linear_insert
+// std::__insertion_sort(unsigned long* first, unsigned long* last, CBankFile::CompareDataOffset comp) -- STLport insertion sort of a bank's entry indices by each entry's data offset (packed array or runtime record), __linear_insert inlined: an index whose data comes first shifts the run up one slot with memmove and goes first, anything else goes through the out-of-line __unguarded_linear_insert
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D3B90, 217 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // one-pointer comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const CGenericVar*, const CGenericVar*, CGenericVar*, const __false_type&) -- copy-construct a range of generic variables into raw storage, return the end of the copies
+// std::__uninitialized_copy(const CGenericVar*, const CGenericVar*, CGenericVar*, const __false_type&) -- copy-construct a range of generic variables into raw storage, return the end of the copies
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EE0A0, 86 bytes (96 with padding), __fastcall (first in ecx, last in edx, result
 //   and the tag reference on the stack, `ret 8`). Catalog label "_Copy_backward<CExplosionRing*,CExplosionRing*>" is
 //   a propagated name: the vtable stored is 0x0129C3E4 = CGenericVar and the walk is forward.
@@ -7,7 +7,7 @@
 //   CGenericVar copy (vtable, Type, string, then the four scalars with the bool as a byte), cur returned in eax. Sibling
 //   of the landed __uninitialized_fill_n<CGenericVar*> 0x009EE100.
 // Layout: Ego_r.pdb CGenericVar (0x1C).
-// Leaf: ??$__uninitialized_copy@PBVCGenericVar@@PAV1@@_STL@@YIPAVCGenericVar@@PBV1@0PAV1@ABU__false_type@0@@Z
+// Leaf: ??$__uninitialized_copy@PBVCGenericVar@@PAV1@@std@@YIPAVCGenericVar@@PBV1@0PAV1@ABU__false_type@0@@Z
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CCharString {
@@ -29,7 +29,7 @@ public:
     virtual ~CGenericVar();
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() {} };
 
@@ -46,4 +46,4 @@ _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __la
 
 template CGenericVar* __fastcall __uninitialized_copy(const CGenericVar*, const CGenericVar*, CGenericVar*, const __false_type&);
 
-} // namespace _STL
+} // namespace std

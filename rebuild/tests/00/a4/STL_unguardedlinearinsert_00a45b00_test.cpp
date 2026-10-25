@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A45B00: _STL::__unguarded_linear_insert<C3DSkeletalBoneMorph*> (shift larger elements up and drop val in place)
+// Behaviour test for 0x00A45B00: std::__unguarded_linear_insert<C3DSkeletalBoneMorph*> (shift larger elements up and drop val in place)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -80,7 +80,7 @@ static void FillMorphs(C3DSkeletalBoneMorph* a, const unsigned long* crcs, int n
         SetMorph(a[i], crcs[i]);
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
@@ -103,7 +103,7 @@ int main()
         C3DSkeletalBoneMorph a[5];
         FillMorphs(a, crcs, 5);
         int live = g_liveStrings;
-        _STL::__unguarded_linear_insert(a + 4, a[4], (TBoneMorphCompare)LessByCRC);
+        std::__unguarded_linear_insert(a + 4, a[4], (TBoneMorphCompare)LessByCRC);
         Check(g_liveStrings == live);
         for (int i = 0; i < 5; ++i)
             Check(a[i].BoneNameCRC == want[i] && Consistent(a[i]));
@@ -111,7 +111,7 @@ int main()
         static const unsigned long crcs2[3] = { 2, 5, 9 };
         C3DSkeletalBoneMorph b[3];
         FillMorphs(b, crcs2, 3);
-        _STL::__unguarded_linear_insert(b + 2, b[2], (TBoneMorphCompare)LessByCRC);
+        std::__unguarded_linear_insert(b + 2, b[2], (TBoneMorphCompare)LessByCRC);
         for (int i = 0; i < 3; ++i)
             Check(b[i].BoneNameCRC == crcs2[i] && Consistent(b[i]));
     }

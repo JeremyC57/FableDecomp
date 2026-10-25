@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A33800 _STL::__linear_insert over pair<unsigned long, C3DDummyObject>: a value below the first
+// Behaviour test for 0x00A33800 std::__linear_insert over pair<unsigned long, C3DDummyObject>: a value below the first
 // key shifts [first, last) up one slot and goes first; otherwise the unguarded insert walks it down from last. Working
 // stand-ins for __copy_backward and __unguarded_linear_insert.
 #include <cstdio>
@@ -6,7 +6,7 @@
 #define __fastcall
 #endif
 
-namespace _STL {
+namespace std {
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct CMatrix3x4 { float M[12]; };
@@ -58,7 +58,7 @@ void __fastcall __linear_insert(TEntry* first, TEntry* last, TEntry val, CKeyPai
 
 int main()
 {
-    using namespace _STL;
+    using namespace std;
     TEntry a[5];
     unsigned long keys[5] = { 10, 20, 30, 5, 25 };
     for (int i = 0; i < 5; ++i) { a[i].first = keys[i]; a[i].second.BoneIndex = (long)keys[i] * 2; }

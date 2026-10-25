@@ -1,4 +1,4 @@
-// _STL::list<CCountedPointer<CSpawnedFuncBase> >::insert(iterator pos, const CCountedPointer<CSpawnedFuncBase>& x) -- STLport list insert: malloc a 16-byte node, placement copy-construct the counted pointer into it (bumping the shared reference count), link it in front of `pos` and return an iterator to it
+// std::list<CCountedPointer<CSpawnedFuncBase> >::insert(iterator pos, const CCountedPointer<CSpawnedFuncBase>& x) -- STLport list insert: malloc a 16-byte node, placement copy-construct the counted pointer into it (bumping the shared reference count), link it in front of `pos` and return an iterator to it
 // Leaf: insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEC6F0, 67 bytes, `ret 0Ch` (__fastcall with `this` unused: the hidden
 // iterator result, the by-value iterator and the element reference on the stack). Callee: malloc @ 0x00BFEA0E.

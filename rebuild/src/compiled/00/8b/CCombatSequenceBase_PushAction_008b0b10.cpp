@@ -39,7 +39,7 @@ public:
     CCountedPointer<CCombatActionBase> CreatureAction;      // +0x00
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -88,7 +88,7 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __position, const _Tp& __x, co
 }
 #pragma auto_inline(on)
 
-} // namespace _STL
+} // namespace std
 
 class CCombatSequenceBase {
 public:
@@ -96,7 +96,7 @@ public:
     bool                          Running;                  // +0x04
     long                          NoAvailableActions;       // +0x08
     long                          CurrentActionIndex;       // +0x0C
-    _STL::vector<CCombatAction>   CombatActions;            // +0x10
+    std::vector<CCombatAction>   CombatActions;            // +0x10
     CThingCreatureBase*           Creature;                 // +0x1C
     CThingCreatureBase*           Target;                   // +0x20
     bool                          CreateCalled;             // +0x24

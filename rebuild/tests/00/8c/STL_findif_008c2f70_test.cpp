@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__find_if<C3DVector*, CIsOutsideRadius> (0x008C2F70): the first point farther than the radius,
+// Behaviour test for std::__find_if<C3DVector*, CIsOutsideRadius> (0x008C2F70): the first point farther than the radius,
 // across the unrolled body and every switch tail, or `last` when all are inside.
 #include <cstdio>
 #include <cmath>

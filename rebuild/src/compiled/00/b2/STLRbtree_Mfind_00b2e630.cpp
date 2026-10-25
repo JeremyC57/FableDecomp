@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_find(const pair<long,long>& k) const -- STLport find of the surface-composition manager's map<pair<long,long>, CEngineTextureMorph>: the node whose key equals k, the header when absent
+// std::_Rb_tree::_M_find(const pair<long,long>& k) const -- STLport find of the surface-composition manager's map<pair<long,long>, CEngineTextureMorph>: the node whose key equals k, the header when absent
 // Leaf: _M_find
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2E630, length 82 bytes, `ret 4`, the node pointer in eax.
 // Callers: CEngineSurfaceCompositionManager::UpdateDiskCacheTexture @ 0x00B2D330 (call 0x00B2D415) and two more map
@@ -9,7 +9,7 @@
 // Shape: STLport 4.6 `_M_find` = the lower-bound walk, then `if (y == header || comp(k, key(y))) y = header; return y;`
 //   (landed relative: 0x0098FE70); the header stays in edi, k in ebx, k.first hoisted into esi for the loop only.
 // Label: the catalog's descriptive `RBTree_FindLE` -- this is the STLport find (0x00B2E830 is the lower bound).
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -77,7 +77,7 @@ _Rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::_M_find(const Key& k) const
     return y;
 }
 
-}   // namespace _STL
+}   // namespace std
 
 struct CCompositeBlendDesc;
 struct CCompositeBlendDescVector {               // retail STLport vector<CCompositeBlendDesc>, 12 bytes
@@ -92,8 +92,8 @@ public:
     CCompositeBlendDescVector Blends;                 // +0x08
 };
 
-typedef _STL::pair<long, long> CMorphKey;
-typedef _STL::pair<const CMorphKey, CEngineTextureMorph> CMorphValue;
+typedef std::pair<long, long> CMorphKey;
+typedef std::pair<const CMorphKey, CEngineTextureMorph> CMorphValue;
 
-template class _STL::_Rb_tree<CMorphKey, CMorphValue, _STL::_Select1st<CMorphValue>, _STL::less<CMorphKey>,
-    _STL::allocator<CMorphValue> >;
+template class std::_Rb_tree<CMorphKey, CMorphValue, std::_Select1st<CMorphValue>, std::less<CMorphKey>,
+    std::allocator<CMorphValue> >;

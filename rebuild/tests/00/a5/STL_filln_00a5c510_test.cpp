@@ -1,4 +1,4 @@
-// Behaviour test for 00a5c510 (_STL::fill_n<C4DVector*, unsigned int, C4DVector>): n vectors get the value member by member,
+// Behaviour test for 00a5c510 (std::fill_n<C4DVector*, unsigned int, C4DVector>): n vectors get the value member by member,
 // the returned iterator is first + n, n == 0 writes nothing, the neighbours are untouched.
 #include <cstdio>
 struct C4DVector {

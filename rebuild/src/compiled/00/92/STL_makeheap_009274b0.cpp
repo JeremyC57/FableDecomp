@@ -1,4 +1,4 @@
-// _STL::__make_heap(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, ConstThingCompare comp, CIntelligentPointer<const CThing>*, int*) -- STLport make_heap: sift every parent down from the last one to the root
+// std::__make_heap(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, ConstThingCompare comp, CIntelligentPointer<const CThing>*, int*) -- STLport make_heap: sift every parent down from the last one to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009274B0, 102 bytes, `ret 0Ch` (first in ecx, last in edx; comp and the two type tags on the stack).
 // Name: STLport `__make_heap<CIntelligentPointer<const CThing>*, bool (__fastcall*)(..), CIntelligentPointer<const CThing>, int>`;
@@ -39,7 +39,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value,
                               _Compare __comp);   // 0x00926850

@@ -12,7 +12,7 @@
 // (`cmp edi,esi ; jbe` unsigned), equal keys return true (`jae` -> `mov al,1`); the false result is the
 // `xor al,al` set before the first end test. STLport 4.6 iterators over `_Const_traits` with ++ as the static `_Rb_global<bool>::_M_increment(node)` (inline) -- retry
 //   pass 3: the real 4.6 layering fixes the register swap of the earlier member `_M_increment()` model.
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -125,7 +125,7 @@ public:
     const_iterator end() const { return _M_t.end(); }
 };
 
-} // namespace _STL
+} // namespace std
 
 struct CGroupArray {                                         // CArray<unsigned long> (retail STLport vector, 12 bytes)
     unsigned long* m_first;
@@ -136,15 +136,15 @@ struct CGroupArray {                                         // CArray<unsigned 
 class CVertexGroupBlock {                                    // retail 0x18 bytes (PDB 32: debug containers)
 public:
     CGroupArray                         Groups;              // +0x00
-    _STL::map<unsigned long, long>      GroupToIndexMap;     // +0x0C
+    std::map<unsigned long, long>      GroupToIndexMap;     // +0x0C
     bool SharesGroupWith(const CVertexGroupBlock& other) const;
 };
 
 bool CVertexGroupBlock::SharesGroupWith(const CVertexGroupBlock& other) const
 {
     bool shares = false;
-    _STL::map<unsigned long, long>::const_iterator a = GroupToIndexMap.begin();
-    _STL::map<unsigned long, long>::const_iterator b = other.GroupToIndexMap.begin();
+    std::map<unsigned long, long>::const_iterator a = GroupToIndexMap.begin();
+    std::map<unsigned long, long>::const_iterator b = other.GroupToIndexMap.begin();
     while (a != GroupToIndexMap.end() && b != other.GroupToIndexMap.end()) {
         if (a->first < b->first)
             ++a;

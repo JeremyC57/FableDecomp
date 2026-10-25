@@ -1,4 +1,4 @@
-// _STL::vector<CTestQuest>::_M_insert_overflow(CTestQuest*, const CTestQuest&, const __false_type&, unsigned int, bool) -- STLport reallocating insert of 28-byte test-quest records: allocate old_size + max(old_size, n), copy the head, construct the n new records, copy the tail unless appending, destroy and free the old block
+// std::vector<CTestQuest>::_M_insert_overflow(CTestQuest*, const CTestQuest&, const __false_type&, unsigned int, bool) -- STLport reallocating insert of 28-byte test-quest records: allocate old_size + max(old_size, n), copy the head, construct the n new records, copy the tail unless appending, destroy and free the old block
 // Leaf: _M_insert_overflow
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004ADB50, 226 bytes (240 with padding), `ret 14h` (__fastcall).
 // Callees: 0x00BFEA0E malloc / 0x00BFEA14 free (STLport's malloc allocator: `n != 0 ? malloc(n * 28) : 0`,

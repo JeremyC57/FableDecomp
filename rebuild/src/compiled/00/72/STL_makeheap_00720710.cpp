@@ -1,8 +1,8 @@
-// _STL::__make_heap(pair<long, CTCHeroMorph::CTextureLayer>* first, pair<long, CTCHeroMorph::CTextureLayer>* last, CKeyPairCompareLess<long, CTCHeroMorph::CTextureLayer> comp, pair<long, CTCHeroMorph::CTextureLayer>*, int*) -- SGI make_heap of the hero texture-layer table by key: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
+// std::__make_heap(pair<long, CTCHeroMorph::CTextureLayer>* first, pair<long, CTCHeroMorph::CTextureLayer>* last, CKeyPairCompareLess<long, CTCHeroMorph::CTextureLayer> comp, pair<long, CTCHeroMorph::CTextureLayer>*, int*) -- SGI make_heap of the hero texture-layer table by key: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00720710, 184 bytes, `ret 0Ch` (__fastcall: first in ecx, last in edx, the
 // empty comparator's slot, the value-type pointer and the Distance* on the stack -- the SGI/STLport algorithm TUs are /Gr).
-// Callee: _STL::__adjust_heap(first, holeIndex, len, T value, comp) @ 0x0071FF00 (landed; same instantiation -- its source
+// Callee: std::__adjust_heap(first, holeIndex, len, T value, comp) @ 0x0071FF00 (landed; same instantiation -- its source
 // names the pair `pair<EHeroMorphType, CTextureMorphEntry>`, the same 24-byte layout).
 // Types (Ego_r.pdb): CTCHeroMorph::CTextureLayer (20 bytes) = long TextureID +0, CCompositeBlendDesc Blend +4;
 // CCompositeBlendDesc (16) = ulong TextureIndex, ECompositeBlendType BlendType, CRGBColour DiffuseColour, SpecularColour;

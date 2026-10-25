@@ -1,4 +1,4 @@
-// _STL::__pop_heap(SKeyedList* first, SKeyedList* last, SKeyedList* result, SKeyedList value, CKeyPairCompareLess comp, int*) -- SGI heap pop over (unsigned __int64 key, list) pairs: move the root to `result`, then re-heap [first, last) around `value`
+// std::__pop_heap(SKeyedList* first, SKeyedList* last, SKeyedList* result, SKeyedList value, CKeyPairCompareLess comp, int*) -- SGI heap pop over (unsigned __int64 key, list) pairs: move the root to `result`, then re-heap [first, last) around `value`
 // Leaf: __pop_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A83570, 141 bytes (+ int3 padding), `ret 1Ch`: /Gr `__fastcall` (first in
 //   ecx -> esi, last in edx -> edi; result, the 16-byte value, the empty comparator and the distance pointer on the stack).

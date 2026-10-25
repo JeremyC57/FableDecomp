@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CWideString*, CWideString*, CWideString, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport quicksort partition of wide strings around a by-value pivot ordered case-insensitively (_wcsicmp); returns the cut
+// std::__unguarded_partition(CWideString*, CWideString*, CWideString, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport quicksort partition of wide strings around a by-value pivot ordered case-insensitively (_wcsicmp); returns the cut
 // Flags: /Gr
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00497200, 215 bytes, `ret 8` (__fastcall: first in ecx -> esi, last in edx ->

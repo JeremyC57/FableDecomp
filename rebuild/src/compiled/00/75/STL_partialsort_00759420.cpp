@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* middle, pair<EBodyLocation,CWoundMorphs::CEntry>* last, pair<EBodyLocation,CWoundMorphs::CEntry>*, CKeyPairCompareLess comp) -- heap-select the smallest entries into [first, middle) and sort them
+// std::__partial_sort(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* middle, pair<EBodyLocation,CWoundMorphs::CEntry>* last, pair<EBodyLocation,CWoundMorphs::CEntry>*, CKeyPairCompareLess comp) -- heap-select the smallest entries into [first, middle) and sort them
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00759420, 173 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, middle in edx,
 //   then last, the value-type tag pointer and the empty comparator on the stack).
@@ -18,7 +18,7 @@ struct CWoundMorphsEntry {                       // CWoundMorphs::CEntry, 40 byt
     long Words[10];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                     // +0x00
     B second;                                    // +0x04

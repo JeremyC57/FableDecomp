@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the inventory map region records
-// Leaf: ?resize@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the inventory map region records
+// Leaf: ?resize@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00619290, 64 bytes, thiscall, `ret 4`.
 // Identity: vector<CTCInventoryMap::CUIRegionInfo> (40 bytes: Region, Shops, BarberShops, TitleShops, TatooShops,
 //   ShopsForSale, HousesForSale, ShopsOwned, HousesOwned, Taverns -- Ego_r.pdb): the callee 0x006190C0 is the two-argument
@@ -25,7 +25,7 @@ public:
                           HousesForSale(0), ShopsOwned(0), HousesOwned(0), Taverns(0) { }
     };
 };
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

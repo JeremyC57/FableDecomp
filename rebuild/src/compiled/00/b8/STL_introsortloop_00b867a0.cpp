@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CSortElement* first, CSortElement* last, CSortElement*, int depth_limit, less<CSortElement> comp) -- STLport introsort recursion over the sub-primitive renderer's sort elements (ordered by SortValue): median-of-three partition until 16 elements remain, heap sort when the depth budget runs out
+// std::__introsort_loop(CSortElement* first, CSortElement* last, CSortElement*, int depth_limit, less<CSortElement> comp) -- STLport introsort recursion over the sub-primitive renderer's sort elements (ordered by SortValue): median-of-three partition until 16 elements remain, heap sort when the depth budget runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B867A0, 180 bytes, __fastcall (first ecx, last edx), `ret 0xc` (the _Tp* tag, the
 //   depth limit, the empty less<> comparator).
@@ -25,7 +25,7 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> struct less {
     less() { }
@@ -84,4 +84,4 @@ void __fastcall __introsort_loop(_RandomAccessIter __first, _RandomAccessIter __
 
 template void __fastcall __introsort_loop<CSortElement*, CSortElement, int, less<CSortElement> >(CSortElement*, CSortElement*, CSortElement*, int, less<CSortElement>);
 
-} // namespace _STL
+} // namespace std

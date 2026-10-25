@@ -1,4 +1,4 @@
-// _STL::map::operator[](const EClothingSuitPart& k) -- STLport subscript of map<EClothingSuitPart, bool> (size TU): lower_bound, insert (k, false) when absent, return the flag
+// std::map::operator[](const EClothingSuitPart& k) -- STLport subscript of map<EClothingSuitPart, bool> (size TU): lower_bound, insert (k, false) when absent, return the flag
 // Leaf: ??A?$map
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005BBC4E, 69 bytes, __fastcall `ret 4`, frame-pointer size TU.
 // Identity: four calls from CTCInventoryClothing vfunc 77 (0x005B76D1); the mapped value is a byte (`mov byte [ebp-4],0`),
@@ -11,7 +11,7 @@
 //   ahead of the iterator store: 69v69).
 #pragma optimize("s", on)
 enum EClothingSuitPart { CLOTHING_SUIT_PART_NONE };
-namespace _STL {
+namespace std {
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
 };

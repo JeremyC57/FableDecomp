@@ -4,7 +4,7 @@
 
 class CDeviceResetCallback { public: int Id; };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -48,13 +48,13 @@ class CDisplayManager {
 public:
     void AddDeviceResetCallback(CDeviceResetCallback* callback) { DeviceResetCallbacks.push_back(callback); }
     unsigned char _pad000[0x264];
-    _STL::list<CDeviceResetCallback*> DeviceResetCallbacks;
+    std::list<CDeviceResetCallback*> DeviceResetCallbacks;
 };
 
 int main()
 {
     CDisplayManager dm;
-    _STL::_List_node_base sentinel;
+    std::_List_node_base sentinel;
     sentinel._M_next = &sentinel;
     sentinel._M_prev = &sentinel;
     dm.DeviceResetCallbacks._M_node = &sentinel;
@@ -64,15 +64,15 @@ int main()
     dm.AddDeviceResetCallback(&b);
     dm.AddDeviceResetCallback(&c);
     CDeviceResetCallback* expect[3] = { &a, &b, &c };
-    _STL::_List_node_base* n = sentinel._M_next;
+    std::_List_node_base* n = sentinel._M_next;
     for (int i = 0; i < 3; ++i) {
-        if (n == &sentinel || ((_STL::_List_node<CDeviceResetCallback*>*)n)->_M_data != expect[i] || n->_M_next->_M_prev != n) {
+        if (n == &sentinel || ((std::_List_node<CDeviceResetCallback*>*)n)->_M_data != expect[i] || n->_M_next->_M_prev != n) {
             std::printf("009c0190_TEST FAIL\n"); return 1;
         }
         n = n->_M_next;
     }
     if (n != &sentinel || sentinel._M_prev->_M_next != &sentinel ||
-        ((_STL::_List_node<CDeviceResetCallback*>*)sentinel._M_prev)->_M_data != &c) {
+        ((std::_List_node<CDeviceResetCallback*>*)sentinel._M_prev)->_M_data != &c) {
         std::printf("009c0190_TEST FAIL\n"); return 1;
     }
     while (sentinel._M_next != &sentinel) { n = sentinel._M_next; sentinel._M_next = n->_M_next; std::free(n); }

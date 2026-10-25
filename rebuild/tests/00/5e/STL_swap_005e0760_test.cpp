@@ -1,4 +1,4 @@
-// Behaviour test of _STL::swap(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >& a, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >& b) (retail 0x005E0760)
+// Behaviour test of std::swap(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >& a, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >& b) (retail 0x005E0760)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

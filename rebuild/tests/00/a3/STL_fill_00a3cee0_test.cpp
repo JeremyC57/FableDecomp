@@ -36,7 +36,7 @@ static bool Is(const C3DAnimationStateAlpha& a, long index, float time, float we
     return a.GetType() == 2 && a.AnimationIndex == index && Near(a.AnimationTime, time) && Near(a.AlphaWeight, weight);
 }
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
@@ -52,7 +52,7 @@ int main()
         Set(a[i], i, (float)i, 0.0f);
     C3DAnimationStateAlpha v;
     Set(v, 9, 9.5f, 0.5f);
-    _STL::fill(a + 1, a + 3, v);
+    std::fill(a + 1, a + 3, v);
     if (!Is(a[0], 0, 0.0f, 0.0f) || !Is(a[1], 9, 9.5f, 0.5f) || !Is(a[2], 9, 9.5f, 0.5f) || !Is(a[3], 3, 3.0f, 0.0f))
         { std::printf("00a3cee0_TEST FAIL\n"); return 1; }
     std::printf("00a3cee0_TEST PASS\n");

@@ -1,8 +1,8 @@
-// behaviour test for 0x005791B5 _STL::list<long>::pop_back: erase the node before the sentinel
+// behaviour test for 0x005791B5 std::list<long>::pop_back: erase the node before the sentinel
 #include <cstdio>
 #include <cstdlib>
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -70,7 +70,7 @@ public:
 
 int main()
 {
-    _STL::list<long> generals;
+    std::list<long> generals;
     generals.push_back(10);
     generals.push_back(20);
     generals.push_back(30);

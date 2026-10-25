@@ -43,7 +43,7 @@ static CThingCompare_Nearest g_Nearest;
 typedef CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> TComp;
 static TComp MakeComp() { TComp c; c.Functor = &g_Nearest; return c; }
 
-namespace _STL {
+namespace std {
 template <class _Iter> inline void iter_swap(_Iter __i1, _Iter __i2) { CThing* __tmp = *__i1; *__i1 = *__i2; *__i2 = __tmp; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -228,7 +228,7 @@ void sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
         __final_insertion_sort(__first, __last, __comp);
     }
 }
-} // namespace _STL
+} // namespace std
 
 // ---- checks ----
 template <class C> static bool IsSorted(CThing** v, int n, C comp)
@@ -289,7 +289,7 @@ int main()
 
     for (int i = 0; i + 2 < N; ++i) {
         CThing* a = &g_things[i]; CThing* b = &g_things[(i * 5 + 1) % N]; CThing* c = &g_things[(i * 11 + 2) % N];
-        CThing* const& m = _STL::__median(a, b, c, comp);
+        CThing* const& m = std::__median(a, b, c, comp);
         int below = (a != m && comp(a, m) ? 1 : 0) + (b != m && comp(b, m) ? 1 : 0) + (c != m && comp(c, m) ? 1 : 0);
         int above = (a != m && comp(m, a) ? 1 : 0) + (b != m && comp(m, b) ? 1 : 0) + (c != m && comp(m, c) ? 1 : 0);
         if (&m != &a && &m != &b && &m != &c) return Fail(A, "not one of the arguments");

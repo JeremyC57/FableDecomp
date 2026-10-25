@@ -1,8 +1,8 @@
-// _STL::__unguarded_partition(pair<long,C3DMeshVolume>* first, pair<long,C3DMeshVolume>* last, pair<long,C3DMeshVolume> pivot, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- quicksort partition of the navigation containment volumes around a by-value pivot (signed key); returns the cut
+// std::__unguarded_partition(pair<long,C3DMeshVolume>* first, pair<long,C3DMeshVolume>* last, pair<long,C3DMeshVolume> pivot, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- quicksort partition of the navigation containment volumes around a by-value pivot (signed key); returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A71880, 127 bytes, /Gr `__fastcall` (first in ecx, last in edx; the
 //   16-byte pivot and the empty comparator on the stack, `ret 14h`).
-// Callees: _STL::swap<pair<long,C3DMeshVolume> > 0x00A70320 (landed, out of line), the count block's DeleteFunc,
+// Callees: std::swap<pair<long,C3DMeshVolume> > 0x00A70320 (landed, out of line), the count block's DeleteFunc,
 //   operator delete 0x00BFE9BC, CCharString::~CCharString 0x0099EAE0 (the by-value pivot).
 // Identity: the manifest's "QuickPartition_WithHeapPhase" is descriptive. The element is the 16-byte pair<long,
 //   C3DMeshVolume> of CPhysicsMesh::NavigationContainmentVolumes, ordered by the signed key (`jge`/`jl`).
@@ -55,7 +55,7 @@ public:
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -66,10 +66,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b);              // 0x00A70320

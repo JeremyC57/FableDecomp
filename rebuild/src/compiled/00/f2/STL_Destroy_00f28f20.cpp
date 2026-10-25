@@ -1,5 +1,5 @@
-// _STL::_Destroy(CFeatDef* first, CFeatDef* last) -- run the virtual destructor of every 100-byte feat def in [first, last)
-// Leaf: ??$_Destroy@PAVCFeatDef@@@_STL@@
+// std::_Destroy(CFeatDef* first, CFeatDef* last) -- run the virtual destructor of every 100-byte feat def in [first, last)
+// Leaf: ??$_Destroy@PAVCFeatDef@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F28F20, 34 bytes, __fastcall (first in ecx, last in edx), plain `ret`.
 // Identity: the only caller is vector<CFeatDef>::operator= (0x00F2D010, the shrinking branch at 0x00F2D0EF), which
 //   CScriptDef::operator= (0x00F2A250) calls for its Feats member (+0x1038; Ego_r.pdb CScriptDef::Feats is
@@ -39,7 +39,7 @@ public:
     virtual ~CFeatDef();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp>

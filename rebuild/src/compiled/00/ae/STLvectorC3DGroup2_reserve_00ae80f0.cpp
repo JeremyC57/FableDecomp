@@ -1,4 +1,4 @@
-// _STL::vector<C3DGroup2>::reserve(unsigned int n) -- grow the skinning-group array (CArray<C3DGroup2>) to capacity n: allocate, copy the groups across and release the old block, or just allocate when the array never had storage
+// std::vector<C3DGroup2>::reserve(unsigned int n) -- grow the skinning-group array (CArray<C3DGroup2>) to capacity n: allocate, copy the groups across and release the old block, or just allocate when the array never had storage
 // Leaf: ?reserve@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE80F0, 163 bytes, __fastcall `ret 4`.
 // Callers: CVectorPairOwner::ReserveBoth 0x00AE3330 (landed; the program's SimGroups / NonSimGroups) and the program loader
@@ -15,7 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                // 0x00BFEA0E
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -93,7 +93,7 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 
 struct C3DVertexBlend2 { long Vertex; float Weight; };   // 8 bytes
 
-template <class T> class CArray : public _STL::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
+template <class T> class CArray : public std::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
 public:
     CArray(const CArray& other);                         // 0x00AE5D80 for CArray<C3DVertexBlend2>
 };
@@ -103,4 +103,4 @@ struct C3DGroup2 {                                       // 16 bytes in retail
     CArray<C3DVertexBlend2>  VertexBlends;               // +0x4
 };
 
-template void _STL::vector<C3DGroup2>::reserve(unsigned int);
+template void std::vector<C3DGroup2>::reserve(unsigned int);

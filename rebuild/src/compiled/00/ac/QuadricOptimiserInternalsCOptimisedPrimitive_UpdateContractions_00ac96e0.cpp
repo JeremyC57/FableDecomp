@@ -61,7 +61,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -243,7 +243,7 @@ public:
     iterator end() { return _M_t.end(); }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 struct C3DVector { float X, Y, Z; };
 
@@ -263,8 +263,8 @@ public:
     T& operator[](unsigned long n) { return _M_start[n]; }
 };
 
-typedef _STL::multimap<float, CCountedPointer<CVertexPairContraction>, _STL::less<float>,
-                       _STL::allocator<_STL::pair<const float, CCountedPointer<CVertexPairContraction> > > > TContractionQueue;
+typedef std::multimap<float, CCountedPointer<CVertexPairContraction>, std::less<float>,
+                       std::allocator<std::pair<const float, CCountedPointer<CVertexPairContraction> > > > TContractionQueue;
 
 class CVertexPairContraction {                          // retail layout (landed PerformContraction 0x00ACD840)
 public:
@@ -284,8 +284,8 @@ public:
     C3DVector     TextureCoord;                         // +0x18
     unsigned char _pad24[0xA8 - 0x24];                  // PositionError +0x28, Cost +0x80, FaceList +0x84, Exists +0x90,
                                                         // UniqueIndex +0x94, OutputIndex +0x98, Groups +0x9C
-    _STL::map<unsigned long, CContractionReference, _STL::less<unsigned long>,
-              _STL::allocator<_STL::pair<const unsigned long, CContractionReference> > > PairContractions;   // +0xA8
+    std::map<unsigned long, CContractionReference, std::less<unsigned long>,
+              std::allocator<std::pair<const unsigned long, CContractionReference> > > PairContractions;   // +0xA8
     unsigned char _padB4[4];
 };
 
@@ -324,8 +324,8 @@ __declspec(noinline) void COptimisedPrimitive::UpdateCost(const CCountedPointer<
 void COptimisedPrimitive::UpdateContractions(const CSubContraction& sub)
 {
     COptimisedVertex& vertex = Vertices[sub.Vertex1];
-    for (_STL::map<unsigned long, CContractionReference, _STL::less<unsigned long>,
-                   _STL::allocator<_STL::pair<const unsigned long, CContractionReference> > >::iterator i =
+    for (std::map<unsigned long, CContractionReference, std::less<unsigned long>,
+                   std::allocator<std::pair<const unsigned long, CContractionReference> > >::iterator i =
              vertex.PairContractions.begin();
          i != vertex.PairContractions.end(); ++i) {
         CContractionReference reference = i->second;

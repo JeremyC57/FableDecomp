@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector>*, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- unguarded linear insertion of every element of [first, last)
+// std::__unguarded_insertion_sort_aux(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector>*, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- unguarded linear insertion of every element of [first, last)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769C70, 64 bytes, `ret 8`.
 // Callers: the landed SGI sort 0x0076C000 (its inlined __final_insertion_sort) and 0x0076B4AC / 0x0076C059.
@@ -11,7 +11,7 @@ struct C3DVector {
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -24,13 +24,13 @@ public:
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, C3DVector> SKeyedVector;                 // 16 bytes
+typedef std::pair<unsigned long, C3DVector> SKeyedVector;                 // 16 bytes
 typedef CKeyPairCompareLess<unsigned long, C3DVector> SKeyedVectorLess;
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00769420

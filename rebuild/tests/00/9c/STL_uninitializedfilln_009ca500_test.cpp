@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__uninitialized_fill_n over {counted pointer, long} records (0x009CA500).
+// Behaviour test for std::__uninitialized_fill_n over {counted pointer, long} records (0x009CA500).
 #include <cstdio>
 #include <new>
 

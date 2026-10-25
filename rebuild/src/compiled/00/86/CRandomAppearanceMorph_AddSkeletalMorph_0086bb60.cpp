@@ -4,7 +4,7 @@
 // ?AddSkeletalMorph@CRandomAppearanceMorph@@QAEXKABVCCharString@@_N@Z.
 // Callees: CDefString::CDefString(const CCharString&) @ 0x009D5060 (catalog "CDefString::SetString"),
 // vector<pair<long, CSkeletalMorph> >::_M_insert_overflow @ 0x0086CC50 (same-TU stand-in below: with only a declaration
-// the pair temporary is not kept in registers), _STL::sort<pair<long, CSkeletalMorph>*, CKeyPairCompareLess<...> >
+// the pair temporary is not kept in registers), std::sort<pair<long, CSkeletalMorph>*, CKeyPairCompareLess<...> >
 // @ 0x0086DD80 (__fastcall first/last, the empty comparator pushed as a zero-extended byte).
 // Layout (retail): CRandomAppearanceMorph {CArray<CArray<CBodyPartMesh> > BodyParts +0x00, CArray<CVectorMap<...> >
 // BodyPartTextureMorphs +0x0C, CVectorMap<long, CSkeletalMorph> SkeletalMorphs +0x18, CVectorMap<unsigned long,
@@ -29,7 +29,7 @@ public:
     CDefString(const CCharString& name);             // 0x009D5060
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: the tag temporary is not zero-stored
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -142,14 +142,14 @@ void __fastcall sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compa
 template <class K, class V> class CKeyPairCompareLess
 {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class K, class V, class C> class CVectorMap
 {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Vector;                 // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Vector;                 // +0x00
     C                        Compare;                // +0x0C
     bool                     Dirty;                  // +0x0D
 
@@ -161,13 +161,13 @@ public:
     void Update()
     {
         if (Dirty) {
-            _STL::sort(Vector.begin(), Vector.end(), Compare);
+            std::sort(Vector.begin(), Vector.end(), Compare);
             Dirty = false;
         }
     }
 };
 
-template <class T> class CArray : public _STL::vector<T> { };
+template <class T> class CArray : public std::vector<T> { };
 
 class CRandomAppearanceMorph
 {

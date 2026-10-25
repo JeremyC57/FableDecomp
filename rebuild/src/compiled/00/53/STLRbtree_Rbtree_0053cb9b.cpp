@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_Rb_tree(const _Rb_tree& x) -- copy constructor of the map<unsigned long, NUISystem::CUIState> red-black tree: allocate the header node, then either mark the tree empty or clone the other tree's nodes and set leftmost/rightmost, finally take the node count
+// std::_Rb_tree::_Rb_tree(const _Rb_tree& x) -- copy constructor of the map<unsigned long, NUISystem::CUIState> red-black tree: allocate the header node, then either mark the tree empty or clone the other tree's nodes and set leftmost/rightmost, finally take the node count
 // Leaf: ??0?$_Rb_tree@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0053CB9B, length 116 bytes, `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (the 0x38-byte header node: 0x10 node base + the 0x28-byte pair<const unsigned long,
@@ -28,7 +28,7 @@ public:
 };
 }
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-namespace _STL {
+namespace std {
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;
@@ -87,5 +87,5 @@ _Rb_tree<K, V, KoV, C, A>::_Rb_tree(const _Rb_tree<K, V, KoV, C, A>& x)
 }
 }
 
-typedef _STL::_Rb_tree<unsigned long, _STL::pair<const unsigned long, NUISystem::CUIState>, _STL::_Select1st<_STL::pair<const unsigned long, NUISystem::CUIState> >, _STL::less<unsigned long>, _STL::allocator<_STL::pair<const unsigned long, NUISystem::CUIState> > > TUIStateTree;
+typedef std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState>, std::_Select1st<std::pair<const unsigned long, NUISystem::CUIState> >, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, NUISystem::CUIState> > > TUIStateTree;
 template TUIStateTree::_Rb_tree(const TUIStateTree& x);

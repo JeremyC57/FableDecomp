@@ -1,4 +1,4 @@
-// behaviour test for 0x00AEC740 _STL::list<CCountedPointer<CParticleEmitter> >::push_front: link a new node holding a counted copy at the front
+// behaviour test for 0x00AEC740 std::list<CCountedPointer<CParticleEmitter> >::push_front: link a new node holding a counted copy at the front
 #include <cstdio>
 #include <cstdlib>
 #include <new>

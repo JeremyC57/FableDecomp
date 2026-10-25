@@ -1,4 +1,4 @@
-// _STL::list<CScriptThing>::_M_create_node(const CScriptThing& x) -- allocate a 0x14-byte list node and copy-construct the script thing into it
+// std::list<CScriptThing>::_M_create_node(const CScriptThing& x) -- allocate a 0x14-byte list node and copy-construct the script thing into it
 // Leaf: ?_M_create_node@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA0200, 36 bytes, `__fastcall`, one stack argument (`ret 4`), returns the node.
 //   Its only caller is list<CScriptThing>::push_back @ 0x00DA01E0 (CQ_MinionCampScript's LeftSpawnPoints +0x90 /
@@ -19,7 +19,7 @@ public:
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
 };
 
-namespace _STL {
+namespace std {
 class __malloc_alloc {                                      // Fable's STLport node allocator: malloc
 public:
     static void* allocate(unsigned int n) { return malloc(n); }
@@ -63,4 +63,4 @@ public:
     }
 };
 template class list<CScriptThing>;
-} // namespace _STL
+} // namespace std

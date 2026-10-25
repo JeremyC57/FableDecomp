@@ -1,10 +1,10 @@
-// _STL::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>::_M_create_node(const value_type&) -- allocate a section-descriptor node and copy-construct its value
+// std::_Rb_tree<unsigned long, pair<const unsigned long, CSectionDesc>>::_M_create_node(const value_type&) -- allocate a section-descriptor node and copy-construct its value
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F0DE0, 76 bytes (80 with padding), `ret 4`. Catalog label "RBTree_CreateNode" is
 //   descriptive; the tree is CCodeSectionManager::SectionDesc (map<unsigned long, CSectionDesc>, 0x24-byte node).
 // Callees: malloc 0x00BFEA0E, CCharString copy ctor 0x0099EC30 (ShortName, LongName).
 // Shape: STLport 4.5 _M_create_node: allocate(1), then the placement-new null test around the implicit pair /
 //   CSectionDesc copy (key dword, two strings, the bool as a byte, Size); no left/right zeroing here (_M_insert does it).
-// Leaf: ?_M_create_node@?$_Rb_tree@KU?$pair@$$CBKUCSectionDesc@@@_STL@@U?$_Select1st@U?$pair@$$CBKUCSectionDesc@@@_STL@@@2@U?$less@K@2@@_STL@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBKUCSectionDesc@@@_STL@@@2@ABU?$pair@$$CBKUCSectionDesc@@@2@@Z
+// Leaf: ?_M_create_node@?$_Rb_tree@KU?$pair@$$CBKUCSectionDesc@@@std@@U?$_Select1st@U?$pair@$$CBKUCSectionDesc@@@std@@@2@U?$less@K@2@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBKUCSectionDesc@@@std@@@2@ABU?$pair@$$CBKUCSectionDesc@@@2@@Z
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
@@ -25,7 +25,7 @@ struct CSectionDesc                                   // CCodeSectionManager::CS
     long        Size;                                 // +0x0c
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair { typedef _T1 first_type; _T1 first; _T2 second; };
 template <class _Tp> struct less { bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; } };
@@ -101,9 +101,9 @@ public:
     iterator _M_insert(_Base_ptr __x_, _Base_ptr __y_, const _Value& __v, _Base_ptr __w_);
 };
 
-} // namespace _STL
+} // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_Link_type
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_create_node(const _Value& __x)
@@ -113,8 +113,8 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_create_node(const _Value& __x)
     return __tmp;
 }
 }
-template _STL::_Rb_tree<unsigned long, _STL::pair<const unsigned long, CSectionDesc>,
-                        _STL::_Select1st<_STL::pair<const unsigned long, CSectionDesc> >, _STL::less<unsigned long> >::_Link_type
-_STL::_Rb_tree<unsigned long, _STL::pair<const unsigned long, CSectionDesc>,
-               _STL::_Select1st<_STL::pair<const unsigned long, CSectionDesc> >, _STL::less<unsigned long> >::_M_create_node(
-    const _STL::pair<const unsigned long, CSectionDesc>&);
+template std::_Rb_tree<unsigned long, std::pair<const unsigned long, CSectionDesc>,
+                        std::_Select1st<std::pair<const unsigned long, CSectionDesc> >, std::less<unsigned long> >::_Link_type
+std::_Rb_tree<unsigned long, std::pair<const unsigned long, CSectionDesc>,
+               std::_Select1st<std::pair<const unsigned long, CSectionDesc> >, std::less<unsigned long> >::_M_create_node(
+    const std::pair<const unsigned long, CSectionDesc>&);

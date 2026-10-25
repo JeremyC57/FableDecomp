@@ -1,6 +1,6 @@
 // 00a4a520 CCombatWheel_Assign
 // Flags: /O2 /Oy /W3 
-// Leaf: ??4?$vector@$$BY02I@_STL@VectorAssignment_00a4a520@@QAEAAU012@ABU012@@Z
+// Leaf: ??4?$vector@$$BY02I@std@VectorAssignment_00a4a520@@QAEAAU012@ABU012@@Z
 #include <stdlib.h>
 namespace VectorAssignment_00a4a520 {
 // Layout: STLport vector receiver stores start,finish,end at+0,+4,+8. Retail stride is 12 bytes; element semantics remain unresolved, so represent only its dwords.
@@ -9,7 +9,7 @@ struct __false_type{__false_type(){}};
 template<class Tag> __declspec(noinline) value_type* __fastcall uninitialized_copy(value_type*a,value_type*b,value_type*c,const Tag&){while(a!=b){for(unsigned i=0;i<sizeof(value_type)/sizeof(unsigned);++i)(*c)[i]=(*a)[i];++a;++c;}return c;}
 template<class Tag> __declspec(noinline) value_type* __fastcall _Copy(value_type*a,value_type*b,value_type*c,const Tag&,unsigned){while(a!=b){for(unsigned i=0;i<sizeof(value_type)/sizeof(unsigned);++i)(*c)[i]=(*a)[i];++a;++c;}return c;}
 void __fastcall _Destroy(value_type*,value_type*);
-namespace _STL {
+namespace std {
 template<class T>struct vector {T*_M_start,*_M_finish,*_M_end_of_storage;void _M_clear();vector&operator=(const vector&);};
 template<class T>vector<T>&vector<T>::operator=(const vector&rhs){
  if(&rhs!=this){T*last=rhs._M_finish;T*first=rhs._M_start;unsigned count=last-first;
@@ -29,10 +29,10 @@ template struct vector<value_type>;
 #include <string.h>
 namespace VectorAssignment_00a4a520 {
 void __fastcall _Destroy(value_type*,value_type*){}
-namespace _STL{template<>void vector<value_type>::_M_clear(){free(_M_start);}}
+namespace std{template<>void vector<value_type>::_M_clear(){free(_M_start);}}
 }
 int main(){using namespace VectorAssignment_00a4a520;
- _STL::vector<value_type>a,b;memset(&a,0,sizeof(a));memset(&b,0,sizeof(b));
+ std::vector<value_type>a,b;memset(&a,0,sizeof(a));memset(&b,0,sizeof(b));
  value_type data[3];for(unsigned i=0;i<3;++i)for(unsigned j=0;j<sizeof(value_type)/sizeof(unsigned);++j)data[i][j]=101*i+j+1;
  b._M_start=data;b._M_finish=data+3;b._M_end_of_storage=data+3;
  assert(&(a=b)==&a);assert(a._M_finish-a._M_start==3&&a._M_end_of_storage-a._M_start==3&&memcmp(a._M_start,data,sizeof(data))==0);

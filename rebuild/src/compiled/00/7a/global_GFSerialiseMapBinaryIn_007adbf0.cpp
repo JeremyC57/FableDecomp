@@ -43,7 +43,7 @@ struct CMemoryDataInputStreamVirtualSlots {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual CCharString ReadString();             // slot 6 (+0x18)
 };
-namespace _STL {
+namespace std {
 template <class First, class Second> struct pair {
     First first;
     Second second;
@@ -51,7 +51,7 @@ template <class First, class Second> struct pair {
     pair(const First& f, const Second& s) : first(f), second(s) { }
 };
 }
-typedef _STL::pair<CCharString, bool> Pair;
+typedef std::pair<CCharString, bool> Pair;
 struct _Rb_tree_node_base { unsigned int State; _Rb_tree_node_base* Parent; _Rb_tree_node_base* Left; _Rb_tree_node_base* Right; };
 struct _Rb_tree_insert_result {
     _Rb_tree_node_base* Position;

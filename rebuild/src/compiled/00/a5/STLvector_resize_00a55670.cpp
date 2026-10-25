@@ -1,4 +1,4 @@
-// _STL::vector::resize(unsigned int new_size, const C3DAnimationSequenceData::C3DVectorWord& x) -- STLport resize of a quantised-position vector: erase the tail past new_size, or fill-insert copies of x at the end
+// std::vector::resize(unsigned int new_size, const C3DAnimationSequenceData::C3DVectorWord& x) -- STLport resize of a quantised-position vector: erase the tail past new_size, or fill-insert copies of x at the end
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A55670, 85 bytes (+ int3 padding), `__fastcall` (this -> esi, start -> edi), `ret 8`.
 // Identity: element is Ego_r.pdb C3DAnimationSequenceData::C3DVectorWord (short X, Y, Z; 6 bytes; the PDB name sets hold
@@ -22,7 +22,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

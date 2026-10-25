@@ -1,4 +1,4 @@
-// _STL::fill(CCountedPointer<C3DGroup2>* first, CCountedPointer<C3DGroup2>* last, const CCountedPointer<C3DGroup2>& value) -- assign one counted pointer to every slot of [first, last), releasing each slot's old reference
+// std::fill(CCountedPointer<C3DGroup2>* first, CCountedPointer<C3DGroup2>* last, const CCountedPointer<C3DGroup2>& value) -- assign one counted pointer to every slot of [first, last), releasing each slot's old reference
 // Leaf: ??$fill@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A96350, 94 bytes, `__fastcall` (first ecx, last edx, value on the stack),
 //   `ret 4`.
@@ -46,7 +46,7 @@ public:
 
 class C3DGroup2;
 
-namespace _STL {
+namespace std {
 
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)

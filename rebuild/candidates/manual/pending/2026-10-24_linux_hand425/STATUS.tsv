@@ -1,11 +1,11 @@
 address	status	bytes	test	note
-00ad4960	RELOCATION_MATCH	92v92	PASS	_STL::sort_heap<COptimisedVertex::CGroup*, __fastcall comparator> (/Gr); 2 grades
+00ad4960	RELOCATION_MATCH	92v92	PASS	std::sort_heap<COptimisedVertex::CGroup*, __fastcall comparator> (/Gr); 2 grades
 00ad4c40	RELOCATION_MATCH	86v86	PASS	QuadricOptimiserInternals::CUniqueVertex::CUniqueVertex() (two inline set ctors); 2 grades
 00ad4ca0	RELOCATION_MATCH	103v103	PASS	_Rb_tree::erase(iterator), multimap<float, CCountedPointer<CVertexPairContraction>>; 1 grade
 00ad54b0	RELOCATION_MATCH	64v64	PASS	_Rb_tree::insert_equal, same multimap (float key); 1 grade
 00ad6420	DIFFER	115v115	-	map<unsigned long,float>::operator[]; lane gap: late zero store after the result push; 4 grades
 00ad64c0	DIFFER	163v158	-	map<unsigned long,CContractionReference>::operator[]; same late-store gap + release form; 3 grades
-00ad6f10	RELOCATION_MATCH	217v217	PASS	_STL::__introsort_loop<CGroup*> (/Gr, function-pointer comparator); 2 grades
+00ad6f10	RELOCATION_MATCH	217v217	PASS	std::__introsort_loop<CGroup*> (/Gr, function-pointer comparator); 2 grades
 00ad71b0	RELOCATION_MATCH	106v106	PASS	COptimisedVertex::Remove() (descriptive; Exists=false + two clear()); 1 grade
 00ad75f0	RELOCATION_MATCH	235v235	PASS	__uninitialized_copy<const COptimisedSubMesh*> (/Gr; bones copy forced out of line by a specialisation decl); 1 grade
 00ad76e0	RELOCATION_MATCH	235v235	PASS	__uninitialized_fill_n<COptimisedSubMesh*> (/Gr); 1 grade

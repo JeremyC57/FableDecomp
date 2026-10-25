@@ -1,4 +1,4 @@
-// Behaviour test for 0x0086FAC0 _STL::__insertion_sort over 12-byte pair<long, {long, long}> records (inlined __linear_insert).
+// Behaviour test for 0x0086FAC0 std::__insertion_sort over 12-byte pair<long, {long, long}> records (inlined __linear_insert).
 #include <cstdio>
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

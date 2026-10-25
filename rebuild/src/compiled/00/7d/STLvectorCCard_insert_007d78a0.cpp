@@ -1,4 +1,4 @@
-// _STL::vector<CCard*>::insert(CCard** position, CCard* const& x) -- STLport single-element insert into a card-pointer vector: append at the end, or shift the tail up one slot (memmove) and store the card; grow through _M_insert_overflow when full; returns the iterator to the inserted card
+// std::vector<CCard*>::insert(CCard** position, CCard* const& x) -- STLport single-element insert into a card-pointer vector: append at the end, or shift the tail up one slot (memmove) and store the card; grow through _M_insert_overflow when full; returns the iterator to the inserted card
 // Leaf: ?insert@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D78A0, 167 bytes (+9 int3), thiscall `ret 8`.
 // Identity: the only caller is CTCTavernGameCardPairs::ShuffleCards (0x007D71E0, call at 0x007D7388); the overflow
@@ -16,7 +16,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 struct CCard;
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__make_heap(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp, pair<unsigned long, CAnimationEntry>*, int*) (retail 0x005E2320)
+// Behaviour test of std::__make_heap(pair<unsigned long, CAnimationEntry>* first, pair<unsigned long, CAnimationEntry>* last, CKeyPairCompareLess<unsigned long, CAnimationEntry> comp, pair<unsigned long, CAnimationEntry>*, int*) (retail 0x005E2320)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

@@ -1,4 +1,4 @@
-// _STL::random_shuffle(KnickKnack* first, KnickKnack* last) -- STLport random shuffle of the spot-the-addition knick-knack records: swap each element with a rand()-chosen element at or before it
+// std::random_shuffle(KnickKnack* first, KnickKnack* last) -- STLport random shuffle of the spot-the-addition knick-knack records: swap each element with a rand()-chosen element at or before it
 // Leaf: ??$random_shuffle@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D9B40, 159 bytes (+1 int3), /Gr __fastcall (first in ecx, last in edx),
 //   plain `ret`.
@@ -26,7 +26,7 @@ struct KnickKnack {                                     // 16 bytes
     CThingObject* Thing;                                // +0x0c
 };
 
-namespace _STL {
+namespace std {
 template <class _Distance> inline _Distance __random_number(_Distance __n) { return rand() % __n; }
 
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>

@@ -32,7 +32,7 @@ public:
     operator bool() const { return Data != 0; }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -95,7 +95,7 @@ class C3DAnimationInfo {
 public:
     class CAnimationData {
     public:
-        typedef _STL::map<unsigned long, CCountedPointer<C3DAnimation2> > CAnimationMap;
+        typedef std::map<unsigned long, CCountedPointer<C3DAnimation2> > CAnimationMap;
         unsigned char       _base[0x1C];                // CIVCountedPointeeBase + loader state
         CAnimationMap       Animations;                 // +0x1C
         CCountedPointer<C3DAnimation2>      SharedAnimation;   // +0x28

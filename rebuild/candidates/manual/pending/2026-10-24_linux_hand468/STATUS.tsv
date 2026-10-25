@@ -21,7 +21,7 @@ address	status	bytes	test	note
 004fda60	RELOCATION_MATCH	65v65	PASS	SaveToFile slot 4; CCharString local; grades 1
 004ff440	RELOCATION_MATCH	75v75	PASS	PostLoadTopology slot 7; *(begin()+n) operator[] fixes SIB order; grades 2
 004ff8b0	RELOCATION_MATCH	71v71	PASS	RemoveLevel slot 5; record reference first, Used=false last; grades 1
-00507610	RELOCATION_MATCH	54v54	PASS	DeleteAllRegions slot 2; _STL::vector<CRegion> clear()+resize(1); grades 1
+00507610	RELOCATION_MATCH	54v54	PASS	DeleteAllRegions slot 2; std::vector<CRegion> clear()+resize(1); grades 1
 0051ce60	MATCH	45v45	PASS	DrawConvertWorldMapCoordsToLocalCoords (CIDrawWorldMap slot 6); grades 1
 0063a910	RELOCATION_MATCH	96v96	PASS	SetGroundSizeZAtBlock; grades 1
 0063ae70	RELOCATION_MATCH	95v95	PASS	GetStrongestEngineThemeAtBlock; grades 1

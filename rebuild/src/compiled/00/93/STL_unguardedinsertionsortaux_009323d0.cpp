@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(CThing** first, CThing** last, CThing**, bool (__fastcall* comp)(CThing*, CThing*)) -- STLport final unguarded insertion pass of the minion guard's criminal sort: insert each thing pointer into the sorted run before it
+// std::__unguarded_insertion_sort_aux(CThing** first, CThing** last, CThing**, bool (__fastcall* comp)(CThing*, CThing*)) -- STLport final unguarded insertion pass of the minion guard's criminal sort: insert each thing pointer into the sorted run before it
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009323D0, 80 bytes, /Gr `__fastcall` (first in ecx -> ebp, last in edx spilled to
 //   the `push ecx` frame word; the value-type tag pointer and the comparator function pointer on the stack, `ret 8`).
@@ -13,7 +13,7 @@
 class CThing;
 typedef bool (__fastcall* ThingCompare)(CThing* a, CThing* b);   // e.g. the height compare 0x00930D90
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

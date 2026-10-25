@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(pair<pair<CCharString, CCharString>, long>* first, pair<pair<CCharString, CCharString>, long>* last, CKeyPairCompareLess<pair<CCharString, CCharString>, long> comp) -- insertion sort of [first, last): every element after the first, copied by value, goes through the guarded linear insert
+// std::__insertion_sort(pair<pair<CCharString, CCharString>, long>* first, pair<pair<CCharString, CCharString>, long>* last, CKeyPairCompareLess<pair<CCharString, CCharString>, long> comp) -- insertion sort of [first, last): every element after the first, copied by value, goes through the guarded linear insert
 // Leaf: ??$__insertion_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A415D0, 78 bytes, __fastcall (first ecx, last edx; the empty comparator on the stack,
 //   `ret 4`).
@@ -19,7 +19,7 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -30,14 +30,14 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-typedef _STL::pair<CCharString, CCharString> CStringPairKey;
-typedef _STL::pair<CStringPairKey, long> CStringPairEntry;                      // 12 bytes
+typedef std::pair<CCharString, CCharString> CStringPairKey;
+typedef std::pair<CStringPairKey, long> CStringPairEntry;                      // 12 bytes
 typedef CKeyPairCompareLess<CStringPairKey, long> CStringPairEntryLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00A40F50
 

@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* first, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* last, CParticleUpdateCCompareParamDesc<unsigned long> comp, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >*, int*) -- heapify [first, last) of particle-update descriptors, last parent first
+// std::__make_heap(pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* first, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* last, CParticleUpdateCCompareParamDesc<unsigned long> comp, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >*, int*) -- heapify [first, last) of particle-update descriptors, last parent first
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076ABE0, 97 bytes, `ret 0Ch`.
 // Callers: 0x0076AFA9 (sort_heap/partial-sort path 0x0076AF10) and 0x0076BBD4 (__partial_sort 0x0076BBC0).
@@ -27,7 +27,7 @@ public:
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -39,7 +39,7 @@ public:
 
 }
 
-typedef _STL::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> > SKeyedDesc;   // 16 bytes
+typedef std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> > SKeyedDesc;   // 16 bytes
 
 namespace NParticleEngine {
 
@@ -51,7 +51,7 @@ template <class K> struct CParticleUpdateCCompareParamDesc {
 
 typedef NParticleEngine::CParticleUpdateCCompareParamDesc<unsigned long> SKeyedDescLess;
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x0076A4E0

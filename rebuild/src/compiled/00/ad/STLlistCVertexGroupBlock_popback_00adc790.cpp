@@ -1,4 +1,4 @@
-// _STL::list<CVertexGroupBlock>::pop_back() -- unlink and destroy the last vertex-group block of the list and free its node
+// std::list<CVertexGroupBlock>::pop_back() -- unlink and destroy the last vertex-group block of the list and free its node
 // Leaf: ?pop_back@?$list@VCVertexGroupBlock@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ADC790, 35 bytes, `__fastcall`, plain `ret`.
 // Identity: the element destructor called on node+8 is CVertexGroupBlock::~CVertexGroupBlock @ 0x00A96DA0 (landed
@@ -16,7 +16,7 @@ public:
     ~CVertexGroupBlock();                                // 0x00A96DA0
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { free(__p); }   // malloc-backed node allocator: no null test
@@ -94,4 +94,4 @@ public:
 };
 }
 
-template void _STL::list<CVertexGroupBlock>::pop_back();
+template void std::list<CVertexGroupBlock>::pop_back();

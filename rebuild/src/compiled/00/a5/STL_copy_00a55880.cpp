@@ -1,4 +1,4 @@
-// _STL::__copy(_Rb_tree_iterator first, _Rb_tree_iterator last, back_insert_iterator result, const input_iterator_tag&, int*) -- STLport input-iterator copy of a map<CCharString, int> into a vector<pair<CCharString, int> > through a back inserter: each node's pair is converted to a temporary pair<CCharString, int> and pushed back; returns the inserter
+// std::__copy(_Rb_tree_iterator first, _Rb_tree_iterator last, back_insert_iterator result, const input_iterator_tag&, int*) -- STLport input-iterator copy of a map<CCharString, int> into a vector<pair<CCharString, int> > through a back inserter: each node's pair is converted to a temporary pair<CCharString, int> and pushed back; returns the inserter
 // Leaf: ??$__copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A55880, 220 bytes, `ret 10h`, `and esp,-8` frame: __fastcall
 //   returning the 4-byte back_insert_iterator through the hidden pointer in ecx, the tag reference in edx (unused), and
@@ -22,7 +22,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() { } };
 struct __false_type { __false_type() { } };
@@ -132,4 +132,4 @@ typedef back_insert_iterator<vector<pair<CCharString, int> > > _Inserter;
 
 template _Inserter __fastcall __copy<_MapIter, _Inserter, int>(_MapIter, _MapIter, _Inserter, const input_iterator_tag&,
                                                               int*);
-}   // namespace _STL
+}   // namespace std

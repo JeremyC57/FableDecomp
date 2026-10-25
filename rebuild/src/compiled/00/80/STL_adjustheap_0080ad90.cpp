@@ -1,4 +1,4 @@
-// _STL::__adjust_heap(NPlayerTargeting::CTargetPoint* first, int holeIndex, int len, NPlayerTargeting::CTargetPoint val, CThingCompare_BestForTargeting2 comp) -- STLport heap sift-down of the targeting candidates: walk the hole to a leaf along the child the targeting predicate ranks higher, then __push_heap val back up
+// std::__adjust_heap(NPlayerTargeting::CTargetPoint* first, int holeIndex, int len, NPlayerTargeting::CTargetPoint val, CThingCompare_BestForTargeting2 comp) -- STLport heap sift-down of the targeting candidates: walk the hole to a leaf along the child the targeting predicate ranks higher, then __push_heap val back up
 // Leaf: ??$__adjust_heap@PAVCTargetPoint@NPlayerTargeting@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080AD90, 429 bytes (+ int3 padding), `ret 54h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 0x1C-byte CTargetPoint and the 0x34-byte comparator by value on the stack).
@@ -87,7 +87,7 @@ __declspec(noinline) bool CThingCompare_BestForTargeting2::operator()(const CTar
 }
 #pragma auto_inline(on)
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp);   // 0x0080A480
 

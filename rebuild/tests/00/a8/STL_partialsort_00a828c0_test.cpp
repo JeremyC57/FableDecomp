@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A828C0 _STL::__partial_sort over (unsigned __int64 key, value) entries: [first, middle) ends up
+// Behaviour test for 0x00A828C0 std::__partial_sort over (unsigned __int64 key, value) entries: [first, middle) ends up
 // holding the smallest 64-bit keys in ascending order, every later key is >= them, and the keys are a permutation.
 #include <cstdio>
 struct SEntry { unsigned long long first; bool second; };

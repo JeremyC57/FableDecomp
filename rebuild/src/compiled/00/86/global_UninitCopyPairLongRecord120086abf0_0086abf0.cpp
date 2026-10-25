@@ -21,7 +21,7 @@ struct SRecord12_0086abf0 {                     // 12-byte trivially copyable va
     long m_0, m_4, m_8;
 };
 
-struct SPairLongRecord12_0086abf0 {             // _STL::pair<long, SRecord12>, 16 bytes
+struct SPairLongRecord12_0086abf0 {             // std::pair<long, SRecord12>, 16 bytes
     long               first;                   // +0x00
     SRecord12_0086abf0 second;                  // +0x04
     SPairLongRecord12_0086abf0(const SPairLongRecord12_0086abf0& o) : first(o.first), second(o.second) { }

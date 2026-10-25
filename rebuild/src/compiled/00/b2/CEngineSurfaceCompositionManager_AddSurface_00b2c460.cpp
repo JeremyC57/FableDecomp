@@ -38,7 +38,7 @@ public:
     void Reset(T* p);                                       // 0x00B2E290 (out of line)
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0
@@ -78,7 +78,7 @@ public:
     _List_node_base* _M_node;                               // +0
 };
 
-} // namespace _STL
+} // namespace std
 
 class CResource;
 class CResourceBank {
@@ -101,7 +101,7 @@ public:
 };
 
 struct CEngineSurfaceCompositionManager_Methods : CEngineSurfaceCompositionManager {
-    typedef _STL::list<CCountedPointer<CCompositeSurfaceCache> > CSurfaceList;
+    typedef std::list<CCountedPointer<CCompositeSurfaceCache> > CSurfaceList;
     CSurfaceList& Surfaces() { return *(CSurfaceList*)CachedSurfaces; }     // +0x88
     CResourceBank& Bank() { return *(CResourceBank*)this; }                // the CResourceBank base at offset 0
     void AddSurface(CCompositeSurfaceInfo& info);

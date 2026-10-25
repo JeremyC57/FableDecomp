@@ -1,4 +1,4 @@
-// Behaviour test for 0x00568440 _STL::basic_string<char>::basic_string(const char*, const allocator&): start
+// Behaviour test for 0x00568440 std::basic_string<char>::basic_string(const char*, const allocator&): start
 // empty (null start/finish/end of storage), then range-initialise from [s, s + strlen(s))
 #include <stdio.h>
 #include <string.h>
@@ -6,7 +6,7 @@ static const char* gFirst = 0;
 static const char* gLast = 0;
 static int gInitCalls = 0;
 static bool gEmptyAtInit = false;
-namespace _STL {
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 template <class _CharT> struct char_traits {
@@ -53,10 +53,10 @@ static const char gEmpty[] = "";
 int main()
 {
     bool ok = true;
-    _STL::basic_string<char> s(gText);
+    std::basic_string<char> s(gText);
     ok = ok && gInitCalls == 1 && gFirst == gText && gLast == gText + 16 && gEmptyAtInit;
-    _STL::allocator<char> a;
-    _STL::basic_string<char> e(gEmpty, a);
+    std::allocator<char> a;
+    std::basic_string<char> e(gEmpty, a);
     ok = ok && gInitCalls == 2 && gFirst == gEmpty && gLast == gEmpty && gEmptyAtInit;
     if (ok) { printf("00568440_TEST PASS\n"); return 0; }
     printf("00568440_TEST FAIL\n");

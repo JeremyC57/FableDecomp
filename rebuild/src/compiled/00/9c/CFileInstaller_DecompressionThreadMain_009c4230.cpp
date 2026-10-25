@@ -32,7 +32,7 @@ private:
     unsigned char _body[0x58];
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -53,8 +53,8 @@ public:
     public:
         unsigned char             _pad00[0x38];
         CCompressorZlib           Decompressor;           // +0x38
-        _STL::list<void*>         PendingWrites;          // +0x90
-        _STL::list<CActiveRead*>  PendingDecompression;   // +0x94
+        std::list<void*>         PendingWrites;          // +0x90
+        std::list<CActiveRead*>  PendingDecompression;   // +0x94
     };
 protected:
     void ProcessActiveFileForDecompression(CActiveFile& file);   // 0x009C3C20

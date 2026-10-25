@@ -5,7 +5,7 @@
 // Callees: malloc @ 0x00BFEA0E (allocator::allocate), memmove @ 0x00BFEAE6 (__copy_trivial),
 // _String_base::_M_throw_length_error() const @ 0x00565A30 (landed BasicStringRaise: puts("basic_string") + abort with
 // exceptions off; called as a member, `mov ecx,edi`, noreturn: nothing follows the call).
-// Identity: the narrow sibling of the landed _STL::basic_string<unsigned short>::_M_range_initialize 0x0099C670 (same
+// Identity: the narrow sibling of the landed std::basic_string<unsigned short>::_M_range_initialize 0x0099C670 (same
 // STLport 4.x body with 1-byte elements: no `sar`, max_size 0xFFFFFFFE, 8-bit NUL). The 33 callers are the networking
 // module's std::string users (Ego_r.pdb types them basic_string<char, char_traits<char>, allocator<char> >, e.g.
 // ?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z) and the landed

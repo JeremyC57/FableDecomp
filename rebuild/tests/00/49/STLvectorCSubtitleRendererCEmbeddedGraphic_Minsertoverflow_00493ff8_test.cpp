@@ -1,4 +1,4 @@
-// Behaviour test for 0x00493FF8 _STL::vector<CSubtitleRenderer::CEmbeddedGraphic>::_M_insert_overflow: grow to
+// Behaviour test for 0x00493FF8 std::vector<CSubtitleRenderer::CEmbeddedGraphic>::_M_insert_overflow: grow to
 // old_size + max(old_size, n), copy the head, construct n copies of x, copy the tail unless appending, free the old block.
 #include <stdio.h>
 #ifndef _MSC_VER
@@ -28,7 +28,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -123,14 +123,14 @@ static CSubtitleRenderer::CEmbeddedGraphic* MakeOne(long g)
 int main()
 {
     typedef CSubtitleRenderer::CEmbeddedGraphic G;
-    _STL::vector<G> v; v._M_start = v._M_finish = v._M_end_of_storage._M_data = 0;
+    std::vector<G> v; v._M_start = v._M_finish = v._M_end_of_storage._M_data = 0;
     int ok = 1;
     G* x1 = MakeOne(1); G* x2 = MakeOne(2); G* x5 = MakeOne(5);
-    v._M_insert_overflow(v._M_finish, *x1, _STL::__false_type(), 1, true);     // push_back into an empty vector
+    v._M_insert_overflow(v._M_finish, *x1, std::__false_type(), 1, true);     // push_back into an empty vector
     if (v.size() != 1 || v._M_end_of_storage._M_data - v._M_start != 1 || v._M_start[0].Graphic != 1) ok = 0;
-    v._M_insert_overflow(v._M_finish, *x2, _STL::__false_type(), 1, true);
+    v._M_insert_overflow(v._M_finish, *x2, std::__false_type(), 1, true);
     if (v.size() != 2 || v._M_end_of_storage._M_data - v._M_start != 2 || v._M_start[1].Graphic != 2) ok = 0;
-    v._M_insert_overflow(v._M_start + 1, *x5, _STL::__false_type(), 3, false);  // 1 5 5 5 2, capacity 2 + 3
+    v._M_insert_overflow(v._M_start + 1, *x5, std::__false_type(), 3, false);  // 1 5 5 5 2, capacity 2 + 3
     long want[5] = { 1, 5, 5, 5, 2 };
     if (v.size() != 5 || v._M_end_of_storage._M_data - v._M_start != 5) ok = 0;
     for (int i = 0; i < 5 && ok; ++i)

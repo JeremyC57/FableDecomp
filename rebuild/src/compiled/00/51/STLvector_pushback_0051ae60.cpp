@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const CLevelFiles& x) -- append a 28-byte level-file record (three counted file pointers) or grow through _M_insert_overflow
+// std::vector::push_back(const CLevelFiles& x) -- append a 28-byte level-file record (three counted file pointers) or grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@VCLevelFiles@CObject@CLevelLoader@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051AE60, 106 bytes, thiscall, `ret 4`.
 // Identity: vector<CLevelLoader::CObject::CLevelFiles> (FableWin.pdb has ?push_back@?$vector@VCLevelFiles@CObject@
@@ -42,7 +42,7 @@ public:
         };
     };
 };
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2>

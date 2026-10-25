@@ -21,7 +21,7 @@ struct CNavSwitchableLeafNode_Calls : CNavSwitchableLeafNode {
     void SetAsBlocked(unsigned __int64 uniqueID, bool blocked);  // 0x00A78800
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -32,13 +32,13 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& entry, const K& key) const { return entry.first < key; }
-    bool operator()(const K& key, const _STL::pair<K, V>& entry) const { return key < entry.first; }
+    bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
+    bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type* iterator;
     value_type* First;                                      // +0x00
     value_type* Last;                                       // +0x04
@@ -98,7 +98,7 @@ __declspec(noinline) typename CVectorMap<K, V, C>::iterator CVectorMap<K, V, C>:
 
 void CNavQuadTree::SetSwitchableNodesAsBlocked(unsigned __int64 uniqueID, bool blocked)
 {
-    _STL::pair<unsigned __int64, CANavQuadTreeNode*>* last = SwitchableNodes.UpperBound(uniqueID);
-    for (_STL::pair<unsigned __int64, CANavQuadTreeNode*>* it = SwitchableNodes.LowerBound(uniqueID); it != last; ++it)
+    std::pair<unsigned __int64, CANavQuadTreeNode*>* last = SwitchableNodes.UpperBound(uniqueID);
+    for (std::pair<unsigned __int64, CANavQuadTreeNode*>* it = SwitchableNodes.LowerBound(uniqueID); it != last; ++it)
         reinterpret_cast<CNavSwitchableLeafNode_Calls*>(it->second)->SetAsBlocked(uniqueID, blocked);
 }

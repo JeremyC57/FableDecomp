@@ -1,5 +1,5 @@
-// _STL::__insertion_sort(CDecalEntry* first, CDecalEntry* last, CDecalEntryLess comp) -- insertion sort of the ((long, long), CEngineTextureDecal) entries: linear insert of each entry after the first
-// Leaf: ??$__insertion_sort@PAU?$pair@U?$pair@JJ@_STL@@VCEngineTextureDecal@@@_STL@@
+// std::__insertion_sort(CDecalEntry* first, CDecalEntry* last, CDecalEntryLess comp) -- insertion sort of the ((long, long), CEngineTextureDecal) entries: linear insert of each entry after the first
+// Leaf: ??$__insertion_sort@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEF640, 181 bytes, `ret 4` (the empty comparator).
 // Callees: malloc @ 0x00BFEA0E and the blend descriptors' __uninitialized_copy @ 0x005BAF28 (the inline vector copy
@@ -28,7 +28,7 @@ public:
     CCompositeBlendDesc(const CCompositeBlendDesc& other);   // 0x005BA48A
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -95,29 +95,29 @@ public:
     ~vector() { }
     vector& operator=(const vector& x);             // 0x006CADE0
 };
-}   // namespace _STL
+}   // namespace std
 
 // Ego_r.pdb CEngineTextureDecal (20 bytes in retail: the STLport vector is 12).
 class CEngineTextureDecal {
 public:
     long OriginalTextureIndex;                      // +0x00
     long DecalID;                                   // +0x04
-    _STL::vector<CCompositeBlendDesc, _STL::allocator<CCompositeBlendDesc> > OverlaidBlends;   // +0x08
+    std::vector<CCompositeBlendDesc, std::allocator<CCompositeBlendDesc> > OverlaidBlends;   // +0x08
 };
 
-typedef _STL::pair<long, long> CDecalKey;
-typedef _STL::pair<CDecalKey, CEngineTextureDecal> CDecalEntry;   // 0x1c bytes
+typedef std::pair<long, long> CDecalKey;
+typedef std::pair<CDecalKey, CEngineTextureDecal> CDecalEntry;   // 0x1c bytes
 
 // The vector map's key order (an empty functor passed by value): the lexicographic pair<long, long> compare.
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 typedef CKeyPairCompareLess<CDecalKey, CEngineTextureDecal> CDecalEntryLess;
 
-namespace _STL {
+namespace std {
 template <class RandomAccessIter, class T, class Compare>
 void __linear_insert(RandomAccessIter first, RandomAccessIter last, T val, Compare comp);   // 0x00BEF2B0
 
@@ -128,6 +128,6 @@ void __insertion_sort(RandomAccessIter first, RandomAccessIter last, Compare com
     for (RandomAccessIter i = first + 1; i != last; ++i)
         __linear_insert(first, i, CDecalEntry(*i), comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::__insertion_sort(CDecalEntry*, CDecalEntry*, CDecalEntryLess);
+template void std::__insertion_sort(CDecalEntry*, CDecalEntry*, CDecalEntryLess);

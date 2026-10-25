@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A61360 _STL::_Rb_tree<CWideString, pair<const CWideString, CEntry>, ...>::insert_unique(const value_type&)
+// Behaviour test for 0x00A61360 std::_Rb_tree<CWideString, pair<const CWideString, CEntry>, ...>::insert_unique(const value_type&)
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class T1, class T2> class pair {
 public:
     typedef T1 first_type;
@@ -165,11 +165,11 @@ public:
         return pair<iterator, bool>(j, false);
     }
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const CWideString, CChecksumCacheFile::CEntry> CValue;
-typedef _STL::_Rb_tree<CWideString, CValue, _STL::_Select1st<CValue>, _STL::less<CWideString> > CTree;
-typedef _STL::_Rb_tree_node_base CBase;
+typedef std::pair<const CWideString, CChecksumCacheFile::CEntry> CValue;
+typedef std::_Rb_tree<CWideString, CValue, std::_Select1st<CValue>, std::less<CWideString> > CTree;
+typedef std::_Rb_tree_node_base CBase;
 
 static const wchar_t* KeyOf(CBase* n) { return ((CTree::_Node*)n)->_M_value_field.first.PStringData; }
 static bool Same(const wchar_t* a, const wchar_t* b) { while (*a != 0 && *a == *b) { ++a; ++b; } return *a == *b; }
@@ -202,7 +202,7 @@ int main()
     CBase* firstC = 0;
     bool ok = true;
     for (int i = 0; i < 6; ++i) {
-        _STL::pair<CTree::iterator, bool> r = t.insert_unique(Val(order[i], (unsigned long)i));
+        std::pair<CTree::iterator, bool> r = t.insert_unique(Val(order[i], (unsigned long)i));
         ok = ok && r.second == fresh[i] && Same(KeyOf(r.first._M_node), order[i]);
         if (i == 1) firstC = r.first._M_node;
         if (i == 3) ok = ok && r.first._M_node == firstC;           // the duplicate returns the existing node

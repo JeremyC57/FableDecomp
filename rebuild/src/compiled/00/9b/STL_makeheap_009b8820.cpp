@@ -1,6 +1,6 @@
-// _STL::__make_heap(pair<unsigned long,CDefClassInfo>* first, pair<unsigned long,CDefClassInfo>* last, CKeyPairCompareLess<unsigned long,CDefClassInfo> comp, pair<unsigned long,CDefClassInfo>*, int*) -- STLport heapify of (index, class info) pairs: sift every parent from (len - 2) / 2 down to the root with __adjust_heap
+// std::__make_heap(pair<unsigned long,CDefClassInfo>* first, pair<unsigned long,CDefClassInfo>* last, CKeyPairCompareLess<unsigned long,CDefClassInfo> comp, pair<unsigned long,CDefClassInfo>*, int*) -- STLport heapify of (index, class info) pairs: sift every parent from (len - 2) / 2 down to the root with __adjust_heap
 // Flags: /Gr
-// Leaf: ??$__make_heap@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@_STL@@
+// Leaf: ??$__make_heap@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B8820, 218 bytes, `ret 0Ch` (/Gr TU: first in ecx, last in edx; the
 //   empty comparator, the unused T* and distance* on the stack).
 // Identity: the 24-byte pair<unsigned long, CDefClassInfo> of 0x009B7320 (len = bytes / 24 via 0x2AAAAAAB); callers
@@ -22,7 +22,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
@@ -82,7 +82,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -95,14 +95,14 @@ public:
         CArray<unsigned long>  GlobalIndices;           // +0x08
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const;
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x009B8220
 

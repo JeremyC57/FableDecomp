@@ -11,7 +11,7 @@
 //   the landed CShaderDataBank::CloseShaders 0x00A62050 erase(begin(), end()).
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* block);                          // 0x00BFEA14
-namespace _STL { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
+namespace std { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
 template <class T> struct CArray {                  // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
@@ -38,9 +38,9 @@ template <class T> struct CArray {                  // retail CArray (STLport ve
     ~CArray() { if (m_first) free(m_first); }
     void swap(CArray& other)
     {
-        _STL::swap(m_first, other.m_first);
-        _STL::swap(m_last, other.m_last);
-        _STL::swap(m_end, other.m_end);
+        std::swap(m_first, other.m_first);
+        std::swap(m_last, other.m_last);
+        std::swap(m_end, other.m_end);
     }
     void ClearAndFree()                             // clear, then swap with an empty temporary whose dtor frees the block
     {

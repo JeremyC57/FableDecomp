@@ -1,4 +1,4 @@
-// _STL::__copy(_Deque_iterator<CCrimeWaitingForBribe> first, _Deque_iterator<CCrimeWaitingForBribe> last, back_insert_iterator<vector<CCrimeWaitingForBribe> > result, const random_access_iterator_tag&, int*) -- STLport random-access copy of a deque range into a vector through a back inserter: n = last - first push_backs walking the deque nodes, returns the inserter
+// std::__copy(_Deque_iterator<CCrimeWaitingForBribe> first, _Deque_iterator<CCrimeWaitingForBribe> last, back_insert_iterator<vector<CCrimeWaitingForBribe> > result, const random_access_iterator_tag&, int*) -- STLport random-access copy of a deque range into a vector through a back inserter: n = last - first push_backs walking the deque nodes, returns the inserter
 // Leaf: ??$__copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B5030, 170 bytes (+2 int3), `ret 28h`: /Gr __fastcall returning the 4-byte
 //   back_insert_iterator through the hidden pointer in ecx; the tag reference is the first register-eligible argument
@@ -24,7 +24,7 @@ public:
     long Type;                                              // +0x04 EOpinionDeedType
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

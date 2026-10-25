@@ -47,7 +47,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -141,9 +141,9 @@ public:
     list& operator=(const list& x);
 };
 
-} // namespace _STL
+} // namespace std
 
-namespace _STL {
+namespace std {
 template <class T> list<T>& list<T>::operator=(const list<T>& x)
 {
     if (this != &x) {
@@ -160,6 +160,6 @@ template <class T> list<T>& list<T>::operator=(const list<T>& x)
     }
     return *this;
 }
-} // namespace _STL
+} // namespace std
 
-template class _STL::list<CQuestManager::CBoast>;
+template class std::list<CQuestManager::CBoast>;

@@ -22,7 +22,7 @@ public:
     CEnvironmentThemeDef& operator=(const CEnvironmentThemeDef& other);   // 0x00473046
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -106,4 +106,4 @@ public:
 
 template vector<CEnvironmentThemeDef>::iterator vector<CEnvironmentThemeDef>::erase(iterator, iterator);
 
-} // namespace _STL
+} // namespace std

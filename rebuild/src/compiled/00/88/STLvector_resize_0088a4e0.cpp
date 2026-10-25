@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the environment theme priority-stack entries
-// Leaf: ?resize@?$vector@VCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@V?$allocator@VCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the environment theme priority-stack entries
+// Leaf: ?resize@?$vector@VCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@V?$allocator@VCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0088A4E0, 53 bytes, thiscall, `ret 4`.
 // Identity: vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry>: the callee 0x0088A390 is the two-argument
 //   resize over the 48-byte entry (divide 0x2AAAAAAB, `sar edx,3`; landed same-TU relatives 0x00889300 / 0x008895F0 use
@@ -16,7 +16,7 @@
 //   real STLport destructor chain makes VC7.1 emit the `if (_M_start) deallocate` tail (also with same-TU stand-in
 //   bodies and under /GL), so the Themes vector is modelled with its constructor only; the empty default entry owns no
 //   storage, so nothing is leaked.
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -56,7 +56,7 @@ public:
     };
     float BaseWeight;                           // +0x00
     bool BaseWeightLocked;                      // +0x04
-    _STL::vector<CThemeWeight> Themes;          // +0x08  CArray<CThemeWeight>
+    std::vector<CThemeWeight> Themes;          // +0x08  CArray<CThemeWeight>
     long ThemeTransitionTargetID;               // +0x14
     float ThemeTransitionInitialWeight;         // +0x18
     bool ThemeTransitionActive;                 // +0x1C
@@ -66,6 +66,6 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template void vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry>::resize(size_type);
 }

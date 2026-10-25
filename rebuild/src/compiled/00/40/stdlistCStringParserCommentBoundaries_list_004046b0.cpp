@@ -16,7 +16,7 @@ struct CStringParserCommentBoundaries {
     long End;                                           // +0x04 comment end offset
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;

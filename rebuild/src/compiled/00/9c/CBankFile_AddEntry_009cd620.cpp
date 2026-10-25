@@ -59,7 +59,7 @@ struct CCountedPointer
     }
 };
 
-namespace _STL
+namespace std
 {
     struct __true_type { __true_type() { } };
     struct __false_type { __false_type() { } };
@@ -145,10 +145,10 @@ namespace _STL
 }
 
 template <class T>
-class CArray : public _STL::vector<T>                  // retail 12 bytes
+class CArray : public std::vector<T>                  // retail 12 bytes
 {
 public:
-    explicit CArray(unsigned long n) : _STL::vector<T>(n) { }
+    explicit CArray(unsigned long n) : std::vector<T>(n) { }
 };
 
 class CBankStateBlock;

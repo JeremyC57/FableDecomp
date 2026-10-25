@@ -81,7 +81,7 @@ struct CPersistInfo {                      // NScript::CRuntimeScriptedEntityPer
     u64         UID;
     CCharString PersistScript;
 };
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _T1, class _T2> struct pair {
@@ -91,19 +91,19 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
-typedef _STL::pair<CCharString, CScriptInfo> CScriptInfoPair;
+typedef std::pair<CCharString, CScriptInfo> CScriptInfoPair;
 typedef CKeyPairCompareLess<CCharString, CScriptInfo> CScriptInfoLess;
-typedef _STL::pair<u64, CPersistInfo> CPersistPair;
+typedef std::pair<u64, CPersistInfo> CPersistPair;
 typedef CKeyPairCompareLess<u64, CPersistInfo> CPersistLess;
-typedef _STL::pair<u64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;
+typedef std::pair<u64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;
 typedef CKeyPairCompareLess<u64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptLess;
-typedef _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;
+typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;
 
 static CPersistPair MakePersist(u64 uid, const char* script)
@@ -159,7 +159,7 @@ static bool CountsAre(int n, long count)
             return false;
     return g_deletes == 0;
 }
-namespace _STL {
+namespace std {
 template <class _Tp> void swap(_Tp& __a, _Tp& __b);
 template <class _ForwardIter1, class _ForwardIter2> void iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2);
 template <class _Tp, class _Compare> const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp);
@@ -268,7 +268,7 @@ template <class _RandomAccessIterator, class _Compare> void sort_heap(_RandomAcc
 }
 }
 // ---- the function under test, copied from src/00cb92c0.cpp (calling convention dropped) ----
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
@@ -329,11 +329,11 @@ int main()
     CPersistPair a[5];
     a[0] = MakePersist(1, "a"); a[1] = MakePersist(3, "c"); a[2] = MakePersist(5, "e"); a[3] = MakePersist(7, "g");
     a[4] = MakePersist(4, "d");
-    _STL::__unguarded_linear_insert(a + 4, a[4], CPersistLess());
+    std::__unguarded_linear_insert(a + 4, a[4], CPersistLess());
     if (!SortedB(a, 5) || a[2].first != 4 || std::strcmp(a[2].second.PersistScript.m_pText, "d") != 0) return Fail();
     CPersistPair b[3];
     b[0] = MakePersist(1, "a"); b[1] = MakePersist(2, "b"); b[2] = MakePersist(9, "z");
-    _STL::__unguarded_linear_insert(b + 2, b[2], CPersistLess());   // already in place
+    std::__unguarded_linear_insert(b + 2, b[2], CPersistLess());   // already in place
     if (b[2].first != 9 || b[1].first != 2) return Fail();
     std::printf("00cb92c0_TEST PASS\n");
     return 0;

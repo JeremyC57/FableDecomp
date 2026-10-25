@@ -12,7 +12,7 @@ static int nearf(float a, float b) { float d = a - b; return d < 0.0001f && d > 
 class C2DVector { public: float X, Y; };
 class C2DLineF { public: C2DVector Point1; C2DVector Point2; };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -87,7 +87,7 @@ int main()
 {
     int ok = 1;
     if (sizeof(void*) == 4u && sizeof(C2DLineF) != 16u) ok = 0;
-    _STL::vector<C2DLineF> v;
+    std::vector<C2DLineF> v;
     v.reserve(0);
     if (v._M_start != 0 || v.capacity() != 0 || g_allocs != 0) ok = 0;
     v.reserve(2);

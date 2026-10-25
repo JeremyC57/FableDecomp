@@ -3,7 +3,7 @@
 12 MATCH and 24 RELOCATION_MATCH by gall.sh. All 36 tests print `<addr>_TEST PASS` under g++ (tall.sh) and VC7.1 (tall.py).
 Every source has a `// Leaf:` line, and each one names exactly one symbol in its object (checked with `objdump -t`).
 crawl/purity.py classifies all src/, test/ and differ/ files as `genuine`. No source has a `// Flags:` line.
-STLport is modelled in namespace `_STL`. Retail's RTTI strings spell it `std`, but the bytes come out the same; see LESSONS.md.
+STLport is modelled in namespace `std`. Retail's RTTI strings spell it `std`, but the bytes come out the same; see LESSONS.md.
 
 ## What matched (36)
 - **CEnginePrimitiveRenderer**
@@ -17,7 +17,7 @@ STLport is modelled in namespace `_STL`. Retail's RTTI strings spell it `std`, b
   - 0x00B3EA70 `_M_insert_overflow`: the full STLport 4.6 body, with same-TU `auto_inline(off)` + `__declspec(noinline) __fastcall` bodies of `__uninitialized_copy` 0xB3E340 and `__uninitialized_fill_n` 0xB3E390.
   - Supporting pieces: a `throw()` placement new, a reference-returning `(max)`, and `_M_clear` / `_M_set`.
 - **CEngineStaticMapFileBlockManager**
-  - 0x00B44370 is the constructor: `CCountedPointer<CBankFileAsyncEntry>` (Data(0), Info(0)) plus `_STL::map<long, CFileBlock>`.
+  - 0x00B44370 is the constructor: `CCountedPointer<CBankFileAsyncEntry>` (Data(0), Info(0)) plus `std::map<long, CFileBlock>`.
   - It uses the header-node model of the landed CVertexGroupBlock 0x00AD9030.
 - **CArray<CEngineLightingManager::CManager*Light*>**
   - 0x00B49FE0 (local lights) and 0x00B4A060 (shadowed spot lights) are `DeleteAndClear()`. This is a descriptive name: the rows are unreferenced COMDATs with no PDB name.
@@ -31,7 +31,7 @@ STLport is modelled in namespace `_STL`. Retail's RTTI strings spell it `std`, b
 - **CEngineLandscapeRenderer**
   - 0x00B670E0 `PatchWithinFadeStartSphere(long, long)` returns `|(x, y, 0) - cameraPos| < m_foregroundFadeStart`.
   - It must be written `if (...) return true; return false;` (`mov al,1` / `xor al,al`). `return a < b` widens to eax.
-- **_STL algorithms over CVertexShader** (8 bytes: vptr and a CVertexShaderData* with an intrusive count)
+- **std algorithms over CVertexShader** (8 bytes: vptr and a CVertexShaderData* with an intrusive count)
   - 0x00B6B540 `fill`, 0x00B6B610 `__copy` (random-access, count loop), 0x00B6B790 `__copy_backward`.
   - The element's `operator=` is inline, in the landed release/share form.
 - **CEngineWaterRenderer**
@@ -49,7 +49,7 @@ STLport is modelled in namespace `_STL`. Retail's RTTI strings spell it `std`, b
   - 0x00B817D0 `AddSimulationInfo(info, paused, fullUpdateOnly)`: if/else-if/else over three STLport 4-byte-list `push_back`s, which VC7.1 tail-merges.
   - Choosing the list by reference instead gives 82v79.
 - **CCountedPointer<CParticleSimulation> algorithms**
-  - 0x00B832B0 `_STL::fill` uses the landed 0x00AD1FC0 `operator=` form: read source Data/Info into locals, and release only when the blocks differ.
+  - 0x00B832B0 `std::fill` uses the landed 0x00AD1FC0 `operator=` form: read source Data/Info into locals, and release only when the blocks differ.
   - 0x00B83D30 `CArray::DeallocateMemory()` is `if (capacity()) { clear(); CArray<T>().swap(*this); }`. It keeps the out-of-line `__copy` 0xB83330 and `__destroy_aux` 0xB833F0, with user-ctor tags homed in the `push ecx` slot.
 - **CEngineSubPrimitiveRenderer** (sort chain of CSortElement {SortValue, SubPrimitive}, `less<>`)
   - 0x00B842B0 `GetCount(ESubPrimitiveType)` uses a 24-byte retail CSubPrimitiveList at +0x18 (`lea eax,[eax+eax*2+3]`).
@@ -80,35 +80,35 @@ Propagated manifest label first, then the real name. "Descriptive" marks a name 
 | 0x00B4A6C0 | Perspective_TransformDepth | CEnginePrimitiveRenderer2D::Layer2DDistanceToZ(float) |
 | 0x00B507E0 | Matrix_Multiply4x4 | CMatrix4x4::PostMultiply(const CMatrix4x4&) |
 | 0x00B670E0 | Entity_IsWithinRangeCheck | CEngineLandscapeRenderer::PatchWithinFadeStartSphere(long, long) |
-| 0x00B6B540 | _Copy_backward<CVertexShader*,CVertexShader*> | _STL::fill<CVertexShader*, CVertexShader> |
-| 0x00B6B610 | _Copy_backward<CVertexShader*,CVertexShader*> | _STL::__copy<CVertexShader*, CVertexShader*, int> |
-| 0x00B6B790 | _Copy_backward<CVertexShader*,CVertexShader*> | _STL::__copy_backward<CVertexShader*, CVertexShader*, int> (the label is the Dinkumware twin) |
+| 0x00B6B540 | _Copy_backward<CVertexShader*,CVertexShader*> | std::fill<CVertexShader*, CVertexShader> |
+| 0x00B6B610 | _Copy_backward<CVertexShader*,CVertexShader*> | std::__copy<CVertexShader*, CVertexShader*, int> |
+| 0x00B6B790 | _Copy_backward<CVertexShader*,CVertexShader*> | std::__copy_backward<CVertexShader*, CVertexShader*, int> (the label is the Dinkumware twin) |
 | 0x00B6CD80 | Vector_Copy_Backward_6Word | vector<CTVertexLandscapeBackground>::erase(first, last) |
 | 0x00B7AD20 | CTCActionUseReadable_SetupRenderTarget | CEngineWaterRenderer::SetRenderTargetToSurface(CRenderTarget&, const CSurface&) |
 | 0x00B7FD70 | Vector_Erase_56Byte | vector<CTVertexWaterBackground>::erase(first, last) |
 | 0x00B80190 | Vector_Erase_12Byte | vector<CTVertexSeaBackground>::erase(first, last) |
 | 0x00B806E0 | Render_CalculateClothVertexDistance | CEngineClothSimulationMeshBase::CalculateFadeOut(const C3DVector&) const |
 | 0x00B817D0 | CEngineInternalPrimitiveAnimatedMesh_LinkNodeToList | CEngineSimulationManager::AddSimulationInfo (the label names the caller's class) |
-| 0x00B832B0 | _Copy_backward<CCountedPointer<C3DGroup2>*,...> | _STL::fill<CCountedPointer<CParticleSimulation>*, ...> |
+| 0x00B832B0 | _Copy_backward<CCountedPointer<C3DGroup2>*,...> | std::fill<CCountedPointer<CParticleSimulation>*, ...> |
 | 0x00B83D30 | Vector_Clear | CArray<CCountedPointer<CParticleSimulation> >::DeallocateMemory() |
 | 0x00B842B0 | CEnginePrimitiveRenderer_GetIndexCount | CEngineSubPrimitiveRenderer::GetCount(ESubPrimitiveType) const |
 | 0x00B84720 | Engine_AddClockVertex | CEngineSubPrimitiveRenderer::AddSubPrimitive(ESubPrimitiveType, CEngineSubPrimitiveBase*, float, CEnginePrimitiveManager*) |
 | 0x00B84B20 | RadixSort_CountingPass_b84b20 | CEngineSubPrimitiveRenderer::SortSingleRadix |
-| 0x00B84E20 | Vector_AllocateWithFallback | _STL::_Temporary_buffer<CSortElement*, CSortElement>::_M_allocate_buffer |
-| 0x00B851D0 | _Copy_impl<CNavigationPosition*,...> | _STL::__unguarded_insertion_sort_aux |
-| 0x00B85240 | BinarySearch_Lower | _STL::__lower_bound |
-| 0x00B85280 | BinarySearch_LowerOrEqual | _STL::__upper_bound |
-| 0x00B85390 | _Copy_impl<CNavigationPosition*,...> | _STL::swap_ranges |
-| 0x00B855F0 | MakeHeap | _STL::__make_heap |
-| 0x00B85870 | Insertion_HeapShift | _STL::__linear_insert |
-| 0x00B858D0 | std_introsort_merge | _STL::__merge_sort_loop |
-| 0x00B859A0 | Merge_TwoSortedRanges | _STL::__merge_backward |
-| 0x00B85E10 | _Sort_heap<long*> | _STL::sort_heap |
-| 0x00B86260 | std_introsort_heapsort_phase | _STL::__merge_sort_with_buffer |
-| 0x00B86450 | PartialSort | _STL::__partial_sort |
-| 0x00B86570 | std_introsort_recursive | _STL::__inplace_stable_sort |
-| 0x00B865E0 | std_introsort_heapsort_phase | _STL::__stable_sort_adaptive |
-| 0x00B86710 | IntroSort_Driver | _STL::__stable_sort_aux |
+| 0x00B84E20 | Vector_AllocateWithFallback | std::_Temporary_buffer<CSortElement*, CSortElement>::_M_allocate_buffer |
+| 0x00B851D0 | _Copy_impl<CNavigationPosition*,...> | std::__unguarded_insertion_sort_aux |
+| 0x00B85240 | BinarySearch_Lower | std::__lower_bound |
+| 0x00B85280 | BinarySearch_LowerOrEqual | std::__upper_bound |
+| 0x00B85390 | _Copy_impl<CNavigationPosition*,...> | std::swap_ranges |
+| 0x00B855F0 | MakeHeap | std::__make_heap |
+| 0x00B85870 | Insertion_HeapShift | std::__linear_insert |
+| 0x00B858D0 | std_introsort_merge | std::__merge_sort_loop |
+| 0x00B859A0 | Merge_TwoSortedRanges | std::__merge_backward |
+| 0x00B85E10 | _Sort_heap<long*> | std::sort_heap |
+| 0x00B86260 | std_introsort_heapsort_phase | std::__merge_sort_with_buffer |
+| 0x00B86450 | PartialSort | std::__partial_sort |
+| 0x00B86570 | std_introsort_recursive | std::__inplace_stable_sort |
+| 0x00B865E0 | std_introsort_heapsort_phase | std::__stable_sort_adaptive |
+| 0x00B86710 | IntroSort_Driver | std::__stable_sort_aux |
 
 The manifest label for 0x00B81450 (ClearStaticParticleSims) is correct.
 

@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<CCharString, CTCBase::CRegisteredTCInfo>* last, pair<CCharString, CTCBase::CRegisteredTCInfo> val, CKeyPairCompareLess comp) -- STLport insertion-sort inner loop over the thing-component registry (component name -> registration): shift every greater-named entry up one slot, then store the value in the hole
+// std::__unguarded_linear_insert(pair<CCharString, CTCBase::CRegisteredTCInfo>* last, pair<CCharString, CTCBase::CRegisteredTCInfo> val, CKeyPairCompareLess comp) -- STLport insertion-sort inner loop over the thing-component registry (component name -> registration): shift every greater-named entry up one slot, then store the value in the hole
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004DD80B (unaligned: a size-optimised TU), 85 bytes, `ret 14h` (/Gr algorithm TU,
 //   explicit __fastcall here: last in ecx, the 16-byte by-value pair and the empty comparator slot on the stack; the
@@ -68,7 +68,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -79,13 +79,13 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    __forceinline bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    __forceinline bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, CTCBase::CRegisteredTCInfo> TTCInfoPair;            // 16 bytes
+typedef std::pair<CCharString, CTCBase::CRegisteredTCInfo> TTCInfoPair;            // 16 bytes
 typedef CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo> TTCInfoLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

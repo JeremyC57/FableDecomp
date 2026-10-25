@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_insertion_sort_aux(CWideString*, CWideString*, CWideString*, less<CWideString>) (0x009B2AC0): after the pass [first, last) is in ascending key order (the entry
+// Behaviour test for std::__unguarded_insertion_sort_aux(CWideString*, CWideString*, CWideString*, less<CWideString>) (0x009B2AC0): after the pass [first, last) is in ascending key order (the entry
 // before first is a sentinel no greater than any key), equal keys keep their order and payloads travel with keys.
 #include <cstdio>
 #include <cstring>
@@ -20,7 +20,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -53,7 +53,7 @@ void __unguarded_insertion_sort_aux(_RandomAccessIter __first, _RandomAccessIter
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 int main()
@@ -65,7 +65,7 @@ int main()
     a[0] = CWideString(w6);
     for (int i = 0; i < 6; ++i)
         a[i + 1] = CWideString(words[i]);
-    _STL::__unguarded_insertion_sort_aux(a + 1, a + 7, (CWideString*)0, _STL::less<CWideString>());
+    std::__unguarded_insertion_sort_aux(a + 1, a + 7, (CWideString*)0, std::less<CWideString>());
     static const int order[6] = { 1, 4, 5, 3, 0, 2 };   // ab ab abc bob duke e
     int fails = 0;
     for (int i = 0; i < 6; ++i)

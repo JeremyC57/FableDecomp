@@ -1,4 +1,4 @@
-// _STL::__pop_heap(first, last, result, pair<long,CDefPointer<const CContextSensitiveItemDef>> val, CContextSensitivePriorityCompare comp, int*) -- STLport heap pop step of the context-sensitive item priority sort: move the top to *result, then sift val down from the root
+// std::__pop_heap(first, last, result, pair<long,CDefPointer<const CContextSensitiveItemDef>> val, CContextSensitivePriorityCompare comp, int*) -- STLport heap pop step of the context-sensitive item priority sort: move the top to *result, then sift val down from the root
 // Leaf: ??$__pop_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005946B2, 63 bytes (a /Os module: unaligned entry), /Gr `__fastcall` (first in
 //   ecx -> edi, last in edx -> esi; result, the 8-byte val, the comparator word and the distance pointer on the stack,
@@ -39,7 +39,7 @@ public:
 
 class CContextSensitiveItemDef;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;                                          // +0x00
@@ -49,14 +49,14 @@ struct pair {
 };
 }
 
-typedef _STL::pair<long, CDefPointer<const CContextSensitiveItemDef> > TContextItemPair;
+typedef std::pair<long, CDefPointer<const CContextSensitiveItemDef> > TContextItemPair;
 
 class CContextSensitivePriorityCompare {                // empty, passed by value (one stack word)
 public:
     bool operator()(const TContextItemPair& a, const TContextItemPair& b) const;
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex,
                               _Distance __len, _Tp __val, _Compare __comp);   // 0x00593E3E

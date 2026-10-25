@@ -6,7 +6,7 @@
 // Callees: vector<pair<unsigned long, CTextureMorph> >::_M_insert_overflow(pos, x, __false_type, 1, true) @ 0x0086CB30
 // (same-TU STLport stand-in below: with only a declaration the pair temporary is spilled and reloaded instead of being
 // kept in ecx/edx/edi),
-// _STL::sort<pair<unsigned long, CTextureMorph>*, CKeyPairCompareLess<...> > @ 0x0086DD20 (__fastcall first/last, the
+// std::sort<pair<unsigned long, CTextureMorph>*, CKeyPairCompareLess<...> > @ 0x0086DD20 (__fastcall first/last, the
 // empty comparator pushed as a zero-extended byte).
 // Shape: the map's inline Insert (push_back(pair(key, morph)) ; Dirty = true) and Update (`if (Dirty) { sort(begin, end,
 // Compare); Dirty = false; }` -- the test folds against the constant just stored, so retail stores 1, sorts and stores 0).
@@ -18,7 +18,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: the tag temporary is not zero-stored
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -131,14 +131,14 @@ void __fastcall sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compa
 template <class K, class V> class CKeyPairCompareLess
 {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class K, class V, class C> class CVectorMap
 {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Vector;                 // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Vector;                 // +0x00
     C                        Compare;                // +0x0C
     bool                     Dirty;                  // +0x0D
 
@@ -150,7 +150,7 @@ public:
     void Update()
     {
         if (Dirty) {
-            _STL::sort(Vector.begin(), Vector.end(), Compare);
+            std::sort(Vector.begin(), Vector.end(), Compare);
             Dirty = false;
         }
     }

@@ -76,7 +76,7 @@ public:
     int Id;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -96,14 +96,14 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
+typedef std::pair<CCharString, CCharString>      SNamePair;
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
@@ -156,7 +156,7 @@ template <class T, class C> static bool IsHeap(const T* p, int n, C comp)
     return true;
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> class allocator { public: allocator() { } };
 static int g_overflow = 0;
@@ -185,8 +185,8 @@ public:
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> > class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Data;
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Data;
     C                        Comp;
     bool                     Dirty;
     void Insert(const K& key, const V& value)
@@ -213,7 +213,7 @@ int main()
     m.Insert(key, bank);
     m.Dirty = false;
     m.Insert(key, bank);                                    // full: the grow path, still marked dirty
-    if (!m.Dirty || m.Data._M_finish != m.Data._M_start + 2 || _STL::g_overflow != 1 || g_blocks != 3)
+    if (!m.Dirty || m.Data._M_finish != m.Data._M_start + 2 || std::g_overflow != 1 || g_blocks != 3)
         { std::printf("00a41ad0_TEST FAIL\n"); return 1; }
     FreeNames(m.Data._M_start, 2);
     }

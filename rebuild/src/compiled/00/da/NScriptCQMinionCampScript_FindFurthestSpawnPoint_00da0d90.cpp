@@ -95,7 +95,7 @@ public:
     virtual CScriptThing& GetHero();                    // slot 70 (+0x118)
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;                           // +0
     _List_node_base* _M_prev;                           // +4
@@ -130,12 +130,12 @@ class CQ_MinionCampScript : public CScriptBase {
 public:
     CGameScriptInterfaceBase* Game;                     // +0x40
     void*                     MasterScriptData;         // +0x44
-    bool FindFurthestSpawnPoint(const _STL::list<CScriptThing>& spawnPoints, const CScriptThing*& furthest, float& furthestDistance);
+    bool FindFurthestSpawnPoint(const std::list<CScriptThing>& spawnPoints, const CScriptThing*& furthest, float& furthestDistance);
 };
-bool CQ_MinionCampScript::FindFurthestSpawnPoint(const _STL::list<CScriptThing>& spawnPoints, const CScriptThing*& furthest, float& furthestDistance)
+bool CQ_MinionCampScript::FindFurthestSpawnPoint(const std::list<CScriptThing>& spawnPoints, const CScriptThing*& furthest, float& furthestDistance)
 {
     bool found = false;
-    for (_STL::list<CScriptThing>::const_iterator it = spawnPoints.begin(); it != spawnPoints.end(); ++it) {
+    for (std::list<CScriptThing>::const_iterator it = spawnPoints.begin(); it != spawnPoints.end(); ++it) {
         if (IsActiveThreadTerminating())
             return false;
         const CScriptThing& spawnPoint = *it;

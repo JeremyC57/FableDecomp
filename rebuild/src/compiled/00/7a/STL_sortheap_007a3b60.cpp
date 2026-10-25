@@ -1,4 +1,4 @@
-// _STL::sort_heap(CThing** first, CThing** last, CThingCompare_NearestToPos comp) -- STLport heap sort for the lightning target sort: pop the nearest-first heap's root to the back until one element remains
+// std::sort_heap(CThing** first, CThing** last, CThingCompare_NearestToPos comp) -- STLport heap sort for the lightning target sort: pop the nearest-first heap's root to the back until one element remains
 // Leaf: sort_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A3B60, 89 bytes (+ int3 padding to 96), __fastcall (/Gr algorithm TU:
 //   first in ecx, last in edx; the 12-byte comparator on the stack), `ret 0Ch`.

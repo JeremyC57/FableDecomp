@@ -1,8 +1,8 @@
-// _STL::list<C3DVector>::_M_insert_dispatch(iterator, const_iterator, const_iterator, const __false_type&) -- copy-insert a C3DVector range before pos, one node per element
+// std::list<C3DVector>::_M_insert_dispatch(iterator, const_iterator, const_iterator, const __false_type&) -- copy-insert a C3DVector range before pos, one node per element
 // Leaf: ??$_M_insert_dispatch@
 // Retail 0x008FBF10, 0x4E bytes, thiscall `ret 10h` (`this` = the destination list, unused: the position iterator
 //   carries the node), void. Manifest label "LinkedList_CloneNodes" (_global) is descriptive; the PDB name set has
-//   `??$_M_insert_dispatch@V?$_List_iterator@VC3DVector@@U?$_Const_traits@VC3DVector@@@_STL@@@_STL@@@?$list@VC3DVector@@...`.
+//   `??$_M_insert_dispatch@V?$_List_iterator@VC3DVector@@U?$_Const_traits@VC3DVector@@@std@@@std@@@?$list@VC3DVector@@...`.
 //   Six callers, all in the NCameraModes::CPhysicsForceModelBase TU (list<C3DVector>::insert(pos, first, last)).
 // Callee: malloc 0x00BFEA0E (node = next/prev + C3DVector = 0x14 bytes; the STLport allocator's `n != 0` test folds).
 // Shape: STLport 4.x `_M_insert_dispatch(pos, first, last, const __false_type&)` = `for (; first != last; ++first)
@@ -19,7 +19,7 @@ struct C3DVector {                              // retail C3DVector, 12 bytes
     float X, Y, Z;
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { };
 
@@ -127,8 +127,8 @@ public:
 
 namespace NCameraModes {
 // Instantiation point: CPhysicsCollisionPointsObject-style list<C3DVector> range insert (the TU's callers pass const_iterators).
-void InsertPoints(_STL::list<C3DVector>& points, const _STL::list<C3DVector>& source)
+void InsertPoints(std::list<C3DVector>& points, const std::list<C3DVector>& source)
 {
-    points._M_insert_dispatch(points.end(), source.begin(), source.end(), _STL::__false_type());
+    points._M_insert_dispatch(points.end(), source.begin(), source.end(), std::__false_type());
 }
 }

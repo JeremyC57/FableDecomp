@@ -1,4 +1,4 @@
-// _STL::vector::reserve(size_type n) -- STLport vector<pair<C2DVector, unsigned char> >: grow the route-point storage to at least n elements, copying the old points into a fresh block and freeing the old one
+// std::vector::reserve(size_type n) -- STLport vector<pair<C2DVector, unsigned char> >: grow the route-point storage to at least n elements, copying the old points into a fresh block and freeing the old one
 // Leaf: ?reserve@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00800CA0, 141 bytes (+ int3 padding to 144), __fastcall, `ret 4`.
 //   Caller: CNavigatorAStar::CalculateRouteFromTo 0x00A1D5D0 (`route.reserve(Route.size())`, landed).
@@ -18,7 +18,7 @@ struct C2DVector {
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
 
-namespace _STL {
+namespace std {
 #pragma pack(push, 1)
 template <class _T1, class _T2> struct pair {
     _T1 first;

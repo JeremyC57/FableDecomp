@@ -1,4 +1,4 @@
-// Behaviour test for 0x0067F220 _STL::vector<CDegradableInfo>::resize(unsigned int new_size, const CDegradableInfo& x).
+// Behaviour test for 0x0067F220 std::vector<CDegradableInfo>::resize(unsigned int new_size, const CDegradableInfo& x).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("0067f220_TEST FAIL\n"); return 1; } } while (0)

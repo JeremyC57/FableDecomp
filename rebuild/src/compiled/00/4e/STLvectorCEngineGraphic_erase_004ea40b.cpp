@@ -1,4 +1,4 @@
-// _STL::vector<CEngineGraphic>::erase(CEngineGraphic* first, CEngineGraphic* last) -- STLport range erase of the 14-byte engine graphic vector: slide the tail down over [first, last), drop the vacated end, return first
+// std::vector<CEngineGraphic>::erase(CEngineGraphic* first, CEngineGraphic* last) -- STLport range erase of the 14-byte engine graphic vector: slide the tail down over [first, last), drop the vacated end, return first
 // Leaf: erase
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EA40B, 59 bytes, `ret 8` (thiscall).
 // Caller: vector<CEngineGraphic>::resize(n, x) @ 0x004EA3C0.. (`if (n < size()) erase(begin() + n, end()); else
@@ -13,7 +13,7 @@
 //   are `__forceinline` (the size TU would out-line them).
 #pragma optimize("s", on)
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

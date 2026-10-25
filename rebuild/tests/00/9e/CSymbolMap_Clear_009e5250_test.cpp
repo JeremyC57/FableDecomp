@@ -9,7 +9,7 @@ struct CBase {
     virtual ~CBase() {}
 };
 struct CCharString { void* PStringData; };
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator {
 public:
@@ -78,7 +78,7 @@ template <class T> struct CCompareString { };
 struct CSymbolMap : CBase {
     struct CSymbolInfo { CCharString GroupName; CCharString EntryName; long Val; };
     CVectorMap<CCharString, CSymbolInfo, CCompareString<CSymbolInfo> > SLONGMap;
-    _STL::set<CCharString>                                             NamesUsed;
+    std::set<CCharString>                                             NamesUsed;
     bool                                                               CheckForDuplicateSymbols;
     virtual ~CSymbolMap() {}
     void Clear();
@@ -88,7 +88,7 @@ void CSymbolMap::Clear()
     SLONGMap.Clear();
     NamesUsed.clear();
 }
-typedef _STL::_Rb_tree_node<CCharString> CNameNode;
+typedef std::_Rb_tree_node<CCharString> CNameNode;
 static CNameNode gHeader;
 static CNameNode gRoot;
 static CKeyValuePair<CCharString, CSymbolMap::CSymbolInfo> gEntries[2];

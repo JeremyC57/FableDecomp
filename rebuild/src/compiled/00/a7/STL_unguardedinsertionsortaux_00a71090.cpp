@@ -1,8 +1,8 @@
-// _STL::__unguarded_insertion_sort_aux(pair<long,C3DMeshVolume>* first, pair<long,C3DMeshVolume>* last, pair<long,C3DMeshVolume>*, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- insertion-sort pass with no lower-bound test over the navigation containment volumes, each entry handed by value to __unguarded_linear_insert
+// std::__unguarded_insertion_sort_aux(pair<long,C3DMeshVolume>* first, pair<long,C3DMeshVolume>* last, pair<long,C3DMeshVolume>*, CKeyPairCompareLess<long,C3DMeshVolume> comp) -- insertion-sort pass with no lower-bound test over the navigation containment volumes, each entry handed by value to __unguarded_linear_insert
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A71090, 79 bytes, /Gr `__fastcall` (first in ecx, last in edx; the
 //   value-type tag pointer and the empty comparator on the stack, `ret 8`).
-// Callees: CCharString::CCharString(const CCharString&) 0x0099EC30, _STL::__unguarded_linear_insert 0x00A703C0 (same
+// Callees: CCharString::CCharString(const CCharString&) 0x0099EC30, std::__unguarded_linear_insert 0x00A703C0 (same
 //   chunk; it owns and destroys val).
 // Label correction: catalogued as `_Copy_impl<CComplexNumber*,CComplexNumber*>` (propagated). The element is the
 //   16-byte pair<long, C3DMeshVolume> of CPhysicsMesh::NavigationContainmentVolumes; byte twin (signed key) of the
@@ -55,7 +55,7 @@ public:
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -66,10 +66,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00A703C0

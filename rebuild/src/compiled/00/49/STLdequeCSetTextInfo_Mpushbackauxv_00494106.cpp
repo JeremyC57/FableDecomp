@@ -1,4 +1,4 @@
-// _STL::deque<CSetTextInfo>::_M_push_back_aux_v(const CSetTextInfo&) -- STLport deque push_back slow path for the subtitle text-info queue: copy the value, reserve a map slot at the back, allocate a new 4-record node, construct the copy at the old finish and step the finish iterator into the new node
+// std::deque<CSetTextInfo>::_M_push_back_aux_v(const CSetTextInfo&) -- STLport deque push_back slow path for the subtitle text-info queue: copy the value, reserve a map slot at the back, allocate a new 4-record node, construct the copy at the old finish and step the finish iterator into the new node
 // Leaf: _M_push_back_aux_v
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00494106, 98 bytes, `ret 4` (__fastcall; size-optimised TU with an ebp
 //   frame and `leave`: `#pragma optimize("s", on)`; the 28-byte value copy is the only local).

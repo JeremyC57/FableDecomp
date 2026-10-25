@@ -75,7 +75,7 @@ public:
 
 class CSpecialAbilitiesThunderLightningStormDef : public CDefPointeeBase { };
 
-namespace _STL {
+namespace std {
 template <class T> inline void _Destroy(T* p) { p->~T(); }
 
 template <class ForwardIter>
@@ -111,13 +111,13 @@ namespace NCreatureMode {
 class __declspec(novtable) CModeThunderLightningStorm : public CModeStandBase {   // vtable 0x01267DF4
 public:
     CAnimFilterOfGroup                                       Filter;                            // +0x68
-    _STL::vector<CIntelligentPointer<CThing> >               LightningBeamParticleEmitters;     // +0x74
-    _STL::vector<CIntelligentPointer<CThing> >               LightningBeamEndParticleEmitters;  // +0x80
+    std::vector<CIntelligentPointer<CThing> >               LightningBeamParticleEmitters;     // +0x74
+    std::vector<CIntelligentPointer<CThing> >               LightningBeamEndParticleEmitters;  // +0x80
     CIntelligentPointer<CThing>                              PSkyBeam;                          // +0x8C
     CIntelligentPointer<CThing>                              PCreatorEffect;                    // +0x94
     CIntelligentPointer<CThing>                              PHandGlow;                         // +0x9C
     CDefPointer<const CSpecialAbilitiesThunderLightningStormDef> PLightningStormDef;            // +0xA4
-    _STL::vector<CIntelligentPointer<CThing> >               HitThings;                         // +0xA8
+    std::vector<CIntelligentPointer<CThing> >               HitThings;                         // +0xA8
     bool                                                     MainBeamsCreated;                  // +0xB4
     long                                                     Timer;                             // +0xB8
     float                                                    StormRotation;                     // +0xBC

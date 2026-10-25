@@ -1,4 +1,4 @@
-# Hand chunk 420 (_STL::__copy .. _STL::fill): 35 of 40 byte-exact
+# Hand chunk 420 (std::__copy .. std::fill): 35 of 40 byte-exact
 
 All 40 rows sit in the manifest as `_global`. Each has been identified below, using FableWin/Ego_r PDB name sets,
 RTTI and callers. 35 rows grade MATCH or RELOCATION_MATCH. Each has a behaviour test that passes under g++ and under
@@ -8,7 +8,7 @@ VC7.1/Wine. 5 rows are parked in `differ/`. No row was skipped.
 
 - **STLport float sort, /Gr TU (0x00A5A540, 0x00A5A770, 0x00A5A860, 0x00A5A8A0).**
   - `__unguarded_insertion_sort_aux`, `__linear_insert`, `__insertion_sort`, `__partial_sort` over `float*` /
-    `less<float>`. They are written as templates in `_STL` and explicitly instantiated.
+    `less<float>`. They are written as templates in `std` and explicitly instantiated.
   - Shapes:
     - The by-value `T(*i)` stays on the x87 stack.
     - `copy_backward` over `float*` is the inline `__copy_trivial_backward` memmove.
@@ -81,14 +81,14 @@ VC7.1/Wine. 5 rows are parked in `differ/`. No row was skipped.
   - `CTextureManager::CalculateTextureSize` (static `__fastcall`): a `switch` on the D3DFORMAT. An if-chain lays the
     DXT1 arm out first; retail has it last.
   - `ResizePoolTextureCount`: `bool result = false` in bl, with pools 0x54 apart at +0x4C.
-- **`_STL::fill<CIVCountedPointer<CLocalDetailPlacementGrid>*>` (0x00A6B000).** The same body as the landed
+- **`std::fill<CIVCountedPointer<CLocalDetailPlacementGrid>*>` (0x00A6B000).** The same body as the landed
   0x00A43890, with the intrusive `operator=` inline.
 
 ## Parked for Fable 5.1 (5)
 
 - 00a56aa0 CCardinalSpline::CCardinalSpline DIFFER(167v167): register swap only: the first inline push_back copies through edx/ecx and pushes the tag from ecx (retail ecx/edx, tag from edx); the second push_back and the rest match | tried: _Vector_base + _STLP_alloc_proxy CArray ctor with two inline push_backs; an inline AppendControlPoint wrapper (not inlined, 57v167) | next: a __forceinline AppendControlPoint wrapper, or push the start point through a named const reference; else "lane gap: register allocation"
 - 00a57730 C2DLineF::GetDist DIFFER(63v63): x87 stack lifetime only: retail squares Y then X from copies (fld st(0) ; fmul st(1) ; fld st(2) ; fmul st(3)) and stores the root over the differences (fstp st(2) ; fstp st(0)); ours squares X in place and ends fxch ; fsqrt ; fstp st(1) | tried: sqrt(X*X+Y*Y), sqrt(Y*Y+X*X), a named offset local, a C2DVector user copy ctor | next: GetMagnitude() { return (float)sqrt(GetSquaredMagnitude()); } with a separate inline GetSquaredMagnitude (the form that matched 0x00A57EF0 here and the landed 0x009E2460 / 0x00661CD0)
-- 00a5a9d0 _STL::transform DIFFER(211v203): the X dot product is stored to the named local r and copied into the push_back temporary by an integer move (frame 0x14); retail stores it straight into the temporary (frame 0x0c) | tried: ctor form (Y first plus spills), C3DVector user copy ctor, member-assignment form, C2DVector user copy ctor | next: a named float x computed before return C2DVector(x, d * *AxisY), or __forceinline on the functor's operator()
+- 00a5a9d0 std::transform DIFFER(211v203): the X dot product is stored to the named local r and copied into the push_back temporary by an integer move (frame 0x14); retail stores it straight into the temporary (frame 0x0c) | tried: ctor form (Y first plus spills), C3DVector user copy ctor, member-assignment form, C2DVector user copy ctor | next: a named float x computed before return C2DVector(x, d * *AxisY), or __forceinline on the functor's operator()
 - 00a5c2b0 NVectorMath::GFFinishPartialSlerp DIFFER(98v67): retail is hand SSE (shufps broadcasts, strides added from [ebp+N] each pass, dec ecx ; jne, an ebp frame without and esp,-16); the intrinsic reference body gets an aligned frame and spills the count | tried: one intrinsic reference body (one grade, retail_asm rule) | next: "lane gap: retail_asm candidate" (land as grade retail_asm: a minimal inline-asm body plus a Retail-asm evidence line)
 - 00a5c300 NVectorMath::GFClear4DVectors DIFFER(95v89): the retail SSE arm is hand asm (movups xmm0,[eax] then a movaps [edx],xmm0 ; add edx,10h ; dec ecx ; jne loop) in a plain ebp frame whose C++ fallback addresses its 16-byte copy as [ebp-10h]; the intrinsic body adds and esp,-16 | tried: one intrinsic reference body with the fill_n (0x00A5C510) fallback | next: "lane gap: retail_asm candidate"
 
@@ -102,7 +102,7 @@ Manifest labels for this chunk, all propagated or descriptive:
 
 | Address | Manifest label | Corrected identity | Basis |
 |---|---|---|---|
-| 0x00A55880 | BinaryTreeTraversal_InsertPair | `_STL::__copy(map iter, map iter, back_insert_iterator<vector<pair<CCharString,int> > >, const input_iterator_tag&, int*)` | |
+| 0x00A55880 | BinaryTreeTraversal_InsertPair | `std::__copy(map iter, map iter, back_insert_iterator<vector<pair<CCharString,int> > >, const input_iterator_tag&, int*)` | |
 | 0x00A55A80 | MakePath | `C3DBoxF::ToC3DBoxI() const` | |
 | 0x00A56AA0 | CPSCSplineBase_Initialize | `CCardinalSpline::CCardinalSpline(const C3DVector&, const C3DVector&, float, bool)` | |
 | 0x00A57730 | C2DLineF_DistanceToPoint | `C2DLineF::GetDist(const C2DVector&)` | |
@@ -160,5 +160,5 @@ Already-landed rows whose names look wrong:
 - **0x00A5DDE0 (`_Uninit_copy<SElement8*>`).** The landed comment calls the second stack argument a "by-value
   allocator". It is STLport `__uninitialized_copy(first, last, result, const __false_type&)`, and the stack word is
   the tag reference.
-- **0x004856CD.** It is modelled in `namespace std`, but retail is STLport `_STL`, so its mangled name differs from the
+- **0x004856CD.** It is modelled in `namespace std`, but retail is STLport `std`, so its mangled name differs from the
   retail symbol.

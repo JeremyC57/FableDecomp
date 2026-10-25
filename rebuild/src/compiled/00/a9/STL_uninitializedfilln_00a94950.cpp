@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(SKeyRecord32* first, unsigned int n, const SKeyRecord32& x, const __false_type&) -- copy-construct one 32-byte key record into n raw slots starting at first; returns the end of the run
+// std::__uninitialized_fill_n(SKeyRecord32* first, unsigned int n, const SKeyRecord32& x, const __false_type&) -- copy-construct one 32-byte key record into n raw slots starting at first; returns the end of the run
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A94950, 80 bytes, `ret 8`: /Gr `__fastcall` (first in ecx -> eax as the
 //   cursor, n in edx -> ecx counted down, the value reference and the empty __false_type tag on the stack).
@@ -25,7 +25,7 @@ struct SKeyRecord32 {                              // 0x20 bytes (as the landed 
     SKeyRecord32(const SKeyRecord32& o) : m_0(o.m_0), m_4(o.m_4), m_8(o.m_8), m_record(o.m_record), m_18(o.m_18), m_1c(o.m_1c) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

@@ -1,5 +1,5 @@
-// _STL::map::operator[](const pair<long, long>& k) -- STLport subscript of CEngineSurfaceCompositionManager's map<pair<long, long>, CEngineTextureMorph>: lower_bound, insert (k, CEngineTextureMorph()) when absent, return the morph record
-// Leaf: ??A?$map@U?$pair@JJ@_STL@@VCEngineTextureMorph@@
+// std::map::operator[](const pair<long, long>& k) -- STLport subscript of CEngineSurfaceCompositionManager's map<pair<long, long>, CEngineTextureMorph>: lower_bound, insert (k, CEngineTextureMorph()) when absent, return the morph record
+// Leaf: ??A?$map@U?$pair@JJ@std@@VCEngineTextureMorph@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B2F5E0, 171 bytes, __fastcall `ret 4`.
 // Identity: Ego_r.pdb CEngineSurfaceCompositionManager::GeneratedMorphs (+0xB38) is map<pair<long, long>,
 //   CEngineTextureMorph>; only caller CEngineSurfaceCompositionManager::UpdateDiskCacheTexture (0x00B2D921). In TLC the
@@ -28,7 +28,7 @@ public:
     CRGBColour          SpecularColour;                     // +0x0c
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {             // STLport 4.6 (member templates on)
     _T1 first;
@@ -88,17 +88,17 @@ template <class _Tp> vector<_Tp>::vector(const vector<_Tp>& __x)
 }
 #pragma auto_inline(on)
 
-} // namespace _STL
+} // namespace std
 
 class CEngineTextureMorph {                                 // 20 bytes in TLC (PDB class)
 public:
     long                                OriginalTextureIndex;   // +0x00
     long                                MorphID;                // +0x04
-    _STL::vector<CCompositeBlendDesc>   Blends;                 // +0x08
+    std::vector<CCompositeBlendDesc>   Blends;                 // +0x08
     CEngineTextureMorph() : OriginalTextureIndex(0), MorphID(0) {}
 };
 
-namespace _STL {
+namespace std {
 
 struct _Rb_tree_node_base {
     bool                _M_color;
@@ -141,4 +141,4 @@ public:
 
 template CEngineTextureMorph& map<pair<long, long>, CEngineTextureMorph>::operator[](const pair<long, long>&);
 
-} // namespace _STL
+} // namespace std

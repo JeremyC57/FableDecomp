@@ -56,7 +56,7 @@ public:
     static T& __fastcall Get();                         // 0x00414CE0
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _Tp> class allocator { };
@@ -119,25 +119,25 @@ template <class K, class V>
 struct CKeyPairCompareLess { };
 
 template <class K, class V, class C>
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                       // +0x0c
     bool Dirty;                                         // +0x0d
     __forceinline void Add(const K& key, const V& value)
     {
-        this->push_back(_STL::pair<K, V>(key, value));
+        this->push_back(std::pair<K, V>(key, value));
         Dirty = true;
     }
 };
 
 template <>
-void _STL::vector<_STL::pair<CCharString, CScriptInfo> >::push_back(const _STL::pair<CCharString, CScriptInfo>& __x);   // 0x00CB7210
+void std::vector<std::pair<CCharString, CScriptInfo> >::push_back(const std::pair<CCharString, CScriptInfo>& __x);   // 0x00CB7210
 
 class CScriptInfoManager {
 public:
     long CurrentScriptID;                               // +0x00
     CVectorMap<CCharString, CScriptInfo, CKeyPairCompareLess<CCharString, CScriptInfo> > Scripts;   // +0x04
-    _STL::vector<CCharString> CodeSectionNames;         // +0x14
+    std::vector<CCharString> CodeSectionNames;         // +0x14
 protected:
     void AddScript(const CScriptInfo& info, CCharString section);
 };

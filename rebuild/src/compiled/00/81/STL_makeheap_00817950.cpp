@@ -1,8 +1,8 @@
-// _STL::__make_heap(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElementPred comp, THitLocationIntersectionElement*, int*) -- SGI make_heap of the hit-location ray intersections by key: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
+// std::__make_heap(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElementPred comp, THitLocationIntersectionElement*, int*) -- SGI make_heap of the hit-location ray intersections by key: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00817950, 120 bytes, `ret 0Ch` (__fastcall: first in ecx, last in edx, the
 // empty comparator's slot, the value-type pointer and the Distance* on the stack -- the SGI/STLport algorithm TUs are /Gr).
-// Callee: _STL::__adjust_heap(first, holeIndex, len, T value, comp) @ 0x008175D0 (same instantiation; /Gr: first in ecx,
+// Callee: std::__adjust_heap(first, holeIndex, len, T value, comp) @ 0x008175D0 (same instantiation; /Gr: first in ecx,
 // holeIndex in edx, then len, the 32-byte value and the comparator slot).
 // Types (Ego_r.pdb, anonymous namespace 0x5EBD2A70): THitLocationIntersectionElement (32 bytes) = long key +0,
 // CHitLocation* hit_location +4, C3DVector intersection_pos +8, C3DVector outward_normal +0x14; the predicate is empty.

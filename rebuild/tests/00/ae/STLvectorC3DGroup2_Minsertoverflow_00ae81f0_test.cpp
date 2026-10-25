@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE81F0 _STL::vector<C3DGroup2>::_M_insert_overflow: reallocate to size + max(size, n), copy the prefix, construct n copies of x, copy the suffix unless at the end, free the old block
+// behaviour test for 0x00AE81F0 std::vector<C3DGroup2>::_M_insert_overflow: reallocate to size + max(size, n), copy the prefix, construct n copies of x, copy the suffix unless at the end, free the old block
 #include <cstdio>
 #include <cstdlib>
 #include <new>

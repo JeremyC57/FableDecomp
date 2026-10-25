@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<C3DVector, long>* first, pair<C3DVector, long>* last, pair<C3DVector, long> pivot, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport introsort partition step for the first-person targeting position sort: elements scoring better than the pivot to the front; returns the cut
+// std::__unguarded_partition(pair<C3DVector, long>* first, pair<C3DVector, long>* last, pair<C3DVector, long> pivot, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport introsort partition step for the first-person targeting position sort: elements scoring better than the pivot to the front; returns the cut
 // Grade: DIFFER(199v199) -- scheduling only: in comp(*first, pivot) retail forms the pivot address (`lea eax,[esp+24h]`) between the first GetCompareValueForPoint call and the `fstp` of its result, ours after the `fstp` (RTM, QFE and /G7 alike); tried the plain expression, two named float values (kept: retail's comparator form, see 0x00808AA0), the reversed `<` form (evaluates b first)
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00807250, 199 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
@@ -30,7 +30,7 @@ struct CVectorCompare_BestForTargeting {
     float GetCompareValueForPoint(const C3DVector& point) const;   // 0x007F9660
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -41,7 +41,7 @@ template <class _T1, class _T2> struct pair {
 namespace {
 struct CCompareTargetedPositionsForFirstPersonTargeting {
     CVectorCompare_BestForTargeting VectorCompare;         // +0x00
-    bool operator()(const _STL::pair<C3DVector, long>& a, const _STL::pair<C3DVector, long>& b) const
+    bool operator()(const std::pair<C3DVector, long>& a, const std::pair<C3DVector, long>& b) const
     {
         const float aValue = VectorCompare.GetCompareValueForPoint(a.first);
         const float bValue = VectorCompare.GetCompareValueForPoint(b.first);
@@ -50,7 +50,7 @@ struct CCompareTargetedPositionsForFirstPersonTargeting {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;

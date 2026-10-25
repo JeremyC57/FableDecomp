@@ -1,4 +1,4 @@
-// _STL::vector<CInputEvent>::erase(CInputEvent* first, CInputEvent* last) -- STLport range erase: assign the tail [last, end) down onto first (13-dword block copies), run the (empty, out-of-line) destructor over the vacated tail, pull _M_finish back and return first
+// std::vector<CInputEvent>::erase(CInputEvent* first, CInputEvent* last) -- STLport range erase: assign the tail [last, end) down onto first (13-dword block copies), run the (empty, out-of-line) destructor over the vacated tail, pull _M_finish back and return first
 // Leaf: ?erase@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F67E0, length 112 bytes, thiscall, `ret 8`.
 // Callees: CInputEvent::~CInputEvent @ 0x00A03B30 (an empty body folded by /OPT:ICF; the landed _Destroy_Record34 0x009F6720
@@ -8,7 +8,7 @@
 // Shape: STLport 4.x `erase(first, last) { pointer i = __copy_ptrs(last, _M_finish, first, _TrivialAss()); _Destroy(i, _M_finish);
 //   _M_finish = i; return first; }` with __copy_ptrs/__copy inlined (the counted, strength-reduced `rep movsd` loop of the
 //   out-of-line twin 0x009F63B0) and the destroy walk inlined (`mov ecx,esi ; call` per element, end cached in edi).
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -64,4 +64,4 @@ public:
     ~CInputEvent();                                   // 0x00A03B30 (empty, ICF-folded)
 };
 
-template class _STL::vector<CInputEvent>;
+template class std::vector<CInputEvent>;

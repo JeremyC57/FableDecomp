@@ -29,7 +29,7 @@ public:
     float Y;
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag {
     random_access_iterator_tag() {}
 };
@@ -134,13 +134,13 @@ public:
     virtual void v145(); virtual void v146(); virtual void v147();
     virtual void ClearIcons();                                          // slot 148 (+0x250)
     unsigned char _body04[0x180 - 0x04];
-    _STL::vector<CEnginePrimitiveHandle> IconHandles;                   // +0x180
-    _STL::vector<CEmbeddedIcon>          Icons;                         // +0x18c
+    std::vector<CEnginePrimitiveHandle> IconHandles;                   // +0x180
+    std::vector<CEmbeddedIcon>          Icons;                         // +0x18c
 };
 
 void CIconText::ClearIcons()
 {
     Icons.clear();
-    _STL::for_each(IconHandles.begin(), IconHandles.end(), _STL::mem_fun_ref(&CEnginePrimitiveHandle::Clear));
+    std::for_each(IconHandles.begin(), IconHandles.end(), std::mem_fun_ref(&CEnginePrimitiveHandle::Clear));
 }
 }

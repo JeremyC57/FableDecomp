@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the sound bank entries
-// Leaf: ?resize@?$vector@VCSoundBankEntry@@V?$allocator@VCSoundBankEntry@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the sound bank entries
+// Leaf: ?resize@?$vector@VCSoundBankEntry@@V?$allocator@VCSoundBankEntry@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0046ACA8, 38 bytes, thiscall, `ret 4`; size-optimised TU (ebp frame, `and`/`or` stores).
 // Identity: vector<CSoundBankEntry>: the only caller is GFSerialiseVectorBinaryIn<CSoundBankEntry> (0x0046AB9D inside
 //   0x0046AB33, landed as the CSoundBankEntry transfer); the callee 0x0046ACCE is the two-argument resize. Members from
@@ -27,7 +27,7 @@ public:
     CSoundBankEntry() : ID(0) { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

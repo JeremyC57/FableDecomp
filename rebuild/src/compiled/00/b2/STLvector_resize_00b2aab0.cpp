@@ -1,4 +1,4 @@
-// _STL::vector::resize(unsigned int new_size, CSurface* const& x) -- resize the engine's scratch D24S8 depth-surface table: erase the surplus tail (inline memmove copy-down), or fill-insert copies of x at the end
+// std::vector::resize(unsigned int new_size, CSurface* const& x) -- resize the engine's scratch D24S8 depth-surface table: erase the surplus tail (inline memmove copy-down), or fill-insert copies of x at the end
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B2AAB0, 87 bytes, thiscall `ret 8`.
 // Callers: 0x00B27F92 in CEngine::GetScratchZBufferD24S8 0x00B27EE0 (landed: `ScratchZBuffersD24S8.resize(level + 1, 0)`) and
@@ -13,7 +13,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 
 class CSurface;
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)

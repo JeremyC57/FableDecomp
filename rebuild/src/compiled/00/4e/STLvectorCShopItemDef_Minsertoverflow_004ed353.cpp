@@ -1,4 +1,4 @@
-// _STL::vector<CShopItemDef>::_M_insert_overflow(CShopItemDef* position, const CShopItemDef& x, const __false_type&, size_t fill_len, bool atend) -- STLport regrowth of the 72-byte shop item def vector: allocate size + max(size, n), copy the head, construct the n new elements, copy the tail unless appending, release the old block
+// std::vector<CShopItemDef>::_M_insert_overflow(CShopItemDef* position, const CShopItemDef& x, const __false_type&, size_t fill_len, bool atend) -- STLport regrowth of the 72-byte shop item def vector: allocate size + max(size, n), copy the head, construct the n new elements, copy the tail unless appending, release the old block
 // Leaf: _M_insert_overflow
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004ED353, 228 bytes, `ret 14h` (thiscall).
 // Caller: 0x004ED2E6 (the vector's push_back / insert overflow path).
@@ -20,7 +20,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class T> void __fastcall _Construct(T* p, const T& value);   // 0x004E9C39
 template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }

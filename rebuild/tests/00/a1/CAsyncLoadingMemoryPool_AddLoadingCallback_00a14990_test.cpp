@@ -6,7 +6,7 @@
 
 inline void* operator new(size_t, void* where, int) { return where; }
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p, 0) _T1(__val); }
@@ -57,10 +57,10 @@ public:
 class CAsyncLoadingMemoryPool {
 public:
     static void AddLoadingCallback(CAsyncLoadingProcessCallback* callback);
-    static _STL::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
+    static std::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
 };
 
-_STL::vector<CAsyncLoadingProcessCallback*> CAsyncLoadingMemoryPool::LoadingCallbacks;
+std::vector<CAsyncLoadingProcessCallback*> CAsyncLoadingMemoryPool::LoadingCallbacks;
 
 void CAsyncLoadingMemoryPool::AddLoadingCallback(CAsyncLoadingProcessCallback* callback)
 {
@@ -76,7 +76,7 @@ int main()
 {
     CDummyCallback cb[5];
     int ok = 1;
-    _STL::vector<CAsyncLoadingProcessCallback*>& v = CAsyncLoadingMemoryPool::LoadingCallbacks;
+    std::vector<CAsyncLoadingProcessCallback*>& v = CAsyncLoadingMemoryPool::LoadingCallbacks;
     v._M_start = v._M_finish = v._M_end_of_storage._M_data = 0;
 
     CAsyncLoadingMemoryPool::AddLoadingCallback(&cb[0]);          // empty -> overflow path, capacity 1

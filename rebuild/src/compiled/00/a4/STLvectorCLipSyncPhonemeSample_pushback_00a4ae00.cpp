@@ -1,4 +1,4 @@
-// _STL::vector<CLipSyncPhonemeSample>::push_back(const CLipSyncPhonemeSample& x) -- append a lip-sync phoneme sample: placement copy at the finish pointer when there is room (add-ref the sample frame), else _M_insert_overflow(finish, x, __false_type(), 1, true)
+// std::vector<CLipSyncPhonemeSample>::push_back(const CLipSyncPhonemeSample& x) -- append a lip-sync phoneme sample: placement copy at the finish pointer when there is room (add-ref the sample frame), else _M_insert_overflow(finish, x, __false_type(), 1, true)
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4AE00, length 97 bytes, `ret 4`.
 // Caller: the `jmp` at 0x00A495E0 (an out-of-line forwarder). Callees: CCharString copy ctor 0x0099EC30, 0x00A4AC60
@@ -42,7 +42,7 @@ public:
     CCountedPointer<CSpeechFrame> SampleFrame;       // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 
 template <class _T1, class _T2>

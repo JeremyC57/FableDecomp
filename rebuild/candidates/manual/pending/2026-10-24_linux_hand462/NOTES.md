@@ -10,7 +10,7 @@ landed neighbours and the Ego_r/FableWin PDB name sets (see Label corrections).
 
 - **STLport `swap<T>` (14 rows: 006f15e0, 00cb6230, 009e6480, 00a3fdc0, 00af2cd0, 004b7800, 004cfbf0, 00566870,
   00cb9230, 008073d0, 0071fdf0, 004da6fc, 005938f1, 006232f0).**
-  - Body: `_Tp __tmp = __a; __a = __b; __b = __tmp;` as a `__fastcall` template in `_STL`.
+  - Body: `_Tp __tmp = __a; __a = __b; __b = __tmp;` as a `__fastcall` template in `std`.
   - pair has STLport's user copy ctor and the implicit operator=. Callees are declared at their retail addresses: CCharString copy/assign/dtor 0x99EC30/0x99EFB0/0x99EAE0, CWideString 0x99B720/0x99B7D0/0x99B510, CIntelligentPointer base ctor/GetPItem/SetPItem/dtor 0xA01B10/0xA01B50/0xA01B90/0xA01C10.
   - Shape lessons:
     - In /O2 TUs the pair copy and assign inline into member calls. In /Os TUs (004da6fc, 005938f1) the pair copy ctor and operator= stay out of line (0x4D788D/0x4DA56A, 0x592DFB/0x59308A).
@@ -60,7 +60,7 @@ All the catalog labels below are propagated. The real names come from callers, l
 
 | Address | Catalog label | Real name |
 |---|---|---|
-| 008e3890 | std_list_remove<CIntelligentPointer<CThing>,NStealth::CDangerStatus> | `_STL::vector<CIcicleData>::erase(CIcicleData*)` |
+| 008e3890 | std_list_remove<CIntelligentPointer<CThing>,NStealth::CDangerStatus> | `std::vector<CIcicleData>::erase(CIcicleData*)` |
 | 00cb6230 | swap<CMusicManager::CRegisteredMusicEntry> | `swap<pair<CCharString,CScriptInfo>>` |
 | 009e6480 | swap<CSymbolMap::CSymbolInfo> | `swap<pair<CCharString,CSymbolMap::CSymbolInfo>>` |
 | 00af2cd0 | swap<CSymbolMap::CSymbolInfo> | `swap<pair<CCharString,NParticleEngine::CRegisteredPSCInfo>>` |

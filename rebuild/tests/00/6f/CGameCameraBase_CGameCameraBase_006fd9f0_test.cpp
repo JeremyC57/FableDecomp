@@ -10,7 +10,7 @@ public:
     float X, Y, Z;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class list {                        // stand-in: an id instead of the sentinel node
 public:
     int _M_id;
@@ -27,8 +27,8 @@ public:
 class CGameCameraBase : public CAIGameCameraBase {
 public:
     unsigned char          _camera[0xa4];
-    _STL::list<C3DVector>  DrawCoordList;
-    _STL::list<C3DVector>  LocalThingPosList;
+    std::list<C3DVector>  DrawCoordList;
+    std::list<C3DVector>  LocalThingPosList;
     CGameCameraBase() { DrawCoordList._M_id = 1; LocalThingPosList._M_id = 2; }
     virtual ~CGameCameraBase();
 };

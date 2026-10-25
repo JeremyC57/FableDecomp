@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const CVertexShaderInput::CStreamInfo& x) -- vector<CVertexShaderInput::CStreamInfo>::push_back: copy-construct the stream description (index + vertex stream format) at the end, or grow through _M_insert_overflow when full
+// std::vector::push_back(const CVertexShaderInput::CStreamInfo& x) -- vector<CVertexShaderInput::CStreamInfo>::push_back: copy-construct the stream description (index + vertex stream format) at the end, or grow through _M_insert_overflow when full
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB4640, 76 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: the 20-byte element of the landed _M_insert_overflow 0x00AB4540 (vector<CVertexShaderInput::CStreamInfo>:
@@ -43,7 +43,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

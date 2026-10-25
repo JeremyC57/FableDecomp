@@ -17,7 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -97,17 +97,17 @@ public:
     pair<iterator, bool> insert(const value_type& x) { return insert_unique(x); }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
     void AddGroup(unsigned long group);
 };
 
 void CVertexGroupBlock::AddGroup(unsigned long group)
 {
     Groups.push_back(group);
-    GroupToIndexMap.insert(_STL::map<unsigned long, long>::value_type(group, Groups.size() - 1));
+    GroupToIndexMap.insert(std::map<unsigned long, long>::value_type(group, Groups.size() - 1));
 }

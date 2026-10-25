@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A00E60 _STL::vector<CGraphicInfo>::erase(CGraphicInfo* first, CGraphicInfo* last).
+// Behaviour test for 0x00A00E60 std::vector<CGraphicInfo>::erase(CGraphicInfo* first, CGraphicInfo* last).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00a00e60_TEST FAIL\n"); return 1; } } while (0)

@@ -1,5 +1,5 @@
-// _STL::list<const CThing*>::remove_if(_STL::unary_negate<NCameraModes::CGetThingsWithCollisionMesh> pred) -- drop every thing whose physics component has no physics-mesh info (the camera's evasion scan keeps only things with a collision mesh)
-// Leaf: ??$remove_if@V?$unary_negate@VCGetThingsWithCollisionMesh@NCameraModes@@@_STL@@@?$list@PBVCThing@@
+// std::list<const CThing*>::remove_if(std::unary_negate<NCameraModes::CGetThingsWithCollisionMesh> pred) -- drop every thing whose physics component has no physics-mesh info (the camera's evasion scan keeps only things with a collision mesh)
+// Leaf: ??$remove_if@V?$unary_negate@VCGetThingsWithCollisionMesh@NCameraModes@@@std@@@?$list@PBVCThing@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FBDD0, 67 bytes, thiscall, `ret 4` (the empty predicate's word).
 // Identity: FableWin.pdb `??$remove_if@V?$unary_negate@VCGetThingsWithCollisionMesh@NCameraModes@@@std@@@?$list@PBVCThing@@...@Z`;
 //   called by the landed NCameraModes::CPhysicsForceModelBase::DoThingEvasion 0x008FAF70 (`things.remove_if(not1(
@@ -41,7 +41,7 @@ public:
     const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }   // FableWin.pdb ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg, class _Result> struct unary_function {
     typedef _Arg argument_type;
     typedef _Result result_type;
@@ -57,14 +57,14 @@ public:
 }
 
 namespace NCameraModes {
-class CGetThingsWithCollisionMesh : public _STL::unary_function<const CThing*, bool> {
+class CGetThingsWithCollisionMesh : public std::unary_function<const CThing*, bool> {
 public:
     CGetThingsWithCollisionMesh() { }
     bool operator()(const CThing* thing) const { return thing->GetPhysicsTC()->GetPhysicsMeshInfo() != 0; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -155,4 +155,4 @@ public:
 };
 }
 
-template void _STL::list<const CThing*>::remove_if(_STL::unary_negate<NCameraModes::CGetThingsWithCollisionMesh>);
+template void std::list<const CThing*>::remove_if(std::unary_negate<NCameraModes::CGetThingsWithCollisionMesh>);

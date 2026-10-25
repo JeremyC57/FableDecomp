@@ -15,7 +15,7 @@ class CCharString {
 public:
     void* PStringData;
 };
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     T* _M_start;
@@ -25,19 +25,19 @@ public:
 }
 class CPersistContext {
 public:
-    template <class T> void TransferVectorBinary(_STL::vector<T>& v);   // 0x004331F9 for CCharString
+    template <class T> void TransferVectorBinary(std::vector<T>& v);   // 0x004331F9 for CCharString
 };
 class CCutsceneDef {
 public:
     unsigned char              _base[0x3c];      // CParentDefClassBase (vptr, 0x39 bytes, padding)
-    _STL::vector<CCharString>  Macro;            // +0x3c
-    _STL::vector<CCharString>  SkipCond;         // +0x48
-    _STL::vector<CCharString>  Lights;           // +0x54
-    _STL::vector<CCharString>  LightScene;       // +0x60
-    _STL::vector<CCharString>  SetupCond;        // +0x6c
-    _STL::vector<CCharString>  Sound;            // +0x78
-    _STL::vector<CCharString>  Answer0;          // +0x84
-    _STL::vector<CCharString>  Answer1;          // +0x90
+    std::vector<CCharString>  Macro;            // +0x3c
+    std::vector<CCharString>  SkipCond;         // +0x48
+    std::vector<CCharString>  Lights;           // +0x54
+    std::vector<CCharString>  LightScene;       // +0x60
+    std::vector<CCharString>  SetupCond;        // +0x6c
+    std::vector<CCharString>  Sound;            // +0x78
+    std::vector<CCharString>  Answer0;          // +0x84
+    std::vector<CCharString>  Answer1;          // +0x90
     void Transfer(CPersistContext& context);
 };
 void CCutsceneDef::Transfer(CPersistContext& context)

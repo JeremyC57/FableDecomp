@@ -1,9 +1,9 @@
-// _STL::swap(pair<CCharString,CScriptInfo>& a, pair<CCharString,CScriptInfo>& b) -- exchange two script-registry entries (name key + CScriptInfo) through a by-value temporary
+// std::swap(pair<CCharString,CScriptInfo>& a, pair<CCharString,CScriptInfo>& b) -- exchange two script-registry entries (name key + CScriptInfo) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB6230, 181 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx -> edi, b in edx
 //   -> esi), plain `ret`.
 // Identity: the script registry's sort TU (CScriptInfoManager::Scripts, a CVectorMap<CCharString, CScriptInfo,
-//   CKeyPairCompareLess> of 0x18-byte _STL::pair<CCharString, CScriptInfo>): the out-of-line iter_swap 0x00CB63F0 is a
+//   CKeyPairCompareLess> of 0x18-byte std::pair<CCharString, CScriptInfo>): the out-of-line iter_swap 0x00CB63F0 is a
 //   bare `jmp` here and the landed __unguarded_partition 0x00CB67B0 calls it (its inlined iter_swap). The catalog's
 //   "swap<CMusicManager::CRegisteredMusicEntry>" is propagated from a byte twin.
 // Callees: CCharString copy ctor 0x0099EC30, CCharString::operator= 0x0099EFB0, ~CCharString 0x0099EAE0.
@@ -32,7 +32,7 @@ public:
     bool             MasterScript;                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;

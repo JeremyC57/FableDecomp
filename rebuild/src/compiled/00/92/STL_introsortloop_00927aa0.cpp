@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing>*, int depth_limit, ConstThingCompare comp) -- STLport introsort recursion: partition around the median of three, recurse on the right part, loop on the left; heap-sort fallback when the depth runs out
+// std::__introsort_loop(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing>*, int depth_limit, ConstThingCompare comp) -- STLport introsort recursion: partition around the median of three, recurse on the right part, loop on the left; heap-sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00927AA0, 183 bytes (192 with padding), `ret 0Ch` (first in ecx, last in edx; the value-type pointer, the depth limit and comp on the stack).
 // Name: STLport `__introsort_loop<CIntelligentPointer<const CThing>*, CIntelligentPointer<const CThing>, int, bool (__fastcall*)(..)>`;
@@ -40,7 +40,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp);   // 0x009263F0
 template <class _RandomAccessIter, class _Tp, class _Compare>

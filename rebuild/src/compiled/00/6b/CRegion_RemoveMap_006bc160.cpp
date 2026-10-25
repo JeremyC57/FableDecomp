@@ -17,7 +17,7 @@
 //   removed tail (the retail behaviour: duplicates past the first leave stale elements).
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -139,16 +139,16 @@ public:
     }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CRegion {
 public:
-    _STL::vector<long> Maps;                                // +0x00
-    _STL::vector<long> VisMaps;                             // +0x0C
+    std::vector<long> Maps;                                // +0x00
+    std::vector<long> VisMaps;                             // +0x0C
     void RemoveMap(long map);
 };
 
 void CRegion::RemoveMap(long map)
 {
-    Maps.erase(_STL::remove(Maps.begin(), Maps.end(), map));
+    Maps.erase(std::remove(Maps.begin(), Maps.end(), map));
 }

@@ -16,7 +16,7 @@
 //   = 1.0f sinks below the pushes; the temporary leaves no destructor code after the call.
 // Label correction: catalogued as `vector<long>::vector<int>` (propagated); the body is the
 //   CEnvironmentThemePriorityStack(long) constructor.
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -48,7 +48,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
     CArray() { }
 };

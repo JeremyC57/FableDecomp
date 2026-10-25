@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A33670 _STL::__copy (counted): a downward overlapping copy as vector::erase uses it; destination returned; shared blocks counted.
+// Behaviour test for 0x00A33670 std::__copy (counted): a downward overlapping copy as vector::erase uses it; destination returned; shared blocks counted.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

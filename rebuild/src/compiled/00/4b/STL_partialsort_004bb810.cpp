@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<CCharString, CPersistInfo>* first, pair<CCharString, CPersistInfo>* middle, pair<CCharString, CPersistInfo>* last, pair<CCharString, CPersistInfo>*, CKeyPairCompareLess comp) -- STLport partial sort of the quest manager's persistence table by quest name: heapify the prefix, pop every tail entry whose name sorts before the heap top into it, then heap-sort the prefix
+// std::__partial_sort(pair<CCharString, CPersistInfo>* first, pair<CCharString, CPersistInfo>* middle, pair<CCharString, CPersistInfo>* last, pair<CCharString, CPersistInfo>*, CKeyPairCompareLess comp) -- STLport partial sort of the quest manager's persistence table by quest name: heapify the prefix, pop every tail entry whose name sorts before the heap top into it, then heap-sort the prefix
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004BB810, 152 bytes, `ret 0Ch` (/Gr algorithm TU, explicit __fastcall here: first in
 //   ecx, middle in edx, then last, the value-type tag pointer and the empty comparator slot).
@@ -66,7 +66,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -76,14 +76,14 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 }
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo TPersistInfo;
-typedef _STL::pair<CCharString, TPersistInfo> TPersistPair;                 // 12 bytes
+typedef std::pair<CCharString, TPersistInfo> TPersistPair;                 // 12 bytes
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<CCharString, TPersistInfo> TPersistLess;
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp, _Tp*, _Distance*);   // 0x004BAC90
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
@@ -114,4 +114,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
 }
 }
 
-template void __fastcall _STL::__partial_sort<TPersistPair*, TPersistPair, TPersistLess>(TPersistPair*, TPersistPair*, TPersistPair*, TPersistPair*, TPersistLess);
+template void __fastcall std::__partial_sort<TPersistPair*, TPersistPair, TPersistLess>(TPersistPair*, TPersistPair*, TPersistPair*, TPersistPair*, TPersistLess);

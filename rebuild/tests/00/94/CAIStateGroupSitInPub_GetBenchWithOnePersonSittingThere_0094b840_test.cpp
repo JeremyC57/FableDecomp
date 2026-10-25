@@ -48,7 +48,7 @@ struct CBaseIntelligentPointer {
 };
 template <class T> struct CIntelligentPointer : public CBaseIntelligentPointer { };
 
-namespace _STL {
+namespace std {
 struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
 template <class _Tp> struct _List_node : public _List_node_base { _Tp _M_data; };
 struct _List_iterator_base {
@@ -81,7 +81,7 @@ _InputIter find_if(_InputIter __first, _InputIter __last, _Predicate __pred)
 }
 
 struct CTCThingOwner : CTCBase {
-    _STL::list<CIntelligentPointer<CThing> > ObjectList;
+    std::list<CIntelligentPointer<CThing> > ObjectList;
 };
 
 struct CIsBenchWithOnePerson {
@@ -98,18 +98,18 @@ CThingObject* CAIStateGroup_SitInPub::GetBenchWithOnePersonSittingThere(const CT
 {
     const CTCThingOwner* owner;
     if (building.GetInterface(&owner, 0x21)) {
-        _STL::list<CIntelligentPointer<CThing> >::const_iterator it =
-            _STL::find_if(owner->ObjectList.begin(), owner->ObjectList.end(), CIsBenchWithOnePerson());
+        std::list<CIntelligentPointer<CThing> >::const_iterator it =
+            std::find_if(owner->ObjectList.begin(), owner->ObjectList.end(), CIsBenchWithOnePerson());
         if (it != owner->ObjectList.end())
             return static_cast<CThingObject*>(it->GetPItem());
     }
     return 0;
 }
 
-typedef _STL::_List_node<CIntelligentPointer<CThing> > TNode;
-static void Link(_STL::_List_node_base* header, TNode* nodes, int count)
+typedef std::_List_node<CIntelligentPointer<CThing> > TNode;
+static void Link(std::_List_node_base* header, TNode* nodes, int count)
 {
-    _STL::_List_node_base* prev = header;
+    std::_List_node_base* prev = header;
     for (int i = 0; i < count; ++i) { prev->_M_next = &nodes[i]; nodes[i]._M_prev = prev; prev = &nodes[i]; }
     prev->_M_next = header; header->_M_prev = prev;
 }
@@ -120,7 +120,7 @@ int main()
     CThingObject benches[3];
     TNode nodes[3];
     for (int i = 0; i < 3; ++i) nodes[i]._M_data.m_pItem = &benches[i];
-    _STL::_List_node_base header;
+    std::_List_node_base header;
     CTCThingOwner owner;
     owner.ObjectList._M_node = &header;
     CTCBase other1, other2;

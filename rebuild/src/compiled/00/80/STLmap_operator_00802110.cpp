@@ -1,4 +1,4 @@
-// _STL::map::operator[](const EIdleStateGroup& key) -- STLport map<EIdleStateGroup, CAIStateGroupBase*> subscript: the mapped state group for the key, inserting a null entry first when the key is absent
+// std::map::operator[](const EIdleStateGroup& key) -- STLport map<EIdleStateGroup, CAIStateGroupBase*> subscript: the mapped state group for the key, inserting a null entry first when the key is absent
 // Grade: RELOCATION_MATCH -- chunk-422 recipe: insert_unique(hint, v) 0x00801CB0 receives the pair temporary's address; a same-TU noinline stand-in that READS v but never keeps its address lets VC7.1 schedule the default value's stores as retail (the parked "pair zero-store scheduling" residue). A stand-in that ignores v lets VC drop the pair stores (101 bytes).
 // Leaf: ??A?$map@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00802110, 115 bytes (+ int3 padding), __fastcall, `ret 4`, returns the
@@ -16,7 +16,7 @@
 class CAIStateGroupBase;
 enum EIdleStateGroup { IDLE_STATE_GROUP_NONE };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -99,4 +99,4 @@ public:
 };
 }
 
-template class _STL::map<EIdleStateGroup, CAIStateGroupBase*>;
+template class std::map<EIdleStateGroup, CAIStateGroupBase*>;

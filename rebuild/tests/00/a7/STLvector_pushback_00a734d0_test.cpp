@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A734D0 _STL::vector::push_back: room -> copy-construct at the finish and advance it (the counted
+// Behaviour test for 0x00A734D0 std::vector::push_back: room -> copy-construct at the finish and advance it (the counted
 // pointer's reference count goes up); full -> the overflow path gets (finish, x, tag, 1, true).
 #include <cstdio>
 #include <new>

@@ -1,4 +1,4 @@
-// _STL::map::operator[](const unsigned long& k) -- map<unsigned long, float>::operator[]: find a group's weight by index, inserting 0.0f when absent (COptimisedVertex::Groups)
+// std::map::operator[](const unsigned long& k) -- map<unsigned long, float>::operator[]: find a group's weight by index, inserting 0.0f when absent (COptimisedVertex::Groups)
 // Leaf: ??A?$map@KM
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD6420, 0x73 bytes, thiscall, `ret 4`, returns &(*i).second.
 // Identity: the callee 0x00AD5030 is the landed _Rb_tree::insert_unique(iterator, const value_type&) of
@@ -9,7 +9,7 @@
 // Shape: STLport `i = lower_bound(k); if (i == end() || key_comp()(k, (*i).first)) i = insert(i, value_type(k, _Tp()));
 //   return (*i).second;`. Recipe (retry pass 3): a same-TU noinline insert_unique stand-in that READS v but never keeps
 //   its address schedules the late 0.0f store after the hidden-result push as retail (cf. landed 0x009B7BC0).
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

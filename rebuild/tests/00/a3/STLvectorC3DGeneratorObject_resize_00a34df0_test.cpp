@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A34DF0 _STL::vector<C3DGeneratorObject>::resize(n): shrinking erases the tail, growing appends
+// Behaviour test for 0x00A34DF0 std::vector<C3DGeneratorObject>::resize(n): shrinking erases the tail, growing appends
 // copies of a default generator object (identity transform, empty name); the default temporary's string is destroyed.
 #include <cstdio>
 #include <new>

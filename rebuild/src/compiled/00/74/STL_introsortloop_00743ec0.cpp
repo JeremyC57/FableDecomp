@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* first, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* last, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>*, int depth_limit, CKeyPairCompareLess comp) -- quicksort the mode-registry entries around a median-of-three pivot until the runs are 16 or shorter, falling back to a heap sort at the depth limit
+// std::__introsort_loop(pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* first, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* last, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>*, int depth_limit, CKeyPairCompareLess comp) -- quicksort the mode-registry entries around a median-of-three pivot until the runs are 16 or shorter, falling back to a heap sort at the depth limit
 // Leaf: __introsort_loop
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00743EC0, 196 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, last in edx,
 //   then the value-type tag pointer, the depth limit and the empty comparator on the stack).
@@ -21,7 +21,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                             // +0x00
     B second;                                            // +0x04
@@ -31,13 +31,13 @@ template <class A, class B> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {  // empty, passed by value
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModePair;
+typedef std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModePair;
 typedef CKeyPairCompareLess<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModeLess;
 
-namespace _STL {
+namespace std {
 template <class T, class Compare>
 inline const T& __median(const T& a, const T& b, const T& c, Compare comp)
 {

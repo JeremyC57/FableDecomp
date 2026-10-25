@@ -62,7 +62,7 @@ public:
     bool           BlocksNavigation;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class vector {
 public:
     typedef unsigned int size_type;
@@ -97,7 +97,7 @@ __forceinline void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
 }
 
 template <class T>
-void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStreamReader& stream, _STL::vector<T>& out)
+void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStreamReader& stream, std::vector<T>& out)
 {
     CPersistTraits<T> traits;
     int count;
@@ -107,10 +107,10 @@ void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStreamReader& stream, 
         traits.TransferBinaryIn(&stream, &out[i]);
 }
 
-template void __fastcall GFSerialiseVectorBinaryIn<CDegradableInfo>(CMemoryDataInputStreamReader& stream, _STL::vector<CDegradableInfo>& out);
+template void __fastcall GFSerialiseVectorBinaryIn<CDegradableInfo>(CMemoryDataInputStreamReader& stream, std::vector<CDegradableInfo>& out);
 
 void CMemoryDataInputStreamReader::ReadWithSrcChunkOverflow(unsigned char* buffer, int size) { ++g_overflow; memset(buffer, 0, size); }
-namespace _STL {
+namespace std {
 template <> void vector<CDegradableInfo>::resize(size_type n, const CDegradableInfo& x)
 {
     ++g_resize;
@@ -143,7 +143,7 @@ int main()
     CMemoryDataInputStreamReader s;
     memset(&s, 0, sizeof s);
     s.chunkBase = (long)buf; s.chunkLength = total;
-    _STL::vector<CDegradableInfo> v; v._M_start = v._M_finish = v._M_end_of_storage = 0;
+    std::vector<CDegradableInfo> v; v._M_start = v._M_finish = v._M_end_of_storage = 0;
     GFSerialiseVectorBinaryIn<CDegradableInfo>(s, v);
     if (g_resize != 1 || g_zeroDefault != 1 || g_overflow != 0 || v._M_finish - v._M_start != 2) { printf("0067f430_TEST FAIL 1\n"); return 1; }
     for (int k = 0; k < 2; ++k) {

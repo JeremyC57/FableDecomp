@@ -1,4 +1,4 @@
-// _STL::list::insert(iterator, const CProfileTreeEntry&) -- STLport list insert for CProfileManager::ProfileTree: malloc a 0x68-byte node, copy-construct the tree entry into it (CProfile copy, ID, Children vector copy, Parent) and link it before the position
+// std::list::insert(iterator, const CProfileTreeEntry&) -- STLport list insert for CProfileManager::ProfileTree: malloc a 0x68-byte node, copy-construct the tree entry into it (CProfile copy, ID, Children vector copy, Parent) and link it before the position
 // Leaf: ?insert@?$list@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F9BA0, 96 bytes (+ int3 padding), thiscall, `ret 0Ch` (hidden iterator
 //   result, position, value).
@@ -13,7 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -111,9 +111,9 @@ public:
     struct CProfileTreeEntry {                      // 0x60 bytes
         CProfile Profile;                           // +0x00
         long ID;                                    // +0x48
-        _STL::vector<CProfileTreeEntry*> Children;  // +0x4C
+        std::vector<CProfileTreeEntry*> Children;  // +0x4C
         CProfileTreeEntry* Parent;                  // +0x58
     };
 };
 
-template class _STL::list<CProfileManager::CProfileTreeEntry>;
+template class std::list<CProfileManager::CProfileTreeEntry>;

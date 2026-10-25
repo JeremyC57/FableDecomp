@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CMarkerDataEntry* first, unsigned int n, const CMarkerDataEntry& x, const __false_type&) -- copy-construct n marker data entries (two strings and a number) into raw storage at first and return first + n
+// std::__uninitialized_fill_n(CMarkerDataEntry* first, unsigned int n, const CMarkerDataEntry& x, const __false_type&) -- copy-construct n marker data entries (two strings and a number) into raw storage at first and return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CD4EA0, 60 bytes, __fastcall (first ecx, n edx; x and the empty tag on the stack, `ret 8`).
 // Callers: one, 0x00CDBE64 (the vector's _M_insert_overflow 0x00CDBDC0, reached from the marker-text parser 0x00CD5170
@@ -25,7 +25,7 @@ public:
     long        Value;                          // +0x8
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

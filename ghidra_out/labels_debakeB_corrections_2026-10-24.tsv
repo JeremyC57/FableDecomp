@@ -1,9 +1,9 @@
 address	name	evidence
-0041c7e0	_STL::_Rb_tree_node_base::_S_minimum	walks the left links to the leftmost node; byte-exact MATCH (de-bake B); catalog label GetNoAllocatedAreas is propagated
+0041c7e0	std::_Rb_tree_node_base::_S_minimum	walks the left links to the leftmost node; byte-exact MATCH (de-bake B); catalog label GetNoAllocatedAreas is propagated
 0041d8a8	NUISystem::CManager::vfunc_25	vtable slot 25 of NUISystem::CManager: find and erase on the ThingActionParams list (de-bake B)
 0098dfd0	CThreadedFile::CThreadedFile	default ctor storing vtable 0x129A158; byte-exact (de-bake B)
 00499ce0	CProgressDisplay::CProgressDisplay	ctor storing vtable 0x12388B4; byte-exact (de-bake B)
 005bd993	CCategory::GetMaxItemsPerSlot	body indexes a 20-byte category record; manifest CRenderTarget::DetachTarget is propagated (de-bake B)
-0059a9e0	_STL::allocator<NUISystem::CComponent**>::allocate	n ? malloc(n*4) : 0; byte-exact (de-bake B)
-0059aa64	_STL::_Deque_base<NUISystem::CComponent*>::_M_destroy_nodes	frees each node block; byte-exact (de-bake B)
+0059a9e0	std::allocator<NUISystem::CComponent**>::allocate	n ? malloc(n*4) : 0; byte-exact (de-bake B)
+0059aa64	std::_Deque_base<NUISystem::CComponent*>::_M_destroy_nodes	frees each node block; byte-exact (de-bake B)
 0042b2ea	std::find	__fastcall: hidden result in ecx, value in edx; the landed "vector range ctor" model of it is mislabelled (de-bake B)

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A32C20 _STL::__make_heap over pair<unsigned long, C3DHelperPoint> by the unsigned key (the SGI __adjust_heap / __push_heap pair stands in for 0x00A32440).
+// Behaviour test for 0x00A32C20 std::__make_heap over pair<unsigned long, C3DHelperPoint> by the unsigned key (the SGI __adjust_heap / __push_heap pair stands in for 0x00A32440).
 #include <cstdio>
 
 struct C3DVector {

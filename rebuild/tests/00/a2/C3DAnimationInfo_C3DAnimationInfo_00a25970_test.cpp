@@ -10,7 +10,7 @@ class C3DVector { public: float X, Y, Z; };
 
 static int g_steps = 0;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -106,7 +106,7 @@ public:
     class CAnimationData : public CIVCountedPointeeBase {
     public:
         unsigned char _body[0x14];
-        _STL::map<unsigned long, CCountedPointer<C3DAnimation2> > Animations;
+        std::map<unsigned long, CCountedPointer<C3DAnimation2> > Animations;
     };
     CIVCountedPointer<CAnimationData> Data;
     float     Duration;
@@ -119,7 +119,7 @@ public:
 C3DAnimationInfo::~C3DAnimationInfo()
 {
     if (Data) {
-        for (_STL::map<unsigned long, CCountedPointer<C3DAnimation2> >::iterator it = Data->Animations.begin(); it != Data->Animations.end(); ++it) {
+        for (std::map<unsigned long, CCountedPointer<C3DAnimation2> >::iterator it = Data->Animations.begin(); it != Data->Animations.end(); ++it) {
         }
     }
 }
@@ -129,7 +129,7 @@ int main()
     int ok = 1;
     // animation data with a 3-entry map (header + root with two children)
     C3DAnimationInfo::CAnimationData data;
-    _STL::_Rb_tree_node_base header, root, l, r;
+    std::_Rb_tree_node_base header, root, l, r;
     header._M_parent = &root; header._M_left = &l; header._M_right = &r;
     root._M_parent = &header; root._M_left = &l; root._M_right = &r;
     l._M_parent = &root; l._M_left = 0; l._M_right = 0;

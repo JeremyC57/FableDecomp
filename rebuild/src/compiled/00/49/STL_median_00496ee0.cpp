@@ -1,4 +1,4 @@
-// _STL::__median(const CWideString&, const CWideString&, const CWideString&, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport median of three wide strings ordered case-insensitively (_wcsicmp): b when a<b<c, else c when a<c, else a; symmetrically when !(a<b)
+// std::__median(const CWideString&, const CWideString&, const CWideString&, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport median of three wide strings ordered case-insensitively (_wcsicmp): b when a<b<c, else c when a<c, else a; symmetrically when !(a<b)
 // Flags: /Gr
 // Leaf: __median
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00496EE0, 175 bytes, `ret 8` (__fastcall: a in ecx -> edi, b in edx -> esi,

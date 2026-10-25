@@ -1,4 +1,4 @@
-// _STL::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> >::operator-(int n) const -- the iterator n elements back, by value
+// std::_Deque_iterator<C2DVector, _Nonconst_traits<C2DVector> >::operator-(int n) const -- the iterator n elements back, by value
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0EA30, length 83 bytes (thiscall `ret 8`: the hidden result pointer and n, + int3
 // padding). Callers: 0x00A0F24E, _M_reserve_elements_at_front 0x00A0F430 (0x00A0F458), 0x00A0F6D2, 0x00A0F83B, 0x00A0F86D.
 // Callees: _Deque_iterator_base::_M_advance @ 0x00A0E2A0 (with -n).
@@ -21,7 +21,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

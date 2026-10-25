@@ -54,7 +54,7 @@ public:
     static void __fastcall DiscardAsyncData(CCountedPointer<CBankFileAsyncData>& data);   // 0x009D68A0
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -207,7 +207,7 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CEngineStaticMapFileBlockManager {
 public:
@@ -217,9 +217,9 @@ public:
         bool                                LowPriority;   // +0x04 (node +0x18)
         CCountedPointer<CBankFileAsyncData> AsyncData;  // +0x08 (node +0x1c)
     };
-    typedef _STL::pair<const long, CFileBlock> TBlockValue;
-    typedef _STL::_Rb_tree<long, TBlockValue, _STL::_Select1st<TBlockValue>, _STL::less<long>,
-                           _STL::allocator<TBlockValue> > TBlockTree;
+    typedef std::pair<const long, CFileBlock> TBlockValue;
+    typedef std::_Rb_tree<long, TBlockValue, std::_Select1st<TBlockValue>, std::less<long>,
+                           std::allocator<TBlockValue> > TBlockTree;
 
     CCountedPointer<void> AsyncBankEntry;               // +0x00 CCountedPointer<CBankFileAsyncEntry>
     TBlockTree            Blocks;                       // +0x08 map<long, CFileBlock>

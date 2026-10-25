@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CSkeletalMorph>* last, pair<long, CSkeletalMorph>*, int depth_limit, CKeyPairCompareLess<long, CSkeletalMorph> comp) -- STLport introsort recursion over the skeletal-morph vector map: median-of-three partition, recurse on the right part until ranges reach 16 entries, partial_sort at depth zero
+// std::__introsort_loop(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CSkeletalMorph>* last, pair<long, CSkeletalMorph>*, int depth_limit, CKeyPairCompareLess<long, CSkeletalMorph> comp) -- STLport introsort recursion over the skeletal-morph vector map: median-of-three partition, recurse on the right part until ranges reach 16 entries, partial_sort at depth zero
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086DB30, length 214 bytes (+ int3 padding), `ret 0Ch`.
 // Callers: itself (0x0086DBCF) and the map's sort 0x0086DD80 (landed; 0x0086DDB8).
@@ -25,7 +25,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -36,13 +36,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+typedef std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
 typedef CKeyPairCompareLess<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -94,4 +94,4 @@ void __fastcall __introsort_loop(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 
-template void __fastcall _STL::__introsort_loop<TSkeletalMorphPair*, TSkeletalMorphPair, int, TSkeletalMorphLess>(TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphPair*, int, TSkeletalMorphLess);
+template void __fastcall std::__introsort_loop<TSkeletalMorphPair*, TSkeletalMorphPair, int, TSkeletalMorphLess>(TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphPair*, int, TSkeletalMorphLess);

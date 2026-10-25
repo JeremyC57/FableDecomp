@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CWideString*, CWideString*, CWideString*, int, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport introsort loop over wide strings ordered case-insensitively: median-of-three partition and recurse on the right part until 16 or fewer remain, falling back to partial_sort when the depth limit runs out
+// std::__introsort_loop(CWideString*, CWideString*, CWideString*, int, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport introsort loop over wide strings ordered case-insensitively: median-of-three partition and recurse on the right part until 16 or fewer remain, falling back to partial_sort when the depth limit runs out
 // Flags: /Gr
 // Leaf: __introsort_loop
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00497740, 142 bytes, `ret 0Ch` (__fastcall: first in ecx -> ebx, last in edx

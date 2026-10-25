@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A81C50 _STL::__linear_insert over (unsigned __int64 key, value) entries: inserting the entry at
+// Behaviour test for 0x00A81C50 std::__linear_insert over (unsigned __int64 key, value) entries: inserting the entry at
 // last into the sorted [first, last) keeps the range sorted on the 64-bit key and carries the value along; a new
 // minimum shifts the whole prefix up, anything else is an unguarded backward insert.
 #include <cstdio>

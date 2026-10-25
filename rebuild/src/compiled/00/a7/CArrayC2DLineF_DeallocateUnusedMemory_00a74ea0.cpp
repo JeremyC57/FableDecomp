@@ -30,7 +30,7 @@ public:
     C2DVector End;                                          // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct forward_iterator_tag { forward_iterator_tag() { } };
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b) { _Tp __tmp = __a; __a = __b; __b = __tmp; }
 
@@ -79,9 +79,9 @@ public:
     iterator erase(iterator __first, iterator __last);                                              // 0x00A748E0
     void swap(vector<_Tp, _Alloc>& __x)
     {
-        _STL::swap(this->_M_start, __x._M_start);
-        _STL::swap(this->_M_finish, __x._M_finish);
-        _STL::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
+        std::swap(this->_M_start, __x._M_start);
+        std::swap(this->_M_finish, __x._M_finish);
+        std::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
     }
 };
 
@@ -121,7 +121,7 @@ __declspec(noinline) _Tp* vector<_Tp, _Alloc>::erase(iterator __first, iterator 
 #pragma auto_inline(on)
 }
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
     void DeallocateMemory()
     {

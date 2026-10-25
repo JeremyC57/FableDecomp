@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing> val, ConstThingCompare comp) -- STLport insertion step: shift the predecessors that val goes before up one slot and drop val into the gap
+// std::__unguarded_linear_insert(CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing> val, ConstThingCompare comp) -- STLport insertion step: shift the predecessors that val goes before up one slot and drop val into the gap
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009265C0, 145 bytes (160 with padding), `ret 8` (last in ecx, comp in edx, the value on the stack).
 // Name: STLport `__unguarded_linear_insert<CIntelligentPointer<const CThing>*, CIntelligentPointer<const CThing>, bool (__fastcall*)(..)>`
@@ -39,7 +39,7 @@ public:
 typedef CIntelligentPointer<const CThing> ConstThingPointer;
 typedef bool (__fastcall* ConstThingCompare)(ConstThingPointer, ConstThingPointer);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

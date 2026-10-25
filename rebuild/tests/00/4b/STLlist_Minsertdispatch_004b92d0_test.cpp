@@ -33,7 +33,7 @@ public:
     class CActiveQuest { public: int Id; };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 
 template <class _Tp> class allocator {
@@ -141,7 +141,7 @@ template <class L> typename L::_Node* NewBack(L& l)
 {
     typedef typename L::_Node Node;
     Node* n = (Node*)malloc(sizeof(Node));
-    _STL::_List_node_base* s = l._M_node._M_data;
+    std::_List_node_base* s = l._M_node._M_data;
     n->_M_next = s;
     n->_M_prev = s->_M_prev;
     s->_M_prev->_M_next = n;
@@ -151,14 +151,14 @@ template <class L> typename L::_Node* NewBack(L& l)
 template <class L> int CountList(L& l)
 {
     int c = 0;
-    for (_STL::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
+    for (std::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
         ++c;
     return c;
 }
 template <class L> bool LinksOk(L& l)
 {
-    _STL::_List_node_base* s = l._M_node._M_data;
-    for (_STL::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
+    std::_List_node_base* s = l._M_node._M_data;
+    for (std::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
         if (p->_M_next->_M_prev != p || p->_M_prev->_M_next != p)
             return false;
     return s->_M_next->_M_prev == s && s->_M_prev->_M_next == s;
@@ -178,7 +178,7 @@ int main()
 {
     bool ok = true;
     typedef CCountedPointer<CQuestManager::CActiveQuest> P;
-    typedef _STL::list<P> L;
+    typedef std::list<P> L;
     L from;
     InitList(from);
     L to;
@@ -196,9 +196,9 @@ int main()
     tail->_M_data.Info = 0;
     L::const_iterator first(from._M_node._M_data->_M_next);
     L::const_iterator last(from._M_node._M_data);
-    to._M_insert_dispatch(L::iterator(tail), first, last, _STL::__false_type());
+    to._M_insert_dispatch(L::iterator(tail), first, last, std::__false_type());
     int k = 0;
-    for (_STL::_List_node_base* p = to._M_node._M_data->_M_next; p != to._M_node._M_data; p = p->_M_next, ++k)
+    for (std::_List_node_base* p = to._M_node._M_data->_M_next; p != to._M_node._M_data; p = p->_M_next, ++k)
         if (k >= 4 || ((L::_Node*)p)->_M_data.Data != &quests[k])
             ok = false;
     if (k != 4 || !LinksOk(to) || CountList(from) != 3)
@@ -206,7 +206,7 @@ int main()
     for (int i = 0; i < 3; ++i)
         if (infos[i]->RefCount != 2)
             ok = false;
-    to._M_insert_dispatch(L::iterator(to._M_node._M_data), last, last, _STL::__false_type());
+    to._M_insert_dispatch(L::iterator(to._M_node._M_data), last, last, std::__false_type());
     if (CountList(to) != 4)
         ok = false;
     if (!ok) { printf("004b92d0_TEST FAIL\n"); return 1; }

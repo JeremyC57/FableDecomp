@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A35260 _STL::__partial_sort: the smallest (middle - first) keys end up sorted in front; every entry kept intact.
+// Behaviour test for 0x00A35260 std::__partial_sort: the smallest (middle - first) keys end up sorted in front; every entry kept intact.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

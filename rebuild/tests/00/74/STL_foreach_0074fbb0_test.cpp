@@ -1,4 +1,4 @@
-// Behaviour test for 0x0074FBB0 _STL::for_each(CThingObject**, CThingObject**, CAddObjectsNotSolidTo): every object in
+// Behaviour test for 0x0074FBB0 std::for_each(CThingObject**, CThingObject**, CAddObjectsNotSolidTo): every object in
 // the range has each entry of the held object list added to its interface-77 CTCSolidToThing; the functor comes back.
 #include <stdio.h>
 #include <string.h>
@@ -74,7 +74,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     T* _M_start;                                             // +0x00
@@ -87,8 +87,8 @@ public:
 
 class CAddObjectsNotSolidTo {
 public:
-    const _STL::vector<CThingObject*>* ObjectList;           // +0x00
-    CAddObjectsNotSolidTo(const _STL::vector<CThingObject*>& objects) : ObjectList(&objects) { }
+    const std::vector<CThingObject*>* ObjectList;           // +0x00
+    CAddObjectsNotSolidTo(const std::vector<CThingObject*>& objects) : ObjectList(&objects) { }
     __forceinline void operator()(CThingObject* object)
     {
         CTCSolidToThing* solid = object->GetTC<CTCSolidToThing>(77);
@@ -98,7 +98,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class InputIter, class Function>
 Function __fastcall for_each(InputIter first, InputIter last, Function f)
 {
@@ -137,17 +137,17 @@ int main()
     Setup(b, eb, &sb);
     static CThingObject x, y;
     CThingObject* listed[2] = { &x, &y };
-    _STL::vector<CThingObject*> objects;
+    std::vector<CThingObject*> objects;
     objects._M_start = listed; objects._M_finish = listed + 2; objects._M_end_of_storage = listed + 2;
     CThingObject* range[2] = { &a, &b };
 
-    CAddObjectsNotSolidTo f = _STL::for_each(range, range + 2, CAddObjectsNotSolidTo(objects));
+    CAddObjectsNotSolidTo f = std::for_each(range, range + 2, CAddObjectsNotSolidTo(objects));
     int ok = 1;
     if (g_calls != 4) ok = 0;
     if (g_who[0] != &sa || g_who[1] != &sa || g_who[2] != &sb || g_who[3] != &sb) ok = 0;
     if (g_what[0] != (CThing*)&x || g_what[1] != (CThing*)&y || g_what[2] != (CThing*)&x || g_what[3] != (CThing*)&y) ok = 0;
     if (f.ObjectList != &objects) ok = 0;
-    _STL::for_each(range, range, CAddObjectsNotSolidTo(objects));   // empty range
+    std::for_each(range, range, CAddObjectsNotSolidTo(objects));   // empty range
     if (g_calls != 4) ok = 0;
 
     printf(ok ? "0074fbb0_TEST PASS\n" : "0074fbb0_TEST FAIL\n");

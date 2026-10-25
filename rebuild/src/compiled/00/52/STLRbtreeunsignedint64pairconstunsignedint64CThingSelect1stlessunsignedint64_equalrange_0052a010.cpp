@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing*>, _Select1st, less<unsigned __int64> >::equal_range(const unsigned __int64& k) -- STLport equal_range of CThingManager::UIDToThingMap: the pair (lower_bound(k), upper_bound(k)) returned through the hidden pointer
+// std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing*>, _Select1st, less<unsigned __int64> >::equal_range(const unsigned __int64& k) -- STLport equal_range of CThingManager::UIDToThingMap: the pair (lower_bound(k), upper_bound(k)) returned through the hidden pointer
 // Leaf: equal_range
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052A010, 70 bytes, `ret 8` (thiscall: the hidden pair result, &k).
 // Callees: _M_lower_bound(const key&) const 0x00528650 (out of line; the iterator front end 0x00529010 wraps the same

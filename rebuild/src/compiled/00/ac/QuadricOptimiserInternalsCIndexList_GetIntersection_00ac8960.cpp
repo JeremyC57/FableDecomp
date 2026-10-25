@@ -19,7 +19,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -166,19 +166,19 @@ inline insert_iterator<_Container> __fastcall inserter(_Container& __x, _Iterato
     return insert_iterator<_Container>(__x, __iter(__i));
 }
 
-}   // namespace _STL
+}   // namespace std
 
 namespace QuadricOptimiserInternals {
 class CIndexList {
 public:
-    _STL::set<unsigned long, _STL::less<unsigned long>, _STL::allocator<unsigned long> > Indices;   // +0x00
+    std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long> > Indices;   // +0x00
     CIndexList GetUnion(const CIndexList& other) const;
     CIndexList GetIntersection(const CIndexList& other) const;
     CIndexList GetSymmetricDifference(const CIndexList& other) const;
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _InputIter1, class _InputIter2, class _OutputIter, class _Compare>
 _OutputIter __fastcall __set_intersection(_InputIter1 __first1, _InputIter1 __last1, _InputIter2 __first2,
                                           _InputIter2 __last2, _OutputIter __result, _Compare __comp);   // 0x00AD59D0
@@ -189,14 +189,14 @@ inline _OutputIter __fastcall set_intersection(_InputIter1 __first1, _InputIter1
     return __set_intersection(__first1, __last1, __first2, __last2, __result,
                               __less((typename _InputIter1::value_type*)0));
 }
-}   // namespace _STL
+}   // namespace std
 
 namespace QuadricOptimiserInternals {
 CIndexList CIndexList::GetIntersection(const CIndexList& other) const
 {
     CIndexList result;
-    _STL::set_intersection(Indices.begin(), Indices.end(), other.Indices.begin(), other.Indices.end(),
-                           _STL::inserter(result.Indices, result.Indices.begin()));
+    std::set_intersection(Indices.begin(), Indices.end(), other.Indices.begin(), other.Indices.end(),
+                           std::inserter(result.Indices, result.Indices.begin()));
     return result;
 }
 }

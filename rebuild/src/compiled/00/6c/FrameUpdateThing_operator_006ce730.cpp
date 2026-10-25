@@ -21,7 +21,7 @@
 // call). The converted `const CSteeringAgent*` temporary and the empty `__true_type` tag share that same slot.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 
@@ -149,8 +149,8 @@ public:
 
 namespace {
 struct FrameUpdateThing {
-    _STL::vector<const CSteeringAgent*>& Agents;       // +0x00
-    FrameUpdateThing(_STL::vector<const CSteeringAgent*>& agents) : Agents(agents) { }
+    std::vector<const CSteeringAgent*>& Agents;       // +0x00
+    FrameUpdateThing(std::vector<const CSteeringAgent*>& agents) : Agents(agents) { }
     bool operator()(const CThing& thing) const;
 };
 

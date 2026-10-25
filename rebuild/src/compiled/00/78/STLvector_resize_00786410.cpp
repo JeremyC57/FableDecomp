@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<pair<long, float> >::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() zeroed (index, weight) pairs at the end
-// Leaf: ?resize@?$vector@U?$pair@JM@_STL@@V?$allocator@U?$pair@JM@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<pair<long, float> >::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() zeroed (index, weight) pairs at the end
+// Leaf: ?resize@?$vector@U?$pair@JM@std@@V?$allocator@U?$pair@JM@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00786410, 91 bytes, thiscall on the vector, `ret 4`.
 // Identity: FableWin.pdb has ?resize@?$vector@U?$pair@JM@std@@...@@QAEXI@Z; no direct call site in the image (xref:
 //   0 calls / 0 references). Its two callees are the vector<pair<long, float> > COMDATs the CTCVolumeContainmentTracker
@@ -14,7 +14,7 @@
 //   keeps VC7.1 from sharing a zero register).
 // Label correction: catalogued as `vector<std::pair<CCharString...>::resize` (propagated); the element is
 //   pair<long, float>.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {                       // STLport pair
     _T1 first;                                                      // +0x00
     _T2 second;                                                     // +0x04
@@ -63,4 +63,4 @@ public:
 }
 
 // 0x006B5AA0 erase, 0x00786020 _M_fill_insert (out of line in retail)
-template void _STL::vector<_STL::pair<long, float> >::resize(unsigned int);
+template void std::vector<std::pair<long, float> >::resize(unsigned int);

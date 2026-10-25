@@ -1,4 +1,4 @@
-// _STL::for_each(const CNavigationPosition* first, const CNavigationPosition* last, CSaveNavigationPositionToFile f) -- write every navigation position of a range to a file relative to the map origin (position - MapPos, layer: 12 bytes each), return the functor
+// std::for_each(const CNavigationPosition* first, const CNavigationPosition* last, CSaveNavigationPositionToFile f) -- write every navigation position of a range to a file relative to the map origin (position - MapPos, layer: 12 bytes each), return the functor
 // Leaf: ??$for_each@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7E440, 105 bytes, `ret 10h`. /Gr algorithm TU: the hidden functor-result pointer
 //   in ecx, first in edx; last and the 12-byte functor on the stack.
@@ -44,7 +44,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _Function>
 _Function __fastcall for_each(_InputIter __first, _InputIter __last, _Function __f)
 {

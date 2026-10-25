@@ -18,7 +18,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 enum EDamageAttribute { EDamageAttribute_Force32 = 0x7fffffff };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -121,7 +121,7 @@ struct CWorld {
 struct CTCHeroExperience {
     void*         __vftable;                               // +0x00
     unsigned char _pad_0x04[0x4C];                         // +0x04 CTCBase fields, experience counters, vectors, Pickups
-    _STL::list<_STL::pair<EDamageAttribute, long> > AttackHistory;   // +0x50 (PDB +0x64)
+    std::list<std::pair<EDamageAttribute, long> > AttackHistory;   // +0x50 (PDB +0x64)
 
     CWorld* GetWorld();                                    // 0x00686A70 (CTCBase)
 public:
@@ -131,7 +131,7 @@ public:
 void CTCHeroExperience::AddAttackOfTypeToAttackHistory(EDamageAttribute type)
 {
     AttackHistory.pop_front();
-    AttackHistory.push_back(_STL::pair<EDamageAttribute, long>(type, GetWorld()->GetFrame()));
+    AttackHistory.push_back(std::pair<EDamageAttribute, long>(type, GetWorld()->GetFrame()));
 }
 
 
@@ -140,8 +140,8 @@ static long g_frame = 0;
 static CWorld g_world;
 CWorld* CTCHeroExperience::GetWorld() { return &g_world; }
 long __fastcall CWorld::GetFrame() { return g_frame; }
-typedef _STL::pair<EDamageAttribute, long> TRec;
-typedef _STL::_List_node<TRec> TNode;
+typedef std::pair<EDamageAttribute, long> TRec;
+typedef std::_List_node<TRec> TNode;
 int main()
 {
     static double raw[sizeof(CTCHeroExperience) / sizeof(double) + 1];

@@ -14,7 +14,7 @@ class CThingGameObject;
 
 enum EDamageAttribute { DAMAGE_ATTRIBUTE_NONE = 0 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair
 {
     _T1 first;
@@ -79,7 +79,7 @@ class CHitParameters
 {
 public:
     unsigned char _pad0[0x30];                       // Localised .. ShotBuildupTime
-    _STL::map<EDamageAttribute, float, _STL::less<EDamageAttribute> > DamageMap;   // +0x30
+    std::map<EDamageAttribute, float, std::less<EDamageAttribute> > DamageMap;   // +0x30
 
     float GetDamageToThing(const CThingGameObject& thing) const;
 };
@@ -87,7 +87,7 @@ public:
 float CHitParameters::GetDamageToThing(const CThingGameObject& thing) const
 {
     float damage = 0.0f;
-    for (_STL::map<EDamageAttribute, float, _STL::less<EDamageAttribute> >::const_iterator it = DamageMap.begin();
+    for (std::map<EDamageAttribute, float, std::less<EDamageAttribute> >::const_iterator it = DamageMap.begin();
          it != DamageMap.end(); ++it)
         damage -= it->second;
     return damage;

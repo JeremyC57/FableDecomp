@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(CPSCPair* last, CPSCPair val, CPSCLess comp) -- STLport insertion-sort inner step over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: shift every entry whose name sorts after val's up one slot, then assign val into the hole
+// std::__unguarded_linear_insert(CPSCPair* last, CPSCPair val, CPSCLess comp) -- STLport insertion-sort inner step over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: shift every entry whose name sorts after val's up one slot, then assign val into the hole
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF2E70, 146 bytes (+14 int3 padding), `ret 14h`. /Gr algorithm TU written as explicit __fastcall: last in
 //   ecx, the 16-byte val by value and the 4-byte empty comparator slot on the stack; the callee destroys val (GUIName, key).
@@ -65,7 +65,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -76,13 +76,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 typedef CKeyPairCompareLess<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
@@ -97,4 +97,4 @@ void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _
 }
 }
 
-template void __fastcall _STL::__unguarded_linear_insert<CPSCPair*, CPSCPair, CPSCLess>(CPSCPair*, CPSCPair, CPSCLess);
+template void __fastcall std::__unguarded_linear_insert<CPSCPair*, CPSCPair, CPSCLess>(CPSCPair*, CPSCPair, CPSCLess);

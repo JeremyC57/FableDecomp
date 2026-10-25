@@ -1,4 +1,4 @@
-// _STL::map<CCharString,NBankFileManager::CContainedBank>::operator[](const CCharString& k) -- STLport subscript on a retail bank's contained-bank map: lower_bound, insert (k, CContainedBank()) when absent, return the value
+// std::map<CCharString,NBankFileManager::CContainedBank>::operator[](const CCharString& k) -- STLport subscript on a retail bank's contained-bank map: lower_bound, insert (k, CContainedBank()) when absent, return the value
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AC530, 156 bytes, `ret 4`.
 // Leaf: ??A?$map
 // Name: FableWin.pdb ??A?$map@VCCharString@@VCContainedBank@NBankFileManager@@...@std@@QAEAAVCContainedBank@NBankFileManager@@ABVCCharString@@@Z
@@ -42,7 +42,7 @@ struct CContainedBank {
     CContainedBank() : DataVersion(0), EntryCount(0), InfoOffset(0), InfoSize(0), Alignment(0) {}
 };
 }
-namespace _STL {
+namespace std {
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
 };

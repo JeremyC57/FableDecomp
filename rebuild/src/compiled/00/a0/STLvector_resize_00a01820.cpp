@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CGraphicInfo>::resize(n): resize the graphic list to n entries, filling with a default-constructed CGraphicInfo (one frame, no pixel format, no bank, index -1)
-// Leaf: ?resize@?$vector@VCGraphicInfo@@V?$allocator@VCGraphicInfo@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CGraphicInfo>::resize(n): resize the graphic list to n entries, filling with a default-constructed CGraphicInfo (one frame, no pixel format, no bank, index -1)
+// Leaf: ?resize@?$vector@VCGraphicInfo@@V?$allocator@VCGraphicInfo@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A01820, 107 bytes, thiscall on the vector, `ret 4`.
 // Identity: sole caller CGraphicDataBank::NotifyBankSize 0x009FF8B0 (landed; the call on `this + 0x1E0`, the retail
 //   GraphicList CArray<CGraphicInfo>); same element model as the landed push_back() 0x00A01650.
@@ -57,7 +57,7 @@ public:
     CGraphicInfo() : Bank(0), Index(-1), Frames(0) {}
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -82,4 +82,4 @@ public:
 };
 }
 
-template void _STL::vector<CGraphicInfo>::resize(unsigned int);
+template void std::vector<CGraphicInfo>::resize(unsigned int);

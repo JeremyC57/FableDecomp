@@ -54,7 +54,7 @@ Review at landing:
   - 0x0086BDE0 "CEntryLayers" is CRandomAppearanceMorph.
   - Landed 0x0085E570 calls its element "Element"; it is CTextureManagerPoolInfo.
   - `CReactionMatch_` has a trailing underscore.
-  - Landed 0x0085D7A0 and 0x006F9640 model STLport in namespace `std`, not `_STL`, so their mangled names may not
+  - Landed 0x0085D7A0 and 0x006F9640 model STLport in namespace `std`, not `std`, so their mangled names may not
     match retail's.
   - Landed 0x006B4900 calls 0x006B6840 the CEnvironmentThemePriorityStack copy ctor. It is byte-identical to the
     vector<CEnvironmentThemePriorityStackEntry> copy ctor (the class holds just that vector), so check which symbol

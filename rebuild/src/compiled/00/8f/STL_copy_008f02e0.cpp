@@ -1,4 +1,4 @@
-// _STL::__copy(Coin*, Coin*, Coin*, const random_access_iterator_tag&, int*) -- assign the coin range [first, last) onto result in order and return the end of the destination
+// std::__copy(Coin*, Coin*, Coin*, const random_access_iterator_tag&, int*) -- assign the coin range [first, last) onto result in order and return the end of the destination
 // Leaf: ??$__copy@PAVCoin@@
 // Retail 0x008F02E0, 0xA1 bytes, __fastcall (first in ecx, last in edx; result, the tag by const reference and the
 //   null distance pointer on the stack, `ret 0Ch`). Manifest label "_Move<Coin*,Coin*>" is descriptive; callers are
@@ -58,7 +58,7 @@ public:
     unsigned long               Sound;          // +0x38
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>

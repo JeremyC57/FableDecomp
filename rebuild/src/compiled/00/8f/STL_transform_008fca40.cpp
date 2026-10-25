@@ -1,4 +1,4 @@
-// _STL::transform(list<const CThing*>::iterator, list<const CThing*>::iterator, back_insert_iterator<list<CPhysicsMeshObject>>, NCameraModes::CGetMeshObject) -- append each thing's physics mesh object to the list
+// std::transform(list<const CThing*>::iterator, list<const CThing*>::iterator, back_insert_iterator<list<CPhysicsMeshObject>>, NCameraModes::CGetMeshObject) -- append each thing's physics mesh object to the list
 // Leaf: ??$transform@
 // Retail 0x008FCA40, 0xC1 bytes, __fastcall (hidden back_insert_iterator result in ecx; first, last, the output
 //   iterator and the empty functor on the stack, `ret 10h`). Manifest label "DoThingEvasion_BuildMeshReferenceList"
@@ -69,7 +69,7 @@ public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -169,9 +169,9 @@ public:
 
 namespace NCameraModes {
 // Instantiation point (the CPhysicsForceModelBase TU's thing-evasion path builds its mesh list this way).
-void BuildMeshList(_STL::list<const CThing*>& things, _STL::list<CPhysicsMeshObject>& meshes)
+void BuildMeshList(std::list<const CThing*>& things, std::list<CPhysicsMeshObject>& meshes)
 {
-    _STL::transform(things.begin(), things.end(), _STL::back_insert_iterator<_STL::list<CPhysicsMeshObject> >(meshes),
+    std::transform(things.begin(), things.end(), std::back_insert_iterator<std::list<CPhysicsMeshObject> >(meshes),
                     CGetMeshObject());
 }
 }

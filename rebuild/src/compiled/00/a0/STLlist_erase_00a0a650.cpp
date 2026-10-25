@@ -1,4 +1,4 @@
-// _STL::list::erase(_STL::list<CMeshBankManager::CMeshDataBankInfo>::iterator position) -- list<CMeshDataBankInfo>: unlink one mesh-bank record, release its bank pointer and handle string, free the node and return the next position
+// std::list::erase(std::list<CMeshBankManager::CMeshDataBankInfo>::iterator position) -- list<CMeshDataBankInfo>: unlink one mesh-bank record, release its bank pointer and handle string, free the node and return the next position
 // Leaf: ?erase@?$list@VCMeshDataBankInfo@CMeshBankManager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0A650, 97 bytes, `__fastcall` (the list in ecx, unused), hidden
 //   iterator result + position on the stack, `ret 8`.
@@ -51,7 +51,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     void deallocate(_Tp* __p, unsigned int) { free(__p); }   // malloc-backed node allocator: no null test
@@ -129,5 +129,5 @@ public:
 };
 }
 
-template _STL::list<CMeshBankManager::CMeshDataBankInfo>::iterator
-    _STL::list<CMeshBankManager::CMeshDataBankInfo>::erase(_STL::list<CMeshBankManager::CMeshDataBankInfo>::iterator);
+template std::list<CMeshBankManager::CMeshDataBankInfo>::iterator
+    std::list<CMeshBankManager::CMeshDataBankInfo>::erase(std::list<CMeshBankManager::CMeshDataBankInfo>::iterator);

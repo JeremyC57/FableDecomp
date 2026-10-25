@@ -1,5 +1,5 @@
-// _STL::vector::_M_insert_overflow(CResourcePage* position, const CResourcePage& x, const __false_type&, unsigned int fillLen, bool atEnd) -- (vector<CGPUScratchBufferTextureManager::CResourcePage>) grow: allocate size + max(size, fillLen) records, copy the prefix, construct the fill, copy the tail unless at the end, free the old block
-// Leaf: ?_M_insert_overflow@?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@_STL@@@_STL@@IAEXPAUCResourcePage@CGPUScratchBufferTextureManager@@ABU34@ABU__false_type@2@I_N@Z
+// std::vector::_M_insert_overflow(CResourcePage* position, const CResourcePage& x, const __false_type&, unsigned int fillLen, bool atEnd) -- (vector<CGPUScratchBufferTextureManager::CResourcePage>) grow: allocate size + max(size, fillLen) records, copy the prefix, construct the fill, copy the tail unless at the end, free the old block
+// Leaf: ?_M_insert_overflow@?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@std@@@std@@IAEXPAUCResourcePage@CGPUScratchBufferTextureManager@@ABU34@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F38770, 233 bytes (+ int3 padding), thiscall `ret 14h`.
 // Identity: only caller is vector<CResourcePage>::push_back 0x00F38860 (from CGPUScratchBufferTextureManager::
 //   AllocteMemoryPage, 0x00F3770C); catalog "Vector_Reallocate_NestedVector" is descriptive.
@@ -15,7 +15,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
@@ -85,9 +85,9 @@ protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len, bool __atend = false);
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
@@ -111,12 +111,12 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
     return __cur;
 }
 
-}   // namespace _STL
+}   // namespace std
 class CGPUScratchBufferTextureManager {
 public:
     struct CResourcePage {                       // 0x1c bytes in retail (Ego_r.pdb 32: CArray<long> is 16 there)
         long                ScratchPool;           // +0x00
-        _STL::vector<long>  ResourceList;          // +0x04
+        std::vector<long>  ResourceList;          // +0x04
         unsigned char*      NextFreeBufferAddress; // +0x10
         long                FreeSpaceSize;         // +0x14
         bool                EnableAutoRestore;     // +0x18
@@ -124,7 +124,7 @@ public:
 };
 typedef CGPUScratchBufferTextureManager::CResourcePage CResourcePage;
 
-namespace _STL {
+namespace std {
 
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len, bool __atend)
@@ -148,4 +148,4 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 
 template void vector<CResourcePage>::_M_insert_overflow(CResourcePage*, const CResourcePage&, const __false_type&, unsigned int, bool);
 
-}   // namespace _STL
+}   // namespace std

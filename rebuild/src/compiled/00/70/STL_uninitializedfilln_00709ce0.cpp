@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(pair<NGraphicAppearance::CMeshInfo, CEngineTextureMorphSet>* first, unsigned int n, const pair<NGraphicAppearance::CMeshInfo, CEngineTextureMorphSet>& x, const __false_type&) -- copy-construct n (mesh info, texture morph set) pairs into raw storage at first and return first + n
+// std::__uninitialized_fill_n(pair<NGraphicAppearance::CMeshInfo, CEngineTextureMorphSet>* first, unsigned int n, const pair<NGraphicAppearance::CMeshInfo, CEngineTextureMorphSet>& x, const __false_type&) -- copy-construct n (mesh info, texture morph set) pairs into raw storage at first and return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00709CE0, 66 bytes, __fastcall (first ecx, n edx; x and the empty tag on the stack, `ret 8`).
 // Callers: one, 0x00709E03 -- the vector's _M_insert_overflow 0x00709D60 (the vector CTCHeroAttachableAppearanceModifiers::
@@ -34,7 +34,7 @@ public:
     CEngineTextureMorphArray Morphs;            // +0x00
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {

@@ -1,4 +1,4 @@
-// _STL::sort(CThing** first, CThing** last, CThingCompare_NearestToPos comp) -- STLport sort of a CThing* range by distance to a position: introsort to depth 2*lg(n), then the final insertion sort
+// std::sort(CThing** first, CThing** last, CThingCompare_NearestToPos comp) -- STLport sort of a CThing* range by distance to a position: introsort to depth 2*lg(n), then the final insertion sort
 // Retail: Fable.exe @ 0x007A4260, 111 bytes. /Gr TU (__fastcall: first in ecx, last in edx, the
 // 12-byte comparator by value on the stack, callee-cleaned `ret 0Ch`).
 // Callees: __introsort_loop<CThing**, CThing*, int, CThingCompare_NearestToPos> @ 0x007A4140,
@@ -29,7 +29,7 @@ public:
     bool operator()(const CThing* a, const CThing* b) const;
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Size>
 inline _Size __lg(_Size __n)
@@ -59,4 +59,4 @@ void __fastcall sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compa
 
 template void __fastcall sort<CThing**, CThingCompare_NearestToPos>(CThing**, CThing**, CThingCompare_NearestToPos);
 
-} // namespace _STL
+} // namespace std

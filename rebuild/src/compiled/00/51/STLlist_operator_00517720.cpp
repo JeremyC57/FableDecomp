@@ -1,4 +1,4 @@
-// _STL::list::operator=(const list& x) -- STLport list<C2DLineF> assignment: overwrite the common prefix line by line, then erase this list's surplus or insert the rest of x
+// std::list::operator=(const list& x) -- STLport list<C2DLineF> assignment: overwrite the common prefix line by line, then erase this list's surplus or insert the rest of x
 // Leaf: ??4?$list@VC2DLineF@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00517720, 143 bytes (+ int3 padding), thiscall `ret 4`, *this in eax.
 // Identity: the landed list<C2DLineF>::erase 0x00512120 and _M_insert_dispatch 0x005152C0 name this address as their
@@ -23,7 +23,7 @@ public:
     C2DVector Point2;                                // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> struct _Is_integer { typedef __false_type _Integral; };
 

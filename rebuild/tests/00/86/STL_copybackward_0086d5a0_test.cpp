@@ -1,4 +1,4 @@
-// Behaviour test for 0x0086D5A0 _STL::__copy_backward over 16-byte CVectorMap records (vector assignment out of line, empty comparator, dirty flag).
+// Behaviour test for 0x0086D5A0 std::__copy_backward over 16-byte CVectorMap records (vector assignment out of line, empty comparator, dirty flag).
 #include <cstdio>
 
 static int g_assigns = 0;

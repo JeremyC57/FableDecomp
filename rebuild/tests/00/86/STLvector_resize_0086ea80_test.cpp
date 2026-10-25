@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -78,7 +78,7 @@ public:
         unsigned long GroupID;
     };
 };
-typedef _STL::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> TMorphPair;
+typedef std::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> TMorphPair;
 static TMorphPair gPool[4];
 template <class K, class V> class CKeyPairCompareLess {
 public:

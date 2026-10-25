@@ -1,4 +1,4 @@
-// _STL::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, ThingCompare comp) -- STLport heap sift-down: walk the hole to a leaf along the larger child, then push val back up from there
+// std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, ThingCompare comp) -- STLport heap sift-down: walk the hole to a leaf along the larger child, then push val back up from there
 // Leaf: ??$__adjust_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00932420, 108 bytes (112 with padding), `ret 0Ch` (first in ecx, holeIndex in edx; len, val and comp on the stack).
 // Name: STLport `__adjust_heap<CThing**, int, CThing*, bool (__fastcall*)(CThing*, CThing*)>`; seven callers (__make_heap,
@@ -22,7 +22,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, size_t n);   // 0x0
 class CThing;
 typedef bool (__fastcall* ThingCompare)(CThing* a, CThing* b);   // e.g. the height compare 0x00930D90
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val,
                             _Compare __comp);   // 0x00932370

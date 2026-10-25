@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
 struct C3DTriangle2 { unsigned short VertexIndex[3]; };
-// the row: _STL::uninitialized_fill_n<C3DTriangle2*, unsigned int, C3DTriangle2> -- placement copies, returns the end
+// the row: std::uninitialized_fill_n<C3DTriangle2*, unsigned int, C3DTriangle2> -- placement copies, returns the end
 static C3DTriangle2* __fastcall UninitializedFillN(C3DTriangle2* first, unsigned int n, const C3DTriangle2& x)
 {
     C3DTriangle2* cur = first;

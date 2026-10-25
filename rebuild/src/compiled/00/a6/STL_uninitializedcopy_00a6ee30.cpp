@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(pair<CCharString,C3DDummyObject>* first, pair<CCharString,C3DDummyObject>* last, pair<CCharString,C3DDummyObject>* result, const __false_type&) -- copy-construct the dummy-object map entries [first, last) into raw storage at result; returns the end of the copy
+// std::__uninitialized_copy(pair<CCharString,C3DDummyObject>* first, pair<CCharString,C3DDummyObject>* last, pair<CCharString,C3DDummyObject>* result, const __false_type&) -- copy-construct the dummy-object map entries [first, last) into raw storage at result; returns the end of the copy
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6EE30, 89 bytes (+7 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; result and the tag reference on the stack, `ret 8`).
@@ -28,7 +28,7 @@ public:
     long       BoneIndex;                               // +0x30
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A4A670: _STL::map<unsigned long, CCharString>::operator[] (lower_bound, insert a default value when the key is absent)
+// Behaviour test for 0x00A4A670: std::map<unsigned long, CCharString>::operator[] (lower_bound, insert a default value when the key is absent)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -42,7 +42,7 @@ public:
 };
 static bool Eq(const CCharString& s, const char* t) { return strcmp(s.c_str(), t) == 0; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp>
 inline _Tp __default_constructed_aux(_Tp*, const __false_type&) { return _Tp(); }
@@ -179,14 +179,14 @@ public:
 int main()
 {
     {
-        _STL::map<unsigned long, CCharString> m;
+        std::map<unsigned long, CCharString> m;
         m[5ul] = CCharString("five");
         m[2ul] = CCharString("two");
         m[9ul] = CCharString("nine");
-        Check(_STL::g_inserts == 3 && m._M_t._M_node_count == 3);
+        Check(std::g_inserts == 3 && m._M_t._M_node_count == 3);
         Check(Eq(m[5ul], "five") && Eq(m[2ul], "two") && Eq(m[9ul], "nine"));
-        Check(_STL::g_inserts == 3);
-        Check(Eq(m[7ul], "") && _STL::g_inserts == 4);     // a missing key inserts a default string
+        Check(std::g_inserts == 3);
+        Check(Eq(m[7ul], "") && std::g_inserts == 4);     // a missing key inserts a default string
         m[7ul] = CCharString("seven");
         Check(Eq(m[7ul], "seven") && m._M_t._M_node_count == 4);
         Check(&m[2ul] == &m[2ul]);

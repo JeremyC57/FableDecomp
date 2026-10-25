@@ -1,5 +1,5 @@
-// _STL::list::remove(const CCountedPointer<CQuestManager::CActiveQuest>& value) -- erase every active-quest entry that points at the same quest as `value`
-// Instantiation: _STL::list<CCountedPointer<CQuestManager::CActiveQuest> >::remove
+// std::list::remove(const CCountedPointer<CQuestManager::CActiveQuest>& value) -- erase every active-quest entry that points at the same quest as `value`
+// Instantiation: std::list<CCountedPointer<CQuestManager::CActiveQuest> >::remove
 // Leaf: ?remove@?$list@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BA390, 97 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: FableWin.pdb `?remove@?$list@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@...@std@@QAEXABV?$CCountedPointer@...@@@Z`;
@@ -43,7 +43,7 @@ public:
     class CActiveQuest;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -134,4 +134,4 @@ public:
 };
 }
 
-template void _STL::list<CCountedPointer<CQuestManager::CActiveQuest> >::remove(const CCountedPointer<CQuestManager::CActiveQuest>&);
+template void std::list<CCountedPointer<CQuestManager::CActiveQuest> >::remove(const CCountedPointer<CQuestManager::CActiveQuest>&);

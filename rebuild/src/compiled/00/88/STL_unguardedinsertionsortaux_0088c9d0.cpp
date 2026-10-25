@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(SKeyedPair* first, SKeyedPair* last, SKeyedPair*, SKeyGreater comp) -- unguarded insertion sort of the 8-byte keyed pairs of [first, last) (the tail pass of the final insertion sort)
+// std::__unguarded_insertion_sort_aux(SKeyedPair* first, SKeyedPair* last, SKeyedPair*, SKeyGreater comp) -- unguarded insertion sort of the 8-byte keyed pairs of [first, last) (the tail pass of the final insertion sort)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088C9D0, length 73 bytes (+ int3 padding), `ret 8`.
 // Identity: callers 0x0088CAF7, 0x0088CFAC and the landed sort 0x0088D130 (0x0088D189), which declares this body as its
@@ -18,7 +18,7 @@ struct SKeyGreater {                            // empty comparator passed by va
     bool operator()(const SKeyedPair& a, const SKeyedPair& b) const { return a.m_key > b.m_key; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 inline void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

@@ -43,7 +43,7 @@ public:
     CVertexStreamFormat(const CVertexStreamFormat& other) : DataElements(other.DataElements) { }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -106,7 +106,7 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CVertexShaderInput {
 public:
@@ -119,7 +119,7 @@ public:
         CStreamInfo(const CStreamInfo& other) : StreamIndex(other.StreamIndex), StreamFormat(other.StreamFormat) { }
     };
     void*                         __vftable;       // +0x00
-    _STL::vector<CStreamInfo>     DataStreams;     // +0x04
+    std::vector<CStreamInfo>     DataStreams;     // +0x04
     void AddStream(unsigned long streamIndex, const CVertexStreamFormat& format, bool generateDeclaration);
 private:
     void GenerateD3DDeclaration();                 // 0x00AB3870

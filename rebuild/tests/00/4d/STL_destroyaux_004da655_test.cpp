@@ -1,4 +1,4 @@
-// Behaviour test for 0x004DA655 _STL::__destroy_aux<CMultiStaticMeshEntryDef*> (virtual destructor per element).
+// Behaviour test for 0x004DA655 std::__destroy_aux<CMultiStaticMeshEntryDef*> (virtual destructor per element).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("004da655_TEST FAIL\n"); return 1; } } while (0)

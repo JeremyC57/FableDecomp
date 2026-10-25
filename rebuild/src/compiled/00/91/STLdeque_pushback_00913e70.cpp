@@ -1,4 +1,4 @@
-// _STL::deque::push_back(const CBezierCurve& t) -- STLport deque<CBezierCurve>::push_back: construct at the finish cursor and advance it while the finish buffer has room, else _M_push_back_aux_v
+// std::deque::push_back(const CBezierCurve& t) -- STLport deque<CBezierCurve>::push_back: construct at the finish cursor and advance it while the finish buffer has room, else _M_push_back_aux_v
 // Leaf: ?push_back@?$deque@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00913E70, 49 bytes (64 with padding), __fastcall `ret 4`.
 // Identity: STLport 4.6 deque<CBezierCurve, allocator<CBezierCurve> >::push_back (an unreferenced out-of-line copy; the AI
@@ -38,7 +38,7 @@ public:
     C3DVector Point4;                           // +0x24
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type {                           // STLport empty tag; a user ctor keeps the temporary store-free
     __false_type() { }
@@ -191,4 +191,4 @@ void deque<_Tp, _Alloc>::clear()
 
 }
 
-template void _STL::deque<CBezierCurve, _STL::allocator<CBezierCurve> >::push_back(const CBezierCurve&);
+template void std::deque<CBezierCurve, std::allocator<CBezierCurve> >::push_back(const CBezierCurve&);

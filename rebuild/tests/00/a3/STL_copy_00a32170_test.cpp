@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A32170 _STL::__copy (counted) over C3DGeneratorObject: [first, last) assigned onto result in
+// Behaviour test for 0x00A32170 std::__copy (counted) over C3DGeneratorObject: [first, last) assigned onto result in
 // order (overlapping downward copy as the vector erase uses it), the end of the destination returned; empty range -> result.
 #include <cstdio>
 #include <new>

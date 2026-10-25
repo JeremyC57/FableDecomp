@@ -1,5 +1,5 @@
-// _STL::_Rb_tree::erase(iterator position) -- STLport single-node erase for multimap<float,CCountedPointer<CVertexPairContraction> > (COptimisedPrimitive::VertexPairContractions): unlink through the rebalance helper, release the contraction pointer, free the node, drop the count
-// Leaf: ?erase@?$_Rb_tree@MU?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@_STL@@
+// std::_Rb_tree::erase(iterator position) -- STLport single-node erase for multimap<float,CCountedPointer<CVertexPairContraction> > (COptimisedPrimitive::VertexPairContractions): unlink through the rebalance helper, release the contraction pointer, free the node, drop the count
+// Leaf: ?erase@?$_Rb_tree@MU?$pair@$$CBMV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD3C30, 103 bytes, thiscall `ret 4` (iterator by value).
 // Identity: callers 0x00AC8834 (0x00AC8820: `VertexPairContractions.begin()->second->Exists = false;
 //   VertexPairContractions.erase(begin())` on retail primitive +0x34), 0x00AC8A7D, 0x00ACCE6B, 0x00ACDA83, 0x00AD4B99.
@@ -54,7 +54,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -207,9 +207,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const float, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > TCostValue;
-typedef _STL::_Rb_tree<float, TCostValue, _STL::_Select1st<TCostValue>, _STL::less<float>,
-                       _STL::allocator<TCostValue> > TCostMultimapTree;
+typedef std::pair<const float, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > TCostValue;
+typedef std::_Rb_tree<float, TCostValue, std::_Select1st<TCostValue>, std::less<float>,
+                       std::allocator<TCostValue> > TCostMultimapTree;
 template void TCostMultimapTree::erase(TCostMultimapTree::iterator);

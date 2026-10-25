@@ -9,10 +9,10 @@ address	status	bytes	test	note
 0057f6e9	RELOCATION_MATCH	38v38	PASS	TransferableVector<4-byte enum>::TransferIn; named first local, value in dead parser slot
 007fae34	SKIP	-v32	-	not a function: unreferenced tail block after 0x007FAE31 ret 3Ch (pops never-pushed regs)
 0080bfec	SKIP	-v38	-	not a function: unreferenced tail block (pops never-pushed regs, same shape as 0x007FAE34)
-00758e00	RELOCATION_MATCH	77v77	PASS	_STL::__linear_insert (0x2C records, signed key); label propagated
-0081be30	RELOCATION_MATCH	77v77	PASS	_STL::__linear_insert (0x28 records, signed key); label propagated
+00758e00	RELOCATION_MATCH	77v77	PASS	std::__linear_insert (0x2C records, signed key); label propagated
+0081be30	RELOCATION_MATCH	77v77	PASS	std::__linear_insert (0x28 records, signed key); label propagated
 0083eb90	RELOCATION_MATCH	64v64	PASS	LHHttp2::ResetDocumentRecv; label propagated; local model (header layout != retail)
-00a33800	RELOCATION_MATCH	84v84	PASS	_STL::__linear_insert<pair<ulong,C3DDummyObject>>; pair user copy ctor
+00a33800	RELOCATION_MATCH	84v84	PASS	std::__linear_insert<pair<ulong,C3DDummyObject>>; pair user copy ctor
 00c70120	RELOCATION_MATCH	167v167	PASS	CVtable_012BEDCC ctor (no-RTTI); second non-polymorphic base + POD blocks
 00c70b00	RELOCATION_MATCH	167v167	PASS	CVtable_012BEDE0 ctor (no-RTTI); 160-float twin of 0x00C70120
 0057f70f	DIFFER	36v36	-	TransferableVector<4-byte enum>::TransferOut; index load scheduled after first-pointer load
@@ -27,7 +27,7 @@ address	status	bytes	test	note
 00614000	RELOCATION_MATCH	120v120	PASS	TransferableVector<CUIMiniMapMarker>::TransferOut; label pair<CCharString> propagated
 00615920	RELOCATION_MATCH	120v120	PASS	TransferableVector<CUIMiniMapMarker>::TransferIn
 006d4aa0	RELOCATION_MATCH	145v145	PASS	TransferableVector<pair<CCharString,long>>::Resize; traits default + inline resize(n,x)
-00661287	RELOCATION_MATCH	30v30	PASS	_STL::copy(set iter, set iter, back_insert_iterator) __fastcall; label propagated
+00661287	RELOCATION_MATCH	30v30	PASS	std::copy(set iter, set iter, back_insert_iterator) __fastcall; label propagated
 009e7f00	RELOCATION_MATCH	130v130	PASS	CPersistTraits<C2DVector>::TransferOut "C2DCoordF(x,y)"
 009e7f90	RELOCATION_MATCH	182v182	PASS	CPersistTraits<C3DVector>::TransferOut "C3DCoordF(x,y,z)"
 004670f5	RELOCATION_MATCH	54v54	PASS	CPersistTraits<CBrainBehaviour> ctor; DefaultVal("") temp spans inlined ctors

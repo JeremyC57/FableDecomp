@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(CCharString* last, CCharString val, less<CCharString> comp) -- STLport insertion step: shift greater strings up one slot until val's place, then store it
+// std::__unguarded_linear_insert(CCharString* last, CCharString val, less<CCharString> comp) -- STLport insertion step: shift greater strings up one slot until val's place, then store it
 // Leaf: __unguarded_linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E0710, 76 bytes (+ padding to 80), `ret 8` (__fastcall /Gr algorithm TU: last in ecx ->
 //   edi, the by-value string and the empty comparator on the stack; the by-value string is destroyed here).

@@ -1,4 +1,4 @@
-// _STL::vector::resize(size_type new_size, const CEnvironmentThemePriorityStackEntry& x) -- shrink with erase or grow with a fill insert (48-byte theme priority entries)
+// std::vector::resize(size_type new_size, const CEnvironmentThemePriorityStackEntry& x) -- shrink with erase or grow with a fill insert (48-byte theme priority entries)
 // Leaf: ?resize@?$vector@VCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0088A390, 100 bytes, thiscall, `ret 8`.
 // Identity: vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry>. Callers: the one-argument resize
@@ -24,7 +24,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

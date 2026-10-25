@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- link a new (augmentation type, sound set) node left or right of y, keep leftmost/rightmost, rebalance, count it
+// std::_Rb_tree<EObjectAugmentationType, pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- link a new (augmentation type, sound set) node left or right of y, keep leftmost/rightmost, rebalance, count it
 // Leaf: ?_M_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076A110, 199 bytes (+int3 pad to 208), `ret 14h` (hidden iterator result + 4 arguments).
 // Callers: nine sites in 0x0076A1E0..0x0076A891 (insert_unique / hint insert of the same tree).
@@ -26,7 +26,7 @@ struct CObjectAugmentationSoundSet {                        // Ego_r.pdb, 12 byt
     unsigned long Handle;                                   // +0x08
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -50,17 +50,17 @@ struct _Rb_tree_node : public _Rb_tree_node_base {
 
 }
 
-typedef _STL::pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> SSoundSetValue;   // 0x10 bytes
-typedef _STL::_Rb_tree_node<SSoundSetValue> SSoundSetNode;                                          // 0x20 bytes
+typedef std::pair<const EObjectAugmentationType, CObjectAugmentationSoundSet> SSoundSetValue;   // 0x10 bytes
+typedef std::_Rb_tree_node<SSoundSetValue> SSoundSetNode;                                          // 0x20 bytes
 
-extern "C" void __cdecl Rebalance_0042971d(_STL::_Rb_tree_node_base* node, _STL::_Rb_tree_node_base*& root);   // 0x0042971D
+extern "C" void __cdecl Rebalance_0042971d(std::_Rb_tree_node_base* node, std::_Rb_tree_node_base*& root);   // 0x0042971D
 
 struct CSoundSetTree {                                      // _Rb_tree<EObjectAugmentationType, SSoundSetValue, ...>
-    _STL::_Rb_tree_node_base* _M_header;                    // +0x00
+    std::_Rb_tree_node_base* _M_header;                    // +0x00
     unsigned long             _M_node_count;                // +0x04
     struct iterator {
-        _STL::_Rb_tree_node_base* _M_node;
-        iterator(_STL::_Rb_tree_node_base* node) : _M_node(node) { }
+        std::_Rb_tree_node_base* _M_node;
+        iterator(std::_Rb_tree_node_base* node) : _M_node(node) { }
     };
     SSoundSetNode* _M_create_node(const SSoundSetValue& __x);   // 0x00769980
     __forceinline SSoundSetNode* _M_create_node_inline(const SSoundSetValue& __x)
@@ -69,10 +69,10 @@ struct CSoundSetTree {                                      // _Rb_tree<EObjectA
         new (&__tmp->_M_value_field) SSoundSetValue(__x);
         return __tmp;
     }
-    iterator _M_insert(_STL::_Rb_tree_node_base* __x_, _STL::_Rb_tree_node_base* __y_, const SSoundSetValue& __v, _STL::_Rb_tree_node_base* __w_);
+    iterator _M_insert(std::_Rb_tree_node_base* __x_, std::_Rb_tree_node_base* __y_, const SSoundSetValue& __v, std::_Rb_tree_node_base* __w_);
 };
 
-CSoundSetTree::iterator CSoundSetTree::_M_insert(_STL::_Rb_tree_node_base* __x_, _STL::_Rb_tree_node_base* __y_, const SSoundSetValue& __v, _STL::_Rb_tree_node_base* __w_)
+CSoundSetTree::iterator CSoundSetTree::_M_insert(std::_Rb_tree_node_base* __x_, std::_Rb_tree_node_base* __y_, const SSoundSetValue& __v, std::_Rb_tree_node_base* __w_)
 {
     SSoundSetNode* __w = (SSoundSetNode*)__w_;
     SSoundSetNode* __y = (SSoundSetNode*)__y_;

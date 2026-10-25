@@ -1,4 +1,4 @@
-// Behaviour test for 0x00997330 _STL::vector<char>::reserve: a smaller or equal request changes nothing; a larger one
+// Behaviour test for 0x00997330 std::vector<char>::reserve: a smaller or equal request changes nothing; a larger one
 // moves the bytes to a new block of exactly n, keeping the size; an empty (null) vector just allocates.
 #include <cstdio>
 #include <cstdlib>

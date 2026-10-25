@@ -1,4 +1,4 @@
-// Behaviour test for 0x009CB7D0 _STL::vector<NGameText::CTextTag>::resize(unsigned int new_size).
+// Behaviour test for 0x009CB7D0 std::vector<NGameText::CTextTag>::resize(unsigned int new_size).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("009cb7d0_TEST FAIL\n"); return 1; } } while (0)

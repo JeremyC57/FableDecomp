@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<CGPUScratchBufferTextureManager::CResourceEntry>::resize(n): resize the scratch manager's resource list to n entries, filling with an empty entry (no texture or surface, no page, no pixel format)
-// Leaf: ?resize@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<CGPUScratchBufferTextureManager::CResourceEntry>::resize(n): resize the scratch manager's resource list to n entries, filling with an empty entry (no texture or surface, no page, no pixel format)
+// Leaf: ?resize@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F38640, 47 bytes, thiscall on the vector, `ret 4`.
 // Identity: Ego_r.pdb / FableWin.pdb ?resize@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@...@@QAEXI@Z; no
 //   direct call site in the image (xref: 0 calls / 0 references); its callee is the two-argument resize that
@@ -48,7 +48,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -73,4 +73,4 @@ public:
 };
 }
 
-template void _STL::vector<CGPUScratchBufferTextureManager::CResourceEntry>::resize(unsigned int);
+template void std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::resize(unsigned int);

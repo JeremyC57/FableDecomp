@@ -1,8 +1,8 @@
-// Behaviour test for _STL::vector<char>::clear (0x008F9E90): finish drops back to start, storage and bytes untouched.
+// Behaviour test for std::vector<char>::clear (0x008F9E90): finish drops back to start, storage and bytes untouched.
 #include <cstdio>
 #include <string.h>
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)
 {
@@ -43,7 +43,7 @@ public:
 int main()
 {
     char buffer[8] = { 'a', 'b', 'c', 'd', 'e', 0, 0, 0 };
-    _STL::vector<char> v;
+    std::vector<char> v;
     v._M_start = buffer; v._M_finish = buffer + 5; v._M_end_of_storage = buffer + 8;
     v.clear();
     if (v._M_start != buffer || v._M_finish != buffer || v._M_end_of_storage != buffer + 8 || buffer[4] != 'e')

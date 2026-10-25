@@ -1,9 +1,9 @@
-// Behaviour test for _STL::vector<long>::vector<int>(int first, int last, const allocator&) (0x00453659): with two ints
+// Behaviour test for std::vector<long>::vector<int>(int first, int last, const allocator&) (0x00453659): with two ints
 // the range constructor takes the integral path -- `first` elements, each equal to `last`; zero gives an empty vector.
 #include <cstdio>
 #include <cstdlib>
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 template <class _Tp> struct _Is_integer { typedef __false_type _Integral; };
@@ -52,11 +52,11 @@ int main()
 {
     int fails = 0;
     {
-        _STL::vector<long> v(4, -7);
+        std::vector<long> v(4, -7);
         if (v._M_finish - v._M_start != 4 || v._M_end_of_storage != v._M_finish) ++fails;
         for (long* p = v._M_start; p != v._M_finish; ++p)
             if (*p != -7) ++fails;
-        _STL::vector<long> e(0, 5);
+        std::vector<long> e(0, 5);
         if (e._M_start != 0 || e._M_finish != 0) ++fails;
     }
     if (fails) { std::printf("00453659_TEST FAIL\n"); return 1; }

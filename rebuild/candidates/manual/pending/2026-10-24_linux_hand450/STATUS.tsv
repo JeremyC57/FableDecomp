@@ -35,7 +35,7 @@ address	status	bytes	test	note
 00cb5130	RELOCATION_MATCH	80v80	PASS	ImeUi_EnableIme; 1 grade
 00cb5ad0	RELOCATION_MATCH	82v82	PASS	CScriptInfoManager::GetPScriptInfo; 1 grade
 00cb5c90	RELOCATION_MATCH	228v228	PASS	CScriptInfoManager::AddScript; __forceinline CVectorMap::Add + same-TU noinline _M_insert_overflow stand-in (tag homed on the section slot); 3 grades
-00cb6420	RELOCATION_MATCH	172v172	PASS	_STL::__unguarded_linear_insert<pair<CCharString,CScriptInfo>>; 1 grade
-00cb67b0	RELOCATION_MATCH	119v119	PASS	_STL::__unguarded_partition; same-TU CBasicString::operator< stand-in; 2 grades
-00cb6bd0	RELOCATION_MATCH	134v134	PASS	_STL::__make_heap; 1 grade
-00cb6ce0	RELOCATION_MATCH	202v202	PASS	_STL::__linear_insert; 1 grade
+00cb6420	RELOCATION_MATCH	172v172	PASS	std::__unguarded_linear_insert<pair<CCharString,CScriptInfo>>; 1 grade
+00cb67b0	RELOCATION_MATCH	119v119	PASS	std::__unguarded_partition; same-TU CBasicString::operator< stand-in; 2 grades
+00cb6bd0	RELOCATION_MATCH	134v134	PASS	std::__make_heap; 1 grade
+00cb6ce0	RELOCATION_MATCH	202v202	PASS	std::__linear_insert; 1 grade

@@ -1,4 +1,4 @@
-// _STL::fill(QuadricOptimiserInternals::COptimisedFace* first, COptimisedFace* last, const COptimisedFace& val) -- assign val to every 72-byte optimiser face of [first, last)
+// std::fill(QuadricOptimiserInternals::COptimisedFace* first, COptimisedFace* last, const COptimisedFace& val) -- assign val to every 72-byte optimiser face of [first, last)
 // Leaf: ??$fill@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD04A0, length 40 bytes (no padding), __fastcall (first in ecx -> eax,
 //   last in edx, the value reference on the stack, `ret 4`).
@@ -28,7 +28,7 @@ public:
 }
 typedef QuadricOptimiserInternals::COptimisedFace COptimisedFace;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {

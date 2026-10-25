@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CBBE50 _STL::__insertion_sort over {unsigned __int64 key, long, long, CCharString} records.
+// Behaviour test for 0x00CBBE50 std::__insertion_sort over {unsigned __int64 key, long, long, CCharString} records.
 #include <cstdio>
 #include <cstring>
 

@@ -1,5 +1,5 @@
 address	status	bytes	test	note
-00a37c40	RELOCATION_MATCH	103v103	PASS	_STL::__copy<CClassTypeInfo*,CClassTypeInfo*,int> (catalog _Move<CLipSyncPhoneme*> wrong); 1 grade
+00a37c40	RELOCATION_MATCH	103v103	PASS	std::__copy<CClassTypeInfo*,CClassTypeInfo*,int> (catalog _Move<CLipSyncPhoneme*> wrong); 1 grade
 00a38080	RELOCATION_MATCH	78v78	PASS	CClassFactory scalar deleting dtor; needed the out-of-line ~CClassFactory() in the TU; 3 grades
 00a38150	RELOCATION_MATCH	100v100	PASS	vector<CClassTypeInfo>::resize(n) = resize(n, _Tp()); 1 grade
 00a38420	RELOCATION_MATCH	106v106	PASS	CCRCSymbolMap::FindSymbol; same-TU noinline LowerBound stand-in; 2 grades
@@ -13,7 +13,7 @@ address	status	bytes	test	note
 00a3cbe0	RELOCATION_MATCH	72v72	PASS	__uninitialized_fill_n<C3DAnimationStateAlpha*,unsigned int>; 1 grade
 00a3cc30	RELOCATION_MATCH	76v76	PASS	__uninitialized_copy<const C3DAnimationStateAlpha*>; 1 grade
 00a3cd00	MATCH	203v203	PASS	__copy_backward<C3DAnimationStateAlpha*>; 1 grade
-00a3cee0	MATCH	51v51	PASS	_STL::fill<C3DAnimationStateAlpha*>; 1 grade
+00a3cee0	MATCH	51v51	PASS	std::fill<C3DAnimationStateAlpha*>; 1 grade
 00a3cf20	MATCH	203v203	PASS	__copy<C3DAnimationStateAlpha*>; 1 grade
 00a3d380	RELOCATION_MATCH	90v90	PASS	vector<C3DAnimationStateAlpha>::push_back; same-TU _M_insert_overflow stand-in; 1 grade
 00a3df30	DIFFER	209v209	-	md5_append; scheduling only (lea ecx before push ebx), LTCG custom convention for md5_process; 2 grades

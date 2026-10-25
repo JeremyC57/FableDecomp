@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* last, CKeyPairCompareLess comp, pair<EBodyLocation,CWoundMorphs::CEntry>*, int*) -- heapify the wound-morph entries: sift every parent down from the last one to the root
+// std::__make_heap(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* last, CKeyPairCompareLess comp, pair<EBodyLocation,CWoundMorphs::CEntry>*, int*) -- heapify the wound-morph entries: sift every parent down from the last one to the root
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00758C90, 127 bytes (+1 int3), `ret 0Ch` (link-time __fastcall: first in ecx, last in
 //   edx, then the empty comparator and the value-type / distance-type tag pointers on the stack).
@@ -16,7 +16,7 @@ struct CWoundMorphsEntry {                       // CWoundMorphs::CEntry, 40 byt
     long Words[10];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                     // +0x00
     B second;                                    // +0x04

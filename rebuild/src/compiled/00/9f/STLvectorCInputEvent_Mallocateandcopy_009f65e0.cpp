@@ -1,4 +1,4 @@
-// _STL::vector<CInputEvent>::_M_allocate_and_copy(unsigned int n, const CInputEvent* first, const CInputEvent* last) -- STLport: malloc n input-event slots (none for zero), copy-construct [first, last) into them, return the block
+// std::vector<CInputEvent>::_M_allocate_and_copy(unsigned int n, const CInputEvent* first, const CInputEvent* last) -- STLport: malloc n input-event slots (none for zero), copy-construct [first, last) into them, return the block
 // Leaf: _M_allocate_and_copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F65E0, length 77 bytes, `ret 0Ch` (thiscall: n, first, last; `this` unused).
 // Callees: malloc @ 0x00BFEA0E, CInputEvent::CInputEvent(const CInputEvent&) @ 0x009E4850.
@@ -20,7 +20,7 @@ public:
     CInputEvent(const CInputEvent& other);       // 0x009E4850
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value)

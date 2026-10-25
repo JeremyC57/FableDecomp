@@ -1,4 +1,4 @@
-// 00756250 _STL::_Rb_tree::insert_unique
+// 00756250 std::_Rb_tree::insert_unique
 // Flags: /O2 /Oy /W3
 // Leaf: insert_unique
 namespace X_00756250 {
@@ -8,7 +8,7 @@ template<class T>struct CBasicString {void*PStringData;unsigned Length,Capacity;
 struct CCharStringData:CBasicString<char>{unsigned RefCount;};
 #pragma pack(pop)
 struct CCharString {CCharStringData*PString;CCharString();CCharString(const CCharString&);~CCharString();CCharString&operator=(const CCharString&);bool operator<(const CCharString&o)const{bool result;if(o.PString==PString)result=false;else if(!PString)result=true;else if(!o.PString)result=false;else result=*PString<*o.PString;return result;}};
-namespace _STL {
+namespace std {
 template<class A,class B>struct pair {A first;B second;pair(){}pair(const A&a,const B&b):first(a),second(b){}pair(const pair&o):first(o.first),second(o.second){}};
 typedef pair<CCharString,pair<long,long> > value_type;
 // Layout: node colour0,parent4,left8,right12,pair key16,mapped20/24; allocator756150 malloc28.

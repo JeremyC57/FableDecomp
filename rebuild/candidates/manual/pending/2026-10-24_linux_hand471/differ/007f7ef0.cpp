@@ -1,6 +1,6 @@
-// _STL::__find_if(CThing** first, CThing** last, unary_negate<CIsTriggerActivated> pred, const random_access_iterator_tag&) -- STLport four-way unrolled find_if over a receptor's trigger things: the first thing whose activation-trigger component is NOT activated, else last
+// std::__find_if(CThing** first, CThing** last, unary_negate<CIsTriggerActivated> pred, const random_access_iterator_tag&) -- STLport four-way unrolled find_if over a receptor's trigger things: the first thing whose activation-trigger component is NOT activated, else last
 // Grade: DIFFER(430v432) -- register swap only: retail keeps `first` in ebp (moved before `push esi ; push edi`) and the first test's trigger local in edi; VC7.1 here picks edi / ebp (the [ebp] accesses are the 2 extra retail bytes). Inlining decisions, the 3/2/1 switch and the GetInterface ternary all match.
-// Leaf: ??$__find_if@PAPAVCThing@@V?$unary_negate@VCIsTriggerActivated@@@_STL@@@_STL@@
+// Leaf: ??$__find_if@PAPAVCThing@@V?$unary_negate@VCIsTriggerActivated@@@std@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F7EF0, 430 bytes (+ int3 padding), `ret 8` (__fastcall: first in ecx, last in
 //   edx; the empty predicate by value and the iterator tag by reference on the stack). `last` is homed in the dead
 //   predicate slot; the predicate's address still serves as `this` of the out-of-line operator() calls.
@@ -83,7 +83,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag {};
 struct forward_iterator_tag : public input_iterator_tag {};
 struct bidirectional_iterator_tag : public forward_iterator_tag {};

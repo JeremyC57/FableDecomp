@@ -1,4 +1,4 @@
-// _STL::__copy(_Deque_iterator first, _Deque_iterator last, _Deque_iterator result, const random_access_iterator_tag&, int*) -- the random-access copy loop: assign last - first elements forward and return the advanced destination
+// std::__copy(_Deque_iterator first, _Deque_iterator last, _Deque_iterator result, const random_access_iterator_tag&, int*) -- the random-access copy loop: assign last - first elements forward and return the advanced destination
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0E460, length 178 bytes (`__fastcall`, `ret 34h`, + int3 padding). Caller: the
 // landed __copy_aux 0x00A0E790 (copy() 0x00A0EB40 -> __copy_aux -> here).
 // Callees: none.
@@ -23,7 +23,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

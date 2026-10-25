@@ -8,7 +8,7 @@ public:
     unsigned short VertexIndex[3];
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _T1, class _T2>
@@ -33,7 +33,7 @@ _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& 
 }
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -139,7 +139,7 @@ int main()
 {
     int ok = 1;
     {
-        _STL::vector<C3DTriangle2> v;
+        std::vector<C3DTriangle2> v;
         v.reserve(0u);
         if (v._M_start != 0 || v.capacity() != 0)
             ok = 0;

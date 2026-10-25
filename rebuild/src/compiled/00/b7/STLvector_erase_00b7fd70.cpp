@@ -1,4 +1,4 @@
-// _STL::vector::erase(CTVertexWaterBackground* first, CTVertexWaterBackground* last) -- (vector<CTVertexWaterBackground>, the water patch tesselator's bridge vertex buffer) move the tail down over [first, last), set the new finish and return first
+// std::vector::erase(CTVertexWaterBackground* first, CTVertexWaterBackground* last) -- (vector<CTVertexWaterBackground>, the water patch tesselator's bridge vertex buffer) move the tail down over [first, last), set the new finish and return first
 // Leaf: ?erase@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B7FD70, 112 bytes. __fastcall, `ret 8`.
 // Callees: none.
@@ -23,7 +23,7 @@ public:
     float ShoreLookUpArray[12];                         // +0x08
 };
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };

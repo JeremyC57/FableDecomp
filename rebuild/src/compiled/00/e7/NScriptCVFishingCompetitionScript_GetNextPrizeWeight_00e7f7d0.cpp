@@ -11,7 +11,7 @@
 // Shape: `next = PrizeNumber + 1; if (PrizeNumber == -1) ++next;` gives retail's `lea ecx,[eax+1]` before the compare and
 //   the conditional `inc ecx` (the `prize == -1 ? 0 : prize` then `[prize + 1]` form folds the +1 into `fld [edx+eax*4+4]`
 //   with an `xor eax,eax` arm); STLport `operator[]` is `*(begin() + n)`.
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
@@ -32,7 +32,7 @@ public:
 }
 struct CScriptDef {
     unsigned char _pad000[0x5d0];
-    _STL::vector<float> FishPrizeWeights;          // +0x5d0
+    std::vector<float> FishPrizeWeights;          // +0x5d0
 };
 extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
 namespace NScript {

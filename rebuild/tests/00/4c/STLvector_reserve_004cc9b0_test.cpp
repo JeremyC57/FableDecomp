@@ -10,7 +10,7 @@ enum ETCInterfaceType { TC_NONE = 0, TC_TEST_MIN = -128, TC_TEST_MAX = 127 };   
 class CTCBase;
 static char gThings[64];                                // fake component addresses
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -78,8 +78,8 @@ public:
     }
 };
 }
-typedef _STL::pair<ETCInterfaceType, CTCBase*> TElem;
-typedef _STL::vector<TElem> TVec;
+typedef std::pair<ETCInterfaceType, CTCBase*> TElem;
+typedef std::vector<TElem> TVec;
 static TElem Mk(int i) { return TElem((ETCInterfaceType)(i * 3 - 7), (CTCBase*)(gThings + i)); }
 static bool Is(const TElem& e, int i) { return (int)e.first == i * 3 - 7 && (char*)e.second == gThings + i; }
 

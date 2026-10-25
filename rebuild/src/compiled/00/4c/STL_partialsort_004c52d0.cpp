@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CMeshInfo* first, CMeshInfo* middle, CMeshInfo* last, CMeshInfo*, CSortPrimaryMeshesLast comp) -- STLport partial sort of a mesh-info run under the "primary meshes last" order: heapify the prefix, sift every tail element that orders before the heap top into it, then heap-sort the prefix
+// std::__partial_sort(CMeshInfo* first, CMeshInfo* middle, CMeshInfo* last, CMeshInfo*, CSortPrimaryMeshesLast comp) -- STLport partial sort of a mesh-info run under the "primary meshes last" order: heapify the prefix, sift every tail element that orders before the heap top into it, then heap-sort the prefix
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C52D0, 167 bytes, `ret 0Ch` (/Gr algorithm TU, explicit __fastcall here: first in
 //   ecx, middle in edx, then last, the value-type tag pointer and the comparator slot).
@@ -22,7 +22,7 @@ public:
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return !a.PrimaryMesh; }
 };
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Compare, class _Tp, class _Distance>
 void __fastcall __make_heap(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp, _Tp*, _Distance*);   // 0x004C3B60
 template <class _RandomAccessIter, class _Distance, class _Tp, class _Compare>

@@ -84,7 +84,7 @@ None. No row holds a second function body.
 
 ## Label corrections
 
-- 00ad4960 `_Sort_heap<long*>`: is `_STL::sort_heap<COptimisedVertex::CGroup*, bool (__fastcall*)(const CGroup&, const CGroup&)>`.
+- 00ad4960 `_Sort_heap<long*>`: is `std::sort_heap<COptimisedVertex::CGroup*, bool (__fastcall*)(const CGroup&, const CGroup&)>`.
 - 0x00AD1DD0: its CMatchProbability label is wrong. It is `__adjust_heap` over CGroup.
 - 00ad4c40 `Intrusive_List_Pair_Construct`: is `QuadricOptimiserInternals::CUniqueVertex::CUniqueVertex()`. The landed
   0x00AD4A70 "CTwoLongSets" destructor is `~CUniqueVertex`.

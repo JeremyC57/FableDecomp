@@ -101,7 +101,7 @@ Catalogue rows (catalogue name -> real name):
 - 0095f830 `CThing_UpdateSkillState` -> CAIStateGroup_OpinionReactionRoot::SetGreetedThingReactingTo.
 - 0096eb40 `Combat_ProcessMeleeAttackMessage` -> CAIStateGroup_MeleeCombatNearby::AlertAlliesInVicinity (bool, private).
 - 0097c580 `CAIStateGroup_ScorpionKing_ExecuteBriarRoseAbility` -> CAIStateGroup_ScorpionKing::SpawnBabies.
-- STLport sort rows. Every name below means `_STL::<name>` of that row's comparator family:
+- STLport sort rows. Every name below means `std::<name>` of that row's comparator family:
   - `__unguarded_partition`: 00978a80 / 0097ae60 `std_sort_Partition_HeuristicBitch[_Variant]`, 0096d6f0 `std_sort_Partition_WithPivot`.
   - `__unguarded_insertion_sort_aux`: 00978b00 / 0097aee0 `std_sort_InsertionSort_HeuristicBitch[_Variant]`, 0096d780 `std_sort_InsertionSort_Alternate`.
   - `__linear_insert`: 00978c50 / 0097b030 `std_sort_InsertionPoint_HeuristicBitch[_Variant]`.

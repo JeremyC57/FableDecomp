@@ -1,4 +1,4 @@
-// _STL::list::_M_insert_dispatch(iterator pos, const_iterator first, const_iterator last, const __false_type&) -- STLport range insert for a list of counted region-connection pointers: copy every pointer of [first, last) into a new node (count bumped) linked in before pos
+// std::list::_M_insert_dispatch(iterator pos, const_iterator first, const_iterator last, const __false_type&) -- STLport range insert for a list of counted region-connection pointers: copy every pointer of [first, last) into a new node (count bumped) linked in before pos
 // Leaf: ??$_M_insert_dispatch@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A80E90, 78 bytes (+ int3 padding to 80), thiscall `ret 10h` (this never read: the
 //   node allocator is malloc). pos, first and last are one-word iterators by value, then the __false_type reference.
@@ -32,7 +32,7 @@ public:
 
 class CNavRegionConnection;
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -130,6 +130,6 @@ public:
 }
 
 typedef CCountedPointer<CNavRegionConnection> CConnectionPtr;
-typedef _STL::list<CConnectionPtr>            CConnectionList;
+typedef std::list<CConnectionPtr>            CConnectionList;
 
-template void CConnectionList::_M_insert_dispatch<CConnectionList::const_iterator>(CConnectionList::iterator, CConnectionList::const_iterator, CConnectionList::const_iterator, const _STL::__false_type&);
+template void CConnectionList::_M_insert_dispatch<CConnectionList::const_iterator>(CConnectionList::iterator, CConnectionList::const_iterator, CConnectionList::const_iterator, const std::__false_type&);

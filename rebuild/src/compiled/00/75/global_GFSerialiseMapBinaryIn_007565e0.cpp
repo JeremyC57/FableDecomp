@@ -29,9 +29,9 @@ struct CCharString {unsigned int Data;__declspec(noinline) CCharString():Data(0)
 // Slot6 returns CCharString by hidden result pointer; the flattened header holds its vptr at0.
 // This data-free view supplies only virtual dispatch signatures, retaining all real stream fields.
 struct CMemoryDataInputStreamVirtualSlots {virtual void v00();virtual void v01();virtual void v02();virtual void v03();virtual void v04();virtual void v05();virtual CCharString ReadString();};
-namespace _STL {template<class First,class Second>struct pair {First first;Second second;pair(){}pair(const First&f,const Second&s):first(f),second(s){}};}
-typedef _STL::pair<int,int> Value;
-typedef _STL::pair<CCharString,Value> Pair;
+namespace std {template<class First,class Second>struct pair {First first;Second second;pair(){}pair(const First&f,const Second&s):first(f),second(s){}};}
+typedef std::pair<int,int> Value;
+typedef std::pair<CCharString,Value> Pair;
 struct _Rb_tree_node_base {unsigned int State;_Rb_tree_node_base* Parent;_Rb_tree_node_base* Left;_Rb_tree_node_base* Right;};
 struct _Rb_tree_insert_result {_Rb_tree_node_base* Position;bool Added;_Rb_tree_insert_result(_Rb_tree_node_base* p,bool a):Position(p),Added(a){}_Rb_tree_insert_result(const _Rb_tree_insert_result& x):Position(x.Position),Added(x.Added){}};
 struct map {_Rb_tree_node_base* Head;unsigned int Size;void _M_erase(_Rb_tree_node_base*);_Rb_tree_insert_result insert(const Pair&);};

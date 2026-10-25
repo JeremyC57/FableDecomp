@@ -1,4 +1,4 @@
-// 006bf1a0 _STL::vector<_STL::pair<long,CMusicManager::CRegisteredMusicEntry>>::_M_insert_overflow
+// 006bf1a0 std::vector<std::pair<long,CMusicManager::CRegisteredMusicEntry>>::_M_insert_overflow
 // Flags: /O2 /Oy /W3
 // Leaf: _M_insert_overflow
 #include <stdlib.h>
@@ -10,7 +10,7 @@ struct CWideStringData{unsigned short*PData,*Finish,*Storage;int RefCount;};
 struct CWideString{CWideStringData*PData;CWideString();CWideString(const CWideString&);~CWideString();};
 // Layout: PDB CRegisteredMusicEntry has SrcFileName+0,DstFileName+4,Gain+8,Offset+12,CacheToHD+16, total20; pair stride24.
 struct CMusicManager{struct CRegisteredMusicEntry{CWideString SrcFileName,DstFileName;float Gain,Offset;bool CacheToHD;};};
-namespace _STL{
+namespace std{
 struct __false_type{__false_type(){}};
 template<class A,class B>struct pair{A first;B second;pair(){}__forceinline pair(const pair&x):first(x.first),second(x.second){}};
 typedef pair<long,CMusicManager::CRegisteredMusicEntry> MusicEntry;
@@ -38,9 +38,9 @@ CWideString::CWideString():PData(0){}
 CWideString::CWideString(const CWideString&x):PData(x.PData){if(PData)++PData->RefCount;}
 CWideString::~CWideString(){if(PData&&--PData->RefCount<=0){free(PData->PData);delete PData;--allocations;}}
 static void text(CWideString&s,unsigned short ch){s.PData=new CWideStringData;s.PData->RefCount=1;s.PData->PData=(unsigned short*)malloc(2*sizeof(unsigned short));s.PData->Finish=s.PData->PData+1;s.PData->Storage=s.PData->PData+2;s.PData->PData[0]=ch;s.PData->PData[1]=0;++allocations;}
-namespace _STL{
+namespace std{
 
 
 template<>void vector<MusicEntry>::_M_clear(){for(MusicEntry*p=_M_start;p!=_M_finish;++p)p->~MusicEntry();free(_M_start);}
 }
-int main(){using namespace _STL;assert(sizeof(MusicEntry)==24&&sizeof(CWideStringData)==16);{MusicEntry seed;seed.first=42;seed.second.Gain=.75f;seed.second.Offset=3;seed.second.CacheToHD=true;text(seed.second.SrcFileName,65);text(seed.second.DstFileName,90);vector<MusicEntry>v;memset(&v,0,sizeof v);__false_type tag;v._M_insert_overflow(v._M_start,seed,tag,1,false);assert(v._M_finish-v._M_start==1&&seed.second.SrcFileName.PData->RefCount==2);v._M_insert_overflow(v._M_start,seed,tag,2,false);assert(v._M_finish-v._M_start==3&&v._M_start[2].second.Offset==3&&seed.second.DstFileName.PData->RefCount==4);v._M_insert_overflow(v._M_finish,seed,tag,0,true);assert(v._M_finish-v._M_start==3&&v._M_end_of_storage-v._M_start==6);v._M_clear();assert(seed.second.SrcFileName.PData->RefCount==1);}assert(!allocations);puts("006bf1a0_TEST PASS");}
+int main(){using namespace std;assert(sizeof(MusicEntry)==24&&sizeof(CWideStringData)==16);{MusicEntry seed;seed.first=42;seed.second.Gain=.75f;seed.second.Offset=3;seed.second.CacheToHD=true;text(seed.second.SrcFileName,65);text(seed.second.DstFileName,90);vector<MusicEntry>v;memset(&v,0,sizeof v);__false_type tag;v._M_insert_overflow(v._M_start,seed,tag,1,false);assert(v._M_finish-v._M_start==1&&seed.second.SrcFileName.PData->RefCount==2);v._M_insert_overflow(v._M_start,seed,tag,2,false);assert(v._M_finish-v._M_start==3&&v._M_start[2].second.Offset==3&&seed.second.DstFileName.PData->RefCount==4);v._M_insert_overflow(v._M_finish,seed,tag,0,true);assert(v._M_finish-v._M_start==3&&v._M_end_of_storage-v._M_start==6);v._M_clear();assert(seed.second.SrcFileName.PData->RefCount==1);}assert(!allocations);puts("006bf1a0_TEST PASS");}

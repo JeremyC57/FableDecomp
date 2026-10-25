@@ -29,7 +29,7 @@ struct CTextureMorphEntry {                     // 20 bytes (Ego_r.pdb), trivial
     ECompositeBlendType Blend;                  // +0x10
 };
 
-struct CMorphEntryPair {                        // _STL::pair<EHeroMorphType, CTextureMorphEntry>, 24 bytes
+struct CMorphEntryPair {                        // std::pair<EHeroMorphType, CTextureMorphEntry>, 24 bytes
     EHeroMorphType     first;                   // +0x00
     CTextureMorphEntry second;                  // +0x04
     CMorphEntryPair(const CMorphEntryPair& o) : first(o.first), second(o.second) { }

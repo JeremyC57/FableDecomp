@@ -1,5 +1,5 @@
-// _STL::__uninitialized_fill_n(CResourcePage* first, unsigned int n, const CResourcePage& x, const __false_type&) -- (CGPUScratchBufferTextureManager::CResourcePage) copy-construct n copies of x into raw storage at first, returning the end
-// Leaf: ??$__uninitialized_fill_n@PAUCResourcePage@CGPUScratchBufferTextureManager@@IU12@@_STL@@YIPAUCResourcePage@CGPUScratchBufferTextureManager@@PAU12@IABU12@ABU__false_type@0@@Z
+// std::__uninitialized_fill_n(CResourcePage* first, unsigned int n, const CResourcePage& x, const __false_type&) -- (CGPUScratchBufferTextureManager::CResourcePage) copy-construct n copies of x into raw storage at first, returning the end
+// Leaf: ??$__uninitialized_fill_n@PAUCResourcePage@CGPUScratchBufferTextureManager@@IU12@@std@@YIPAUCResourcePage@CGPUScratchBufferTextureManager@@PAU12@IABU12@ABU__false_type@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F384E0, 163 bytes, __fastcall (first ecx, n edx), `ret 8`.
 // Identity: called by vector<CResourcePage>::_M_insert_overflow 0x00F38770 when the fill count is not 1 (see 0x00F38440);
 //   catalog "Vector_CopyMultiple_Deep" is descriptive.
@@ -12,7 +12,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
@@ -77,13 +77,13 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CGPUScratchBufferTextureManager {
 public:
     struct CResourcePage {                       // 0x1c bytes in retail (Ego_r.pdb 32: CArray<long> is 16 there)
         long                ScratchPool;           // +0x00
-        _STL::vector<long>  ResourceList;          // +0x04
+        std::vector<long>  ResourceList;          // +0x04
         unsigned char*      NextFreeBufferAddress; // +0x10
         long                FreeSpaceSize;         // +0x14
         bool                EnableAutoRestore;     // +0x18
@@ -91,7 +91,7 @@ public:
 };
 typedef CGPUScratchBufferTextureManager::CResourcePage CResourcePage;
 
-namespace _STL {
+namespace std {
 
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
@@ -104,4 +104,4 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 
 template CResourcePage* __fastcall __uninitialized_fill_n(CResourcePage*, unsigned int, const CResourcePage&, const __false_type&);
 
-}   // namespace _STL
+}   // namespace std

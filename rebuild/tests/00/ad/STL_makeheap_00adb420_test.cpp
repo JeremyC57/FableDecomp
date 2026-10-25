@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// Host model of _STL::__make_heap over CVertexGroupBlockOptimiser::CBlockInfo (12 bytes) under less<CBlockInfo>
+// Host model of std::__make_heap over CVertexGroupBlockOptimiser::CBlockInfo (12 bytes) under less<CBlockInfo>
 // (CBlockInfo::operator< on Cost): every parent from (len - 2) / 2 down to the root is sifted down (__adjust_heap +
 // __push_heap), leaving the highest cost at the top.
 struct CBlockInfo {

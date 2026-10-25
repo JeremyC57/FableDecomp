@@ -1,41 +1,41 @@
 address	status	bytes	test	note
-009b69e0	RELOCATION_MATCH	66v66	PASS	_STL::__insertion_sort<pair<CCharString,ulong>*, CKeyPairCompareLess> (/Gr); label Swap_CCharString_Pair wrong
-009b6a40	RELOCATION_MATCH	130v130	PASS	_STL::__partial_sort<CWideString*> (/Gr; make_heap + __forceinline __pop_heap inlined)
-009b6b70	RELOCATION_MATCH	107v107	PASS	_STL::__partial_sort<pair<ulong,long>*> (CDefinitionManager::NameCRCToIndexMap sort)
-009b6be0	RELOCATION_MATCH	107v107	PASS	_STL::__partial_sort<pair<ulong,ulong>*> (CDefinitionManager::CompressedOffsets sort)
-009b6d20	RELOCATION_MATCH	88v88	PASS	_STL::__make_heap<pair<CCharString,ulong>*>
-009b7320	RELOCATION_MATCH	177v177	PASS	_STL::__uninitialized_copy<const pair<ulong,CDefinitionManager::CDefClassInfo>*>
-009b73e0	RELOCATION_MATCH	159v159	PASS	_STL::__uninitialized_fill_n<pair<ulong,CDefClassInfo>*, unsigned int>
-009b7650	RELOCATION_MATCH	153v153	PASS	_STL::swap<pair<ulong,CDefClassInfo>>; label swap<CEngineTextureDecal> propagated
-009b76f0	RELOCATION_MATCH	139v139	PASS	_STL::__unguarded_linear_insert<pair<ulong,CDefClassInfo>*>
+009b69e0	RELOCATION_MATCH	66v66	PASS	std::__insertion_sort<pair<CCharString,ulong>*, CKeyPairCompareLess> (/Gr); label Swap_CCharString_Pair wrong
+009b6a40	RELOCATION_MATCH	130v130	PASS	std::__partial_sort<CWideString*> (/Gr; make_heap + __forceinline __pop_heap inlined)
+009b6b70	RELOCATION_MATCH	107v107	PASS	std::__partial_sort<pair<ulong,long>*> (CDefinitionManager::NameCRCToIndexMap sort)
+009b6be0	RELOCATION_MATCH	107v107	PASS	std::__partial_sort<pair<ulong,ulong>*> (CDefinitionManager::CompressedOffsets sort)
+009b6d20	RELOCATION_MATCH	88v88	PASS	std::__make_heap<pair<CCharString,ulong>*>
+009b7320	RELOCATION_MATCH	177v177	PASS	std::__uninitialized_copy<const pair<ulong,CDefinitionManager::CDefClassInfo>*>
+009b73e0	RELOCATION_MATCH	159v159	PASS	std::__uninitialized_fill_n<pair<ulong,CDefClassInfo>*, unsigned int>
+009b7650	RELOCATION_MATCH	153v153	PASS	std::swap<pair<ulong,CDefClassInfo>>; label swap<CEngineTextureDecal> propagated
+009b76f0	RELOCATION_MATCH	139v139	PASS	std::__unguarded_linear_insert<pair<ulong,CDefClassInfo>*>
 009b7bc0	DIFFER	115v115	-	map<ulong,CDefPointer<CDefClassBase>>::operator[] (RecompiledDefs); scheduling only: null mapped-word store vs hidden-pointer push order
 009b7ca0	RELOCATION_MATCH	72v72	PASS	vector<pair<CCharString,ulong>>::push_back
-009b7cf0	RELOCATION_MATCH	217v217	PASS	_STL::__introsort_loop<CWideString*> (__forceinline __median, inline partial_sort)
-009b80c0	RELOCATION_MATCH	171v171	PASS	_STL::__unguarded_insertion_sort_aux<pair<ulong,CDefClassInfo>*>
+009b7cf0	RELOCATION_MATCH	217v217	PASS	std::__introsort_loop<CWideString*> (__forceinline __median, inline partial_sort)
+009b80c0	RELOCATION_MATCH	171v171	PASS	std::__unguarded_insertion_sort_aux<pair<ulong,CDefClassInfo>*>
 009b83b0	RELOCATION_MATCH	135v135	PASS	CVectorMap<CCharString,ulong>::Insert (push_back __forceinline)
-009b8630	RELOCATION_MATCH	97v97	PASS	_STL::__unguarded_partition<pair<ulong,CDefClassInfo>*> (iter_swap inline -> out-of-line swap)
-009b86b0	RELOCATION_MATCH	189v189	PASS	_STL::__partial_sort<pair<CCharString,ulong>*> (pasted CBasicString body, noinline operator<)
-009b8770	RELOCATION_MATCH	161v161	PASS	_STL::__pop_heap<pair<ulong,CDefClassInfo>*>; label _Pop_heap<CTestQuest*...> propagated
-009b8820	RELOCATION_MATCH	218v218	PASS	_STL::__make_heap<pair<ulong,CDefClassInfo>*>
-009b8c00	RELOCATION_MATCH	160v160	PASS	_STL::__linear_insert<pair<ulong,CDefClassInfo>*> (copy_backward dispatch inlined)
+009b8630	RELOCATION_MATCH	97v97	PASS	std::__unguarded_partition<pair<ulong,CDefClassInfo>*> (iter_swap inline -> out-of-line swap)
+009b86b0	RELOCATION_MATCH	189v189	PASS	std::__partial_sort<pair<CCharString,ulong>*> (pasted CBasicString body, noinline operator<)
+009b8770	RELOCATION_MATCH	161v161	PASS	std::__pop_heap<pair<ulong,CDefClassInfo>*>; label _Pop_heap<CTestQuest*...> propagated
+009b8820	RELOCATION_MATCH	218v218	PASS	std::__make_heap<pair<ulong,CDefClassInfo>*>
+009b8c00	RELOCATION_MATCH	160v160	PASS	std::__linear_insert<pair<ulong,CDefClassInfo>*> (copy_backward dispatch inlined)
 009b9290	RELOCATION_MATCH	101v101	PASS	CVectorMap<ulong,CDefinitionManager::CDefClassInfo>::Insert (push_back out of line)
 009b99c0	DIFFER	84v85	-	CStringParser::ReadNextSymbol; register/order residue after SetAsSubString (lea edx+edi vs add)
 009bc9d0	RELOCATION_MATCH	71v71	PASS	FormatTextForVWindow (temporary in the dead text argument slot)
 009bcf70	RELOCATION_MATCH	78v78	PASS	CXMVPlayer::StaticLoadXMVCode (inlined CCodeSectionManager singleton)
 009bcfc0	RELOCATION_MATCH	90v90	PASS	CXMVPlayer::StaticReleaseXMVCode (signed clamp after dec)
 009bd020	RELOCATION_MATCH	107v107	PASS	CXMVPlayer::GlobalRegisterPlayer (by-value CCharString args built in stack slots)
-009be060	RELOCATION_MATCH	88v88	PASS	_STL::_List_base<CSubTitle>::clear
+009be060	RELOCATION_MATCH	88v88	PASS	std::_List_base<CSubTitle>::clear
 009bede0	MATCH	29v29	PASS	CDisplayManager::GetVertexShaderVersion; label GetIndexBufferUsageCost wrong
 009bee00	MATCH	29v29	PASS	CDisplayManager::GetPixelShaderVersion; label Engine_CalculateTextureMemoryFromQuality wrong
 009c0190	RELOCATION_MATCH	47v47	PASS	CDisplayManager::AddDeviceResetCallback (list push_back inlined)
-009c1860	MATCH	50v50	PASS	_STL::less<CDisplayModeDesc>::operator()
+009c1860	MATCH	50v50	PASS	std::less<CDisplayModeDesc>::operator()
 009c3530	RELOCATION_MATCH	72v72	PASS	CFileInstaller::SetDirtyDiscError (static __fastcall; bool argument reused in bl)
 009c37a0	DIFFER	125v128	-	CFileInstaller::OnFileReadCompletion; retail dead `mov cl,[eax+7Ah]` (cv-qualified ExitThread) + register rotation: lane gap
 009c3820	DIFFER	148v151	-	CFileInstaller::OnFileWriteCompletion; same dead ExitThread load as 009c37a0: lane gap
 009c4230	RELOCATION_MATCH	155v155	PASS	CFileInstaller::DecompressionThreadMain (and esp,-8 frame from the 8-byte lock)
 009c43e0	RELOCATION_MATCH	61v61	PASS	CFileInstaller::IsFileCompleted (end() before find)
-009c6af0	RELOCATION_MATCH	59v59	PASS	_STL::list<CFileInstaller::CPendingWrite>::push_back
-009c7730	RELOCATION_MATCH	35v35	PASS	_STL::list<CFileInstaller::CActiveFile>::list(const allocator_type&)
+009c6af0	RELOCATION_MATCH	59v59	PASS	std::list<CFileInstaller::CPendingWrite>::push_back
+009c7730	RELOCATION_MATCH	35v35	PASS	std::list<CFileInstaller::CActiveFile>::list(const allocator_type&)
 009c7980	RELOCATION_MATCH	76v76	PASS	NGameText::ConstructString(CWideString&, const CWideString&)
 009c7ba0	RELOCATION_MATCH	25v25	PASS	NGameText::ConstructString(CWideString&, long, long, long)
 009c7c20	RELOCATION_MATCH	211v211	PASS	NGameText::ConstructString(CWideString&, const vector<CWideString>&)

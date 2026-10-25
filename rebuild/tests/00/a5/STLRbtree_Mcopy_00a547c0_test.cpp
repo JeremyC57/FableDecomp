@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A547C0: _STL::_Rb_tree<CCharString, pair<const CCharString, long>>::_M_copy (structural copy: recurse right, walk left)
+// Behaviour test for 0x00A547C0: std::_Rb_tree<CCharString, pair<const CCharString, long>>::_M_copy (structural copy: recurse right, walk left)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -42,7 +42,7 @@ public:
 };
 static bool Eq(const CCharString& s, const char* t) { return strcmp(s.c_str(), t) == 0; }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _T1, class _T2>
@@ -127,9 +127,9 @@ _Rb_tree<_Key, _Value, _Compare, _Alloc>::_M_copy(_Link_type __x, _Link_type __p
 }
 }
 
-typedef _STL::pair<const CCharString, long> TValue;
-typedef _STL::_Rb_tree<CCharString, TValue, _STL::less<CCharString>, _STL::allocator<TValue> > TTree;
-typedef _STL::_Rb_tree_node<TValue> TNode;
+typedef std::pair<const CCharString, long> TValue;
+typedef std::_Rb_tree<CCharString, TValue, std::less<CCharString>, std::allocator<TValue> > TTree;
+typedef std::_Rb_tree_node<TValue> TNode;
 
 static TNode* MakeNode(const char* key, long value, char color, TNode* parent)
 {
@@ -140,7 +140,7 @@ static TNode* MakeNode(const char* key, long value, char color, TNode* parent)
     n->_M_left = n->_M_right = 0;
     return n;
 }
-static void FreeTree(_STL::_Rb_tree_node_base* x)
+static void FreeTree(std::_Rb_tree_node_base* x)
 {
     if (x == 0) return;
     FreeTree(x->_M_left);
@@ -148,7 +148,7 @@ static void FreeTree(_STL::_Rb_tree_node_base* x)
     ((TNode*)x)->_M_value_field.~TValue();
     free(x);
 }
-static bool SameTree(const _STL::_Rb_tree_node_base* a, const _STL::_Rb_tree_node_base* b, const _STL::_Rb_tree_node_base* parentB)
+static bool SameTree(const std::_Rb_tree_node_base* a, const std::_Rb_tree_node_base* b, const std::_Rb_tree_node_base* parentB)
 {
     if (a == 0 || b == 0) return a == b;
     if (a == b || b->_M_parent != parentB || a->_M_color != b->_M_color) return false;
@@ -174,9 +174,9 @@ int main()
         TNode* z = MakeNode("0", 0, 0, a);
         d->_M_left = b; d->_M_right = f; b->_M_left = a; b->_M_right = c; f->_M_left = e; a->_M_left = z;
         TTree t;
-        _STL::_Rb_tree_node_base header;
+        std::_Rb_tree_node_base header;
         TNode* copy = t._M_copy(d, (TNode*)&header);
-        Check(copy != d && copy->_M_parent == (_STL::_Rb_tree_node_base*)&header);
+        Check(copy != d && copy->_M_parent == (std::_Rb_tree_node_base*)&header);
         Check(SameTree(d->_M_left, copy->_M_left, copy) && SameTree(d->_M_right, copy->_M_right, copy));
         Check(Eq(copy->_M_value_field.first, "d") && copy->_M_value_field.second == 4 && copy->_M_color == 1);
         int live = g_liveStrings;

@@ -28,7 +28,7 @@ public:
     T* Object;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -126,7 +126,7 @@ template class map<unsigned long, CDefPointer<CDefClassBase> >;
 // returns the hint), so the test checks operator[]'s own logic: the lower_bound walk, the end / key_comp test, the hinted
 // insert of {k, T()} and the returned mapped slot.
 CDefClassBase::~CDefClassBase() { }
-typedef _STL::map<unsigned long, CDefPointer<CDefClassBase> > TMap;
+typedef std::map<unsigned long, CDefPointer<CDefClassBase> > TMap;
 typedef TMap::value_type TValue;
 struct STestNode { long color; STestNode* parent; STestNode* left; STestNode* right; TValue value; };
 static STestNode* MakeNode(unsigned long k)

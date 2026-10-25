@@ -25,7 +25,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
@@ -262,13 +262,13 @@ template <class _Tp, class _Alloc> void deque<_Tp, _Alloc>::_M_push_front_aux_v(
     _Construct(this->_M_start._M_cur, __t_copy);
 }
 }
-typedef _STL::deque<C2DVector> Deque;
+typedef std::deque<C2DVector> Deque;
 typedef Deque::iterator It;
 typedef Deque::const_iterator CIt;
 
 static bool Is(const C2DVector& v, float k) { return v.X == k && v.Y == -k; }
 static bool Same(const C2DVector& v, float x, float y) { return v.X == x && v.Y == y; }
-using namespace _STL;
+using namespace std;
 
 int main()
 {

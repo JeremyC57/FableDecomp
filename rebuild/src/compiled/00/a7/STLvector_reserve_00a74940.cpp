@@ -1,4 +1,4 @@
-// _STL::vector::reserve(unsigned int n) -- STLport reserve for a vector of 16-byte C2DLineF lines: when the capacity is below n, copy the lines into a fresh n-element block and free the old one, or just allocate when the vector is empty; the size is kept
+// std::vector::reserve(unsigned int n) -- STLport reserve for a vector of 16-byte C2DLineF lines: when the capacity is below n, copy the lines into a fresh n-element block and free the old one, or just allocate when the vector is empty; the size is kept
 // Leaf: ?reserve@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A74940, 171 bytes, thiscall `ret 4`.
 // Caller: the line-vector copy at 0x00A74EA0 (this chunk, call 0x00A74ED4: a zeroed local vector reserved to the size).
@@ -27,7 +27,7 @@ public:
     C2DVector End;                                          // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -112,4 +112,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 }
 
-template void _STL::vector<C2DLineF>::reserve(unsigned int);
+template void std::vector<C2DLineF>::reserve(unsigned int);

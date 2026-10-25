@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A7D570 _STL::__unguarded_linear_insert over (unsigned __int64 key, value) entries: larger keys
+// Behaviour test for 0x00A7D570 std::__unguarded_linear_insert over (unsigned __int64 key, value) entries: larger keys
 // shift up one slot (64-bit compare: high word first), the value lands in the hole; equal keys stop the shift.
 #include <cstdio>
 struct SEntry { unsigned long long first; bool second; };

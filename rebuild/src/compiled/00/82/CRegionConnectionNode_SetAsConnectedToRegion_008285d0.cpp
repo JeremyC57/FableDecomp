@@ -15,7 +15,7 @@
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __true_type { __true_type() { } };
 
@@ -101,7 +101,7 @@ void vector<T>::_M_insert_overflow(T* __position, const T& __x, const __true_typ
 class CRegionConnectionNode {
 public:
     long               RegionID;                            // +0x00
-    _STL::vector<long> Connections;                         // +0x04
+    std::vector<long> Connections;                         // +0x04
     long               MostRecentSearchID;                  // +0x10
     long               FirstNodeInSearch;                   // +0x14
     void SetAsConnectedToRegion(long region, bool connected);
@@ -110,8 +110,8 @@ public:
 void CRegionConnectionNode::SetAsConnectedToRegion(long region, bool connected)
 {
     if (connected) {
-        if (_STL::find(Connections.begin(), Connections.end(), region) == Connections.end())
+        if (std::find(Connections.begin(), Connections.end(), region) == Connections.end())
             Connections.push_back(region);
     } else
-        Connections.erase(_STL::remove(Connections.begin(), Connections.end(), region), Connections.end());
+        Connections.erase(std::remove(Connections.begin(), Connections.end(), region), Connections.end());
 }

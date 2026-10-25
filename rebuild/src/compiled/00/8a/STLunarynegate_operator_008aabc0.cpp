@@ -1,4 +1,4 @@
-// _STL::unary_negate::operator()(const C3DVector& x) const -- not1(CVectorFilter_FurtherFromPointThan): is the point within the radius of the centre on the XY plane
+// std::unary_negate::operator()(const C3DVector& x) const -- not1(CVectorFilter_FurtherFromPointThan): is the point within the radius of the centre on the XY plane
 // Leaf: ??R?$unary_negate@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AABC0, length 77 bytes (+ int3 padding), `ret 4`.
 // Identity: one caller, 0x008AAD13 in the STLport __find_if 0x008AAC50 that the remove_if 0x008AC060 calls; the
@@ -35,7 +35,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg, class _Result>
 struct unary_function {
     typedef _Arg argument_type;

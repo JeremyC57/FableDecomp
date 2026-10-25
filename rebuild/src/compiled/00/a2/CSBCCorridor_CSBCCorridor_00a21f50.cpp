@@ -39,7 +39,7 @@ public:
     C2DVector ToInternal;                                           // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -94,7 +94,7 @@ public:
     virtual ~CSB();                                                 // slot 0 (??_G)
     virtual bool Process(const CSteeringAgent* agent) = 0;          // slot 1
     virtual ESB_TYPE GetType() = 0;                                 // slot 2
-    virtual void CreateLineList(_STL::vector<C3DVector>& lines);    // slot 3
+    virtual void CreateLineList(std::vector<C3DVector>& lines);    // slot 3
     virtual void Reset();                                           // slot 4
     CSB() { }
     CKinematic Output;                                              // +0x04
@@ -118,10 +118,10 @@ public:
     virtual ~CSBCCorridor();
     virtual bool Process(const CSteeringAgent* agent);              // 0x00A880C0
     virtual ESB_TYPE GetType();                                     // 0x00A21F90
-    virtual void CreateLineList(_STL::vector<C3DVector>& lines);    // 0x00A887B0
+    virtual void CreateLineList(std::vector<C3DVector>& lines);    // 0x00A887B0
     virtual void Reset();                                           // 0x00A88080
 
-    _STL::list<CWall> Walls;                                        // +0x18
+    std::list<CWall> Walls;                                        // +0x18
     C2DVector         CurrentEndPoint;                              // +0x1C
     float             BestLeft;                                     // +0x24
     float             BestRight;                                    // +0x28

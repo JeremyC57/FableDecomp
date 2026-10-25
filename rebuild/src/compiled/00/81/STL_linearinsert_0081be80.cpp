@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SKeyedPair12* first, SKeyedPair12* last, SKeyedPair12 val, CKeyPairCompareLess comp) -- insertion-sort step over (unsigned long key, 8-byte payload) pairs: a value smaller than the first element shifts [first, last) up one slot and goes to the front, else it is linearly inserted from the back
+// std::__linear_insert(SKeyedPair12* first, SKeyedPair12* last, SKeyedPair12 val, CKeyPairCompareLess comp) -- insertion-sort step over (unsigned long key, 8-byte payload) pairs: a value smaller than the first element shifts [first, last) up one slot and goes to the front, else it is linearly inserted from the back
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081BE80, 91 bytes, `ret 10h` (link-time __fastcall /Gr TU: first in ecx, last in
 //   edx, the 12-byte value and the empty comparator on the stack).
@@ -16,7 +16,7 @@ struct SPayload8 {                          // 8-byte POD payload
     long m_b;                               // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
 template <class A, class B> struct pair {

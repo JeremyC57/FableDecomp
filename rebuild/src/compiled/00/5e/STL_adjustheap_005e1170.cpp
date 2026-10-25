@@ -1,4 +1,4 @@
-// _STL::__adjust_heap(CCharString* first, int holeIndex, int len, CCharString val, less<CCharString> comp) -- STLport heap sift-down of a CCharString hole to a leaf, then __push_heap of val back up
+// std::__adjust_heap(CCharString* first, int holeIndex, int len, CCharString val, less<CCharString> comp) -- STLport heap sift-down of a CCharString hole to a leaf, then __push_heap of val back up
 // Leaf: __adjust_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E1170, 151 bytes (+ padding to 160), `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   edi, holeIndex in edx -> ebx, then len, the by-value string and the empty comparator on the stack).

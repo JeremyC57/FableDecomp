@@ -1,5 +1,5 @@
-// _STL::vector::_M_insert_overflow(CDecalEntry* position, const CDecalEntry& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the CVectorMap<pair<long, long>, CEngineTextureDecal> entry vector: allocate old + max(old, n), copy the head, place the n copies, copy the tail, destroy and free the old block
-// Leaf: ?_M_insert_overflow@?$vector@U?$pair@U?$pair@JJ@_STL@@VCEngineTextureDecal@@@_STL@@
+// std::vector::_M_insert_overflow(CDecalEntry* position, const CDecalEntry& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the CVectorMap<pair<long, long>, CEngineTextureDecal> entry vector: allocate old + max(old, n), copy the head, place the n copies, copy the tail, destroy and free the old block
+// Leaf: ?_M_insert_overflow@?$vector@U?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEF830, 229 bytes, `__fastcall`, `ret 14h`.
 // Callees: malloc @ 0x00BFEA0E (inline allocate), __uninitialized_copy @ 0x00BEE660 (this chunk, twice) and
@@ -27,7 +27,7 @@ public:
     CCompositeBlendDesc(const CCompositeBlendDesc& other);   // 0x005BA48A
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -113,30 +113,30 @@ public:
     }
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fill_len, bool atend);
 };
-}   // namespace _STL
+}   // namespace std
 
 // Ego_r.pdb CEngineTextureDecal (20 bytes in retail: the STLport vector is 12).
 class CEngineTextureDecal {
 public:
     long OriginalTextureIndex;                      // +0x00
     long DecalID;                                   // +0x04
-    _STL::vector<CCompositeBlendDesc, _STL::allocator<CCompositeBlendDesc> > OverlaidBlends;   // +0x08
+    std::vector<CCompositeBlendDesc, std::allocator<CCompositeBlendDesc> > OverlaidBlends;   // +0x08
 };
 
-typedef _STL::pair<long, long> CDecalKey;
-typedef _STL::pair<CDecalKey, CEngineTextureDecal> CDecalEntry;   // 0x1c bytes
+typedef std::pair<long, long> CDecalKey;
+typedef std::pair<CDecalKey, CEngineTextureDecal> CDecalEntry;   // 0x1c bytes
 
 // The vector map's key order (an empty functor passed by value): the lexicographic pair<long, long> compare.
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 typedef CKeyPairCompareLess<CDecalKey, CEngineTextureDecal> CDecalEntryLess;
 
 template <class T, class Alloc>
-void _STL::vector<T, Alloc>::_M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fill_len,
+void std::vector<T, Alloc>::_M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fill_len,
                                                 bool atend)
 {
     const unsigned int old_size = size();
@@ -156,5 +156,5 @@ void _STL::vector<T, Alloc>::_M_insert_overflow(T* position, const T& x, const _
     _M_set(new_start, new_finish, new_start + len);
 }
 
-template void _STL::vector<CDecalEntry, _STL::allocator<CDecalEntry> >::_M_insert_overflow(CDecalEntry*, const CDecalEntry&,
-    const _STL::__false_type&, unsigned int, bool);
+template void std::vector<CDecalEntry, std::allocator<CDecalEntry> >::_M_insert_overflow(CDecalEntry*, const CDecalEntry&,
+    const std::__false_type&, unsigned int, bool);

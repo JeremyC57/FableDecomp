@@ -1,5 +1,5 @@
-// _STL::set::insert(const value_type& x) -- insert a long into a set<long>; return the (const) iterator and whether it was new
-// Leaf: ?insert@?$set@JU?$less@J@_STL@@
+// std::set::insert(const value_type& x) -- insert a long into a set<long>; return the (const) iterator and whether it was new
+// Leaf: ?insert@?$set@JU?$less@J@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00514230, 40 bytes, thiscall, `ret 8` (hidden result pointer + value).
 // Identity: set<long>: the callee 0x00512DA0 (manifest "BinarySearchTree_Insert") is _Rb_tree::insert_unique with a
 //   signed 4-byte key compare (`cmp edx,[esi+10h] ; setl al`). Callers: CTCVillage::ReportCrime (0x0065CE4D, 0x0065CF63:
@@ -9,7 +9,7 @@
 // Callees: _Rb_tree::insert_unique(const value_type&) @ 0x00512DA0.
 // Shape: STLport 4.6 `set::insert` (see 0x004AC860): insert_unique into the 8-byte frame temporary, then the node
 //   pointer and the bool byte are copied into the caller's result.
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator { };
 template <class _T1, class _T2> struct pair {
@@ -64,4 +64,4 @@ public:
 };
 }
 
-template class _STL::set<long>;
+template class std::set<long>;

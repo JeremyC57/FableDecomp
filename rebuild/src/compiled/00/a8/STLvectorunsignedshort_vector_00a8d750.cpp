@@ -1,4 +1,4 @@
-// _STL::vector<unsigned short>::vector(unsigned int n) -- STLport sized constructor of a 16-bit index vector: allocate n shorts (none for zero) and zero-fill them
+// std::vector<unsigned short>::vector(unsigned int n) -- STLport sized constructor of a 16-bit index vector: allocate n shorts (none for zero) and zero-fill them
 // Leaf: ??0?$vector@G
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8D750, 112 bytes, thiscall `ret 4`, returns this.
 // Identity: 4 call sites (0x00A8B6EA, 0x00A8D9D8, 0x00BBB1CE, 0x00F3F421) in the mesh-optimiser / primitive code; the element
@@ -11,7 +11,7 @@
 //   idiom (`shr ecx,1 ; rep stosd ; adc ecx,ecx ; rep stosw`) behind the unsigned `n > 0` test (`jbe`).
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 

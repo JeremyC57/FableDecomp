@@ -13,7 +13,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct SPairU64Long_00a7e630 {                  // _STL::pair<unsigned __int64, long>, 16 bytes (8-aligned)
+struct SPairU64Long_00a7e630 {                  // std::pair<unsigned __int64, long>, 16 bytes (8-aligned)
     unsigned __int64 first;                     // +0x00
     long             second;                    // +0x08 (+0x0C padding)
     SPairU64Long_00a7e630(const SPairU64Long_00a7e630& o) : first(o.first), second(o.second) { }

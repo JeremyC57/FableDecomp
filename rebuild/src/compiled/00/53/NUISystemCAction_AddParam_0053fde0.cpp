@@ -18,7 +18,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);          // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> class allocator {
@@ -115,8 +115,8 @@ class CComponent : public CComponentBase, public CActionParam {   // CActionPara
 class CAction {
 public:
     long                          ActionType;                // +0x00
-    _STL::list<CActionParam*>     UIActionParams;            // +0x04
-    _STL::list<long>              ThingActionParams;         // +0x08
+    std::list<CActionParam*>     UIActionParams;            // +0x04
+    std::list<long>              ThingActionParams;         // +0x08
     bool                          Valid;                     // +0x0C
     void AddParam(CActionParam* param, CCountedPointer<CAction>& self);
 };

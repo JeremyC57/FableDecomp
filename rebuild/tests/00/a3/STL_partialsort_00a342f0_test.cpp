@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A342F0 _STL::__partial_sort over the 20-byte helper-point entries: the five smallest keys sorted in front, payloads intact.
+// Behaviour test for 0x00A342F0 std::__partial_sort over the 20-byte helper-point entries: the five smallest keys sorted in front, payloads intact.
 #include <cstdio>
 #include <new>
 struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };

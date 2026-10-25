@@ -13,7 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class T> inline void _Construct(T* p, const T& value) { new (p) T(value); }
@@ -78,4 +78,4 @@ public:
     };
 };
 
-template _STL::vector<CScriptedMapBrush::CScriptedMapCell>::vector(unsigned int);
+template std::vector<CScriptedMapBrush::CScriptedMapCell>::vector(unsigned int);

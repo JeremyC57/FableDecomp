@@ -1,4 +1,4 @@
-// _STL::vector<CIcicleData>::erase(CIcicleData* position) -- remove one ice-troll icicle record: shift the tail down one slot (when the erased record is not the last), destroy the vacated last record, return the position
+// std::vector<CIcicleData>::erase(CIcicleData* position) -- remove one ice-troll icicle record: shift the tail down one slot (when the erased record is not the last), destroy the vacated last record, return the position
 // Leaf: ?erase@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E3890, 64 bytes, `__fastcall` (this -> esi, position on the stack -> edi),
 //   `ret 4`, returns the position.
@@ -41,7 +41,7 @@ public:
     C3DVector                   Position;               // +0x18
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

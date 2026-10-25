@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A32100 _STL::fill over C3DGeneratorObject: every element of [first, last) becomes a copy of val
+// Behaviour test for 0x00A32100 std::fill over C3DGeneratorObject: every element of [first, last) becomes a copy of val
 // (one string assignment each); an empty range is untouched.
 #include <cstdio>
 #include <new>

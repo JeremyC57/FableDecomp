@@ -1,4 +1,4 @@
-// _STL::__pop_heap(CCharString* first, CCharString* last, CCharString* result, CCharString val, less<CCharString> comp, int*) -- STLport heap pop step of a CCharString sort: move the top string to *result, then sift val down from the root
+// std::__pop_heap(CCharString* first, CCharString* last, CCharString* result, CCharString val, less<CCharString> comp, int*) -- STLport heap pop step of a CCharString sort: move the top string to *result, then sift val down from the root
 // Leaf: ??$__pop_heap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E1B20, 63 bytes (+ int3), /Gr `__fastcall` (first in ecx -> edi, last in edx
 //   -> esi; result, the 4-byte string by value, the comparator word and the distance pointer on the stack, `ret 10h`).
@@ -17,7 +17,7 @@ public:
     bool operator<(const CCharString& other) const;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty, passed by value (one stack word)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };

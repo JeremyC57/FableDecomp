@@ -29,7 +29,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -85,14 +85,14 @@ public:
     void clear() { erase(begin(), end()); }
     void swap(vector<_Tp, _Alloc>& __x)
     {
-        _STL::swap(this->_M_start, __x._M_start);
-        _STL::swap(this->_M_finish, __x._M_finish);
-        _STL::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
+        std::swap(this->_M_start, __x._M_start);
+        std::swap(this->_M_finish, __x._M_finish);
+        std::swap(this->_M_end_of_storage._M_data, __x._M_end_of_storage._M_data);
     }
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 template <class T> class CCompareString {                      // empty key order (CCharString::FastCompare)
@@ -100,14 +100,14 @@ template <class T> class CCompareString {                      // empty key orde
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    CArray<_STL::pair<K, V> > Map;                // +0x00
+    CArray<std::pair<K, V> > Map;                // +0x00
     C                         Compare;            // +0x0C
     bool                      Dirty;              // +0x0D
     CVectorMap() : Dirty(false) { }
     void swap(CVectorMap& other)
     {
         Map.swap(other.Map);
-        _STL::swap(Dirty, other.Dirty);
+        std::swap(Dirty, other.Dirty);
     }
     void DeallocateMemory()
     {

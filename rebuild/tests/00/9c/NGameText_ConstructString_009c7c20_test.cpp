@@ -79,7 +79,7 @@ static CWideString operator+(const unsigned short* left, const CWideString& righ
     return CWideString(buf);
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
@@ -106,7 +106,7 @@ inline CWideString FormatIndex(int index)
     return number;
 }
 
-bool ConstructString(CWideString& output, const _STL::vector<CWideString>& replacements)
+bool ConstructString(CWideString& output, const std::vector<CWideString>& replacements)
 {
     bool failed = false;
     for (unsigned int i = 0; i != replacements.size(); ++i) {
@@ -126,7 +126,7 @@ int main()
 {
     CWideString items[3];
     items[0] = W("Hero"); items[1] = W("sword"); items[2] = W("Oakvale");
-    _STL::vector<CWideString> v;
+    std::vector<CWideString> v;
     v._M_start = items; v._M_finish = items + 3; v._M_end_of_storage = items + 3;
 
     CWideString out = W("%1 took the %2 to %3.");
@@ -135,7 +135,7 @@ int main()
     CWideString partial = W("%1 and %3 only");
     if (NGameText::ConstructString(partial, v) || !partial.Equals("Hero and Oakvale only")) { std::printf("009c7c20_TEST FAIL\n"); return 1; }
 
-    _STL::vector<CWideString> empty;
+    std::vector<CWideString> empty;
     empty._M_start = empty._M_finish = empty._M_end_of_storage = items;
     CWideString untouched = W("%1");
     if (!NGameText::ConstructString(untouched, empty) || !untouched.Equals("%1")) { std::printf("009c7c20_TEST FAIL\n"); return 1; }

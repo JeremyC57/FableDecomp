@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume>*, CKeyPairCompareLess comp) -- insertion-sort pass with no lower-bound test over the mesh-volume table, each entry handed by value to __unguarded_linear_insert
+// std::__unguarded_insertion_sort_aux(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume>*, CKeyPairCompareLess comp) -- insertion-sort pass with no lower-bound test over the mesh-volume table, each entry handed by value to __unguarded_linear_insert
 // Leaf: __unguarded_insertion_sort_aux
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A33870, 79 bytes (+ int3 padding), `ret 8` (__fastcall: first in ecx, last
 //   in edx, the value-type tag pointer and the empty comparator on the stack).
@@ -78,7 +78,7 @@ struct C3DMeshVolume {                                        // 12 bytes (Ego_r
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     T1 first;
@@ -96,7 +96,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class RandomAccessIter, class T, class Compare>
 void __fastcall __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp);   // 0x00A33250

@@ -13,7 +13,7 @@
 //   temporary is the `push ecx` frame word's low byte, zeroed after the pushes.
 // Label correction: catalogued as `vector<EWeaponClass>::_Umove<EWeaponClass*>` (propagated); the body is
 //   CPersistContext_TransferableVector<bool>::Resize.
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -48,7 +48,7 @@ private:
     virtual void Resize(long count);                                                        // slot 1
     virtual void TransferOut(CPersistContext& context, CCharString& out, long index);       // slot 2
     virtual void TransferIn(CPersistContext& context, CStringParser& parser, long index);   // slot 3
-    _STL::vector<T>* TransVector;                                   // +0x04
+    std::vector<T>* TransVector;                                   // +0x04
 };
 
 template <class T> void CPersistContext_TransferableVector<T>::Resize(long count)

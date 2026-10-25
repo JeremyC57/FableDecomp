@@ -41,7 +41,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -135,9 +135,9 @@ public:
     list& operator=(const list& x);
 };
 
-} // namespace _STL
+} // namespace std
 
-namespace _STL {
+namespace std {
 template <class T> list<T>& list<T>::operator=(const list<T>& x)
 {
     if (this != &x) {
@@ -154,9 +154,9 @@ template <class T> list<T>& list<T>::operator=(const list<T>& x)
     }
     return *this;
 }
-} // namespace _STL
+} // namespace std
 
-template class _STL::list<CQuestManager::CBoast>;
+template class std::list<CQuestManager::CBoast>;
 
 // ---- test bodies of the retail callees ----
 static int g_strCopies = 0, g_strDtors = 0, g_strAssigns = 0;
@@ -170,8 +170,8 @@ CWideString& CWideString::operator=(const CWideString& other) { PStringData = ot
 static void ResetCounts() { g_strCopies = g_strDtors = g_strAssigns = g_wideCopies = g_wideDtors = g_wideAssigns = 0; }
 
 typedef CQuestManager::CBoast CBoast;
-typedef _STL::list<CBoast> CBoastList;
-typedef _STL::_List_node<CBoast> CBoastNode;
+typedef std::list<CBoast> CBoastList;
+typedef std::_List_node<CBoast> CBoastNode;
 struct SRawBoast {                                         // CBoast's layout (it has no default constructor)
     long ID, Cost, Reward;
     void* ScriptName;
@@ -200,7 +200,7 @@ static CBoastNode* NewBoastNode(long id)                   // every field derive
 }
 static void InitList(CBoastList& l, const long* ids, int n)
 {
-    l._M_node = (_STL::_List_node_base*)malloc(sizeof(CBoastNode));
+    l._M_node = (std::_List_node_base*)malloc(sizeof(CBoastNode));
     l._M_node->_M_next = l._M_node->_M_prev = l._M_node;
     for (int i = 0; i < n; ++i) {
         CBoastNode* node = NewBoastNode(ids[i]);
@@ -218,14 +218,14 @@ static bool BoastIs(const CBoast& b, long id)
 }
 static bool ListIs(const CBoastList& l, const long* ids, int n)   // forward order, back links and every field
 {
-    _STL::_List_node_base* p = l._M_node->_M_next;
+    std::_List_node_base* p = l._M_node->_M_next;
     for (int i = 0; i < n; ++i, p = p->_M_next)
         if (p == l._M_node || p->_M_next->_M_prev != p || !BoastIs(((CBoastNode*)p)->_M_data, ids[i]))
             return false;
     return p == l._M_node && l._M_node->_M_next->_M_prev == l._M_node;
 }
 
-namespace _STL {
+namespace std {
 template <class T> typename list<T>::iterator list<T>::erase(iterator first, iterator last)   // 0x005E90B0
 {
     while (first != last)
@@ -238,7 +238,7 @@ void list<T>::_M_insert_dispatch(iterator pos, InputIter first, InputIter last, 
     for (; first != last; ++first)
         insert(pos, *first);
 }
-} // namespace _STL
+} // namespace std
 
 int main()
 {

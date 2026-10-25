@@ -18,7 +18,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CThing;
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -119,16 +119,16 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template class _STL::map<CThing*, float>;
+template class std::map<CThing*, float>;
 
 // ---- test harness ----
 // The source's insert_unique is the same-TU stand-in (adds the low bytes of the inserted key and value to the node count,
 // returns the hint), so the test checks operator[]'s own logic: the lower_bound walk, the end / key_comp test, the hinted
 // insert of {k, T()} and the returned mapped slot.
 
-typedef _STL::map<CThing*, float> TMap;
+typedef std::map<CThing*, float> TMap;
 typedef TMap::value_type TValue;
 struct STestNode { long color; STestNode* parent; STestNode* left; STestNode* right; TValue value; };
 static STestNode* MakeNode(CThing* k)

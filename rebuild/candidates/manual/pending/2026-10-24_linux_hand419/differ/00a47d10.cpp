@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* p);                                          
 
 class CSteeringAgent;
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 class allocator {
 public:
@@ -141,15 +141,15 @@ inline _InputIter find(_InputIter __first, _InputIter __last, const _Tp& __val)
 class CNavigatorExternalInterface {
 public:
     virtual ~CNavigatorExternalInterface();
-    static _STL::list<_STL::vector<const CSteeringAgent*>*> AgentLists;     // 0x013D2834
+    static std::list<std::vector<const CSteeringAgent*>*> AgentLists;     // 0x013D2834
     static void __fastcall RemoveAgentFromLists(const CSteeringAgent* agent);
-    static void __fastcall RemoveAgentListFromLists(_STL::vector<const CSteeringAgent*>* agentList);
+    static void __fastcall RemoveAgentListFromLists(std::vector<const CSteeringAgent*>* agentList);
 };
 
 void __fastcall CNavigatorExternalInterface::RemoveAgentFromLists(const CSteeringAgent* agent)
 {
-    for (_STL::list<_STL::vector<const CSteeringAgent*>*>::iterator it = AgentLists.begin(); it != AgentLists.end(); ++it) {
-        for (_STL::vector<const CSteeringAgent*>::iterator i = (*it)->begin(); i != (*it)->end(); ++i) {
+    for (std::list<std::vector<const CSteeringAgent*>*>::iterator it = AgentLists.begin(); it != AgentLists.end(); ++it) {
+        for (std::vector<const CSteeringAgent*>::iterator i = (*it)->begin(); i != (*it)->end(); ++i) {
             if (*i == agent) {
                 (*it)->erase(i);
                 --i;

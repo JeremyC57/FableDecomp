@@ -44,7 +44,7 @@ public:
 
 class C3DAnimation2;
 
-namespace _STL {
+namespace std {
 
 struct _Rb_tree_node_base {
     unsigned char       _M_color;
@@ -125,14 +125,14 @@ __declspec(noinline) typename map<K, T, C, A>::iterator map<K, T, C, A>::insert_
 
 }
 
-template CCountedPointer<C3DAnimation2>& _STL::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[](const unsigned long& k);
+template CCountedPointer<C3DAnimation2>& std::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[](const unsigned long& k);
 
 // ---- test harness ----
 // The source's insert_unique is the same-TU stand-in (adds the key's low byte to the node count, returns the hint), so
 // the test checks operator[]'s own logic: the lower_bound walk, the end / key_comp test, the hinted insert of {k, T()}
 // (whose empty counted pointer is released without touching a block) and the returned mapped slot.
 class C3DAnimation2 { };
-typedef _STL::map<unsigned long, CCountedPointer<C3DAnimation2> > TMap;
+typedef std::map<unsigned long, CCountedPointer<C3DAnimation2> > TMap;
 typedef TMap::_Node TNode;
 static TNode* MakeNode(unsigned long k)
 {

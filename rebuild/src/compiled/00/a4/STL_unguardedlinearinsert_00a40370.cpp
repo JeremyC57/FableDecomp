@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(SNameEntry* last, SNameEntry val, CNameLess comp) -- STLport insertion-sort inner step over the 8-byte (name, object) entries: shift larger entries up until val's slot is found, then store val
+// std::__unguarded_linear_insert(SNameEntry* last, SNameEntry val, CNameLess comp) -- STLport insertion-sort inner step over the 8-byte (name, object) entries: shift larger entries up until val's slot is found, then store val
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe @ 0x00A40370, 89 bytes, `ret 0Ch`. /Gr TU written as explicit __fastcall: last in ecx, the by-value
 //   val (8 bytes) and the 4-byte comparator slot on the stack; the callee destroys val's string.
@@ -56,7 +56,7 @@ public:
 
 class CSoundBankLH;                                         // descriptive: the mapped object of CSoundManagerLH's maps
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -73,18 +73,18 @@ bool __cdecl operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y);   
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
+typedef std::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
@@ -99,4 +99,4 @@ void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _
 }
 }
 
-template void __fastcall _STL::__unguarded_linear_insert<SNameEntry*, SNameEntry, CNameLess>(SNameEntry*, SNameEntry, CNameLess);
+template void __fastcall std::__unguarded_linear_insert<SNameEntry*, SNameEntry, CNameLess>(SNameEntry*, SNameEntry, CNameLess);

@@ -23,7 +23,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result> struct binary_function {
     typedef _Arg1 first_argument_type;
     typedef _Arg2 second_argument_type;
@@ -47,7 +47,7 @@ static CDisplayModeDesc Mode(long x, long y, long bpp, long hz)
 
 int main()
 {
-    _STL::less<CDisplayModeDesc> less;
+    std::less<CDisplayModeDesc> less;
     struct { CDisplayModeDesc a, b; bool expect; } cases[] = {
         { Mode(640, 480, 32, 60), Mode(800, 600, 16, 50), true },     // width decides
         { Mode(800, 600, 16, 50), Mode(640, 480, 32, 60), false },

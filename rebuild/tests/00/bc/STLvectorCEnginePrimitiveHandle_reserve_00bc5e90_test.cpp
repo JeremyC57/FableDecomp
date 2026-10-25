@@ -1,4 +1,4 @@
-// behaviour test for 0x00BC5E90 _STL::vector<CEnginePrimitiveHandle>::reserve(size_type n)
+// behaviour test for 0x00BC5E90 std::vector<CEnginePrimitiveHandle>::reserve(size_type n)
 #include <cstdio>
 #include <cstdlib>
 #include <new>

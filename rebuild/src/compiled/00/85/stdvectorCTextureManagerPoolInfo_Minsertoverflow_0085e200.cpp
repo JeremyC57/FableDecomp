@@ -32,7 +32,7 @@ public:
           Count(other.Count) { }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -141,4 +141,4 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 template void vector<CTextureManagerPoolInfo>::_M_insert_overflow(CTextureManagerPoolInfo*, const CTextureManagerPoolInfo&,
                                                                   const __false_type&, unsigned int, bool);
 
-} // namespace _STL
+} // namespace std

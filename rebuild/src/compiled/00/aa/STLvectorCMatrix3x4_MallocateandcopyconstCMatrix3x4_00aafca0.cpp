@@ -1,4 +1,4 @@
-// _STL::vector<CMatrix3x4>::_M_allocate_and_copy<const CMatrix3x4*>(unsigned int n, const CMatrix3x4* first, const CMatrix3x4* last) -- STLport growth helper: allocate n 48-byte matrices and copy-construct [first, last) into the block, return it
+// std::vector<CMatrix3x4>::_M_allocate_and_copy<const CMatrix3x4*>(unsigned int n, const CMatrix3x4* first, const CMatrix3x4* last) -- STLport growth helper: allocate n 48-byte matrices and copy-construct [first, last) into the block, return it
 // Leaf: ??$_M_allocate_and_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAFCA0, length 78 bytes, thiscall `ret 0Ch` (`this` is never read: the
 //   allocator is empty).
@@ -17,7 +17,7 @@ public:
     float m_row[3][4];
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -65,7 +65,7 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template CMatrix3x4* _STL::vector<CMatrix3x4>::_M_allocate_and_copy<const CMatrix3x4*>(
+template CMatrix3x4* std::vector<CMatrix3x4>::_M_allocate_and_copy<const CMatrix3x4*>(
     unsigned int n, const CMatrix3x4* first, const CMatrix3x4* last);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A6ECE0: _STL::for_each with CAddElements<C3DVector>
+// Behaviour test for 0x00A6ECE0: std::for_each with CAddElements<C3DVector>
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -20,7 +20,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _Function>
 _Function for_each(_InputIter __first, _InputIter __last, _Function __f)
 {
@@ -45,10 +45,10 @@ int main()
     sum.x = 10.0f;
     sum.y = 0.0f;
     sum.z = 0.0f;
-    CAddElements<C3DVector> f = _STL::for_each(v, v + 3, CAddElements<C3DVector>(sum));
+    CAddElements<C3DVector> f = std::for_each(v, v + 3, CAddElements<C3DVector>(sum));
     if (f.Sum != &sum || !Near(sum.x, 16.0f) || !Near(sum.y, -6.0f) || !Near(sum.z, 1.5f))
         ok = 0;
-    _STL::for_each(v, v, CAddElements<C3DVector>(sum));
+    std::for_each(v, v, CAddElements<C3DVector>(sum));
     if (!Near(sum.x, 16.0f))
         ok = 0;
 

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__uninitialized_copy<CActiveSoundInfo*> @ 0x00AACB10
+// Behaviour test for std::__uninitialized_copy<CActiveSoundInfo*> @ 0x00AACB10
 #include <cstdio>
 #include <new>
 

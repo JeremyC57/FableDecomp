@@ -1,4 +1,4 @@
-// Behaviour test: _STL::__make_heap over (long key, CTextureMorphEntry) pairs -- heap property, payloads kept with their keys
+// Behaviour test: std::__make_heap over (long key, CTextureMorphEntry) pairs -- heap property, payloads kept with their keys
 #include <cstdio>
 
 struct SPayload {                                       // 20-byte POD payload

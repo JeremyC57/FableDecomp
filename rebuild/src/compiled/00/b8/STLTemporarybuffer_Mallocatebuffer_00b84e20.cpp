@@ -1,4 +1,4 @@
-// _STL::_Temporary_buffer::_M_allocate_buffer() -- (the buffer of CEngineSubPrimitiveRenderer::CSortElement for stable_sort) remember the requested length, clamp it to INT_MAX / 8 and try malloc, halving the length until a buffer is found or it reaches 0
+// std::_Temporary_buffer::_M_allocate_buffer() -- (the buffer of CEngineSubPrimitiveRenderer::CSortElement for stable_sort) remember the requested length, clamp it to INT_MAX / 8 and try malloc, halving the length until a buffer is found or it reaches 0
 // Leaf: ?_M_allocate_buffer@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B84E20, 75 bytes. __fastcall (this = {_M_original_len, _M_len,
 //   _M_buffer}), plain `ret`.
@@ -12,7 +12,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `_M_allocate_buffer` verbatim (landed 0x0070F410 form): `_M_len > (ptrdiff_t)(INT_MAX / sizeof(_Tp))`
 //   -> 0x0FFFFFFF, `_M_len * sizeof(_Tp)` as `shl eax,3`, `_M_len /= 2` as cdq ; sub ; sar.
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -38,13 +38,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _ForwardIterator, class _Tp>
 class _Temporary_buffer {
 private:

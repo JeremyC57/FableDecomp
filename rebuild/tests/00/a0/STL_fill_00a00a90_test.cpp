@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A00A90 _STL::fill<CGraphicInfoFrame*>: every element of [first, last) is assigned val (self-assignment of shared data
+// Behaviour test for 0x00A00A90 std::fill<CGraphicInfoFrame*>: every element of [first, last) is assigned val (self-assignment of shared data
 // skips the release).
 #include <cstdlib>
 #include <cstdio>

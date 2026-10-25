@@ -49,7 +49,7 @@ public:
 class CBankFileAsyncEntry;
 class CBankFileAsyncData;
 
-namespace _STL {
+namespace std {
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
 template <class T> class allocator { };
 template <class T1, class T2> struct pair {
@@ -144,15 +144,15 @@ public:
         CCountedPointer<CBankFileAsyncData> LoadingData;   // +0x8
     };
     CCountedPointer<CBankFileAsyncEntry> AsyncBankEntry;   // +0x00
-    _STL::map<long, CFileBlock, _STL::less<long>, _STL::allocator<_STL::pair<const long, CFileBlock> > > Blocks;   // +0x08
+    std::map<long, CFileBlock, std::less<long>, std::allocator<std::pair<const long, CFileBlock> > > Blocks;   // +0x08
     void Reset();
 };
 
 void CEngineStaticMapFileBlockManager::Reset()
 {
-    _STL::map<long, CFileBlock, _STL::less<long>, _STL::allocator<_STL::pair<const long, CFileBlock> > >::iterator it = Blocks.begin();
+    std::map<long, CFileBlock, std::less<long>, std::allocator<std::pair<const long, CFileBlock> > >::iterator it = Blocks.begin();
     while (it != Blocks.end()) {
-        _STL::map<long, CFileBlock, _STL::less<long>, _STL::allocator<_STL::pair<const long, CFileBlock> > >::iterator next = it;
+        std::map<long, CFileBlock, std::less<long>, std::allocator<std::pair<const long, CFileBlock> > >::iterator next = it;
         ++next;
         Blocks.erase(it);
         it = next;

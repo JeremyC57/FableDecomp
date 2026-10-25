@@ -1,4 +1,4 @@
-// _STL::__partial_sort(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* middle, pair<unsigned long, C3DHelperPoint>* last, pair<unsigned long, C3DHelperPoint>*, CKeyPairCompareLess comp) -- heap-based partial sort of the helper-point table: heapify [first, middle), pop every smaller later entry into it, then sort the heap
+// std::__partial_sort(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* middle, pair<unsigned long, C3DHelperPoint>* last, pair<unsigned long, C3DHelperPoint>*, CKeyPairCompareLess comp) -- heap-based partial sort of the helper-point table: heapify [first, middle), pop every smaller later entry into it, then sort the heap
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A342F0, 110 bytes (+ int3 padding), `ret 0Ch` (__fastcall: first in ecx,
 //   middle in edx, last, the value-type pointer and the empty comparator on the stack).
@@ -10,7 +10,7 @@
 // Shape: STLport `make_heap(first, middle, comp); for (i = middle; i < last; ++i) if (comp(*i, *first)) __pop_heap(first,
 //   middle, i, T(*i), comp, (int*)0); sort_heap(first, middle, comp);` -- make_heap inlined to __make_heap with null
 //   value-type and distance pointers, comp in ebp, the copy built straight in the argument area.
-namespace _STL {
+namespace std {
 
 struct C3DVector {
     float X, Y, Z;

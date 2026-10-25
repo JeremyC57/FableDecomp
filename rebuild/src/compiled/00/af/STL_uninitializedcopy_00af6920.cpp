@@ -1,10 +1,10 @@
-// _STL::__uninitialized_copy(pair<EPSCType, CComponentInstance>* first, pair<EPSCType, CComponentInstance>* last, pair<EPSCType, CComponentInstance>* result, const __false_type&) -- copy-construct the particle-system component map entries of [first, last) into raw storage at result and return the end of the copies
+// std::__uninitialized_copy(pair<EPSCType, CComponentInstance>* first, pair<EPSCType, CComponentInstance>* last, pair<EPSCType, CComponentInstance>* result, const __false_type&) -- copy-construct the particle-system component map entries of [first, last) into raw storage at result and return the end of the copies
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF6920, 94 bytes, __fastcall (first ecx, last edx; result and the empty tag on the
 //   stack, `ret 8`).
 // Callers: the vector<pair<EPSCType, CComponentInstance> > grow/insert paths at 0x00AF74BA, 0x00AF7528, 0x00AF7611 and
 //   0x00AF7668 (the Components map of NParticleEngine::CParticleSystem; the fill twin is landed 0x00AF6980).
-// Element: _STL::pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> (0x18 bytes): first +0;
+// Element: std::pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> (0x18 bytes): first +0;
 //   CComponentInstance (vtable 0x0129F478) +4 = {vptr, CCountedPointer<CPSCBase> Component +4 (Data, Block -> RefCount +0),
 //   bool Enabled +0xc, unsigned long InstanceName +0x10}.
 // Label: catalog "CopyElements_6DwordStruct" is descriptive.
@@ -41,7 +41,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> struct pair {
@@ -63,8 +63,8 @@ inline _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIt
 }
 }
 
-typedef _STL::pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> CComponentPair;
+typedef std::pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> CComponentPair;
 
-namespace _STL {
+namespace std {
 template CComponentPair* __fastcall __uninitialized_copy(CComponentPair*, CComponentPair*, CComponentPair*, const __false_type&);
 }

@@ -21,7 +21,7 @@ public:
     unsigned char _body[0x24];
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
-namespace _STL {
+namespace std {
 struct __false_type { };
 struct random_access_iterator_tag { };
 template <class T> class vector {
@@ -34,9 +34,9 @@ public:
 }
 class CFireHeartPatternDef : public CDefClassBase {
 public:
-    _STL::vector<bool> PadActive;                       // +0x28
+    std::vector<bool> PadActive;                       // +0x28
 };
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
@@ -55,4 +55,4 @@ _OutputIter __fastcall __copy_ptrs(_InputIter __first, _InputIter __last, _Outpu
 }
 template CFireHeartPatternDef* __fastcall __copy_ptrs<const CFireHeartPatternDef*, CFireHeartPatternDef*>(
     const CFireHeartPatternDef*, const CFireHeartPatternDef*, CFireHeartPatternDef*, const __false_type&);
-} // namespace _STL
+} // namespace std

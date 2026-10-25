@@ -1,4 +1,4 @@
-// _STL::list::erase(iterator position) -- STLport list<CNavQuadTreeMap>: unlink one node, destroy the map entry (section name, counted quad tree), free the node, return the next position
+// std::list::erase(iterator position) -- STLport list<CNavQuadTreeMap>: unlink one node, destroy the map entry (section name, counted quad tree), free the node, return the next position
 // Leaf: ?erase@?$list@VCNavQuadTreeMap@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A17110, 93 bytes, __fastcall `ret 8` (hidden iterator result, position); `this` unused.
 // Identity: STLport 4.6 list::erase(iterator) out of line; the node payload at +8 is Ego_r.pdb CNavQuadTreeMap (32 bytes):
@@ -56,7 +56,7 @@ public:
     CCharString SectionName;                            // +0x1C
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -119,4 +119,4 @@ public:
 
 template list<CNavQuadTreeMap>::iterator list<CNavQuadTreeMap>::erase(iterator);
 
-} // namespace _STL
+} // namespace std

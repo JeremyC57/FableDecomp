@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<EReactionSpeechType, long>* first, pair<EReactionSpeechType, long>* last, pair<EReactionSpeechType, long> pivot, CKeyPairCompareLess<EReactionSpeechType, long> comp) -- STLport quicksort partition of CSimVoice's voice entries around a pivot key, swapping out-of-place pairs
+// std::__unguarded_partition(pair<EReactionSpeechType, long>* first, pair<EReactionSpeechType, long>* last, pair<EReactionSpeechType, long> pivot, CKeyPairCompareLess<EReactionSpeechType, long> comp) -- STLport quicksort partition of CSimVoice's voice entries around a pivot key, swapping out-of-place pairs
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00680B40, length 85 bytes, `ret 0Ch`.
 // Callers: __introsort_loop 0x00681270 (0x006812EA).
@@ -14,7 +14,7 @@
 //   the empty comparator on the stack); only the pivot key is read (held in ecx).
 enum EReactionSpeechType { REACTION_SPEECH_TYPE_NONE = -1, REACTION_SPEECH_TYPE_0 = 0 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -25,13 +25,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<EReactionSpeechType, long> TVoiceEntry;
+typedef std::pair<EReactionSpeechType, long> TVoiceEntry;
 typedef CKeyPairCompareLess<EReactionSpeechType, long> TVoiceLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
@@ -64,4 +64,4 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 }
 
-template TVoiceEntry* __fastcall _STL::__unguarded_partition<TVoiceEntry*, TVoiceEntry, TVoiceLess>(TVoiceEntry*, TVoiceEntry*, TVoiceEntry, TVoiceLess);
+template TVoiceEntry* __fastcall std::__unguarded_partition<TVoiceEntry*, TVoiceEntry, TVoiceLess>(TVoiceEntry*, TVoiceEntry*, TVoiceEntry, TVoiceLess);

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<float, pair<const float, CCountedPointer<CVertexPairContraction> >, ...>::erase(iterator) @ 0x00AD3C30
+// Behaviour test for std::_Rb_tree<float, pair<const float, CCountedPointer<CVertexPairContraction> >, ...>::erase(iterator) @ 0x00AD3C30
 // Unlinks the node through _Rb_tree_rebalance_for_erase(node, root, leftmost, rightmost), destroys the value (the counted
 // pointer drops one reference and deletes the contraction on the last one), frees the node and decrements the count.
 #include <cstdio>

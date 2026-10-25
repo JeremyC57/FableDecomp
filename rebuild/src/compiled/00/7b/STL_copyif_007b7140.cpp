@@ -1,4 +1,4 @@
-// _STL::copy_if(list<CIntelligentPointer<CThingMarker> >::const_iterator first, list<CIntelligentPointer<CThingMarker> >::const_iterator last, back_insert_iterator<vector<CIntelligentPointer<CThingMarker> > > dest, IsCrateStackOfType pred) -- append to a vector every marker of a list whose crate-stack def has the wanted stack type
+// std::copy_if(list<CIntelligentPointer<CThingMarker> >::const_iterator first, list<CIntelligentPointer<CThingMarker> >::const_iterator last, back_insert_iterator<vector<CIntelligentPointer<CThingMarker> > > dest, IsCrateStackOfType pred) -- append to a vector every marker of a list whose crate-stack def has the wanted stack type
 // Leaf: ??$copy_if@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B7140, 343 bytes (+ int3 padding), `ret 10h` (__fastcall: the hidden
 //   back_insert_iterator result pointer in ecx; first, last, dest and the 4-byte predicate on the stack).
@@ -158,7 +158,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _Tp> class allocator {

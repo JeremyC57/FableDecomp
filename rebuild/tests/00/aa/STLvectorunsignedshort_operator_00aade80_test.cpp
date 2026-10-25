@@ -1,4 +1,4 @@
-// Behaviour test for _STL::vector<unsigned short>::operator=(const vector&) @ 0x00AADE80
+// Behaviour test for std::vector<unsigned short>::operator=(const vector&) @ 0x00AADE80
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

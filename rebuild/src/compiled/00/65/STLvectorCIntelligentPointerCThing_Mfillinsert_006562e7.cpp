@@ -1,4 +1,4 @@
-// _STL::vector<CIntelligentPointer<CThing> >::_M_fill_insert(iterator position, size_type n, const CIntelligentPointer<CThing>& x) -- STLport fill insert of n copies of a thing smart pointer: shift the tail in place when capacity allows, else reallocate through _M_insert_overflow
+// std::vector<CIntelligentPointer<CThing> >::_M_fill_insert(iterator position, size_type n, const CIntelligentPointer<CThing>& x) -- STLport fill insert of n copies of a thing smart pointer: shift the tail in place when capacity allows, else reallocate through _M_insert_overflow
 // Leaf: ?_M_fill_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006562E7, length 232 bytes, `ret 0Ch` (thiscall: position, n, &x).
 // Callers: 0x0065686E (tail jmp from insert(position, n, x)), 0x00656D54, 0x00739B9E.
@@ -33,7 +33,7 @@ public:
 
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
 struct output_iterator_tag { output_iterator_tag() { } };
@@ -130,9 +130,9 @@ void vector<_Tp, _Alloc>::_M_fill_insert(iterator __position, size_type __n, con
 }
 
 typedef CIntelligentPointer<CThing> TThingPtr;
-template TThingPtr* __fastcall _STL::__uninitialized_copy<TThingPtr*, TThingPtr*>(TThingPtr*, TThingPtr*, TThingPtr*, const _STL::__false_type&);
-template TThingPtr* __fastcall _STL::__copy_backward<TThingPtr*, TThingPtr*, int>(TThingPtr*, TThingPtr*, TThingPtr*, const _STL::random_access_iterator_tag&, int*);
-template TThingPtr* __fastcall _STL::__uninitialized_fill_n<TThingPtr*, unsigned int, TThingPtr>(TThingPtr*, unsigned int, const TThingPtr&, const _STL::__false_type&);
+template TThingPtr* __fastcall std::__uninitialized_copy<TThingPtr*, TThingPtr*>(TThingPtr*, TThingPtr*, TThingPtr*, const std::__false_type&);
+template TThingPtr* __fastcall std::__copy_backward<TThingPtr*, TThingPtr*, int>(TThingPtr*, TThingPtr*, TThingPtr*, const std::random_access_iterator_tag&, int*);
+template TThingPtr* __fastcall std::__uninitialized_fill_n<TThingPtr*, unsigned int, TThingPtr>(TThingPtr*, unsigned int, const TThingPtr&, const std::__false_type&);
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-template void _STL::vector<CIntelligentPointer<CThing> >::_M_fill_insert(CIntelligentPointer<CThing>*, unsigned int, const CIntelligentPointer<CThing>&);
+template void std::vector<CIntelligentPointer<CThing> >::_M_fill_insert(CIntelligentPointer<CThing>*, unsigned int, const CIntelligentPointer<CThing>&);

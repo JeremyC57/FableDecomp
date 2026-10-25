@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<CCharString,CSymbolInfo>* first, pair<CCharString,CSymbolInfo>* last, pair<CCharString,CSymbolInfo> pivot, CCompareString comp) -- STLport quicksort partition step over the symbol-map entries: advance first past entries below the pivot, retreat last past entries above it, swap, until they cross; returns the cut
+// std::__unguarded_partition(pair<CCharString,CSymbolInfo>* first, pair<CCharString,CSymbolInfo>* last, pair<CCharString,CSymbolInfo> pivot, CCompareString comp) -- STLport quicksort partition step over the symbol-map entries: advance first past entries below the pivot, retreat last past entries above it, swap, until they cross; returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E6C80, length 133 bytes (`ret 14h`: the 16-byte pivot + the 4-byte comparator).
 // Label correction: the catalog's "Partition_QuickSort" is STLport `__unguarded_partition` instantiated for
@@ -28,7 +28,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;
@@ -56,11 +56,11 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 }
 
-typedef _STL::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
+typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
 
 template <class T>
 struct CCompareString {
     bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.FastCompare(b.first); }
 };
 
-template SSymbolEntry* __fastcall _STL::__unguarded_partition(SSymbolEntry*, SSymbolEntry*, SSymbolEntry, CCompareString<CSymbolMap::CSymbolInfo>);
+template SSymbolEntry* __fastcall std::__unguarded_partition(SSymbolEntry*, SSymbolEntry*, SSymbolEntry, CCompareString<CSymbolMap::CSymbolInfo>);

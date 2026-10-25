@@ -1,15 +1,15 @@
-// _STL::sort(CThing** first, CThing** last, CThingCompare_Nearest comp) -- entry of the preferred-fire-point sort: introsort to depth 2*lg(n), then the final insertion sort
+// std::sort(CThing** first, CThing** last, CThingCompare_Nearest comp) -- entry of the preferred-fire-point sort: introsort to depth 2*lg(n), then the final insertion sort
 // Leaf: ??$sort@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0095E010, 111 bytes (+ int3 padding to 112), __fastcall (/Gr algorithm TU: first
 //   in ecx, last in edx, the comparator on the stack), `ret 0Ch`.
-// Instantiation: the fire-point sort: _STL::sort<CThing**, CThingCompare_Nearest> called from
+// Instantiation: the fire-point sort: std::sort<CThing**, CThingCompare_Nearest> called from
 //   CAIStateGroup_RangedCombatUsePreferredFirePoint::GetFirePointList (0x0095D4C0) and ::IsRunnable (0x0095D590).
 // Callees: __introsort_loop @ 0x0095DF40, __final_insertion_sort @ 0x0095DDF0.
 // Shape: STLport `if (first != last) { __introsort_loop(first, last, (T*)0, __lg(last - first) * 2, comp);
 //   __final_insertion_sort(first, last, comp); }`; `__lg` is the shift-count loop. The comparator is
 //   CThingCompare_Nearest itself, so each test is `test eax,eax` on the nearer thing: the predicate is true whenever
 //   either thing is non-null (a retail quirk the sort keeps).
-// Label: catalog "std_sort_Introsort" -> the STLport 4.x _STL::sort instantiation for CThingCompare_Nearest (retail
+// Label: catalog "std_sort_Introsort" -> the STLport 4.x std::sort instantiation for CThingCompare_Nearest (retail
 //   links STLport; the Dinkumware names in Ego_r.pdb are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma; the stand-ins use `#pragma auto_inline(off)` + `__declspec(noinline)`.
 class CThing;
@@ -54,7 +54,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
 #pragma auto_inline(on)
 typedef CThingCompare_Nearest TComp;
 
-namespace _STL {
+namespace std {
 template <class _Size>
 inline _Size __lg(_Size __n)
 {
@@ -77,4 +77,4 @@ void __fastcall sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compa
     }
 }
 template void __fastcall sort<CThing**, TComp>(CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

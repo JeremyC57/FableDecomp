@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A55880 _STL::__copy(map<CCharString,int> iterators, back_insert_iterator<vector<pair<CCharString,int> > >, ...)
+// Behaviour test for 0x00A55880 std::__copy(map<CCharString,int> iterators, back_insert_iterator<vector<pair<CCharString,int> > >, ...)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -26,7 +26,7 @@ public:
     ~CCharString() { std::free(PStringData); --g_live; }    // 0x0099EAE0 stand-in
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { input_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -134,12 +134,12 @@ _OutputIter __copy(_InputIter __first, _InputIter __last, _OutputIter __result, 
         *__result = *__first;
     return __result;
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const CCharString, int> CMapValue;
-typedef _STL::_Rb_tree_node<CMapValue> CNode;
-typedef _STL::_Rb_tree_iterator<CMapValue> CIter;
-typedef _STL::vector<_STL::pair<CCharString, int> > CVec;
+typedef std::pair<const CCharString, int> CMapValue;
+typedef std::_Rb_tree_node<CMapValue> CNode;
+typedef std::_Rb_tree_iterator<CMapValue> CIter;
+typedef std::vector<std::pair<CCharString, int> > CVec;
 
 int main()
 {
@@ -154,7 +154,7 @@ int main()
             n[i]->_M_color = true;
             n[i]->_M_left = n[i]->_M_right = 0;
         }
-        _STL::_Rb_tree_node_base header;
+        std::_Rb_tree_node_base header;
         header._M_color = false;
         header._M_parent = n[1]; header._M_left = n[0]; header._M_right = n[3];
         n[1]->_M_parent = &header; n[1]->_M_left = n[0]; n[1]->_M_right = n[2];
@@ -162,16 +162,16 @@ int main()
         n[2]->_M_parent = n[1]; n[2]->_M_right = n[3];
         n[3]->_M_parent = n[2];
         CVec v;
-        _STL::back_insert_iterator<CVec> r = _STL::__copy(CIter(header._M_left), CIter(&header),
-                                                          _STL::back_insert_iterator<CVec>(v),
-                                                          _STL::input_iterator_tag(), (int*)0);
-        r = _STL::pair<CCharString, int>(CCharString("fly"), 7);    // the returned inserter still targets v
+        std::back_insert_iterator<CVec> r = std::__copy(CIter(header._M_left), CIter(&header),
+                                                          std::back_insert_iterator<CVec>(v),
+                                                          std::input_iterator_tag(), (int*)0);
+        r = std::pair<CCharString, int>(CCharString("fly"), 7);    // the returned inserter still targets v
         ok = v._M_finish - v._M_start == 5;
         for (int i = 0; ok && i < 4; ++i)
             ok = std::strcmp(v._M_start[i].first.PStringData, keys[i]) == 0 && v._M_start[i].second == (i + 1) * 100;
         ok = ok && std::strcmp(v._M_start[4].first.PStringData, "fly") == 0;
         CVec empty;                                                 // first == last copies nothing
-        _STL::__copy(CIter(&header), CIter(&header), _STL::back_insert_iterator<CVec>(empty), _STL::input_iterator_tag(),
+        std::__copy(CIter(&header), CIter(&header), std::back_insert_iterator<CVec>(empty), std::input_iterator_tag(),
                      (int*)0);
         ok = ok && empty._M_start == empty._M_finish;
         for (int i = 0; i < 4; ++i) { n[i]->_M_value_field.~CMapValue(); std::free(n[i]); }

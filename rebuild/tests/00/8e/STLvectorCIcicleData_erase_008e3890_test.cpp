@@ -1,4 +1,4 @@
-// Behaviour test for 0x008E3890 _STL::vector<CIcicleData>::erase(CIcicleData* position).
+// Behaviour test for 0x008E3890 std::vector<CIcicleData>::erase(CIcicleData* position).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("008e3890_TEST FAIL\n"); return 1; } } while (0)

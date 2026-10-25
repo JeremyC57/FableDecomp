@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CThing** first, CThing** last, CThing**, int depth_limit, ThingCompare comp) -- STLport introsort recursion: partition around the median of three, recurse on the right part, loop on the left; partial-sort fallback when the depth runs out
+// std::__introsort_loop(CThing** first, CThing** last, CThing**, int depth_limit, ThingCompare comp) -- STLport introsort recursion: partition around the median of three, recurse on the right part, loop on the left; partial-sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009327F0, 217 bytes (224 with padding), `ret 0Ch` (first in ecx, last in edx; the value-type pointer, the depth limit and comp on the stack).
 // Name: STLport `__introsort_loop<CThing**, CThing*, int, bool (__fastcall*)(CThing*, CThing*)>`; callers sort 0x00932908
@@ -23,7 +23,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, size_t n);   // 0x0
 class CThing;
 typedef bool (__fastcall* ThingCompare)(CThing* a, CThing* b);   // e.g. the height compare 0x00930D90
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 inline const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {

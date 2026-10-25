@@ -9,7 +9,7 @@ struct CBase {
     virtual ~CBase() {}
 };
 template <class K, class V> struct CKeyPairCompareLess { };
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator {
 public:
@@ -76,7 +76,7 @@ template <class K, class V, class C> struct CVectorMap {
 };
 struct CCRCSymbolMap : CBase {
     CVectorMap<unsigned long, long, CKeyPairCompareLess<unsigned long, long> > SLONGMap;
-    _STL::set<unsigned long>                                                  NamesUsed;
+    std::set<unsigned long>                                                  NamesUsed;
     bool                                                                      CheckForDuplicateSymbols;
     virtual ~CCRCSymbolMap() {}
     void Clear();
@@ -86,7 +86,7 @@ void CCRCSymbolMap::Clear()
     SLONGMap.Clear();
     NamesUsed.clear();
 }
-typedef _STL::_Rb_tree_node<unsigned long> CNameNode;
+typedef std::_Rb_tree_node<unsigned long> CNameNode;
 static CNameNode gHeader;
 static CNameNode gRoot;
 static CKeyValuePair<unsigned long, long> gEntries[2];

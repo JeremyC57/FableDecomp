@@ -1,13 +1,13 @@
-// 00466281 _STL::vector<NSpeechGainManager::CDialogueLayerDef>::operator=
+// 00466281 std::vector<NSpeechGainManager::CDialogueLayerDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
-// Leaf: ??4?$vector@UCDialogueLayerDef@NSpeechGainManager@@@_STL@@QAEAAU01@ABU01@@Z
+// Leaf: ??4?$vector@UCDialogueLayerDef@NSpeechGainManager@@@std@@QAEAAU01@ABU01@@Z
 #include <stdlib.h>
 #include <new>
 namespace NSpeechGainManager {
 // Layout: vtable slot0 is a genuine virtual destructor; opaque payload follows vptr. Retail copy assignment and ctor operate on 64-byte CDialogueLayerDef; no engine header exists.
 struct CDialogueLayerDef {unsigned data[15];CDialogueLayerDef();CDialogueLayerDef(const CDialogueLayerDef&);virtual ~CDialogueLayerDef();CDialogueLayerDef&operator=(const CDialogueLayerDef&);};
 }
-namespace _STL {
+namespace std {
 struct __false_type{__false_type(){}};
 template<class Tag> __declspec(noinline) void __fastcall _Destroy(NSpeechGainManager::CDialogueLayerDef*a,NSpeechGainManager::CDialogueLayerDef*b,const Tag&){while(a!=b){a->~CDialogueLayerDef();++a;}}
 template<class T>__forceinline T*_Copy(T*first,T*last,T*out){for(int n=last-first;n>0;--n,++first,++out)*out=*first;return out;}
@@ -38,13 +38,13 @@ CDialogueLayerDef::~CDialogueLayerDef(){assert(Alive>0);--Alive;++Destroyed;}
 CDialogueLayerDef::CDialogueLayerDef(const CDialogueLayerDef&v){memcpy(data,v.data,sizeof(data));++Alive;++Copies;}
 CDialogueLayerDef&CDialogueLayerDef::operator=(const CDialogueLayerDef&v){memcpy(data,v.data,sizeof(data));++Assigns;return *this;}
 }
-namespace _STL {
+namespace std {
 template<>NSpeechGainManager::CDialogueLayerDef*vector<NSpeechGainManager::CDialogueLayerDef>::_M_allocate_and_copy(unsigned n,NSpeechGainManager::CDialogueLayerDef*a,NSpeechGainManager::CDialogueLayerDef*b){NSpeechGainManager::CDialogueLayerDef*p=(NSpeechGainManager::CDialogueLayerDef*)malloc(n*sizeof(NSpeechGainManager::CDialogueLayerDef));NSpeechGainManager::CDialogueLayerDef*q=p;while(a!=b){new(q)NSpeechGainManager::CDialogueLayerDef(*a);++q;++a;}return p;}
 template<>void vector<NSpeechGainManager::CDialogueLayerDef>::_M_clear(){for(NSpeechGainManager::CDialogueLayerDef*p=_M_start;p!=_M_finish;++p)p->~CDialogueLayerDef();free(_M_start);}
 }
 int main(){
  {NSpeechGainManager::CDialogueLayerDef data[5];for(unsigned i=0;i<5;++i)for(unsigned j=0;j<15;++j)data[i].data[j]=100*i+j;
- _STL::vector<NSpeechGainManager::CDialogueLayerDef>a,b;memset(&a,0,sizeof(a));b._M_start=data;b._M_finish=data+3;b._M_end_of_storage=data+5;
+ std::vector<NSpeechGainManager::CDialogueLayerDef>a,b;memset(&a,0,sizeof(a));b._M_start=data;b._M_finish=data+3;b._M_end_of_storage=data+5;
  a=b;assert(Alive==8&&Copies==3&&Assigns==0&&Destroyed==0);assert(a._M_finish-a._M_start==3&&a._M_end_of_storage-a._M_start==3&&memcmp(a._M_start,data,3*sizeof(NSpeechGainManager::CDialogueLayerDef))==0);
  a=a;assert(Copies==3&&Assigns==0&&Destroyed==0);
  b._M_finish=data+1;a=b;assert(Alive==6&&Assigns==1&&Destroyed==2&&a._M_finish-a._M_start==1);

@@ -1,4 +1,4 @@
-// _STL::__find_if(CCountedPointer<CActionEventBase>* first, CCountedPointer<CActionEventBase>* last, CIsActionEventFinished pred, const random_access_iterator_tag&) -- STLport four-way unrolled find_if over a creature action's event pointers: the first event whose Finished flag is set, else last
+// std::__find_if(CCountedPointer<CActionEventBase>* first, CCountedPointer<CActionEventBase>* last, CIsActionEventFinished pred, const random_access_iterator_tag&) -- STLport four-way unrolled find_if over a creature action's event pointers: the first event whose Finished flag is set, else last
 // Leaf: ??$__find_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00695E30, length 128 bytes, `ret 8`.
 // Callers: CCreatureActionBase::FrameUpdate 0x00694020 (landed; 0x00694099: the inline remove_if over ActionEvents),
@@ -64,7 +64,7 @@ public:
 
 typedef CCountedPointer<NCreatureAction::CActionEventBase> TActionEventPtr;
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
 struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_iterator_tag() { } };
@@ -105,4 +105,4 @@ _RandomAccessIter __fastcall __find_if(_RandomAccessIter __first, _RandomAccessI
 }
 }
 
-template TActionEventPtr* __fastcall _STL::__find_if<TActionEventPtr*, NCreatureAction::CIsActionEventFinished>(TActionEventPtr*, TActionEventPtr*, NCreatureAction::CIsActionEventFinished, const _STL::random_access_iterator_tag&);
+template TActionEventPtr* __fastcall std::__find_if<TActionEventPtr*, NCreatureAction::CIsActionEventFinished>(TActionEventPtr*, TActionEventPtr*, NCreatureAction::CIsActionEventFinished, const std::random_access_iterator_tag&);

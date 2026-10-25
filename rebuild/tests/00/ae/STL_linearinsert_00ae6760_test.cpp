@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE6760 _STL::__linear_insert over pair<long, unsigned long>: insert *last into the sorted [first, last)
+// behaviour test for 0x00AE6760 std::__linear_insert over pair<long, unsigned long>: insert *last into the sorted [first, last)
 #include <cstdio>
 struct SPair { long first; unsigned int second; };
 inline bool operator<(const SPair& x, const SPair& y) { return x.first < y.first || (!(y.first < x.first) && x.second < y.second); }

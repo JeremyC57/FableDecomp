@@ -1,4 +1,4 @@
-// _STL::vector<CTCUnholyPower::PerEffectInfo>::push_back(const CTCUnholyPower::PerEffectInfo& x) -- append a per-effect record (position + intelligent effect pointer), growing through the out-of-line overflow path when full
+// std::vector<CTCUnholyPower::PerEffectInfo>::push_back(const CTCUnholyPower::PerEffectInfo& x) -- append a per-effect record (position + intelligent effect pointer), growing through the out-of-line overflow path when full
 // Leaf: push_back
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798410, 105 bytes, __fastcall `ret 4`. Byte twin of 0x007935D0 (the other
 //   spell's TU).

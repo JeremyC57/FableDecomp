@@ -1,5 +1,5 @@
-// _STL::_Vector_base::_Vector_base(unsigned int n, const allocator& a) -- (_Vector_base<CScriptThing>) STLport vector storage constructor: zero the three words, allocate n 12-byte CScriptThings, set start/finish/end
-// Leaf: ??0?$_Vector_base@VCScriptThing@@V?$allocator@VCScriptThing@@@_STL@@@_STL@@QAE@IABV?$allocator@VCScriptThing@@@1@@Z
+// std::_Vector_base::_Vector_base(unsigned int n, const allocator& a) -- (_Vector_base<CScriptThing>) STLport vector storage constructor: zero the three words, allocate n 12-byte CScriptThings, set start/finish/end
+// Leaf: ??0?$_Vector_base@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@IABV?$allocator@VCScriptThing@@@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DFDE90, 58 bytes (+ int3 padding), `ret 8` (returns this).
 // Callees: malloc @ 0x00BFEA0E (the STLport allocator's allocate: `n != 0 ? malloc(n * sizeof(T)) : 0`).
 // Identity: its only caller is the vector<CScriptThing> copy constructor 0x00DFDE30 (element copy = the landed
@@ -16,7 +16,7 @@ public:
     unsigned char _body[12];
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:

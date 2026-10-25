@@ -1,4 +1,4 @@
-// Behaviour test for 0x0049B7F0 _STL::vector<CTexture>::resize(unsigned int new_size).
+// Behaviour test for 0x0049B7F0 std::vector<CTexture>::resize(unsigned int new_size).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("0049b7f0_TEST FAIL\n"); return 1; } } while (0)

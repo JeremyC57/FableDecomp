@@ -1,6 +1,6 @@
-// _STL::__uninitialized_fill_n(pair<unsigned long,CDefClassInfo>* first, unsigned int n, const pair<unsigned long,CDefClassInfo>& x, const __false_type&) -- STLport copy-construct n copies of one (index, class info) pair into raw storage; returns the end of the copies
+// std::__uninitialized_fill_n(pair<unsigned long,CDefClassInfo>* first, unsigned int n, const pair<unsigned long,CDefClassInfo>& x, const __false_type&) -- STLport copy-construct n copies of one (index, class info) pair into raw storage; returns the end of the copies
 // Flags: /Gr
-// Leaf: ??$__uninitialized_fill_n@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@_STL@@
+// Leaf: ??$__uninitialized_fill_n@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B73E0, 159 bytes, `ret 8` (/Gr TU: first in ecx, n in edx; the value
 //   reference and the __false_type tag reference on the stack).
 // Identity: the 24-byte pair<unsigned long, CDefClassInfo> of 0x009B7320 (same inlined copy constructor chain); single
@@ -22,7 +22,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
@@ -80,7 +80,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -93,9 +93,9 @@ public:
         CArray<unsigned long>  GlobalIndices;           // +0x08
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {

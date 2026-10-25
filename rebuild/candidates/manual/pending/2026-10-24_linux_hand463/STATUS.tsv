@@ -1,6 +1,6 @@
 address	status	bytes	test	note
-00cdb820	MATCH	34v34	PASS	_STL::_Destroy<CHeroSoulsRoundDef*> (virtual dtor loop, /Gr __fastcall); grades 1
-00f28f20	MATCH	34v34	PASS	_STL::_Destroy<CFeatDef*> (100-byte, /Gr __fastcall); grades 1
+00cdb820	MATCH	34v34	PASS	std::_Destroy<CHeroSoulsRoundDef*> (virtual dtor loop, /Gr __fastcall); grades 1
+00f28f20	MATCH	34v34	PASS	std::_Destroy<CFeatDef*> (100-byte, /Gr __fastcall); grades 1
 0051ae60	RELOCATION_MATCH	106v106	PASS	vector<CLevelLoader::CObject::CLevelFiles>::push_back (__forceinline _Construct); grades 3
 0043cac0	MATCH	29v29	PASS	vector<CAbilityButtonGuiDef>::size (92-byte, catalog CScriptThing propagated); grades 2
 0075ee70	MATCH	29v29	PASS	vector<CTCCameraPointScriptedSpline::CKeyCamera>::size (56-byte); grades 1

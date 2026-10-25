@@ -1,5 +1,5 @@
 // 005022f0 behaviour test: CWorldMap::DeleteAllLevels (match.cpp body; the loaded-map swap-with-empty swaps each
-// member through an _STL::swap template), host stand-ins. C++03, g++ -w; also VC7.1 /Od.
+// member through an std::swap template), host stand-ins. C++03, g++ -w; also VC7.1 /Od.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,7 +10,7 @@ static std::string g_log;
 static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 static std::string num(long v) { char b[16]; sprintf(b, "%ld", v); return b; }
 
-namespace _STL { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
+#include <algorithm> // std::swap (the host library already defines it in namespace std)
 struct CThingManager { void DeleteAllThings() { logs("deleteall"); } };
 struct CNavigatorManager { void RemoveNavigationMap(long map) { logs("nav-" + num(map)); } };
 struct CEngineManager {
@@ -91,9 +91,9 @@ struct CLongArray {
     ~CLongArray() { if (_M_start) { ++g_frees; free(_M_start); } }
     void swap(CLongArray& x)
     {
-        _STL::swap(_M_start, x._M_start);
-        _STL::swap(_M_finish, x._M_finish);
-        _STL::swap(_M_end_of_storage, x._M_end_of_storage);
+        std::swap(_M_start, x._M_start);
+        std::swap(_M_finish, x._M_finish);
+        std::swap(_M_end_of_storage, x._M_end_of_storage);
     }
     void Reset()
     {

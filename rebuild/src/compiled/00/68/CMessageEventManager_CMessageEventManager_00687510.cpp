@@ -19,7 +19,7 @@ public:
     unsigned char Data[0x58];
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -63,12 +63,12 @@ public:
     explicit list(const _Alloc& __a = _Alloc()) : _List_base<_Tp, _Alloc>(__a) { }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CMessageEventManager {
 public:
     CWorld*                     World;                      // +0x00
-    _STL::list<CMessageEvent>   Messages;                   // +0x04
+    std::list<CMessageEvent>   Messages;                   // +0x04
     CMessageEventManager(const CWorld& world);
 };
 

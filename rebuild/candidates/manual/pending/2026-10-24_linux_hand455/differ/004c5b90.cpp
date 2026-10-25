@@ -1,4 +1,4 @@
-// _STL::map::operator[](void* const& k) -- STLport subscript of CTCGraphicAppearance's map<void*, CMeshEffectPriorityEntry>: lower_bound the key, insert {key, CMeshEffectPriorityEntry()} at that hint when absent, return the entry
+// std::map::operator[](void* const& k) -- STLport subscript of CTCGraphicAppearance's map<void*, CMeshEffectPriorityEntry>: lower_bound the key, insert {key, CMeshEffectPriorityEntry()} at that hint when absent, return the entry
 // Grade: DIFFER(170v161) -- everything up to the insert call matches (incl. the overlaid default/value_type copy); the value_type's counted-pointer release differs: retail `mov ecx,[esp+10h] ; test ecx,ecx ; je ; dec dword [ecx+4] ; jne ; mov eax,[ecx] ; call [eax+4]`, ours loads the pointer into eax, `dec [eax+4]`, then re-reads the pointer and the count (`mov ecx,[esp+10h] ; mov eax,[ecx+4] ; test eax,eax`).
 // Leaf: ??A?$map@PAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C5B90, 161 bytes, __thiscall `ret 4`.
@@ -54,7 +54,7 @@ struct CTCGraphicAppearance {
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -141,6 +141,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry& _STL::map<void*, NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>::operator[](void* const&);
+template NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry& std::map<void*, NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>::operator[](void* const&);

@@ -1,4 +1,4 @@
-// _STL::__copy(const unsigned char* first, const unsigned char* last, back_insert_iterator<vector<unsigned char>> result, const random_access_iterator_tag&, int*) -- STLport random-access copy of a byte range through a back inserter; returns the advanced inserter
+// std::__copy(const unsigned char* first, const unsigned char* last, back_insert_iterator<vector<unsigned char>> result, const random_access_iterator_tag&, int*) -- STLport random-access copy of a byte range through a back inserter; returns the advanced inserter
 // Leaf: ??$__copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E9900, length 93 bytes (`ret 10h`: last, the inserter, the tag, the Distance*).
 // Label correction: the catalog's "Vector_AppendRange" is STLport `__copy<const unsigned char*, back_insert_iterator<vector<
@@ -12,7 +12,7 @@
 //   runs `dec ebx ; jne` and the result word is stored once at each exit.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 

@@ -21,7 +21,7 @@ extern "C" int   __cdecl memcmp(const void* a, const void* b, unsigned int size)
 extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -109,7 +109,7 @@ typedef basic_string<char, char_traits<char>, allocator<char> > string;
 namespace LHNetworkLib {
 
 struct LAddress {                               // Ego_r.pdb names; retail 0x1C bytes (12-byte STLport string)
-    _STL::string   ServerName;                  // +0x00
+    std::string   ServerName;                  // +0x00
     unsigned long  ServerIP;                    // +0x0C
     unsigned short ServerPort;                  // +0x10
     long           TransportProtocol;           // +0x14 LSOCKET_PROTOCOL
@@ -118,7 +118,7 @@ struct LAddress {                               // Ego_r.pdb names; retail 0x1C 
 
 class LSocket {
 public:
-    static unsigned long __fastcall ResolveHost(const _STL::string& host);          // 0x008F86A0
+    static unsigned long __fastcall ResolveHost(const std::string& host);          // 0x008F86A0
     static bool __fastcall ResolveHost(LAddress& address, unsigned long& ip);
 };
 
@@ -126,7 +126,7 @@ bool __fastcall LSocket::ResolveHost(LAddress& address, unsigned long& ip)
 {
     unsigned long serverIP = address.ServerIP;
     if (serverIP == 0) {
-        if (address.ServerName == _STL::string("ANY")) {
+        if (address.ServerName == std::string("ANY")) {
             ip = 0;
             return true;
         }

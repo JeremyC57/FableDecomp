@@ -1,9 +1,9 @@
-// _STL::__stable_sort_aux(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CSortElement*, int*, less<CSortElement> comp) -- stable sort through a temporary buffer, in place when none can be allocated
+// std::__stable_sort_aux(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, CSortElement*, int*, less<CSortElement> comp) -- stable sort through a temporary buffer, in place when none can be allocated
 // Leaf: ??$__stable_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B86710, 139 bytes. __fastcall (first ecx, last edx), `ret 0Ch` (the
 //   value-type and distance-type tag pointers and the empty comparator on the stack).
-// Callees: _Temporary_buffer::_M_allocate_buffer @ 0x00B84E20, _STL::__inplace_stable_sort<...> @ 0x00B86570,
-//   _STL::__stable_sort_adaptive<...> @ 0x00B865E0, free (CRT import thunk) @ 0x00BFEA14.
+// Callees: _Temporary_buffer::_M_allocate_buffer @ 0x00B84E20, std::__inplace_stable_sort<...> @ 0x00B86570,
+//   std::__stable_sort_adaptive<...> @ 0x00B865E0, free (CRT import thunk) @ 0x00BFEA14.
 // Callers: CEngineSubPrimitiveRenderer::SortList 0x00B84990 (call 0x00B849B3: `stable_sort(list.begin(), list.end())`
 //   when the list RequiresStableSort) and 0x00B868B9.
 // Identity: the manifest label "IntroSort_Driver" is descriptive and wrong (stable sort, not introsort); STLport
@@ -14,7 +14,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `__stable_sort_aux` with the _Temporary_buffer constructor (distance, _M_allocate_buffer, then
 //   `uninitialized_fill_n(_M_buffer, _M_len, *__first)` -- the __false_type placement loop with its null test, because
 //   CSortElement has a user default constructor) and destructor (trivial _Destroy, free) inlined; VC7.1 duplicates the
@@ -43,13 +43,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void _Destroy(_Tp*, _Tp*) {}   // trivial destructor: nothing to run
 
 template <class _ForwardIter, class _Size, class _Tp>

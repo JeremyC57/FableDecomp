@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(pair<CCharString,C3DHelperPoint>* first, unsigned int n, const pair<CCharString,C3DHelperPoint>& x, const __false_type&) -- copy-construct n copies of a helper-point map entry into raw storage; returns the end of the filled run
+// std::__uninitialized_fill_n(pair<CCharString,C3DHelperPoint>* first, unsigned int n, const pair<CCharString,C3DHelperPoint>& x, const __false_type&) -- copy-construct n copies of a helper-point map entry into raw storage; returns the end of the filled run
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6EDE0, 72 bytes (+8 int3), /Gr `__fastcall` (first in ecx, n in edx,
 //   the value and the tag references on the stack, `ret 8`).
@@ -30,7 +30,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
 };
 
-namespace _STL {
+namespace std {
 
 class __false_type { public: __false_type() { } };
 

@@ -1,4 +1,4 @@
-// _STL::deque<C2DVector>::_M_push_front_aux_v(const C2DVector& t) -- push_front slow path: copy the value, make room for one node before the start, allocate it, step the start iterator onto its last slot and construct the copy there
+// std::deque<C2DVector>::_M_push_front_aux_v(const C2DVector& t) -- push_front slow path: copy the value, make room for one node before the start, allocate it, step the start iterator onto its last slot and construct the copy there
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0F3B0, length 115 bytes (thiscall `ret 4`). Callers: CJoystickPositionTracker::Push
 // 0x00A0DFC0 (0x00A0E002) and a tail jump at 0x00A0FA92.
 // Callees: deque::_M_reallocate_map @ 0x00A0EE50 (1, true), malloc @ 0x00BFEA0E.
@@ -22,7 +22,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

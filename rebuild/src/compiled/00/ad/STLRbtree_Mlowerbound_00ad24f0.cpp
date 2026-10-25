@@ -1,5 +1,5 @@
-// _STL::_Rb_tree::_M_lower_bound(const key_type& k) const -- STLport lower-bound walk for map<pair<long,long>,CCountedPointer<CVertexPairContraction> >: the last node whose key is not less than k (signed lexicographic pair compare), else the header
-// Leaf: ?_M_lower_bound@?$_Rb_tree@U?$pair@JJ@_STL@@
+// std::_Rb_tree::_M_lower_bound(const key_type& k) const -- STLport lower-bound walk for map<pair<long,long>,CCountedPointer<CVertexPairContraction> >: the last node whose key is not less than k (signed lexicographic pair compare), else the header
+// Leaf: ?_M_lower_bound@?$_Rb_tree@U?$pair@JJ@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD24F0, 53 bytes (+11 int3), thiscall `ret 4`.
 // Identity: callers 0x00AD3210 / 0x00AD3D30 (the non-const and const `lower_bound(k)` wrappers: `iterator(_M_lower_bound(k))`
 //   through a hidden pointer) and 0x00AD6740 (the map's operator[]: lower_bound, `i == end() || key_comp()(k, i->first)`
@@ -52,7 +52,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -205,9 +205,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_Base_ptr
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_lower_bound(const key_type& __k) const
@@ -221,10 +221,10 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_lower_bound(const key_
             __x = _S_right(__x);
     return __y;
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, long> TVertexPairKey;
-typedef _STL::pair<const TVertexPairKey, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > TPairContractionValue;
-typedef _STL::_Rb_tree<TVertexPairKey, TPairContractionValue, _STL::_Select1st<TPairContractionValue>,
-                       _STL::less<TVertexPairKey>, _STL::allocator<TPairContractionValue> > TPairContractionMapTree;
+typedef std::pair<long, long> TVertexPairKey;
+typedef std::pair<const TVertexPairKey, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > TPairContractionValue;
+typedef std::_Rb_tree<TVertexPairKey, TPairContractionValue, std::_Select1st<TPairContractionValue>,
+                       std::less<TVertexPairKey>, std::allocator<TPairContractionValue> > TPairContractionMapTree;
 template TPairContractionMapTree::_Base_ptr TPairContractionMapTree::_M_lower_bound(const TVertexPairKey&) const;

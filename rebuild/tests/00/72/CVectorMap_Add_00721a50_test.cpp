@@ -40,7 +40,7 @@ public:
     CKeyPairCompareLess() { }
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _T1, class _T2> class pair {
@@ -96,7 +96,7 @@ __declspec(noinline) CCompositeBlendDesc::CCompositeBlendDesc(const CCompositeBl
 }
 // Same-TU stand-in for 0x00721060 (constructs the element in place and adopts the end; never keeps `__x`).
 template <class _Tp, class _Alloc>
-__declspec(noinline) void _STL::vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&,
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&,
                                                                         size_type __fill_len, bool __atend)
 {
     _Construct(__position, __x);
@@ -108,8 +108,8 @@ __declspec(noinline) void _STL::vector<_Tp, _Alloc>::_M_insert_overflow(pointer 
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Data;                 // +0x00 (retail STLport vector, 12 bytes)
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Data;                 // +0x00 (retail STLport vector, 12 bytes)
     C                        Compare;              // +0x0c (empty)
     bool                     Dirty;                // +0x0d
     void Add(const K& key, const V& value);
@@ -127,7 +127,7 @@ template void CVectorMap<long, CTCHeroMorph::CTextureLayer, CKeyPairCompareLess<
 
 // ---- test harness ----
 typedef CVectorMap<long, CTCHeroMorph::CTextureLayer, CKeyPairCompareLess<long, CTCHeroMorph::CTextureLayer> > TMap;
-typedef _STL::pair<long, CTCHeroMorph::CTextureLayer> TPair;
+typedef std::pair<long, CTCHeroMorph::CTextureLayer> TPair;
 static unsigned char g_layerBuf[sizeof(CTCHeroMorph::CTextureLayer)];
 static const CTCHeroMorph::CTextureLayer& MakeLayer(long id, unsigned long tex)
 {

@@ -76,7 +76,7 @@ static int StringValue(const CCharString& s, char prefix)
 }
 static int LiveObjects() { return gLiveStrings; }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;
     _T2 second;
@@ -87,10 +87,10 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // empty functor, by value
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<float, CCharString> TElem;
+typedef std::pair<float, CCharString> TElem;
 typedef CKeyPairCompareLess<float, CCharString> TLess;
 #define LOWEST_KEY 0
 static TElem Mk(int key, int tag) { return TElem((float)key * 0.5f, MkString('t', tag)); }
@@ -99,7 +99,7 @@ static int TagOf(const TElem& e) { return StringValue(e.second, 't'); }
 static bool PayloadOk(const TElem& e) { return e.second.PStringData != 0; }
 
 // STLport 4.x sort / heap algorithms (the model's bodies and the test's copies of their out-of-line callees).
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
@@ -362,7 +362,7 @@ static bool TestFunction()                              // __unguarded_linear_in
     TElem* a = NewArr(keys, 9);
     {
         TElem val(a[8]);
-        _STL::__unguarded_linear_insert(a + 8, TElem(val), TLess());
+        std::__unguarded_linear_insert(a + 8, TElem(val), TLess());
     }
     ok = IsPerm(a, 9, keys) && IsSorted(a, 9) && IsStable(a, 9);
     for (int i = 0; ok && i < 9; ++i)
@@ -372,7 +372,7 @@ static bool TestFunction()                              // __unguarded_linear_in
     TElem* b = NewArr(keys2, 5);
     {
         TElem val(b[4]);
-        _STL::__unguarded_linear_insert(b + 4, TElem(val), TLess());
+        std::__unguarded_linear_insert(b + 4, TElem(val), TLess());
     }
     ok = ok && IsPerm(b, 5, keys2) && IsSorted(b, 5);
     for (int i = 0; ok && i < 5; ++i)

@@ -20,7 +20,7 @@ public:
     CCharString(const CCharString& other);               // 0x0099EC30
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct _List_node_base {
     _List_node_base* _M_next;                            // +0x00
@@ -69,7 +69,7 @@ typedef CClass* (__cdecl* ClassAllocFunc)();
 
 class CClassTypeInfo {
 public:
-    _STL::list<CClass*> TypeList;                        // +0x00
+    std::list<CClass*> TypeList;                        // +0x00
     unsigned long       NoAllocated;                     // +0x04
     bool                Used;                            // +0x08
     bool                Local;                           // +0x09

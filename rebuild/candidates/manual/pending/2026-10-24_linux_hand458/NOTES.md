@@ -1,6 +1,6 @@
 # Hand chunk 458 (std .. std): 40 of 40 byte-exact
 
-All 40 rows are STLport 4.x instantiations (namespace `_STL`): sort/heap algorithms over five keyed vectors, plus a
+All 40 rows are STLport 4.x instantiations (namespace `std`): sort/heap algorithms over five keyed vectors, plus a
 handful of vector/bitset/uninitialized helpers. Every source is a real template with an explicit instantiation;
 the /Gr algorithm TUs get an explicit `__fastcall` on the template definition, so no row needs a `// Flags:` line.
 One row (004dd80b) uses `#pragma optimize("s", on)`. Grades: 6 MATCH, 34 RELOCATION_MATCH. All 40 tests PASS

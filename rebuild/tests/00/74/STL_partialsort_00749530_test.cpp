@@ -1,4 +1,4 @@
-// Behaviour test for 0x00749530 _STL::__partial_sort(CThing**, CThing**, CThing**, CThing**, CCompare_FurthestFromInitPos2D)
+// Behaviour test for 0x00749530 std::__partial_sort(CThing**, CThing**, CThing**, CThing**, CCompare_FurthestFromInitPos2D)
 #include <cstdio>
 
 struct CThing { int key; };

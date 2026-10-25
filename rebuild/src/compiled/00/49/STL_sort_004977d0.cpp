@@ -1,4 +1,4 @@
-// _STL::sort(CWideString*, CWideString*, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport sort of wide strings ordered case-insensitively: introsort loop to depth 2*lg(n), then the inline final insertion sort (guarded over the first 16, unguarded over the rest)
+// std::sort(CWideString*, CWideString*, NGameComponentHelpers::CCaseInsensitiveStringCompare) -- STLport sort of wide strings ordered case-insensitively: introsort loop to depth 2*lg(n), then the inline final insertion sort (guarded over the first 16, unguarded over the rest)
 // Flags: /Gr
 // Leaf: ?sort@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004977D0, 110 bytes, `ret 4` (__fastcall: first in ecx -> edi, last in edx ->

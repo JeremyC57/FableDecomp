@@ -1,5 +1,5 @@
-// _STL::__make_heap(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntryLess comp, CSurfaceEntry*, int*) -- heapify the (key, CCompositeSurfaceInfo) entries: sift every parent down from the last one to the root
-// Leaf: ??$__make_heap@PAU?$pair@JVCCompositeSurfaceInfo@@@_STL@@
+// std::__make_heap(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntryLess comp, CSurfaceEntry*, int*) -- heapify the (key, CCompositeSurfaceInfo) entries: sift every parent down from the last one to the root
+// Leaf: ??$__make_heap@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEE140, 103 bytes, `ret 0Ch` (comparator, value-type and distance pointers).
 // Callees: __adjust_heap @ 0x00BEDD70 (landed).
@@ -61,7 +61,7 @@ public:
     CCountedPointer<CCompositeSurfaceCache> Cache;  // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -69,18 +69,18 @@ template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
+typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 
-namespace _STL {
+namespace std {
 template <class RandomAccessIter, class Distance, class T, class Compare>
 void __adjust_heap(RandomAccessIter first, Distance holeIndex, Distance len, T value, Compare comp);   // 0x00BEDD70
 
@@ -96,6 +96,6 @@ void __make_heap(RandomAccessIter first, RandomAccessIter last, Compare comp, T*
         parent--;
     }
 }
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::__make_heap(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntryLess, CSurfaceEntry*, int*);
+template void std::__make_heap(CSurfaceEntry*, CSurfaceEntry*, CSurfaceEntryLess, CSurfaceEntry*, int*);

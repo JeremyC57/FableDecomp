@@ -1,5 +1,5 @@
-// _STL::__destroy_aux(CTestQuest* first, CTestQuest* last, const __false_type&) -- destroy a run of 28-byte test-quest records: each record's six CCharStrings, last member first
-// Leaf: ??$__destroy_aux@PAVCTestQuest@@@_STL@@
+// std::__destroy_aux(CTestQuest* first, CTestQuest* last, const __false_type&) -- destroy a run of 28-byte test-quest records: each record's six CCharStrings, last member first
+// Leaf: ??$__destroy_aux@PAVCTestQuest@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004ABD90, 72 bytes (+8 int3), `ret 4` (link-time __fastcall: first in ecx, last in
 //   edx, the __false_type tag reference on the stack, never read).
@@ -30,7 +30,7 @@ public:
     CCharString QuestCardDefName;                    // +0x18
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

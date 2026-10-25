@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* first, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* last, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> > pivot, CParticleUpdateCCompareParamDesc<unsigned long> comp) -- Hoare partition of particle-update descriptors around pivot's key, return the split point
+// std::__unguarded_partition(pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* first, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> >* last, pair<unsigned long, CParticleUpdateParamDesc<unsigned long, unsigned long> > pivot, CParticleUpdateCCompareParamDesc<unsigned long> comp) -- Hoare partition of particle-update descriptors around pivot's key, return the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076AA30, 148 bytes, `ret 14h`.
 // Caller: 0x0076C10B (the introsort loop 0x0076C080 of the same instantiation).
@@ -28,7 +28,7 @@ public:
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -40,7 +40,7 @@ public:
 
 }
 
-typedef _STL::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> > SKeyedDesc;   // 16 bytes
+typedef std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long> > SKeyedDesc;   // 16 bytes
 
 namespace NParticleEngine {
 
@@ -52,7 +52,7 @@ template <class K> struct CParticleUpdateCCompareParamDesc {
 
 typedef NParticleEngine::CParticleUpdateCCompareParamDesc<unsigned long> SKeyedDescLess;
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 

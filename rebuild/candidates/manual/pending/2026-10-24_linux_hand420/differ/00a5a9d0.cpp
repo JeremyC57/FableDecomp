@@ -1,4 +1,4 @@
-// _STL::transform(const C3DVector* first, const C3DVector* last, back_insert_iterator<vector<C2DVector> > result, CProjectOntoPlane op) -- project every 3D point of [first, last) onto a plane basis ((p - origin).axisX, (p - origin).axisY) and push the 2D results through the back inserter; returns the inserter
+// std::transform(const C3DVector* first, const C3DVector* last, back_insert_iterator<vector<C2DVector> > result, CProjectOntoPlane op) -- project every 3D point of [first, last) onto a plane basis ((p - origin).axisX, (p - origin).axisY) and push the 2D results through the back inserter; returns the inserter
 // Grade: DIFFER(211v203) -- the X dot product goes to the named local r and is copied into the push_back temporary by an integer move (+8 bytes, frame 0x14 v 0x0c); retail stores it straight into the temporary
 // Leaf: ??$transform@
 // Flags: /Gr
@@ -48,7 +48,7 @@ struct CProjectOntoPlane {
     }
 };
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -101,4 +101,4 @@ OutputIter transform(InputIter first, InputIter last, OutputIter result, UnaryOp
 template back_insert_iterator<vector<C2DVector> >
 transform(const C3DVector*, const C3DVector*, back_insert_iterator<vector<C2DVector> >, CProjectOntoPlane);
 
-}   // namespace _STL
+}   // namespace std

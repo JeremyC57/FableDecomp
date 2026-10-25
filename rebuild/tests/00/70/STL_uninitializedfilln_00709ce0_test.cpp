@@ -1,4 +1,4 @@
-// Behaviour test for 00709ce0 (_STL::__uninitialized_fill_n over pair<NGraphicAppearance::CMeshInfo, CEngineTextureMorphSet>): n copies of x are copy-constructed into raw storage,
+// Behaviour test for 00709ce0 (std::__uninitialized_fill_n over pair<NGraphicAppearance::CMeshInfo, CEngineTextureMorphSet>): n copies of x are copy-constructed into raw storage,
 // the returned cursor is first + n, n == 0 constructs nothing, and every copy is balanced by its destructor.
 #include <cstdio>
 #include <new>

@@ -3,8 +3,8 @@
 // Leaf: ?insert_unique@_Rb_tree
 namespace SignedKeyTree {
 // Layout: retail node allocator copies two dwords to+16/+20; mapped dword type is unproven.
-namespace _STL {template<class A,class B>struct pair {A first;B second;pair(const A& a):first(a),second(){}};}
-typedef _STL::pair<const int,unsigned> value_type;
+namespace std {template<class A,class B>struct pair {A first;B second;pair(const A& a):first(a),second(){}};}
+typedef std::pair<const int,unsigned> value_type;
 // Layout: retail node colour +0,parent +4,left +8,right +12,key +16; tree header +0,count +4.
 struct _Rb_tree_node_base {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node_base*Parent,*Left,*Right;__forceinline const value_type&GetValue()const;};
 struct _Rb_tree_node:_Rb_tree_node_base {value_type Value;_Rb_tree_node(const value_type&v=value_type(0)):Value(v){Colour=0;Parent=Left=Right=0;}};

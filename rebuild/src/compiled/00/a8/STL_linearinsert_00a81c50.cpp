@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SUniqueIDOpen* first, SUniqueIDOpen* last, SUniqueIDOpen val, CUniqueIDOpenLess comp) -- insertion-sort step over the 16-byte (unsigned __int64 unique ID, bool open) entries: a value below the first entry shifts [first, last) up one slot and lands at first, anything else goes through the unguarded insert
+// std::__linear_insert(SUniqueIDOpen* first, SUniqueIDOpen* last, SUniqueIDOpen val, CUniqueIDOpenLess comp) -- insertion-sort step over the 16-byte (unsigned __int64 unique ID, bool open) entries: a value below the first entry shifts [first, last) up one slot and lands at first, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A81C50, 104 bytes (+ int3 padding to 112), `ret 14h` (/Gr: first in ecx, last in edx; the 16-byte value and
 //   the empty comparator's slot on the stack).
@@ -9,7 +9,7 @@
 //   __unguarded_linear_insert(last, val, comp);` with the 64-bit key compare inline (high word `ja`/`jb`, then the low
 //   word); copy_backward -> __copy_backward_ptrs(__false_type) inline -> the out-of-line random-access __copy_backward;
 //   the pair's trivial assignment stores all four dwords, while the by-value argument uses pair's memberwise copy ctor.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -21,14 +21,14 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 class CANavQuadTreeNode;
-typedef _STL::pair<unsigned __int64, bool>          SUniqueIDOpen;    // 16 bytes
+typedef std::pair<unsigned __int64, bool>          SUniqueIDOpen;    // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, bool> CUniqueIDOpenLess;
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
 

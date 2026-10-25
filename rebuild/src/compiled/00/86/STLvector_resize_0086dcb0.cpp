@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<pair<long, CRandomAppearanceMorph::CSkeletalMorph> >::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default (id, skeletal morph) pairs at the end
-// Leaf: ?resize@?$vector@U?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@_STL@@V?$allocator@U?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<pair<long, CRandomAppearanceMorph::CSkeletalMorph> >::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default (id, skeletal morph) pairs at the end
+// Leaf: ?resize@?$vector@U?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@std@@V?$allocator@U?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0086DCB0, 99 bytes (+13 int3), thiscall on the vector, `ret 4`.
 // Identity: the element vector of CRandomAppearanceMorph::SkeletalMorphs (CVectorMap<long, CSkeletalMorph>, +0x18 in the
 //   landed ctor 0x0086C4D0); no direct call site in the image (xref: 0 calls / 0 references).
@@ -31,7 +31,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {                       // STLport pair
     _T1 first;                                                      // +0x00
     _T2 second;                                                     // +0x04
@@ -80,4 +80,4 @@ public:
 }
 
 // 0x0086C720 erase, 0x0086CD70 _M_fill_insert (out of line in retail)
-template void _STL::vector<_STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> >::resize(unsigned int);
+template void std::vector<std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> >::resize(unsigned int);

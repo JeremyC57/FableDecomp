@@ -1,4 +1,4 @@
-// _STL::basic_string<unsigned short>::push_back(unsigned short c) -- append one wide character through the inline append(1, c)
+// std::basic_string<unsigned short>::push_back(unsigned short c) -- append one wide character through the inline append(1, c)
 // Grade: DIFFER(141v140) -- int3-after-noreturn row: RELOCATION_MATCH against the 141-byte row read straight from Fable.exe (byte 140 is the 0xCC VC7.1 emits after the final noreturn _M_throw_length_error call; the chunk row and q.py strip it as padding). Land against an N+1 oracle row (GOTCHAS: int3-after-noreturn rows).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099CC80, 140 bytes, thiscall . The function ends in the noreturn
 // length-error call.
@@ -10,8 +10,8 @@
 // Shape: append(1, c) expanded inline (this inline copy spells the landed 0x0099B9A0 form: `fill = c; count = n;`
 // -- the out-of-line 0x0099CB00 body differs with them, 154v145): c is copied into a frame word (the fill reads it there) and the constant count
 // 1 is homed in c's dead argument slot (max(size(), n) takes its address).
-// Leaf: ?push_back@?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAEXG@Z
-namespace _STL {
+// Leaf: ?push_back@?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@QAEXG@Z
+namespace std {
 
 typedef unsigned int size_t;
 

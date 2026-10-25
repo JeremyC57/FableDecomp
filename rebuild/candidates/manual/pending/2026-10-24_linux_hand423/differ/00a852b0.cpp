@@ -21,7 +21,7 @@ public:
     float X0, Y0, X1, Y1;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 struct _List_node_base {
@@ -116,19 +116,19 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                       // +0x0c
     bool Dirty;                                         // +0x0d
     void Insert(const K& key, const V& value)
     {
-        push_back(_STL::pair<K, V>(key, value));
+        push_back(std::pair<K, V>(key, value));
         Dirty = true;
     }
 };
 
-template void CVectorMap<unsigned __int64, _STL::list<C2DLineF>, CKeyPairCompareLess<unsigned __int64, _STL::list<C2DLineF> > >::Insert(
-    const unsigned __int64& key, const _STL::list<C2DLineF>& value);
+template void CVectorMap<unsigned __int64, std::list<C2DLineF>, CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF> > >::Insert(
+    const unsigned __int64& key, const std::list<C2DLineF>& value);

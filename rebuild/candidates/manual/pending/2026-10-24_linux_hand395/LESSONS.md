@@ -59,5 +59,5 @@ Review at landing:
     are 0xc off from retail (TrapOpener +0x38 vs +0x44; LoopingSound +0x98 vs +0xa4), so the local models stay.
 - No CHitParameters engine header exists. The landed 3-argument ctor 0x0087FF60 models the map as 8 bytes plus an
   "AllocatorState" word; 0x007A3BC0 uses the 12-byte STLport map and a 12-byte vector instead (same offsets).
-- Sort-family rows use `_STL::` as the line-1 module (finish.py takes it as the module); the catalog module is
+- Sort-family rows use `std::` as the line-1 module (finish.py takes it as the module); the catalog module is
   `_global`.

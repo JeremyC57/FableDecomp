@@ -1,4 +1,4 @@
-// _STL::list<CVertexGroupBlock>::_M_insert_dispatch(iterator pos, const_iterator first, const_iterator last, const __false_type&) -- insert copies of a run of blocks before pos in the optimiser's block list
+// std::list<CVertexGroupBlock>::_M_insert_dispatch(iterator pos, const_iterator first, const_iterator last, const __false_type&) -- insert copies of a run of blocks before pos in the optimiser's block list
 // Leaf: ??$_M_insert_dispatch@U?$_List_iterator@VCVertexGroupBlock
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADCC80, 0xA8 bytes, thiscall (`this` unused), `ret 10h` (pos, first, last, the
 // __false_type reference).
@@ -15,7 +15,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -98,15 +98,15 @@ public:
     map(const map& __x) : _M_t(__x._M_t) { }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 bytes in retail
 public:
-    _STL::vector<unsigned long>    Groups;                  // +0x00
-    _STL::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    std::vector<unsigned long>    Groups;                  // +0x00
+    std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0x0
@@ -171,4 +171,4 @@ public:
 template void list<CVertexGroupBlock>::_M_insert_dispatch<list<CVertexGroupBlock>::const_iterator>(
     list<CVertexGroupBlock>::iterator, list<CVertexGroupBlock>::const_iterator, list<CVertexGroupBlock>::const_iterator,
     const __false_type&);
-} // namespace _STL
+} // namespace std

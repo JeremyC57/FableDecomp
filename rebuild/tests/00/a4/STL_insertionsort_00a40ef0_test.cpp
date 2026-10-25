@@ -76,7 +76,7 @@ public:
     int Id;
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -96,14 +96,14 @@ inline bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
+typedef std::pair<CCharString, CCharString>      SNamePair;
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry;
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
@@ -155,7 +155,7 @@ template <class T, class C> static bool IsHeap(const T* p, int n, C comp)
             return false;
     return true;
 }
-namespace _STL {
+namespace std {
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>
 _BidirectionalIter2 __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result,
                                     const random_access_iterator_tag&, _Distance*)
@@ -205,10 +205,10 @@ int main()
 {
     const char* names[8] = { "hotel", "charlie", "alpha", "golf", "bravo", "foxtrot", "delta", "echo" };
     SNameEntry* a = MakeNames(names, 8, 8);
-    _STL::__insertion_sort(a, a + 8, CNameLess());
+    std::__insertion_sort(a, a + 8, CNameLess());
     if (!Sorted(a, 8, CNameLess()) || !NameIs(a[0], "alpha") || !NameIs(a[7], "hotel") || a[0].second != &g_banks[2])
         { std::printf("00a40ef0_TEST FAIL\n"); return 1; }
-    _STL::__insertion_sort(a, a, CNameLess());
+    std::__insertion_sort(a, a, CNameLess());
     FreeNames(a, 8);
     if (g_blocks != 0)
         { std::printf("00a40ef0_TEST FAIL\n"); return 1; }

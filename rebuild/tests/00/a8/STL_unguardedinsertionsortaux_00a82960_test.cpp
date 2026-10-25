@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A82960 _STL::__unguarded_insertion_sort_aux over (unsigned __int64 ID, list) entries: with a
+// Behaviour test for 0x00A82960 std::__unguarded_insertion_sort_aux over (unsigned __int64 ID, list) entries: with a
 // smaller sentinel entry before first, [first, last) ends sorted on the 64-bit key, each list still paired with its
 // key, and every by-value copy is destroyed.
 #include <cstdio>

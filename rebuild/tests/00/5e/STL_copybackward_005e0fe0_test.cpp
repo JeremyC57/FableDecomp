@@ -1,4 +1,4 @@
-// Behaviour test of _STL::copy_backward(CCharString* first, CCharString* last, CCharString* result) (retail 0x005E0FE0)
+// Behaviour test of std::copy_backward(CCharString* first, CCharString* last, CCharString* result) (retail 0x005E0FE0)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

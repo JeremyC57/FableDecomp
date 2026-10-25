@@ -58,7 +58,7 @@ struct _List_base_00a831d0 {                    // STLport _List_base (4 bytes)
     }
 };
 
-struct SList16_00a831d0 : _List_base_00a831d0 { // _STL::list<SValue16>
+struct SList16_00a831d0 : _List_base_00a831d0 { // std::list<SValue16>
     typedef _List_iterator_00a831d0 iterator;
     typedef _List_const_iterator_00a831d0 const_iterator;
     allocator<_List_node_00a831d0> get_allocator() const { return allocator<_List_node_00a831d0>(); }

@@ -1,6 +1,6 @@
-// _STL::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, CThingCompare_NearestToPos comp) -- STLport partial sort for the lightning target sort: heap the first part, swap every nearer thing from the rest into it, then heap-sort that part
+// std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, CThingCompare_NearestToPos comp) -- STLport partial sort for the lightning target sort: heap the first part, swap every nearer thing from the rest into it, then heap-sort that part
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the landed 0x0095DE60 shape with the bool comparator: its real template body (0x007A2F90) noinline in the TU, member-init C3DVector copy ctor, template heap helpers
-// Leaf: ??$__partial_sort@PAPAVCThing@@PAV1@UCThingCompare_NearestToPos@@@_STL@@YIXPAPAVCThing@@000UCThingCompare_NearestToPos@@@Z
+// Leaf: ??$__partial_sort@PAPAVCThing@@PAV1@UCThingCompare_NearestToPos@@@std@@YIXPAPAVCThing@@000UCThingCompare_NearestToPos@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A3FA0, 172 bytes (+ int3 padding to 176), __fastcall (/Gr algorithm TU:
 //   first in ecx, middle in edx; last, the value-type tag pointer and the 12-byte comparator on the stack), `ret 14h`.
 // Instantiation: sort / partial_sort<CThing**, CThingCompare_NearestToPos> of CTCWillLightning.cpp (Ego_r.pdb places the
@@ -60,7 +60,7 @@ template <class T> bool CThingCompare_NearestToPos::operator()(T* a, T* b) const
 #pragma auto_inline(on)
 typedef CThingCompare_NearestToPos TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x007A34A0
@@ -93,4 +93,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
     sort_heap(__first, __middle, __comp);
 }
 template void __fastcall __partial_sort<CThing**, CThing*, TComp>(CThing**, CThing**, CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

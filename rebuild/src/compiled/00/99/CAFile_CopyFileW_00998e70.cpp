@@ -30,7 +30,7 @@ namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 }
 
-namespace _STL {
+namespace std {
 template <class T> inline const T& (min)(const T& a, const T& b) { return b < a ? b : a; }
 
 template <class T> class allocator {                    // STLport allocator over malloc/free
@@ -96,10 +96,10 @@ void __fastcall CAFile::CopyFileW(CAFile& source, CAFile& destination)
     destination.SetPosition(0);
     source.SetPosition(0);
     long bufferSize = 0x1000;
-    _STL::vector<unsigned char> buffer(bufferSize);
+    std::vector<unsigned char> buffer(bufferSize);
     long remaining = source.GetLength();
     while (remaining > 0) {
-        long chunk = (_STL::min)(remaining, bufferSize);
+        long chunk = (std::min)(remaining, bufferSize);
         source.Read(buffer.begin(), chunk, 0);
         destination.Write(buffer.begin(), chunk, 0);
         remaining -= chunk;

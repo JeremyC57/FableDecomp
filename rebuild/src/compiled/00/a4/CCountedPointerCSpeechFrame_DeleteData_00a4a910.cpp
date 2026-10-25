@@ -15,7 +15,7 @@
 extern "C" void __cdecl free(void*);                 // 0x00BFEA14
 void __cdecl operator delete(void* p);               // 0x00BFE9BC
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 class allocator {
 public:
@@ -55,7 +55,7 @@ public:
 };
 
 template <class T>
-class CArray : public _STL::vector<T> {
+class CArray : public std::vector<T> {
 };
 
 class CSpeechFrame {                                 // 0x1C bytes in retail

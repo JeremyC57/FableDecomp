@@ -1,4 +1,4 @@
-// 0051c590 _STL::__uninitialized_copy (catalog: ContainerArray_CopyMultiDimensional; element types unknown)
+// 0051c590 std::__uninitialized_copy (catalog: ContainerArray_CopyMultiDimensional; element types unknown)
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: __uninitialized_copy
 #include <new>
@@ -13,7 +13,7 @@ struct Node {Node*next,*prev;A value;};
 struct List {Node*head;List();List(const List&);~List();};
 struct B {unsigned __int64 key;List list;};
 }
-namespace _STL { NCopy0051c590::B* __fastcall __uninitialized_copy(const NCopy0051c590::B*,const NCopy0051c590::B*,NCopy0051c590::B*,const __false_type&); } // 0051ac00
+namespace std { NCopy0051c590::B* __fastcall __uninitialized_copy(const NCopy0051c590::B*,const NCopy0051c590::B*,NCopy0051c590::B*,const __false_type&); } // 0051ac00
 namespace NCopy0051c590 {
 __forceinline A* CopyA(A* out,const A* first,const A* last){for(;first!=last;++first,++out)if(out)new(out)A(*first);return out;}
 template<class T> struct Storage {
@@ -29,11 +29,11 @@ struct VA:Storage<A> {
 };
 struct VB:Storage<B> {
  __forceinline VB():Storage<B>(){}
- __forceinline VB(const VB& x):Storage<B>(x.finish-x.start) {finish=_STL::__uninitialized_copy(x.start,x.finish,start,__false_type());}
+ __forceinline VB(const VB& x):Storage<B>(x.finish-x.start) {finish=std::__uninitialized_copy(x.start,x.finish,start,__false_type());}
 };
 struct Pair { VA a; VB b; __forceinline Pair():a(),b(){} __forceinline Pair(const Pair& x):a(x.a),b(x.b){} };
 }
-namespace _STL {
+namespace std {
 using namespace NCopy0051c590;
 Pair* __fastcall __uninitialized_copy(const Pair* first,const Pair* last,Pair* out,const __false_type&) {
  Pair* result=out;for(;first!=last;++first,++result) if(result) new(result) Pair(*first); return result;

@@ -1,4 +1,4 @@
-// 00569450 _STL::vector<std::pair<int,CWideString>>::_M_insert_overflow
+// 00569450 std::vector<std::pair<int,CWideString>>::_M_insert_overflow
 // Flags: /Gr
 // Leaf: _M_insert_overflow
 // Layout: vector3 pointers; pair stride8 and CWideString at+4 from ctor99b720 indexed access.

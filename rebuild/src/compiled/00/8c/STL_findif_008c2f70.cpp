@@ -1,4 +1,4 @@
-// _STL::__find_if(C3DVector* first, C3DVector* last, CIsOutsideRadius pred, const random_access_iterator_tag&) -- STLport's four-way unrolled random-access find_if: the first point farther (3D) than the radius from the centre, or `last`
+// std::__find_if(C3DVector* first, C3DVector* last, CIsOutsideRadius pred, const random_access_iterator_tag&) -- STLport's four-way unrolled random-access find_if: the first point farther (3D) than the radius from the centre, or `last`
 // Leaf: ??$__find_if@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C2F70, 518 bytes, `__fastcall` (first in ecx, last in edx), `ret 14h` (the
 //   16-byte predicate by value + the tag reference).
@@ -31,7 +31,7 @@ struct CIsOutsideRadius {                       // 16 bytes (descriptive name, a
     }
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };

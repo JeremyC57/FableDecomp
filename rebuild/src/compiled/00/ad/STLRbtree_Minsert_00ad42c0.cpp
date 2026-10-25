@@ -1,5 +1,5 @@
-// _STL::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for map<unsigned long,CContractionReference> (COptimisedVertex::PairContractions): allocate a node, copy the pair in (add-ref of the contraction pointer), link it left or right of y keeping leftmost/rightmost, rebalance and count
-// Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@_STL@@
+// std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for map<unsigned long,CContractionReference> (COptimisedVertex::PairContractions): allocate a node, copy the pair in (add-ref of the contraction pointer), link it left or right of y keeping leftmost/rightmost, rebalance and count
+// Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD42C0, 223 bytes (+1 int3), thiscall `ret 14h` (hidden iterator
 //   result + x, y, v, w).
 // Identity: nine callers 0x00AD44D3 .. 0x00AD5431 (the tree's insert_unique / hinted insert_unique, e.g. the landed
@@ -54,7 +54,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -207,9 +207,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::iterator
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Base_ptr __x_, _Base_ptr __y_, const value_type& __v,
@@ -246,11 +246,11 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Base_ptr __x_,
     ++_M_node_count;
     return iterator(__z);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const unsigned long, QuadricOptimiserInternals::CContractionReference> TContractionValue;
-typedef _STL::_Rb_tree<unsigned long, TContractionValue, _STL::_Select1st<TContractionValue>, _STL::less<unsigned long>,
-                       _STL::allocator<TContractionValue> > TContractionMapTree;
-template TContractionMapTree::iterator TContractionMapTree::_M_insert(_STL::_Rb_tree_node_base*, _STL::_Rb_tree_node_base*,
+typedef std::pair<const unsigned long, QuadricOptimiserInternals::CContractionReference> TContractionValue;
+typedef std::_Rb_tree<unsigned long, TContractionValue, std::_Select1st<TContractionValue>, std::less<unsigned long>,
+                       std::allocator<TContractionValue> > TContractionMapTree;
+template TContractionMapTree::iterator TContractionMapTree::_M_insert(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*,
                                                                       const TContractionMapTree::value_type&,
-                                                                      _STL::_Rb_tree_node_base*);
+                                                                      std::_Rb_tree_node_base*);

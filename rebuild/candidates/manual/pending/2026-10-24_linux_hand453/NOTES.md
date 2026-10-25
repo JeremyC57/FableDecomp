@@ -30,20 +30,20 @@ Where the PDB has no name for a row, it says "descriptive name".
 - **CV_FishingCompetitionScript::GetNextPrizeWeight (0x00E7F7D0; descriptive name).**
   - Shape: `next = PrizeNumber + 1; if (PrizeNumber == -1) ++next; return FishPrizeWeights[next];`.
   - The `?:` form folds the +1 into the fld displacement and does not match.
-- **_STL::_Vector_base<CScriptThing>(n, a) (0x00DFDE90).** The ctor's out-of-line instantiation: three zeros, then
+- **std::_Vector_base<CScriptThing>(n, a) (0x00DFDE90).** The ctor's out-of-line instantiation: three zeros, then
   `n ? malloc(n*12) : 0`.
-- **_STL::vector<CQ_AmbushTradersScript::TeleportData>::push_back (0x00F0D490).** Shape: a `__false_type` tag with no
+- **std::vector<CQ_AmbushTradersScript::TeleportData>::push_back (0x00F0D490).** Shape: a `__false_type` tag with no
   user ctor is zero-stored in the `push ecx` slot.
-- **_STL::vector<CArenaWaveDef / CArenaCreatureDef / CHeroSoulsCreatureDef> copy ctors (0x00F25BB0, 0x00F25D20,
+- **std::vector<CArenaWaveDef / CArenaCreatureDef / CHeroSoulsCreatureDef> copy ctors (0x00F25BB0, 0x00F25D20,
   0x00F26FB0).**
   - Shape: `_Vector_base(n, a)` stays out of line.
   - The `__uninitialized_copy` loop is inline, with a placement-new null test, around the out-of-line element copy
     ctor.
-- **_STL::vector<CHeroSoulsCreatureDef / CFeatDef>::erase(first, last) (0x00F27780, 0x00F345F0).** Shape: a
+- **std::vector<CHeroSoulsCreatureDef / CFeatDef>::erase(first, last) (0x00F27780, 0x00F345F0).** Shape: a
   `__forceinline` copy -> `__copy_ptrs(__false_type)` -> `__copy` chain calling the out-of-line element operator=, then
   a virtual-dtor destroy loop.
 - **CCutsceneDef::Transfer (0x00F2A1D0).** Eight `TransferVectorBinary` (0x004331F9) calls in source order.
-- **_STL::__copy_ptrs / __copy_backward_ptrs<CFireHeartPatternDef*> (0x00F33EA0, 0x00F34110).**
+- **std::__copy_ptrs / __copy_backward_ptrs<CFireHeartPatternDef*> (0x00F33EA0, 0x00F34110).**
   - Shape: these are `__fastcall` templates.
   - `__copy` / `__copy_backward` and CFireHeartPatternDef's memberwise operator= need `__forceinline`. Plain inline
     leaves them as separate COMDATs.
@@ -62,7 +62,7 @@ Where the PDB has no name for a row, it says "descriptive name".
   - The 24-byte all-scalar entry has no type traits in VC7.1, so it takes the `__false_type` paths. Its implicit copy
     is one block copy through esi/edi/ebx.
   - `_M_clear` is inline: its trivial destroy loop vanishes, leaving `if (p) free(p)`.
-- **_STL::vector<unsigned short>::operator= (0x00F3B640) and CArray<unsigned short> helpers (0x00F3B760
+- **std::vector<unsigned short>::operator= (0x00F3B640) and CArray<unsigned short> helpers (0x00F3B760
   __uninitialized_copy, 0x00F3B7D0 __uninitialized_fill_n).** Shape: the real STLport 4.6 operator= with
   `__type_traits<unsigned short>` = `__true_type`. The helpers `_M_allocate_and_copy`, `_M_clear`, `__copy_ptrs` and
   `__uninitialized_copy` are all inline. Two of the memmove calls are tail-merged.
@@ -97,7 +97,7 @@ one function. 0x00F3FB96's row is cut *short*, not long (see Parked).
 | 0x00ED7D50 | "ScriptThingContext_Construct_B" | CV_TalentlessBardScript::CTB_Bard ctor |
 | 0x00EE41F0 | "HeroMorphDefScreen_Construct" | NScript::CV_TourGuideScript ctor |
 | 0x00DDACB0 / DFA020 / E0AF60 / E0E760 / E81EB0 | "Alloc" (no class) | the quest-script Allocs named above |
-| 0x00DFDE90 | "Std_Vector_Initialize" | `_STL::_Vector_base<CScriptThing>(n, a)` |
+| 0x00DFDE90 | "Std_Vector_Initialize" | `std::_Vector_base<CScriptThing>(n, a)` |
 | 0x00E5FC70 | "GetHenchmanCostByAlignment" | CBodyGuard member (descriptive name) |
 | 0x00E7F7D0 | "GetFloatTableEntryByIndex" | CV_FishingCompetitionScript member (descriptive name) |
 | 0x00F25BB0 / F25D20 / F26FB0 | "Container_*" | vector copy ctors |
@@ -122,9 +122,9 @@ one function. 0x00F3FB96's row is cut *short*, not long (see Parked).
 | 0x00F3ABF0 | (none) | CRangeCompressor::CalcCompressionScript (recursive, `ret 14h`) |
 | 0x00F3B1D0 | `_Move<CTVertexLandscapeBackground*,...>` | `__uninitialized_copy<CRangeCompressor::CScriptEntry*>` |
 | 0x00F3B330 | "Vector_Reallocate_EHeroMorphType" | vector<CRangeCompressor::CScriptEntry>::_M_insert_overflow |
-| 0x00F3B220 (landed) | `std::__uninitialized_fill_n<pair<EHeroMorphType, CTextureMorphEntry>>` | `_STL::__uninitialized_fill_n<CRangeCompressor::CScriptEntry*>` |
+| 0x00F3B220 (landed) | `std::__uninitialized_fill_n<pair<EHeroMorphType, CTextureMorphEntry>>` | `std::__uninitialized_fill_n<CRangeCompressor::CScriptEntry*>` |
 | 0x00F3B420 (landed) | "CRetailVector_SRecord24::PushBack" | vector<CRangeCompressor::CScriptEntry>::push_back |
-| 0x00F3B640 | "std_vector_assign_with_realloc" | `_STL::vector<unsigned short>::operator=` |
+| 0x00F3B640 | "std_vector_assign_with_realloc" | `std::vector<unsigned short>::operator=` |
 | 0x00F3B8A0 / 0x00F3B8F0 (landed) | "CElement12_00f3b640" | CArray<unsigned short> |
 | 0x00F3B760 | "std_vector_copy_range" | `__uninitialized_copy<CArray<unsigned short>*>` |
 | 0x00F3B7D0 | "Vector_CopyMultipleUshortElements" | `__uninitialized_fill_n<CArray<unsigned short>*>` |

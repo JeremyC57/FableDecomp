@@ -1,4 +1,4 @@
-// _STL::vector::_M_allocate_and_copy(size_type n, const_pointer first, const_pointer last) -- STLport vector<C3DVector> helper: allocate n elements and copy-construct [first, last) into them; returns the new block
+// std::vector::_M_allocate_and_copy(size_type n, const_pointer first, const_pointer last) -- STLport vector<C3DVector> helper: allocate n elements and copy-construct [first, last) into them; returns the new block
 // Leaf: ?_M_allocate_and_copy@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00920F90, 88 bytes (96 with padding), __fastcall `ret 0Ch` (this unused).
 // Identity: STLport 4.6 vector<_Tp>::_M_allocate_and_copy, called only by reserve 0x00920FF0 (same TU). The catalog label
@@ -26,7 +26,7 @@ public:
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 
 struct __false_type {                           // STLport empty tag; a user ctor keeps the temporary store-free
     __false_type() { }
@@ -118,4 +118,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 
 }
 
-template class _STL::vector<C3DVector>;
+template class std::vector<C3DVector>;

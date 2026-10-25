@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, CKeyPairCompareLess comp, pair<unsigned long, C3DMeshVolume>*, int*) -- SGI make_heap of the mesh-volume table: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
+// std::__make_heap(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, CKeyPairCompareLess comp, pair<unsigned long, C3DMeshVolume>*, int*) -- SGI make_heap of the mesh-volume table: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A344E0, 116 bytes, `ret 0Ch` (__fastcall: first in ecx, last in edx, the
 //   empty comparator's slot, the value-type pointer and the Distance* on the stack).
@@ -78,7 +78,7 @@ struct C3DMeshVolume {                                        // 12 bytes (Ego_r
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     T1 first;
@@ -96,7 +96,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class RandomAccessIter, class Distance, class T, class Compare>
 void __fastcall __adjust_heap(RandomAccessIter first, Distance holeIndex, Distance len, T value, Compare comp);   // 0x00A33A70

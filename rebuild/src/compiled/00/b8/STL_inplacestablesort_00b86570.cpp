@@ -1,8 +1,8 @@
-// _STL::__inplace_stable_sort(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, less<CSortElement> comp) -- stable sort without a buffer: insertion sort below 15 elements, else sort both halves recursively and merge them in place
+// std::__inplace_stable_sort(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, less<CSortElement> comp) -- stable sort without a buffer: insertion sort below 15 elements, else sort both halves recursively and merge them in place
 // Leaf: ??$__inplace_stable_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B86570, 99 bytes. __fastcall (first ecx, last edx), `ret 4` (the empty
 //   comparator on the stack).
-// Callees: _STL::__insertion_sort<...> @ 0x00B85B30, itself, _STL::__merge_without_buffer<...> @ 0x00B86140.
+// Callees: std::__insertion_sort<...> @ 0x00B85B30, itself, std::__merge_without_buffer<...> @ 0x00B86140.
 // Callers: __stable_sort_aux 0x00B86710 (when no temporary buffer could be allocated) and itself.
 // Identity: the manifest label "std_introsort_recursive" is descriptive and wrong (no introsort); STLport
 //   `__inplace_stable_sort`.
@@ -12,7 +12,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `__inplace_stable_sort` verbatim (the landed stand-in of 0x00711B80): `(__last - __first) / 2` as
 //   cdq ; sub ; sar, the two recursive calls, then __merge_without_buffer with both lengths recomputed.
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -38,13 +38,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Compare>
 void __fastcall __insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp);   // 0x00B85B30
 template <class _BidirectionalIter, class _Distance, class _Compare>

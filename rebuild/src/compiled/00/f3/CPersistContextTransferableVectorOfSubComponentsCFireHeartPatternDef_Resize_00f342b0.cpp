@@ -44,7 +44,7 @@ struct CDefClassBase : CDefPointeeBase {                 // vtable 0x01230BCC, 0
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -79,11 +79,11 @@ public:
     __forceinline void resize(size_type __new_size) { resize(__new_size, _Tp()); }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CFireHeartPatternDef : public CDefClassBase {      // vtable 0x012CCC50, 0x34 bytes in retail
 public:
-    _STL::vector<bool> PadActive;                        // +0x28
+    std::vector<bool> PadActive;                        // +0x28
 };
 
 struct CPersistContext_TransferableVectorOfSubComponentsGenericType {
@@ -95,7 +95,7 @@ struct CPersistContext_TransferableVectorOfSubComponentsGenericType {
 };
 
 template <class T> struct CPersistContext_TransferableVectorOfSubComponents : CPersistContext_TransferableVectorOfSubComponentsGenericType {
-    _STL::vector<T>* TransVector;                        // +0x4
+    std::vector<T>* TransVector;                        // +0x4
     virtual long Size();
     virtual void Resize(long count);
     virtual bool AreDefaultValsApplied(long index);

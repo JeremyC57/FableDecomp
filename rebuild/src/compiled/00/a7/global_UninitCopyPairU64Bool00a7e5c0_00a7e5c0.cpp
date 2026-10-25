@@ -12,7 +12,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct SPairU64Bool_00a7e5c0 {                  // _STL::pair<unsigned __int64, bool>, 16 bytes (8-aligned)
+struct SPairU64Bool_00a7e5c0 {                  // std::pair<unsigned __int64, bool>, 16 bytes (8-aligned)
     unsigned __int64 first;                     // +0x00
     bool             second;                    // +0x08
     SPairU64Bool_00a7e5c0(const SPairU64Bool_00a7e5c0& o) : first(o.first), second(o.second) { }

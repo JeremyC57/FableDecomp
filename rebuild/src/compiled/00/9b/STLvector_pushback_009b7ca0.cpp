@@ -1,6 +1,6 @@
-// _STL::vector::push_back(const pair<CCharString,unsigned long>& x) -- vector<pair<CCharString,unsigned long>>::push_back: copy-construct x at the end, or grow through _M_insert_overflow when full
+// std::vector::push_back(const pair<CCharString,unsigned long>& x) -- vector<pair<CCharString,unsigned long>>::push_back: copy-construct x at the end, or grow through _M_insert_overflow when full
 // Flags: /Gr
-// Leaf: ?push_back@?$vector@U?$pair@VCCharString@@K@_STL@@
+// Leaf: ?push_back@?$vector@U?$pair@VCCharString@@K@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B7CA0, 72 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: the element is 8 bytes {CCharString, dword} = the CVectorMap<CCharString, unsigned long> storage whose grow
 //   path 0x009B71B0 the landed CDefinitionManager::CheckDependencies 0x009B05F0 also calls (its inline push_back is this
@@ -19,7 +19,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _T1, class _T2> struct pair {

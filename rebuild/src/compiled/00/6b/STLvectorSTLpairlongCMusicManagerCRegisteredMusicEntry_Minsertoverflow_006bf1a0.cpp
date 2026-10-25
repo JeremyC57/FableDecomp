@@ -1,4 +1,4 @@
-// 006bf1a0 _STL::vector<_STL::pair<long,CMusicManager::CRegisteredMusicEntry>>::_M_insert_overflow
+// 006bf1a0 std::vector<std::pair<long,CMusicManager::CRegisteredMusicEntry>>::_M_insert_overflow
 // Flags: /O2 /Oy /W3
 // Leaf: _M_insert_overflow
 #include <stdlib.h>
@@ -10,7 +10,7 @@ struct CWideStringData{unsigned short*PData,*Finish,*Storage;int RefCount;};
 struct CWideString{CWideStringData*PData;CWideString();CWideString(const CWideString&);~CWideString();};
 // Layout: PDB CRegisteredMusicEntry has SrcFileName+0,DstFileName+4,Gain+8,Offset+12,CacheToHD+16, total20; pair stride24.
 struct CMusicManager{struct CRegisteredMusicEntry{CWideString SrcFileName,DstFileName;float Gain,Offset;bool CacheToHD;};};
-namespace _STL{
+namespace std{
 struct __false_type{__false_type(){}};
 template<class A,class B>struct pair{A first;B second;pair(){}__forceinline pair(const pair&x):first(x.first),second(x.second){}};
 typedef pair<long,CMusicManager::CRegisteredMusicEntry> MusicEntry;

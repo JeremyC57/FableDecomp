@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CMeshInfo* first, CMeshInfo* last, CMeshInfo pivot, CSortPrimaryMeshesFirst comp) -- STLport quicksort partition of a mesh-info run around a by-value pivot under the "primary meshes first" order; returns the cut
+// std::__unguarded_partition(CMeshInfo* first, CMeshInfo* last, CMeshInfo pivot, CSortPrimaryMeshesFirst comp) -- STLport quicksort partition of a mesh-info run around a by-value pivot under the "primary meshes first" order; returns the cut
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C3860, 124 bytes (+ int3 padding), `ret 10h` (/Gr algorithm TU, explicit
 //   __fastcall here: first in ecx, last in edx, the 12-byte pivot and the empty comparator's 4-byte slot on the stack).
@@ -27,7 +27,7 @@ public:
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return a.PrimaryMesh; }
 };
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {

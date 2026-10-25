@@ -1,5 +1,5 @@
-// _STL::pair::pair(const pair& other) -- copy constructor of pair<CCharString, CScriptInfo>: the key string, then the script info memberwise
-// Leaf: ??0?$pair@VCCharString@@VCScriptInfo@@@_STL@@QAE@ABU01@@Z
+// std::pair::pair(const pair& other) -- copy constructor of pair<CCharString, CScriptInfo>: the key string, then the script info memberwise
+// Leaf: ??0?$pair@VCCharString@@VCScriptInfo@@@std@@QAE@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB5F50, 57 bytes, __fastcall `ret 4`, returns `this`.
 // Identity: the element of CScriptInfoManager::Scripts (Ego_r.pdb: CVectorMap<CCharString, CScriptInfo,
 //   CKeyPairCompareLess<CCharString, CScriptInfo> >, a vector of pair<CCharString, CScriptInfo>); five callers in the
@@ -28,7 +28,7 @@ public:
     bool             MasterScript;                                                         // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

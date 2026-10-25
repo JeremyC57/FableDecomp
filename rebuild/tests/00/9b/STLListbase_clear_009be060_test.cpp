@@ -67,7 +67,7 @@ struct CSubTitle {
     float       EndTime;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() {}
@@ -104,11 +104,11 @@ template <class _Tp, class _Alloc> void _List_base<_Tp, _Alloc>::clear()
 }
 }
 
-typedef _STL::_List_node<CSubTitle> Node;
+typedef std::_List_node<CSubTitle> Node;
 
 int main()
 {
-    _STL::_List_base<CSubTitle, _STL::allocator<CSubTitle> > subtitles;
+    std::_List_base<CSubTitle, std::allocator<CSubTitle> > subtitles;
     Node* sentinel = (Node*)std::malloc(sizeof(Node));
     sentinel->_M_next = sentinel->_M_prev = sentinel;
     subtitles._M_node._M_data = sentinel;

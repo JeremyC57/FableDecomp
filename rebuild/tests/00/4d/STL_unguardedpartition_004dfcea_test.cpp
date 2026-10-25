@@ -67,7 +67,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -94,17 +94,17 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    __forceinline bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    __forceinline bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<CCharString, CTCBase::CRegisteredTCInfo> TEntry;
-template TEntry* __fastcall _STL::__unguarded_partition(TEntry*, TEntry*, TEntry, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>);
+typedef std::pair<CCharString, CTCBase::CRegisteredTCInfo> TEntry;
+template TEntry* __fastcall std::__unguarded_partition(TEntry*, TEntry*, TEntry, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>);
 
 // ---- test harness ----
 static int g_dtors = 0, g_swaps = 0;
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { }
 CCharString::~CCharString() { ++g_dtors; }
 CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
-namespace _STL {
+namespace std {
 template <> void __fastcall iter_swap<TEntry*, TEntry*>(TEntry* a, TEntry* b)
 {
     ++g_swaps;
@@ -131,7 +131,7 @@ int main()
     TEntry* pv = (TEntry*)praw;
     pv->first.PStringData = &pivotStr;
     // e[0] "d" >= "c" stops the left scan; a guard element on the right ("a" at e[1]) stops the right scan
-    TEntry* cut = _STL::__unguarded_partition(e, e + 6, *pv, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>());
+    TEntry* cut = std::__unguarded_partition(e, e + 6, *pv, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>());
     int ok = 1;
     int k = (int)(cut - e);
     for (int i = 0; i < 6; ++i) {

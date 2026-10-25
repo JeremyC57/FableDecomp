@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(SRegisteredTCEntry* first, SRegisteredTCEntry* last, SRegisteredTCEntry*, CKeyPairCompareLess comp) -- STLport unguarded insertion sort over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): every element from first to last is copied out and sifted down by the out-of-line __unguarded_linear_insert
+// std::__unguarded_insertion_sort_aux(SRegisteredTCEntry* first, SRegisteredTCEntry* last, SRegisteredTCEntry*, CKeyPairCompareLess comp) -- STLport unguarded insertion sort over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): every element from first to last is copied out and sifted down by the out-of-line __unguarded_linear_insert
 // Leaf: __unguarded_insertion_sort_aux
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DFD60, 42 bytes, `ret 8` (size-optimised TU: unaligned entry).
 // Callees: the pair copy constructor 0x004D788D (thiscall, out of line in this /Os TU; catalogued as
@@ -13,7 +13,7 @@
 //   comparator is passed through with `push dword ptr [esp+10h]`, the by-value copy is built in the argument area by
 //   the out-of-line pair copy constructor.
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 
 struct CCharString {
     void* PStringData;

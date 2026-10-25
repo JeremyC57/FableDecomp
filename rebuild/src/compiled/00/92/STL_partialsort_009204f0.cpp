@@ -1,6 +1,6 @@
-// _STL::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, CThingCompare_Nearest comp) -- STLport partial sort for the nearest-first sort: heapify [first, middle), sift every nearer element of [middle, last) in, then sort_heap
+// std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, CThingCompare_Nearest comp) -- STLport partial sort for the nearest-first sort: heapify [first, middle), sift every nearer element of [middle, last) in, then sort_heap
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- port of the landed byte-identical twin 0x0095DE60 (relocations aside); see Twin below
-// Leaf: ??$__partial_sort@PAPAVCThing@@PAV1@VCThingCompare_Nearest@@@_STL@@YIXPAPAVCThing@@000VCThingCompare_Nearest@@@Z
+// Leaf: ??$__partial_sort@PAPAVCThing@@PAV1@VCThingCompare_Nearest@@@std@@YIXPAPAVCThing@@000VCThingCompare_Nearest@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009204F0, 172 bytes, __fastcall (first in ecx, middle in edx; last, the value-type
 //   tag and the 12-byte comparator on the stack), `ret 14h`.
 // Identity: STLport 4.6 __partial_sort<CThing**, CThing*, CThingCompare_Nearest>; callers: __introsort_loop 0x009205D0
@@ -61,7 +61,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
 #pragma auto_inline(on)
 typedef CThingCompare_Nearest TComp;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);   // 0x0091FB30
@@ -94,4 +94,4 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
     sort_heap(__first, __middle, __comp);
 }
 template void __fastcall __partial_sort<CThing**, CThing*, TComp>(CThing**, CThing**, CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

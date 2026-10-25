@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<unsigned long, C3DDummyObject>* first, pair<unsigned long, C3DDummyObject>* last, pair<unsigned long, C3DDummyObject> pivot, CKeyPairCompareLess comp) -- quicksort partition step of the dummy-object table around the pivot's key: advance from both ends, swap out-of-place pairs, return the split point
+// std::__unguarded_partition(pair<unsigned long, C3DDummyObject>* first, pair<unsigned long, C3DDummyObject>* last, pair<unsigned long, C3DDummyObject> pivot, CKeyPairCompareLess comp) -- quicksort partition step of the dummy-object table around the pivot's key: advance from both ends, swap out-of-place pairs, return the split point
 // Leaf: __unguarded_partition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32A70, 109 bytes (+ int3 padding), `ret 3Ch` (__fastcall: first in ecx,
 //   last in edx, the 0x38-byte pivot and the empty comparator on the stack). No callees.
@@ -8,7 +8,7 @@
 //   if (!(first < last)) return first; iter_swap(first, last); ++first; }` -- the pivot key kept in ebx (unsigned
 //   `jae`/`jb`), __iter_swap's `T tmp = *a` built by STLport's pair copy constructor (key, then `rep movsd` x13) into the
 //   pivot's own argument slot (its second is never read), the two assignments implicit 14-dword copies.
-namespace _STL {
+namespace std {
 
 struct CMatrix3x4 { float M[12]; };
 struct C3DDummyObject {                                // 0x34 bytes

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A43500: _STL::__uninitialized_fill_n<NGameText::CDataBankTextEntry*> (placement copy n entries, add-ref each)
+// Behaviour test for 0x00A43500: std::__uninitialized_fill_n<NGameText::CDataBankTextEntry*> (placement copy n entries, add-ref each)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool c) { if (!c) g_fail = 1; }
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -70,7 +70,7 @@ struct CDataBankTextEntry {
 using NGameText::CTextEntry;
 using NGameText::CDataBankTextEntry;
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
@@ -95,11 +95,11 @@ int main()
         CDataBankTextEntry x(&text, 42);
         Check(text.RefCount == 1);
         CDataBankTextEntry* raw = (CDataBankTextEntry*)malloc(4 * sizeof(CDataBankTextEntry));
-        CDataBankTextEntry* end = _STL::__uninitialized_fill_n(raw, 4u, x, _STL::__false_type());
+        CDataBankTextEntry* end = std::__uninitialized_fill_n(raw, 4u, x, std::__false_type());
         Check(end == raw + 4 && text.RefCount == 5);
         for (int i = 0; i < 4; ++i)
             Check(raw[i].PText.P == &text && raw[i].NarratorIndex == 42);
-        Check(_STL::__uninitialized_fill_n(raw, 0u, x, _STL::__false_type()) == raw && text.RefCount == 5);
+        Check(std::__uninitialized_fill_n(raw, 0u, x, std::__false_type()) == raw && text.RefCount == 5);
         for (int j = 0; j < 4; ++j)
             raw[j].~CDataBankTextEntry();
         free(raw);

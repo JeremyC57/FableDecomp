@@ -21,7 +21,7 @@ public:
     CCharString();                                          // 0x0099E4B0
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -90,13 +90,13 @@ public:
     set() : _M_t(_Compare(), _Alloc()) { }
 };
 
-} // namespace _STL
+} // namespace std
 
 class CFaction {
 public:
     CCharString             Name;                           // +0x00
-    _STL::set<CCharString>  AlliedFactions;                 // +0x04
-    _STL::set<CCharString>  EnemyFactions;                  // +0x10
+    std::set<CCharString>  AlliedFactions;                 // +0x04
+    std::set<CCharString>  EnemyFactions;                  // +0x10
     CFaction();
 };
 

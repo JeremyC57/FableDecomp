@@ -12,7 +12,7 @@ struct CVertexPairContraction {bool Exists,Unsplit;char Pad[2];CSubContraction*F
 struct CContractionReference {CCountedPointer<CVertexPairContraction> Contraction;unsigned SubIndex;CContractionReference&operator=(const CContractionReference&);};
 }
 namespace QuadricOptimiserInternals {__declspec(noinline) CContractionReference&CContractionReference::operator=(const CContractionReference&o){if(this!=&o){if(o.Contraction.Info)++o.Contraction.Info->RefCount;if(Contraction.Info&&--Contraction.Info->RefCount==0){Contraction.Info->DeleteFunc(Contraction.Info->Data);operator delete(Contraction.Info);}Contraction.Data=o.Contraction.Data;Contraction.Info=o.Contraction.Info;SubIndex=o.SubIndex;}return *this;}}
-namespace _STL {
+namespace std {
 using QuadricOptimiserInternals::CContractionReference;
 struct _Rb_tree_node {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node*Parent,*Left,*Right;unsigned Key;CContractionReference Value;};
 __forceinline _Rb_tree_node*_Rb_global_increment(_Rb_tree_node*node){if(node->Right){node=node->Right;while(node->Left)node=node->Left;}else{_Rb_tree_node*p=node->Parent;while(node==p->Right){node=p;p=p->Parent;}if(node->Right!=p)node=p;}return node;}
@@ -24,7 +24,7 @@ template<class K,class V>struct map;template<>struct map<unsigned,CContractionRe
 namespace QuadricOptimiserInternals {
 struct COptimisedPrimitive;
 // Layout: retail Exists90, PairContractions a8; donor COptimisedVertex layout differs in container sizes.
-struct COptimisedVertex {char Earlier[0x90];bool Exists;char Other[0x17];_STL::map<unsigned,CContractionReference> PairContractions;void UpdatePairContractions(unsigned,COptimisedPrimitive&);};
-void COptimisedVertex::UpdatePairContractions(unsigned index,COptimisedPrimitive&){if(Exists){_STL::map<unsigned,CContractionReference> updated;_STL::_Rb_tree_iterator i;i.Node=PairContractions.Header->Left;for(;i.Node!=PairContractions.Header;i++){CContractionReference reference=i.Node->Value;CCountedPointer<CVertexPairContraction> contraction=reference.Contraction;if(contraction.Data->Exists){const CSubContraction&sub=contraction.Data->First[reference.SubIndex];unsigned other;if(sub.Index1==index)other=sub.Index2;else if(sub.Index2==index)other=sub.Index1;else other=~0u;if(other!=index)updated[other]=reference;}}PairContractions=updated;}}
+struct COptimisedVertex {char Earlier[0x90];bool Exists;char Other[0x17];std::map<unsigned,CContractionReference> PairContractions;void UpdatePairContractions(unsigned,COptimisedPrimitive&);};
+void COptimisedVertex::UpdatePairContractions(unsigned index,COptimisedPrimitive&){if(Exists){std::map<unsigned,CContractionReference> updated;std::_Rb_tree_iterator i;i.Node=PairContractions.Header->Left;for(;i.Node!=PairContractions.Header;i++){CContractionReference reference=i.Node->Value;CCountedPointer<CVertexPairContraction> contraction=reference.Contraction;if(contraction.Data->Exists){const CSubContraction&sub=contraction.Data->First[reference.SubIndex];unsigned other;if(sub.Index1==index)other=sub.Index2;else if(sub.Index2==index)other=sub.Index1;else other=~0u;if(other!=index)updated[other]=reference;}}PairContractions=updated;}}
 }
 }

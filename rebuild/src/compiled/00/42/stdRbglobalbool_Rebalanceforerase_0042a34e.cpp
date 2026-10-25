@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042A34E, length 572 bytes (`ret`, static __cdecl).
 // Callees: _Rb_tree_node_base::_S_minimum @ 0x0041C7E0 / _S_maximum @ 0x0041C800 (cdecl, one argument),
 //   _Rb_global<bool>::_Rotate_left @ 0x0042951B / _Rotate_right @ 0x0042955B (landed; cdecl (node, root&)).
-// Label correction: the catalog's "_STL::_Rb_tree_rebalance_for_erase" (the SGI free-function name) and the manifest's
+// Label correction: the catalog's "std::_Rb_tree_rebalance_for_erase" (the SGI free-function name) and the manifest's
 //   "CMemoryAllocatorVariableSize::Erase" are propagated; the body is STLport's
 //   `_Rb_global<bool>::_Rebalance_for_erase` (node: colour byte +0 with red = false, parent +4, left +8, right +0xC), the
 //   erase companion of the landed _Rebalance 0x0042971D.

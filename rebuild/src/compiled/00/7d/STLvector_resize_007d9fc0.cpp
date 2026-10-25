@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- STLport vector<KnickKnack>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default (unset) knick-knack records at the end
-// Leaf: ?resize@?$vector@UKnickKnack@@V?$allocator@UKnickKnack@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- STLport vector<KnickKnack>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default (unset) knick-knack records at the end
+// Leaf: ?resize@?$vector@UKnickKnack@@V?$allocator@UKnickKnack@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D9FC0, 74 bytes (+6 int3), thiscall on the vector, `ret 4`.
 // Identity: the KnickKnacks vector (Ego_r.pdb CTCTavernGameSpotTheAddition::KnickKnacks, vector<KnickKnack>): sole
 //   caller CTCTavernGameSpotTheAddition::FrameUpdate 0x007D8E20.
@@ -26,7 +26,7 @@ struct KnickKnack {                                                 // 16 bytes
     KnickKnack() { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -68,4 +68,4 @@ public:
 }
 
 // 0x007D9C20 erase, 0x007D9D70 _M_fill_insert (out of line in retail)
-template void _STL::vector<KnickKnack>::resize(unsigned int);
+template void std::vector<KnickKnack>::resize(unsigned int);

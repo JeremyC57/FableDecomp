@@ -1,5 +1,5 @@
-// _STL::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for set<unsigned long> (CIndexList::Indices): clone x under parent p, recurse into every right subtree and walk down the left spine
-// Leaf: ?_M_copy@?$_Rb_tree@KKU?$_Identity@K@_STL@@
+// std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for set<unsigned long> (CIndexList::Indices): clone x under parent p, recurse into every right subtree and walk down the left spine
+// Leaf: ?_M_copy@?$_Rb_tree@KKU?$_Identity@K@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD3230, 169 bytes, thiscall `ret 8` (x, p; returns the cloned top).
 // Identity: recursive (0x00AD3276, 0x00AD32BE); the other callers are the set's tree operator= 0x00AD3720 (landed as the
 //   generic CRetailTree_00ad3230::operator=) and 0x00AD3A6B (the tree copy constructor). Node 0x14 bytes = 0x10 links +
@@ -53,7 +53,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -206,9 +206,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_Link_type
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _Link_type __p)
@@ -231,8 +231,8 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _
     }
     return __top;
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::_Rb_tree<unsigned long, unsigned long, _STL::_Identity<unsigned long>, _STL::less<unsigned long>,
-                       _STL::allocator<unsigned long> > TIndexSetTree;
+typedef std::_Rb_tree<unsigned long, unsigned long, std::_Identity<unsigned long>, std::less<unsigned long>,
+                       std::allocator<unsigned long> > TIndexSetTree;
 template TIndexSetTree::_Link_type TIndexSetTree::_M_copy(TIndexSetTree::_Link_type, TIndexSetTree::_Link_type);

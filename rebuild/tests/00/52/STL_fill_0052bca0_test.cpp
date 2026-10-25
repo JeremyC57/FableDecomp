@@ -1,4 +1,4 @@
-// Behaviour test for 0x0052BCA0 _STL::fill(NThingManager::CEntityRuntimePersistence::CEntityScriptInfo*, ...): every entity-script record of the range becomes a copy of the value (script name and save data through their operator=, then size and valid flag)
+// Behaviour test for 0x0052BCA0 std::fill(NThingManager::CEntityRuntimePersistence::CEntityScriptInfo*, ...): every entity-script record of the range becomes a copy of the value (script name and save data through their operator=, then size and valid flag)
 #include <stdio.h>
 #if !defined(_MSC_VER)
 #define __fastcall
@@ -39,7 +39,7 @@ public:
 typedef NThingManager::CEntityRuntimePersistence::CEntityScriptInfo CEntityScriptInfo;
 static unsigned char gBytes[8];
 static CEntityScriptInfo gArr[4];
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
@@ -55,12 +55,12 @@ int main()
     int i;
     for (i = 0; i < 4; ++i) { gArr[i].Script.PStringData = 0; gArr[i].SaveData._M_start = 0; gArr[i].UncompressedSize = 0; gArr[i].Valid = false; }
     bool ok = true;
-    _STL::fill(gArr, gArr + 3, v);
+    std::fill(gArr, gArr + 3, v);
     for (i = 0; i < 3; ++i)
         ok = ok && gArr[i].Script.PStringData == v.Script.PStringData && gArr[i].SaveData._M_start == gBytes &&
              gArr[i].SaveData._M_finish == gBytes + 8 && gArr[i].UncompressedSize == 4096 && gArr[i].Valid;
     ok = ok && gArr[3].UncompressedSize == 0 && gAssigns == 3 && gArrayAssigns == 3;
-    _STL::fill(gArr, gArr, v);
+    std::fill(gArr, gArr, v);
     ok = ok && gAssigns == 3 && gArrayAssigns == 3;
     if (ok) { printf("0052bca0_TEST PASS\n"); return 0; }
     printf("0052bca0_TEST FAIL\n");

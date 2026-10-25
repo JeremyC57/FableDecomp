@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF6920 _STL::__uninitialized_copy over pair<EPSCType, CComponentInstance>: copy each entry (type, vtable, counted component with a reference bump, enabled flag, instance name)
+// behaviour test for 0x00AF6920 std::__uninitialized_copy over pair<EPSCType, CComponentInstance>: copy each entry (type, vtable, counted component with a reference bump, enabled flag, instance name)
 #include <cstdio>
 #include <new>
 struct CCountBlock { unsigned int RefCount; };

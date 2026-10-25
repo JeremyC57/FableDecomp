@@ -35,7 +35,7 @@ public:
     CProfile() : Manager(0) { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -64,7 +64,7 @@ public:
     public:
         CProfile                          Profile;      // +0x00
         long                              ID;           // +0x48
-        _STL::vector<CProfileTreeEntry*>  Children;     // +0x4C
+        std::vector<CProfileTreeEntry*>  Children;     // +0x4C
         CProfileTreeEntry*                Parent;       // +0x58
         CProfileTreeEntry();
     };

@@ -14,7 +14,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { };
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -59,12 +59,12 @@ template <class _Tp, class _Alloc> void list<_Tp, _Alloc>::push_back(const _Tp& 
 }
 }
 
-typedef _STL::_List_node<CFileInstaller::CPendingWrite> Node;
+typedef std::_List_node<CFileInstaller::CPendingWrite> Node;
 
 int main()
 {
-    _STL::list<CFileInstaller::CPendingWrite> writes;
-    _STL::_List_node_base sentinel;
+    std::list<CFileInstaller::CPendingWrite> writes;
+    std::_List_node_base sentinel;
     sentinel._M_next = &sentinel;
     sentinel._M_prev = &sentinel;
     writes._M_node = &sentinel;
@@ -76,7 +76,7 @@ int main()
         w.WriteLength = 0x200u + i;
         writes.push_back(w);
     }
-    _STL::_List_node_base* n = sentinel._M_next;
+    std::_List_node_base* n = sentinel._M_next;
     for (int i = 0; i < 3; ++i) {
         Node* node = (Node*)n;
         if (n == &sentinel || node->_M_data.PBufferChunk != &chunks[i] || node->_M_data.FilePos != 0x1000u * (i + 1) ||

@@ -1,5 +1,5 @@
 // vector<CPhysicsMeshInfo>::push_back(const CPhysicsMeshInfo& x) -- copy-construct a physics-mesh entry at the end, growing through _M_insert_overflow when full
-// Leaf: ?push_back@?$vector@VCPhysicsMeshInfo@@V?$allocator@VCPhysicsMeshInfo@@@_STL@@@_STL@@QAEXABVCPhysicsMeshInfo@@@Z
+// Leaf: ?push_back@?$vector@VCPhysicsMeshInfo@@V?$allocator@VCPhysicsMeshInfo@@@std@@@std@@QAEXABVCPhysicsMeshInfo@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2D190, 85 bytes, `ret 4`. Only caller 0x00A26EA3 (CMeshDataBank, the
 //   physics-mesh info array). The catalog label "vector_push_back_generic" is descriptive.
 // Element: CPhysicsMeshInfo (0x10 bytes, vtable 0x0129CD50 over CMeshDataBankEntry 0x0129CD28: Bank +4, Index +8,
@@ -43,7 +43,7 @@ public:
     CIVCountedPointer<CMeshData> MeshData;              // +0x0C
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -67,4 +67,4 @@ public:
 };
 }
 
-template class _STL::vector<CPhysicsMeshInfo>;
+template class std::vector<CPhysicsMeshInfo>;

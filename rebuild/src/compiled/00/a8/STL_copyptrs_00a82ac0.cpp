@@ -1,4 +1,4 @@
-// _STL::__copy_ptrs(const CLineList* first, const CLineList* last, CLineList* result, const __false_type&) -- assign a range of lists of lines forward into existing lists (list operator= each), return the advanced result
+// std::__copy_ptrs(const CLineList* first, const CLineList* last, CLineList* result, const __false_type&) -- assign a range of lists of lines forward into existing lists (list operator= each), return the advanced result
 // Leaf: ??$__copy_ptrs@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A82AC0, 47 bytes, `ret 8` (/Gr: first in ecx, last in edx;
 //   result and the __false_type reference on the stack).
@@ -25,7 +25,7 @@ public:
     C2DVector End;                                          // +0x8
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -113,14 +113,14 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
-typedef _STL::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
+typedef std::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
+typedef std::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CLineList>        CSwitchableLineListLess;
 
-namespace _STL {
+namespace std {
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>

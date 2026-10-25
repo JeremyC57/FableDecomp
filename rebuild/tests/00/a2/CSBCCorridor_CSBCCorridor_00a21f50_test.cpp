@@ -24,7 +24,7 @@ public:
     C2DVector Point1, Point2, ToInternal;
 };
 
-namespace _STL {
+namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;
@@ -77,7 +77,7 @@ public:
     CSBCCorridor() : CurrentEndPoint(0.0f, 0.0f) { }
     virtual bool Process(const CSteeringAgent*) { return false; }
     virtual ESB_TYPE GetType() { return ESB_TYPE_CCORRIDOR; }
-    _STL::list<CWall> Walls;
+    std::list<CWall> Walls;
     C2DVector         CurrentEndPoint;
     float             BestLeft;
     float             BestRight;

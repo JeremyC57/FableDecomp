@@ -1,8 +1,8 @@
-// Behaviour test for 0x00A5A8A0 _STL::__partial_sort<float*, float, less<float> >
+// Behaviour test for 0x00A5A8A0 std::__partial_sort<float*, float, less<float> >
 #include <cstdio>
 #include <cstddef>
 
-namespace _STL {
+namespace std {
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
 };
@@ -78,7 +78,7 @@ void __partial_sort(RandomAccessIter first, RandomAccessIter middle, RandomAcces
             __pop_heap(first, middle, i, T(*i), comp, (ptrdiff_t*)0);
     sort_heap(first, middle, comp);
 }
-}   // namespace _STL
+}   // namespace std
 
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
@@ -86,7 +86,7 @@ int main()
 {
     float a[10] = { 9.0f, 3.0f, 7.0f, -1.0f, 8.0f, 2.5f, 6.0f, 0.0f, 5.0f, 4.0f };
     const float e[4] = { -1.0f, 0.0f, 2.5f, 3.0f };
-    _STL::__partial_sort(a, a + 4, a + 10, (float*)0, _STL::less<float>());
+    std::__partial_sort(a, a + 4, a + 10, (float*)0, std::less<float>());
     for (int i = 0; i < 4; ++i)
         if (!Near(a[i], e[i])) { std::printf("00a5a8a0_TEST FAIL\n"); return 1; }
     float sum = 0.0f;                               // the tail keeps the other six values

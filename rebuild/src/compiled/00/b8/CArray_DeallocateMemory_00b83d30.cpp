@@ -2,8 +2,8 @@
 // Leaf: ?DeallocateMemory@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B83D30, 111 bytes. __fastcall, plain `ret`; a `push ecx` frame word that
 //   homes the one-byte iterator / __false_type tags.
-// Callees: _STL::__copy<CCountedPointer<CParticleSimulation>*, ...> @ 0x00B83330 (__fastcall, `ret 0Ch`: result, the
-//   random_access_iterator_tag reference and the null distance pointer on the stack), _STL::__destroy_aux<...> @ 0x00B833F0
+// Callees: std::__copy<CCountedPointer<CParticleSimulation>*, ...> @ 0x00B83330 (__fastcall, `ret 0Ch`: result, the
+//   random_access_iterator_tag reference and the null distance pointer on the stack), std::__destroy_aux<...> @ 0x00B833F0
 //   (__fastcall, `ret 4`: the __false_type reference), free (CRT import thunk) @ 0x00BFEA14.
 // Callers: CEngineClothSimulationMeshBase::ClearParticleSims 0x00B81D60 (call 0x00B81DEA, on ParticleSims).
 // Identity: FableWin.pdb `?DeallocateMemory@?$CArray@V?$CCountedPointer@VCParticleSimulation@@@@@@QAEXXZ`; the manifest
@@ -29,7 +29,7 @@ public:
 class CParticleSimulation;
 typedef CCountedPointer<CParticleSimulation> CParticleSimulationPtr;
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { input_iterator_tag() {} };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() {} };
 struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_iterator_tag() {} };
@@ -109,9 +109,9 @@ public:
     unsigned int capacity() const { return unsigned int(this->_M_end_of_storage._M_data - this->_M_start); }
     void swap(vector<_Tp, _Alloc>& __x)
     {
-        _STL::swap(this->_M_start, __x._M_start);
-        _STL::swap(this->_M_finish, __x._M_finish);
-        _STL::swap(this->_M_end_of_storage, __x._M_end_of_storage);
+        std::swap(this->_M_start, __x._M_start);
+        std::swap(this->_M_finish, __x._M_finish);
+        std::swap(this->_M_end_of_storage, __x._M_end_of_storage);
     }
     iterator erase(iterator __first, iterator __last)
     {
@@ -124,7 +124,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 public:
     void DeallocateMemory()
     {

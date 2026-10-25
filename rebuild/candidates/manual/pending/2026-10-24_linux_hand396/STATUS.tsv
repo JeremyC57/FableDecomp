@@ -1,5 +1,5 @@
 address	status	bytes	test	note
-007a4260	RELOCATION_MATCH	111v111	PASS	_STL::sort<CThing**, CThingCompare_NearestToPos>; C3DVector memberwise copy ctor
+007a4260	RELOCATION_MATCH	111v111	PASS	std::sort<CThing**, CThingCompare_NearestToPos>; C3DVector memberwise copy ctor
 007a44c0	RELOCATION_MATCH	86v86	PASS	CTCWillEnflame::CancelMove
 007aa4d0	RELOCATION_MATCH	231v231	PASS	CTCAssassinRush::FinalCleanup; inline IsDead() keeps 1 in ebx
 007acea0	RELOCATION_MATCH	106v106	PASS	vector<CCharString> copy ctor

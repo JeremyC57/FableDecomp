@@ -4,8 +4,8 @@ address	status	bytes	test	note
 0097e2d0	RELOCATION_MATCH	82v82	PASS	CAIStateGroupBase::SetProximityForDirectApproach (catalog SetTaskProperty_AtOffset)
 009857d0	RELOCATION_MATCH	186v186	PASS	CAIStateGroup_OpinionReactionRoot::HeroTitleAtHeroUpdate
 009859a0	RELOCATION_MATCH	186v186	PASS	CAIStateGroup_OpinionReactionRoot::HeroTitleToSelfUpdate
-0098ccc0	RELOCATION_MATCH	119v119	PASS	_STL::vector<CShaderRenderManager::CLightInfo>::vector(size_t)
-0098d820	RELOCATION_MATCH	70v70	PASS	_STL::vector<C4DVector>::push_back
+0098ccc0	RELOCATION_MATCH	119v119	PASS	std::vector<CShaderRenderManager::CLightInfo>::vector(size_t)
+0098d820	RELOCATION_MATCH	70v70	PASS	std::vector<C4DVector>::push_back
 0098db20	RELOCATION_MATCH	124v124	PASS	CIndexedArray<CCharString>::push_back
 0098dd10	RELOCATION_MATCH	126v126	PASS	anon-namespace CShaderStats ctor (keep-alive placement new)
 0098e320	RELOCATION_MATCH	102v102	PASS	CThreadedFileManager::OnFileReadCompletion (stdcall completion routine)
@@ -14,22 +14,22 @@ address	status	bytes	test	note
 0098e490	RELOCATION_MATCH	117v117	PASS	CThreadedFileManager::GetTotalObjectsFinishedCount
 0098e510	RELOCATION_MATCH	118v118	PASS	CThreadedFileManager::GetTotalBytesFinishedCount
 0098f2a0	RELOCATION_MATCH	176v176	PASS	CThreadedFileManager::ThreadMain
-00990830	RELOCATION_MATCH	201v201	PASS	_STL::_Rb_tree<CPendingObjectSortKey,...>::_M_insert
+00990830	RELOCATION_MATCH	201v201	PASS	std::_Rb_tree<CPendingObjectSortKey,...>::_M_insert
 00991240	RELOCATION_MATCH	61v61	PASS	CThreadedFileManager::CPendingObjectMap ctor (unreferenced)
 009913d0	DIFFER	115v115	-	map<unsigned long,CFileObject*>::operator[]: pair.second=0 store scheduled before the iterator/result pushes; scheduling-only
 009914e0	RELOCATION_MATCH	186v186	PASS	CCRC::CalcFromPathname (unreferenced)
 00991910	RELOCATION_MATCH	173v173	PASS	CASoundManager::CASoundManager(const CSoundManagerInit&, bool) (descriptive member names)
-00992750	RELOCATION_MATCH	153v153	PASS	_STL::__uninitialized_copy<pair<long,CSoundBankRecord>*> /Gr
-009927f0	RELOCATION_MATCH	128v128	PASS	_STL::__uninitialized_fill_n<pair<long,CSoundBankRecord>*> /Gr
-009928f0	RELOCATION_MATCH	74v74	PASS	_STL::__unguarded_linear_insert<...> /Gr
-00992ae0	RELOCATION_MATCH	146v146	PASS	_STL::__unguarded_insertion_sort_aux<...> /Gr
-00992cb0	RELOCATION_MATCH	238v238	PASS	_STL::__unguarded_partition<...> /Gr
-00992e20	RELOCATION_MATCH	182v182	PASS	_STL::__make_heap<...> /Gr
-009930c0	RELOCATION_MATCH	111v111	PASS	_STL::__linear_insert<...> /Gr
-00993420	RELOCATION_MATCH	159v159	PASS	_STL::__insertion_sort<...> /Gr
-009936e0	RELOCATION_MATCH	69v69	PASS	_STL::vector<pair<long,CSoundBankRecord>>::push_back
+00992750	RELOCATION_MATCH	153v153	PASS	std::__uninitialized_copy<pair<long,CSoundBankRecord>*> /Gr
+009927f0	RELOCATION_MATCH	128v128	PASS	std::__uninitialized_fill_n<pair<long,CSoundBankRecord>*> /Gr
+009928f0	RELOCATION_MATCH	74v74	PASS	std::__unguarded_linear_insert<...> /Gr
+00992ae0	RELOCATION_MATCH	146v146	PASS	std::__unguarded_insertion_sort_aux<...> /Gr
+00992cb0	RELOCATION_MATCH	238v238	PASS	std::__unguarded_partition<...> /Gr
+00992e20	RELOCATION_MATCH	182v182	PASS	std::__make_heap<...> /Gr
+009930c0	RELOCATION_MATCH	111v111	PASS	std::__linear_insert<...> /Gr
+00993420	RELOCATION_MATCH	159v159	PASS	std::__insertion_sort<...> /Gr
+009936e0	RELOCATION_MATCH	69v69	PASS	std::vector<pair<long,CSoundBankRecord>>::push_back
 009937d0	RELOCATION_MATCH	132v132	PASS	CVectorMap<long,CSoundBankRecord>::Insert
-00997330	RELOCATION_MATCH	140v140	PASS	_STL::vector<char>::reserve
+00997330	RELOCATION_MATCH	140v140	PASS	std::vector<char>::reserve
 009974a0	RELOCATION_MATCH	73v73	PASS	NFile::CalcCurrentPath /GS (manifest AddManualCameraEvent is wrong)
 009974f0	RELOCATION_MATCH	30v30	PASS	CAFile::SetCurrentPath (also already landed)
 00997510	RELOCATION_MATCH	146v146	PASS	CAFile::GetProjectPath /GS (also already landed)

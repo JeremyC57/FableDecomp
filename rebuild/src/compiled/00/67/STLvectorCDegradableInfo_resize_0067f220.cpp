@@ -1,4 +1,4 @@
-// _STL::vector<CDegradableInfo>::resize(unsigned int new_size, const CDegradableInfo& x) -- STLport resize of the degradable-stage vector: erase the tail past new_size, or fill-insert copies of x at the end
+// std::vector<CDegradableInfo>::resize(unsigned int new_size, const CDegradableInfo& x) -- STLport resize of the degradable-stage vector: erase the tail past new_size, or fill-insert copies of x at the end
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0067F220, 92 bytes (+ int3 padding), `__fastcall` (this -> edi), `ret 8`.
 // Identity: the landed GFSerialiseVectorBinaryIn<CDegradableInfo> 0x0067F430 calls it (0x0067F4B3) as resize(n, T()), and
@@ -20,7 +20,7 @@ struct CDegradableInfo {                                // Ego_r.pdb, 28 bytes (
     bool          BlocksNavigation;                     // +0x18
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

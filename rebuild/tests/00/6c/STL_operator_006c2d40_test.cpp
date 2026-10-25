@@ -1,6 +1,6 @@
-// 006c2d40 _STL::vector<CLevelLoader::CObject::CLevelFiles>::operator=
+// 006c2d40 std::vector<CLevelLoader::CObject::CLevelFiles>::operator=
 // Flags: /O2 /Oy /W3
-// Leaf: ??4?$vector@UCLevelFiles@@@_STL@@
+// Leaf: ??4?$vector@UCLevelFiles@@@std@@
 #include <stdlib.h>
 #include <new>
 struct CCPPointerInfo{unsigned RefCount;void(__cdecl*DeleteFunc)(void*);void*Data;};
@@ -17,7 +17,7 @@ template<class T>struct CCountedPointer{T*Data;CCPPointerInfo*Info;
 // three arms share the trailing `_M_finish = _M_start + n` (retail tail-duplicates it per arm).
 // Callees: __uninitialized_copy 0x006C2AA0, vector::_M_clear 0x005196A0, __copy (assign) 0x006C2B10, _Destroy 0x00518B80.
 struct CLevelFiles{long LevelID;CCountedPointer<CAFile>PTopologyFile,PNavigationFile,PThingFile;};
-namespace _STL{
+namespace std{
 struct __false_type{__false_type(){}};
 template<class Tag>__declspec(noinline) CLevelFiles*__fastcall uninitialized_copy(CLevelFiles*a,CLevelFiles*b,CLevelFiles*c,const Tag&){while(a!=b){if(c)new(c)CLevelFiles(*a);++a;++c;}return c;}
 template<class Tag>__declspec(noinline) CLevelFiles*__fastcall copy(CLevelFiles*a,CLevelFiles*b,CLevelFiles*c,const Tag&,int){while(a!=b)*c++=*a++;return c;}
@@ -58,11 +58,11 @@ static int liveFiles;static void __cdecl deleteFile(void*p){delete(CAFile*)p;--l
 
 
 
-namespace _STL{
+namespace std{
 
 
 
 
 }
-static void init(_STL::vector<CLevelFiles>&v,int n,int capacity){v._M_start=(CLevelFiles*)malloc(sizeof(CLevelFiles)*capacity);v._M_finish=v._M_start+n;v._M_end_of_storage=v._M_start+capacity;for(int i=0;i<n;++i){new(v._M_start+i)CLevelFiles;v._M_start[i].LevelID=i+10;CCountedPointer<CAFile>&p=v._M_start[i].PTopologyFile;p.Data=new CAFile;p.Data->value=i;p.Info=new CCPPointerInfo;p.Info->DeleteFunc=deleteFile;p.Info->Data=p.Data;p.Info->RefCount=1;++liveFiles;}}
-int main(){using namespace _STL;assert(sizeof(CLevelFiles)==28);vector<CLevelFiles>a,b;init(a,3,3);init(b,1,1);assert(&(b=a)==&b);assert(b._M_finish-b._M_start==3&&a._M_start[0].PTopologyFile.Info->RefCount==2);b=b;assert(b._M_start[1].LevelID==11);a._M_finish=a._M_start+1;_Destroy(a._M_start+1,a._M_start+3);b=a;assert(b._M_finish-b._M_start==1&&liveFiles==1);_Destroy(a._M_start,a._M_finish);a._M_finish=a._M_start; b=a;assert(b._M_finish==b._M_start&&liveFiles==0);a._M_clear();b._M_clear();init(a,3,3);init(b,1,5);b=a;assert(b._M_finish-b._M_start==3&&b._M_start[2].PTopologyFile.Data->value==2);a._M_clear();b._M_clear();assert(!liveFiles);puts("006c2d40_TEST PASS");}
+static void init(std::vector<CLevelFiles>&v,int n,int capacity){v._M_start=(CLevelFiles*)malloc(sizeof(CLevelFiles)*capacity);v._M_finish=v._M_start+n;v._M_end_of_storage=v._M_start+capacity;for(int i=0;i<n;++i){new(v._M_start+i)CLevelFiles;v._M_start[i].LevelID=i+10;CCountedPointer<CAFile>&p=v._M_start[i].PTopologyFile;p.Data=new CAFile;p.Data->value=i;p.Info=new CCPPointerInfo;p.Info->DeleteFunc=deleteFile;p.Info->Data=p.Data;p.Info->RefCount=1;++liveFiles;}}
+int main(){using namespace std;assert(sizeof(CLevelFiles)==28);vector<CLevelFiles>a,b;init(a,3,3);init(b,1,1);assert(&(b=a)==&b);assert(b._M_finish-b._M_start==3&&a._M_start[0].PTopologyFile.Info->RefCount==2);b=b;assert(b._M_start[1].LevelID==11);a._M_finish=a._M_start+1;_Destroy(a._M_start+1,a._M_start+3);b=a;assert(b._M_finish-b._M_start==1&&liveFiles==1);_Destroy(a._M_start,a._M_finish);a._M_finish=a._M_start; b=a;assert(b._M_finish==b._M_start&&liveFiles==0);a._M_clear();b._M_clear();init(a,3,3);init(b,1,5);b=a;assert(b._M_finish-b._M_start==3&&b._M_start[2].PTopologyFile.Data->value==2);a._M_clear();b._M_clear();assert(!liveFiles);puts("006c2d40_TEST PASS");}

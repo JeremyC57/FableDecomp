@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__destroy_aux(NGameText::CDataBankTextEntry*, ..., const __false_type&) (0x00A43A00): each
+// Behaviour test for std::__destroy_aux(NGameText::CDataBankTextEntry*, ..., const __false_type&) (0x00A43A00): each
 // entry's counted text pointer is released (count decremented, Delete() at zero) and nulled; null pointers are skipped.
 #include <cstdio>
 #include <new>
@@ -36,7 +36,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
@@ -60,7 +60,7 @@ int main()
     e[1].PText.Object = 0;
     e[2].PText.Object = &shared;
     e[3].PText.Object = &single;
-    _STL::__destroy_aux(e, e + 4, _STL::__false_type());
+    std::__destroy_aux(e, e + 4, std::__false_type());
     int fails = 0;
     if (shared.IVRefCount != 0 || single.IVRefCount != 0) ++fails;
     if (gDeleted != 2) ++fails;

@@ -1,11 +1,11 @@
-// _STL::__unguarded_linear_insert(CSurfaceEntry* last, CSurfaceEntry val, CSurfaceEntryLess comp) -- shift larger-keyed (key, CCompositeSurfaceInfo) entries up one slot until val's place is found (no lower bound check), store val there
-// Leaf: ??$__unguarded_linear_insert@PAU?$pair@JVCCompositeSurfaceInfo@@@_STL@@
+// std::__unguarded_linear_insert(CSurfaceEntry* last, CSurfaceEntry val, CSurfaceEntryLess comp) -- shift larger-keyed (key, CCompositeSurfaceInfo) entries up one slot until val's place is found (no lower bound check), store val there
+// Leaf: ??$__unguarded_linear_insert@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BED790, 225 bytes, `ret 14h` (the 16-byte value + the empty comparator).
 // Callees: operator delete @ 0x00BFE9BC (count blocks), ~CBaseClass @ 0x0099A2E0 (the by-value value's base).
 // Label: the manifest's "CNavigationPosition_CopyRange" is propagated; this is the STLport sort instantiation of
 // CVectorMap<long, CCompositeSurfaceInfo, CKeyPairCompareLess<long, CCompositeSurfaceInfo> > (Ego_r.pdb name set).
-// Element: _STL::pair<long, CCompositeSurfaceInfo> (16 bytes): key, then CCompositeSurfaceInfo {vptr 0x012A8154,
+// Element: std::pair<long, CCompositeSurfaceInfo> (16 bytes): key, then CCompositeSurfaceInfo {vptr 0x012A8154,
 // CCountedPointer<CCompositeSurfaceCache> Cache}; the implicit operator= is the key store plus the counted-pointer
 // assignment (vptr untouched), the by-value value's implicit destructor releases Cache and calls ~CBaseClass.
 // Shape: STLport 4.6 __unguarded_linear_insert; signed key compare inline (`jge`/`jl`).
@@ -63,7 +63,7 @@ public:
     CCountedPointer<CCompositeSurfaceCache> Cache;  // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -71,18 +71,18 @@ template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
 };
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
+typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 
-namespace _STL {
+namespace std {
 template <class RandomAccessIter, class T, class Compare>
 void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp)
 {
@@ -95,6 +95,6 @@ void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp)
     }
     *last = val;
 }
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::__unguarded_linear_insert(CSurfaceEntry*, CSurfaceEntry, CSurfaceEntryLess);
+template void std::__unguarded_linear_insert(CSurfaceEntry*, CSurfaceEntry, CSurfaceEntryLess);

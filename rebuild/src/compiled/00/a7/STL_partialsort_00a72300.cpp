@@ -1,10 +1,10 @@
-// _STL::__partial_sort(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* middle, pair<CCharString,C3DHelperPoint>* last, pair<CCharString,C3DHelperPoint>*, CCompareString<C3DHelperPoint> comp) -- heap-select the smallest (middle - first) helper-point entries (name order) into [first, middle) and sort them
+// std::__partial_sort(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* middle, pair<CCharString,C3DHelperPoint>* last, pair<CCharString,C3DHelperPoint>*, CCompareString<C3DHelperPoint> comp) -- heap-select the smallest (middle - first) helper-point entries (name order) into [first, middle) and sort them
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A72300, 126 bytes (+2 int3), /Gr `__fastcall` (first in ecx, middle
 //   in edx; last, the value-type tag pointer and the comparator on the stack, `ret 0Ch`).
-// Callees: _STL::__make_heap 0x00A70630, CCharString::FastCompare 0x009E6530 (the CCompareString comparator),
-//   CCharString::CCharString(const CCharString&) 0x0099EC30 (the by-value copy for __pop_heap), _STL::__pop_heap
-//   0x00A701D0, _STL::sort_heap 0x00A719A0.
+// Callees: std::__make_heap 0x00A70630, CCharString::FastCompare 0x009E6530 (the CCompareString comparator),
+//   CCharString::CCharString(const CCharString&) 0x0099EC30 (the by-value copy for __pop_heap), std::__pop_heap
+//   0x00A701D0, std::sort_heap 0x00A719A0.
 // Identity: the manifest's "QuickPartition_Generic" is descriptive. 20-byte pair<CCharString, C3DHelperPoint> entries
 //   of CPhysicsMesh::HelperPoints ordered by CCompareString (the introsort's depth-limit fallback).
 // Shape: STLport `make_heap(first, middle, comp); for (i = middle; i < last; ++i) if (comp(*i, *first))
@@ -31,7 +31,7 @@ public:
     long      BoneIndex;                                // +0x0C
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -42,10 +42,10 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp>
 inline int* __distance_type(const _Tp*) { return (int*)0; }

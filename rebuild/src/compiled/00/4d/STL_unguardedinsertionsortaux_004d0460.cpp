@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(SCameraTagEntry* first, SCameraTagEntry* last, SCameraTagEntry*, CKeyPairCompareLess comp) -- STLport unguarded insertion sort over the CSubtitledMessage camera-tag vector map (pair<float, CCameraTag>, ascending float key): every element from first to last is lifted out and sifted down with __unguarded_linear_insert
+// std::__unguarded_insertion_sort_aux(SCameraTagEntry* first, SCameraTagEntry* last, SCameraTagEntry*, CKeyPairCompareLess comp) -- STLport unguarded insertion sort over the CSubtitledMessage camera-tag vector map (pair<float, CCameraTag>, ascending float key): every element from first to last is lifted out and sifted down with __unguarded_linear_insert
 // Leaf: __unguarded_insertion_sort_aux
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D0460, 132 bytes (+ int3 padding), `ret 8`.
 // Callers: 0x004D0A50 (the out-of-line `__unguarded_insertion_sort(first, last, comp)` pushing comp and the null
@@ -15,7 +15,7 @@
 //   STLport pair's memberwise copy constructor (the float key as a dword, then the CCameraTag by its implicit copy
 //   through `lea ecx,[ebx+20h]` = &i->second); the element assignments are the implicit pair operator= (`rep movsd`).
 //   The comparator is CKeyPairCompareLess: `fld val.first ; fcomp [next] ; test ah,5 ; jp` = val.first < next->first.
-namespace _STL {
+namespace std {
 
 enum EConversationProtagonist { PROTAGONIST_NONE };
 enum EConversationCameraPosition { CAMERA_POSITION_NONE };

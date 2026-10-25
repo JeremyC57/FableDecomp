@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF37F0 _STL::vector<pair<CCharString, CRegisteredPSCInfo> >::_M_insert_overflow: grow, copy the prefix, construct the fill copies, copy the suffix unless at the end
+// behaviour test for 0x00AF37F0 std::vector<pair<CCharString, CRegisteredPSCInfo> >::_M_insert_overflow: grow, copy the prefix, construct the fill copies, copy the suffix unless at the end
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

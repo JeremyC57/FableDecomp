@@ -1,4 +1,4 @@
-// Behaviour test for 0x009930C0 _STL::__linear_insert over the 36-byte (long key, sound-bank record) entries: __linear_insert: a new minimum shifts the range up and lands first; otherwise it is inserted in place.
+// Behaviour test for 0x009930C0 std::__linear_insert over the 36-byte (long key, sound-bank record) entries: __linear_insert: a new minimum shifts the range up and lands first; otherwise it is inserted in place.
 // The record is modelled with a shared reference count (copies bump it, assignments move it, destruction drops it) so
 // leaked or double-destroyed copies show up as a non-zero final count.
 #include <cstdio>

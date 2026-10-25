@@ -1,4 +1,4 @@
-// _STL::__make_heap(SKeyedBlock40* first, SKeyedBlock40* last, CKeyPairCompareLess comp, SKeyedBlock40*, int*) -- heapify a vector of (long key, 36-byte POD) pairs: sift every parent down from the last one to the root
+// std::__make_heap(SKeyedBlock40* first, SKeyedBlock40* last, CKeyPairCompareLess comp, SKeyedBlock40*, int*) -- heapify a vector of (long key, 36-byte POD) pairs: sift every parent down from the last one to the root
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081BB50, 119 bytes (+int3 pad), `ret 0Ch` (link-time __fastcall /Gr TU: first in
 //   ecx, last in edx, then the empty comparator and the value-type / distance-type tag pointers on the stack).
@@ -17,7 +17,7 @@ struct SPayload36 {                         // 36-byte POD payload (copied as on
     unsigned long m_words[9];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                // +0x00
     B second;                               // +0x04

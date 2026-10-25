@@ -1,5 +1,5 @@
 // CMeshBankStateBlock::CLODStateBlock::GetBoneLODs(set<CCharString>& bones, long lod) -- collect the names of every bone assigned to the given LOD
-// Leaf: ?GetBoneLODs@CLODStateBlock@CMeshBankStateBlock@@QAEXAAV?$set@VCCharString@@U?$less@VCCharString@@@_STL@@V?$allocator@VCCharString@@@3@@_STL@@J@Z
+// Leaf: ?GetBoneLODs@CLODStateBlock@CMeshBankStateBlock@@QAEXAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A26410, 164 bytes, `ret 8`. No direct caller (reached through a pointer).
 // Identity: Ego_r.pdb `?GetBoneLODs@CLODStateBlock@CMeshBankStateBlock@@QAEXAAV?$set@VCCharString@@...@std@@J@Z`:
 //   `this` is the CLODStateBlock whose BoneLODs (map<CCharString, long>) sits at +0 (see 0x00A2CFA0); the catalog
@@ -12,7 +12,7 @@
 //   frame); the increment is the STLport 4.6 static `_Rb_global::_M_increment(node)` (walk on a copy in eax).
 class CCharString { public: void* PStringData; };
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { };
 template <class _Tp> class allocator { public: allocator() {} };
 template <class _T1, class _T2> struct pair {
@@ -111,15 +111,15 @@ class CMeshBankStateBlock {
 public:
     class CLODStateBlock {
     public:
-        _STL::map<CCharString, long> BoneLODs;           // +0x00
-        void GetBoneLODs(_STL::set<CCharString>& bones, long lod);
+        std::map<CCharString, long> BoneLODs;           // +0x00
+        void GetBoneLODs(std::set<CCharString>& bones, long lod);
     };
 };
 
-void CMeshBankStateBlock::CLODStateBlock::GetBoneLODs(_STL::set<CCharString>& bones, long lod)
+void CMeshBankStateBlock::CLODStateBlock::GetBoneLODs(std::set<CCharString>& bones, long lod)
 {
     bones.clear();
-    for (_STL::map<CCharString, long>::iterator it = BoneLODs.begin(); it != BoneLODs.end(); ++it)
+    for (std::map<CCharString, long>::iterator it = BoneLODs.begin(); it != BoneLODs.end(); ++it)
         if (it->second == lod)
             bones.insert(it->first);
 }

@@ -1,4 +1,4 @@
-// _STL::__median(const CAnimationEntry* const& a, const CAnimationEntry* const& b, const CAnimationEntry* const& c, CTurningAnimCompare comp) -- median of three turning-animation entries under the rotation comparator (introsort pivot)
+// std::__median(const CAnimationEntry* const& a, const CAnimationEntry* const& b, const CAnimationEntry* const& c, CTurningAnimCompare comp) -- median of three turning-animation entries under the rotation comparator (introsort pivot)
 // Leaf: ??$__median@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087DA90, length 184 bytes (`ret 8`).
 // Identity: called once from the introsort loop of the CCreatureAction_InterruptableMidAttackAutoTurn TU (0x0087E56D);
@@ -38,7 +38,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {

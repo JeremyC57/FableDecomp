@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE80F0 _STL::vector<C3DGroup2>::reserve: grow the storage to n (copy, destroy and free the old block) keeping the size; no-op when the capacity suffices
+// behaviour test for 0x00AE80F0 std::vector<C3DGroup2>::reserve: grow the storage to n (copy, destroy and free the old block) keeping the size; no-op when the capacity suffices
 #include <cstdio>
 #include <cstdlib>
 #include <new>

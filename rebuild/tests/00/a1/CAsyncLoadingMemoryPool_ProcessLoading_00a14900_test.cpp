@@ -2,7 +2,7 @@
 // in registration order, and an empty list runs nothing.
 #include <cstdio>
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() {} };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy { public: _Tp _M_data; };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
@@ -24,14 +24,14 @@ public:
 class CAsyncLoadingMemoryPool {
 public:
     static void ProcessLoading();
-    static _STL::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
+    static std::vector<CAsyncLoadingProcessCallback*> LoadingCallbacks;
 };
 
-_STL::vector<CAsyncLoadingProcessCallback*> CAsyncLoadingMemoryPool::LoadingCallbacks;
+std::vector<CAsyncLoadingProcessCallback*> CAsyncLoadingMemoryPool::LoadingCallbacks;
 
 void CAsyncLoadingMemoryPool::ProcessLoading()
 {
-    for (_STL::vector<CAsyncLoadingProcessCallback*>::iterator it = LoadingCallbacks.begin(); it != LoadingCallbacks.end(); ++it)
+    for (std::vector<CAsyncLoadingProcessCallback*>::iterator it = LoadingCallbacks.begin(); it != LoadingCallbacks.end(); ++it)
         (*it)->ProcessLoading();
 }
 

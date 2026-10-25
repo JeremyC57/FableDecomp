@@ -1,5 +1,5 @@
-// _STL::__partial_sort(float* first, float* middle, float* last, float*, less<float> comp) -- heap-select the smallest floats of [first, last) into [first, middle) and sort them
-// Leaf: ??$__partial_sort@PAMMU?$less@M@_STL@@@_STL@@
+// std::__partial_sort(float* first, float* middle, float* last, float*, less<float> comp) -- heap-select the smallest floats of [first, last) into [first, middle) and sort them
+// Leaf: ??$__partial_sort@PAMMU?$less@M@std@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5A8A0, 102 bytes (+10 int3), `ret 0Ch` (link-time __fastcall: first in
 //   ecx, middle in edx, then last, the value-type tag pointer and the empty less<float> on the stack).
@@ -13,7 +13,7 @@
 //   word is kept in ebp for all three calls.
 #include <stddef.h>
 
-namespace _STL {
+namespace std {
 
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
@@ -53,4 +53,4 @@ void __partial_sort(RandomAccessIter first, RandomAccessIter middle, RandomAcces
 
 template void __partial_sort(float*, float*, float*, float*, less<float>);
 
-}   // namespace _STL
+}   // namespace std

@@ -8,7 +8,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-// Model of _STL::__unguarded_partition<pair<unsigned long,CDefString>*, ..> @ 0x004713F2: Hoare partition around a
+// Model of std::__unguarded_partition<pair<unsigned long,CDefString>*, ..> @ 0x004713F2: Hoare partition around a
 // by-value pivot taken from the range.
 
 class CDefString {                                          // Ego_r.pdb, 4 bytes (a class: mangled V)
@@ -16,7 +16,7 @@ public:
     long TablePos;                                          // +0x0 def-string table index
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -26,10 +26,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 __forceinline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {
@@ -64,7 +64,7 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 typedef pair<unsigned long, CDefString> _CriteriaEntry;
 }
 
-typedef _STL::pair<unsigned long, CDefString> E;
+typedef std::pair<unsigned long, CDefString> E;
 typedef CKeyPairCompareLess<unsigned long, CDefString> C;
 static void SetEntry(E& e, unsigned int key) { e.first = key; e.second.TablePos = (long)(key * 5); }
 static bool Consistent(const E& e) { return e.second.TablePos == (long)(e.first * 5); }
@@ -89,7 +89,7 @@ int main()
         FillRandom(a, n);
         unsigned long sum = KeySum(a, n);
         E pivot(a[n / 2]);
-        E* cut = _STL::__unguarded_partition(a, a + n, pivot, C());
+        E* cut = std::__unguarded_partition(a, a + n, pivot, C());
         if (cut < a || cut > a + n)
             ok = false;
         for (E* p = a; p < cut; ++p)

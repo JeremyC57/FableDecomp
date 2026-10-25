@@ -45,7 +45,7 @@ static bool Same(const CMeshInfo* a, const int* bits, int invert, const int* wan
 }
 
 // STLport 4.x sort / heap algorithms (the model's bodies and the test's copies of their out-of-line callees).
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
@@ -246,7 +246,7 @@ static bool TestFunction()
     static const int want[12] = { 6, 0, 3, 4, 11, 5, 2, 7, 8, 1, 10, 9 };
     CMeshInfo a[12];
     Fill(a, kBits12, 12, 0);
-    _STL::__partial_sort(a, a + 5, a + 12, (CMeshInfo*)0, TLess());
+    std::__partial_sort(a, a + 5, a + 12, (CMeshInfo*)0, TLess());
     bool ok = Same(a, kBits12, 0, want, 12);
     for (int i = 0; ok && i < 5; ++i)                  // the five front slots hold non-primaries
         if (a[i].PrimaryMesh)

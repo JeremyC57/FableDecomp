@@ -1,4 +1,4 @@
-// _STL::vector<char>::_M_insert_overflow(char* position, const char& x, const __true_type&, unsigned int fill_len, bool atend) -- POD grow path: allocate old_size + max(old_size, fill_len), copy the head, fill fill_len copies of x, copy the tail unless atend, free the old block
+// std::vector<char>::_M_insert_overflow(char* position, const char& x, const __true_type&, unsigned int fill_len, bool atend) -- POD grow path: allocate old_size + max(old_size, fill_len), copy the head, fill fill_len copies of x, copy the tail unless atend, free the old block
 // Leaf: ?_M_insert_overflow@?$vector@D
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0040F6B0, 218 bytes (thiscall, `ret 0x14`: position, x, tag, fill_len,
 // atend). Callees: malloc 0x00BFEA0E (allocate, skipped for a zero length), memmove 0x00BFEAE6 (the inline
@@ -16,7 +16,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int count);
 #pragma intrinsic(memset)
 
-namespace _STL {
+namespace std {
 
 struct __true_type { };
 

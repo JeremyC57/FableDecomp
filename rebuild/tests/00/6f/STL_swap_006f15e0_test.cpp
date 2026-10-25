@@ -1,4 +1,4 @@
-// Behaviour test for 0x006F15E0 _STL::swap<CDefendingCombatantInfo::CProng>.
+// Behaviour test for 0x006F15E0 std::swap<CDefendingCombatantInfo::CProng>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("006f15e0_TEST FAIL\n"); return 1; } } while (0)

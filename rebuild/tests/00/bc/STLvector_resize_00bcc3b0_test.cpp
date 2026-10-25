@@ -1,4 +1,4 @@
-// Behaviour test for 00bcc3b0 (_STL::vector<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry>::resize(n)): growing appends through one fill insert at end(), shrinking erases the tail
+// Behaviour test for 00bcc3b0 (std::vector<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry>::resize(n)): growing appends through one fill insert at end(), shrinking erases the tail
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>

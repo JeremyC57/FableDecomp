@@ -31,7 +31,7 @@ static bool RecordIs(const SKeyRecord32& r, int k)
            r.m_record.m_c == k * 30 && r.m_18 == -k && r.m_1c == k * k;
 }
 
-// the row: _STL::__uninitialized_fill_n<SKeyRecord32*, unsigned int, SKeyRecord32>(..., __false_type)
+// the row: std::__uninitialized_fill_n<SKeyRecord32*, unsigned int, SKeyRecord32>(..., __false_type)
 static SKeyRecord32* __fastcall UninitializedFillN(SKeyRecord32* first, unsigned int n, const SKeyRecord32& x)
 {
     SKeyRecord32* cur = first;

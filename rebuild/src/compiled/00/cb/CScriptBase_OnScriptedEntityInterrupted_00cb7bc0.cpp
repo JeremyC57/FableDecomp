@@ -45,7 +45,7 @@ public:
 };
 class CActiveEntityScriptBase : public CSpawnedFuncBase {
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -81,15 +81,15 @@ public:
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 template <class V> class CCompareString {                  // empty
 };
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     typedef value_type* iterator;
-    _STL::vector<value_type> Vector;                       // +0x00
+    std::vector<value_type> Vector;                       // +0x00
     C    Compare;                                          // +0x0c
     bool Dirty;                                            // +0x0d
     iterator LowerBound(const K& key);                     // out of line (EntityScripts: 0x00CB9840)
@@ -109,7 +109,7 @@ typedef CVectorMap<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>, C
 class CScriptBase {
 public:
     virtual ~CScriptBase();
-    _STL::list<CCountedPointer<CSpawnedFuncBase> > Threads;                                  // +0x04
+    std::list<CCountedPointer<CSpawnedFuncBase> > Threads;                                  // +0x04
     CEntityScriptMap EntityScripts;                                                          // +0x08
     CVectorMap<CCharString, CCountedPointer<CEntityScriptBindingBase>, CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;   // +0x18
     unsigned long     LastWorldUpdateFrame;                                                  // +0x28

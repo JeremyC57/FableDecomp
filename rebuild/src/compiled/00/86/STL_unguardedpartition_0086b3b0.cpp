@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CSkeletalMorph>* last, pair<long, CSkeletalMorph> pivot, CKeyPairCompareLess<long, CSkeletalMorph> comp) -- STLport quicksort partition of the skeletal-morph vector map: walk both ends inwards past correctly placed keys and swap the strays, return the split point
+// std::__unguarded_partition(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CSkeletalMorph>* last, pair<long, CSkeletalMorph> pivot, CKeyPairCompareLess<long, CSkeletalMorph> comp) -- STLport quicksort partition of the skeletal-morph vector map: walk both ends inwards past correctly placed keys and swap the strays, return the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086B3B0, length 136 bytes, `ret 14h`.
 // Callers: the map's __introsort_loop 0x0086DB30 (this chunk; 0x0086DBBC).
@@ -24,7 +24,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -65,9 +65,9 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+typedef std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
 typedef CKeyPairCompareLess<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphLess;
-template TSkeletalMorphPair* __fastcall _STL::__unguarded_partition<TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess>(TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess);
+template TSkeletalMorphPair* __fastcall std::__unguarded_partition<TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess>(TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphPair, TSkeletalMorphLess);

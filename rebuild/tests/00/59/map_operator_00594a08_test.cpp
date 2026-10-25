@@ -21,7 +21,7 @@ public:
     ~CWideString();                                  // 0x0099B510
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -76,7 +76,7 @@ static int g_defaultMarker;
 bool CDateAndTime::operator<(const CDateAndTime& other) const { return memcmp(_body, other._body, sizeof _body) < 0; }
 CWideString::CWideString() { PStringData = &g_defaultMarker; ++g_ctor; }
 CWideString::~CWideString() { ++g_dtor; }
-namespace _STL {
+namespace std {
 template <> pair<const CDateAndTime, CWideString>::pair(const CDateAndTime& a, const CWideString& b) : first(a), second(b) {}
 typedef map<CDateAndTime, CWideString> TMap;
 typedef _Rb_tree_node<TMap::value_type> TNode;
@@ -106,8 +106,8 @@ static CDateAndTime Key(int v) { CDateAndTime d; memset(&d, 0, sizeof d); d._bod
 int main()
 {
     int ok = 1;
-    _STL::_Rb_tree_node_base header; memset(&header, 0, sizeof header);
-    _STL::TMap m; m._M_header = &header; m._M_node_count = 0;
+    std::_Rb_tree_node_base header; memset(&header, 0, sizeof header);
+    std::TMap m; m._M_header = &header; m._M_node_count = 0;
     int marker1, marker2;
     CDateAndTime k5 = Key(5), k2 = Key(2), k9 = Key(9);
     CWideString& a = m[k5];

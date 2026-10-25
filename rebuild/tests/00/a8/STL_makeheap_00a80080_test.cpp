@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A80080 _STL::__make_heap over (unsigned __int64 key, value) entries: afterwards every parent's key
+// Behaviour test for 0x00A80080 std::__make_heap over (unsigned __int64 key, value) entries: afterwards every parent's key
 // is >= its children's (max-heap on the 64-bit key) and the multiset of keys is kept; ranges under 2 are untouched.
 #include <cstdio>
 struct SEntry { unsigned long long first; void* second; };

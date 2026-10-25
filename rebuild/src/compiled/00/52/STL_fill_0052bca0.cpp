@@ -1,4 +1,4 @@
-// _STL::fill(NThingManager::CEntityRuntimePersistence::CEntityScriptInfo* first, NThingManager::CEntityRuntimePersistence::CEntityScriptInfo* last, const NThingManager::CEntityRuntimePersistence::CEntityScriptInfo& value) -- assign one entity-script save record to every element of a range
+// std::fill(NThingManager::CEntityRuntimePersistence::CEntityScriptInfo* first, NThingManager::CEntityRuntimePersistence::CEntityScriptInfo* last, const NThingManager::CEntityRuntimePersistence::CEntityScriptInfo& value) -- assign one entity-script save record to every element of a range
 // Leaf: ??$fill@PAVCEntityScriptInfo@CEntityRuntimePersistence@NThingManager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052BCA0, 62 bytes, `__fastcall` (first ecx, last edx, value pointer
 //   on the stack), `ret 4`.
@@ -38,7 +38,7 @@ public:
 }
 typedef NThingManager::CEntityRuntimePersistence::CEntityScriptInfo CEntityScriptInfo;
 
-namespace _STL {
+namespace std {
 // STLport 4.6 fill; the algorithm templates are __fastcall here (first/last in ecx/edx, callee pops the value pointer).
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
@@ -48,4 +48,4 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 }
 
-template void __fastcall _STL::fill<CEntityScriptInfo*, CEntityScriptInfo>(CEntityScriptInfo*, CEntityScriptInfo*, const CEntityScriptInfo&);
+template void __fastcall std::fill<CEntityScriptInfo*, CEntityScriptInfo>(CEntityScriptInfo*, CEntityScriptInfo*, const CEntityScriptInfo&);

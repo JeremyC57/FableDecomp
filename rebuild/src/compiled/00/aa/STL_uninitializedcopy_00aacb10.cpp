@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(CActiveSoundInfo* first, CActiveSoundInfo* last, CActiveSoundInfo* result, const __false_type&) -- copy-construct the sound records [first, last) into raw storage at result and return the end of the copies
+// std::__uninitialized_copy(CActiveSoundInfo* first, CActiveSoundInfo* last, CActiveSoundInfo* result, const __false_type&) -- copy-construct the sound records [first, last) into raw storage at result and return the end of the copies
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AACB10, length 58 bytes (+6 int3), __fastcall (first in ecx, last in
 //   edx, result and the empty tag reference on the stack, `ret 8`), returns the end of the copies in eax.
@@ -23,7 +23,7 @@ public:
     virtual ~CActiveSoundInfo();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

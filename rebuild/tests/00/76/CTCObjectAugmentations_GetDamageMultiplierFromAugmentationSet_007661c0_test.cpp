@@ -74,7 +74,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<con
     return true;
 }
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     T* _M_start;
@@ -89,10 +89,10 @@ public:
 
 class CTCObjectAugmentations {
 public:
-    static float __fastcall GetDamageMultiplierFromAugmentationSet(const _STL::vector<long>& augmentations);
+    static float __fastcall GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations);
 };
 
-float __fastcall CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(const _STL::vector<long>& augmentations)
+float __fastcall CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet(const std::vector<long>& augmentations)
 {
     float multiplier = 1.0f;
     for (unsigned int i = 0; i < augmentations.size(); ++i) {
@@ -139,7 +139,7 @@ int main()
     g_aug[3].DamageMultiplier = 3.0f;
     for (unsigned int k = 0; k < 4; ++k) { g_aug[k].RefCount = 0; g_thing[k].RefCount = 0; }
     long data[6] = { 1, 0, 3, -2, 2, 3 };
-    _STL::vector<long> v;
+    std::vector<long> v;
     v._M_start = data; v._M_finish = data + 6; v._M_end_of_storage = data + 6;
 
     int ok = 1;

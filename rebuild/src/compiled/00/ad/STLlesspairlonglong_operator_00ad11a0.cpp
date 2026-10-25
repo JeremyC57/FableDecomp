@@ -1,5 +1,5 @@
-// _STL::less<pair<long,long>>::operator()(const pair<long,long>& x, const pair<long,long>& y) -- lexicographic order on long pairs: first, then second
-// Leaf: ??R?$less@U?$pair@JJ@_STL@@@_STL@@
+// std::less<pair<long,long>>::operator()(const pair<long,long>& x, const pair<long,long>& y) -- lexicographic order on long pairs: first, then second
+// Leaf: ??R?$less@U?$pair@JJ@std@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD11A0, 42 bytes, `__fastcall` (the empty comparator in ecx, unused),
 //   `ret 8`. No callees.
 // Identity: STLport `less<_Tp>::operator()` over `pair<long,long>` (manifest signature
@@ -8,7 +8,7 @@
 // Shape: STLport's pair `operator<` -- `x.first < y.first || (!(y.first < x.first) && x.second < y.second)`: one
 //   compare of the first members feeds both `jg` (true) and `jl` (false); the second members compare `jl`; the bool is
 //   materialised as `xor eax,eax` / `mov eax,1`.
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result>
 struct binary_function {
     typedef _Arg1   first_argument_type;

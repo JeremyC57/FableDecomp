@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CD2725 _STL::__destroy_aux<CScriptRecord16*> (virtual destructor per element).
+// Behaviour test for 0x00CD2725 std::__destroy_aux<CScriptRecord16*> (virtual destructor per element).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00cd2725_TEST FAIL\n"); return 1; } } while (0)

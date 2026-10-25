@@ -1,4 +1,4 @@
-// Behaviour test of _STL::__make_heap(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, CKeyPairCompareLess<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > comp, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >*, int*) (retail 0x005E1C30)
+// Behaviour test of std::__make_heap(pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* first, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >* last, CKeyPairCompareLess<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > comp, pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >*, int*) (retail 0x005E1C30)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
 #include <cstdio>
 #ifndef _MSC_VER

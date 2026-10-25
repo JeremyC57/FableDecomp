@@ -1,4 +1,4 @@
-// _STL::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CThingFilter_IsInFOV pred) -- copy the target points outside the field of view to result; returns the new end
+// std::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CThingFilter_IsInFOV pred) -- copy the target points outside the field of view to result; returns the new end
 // Leaf: ??$remove_copy_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00806CF0, 132 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx -- spilled to the `push ecx` frame word), result and the 0x24-byte predicate by value on the stack,
@@ -51,7 +51,7 @@ struct CThingFilter_IsInFOV {
     bool operator()(const NPlayerTargeting::CTargetPoint& point) const;   // 0x006A7380
 };
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _OutputIter, class _Predicate>
 _OutputIter __fastcall remove_copy_if(_InputIter __first, _InputIter __last, _OutputIter __result, _Predicate __pred)
 {

@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SKeyedList* first, SKeyedList* last, SKeyedList value, CKeyPairCompareLess comp) -- SGI insertion-sort step over (unsigned __int64 key, list) pairs: a value below the front shifts the whole run up one slot and lands at the front, otherwise it is inserted by the unguarded backward scan
+// std::__linear_insert(SKeyedList* first, SKeyedList* last, SKeyedList value, CKeyPairCompareLess comp) -- SGI insertion-sort step over (unsigned __int64 key, list) pairs: a value below the front shifts the whole run up one slot and lands at the front, otherwise it is inserted by the unguarded backward scan
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A843F0, 128 bytes (with int3 padding), `ret 14h`: /Gr `__fastcall` (first
 //   in ecx -> esi, last in edx -> edi; the 16-byte value and the empty comparator on the stack).

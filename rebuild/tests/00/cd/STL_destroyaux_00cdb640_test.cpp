@@ -1,4 +1,4 @@
-// Behaviour test for 00cdb640 (_STL::__destroy_aux<TeleportData*>): every element of [first, last) is destroyed (its four
+// Behaviour test for 00cdb640 (std::__destroy_aux<TeleportData*>): every element of [first, last) is destroyed (its four
 // strings released, last declared first), nothing outside the range is touched, an empty range destroys nothing.
 #include <cstdio>
 #include <new>

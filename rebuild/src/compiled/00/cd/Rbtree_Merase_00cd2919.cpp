@@ -21,7 +21,7 @@ public:
     void* m_pData;
     ~CCharString();                                     // 0x0099EAE0
 };
-namespace _STL {
+namespace std {
 template <int __inst> class __malloc_alloc {             // _STLP_USE_MALLOC: the node allocator frees straight to the CRT
 public:
     static void deallocate(void* p, unsigned int) { free(p); }

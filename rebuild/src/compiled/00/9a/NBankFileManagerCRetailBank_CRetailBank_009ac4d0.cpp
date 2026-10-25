@@ -39,7 +39,7 @@ struct CContainedBank {
     unsigned long Alignment;                         // +0x10
 };
 }
-namespace _STL {
+namespace std {
 template <class K, class V> struct pair { K first; V second; };
 template <class T> struct less { };
 template <class V> struct _Rb_tree_node {
@@ -77,7 +77,7 @@ public:
     CCountedPointer<CDiskFileWin32>                       DiskFile;        // +0x04
     CCountedPointer<CThreadedFile>                        ThreadedFile;    // +0x0c
     bool                                                  UseDMA;          // +0x14
-    _STL::map<CCharString, NBankFileManager::CContainedBank> ContainedBanks;  // +0x18
+    std::map<CCharString, NBankFileManager::CContainedBank> ContainedBanks;  // +0x18
     CCharString                                           FilePath;        // +0x24
     CRetailBank();
     virtual ~CRetailBank();

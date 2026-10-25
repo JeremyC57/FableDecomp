@@ -15,7 +15,7 @@ static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > 
 
 static int g_frees = 0;
 static void CountingFree(void* p) { ++g_frees; free(p); }
-namespace _STL {
+namespace std {
 template <class _Tp>
 class allocator {
 public:
@@ -50,7 +50,7 @@ public:
     float Real, Imaginary;
 };
 template <class T>
-class CArray : public _STL::vector<T> {
+class CArray : public std::vector<T> {
 };
 static int g_frames = 0;
 class CSpeechFrame {

@@ -1,4 +1,4 @@
-// _STL::_List_base::_List_base(const allocator& __a) -- STLport _List_base constructor for the second 16-byte-element list of the vsync timer TU: allocate the 0x18-byte sentinel node and link it to itself
+// std::_List_base::_List_base(const allocator& __a) -- STLport _List_base constructor for the second 16-byte-element list of the vsync timer TU: allocate the 0x18-byte sentinel node and link it to itself
 // Leaf: ??0?$_List_base@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F7BB0, length 102 bytes, thiscall, `ret 4`, returns this.
 // Callees: malloc @ 0x00BFEA0E. Byte-identical twin of 0x009F7A30 (_List_base<CVsyncCallbackTimer::CPendingQuery>); the element
@@ -17,7 +17,7 @@
 extern "C" void __cdecl free(void* block);                         // 0x00BFEA14
 extern "C" void* __cdecl malloc(unsigned int size);                // 0x00BFEA0E
 void* __cdecl operator new(unsigned int size, void* where);        // 0x00405C10 (placement new, called out of line)
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -186,8 +186,8 @@ public:
         double           TimeStamp;
     };
     void* Device;                                                       // +0x00 IDirect3DDevice9*
-    _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > FreeQueoryObjects;   // +0x04
-    _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > PendingQueories;     // +0x08
+    std::list<CPendingQuery, std::allocator<CPendingQuery> > FreeQueoryObjects;   // +0x04
+    std::list<CPendingQuery, std::allocator<CPendingQuery> > PendingQueories;     // +0x08
     long PendingFrame;                                                  // +0x0c
     long FinishedFrame;                                                 // +0x10
     void ClearAllQueries();
@@ -197,4 +197,4 @@ public:
 struct SListEntry16 {                                // the second 16-byte list element of this TU (unidentified)
     long m_words[4];
 };
-template class _STL::_List_base<SListEntry16, _STL::allocator<SListEntry16> >;
+template class std::_List_base<SListEntry16, std::allocator<SListEntry16> >;

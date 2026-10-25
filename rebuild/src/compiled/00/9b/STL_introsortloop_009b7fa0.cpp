@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<unsigned long, unsigned long>* first, pair<unsigned long, unsigned long>* last, pair<unsigned long, unsigned long>*, int depth_limit, CKeyPairCompareLess comp) -- introsort recursion of a CRC-keyed vector map: median-of-three partition until 16 pairs remain, partial (heap) sort when the depth budget runs out
+// std::__introsort_loop(pair<unsigned long, unsigned long>* first, pair<unsigned long, unsigned long>* last, pair<unsigned long, unsigned long>*, int depth_limit, CKeyPairCompareLess comp) -- introsort recursion of a CRC-keyed vector map: median-of-three partition until 16 pairs remain, partial (heap) sort when the depth budget runs out
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B7FA0, 196 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first
 //   in ecx, last in edx; the value-type tag pointer, the depth limit and the empty comparator on the stack).
@@ -13,7 +13,7 @@
 //   `jle/jg`): `while (last - first > 16)`, `if (depth_limit == 0) { partial_sort(first, last, last, comp); return; }`,
 //   `--depth_limit` written back to its argument slot, __median inline returning a reference (the three keys in
 //   ecx/edx/ebp, the chosen element's address in eax), `last = cut`.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a struct: mangled U)
     typedef _T1 first_type;
     typedef _T2 second_type;
@@ -26,12 +26,12 @@ template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a s
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<unsigned long, unsigned long> TMapEntry;
+typedef std::pair<unsigned long, unsigned long> TMapEntry;
 typedef CKeyPairCompareLess<unsigned long, unsigned long> TMapCompare;
 
-namespace _STL {
+namespace std {
 const int __stl_threshold = 16;
 
 template <class _Tp, class _Compare>

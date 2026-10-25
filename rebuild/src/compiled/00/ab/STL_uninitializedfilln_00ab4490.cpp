@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CVertexShaderInput::CStreamInfo* first, unsigned int n, const CVertexShaderInput::CStreamInfo& x, const __false_type&) -- copy-construct n copies of a vertex stream description into raw storage and return the end
+// std::__uninitialized_fill_n(CVertexShaderInput::CStreamInfo* first, unsigned int n, const CVertexShaderInput::CStreamInfo& x, const __false_type&) -- copy-construct n copies of a vertex stream description into raw storage and return the end
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB4490, length 57 bytes (+7 int3), __fastcall (first in ecx -> esi,
 //   n in edx -> ebx, the value and the empty tag reference on the stack, `ret 8`), returns the end in eax.
@@ -43,7 +43,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

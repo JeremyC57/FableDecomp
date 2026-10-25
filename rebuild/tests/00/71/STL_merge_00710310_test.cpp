@@ -1,4 +1,4 @@
-// Behaviour test for 0x00710310 _STL::merge of two sorted runs of list<CAnimSet>::const_iterator by the anim set's Priority.
+// Behaviour test for 0x00710310 std::merge of two sorted runs of list<CAnimSet>::const_iterator by the anim set's Priority.
 #include <cstdio>
 
 struct CAnimSet { unsigned char _before[0x4c]; long Priority; unsigned char _after[0x0c]; };

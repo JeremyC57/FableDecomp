@@ -1,4 +1,4 @@
-// Behaviour test for 00624330 (_STL::__unguarded_insertion_sort_aux over CTestQuest by CTestQuestNameCompare): the range comes out ordered by the comparator, every element
+// Behaviour test for 00624330 (std::__unguarded_insertion_sort_aux over CTestQuest by CTestQuestNameCompare): the range comes out ordered by the comparator, every element
 // moved whole (all members still agree with its key), and the by-value copies are balanced.
 #include <cstdio>
 #include <new>

@@ -1,4 +1,4 @@
-// Behaviour test for 00b2aab0 (_STL::vector<CSurface*>::resize(n, x)): growing appends through one fill insert at end(), shrinking erases the tail
+// Behaviour test for 00b2aab0 (std::vector<CSurface*>::resize(n, x)): growing appends through one fill insert at end(), shrinking erases the tail
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>

@@ -22,7 +22,7 @@ public:
     long TablePos;                                   // +0x00
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: the tag temporary is not zero-stored
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -132,14 +132,14 @@ __declspec(noinline) void vector<_Tp>::_M_insert_overflow(_Tp* __position, const
 template <class K, class V> class CKeyPairCompareLess
 {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class K, class V, class C> class CVectorMap
 {
 public:
-    typedef _STL::pair<K, V> value_type;
-    _STL::vector<value_type> Vector;                 // +0x00
+    typedef std::pair<K, V> value_type;
+    std::vector<value_type> Vector;                 // +0x00
     C                        Compare;                // +0x0C
     bool                     Dirty;                  // +0x0D
 

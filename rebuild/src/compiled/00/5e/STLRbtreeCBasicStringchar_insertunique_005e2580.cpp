@@ -1,4 +1,4 @@
-// 005e2580 _STL::_Rb_tree<CBasicString<char>*>::insert_unique
+// 005e2580 std::_Rb_tree<CBasicString<char>*>::insert_unique
 // Flags: /Gr
 // Leaf: ?insert_unique@_Rb_tree@FableTree_005e2580@@QAE?AU?$pair@U_Rb_tree_iterator@FableTree_005e2580@@_N@2@ABQAU?$CBasicString@D@2@@Z
 // Layout: tree Header+0; node parent+4/left+8/right+12/value+16; iterator one pointer, pair<iterator,bool>8 bytes.

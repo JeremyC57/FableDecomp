@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long, unsigned long>* first, pair<unsigned long, unsigned long>* last, pair<unsigned long, unsigned long>*, CKeyPairCompareLess<unsigned long, unsigned long> comp) -- STLport final unguarded insertion sort over 8-byte map entries (every element is linearly inserted without a lower bound check)
+// std::__unguarded_insertion_sort_aux(pair<unsigned long, unsigned long>* first, pair<unsigned long, unsigned long>* last, pair<unsigned long, unsigned long>*, CKeyPairCompareLess<unsigned long, unsigned long> comp) -- STLport final unguarded insertion sort over 8-byte map entries (every element is linearly inserted without a lower bound check)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B2DB0, 73 bytes, `ret 8`: `__fastcall` (/Gr algorithm TU: first in ecx, last
 // in edx, the value-type tag pointer and the empty comparator on the stack). Catalog name "_Copy_impl<CNavigationPosition*,...>"
@@ -7,7 +7,7 @@
 // Element: pair<unsigned long, unsigned long> (a CVectorMap entry; CKeyPairCompareLess compares the keys only, unsigned).
 // Shape: STLport 4.6 verbatim: `for (i = first; i != last; ++i) __unguarded_linear_insert(i, _Tp(*i), comp);` with
 // the inner insert (landed out of line elsewhere, e.g. 0x009B1B00) expanded here: the value's two words ride in edi/ebx.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                  // +0x00
     _T2 second;                                 // +0x04
@@ -38,9 +38,9 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 }
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, unsigned long> SEntry8;
-template void __fastcall _STL::__unguarded_insertion_sort_aux<SEntry8*, SEntry8, CKeyPairCompareLess<unsigned long, unsigned long> >(
+typedef std::pair<unsigned long, unsigned long> SEntry8;
+template void __fastcall std::__unguarded_insertion_sort_aux<SEntry8*, SEntry8, CKeyPairCompareLess<unsigned long, unsigned long> >(
     SEntry8* __first, SEntry8* __last, SEntry8*, CKeyPairCompareLess<unsigned long, unsigned long> __comp);

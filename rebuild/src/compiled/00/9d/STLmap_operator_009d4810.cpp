@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, vector<unsigned long> >: lower_bound, insert (k, empty vector) when absent, return the mapped vector
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, vector<unsigned long> >: lower_bound, insert (k, empty vector) when absent, return the mapped vector
 // Leaf: ??A?$map@VCCharString@@V?$vector@K@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D4810, 166 bytes, __fastcall `ret 4`.
 // Identity: only caller CBankFile::WriteSymbolFile (0x009CF573) push_backs a loop index into the result (in-place store,
@@ -38,7 +38,7 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> inline void _Destroy(_Tp* __p) { __p->~_Tp(); }
 template <class _Tp> inline void _Destroy(_Tp* __first, _Tp* __last)
@@ -87,10 +87,10 @@ template <class _Tp> vector<_Tp>::vector(const vector<_Tp>& __x)
 }
 #pragma auto_inline(on)
 
-} // namespace _STL
-using _STL::vector;
+} // namespace std
+using std::vector;
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {             // STLport 4.6 (member templates on)
     _T1 first;
@@ -148,4 +148,4 @@ public:
 
 template vector<unsigned long> & map<CCharString, vector<unsigned long> >::operator[](const CCharString&);
 
-} // namespace _STL
+} // namespace std

@@ -1,4 +1,4 @@
-// _STL::__lower_bound(first, last, const unsigned long& val, MapperPred comp, int*) -- STLport binary search over the occlusion manager's sorted flare vertex-buffer map (pair<unsigned long, CCountedPointer<CVertexBufferWin32> >), comparing each entry's key with val
+// std::__lower_bound(first, last, const unsigned long& val, MapperPred comp, int*) -- STLport binary search over the occlusion manager's sorted flare vertex-buffer map (pair<unsigned long, CCountedPointer<CVertexBufferWin32> >), comparing each entry's key with val
 // Leaf: ??$__lower_bound@PAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B8F1C0, 75 bytes, __fastcall (first ecx, last edx; val, comp, distance-type
 //   pointer on the stack), `ret 0xc`.
@@ -18,7 +18,7 @@ public:
     void* Info;                                    // +0x04 shared count block
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -47,9 +47,9 @@ _ForwardIter __fastcall __lower_bound(_ForwardIter __first, _ForwardIter __last,
     return __first;
 }
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<unsigned long, CCountedPointer<CVertexBufferWin32> > TFlareVertexBufferEntry;
+typedef std::pair<unsigned long, CCountedPointer<CVertexBufferWin32> > TFlareVertexBufferEntry;
 
 namespace {
 struct MapperPred {
@@ -58,5 +58,5 @@ struct MapperPred {
 };
 }
 
-template TFlareVertexBufferEntry* __fastcall _STL::__lower_bound(TFlareVertexBufferEntry*, TFlareVertexBufferEntry*,
+template TFlareVertexBufferEntry* __fastcall std::__lower_bound(TFlareVertexBufferEntry*, TFlareVertexBufferEntry*,
                                                                  const unsigned long&, MapperPred, int*);

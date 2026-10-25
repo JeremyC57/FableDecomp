@@ -1,5 +1,5 @@
-// _STL::basic_string<char>::basic_string(const char*, const allocator<char>&) -- construct a string from a C string: empty storage, then copy [s, s + strlen(s)) into a fresh block
-// Leaf: ??0?$basic_string@DU?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@QAE@PBDABV?$allocator@D@1@@Z
+// std::basic_string<char>::basic_string(const char*, const allocator<char>&) -- construct a string from a C string: empty storage, then copy [s, s + strlen(s)) into a fresh block
+// Leaf: ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00568440, 65 bytes, `__fastcall`, `ret 8`, returns `this`.
 // Identity: the manifest label (basic_string<char, char_traits<char>, allocator<char> >::basic_string) agrees with
 //   the body: STLport `_String_base(const allocator&)` (start, finish, end_of_storage zeroed), the strlen intrinsic,
@@ -10,7 +10,7 @@
 #include <string.h>
 #pragma intrinsic(strlen)
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };

@@ -4,7 +4,7 @@
 // Caller: CTCCameraPointShapeActivationBase::vfunc_9 0x0075C5F0 (landed; 0x0075C635, the subject left the shape).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, SetPItem @ 0x00A01B90 and
 //   ~CBaseIntelligentPointer @ 0x00A01C10 (the CIntelligentPointer<CThing> temporary, vtable 0x01238C6C),
-//   _STL::__find(first, last, const CIntelligentPointer&, const input_iterator_tag&) @ 0x0069CAF0 (landed; __fastcall,
+//   std::__find(first, last, const CIntelligentPointer&, const input_iterator_tag&) @ 0x0069CAF0 (landed; __fastcall,
 //   hidden iterator result), the node value's virtual destructor (slot 0, `push 0 ; call [eax]`), free @ 0x00BFEA14.
 // Name: Ego_r.pdb `?RemoveCameraPoint@CGameCameraManager@@QAEXAAVCThing@@@Z`; catalog "std::list_erase_value" is
 //   descriptive (label correction).
@@ -37,7 +37,7 @@ public:
 template <class T>
 inline bool operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<T>& b) { return a.GetPItem() == b.GetPItem(); }
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { input_iterator_tag() { } };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
 struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_iterator_tag() { } };
@@ -122,14 +122,14 @@ public:
     unsigned char _pad00[0xA8];
     bool NewAutoMode;                                       // +0xA8
     unsigned char _padA9[3];
-    _STL::list<CIntelligentPointer<CThing> > AvailableCamPoints;   // +0xAC
+    std::list<CIntelligentPointer<CThing> > AvailableCamPoints;   // +0xAC
     void RemoveCameraPoint(CThing& thing);
 };
 
 void CGameCameraManager::RemoveCameraPoint(CThing& thing)
 {
-    _STL::list<CIntelligentPointer<CThing> >::iterator it =
-        _STL::find(AvailableCamPoints.begin(), AvailableCamPoints.end(), CIntelligentPointer<CThing>(&thing));
+    std::list<CIntelligentPointer<CThing> >::iterator it =
+        std::find(AvailableCamPoints.begin(), AvailableCamPoints.end(), CIntelligentPointer<CThing>(&thing));
     if (it != AvailableCamPoints.end()) {
         if (it == AvailableCamPoints.begin())
             NewAutoMode = true;

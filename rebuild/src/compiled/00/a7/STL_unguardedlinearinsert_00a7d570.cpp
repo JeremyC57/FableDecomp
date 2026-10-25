@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(SUniqueIDOpen* last, SUniqueIDOpen val, CUniqueIDOpenLess comp) -- insertion-sort step over the 16-byte (unsigned __int64 unique ID, bool open) entries: shift every larger entry up one slot, then drop the value into the hole
+// std::__unguarded_linear_insert(SUniqueIDOpen* last, SUniqueIDOpen val, CUniqueIDOpenLess comp) -- insertion-sort step over the 16-byte (unsigned __int64 unique ID, bool open) entries: shift every larger entry up one slot, then drop the value into the hole
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7D570, 83 bytes, `ret 14h` (/Gr: last in ecx; the 16-byte value and the empty
 //   comparator's slot on the stack).
@@ -10,7 +10,7 @@
 // Shape: STLport verbatim -- `next = last; --next; while (comp(val, *next)) { *last = *next; last = next; --next; } *last
 //   = val;` with the 64-bit key compare inline (high word `ja`/`jb`, then the low word) and the pair's trivial
 //   assignment copying all 16 bytes (padding included) as four dwords.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -22,13 +22,13 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned __int64, bool>          SUniqueIDOpen;      // 16 bytes (7 bytes of tail padding)
+typedef std::pair<unsigned __int64, bool>          SUniqueIDOpen;      // 16 bytes (7 bytes of tail padding)
 typedef CKeyPairCompareLess<unsigned __int64, bool> CUniqueIDOpenLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

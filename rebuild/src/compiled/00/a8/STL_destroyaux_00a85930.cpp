@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(CNavigationLayer* first, CNavigationLayer* last, const __false_type&) -- destroy a range of 40-byte navigation layers: per layer free the switchable line-list map, the line lists and the node array
+// std::__destroy_aux(CNavigationLayer* first, CNavigationLayer* last, const __false_type&) -- destroy a range of 40-byte navigation layers: per layer free the switchable line-list map, the line lists and the node array
 // Leaf: ??$__destroy_aux@PAVCNavigationLayer@CNavQuadTree
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A85930, 108 bytes, /Gr `__fastcall` (first ecx -> esi, last edx -> edi, the
 //   tag reference on the stack), `ret 4`.
@@ -20,7 +20,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class C2DLineF;
 class CANavQuadTreeNode;
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
@@ -101,11 +101,11 @@ template <> __declspec(noinline) void __fastcall __destroy_aux<list<C2DLineF>*>(
 #pragma auto_inline(on)
 }
 
-template <class T> class CArray : public _STL::vector<T> { };   // retail CArray<T>: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> { };   // retail CArray<T>: the 12-byte STLport vector
 
 template <class K, class V> class CKeyPairCompareLess { };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                       // +0x0c
     bool Dirty;                                         // +0x0d
@@ -116,13 +116,13 @@ public:
     class CNavigationLayer {                            // 0x28 bytes
     public:
         CArray<CANavQuadTreeNode*>             Nodes;                // +0x00
-        _STL::vector<_STL::list<C2DLineF> >    LineLists;            // +0x0c
-        CVectorMap<unsigned __int64, _STL::list<C2DLineF>,
-                   CKeyPairCompareLess<unsigned __int64, _STL::list<C2DLineF> > > SwitchableLineLists;   // +0x18
+        std::vector<std::list<C2DLineF> >    LineLists;            // +0x0c
+        CVectorMap<unsigned __int64, std::list<C2DLineF>,
+                   CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF> > > SwitchableLineLists;   // +0x18
     };
 };
 
-namespace _STL {
+namespace std {
 template void __fastcall __destroy_aux<CNavQuadTree::CNavigationLayer*>(
     CNavQuadTree::CNavigationLayer* __first, CNavQuadTree::CNavigationLayer* __last, const __false_type&);
 }

@@ -1,8 +1,8 @@
-// _STL::__unguarded_insertion_sort_aux(CThing** first, CThing** last, CThing** valueType, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- unguarded insertion sort of the tail of the take-cover candidate sort (every element is moved left until the comparator stops it; the sorted 16-element head is the sentinel)
+// std::__unguarded_insertion_sort_aux(CThing** first, CThing** last, CThing** valueType, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- unguarded insertion sort of the tail of the take-cover candidate sort (every element is moved left until the comparator stops it; the sorted 16-element head is the sentinel)
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097AEE0, 130 bytes (+ int3 padding to 144), __fastcall (/Gr algorithm TU: first
 //   in ecx, last in edx, the value-type tag and the comparator on the stack), `ret 14h`.
-// Instantiation: the take-cover candidate sort: _STL::sort<CThing**,
+// Instantiation: the take-cover candidate sort: std::sort<CThing**,
 //   CThingCompare_InDirectionOfAndNearestToHeuristicBitch> called from
 //   CAIStateGroup_CreatureTakeCover::ProcessCoverThingList (0x0097AAE0 -> sort 0x0097B660); the second copy of the
 //   0x00978xxx AdvanceInCover family (same bytes, own anonymous namespace ?A0xeaff0e08, own COMDATs).
@@ -11,7 +11,7 @@
 //   Here operator() is only DECLARED: with the same-TU stand-in body of the sibling rows VC7.1 hoists the
 //   loop-invariant comparator copy out of the loop (retail rebuilds it per call).
 // Label: catalog "std_sort_InsertionSort_HeuristicBitch_Variant" -> the STLport 4.x
-//   _STL::__unguarded_insertion_sort_aux instantiation for CThingCompare_InDirectionOfAndNearestToHeuristicBitch
+//   std::__unguarded_insertion_sort_aux instantiation for CThingCompare_InDirectionOfAndNearestToHeuristicBitch
 //   (retail links STLport; the Dinkumware names in Ego_r.pdb are a different build).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
 class CThing;
@@ -47,7 +47,7 @@ public:
 }
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;
 
-namespace _STL {
+namespace std {
 // __unguarded_linear_insert is defined here (as in STLport's _algo.c) and inlined into the loop below; its own
 // out-of-line copy is the separate COMDAT at 0x0097ADA0.
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -71,4 +71,4 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
         __unguarded_linear_insert(__i, _Tp(*__i), __comp);
 }
 template void __fastcall __unguarded_insertion_sort_aux<CThing**, CThing*, TComp>(CThing**, CThing**, CThing**, TComp);
-} // namespace _STL
+} // namespace std

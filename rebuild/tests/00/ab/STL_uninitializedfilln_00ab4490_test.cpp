@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__uninitialized_fill_n<CVertexShaderInput::CStreamInfo*> @ 0x00AB4490
+// Behaviour test for std::__uninitialized_fill_n<CVertexShaderInput::CStreamInfo*> @ 0x00AB4490
 // Copy-constructs n copies of x into raw storage and returns the end pointer (first when n == 0).
 #include <cstdio>
 #include <new>

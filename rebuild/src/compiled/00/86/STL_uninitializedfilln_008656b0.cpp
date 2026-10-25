@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(NCreatureHitNotification::CFlash* first, unsigned int n, const CFlash& x, const __false_type&) -- STLport placement fill of n raw hit-flash slots with copies of x (each: a fresh self-linked list sentinel, the range insert of x's trail entries, then the creation frame), returning the end of the filled range
+// std::__uninitialized_fill_n(NCreatureHitNotification::CFlash* first, unsigned int n, const CFlash& x, const __false_type&) -- STLport placement fill of n raw hit-flash slots with copies of x (each: a fresh self-linked list sentinel, the range insert of x's trail entries, then the creation frame), returning the end of the filled range
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008656B0, length 89 bytes (+ int3 padding), `ret 8`.
 // Callers: vector<NCreatureHitNotification::CFlash>::_M_insert_overflow 0x008657E0 (0x0086585C, the fill_len != 1 arm).
@@ -26,7 +26,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -108,10 +108,10 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 namespace NCreatureHitNotification {
 class CFlash {                                              // Ego_r.pdb (retail 8 bytes)
 public:
-    _STL::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry> FlashGeometry;   // +0x00
+    std::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry> FlashGeometry;   // +0x00
     long                                                      CreationFrame;   // +0x04
 };
 }
 
-template NCreatureHitNotification::CFlash* __fastcall _STL::__uninitialized_fill_n<NCreatureHitNotification::CFlash*, unsigned int, NCreatureHitNotification::CFlash>(
-    NCreatureHitNotification::CFlash*, unsigned int, const NCreatureHitNotification::CFlash&, const _STL::__false_type&);
+template NCreatureHitNotification::CFlash* __fastcall std::__uninitialized_fill_n<NCreatureHitNotification::CFlash*, unsigned int, NCreatureHitNotification::CFlash>(
+    NCreatureHitNotification::CFlash*, unsigned int, const NCreatureHitNotification::CFlash&, const std::__false_type&);

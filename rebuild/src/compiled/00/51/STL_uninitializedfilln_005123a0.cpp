@@ -1,5 +1,5 @@
-// _STL::uninitialized_fill_n(unsigned short* first, unsigned int n, const unsigned short& x) -- STLport: fill n 16-bit slots with x (the POD path is fill_n) and return the end
-// Leaf: ??$uninitialized_fill_n@PAGIG@_STL@@YIPAGPAGIABG@Z
+// std::uninitialized_fill_n(unsigned short* first, unsigned int n, const unsigned short& x) -- STLport: fill n 16-bit slots with x (the POD path is fill_n) and return the end
+// Leaf: ??$uninitialized_fill_n@PAGIG@std@@YIPAGPAGIABG@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005123A0, 32 bytes, `__fastcall` (first in ecx, n in edx, &x pushed), `ret 4`,
 //   returns first + n.
 // Identity: the callers are STLport basic_string<unsigned short> (CWideString) members -- landed push_back 0x0099CC80,
@@ -11,7 +11,7 @@
 //   __uninitialized_fill_n_aux(.., __true_type) -> fill_n, all inline; fill_n's `for (; __n > 0; --__n, ++__first)
 //   *__first = __val;` re-reads the value through its reference every pass (`mov si,[edx]` inside the loop: the store
 //   may alias it), the unsigned `__n > 0` guard is `test ; jbe`. The /Gr TU makes the template `__fastcall`.
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };

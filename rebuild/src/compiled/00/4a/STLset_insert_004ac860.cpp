@@ -1,4 +1,4 @@
-// _STL::set::insert(const value_type& x) -- insert a string into a CCharString set; return the (const) iterator and whether it was new
+// std::set::insert(const value_type& x) -- insert a string into a CCharString set; return the (const) iterator and whether it was new
 // Leaf: ?insert@?$set@VCCharString@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004AC860, 40 bytes, thiscall, `ret 8` (hidden result pointer + value).
 // Identity: set<CCharString>: the callee 0x004AC380 (manifest "StdSet_Insert") is _Rb_tree::insert_unique, whose key
@@ -17,7 +17,7 @@ public:
     CCharStringData* PData;
 };
 bool operator<(const CCharString& a, const CCharString& b);   // CBasicString<char>::operator< (0x00429950 core)
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator { };
 template <class _T1, class _T2> struct pair {
@@ -72,4 +72,4 @@ public:
 };
 }
 
-template class _STL::set<CCharString>;
+template class std::set<CCharString>;

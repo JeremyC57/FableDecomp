@@ -1,4 +1,4 @@
-// _STL::deque::clear() -- STLport deque<CBezierCurve>::clear: frees every full interior node buffer, then the finish buffer when start and finish differ, and sets finish = start
+// std::deque::clear() -- STLport deque<CBezierCurve>::clear: frees every full interior node buffer, then the finish buffer when start and finish differ, and sets finish = start
 // Leaf: ?clear@?$deque@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00913A20, 94 bytes (96 with padding), __fastcall.
 // Identity: STLport 4.6 deque<CBezierCurve, allocator<CBezierCurve> >::clear; single caller 0x00912BB4 (the flying-thing path
@@ -37,7 +37,7 @@ public:
     C3DVector Point4;                           // +0x24
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type {                           // STLport empty tag; a user ctor keeps the temporary store-free
     __false_type() { }
@@ -190,4 +190,4 @@ void deque<_Tp, _Alloc>::clear()
 
 }
 
-template void _STL::deque<CBezierCurve, _STL::allocator<CBezierCurve> >::clear();
+template void std::deque<CBezierCurve, std::allocator<CBezierCurve> >::clear();

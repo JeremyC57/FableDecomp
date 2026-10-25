@@ -1,4 +1,4 @@
-// _STL::vector<CTexture>::erase(CTexture*, CTexture*) -- STLport range erase of 8-byte textures: assign the tail [last, finish) down onto first, destroy the vacated tail and pull finish back; returns first
+// std::vector<CTexture>::erase(CTexture*, CTexture*) -- STLport range erase of 8-byte textures: assign the tail [last, finish) down onto first, destroy the vacated tail and pull finish back; returns first
 // Leaf: erase
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049B3B0, 104 bytes, `ret 8` (__fastcall: this -> ebp, first and last on
 //   the stack; the iterators are raw pointers).

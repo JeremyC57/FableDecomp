@@ -1,4 +1,4 @@
-// Behaviour test for 0x00AF3700 _STL::__insertion_sort over pair<CCharString, {long, long, CCharString}> records.
+// Behaviour test for 0x00AF3700 std::__insertion_sort over pair<CCharString, {long, long, CCharString}> records.
 #include <cstdio>
 #include <cstring>
 

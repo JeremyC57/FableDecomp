@@ -1,4 +1,4 @@
-// Behaviour test for 0x008ECEF0 _STL::__find_if: unrolled search returns the first match or last.
+// Behaviour test for 0x008ECEF0 std::__find_if: unrolled search returns the first match or last.
 #include <cstdio>
 
 struct Item { long first; int second; };

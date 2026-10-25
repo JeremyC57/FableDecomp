@@ -1,4 +1,4 @@
-// _STL::uninitialized_fill_n(NGameText::CDataBankTextEntry* first, unsigned int n, const NGameText::CDataBankTextEntry& x) -- STLport three-argument front end: placement copy-construct n text-bank entries from x (add-ref each text entry), return first + n
+// std::uninitialized_fill_n(NGameText::CDataBankTextEntry* first, unsigned int n, const NGameText::CDataBankTextEntry& x) -- STLport three-argument front end: placement copy-construct n text-bank entries from x (add-ref each text entry), return first + n
 // Leaf: ??$uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A43670, length 47 bytes (+1 int3 pad), `ret 4`.
 // Caller: 0x00A43D71 (the vector<NGameText::CDataBankTextEntry> fill-insert helper; `push &x ; mov edx,n ; mov ecx,first`).
@@ -12,7 +12,7 @@
 //   `__n > 0` on the unsigned count is the `jbe` entry test; placement-new null test; CIVCountedPointer's user copy ctor.
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };     // STLport _IS_POD_ITER result for a class element
 }
 
@@ -36,7 +36,7 @@ struct CDataBankTextEntry {                     // 8 bytes
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

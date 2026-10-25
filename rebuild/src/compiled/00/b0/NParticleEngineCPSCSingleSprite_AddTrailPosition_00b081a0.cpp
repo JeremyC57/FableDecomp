@@ -24,7 +24,7 @@ public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;                               // +0
@@ -84,7 +84,7 @@ public:
     _List_node_base* _M_node;                               // +0
 };
 
-} // namespace _STL
+} // namespace std
 
 class CEnginePrimitiveSpriteTrail {
 public:
@@ -94,7 +94,7 @@ public:
         CSpriteTrailEntry(const C3DVector& pos, float width) : Position(pos), Width(width) { }
     };
     unsigned char                     _pad_0x00[0x0C];
-    _STL::list<CSpriteTrailEntry>     Trail;                // +0x0C
+    std::list<CSpriteTrailEntry>     Trail;                // +0x0C
 };
 
 namespace NParticleEngine {

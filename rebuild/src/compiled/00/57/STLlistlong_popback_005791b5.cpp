@@ -1,19 +1,19 @@
-// _STL::list<long>::pop_back() -- STLport: erase the last element (the node before the sentinel)
-// Leaf: ?pop_back@?$list@JV?$allocator@J@_STL@@@_STL@@QAEXXZ
+// std::list<long>::pop_back() -- STLport: erase the last element (the node before the sentinel)
+// Leaf: ?pop_back@?$list@JV?$allocator@J@std@@@std@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005791B5, 23 bytes, __fastcall, `ret`; size-optimised TU (no alignment padding).
 // Identity: a folded COMDAT shared by every POD list. It sits in the CTCInventoryExperience TU, and its first callers
 //   (0x0056F572..0x0056F588) pop the four list<long> members of SExpSpendUndo (Ego_r.pdb: Generals +0x00, Strengths
 //   +0x0C, Skills +0x18, Wills +0x24 -- 4-byte lists in retail); 0x006463EA tail-jumps to it. Label correction: the
 //   catalog's "list<CVsyncCallbackTimer::CPendingQuery>::pop_back" names one of the folded instantiations; the TU's own
 //   one is list<long>. The bytes do not depend on the element type.
-// Callees: _STL::list<long>::erase(iterator) @ 0x00429B02 (out of line, size TU: unlink, free the node, return the
+// Callees: std::list<long>::erase(iterator) @ 0x00429B02 (out of line, size TU: unlink, free the node, return the
 //   next; hidden result pointer + the by-value iterator, `ret 8`).
 // Shape: STLport 4.6 verbatim `iterator __tmp = end(); erase(--__tmp);`: `--__tmp` is the inline _M_decr (the
 //   sentinel's _M_prev), the by-value iterator argument (a user copy ctor) is built in its stack slot
 //   (`push ecx ; mov eax,esp ; mov [eax],edx`) and the dropped result lands in the frame word reserved first.
 #pragma optimize("s", on)
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:

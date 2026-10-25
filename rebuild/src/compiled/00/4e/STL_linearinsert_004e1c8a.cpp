@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SRegisteredTCEntry* first, SRegisteredTCEntry* last, SRegisteredTCEntry val, CKeyPairCompareLess comp) -- STLport insertion-sort step over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): a value whose name sorts before the first element shifts [first, last) up one slot and is assigned to *first, anything else goes through the unguarded insert; the by-value pair is destroyed here
+// std::__linear_insert(SRegisteredTCEntry* first, SRegisteredTCEntry* last, SRegisteredTCEntry val, CKeyPairCompareLess comp) -- STLport insertion-sort step over the thing-component registry (pair<CCharString, CTCBase::CRegisteredTCInfo>, ordered by name): a value whose name sorts before the first element shifts [first, last) up one slot and is assigned to *first, anything else goes through the unguarded insert; the by-value pair is destroyed here
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E1C8A, 114 bytes, `ret 14h` (size-optimised TU: unaligned entry,
 //   frame pointer).
@@ -17,7 +17,7 @@
 //   the payload compare); copy_backward's fresh `random_access_iterator_tag()` lands in the high byte of the
 //   comparator's argument slot (`lea eax,[ebp+1Bh]`), the distance pointer is a null `push 0`.
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

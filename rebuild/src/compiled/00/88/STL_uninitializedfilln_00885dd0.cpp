@@ -1,4 +1,4 @@
-// _STL::uninitialized_fill_n(CThemeWeight* first, unsigned int n, const CThemeWeight& x) -- copy-construct n 12-byte theme weights into raw storage, return first + n
+// std::uninitialized_fill_n(CThemeWeight* first, unsigned int n, const CThemeWeight& x) -- copy-construct n 12-byte theme weights into raw storage, return first + n
 // Leaf: ??$uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00885DD0, length 64 bytes (+ int3 padding), `ret 4`.
 // Identity: the catalog label `_Fill_n<unsigned_long*,...>` is propagated from a byte twin. One caller, 0x008891B8 in the
@@ -16,7 +16,7 @@ struct CThemeWeight {                           // 12 bytes
     bool  LockWeight;                           // +0x08
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2>

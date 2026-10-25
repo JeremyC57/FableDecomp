@@ -1,4 +1,4 @@
-// _STL::__linear_insert(SNamePairEntry* first, SNamePairEntry* last, SNamePairEntry val, CNamePairLess comp) -- STLport insertion-sort step over the 12-byte ((name, name), object) entries: a new minimum shifts [first, last) up by one and lands at first, anything else goes through the unguarded insert
+// std::__linear_insert(SNamePairEntry* first, SNamePairEntry* last, SNamePairEntry val, CNamePairLess comp) -- STLport insertion-sort step over the 12-byte ((name, name), object) entries: a new minimum shifts [first, last) up by one and lands at first, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe @ 0x00A40F50, 150 bytes (+ int3 padding), `ret 10h`. /Gr TU written as explicit __fastcall: first in
 //   ecx, last in edx, the by-value val (12 bytes) and the comparator slot on the stack.
@@ -58,7 +58,7 @@ public:
 
 class CSoundBankLH;                                         // descriptive: the mapped object of CSoundManagerLH's maps
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -75,18 +75,18 @@ bool __cdecl operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y);   
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
+typedef std::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
-namespace _STL {
+namespace std {
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>
 _BidirectionalIter2 __fastcall __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result,
                                                const random_access_iterator_tag&, _Distance*);   // 0x00A3FE60
@@ -110,4 +110,4 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 }
 }
 
-template void __fastcall _STL::__linear_insert<SNamePairEntry*, SNamePairEntry, CNamePairLess>(SNamePairEntry*, SNamePairEntry*, SNamePairEntry, CNamePairLess);
+template void __fastcall std::__linear_insert<SNamePairEntry*, SNamePairEntry, CNamePairLess>(SNamePairEntry*, SNamePairEntry*, SNamePairEntry, CNamePairLess);

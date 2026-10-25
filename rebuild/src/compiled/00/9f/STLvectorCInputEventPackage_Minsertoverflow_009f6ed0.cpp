@@ -1,4 +1,4 @@
-// _STL::vector<CInputEventPackage>::_M_insert_overflow(CInputEventPackage*, const CInputEventPackage&, const __false_type&, unsigned int, bool) -- STLport reallocating insert of 48-byte input-event packages: allocate old_size + max(old_size, n), copy the head, construct the n new packages, copy the tail unless appending, destroy and free the old block
+// std::vector<CInputEventPackage>::_M_insert_overflow(CInputEventPackage*, const CInputEventPackage&, const __false_type&, unsigned int, bool) -- STLport reallocating insert of 48-byte input-event packages: allocate old_size + max(old_size, n), copy the head, construct the n new packages, copy the tail unless appending, destroy and free the old block
 // Leaf: _M_insert_overflow
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F6ED0, 228 bytes (240 with padding), thiscall, `ret 14h`.
 // Callees: 0x00BFEA0E malloc / 0x00BFEA14 free (STLport's malloc allocator: `n != 0 ? malloc(n * 48) : 0`, `if (p) free(p)`),

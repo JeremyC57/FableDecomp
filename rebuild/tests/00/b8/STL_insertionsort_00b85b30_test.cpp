@@ -1,4 +1,4 @@
-// Behaviour test for 0x00B85B30 _STL::__insertion_sort over CEngineSubPrimitiveRenderer::CSortElement (unsigned key).
+// Behaviour test for 0x00B85B30 std::__insertion_sort over CEngineSubPrimitiveRenderer::CSortElement (unsigned key).
 #include <cstdio>
 
 struct CEngineSubPrimitiveBase { int id; };

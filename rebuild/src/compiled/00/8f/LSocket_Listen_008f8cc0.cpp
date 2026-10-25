@@ -22,7 +22,7 @@ extern "C" __declspec(dllimport) int __stdcall WSAGetLastError();               
 extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -46,7 +46,7 @@ struct CNetErrorString {                           // STLport basic_string<char>
         m_finish = CopyTrivial(text, text + n, m_start);
         *m_finish = 0;
     }
-    CNetErrorString(const char* text, const _STL::allocator<char>& a);   // 0x00568440
+    CNetErrorString(const char* text, const std::allocator<char>& a);   // 0x00568440
     __forceinline ~CNetErrorString()
     {
         if (m_start)
@@ -147,7 +147,7 @@ bool LSocket::Listen(LAddress& address)
         return false;
     }
     if (listen(Socket, 0x7fffffff) != 0) {
-        CNetErrorString error("Winsock Error: ", _STL::allocator<char>());
+        CNetErrorString error("Winsock Error: ", std::allocator<char>());
         char number[50];
         _itoa(WSAGetLastError(), number, 10);
         return false;

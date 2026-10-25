@@ -1,5 +1,5 @@
-// _STL::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (EExpressionType, CExpressionSet::CEntry) pair vector
-// Leaf: ?resize@?$vector@U?$pair@W4EExpressionType@@VCEntry@CExpressionSet@@@_STL@@V?$allocator@U?$pair@W4EExpressionType@@VCEntry@CExpressionSet@@@_STL@@@2@@_STL@@QAEXI@Z
+// std::vector::resize(size_type new_size) -- forward to resize(new_size, value_type()) for the (EExpressionType, CExpressionSet::CEntry) pair vector
+// Leaf: ?resize@?$vector@U?$pair@W4EExpressionType@@VCEntry@CExpressionSet@@@std@@V?$allocator@U?$pair@W4EExpressionType@@VCEntry@CExpressionSet@@@std@@@2@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008701A0, 41 bytes, thiscall, `ret 4`.
 // Identity: the storage vector of CExpressionSet::Expressions, a CVectorMap<EExpressionType, CExpressionSet::CEntry>
 //   (Ego_r.pdb _Pair_base is 12 bytes: the enum + CEntry {Type, AnimIndex}). The callee 0x00870040 is the two-argument
@@ -19,7 +19,7 @@ public:
         long AnimIndex;
     };
 };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     typedef _T1 first_type;
@@ -53,5 +53,5 @@ public:
     void resize(size_type __new_size) { resize(__new_size, _Tp()); }
 };
 
-template void vector<_STL::pair<EExpressionType, CExpressionSet::CEntry> >::resize(size_type);
+template void vector<std::pair<EExpressionType, CExpressionSet::CEntry> >::resize(size_type);
 }

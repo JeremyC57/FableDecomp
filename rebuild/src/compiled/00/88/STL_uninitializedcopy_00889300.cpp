@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(CEnvironmentThemePriorityStackEntry* first, CEnvironmentThemePriorityStackEntry* last, CEnvironmentThemePriorityStackEntry* result, const __false_type&) -- copy-construct the theme priority-stack entries of [first, last) into raw storage at result, return the end
+// std::__uninitialized_copy(CEnvironmentThemePriorityStackEntry* first, CEnvironmentThemePriorityStackEntry* last, CEnvironmentThemePriorityStackEntry* result, const __false_type&) -- copy-construct the theme priority-stack entries of [first, last) into raw storage at result, return the end
 // Leaf: ??$__uninitialized_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00889300, length 90 bytes, `ret 8`.
 // Identity: the catalog label `_Move<CMusicEntry*,CMusicEntry*>` is propagated from a byte twin. The 48-byte element is
@@ -38,7 +38,7 @@ struct CEnvironmentThemePriorityStackEntry {    // 48 bytes (retail)
     float              ThemeTransitionDuration;        // +0x28
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

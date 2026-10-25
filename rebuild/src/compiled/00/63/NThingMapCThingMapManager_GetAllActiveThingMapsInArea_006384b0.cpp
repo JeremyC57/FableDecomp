@@ -1,4 +1,4 @@
-// NThingMap::CThingMapManager::GetAllActiveThingMapsInArea(const C2DBoxI& area, _STL::vector<CThingMap*>& maps) const -- collect every active thing map whose area overlaps the given box
+// NThingMap::CThingMapManager::GetAllActiveThingMapsInArea(const C2DBoxI& area, std::vector<CThingMap*>& maps) const -- collect every active thing map whose area overlaps the given box
 // Leaf: ?GetAllActiveThingMapsInArea@
 // Grade: RELOCATION_MATCH (no /Oa) -- same-TU noinline stand-ins: a read-only C2DBoxI::Overlapping (VC7.1 then keeps info->PThingMap in edi across the call, as retail; this was the /Oa effect) and vector::resize(n, x) (the null temporary's address no longer escapes), with the real _M_insert_overflow body. Earlier: /Oa 133v132 with ebx/ebp swapped, plain 127v132.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006384B0, 132 bytes (+ int3 padding), `ret 8`.
@@ -26,7 +26,7 @@ public:
     bool Overlapping(const C2DBoxI& other) const;      // 0x004FAB40
 };
 
-namespace _STL {
+namespace std {
 
 class __true_type { public: __true_type() {} };
 
@@ -118,14 +118,14 @@ public:
     void*           __vftable;                  // +0x00
     void*           PWorld;                     // +0x04
     unsigned char   ThingMaps[12];              // +0x08 (retail 12-byte container)
-    _STL::vector<CThingMapInfo*> ActiveThingMaps;   // +0x14
-    void GetAllActiveThingMapsInArea(const C2DBoxI& area, _STL::vector<CThingMap*>& maps) const;
+    std::vector<CThingMapInfo*> ActiveThingMaps;   // +0x14
+    void GetAllActiveThingMapsInArea(const C2DBoxI& area, std::vector<CThingMap*>& maps) const;
 };
 
-void CThingMapManager::GetAllActiveThingMapsInArea(const C2DBoxI& area, _STL::vector<CThingMap*>& maps) const
+void CThingMapManager::GetAllActiveThingMapsInArea(const C2DBoxI& area, std::vector<CThingMap*>& maps) const
 {
     maps.resize(0);
-    for (_STL::vector<CThingMapInfo*>::const_iterator it = ActiveThingMaps.begin(); it != ActiveThingMaps.end(); ++it) {
+    for (std::vector<CThingMapInfo*>::const_iterator it = ActiveThingMaps.begin(); it != ActiveThingMaps.end(); ++it) {
         CThingMapInfo* info = *it;
         if (info->PThingMap->Area.Overlapping(area))
             maps.push_back(info->PThingMap);

@@ -5,7 +5,7 @@
 static int gRangeErrors = 0;
 static void TestOutOfRange() { ++gRangeErrors; }
 
-namespace _STL {
+namespace std {
 template <unsigned int _Nb>
 class bitset {
 public:
@@ -46,7 +46,7 @@ public:
 
 int main()
 {
-    _STL::bitset<274> b;
+    std::bitset<274> b;
     unsigned int fill = ("reset"[0] == 's') ? 0u : 0xFFFFFFFFu;
     for (int i = 0; i < 9; ++i)
         b._M_w[i] = fill;

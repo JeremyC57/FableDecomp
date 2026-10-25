@@ -1,4 +1,4 @@
-// _STL::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CCompare_FurthestFromInitPos2D comp) -- sift a hole down through the children the predicate orders last, then push the value back up
+// std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CCompare_FurthestFromInitPos2D comp) -- sift a hole down through the children the predicate orders last, then push the value back up
 // Leaf: __adjust_heap
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00748C90, 115 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, holeIndex in
 //   edx, then len, the value and the comparator on the stack).
@@ -17,7 +17,7 @@ struct CCompare_FurthestFromInitPos2D {
     bool operator()(CThing* a, CThing* b) const;              // 0x007483E0
 };
 
-namespace _STL {
+namespace std {
 void __fastcall __push_heap(CThing** first, int holeIndex, int topIndex, CThing* val, CCompare_FurthestFromInitPos2D comp);   // 0x00748880
 
 void __fastcall __adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CCompare_FurthestFromInitPos2D comp)

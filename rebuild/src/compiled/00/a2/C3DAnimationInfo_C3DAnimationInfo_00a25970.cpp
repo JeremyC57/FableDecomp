@@ -16,7 +16,7 @@ class C3DAnimation2;
 class CCPPointerInfo;
 class C3DVector { public: float X, Y, Z; };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -107,7 +107,7 @@ public:
     class CAnimationData : public CIVCountedPointeeBase {
     public:
         unsigned char _body[0x14];                       // +0x08
-        _STL::map<unsigned long, CCountedPointer<C3DAnimation2> > Animations;   // +0x1C
+        std::map<unsigned long, CCountedPointer<C3DAnimation2> > Animations;   // +0x1C
     };
     CIVCountedPointer<CAnimationData> Data;              // +0x0C
     float     Duration;                                  // +0x10
@@ -120,7 +120,7 @@ public:
 C3DAnimationInfo::~C3DAnimationInfo()
 {
     if (Data) {
-        for (_STL::map<unsigned long, CCountedPointer<C3DAnimation2> >::iterator it = Data->Animations.begin(); it != Data->Animations.end(); ++it) {
+        for (std::map<unsigned long, CCountedPointer<C3DAnimation2> >::iterator it = Data->Animations.begin(); it != Data->Animations.end(); ++it) {
         }
     }
 }

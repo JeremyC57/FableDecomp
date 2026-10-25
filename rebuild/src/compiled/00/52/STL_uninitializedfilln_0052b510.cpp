@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CEntityScriptInfo* first, unsigned int n, const CEntityScriptInfo& x, const __false_type&) -- STLport uninitialized fill of n entity script persistence records into raw storage: copy-construct x into each slot in place
+// std::__uninitialized_fill_n(CEntityScriptInfo* first, unsigned int n, const CEntityScriptInfo& x, const __false_type&) -- STLport uninitialized fill of n entity script persistence records into raw storage: copy-construct x into each slot in place
 // Leaf: ??$__uninitialized_fill_n@PAVCEntityScriptInfo@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052B510, 153 bytes, `ret 8` (/Gr algorithm TU, explicit __fastcall here: first in
 //   ecx, n in edx, then &x and the __false_type tag on the stack).
@@ -24,7 +24,7 @@ public:
     CCharString& operator=(const CCharString& other);                     // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -89,7 +89,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {               // retail CArray<T>: an STLport vector (12 bytes)
+template <class T> class CArray : public std::vector<T> {               // retail CArray<T>: an STLport vector (12 bytes)
 };
 
 namespace NThingManager {
@@ -106,7 +106,7 @@ public:
 }
 typedef NThingManager::CEntityRuntimePersistence::CEntityScriptInfo CEntityScriptInfo;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 // STLport 4.x __uninitialized_fill_n for a non-trivial element; the algorithm TU is compiled /Gr, so it is __fastcall.
 template <class _ForwardIter, class _Size, class _Tp>

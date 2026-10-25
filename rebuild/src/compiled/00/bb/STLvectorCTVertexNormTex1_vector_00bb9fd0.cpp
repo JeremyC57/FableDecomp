@@ -1,4 +1,4 @@
-// _STL::vector<CTVertexNormTex1>::vector(size_type n) -- STLport sized constructor for 32-byte decal vertices: allocate n elements and copy-construct a default (uninitialised) vertex into each
+// std::vector<CTVertexNormTex1>::vector(size_type n) -- STLport sized constructor for 32-byte decal vertices: allocate n elements and copy-construct a default (uninitialised) vertex into each
 // Leaf: ??0?$vector@VCTVertexNormTex1@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BB9FD0, 117 bytes, thiscall, `ret 4`, returns this.
 // Identity: callers CEnginePrimitiveManagerParticleDecalGroup::RenderLandscapeDecalGroup 0x00BB8C00,
@@ -23,7 +23,7 @@ public:
     CTVertexNormTex1() { }
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -87,4 +87,4 @@ public:
 
 template vector<CTVertexNormTex1>::vector(size_type);
 
-}   // namespace _STL
+}   // namespace std

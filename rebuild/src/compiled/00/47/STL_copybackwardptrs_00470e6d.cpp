@@ -1,6 +1,6 @@
-// _STL::__copy_backward_ptrs(pair<unsigned long,CSoundPair>* first, pair<unsigned long,CSoundPair>* last, pair<unsigned long,CSoundPair>* result, const __false_type&) -- STLport copy_backward for the sound map's 12-byte (key, sound pair) entries: counted backward member-wise copy, returns the new result start
-// Instantiation: _STL::__copy_backward_ptrs<pair<unsigned long,CSoundPair>*,pair<unsigned long,CSoundPair>*>
-// Leaf: ??$__copy_backward_ptrs@PAU?$pair@KVCSoundPair@@@_STL@@PAU12@@_STL@@
+// std::__copy_backward_ptrs(pair<unsigned long,CSoundPair>* first, pair<unsigned long,CSoundPair>* last, pair<unsigned long,CSoundPair>* result, const __false_type&) -- STLport copy_backward for the sound map's 12-byte (key, sound pair) entries: counted backward member-wise copy, returns the new result start
+// Instantiation: std::__copy_backward_ptrs<pair<unsigned long,CSoundPair>*,pair<unsigned long,CSoundPair>*>
+// Leaf: ??$__copy_backward_ptrs@PAU?$pair@KVCSoundPair@@@std@@PAU12@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00470E6D, 49 bytes (size-optimised def TU, no padding), __fastcall
 //   (first ecx, last edx; result and the tag reference on the stack), `ret 8`.
 // Identity: the only caller is __linear_insert @ 0x00470E08 (the sound map's insertion-sort step), which builds the
@@ -17,7 +17,7 @@ public:
     long LastSound;                                         // +0x4
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 

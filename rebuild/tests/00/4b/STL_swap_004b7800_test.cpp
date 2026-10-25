@@ -1,4 +1,4 @@
-// Behaviour test for 0x004B7800 _STL::swap<pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>>.
+// Behaviour test for 0x004B7800 std::swap<pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("004b7800_TEST FAIL\n"); return 1; } } while (0)

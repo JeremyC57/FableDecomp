@@ -1,4 +1,4 @@
-// _STL::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, unsigned long> (size TU): lower_bound, insert (k, 0) when absent, return the value
+// std::map::operator[](const CCharString& k) -- STLport subscript of map<CCharString, unsigned long> (size TU): lower_bound, insert (k, 0) when absent, return the value
 // Leaf: ??A?$map
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CD39B1, 96 bytes, __fastcall `ret 4`, frame-pointer size TU.
 // Identity: only caller CRegion::SetMiniMapRegionExitTextOffsetX (0x00CBFAB8) on the global map @ 0x0143E910; the
@@ -35,7 +35,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class T> struct less {
     __declspec(noinline) bool operator()(const T& x, const T& y) const { return x < y; }   // 0x0042AAB3 for CCharString
 };

@@ -16,7 +16,7 @@
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 void __cdecl operator delete(void* p);               // 0x00BFE9BC
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 }
 
@@ -50,7 +50,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -106,7 +106,7 @@ public:
 
 class C3DSkeletalMorph : public CBaseClassNonCopyable {
 public:
-    _STL::vector<CCountedPointer<C3DSkeletalMorphParameter> > MorphParameters;   // +0x04
+    std::vector<CCountedPointer<C3DSkeletalMorphParameter> > MorphParameters;   // +0x04
     CCountedPointer<C3DSkeletalMorphTarget>                     CombinedMorph;     // +0x10
     void NotifyParamUpdate() { CombinedMorph.Clear(); }
     void AddMorphParameter(const CCountedPointer<C3DSkeletalMorphParameter>& parameter);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x0098F570 _STL::less<CThreadedFileManager::CPendingObjectSortKey>::operator():
+// Behaviour test for 0x0098F570 std::less<CThreadedFileManager::CPendingObjectSortKey>::operator():
 // order pending loads by the file's physical sort key, then the file position, then the object address
 #include <stdio.h>
 struct CThreadedFile {
@@ -39,7 +39,7 @@ public:
         }
     };
 };
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result>
 struct binary_function {
     typedef _Arg1   first_argument_type;
@@ -65,7 +65,7 @@ int main()
     gObjs[3].PFile = &gFiles[0]; gObjs[3].Desc.FilePos = 100;   // same file+position as [2]: address breaks the tie
     CKey k0, k1, k2, k3;
     k0.Object = &gObjs[0]; k1.Object = &gObjs[1]; k2.Object = &gObjs[2]; k3.Object = &gObjs[3];
-    _STL::less<CKey> lt;
+    std::less<CKey> lt;
     bool ok = true;
     ok = ok && lt(k1, k0) && !lt(k0, k1);        // sort key wins over file position
     ok = ok && lt(k2, k1) && !lt(k1, k2);        // same sort key: file position

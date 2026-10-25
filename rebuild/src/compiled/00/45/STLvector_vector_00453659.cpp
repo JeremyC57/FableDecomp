@@ -1,5 +1,5 @@
-// _STL::vector::vector(int first, int last, const allocator& a) -- STLport vector<long>'s iterator-range constructor instantiated with two ints: empty base, then the integral dispatch fills first longs with the value last
-// Leaf: ??$?0H@?$vector@JV?$allocator@J@_STL@@@_STL@@QAE@HHABV?$allocator@J@1@@Z
+// std::vector::vector(int first, int last, const allocator& a) -- STLport vector<long>'s iterator-range constructor instantiated with two ints: empty base, then the integral dispatch fills first longs with the value last
+// Leaf: ??$?0H@?$vector@JV?$allocator@J@std@@@std@@QAE@HHABV?$allocator@J@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00453659, 38 bytes (size-optimised TU, frame pointer, no padding), thiscall,
 //   `ret 0xC`.
 // Identity: catalog `vector<long,std::allocator<long>_><int>` = STLport `template <class _InputIterator>
@@ -15,7 +15,7 @@
 // Label correction: none (the catalog's `vector<long>::vector<int>` is right; spelled here in STLport's namespace).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };

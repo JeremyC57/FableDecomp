@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CPSCPair* first, CPSCPair* last, CPSCPair*, int depth_limit, CPSCLess comp) -- STLport introsort recursion over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: median-of-three partition and recurse on the right part until ranges reach 16 entries; at depth zero fall back to partial_sort
+// std::__introsort_loop(CPSCPair* first, CPSCPair* last, CPSCPair*, int depth_limit, CPSCLess comp) -- STLport introsort recursion over the 16-byte registered-PSC entries pair<CCharString, NParticleEngine::CRegisteredPSCInfo>: median-of-three partition and recurse on the right part until ranges reach 16 entries; at depth zero fall back to partial_sort
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF3AA0, 205 bytes (+3 int3 padding), `ret 0Ch`. /Gr algorithm TU written as explicit __fastcall: first in
 //   ecx, last in edx, the value-type pointer tag, the depth limit and the 4-byte empty comparator slot on the stack.
@@ -64,7 +64,7 @@ struct CRegisteredPSCInfo {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -75,13 +75,13 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
+typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;
 typedef CKeyPairCompareLess<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp);   // 0x00AF30F0
 template <class _RandomAccessIter, class _Tp, class _Compare>
@@ -117,4 +117,4 @@ void __fastcall __introsort_loop(_RandomAccessIter __first, _RandomAccessIter __
 }
 }
 
-template void __fastcall _STL::__introsort_loop<CPSCPair*, CPSCPair, int, CPSCLess>(CPSCPair*, CPSCPair*, CPSCPair*, int, CPSCLess);
+template void __fastcall std::__introsort_loop<CPSCPair*, CPSCPair, int, CPSCLess>(CPSCPair*, CPSCPair*, CPSCPair*, int, CPSCLess);

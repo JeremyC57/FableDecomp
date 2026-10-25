@@ -1,5 +1,5 @@
-// _STL::vector::operator=(const vector& x) -- STLport copy assignment of vector<NUISystem::CComponent*>: reallocate and copy when x outgrows the capacity, else memmove over the live prefix (and the uninitialised tail)
-// Leaf: ??4?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z
+// std::vector::operator=(const vector& x) -- STLport copy assignment of vector<NUISystem::CComponent*>: reallocate and copy when x outgrows the capacity, else memmove over the live prefix (and the uninitialised tail)
+// Leaf: ??4?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAV01@ABV01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005798C8, 144 bytes, __fastcall, `ret 4`, returns `*this`; size-optimised TU
 //   with an ebp frame (no alignment padding).
 // Identity: the out-of-line _M_allocate_and_copy it calls (landed 0x005796D1) is vector<NUISystem::CComponent*>'s; this
@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* p);                                          
 
 namespace NUISystem { class CComponent; }
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -102,4 +102,4 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
 
 template vector<NUISystem::CComponent*>& vector<NUISystem::CComponent*>::operator=(const vector<NUISystem::CComponent*>&);
 
-}   // namespace _STL
+}   // namespace std

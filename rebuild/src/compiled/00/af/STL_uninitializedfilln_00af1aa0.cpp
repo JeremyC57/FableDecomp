@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CParticleEmitterInfo* first, unsigned int n, const CParticleEmitterInfo& x, const __false_type&) -- copy-construct n copies of a particle emitter info record (counted emitter data + bank + index) into raw storage at first and return first + n
+// std::__uninitialized_fill_n(CParticleEmitterInfo* first, unsigned int n, const CParticleEmitterInfo& x, const __false_type&) -- copy-construct n copies of a particle emitter info record (counted emitter data + bank + index) into raw storage at first and return first + n
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF1AA0, 53 bytes, __fastcall (first ecx, n edx; x and the empty tag on the stack, `ret 8`).
 // Callers: the vector<NParticleEngine::CParticleEmitterInfo> grow/fill paths at 0x00AF1CCA, 0x00AF1F29 and 0x00AF20CE
@@ -38,7 +38,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

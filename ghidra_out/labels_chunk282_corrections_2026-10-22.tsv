@@ -19,7 +19,7 @@ address	name	evidence
 005cc091	CCreatureAction_UnsheatheItemFromInventory::~CCreatureAction_UnsheatheItemFromInventory	chunk 282
 008ac060	std::remove_if<C3DVector*,CDistancePredicate>	008c1600 RushAwayDistance predicate (chunk 282)
 008c34a0	std::remove_if<C3DVector*,CPhaseDistancePredicate>	008c1600 second filter (chunk 282)
-0074ca20	_STL::__copy<C3DVector*,C3DVector*>	vector erase in 008c1600 (chunk 282)
+0074ca20	std::__copy<C3DVector*,C3DVector*>	vector erase in 008c1600 (chunk 282)
 006cb620	CTCCreatureNavigation::IsAbleToNavigateFromPosToPos	008c1600 loop, interface 7 (chunk 282)
 0074a5d0	GetValidPositions	__fastcall (chunk 282)
 008c33e0	CDefClassBase::GetSubDef<CJackOfBladesBattleDef>	008c1600 and 008c12d0 (chunk 282)

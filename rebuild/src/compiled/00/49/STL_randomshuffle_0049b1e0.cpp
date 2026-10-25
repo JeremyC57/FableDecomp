@@ -1,4 +1,4 @@
-// _STL::random_shuffle(long*, long*, RandFunc&) -- STLport random shuffle of a long array: each element from first+1 swaps with first[rand(i - first + 1)], RandFunc drawing through GFFloatRandom on the caller's seed
+// std::random_shuffle(long*, long*, RandFunc&) -- STLport random shuffle of a long array: each element from first+1 swaps with first[rand(i - first + 1)], RandFunc drawing through GFFloatRandom on the caller's seed
 // Flags: /Gr
 // Leaf: random_shuffle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049B1E0, 88 bytes, `ret 4` (__fastcall: first in ecx -> ebx, last in edx ->

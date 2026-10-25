@@ -1,5 +1,5 @@
-// _STL::_Destroy(CHeroSoulsRoundDef* first, CHeroSoulsRoundDef* last) -- run the virtual destructor of every 56-byte hero-souls round def in [first, last)
-// Leaf: ??$_Destroy@PAVCHeroSoulsRoundDef@@@_STL@@
+// std::_Destroy(CHeroSoulsRoundDef* first, CHeroSoulsRoundDef* last) -- run the virtual destructor of every 56-byte hero-souls round def in [first, last)
+// Leaf: ??$_Destroy@PAVCHeroSoulsRoundDef@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDB820, 34 bytes, __fastcall (first in ecx, last in edx), plain `ret`.
 // Identity: the only caller is vector<CHeroSoulsRoundDef>::operator= (0x00F26C30, the shrinking branch at 0x00F26CDE:
 //   `_Destroy(__copy(...), _M_finish)`), which CScriptDef::operator= (0x00F2A250) calls for the member at +0x1050 right
@@ -25,7 +25,7 @@ public:
 
 class CHeroSoulsWaveDef;
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc {
@@ -45,11 +45,11 @@ class vector : protected _Vector_base<_Tp, _Alloc> { };
 class CHeroSoulsRoundDef : public CGameDefinitionBase {   // retail 56 bytes
 public:
     long NumWaves;                                        // +0x28
-    _STL::vector<CHeroSoulsWaveDef> Waves;                // +0x2C (12-byte STLport vector)
+    std::vector<CHeroSoulsWaveDef> Waves;                // +0x2C (12-byte STLport vector)
     virtual ~CHeroSoulsRoundDef();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp>

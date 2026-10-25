@@ -5,7 +5,7 @@
 
 static int gNodesAllocated = 0, gNodesFreed = 0;
 
-namespace _STL {
+namespace std {
 
 struct input_iterator_tag { input_iterator_tag() {} };
 struct bidirectional_iterator_tag : input_iterator_tag { bidirectional_iterator_tag() {} };
@@ -177,7 +177,7 @@ public:
         long             Frame;
         double           TimeStamp;
     };
-    typedef _STL::list<CPendingQuery, _STL::allocator<CPendingQuery> > CQueryList;
+    typedef std::list<CPendingQuery, std::allocator<CPendingQuery> > CQueryList;
     void* Device;
     CQueryList FreeQueoryObjects;
     CQueryList PendingQueories;
@@ -211,11 +211,11 @@ static CPendingQuery MakeQuery(IDirect3DQuery9* q, long frame)
 
 int main()
 {
-    typedef _STL::_List_node<CPendingQuery> Node;
-    _STL::allocator<Node> a;
+    typedef std::_List_node<CPendingQuery> Node;
+    std::allocator<Node> a;
     Node n;
-    _STL::_STLP_alloc_proxy<Node*, Node, _STL::allocator<Node> > proxy(a, &n);
-    _STL::_STLP_alloc_proxy<Node*, Node, _STL::allocator<Node> > nullProxy(a, (Node*)0);
+    std::_STLP_alloc_proxy<Node*, Node, std::allocator<Node> > proxy(a, &n);
+    std::_STLP_alloc_proxy<Node*, Node, std::allocator<Node> > nullProxy(a, (Node*)0);
     bool ok = proxy._M_data == &n && nullProxy._M_data == 0;
     if (!ok) { std::printf("009f77b0_TEST FAIL\n"); return 1; }
     std::printf("009f77b0_TEST PASS\n");

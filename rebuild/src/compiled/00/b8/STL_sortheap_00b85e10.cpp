@@ -1,8 +1,8 @@
-// _STL::sort_heap(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, less<CSortElement> comp) -- sort a heap of sort elements by popping its top to the back until one element is left
+// std::sort_heap(CEngineSubPrimitiveRenderer::CSortElement* first, CEngineSubPrimitiveRenderer::CSortElement* last, less<CSortElement> comp) -- sort a heap of sort elements by popping its top to the back until one element is left
 // Leaf: ??$sort_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B85E10, 92 bytes. __fastcall (first ecx, last edx), `ret 4` (the empty
 //   comparator on the stack).
-// Callees: _STL::__adjust_heap<CSortElement*, int, CSortElement, less<CSortElement> > @ 0x00B852F0.
+// Callees: std::__adjust_heap<CSortElement*, int, CSortElement, less<CSortElement> > @ 0x00B852F0.
 // Callers: __partial_sort 0x00B86450 (call 0x00B864A7).
 // Identity: the manifest label "_Sort_heap<long*>" is a propagated fold label; STLport `sort_heap` (Ego_r.pdb has the
 //   Dinkumware twin `_Sort_heap<CSortElement*>`).
@@ -12,7 +12,7 @@
 //   chain of the CEngineSubPrimitiveRenderer TU (SortList 0x00B84990: stable_sort when the list RequiresStableSort, else
 //   sort below 256 elements, else RadixSort 0x00B847D0); Ego_r.pdb / FableWin.pdb carry the Dinkumware twins
 //   (_Stable_sort, _Buffered_merge_sort, _Make_heap, _Sort_heap, lower_bound, upper_bound ... over CSortElement*).
-//   Modelled in namespace _STL (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
+//   Modelled in namespace std (lane convention; retail RTTI spells std, `pair@...@std@@`); the templates are __fastcall.
 // Shape: STLport `while (last - first > 1) pop_heap(first, last--, comp);` with pop_heap / __pop_heap_aux / __pop_heap
 //   inline: `*(last - 1) = *first` after the by-value copy of *(last - 1), then __adjust_heap(first, 0, last - 1 - first,
 //   val, comp). VC7.1 tests `last - first > 1` on the byte difference (`and ecx,-8 ; cmp ecx,8`).
@@ -39,13 +39,13 @@ public:
 };
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {                      // empty functor (a 4-byte argument slot)
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIter __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);                                                    // 0x00B852F0

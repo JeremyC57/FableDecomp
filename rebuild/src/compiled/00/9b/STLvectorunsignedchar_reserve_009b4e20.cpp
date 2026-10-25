@@ -1,4 +1,4 @@
-// _STL::vector<unsigned char>::reserve(unsigned int n) -- STLport reserve for a byte vector: when the capacity is below n, move the bytes into a fresh n-byte block (malloc + memmove, then free the old block) or just allocate when empty
+// std::vector<unsigned char>::reserve(unsigned int n) -- STLport reserve for a byte vector: when the capacity is below n, move the bytes into a fresh n-byte block (malloc + memmove, then free the old block) or just allocate when empty
 // Leaf: ?reserve@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B4E20, 140 bytes, thiscall `ret 4`. Catalog name "Vector_Reserve_Reallocate_Byte"
 // (descriptive). Caller 0x009B5DE3.
@@ -11,7 +11,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -92,4 +92,4 @@ void vector<T, A>::reserve(size_type n)
 
 }
 
-template void _STL::vector<unsigned char>::reserve(unsigned int n);
+template void std::vector<unsigned char>::reserve(unsigned int n);

@@ -20,7 +20,7 @@ public:
     bool Overlapping(const C2DBoxI& other) const;      // 0x004FAB40
 };
 
-namespace _STL {
+namespace std {
 
 class __true_type { public: __true_type() {} };
 
@@ -112,14 +112,14 @@ public:
     void*           __vftable;                  // +0x00
     void*           PWorld;                     // +0x04
     unsigned char   ThingMaps[12];              // +0x08 (retail 12-byte container)
-    _STL::vector<CThingMapInfo*> ActiveThingMaps;   // +0x14
-    void GetAllActiveThingMapsInArea(const C2DBoxI& area, _STL::vector<CThingMap*>& maps) const;
+    std::vector<CThingMapInfo*> ActiveThingMaps;   // +0x14
+    void GetAllActiveThingMapsInArea(const C2DBoxI& area, std::vector<CThingMap*>& maps) const;
 };
 
-void CThingMapManager::GetAllActiveThingMapsInArea(const C2DBoxI& area, _STL::vector<CThingMap*>& maps) const
+void CThingMapManager::GetAllActiveThingMapsInArea(const C2DBoxI& area, std::vector<CThingMap*>& maps) const
 {
     maps.resize(0);
-    for (_STL::vector<CThingMapInfo*>::const_iterator it = ActiveThingMaps.begin(); it != ActiveThingMaps.end(); ++it) {
+    for (std::vector<CThingMapInfo*>::const_iterator it = ActiveThingMaps.begin(); it != ActiveThingMaps.end(); ++it) {
         CThingMapInfo* info = *it;
         if (info->PThingMap->Area.Overlapping(area))
             maps.push_back(info->PThingMap);
@@ -149,7 +149,7 @@ int main()
     infos[0].PThingMap = a; infos[1].PThingMap = b; infos[2].PThingMap = c;
     CThingMapManager::CThingMapInfo* ptrs[3] = { &infos[0], &infos[1], &infos[2] };
     mgr.ActiveThingMaps._M_start = ptrs; mgr.ActiveThingMaps._M_finish = ptrs + 3; mgr.ActiveThingMaps._M_end_of_storage = ptrs + 3;
-    _STL::vector<CThingMap*> maps;
+    std::vector<CThingMap*> maps;
     maps._M_start = (CThingMap**)malloc(1 * sizeof(CThingMap*));
     maps._M_start[0] = b;                                   // stale entry: resize(0) drops it
     maps._M_finish = maps._M_start + 1; maps._M_end_of_storage = maps._M_start + 1;

@@ -1,12 +1,12 @@
-// _STL::__unguarded_linear_insert(CDecalEntry* last, CDecalEntry val, CDecalEntryLess comp) -- shift larger-keyed ((long, long), CEngineTextureDecal) entries up one slot until val's place is found (no lower bound check), store val there
-// Leaf: ??$__unguarded_linear_insert@PAU?$pair@U?$pair@JJ@_STL@@VCEngineTextureDecal@@@_STL@@
+// std::__unguarded_linear_insert(CDecalEntry* last, CDecalEntry val, CDecalEntryLess comp) -- shift larger-keyed ((long, long), CEngineTextureDecal) entries up one slot until val's place is found (no lower bound check), store val there
+// Leaf: ??$__unguarded_linear_insert@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEE320, 126 bytes, `ret 20h` (the 28-byte value + the empty comparator).
 // Callees: vector<CCompositeBlendDesc>::operator= @ 0x006CADE0, free @ 0x00BFEA14 (the by-value value's blend vector).
 // Label: the manifest's "std_vector_insert_sorted" is descriptive; this is the STLport sort instantiation of
 // CVectorMap<pair<long, long>, CEngineTextureDecal, CKeyPairCompareLess<...> > (Ego_r.pdb name set; the morph info's
 // TextureDecals at +0).
-// Element: _STL::pair<pair<long, long>, CEngineTextureDecal> (0x1c bytes): key (two longs), then Ego_r.pdb
+// Element: std::pair<pair<long, long>, CEngineTextureDecal> (0x1c bytes): key (two longs), then Ego_r.pdb
 // CEngineTextureDecal {OriginalTextureIndex, DecalID, vector<CCompositeBlendDesc> OverlaidBlends (STLport, 12 bytes)}.
 // The implicit operator= copies four words and calls the vector's out-of-line operator=; the by-value value's vector
 // frees its block (inline ~_Vector_base). Shape: STLport 4.6 __unguarded_linear_insert, lexicographic signed key compare.
@@ -32,7 +32,7 @@ public:
     CRGBColour    SpecularColour;                   // +0x0c
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct __true_type { __true_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -85,27 +85,27 @@ public:
     ~vector() { }
     vector& operator=(const vector& x);             // 0x006CADE0
 };
-}   // namespace _STL
+}   // namespace std
 
 // Ego_r.pdb CEngineTextureDecal (20 bytes in retail: the STLport vector is 12).
 class CEngineTextureDecal {
 public:
     long OriginalTextureIndex;                      // +0x00
     long DecalID;                                   // +0x04
-    _STL::vector<CCompositeBlendDesc, _STL::allocator<CCompositeBlendDesc> > OverlaidBlends;   // +0x08
+    std::vector<CCompositeBlendDesc, std::allocator<CCompositeBlendDesc> > OverlaidBlends;   // +0x08
 };
 
-typedef _STL::pair<long, long> CDecalKey;
-typedef _STL::pair<CDecalKey, CEngineTextureDecal> CDecalEntry;   // 0x1c bytes
+typedef std::pair<long, long> CDecalKey;
+typedef std::pair<CDecalKey, CEngineTextureDecal> CDecalEntry;   // 0x1c bytes
 
 // The vector map's key order (an empty functor passed by value): the lexicographic pair<long, long> compare.
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
 };
 typedef CKeyPairCompareLess<CDecalKey, CEngineTextureDecal> CDecalEntryLess;
-namespace _STL {
+namespace std {
 template <class RandomAccessIter, class T, class Compare>
 void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp)
 {
@@ -120,6 +120,6 @@ void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp)
     last->first = key;
     last->second = val.second;
 }
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::__unguarded_linear_insert(CDecalEntry*, CDecalEntry, CDecalEntryLess);
+template void std::__unguarded_linear_insert(CDecalEntry*, CDecalEntry, CDecalEntryLess);

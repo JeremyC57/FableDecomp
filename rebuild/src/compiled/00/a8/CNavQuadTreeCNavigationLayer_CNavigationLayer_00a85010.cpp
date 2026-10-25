@@ -14,7 +14,7 @@
 class CANavQuadTreeNode;
 struct C2DLineF { float X0, Y0, X1, Y1; };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {};
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -38,13 +38,13 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T, _STL::allocator<T> > { };   // Fable's CArray over the STLport vector
+template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 template <class K, class V> class CKeyPairCompareLess {};
 
 template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
 public:
-    CArray<_STL::pair<K, V> > Data;                     // +0x00
+    CArray<std::pair<K, V> > Data;                     // +0x00
     TCompare                  Compare;                  // +0x0C (empty comparator)
     bool                      Dirty;                    // +0x0D
 };
@@ -54,9 +54,9 @@ public:
     class CNavigationLayer {
     public:
         CArray<CANavQuadTreeNode*>                    Nodes;               // +0x00
-        _STL::vector<_STL::list<C2DLineF> >           LineLists;           // +0x0C
-        CVectorMap<unsigned __int64, _STL::list<C2DLineF>,
-                   CKeyPairCompareLess<unsigned __int64, _STL::list<C2DLineF> > > SwitchableLineLists; // +0x18
+        std::vector<std::list<C2DLineF> >           LineLists;           // +0x0C
+        CVectorMap<unsigned __int64, std::list<C2DLineF>,
+                   CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF> > > SwitchableLineLists; // +0x18
         CNavigationLayer(const CNavigationLayer& other);
     };
 };

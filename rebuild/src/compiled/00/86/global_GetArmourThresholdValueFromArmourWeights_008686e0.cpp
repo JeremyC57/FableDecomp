@@ -18,7 +18,7 @@
 enum EDamageAttribute { DAMAGE_ATTRIBUTE_NONE = 0 };
 enum EObjectAugmentationType { OBJECT_AUGMENTATION_NONE = 0 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair
 {
     _T1 first;
@@ -108,9 +108,9 @@ class CArmourDef
 {
 public:
     unsigned char _pad0[0x3c];
-    _STL::map<EObjectAugmentationType, float, _STL::less<EObjectAugmentationType> > AugmentationResponse;   // +0x3C
-    _STL::map<EDamageAttribute, float, _STL::less<EDamageAttribute> >               DamageTypeResponse;     // +0x48
-    _STL::map<EDamageAttribute, float, _STL::less<EDamageAttribute> >               ArmourThresholds;       // +0x54
+    std::map<EObjectAugmentationType, float, std::less<EObjectAugmentationType> > AugmentationResponse;   // +0x3C
+    std::map<EDamageAttribute, float, std::less<EDamageAttribute> >               DamageTypeResponse;     // +0x48
+    std::map<EDamageAttribute, float, std::less<EDamageAttribute> >               ArmourThresholds;       // +0x54
     bool AllHitsKnockdown;                           // +0x60
     bool AllHitsNegated;                             // +0x61
     bool AllHitsCauseRecoil;                         // +0x62
@@ -118,8 +118,8 @@ public:
     long BlockMaterial;                              // +0x68
 };
 
-typedef _STL::multimap<CDefPointer<const CArmourDef>, float, CCompareDefPointer<const CArmourDef, float> > TArmourWeights;
-typedef _STL::map<EDamageAttribute, float, _STL::less<EDamageAttribute> > TDamageAttributeMap;
+typedef std::multimap<CDefPointer<const CArmourDef>, float, CCompareDefPointer<const CArmourDef, float> > TArmourWeights;
+typedef std::map<EDamageAttribute, float, std::less<EDamageAttribute> > TDamageAttributeMap;
 #pragma auto_inline(off)
 namespace {
 float __fastcall GetArmourThresholdValueFromArmourWeights(EDamageAttribute attribute, const TArmourWeights& weights, float totalWeight)

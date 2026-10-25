@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__copy(set<unsigned long>::const_iterator, const_iterator, insert_iterator<set<unsigned long> >, const input_iterator_tag&, int*) @ 0x00AD48F0
+// Behaviour test for std::__copy(set<unsigned long>::const_iterator, const_iterator, insert_iterator<set<unsigned long> >, const input_iterator_tag&, int*) @ 0x00AD48F0
 // Input-iterator copy: `for (; first != last; ++result, ++first) *result = *first; return result;` into an inserter.
 #include <cstdio>
 #include <set>

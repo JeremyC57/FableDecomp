@@ -28,7 +28,7 @@ public:
 };
 static CANavQuadTreeNode g_node;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     typedef _T1 first_type;
     _T1 first;
@@ -155,16 +155,16 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_insert(_Rb_tree_node_b
 
 // In-order walk collecting keys (no parent links needed for an unbalanced tree).
 template <class _Value, class _Key>
-static void walk(_STL::_Rb_tree_node_base* n, _Key* out, int& k)
+static void walk(std::_Rb_tree_node_base* n, _Key* out, int& k)
 {
     if (!n) return;
     walk<_Value, _Key>(n->_M_left, out, k);
-    out[k++] = ((_STL::_Rb_tree_node<_Value>*)n)->_M_value_field.first;
+    out[k++] = ((std::_Rb_tree_node<_Value>*)n)->_M_value_field.first;
     walk<_Value, _Key>(n->_M_right, out, k);
 }
 
-typedef _STL::pair<const long, CAStarState> V;
-typedef _STL::_Rb_tree<long, V, _STL::_Select1st<V>, _STL::less<long> > Tree;
+typedef std::pair<const long, CAStarState> V;
+typedef std::_Rb_tree<long, V, std::_Select1st<V>, std::less<long> > Tree;
 
 int main()
 {
@@ -178,7 +178,7 @@ int main()
         Tree::_Link_type z = (Tree::_Link_type)it._M_node;
         if (!(z->_M_value_field.first == keys[i]) || z->_M_left != 0 || z->_M_right != 0 || z->_M_parent == 0) ok = 0;
     }
-    if (t._M_node_count != (unsigned int)n || _STL::g_rebalances != n) ok = 0;
+    if (t._M_node_count != (unsigned int)n || std::g_rebalances != n) ok = 0;
     long got[16]; int k = 0;
     walk<V, long>(t._M_root(), got, k);
     if (k != n) ok = 0;

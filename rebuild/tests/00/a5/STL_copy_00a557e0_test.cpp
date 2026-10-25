@@ -21,7 +21,7 @@ public:
     CCharString(const CCharString& other);           // 0x0099EC30
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 struct input_iterator_tag { input_iterator_tag() { } };
 
@@ -175,7 +175,7 @@ template back_insert_iterator<vector<CCharString> > __fastcall copy(_Rb_tree_ite
 // ---- test harness ----
 static int g_copies = 0, g_overflow = 0;
 CCharString::CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_copies; }
-namespace _STL {
+namespace std {
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool)
 {
@@ -191,9 +191,9 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __position, const _Tp& __x, co
     (void)__position;
 }
 }
-typedef _STL::_Rb_tree_node<CCharString> TNode;
-typedef _STL::_Rb_tree_iterator<CCharString, _STL::_Const_traits<CCharString> > TIter;
-typedef _STL::vector<CCharString> TVec;
+typedef std::_Rb_tree_node<CCharString> TNode;
+typedef std::_Rb_tree_iterator<CCharString, std::_Const_traits<CCharString> > TIter;
+typedef std::vector<CCharString> TVec;
 int main()
 {
     static double nodeRaw[(4 * sizeof(TNode)) / sizeof(double) + 1];   // 0 = header, 1..3 = A, B, C (in-order)
@@ -210,7 +210,7 @@ int main()
     v._M_start = storage; v._M_finish = storage; v._M_end_of_storage._M_data = storage + 2;
     TIter first, last;
     first._M_node = a; last._M_node = h;
-    _STL::back_insert_iterator<TVec> out = _STL::copy(first, last, _STL::back_insert_iterator<TVec>(v));
+    std::back_insert_iterator<TVec> out = std::copy(first, last, std::back_insert_iterator<TVec>(v));
     int ok = 1;
     if (out.container != &v) ok = 0;
     if (v._M_finish - v._M_start != 3) ok = 0;
@@ -218,7 +218,7 @@ int main()
     if (g_copies != 2 || g_overflow != 1) ok = 0;
     TIter e1, e2; e1._M_node = h; e2._M_node = h;     // empty range: nothing appended
     TVec w; w._M_start = w._M_finish = storage; w._M_end_of_storage._M_data = storage + 2;
-    _STL::back_insert_iterator<TVec> out2 = _STL::copy(e1, e2, _STL::back_insert_iterator<TVec>(w));
+    std::back_insert_iterator<TVec> out2 = std::copy(e1, e2, std::back_insert_iterator<TVec>(w));
     if (out2.container != &w || w._M_finish != w._M_start || g_copies != 2) ok = 0;
     printf("00a557e0_TEST %s\n", ok ? "PASS" : "FAIL");
     return ok ? 0 : 1;

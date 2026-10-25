@@ -17,7 +17,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);                                   // 0x00BFEA0E
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);    // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -89,4 +89,4 @@ public:
 
 template void basic_string<char>::_M_range_initialize<const char*>(const char*, const char*, const forward_iterator_tag&);
 
-} // namespace _STL
+} // namespace std

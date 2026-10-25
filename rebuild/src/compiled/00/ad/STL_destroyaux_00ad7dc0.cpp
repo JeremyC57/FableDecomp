@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(COptimisedSubMesh* first, COptimisedSubMesh* last, const __false_type&) -- destroy a run of optimiser sub-meshes: each one's bone vector (bone names, storage) then its primitive-pointer vector
+// std::__destroy_aux(COptimisedSubMesh* first, COptimisedSubMesh* last, const __false_type&) -- destroy a run of optimiser sub-meshes: each one's bone vector (bone names, storage) then its primitive-pointer vector
 // Flags: /Gr
 // Leaf: ??$__destroy_aux@PAVCOptimisedSubMesh
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD7DC0, 0x6B bytes, __fastcall (first ecx, last edx), `ret 4` (the
@@ -30,7 +30,7 @@ public:
     ~CCountedPointer();
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -75,7 +75,7 @@ public:
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 
-} // namespace _STL
+} // namespace std
 
 namespace QuadricOptimiserInternals {
 
@@ -91,17 +91,17 @@ public:
 
 class COptimisedSubMesh {                                   // 0x18 bytes in retail
 public:
-    _STL::vector<CCountedPointer<COptimisedPrimitive> > Primitives;   // +0x00
-    _STL::vector<COptimisedBone>                        Bones;        // +0x0C
+    std::vector<CCountedPointer<COptimisedPrimitive> > Primitives;   // +0x00
+    std::vector<COptimisedBone>                        Bones;        // +0x0C
 };
 
 } // namespace QuadricOptimiserInternals
 
-namespace _STL {
+namespace std {
 template <> void __destroy_aux<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>*>(
     CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>*, CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>*,
     const __false_type&);                                                               // 0x00AD37E0
 
 template void __destroy_aux<QuadricOptimiserInternals::COptimisedSubMesh*>(
     QuadricOptimiserInternals::COptimisedSubMesh*, QuadricOptimiserInternals::COptimisedSubMesh*, const __false_type&);
-} // namespace _STL
+} // namespace std

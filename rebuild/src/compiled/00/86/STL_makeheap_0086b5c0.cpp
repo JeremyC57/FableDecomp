@@ -1,4 +1,4 @@
-// _STL::__make_heap(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CSkeletalMorph>* last, CKeyPairCompareLess<long, CSkeletalMorph> comp, pair<long, CSkeletalMorph>*, int*) -- STLport heap build over the skeletal-morph vector map: sift down every parent from the last one to the root
+// std::__make_heap(pair<long, CRandomAppearanceMorph::CSkeletalMorph>* first, pair<long, CSkeletalMorph>* last, CKeyPairCompareLess<long, CSkeletalMorph> comp, pair<long, CSkeletalMorph>*, int*) -- STLport heap build over the skeletal-morph vector map: sift down every parent from the last one to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086B5C0, length 98 bytes (+ int3 padding), `ret 0Ch`.
 // Callers: the map's __partial_sort 0x0086D160 (this chunk; 0x0086D174) and 0x0086C6B9.
@@ -25,7 +25,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00
     _T2 second;                                             // +0x04
@@ -53,9 +53,9 @@ void __fastcall __make_heap(_RandomAccessIterator __first, _RandomAccessIterator
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
+typedef std::pair<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphPair;
 typedef CKeyPairCompareLess<long, CRandomAppearanceMorph::CSkeletalMorph> TSkeletalMorphLess;
-template void __fastcall _STL::__make_heap<TSkeletalMorphPair*, TSkeletalMorphLess, TSkeletalMorphPair, int>(TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphLess, TSkeletalMorphPair*, int*);
+template void __fastcall std::__make_heap<TSkeletalMorphPair*, TSkeletalMorphLess, TSkeletalMorphPair, int>(TSkeletalMorphPair*, TSkeletalMorphPair*, TSkeletalMorphLess, TSkeletalMorphPair*, int*);

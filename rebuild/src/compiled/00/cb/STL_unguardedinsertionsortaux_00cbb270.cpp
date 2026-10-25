@@ -1,9 +1,9 @@
-// _STL::__unguarded_insertion_sort_aux(CActiveScriptPair* first, CActiveScriptPair* last, CActiveScriptPair*, CActiveScriptLess comp) -- insertion-sort the tail of an introsorted (UID, active entity script) range without bound checks
+// std::__unguarded_insertion_sort_aux(CActiveScriptPair* first, CActiveScriptPair* last, CActiveScriptPair*, CActiveScriptLess comp) -- insertion-sort the tail of an introsorted (UID, active entity script) range without bound checks
 // Leaf: ??$__unguarded_insertion_sort_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBB270, 70 bytes (`ret 8`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __unguarded_insertion_sort_aux over (UID, active entity script) = _STL::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > (0x10 bytes);
+// Identity: STLport __unguarded_insertion_sort_aux over (UID, active entity script) = std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > (0x10 bytes);
 //   callers 0x00CBB857, 0x00CBD3FC, 0x00CBDF49 (final insertion sorts). The manifest label
 //   "_Copy_impl<CNavigationPosition*,...>" is propagated and wrong.
 // Callees: __unguarded_linear_insert 0x00CBA840.
@@ -58,7 +58,7 @@ public:
     }
 };
 class CActiveEntityScriptBase;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -66,11 +66,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;   // 16 bytes
+typedef std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;   // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptLess;
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00CBA840
 

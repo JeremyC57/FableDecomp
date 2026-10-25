@@ -21,7 +21,7 @@ struct C3DVector {
 
 struct __false_type { __false_type() { } };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2>
 class pair {
@@ -58,12 +58,12 @@ public:
 };
 
 template <class K, class V> struct CKeyPairCompareLess {
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 template <class K, class V, class C> class CVectorMap {
 public:
-    typedef _STL::pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     CRetailVector<value_type> m_vector;                     // +0x00
     C    Compare;                                           // +0x0c (empty)
     bool Dirty;                                             // +0x0d

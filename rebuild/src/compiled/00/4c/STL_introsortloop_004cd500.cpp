@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(pair<ETCInterfaceType, CTCBase*>* first, pair<ETCInterfaceType, CTCBase*>* last, pair<ETCInterfaceType, CTCBase*>*, int depth_limit, CKeyPairCompareLess comp) -- STLport introsort core over a thing's component map: quicksort around a median-of-three pivot until runs are 16 entries or shorter, heap sort at the depth limit
+// std::__introsort_loop(pair<ETCInterfaceType, CTCBase*>* first, pair<ETCInterfaceType, CTCBase*>* last, pair<ETCInterfaceType, CTCBase*>*, int depth_limit, CKeyPairCompareLess comp) -- STLport introsort core over a thing's component map: quicksort around a median-of-three pivot until runs are 16 entries or shorter, heap sort at the depth limit
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CD500, 196 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU, explicit
 //   __fastcall here: first in ecx, last in edx, then the value-type tag pointer, the depth limit and the comparator slot).
@@ -13,7 +13,7 @@
 enum ETCInterfaceType { TC_NONE = 0 };                  // the thing-component interface type (a signed key)
 class CTCBase;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {          // STLport pair: user constructors, implicit operator=
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04
@@ -25,13 +25,13 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<ETCInterfaceType, CTCBase*> TComponentPair;          // CThing::Components entry, 8 bytes
+typedef std::pair<ETCInterfaceType, CTCBase*> TComponentPair;          // CThing::Components entry, 8 bytes
 typedef CKeyPairCompareLess<ETCInterfaceType, CTCBase*> TComponentLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 inline const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {

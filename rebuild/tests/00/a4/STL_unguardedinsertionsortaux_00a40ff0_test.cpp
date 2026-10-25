@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_insertion_sort_aux(pair<pair<CCharString, CCharString>, CSoundBankLH*>*, ..., CKeyPairCompareLess) (0x00A40FF0): after the pass [first, last) is in ascending key order (the entry
+// Behaviour test for std::__unguarded_insertion_sort_aux(pair<pair<CCharString, CCharString>, CSoundBankLH*>*, ..., CKeyPairCompareLess) (0x00A40FF0): after the pass [first, last) is in ascending key order (the entry
 // before first is a sentinel no greater than any key), equal keys keep their order and payloads travel with keys.
 #include <cstdio>
 #include <cstring>
@@ -14,7 +14,7 @@ public:
     bool operator<(const CCharString& o) const { return std::strcmp(Text, o.Text) < 0; }
 };
 class CSoundBankLH { public: int Id; };
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -52,11 +52,11 @@ void __unguarded_insertion_sort_aux(_RandomAccessIter __first, _RandomAccessIter
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, CCharString> SNamePair;
-typedef _STL::pair<SNamePair, CSoundBankLH*> E;
+typedef std::pair<CCharString, CCharString> SNamePair;
+typedef std::pair<SNamePair, CSoundBankLH*> E;
 
 int main()
 {
@@ -67,7 +67,7 @@ int main()
     a[0] = E(SNamePair(CCharString(""), CCharString("")), (CSoundBankLH*)0);
     for (int i = 0; i < 6; ++i)
         a[i + 1] = E(SNamePair(CCharString(k1[i]), CCharString(k2[i])), &banks[i]);
-    _STL::__unguarded_insertion_sort_aux(a + 1, a + 7, (E*)0, CKeyPairCompareLess<SNamePair, CSoundBankLH*>());
+    std::__unguarded_insertion_sort_aux(a + 1, a + 7, (E*)0, CKeyPairCompareLess<SNamePair, CSoundBankLH*>());
     static const int order[6] = { 5, 1, 3, 2, 0, 4 };   // (ambient,cave) (ambient,forest)x2 (music,cave) (music,town) (voice,hero)
     int fails = 0;
     for (int i = 0; i < 6; ++i) {

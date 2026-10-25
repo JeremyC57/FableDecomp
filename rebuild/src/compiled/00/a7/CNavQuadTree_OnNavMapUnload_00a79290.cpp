@@ -56,7 +56,7 @@ public:
 
 class CNavConnectorNode;
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
@@ -117,9 +117,9 @@ public:
 template <class K, class V> class CKeyPairCompareLess {
 };
 
-template <class K, class V, class C> class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
-    typedef _STL::pair<K, V>* iterator;
+    typedef std::pair<K, V>* iterator;
     C    Compare;                                           // +0x0c
     bool Dirty;                                             // +0x0d
     iterator LowerBound(const K& key);                      // 0x00A7DD40
@@ -136,7 +136,7 @@ public:
 
 void CNavQuadTree::OnNavMapUnload(long mapIndex)
 {
-    _STL::pair<long, CCountedPointer<CNavConnectorNode> >* first = ConnectorNodes.LowerBound(mapIndex);
-    _STL::pair<long, CCountedPointer<CNavConnectorNode> >* last = ConnectorNodes.UpperBound(mapIndex);
+    std::pair<long, CCountedPointer<CNavConnectorNode> >* first = ConnectorNodes.LowerBound(mapIndex);
+    std::pair<long, CCountedPointer<CNavConnectorNode> >* last = ConnectorNodes.UpperBound(mapIndex);
     ConnectorNodes.erase(first, last);
 }

@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- vector<CEngineLandscapeRenderer::CSubPatchSorterEntry>::resize(n): erase the surplus tail, or append value-initialised (zeroed) sorter entries up to the new size
-// Leaf: ?resize@?$vector@UCSubPatchSorterEntry@@V?$allocator@UCSubPatchSorterEntry@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- vector<CEngineLandscapeRenderer::CSubPatchSorterEntry>::resize(n): erase the surplus tail, or append value-initialised (zeroed) sorter entries up to the new size
+// Leaf: ?resize@?$vector@UCSubPatchSorterEntry@@V?$allocator@UCSubPatchSorterEntry@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B6CC90, 85 bytes, thiscall `ret 4`.
 // Callers: none found (no direct call, jump or address reference; an out-of-line COMDAT the linker kept).
 // Callees: vector::erase(first, last) 0x00B6C0D0 (thiscall, returns the iterator, dropped), vector::_M_fill_insert(pos, n, x)
@@ -25,7 +25,7 @@ struct CSubPatchSorterEntry {                               // Ego_r.pdb CEngine
     long OcclusionID    : 30;                               // +0x04 bits 2..31
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:

@@ -34,7 +34,7 @@ long CNavigatorAStar::CAStarState::NoOfStatesOnClosedList = 0;
 
 static int g_freed = 0;
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -72,8 +72,8 @@ void _Rb_tree<_Key, _Value>::_M_erase(_Link_type __x)
 }
 }
 
-typedef _STL::pair<const long, CNavigatorAStar::CAStarState> SValue;
-typedef _STL::_Rb_tree_node<SValue> SNode;
+typedef std::pair<const long, CNavigatorAStar::CAStarState> SValue;
+typedef std::_Rb_tree_node<SValue> SNode;
 
 static SNode* MakeNode(bool open, bool closed, SNode* left, SNode* right)
 {
@@ -98,7 +98,7 @@ int main()
     SNode* e = MakeNode(true, false, 0, d);
     SNode* f = MakeNode(false, true, e, 0);
     SNode* root = MakeNode(true, false, c, f);
-    _STL::_Rb_tree<long, SValue> tree; tree._M_header = 0; tree._M_node_count = 7;
+    std::_Rb_tree<long, SValue> tree; tree._M_header = 0; tree._M_node_count = 7;
 
     if (CNavigatorAStar::CAStarState::NoOfStates != 7) ok = 0;
     tree._M_erase(0);                                         // null subtree: nothing happens

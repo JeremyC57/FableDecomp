@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>* first, pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>* last, pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>*, CKeyPairCompareLess comp) -- STLport insertion-sort pass with no lower-bound test over the texture-morph vector map, each entry sifted down by its unsigned key
+// std::__unguarded_insertion_sort_aux(pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>* first, pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>* last, pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>*, CKeyPairCompareLess comp) -- STLport insertion-sort pass with no lower-bound test over the texture-morph vector map, each entry sifted down by its unsigned key
 // Leaf: ??$__unguarded_insertion_sort_aux@PAU?$pair@KVCTextureMorph@CRandomAppearanceMorph@@
 // Retail 0x0086AEA0, 0x67 bytes (+ int3 padding to 0x70), `ret 8` (/Gr: first in ecx, last in edx, the value-type tag
 // pointer and the empty comparator on the stack). No callees.
@@ -22,7 +22,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair
 {
     _T1 first;                                       // +0x00
@@ -54,11 +54,11 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 template <class K, class V> class CKeyPairCompareLess
 {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> TTextureMorphPair;
+typedef std::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> TTextureMorphPair;
 
-template void __fastcall _STL::__unguarded_insertion_sort_aux<TTextureMorphPair*, TTextureMorphPair,
+template void __fastcall std::__unguarded_insertion_sort_aux<TTextureMorphPair*, TTextureMorphPair,
     CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph> >(TTextureMorphPair*, TTextureMorphPair*,
     TTextureMorphPair*, CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph>);

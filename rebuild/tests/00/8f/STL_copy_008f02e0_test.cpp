@@ -1,4 +1,4 @@
-// Behaviour test for 0x008F02E0 _STL::__copy<Coin*>: element-wise assignment in order, intelligent pointer re-set.
+// Behaviour test for 0x008F02E0 std::__copy<Coin*>: element-wise assignment in order, intelligent pointer re-set.
 #include <cstdio>
 
 static int g_setCalls = 0;

@@ -1,4 +1,4 @@
-// _STL::__copy_backward(CIVCountedPointer<CLocalDetailPlacementGrid>* first, CIVCountedPointer<CLocalDetailPlacementGrid>* last, CIVCountedPointer<CLocalDetailPlacementGrid>* result, const random_access_iterator_tag&, int*) -- copy [first, last) backwards onto the range ending at result, counted-pointer assignment inlined
+// std::__copy_backward(CIVCountedPointer<CLocalDetailPlacementGrid>* first, CIVCountedPointer<CLocalDetailPlacementGrid>* last, CIVCountedPointer<CLocalDetailPlacementGrid>* result, const random_access_iterator_tag&, int*) -- copy [first, last) backwards onto the range ending at result, counted-pointer assignment inlined
 // Leaf: ??$__copy_backward@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6B0E0, 88 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, last
 //   in edx; result, the tag reference and the null distance pointer on the stack). No direct callees (the pointee's
@@ -48,7 +48,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
 

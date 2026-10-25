@@ -1,4 +1,4 @@
-// Behaviour test for 0x004122D0 _STL::vector<char>::resize(unsigned int new_size, const char& x).
+// Behaviour test for 0x004122D0 std::vector<char>::resize(unsigned int new_size, const char& x).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("004122d0_TEST FAIL\n"); return 1; } } while (0)

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A41D50: _STL::__introsort_loop over pair<CCharString, 4-byte value> (median-of-three quicksort with the depth fallback)
+// Behaviour test for 0x00A41D50: std::__introsort_loop over pair<CCharString, 4-byte value> (median-of-three quicksort with the depth fallback)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -46,7 +46,7 @@ struct CMapValue4 {
     long m_value;
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 class pair {
 public:
@@ -62,13 +62,13 @@ template <class K, class V>
 class CKeyPairCompareLess {
 public:
     CKeyPairCompareLess() { }
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, CMapValue4> TEntry;
+typedef std::pair<CCharString, CMapValue4> TEntry;
 typedef CKeyPairCompareLess<CCharString, CMapValue4> TLess;
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 inline void swap(_Tp& a, _Tp& b) { _Tp t = a; a = b; b = t; }
 template <class _Tp, class _Compare>
@@ -145,7 +145,7 @@ static void Finish(TEntry* a, int n)   // the final insertion sort std::sort run
 {
     for (int i = 1; i < n; ++i)
         for (int j = i; j > 0 && a[j].first < a[j - 1].first; --j)
-            _STL::swap(a[j], a[j - 1]);
+            std::swap(a[j], a[j - 1]);
 }
 
 static bool SortedAndConsistent(const TEntry* a, int n, long expectSum)
@@ -170,7 +170,7 @@ int main()
         long sum = 0;
         for (int i = 0; i < n; ++i) sum += a[i].second.m_value;
         int live = g_liveStrings;
-        _STL::__introsort_loop(a, a + n, (TEntry*)0, 12, TLess());
+        std::__introsort_loop(a, a + n, (TEntry*)0, 12, TLess());
         Check(g_liveStrings == live);
         // every run of at most 16 elements left unsorted is bounded by its neighbours: the final insertion sort finishes it
         Finish(a, n);
@@ -179,13 +179,13 @@ int main()
         Fill(a, n, 99u);
         sum = 0;
         for (int j = 0; j < n; ++j) sum += a[j].second.m_value;
-        _STL::__introsort_loop(a, a + n, (TEntry*)0, 0, TLess());
+        std::__introsort_loop(a, a + n, (TEntry*)0, 0, TLess());
         Check(SortedAndConsistent(a, n, sum));
         // 16 or fewer: untouched
         Fill(a, 16, 5u);
         TEntry b[16];
         for (int k = 0; k < 16; ++k) b[k] = a[k];
-        _STL::__introsort_loop(a, a + 16, (TEntry*)0, 12, TLess());
+        std::__introsort_loop(a, a + 16, (TEntry*)0, 12, TLess());
         for (int m = 0; m < 16; ++m) Check(Eq(a[m].first, b[m].first.c_str()) && a[m].second.m_value == b[m].second.m_value);
     }
     Check(g_liveStrings == 0);

@@ -1,9 +1,9 @@
-// _STL::__make_heap(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp, pair<CCharString,C3DMeshVolume>*, int*) -- build a heap over the named containment volumes (name order) by sifting down every parent from the last one to the root
+// std::__make_heap(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp, pair<CCharString,C3DMeshVolume>*, int*) -- build a heap over the named containment volumes (name order) by sifting down every parent from the last one to the root
 // Leaf: ??$__make_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A71D40, 122 bytes, /Gr `__fastcall` (first in ecx, last in edx; the
 //   empty comparator, the value-type and distance-type tag pointers on the stack, `ret 0Ch`).
 // Callees: CCharString::CCharString(const CCharString&) 0x0099EC30 (x2: the by-value element copy's key and volume
-//   name), _STL::__adjust_heap 0x00A71370 (__fastcall first/hole, then len, the 16-byte value, the comparator).
+//   name), std::__adjust_heap 0x00A71370 (__fastcall first/hole, then len, the 16-byte value, the comparator).
 // Identity: the manifest's "Heap_BuildHeap_StringKey" is descriptive. 16-byte pair<CCharString, C3DMeshVolume>
 //   entries of CPhysicsMesh::ContainmentVolumes (CKeyPairCompareLess<CCharString, C3DMeshVolume>).
 // Shape: STLport `if (last - first < 2) return; len = last - first; parent = (len - 2) / 2; for (;;) {
@@ -93,7 +93,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -104,10 +104,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x00A71370

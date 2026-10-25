@@ -1,8 +1,8 @@
-// Behaviour test for _STL::vector<float>::clear (0x0049BAE0): finish drops back to start, storage and bytes untouched.
+// Behaviour test for std::vector<float>::clear (0x0049BAE0): finish drops back to start, storage and bytes untouched.
 #include <cstdio>
 #include <string.h>
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() {} };
 inline void* __copy_trivial(const void* __first, const void* __last, void* __result)
 {
@@ -43,7 +43,7 @@ public:
 int main()
 {
     float buffer[8] = { 1, 2, 3, 4, 5, 0, 0, 0 };
-    _STL::vector<float> v;
+    std::vector<float> v;
     v._M_start = buffer; v._M_finish = buffer + 5; v._M_end_of_storage = buffer + 8;
     v.clear();
     if (v._M_start != buffer || v._M_finish != buffer || v._M_end_of_storage != buffer + 8 || buffer[4] != 5.0f)

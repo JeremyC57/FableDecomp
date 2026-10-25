@@ -1,4 +1,4 @@
-// _STL::__unguarded_insertion_sort_aux(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* last, pair<EBodyLocation,CWoundMorphs::CEntry>*, CKeyPairCompareLess comp) -- insertion-sort pass with no lower-bound test, each entry sifted down by its signed body-location key
+// std::__unguarded_insertion_sort_aux(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<EBodyLocation,CWoundMorphs::CEntry>* last, pair<EBodyLocation,CWoundMorphs::CEntry>*, CKeyPairCompareLess comp) -- insertion-sort pass with no lower-bound test, each entry sifted down by its signed body-location key
 // Leaf: __unguarded_insertion_sort_aux
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007588A0, 96 bytes (+16 int3), `ret 8` (link-time __fastcall: first in ecx, last in
 //   edx, the value-type tag pointer and the empty comparator on the stack). No callees.
@@ -16,7 +16,7 @@ struct CWoundMorphsEntry {                       // CWoundMorphs::CEntry, 40 byt
     long Words[10];
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                     // +0x00
     B second;                                    // +0x04

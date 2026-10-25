@@ -1,13 +1,13 @@
-// 0046f06a _STL::vector<CAbilityButtonGuiDef>::operator=
+// 0046f06a std::vector<CAbilityButtonGuiDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
-// Leaf: ??4?$vector@UCAbilityButtonGuiDef@@@_STL@@QAEAAU01@ABU01@@Z
+// Leaf: ??4?$vector@UCAbilityButtonGuiDef@@@std@@QAEAAU01@ABU01@@Z
 #include <stdlib.h>
 #include <new>
 
 // Layout: vtable slot0 is a genuine virtual destructor; opaque payload follows vptr. Retail copy assignment and ctor operate on 92-byte CAbilityButtonGuiDef; active header absent; quarantined donor sizeof0x60 conflicts with retail stride0x5c.
 struct CAbilityButtonGuiDef {unsigned data[22];CAbilityButtonGuiDef();CAbilityButtonGuiDef(const CAbilityButtonGuiDef&);virtual ~CAbilityButtonGuiDef();CAbilityButtonGuiDef&operator=(const CAbilityButtonGuiDef&);};
 
-namespace _STL {
+namespace std {
 struct __false_type{__false_type(){}};
 template<class Tag> __declspec(noinline) void __fastcall _Destroy(CAbilityButtonGuiDef*a,CAbilityButtonGuiDef*b,const Tag&){while(a!=b){a->~CAbilityButtonGuiDef();++a;}}
 template<class T>__forceinline T*_Copy(T*first,T*last,T*out){for(int n=last-first;n>0;--n,++first,++out)*out=*first;return out;}
@@ -38,13 +38,13 @@ CAbilityButtonGuiDef::~CAbilityButtonGuiDef(){assert(Alive>0);--Alive;++Destroye
 CAbilityButtonGuiDef::CAbilityButtonGuiDef(const CAbilityButtonGuiDef&v){memcpy(data,v.data,sizeof(data));++Alive;++Copies;}
 CAbilityButtonGuiDef&CAbilityButtonGuiDef::operator=(const CAbilityButtonGuiDef&v){memcpy(data,v.data,sizeof(data));++Assigns;return *this;}
 
-namespace _STL {
+namespace std {
 template<>CAbilityButtonGuiDef*vector<CAbilityButtonGuiDef>::_M_allocate_and_copy(unsigned n,CAbilityButtonGuiDef*a,CAbilityButtonGuiDef*b){CAbilityButtonGuiDef*p=(CAbilityButtonGuiDef*)malloc(n*sizeof(CAbilityButtonGuiDef));CAbilityButtonGuiDef*q=p;while(a!=b){new(q)CAbilityButtonGuiDef(*a);++q;++a;}return p;}
 template<>void vector<CAbilityButtonGuiDef>::_M_clear(){for(CAbilityButtonGuiDef*p=_M_start;p!=_M_finish;++p)p->~CAbilityButtonGuiDef();free(_M_start);}
 }
 int main(){
  {CAbilityButtonGuiDef data[5];for(unsigned i=0;i<5;++i)for(unsigned j=0;j<22;++j)data[i].data[j]=100*i+j;
- _STL::vector<CAbilityButtonGuiDef>a,b;memset(&a,0,sizeof(a));b._M_start=data;b._M_finish=data+3;b._M_end_of_storage=data+5;
+ std::vector<CAbilityButtonGuiDef>a,b;memset(&a,0,sizeof(a));b._M_start=data;b._M_finish=data+3;b._M_end_of_storage=data+5;
  a=b;assert(Alive==8&&Copies==3&&Assigns==0&&Destroyed==0);assert(a._M_finish-a._M_start==3&&a._M_end_of_storage-a._M_start==3&&memcmp(a._M_start,data,3*sizeof(CAbilityButtonGuiDef))==0);
  a=a;assert(Copies==3&&Assigns==0&&Destroyed==0);
  b._M_finish=data+1;a=b;assert(Alive==6&&Assigns==1&&Destroyed==2&&a._M_finish-a._M_start==1);

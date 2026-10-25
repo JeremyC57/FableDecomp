@@ -20,7 +20,7 @@ public:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
@@ -83,7 +83,7 @@ public:
     _Rep_type _M_t;
     map() : _M_t(C(), A()) { }
 };
-} // namespace _STL
+} // namespace std
 
 struct CScriptBase {                                        // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
@@ -104,7 +104,7 @@ public:
     bool PlayedThunderCS;                                   // +0x48
     bool QuestStartScreened;
     bool JackSpoken;                                        // +0x4a
-    _STL::map<CCharString, CCharString> csargs;             // +0x4c
+    std::map<CCharString, CCharString> csargs;             // +0x4c
     CQ_HeroSoulsThunderScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
     virtual ~CQ_HeroSoulsThunderScript();
 };

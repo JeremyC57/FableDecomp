@@ -1,4 +1,4 @@
-// _STL::vector<CCardDef>::operator=(const vector<CCardDef>& x) -- STLport copy assignment of a 68-byte card def vector: reallocate-and-copy when x outgrows the capacity, else assign over the live elements and destroy the surplus or copy-construct the tail
+// std::vector<CCardDef>::operator=(const vector<CCardDef>& x) -- STLport copy assignment of a 68-byte card def vector: reallocate-and-copy when x outgrows the capacity, else assign over the live elements and destroy the surplus or copy-construct the tail
 // Leaf: ??4?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EBF32, 234 bytes, `ret 4` (thiscall).
 // Caller: CTavernGameCardBaseDef::operator= @ 0x004EBC16 (landed; CardPack at +0x78, after CardOrders through 0x004EBCA9).
@@ -26,7 +26,7 @@ public:
     long CardVal;                                           // +0x40
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { };
 template <class T> struct __type_traits {
     typedef __false_type has_trivial_assignment_operator;

@@ -1,4 +1,4 @@
-// _STL::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural copy of a CCharString-keyed red-black subtree (the map<CCharString, 4-byte value> instantiation): clone the root under p, recurse down each right child, walk the left spine iteratively
+// std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural copy of a CCharString-keyed red-black subtree (the map<CCharString, 4-byte value> instantiation): clone the root under p, recurse down each right child, walk the left spine iteratively
 // Leaf: ?_M_copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D2D00, 207 bytes (+ int3 padding), thiscall `ret 8`.
 // Callers: itself (0x009D2D56, 0x009D2DA8) and the tree's operator= 0x009D3420 (landed CRetailTree009d2d00_operator_009d3420,
@@ -22,7 +22,7 @@ public:
     CCharString(const CCharString& other);             // 0x0099EC30
 };
 
-namespace _STL
+namespace std
 {
     template <class _T1, class _T2>
     struct pair

@@ -90,7 +90,7 @@ typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo TPersistInfo;
 static int gMallocs = 0;
 static int gFrees = 0;
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -151,8 +151,8 @@ public:
     }
 };
 }
-typedef _STL::pair<CCharString, TPersistInfo> TElem;
-typedef _STL::vector<TElem> TVec;
+typedef std::pair<CCharString, TPersistInfo> TElem;
+typedef std::vector<TElem> TVec;
 
 int main()
 {

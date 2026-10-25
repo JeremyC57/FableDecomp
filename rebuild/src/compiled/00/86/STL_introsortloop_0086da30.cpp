@@ -1,4 +1,4 @@
-// 0086da30 _STL::__introsort_loop
+// 0086da30 std::__introsort_loop
 // Flags: /Gr
 // Leaf: __introsort_loop
 // Layout: 12byte value, unsigned key+0 and8byte trivially copied payload+4;4byte comparator; actual payload aliases unknown.

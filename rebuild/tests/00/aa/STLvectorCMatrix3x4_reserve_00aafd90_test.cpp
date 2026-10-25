@@ -1,4 +1,4 @@
-// Behaviour test for _STL::vector<CMatrix3x4>::reserve(size_type n) @ 0x00AAFD90
+// Behaviour test for std::vector<CMatrix3x4>::reserve(size_type n) @ 0x00AAFD90
 #include <cstdio>
 #include <cstdlib>
 #include <new>

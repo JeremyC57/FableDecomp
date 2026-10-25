@@ -1,5 +1,5 @@
-// _STL::__uninitialized_copy(CScriptEntry* first, CScriptEntry* last, CScriptEntry* result, const __false_type&) -- (CRangeCompressor::CScriptEntry) copy-construct [first, last) into raw storage at result, returning the end
-// Leaf: ??$__uninitialized_copy@PAUCScriptEntry@CRangeCompressor@@PAU12@@_STL@@YIPAUCScriptEntry@CRangeCompressor@@PAU12@00ABU__false_type@0@@Z
+// std::__uninitialized_copy(CScriptEntry* first, CScriptEntry* last, CScriptEntry* result, const __false_type&) -- (CRangeCompressor::CScriptEntry) copy-construct [first, last) into raw storage at result, returning the end
+// Leaf: ??$__uninitialized_copy@PAUCScriptEntry@CRangeCompressor@@PAU12@@std@@YIPAUCScriptEntry@CRangeCompressor@@PAU12@00ABU__false_type@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3B1D0, 74 bytes (+ int3 padding), __fastcall (first ecx, last edx), `ret 8`.
 // Identity: called twice by vector<CScriptEntry>::_M_insert_overflow 0x00F3B330, whose only caller is push_back
 //   0x00F3B420, called three times from CRangeCompressor::CalcCompressionScript 0x00F3ABF0 (recursive, `ret 14h` = its five
@@ -26,7 +26,7 @@ public:
 };
 typedef CRangeCompressor::CScriptEntry CScriptEntry;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -67,4 +67,4 @@ _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __la
 
 template CScriptEntry* __fastcall __uninitialized_copy(CScriptEntry*, CScriptEntry*, CScriptEntry*, const __false_type&);
 
-}   // namespace _STL
+}   // namespace std

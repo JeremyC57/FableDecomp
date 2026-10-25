@@ -1,5 +1,5 @@
 address	status	bytes	test	note
-00a55880	RELOCATION_MATCH	220v220	PASS	1 grade; _STL::__copy map<CCharString,int> iterators -> back_insert_iterator<vector<pair<CCharString,int> > >
+00a55880	RELOCATION_MATCH	220v220	PASS	1 grade; std::__copy map<CCharString,int> iterators -> back_insert_iterator<vector<pair<CCharString,int> > >
 00a55a80	RELOCATION_MATCH	111v111	PASS	1 grade; C3DBoxF::ToC3DBoxI
 00a565c0	RELOCATION_MATCH	172v172	PASS	1 grade; GFDXGetHermiteSplinePosition
 00a56aa0	DIFFER	167v167	-	2 grades; CCardinalSpline ctor; register swap (ecx/edx) in the first inline push_back
@@ -8,12 +8,12 @@ address	status	bytes	test	note
 00a57ef0	RELOCATION_MATCH	128v128	PASS	2 grades; NBBBMaths::CLinearSpline::GetLength
 00a58720	MATCH	100v100	PASS	1 grade; CProjectOntoPlane::operator() (descriptive functor)
 00a58a60	RELOCATION_MATCH	228v228	PASS	2 grades; NBBBMaths::IsPointInsideTriangleInThePlane
-00a5a540	MATCH	50v50	PASS	1 grade; /Gr; _STL::__unguarded_insertion_sort_aux<float>
-00a5a770	RELOCATION_MATCH	87v87	PASS	1 grade; /Gr; _STL::__linear_insert<float>
-00a5a860	RELOCATION_MATCH	50v50	PASS	1 grade; /Gr; _STL::__insertion_sort<float>
-00a5a8a0	RELOCATION_MATCH	102v102	PASS	1 grade; /Gr; _STL::__partial_sort<float>
+00a5a540	MATCH	50v50	PASS	1 grade; /Gr; std::__unguarded_insertion_sort_aux<float>
+00a5a770	RELOCATION_MATCH	87v87	PASS	1 grade; /Gr; std::__linear_insert<float>
+00a5a860	RELOCATION_MATCH	50v50	PASS	1 grade; /Gr; std::__insertion_sort<float>
+00a5a8a0	RELOCATION_MATCH	102v102	PASS	1 grade; /Gr; std::__partial_sort<float>
 00a5a910	RELOCATION_MATCH	69v69	PASS	1 grade; back_insert_iterator<vector<C2DVector> >::operator=
-00a5a9d0	DIFFER	211v203	-	4 grades; _STL::transform with CProjectOntoPlane inlined; X stored via a named local
+00a5a9d0	DIFFER	211v203	-	4 grades; std::transform with CProjectOntoPlane inlined; X stored via a named local
 00a5c2b0	DIFFER	98v67	-	1 grade; NVectorMath::GFFinishPartialSlerp; retail_asm candidate (hand SSE)
 00a5c300	DIFFER	95v89	-	1 grade; NVectorMath::GFClear4DVectors; retail_asm candidate (hand SSE arm)
 00a5d7c0	RELOCATION_MATCH	60v60	PASS	2 grades; CShaderResource::OpenShaderBank (manifest CResourceIndex_InitializeFromBank)
@@ -38,4 +38,4 @@ address	status	bytes	test	note
 00a66f20	RELOCATION_MATCH	96v96	PASS	1 grade; CMouse::CMouse(CInputManager&, bool)
 00a698f0	RELOCATION_MATCH	136v136	PASS	2 grades (+1 no-op regrade of an unchanged source); CTextureManager::CalculateTextureSize
 00a6abe0	RELOCATION_MATCH	62v62	PASS	1 grade; CTextureManager::ResizePoolTextureCount
-00a6b000	MATCH	66v66	PASS	1 grade; _STL::fill<CIVCountedPointer<CLocalDetailPlacementGrid>*>
+00a6b000	MATCH	66v66	PASS	1 grade; std::fill<CIVCountedPointer<CLocalDetailPlacementGrid>*>

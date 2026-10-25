@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A32020 _STL::__uninitialized_fill_n over the 20-byte helper-point entry: n copies of x built in
+// Behaviour test for 0x00A32020 std::__uninitialized_fill_n over the 20-byte helper-point entry: n copies of x built in
 // raw storage, the end pointer returned; n == 0 builds nothing and returns first.
 #include <cstdio>
 #include <new>

@@ -1,4 +1,4 @@
-// _STL::vector<pair<float,CCharString>>::vector(const vector& x) -- STLport vector copy constructor for the CSubtitledMessage text map's 8-byte pair<float, CCharString> elements: allocate exactly x.size() elements (none when empty), then __uninitialized_copy x's range into them
+// std::vector<pair<float,CCharString>>::vector(const vector& x) -- STLport vector copy constructor for the CSubtitledMessage text map's 8-byte pair<float, CCharString> elements: allocate exactly x.size() elements (none when empty), then __uninitialized_copy x's range into them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D0830, 87 bytes, `ret 4`.
 // Callers: 0x004D18C8, 0x004D1E99, 0x004D202F (vector-map copies in the same TU).
@@ -15,7 +15,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 

@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size, const C4DVector& x) -- STLport vector<C4DVector>::resize(n, x): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() copies of x at the end
-// Leaf: ?resize@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@_STL@@@_STL@@QAEXIABVC4DVector@@@Z
+// std::vector::resize(unsigned int new_size, const C4DVector& x) -- STLport vector<C4DVector>::resize(n, x): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() copies of x at the end
+// Leaf: ?resize@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEXIABVC4DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0098DA90, 68 bytes, thiscall on the vector, `ret 8`.
 // Identity: sole caller CShaderRenderManager::SetVertexShaderConstantLayout 0x0098B5E0: `LightGlobals.resize(Max(n,
 //   size()), C4DVector(0, 0, 0, 1))` on the CArray<C4DVector> at retail +0x194 (the temporary's 1.0f at 0x0098B810);
@@ -16,7 +16,7 @@ public:
     float X, Y, Z, W;
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
@@ -57,4 +57,4 @@ public:
 }
 
 // 0x0098CF70 erase, 0x0098D360 _M_fill_insert (out of line in retail)
-template void _STL::vector<C4DVector>::resize(unsigned int, const C4DVector&);
+template void std::vector<C4DVector>::resize(unsigned int, const C4DVector&);

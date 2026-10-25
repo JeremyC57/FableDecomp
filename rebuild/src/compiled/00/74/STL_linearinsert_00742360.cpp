@@ -1,4 +1,4 @@
-// _STL::__linear_insert(pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* first, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* last, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo> val, CKeyPairCompareLess comp) -- insert one mode-registry entry: a key below the first shifts the run up one slot, anything else goes through the unguarded insert
+// std::__linear_insert(pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* first, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo>* last, pair<unsigned long,CTCCreatureModeManager::CRegisteredModeInfo> val, CKeyPairCompareLess comp) -- insert one mode-registry entry: a key below the first shifts the run up one slot, anything else goes through the unguarded insert
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00742360, 99 bytes (+13 int3), `ret 0Ch` (link-time __fastcall: first in ecx, last in
 //   edx, the 8-byte value and the empty comparator on the stack).
@@ -19,7 +19,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                             // +0x00
     B second;                                            // +0x04
@@ -29,13 +29,13 @@ template <class A, class B> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {  // empty, passed by value
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModePair;
+typedef std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModePair;
 typedef CKeyPairCompareLess<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> TModeLess;
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag {};
 
 template <class RandomAccessIter, class BidirectionalIter, class Distance>

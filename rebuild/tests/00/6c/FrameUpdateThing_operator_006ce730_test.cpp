@@ -13,7 +13,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 #define __forceinline inline
 #define __declspec(x)
 #endif
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 
 
@@ -141,8 +141,8 @@ public:
 
 namespace {
 struct FrameUpdateThing {
-    _STL::vector<const CSteeringAgent*>& Agents;       // +0x00
-    FrameUpdateThing(_STL::vector<const CSteeringAgent*>& agents) : Agents(agents) { }
+    std::vector<const CSteeringAgent*>& Agents;       // +0x00
+    FrameUpdateThing(std::vector<const CSteeringAgent*>& agents) : Agents(agents) { }
     bool operator()(const CThing& thing) const;
 };
 
@@ -180,7 +180,7 @@ int main()
     obstacle.m_interfaces.first = oe; obstacle.m_interfaces.last = oe + 1; SetBit(&obstacle, 0xfe);
     CInterfaceMap::SEntry be[2]; be[0].type = 7; be[0].component = (CTCBase*)&nav; be[1].type = 0xfe; be[1].component = (CTCBase*)&obs;
     both.m_interfaces.first = be; both.m_interfaces.last = be + 2; SetBit(&both, 7); SetBit(&both, 0xfe);
-    _STL::vector<const CSteeringAgent*> agents; agents._M_start = agents._M_finish = agents._M_end_of_storage = 0;
+    std::vector<const CSteeringAgent*> agents; agents._M_start = agents._M_finish = agents._M_end_of_storage = 0;
     FrameUpdateThing f(agents);
     if (!f(creature) || !f(obstacle) || !f(plain) || !f(both)) ok = 0;
     if (agents._M_finish - agents._M_start != 3) ok = 0;

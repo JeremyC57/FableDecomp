@@ -1,4 +1,4 @@
-// _STL::map::operator[](const long& k) -- STLport subscript of map<long, CEngineSceneRenderStats>: lower_bound the key, insert {key, zeroed stats} at that hint when absent, return the stats record
+// std::map::operator[](const long& k) -- STLport subscript of map<long, CEngineSceneRenderStats>: lower_bound the key, insert {key, zeroed stats} at that hint when absent, return the stats record
 // Leaf: ??A?$map@JVCEngineSceneRenderStats@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B97B60, 163 bytes, __fastcall `ret 4`.
 // Identity: five call sites (CEngineScene::RenderLayerCells 0x00B93F40 .. CEngineSceneGrid::RenderAll 0x00B943F0); the
@@ -24,7 +24,7 @@ public:
           MovingPrimitivesTouched(0), VisibleCells(0), BoundingBoxTests(0), BoundingSphereTests(0) { }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     typedef T1 first_type;
@@ -111,6 +111,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template CEngineSceneRenderStats& _STL::map<long, CEngineSceneRenderStats>::operator[](const long&);
+template CEngineSceneRenderStats& std::map<long, CEngineSceneRenderStats>::operator[](const long&);

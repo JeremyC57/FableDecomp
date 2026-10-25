@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(CSkeletalMorph* first, unsigned long n, const CSkeletalMorph& x, const __false_type&) -- copy-construct n copies of a skeletal-morph entry {long, CCharString, float} into raw storage and return the end
+// std::__uninitialized_fill_n(CSkeletalMorph* first, unsigned long n, const CSkeletalMorph& x, const __false_type&) -- copy-construct n copies of a skeletal-morph entry {long, CCharString, float} into raw storage and return the end
 // Leaf: __uninitialized_fill_n
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00786DE0, 56 bytes, `ret 8` (/Gr algorithm TU: first in ecx, n in edx,
 //   the element reference and the empty tag on the stack).

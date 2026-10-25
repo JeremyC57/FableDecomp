@@ -9,7 +9,7 @@
   the tag argument's `lea edx` (187v191). Direct calls with `__false_type()` restore it (0x00A0EBC0/EC80).
 - **A `__fastcall` hidden-pointer C2DVector result needs a named local and a user copy constructor.** Returning the call
   straight passes the hidden pointer through (20v35, 0x00A043A0). This is the 2D twin of the wave-25 C3DVector lesson.
-- **The STLport 4.6 deque bodies match verbatim in `_STL`.** That covers 18 rows (0x00A0E2A0..0x00A0FC80).
+- **The STLport 4.6 deque bodies match verbatim in `std`.** That covers 18 rows (0x00A0E2A0..0x00A0FC80).
   - `_M_advance` stays out of line (a declaration only).
   - In `resize`, `operator+(int)` must be declared without a body, because retail calls 0x00A0E980 there while
     `operator[]` inlines the same arithmetic.

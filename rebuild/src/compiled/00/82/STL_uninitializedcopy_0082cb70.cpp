@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(const CMinimapData* first, const CMinimapData* last, CMinimapData* result, const __false_type&) -- copy-construct a range of minimap records into raw storage (the vector<CMinimapData> reallocation copy)
+// std::__uninitialized_copy(const CMinimapData* first, const CMinimapData* last, CMinimapData* result, const __false_type&) -- copy-construct a range of minimap records into raw storage (the vector<CMinimapData> reallocation copy)
 // Leaf: ??$__uninitialized_copy@PBVCMinimapData@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082CB70, 203 bytes (+5 int3), link-time __fastcall `ret 8` (first in ecx, last in
 //   edx, result and the tag reference on the stack).
@@ -52,7 +52,7 @@ public:
     C2DExtentsI(const C2DExtentsI& other) : X(other.X), Y(other.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class T> inline void _Construct(T* p, const T& value) { new (p) T(value); }
@@ -125,15 +125,15 @@ class CMinimapData {                                    // Ego_r.pdb CMinimapDat
 public:
     enum MinimapTheme { MINIMAP_THEME_FIRST };          // enumerators not needed
     C2DExtentsI                        MinimapExtents;          // +0x00
-    _STL::vector<MinimapTheme>         MinimapThemeList;        // +0x08 (copy ctor out of line, 0x0082C620)
+    std::vector<MinimapTheme>         MinimapThemeList;        // +0x08 (copy ctor out of line, 0x0082C620)
     CSurface                           MinimapSurface;          // +0x14
     CTexture                           MinimapTexture;          // +0x24
     unsigned long                      MaxMinimapThemeColours;  // +0x2c
-    _STL::vector<CRGBColour>           ColourMinimapTheme;      // +0x30
+    std::vector<CRGBColour>           ColourMinimapTheme;      // +0x30
 };
 
 // The theme list's copy constructor is a separate function in retail (0x0082C620); the colour list's is inline.
-template <> _STL::vector<CMinimapData::MinimapTheme, _STL::allocator<CMinimapData::MinimapTheme> >::vector(
-    const _STL::vector<CMinimapData::MinimapTheme, _STL::allocator<CMinimapData::MinimapTheme> >& __x);   // 0x0082C620
+template <> std::vector<CMinimapData::MinimapTheme, std::allocator<CMinimapData::MinimapTheme> >::vector(
+    const std::vector<CMinimapData::MinimapTheme, std::allocator<CMinimapData::MinimapTheme> >& __x);   // 0x0082C620
 
-template CMinimapData* __fastcall _STL::__uninitialized_copy(const CMinimapData*, const CMinimapData*, CMinimapData*, const _STL::__false_type&);
+template CMinimapData* __fastcall std::__uninitialized_copy(const CMinimapData*, const CMinimapData*, CMinimapData*, const std::__false_type&);

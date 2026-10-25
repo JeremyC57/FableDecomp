@@ -1,4 +1,4 @@
-// _STL::uninitialized_fill_n(C3DTriangle2* first, unsigned int n, const C3DTriangle2& x) -- STLport three-argument front end: placement copy-construct n triangles from x, return first + n
+// std::uninitialized_fill_n(C3DTriangle2* first, unsigned int n, const C3DTriangle2& x) -- STLport three-argument front end: placement copy-construct n triangles from x, return first + n
 // Leaf: ??$uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A520B0, length 48 bytes, `ret 4`.
 // Caller: 0x00A5536E (the vector<C3DTriangle2> fill-insert helper). No callees.
@@ -15,7 +15,7 @@ public:
     unsigned short VertexIndex[3];                   // +0x00
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // STLport _IS_POD_ITER result for a class element
 
 template <class _T1, class _T2>

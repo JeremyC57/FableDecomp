@@ -32,7 +32,7 @@ public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     T* _M_start;
@@ -54,8 +54,8 @@ struct CObjectAugmentationsDef : CDefClassBase {
     long MaximumNumberOfSlots;                   // +0x2C
     unsigned char AugmentationParticles[0x0c];   // +0x30 map<EObjectAugmentationType, CObjectAugmentationParticleSet>
     unsigned long EmptySlotName;                 // +0x3C
-    _STL::vector<long> InitialAugmentations;     // +0x40
-    const _STL::vector<long>& GetInitialAugmentations() const { return InitialAugmentations; }
+    std::vector<long> InitialAugmentations;     // +0x40
+    const std::vector<long>& GetInitialAugmentations() const { return InitialAugmentations; }
 };
 
 class CTCObjectAugmentations {
@@ -66,7 +66,7 @@ public:
     bool IsInGlobalUpdateTCs;                                        // +0x09
     CDefPointer<const CObjectAugmentationsDef> PDef;                 // +0x0C
     bool LoadedFromSaveGame;                                         // +0x10
-    _STL::vector<CDefPointer<const CThingBaseDef> > Augmentations;  // +0x14
+    std::vector<CDefPointer<const CThingBaseDef> > Augmentations;  // +0x14
     long GetFreeSlot() const
     {
         for (unsigned int i = 0; i < Augmentations.size(); ++i) {

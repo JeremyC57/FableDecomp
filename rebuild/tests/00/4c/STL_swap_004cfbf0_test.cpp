@@ -1,4 +1,4 @@
-// Behaviour test for 0x004CFBF0 _STL::swap<pair<float,CCharString>>.
+// Behaviour test for 0x004CFBF0 std::swap<pair<float,CCharString>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("004cfbf0_TEST FAIL\n"); return 1; } } while (0)

@@ -1,4 +1,4 @@
-// _STL::remove_if(C3DVector* first, C3DVector* last, CIsOutsideRadius pred) -- drop the points farther than the radius from the centre (3D), compacting the rest to the front; return the new end
+// std::remove_if(C3DVector* first, C3DVector* last, CIsOutsideRadius pred) -- drop the points farther than the radius from the centre (3D), compacting the rest to the front; return the new end
 // Leaf: ??$remove_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C34A0, length 100 bytes (+ int3 padding), `ret 10h`.
 // Identity: one caller, 0x008C179B in the landed CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition
@@ -37,7 +37,7 @@ struct CIsOutsideRadius {                       // 16 bytes (descriptive name, a
     }
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };

@@ -6,7 +6,7 @@ static int gMallocs = 0;
 static int gFrees = 0;
 static void* test_malloc(unsigned int n) { ++gMallocs; return malloc(n); }
 static void test_free(void* p) { ++gFrees; free(p); }
-namespace _STL {
+namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator {
 public:
@@ -87,8 +87,8 @@ struct SStaticTreeValue013B8A8C {
     long m_b;
     long m_c;
 };
-typedef _STL::map<long, SStaticTreeValue013B8A8C> CStaticTree;
-typedef _STL::_Rb_tree_node<CStaticTree::value_type> CTreeNode;
+typedef std::map<long, SStaticTreeValue013B8A8C> CStaticTree;
+typedef std::_Rb_tree_node<CStaticTree::value_type> CTreeNode;
 static void Link3(CStaticTree& m)                   // root with a left and a right child
 {
     CTreeNode* r = m._M_t._M_header.allocate(1);

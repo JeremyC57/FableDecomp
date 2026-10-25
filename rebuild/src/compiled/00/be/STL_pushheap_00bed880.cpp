@@ -1,5 +1,5 @@
-// _STL::__push_heap(pair<long,CCompositeSurfaceInfo>* first, int holeIndex, int topIndex, pair<long,CCompositeSurfaceInfo> val, CKeyPairCompareLess<long,CCompositeSurfaceInfo> comp) -- STLport heap sift-up of the composed-surface vector map: move parents with a smaller key down, then store val in the hole
-// Leaf: ??$__push_heap@PAU?$pair@JVCCompositeSurfaceInfo@@@_STL@@
+// std::__push_heap(pair<long,CCompositeSurfaceInfo>* first, int holeIndex, int topIndex, pair<long,CCompositeSurfaceInfo> val, CKeyPairCompareLess<long,CCompositeSurfaceInfo> comp) -- STLport heap sift-up of the composed-surface vector map: move parents with a smaller key down, then store val in the hole
+// Leaf: ??$__push_heap@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BED880, 280 bytes (+ int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; topIndex, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): long key +0 (SIGNED compare, `jge`), CCompositeSurfaceInfo +4 (Ego_r.pdb, 12
@@ -72,7 +72,7 @@ public:
     CCountedPointer<CCompositeSurfaceCache> Cache;      // +0x4
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -82,11 +82,11 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<long, CCompositeSurfaceInfo> CSurfacePair;
+typedef std::pair<long, CCompositeSurfaceInfo> CSurfacePair;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp)
 {

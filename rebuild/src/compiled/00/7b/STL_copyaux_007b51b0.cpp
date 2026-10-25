@@ -1,4 +1,4 @@
-// _STL::__copy_aux(_Deque_iterator<CCrimeWaitingForBribe> first, _Deque_iterator<CCrimeWaitingForBribe> last, back_insert_iterator<vector<CCrimeWaitingForBribe> > result, const __false_type&) -- STLport copy dispatch for non-pointer iterators: forwards to the random-access __copy with a fresh category tag and a null distance pointer
+// std::__copy_aux(_Deque_iterator<CCrimeWaitingForBribe> first, _Deque_iterator<CCrimeWaitingForBribe> last, back_insert_iterator<vector<CCrimeWaitingForBribe> > result, const __false_type&) -- STLport copy dispatch for non-pointer iterators: forwards to the random-access __copy with a fresh category tag and a null distance pointer
 // Leaf: ??$__copy_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B51B0, 91 bytes (+5 int3), `ret 24h`: /Gr __fastcall returning the inserter
 //   through the hidden pointer in ecx (passed straight on to __copy), the __false_type tag reference in edx (unused),
@@ -11,7 +11,7 @@
 //   _STLP_DISTANCE_TYPE(__first, _InputIter));` -- the null distance pointer and the inserter pushed first, then the
 //   two iterators copied into the argument area (last, then first: right to left), the random_access_iterator_tag
 //   temporary homed on the inserter's dead argument slot (`lea edx,[esp+50h]`).
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 }
@@ -22,7 +22,7 @@ public:
     long Type;                                              // +0x04 EOpinionDeedType
 };
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     typedef T value_type;

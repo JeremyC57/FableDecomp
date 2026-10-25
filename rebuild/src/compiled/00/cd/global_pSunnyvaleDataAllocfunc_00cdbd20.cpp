@@ -20,7 +20,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-namespace _STL {
+namespace std {
 template <class T> class vector {
 public:
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
@@ -46,7 +46,7 @@ public:
     unsigned char _gameflowState04[0x50];               // PostSavePosition .. CondemnedManMeetsBodyGuardCutSceneFinished
     CCharString TeddySolution;                          // +0x54
     unsigned char _gameflowState58[0xDC];               // OrchardFarmRaidLastCompleted .. HeroWoreMask
-    _STL::vector<CCharString> BoastRegions;             // +0x134
+    std::vector<CCharString> BoastRegions;             // +0x134
     bool SingingStonesInSync;                           // +0x140
 };
 }

@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
 struct C3DTriangle2 { unsigned short VertexIndex[3]; };
-// the row: _STL::fill<C3DTriangle2*, C3DTriangle2>
+// the row: std::fill<C3DTriangle2*, C3DTriangle2>
 static void __fastcall FillTriangles(C3DTriangle2* first, C3DTriangle2* last, const C3DTriangle2& val)
 {
     for (; first != last; ++first)

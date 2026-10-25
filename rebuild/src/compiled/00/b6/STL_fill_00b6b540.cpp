@@ -1,4 +1,4 @@
-// _STL::fill(CVertexShader* first, CVertexShader* last, const CVertexShader& val) -- assign val to every vertex shader handle of [first, last)
+// std::fill(CVertexShader* first, CVertexShader* last, const CVertexShader& val) -- assign val to every vertex shader handle of [first, last)
 // Leaf: ??$fill@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6B540, 60 bytes. __fastcall (first ecx, last edx), `ret 4` (&val on
 //   the stack).
@@ -44,7 +44,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {

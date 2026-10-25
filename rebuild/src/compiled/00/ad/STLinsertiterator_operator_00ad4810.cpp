@@ -1,4 +1,4 @@
-// _STL::insert_iterator::operator=(const value_type& val) -- STLport insert iterator over set<unsigned long>: insert val at the remembered position (hinted insert_unique), then step the position past the inserted element
+// std::insert_iterator::operator=(const value_type& val) -- STLport insert iterator over set<unsigned long>: insert val at the remembered position (hinted insert_unique), then step the position past the inserted element
 // Leaf: ??4?$insert_iterator@V?$set@K
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD4810, 104 bytes (+8 int3), thiscall `ret 4`.
 // Identity: callers 0x00AD4909 (the STLport __copy 0x00AD48F0 into this inserter) and 0x00AD5A91, 0x00AD6BFF,
@@ -52,7 +52,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -245,7 +245,7 @@ public:
     insert_iterator<_Container>& operator++(int) { return *this; }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::set<unsigned long, _STL::less<unsigned long>, _STL::allocator<unsigned long> > TIndexSet;
-template _STL::insert_iterator<TIndexSet>& _STL::insert_iterator<TIndexSet>::operator=(const unsigned long&);
+typedef std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long> > TIndexSet;
+template std::insert_iterator<TIndexSet>& std::insert_iterator<TIndexSet>::operator=(const unsigned long&);

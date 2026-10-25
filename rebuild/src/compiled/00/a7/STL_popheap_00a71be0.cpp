@@ -1,11 +1,11 @@
-// _STL::__pop_heap(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, pair<CCharString,C3DMeshVolume>* result, pair<CCharString,C3DMeshVolume> val, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp, int*) -- heap-sort pop over the named containment volumes: move the root to result, then sift val down from the root of the shortened heap
+// std::__pop_heap(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, pair<CCharString,C3DMeshVolume>* result, pair<CCharString,C3DMeshVolume> val, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp, int*) -- heap-sort pop over the named containment volumes: move the root to result, then sift val down from the root of the shortened heap
 // Leaf: ??$__pop_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A71BE0, 178 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx; result, the 16-byte value, the empty comparator and the distance-type tag pointer on the stack,
 //   `ret 1Ch`).
 // Callees: CCharString::operator= 0x0099EFB0 and C3DMeshVolume::operator= 0x00A32960 (the `*result = *first` pair
 //   assignment), CCharString::CCharString(const CCharString&) 0x0099EC30 (x2, the by-value copy for __adjust_heap),
-//   _STL::__adjust_heap 0x00A71370 (__fastcall first/hole, then len, the 16-byte value, the comparator), the count
+//   std::__adjust_heap 0x00A71370 (__fastcall first/hole, then len, the 16-byte value, the comparator), the count
 //   block's DeleteFunc, operator delete 0x00BFE9BC, CCharString::~CCharString 0x0099EAE0 (x2).
 // Identity: the manifest's "std_Adjust_Heap_Pair" is descriptive. The element is the 16-byte
 //   pair<CCharString, C3DMeshVolume> of CPhysicsMesh::ContainmentVolumes ordered by the CCharString key.
@@ -95,7 +95,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> class pair {
 public:
     _T1 first;
@@ -106,10 +106,10 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x00A71370

@@ -1,4 +1,4 @@
-// _STL::__uninitialized_fill_n(pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* first, unsigned int n, const pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>& x, const __false_type&) -- copy-construct n copies of one danger-thing entry into raw storage; returns the end of the copies
+// std::__uninitialized_fill_n(pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* first, unsigned int n, const pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>& x, const __false_type&) -- copy-construct n copies of one danger-thing entry into raw storage; returns the end of the copies
 // Leaf: __uninitialized_fill_n
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00748AA0, 74 bytes (+6 int3), `ret 8` (link-time __fastcall: first in ecx, n in edx,
 //   the value reference and the __false_type reference on the stack).
@@ -38,7 +38,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                             // +0x00
     B second;                                            // +0x08
@@ -46,9 +46,9 @@ template <class A, class B> struct pair {
 };
 }
 
-typedef _STL::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> TDangerPair;   // 16 bytes
+typedef std::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> TDangerPair;   // 16 bytes
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class T1, class T2>

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00992750 _STL::__uninitialized_copy over the 36-byte (long key, sound-bank record) entries: __uninitialized_copy: copies every entry into raw storage (counts bumped), returns the end.
+// Behaviour test for 0x00992750 std::__uninitialized_copy over the 36-byte (long key, sound-bank record) entries: __uninitialized_copy: copies every entry into raw storage (counts bumped), returns the end.
 // The record is modelled with a shared reference count (copies bump it, assignments move it, destruction drops it) so
 // leaked or double-destroyed copies show up as a non-zero final count.
 #include <cstdio>

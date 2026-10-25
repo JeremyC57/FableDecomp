@@ -22,7 +22,7 @@ public:
 typedef CEngineSubPrimitiveRenderer::CSortElement CSortElement;
 
 // STLport 4.6 sort / stable_sort machinery over CSortElement (the model the chunk-428 sources compile).
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -365,9 +365,9 @@ void __fastcall __stable_sort_aux(_RandomAccessIter __first, _RandomAccessIter _
     else
         __stable_sort_adaptive(__first, __last, buf.begin(), _Distance(buf.size()), __comp);
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::less<CSortElement> CLess;
+typedef std::less<CSortElement> CLess;
 
 // Test helpers: elements tagged with their original index so stability is checkable.
 static CEngineSubPrimitiveBase* Tag(int i) { return (CEngineSubPrimitiveBase*)(size_t)(i + 1); }
@@ -411,12 +411,12 @@ int main()
     for (int i = 0; i < 64; ++i) a[i] = CSortElement((unsigned long)(i / 3) * 2, Tag(i));
     for (unsigned long v = 0; v < 50; ++v) {
         CSortElement key(v, 0);
-        CSortElement* r = _STL::__lower_bound(a, a + 64, key, CLess(), (int*)0);
+        CSortElement* r = std::__lower_bound(a, a + 64, key, CLess(), (int*)0);
         int expect = 0;
         while (expect < 64 && a[expect].SortValue < v) ++expect;
         if (r != a + expect) { std::printf("00b85240_TEST FAIL\n"); return 1; }
     }
-    if (_STL::__lower_bound(a, a, CSortElement(5, 0), CLess(), (int*)0) != a) { std::printf("00b85240_TEST FAIL\n"); return 1; }
+    if (std::__lower_bound(a, a, CSortElement(5, 0), CLess(), (int*)0) != a) { std::printf("00b85240_TEST FAIL\n"); return 1; }
     std::printf("00b85240_TEST PASS\n");
     return 0;
 }

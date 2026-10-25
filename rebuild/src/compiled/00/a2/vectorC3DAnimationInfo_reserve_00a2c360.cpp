@@ -1,5 +1,5 @@
 // vector<C3DAnimationInfo>::reserve(unsigned int n) -- grow the mesh bank's animation info array to n entries, copying the existing infos into a fresh block
-// Leaf: ?reserve@?$vector@VC3DAnimationInfo@@V?$allocator@VC3DAnimationInfo@@@_STL@@@_STL@@QAEXI@Z
+// Leaf: ?reserve@?$vector@VC3DAnimationInfo@@V?$allocator@VC3DAnimationInfo@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2C360, 203 bytes, `ret 4`. Only caller 0x00A2671A (CMeshDataBank sizing its
 //   +0x3A4 animation info array). The catalog label "vector_reserve_generic_0x28" is descriptive.
 // Callees: malloc 0x00BFEA0E (inline allocator), STLport `__uninitialized_copy(first, last, result, const
@@ -59,7 +59,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -122,4 +122,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 }
 
-template void _STL::vector<C3DAnimationInfo>::reserve(unsigned int);
+template void std::vector<C3DAnimationInfo>::reserve(unsigned int);

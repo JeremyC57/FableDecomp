@@ -18,24 +18,24 @@ address	status	bytes	test	note
 00a0a720	RELOCATION_MATCH	105v105	PASS	_List_base<CMeshBankManager::CMeshDataBankInfo>::clear (catalog remove_if label wrong); 1 attempt; + 2 full-chunk gall.sh verification passes
 00a17390	RELOCATION_MATCH	97v97	PASS	_List_base<CNavQuadTreeMap>::clear (catalog remove_if label wrong); 1 attempt; + 2 full-chunk gall.sh verification passes
 008fbdd0	RELOCATION_MATCH	67v67	PASS	list<const CThing*>::remove_if<unary_negate<CGetThingsWithCollisionMesh> >; const GetPhysicsTC() accessor puts the vtable in edx; 2 attempts; + 2 full-chunk gall.sh verification passes
-007fa680	RELOCATION_MATCH	130v130	PASS	_STL::__pop_heap<CThing**,CThing*,CThingCompare_BestForTargeting2,int> (catalog sort<> label wrong); 1 attempt; + 2 full-chunk gall.sh verification passes
+007fa680	RELOCATION_MATCH	130v130	PASS	std::__pop_heap<CThing**,CThing*,CThingCompare_BestForTargeting2,int> (catalog sort<> label wrong); 1 attempt; + 2 full-chunk gall.sh verification passes
 00451c3e	RELOCATION_MATCH	69v69	PASS	vector<long>::_M_initialize_aux<int> (size TU: __forceinline allocate/fill_n -> rep stosd); 2 attempts; + 2 full-chunk gall.sh verification passes
 0046eecf	RELOCATION_MATCH	100v100	PASS	vector<pair<unsigned long,CSubDefInfo> > copy ctor (y off + s on); 1 attempt; + 2 full-chunk gall.sh verification passes
 0046ef33	RELOCATION_MATCH	56v56	PASS	_Vector_base<pair<unsigned long,CSubDefInfo> >(n, a) (s alone, no frame); 2 attempts; + 2 full-chunk gall.sh verification passes
-00470cf1	RELOCATION_MATCH	69v69	PASS	_STL::sort<pair<unsigned long,CSoundPair>*,CKeyPairCompareLess> (sound map); __lg __forceinline; 1 attempt; + 2 full-chunk gall.sh verification passes
-00470e08	RELOCATION_MATCH	101v101	PASS	_STL::__linear_insert 12-byte CSoundPair; POD __false_type from _OKToMemCpy::_Answer() gives the stosb tag; 4 runs (2 source forms, one leaf-letter fix); + 2 full-chunk gall.sh verification passes
-00470e6d	MATCH	49v49	PASS	_STL::__copy_backward_ptrs 12-byte CSoundPair; __copy_backward __forceinline; 2 runs (V/U leaf fix); + 2 full-chunk gall.sh verification passes
-00470f32	MATCH	45v45	PASS	_STL::__median 12-byte CSoundPair; 1 attempt; + 2 full-chunk gall.sh verification passes
-00470f5f	MATCH	70v70	PASS	_STL::__unguarded_partition 12-byte CSoundPair (y off + s on; swap temp homed in the pivot slot); 1 attempt; + 2 full-chunk gall.sh verification passes
-00470fa5	RELOCATION_MATCH	176v176	PASS	_STL::__partial_sort 12-byte CSoundPair; make_heap/__pop_heap/sort_heap/pop_heap __forceinline; 1 attempt; + 2 full-chunk gall.sh verification passes
-004710f0	RELOCATION_MATCH	96v96	PASS	_STL::__make_heap 12-byte CSoundPair; 1 attempt; + 2 full-chunk gall.sh verification passes
-004712b2	RELOCATION_MATCH	92v92	PASS	_STL::__linear_insert 8-byte CDefString (twin of 0x470E08); 2 runs (comment-only regrade); + 2 full-chunk gall.sh verification passes
-004713c5	MATCH	45v45	PASS	_STL::__median 8-byte CDefString (bytes identical to 0x470F32); 1 attempt; + 2 full-chunk gall.sh verification passes
-004713f2	MATCH	57v57	PASS	_STL::__unguarded_partition 8-byte CDefString (s alone: no frame); 1 attempt + 1 y-off probe; + 2 full-chunk gall.sh verification passes
-0047142b	RELOCATION_MATCH	131v131	PASS	_STL::__partial_sort 8-byte CDefString (twin of 0x470FA5); 1 attempt; + 2 full-chunk gall.sh verification passes
-0048b2f0	RELOCATION_MATCH	41v41	PASS	_STL::const_mem_fun1_t<bool,CThing,CCharString>::operator() (catalog allocator_traits_Construct wrong; unreferenced COMDAT); 1 attempt; + 2 full-chunk gall.sh verification passes
-004b92d0	RELOCATION_MATCH	78v78	PASS	_STL::list<CCountedPointer<CQuestManager::CActiveQuest> >::_M_insert_dispatch<const_iterator>; 2 runs (U leaf-letter fix); + 2 full-chunk gall.sh verification passes
-004b9480	RELOCATION_MATCH	148v148	PASS	_STL::__unguarded_linear_insert<pair<CCharString,CPersistInfo>*> (catalog set_Insert_KeyValue wrong); 1 attempt; + 2 full-chunk gall.sh verification passes
-004ba080	RELOCATION_MATCH	128v128	PASS	_STL::__unguarded_partition<pair<CCharString,CPersistInfo>*>; iter_swap out of line; 1 attempt; + 2 full-chunk gall.sh verification passes
-004bab30	RELOCATION_MATCH	185v185	PASS	_STL::__linear_insert<pair<CCharString,CPersistInfo>*> (catalog Set_Insert_OrReplace wrong); real STLport tag hierarchy; 1 attempt; + 2 full-chunk gall.sh verification passes
-004bac90	RELOCATION_MATCH	123v123	PASS	_STL::__make_heap<pair<CCharString,CPersistInfo>*>; 2 runs (comment-only regrade); + 2 full-chunk gall.sh verification passes
+00470cf1	RELOCATION_MATCH	69v69	PASS	std::sort<pair<unsigned long,CSoundPair>*,CKeyPairCompareLess> (sound map); __lg __forceinline; 1 attempt; + 2 full-chunk gall.sh verification passes
+00470e08	RELOCATION_MATCH	101v101	PASS	std::__linear_insert 12-byte CSoundPair; POD __false_type from _OKToMemCpy::_Answer() gives the stosb tag; 4 runs (2 source forms, one leaf-letter fix); + 2 full-chunk gall.sh verification passes
+00470e6d	MATCH	49v49	PASS	std::__copy_backward_ptrs 12-byte CSoundPair; __copy_backward __forceinline; 2 runs (V/U leaf fix); + 2 full-chunk gall.sh verification passes
+00470f32	MATCH	45v45	PASS	std::__median 12-byte CSoundPair; 1 attempt; + 2 full-chunk gall.sh verification passes
+00470f5f	MATCH	70v70	PASS	std::__unguarded_partition 12-byte CSoundPair (y off + s on; swap temp homed in the pivot slot); 1 attempt; + 2 full-chunk gall.sh verification passes
+00470fa5	RELOCATION_MATCH	176v176	PASS	std::__partial_sort 12-byte CSoundPair; make_heap/__pop_heap/sort_heap/pop_heap __forceinline; 1 attempt; + 2 full-chunk gall.sh verification passes
+004710f0	RELOCATION_MATCH	96v96	PASS	std::__make_heap 12-byte CSoundPair; 1 attempt; + 2 full-chunk gall.sh verification passes
+004712b2	RELOCATION_MATCH	92v92	PASS	std::__linear_insert 8-byte CDefString (twin of 0x470E08); 2 runs (comment-only regrade); + 2 full-chunk gall.sh verification passes
+004713c5	MATCH	45v45	PASS	std::__median 8-byte CDefString (bytes identical to 0x470F32); 1 attempt; + 2 full-chunk gall.sh verification passes
+004713f2	MATCH	57v57	PASS	std::__unguarded_partition 8-byte CDefString (s alone: no frame); 1 attempt + 1 y-off probe; + 2 full-chunk gall.sh verification passes
+0047142b	RELOCATION_MATCH	131v131	PASS	std::__partial_sort 8-byte CDefString (twin of 0x470FA5); 1 attempt; + 2 full-chunk gall.sh verification passes
+0048b2f0	RELOCATION_MATCH	41v41	PASS	std::const_mem_fun1_t<bool,CThing,CCharString>::operator() (catalog allocator_traits_Construct wrong; unreferenced COMDAT); 1 attempt; + 2 full-chunk gall.sh verification passes
+004b92d0	RELOCATION_MATCH	78v78	PASS	std::list<CCountedPointer<CQuestManager::CActiveQuest> >::_M_insert_dispatch<const_iterator>; 2 runs (U leaf-letter fix); + 2 full-chunk gall.sh verification passes
+004b9480	RELOCATION_MATCH	148v148	PASS	std::__unguarded_linear_insert<pair<CCharString,CPersistInfo>*> (catalog set_Insert_KeyValue wrong); 1 attempt; + 2 full-chunk gall.sh verification passes
+004ba080	RELOCATION_MATCH	128v128	PASS	std::__unguarded_partition<pair<CCharString,CPersistInfo>*>; iter_swap out of line; 1 attempt; + 2 full-chunk gall.sh verification passes
+004bab30	RELOCATION_MATCH	185v185	PASS	std::__linear_insert<pair<CCharString,CPersistInfo>*> (catalog Set_Insert_OrReplace wrong); real STLport tag hierarchy; 1 attempt; + 2 full-chunk gall.sh verification passes
+004bac90	RELOCATION_MATCH	123v123	PASS	std::__make_heap<pair<CCharString,CPersistInfo>*>; 2 runs (comment-only regrade); + 2 full-chunk gall.sh verification passes

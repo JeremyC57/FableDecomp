@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- resize the C3DBoundingSphere vector: erase the surplus tail, or append default-constructed elements up to the new size
-// Leaf: ?resize@?$vector@VC3DBoundingSphere@@V?$allocator@VC3DBoundingSphere@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- resize the C3DBoundingSphere vector: erase the surplus tail, or append default-constructed elements up to the new size
+// Leaf: ?resize@?$vector@VC3DBoundingSphere@@V?$allocator@VC3DBoundingSphere@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE0140, 109 bytes, thiscall `ret 4`.
 // Callers: one, 0x00BDF14C in CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren 0x00BDF100.
 // Callees: vector::erase(first, last) 0x00BDFCF0 (thiscall, returns the iterator, dropped), vector::_M_fill_insert(pos, n, x)
@@ -25,7 +25,7 @@ public:
     C3DBoundingSphere() : Center(0.0f, 0.0f, 0.0f), Radius(0.0f) { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }

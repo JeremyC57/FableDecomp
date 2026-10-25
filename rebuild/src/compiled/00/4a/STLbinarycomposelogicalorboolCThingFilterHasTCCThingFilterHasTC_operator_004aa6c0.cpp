@@ -1,5 +1,5 @@
-// _STL::binary_compose<logical_or<bool>,CThingFilter_HasTC,CThingFilter_HasTC>::operator()(const CThing&) -- a thing passes when it has either of two TCs
-// Leaf: ??R?$binary_compose@U?$logical_or@_N@_STL@@VCThingFilter_HasTC@@V3@@_STL@@
+// std::binary_compose<logical_or<bool>,CThingFilter_HasTC,CThingFilter_HasTC>::operator()(const CThing&) -- a thing passes when it has either of two TCs
+// Leaf: ??R?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AA6C0, 56 bytes (+8 int3), `__fastcall`, `ret 4`, bool in eax.
 // Identity: FableWin.pdb has compose2<logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC> and this
 //   binary_compose's constructor next to CThingSearchTools::GetPBestThing<CFilter_Bind2<binary_compose<...>,
@@ -11,7 +11,7 @@
 // Shape: `return _M_op1(_M_op2(__x), _M_op3(__x));` -- VC7.1 evaluates the arguments right to left, so _M_op3
 //   (+8) runs first and its result is kept in bl; the inline logical_or then tests _M_op2's result first and
 //   returns 0/1 in the whole of eax.
-namespace _STL {
+namespace std {
 template <class _Arg, class _Result> struct unary_function {
     typedef _Arg    argument_type;
     typedef _Result result_type;
@@ -43,10 +43,10 @@ public:
 
 class CThing;
 
-class CThingFilter_HasTC : public _STL::unary_function<CThing, bool> {
+class CThingFilter_HasTC : public std::unary_function<CThing, bool> {
 public:
     long Type;                                           // +0x00 ETCInterfaceType
     bool operator()(const CThing& thing) const;          // 0x006A80A0
 };
 
-template class _STL::binary_compose<_STL::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC>;
+template class std::binary_compose<std::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC>;

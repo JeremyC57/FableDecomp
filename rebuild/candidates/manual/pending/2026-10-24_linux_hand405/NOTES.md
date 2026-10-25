@@ -16,7 +16,7 @@
   - The radius test is the CONDITION of a block (`if (!check || length < RadHigh) { ... }`) falling through to the shared
     `return false`. An early `return false` gets its own exit.
   - The normalised vector is built by two statements, so its Y load is created after X, which makes every dot Y-term first.
-- **_STL::__uninitialized_copy<CHoverState*>** (0x008EBA90): copy-construct a hover-state range into raw storage. Shape:
+- **std::__uninitialized_copy<CHoverState*>** (0x008EBA90): copy-construct a hover-state range into raw storage. Shape:
   STLport `for (; first != last; ++first, ++cur) _Construct(&*cur, *first)`. The memberwise copy is a CCharString call, a
   12-byte CRadialArea and two words.
 - **CTCContainer TU** (0x008ECEF0 `__find_if<…, CIsItemWithDefIndex>`, 0x008ED040 RemoveItem, 0x008ED2B0 OnSerialise,
@@ -27,7 +27,7 @@
     so RemoveItem caches `end`.
   - The functors' push_backs need the same-TU noinline `_M_insert_overflow` stand-in (reads x, never the tag).
   - A named CCharString local sits in the dead argument slot. An explicit `CCharString("")` temporary feeds the ctor's eax.
-- **_STL::__copy<Coin*>** (0x008F02E0): assign a Coin range. Shape: STLport `for (n = last - first; n > 0; --n)` with Coin's
+- **std::__copy<Coin*>** (0x008F02E0): assign a Coin range. Shape: STLport `for (n = last - first; n > 0; --n)` with Coin's
   implicit operator= inlined (the 0x3C-byte divide by `0x88888889`).
 - **CCreatureAction_DragonSwoop** (0x008F57F0 implicit copy ctor): base copy, vtable, three swoop points. Shape: the
   compiler-generated copy ctor goes out of line when C3DVector has a user copy ctor and Clone does `new T(*this)`.
@@ -89,13 +89,13 @@
 | 008e6030 | CollisionFilter_SphereTest | `CFilter_Bind3<CThingFilter_CanCollideOrInteractWithThing,CThingFilter_OverlappingSphere,CThingFilter_HasTC>::operator()<CThing>` |
 | 008e9080 | GetAbilityAnimationDuration | NCreatureMode::GetAnimDistanceAndIndexFromAnimName |
 | 008ea3f0 | C3DVector_PointInConvexQuad_Plane | NCreatureMode::CModeHoverBase::CRadialArea::IsPosInArea(const C2DVector&, bool) const |
-| 008eba90 | `_Copy_backward<CExplosionRing*>` | `_STL::__uninitialized_copy<CHoverState*>` |
-| 008ecef0 | `std_find_<int_qword_aligned>` | `_STL::__find_if<pair<long,CCharString>*, CIsItemWithDefIndex>` |
+| 008eba90 | `_Copy_backward<CExplosionRing*>` | `std::__uninitialized_copy<CHoverState*>` |
+| 008ecef0 | `std_find_<int_qword_aligned>` | `std::__find_if<pair<long,CCharString>*, CIsItemWithDefIndex>` |
 | 008ed040 | `std_vector_erase_single<CTCSkeletalMorph>` | CTCContainer::RemoveItem(long) |
 | 008ed2b0 | Persist_TransferContainerContents | CTCContainer::OnSerialise(CPersistContext&, bool) |
 | 008ed3b0 | `std_vector_push_back<CCharString>` | CCreateItemNamesFromIndices::operator() |
 | 008ed440 | `std_vector_push_back<DefinitionIndex_CCharString>` | CCreateIndicesFromItemNames::operator() |
-| 008f02e0 | `_Move<Coin*>` | `_STL::__copy<Coin*>` |
+| 008f02e0 | `_Move<Coin*>` | `std::__copy<Coin*>` |
 | 008f57f0 | CCombatActionBase_CopyConstructor | CCreatureAction_DragonSwoop copy ctor |
 | 008f5ba0 | Geometry_DistancePointToLineSegment | NPhysicsHelpers::GetPerpendicularDistanceFromFiniteLine |
 | 008f71a0 | CMap_InitializePalette | CMap::InitThemePalette |
@@ -107,8 +107,8 @@
 | 008f9ca0 | MusicTimer_CheckAndTrigger | LHNetworkLib::LTimer::Stop() |
 | 008fa9f0 | LinkedList_ClearAndReinit | NCameraModes::CPhysicsCollisionPointsObject::GetPointsList |
 | 008fbcb0 | MeshContainer_RayIntersectionQuery | NCameraModes::CPhysicsForceModelBase::GetPointIntersection |
-| 008fbf10 | LinkedList_CloneNodes | `_STL::list<C3DVector>::_M_insert_dispatch` |
-| 008fca40 | DoThingEvasion_BuildMeshReferenceList | `_STL::transform<…, CGetMeshObject>` |
+| 008fbf10 | LinkedList_CloneNodes | `std::list<C3DVector>::_M_insert_dispatch` |
+| 008fca40 | DoThingEvasion_BuildMeshReferenceList | `std::transform<…, CGetMeshObject>` |
 | 008fcf10 | Script_GetCurrentStateGroupPriority | CAIStateGroupBase::IsRunnableMain() |
 | 008fd21f | `GetDefaultVal<CParticleMorphs>` | CAIStateGroupInfo::CAIStateGroupInfo |
 | 009015b9 | CAIStateGroup_TrollLarge_Constructor | CAIStateGroup_RecoverStealableItem ctor |

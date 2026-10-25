@@ -13,7 +13,7 @@ All 40 rows grade MATCH (7) or RELOCATION_MATCH (33) through gall.sh (grades.txt
     plain inline member out of line (24v137).
 - **STLport sort helpers over `pair<long, unsigned long>`** (6): 0x00AE5AB0, 0x00AE5F00, 0x00AE5F60, 0x00AE6760,
   0x00AE7760, plus `__destroy_aux<set<long>*>` 0x00AE76E0.
-  - All are explicit `__fastcall` templates in `_STL`, passing the comparator by value.
+  - All are explicit `__fastcall` templates in `std`, passing the comparator by value.
   - `__iter_swap` goes through `__value_type`.
   - `copy_backward` is inlined as a counted loop.
   - `__pop_heap` is inline over the out-of-line `__adjust_heap` 0xAE5FB0.
@@ -82,36 +82,36 @@ None. No row holds two functions. 0x00AF4360's trailing 0xCC is padding (79-byte
   descriptive:
   - 0x00AE2510 "ParticleProgram_ExecuteLooped" -> CParticleProgram::ApplyConstraints(CParticleSimulation&, long, float) const (Ego_r PDB name; `ret 0Ch`)
   - 0x00AE2D90 "CParticleMorphs_InsertEntry" -> CParticleProgram::AddExportParticle(const CCharString&, unsigned long)
-  - 0x00AE5AB0 "InsertionSort_Insert64Bit" -> _STL::__unguarded_linear_insert<pair<long,unsigned long>*, ...>
-  - 0x00AE5F00 "QuickSort_Partition64Bit_Swap" -> _STL::__unguarded_partition<pair<long,unsigned long>*, ...>
-  - 0x00AE5F60 "InsertionSort_64Bit" -> _STL::__unguarded_insertion_sort_aux<...>
-  - 0x00AE6760 "InsertionSort_InsertBefore" -> _STL::__linear_insert<...>
-  - 0x00AE76E0 "LTextTreeWalkThrough_DestroyRange_Range" -> _STL::__destroy_aux<_STL::set<long>*>
-  - 0x00AE7760 "Std_PartialSort_Pair64BitMax" -> _STL::__partial_sort<...>
-  - 0x00AE7880 "Vector_Construct_Reserve" -> _STL::vector<_STL::set<long> >::vector(unsigned int)
-  - 0x00AE80F0 "Container_Reserve" -> _STL::vector<C3DGroup2>::reserve
-  - 0x00AE81F0 "Vector_Insert_Pair128BitMultiple" -> _STL::vector<C3DGroup2>::_M_insert_overflow
-  - 0x00AE83D0 "Vector_PushBackExpand" -> _STL::vector<C3DGroup2>::push_back
-  - 0x00AE8540 "Vector_Resize_Pair128Bit" -> _STL::vector<C3DGroup2>::resize(unsigned int)
+  - 0x00AE5AB0 "InsertionSort_Insert64Bit" -> std::__unguarded_linear_insert<pair<long,unsigned long>*, ...>
+  - 0x00AE5F00 "QuickSort_Partition64Bit_Swap" -> std::__unguarded_partition<pair<long,unsigned long>*, ...>
+  - 0x00AE5F60 "InsertionSort_64Bit" -> std::__unguarded_insertion_sort_aux<...>
+  - 0x00AE6760 "InsertionSort_InsertBefore" -> std::__linear_insert<...>
+  - 0x00AE76E0 "LTextTreeWalkThrough_DestroyRange_Range" -> std::__destroy_aux<std::set<long>*>
+  - 0x00AE7760 "Std_PartialSort_Pair64BitMax" -> std::__partial_sort<...>
+  - 0x00AE7880 "Vector_Construct_Reserve" -> std::vector<std::set<long> >::vector(unsigned int)
+  - 0x00AE80F0 "Container_Reserve" -> std::vector<C3DGroup2>::reserve
+  - 0x00AE81F0 "Vector_Insert_Pair128BitMultiple" -> std::vector<C3DGroup2>::_M_insert_overflow
+  - 0x00AE83D0 "Vector_PushBackExpand" -> std::vector<C3DGroup2>::push_back
+  - 0x00AE8540 "Vector_Resize_Pair128Bit" -> std::vector<C3DGroup2>::resize(unsigned int)
   - 0x00AE8B50 "CVectorMap_EraseByRange" -> NParticleEngine::CParticleEmitterDatabase::DeleteEmitterTemplate(long)
   - 0x00AEB940 "StdList_ConstructWithArg_aeb940" -> NParticleEngine::CParticleEmitterList::CParticleEmitterList(long)
   - 0x00AEBA90 "NScript_CPredicate_And_Initialize" -> NParticleEngine::CParticleEmitterManager::CParticleEmitterManager()
-  - 0x00AEC740 "List_InsertNode" -> _STL::list<CCountedPointer<CParticleEmitter> >::push_front
+  - 0x00AEC740 "List_InsertNode" -> std::list<CCountedPointer<CParticleEmitter> >::push_front
   - 0x00AEC9F0 "NEntityEvents_CEventList_Destroy" -> ??_GCParticleEmitterManager@NParticleEngine@@QAEPAXI@Z
   - 0x00AECA50 "NEntityEvents_CEventList_Destroy" -> ?DeleteData@?$CCountedPointer@VCParticleEmitterManager@NParticleEngine@@@@SIXPAX@Z
   - 0x00AECD70 "IsVisible_CalcFadeAlpha" -> NParticleEngine::CParticleEmitter::GetFadeAlpha(float) const
-  - 0x00AF1AA0 "_Fill_n<unsigned_long*,...>" -> _STL::__uninitialized_fill_n<NParticleEngine::CParticleEmitterInfo*, unsigned int, ...>
-  - 0x00AF1C10 "_Copy_impl<CNavigationPosition*,...>" -> _STL::__uninitialized_copy<NParticleEngine::CParticleEmitterInfo*, ...>
+  - 0x00AF1AA0 "_Fill_n<unsigned_long*,...>" -> std::__uninitialized_fill_n<NParticleEngine::CParticleEmitterInfo*, unsigned int, ...>
+  - 0x00AF1C10 "_Copy_impl<CNavigationPosition*,...>" -> std::__uninitialized_copy<NParticleEngine::CParticleEmitterInfo*, ...>
   - 0x00AF28C0 "CVectorMap_FindEntry" -> NParticleEngine::CPSCManager::AllocatePSC(const CCharString&)
   - 0x00AF2E70 "TreeNode_InsertPosition" / 0x00AF31C0 "QuickSort_Partition" / 0x00AF34E0 "Heap_BuildHeap" /
     0x00AF35A0 "TreeNode_InsertSorted" / 0x00AF3920 "HeapSort_Phase" / 0x00AF3AA0 "QuickSort_IntroSort_16Byte" ->
     STLport `__unguarded_linear_insert` / `__unguarded_partition` / `__make_heap` / `__linear_insert` / `__partial_sort`
     / `__introsort_loop` over pair<CCharString, CRegisteredPSCInfo>
-  - 0x00AF37F0 "CCombatWheel_ResizeRings" -> _STL::vector<pair<CCharString, CRegisteredPSCInfo> >::_M_insert_overflow
-  - 0x00AF39C0 "Vector_PushBackEntry" -> _STL::vector<pair<CCharString, CRegisteredPSCInfo> >::push_back
+  - 0x00AF37F0 "CCombatWheel_ResizeRings" -> std::vector<pair<CCharString, CRegisteredPSCInfo> >::_M_insert_overflow
+  - 0x00AF39C0 "Vector_PushBackEntry" -> std::vector<pair<CCharString, CRegisteredPSCInfo> >::push_back
   - 0x00AF3CF0 "InterpolateRadialBlurPositionParams" -> NParticleEngine::GFInterpolate(const C3DVector&, const C3DVector&, float)
   - 0x00AF4360 "Map_CountRangeEntries" -> NParticleEngine::CParticleSystem::GetComponentOfType(EPSCType, unsigned long)
-  - 0x00AF6920 "CopyElements_6DwordStruct" -> _STL::__uninitialized_copy<pair<EPSCType, CComponentInstance>*, ...>
+  - 0x00AF6920 "CopyElements_6DwordStruct" -> std::__uninitialized_copy<pair<EPSCType, CComponentInstance>*, ...>
   - 0x00AF8700 "CDynamicObjectHeapBase_Construct_Small" -> CDynamicObjectHeap<24,853>::CDynamicObjectHeap(bool)
 - Callees and neighbours seen while working:
   - 0x00AF36C0 "CCombatWheel::ResetRings" = vector<CPSCPair>::_M_clear.

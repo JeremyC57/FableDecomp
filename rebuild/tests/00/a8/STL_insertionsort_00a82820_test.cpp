@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A82820 _STL::__insertion_sort over pair<unsigned __int64, bool> (out-of-line __linear_insert).
+// Behaviour test for 0x00A82820 std::__insertion_sort over pair<unsigned __int64, bool> (out-of-line __linear_insert).
 #include <cstdio>
 
 typedef unsigned long long U64;

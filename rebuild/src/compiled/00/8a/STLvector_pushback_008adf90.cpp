@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const CScriptThing& x) -- append a script thing (placement copy with a counted-pointer reference) or grow through _M_insert_overflow
+// std::vector::push_back(const CScriptThing& x) -- append a script thing (placement copy with a counted-pointer reference) or grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ADF90, length 72 bytes (+ int3 padding), `ret 4`.
 // Identity: 38 callers across the script interface (0x008A8208 ... 0x00E622A4, e.g. the landed
@@ -60,7 +60,7 @@ public:
     virtual ~CScriptThing();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp>

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00742360 _STL::__linear_insert over the mode-registry pairs (unsigned key, value by value)
+// Behaviour test for 0x00742360 std::__linear_insert over the mode-registry pairs (unsigned key, value by value)
 #include <cstdio>
 struct CRegisteredModeInfo { int tag; };
 

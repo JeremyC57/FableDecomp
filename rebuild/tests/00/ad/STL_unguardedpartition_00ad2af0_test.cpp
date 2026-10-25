@@ -1,4 +1,4 @@
-// Behaviour test for _STL::__unguarded_partition<CGroup*, CGroup, comp> @ 0x00AD2AF0
+// Behaviour test for std::__unguarded_partition<CGroup*, CGroup, comp> @ 0x00AD2AF0
 // Hoare partition around a by-value pivot: returns the cut such that comp(pivot, x) is false left of it
 // and comp(x, pivot) is false right of it.
 #include <cstdio>

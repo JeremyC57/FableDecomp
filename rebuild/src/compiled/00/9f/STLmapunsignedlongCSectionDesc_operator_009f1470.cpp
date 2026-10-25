@@ -1,4 +1,4 @@
-// _STL::map<unsigned long, CSectionDesc>::operator[](const unsigned long&) -- find a section's descriptor by handle, inserting a default one when absent
+// std::map<unsigned long, CSectionDesc>::operator[](const unsigned long&) -- find a section's descriptor by handle, inserting a default one when absent
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F1470, 208 bytes (`ret 4`). Catalog label "CCodeSectionManager_RegisterSection"
 //   is wrong (RegisterSection is the landed 0x009F05A0); this is the STLport operator[] of CCodeSectionManager::SectionDesc
 //   (map<unsigned long, CSectionDesc>), the twin of map<char, CCharString>::operator[] 0x009EFCF0.
@@ -7,7 +7,7 @@
 // Shape: STLport operator[] with an unsigned key compare (`jb` / `jae`); _STLP_DEFAULT_CONSTRUCTED as an inline
 //   __default_constructed((_Tp*)0) and map::insert as an inline wrapper over insert_unique (both load-bearing, see
 //   0x009EFCF0); the default CSectionDesc only constructs its strings (Loaded/Size are copied uninitialised).
-// Leaf: ??A?$map@KUCSectionDesc@@U?$less@K@_STL@@@_STL@@QAEAAUCSectionDesc@@ABK@Z
+// Leaf: ??A?$map@KUCSectionDesc@@U?$less@K@std@@@std@@QAEAAUCSectionDesc@@ABK@Z
 class CCharString
 {
 public:
@@ -25,7 +25,7 @@ struct CSectionDesc                                 // CCodeSectionManager::CSec
     long        Size;                               // +0x0c
 };
 
-namespace _STL {
+namespace std {
 
 template <class _T1, class _T2> struct pair
 {
@@ -102,4 +102,4 @@ public:
 
 template class map<unsigned long, CSectionDesc>;
 
-} // namespace _STL
+} // namespace std

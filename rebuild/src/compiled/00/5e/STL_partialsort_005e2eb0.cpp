@@ -1,4 +1,4 @@
-// _STL::__partial_sort(CCharString* first, CCharString* middle, CCharString* last, CCharString*, less<CCharString> comp) -- STLport partial_sort core for a CCharString range: heapify [first, middle), pop every smaller later string into the heap, then sort the heap
+// std::__partial_sort(CCharString* first, CCharString* middle, CCharString* last, CCharString*, less<CCharString> comp) -- STLport partial_sort core for a CCharString range: heapify [first, middle), pop every smaller later string into the heap, then sort the heap
 // Leaf: __partial_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E2EB0, 144 bytes, `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   esi, middle in edx -> ebx, then last, the null value-type pointer and the empty comparator on the stack).

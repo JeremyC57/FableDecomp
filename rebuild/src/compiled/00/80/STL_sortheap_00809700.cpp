@@ -1,4 +1,4 @@
-// _STL::sort_heap(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CDoNotUseBinaryPredicate comp) -- STLport heap sort of intelligent thing pointers under the coin-flip predicate: pop the root to the back until one element remains
+// std::sort_heap(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CDoNotUseBinaryPredicate comp) -- STLport heap sort of intelligent thing pointers under the coin-flip predicate: pop the root to the back until one element remains
 // Leaf: ??$sort_heap@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00809700, 174 bytes, /Gr `__fastcall` (first in ecx, last in edx), the
 //   4-byte predicate by value, `ret 4`; an `and esp,-8` aligned frame (the 8-byte pointer temporary in the loop).
@@ -41,7 +41,7 @@ struct CDoNotUseBinaryPredicate {
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __value,
                               _Compare __comp);   // 0x00807520

@@ -1,4 +1,4 @@
-// _STL::__unguarded_partition(CGroup* first, CGroup* last, CGroup pivot, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- SGI quicksort partition of the bone-weight groups around a by-value pivot under a function-pointer predicate
+// std::__unguarded_partition(CGroup* first, CGroup* last, CGroup pivot, bool (__fastcall* comp)(const CGroup&, const CGroup&)) -- SGI quicksort partition of the bone-weight groups around a by-value pivot under a function-pointer predicate
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD2AF0, length 116 bytes (+12 int3), `ret 0Ch`.
 // Caller: __introsort_loop @ 0x00AD6FA5 region; the comparator is called through ebx.
@@ -20,7 +20,7 @@ public:
 typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CGroup;
 typedef bool (__fastcall* TGroupCompare)(const CGroup& a, const CGroup& b);
 
-namespace _STL {
+namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {

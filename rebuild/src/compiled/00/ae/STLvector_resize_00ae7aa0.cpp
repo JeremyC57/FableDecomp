@@ -1,5 +1,5 @@
-// _STL::vector::resize(unsigned int new_size) -- resize the C3DQuad2 vector: erase the surplus tail, or append default-constructed elements up to the new size
-// Leaf: ?resize@?$vector@VC3DQuad2@@V?$allocator@VC3DQuad2@@@_STL@@@_STL@@QAEXI@Z
+// std::vector::resize(unsigned int new_size) -- resize the C3DQuad2 vector: erase the surplus tail, or append default-constructed elements up to the new size
+// Leaf: ?resize@?$vector@VC3DQuad2@@V?$allocator@VC3DQuad2@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE7AA0, 75 bytes, thiscall `ret 4`.
 // Callers: one, 0x00AE3E5E in CParticleProgram::ReadFromFile 0x00AE3C30 on the program's RenderQuads array (retail +0xA4:
 //   the PDB +0xAC less the 4 bytes each of the two 16-byte Ego_r CArrays before it).
@@ -17,7 +17,7 @@ public:
     C3DQuad2() { }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }

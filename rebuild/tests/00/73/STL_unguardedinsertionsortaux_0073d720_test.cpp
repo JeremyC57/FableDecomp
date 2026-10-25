@@ -1,4 +1,4 @@
-// Behaviour test for 0x0073D720 _STL::__unguarded_insertion_sort_aux over the mode-registry pairs (unsigned key)
+// Behaviour test for 0x0073D720 std::__unguarded_insertion_sort_aux over the mode-registry pairs (unsigned key)
 #include <cstdio>
 struct CRegisteredModeInfo { int tag; };
 

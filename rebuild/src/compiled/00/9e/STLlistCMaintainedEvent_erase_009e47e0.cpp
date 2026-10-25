@@ -1,5 +1,5 @@
-// _STL::list<CMaintainedEvent>::erase(iterator) -- STLport list erase: unlink the node, destroy its CMaintainedEvent through the virtual destructor, free the node and return an iterator to the next node
-// Leaf: ?erase@?$list@VCMaintainedEvent@@@_STL@@
+// std::list<CMaintainedEvent>::erase(iterator) -- STLport list erase: unlink the node, destroy its CMaintainedEvent through the virtual destructor, free the node and return an iterator to the next node
+// Leaf: ?erase@?$list@VCMaintainedEvent@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E47E0, length 45 bytes.
 // Label correction: the catalog's "EventNode_Unlink" is STLport `list<CMaintainedEvent>::erase(iterator)`: its callers
 //   (CMouse::ProcessMaintainedEventsFromEvent 0x00A66FD0, at 0x00A671C9 / 0x00A67228 / 0x00A67367) pass the list in ecx, the
@@ -19,7 +19,7 @@ public:
     unsigned char _body[0x34];
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;

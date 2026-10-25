@@ -36,7 +36,7 @@ public:
     void ForwardToGraphicAppearance(long request);   // 0x004C7590
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> class allocator {
@@ -121,7 +121,7 @@ public:
     void* __vftable;                            // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];
-    _STL::list<CEntry> Decals;                  // +0x0c (4-byte STLport list)
+    std::list<CEntry> Decals;                  // +0x0c (4-byte STLport list)
     unsigned char EngineDecals[0xc];            // +0x10 vector<CEngineTextureDecal>
     long CurrentAllocEntryID;                   // +0x1c
     bool Dirty;                                 // +0x20

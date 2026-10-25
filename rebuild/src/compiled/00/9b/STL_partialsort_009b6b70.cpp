@@ -1,6 +1,6 @@
-// _STL::__partial_sort(pair<unsigned long,long>* first, pair<unsigned long,long>* middle, pair<unsigned long,long>* last, pair<unsigned long,long>*, CKeyPairCompareLess<unsigned long,long> comp) -- STLport partial sort of (key, value) pairs by unsigned key: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort the heap
+// std::__partial_sort(pair<unsigned long,long>* first, pair<unsigned long,long>* middle, pair<unsigned long,long>* last, pair<unsigned long,long>*, CKeyPairCompareLess<unsigned long,long> comp) -- STLport partial sort of (key, value) pairs by unsigned key: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort the heap
 // Flags: /Gr
-// Leaf: ??$__partial_sort@PAU?$pair@KJ@_STL@@
+// Leaf: ??$__partial_sort@PAU?$pair@KJ@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B6B70, 107 bytes (+ int3 padding), `ret 0Ch` (/Gr TU: first in ecx,
 //   middle in edx; last, the unused T* and the empty comparator on the stack).
 // Identity: reached from the introsort loop 0x009B7ED0 (depth exhausted, 0x009B7F88) and partial_sort 0x009B75BC; that
@@ -11,7 +11,7 @@
 // Callees: __make_heap @ 0x009B3C70, __adjust_heap @ 0x009B2FF0 (landed), sort_heap @ 0x009B5BB0 (landed).
 // Shape: as 0x009B6A40 (CWideString): make_heap and __pop_heap inlined; the T(*i) value stays in edx/ecx and is stored
 //   into the argument area for __adjust_heap after `*i = *first`.
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -21,10 +21,10 @@ template <class _T1, class _T2> struct pair {
 
 template <class K, class V> class CKeyPairCompareLess {     // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(const _Tp*) { return (int*)0; }
 

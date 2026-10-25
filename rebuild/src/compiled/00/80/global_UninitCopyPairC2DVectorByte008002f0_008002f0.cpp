@@ -20,7 +20,7 @@ struct C2DVector {                              // byte-packed 2D vector (alignm
 };
 #pragma pack(pop)
 
-struct SPairC2DVectorByte {                     // _STL::pair<C2DVector, unsigned char>, 9 bytes
+struct SPairC2DVectorByte {                     // std::pair<C2DVector, unsigned char>, 9 bytes
     C2DVector     first;                        // +0x00
     unsigned char second;                       // +0x08
     SPairC2DVectorByte(const SPairC2DVectorByte& o) : first(o.first), second(o.second) { }

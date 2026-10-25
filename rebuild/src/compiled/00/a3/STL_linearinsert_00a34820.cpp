@@ -1,4 +1,4 @@
-// _STL::__linear_insert(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume> val, CKeyPairCompareLess comp) -- insertion-sort step: a value smaller than the first entry shifts the run up one slot and goes first, anything else goes through the unguarded insert; the by-value val is destroyed
+// std::__linear_insert(pair<unsigned long, C3DMeshVolume>* first, pair<unsigned long, C3DMeshVolume>* last, pair<unsigned long, C3DMeshVolume> val, CKeyPairCompareLess comp) -- insertion-sort step: a value smaller than the first entry shifts the run up one slot and goes first, anything else goes through the unguarded insert; the by-value val is destroyed
 // Leaf: __linear_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A34820, 179 bytes, `ret 14h` (__fastcall: first in ecx, last in edx, the
 //   16-byte value and the empty comparator on the stack).
@@ -80,7 +80,7 @@ struct C3DMeshVolume {                                        // 12 bytes (Ego_r
     }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> struct pair {
     T1 first;
@@ -98,7 +98,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 }
 
-namespace _STL {
+namespace std {
 
 template <class BidirectionalIter1, class BidirectionalIter2, class Distance>
 BidirectionalIter2 __fastcall __copy_backward(BidirectionalIter1 first, BidirectionalIter1 last, BidirectionalIter2 result,

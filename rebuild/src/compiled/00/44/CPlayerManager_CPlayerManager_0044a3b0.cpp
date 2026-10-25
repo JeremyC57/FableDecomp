@@ -24,7 +24,7 @@ public:
 };
 inline void* operator new(size_t, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class T> class allocator { public: allocator() { } };
 template <class T, class Alloc> class _STLP_alloc_proxy {
@@ -78,10 +78,10 @@ class CPlayerManager : public CBaseClassNonCopyable {
 public:
     CMainGameComponent*           Component;             // +0x04
     const CGameDefinitionManager* DefinitionManager;     // +0x08
-    _STL::vector<CPlayer*>        Players;               // +0x0c
+    std::vector<CPlayer*>        Players;               // +0x0c
     long                          PlayerNeutral;         // +0x18
     long                          MainPlayer;            // +0x1c
-    _STL::vector<CCharString>     HeroSwapPlayerScriptNames;   // +0x20
+    std::vector<CCharString>     HeroSwapPlayerScriptNames;   // +0x20
     CPlayerManager(CMainGameComponent& component, const CGameDefinitionManager& defs);
     virtual ~CPlayerManager();                           // 0x0044A140
 };

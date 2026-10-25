@@ -45,7 +45,7 @@ Review at landing:
 - The `_M_copy` / `_M_insert` / `_M_lower_bound` members are modelled public (leaf letters QAE / QBE), although SGI
   declares them private. The landed STLport `_M_copy` / `_M_insert` rows (0x006310E0, 0x00990830 and siblings) use the
   same convention; check the lander accepts it.
-- All rows use local models (STLport in `_STL`, CCountedPointer, CCharString, CArray, QuadricOptimiser classes), not
+- All rows use local models (STLport in `std`, CCountedPointer, CCharString, CArray, QuadricOptimiser classes), not
   `rebuild/include/engine/<Class>.h`. Check whether headers exist for C3DMeshFile, CChunkedFile,
   C3DMeshFileBoneChunk, CVertexStreamFormat, CVertexShaderInput and C3DGroup2. The retail layouts differ from Ego_r
   where STL members are involved (12-byte vectors, 4-byte lists).

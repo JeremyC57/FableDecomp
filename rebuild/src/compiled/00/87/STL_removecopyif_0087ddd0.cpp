@@ -1,4 +1,4 @@
-// _STL::remove_copy_if(const CAnimationEntry** first, const CAnimationEntry** last, const CAnimationEntry** result, unary_negate<CTurningAnimCompare> pred) -- keep (copy down) the turning animations whose rotation is within the tolerance cone; returns the new end
+// std::remove_copy_if(const CAnimationEntry** first, const CAnimationEntry** last, const CAnimationEntry** result, unary_negate<CTurningAnimCompare> pred) -- keep (copy down) the turning animations whose rotation is within the tolerance cone; returns the new end
 // Leaf: ??$remove_copy_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087DDD0, length 63 bytes (`ret 8`).
 // Identity: the second half of STLport `remove_if(first, last, not1(CTurningAnimCompare(angle)))` in the
@@ -19,7 +19,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _Predicate>
 class unary_negate {
 protected:

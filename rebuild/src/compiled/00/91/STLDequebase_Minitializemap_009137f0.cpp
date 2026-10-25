@@ -1,4 +1,4 @@
-// _STL::_Deque_base::_M_initialize_map(size_t num_elements) -- STLport deque<CBezierCurve> map setup: max(8, nodes + 2) map slots, the node buffers malloc'd for the centred node range, start/finish cursors set
+// std::_Deque_base::_M_initialize_map(size_t num_elements) -- STLport deque<CBezierCurve> map setup: max(8, nodes + 2) map slots, the node buffers malloc'd for the centred node range, start/finish cursors set
 // Leaf: ?_M_initialize_map@?$_Deque_base@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009137F0, 183 bytes (192 with padding), __fastcall `ret 4`.
 // Identity: STLport 4.6 _Deque_base<CBezierCurve, allocator<CBezierCurve> >::_M_initialize_map; called by the deque
@@ -39,7 +39,7 @@ public:
     C3DVector Point4;                           // +0x24
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type {                           // STLport empty tag; a user ctor keeps the temporary store-free
     __false_type() { }
@@ -192,4 +192,4 @@ void deque<_Tp, _Alloc>::clear()
 
 }
 
-template void _STL::_Deque_base<CBezierCurve, _STL::allocator<CBezierCurve> >::_M_initialize_map(size_t);
+template void std::_Deque_base<CBezierCurve, std::allocator<CBezierCurve> >::_M_initialize_map(size_t);

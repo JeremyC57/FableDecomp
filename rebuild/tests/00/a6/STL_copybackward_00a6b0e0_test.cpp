@@ -40,7 +40,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
@@ -65,7 +65,7 @@ int main()
         p.Object = &g[i];
         a[i] = p;                        // count 1 each (the temporary's own reference is not counted)
     }
-    TGridPtr* r = _STL::__copy_backward(a, a + 3, a + 4, _STL::random_access_iterator_tag(), (int*)0);
+    TGridPtr* r = std::__copy_backward(a, a + 3, a + 4, std::random_access_iterator_tag(), (int*)0);
     if (r != a + 1 || a[0].Object != &g[0] || a[1].Object != &g[0] || a[2].Object != &g[1] || a[3].Object != &g[2])
         ok = 0;
     if (g[0].IVRefCount != 2 || g[1].IVRefCount != 1 || g[2].IVRefCount != 1 || g[3].IVRefCount != 0 || gDeletes != 1)

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00566870 _STL::swap<pair<float,CWideString>>.
+// Behaviour test for 0x00566870 std::swap<pair<float,CWideString>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00566870_TEST FAIL\n"); return 1; } } while (0)

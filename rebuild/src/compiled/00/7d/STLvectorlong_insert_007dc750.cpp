@@ -1,4 +1,4 @@
-// _STL::vector<long>::insert(long* position, const long& x) -- STLport single-element insert into a vector of longs (the blackjack bets): append at the end, or shift the tail up one slot (memmove) and store the value; grow through _M_insert_overflow when full; returns the iterator to the inserted value
+// std::vector<long>::insert(long* position, const long& x) -- STLport single-element insert into a vector of longs (the blackjack bets): append at the end, or shift the tail up one slot (memmove) and store the value; grow through _M_insert_overflow when full; returns the iterator to the inserted value
 // Leaf: ?insert@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007DC750, 167 bytes, thiscall `ret 8`.
 // Identity: CTCTavernGameCardBlackjack::Split (0x007DB5C0, call at 0x007DB68D) inserts the second bet with it
@@ -11,7 +11,7 @@
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 inline void* operator new(unsigned int, void* p) { return p; }
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 

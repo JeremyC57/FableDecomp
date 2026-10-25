@@ -1,4 +1,4 @@
-// Behaviour test for 0x00AF2CD0 _STL::swap<pair<CCharString,NParticleEngine::CRegisteredPSCInfo>>.
+// Behaviour test for 0x00AF2CD0 std::swap<pair<CCharString,NParticleEngine::CRegisteredPSCInfo>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00af2cd0_TEST FAIL\n"); return 1; } } while (0)

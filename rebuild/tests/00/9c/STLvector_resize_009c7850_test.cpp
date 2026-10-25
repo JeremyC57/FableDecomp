@@ -1,4 +1,4 @@
-// Behaviour test for 0x009C7850 _STL::vector<CFileInstaller::CBufferChunk>::resize(unsigned int new_size).
+// Behaviour test for 0x009C7850 std::vector<CFileInstaller::CBufferChunk>::resize(unsigned int new_size).
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("009c7850_TEST FAIL\n"); return 1; } } while (0)

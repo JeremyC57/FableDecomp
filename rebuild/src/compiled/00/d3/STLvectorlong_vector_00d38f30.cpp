@@ -1,4 +1,4 @@
-// _STL::vector<long>::vector(unsigned int n) -- STLport sized constructor of a 4-byte POD vector: allocate n elements and zero them
+// std::vector<long>::vector(unsigned int n) -- STLport sized constructor of a 4-byte POD vector: allocate n elements and zero them
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D38F30, 58 bytes, `__fastcall`, one stack argument (`ret 4`), returns this.
 //   Only caller: CQ_FireHeartScript::RunVillagerComments @ 0x00D38D48 (`vector<long> v(NumberOfVillagers)`, later
@@ -10,7 +10,7 @@
 //   { _M_finish = uninitialized_fill_n(_M_start, n, _Tp()); }`; the POD fill is `fill_n`'s
 //   `for (; n > 0; --n, ++first) *first = value;`, which VC7.1 turns into `rep stosd` (unsigned n: `test ; jbe`) and
 //   the end pointer `lea eax,[edx+ebx*4]`. The allocator temporary lives in the dead argument slot.
-namespace _STL {
+namespace std {
 struct __true_type { };
 template <class T> class allocator {
 public:
@@ -48,4 +48,4 @@ public:
     }
 };
 template class vector<long>;
-} // namespace _STL
+} // namespace std

@@ -1,4 +1,4 @@
-// _STL::__copy_backward(pair<CCharString,C3DDummyObject>* first, pair<CCharString,C3DDummyObject>* last, pair<CCharString,C3DDummyObject>* result, const random_access_iterator_tag&, int*) -- copy the dummy-object map entries [first, last) backwards onto the range ending at result
+// std::__copy_backward(pair<CCharString,C3DDummyObject>* first, pair<CCharString,C3DDummyObject>* last, pair<CCharString,C3DDummyObject>* result, const random_access_iterator_tag&, int*) -- copy the dummy-object map entries [first, last) backwards onto the range ending at result
 // Leaf: ??$__copy_backward@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6E840, 134 bytes, /Gr `__fastcall` (first in ecx, last in edx; result,
 //   the tag reference and the null distance pointer on the stack, `ret 0Ch`).
@@ -28,7 +28,7 @@ public:
     long       BoneIndex;                               // +0x30
 };
 
-namespace _STL {
+namespace std {
 
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
 

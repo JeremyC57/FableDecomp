@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<float, pair<const float, CCountedPointer<CVertexPairContraction> >, ...>::_M_insert (the cost queue multimap) @ 0x00AD4540
+// Behaviour test for std::_Rb_tree<float, pair<const float, CCountedPointer<CVertexPairContraction> >, ...>::_M_insert (the cost queue multimap) @ 0x00AD4540
 // Links a copy of v as the left or right child of y (left when y is the header, or w == 0 and (x != 0 or v < key(y))),
 // keeps the header's root/leftmost/rightmost, rebalances and counts the node.
 #include <cstdio>

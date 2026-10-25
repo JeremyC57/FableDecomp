@@ -1,4 +1,4 @@
-// Behaviour test for 0086d8c0 (_STL::__uninitialized_fill_n over CRandomAppearanceMorph::CBodyPartMesh): n copies of x are copy-constructed into raw storage,
+// Behaviour test for 0086d8c0 (std::__uninitialized_fill_n over CRandomAppearanceMorph::CBodyPartMesh): n copies of x are copy-constructed into raw storage,
 // the returned cursor is first + n, n == 0 constructs nothing, and every copy is balanced by its destructor.
 #include <cstdio>
 #include <new>

@@ -56,7 +56,7 @@ struct CBaseIntelligentPointer {
 template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
 };
 
-namespace _STL {
+namespace std {
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -122,8 +122,8 @@ _Function __fastcall for_each(_InputIter __first, _InputIter __last, _Function _
 
 class CAddFreeBenchToList {
 public:
-    _STL::vector<CThing*>* BenchList;           // +0x00
-    CAddFreeBenchToList(_STL::vector<CThing*>* benches) : BenchList(benches) { }
+    std::vector<CThing*>* BenchList;           // +0x00
+    CAddFreeBenchToList(std::vector<CThing*>* benches) : BenchList(benches) { }
 };
 
 struct CTCThingOwner {
@@ -132,7 +132,7 @@ struct CTCThingOwner {
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     unsigned char _pad0a[2];
-    _STL::list<CIntelligentPointer<CThing> > ObjectList;   // +0x0C
+    std::list<CIntelligentPointer<CThing> > ObjectList;   // +0x0C
 };
 
 struct CThingAICreature {
@@ -163,8 +163,8 @@ CThing* CAIStateGroup_MinionWorkInInn::GetFreeBench()
     CThing* workplace = GetCreature()->GetPWorkplace();
     if (workplace && workplace->HasTC(0x21)) {
         CTCThingOwner* owner = (CTCThingOwner*)workplace->GetTC(0x21);
-        _STL::vector<CThing*> benches;
-        _STL::for_each(owner->ObjectList.begin(), owner->ObjectList.end(), CAddFreeBenchToList(&benches));
+        std::vector<CThing*> benches;
+        std::for_each(owner->ObjectList.begin(), owner->ObjectList.end(), CAddFreeBenchToList(&benches));
         if (!benches.empty())
             return benches[GFRandom(benches.size(), GetPWorldSeed())];
     }

@@ -30,7 +30,7 @@ public:
 };
 namespace NBankFileManager { class CRetailBank; }
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
@@ -145,12 +145,12 @@ public:
         CWideString RetailHeaderFilePath;                   // +0x0c
         CBankFile*  RegisteredBank;                         // +0x10
     };
-    _STL::map<CCharString, CBankInfo>                           Banks;               // +0x04
-    _STL::list<CCountedPointer<NBankFileManager::CRetailBank> > RetailBanks;         // +0x10
+    std::map<CCharString, CBankInfo>                           Banks;               // +0x04
+    std::list<CCountedPointer<NBankFileManager::CRetailBank> > RetailBanks;         // +0x10
     bool                                                        UsingRetailBanks;    // +0x14
-    _STL::map<CCharString, CCharString>                         BankAliasMap;        // +0x18
+    std::map<CCharString, CCharString>                         BankAliasMap;        // +0x18
     CWideString                                                 BasePath;            // +0x24
-    _STL::set<CWideString>                                      CreatedRetailBanks;  // +0x28
+    std::set<CWideString>                                      CreatedRetailBanks;  // +0x28
     unsigned long                                               FileVersion;         // +0x34
     CBankFileManager();
     virtual void v00();

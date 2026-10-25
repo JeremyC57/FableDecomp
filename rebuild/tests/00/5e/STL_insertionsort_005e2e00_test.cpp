@@ -1,4 +1,4 @@
-// Behaviour test for 0x005E2E00 _STL::__insertion_sort over (priority, CDefPointer<const CContextSensitiveItemDef>) pairs.
+// Behaviour test for 0x005E2E00 std::__insertion_sort over (priority, CDefPointer<const CContextSensitiveItemDef>) pairs.
 #include <cstdio>
 
 struct CIVCountedPointeeBase { unsigned long IVRefCount; int id; };

@@ -1,4 +1,4 @@
-// _STL::swap(CTestQuest& a, CTestQuest& b) -- exchange two test-quest records (six names + colour index) through a by-value temporary
+// std::swap(CTestQuest& a, CTestQuest& b) -- exchange two test-quest records (six names + colour index) through a by-value temporary
 // Leaf: ??$swap@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006232F0, 99 bytes, /Gr `__fastcall` (a in ecx -> edi, b in edx -> esi), plain
 //   `ret`; 0x1c-byte frame temporary.
@@ -32,7 +32,7 @@ public:
     CTestQuest& operator=(const CTestQuest& other);     // 0x004A8F50
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp>
 inline void __fastcall swap(_Tp& __a, _Tp& __b)
 {

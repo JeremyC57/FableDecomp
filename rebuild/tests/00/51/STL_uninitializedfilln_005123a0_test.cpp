@@ -1,7 +1,7 @@
-// behaviour test for 0x005123A0 _STL::uninitialized_fill_n<unsigned short*, unsigned int, unsigned short>: fill n slots, return first + n
+// behaviour test for 0x005123A0 std::uninitialized_fill_n<unsigned short*, unsigned int, unsigned short>: fill n slots, return first + n
 #include <cstdio>
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 template <class _Tp> struct __type_traits { typedef __true_type is_POD_type; };
 
@@ -35,16 +35,16 @@ int main()
     unsigned short buffer[8];
     for (int i = 0; i < 8; ++i) buffer[i] = 0xEEEE;
     unsigned short value = 0x1234;
-    unsigned short* end = _STL::uninitialized_fill_n(buffer + 1, 5u, value);
+    unsigned short* end = std::uninitialized_fill_n(buffer + 1, 5u, value);
     if (end != buffer + 6) { std::printf("005123a0_TEST FAIL\n"); return 1; }
     for (int i = 0; i < 8; ++i) {
         unsigned short expect = (i >= 1 && i <= 5) ? 0x1234 : 0xEEEE;
         if (buffer[i] != expect) { std::printf("005123a0_TEST FAIL\n"); return 1; }
     }
-    if (_STL::uninitialized_fill_n(buffer, 0u, value) != buffer || buffer[0] != 0xEEEE) { std::printf("005123a0_TEST FAIL\n"); return 1; }
+    if (std::uninitialized_fill_n(buffer, 0u, value) != buffer || buffer[0] != 0xEEEE) { std::printf("005123a0_TEST FAIL\n"); return 1; }
     // the value is read through its reference on every pass (it may live in the range)
     buffer[0] = 7;
-    _STL::uninitialized_fill_n(buffer, 3u, buffer[0]);
+    std::uninitialized_fill_n(buffer, 3u, buffer[0]);
     if (buffer[0] != 7 || buffer[1] != 7 || buffer[2] != 7 || buffer[3] != 0x1234) { std::printf("005123a0_TEST FAIL\n"); return 1; }
     std::printf("005123a0_TEST PASS\n");
     return 0;

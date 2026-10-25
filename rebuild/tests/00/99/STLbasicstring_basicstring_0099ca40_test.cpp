@@ -1,4 +1,4 @@
-// Behaviour test for _STL::basic_string<unsigned short>(const unsigned short* s, unsigned int n, const allocator&)
+// Behaviour test for std::basic_string<unsigned short>(const unsigned short* s, unsigned int n, const allocator&)
 // (0x0099CA40): the string holds exactly the first n characters of s followed by a terminator, n = 0 gives an empty
 // terminated string, and characters past n are not copied.
 #include <cstdio>

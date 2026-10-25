@@ -1,5 +1,5 @@
-// _STL::pair::pair(const pair& other) -- copy constructor of pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo>: the key, then the quest name and persist script
-// Leaf: ??0?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@_STL@@QAE@ABU01@@Z
+// std::pair::pair(const pair& other) -- copy constructor of pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo>: the key, then the quest name and persist script
+// Leaf: ??0?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@QAE@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004B7490, 49 bytes, __fastcall `ret 4`, returns `this`.
 // Identity: a 12-byte element of three CCharStrings whose second member is a two-string record copied on its own `this`
 //   (ebx = &second): Ego_r.pdb NQuestManager::CRuntimeQuestPersistence::CPersistInfo (8 bytes: QuestName +0,
@@ -28,7 +28,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x04

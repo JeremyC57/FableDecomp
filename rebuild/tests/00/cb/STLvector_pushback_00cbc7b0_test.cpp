@@ -26,7 +26,7 @@ public:
 };
 }
 typedef NScript::CRuntimeScriptedEntityPersist::CPersistInfo CPersistInfo;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -70,10 +70,10 @@ public:
     void push_back(const _Tp& __x);
 };
 }
-typedef _STL::pair<u64, CPersistInfo> CPersistPair;
+typedef std::pair<u64, CPersistInfo> CPersistPair;
 // ---- the function under test, copied from src/00cbc7b0.cpp (calling convention dropped) ----
 template <class _Tp>
-void _STL::vector<_Tp>::push_back(const _Tp& __x)
+void std::vector<_Tp>::push_back(const _Tp& __x)
 {
     if (this->_M_finish != this->_M_end_of_storage) {
         new (this->_M_finish) _Tp(__x);
@@ -85,7 +85,7 @@ void _STL::vector<_Tp>::push_back(const _Tp& __x)
 static int Fail() { std::printf("00cbc7b0_TEST FAIL\n"); return 1; }
 int main()
 {
-    _STL::vector<CPersistPair> v;
+    std::vector<CPersistPair> v;
     static const char* names[5] = { "a", "b", "c", "d", "e" };
     unsigned int i;
     for (i = 0; i < 5; ++i)

@@ -1,4 +1,4 @@
-// 006e2000 _STL::vector<std::pair<unsigned_long,C3DVector>>::operator=
+// 006e2000 std::vector<std::pair<unsigned_long,C3DVector>>::operator=
 // Flags: /Gr
 // Leaf: ??4?$vector@U?$pair@IUC3DVector@FableAssign_006e2000@@@FableAssign_006e2000@@@FableAssign_006e2000@@QAEAAU01@ABU01@@Z
 // Layout: vector3 pointer words; oracle element stride16; trivial destruction, separately bound copy helpers.

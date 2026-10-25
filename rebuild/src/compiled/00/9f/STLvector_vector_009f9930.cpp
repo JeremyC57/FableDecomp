@@ -1,4 +1,4 @@
-// _STL::vector::vector(const vector&) -- STLport copy constructor of CProfileTreeEntry::Children (vector<CProfileManager::CProfileTreeEntry*>): allocate x.size() pointers, then copy them with the trivial memmove copy
+// std::vector::vector(const vector&) -- STLport copy constructor of CProfileTreeEntry::Children (vector<CProfileManager::CProfileTreeEntry*>): allocate x.size() pointers, then copy them with the trivial memmove copy
 // Leaf: ??0?$vector@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F9930, 96 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: called from list<CProfileTreeEntry>::insert @ 0x009F9BA0 on the node's `+0x4C` (Ego_r.pdb CProfileTreeEntry::Children
@@ -11,7 +11,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);                                  // 0x00BFEA0E
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() {} };
 
@@ -80,4 +80,4 @@ public:
     struct CProfileTreeEntry;
 };
 
-template _STL::vector<CProfileManager::CProfileTreeEntry*>::vector(const _STL::vector<CProfileManager::CProfileTreeEntry*>& __x);
+template std::vector<CProfileManager::CProfileTreeEntry*>::vector(const std::vector<CProfileManager::CProfileTreeEntry*>& __x);

@@ -1,4 +1,4 @@
-// _STL::__push_heap(CCharString* first, int holeIndex, int topIndex, CCharString val, less<CCharString> comp) -- STLport heap sift-up of a CCharString: move smaller parents down, then store val in the hole
+// std::__push_heap(CCharString* first, int holeIndex, int topIndex, CCharString val, less<CCharString> comp) -- STLport heap sift-up of a CCharString: move smaller parents down, then store val in the hole
 // Leaf: __push_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E08C0, 124 bytes (+ padding to 128), `ret 0Ch` (__fastcall /Gr algorithm TU: first in ecx ->
 //   ebp, holeIndex in edx -> edi, then topIndex, the by-value string and the empty comparator on the stack; the by-value

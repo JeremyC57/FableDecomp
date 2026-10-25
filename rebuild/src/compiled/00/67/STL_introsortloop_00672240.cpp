@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(ENavigatorType* first, ENavigatorType* last, ENavigatorType*, int depth_limit, less<ENavigatorType> comp) -- STLport introsort recursion over the creature def's navigator types: median-of-three partition, recurse on the right part until ranges reach 16 entries, partial_sort at depth zero
+// std::__introsort_loop(ENavigatorType* first, ENavigatorType* last, ENavigatorType*, int depth_limit, less<ENavigatorType> comp) -- STLport introsort recursion over the creature def's navigator types: median-of-three partition, recurse on the right part until ranges reach 16 entries, partial_sort at depth zero
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00672240, length 227 bytes (+ int3 padding), `ret 0Ch`.
 // Callers: sort 0x006720B0 (landed; depth 2*lg(n)) and itself (0x006722EF).
@@ -14,7 +14,7 @@
 //   value-type tag, the depth limit and the empty 4-byte comparator on the stack).
 enum ENavigatorType { NAVIGATOR_TYPE_0 };                  // 4-byte enum (signed compares)
 
-namespace _STL {
+namespace std {
 template <class _Tp> struct less {
     less() { }
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
@@ -91,4 +91,4 @@ void __fastcall __introsort_loop(_RandomAccessIter __first, _RandomAccessIter __
 }
 }
 
-template void __fastcall _STL::__introsort_loop<ENavigatorType*, ENavigatorType, int, _STL::less<ENavigatorType> >(ENavigatorType*, ENavigatorType*, ENavigatorType*, int, _STL::less<ENavigatorType>);
+template void __fastcall std::__introsort_loop<ENavigatorType*, ENavigatorType, int, std::less<ENavigatorType> >(ENavigatorType*, ENavigatorType*, ENavigatorType*, int, std::less<ENavigatorType>);

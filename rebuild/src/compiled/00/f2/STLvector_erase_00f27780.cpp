@@ -1,5 +1,5 @@
-// _STL::vector::erase(CHeroSoulsCreatureDef* first, CHeroSoulsCreatureDef* last) -- (vector<CHeroSoulsCreatureDef>) STLport range erase: assign the tail down over [first, last), destroy the leftover elements through their virtual destructor, shrink _M_finish, return first
-// Leaf: ?erase@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@_STL@@@_STL@@QAEPAVCHeroSoulsCreatureDef@@PAV3@0@Z
+// std::vector::erase(CHeroSoulsCreatureDef* first, CHeroSoulsCreatureDef* last) -- (vector<CHeroSoulsCreatureDef>) STLport range erase: assign the tail down over [first, last), destroy the leftover elements through their virtual destructor, shrink _M_finish, return first
+// Leaf: ?erase@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@QAEPAVCHeroSoulsCreatureDef@@PAV3@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F27780, 109 bytes (+ int3 padding), __fastcall `ret 8`; one caller (0x00F2773C).
 // Callees: CHeroSoulsCreatureDef::operator=(const CHeroSoulsCreatureDef&) @ 0x00F27190 (out of line), the element's virtual destructor (vtable slot 0 with a
 //   zero flag: the explicit `p->~T()` of a polymorphic element).
@@ -30,7 +30,7 @@ public:
     virtual ~CHeroSoulsCreatureDef();
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct input_iterator_tag { input_iterator_tag() { } };
@@ -108,6 +108,6 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-template CHeroSoulsCreatureDef* _STL::vector<CHeroSoulsCreatureDef>::erase(CHeroSoulsCreatureDef*, CHeroSoulsCreatureDef*);
+template CHeroSoulsCreatureDef* std::vector<CHeroSoulsCreatureDef>::erase(CHeroSoulsCreatureDef*, CHeroSoulsCreatureDef*);

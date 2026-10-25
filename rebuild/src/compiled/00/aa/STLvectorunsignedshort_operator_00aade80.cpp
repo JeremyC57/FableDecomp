@@ -1,4 +1,4 @@
-// _STL::vector<unsigned short>::operator=(const vector& x) -- STLport copy assignment of a 16-bit vector: reallocate and copy when x outgrows the capacity, else memmove over the live prefix (and the uninitialised tail)
+// std::vector<unsigned short>::operator=(const vector& x) -- STLport copy assignment of a 16-bit vector: reallocate and copy when x outgrows the capacity, else memmove over the live prefix (and the uninitialised tail)
 // Leaf: ??4?$vector@G
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AADE80, length 236 bytes, `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (allocate), memmove @ 0x00BFEAE6 (STLport __copy_trivial), free @ 0x00BFEA14
@@ -14,7 +14,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* p);                                               // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);     // 0x00BFEAE6
 
-namespace _STL {
+namespace std {
 
 struct __true_type { __true_type() { } };
 
@@ -107,4 +107,4 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
 
 template vector<unsigned short>& vector<unsigned short>::operator=(const vector<unsigned short>&);
 
-}   // namespace _STL
+}   // namespace std

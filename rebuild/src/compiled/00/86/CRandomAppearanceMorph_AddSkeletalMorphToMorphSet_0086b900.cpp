@@ -46,7 +46,7 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };     // user constructor: the tag temporary is not zero-stored
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -71,7 +71,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> { };
+template <class T> class CArray : public std::vector<T> { };
 
 class CRandomAppearanceMorph
 {

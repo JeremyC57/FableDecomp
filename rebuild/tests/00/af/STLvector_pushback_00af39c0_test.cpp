@@ -1,4 +1,4 @@
-// behaviour test for 0x00AF39C0 _STL::vector<pair<CCharString, CRegisteredPSCInfo> >::push_back: copy-construct at the finish pointer, or grow through _M_insert_overflow
+// behaviour test for 0x00AF39C0 std::vector<pair<CCharString, CRegisteredPSCInfo> >::push_back: copy-construct at the finish pointer, or grow through _M_insert_overflow
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

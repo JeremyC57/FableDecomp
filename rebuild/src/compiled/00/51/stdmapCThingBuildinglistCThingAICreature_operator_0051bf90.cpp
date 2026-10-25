@@ -25,7 +25,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 class CThingBuilding;
 class CThingAICreature;
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -196,4 +196,4 @@ typename map<_Key, _Tp, _Compare>::iterator map<_Key, _Tp, _Compare>::insert_uni
 
 template list<CThingAICreature*>& map<CThingBuilding*, list<CThingAICreature*> >::operator[](CThingBuilding* const&);
 
-} // namespace _STL
+} // namespace std

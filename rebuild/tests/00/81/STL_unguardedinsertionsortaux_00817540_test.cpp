@@ -1,4 +1,4 @@
-// Behaviour test for 0x00817540 _STL::__unguarded_insertion_sort_aux over THitLocationIntersectionElement by key (unguarded: a smaller element sits before first).
+// Behaviour test for 0x00817540 std::__unguarded_insertion_sort_aux over THitLocationIntersectionElement by key (unguarded: a smaller element sits before first).
 #include <cstdio>
 
 struct CHitLocation { int id; };

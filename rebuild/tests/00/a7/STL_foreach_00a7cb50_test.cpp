@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A7CB50 _STL::for_each with the node-delete functor: every non-null node except the shared
+// Behaviour test for 0x00A7CB50 std::for_each with the node-delete functor: every non-null node except the shared
 // blocked node is deleted through its virtual destructor; the functor comes back.
 #include <cstdio>
 static int g_deleted = 0;

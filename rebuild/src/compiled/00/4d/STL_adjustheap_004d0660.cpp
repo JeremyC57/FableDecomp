@@ -1,4 +1,4 @@
-// _STL::__adjust_heap(SCameraTagEntry* first, int holeIndex, int len, SCameraTagEntry val, CKeyPairCompareLess comp) -- STLport heap sift-down over the CSubtitledMessage camera-tag vector map (pair<float, CCameraTag>, float key, less): walk the hole down to a leaf through the larger child, then __push_heap the value back up from there
+// std::__adjust_heap(SCameraTagEntry* first, int holeIndex, int len, SCameraTagEntry val, CKeyPairCompareLess comp) -- STLport heap sift-down over the CSubtitledMessage camera-tag vector map (pair<float, CCameraTag>, float key, less): walk the hole down to a leaf through the larger child, then __push_heap the value back up from there
 // Leaf: __adjust_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D0660, 190 bytes, `ret 24h`.
 // Callers: 0x004D0BBA / 0x004D0CFE (make_heap / pop_heap of the same element) and 0x004D176A (sort_heap).
@@ -14,7 +14,7 @@
 //   `comp(*(first + secondChild), *(first + (secondChild - 1)))`, `2 * (secondChild + 1)`, the single-child tail);
 //   element moves are the implicit pair operator= (`rep movsd` x7), the by-value argument to __push_heap is built in the
 //   argument area through pair's memberwise copy constructor (key dword, then the CCameraTag words through eax).
-namespace _STL {
+namespace std {
 
 enum EConversationProtagonist { PROTAGONIST_NONE };
 enum EConversationCameraPosition { CAMERA_POSITION_NONE };

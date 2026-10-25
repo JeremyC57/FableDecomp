@@ -46,5 +46,5 @@ Review at landing:
   source with C3DAnimFile / C3DAnimFileRootChunk.
 - The landed `std_swap_00a331b0` calls the element `pair<long, C3DMeshVolume>`. Every sort helper of this family
   compares the key unsigned (`jae`/`jb`), so the key is `unsigned long`. The swap body itself is unaffected.
-- 0x00A34DF0 pins its leaf to the full mangled name `?resize@?$vector@VC3DGeneratorObject@@@_STL@@QAEXI@Z`, because the
+- 0x00A34DF0 pins its leaf to the full mangled name `?resize@?$vector@VC3DGeneratorObject@@@std@@QAEXI@Z`, because the
   TU also emits the 2-argument `resize(n, x)` COMDAT.

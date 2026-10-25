@@ -1,4 +1,4 @@
-// Behaviour test for 0x0098CCC0 _STL::vector<CShaderRenderManager::CLightInfo>::vector(unsigned int): count elements
+// Behaviour test for 0x0098CCC0 std::vector<CShaderRenderManager::CLightInfo>::vector(unsigned int): count elements
 // allocated (none for zero), finish == end-of-storage == start + count, every element default-valued
 // (Size 0, IsEnabled false, UpdateFlag true).
 #include <cstdio>

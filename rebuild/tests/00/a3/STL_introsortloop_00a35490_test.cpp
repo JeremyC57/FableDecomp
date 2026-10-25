@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A35490 _STL::__introsort_loop: partitions until every run is at most 16 entries with the runs ordered (the final insertion sort finishes them); a zero depth limit heap-sorts instead.
+// Behaviour test for 0x00A35490 std::__introsort_loop: partitions until every run is at most 16 entries with the runs ordered (the final insertion sort finishes them); a zero depth limit heap-sorts instead.
 #include <cstdio>
 
 static int g_strings = 0;      // live CCharString objects

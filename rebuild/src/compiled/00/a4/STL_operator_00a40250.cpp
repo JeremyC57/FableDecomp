@@ -1,4 +1,4 @@
-// _STL::operator<(const pair<CCharString, CCharString>& x, const pair<CCharString, CCharString>& y) -- STLport lexicographic pair compare of two string pairs: first strings, then (when neither first sorts before the other) the second strings, each through the inline CCharString::operator<
+// std::operator<(const pair<CCharString, CCharString>& x, const pair<CCharString, CCharString>& y) -- STLport lexicographic pair compare of two string pairs: first strings, then (when neither first sorts before the other) the second strings, each through the inline CCharString::operator<
 // Leaf: ??$?M
 // Flags: /Oa
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A40250, 110 bytes, plain `ret` (__cdecl, both references on the stack),

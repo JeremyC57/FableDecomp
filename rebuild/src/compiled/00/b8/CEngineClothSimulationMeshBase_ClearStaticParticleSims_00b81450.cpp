@@ -37,7 +37,7 @@ public:
     bool IsRenderDataBusy() const { return RenderData.Get() != 0 && RenderData->IsBusy(); }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class vector {                     // STLport 12-byte vector
 public:
     typedef _Tp* iterator;
@@ -51,7 +51,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {
+template <class T> class CArray : public std::vector<T> {
 };
 
 class CEngineClothSimulationMeshBase {

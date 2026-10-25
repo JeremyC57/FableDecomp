@@ -1,4 +1,4 @@
-// _STL::__introsort_loop(CMeshInfo* first, CMeshInfo* last, CMeshInfo*, int depth_limit, CSortPrimaryMeshesLast comp) -- STLport introsort core over a mesh-info run, primary meshes last: quicksort around a median-of-three pivot until runs are 16 or shorter, heap sort at the depth limit
+// std::__introsort_loop(CMeshInfo* first, CMeshInfo* last, CMeshInfo*, int depth_limit, CSortPrimaryMeshesLast comp) -- STLport introsort core over a mesh-info run, primary meshes last: quicksort around a median-of-three pivot until runs are 16 or shorter, heap sort at the depth limit
 // Leaf: ??$__introsort_loop@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C5AA0, 239 bytes, `ret 0Ch` (/Gr algorithm TU, explicit __fastcall here: first in
 //   ecx, last in edx, then the value-type tag pointer, the depth limit and the comparator slot).
@@ -22,7 +22,7 @@ public:
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return !a.PrimaryMesh; }
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 inline const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {

@@ -14,7 +14,7 @@ struct CRescaleBy {
     void operator()(C3DVector& v) const { v *= Scale; }
 };
 
-namespace _STL {
+namespace std {
 template <class _InputIter, class _Function>
 _Function for_each(_InputIter __first, _InputIter __last, _Function __f)
 {
@@ -31,12 +31,12 @@ int main()
     int ok = 1;
     C3DVector v[4];
     for (int i = 0; i < 4; ++i) { v[i].X = 1.0f + i; v[i].Y = -2.0f * i; v[i].Z = 0.5f; }
-    CRescaleBy r = _STL::for_each(v, v + 3, CRescaleBy(2.5f));
+    CRescaleBy r = std::for_each(v, v + 3, CRescaleBy(2.5f));
     if (!nearf(r.Scale, 2.5f)) ok = 0;
     for (int i = 0; i < 3; ++i)
         if (!nearf(v[i].X, 2.5f * (1.0f + i)) || !nearf(v[i].Y, 2.5f * (-2.0f * i)) || !nearf(v[i].Z, 1.25f)) ok = 0;
     if (!nearf(v[3].X, 4.0f) || !nearf(v[3].Y, -6.0f) || !nearf(v[3].Z, 0.5f)) ok = 0;
-    CRescaleBy e = _STL::for_each(v, v, CRescaleBy(10.0f));
+    CRescaleBy e = std::for_each(v, v, CRescaleBy(10.0f));
     if (!nearf(e.Scale, 10.0f) || !nearf(v[0].X, 2.5f)) ok = 0;
 
     if (!ok) { std::printf("00a13440_TEST FAIL\n"); return 1; }

@@ -21,7 +21,7 @@ public:
     void* PData;                                        // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator {
 };
 template <class _Tp, class _Alloc> class vector {     // 12 bytes
@@ -38,8 +38,8 @@ public:
     class CConversationLine;
     CScriptConversationManager* Manager;                                            // +0x00
     long ConversationIndex;                                                         // +0x04
-    _STL::vector<CIntelligentPointer<CThing>, _STL::allocator<CIntelligentPointer<CThing> > > PeopleInConversation;  // +0x08
-    _STL::vector<CConversationLine, _STL::allocator<CConversationLine> > Conversation;                               // +0x14
+    std::vector<CIntelligentPointer<CThing>, std::allocator<CIntelligentPointer<CThing> > > PeopleInConversation;  // +0x08
+    std::vector<CConversationLine, std::allocator<CConversationLine> > Conversation;                               // +0x14
     long CurrentLine;                                                               // +0x20
     long FramesLeftBeforeNewLine;                                                   // +0x24
     bool SoundIn2D;                                                                 // +0x28

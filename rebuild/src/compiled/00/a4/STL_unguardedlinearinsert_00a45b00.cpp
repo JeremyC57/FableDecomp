@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI insertion step without a lower bound: shift elements up while comp(val, *prev), then store val
+// std::__unguarded_linear_insert(C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI insertion step without a lower bound: shift elements up while comp(val, *prev), then store val
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A45B00, length 145 bytes, `ret 14h`.
 // Callers: 0x00A45FCD (__unguarded_insertion_sort) and 0x00A465C5 (__linear_insert 0x00A46530, this chunk).
@@ -31,7 +31,7 @@ public:
 
 typedef bool (__fastcall* TBoneMorphCompare)(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b);
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

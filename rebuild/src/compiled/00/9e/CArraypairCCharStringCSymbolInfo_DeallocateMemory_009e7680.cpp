@@ -27,7 +27,7 @@ public:
     };
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;
@@ -43,7 +43,7 @@ template <class _ForwardIterator>
 void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x006FBCC0
 }
 
-typedef _STL::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
+typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
 
 template <class T>
 class CArray {
@@ -54,8 +54,8 @@ public:
     unsigned long capacity() const { return (unsigned long)(_M_end_of_storage - _M_start); }
     void erase(T* f, T* l)
     {
-        T* i = _STL::__copy(l, _M_finish, f, _STL::random_access_iterator_tag(), (int*)0);
-        _STL::__destroy_aux(i, _M_finish, _STL::__false_type());
+        T* i = std::__copy(l, _M_finish, f, std::random_access_iterator_tag(), (int*)0);
+        std::__destroy_aux(i, _M_finish, std::__false_type());
         _M_finish = i;
     }
     void DeallocateMemory();
@@ -70,7 +70,7 @@ template <> void CArray<SSymbolEntry>::DeallocateMemory()
         SSymbolEntry* p = Exchange(_M_start, (SSymbolEntry*)0);
         SSymbolEntry* l = Exchange(_M_finish, (SSymbolEntry*)0);
         _M_end_of_storage = 0;
-        _STL::__destroy_aux(p, l, _STL::__false_type());
+        std::__destroy_aux(p, l, std::__false_type());
         if (p)
             free(p);
     }

@@ -22,7 +22,7 @@ public:
 };
 #pragma pack(pop)
 
-namespace _STL {
+namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
@@ -37,7 +37,7 @@ public:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {  // retail 12 bytes
+template <class T> class CArray : public std::vector<T> {  // retail 12 bytes
 public:
     T* GetAsCArray() { return this->size() != 0 ? &(*this)[0] : (T*)this; }
 };

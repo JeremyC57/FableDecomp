@@ -1,4 +1,4 @@
-// _STL::__find_if(const CAnimationEntry** first, const CAnimationEntry** last, unary_negate<CTurningAnimCompare> pred, const random_access_iterator_tag&) -- first turning animation whose rotation is NOT within the tolerance cone (4-way unrolled random-access find_if)
+// std::__find_if(const CAnimationEntry** first, const CAnimationEntry** last, unary_negate<CTurningAnimCompare> pred, const random_access_iterator_tag&) -- first turning animation whose rotation is NOT within the tolerance cone (4-way unrolled random-access find_if)
 // Leaf: ??$__find_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087DB50, length 198 bytes (`ret 8`).
 // Identity: Ego_r.pdb has `remove_if(vector<const CAnimationEntry*>, not1(CTurningAnimCompare))` in the
@@ -21,7 +21,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { };
 
 template <class _Predicate>

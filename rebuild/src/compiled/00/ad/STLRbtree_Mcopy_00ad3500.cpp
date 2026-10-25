@@ -1,5 +1,5 @@
-// _STL::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<unsigned long,float> (COptimisedVertex::Groups): clone x under parent p, recurse into every right subtree and walk down the left spine
-// Leaf: ?_M_copy@?$_Rb_tree@KU?$pair@$$CBKM@_STL@@
+// std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<unsigned long,float> (COptimisedVertex::Groups): clone x under parent p, recurse into every right subtree and walk down the left spine
+// Leaf: ?_M_copy@?$_Rb_tree@KU?$pair@$$CBKM@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD3500, 184 bytes, thiscall `ret 8` (x, p; returns the cloned top).
 // Identity: recursive (0x00AD354C, 0x00AD359D); the other callers are the map's tree operator= 0x00AD3E30 (landed as the
 //   generic CRetailTree_00ad3500::operator=) and 0x00AD426B (the tree copy constructor). Node 0x18 bytes = 0x10 links +
@@ -51,7 +51,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -204,9 +204,9 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-namespace _STL {
+namespace std {
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_Link_type
 _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _Link_type __p)
@@ -229,9 +229,9 @@ _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_copy(_Link_type __x, _
     }
     return __top;
 }
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<const unsigned long, float> TGroupValue;
-typedef _STL::_Rb_tree<unsigned long, TGroupValue, _STL::_Select1st<TGroupValue>, _STL::less<unsigned long>,
-                       _STL::allocator<TGroupValue> > TGroupMapTree;
+typedef std::pair<const unsigned long, float> TGroupValue;
+typedef std::_Rb_tree<unsigned long, TGroupValue, std::_Select1st<TGroupValue>, std::less<unsigned long>,
+                       std::allocator<TGroupValue> > TGroupMapTree;
 template TGroupMapTree::_Link_type TGroupMapTree::_M_copy(TGroupMapTree::_Link_type, TGroupMapTree::_Link_type);

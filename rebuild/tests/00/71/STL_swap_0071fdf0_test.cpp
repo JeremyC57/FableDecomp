@@ -1,4 +1,4 @@
-// Behaviour test for 0x0071FDF0 _STL::swap<pair<EHeroMorphType,CTextureMorphEntry>>.
+// Behaviour test for 0x0071FDF0 std::swap<pair<EHeroMorphType,CTextureMorphEntry>>.
 #include <cstdio>
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("0071fdf0_TEST FAIL\n"); return 1; } } while (0)

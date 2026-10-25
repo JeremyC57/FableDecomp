@@ -1,4 +1,4 @@
-// _STL::remove_if(C3DVector* first, C3DVector* last, unary_negate<CVectorFilter_FurtherFromPointThan> pred) -- drop the points within the XY radius of the centre, compacting the rest to the front; return the new end
+// std::remove_if(C3DVector* first, C3DVector* last, unary_negate<CVectorFilter_FurtherFromPointThan> pred) -- drop the points within the XY radius of the centre, compacting the rest to the front; return the new end
 // Leaf: ??$remove_if@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC060, length 100 bytes (+ int3 padding), `ret 10h`.
 // Identity: FableWin.pdb names `remove_if` / `_Find_if` / `_Remove_if` over unary_negate<CVectorFilter_FurtherFromPointThan>
@@ -37,7 +37,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 template <class _Predicate>
 class unary_negate {
 protected:
@@ -47,7 +47,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };

@@ -1,4 +1,4 @@
-// _STL::list<CEnginePrimitiveHandle>::resize(size_type new_size, const CEnginePrimitiveHandle& x) -- walk to the new_size-th handle; erase the tail when the list is longer, else append copies of x
+// std::list<CEnginePrimitiveHandle>::resize(size_type new_size, const CEnginePrimitiveHandle& x) -- walk to the new_size-th handle; erase the tail when the list is longer, else append copies of x
 // Leaf: ?resize@?$list@VCEnginePrimitiveHandle@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BBDC60, 80 bytes, thiscall, `ret 8`.
 // Identity: called by the landed one-argument resize 0x00BBDCB0 (CEngineInternalPrimitiveParticleGroup::Primitives), whose
@@ -39,7 +39,7 @@ public:
     virtual ~CEnginePrimitiveHandle();
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -152,4 +152,4 @@ void list<_Tp, _Alloc>::resize(size_type __new_size, const _Tp& __x)
 
 template void list<CEnginePrimitiveHandle>::resize(size_type, const CEnginePrimitiveHandle&);
 
-} // namespace _STL
+} // namespace std

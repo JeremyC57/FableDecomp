@@ -1,11 +1,11 @@
-// _STL::__insertion_sort(CSoundBankEntry* first, CSoundBankEntry* last, CSoundBankEntryLess comp) -- insertion sort: linear insert of each entry after the first
-// Leaf: ??$__insertion_sort@PAU?$pair@JVCSoundBankRecord@@@_STL@@
+// std::__insertion_sort(CSoundBankEntry* first, CSoundBankEntry* last, CSoundBankEntryLess comp) -- insertion sort: linear insert of each entry after the first
+// Leaf: ??$__insertion_sort@PAU?$pair@JVCSoundBankRecord@@@std@@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00993420, length 159 bytes, `ret 4`.
 // Callees: CCharString copy ctor @ 0x0099EC30 (x4), __linear_insert @ 0x009930C0. Caller: __final_insertion_sort @
 // 0x00993730 (landed).
 // Label: the manifest's "Heap_Sift_Up" is descriptive; this is the STLport sort/uninitialized-memory instantiation.
-// Element: _STL::pair<long, CSoundBankRecord> (0x24 bytes) -- the entries of the CASoundManager's bank vector map (sorted by
+// Element: std::pair<long, CSoundBankRecord> (0x24 bytes) -- the entries of the CASoundManager's bank vector map (sorted by
 // the landed CVectorMap::Sort 0x00993A10 -> sort 0x009939B0); record = two CCountedPointers (copy bumps the shared count)
 // and four CCharStrings (copy ctor 0x0099EC30), with the out-of-line operator= 0x00992630 and destructor 0x00992510
 // (landed). The record's copy constructor is implicit: VC7.1 expands it inline except where it copies a by-value
@@ -54,7 +54,7 @@ public:
     ~CSoundBankRecord();                        // 0x00992510
 };
 
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -67,16 +67,16 @@ template <class T1, class T2> struct pair {
     pair(const T1& a, const T2& b) : first(a), second(b) { }
 };
 
-}   // namespace _STL
+}   // namespace std
 
-typedef _STL::pair<long, CSoundBankRecord> CSoundBankEntry;     // 0x24 bytes
+typedef std::pair<long, CSoundBankRecord> CSoundBankEntry;     // 0x24 bytes
 
 // CVectorMap<long, CSoundBankRecord>'s key order (an empty functor passed by value)
 struct CSoundBankEntryLess {
     bool operator()(const CSoundBankEntry& a, const CSoundBankEntry& b) const { return a.first < b.first; }
 };
 
-namespace _STL {
+namespace std {
 
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
@@ -193,6 +193,6 @@ void __make_heap(RandomAccessIter first, RandomAccessIter last, Compare comp, T*
     }
 }
 
-}   // namespace _STL
+}   // namespace std
 
-template void _STL::__insertion_sort(CSoundBankEntry*, CSoundBankEntry*, CSoundBankEntryLess);
+template void std::__insertion_sort(CSoundBankEntry*, CSoundBankEntry*, CSoundBankEntryLess);

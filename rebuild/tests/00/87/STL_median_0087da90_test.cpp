@@ -3,7 +3,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Model of _STL::__median @ 0x0087DA90 (median of three under a comparator), with a sane comparator and the retail
+// Model of std::__median @ 0x0087DA90 (median of three under a comparator), with a sane comparator and the retail
 // CTurningAnimCompare (which reads its left operand twice and so never answers true).
 struct CAnimationEntry {
     float Rotation;

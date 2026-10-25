@@ -1,4 +1,4 @@
-// _STL::__uninitialized_copy(pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* first, pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* last, pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* result, const __false_type&) -- copy-construct the danger-thing entries of [first, last) into raw storage at result; returns the end of the copies
+// std::__uninitialized_copy(pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* first, pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* last, pair<CIntelligentPointer<const CThing>,NStealth::CDangerStatus>* result, const __false_type&) -- copy-construct the danger-thing entries of [first, last) into raw storage at result; returns the end of the copies
 // Leaf: __uninitialized_copy
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00748A40, 84 bytes (+12 int3), `ret 8` (link-time __fastcall: first in ecx, last in
 //   edx, result and the __false_type reference on the stack).
@@ -42,7 +42,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                             // +0x00
     B second;                                            // +0x08
@@ -50,9 +50,9 @@ template <class A, class B> struct pair {
 };
 }
 
-typedef _STL::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> TDangerPair;   // 16 bytes
+typedef std::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> TDangerPair;   // 16 bytes
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 
 template <class T1, class T2>

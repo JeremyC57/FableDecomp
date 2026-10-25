@@ -1,4 +1,4 @@
-// _STL::__unguarded_linear_insert(pair<CCharString,CScriptInfo>* __last, pair<CCharString,CScriptInfo> __val, CKeyPairCompareLess __comp) -- STLport insertion-sort inner loop: shift the elements before __last up while __val sorts before them, then store __val
+// std::__unguarded_linear_insert(pair<CCharString,CScriptInfo>* __last, pair<CCharString,CScriptInfo> __val, CKeyPairCompareLess __comp) -- STLport insertion-sort inner loop: shift the elements before __last up while __val sorts before them, then store __val
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB6420, 172 bytes (+ int3 padding). __fastcall: __last in ecx, the
 // 0x18-byte __val and the comparator word on the stack (`ret 1Ch`). Callers: __linear_insert 0x00CB6CE0 and the
@@ -7,8 +7,8 @@
 // Shape: the STLport body verbatim; *__last = *__next is the pair's implicit assignment (key operator=, the two function
 // pointers, Name operator=, ID, the bool) read through a second induction pointer at next->second.Name; the by-value
 // __val is destroyed by the callee (second.Name, then first).
-// Model: STLport 4.6 algorithms (namespace _STL, the /Gr TU makes the templates __fastcall) over the script registry's
-// 0x18-byte _STL::pair<CCharString, CScriptInfo> (CScriptInfoManager::Scripts, a CVectorMap sorted with
+// Model: STLport 4.6 algorithms (namespace std, the /Gr TU makes the templates __fastcall) over the script registry's
+// 0x18-byte std::pair<CCharString, CScriptInfo> (CScriptInfoManager::Scripts, a CVectorMap sorted with
 // CKeyPairCompareLess). Ego_r.pdb CScriptInfo (0x14): AllocFunc +0, MasterScriptDataAlloc +4, CCharString Name +8,
 // long ID +0xc, bool MasterScript +0x10 (implicit copy and assignment) -- the model of the landed __insertion_sort
 // 0x00CB6EA0, __pop_heap 0x00CB6B00 and __copy_backward 0x00CB62F0. STLport's pair has a user copy constructor;
@@ -49,7 +49,7 @@ public:
     bool             MasterScript;                      // +0x10
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2>
 struct pair {
     _T1 first;
@@ -61,13 +61,13 @@ struct pair {
 
 template <class K, class V>
 struct CKeyPairCompareLess {                            // empty, passed by value (one stack word)
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<CCharString, CScriptInfo>   SScriptInfoPair;
+typedef std::pair<CCharString, CScriptInfo>   SScriptInfoPair;
 typedef CKeyPairCompareLess<CCharString, CScriptInfo> SScriptInfoLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

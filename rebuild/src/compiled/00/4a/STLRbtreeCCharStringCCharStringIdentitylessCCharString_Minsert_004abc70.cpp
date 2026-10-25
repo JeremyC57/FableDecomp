@@ -1,4 +1,4 @@
-// _STL::_Rb_tree<CCharString, CCharString, _Identity, less<CCharString> >::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const CCharString&, _Rb_tree_node_base*) -- STLport red-black tree node insert for a set<CCharString>: link a new node as y's left child (y is the header, or x is set, or v < key(y), unless a hint w is given) else as its right child, fix the leftmost/rightmost/root links, rebalance, count it, return the iterator
+// std::_Rb_tree<CCharString, CCharString, _Identity, less<CCharString> >::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const CCharString&, _Rb_tree_node_base*) -- STLport red-black tree node insert for a set<CCharString>: link a new node as y's left child (y is the header, or x is set, or v < key(y), unless a hint w is given) else as its right child, fix the leftmost/rightmost/root links, rebalance, count it, return the iterator
 // Leaf: _M_insert
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004ABC70, 206 bytes, `ret 14h` (__fastcall: this -> ebp; the hidden
 //   iterator result, x, y, &v and the hint w on the stack).

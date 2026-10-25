@@ -1,4 +1,4 @@
-// _STL::__destroy_aux(CMultiStaticMeshEntryDef* first, CMultiStaticMeshEntryDef* last, const __false_type&) -- destroy each multi-static-mesh entry def in [first, last) through its virtual destructor
+// std::__destroy_aux(CMultiStaticMeshEntryDef* first, CMultiStaticMeshEntryDef* last, const __false_type&) -- destroy each multi-static-mesh entry def in [first, last) through its virtual destructor
 // Leaf: ??$__destroy_aux@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004DA655, 28 bytes (a /Os module: unaligned entry, the loop entered at its test),
 //   /Gr `__fastcall` (first in ecx -> esi, last in edx -> edi), `ret 4` (the tag reference).
@@ -18,7 +18,7 @@ public:
     unsigned char _body[0x34];                          // +0x04 CResource/CSubDefClassBase state, Mesh +0x28, flags, fade, channel
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }

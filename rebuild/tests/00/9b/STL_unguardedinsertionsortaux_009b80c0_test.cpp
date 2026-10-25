@@ -70,7 +70,7 @@ public:
     char* PStringData;
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -204,7 +204,7 @@ private:
 };
 }
 
-template <class T> class CArray : public _STL::vector<T> {      // retail CArray: the 12-byte STLport vector
+template <class T> class CArray : public std::vector<T> {      // retail CArray: the 12-byte STLport vector
 };
 
 class CDefClassBase;
@@ -218,16 +218,16 @@ public:
         CArray<unsigned long>  GlobalIndices;
     };
 };
-typedef _STL::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
+typedef std::pair<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoPair;
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<unsigned long, CDefinitionManager::CDefClassInfo> CDefClassInfoLess;
 
 template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap : public _STL::vector<_STL::pair<K, V> > {
+class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     CVectorMap() : Dirty(false) {}
     void Insert(const K& key, const V& value);
@@ -237,11 +237,11 @@ public:
 
 template <class K, class V, class C> void CVectorMap<K, V, C>::Insert(const K& key, const V& value)
 {
-    this->push_back(_STL::pair<K, V>(key, value));
+    this->push_back(std::pair<K, V>(key, value));
     Dirty = true;
 }
 
-namespace _STL {
+namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b)
 {
     _Tp __tmp = __a;
@@ -496,13 +496,13 @@ int main()
         unsigned long keys[7] = { 0, 6, 2, 9, 4, 1, 5 };     // keys[0] is the guard
         CDefClassInfoPair a[7];
         Fill(a, keys, 7);
-        _STL::__unguarded_insertion_sort_aux(a + 1, a + 7, (CDefClassInfoPair*)0, CDefClassInfoLess());
+        std::__unguarded_insertion_sort_aux(a + 1, a + 7, (CDefClassInfoPair*)0, CDefClassInfoLess());
         unsigned long want[7] = { 0, 1, 2, 4, 5, 6, 9 };
         for (int i = 0; i < 7; ++i)
             if (a[i].first != want[i] || !InfoIs(a[i], want[i], Name(want[i]), want[i] * 10, (unsigned int)(want[i] % 3)))
                 { std::printf("009b80c0_TEST FAIL\n"); return 1; }
 
-        _STL::__unguarded_insertion_sort_aux(a + 1, a + 1, (CDefClassInfoPair*)0, CDefClassInfoLess());   // empty: no-op
+        std::__unguarded_insertion_sort_aux(a + 1, a + 1, (CDefClassInfoPair*)0, CDefClassInfoLess());   // empty: no-op
         if (a[1].first != 1) { std::printf("009b80c0_TEST FAIL\n"); return 1; }
     }
     if (g_live != live0 || g_blocks != blocks0) { std::printf("009b80c0_TEST FAIL\n"); return 1; }

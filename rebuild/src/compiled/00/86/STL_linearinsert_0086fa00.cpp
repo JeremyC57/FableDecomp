@@ -1,4 +1,4 @@
-// _STL::__linear_insert(pair<long, CLongMapValue8>* first, pair<long, CLongMapValue8>* last, pair<long, CLongMapValue8> val, CKeyPairCompareLess comp) -- STLport insertion step: an entry smaller than the first shifts the whole run up one slot and goes first, otherwise it is sifted down unguarded
+// std::__linear_insert(pair<long, CLongMapValue8>* first, pair<long, CLongMapValue8>* last, pair<long, CLongMapValue8> val, CKeyPairCompareLess comp) -- STLport insertion step: an entry smaller than the first shifts the whole run up one slot and goes first, otherwise it is sifted down unguarded
 // Leaf: ??$__linear_insert@PAU?$pair@JVCLongMapValue8@@
 // Retail 0x0086FA00, 0x5B bytes (+ int3 padding to 0x60), `ret 10h` (/Gr: first in ecx, last in edx, the 12-byte value
 // and the empty comparator on the stack). No direct caller (the long-keyed map's __insertion_sort reaches it).
@@ -19,7 +19,7 @@ public:
     unsigned long Data;                              // +0x04
 };
 
-namespace _STL {
+namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
@@ -81,11 +81,11 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 template <class K, class V> class CKeyPairCompareLess
 {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::pair<long, CLongMapValue8> TLongMapPair;
+typedef std::pair<long, CLongMapValue8> TLongMapPair;
 
-template void __fastcall _STL::__linear_insert<TLongMapPair*, TLongMapPair,
+template void __fastcall std::__linear_insert<TLongMapPair*, TLongMapPair,
     CKeyPairCompareLess<long, CLongMapValue8> >(TLongMapPair*, TLongMapPair*,
     TLongMapPair, CKeyPairCompareLess<long, CLongMapValue8>);

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00A55500: _STL::vector<pair<CCharString, long> >::reserve (reallocate to n keeping the elements)
+// Behaviour test for 0x00A55500: std::vector<pair<CCharString, long> >::reserve (reallocate to n keeping the elements)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -42,7 +42,7 @@ public:
 };
 static bool Eq(const CCharString& s, const char* t) { return strcmp(s.c_str(), t) == 0; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
@@ -126,12 +126,12 @@ void vector<_Tp, _Alloc>::reserve(unsigned int __n)
 }
 }
 
-typedef _STL::pair<CCharString, long> TEntry;
+typedef std::pair<CCharString, long> TEntry;
 
 int main()
 {
     {
-        _STL::vector<TEntry> v;
+        std::vector<TEntry> v;
         v.reserve(3u);
         Check(v._M_start != 0 && v.size() == 0 && v.capacity() == 3);
         v.push_back(TEntry(CCharString("one"), 1));

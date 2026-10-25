@@ -1,4 +1,4 @@
-// _STL::__insertion_sort(PairVectorLong* first, PairVectorLong* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport insertion sort over the first-person targeting (position, index) pairs with the 0x2C-byte comparator passed by value: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
+// std::__insertion_sort(PairVectorLong* first, PairVectorLong* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport insertion sort over the first-person targeting (position, index) pairs with the 0x2C-byte comparator passed by value: every element after the first goes through the out-of-line __linear_insert(first, i, *i, comp)
 // Leaf: __insertion_sort
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00809590, 159 bytes, `ret 2Ch` (__fastcall: first in ecx, last in edx, the
 // 0x2C-byte comparator by value on the stack -- the SGI/STLport algorithm TUs are /Gr).

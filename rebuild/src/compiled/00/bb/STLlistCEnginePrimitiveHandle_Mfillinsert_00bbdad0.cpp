@@ -1,4 +1,4 @@
-// _STL::list<CEnginePrimitiveHandle>::_M_fill_insert(iterator pos, size_type n, const CEnginePrimitiveHandle& x) -- insert n copies of the handle before pos (each copy adds a reference to the primitive)
+// std::list<CEnginePrimitiveHandle>::_M_fill_insert(iterator pos, size_type n, const CEnginePrimitiveHandle& x) -- insert n copies of the handle before pos (each copy adds a reference to the primitive)
 // Leaf: ?_M_fill_insert@?$list@VCEnginePrimitiveHandle@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BBDAD0, 79 bytes, thiscall (`this` unused), `ret 0Ch`.
 // Identity: called by list<CEnginePrimitiveHandle>::resize 0x00BBDC60 and 0x00BBDC03 (a one-element insert). The node is
@@ -39,7 +39,7 @@ public:
     virtual ~CEnginePrimitiveHandle();
 };
 
-namespace _STL {
+namespace std {
 
 template <class _Tp> class allocator {
 public:
@@ -146,4 +146,4 @@ void list<_Tp, _Alloc>::_M_fill_insert(iterator __pos, size_type __n, const _Tp&
 
 template void list<CEnginePrimitiveHandle>::_M_fill_insert(iterator, size_type, const CEnginePrimitiveHandle&);
 
-} // namespace _STL
+} // namespace std

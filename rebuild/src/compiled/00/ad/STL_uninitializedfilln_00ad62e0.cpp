@@ -1,5 +1,5 @@
-// _STL::__uninitialized_fill_n(CUniqueVertex* first, unsigned int n, const CUniqueVertex& x, const __false_type&) -- copy-constructs n unique vertices from x into raw storage and returns the end
-// Leaf: ??$__uninitialized_fill_n@PAVCUniqueVertex@QuadricOptimiserInternals@@IV12@@_STL@@
+// std::__uninitialized_fill_n(CUniqueVertex* first, unsigned int n, const CUniqueVertex& x, const __false_type&) -- copy-constructs n unique vertices from x into raw storage and returns the end
+// Leaf: ??$__uninitialized_fill_n@PAVCUniqueVertex@QuadricOptimiserInternals@@IV12@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD62E0, 65 bytes, __fastcall (ecx = first, edx = n), `ret 8` (x, the tag).
 // Identity: STLport 4.x `__uninitialized_fill_n` (non-POD path) over QuadricOptimiserInternals::CUniqueVertex (0x1C
 //   bytes); callers 0x00AD6BAA, 0x00AD7D1A, 0x00AD7F4D (vector<CUniqueVertex> fill / insert paths).
@@ -11,10 +11,10 @@
 //   `test edx,edx ; jbe` for the unsigned count, the placement new's null test, then CUniqueVertex's implicit copy
 //   constructor (the Exists byte, then the two set copies; edi = cur + 0x10 with the first member at edi - 0xC).
 // Label correction: catalogued as `vector<char>::_Ufill` (propagated); the body is
-//   _STL::__uninitialized_fill_n<CUniqueVertex*, unsigned int, CUniqueVertex>.
+//   std::__uninitialized_fill_n<CUniqueVertex*, unsigned int, CUniqueVertex>.
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _Tp> struct less { };
@@ -59,7 +59,7 @@ _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, 
 namespace QuadricOptimiserInternals {
 class CIndexList {
 public:
-    _STL::set<unsigned long> Indices;                               // +0x00
+    std::set<unsigned long> Indices;                               // +0x00
 };
 
 class CUniqueVertex {
@@ -71,6 +71,6 @@ public:
 }
 
 template QuadricOptimiserInternals::CUniqueVertex* __fastcall
-_STL::__uninitialized_fill_n<QuadricOptimiserInternals::CUniqueVertex*, unsigned int, QuadricOptimiserInternals::CUniqueVertex>(
+std::__uninitialized_fill_n<QuadricOptimiserInternals::CUniqueVertex*, unsigned int, QuadricOptimiserInternals::CUniqueVertex>(
     QuadricOptimiserInternals::CUniqueVertex*, unsigned int, const QuadricOptimiserInternals::CUniqueVertex&,
-    const _STL::__false_type&);
+    const std::__false_type&);

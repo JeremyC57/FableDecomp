@@ -1,4 +1,4 @@
-// behaviour test for 0x00BB9FD0 _STL::vector<CTVertexNormTex1>::vector(size_type n)
+// behaviour test for 0x00BB9FD0 std::vector<CTVertexNormTex1>::vector(size_type n)
 #include <cstdio>
 #include <cstdlib>
 #include <new>

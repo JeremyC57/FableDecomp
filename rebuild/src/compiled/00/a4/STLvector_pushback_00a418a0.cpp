@@ -1,4 +1,4 @@
-// _STL::vector::push_back(const SNameEntry& x) -- STLport vector<pair<CCharString, CSoundBankLH*>>::push_back: copy-construct at _M_finish, or grow through _M_insert_overflow
+// std::vector::push_back(const SNameEntry& x) -- STLport vector<pair<CCharString, CSoundBankLH*>>::push_back: copy-construct at _M_finish, or grow through _M_insert_overflow
 // Leaf: ?push_back@
 // Retail: Fable.exe @ 0x00A418A0, 72 bytes (+ int3 padding), thiscall `ret 4`.
 // Callee: vector<SNameEntry>::_M_insert_overflow @ 0x00A41480 -- given a same-TU noinline STAND-IN body here (not the
@@ -55,7 +55,7 @@ public:
 
 class CSoundBankLH;                                         // descriptive: the mapped object of CSoundManagerLH's maps
 
-namespace _STL {
+namespace std {
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -95,15 +95,15 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
-    bool operator()(const K& a, const _STL::pair<K, V>& b) const { return a < b.first; }
-    bool operator()(const _STL::pair<K, V>& a, const K& b) const { return a.first < b; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const K& a, const std::pair<K, V>& b) const { return a < b.first; }
+    bool operator()(const std::pair<K, V>& a, const K& b) const { return a.first < b; }
 };
 
-typedef _STL::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
-typedef _STL::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
-typedef _STL::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
+typedef std::pair<CCharString, CCharString>      SNamePair;      // the (name, name) key
+typedef std::pair<CCharString, CSoundBankLH*>     SNameEntry;     // NameMap entry, 8 bytes
+typedef std::pair<SNamePair, CSoundBankLH*>       SNamePairEntry; // NamePairMap entry, 12 bytes
 typedef CKeyPairCompareLess<CCharString, CSoundBankLH*> CNameLess;
 typedef CKeyPairCompareLess<SNamePair, CSoundBankLH*>   CNamePairLess;
 
-template void _STL::vector<SNameEntry>::push_back(const SNameEntry&);
+template void std::vector<SNameEntry>::push_back(const SNameEntry&);

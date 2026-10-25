@@ -1,4 +1,4 @@
-// _STL::vector<C3DTriangle2>::resize(unsigned int new_size, const C3DTriangle2& x) -- STLport resize of a 6-byte index-triangle vector: erase the tail past new_size, or fill-insert copies of x at the end
+// std::vector<C3DTriangle2>::resize(unsigned int new_size, const C3DTriangle2& x) -- STLport resize of a 6-byte index-triangle vector: erase the tail past new_size, or fill-insert copies of x at the end
 // Leaf: ?resize@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A97A50, 85 bytes (+ int3 padding), `__fastcall` (this -> esi, start -> edi), `ret 8`.
 // Identity: the landed C3DMeshFileTrianglesChunk::ReadFromFile 0x00ABD280 calls it (0x00ABD2F5) as TriangleList.resize(n,
@@ -17,7 +17,7 @@ public:
     unsigned short VertexIndex[3];                      // +0x00
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

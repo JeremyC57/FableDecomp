@@ -1,4 +1,4 @@
-// _STL::deque<C2DVector>::resize(unsigned int new_size, const C2DVector& x) -- shrink by erasing the tail, or grow by inserting copies of x at the finish
+// std::deque<C2DVector>::resize(unsigned int new_size, const C2DVector& x) -- shrink by erasing the tail, or grow by inserting copies of x at the finish
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0FC80, length 177 bytes (thiscall `ret 8`). Caller: CJoystickPositionTracker
 // 0x00A0E0E4.
 // Callees: _Deque_iterator::operator+(int) @ 0x00A0E980 (landed; out of line here), deque::erase(iterator, iterator) @ 0x00A0F040
@@ -23,7 +23,7 @@ public:
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

@@ -1,4 +1,4 @@
-// _STL::copy(set<CCharString>::const_iterator first, set<CCharString>::const_iterator last, back_insert_iterator<vector<CCharString> > result) -- append every string of a set range to a vector (push_back per element), return the output iterator
+// std::copy(set<CCharString>::const_iterator first, set<CCharString>::const_iterator last, back_insert_iterator<vector<CCharString> > result) -- append every string of a set range to a vector (push_back per element), return the output iterator
 // Grade: RELOCATION_MATCH (agent902, 1st grade of this pass) -- the set iterator is STLport 4.6's const _Rb_tree_iterator<_Value, _Const_traits<_Value> >, whose COPY constructor is implicit (its only user ctor converts from the _Nonconst_traits iterator); the user copy ctor of the parked model kept VC7.1 from shrink-wrapping the `push edi` into the non-empty path.
 // Leaf: ??$copy@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A557E0, length 154 bytes (+6 int3 pad), `ret 0Ch`.
@@ -22,7 +22,7 @@ public:
     CCharString(const CCharString& other);           // 0x0099EC30
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 struct input_iterator_tag { input_iterator_tag() { } };
 

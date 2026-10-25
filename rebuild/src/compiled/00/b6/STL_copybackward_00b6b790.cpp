@@ -1,4 +1,4 @@
-// _STL::__copy_backward(CVertexShader* first, CVertexShader* last, CVertexShader* result, const random_access_iterator_tag&, int*) -- counted backward copy of vertex shader handles (assignment, shared data re-counted); returns the start of the destination
+// std::__copy_backward(CVertexShader* first, CVertexShader* last, CVertexShader* result, const random_access_iterator_tag&, int*) -- counted backward copy of vertex shader handles (assignment, shared data re-counted); returns the start of the destination
 // Leaf: ??$__copy_backward@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6B790, 77 bytes. __fastcall (first ecx, last edx), `ret 0Ch` (result,
 //   the tag reference and the null distance pointer on the stack), result in eax.
@@ -46,7 +46,7 @@ public:
     }
 };
 
-namespace _STL {
+namespace std {
 struct input_iterator_tag {};
 struct forward_iterator_tag : public input_iterator_tag {};
 struct bidirectional_iterator_tag : public forward_iterator_tag {};

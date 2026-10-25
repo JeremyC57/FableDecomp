@@ -1,4 +1,4 @@
-// _STL::list::operator=(const list& x) -- STLport list<NUISystem::CComponent*> assignment: overwrite the common prefix element by element, then erase this list's surplus or insert the rest of x
+// std::list::operator=(const list& x) -- STLport list<NUISystem::CComponent*> assignment: overwrite the common prefix element by element, then erase this list's surplus or insert the rest of x
 // Leaf: ??4?$list@PAVCComponent@NUISystem@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00535800, 117 bytes (+ int3 padding), thiscall `ret 4`, *this in eax.
 // Identity: callers 0x00531EA5 (the landed NUISystem::CComponent::SetDeletion 0x00531E90, which names this address as
@@ -15,7 +15,7 @@ namespace NUISystem {
 class CComponent;
 }
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> struct _Is_integer { typedef __false_type _Integral; };
 

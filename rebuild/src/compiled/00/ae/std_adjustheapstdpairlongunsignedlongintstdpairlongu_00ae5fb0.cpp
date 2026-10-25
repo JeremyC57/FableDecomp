@@ -6,7 +6,7 @@
 //   less<> (4-byte slot) follow (`ret 10h`).
 // Identity: STLport `__adjust_heap` -- the library is STLport, not Dinkumware: the pair passed by value is built by a
 //   USER copy constructor, which STLport's pair declares (`pair(const pair<_T1,_T2>& __o)`) and VC7.1 Dinkumware's does
-//   not; its callers are the landed STLport `_STL::__partial_sort` 0x00AE7760, sort_heap 0x00AE71A0 and the make_heap
+//   not; its callers are the landed STLport `std::__partial_sort` 0x00AE7760, sort_heap 0x00AE71A0 and the make_heap
 //   0x00AE62F0 of the same instantiation. Renamed from _global::_Adjust_heap (Dinkumware name and comments).
 // Callee: 0x00AE5AF0 __push_heap (same instantiation; catalog `std::_Push_heap`).
 // Shape: the child test is the pair operator< `x.first < y.first || (!(y.first < x.first) && x.second < y.second)`:

@@ -1,9 +1,9 @@
-// _STL::__median(const CActiveScriptPair& a, const CActiveScriptPair& b, const CActiveScriptPair& c, CActiveScriptLess comp) -- the median of three (UID, active entity script) pairs by UID (introsort pivot)
+// std::__median(const CActiveScriptPair& a, const CActiveScriptPair& b, const CActiveScriptPair& c, CActiveScriptLess comp) -- the median of three (UID, active entity script) pairs by UID (introsort pivot)
 // Leaf: ??$__median@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB9DA0, 111 bytes (`ret 8`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __median over (UID, active entity script) = _STL::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > (0x10 bytes); the 5 callers
+// Identity: STLport __median over (UID, active entity script) = std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > (0x10 bytes); the 5 callers
 //   0x00CBD828..0x00CBD9B4 are the 16-byte introsort loops. The manifest label "MaxOf3" is propagated and wrong.
 // Callees: none (inline u64 key compares).
 // Shape: byte-identical to 0x00CB9D30 (only the key is read, so the element size never shows).
@@ -57,7 +57,7 @@ public:
     }
 };
 class CActiveEntityScriptBase;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -65,11 +65,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
-typedef _STL::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;   // 16 bytes
+typedef std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptPair;   // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > CActiveScriptLess;
-namespace _STL {
+namespace std {
 template <class _Tp, class _Compare>
 const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {

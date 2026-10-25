@@ -1,4 +1,4 @@
-// Behaviour test for 0x00748690 _STL::__find_if over CTCStealth's danger-thing pairs (const pointer instance)
+// Behaviour test for 0x00748690 std::__find_if over CTCStealth's danger-thing pairs (const pointer instance)
 #include <cstdio>
 class CThing { public: int id; };
 

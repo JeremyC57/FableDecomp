@@ -1,4 +1,4 @@
-// _STL::__make_heap(STextureMorphKeyPair* first, STextureMorphKeyPair* last, CKeyPairCompareLess comp, STextureMorphKeyPair*, int*) -- heapify a vector of (unsigned long, CRandomAppearanceMorph::CTextureMorph) pairs: sift every parent down from the last one to the root
+// std::__make_heap(STextureMorphKeyPair* first, STextureMorphKeyPair* last, CKeyPairCompareLess comp, STextureMorphKeyPair*, int*) -- heapify a vector of (unsigned long, CRandomAppearanceMorph::CTextureMorph) pairs: sift every parent down from the last one to the root
 // Leaf: __make_heap
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081BBD0, 101 bytes, `ret 0Ch` (link-time __fastcall /Gr TU: first in ecx, last in
 //   edx, then the empty comparator and the value-type / distance-type tag pointers on the stack).
@@ -16,7 +16,7 @@ struct CTextureMorph {                      // CRandomAppearanceMorph::CTextureM
     long m_b;                               // +0x04
 };
 
-namespace _STL {
+namespace std {
 template <class A, class B> struct pair {
     A first;                                // +0x00
     B second;                               // +0x04

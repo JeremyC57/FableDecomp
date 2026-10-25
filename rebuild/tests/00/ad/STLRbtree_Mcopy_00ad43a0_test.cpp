@@ -1,4 +1,4 @@
-// Behaviour test for _STL::_Rb_tree<unsigned long, pair<const unsigned long, CContractionReference>, ...>::_M_copy @ 0x00AD43A0
+// Behaviour test for std::_Rb_tree<unsigned long, pair<const unsigned long, CContractionReference>, ...>::_M_copy @ 0x00AD43A0
 // Structural copy of a red-black subtree whose values hold counted pointers: every cloned value adds one reference
 // to the shared contraction, and destroying the copy gives them back.
 #include <cstdio>

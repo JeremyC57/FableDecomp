@@ -13,7 +13,7 @@
   mangled ctor name, and check with calls.py that the relocations line up (0x00E7E020).
 - To get a mangled-prefix leaf for a member, write `?Name@Class@@`; the bare "Name" matches nothing (0x00C21750).
 - Explicitly instantiate only the member being graded
-  (`template void _STL::deque<T>::_M_pop_front_aux();`). A whole-class instantiation lets VC7.1 inline the aux into
+  (`template void std::deque<T>::_M_pop_front_aux();`). A whole-class instantiation lets VC7.1 inline the aux into
   pop_front (0x00493C25).
 - STLport tag dispatch:
   - `__false_type` / `__true_type` need a user ctor `{ }`, otherwise VC7.1 zero-stores the tag temporary.
@@ -36,7 +36,7 @@
 - Def and refcount atexit thunks show `add eax,N ; dec [eax] ; cmp [eax],0`, or a register decrement plus an explicit
   `test`, through a formed pointer. That is the volatile-count signature. Park these after one or two grades as
   "volatile candidate" (0x01228B70, 0x0122AE7E, likely 0x0122A550).
-- finish.py's line-1 parser: write `_STL::fill(T* first, ...)` / `_STL::deque::_M_pop_front_aux()`, with the
+- finish.py's line-1 parser: write `std::fill(T* first, ...)` / `std::deque::_M_pop_front_aux()`, with the
   instantiation in the parameters or the description. An `operator()` line keeps its name only when nothing before it
   contains whitespace.
 
@@ -53,7 +53,7 @@ Review at landing:
 - 00c21750 reuses chunk 434's CSoundEvent model, whose libpk types are `struct` (U). The leaf does not encode them
   (`?AssignPhysicalPlayer@CSoundEvent@@` prefix), but check against agent434 if the full mangled name is ever needed.
 - Local base models instead of shared headers: CCharString / CWideString / CVector / CArray / CList / CIntelligentPointer
-  / CCountedPointer / the STLport `_STL` pieces are minimal local models in every source. Retype them with
+  / CCountedPointer / the STLport `std` pieces are minimal local models in every source. Retype them with
   `rebuild/include/engine/<Class>.h` where a header exists.
 - 00a6f910 and 00e7e020 declare callees only (`__unguarded_linear_insert`, CScriptThing copy ctor). Their relocations
   were checked with calls.py.

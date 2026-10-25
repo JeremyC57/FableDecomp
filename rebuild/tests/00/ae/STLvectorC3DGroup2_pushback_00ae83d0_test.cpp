@@ -1,4 +1,4 @@
-// behaviour test for 0x00AE83D0 _STL::vector<C3DGroup2>::push_back: copy-construct at the finish pointer, or grow through _M_insert_overflow when full
+// behaviour test for 0x00AE83D0 std::vector<C3DGroup2>::push_back: copy-construct at the finish pointer, or grow through _M_insert_overflow when full
 #include <cstdio>
 #include <cstdlib>
 #include <new>

@@ -1,4 +1,4 @@
-// 00739bc0 _STL::vector<CIVCountedPointer<CIVCountedPointeeBase>>::_M_insert_overflow
+// 00739bc0 std::vector<CIVCountedPointer<CIVCountedPointeeBase>>::_M_insert_overflow
 // Flags: /Gr
 // Leaf: _M_insert_overflow
 // Layout: vector3 pointers; CIVCountedPointer is one pointer, PDB struct_layouts_egor.tsv12177-12178; IVRefCount+4 and DeleteThis slot1.

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00758220 _STL::fill over the 0x2C-byte wound-morph entries
+// Behaviour test for 0x00758220 std::fill over the 0x2C-byte wound-morph entries
 #include <cstdio>
 
 enum EBodyLocation { LOC0 = 0, LOC4 = 4 };

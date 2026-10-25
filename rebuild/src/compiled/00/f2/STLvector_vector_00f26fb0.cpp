@@ -1,7 +1,7 @@
-// _STL::vector::vector(const vector& x) -- (vector<CHeroSoulsCreatureDef>) STLport copy constructor: allocate x.size() 0x34-byte CHeroSoulsCreatureDefs through the out-of-line _Vector_base constructor and copy-construct x's elements into them
-// Leaf: ??0?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@_STL@@@_STL@@QAE@ABV01@@Z
+// std::vector::vector(const vector& x) -- (vector<CHeroSoulsCreatureDef>) STLport copy constructor: allocate x.size() 0x34-byte CHeroSoulsCreatureDefs through the out-of-line _Vector_base constructor and copy-construct x's elements into them
+// Leaf: ??0?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@QAE@ABV01@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F26FB0, 98 bytes (+ int3 padding), `ret 4` (returns this).
-// Callees: _STL::_Vector_base<CHeroSoulsCreatureDef>::_Vector_base(unsigned int, const allocator&) @ 0x00F27020 (out of line), CHeroSoulsCreatureDef::CHeroSoulsCreatureDef(const CHeroSoulsCreatureDef&)
+// Callees: std::_Vector_base<CHeroSoulsCreatureDef>::_Vector_base(unsigned int, const allocator&) @ 0x00F27020 (out of line), CHeroSoulsCreatureDef::CHeroSoulsCreatureDef(const CHeroSoulsCreatureDef&)
 //   @ 0x00F27060 (the element copy, out of line, under the placement-new null test).
 // Identity: element vtable 0x012FB500 (no RTTI; Transfer slot names CreatureType +0x28, Location +0x2c, NumCreatures
 //   +0x30; Sizeof slot returns 0x34) = Ego_r.pdb CHeroSoulsCreatureDef (52 bytes). Catalog
@@ -24,7 +24,7 @@ class CCharString {
 public:
     void* PStringData;
 };
-namespace _STL {
+namespace std {
 
 struct __false_type { __false_type() { } };
 
@@ -74,7 +74,7 @@ public:
     }
 };
 
-}   // namespace _STL
+}   // namespace std
 
 class CHeroSoulsCreatureDef : public CDefClassBase {   // vtable 0x012FB500, 0x34 bytes
 public:
@@ -84,4 +84,4 @@ public:
     CHeroSoulsCreatureDef(const CHeroSoulsCreatureDef& other);   // 0x00F27060
 };
 
-template class _STL::vector<CHeroSoulsCreatureDef>;
+template class std::vector<CHeroSoulsCreatureDef>;

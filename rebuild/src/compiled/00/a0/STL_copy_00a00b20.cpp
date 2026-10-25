@@ -1,4 +1,4 @@
-// _STL::__copy(CGraphicInfoFrame*, CGraphicInfoFrame*, CGraphicInfoFrame*, const random_access_iterator_tag&, int*) -- assign [first, last) forwards onto result and return the end of the destination
+// std::__copy(CGraphicInfoFrame*, CGraphicInfoFrame*, CGraphicInfoFrame*, const random_access_iterator_tag&, int*) -- assign [first, last) forwards onto result and return the end of the destination
 // Leaf: __copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A00B20, 112 bytes, __fastcall (first/last in ecx/edx), `ret 0Ch` (result,
 //   tag, distance pointer).
@@ -68,7 +68,7 @@ public:
     virtual void v001();
 };
 
-namespace _STL {
+namespace std {
 struct __false_type { __false_type() {} };
 struct input_iterator_tag { input_iterator_tag() {} };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() {} };
@@ -77,7 +77,7 @@ struct random_access_iterator_tag : public bidirectional_iterator_tag { random_a
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 }
 
-namespace _STL {
+namespace std {
 CGraphicInfoFrame* __fastcall __copy(CGraphicInfoFrame* __first, CGraphicInfoFrame* __last, CGraphicInfoFrame* __result,
                                     const random_access_iterator_tag&, int*)
 {

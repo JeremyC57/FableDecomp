@@ -1,4 +1,4 @@
-// _STL::__copy(SSwitchableLineList* first, SSwitchableLineList* last, SSwitchableLineList* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of the 16-byte (unsigned __int64 ID, list of lines) switchable line-list entries: counted forward assignment, returns the advanced result
+// std::__copy(SSwitchableLineList* first, SSwitchableLineList* last, SSwitchableLineList* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of the 16-byte (unsigned __int64 ID, list of lines) switchable line-list entries: counted forward assignment, returns the advanced result
 // Leaf: ??$__copy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A82000, 67 bytes (+ int3 padding to 80), `ret 0Ch` (/Gr: first in ecx, last in
 //   edx; result, the tag reference and the null distance pointer on the stack).
@@ -23,7 +23,7 @@ public:
     C2DVector End;                                          // +0x8
 };
 
-namespace _STL {
+namespace std {
 class __false_type { public: __false_type() { } };
 
 template <class _Tp> class allocator {
@@ -111,14 +111,14 @@ public:
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    bool operator()(const _STL::pair<K, V>& a, const _STL::pair<K, V>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef _STL::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
-typedef _STL::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
+typedef std::list<C2DLineF>                                    CLineList;            // 4 bytes (0x18-byte nodes)
+typedef std::pair<unsigned __int64, CLineList>                 SSwitchableLineList;  // 16 bytes
 typedef CKeyPairCompareLess<unsigned __int64, CLineList>        CSwitchableLineListLess;
 
-namespace _STL {
+namespace std {
 class random_access_iterator_tag { public: random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>

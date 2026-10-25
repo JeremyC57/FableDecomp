@@ -1,5 +1,5 @@
-// _STL::pair::operator=(const pair& other) -- assignment of pair<C3DVector, CCharString>: block-copy the vector, CCharString::operator= the string
-// Leaf: ??4?$pair@VC3DVector@@VCCharString@@@_STL@@QAEAAU01@ABU01@@Z
+// std::pair::operator=(const pair& other) -- assignment of pair<C3DVector, CCharString>: block-copy the vector, CCharString::operator= the string
+// Leaf: ??4?$pair@VC3DVector@@VCCharString@@@std@@QAEAAU01@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00654EB6, 36 bytes, __fastcall `ret 4`, returns `this` (size-optimised TU: odd address).
 // Identity: the assignment twin of the copy constructor 0x00654DD4 (same 16-byte pair<C3DVector, CCharString>); one caller,
 //   0x0065583C in the same TU (the STLport copy/assign loop). Callee: CCharString::operator=(const CCharString&) @ 0x0099EFB0.
@@ -22,7 +22,7 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                          // +0x00
     _T2 second;                                         // +0x0C

@@ -1,4 +1,4 @@
-// _STL::sort(CWideString* first, CWideString* last) -- sort a range of wide strings with operator< (the definition manager's path lists): introsort to 16-element runs, then the final insertion sort
+// std::sort(CWideString* first, CWideString* last) -- sort a range of wide strings with operator< (the definition manager's path lists): introsort to 16-element runs, then the final insertion sort
 // Leaf: ??$sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B8440, 117 bytes (+ int3 padding), plain `ret` (/Gr algorithm TU:
 //   first in ecx, last in edx, no stack arguments).
@@ -19,7 +19,7 @@ private:
     void* PStringData;
 };
 
-namespace _STL {
+namespace std {
 template <class _Arg1, class _Arg2, class _Result> struct binary_function {
     typedef _Arg1 first_argument_type;
     typedef _Arg2 second_argument_type;

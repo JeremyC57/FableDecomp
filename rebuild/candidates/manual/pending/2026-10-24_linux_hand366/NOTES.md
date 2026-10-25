@@ -29,7 +29,7 @@ copy constructor (vtable stores, CCharString copy 0x0099EC30, counted-pointer ad
 - 00405bc0, `__copy_trivial_backward` (memmove wrapper). Byte twin of the landed 0x00410D60.
 - 0040e350, `__copy<CActionInputControl*>(first, last, result, const random_access_iterator_tag&, int*)`. A counted
   loop; the tag and `int*` arguments give `ret 0xc`.
-- 0040f6b0, `_STL::vector<char>::_M_insert_overflow(pos, x, const __true_type&, fill_len, atend)`. STLport vector.c
+- 0040f6b0, `std::vector<char>::_M_insert_overflow(pos, x, const __true_type&, fill_len, atend)`. STLport vector.c
   verbatim: `(max)` picks by reference, allocate skips malloc when the length is 0, `__copy_trivial` is inlined as
   `memmove + n`, and fill_n is a memset intrinsic. Matched on the first grade. Unlike the unsigned-char twin
   0x00485B6C, this is a speed TU.
@@ -106,7 +106,7 @@ table.
 - 004082d0: `GetDefaultVal<CSpecialEffectsStringMap>` → `CUserProfileManager::GetProfileDir`.
 - 00409090: `Engine_FindPrimitiveInArray` → `CUserProfileManager::GetMaxAntialiasing`.
 - 0040bb30: `Tutorial_CheckDivineWrathStrike` → `CUserProfileManager::ProcessPendingTutorials`.
-- 0040f6b0: `CString_FillRange` → `_STL::vector<char>::_M_insert_overflow`. This agrees with
+- 0040f6b0: `CString_FillRange` → `std::vector<char>::_M_insert_overflow`. This agrees with
   labels_external966_corrections_2026-10-23; the only caller is 0x004110D0, vector<char>::_M_fill_insert.
 - 00412c70: `GFSerialiseVectorBinaryIn<CBrainUpdateZone>` → `<CActionInputControl>`. The element is 28 bytes, its
   element read is 0x00410120, and the only caller is the TransferVector<CActionInputControl> body 0x00412DB0.

@@ -1,4 +1,4 @@
-// Behaviour test for _STL::vector<unsigned short>::vector(size_type n) @ 0x00AADD80
+// Behaviour test for std::vector<unsigned short>::vector(size_type n) @ 0x00AADD80
 #include <cstdio>
 #include <cstdlib>
 

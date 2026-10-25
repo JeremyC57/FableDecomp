@@ -1,6 +1,6 @@
-// _STL::__unguarded_linear_insert(pair<CCharString,CPersistInfo>* last, pair<CCharString,CPersistInfo> val, CKeyPairCompareLess<CCharString,CPersistInfo> comp) -- STLport unguarded insertion step of the quest-persistence script map: walk down from `last` shifting every entry whose quest name sorts after val's, then store val
-// Instantiation: _STL::__unguarded_linear_insert<pair<CCharString,CPersistInfo>*,pair<CCharString,CPersistInfo>,CKeyPairCompareLess<CCharString,CPersistInfo> >
-// Leaf: ??$__unguarded_linear_insert@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@_STL@@U12@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@_STL@@
+// std::__unguarded_linear_insert(pair<CCharString,CPersistInfo>* last, pair<CCharString,CPersistInfo> val, CKeyPairCompareLess<CCharString,CPersistInfo> comp) -- STLport unguarded insertion step of the quest-persistence script map: walk down from `last` shifting every entry whose quest name sorts after val's, then store val
+// Instantiation: std::__unguarded_linear_insert<pair<CCharString,CPersistInfo>*,pair<CCharString,CPersistInfo>,CKeyPairCompareLess<CCharString,CPersistInfo> >
+// Leaf: ??$__unguarded_linear_insert@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B9480, 148 bytes, __fastcall (last in ecx; the 12-byte by-value entry
 //   and the 4-byte comparator slot on the stack), `ret 10h`; the callee destroys its by-value entry.
 // Identity: the element is NQuestManager::CRuntimeQuestPersistence's CVectorMap<CCharString, CPersistInfo,
@@ -67,7 +67,7 @@ public:
 };
 }
 
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
@@ -77,14 +77,14 @@ template <class _T1, class _T2> struct pair {
 
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot
 public:
-    bool operator()(const _STL::pair<Key, Value>& a, const _STL::pair<Key, Value>& b) const { return a.first < b.first; }
+    bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
 typedef NQuestManager::CRuntimeQuestPersistence::CPersistInfo CPersistInfo;
-typedef _STL::pair<CCharString, CPersistInfo> CPersistEntry;
+typedef std::pair<CCharString, CPersistInfo> CPersistEntry;
 typedef CKeyPairCompareLess<CCharString, CPersistInfo> CPersistLess;
 
-namespace _STL {
+namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {

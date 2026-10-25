@@ -1,12 +1,12 @@
-// _STL::__unguarded_partition(CBindingPair* first, CBindingPair* last, CBindingPair pivot, CBindingLess comp) -- Hoare partition of (name, entity script binding) pairs around the pivot name, returns the split point
+// std::__unguarded_partition(CBindingPair* first, CBindingPair* last, CBindingPair pivot, CBindingLess comp) -- Hoare partition of (name, entity script binding) pairs around the pivot name, returns the split point
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBB860, 162 bytes (`ret 10h`: by-value 12-byte pivot + comparator slot).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __unguarded_partition over (name, entity script binding) = _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530);
+// Identity: STLport __unguarded_partition over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530);
 //   the 5 callers 0x00CBDBBB..0x00CBDDAA are the 12-byte introsort loops. The manifest label "Quicksort_Partition" is
 //   descriptive.
-// Callees: CCharString::FastCompare 0x009E6530 (the comparator), _STL::swap 0x00CBA8E0 (inline iter_swap),
+// Callees: CCharString::FastCompare 0x009E6530 (the comparator), std::swap 0x00CBA8E0 (inline iter_swap),
 //   ~CCharString 0x0099EAE0, operator delete 0x00BFE9BC (the pivot's destructor).
 // Shape: the textbook loop; the pivot's CCountedPointer destructor is the D-form release (re-read count, zero Data/Info).
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
@@ -65,7 +65,7 @@ public:
     }
 };
 class CEntityScriptBindingBase;
-namespace _STL {
+namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
@@ -73,11 +73,11 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const _STL::pair<CCharString, V>& a, const _STL::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
 };
-typedef _STL::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
+typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;
-namespace _STL {
+namespace std {
 template <class _Tp>
 void __fastcall swap(_Tp& __a, _Tp& __b);   // 0x00CBA8E0
 
