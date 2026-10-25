@@ -1,0 +1,217 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <new>
+#ifndef _MSC_VER
+#define __fastcall
+#define __cdecl
+#define __forceinline inline
+#define __declspec(x)
+#endif
+// Model of list<const CThing*>::remove_if<unary_negate<NCameraModes::CGetThingsWithCollisionMesh> > @ 0x008FBDD0:
+// erase every thing whose physics component has no collision mesh info.
+
+class CThingPhysicsMeshInfo { public: int Id; };
+class CTCPhysicsBase {
+public:
+    virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { }
+    virtual void v06() { } virtual void v07() { } virtual void v08() { } virtual void v09() { } virtual void v10() { } virtual void v11() { }
+    virtual void v12() { } virtual void v13() { } virtual void v14() { } virtual void v15() { } virtual void v16() { } virtual void v17() { }
+    virtual void v18() { } virtual void v19() { } virtual void v20() { } virtual void v21() { } virtual void v22() { } virtual void v23() { }
+    virtual void v24() { } virtual void v25() { } virtual void v26() { } virtual void v27() { } virtual void v28() { } virtual void v29() { }
+    virtual void v30() { } virtual void v31() { } virtual void v32() { } virtual void v33() { } virtual void v34() { } virtual void v35() { }
+    virtual void v36() { } virtual void v37() { } virtual void v38() { } virtual void v39() { } virtual void v40() { } virtual void v41() { }
+    virtual void v42() { } virtual void v43() { } virtual void v44() { } virtual void v45() { } virtual void v46() { } virtual void v47() { }
+    virtual void v48() { } virtual void v49() { } virtual void v50() { } virtual void v51() { } virtual void v52() { } virtual void v53() { }
+    virtual void v54() { } virtual void v55() { } virtual void v56() { } virtual void v57() { } virtual void v58() { } virtual void v59() { }
+    virtual void v60() { } virtual void v61() { } virtual void v62() { } virtual void v63() { } virtual void v64() { } virtual void v65() { }
+    virtual void v66() { } virtual void v67() { } virtual void v68() { } virtual void v69() { } virtual void v70() { } virtual void v71() { }
+    virtual void v72() { } virtual void v73() { } virtual void v74() { } virtual void v75() { } virtual void v76() { } virtual void v77() { }
+    virtual void v78() { } virtual void v79() { } virtual void v80() { } virtual void v81() { } virtual void v82() { } virtual void v83() { }
+    virtual void v84() { } virtual void v85() { } virtual void v86() { } virtual void v87() { } virtual void v88() { } virtual void v89() { }
+    virtual void v90() { } virtual void v91() { } virtual void v92() { }
+    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() const { return MeshInfo; }
+    const CThingPhysicsMeshInfo* MeshInfo;   // slot 93 (+0x174)
+};
+
+class CThing {
+public:
+    unsigned char   _pad00[0x60];
+    CTCPhysicsBase* PhysicsTC;                              // +0x60 (Ego_r.pdb +0x70)
+    const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }   // FableWin.pdb ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
+};
+
+namespace _STL {
+template <class _Arg, class _Result> struct unary_function {
+    typedef _Arg argument_type;
+    typedef _Result result_type;
+};
+template <class _Predicate>
+class unary_negate : public unary_function<typename _Predicate::argument_type, bool> {
+protected:
+    _Predicate _M_pred;
+public:
+    explicit unary_negate(const _Predicate& __x) : _M_pred(__x) { }
+    bool operator()(const typename _Predicate::argument_type& __x) const { return !_M_pred(__x); }
+};
+}
+
+namespace NCameraModes {
+class CGetThingsWithCollisionMesh : public _STL::unary_function<const CThing*, bool> {
+public:
+    CGetThingsWithCollisionMesh() { }
+    bool operator()(const CThing* thing) const { return thing->GetPhysicsTC()->GetPhysicsMeshInfo() != 0; }
+};
+}
+
+namespace _STL {
+template <class _Tp> class allocator {
+public:
+    allocator() { }
+    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+};
+
+template <class _Value, class _Tp, class _MaybeReboundAlloc>
+class _STLP_alloc_proxy : public _MaybeReboundAlloc {
+public:
+    _Value _M_data;
+};
+
+template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+
+struct _List_node_base {
+    _List_node_base* _M_next;                               // +0x0
+    _List_node_base* _M_prev;                               // +0x4
+};
+template <class _Tp> struct _List_node : public _List_node_base {
+    _Tp _M_data;                                            // +0x8
+};
+
+struct _List_iterator_base {
+    _List_node_base* _M_node;
+    _List_iterator_base(_List_node_base* __x) : _M_node(__x) { }
+    void _M_incr() { _M_node = _M_node->_M_next; }
+    bool operator==(const _List_iterator_base& __y) const { return _M_node == __y._M_node; }
+    bool operator!=(const _List_iterator_base& __y) const { return _M_node != __y._M_node; }
+};
+
+template <class _Tp> struct _List_iterator : public _List_iterator_base {
+    typedef _List_node<_Tp> _Node;
+    _List_iterator(_List_node_base* __x) : _List_iterator_base(__x) { }
+    _List_iterator(const _List_iterator& __x) : _List_iterator_base(__x._M_node) { }
+    _Tp& operator*() const { return ((_Node*)_M_node)->_M_data; }
+    _Tp* operator->() const { return &((_Node*)_M_node)->_M_data; }
+    _List_iterator& operator++() { this->_M_incr(); return *this; }
+};
+
+template <class _Tp, class _Alloc> class _List_base {
+public:
+    typedef _List_node<_Tp> _Node;
+    _STLP_alloc_proxy<_Node*, _Node, allocator<_Node> > _M_node;
+};
+
+template <class _Tp, class _Alloc = allocator<_Tp> >
+class list : public _List_base<_Tp, _Alloc> {
+public:
+    typedef _List_node<_Tp> _Node;
+    typedef _List_iterator<_Tp> iterator;
+    iterator begin() { return iterator(this->_M_node._M_data->_M_next); }
+    iterator end() { return iterator(this->_M_node._M_data); }
+    iterator erase(iterator __position)
+    {
+        _List_node_base* __next_node = __position._M_node->_M_next;
+        _List_node_base* __prev_node = __position._M_node->_M_prev;
+        _Node* __n = (_Node*)__position._M_node;
+        __prev_node->_M_next = __next_node;
+        __next_node->_M_prev = __prev_node;
+        _Destroy(&__n->_M_data);
+        this->_M_node.deallocate(__n, 1);
+        return iterator(__next_node);
+    }
+    void remove(const _Tp& __val)
+    {
+        iterator __first = begin();
+        iterator __last = end();
+        while (__first != __last) {
+            iterator __next = __first;
+            ++__next;
+            if (__val == *__first)
+                erase(__first);
+            __first = __next;
+        }
+    }
+    template <class _Predicate> void remove_if(_Predicate __pred)
+    {
+        iterator __first = begin();
+        iterator __last = end();
+        while (__first != __last) {
+            iterator __next = __first;
+            ++__next;
+            if (__pred(*__first))
+                erase(__first);
+            __first = __next;
+        }
+    }
+};
+}
+
+
+template <class L> void InitList(L& l)
+{
+    typedef typename L::_Node Node;
+    Node* s = (Node*)malloc(sizeof(Node));
+    s->_M_next = s;
+    s->_M_prev = s;
+    l._M_node._M_data = s;
+}
+template <class L> typename L::_Node* NewBack(L& l)
+{
+    typedef typename L::_Node Node;
+    Node* n = (Node*)malloc(sizeof(Node));
+    _STL::_List_node_base* s = l._M_node._M_data;
+    n->_M_next = s;
+    n->_M_prev = s->_M_prev;
+    s->_M_prev->_M_next = n;
+    s->_M_prev = n;
+    return n;
+}
+template <class L> int CountList(L& l)
+{
+    int c = 0;
+    for (_STL::_List_node_base* p = l._M_node._M_data->_M_next; p != l._M_node._M_data; p = p->_M_next)
+        ++c;
+    return c;
+}
+template <class L> bool LinksOk(L& l)
+{
+    _STL::_List_node_base* s = l._M_node._M_data;
+    for (_STL::_List_node_base* p = s->_M_next; p != s; p = p->_M_next)
+        if (p->_M_next->_M_prev != p || p->_M_prev->_M_next != p)
+            return false;
+    return s->_M_next->_M_prev == s && s->_M_prev->_M_next == s;
+}
+int main()
+{
+    bool ok = true;
+    typedef _STL::list<const CThing*> L;
+    L l;
+    InitList(l);
+    static CThingPhysicsMeshInfo meshes[2];
+    static CTCPhysicsBase physics[4];
+    static CThing things[4];
+    for (int i = 0; i < 4; ++i) {
+        physics[i].MeshInfo = (i % 2 == 0) ? &meshes[i / 2] : 0;
+        things[i].PhysicsTC = &physics[i];
+        NewBack(l)->_M_data = &things[i];
+    }
+    l.remove_if(_STL::unary_negate<NCameraModes::CGetThingsWithCollisionMesh>(NCameraModes::CGetThingsWithCollisionMesh()));
+    int k = 0;
+    for (L::iterator it = l.begin(); it != l.end(); ++it, ++k)
+        if (k >= 2 || *it != &things[2 * k])
+            ok = false;
+    if (k != 2 || !LinksOk(l))
+        ok = false;
+    if (!ok) { printf("008fbdd0_TEST FAIL\n"); return 1; }
+    printf("008fbdd0_TEST PASS\n");
+    return 0;
+}
