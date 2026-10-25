@@ -1,0 +1,41 @@
+# Chunk 444 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- Return-block placement (0x00C72C40 CAudioSource::QueueNextBuffer): fold the early-out tests into one positive `if (a != b && f() && (n > 0 || force)) { ...; return 0; } return 0;`, with the inner test positive too (`if (time <= now) {...}`). VC7.1 then puts every `return 0` epilogue at the end and pushes ebx only inside the block, as retail does.
+  - Separate early returns keep a RET0 block inline after the `force` test.
+  - The same `&&` guard written without the block's own `return 0` pushes ebx in the prologue.
+- Head-hoisting (0x00C70750 / 0x00C71120): retail does the float compare once before an `if (flag)` branch (`fld ; fcomp ; test al,al ; fnstsw ; je`) but materialises the bool separately in each arm. The source writes the same `ptr->a = ptr->b = (x > y)` in both arms; VC7.1 hoists the identical fld/fcomp/fnstsw head and tail-merges the identical last call.
+  - The set pointer is a member read after each byte store (char stores alias), so do not cache it in a local.
+- Hand-unrolled loops (0x00C71750): `for (unsigned long i = 0; i < 128; i += 4) { out[i+0] = Clamp(p[i+0]); ... }` gives retail's byte-offset counter (`add eax,10h ; cmp eax,200h ; jb`) and an output pointer stepped by 8.
+  - An inline copy of an out-of-line LTCG helper (here the clamp 0x00C716E0) inlines to the same per-element code as retail.
+- libpk float-to-int truncation (0x00C74EE0, 0x00C755B0, 0x00C76AB0, 0x00C76DD0; also the reverb's 0x00C6A460 and chunk 443's 0x00C6AEF0): `fsub [0.5f] ; fstp [tmp] ; fld [tmp] ; fistp dword [tmp2] ; test ; jge ; inc` is libpk's inline-asm truncation helper.
+  - Park the row at once as retail_asm; it lands later with a minimal `__asm fistp` and a `// Retail-asm:` line.
+  - Where the input is unsigned, the fild + `fadd [2^32]` fix-up comes before it.
+- libpk LTCG register arguments (0x00C74EE0 IsPrime takes `n` in ebx; its caller 0x00C75050 keeps the candidate in ebx across the next-prime loop): park both caller and callee after 1 grade.
+- Byte-identical twin families across chunk borders: 0x00C70C10 / 0x00C70CB0 / 0x00C70D60 are chunk 443's MixVoiceFadeIn / MixVoiceFadeOut / MixVoice (0x00C70240 / 0x00C702E0 / 0x00C70390) with the record fields moved up by 0x180, count 0x10 and the FIR kernels. Porting the sibling source with new offsets matched on the first grade.
+- Two-pass libpk Allocate pattern (0x00C75C30, 0x00C755B0, 0x00C76AB0, 0x00C76DD0, 0x00C75050, 0x00C75F80): the arguments are `(len or rate, float** pMemory, unsigned* pBytes, index or unsigned* pIndex)`. With memory, the row takes the block, clears it, sets pos = 0 and records the index; it always adds `len*4` to `*pBytes`.
+  - The tap bank's first argument is the channel count (config +4), not the rate (config +8).
+- `memset(p, 0, count * sizeof(float))` or `memcpy` with a plain-variable count gives `rep stosd` / `rep movsd` with ecx = count. A computed or CSE'd size gives the dword+byte pair (0x00C763E0, 0x00C75A20).
+- `if (f != 1.0f)` on a float member compiles to the integer `cmp eax,3F800000h` (0x00C74CE0).
+- A `__declspec(align(16))` scratch array gives `push ebp ; mov ebp,esp ; and esp,-16` (0x00C75E90, 0x00C76B60).
+- In ramped ring-wrap helpers, the tail length `first` is a signed `int` (plain fild, no 2^32 fix-up), and `gain + first * step` loads right to left (0x00C76560, 0x00C767E0).
+- A `__fastcall` free function with chunk 436's PK_REPORT_ERROR macro in the null arm of an if/else, and `delete p` in the else arm, matches 0x00C73D90. The EH state-0 store reuses the zero ecx, and the delete drops its own null test.
+
+Review at landing:
+- 0x00C72C40 needed 4 grades (matched on the 4th). 0x00C720C0, 0x00C73830 and 0x00C75F80 are parked after 4 grades. The 5 retail_asm / LTCG rows are parked after 1 grade.
+- Local models used where no engine header exists (libpk has no PDB):
+  - the reverb parts: CDspObject, CDspOps, CDspGain, CDelayLine, CStereoDelayLine, CReverbTap, CReverbFilterTap, CReverbTapBank, CReverbDiffuser, CReverbDiffuserStage, CReverbDelay, CReverbPreDelay;
+  - the mixer voice effects CVtable_012bedcc / CVtable_012bede0, over a minimal CVtable_012beda4 base;
+  - CAudioContextEAX over a CAudioContextBase base;
+  - CAudioSource, CSampleData, CRegistryKey and CircularQueue.
+  - Check against rebuild/include before landing. The CVtable_012beda4 base is modelled with +0x20 as a float volume, where the landed 0x00C6E6A0 calls it `long m_count`; 0x00C70840 compares it with fucompp.
+- Errors in already-landed sources:
+  - The libpk reverb (vtable 0x012B9594, 48 kHz, 2 channels) is misattributed to CTCKraken: 0x00C6A650 / 0x00C6A780 (CTCKraken ctor/dtor), 0x00C69930 / 0x00C69990 (unattributed CTCKraken) and 0x00C75440 (CKrakenHolder, really ~CStereoDelayLine).
+  - 0x00C74360 global_CreateHeroStatsListener builds the shared DSP ops table (CDspObject::s_pOps 0x0143CCDC); it is not a listener.
+  - 0x00C744E0 Init_Init is CDspGain::Reset (it sets 4 floats to 1.0f).
+  - C3DAnimationUtil names two wrong ctors: 0x00C69660 is the CDspGain ctor; 0x00C71710 is the CAudioContextEAX ctor (vtable 0x012BEDF4, no RTTI).
+  - CAIStateGroupBehaviour names two wrong ctors: 0x00C698D0 is the CReverbFilterTap ctor; 0x00C75530 is the CReverbDiffuserStage ctor.
+  - WaypointData 0x00C75980 is the CReverbDiffuser ctor.
+  - 0x00C73790 CBaseIntelligentPointer is the CRegistryKey ctor (vtable 0x012BEFB0).
+  - 0x00C739A0 / 0x00C73800 CLandscapeBackgroundPatch::ClearTextures are the CRegistryKey dtor / Close.
+  - 0x00C442C0 CSmallVector_NavNode::index_b and 0x00C442D0 CEditWorldMap::GetEditMap are CircularQueue::GetItem / GetTime.
+- No catalog row in this chunk holds two functions.
