@@ -320675,6 +320675,174 @@ $catalog = @(
         TestSource = '00/7b/stdvector_Minsertoverflow_007b6ef0_test.cpp'
         PassPattern = '007b6ef0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007c2980'
+        Module = 'std'
+        Source = '00/7c/std_find_007c2980.cpp'
+        TestSource = '00/7c/std_find_007c2980_test.cpp'
+        PassPattern = '007c2980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d14b0'
+        Module = 'std'
+        Source = '00/7d/std_copy_007d14b0.cpp'
+        TestSource = '00/7d/std_copy_007d14b0_test.cpp'
+        PassPattern = '007d14b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d17a0'
+        Module = 'std'
+        Source = '00/7d/std_copybackward_007d17a0.cpp'
+        TestSource = '00/7d/std_copybackward_007d17a0_test.cpp'
+        PassPattern = '007d17a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d23b0'
+        Module = 'std::vector<CShoveHaPennyRegionDef>'
+        Source = '00/7d/stdvectorCShoveHaPennyRegionDef_Minsertoverflow_007d23b0.cpp'
+        TestSource = '00/7d/stdvectorCShoveHaPennyRegionDef_Minsertoverflow_007d23b0_test.cpp'
+        PassPattern = '007d23b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d24f0'
+        Module = 'std::vector<CShoveHaPennyRegionDef>'
+        Source = '00/7d/stdvectorCShoveHaPennyRegionDef_Mfillinsert_007d24f0.cpp'
+        TestSource = '00/7d/stdvectorCShoveHaPennyRegionDef_Mfillinsert_007d24f0_test.cpp'
+        PassPattern = '007d24f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dc3f0'
+        Module = 'std::vector<CCard*>'
+        Source = '00/7d/stdvectorCCard_operator_007dc3f0.cpp'
+        TestSource = '00/7d/stdvectorCCard_operator_007dc3f0_test.cpp'
+        PassPattern = '007dc3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e3d50'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_SetThingIsForcePushable_007e3d50.cpp'
+        TestSource = '00/7e/CTCWillResponse_SetThingIsForcePushable_007e3d50_test.cpp'
+        PassPattern = '007e3d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e3f40'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_SetThingIsLightningable_007e3f40.cpp'
+        TestSource = '00/7e/CTCWillResponse_SetThingIsLightningable_007e3f40_test.cpp'
+        PassPattern = '007e3f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e4330'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_SetThingIsEpicSpellable_007e4330.cpp'
+        TestSource = '00/7e/CTCWillResponse_SetThingIsEpicSpellable_007e4330_test.cpp'
+        PassPattern = '007e4330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f7c10'
+        Module = 'std'
+        Source = '00/7f/std_findif_007f7c10.cpp'
+        TestSource = '00/7f/std_findif_007f7c10_test.cpp'
+        PassPattern = '007f7c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa450'
+        Module = 'std'
+        Source = '00/7f/std_insertionsort_007fa450.cpp'
+        TestSource = '00/7f/std_insertionsort_007fa450_test.cpp'
+        PassPattern = '007fa450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007faa20'
+        Module = 'std'
+        Source = '00/7f/std_partialsort_007faa20.cpp'
+        TestSource = '00/7f/std_partialsort_007faa20_test.cpp'
+        PassPattern = '007faa20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fac80'
+        Module = 'std'
+        Source = '00/7f/std_introsortloop_007fac80.cpp'
+        TestSource = '00/7f/std_introsortloop_007fac80_test.cpp'
+        PassPattern = '007fac80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00800da0'
+        Module = 'std::vector<pair<C2DVector,unsigned char> >'
+        Source = '00/80/stdvectorpairC2DVectorunsignedchar_Minsertoverflow_00800da0.cpp'
+        TestSource = '00/80/stdvectorpairC2DVectorunsignedchar_Minsertoverflow_00800da0_test.cpp'
+        PassPattern = '00800da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008092d0'
+        Module = 'std::vector<CTargetPoint>'
+        Source = '00/80/stdvectorCTargetPoint_Minsertoverflow_008092d0.cpp'
+        TestSource = '00/80/stdvectorCTargetPoint_Minsertoverflow_008092d0_test.cpp'
+        PassPattern = '008092d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00809f80'
+        Module = 'std'
+        Source = '00/80/std_findif_00809f80.cpp'
+        TestSource = '00/80/std_findif_00809f80_test.cpp'
+        PassPattern = '00809f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080a240'
+        Module = 'std'
+        Source = '00/80/std_partialsort_0080a240.cpp'
+        TestSource = '00/80/std_partialsort_0080a240_test.cpp'
+        PassPattern = '0080a240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080a910'
+        Module = 'std'
+        Source = '00/80/std_findif_0080a910.cpp'
+        TestSource = '00/80/std_findif_0080a910_test.cpp'
+        PassPattern = '0080a910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080ac10'
+        Module = 'std'
+        Source = '00/80/std_partialsort_0080ac10.cpp'
+        TestSource = '00/80/std_partialsort_0080ac10_test.cpp'
+        PassPattern = '0080ac10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080b330'
+        Module = 'std'
+        Source = '00/80/std_makeheap_0080b330.cpp'
+        TestSource = '00/80/std_makeheap_0080b330_test.cpp'
+        PassPattern = '0080b330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080b620'
+        Module = 'std'
+        Source = '00/80/std_introsortloop_0080b620.cpp'
+        TestSource = '00/80/std_introsortloop_0080b620_test.cpp'
+        PassPattern = '0080b620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080bab0'
+        Module = 'std'
+        Source = '00/80/std_partialsort_0080bab0.cpp'
+        TestSource = '00/80/std_partialsort_0080bab0_test.cpp'
+        PassPattern = '0080bab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080bd30'
+        Module = 'std'
+        Source = '00/80/std_introsortloop_0080bd30.cpp'
+        TestSource = '00/80/std_introsortloop_0080bd30_test.cpp'
+        PassPattern = '0080bd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080da50'
+        Module = 'CApplyAdditionalExplosiveImpulseIfInsideSmearedLine'
+        Source = '00/80/CApplyAdditionalExplosiveImpulseIfInsideSmearedLine_operator_0080da50.cpp'
+        TestSource = '00/80/CApplyAdditionalExplosiveImpulseIfInsideSmearedLine_operator_0080da50_test.cpp'
+        PassPattern = '0080da50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

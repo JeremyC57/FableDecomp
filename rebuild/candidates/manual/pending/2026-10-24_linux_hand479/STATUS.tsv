@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007bc38a	SKIP	-v880	-	not attempted (budget): 880-byte ebp-frame x87 body at an unaligned start (size-optimised TU candidate); vtable 0x0123CF20
+007bebe0	DIFFER	274v288	-	NThingShot::RandomiseShotDirection; cross-product temp forwarded from x87 regs; g4
+007bf000	SKIP	-v679	-	not attempted (budget): NThingShot::GetCreatureFirePosAndOrientation, x87 + matrix code
+007c0ad0	SKIP	-v938	-	not attempted (budget): NThingShot::CreateShot (one of two PDB overloads), 944 bytes
+007c2980	RELOCATION_MATCH	249v249	PASS	std::__find<CIntelligentPointer<const CThing>*> (shot hit-things); g1
+007cb8b0	SKIP	-v508	-	not attempted (budget): persistence Transfer over vector<CCharString> + def lookups, 508 bytes
+007d14b0	MATCH	740v740	PASS	label: std::__copy<CShoveHaPennyRegionDef*> (not memcpy); g1
+007d17a0	MATCH	714v714	PASS	label: std::__copy_backward<CShoveHaPennyRegionDef*>; g1
+007d23b0	RELOCATION_MATCH	277v277	PASS	label: vector<CShoveHaPennyRegionDef>::_M_insert_overflow; same-TU helper bodies; g2
+007d24f0	RELOCATION_MATCH	337v337	PASS	label: vector<CShoveHaPennyRegionDef>::_M_fill_insert; same-TU helper + copy ctor bodies; g3
+007d9d70	DIFFER	316v316	-	label: vector<KnickKnack>::_M_fill_insert; ebx/ebp register swap; g4
+007db2e0	SKIP	-v723	-	not attempted (budget): CTCTavernGameCardBase::NewGame, nested vector push_backs, 736 bytes
+007dc3f0	RELOCATION_MATCH	243v243	PASS	label: vector<CCard*>::operator=; g2
+007e3d50	RELOCATION_MATCH	243v243	PASS	CTCWillResponse::SetThingIsForcePushable; g1
+007e3f40	RELOCATION_MATCH	241v241	PASS	label: CTCWillResponse::SetThingIsLightningable (catalog says AbleToBeLifted); g1
+007e4330	RELOCATION_MATCH	241v241	PASS	label: CTCWillResponse::SetThingIsEpicSpellable (catalog says AbleToBeLifted); g1
+007ea580	SKIP	-v457	-	not attempted (budget): vector<pair<C3DVector,long>> push_back loop with inline _M_insert_overflow
+007eff80	SKIP	-v619	-	not attempted (budget): CTCCarriedActionUseFishingRod::IsThingAbleToFish, x87 + fast inverse sqrt table
+007f7c10	RELOCATION_MATCH	600v600	PASS	label: std::__find_if<CThing**, CIsTriggerActivated>; inline LowerBound expanded once; one-ternary pick; g2
+007fa450	RELOCATION_MATCH	441v441	PASS	label: std::__insertion_sort<CThing**, CThingCompare_BestForTargeting2>; same-TU scorer bodies; g2
+007faa20	RELOCATION_MATCH	472v472	PASS	label: std::__partial_sort<CThing**, ...BestForTargeting2>; g1
+007fac80	RELOCATION_MATCH	468v468	PASS	label: std::__introsort_loop<CThing**, ...BestForTargeting2>; g1
+007fe990	DIFFER	351v351	-	label: CTCSingleUserActionPoints::OnCreate; this=esi vs edi register swap; g4
+007ff2f0	DIFFER	358v360	-	label: CTCNamedUserActionPoints::OnCreate; same register swap + tag slot; g1
+00800da0	RELOCATION_MATCH	262v262	PASS	label: vector<pair<C2DVector,unsigned char> >::_M_insert_overflow; g2
+008028d0	SKIP	-v648	-	not attempted (budget): anonymous GetTargetingRangeForTargetType, def-map lookups + max() chains, 656 bytes
+00802b60	SKIP	-v424	-	not attempted (budget): anonymous GetTargetingRangeForTarget, CDefPointer refcounts + CCharString def lookup
+00807c30	DIFFER	659v749	-	label: std::__find_if (not remove_if); inline budget F2 4/7 vs 6/7; g4
+00807f20	DIFFER	476v480	-	bl-held mask 1 (Dead-bit test); g4
+008092d0	RELOCATION_MATCH	256v256	PASS	label: vector<CTargetPoint>::_M_insert_overflow (not a range insert); g1
+00809f80	RELOCATION_MATCH	382v382	PASS	label: std::__find_if<CTargetPoint*, Bind2<IsInFOV, IsStealableStockItem>> (not copy_if); g1
+0080a240	RELOCATION_MATCH	252v252	PASS	label: std::__partial_sort<CIntelligentPointer<CThing>*, CDoNotUseBinaryPredicate>; g1
+0080a910	RELOCATION_MATCH	324v324	PASS	label: std::__find_if<CTargetPoint*, Bind2<IsInFOV, not1<IsTargetableBehind>>> (not copy_if); g1
+0080ac10	RELOCATION_MATCH	376v376	PASS	label: std::__partial_sort<pair<C3DVector,long>*, CCompareTargetedPositionsForFirstPersonTargeting>; same-TU scorer bodies; g3
+0080b330	RELOCATION_MATCH	255v255	PASS	label: std::__make_heap<CTargetPoint*> (not pop_heap); g1
+0080b620	RELOCATION_MATCH	494v494	PASS	label: std::__introsort_loop<pair<C3DVector,long>*, CCompareTargetedPositionsForFirstPersonTargeting>; g1
+0080bab0	RELOCATION_MATCH	504v504	PASS	label: std::__partial_sort<CTargetPoint*, BestForTargeting2>; same-TU noinline comparator keeps Hero in esi; g3
+0080bd30	RELOCATION_MATCH	738v738	PASS	label: std::__introsort_loop<CTargetPoint*, BestForTargeting2>; g1
+0080da50	RELOCATION_MATCH	273v273	PASS	label: CApplyAdditionalExplosiveImpulseIfInsideSmearedLine::operator(); operator*= normalise; g2
+0080db70	DIFFER	275v275	-	label: CApplyAdditionalExplosiveImpulseIfInsideRing::operator(); one x87 operand order (Y*k); g4
