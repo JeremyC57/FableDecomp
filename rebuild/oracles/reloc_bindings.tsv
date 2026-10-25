@@ -32313,3 +32313,13 @@ _ImmAssociateContext@8	00cb5564	00cb5130
 ??$__adjust_heap@PAU?$pair@VCCharString@@VCScriptInfo@@@_STL@@HU12@U?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@_STL@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@HHU10@U?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z	00cb68c0	00cb6bd0
 ??$__copy_backward@PAU?$pair@VCCharString@@VCScriptInfo@@@_STL@@PAU12@H@_STL@@YIPAU?$pair@VCCharString@@VCScriptInfo@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	00cb62f0	00cb6ce0
 ??$__unguarded_linear_insert@PAU?$pair@VCCharString@@VCScriptInfo@@@_STL@@U12@U?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@_STL@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@U10@U?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z	00cb6420	00cb6ce0
+?g_CyclesPerSecond@@3NA	01396680	009e1c70
+?g_FastTimerBase@@3_JA	013ca9f8	009e1c70
+?g_FrameStartCycleCount@@3_KA	013ca9f8	009e24b0
+?g_LastRecalibrateCycleCount@@3_KA	013caa18	009e24b0
+?g_LastRecalibrateTime@@3NA	013caa20	009e24b0
+?g_ArcCosTable@@3PAMA	013cb530	00a22530
+?g_outputRate@@3KA	0139c9e8	00c5a500
+?Configure@CEffectPart260@@QAEXPAUCVoiceEffect@@PBUSVoiceEffectParameters@@@Z	00c783f0	00c6aef0
+?g_mixBlockLength@@3KA	0139c9f0	00c6b8c0
+?FilterRamped@CStateVariableFilter@@QAEXPAFK@Z	00c6b8c0	00c6bae0

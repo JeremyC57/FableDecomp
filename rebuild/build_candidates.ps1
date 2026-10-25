@@ -309384,6 +309384,216 @@ $catalog = @(
         TestSource = '00/cb/STL_linearinsert_00cb6ce0_test.cpp'
         PassPattern = '00cb6ce0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005bc3ed'
+        Module = '_global'
+        Source = '00/5b/global_GFGetGraphicFrame_005bc3ed.cpp'
+        TestSource = '00/5b/global_GFGetGraphicFrame_005bc3ed_test.cpp'
+        PassPattern = '005bc3ed_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cc530'
+        Module = '_global'
+        Source = '00/5c/global_RoundToDecimalPlaces_005cc530.cpp'
+        TestSource = '00/5c/global_RoundToDecimalPlaces_005cc530_test.cpp'
+        PassPattern = '005cc530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00643b9f'
+        Module = '_global'
+        Source = '00/64/global_GFGetGraphicFrame_00643b9f.cpp'
+        TestSource = '00/64/global_GFGetGraphicFrame_00643b9f_test.cpp'
+        PassPattern = '00643b9f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081e550'
+        Module = '_global'
+        Source = '00/81/global_FtoL_0081e550.cpp'
+        TestSource = '00/81/global_FtoL_0081e550_test.cpp'
+        PassPattern = '0081e550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1c70'
+        Module = '_global'
+        Source = '00/9e/global_GFGetFastSubFrameTimer_009e1c70.cpp'
+        TestSource = '00/9e/global_GFGetFastSubFrameTimer_009e1c70_test.cpp'
+        PassPattern = '009e1c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e24b0'
+        Module = '_global'
+        Source = '00/9e/global_GFRecalibrateFastSubFrameTimer_009e24b0.cpp'
+        TestSource = '00/9e/global_GFRecalibrateFastSubFrameTimer_009e24b0_test.cpp'
+        PassPattern = '009e24b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a13eb0'
+        Module = 'C2DVector'
+        Source = '00/a1/C2DVector_GetRandomUnitVector_00a13eb0.cpp'
+        TestSource = '00/a1/C2DVector_GetRandomUnitVector_00a13eb0_test.cpp'
+        PassPattern = '00a13eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a147e0'
+        Module = '_global'
+        Source = '00/a1/global_GFFastSin_00a147e0.cpp'
+        TestSource = '00/a1/global_GFFastSin_00a147e0_test.cpp'
+        PassPattern = '00a147e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14840'
+        Module = '_global'
+        Source = '00/a1/global_GFFastCos_00a14840.cpp'
+        TestSource = '00/a1/global_GFFastCos_00a14840_test.cpp'
+        PassPattern = '00a14840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a22530'
+        Module = '_global'
+        Source = '00/a2/global_GFFastArcCos_00a22530.cpp'
+        TestSource = '00/a2/global_GFFastArcCos_00a22530_test.cpp'
+        PassPattern = '00a22530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af8d50'
+        Module = '_global'
+        Source = '00/af/global_GFPackFloat_00af8d50.cpp'
+        TestSource = '00/af/global_GFPackFloat_00af8d50_test.cpp'
+        PassPattern = '00af8d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b05c20'
+        Module = 'NParticleEngine'
+        Source = '00/b0/NParticleEngine_GFInterpolate_00b05c20.cpp'
+        TestSource = '00/b0/NParticleEngine_GFInterpolate_00b05c20_test.cpp'
+        PassPattern = '00b05c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b09aa0'
+        Module = 'CRGBFloatColour'
+        Source = '00/b0/CRGBFloatColour_GetRGBColourClamped_00b09aa0.cpp'
+        TestSource = '00/b0/CRGBFloatColour_GetRGBColourClamped_00b09aa0_test.cpp'
+        PassPattern = '00b09aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0a420'
+        Module = 'NParticleEngine::CParticle'
+        Source = '00/b0/NParticleEngineCParticle_SetAngleChange_00b0a420.cpp'
+        TestSource = '00/b0/NParticleEngineCParticle_SetAngleChange_00b0a420_test.cpp'
+        PassPattern = '00b0a420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0a4a0'
+        Module = 'NParticleEngine::CParticle'
+        Source = '00/b0/NParticleEngineCParticle_SetCreationTime_00b0a4a0.cpp'
+        TestSource = '00/b0/NParticleEngineCParticle_SetCreationTime_00b0a4a0_test.cpp'
+        PassPattern = '00b0a4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba7b30'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/ba/CEngineInternalPrimitiveBase_GetAlphaIncludingDistanceFade_00ba7b30.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitiveBase_GetAlphaIncludingDistanceFade_00ba7b30_test.cpp'
+        PassPattern = '00ba7b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ff70'
+        Module = '_global'
+        Source = '00/c3/global_RoundHalfDownToLong_00c3ff70.cpp'
+        TestSource = '00/c3/global_RoundHalfDownToLong_00c3ff70_test.cpp'
+        PassPattern = '00c3ff70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c40f50'
+        Module = '_global'
+        Source = '00/c4/global_AmplitudeToMillibels_00c40f50.cpp'
+        TestSource = '00/c4/global_AmplitudeToMillibels_00c40f50_test.cpp'
+        PassPattern = '00c40f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c42f50'
+        Module = 'CAudioObject'
+        Source = '00/c4/CAudioObject_SetGain_00c42f50.cpp'
+        TestSource = '00/c4/CAudioObject_SetGain_00c42f50_test.cpp'
+        PassPattern = '00c42f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c52ce0'
+        Module = '_global'
+        Source = '00/c5/global_MeasureCpuFrequency_00c52ce0.cpp'
+        TestSource = '00/c5/global_MeasureCpuFrequency_00c52ce0_test.cpp'
+        PassPattern = '00c52ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5a500'
+        Module = 'CSoftwareVoice'
+        Source = '00/c5/CSoftwareVoice_UpdateStep_00c5a500.cpp'
+        TestSource = '00/c5/CSoftwareVoice_UpdateStep_00c5a500_test.cpp'
+        PassPattern = '00c5a500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6aef0'
+        Module = 'CVoiceEffect'
+        Source = '00/c6/CVoiceEffect_Configure_00c6aef0.cpp'
+        TestSource = '00/c6/CVoiceEffect_Configure_00c6aef0_test.cpp'
+        PassPattern = '00c6aef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6b8c0'
+        Module = 'CStateVariableFilter'
+        Source = '00/c6/CStateVariableFilter_FilterRamped_00c6b8c0.cpp'
+        TestSource = '00/c6/CStateVariableFilter_FilterRamped_00c6b8c0_test.cpp'
+        PassPattern = '00c6b8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6bae0'
+        Module = 'CStateVariableFilter'
+        Source = '00/c6/CStateVariableFilter_Filter_00c6bae0.cpp'
+        TestSource = '00/c6/CStateVariableFilter_Filter_00c6bae0_test.cpp'
+        PassPattern = '00c6bae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6cef0'
+        Module = 'CVtable_012bed7c'
+        Source = '00/c6/CVtable012bed7c_ComputeTapGain_00c6cef0.cpp'
+        TestSource = '00/c6/CVtable012bed7c_ComputeTapGain_00c6cef0_test.cpp'
+        PassPattern = '00c6cef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6de60'
+        Module = 'CVtable_012bed90'
+        Source = '00/c6/CVtable012bed90_ComputeGainRamp_00c6de60.cpp'
+        TestSource = '00/c6/CVtable012bed90_ComputeGainRamp_00c6de60_test.cpp'
+        PassPattern = '00c6de60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6eba0'
+        Module = 'CVtable_012bedb8'
+        Source = '00/c6/CVtable012bedb8_ComputeGainRamp_00c6eba0.cpp'
+        TestSource = '00/c6/CVtable012bedb8_ComputeGainRamp_00c6eba0_test.cpp'
+        PassPattern = '00c6eba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77fc0'
+        Module = 'CReverbProcessor'
+        Source = '00/c7/CReverbProcessor_UpdateChorusLength_00c77fc0.cpp'
+        TestSource = '00/c7/CReverbProcessor_UpdateChorusLength_00c77fc0_test.cpp'
+        PassPattern = '00c77fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be6800'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_GetPackedNormalFromTargetVertex_00be6800.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_GetPackedNormalFromTargetVertex_00be6800_test.cpp'
+        PassPattern = '00be6800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfdfd0'
+        Module = 'CLandscapeLayerMesh'
+        Source = '00/bf/CLandscapeLayerMesh_GetPackedNormalFromTargetVertex_00bfdfd0.cpp'
+        TestSource = '00/bf/CLandscapeLayerMesh_GetPackedNormalFromTargetVertex_00bfdfd0_test.cpp'
+        PassPattern = '00bfdfd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
