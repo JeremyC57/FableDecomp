@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c57c90	RELOCATION_MATCH	193v193	PASS	COpenALVoice::UnqueueBuffer; grades 2
+00c58210	MATCH	85v85	PASS	CMixBuffer::MixMono16Ramped; grades 2
+00c58270	MATCH	126v126	PASS	CMixBuffer::MixStereoFloat; grades 3
+00c582f0	MATCH	126v126	PASS	CMixBuffer::MixStereo32; grades 2
+00c58370	MATCH	161v161	PASS	CMixBuffer::MixStereo16; grades 2
+00c591f0	RELOCATION_MATCH	77v77	PASS	CMixBuffer::CMixBuffer; grades 2
+00c592f0	RELOCATION_MATCH	208v208	PASS	CLimiter::UpdateEnvelope; grades 2
+00c59570	RELOCATION_MATCH	37v37	PASS	CLimiter::CLimiter; grades 2
+00c595e0	MATCH	27v27	PASS	exp; grades 2
+00c59890	RELOCATION_MATCH	161v161	PASS	CCodaVoice::UpdateVibrato; grades 1
+00c59960	RELOCATION_MATCH	89v89	PASS	ComputePanGains; grades 2
+00c59b00	DIFFER	129v155	-	SecondsToMixBlocks: retail_asm candidate (bare fistp ROUND helper); C++ reference in differ/; grades 1
+00c59c20	RELOCATION_MATCH	56v56	PASS	CCodaVoice::StartEnvelope; grades 1
+00c59c60	DIFFER	210v210	-	CCodaVoice::SetVibrato: pop edi scheduled before the second _CIpow result store; 20+ pv probes (orders, named locals, scopes, shared tails) plus the QFE-4035 compiler (same bytes); grades 2
+00c59d40	RELOCATION_MATCH	60v60	PASS	LinearRampStep; grades 3
+00c59d80	RELOCATION_MATCH	94v94	PASS	ExponentialDecayStep; grades 3
+00c59de0	RELOCATION_MATCH	64v64	PASS	OctaveRampStep; grades 2
+00c5a3c0	RELOCATION_MATCH	187v187	PASS	CSoftwareVoice::SizeRing; grades 1
+00c5a480	RELOCATION_MATCH	118v118	PASS	CCodaVoice::UpdateEnvelope; grades 1
+00c5a500	DIFFER	171v171	-	CSoftwareVoice::UpdateStep: retail_asm candidate (bare fistp ROUND helper); C++ reference in differ/; grades 1
+00c5af50	RELOCATION_MATCH	108v108	PASS	CSoftwareVoice::ClearMix; grades 1
+00c5afc0	RELOCATION_MATCH	105v105	PASS	CSoftwareVoice::ApplyFilter; grades 1
+00c5b030	RELOCATION_MATCH	186v186	PASS	CSoftwareVoice::Resample; grades 1
+00c5bd00	RELOCATION_MATCH	203v203	PASS	CSoftwareVoice::SetParameters; grades 1
+00c5c2d0	RELOCATION_MATCH	140v140	PASS	CSoftwareStreamVoice::SetParameters; grades 1
+00c5c800	RELOCATION_MATCH	126v126	PASS	CSoftwareStreamVoice::MixMono; grades 2
+00c5c880	RELOCATION_MATCH	136v136	PASS	CSoftwareStreamVoice::Mix; grades 2
+00c5c980	RELOCATION_MATCH	124v124	PASS	SpeakerToChannelIndex; grades 2
+00c5ce60	MATCH	54v54	PASS	CAudioRingBuffer::SetCapacity; grades 2
+00c5cf00	MATCH	32v32	PASS	CAudioRingBuffer::CommitWrite; grades 2
+00c5cf20	MATCH	52v52	PASS	CAudioRingBuffer::CommitRead; grades 3
+00c5cf90	MATCH	49v49	PASS	CAudioRingBuffer::CopyChannel; grades 2
+00c5cfd0	MATCH	58v58	PASS	CAudioRingBuffer::ClearChannel; grades 2
+00c5d010	MATCH	141v141	PASS	CAudioRingBuffer::CopyFrom; grades 3
+00c5d2e0	DIFFER	42v141	-	AccumulateFloatBlockSSE2: retail_asm candidate (inline SSE2: stmxcsr/ldmxcsr, cvtps2dq, paddd, movdqa); C++ reference; grades 1
+00c5d370	DIFFER	57v84	-	AccumulateBlockSSE2: retail_asm candidate (inline SSE2 movdqa/paddd); C++ reference; grades 1
+00c5d3f0	DIFFER	59v86	-	AccumulateBlockSSE2Std: retail_asm candidate (inline SSE2, ret 8); twin of 00c5d4b0; C++ reference; grades 1
+00c5d4b0	DIFFER	59v86	-	CMixBufferSSE2::MixAdd32: retail_asm candidate (inline SSE2, ret 8); slot 5 of vtable 0x012B5DE0; C++ reference; grades 1
+00c5da70	RELOCATION_MATCH	45v45	PASS	IsWindows9x; grades 3
+00c5e180	RELOCATION_MATCH	54v54	PASS	CThread::Create; grades 2
