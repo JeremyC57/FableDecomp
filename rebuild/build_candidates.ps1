@@ -315787,6 +315787,13 @@ $catalog = @(
         TestSource = '00/5e/stdvector_Mrangeinsert_005e2c20_test.cpp'
         PassPattern = '005e2c20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0051f0e0'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_CopyHeroToHero_0051f0e0.cpp'
+        TestSource = '00/51/CThingManager_CopyHeroToHero_0051f0e0_test.cpp'
+        PassPattern = '0051f0e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

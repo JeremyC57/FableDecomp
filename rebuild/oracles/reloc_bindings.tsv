@@ -601,7 +601,6 @@ _Profile_Enter@4	00404500	00431242
 ?g_progressTitle@@3UCWideString@@A	013b89d8	00434f60
 ?GetControlledCreature@CPlayer@@QAEPAUCThing@@XZ	00487dd0	00435000
 ?GiveGold@CTCHeroMoney@@QAEXJ@Z	00639e40	00435000
-?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z	004365b0	00435000
 ??1CDisplayEngineBase@@UAE@XZ	0099a300	004354c0
 ??_7CDisplayEngine@@6B@	01231574	004354c0
 ?FableDisplayGetSubsystem_004354c0@@YGPAUCDisplaySubsystem@@PAUCDisplayRenderTarget@@@Z	00436fb0	004354c0
@@ -33364,3 +33363,6 @@ _s_HeroStateExt	01236a74	004a05c0
 ?__copy_backward@std@@YIPAU?$pair@KVCAnimationEntry@@@1@PAU21@00ABUrandom_access_iterator_tag@1@PAH@Z	005e0e70	005e2c20
 ?__destroy_aux@std@@YIXPAU?$pair@KVCAnimationEntry@@@1@0ABU__false_type@1@@Z	00454404	005e2c20
 ?__uninitialized_copy@std@@YIPAU?$pair@KVCAnimationEntry@@@1@PBU21@0PAU21@ABU__false_type@1@@Z	005e16f0	005e2c20
+?CopyTCState@CThing@@QAEXPAUCTCBase@@_N@Z	004c9f60	0051f0e0
+?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z	0040f020	0051f0e0
+?ResetState@CTCHeroType3@@QAEXXZ	0071c260	0051f0e0
