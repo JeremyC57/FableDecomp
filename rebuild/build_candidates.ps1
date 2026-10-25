@@ -308401,6 +308401,251 @@ $catalog = @(
         TestSource = '00/c7/CReverbDelay_Process_00c76b60_test.cpp'
         PassPattern = '00c76b60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c775e0'
+        Module = 'CMixerStream'
+        Source = '00/c7/CMixerStream_AllocatePlanes_00c775e0.cpp'
+        TestSource = '00/c7/CMixerStream_AllocatePlanes_00c775e0_test.cpp'
+        PassPattern = '00c775e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77ae0'
+        Module = 'CReverbProcessor'
+        Source = '00/c7/CReverbProcessor_UpdateLineGains_00c77ae0.cpp'
+        TestSource = '00/c7/CReverbProcessor_UpdateLineGains_00c77ae0_test.cpp'
+        PassPattern = '00c77ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77c00'
+        Module = 'CReverbProcessor'
+        Source = '00/c7/CReverbProcessor_UpdateTapLevels_00c77c00.cpp'
+        TestSource = '00/c7/CReverbProcessor_UpdateTapLevels_00c77c00_test.cpp'
+        PassPattern = '00c77c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78040'
+        Module = 'CReverbProcessor'
+        Source = '00/c7/CReverbProcessor_UpdateDelayLength_00c78040.cpp'
+        TestSource = '00/c7/CReverbProcessor_UpdateDelayLength_00c78040_test.cpp'
+        PassPattern = '00c78040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78590'
+        Module = 'M64'
+        Source = '00/c7/M64_M64_00c78590.cpp'
+        TestSource = '00/c7/M64_M64_00c78590_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78630'
+        Module = 'Is32vec2'
+        Source = '00/c7/Is32vec2_operator_00c78630.cpp'
+        TestSource = '00/c7/Is32vec2_operator_00c78630_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78670'
+        Module = 'Is32vec2'
+        Source = '00/c7/Is32vec2_operator_00c78670.cpp'
+        TestSource = '00/c7/Is32vec2_operator_00c78670_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c786b0'
+        Module = 'Is32vec2'
+        Source = '00/c7/Is32vec2_operator_00c786b0.cpp'
+        TestSource = '00/c7/Is32vec2_operator_00c786b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c786b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c786e0'
+        Module = '_global'
+        Source = '00/c7/global_unpacklow_00c786e0.cpp'
+        TestSource = '00/c7/global_unpacklow_00c786e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c786e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78720'
+        Module = '_global'
+        Source = '00/c7/global_unpackhigh_00c78720.cpp'
+        TestSource = '00/c7/global_unpackhigh_00c78720_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78760'
+        Module = 'I16vec4'
+        Source = '00/c7/I16vec4_I16vec4_00c78760.cpp'
+        TestSource = '00/c7/I16vec4_I16vec4_00c78760_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c787d0'
+        Module = '_global'
+        Source = '00/c7/global_satadd_00c787d0.cpp'
+        TestSource = '00/c7/global_satadd_00c787d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c787d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78810'
+        Module = '_global'
+        Source = '00/c7/global_mulhigh_00c78810.cpp'
+        TestSource = '00/c7/global_mulhigh_00c78810_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78850'
+        Module = '_global'
+        Source = '00/c7/global_muladd_00c78850.cpp'
+        TestSource = '00/c7/global_muladd_00c78850_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78890'
+        Module = '_global'
+        Source = '00/c7/global_packsat_00c78890.cpp'
+        TestSource = '00/c7/global_packsat_00c78890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c788d0'
+        Module = '_global'
+        Source = '00/c7/global_operator_00c788d0.cpp'
+        TestSource = '00/c7/global_operator_00c788d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c788d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c78970'
+        Module = '_global'
+        Source = '00/c7/global_BuildKernelRows4_00c78970.cpp'
+        TestSource = '00/c7/global_BuildKernelRows4_00c78970_test.cpp'
+        PassPattern = '00c78970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c7b870'
+        Module = 'Is32vec4'
+        Source = '00/c7/Is32vec4_operator_00c7b870.cpp'
+        TestSource = '00/c7/Is32vec4_operator_00c7b870_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c7b870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c7ba00'
+        Module = '_global'
+        Source = '00/c7/global_BuildKernelRows8_00c7ba00.cpp'
+        TestSource = '00/c7/global_BuildKernelRows8_00c7ba00_test.cpp'
+        PassPattern = '00c7ba00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88780'
+        Module = 'COggVorbisStream'
+        Source = '00/c8/COggVorbisStream_COggVorbisStream_00c88780.cpp'
+        TestSource = '00/c8/COggVorbisStream_COggVorbisStream_00c88780_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c88780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88a50'
+        Module = 'CMixKernelsSSE'
+        Source = '00/c8/CMixKernelsSSE_Scale_00c88a50.cpp'
+        TestSource = '00/c8/CMixKernelsSSE_Scale_00c88a50_test.cpp'
+        PassPattern = '00c88a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88ab0'
+        Module = 'CMixKernelsSSE'
+        Source = '00/c8/CMixKernelsSSE_ScaleCopy_00c88ab0.cpp'
+        TestSource = '00/c8/CMixKernelsSSE_ScaleCopy_00c88ab0_test.cpp'
+        PassPattern = '00c88ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88b20'
+        Module = 'CMixKernelsSSE'
+        Source = '00/c8/CMixKernelsSSE_ScaleRamped_00c88b20.cpp'
+        TestSource = '00/c8/CMixKernelsSSE_ScaleRamped_00c88b20_test.cpp'
+        PassPattern = '00c88b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88bf0'
+        Module = 'CMixKernelsSSE'
+        Source = '00/c8/CMixKernelsSSE_ScaleCopyRamped_00c88bf0.cpp'
+        TestSource = '00/c8/CMixKernelsSSE_ScaleCopyRamped_00c88bf0_test.cpp'
+        PassPattern = '00c88bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88d10'
+        Module = 'CMixKernelsSSE'
+        Source = '00/c8/CMixKernelsSSE_Mix_00c88d10.cpp'
+        TestSource = '00/c8/CMixKernelsSSE_Mix_00c88d10_test.cpp'
+        PassPattern = '00c88d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88d80'
+        Module = 'CMixKernelsSSE'
+        Source = '00/c8/CMixKernelsSSE_MixRamped_00c88d80.cpp'
+        TestSource = '00/c8/CMixKernelsSSE_MixRamped_00c88d80_test.cpp'
+        PassPattern = '00c88d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c89110'
+        Module = 'CReverbDiffuserStage'
+        Source = '00/c8/CReverbDiffuserStage_Allocate_00c89110.cpp'
+        TestSource = '00/c8/CReverbDiffuserStage_Allocate_00c89110_test.cpp'
+        PassPattern = '00c89110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c896c0'
+        Module = 'CReverbFilterTap'
+        Source = '00/c8/CReverbFilterTap_Allocate_00c896c0.cpp'
+        TestSource = '00/c8/CReverbFilterTap_Allocate_00c896c0_test.cpp'
+        PassPattern = '00c896c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c89aa0'
+        Module = 'CReverbFilterTap'
+        Source = '00/c8/CReverbFilterTap_Feedback_00c89aa0.cpp'
+        TestSource = '00/c8/CReverbFilterTap_Feedback_00c89aa0_test.cpp'
+        PassPattern = '00c89aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c89b60'
+        Module = 'CReverbFilterTap'
+        Source = '00/c8/CReverbFilterTap_MixHistory_00c89b60.cpp'
+        TestSource = '00/c8/CReverbFilterTap_MixHistory_00c89b60_test.cpp'
+        PassPattern = '00c89b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8a7e0'
+        Module = '_global'
+        Source = '00/c8/global_ovclear_00c8a7e0.cpp'
+        TestSource = '00/c8/global_ovclear_00c8a7e0_test.cpp'
+        PassPattern = '00c8a7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8a960'
+        Module = '_global'
+        Source = '00/c8/global_ovbitrateinstant_00c8a960.cpp'
+        TestSource = '00/c8/global_ovbitrateinstant_00c8a960_test.cpp'
+        PassPattern = '00c8a960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8aa80'
+        Module = '_global'
+        Source = '00/c8/global_ovpcmtotal_00c8aa80.cpp'
+        TestSource = '00/c8/global_ovpcmtotal_00c8aa80_test.cpp'
+        PassPattern = '00c8aa80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c775e0	RELOCATION_MATCH	109v109	PASS	1 grade; CMixerStream::AllocatePlanes; MixerAlloc 0x00C3C360 / MixerFree 0x00C3C370
+00c77700	DIFFER	38v109	-	1 grade; MillibelsToAmplitude; retail_asm candidate (hand-written x87 2^x: frndint/f2xm1/fscale/fwait); byte twin of 0x00C40EE0
+00c77ae0	RELOCATION_MATCH	72v72	PASS	1 grade; CReverbProcessor::UpdateLineGains
+00c77b30	DIFFER	165v193	-	1 grade; CReverbProcessor::UpdateLineLengths; retail_asm candidate (two inline `fld ; fistp dword` round helpers)
+00c77c00	RELOCATION_MATCH	125v125	PASS	1 grade; CReverbProcessor::UpdateTapLevels
+00c77fc0	DIFFER	63v72	-	1 grade; CReverbProcessor::UpdateChorusLength; retail_asm candidate (inline `fld ; fistp dword` round helper)
+00c78040	RELOCATION_MATCH	116v116	PASS	2 grades; CReverbProcessor::UpdateDelayLength; parameter product in a named local before the rate conversion
+00c780c0	DIFFER	116v133	-	1 grade (+ cc.py probes); CReverbProcessor::UpdateTapPans; loop IV structure (retail 4 IVs, ours 2); likely LTCG loop codegen
+00c78590	RELOCATION_MATCH	38v38	PASS	1 grade; M64::M64(__m64) (ivec.h); /GS
+00c78630	RELOCATION_MATCH	50v50	PASS	1 grade; Is32vec2::operator+= (ivec.h); /GS
+00c78670	RELOCATION_MATCH	49v49	PASS	1 grade; Is32vec2::operator>> (ivec.h); /GS
+00c786b0	RELOCATION_MATCH	48v48	PASS	1 grade; Is32vec2::operator>>= (ivec.h); /GS
+00c786e0	RELOCATION_MATCH	52v52	PASS	1 grade; unpack_low(Is32vec2) (ivec.h); /GS
+00c78720	RELOCATION_MATCH	52v52	PASS	1 grade; unpack_high(Is32vec2) (ivec.h); /GS
+00c78760	RELOCATION_MATCH	38v38	PASS	1 grade; I16vec4::I16vec4(__m64) (ivec.h); /GS
+00c787d0	RELOCATION_MATCH	52v52	PASS	1 grade; sat_add(Is16vec4) (ivec.h); /GS
+00c78810	RELOCATION_MATCH	52v52	PASS	1 grade; mul_high(Is16vec4) (ivec.h); /GS
+00c78850	RELOCATION_MATCH	52v52	PASS	1 grade; mul_add(Is16vec4) (ivec.h); /GS
+00c78890	RELOCATION_MATCH	52v52	PASS	1 grade; pack_sat(Is32vec2) (ivec.h); /GS
+00c788d0	RELOCATION_MATCH	52v52	PASS	1 grade; operator+(Is32vec2) (ivec.h); /GS
+00c78970	MATCH	156v156	PASS	2 grades; BuildKernelRows4; pointer walk `*out++ = (short)((*in-- * gain) / 32768)`; descriptive
+00c7b870	RELOCATION_MATCH	54v54	PASS	1 grade; Is32vec4::operator+= (dvec.h); /GS
+00c7ba00	MATCH	240v240	PASS	2 grades; BuildKernelRows8; same shape as 0x00C78970; descriptive
+00c88780	RELOCATION_MATCH	237v237	PASS	1 grade; COggVorbisStream ctor; /EHsc; vorbisfile entry points with C++ linkage (EH state 1); named vc/vi locals
+00c88a50	MATCH	94v94	PASS	1 grade; CMixKernelsSSE::Scale (fvec.h F32vec4)
+00c88ab0	MATCH	105v105	PASS	1 grade; CMixKernelsSSE::ScaleCopy (fvec.h)
+00c88b20	RELOCATION_MATCH	206v206	PASS	1 grade; CMixKernelsSSE::ScaleRamped (fvec.h)
+00c88bf0	RELOCATION_MATCH	220v220	PASS	1 grade; CMixKernelsSSE::ScaleCopyRamped (fvec.h)
+00c88d10	MATCH	108v108	PASS	1 grade; CMixKernelsSSE::Mix (fvec.h)
+00c88d80	RELOCATION_MATCH	223v223	PASS	1 grade; CMixKernelsSSE::MixRamped (fvec.h)
+00c89110	RELOCATION_MATCH	142v142	PASS	2 grades; CReverbDiffuserStage::Allocate; ring sub-object + inline CRingBuffer::Clear gives the `mov ecx,esi ; shl ecx,2` memset count
+00c896c0	RELOCATION_MATCH	140v140	PASS	2 grades; CReverbFilterTap::Allocate; same ring sub-object model
+00c89aa0	MATCH	147v147	PASS	1 grade; CReverbFilterTap::Feedback; inner `for (j < 4)` sum keeps the outer loop rolled
+00c89b60	RELOCATION_MATCH	125v125	PASS	1 grade; CReverbFilterTap::MixHistory; inline CRingBuffer::Back
+00c89c10	DIFFER	133v112	-	1 grade; _get_data (vorbisfile static); lane gap: LTCG custom convention (vf in esi)
+00c89c80	DIFFER	45v41	-	1 grade; _seek_helper (vorbisfile static); lane gap: LTCG custom convention (vf in esi)
+00c89cb0	DIFFER	187v187	-	1 grade; _get_next_page (vorbisfile static); lane gap: LTCG custom convention (vf in eax)
+00c8a7e0	RELOCATION_MATCH	207v207	PASS	1 grade; ov_clear (libvorbis 1.0.1 vorbisfile, extern "C" __fastcall); free import
+00c8a960	RELOCATION_MATCH	102v102	PASS	1 grade; ov_bitrate_instant (libvorbis 1.0.1, verbatim)
+00c8aa80	RELOCATION_MATCH	104v104	PASS	1 grade; ov_pcm_total (libvorbis 1.0.1, verbatim, recursive)
