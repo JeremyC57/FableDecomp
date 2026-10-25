@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006e8ee0	DIFFER	605v605	-	FindNearestIndexToPoint (catalog FindNearestIndexToPoint): commuted x-sum fadd operands only; 3 grades; differ/006e8ee0.cpp
+006e94d0	DIFFER	426v426	-	CCombatManager::IsCreatureInAttackRingSector (catalog Combat_CheckRingRangeToTarget): stack-slot packing only (frame 0x24 v 0x1c); 4 grades; differ/006e94d0.cpp
+006f4750	RELOCATION_MATCH	252v252	PASS	vector<CCombatRing>::_M_insert_overflow (catalog Vector_InsertRepeatElements_Complex); 1 grade
+006faa90	RELOCATION_MATCH	346v346	PASS	NAnimationEvents::InitialiseManagers (catalog InitialiseManagers); 1 grade
+006fabf0	RELOCATION_MATCH	259v259	PASS	NAnimationEvents::LoadAnimationEvents (catalog LoadAnimationEvents); 1 grade
+006fc6a0	RELOCATION_MATCH	247v247	PASS	vector<pair<ulong,CSmallVector<CEvent,32> > >::_M_insert_overflow (catalog Vector_Reallocate_WithElements); 2 grades
+006fd1e0	RELOCATION_MATCH	256v256	PASS	__introsort_loop<pair<ulong,CSmallVector<CEvent,32> > > (catalog std_sort_Heapify_Recursive); 1 grade
+006fda20	DIFFER	841v819	-	CGameCameraBase::IsThingCollision (catalog CGameCameraBase_TracePhysics): LTCG lane gap: list sentinel kept in ebx across a same-TU template call; 4 grades; differ/006fda20.cpp
+00702e00	DIFFER	490v488	-	CThingHeadingGauge::GetHeadingAlignment (descriptive) (catalog CViewBase_GetRotationDegrees): one register choice on a virtual-call object (+2 bytes); identity unknown; 4 grades; differ/00702e00.cpp
+00706b50	RELOCATION_MATCH	315v315	PASS	CTCHeroAttachableAppearanceModifiers::GetAppearanceModifierListWithCoversBodyAreaFlags (catalog FilterAbilityClasses_ByFlags); 3 grades
+00707b10	RELOCATION_MATCH	526v526	PASS	CTCHeroAttachableAppearanceModifiers::GetMeshesAndMorphSets (catalog RandomAppearance_ProcessMorphList); 1 grade
+00709660	RELOCATION_MATCH	278v278	PASS	vector<vector<CModifierEntry> >::operator= (catalog CFeatDef_VectorReassign); 1 grade
+00709840	RELOCATION_MATCH	241v241	PASS	vector<CModifierGraphic>::_M_insert_overflow (catalog Vector_Reallocate_CNavigationPosition); 1 grade
+00709d60	RELOCATION_MATCH	251v251	PASS	vector<pair<CMeshInfo,CEngineTextureMorphSet> >::_M_insert_overflow (catalog Vector_Reallocate_CMusicSetEntry); 1 grade
+0070a570	RELOCATION_MATCH	518v518	PASS	CTCTextureDecal::PeekEngineDecals (catalog CEngineInternalPrimitive_RebuildDecals); 2 grades
+007103c0	RELOCATION_MATCH	305v305	PASS	__rotate<list<CAnimSet>::const_iterator*> (catalog RotateBuffer_GCD); 1 grade
+00710dc0	RELOCATION_MATCH	264v264	PASS	__rotate_adaptive<list<CAnimSet>::const_iterator*> (catalog StableSortMerge_Rotate); 2 grades
+00711340	RELOCATION_MATCH	376v376	PASS	__merge_adaptive<list<CAnimSet>::const_iterator*> (catalog StableSortMerge_AnimSet); 1 grade
+007167e0	RELOCATION_MATCH	842v842	PASS	NTCScriptedControl::CActionTalkBase::InitialiseDefaultCameraTags (catalog CActionTalkBase_InitMorphs_Hardcoded); 4 grades
+007203a0	RELOCATION_MATCH	265v265	PASS	_Rb_tree<CCharString,pair<long,CDateAndTime> >::_M_insert (catalog RBTree_Insert); 1 grade
+00720f40	RELOCATION_MATCH	270v270	PASS	vector<pair<CSkeletalMorphs::CEntry,float> >::_M_insert_overflow (catalog Vector_InsertAndReplaceMulti_12byte); 1 grade
+00721c10	RELOCATION_MATCH	253v253	PASS	__introsort_loop<pair<CSkeletalMorphs::CEntry,float> > (catalog TextureMorph_QuickSort); 1 grade
+00721e20	RELOCATION_MATCH	335v335	PASS	__introsort_loop<pair<long,CTCHeroMorph::CTextureLayer> > (catalog MorphData_TimSort); 1 grade
+00733b70	DIFFER	383v380	-	CTCCombat::PlayCombatStrikeSounds (catalog CTCCreature_PlayDeathFlourish): conditional-temporary flag/condition register swap; 3 grades; differ/00733b70.cpp
+00733cf0	DIFFER	287v288	-	CTCCombat::UpdateGetHitCounterAttack (catalog TCCombat_ApplyBlockResponse): iterator frame-word reuse (frame 0x1c v 0x18); 4 grades; differ/00733cf0.cpp
+007345d0	RELOCATION_MATCH	685v685	PASS	CTCCombat::GetAppropriateCombatAnimationFromList (catalog GetAppropriateCombatAnimation_FilterAndSelect); 4 grades
+00739550	RELOCATION_MATCH	265v265	PASS	vector<CIntelligentPointer<T> >::_M_insert_overflow (catalog Vector_Reallocate_IntelligentPointer); 1 grade
+00746db0	DIFFER	247v247	-	NStealth::GetStabPosOnThing (catalog GetStabPosOnThing): register preference in the C3DVector copies; 4 grades; differ/00746db0.cpp
+00748e40	RELOCATION_MATCH	372v372	PASS	__find_if<pair<CIntelligentPointer<const CThing>,CDangerStatus> > (catalog LinearSearch_Range_WithValidityCheck); 1 grade
+00749420	RELOCATION_MATCH	270v270	PASS	vector<pair<CIntelligentPointer<const CThing>,CDangerStatus> >::_M_insert_overflow (catalog CIntelligentPointer_Vector_Resize); 1 grade
+0074cee0	RELOCATION_MATCH	249v249	PASS	__find<CIntelligentPointer<const CThing> > (catalog std_find<CBaseIntelligentPointer>); 1 grade
+0074e140	DIFFER	245v245	-	CTCContainerRewardHero::GeneratePopoutVectorFromVars (catalog Projectile_CalculateTrajectory): scheduling only in the return copy; 4 grades; differ/0074e140.cpp
+00752b00	DIFFER	768v757	-	CTCLook::SetHeadLooking (catalog CTCLook_UpdateHeadDirection): LTCG lane gap: PDef kept in edx across a same-TU call; 1 grade; differ/00752b00.cpp
+00756150	RELOCATION_MATCH	250v250	PASS	_Rb_tree<CCharString,pair<long,long> >::_M_insert (catalog RBTree_Insert); 1 grade
+00759190	RELOCATION_MATCH	249v249	PASS	vector<pair<EBodyLocation,CWoundMorphs::CEntry> >::_M_insert_overflow (catalog Vector_InsertRange); 1 grade
+00759290	RELOCATION_MATCH	296v296	PASS	vector<pair<EBodyLocation,CWoundMorphs::CEntry> >::_M_fill_insert (catalog Vector_Insert_Range_Shift); 1 grade
+00759660	RELOCATION_MATCH	257v257	PASS	__introsort_loop<pair<EBodyLocation,CWoundMorphs::CEntry> > (catalog Sort_HeapsortPhase); 1 grade
+0075b8d0	RELOCATION_MATCH	276v276	PASS	vector<C3DVector>::operator= (catalog Std_Vector_Assign); 1 grade
+0075f860	RELOCATION_MATCH	283v283	PASS	vector<CKeyCamera>::_M_insert_overflow (catalog Vector_InsertRange_CopyFill); 1 grade
+00760020	DIFFER	367v360	-	NShape::IsLineIntersectingWithOthersInList (catalog IsLineIntersectingWithOthersInList): dead Z copy of previous + register assignment; 4 grades; differ/00760020.cpp
