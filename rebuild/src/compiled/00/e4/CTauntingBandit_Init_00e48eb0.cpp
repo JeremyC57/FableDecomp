@@ -1,11 +1,12 @@
 // CTauntingBandit::Init() -- reset the anger state, put Me in the friendly-bandit faction and make Me wander around the bandit camp centre marker between 0 and the script def's toll-bandit wander distance
+// Leaf: ?Init@CTauntingBandit@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E48EB0, length 356 bytes (plain `ret`; entity-script slot "Init").
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, ~CBaseClass @ 0x0099A2E0, operator
 //   delete @ 0x00BFE9BC (the counted-pointer info block), and the game interface slots (ghidra_out/cgsi_slots_aligned.tsv)
 //   72 GetThingWithScriptName, 601 EntitySetInFaction, 763 SetWanderCentrePoint(CScriptThing, C3DVector), 766
 //   SetWanderMinDistance(CScriptThing, float), 769 SetWanderMaxDistance(CScriptThing, float); CScriptThing slot 6 GetPos
 //   (0x004AA980, rtti-vtables.tsv).
-// Data: "FACTION_BANDITS_FRIENDLY" @ 0x012D218C, "M_BanditCampCentrePos" @ 0x012E4DF0, g_pScriptDef @ 0x0143E90C whose
+// Data: "FACTION_BANDITS_FRIENDLY" @ 0x012D218C, "M_BanditCampCentrePos" @ 0x012E4DF0, pGlobalScriptDef @ 0x0143E90C whose
 //   +0x428 long is BanditTollBanditWanderDistance (PDB +0x45C; the retail def is 0x34 lower here).
 // Layout: Ego_r.pdb CTauntingBandit (0x24): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18,
 //   AngerCount +0x1C, AngryWithHero +0x20 (unshifted).
@@ -175,7 +176,7 @@ struct CScriptDef {
     unsigned char _pad000[0x428];
     long BanditTollBanditWanderDistance;                 // +0x428 (PDB +0x45C)
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 class CTauntingBandit {
 public:
@@ -196,5 +197,5 @@ void CTauntingBandit::Init()
     Game->EntitySetInFaction(Me, "FACTION_BANDITS_FRIENDLY");
     Game->SetWanderCentrePoint(Me, Game->GetThingWithScriptName("M_BanditCampCentrePos").GetPos());
     Game->SetWanderMinDistance(Me, 0.0f);
-    Game->SetWanderMaxDistance(Me, (float)g_pScriptDef->BanditTollBanditWanderDistance);
+    Game->SetWanderMaxDistance(Me, (float)pGlobalScriptDef->BanditTollBanditWanderDistance);
 }

@@ -1,39 +1,46 @@
-// CAnimationEntry::GetRotationInAnimation(float* pRotation) -- the negated rotation of the hero ability entry this animation's bank index names
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005DBFD0, length 36 bytes (+ int3 padding).
-// Callees: CTCInventoryAbilities::GetAbilityEntry(long) @ 0x00A242C0 (manifest "GetAbilityLevel"; the bytes read a
-// float at +0x24 of what it returns, so it returns an entry pointer).
-// Globals: the application object @ 0x013B86A0 (its +0x24 object is the game, whose +0x3c is the hero's
-// abilities component -- the same two hops as the landed GetDisplayEngine bodies @ 0x00640000..).
-// Shape: BankIndex (+0x00) is the ability argument; the result is loaded, negated (`fchs`) and stored
-// through the out pointer, which is read from the stack after the call.
-struct CAbilityEntry {
-    unsigned char _pad[0x24];
-    float m_rotation;                           // +0x24
+// CAnimationEntry::GetRotationInAnimation(float& rotation) const -- the negated rotation of the main mesh bank's animation this entry's BankIndex names
+// Leaf: ?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005DBFD0, length 36 bytes (+ int3 padding), `ret 4`.
+// Callees: CMeshDataBank::PeekAnimation(unsigned long) const @ 0x00A242C0 (landed; FINDINGS chunk 474: not
+//   "CTCInventoryAbilities::GetAbilityEntry"). Name sets: ?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z (the out
+//   value is a float reference) and ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z.
+// Globals: the main game component @ 0x013B86A0. Ego_r.pdb: CMainGameComponent::PWorld (scoped_ptr<CWorld>) at +0x24,
+//   CWorld::PMainMeshBank (CCountedPointer<CMeshDataBank>, one pointer in retail) at +0x3C, C3DAnimationInfo::Rotation at +0x24.
+// Shape: BankIndex (+0x00) is the animation index; the result is loaded, negated (`fchs`) and stored through the
+//   reference, which is read from the stack after the call.
+class C3DAnimationInfo {
+public:
+    unsigned char _before_Rotation[0x24];       // CMeshDataBankEntry base, Data, Duration, NonLoopingDuration, MovementVector
+    float Rotation;                             // +0x24
 };
 
-struct CTCInventoryAbilities {
-    CAbilityEntry* GetAbilityEntry(long ability);   // 0x00A242C0
+class CMeshDataBank {
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long index) const;   // 0x00A242C0
 };
 
-struct CGame {
-    unsigned char _pad[0x3c];
-    CTCInventoryAbilities* m_pHeroAbilities;    // +0x3c
+class CWorld {
+public:
+    unsigned char _before_PMainMeshBank[0x3c];
+    CMeshDataBank* PMainMeshBank;               // +0x3C
 };
 
-struct CApplication {
-    unsigned char _pad[0x24];
-    CGame* m_pGame;                             // +0x24
+class CMainGameComponent {
+public:
+    unsigned char _before_PWorld[0x24];
+    CWorld* PWorld;                             // +0x24
 };
 
-extern CApplication* g_pApplication;            // 0x013B86A0
+extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-struct CAnimationEntry {
+class CAnimationEntry {
+public:
     long BankIndex;                             // +0x00
-    void GetRotationInAnimation(float* pRotation) const;
+    void GetRotationInAnimation(float& rotation) const;
 };
 
-void CAnimationEntry::GetRotationInAnimation(float* pRotation) const
+void CAnimationEntry::GetRotationInAnimation(float& rotation) const
 {
-    CTCInventoryAbilities* abilities = g_pApplication->m_pGame->m_pHeroAbilities;
-    *pRotation = -abilities->GetAbilityEntry(BankIndex)->m_rotation;
+    CMeshDataBank* bank = g_pMainGameComponent->PWorld->PMainMeshBank;
+    rotation = -bank->PeekAnimation(BankIndex)->Rotation;
 }

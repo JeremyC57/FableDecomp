@@ -3,12 +3,12 @@
 //   follow the hero (and the hero's region), show the quest info and, by the trader's data string, add its health bar
 //   (INFECTED: plain trader icon and start the infection timer, longer when the parent's flag +0x5a is set; SCARED:
 //   hat 01 icon and set scared; FRIENDLY: hat 02 icon)
-// Leaf: HandleTrader
+// Leaf: ?HandleTrader@CTraderScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0A510, length 784 bytes, `ret 4`.
 // Callees: IsInterrupted 0x00F35B30 (CEntityScriptBase), the game script interface (+4) slots 70/229/321/325/480/496
 //   (ghidra_out/cgsi_slots_aligned.tsv), CScriptThing slot 3 GetDataString, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   Compare 0x00411570 (__fastcall), the timer service g_pThingManager 0x0143E8F8 slot 89 SetTimer, quest globals
-//   g_pScriptDef 0x0143E90C (+0xdf4 / +0xdf8).
+//   pGlobalScriptDef 0x0143E90C (+0xdf4 / +0xdf8).
 // Layout (retail bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, +0x1c mode, +0x20
 //   state, +0x2c timer index, +0x30 health bar id; parent flag +0x5a.
 #include <string.h>
@@ -135,7 +135,7 @@ struct CScriptDef {
     long          TraderInfectionTime;                       // +0xdf4
     long          TraderInfectionTimeLong;                   // +0xdf8
 };
-extern CScriptDef* g_pScriptDef;                             // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                             // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CTraderParent {
     unsigned char _pad00[0x5a];
     bool          LongInfection;                             // +0x5a
@@ -173,11 +173,11 @@ void CTraderScript::HandleTrader(long state)
         if (ParentClass->LongInfection) {
             if (IsInterrupted())
                 return;
-            g_pThingManager_0143e8f8->SetTimer(Timer, g_pScriptDef->TraderInfectionTimeLong);
+            g_pThingManager_0143e8f8->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTimeLong);
         } else {
             if (IsInterrupted())
                 return;
-            g_pThingManager_0143e8f8->SetTimer(Timer, g_pScriptDef->TraderInfectionTime);
+            g_pThingManager_0143e8f8->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTime);
         }
     } else if (Me.GetDataString() == "SCARED") {
         if (IsInterrupted())

@@ -1,10 +1,11 @@
 // NScript::CQ_AmbushTradersScript::WatchForSpySpeechTimer() -- speech thread: forever (until terminated) wait while spy speech is enabled, wait for the spy speech timer to run out, then re-enable spy speech and restart the timer with the script def's delay
+// Leaf: ?WatchForSpySpeechTimer@CQ_AmbushTradersScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F036C0, length 214 bytes, plain `ret`.
 // Identity: catalog CQ_AmbushTradersScript::WatchForSpySpeechTimer, the spy twin of WatchForBanditSpeechTimer 0x00F035E0
 // (same class, same speech-flag / timer pair one slot apart).
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CGameScriptInterface slot 7 NewScriptFrame (+0x1C) through
 // the script's GSI (+0x40); slots 89 SetTimer(long, long) (+0x164) and 90 GetTimer(long) (+0x168) through the global
-// g_pGameScriptInterface @ 0x0143E8F8 (the inline CTimer::SetTime / GetTime). Data: g_pScriptDef @ 0x0143E90C, its
+// g_pGameScriptInterface @ 0x0143E8F8 (the inline CTimer::SetTime / GetTime). Data: pGlobalScriptDef @ 0x0143E90C, its
 // +0xA50 spy speech delay (descriptive name; the retail CScriptDef does not line up with Ego_r.pdb here).
 // Layout: retail quest base 0x48 bytes; EnableSpeechSpy +0x69, SpeechSpyTimer +0xA0 (Ego_r.pdb +0x7D/+0xB4 less the
 // 0x14 debug-container shift).
@@ -32,7 +33,7 @@ struct CScriptDef {
     unsigned char _pad000[0xa50];
     long AmbushTradersSpySpeechDelay;                   // +0xa50
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 namespace NScript {
 struct CTimer {
@@ -78,7 +79,7 @@ void CQ_AmbushTradersScript::WatchForSpySpeechTimer()
         if (IsActiveThreadTerminating())
             return;
         EnableSpeechSpy = true;
-        SpeechSpyTimer.SetTime(g_pScriptDef->AmbushTradersSpySpeechDelay);
+        SpeechSpyTimer.SetTime(pGlobalScriptDef->AmbushTradersSpySpeechDelay);
         GSI->NewScriptFrame();
     }
 }

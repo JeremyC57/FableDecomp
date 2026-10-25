@@ -6,7 +6,7 @@
 // Label correction: the catalog "CScriptBase_InitCheckThread" is descriptive; the caller's manifest label
 //   "CBS_Teacher::Init" is propagated (it is CDragon::Init).
 // Callees: CScriptBase::IsActiveThreadTerminating() @ 0x00CB7940.
-// Data: g_pScriptDef @ 0x0143E90C: DBNumMinions{High,Medium,Low,VeryLow}Health +0xBC0..+0xBCC and
+// Data: pGlobalScriptDef @ 0x0143E90C: DBNumMinions{High,Medium,Low,VeryLow}Health +0xBC0..+0xBCC and
 //   DBNumSummoners{...}Health +0xBD0..+0xBDC (Ego_r.pdb CScriptDef +0xC68 / +0xC78; retail = PDB - 0xA8 here, as
 //   DBDragonMediumHealth PDB +0xC5C is read at +0xBB4 by CDragon::Init).
 // Layout (retail = Ego_r.pdb CQ_DragonBossFightScript - 0x14, STLport vectors 12 bytes): DragonState +0x48,
@@ -27,7 +27,7 @@ public:
     long DBNumSummonersLowHealth;
     long DBNumSummonersVeryLowHealth;                   // +0xBDC
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 namespace NScript {
 class CScriptBase {                                     // retail 0x40 bytes
@@ -60,26 +60,26 @@ void CQ_DragonBossFightScript::SetDragonState(EDragonState state)
     if (state == DRAGON_HIGH_HEALTH) {
         if (IsActiveThreadTerminating())
             return;
-        TargetNumMinions = g_pScriptDef->DBNumMinionsHighHealth;
-        TargetNumSummoners = g_pScriptDef->DBNumSummonersHighHealth;
+        TargetNumMinions = pGlobalScriptDef->DBNumMinionsHighHealth;
+        TargetNumSummoners = pGlobalScriptDef->DBNumSummonersHighHealth;
     }
     else if (state == DRAGON_MEDIUM_HEALTH) {
         if (IsActiveThreadTerminating())
             return;
-        TargetNumMinions = g_pScriptDef->DBNumMinionsMediumHealth;
-        TargetNumSummoners = g_pScriptDef->DBNumSummonersMediumHealth;
+        TargetNumMinions = pGlobalScriptDef->DBNumMinionsMediumHealth;
+        TargetNumSummoners = pGlobalScriptDef->DBNumSummonersMediumHealth;
     }
     else if (state == DRAGON_LOW_HEALTH) {
         if (IsActiveThreadTerminating())
             return;
-        TargetNumMinions = g_pScriptDef->DBNumMinionsLowHealth;
-        TargetNumSummoners = g_pScriptDef->DBNumSummonersLowHealth;
+        TargetNumMinions = pGlobalScriptDef->DBNumMinionsLowHealth;
+        TargetNumSummoners = pGlobalScriptDef->DBNumSummonersLowHealth;
     }
     else if (state == DRAGON_VERY_LOW_HEALTH) {
         if (IsActiveThreadTerminating())
             return;
-        TargetNumMinions = g_pScriptDef->DBNumMinionsVeryLowHealth;
-        TargetNumSummoners = g_pScriptDef->DBNumSummonersVeryLowHealth;
+        TargetNumMinions = pGlobalScriptDef->DBNumMinionsVeryLowHealth;
+        TargetNumSummoners = pGlobalScriptDef->DBNumSummonersVeryLowHealth;
     }
 }
 }

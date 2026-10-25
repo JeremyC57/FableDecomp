@@ -1,4 +1,5 @@
 // CAS_Ambusher::Main() -- ambush scam ambusher: ally with the trickster (if it lives), target the hero, wait until the hero is within the ambush distance, play a random ambush sound on itself, then idle until the script is done
+// Leaf: ?Main@CAS_Ambusher@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2FD30, length 360 bytes (plain `ret`; vtable slot 1 = Main of the entity
 //          script contract; the landed CAS_Ambusher::Init is 0x00E2BC10).
 // Callees: CV_AmbushScamScript::GetTrickster @ 0x00E2EC30 (CScriptThing by value through the hidden pointer, on ParentClass),
@@ -7,7 +8,7 @@
 //          EntitySetThingAsAllyOfThing, 70 GetHero, 451 GiveThingBestEnemyTarget, 7 NewScriptFrame, 690 PlaySoundOnThing
 //          (cgsi_slots_aligned.tsv), IsDistanceBetweenThingsUnder @ 0x00CBE2FF (__fastcall: the two things in ecx/edx, the
 //          float on the stack), rand @ 0x00BFEB16 (MSVCR71), CDefString::operator CCharString @ 0x00415D70, ~CCharString
-//          @ 0x0099EAE0, ~CScriptThing @ 0x004AA840; data: g_pScriptDef @ 0x0143E90C (sound-name vector +0x2c0/+0x2c4,
+//          @ 0x0099EAE0, ~CScriptThing @ 0x004AA840; data: pGlobalScriptDef @ 0x0143E90C (sound-name vector +0x2c0/+0x2c4,
 //          ambush distance +0x2cc).
 // Shape: the trickster is a frame local destroyed at both exits; the early `if (IsDone()) return;` sits before the rest of
 //          the body, which lives in a __forceinline helper so VC7.1 pushes/pops ebx (the address of Me) inside that region
@@ -154,7 +155,7 @@ struct CScriptDef {
     CDefString* AS_AmbushSoundsEndOfStorage;             // +0x2c8
     float       AS_AmbushDistance;                       // +0x2cc
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CV_AmbushScamScript {
     CScriptThing GetTrickster();                         // 0x00E2EC30
@@ -176,17 +177,17 @@ struct CAS_Ambusher {
 __forceinline void CAS_Ambusher::RunAmbush()
 {
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), g_pScriptDef->AS_AmbushDistance)) {
+    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), pGlobalScriptDef->AS_AmbushDistance)) {
         Game->NewScriptFrame();
         if (IsDone())
             return;
     }
     if (IsDone())
         return;
-    unsigned long count = g_pScriptDef->AS_AmbushSoundsEnd - g_pScriptDef->AS_AmbushSoundsBegin;
+    unsigned long count = pGlobalScriptDef->AS_AmbushSoundsEnd - pGlobalScriptDef->AS_AmbushSoundsBegin;
     unsigned long index = rand() % count;
     {
-        const CCharString& sound = g_pScriptDef->AS_AmbushSoundsBegin[index];
+        const CCharString& sound = pGlobalScriptDef->AS_AmbushSoundsBegin[index];
         Game->PlaySoundOnThing(Me, sound);
     }
     do {

@@ -1,4 +1,5 @@
 // CV_BeardyBaldyScript::SetWanderPointAndDistance(const CScriptThing&, const C3DVector&) -- make a villager wander around a point: centre point, min/max wander distance from the script def, then scripting state group 4 (wander)
+// Leaf: ?SetWanderPointAndDistance@CV_BeardyBaldyScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E53F60, 249 bytes (256 with padding), `ret 8`.
 // Callees (all through the game script interface at this+0x40): slot 763 SetWanderCentrePoint(CScriptThing, C3DVector),
 //   slot 766 SetWanderMinDistance(CScriptThing, float), slot 769 SetWanderMaxDistance(CScriptThing, float),
@@ -128,7 +129,7 @@ struct CScriptDef {                                     // the global script def
     float WanderMinDistance;                            // +0x448
     float WanderMaxDistance;                            // +0x44c
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {
     virtual void v00();
     unsigned char _body[0x3c];
@@ -143,7 +144,7 @@ struct CV_BeardyBaldyScript : CQuestScriptBase {
 void CV_BeardyBaldyScript::SetWanderPointAndDistance(const CScriptThing& thing, const C3DVector& point)
 {
     GSI->SetWanderCentrePoint(thing, point);
-    GSI->SetWanderMinDistance(thing, g_pScriptDef->WanderMinDistance);
-    GSI->SetWanderMaxDistance(thing, g_pScriptDef->WanderMaxDistance);
+    GSI->SetWanderMinDistance(thing, pGlobalScriptDef->WanderMinDistance);
+    GSI->SetWanderMaxDistance(thing, pGlobalScriptDef->WanderMaxDistance);
     GSI->SetScriptingStateGroup(thing, 4);
 }

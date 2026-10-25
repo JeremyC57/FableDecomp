@@ -3,7 +3,7 @@
 //   (the Adv variant also requires the Nymph to be dead)
 //   passes HC_BanditTimeBeforeComment seconds, then has James say the marker's data string (MakeBanditComment) and removes
 //   the marker; the counter restarts when James is away and is pulled back one second when a comment is refused
-// Leaf: Main
+// Leaf: ?Main@CJamesCommentMarkerAdv@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D90B30, 851 bytes (+ int3 padding).
 // Callees: GameCalls (g_pGameScriptInterface 0x0143E8F8) slots 7 NewScriptFrame, 72 GetThingWithScriptName, 108 RemoveThing,
 //   653 GetWorldFrame (the inline CCounter ctor); CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 /
@@ -1116,7 +1116,7 @@ struct CScriptDef {
  unsigned char _padcb0[0xcc4 - 0xcb0];
  long HC_BanditCloseToMarkerDistance;               // +0xCC4 (PDB +0xd74)
 };
-extern CScriptDef* g_pScriptDef;                    // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_HobbeCaveScript {
  unsigned char BaseState[0x6b];
  bool HobbesCloseby;                                // +0x6B (PDB +0x7f)
@@ -1139,21 +1139,21 @@ void CJamesCommentMarkerAdv::Main()
  if (IsActiveThreadTerminating()) { nymph.DestroyInline(); james.DestroyInline(); return; }
  {
  CCounter counter;
- long distance = g_pScriptDef->HC_BanditCloseToMarkerDistance;
+ long distance = pGlobalScriptDef->HC_BanditCloseToMarkerDistance;
  for (;;) {
   if (IsActiveThreadTerminating()) { nymph.DestroyInline(); james.DestroyInline(); return; }
   if (!ParentClass->HobbesCloseby && IsDistanceBetweenThingsUnder(Me, james.Thing(), (float)distance)) {
    if (IsActiveThreadTerminating()) { nymph.Destroy(); james.Destroy(); return; }
-   if (!ParentClass->HobbesCloseby && counter > (float)g_pScriptDef->HC_BanditTimeBeforeComment && !nymph.Thing().IsAlive() && ParentClass->MakeBanditComment(Me.GetDataString(), james.Thing())) {
+   if (!ParentClass->HobbesCloseby && counter > (float)pGlobalScriptDef->HC_BanditTimeBeforeComment && !nymph.Thing().IsAlive() && ParentClass->MakeBanditComment(Me.GetDataString(), james.Thing())) {
     if (IsActiveThreadTerminating()) { nymph.Destroy(); james.Destroy(); return; }
     Game->RemoveThing(Me, false, true);
     nymph.Destroy();
     james.Destroy();
     return;
    }
-   if (counter > (float)g_pScriptDef->HC_BanditTimeBeforeComment) {
+   if (counter > (float)pGlobalScriptDef->HC_BanditTimeBeforeComment) {
     if (IsActiveThreadTerminating()) { nymph.Destroy(); james.Destroy(); return; }
-    counter = (float)(g_pScriptDef->HC_BanditTimeBeforeComment - 1);
+    counter = (float)(pGlobalScriptDef->HC_BanditTimeBeforeComment - 1);
    }
   } else {
    if (IsActiveThreadTerminating()) { nymph.Destroy(); james.Destroy(); return; }

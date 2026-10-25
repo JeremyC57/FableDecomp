@@ -1,4 +1,5 @@
 // CQ_TraderConflictEvilScript::WatchTimeLimit() -- start the escort time limit once the quest data says so, show it as a quest-info timer until the mission succeeds, and flag the data if time remained
+// Leaf: ?WatchTimeLimit@CQ_TraderConflictEvilScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF7980, length 412 bytes (padded to 416).
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940; CCharString(const char*, long) @ 0x0099EBF0 and
 //   ~CCharString @ 0x0099EAE0; CTimer::~CTimer @ 0x00CD4470 (the one out-of-line destructor site); through the global
@@ -84,7 +85,7 @@ struct CScriptDef {
     unsigned char _pad[0xf80];
     long TraderConflictTimeLimit;                       // +0xF80 (unnamed in the PDB view)
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_TraderConflictData {
     unsigned char _pad[0x129];
     bool TimeLimitBeaten;                               // +0x129
@@ -117,7 +118,7 @@ void CQ_TraderConflictEvilScript::WatchTimeLimit()
             return;
         }
     }
-    timer.SetTime(g_pScriptDef->TraderConflictTimeLimit);
+    timer.SetTime(pGlobalScriptDef->TraderConflictTimeLimit);
     long element = Game->AddQuestInfoTimer(timer, "HUD_CLOCK_ICON", 1.0f);
     Game->DisplayQuestInfo(true);
     while (!MissionSucceeded) {

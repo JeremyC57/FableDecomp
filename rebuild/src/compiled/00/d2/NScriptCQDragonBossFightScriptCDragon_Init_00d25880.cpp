@@ -21,7 +21,7 @@ public:
     float DBDragonLowHealth;                         // +0xbb8
     float DBDragonVeryLowHealth;                     // +0xbbc
 };
-extern CScriptDef* g_pScriptDef;                     // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CEntityScriptBase {
@@ -55,7 +55,7 @@ public:
 void NScript::CQ_DragonBossFightScript::CDragon::Init()
 {
     ParentClass->SetDragonState(DRAGON_HIGH_HEALTH);
-    MediumHealth = g_pScriptDef->DBDragonMediumHealth;
-    LowHealth = g_pScriptDef->DBDragonLowHealth;
-    VeryLowHealth = g_pScriptDef->DBDragonVeryLowHealth;
+    MediumHealth = pGlobalScriptDef->DBDragonMediumHealth;
+    LowHealth = pGlobalScriptDef->DBDragonLowHealth;
+    VeryLowHealth = pGlobalScriptDef->DBDragonVeryLowHealth;
 }

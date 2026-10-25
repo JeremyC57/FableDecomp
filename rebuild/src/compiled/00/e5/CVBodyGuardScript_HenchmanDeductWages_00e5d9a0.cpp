@@ -1,7 +1,7 @@
 // CV_BodyGuardScript::HenchmanDeductWages() -- script thread: while henchmen are hired and the bodyguards are neither
 // told to wait nor in limbo, charge the hero the total wages each pay period; when he cannot pay, flag it until the
 // henchmen leave; whenever the list is empty re-arm the freaked-out timer for 180; one script frame per pass
-// Leaf: HenchmanDeductWages
+// Leaf: ?HenchmanDeductWages@CV_BodyGuardScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5D9A0, 385 bytes (padded to 400).
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940; CGameScriptInterface slots 7 NewScriptFrame (+0x1c),
 //          89 SetTimer (+0x164, through g_pGameScriptInterface 0x0143E8F8), 126 GiveHeroGold (+0x1f8), 127 GetHeroGold
@@ -76,7 +76,7 @@ struct CScriptDef {
     unsigned char _pad[0x4a4];
     long          HenchmanPayTimeDelayInSeconds;   // +0x4a4 (Ego_r.pdb +0x4d8)
 };
-extern CScriptDef*           g_pScriptDef;             // 0x0143E90C
+extern CScriptDef*           pGlobalScriptDef;             // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 struct CTimer {                                    // a script timer: the interface's timer index
     long Index;
@@ -127,7 +127,7 @@ void CV_BodyGuardScript::HenchmanDeductWages()
                     if (IsActiveThreadTerminating())
                         return;
                     Game->GiveHeroGold(-TotalWages);
-                    Game->Pause((float)g_pScriptDef->HenchmanPayTimeDelayInSeconds);
+                    Game->Pause((float)pGlobalScriptDef->HenchmanPayTimeDelayInSeconds);
                 }
             }
             else

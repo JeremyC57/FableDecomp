@@ -1,4 +1,5 @@
 // CQ_HangingTreeEvilScript::Init() -- register the quest's four regions, reset the mission state, switch the regions' creature generators off and register the quest's four boasts
+// Leaf: ?Init@CQ_HangingTreeEvilScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D68FF0, length 920 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, CCharString::operator=(const char*)
 //   0x0099EFE0; through the interface at +0x40: AddQuestRegion (slot 271, +0x43c), SetCreatureGeneratorsEnabled (slot 558,
@@ -102,7 +103,7 @@ struct CScriptDef {
     long HangingTreeProtectBanditsBoastReward;          // +0xf50
     long HangingTreeProtectBanditsBoastAmount;          // +0xf54
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
@@ -163,12 +164,12 @@ void CQ_HangingTreeEvilScript::Init()
     Game->SetCreatureGeneratorsEnabled("GibbetWoods", false);
     Game->SetCreatureGeneratorsEnabled("DesertedFarm", false);
     Game->SetCreatureGeneratorsEnabled("ExecutionTree", false);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->HTEvilNakedBoastCost,
-                   g_pScriptDef->HTEvilNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->HTEvilNoDamageBoastCost,
-                   g_pScriptDef->HTEvilNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->HTEvilNoWeaponsBoastCost,
-                   g_pScriptDef->HTEvilNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_PROTECTBANDITS", 0x20, g_pScriptDef->HangingTreeProtectBanditsBoastAmount,
-                   g_pScriptDef->HangingTreeProtectBanditsBoastReward, true, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->HTEvilNakedBoastCost,
+                   pGlobalScriptDef->HTEvilNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->HTEvilNoDamageBoastCost,
+                   pGlobalScriptDef->HTEvilNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->HTEvilNoWeaponsBoastCost,
+                   pGlobalScriptDef->HTEvilNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_PROTECTBANDITS", 0x20, pGlobalScriptDef->HangingTreeProtectBanditsBoastAmount,
+                   pGlobalScriptDef->HangingTreeProtectBanditsBoastReward, true, "", 0);
 }

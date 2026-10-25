@@ -5,7 +5,7 @@
 // Callees: the script thing's slots 71/76/77 Refresh/IsDead/IsValid (+0x11c/+0x130/+0x134) and 11 GetThing (+0x2c);
 //   CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookups: 7 CTCCreatureNavigation = sign of byte +0x20,
 //   0x43 CTCLook = bit 3 of byte +0x28) and its const twin @ 0x004365B0 (0x47 CTCCarryable = sign of byte +0x28);
-//   CTCCreatureNavigation::SetThingToIgnore @ 0x006CBE30 / GetNextNavPosOnRoute @ 0x006CBAC0 / SetNavigationInput
+//   CTCCreatureNavigation::SetThingToIgnore @ 0x006CBE30 / GetNextNavPosOnRoute @ 0x006CBAC0 / SetNavigationTarget
 //   @ 0x006CB960 (as the landed CActionFollowCreature::Update 0x00713EE0); CThingCreatureBase::IsPerformingAnyAction
 //   @ 0x006622A0; CTCLook::LookAtPos @ 0x00753E90 / IsPosInViewRange @ 0x007534B0 / StopLooking @ 0x00751B80; the
 //   physics component's slot 33 (+0x84); CTCScriptedControl's out-of-line action cancel @ 0x00713630 and the action
@@ -106,7 +106,7 @@ struct CTCCreatureNavigation {                  // interface 7
     bool Active;                                // +0x56
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
     CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
-    void SetNavigationInput(const CNavigationInput& input);   // 0x006CB960
+    void SetNavigationTarget(const CNavigationInput& input);  // 0x006CB960 (PDB ?SetNavigationTarget@CTCCreatureNavigation@@QAEXABVCNavigationInput@@@Z)
 };
 struct CTCLook {                                // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
@@ -153,7 +153,7 @@ struct CTCScriptedControl {
     CActionList  PActionList;                      // +0x14
     NTCScriptedControl::CActionBase* GetCurrentAction();
     void ClearActions();
-    void CancelAllActions();                       // 0x00713630 (descriptive; the out-of-line ClearActions body)
+    void CleanupAllActions();                      // 0x00713630 (PDB name ?CleanupAllActions@CTCScriptedControl@@QAEXXZ)
 };
 
 namespace NTCScriptedControl {
@@ -248,7 +248,7 @@ void CActionMoveTo::Update()
         input.MovementType = MovementType;
     }
     CCreatureNavOutput output = nav->GetNextNavPosOnRoute(input, false, AvoidDynamicObstacles, true, false, IgnorePathPreferability);
-    nav->SetNavigationInput(input);
+    nav->SetNavigationTarget(input);
     long result = output.NavResult;
     nav->Active = true;
     if (result == 2) {
@@ -273,7 +273,7 @@ void CActionMoveTo::Update()
             return;
         }
         if (GotActionPointIndex && CancelAllActionsOnFailure)
-            PTCScript->CancelAllActions();
+            PTCScript->CleanupAllActions();
     }
     CThing* thing = PTCScript->ParentThing;
     CTCLook* look;

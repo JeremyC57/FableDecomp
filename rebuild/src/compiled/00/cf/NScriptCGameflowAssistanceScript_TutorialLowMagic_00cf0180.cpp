@@ -1,7 +1,7 @@
 // NScript::CGameflowAssistanceScript::Tutorial_LowMagic() -- tutorial thread: while fewer than the def's maximum low-will warnings were given, each script frame (while the hero is player controlled) warn the hero through the guild master when his will energy drops below the def's threshold, then wait the def's cooldown before warning again
 // Retry 10b (statement-permutation sweep): the warning count is incremented AFTER the cooldown is re-armed from the def;
 // that order gives retail's registers (cooldown in edi, the block-local def in ebx pushed at entry).
-// Leaf: Tutorial_LowMagic
+// Leaf: ?Tutorial_LowMagic@CGameflowAssistanceScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CF0180, length 282 bytes (+ int3 padding), plain `ret`.
 // Label correction: the catalog says Tutorial_LowHealth; the spawned-thread registration at 0x00CEFBD0 stores this
 //   address under the name "Tutorial_LowMagic" (0x012C5E30), and the body tests the will energy (Ego_r.pdb
@@ -84,7 +84,7 @@ struct CScriptDef {
     long  WillEnergyWarningCooldown;                    // +0xff8
     long  MaxWillEnergyWarnings;                        // +0xffc
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQuestMasterData {
     unsigned char _pad00[0x67];
     bool TutorialsDisabled;                             // +0x67
@@ -106,7 +106,7 @@ struct CGameflowAssistanceScript : CScriptBase {
 void CGameflowAssistanceScript::Tutorial_LowMagic()
 {
     long cooldown = 0;
-    while (WillEnergyWarningsGiven < g_pScriptDef->MaxWillEnergyWarnings) {
+    while (WillEnergyWarningsGiven < pGlobalScriptDef->MaxWillEnergyWarnings) {
         GSI->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -116,12 +116,12 @@ void CGameflowAssistanceScript::Tutorial_LowMagic()
             if (IsActiveThreadTerminating())
                 return;
             if (cooldown <= 0) {
-                CScriptDef* def = g_pScriptDef;
+                CScriptDef* def = pGlobalScriptDef;
                 if (GSI->GetHeroWillEnergyLevel() < def->LowWillEnergyThreshold) {
                 if (IsActiveThreadTerminating())
                     return;
                 GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_WILL_LOW", "", true, false);
-                cooldown = g_pScriptDef->WillEnergyWarningCooldown;
+                cooldown = pGlobalScriptDef->WillEnergyWarningCooldown;
                 ++WillEnergyWarningsGiven;
                 }
             }

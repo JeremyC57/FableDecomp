@@ -1,5 +1,5 @@
 // NScript::CQ_TraderEscortScript::CInfectedBalverine::Main() -- trader-escort infected balverine: takes scripting control and loops a munch animation until the hero comes within the script-def range (clear its actions) or hits it (a hero special ability other than 14 counts), or the mission fails; then lets the infected trader get up, leaps straight up and removes itself
-// Leaf: Main
+// Leaf: ?Main@CInfectedBalverine@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E02950, 820 bytes (+ int3 padding). Second of the two catalog rows named CInfectedBalverine::Main.
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9,
@@ -1041,7 +1041,7 @@ struct CScriptDef {
  unsigned char _pad[0xe0c];
  long InfectedBalverineNoticeRange;                 // +0xE0C (descriptive)
 };
-extern CScriptDef* g_pScriptDef;                    // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_TraderEscortScript {
  unsigned char BaseState[0x54];
  bool InfectedTraderCanGetUp;                       // +0x54 (PDB +0x68)
@@ -1070,7 +1070,7 @@ void CInfectedBalverine::Main()
  }
  if (IsActiveThreadTerminating()) return;
  bool done = false;
- long range = g_pScriptDef->InfectedBalverineNoticeRange;
+ long range = pGlobalScriptDef->InfectedBalverineNoticeRange;
  while (!done) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;

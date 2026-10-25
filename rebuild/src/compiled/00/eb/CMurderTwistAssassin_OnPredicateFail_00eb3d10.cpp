@@ -1,4 +1,5 @@
 // CMurderTwistAssassin::OnPredicateFail() -- when the assassin is killed (by anyone): set the parent quest's state to 4, give the hero the def's morality and renown, give the hero the def's reward object, and set the active quest card's objective to "TEXT_QUEST_MURDER_TWIST_OBJECTIVE_RETURN" in "OakBay"
+// Leaf: ?OnPredicateFail@CMurderTwistAssassin@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB3D10, 300 bytes, plain `ret` (virtual).
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48) on the entity's own thing (+8); CCharString(const
 //   char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; CDefString::operator CCharString() 0x00415D70; CGameScriptInterface
@@ -27,7 +28,7 @@ struct CScriptDef {
     long          MurderTwistRenown;               // +0x714
     CDefString    MurderTwistReward;               // +0x718
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptThingMethods {
     virtual void v000();
     virtual void v001();
@@ -727,9 +728,9 @@ void CMurderTwistAssassin::OnPredicateFail()
 {
     if (Me.MsgIsKilledBy("")) {
         ParentClass->State = 4;
-        Game->GiveHeroMorality(g_pScriptDef->MurderTwistMorality);
-        Game->GiveHeroRenownPoints(g_pScriptDef->MurderTwistRenown);
-        Game->GiveHeroObject(g_pScriptDef->MurderTwistReward, -1, false);
+        Game->GiveHeroMorality(pGlobalScriptDef->MurderTwistMorality);
+        Game->GiveHeroRenownPoints(pGlobalScriptDef->MurderTwistRenown);
+        Game->GiveHeroObject(pGlobalScriptDef->MurderTwistReward, -1, false);
         Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_MURDER_TWIST_OBJECTIVE_RETURN", "OakBay", "");
     }
 }

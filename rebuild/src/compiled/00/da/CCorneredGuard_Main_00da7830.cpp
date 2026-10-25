@@ -1,5 +1,5 @@
 // CCorneredGuard::Main() -- the cornered guard: register the alive filter, find the nearest MinionAttackingGuard, set the two fighting each other, then (once) heal whichever of the two is hit while the attacker lives and the hero is still over 15 units away, show the guard's health bar, call for help if the attacker still lives, wait for it to die, reward morality, thank the hero and follow him; finally spawn the parent's GuardChatter on Me, wait for the mission to end and remove Me
-// Leaf: Main
+// Leaf: ?Main@CCorneredGuard@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA7830, length 1280 bytes, plain `ret`. Sibling of
 //   CBalverineFightingGuard::Main 0x00DA6D50 (same TU family, same model).
 // Callees: as 0x00DA6D50, plus IsDistanceBetweenThingsOver @ 0x00CBE3EA (`__fastcall`), CScriptThing::IsAlive @ 0x004AB130
@@ -7,7 +7,7 @@
 //   MsgIsHitBy (inlined on the local attacker, virtual on Me) and CGameScriptInterface slot 265 ModifyThingHealth.
 // Literals: "MinionAttackingGuard" 0x012D7274, "" 0x0122D70E, "CorneredGuard" 0x012D724C, "HUD_QUEST_ICON_GUARD"
 //   0x012D2B54, "TEXT_QST_045_GUARD_CALL_FOR_HELP" 0x012D7814, "TEXT_QST_045_CORNERED_GUARD_THANKS" 0x012D77F0,
-//   "ParentClass." 0x012C9934, "GuardChatter" 0x012D7738. g_pScriptDef 0x0143E90C (+0xd50 the rescue morality).
+//   "ParentClass." 0x012C9934, "GuardChatter" 0x012D7738. pGlobalScriptDef 0x0143E90C (+0xd50 the rescue morality).
 // Layout: Ego_r.pdb CCorneredGuard (36 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData
 //   +0x18, AskedForHerosHelp +0x1c, HealthBarID +0x20; CQ_MinionClifftopChaseScript retail = PDB - 0x14.
 // Shape: the 0x00DA6D50 model (inline copy of a non-const thing for the by-value spawn argument, out-of-line const copy
@@ -97,7 +97,7 @@ struct CScriptDef {
     unsigned char _pad2[0xd50 - 0xd44];
     long          GuardRescueMorality;                 // +0xd50
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CSpawnedFuncBase {                              // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
@@ -195,7 +195,7 @@ void CCorneredGuard::Main()
         }
         if (IsActiveThreadTerminating())
             return;
-        Game->GiveHeroMorality(g_pScriptDef->GuardRescueMorality);
+        Game->GiveHeroMorality(pGlobalScriptDef->GuardRescueMorality);
         long conversation = Game->AddNewConversation(Me, false, false);
         Game->AddLineToConversation(conversation, "TEXT_QST_045_CORNERED_GUARD_THANKS", false, Me, CScriptThing());
         Game->EntityFollowThing(Me, Game->GetHero(), 3.0f, true);

@@ -1,5 +1,5 @@
 // CDF_EatPies::Main() -- demon-door face (eat pies): take scripted control of Me, make it persistent and immune, find the nearest REGION_EXIT_POINT and shut it; each time the hero talks to the face, compare the hero's fatness with the def's level -- below it, speak the intro line; otherwise speak the opening line, fade the face out, open the door and reactivate the exit
-// Leaf: Main
+// Leaf: ?Main@CDF_EatPies@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E71450, 1108 bytes (+ int3 padding), plain `ret`. Catalog label CDF_MarryLadyGrey::Main
 //   is propagated: the literals ("TEXT_QST_088_EAT_PIES_INTRO" 0x012E9024, "TEXT_QST_088_EAT_PIES_OPENING" 0x012E9004,
 //   "DD_EatPies" 0x012E8FF8) and the GetHeroFatness / DemonDoor_EatPies_FatnessLevel test name it CDF_EatPies (sibling of the
@@ -129,7 +129,7 @@ struct CScriptDef {
     unsigned char _pad[0x1084];
     float DemonDoor_EatPies_FatnessLevel;               // +0x1084
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 struct CV_DemonDoorsScript {
     void FadeOutFaceAndOpenDoor(const CScriptThing& face, const CCharString& doorName);   // 0x00E6F040
@@ -188,7 +188,7 @@ void CDF_EatPies::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            CScriptDef* def = g_pScriptDef;
+            CScriptDef* def = pGlobalScriptDef;
             if (!(Game->GetHeroFatness() >= def->DemonDoor_EatPies_FatnessLevel)) {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);

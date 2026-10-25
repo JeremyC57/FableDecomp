@@ -1,4 +1,5 @@
 // CQ_HeroSoulsMotherScript::CreateScreamers() -- start the super-screamer timer, gather the ScreamerHere points, show the quest bar and, until the bar is full, keep creating screamers at random points while fewer than the allowed number are alive; then remove the bar and record the mother's soul as collected
+// Leaf: ?CreateScreamers@CQ_HeroSoulsMotherScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D84630, length 662 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, rand 0x00BFEB16, ~vector<CScriptThing>
 //   0x008AC970 (out of line), ~CBaseClass 0x0099A2E0 / operator delete 0x00BFE9BC (inline ~CScriptThing),
@@ -137,7 +138,7 @@ struct CScriptDef {
     unsigned char _padc78[0xc84 - 0xc78];
     long  HS_SecondsBeforeNewSuperScreamer;                 // +0xc84
 };
-extern CScriptDef* g_pScriptDef;                            // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad0[0x66];
     bool CollectedSoulFromMother;                           // +0x66
@@ -162,18 +163,18 @@ struct CQ_HeroSoulsMotherScript : CScriptBase {
 };
 void CQ_HeroSoulsMotherScript::CreateScreamers()
 {
-    NewSuperScreamerTimer.SetTime(g_pScriptDef->HS_SecondsBeforeNewSuperScreamer);
+    NewSuperScreamerTimer.SetTime(pGlobalScriptDef->HS_SecondsBeforeNewSuperScreamer);
     std::vector<CScriptThing> screamerPoints;
     Game->GetAllThingsWithScriptName("ScreamerHere", screamerPoints);
     Game->DisplayQuestInfo(true);
-    BarID = Game->AddQuestInfoBar(g_pScriptDef->HS_ScreamerCount, 0.0f, CRGBColour(0, 255, 0, 255), CRGBColour(255, 0, 0, 255),
+    BarID = Game->AddQuestInfoBar(pGlobalScriptDef->HS_ScreamerCount, 0.0f, CRGBColour(0, 255, 0, 255), CRGBColour(255, 0, 0, 255),
                                   "HUD_QUEST_ICON_UNDEAD", "", 1.0f);
     Game->UpdateQuestInfoBar(BarID, (float)ScreamersAlive, -1.0f, -1.0f);
-    while (BarToFill < g_pScriptDef->HS_ScreamerCount) {
+    while (BarToFill < pGlobalScriptDef->HS_ScreamerCount) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
-        if (ScreamersAlive < g_pScriptDef->HS_ScreamersAtOnce) {
+        if (ScreamersAlive < pGlobalScriptDef->HS_ScreamersAtOnce) {
             if (IsActiveThreadTerminating())
                 return;
             Game->CreateCreature("CREATURE_NW_SCREAMER_01", screamerPoints[rand() % screamerPoints.size()].GetPos(), "HS_Screamer", true);

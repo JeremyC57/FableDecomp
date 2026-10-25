@@ -1,12 +1,12 @@
 // CQ_MinionClifftopChaseScript::ProcessMission() -- walk the chase objectives: wait for Deserted Farm, set objective 3, wait for Gibbet Woods, set objective 4, wait for the troll flag and let a guard comment on it, wait for the prison path, start the escape timer (HUD clock) with objective 5, wait for the map keeper, a failure or the timer to run out, and fail the mission on time-out
-// Leaf: ProcessMission
+// Leaf: ?ProcessMission@CQ_MinionClifftopChaseScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA8510, 1110 bytes (int3 padded to 1120).
 // Label: the thread named "ProcessMission" (0x012D7194) is spawned at 0x00DA3E62 with this body; the landed 0x00DA3F40
 //   catalogued as ProcessMission is a different thread body.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, GuardComment 0x00DA8970 (by-value
 //   comment); g_pGameScriptInterface 0x0143E8F8 timer slots 89 SetTimer / 90 GetTimer; CGameScriptInterface slots 7, 12,
 //   296 SetQuestCardObjective, 321 DisplayQuestInfo, 326 AddQuestInfoTimer, 655 GetActiveQuestName, 697 StopOverrideMusic;
-//   g_pScriptDef 0x0143E90C (+0xd54 escape time).
+//   pGlobalScriptDef 0x0143E90C (+0xd54 escape time).
 // Layout (retail = Ego_r.pdb - 0x14, as the landed CQ_MinionClifftopChaseScript sources): MapKeeperSaidDialog +0x48,
 //   MissionFailed +0x49, TrollFlag +0x54, EscapeTimer +0x5c (CTimer), TimerBarID +0x60, ReasonForFailure +0x64.
 struct CCharString {
@@ -163,7 +163,7 @@ struct CScriptDef {
     unsigned char _pad[0xd54];
     long MinionChaseEscapeTime;                         // +0xd54
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
@@ -217,7 +217,7 @@ void CQ_MinionClifftopChaseScript::ProcessMission()
     if (IsActiveThreadTerminating())
         return;
     Game->StopOverrideMusic(false);
-    long escapeTime = g_pScriptDef->MinionChaseEscapeTime;
+    long escapeTime = pGlobalScriptDef->MinionChaseEscapeTime;
     EscapeTimer.Set(escapeTime);
     Game->DisplayQuestInfo(true);
     TimerBarID = Game->AddQuestInfoTimer(EscapeTimer, "HUD_CLOCK_ICON", 1.0f);

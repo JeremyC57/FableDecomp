@@ -1,5 +1,5 @@
 // CDF_ShineLight::Main() -- demon-door face (shine a light): take scripted control of Me, make it persistent and immune, shut the nearest REGION_EXIT_POINT; each frame -- if the hero is within the trigger distance with the hand lamp lit, play the opening (teleport the hero to MK_DD, wide camera, opening line), fade the face out, open the door and reactivate the exit; else if the hero talks to the face, play the intro (hide the hero, close camera, intro line)
-// Leaf: Main
+// Leaf: ?Main@CDF_ShineLight@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E6EA30, 1537 bytes (+ int3 padding), plain `ret`. Literals "CAM_DD_CLOSE" 0x012E8CA4,
 //   "TEXT_QST_088_SHINE_LIGHT_INTRO" 0x012E8C84, "MK_DD" 0x012E8C7C, "CAM_DD_WIDE" 0x012E8C70, "TEXT_QST_088_SHINE_LIGHT_OPENING"
 //   0x012E8C4C, "DD_ShineLight" 0x012E8C3C (sibling of the matched CDF_CombatMult::Main 0x00E6F710).
@@ -138,7 +138,7 @@ struct CScriptDef {
     float DemonDoor_ShineLight_TriggerDistance;         // +0x1064
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 struct CV_DemonDoorsScript {
     void FadeOutFaceAndOpenDoor(const CScriptThing& face, const CCharString& doorName);   // 0x00E6F040
@@ -190,7 +190,7 @@ void CDF_ShineLight::Main()
     CScriptThing exitPoint = Game->GetNearestWithDefName(Me, "REGION_EXIT_POINT");
     Game->SetRegionExitAsActive(exitPoint, false);
     while (!IsActiveThreadTerminating()) {
-        if (IsDistanceBetweenThingsUnder(Me, Game->GetHero(), g_pScriptDef->DemonDoor_ShineLight_TriggerDistance) && Game->IsHeroHandLampLit()) {
+        if (IsDistanceBetweenThingsUnder(Me, Game->GetHero(), pGlobalScriptDef->DemonDoor_ShineLight_TriggerDistance) && Game->IsHeroHandLampLit()) {
             if (IsActiveThreadTerminating())
                 {
 #pragma inline_depth(0)

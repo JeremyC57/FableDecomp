@@ -1,4 +1,5 @@
 // CQ_TraderConflictGoodScript::Init() -- reset the good trader-conflict quest state, register its two bandit-camp quest regions and five boasts, then arm the kill-no-bandits boast flags in the master data
+// Leaf: ?Init@CQ_TraderConflictGoodScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DFA0E0, 681 bytes (688 with int3 padding).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; through the script's interface (+0x40):
 //   AddQuestRegion (slot 271, +0x43c) and AddBoast (slot 303, +0x4bc) -- slot names of the landed
@@ -74,7 +75,7 @@ struct CScriptDef {
     long TCGMadeTimeLimitCost;                          // +0x240
     long TCGMadeTimeLimitReward;                        // +0x244
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad0[0x126];
     bool TCGKillNoBandits;                              // +0x126
@@ -116,16 +117,16 @@ void CQ_TraderConflictGoodScript::Init()
     MissionSucceeded = false;
     Game->AddQuestRegion("Q_TraderConflictGood", "BanditCampEntrance");
     Game->AddQuestRegion("Q_TraderConflictGood", "BanditCampCentre");
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->TraderConflictGoodNakedBoastCost,
-                   g_pScriptDef->TraderConflictGoodNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->TraderConflictGoodNoDamageBoastCost,
-                   g_pScriptDef->TraderConflictGoodNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->TraderConflictGoodNoWeaponsBoastCost,
-                   g_pScriptDef->TraderConflictGoodNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCGKILLNOONE", 0x22, g_pScriptDef->TCGKillNoBanditsCost,
-                   g_pScriptDef->TCGKillNoBanditsReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCGTIMELIMIT", 0x23, g_pScriptDef->TCGMadeTimeLimitCost,
-                   g_pScriptDef->TCGMadeTimeLimitReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->TraderConflictGoodNakedBoastCost,
+                   pGlobalScriptDef->TraderConflictGoodNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->TraderConflictGoodNoDamageBoastCost,
+                   pGlobalScriptDef->TraderConflictGoodNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->TraderConflictGoodNoWeaponsBoastCost,
+                   pGlobalScriptDef->TraderConflictGoodNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCGKILLNOONE", 0x22, pGlobalScriptDef->TCGKillNoBanditsCost,
+                   pGlobalScriptDef->TCGKillNoBanditsReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCGTIMELIMIT", 0x23, pGlobalScriptDef->TCGMadeTimeLimitCost,
+                   pGlobalScriptDef->TCGMadeTimeLimitReward, false, "", 0);
     Data->TCGKillNoBandits = true;
     Data->TCGMadeTimeLimit = false;
 }

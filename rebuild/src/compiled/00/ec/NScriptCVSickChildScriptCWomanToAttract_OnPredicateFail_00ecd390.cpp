@@ -1,4 +1,5 @@
 // NScript::CV_SickChildScript::CWomanToAttract::OnPredicateFail() -- if the woman was killed (by anyone) before she handed over her object, gives the hero the ingredient object and the KilledSomeoneForMushroom morality and records LaughingWomanKilled on the quest
+// Leaf: ?OnPredicateFail@CWomanToAttract@CV_SickChildScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ECD390, 177 bytes (padded to 192), plain `ret`.
 //   PDB name ?OnPredicateFail@CWomanToAttract@CV_SickChildScript@NScript@@EAEXXZ.
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48, 0x004AAAF0) on the entity's own thing (+8);
@@ -27,7 +28,7 @@ struct CScriptDef {
     unsigned char _pad73c[0x768 - 0x73c];
     float KilledSomeoneForMushroom;                // +0x768
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptThingMethods {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -77,8 +78,8 @@ void CV_SickChildScript::CWomanToAttract::OnPredicateFail()
 {
     bool killed = !GivenObject && Me.MsgIsKilledBy("");
     if (killed) {
-        Game->GiveHeroObject(g_pScriptDef->IngredientObject, -1, false);
-        Game->GiveHeroMorality(g_pScriptDef->KilledSomeoneForMushroom);
+        Game->GiveHeroObject(pGlobalScriptDef->IngredientObject, -1, false);
+        Game->GiveHeroMorality(pGlobalScriptDef->KilledSomeoneForMushroom);
         ParentClass->LaughingWomanKilled = true;
     }
 }

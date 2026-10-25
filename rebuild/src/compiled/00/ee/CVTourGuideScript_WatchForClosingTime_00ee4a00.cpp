@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE4A00, length 108 bytes (padded to 112).
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (x3), CGameScriptInterface::GetTimeOfDay (slot 647, +0xa1c)
 // and NewScriptFrame (slot 7, +0x1c) through Game at +0x40.
-// Data: the script def g_pScriptDef @ 0x0143E90C: TourGuideOpeningTime +0x8e8, TourGuideClosingTime +0x8ec (PDB 0x96c/0x970,
+// Data: the script def pGlobalScriptDef @ 0x0143E90C: TourGuideOpeningTime +0x8e8, TourGuideClosingTime +0x8ec (PDB 0x96c/0x970,
 // retail -0x84). Layout: CV_TourGuideScript TourFinished +0x123 (PDB 311 - 0x14).
 // Shape: `while (!IsActiveThreadTerminating())` rotated (entry test + bottom test); the inner state test's body is only the
 // script macro `if (IsActiveThreadTerminating()) return;`.
@@ -24,7 +24,7 @@ struct CScriptDef {
     long TourGuideOpeningTime;                     // +0x8e8
     long TourGuideClosingTime;                     // +0x8ec
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {
     virtual void v00();
     unsigned char _body[0x3c];
@@ -43,8 +43,8 @@ void CV_TourGuideScript::WatchForClosingTime()
 {
     while (!IsActiveThreadTerminating()) {
         long time = Game->GetTimeOfDay();
-        if ((time >= g_pScriptDef->TourGuideClosingTime && !TourFinished) ||
-            (time <= g_pScriptDef->TourGuideClosingTime && time > g_pScriptDef->TourGuideOpeningTime && TourFinished)) {
+        if ((time >= pGlobalScriptDef->TourGuideClosingTime && !TourFinished) ||
+            (time <= pGlobalScriptDef->TourGuideClosingTime && time > pGlobalScriptDef->TourGuideOpeningTime && TourFinished)) {
             if (IsActiveThreadTerminating())
                 return;
         }

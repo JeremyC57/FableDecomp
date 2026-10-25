@@ -1,8 +1,8 @@
 // CQ_TraderEscortScript::Init() -- register the Darkwood / Barrow Fields quest regions, switch off the creature generators along the route, reset the escort state, read the incubation times from the script def, clear the trader to talk, mark all traders alive in the master data and add the unclothed / no-damage / all-traders-alive boasts
-// Leaf: Init
+// Leaf: ?Init@CQ_TraderEscortScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E006D0, 1352 bytes (int3 padded to 1360).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0 / operator=(const char*) 0x0099EFE0; Game slots 271 AddQuestRegion,
-//   303 AddBoast, 558 SetCreatureGeneratorsEnabled; script def g_pScriptDef 0x0143E90C.
+//   303 AddBoast, 558 SetCreatureGeneratorsEnabled; script def pGlobalScriptDef 0x0143E90C.
 // Layout (retail = Ego_r.pdb - 0x14): CommentTimer +0x48, BalverinesToSurpriseHeroNeeded +0x4c, TradersStillAliveCounter
 //   +0x50, InfectedTraderCanGetUp +0x54 .. SavedNearEnd +0x5a, IncubationTimeLow/Medium/High +0x5c/+0x60/+0x64,
 //   TraderPickpocketedCount +0x68, MissionSucceeded +0x6c .. ShownEarthTroll +0x71, TimesBantered +0x74, TraderToTalk +0x78.
@@ -96,7 +96,7 @@ struct CScriptDef {
     long AllTradersAliveBoastCost;                      // +0xe04
     long AllTradersAliveBoastReward;                    // +0xe08
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad[0x10b];
     bool DarkwoodAllTradersAlive;                       // +0x10b
@@ -168,13 +168,13 @@ void CQ_TraderEscortScript::Init()
     ShownBalverine = false;
     ShownEarthTroll = false;
     TimesBantered = 0;
-    IncubationTimeLow = g_pScriptDef->TraderEscortIncubationTimeLow;
-    IncubationTimeMedium = g_pScriptDef->TraderEscortIncubationTimeMedium;
-    IncubationTimeHigh = g_pScriptDef->TraderEscortIncubationTimeHigh;
+    IncubationTimeLow = pGlobalScriptDef->TraderEscortIncubationTimeLow;
+    IncubationTimeMedium = pGlobalScriptDef->TraderEscortIncubationTimeMedium;
+    IncubationTimeHigh = pGlobalScriptDef->TraderEscortIncubationTimeHigh;
     TraderToTalk = "";
     PMasterData->DarkwoodAllTradersAlive = true;
     PMasterData->DarkwoodPickpocketedAllTraders = 1;
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->DarkwoodNakedBoastCost, g_pScriptDef->DarkwoodNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->DarkwoodNoDamageBoastCost, g_pScriptDef->DarkwoodNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_ALLTRADERSALIVE", 9, g_pScriptDef->AllTradersAliveBoastCost, g_pScriptDef->AllTradersAliveBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->DarkwoodNakedBoastCost, pGlobalScriptDef->DarkwoodNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->DarkwoodNoDamageBoastCost, pGlobalScriptDef->DarkwoodNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_ALLTRADERSALIVE", 9, pGlobalScriptDef->AllTradersAliveBoastCost, pGlobalScriptDef->AllTradersAliveBoastReward, false, "", 0);
 }

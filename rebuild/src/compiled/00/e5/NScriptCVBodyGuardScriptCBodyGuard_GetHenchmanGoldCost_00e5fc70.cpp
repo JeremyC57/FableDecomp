@@ -5,7 +5,7 @@
 // Identity: called only by CBodyGuard methods (0x00E5FBE8, deducting the wage from the parent's gold at ParentClass+0x48,
 //   and SetHenchmanAsHired 0x00E621F0 at 0x00E622AE, refunding it); `this` is CV_BodyGuardScript::CBodyGuard (Ego_r.pdb,
 //   60 bytes; HenchManType +0x1c). The PDB names no such member (inlined in the debug build): descriptive name.
-// Data: g_pScriptDef @ 0x0143E90C; retail CScriptDef HenchmanPayTimeDelayInSeconds +0x4a4 (landed, PDB +0x4d8), so
+// Data: pGlobalScriptDef @ 0x0143E90C; retail CScriptDef HenchmanPayTimeDelayInSeconds +0x4a4 (landed, PDB +0x4d8), so
 //   HenchmanCheapGoldCost +0x4a8 / HenchmanExpensiveGoldCost +0x4ac (PDB +0x4dc/+0x4e0, the retail def is 0x34 lower here);
 //   local model (no engine header for CScriptDef, and its PDB offsets do not hold in retail).
 // Shape: a dense `switch` with two shared arms and a default zero -> a bounds check, a 4-entry jump table, two return
@@ -16,7 +16,7 @@ struct CScriptDef {
     long          HenchmanCheapGoldCost;           // +0x4a8
     long          HenchmanExpensiveGoldCost;       // +0x4ac
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 namespace NScript {
 struct CQ_SunnyvaleMasterData;
@@ -38,10 +38,10 @@ long CV_BodyGuardScript::CBodyGuard::GetHenchmanGoldCost() const
     {
     case 0:
     case 2:
-        return g_pScriptDef->HenchmanCheapGoldCost;
+        return pGlobalScriptDef->HenchmanCheapGoldCost;
     case 1:
     case 3:
-        return g_pScriptDef->HenchmanExpensiveGoldCost;
+        return pGlobalScriptDef->HenchmanExpensiveGoldCost;
     }
     return 0;
 }

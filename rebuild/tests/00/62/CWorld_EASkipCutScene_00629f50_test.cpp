@@ -16,7 +16,7 @@ struct CSoundPlayer {
 static CSoundPlayer g_player;
 struct CSoundSystem { CSoundPlayer* GetSoundPlayer() { return &g_player; } };
 static CSoundSystem g_sys; static CSoundSystem* g_pSoundSystem = &g_sys;
-struct CPlayerGuiDef { CCharString TextBoxButtonASoundCriteria; };
+struct CPlayerGuiDef { CCharString TextBoxButtonBSoundCriteria; };
 static CPlayerGuiDef g_def = { { "SOUND_BUTTON_A" } };
 static CPlayerGuiDef* PeekGuiDef() { return &g_def; }
 static int g_clears;
@@ -44,7 +44,7 @@ struct CWorld {
             CPlayerGuiDef* def = PeekGuiDef();
             CSoundInit init;
             init.GainFaderBits = 0x8010;
-            g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonASoundCriteria, true, init, false);
+            g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
             PMessageEventManager->AddMessage(0x32, g_framesPerSecond, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
             subtitles.Clear(false);
             subtitles.CutsceneSkipped = true;
@@ -64,7 +64,7 @@ int main()
     ok = ok && g_plays == 0 && g_msgs == 0;
     s.CutsceneSkippable = true;
     w.EASkipCutScene(0);
-    ok = ok && g_plays == 1 && g_bits == 0x8010 && g_sound == g_def.TextBoxButtonASoundCriteria.Text && g_bankSeen == &g_bank
+    ok = ok && g_plays == 1 && g_bits == 0x8010 && g_sound == g_def.TextBoxButtonBSoundCriteria.Text && g_bankSeen == &g_bank
         && g_loop == 1 && g_att == 0 && g_msgs == 1 && g_msgType == 0x32 && g_msgDelay == 30 && g_clears == 1
         && s.CutsceneSkipped && !s.CutsceneSkippable;
     if (!ok) { std::printf("00629f50_TEST FAIL\n"); return 1; }

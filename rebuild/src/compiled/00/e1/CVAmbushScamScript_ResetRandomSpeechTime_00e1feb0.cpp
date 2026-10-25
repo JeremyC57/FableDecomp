@@ -1,4 +1,5 @@
 // CV_AmbushScamScript::ResetRandomSpeechTime() -- restart the random-speech timer (+0x84) with the def's maximum minus a random amount below the def's range
+// Leaf: ?ResetRandomSpeechTime@CV_AmbushScamScript@@
 // Retail: Fable.exe @ 0x00E1FEB0, 60 bytes (+ int3 padding). Called from eleven places in its script (0x00E1FD9C..).
 // Callees: rand @ 0x00BFEB16, CGameScriptInterface::SetTimer (slot 89, +0x164) through the interface global @ 0x0143E8F8.
 // Data: the script def pointer @ 0x0143E90C (CDefPointer<CScriptDef>): +0x9c8 the timer maximum, +0x9cc the random range
@@ -30,7 +31,7 @@ struct CScriptDef {
     long RandomSpeechTimeMax;                            // +0x9c8
     long RandomSpeechTimeRange;                          // +0x9cc
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CTimer {
     long Index;
@@ -44,7 +45,7 @@ struct CV_AmbushScamScript {
 
 void CV_AmbushScamScript::ResetRandomSpeechTime()
 {
-    CScriptDef* def = g_pScriptDef;
-    long time = g_pScriptDef->RandomSpeechTimeMax - rand() % def->RandomSpeechTimeRange;
+    CScriptDef* def = pGlobalScriptDef;
+    long time = pGlobalScriptDef->RandomSpeechTimeMax - rand() % def->RandomSpeechTimeRange;
     g_pGameScriptInterface->SetTimer(RandomSpeechTimer.Index, time);
 }

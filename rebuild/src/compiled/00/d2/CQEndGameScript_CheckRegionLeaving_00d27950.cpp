@@ -1,5 +1,5 @@
 // CQ_EndGameScript::CheckRegionLeaving() -- end-game quest thread: while running, keep the Darkwood5 creature generators off; wait until Darkwood5 is loaded, kick off the quest start screen once, wait for ShowUndeadBar, show the undead bar (when UndeadBar is below the def maximum), wait until Darkwood5 is unloaded again and remove the bar
-// Leaf: CheckRegionLeaving
+// Leaf: ?CheckRegionLeaving@CQ_EndGameScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D27950, 686 bytes (688 with padding).
 // Label correction: catalog "CBeggar::Main" is propagated. The quest Main stores 0x00D27950 as the functor of the thread
 //   named "CheckRegionLeaving" (0x00D277DC..0x00D27809), and the members match Ego_r.pdb CQ_EndGameScript (- 0x14).
@@ -119,7 +119,7 @@ struct CScriptDef {
     unsigned char _pad[0xbe4];
     float         UndeadBarMaximum;                    // +0xbe4 (retail offset)
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                  // 0x00CB7940
@@ -163,11 +163,11 @@ void CQ_EndGameScript::CheckRegionLeaving()
         }
         if (IsActiveThreadTerminating())
             return;
-        if (UndeadBar < g_pScriptDef->UndeadBarMaximum) {
+        if (UndeadBar < pGlobalScriptDef->UndeadBarMaximum) {
             if (IsActiveThreadTerminating())
                 return;
             GSI->DisplayQuestInfo(true);
-            GuiCounter = GSI->AddQuestInfoBar(g_pScriptDef->UndeadBarMaximum, 0.0f, CRGBColour(0, 255, 0, 255), CRGBColour(255, 0, 0, 255), "HUD_QUEST_ICON_UNDEAD", "", 1.0f);
+            GuiCounter = GSI->AddQuestInfoBar(pGlobalScriptDef->UndeadBarMaximum, 0.0f, CRGBColour(0, 255, 0, 255), CRGBColour(255, 0, 0, 255), "HUD_QUEST_ICON_UNDEAD", "", 1.0f);
         }
         while (GSI->IsRegionLoaded("Darkwood5") ? true : false) {
             GSI->NewScriptFrame();

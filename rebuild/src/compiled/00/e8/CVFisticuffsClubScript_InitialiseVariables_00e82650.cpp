@@ -1,7 +1,7 @@
 // CV_FisticuffsClubScript::InitialiseVariables() -- reset the fight state, re-arm both fighter timers with the
 // script-def fighter delay, recount the fights, mark the club active unless only-at-night applies, and name the four
 // club regions
-// Leaf: InitialiseVariables
+// Leaf: ?InitialiseVariables@CV_FisticuffsClubScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E82650, 333 bytes (padded to 336).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~ @ 0x0099EAE0 / operator=(const char*) @ 0x0099EFE0,
 //          CScriptBase::IsActiveThreadTerminating @ 0x00CB7940, SetFightCount @ 0x00E82800, the second set-up
@@ -107,7 +107,7 @@ struct CScriptDef {
     unsigned char _pad[0x5dc];
     long          FC_FighterDelay;                       // +0x5dc
 };
-extern CScriptDef*           g_pScriptDef;               // 0x0143E90C
+extern CScriptDef*           pGlobalScriptDef;               // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern CGameScriptInterface* g_pGameScriptInterface;     // 0x0143E8F8
 struct CTimer {                                          // a script timer: the interface's timer index
     long Index;
@@ -169,8 +169,8 @@ void CV_FisticuffsClubScript::InitialiseVariables()
     HeroBeatTyler = false;
     RingCleared = true;
     RoundStarted = false;
-    Fighter1Timer.SetTime(g_pScriptDef->FC_FighterDelay);
-    Fighter2Timer.SetTime(g_pScriptDef->FC_FighterDelay);
+    Fighter1Timer.SetTime(pGlobalScriptDef->FC_FighterDelay);
+    Fighter2Timer.SetTime(pGlobalScriptDef->FC_FighterDelay);
     CheerNumber = 0;
     BooNumber = 0;
     TimeOut = false;

@@ -1,11 +1,12 @@
 // CQ_HeroSoulsBriarScript::Main() -- the Hero Souls (Briar Rose) quest's main: bind the BriarRose / BRIAR_ROSE_IMPOSTER / HSB_MagicBarrier entity scripts; on the first run wait for the intro cutscene, set the objective, activate Q_HeroSoulsMother, auto-save and fade in; wait while the Northern Wastes are loaded without the start screen; give Jack's second-soul line, set the objective, wait for the start screen, then fight Briar Rose (Jack taunts at boss phases 1 and 2), wait for her death, play the soul-3 intro, close the magic barrier quest, count the delivered soul, log, give the good-soul morality, set the next objective, complete the quest and fade in
+// Leaf: ?Main@CQ_HeroSoulsBriarScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D80E40, length 2016 bytes.
 // Callees: operator new 0x00BFEA1A, CCharString(const char*, long) 0x0099EBF0 / CCharString(const CCharString&) 0x0099EC30 /
 //   ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840, CScriptBase::IsActiveThreadTerminating 0x00CB7940 /
 //   AddEntityScriptBinding 0x00CB8230 / PostAddScriptedEntities 0x00CB8930, AddLogbookStoryEntryString 0x00CBE960
 //   (__fastcall), CQ_HeroSoulsBriarScript::PlayCutscene(CCharString) 0x00D823A0 (landed); binding allocators 0x00D81630
 //   (BriarRose) / 0x00D81750 (BRIAR_ROSE_IMPOSTER) / 0x00D81B60 (HSB_MagicBarrier) (binding vtable 0x012D42E4);
-//   g_pScriptDef 0x0143E90C; the game script interface (+0x40) slots 7, 12, 64, 70, 72, 156, 264, 276, 280, 288, 296,
+//   pGlobalScriptDef 0x0143E90C; the game script interface (+0x40) slots 7, 12, 64, 70, 72, 156, 264, 276, 280, 288, 296,
 //   364, 366, 374, 376, 522, 565, 655, 704.
 // Layout (retail = Ego_r.pdb - 0x14, see the landed ctor 0x00D80C30): PlayedBriarCS +0x48, KickOffQuestStartScreen +0x70;
 //   master data (+0x44) CQ_SunnyvaleMasterData: KilledBriar +0x65, DeliveredSoul +0x6c; CScriptDef (retail = PDB - 0xb0):
@@ -187,7 +188,7 @@ struct CScriptDef {
     unsigned char _pad0[0xc9c];
     float HS_GoodSoulTaken;                             // +0xc9c
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
@@ -288,7 +289,7 @@ void CQ_HeroSoulsBriarScript::Main()
     Game->DeactivateQuest("Q_HeroSoulsBriarMagicBarrier", 0);
     ++PMasterData->DeliveredSoul;
     AddLogbookStoryEntryString("TEXT_QST_LOG_STORY_PLATINUM_365");
-    Game->GiveHeroMorality(g_pScriptDef->HS_GoodSoulTaken);
+    Game->GiveHeroMorality(pGlobalScriptDef->HS_GoodSoulTaken);
     Game->SetQuestCardObjective("Q_HeroSouls", "TEXT_QUEST_HERO_SOULS_OBJECTIVE_11", "HeroGuildComplexInside", "HeroGuildComplexInside");
     Game->SetQuestAsCompleted(Game->GetActiveQuestName(), true, true, true);
     Game->FadeScreenIn();

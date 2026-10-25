@@ -1,4 +1,5 @@
 // CQ_OrchardFarmRaidEvilScript::Init() -- register the evil orchard-farm raid's five boasts (no armour, no damage, no weapons, no health potions, protect the bandits) and activate Q_OrchardFarmRaid
+// Leaf: ?Init@CQ_OrchardFarmRaidEvilScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DD2020, 534 bytes (544 with int3 padding; vtable reference 0x012DB7BC).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; through the script's interface (+0x40):
 //   AddBoast (slot 303, +0x4bc) and ActivateQuest (slot 276, +0x450), the slot names of the landed
@@ -333,7 +334,7 @@ struct CScriptDef {
     long OFE_NoBanditsDieBoastCost;   // +0xD80
     long OFE_NoBanditsDieBoastReward;   // +0xD84
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
@@ -344,15 +345,15 @@ struct CQ_OrchardFarmRaidEvilScript : CScriptBase {
 
 void CQ_OrchardFarmRaidEvilScript::Init()
 {
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->OFEvilNakedBoastCost,
-                   g_pScriptDef->OFEvilNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->OFEvilNoDamageBoastCost,
-                   g_pScriptDef->OFEvilNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->OFEvilNoWeaponsBoastCost,
-                   g_pScriptDef->OFEvilNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_USENOHEALTHPOTIONS", 8, g_pScriptDef->OFE_NoHealthPotionBoastCost,
-                   g_pScriptDef->OFE_NoHealthPotionBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_PROTECTBANDITS", 18, g_pScriptDef->OFE_NoBanditsDieBoastCost,
-                   g_pScriptDef->OFE_NoBanditsDieBoastReward, true, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->OFEvilNakedBoastCost,
+                   pGlobalScriptDef->OFEvilNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->OFEvilNoDamageBoastCost,
+                   pGlobalScriptDef->OFEvilNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->OFEvilNoWeaponsBoastCost,
+                   pGlobalScriptDef->OFEvilNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_USENOHEALTHPOTIONS", 8, pGlobalScriptDef->OFE_NoHealthPotionBoastCost,
+                   pGlobalScriptDef->OFE_NoHealthPotionBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_PROTECTBANDITS", 18, pGlobalScriptDef->OFE_NoBanditsDieBoastCost,
+                   pGlobalScriptDef->OFE_NoBanditsDieBoastReward, true, "", 0);
     Game->ActivateQuest("Q_OrchardFarmRaid");
 }

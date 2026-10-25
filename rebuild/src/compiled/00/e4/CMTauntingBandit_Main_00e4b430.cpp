@@ -1,5 +1,5 @@
 // CM_TauntingBandit::Main() -- taunting-bandit spawner: count the "TauntingBandit" things; while fewer than the script def's maximum exist, spawn one more here (creature def from this marker's data string, scripted "TauntingBandit") and attach it to the "BanditTollVillage"
-// Leaf: Main
+// Leaf: ?Main@CM_TauntingBandit@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4B430, length 375 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("TauntingBandit" @ 0x012E4C60,
 //   "BanditTollVillage" @ 0x012E4FB0), IsDone @ 0x00F35B30, ~CScriptThing @ 0x004AA840, the vector<CScriptThing>
@@ -123,7 +123,7 @@ struct CScriptDef {
     unsigned char _pad[0x444];
     unsigned long MaxTauntingBandits;              // +0x444
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 class CM_TauntingBandit {
 public:
@@ -138,7 +138,7 @@ void CM_TauntingBandit::Main()
 {
     std::vector<CScriptThing> bandits;
     Game->GetAllThingsWithScriptName("TauntingBandit", bandits);
-    if (bandits.size() < g_pScriptDef->MaxTauntingBandits) {
+    if (bandits.size() < pGlobalScriptDef->MaxTauntingBandits) {
         if (IsDone())
             return;
         CScriptThing bandit = Game->CreateCreature(Me.GetDataString(), Me.GetPos(), "TauntingBandit", false);

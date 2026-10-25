@@ -1,13 +1,15 @@
-// std::vector::reserve(unsigned int n) -- vector<C2DLineF>::reserve: when the capacity is below n, copy the lines into a fresh n-element block (malloc, uninitialized copy, free the old block) or just allocate when empty
-// Leaf: ?reserve@?$vector@VC2DLineF@@
+// std::vector::reserve(unsigned int n) -- vector<CDisplayModeDesc>::reserve: when the capacity is below n, copy the display modes into a fresh n-element block (malloc, uninitialized copy, free the old block) or just allocate when empty
+// Leaf: ?reserve@?$vector@VCDisplayModeDesc@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C2900, 171 bytes (+ int3 padding), thiscall `ret 4`.
-// Identity: STLport 4.x `vector<_Tp>::reserve` over a 16-byte element; its uninitialized-copy callee 0x0040DDC0 carries
-//   the donor name `_Copy_impl<C2DLineF*,C2DLineF*>` (the element-wise placement copy with the null test = STLport
-//   `__uninitialized_copy(first, last, result, const __false_type&)`, landed as a descriptive SElement16 copy). One
-//   caller, 0x009C0408. The catalog label "vector_reserve_C2DLineF" is right.
+// Identity: STLport 4.6 `vector<_Tp>::reserve` over CDisplayModeDesc (Ego_r: C2DExtentsI Dimensions, long BitsPerPixel,
+//   long RefreshRate = 16 bytes). Its one caller 0x009C0408 is in the display-mode list builder 0x009C02D0, which only
+//   CUserProfileManager::ApplyVideoValues and the CUserProfileManager ctor call; its copy callee 0x0040DDC0 is
+//   __uninitialized_copy<CDisplayModeDesc*,CDisplayModeDesc*> (also called by vector<CDisplayModeDesc>::_M_insert_overflow
+//   0x004124C0), and retail has no ICF, so the element is CDisplayModeDesc, not the donor label's C2DLineF.
+//   The PDB name sets hold ?reserve@?$vector@VCDisplayModeDesc@@... and the user copy ctor ??0CDisplayModeDesc@@QAE@ABV0@@Z.
 // Callees: malloc @ 0x00BFEA0E (allocator::allocate, null for n == 0), __uninitialized_copy @ 0x0040DDC0 (`__fastcall`,
 //   first/last in ecx/edx, the result and the __false_type tag on the stack), free @ 0x00BFEA14 (the inlined _M_clear).
-// Shape: STLport `reserve` verbatim with `_M_allocate_and_copy` inline; C2DLineF has user constructors, so STLport's
+// Shape: STLport `reserve` verbatim with `_M_allocate_and_copy` inline; CDisplayModeDesc has user constructors, so STLport's
 //   type traits make it non-POD (`_IsPODType` = __false_type) and the copy is the out-of-line element loop. The new block
 //   lives in n's dead argument slot, which also serves as the tag temporary's address; the old finish pointer is spilled
 //   to the `push ecx` word. That frame assignment needs the same-TU stand-in body of the out-of-line copy (it never
@@ -16,20 +18,29 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-class C2DVector {                                           // 8 bytes
+class C2DExtentsI {                                         // 8 bytes
 public:
-    float X;                                                // +0x00
-    float Y;                                                // +0x04
+    long X;                                                 // +0x00
+    long Y;                                                 // +0x04
 };
-class C2DLineF {                                            // Ego_r.pdb, 16 bytes
+class CDisplayModeDesc {                                    // Ego_r.pdb, 16 bytes
 public:
-    C2DVector Point1;                                       // +0x00
-    C2DVector Point2;                                       // +0x08
-    C2DLineF(const C2DVector& point1, const C2DVector& point2) : Point1(point1), Point2(point2) { }
+    C2DExtentsI Dimensions;                                 // +0x00
+    long        BitsPerPixel;                               // +0x08
+    long        RefreshRate;                                // +0x0c
+    CDisplayModeDesc();
+    CDisplayModeDesc(const CDisplayModeDesc& other)
+        : Dimensions(other.Dimensions), BitsPerPixel(other.BitsPerPixel), RefreshRate(other.RefreshRate) { }
 };
 
 namespace std {
 struct __false_type { __false_type() { } };
+
+template <class _T1, class _T2>
+inline void _Construct(_T1* __p, const _T2& __val)
+{
+    new (__p) _T1(__val);
+}
 
 // Same-TU stand-in body of the out-of-line element copy 0x0040DDC0 (it never reads the tag).
 #pragma auto_inline(off)
@@ -39,7 +50,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __f
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
-        new (&*__cur) C2DLineF(*__first);
+        _Construct(&*__cur, *__first);
     return __cur;
 }
 #pragma auto_inline(on)
@@ -99,7 +110,7 @@ void vector<T, A>::reserve(size_type n)
         const size_type old_size = size();
         pointer tmp;
         if (this->_M_start) {
-            tmp = _M_allocate_and_copy(n, (const T*)this->_M_start, (const T*)this->_M_finish);
+            tmp = _M_allocate_and_copy(n, this->_M_start, this->_M_finish);
             _M_clear();
         } else {
             tmp = this->_M_end_of_storage.allocate(n);
@@ -109,4 +120,4 @@ void vector<T, A>::reserve(size_type n)
 }
 }
 
-template void std::vector<C2DLineF>::reserve(unsigned int n);
+template void std::vector<CDisplayModeDesc>::reserve(unsigned int n);

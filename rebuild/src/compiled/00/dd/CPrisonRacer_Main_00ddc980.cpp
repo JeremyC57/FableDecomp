@@ -1,4 +1,5 @@
 // CPrisonRacer::Main() -- a prisoner in the prison race: wait for the race start, take scripted control and set its running speed (slower for each racer), then every frame: every fourth frame find the nearest WaypointSpeedCheck marker and remember its index; sprint ("SPRINT" comment, faster speed) while behind the hero's nearest race marker, slow down again ("SLOW") when the sprint timer runs out; when idle follow the route to the nearest RaceMarker; stop when the hero won, and flag RaceEnded on reaching the warden
+// Leaf: ?Main@CPrisonRacer@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DDC980, length 1477 bytes (+ int3 padding), plain `ret`.
 // Callees: IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting
 //   0x00CD23B9 / Release 0x00CD2770 / FollowPreCalculatedRoute 0x007E7310 / ClearCommands 0x007E7360 / IsPerformingScriptTask
@@ -7,7 +8,7 @@
 //   IsDistanceBetweenThingsUnder 0x00CBE2FF / GFCharStringToInt 0x0099E7F0 (all __fastcall), MakePrisonerComment 0x00DDCF50
 //   (catalog class CQ_PrisonEscapeRescueMotherScript; called on the racer's CQ_PrisonRaceScript), CCharString 0x0099EBF0 /
 //   0x0099EAE0; g_pGameScriptInterface 0x0143E8F8 slots 87-90 (two inline CTimers); GameCalls (+0x04) slots 7, 8, 72, 75, 77,
-//   488, 653. Data: g_pScriptDef 0x0143E90C (+0xDC8 racer speed, +0xDCC sprint speed, +0xDD0 sprint time, +0xDD4 rest time).
+//   488, 653. Data: pGlobalScriptDef 0x0143E90C (+0xDC8 racer speed, +0xDCC sprint speed, +0xDD0 sprint time, +0xDD4 rest time).
 // Strings: "PrisonRaceWarden" 0x012DC920, "RaceMarker" 0x012CD708, "WaypointSpeedCheck" 0x012DC8E8, "SPRINT" 0x012DCAA4,
 //   "SLOW" 0x012DCA9C; 0.02f 0x012C26F8.
 // Layout: Ego_r.pdb CPrisonRacer (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_PrisonRaceScript,
@@ -213,7 +214,7 @@ struct CScriptDef {
     long  PrisonRacerSprintTime;                        // +0xdd0
     long  PrisonRacerRestTime;                          // +0xdd4
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 struct CTimer {                                         // 4 bytes: an index into the global script timers
@@ -264,7 +265,7 @@ void CPrisonRacer::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    Game->EntitySetMaxRunningSpeed(Me, g_pScriptDef->PrisonRacerSpeed - ParentClass->RacerSpeed * 0.02f);
+    Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerSpeed - ParentClass->RacerSpeed * 0.02f);
     ParentClass->RacerSpeed++;
     CScriptThing warden = Game->GetThingWithScriptName("PrisonRaceWarden");
     bool sprinting = false;
@@ -297,8 +298,8 @@ void CPrisonRacer::Main()
 #pragma inline_depth()
                 }
             sprinting = true;
-            sprintTimer.SetTime(g_pScriptDef->PrisonRacerSprintTime);
-            Game->EntitySetMaxRunningSpeed(Me, g_pScriptDef->PrisonRacerSprintSpeed - ParentClass->RacerSpeed * 0.02f);
+            sprintTimer.SetTime(pGlobalScriptDef->PrisonRacerSprintTime);
+            Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerSprintSpeed - ParentClass->RacerSpeed * 0.02f);
             ParentClass->MakePrisonerComment(Me, "SPRINT");
         }
         if (sprinting && sprintTimer.GetTime() == 0) {
@@ -309,8 +310,8 @@ void CPrisonRacer::Main()
 #pragma inline_depth()
                 }
             sprinting = false;
-            restTimer.SetTime(g_pScriptDef->PrisonRacerRestTime);
-            Game->EntitySetMaxRunningSpeed(Me, g_pScriptDef->PrisonRacerSpeed - ParentClass->RacerSpeed * 0.02f);
+            restTimer.SetTime(pGlobalScriptDef->PrisonRacerRestTime);
+            Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerSpeed - ParentClass->RacerSpeed * 0.02f);
             ParentClass->MakePrisonerComment(Me, "SLOW");
         }
         if (marker.IsAlive()) {

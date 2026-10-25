@@ -1,8 +1,9 @@
 // NTCScriptedControl::CActionFollowCreature::Update() -- keep the follow target valid, ignore it for navigation, mirror its sneaking, then pick a speed from the gap to the target (stop, slow, match or run) and steer along the nav route, looking where it goes
+// Leaf: ?Update@CActionFollowCreature@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00713EE0, length 1153 bytes.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (interface 7 CTCCreatureNavigation) and its const twin @ 0x004365B0
 // (interface 0x36 CTCStealth, through the const lookup), CTCCreatureNavigation::SetThingToIgnore @ 0x006CBE30 /
-// GetNextNavPosOnRoute @ 0x006CBAC0 / SetNavigationInput @ 0x006CB960, SetSneaking @ 0x00713D50, the 2D distance @ 0x009E1AD0
+// GetNextNavPosOnRoute @ 0x006CBAC0 / SetNavigationTarget @ 0x006CB960, SetSneaking @ 0x00713D50, the 2D distance @ 0x009E1AD0
 // (__fastcall), the thing's current speed @ 0x00661CD0, sneak speed @ 0x00664CB0 / virtual max speed (slot 81, +0x144),
 // CThing::GetPosition @ 0x004C73D0, IsPerformingAnyAction @ 0x006622A0, CTCLook::LookAtPos @ 0x00753E90 / IsPosInViewRange
 // @ 0x007534B0; the script thing's slots 11/71/76/77 (+0x2c/+0x11c/+0x130/+0x134) and the physics slots 33/70 (+0x84/+0x118).
@@ -115,7 +116,7 @@ struct CTCCreatureNavigation {                  // interface 7
     bool Active;                                // +0x56
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
     CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
-    void SetNavigationInput(const CNavigationInput& input);   // 0x006CB960
+    void SetNavigationTarget(const CNavigationInput& input);  // 0x006CB960 (PDB ?SetNavigationTarget@CTCCreatureNavigation@@QAEXABVCNavigationInput@@@Z)
 };
 struct CTCLook {                                // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
@@ -227,7 +228,7 @@ void CActionFollowCreature::Update()
     input.MovementType = 0;
     input.Speed = finalSpeed;
     CCreatureNavOutput output = nav->GetNextNavPosOnRoute(input, false, AvoidDynamicObstacles, true, false, false);
-    nav->SetNavigationInput(input);
+    nav->SetNavigationTarget(input);
     nav->Active = true;
     if (!PControl->PThing->IsPerformingAnyAction() && output.Status == 2
         && output.Offset.Y * output.Offset.Y + output.Offset.Z * output.Offset.Z + output.Offset.X * output.Offset.X > g_navEpsilon * g_navEpsilon) {

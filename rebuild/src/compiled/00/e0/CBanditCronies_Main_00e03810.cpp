@@ -1,4 +1,5 @@
 // CBanditCronies::Main() -- bandit crony: register itself with the parent script, wait a frame, then wait until the hero is within 13m, shout a random crony sound, target the hero and idle until the script is done
+// Leaf: ?Main@CBanditCronies@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E03810, length 339 bytes (plain `ret`; vtable slot 1 = Main of the entity
 //          script contract).
 // Callees: CScriptThing copy ctor @ 0x004ABE90 and ~CScriptThing @ 0x004AA840 (the CIsThingAlive filter's member; the
@@ -7,7 +8,7 @@
 //          CEntityScriptBase::IsDone @ 0x00F35B30, the game interface's slots 7 NewScriptFrame, 70 GetHero,
 //          451 GiveThingBestEnemyTarget, 690 PlaySoundOnThing (cgsi_slots_aligned.tsv), IsDistanceBetweenThingsUnder
 //          @ 0x00CBE2FF (__fastcall), rand @ 0x00BFEB16, CDefString::operator CCharString @ 0x00415D70, CCharString copy
-//          ctor @ 0x0099EC30, ~CCharString @ 0x0099EAE0; data: g_pScriptDef @ 0x0143E90C (sound-name vector +0x3ac/+0x3b0).
+//          ctor @ 0x0099EC30, ~CCharString @ 0x0099EAE0; data: pGlobalScriptDef @ 0x0143E90C (sound-name vector +0x3ac/+0x3b0).
 // Shape: the alive filter is a scoped 16-byte frame object (landed CHTEPrisoner::Main model); `NewScriptFrame; if (IsDone())
 //          return;` precedes the rotated `while (!near) { frame; if done return; }`; the sound is a CCharString LOCAL (operator
 //          CCharString temp + copy ctor), destroyed after the final `do frame while (!done)` loop; ebx = &Me for the whole body.
@@ -152,7 +153,7 @@ struct CScriptDef {
     CDefString* BC_ShoutSoundsEnd;                       // +0x3b0
     CDefString* BC_ShoutSoundsEndOfStorage;              // +0x3b4
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CIsThingAlive {                                   // vtable 0x012C32F0: the entity script's alive-filter over Me
     virtual void v00();
@@ -186,9 +187,9 @@ void CBanditCronies::Main()
     }
     if (IsDone())
         return;
-    unsigned long count = g_pScriptDef->BC_ShoutSoundsEnd - g_pScriptDef->BC_ShoutSoundsBegin;
+    unsigned long count = pGlobalScriptDef->BC_ShoutSoundsEnd - pGlobalScriptDef->BC_ShoutSoundsBegin;
     unsigned long index = rand() % count;
-    CCharString sound = g_pScriptDef->BC_ShoutSoundsBegin[index];
+    CCharString sound = pGlobalScriptDef->BC_ShoutSoundsBegin[index];
     Game->PlaySoundOnThing(Me, sound);
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     do {

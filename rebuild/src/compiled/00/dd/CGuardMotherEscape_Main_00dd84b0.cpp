@@ -1,5 +1,5 @@
 // CGuardMotherEscape::Main() -- quest 55 guard watching the hero's mother: takes scripting control, turns hostile to the hero, then until the hero can see or hear him moans now and then (1 in 500 frames while the hero is within the script-def range); once noticed he is surprised by the hero, attacks him and releases scripted control
-// Leaf: Main
+// Leaf: ?Main@CGuardMotherEscape@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD84B0, length 733 bytes (+ int3 padding).
 // Callees: the entity-script machinery of the landed CDyingVillager::Main 0x00D7F460 (CIsThingAlive predicate, SetPredicate
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, scripted-thing handle 0x0099A380 / 0x00CD23B9 / 0x00CD2770 / 0x007E74D0,
@@ -974,7 +974,7 @@ struct CScriptDef {
  unsigned char _pad[0xdc4];
  long          GuardMoanDistance;                    // +0xdc4
 };
-extern CScriptDef* g_pScriptDef;                     // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern "C" int rand();                               // 0x00BFEB16
 struct CGuardMotherEscape {
  void* VTable; GameCalls* Game; CScriptThing Me;
@@ -1002,7 +1002,7 @@ void CGuardMotherEscape::Main()
  while (!Game->CanThingBe_Seen_ByOtherThing(Game->GetHero(), Me) && !Game->CanThingBe_Heard_ByOtherThing(Game->GetHero(), Me)) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;
-  if (IsDistanceBetweenThingsUnder(Game->GetHero(), Me, (float)g_pScriptDef->GuardMoanDistance) && rand() % 500 == 0) {
+  if (IsDistanceBetweenThingsUnder(Game->GetHero(), Me, (float)pGlobalScriptDef->GuardMoanDistance) && rand() % 500 == 0) {
    if (IsActiveThreadTerminating()) return;
    long conversation = Game->AddNewConversation(Me, false, false);
    Game->AddLineToConversation(conversation, "TEXT_QST_055_GUARD_MOANING_ABOUT_STUFF", false, Me, Game->GetHero());

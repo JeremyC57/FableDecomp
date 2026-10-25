@@ -1,12 +1,12 @@
 // CQ_WaspBossScript::DoMission() -- register the post-wasp-boss gossip (rumour, picnic-area faction), spawn five hornet drones at the queen's deposit markers, gather the drones, chasers and attackers, run the wasp intro and wait until they are all dead; pause, create the queen hornet at the starting marker, start the guildmaster-help thread and, unless the mission failed, run the wasp-menace phase
-// Leaf: DoMission
+// Leaf: ?DoMission@CQ_WaspBossScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E12580, 1446 bytes (int3 padded to 1456).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CDefString::operator CCharString 0x00415D70, IntToCharString 0x0099F830,
 //   operator+(const char*, const CCharString&) 0x0099F690, IsActiveThreadTerminating 0x00CB7940, CBaseClass 0x0099A2D0 / ~
 //   0x0099A2E0, operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840 (and inline), AreAllThingsInVectorDead 0x00CBED00,
 //   operator new 0x00BFEA1A, CSpawnedFuncBase 0x00CDD450 (spawn vtable 0x012E0104, GuildmasterHelp 0x00E12B30),
 //   AddSpawnedFunction 0x00CB7E50, WaspIntro 0x00E12F20, WaspMenace 0x00E13310, free 0x00BFEA14, ~vector<CScriptThing>
-//   0x008AC970 (and inline); g_pScriptDef 0x0143E90C (CDefStrings +0xE3C hornet drone, +0xE40 queen hornet);
+//   0x008AC970 (and inline); pGlobalScriptDef 0x0143E90C (CDefStrings +0xE3C hornet drone, +0xE40 queen hornet);
 //   Game slots 7, 72, 75, 91, 376, 717, 718, 722.
 // Layout (retail = Ego_r.pdb - 0x14): MissionFailed +0x49, QueenHornetAttacks +0x4b.
 #define VEC_DTOR
@@ -147,7 +147,7 @@ struct CScriptDef {
     CDefString CREATURE_HORNET_DRONE;                   // +0xe3c
     CDefString CREATURE_QUEEN_HORNET;                   // +0xe40
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 bool __fastcall AreAllThingsInVectorDead(const std::vector<CScriptThing>& things);   // 0x00CBED00
 struct CSpawnedFuncBase {                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
@@ -279,7 +279,7 @@ void CQ_WaspBossScript::DoMission()
     for (long i = 1; i < 6; ++i) {
         if (IsActiveThreadTerminating())
             return;
-        hornet = Game->CreateCreature(g_pScriptDef->CREATURE_HORNET_DRONE, Game->GetThingWithScriptName("QueenDepositPos" + IntToCharString(i)).GetPos(), "HornetDrone", false);
+        hornet = Game->CreateCreature(pGlobalScriptDef->CREATURE_HORNET_DRONE, Game->GetThingWithScriptName("QueenDepositPos" + IntToCharString(i)).GetPos(), "HornetDrone", false);
     }
     if (IsActiveThreadTerminating())
         return;
@@ -297,7 +297,7 @@ void CQ_WaspBossScript::DoMission()
     if (IsActiveThreadTerminating())
         return;
     Game->Pause(4.0f);
-    Game->CreateCreature(g_pScriptDef->CREATURE_QUEEN_HORNET, Game->GetThingWithScriptName("MK_WQ_STARTING").GetPos(), "QueenHornet", false);
+    Game->CreateCreature(pGlobalScriptDef->CREATURE_QUEEN_HORNET, Game->GetThingWithScriptName("MK_WQ_STARTING").GetPos(), "QueenHornet", false);
 #pragma inline_depth()
     QueenHornetAttacks = true;
     SpawnFunction(new CSpawnedFunc<CQ_WaspBossScript>("GuildmasterHelp", 0, this, &CQ_WaspBossScript::GuildmasterHelp));

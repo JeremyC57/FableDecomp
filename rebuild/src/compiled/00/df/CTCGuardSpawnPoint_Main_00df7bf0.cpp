@@ -976,7 +976,7 @@ struct CScriptDef {
  long GuardCrossbowThreshold;                        // +0xf8c
  long GuardRedThreshold;                             // +0xf90
 };
-extern CScriptDef* g_pScriptDef;                     // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptThingVector {                          // STLport vector<CScriptThing> (12 bytes)
  CScriptThing* _M_start;
  CScriptThing* _M_finish;
@@ -1022,13 +1022,13 @@ void CTC_GuardSpawnPoint::Main()
     for (long i = 0; i < 2 && 25 - ParentClass->InitialNumberInRegion - ParentClass->NumberSpawned > 0; ++i) {
      if (IsActiveThreadTerminating()) return;
      CCharString name;
-     if (NumLeftToSpawn(ParentClass) > g_pScriptDef->GuardBlueThreshold) {
+     if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->GuardBlueThreshold) {
       if (IsActiveThreadTerminating()) return;
       name = "CREATURE_BS_GUARD_BLUE";
-     } else if (NumLeftToSpawn(ParentClass) > g_pScriptDef->GuardCrossbowThreshold) {
+     } else if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->GuardCrossbowThreshold) {
       if (IsActiveThreadTerminating()) return;
       name = "CREATURE_BS_GUARD_BLUE_CROSSBOW";
-     } else if (NumLeftToSpawn(ParentClass) > g_pScriptDef->GuardRedThreshold) {
+     } else if (NumLeftToSpawn(ParentClass) > pGlobalScriptDef->GuardRedThreshold) {
       if (IsActiveThreadTerminating()) return;
       name = "CREATURE_BS_GUARD_RED";
      } else {

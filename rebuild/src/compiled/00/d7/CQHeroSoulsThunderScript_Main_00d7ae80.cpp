@@ -1,10 +1,10 @@
 // CQ_HeroSoulsThunderScript::Main() -- Hero Souls (Thunder): bind HeroThunder, wait for Knothole Glade; on first run open the KG gate, pick the start line, play the start cut-scene, switch the arena quests/sound themes/objective and fade in; have Jack speak once, wait for Thunder's defeat, then play the success cut-scene, give morality, log the story and complete the quest
-// Leaf: Main
+// Leaf: ?Main@CQ_HeroSoulsThunderScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D7AE80, 1392 bytes (int3 padded).
 // Callees: CCharString 0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0 / operator=(const char*) 0x0099EFE0, operator new 0x00BFEA1A,
 //   AddEntityScriptBinding 0x00CB8230 (binding vtable 0x012D364C, allocator 0x00D7B400), PostAddScriptedEntities 0x00CB8930,
 //   IsActiveThreadTerminating 0x00CB7940, ~CScriptThing 0x004AA840, map<CCharString,CCharString>::operator[] 0x009AC700,
-//   PlayCutScene 0x00D7C470 (by-value name), AddLogbookStoryEntryString 0x00CBE960 (__fastcall), g_pScriptDef 0x0143E90C;
+//   PlayCutScene 0x00D7C470 (by-value name), AddLogbookStoryEntryString 0x00CBE960 (__fastcall), pGlobalScriptDef 0x0143E90C;
 //   CGameScriptInterface slots 7, 12, 64, 70, 72, 156, 276, 280, 288, 296, 364, 366, 374, 425, 655, 665.
 // Layout: Game +0x40, PMasterData +0x44 (+0x63 Thunder defeated, +0x70 arena state, +0x74 / +0xD7 line selectors),
 //   StartDone +0x48, SkipStart +0x49, JackSpoke +0x4A, CutSceneArgs map +0x4C.
@@ -163,7 +163,7 @@ struct CScriptDef {
     unsigned char _pad[0xc9c];
     float ThunderMoralityReward;                         // +0xc9c
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CStringMap {                                      // std::map<CCharString, CCharString> (12 bytes)
     void* _impl[3];
     CCharString& operator[](const CCharString& key);     // 0x009AC700
@@ -251,7 +251,7 @@ void CQ_HeroSoulsThunderScript::Main()
     if (IsActiveThreadTerminating())
         return;
     PlayCutScene("CS_HEROSOULS_SOUL1_THUNDER_SUCCESS");
-    Game->GiveHeroMorality(g_pScriptDef->ThunderMoralityReward);
+    Game->GiveHeroMorality(pGlobalScriptDef->ThunderMoralityReward);
     AddLogbookStoryEntryString("TEXT_QST_LOG_STORY_PLATINUM_355");
     Game->SetQuestAsCompleted(Game->GetActiveQuestName(), true, true, true);
 }

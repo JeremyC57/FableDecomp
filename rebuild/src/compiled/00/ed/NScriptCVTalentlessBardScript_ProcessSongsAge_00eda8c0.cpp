@@ -43,7 +43,7 @@ struct CScriptDef {
     long BardHeroAgeHigh;                               // +0x7d8
     long BardHeroAgeMedium;                             // +0x7dc
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CGameScriptInterface {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
@@ -76,13 +76,13 @@ struct CV_TalentlessBardScript {
 };
 void CV_TalentlessBardScript::ProcessSongsAge()
 {
-    CScriptDef* def = g_pScriptDef;
+    CScriptDef* def = pGlobalScriptDef;
     if (Game->GetHeroAge() > def->BardHeroAgeHigh) {
         CCharString verse("TEXT_QST_163_AGE_OLD", -1);
         SongItems.push_back_inline(verse);
     }
     else {
-        CScriptDef* def = g_pScriptDef;
+        CScriptDef* def = pGlobalScriptDef;
         if (Game->GetHeroAge() > def->BardHeroAgeMedium) {
             CCharString verse("TEXT_QST_163_AGE_MEDIUM", -1);
             SongItems.push_back(verse);

@@ -1,12 +1,12 @@
 // CV_AssassinAttacksScript::Init() -- reset the assassin-attack state and the five region records (names and limits from the script def), then spawn the WatchForQuestComplete thread
-// Leaf: Init
+// Leaf: ?Init@CV_AssassinAttacksScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E39540, length 268 bytes.
 // Callees: CCharString::operator=(const char*) @ 0x0099EFE0, vector<long>::resize(size_t, const long&) @ 0x004428F0,
 // CCharString::operator=(const CCharString&) @ 0x0099EFB0, operator new @ 0x00BFEA1A, CSpawnedFuncBase::CSpawnedFuncBase(
 // const CCharString&, unsigned long) @ 0x00CDD450, CScriptBase::AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&)
 // @ 0x00CB7E50, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0; the thread runs
 // CV_AssassinAttacksScript::WatchForQuestComplete @ 0x00E39650 (CSpawnedFunc0 vtable 0x012E35C4).
-// Globals: g_pScriptDef @ 0x0143E90C (region names CArray<CCharString> +0x3cc, region limits CArray<long> +0x3d8);
+// Globals: pGlobalScriptDef @ 0x0143E90C (region names CArray<CCharString> +0x3cc, region limits CArray<long> +0x3d8);
 // strings 0x0122D70E "", 0x012E3838 "WatchForQuestComplete".
 // Layout (retail = Ego_r.pdb - 0x14, the 12-byte vector): RegionIndex +0x48, AssassinObjectCount +0x4c, Activated +0x50,
 // RegionOfMostRecentKill +0x54, RegionInfo[5] +0x58 (RegionData {name, count, max, assassinActive}, 16 bytes),
@@ -55,7 +55,7 @@ struct CScriptDef {
     CRetailVector<CCharString> AssassinAttackRegionNames;   // +0x3cc
     CRetailVector<long>        AssassinAttackRegionLimits;  // +0x3d8
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CScriptBase {                                    // retail 0x40 bytes
     virtual void v00();
@@ -96,8 +96,8 @@ void CV_AssassinAttacksScript::Init()
     RegionKillCounts.resize(5, 0);
     for (long i = 0; i < 5; ++i) {
         RegionInfo[i].count = 0;
-        RegionInfo[i].max = g_pScriptDef->AssassinAttackRegionLimits[i];
-        RegionInfo[i].name = g_pScriptDef->AssassinAttackRegionNames[i];
+        RegionInfo[i].max = pGlobalScriptDef->AssassinAttackRegionLimits[i];
+        RegionInfo[i].name = pGlobalScriptDef->AssassinAttackRegionNames[i];
         RegionInfo[i].assassinActive = false;
     }
     AddSpawnedFunction(new CSpawnedFunc0<CV_AssassinAttacksScript>("WatchForQuestComplete", 0, this,

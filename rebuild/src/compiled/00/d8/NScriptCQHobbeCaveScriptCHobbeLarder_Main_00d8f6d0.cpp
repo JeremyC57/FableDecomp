@@ -1,5 +1,5 @@
 // NScript::CQ_HobbeCaveScript::CHobbeLarder::Main() -- Hobbe cave larder hobbe: takes scripting control, then until the cave leader has grunted orders re-arms a script timer from the script def whenever it notices the hero; then attacks the hero, releases control and, while BanditSacrifice lives, flags HobbesCloseby once it comes within 10 units of it
-// Leaf: Main
+// Leaf: ?Main@CHobbeLarder@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D8F6D0, 640 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9,
@@ -1037,7 +1037,7 @@ struct CScriptDef {
  unsigned char _pad[0xcc8];
  long LarderAlarmTime;                              // +0xCC8 (descriptive)
 };
-extern CScriptDef* g_pScriptDef;                    // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 struct CQ_HobbeCaveScript {
  unsigned char BaseState[0x60];
@@ -1072,7 +1072,7 @@ void CHobbeLarder::Main()
   if (IsActiveThreadTerminating()) return;
   if (Me.IsAwareOfHero() && timer.GetTime() == 0) {
    if (IsActiveThreadTerminating()) return;
-   timer.SetTime(g_pScriptDef->LarderAlarmTime);
+   timer.SetTime(pGlobalScriptDef->LarderAlarmTime);
   }
  }
  if (IsActiveThreadTerminating()) return;

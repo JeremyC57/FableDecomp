@@ -11,12 +11,13 @@
 // slot's high byte (`lea eax,[ebp+0Bh]`). Frame-pointer size TU (`optimize("y", off)` + `("s", on)`), the
 // helpers `__forceinline`.
 // Label: the catalog's "CEngineLocalDetailObjectDef_vector_CopyAndResize" (single caller 0x00477418).
-// Leaf: ??0?$vector
+// Leaf: ??0?$vector@VCEngineLocalDetailObjectDef@@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
 
-struct CEngineLocalDetailObjectDef {
+class CEngineLocalDetailObjectDef {                    // retail 0x88 bytes; a class in the PDB (mangled V)
+public:
     unsigned char _body[0x88];
     CEngineLocalDetailObjectDef(const CEngineLocalDetailObjectDef& other);              // 0x0047756C
 };

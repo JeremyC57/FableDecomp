@@ -1,5 +1,5 @@
 // NScript::CQ_NewOakValeIntroScript::AddGoodDeed() -- count a good deed: give the hero the per-deed morality, show the first/next good-deed message and wait until it is clicked past (the first one also adds the map logbook tutorial), set the gold objective while the hero has under 3 gold and no sweets yet, then update the good-deed counter
-// Leaf: AddGoodDeed
+// Leaf: ?AddGoodDeed@CQ_NewOakValeIntroScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DB0660, 544 bytes.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, AddLogbookTutorialEntry 0x00CBE9EE (__fastcall, as landed),
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; CGameScriptInterface slots 7 NewScriptFrame
@@ -119,7 +119,7 @@ struct CScriptDef {
     unsigned char _pad0[0xd64];
     float OVI_MoralityChangePerDeed;                    // +0xD64
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 namespace NScript {
 struct CScriptBase {                                    // retail 0x40 bytes
@@ -142,7 +142,7 @@ struct CQ_NewOakValeIntroScript : CScriptBase {
 void CQ_NewOakValeIntroScript::AddGoodDeed()
 {
     ++GoodDeedsPerformed;
-    GSI->GiveHeroMorality(g_pScriptDef->OVI_MoralityChangePerDeed);
+    GSI->GiveHeroMorality(pGlobalScriptDef->OVI_MoralityChangePerDeed);
     if (GoodDeedsPerformed == 1 && BadDeedsPerformed == 0) {
         if (IsActiveThreadTerminating())
             return;

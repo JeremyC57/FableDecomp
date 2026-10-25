@@ -77,7 +77,7 @@ struct CScriptDef {
     unsigned char _pad[0x5e0];
     long          FC_MinimumFighterHealth;                  // +0x5e0
 };
-extern CScriptDef* g_pScriptDef;                            // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                           // slot 7 (+0x1c)
@@ -209,13 +209,13 @@ void CV_FisticuffsClubScript::FisticuffsChallenge()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
-        CScriptDef* def = g_pScriptDef;
+        CScriptDef* def = pGlobalScriptDef;
         if (Game->GetHealth(SFighterOne) < def->FC_MinimumFighterHealth) {
             if (IsActiveThreadTerminating())
                 return;
             FightFinished = true;
         }
-        def = g_pScriptDef;
+        def = pGlobalScriptDef;
         if (Game->GetHealth(SFighterTwo) < def->FC_MinimumFighterHealth) {
             if (IsActiveThreadTerminating())
                 return;

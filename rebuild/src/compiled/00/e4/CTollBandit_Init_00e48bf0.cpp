@@ -1,10 +1,10 @@
 // CTollBandit::Init() -- reset the toll state, take the pay-me distance from the script def, find the bandit escape marker, then put the bandit in the friendly bandit faction and stop it wanting money
-// Leaf: Init
+// Leaf: ?Init@CTollBandit@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E48BF0, length 271 bytes (+ int3 padding).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, ~CBaseClass @ 0x0099A2E0, operator
 // delete @ 0x00BFE9BC, CGameScriptInterface slots 72 GetThingWithScriptName (+0x120), 601 EntitySetInFaction (+0x964) and
 // 478 EntitySetThingAsWantingMoney (+0x778) (ghidra_out/cgsi_slots_aligned.tsv).
-// Globals: g_pScriptDef @ 0x0143E90C (TollBanditPayMeDistance at +0x414); strings 0x012E4DA4 "M_BanditEscapePoint",
+// Globals: pGlobalScriptDef @ 0x0143E90C (TollBanditPayMeDistance at +0x414); strings 0x012E4DA4 "M_BanditEscapePoint",
 // 0x012D218C "FACTION_BANDITS_FRIENDLY".
 // Layout: Ego_r.pdb CTollBandit (= retail): Game +0x04, Me +0x08 (the entity-script base, as the landed CM_TollBandit::Main
 // 0x00E48A30), ParentClass +0x14, PMasterData +0x18, TollState +0x1c, TollBanditOnlyCollectsToll +0x20,
@@ -190,7 +190,7 @@ struct CScriptDef {
     unsigned char _pad[0x414];
     long          TollBanditPayMeDistance;               // +0x414
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern const char g_strBanditEscapePoint[];              // 0x012E4DA4 "M_BanditEscapePoint"
 extern const char g_strFactionBanditsFriendly[];         // 0x012D218C "FACTION_BANDITS_FRIENDLY"
 
@@ -216,7 +216,7 @@ void CTollBandit::Init()
     TollState = 1;
     TollBanditOnlyCollectsToll = false;
     KilledReluctantTrader = false;
-    TollBanditPayMeDistance = g_pScriptDef->TollBanditPayMeDistance;
+    TollBanditPayMeDistance = pGlobalScriptDef->TollBanditPayMeDistance;
     BanditEscapeMarker = Game->GetThingWithScriptName(g_strBanditEscapePoint);
     Game->EntitySetInFaction(Me, g_strFactionBanditsFriendly);
     Game->EntitySetThingAsWantingMoney(Me, 0);

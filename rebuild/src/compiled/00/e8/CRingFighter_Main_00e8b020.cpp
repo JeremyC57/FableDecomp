@@ -1,5 +1,5 @@
 // CRingFighter::Main() -- punch-club ring fighter: filter on Me alive while the crowd is not all attacking; wait for the round to start and target the hero; each frame let the crowd cheer when the hero lands a hit and boo when the ring fighter hits the hero, stop on a time-out; once Me's health falls to the def's losing threshold, take scripted control of Me and the hero, play the ROUNDWON cutscene, walk Me to the loser marker, flag the ring cleared and wait for the next round, then walk Me out to the marker and remove Me
-// Leaf: Main
+// Leaf: ?Main@CRingFighter@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E8B020, 1748 bytes (int3 padded to 1760).
 // Callees: CScriptThing copy 0x004ABE90 / ~ 0x004AA840, CIsThingAlive (vtable 0x012C32F0, ~ 0x00E241B0), flag predicate
 //   (vtable 0x012EA43C), and-predicate (vtable 0x012EA430, ctor 0x00E7E020), predicate base vtable 0x012C2FF4,
@@ -9,7 +9,7 @@
 //   cast map ctor 0x00CDBF70 / ~ 0x00CDBFB0 / operator[] 0x00CD3D2E, handle operator= 0x008ABD10, movie ctor 0x006E7B60 / ~
 //   0x006E7B80, CCharString 0x0099EBF0 / ~ 0x0099EAE0, CV_FisticuffsClubScript::GetCutsceneName 0x00E8A1D0, RunCutsceneMacro
 //   0x00CBFB7D, IsDistanceFromThingToPositionOver 0x00CBE45C; CScriptThing slots 21, 41, 42 (impl slot 6 GetPos inline);
-//   g_pScriptDef 0x0143E90C (+0x5E0 losing health), zero vector 0x0143E8E0; Game slots 7, 8, 70, 72, 108, 264, 370, 379, 451, 452.
+//   pGlobalScriptDef 0x0143E90C (+0x5E0 losing health), zero vector 0x0143E8E0; Game slots 7, 8, 70, 72, 108, 264, 370, 379, 451, 452.
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8}; Ego_r.pdb CRingFighter ParentClass +0x14; parent
 //   CV_FisticuffsClubScript (PDB - 0x14) TylerInFight +0x54, TimeOut +0x56, RingCleared +0x57, RoundStarted +0x58,
 //   EverybodyAttack +0x8c, CheerNumber +0xac, BooNumber +0xb0.
@@ -188,7 +188,7 @@ struct CScriptDef {
     unsigned char _pad[0x5e0];
     long FisticuffsLosingHealth;                        // +0x5e0
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CV_FisticuffsClubScript {
     unsigned char _pad[0x54];
     bool TylerInFight;                                  // +0x54
@@ -255,7 +255,7 @@ void CRingFighter::Main()
             Game->ClearThingBestEnemyTarget(Me);
             return;
         }
-        const CScriptDef* def = g_pScriptDef;
+        const CScriptDef* def = pGlobalScriptDef;
         if (Game->GetHealth(Me) <= def->FisticuffsLosingHealth) {
             if (IsDone())
                 return;

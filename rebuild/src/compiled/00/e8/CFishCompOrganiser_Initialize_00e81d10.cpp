@@ -1,5 +1,5 @@
 // CFishCompOrganiser::Initialize() -- reset the conversation state, read the competition's rod/fish/prize counts from the script def and copy its rod and fish def names (stopping when the script is done), then set the organiser up (information marker, persistent, not pushable, no movement in actions) and attach it to the active quest
-// Leaf: Initialize
+// Leaf: ?Initialize@CFishCompOrganiser@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E81D10, 412 bytes, plain `ret`.
 // Callees: CCharString() 0x0099E4B0 / ~CCharString 0x0099EAE0 / operator= 0x0099EFB0, vector<CCharString>::resize 0x0043332C
 //   (manifest label push_back), IsDone 0x00F35B30 (on `this`); game-interface slots 360 SetThingHasInformation,
@@ -162,7 +162,7 @@ struct CScriptDef {
     vector<CCharString> RodDefs;                         // +0x5b8
     vector<CCharString> FishDefs;                        // +0x5c4
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 class CFishCompOrganiser {
 public:
@@ -186,22 +186,22 @@ void CFishCompOrganiser::Initialize()
 {
     Conversation = -1;
     CommentHitByHero = false;
-    FishingPrizes = g_pScriptDef->FishingPrizes;
-    FishTypesInGame = g_pScriptDef->FishTypesInGame;
-    FishingRodsInGame = g_pScriptDef->FishingRodsInGame;
+    FishingPrizes = pGlobalScriptDef->FishingPrizes;
+    FishTypesInGame = pGlobalScriptDef->FishTypesInGame;
+    FishingRodsInGame = pGlobalScriptDef->FishingRodsInGame;
     RodDef.resize(FishingRodsInGame);
     FishDef.resize(FishTypesInGame);
     for (long i = 0; i < FishingRodsInGame; ++i) {
         if (IsDone())
             return;
-        RodDef[i] = g_pScriptDef->RodDefs[i];
+        RodDef[i] = pGlobalScriptDef->RodDefs[i];
     }
     if (IsDone())
         return;
     for (long j = 0; j < FishTypesInGame; ++j) {
         if (IsDone())
             return;
-        FishDef[j] = g_pScriptDef->FishDefs[j];
+        FishDef[j] = pGlobalScriptDef->FishDefs[j];
     }
     if (IsDone())
         return;

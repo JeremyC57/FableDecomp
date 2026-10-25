@@ -1,4 +1,5 @@
 // CQ_ArenaScript::InitialiseVariables() -- copy the script def's ArenaRounds vector into Rounds, then fill the 4x5 crowd-loop sound-tag table
+// Leaf: ?InitialiseVariables@CQ_ArenaScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F25840, length 305 bytes, plain `ret`.
 // Callees: vector<CArenaRoundDef>::operator= @ 0x00F25980 (out-of-line STLport assignment, same TU as the
 // caller in retail), CCharString::operator=(const char*) @ 0x0099EFE0 (twenty times, one per table cell).
@@ -26,7 +27,7 @@ struct CScriptDef {
     unsigned char _pad0[0x1044];
     CArenaRoundVector ArenaRounds;                   // +0x1044
 };
-extern CScriptDef* g_pScriptDef;                     // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CQ_ArenaScript {
     unsigned char _base[0x48];                       // CScriptBase + interface/owner pair
@@ -37,7 +38,7 @@ struct CQ_ArenaScript {
 
 void CQ_ArenaScript::InitialiseVariables()
 {
-    Rounds = g_pScriptDef->ArenaRounds;
+    Rounds = pGlobalScriptDef->ArenaRounds;
     CrowdLoopTags[0][0] = "ARENA_HECKLE_SMALL_LOOP";
     CrowdLoopTags[0][1] = "ARENA_CHANT_LOOP";
     CrowdLoopTags[0][2] = "ARENA_APPLAUSE_SMALL_LOOP";

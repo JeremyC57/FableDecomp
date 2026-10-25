@@ -4,7 +4,7 @@
 // Callees (all virtual, through Game at +0x4 = CGameScriptInterface, slots from ghidra_out/cgsi_slots_aligned.tsv):
 //          GetHero (70, +0x118) x2, EntitySetThingAsAllyOfThing (599, +0x95c) x2, SetWanderCentrePoint (763, +0xbec),
 //          SetWanderMinDistance (766, +0xbf8), SetWanderMaxDistance (769, +0xc04), SetScriptingStateGroup (784, +0xc40),
-//          SetThingHasInformation (360, +0x5a0); CScriptThing::GetPos (slot 6, +0x18) on Me. Data: g_pScriptDef @ 0x0143E90C
+//          SetThingHasInformation (360, +0x5a0); CScriptThing::GetPos (slot 6, +0x18) on Me. Data: pGlobalScriptDef @ 0x0143E90C
 //          (retail AmbushScamTricksterWanderMax at +0x29c = PDB +0x2a0, the block sits 4 bytes below the PDB offsets).
 // Layout: Ego_r.pdb CEntityScriptBase (vptr, Game +4, Me +8) + CAS_Trickster (ParentClass +0x14, PMasterData +0x18,
 //          lastRandomSpeechIdx1 +0x1c, lastRandomSpeechIdx2 +0x20).
@@ -43,7 +43,7 @@ struct CScriptDef {
     unsigned char _pad[0x29c];
     float AmbushScamTricksterWanderMax;            // +0x29c (PDB +0x2a0)
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CGameScriptInterface {                      // retail vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
@@ -151,7 +151,7 @@ void CAS_Trickster::Init()
     Game->EntitySetThingAsAllyOfThing(Game->GetHero(), Me);
     Game->SetWanderCentrePoint(Me, Me.GetPos());
     Game->SetWanderMinDistance(Me, 0.0f);
-    Game->SetWanderMaxDistance(Me, g_pScriptDef->AmbushScamTricksterWanderMax);
+    Game->SetWanderMaxDistance(Me, pGlobalScriptDef->AmbushScamTricksterWanderMax);
     Game->SetScriptingStateGroup(Me, SCRIPTING_STATE_GROUP_4);
     lastRandomSpeechIdx1 = 5;
     lastRandomSpeechIdx2 = 5;

@@ -1,4 +1,5 @@
 // CTeamSpawn::Init() -- pick a random "EitherTeamSpawn" marker as the other spawn point, make this the bandit or the guard team by Me's script name, and set the member limit and respawn time by whether this is the hero's team
+// Leaf: ?Init@CTeamSpawn@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCD1D0, length 370 bytes (plain `ret`; entity-script slot "Init").
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 / CCharString::operator=(const char*)
 //   @ 0x0099EFE0, ~CBaseClass @ 0x0099A2E0, operator delete @ 0x00BFE9BC (the counted-pointer info block),
@@ -7,7 +8,7 @@
 //   (0x004AA8B0, rebuild/manifest/rtti-vtables.tsv).
 // Data: "EitherTeamSpawn" @ 0x012DB30C, "BanditTeamSpawn" @ 0x012DB2AC, "" @ 0x0122D70E, "BanditTeamMember" @ 0x012DB268,
 //   "CREATURE_BANDIT_GRUNT" @ 0x012D23A0, "GuardTeamMember" @ 0x012DB27C, "CREATURE_ORCHARD_FARM_GUARD" @ 0x012DB2F0;
-//   g_pScriptDef @ 0x0143E90C whose +0xD6C/+0xD70 longs are GuardReinforcementsYourTeam/EnemyTeam (PDB +0xE1C/+0xE20).
+//   pGlobalScriptDef @ 0x0143E90C whose +0xD6C/+0xD70 longs are GuardReinforcementsYourTeam/EnemyTeam (PDB +0xE1C/+0xE20).
 // Layout: Ego_r.pdb CTeamSpawn (0x40, unshifted): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
 //   PMasterData +0x18, OtherSpawnPoint +0x1C, TeamID +0x28, TeamMemberLimit +0x2C, TeamRespawnTime +0x30,
 //   TeamMemberName +0x34, TeamMemberDefName +0x38, BanditsLeftID +0x3C; the parent CQ_OrchardFarmRaidScript's HeroTeam
@@ -121,7 +122,7 @@ struct CScriptDef {
     long GuardReinforcementsYourTeam;                    // +0xd6c (PDB +0xE1C)
     long GuardReinforcementsEnemyTeam;                   // +0xd70 (PDB +0xE20)
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CQ_OrchardFarmRaidScript {
     unsigned char _pad00[0x78];
@@ -159,10 +160,10 @@ void CTeamSpawn::Init()
     }
     if (TeamID == ParentClass->HeroTeam) {
         TeamMemberLimit = 2;
-        TeamRespawnTime = g_pScriptDef->GuardReinforcementsYourTeam;
+        TeamRespawnTime = pGlobalScriptDef->GuardReinforcementsYourTeam;
     } else {
         TeamMemberLimit = 3;
-        TeamRespawnTime = g_pScriptDef->GuardReinforcementsEnemyTeam;
+        TeamRespawnTime = pGlobalScriptDef->GuardReinforcementsEnemyTeam;
     }
     BanditsLeftID = 0;
 }

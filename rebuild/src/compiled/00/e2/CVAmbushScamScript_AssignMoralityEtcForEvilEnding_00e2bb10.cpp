@@ -1,4 +1,5 @@
 // CV_AmbushScamScript::AssignMoralityEtcForEvilEnding() -- give the hero the ambush-scam evil morality, renown and experience from the script def
+// Leaf: ?AssignMoralityEtcForEvilEnding@CV_AmbushScamScript@@
 // Retail: Fable.exe @ 0x00E2BB10, 77 bytes (+ int3 padding). Called once from the quest's ending code.
 // Callees (virtual, CGameScriptInterface through Game at +0x40): GiveHeroMorality(float) slot 156 (+0x270),
 // GiveHeroRenownPoints slot 161 (+0x284), GiveHeroExperience slot 128 (+0x200).
@@ -41,7 +42,7 @@ struct CScriptDef {
     float AmbushScamMoralityEvil;                        // +0x2b0
     float AmbushScamMoralityGood;                        // +0x2b4
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CV_AmbushScamScript {
     unsigned char _base[0x40];
@@ -51,7 +52,7 @@ struct CV_AmbushScamScript {
 
 void CV_AmbushScamScript::AssignMoralityEtcForEvilEnding()
 {
-    Game->GiveHeroMorality(g_pScriptDef->AmbushScamMoralityEvil);
-    Game->GiveHeroRenownPoints(g_pScriptDef->AmbushScamRenown);
-    Game->GiveHeroExperience(g_pScriptDef->AmbushScamExperience);
+    Game->GiveHeroMorality(pGlobalScriptDef->AmbushScamMoralityEvil);
+    Game->GiveHeroRenownPoints(pGlobalScriptDef->AmbushScamRenown);
+    Game->GiveHeroExperience(pGlobalScriptDef->AmbushScamExperience);
 }

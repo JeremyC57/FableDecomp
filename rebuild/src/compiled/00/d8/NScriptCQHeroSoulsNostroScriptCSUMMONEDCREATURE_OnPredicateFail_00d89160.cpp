@@ -1,4 +1,5 @@
 // NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::OnPredicateFail() -- a summoned undead died: one fewer alive for the Nostro script, and if Nostro's vulnerability timer is below the def threshold it gets the def bonus time added
+// Leaf: ?OnPredicateFail@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D89160, length 107 bytes (+5 int3 padding).
 // Which CSUMMONED_CREATURE: the PDB has two (CQ_ArenaScript's and CQ_HeroSoulsNostroScript's); the counter at
 // ParentClass+0x50 and the CTimer at +0x54 are CQ_HeroSoulsNostroScript::UndeadAlive / NostroVulnerableTimer
@@ -7,7 +8,7 @@
 // SetTimer(long, long) (+0x164). Data: the script def @ 0x0143E90C, threshold +0xC88 and bonus +0xC8C.
 // Shape: CTimer's inline GetTime/SetTime accessors forward the TimerIndex to the global interface; the def global
 // is read through an inline accessor GetScriptDef(), so VC evaluates it (edi) BEFORE each GetTimer call and reads
-// the field after it (a plain `g_pScriptDef->Field` loads the pointer after the call); `this->ParentClass` is re-read
+// the field after it (a plain `pGlobalScriptDef->Field` loads the pointer after the call); `this->ParentClass` is re-read
 // for every access.
 struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -35,8 +36,8 @@ struct CScriptDef {
     long          NostroVulnerableTimerThreshold;      // +0xC88
     long          NostroVulnerableTimerBonus;          // +0xC8C
 };
-extern CScriptDef* g_pScriptDef;                            // 0x0143E90C
-inline CScriptDef* GetScriptDef() { return g_pScriptDef; }
+extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+inline CScriptDef* GetScriptDef() { return pGlobalScriptDef; }
 
 struct CTimer {
     long TimerIndex;                                   // +0x00

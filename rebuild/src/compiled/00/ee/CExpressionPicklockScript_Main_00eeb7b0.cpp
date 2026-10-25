@@ -1,11 +1,11 @@
 // CExpression_PicklockScript::Main() -- the hero "picklock" expression quest: register a conscious-hero predicate, mark the quest persistent, take the hero's targeted thing and quit unless it is pick-lockable and no movie is running; otherwise open a movie sequence and the picklock mini-game bar, scale the def's picklock time by the hero's skill level/max and the frame rate into a frame count, post a keep-searching-for-witnesses deed, start sneaking and face the lock, then each frame fail on releasing the d-pad button, being hit or being witnessed, update the bar with 1 - frames/time, finish when the bar is full (fail if the lock vanished) and count down; afterwards remove the deed, hide the bar and, unless failed, unlock the thing with progress% chance and apply the morality change; finally deactivate this quest later
-// Leaf: Main
+// Leaf: ?Main@CExpression_PicklockScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EEB7B0, length 1272 bytes (+ int3 padding), no EH frame.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 / IsAlive 0x004AB130 (virtual slot 75, called directly here once and
 //   expanded inline once), CScriptBase::SetPredicate 0x00CB7920 / IsActiveThreadTerminating 0x00CB7940, CBaseObject ctor 0x0099A380,
 //   movie object dtor 0x006E7B80, CCharString 0x0099EBF0 / 0x0099EAE0, rand 0x00BFEB16, __ftol2 0x00BFEA70; CGameScriptInterface slots below.
 //   Literals "" 0x0122D70E, "EXPRESSION_PICKLOCK" 0x0124F520, 1.0f 0x0122DED8, 100.0f 0x01230A08.
-// Data: g_pScriptDef 0x0143E90C (as the landed HTGood/HTEvil boast rows); the picklock time float at +0x101C.
+// Data: pGlobalScriptDef 0x0143E90C (as the landed HTGood/HTEvil boast rows); the picklock time float at +0x101C.
 // Layout: the retail quest-script base (as the landed CExpressionWaitScript_Main 00eea460): CScriptBase 0x40 bytes, the interface pointer
 //   at +0x40. CScriptThing is modelled with its virtual slots (MsgIsHitBy 21, IsAlive 75) because the shared header flattens the vfptr.
 // Shape: the first lock-alive test is CScriptThing::IsAlive expanded inline (PImp_Data && PImp_Data->IsThingAlive(), the 0x004AB130 body);
@@ -86,7 +86,7 @@ struct CScriptDef {
     unsigned char _pad[0x101c];
     float PicklockTime;                                    // +0x101C
 };
-extern CScriptDef* g_pScriptDef;                           // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                           // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 enum EHeroTrainableStatType { HERO_STAT_SKILL = 5 };
 enum EMiniGameType { MINI_GAME_PICKLOCK = 4 };
@@ -177,7 +177,7 @@ void CExpression_PicklockScript::Main()
         GSI->DisplayMiniGameInfo(true, MINI_GAME_PICKLOCK);
         bool done = false;
         bool failed = false;
-        float time = g_pScriptDef->PicklockTime;
+        float time = pGlobalScriptDef->PicklockTime;
         time /= (GSI->GetHeroStatLevel(HERO_STAT_SKILL) + 1.0f) / (GSI->GetHeroStatMax(HERO_STAT_SKILL) + 1.0f);
         time *= GSI->GetConstantFPS();
         long count = (long)time;

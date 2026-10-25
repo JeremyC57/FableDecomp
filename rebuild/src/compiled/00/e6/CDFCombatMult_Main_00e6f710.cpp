@@ -1,5 +1,5 @@
 // CDF_CombatMult::Main() -- demon-door face (combat multiplier): take scripted control of Me, make it persistent and immune, find the nearest REGION_EXIT_POINT and shut it; each time the hero talks to the face, check the hero's combat multiplier against the def's trigger level -- below it, speak the intro line; at or above it, speak the opening line, fade the face out, open the door and reactivate the exit
-// Leaf: Main
+// Leaf: ?Main@CDF_CombatMult@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E6F710, 1107 bytes (+ int3 padding), plain `ret`. Catalog label CDF_MarryLadyGrey::Main
 //   is propagated: the literals ("TEXT_QST_088_COMBAT_MULT_INTRO" 0x012E8D94, "TEXT_QST_088_COMBAT_MULT_OPENING" 0x012E8D70,
 //   "DD_CombatMult" 0x012E8D60) and the GetPlayerCreatureCombatMultiplier / DemonDoor_CombatMult_TriggerLevel test name it CDF_CombatMult.
@@ -127,7 +127,7 @@ struct CScriptDef {
     unsigned char _pad[0x105c];
     long DemonDoor_CombatMult_TriggerLevel;             // +0x105C
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 struct CV_DemonDoorsScript {
     void FadeOutFaceAndOpenDoor(const CScriptThing& face, const CCharString& doorName);   // 0x00E6F040
@@ -186,7 +186,7 @@ void CDF_CombatMult::Main()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
-            CScriptDef* def = g_pScriptDef;
+            CScriptDef* def = pGlobalScriptDef;
             if (Game->GetPlayerCreatureCombatMultiplier() < def->DemonDoor_CombatMult_TriggerLevel) {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);

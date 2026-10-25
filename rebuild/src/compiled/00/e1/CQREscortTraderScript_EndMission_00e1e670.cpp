@@ -1,4 +1,5 @@
 // CQR_EscortTraderScript::EndMission() -- close the Greatwood/Orchard Farm route, remove the quest card, then either reward the hero (renown, quest completed) or fail the quest
+// Leaf: ?EndMission@CQR_EscortTraderScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E1E670, length 293 bytes, plain `ret`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CWideString(const wchar_t*)
 // 0x0099B6B0 / ~CWideString 0x0099B510, CScriptBase::IsActiveThreadTerminating 0x00CB7940 (twice, one per arm);
@@ -122,7 +123,7 @@ struct CScriptDef {
     unsigned char _pad0[0x9bc];
     long EscortTraderRenown;                         // +0x9bc
 };
-extern CScriptDef* g_pScriptDef;                     // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CScriptBase {
     virtual void v00();
@@ -145,7 +146,7 @@ void CQR_EscortTraderScript::EndMission()
     if (!MissionFailed) {
         if (IsActiveThreadTerminating())
             return;
-        m_pInterface->GiveHeroRenownPoints(g_pScriptDef->EscortTraderRenown);
+        m_pInterface->GiveHeroRenownPoints(pGlobalScriptDef->EscortTraderRenown);
         MissionSucceeded = true;
         m_pInterface->SetQuestAsCompleted(m_pInterface->GetActiveQuestName(), false, false, false);
     } else {

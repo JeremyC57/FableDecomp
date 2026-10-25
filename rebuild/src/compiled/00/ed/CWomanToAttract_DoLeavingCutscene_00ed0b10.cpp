@@ -1,12 +1,12 @@
 // CWomanToAttract::DoLeavingCutscene() -- the laughing woman leaves: take the hero under scripted control, cast him as HERO and the woman's own handle as WOMAN, pass the ingredient object as the $ITEM argument and run CS_SICK_LAUGHING_WOMAN_LEAVES with the movie camera fixed
-// Leaf: DoLeavingCutscene
+// Leaf: ?DoLeavingCutscene@CWomanToAttract@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED0B10, 747 bytes, plain `ret`.
 // Callees: CBaseObject ctor/dtor/operator= 0x0099A380 / 0x0099A430 / 0x0099A3B0, CCharString 0x0099EBF0 / 0x0099EAE0 /
 //   operator= 0x0099EFB0, CDefString::operator CCharString 0x00415D70, CRT malloc 0x00BFEA0E / free 0x00BFEA14 (map headers),
 //   operator delete 0x00BFE9BC, cast map operator[] 0x00CD3D2E / _M_erase 0x00CD344A, argument map operator[] 0x009AC700 /
 //   _M_erase 0x009AA830, cut-scene runner 0x00CBFB7D (__fastcall); CGameScriptInterface slots 8 StartScriptingEntity,
 //   70 GetHero, 371 FixMovieSequenceCamera. Literals "HERO" 0x01255174, "WOMAN" 0x012F2B04, "$ITEM" 0x012F2AFC,
-//   "CS_SICK_LAUGHING_WOMAN_LEAVES" 0x012F2ADC; g_pScriptDef 0x0143E90C (IngredientObject at retail +0x738, as landed).
+//   "CS_SICK_LAUGHING_WOMAN_LEAVES" 0x012F2ADC; pGlobalScriptDef 0x0143E90C (IngredientObject at retail +0x738, as landed).
 // Layout: Ego_r.pdb CWomanToAttract (52 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData
 //   +0x18, GivenObject +0x1c, TimesMadeLaugh +0x20, seh_me +0x24.
 // Shape: the landed CQ_WaspBossScript::WaspIntro 0x00E12F20 model; both local maps (cast, then arguments) are destroyed
@@ -226,7 +226,7 @@ struct CScriptDef {
     unsigned char _pad[0x738];
     CDefString IngredientObject;                        // +0x738
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CEntityScriptBase {                              // retail 0x14 bytes
     virtual void v00();
@@ -250,7 +250,7 @@ void CWomanToAttract::DoLeavingCutscene()
     cast["HERO"] = hero;
     cast["WOMAN"] = seh_me;
     CCutsceneArgMap args;
-    args["$ITEM"] = g_pScriptDef->IngredientObject;
+    args["$ITEM"] = pGlobalScriptDef->IngredientObject;
     Game->FixMovieSequenceCamera(true);
     RunCutsceneMacro("CS_SICK_LAUGHING_WOMAN_LEAVES", cast, 0, &args, false, true);
     Game->FixMovieSequenceCamera(false);

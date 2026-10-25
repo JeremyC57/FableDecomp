@@ -1,5 +1,5 @@
 // CM_RTFERockTrollTrigger::Main() -- rock-troll trigger marker: alive filter on Me; unless the quest already spawned the troll, wait until the hero comes within the script def's trigger distance, then create the standing rock troll ("RTFE_RockTroll") at the "M_RTFERockTrollSpawnPos" marker, flag it spawned and remove this trigger
-// Leaf: Main
+// Leaf: ?Main@CM_RTFERockTrollTrigger@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC42F0, length 412 bytes (+ int3 padding).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840; the CIsThingAlive filter (vtable 0x012C32F0,
 //   destructor 0x00E241B0) registered @ 0x00F35B10; IsDone @ 0x00F35B30; IsDistanceBetweenThingsUnder @ 0x00CBE2FF (`__fastcall`);
@@ -69,7 +69,7 @@ struct CScriptDef {
     unsigned char _pad[0x72c];
     float         RockTrollTriggerDistance;        // +0x72c (descriptive)
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_RTFEScript {
     unsigned char _pad[0x4e];
     bool          RockTrollSpawned;                // +0x4e (descriptive)
@@ -100,7 +100,7 @@ void CM_RTFERockTrollTrigger::Main()
     if (IsDone())
         return;
     CScriptThing spawnPos = Game->GetThingWithScriptName("M_RTFERockTrollSpawnPos");
-    while (!IsDistanceBetweenThingsUnder(Game->GetHero(), Me, g_pScriptDef->RockTrollTriggerDistance)) {
+    while (!IsDistanceBetweenThingsUnder(Game->GetHero(), Me, pGlobalScriptDef->RockTrollTriggerDistance)) {
         Game->NewScriptFrame();
         if (IsDone())
             goto done;

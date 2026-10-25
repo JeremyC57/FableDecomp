@@ -1,4 +1,5 @@
 // CQ_TraderConflictEvilScript::Init() -- reset the evil trader-conflict quest state, start the scream-out timer, register the BarrowFields quest region and the five boasts, then arm the bandit-follower boast flags in the master data
+// Leaf: ?Init@CQ_TraderConflictEvilScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF5CD0, 625 bytes (640 with int3 padding).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; the global game interface 0x0143E8F8
 //   SetTimer (slot 89, +0x164) through the inline CTimer; through the script's interface (+0x40): AddQuestRegion
@@ -82,7 +83,7 @@ struct CScriptDef {
     long TCEMadeTimeLimitCost;                          // +0x250
     long TCEMadeTimeLimitReward;                        // +0x254
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad0[0x128];
     bool TCEKeepBanditFollowerAlive;                    // +0x128
@@ -119,16 +120,16 @@ void CQ_TraderConflictEvilScript::Init()
     ScreamOutTimer.SetTime(15);
     PlayerEngaged = false;
     Game->AddQuestRegion("Q_TraderConflictEvil", "BarrowFields");
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->TraderConflictEvilNakedBoastCost,
-                   g_pScriptDef->TraderConflictEvilNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->TraderConflictEvilNoDamageBoastCost,
-                   g_pScriptDef->TraderConflictEvilNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->TraderConflictEvilNoWeaponsBoastCost,
-                   g_pScriptDef->TraderConflictEvilNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCEBANDITALIVE", 0x24, g_pScriptDef->TCEKeepBanditFollowerAliveCost,
-                   g_pScriptDef->TCEKeepBanditFollowerAliveReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCETIMELIMIT", 0x25, g_pScriptDef->TCEMadeTimeLimitCost,
-                   g_pScriptDef->TCEMadeTimeLimitReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->TraderConflictEvilNakedBoastCost,
+                   pGlobalScriptDef->TraderConflictEvilNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->TraderConflictEvilNoDamageBoastCost,
+                   pGlobalScriptDef->TraderConflictEvilNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->TraderConflictEvilNoWeaponsBoastCost,
+                   pGlobalScriptDef->TraderConflictEvilNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCEBANDITALIVE", 0x24, pGlobalScriptDef->TCEKeepBanditFollowerAliveCost,
+                   pGlobalScriptDef->TCEKeepBanditFollowerAliveReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCETIMELIMIT", 0x25, pGlobalScriptDef->TCEMadeTimeLimitCost,
+                   pGlobalScriptDef->TCEMadeTimeLimitReward, false, "", 0);
     Data->TCEKeepBanditFollowerAlive = true;
     Data->TCEMadeTimeLimit = false;
 }

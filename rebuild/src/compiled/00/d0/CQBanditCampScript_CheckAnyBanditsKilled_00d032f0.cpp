@@ -1,11 +1,12 @@
 // CQ_BanditCampScript::CheckAnyBanditsKilled() -- wait for the camp path to load, then each frame count the hero's bandit kills; the first kill fails the "kill no bandits" boast and reaching the def's quota completes "kill many bandits"
+// Leaf: ?CheckAnyBanditsKilled@CQ_BanditCampScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D032F0, length 645 bytes (padded to 656).
 // Callees: IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0;
 // _ftol 0x00BFEA70; _STLP_alloc_proxy<unsigned long*> ctor 0x004502EB; vector<unsigned long>::erase(first, last) 0x0046496F;
 // ~vector<unsigned long> 0x0045151C; CScriptThing::MsgGetThingsKilled (CScriptThing vtable 0x01238C8C slot 55, +0xdc);
 // CGameScriptInterface slots 7 NewScriptFrame, 12 IsRegionLoaded, 70 GetHero, 327 AddQuestInfoCounter, 335 UpdateQuestInfoCounter.
 // Layout: script = Ego_r.pdb - 0x14 (BoastBegun +0x4a); Data = CQ_SunnyvaleMasterData (no shift: BanditCampKillNoBandits
-// +0x115, BanditCampKillManyBandits +0x11a); g_pScriptDef (0x0143E90C) BAC_BoastBanditKill is PDB 0xf38, retail +0xe88.
+// +0x115, BanditCampKillManyBandits +0x11a); pGlobalScriptDef (0x0143E90C) BAC_BoastBanditKill is PDB 0xf38, retail +0xe88.
 class CCharString {
 public:
     void* PStringData;
@@ -93,7 +94,7 @@ struct CScriptDef {
     unsigned char _pad[0xe88];
     float BAC_BoastBanditKill;                         // +0xe88
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad[0x115];
     bool BanditCampKillNoBandits;                      // +0x115
@@ -126,7 +127,7 @@ void CQ_BanditCampScript::CheckAnyBanditsKilled()
     long counter = -1;
     if (Data->BanditCampKillManyBandits) {
         if (IsActiveThreadTerminating()) return;
-        counter = Game->AddQuestInfoCounter("HUD_QUEST_ICON_BANDIT", (long)g_pScriptDef->BAC_BoastBanditKill, 1.0f);
+        counter = Game->AddQuestInfoCounter("HUD_QUEST_ICON_BANDIT", (long)pGlobalScriptDef->BAC_BoastBanditKill, 1.0f);
     }
     if (IsActiveThreadTerminating()) return;
     do {
@@ -148,10 +149,10 @@ void CQ_BanditCampScript::CheckAnyBanditsKilled()
         }
         if (!Data->BanditCampKillManyBandits) {
             float killedF = (float)killedCount;
-            if (killedF >= g_pScriptDef->BAC_BoastBanditKill) {
+            if (killedF >= pGlobalScriptDef->BAC_BoastBanditKill) {
                 if (IsActiveThreadTerminating()) return;
                 Data->BanditCampKillManyBandits = true;
-                Game->UpdateQuestInfoCounter(counter, (long)(g_pScriptDef->BAC_BoastBanditKill - killedF), -1);
+                Game->UpdateQuestInfoCounter(counter, (long)(pGlobalScriptDef->BAC_BoastBanditKill - killedF), -1);
             }
         }
         }

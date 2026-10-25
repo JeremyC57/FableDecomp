@@ -1,5 +1,5 @@
 // NScript::CGameflowAssistanceScript::Tutorial_LowHealth() -- tutorial thread: while fewer than the def's maximum health warnings were given, each script frame (while the hero is player controlled) warn the hero through the guild master when his health drops below the critical or the low threshold, each warning with its own cooldown
-// Leaf: Tutorial_LowHealth
+// Leaf: ?Tutorial_LowHealth@CGameflowAssistanceScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CEFFB0, length 464 bytes, plain `ret`.
 // Sibling of the landed Tutorial_LowMagic 0x00CF0180 (same TU, same model): CScriptBase::IsActiveThreadTerminating
 //   @ 0x00CB7940 (the last call's result unused); the game script interface (+0x40) slots 7 NewScriptFrame, 257 GetHeroHealth,
@@ -81,7 +81,7 @@ struct CScriptDef {
     long CriticalHealthWarningCooldown;                 // +0xfec
     long MaxHealthWarnings;                             // +0xff0
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQuestMasterData {
     unsigned char _pad00[0x67];
     bool TutorialsDisabled;                             // +0x67
@@ -104,7 +104,7 @@ void CGameflowAssistanceScript::Tutorial_LowHealth()
 {
     long lowCooldown = 0;
     long criticalCooldown = 0;
-    while (HealthWarningsGiven < g_pScriptDef->MaxHealthWarnings) {
+    while (HealthWarningsGiven < pGlobalScriptDef->MaxHealthWarnings) {
         GSI->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -113,7 +113,7 @@ void CGameflowAssistanceScript::Tutorial_LowHealth()
         if (GSI->IsHeroControlledByPlayer()) {
             if (IsActiveThreadTerminating())
                 return;
-            CScriptDef* def = g_pScriptDef;
+            CScriptDef* def = pGlobalScriptDef;
             if (GSI->GetHeroHealth() < def->CriticalHealthThreshold) {
                 if (IsActiveThreadTerminating())
                     return;
@@ -121,11 +121,11 @@ void CGameflowAssistanceScript::Tutorial_LowHealth()
                     if (IsActiveThreadTerminating())
                         return;
                     GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_HEALTH_CRIT", "", true, false);
-                    criticalCooldown = g_pScriptDef->CriticalHealthWarningCooldown;
+                    criticalCooldown = pGlobalScriptDef->CriticalHealthWarningCooldown;
                     ++HealthWarningsGiven;
                 }
             } else {
-                CScriptDef* def2 = g_pScriptDef;
+                CScriptDef* def2 = pGlobalScriptDef;
                 if (GSI->GetHeroHealth() < def2->LowHealthThreshold) {
                     if (IsActiveThreadTerminating())
                         return;
@@ -133,7 +133,7 @@ void CGameflowAssistanceScript::Tutorial_LowHealth()
                         if (IsActiveThreadTerminating())
                             return;
                         GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_HEALTH_LOW", "", true, false);
-                        lowCooldown = g_pScriptDef->LowHealthWarningCooldown;
+                        lowCooldown = pGlobalScriptDef->LowHealthWarningCooldown;
                         ++HealthWarningsGiven;
                     }
                 }

@@ -1,4 +1,5 @@
 // CPlayer::LocateCharacterStartHolySite(CThing** site) -- picks the holy site the character starts at: the one script-named by the start holy site name when no respawn point is set, else the site nearest the respawn position
+// Leaf: ?LocateCharacterStartHolySite@CPlayer@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00488B20, 494 bytes, `ret 4`.
 // Callees: the /Gr (__fastcall) template copy 0x0048D5C0 (hidden result in ecx; copies the list's things whose +0xD4 flag
 //   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / operator const wchar_t* 0x0099AF10 on the
@@ -11,13 +12,14 @@
 //   +0xE8 pos, +0xF4 flag) find_if(bind2nd(ptr_fun(fn), CCharString(name))) through an inline find_if wrapper (the binder is
 //   built in the frame then copied); not found -> warning text formatted and the respawn position zeroed; then the site
 //   nearest the respawn position (MagSquared, start 1e10f). The owner pointer is a named local declared BEFORE the vector.
-// Shape (__find_if): the SGI __find_if instantiation is defined in this TU (noinline, /Gr, real four-way unrolled body +
+// Shape (__find_if): the STLport std::__find_if instantiation is defined in this TU (noinline, /Gr, real four-way unrolled body +
 //   remainder switch, tag by const reference) as retail compiled it in the caller's TU; with the body visible VC7.1 homes
 //   the iterator-tag temporary in the live `site` argument slot and pushes its address, as retail. find_if, bind2nd and
 //   ptr_fun are the STLport inline layers (the binder's operator() copies the bound name per call).
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString {
+public:
     void* PStringData;
     CCharString();                                 // 0x0099E4B0
     CCharString(const CCharString& other);         // 0x0099EC30
@@ -84,65 +86,95 @@ struct CThingManager {
 // 0x0048D5C0: copies the list's things (those whose +0xD4 flag is set) to the output iterator (/Gr template)
 template <class It, class Out> Out __fastcall CopyHolySites(It first, It last, Out out);
 
+namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };
 struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
-template <class A1, class A2, class R>
-struct pointer_to_binary_function {
-    typedef A1 first_argument_type;
-    typedef A2 second_argument_type;
-    typedef R  result_type;
-    R (__fastcall* m_pfn)(A1, A2);
-    explicit pointer_to_binary_function(R (__fastcall* pfn)(A1, A2)) : m_pfn(pfn) { }
-    R operator()(A1 x, A2 y) const { return m_pfn(x, y); }
+
+template <class _Arg1, class _Arg2, class _Result>
+struct binary_function {
+    typedef _Arg1 first_argument_type;
+    typedef _Arg2 second_argument_type;
+    typedef _Result result_type;
 };
-template <class A1, class A2, class R>
-inline pointer_to_binary_function<A1, A2, R> ptr_fun(R (__fastcall* pfn)(A1, A2)) { return pointer_to_binary_function<A1, A2, R>(pfn); }
-template <class Op>
-struct binder2nd {
-    Op op;
-    typename Op::second_argument_type value;
-    binder2nd(const Op& o, const typename Op::second_argument_type& v) : op(o), value(v) { }
-    typename Op::result_type operator()(const typename Op::first_argument_type& x) const { return op(x, value); }
+
+// The bound function is `bool __fastcall(CThing*, CCharString)`: this TU is not /Gr, so the pointer type names the
+// convention the /Gr STLport TU (0x0048CC60) gets by default.
+template <class _Arg1, class _Arg2, class _Result>
+class pointer_to_binary_function : public binary_function<_Arg1, _Arg2, _Result> {
+protected:
+    _Result (__fastcall* _M_ptr)(_Arg1, _Arg2);
+public:
+    pointer_to_binary_function() { }
+    explicit pointer_to_binary_function(_Result (__fastcall* __x)(_Arg1, _Arg2)) : _M_ptr(__x) { }
+    _Result operator()(_Arg1 __x, _Arg2 __y) const { return _M_ptr(__x, __y); }
 };
-template <class Op, class T>
-inline binder2nd<Op> bind2nd(const Op& op, const T& x) { return binder2nd<Op>(op, typename Op::second_argument_type(x)); }
+template <class _Arg1, class _Arg2, class _Result>
+inline pointer_to_binary_function<_Arg1, _Arg2, _Result> ptr_fun(_Result (__fastcall* __x)(_Arg1, _Arg2))
+{
+    return pointer_to_binary_function<_Arg1, _Arg2, _Result>(__x);
+}
+
+template <class _Operation>
+class binder2nd {
+protected:
+    _Operation op;
+    typename _Operation::second_argument_type value;
+public:
+    binder2nd(const _Operation& __x, const typename _Operation::second_argument_type& __y) : op(__x), value(__y) { }
+    typename _Operation::result_type operator()(const typename _Operation::first_argument_type& __x) const
+    {
+        return op(__x, value);
+    }
+};
+template <class _Operation, class _Tp>
+inline binder2nd<_Operation> bind2nd(const _Operation& __fn, const _Tp& __x)
+{
+    typedef typename _Operation::second_argument_type _Arg2_type;
+    return binder2nd<_Operation>(__fn, _Arg2_type(__x));
+}
 
 #pragma auto_inline(off)
-// 0x0048CC60: the SGI/STLport random-access __find_if instantiation (compiled in this TU, /Gr): four-way unrolled loop
-// plus the remainder switch; the iterator tag by const reference.
-template <class It, class Pred>
-__declspec(noinline) It __fastcall __find_if(It first, It last, Pred pred, const random_access_iterator_tag&)
+// 0x0048CC60: the STLport random-access __find_if instantiation (compiled in this TU, /Gr there): four-way unrolled
+// loop plus the remainder switch; the iterator tag by const reference.  Same symbol as the landed 0x0048CC60 row.
+template <class _RandomAccessIter, class _Predicate>
+__declspec(noinline) _RandomAccessIter __fastcall __find_if(_RandomAccessIter __first, _RandomAccessIter __last,
+                                                            _Predicate __pred, const random_access_iterator_tag&)
 {
-    long tripCount = (last - first) >> 2;
-    for (; tripCount > 0; --tripCount) {
-        if (pred(*first)) return first;
-        ++first;
-        if (pred(*first)) return first;
-        ++first;
-        if (pred(*first)) return first;
-        ++first;
-        if (pred(*first)) return first;
-        ++first;
+    int __trip_count = (__last - __first) >> 2;
+    for ( ; __trip_count > 0 ; --__trip_count) {
+        if (__pred(*__first)) return __first;
+        ++__first;
+        if (__pred(*__first)) return __first;
+        ++__first;
+        if (__pred(*__first)) return __first;
+        ++__first;
+        if (__pred(*__first)) return __first;
+        ++__first;
     }
-    switch (last - first) {
+    switch (__last - __first) {
     case 3:
-        if (pred(*first)) return first;
-        ++first;
+        if (__pred(*__first)) return __first;
+        ++__first;
     case 2:
-        if (pred(*first)) return first;
-        ++first;
+        if (__pred(*__first)) return __first;
+        ++__first;
     case 1:
-        if (pred(*first)) return first;
+        if (__pred(*__first)) return __first;
     case 0:
     default:
-        return last;
+        return __last;
     }
 }
 #pragma auto_inline(on)
-template <class T> inline random_access_iterator_tag iterator_category(T* const&) { return random_access_iterator_tag(); }
-template <class It, class Pred> inline It find_if(It first, It last, Pred pred) { return __find_if(first, last, pred, iterator_category(first)); }
+template <class _Tp> inline random_access_iterator_tag iterator_category(_Tp* const&) { return random_access_iterator_tag(); }
+template <class _InputIter, class _Predicate>
+inline _InputIter find_if(_InputIter __first, _InputIter __last, _Predicate __pred)
+{
+    return __find_if(__first, __last, __pred, iterator_category(__first));
+}
+}
 
 bool __fastcall IsThingScriptNamed(CThing* thing, CCharString name);   // 0x0048BC70
 
@@ -161,7 +193,7 @@ bool CPlayer::LocateCharacterStartHolySite(CThing** site)
     CRetailVector<CThing*> sites;
     CopyHolySites(owner->HolySites.begin(), owner->HolySites.end(), back_inserter(sites));
     if (!RespawnValid) {
-        CThing** found = find_if(sites.begin(), sites.end(), bind2nd(ptr_fun(&IsThingScriptNamed), g_CWideString_013b866c.ConvertToCharString()));
+        CThing** found = std::find_if(sites.begin(), sites.end(), std::bind2nd(std::ptr_fun(&IsThingScriptNamed), g_CWideString_013b866c.ConvertToCharString()));
         if (found != sites.end()) {
             *site = *found;
             return true;

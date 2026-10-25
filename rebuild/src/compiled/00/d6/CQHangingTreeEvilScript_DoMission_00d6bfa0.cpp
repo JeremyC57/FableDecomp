@@ -1,4 +1,5 @@
 // CQ_HangingTreeEvilScript::DoMission() -- start the mission-end and region watchers, wait for BowerstoneJail, then run the stage machine: stage 1 spawns the party at the spawn point and plays the introduction, then starts the mission timer and moves to stage 2, which waits for the HeroDualArea level (stage 6); finally play the conclusion and, unless failed, flag success
+// Leaf: ?DoMission@CQ_HangingTreeEvilScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D6BFA0, length 1023 bytes.
 // Callees: operator new 0x00BFEA1A, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   CSpawnedFuncBase::CSpawnedFuncBase 0x00CDD450 (CSpawnedFunc vtable 0x012D1FE8), CScriptBase::AddSpawnedFunction
@@ -7,7 +8,7 @@
 //   Ego_r.pdb method order), operator delete 0x00BFE9BC / ~CBaseClass 0x0099A2E0 (inline ~CScriptThing); the timer service
 //   g_pGameScriptInterface 0x0143E8F8 SetTimer (89); through the interface (+0x40): NewScriptFrame (7), IsLevelLoaded (11),
 //   GetThingWithScriptName (72), DisplayQuestInfo (321), AddQuestInfoTimer (326).
-// Data: g_pScriptDef 0x0143E90C HangingTreeEvilMissionTimer (+0xF58).
+// Data: pGlobalScriptDef 0x0143E90C HangingTreeEvilMissionTimer (+0xF58).
 // Strings: "WatchForMissionEnd" 0x012D2328, "MonitorRegionPresence" 0x012D2310, "" 0x0122D70E, "BowerstoneJail" 0x012C7788,
 //   "HTE_PartySpawnPoint" 0x012D2274, "HUD_CLOCK_ICON" 0x012CA7C8, "HeroDualArea" 0x012D2300.
 // Layout (retail = Ego_r.pdb - 0x14): BanditsStarted +0x49, MissionSucceeded +0x4c, MissionFailed +0x4d, SpawnHere +0x4f,
@@ -136,7 +137,7 @@ struct CScriptDef {
     unsigned char _pad[0xf58];
     long HangingTreeEvilMissionTimer;                   // +0xF58
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
@@ -211,7 +212,7 @@ void CQ_HangingTreeEvilScript::DoMission()
             }
             if (IsActiveThreadTerminating())
                 return;
-            MissionTimer.SetTime(g_pScriptDef->HangingTreeEvilMissionTimer);
+            MissionTimer.SetTime(pGlobalScriptDef->HangingTreeEvilMissionTimer);
             TimerGUIIndex = Game->AddQuestInfoTimer(MissionTimer, "HUD_CLOCK_ICON", 1.0f);
             Game->DisplayQuestInfo(true);
             HTE_State = 2;

@@ -1,5 +1,5 @@
 // CV_FisticuffsClubScript::SetAllowedHits(long hits) -- sets the hits allowed in the coming fight: the region's base allowance minus hits / FightCount scaled by the definition's factor, truncated; an unknown region simply takes the given hits
-// Leaf: SetAllowedHits
+// Leaf: ?SetAllowedHits@CV_FisticuffsClubScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E8A140, length 116 bytes (jump table at 0x00E8A1B4 inside the row), `ret 4`.
 // Callees: __ftol2 @ 0x00BFEA70. Data: the script definition @ 0x0143E90C (allowances +0x5ec / +0x5f0 / +0x5f4 / +0x5f8 for
 // regions 1..4, the scale at +0x5fc).
@@ -18,7 +18,7 @@ struct CScriptDef {                                // the global script definiti
     long FisticuffsFightCountBanditCamp;           // +0x608 (region 3)
     long FisticuffsFightCountKnotholeGlade;        // +0x60c (region 4)
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CV_FisticuffsClubScript {
     unsigned char _base[0x48];                     // CScriptBase + interface/data pair
     long RelevantRegion;                           // +0x48 (1 Bowerstone, 2 Oakvale, 3 Bandit Camp, 4 Knothole Glade)
@@ -35,16 +35,16 @@ void CV_FisticuffsClubScript::SetAllowedHits(long hits)
     switch (RelevantRegion)
     {
     case 1:
-        AllowedHits = (long)(g_pScriptDef->FisticuffsAllowedHitsBowerstone - (float)hits / FightCount * g_pScriptDef->FisticuffsAllowedHitsScale);
+        AllowedHits = (long)(pGlobalScriptDef->FisticuffsAllowedHitsBowerstone - (float)hits / FightCount * pGlobalScriptDef->FisticuffsAllowedHitsScale);
         return;
     case 4:
-        AllowedHits = (long)(g_pScriptDef->FisticuffsAllowedHitsKnotholeGlade - (float)hits / FightCount * g_pScriptDef->FisticuffsAllowedHitsScale);
+        AllowedHits = (long)(pGlobalScriptDef->FisticuffsAllowedHitsKnotholeGlade - (float)hits / FightCount * pGlobalScriptDef->FisticuffsAllowedHitsScale);
         return;
     case 2:
-        AllowedHits = (long)(g_pScriptDef->FisticuffsAllowedHitsOakvale - (float)hits / FightCount * g_pScriptDef->FisticuffsAllowedHitsScale);
+        AllowedHits = (long)(pGlobalScriptDef->FisticuffsAllowedHitsOakvale - (float)hits / FightCount * pGlobalScriptDef->FisticuffsAllowedHitsScale);
         return;
     case 3:
-        AllowedHits = (long)(g_pScriptDef->FisticuffsAllowedHitsBanditCamp - (float)hits / FightCount * g_pScriptDef->FisticuffsAllowedHitsScale);
+        AllowedHits = (long)(pGlobalScriptDef->FisticuffsAllowedHitsBanditCamp - (float)hits / FightCount * pGlobalScriptDef->FisticuffsAllowedHitsScale);
         return;
     }
     AllowedHits = hits;

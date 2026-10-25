@@ -4,7 +4,7 @@
 // Leaf: ?ResetGlobalScriptDef@@YIXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBEEB0, 34 bytes, `__fastcall` global with no arguments, plain `ret`
 //   (PDB ?ResetGlobalScriptDef@@YIXXZ). No frame: nothing lives on the stack, so the size TU's frame pointer is not built.
-// Data: the global script def pointer @ 0x0143E90C (g_pScriptDef in the landed quest scripts).
+// Data: the global script def pointer @ 0x0143E90C (pGlobalScriptDef in the landed quest scripts).
 // Callees: the def's virtual Destroy (slot 1, +4) only.
 // Shape: the counted-def release of the landed CDefPointer family (0x0042AEDA): the count lives in a second base at
 //   +4 behind the vptr, released through two inline accessors (decrement, then test), so the adjusted base pointer
@@ -30,11 +30,11 @@ struct CScriptDef : CDefVirtual, CRefCounted {
     }
 };
 
-extern CScriptDef* g_pScriptDef;           // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;           // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 void __fastcall ResetGlobalScriptDef()
 {
-    if (g_pScriptDef)
-        g_pScriptDef->ReleaseReference();
-    g_pScriptDef = 0;
+    if (pGlobalScriptDef)
+        pGlobalScriptDef->ReleaseReference();
+    pGlobalScriptDef = 0;
 }

@@ -1,5 +1,5 @@
 // CSafeTrader::Main() -- the bandit-toll quest's safe trader: register an alive-filter over Me, take Me under scripted control, then until Me reaches the "SafeTraderEscape" marker keep walking there, warn the hero once when he comes near (a hostile line if he already attacked), and when the hero hits Me turn scared and run the precalculated route; finally fade out and kill Me
-// Leaf: Main
+// Leaf: ?Main@CSafeTrader@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4A280, length 992 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, out-of-line dtor 0x00E241B0) over the CScriptThing copy ctor
 // 0x004ABE90 / ~CScriptThing 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30;
@@ -9,7 +9,7 @@
 // 0x00CBE716 (all __fastcall); CCharString 0x0099EBF0 / 0x0099EAE0; CScriptThing slots 21 MsgIsHitBy, 41
 // MsgIsHitBySpecialAbilityFrom, 42 MsgIsHitByAnySpecialAbilityFrom; CGameScriptInterface slots 7 NewScriptFrame, 8
 // StartScriptingEntity, 70 GetHero, 72 GetThingWithScriptName, 364 AddNewConversation, 365 AddPersonToConversation,
-// 366 AddLineToConversation, 496 EntitySetAsScared. g_pScriptDef 0x0143E90C (+0x42c long warning distance, +0x43c
+// 366 AddLineToConversation, 496 EntitySetAsScared. pGlobalScriptDef 0x0143E90C (+0x42c long warning distance, +0x43c
 // float escape distance, +0x440 float fade time; the retail CScriptDef differs from the Ego_r.pdb one here).
 // Literals "SafeTraderEscape" 0x012E4F80, "TEXT_QST_011_SAFE_TRADER_WARNING_10" 0x012E4F5C,
 // "TEXT_QST_011_SAFE_TRADER_WARNING_10_HATE" 0x012E4F30, "SCRIPT_NAME_HERO" 0x0125D1C8.
@@ -71,7 +71,7 @@ struct CScriptDef {
     float SafeTraderEscapeDistance;                    // +0x43C
     float SafeTraderFadeTime;                          // +0x440
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
@@ -135,8 +135,8 @@ void CSafeTrader::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptThing escape = Game->GetThingWithScriptName("SafeTraderEscape");
-    long warningDistance = g_pScriptDef->SafeTraderWarningDistance;
-    while (IsDistanceBetweenThingsOver(Me, escape, g_pScriptDef->SafeTraderEscapeDistance)) {
+    long warningDistance = pGlobalScriptDef->SafeTraderWarningDistance;
+    while (IsDistanceBetweenThingsOver(Me, escape, pGlobalScriptDef->SafeTraderEscapeDistance)) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -174,5 +174,5 @@ void CSafeTrader::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    FadeOutAndKillEntity(Me, true, g_pScriptDef->SafeTraderFadeTime, true);
+    FadeOutAndKillEntity(Me, true, pGlobalScriptDef->SafeTraderFadeTime, true);
 }

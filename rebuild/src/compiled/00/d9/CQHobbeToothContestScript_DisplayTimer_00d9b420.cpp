@@ -1,11 +1,12 @@
 // CQ_HobbeToothContestScript::DisplayTimer() -- run the contest clock: show the timer and the hero / Whisper tooth counters, and while the clock runs keep the counters current and, whenever the hero is away from Orchard Farm East, credit Whisper a tooth every 5 seconds; then wait for the hero to return and take the HUD elements down
+// Leaf: ?DisplayTimer@CQ_HobbeToothContestScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9B420, length 913 bytes; called from 0x00D9AC69.
 // Callees: __ftol2 0x00BFEA70, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   CScriptBase::IsActiveThreadTerminating 0x00CB7940, ~CTimer 0x00CD4470 (the out-of-line copy); the timer service
 //   g_pGameScriptInterface 0x0143E8F8: RegisterTimer (87), DeregisterTimer (88, the inline ~CTimer copies), SetTimer (89),
 //   GetTimer (90); through the interface (+0x40): NewScriptFrame (7), IsLevelLoaded (11), DisplayQuestInfo (321),
 //   AddQuestInfoTimer (326), AddQuestInfoCounter (327), UpdateQuestInfoCounter (335), RemoveQuestInfoElement (338).
-// Data: g_pScriptDef 0x0143E90C HOB_TotalTime (+0xF20, float).
+// Data: pGlobalScriptDef 0x0143E90C HOB_TotalTime (+0xF20, float).
 // Strings: "HUD_CLOCK_ICON" 0x012CA7C8, "HUD_HERO_ICON" 0x012D6824, "HUD_WHISPER_ICON" 0x012CEBC8, "OrchardFarmEast"
 //   0x012D67B8.
 // Layout (retail = Ego_r.pdb - 0x14): NumberOfHobbeTeethCollectedByHero +0x4c, NumberOfHobbeTeethCollectedByWhisper +0x50.
@@ -85,7 +86,7 @@ struct CScriptDef {
     unsigned char _pad[0xf20];
     float HOB_TotalTime;                                // +0xF20
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
@@ -102,7 +103,7 @@ struct CQ_HobbeToothContestScript : CScriptBase {
 void CQ_HobbeToothContestScript::DisplayTimer()
 {
     CTimer contestTimer;
-    contestTimer.SetTime((long)g_pScriptDef->HOB_TotalTime);
+    contestTimer.SetTime((long)pGlobalScriptDef->HOB_TotalTime);
     Game->DisplayQuestInfo(true);
     long timerElement = Game->AddQuestInfoTimer(contestTimer, "HUD_CLOCK_ICON", 1.0f);
     long heroElement = Game->AddQuestInfoCounter("HUD_HERO_ICON", 0, 1.0f);

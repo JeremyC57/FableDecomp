@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB67B0, 119 bytes. __fastcall: __first ecx, __last edx, the 0x18-byte
 // pivot and the comparator word on the stack (`ret 1Ch`), the split iterator in eax. The manifest label
 // "MusicEntry_Partition" is propagated.
-// Callees: CBasicString<char>::operator< 0x00429950, iter_swap 0x00CB6230 (out of line, `__fastcall` i1/i2; manifest
+// Callees: CBasicString<char>::operator< 0x00429950, swap 0x00CB6230 (through the inline STLport iter_swap; `__fastcall` *i1/*i2; manifest
 // "swap<CMusicManager::CRegisteredMusicEntry>" is propagated), ~CCharString 0x0099EAE0.
 // Shape: the STLport body verbatim; the pivot key's handle is re-read each outer pass (`mov esi,[esp+10h]`), the
 // `--__last` before and inside the second scan share one loop head. The handle stays in esi only when the
@@ -89,8 +89,13 @@ typedef std::pair<CCharString, CScriptInfo>   SScriptInfoPair;
 typedef CKeyPairCompareLess<CCharString, CScriptInfo> SScriptInfoLess;
 
 namespace std {
+template <class _Tp>
+void __fastcall swap(_Tp& __a, _Tp& __b);                                   // 0x00CB6230 (out of line)
+
+// STLport 4.6 iter_swap, inline: the partition calls swap(*__i1, *__i2) directly; the out-of-line iter_swap
+// copy 0x00CB63F0 is a bare `jmp` to swap.
 template <class _ForwardIter1, class _ForwardIter2>
-void __fastcall iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2);    // 0x00CB6230
+inline void __fastcall iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2) { swap(*__i1, *__i2); }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
 _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first,

@@ -1,4 +1,5 @@
 // CQ_HobbeToothContestScript::Init() -- register the quest region, reset the contest state and the master-data boast flag, register the quest's four boasts and reset the Whisper comment timer
+// Leaf: ?Init@CQ_HobbeToothContestScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D99E80, length 530 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; through the interface at +0x40:
 //   AddQuestRegion (slot 271, +0x43c), AddBoast (slot 303, +0x4bc); the timer service (global 0x0143E8F8) SetTimer
@@ -76,7 +77,7 @@ struct CScriptDef {
     long HOB_KillMoreHobbesBoastCost;                   // +0xf34
     long HOB_KillMoreHobbesBoastReward;                 // +0xf38
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad0[0x11b];
     bool HobbeContestKillMoreHobbes;                    // +0x11b
@@ -117,13 +118,13 @@ void CQ_HobbeToothContestScript::Init()
     MissionFailed = false;
     QuestStartScreenShown = false;
     PMasterData->HobbeContestKillMoreHobbes = false;
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->HTContestNakedBoastCost,
-                   g_pScriptDef->HTContestNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->HTContestNoDamageBoastCost,
-                   g_pScriptDef->HTContestNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->HTContestNoWeaponsBoastCost,
-                   g_pScriptDef->HTContestNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLMOREHOBBES", 0x1c, g_pScriptDef->HOB_KillMoreHobbesBoastCost,
-                   g_pScriptDef->HOB_KillMoreHobbesBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->HTContestNakedBoastCost,
+                   pGlobalScriptDef->HTContestNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->HTContestNoDamageBoastCost,
+                   pGlobalScriptDef->HTContestNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->HTContestNoWeaponsBoastCost,
+                   pGlobalScriptDef->HTContestNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLMOREHOBBES", 0x1c, pGlobalScriptDef->HOB_KillMoreHobbesBoastCost,
+                   pGlobalScriptDef->HOB_KillMoreHobbesBoastReward, false, "", 0);
     WhisperCommentTimer.Set(0);
 }

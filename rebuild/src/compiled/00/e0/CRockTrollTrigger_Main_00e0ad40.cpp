@@ -1,5 +1,5 @@
 // CRockTrollTrigger::Main() -- the trader-escort earth-troll trigger: register an alive-filter over Me, wait until the hero is within the script def's TE_EarthTrollTriggerDistance, then (once) play the Darkwood trader-troll cut-scene with the hero cast inside a paused movie sequence unless it was already shown, and remove Me
-// Leaf: Main
+// Leaf: ?Main@CRockTrollTrigger@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0AD40, length 544 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0) over CScriptThing copy ctor 0x004ABE90 / ~CScriptThing 0x004AA840,
 // RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF and
@@ -77,7 +77,7 @@ struct CScriptDef {
     unsigned char _pad[0xe1c];
     long TE_EarthTrollTriggerDistance;                 // +0xE1C (PDB +0xECC)
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_TraderEscortScript {
     unsigned char _pad[0x71];
     bool ShownEarthTroll;                              // +0x71 (PDB +0x85)
@@ -105,7 +105,7 @@ void CRockTrollTrigger::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    long distance = g_pScriptDef->TE_EarthTrollTriggerDistance;
+    long distance = pGlobalScriptDef->TE_EarthTrollTriggerDistance;
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)distance)) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())

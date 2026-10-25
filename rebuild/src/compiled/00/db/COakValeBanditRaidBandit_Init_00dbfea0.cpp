@@ -7,7 +7,7 @@
 //   0x0099EAE0; the CScriptThing temporary's inline destructor (vtable 0x01238C8C, counted pimpl release: destroy + operator
 //   delete 0x00BFE9BC, ~CBaseClass 0x0099A2E0).
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, PMasterData +0x18 (Ego_r.pdb, 28 bytes);
-//   g_pScriptDef (0x0143E90C) OVBRBanditSightRadius +0xd5c / OVBRBanditSoundRadius +0xd60 (PDB +0xe0c / +0xe10, the retail def
+//   pGlobalScriptDef (0x0143E90C) OVBRBanditSightRadius +0xd5c / OVBRBanditSoundRadius +0xd60 (PDB +0xe0c / +0xe10, the retail def
 //   is 0xb0 smaller before them).
 // Shape: as the landed CM_HiddenBooty::Init 0x00E93080: the gate name is a scoped CCharString local and the door lookup is
 //   nested in the OpenDoor call (the outer vtable fetched first).
@@ -154,7 +154,7 @@ struct CScriptDef {
     float         OVBRBanditSightRadius;           // +0xd5c
     float         OVBRBanditSoundRadius;           // +0xd60
 };
-extern CScriptDef* g_pScriptDef;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_OakValeBanditRaidScript;
 struct CQ_SunnyvaleMasterData;
 struct COakValeBanditRaidBandit {
@@ -168,8 +168,8 @@ struct COakValeBanditRaidBandit {
 
 void COakValeBanditRaidBandit::Init()
 {
-    Game->EntitySetSightRadius(Me, g_pScriptDef->OVBRBanditSightRadius);
-    Game->EntitySetSoundRadius(Me, g_pScriptDef->OVBRBanditSoundRadius);
+    Game->EntitySetSightRadius(Me, pGlobalScriptDef->OVBRBanditSightRadius);
+    Game->EntitySetSoundRadius(Me, pGlobalScriptDef->OVBRBanditSoundRadius);
     Game->SetIsThingTurncoatable(Me, false);
     {
         CCharString gateName("OakValeBanditRaidGate", -1);

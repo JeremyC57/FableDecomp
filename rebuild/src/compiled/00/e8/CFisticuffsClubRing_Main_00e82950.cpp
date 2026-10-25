@@ -1,5 +1,5 @@
 // CFisticuffsClubRing::Main() -- the Fisticuffs Club ring trigger: every frame track whether the hero is inside the ring radius; inside, cancel the "step outside" warning and, while an active club fight is idle, have a club member tell the hero to stop interrupting (rate-limited); stepping out while in the club triggers Tyler's "step outside" warning with a HUD clock; while in the club, leaving the ring during a fight raises the boo meter and times the hero out, otherwise fights raise the cheer meter; both meters are clamped to 0..12
-// Leaf: Main
+// Leaf: ?Main@CFisticuffsClubRing@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E82950, 1574 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CIsThingAlive dtor 0x00E241B0, RegisterFilter 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CFisticuffsClubRing helper 0x00E83230 (manifest label "HandleVillageSelection" is a
@@ -8,7 +8,7 @@
 //   GameCalls slots 7, 70, 72, 77, 87-90 (timers through g_pGameScriptInterface 0x0143E8F8), 326 AddQuestInfoTimer,
 //   338 RemoveQuestInfoElement, 364-366.
 // Layout: Ego_r.pdb CFisticuffsClubRing: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CV_FisticuffsClubScript,
-//   retail = PDB - 0x14), PMasterData +0x18. CScriptDef (g_pScriptDef 0x0143E90C, retail = PDB - 0x5c here): FC_OutsideRingRange
+//   retail = PDB - 0x14), PMasterData +0x18. CScriptDef (pGlobalScriptDef 0x0143E90C, retail = PDB - 0x5c here): FC_OutsideRingRange
 //   +0x5e4, FC_RingTimeOut +0x5e8, FC_RingRadius +0x61c, FC_InsideRingMessageDelay +0x620.
 struct CTimer;
 struct CCharString {
@@ -156,7 +156,7 @@ struct CScriptDef {
     float FC_RingRadius;                                // +0x61c
     long  FC_InsideRingMessageDelay;                    // +0x620
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 struct CV_FisticuffsClubScript {
@@ -221,7 +221,7 @@ void CFisticuffsClubRing::Main()
     ParentClass->InitialiseVariables();
     CTimer warningTimer;
     CTimer interruptTimer;
-    float ringRadius = g_pScriptDef->FC_RingRadius;
+    float ringRadius = pGlobalScriptDef->FC_RingRadius;
     long warningInfo = 0;
     for (;;) {
         if (IsActiveThreadTerminating())
@@ -248,7 +248,7 @@ void CFisticuffsClubRing::Main()
                 long conversation = Game->AddNewConversation(member, false, false);
                 Game->AddPersonToConversation(conversation, Game->GetHero());
                 Game->AddLineToConversation(conversation, ParentClass->GetQuestText("INTERRUPT_FIGHT_10"), false, member, Game->GetHero());
-                interruptTimer.SetTime(g_pScriptDef->FC_InsideRingMessageDelay);
+                interruptTimer.SetTime(pGlobalScriptDef->FC_InsideRingMessageDelay);
             }
         } else {
             if (IsActiveThreadTerminating())
@@ -260,7 +260,7 @@ void CFisticuffsClubRing::Main()
                 long conversation = Game->AddNewConversation(tyler, false, false);
                 Game->AddPersonToConversation(conversation, Game->GetHero());
                 Game->AddLineToConversation(conversation, ParentClass->GetQuestText("STEP_OUTSIDE_RING_10"), false, tyler, Game->GetHero());
-                warningTimer.SetTime((long)g_pScriptDef->FC_RingTimeOut);
+                warningTimer.SetTime((long)pGlobalScriptDef->FC_RingTimeOut);
                 warningInfo = Game->AddQuestInfoTimer(warningTimer, "HUD_CLOCK_ICON", 1.0f);
             }
             ParentClass->HeroInsideRing = false;
@@ -278,7 +278,7 @@ void CFisticuffsClubRing::Main()
                     }
                 ParentClass->BooNumber += 1.0f / 15.0f;
                 if (warningTimer.GetTime() == 0
-                    || IsDistanceBetweenThingsOver(Me, Game->GetHero(), g_pScriptDef->FC_OutsideRingRange)) {
+                    || IsDistanceBetweenThingsOver(Me, Game->GetHero(), pGlobalScriptDef->FC_OutsideRingRange)) {
                     if (IsActiveThreadTerminating())
                         {
 #pragma inline_depth(0)

@@ -1,5 +1,5 @@
 // CWorld::EASkipCutScene(const CGameEvent*) -- game-event action: if a skippable cutscene is showing, play the text-box button sound, post the skip-cutscene message and clear the subtitles, marking the cutscene skipped
-// Leaf: EASkipCutScene
+// Leaf: ?EASkipCutScene@CWorld@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00629F50, 255 bytes, `ret 4`. PDB ?EASkipCutScene@CWorld@@QAEXPBVCGameEvent@@@Z.
 // Callees: CSubtitleRenderer::IsCutsceneSkippable() const 0x0048DE44 (landed), __fastcall PeekGuiDef() 0x00438570,
 //   the sound system 0x013B8394 slot 9 (+0x24, its sound player) and the player's PlaySoundEvent (slot 4, +0x10; landed
@@ -8,7 +8,9 @@
 //   Clear(bool) 0x00492BAB. Globals: g_pPlayerGui 0x013B8790 (subtitle renderer at +0x18), g_framesPerSecond 0x01375550.
 // Layout: CSubtitleRenderer InCutscene +0xDE, CutsceneSkipped +0xDF, CutsceneSkippable +0xE0 (Ego_r.pdb 0xE6..0xE8 less
 //   the 4 bytes of each of the two 12-byte retail vectors before them); CPlayerGuiDef text-box button sound criteria
-//   +0x5EC (name inferred: PDB TextBoxButtonASoundCriteria); CWorld PMessageEventManager +0x60 (engine/CWorld.h).
+//   +0x5EC = TextBoxButtonBSoundCriteria (Ego_r.pdb +0x628 less 0x3C: TextBoxSkipCutsceneGraphic +0x5E4 in the landed
+//   CPlayerGuiDef ctors, button A +0x5E8 and B +0x5EC both read by CWorld::EAAnswerQuestion 0x00629DE0); CWorld
+//   PMessageEventManager +0x60 (engine/CWorld.h).
 // Shape: the CSoundInit default ctor of the landed PlaySoundAtPos (list + body stores) with GainFaderBits = 0x8010; the
 //   sound player's vtable is spilled across the GetSampleBank() call that supplies the first argument; the message
 //   position is a zero C3DVector temporary.
@@ -43,7 +45,7 @@ struct CSoundSystem {
 extern CSoundSystem* g_pSoundSystem;               // 0x013B8394
 struct CPlayerGuiDef {
     unsigned char _pad[0x5ec];
-    CCharString   TextBoxButtonASoundCriteria;    // +0x5EC
+    CCharString   TextBoxButtonBSoundCriteria;    // +0x5EC
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
 struct CSubtitleRenderer {
@@ -76,7 +78,7 @@ void CWorld::EASkipCutScene(const CGameEvent* event)
         CPlayerGuiDef* def = PeekGuiDef();
         CSoundInit init;
         init.GainFaderBits = 0x8010;
-        g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonASoundCriteria, true, init, false);
+        g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
         PMessageEventManager->AddMessage(0x32, g_framesPerSecond, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
         subtitles.Clear(false);
         subtitles.CutsceneSkipped = true;

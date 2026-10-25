@@ -1,8 +1,8 @@
 // CQ_PrisonEscapeRescueMotherScript::Init() -- register the prison regions of the quest, add the unclothed / no-damage / no-weapons boasts, reset the task, conversation and escape state, clear the master-data prison flags, make the guards ignore crimes and reset the hero's combat multiplier
-// Leaf: Init
+// Leaf: ?Init@CQ_PrisonEscapeRescueMotherScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DD2720, 1184 bytes.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0; Game slots 134 SetGuardsIgnoreCrimes, 151 ResetPlayerCreatureCombatMultiplier,
-//   271 AddQuestRegion, 303 AddBoast; script def g_pScriptDef 0x0143E90C (prison boast cost/reward pairs +0x198..+0x1ac).
+//   271 AddQuestRegion, 303 AddBoast; script def pGlobalScriptDef 0x0143E90C (prison boast cost/reward pairs +0x198..+0x1ac).
 // Layout (retail = Ego_r.pdb - 0x14): CurrentTask +0x48, TasksDone +0x4c, TargetNumber +0x58, HeroAgreesToTask +0x64 ..
 //   RaceStarting +0x6b, YearsPassedInCell +0x6c, PrisonerConversationIndex +0x70, ConversationIndex +0x74, HeroEscapedCell
 //   +0x78, AlarmSounded +0x79, MotherRescuedFromPrisonAutoSaveCheckPoint +0x7a. CScriptDef = Ego_r.pdb - 4 (as the landed
@@ -67,7 +67,7 @@ struct CScriptDef {
     long PrisonNoWeaponsBoastCost;                      // +0x1a8
     long PrisonNoWeaponsBoastReward;                    // +0x1ac
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad[0x84];
     bool MotherDodgingKraken;                           // +0x84
@@ -114,9 +114,9 @@ void CQ_PrisonEscapeRescueMotherScript::Init()
     Game->AddQuestRegion("Q_PrisonEscapeRescueMother", "PrisonCells_3");
     Game->AddQuestRegion("Q_PrisonEscapeRescueMother", "PrisonBarracks");
     Game->AddQuestRegion("Q_PrisonEscapeRescueMother", "PrisonOffice");
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->PrisonNakedBoastCost, g_pScriptDef->PrisonNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->PrisonNoDamageBoastCost, g_pScriptDef->PrisonNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->PrisonNoWeaponsBoastCost, g_pScriptDef->PrisonNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->PrisonNakedBoastCost, pGlobalScriptDef->PrisonNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->PrisonNoDamageBoastCost, pGlobalScriptDef->PrisonNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->PrisonNoWeaponsBoastCost, pGlobalScriptDef->PrisonNoWeaponsBoastReward, false, "", 0);
     HeroAgreesToTask = false;
     HeroHasFoundWeapons = false;
     MotherCellDoorOpen = false;

@@ -1,5 +1,5 @@
 // CHSA_ScreamingVillager::Main() -- Hero Souls arena screaming villager: takes scripting control, waits for the hero within 50 units, turns scared and runs to the RunAwayMarker, then fades out and dies
-// Leaf: Main
+// Leaf: ?Main@CHSA_ScreamingVillager@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D7F880, length 560 bytes (+ int3 padding).
 // Callees: the entity-script machinery of the landed CDyingVillager::Main 0x00D7F460 (CIsThingAlive predicate, SetPredicate
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, scripted-thing handle 0x0099A380 / 0x00CD23B9 / 0x00CD2770 / 0x007E74D0,
@@ -970,7 +970,7 @@ struct CScriptDef {
  unsigned char _pad[0xe4c];
  float WomanFadeTime;                                // +0xe4c
 };
-extern CScriptDef* g_pScriptDef;                     // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CHSA_ScreamingVillager {
  void* VTable; GameCalls* Game; CScriptThing Me;
  void* ParentClass;                                  // +0x14 CQ_HeroSoulsArenaScript*
@@ -1012,6 +1012,6 @@ void CHSA_ScreamingVillager::Main()
    if (IsActiveThreadTerminating()) return;
   }
   if (IsActiveThreadTerminating()) return;
-  FadeOutAndKillEntity(Me, true, g_pScriptDef->WomanFadeTime, true);
+  FadeOutAndKillEntity(Me, true, pGlobalScriptDef->WomanFadeTime, true);
  }
 }

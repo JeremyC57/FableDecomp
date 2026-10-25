@@ -3,8 +3,10 @@
 // Flags: /Os
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BAF94, 35 bytes, `__fastcall`, `ret 8` (hidden result + value),
 //   ebp frame with `leave`; unaligned in a packed (/Os-style) run of STL instantiations.
-// Identity: all 15 callers are in CTCInventoryClothing::GetCurrentTotalArmorValue (0x005B4A95 ..), which builds a
-//   local set (constructor 0x005BB3B3) and inserts the constants 1, 2, 3, ... through a by-reference temporary;
+// Identity: the 15 callers are in two functions: CTCInventoryClothing::GetCurrentTotalArmorValue 0x005B4A95 (5 calls,
+//   0x005B4ABD..0x005B4B18) and the next CTCInventoryClothing body 0x005B4EBA (manifest CalculateArmorValues; 10 calls,
+//   0x005B4F2E..0x005B4F8A and 0x005B5521..0x005B557D). Each builds a local set (constructor 0x005BB3B3) and inserts
+//   the constants 1, 2, 3, ... through a by-reference temporary;
 //   FableWin.pdb's only set in that function's neighbourhood is set<EClothingSuitPart> (its destructor follows
 //   ?GetCurrentTotalArmorValue@CTCInventoryClothing@@ there). The manifest's "bad_alloc::bad_alloc" is propagated.
 // Callees: _Rb_tree::insert_unique(const value_type&) @ 0x005BAD5B (out of line; returns pair<iterator, bool>

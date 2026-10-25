@@ -1,4 +1,5 @@
 // CV_ExposeMayorScript::Init() -- reset the path/stage, copy the evidence text and the stables flash distance from the script def, clear the six progress flags
+// Leaf: ?Init@CV_ExposeMayorScript@@
 // Retail: Fable.exe @ 0x00E75680, 73 bytes (+ int3 padding). Reached only through a vtable word (0x012E96D8).
 // Callees: CCharString::operator=(const CCharString&) @ 0x0099EFB0.
 // Layout: Ego_r.pdb CV_ExposeMayorScript - 0x14: Path +0x48, StageNumber +0x4c, HeroFlashedLightsCorrectly ..
@@ -29,7 +30,7 @@ struct CScriptDef {
     CCharString ExposeMayorEvidence;                     // +0x588
     float ExposeMayorMaxFlashDistFromStables;            // +0x58c
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CV_ExposeMayorScript : CQuestScriptBase {
     long Path;                                           // +0x48 (PATH_ID)
@@ -50,12 +51,12 @@ void CV_ExposeMayorScript::Init()
 {
     Path = 0;
     StageNumber = 0;
-    Evidence = g_pScriptDef->ExposeMayorEvidence;
+    Evidence = pGlobalScriptDef->ExposeMayorEvidence;
     HeroFlashedLightsCorrectly = false;
     PrisonerTalkedAboutLamp = false;
     ResetLamp = false;
     SaidYesToBecomeMayor = false;
     QuestCardGiven = false;
     MayorExposeGhostCutscenePlayed = false;
-    MaxFlashDistFromStables = g_pScriptDef->ExposeMayorMaxFlashDistFromStables;
+    MaxFlashDistFromStables = pGlobalScriptDef->ExposeMayorMaxFlashDistFromStables;
 }

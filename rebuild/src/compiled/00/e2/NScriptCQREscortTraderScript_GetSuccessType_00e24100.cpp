@@ -1,13 +1,14 @@
 // NScript::CQR_EscortTraderScript::GetSuccessType(const CScriptThing& trader) -- grade a finished escort: untouched trader at full health = 3, then two tiers by hit count and remaining health fraction from the script def, else 0
+// Leaf: ?GetSuccessType@CQR_EscortTraderScript@NScript@@
 // Grade: MATCH (retry 9) -- the hit-limit test reads the global directly and the fraction test reads it through a block-local
-//   `CScriptDef* def = g_pScriptDef;` declared inside the hit-limit `if`: the global load is CSE'd into the local, which is
+//   `CScriptDef* def = pGlobalScriptDef;` declared inside the hit-limit `if`: the global load is CSE'd into the local, which is
 //   copied to ebx before the GetHealth call (`mov ebx,eax ; fcomp [ebx+990h]`); with both reads on the global (or one local
 //   covering both) VC7.1 folds the field address (`lea ebx,[eax+990h] ; fcomp [ebx]`) or colours the def/trader pair the other way
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E24100, length 170 bytes, `ret 4`.
 // Identity: Ego_r.pdb `?GetSuccessType@CQR_EscortTraderScript@NScript@@QAE?AW4EscortTraderSuccessType@12@ABVCScriptThing@@@Z`
 // (an enum result in eax, the trader by const reference); single caller 0x00E23392 in the escort script.
 // Callees: CGameScriptInterface slot 264 GetHealth(const CScriptThing&) (+0x420, float). Data: the script def pointer
-// g_pScriptDef @ 0x0143E90C (the name landed callers use); its escort tier fields +0x988/+0x98C (long hit limits) and
+// pGlobalScriptDef @ 0x0143E90C (the name landed callers use); its escort tier fields +0x988/+0x98C (long hit limits) and
 // +0x990/+0x994 (float health fractions) carry descriptive names: the retail CScriptDef does not line up with
 // Ego_r.pdb here.
 // Layout: retail quest base 0x48 bytes (GSI +0x40); TraderHitCount +0x64 and TraderInitialHealth +0x6C (Ego_r.pdb
@@ -55,7 +56,7 @@ struct CScriptDef {
     float EscortTraderGreatMinHealthFraction;           // +0x990
     float EscortTraderGoodMinHealthFraction;            // +0x994
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 namespace NScript {
 struct CScriptBase {                                    // retail 0x40 bytes (PDB 0x54: debug containers)
@@ -82,13 +83,13 @@ CQR_EscortTraderScript::EscortTraderSuccessType CQR_EscortTraderScript::GetSucce
 {
     if (TraderHitCount == 0 && GSI->GetHealth(trader) == TraderInitialHealth)
         return ESCORT_TRADER_SUCCESS_PERFECT;
-    if (TraderHitCount <= g_pScriptDef->EscortTraderGreatMaxHits) {
-        CScriptDef* def = g_pScriptDef;
+    if (TraderHitCount <= pGlobalScriptDef->EscortTraderGreatMaxHits) {
+        CScriptDef* def = pGlobalScriptDef;
         if (def->EscortTraderGreatMinHealthFraction <= GSI->GetHealth(trader) / TraderInitialHealth)
             return ESCORT_TRADER_SUCCESS_GREAT;
     }
-    if (TraderHitCount <= g_pScriptDef->EscortTraderGoodMaxHits) {
-        CScriptDef* def = g_pScriptDef;
+    if (TraderHitCount <= pGlobalScriptDef->EscortTraderGoodMaxHits) {
+        CScriptDef* def = pGlobalScriptDef;
         if (def->EscortTraderGoodMinHealthFraction <= GSI->GetHealth(trader) / TraderInitialHealth)
             return ESCORT_TRADER_SUCCESS_GOOD;
     }

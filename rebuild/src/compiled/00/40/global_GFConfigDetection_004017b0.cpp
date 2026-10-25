@@ -5,7 +5,7 @@
 // 0x00BFE9F9) around the 260-byte error-text buffer.  Replaces the landed asm_bake bootstrap with compiler-emitted C++.
 // Callees: InitExternalStrings 0x0099E260 (@InitExternalStrings@0), LoadLibraryA / GetProcAddress (cached in esi) / MessageBoxA
 // through the IAT, strncpy 0x00BFE9C2, DisplayErrorDialog 0x0099DCB0 (_DisplayErrorDialog@8, also handed to the DLL as its
-// error callback), CSystemRegistry ctor 0x0099CF10 / ReadBOOL 0x0099CFE0 / WriteBOOL 0x0099D100 / dtor 0x0099CF70.
+// error callback), CSystemRegistry ctor 0x0099CF10 / GetBOOL 0x0099CFE0 (Ego_r.pdb name; sweep2) / WriteBOOL 0x0099D100 / dtor 0x0099CF70.
 // Data: the DLL handle 0x013B7C8C and its result block pointer 0x013BD6E8 (filled by CreateConfigDetection); the registry key
 // and value CWideStrings 0x013BCA28 / 0x013BCA2C; the caps the user-profile code reads: max antialiasing 0x01375080
 // (CUserProfileManager::GetMaxAntialiasing 0x00409090), max resolution width 0x01375084 (GetMaxResolution 0x00408900), max
@@ -31,7 +31,7 @@ class CSystemRegistry {                                 // 8 bytes {root key, op
 public:
     CSystemRegistry(const CWideString& subKey, long rootSelection);   // 0x0099CF10
     ~CSystemRegistry();                                 // 0x0099CF70
-    int ReadBOOL(const CWideString& valueName, int defaultValue) const;   // 0x0099CFE0
+    int GetBOOL(const CWideString& valueName, int defaultValue) const;   // 0x0099CFE0
     void WriteBOOL(const CWideString& valueName, int value) const;       // 0x0099D100
 private:
     void* RootKey;
@@ -153,7 +153,7 @@ bool GFConfigDetection()
                 g_MemoryB = g_pConfigDetectionInfo->RecommendedMemoryB;
 
             CSystemRegistry registry(g_ConfigRegistryKey, 0);
-            int askSoftwareMode = registry.ReadBOOL(g_ConfigRegistryValue, 0);
+            int askSoftwareMode = registry.GetBOOL(g_ConfigRegistryValue, 0);
             g_UseSoftwareMode = g_pConfigDetectionInfo->RequiresSoftwareMode != 0;
             if (!g_UseSoftwareMode && askSoftwareMode) {
                 SErrorDialogParams params;

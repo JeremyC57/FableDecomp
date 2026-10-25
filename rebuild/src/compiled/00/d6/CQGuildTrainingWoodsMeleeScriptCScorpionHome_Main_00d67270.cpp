@@ -1,10 +1,10 @@
 // CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Main() -- show the beetle counter and start a 5-second nag timer; while the parent's scorpions are alive: if the hero is not carrying the training stick when the timer runs out, have him say the stick reminder and re-arm the timer for 8 seconds; count the live guild scorpions, update the counter, and whenever fewer than three are about either finish (none alive and none left to spawn: scorpions gone, master data flag set) or spawn another stag beetle at the spawn point furthest from the hero; finally remove the counter
-// Leaf: Main
+// Leaf: ?Main@CScorpionHome@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D67270, 1224 bytes (int3 padded to 1232).
 // Callees: CEntityScriptBase::IsDone 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is
 //   propagated), CCharString 0x0099EBF0 / ~ 0x0099EAE0, __ftol2 0x00BFEA70, CCountedPointer<CScriptThingImpl>::operator=
 //   0x00704580, ~vector<CScriptThing> 0x008AC970 (IsDone exit; inline copy with free 0x00BFEA14 at the loop end);
-//   CScriptThing::GetPos / SetToKillOnLevelUnload inlined (imp slots 6, 70); g_pScriptDef 0x0143E90C
+//   CScriptThing::GetPos / SetToKillOnLevelUnload inlined (imp slots 6, 70); pGlobalScriptDef 0x0143E90C
 //   (GUI_MeleeBeetles +0xF10); g_pGameScriptInterface 0x0143E8F8 timer slots 87..90, zero vector 0x0143E8E0; Game slots 7, 70, 75, 78, 91, 194, 321, 327, 335, 338, 364, 366, 465.
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8}; Ego_r.pdb CScorpionHome ParentClass +0x14,
 //   PMasterData +0x18, ScorpionsLeft +0x1c; parent CQ_GuildTrainingWoodsMeleeScript (PDB - 0x14) ScorpionsAlive +0x4b;
@@ -202,7 +202,7 @@ struct CScriptDef {
     float GUI_DepartureBeetles;                         // +0xf0c
     float GUI_MeleeBeetles;                             // +0xf10
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_GuildTrainingWoodsMeleeScript {
     unsigned char _pad[0x4b];
     bool ScorpionsAlive;                                // +0x4b
@@ -227,7 +227,7 @@ struct CScorpionHome : CEntityScriptBase {
 
 void CScorpionHome::Main()
 {
-    long counter = Game->AddQuestInfoCounter("HUD_BEETLE_ICON", (long)g_pScriptDef->GUI_MeleeBeetles, 1.0f);
+    long counter = Game->AddQuestInfoCounter("HUD_BEETLE_ICON", (long)pGlobalScriptDef->GUI_MeleeBeetles, 1.0f);
     Game->DisplayQuestInfo(true);
     CTimer nagTimer(5);
     while (ParentClass->ScorpionsAlive) {
@@ -243,7 +243,7 @@ void CScorpionHome::Main()
         }
         std::vector<CScriptThing> scorpions;
         Game->GetAllThingsWithScriptName("GuildScorpions", scorpions);
-        Game->UpdateQuestInfoCounter(counter, (long)(g_pScriptDef->GUI_MeleeBeetles - ScorpionsLeft - scorpions.size()), -1);
+        Game->UpdateQuestInfoCounter(counter, (long)(pGlobalScriptDef->GUI_MeleeBeetles - ScorpionsLeft - scorpions.size()), -1);
         if (scorpions.size() < 3) {
             if (IsDone())
                 return;

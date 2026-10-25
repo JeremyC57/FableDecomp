@@ -1,4 +1,5 @@
 // CQ_ArenaScript::Init() -- register the four Arena quest regions, offer the four Arena boasts and reset the arena
+// Leaf: ?Init@CQ_ArenaScript@@
 // state (rounds, gold, creature counts, crowd, the sixteen spawn-needed flags)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CFA700, length 845 bytes (padded to 848).
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; through the script's
@@ -65,7 +66,7 @@ struct CScriptDef {
     long ArenaKillOpponentsBoastReward;                // +0xae4
     long ArenaSpareOpponentsBoastReward;               // +0xae8
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CScriptBase {                                   // retail 0x40 bytes (PDB 0x54: debug containers)
     unsigned char _body[0x40];
@@ -111,14 +112,14 @@ void CQ_ArenaScript::Init()
     Game->AddQuestRegion("Q_Arena", "ArenaHallOfHeroes");
     Game->AddQuestRegion("Q_Arena", "ArenaCells");
     Game->AddQuestRegion("Q_Arena", "Arena");
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->ArenaNakedBoastCost,
-                   g_pScriptDef->ArenaNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->ArenaNoDamageBoastCost,
-                   g_pScriptDef->ArenaNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLARENAOPPONENTS", 30, g_pScriptDef->ArenaKillOpponentsBoastCost,
-                   g_pScriptDef->ArenaKillOpponentsBoastReward, true, "", 1);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_SPAREARENAOPPONENTS", 31, g_pScriptDef->ArenaSpareOpponentsBoastCost,
-                   g_pScriptDef->ArenaSpareOpponentsBoastReward, false, "", 1);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->ArenaNakedBoastCost,
+                   pGlobalScriptDef->ArenaNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->ArenaNoDamageBoastCost,
+                   pGlobalScriptDef->ArenaNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLARENAOPPONENTS", 30, pGlobalScriptDef->ArenaKillOpponentsBoastCost,
+                   pGlobalScriptDef->ArenaKillOpponentsBoastReward, true, "", 1);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_SPAREARENAOPPONENTS", 31, pGlobalScriptDef->ArenaSpareOpponentsBoastCost,
+                   pGlobalScriptDef->ArenaSpareOpponentsBoastReward, false, "", 1);
     ChamLeaving = false;
     ArenaRound = 0;
     ArenaRoundWave = 0;

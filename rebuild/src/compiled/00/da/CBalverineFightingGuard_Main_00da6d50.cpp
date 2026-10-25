@@ -1,5 +1,5 @@
 // CBalverineFightingGuard::Main() -- the guard fighting the balverines: register the alive filter, find the nearest MinionAttackingGuard, set the two fighting each other, then (once) wait for the quest start screen, show the guard's health bar, wait for the hero to come close, speak, wait for the attacker to die, reward morality, thank the hero and follow him; finally spawn the parent's GuardChatter on Me, wait for the mission to end and remove Me
-// Leaf: Main
+// Leaf: ?Main@CBalverineFightingGuard@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA6D50, length 1168 bytes, plain `ret`.
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 (out of line in the filter and in the spawned functor's member),
 //   ~CScriptThing @ 0x004AA840, CScriptThing() @ 0x006E7B40, the filter registration @ 0x00F35B10,
@@ -12,7 +12,7 @@
 //   366 AddLineToConversation, 451 GiveThingBestEnemyTarget, 480 SetEntityAsRegionFollowing; CScriptThing slot 75 IsAlive.
 // Literals: "MinionAttackingGuard" 0x012D7274, "HUD_QUEST_ICON_GUARD" 0x012D2B54, "TEXT_QST_045_GUARD_SO_POWERFUL"
 //   0x012D7764, "TEXT_QST_045_GUARD_THANKS" 0x012D7748, "ParentClass." 0x012C9934, "GuardChatter" 0x012D7738, ""
-//   0x0122D70E. Globals: g_pScriptDef 0x0143E90C (+0xd44 the guard talk distance, +0xd50 the rescue morality).
+//   0x0122D70E. Globals: pGlobalScriptDef 0x0143E90C (+0xd44 the guard talk distance, +0xd50 the rescue morality).
 // Layout: Ego_r.pdb CBalverineFightingGuard (36 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14,
 //   PMasterData +0x18, ExplainedAboutSummoning +0x1c, HealthBarID +0x20. CQ_MinionClifftopChaseScript is retail = PDB -
 //   0x14: MissionFailed +0x49, MissionSucceeded +0x4a, QuestStartScreened +0x4b.
@@ -89,7 +89,7 @@ struct CScriptDef {
     unsigned char _pad2[0xd50 - 0xd48];
     long          GuardRescueMorality;                 // +0xd50
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CSpawnedFuncBase {                              // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
@@ -166,7 +166,7 @@ void CBalverineFightingGuard::Main()
             return;
         Game->DisplayQuestInfo(true);
         HealthBarID = Game->AddQuestInfoBarHealth(Me, CRGBColour(0, 255, 0, 255), "HUD_QUEST_ICON_GUARD", 1.0f);
-        while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)g_pScriptDef->GuardTalkDistance)) {
+        while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->GuardTalkDistance)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 return;
@@ -183,7 +183,7 @@ void CBalverineFightingGuard::Main()
         }
         if (IsActiveThreadTerminating())
             return;
-        Game->GiveHeroMorality(g_pScriptDef->GuardRescueMorality);
+        Game->GiveHeroMorality(pGlobalScriptDef->GuardRescueMorality);
         conversation = Game->AddNewConversation(Me, false, false);
         Game->AddLineToConversation(conversation, "TEXT_QST_045_GUARD_THANKS", false, Me, CScriptThing());
         Game->EntityFollowThing(Me, Game->GetHero(), 3.0f, true);

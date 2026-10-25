@@ -1,5 +1,5 @@
 // CHS_Screamer::Main() -- a Hero Souls (Abbey mother) screamer: target the hero; until the mother's soul is collected, whenever no super screamer exists, the new-super-screamer timer has run out and the hero is over 5 units away, become the super screamer (mini-map marker, wait for the hero within 15 units), take scripted control, cast the unholy-power effect and drain the hero's health every timer period while lowering the mother's bar, starting the super attack once; finally play the death effect and remove Me
-// Leaf: Main
+// Leaf: ?Main@CHS_Screamer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D83FA0, 1230 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: scripted-thing handle ctor 0x007E72A0 / IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0, CTimer ctor
 //   0x00CD4450 / dtor 0x00CD4470, CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, ~CBase 0x0099A2E0,
@@ -233,7 +233,7 @@ struct CScriptDef {
     long  HS_SecondsBeforeSuperScreamerDamage;          // +0xc7c
     float HS_SuperScreamerDamagePerSecond;              // +0xc80
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 struct CQ_HeroSoulsMotherScript {
@@ -309,7 +309,7 @@ void CHS_Screamer::Main()
                 Game->SetIsPushableByHero(Me, false);
                 Game->SetIsThingForcePushable(Me, false);
                 CTimer damageTimer;
-                damageTimer.SetTime(g_pScriptDef->HS_SecondsBeforeSuperScreamerDamage);
+                damageTimer.SetTime(pGlobalScriptDef->HS_SecondsBeforeSuperScreamerDamage);
                 bool attacking = false;
                 for (;;) {
                     if (IsActiveThreadTerminating())
@@ -319,9 +319,9 @@ void CHS_Screamer::Main()
                     if (damageTimer.GetTime() == 0) {
                         if (IsActiveThreadTerminating())
                             return;
-                        Game->ChangeHeroHealthBy(g_pScriptDef->HS_SuperScreamerDamagePerSecond, true, true);
+                        Game->ChangeHeroHealthBy(pGlobalScriptDef->HS_SuperScreamerDamagePerSecond, true, true);
                         damageTimer.SetTime(1);
-                        if (ParentClass->BarToFill > g_pScriptDef->HS_ScreamerInc) {
+                        if (ParentClass->BarToFill > pGlobalScriptDef->HS_ScreamerInc) {
                             if (IsActiveThreadTerminating())
                                 return;
                             ParentClass->BarToFill -= 0.05f;

@@ -1,4 +1,5 @@
 // CQ_BreakSiegeScript::Init() -- register the two Break Siege quest regions, clear the quest flags, reset the master
+// Leaf: ?Init@CQ_BreakSiegeScript@@
 // data's siege boast results and offer the five Break Siege boasts
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D1CC40, length 696 bytes (padded to 704).
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; through the script's
@@ -66,7 +67,7 @@ struct CScriptDef {
     long BreakSiegeHireNoGuardsBoastReward;            // +0xb9c
     long BreakSiegeKillBanditLeaderBoastReward;        // +0xba0
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad_0x000[0x116];
@@ -119,14 +120,14 @@ void CQ_BreakSiegeScript::Init()
     ReasonForFailure = 0;
     Data->BreakSiegeNoAssistance = true;
     Data->BreakSiegeKilledLeader = false;
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->BreakSiegeNakedBoastCost,
-                   g_pScriptDef->BreakSiegeNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->BreakSiegeNoDamageBoastCost,
-                   g_pScriptDef->BreakSiegeNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->BreakSiegeNoWeaponsBoastCost,
-                   g_pScriptDef->BreakSiegeNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_HIRENOGUARDS", 25, g_pScriptDef->BreakSiegeHireNoGuardsBoastCost,
-                   g_pScriptDef->BreakSiegeHireNoGuardsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLBANDITLEADER", 26, g_pScriptDef->BreakSiegeKillBanditLeaderBoastCost,
-                   g_pScriptDef->BreakSiegeKillBanditLeaderBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->BreakSiegeNakedBoastCost,
+                   pGlobalScriptDef->BreakSiegeNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->BreakSiegeNoDamageBoastCost,
+                   pGlobalScriptDef->BreakSiegeNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->BreakSiegeNoWeaponsBoastCost,
+                   pGlobalScriptDef->BreakSiegeNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_HIRENOGUARDS", 25, pGlobalScriptDef->BreakSiegeHireNoGuardsBoastCost,
+                   pGlobalScriptDef->BreakSiegeHireNoGuardsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLBANDITLEADER", 26, pGlobalScriptDef->BreakSiegeKillBanditLeaderBoastCost,
+                   pGlobalScriptDef->BreakSiegeKillBanditLeaderBoastReward, false, "", 0);
 }

@@ -1,5 +1,5 @@
 // CAT_Phase3Guard::Main() -- Arena phase-3 guard: alive filter on Me, wander round its own position (min 0, max from the script def), state group 4; find "AT_ConvoySpy" and ally it with every live guard of the parent, make it and the hero enemies of Me, mark Me on the minimap, wait for the phase to end, then take scripted control, walk to the nearest REGION_EXIT_POINT and fade out
-// Leaf: Main
+// Leaf: ?Main@CAT_Phase3Guard@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F051D0, 1232 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CIsThingAlive dtor 0x00E241B0, SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, scripted-thing handle IsScripting 0x00CD23B9 /
@@ -207,7 +207,7 @@ struct CScriptDef {
     unsigned char _pad[0xa38];
     float ArenaGuardWanderMaxDistance;                 // +0xa38 (retail; PDB name not resolved)
 };
-extern CScriptDef* g_pScriptDef;                      // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                      // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptThingVector {                            // STLport vector<CScriptThing> (12 bytes)
     CScriptThing* _M_start;
     CScriptThing* _M_finish;
@@ -240,7 +240,7 @@ void CAT_Phase3Guard::Main()
     CScriptGameResourceObjectScriptedThingBase handle;
     Game->SetWanderCentrePoint(CScriptThing(Me, CScriptThing::InlineCopy()), Me.GetPos());
     Game->SetWanderMinDistance(CScriptThing(Me, CScriptThing::InlineCopy()), 0.0f);
-    Game->SetWanderMaxDistance(CScriptThing(Me, CScriptThing::InlineCopy()), g_pScriptDef->ArenaGuardWanderMaxDistance);
+    Game->SetWanderMaxDistance(CScriptThing(Me, CScriptThing::InlineCopy()), pGlobalScriptDef->ArenaGuardWanderMaxDistance);
     Game->SetScriptingStateGroup(CScriptThing(Me, CScriptThing::InlineCopy()), 4);
     CScriptThing spy = Game->GetThingWithScriptName("AT_ConvoySpy");
     for (unsigned long i = 0; i < ParentClass->Guards.size(); ++i) {

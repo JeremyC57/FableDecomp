@@ -1,4 +1,5 @@
 // CQ_FireHeartScript::Init() -- register the demon-door lookout region and reset the quest state: flags, the pad FX names, the starting sun count by the hero's morality, the puzzle patterns and counts from the script def, the OPENCAGE cut-scene flag, the per-pad / per-prophet / per-villager bookkeeping vectors and the morality changes
+// Leaf: ?Init@CQ_FireHeartScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D347B0, length 779 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 / operator=(const CCharString&) 0x0099EFB0,
 //   CScriptBase::IsActiveThreadTerminating 0x00CB7940, vector<CFireHeartPatternDef>::operator= 0x00D34D40,
@@ -6,7 +7,7 @@
 //   ~CScriptThing 0x004AA840, vector<CScriptThing>::resize 0x00D34AC0, scripted-thing handle ctor 0x007E72A0 / dtor
 //   0x007E74D0, vector<CScriptGameResourceObjectScriptedThingBase>::resize 0x00CD3CCB; through the interface (+0x40):
 //   GetHeroMorality (157), AddQuestRegion (271), GetActiveQuestName (655).
-// Data: g_pScriptDef 0x0143E90C FHSunPadFX +0xC04, FHMoonPadFX +0xC08, FHPadRadius +0xC10, FHNumberOfPads +0xC14,
+// Data: pGlobalScriptDef 0x0143E90C FHSunPadFX +0xC04, FHMoonPadFX +0xC08, FHPadRadius +0xC10, FHNumberOfPads +0xC14,
 //   FHNumberOfProphets +0xC18, FHNumberOfPatterns +0xC1C, FHNumberOfRounds +0xC20, FHNumberOfSunsEvil +0xC24,
 //   FHNumberOfSunsGood +0xC28, FHPatterns +0xC2C, FHNumberOfVillagers +0xC48, FHMoralityChangeOnKilled +0xC50,
 //   FHMoralityChangeOnFreed +0xC54.
@@ -162,7 +163,7 @@ struct CScriptDef {
     float       FHMoralityChangeOnKilled;               // +0xC50
     float       FHMoralityChangeOnFreed;                // +0xC54
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
@@ -242,29 +243,29 @@ void CQ_FireHeartScript::Init()
     HasHeroHitVillagersGroupOne = false;
     HasHeroHitVillagersGroupTwo = false;
     InfoDisplayed = false;
-    PadSunFX = g_pScriptDef->FHSunPadFX;
-    PadMoonFX = g_pScriptDef->FHMoonPadFX;
+    PadSunFX = pGlobalScriptDef->FHSunPadFX;
+    PadMoonFX = pGlobalScriptDef->FHMoonPadFX;
     if (Game->GetHeroMorality() < 0.5f) {
         if (IsActiveThreadTerminating())
             return;
-        StartNumberOfSuns = g_pScriptDef->FHNumberOfSunsEvil;
+        StartNumberOfSuns = pGlobalScriptDef->FHNumberOfSunsEvil;
     } else {
         if (IsActiveThreadTerminating())
             return;
-        StartNumberOfSuns = g_pScriptDef->FHNumberOfSunsGood;
+        StartNumberOfSuns = pGlobalScriptDef->FHNumberOfSunsGood;
     }
-    Pattern = g_pScriptDef->FHPatterns;
-    PadRadius = g_pScriptDef->FHPadRadius;
-    NumberOfRounds = g_pScriptDef->FHNumberOfRounds;
-    NumberOfPatterns = g_pScriptDef->FHNumberOfPatterns;
-    NumberOfPads = g_pScriptDef->FHNumberOfPads;
+    Pattern = pGlobalScriptDef->FHPatterns;
+    PadRadius = pGlobalScriptDef->FHPadRadius;
+    NumberOfRounds = pGlobalScriptDef->FHNumberOfRounds;
+    NumberOfPatterns = pGlobalScriptDef->FHNumberOfPatterns;
+    NumberOfPads = pGlobalScriptDef->FHNumberOfPads;
     NumberOfSuns = 0;
     PuzzleRound = 0;
     CutsceneFlags["OPENCAGE"] = false;
     FreedProphets = 0;
     KilledProphets = 0;
-    NumberOfProphets = g_pScriptDef->FHNumberOfProphets;
-    NumberOfVillagers = g_pScriptDef->FHNumberOfVillagers;
+    NumberOfProphets = pGlobalScriptDef->FHNumberOfProphets;
+    NumberOfVillagers = pGlobalScriptDef->FHNumberOfVillagers;
     StartingPattern.resize(NumberOfPads, false);
     ProphetsKilled.resize(NumberOfProphets, false);
     ProphetsReleased.resize(NumberOfProphets, false);
@@ -277,8 +278,8 @@ void CQ_FireHeartScript::Init()
     ProphetsScripted = 0;
     seh_Prophet.resize(5);
     MissionHistory = MISSION_HISTORY_NONE;
-    MoralityChangeOnKilled = g_pScriptDef->FHMoralityChangeOnKilled;
-    MoralityChangeOnFreed = g_pScriptDef->FHMoralityChangeOnFreed;
+    MoralityChangeOnKilled = pGlobalScriptDef->FHMoralityChangeOnKilled;
+    MoralityChangeOnFreed = pGlobalScriptDef->FHMoralityChangeOnFreed;
     HasDemonDoorBeenEnabled = false;
     HasScytheCutscenePlayed = false;
     KilledAllPrisoners = true;

@@ -1,11 +1,11 @@
 // CQ_RansomVictimScript::MakeNPCComment(name, npc, comment) -- if the NPC is alive and the comment timer has run out, start a conversation between the NPC and the hero with the NPC's pre- or post-rescue line for this comment; for the father's-guard comment also let the other NPC (the victim when the guard is speaking, else the guard) answer with its response line when it is alive, different from the speaker and the line exists; restart the comment timer and report that a comment was made
-// Leaf: MakeNPCComment
+// Leaf: ?MakeNPCComment@CQ_RansomVictimScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DE3F90, 1263 bytes (int3 padded to 1264); `ret 0Ch`.
 // Callees: ~CScriptThing 0x004AA840, CScriptThing copy 0x004ABE90 (and inline), CScriptThing::IsAlive 0x004AB130 (slot 75),
 //   CScriptThing::GetDataString 0x004AA900, IsActiveThreadTerminating 0x00CB7940, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   operator+ 0x0099F690 (const char*, CCharString) / 0x0099F600 (CCharString, const char*) / 0x0099F570 (CCharString,
 //   CCharString) (all __fastcall); impl slot 78 (+0x138) equality; g_pGameScriptInterface 0x0143E8F8 timer slots 89, 90;
-//   g_pScriptDef 0x0143E90C (+0x50 comment interval); Game slots 70, 72, 358, 364, 365, 366.
+//   pGlobalScriptDef 0x0143E90C (+0x50 comment interval); Game slots 70, 72, 358, 364, 365, 366.
 // Layout (retail = Ego_r.pdb - 0x14): RescuedVictim +0x4b, NPCCommentTimer +0x68.
 #define THING_INLINE_COPY
 #define VEC_DTOR
@@ -203,7 +203,7 @@ struct CScriptDef {
     unsigned char _pad[0x50];
     long NPCCommentInterval;                            // +0x50
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
@@ -258,6 +258,6 @@ bool CQ_RansomVictimScript::MakeNPCComment(const CCharString& name, const CScrip
             Game->AddLineToConversation(conversation, "TEXT_QST_B06_PRE_RESC_" + other.GetDataString() + "_" + name + "_RESPONSE", false, other, Game->GetHero());
         }
     }
-    NPCCommentTimer.Set(g_pScriptDef->NPCCommentInterval);
+    NPCCommentTimer.Set(pGlobalScriptDef->NPCCommentInterval);
     return true;
 }

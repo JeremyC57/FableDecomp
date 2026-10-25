@@ -1,8 +1,8 @@
 // CQ_HobbeCaveScript::Init() -- register the quest's eleven regions, reset the mission state (the timer from the script def), flag the master data and register the six boasts
-// Leaf: Init
+// Leaf: ?Init@CQ_HobbeCaveScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D8D640, 1472 bytes (int3 padded).
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; CGameScriptInterface AddQuestRegion (slot 271,
-//   +0x43c), AddBoast (slot 303, +0x4bc); script def g_pScriptDef 0x0143E90C (boast cost/reward pairs +0xd8.. and +0xcf0..,
+//   +0x43c), AddBoast (slot 303, +0x4bc); script def pGlobalScriptDef 0x0143E90C (boast cost/reward pairs +0xd8.. and +0xcf0..,
 //   HobbeCave timer +0xccc).
 // Layout: Game +0x40, PMasterData +0x44 (+0x10d / +0x110 / +0x114), bools +0x48..+0x50, longs +0x58/+0x5c, bool +0x60,
 //   timer +0x64, bools +0x68..+0x6c, longs +0x70/+0x74 (descriptive names: the PDB does not cover the quest scripts).
@@ -66,7 +66,7 @@ struct CScriptDef {
     long BoyNoHarmBoastCost;                            // +0xd00
     long BoyNoHarmBoastReward;                          // +0xd04
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CHobbeCaveMasterData {
     unsigned char _pad[0x10d];
     bool HobbeCaveDone;                                 // +0x10d
@@ -119,7 +119,7 @@ void CQ_HobbeCaveScript::Init()
     Count58 = 0;
     Count5C = 0;
     Flag60 = false;
-    Timer = g_pScriptDef->HobbeCaveTimer;
+    Timer = pGlobalScriptDef->HobbeCaveTimer;
     Flag68 = false;
     Flag69 = false;
     Flag6A = false;
@@ -130,10 +130,10 @@ void CQ_HobbeCaveScript::Init()
     PMasterData->HobbeCaveDone = false;
     PMasterData->HobbeCaveState = 1;
     PMasterData->HobbeCaveActive = true;
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->NakedBoastCost, g_pScriptDef->NakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->NoDamageBoastCost, g_pScriptDef->NoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->NoWeaponsBoastCost, g_pScriptDef->NoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLNYMPH", 0x15, g_pScriptDef->KillNymphBoastCost, g_pScriptDef->KillNymphBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_SACRIFICE", 0x16, g_pScriptDef->SacrificeBoastCost, g_pScriptDef->SacrificeBoastReward, true, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_BOYNOHARM", 0x17, g_pScriptDef->BoyNoHarmBoastCost, g_pScriptDef->BoyNoHarmBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->NakedBoastCost, pGlobalScriptDef->NakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->NoDamageBoastCost, pGlobalScriptDef->NoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->NoWeaponsBoastCost, pGlobalScriptDef->NoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLNYMPH", 0x15, pGlobalScriptDef->KillNymphBoastCost, pGlobalScriptDef->KillNymphBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_SACRIFICE", 0x16, pGlobalScriptDef->SacrificeBoastCost, pGlobalScriptDef->SacrificeBoastReward, true, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_BOYNOHARM", 0x17, pGlobalScriptDef->BoyNoHarmBoastCost, pGlobalScriptDef->BoyNoHarmBoastReward, false, "", 0);
 }

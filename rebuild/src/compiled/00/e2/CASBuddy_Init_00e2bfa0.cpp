@@ -1,9 +1,10 @@
 // CAS_Buddy::Init() -- ambush scam buddy setup: ally with the hero both ways, allow following the hero, clear the three approach/speech flags, mark the buddy as having information, remember its start position and make it wander around it (min 0, max from the script def) in scripting state group 4
+// Leaf: ?Init@CAS_Buddy@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2BFA0, length 345 bytes (plain `ret`; vtable slot 2 = Init of the entity
 //          script contract).
 // Callees: the game interface's slots 70 GetHero, 599 EntitySetThingAsAllyOfThing, 235 EntitySetAsAllowedToFollowHero, 360
 //          SetThingHasInformation, 763 SetWanderCentrePoint, 766 SetWanderMinDistance, 769 SetWanderMaxDistance, 784
-//          SetScriptingStateGroup (cgsi_slots_aligned.tsv); CScriptThing slot 6 GetPos on Me; data: g_pScriptDef @ 0x0143E90C
+//          SetScriptingStateGroup (cgsi_slots_aligned.tsv); CScriptThing slot 6 GetPos on Me; data: pGlobalScriptDef @ 0x0143E90C
 //          (+0x298 the buddy wander distance). Vtables 0x01231710 (CBaseClass) / 0x01238C8C (CScriptThing) stored by the
 //          inline copy constructor of each by-value CScriptThing argument.
 // Shape: the four by-value CScriptThing arguments are built in the call area (base vtable, derived vtable, Data, Info with
@@ -157,7 +158,7 @@ struct CScriptDef {
     unsigned char _pad[0x298];
     float AS_BuddyWanderDistance;                        // +0x298
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CV_AmbushScamScript;
 struct CQ_SunnyvaleMasterData;
@@ -189,6 +190,6 @@ void CAS_Buddy::Init()
     BuddyStartPos = Me.GetPos();
     Game->SetWanderCentrePoint(Me, BuddyStartPos);
     Game->SetWanderMinDistance(Me, 0.0f);
-    Game->SetWanderMaxDistance(Me, g_pScriptDef->AS_BuddyWanderDistance);
+    Game->SetWanderMaxDistance(Me, pGlobalScriptDef->AS_BuddyWanderDistance);
     Game->SetScriptingStateGroup(Me, 4);
 }

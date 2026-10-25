@@ -1,11 +1,11 @@
 // NScript::CQ_AmbushTradersScript::AskBanditHireQuestion(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&) -- ask the hero whether to hire the bandit; on "yes" with enough gold pay him and return true, otherwise make the bandit say why not (if he still has health) and return false
-// Leaf: AskBanditHireQuestion
+// Leaf: ?AskBanditHireQuestion@CQ_AmbushTradersScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F07ED0, length 782 bytes (padded to 784), ret 8.
 // Callees: IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0;
 // CScriptThing vtable 0x01238C8C slot 75 IsAlive, out-of-line ~CScriptThing 0x004AA840 (first GetScriptThing temporary
 // only), ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC; CScriptGameResourceObjectScriptedThingBase vtable 0x0127094C
 // slots 12 GetScriptThing, 13 Speak, 26 IsPerformingScriptTask; CGameScriptInterface slots 7, 39, 70, 114, 126, 127, 264, 520.
-// Layout: Game +0x40 (Ego_r.pdb - 0x14); g_pScriptDef (0x0143E90C) AmbushTradersBanditHireCost is PDB 0xa7c, retail +0x9dc.
+// Layout: Game +0x40 (Ego_r.pdb - 0x14); pGlobalScriptDef (0x0143E90C) AmbushTradersBanditHireCost is PDB 0xa7c, retail +0x9dc.
 // Shape: the "cash poor" health test destroys its CScriptThing temporary out of line (inline_depth(0) region) while the
 // "no hire" one inlines the destructor (__forceinline); the question's last literal reuses the bandit argument's slot.
 struct CCharString {
@@ -131,7 +131,7 @@ struct CScriptDef {
     unsigned char _pad[0x9dc];
     long AmbushTradersBanditHireCost;                  // +0x9dc
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                  // 0x00CB7940
@@ -157,11 +157,11 @@ bool CQ_AmbushTradersScript::AskBanditHireQuestion(const CScriptThing& bandit, C
         if (IsActiveThreadTerminating()) return false;
         if (answer == 1) {
             if (IsActiveThreadTerminating()) return false;
-            CScriptDef* def = g_pScriptDef;
+            CScriptDef* def = pGlobalScriptDef;
             if (Game->GetHeroGold() >= -def->AmbushTradersBanditHireCost) {
                 if (IsActiveThreadTerminating()) return false;
-                Game->GiveHeroGold(g_pScriptDef->AmbushTradersBanditHireCost);
-                Game->EntityGiveGold(bandit, -g_pScriptDef->AmbushTradersBanditHireCost);
+                Game->GiveHeroGold(pGlobalScriptDef->AmbushTradersBanditHireCost);
+                Game->EntityGiveGold(bandit, -pGlobalScriptDef->AmbushTradersBanditHireCost);
                 return true;
             }
             if (IsActiveThreadTerminating()) return false;

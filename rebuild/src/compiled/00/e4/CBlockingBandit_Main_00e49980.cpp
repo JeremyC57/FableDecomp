@@ -1,5 +1,5 @@
 // CBlockingBandit::Main() -- bandit-toll blocking bandit: register the alive filter, take Me under scripted control, look up M_BanditEscapePoint, then every frame: once the bandits flee, walk Me back to the escape point and fade it out; when the bandits are angered and Me is alive and aware of the hero, join FACTION_BANDITS and follow the hero; once the toll is paid, walk Me (once) back to M_BanditCampCentrePos and release it
-// Leaf: Main
+// Leaf: ?Main@CBlockingBandit@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E49980, length 1424 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, out-of-line dtor 0x00E241B0), the scripted-thing handle (vtable
 //   0x0127094C) IsScripting 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / FollowThing 0x007E7320 /
@@ -9,7 +9,7 @@
 // Literals: "M_BanditEscapePoint" 0x012E4DA4, "M_BanditCampCentrePos" 0x012E4DF0, "FACTION_BANDITS" 0x0125FE68.
 // Layout: Ego_r.pdb CBlockingBandit (28 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CV_BanditTollScript, retail = PDB - 0x14: BanditsAngered +0x48, TollPaid +0x49, BanditsFlee +0x4f), PMasterData
-//   +0x18. g_pScriptDef: the toll bandit's close-to-exit distance +0x43c and fade time +0x440 (PDB +0x470/+0x474
+//   +0x18. pGlobalScriptDef: the toll bandit's close-to-exit distance +0x43c and fade time +0x440 (PDB +0x470/+0x474
 //   TollBanditCloseToExit / TollBanditTimeToFade; the retail def is 0x34 smaller ahead of them, as in the landed
 //   CSafeTrader::Main 0x00E4A280).
 struct C3DVector {
@@ -127,7 +127,7 @@ struct CScriptDef {
     float TollBanditCloseToExit;                       // +0x43c
     float TollBanditTimeToFade;                        // +0x440
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData;
 class CBlockingBandit {
 public:
@@ -175,7 +175,7 @@ void CBlockingBandit::Main()
             }
             if (IsActiveThreadTerminating())
                 return;
-            float closeToExit = g_pScriptDef->TollBanditCloseToExit;
+            float closeToExit = pGlobalScriptDef->TollBanditCloseToExit;
             C3DVector exitPos = escapePoint.GetPos();
             while (IsDistanceFromThingToPositionOver(scripted.GetScriptThing(), exitPos, closeToExit + 2.0f)) {
                 Game->NewScriptFrame();
@@ -192,7 +192,7 @@ void CBlockingBandit::Main()
             }
             if (IsActiveThreadTerminating())
                 return;
-            FadeOutAndKillEntity(Me, true, g_pScriptDef->TollBanditTimeToFade, true);
+            FadeOutAndKillEntity(Me, true, pGlobalScriptDef->TollBanditTimeToFade, true);
         }
         if (ParentClass->BanditsAngered && Me.IsAlive() && Game->IsThingAwareOfOtherThingInAnyWay(Game->GetHero(), Me)) {
             if (IsActiveThreadTerminating())

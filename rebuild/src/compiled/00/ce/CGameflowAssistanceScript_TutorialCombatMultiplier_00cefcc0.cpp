@@ -1,5 +1,5 @@
 // CGameflowAssistanceScript::Tutorial_CombatMultiplier() -- while assistance runs and the player wields a weapon, have the guildmaster comment when the hero's combat multiplier reaches a new high (5 progress, 10 adept, 15 excellent, past the def's master level: master and stop) or stays unimproved too long (try)
-// Leaf: Tutorial_CombatMultiplier
+// Leaf: ?Tutorial_CombatMultiplier@CGameflowAssistanceScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CEFCC0, length 752 bytes (+ int3 padding; plain `ret`). The catalog's
 //   "Tutorial_LowHealth" label is wrong: the spawner at 0x00CEFAE0 builds this thread under the name
 //   "Tutorial_CombatMultiplier" (0x012C5E58), and the body only touches the CombatMult* members.
@@ -84,7 +84,7 @@ struct CScriptDef {
     long          CombatMultFramesPerLevel;                 // +0xfd8
     long          CombatMultMasterLevel;                    // +0xfdc
 };
-extern CScriptDef* g_pScriptDef;                            // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CGameflowMasterData {
     unsigned char _pad[0x67];
@@ -124,7 +124,7 @@ void CGameflowAssistanceScript::Tutorial_CombatMultiplier()
                     return;
                 CombatMultHighestLevel = multiplier;
                 CombatMultFramesSinceChange = 0;
-                if (multiplier > g_pScriptDef->CombatMultMasterLevel) {
+                if (multiplier > pGlobalScriptDef->CombatMultMasterLevel) {
                     if (IsActiveThreadTerminating())
                         return;
                     GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_MASTER", "", true, false);
@@ -149,7 +149,7 @@ void CGameflowAssistanceScript::Tutorial_CombatMultiplier()
                 if (IsActiveThreadTerminating())
                     return;
                 ++CombatMultFramesSinceChange;
-                if (CombatMultFramesSinceChange > g_pScriptDef->CombatMultFramesPerLevel * CombatMultHighestLevel) {
+                if (CombatMultFramesSinceChange > pGlobalScriptDef->CombatMultFramesPerLevel * CombatMultHighestLevel) {
                     if (IsActiveThreadTerminating())
                         return;
                     GSI->HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_TRY", "", true, false);

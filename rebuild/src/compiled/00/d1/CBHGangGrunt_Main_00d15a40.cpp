@@ -1,12 +1,12 @@
 // CBH_GangGrunt::Main() -- bounty-hunt bandit grunt: removed at once unless the bounty-hunt intro is complete; else register the alive filter, wait for the bandit cutscene, walk to the thing named by Me's data string, wander around it facing the hero until the hero comes within 20 units or hits Me, then face the hero, say the next TEXT_QST_017_BANDIT<n> line, attack the hero and idle until terminated
-// Leaf: Main
+// Leaf: ?Main@CBH_GangGrunt@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D15A40, length 1408 bytes, plain `ret`.
 // Callees: as CBH_GangGruntSpawn::Main 0x00D15510 plus GFIntToCharString 0x0099F830 and operator+(const char*, const
 //   CCharString&) 0x0099F690 (both `__fastcall` with a hidden result), ClearCommands 0x007E7360 (devirtualised on the
 //   local handle). CGameScriptInterface slots 7, 8, 70, 72 GetThingWithScriptName, 108 RemoveThing, 364/365/366
 //   conversation, 451 GiveThingBestEnemyTarget, 475 EntitySetFacingAngleTowardsThing, 763/766/769 SetWander*, 784
 //   SetScriptingStateGroup.
-// Literals: "SCRIPT_NAME_HERO" 0x0125D1C8, "TEXT_QST_017_BANDIT" 0x012CA540. Global: g_pScriptDef 0x0143E90C.
+// Literals: "SCRIPT_NAME_HERO" 0x0125D1C8, "TEXT_QST_017_BANDIT" 0x012CA540. Global: pGlobalScriptDef 0x0143E90C.
 // Layout: Ego_r.pdb CBH_GangGrunt (28 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData
 //   +0x18. CQ_BountyHuntScript retail = PDB - 0x14: BanditCutsceneDone +0x6f, BountyHuntIntroComplete +0x70,
 //   BanditGruntTextCounter +0x74. CScriptDef BountyHuntBanditGruntWanderDistance is PDB +0xbc8, retail +0xb20 (the
@@ -138,7 +138,7 @@ struct CScriptDef {
     unsigned char _pad[0xb20];
     float BountyHuntBanditGruntWanderDistance;         // +0xb20
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData;
 class CBH_GangGrunt {
 public:
@@ -199,7 +199,7 @@ void CBH_GangGrunt::Main()
     Game->EntitySetFacingAngleTowardsThing(Me, Game->GetHero(), false);
     Game->SetWanderCentrePoint(Me, target.GetPos());
     Game->SetWanderMinDistance(Me, 0.0f);
-    Game->SetWanderMaxDistance(Me, g_pScriptDef->BountyHuntBanditGruntWanderDistance);
+    Game->SetWanderMaxDistance(Me, pGlobalScriptDef->BountyHuntBanditGruntWanderDistance);
     Game->SetScriptingStateGroup(Me, (EScriptingStateGroups)4);
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 20.0f)
            && !Me.MsgIsHitBy("SCRIPT_NAME_HERO")

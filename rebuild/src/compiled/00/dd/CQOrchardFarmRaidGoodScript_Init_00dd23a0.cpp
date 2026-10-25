@@ -1,4 +1,5 @@
 // CQ_OrchardFarmRaidGoodScript::Init() -- register the good orchard-farm raid's five boasts (no armour, no damage, no weapons, no crates stolen, protect the guards) and activate Q_OrchardFarmRaid
+// Leaf: ?Init@CQ_OrchardFarmRaidGoodScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DD23A0, 534 bytes (544 with int3 padding; vtable reference 0x012DB81C).
 //   Catalog label "CQ_OrchardFarmRaidEvilScript::Init" is propagated from the byte-shaped twin 0x00DD2020: this copy
 //   reads the OFGood boast block and registers the NOCRATESSTOLEN / PROTECTGUARDS boasts.
@@ -335,7 +336,7 @@ struct CScriptDef {
     long OFG_NoGuardsDieBoastCost;   // +0xD90
     long OFG_NoGuardsDieBoastReward;   // +0xD94
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
@@ -346,15 +347,15 @@ struct CQ_OrchardFarmRaidGoodScript : CScriptBase {
 
 void CQ_OrchardFarmRaidGoodScript::Init()
 {
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->OFGoodNakedBoastCost,
-                   g_pScriptDef->OFGoodNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->OFGoodNoDamageBoastCost,
-                   g_pScriptDef->OFGoodNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->OFGoodNoWeaponsBoastCost,
-                   g_pScriptDef->OFGoodNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOCRATESSTOLEN", 17, g_pScriptDef->OFG_NoCratesStolenBoastCost,
-                   g_pScriptDef->OFG_NoCratesStolenBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_PROTECTGUARDS", 19, g_pScriptDef->OFG_NoGuardsDieBoastCost,
-                   g_pScriptDef->OFG_NoGuardsDieBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->OFGoodNakedBoastCost,
+                   pGlobalScriptDef->OFGoodNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->OFGoodNoDamageBoastCost,
+                   pGlobalScriptDef->OFGoodNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->OFGoodNoWeaponsBoastCost,
+                   pGlobalScriptDef->OFGoodNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOCRATESSTOLEN", 17, pGlobalScriptDef->OFG_NoCratesStolenBoastCost,
+                   pGlobalScriptDef->OFG_NoCratesStolenBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_PROTECTGUARDS", 19, pGlobalScriptDef->OFG_NoGuardsDieBoastCost,
+                   pGlobalScriptDef->OFG_NoGuardsDieBoastReward, false, "", 0);
     Game->ActivateQuest("Q_OrchardFarmRaid");
 }

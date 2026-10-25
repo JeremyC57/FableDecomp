@@ -1,5 +1,5 @@
 // CBanditFirstWave::Main() -- Break-Siege first-wave bandit: hold an alive filter over Me, take Me under scripted control (priority 3), set Me's combat break-off range from the script def, then (until BanditLeaderFree) keep running Me to "ImprisonedBanditLeader" while it is more than 5 units away; finally flag BanditLeaderFree, release scripting, make Me follow the leader and idle
-// Leaf: Main
+// Leaf: ?Main@CBanditFirstWave@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1FA00, 557 bytes (560 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 (filter member) / ~CScriptThing 0x004AA840, CEntityScriptBase::SetPredicate
 //   0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, handle (vtable 0x0127094C) IsScripting
@@ -216,7 +216,7 @@ struct CScriptDef {
     unsigned char _pad[0xb8c];
     float         BanditAttackerBreakOffRange;         // +0xb8c (retail offset)
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_BreakSiegeScript {
     unsigned char _pad[0x4c];
     bool BanditLeaderFree;                             // +0x4c
@@ -246,7 +246,7 @@ void CBanditFirstWave::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    Game->SetCombatNearbyBreakOffRange(CScriptThing(Me, CScriptThing::InlineCopy()), g_pScriptDef->BanditAttackerBreakOffRange);
+    Game->SetCombatNearbyBreakOffRange(CScriptThing(Me, CScriptThing::InlineCopy()), pGlobalScriptDef->BanditAttackerBreakOffRange);
     CScriptThing leader = Game->GetThingWithScriptName("ImprisonedBanditLeader");
     while (IsDistanceBetweenThingsOver(Me, leader, 5.0f) && !ParentClass->BanditLeaderFree) {
         Game->NewScriptFrame();

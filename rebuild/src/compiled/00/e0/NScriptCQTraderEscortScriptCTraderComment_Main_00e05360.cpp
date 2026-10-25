@@ -1,4 +1,5 @@
 // NScript::CQ_TraderEscortScript::CTraderComment::Main() -- trader-escort comment marker: with an is-alive filter on Me, each frame look for a live DarkwoodTrader within the script def's comment distance; the first one that makes Me's comment removes the marker
+// Leaf: ?Main@CTraderComment@CQ_TraderEscortScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E05360, length 585 bytes, plain `ret`.
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 / ~CScriptThing 0x004AA840 (the CIsThingAlive filter, vtable
 //   0x012C32F0, inline destructor) and SetPredicate 0x00F35B10; IsActiveThreadTerminating 0x00F35B30; CCharString(const char*,
@@ -79,7 +80,7 @@ struct CScriptDef {
     unsigned char _pad[0xe10];
     long          TE_TraderCommentDistance;             // +0xe10 (PDB +0xec0)
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
 struct CPredicateBase {
     virtual bool IsTrue() = 0;
@@ -114,7 +115,7 @@ void CQ_TraderEscortScript::CTraderComment::Main()
         return;
     vector<CScriptThing> traders;
     Game->GetAllThingsWithScriptName("DarkwoodTrader", traders);
-    long distance = g_pScriptDef->TE_TraderCommentDistance;
+    long distance = pGlobalScriptDef->TE_TraderCommentDistance;
     for (;;) {
         if (IsActiveThreadTerminating())
             return;

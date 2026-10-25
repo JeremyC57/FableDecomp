@@ -2,11 +2,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049319C, 227 bytes, `ret 4`. Ego_r.pdb `?SetAsInCutscene@CSubtitleRenderer@@QAEX_N@Z`.
-// Leaf: SetAsInCutscene
+// Leaf: ?SetAsInCutscene@CSubtitleRenderer@@
 // Callees: PeekGuiDef @ 0x00438570 (`__fastcall`), CFadeInFadeOutBase::Start(float, float, CRGBColour) @ 0x00434840 (landed name),
 //   CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("" @ 0x0122D70E), ~CCharString @ 0x0099EAE0,
 //   CSubtitleRenderer::SetButton1OverrideText @ 0x0048F7C0 / SetButton2OverrideText @ 0x0048F881, CSubtitleRenderer::Clear(bool)
-//   @ 0x00492BAB, deque<CSetTextInfo>::pop_front @ 0x00493CF5 (manifest label propagated), virtual slot 45 (+0xB4) of the
+//   @ 0x00492BAB, deque<CSubtitleRenderer::CSetTextInfo>::pop_front @ 0x00493CF5 (through the inline STLport queue::pop;
+//   sweep2 1g: was a flat CSetTextInfoQueue::pop binding), virtual slot 45 (+0xB4) of the
 //   main game component's +0x24 -> +0x38 object.
 // Globals: g_pPlayerGui @ 0x013B8790 (its +0x2BC flag follows !inCutscene), g_pMainGameComponent @ 0x013B86A0.
 // Shape: frame-pointer size TU (as the landed CSubtitleRenderer rows): one zero register (bl) for the flag stores and tests,
@@ -76,22 +77,38 @@ struct CMainGameComponent {
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
-struct CSetTextInfo;
-struct CDequeIterator { CSetTextInfo* _M_cur; CSetTextInfo* _M_first; CSetTextInfo* _M_last; CSetTextInfo** _M_node; };
-struct CSetTextInfoQueue {                              // queue<CSetTextInfo, deque<CSetTextInfo> >: 40 bytes in retail
-    CDequeIterator  _M_start;                           // +0x00
-    CDequeIterator  _M_finish;                          // +0x10
-    CSetTextInfo**  _M_map;                             // +0x20
-    unsigned long   _M_map_size;                        // +0x24
-    bool empty() const { return _M_finish._M_cur == _M_start._M_cur; }
-    void pop();                                         // 0x00493CF5 (deque::pop_front)
+namespace std {                                         // STLport 4.6 queue over deque (40-byte retail deque)
+template <class _Tp> class allocator {
 };
+template <class _Tp> struct _Deque_iterator {
+    _Tp*  _M_cur;                                       // +0x00
+    _Tp*  _M_first;                                     // +0x04
+    _Tp*  _M_last;                                      // +0x08
+    _Tp** _M_node;                                      // +0x0c
+};
+template <class _Tp, class _Alloc = allocator<_Tp> > class deque {
+public:
+    _Deque_iterator<_Tp> _M_start;                      // +0x00
+    _Deque_iterator<_Tp> _M_finish;                     // +0x10
+    _Tp**                _M_map;                        // +0x20
+    unsigned int         _M_map_size;                   // +0x24
+    bool empty() const { return _M_finish._M_cur == _M_start._M_cur; }
+    void pop_front();                                   // 0x00493CF5
+};
+template <class _Tp, class _Sequence = deque<_Tp> > class queue {
+public:
+    _Sequence c;
+    bool empty() const { return c.empty(); }
+    void pop() { c.pop_front(); }
+};
+}
 
 class CSubtitleRenderer {
 public:
+    class CSetTextInfo;                                 // Ego_r.pdb, 28 bytes (only pointers to it here)
     void*              __vftable;                       // +0x00
     unsigned char      _pad04[0x34 - 0x04];
-    CSetTextInfoQueue  TextInfoQueue;                   // +0x34
+    std::queue<CSetTextInfo> TextInfoQueue;             // +0x34
     unsigned char      _pad5c[0xde - 0x5c];
     bool               InCutscene;                      // +0xde
     bool               CutsceneSkipped;                 // +0xdf

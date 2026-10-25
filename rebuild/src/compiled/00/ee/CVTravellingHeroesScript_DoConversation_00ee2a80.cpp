@@ -1,4 +1,5 @@
 // CV_TravellingHeroesScript::DoConversation(long line) -- play one line of the Thunder conversation from the script def: the speaker says the dialogue to the hero, the named actor (Thunder/Whisper -> rival, Boy, Girl) plays its animation after the def's delay unless the Thunder scene has started, then wait out the conversation and remove it
+// Leaf: ?DoConversation@CV_TravellingHeroesScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE2A80, 0x325 bytes, `ret 4`.
 // Callees: CCharString(const CCharString&) 0x0099EC30 / operator!=(const char*) 0x0099E960 / ~ 0x0099EAE0, Compare 0x00411570
 //   (defined here under auto_inline(off): with the body in the TU VC7.1 knows it writes no memory and keeps the actor's PData
@@ -267,7 +268,7 @@ struct CScriptDef {                                         // retail layout (ST
     CCharString* TH_ThunderConv_Animation; unsigned char _pad954[8];   // +0x950
     float*       TH_ThunderConv_AnimDelay;                             // +0x95c
 };
-extern CScriptDef* g_pScriptDef;                            // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
@@ -288,11 +289,11 @@ struct CV_TravellingHeroesScript : CQuestScriptBase {
 
 void CV_TravellingHeroesScript::DoConversation(long line)
 {
-    CCharString speaker = g_pScriptDef->TH_ThunderConv_Speaker[line];
-    CCharString dialogue = g_pScriptDef->TH_ThunderConv_Dialogue[line];
-    CCharString actor = g_pScriptDef->TH_ThunderConv_Actor[line];
-    CCharString animation = g_pScriptDef->TH_ThunderConv_Animation[line];
-    float delay = g_pScriptDef->TH_ThunderConv_AnimDelay[line];
+    CCharString speaker = pGlobalScriptDef->TH_ThunderConv_Speaker[line];
+    CCharString dialogue = pGlobalScriptDef->TH_ThunderConv_Dialogue[line];
+    CCharString actor = pGlobalScriptDef->TH_ThunderConv_Actor[line];
+    CCharString animation = pGlobalScriptDef->TH_ThunderConv_Animation[line];
+    float delay = pGlobalScriptDef->TH_ThunderConv_AnimDelay[line];
     CScriptThing speakerThing = Game->GetThingWithScriptName(speaker);
     CScriptThing unused;
     long conversation = Game->AddNewConversation(speakerThing, false, false);

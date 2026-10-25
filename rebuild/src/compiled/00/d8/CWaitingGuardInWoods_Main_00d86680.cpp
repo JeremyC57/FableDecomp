@@ -1,12 +1,12 @@
 // CWaitingGuardInWoods::Main() -- a guard waiting in the Guildmaster's woods: alive filter on Me, scripted control (priority 4, retried each frame), wait for the guildmaster cutscene flag, put a small red orb on the mini-map, then idle until the distance stage is reached, the hero hits him (directly, or with any special ability but number 14) or the hero comes close (or within the outer range while he is on screen); then target the hero and idle forever
-// Leaf: Main
+// Leaf: ?Main@CWaitingGuardInWoods@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D86680, 762 bytes (+ int3 padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
 //   CBaseObject ctor 0x0099A380, the scripted-thing handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0,
 //   CCharString 0x0099EBF0 / 0x0099EAE0, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall); CScriptThing slots 6
 //   GetPosition, 21 MsgIsHitBy, 41 MsgIsHitBySpecialAbilityFrom, 42 MsgIsHitByAnySpecialAbilityFrom; GameCalls slots 7
 //   NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 350 MiniMapAddMarker, 421 IsCameraPosOnScreen, 451
-//   GiveThingBestEnemyTarget. Strings "HUD_ORB_RED_SMALL" 0x012D4BF0, "SCRIPT_NAME_HERO" 0x0125D1C8; g_pScriptDef 0x0143E90C.
+//   GiveThingBestEnemyTarget. Strings "HUD_ORB_RED_SMALL" 0x012D4BF0, "SCRIPT_NAME_HERO" 0x0125D1C8; pGlobalScriptDef 0x0143E90C.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_HeroSoulsGuildmasterScript: PlayedGuildMasterCS
 //   PDB +0x5d = retail +0x49, DistanceReached PDB +0x68 = retail +0x54; the 0x14 shift of the landed sibling
 //   CMuteGuardOutsideWoods::Main 0x00D86150), PMasterData +0x18. The two CScriptDef longs at retail +0xc94 / +0xc98 are the
@@ -147,7 +147,7 @@ struct CScriptDef {
     long GuildmasterWoodsGuardOuterDistance;           // +0xc94
     long GuildmasterWoodsGuardInnerDistance;           // +0xc98
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 struct CWaitingGuardInWoods : CEntityScriptBase {
@@ -182,8 +182,8 @@ void CWaitingGuardInWoods::Main()
            && !Me.MsgIsHitBy("SCRIPT_NAME_HERO")
            && (!Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
                || Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))
-           && !IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)g_pScriptDef->GuildmasterWoodsGuardInnerDistance)
-           && (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)g_pScriptDef->GuildmasterWoodsGuardOuterDistance)
+           && !IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->GuildmasterWoodsGuardInnerDistance)
+           && (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->GuildmasterWoodsGuardOuterDistance)
                || !Game->IsCameraPosOnScreen(Me.GetPosition()))) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating()) return;

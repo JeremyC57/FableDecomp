@@ -47,7 +47,7 @@ struct CScriptDef {
     float         TollBanditCloseToExit;                    // +0x43c
     float         TollBanditTimeToFade;                     // +0x440
 };
-extern CScriptDef* g_pScriptDef;                            // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CV_BanditTollScript {
     unsigned char _pad[0x4f];
     bool          BanditsFlee;                              // +0x4f
@@ -83,7 +83,7 @@ void CTollBandit::Should_I_Flee(CScriptGameResourceObjectScriptedThingBase& band
     }
     if (IsActiveThreadTerminating())
         return;
-    float closeToExit = g_pScriptDef->TollBanditCloseToExit;
+    float closeToExit = pGlobalScriptDef->TollBanditCloseToExit;
     C3DVector exitPos = BanditEscapeMarker.GetPos();
     float range = closeToExit + 2.0f;
     while (IsDistanceFromThingToPositionOver(bandit.GetScriptThing(), exitPos, range)) {
@@ -101,5 +101,5 @@ void CTollBandit::Should_I_Flee(CScriptGameResourceObjectScriptedThingBase& band
     }
     if (IsActiveThreadTerminating())
         return;
-    FadeOutAndKillEntity(Me, g_pScriptDef->TollBanditTimeToFade, true, true);
+    FadeOutAndKillEntity(Me, pGlobalScriptDef->TollBanditTimeToFade, true, true);
 }

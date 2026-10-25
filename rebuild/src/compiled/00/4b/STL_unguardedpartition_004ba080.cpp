@@ -6,8 +6,8 @@
 // Identity: called by the __introsort_loop @ 0x004BBA40 of the pair<CCharString, CPersistInfo> sort (sort @ 0x004BBB40,
 //   CVectorMap<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo, ..>::Sort @ 0x004BBBC0). The catalog
 //   name `std::Introsort_Partition` is descriptive.
-// Callees: CBasicString<char>::operator< @ 0x00429950 (inside the inlined CCharString::operator<), iter_swap @ 0x004B7800
-//   (out of line, __fastcall), ~CCharString @ 0x0099EAE0.
+// Callees: CBasicString<char>::operator< @ 0x00429950 (inside the inlined CCharString::operator<), swap @ 0x004B7800
+//   (out of line, __fastcall, reached through the inline STLport iter_swap), ~CCharString @ 0x0099EAE0.
 // Shape: STLport 4.6 `__unguarded_partition`: the pivot key is re-read from its argument slot at every outer pass, the
 //   pivot's implicit destructor (PersistScript, QuestName, first) runs before the return. /Gr TU: the templates are
 //   `__fastcall`. The landed 0x00429950 body sits above under `auto_inline(off)` as the extra rule asks.
@@ -82,8 +82,13 @@ typedef std::pair<CCharString, CPersistInfo> CPersistEntry;
 typedef CKeyPairCompareLess<CCharString, CPersistInfo> CPersistLess;
 
 namespace std {
+template <class _Tp>
+void __fastcall swap(_Tp& __a, _Tp& __b);                                   // 0x004B7800 (out of line)
+
+// STLport 4.6 iter_swap, inline: the partition calls swap(*__i1, *__i2) directly; the out-of-line iter_swap
+// copy 0x004B86A0 is a bare `jmp` to swap.
 template <class _ForwardIter1, class _ForwardIter2>
-void __fastcall iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2);                                  // 0x004B7800
+inline void __fastcall iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2) { swap(*__i1, *__i2); }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
 _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __pivot,

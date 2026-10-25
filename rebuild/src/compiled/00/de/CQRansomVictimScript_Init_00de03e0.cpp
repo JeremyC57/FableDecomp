@@ -1,4 +1,5 @@
 // CQ_RansomVictimScript::Init() -- reset the ransom-victim quest state, register its five quest regions and five boasts, arm the victim boast flags in the master data and name the active enemy "RandomAttacker"
+// Leaf: ?Init@CQ_RansomVictimScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DE03E0, 940 bytes (944 with int3 padding; vtable reference 0x012DCE7C).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 / operator=(const char*) 0x0099EFE0;
 //   through the script's interface (+0x40): AddQuestRegion (slot 271, +0x43c) and AddBoast (slot 303, +0x4bc) -- slot
@@ -75,7 +76,7 @@ struct CScriptDef {
     long RansomVictimKillKidnapperCost;                 // +0x260
     long RansomVictimKillKidnapperReward;               // +0x264
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad0[0x12a];
     bool RansomVictimVictimNoDamage;                    // +0x12A
@@ -132,16 +133,16 @@ void CQ_RansomVictimScript::Init()
     Game->AddQuestRegion("Q_RansomVictim", "Witchwood3");
     Game->AddQuestRegion("Q_RansomVictim", "Witchwood2");
     Game->AddQuestRegion("Q_RansomVictim", "WitchwoodCavern");
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->RansomVictimNakedBoastCost,
-                   g_pScriptDef->RansomVictimNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->RansomVictimNoDamageBoastCost,
-                   g_pScriptDef->RansomVictimNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->RansomVictimNoWeaponsBoastCost,
-                   g_pScriptDef->RansomVictimNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_RVNODAMAGE", 0x26, g_pScriptDef->RansomVictimVictimNoDamageCost,
-                   g_pScriptDef->RansomVictimVictimNoDamageReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_RVKILLKIDNAPPERS", 0x27, g_pScriptDef->RansomVictimKillKidnapperCost,
-                   g_pScriptDef->RansomVictimKillKidnapperReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->RansomVictimNakedBoastCost,
+                   pGlobalScriptDef->RansomVictimNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->RansomVictimNoDamageBoastCost,
+                   pGlobalScriptDef->RansomVictimNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->RansomVictimNoWeaponsBoastCost,
+                   pGlobalScriptDef->RansomVictimNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_RVNODAMAGE", 0x26, pGlobalScriptDef->RansomVictimVictimNoDamageCost,
+                   pGlobalScriptDef->RansomVictimVictimNoDamageReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_RVKILLKIDNAPPERS", 0x27, pGlobalScriptDef->RansomVictimKillKidnapperCost,
+                   pGlobalScriptDef->RansomVictimKillKidnapperReward, false, "", 0);
     Data->RansomVictimVictimNoDamage = true;
     Data->RansomVictimSaveVictim = false;
     Data->RansomVictimHaveVictimKilled = false;

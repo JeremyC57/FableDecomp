@@ -1,4 +1,5 @@
 // CGPUScratchBufferTextureManager::AllocateDepthBufferSurface(long,const C2DExtentsI&,const CPixelFormat&,long) -- allocate and initialise a depth surface resource
+// Leaf: ?AllocateDepthBufferSurface@CGPUScratchBufferTextureManager@@
 // Retail 00f37390, 162 bytes. No manager header exists; native vectors are 12 bytes versus donor CArray's 16.
 // Actual CSurface and CPixelFormat headers retained. CSurface constructor adapter writes its real fields and vtable 0122f84c (RTTI CSurface).
 // Callees: AllocResourceEntry 00f372b0; operator new 00bfea1a; CSurface::CreateDepthBufferSurface 009f32a0; FreeResourceEntry 00f36f40.

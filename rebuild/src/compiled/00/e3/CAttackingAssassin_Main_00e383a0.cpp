@@ -1,5 +1,5 @@
 // CAttackingAssassin::Main() -- an attacking assassin: alive filter on Me, take scripted control (priority 3, retried each frame), make Me the hero's enemy and follow the hero; the first time, wait until the hero is within the quest's shout distance, shout a random assassin taunt and stop following; then idle until the script is done
-// Leaf: Main
+// Leaf: ?Main@CAttackingAssassin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E383A0, length 541 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy @ 0x004ABE90, ~CIsThingAlive @ 0x00E241B0 (out of line here), SetPredicate @ 0x00F35B10,
 //          IsDone @ 0x00F35B30, CBaseObject ctor @ 0x0099A380, the scripted-thing handle's IsScripting @ 0x00CD23B9 /
@@ -172,7 +172,7 @@ struct CScriptDef {
     CDefString* AssassinTauntsEnd;                     // +0x3b0
     CDefString* AssassinTauntsEndOfStorage;            // +0x3b4
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CAttackingAssassin : CEntityScriptBase {
     void* ParentClass;                                 // +0x14
@@ -205,16 +205,16 @@ void CAttackingAssassin::Main()
     if (!HasTaunted) {
         if (IsActiveThreadTerminating())
             return;
-        while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)g_pScriptDef->AssassinShoutDistance)) {
+        while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->AssassinShoutDistance)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 return;
         }
         if (IsActiveThreadTerminating())
             return;
-        unsigned long count = g_pScriptDef->AssassinTauntsEnd - g_pScriptDef->AssassinTauntsBegin;
+        unsigned long count = pGlobalScriptDef->AssassinTauntsEnd - pGlobalScriptDef->AssassinTauntsBegin;
         unsigned long index = rand() % count;
-        Game->PlaySoundOnThing(Me, g_pScriptDef->AssassinTauntsBegin[index]);
+        Game->PlaySoundOnThing(Me, pGlobalScriptDef->AssassinTauntsBegin[index]);
         HasTaunted = true;
         scripted.StopFollowingThing(Game->GetHero());
     }

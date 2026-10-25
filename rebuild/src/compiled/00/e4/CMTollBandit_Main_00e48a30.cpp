@@ -1,5 +1,5 @@
 // CM_TollBandit::Main() -- toll-bandit spawner entity script: when the "TollBandit" thing is dead and the script is not done, create the script def's toll-bandit creature at Me's position under the script name "TollBandit"
-// Leaf: Main
+// Leaf: ?Main@CM_TollBandit@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E48A30, 263 bytes (+ int3 padding). Entity-script slot 1 (Main).
 // Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CDefString::operator CCharString() 0x00415D70 (the script def
 //   0x0143E90C, creature def name at +0x438), ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840,
@@ -22,7 +22,7 @@ struct CScriptDef {
     unsigned char _pad[0x438];
     CDefString TollBanditCreature;                       // +0x438
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 struct CCPPointerInfo {                                  // CCountedPointer's shared block
     long RefCount;
@@ -95,5 +95,5 @@ void CM_TollBandit::Main()
 {
     bool dead = Game->GetThingWithScriptName("TollBandit").IsDead();
     if (dead && !IsDone())
-        Game->CreateCreature(g_pScriptDef->TollBanditCreature, Me.GetPos(), "TollBandit", false);
+        Game->CreateCreature(pGlobalScriptDef->TollBanditCreature, Me.GetPos(), "TollBandit", false);
 }

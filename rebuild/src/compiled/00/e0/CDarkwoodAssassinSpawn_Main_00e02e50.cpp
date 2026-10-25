@@ -1,5 +1,5 @@
 // CDarkwoodAssassinSpawn::Main() -- Darkwood assassin ambush trigger: once the hero has stayed within the spawn distance with Me off screen for two timer ticks, spawn a DarkwoodAssassin at Me, make it persistent and attach it to the active quest, target the hero (1 in 5) or the nearest DarkwoodTrader, play a random shout at 18/12/8 units, then remove the trigger
-// Leaf: Main
+// Leaf: ?Main@CDarkwoodAssassinSpawn@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E02E50, 1349 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C32F0, inline dtor),
 //   CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CTimer dtor 0x00CD4470 (inline at the
@@ -8,7 +8,7 @@
 //   (__fastcall); GameCalls slots 7, 70, 77, 87-90 (timers on the global interface 0x0143E8F8), 91, 108, 421, 451, 465, 477,
 //   655, 690. Literals "DarkwoodAssassin" 0x012DF5B0, "DarkwoodTrader" 0x012DF414.
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8} (landed CBanditCronies::Main 0x00E03810, same TU family).
-//   g_pScriptDef (0x0143E90C): an int spawn distance +0xe14, the assassin def name (CDefString) +0xe18, the shout sound
+//   pGlobalScriptDef (0x0143E90C): an int spawn distance +0xe14, the assassin def name (CDefString) +0xe18, the shout sound
 //   vector<CDefString> +0x3ac/+0x3b0 (the bandit-crony shouts); member names are descriptive.
 // Shape: the timer and shout are locals that live to the end; the timer dtor is __forceinline so the early exits (up to
 //   the target pick) destroy it inline, while the exits in the 18/12/8 stages and the closing brace, under inline_depth(0),
@@ -95,7 +95,7 @@ struct CScriptDef {
     long        DarkwoodAssassinSpawnDistance;           // +0xe14
     CDefString  DarkwoodAssassinDefName;                 // +0xe18
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CIsThingAlive {                                   // vtable 0x012C32F0
     virtual void v00();
     CScriptThing m_thing;
@@ -122,10 +122,10 @@ void CDarkwoodAssassinSpawn::Main()
         return;
     CTimer timer;
     timer.SetTime(2);
-    long spawnDistance = g_pScriptDef->DarkwoodAssassinSpawnDistance;
-    unsigned long count = g_pScriptDef->ShoutSoundsEnd - g_pScriptDef->ShoutSoundsBegin;
+    long spawnDistance = pGlobalScriptDef->DarkwoodAssassinSpawnDistance;
+    unsigned long count = pGlobalScriptDef->ShoutSoundsEnd - pGlobalScriptDef->ShoutSoundsBegin;
     unsigned long index = rand() % count;
-    CCharString shout = g_pScriptDef->ShoutSoundsBegin[index];
+    CCharString shout = pGlobalScriptDef->ShoutSoundsBegin[index];
     for (;;) {
         if (IsActiveThreadTerminating())
             return;
@@ -143,7 +143,7 @@ void CDarkwoodAssassinSpawn::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    CScriptThing assassin = Game->CreateCreature(g_pScriptDef->DarkwoodAssassinDefName, Me.GetPos(), "DarkwoodAssassin", true);
+    CScriptThing assassin = Game->CreateCreature(pGlobalScriptDef->DarkwoodAssassinDefName, Me.GetPos(), "DarkwoodAssassin", true);
     Game->SetThingPersistent(assassin, true);
     Game->EntityAttachToScript(assassin, Game->GetActiveQuestName());
     if (rand() % 5 == 0) {

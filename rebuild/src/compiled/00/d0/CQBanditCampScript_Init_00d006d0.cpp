@@ -1,4 +1,5 @@
 // CQ_BanditCampScript::Init() -- register the six Bandit Camp quest regions, clear the quest flags, reset the master
+// Leaf: ?Init@CQ_BanditCampScript@@
 // data's bandit-kill boast results and offer the three Bandit Camp boasts
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D006D0, length 768 bytes.
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; through the script's
@@ -63,7 +64,7 @@ struct CScriptDef {
     long BanditCampKillManyBanditsBoastCost;           // +0x3fc
     long BanditCampKillManyBanditsBoastReward;         // +0x400
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad_0x000[0x115];
@@ -104,10 +105,10 @@ void CQ_BanditCampScript::Init()
     ActivatedBanditRaid = false;
     Data->BanditCampKillManyBandits = false;
     Data->BanditCampKillNoBandits = true;
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->BanditCampNoDamageBoastCost,
-                   g_pScriptDef->BanditCampNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLNOBANDITS", 24, g_pScriptDef->BanditCampKillNoBanditsBoastCost,
-                   g_pScriptDef->BanditCampKillNoBanditsBoastReward, true, "", 1);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLMANYBANDITS", 27, g_pScriptDef->BanditCampKillManyBanditsBoastCost,
-                   g_pScriptDef->BanditCampKillManyBanditsBoastReward, true, "", 1);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->BanditCampNoDamageBoastCost,
+                   pGlobalScriptDef->BanditCampNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLNOBANDITS", 24, pGlobalScriptDef->BanditCampKillNoBanditsBoastCost,
+                   pGlobalScriptDef->BanditCampKillNoBanditsBoastReward, true, "", 1);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_KILLMANYBANDITS", 27, pGlobalScriptDef->BanditCampKillManyBanditsBoastCost,
+                   pGlobalScriptDef->BanditCampKillManyBanditsBoastReward, true, "", 1);
 }

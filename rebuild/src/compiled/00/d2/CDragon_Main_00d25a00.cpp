@@ -1,10 +1,10 @@
 // CDragon::Main() -- dragon boss entity script: tracks take-off/landing (spawning enemies on each take-off) and steps the boss fight's DragonState down through the health thresholds until DS_DEAD
-// Leaf: Main
+// Leaf: ?Main@CDragon@@
 // Retail: Fable.exe (TLC, VC7.1) NScript::CQ_DragonBossFightScript::CDragon::Main @ 0x00D25A00, 540 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate
 // 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, the parent's CScriptBase::IsActiveThreadTerminating 0x00CB7940,
 // CQ_DragonBossFightScript::SpawnEnemies 0x00D25C20; GameCalls slots 7 NewScriptFrame (+0x1c), 264 GetHealth (+0x420),
-// 562 IsCreatureFlying (+0x8c8). Data: g_pScriptDef 0x0143E90C (DBNumMinions*/DBNumSummoners* at +0xbc4..+0xbdc).
+// 562 IsCreatureFlying (+0x8c8). Data: pGlobalScriptDef 0x0143E90C (DBNumMinions*/DBNumSummoners* at +0xbc4..+0xbdc).
 // Layout: the entity-script model of the landed CGuardInWoods::Main 0x00D864B0 (GameCalls interface copied from it).
 // CDragon (Ego_r.pdb, 40 bytes): ParentClass +0x14, PMasterData +0x18, MediumHealth +0x1c, LowHealth +0x20,
 // VeryLowHealth +0x24. CQ_DragonBossFightScript: PDB DragonState +0x5c sits at retail +0x48 (base 0x14 smaller, as
@@ -931,7 +931,7 @@ struct CScriptDef {
  long DBNumSummonersLowHealth;     // +0xbd8
  long DBNumSummonersVeryLowHealth; // +0xbdc
 };
-extern CScriptDef* g_pScriptDef;   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 enum EDragonState { DS_HIGH_HEALTH, DS_MEDIUM_HEALTH, DS_LOW_HEALTH, DS_VERY_LOW_HEALTH, DS_DEAD };
 struct CQ_DragonBossFightScript {
  unsigned char BaseState[0x48];
@@ -983,24 +983,24 @@ void CDragon::Main()
    CQ_DragonBossFightScript* p = ParentClass;
    p->DragonState = DS_MEDIUM_HEALTH;
    if (!p->IsActiveThreadTerminating()) {
-    p->TargetNumMinions = g_pScriptDef->DBNumMinionsMediumHealth;
-    p->TargetNumSummoners = g_pScriptDef->DBNumSummonersMediumHealth;
+    p->TargetNumMinions = pGlobalScriptDef->DBNumMinionsMediumHealth;
+    p->TargetNumSummoners = pGlobalScriptDef->DBNumSummonersMediumHealth;
    }
   } else if (ParentClass->DragonState == DS_MEDIUM_HEALTH && Game->GetHealth(Me) <= LowHealth) {
    if (IsActiveThreadTerminating()) return;
    CQ_DragonBossFightScript* p = ParentClass;
    p->DragonState = DS_LOW_HEALTH;
    if (!p->IsActiveThreadTerminating()) {
-    p->TargetNumMinions = g_pScriptDef->DBNumMinionsLowHealth;
-    p->TargetNumSummoners = g_pScriptDef->DBNumSummonersLowHealth;
+    p->TargetNumMinions = pGlobalScriptDef->DBNumMinionsLowHealth;
+    p->TargetNumSummoners = pGlobalScriptDef->DBNumSummonersLowHealth;
    }
   } else if (ParentClass->DragonState == DS_LOW_HEALTH && Game->GetHealth(Me) <= VeryLowHealth) {
    if (IsActiveThreadTerminating()) return;
    CQ_DragonBossFightScript* p = ParentClass;
    p->DragonState = DS_VERY_LOW_HEALTH;
    if (!p->IsActiveThreadTerminating()) {
-    p->TargetNumMinions = g_pScriptDef->DBNumMinionsVeryLowHealth;
-    p->TargetNumSummoners = g_pScriptDef->DBNumSummonersVeryLowHealth;
+    p->TargetNumMinions = pGlobalScriptDef->DBNumMinionsVeryLowHealth;
+    p->TargetNumSummoners = pGlobalScriptDef->DBNumSummonersVeryLowHealth;
    }
   }
  }

@@ -1,4 +1,5 @@
 // CQ_MinionCampScript::Init() -- reset the mission state and both timers, copy the minion spawn periods from the script def, register the quest region and the quest's four boasts
+// Leaf: ?Init@CQ_MinionCampScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9E2E0, length 571 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; through the interface at +0x40:
 //   AddQuestRegion (slot 271, +0x43c), AddBoast (slot 303, +0x4bc); the timer service (global 0x0143E8F8) SetTimer
@@ -78,7 +79,7 @@ struct CScriptDef {
     float MCMinMinionSpawnPeriod;                       // +0xd3c
     float MCMaxMinionSpawnPeriod;                       // +0xd40
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
@@ -124,17 +125,17 @@ void CQ_MinionCampScript::Init()
     ChantTimerPaused = false;
     MinionSpawnTimer.Set(0);
     MaxNumberOfMinions = 3;
-    MinMinionSpawnPeriod = g_pScriptDef->MCMinMinionSpawnPeriod;
-    MaxMinionSpawnPeriod = g_pScriptDef->MCMaxMinionSpawnPeriod;
+    MinMinionSpawnPeriod = pGlobalScriptDef->MCMinMinionSpawnPeriod;
+    MaxMinionSpawnPeriod = pGlobalScriptDef->MCMaxMinionSpawnPeriod;
     CurrentStage = 0;
     BriarState = 0;
     Game->AddQuestRegion("Q_MinionCamp", "Darkwood3");
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->MinionCampNakedBoastCost,
-                   g_pScriptDef->MinionCampNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->MinionCampNoDamageBoastCost,
-                   g_pScriptDef->MinionCampNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, g_pScriptDef->MinionCampNoWeaponsBoastCost,
-                   g_pScriptDef->MinionCampNoWeaponsBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_BRIARNODAMAGE", 0x2a, g_pScriptDef->MinionCampBriarNoDamageCost,
-                   g_pScriptDef->MinionCampBriarNoDamageReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->MinionCampNakedBoastCost,
+                   pGlobalScriptDef->MinionCampNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->MinionCampNoDamageBoastCost,
+                   pGlobalScriptDef->MinionCampNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, pGlobalScriptDef->MinionCampNoWeaponsBoastCost,
+                   pGlobalScriptDef->MinionCampNoWeaponsBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_BRIARNODAMAGE", 0x2a, pGlobalScriptDef->MinionCampBriarNoDamageCost,
+                   pGlobalScriptDef->MinionCampBriarNoDamageReward, false, "", 0);
 }

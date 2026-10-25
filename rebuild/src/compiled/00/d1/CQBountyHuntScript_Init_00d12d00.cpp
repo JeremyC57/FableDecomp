@@ -1,4 +1,5 @@
 // CQ_BountyHuntScript::Init() -- register the four Bounty Hunt quest regions, clear the quest flags, arm the boast
+// Leaf: ?Init@CQ_BountyHuntScript@@
 // timer, reset the master data's bounty-hunt boast results and offer the four Bounty Hunt boasts
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D12D00, length 876 bytes (padded to 880).
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; through the script's
@@ -75,7 +76,7 @@ struct CScriptDef {
     long BountyHuntBoastCostDecapitation;              // +0xb6c
     long BountyHuntBoastRewardDecapitation;            // +0xb70
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad_0x000[0xd8];
@@ -186,19 +187,19 @@ void CQ_BountyHuntScript::Init()
     LakeComplete = false;
     BountyHuntIntroComplete = false;
     BanditGruntTextCounter = 0;
-    BoastTime.SetTime(g_pScriptDef->BountyHuntBoastTimeLimit);
+    BoastTime.SetTime(pGlobalScriptDef->BountyHuntBoastTimeLimit);
     BoastQuestInfoDisplayed = false;
     BoastActiveTimeLimit = false;
     BoastActiveDecapitation = false;
     Data->BountyHuntWithinTimeLimit = false;
     Data->BountyHuntTimeLimitExceeded = false;
     Data->BountyHuntDecapitation = false;
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->BountyHuntNakedBoastCost,
-                   g_pScriptDef->BountyHuntNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->BountyHuntNoDamageBoastCost,
-                   g_pScriptDef->BountyHuntNoDamageBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TIMELIMIT", 15, g_pScriptDef->BountyHuntBoastCostTimeLimit,
-                   g_pScriptDef->BountyHuntBoastRewardTimeLimit, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_DECAPITATELEADER", 16, g_pScriptDef->BountyHuntBoastCostDecapitation,
-                   g_pScriptDef->BountyHuntBoastRewardDecapitation, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->BountyHuntNakedBoastCost,
+                   pGlobalScriptDef->BountyHuntNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->BountyHuntNoDamageBoastCost,
+                   pGlobalScriptDef->BountyHuntNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_TIMELIMIT", 15, pGlobalScriptDef->BountyHuntBoastCostTimeLimit,
+                   pGlobalScriptDef->BountyHuntBoastRewardTimeLimit, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_DECAPITATELEADER", 16, pGlobalScriptDef->BountyHuntBoastCostDecapitation,
+                   pGlobalScriptDef->BountyHuntBoastRewardDecapitation, false, "", 0);
 }

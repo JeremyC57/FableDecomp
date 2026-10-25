@@ -1,4 +1,5 @@
 // CQ_WhiteBalverineKnotholeGladeScript::Init() -- register the quest's three regions and its two boasts, then reset the quest state
+// Leaf: ?Init@CQ_WhiteBalverineKnotholeGladeScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E13C60, length 439 bytes (padded to 448).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0; through the script's interface
 //   (+0x40): AddQuestRegion (slot 271, +0x43c) and AddBoast (slot 303, +0x4bc).
@@ -62,7 +63,7 @@ struct CScriptDef {
     long WhiteBalvNoDamageBoastCost;                    // +0x218
     long WhiteBalvNoDamageBoastReward;                  // +0x21C
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
@@ -85,10 +86,10 @@ void CQ_WhiteBalverineKnotholeGladeScript::Init()
     Game->AddQuestRegion("Q_WhiteBalverineKnotholeGlade", "KnotholeGlade");
     Game->AddQuestRegion("Q_WhiteBalverineKnotholeGlade", "Witchwood4");
     Game->AddQuestRegion("Q_WhiteBalverineKnotholeGlade", "DemonDoor_KnotholeGlade");
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, g_pScriptDef->WhiteBalvNakedBoastCost,
-                   g_pScriptDef->WhiteBalvNakedBoastReward, false, "", 0);
-    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, g_pScriptDef->WhiteBalvNoDamageBoastCost,
-                   g_pScriptDef->WhiteBalvNoDamageBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->WhiteBalvNakedBoastCost,
+                   pGlobalScriptDef->WhiteBalvNakedBoastReward, false, "", 0);
+    Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, pGlobalScriptDef->WhiteBalvNoDamageBoastCost,
+                   pGlobalScriptDef->WhiteBalvNoDamageBoastReward, false, "", 0);
     BalverineState = 0;
     MissionSucceeded = false;
     MissionFailed = false;

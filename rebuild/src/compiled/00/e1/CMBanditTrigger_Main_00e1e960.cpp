@@ -14,7 +14,7 @@
 // Layout: Ego_r.pdb CM_BanditTrigger (32 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CQR_EscortTraderScript*), PMasterData +0x18, BanditTriggered +0x1c. CQR_EscortTraderScript::TraderFollowing PDB +0x64 =
 //   retail +0x50 (quest-script base 0x14 smaller, as the landed HobbeLeader note). The vector<CCharString> at
-//   g_pScriptDef +0x9ac (STLport {start, finish, eos}) is named descriptively. GameCalls, CTimer and CIsThingAlive are copied
+//   pGlobalScriptDef +0x9ac (STLport {start, finish, eos}) is named descriptively. GameCalls, CTimer and CIsThingAlive are copied
 //   from the landed NScript::CQ_HobbeCaveScript::CHobbeLeader::Main 0x00D8FA30.
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 struct C3DVector { float X, Y, Z; };
@@ -960,7 +960,7 @@ struct CScriptDef {
     unsigned char _pad[0x9ac];
     CCharStringVector EscortBanditTypes;                // +0x9ac (descriptive name)
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQR_EscortTraderScript {
     unsigned char _pad[0x50];
     bool          TraderFollowing;                      // +0x50 (PDB +0x64)
@@ -1016,8 +1016,8 @@ void CM_BanditTrigger::Main()
         if (IsActiveThreadTerminating()) return;
     }
     if (IsActiveThreadTerminating()) return;
-    long count = g_pScriptDef->EscortBanditTypes._M_finish - g_pScriptDef->EscortBanditTypes._M_start;
-    CCharString banditType = g_pScriptDef->EscortBanditTypes._M_start[rand() % count];
+    long count = pGlobalScriptDef->EscortBanditTypes._M_finish - pGlobalScriptDef->EscortBanditTypes._M_start;
+    CCharString banditType = pGlobalScriptDef->EscortBanditTypes._M_start[rand() % count];
     CScriptThing bandit = Game->CreateCreature(banditType, pos, "AttackingBandit", false);
     if (spawnPoint.GetDataString() != "" && spawnPoint.GetDataString() != "NULL") {
         if (IsActiveThreadTerminating()) return;

@@ -1,12 +1,13 @@
 // CQR_EscortTrader_ManagerScript::Main() -- the repeatable trader-escort manager: on first run reset the counter and phase; then each frame run the phase machine: activate an escort (phases 0/2/4/6), or wait for the running escort to finish and for the gating quest (Q_TraderEscort / Q_BanditCamp / Q_Arena (+ activate the Orchard Farm barricade quest) / Q_OpeningGraveyardSecretPassage) to be completed before moving on; in the last phase keep activating an escort whenever the previous one has ended, the hero is away from LookoutPoint, the day is a quest day and the start time has passed
+// Leaf: ?Main@CQR_EscortTrader_ManagerScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E24E10, length 1972 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CScriptBase::IsActiveThreadTerminating
-//   0x00CB7940, CQR_EscortTrader_ManagerScript::Activate 0x00E255D0 (landed); g_pScriptDef 0x0143E90C; the game script
+//   0x00CB7940, CQR_EscortTrader_ManagerScript::Activate 0x00E255D0 (landed); pGlobalScriptDef 0x0143E90C; the game script
 //   interface (+0x40) slots 7, 12, 276, 284, 286, 647, 651.
 // Layout (retail = Ego_r.pdb - 0x14): OrchardFarmTraderEscortCounter +0x48, DebugCounter +0x4c, Activated +0x50,
 //   OrchardFarmTraderEscortPhase +0x54; CScriptDef (retail = PDB - 0xa0 here): EscortTraderQuestDayInterval +0x9d4,
 //   EscortTraderQuestStartTime +0x9d8.
-// Shape: the day/time tests go through inline helpers that take the CScriptDef pointer, so g_pScriptDef is loaded into
+// Shape: the day/time tests go through inline helpers that take the CScriptDef pointer, so pGlobalScriptDef is loaded into
 //   callee-saved edi before each interface call; that makes edi a saved register, which VC then also uses as the zero
 //   register (xor edi,edi) for the flag word, the first-run stores and the phase-0 test.
 struct CCharString {
@@ -111,7 +112,7 @@ struct CScriptDef {
     long EscortTraderQuestDayInterval;                  // +0x9d4
     long EscortTraderQuestStartTime;                    // +0x9d8
 };
-extern CScriptDef* g_pScriptDef;                        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 enum EscortTraderManagerPhase {
     PHASE_ACTIVATE_FIRST, PHASE_WAIT_TRADER_ESCORT, PHASE_ACTIVATE_SECOND, PHASE_WAIT_BANDIT_CAMP, PHASE_ACTIVATE_THIRD,
     PHASE_WAIT_ARENA, PHASE_ACTIVATE_FOURTH, PHASE_WAIT_GRAVEYARD, PHASE_REPEAT
@@ -251,8 +252,8 @@ void CQR_EscortTrader_ManagerScript::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 while (Game->IsRegionLoaded("LookoutPoint")
-                       || DayModInterval(Game->GetDayOfWeek(), g_pScriptDef) != 0
-                       || NotPastStartTime(Game->GetTimeOfDay(), g_pScriptDef)) {
+                       || DayModInterval(Game->GetDayOfWeek(), pGlobalScriptDef) != 0
+                       || NotPastStartTime(Game->GetTimeOfDay(), pGlobalScriptDef)) {
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating())
                         return;

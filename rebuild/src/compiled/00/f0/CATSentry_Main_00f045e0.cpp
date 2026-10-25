@@ -1,5 +1,5 @@
 // CAT_Sentry::Main() -- Arena sentry: find "AT_ConvoySpy"; each frame until the thread ends: when the phase ends take scripted control, walk to the nearest REGION_EXIT_POINT and fade out; once alerted (flag) or seen by the hero, attack (state group 0, the hero as best target unless the spy is fleeing), make the hero follow it and idle; when the spy comes within the def's range scare it; on the first frame the spy is scared, turn on the spy and the hero and ally the spy with every live guard
-// Leaf: Main
+// Leaf: ?Main@CAT_Sentry@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F045E0, 1520 bytes; entity-script vtable slot 1 (Main).
 // Callees: ~CScriptThing 0x004AA840, ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, IsActiveThreadTerminating
 //   0x00F35B30, CBaseObject ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release
@@ -214,7 +214,7 @@ struct CScriptDef {
     unsigned char _pad[0x9f4];
     float ArenaSentryScareDistance;                    // +0x9f4 (retail; PDB name not resolved)
 };
-extern CScriptDef* g_pScriptDef;                      // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                      // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptThingVector {                            // STLport vector<CScriptThing> (12 bytes)
     CScriptThing* _M_start;
     CScriptThing* _M_finish;
@@ -331,7 +331,7 @@ void CAT_Sentry::Main()
 #pragma inline_depth()
             }
         }
-        if (IsDistanceBetweenThingsUnder(Me, spy, g_pScriptDef->ArenaSentryScareDistance) && !ParentClass->SpyScared) {
+        if (IsDistanceBetweenThingsUnder(Me, spy, pGlobalScriptDef->ArenaSentryScareDistance) && !ParentClass->SpyScared) {
             if (IsActiveThreadTerminating())
                 {
 #pragma inline_depth(0)

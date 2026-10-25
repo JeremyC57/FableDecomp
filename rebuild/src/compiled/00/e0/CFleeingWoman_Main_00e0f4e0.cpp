@@ -1,5 +1,5 @@
 // CFleeingWoman::Main() -- fleeing-woman entity script
-// Leaf: Main
+// Leaf: ?Main@CFleeingWoman@@
 struct C3DVector { float X, Y, Z; };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 struct CCharString {
@@ -66,7 +66,7 @@ struct CScriptDef {
     long  WomanFleeTalkDistance;                       // +0xe48
     float WomanFadeTime;                               // +0xe4c
 };
-extern CScriptDef* g_pScriptDef;                       // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CIsThingAlive {                                 // vtable 0x012C32F0
     virtual void f00();
     CScriptThing m_thing;
@@ -105,7 +105,7 @@ void CFleeingWoman::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)g_pScriptDef->WomanFleeTriggerDistance)) {
+    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->WomanFleeTriggerDistance)) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -115,7 +115,7 @@ void CFleeingWoman::Main()
     CScriptThing target = Game->GetThingWithScriptName("FleeingWomanEscapePos");
     if (!IsActiveThreadTerminating()) {
         for (;;) {
-            if (!Talked && IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)g_pScriptDef->WomanFleeTalkDistance)) {
+            if (!Talked && IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)pGlobalScriptDef->WomanFleeTalkDistance)) {
                 if (IsActiveThreadTerminating())
                     return;
                 Talked = true;
@@ -136,6 +136,6 @@ void CFleeingWoman::Main()
         }
         if (IsActiveThreadTerminating())
             return;
-        FadeOutAndKillEntity(Me, true, g_pScriptDef->WomanFadeTime, true);
+        FadeOutAndKillEntity(Me, true, pGlobalScriptDef->WomanFadeTime, true);
     }
 }

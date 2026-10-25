@@ -53,6 +53,7 @@ public:
 };
 }
 
+namespace {
 const CThingCreatureBase* __fastcall GetFirstAttackerAlignedWithPlacementVector(
     const std::list<const CThingCreatureBase*>& attackers, const C3DVector& defenderPos, const C3DVector& placementVector)
 {
@@ -68,4 +69,5 @@ const CThingCreatureBase* __fastcall GetFirstAttackerAlignedWithPlacementVector(
             return attacker;
     }
     return 0;
+}
 }

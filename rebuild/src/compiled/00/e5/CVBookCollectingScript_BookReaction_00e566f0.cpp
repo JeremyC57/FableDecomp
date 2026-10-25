@@ -1,4 +1,5 @@
 // CV_BookCollectingScript::BookReaction(long book) -- the boy and girl react to a returned book: teleport them to the book's marks, play its reaction conversation line by line (stopping if a book is being read), then hand them back
+// Leaf: ?BookReaction@CV_BookCollectingScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E566F0, length 721 bytes, `ret 4`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0; ~CScriptThing 0x004AA840 (out of line); the scripted-thing handle's Release 0x00CD2770 and virtuals 10
@@ -176,7 +177,7 @@ struct CScriptDef {
     vector<CCharString> BookBoyMarks;                    // +0x4b0
     vector<CCharString> BookGirlMarks;                   // +0x4bc
 };
-extern CScriptDef* g_pScriptDef;                         // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
@@ -202,8 +203,8 @@ void CV_BookCollectingScript::BookReaction(long book)
     }
     CScriptThing boy = Game->GetThingWithScriptName("boy0");
     CScriptThing girl = Game->GetThingWithScriptName("girl0");
-    CScriptThing boyMark = Game->GetThingWithScriptName(g_pScriptDef->BookBoyMarks[book]);
-    CScriptThing girlMark = Game->GetThingWithScriptName(g_pScriptDef->BookGirlMarks[book]);
+    CScriptThing boyMark = Game->GetThingWithScriptName(pGlobalScriptDef->BookBoyMarks[book]);
+    CScriptThing girlMark = Game->GetThingWithScriptName(pGlobalScriptDef->BookGirlMarks[book]);
     Game->StartScriptingEntity(boy, seh_Boy, 4);
     Game->EntityTeleportToThing(boy, boyMark, false);
     Game->SetIsPushableByHero(boy, false);
