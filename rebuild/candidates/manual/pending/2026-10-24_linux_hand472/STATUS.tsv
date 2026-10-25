@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00993130	RELOCATION_MATCH	382v382	PASS	std::sort_heap<pair<long,CSoundBankRecord>*> (manifest _Sort_heap<C3DHelperPoint> wrong); /Gr; inline pop_heap chain; grades: 1
+004017b0	RELOCATION_MATCH	875v875	PASS	GFConfigDetection; /GS /Gr; success path nested in if (MessageBox block placement); replaces asm_bake; grades: 2
+00402130	RELOCATION_MATCH	372v372	PASS	FableCheckMyDocumentsWritePermissions; /Gr; __forceinline wide == with if/return; replaces asm_bake; "" bound to 0x0129AAF4 + TU literal; grades: 4
+004023f0	RELOCATION_MATCH	274v274	PASS	GetWindowTitle; /Gr; auto_ptr between title and tag + reset(); replaces asm_bake; grades: 2
+00405220	DIFFER	290v290	-	TransferIMEColour; return-packing register split only; parked; grades: 4
+00406350	RELOCATION_MATCH	629v629	PASS	GetValidProfileName; forbidden file-name chars -> _; grades: 2
+0040cec0	DIFFER	981v977	-	CUserProfileManager ctor; frame slots/register naming only; parked; grades: 4
+004117c0	RELOCATION_MATCH	243v243	PASS	vector<pair<float,CCameraTag>>::_M_insert_overflow (catalog Std_Vector_Insert_Range wrong); grades: 1
+00411b90	RELOCATION_MATCH	323v323	PASS	vector<pair<float,CCameraTag>>::operator=; grades: 1
+00411db0	RELOCATION_MATCH	339v339	PASS	vector<pair<float,CCameraTag>>::_M_fill_insert (catalog ..._Dispatch wrong); grades: 1
+00412330	RELOCATION_MATCH	280v280	PASS	vector<CWideString>::_M_insert_overflow (catalog ..._Copies wrong); grades: 3
+004125a0	RELOCATION_MATCH	310v310	PASS	vector<CDateAndTime>::_M_insert_overflow; grades: 2
+004126e0	RELOCATION_MATCH	256v256	PASS	vector<CWideString>::_M_fill_insert; grades: 2
+004138d0	RELOCATION_MATCH	894v894	PASS	GFParseCommandLine; /Gr; explicit CCharString("") parser arg + implicit EqualsNoCase; GetString "" = 0x0129AAF4; grades: 4
+00415070	RELOCATION_MATCH	495v495	PASS	NLocalisation::GetLanguage; grades: 3
+00415640	RELOCATION_MATCH	471v471	PASS	NLocalisation::GetUIGraphics; jump tables verified by hand; grades: 1
+00415e85	RELOCATION_MATCH	311v311	PASS	GFLogMemoryUse; /GS /Gr; optimize("s",on) alone gives the biased lea ebp frame; grades: 2
+0042f5a9	RELOCATION_MATCH	354v354	PASS	CNewFrontendGameComponent::CompileDefsPlatformSpecific; grades: 2
+00431c30	RELOCATION_MATCH	410v410	PASS	NUISystem::CUIIconsDef::Transfer (catalog InitialiseDefaultCameraTags wrong); grades: 1
+004333b3	RELOCATION_MATCH	337v337	PASS	vector<CCharString>::_M_fill_insert (catalog Std_Vector_InsertRange wrong); grades: 1
+00437d10	DIFFER	572v583	-	CPlayerGui::FormatStringForArea; register allocation only; parked; grades: 4
+00441020	DIFFER	276v277	-	vector<unsigned int>::_M_fill_insert; n register only; parked; grades: 4
+004413c0	RELOCATION_MATCH	252v252	PASS	vector<CEnginePrimitiveHandle>::_M_insert_overflow; grades: 1
+00442350	RELOCATION_MATCH	353v353	PASS	vector<CEnginePrimitiveHandle>::_M_fill_insert (catalog ..WithRealloc wrong); grades: 2
+00446720	RELOCATION_MATCH	780v780	PASS	GetActionName; /Gr; jump table pairing verified by hand; grades: 1
+00446d10	DIFFER	496v473	-	CGamePlayerInterface::IsControlInputSharedBetweenGameActions; frame/addressing only; parked; grades: 4
+004676ef	RELOCATION_MATCH	287v287	PASS	vector<unsigned char>::_M_fill_insert; grades: 4
+00469012	RELOCATION_MATCH	311v311	PASS	vector<CRGBColour>::_M_fill_insert; grades: 2
+0046ad59	RELOCATION_MATCH	337v337	PASS	vector<CSoundBankEntry>::_M_fill_insert; grades: 1
+0046aecc	RELOCATION_MATCH	250v250	PASS	vector<CSoundBankEntry>::_M_insert_overflow; grades: 1
+0046c022	RELOCATION_MATCH	328v328	PASS	vector<CReverbEnvironmentEntry>::_M_fill_insert (catalog element wrong); grades: 1
+00472c2a	RELOCATION_MATCH	335v335	PASS	vector<NSpeechGainManager::CDialogueLayerDef>::_M_fill_insert; grades: 2
+00476212	RELOCATION_MATCH	413v413	PASS	vector<CQuickAccessItemButtonGuiDef>::_M_fill_insert; grades: 1
+00477169	RELOCATION_MATCH	246v246	PASS	vector<CEnvironmentThemeDef>::_M_insert_overflow; grades: 1
+00477ab7	RELOCATION_MATCH	325v325	PASS	vector<CEngineLocalDetailObjectDef>::operator=; grades: 1
+0047800e	RELOCATION_MATCH	246v246	PASS	vector<CEngineLocalDetailObjectDef>::_M_insert_overflow; grades: 1
+0047c030	RELOCATION_MATCH	270v270	PASS	vector<CHeroLogBook::CQuestObjectiveDesc>::_M_insert_overflow; grades: 1
+0047c140	RELOCATION_MATCH	258v258	PASS	vector<CHeroLogBook::CHeroLogBookEntry>::_M_insert_overflow (catalog Vector_Reserve_And_Assign wrong); grades: 1
+0047ccd0	RELOCATION_MATCH	257v257	PASS	vector<CHeroLogBook::CQuestDesc>::_M_insert_overflow (catalog Std_Vector_Insert_Range wrong); grades: 1
+0047dc69	RELOCATION_MATCH	308v308	PASS	PCLoad; /Gr; frame-pointer size TU; menu pointer zeroed before the hero fetch; grades: 2

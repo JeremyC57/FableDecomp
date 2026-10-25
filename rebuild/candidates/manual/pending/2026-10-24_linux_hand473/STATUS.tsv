@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0048cc60	RELOCATION_MATCH	490v490	PASS	_STL::__find_if<CThing**, binder2nd<ptr_fun(IsThingScriptNamed)>> (/Gr); label Vector_ConstructElements_Unrolled wrong; 2 grades
+004917b5	DIFFER	-v797	-	FormatTextWithGameActionNames (797 bytes, ebp frame, unaligned TU): not attempted (size; budget); 0 grades
+0049b480	RELOCATION_MATCH	280v280	PASS	vector<CTexture>::_M_insert_overflow; 1 grade
+0049b5a0	RELOCATION_MATCH	265v265	PASS	vector<CTexture>::_M_fill_insert; label Std_Vector_Insert_Range wrong; 2 grades
+0049e080	RELOCATION_MATCH	284v284	PASS	CWorld::RenderUpdate; forward copied before up; 3 grades
+004a05c0	RELOCATION_MATCH	448v448	PASS	CWorld::SaveGameState; goto form of the inline == L"" (+2 verification regrades after class retype); 3 grades
+004a0940	RELOCATION_MATCH	413v413	PASS	CWorld::TeleportHeroToHSP (Ego_r PDB); label NQuestManager_ActivateQuestWithFilters wrong; 4th grade = std-model alignment with 0048cc60; 4 grades
+004b2ca0	DIFFER	856v832	-	CQuestManager::GetActiveQuestSectionNames; lane emits and esp,-8 frame for the 8-byte insert result in loops (RTM and QFE); differ/ holds best source; 4 grades
+004b8e40	RELOCATION_MATCH	427v427	PASS	_STL::__find<CCharString*> random-access; label VectorFind descriptive; 1 grade
+004bb2e0	RELOCATION_MATCH	273v273	PASS	vector<CQuestManager::CActivateQuestInfo>::_M_insert_overflow; 1 grade
+004bb400	RELOCATION_MATCH	282v282	PASS	vector<pair<CCharString,CPersistInfo>>::_M_insert_overflow; 1 grade
+004bc4f0	RELOCATION_MATCH	303v303	PASS	NGraphicAppearance::CTCGraphicAppearance::GetMeshObject; overloads declared in reverse slot order; 2 grades
+004c88e0	RELOCATION_MATCH	330v330	PASS	CThing::SerialiseThingInfo(bool, CCharString&, CSerialiseInfo&) static; 1 grade
+004c8a30	RELOCATION_MATCH	368v368	PASS	CThing::GetSubTypeFromScript static; named defs local; 2 grades
+004cd670	RELOCATION_MATCH	810v810	PASS	CConversationAttitude::Init; 42 table assignments generated from the retail disassembly; 1 grade
+004cea60	DIFFER	332v332	-	CSubtitledMessage::GetMessageFromTextIndex; esi/edi swap only (scheduling/register); differ/ holds best source; 4 grades
+004cebb0	DIFFER	-v771	-	GetMessagesFromTextName (771 bytes, /Gr static with a jump-table mode switch, calls the parked 0x4CEA60): not attempted (size; sibling parked); 0 grades
+004d1940	RELOCATION_MATCH	249v249	PASS	vector<pair<float,CCharString>>::_M_insert_overflow; 1 grade
+004ea446	RELOCATION_MATCH	313v313	PASS	vector<CEngineGraphic>::_M_fill_insert (size-optimised TU); 3 grades
+004ea5a1	RELOCATION_MATCH	244v244	PASS	vector<CEngineGraphic>::_M_insert_overflow (size-optimised TU); 2 grades
+004ed161	RELOCATION_MATCH	400v400	PASS	vector<CShopItemDef>::_M_fill_insert; label Pair_StringPair wrong; 1 grade
+004edb3e	RELOCATION_MATCH	349v349	PASS	vector<CPrizeScoreDef>::_M_fill_insert; label CCardDef wrong; 1 grade
+004edfdc	RELOCATION_MATCH	347v347	PASS	vector<CMultiStaticMeshEntryDef>::_M_fill_insert; 1 grade
+004f9df8	RELOCATION_MATCH	362v362	PASS	vector<CCardPositionsDef>::_M_fill_insert; 1 grade
+004fa277	RELOCATION_MATCH	364v364	PASS	vector<CCardDef>::_M_fill_insert; label ShoveHaPenny wrong; 1 grade
+004fe7f0	RELOCATION_MATCH	562v562	PASS	CWorldMap::GetSoundThemesUsedInCurrentRegion (Ego_r PDB); label CollectSoundThemeSwitchDefs descriptive; same-TU GetDef stand-in; 3 grades
+004ff750	DIFFER	361v336	-	CreateRelevantPersonAndUpdateStats; creature kept in a stack local, retail keeps it in esi + homes it in the dead init slot; differ/ holds best source; 4 grades
+00501150	DIFFER	-v756	-	LoadLevel_ParseObjects (756 bytes, ret 20h, counted-pointer/set construction): not attempted (size; budget); 0 grades
+00502b00	DIFFER	-v906	-	AddToRelevantBuilding (906 bytes, ret 0Ch, list walks): not attempted (size; budget); 0 grades
+005079c0	RELOCATION_MATCH	612v612	PASS	CWorldMap::LoadGameState (Ego_r PDB); label LoadGameStateInternal_ParseRegions wrong; same-TU TransferBinaryIn stand-in; 4 grades
+00514790	RELOCATION_MATCH	245v245	PASS	CReplaceSerialise<Level2,Level1>::ConvertPreviousUnknownVersionUp; label CopyConstructor wrong; 1 grade
+005149f0	RELOCATION_MATCH	269v269	PASS	vector<unsigned short>::_M_fill_insert; label vector_insert_erase wrong; 1 grade
+00515e90	RELOCATION_MATCH	251v251	PASS	CReplaceSerialise<Level3,Level2>::ConvertPreviousUnknownVersionUp; 1 grade
+00517ba0	RELOCATION_MATCH	270v270	PASS	vector<CNavigationPosition>::_M_insert_overflow; 2 grades
+00517ef0	RELOCATION_MATCH	257v257	PASS	CReplaceSerialise<CFileFormatLevel,Level3>::ConvertPreviousUnknownVersionUp; 1 grade
+005196e0	RELOCATION_MATCH	287v287	PASS	CReplaceSerialise<MapHeader5,MapHeader4>::ConvertPreviousUnknownVersionUp; 1 grade
+00519cd0	RELOCATION_MATCH	480v480	PASS	vector<CMapInfo>::_M_range_insert<const CMapInfo*>; 1 grade
+0051a430	RELOCATION_MATCH	304v304	PASS	vector<CLevelLoader::CObject::CLevelFiles>::_M_insert_overflow; 2 grades
+0051a5a0	RELOCATION_MATCH	295v295	PASS	CReplaceSerialise<MapHeader6,MapHeader5>::ConvertPreviousUnknownVersionUp; 1 grade
+0051af80	RELOCATION_MATCH	283v283	PASS	_Rb_tree<long, pair<const long, list<long>>>::erase(first, last); leaf prefix matches both erase overloads (range = larger); 1 grade

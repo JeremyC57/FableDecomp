@@ -59,3 +59,9 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - CBankFileAsync_SetEnableFailureHandling_009d5240.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CStringParserCommentList_Destructor_004046b0.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CStringParserCommentList_Destructor_004046b0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_MyDocuments_CheckWritePermissions_00402130_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GFConfigDetection_004017b0.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetWindowTitle_004023f0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetWindowTitle_004023f0.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_MyDocuments_CheckWritePermissions_00402130.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GFConfigDetection_004017b0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
