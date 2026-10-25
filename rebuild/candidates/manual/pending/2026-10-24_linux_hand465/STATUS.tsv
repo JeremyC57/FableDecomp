@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ab44d0	DIFFER	85v85	-	STLport vector::resize(n), 8-byte zero-default element (pair<long,long>, unconfirmed: no callers): scheduling-only diff (first zero store / lea register); grades 4
+00ae7aa0	RELOCATION_MATCH	75v75	PASS	STLport vector<C3DQuad2>::resize(n) -> resize(n, _Tp()) with out-of-line erase 0x00AE6430 / _M_fill_insert 0x00AE6E60; grades 1
+00ae7b10	RELOCATION_MATCH	75v75	PASS	STLport vector<C2DVector>::resize(n); erase 0x00440E00, _M_fill_insert 0x00475ED0; grades 1
+00af3240	RELOCATION_MATCH	75v75	PASS	STLport __unguarded_insertion_sort_aux, pair<CCharString, NParticleEngine::CRegisteredPSCInfo>, CKeyPairCompareLess; grades 1
+00b6cc90	DIFFER	85v85	-	STLport vector::resize(n), same body shape as 00ab44d0: scheduling-only diff; grades 3
+00bbdd40	RELOCATION_MATCH	80v80	PASS	STLport vector<CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator>::resize(n) (Valid(false) default); grades 1
+00bcc3b0	RELOCATION_MATCH	77v77	PASS	STLport vector<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry>::resize(n); grades 1
+00be0140	RELOCATION_MATCH	109v109	PASS	STLport vector<C3DBoundingSphere>::resize(n) (four zero stores of the default); grades 1
+00cdb640	RELOCATION_MATCH	59v59	PASS	STLport __destroy_aux<TeleportData*> (four ~CCharString per element); grades 1
+00818dc0	RELOCATION_MATCH	109v109	PASS	STLport vector<pair<NHitLocations::CHitLocation, long> >::push_back (CDefPointer RefCount bumps; _M_insert_overflow 0x00818CA0); grades 1
+00624330	RELOCATION_MATCH	126v126	PASS	STLport __unguarded_insertion_sort_aux, CTestQuest, CTestQuestNameCompare; grades 1
+0080ab40	RELOCATION_MATCH	205v205	PASS	STLport __unguarded_insertion_sort_aux, NPlayerTargeting::CTargetPoint, 52-byte CThingCompare_BestForTargeting2 by value; grades 1
+00a415d0	RELOCATION_MATCH	78v78	PASS	STLport __insertion_sort (not unguarded aux), pair<pair<CCharString, CCharString>, long>; __linear_insert 0x00A40F50 by value; grades 1
+00a45f90	RELOCATION_MATCH	83v83	PASS	STLport __unguarded_insertion_sort_aux, C3DSkeletalBoneMorph, __fastcall function-pointer comparator; grades 1
+00a6f8b0	RELOCATION_MATCH	84v84	PASS	STLport __unguarded_insertion_sort_aux, pair<CCharString, C3DHelperPoint>, CCompareString<C3DHelperPoint>; grades 1
+00cb6860	RELOCATION_MATCH	94v94	PASS	STLport __unguarded_insertion_sort_aux, pair<CCharString, CScriptInfo>, CKeyPairCompareLess; grades 1
+0071fcf0	RELOCATION_MATCH	156v156	PASS	STLport __unguarded_insertion_sort_aux, pair<long, CTCHeroMorph::CTextureLayer> (CRGBColour user copy -> byte copies); grades 1
+00a32340	RELOCATION_MATCH	74v74	PASS	STLport __unguarded_insertion_sort_aux, pair<unsigned long, C3DHelperPoint>, CKeyPairCompareLess; grades 1
+004b81d0	RELOCATION_MATCH	60v60	PASS	STLport __uninitialized_fill_n, CActivateQuestInfo; grades 1
+0051a880	RELOCATION_MATCH	109v109	PASS	STLport __uninitialized_fill_n, pair<unsigned __int64, list<C2DLineF> > (list copy: malloc header + _M_insert_dispatch 0x005152C0); grades 1
+00526e40	RELOCATION_MATCH	56v56	PASS	STLport __uninitialized_fill_n, CSharerParserOutputToDebugContextMapper::CEntry; grades 1
+006149b0	MATCH	36v36	PASS	STLport fill_n<unsigned __int64*, unsigned int, unsigned __int64> (not _Ufill); grades 1
+006e65f0	RELOCATION_MATCH	62v62	PASS	STLport __uninitialized_fill_n, CConversationLine; grades 1
+00709ce0	RELOCATION_MATCH	66v66	PASS	STLport __uninitialized_fill_n, pair<NGraphicAppearance::CMeshInfo, CEngineTextureMorphSet>; grades 1
+007d2370	RELOCATION_MATCH	60v60	PASS	STLport __uninitialized_fill_n, CShoveHaPennyRegionDef (base copy 0x0046644C + own vtable); local base model (engine header layout wrong); grades 1
+0086d8c0	RELOCATION_MATCH	63v63	PASS	STLport __uninitialized_fill_n, CRandomAppearanceMorph::CBodyPartMesh (vector copy 0x00673E10); grades 2
+009e5fe0	RELOCATION_MATCH	60v60	PASS	STLport __uninitialized_fill_n, CSymbolMap::CSymbolInfo; grades 1
+00a3fc00	RELOCATION_MATCH	60v60	PASS	STLport __uninitialized_fill_n, pair<pair<CCharString, CCharString>, long>; grades 1
+00a486b0	RELOCATION_MATCH	54v54	PASS	STLport __uninitialized_fill_n, CLipSyncPhoneme; grades 1
+00a5c510	MATCH	54v54	PASS	STLport fill_n<C4DVector*, unsigned int, C4DVector> (not _Ufill); grades 1
+00a830a0	RELOCATION_MATCH	109v109	PASS	STLport __uninitialized_fill_n, pair<unsigned __int64, list<C2DLineF> > (second TU, same body as 0051a880); grades 1
+00ad1700	RELOCATION_MATCH	60v60	PASS	STLport __uninitialized_fill_n, COptimisedBone; grades 1
+00cd4ea0	RELOCATION_MATCH	60v60	PASS	STLport __uninitialized_fill_n, CMarkerDataEntry (descriptive name); grades 1
+00467686	RELOCATION_MATCH	53v53	PASS	STLport vector<unsigned char>::resize(n, x), #pragma optimize("s", on); erase 0x004676BB, fill 0x004676EF; grades 1
+00486189	RELOCATION_MATCH	53v53	PASS	STLport vector<unsigned char>::resize(n, x), #pragma optimize("s", on); erase 0x00485B18, fill 0x00485F3A; grades 1
+005f9074	RELOCATION_MATCH	169v169	PASS	STLport vector<pair<long, EHeroAbility> >::operator=, #pragma optimize("s", on); grades 1
+0085e8d0	RELOCATION_MATCH	76v76	PASS	STLport vector<NThingMap::CThingMapCell>::resize(n, x), erase inline (__copy loop), fill 0x0085E6C0; grades 1
+00a2d0e0	RELOCATION_MATCH	87v87	PASS	STLport vector<CMeshDataBankEntry*>::resize(n, x), erase inline (__copy_trivial, memmove 0x00BFEAE6); grades 1
+00b2aab0	RELOCATION_MATCH	87v87	PASS	STLport vector<CSurface*>::resize(n, x), erase inline (__copy_trivial, memmove 0x00BFEAE6); grades 1
+00c29840	RELOCATION_MATCH	38v38	PASS	Dinkumware std::vector<CHandleBasedMemoryPool::CHandleInfo>::_Ufill (libpk), _Uninit_fill_n 0x00C294B0; grades 1
