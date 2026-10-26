@@ -1,0 +1,219 @@
+addr	shape	catalog_name_before	callee	callee_name	kind	status
+0042ab1c	DTOROS	std::list<T_0042ab1c>::~list	0042a141	_global::StdList_Clear_0042a141	list	kept
+0042ab73	DTOROS	std::list<long>::~list	0042a168	_global::StdList_Clear_0042a168	list	kept
+0042abca	DTOROS	std::list<NUISystem::CComponent*>::~list	0042a18f	std::list<NUISystem::CComponent*>::clear	list	kept
+0042ac25	DTOROS	std::list<T_0042ac25>::~list	0042a1e3	_global::StdList_Clear_0042a1e3	list	kept
+0042b755	DTOROS	std::list<T_0042b755>::~list	0042abe1	CTCCarryable::OnKill	?	kept
+0042b796	DTOROS	std::list<T_0042b796>::~list	0042ac76	CTCCarryable::OnKill	?	kept
+0042b7d7	DTOROS	std::list<T_0042b7d7>::~list	0042acc3	CTCCarryable::OnKill	?	kept
+0042ce63	DTOROS	std::list<T_0042ce63>::~list	0042c02f	CTCCarryable::OnKill	?	kept
+004301f3	DTOROS	std::list<T_004301f3>::~list	00430046	CTCCarryable::OnKill	?	kept
+004302cd	DTOROS	std::list<T_004302cd>::~list	0043027a	CTCCarryable::OnKill	?	kept
+00450dab	DTOROS	_global::StdList_Dtor_00450dab	00450855	_global::StdList_Clear_00450855	list	kept
+00451763	DTOROS	_global::StdList_Dtor_00451763	00450e92	_global::RbTree_Clear_00450e92	tree	kept
+004517a4	DTOROS	_global::StdList_Dtor_004517a4	00450edf	_global::RbTree_Clear_00450edf	tree	kept
+0045180f	DTOROS	std::list<T_0045180f>::~list	00450f50	_global::RbTree_Clear_00450f50	tree	kept
+0045185f	DTOROS	_global::StdList_Dtor_0045185f	00450fac	_global::RbTree_Clear_00450fac	tree	kept
+004518a0	DTOROS	_global::StdList_Dtor_004518a0	00450ff9	_global::RbTree_Clear_00450ff9	tree	kept
+004518e1	DTOROS	std::_Rb_tree<T_004518e1>::~_Rb_tree	00451046	_global::RbTree_Clear_00451046	tree	kept
+00451940	DTOROS	_global::StdList_Dtor_00451940	004510bf	_global::RbTree_Clear_004510bf	tree	CONVERTED
+00451981	DTOROS	_global::StdList_Dtor_00451981	0045110c	_global::RbTree_Clear_0045110c	tree	kept
+004519c2	DTOROS	_global::StdList_Dtor_004519c2	00451159	_global::RbTree_Clear_00451159	tree	kept
+00451a03	DTOROS	_global::StdList_Dtor_00451a03	004511a6	_global::RbTree_Clear_004511a6	tree	kept
+00451a44	DTOROS	_global::StdList_Dtor_00451a44	004511f3	_global::RbTree_Clear_004511f3	tree	kept
+00451a85	DTOROS	_global::StdList_Dtor_00451a85	00451240	_global::RbTree_Clear_00451240	tree	kept
+00451ac6	DTOROS	_global::StdList_Dtor_00451ac6	0045128d	_global::RbTree_Clear_0045128d	tree	kept
+00451b07	DTOROS	std::list<T_00451b07>::~list	004512da	_global::RbTree_Clear_004512da	tree	kept
+004543af	DTOROS	_global::StdList_Dtor_004543af	00453607	_global::RbTree_Clear_00453607	tree	kept
+004543c6	DTOROS	std::list<T_004543c6>::~list	00453630	_global::RbTree_Clear_00453630	tree	kept
+00485e45	DTOROS	_global::StdList_Dtor_00485e45	00485aef	_global::RbTree_Clear_00485aef	tree	kept
+00493bdd	DTOROS	std::list<T_00493bdd>::~list	00493911	_global::StdList_Clear_00493911	list	kept
+004db5bb	DTOROS	std::list<T_004db5bb>::~list	004da1a4	_global::StdList_Clear_004da1a4	list	kept
+004db68f	DTOROS	std::list<T_004db68f>::~list	004da3e7	_global::StdList_Clear_004da3e7	list	kept
+004dd118	DTOROS	_global::StdList_Dtor_004dd118	004db748	_global::RbTree_Clear_004db748	tree	kept
+004dd159	DTOROS	_global::StdList_Dtor_004dd159	004db795	_global::RbTree_Clear_004db795	tree	kept
+004dd1c4	DTOROS	_global::StdList_Dtor_004dd1c4	004db806	_global::RbTree_Clear_004db806	tree	kept
+004dd1db	DTOROS	_global::StdList_Dtor_004dd1db	004db853	CTCCarryable::OnKill	?	kept
+004dd21c	DTOROS	_global::StdList_Dtor_004dd21c	004db88a	_global::RbTree_Clear_004db88a	tree	kept
+004dd2b1	DTOROS	std::list<T_004dd2b1>::~list	004db91f	_global::RbTree_Clear_004db91f	tree	kept
+004dd32b	DTOROS	_global::StdList_Dtor_004dd32b	004db99f	_global::RbTree_Clear_004db99f	tree	kept
+004dd36c	DTOROS	_global::StdList_Dtor_004dd36c	004db9ec	_global::RbTree_Clear_004db9ec	tree	kept
+004dd3ad	DTOROS	_global::StdList_Dtor_004dd3ad	004dba39	_global::RbTree_Clear_004dba39	tree	kept
+004dd3ee	DTOROS	_global::StdList_Dtor_004dd3ee	004dba86	_global::RbTree_Clear_004dba86	tree	kept
+004dd42f	DTOROS	_global::StdList_Dtor_004dd42f	004dbad3	_global::RbTree_Clear_004dbad3	tree	kept
+004dd470	DTOROS	_global::StdList_Dtor_004dd470	004dbb20	std::_Rb_tree<CDefString,std::pair<const CDefString,long>,st	tree	kept
+004dd4db	DTOROS	std::list<T_004dd4db>::~list	004dbb91	_global::RbTree_Clear_004dbb91	tree	kept
+004dd52b	DTOROS	_global::StdList_Dtor_004dd52b	004dbbed	_global::RbTree_Clear_004dbbed	tree	kept
+004dd56c	DTOROS	_global::StdList_Dtor_004dd56c	004dbc3a	_global::RbTree_Clear_004dbc3a	tree	kept
+004dd5ad	DTOROS	std::list<T_004dd5ad>::~list	004dbc87	_global::RbTree_Clear_004dbc87	tree	kept
+004dd5ee	DTOROS	std::list<T_004dd5ee>::~list	004dbcd4	_global::RbTree_Clear_004dbcd4	tree	kept
+004dfb47	DTOROS	_global::StdList_Dtor_004dfb47	004dd641	CRetailList_CValue_00a01c10::clear	list	kept
+004e1bbb	DTOROS	_global::StdList_Dtor_004e1bbb	004dfb5e	CRetailList_CValue_004d78ed::clear	list	kept
+004e350f	DTOROS	_global::StdList_Dtor_004e350f	004e1bd2	_global::RbTree_Clear_004e1bd2	tree	kept
+004e6df5	DTOROS	_global::StdList_Dtor_004e6df5	004e4108	CTCCarryable::OnKill	?	kept
+004e81e4	DTOROS	std::list<T_004e81e4>::~list	004e7720	_global::RbTree_Clear_004e7720	tree	kept
+004e81fb	DTOROS	std::list<T_004e81fb>::~list	004e7749	_global::RbTree_Clear_004e7749	tree	kept
+004eb98f	DTOROS	std::list<T_004eb98f>::~list	004e8212	_global::RbTree_Clear_004e8212	tree	kept
+0053c965	DTOROS	std::list<T_0053c965>::~list	0053c8a9	_global::StdList_Clear_0053c8a9	list	kept
+0053c9bc	DTOROS	std::list<T_0053c9bc>::~list	004855a3	_global::StdList_Clear_004855a3	list	kept
+005792da	DTOROS	std::list<T_005792da>::~list	00578fce	_global::StdList_Clear_00578fce	list	kept
+00579616	DTOROS	std::list<T_00579616>::~list	00579353	_global::RbTree_Clear_00579353	tree	kept
+005796ab	DTOROS	std::list<T_005796ab>::~list	005793e8	_global::RbTree_Clear_005793e8	tree	kept
+0057988c	DTOROS	std::list<T_0057988c>::~list	005795c3	std::map<...>::clear	tree	kept
+00579faa	DTOROS	std::list<T_00579faa>::~list	00579ea3	_global::RbTree_Clear_00579ea3	tree	kept
+00579fc1	DTOROS	std::list<T_00579fc1>::~list	00579ecc	_global::RbTree_Clear_00579ecc	tree	kept
+0057fdbd	DTOROS	std::list<T_0057fdbd>::~list	0057f58e	_global::StdList_Clear_0057f58e	list	kept
+00580a64	DTOROS	_global::StdList_Dtor_00580a64	0058060d	CTCCarryable::OnKill	?	kept
+005931f5	DTOROS	std::list<T_005931f5>::~list	00592ba7	_global::StdList_Clear_00592ba7	list	kept
+005932a3	DTOROS	std::list<T_005932a3>::~list	00592ccd	_global::StdList_Clear_00592ccd	list	kept
+00593ac7	DTOROS	_global::StdList_Dtor_00593ac7	00593235	_global::RbTree_Clear_00593235	tree	kept
+00593b03	DTOROS	std::list<T_00593b03>::~list	00593764	CRetailList_CValue_00591f62::clear	list	kept
+005940d5	DTOROS	_global::StdList_Dtor_005940d5	00593b99	CTCCarryable::OnKill	?	kept
+0059b098	DTOROS	std::_Rb_tree<FRONTEND_SCREEN,std::pair<const FRONTEND_SCREEN,NUISystem::CComponent*>,std::_Select1st<std::pair<const FRONTEND_SCREEN,NUISystem::CComponent*> >,std::less<FRONTEND_SCREEN>,std::allocator<std::pair<const FRONTEND_SCREEN,NUISystem::CComponent*> > >::~_Rb_tree	0059af2a	std::_Rb_tree<FRONTEND_SCREEN,std::pair<const FRONTEND_SCREE	tree	kept
+005b211f	DTOROS	_global::StdList_Dtor_005b211f	005b1c18	_global::RbTree_Clear_005b1c18	tree	kept
+005b2160	DTOROS	_global::StdList_Dtor_005b2160	005b1c41	_global::RbTree_Clear_005b1c41	tree	kept
+005b21f4	DTOROS	_global::StdList_Dtor_005b21f4	0042ade5	std::_Rb_tree<NUISystem::CComponent*,std::pair<NUISystem::CC	tree	kept
+005b2847	DTOROS	std::list<T_005b2847>::~list	005b21a1	_global::RbTree_Clear_005b21a1	tree	kept
+005bb04f	DTOROS	_global::StdList_Dtor_005bb04f	005babb8	_global::RbTree_Clear_005babb8	tree	kept
+005bb090	DTOROS	_global::StdList_Dtor_005bb090	005bac05	_global::RbTree_Clear_005bac05	tree	kept
+005bb5ae	DTOROS	_global::StdList_Dtor_005bb5ae	005bb190	?	?	kept
+005d864b	DTOROS	std::list<T_005d864b>::~list	005d8517	CRetailList_CWideString::clear	list	kept
+005f8908	DTOROS	_global::StdList_Dtor_005f8908	005f8197	_global::StdList_Clear_005f8197	list	kept
+005f8fe6	DTOROS	std::list<T_005f8fe6>::~list	005f8890	_global::RbTree_Clear_005f8890	tree	kept
+005f900a	DTOROS	std::list<T_005f900a>::~list	005f8b7d	CRetailList_CWideString::clear	list	kept
+0065f1c8	DTOROS	_global::StdList_Dtor_0065f1c8	0065e4d1	?	?	kept
+0065f1fa	DTOROS	_global::StdList_Dtor_0065f1fa	0065e503	?	?	kept
+0065f22c	DTOROS	_global::StdList_Dtor_0065f22c	0065e535	?	?	kept
+0065f300	DTOROS	_global::StdList_Dtor_0065f300	0065e567	?	?	kept
+006605fa	DTOROS	_global::StdList_Dtor_006605fa	0065fe38	CRetailList_CValue_0065d574::clear	list	kept
+00660611	DTOROS	_global::StdList_Dtor_00660611	0065fe69	CRetailList_CValue_0065d5a0::clear	list	kept
+00660628	DTOROS	_global::StdList_Dtor_00660628	0065fe9a	CRetailList_CValue_0065d507::clear	list	kept
+0066063f	DTOROS	_global::StdList_Dtor_0066063f	0065fecb	CRetailList_CValue_0065d533::clear	list	kept
+00660656	DTOROS	_global::StdList_Dtor_00660656	0065fefc	CRetailList_CValue_0065d5cc::clear	list	kept
+0066066d	DTOROS	_global::StdList_Dtor_0066066d	0065ff2d	CRetailList_CValue_0065d5f8::clear	list	kept
+00cd31d2	DTOROS	std::_Rb_tree<CCharString,CCharString,_Identity<CCharString>,less<CCharString>,allocator<CCharString> >::~_Rb_tree	00cd2d8b	std::_Rb_tree<CCharString,CCharString,_Identity<CCharString>	tree	kept
+00cd3211	DTOROS	std::_Rb_tree<long,pair<long const ,CCharString>,_Select1st<pair<long const ,CCharString> >,less<long>,allocator<pair<long const ,CCharString> > >::~_Rb_tree	00cd2ddc	std::_Rb_tree<long,pair<long const ,CCharString>,_Select1st<	tree	kept
+0042b72b	CTOROS	CTexture_InitEmpty_56bytes	0042ac52	Allocator_Alloc_56bytes	tree (colours the header)	kept
+0042b76c	CTOROS	CTexture_InitEmpty_24bytes	0042ac9f	Allocator_Alloc_24bytes	tree (colours the header)	kept
+0042b7ad	CTOROS	LinkedList_InitializeNode	0042acec	LinkedList_Initialize	tree (colours the header)	kept
+0042b7ee	CTOROS	CTexture_InitEmpty_28bytes	0042ad10	Allocator_Alloc_28bytes	tree (colours the header)	kept
+0043019f	CTOROS	LinkedList_Initialize	00430022	Queue_Initialize	tree (colours the header)	kept
+004301c9	CTOROS	ListNode_Construct	0043006f	Stack_Initialize	tree (colours the header)	kept
+0045170f	CTOROS	ListNode_Init	00450e6e	ListNode_AllocateNode	tree (colours the header)	kept
+00451739	CTOROS	ListNode_Init_B	00450ebb	ListNode_AllocateNode_Variant_B	tree (colours the header)	kept
+0045177a	CTOROS	ListNode_Init_C	00450f08	ListNode_AllocateNode_Variant_C	tree (colours the header)	kept
+004517bb	CTOROS	ListNode_Init_D	00450f2c	ListNode_AllocateNode_Variant_D	tree (colours the header)	kept
+004517e5	CTOROS	ListNode_Init_E	00450f79	ListNode_AllocateNode_Variant_E	tree (colours the header)	kept
+00451835	CTOROS	ListNode_Init_F	00450fd5	ListNode_AllocateNode_Variant_F	tree (colours the header)	kept
+00451876	CTOROS	ListNode_Init_G	00451022	ListNode_AllocateNode_Variant_G	tree (colours the header)	kept
+004518b7	CTOROS	ListNode_Init_H	0045106f	ListNode_AllocateNode_Variant_H	tree (colours the header)	kept
+00451916	CTOROS	ListNode_Init_I	004510e8	ListNode_AllocateNode_Variant_I	tree (colours the header)	kept
+00451957	CTOROS	ListNode_Init_J	00451135	ListNode_AllocateNode_Variant_J	tree (colours the header)	kept
+00451998	CTOROS	ListNode_Init_K	00451182	ListNode_AllocateNode_Variant_K	tree (colours the header)	kept
+004519d9	CTOROS	ListNode_Init_L	004511cf	ListNode_AllocateNode_Variant_L	tree (colours the header)	kept
+00451a1a	CTOROS	ListNode_Init_M	0045121c	ListNode_AllocateNode_Variant_M	tree (colours the header)	kept
+00451a5b	CTOROS	ListNode_Init_N	00451269	ListNode_AllocateNode_Variant_N	tree (colours the header)	kept
+00451a9c	CTOROS	ListNode_Init_O	004512b6	ListNode_AllocateNode_Variant_O	tree (colours the header)	kept
+00451add	CTOROS	CList_Initialize	00451303	CList_AllocateNode	tree (colours the header)	kept
+00485ac5	CTOROS	ListNode_Initialize_Circular	004857bc	ListNode_AllocateCircularNode	tree (colours the header)	kept
+004dd0ee	CTOROS	CopyBackBufferToTexture_InitSurface1	004db771	Alloc_24ByteStruct	tree (colours the header)	kept
+004dd12f	CTOROS	CopyBackBufferToTexture_InitSurface2	004db7be	Alloc_24ByteStruct_2	tree (colours the header)	kept
+004dd170	CTOROS	TextureFormat_Handler_01	004db7e2	Alloc_28ByteStruct	tree (colours the header)	kept
+004dd19a	CTOROS	TextureFormat_Handler_02	004db82f	Alloc_24ByteStruct_3	tree (colours the header)	kept
+004dd1f2	CTOROS	TextureFormat_Handler_03	004db8b3	Alloc_24ByteStruct_4	tree (colours the header)	kept
+004dd233	CTOROS	TextureFormat_Handler_04	004db8d7	Alloc_40ByteStruct	tree (colours the header)	kept
+004dd25d	CTOROS	TextureFormat_Handler_05	004db8fb	Alloc_32ByteStruct	tree (colours the header)	kept
+004dd287	CTOROS	TextureFormat_Handler_06	004db948	Alloc_24ByteStruct_5	tree (colours the header)	kept
+004dd2d7	CTOROS	TextureFormat_Handler_07	004db97b	Alloc_64ByteStruct	tree (colours the header)	kept
+004dd301	CTOROS	TextureFormat_Handler_08	004db9c8	Alloc_24ByteStruct_6	tree (colours the header)	kept
+004dd342	CTOROS	TextureFormat_Handler_09	004dba15	Alloc_28ByteStruct_2	tree (colours the header)	kept
+004dd383	CTOROS	TextureFormat_Handler_10	004dba62	Alloc_24ByteStruct_7	tree (colours the header)	kept
+004dd3c4	CTOROS	TextureFormat_Handler_11	004dbaaf	Alloc_24ByteStruct_8	tree (colours the header)	kept
+004dd405	CTOROS	TextureFormat_Handler_12	004dbafc	Alloc_24ByteStruct_9	tree (colours the header)	kept
+004dd446	CTOROS	TextureFormat_Handler_13	004dbb49	Alloc_24ByteStruct_10	tree (colours the header)	kept
+004dd487	CTOROS	TextureFormat_Handler_14	004dbb6d	Alloc_48ByteStruct	tree (colours the header)	kept
+004dd4b1	CTOROS	TextureFormat_Handler_15	004dbbba	Alloc_24ByteStruct_11	tree (colours the header)	kept
+004dd501	CTOROS	TextureFormat_Handler_16	004dbc16	Alloc_24ByteStruct_12	tree (colours the header)	kept
+004dd542	CTOROS	TextureFormat_Handler_17	004dbc63	Alloc_24ByteStruct_13	tree (colours the header)	kept
+004dd583	CTOROS	TextureFormat_Handler_18	004dbcb0	Alloc_24ByteStruct_14	tree (colours the header)	kept
+004dd5c4	CTOROS	TextureFormat_Handler_19	004dbcfd	Alloc_24ByteStruct_15	tree (colours the header)	kept
+00579599	CTOROS	Container_InitSmall1	0057932f	Alloc_24ByteStruct_16	tree (colours the header)	kept
+005795ec	CTOROS	Container_InitSmall2	0057937c	Alloc_24ByteStruct_17	tree (colours the header)	kept
+0057962d	CTOROS	Container_InitMedium1	005793a0	Alloc_72ByteStruct	tree (colours the header)	kept
+00579657	CTOROS	Container_InitMedium2	005793c4	Alloc_72ByteStruct_2	tree (colours the header)	kept
+00579681	CTOROS	Container_InitSmall3	00579411	Alloc_24ByteStruct_18	tree (colours the header)	kept
+005805e3	CTOROS	Container_InitLarge	0057fe26	Alloc_88ByteStruct	tree (colours the header)	kept
+00593a9d	CTOROS	Queue_Init	005932ea	Alloc_24ByteStruct_19	tree (colours the header)	kept
+00593b3f	CTOROS	HashBucket_Init	00593351	Alloc_48ByteStruct_2	tree (colours the header)	kept
+0059b06e	CTOROS	Render_InitializeNode_24Byte	0059af5f	Allocate_24Byte	tree (colours the header)	kept
+005b20f5	CTOROS	Render_InitializeNode_28Byte	005b1c79	Allocate_28Byte	tree (colours the header)	kept
+005b2136	CTOROS	Render_InitializeNode_24Byte_Var	005b1c9d	Allocate_24Byte_Variant	tree (colours the header)	kept
+005b2177	CTOROS	Render_InitializeNode_28Byte_Var	005b1cc1	Allocate_28Byte_Variant	tree (colours the header)	kept
+005b21ca	CTOROS	Render_InitializeNode_24Byte_Var2	005b1ce5	Allocate_24Byte_Variant2	tree (colours the header)	kept
+005bb025	CTOROS	std::_Rb_tree<EClothingSuitPart,EClothingSuitPart,_Identity<EClothingSuitPart>,less<EClothingSuitPart>,allocator<EClothingSuitPart> >::_Rb_tree	005babe1	std::_Rb_tree_base<EClothingSuitPart,allocator<EClothingSuit	tree (colours the header)	kept
+005bb066	CTOROS	List_InitializeEmpty_24Bytes	005bac2e	Allocate_24Bytes	tree (colours the header)	kept
+005f8fbc	CTOROS	Render_InitializeNode_24Byte_Var3	005f895f	Allocate_24Byte_Variant3	tree (colours the header)	kept
+00cd2d37	CTOROS	CList_InitSentinelNode	00cd283c	CList_AllocateNode	tree (colours the header)	kept
+00cd2d61	CTOROS	CTree_InitSentinelNode	00cd2860	CTree_AllocateNode	tree (colours the header)	kept
+0042ac52	BASECTOR	Allocator_Alloc_56bytes	-	node 0x38	tree?	kept
+0042ac9f	BASECTOR	Allocator_Alloc_24bytes	-	node 0x18	tree?	kept
+0042acec	BASECTOR	LinkedList_Initialize	-	node 0x18	tree?	kept
+0042ad10	BASECTOR	Allocator_Alloc_28bytes	-	node 0x1c	tree?	kept
+00430022	BASECTOR	Queue_Initialize	-	node 0x18	tree?	kept
+0043006f	BASECTOR	Stack_Initialize	-	node 0x18	tree?	kept
+00450e6e	BASECTOR	ListNode_AllocateNode	-	node 0x18	tree?	kept
+00450ebb	BASECTOR	ListNode_AllocateNode_Variant_B	-	node 0x18	tree?	kept
+00450f08	BASECTOR	ListNode_AllocateNode_Variant_C	-	node 0x18	tree?	kept
+00450f2c	BASECTOR	ListNode_AllocateNode_Variant_D	-	node 0x18	tree?	kept
+00450f79	BASECTOR	ListNode_AllocateNode_Variant_E	-	node 0x18	tree?	kept
+00450fd5	BASECTOR	ListNode_AllocateNode_Variant_F	-	node 0x24	tree?	kept
+00451022	BASECTOR	ListNode_AllocateNode_Variant_G	-	node 0x18	tree?	kept
+0045106f	BASECTOR	ListNode_AllocateNode_Variant_H	-	node 0x18	tree?	kept
+004510e8	BASECTOR	ListNode_AllocateNode_Variant_I	-	node 0x18	tree?	kept
+00451135	BASECTOR	ListNode_AllocateNode_Variant_J	-	node 0x18	tree?	kept
+00451182	BASECTOR	ListNode_AllocateNode_Variant_K	-	node 0x18	tree?	kept
+004511cf	BASECTOR	ListNode_AllocateNode_Variant_L	-	node 0x18	tree?	kept
+0045121c	BASECTOR	ListNode_AllocateNode_Variant_M	-	node 0x18	tree?	kept
+00451269	BASECTOR	ListNode_AllocateNode_Variant_N	-	node 0x18	tree?	kept
+004512b6	BASECTOR	ListNode_AllocateNode_Variant_O	-	node 0x18	tree?	kept
+00451303	BASECTOR	CList_AllocateNode	-	node 0x14	tree?	kept
+004857bc	BASECTOR	ListNode_AllocateCircularNode	-	node 0x18	tree?	kept
+004db771	BASECTOR	Alloc_24ByteStruct	-	node 0x18	tree?	kept
+004db7be	BASECTOR	Alloc_24ByteStruct_2	-	node 0x18	tree?	kept
+004db7e2	BASECTOR	Alloc_28ByteStruct	-	node 0x1c	tree?	kept
+004db82f	BASECTOR	Alloc_24ByteStruct_3	-	node 0x18	tree?	kept
+004db8b3	BASECTOR	Alloc_24ByteStruct_4	-	node 0x18	tree?	kept
+004db8d7	BASECTOR	Alloc_40ByteStruct	-	node 0x28	tree?	kept
+004db8fb	BASECTOR	Alloc_32ByteStruct	-	node 0x20	tree?	kept
+004db948	BASECTOR	Alloc_24ByteStruct_5	-	node 0x18	tree?	kept
+004db97b	BASECTOR	Alloc_64ByteStruct	-	node 0x40	tree?	kept
+004db9c8	BASECTOR	Alloc_24ByteStruct_6	-	node 0x18	tree?	kept
+004dba15	BASECTOR	Alloc_28ByteStruct_2	-	node 0x1c	tree?	kept
+004dba62	BASECTOR	Alloc_24ByteStruct_7	-	node 0x18	tree?	kept
+004dbaaf	BASECTOR	Alloc_24ByteStruct_8	-	node 0x18	tree?	kept
+004dbafc	BASECTOR	Alloc_24ByteStruct_9	-	node 0x18	tree?	kept
+004dbb49	BASECTOR	Alloc_24ByteStruct_10	-	node 0x18	tree?	kept
+004dbb6d	BASECTOR	Alloc_48ByteStruct	-	node 0x30	tree?	kept
+004dbbba	BASECTOR	Alloc_24ByteStruct_11	-	node 0x18	tree?	kept
+004dbc16	BASECTOR	Alloc_24ByteStruct_12	-	node 0x18	tree?	kept
+004dbc63	BASECTOR	Alloc_24ByteStruct_13	-	node 0x18	tree?	kept
+004dbcb0	BASECTOR	Alloc_24ByteStruct_14	-	node 0x18	tree?	kept
+004dbcfd	BASECTOR	Alloc_24ByteStruct_15	-	node 0x18	tree?	kept
+0057932f	BASECTOR	Alloc_24ByteStruct_16	-	node 0x18	tree?	kept
+0057937c	BASECTOR	Alloc_24ByteStruct_17	-	node 0x18	tree?	kept
+005793a0	BASECTOR	Alloc_72ByteStruct	-	node 0x48	tree?	kept
+005793c4	BASECTOR	Alloc_72ByteStruct_2	-	node 0x48	tree?	kept
+00579411	BASECTOR	Alloc_24ByteStruct_18	-	node 0x18	tree?	kept
+0057fe26	BASECTOR	Alloc_88ByteStruct	-	node 0x58	tree?	kept
+005932ea	BASECTOR	Alloc_24ByteStruct_19	-	node 0x18	tree?	kept
+00593351	BASECTOR	Alloc_48ByteStruct_2	-	node 0x30	tree?	kept
+0059af5f	BASECTOR	Allocate_24Byte	-	node 0x18	tree?	kept
+005b1c79	BASECTOR	Allocate_28Byte	-	node 0x1c	tree?	kept
+005b1c9d	BASECTOR	Allocate_24Byte_Variant	-	node 0x18	tree?	kept
+005b1cc1	BASECTOR	Allocate_28Byte_Variant	-	node 0x1c	tree?	kept
+005b1ce5	BASECTOR	Allocate_24Byte_Variant2	-	node 0x18	tree?	kept
+005babe1	BASECTOR	std::_Rb_tree_base<EClothingSuitPart,allocator<EClothingSuitPart> >::_Rb_tree_base	-	node 0x14	tree?	kept
+005bac2e	BASECTOR	Allocate_24Bytes	-	node 0x18	tree?	kept
+005f895f	BASECTOR	Allocate_24Byte_Variant3	-	node 0x18	tree?	kept
+00cd283c	BASECTOR	CList_AllocateNode	-	node 0x18	tree?	kept
+00cd2860	BASECTOR	CTree_AllocateNode	-	node 0x18	tree?	kept

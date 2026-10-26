@@ -1,0 +1,266 @@
+instance	decision	type	node	rows_converted	evidence
+004510bf	proven	map<ETargetingType, float>	0x18	004510bf,00451940,0045d7fe,0045d871,0045d901,0045dbf2,0045dc78	004510bf proven site owner:CTargetingDef::TargetingRanges; site:CTargetingDef::TargetingRanges(+0x74) | checks node0x18,cmps
+0047ba00	proven	map<long, long>		0047ba00	0047ba00 proven owner-unique owner:CGameScriptInterface::ScriptTimers | checks cmps
+0048cfc0	unproven	CUnprovenKey/Value/KeyOfValue_0048cfc0 (key signed/unobserved)	0x20	0048cfc0	-
+004a9cb0	proven	set<long>	0x14	00517810	005114f0 proven site owner:CTCWife::ThingsSeenThePlayerWear;CTCCameraPointScriptedSpline::ValidAnimList;CTCVillage::PlayersCrimes;CThingMapManager:; seed; site:CTCCameraPointScriptedSpline::ValidAnimList(+0xc0); site
+004aba70	proven	set<CCharString>	0x14	00a2d050	004ad460 proven owner-unique owner:CQuestManager::QuestsWithResourcesLoadedThatAreNotActivated | checks node0x14; 004aba70 proven site bind; owner:CQuestManager::QuestsWithResourcesLoadedThatAreNotActivated;CFaction::AlliedFactions;CSymbolMap::NamesUsed;CTCHeroAttach; site:CEngineInternalPrimitiveMorphInfo::HiddenMaterialNames(+
+004ac0b0	unproven	CUnprovenKey/Value/KeyOfValue_004ac0b0 (key signed/unobserved)	0x14	004ac0b0	-
+004ac210	unproven	CUnprovenKey/Value/KeyOfValue_004ac210 (key signed/unobserved)	0x1c	004ac210	-
+004ae1c0	proven	map<CCharString, CCountedPointer<C3DSkeletalMorphTarget>>	0x1c	004ae1c0	004ae200 proven site owner:CSkeletalMorphResourceManager::CachedMorphs; site:CSkeletalMorphResourceManager::CachedMorphs(+0x4) | checks 
+004b84a0	unproven	CUnprovenKey/Value/KeyOfValue_004b84a0 (key signed/unobserved)		004b84a0	004b84a0 weak 1 candidates
+004c1d40	unproven	CUnprovenKey/Value/KeyOfValue_004c1d40 (key signed/unobserved)		004c1d40	-
+004c2950	unproven	CUnprovenKey/Value/KeyOfValue_004c2950 (key signed/unobserved)	0x18	004c3ed0,004c42d0	-
+004c3e90	unproven	CUnprovenKey/Value/KeyOfValue_004c3e90 (key signed/unobserved)	0x20	004c3e90	-
+004c5800	unproven	CUnprovenKey/Value/KeyOfValue_004c5800 (key signed/unobserved)	0x20	004c5800	-
+004c65d0	unproven	CUnprovenKey/Value/KeyOfValue_004c65d0 (key signed/unobserved)		004c65d0	004c65d0 weak 1 candidates
+004c67d0	unproven	CUnprovenKey/Value/KeyOfValue_004c67d0 (key signed/unobserved)	0x1c	004c67d0	-
+004c6af0	unproven	CUnprovenKey/Value/KeyOfValue_004c6af0 (key signed/unobserved)	0x1c	004c6af0	-
+004cf810	proven	set<unsigned long>	0x14	00ad49c0	004cf810 proven site bind; owner:CCRCSymbolMap::NamesUsed; seed; site:CCRCSymbolMap::NamesUsed(+0x14) | checks node0x14
+00510da0	unproven	CUnprovenKey/Value/KeyOfValue_00510da0 (key signed/unobserved)	0x14	005145e0,005159a0	00510da0 weak 1 candidates
+00511ce0	unproven	CUnprovenKey/Value/KeyOfValue_00511ce0 (key signed/unobserved)		00511ce0	-
+00514110	unproven+members	CUnprovenKey/Value_00514110; value members CCharString@+0x0		00514110	-
+00514520	unproven	CUnprovenKey/Value/KeyOfValue_00514520 (key signed/unobserved)	0x14	00514520	-
+00514670	unproven	CUnprovenKey/Value/KeyOfValue_00514670 (key signed/unobserved)	0x18	00514670	-
+0051b6e0	proven	map<long, long>	0x18	0051b6e0	0051b720 weak 2 candidates; 0051b6e0 proven owner-unique owner:CGameScriptInterface::ScriptTimers | checks node0x18
+00527480	unproven	CUnprovenKey/Value/KeyOfValue_00527480 (key signed/unobserved)		00527480	00527480 weak 2 candidates
+00527860	proven	map<unsigned __int64, CPersistedDeadEntity>	0x28	00528c60,00529ce0	00529230 proven seed/bind seed | checks node0x28
+005278a0	unproven	CUnprovenKey/Value/KeyOfValue_005278a0 (key signed/unobserved)	0x20	005278a0,00528440,00528cf0,00528d30,00529d70,00529db0	005278a0 weak 2 candidates
+00527910	proven	map<EGameAction, pair<C3DVector,long>>	0x24	00528dc0,00529e10	00527910 proven site owner:CThingPlayerCreature::RelativeMovementAccelerationComponents; site:CThingPlayerCreature::RelativeMovementAccelerationComponents(+0x1a8) | checks 
+00527950	unproven	CUnprovenKey/Value/KeyOfValue_00527950 (key signed/unobserved)	0x20	00528e50,00529ea0	-
+00527ac0	unproven	CUnprovenKey/Value/KeyOfValue_00527ac0 (key signed/unobserved)		00527ac0	00527ac0 weak 2 candidates
+00527b10	unproven	CUnprovenKey/Value/KeyOfValue_00527b10 (key signed/unobserved)		00527b10	00527b10 weak 2 candidates
+00527e60	unproven	CUnprovenKey/Value/KeyOfValue_00527e60 (key signed/unobserved)		00527e60	00527e60 weak 2 candidates
+00528d80	unproven	CUnprovenKey/Value/KeyOfValue_00528d80 (key signed/unobserved)	0x20	00528d80	-
+0052af00	unproven	CUnprovenKey/Value/KeyOfValue_0052af00 (key signed/unobserved)	0x20	0052af00	-
+0052dca0	unproven	CUnprovenKey/Value/KeyOfValue_0052dca0 (key signed/unobserved)	0x14	0052e010,0052e1a0	0052dca0 weak single site, no check
+00534c60	unproven	CUnprovenKey/Value/KeyOfValue_00534c60 (key signed/unobserved)	0x14	00535610,00535750	-
+00553520	unproven	CUnprovenKey/Value/KeyOfValue_00553520 (key signed/unobserved)		00553520	-
+005535f0	unproven	CUnprovenKey/Value/KeyOfValue_005535f0 (key signed/unobserved)	0x1c	005535f0	-
+00553690	proven	map<NUISystem::ETableSprites, CCountedPointer<NUISystem::CComponent>>	0x1c	00553ee0	00553690 proven site bind; site:NUISystem::CTable::Sprites(+0x15c) | checks 
+005577a0	unproven	CUnprovenKey/Value/KeyOfValue_005577a0 (key unsigned)		005577a0	-
+00566110	proven	map<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, float>	0x18	00567700,00567eb0	00566110 proven site owner:CTCHeroOnlineScoreboard::LocalScoreboard; site:CTCHeroOnlineScoreboard::LocalScoreboard(+0x1c) | checks 
+00566fe0	unproven	CUnprovenKey/Value/KeyOfValue_00566fe0 (key signed/unobserved)		00566fe0	00566fe0 weak 3 candidates
+005676c0	unproven	CUnprovenKey/Value/KeyOfValue_005676c0 (key signed/unobserved)	0x1c	005676c0	-
+005678a0	unproven	CUnprovenKey/Value/KeyOfValue_005678a0 (key signed/unobserved)	0x20	005678a0	-
+00567980	proven	map<long, CCountedPointer<CTexture>>	0x1c	00569220	00567980 proven site bind; owner:CTCHeroOnlineScoreboard::PictureCache; site:CTCHeroOnlineScoreboard::PictureCache(+0x10) | checks 
+00569a80	proven	map<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, vector<pair<float,CWideString>,allocator<pair<float,CWideString>>>>	0x20	0056a580	00569a80 proven site owner:CTCHeroOnlineScoreboard::DownloadedClanScoreboard; site:CTCHeroOnlineScoreboard::DownloadedClanScoreboard(+0x44) | checks 
+0056cb00	unproven	CUnprovenKey/Value/KeyOfValue_0056cb00 (key signed/unobserved)	0x18	0056cb00,0056cfd0,0056d390,0056d3d0,0056d770,0056d7b0	0056cb00 weak 1 candidates; 0056d770 weak 1 candidates
+0056d130	unproven	CUnprovenKey/Value/KeyOfValue_0056d130 (key signed/unobserved)		0056d130	-
+0056d2c0	unproven	CUnprovenKey/Value/KeyOfValue_0056d2c0 (key signed/unobserved)	0x34	0056d2c0	-
+0056d300	unproven+members	CUnprovenKey/Value_0056d300; value members CCharString@+0x10, CWideString@+0x14, CWideString@+0x18		0056d300	-
+0056d350	unproven	CUnprovenKey/Value/KeyOfValue_0056d350 (key signed/unobserved)	0x20	0056d350	-
+0056d440	unproven+members	CUnprovenKey/Value_0056d440; value members CCharString@+0x10, CWideString@+0x14, CWideString@+0x18	0x34	0056ddc0	0056d440 weak 1 candidates
+0056d720	unproven+members	CUnprovenKey/Value_0056d720; value members CCharString@+0x10, CWideString@+0x14, CWideString@+0x18		0056d720	-
+0056de50	unproven	CUnprovenKey/Value/KeyOfValue_0056de50 (key signed/unobserved)	0x20	0056e4a0	0056e4a0 weak 1 candidates; 0056de50 weak 1 candidates
+005794a1	unproven	CUnprovenKey/Value/KeyOfValue_005794a1 (key signed/unobserved)	0x18	005794a1,005796fe,00579958	005794a1 weak 5 candidates
+0059388f	unproven	CUnprovenKey/Value/KeyOfValue_0059388f (key signed/unobserved)	0x18	0059388f,00593bd6,00593c5e	-
+005e0b00	unproven	CUnprovenKey/Value/KeyOfValue_005e0b00 (key signed/unobserved)	0x18	005e0b00	-
+005e1f30	proven	map<CCharString, CIVCountedPointer<CAnimComponentBase>>	0x18	005e3080	005e1f30 proven seed/bind seed | checks dtorCCharString
+005e8c00	unproven	CUnprovenKey/Value/KeyOfValue_005e8c00 (key signed/unobserved)	0x18	005e8ff0,005e9320	005e8c00 weak 1 candidates
+005f8c1f	unproven	CUnprovenKey/Value/KeyOfValue_005f8c1f (key signed/unobserved)	0x18	005f8c1f,005f915d,005f91e5	-
+00613630	unproven	CUnprovenKey/Value/KeyOfValue_00613630 (key signed/unobserved)		00613630	-
+00613ae0	unproven	CUnprovenKey/Value/KeyOfValue_00613ae0 (key signed/unobserved)	0x18	00616930,00617140	00613ae0 weak 2 candidates
+00613ce0	unproven	CUnprovenKey/Value/KeyOfValue_00613ce0 (key signed/unobserved)	0x1c	00613ce0,00615610,00616a40,00616a80,00617270,006172b0	00613ce0 weak 2 candidates
+00615820	unproven	CUnprovenKey/Value/KeyOfValue_00615820 (key signed/unobserved)		00615820	-
+006158d0	unproven	CUnprovenKey/Value/KeyOfValue_006158d0 (key signed/unobserved)		006158d0	-
+006169c0	unproven	CUnprovenKey/Value/KeyOfValue_006169c0 (key signed/unobserved)	0x6c	006169c0	-
+00616b90	unproven	CUnprovenKey/Value/KeyOfValue_00616b90 (key unsigned)		00616b90	-
+006196d0	unproven	CUnprovenKey/Value/KeyOfValue_006196d0 (key signed/unobserved)	0x6c	00619e30	006196d0 weak 2 candidates
+00623560	unproven	CUnprovenKey/Value/KeyOfValue_00623560 (key signed/unobserved)	0x18	00624160,00624520	00623560 weak 1 candidates
+006241f0	unproven	CUnprovenKey/Value/KeyOfValue_006241f0 (key signed/unobserved)		006241f0	-
+00630a10	unproven	CUnprovenKey/Value/KeyOfValue_00630a10 (key signed/unobserved)	0x18	00630cc0,00630f50	00631020 weak 2 candidates
+00630d50	unproven	CUnprovenKey/Value/KeyOfValue_00630d50 (key signed/unobserved)	0x18	00630d50	-
+00630d90	proven	map<unsigned long, CCharString>	0x18	006313e0	006310e0 proven seed/bind seed | checks node0x18,dtorCCharString
+00638c30	unproven	CUnprovenKey/Value/KeyOfValue_00638c30 (key signed/unobserved)		00638c30	00638c30 weak 1 candidates
+0067a7c0	proven	map<EOpinionReactionType, EOpinionAttitudeType>	0x18	0067b5f0,0067bd30	0067a7c0 proven site bind; owner:COpinionReactionManagerDef::AttitudeCondition; site:COpinionReactionManagerDef::AttitudeCondition(+0x48) | checks 
+0067a800	proven	map<EOpinionReactionType, EOpinionTargetingConditionType>	0x18	0067b680,0067bdc0	0067a800 proven site bind; owner:COpinionReactionManagerDef::TargetingCondition; site:COpinionReactionManagerDef::TargetingCondition(+0x54) | checks 
+0067a840	proven	map<EOpinionReactionType, float>	0x18	0067b710,0067be50	0067a840 proven site bind; owner:COpinionReactionManagerDef::PreReactionDelay; site:COpinionReactionManagerDef::PreReactionDelay(+0x60) | checks 
+0067b0b0	unproven	CUnprovenKey/Value/KeyOfValue_0067b0b0 (key signed/unobserved)	0x18	0067b0b0	0067b0b0 weak 5 candidates
+0067b0e0	unproven	CUnprovenKey/Value/KeyOfValue_0067b0e0 (key signed/unobserved)	0x18	0067b0e0	0067b0e0 weak 5 candidates
+0067b110	unproven	CUnprovenKey/Value/KeyOfValue_0067b110 (key signed/unobserved)	0x18	0067b110	0067b110 weak 5 candidates
+00685700	unproven	CUnprovenKey/Value/KeyOfValue_00685700 (key signed/unobserved)		00685700	-
+00695c80	unproven	CUnprovenKey/Value/KeyOfValue_00695c80 (key signed/unobserved)		00695c80	-
+00696010	unproven+members	CUnprovenKey/Value_00696010; value members CCharString@+0x4		00696010	-
+00696510	unproven+members	CUnprovenKey/Value_00696510; value members CCharString@+0x4		00696510	-
+00696590	unproven	CUnprovenKey/Value/KeyOfValue_00696590 (key signed/unobserved)	0x1c	00696590	-
+006965d0	unproven	CUnprovenKey/Value/KeyOfValue_006965d0 (key signed/unobserved)	0x1c	006965d0	-
+00696de0	unproven	CUnprovenKey/Value/KeyOfValue_00696de0 (key signed/unobserved)	0x1c	00696de0	-
+00696e70	unproven	CUnprovenKey/Value/KeyOfValue_00696e70 (key signed/unobserved)	0x1c	00696e70	-
+0069d1f0	unproven	CUnprovenKey/Value/KeyOfValue_0069d1f0 (key signed/unobserved)	0x1c	0069d1f0	-
+0069d3d0	proven	map<NCameraModes::EMode, CCountedPointer<NCameraModes::CBaseInit>>	0x1c	0069db20	0069d3d0 proven site bind; owner:CGameCameraManager::RegisteredModes; site:CGameCameraManager::RegisteredModes(+0x138) | checks 
+006bd000	unproven	CUnprovenKey/Value/KeyOfValue_006bd000 (key signed/unobserved)	0x1c	006bd000	-
+006bd0f0	unproven	CUnprovenKey/Value/KeyOfValue_006bd0f0 (key signed/unobserved)		006bd0f0	-
+006bd640	unproven	CUnprovenKey/Value/KeyOfValue_006bd640 (key signed/unobserved)	0x1c	006bd640	-
+006c4f80	unproven	CUnprovenKey/Value/KeyOfValue_006c4f80 (key signed/unobserved)	0x18	006c4f80,006c75a0,006c7d30,006c7d70,006c7de0,006c8230,006c8270	006c4f80 weak 5 candidates
+006c5010	unproven	CUnprovenKey/Value/KeyOfValue_006c5010 (key signed/unobserved)	0x18	006c5010,006c8020,006c8400	006c5010 weak 5 candidates
+006c51a0	unproven	CUnprovenKey/Value/KeyOfValue_006c51a0 (key signed/unobserved)		006c51a0	006c51a0 weak 5 candidates
+006da040	unproven	CUnprovenKey/Value/KeyOfValue_006da040 (key signed/unobserved)		006da040	-
+006da0b0	unproven	CUnprovenKey/Value/KeyOfValue_006da0b0 (key signed/unobserved)		006da0b0	-
+006da3b0	unproven	CUnprovenKey/Value/KeyOfValue_006da3b0 (key signed/unobserved)		006da3b0	-
+006db230	unproven	CUnprovenKey/Value/KeyOfValue_006db230 (key signed/unobserved)	0x18	006db230	-
+006db5a0	unproven	CUnprovenKey/Value/KeyOfValue_006db5a0 (key signed/unobserved)	0x18	006db5a0	-
+006db730	unproven	CUnprovenKey/Value/KeyOfValue_006db730 (key signed/unobserved)	0x18	006db730	-
+006db770	unproven	CUnprovenKey/Value/KeyOfValue_006db770 (key signed/unobserved)	0x18	006db770	-
+006dbfe0	unproven	CUnprovenKey/Value/KeyOfValue_006dbfe0 (key signed/unobserved)	0x18	006dbfe0	-
+006dc1b0	unproven	CUnprovenKey/Value/KeyOfValue_006dc1b0 (key signed/unobserved)	0x18	006dc1b0	-
+006e6ae0	unproven	CUnprovenKey/Value/KeyOfValue_006e6ae0 (key signed/unobserved)	0x40	006e6ae0	-
+006e7030	unproven	CUnprovenKey/Value/KeyOfValue_006e7030 (key signed/unobserved)	0x40	006e7030	-
+006efc70	proven	map<unsigned __int64, CThingCreatureBase*>	0x20	006f1a50,006f23a0	006efc70 proven site owner:CDefendingCombatantInfo::Attackers; site:CDefendingCombatantInfo::Attackers(+0x0) | checks 
+006efce0	unproven	CUnprovenKey/Value/KeyOfValue_006efce0 (key signed/unobserved)	0x18	006efce0,006f0bc0,006f1b60,006f1ba0,006f1cf0,006f2490,006f24d0	006efce0 weak 2 candidates
+006f0030	unproven	CUnprovenKey/Value/KeyOfValue_006f0030 (key signed/unobserved)		006f0030	006f0030 weak 2 candidates
+006f0080	unproven	CUnprovenKey/Value/KeyOfValue_006f0080 (key signed/unobserved)		006f0080	006f0080 weak 2 candidates
+006f0300	unproven	CUnprovenKey/Value/KeyOfValue_006f0300 (key signed/unobserved)		006f0300	006f0300 weak 2 candidates
+006f0350	unproven	CUnprovenKey/Value/KeyOfValue_006f0350 (key signed/unobserved)		006f0350	006f0350 weak 2 candidates
+006f03a0	unproven	CUnprovenKey/Value/KeyOfValue_006f03a0 (key signed/unobserved)		006f03a0	-
+006f0dd0	unproven+members	CUnprovenKey/Value_006f0dd0; value members CCharString@+0x0	0x18	006f0dd0,006f1cb0,006f2520,006f3090,006f30d0	006f0dd0 weak 2 candidates
+006f1070	unproven	CUnprovenKey/Value/KeyOfValue_006f1070 (key unsigned)		006f1070	-
+006f1b20	unproven	CUnprovenKey/Value/KeyOfValue_006f1b20 (key signed/unobserved)	0x18	006f1b20	-
+006f1fe0	unproven	CUnprovenKey/Value/KeyOfValue_006f1fe0 (key signed/unobserved)		006f1fe0	-
+00701e80	unproven	CUnprovenKey/Value/KeyOfValue_00701e80 (key signed/unobserved)		00701e80	-
+00701ed0	unproven	CUnprovenKey/Value/KeyOfValue_00701ed0 (key signed/unobserved)		00701ed0	-
+00701f20	unproven	CUnprovenKey/Value/KeyOfValue_00701f20 (key signed/unobserved)		00701f20	-
+00701f70	unproven	CUnprovenKey/Value/KeyOfValue_00701f70 (key signed/unobserved)		00701f70	-
+0070a960	unproven	CUnprovenKey/Value/KeyOfValue_0070a960 (key signed/unobserved)	0x28	0070a960	-
+0070adb0	unproven	CUnprovenKey/Value/KeyOfValue_0070adb0 (key signed/unobserved)	0x28	0070b0a0	0070adb0 weak seed/bind only
+0071f8f0	proven	map<CCharString, pair<long,CDateAndTime>>	0x34	00720e40	0071f8f0 proven site owner:CTCHeroMorph::CustomToBankIndex; site:CTCHeroMorph::CustomToBankIndex(+0x28) | checks dtorCCharString
+007200c0	unproven	CUnprovenKey/Value/KeyOfValue_007200c0 (key signed/unobserved)	0x34	007200c0	-
+007388e0	unproven	CUnprovenKey/Value/KeyOfValue_007388e0 (key signed/unobserved)	0x24	007388e0	-
+00738eb0	unproven	CUnprovenKey/Value/KeyOfValue_00738eb0 (key signed/unobserved)	0x24	00739a70	00738eb0 weak seed/bind only
+00755cb0	unproven	CUnprovenKey/Value/KeyOfValue_00755cb0 (key signed/unobserved)		00755cb0	00755cb0 weak 1 candidates
+00755e00	unproven+members	CUnprovenKey/Value_00755e00; value members CCharString@+0x0		00755e00	-
+00755e80	proven	map<CCharString, pair<long,long>>	0x1c	00756a70	00755e80 proven site bind; owner:CTCHeroRememberCrimes::RegionNamesToCrimeDurationAndFine; site:CTCHeroRememberCrimes::RegionNamesToCrimeDurationAndFine(+0xc) | checks dtorCCharString
+00756030	unproven+members	CUnprovenKey/Value_00756030; value members CCharString@+0x0		00756030	00756030 weak 1 candidates
+00756080	unproven	CUnprovenKey/Value/KeyOfValue_00756080 (key signed/unobserved)	0x1c	00756080	-
+00769650	proven	map<EObjectAugmentationType, CObjectAugmentationSoundSet>	0x20	0076acf0	00769650 proven site bind; owner:CTCObjectAugmentations::InitSounds; site:CTCObjectAugmentations::InitSounds(+0x20); site:CTCObjectAugmentations::LoopingSounds(+0x2c) | checks 
+00769f30	unproven	CUnprovenKey/Value/KeyOfValue_00769f30 (key signed/unobserved)	0x20	00769f30	-
+00776aa0	unproven	CUnprovenKey/Value/KeyOfValue_00776aa0 (key signed/unobserved)	0x30	00777520,00777a00	00776aa0 weak 1 candidates
+00776cf0	unproven	CUnprovenKey/Value/KeyOfValue_00776cf0 (key signed/unobserved)		00776cf0	00776cf0 weak 6 candidates
+00779b90	unproven	CUnprovenKey/Value/KeyOfValue_00779b90 (key signed/unobserved)		00779b90	-
+00781670	unproven	CUnprovenKey/Value/KeyOfValue_00781670 (key signed/unobserved)		00781670	-
+00782e40	unproven	CUnprovenKey/Value/KeyOfValue_00782e40 (key signed/unobserved)		00782e40	00782e40 weak 1 candidates
+00783d50	unproven	CUnprovenKey/Value/KeyOfValue_00783d50 (key signed/unobserved)	0x20	00783d50	-
+00792460	unproven	CUnprovenKey/Value/KeyOfValue_00792460 (key unsigned)		00792460	-
+007926f0	unproven	CUnprovenKey/Value/KeyOfValue_007926f0 (key signed/unobserved)	0x2c	007926f0	-
+00792b30	unproven	CUnprovenKey/Value/KeyOfValue_00792b30 (key signed/unobserved)	0x2c	00792b30	-
+007978c0	unproven	CUnprovenKey/Value/KeyOfValue_007978c0 (key unsigned)		007978c0	-
+00797ae0	unproven	CUnprovenKey/Value/KeyOfValue_00797ae0 (key signed/unobserved)	0x2c	00797ae0	-
+00797e30	unproven	CUnprovenKey/Value/KeyOfValue_00797e30 (key signed/unobserved)	0x2c	00797e30	-
+0079eec0	proven	set<CThing*>	0x14	0079f2a0,0079f410	0079eec0 proven site owner:CTCPhysicalShieldSpell::AllowReactionAttackers; site:CTCPhysicalShieldSpell::AllowReactionAttackers(+0x48) | checks 
+007abab0	unproven	CUnprovenKey/Value/KeyOfValue_007abab0 (key signed/unobserved)		007abab0	-
+007ac720	unproven	CUnprovenKey/Value/KeyOfValue_007ac720 (key signed/unobserved)		007ac720	007ac720 weak 1 candidates
+007ac9e0	unproven+members	CUnprovenKey/Value_007ac9e0; value members CCharString@+0x0		007ac9e0	-
+007acc50	proven	map<CCharString, bool>	0x18	007add10	007acc50 proven seed/bind owner:CQ_SecretPassageScript::FlagMap; seed | checks dtorCCharString; 007add10 weak 2 candidates
+007acde0	unproven	CUnprovenKey/Value/KeyOfValue_007acde0 (key signed/unobserved)	0x18	007acde0	-
+007ace60	unproven	CUnprovenKey/Value/KeyOfValue_007ace60 (key signed/unobserved)	0x20	007ace60	-
+007ae0e0	proven	map<CCharString, vector<CCharString>>	0x20	007aeb30	007ae0e0 proven seed/bind bind; seed | checks dtorCCharString
+007c2b30	unproven	CUnprovenKey/Value/KeyOfValue_007c2b30 (key signed/unobserved)		007c2b30	-
+007e8fe0	unproven	CUnprovenKey/Value/KeyOfValue_007e8fe0 (key signed/unobserved)	0x18	007e9960,007e9cc0	-
+007e9070	unproven	CUnprovenKey/Value/KeyOfValue_007e9070 (key signed/unobserved)		007e9070	-
+007ffa30	unproven	CUnprovenKey/Value/KeyOfValue_007ffa30 (key signed/unobserved)		007ffa30	-
+008126f0	unproven	CUnprovenKey/Value/KeyOfValue_008126f0 (key signed/unobserved)		008126f0	-
+008127f0	unproven	CUnprovenKey/Value/KeyOfValue_008127f0 (key signed/unobserved)		008127f0	008127f0 weak 1 candidates
+00817280	unproven	CUnprovenKey/Value/KeyOfValue_00817280 (key signed/unobserved)	0x18	00817ab0,00817f70	-
+0082ee60	unproven	CUnprovenKey/Value/KeyOfValue_0082ee60 (key signed/unobserved)		0082ee60	-
+0082f3d0	unproven	CUnprovenKey/Value/KeyOfValue_0082f3d0 (key signed/unobserved)	0x18	0082f3d0	-
+0082f410	unproven	CUnprovenKey/Value/KeyOfValue_0082f410 (key signed/unobserved)	0x30	0082f410	-
+0082f6a0	unproven	CUnprovenKey/Value/KeyOfValue_0082f6a0 (key signed/unobserved)	0x18	0082f6a0	-
+0082f710	unproven	CUnprovenKey/Value/KeyOfValue_0082f710 (key signed/unobserved)	0x30	0082f710	-
+00834fd0	unproven	CUnprovenKey/Value/KeyOfValue_00834fd0 (key signed/unobserved)	0x14	00834fd0,00835140,008353b0,008353f0,00835440,00835680,008356c0	00834fd0 weak 1 candidates
+00835060	unproven	CUnprovenKey/Value/KeyOfValue_00835060 (key signed/unobserved)		00835060	00835060 weak 1 candidates
+0083b120	unproven	CUnprovenKey/Value/KeyOfValue_0083b120 (key signed/unobserved)		0083b120	-
+0083b170	unproven	CUnprovenKey/Value/KeyOfValue_0083b170 (key signed/unobserved)		0083b170	-
+00869940	unproven	CUnprovenKey/Value/KeyOfValue_00869940 (key signed/unobserved)	0x18	00869940	-
+008699a0	unproven	CUnprovenKey/Value/KeyOfValue_008699a0 (key signed/unobserved)		008699a0	-
+00869ec0	unproven	CUnprovenKey/Value/KeyOfValue_00869ec0 (key signed/unobserved)	0x18	00869ec0	-
+00882bc0	unproven	CUnprovenKey/Value/KeyOfValue_00882bc0 (key signed/unobserved)	0x14	00883d20,008841e0	-
+00882ef0	unproven	CUnprovenKey/Value/KeyOfValue_00882ef0 (key signed/unobserved)		00882ef0	-
+008834f0	unproven	CUnprovenKey/Value/KeyOfValue_008834f0 (key signed/unobserved)	0x20	00884620	-
+00883860	unproven	CUnprovenKey/Value/KeyOfValue_00883860 (key unsigned)		00883860	-
+00883ce0	unproven	CUnprovenKey/Value/KeyOfValue_00883ce0 (key signed/unobserved)	0x20	00883ce0	-
+008aab70	unproven	CUnprovenKey/Value/KeyOfValue_008aab70 (key signed/unobserved)		008aab70	008aab70 weak 1 candidates
+008aefe0	unproven	CUnprovenKey/Value/KeyOfValue_008aefe0 (key signed/unobserved)	0x18	008aefe0	-
+008afcc0	unproven	CUnprovenKey/Value/KeyOfValue_008afcc0 (key signed/unobserved)	0x18	008afcc0	-
+008b1d40	unproven	CUnprovenKey/Value/KeyOfValue_008b1d40 (key signed/unobserved)	0x18	008b2790,008b2c20	-
+008b1d80	unproven	CUnprovenKey/Value/KeyOfValue_008b1d80 (key signed/unobserved)	0x18	008b2820,008b2cb0	-
+008b1dc0	unproven	CUnprovenKey/Value/KeyOfValue_008b1dc0 (key signed/unobserved)	0x18	008b28b0,008b2d40	-
+0098cc80	unproven	CUnprovenKey/Value/KeyOfValue_0098cc80 (key signed/unobserved)	0x1c	0098cc80	-
+0098fd40	unproven	CUnprovenKey/Value/KeyOfValue_0098fd40 (key signed/unobserved)	0x18	009904b0,00990b90	0098fd40 weak seed/bind only
+0098fd80	unproven	CUnprovenKey/Value/KeyOfValue_0098fd80 (key signed/unobserved)	0x18	0098fd80,00990120,00990540,00990580,009906e0,00990c20,00990c60	0098fd80 weak 1 candidates
+0098ff50	unproven	CUnprovenKey/Value/KeyOfValue_0098ff50 (key signed/unobserved)		0098ff50	0098ff50 weak 1 candidates
+0098ffa0	unproven	CUnprovenKey/Value/KeyOfValue_0098ffa0 (key signed/unobserved)		0098ffa0	0098ffa0 weak 1 candidates
+00999e50	unproven	CUnprovenKey/Value/KeyOfValue_00999e50 (key signed/unobserved)	0x14	00999fe0,0099a0b0	-
+009aa780	unproven+members	CUnprovenKey/Value_009aa780; value members CCharString@+0x0	0x28	009aa780,009aaca0,009ab6b0,009ac0f0,009ac130	-
+009aa7c0	proven	map<CCharString, CBankFileManager::CBankInfo>	0x28	009ac1c0	009aa7c0 proven site owner:CBankFileManager::Banks; site:CBankFileManager::Banks(+0x4) | checks 
+009aa880	proven	set<CWideString>	0x14	009ac380	009aa880 proven site owner:CBankFileManager::CreatedRetailBanks; site:CBankFileManager::CreatedRetailBanks(+0x28) | checks dtorCWideString
+009aab60	unproven	CUnprovenKey/Value/KeyOfValue_009aab60 (key signed/unobserved)	0x28	009aab60	-
+009aaba0	unproven	CUnprovenKey/Value/KeyOfValue_009aaba0 (key signed/unobserved)	0x28	009aaba0	-
+009aac20	unproven	CUnprovenKey/Value/KeyOfValue_009aac20 (key signed/unobserved)	0x18	009aac20	-
+009aac60	unproven	CUnprovenKey/Value/KeyOfValue_009aac60 (key signed/unobserved)	0x14	009aac60	-
+009ac2d0	unproven	CUnprovenKey/Value/KeyOfValue_009ac2d0 (key signed/unobserved)	0x18	009ac2d0	-
+009b3f00	unproven	CUnprovenKey/Value/KeyOfValue_009b3f00 (key signed/unobserved)	0x18	009b3f00	-
+009b6f40	unproven	CUnprovenKey/Value/KeyOfValue_009b6f40 (key signed/unobserved)	0x18	009b6f40	-
+009c1dc0	unproven	CUnprovenKey/Value/KeyOfValue_009c1dc0 (key signed/unobserved)	0x20	009c25f0,009c2b00	009c1dc0 weak seed/bind only
+009c1e00	unproven	CUnprovenKey/Value/KeyOfValue_009c1e00 (key signed/unobserved)	0x14	009c1e00,009c22e0,009c26e0,009c2720,009c2bd0,009c2c10	-
+009c1f70	unproven	CUnprovenKey/Value/KeyOfValue_009c1f70 (key signed/unobserved)		009c1f70	-
+009d1fe0	unproven	CUnprovenKey/Value/KeyOfValue_009d1fe0 (key signed/unobserved)		009d1fe0	009d1fe0 weak 2 candidates
+009d2ab0	unproven	CUnprovenKey/Value/KeyOfValue_009d2ab0 (key signed/unobserved)	0x20	009d2ab0	-
+009d3890	unproven	CUnprovenKey/Value/KeyOfValue_009d3890 (key signed/unobserved)	0x18	009d3890	-
+009d3e80	unproven	CUnprovenKey/Value/KeyOfValue_009d3e80 (key signed/unobserved)	0x20	009d46d0	-
+009d7550	unproven	CUnprovenKey/Value/KeyOfValue_009d7550 (key signed/unobserved)		009d7550	009d7550 weak 1 candidates
+009d7b40	unproven	CUnprovenKey/Value/KeyOfValue_009d7b40 (key signed/unobserved)	0x14	009d7b40	-
+009d7e10	unproven	CUnprovenKey/Value/KeyOfValue_009d7e10 (key signed/unobserved)	0x14	009d7e10	-
+009d8410	unproven	CUnprovenKey/Value/KeyOfValue_009d8410 (key signed/unobserved)	0x28	009d8410	-
+009d8460	unproven	CUnprovenKey/Value/KeyOfValue_009d8460 (key signed/unobserved)	0x28	009d8530	-
+009ee1f0	unproven	CUnprovenKey/Value/KeyOfValue_009ee1f0 (key signed/unobserved)		009ee1f0	-
+009eecc0	proven	map<char, CCharString>	0x18	009ef870	009eecc0 proven site bind; owner:CConsole::KeyBindingMap; site:CConsole::KeyBindingMap(+0x4) | checks dtorCCharString
+009eef50	unproven	CUnprovenKey/Value/KeyOfValue_009eef50 (key signed/unobserved)	0x18	009eef50	-
+009eefd0	unproven	CUnprovenKey/Value/KeyOfValue_009eefd0 (key signed/unobserved)	0x1c	009eefd0	-
+009eff60	unproven	CUnprovenKey/Value/KeyOfValue_009eff60 (key signed/unobserved)	0x1c	009eff60	-
+009f0c40	unproven+members	CUnprovenKey/Value_009f0c40; value members CCharString@+0x0		009f0c40	-
+009f0ef0	unproven	CUnprovenKey/Value/KeyOfValue_009f0ef0 (key signed/unobserved)	0x24	009f0ef0	-
+009f13c0	unproven	CUnprovenKey/Value/KeyOfValue_009f13c0 (key signed/unobserved)	0x24	009f13c0	-
+00a20f50	unproven	CUnprovenKey/Value/KeyOfValue_00a20f50 (key signed/unobserved)	0x18	00a20f50,00a215d0,00a21b60,00a21ba0,00a220a0,00a220e0	00a20f50 weak 1 candidates
+00a21640	proven	map<long, CNavigatorAStar::CAStarState>	0x28	00a22360	00a21640 proven site owner:CNavigatorAStar::States; site:CNavigatorAStar::States(+0x24) | checks 
+00a21ae0	unproven	CUnprovenKey/Value/KeyOfValue_00a21ae0 (key signed/unobserved)	0x28	00a21ae0	-
+00a290e0	unproven	CUnprovenKey/Value/KeyOfValue_00a290e0 (key signed/unobserved)		00a290e0	-
+00a2b890	unproven	CUnprovenKey/Value/KeyOfValue_00a2b890 (key signed/unobserved)	0x20	00a2b890	-
+00a2b8d0	unproven	CUnprovenKey/Value/KeyOfValue_00a2b8d0 (key signed/unobserved)	0x1c	00a2b8d0	-
+00a2b9d0	unproven	CUnprovenKey/Value/KeyOfValue_00a2b9d0 (key signed/unobserved)	0x1c	00a2d250	00a2b9d0 weak seed/bind only
+00a394d0	unproven	CUnprovenKey/Value/KeyOfValue_00a394d0 (key signed/unobserved)	0x14	00a394d0	-
+00a39510	unproven	CUnprovenKey/Value/KeyOfValue_00a39510 (key signed/unobserved)	0x14	00a39510	-
+00a54240	proven	map<CCharString, float>	0x18	00a54e10	00a54240 proven seed/bind bind; seed | checks node0x18,dtorCCharString
+00a544e0	unproven	CUnprovenKey/Value/KeyOfValue_00a544e0 (key signed/unobserved)	0x18	00a544e0	-
+00a611d0	unproven	CUnprovenKey/Value/KeyOfValue_00a611d0 (key signed/unobserved)	0x34	00a611d0	-
+00a7e300	unproven	CUnprovenKey/Value/KeyOfValue_00a7e300 (key signed/unobserved)	0x18	00a7e300,00a7f640,00a806e0,00a80720,00a81340,00a81380	00a7e300 weak 1 candidates
+00a7e340	unproven	CUnprovenKey/Value/KeyOfValue_00a7e340 (key signed/unobserved)	0x18	00a7e340,00a7f6b0,00a80770,00a807b0,00a813d0,00a81410	-
+00a7e7b0	unproven	CUnprovenKey/Value/KeyOfValue_00a7e7b0 (key signed/unobserved)	0x18	00a7e7b0,00a80ce0,00a81a70	-
+00a8d840	unproven	CUnprovenKey/Value/KeyOfValue_00a8d840 (key unsigned)		00a8d840	-
+00ad0a30	unproven	CUnprovenKey/Value/KeyOfValue_00ad0a30 (key signed/unobserved)		00ad0a30	-
+00ad0da0	unproven	CUnprovenKey/Value/KeyOfValue_00ad0da0 (key signed/unobserved)		00ad0da0	-
+00ad14e0	proven	map<unsigned long, float>	0x18	00ad2f20,00ad3960	00ad3500 proven seed/bind bind; seed | checks node0x18
+00ad2530	unproven	CUnprovenKey/Value/KeyOfValue_00ad2530 (key unsigned)		00ad2530	-
+00ad2790	unproven	CUnprovenKey/Value/KeyOfValue_00ad2790 (key unsigned)		00ad2790	-
+00ad2fb0	unproven	CUnprovenKey/Value/KeyOfValue_00ad2fb0 (key signed/unobserved)	0x20	00ad2fb0	-
+00ad3010	unproven	CUnprovenKey/Value/KeyOfValue_00ad3010 (key signed/unobserved)	0x1c	00ad3010	-
+00ad3150	unproven	CUnprovenKey/Value/KeyOfValue_00ad3150 (key signed/unobserved)	0x20	00ad3150	-
+00ad3300	unproven	CUnprovenKey/Value/KeyOfValue_00ad3300 (key signed/unobserved)	0x20	00ad5dc0	00ad3300 weak seed/bind only
+00ad6610	unproven	CUnprovenKey/Value/KeyOfValue_00ad6610 (key signed/unobserved)	0x1c	00ad6610	-
+00ad72c0	unproven	CUnprovenKey/Value/KeyOfValue_00ad72c0 (key signed/unobserved)	0x20	00ad72c0	-
+00adae00	unproven	CUnprovenKey/Value/KeyOfValue_00adae00 (key signed/unobserved)	0x1c	00adae00,00adb200,00adb5a0,00adb5e0,00adb890,00adb8d0	-
+00b2ea30	unproven	CUnprovenKey/Value/KeyOfValue_00b2ea30 (key signed/unobserved)	0x2c	00b2ea30	-
+00b2eb20	unproven	CUnprovenKey/Value/KeyOfValue_00b2eb20 (key signed/unobserved)		00b2eb20	-
+00b2ef20	unproven	CUnprovenKey/Value/KeyOfValue_00b2ef20 (key signed/unobserved)	0x2c	00b2f4e0	00b2ef20 weak 1 candidates
+00b3e6e0	unproven	CUnprovenKey/Value/KeyOfValue_00b3e6e0 (key signed/unobserved)	0x1c	00b3e6e0,00b3e750,00b3e890,00b3e8d0,00b3e990,00b3e9d0	00b3e6e0 weak 1 candidates
+00b43d30	unproven	CUnprovenKey/Value/KeyOfValue_00b43d30 (key signed/unobserved)	0x24	00b43d30	-
+00b442e0	unproven	CUnprovenKey/Value/KeyOfValue_00b442e0 (key signed/unobserved)	0x24	00b442e0	-
+00b95ee0	unproven	CUnprovenKey/Value/KeyOfValue_00b95ee0 (key signed/unobserved)	0x30	00b96b20,00b97130	00b95ee0 weak 3 candidates
+00b966a0	unproven	CUnprovenKey/Value/KeyOfValue_00b966a0 (key signed/unobserved)		00b966a0	00b966a0 weak 2 candidates
+00b968e0	unproven	CUnprovenKey/Value/KeyOfValue_00b968e0 (key signed/unobserved)	0x1c	00b968e0	-
+00b96ae0	unproven	CUnprovenKey/Value/KeyOfValue_00b96ae0 (key signed/unobserved)	0x20	00b96ae0	-
+00b97fc0	unproven	CUnprovenKey/Value/KeyOfValue_00b97fc0 (key signed/unobserved)	0x1c	00b97fc0	-
+00b981f0	unproven	CUnprovenKey/Value/KeyOfValue_00b981f0 (key signed/unobserved)	0x1c	00b981f0	-
+00b98350	unproven	CUnprovenKey/Value/KeyOfValue_00b98350 (key signed/unobserved)	0x20	00b98850	00b98350 weak 2 candidates
+00bce3e0	unproven	CUnprovenKey/Value/KeyOfValue_00bce3e0 (key signed/unobserved)	0x1c	00bce3e0	-
+00bce5a0	unproven	CUnprovenKey/Value/KeyOfValue_00bce5a0 (key signed/unobserved)	0x1c	00bce5a0	-
+00bd86f0	unproven	CUnprovenKey/Value/KeyOfValue_00bd86f0 (key signed/unobserved)	0x20	00bd86f0	-
+00cdb750	unproven	CUnprovenKey/Value/KeyOfValue_00cdb750 (key signed/unobserved)	0x24	00cdb750	-
